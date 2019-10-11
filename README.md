@@ -124,9 +124,11 @@ Change the colors of the page based on the weather. If the weather is warm – u
 **_Deep-dive_**
 
 ***Use your location***
+
 Use the [Geolocation API](https://www.w3schools.com/html/html5_geolocation.asp) that is built in to your browser to fetch the city that you are located in atm and show the weather for your location. 
 
 ***Add multiple cities***
+
 Give the user the option to choose between a couple of your favourite cities. 
 
 #### 🚨 Don't forget to add, commit and push the changes to GitHub when you're done. 🏁
