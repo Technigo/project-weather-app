@@ -90,7 +90,8 @@ Start with just getting data from the API and then get it on to your page. Once 
 ## Requirements 🧪
 
 - You should fetch data from the API using fetch() in JavaScript 
-– All data in sketch above your be present and fetched from the API in the specified format. 
+- All data in the sketch above should be present and fetched from the API
+- The presentation of the data should be in the specified format. 
 - The page should work on mobile, tablet and desktop (Be resposive)- 
 - Code follows Technigo’s code guidelines.
 - Contribute by helping others with this project on Stack Overflow.
