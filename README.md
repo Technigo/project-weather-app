@@ -85,7 +85,7 @@ Your task is to present the data: the city name, the temperature (rounded to 1 d
 
 Once you get the data onto your page, style your page however you'd like to with CSS, OR add more data to make it even more useful! See suggestions in the stretch goals section.
 
-Start with just getting data from the API and then get it on to your page. Once the data is there you can start modifying the data – such as the rounding of the temperature and the sunset och sundwon times. For the later you might have to read up a bit on 
+Start with just getting data from the API and then get it on to your page. Once the data is there you can start modifying the data – such as the rounding of the temperature and the sunset och sundwon times. For the later you might have to google "javascript date format". 
 
 ## Requirements 🧪
 
