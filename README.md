@@ -21,11 +21,76 @@ This weeks project is to build a simple weather dashboard that tells today's wea
 2. Clone this repo into your projects folder on your computer
 3. Open up VS Code and start coding!
 
+### Get started with the weather API.
+
+[Sign up for a free Open Weather Map account](https://home.openweathermap.org/users/sign_up). Once signed in, go to the "Api Keys" tab and copy the API Key. You can use the API Key in the APPID parameter when making calls to the openweathermap API.
+
+For example, to get the current weather in Stockholm, you can use the url below. Remember to replace "YOUR_API_KEY" with the API key you copied from your dashboard.
+
+http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=YOUR_API_KEY
+
+The response should look something like this (this has been run through jsonlint.com to add newlines and indentation):
+
+```json
+
+{
+	"coord": {
+		"lon": 18.06,
+		"lat": 59.33
+	},
+	"weather": [{
+		"id": 800,
+		"main": "Clear",
+		"description": "clear sky",
+		"icon": "01d"
+	}],
+	"base": "stations",
+	"main": {
+		"temp": 6.47,
+		"pressure": 1007,
+		"humidity": 56,
+		"temp_min": 6,
+		"temp_max": 7
+	},
+	"visibility": 10000,
+	"wind": {
+		"speed": 3.6,
+		"deg": 200
+	},
+	"clouds": {
+		"all": 0
+	},
+	"dt": 1509709800,
+	"sys": {
+		"type": 1,
+		"id": 5420,
+		"message": 0.0024,
+		"country": "SE",
+		"sunrise": 1509689610,
+		"sunset": 1509720490
+	},
+	"id": 2673730,
+	"name": "Stockholm",
+	"cod": 200
+}
+```
+
+As you can see, there's a bunch of useful information in there - including current temperature, windspeed, humidity, etc.
+
+You will need to use the `fetch()` function in JavaScript to load the weather data into your page, and then select the values you want to inject into the DOM from the JSON which comes from the API.
+
+### Present the data on your page
+
+Your task is to present the data: the city name, the temperature (rounded to 1 decimal place), what type of weather it is (the "description" in the JSON), and the time for sunset and sundown in a readable time format (Example: 13:00 or 1 PM). 
+
+Once you get the data onto your page, style your page however you'd like to with CSS, OR add more data to make it even more useful! See suggestions in the stretch goals section.
+
+Start with just getting data from the API and then get it on to your page. Once the data is there you can start modifying the data – such as the rounding of the temperature and the sunset och sundwon times. For the later you might have to read up a bit on 
+
 ## Requirements 🧪
 
-- You should fetch data from the API using fetch() in JavaScript
-– You should be able to choose to show the weather from your favourite 3 cities. 
-– All data in sketch above your be present and fetched from the API. 
+- You should fetch data from the API using fetch() in JavaScript 
+– All data in sketch above your be present and fetched from the API in the specified format. 
 - The page should work on mobile, tablet and desktop (Be resposive)- 
 - Code follows Technigo’s code guidelines.
 - Contribute by helping others with this project on Stack Overflow.
