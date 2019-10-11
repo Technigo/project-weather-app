@@ -11,9 +11,9 @@ This weeks project is to build a simple weather dashboard that tells today's wea
 ## What you will learn 🧠
 
 - What an API is and how to use it
-– Basic json
-– What to use fetch() in Javascript
-– How to use callback and promises in JavaScript
+- Basic json
+- What to use fetch() in Javascript
+- How to use callback and promises in JavaScript
 
 ## How to get started 💪🏼
 
