@@ -4,7 +4,7 @@
 
 This weeks project is to build a simple weather dashboard that tells today's weather and temperature using a weather API. We will start by keeping it simple and then there's great possibilities to build on with stretch goals. The page, before stretch goals should look something along the lines of this:
 
-![Design](https://github.com/Technigo/project-weather-dash/blob/master/weather-dash-01.png)
+![Design](https://github.com/Technigo/project-wheater-dash/blob/master/weather-dash-01.png)
 
 ---
 
