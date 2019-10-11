@@ -1,6 +1,6 @@
 `PROJECT 6`
 
-# Build a Weather Dashboard :sunny:
+# Build a Weather App :sunny:
 
 This weeks project is to build a simple weather dashboard that tells today's weather and temperature using a weather API. We will start by keeping it simple and then there's great possibilities to build on with stretch goals. The page, before stretch goals should look something along the lines of this:
 
