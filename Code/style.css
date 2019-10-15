@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
+  #weatherdesk {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    
+    width: auto;
+    height: 400px;
+    background: rgb(100, 129, 255);
+    padding-top: 30px;
+    border-radius: 150px;
+    margin: 20px;
+  }
+ 
+  }
+  #statement {
+  
+  }
+  
+  #cityName {
+   
+  }
+  #weather {
+   
+  }
+
+  #sunRise {
+  
+  }
+
+  #sunSet {
+  
+  }
+
+
+   
+
+  
+  
