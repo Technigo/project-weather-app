@@ -7,14 +7,18 @@
     <link rel="stylesheet" href="style.css" />
     <title>Weather</title>
   </head>
-  <body>
-    <section id="weatherdesk">
-      <div id="statement">The weather in:</div>
-      <div id="cityName">Loading City...</div>
-      <div id="weather">Loading Weather...</div>
-      <div id="sunRise">Loading time for sunrise...</div>
-      <div id="sunSet">Loading time for sunset...</div>
-    </section>
+  <body><div id="mainContainer">
+    <div id="topContent"><h3>The weather in:</h3></div>
+    <div id="cityContainer"><h2>Loading city...</h2></div>
+
+    <div id="splitContainer">
+      <div id="leftContainer">Loading temperature...</div>
+      <div id="rightContainer">Loading weather...</div>
+    </div>
+
+    <div id="sunsetContainer"><p>Loading time for sunset...</p></div>
+    <div id="sunriseContainer"><p>Loading time for sunrise...</p></div>
+    </div>
     <script src="weather.js"></script>
   </body>
 </html>

@@ -1,42 +1,58 @@
 body {
-    margin: 0;
+  margin: 5px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   }
-  #weatherdesk {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    
+  #mainContainer {
     width: auto;
     height: 400px;
-    background: rgb(100, 129, 255);
+    background: rgb(63,94,251);
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(192,70,252,1) 27%, rgba(80,3,131,1) 55%);
     padding-top: 30px;
-    border-radius: 150px;
-    margin: 20px;
+    border-radius: 40px;
+    margin: 25px;
   }
  
-  }
-  #statement {
-  
-  }
-  
-  #cityName {
-   
-  }
-  #weather {
-   
-  }
+  #splitContainer{
+    
+    justify-content: center;
+    display: flex;
+    margin: 10px;
+}
 
-  #sunRise {
-  
+#leftContainer{
+    text-align: left;
+    padding-right: 25px;
+    margin: 10px;
+
+}
+
+#rightContainer{
+   text-align: right;
+   padding-left: 25px;
+   margin: 10px;
+}
+
+h1 {
+  text-align: center;
+}
+h2 {
+  text-align: center;
+}
+h3 {
+  text-align: center;
+}
+p {
+  text-align: center;
+}
+
+@media (max-width: 667px) {
+  #mainContainer {
+    background-color: rgb(39, 153, 219);
+    background: rgb(11,145,170);
+    background: radial-gradient(circle, rgba(11,145,170,1) 8%, rgba(86,34,119,1) 40%, rgba(0,120,255,1) 100%);
+    margin: 5px;
+    border-radius: 10px;
+    
   }
-
-  #sunSet {
-  
-  }
-
-
-   
-
-  
+}
   

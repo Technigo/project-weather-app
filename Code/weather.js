@@ -1,39 +1,26 @@
-const container = document.getElementById("cityName") // Name of the city
-const cityWeather = document.getElementById("weather") // Weather
-const timeForSunRise = document.getElementById("sunRise") // Time for sunrise
-const timeForSunSet = document.getElementById("sunSet") // Time for sunset
-fetch ("http://api.openweathermap.org/data/2.5/weather?q=Tromso,Norway&APPID=1e0ba400cf88bae424b5895f500ae7c9")
+const container = document.getElementById('mainContainer')
+const timeSunsetContainer = document.getElementById("sunsetContainer")
+const timeSunriseContainer = document.getElementById("sunriseContainer")
+
+
+fetch ("http://api.openweathermap.org/data/2.5/weather?q=Tromso,Norway&units=metric&APPID=1e0ba400cf88bae424b5895f500ae7c9")
+
     .then((response) => {
         return response.json()
-})
-.then ((json) => {
-    container.innerHTML =`<h2> ${json.name}</h2>`
+    })
+
+    .then((json) => {
+        cityContainer.innerHTML = `<h1>${json.name}</h1>`
+        leftContainer.innerHTML = `<h1>${json.main.temp}°C</h1>`
+        rightContainer.innerHTML = `<h1>${json.weather[0].description}</h1>`
+        
+    let sunsetInMilliseconds = json.sys.sunset
+    let sunsetTime = new Date(sunsetInMilliseconds).toLocaleTimeString()
+        timeSunsetContainer.innerHTML = `<p>Sunset: ${sunsetTime}</p>`
+
+    let sunriseInMilliseconds = json.sys.sunrise
+    let sunriseTime = new Date(sunriseInMilliseconds).toLocaleTimeString()
+        timeSunriseContainer.innerHTML = `<p>Sunrise: ${sunriseTime}</p>`
 
 })
-
-
-fetch ("http://api.openweathermap.org/data/2.5/weather?q=Tromso,Norway&APPID=1e0ba400cf88bae424b5895f500ae7c9")
-    .then((response) => {
-        return response.json()
-})
-.then ((json) => {
-    cityWeather.innerHTML =`<h1> ${json.main.temp} degrees and the skies are ${json.weather.description}</h1>`
-
-})
-fetch ("http://api.openweathermap.org/data/2.5/weather?q=Tromso,Norway&APPID=1e0ba400cf88bae424b5895f500ae7c9")
-    .then((response) => {
-        return response.json()
-})
-.then ((json) => {
-    timeForSunRise.innerHTML =`<p> Sun rises: ${json.sys.sunrise}</p>`
-
-})
-
-fetch ("http://api.openweathermap.org/data/2.5/weather?q=Tromso,Norway&APPID=1e0ba400cf88bae424b5895f500ae7c9")
-.then((response) => {
-    return response.json()
-})
-.then ((json) => {
-timeForSunSet.innerHTML =`<p> Sun sets:${json.sys.sunset}</p>`
-
-})
+   
