@@ -1,46 +1,17 @@
 body{
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
-    background-color: pink;
+    background-color: fff;
 }
 
 h1{
-    font-size: 30pt;
+    font-size: 60pt;
     text-align: center;
     margin: 0;
 }
 
-p{
-    font-size: 10pt;
+h2{
+    font-size: 14pt;
     text-align: center;
     margin: 10px;
-}
-
- .layoutDiv{
-     justify-content: center;
-     display: flex;
-     margin: 10px;
- }
-
- #containerDivLeft{
-     text-align: left;
-     padding-right: 25px;
-     margin: 10px;
-
- }
-
- #containerDivRight{
-    text-align: right;
-    padding-left: 25px;
-    margin: 10px;
-}
-
-#containerDivSunrise{
-    display: block;
-    text-align: center;
-}
-
-#containerDivSunset{
-    display: block;
-    text-align: center;
 }

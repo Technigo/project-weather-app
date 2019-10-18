@@ -1,4 +1,6 @@
-const containerDiv = document.getElementById('astros')
+const showLocation = document.getElementById('weather')
+const showSunriseTime = document.getElementById('showSunriseTime')
+const showSunsetTime = document.getElementById('showSunsetTime')
 
 fetch('http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=5efe76b9dced790a8b8d34af9bba77d8&units=metric')
     .then((response) => {
@@ -6,20 +8,26 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=5efe76b9
     })
 
     .then((json) =>{
-        containerDiv.innerHTML = `<p>Hello from</p> <h1>${json.name}!</h1>`
-        containerDivLeft.innerHTML = `<h1>${json.main.temp}°</h1>`
-       
-        json.weather.forEach((mainWeather) => {
-            containerDivRight.innerHTML = `<h1>${mainWeather.main}</h1>`
-        })
-        
-        containerDivSunrise.innerHTML = `<p>Sunrise: ${json.sys.sunrise}</p>`
-        
+        showLocation.innerHTML = `<h1>${json.name}</h1>`
+        showTemperature.innerHTML = `<h1>${json.main.temp}°</h1>`
+        showMainWeather.innerHTML = `<h1>${json.weather[0].main}</h1>`
 
-        containerDivSunset.innerHTML = `<p>Sunset: ${json.sys.sunset}</p>`
+        let sunsetInMillisecond = json.sys.sunrise
+        let sunsetTime = new Date(sunsetInMillisecond).toLocaleTimeString()
+        showSunsetTime.innerHTML = `<h1> ${sunsetTime}</h1>`
 
+        let sunriseInMillisecond = json.sys.sunrise
+        let sunriseTime = new Date(sunriseInMillisecond).toLocaleTimeString()
+        showSunriseTime.innerHTML = `<h1> ${sunriseTime}</h1>`
+    
+        if (showTemperature > '15') {
+            document.body.style.backgroundColor = '#B0B7c6';
+        } else {
+            document.body.style.backgroundColor = "#ff8d88";
+        }
     })
+    
+    
+
 
     
-    let timeInMillisecond = 1571226737065
-    let date = new Date(timeInMillisecond);
