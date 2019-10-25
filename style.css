@@ -1,0 +1,39 @@
+body {
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: lighter;
+    padding: 0px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.main {
+    background: salmon;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+    padding: 0px 20px;
+}
+
+.current {
+    display: flex;
+}
+
+@media (min-width: 900px) {
+    .main {
+        width: 50%;
+        position: unset;
+    }
+
+    .current {
+        flex-direction: column;
+    }
+
+    .weather-data {
+        display: flex;
+    }
+}

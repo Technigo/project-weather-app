@@ -7,14 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Technigo Weather App</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div id="weather">
+    <div class="main">
+        <div class="header"></div>
+        <h1 id="city"></h1>
+        <div class="weather-data">
+            <div class="current">
+                <img id="message"></img>
+                <p id="summary"></p>
+            </div>
 
-    </div>
-    <div id="forecast">
-
+            <div class="forecast" id="forecast"></div>
+        </div>
     </div>
     <script src="./script.js"></script>
 </body>
