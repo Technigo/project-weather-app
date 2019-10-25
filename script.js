@@ -6,4 +6,5 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APP
     })
     .then((json) => {
         console.log(json)
+        document.getElementById("weather").innerHTML += `Wheater in ${json.name} now:<br>${json.weather[0].description}<br>Temperature: ${json.main.temp.toFixed(1)}`
     })
