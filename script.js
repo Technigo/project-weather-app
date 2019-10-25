@@ -17,7 +17,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
         sunrise ${("0" + sunrise.getHours()).slice(-2)}:${("0" + sunrise.getMinutes()).slice(-2)}<br>
         sunset: ${("0" + sunset.getHours()).slice(-2)}:${("0" + sunset.getMinutes()).slice(-2)}`
 
-        document.getElementById("message").src = `http://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png`
+        document.getElementById("message").src = `https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png`
     })
     .catch((err) => {
         console.log('caught error', err)
@@ -34,7 +34,7 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&cnt=7&APPID=${
             let dt = new Date(0)
             dt.setUTCSeconds(weather.dt)
             document.getElementById("forecast").innerHTML += `${dt.getDate()}/${dt.getMonth()} ${("0" + dt.getHours()).slice(-2)}:${("0" + dt.getMinutes()).slice(-2)} ${weather.weather[0].description}
-            <img src="http://openweathermap.org/img/wn/${weather.weather[0].icon}.png" alt="Weather representation"><br>`
+            <img src="https://openweathermap.org/img/wn/${weather.weather[0].icon}.png" alt="Weather representation"><br>`
         })
     }))
     .catch((err) => {
