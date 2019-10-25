@@ -5,7 +5,7 @@
 This week's project is to build a simple weather web app that tells today's weather and temperature, and a weekly forecast using a weather API.
 The web app, before stretch goals should look something along the lines of this:
 
-![Design](https://github.com/Technigo/project-wheater-dash/blob/master/weather-dash-01.png)
+![Design](https://github.com/Technigo/project-wheater-dash/blob/master/wireframe_weather.png)
 
 We've asked a couple of different designer to do their take on this project. if you're not a designer yourself feel free to use their designs or simply be inspired of their solutions. It's also a great practice in implement someone elses design. You will find their suggestions in the design folder in the repo with some design assets.
 
