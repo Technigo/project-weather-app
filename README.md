@@ -225,7 +225,7 @@ Once you get the data onto your site, style it to look like ine of the provided 
 
 ## How to get help 🆘
 
-Ask for help and share your knowledge about this project with the 'weather-dashboard' tag on [Stack Overflow](https://stackoverflow.com/c/technigo/questions). Talk to your team on Slack and help each other out. Do some research about your problem, you are surely not the first one with this problem, Google is your friend 🙂. And you can of course also reach out to your teachers.
+Ask for help and share your knowledge about this project with the 'weather-app' tag on [Stack Overflow](https://stackoverflow.com/c/technigo/questions). Talk to your team on Slack and help each other out. Do some research about your problem, you are surely not the first one with this problem, Google is your friend 🙂. And you can of course also book a tech call. 
 
 ## Stretch Goals 🏃‍♂
 
