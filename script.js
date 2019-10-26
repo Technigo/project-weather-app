@@ -19,6 +19,7 @@ const getWeather = () => {
     if (document.getElementById('location').value === '') {
         alert('Please type in a city.')
     } else {
+        city = document.getElementById('location').value
         refreshWeather()
     }
 }
