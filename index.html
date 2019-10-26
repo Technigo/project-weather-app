@@ -12,7 +12,12 @@
 
 <body>
     <div class="main">
-        <div class="header"></div>
+        <div class="header">
+            <form action="javascript:getWeather()">
+                <input type="text" placeholder="Type your city." id="location">
+                <button type="submit" id="fetch-weather">Search</button>
+            </form>
+        </div>
         <h1 id="city"></h1>
         <div class="weather-data">
             <div class="current">
