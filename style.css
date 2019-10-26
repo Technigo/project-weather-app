@@ -38,6 +38,7 @@ input[Type='text'] {
     font-size: 20px;
     height: 26px;
     border: none;
+    border-radius: 2px;
 }
 
 button {
@@ -49,6 +50,7 @@ button {
     border: none;
     cursor: pointer;
     transform: rotate(180deg);
+    border-radius: 2px;
 }
 
 .main {
@@ -79,6 +81,7 @@ h1 {
 .current img {
     flex-basis: 50%;
     width: 50%;
+    display: none;
 }
 
 .summary {
