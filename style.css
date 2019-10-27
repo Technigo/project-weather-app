@@ -37,6 +37,7 @@ h2 {
 #wrapper {
     margin: 0;
     display: flex;
+    flex-direction: column;
     width: 100%;
     height: 100%;
     justify-content: center;
@@ -44,6 +45,18 @@ h2 {
 }
 
 #container {
+    width: 500px;
+    margin-top: 30px;
+    border-radius: 20px;
+    border: 1px solid white;
+    padding: 20px;
+    /* height: 600px; */
+    box-shadow: inset 150px 150px 100px rgba(0, 0, 0, .3);
+    background-color: greenyellow;
+}
+
+#container2 {
+    width: 500px;
     margin-top: 30px;
     border-radius: 20px;
     border: 1px solid white;
