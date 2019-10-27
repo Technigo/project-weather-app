@@ -8,6 +8,22 @@ body {
   margin: 0;
 }
 
+h2 {
+  font-size: 30px;
+  margin: 0;
+  font-weight: 100;
+}
+
+h1 {
+  font-size: 38px;
+  margin: 0;
+  font-weight: 100;
+}
+
+h3 {
+  margin-bottom: 5px;
+}
+
 a {
   color: #000;
   text-decoration: none;
@@ -53,7 +69,8 @@ a {
 .main-bottom {
   width: 100%;
   min-height: 250px;
-  background: #eff5f3;
+  background: ##f0f0f0;
+  padding: 10px;
 }
 
 .main-forecast {
@@ -62,7 +79,7 @@ a {
   flex-direction: row;
   justify-content: space-between;
   /* margin: 10px 0 10px 0; */
-  padding: 10px;
+  /* padding: 10px; */
   line-height: 2.5;
 }
 
@@ -74,6 +91,6 @@ footer {
   padding: 20px 0 20px 0;
   text-align: center;
   font-size: 12px;
-  background: #eff5f3;
+  background: ##f0f0f0;
   height: 100px;
 }
