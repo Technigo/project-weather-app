@@ -1,7 +1,9 @@
 const myWeather = document.getElementById('container')
 const myWeather2 = document.getElementById('container2')
+const myWeather3 = document.getElementById('container3')
+const myWeather4 = document.getElementById('container4')
 
-fetch('https://api.openweathermap.org/data/2.5/weather?q=Sóller&APPID=0873dd387b81dc473ae107f675063248')
+fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm&APPID=0873dd387b81dc473ae107f675063248')
     .then((response) => {
         return response.json()
     })
@@ -36,18 +38,22 @@ let sunset = new Date(unixTimestamp2 * 1000)
 
 
 
-fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&cnt=5&APPID=0873dd387b81dc473ae107f675063248')
+fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&cnt=30&&APPID=0873dd387b81dc473ae107f675063248')
     .then((response) => {
         return response.json()
     })
 
     .then((json) => {
 
+       
 
-        myWeather2.innerHTML += `<h2>Temp min ${json.list[3].main.temp_min}</h2>`
+        myWeather2.innerHTML += `<h2>Monday: Temp min: ${json.list[3].main.temp_min} <br>Temp max: ${json.list[7].main.temp_max}</h2>`
 
-        myWeather2.innerHTML += `<h2>Temp max ${json.list[3].main.temp_max}</h2>`
+        myWeather3.innerHTML += `<h2>Tuesday: Temp min: ${json.list[11].main.temp_min} <br>Temp max: ${json.list[15].main.temp_max}</h2>`
+      
+        myWeather4.innerHTML += `<h2>Wednesday: Temp min: ${json.list[19].main.temp_min} <br>Temp max: ${json.list[23].main.temp_max}</h2>`
 
+       
         //const unixTimestampMon = 1572220800
 
         //let myDate = new Date(unixTimestampD * 1000)
