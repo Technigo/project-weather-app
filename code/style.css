@@ -3,29 +3,57 @@
 }
 
 body {
-  background: lightgray;
+  background: #fff;
+  font-family: 'Open Sans Condensed', sans-serif;
 }
 .main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80%;
+  width: 95%;
   max-width: 1000px;
-}
-.main-city {
-  text-align: center;
   padding: 10px;
+}
+.main-top {
+  width: 100%;
+  text-align: center;
   font-size: 25px;
+  background-image: url();
 }
 
 .main-today {
+  width: 90%;
   margin: 10px 0 10px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.today-first {
+ display: flex;
+ flex-direction: column;
+}
+.today-second {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.main-bottom {
+  width: 100%;
 }
 
 .main-forecast {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   margin: 10px 0 10px 0;
 }
 
 .forecasts {
   margin: 10px 0 10px 0;
+}
+
+footer {
+  text-align: center;
+  font-size: 10px;
 }

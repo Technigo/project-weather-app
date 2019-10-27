@@ -6,31 +6,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap" rel="stylesheet">
   <title>Project 6: Weather app</title>
 </head>
 
 <body>
   <section class="main">
-    <div class="main-city" id="city"></div>
+    <section class="main-top">
 
-    <section class="main-today">
-      <h2>Todays weather</h2>
-      <div class="today" id="temp"></div>
-      <div class="today" id="weather"></div>
-      <div class="today" id="sunrise"></div>
-      <div class="today" id="sunset"></div>
+      <section class="main-today">
+        <div class="today-first">
+          <div class="today" id="city"></div>
+          <div class="today" id="temp"></div>
+          <div class="today" id="weather"></div>
+        </div>
+        <div class="today-second">
+          <div class="today" id="sunrise"></div>
+          <div class="today" id="sunset"></div>
+        </div>
+      </section>
     </section>
 
-    <section class="main-forecast">
-      <h2>Forecast 5 days</h2>
-      <div class="forecasts" id="day1"></div>
-      <div class="forecasts" id="day2"></div>
-      <div class="forecasts" id="day3"></div>
-      <div class="forecasts" id="day4"></div>
-      <div class="forecasts" id="day5"></div>
+    <section class="main-bottom">
+      <section class="main-forecast" id="forecast-five">
+        <div class="forecasts" id="day-date"></div>
+        <div class="forecasts" id="day-weather"></div>
+        <div class="forecasts" id="day-temp"></div>
+      </section>
     </section>
 
   </section>
+
+  <footer>Icons by mikicon from the Noun Project</footer>
 
   <script src="script.js"></script>
 

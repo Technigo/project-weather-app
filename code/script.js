@@ -5,11 +5,11 @@ const theWeather = document.getElementById("weather")
 const theSunrise = document.getElementById("sunrise")
 const theSunset = document.getElementById("sunset")
 
-const theDay1 = document.getElementById("day1")
-const theDay2 = document.getElementById("day2")
-const theDay3 = document.getElementById("day3")
-const theDay4 = document.getElementById("day4")
-const theDay5 = document.getElementById("day5")
+const theForecastFive = document.getElementById("forecast-five")
+const theDayDate = document.getElementById("day-date")
+const theDayWeather = document.getElementById("day-weather")
+const theDayTemp = document.getElementById("day-temp")
+
 
 //Fetch API for Bollnas today
 fetch("http://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&APPID=8322e51e2df230498c7f0d4ce04304d6")
@@ -22,55 +22,54 @@ fetch("http://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&APP
   //Create HTML content with the json content
   .then((json) => {
     theCity.innerHTML = `${json.name}`
-    theTemp.innerHTML = `Temperature: ${json.main.temp} &deg;C`
-    theWeather.innerHTML = `Weather: ${json.weather[0].description}`
-    theSunrise.innerHTML = `Sunrise at: ${sunriseTime}`
-    theSunset.innerHTML = `Sunset at: ${sunsetTime}`
+    theTemp.innerHTML = `${Math.round((json.main.temp) * 10) / 10} &deg;C`
+    theWeather.innerHTML = `${json.weather[0].description}`
+    theSunrise.innerHTML = `<img src=\"assets/noun_sunrise.png\" width=\"50px\""></br>${sunriseTime}`
+    theSunset.innerHTML = `<img src=\"assets/noun_sunset.png\" width=\"50px\""></br>${sunsetTime}`
   })
 
-//Fetch API for Bollnäs forecast 5 days
+//Fetch API for Bollnäs forecast every 3 hours
 fetch("http://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&cnt=5&APPID=8322e51e2df230498c7f0d4ce04304d6")
 
-  //Get tje json from the API
+  //Get the json from the API
   .then((response) => {
     return response.json()
   })
 
   //Create HTML content with the json content
   .then((json) => {
-    theDay1.innerHTML = `Date: ${json.list[0].dt}</br>`
-    theDay1.innerHTML = `Weather: ${json.list[0].weather[0].description}</br>`
-    theDay1.innerHTML += `Max temp: ${json.list[0].temp_max}</br>`
-    theDay1.innerHTML += `Min temp: ${json.list[0].temp_min}`
 
-    theDay2.innerHTML = `Date: ${json.list[1].dt}</br>`
-    theDay2.innerHTML = `Weather: ${json.list[1].weather[0].description}</br>`
-    theDay2.innerHTML += `Max temp: ${json.list[1].temp_max}</br>`
-    theDay2.innerHTML += `Min temp: ${json.list[1].temp_min}`
+    //Loop to go through the 5 forecasts in API
+    json.list.forEach(forecast => {
 
-    theDay3.innerHTML = `Date: ${json.list[2].dt}</br>`
-    theDay3.innerHTML = `Weather: ${json.list[2].weather[0].description}</br>`
-    theDay3.innerHTML += `Max temp: ${json.list[2].temp_max}</br>`
-    theDay3.innerHTML += `Min temp: ${json.list[2].temp_min}`
+      theDayDate.innerHTML += `${forecast.dt_txt}</br>`
+      theDayWeather.innerHTML += `${forecast.weather[0].description}</br>`
+      theDayTemp.innerHTML += `${Math.round((forecast.main.temp_max) * 10) / 10} &deg;C / ${Math.round((forecast.main.temp_min) * 10) / 10} &deg;C</br>`
 
-    theDay4.innerHTML = `Date: ${json.list[3].dt}</br>`
-    theDay4.innerHTML = `Weather: ${json.list[3].weather[0].description}</br>`
-    theDay4.innerHTML += `Max temp: ${json.list[3].temp_max}</br>`
-    theDay4.innerHTML += `Min temp: ${json.list[3].temp_min}`
+    })
 
-    theDay5.innerHTML = `Date: ${json.list[4].dt}</br>`
-    theDay5.innerHTML = `Weather: ${json.list[4].weather[0].description}</br>`
-    theDay5.innerHTML += `Max temp: ${json.list[4].temp_max}</br>`
-    theDay5.innerHTML += `Min temp: ${json.list[4].temp_min}`
   })
 
 
-//To get sunrise/sunset time in hours:minutes
+
+//Declare variable for the time of sunrise/sunset
 const unixTimestampSunrise = 1572156459
 const unixTimestampSunset = 1572188928
-
+//To get sunrise/sunset time in hours:minutes:seconds
 let sunrise = new Date(unixTimestampSunrise * 1000)
 let sunset = new Date(unixTimestampSunset * 1000)
-let sunriseTime = sunrise.toLocaleTimeString();
-let sunsetTime = sunset.toLocaleTimeString();
+//Declare new variable to show only hh:mm
+let sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' });
+let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' });
+
+//Get icons instead of string
+//clear sky
+//few clouds
+//scattered clouds
+//broken clouds
+//shower rain
+//rain
+//thunderstorm
+//snow
+//mist
 
