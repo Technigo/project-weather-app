@@ -6,6 +6,8 @@ body {
     background-color: silver;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Staatliches', cursive;
+    font-weight: 400;
     color: white;
     max-width: 1600px;
 }
@@ -15,7 +17,9 @@ h1 {
     font-weight: 200;
     font-size: 3rem;
     border-radius: 10px;
+    border: 1px solid silver;
     background-color: green;
+    box-shadow: inset 20px 20px 20px rgba(0, 0, 0, .2);
     text-align: center;
 }
 
@@ -24,7 +28,9 @@ h2 {
     font-weight: 100;
     font-size: 2rem;
     border-radius: 10px;
+    border: 1px solid silver;
     background-color: green;
+    box-shadow: inset 20px 20px 20px rgba(0, 0, 0, .2);
     text-align: center;
 }
 
@@ -40,7 +46,9 @@ h2 {
 #container {
     margin-top: 30px;
     border-radius: 20px;
+    border: 1px solid white;
     padding: 20px;
-    height: 600px;
+    /* height: 600px; */
+    box-shadow: inset 150px 150px 100px rgba(0, 0, 0, .3);
     background-color: greenyellow;
 }

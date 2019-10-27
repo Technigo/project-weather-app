@@ -1,6 +1,6 @@
 const myWeather = document.getElementById('container')
 
-fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm&APPID=0873dd387b81dc473ae107f675063248')
+fetch('https://api.openweathermap.org/data/2.5/weather?q=Sóller&APPID=0873dd387b81dc473ae107f675063248')
     .then((response) => {
         return response.json()
     })
@@ -34,3 +34,32 @@ let sunrise = new Date(unixTimestamp * 1000)
 let sunset = new Date(unixTimestamp2 * 1000)
 
 //console.log(`${sunrise.getHours()}:${sunrise.getMinutes()}`)
+
+
+
+
+fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&cnt=5&APPID=0873dd387b81dc473ae107f675063248')
+    .then((response) => {
+        return response.json()
+    })
+
+    .then((json) => {
+
+
+        //console.log(json)
+
+        const unixTimestampD = 1572188400
+
+        let myDate = new Date(unixTimestampD * 1000)
+
+        
+
+//console.log(`${sunrise.getHours()}:${sunrise.getMinutes()}`)
+
+
+        /* myWeather.innerHTML += `<h2>My weather right now in ${myDate.getHours()}  </h2>` */
+
+    
+
+
+    })
