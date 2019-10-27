@@ -4,26 +4,37 @@
 
 body {
   background: #fff;
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: 'Hind Guntur', sans-serif;
+  margin: 0;
 }
+
+a {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 95%;
+  width: 100%;
   max-width: 1000px;
-  padding: 10px;
+  /* padding: 10px; */
 }
 .main-top {
   width: 100%;
   text-align: center;
   font-size: 25px;
-  background-image: url();
+  background-image: url('assets/wallpaper_375x250px.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .main-today {
-  width: 90%;
+  width: 100%;
   margin: 10px 0 10px 0;
+  padding: 15px;
   display: flex;
   flex-direction: column;
 }
@@ -33,6 +44,7 @@ body {
  flex-direction: column;
 }
 .today-second {
+  margin: 5px 0 0 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -40,13 +52,18 @@ body {
 
 .main-bottom {
   width: 100%;
+  min-height: 250px;
+  background: #eff5f3;
 }
 
 .main-forecast {
+  font-size: 14px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 10px 0 10px 0;
+  /* margin: 10px 0 10px 0; */
+  padding: 10px;
+  line-height: 2.5;
 }
 
 .forecasts {
@@ -54,6 +71,9 @@ body {
 }
 
 footer {
+  padding: 20px 0 20px 0;
   text-align: center;
-  font-size: 10px;
+  font-size: 12px;
+  background: #eff5f3;
+  height: 100px;
 }

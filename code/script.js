@@ -24,8 +24,8 @@ fetch("http://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&APP
     theCity.innerHTML = `${json.name}`
     theTemp.innerHTML = `${Math.round((json.main.temp) * 10) / 10} &deg;C`
     theWeather.innerHTML = `${json.weather[0].description}`
-    theSunrise.innerHTML = `<img src=\"assets/noun_sunrise.png\" width=\"50px\""></br>${sunriseTime}`
-    theSunset.innerHTML = `<img src=\"assets/noun_sunset.png\" width=\"50px\""></br>${sunsetTime}`
+    theSunrise.innerHTML = `<img src=\"assets/sunrise.png\" width=\"50px\""></br>${sunriseTime}`
+    theSunset.innerHTML = `<img src=\"assets/sunset.png\" width=\"50px\""></br>${sunsetTime}`
   })
 
 //Fetch API for Bollnäs forecast every 3 hours
@@ -63,6 +63,15 @@ let sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' });
 let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' });
 
 //Get icons instead of string
+
+const getIcons = () => {
+
+  if (forecast.weather[0].description === "clear sky") {
+    theDayWeather.innerHTML = `<img src=\"assets/clear-sky-day.svg\" width=\"20px\""></br>`
+  }
+
+}
+
 //clear sky
 //few clouds
 //scattered clouds
