@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: lightgray;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  max-width: 1000px;
+}
+
+.forecast {
+  background: white;
+  padding: 10px;
+  margin: 10px 0 10px 0;
+  width: 40%;
+}
