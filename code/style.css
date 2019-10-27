@@ -5,7 +5,6 @@
 body {
   background: lightgray;
 }
-
 .main {
   display: flex;
   flex-direction: column;
@@ -13,10 +12,20 @@ body {
   width: 80%;
   max-width: 1000px;
 }
-
-.forecast {
-  background: white;
+.main-city {
+  text-align: center;
   padding: 10px;
+  font-size: 25px;
+}
+
+.main-today {
   margin: 10px 0 10px 0;
-  width: 40%;
+}
+
+.main-forecast {
+  margin: 10px 0 10px 0;
+}
+
+.forecasts {
+  margin: 5px 0 5px 0;
 }
