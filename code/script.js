@@ -39,20 +39,29 @@ fetch("http://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&cn
   //Create HTML content with the json content
   .then((json) => {
     theDay1.innerHTML = `Date: ${json.list[0].dt}</br>`
-    theDay1.innerHTML += `Max temperatur: ${json.list[0].temp_max}</br>`
-    theDay1.innerHTML += `Min temperatur: ${json.list[0].temp_min}`
+    theDay1.innerHTML = `Weather: ${json.list[0].weather[0].description}</br>`
+    theDay1.innerHTML += `Max temp: ${json.list[0].temp_max}</br>`
+    theDay1.innerHTML += `Min temp: ${json.list[0].temp_min}`
+
     theDay2.innerHTML = `Date: ${json.list[1].dt}</br>`
-    theDay2.innerHTML += `Max temperatur: ${json.list[1].temp_max}</br>`
-    theDay2.innerHTML += `Min temperatur: ${json.list[1].temp_min}`
+    theDay2.innerHTML = `Weather: ${json.list[1].weather[0].description}</br>`
+    theDay2.innerHTML += `Max temp: ${json.list[1].temp_max}</br>`
+    theDay2.innerHTML += `Min temp: ${json.list[1].temp_min}`
+
     theDay3.innerHTML = `Date: ${json.list[2].dt}</br>`
-    theDay3.innerHTML += `Max temperatur: ${json.list[2].temp_max}</br>`
-    theDay3.innerHTML += `Min temperatur: ${json.list[2].temp_min}`
+    theDay3.innerHTML = `Weather: ${json.list[2].weather[0].description}</br>`
+    theDay3.innerHTML += `Max temp: ${json.list[2].temp_max}</br>`
+    theDay3.innerHTML += `Min temp: ${json.list[2].temp_min}`
+
     theDay4.innerHTML = `Date: ${json.list[3].dt}</br>`
-    theDay4.innerHTML += `Max temperatur: ${json.list[3].temp_max}</br>`
-    theDay4.innerHTML += `Min temperatur: ${json.list[3].temp_min}`
+    theDay4.innerHTML = `Weather: ${json.list[3].weather[0].description}</br>`
+    theDay4.innerHTML += `Max temp: ${json.list[3].temp_max}</br>`
+    theDay4.innerHTML += `Min temp: ${json.list[3].temp_min}`
+
     theDay5.innerHTML = `Date: ${json.list[4].dt}</br>`
-    theDay5.innerHTML += `Max temperatur: ${json.list[4].temp_max}</br>`
-    theDay5.innerHTML += `Min temperatur: ${json.list[4].temp_min}`
+    theDay5.innerHTML = `Weather: ${json.list[4].weather[0].description}</br>`
+    theDay5.innerHTML += `Max temp: ${json.list[4].temp_max}</br>`
+    theDay5.innerHTML += `Min temp: ${json.list[4].temp_min}`
   })
 
 
