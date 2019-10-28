@@ -47,7 +47,7 @@ const updateUI = data => {
 	// Hide error message and weather details container
 	if (!error.classList.contains('hide')) {
 		error.classList.add('hide');
-		weatherContainer.classList.add('hide');
+		// weatherContainer.classList.add('hide');
 	}
 
 	// Update current weather
@@ -77,7 +77,7 @@ const updateUI = data => {
 		<li>
 			<div>${convertUnixToDay(item.dt)}</div>&nbsp;
 			<div>
-				<img class="icon" src="https://openweathermap.org/img/wn/${
+				<img class="icon" src="http://openweathermap.org/img/wn/${
 					item.weather[0].icon
 				}@2x.png" alt="Weather icon">&nbsp;
 			</div>
