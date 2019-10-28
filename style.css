@@ -1,141 +1,144 @@
 body {
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: lighter;
-    padding: 0px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  font-weight: lighter;
+  padding: 0px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }
 
 .header {
-    background-color: #000000;
-    height: 50px;
-    padding: 0px 5px;
-    margin: 0;  
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  background-color: #000000;
+  height: 50px;
+  padding: 0px 5px;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .hamburguer {
-    display: flex;
-    width: 30px;
-    height: 30px;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-right: 24px;
+  display: flex;
+  width: 30px;
+  height: 30px;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: 24px;
 }
 
 .hamburguer div {
-    width: 30px;
-    height: 5px;
-    background: #fff;
+  width: 30px;
+  height: 5px;
+  background: #fff;
 }
 
-input[Type='text'] {
-    padding: 6px;
-    font-size: 20px;
-    height: 26px;
-    border: none;
-    border-radius: 2px;
+input[Type="text"] {
+  padding: 6px;
+  font-size: 20px;
+  height: 26px;
+  border: none;
+  border-radius: 2px;
 }
 
 button {
-    padding: 6px;   
-    background: #ddd;
-    font-size: 20px;
-    height: 38px;
-    width: 30px;
-    border: none;
-    cursor: pointer;
-    transform: rotate(180deg);
-    border-radius: 2px;
+  padding: 6px;
+  background: #ddd;
+  font-size: 20px;
+  height: 38px;
+  width: 30px;
+  border: none;
+  cursor: pointer;
+  transform: rotate(180deg);
+  border-radius: 2px;
 }
 
 .main {
-    background: salmon;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    overflow: auto;
+  background: salmon;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
 }
 
-h1, .weather-data {
-    padding: 0px 20px;
-    margin-bottom: 40px;
+h1,
+.weather-data {
+  padding: 0px 20px;
+  margin-bottom: 40px;
 }
 
 h1 {
-    font-size: 2.2em;
+  font-size: 2.2em;
 }
 
 .current {
-    display: flex;
-    justify-content: left;
-    align-items: center;    
+  display: flex;
+  justify-content: left;
+  align-items: center;
 }
 
 .current img {
-    flex-basis: 50%;
-    width: 50%;
-    display: none;
+  flex-basis: 50%;
+  width: 50%;
+  display: none;
 }
 
 .summary {
-    flex-basis: 30%;
-    text-align: left;
-    margin: 0;
-    padding: 0;
+  flex-basis: 30%;
+  text-align: left;
+  margin: 0;
+  padding: 0;
 }
 
 .temperature {
-    font-size: 60px;
-    font-weight: bold;
-    margin-bottom: 0px;
-    margin: 0;
-    padding: 0;
+  font-size: 60px;
+  font-weight: bold;
+  margin-bottom: 0px;
+  margin: 0;
+  padding: 0;
 }
 
 .sunrise-sunset {
-    font-size: 1.2em;
-    margin-top: 0px;
-    margin-bottom: 50px;
+  font-size: 1.2em;
+  margin-top: 0px;
+  margin-bottom: 50px;
 }
 
 .main-forecast {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .forecast-info {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .detail {
-    display: none;
+  display: none;
+  opacity: 0.6;
+  font-size: 12px;
 }
 
-.active + .detail{
-    display: inline;
-    height: 40px;
+.active + .detail {
+  display: inline;
+  height: 40px;
 }
 
 @media (min-width: 900px) {
-    .main {
-        width: 50%;
-        position: unset;
-    }
+  .main {
+    width: 50%;
+    position: unset;
+  }
 
-    .current {
-        flex-direction: column;
-    }
+  .current {
+    flex-direction: column;
+  }
 
-    .weather-data {
-        display: flex;
-    }
+  .weather-data {
+    display: flex;
+  }
 }
