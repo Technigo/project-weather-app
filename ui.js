@@ -1,4 +1,4 @@
-const weatherContainer = document.querySelector('.weather-details');
+const weatherContainer = document.querySelector('.weather-app');
 const currentWeather = document.querySelector('.weather-details-current');
 const forecastWeatherList = document.querySelector('#forecast-list');
 const error = document.querySelector('.error');
@@ -20,7 +20,7 @@ const capitalize = s => {
 
 const displayError = err => {
 	if (err) {
-		// weatherContainer.classList.add('hide');
+		weatherContainer.classList.add('hide');
 		error.innerHTML = 'No such city. Please try again.';
 		if (error.classList.contains('hide')) {
 			error.classList.remove('hide');
@@ -41,10 +41,10 @@ const updateCity = async city => {
 const updateUI = data => {
 	const { weather, forecast } = data;
 
-	// Hide error message and weather details container
+	// Hide error message and weather details container if visible
 	if (!error.classList.contains('hide')) {
 		error.classList.add('hide');
-		weatherContainer.classList.add('hide');
+		// weatherContainer.classList.add('hide');
 	}
 
 	// Update current weather
@@ -72,13 +72,13 @@ const updateUI = data => {
 	filteredForecast.forEach(item => {
 		forecastWeatherList.innerHTML += `
 		<li>
-			<div>${convertUnixToDay(item.dt)}</div>&nbsp;
+			<div class="forecast-day">${convertUnixToDay(item.dt)}</div>
 			<div>
 				<img class="icon" src="https://openweathermap.org/img/wn/${
 					item.weather[0].icon
 				}@2x.png" alt="Weather icon">&nbsp;
 			</div>
-			<div>${Math.floor(item.main.temp)} &deg;C</div>
+			<div class="forecast-day">${Math.floor(item.main.temp)} &deg;C</div>
 		</li>`;
 	});
 

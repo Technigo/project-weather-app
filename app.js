@@ -10,7 +10,7 @@ cityForm.addEventListener('submit', e => {
 		.then(data => {
 			updateUI(data);
 
-			// Set city in localStorage
+			// Set city in localStorage if API request was successful
 			localStorage.setItem('city', city);
 		})
 		.catch(err => displayError(err));

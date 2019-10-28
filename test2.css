@@ -35,7 +35,9 @@ body {
 	font-family: 'Roboto', sans-serif;
 	padding: 10px;
 	background: linear-gradient(to bottom, #2980b9, #6dd5fa, #ffffff);
+	/* background: linear-gradient(to bottom, #076585, #fff); */
 	height: 100vh;
+	min-width: 421px;
 }
 
 .weather-app {
@@ -92,7 +94,8 @@ li {
 }
 
 li div {
-	/* border: 1px solid blue; */
+	border: 1px solid blue;
+	/* display: inline; */
 	width: 33%;
 }
 
@@ -113,10 +116,28 @@ li div:nth-of-type(3) {
 }
 
 .error {
-	color: red;
+	color: darkred;
+	font-weight: 600;
 }
 
 .icon {
 	width: 25px;
 	height: 25px;
+}
+
+.forecast-day {
+	font-size: 16px;
+	font-weight: 600;
+}
+
+input[type='text'] {
+	width: 200px;
+	background: rgba(0, 0, 0, 0.4);
+	border: 0;
+	outline: 0;
+	padding: 10px;
+	font-size: 20px;
+	border-radius: 10px;
+	color: white;
+	margin: 10px 10px;
 }
