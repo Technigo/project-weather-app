@@ -1,27 +1,41 @@
-const container = document.getElementById('weathers')
+const container = document.getElementById('todaysinfo')
 
 fetch('http://api.openweathermap.org/data/2.5/weather?q=Miami,%20USA&units=metric&APPID=804400298ac4f45795306a8ea7ab8f5e')
 .then((response) => {
   return response.json()
 })
 .then((json) => {
-  container.innerHTML = `<h1>It is ${Math.round(json.main.temp)} ${json.weather[0].description} in ${json.name} today :-)</h1>`
+  todaysinfo.innerHTML = 
+  `<h1>${json.name} </h1> 
+  <h2>${Math.round(json.main.temp)} Celcius</h2> 
+  <h2>${json.weather[0].description} </h2>
+  <h2>Sunrise at: ${`${json.sys.sunrise}:${json.sys.sunrise}`}</h2>
+  <h2>Sunset at: ${`${json.sys.sunset}:${json.sys.sunset}`}</h2>`
 
   console.log(json)
+ /* .catch(function() {
+    // catch any errors
+  })*/
 
-  /*const container = document.getElementById('suntimes')
+.then((json) => {
+//Declare variable for the time of sunrise/sunset
+const unixTimestampSunrise = json.sys.sunrise
+const unixTimestampSunset = json.sys.sunset
 
-  fetch('http://api.openweathermap.org/data/2.5/weather?q=Miami,%20USA&units=metric&APPID=804400298ac4f45795306a8ea7ab8f5e')
-  .then((response) => {
-    return response.json()
-  })
-  .then((json) => {
-  container.innerHTML = `<h2>Sunrise at: ${`${json.sys.sunrise}:${json.sys.sunrise}`}</h2>`
+//To get sunrise/sunset time in hours:minutes:seconds
+let sunrise = new Date(unixTimestampSunrise * 1000)
+let sunset = new Date(unixTimestampSunset * 1000)
 
-  /*container.innerHTML = `<h2>Sunset at: ${`${sunset.getHours()}:${sunset.getMinutes()}`}</h2>`*/
+//Declare new variable to show only hh:mm
+let sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' })
+let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' })
+
+/*sunriseInfo.innerHTML = `<h2>Sunrise at: ${`${json.sys.sunrise}:${json.sys.sunrise}`}</h2>`
+
+ sunsetInfo.innerHTML = `<h2>Sunset at: ${`${json.sys.sunset}:${json.sys.sunset}`}</h2>`
 
 
-const unixTimestamp = 1572261986
+/*const unixTimestamp = 1572261986
 
 const unixTimestamp2 = 1572302548
 
@@ -30,6 +44,6 @@ let sunrise = new Date(unixTimestamp * 1000)
 let sunset = new Date(unixTimestamp2 * 1000)
 
 /*console.log(`${sunrise.getHours()}:${sunrise.getMinutes()}`)*/
-
+  })
 
 })
