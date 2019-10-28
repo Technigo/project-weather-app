@@ -71,7 +71,7 @@ a {
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-height: 250px;
+  min-height: 280px;
   background: #fff;
   padding: 10px;
 }
