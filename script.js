@@ -9,10 +9,10 @@ window.addEventListener("load", () => {
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
-            long = position.coords.longitude;
+            lon = position.coords.longitude;
             lat = position.coords.latitude;
 
-            const api = `https://api.openweathermap.org/data/2.5/weather?q=Malm%C3%B6&units=metric&APPID=61e9d8d2cf2e655be274549ecb10f14e`;
+            const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=8cbd9193bf1986e2387d169ac2d73a9e`;
 
             fetch(api)
                 .then(response => {
@@ -25,13 +25,16 @@ window.addEventListener("load", () => {
                     const { description } = data.weather[0];
                     const { icon } = data.weather[0];
                     //Set DOM Elemens from the API
-                    temperatureDegree.textContent = temp;
+                    temperatureDegree.textContent = temp.toFixed(1);
                     temperatureDescription.textContent = description;
                     locationTimezone.textContent = name;
                     //Set icon
                     setIcons(icon, document.querySelector(".icon"));
                 });
         });
+    } else {
+        locationTimezone.textContent =
+            "Geolocation is not supported by this browser.";
     }
 
     function setIcons(icon, iconID) {
