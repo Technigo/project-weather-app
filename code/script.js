@@ -12,7 +12,7 @@ const theDayTemp = document.getElementById("day-temp")
 
 
 //Fetch API for Bollnas today
-fetch("http://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&APPID=8322e51e2df230498c7f0d4ce04304d6")
+fetch("https://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&APPID=8322e51e2df230498c7f0d4ce04304d6")
 
   //Get the json from the API
   .then((response) => {
@@ -68,7 +68,7 @@ fetch("http://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&APP
   })
 
 //Fetch API for Bollnäs forecast every 3 hours
-fetch("http://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&cnt=5&APPID=8322e51e2df230498c7f0d4ce04304d6")
+fetch("https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&cnt=5&APPID=8322e51e2df230498c7f0d4ce04304d6")
 
   //Get the json from the API
   .then((response) => {
