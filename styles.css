@@ -1,0 +1,15 @@
+body {
+    height: 100vh;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#weatherApp {
+    padding: 10px 50px;
+    background-color: yellow;
+}
