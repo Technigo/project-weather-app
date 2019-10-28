@@ -4,42 +4,39 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<link rel="stylesheet" href="style.css" />
+		<!-- <link rel="stylesheet" href="style.css" /> -->
+		<link
+			href="https://fonts.googleapis.com/css?family=Roboto:300&display=swap"
+			rel="stylesheet"
+		/>
 		<title>Weather App</title>
 	</head>
 	<body>
-		<div class="weather-container">
-			<div class="weather-search">
-				<h1>Weather App</h1>
-				<form>
-					<label for="city">City</label>
-					<input
-						type="text"
-						name="city"
-						id="city"
-						placeholder="Enter city name"
-					/>
-					<input type="submit" value="Get weather" />
-					<p class="error hide"></p>
-				</form>
-			</div>
+		<div class="weather-app">
 			<div class="weather-details hide">
 				<div class="weather-details-current">
 					<p>Todays weather in:</p>
 					<p>Barcelona</p>
 					<p>37 &#8451; CLEAR</p>
-					<p>Sunset: 20:23</p>
-					<p>Sunrise: 20:24</p>
+					<div>
+						<p>Sunset: 20:23</p>
+						<p>Sunrise: 20:24</p>
+					</div>
+				</div>
+				<div class="weather-search">
+					<form>
+						<input
+							type="text"
+							name="city"
+							id="city"
+							placeholder="Enter city name"
+						/>
+						<input type="submit" value="Get weather" />
+						<p class="error hide"></p>
+					</form>
 				</div>
 				<div class="weather-details-forecast">
-					<ul id="forecast-list">
-						<li><span>mon</span><span>37 &#8451;</span></li>
-						<li><span>tue</span><span>37 &#8451;</span></li>
-						<li><span>wed</span><span>37 &#8451;</span></li>
-						<li><span>thu</span><span>37 &#8451;</span></li>
-						<li><span>fri</span><span>37 &#8451;</span></li>
-						<li><span>sat</span><span>37 &#8451;</span></li>
-					</ul>
+					<ul id="forecast-list"></ul>
 				</div>
 			</div>
 		</div>
