@@ -5,8 +5,9 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Miami,%20USA&units=metri
   return response.json()
 })
 .then((json) => {
-  container.innerHTML = `<h1>It is ${json.main.temp} in ${json.name} today :-)</h1>`
+  container.innerHTML = `<h1>It is ${json.main.temp} ${json.weather[0].description} ${Math.round(json.main.temp)} in ${json.name} today :-)</h1>`
   console.log(json)
+
 
 /*json.base((status) => {
   container.innerHTML += `<p>${status.main}</p>`
