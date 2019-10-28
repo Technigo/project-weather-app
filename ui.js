@@ -41,13 +41,10 @@ const updateCity = async city => {
 const updateUI = data => {
 	const { weather, forecast } = data;
 
-	// Set city in localStorage
-	localStorage.setItem('city', city);
-
 	// Hide error message and weather details container
 	if (!error.classList.contains('hide')) {
 		error.classList.add('hide');
-		// weatherContainer.classList.add('hide');
+		weatherContainer.classList.add('hide');
 	}
 
 	// Update current weather

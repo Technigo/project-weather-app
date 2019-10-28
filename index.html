@@ -12,8 +12,21 @@
 		<title>Weather App</title>
 	</head>
 	<body>
+		<div class="weather-search">
+			<form>
+				<input
+					type="text"
+					name="city"
+					id="city"
+					placeholder="Enter city name"
+				/>
+				<input type="submit" value="Get weather" />
+				<p class="error hide"></p>
+			</form>
+		</div>
 		<div class="weather-app">
-			<div class="weather-details hide">
+			<!-- <div class="weather-details hide"> -->
+			<div class="weather-details">
 				<div class="weather-details-current">
 					<p>Todays weather in:</p>
 					<p>Barcelona</p>
@@ -22,18 +35,6 @@
 						<p>Sunset: 20:23</p>
 						<p>Sunrise: 20:24</p>
 					</div>
-				</div>
-				<div class="weather-search">
-					<form>
-						<input
-							type="text"
-							name="city"
-							id="city"
-							placeholder="Enter city name"
-						/>
-						<input type="submit" value="Get weather" />
-						<p class="error hide"></p>
-					</form>
 				</div>
 				<div class="weather-details-forecast">
 					<ul id="forecast-list"></ul>

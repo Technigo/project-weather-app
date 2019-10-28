@@ -7,12 +7,17 @@ cityForm.addEventListener('submit', e => {
 	cityForm.reset();
 
 	updateCity(city)
-		.then(data => updateUI(data))
+		.then(data => {
+			updateUI(data);
+
+			// Set city in localStorage
+			localStorage.setItem('city', city);
+		})
 		.catch(err => displayError(err));
 });
 
-// if (localStorage.getItem('city')) {
-// 	updateCity(localStorage.getItem('city'))
-// 		.then(data => updateUI(data))
-// 		.catch(err => displayError(err));
-// }
+if (localStorage.getItem('city')) {
+	updateCity(localStorage.getItem('city'))
+		.then(data => updateUI(data))
+		.catch(err => displayError(err));
+}

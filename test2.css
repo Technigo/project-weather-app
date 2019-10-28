@@ -34,13 +34,14 @@ hr {
 body {
 	font-family: 'Roboto', sans-serif;
 	padding: 10px;
+	background: linear-gradient(to bottom, #2980b9, #6dd5fa, #ffffff);
+	height: 100vh;
 }
 
 .weather-app {
 	width: 100%;
-	margin: 0px auto;
+	margin: 20px auto;
 	/* border: 1px solid crimson; */
-	box-shadow: 0 2px 4px 0 rgba(14, 30, 37, 0.12);
 }
 
 .weather-search {
@@ -49,10 +50,11 @@ body {
 }
 
 .weather-details-current {
-	/* background-image: linear-gradient(#8589ff, #e6e7ff); */
-	background: linear-gradient(to bottom, #2980b9, #6dd5fa, #ffffff);
+	box-shadow: 0 2px 4px 0 rgba(14, 30, 37, 0.12);
+	background: rgba(0, 0, 0, 0.4);
 	color: white;
-	padding: 10px 10px 30px 10px;
+	border-radius: 15px;
+	padding: 10px 10px 20px 20px;
 }
 
 .weather-details-current p:nth-of-type(1) {
