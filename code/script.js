@@ -40,21 +40,21 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&AP
 
     //Show icons instead of string for weather
     if (json.weather[0].description === "clear sky") {
-      theWeather.innerHTML = `<img src=\"assets/clear-sky-day.svg\" width=\"70px\""></br>`
+      theWeather.innerHTML = `<img src=\"assets/clear-sky-day.png\" width=\"70px\""></br>`
     } else if (json.weather[0].description === "few clouds") {
-      theWeather.innerHTML = `<img src=\"assets/few-clouds-day.svg\" width=\"70px\""></br>`
+      theWeather.innerHTML = `<img src=\"assets/few-clouds-day.png\" width=\"70px\""></br>`
     } else if (json.weather[0].description === "scattered clouds") {
-      theWeather.innerHTML = `<img src=\"assets/scattered-clouds.svg\" width=\"70px\""></br>`
+      theWeather.innerHTML = `<img src=\"assets/scattered-clouds.png\" width=\"70px\""></br>`
     } else if (json.weather[0].description === "broken clouds") {
-      theWeather.innerHTML = `<img src=\"assets/broken-clouds.svg\" width=\"70px\""></br>`
+      theWeather.innerHTML = `<img src=\"assets/broken-clouds.png\" width=\"70px\""></br>`
     } else if (json.weather[0].description === "shower rain" || json.weather[0].description === "rain") {
-      theWeather.innerHTML = `<img src=\"assets/broken-clouds.svg\" width=\"70px\""></br>`
+      theWeather.innerHTML = `<img src=\"assets/broken-clouds.png\" width=\"70px\""></br>`
     } else if (json.weather[0].description === "thunderstorm") {
-      theWeather.innerHTML = `<img src=\"assets/thunderstorm.svg\" width=\"70px\""></br>`
+      theWeather.innerHTML = `<img src=\"assets/thunderstorm.png\" width=\"70px\""></br>`
     } else if (json.weather[0].description === "snow") {
-      theWeather.innerHTML = `<img src=\"assets/snow.svg\" width=\"70px\""></br>`
+      theWeather.innerHTML = `<img src=\"assets/snow.png\" width=\"70px\""></br>`
     } else if (json.weather[0].description === "mist") {
-      theWeather.innerHTML = `<img src=\"assets/mist.svg\" width=\"70px\""></br>`
+      theWeather.innerHTML = `<img src=\"assets/mist.png\" width=\"70px\""></br>`
     }
 
     // if (json.main.temp >= 15) {
@@ -92,21 +92,21 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&c
       let weatherIcon
 
       if (weatherDay === "clear sky") {
-        weatherIcon = `<img src=\"assets/clear-sky-day.svg\" width=\"20px\""></br>`
+        weatherIcon = `<img src=\"assets/clear-sky-day.png\" width=\"20px\""></br>`
       } else if (weatherDay === "few clouds") {
-        weatherIcon = `<img src=\"assets/few-clouds-day.svg\" width=\"20px\""></br>`
+        weatherIcon = `<img src=\"assets/few-clouds-day.png\" width=\"20px\""></br>`
       } else if (weatherDay === "scattered clouds") {
-        weatherIcon = `<img src=\"assets/scattered-clouds.svg\" width=\"20px\""></br>`
+        weatherIcon = `<img src=\"assets/scattered-clouds.png\" width=\"20px\""></br>`
       } else if (weatherDay === "broken clouds") {
-        weatherIcon = `<img src=\"assets/broken-clouds.svg\" width=\"20px\""></br>`
+        weatherIcon = `<img src=\"assets/broken-clouds.png\" width=\"20px\""></br>`
       } else if (weatherDay === "shower rain" || weatherDay === "rain") {
-        weatherIcon = `<img src=\"assets/broken-clouds.svg\" width=\"20px\""></br>`
+        weatherIcon = `<img src=\"assets/broken-clouds.png\" width=\"20px\""></br>`
       } else if (weatherDay === "thunderstorm") {
-        weatherIcon = `<img src=\"assets/thunderstorm.svg\" width=\"20px\""></br>`
+        weatherIcon = `<img src=\"assets/thunderstorm.png\" width=\"20px\""></br>`
       } else if (weatherDay === "snow") {
-        weatherIcon = `<img src=\"assets/snow.svg\" width=\"20px\""></br>`
+        weatherIcon = `<img src=\"assets/snow.png\" width=\"20px\""></br>`
       } else if (weatherDay === "mist") {
-        weatherIcon = `<img src=\"assets/mist.svg\" width=\"20px\""></br>`
+        weatherIcon = `<img src=\"assets/mist.png\" width=\"20px\""></br>`
       }
 
       theDayDate.innerHTML += `${shortDate}</br>`

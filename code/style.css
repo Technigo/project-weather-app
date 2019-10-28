@@ -21,7 +21,7 @@ h1 {
 }
 
 h3 {
-  font-size: 18px;
+  font-size: 14px;
   margin: 0;
 }
 
@@ -64,7 +64,9 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  color: #fff;
 }
+
 
 .main-bottom {
   display: flex;
@@ -73,6 +75,13 @@ a {
   min-height: 250px;
   background: #fff;
   padding: 10px;
+}
+
+.bottom-headlines {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid #D1D9D4;
 }
 
 .main-forecast {
