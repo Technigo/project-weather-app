@@ -5,7 +5,6 @@ const theWeather = document.getElementById("weather")
 const theSunrise = document.getElementById("sunrise")
 const theSunset = document.getElementById("sunset")
 
-const theForecastFive = document.getElementById("forecast-five")
 const theDayDate = document.getElementById("day-date")
 const theDayWeather = document.getElementById("day-weather")
 const theDayTemp = document.getElementById("day-temp")
@@ -29,9 +28,12 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&AP
     let sunrise = new Date(unixTimestampSunrise * 1000)
     let sunset = new Date(unixTimestampSunset * 1000)
     //Declare new variable to show only hh:mm
-    let sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' });
-    let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' });
+    let sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' })
+    let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' })
+    console.log(sunriseTime)
+    console.log(sunsetTime)
 
+    //THE WEATHER SHOWN IN MAIN-TODAY
     theCity.innerHTML = `<h2>${json.name}</h2>`
     theTemp.innerHTML = `<h1>${json.main.temp.toFixed(1)} &deg;C</h1>`
     theWeather.innerHTML = `${json.weather[0].description}`
@@ -57,13 +59,20 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&AP
       theWeather.innerHTML = `<img src=\"assets/mist.png\" width=\"70px\""></br>`
     }
 
-    // if (json.main.temp >= 15) {
-    //   document.body.style.backgroundColor = 'linear-gradient(rgba(193, 66, 66, 0.2), rgba(193, 66, 66, 0.2))';
-    // } else if (json.main.temp >= 5) {
-    //   document.body.style.backgroundColor = 'linear-gradient(rgba(133, 192, 192, 0.2), rgba(133, 192, 192, 0.2))';
-    // } else if (json.main.temp < 5) {
-    //   document.body.style.backgroundColor = 'linear-gradient(rgba(133, 192, 192, 0.2), rgba(133, 192, 192, 0.2))';
-    // }
+    //Get current time to compare with sunrise & sunset for different bg-img
+    let currentTime = new Date().toLocaleTimeString([], { timeStyle: 'short' })
+    console.log(currentTime)
+    const mainTop = document.getElementById("main-top-bg")
+
+    if (currentTime < sunsetTime && window.innerWidth < 667) {
+      mainTop.style.backgroundImage = "url('assets/mountain-day-small.jpg')"
+    } else if (currentTime < sunsetTime && window.innerWidth > 668) {
+      mainTop.style.backgroundImage = "url('assets/mountain-day.jpg')"
+    } else if (currentTime > sunsetTime && window.innerWidth < 667) {
+      mainTop.style.backgroundImage = "url('assets/mountain-night-small.jpg')"
+    } else if (currentTime > sunsetTime && window.innerWidth > 668) {
+      mainTop.style.backgroundImage = "url('assets/mountain-night.jpg')"
+    }
 
   })
 
@@ -85,7 +94,7 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&c
 
       //To shorten the datestring
       const dateDay = forecast.dt_txt
-      const shortDate = dateDay.substring(0, dateDay.length - 3);
+      const shortDate = dateDay.substring(0, dateDay.length - 3)
 
       //Show icons instead of string for weather
       const weatherDay = forecast.weather[0].description

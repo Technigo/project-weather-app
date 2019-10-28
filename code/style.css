@@ -29,6 +29,7 @@ a {
   color: #000;
   text-decoration: none;
   cursor: pointer;
+  font-size: 10px;
 }
 
 .main {
@@ -36,19 +37,20 @@ a {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 1000px;
 }
 .main-top {
   width: 100%;
   text-align: center;
   font-size: 25px;
-  background-image: linear-gradient(rgba(209, 217, 212, 0.3), rgba(209, 217, 212, 0.3)), url('assets/wallpaper_375x250px.jpg');
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; 
   background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .main-today {
-  width: 100%;
+  width: 95%;
   margin: 10px 0 10px 0;
   padding: 15px;
   display: flex;
@@ -66,11 +68,10 @@ a {
   justify-content: space-between;
 }
 
-
 .main-bottom {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 95%;
   min-height: 280px;
   background: #fff;
   padding: 10px;
@@ -95,10 +96,50 @@ a {
   padding: 10px 0 10px 0;
 }
 
+#day-temp {
+  text-align: right;
+}
+
 footer {
+  display: flex;
+  flex-direction: column;
   padding: 20px 0 20px 0;
   text-align: center;
   font-size: 12px;
   background: #fff;
   height: 100px;
+}
+
+/* MEDIA QUERY TABLET */
+@media (min-width: 667px) and (max-width: 1024px) {  
+ 
+  /* .main-top {
+    background: linear-gradient(rgba(209, 217, 212, 0.3), rgba(209, 217, 212, 0.3)), url('assets/mountain-day.jpg');
+  } */
+
+  .main-today {
+    width: 70%;
+  }
+
+  .main-bottom {
+    width: 70%;
+  }
+
+}
+
+/* MEDIA QUERY DESKTOP */
+@media (min-width: 1024px) {
+  
+  /* .main-top {
+    background: linear-gradient(rgba(209, 217, 212, 0.3), rgba(209, 217, 212, 0.3)), url('assets/mountain-day.jpg');
+  } */
+
+  .main-today {
+    width: 50%;
+  }
+  
+  .main-bottom {
+    width: 50%;
+  }
+
 }
