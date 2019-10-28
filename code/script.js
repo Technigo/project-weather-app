@@ -67,11 +67,11 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&AP
     if (currentTime < sunsetTime && window.innerWidth < 667) {
       mainTop.style.backgroundImage = "url('assets/mountain-day-small.jpg')"
     } else if (currentTime < sunsetTime && window.innerWidth > 668) {
-      mainTop.style.backgroundImage = "url('assets/mountain-day.jpg')"
+      mainTop.style.backgroundImage = "url('assets/mountain-day-big.jpg')"
     } else if (currentTime > sunsetTime && window.innerWidth < 667) {
       mainTop.style.backgroundImage = "url('assets/mountain-night-small.jpg')"
     } else if (currentTime > sunsetTime && window.innerWidth > 668) {
-      mainTop.style.backgroundImage = "url('assets/mountain-night.jpg')"
+      mainTop.style.backgroundImage = "url('assets/mountain-night-big.jpg')"
     }
 
   })
