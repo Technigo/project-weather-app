@@ -74,7 +74,7 @@ const updateUI = data => {
 		<li>
 			<div>${convertUnixToDay(item.dt)}</div>&nbsp;
 			<div>
-				<img class="icon" src="http://openweathermap.org/img/wn/${
+				<img class="icon" src="https://openweathermap.org/img/wn/${
 					item.weather[0].icon
 				}@2x.png" alt="Weather icon">&nbsp;
 			</div>
