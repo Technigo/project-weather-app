@@ -42,7 +42,7 @@ a {
   width: 100%;
   text-align: center;
   font-size: 25px;
-  background-image: url('assets/wallpaper_375x250px.jpg');
+  background-image: linear-gradient(rgba(209, 217, 212, 0.3), rgba(209, 217, 212, 0.3)), url('assets/wallpaper_375x250px.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -64,7 +64,6 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  color: #fff;
 }
 
 
