@@ -21,13 +21,24 @@ fetch("http://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&APP
 
   //Create HTML content with the json content
   .then((json) => {
+
+    //Declare variable for the time of sunrise/sunset
+    const unixTimestampSunrise = json.sys.sunrise
+    const unixTimestampSunset = json.sys.sunset
+    //To get sunrise/sunset time in hours:minutes:seconds
+    let sunrise = new Date(unixTimestampSunrise * 1000)
+    let sunset = new Date(unixTimestampSunset * 1000)
+    //Declare new variable to show only hh:mm
+    let sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' });
+    let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' });
+
     theCity.innerHTML = `<h2>${json.name}</h2>`
     theTemp.innerHTML = `<h1>${json.main.temp.toFixed(1)} &deg;C</h1>`
     theWeather.innerHTML = `${json.weather[0].description}`
     theSunrise.innerHTML = `<img src=\"assets/sunrise.png\" width=\"50px\""></br>${sunriseTime}`
     theSunset.innerHTML = `<img src=\"assets/sunset.png\" width=\"50px\""></br>${sunsetTime}`
 
-
+    //Show icons instead of string for weather
     if (json.weather[0].description === "clear sky") {
       theWeather.innerHTML = `<img src=\"assets/clear-sky-day.svg\" width=\"70px\""></br>`
     } else if (json.weather[0].description === "few clouds") {
@@ -46,6 +57,14 @@ fetch("http://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&APP
       theWeather.innerHTML = `<img src=\"assets/mist.svg\" width=\"70px\""></br>`
     }
 
+    // if (json.main.temp >= 15) {
+    //   document.body.style.backgroundColor = 'linear-gradient(rgba(193, 66, 66, 0.2), rgba(193, 66, 66, 0.2))';
+    // } else if (json.main.temp >= 5) {
+    //   document.body.style.backgroundColor = 'linear-gradient(rgba(133, 192, 192, 0.2), rgba(133, 192, 192, 0.2))';
+    // } else if (json.main.temp < 5) {
+    //   document.body.style.backgroundColor = 'linear-gradient(rgba(133, 192, 192, 0.2), rgba(133, 192, 192, 0.2))';
+    // }
+
   })
 
 //Fetch API for Bollnäs forecast every 3 hours
@@ -59,53 +78,47 @@ fetch("http://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&cn
   //Create HTML content with the json content
   .then((json) => {
 
+
+
     //Loop to go through the 5 forecasts in API
     json.list.forEach(forecast => {
 
-      theDayDate.innerHTML += `${forecast.dt}</br>`
-      theDayWeather.innerHTML += `${forecast.weather[0].description}</br>`
-      // theDayTemp.innerHTML += `${Math.round((forecast.main.temp_max) * 10) / 10} &deg;C / ${Math.round((forecast.main.temp_min) * 10) / 10} &deg;C</br>`
+      //To shorten the datestring
+      const dateDay = forecast.dt_txt
+      const shortDate = dateDay.substring(0, dateDay.length - 3);
+
+      //Show icons instead of string for weather
+      const weatherDay = forecast.weather[0].description
+      let weatherIcon
+
+      if (weatherDay === "clear sky") {
+        weatherIcon = `<img src=\"assets/clear-sky-day.svg\" width=\"20px\""></br>`
+      } else if (weatherDay === "few clouds") {
+        weatherIcon = `<img src=\"assets/few-clouds-day.svg\" width=\"20px\""></br>`
+      } else if (weatherDay === "scattered clouds") {
+        weatherIcon = `<img src=\"assets/scattered-clouds.svg\" width=\"20px\""></br>`
+      } else if (weatherDay === "broken clouds") {
+        weatherIcon = `<img src=\"assets/broken-clouds.svg\" width=\"20px\""></br>`
+      } else if (weatherDay === "shower rain" || weatherDay === "rain") {
+        weatherIcon = `<img src=\"assets/broken-clouds.svg\" width=\"20px\""></br>`
+      } else if (weatherDay === "thunderstorm") {
+        weatherIcon = `<img src=\"assets/thunderstorm.svg\" width=\"20px\""></br>`
+      } else if (weatherDay === "snow") {
+        weatherIcon = `<img src=\"assets/snow.svg\" width=\"20px\""></br>`
+      } else if (weatherDay === "mist") {
+        weatherIcon = `<img src=\"assets/mist.svg\" width=\"20px\""></br>`
+      }
+
+      theDayDate.innerHTML += `${shortDate}</br>`
+      theDayWeather.innerHTML += `${weatherIcon}`
       theDayTemp.innerHTML += `${forecast.main.temp_max.toFixed(1)} &deg;C / ${forecast.main.temp_min.toFixed(1)} &deg;C</br>`
 
     })
-
-    // if (theDayTemp > '15') {
-    //   document.body.style.backgroundColor = '#B0B7c6';
-    // } else {
-    //   document.body.style.backgroundColor = "#ff8d88";
-    // }
-
-
-
 
   })
 
 
 
-//Declare variable for the time of sunrise/sunset
-const unixTimestampSunrise = 1572156459
-const unixTimestampSunset = 1572188928
-//To get sunrise/sunset time in hours:minutes:seconds
-let sunrise = new Date(unixTimestampSunrise * 1000)
-let sunset = new Date(unixTimestampSunset * 1000)
-//Declare new variable to show only hh:mm
-let sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' });
-let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' });
-
-//Get icons instead of string
-
-const getIcons = () => {
 
 
-}
-
-//clear sky
-//few clouds
-//scattered clouds
-//broken clouds
-//shower rain
-//rain
-//thunderstorm
-//snow
-//mist
 
