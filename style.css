@@ -23,7 +23,9 @@ p {
   #city {
     font-size: 2rem;
     margin-top: 2rem;
+    font-weight: 600;
   }
+
   .todaysWeather {
     display: flex;
     justify-content: space-evenly;
@@ -39,6 +41,7 @@ p {
     width: 40%;
     text-align: right;
     font-size: 5.5em;
+    font-weight: 300;
   }
 
   #weatherSummary {
@@ -53,6 +56,7 @@ p {
     margin: 2px 0 10px 0;
     font-size: 5.5em;
   }
+
   .sunUpSunDown {
     display: flex;
     justify-content: space-evenly;
@@ -72,7 +76,7 @@ p {
     width: 80%;
     color: currentColor;
     border-style: solid;
-    border-width: 0.5px;
+    border-width: 0.8px;
   }
 
   .forecast {
@@ -86,10 +90,10 @@ p {
     width: 30%;
     text-align: right;
   }
+
   #temperatureForecast {
     display: flex;
     flex-direction: column;
-    /* width: 40%; */
     text-align: center;
   }
 

@@ -35,8 +35,8 @@ fetch(
     theSunrise.innerHTML += `Sunrise at ${sunriseTime}`
     theSunset.innerHTML += `Sunset at ${sunsetTime}`
 
-    const now = new Date(Date.now())
-    //const now = new Date(Date.now() - 54000000)
+    //const now = new Date(Date.now())
+    const now = new Date(Date.now() - 54000000)
 
     const nightTime = now < sunrise || now > sunset
 
@@ -45,8 +45,8 @@ fetch(
       document.body.style.color = "#c2e2e2"
     }
 
-    const id = json.weather[0].id
-    //const id = 800
+    //const id = json.weather[0].id
+    const id = 801
     if (id >= 200 && id <= 232) {
       theImage.src = "images/lightning.png"
     } else if (id >= 300 && id <= 531) {
@@ -62,11 +62,17 @@ fetch(
         theImage.src = "images/sun.png"
       }
     } else if (id === 801) {
-      //in med if här
-      theImage.src = "images/clouds-sun.png"
+      if (nightTime) {
+        theImage.src = "images/clouds-moon.png"
+      } else {
+        theImage.src = "images/clouds-sun.png"
+      }
     } else if (id === 802) {
-      //in med if här
-      theImage.src = "images/clouds-little sun.png"
+      if (nightTime) {
+        theImage.src = "images/clouds-moon.png"
+      } else {
+        theImage.src = "images/clouds-little sun.png"
+      }
     } else if (id === 803) {
       theImage.src = "images/clouds.png"
     } else if (id === 804) {
