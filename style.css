@@ -6,7 +6,7 @@ body {
 }
 
 @media (max-width: 667px) {
-  #todaysWeather {
+  #container1 {
     margin: auto;
     text-align: center;
   }
@@ -15,7 +15,7 @@ body {
     font-size: 2rem;
     margin-bottom: 0;
   }
-  .container1 {
+  .todaysWeather {
     display: flex;
     justify-content: center;
   }
@@ -35,5 +35,15 @@ body {
 
   p {
     font-size: 1.2em;
+  }
+
+  .forecast {
+    display: flex;
+  }
+
+  #weekdayForecast,
+  #temperatureForecast {
+    display: flex;
+    flex-direction: column;
   }
 }
