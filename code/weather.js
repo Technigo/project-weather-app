@@ -1,6 +1,7 @@
 const theLocation = document.getElementById("location")
 const theTemperature = document.getElementById("temperature")
 const minMax = document.getElementById("todaysMinMax")
+const wind = document.getElementById("todaysWind")
 const theDescription = document.getElementById("description")
 const sunriseTime = document.getElementById("sunrise")
 const sunsetTime = document.getElementById("sunset")
@@ -22,6 +23,7 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         let maxRounded = Math.round(json.main.temp_max * 10) / 10
 
         minMax.innerHTML = `${maxRounded} C° / ${minRounded} C°`
+        todaysWind.innerHTML = `Wind: ${Math.round(json.wind.speed)} m/s`
 
         let sunriseHoursMinutes = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
         let sunsetHoursMinutes = new Date(json.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
