@@ -4,11 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
   <title>What's the weather</title>
 </head>
 <body>
-  <div id="weather">
-    Loading...
+  <div id="weatherNow">
+    <div class="topInfo">
+      <h1 id="city"></h1>
+   
+      <p id="temperature"></p>
+      <p id="description"></p>
+      <p id="sunrise"></p>
+      <p id="sunset"></p>
+  </div>
+
+  </div>
+
+  <div id="weatherFiveDays">
+    <div class="timeContainer">
+      <p id="timeOne"></p>
+      <p id="descriptionOne"></p>
+      <p id="tempOne"></p>
+    </div>
+    <div class="timeContainer">
+      <p id="timeTwo"></p>
+      <p id="descriptionTwo"></p>
+      <p id="tempTwo"></p>
+    </div>
+    <div class="timeContainer">
+      <p id="timeThree"></p>
+      <p id="descriptionThree"></p>
+      <p id="tempThree"></p>
+    </div>
   </div>
   <script src="script.js"></script>
 </body>
