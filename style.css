@@ -1,0 +1,13 @@
+.mainContainer {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background-color: rgb(15, 153, 233);
+}
+.allWeather{
+    border: 2px solid black;
+    height: 500px;
+    margin-top: 50px;
+    background-color: rgb(14, 201, 248);
+
+}
