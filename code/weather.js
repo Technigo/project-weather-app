@@ -13,17 +13,19 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         console.log(json)
         theLocation.innerHTML = json.name
 
+        let sunriseHoursMinutes = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        let sunsetHoursMinutes = new Date(json.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+
+
+
         let temperatureRounded = Math.round(json.main.temp * 10) / 10
         theTemperature.innerHTML = `${temperatureRounded} C°`
-        theDescription.innerHTML = `Today it's ${json.weather.description}`
+        theDescription.innerHTML = `Today it's ${json.weather[0].description}`
         console.log(json.weather)
 
 
-        let time = millisecToHours(json.sys.sunrise)
-        console.log(time)
-
-        sunriseTime.innerHTML = `Sun rises at ${json.sys.sunrise} `
-        sunsetTime.innerHTML = `Sun sets at ${json.sys.sunset}`
+        sunriseTime.innerHTML = `Sun rises at ${sunriseHoursMinutes}`
+        sunsetTime.innerHTML = `Sun sets at ${sunsetHoursMinutes}`
     })
 
 
