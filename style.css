@@ -1,8 +1,17 @@
 body {
   margin: 0;
-  background-color: #bbdfdfe7;
-  font-family: "Open Sans Condensed", sans-serif;
-  color: #242525c1;
+  background-color: #c2e2e2;
+  font-family: "Assistant", sans-serif;
+  color: #242525;
+}
+
+h1,
+h2 {
+  margin: 0;
+}
+
+p {
+  font-size: 1.2em;
 }
 
 @media (max-width: 667px) {
@@ -13,37 +22,81 @@ body {
 
   #city {
     font-size: 2rem;
-    margin-bottom: 0;
+    margin-top: 2rem;
   }
   .todaysWeather {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
   }
 
   #temperature,
-  #weatherSummary,
-  #divider {
-    padding: 0 10px 0 10px;
-    font-size: 4em;
+  #weatherSummary {
     margin-bottom: 15px;
     margin-top: 10px;
   }
 
-  #divider {
-    font-weight: lighter;
+  #temperature {
+    width: 40%;
+    text-align: right;
+    font-size: 5.5em;
   }
 
-  p {
-    font-size: 1.2em;
+  #weatherSummary {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    text-align: left;
+  }
+
+  #divider1 {
+    font-weight: 100;
+    margin: 2px 0 10px 0;
+    font-size: 5.5em;
+  }
+  .sunUpSunDown {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  #sunUp {
+    width: 40%;
+    text-align: right;
+  }
+
+  #sunDown {
+    width: 40%;
+    text-align: left;
+  }
+
+  hr {
+    width: 80%;
+    color: currentColor;
+    border-style: solid;
+    border-width: 0.5px;
   }
 
   .forecast {
     display: flex;
+    justify-content: space-evenly;
   }
 
-  #weekdayForecast,
+  #weekdayForecast {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    text-align: right;
+  }
   #temperatureForecast {
     display: flex;
     flex-direction: column;
+    /* width: 40%; */
+    text-align: center;
+  }
+
+  #weatherForecast {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    text-align: left;
   }
 }

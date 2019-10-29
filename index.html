@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap"
+      href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Assistant:200|Raleway:100&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
@@ -13,18 +13,24 @@
   </head>
   <body>
     <div id="container1">
-      <h2 id="city"></h2>
+      <h1 id="city"></h1>
       <div class="todaysWeather">
-        <h1 id="temperature"></h1>
-        <h1 id="divider">|</h1>
-        <h1 id="weatherSummary"></h1>
+        <h2 id="temperature"></h2>
+        <h2 id="divider1">|</h2>
+        <h2 id="weatherSummary"></h2>
       </div>
-      <img id="weatherImage" src="" height="200" />
-      <p id="sunUpSunDown"></p>
+      <img id="weatherImage" src="" width="250" />
+      <div class="sunUpSunDown">
+        <p id="sunUp"></p>
+        <p id="divider2">|</p>
+        <p id="sunDown"></p>
+      </div>
     </div>
+    <hr />
     <div class="forecast">
       <p id="weekdayForecast"></p>
       <p id="temperatureForecast"></p>
+      <p id="weatherForecast"></p>
     </div>
 
     <script src="weather.js"></script>
