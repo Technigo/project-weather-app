@@ -1,15 +1,4 @@
-//Declare constants for divs in HTML
-const theCity = document.getElementById("city")
-const theTemp = document.getElementById("temp")
-const theWeather = document.getElementById("weather")
-const theSunrise = document.getElementById("sunrise")
-const theSunset = document.getElementById("sunset")
-
-const theDayDate = document.getElementById("day-date")
-const theDayWeather = document.getElementById("day-weather")
-const theDayTemp = document.getElementById("day-temp")
-
-//Fetch API for Bollnas today
+//FETCH API FOR BOLLNAS RIGHT NOW
 fetch("https://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&APPID=8322e51e2df230498c7f0d4ce04304d6")
 
   //Get the json from the API
@@ -20,13 +9,20 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&AP
   //Create HTML content with the json content
   .then((json) => {
 
+    //Declare constants for todays/current weahter
+    const theCity = document.getElementById("city")
+    const theTemp = document.getElementById("temp")
+    const theWeather = document.getElementById("weather")
+    const theSunrise = document.getElementById("sunrise")
+    const theSunset = document.getElementById("sunset")
+
     //Declare variable for the time of sunrise/sunset
     const unixTimestampSunrise = json.sys.sunrise
     const unixTimestampSunset = json.sys.sunset
-    //To get sunrise/sunset time in hours:minutes:seconds
+    //To get sunrise/sunset time in HH:MM:SS
     const sunrise = new Date(unixTimestampSunrise * 1000)
     const sunset = new Date(unixTimestampSunset * 1000)
-    //Declare new variable to show only hh:mm
+    //Declare new variable to show only HH:MM
     const sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' })
     const sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' })
 
@@ -72,7 +68,7 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&AP
 
   })
 
-//Fetch API for Bollnäs forecast every 3 hours
+//FETCH API FOR BOLLNAS EVERY THREE HOURS
 fetch("https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&cnt=5&APPID=8322e51e2df230498c7f0d4ce04304d6")
 
   //Get the json from the API
@@ -83,7 +79,7 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&c
   //Create HTML content with the json content
   .then((json) => {
 
-    //Set index to 1 for creating ids for each forecast-div
+    //Set index for creating id:s for each forecast-div starting at 1
     index = 1
 
     //Loop to go through the 5 forecasts in API
@@ -111,10 +107,6 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&c
         weatherIcon = `<img src=\"assets/mist.png\" width=\"20px\"">`
       }
 
-      //To fix the datestring in the format I want
-      const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-      const date = forecast.dt
-      const realDate = new Date(date * 1000)
 
       //To add a zero if the hour or minute is under 10, getHours() and getMinutes() is passed as arugment later on
       const addZeros = (time) => {
@@ -123,11 +115,15 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&c
         }
         return time
       }
-
+      //To fix the datestring in format DD Mon kl HH:MM
+      const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      const date = forecast.dt
+      const realDate = new Date(date * 1000)
       const shortDate = `${realDate.getDate()} ${months[realDate.getMonth()]} kl ${addZeros(realDate.getHours())}:${addZeros(realDate.getMinutes())}`
 
       const averageTemp = (forecast.main.temp_max + forecast.main.temp_min) / 2
       const forecastFive = document.getElementById("forecast-five")
+
       //Creates a section with separete divs for date, icon, temp
       forecastFive.innerHTML +=
         `<section class="forecast" id="forecast${index}">
@@ -161,16 +157,3 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&c
     document.getElementById("forecast5").onclick = toggle
 
   })
-
-//To add a zero if the hour or minute is under 10, getHours() and getMinutes() is passed as arugment later on
-const addZeros = (time) => {
-  if (time <= 9) {
-    return "0" + time;
-  }
-  return time
-}
-
-const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-const date = 1572393600
-const realDate = new Date(date * 1000)
-const shortDate = `${realDate.getDate()} ${months[realDate.getMonth()]} kl ${addZeros(realDate.getHours())}:${addZeros(realDate.getMinutes())}`
