@@ -15,7 +15,7 @@ fetch(
     container.innerHTML = `<h1>Weather right now in ${json.name}.</h1>`;
     //return json.toFixed(1);
     console.log(json); //first check
-    tempContainer.innerHTML += `<h1>${json.main.temp.toFixed(1)}degrees</h1>`;
+    tempContainer.innerHTML += `<h1>${json.main.temp.toFixed(1)} degrees</h1>`;
     //return json.toFixed(1);
     descriptionContainer.innerHTML += `<h1>${json.weather[0].description}</h1>`;
 
@@ -31,4 +31,35 @@ fetch(
     let sunset = new Date(unixTimestampSunset * 1000);
     let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: "short" });
     sunsetContainer.innerHTML += `<p>Sunset today ${sunsetTime}</p>`;
+  });
+
+const forecastContainer = document.getElementById("forecast");
+const monContainer = document.getElementById("mon");
+const tueContainer = document.getElementById("tue");
+const wedContainer = document.getElementById("wed");
+const thuContainer = document.getElementById("thu");
+const friContainer = document.getElementById("fri");
+
+fetch(
+  "http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=d0398012f9d3d7dc84a0eecbfd46c69a"
+  // "http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&cnt=5&APPID=d0398012f9d3d7dc84a0eecbfd46c69a"
+)
+  .then(response => {
+    return response.json();
+  })
+
+  .then(json => {
+    //forecastContainer.innerHTML = `<h1>Weather right now in ${json.list}.</h1>`;
+    monContainer.innerHTML = `<p>Monday ${json.list[0].main.temp.toFixed(1)}
+    </p>`;
+    tueContainer.innerHTML = `<p>Tuesday ${json.list[8].main.temp.toFixed(1)}
+    </p>`;
+    wedContainer.innerHTML = `<p>Wednsday ${json.list[16].main.temp.toFixed(1)}
+    </p>`;
+    thuContainer.innerHTML = `<p>Thursday ${json.list[24].main.temp.toFixed(1)}
+    </p>`;
+    friContainer.innerHTML = `<p>Friday ${json.list[32].main.temp.toFixed(1)}
+    </p>`;
+
+    console.log(json); //first check
   });
