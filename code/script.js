@@ -103,37 +103,59 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&c
       let weatherIcon
 
       if (weatherDay === "clear sky") {
-        weatherIcon = `<img src=\"assets/clear-sky-day.png\" width=\"20px\""></br>`
+        weatherIcon = `<img src=\"assets/clear-sky-day.png\" width=\"20px\"">`
       } else if (weatherDay === "few clouds") {
-        weatherIcon = `<img src=\"assets/few-clouds-day.png\" width=\"20px\""></br>`
+        weatherIcon = `<img src=\"assets/few-clouds-day.png\" width=\"20px\"">`
       } else if (weatherDay === "scattered clouds" || weatherDay === "overcast clouds") {
-        weatherIcon = `<img src=\"assets/scattered-clouds.png\" width=\"20px\""></br>`
+        weatherIcon = `<img src=\"assets/scattered-clouds.png\" width=\"20px\"">`
       } else if (weatherDay === "broken clouds") {
-        weatherIcon = `<img src=\"assets/broken-clouds.png\" width=\"20px\""></br>`
+        weatherIcon = `<img src=\"assets/broken-clouds.png\" width=\"20px\"">`
       } else if (weatherDay.includes("rain") || weatherDay.includes("drizzle")) {
-        weatherIcon = `<img src=\"assets/broken-clouds.png\" width=\"20px\""></br>`
+        weatherIcon = `<img src=\"assets/broken-clouds.png\" width=\"20px\"">`
       } else if (weatherDay.includes("thunderstorm")) {
-        weatherIcon = `<img src=\"assets/thunderstorm.png\" width=\"20px\""></br>`
+        weatherIcon = `<img src=\"assets/thunderstorm.png\" width=\"20px\"">`
       } else if (weatherDay.includes("snow")) {
-        weatherIcon = `<img src=\"assets/snow.png\" width=\"20px\""></br>`
+        weatherIcon = `<img src=\"assets/snow.png\" width=\"20px\"">`
       } else if (weatherDay === "mist" || weatherDay === "fog") {
-        weatherIcon = `<img src=\"assets/mist.png\" width=\"20px\""></br>`
+        weatherIcon = `<img src=\"assets/mist.png\" width=\"20px\"">`
       }
 
+      const averageTemp = (forecast.main.temp_max + forecast.main.temp_min) / 2
       const forecastFive = document.getElementById("forecast-five")
       //Creates a section with separete divs for date, icon, temp
       forecastFive.innerHTML +=
-        `<section class="forecast" id="section${index}">
+        `<section class="forecast" id="forecast${index}">
         <div class="forecast-date">${shortDate}</div>
         <div class="forecast-icon">${weatherIcon}</div>
-        <div class="forecast-temp">${forecast.main.temp_max.toFixed(1)} &deg;C / ${forecast.main.temp_min.toFixed(1)} &deg;C</div>
+        <div class="forecast-temp">${averageTemp.toFixed(1)} &deg;C</div>
+        </section>
+        
+        <section class="forecast-details">
+        <p>Weather: ${forecast.weather[0].description}</p>
+        <p>Wind: ${forecast.wind.speed.toFixed(0)} m/s</p>
+        <p>Max temperature: ${forecast.main.temp_max.toFixed(1)} &deg;C</p>
+        <p>Min temperature: ${forecast.main.temp_min.toFixed(1)} &deg;C</p>
+
         </section>`
 
       //Index increases for every loop
       index++
     })
 
+    // ACCORDION FOR FORECAST DETAILS
+    // A function that adds and remove the class "active" when you click
+    function toggle() {
+      this.classList.toggle("active")
+    }
+    // Selects an HTML element, and calls a the toggle-function when clicked
+    document.getElementById("forecast1").onclick = toggle
+    document.getElementById("forecast2").onclick = toggle
+    document.getElementById("forecast3").onclick = toggle
+    document.getElementById("forecast4").onclick = toggle
+    document.getElementById("forecast5").onclick = toggle
+
   })
+
 
 
 

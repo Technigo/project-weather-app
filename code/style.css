@@ -86,22 +86,48 @@ a {
 }
 
 .forecast-five {
-  font-size: 14px;
+  font-size: 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  line-height: 3;
 }
 
 .forecast {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding-bottom: 5px;
 }
 
-#day-temp {
+.forecast-temp {
+  min-width: 110px;
   text-align: right;
 }
+
+.forecast-details {
+  line-height: 0.8;
+  font-size: 12px;
+  height: 0px; /*For CSS animation*/
+  opacity: 0; /*For CSS animation*/
+  overflow: hidden; /*For CSS animation*/
+  transition: all 0.8s ease-in-out; /*For CSS animation*/
+}
+
+.active + .forecast-details {
+  opacity: 1;
+  height: 100px;
+}
+
+
+/* Adds a + on the div*/
+/* .forecast::before {
+  content: '+';
+} */
+
+/* Changes to a - if class .active is added */
+/* .forecast.active::before {
+  content: '-';
+} */
 
 footer {
   display: flex;
