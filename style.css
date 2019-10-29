@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  background-color: #bbdfdfe7;
+  font-family: "Open Sans Condensed", sans-serif;
+  color: #242525c1;
+}
+
+@media (max-width: 667px) {
+  #todaysWeather {
+    margin: auto;
+    text-align: center;
+  }
+
+  #city {
+    font-size: 2rem;
+    margin-bottom: 0;
+  }
+  .container1 {
+    display: flex;
+    justify-content: center;
+  }
+
+  #temperature,
+  #weatherSummary,
+  #divider {
+    padding: 0 10px 0 10px;
+    font-size: 4em;
+    margin-bottom: 15px;
+    margin-top: 10px;
+  }
+
+  #divider {
+    font-weight: lighter;
+  }
+
+  p {
+    font-size: 1.2em;
+  }
+}
