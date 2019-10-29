@@ -1,3 +1,6 @@
+
+/********CITY & TODAYS FORECAST*******/
+
 const container = document.getElementById('todaysinfo')
 const sunriseContainer = document.getElementById('sunriseinfo')
 const sunsetContainer = document.getElementById('sunsetinfo')
@@ -15,7 +18,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Miami,%20USA,3166-2US-FL
   
   console.log(json)
 
-
+/*************SUNRISE & SUNSET **********/
   //Declare variable for the time of sunrise/sunset
   const unixTimestampSunrise = json.sys.sunrise
   const unixTimestampSunset = json.sys.sunset
@@ -36,6 +39,8 @@ const wednesdayBox = document.getElementById('wednesdayContainer')
 const thursdayBox = document.getElementById('thursdayContainer')
 const fridayBox = document.getElementById('fridayContainer')
 const saturdayBox = document.getElementById('saturdayContainer')
+
+/*******FORECAST 4 DAYS ********/
 
 fetch('http://api.openweathermap.org/data/2.5/forecast?q=Miami,%20USA&units=metric&APPID=c4ff459e6977fcdff3cc5fa6319866b6')
 .then((response) => {
