@@ -85,6 +85,11 @@ a {
   border-bottom: 1px solid #D1D9D4;
 }
 
+#temp {
+  min-width: 31%;
+  text-align: left;
+}
+
 .forecast-five {
   font-size: 15px;
   display: flex;
@@ -101,7 +106,7 @@ a {
 }
 
 .forecast-temp {
-  min-width: 110px;
+  min-width: 30px;
   text-align: right;
 }
 
@@ -119,16 +124,15 @@ a {
   height: 100px;
 }
 
-
-/* Adds a + on the div*/
-/* .forecast::before {
+/* Adds a + on the div */
+.forecast::after {
   content: '+';
-} */
+} 
 
 /* Changes to a - if class .active is added */
-/* .forecast.active::before {
+ .forecast.active::after {
   content: '-';
-} */
+}
 
 footer {
   display: flex;
