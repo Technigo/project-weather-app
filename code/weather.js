@@ -35,11 +35,17 @@ const day3forecast = document.getElementById("day3temp")
 const day4forecast = document.getElementById("day4temp")
 const day5forecast = document.getElementById("day5temp")
 const day6forecast = document.getElementById("day6temp")
-let day2weekday = document.getElementById("day2")
-let day3weekday = document.getElementById("day3")
-let day4weekday = document.getElementById("day4")
-let day5weekday = document.getElementById("day5")
-let day6weekday = document.getElementById("day6")
+
+const day2weekday = document.getElementById("day2")
+const day3weekday = document.getElementById("day3")
+const day4weekday = document.getElementById("day4")
+const day5weekday = document.getElementById("day5")
+const day6weekday = document.getElementById("day6")
+
+const day2descr = document.getElementById("day2description")
+const day3descr = document.getElementById("day3description")
+const day4descr = document.getElementById("day4description")
+const day5descr = document.getElementById("day5description")
 
 fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=7309e4a5829fafe809df835ad95f18ea")
     .then((response) => {
@@ -51,8 +57,12 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
         day3forecast.innerHTML += ` ${Math.round(json.list[16].main.temp * 10) / 10} C°`
         day4forecast.innerHTML += ` ${Math.round(json.list[24].main.temp * 10) / 10} C°`
         day5forecast.innerHTML += ` ${Math.round(json.list[32].main.temp * 10) / 10} C°`
-        // let minRounded = Math.round(json.main.temp_min * 10) / 10
-        //let maxRounded = Math.round(json.main.temp_max * 10) / 10
+
+        day2descr.innerHTML = `${json.list[8].weather[0].description}`
+        day3descr.innerHTML = `${json.list[16].weather[0].description}`
+        day4descr.innerHTML = `${json.list[24].weather[0].description}`
+        day5descr.innerHTML = `${json.list[32].weather[0].description}`
+
     })
 const findWeekday = () => {
     let weekday = new Date()
