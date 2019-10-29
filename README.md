@@ -1,11 +1,12 @@
 # Build a Weather Web App :sunny:
 
-This week's project is to build a simple weather web app that tells today's weather and temperature, and a weekly forecast using a weather API.
+This week's project is to build a simple weather web app that shows today's weather and temperature, and a 5-day forecast using a weather API.
+
 The web app, before stretch goals should look something along the lines of this:
 
 ![Design](https://github.com/Technigo/project-wheater-dash/blob/master/wireframe_weather.png)
 
-We've asked a couple of different designer to do their take on this project. if you're not a designer yourself feel free to use their designs or simply be inspired of their solutions. It's also a great practice in implement someone elses design. You will find their suggestions in the design folder in the repo with some design assets.
+We've asked a couple of different designers to do their take on this project. If you're not a designer yourself feel free to use their designs or simply be inspired by their solutions. It's also a great practice in implementing someone else's design. You will find their suggestions in the design folder in the repo along with some design assets.
 
 ---
 
@@ -13,9 +14,9 @@ We've asked a couple of different designer to do their take on this project. if 
 
 - What an API is and how to use it
 - Basic JSON
-- How to use fetch() in Javascript
+- How to use `fetch()` in JavaScript
 - How to use promises in JavaScript
-- How to work with the Date() object in JavaScript
+- How to work with the `Date()` object in JavaScript
 
 ## How to get started 💪🏼
 
@@ -95,106 +96,20 @@ You will have to format the date from milliseconds to a readble format.
 
 ### #4 Weather forecast
 
-Show a forecast for the next 5-7 days. With min and max temperature and the description.
-In the openweathermap API there's another endpoint that will give us a forecast of the next seven days.
+Show a forecast for the next 5 days. You can choose how to display the forecast - perhaps you want to show the min and max temperature for each day, or perhaps you want to show the temperature from the middle of the day. Take a look at the api response from the [5 day forecast endpoint](https://openweathermap.org/forecast5) and decide how you'd like to format your data.
 
-http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&cnt=5&APPID=YOUR_API_KEY
+For example, you could use this query to get the next 5 days forecast for Stockholm:
+
+http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=YOUR_API_KEY
 
 Here you can change city and amount of days.
 
 *Parameters:*
 **q** city name and country code divided by comma, use ISO 3166 country codes
 
-**cnt** number of days returned (from 1 to 16)
+Read the [endpoint documentation](https://openweathermap.org/forecast5) for more parameters you can pass.
 
-The response should look something like this, where the list is an array of objects and the objects are the days:
-``` 
-"cod": "200",
-"message": 0,
-"cnt": 5,
-"list": [
-  {
-    "dt": 1571745600,
-    "main": {
-      "temp": 11.9,
-      "temp_min": 9.94,
-      "temp_max": 11.9,
-      "pressure": 1010,
-      "sea_level": 1010,
-      "grnd_level": 1007,
-      "humidity": 73,
-      "temp_kf": 1.96
-    },
-    "weather": [
-      {
-        "id": 804,
-        "main": "Clouds",
-        "description": "overcast clouds",
-        "icon": "04d"
-      }
-    ],
-    "clouds": {
-      "all": 99
-    },
-    "wind": {
-      "speed": 8.12,
-      "deg": 242
-    },
-    "sys": {
-      "pod": "d"
-    },
-    "dt_txt": "2019-10-22 12:00:00"
-  },
-  {
-    "dt": 1571756400,
-    "main": {
-      "temp": 11.48,
-      "temp_min": 10.01,
-      "temp_max": 11.48,
-      "pressure": 1009,
-      "sea_level": 1009,
-      "grnd_level": 1005,
-      "humidity": 73,
-      "temp_kf": 1.47
-    },
-    "weather": [
-      {
-        "id": 804,
-        "main": "Clouds",
-        "description": "overcast clouds",
-        "icon": "04d"
-      }
-    ],
-    "clouds": {
-      "all": 100
-    },
-    "wind": {
-      "speed": 7.13,
-      "deg": 241
-    },
-    "sys": {
-      "pod": "d"
-    },
-    "dt_txt": "2019-10-22 15:00:00"
-  },
-  {...},
-  {...},
-  {...}
-],
-"city": {
-  "id": 2673730,
-  "name": "Stockholm",
-  "coord": {
-    "lat": 59.3251,
-    "lon": 18.0711
-  },
-  "country": "SE",
-  "population": 1000000,
-  "timezone": 7200,
-  "sunrise": 1571722867,
-  "sunset": 1571757785
-}
-```
+If you take the url above (http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=YOUR_API_KEY) and replace `YOUR_API_KEY` with the api key you copied and open the url in the browser, you can take a look at the data. You can install a [JSON formatter](https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa) chrome extension to make it easier to view.
 
 ### #5 Style your weather app 🎨
 
@@ -202,10 +117,10 @@ Once you get the data onto your site, style it to look like ine of the provided 
 
 ## Requirements 🧪
 
-- You should fetch data from the API using fetch() in JavaScript 
+- You should fetch data from the API using `fetch()` in JavaScript 
 - All data in the sketch above should be present and fetched from the API
 - The presentation of the data should be in the specified format. 
-- The page should work on mobile (mobile first!), tablet and desktop (Be responsive)- 
+- The page should work on mobile (mobile first!), tablet and desktop (Be responsive)
 - Code follows Technigo’s code guidelines.
 - Contribute by helping others with this project on Stack Overflow.
 - If selected; demo your solution for your team.
