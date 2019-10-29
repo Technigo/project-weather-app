@@ -89,10 +89,6 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&c
     //Loop to go through the 5 forecasts in API
     json.list.forEach(forecast => {
 
-      //To shorten the datestring
-      const dateDay = forecast.dt_txt
-      const shortDate = dateDay.substring(0, dateDay.length - 3)
-
       //Show icons instead of string for weather - using let for eatherIcon since the conditions assign new values
       const weatherDay = forecast.weather[0].description
       let weatherIcon
@@ -114,6 +110,12 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&c
       } else if (weatherDay === "mist" || weatherDay === "fog") {
         weatherIcon = `<img src=\"assets/mist.png\" width=\"20px\"">`
       }
+
+      //To fix the datestring in the format I want
+      const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      const date = forecast.dt
+      const realDate = new Date(date * 1000)
+      const shortDate = `${realDate.getDate()} ${months[realDate.getMonth()]} kl ${realDate.getHours()}:${realDate.getMinutes()}`
 
       const averageTemp = (forecast.main.temp_max + forecast.main.temp_min) / 2
       const forecastFive = document.getElementById("forecast-five")
@@ -150,10 +152,4 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&c
     document.getElementById("forecast5").onclick = toggle
 
   })
-
-
-
-
-
-
 
