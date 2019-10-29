@@ -128,17 +128,65 @@ h1 {
   height: 40px;
 }
 
-@media (min-width: 900px) {
-  .main {
-    width: 50%;
-    position: unset;
+footer {
+  background-color: #000000;
+}
+
+@media (min-width: 650px) {
+  h1,
+  .weather-data {
+    margin: 50px 0px 0px 50px;
   }
 
-  .current {
-    flex-direction: column;
+  .temperature {
+    font-size: 150px;
+  }
+
+  .summary {
+    font-size: 40px;
+    flex-basis: 50%;
+  }
+
+  .forecast {
+    width: 85%;
+  }
+}
+
+@media (min-width: 900px) {
+  .main {
+    height: 100%;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 65px;
+  }
+
+  .weather-data {
+    margin: 50px 0px 0px 20px;
+    display: flex;
+    justify-content: center;
   }
 
   .weather-data {
     display: flex;
+  }
+
+  .current {
+    flex-basis: 60%;
+  }
+
+  .temperature {
+    font-size: 100px;
+  }
+
+  .sunrise-sunset {
+    width: 200%;
+    margin: 40px 0px 20px 0px;
+  }
+
+  section {
+    flex-basis: 30%;
+    margin: 0px 300px 0px 200px;
   }
 }
