@@ -5,7 +5,7 @@ const sunriseTime = document.getElementById("sunrise")
 const sunsetTime = document.getElementById("sunset")
 
 
-fetch("http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=7309e4a5829fafe809df835ad95f18ea")
+fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=7309e4a5829fafe809df835ad95f18ea")
     .then((response) => {
         return response.json()
     })
