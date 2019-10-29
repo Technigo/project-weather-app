@@ -9,6 +9,11 @@
 			href="https://fonts.googleapis.com/css?family=Roboto:300&display=swap"
 			rel="stylesheet"
 		/>
+		<script defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7Gitmjz0O19z8B9-xB6ByRkCKkpOA5H8&libraries=places"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/moment@2.24.0/min/moment-with-locales.min.js"></script>
+		<script defer src="weather.js"></script>
+		<script defer src="ui.js"></script>
+		<script defer src="app.js"></script>
 		<title>Weather App</title>
 	</head>
 	<body>
@@ -16,11 +21,12 @@
 			<form>
 				<input
 					type="text"
-					name="city"
-					id="city"
-					placeholder="Enter city name"
+					class="city-search"
+					data-city-search
+					placeholder="Enter location"
 				/>
-				<input type="submit" value="Get weather" />
+			</form>
+				<!-- <input type="submit" value="Get weather" /> -->
 				<p class="error hide"></p>
 			</form>
 		</div>
@@ -41,9 +47,5 @@
 				</div>
 			</div>
 		</div>
-		<script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/min/moment-with-locales.min.js"></script>
-		<script src="weather.js"></script>
-		<script src="ui.js"></script>
-		<script src="app.js"></script>
 	</body>
 </html>

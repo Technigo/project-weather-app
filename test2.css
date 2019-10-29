@@ -33,11 +33,11 @@ hr {
 
 body {
 	font-family: 'Roboto', sans-serif;
-	padding: 10px;
-	background: linear-gradient(to bottom, #2980b9, #6dd5fa, #ffffff);
+	padding: 15px;
+	background: linear-gradient(to bottom right, #e65c00, #f9d423);
 	/* background: linear-gradient(to bottom, #076585, #fff); */
-	height: 100vh;
-	min-width: 421px;
+	min-height: 100vh;
+	/* min-width: 421px; */
 }
 
 .weather-app {
@@ -57,6 +57,8 @@ body {
 	color: white;
 	border-radius: 15px;
 	padding: 10px 10px 20px 20px;
+	z-index: -1;
+	position: relative;
 }
 
 .weather-details-current p:nth-of-type(1) {
@@ -82,9 +84,17 @@ body {
 	font-weight: 300;
 }
 
+.weather-details-current img {
+	position: absolute;
+	top: -6px;
+	right: 0;
+	z-index: 1;
+}
+
 ul {
 	list-style-type: none;
 	padding: 20px 20px 0 20px;
+	color: white;
 }
 
 li {
@@ -94,7 +104,7 @@ li {
 }
 
 li div {
-	border: 1px solid blue;
+	/* border: 1px solid blue; */
 	/* display: inline; */
 	width: 33%;
 }
@@ -131,13 +141,32 @@ li div:nth-of-type(3) {
 }
 
 input[type='text'] {
-	width: 200px;
-	background: rgba(0, 0, 0, 0.4);
-	border: 0;
+	width: 100%;
+	background: rgba(255, 255, 255, 0.4);
+	/* border: 1px solid #303030; */
+	border: 0px;
 	outline: 0;
 	padding: 10px;
 	font-size: 20px;
 	border-radius: 10px;
-	color: white;
-	margin: 10px 10px;
+	color: #303030;
+	/* margin: 10px 10px; */
+}
+
+input[type='text']::placeholder {
+	color: #303030;
+}
+
+.pac-item {
+	font-size: 1.4rem;
+	padding: 10px;
+}
+
+.pac-icon {
+	display: none;
+}
+
+.pac-item-query {
+	font-size: 1.4rem;
+	padding-right: 14px;
 }
