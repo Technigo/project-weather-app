@@ -115,7 +115,16 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&c
       const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
       const date = forecast.dt
       const realDate = new Date(date * 1000)
-      const shortDate = `${realDate.getDate()} ${months[realDate.getMonth()]} kl ${realDate.getHours()}:${realDate.getMinutes()}`
+
+      //To add a zero if the hour or minute is under 10, getHours() and getMinutes() is passed as arugment later on
+      const addZeros = (time) => {
+        if (time <= 9) {
+          return "0" + time;
+        }
+        return time
+      }
+
+      const shortDate = `${realDate.getDate()} ${months[realDate.getMonth()]} kl ${addZeros(realDate.getHours())}:${addZeros(realDate.getMinutes())}`
 
       const averageTemp = (forecast.main.temp_max + forecast.main.temp_min) / 2
       const forecastFive = document.getElementById("forecast-five")
@@ -153,3 +162,15 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&c
 
   })
 
+//To add a zero if the hour or minute is under 10, getHours() and getMinutes() is passed as arugment later on
+const addZeros = (time) => {
+  if (time <= 9) {
+    return "0" + time;
+  }
+  return time
+}
+
+const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const date = 1572393600
+const realDate = new Date(date * 1000)
+const shortDate = `${realDate.getDate()} ${months[realDate.getMonth()]} kl ${addZeros(realDate.getHours())}:${addZeros(realDate.getMinutes())}`
