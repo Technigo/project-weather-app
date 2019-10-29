@@ -11,6 +11,10 @@ body {
   background: blue;
   font-family: "Shadows Into Light", cursive;
   color: white;
+  border-radius: 20px;
+  border: 1px solid white;
+  margin: 30 10 10px;
+  padding: 30px;
 }
 
 h1 {

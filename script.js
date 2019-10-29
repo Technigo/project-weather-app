@@ -46,15 +46,27 @@ fetch(
     return response.json();
   })
   .then(json => {
-    forecast.innerHTML = `<p>Wed ${json.list[8].main.temp.toFixed(
+    forecast.innerHTML = `<p>Wed min: ${json.list[5].main.temp_min.toFixed(
       1
-    )}°</p><p>Thu ${json.list[9].main.temp.toFixed(
+    )}° - max: ${json.list[8].main.temp_max.toFixed(1)}° ${
+      json.list[8].weather[0].description
+    }</p><p>Thu min: ${json.list[13].main.temp_min.toFixed(
       1
-    )}°</p><p>Fri ${json.list[10].main.temp.toFixed(
+    )}° - max: ${json.list[16].main.temp_max.toFixed(1)}° ${
+      json.list[16].weather[0].description
+    } </p><p>Fri min: ${json.list[20].main.temp_min.toFixed(
       1
-    )}°</p><p>Sat ${json.list[11].main.temp.toFixed(
+    )}°  - max: ${json.list[23].main.temp_max.toFixed(1)}° ${
+      json.list[23].weather[0].description
+    }</p><p>Sat min: ${json.list[28].main.temp_min.toFixed(
       1
-    )}°</p><p>Sun ${json.list[12].main.temp.toFixed(1)}°</p>`;
+    )}° - max: ${json.list[31].main.temp_max.toFixed(1)}° ${
+      json.list[31].weather[0].description
+    } </p><p>Sun min: ${json.list[36].main.temp_min.toFixed(
+      1
+    )}° - max: ${json.list[39].main.temp_max.toFixed(1)}° ${
+      json.list[39].weather[0].description
+    }</p>`;
 
     const forecastContainer = document.getElementById("forecast");
     console.log(json);
