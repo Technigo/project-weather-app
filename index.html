@@ -10,8 +10,11 @@
 </head>
 
 <body>
+    <header>
+        <h1>Today's weather in:</h1>
+    </header>
     <div class="location">
-        <h1 class="location-timezone">Timezone</h1>
+        <h1 class="location-timezone" id="location-timezone">Timezone</h1>
         <canvas class="icon" width="128" height="128">icon</canvas>
     </div>
     <div class="temperature">
@@ -21,6 +24,11 @@
         </div>
         <div class="temperature-description">Weather description</div>
     </div>
+    <div class="sun-time">
+        <div class="sunset-time">Sunset</div>
+        <div class="sunrise-time">Sunrise</div>
+    </div>
+
     <script src="skycons.js"></script>
     <script src="script.js"></script>
 </body>
