@@ -28,9 +28,13 @@ const displayError = err => {
 	}
 };
 
-const updateCity = async city => {
-	const weather = await getWeather(city);
-	const forecast = await getForecast(city);
+const updateCity = async (longitude, latitude, formattedAddress) => {
+	const weather = await getWeather(longitude, latitude);
+	const forecast = await getForecast(longitude, latitude);
+
+	weather.displayName = formattedAddress;
+	weather.longitude = longitude;
+	weather.latitude = latitude;
 
 	return {
 		weather,
@@ -50,7 +54,8 @@ const updateUI = data => {
 	// Update current weather
 	currentWeather.innerHTML = `
 		<p>${Math.floor(weather.main.temp)} &deg;C</p>
-		<p>${weather.name}</p>
+		<img src="https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png">
+		<p>${weather.name}, ${weather.sys.country}</p>
 		<p>${capitalize(weather.weather[0].description)}</p>
 		<div>
 			<p>Sunrise: ${convertUnixToTime(weather.sys.sunrise)}</p>
