@@ -2,37 +2,78 @@
   box-sizing: border-box;
 }
 
+header {
+  justify-content: space-between;
+}
+
 body {
   height: 100vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: center;
-  background: blue;
+  /*align-items: center;*/
+  background: orchid;
   font-family: "Shadows Into Light", cursive;
   color: white;
-  border-radius: 20px;
+  border-radius: 30px;
   border: 1px solid white;
-  margin: 30 10 10px;
-  padding: 30px;
+  /*margin: 30 30px;*/
+  /*padding: 30px;*/
 }
 
 h1 {
-  font-size: 50px;
+  font-size: 60px;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-left: 40px;
 }
 
 h2 {
+  font-size: 35px;
+  margin-left: 40px;
+  margin-top: 0px;
+}
+
+h3 {
+  font-size: 25px;
+  margin: 0px;
+  margin-left: 250px;
+}
+
+#forecast {
   font-size: 30px;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 10px;
+  margin-top: 60px;
+  margin-bottom: 40px;
 }
+
 p {
   font-size: 30px;
+  padding: 0px;
+  margin: 5px;
+  color: white;
+}
+
+h4 {
+  align-items: center;
+  padding-left: 220px;
+  margin-bottom: 1px;
+}
+/* MOBIL */
+
+@media (min-width: 650px) {
+  header {
+    justify-content: space-between;
+  }
+
+  .body {
+    width: 100%;
+  }
 }
