@@ -38,6 +38,8 @@ a {
   align-items: center;
   width: 100%;
 }
+
+/* TOP SECTION WITH WEATHER NOW */
 .main-top {
   width: 100%;
   text-align: center;
@@ -61,6 +63,7 @@ a {
  display: flex;
  flex-direction: column;
 }
+
 .today-second {
   margin: 5px 0 0 0;
   display: flex;
@@ -68,6 +71,7 @@ a {
   justify-content: space-between;
 }
 
+/* BOTTOM SECTION WITH FORECASTS */
 .main-bottom {
   display: flex;
   flex-direction: column;
@@ -101,7 +105,7 @@ a {
   padding-top: 8px;
 }
 
-/* To adjust headlines over forecast divs*/
+/* To sync headlines and content in forecast divs*/
 #headtime, .forecast-date {
   width: 40%;
 }
@@ -118,8 +122,7 @@ a {
   width: 4%;
 }
 
-
-/* ACCORDION */
+/* Accordion for forecast details */
 .forecast-details {
   line-height: 0.8;
   font-size: 12px;
@@ -134,13 +137,13 @@ a {
   height: 100px;
 }
 
-/* Adds a + on the div */
+/* Adds a + after the div */
 .forecast::after {
   content: '+';
 } 
 
 /* Changes to a - if class .active is added */
- .forecast.active::after {
+.forecast.active::after {
   content: '-';
 }
 
@@ -159,11 +162,11 @@ footer {
 @media (min-width: 667px) and (max-width: 1024px) {  
  
   .main-today {
-    width: 70%;
+    width: 60%;
   }
 
   .main-bottom {
-    width: 70%;
+    width: 60%;
   }
 
 }

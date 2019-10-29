@@ -9,7 +9,6 @@ const theDayDate = document.getElementById("day-date")
 const theDayWeather = document.getElementById("day-weather")
 const theDayTemp = document.getElementById("day-temp")
 
-
 //Fetch API for Bollnas today
 fetch("https://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&APPID=8322e51e2df230498c7f0d4ce04304d6")
 
@@ -30,8 +29,6 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&AP
     //Declare new variable to show only hh:mm
     const sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' })
     const sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' })
-    console.log(sunriseTime)
-    console.log(sunsetTime)
 
     //THE WEATHER SHOWN IN MAIN-TODAY
     theCity.innerHTML = `<h2>${json.name}</h2>`
@@ -61,7 +58,6 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&AP
 
     //Get current time to compare with sunrise & sunset for different bg-img
     const currentTime = new Date().toLocaleTimeString([], { timeStyle: 'short' })
-    console.log(currentTime)
     const mainTop = document.getElementById("main-top-bg")
 
     if (currentTime < sunsetTime && window.innerWidth < 667) {
@@ -99,7 +95,6 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&c
 
       //Show icons instead of string for weather - using let for eatherIcon since the conditions assign new values
       const weatherDay = forecast.weather[0].description
-      console.log(weatherDay)
       let weatherIcon
 
       if (weatherDay === "clear sky") {
