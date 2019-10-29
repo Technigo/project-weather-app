@@ -96,7 +96,8 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-bottom: 5px;
+  /* padding-bottom: 5px; */
+  padding-top: 8px;
 }
 
 .forecast-temp {
