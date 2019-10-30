@@ -1,3 +1,14 @@
-head {
-    background-color: blueviolet;
+body {
+    background-color: lightpink;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+
+.stockholm-container {
+    color: white;
+}
+
+.tokyo-container {
+    color: orangered;
+}
+
+@media (min-width: 650px)
