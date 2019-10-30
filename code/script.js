@@ -66,7 +66,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&AP
   })
 
 //FETCH API FOR BOLLNAS EVERY THREE HOURS IN MAIN-BOTTOM
-fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&cnt=6&APPID=8322e51e2df230498c7f0d4ce04304d6`)
+fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&cnt=10&APPID=8322e51e2df230498c7f0d4ce04304d6`)
 
   //Get the json from the API
   .then((response) => {
@@ -76,57 +76,59 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&c
   //Create HTML content with the json content
   .then((json) => {
 
-    //Set index for creating id:s for each forecast-section starting at 1
+    //Set index for creating id:s for each forecast-section
     index = 1
 
     //Loop to go through the forecasts in API
-    json.list.forEach(forecast => {
+    json.list.forEach((forecast, index) => {
 
-      ////Conditions for showing icons instead of string for weather description - using let for eatherIcon since the conditions assign new values
-      const weatherDay = forecast.weather[0].description
-      let weatherIcon
+      if (index % 2 === 0) {
 
-      if (weatherDay === "clear sky") {
-        weatherIcon = `<img src=\"assets/clear-sky-day.png\" width=\"25px\"">`
-      } else if (weatherDay === "few clouds") {
-        weatherIcon = `<img src=\"assets/few-clouds-day.png\" width=\"25px\"">`
-      } else if (weatherDay === "scattered clouds" || weatherDay === "overcast clouds") {
-        weatherIcon = `<img src=\"assets/scattered-clouds.png\" width=\"25px\"">`
-      } else if (weatherDay === "broken clouds") {
-        weatherIcon = `<img src=\"assets/broken-clouds.png\" width=\"25px\"">`
-      } else if (weatherDay.includes("rain") || weatherDay.includes("drizzle")) {
-        weatherIcon = `<img src=\"assets/broken-clouds.png\" width=\"25px\"">`
-      } else if (weatherDay.includes("thunderstorm")) {
-        weatherIcon = `<img src=\"assets/thunderstorm.png\" width=\"25px\"">`
-      } else if (weatherDay.includes("snow")) {
-        weatherIcon = `<img src=\"assets/snow.png\" width=\"25px\"">`
-      } else if (weatherDay === "mist" || weatherDay === "fog") {
-        weatherIcon = `<img src=\"assets/mist.png\" width=\"25px\"">`
-      }
+        ////Conditions for showing icons instead of string for weather description - using let for eatherIcon since the conditions assign new values
+        const weatherDay = forecast.weather[0].description
+        let weatherIcon
 
-      //To add a zero if the hour or minute is under 10, getHours() and getMinutes() is passed as arugment later on
-      const addZeros = (time) => {
-        if (time <= 9) {
-          return "0" + time;
+        if (weatherDay === "clear sky") {
+          weatherIcon = `<img src=\"assets/clear-sky-day.png\" width=\"25px\"">`
+        } else if (weatherDay === "few clouds") {
+          weatherIcon = `<img src=\"assets/few-clouds-day.png\" width=\"25px\"">`
+        } else if (weatherDay === "scattered clouds" || weatherDay === "overcast clouds") {
+          weatherIcon = `<img src=\"assets/scattered-clouds.png\" width=\"25px\"">`
+        } else if (weatherDay === "broken clouds") {
+          weatherIcon = `<img src=\"assets/broken-clouds.png\" width=\"25px\"">`
+        } else if (weatherDay.includes("rain") || weatherDay.includes("drizzle")) {
+          weatherIcon = `<img src=\"assets/broken-clouds.png\" width=\"25px\"">`
+        } else if (weatherDay.includes("thunderstorm")) {
+          weatherIcon = `<img src=\"assets/thunderstorm.png\" width=\"25px\"">`
+        } else if (weatherDay.includes("snow")) {
+          weatherIcon = `<img src=\"assets/snow.png\" width=\"25px\"">`
+        } else if (weatherDay === "mist" || weatherDay === "fog") {
+          weatherIcon = `<img src=\"assets/mist.png\" width=\"25px\"">`
         }
-        return time
-      }
 
-      //To fix the datestring in format DD Mon kl HH:MM
-      const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-      const date = forecast.dt
-      const realDate = new Date(date * 1000)
-      const shortDate = `${realDate.getDate()} ${months[realDate.getMonth()]} kl ${addZeros(realDate.getUTCHours())}:${addZeros(realDate.getMinutes())}`
+        //To add a zero if the hour or minute is under 10, getHours() and getMinutes() is passed as arugment later on
+        const addZeros = (time) => {
+          if (time <= 9) {
+            return "0" + time;
+          }
+          return time
+        }
 
-      //To get the average temperature for the forecast
-      const averageTemp = (forecast.main.temp_max + forecast.main.temp_min) / 2
+        //To fix the datestring in format DD Mon kl HH:MM
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const date = forecast.dt
+        const realDate = new Date(date * 1000)
+        const shortDate = `${realDate.getDate()} ${months[realDate.getMonth()]} kl ${addZeros(realDate.getUTCHours())}:${addZeros(realDate.getMinutes())}`
 
-      //Declare forecastBottom
-      const forecastBottom = document.getElementById("forecast-bottom")
+        //To get the average temperature for the forecast
+        const averageTemp = (forecast.main.temp_max + forecast.main.temp_min) / 2
 
-      //Creates a section with separete divs for date, icon, temp
-      forecastBottom.innerHTML +=
-        `<section class="forecast" id="forecast${index}">
+        //Declare forecastBottom
+        const forecastBottom = document.getElementById("forecast-bottom")
+
+        //Creates a section with separete divs for date, icon, temp
+        forecastBottom.innerHTML +=
+          `<section class="forecast" id="forecast${index}">
         <div class="forecast-date">${shortDate}</div>
         <div class="forecast-icon">${weatherIcon}</div>
         <div class="forecast-temp">${averageTemp.toFixed(1)} &deg;C</div>
@@ -140,9 +142,9 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&c
 
         </section>`
 
-      //Index increases for every loop
-      index++
-
+        //Index increases for every loop
+        index++
+      }
     })
 
     // ACCORDION FOR FORECAST DETAILS
@@ -152,10 +154,10 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&c
       this.classList.toggle("active")
     }
     // Selects an HTML element, and calls a the toggle-function when clicked
-    document.getElementById("forecast1").onclick = toggle
+    document.getElementById("forecast0").onclick = toggle
     document.getElementById("forecast2").onclick = toggle
-    document.getElementById("forecast3").onclick = toggle
     document.getElementById("forecast4").onclick = toggle
-    document.getElementById("forecast5").onclick = toggle
+    document.getElementById("forecast6").onclick = toggle
+    document.getElementById("forecast8").onclick = toggle
 
   })
