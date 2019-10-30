@@ -2,8 +2,9 @@ const container = document.getElementById("weather")
 const tempContainer = document.getElementById("temp")
 const sunriseContainer = document.getElementById("sunrise")
 const sunsetContainer = document.getElementById("sunset")
-
 const container2 = document.getElementById("days")
+const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+
 fetch("http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=f4893e301384d5deeafa555ccaa61aaa")
 .then((response) => {
 return response.json()
@@ -22,6 +23,7 @@ return response.json()
   const unixTimestampSunset = json.sys.sunset
   let sunset = new Date(unixTimestampSunset * 1000)
   let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' })
+  
   sunriseContainer.innerHTML = `<p>Sunrise ${sunriseTime} </p>`
   sunsetContainer.innerHTML = `<p>Sunset ${sunsetTime} </p>`
  
@@ -33,8 +35,25 @@ return response.json()
 })
 .then((json) =>{
   console.log(json)
-  container2.innerHTML = `<p>Wed: ${json.list[8].main.temp.toFixed(1)} &#176; ${json.list[8].weather[0].description}</p> <p> Thu: ${json.list[16].main.temp.toFixed(1)} &#176; ${json.list[16
-  ].weather[0].description}</p> <p> Fri: ${json.list[24].main.temp.toFixed(1)} &#176; ${json.list[24].weather[0].description}</p> <p> Sat: ${json.list[32].main.temp.toFixed(1)} &#176; ${json.list[32].weather[0].description}</p>` 
+  let buffer = "" 
+  console.log("test")
+  json.list.forEach((element) =>{
+    //console.log(element); 
+    
+    let weatherDate = new Date(element.dt * 1000)
+    console.log(weatherDate.getHours())
+    if (weatherDate.getHours() === 13){
+      buffer += `<p>${dayNames[weatherDate.getDay()]}: ${element.main.temp.toFixed(1)} &#176; ${element.weather[0].description}</p>`
+console.log(dayNames[weatherDate.getDay()])
+    }
+
+
+
+  });
+  container2.innerHTML = buffer
+
+ // container2.innerHTML = `<p>Wed: ${json.list[8].main.temp.toFixed(1)} &#176; ${json.list[8].weather[0].description}</p> <p> Thu: ${json.list[16].main.temp.toFixed(1)} &#176; ${json.list[16
+ // ].weather[0].description}</p> <p> Fri: ${json.list[24].main.temp.toFixed(1)} &#176; ${json.list[24].weather[0].description}</p> <p> Sat: ${json.list[32].main.temp.toFixed(1)} &#176; ${json.list[32].weather[0].description}</p>` 
   
 })
 

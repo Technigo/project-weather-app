@@ -3,8 +3,9 @@
     justify-content: center;
     align-items: center;
     text-align: left;
-    background-color: rgb(15, 153, 233);
+    background-color: white;
     background-image: url(skypicture.jpg);
+    background-size: cover;
     
 }
 .allWeather{
@@ -12,9 +13,10 @@
     height: 350px;
     margin-top: 50px;
     margin-bottom: 50px;
-    background-color: rgb(183, 227, 238);
+    background-color: white;
     padding: 30px;
     text-align: center;
+    
 
 }
 
@@ -22,6 +24,7 @@ h1{
     font-size: 3em;
     margin-top: 0px;
     margin-bottom: 0px;
+    
     
 }
 
