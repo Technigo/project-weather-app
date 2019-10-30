@@ -1,13 +1,15 @@
-body{
-margin: 0;
-color: rgb(63, 82, 82);
-
-
+body {
+  margin: 0;
+  color: rgb(63, 82, 82);
 }
 
-.weather{
+#weather {
+  display: flex;
+}
+
+
+h2{
 display: flex;
 
 
 }
-
