@@ -1,0 +1,5 @@
+.forecast-weekday,
+.forecast-date,
+.temperature {
+  display: block;
+}
