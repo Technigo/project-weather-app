@@ -14,7 +14,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
             container.innerHTML = `<p> The overal weather: ${element.description}. </p>`
         }) */
 
-        // temperature
+        // temperature 
 
         /* const temp = Math.round(+json.main.temp)
         container.innerHTML += `<p> The temperature is ${temp} °C.</p>` */
