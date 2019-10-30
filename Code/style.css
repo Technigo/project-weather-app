@@ -1,3 +1,100 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap");
+* {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+section {
+  padding: 1rem;
+  width: 100%;
+}
+h1 {
+  font-size: 2rem;
+  text-align: center;
+}
+/* Today's forecast */
+.forecast-today {
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.forecast-today::after {
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-top: 40px solid #333;
+  content: "";
+  position: absolute;
+  bottom: -40px;
+}
+.forecast {
+  margin-top: 2rem;
+}
+.city {
+  display: block;
+  font-size: 1.5rem;
+  text-align: center;
+}
+.weather-today {
+  align-items: center;
+  background-color: cornflowerblue;
+  border-radius: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 200px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 200px;
+}
+.forecast-today .temperature {
+  font-size: 5rem;
+}
+.weather-description::first-letter {
+  text-transform: uppercase;
+}
+/* Forecast rest of days */
+.forecast {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.forecast-day {
+  border-bottom: 1px solid cornflowerblue;
+  display: grid;
+  grid-gap: 0.5em;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.forecast .forecast-weekday {
+  grid-column: 1 / span 4;
+  grid-row: 1 / span 1;
+}
+.forecast .forecast-date {
+  grid-column: 1 / span 4;
+  grid-row: 2 / span 1;
+}
+.forecast .temperature {
+  grid-column: 5 / span 4;
+  grid-row: 1 / span 1;
+}
+
+.forecast .weather-description {
+  grid-column: 5 / span 4;
+  grid-row: 2 / span 1;
+}
 .forecast-weekday,
 .forecast-date,
 .temperature {

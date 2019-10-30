@@ -24,7 +24,7 @@ fetch(
     const sunset = new Date(json.city.sunset * 1000);
 
     forecastLocation.innerHTML = location;
-    fourDayForecast.innerHTML = `<h2>Forcast for the next four days</h2>`;
+    fourDayForecast.innerHTML = `<h2>Forecast for the next four days</h2>`;
 
     // Convert the time to a string that displays local time, use timestyle short to display hours and minutes
 
@@ -50,7 +50,7 @@ fetch(
             weatherTemperature = Math.floor(listitem.main.temp);
           });
           weatherDescriptionToday.innerHTML = `${weatherDescription}`;
-          temperatureToday.innerHTML = `${weatherTemperature} &#8451;`;
+          temperatureToday.innerHTML = `${weatherTemperature}&#176;`;
         }
       });
     };
@@ -74,10 +74,10 @@ fetch(
             return (weatherDescription = weatherInformation.description);
           });
 
-          fourDayForecast.innerHTML += `<p><span class="forecast-weekday">${forecastWeekday}</span> <span class="forecast-date">${forecastDate}</span> 
+          fourDayForecast.innerHTML += `<p class="forecast-day"><span class="forecast-weekday">${forecastWeekday}</span> <span class="forecast-date">${forecastDate}</span> 
           <span class="temperature">${Math.floor(
             listitem.main.temp
-          )} &#8451;</span><span class="weather-description">${weatherDescription}</span></p>`;
+          )} &#176;</span><span class="weather-description">${weatherDescription}</span></p>`;
         }
       });
     };

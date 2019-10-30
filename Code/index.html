@@ -9,19 +9,23 @@
   </head>
 
   <body>
-    <div>
-      <h1>Today's weather in <span id="location"></span></h1>
-      <p id="forecastToday">
-        <span id="temperatureToday"></span>
-        <span id="weatherDescriptionToday"></span>
-        <span id="sunriseToday"></span>
-        <span id="sunsetToday"></span>
-      </p>
-    </div>
+    <main>
+      <section id="forecastToday" class="forecast-today">
+        <h1>Today's weather in <span id="location" class="city"></span></h1>
+        <p class="weather-today">
+          <span id="temperatureToday" class="temperature"></span>
+          <span id="weatherDescriptionToday" class="weather-description"></span>
+        </p>
+        <p>
+          <span id="sunriseToday"></span>
+          <span id="sunsetToday"></span>
+        </p>
+      </section>
 
-    <div id="forecast">
-      Loading...
-    </div>
+      <section id="forecast" class="forecast">
+        Loading...
+      </section>
+    </main>
     <script src="./weather.js"></script>
   </body>
 </html>
