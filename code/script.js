@@ -16,12 +16,9 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&AP
     const theSunrise = document.getElementById("sunrise")
     const theSunset = document.getElementById("sunset")
 
-    //Declare variable for the time of sunrise/sunset
-    const unixTimestampSunrise = json.sys.sunrise
-    const unixTimestampSunset = json.sys.sunset
-    //To get sunrise/sunset time in HH:MM:SS
-    const sunrise = new Date(unixTimestampSunrise * 1000)
-    const sunset = new Date(unixTimestampSunset * 1000)
+    //Declare variable for the time of sunrise/sunset in HH:MM:SS
+    const sunrise = new Date(json.sys.sunrise * 1000)
+    const sunset = new Date(json.sys.sunset * 1000)
     //Declare new variable to show only HH:MM
     const sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' })
     const sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' })
@@ -60,9 +57,9 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&AP
       mainTop.style.backgroundImage = "url('assets/mountain-day-small.jpg')"
     } else if (currentTime < sunsetTime && currentTime > sunriseTime && window.matchMedia("(min-width: 668px)").matches) {
       mainTop.style.backgroundImage = "url('assets/mountain-day-big.jpg')"
-    } else if (currentTime > sunsetTime && currentTime < sunriseTime && window.innerWidth <= 667) {
+    } else if (currentTime > sunsetTime && window.matchMedia("(max-width: 667px)").matches) {
       mainTop.style.backgroundImage = "url('assets/mountain-night-small.jpg')"
-    } else if (currentTime > sunsetTime && currentTime < sunriseTime && window.innerWidth >= 668) {
+    } else if (currentTime > sunsetTime && window.matchMedia("(min-width: 668px)").matches) {
       mainTop.style.backgroundImage = "url('assets/mountain-night-big.jpg')"
     }
 
