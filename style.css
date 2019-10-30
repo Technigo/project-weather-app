@@ -1,0 +1,31 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: lighter;
+  margin: -0px;
+}
+
+
+
+header {
+  background-color: lightcoral;
+  padding: 10px;
+  border-bottom-left-radius: 50% 20%;
+  border-bottom-right-radius: 50% 20%
+  
+}
+
+
+.hamburger div{
+  width: 35px;
+  height: 5px;
+  background-color: black;
+  margin: 6px 10px;
+}
+
+.topweather {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 17%;
+}
