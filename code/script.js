@@ -69,7 +69,7 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&AP
   })
 
 //FETCH API FOR BOLLNAS EVERY THREE HOURS
-fetch("https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&cnt=5&APPID=8322e51e2df230498c7f0d4ce04304d6")
+fetch("https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&cnt=6&APPID=8322e51e2df230498c7f0d4ce04304d6")
 
   //Get the json from the API
   .then((response) => {
@@ -118,7 +118,7 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&c
       const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
       const date = forecast.dt
       const realDate = new Date(date * 1000)
-      const shortDate = `${realDate.getDate()} ${months[realDate.getMonth()]} kl ${addZeros(realDate.getHours())}:${addZeros(realDate.getMinutes())}`
+      const shortDate = `${realDate.getDate()} ${months[realDate.getMonth()]} kl ${addZeros(realDate.getUTCHours())}:${addZeros(realDate.getMinutes())}`
 
       const averageTemp = (forecast.main.temp_max + forecast.main.temp_min) / 2
       const forecastFive = document.getElementById("forecast-five")
