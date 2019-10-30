@@ -7,7 +7,10 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     .then((json) => {
         console.log(json)
         container.innerHTML = `<h1>Current weater in ${json.name}</h2>`
-        container.innerHTML += `<p> The temperature is ${json.main.temp}. </p>`
+
+        const temp = Math.round(+json.main.temp)
+
+        container.innerHTML += `<p> The temperature is ${temp}. </p>`
 
         json.weather.forEach((element) => {
             container.innerHTML += `<p> The overal weather: ${element.description}. </p>`
