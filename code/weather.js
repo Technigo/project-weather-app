@@ -16,26 +16,36 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         console.log(json)
         theLocation.innerHTML = json.name
 
+
+        //COLD OR WARM TEXT-SHADOW//
         let temperatureRounded = Math.round(json.main.temp * 10) / 10
         theTemperature.innerHTML = `${temperatureRounded} C°`
-        if (temperatureRounded >= 0) {
-            theTemperature.style.textShadow = "4px 4px 6px firebrick"
+        if (Math.sign(temperatureRounded) === 0 || Math.sign(temperatureRounded) === -1) {
+            theTemperature.style.textShadow = "4px 4px 6px teal"
         }
 
-        theDescription.innerHTML = `Today it's ${json.weather[0].description}`
+        //ICON FOR TODAYS WEATHER//
+        if (json.weather[0].main === "Clouds") {
+            theDescription.src = "icons/windy.png"
+        }
+
         console.log(json.weather)
+
+        //MIN-MAX TEMP OF TODAY//
         let minRounded = Math.round(json.main.temp_min * 10) / 10
         let maxRounded = Math.round(json.main.temp_max * 10) / 10
 
         minMax.innerHTML = `${maxRounded} C° / ${minRounded} C°`
         todaysWind.innerHTML = `${Math.round(json.wind.speed)} m/s`
 
+        //SUNRISE SUNSET//
         let sunriseHoursMinutes = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
         let sunsetHoursMinutes = new Date(json.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
 
         sunriseTime.innerHTML = `Sun rises at ${sunriseHoursMinutes}`
         sunsetTime.innerHTML = `Sun sets at ${sunsetHoursMinutes}`
 
+        //WHICH BACKGROUND-IMG TO SHOW//
         let timeNow = todaysDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
         if (timeNow >= sunriseHoursMinutes && timeNow <= sunsetHoursMinutes) {
             document.getElementById("today").style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(stockholm_day.jpeg)"

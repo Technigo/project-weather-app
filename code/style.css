@@ -16,8 +16,24 @@ body{
     background: rgb(80, 175, 143);
 }
 #temperature{
-    text-shadow: 4px 4px 6px blue;
+    text-shadow: 4px 4px 6px tomato;
 }
+.temp-n-icon{
+    justify-content: center;
+    align-items: center;
+}
+.temp-n-icon h2{
+    display:inline;
+    margin:2px;
+    font-size: 50px;
+}
+.temp-n-icon img{
+    display: inline;
+    height:50px;
+    width:auto;
+
+}
+
 #today{
     display:flex;
     flex-direction: column;
@@ -33,17 +49,13 @@ body{
 h1{
     margin: 0;
 }
-h2{
-margin:0;
-    font-size: 50px;
-}
+
 #todaysMinMax, #todaysWind{
     margin:2px;
     font-size: 14px;
 }
 .winddiv{
     display:flex;
-    justify-content:;
 }
 img{
     width:25px;
@@ -56,10 +68,10 @@ p{
     display:inline;
 }
 hr{
-    border-top: 1px solid navy;
+    border-top: 1px solid t;
     border-bottom: none;
     width: 60px;
-    margin: 0;
+    margin: 0 0 8px 0;
 }
 .forecast{
     padding: 10px;
