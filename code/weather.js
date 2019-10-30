@@ -6,6 +6,7 @@ const theDescription = document.getElementById("description")
 const sunriseTime = document.getElementById("sunrise")
 const sunsetTime = document.getElementById("sunset")
 
+let todaysDate = new Date()
 
 fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=7309e4a5829fafe809df835ad95f18ea")
     .then((response) => {
@@ -17,6 +18,10 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
 
         let temperatureRounded = Math.round(json.main.temp * 10) / 10
         theTemperature.innerHTML = `${temperatureRounded} C°`
+        if (temperatureRounded >= 0) {
+            theTemperature.style.textShadow = "4px 4px 6px firebrick"
+        }
+
         theDescription.innerHTML = `Today it's ${json.weather[0].description}`
         console.log(json.weather)
         let minRounded = Math.round(json.main.temp_min * 10) / 10
@@ -30,6 +35,14 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
 
         sunriseTime.innerHTML = `Sun rises at ${sunriseHoursMinutes}`
         sunsetTime.innerHTML = `Sun sets at ${sunsetHoursMinutes}`
+
+        let timeNow = todaysDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        if (timeNow >= sunriseHoursMinutes && timeNow <= sunsetHoursMinutes) {
+            document.getElementById("today").style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(stockholm_day.jpeg)"
+
+        }
+
+
     })
 
 const tomorrow = document.getElementById("day2temp")
@@ -67,8 +80,7 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
 
     })
 const findWeekday = () => {
-    let weekday = new Date()
-    let numberDay = weekday.getDay()
+    let numberDay = todaysDate.getDay()
 
     if (numberDay === 1) {
         day2weekday.innerHTML = "Tuesday:"
