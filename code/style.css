@@ -1,17 +1,27 @@
 body {
   margin: 0;
   font-family: "Shadows Into Light Two", cursive;
-  font-size: 22px;
   background: rgb(188, 229, 241);
   color: #fff;
 }
 
 h1 {
+  font-size: 60px;
+  font-weight: bolder;
+  margin: 0%;
+}
+
+h2 {
   font-size: 30px;
+  margin: 0%;
+}
+
+h3 {
+  font-size: 20px; 
 }
 
 .container {
-  margin: 50px auto;
+  margin: 20px auto;
   width: 90%;
   background: rgba(195, 213, 224, 0.877);
   width: 90%;
@@ -20,25 +30,36 @@ h1 {
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
+  
 }
 
-.alltheweather {
+.hero-alltheweather {
   width: 450px;
   height: 600px;
-  margin-top: 30px;
+  margin-top: 10px;
   border-radius: 20px;
   border: 1px solid white;
   padding: 20px;
   background-color: rgb(123, 203, 240);
   justify-content: center;
   text-align: center;
+  /* The "linear-gradient" gives a darker feeling to the her image*/
+  /* Image / copied the relative path for the pic */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/Users/theresaulwahn/Desktop/project-weather-app/code/Pictures/Miami.jpg");
+  background-repeat: no-repeat;
+  /* To make the her picture cover the screen */
+  background-size: cover;
+  background-position: center;
+  /* The image change size on all screens */
+  position: relative
 }
 
 footer {
   display: flex;
   align-items: center;
+  padding-bottom: 30px;
   justify-content: center;
-  height: 50px;
+  height: 20px;
   margin: 0px;
   font-size: 0.8em;
 }

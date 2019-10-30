@@ -1,7 +1,7 @@
 
 /********CITY & TODAYS FORECAST*******/
 
-const container = document.getElementById('todaysinfo')
+const todayContainer = document.getElementById('todaysinfo')
 const sunriseContainer = document.getElementById('sunriseinfo')
 const sunsetContainer = document.getElementById('sunsetinfo')
 
@@ -12,9 +12,9 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Miami,%20USA,3166-2US-FL
 })
 .then((json) => {
   todaysinfo.innerHTML = 
-  `<h1>${json.name}</h1> 
-  <h2>${json.main.temp.toFixed(1)} Celcius</h2> 
-  <h2>${json.weather[0].description} </h2>`
+    `<h1>${json.main.temp.toFixed(1)}°</h1> 
+    <h2>${json.name}</h2> 
+    <h2>${json.weather[0].description} </h2>`
   
   console.log(json)
 
@@ -32,8 +32,8 @@ let sunset = new Date(unixTimestampSunset * 1000)
 let sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' })
 let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' })
 
-sunsetContainer.innerHTML = `<h1> Sunset: ${sunsetTime} </h1>`
-sunriseContainer.innerHTML = `<h1> Sunrise: ${sunriseTime} </h1>`
+sunsetContainer.innerHTML = `<h2> Sunset: ${sunsetTime} </h2>`
+sunriseContainer.innerHTML = `<h2> Sunrise: ${sunriseTime} </h2>`
 })
 
 
@@ -49,10 +49,10 @@ fetch('http://api.openweathermap.org/data/2.5/forecast?q=Miami,%20USA&units=metr
   return response.json()
 })
 .then((json) => {
-  wednesdayBox.innerHTML= `<p>Wednesday min:${json.list[15].main.temp_min.toFixed(1)}° - max:${json.list[18].main.temp_max.toFixed(1)}° with ${json.list[18].weather[0].description}</p>`
-  thursdayBox.innerHTML=`<p>Thursday min:${json.list[23].main.temp_min.toFixed(1)}° - max:${json.list[26].main.temp_max.toFixed(1)}° with ${json.list[26].weather[0].description}</p>`
-  fridayBox.innerHTML= `<p>Friday min:${json.list[31].main.temp_min.toFixed(1)}° - max:${json.list[34].main.temp_max.toFixed(1)}° with ${json.list[34].weather[0].description}</p>`
-  saturdayBox.innerHTML= `<p>Saturday min:${json.list[39].main.temp_min.toFixed(1)}° - max:${json.list[38].main.temp_max.toFixed(1)}° with ${json.list[38].weather[0].description}</p>`
+  wednesdayBox.innerHTML= `<h3>Wednesday min:${json.list[15].main.temp_min.toFixed(1)}° - max:${json.list[18].main.temp_max.toFixed(1)}° with ${json.list[18].weather[0].description}</h3>`
+  thursdayBox.innerHTML=`<h3>Thursday min:${json.list[23].main.temp_min.toFixed(1)}° - max:${json.list[26].main.temp_max.toFixed(1)}° with ${json.list[26].weather[0].description}</h3>`
+  fridayBox.innerHTML= `<h3>Friday min:${json.list[31].main.temp_min.toFixed(1)}° - max:${json.list[34].main.temp_max.toFixed(1)}° with ${json.list[34].weather[0].description}</h3>`
+  saturdayBox.innerHTML= `<h3>Saturday min:${json.list[39].main.temp_min.toFixed(1)}° - max:${json.list[38].main.temp_max.toFixed(1)}° with ${json.list[38].weather[0].description}</h3>`
   
 
    console.log(json)
