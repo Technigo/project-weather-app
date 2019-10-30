@@ -19,24 +19,8 @@ searchBox.addListener('places_changed', () => {
 			localStorage.setItem('latitude', data.weather.latitude);
 			localStorage.setItem('place', data.weather.displayName);
 		})
-		.catch(err => displayError(err));
+		.catch(err => console.log(err));
 });
-
-// cityForm.addEventListener('submit', e => {
-// 	e.preventDefault();
-
-// 	const city = cityForm.city.value.trim();
-// 	cityForm.reset();
-
-// 	updateCity(city)
-// 		.then(data => {
-// 			updateUI(data);
-
-// 			// Set city in localStorage if API request was successful
-// 			localStorage.setItem('city', city);
-// 		})
-// 		.catch(err => displayError(err));
-// });
 
 if (
 	localStorage.getItem('longitude') &&
@@ -49,5 +33,5 @@ if (
 		localStorage.getItem('place')
 	)
 		.then(data => updateUI(data))
-		.catch(err => displayError(err));
+		.catch(err => console.log(err));
 }
