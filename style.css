@@ -4,11 +4,25 @@ body {
 }
 
 .stockholm-container {
-    color: white;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.stockholm-container img {
+    width: 50%;
+    align-items: center;
+}
+
+.tokyo-container img {
+    width: 50%;
+    align-items: center;
 }
 
 .tokyo-container {
-    color: orangered;
+    padding: 15px;
+    width: 100%;
+    text-align: center;
 }
 
 @media (min-width: 650px)
