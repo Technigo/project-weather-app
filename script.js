@@ -13,7 +13,7 @@ fetch(
     weathers.innerHTML = `<h1> ${json.name} </h1>`;
     description.innerHTML = `<h2> Today ${json.main.temp.toFixed(1)}°c ${
       json.weather[0].description
-    }</h2>`;
+      }</h2>`;
 
     const unixTimestampSunrise = json.sys.sunrise;
     let sunrise = new Date(unixTimestampSunrise * 1000);
@@ -36,32 +36,36 @@ fetch(
     return response.json();
   })
   .then(json => {
-    forecast.innerHTML = `<p>WED    ${json.list[5].main.temp_min.toFixed(
+    forecast.innerHTML = `<p>WED   ${json.list[5].main.temp_min.toFixed(
       1
     )}°  /  ${json.list[8].main.temp_max.toFixed(1)}°C ${
       json.list[8].weather[0].description
-    }</p><p>THU    ${json.list[13].main.temp_min.toFixed(
-      1
-    )}°  /  ${json.list[16].main.temp_max.toFixed(1)}°C ${
+      }</p><br><p>THU    ${json.list[13].main.temp_min.toFixed(
+        1
+      )}°  /  ${json.list[16].main.temp_max.toFixed(1)}°C ${
       json.list[16].weather[0].description
-    } </p><p>FRI   ${json.list[20].main.temp_min.toFixed(
-      1
-    )}°  /  ${json.list[23].main.temp_max.toFixed(1)}°C ${
+      } </p><br><p>FRI   ${json.list[20].main.temp_min.toFixed(
+        1
+      )}°  /  ${json.list[23].main.temp_max.toFixed(1)}°C ${
       json.list[23].weather[0].description
-    }</p><p>SAT    ${json.list[26].main.temp_min.toFixed(
-      1
-    )}°  /  ${json.list[29].main.temp_max.toFixed(1)}°C ${
+      }</p><br><p>SAT   ${json.list[26].main.temp_min.toFixed(
+        1
+      )}°  /  ${json.list[29].main.temp_max.toFixed(1)}°C ${
       json.list[28].weather[0].description
-    } </p><p>SUN   ${json.list[34].main.temp_min.toFixed(
-      1
-    )}°  /  ${json.list[37].main.temp_max.toFixed(1)}°C ${
+      } </p><br><p>SUN  ${json.list[34].main.temp_min.toFixed(
+        1
+      )}°  /  ${json.list[37].main.temp_max.toFixed(1)}°C ${
       json.list[36].weather[0].description
-    }</p>`;
+      }</p>`;
 
     const forecastContainer = document.getElementById("forecast");
     console.log(json);
   });
 
+let weatherIcon = document.getElementById('documentIconImg');
+
+weatherIcon.src = 'http://openweathermap.org/img/wn/' + json.main.weather[0].icon + '.png';
+description.innerText = resultDescription.CharAt(0).toUpperCase() + resultDescription.slice(1);
 //.catch(err => {
 //console.log("caught error", err);
 //});

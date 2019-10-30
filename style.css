@@ -2,56 +2,86 @@
   box-sizing: border-box;
 }
 
-header {
+/*header {
   justify-content: space-between;
+}*/
+/*header {
+  width: 100%;
+  height: 50%;
+  margin-bottom: 30px;
+  margin-top: 80px;
+  margin-left: 30px;
+  background-color: yellow;
 }
 
+/*img {
+  width: 80px;
+  height: 65px;
+}*/
+/*body,
+html {
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+}*/
+
 body {
-  height: 100vh;
+  /*height: 100vh;*/
   display: flex;
   justify-content: center;
   flex-direction: column;
   /*align-items: center;*/
-  background: orchid;
+  background: blue;
   font-family: "Shadows Into Light", cursive;
   color: white;
-  border-radius: 30px;
-  border: 1px solid white;
-  /*margin: 30 30px;*/
-  /*padding: 30px;*/
+  border: 1px solid lightblue;
+  margin: 30 30px;
+  padding: 30px;
+  padding-top: 70px;
+  padding-left: 40px;
 }
 
 h1 {
-  font-size: 60px;
+  font-size: 65px;
   display: flex;
   justify-content: left;
   flex-direction: column;
   align-items: flex-start;
   margin-bottom: 10px;
   margin-top: 20px;
-  margin-left: 40px;
+  margin-left: 5px;
 }
 
+/* TODAYS WEATHER */
 h2 {
-  font-size: 35px;
-  margin-left: 40px;
+  font-size: 40px;
+  margin-left: 5px;
   margin-top: 0px;
+  /*background-color: red;*/
 }
 
+/* SUNRISE /SUNSET */
 h3 {
-  font-size: 25px;
+  font-size: 35px;
   margin: 0px;
-  margin-left: 250px;
+  margin-left: 5px;
+  padding-left: 10px;
+ 
 }
 
 #forecast {
   font-size: 30px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   flex-direction: column;
   align-items: center;
-  margin-top: 60px;
-  margin-bottom: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 30px;
+  /*background-color: orangered;*/
+  
 }
 
 p {
@@ -62,9 +92,10 @@ p {
 }
 
 h4 {
-  align-items: center;
-  padding-left: 220px;
-  margin-bottom: 1px;
+  align-items: baseline;
+  padding-left: 170px;
+  /*margin-top: 60px;*/
+  padding-bottom: 1px;
 }
 /* MOBIL */
 
