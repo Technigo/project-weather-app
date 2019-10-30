@@ -5,6 +5,13 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+.weatherTop {
+ background: url(/assets/images-clouds.png);
+ background-size: cover;
+ border-radius: 30px;
+
+}
+
 #weatherFiveDays {
   width: 100%;
   padding-top: 50px;
@@ -15,7 +22,11 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-content: center;
-
+  background: white;
+  margin-bottom: 2%;
+  margin-right: 4%;
+  margin-left: 4%;
+  border-radius: 20px;
 }
 
 
@@ -26,18 +37,12 @@ p, h1 {
   justify-content: center;
 }
 
-.weatherTop {
- 
- 
-}
+
 
 .sunTimes {
   display: flex;
   width: 100%;
-  flex-direction: row;
-  justify-content: center;
-  align-content: center;
-  
+
 }
   
 
@@ -46,6 +51,21 @@ p, h1 {
   font-size: 80px;
   margin-bottom: 50px;
   
+
+}
+
+
+.sunsetSunrise {
+  width: 30px;
+  height: 30px;
+  padding-left: 10%;
+  padding-top: 3%;
+}
+
+img.descriptionAnimation {
+  height: 20px;
+  padding-top: 4%;
+  padding-right: 3%;
 
 }
 

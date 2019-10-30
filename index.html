@@ -4,13 +4,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Code along in space</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> 
+  <title>What's the weather</title>
 </head>
 <body>
-  <div id="astros">
-    Loading...
+  <div class="weatherTop" id="weatherNow">
+      <img src="" alt="">
+      <h1 id="city"></h1>
+      <p id="temperature"></p>
+      <p id="description"></p>
+      <div class="sunTimes">
+        <img class="sunsetSunrise" src="/assets/sunrise.png" alt="sunrise">
+        <p class="sunrise" id="sunrise"></p>
+        <img class="sunsetSunrise" src="/assets/sunset.png" alt="sunrise">
+        <p id="sunset"></p>
+     </div>
   </div>
 
+  <div id="weatherFiveDays">
+    <div class="timeContainer">
+      <p id="timeOne"></p>
+      <img class="descriptionAnimation" src="/assets/Group 16.png" alt="">
+      <p id="descriptionOne"></p>
+      <p id="tempOne"></p>
+    </div>
+    <div class="timeContainer">
+      <p id="timeTwo"></p>
+      <p id="descriptionTwo"></p>
+      <p id="tempTwo"></p>
+    </div>
+    <div class="timeContainer">
+      <p id="timeThree"></p>
+      <p id="descriptionThree"></p>
+      <p id="tempThree"></p>
+    </div>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
