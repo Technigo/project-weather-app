@@ -35,21 +35,21 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&AP
 
     //Show icons instead of string for weather
     if (json.weather[0].description === "clear sky") {
-      theWeather.innerHTML = `<img src=\"assets/clear-sky-day.png\" width=\"70px\""></br>`
+      theWeather.innerHTML = `<img src=\"assets/clear-sky-day.png\" width=\"80px\""></br>`
     } else if (json.weather[0].description === "few clouds") {
-      theWeather.innerHTML = `<img src=\"assets/few-clouds-day.png\" width=\"70px\""></br>`
-    } else if (json.weather[0].description === "scattered clouds") {
-      theWeather.innerHTML = `<img src=\"assets/scattered-clouds.png\" width=\"70px\""></br>`
+      theWeather.innerHTML = `<img src=\"assets/few-clouds-day.png\" width=\"80px\""></br>`
+    } else if (json.weather[0].description === "scattered clouds" || json.weather[0].description === "overcast clouds") {
+      theWeather.innerHTML = `<img src=\"assets/scattered-clouds.png\" width=\"80px\""></br>`
     } else if (json.weather[0].description === "broken clouds") {
       theWeather.innerHTML = `<img src=\"assets/broken-clouds.png\" width=\"70px\""></br>`
-    } else if (json.weather[0].description === "shower rain" || json.weather[0].description === "rain") {
-      theWeather.innerHTML = `<img src=\"assets/broken-clouds.png\" width=\"70px\""></br>`
-    } else if (json.weather[0].description === "thunderstorm") {
-      theWeather.innerHTML = `<img src=\"assets/thunderstorm.png\" width=\"70px\""></br>`
-    } else if (json.weather[0].description === "snow") {
-      theWeather.innerHTML = `<img src=\"assets/snow.png\" width=\"70px\""></br>`
-    } else if (json.weather[0].description === "mist") {
-      theWeather.innerHTML = `<img src=\"assets/mist.png\" width=\"70px\""></br>`
+    } else if (json.weather[0].description.includes("rain") || json.weather[0].description.includes("drizzle")) {
+      theWeather.innerHTML = `<img src=\"assets/broken-clouds.png\" width=\"80px\""></br>`
+    } else if (json.weather[0].description.includes("thunderstorm")) {
+      theWeather.innerHTML = `<img src=\"assets/thunderstorm.png\" width=\"80px\""></br>`
+    } else if (json.weather[0].description.includes("snow")) {
+      theWeather.innerHTML = `<img src=\"assets/snow.png\" width=\"80px\""></br>`
+    } else if (json.weather[0].description === "mist" || json.weather[0].description === "fog") {
+      theWeather.innerHTML = `<img src=\"assets/mist.png\" width=\"80px\""></br>`
     }
 
     //Get current time to compare with sunrise & sunset for different bg-img
@@ -90,23 +90,22 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&c
       let weatherIcon
 
       if (weatherDay === "clear sky") {
-        weatherIcon = `<img src=\"assets/clear-sky-day.png\" width=\"20px\"">`
+        weatherIcon = `<img src=\"assets/clear-sky-day.png\" width=\"25px\"">`
       } else if (weatherDay === "few clouds") {
-        weatherIcon = `<img src=\"assets/few-clouds-day.png\" width=\"20px\"">`
+        weatherIcon = `<img src=\"assets/few-clouds-day.png\" width=\"25px\"">`
       } else if (weatherDay === "scattered clouds" || weatherDay === "overcast clouds") {
-        weatherIcon = `<img src=\"assets/scattered-clouds.png\" width=\"20px\"">`
+        weatherIcon = `<img src=\"assets/scattered-clouds.png\" width=\"25px\"">`
       } else if (weatherDay === "broken clouds") {
-        weatherIcon = `<img src=\"assets/broken-clouds.png\" width=\"20px\"">`
+        weatherIcon = `<img src=\"assets/broken-clouds.png\" width=\"25px\"">`
       } else if (weatherDay.includes("rain") || weatherDay.includes("drizzle")) {
-        weatherIcon = `<img src=\"assets/broken-clouds.png\" width=\"20px\"">`
+        weatherIcon = `<img src=\"assets/broken-clouds.png\" width=\"25px\"">`
       } else if (weatherDay.includes("thunderstorm")) {
-        weatherIcon = `<img src=\"assets/thunderstorm.png\" width=\"20px\"">`
+        weatherIcon = `<img src=\"assets/thunderstorm.png\" width=\"25px\"">`
       } else if (weatherDay.includes("snow")) {
-        weatherIcon = `<img src=\"assets/snow.png\" width=\"20px\"">`
+        weatherIcon = `<img src=\"assets/snow.png\" width=\"25px\"">`
       } else if (weatherDay === "mist" || weatherDay === "fog") {
-        weatherIcon = `<img src=\"assets/mist.png\" width=\"20px\"">`
+        weatherIcon = `<img src=\"assets/mist.png\" width=\"25px\"">`
       }
-
 
       //To add a zero if the hour or minute is under 10, getHours() and getMinutes() is passed as arugment later on
       const addZeros = (time) => {

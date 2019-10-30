@@ -11,13 +11,13 @@ body {
 h2 {
   font-size: 30px;
   margin: 0;
-  font-weight: 100;
+  font-weight: normal;
 }
 
 h1 {
   font-size: 38px;
   margin: 0;
-  font-weight: 100;
+  font-weight: bold;
 }
 
 h3 {
@@ -115,7 +115,7 @@ a {
 }
 
 #headtemp, .forecast-temp {
-  width: 18%;
+  width: 20%;
 }
 
 #headempty, .forecast::after, .forecast.active::after {
