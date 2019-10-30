@@ -2,6 +2,24 @@ body {
     font-family: 'Lato', sans-serif;
 }
 
+p {
+    margin: 0.1em 0.1em 0.1em 0.1em;
+}
+
+ul {
+    list-style-type: none;
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1.3em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
+}
+
+ul .li {
+    padding: 0.1em 0.1em 0.1em 0.1em;
+}
+
 @media (max-width: 600px) {
     body {
         background: lightcoral;

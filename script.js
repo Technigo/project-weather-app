@@ -1,10 +1,9 @@
 const place = "Lisbon,Portugal"
 const APIkey = "ead60d2e1c3fff29cccec12bd6a43922"
 
-
 // TODAY
 
-const container = document.getElementById('weather')
+const header = document.getElementById('weather')
 
 fetch(`http://api.openweathermap.org/data/2.5/weather?q=${place}&units=metric&APPID=${APIkey}`)
     .then((response) => {
@@ -27,7 +26,7 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=${place}&units=metric&AP
 
         const temp = Math.round(+json.main.temp)
         const despcription = json.weather.forEach((element) => {
-            container.innerHTML = `<p> ${element.description} | ${temp} °C. </p>`
+            header.innerHTML = `<p> ${element.description} | ${temp} °C. </p>`
         })
 
         //time of sunrise/sunset in hours:minutes:seconds GMT
@@ -40,19 +39,33 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=${place}&units=metric&AP
         const sunriseShort = sunrise.toLocaleTimeString([], { timeStyle: 'short' })
         const sunsetShort = sunset.toLocaleTimeString([], { timeStyle: 'short' })
 
-        container.innerHTML += `<p> sunrise ${sunriseShort}</p>`
-        container.innerHTML += `<p> sunset ${sunsetShort}</p>`
+        header.innerHTML += `<p> sunrise ${sunriseShort}</p>`
+        header.innerHTML += `<p> sunset ${sunsetShort}</p>`
+
+    })
+
+.catch((err) => {
+    console.log('caught errors', err)
+})
+
+const container = document.getElementById('greetings')
+
+fetch(`http://api.openweathermap.org/data/2.5/weather?q=${place}&units=metric&APPID=${APIkey}`)
+    .then((response) => {
+        return response.json()
+    })
+    .then((json) => {
 
         // city
 
         const city = json.name
-
-        container.innerHTML += `<h1>Current weather in ${city}</h2>`
+        container.innerHTML = `<h1>Current weather in ${city}</h2>`
 
     })
-    .catch((err) => {
-        console.log('caught errors', err)
-    })
+
+.catch((err) => {
+    console.log('caught errors', err)
+})
 
 // FORECAST
 
