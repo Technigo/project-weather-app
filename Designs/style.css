@@ -1,9 +1,13 @@
 body {
   background: lightblue;
+  width: 100%;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
 }
 
 #weatherFiveDays {
-  
+  width: 100%;
+  padding-top: 50px;
 }
 
 .timeContainer {
@@ -14,16 +18,34 @@ body {
 
 }
 
-#weatherNow {
+
+
+p, h1 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.weatherTop {
+ 
  
 }
 
+.sunTimes {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  
+}
   
 
 
 #temperature {
-  font-size: 60px;
-
+  font-size: 80px;
+  margin-bottom: 50px;
+  
 
 }
 
