@@ -1,7 +1,11 @@
 body {
   margin: 0;
   background-color: #c2e2e2;
-  font-family: "Assistant", sans-serif;
+  /* font-family: "Assistant", sans-serif; */
+  /* font-family: "Wire One", sans-serif; */
+  /* font-family: "Yanone Kaffeesatz", sans-serif; */
+  font-family: "Open Sans Condensed", sans-serif;
+  /* font-family: "Heebo", sans-serif; */
   color: #242525;
 }
 
@@ -12,95 +16,124 @@ h2 {
 
 p {
   font-size: 1.2em;
+  font-weight: 300;
 }
 
-@media (max-width: 667px) {
-  #container1 {
+#container1 {
+  margin: auto;
+  text-align: center;
+}
+
+#city {
+  font-size: 2em;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-kerning: none;
+}
+
+.todaysWeather {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#temperature,
+#weatherSummary {
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+#temperature {
+  width: 40%;
+  text-align: right;
+  font-size: 5.5em;
+  font-weight: 100;
+  color: #343636;
+  font-family: "Advent Pro", sans-serif;
+}
+
+#weatherSummary {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  font-weight: 300;
+  font-size: 1.7em;
+}
+
+#divider1 {
+  font-weight: 100;
+  margin: 17px 0 10px 0;
+  font-size: 5.5em;
+  font-family: "Wire One", sans-serif;
+}
+
+#weatherImage {
+  width: 16em;
+}
+
+.sunUpSunDown {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#sunUp {
+  width: 40%;
+  text-align: right;
+}
+
+#sunDown {
+  width: 40%;
+  text-align: left;
+}
+
+hr {
+  width: 80%;
+  color: currentColor;
+  border-style: solid;
+  border-width: 0.5px;
+}
+
+.forecast {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#weekdayForecast {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  text-align: right;
+}
+
+#temperatureForecast {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+#weatherForecast {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  text-align: left;
+}
+
+@media (min-width: 668px) {
+  body {
+    font-size: 22px;
+    max-width: 900px;
     margin: auto;
-    text-align: center;
   }
 
-  #city {
-    font-size: 2rem;
-    margin-top: 2rem;
-    font-weight: 600;
-  }
-
-  .todaysWeather {
-    display: flex;
-    justify-content: space-evenly;
-  }
-
-  #temperature,
-  #weatherSummary {
-    margin-bottom: 15px;
-    margin-top: 10px;
-  }
-
-  #temperature {
-    width: 40%;
-    text-align: right;
-    font-size: 5.5em;
-    font-weight: 300;
-  }
-
-  #weatherSummary {
-    width: 40%;
-    display: flex;
-    align-items: center;
-    text-align: left;
-  }
-
-  #divider1 {
-    font-weight: 100;
-    margin: 2px 0 10px 0;
-    font-size: 5.5em;
-  }
-
-  .sunUpSunDown {
-    display: flex;
-    justify-content: space-evenly;
-  }
-
-  #sunUp {
-    width: 40%;
-    text-align: right;
-  }
-
+  #sunUp,
   #sunDown {
-    width: 40%;
-    text-align: left;
+    width: 45%;
   }
 
-  hr {
-    width: 80%;
-    color: currentColor;
-    border-style: solid;
-    border-width: 0.8px;
-  }
-
-  .forecast {
-    display: flex;
-    justify-content: space-evenly;
-  }
-
-  #weekdayForecast {
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-    text-align: right;
-  }
-
-  #temperatureForecast {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-  }
-
+  #weekdayForecast,
   #weatherForecast {
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-    text-align: left;
+    width: 35%;
   }
 }
