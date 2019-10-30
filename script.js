@@ -7,13 +7,19 @@ fetch ('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     return response.json()
 })
 .then((json) => {
-
+  
+ 
  console.log(json)
-   container.innerHTML = `<h1>The daily temperature in stockholm is ${json.main.temp} degrees with a daily min of ${json.main.temp_min} and daily max of
-   ${json.main.temp_max} </h1>`
+   
+ container.innerHTML = `<h2>The daily temperature in stockholm is ${json.main.temp} degrees with a daily min of ${json.main.temp_min} and daily max of
+   ${json.main.temp_max} </h2>`
 
    
 
 })
     
 
+//  let sunset
+
+// let sunrise = new Date();
+// document.getElementById('weather')
