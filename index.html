@@ -10,27 +10,28 @@
 </head>
 
 <body>
-    <header>
-        <h1>Today's weather in:</h1>
-    </header>
-    <div class="location">
-        <h1 class="location-timezone" id="location-timezone">Timezone</h1>
-        <canvas class="icon" width="128" height="128">icon</canvas>
-    </div>
-    <div class="temperature">
-        <div class="degree-section">
-            <h2 class="temperature-degree">temperature</h2>
-            <span>C</span>
-        </div>
-        <div class="temperature-description">Weather description</div>
-    </div>
-    <div class="sun-time">
-        <div class="sunset-time">Sunset</div>
-        <div class="sunrise-time">Sunrise</div>
+    <h1>Today's weather in:</h1>
+    <h1 id="location-timezone">Location</h1>
+
+
+    <h2 id="temperature-degree">temperature</h2>
+
+    <h4 id="todaysTempMinMax">min/max temp</h4>
+
+    <div id="temperature-description">Weather description</div>
+
+    <div id="sunset-time">Sunset</div>
+    <div id="sunrise-time">Sunrise</div>
+
+    <h2>5-day forecast</h2>
+    <div id="forecast-section">
+
+        <div id="day-date">Weekday</div>
+        <div id="day-temp">Temp that day</div>
     </div>
 
-    <script src="skycons.js"></script>
-    <script src="script.js"></script>
+    <script src="script1.js"></script>
+    <!-- <script src="script.js"></script> -->
 </body>
 
 </html>
