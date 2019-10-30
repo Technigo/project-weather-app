@@ -33,7 +33,7 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&AP
     theSunrise.innerHTML = `<img src=\"assets/sunrise.png\" width=\"50px\""></br>${sunriseTime}`
     theSunset.innerHTML = `<img src=\"assets/sunset.png\" width=\"50px\""></br>${sunsetTime}`
 
-    //Show icons instead of string for weather
+    //Conditions for showing icons instead of string for weather description
     if (json.weather[0].description === "clear sky") {
       theWeather.innerHTML = `<img src=\"assets/clear-sky-day.png\" width=\"80px\""></br>`
     } else if (json.weather[0].description === "few clouds") {
@@ -56,13 +56,13 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&AP
     const currentTime = new Date().toLocaleTimeString([], { timeStyle: 'short' })
     const mainTop = document.getElementById("main-top-bg")
 
-    if (currentTime < sunsetTime && window.innerWidth < 667) {
+    if (currentTime < sunsetTime && currentTime > sunriseTime && window.matchMedia("(max-width: 667px)").matches) {
       mainTop.style.backgroundImage = "url('assets/mountain-day-small.jpg')"
-    } else if (currentTime < sunsetTime && window.innerWidth > 668) {
+    } else if (currentTime < sunsetTime && currentTime > sunriseTime && window.matchMedia("(min-width: 668px)").matches) {
       mainTop.style.backgroundImage = "url('assets/mountain-day-big.jpg')"
-    } else if (currentTime > sunsetTime && window.innerWidth < 667) {
+    } else if (currentTime > sunsetTime && currentTime < sunriseTime && window.innerWidth <= 667) {
       mainTop.style.backgroundImage = "url('assets/mountain-night-small.jpg')"
-    } else if (currentTime > sunsetTime && window.innerWidth > 668) {
+    } else if (currentTime > sunsetTime && currentTime < sunriseTime && window.innerWidth >= 668) {
       mainTop.style.backgroundImage = "url('assets/mountain-night-big.jpg')"
     }
 
@@ -85,7 +85,7 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&c
     //Loop to go through the 5 forecasts in API
     json.list.forEach(forecast => {
 
-      //Show icons instead of string for weather - using let for eatherIcon since the conditions assign new values
+      ////Conditions for showing icons instead of string for weather description - using let for eatherIcon since the conditions assign new values
       const weatherDay = forecast.weather[0].description
       let weatherIcon
 
