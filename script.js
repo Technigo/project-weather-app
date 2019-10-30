@@ -59,7 +59,7 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=${place}&units=metric&AP
         // city
 
         const city = json.name
-        container.innerHTML = `<h1>Current weather in ${city}</h2>`
+        container.innerHTML = `<h1>Get your sunnies ready! ${city} is looking for great weather today!</h2>`
 
     })
 
