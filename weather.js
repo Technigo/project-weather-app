@@ -13,6 +13,21 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
         })
 
         container.innerHTML += `<p>The temperature is between ${json.main.temp_max} and ${json.main.temp_min}.</p>`
+
+        //Declare variable for the time of sunrise/sunset
+        const unixTimestampSunrise = json.sys.sunrise
+        const unixTimestampSunset = json.sys.sunset
+
+        //To get sunrise/sunset time in hours:minutes:seconds
+        const sunrise = new Date(unixTimestampSunrise * 1000)
+        const sunset = new Date(unixTimestampSunset * 1000)
+
+        //Declare new variable to show only hh:mm
+        const sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' })
+        const sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' })
+
+        container.innerHTML += `<p> Sunrise ${sunriseTime} </p>`
+        container.innerHTML += `<p> Sunset ${sunriseTime} </p>`
     })
     .catch((err) => {
         console.log('caught errors', err)
