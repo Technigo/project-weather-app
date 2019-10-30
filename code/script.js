@@ -1,5 +1,5 @@
-//FETCH API FOR BOLLNAS RIGHT NOW
-fetch("https://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&APPID=8322e51e2df230498c7f0d4ce04304d6")
+//FETCH API FOR BOLLNAS RIGHT NOW IN MAIN-TOP
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&APPID=8322e51e2df230498c7f0d4ce04304d6`)
 
   //Get the json from the API
   .then((response) => {
@@ -65,8 +65,8 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&AP
 
   })
 
-//FETCH API FOR BOLLNAS EVERY THREE HOURS
-fetch("https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&cnt=6&APPID=8322e51e2df230498c7f0d4ce04304d6")
+//FETCH API FOR BOLLNAS EVERY THREE HOURS IN MAIN-BOTTOM
+fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&cnt=6&APPID=8322e51e2df230498c7f0d4ce04304d6`)
 
   //Get the json from the API
   .then((response) => {
@@ -76,10 +76,10 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&c
   //Create HTML content with the json content
   .then((json) => {
 
-    //Set index for creating id:s for each forecast-div starting at 1
+    //Set index for creating id:s for each forecast-section starting at 1
     index = 1
 
-    //Loop to go through the 5 forecasts in API
+    //Loop to go through the forecasts in API
     json.list.forEach(forecast => {
 
       ////Conditions for showing icons instead of string for weather description - using let for eatherIcon since the conditions assign new values
@@ -111,17 +111,21 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&c
         }
         return time
       }
+
       //To fix the datestring in format DD Mon kl HH:MM
       const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
       const date = forecast.dt
       const realDate = new Date(date * 1000)
       const shortDate = `${realDate.getDate()} ${months[realDate.getMonth()]} kl ${addZeros(realDate.getUTCHours())}:${addZeros(realDate.getMinutes())}`
 
+      //To get the average temperature for the forecast
       const averageTemp = (forecast.main.temp_max + forecast.main.temp_min) / 2
-      const forecastFive = document.getElementById("forecast-five")
+
+      //Declare forecastBottom
+      const forecastBottom = document.getElementById("forecast-bottom")
 
       //Creates a section with separete divs for date, icon, temp
-      forecastFive.innerHTML +=
+      forecastBottom.innerHTML +=
         `<section class="forecast" id="forecast${index}">
         <div class="forecast-date">${shortDate}</div>
         <div class="forecast-icon">${weatherIcon}</div>
@@ -138,9 +142,11 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&c
 
       //Index increases for every loop
       index++
+
     })
 
     // ACCORDION FOR FORECAST DETAILS
+
     // A function that adds and remove the class "active" when you click
     function toggle() {
       this.classList.toggle("active")
