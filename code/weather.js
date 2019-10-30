@@ -23,7 +23,7 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         let maxRounded = Math.round(json.main.temp_max * 10) / 10
 
         minMax.innerHTML = `${maxRounded} C° / ${minRounded} C°`
-        todaysWind.innerHTML = `Wind: ${Math.round(json.wind.speed)} m/s`
+        todaysWind.innerHTML = `${Math.round(json.wind.speed)} m/s`
 
         let sunriseHoursMinutes = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
         let sunsetHoursMinutes = new Date(json.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
@@ -108,3 +108,7 @@ const findWeekday = () => {
     }
 }
 findWeekday()
+
+//const showKalmar = () => {
+ //   document.getElementById("switchCity").onclick
+//}
