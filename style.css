@@ -34,7 +34,7 @@ ul {
 
 @media (min-width: 601px) and (max-width: 800px) {
     body {
-        background: lightsalmon;
+        background: lightgreen;
         text-align: left;
     }
     h1 {
@@ -44,7 +44,7 @@ ul {
 
 @media (min-width: 801px) and (max-width: 1200px) {
     body {
-        background: lightgreen;
+        background: lightsalmon;
         text-align: center;
     }
     h1 {
