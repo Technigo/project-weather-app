@@ -1,5 +1,14 @@
+html,
 body {
-    height: 100vh;
+    height: 100%;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
 }
 
 .container {
@@ -7,9 +16,27 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex: 1 0 auto;
 }
 
 #weatherApp {
-    padding: 10px 50px;
-    background-color: yellow;
+    background: rgb(75, 101, 235);
+    background: linear-gradient(196deg, rgba(75, 101, 235, 1) 5%, rgba(215, 224, 255, 1) 100%);
+    color: rgb(16, 11, 29);
+    width: 90%;
+    max-width: 300px;
+    padding: 10px 30px;
+    border-radius: 20px;
+}
+
+footer {
+    flex-shrink: 0;
+    height: 60px;
+    background-color: red;
+    width: 100%;
+}
+
+h1 {
+    display: inline-block;
+    font-size: 20;
 }
