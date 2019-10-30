@@ -8,34 +8,48 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     })
     .then((json) => {
 
-        // city
-        console.log(json)
-        container.innerHTML = `<h1>Current weather in ${json.name}</h2>`
+        // description
+
+        /* json.weather.forEach((element) => {
+            container.innerHTML = `<p> The overal weather: ${element.description}. </p>`
+        }) */
 
         // temperature
+
+        /* const temp = Math.round(+json.main.temp)
+        container.innerHTML += `<p> The temperature is ${temp} °C.</p>` */
+
+        // description and temperature together
+
         const temp = Math.round(+json.main.temp)
-        container.innerHTML += `<p> The temperature is ${temp} °C.</p>`
-
-
-        // description
-        json.weather.forEach((element) => {
-            container.innerHTML += `<p> The overal weather: ${element.description}. </p>`
+        const despcription = json.weather.forEach((element) => {
+            container.innerHTML = `<p> ${element.description} | ${temp} °C. </p>`
         })
 
         //time of sunrise/sunset in hours:minutes:seconds GMT
+
         const sunrise = new Date(json.sys.sunrise * 1000);
         const sunset = new Date(json.sys.sunset * 1000)
 
-        //time and sunrise as hh:mm
+        //time as hh:mm
+
         const sunriseShort = sunrise.toLocaleTimeString([], { timeStyle: 'short' })
         const sunsetShort = sunset.toLocaleTimeString([], { timeStyle: 'short' })
 
-        container.innerHTML += `<p> Sunrise ${sunriseShort} AM.</p>`
-        container.innerHTML += `<p> Sunset ${sunsetShort} PM.</p>`
+        container.innerHTML += `<p> sunrise ${sunriseShort}</p>`
+        container.innerHTML += `<p> sunset ${sunsetShort}</p>`
+
+        // city
+
+        const city = json.name
+
+        container.innerHTML += `<h1>Current weather in ${city}</h2>`
+
     })
     .catch((err) => {
         console.log('caught errors', err)
     })
+
 
 // WEATHER FORECAST IN LISBON - TRIAL AND ERROR, BUT MOSTLY ERRORS
 
