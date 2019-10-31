@@ -18,49 +18,58 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
         return response.json()
     })
     .then((json) => {
-        const temperature = Math.round(json.main.temp * 10 ) / 10
+    
         json.weather.forEach((el) => {
+            const temperature = Math.round(json.main.temp * 10 ) / 10
             const desc = el.description
-            console.log(desc)
+            
+            const chooseWeather = () => {   
+                if(desc.includes("clear")) {
+                    theImage.src = `./img/sun1.png`
+                } else if (desc.includes('few')) {
+                    theImage.src = `./img/sunbehind1.png`
+                } else if (desc.includes('clouds') && !desc.includes('few')) {
+                    theImage.src = `./img/clouds1.png`
+                } else if (desc.includes('rain')) {
+                    theImage.src = `./img/rain2.png`
+                } else if (desc.includes('thunderstorm')) {
+                    theImage.src = `./img/thunder1.png`
+                } else if (desc.includes('snow')) {
+                    theImage.src = `./img/snow1.png`
+                }
+            }
+            chooseWeather()
+
             title.innerHTML = `<p class="main-temp">${temperature} <span>&#176;C</span></p>`
             title.innerHTML += `<h1>${json.name}</h1>`
-            title.innerHTML += `<p>${desc}</p>`
-
-            if(desc.includes("clear")) {
-                theImage.src = `./img/sun1.png`
-            } else if (desc.includes('few')) {
-                theImage.src = `./img/sunbehind1.png`
-            } else if (desc.includes('clouds') && !desc.includes('few')) {
-                theImage.src = `./img/clouds1.png`
-            } else if (desc.includes('rain')) {
-                theImage.src = `./img/rain2.png`
-            } else if (desc.includes('thunderstorm')) {
-                theImage.src = `./img/thunder1.png`
-            } else if (desc.includes('snow')) {
-                theImage.src = `./img/snow1.png`
-            }
-
+            title.innerHTML += `<p>${desc}</p>`   
         })
 
-        const sunrise = json.sys.sunrise
-        const sunset = json.sys.sunset
-        const sunriseConverted = new Date(sunrise * 1000);
-        const sunsetConverted = new Date(sunset * 1000);
-        let sunriseMin = sunriseConverted.getMinutes()
-        let sunsetMin = sunsetConverted.getMinutes()
-        if (sunriseMin < 10 ) { 
-            sunriseMin = '0' + sunriseMin;
-            } else {
-            sunriseMin = sunriseMin + '';
+        const aboutRiseandSet = () => {
+            const sunrise = json.sys.sunrise
+            const sunset = json.sys.sunset
+            const sunriseConverted = new Date(sunrise * 1000);
+            const sunsetConverted = new Date(sunset * 1000);
+            let sunriseMin = sunriseConverted.getMinutes()
+            let sunsetMin = sunsetConverted.getMinutes()
+
+            if (sunriseMin < 10 ) { 
+                sunriseMin = '0' + sunriseMin;
+                } else {
+                sunriseMin = sunriseMin + '';
+                }
+            if (sunsetMin < 10) {
+                sunsetMin = '0' + sunsetMin;
+            }   else {
+                sunsetMin = sunsetMin + '';
             }
-        if (sunsetMin < 10) {
-            sunsetMin = '0' + sunsetMin;
-        }   else {
-            sunsetMin = sunsetMin + '';
+            
+            sunRiseSet.innerHTML += `<p>sunrise  ${sunriseConverted.getHours()}:${sunriseMin}</p>`
+            sunRiseSet.innerHTML += `<p>sunset  ${sunsetConverted.getHours()}:${sunsetMin}</p>` 
         }
+        aboutRiseandSet()
+
         
-        sunRiseSet.innerHTML += `<p>sunrise  ${sunriseConverted.getHours()}:${sunriseMin}</p>`
-        sunRiseSet.innerHTML += `<p>sunset  ${sunsetConverted.getHours()}:${sunsetMin}</p>` 
     })
 
     fetch('http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&cnt=40&APPID=9c5547207014dca2db40f4f51bbb601a')
@@ -76,64 +85,47 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
             let dayMin = dayConverted.getMinutes()
             let dayHours = dayConverted.getHours()
             let dayWeekday = dayConverted.getDay()
-            let theDayWeekday
-            let month = dayConverted.getMonth()
-            let theMonth
+            let theDayWeekdayArr = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+            let month = dayConverted.getMonth() + 1
+            const temperaturemin = Math.round(item.main.temp_min * 10 ) / 10
+            const temperaturemax = Math.round(item.main.temp_max * 10 ) / 10
             
             if (dayMin < 10 ) { 
                 dayMin = '0' + dayMin;
                 } else {
                 dayMin = dayMin + '';
             }
-            
-            if (dayWeekday === 0) {theDayWeekday= "Sun"} 
-            else if (dayWeekday === 1) { theDayWeekday= "Mon"} 
-            else if (dayWeekday === 2) {theDayWeekday= "Tue"} 
-            else if (dayWeekday === 3) {theDayWeekday= "Wed"} 
-            else if (dayWeekday === 4) {theDayWeekday= "Thu"} 
-            else if (dayWeekday === 5) {theDayWeekday= "Fri"} 
-            else if (dayWeekday === 6) {theDayWeekday= "Sat"} 
-
-           if(month === 0){ theMonth = 1}
-           else if(month === 1){ theMonth = 2}
-           else if(month === 2){ theMonth = 3}
-           else if(month === 3){ theMonth = 4}
-           else if(month === 4){ theMonth = 5}
-           else if(month === 5){ theMonth = 6}
-           else if(month === 6){ theMonth = 7}
-           else if(month === 7){ theMonth = 8}
-           else if(month === 8){ theMonth = 9}
-           else if(month === 9){ theMonth = 10}
-           else if(month === 10){ theMonth = 11}
-           else if(month === 11){ theMonth = 12}
-           
-
-            const temperaturemin = Math.round(item.main.temp_min * 10 ) / 10
-            const temperaturemax = Math.round(item.main.temp_max * 10 ) / 10
 
             if(dayHours === 13){
+
+                theDayWeekdayArr.forEach((el, index) => {
+                    if(dayWeekday === index) {
+                        theDate.innerHTML += `<p>${el} ${dayConverted.getDate()}/${month}</p>`
+                    }
+                })
                 
                 item.weather.forEach((el) => {
-                    const desc = el.description
+                    const id = el.id
 
-                    if(desc.includes("clear")) {
+                    if(id === 800) {
                         theTypeWeather.innerHTML += `<img class="imageBottom" src="./img/sun1.png">`
-                    } else if (desc.includes('few')) {                      
+                    } else if (id === 801) {                      
                         theTypeWeather.innerHTML += `<img class="imageBottom" src="./img/sunbehind1.png">`
-                    } else if (desc.includes('clouds') && !desc.includes('few')) {
+                    } else if (id >= 802 && id <= 804) {
                         theTypeWeather.innerHTML += `<img class="imageBottom" src="./img/clouds1.png">`
-                    } else if (desc.includes('rain')) {
-                        theTypeWeather.innerHTML += `<img class="imageBottom" src="./img/rain2.png">`
-                    } else if (desc.includes('thunderstorm')) {
+                    } else if (id >= 500 && id <= 531) {
+                        theTypeWeather.innerHTML += `<img class="imageBottom" src="./img/rainstrong.png">`
+                    } else if (id >= 200 && id <= 232) {
                         theTypeWeather.innerHTML += `<img class="imageBottom" src="./img/thunder1.png">`
-                    } else if (desc.includes('snow')) {
+                    } else if (id >= 600 && id <= 622) {
                         theTypeWeather.innerHTML += `<img class="imageBottom" src="./img/snow1.png">`
+                    } else if (id >= 300 && id <= 321) {
+                        theTypeWeather.innerHTML += `<img class="imageBottom" src="./img/drizzle.png">`
+                    } else {
+                        theTypeWeather.innerHTML += `<img class="imageBottom" src="./img/fog.png">`
                     }
-
-                    theDate.innerHTML += `<p>${theDayWeekday} ${dayConverted.getDate()}/${theMonth}</p>`
-                   
-                    theMaxtemp.innerHTML += `<p>&nbsp;${temperaturemax}&#176;C</p>`    
-                   
+       
+                    theMaxtemp.innerHTML += `<p>&nbsp;${temperaturemax}&#176;C</p>`                       
                 
                 }) 
             }
