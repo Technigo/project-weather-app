@@ -24,10 +24,11 @@ body {
     background: linear-gradient(196deg, rgba(75, 101, 235, 1) 5%, rgba(215, 224, 255, 1) 100%);
     color: rgb(16, 11, 29);
     width: 90%;
-    max-width: 300px;
+    max-width: 400px;
     padding: 10px 30px;
     border-radius: 20px;
-    height: auto;
+    height: 500px;
+    text-align: center;
 }
 
 
@@ -39,6 +40,34 @@ h1 {
 
 h4 {
     margin: 10px;
+}
+
+.temp-description {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 20px;
+    justify-items: center;
+
+
+
+}
+
+#weekdays {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+
+}
+
+.week_days {
+    display: grid;
+    grid-template-columns: repeat(5, fr);
+    grid-auto-rows: 100px;
+    border: 1px rgb(247, 231, 231) solid;
+    height: 100%;
+    width: 100%;
+    align-content: center;
+
 }
 
 .sunrise-sunset {

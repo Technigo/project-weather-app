@@ -38,7 +38,7 @@ fetch(
       let date = new Date(day.dt_txt);
       if (date.getHours() != "12") return;
 
-      document.getElementById("weekdays").innerHTML += `<p>${weekdays[date.getDay()]}, ${Math.round(day.main.temp)}&deg;C </p>`;
+      document.getElementById("weekdays").innerHTML += `<div class="week_days"> ${weekdays[date.getDay()]} ${Math.round(day.main.temp)}&deg;C </div>`;
 
       //container.innerHTML += `<p>${person.name} is on the ${person.craft} </p>`
     });
