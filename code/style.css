@@ -111,15 +111,16 @@ a {
 }
 
 #headweather, .forecast-icon {
-  width: 25%;
-}
-
-#headtemp, .forecast-temp {
   width: 20%;
 }
 
+#headtemp, .forecast-temp {
+  width: 25%;
+  text-align: center;
+}
+
 #headempty, .forecast::after, .forecast.active::after {
-  width: 4%;
+  width: 5%;
 }
 
 /* Accordion for forecast details */
