@@ -59,7 +59,9 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=${place}&units=metric&AP
         // city
 
         const city = json.name
-            /* container.innerHTML = `<h1>Get your sunnies ready! ${city} is looking for great weather today!</h2>` */
+        const weatherImage = document.getElementById("weatherImage")
+
+        /* container.innerHTML = `<h1>Get your sunnies ready! ${city} is looking for great weather today!</h2>` */
 
         /*  if (json.weather === "clouds") {
              container.innerHTML = `<h1>The weather in ${city} is looking cloudy today!`;
@@ -72,31 +74,44 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=${place}&units=metric&AP
 
         const id = json.weather[0].id
 
+        // GREETING
+
         if (id >= 200 && id <= 232) {
-            weatherImage.src = "umbrella.png"
             container.innerHTML = `<h1>Afraid of a little lightning? ${city} is looking for a few thunders today!</h2>`
         } else if (id >= 300 && id <= 531) {
-            weatherImage.src = "umbrella.png"
             container.innerHTML = `<h1>Get your umbrella ready! ${city} is looking for a rain today!</h2>`
         } else if (id >= 600 && id <= 622) {
-            weatherImage.src = "snow.png"
             container.innerHTML = `<h1>Get your beanie ready! ${city} is looking for snow today!</h2>`
         } else if (id >= 701 && id <= 781) {
-            weatherImage.src = "fog.png"
             container.innerHTML = `<h1>Missing London? ${city} is looking a foggy weather today!</h2>`
         } else if (id === 800) {
-            if (nightTime) {
-                weatherImage.src = "moon.png"
-                container.innerHTML = `<h1>When was the last time you watch the stars? ${city} is good place to find some tonight!</h2>`
-            } else {
-                weatherImage.src = "glasses.png"
-                container.innerHTML = `<h1>Get your sunnies ready! ${city} is looking for a lot of sun today!</h2>`
-            }
+            /*  if (nightTime) { */
+            /* container.innerHTML = `<h1>When was the last time you watch the stars? ${city} is good place to find some tonight!</h2>`
+            } else { */
+            container.innerHTML = `<h1>Get your sunnies ready! ${city} is looking for a lot of sun today!</h2>`
         } else if (id >= 801 && id <= 804) {
-            weatherImage.src = "cloud.png"
             container.innerHTML = `<h1>Don't forget your favourite hoodie today! Could be a little cloudy in ${city} today!</h2>`
         }
 
+        // PICTURES
+
+
+        if (id >= 200 && id <= 232) {
+            weatherImage.src = "umbrella.png"
+        } else if (id >= 300 && id <= 531) {
+            weatherImage.src = "umbrella.png"
+        } else if (id >= 600 && id <= 622) {
+            weatherImage.src = "snow.png"
+        } else if (id >= 701 && id <= 781) {
+            weatherImage.src = "fog.png"
+        } else if (id === 800) {
+            /* if (nightTime) {
+                weatherImage.src = "moon.png"
+            } else { */
+            weatherImage.src = "glasses.png"
+        } else if (id >= 801 && id <= 804) {
+            weatherImage.src = "cloud.png"
+        }
 
         /* .catch((err) => {
                 console.log('caught errors', err)
