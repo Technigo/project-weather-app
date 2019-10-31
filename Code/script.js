@@ -35,13 +35,15 @@ const randomSelector = array => {
 	return array[Math.floor(Math.random() * array.length)];
 };
 
-const randomActivity = () => {
+const randomGreeting = () => {
 	activity.badWeather = randomSelector(goodWeather);
 };
 
-const randomActivity1 = () => {
+const randomGreeting1 = () => {
 	activity.badWeather = randomSelector(badWeather);
 };
+randomGreeting();
+randomGreeting1();
 
 fetch(
 	"https://api.openweathermap.org/data/2.5/weather?q=Stockholm&APPID=c984a4a14aa0bdc3e1ae923f5a4051c2&units=metric"
