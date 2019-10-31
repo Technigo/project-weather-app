@@ -31,20 +31,14 @@ fetch(
     weather.innerHTML = json.list[0].weather[0].main;
     temp.innerHTML = `${Math.round(json.list[0].main.temp)}&deg;C`;
 
-    sunrise.innerHTML = `${("0" + sunRise.getHours()).slice(-2)}:${(
-      "0" + sunRise.getMinutes()
-    ).slice(-2)}`;
-    sunset.innerHTML = `${("0" + sunSet.getHours()).slice(-2)}:${(
-      "0" + sunSet.getMinutes()
-    ).slice(-2)}`;
+    sunrise.innerHTML = `${("0" + sunRise.getHours()).slice(-2)}:${("0" + sunRise.getMinutes()).slice(-2)}`;
+    sunset.innerHTML = `${("0" + sunSet.getHours()).slice(-2)}:${("0" + sunSet.getMinutes()).slice(-2)}`;
 
     json.list.forEach(day => {
       let date = new Date(day.dt_txt);
       if (date.getHours() != "12") return;
 
-      document.getElementById("weekdays").innerHTML += `<p>${
-        weekdays[date.getDay()]
-      }, ${day.main.temp}&deg;C </p>`;
+      document.getElementById("weekdays").innerHTML += `<p>${weekdays[date.getDay()]}, ${Math.round(day.main.temp)}&deg;C </p>`;
 
       //container.innerHTML += `<p>${person.name} is on the ${person.craft} </p>`
     });

@@ -27,16 +27,29 @@ body {
     max-width: 300px;
     padding: 10px 30px;
     border-radius: 20px;
+    height: auto;
+}
+
+
+
+h1 {
+    display: inline-block;
+    font-size: 20;
+}
+
+h4 {
+    margin: 10px;
+}
+
+.sunrise-sunset {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+
 }
 
 footer {
     flex-shrink: 0;
     height: 60px;
-    background-color: red;
     width: 100%;
-}
-
-h1 {
-    display: inline-block;
-    font-size: 20;
 }
