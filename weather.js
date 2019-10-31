@@ -23,7 +23,8 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
         console.log(sunriseTime)
         console.log(sunsetTime)
 
-        container.innerHTML += `<h1>The weather in ${json.name} is ${json.main.temp}</h1>`
+        container.innerHTML += `<h1>${json.name}</h1>`
+        container.innerHTML += `<h1>${json.main.temp} C</h1>`
         container.innerHTML += `<h3>Sunrise: ${sunriseTime}</h3>`
         container.innerHTML += `<h3>Sunset: ${sunsetTime}</h3>`
     })
