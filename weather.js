@@ -29,14 +29,13 @@ fetch(
     theCity.innerHTML += `${json.name}`
     theTemperature.innerHTML += `${Math.floor(json.main.temp)}°C`
     theWeatherSummary.innerHTML += `${json.weather[0].description}`
-    // for testing longer sentences
-    //theWeatherSummary.innerHTML += `heavy shower rain and drizzle	`
+    //theWeatherSummary.innerHTML += `sunny`
 
     theSunrise.innerHTML += `Sunrise at ${sunriseTime}`
     theSunset.innerHTML += `Sunset at ${sunsetTime}`
 
     const now = new Date(Date.now())
-    //const now = new Date(Date.now() - 54000000)
+    //const now = new Date(Date.now() - 20600000)
 
     const nightTime = now < sunrise || now > sunset
 
@@ -45,8 +44,8 @@ fetch(
       document.body.style.color = "#c2e2e2"
     }
 
-    const id = json.weather[0].id
-    //const id = 803
+    //const id = json.weather[0].id
+    const id = 331
     if (id >= 200 && id <= 232) {
       theImage.src = "images/lightning.png"
     } else if (id >= 300 && id <= 531) {

@@ -36,12 +36,15 @@ p {
 .todaysWeather {
   display: flex;
   justify-content: space-evenly;
+  margin: auto;
+  max-width: 90%;
 }
 
 #temperature,
 #weatherSummary {
   margin-bottom: 15px;
   margin-top: 10px;
+  font-family: "Wire one", sans-serif;
 }
 
 #temperature {
@@ -49,8 +52,6 @@ p {
   text-align: right;
   font-size: 5.5em;
   font-weight: 100;
-  color: #343636;
-  font-family: "Advent Pro", sans-serif;
 }
 
 #weatherSummary {
@@ -59,12 +60,12 @@ p {
   align-items: center;
   text-align: left;
   font-weight: 300;
-  font-size: 1.7em;
+  font-size: 2.5em;
 }
 
 #divider1 {
   font-weight: 100;
-  margin: 17px 0 10px 0;
+  margin: 12px 0 10px 0;
   font-size: 5.5em;
   font-family: "Wire One", sans-serif;
 }
