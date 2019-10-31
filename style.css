@@ -1,6 +1,5 @@
 * {
     margin: 0;
-    padding: 10px;
     box-sizing: border-box;
 }
 
@@ -10,7 +9,39 @@ body {
     flex-direction: column;
     color: white;
     background: linear-gradient(rgb(47, 150, 163), rgb(48, 62, 143));
-    font-family: sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
-#forecast-section {}
+header {
+    text-align: center;
+    padding: 20px;
+}
+
+#location-timezone {
+    font-size: 5em;
+}
+
+#temperature-degree {
+    font-size: 4em;
+}
+
+.todays-weather-section {
+    padding: 5px;
+}
+
+.forecast-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+}
+
+
+/* 
+#forecast-section,
+#day-date,
+#day-temp {
+    display: flex;
+    padding: 10px;
+    justify-content: space-around;
+} */

@@ -10,7 +10,7 @@ const theSunrise = document.getElementById("sunrise-time");
 const theDayDate = document.getElementById("day-date");
 const theDayTemp = document.getElementById("day-temp");
 
-const theForecast = document.getElementById("forecast-section");
+const forecastDiv = document.getElementById('forecast-section')
 
 
 
@@ -22,8 +22,8 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Malm%C3%B6&units=metric
     .then((json) => {
         console.log(json);
         locationTimezone.innerHTML = json.name
-        temperatureDegree.innerHTML = json.main.temp.toFixed(1) + " C"
-        temperatureMinMax.innerHTML = `min ${json.main.temp_min.toFixed(1)} C / max ${json.main.temp_max.toFixed(1)} C`
+        temperatureDegree.innerHTML = json.main.temp.toFixed(1) + " °C"
+        temperatureMinMax.innerHTML = `min ${json.main.temp_min.toFixed(1)} °C / max ${json.main.temp_max.toFixed(1)} °C`
         temperatureDescription.innerHTML = `It's ${json.weather[0].description}`
 
         let theSunriseTime = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
@@ -34,48 +34,49 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Malm%C3%B6&units=metric
 
     });
 
+// FORECAST SECTION
+const handle5DayForecast = (json) => {
+    console.log(json)
+    const dates = {}
 
+    json.list.forEach((weather) => {
+            // splits dt_txt into date and time, [0] is date, [1] is time.
+            const date = weather.dt_txt.split(' ')[0]
+            if (dates[date]) {
+                dates[date].push(weather)
+            } else {
+                dates[date] = [weather]
+            }
+        })
+        //console.log(dates)
+        // entries = turn objects into an array and each of those items have two items (0:keys(date) and 1:values(array with objects)). 
+        // Doing this we can now loop it! 
+    Object.entries(dates).forEach((item, index) => {
+        if (index === 0) {
+            return
+        }
+        const date = item[0]
+        const weatherValues = item[1]
+
+        //console.log(date, weatherValues)
+        //map = almost same as forEach, it executes a function for each value/item in the array, 
+        //difference is this one collects what ever we return (this case - "value.main.temp"). 
+        //Map goes over each objects in this array and sucks out the temperature value and creates a new array of temp.values.
+        const temps = weatherValues.map((value) => value.main.temp)
+
+        const minTemp = Math.min(...temps)
+        const maxTemp = Math.max(...temps)
+
+        console.log(date, minTemp, maxTemp)
+
+        forecastDiv.innerHTML += `<li>${date} - min: ${minTemp.toFixed(1)}, max: ${maxTemp.toFixed(
+            1
+          )}</li>`
+    })
+
+}
 
 fetch("https://api.openweathermap.org/data/2.5/forecast?q=Malm%C3%B6&units=metric&APPID=8cbd9193bf1986e2387d169ac2d73a9e")
-    .then(response => {
-        return response.json();
-    })
-    .then((json) => {
-        console.log(json);
-        //Trying to loop all dates and temps in the array
-        json.list.forEach(forecast => {
-
-                theForecast.innerHTML += `${forecast.main.dt} <br> ${forecast.main.temp.toFixed(1)} `
-
-            })
-            // Day and Time forecast
-        let dayOneForecast = json.list[0].dt_txt
-        let dayTwoForecast = json.list[8].dt_txt
-        let dayThreeForecast = json.list[16].dt_txt
-        let dayFourForecast = json.list[24].dt_txt
-        let dayFiveForecast = json.list[32].dt_txt
-        console.log(dayOneForecast)
-        console.log(dayTwoForecast)
-        console.log(dayThreeForecast)
-        console.log(dayFourForecast)
-        console.log(dayFiveForecast)
-
-        // Show in HTML
-        theDayDate.innerHTML = dayOneForecast + dayTwoForecast + dayThreeForecast + dayFourForecast + dayFiveForecast
-
-        // Temperature forecast
-        let tempOneForecast = json.list[0].main.temp.toFixed(1)
-        let tempTwoForecast = json.list[8].main.temp.toFixed(1)
-        let tempThreeForecast = json.list[16].main.temp.toFixed(1)
-        let tempFourForecast = json.list[24].main.temp.toFixed(1)
-        let tempFiveForecast = json.list[32].main.temp.toFixed(1)
-        console.log(tempOneForecast)
-        console.log(tempTwoForecast)
-        console.log(tempThreeForecast)
-        console.log(tempFourForecast)
-        console.log(tempFiveForecast)
-
-        // Show in HTML
-        theDayTemp.innerHTML = tempOneForecast + tempTwoForecast + tempThreeForecast + tempFourForecast + tempFiveForecast
-
-    });
+    .then((res) => res.json())
+    .then(handle5DayForecast)
+    .catch((err) => alert(err.message))

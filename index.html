@@ -6,30 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
     <title>Weather App</title>
 </head>
 
 <body>
-    <h1>Today's weather in:</h1>
-    <h1 id="location-timezone">Location</h1>
+
+    <header>
+        <h1>Today's weather in:</h1>
+        <h1 id="location-timezone">Location</h1>
+        <h2 id="temperature-degree">temperature</h2>
+    </header>
+
+    <section class="todays-weather-section">
+        <h4 id="todaysTempMinMax">min/max temp</h4>
+        <div id="temperature-description">Weather description</div>
+        <div id="sunset-time">Sunset</div>
+        <div id="sunrise-time">Sunrise</div>
+    </section>
 
 
-    <h2 id="temperature-degree">temperature</h2>
+    <section class="forecast-container">
+        <h2>5-day forecast</h2>
+        <div id="forecast-section">
 
-    <h4 id="todaysTempMinMax">min/max temp</h4>
-
-    <div id="temperature-description">Weather description</div>
-
-    <div id="sunset-time">Sunset</div>
-    <div id="sunrise-time">Sunrise</div>
-
-    <h2>5-day forecast</h2>
-    <div id="forecast-section">
-
-        <div id="day-date">Weekday</div>
-        <div id="day-temp">Temp that day</div>
-    </div>
-
+            <!-- <div id="day-date">Weekday</div>
+            <div id="day-temp">Temp that day</div> -->
+        </div>
+    </section>
     <script src="script1.js"></script>
     <!-- <script src="script.js"></script> -->
 </body>
