@@ -1,13 +1,13 @@
 body {
   margin: 0;
-  font-family: "Shadows Into Light Two", cursive;
+  font-family: 'Advent Pro', sans-serif;
   background: rgb(188, 229, 241);
   color: #fff;
 }
 
 h1 {
   font-size: 60px;
-  font-weight: bolder;
+  font-weight: lighter;
   margin: 0%;
 }
 
@@ -20,17 +20,16 @@ h3 {
   font-size: 20px; 
 }
 
-.container {
+.flex-container {
   margin: 20px auto;
   width: 90%;
   background: rgba(195, 213, 224, 0.877);
   width: 90%;
   height: auto;
   display: flex;
-  flex-wrap: wrap;
+  /*flex-wrap: wrap;*/
   justify-content: space-around;
-  align-items: center;
-  
+  align-items: center; 
 }
 
 .hero-alltheweather {
@@ -53,7 +52,34 @@ h3 {
   /* The image change size on all screens */
   position: relative
 }
+.flex-info {
+  width: auto;
+    height: auto;
+    /*display: flex;
+    flex-wrap: wrap;*/
+    justify-content: space-around;
+    align-items: center;
+}
 
+.flex-sunrise {
+  padding-top: 100px;
+  width: auto;
+  height: auto;
+ 
+  /*flex-wrap: wrap;*/
+  justify-content: space-around;
+  /*align-items: center;*/
+}
+
+.flex-sunset {
+  width: auto;
+  height: auto;
+
+  /*display: flex;
+  /*flex-wrap: wrap;*/
+  justify-content: space-around;
+  /*align-items: center;*/
+}
 footer {
   display: flex;
   align-items: center;

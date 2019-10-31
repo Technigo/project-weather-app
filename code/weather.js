@@ -6,6 +6,10 @@ const sunriseContainer = document.getElementById('sunriseinfo')
 const sunsetContainer = document.getElementById('sunsetinfo')
 
 
+var usaTime = new Date().toLocaleString("en-US", {timeZone: "America/New_York"});
+usaTime = new Date(usaTime);
+console.log('USA time: '+usaTime.toLocaleString())
+
 fetch('http://api.openweathermap.org/data/2.5/weather?q=Miami,%20USA,3166-2US-FLL&units=metric&APPID=804400298ac4f45795306a8ea7ab8f5e')
 .then((response) => {
   return response.json()
