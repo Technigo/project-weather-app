@@ -1,4 +1,3 @@
-//const container1 = document.getElementById("todaysWeather")
 const theTemperature = document.getElementById("temperature")
 const theWeatherSummary = document.getElementById("weatherSummary")
 const theCity = document.getElementById("city")
@@ -29,13 +28,11 @@ fetch(
     theCity.innerHTML += `${json.name}`
     theTemperature.innerHTML += `${Math.floor(json.main.temp)}°C`
     theWeatherSummary.innerHTML += `${json.weather[0].description}`
-    //theWeatherSummary.innerHTML += `sunny`
 
     theSunrise.innerHTML += `Sunrise at ${sunriseTime}`
     theSunset.innerHTML += `Sunset at ${sunsetTime}`
 
     const now = new Date(Date.now())
-    //const now = new Date(Date.now() - 20600000)
 
     const nightTime = now < sunrise || now > sunset
 
@@ -44,8 +41,7 @@ fetch(
       document.body.style.color = "#c2e2e2"
     }
 
-    //const id = json.weather[0].id
-    const id = 331
+    const id = json.weather[0].id
     if (id >= 200 && id <= 232) {
       theImage.src = "images/lightning.png"
     } else if (id >= 300 && id <= 531) {

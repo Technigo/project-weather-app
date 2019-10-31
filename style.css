@@ -1,11 +1,8 @@
 body {
   margin: 0;
   background-color: #c2e2e2;
-  /* font-family: "Assistant", sans-serif; */
-  /* font-family: "Wire One", sans-serif; */
-  /* font-family: "Yanone Kaffeesatz", sans-serif; */
   font-family: "Open Sans Condensed", sans-serif;
-  /* font-family: "Heebo", sans-serif; */
+
   color: #242525;
 }
 
@@ -60,7 +57,7 @@ p {
   align-items: center;
   text-align: left;
   font-weight: 300;
-  font-size: 2.5em;
+  font-size: 2em;
 }
 
 #divider1 {
