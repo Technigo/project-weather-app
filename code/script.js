@@ -65,7 +65,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&AP
 
   })
 
-//FETCH API FOR BOLLNAS EVERY THREE HOURS IN MAIN-BOTTOM
+//FETCH API FOR BOLLNAS EVERY THREE (SIX) HOURS IN MAIN-BOTTOM
 fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&cnt=10&APPID=8322e51e2df230498c7f0d4ce04304d6`)
 
   //Get the json from the API
@@ -84,7 +84,7 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&c
 
       if (index % 2 === 0) {
 
-        ////Conditions for showing icons instead of string for weather description - using let for eatherIcon since the conditions assign new values
+        //Conditions for showing icons instead of string for weather description - using let for eatherIcon since the conditions assign new values
         const weatherDay = forecast.weather[0].description
         let weatherIcon
 

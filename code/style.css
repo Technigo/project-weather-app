@@ -80,6 +80,7 @@ a {
   background: #fff;
   padding: 10px;
   border-bottom: 1px solid #D1D9D4;
+  font-size: 15px;
 }
 
 .bottom-headlines {
@@ -88,11 +89,9 @@ a {
   justify-content: space-between;
   border-bottom: 1px solid #D1D9D4;
   text-align: left;
-  font-size: 15px;
 }
 
 .forecast-bottom {
-  font-size: 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -102,7 +101,7 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-top: 8px;
+  padding-top: 10px;
 }
 
 /* To sync headlines and content in forecast divs*/
@@ -181,6 +180,11 @@ footer {
   
   .main-bottom {
     width: 50%;
+    font-size: 17px;
+  }
+
+  .forecast-details {
+    font-size: 14px;
   }
 
 }
