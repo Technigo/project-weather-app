@@ -80,6 +80,7 @@ a {
   min-height: 220px;
   background: #fff;
   padding: 10px;
+  border-top: 1px solid #D1D9D4;
   border-bottom: 1px solid #D1D9D4;
   font-size: 15px;
 }
@@ -212,7 +213,6 @@ footer {
 
 .active + .forecast-details {
   opacity: 1;
-  height: 100%;
   width: 100%;
   align-self: flex-end;
   border-bottom: 1px solid #D1D9D4;
