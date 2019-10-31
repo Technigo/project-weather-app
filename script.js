@@ -35,5 +35,4 @@ fetch('http://api.openweathermap.org/data/2.5/forecast?q=Tokyo,Japan&units=metri
         maxTemp.innerHTML += `Max temperature will be ${json.list[2].main.temp}°c`
         minTemp.innerHTML += `Min temperature will be ${json.list[1].main.temp}°c`
         fiveDaysPrognose.innerHTML += `${json.list[0, 1, 2, 3, 4].main.temp}`
-        forecastDiv.innerHTML += `<li>${date}</li>`
     })
