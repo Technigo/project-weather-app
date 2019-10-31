@@ -9,6 +9,7 @@ body {
     margin: 0px;
     display: flex;
     flex-direction: column;
+    min-width: 400px;
 }
 
 .container {
@@ -42,28 +43,17 @@ h4 {
     margin: 10px;
 }
 
-.temp-description {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    row-gap: 20px;
-    justify-items: center;
-
-
-
-}
 
 #weekdays {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-
-
+    gap: 10px;
 }
 
 .week_days {
-    display: grid;
-    grid-template-columns: repeat(5, fr);
-    grid-auto-rows: 100px;
-    border: 1px rgb(247, 231, 231) solid;
+    background-color: rgba(75, 102, 235, 0.185);
+    padding: 10px 0px 5px 0px;
+    border-radius: 10px;
     height: 100%;
     width: 100%;
     align-content: center;
