@@ -19,8 +19,7 @@ body{
     text-shadow: 4px 4px 6px tomato;
 }
 .temp-n-icon{
-    justify-content: center;
-    align-items: center;
+    display: flex;
 }
 .temp-n-icon h2{
     display:inline;
@@ -29,8 +28,8 @@ body{
 }
 .temp-n-icon img{
     display: inline;
-    height:50px;
-    width:auto;
+    height:auto;
+    width:70px;
 
 }
 

@@ -25,10 +25,11 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         }
 
         //ICON FOR TODAYS WEATHER//
-        if (json.weather[0].main === "Clouds") {
-            theDescription.src = "icons/windy.png"
+        if (json.weather[0].description === "scattered clouds") {
+            theDescription.src = "./icons/scattered_cloud.png"
+        } else if (json.weather[0].description === "overcast clouds") {
+            theDescription.src = "./icons/overcast_cloud.png"
         }
-
         console.log(json.weather)
 
         //MIN-MAX TEMP OF TODAY//
