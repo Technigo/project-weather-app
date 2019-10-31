@@ -1,4 +1,5 @@
 const container = document.getElementById("weatherToday")
+const containerCity = document.getElementById("weatherCity")
 const containerWeekly = document.getElementById("weatherWeekly")
 
 fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=60a9f45b45a7b39b290afa28477d7241')
@@ -9,42 +10,43 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     console.log(json)
     let sunriseHour = new Date((json.sys.sunrise)*1000).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})
     let sunsetHour = new Date((json.sys.sunset)*1000).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})
-    console.log(`Sunrise: ${sunriseHour}, Sunset: ${sunsetHour}`)
+    console.log(`Sunrise ${sunriseHour}, Sunset ${sunsetHour}`)
 
-    container.innerHTML = `Today's weather in: <p> ${json.name} </p>
-    ${json.main.temp.toFixed(1)} &#8451 ${json.weather[0].description}
-    <p> Sunrise: ${sunriseHour} </p> <p> Sunset: ${sunsetHour} </p>`
+    container.innerHTML = `${json.weather[0].description} | ${json.main.temp.toFixed(1)} &#8451 
+    <p>sunrise ${sunriseHour}</p> <p>sunset ${sunsetHour}</p>`
+    
+    containerCity.innerHTML = `<h2>${json.name}</h2>`
   })
 
 
   const handle5DayForecast = (json) => {
   const forecastDiv = document.getElementById('forecast')
-  const dates = {}
+  let weekDays = {}
   console.log(json)
 
   json.list.forEach((weather) => {
-    const date = weather.dt_txt.split(' ')[0]
-    if (dates[date]) {
-      dates[date].push(weather)
+    let weekDay = new Date((weather.dt)*1000).toLocaleDateString([], {weekday: 'long'})
+    if (weekDays[weekDay]) {
+      weekDays[weekDay].push(weather)
     } else {
-      dates[date] = [weather]
+      weekDays[weekDay] = [weather]
     }
   })
 
-  Object.entries(dates).forEach((item, index) => {
+  Object.entries(weekDays).forEach((item, index) => {
     if (index === 0) {
       return 
     }
 
-    const date = item[0]
+    let weekDay = item[0]
     const weatherValues = item[1]
 
     const temps = weatherValues.map((value) => value.main.temp)
     const minTemp = Math.min(...temps)
     const maxTemp = Math.max(...temps)
 
-    forecastDiv.innerHTML += `<li>${date} - min: ${minTemp.toFixed(1)}, 
-    max: ${maxTemp.toFixed(1)} </li>`
+    forecastDiv.innerHTML += `<li>${weekDay} - max: ${maxTemp.toFixed(1)} &#8451 
+    min: ${minTemp.toFixed(1)} &#8451 </li>`
   })
 }
 
