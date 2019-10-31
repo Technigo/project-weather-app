@@ -47,9 +47,45 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     const sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' })
     const sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' })
 
-    container.src = json.weather[0].description.image
-    container.innerHTML += `<h1>${json.name}</h1>`
+    json.weather.forEach((weatherType) => {
+      container.innerHTML = `${weatherType.description}`
+    })
+    container.innerHTML += `<h1>Todays weather in: ${json.name}</h1>`
     container.innerHTML += `<p>Temp is ${json.main.temp.toFixed(1)}</p>`
     container.innerHTML += `<p>Sunrise: ${sunriseTime}</p>`
     container.innerHTML += `<p>Sunset: ${sunsetTime}</p>`
   })
+
+
+const handle5DaysForecast = (json) => {
+  const forecastDiv = document.getElementById('forecast')
+  const dates = {}
+
+  json.list.forEach((weather) => {
+    const date = wather.dt_txt.split('')[0]
+    if (dates[date]) {
+      dates[date].push(weather)
+    } else {
+      dates[date] = [weather]
+    }
+  })
+
+  object.entries(dates).forEach((item, index) => {
+    if (index === 0) {
+      return
+    }
+    const date = item[0]
+    const weatherValues = item[1]
+
+    const temps = weatherValues.map((value) => value.main.temp)
+    const minTemp = Math.min(...temps)
+    const maxTemp = Math.max(...temps)
+
+    forecastDiv.innerHTML = `<li>${date} - min: ${minTemp.toFixed(1)}, max: ${maxTemp(1)}</li>`
+  })
+}
+
+
+fetch('http://api.openweathermap.org/data/2.5/forecast?id=2673730&APPID=80c5dd84564bfbfbbae5184faea61c48')
+  .then((res) => res.json())
+  .then(handle5DaysForecast)
