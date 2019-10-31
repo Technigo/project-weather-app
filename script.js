@@ -1,3 +1,5 @@
+/*const apiKey = 'd0398012f9d3d7dc84a0eecbfd46c69a'*/
+/*const location = 'Stockholm,Sweden' */
 const container = document.getElementById("weatherApp");
 const tempDescription = document.getElementById("container2")
 //const tempContainer = document.getElementById("temp");
@@ -8,12 +10,12 @@ const sunsetContainer = document.getElementById("sunset");
 fetch(
   "http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=d0398012f9d3d7dc84a0eecbfd46c69a"
 )
-  .then(response => {
+  .then((response) => {
     return response.json();
   })
 
-  .then(json => {
-    container.innerHTML = `<h1>Weather right now in ${json.name}.</h1>`;
+  .then((json) => {
+    container.innerHTML = `<h1>The weather in ${json.name}</h1>`;
 
     console.log(json); //first check
     tempDescription.innerHTML += `<p>${json.weather[0].description} | ${json.main.temp.toFixed(1)} &#8451</p>`
@@ -36,47 +38,103 @@ fetch(
     sunsetContainer.innerHTML += `<p>sunset ${sunsetTime}</p>`;
   });
 
-const forecastContainer = document.getElementById("forecast");
-const todayContainer = document.getElementById("today");
-const tueContainer = document.getElementById("tue");
-const wedContainer = document.getElementById("wed");
-const thuContainer = document.getElementById("thu");
-const friContainer = document.getElementById("fri");
 
-fetch(
-  "http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=d0398012f9d3d7dc84a0eecbfd46c69a"
+//Forecast 5 days
+const handle5DayForecast = (json) => {
+  const forecastDiv = document.getElementById('forecast')
+  console.log(json)
+  const dates = {}
 
-)
-  .then(response => {
-    return response.json();
+  json.list.forEach((weather) => {
+    const date = weather.dt_txt.split(' ')[0]
+    if (dates[date]) {
+      dates[date].push(weather)
+    } else {
+      dates[date] = [weather]
+    }
+
   })
+  Object.entries(dates).forEach((item, index) => {
+    if (index === 0) {
+      return
+    }
+    const date = item[0]
+    const weatherValues = item[1]
 
-  .then(json => {
+    //console.log(date, weatherValues)
+    const temps = weatherValues.map((value) => {
+      return value.main.temp
+    })
+    const minTemp = Math.min(...temps)
+    const maxTemp = Math.max(...temps)
+    console.log(date, minTemp, maxTemp)
+
+    const firstForecast = document.getElementById("day1")
+    const secondForecast = document.getElementById("day2")
+    const thirdForecast = document.getElementById("day3")
+    const forthForecast = document.getElementById("day4")
+    const fifthForecast = document.getElementById("day5")
+
+
+    // += gives the whole list
+    forecastDiv.innerHTML += `<ul>${date} | min: ${minTemp.toFixed(1)}° | max: ${maxTemp.toFixed(1)}° | </ul>`
+    //forecastDiv.innerHTML += `<ul>${date} | min: ${minTemp.toFixed(1)}° | max: ${maxTemp.toFixed(1)}° | ${json.list[0].weather[0].main} </ul>`
+    firstForecast.innerHTML = `<p> ${json.list[0].weather[0].main}</p>`;
+    secondForecast.innerHTML = `<p> ${json.list[8].weather[0].main}</p>`;
+    thirdForecast.innerHTML = `<p> ${json.list[16].weather[0].main}</p>`;
+    forthForecast.innerHTML = `<p> ${json.list[24].weather[0].main}</p>`;
+    fifthForecast.innerHTML = `<p> ${json.list[32].weather[0].main}</p>`;
+  })
+}
+
+fetch(`http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=d0398012f9d3d7dc84a0eecbfd46c69a`)
+  .then((res) => res.json())
+  .then(handle5DayForecast)
+
+
+
+  /*  *** 1st forecast edition ***
+  const forecastContainer = document.getElementById("forecast");
+  const todayContainer = document.getElementById("today");
+  const tueContainer = document.getElementById("tue");
+  const wedContainer = document.getElementById("wed");
+  const thuContainer = document.getElementById("thu");
+  const friContainer = document.getElementById("fri");*/
+
+  /*fetch(
+    "http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=d0398012f9d3d7dc84a0eecbfd46c69a"
+  
+  )
+    .then((response) => {
+      return response.json();
+    })
+
+  .then((json) => {
     //forecastContainer.innerHTML = `<h1>Weather right now in ${json.list}.</h1>`;
-    todayContainer.innerHTML = `<p>Todays: min temp ${json.list[0].main.temp_min.toFixed(
+    todayContainer.innerHTML = `<p>Today | min ${json.list[0].main.temp_min.toFixed(
       1
-    )}&#8451  |  max temp ${json.list[0].main.temp_max.toFixed(1)}
+    )}&#8451  |  max ${json.list[0].main.temp_max.toFixed(1)}
     &#8451  |  ${json.list[0].weather[0].description}</p>`;
 
-    tueContainer.innerHTML = `<p>Tuesday: min temp ${json.list[8].main.temp_min.toFixed(
+    tueContainer.innerHTML = `<p>Tue | min ${json.list[8].main.temp_min.toFixed(
       1
-    )}&#8451 | max temp ${json.list[8].main.temp_max.toFixed(1)}
+    )}&#8451 |  max ${json.list[8].main.temp_max.toFixed(1)}
     &#8451 | ${json.list[8].weather[0].description}</p>`;
 
-    wedContainer.innerHTML = `<p>Wednsday: min temp ${json.list[16].main.temp_min.toFixed(
+    wedContainer.innerHTML = `<p>Wed | min ${json.list[16].main.temp_min.toFixed(
       1
-    )}&#8451 | max temp ${json.list[16].main.temp_max.toFixed(1)}
+    )}&#8451 | max ${json.list[16].main.temp_max.toFixed(1)}
     &#8451 | ${json.list[16].weather[0].description} </p>`;
 
-    thuContainer.innerHTML = `<p>Thursday: min temp ${json.list[24].main.temp_min.toFixed(
+    thuContainer.innerHTML = `<p>Thu | min ${json.list[24].main.temp_min.toFixed(
       1
-    )}&#8451 | max temp ${json.list[24].main.temp_max.toFixed(1)}
+    )}&#8451 | max ${json.list[24].main.temp_max.toFixed(1)}
     &#8451 | ${json.list[24].weather[0].description}</p>`;
 
-    friContainer.innerHTML = `<p>Friday: min temp ${json.list[32].main.temp_min.toFixed(
+    friContainer.innerHTML = `<p>Fri | min ${json.list[32].main.temp_min.toFixed(
       1
-    )}&#8451 | max temp ${json.list[32].main.temp_max.toFixed(1)}
+    )}&#8451 | max ${json.list[32].main.temp_max.toFixed(1)}
     &#8451 | ${json.list[32].weather[0].description}</p>`;
 
     console.log(json);
-  });
+  }); */

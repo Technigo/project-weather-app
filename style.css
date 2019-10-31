@@ -1,6 +1,78 @@
 body {
+    display: flex;
+    flex-direction: column;
     margin: 60px;
     background-color: #f4f7f8;
     font-family: "Montserrat", sans-serif;
     color: #f47775;
   }
+
+  .todays-weather {
+    font-size: 23px;
+    margin-bottom: 30px;
+  }
+  .icon {
+    width: 27%;
+    height: 25%;
+  }
+
+  .greet {
+    font-size: 40px;
+    margin: 30px 0;
+  }
+
+  h1 {
+    margin-block-start: 0.50em;
+  }
+
+.forecastBox {
+    display: flex;
+    flex-direction: row;
+}
+.descriptionDiv ul {
+
+}
+ul {
+    padding: 0;
+    align-self: center;
+    font-size: 20px;
+}
+ul ul {
+    text-align: center;
+    /*border-bottom: dotted; */
+    margin-bottom: 20px;
+}
+  /*.forecast {
+    font-size: 23px;
+    text-align: center;
+    margin: 30px 0;
+    width: 70%;
+    align-self: center;
+  }*/
+  /*.forecast p {
+    border-bottom: 1px dotted;
+  
+  }*/
+
+  @media (max-width: 650px) {
+
+  }
+
+  @media (min-width: 651px) and (max-width: 1023px) {
+p {
+    font-size: 25px;
+}
+ul {
+    font-size: 3vw;
+}
+  }
+
+  @media (min-width: 1024px) {
+p {
+    font-size: 30px;
+}
+ul {
+    font-size: 30px;  
+}
+  }
+  
