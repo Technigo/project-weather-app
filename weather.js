@@ -1,4 +1,8 @@
 const container = document.getElementById('weatherApp')
+const currentCity = document.getElementById('location')
+const currentTemp = document.getElementById('temperature')
+const currentSunrise = document.getElementById('sunrise')
+const currentSunset = document.getElementById('sunset')
 
 fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=4836efb5df99b8aff3e5800f795a77c0')
     .then((response) => {
@@ -23,10 +27,12 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
         console.log(sunriseTime)
         console.log(sunsetTime)
 
-        container.innerHTML += `<h1>${json.name}</h1>`
-        container.innerHTML += `<h1>${json.main.temp} C</h1>`
-        container.innerHTML += `<h3>Sunrise: ${sunriseTime}</h3>`
-        container.innerHTML += `<h3>Sunset: ${sunsetTime}</h3>`
+        currentCity.innerHTML += `<h1>${json.name}</h1>`
+        currentTemp.innerHTML += `<h1>${json.main.temp} &#8451</h1>`
+        //currentTemp.innerHTML = <h1>${temp}<span>&#8451</span></h1>
+
+        currentSunrise.innerHTML += `<h3>Sunrise: ${sunriseTime}</h3>`
+        currentSunset.innerHTML += `<h3>Sunset: ${sunsetTime}</h3>`
     })
 
 
