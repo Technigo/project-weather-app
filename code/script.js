@@ -33,8 +33,8 @@ fetch(
 
     containerWeather.innerHTML = `<p><img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png"><br>${json.weather[0].main}</p>`;
     containerTemp.innerHTML = `<p>${Math.round(json.main.temp)} C°</p>`;
-    containersunrise.innerHTML = `<p><img src="../sunrise.png">${sunriseTime}</p>`;
-    containersunset.innerHTML = `<p><img src="../sunset.png">${sunsetTime}</p>`;
+    containersunrise.innerHTML = `<p><img src="sunrise.png">${sunriseTime}</p>`;
+    containersunset.innerHTML = `<p><img src="sunset.png">${sunsetTime}</p>`;
   });
 
 /// API for 5 days
