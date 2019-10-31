@@ -159,7 +159,7 @@ footer {
 }
 
 /* MEDIA QUERY TABLET */
-@media (min-width: 667px) and (max-width: 1024px) {  
+@media (min-width: 600px) {  
  
   .main-today {
     width: 60%;
@@ -172,7 +172,7 @@ footer {
 }
 
 /* MEDIA QUERY DESKTOP */
-@media (min-width: 1024px) {
+@media (min-width: 900px) {
 
   .main-today {
     width: 50%;

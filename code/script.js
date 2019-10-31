@@ -53,13 +53,13 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&AP
     const currentTime = new Date().toLocaleTimeString([], { timeStyle: 'short' })
     const mainTop = document.getElementById("main-top-bg")
 
-    if (currentTime < sunsetTime && currentTime > sunriseTime && window.matchMedia("(max-width: 667px)").matches) {
+    if (currentTime < sunsetTime && currentTime > sunriseTime && window.matchMedia("(max-width: 600px)").matches) {
       mainTop.style.backgroundImage = "url('assets/mountain-day-small.jpg')"
-    } else if (currentTime < sunsetTime && currentTime > sunriseTime && window.matchMedia("(min-width: 668px)").matches) {
+    } else if (currentTime < sunsetTime && currentTime > sunriseTime && window.matchMedia("(min-width: 600px)").matches) {
       mainTop.style.backgroundImage = "url('assets/mountain-day-big.jpg')"
-    } else if (currentTime > sunsetTime && window.matchMedia("(max-width: 667px)").matches) {
+    } else if (currentTime > sunsetTime && window.matchMedia("(max-width: 600px)").matches) {
       mainTop.style.backgroundImage = "url('assets/mountain-night-small.jpg')"
-    } else if (currentTime > sunsetTime && window.matchMedia("(min-width: 668px)").matches) {
+    } else if (currentTime > sunsetTime && window.matchMedia("(min-width: 600px)").matches) {
       mainTop.style.backgroundImage = "url('assets/mountain-night-big.jpg')"
     }
 
