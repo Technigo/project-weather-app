@@ -1,0 +1,104 @@
+body {
+  margin: auto;
+  background-color: rgb(199, 236, 255);
+}
+
+.wrapper {
+  margin: 20px 35px;
+  font-family: "Montserrat", sans-serif;
+}
+
+#forecast {
+  border-top: rgb(132, 181, 242) 2px solid;
+}
+
+#forecast .item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.item .day,
+.item .temp {
+  width: 25%;
+}
+
+.item .temp {
+  text-align: right;
+}
+
+#forecast .main {
+  margin: 0 10px;
+}
+
+.suntime img {
+  height: 20px;
+  width: auto;
+}
+
+footer {
+  border-top: rgb(132, 181, 242) 2px solid;
+  text-align: center;
+  font-size: 12px;
+  font-style: italic;
+}
+
+@media (min-width: 668px) {
+  .wrapper {
+    margin: 40px 60px;
+    max-width: 1600px;
+  }
+  h1 {
+    font-size: 50px;
+  }
+
+  h2 {
+    font-size: 35px;
+  }
+
+  .today img {
+    height: auto;
+    width: 130px;
+  }
+
+  p {
+    font-size: 28px;
+  }
+
+  .item {
+    font-size: 20px;
+  }
+
+  footer p {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1025px) {
+  body {
+    max-width: 1600px;
+  }
+
+  h1 {
+    font-size: 70px;
+  }
+
+  h2 {
+    font-size: 40px;
+  }
+
+  p {
+    font-size: 30px;
+  }
+  .suntime img {
+    height: 40px;
+  }
+
+  .item {
+    font-size: 22px;
+  }
+
+  footer {
+    padding-top: 20px;
+  }
+}
