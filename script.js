@@ -25,8 +25,8 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=${place}&units=metric&AP
         // description and temperature together
 
         const temp = Math.round(+json.main.temp)
-        const despcription = json.weather.forEach((element) => {
-            header.innerHTML = `<p> ${element.description} | ${temp} °C. </p>`
+        const description = json.weather.forEach((element) => {
+            header.innerHTML = `<p> ${element.description} | ${temp} °C </p>`
         })
 
         //time of sunrise/sunset in hours:minutes:seconds GMT
@@ -59,13 +59,50 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=${place}&units=metric&AP
         // city
 
         const city = json.name
-        container.innerHTML = `<h1>Get your sunnies ready! ${city} is looking for great weather today!</h2>`
+            /* container.innerHTML = `<h1>Get your sunnies ready! ${city} is looking for great weather today!</h2>` */
 
+        /*  if (json.weather === "clouds") {
+             container.innerHTML = `<h1>The weather in ${city} is looking cloudy today!`;
+         } else {
+             container.innerHTML = `<h1>Get your sunnies ready! ${city} is looking for great weather today!</h2>`
+         } */
+
+
+        //IF STATEMENT BASED ON WEATHER ID = json.weather[0].id
+
+        const id = json.weather[0].id
+
+        if (id >= 200 && id <= 232) {
+            weatherImage.src = "umbrella.png"
+            container.innerHTML = `<h1>Afraid of a little lightning? ${city} is looking for a few thunders today!</h2>`
+        } else if (id >= 300 && id <= 531) {
+            weatherImage.src = "umbrella.png"
+            container.innerHTML = `<h1>Get your umbrella ready! ${city} is looking for a rain today!</h2>`
+        } else if (id >= 600 && id <= 622) {
+            weatherImage.src = "snow.png"
+            container.innerHTML = `<h1>Get your beanie ready! ${city} is looking for snow today!</h2>`
+        } else if (id >= 701 && id <= 781) {
+            weatherImage.src = "fog.png"
+            container.innerHTML = `<h1>Missing London? ${city} is looking a foggy weather today!</h2>`
+        } else if (id === 800) {
+            if (nightTime) {
+                weatherImage.src = "moon.png"
+                container.innerHTML = `<h1>When was the last time you watch the stars? ${city} is good place to find some tonight!</h2>`
+            } else {
+                weatherImage.src = "glasses.png"
+                container.innerHTML = `<h1>Get your sunnies ready! ${city} is looking for a lot of sun today!</h2>`
+            }
+        } else if (id >= 801 && id <= 804) {
+            weatherImage.src = "cloud.png"
+            container.innerHTML = `<h1>Don't forget your favourite hoodie today! Could be a little cloudy in ${city} today!</h2>`
+        }
+
+
+        /* .catch((err) => {
+                console.log('caught errors', err)
+            }
+        } */
     })
-
-.catch((err) => {
-    console.log('caught errors', err)
-})
 
 // FORECAST
 
@@ -100,7 +137,7 @@ const handle5DayForecast = (json) => {
 
         // console.log(date, minTemp, maxTemp, avTemp)
 
-        forecastDiv.innerHTML += `<li>${date} - ${avTemp.toFixed(0)} °C</li>`
+        forecastDiv.innerHTML += `<li>${date} ${avTemp.toFixed(0)}°C</li>`
 
     })
 }

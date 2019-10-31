@@ -9,9 +9,13 @@ p {
     letter-spacing: 0.5px;
 }
 
+img {
+    max-width: 5em;
+}
+
 h1 {
-    margin-top: 3em;
-    margin-bottom: 2em;
+    margin-top: 1em;
+    margin-bottom: 1em;
     letter-spacing: 1.5px;
     font-weight: bolder;
 }
@@ -20,11 +24,17 @@ ul {
     list-style-type: none;
     padding-inline-start: 0px;
     font-size: 1.2em;
+    display: block;
+}
+
+li {
+    word-spacing: 7.6em;
+    border-bottom: navy dotted 2px;
 }
 
 @media (max-width: 600px) {
     body {
-        background: lightcoral;
+        background: pink;
         text-align: left;
     }
     h1 {
@@ -54,7 +64,7 @@ ul {
 
 @media (min-width: 1201px) {
     body {
-        background: grey;
+        background: lightgoldenrodyellow;
         text-align: center;
     }
     h1 {
