@@ -89,7 +89,9 @@ hr{
 .forecast{
     padding: 10px;
     display:flex;
+    justify-content: space-between;
 }
 ul{
     list-style-type: none;
+    padding: 0;
 }

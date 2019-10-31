@@ -25,11 +25,41 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         }
 
         //ICON FOR TODAYS WEATHER//
-        if (json.weather[0].description === "scattered clouds") {
+        let todaysWeather = json.weather[0].description
+        let todaysWeatherMain = json.weather[0].main
+
+        if (todaysWeather === "scattered clouds"
+            || todaysWeather === "few clouds") {
             theDescription.src = "./icons_white/scattered_cloud.png"
-        } else if (json.weather[0].description === "overcast clouds") {
+        } else if (todaysWeather === "overcast clouds"
+            || todaysWeather === "broken clouds") {
             theDescription.src = "./icons_white/overcast_cloud.png"
+        } else if (todaysWeather === "clear sky") {
+            theDescription.src = "./icons_white/clear_sky.png"
+        } else if (todaysWeatherMain === "Snow") {
+            theDescription.src = "./icons_white/snow.png"
+        } else if (todaysWeather === "light rain"
+            || todaysWeather === "moderate rain"
+            || todaysWeatherMain === "Drizzle") {
+            theDescription.src = "./icons_white/rain_light.png"
+        } else if (todaysWeather === "heavy intensity rain"
+            || todaysWeather === "very heavy rain"
+            || todaysWeather === "extreme rain"
+            || todaysWeather === "freezing rain"
+            || todaysWeather === "light intensity shower rain"
+            || todaysWeather === "shower rain"
+            || todaysWeather === "heavy intensity shower"
+            || todaysWeather === "ragged shower rain") {
+            theDescription.src = "./icons_white/rain_heavy.png"
+        } else if (todaysWeatherMain === "Thunderstorm") {
+            theDescription.src = "./icons_white/ligthning.png"
+        } else {
+            theDescription.src = "./icons_white/window.png"
         }
+
+
+
+
         console.log(json.weather)
 
         //MIN-MAX TEMP OF TODAY//
@@ -77,6 +107,8 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
                 dates[date] = [weather]
             }
         })
+
+
         Object.entries(dates).forEach((item, index) => {
             const date = item[0]
             const weatherValues = item[1]
@@ -88,8 +120,45 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
             if (index === 0) {
                 return
             }
-            console.log(date)
-            forecastDates.innerHTML += `<li>${date}</li>`
+
+            //ICON FOR TODAYS WEATHER//
+            let getForecast = json.list
+            let forecastMain = json.list
+
+            /*if (todaysWeather === "scattered clouds"
+                || todaysWeather === "few clouds") {
+                theDescription.src = "./icons/scattered_cloud.png"
+            } else if (todaysWeather === "overcast clouds"
+                || todaysWeather === "broken clouds") {
+                theDescription.src = "./icons/overcast_cloud.png"
+            } else if (todaysWeather === "clear sky") {
+                theDescription.src = "./icons/clear_sky.png"
+            } else if (todaysWeatherMain === "Snow") {
+                theDescription.src = "./icons/snow.png"
+            } else if (todaysWeather === "light rain"
+                || todaysWeather === "moderate rain"
+                || todaysWeatherMain === "Drizzle") {
+                theDescription.src = "./icons/rain_light.png"
+            } else if (todaysWeather === "heavy intensity rain"
+                || todaysWeather === "very heavy rain"
+                || todaysWeather === "extreme rain"
+                || todaysWeather === "freezing rain"
+                || todaysWeather === "light intensity shower rain"
+                || todaysWeather === "shower rain"
+                || todaysWeather === "heavy intensity shower"
+                || todaysWeather === "ragged shower rain") {
+                theDescription.src = "./icons/rain_heavy.png"
+            } else if (todaysWeatherMain === "Thunderstorm") {
+                theDescription.src = "./icons/ligthning.png"
+            } else {
+                theDescription.src = "./icons/window.png"
+            }*/
+            const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+            console.log(dayNames[todaysDate.getDay()])
+            const wholeDate = new Date(date)
+            const dayName = (dayNames[wholeDate.getDay()])
+
+            forecastDates.innerHTML += `<li>${dayName}</li>`
             forecastDescription.innerHTML += `<li>symbol</li>`
             forecastMinMax.innerHTML += `<li>${Math.round(minTemp * 10) / 10} C° / ${Math.round(maxTemp * 10) / 10} C°</li>`
         })
