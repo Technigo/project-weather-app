@@ -45,6 +45,7 @@ a {
   text-align: center;
   font-size: 25px;
   background-repeat: no-repeat; 
+  background-position: center center;
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -103,7 +104,7 @@ a {
   height: 0px; /*For CSS animation*/
   opacity: 0; /*For CSS animation*/
   overflow: hidden; /*For CSS animation*/
-  transition: all 0.8s ease-in-out; /*For CSS animation*/
+  transition: all 0.6s ease-in-out; /*For CSS animation*/
 }
 
 .active + .forecast-details {
@@ -132,15 +133,41 @@ footer {
   height: 100px;
 }
 
-/* MEDIA QUERY TABLET */
-@media (min-width: 600px) {  
+/* MEDIA QUERY 450PX */
+@media (min-width: 450px) {  
  
   .main-today {
-    width: 50%;
+    width: 80%;
   }
 
   .main-bottom {
-    width: 50%;
+    width: 80%;
+  }
+
+}
+
+/* MEDIA QUERY 550PX */
+@media (min-width: 550px) {  
+ 
+  .main-today {
+    width: 70%;
+  }
+
+  .main-bottom {
+    width: 70%;
+  }
+
+}
+
+/* MEDIA QUERY 750PX */
+@media (min-width: 750px) {  
+ 
+  .main-today {
+    width: 60%;
+  }
+
+  .main-bottom {
+    width: 60%;
   }
 
 }
@@ -170,6 +197,7 @@ footer {
     border-top: 1px solid #D1D9D4;
     border-bottom: 1px solid #D1D9D4;    
   }
+
 
 /* Accordion for forecast details */
 .forecast-details {

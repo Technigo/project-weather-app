@@ -1,3 +1,4 @@
+
 //FETCH API FOR BOLLNAS RIGHT NOW IN MAIN-TOP
 fetch(`https://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&APPID=8322e51e2df230498c7f0d4ce04304d6`)
 
@@ -19,6 +20,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&AP
     //Declare variable for the time of sunrise/sunset in HH:MM:SS
     const sunrise = new Date(json.sys.sunrise * 1000)
     const sunset = new Date(json.sys.sunset * 1000)
+
     //Declare new variable to show only HH:MM
     const sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' })
     const sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' })
@@ -53,13 +55,13 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=Bollnas&units=metric&AP
     const currentTime = new Date().toLocaleTimeString([], { timeStyle: 'short' })
     const mainTop = document.getElementById("main-top-bg")
 
-    if (currentTime < sunsetTime && currentTime > sunriseTime && window.matchMedia("(max-width: 600px)").matches) {
+    if (currentTime < sunsetTime && currentTime > sunriseTime && window.matchMedia("(max-width: 750px)").matches) {
       mainTop.style.backgroundImage = "url('assets/camp-day-small.jpg')"
-    } else if (currentTime < sunsetTime && currentTime > sunriseTime && window.matchMedia("(min-width: 600px)").matches) {
+    } else if (currentTime < sunsetTime && currentTime > sunriseTime && window.matchMedia("(min-width: 700px)").matches) {
       mainTop.style.backgroundImage = "url('assets/camp-day-big.jpg')"
-    } else if (currentTime > sunsetTime && window.matchMedia("(max-width: 600px)").matches) {
+    } else if (currentTime > sunsetTime && window.matchMedia("(max-width: 700px)").matches) {
       mainTop.style.backgroundImage = "url('assets/camp-night-small.jpg')"
-    } else if (currentTime > sunsetTime && window.matchMedia("(min-width: 600px)").matches) {
+    } else if (currentTime > sunsetTime && window.matchMedia("(min-width: 700px)").matches) {
       mainTop.style.backgroundImage = "url('assets/camp-night-big.jpg')"
     }
 
@@ -118,13 +120,8 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&c
         const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         const date = forecast.dt
         const realDate = new Date(date * 1000)
-        let shortDate
-        //Conditions depending on screen width
-        if (window.matchMedia("(min-width: 900px)").matches) {
-          shortDate = `${realDate.getDate()} ${months[realDate.getMonth()]} </br> ${addZeros(realDate.getUTCHours())}:${addZeros(realDate.getMinutes())}`
-        } else {
-          shortDate = `${realDate.getDate()} ${months[realDate.getMonth()]} ${addZeros(realDate.getUTCHours())}:${addZeros(realDate.getMinutes())}`
-        }
+        const shortDate = `${realDate.getDate()} ${months[realDate.getMonth()]}`
+        const shortTime = `${addZeros(realDate.getUTCHours())}:${addZeros(realDate.getMinutes())}`
 
         //To get the average temperature for the forecast
         const averageTemp = (forecast.main.temp_max + forecast.main.temp_min) / 2
@@ -136,6 +133,7 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&c
         forecastBottom.innerHTML +=
           `<section class="forecast" id="forecast${index}">
         <div class="forecast-date">${shortDate}</div>
+        <div class="forecast-time">${shortTime}</div>
         <div class="forecast-icon">${weatherIcon}</div>
         <div class="forecast-temp">${averageTemp.toFixed(1)} &deg;C</div>
         </section>
@@ -145,7 +143,6 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&c
         <p>Wind: ${forecast.wind.speed.toFixed(0)} m/s</p>
         <p>Max temp: ${forecast.main.temp_max.toFixed(1)} &deg;C</p>
         <p>Min temp: ${forecast.main.temp_min.toFixed(1)} &deg;C</p>
-
         </section>`
 
         //Index increases for every loop
@@ -167,4 +164,3 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&c
     document.getElementById("forecast8").onclick = toggle
 
   })
-
