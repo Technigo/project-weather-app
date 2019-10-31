@@ -118,7 +118,13 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&c
         const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         const date = forecast.dt
         const realDate = new Date(date * 1000)
-        const shortDate = `${realDate.getDate()} ${months[realDate.getMonth()]} kl ${addZeros(realDate.getUTCHours())}:${addZeros(realDate.getMinutes())}`
+        let shortDate
+        //Conditions depending on screen width
+        if (window.matchMedia("(min-width: 900px)").matches) {
+          shortDate = `${realDate.getDate()} ${months[realDate.getMonth()]} </br> ${addZeros(realDate.getUTCHours())}:${addZeros(realDate.getMinutes())}`
+        } else {
+          shortDate = `${realDate.getDate()} ${months[realDate.getMonth()]} ${addZeros(realDate.getUTCHours())}:${addZeros(realDate.getMinutes())}`
+        }
 
         //To get the average temperature for the forecast
         const averageTemp = (forecast.main.temp_max + forecast.main.temp_min) / 2
@@ -137,8 +143,8 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&c
         <section class="forecast-details">
         <p>Weather: ${forecast.weather[0].description}</p>
         <p>Wind: ${forecast.wind.speed.toFixed(0)} m/s</p>
-        <p>Max temperature: ${forecast.main.temp_max.toFixed(1)} &deg;C</p>
-        <p>Min temperature: ${forecast.main.temp_min.toFixed(1)} &deg;C</p>
+        <p>Max temp: ${forecast.main.temp_max.toFixed(1)} &deg;C</p>
+        <p>Min temp: ${forecast.main.temp_min.toFixed(1)} &deg;C</p>
 
         </section>`
 
@@ -161,3 +167,4 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Bollnas&units=metric&c
     document.getElementById("forecast8").onclick = toggle
 
   })
+
