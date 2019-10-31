@@ -17,7 +17,7 @@ const forecast = document.querySelector("#forecast");
 
 // API for today
 fetch(
-  "http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=68b38084465c789f4422e7d217060b68"
+  "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=68b38084465c789f4422e7d217060b68"
 )
   .then(response => {
     return response.json();
@@ -31,7 +31,7 @@ fetch(
     const sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: "short" });
     const sunsetTime = sunset.toLocaleTimeString([], { timeStyle: "short" });
 
-    containerWeather.innerHTML = `<p><img src="http://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png"><br>${json.weather[0].main}</p>`;
+    containerWeather.innerHTML = `<p><img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png"><br>${json.weather[0].main}</p>`;
     containerTemp.innerHTML = `<p>${Math.round(json.main.temp)} C°</p>`;
     containersunrise.innerHTML = `<p><img src="../sunrise.png">${sunriseTime}</p>`;
     containersunset.innerHTML = `<p><img src="../sunset.png">${sunsetTime}</p>`;
@@ -39,7 +39,7 @@ fetch(
 
 /// API for 5 days
 fetch(
-  "http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&cnt=40&APPID=68b38084465c789f4422e7d217060b68"
+  "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&cnt=40&APPID=68b38084465c789f4422e7d217060b68"
 )
   .then(response => {
     return response.json();
@@ -65,7 +65,7 @@ fetch(
         `<div class="item">` +
         `<div class="day">${days[currentDay]}</div>` +
         `<div class="main">` +
-        `<img src="http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png" alt="${item.weather[0].main}" />` +
+        `<img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png" alt="${item.weather[0].main}" />` +
         `</div>` +
         `<div class="temp">${Math.round(item.main.temp)}°</div>` +
         `</div>`;
