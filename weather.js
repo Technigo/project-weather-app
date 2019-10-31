@@ -9,7 +9,7 @@ const theTemperatureForecast = document.getElementById("temperatureForecast")
 const theWeather = document.getElementById("weatherForecast")
 
 fetch(
-  "http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=8c93692e6dae295a7a97fe22cff8e23c"
+  "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=8c93692e6dae295a7a97fe22cff8e23c"
 )
   .then(response => {
     return response.json()
@@ -76,7 +76,7 @@ fetch(
   })
 
 fetch(
-  "http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=8c93692e6dae295a7a97fe22cff8e23c"
+  "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=8c93692e6dae295a7a97fe22cff8e23c"
 )
   .then(response => {
     return response.json()
