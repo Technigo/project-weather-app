@@ -59,12 +59,26 @@ h1{
 img{
     width:25px;
 }
+.sunset-sunrise{
+    display:flex;
+    width: 50%;
+    justify-content: space-between;
+}
+.sunset-sunrise img{
+    width: 50px;
+}
+.sunsetdiv, .sunrisediv{
+    display:flex;
+    flex-direction: column;
+
+}
+
 h4, h5{
     margin:0;
 }
 p{
     margin: 0;
-    display:inline;
+    /* display:inline; */
 }
 hr{
     border-top: 1px solid t;

@@ -26,9 +26,9 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
 
         //ICON FOR TODAYS WEATHER//
         if (json.weather[0].description === "scattered clouds") {
-            theDescription.src = "./icons/scattered_cloud.png"
+            theDescription.src = "./icons_white/scattered_cloud.png"
         } else if (json.weather[0].description === "overcast clouds") {
-            theDescription.src = "./icons/overcast_cloud.png"
+            theDescription.src = "./icons_white/overcast_cloud.png"
         }
         console.log(json.weather)
 
@@ -43,8 +43,8 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         let sunriseHoursMinutes = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
         let sunsetHoursMinutes = new Date(json.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
 
-        sunriseTime.innerHTML = `Sun rises at ${sunriseHoursMinutes}`
-        sunsetTime.innerHTML = `Sun sets at ${sunsetHoursMinutes}`
+        sunriseTime.innerHTML = `${sunriseHoursMinutes}`
+        sunsetTime.innerHTML = `${sunsetHoursMinutes}`
 
         //WHICH BACKGROUND-IMG TO SHOW//
         let timeNow = todaysDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
@@ -57,7 +57,7 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     })
 
 
-const dates = {}
+const dates = {} //to group the dates//
 const forecastDates = document.getElementById("forecastDates")
 const forecastDescription = document.getElementById("forecastDescription")
 const forecastMinMax = document.getElementById("forecastMinMax")
@@ -69,7 +69,7 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
     .then((json) => {
         console.log(json)
         json.list.forEach((weather) => {
-            const date = weather.dt_txt.split(' ')[0]
+            const date = weather.dt_txt.split(' ')[0] //to split date from hours//
             if (dates[date]) {
                 dates[date].push(weather)
             }
@@ -88,7 +88,7 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
             if (index === 0) {
                 return
             }
-
+            console.log(date)
             forecastDates.innerHTML += `<li>${date}</li>`
             forecastDescription.innerHTML += `<li>symbol</li>`
             forecastMinMax.innerHTML += `<li>${Math.round(minTemp * 10) / 10} C° / ${Math.round(maxTemp * 10) / 10} C°</li>`
