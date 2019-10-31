@@ -74,9 +74,8 @@ hr{
 }
 .forecast{
     padding: 10px;
-
+    display:flex;
 }
-.day2div, .day3div, .day4div, .day5div{
-    display: flex;
-    justify-content: space-between;
+ul{
+    list-style-type: none;
 }
