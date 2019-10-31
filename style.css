@@ -36,12 +36,9 @@ header {
     padding: 20px;
 }
 
-
-/* 
-#forecast-section,
-#day-date,
-#day-temp {
+#forecast-section {
     display: flex;
-    padding: 10px;
+    flex-direction: column;
     justify-content: space-around;
-} */
+    list-style: none;
+}

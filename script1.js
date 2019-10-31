@@ -48,17 +48,20 @@ const handle5DayForecast = (json) => {
                 dates[date] = [weather]
             }
         })
-        //console.log(dates)
         // entries = turn objects into an array and each of those items have two items (0:keys(date) and 1:values(array with objects)). 
         // Doing this we can now loop it! 
     Object.entries(dates).forEach((item, index) => {
         if (index === 0) {
             return
         }
-        const date = item[0]
-        const weatherValues = item[1]
 
-        //console.log(date, weatherValues)
+        const weatherValues = item[1]
+            //Fixing dates to days
+        const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+        const date = (item[0])
+        const todaysDate = new Date(date)
+        const weekdayName = `${weekDays[todaysDate.getDay()]}`
+
         //map = almost same as forEach, it executes a function for each value/item in the array, 
         //difference is this one collects what ever we return (this case - "value.main.temp"). 
         //Map goes over each objects in this array and sucks out the temperature value and creates a new array of temp.values.
@@ -67,13 +70,8 @@ const handle5DayForecast = (json) => {
         const minTemp = Math.min(...temps)
         const maxTemp = Math.max(...temps)
 
-        console.log(date, minTemp, maxTemp)
-
-        forecastDiv.innerHTML += `<li>${date} - min: ${minTemp.toFixed(1)}, max: ${maxTemp.toFixed(
-            1
-          )}</li>`
+        forecastDiv.innerHTML += `<li>${weekdayName} - min: ${minTemp.toFixed(1)} °C, max: ${maxTemp.toFixed(1)} °C</li>`
     })
-
 }
 
 fetch("https://api.openweathermap.org/data/2.5/forecast?q=Malm%C3%B6&units=metric&APPID=8cbd9193bf1986e2387d169ac2d73a9e")
