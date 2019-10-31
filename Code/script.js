@@ -25,7 +25,7 @@ const goodWeather = [
 	"seize this oppurtunity to get some vitamin D?",
 	"call some friends and light up the BBQ?",
 	"take the bike and go see a friend?",
-	"go outside and take a good whiff of that fresh air?",
+	"go outside and get a good whiff of that fresh air?",
 	"do some kind of sports in the outdoors?",
 	"go hiking in the woods?",
 	"call some friends and go to the park?",
@@ -36,14 +36,11 @@ const randomSelector = array => {
 };
 
 const randomGreeting = () => {
-	activity.badWeather = randomSelector(goodWeather);
-};
-
-const randomGreeting1 = () => {
+	activity.goodWeather = randomSelector(goodWeather);
 	activity.badWeather = randomSelector(badWeather);
 };
+
 randomGreeting();
-randomGreeting1();
 
 fetch(
 	"https://api.openweathermap.org/data/2.5/weather?q=Stockholm&APPID=c984a4a14aa0bdc3e1ae923f5a4051c2&units=metric"
@@ -81,7 +78,7 @@ fetch(
 		} else if (json.weather[0].main === "Snow") {
 			weatherMessage.innerHTML = `<img src=\"assets/snow.png\"> <h2>Grab your snowracers! It is snowing in ${json.name}. Or maybe we should ${activity.badWeather}</h2>`;
 		} else if (json.weather[0].main === "Clear") {
-			weatherMessage.innerHTML = `<img src=\"assets/sunny.png\"> <h2>Dont forget to wear sunscreen if you go outside, in ${json.name} the sun is out! Maybe we should ${activity.goodWeather}</h2>`;
+			weatherMessage.innerHTML = `<img src=\"assets/sunny.png\"> <h2>Nice! Clear skies in ${json.name}. Maybe we should ${activity.goodWeather}</h2>`;
 		} else if (json.weather[0].main === "Rain") {
 			weatherMessage.innerHTML = `<img src=\"assets/rain.png\"> <h2>Poncho or umbrella? That is the question, because it is raining in ${json.name}. Maybe we should ${activity.badWeather}</h2>`;
 		} else if (
