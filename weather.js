@@ -22,17 +22,8 @@ const getForecast = async (longitude, latitude) => {
 
 const displayCurrentWeather = (weather, forecast) => {
 	const currentWeather = document.querySelector('.weather-details-current');
-	const sunrise = convertUnixToTime(weather.sys.sunrise, weather.timezone);
-	const sunriseUtcSuffix =
-		sunrise.timezoneOffset >= 0
-			? `+${sunrise.timezoneOffset}`
-			: `-${sunrise.timezoneOffset * -1}`;
-	const sunset = convertUnixToTime(weather.sys.sunset, weather.timezone);
-	const sunsetUtcSuffix =
-		sunset.timezoneOffset >= 0
-			? `+${sunset.timezoneOffset}`
-			: `-${sunset.timezoneOffset * -1}`;
 
+	// Change background colors if temperature is below 5 degrees Celsius.
 	const background =
 		weather.main.temp > 5
 			? 'linear-gradient(to bottom right, #e65c00, #f9d423)'
@@ -46,12 +37,12 @@ const displayCurrentWeather = (weather, forecast) => {
 	<img src="https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png">
 	<p class="location">${weather.displayName}</p>
 	<p class="overall-weather">${capitalize(weather.weather[0].description)}</p>
-	<p class="sunrise-sunset">Sunrise<span>${
-		sunrise.utcTime
-	} UTC${sunriseUtcSuffix}</span></p>
-	<p class="sunrise-sunset">Sunset<span>${
-		sunset.utcTime
-	} UTC${sunsetUtcSuffix}</span></p>
+	<p class="sunrise-sunset">Sunrise<span>${convertUnixToTime(
+		weather.sys.sunrise
+	)}</span></p>
+	<p class="sunrise-sunset">Sunset<span>${convertUnixToTime(
+		weather.sys.sunset
+	)}</span></p>
 	
 	<div class="statistics">
 		<div>

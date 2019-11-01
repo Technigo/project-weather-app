@@ -119,19 +119,50 @@ body {
 
 /* 5 day forecast */
 
+.weather-details-forecast {
+	padding: 20px;
+	color: rgba(255, 255, 255, 0.6);
+}
+
 ul {
 	list-style-type: none;
-	padding: 20px 20px 0 20px;
+	padding: 20px 0px 0 0;
 	color: white;
 }
 
 li {
 	display: flex;
 	justify-content: space-around;
+	align-content: flex-start;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	margin-top: 8px;
+	animation: fadeIn 1.2s linear;
+	animation-fill-mode: both;
+}
+
+li:nth-of-type(1) {
+	animation-delay: 0.1s;
+}
+
+li:nth-of-type(2) {
+	animation-delay: 0.2s;
+}
+
+li:nth-of-type(3) {
+	animation-delay: 0.3s;
+}
+
+li:nth-of-type(4) {
+	animation-delay: 0.4s;
+}
+
+li:nth-of-type(5) {
+	animation-delay: 0.5s;
 }
 
 li div {
 	width: 33%;
+	/* border: 1px solid red; */
 }
 
 li div:nth-of-type(1) {
@@ -153,11 +184,26 @@ li div:nth-of-type(3) {
 .icon {
 	width: 25px;
 	height: 25px;
+	/* border: 1px solid red; */
 }
 
 .forecast-day {
 	font-size: 16px;
 	font-weight: 600;
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+		top: 100px;
+	}
+	50% {
+		opacity: 0.8;
+		top: 0px;
+	}
+	100% {
+		opacity: 1;
+	}
 }
 
 /* Location search */

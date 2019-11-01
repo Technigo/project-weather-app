@@ -2,14 +2,14 @@ const weatherContainer = document.querySelector('.weather-app');
 const error = document.querySelector('.error');
 
 const convertUnixToTime = (time, timezone) => {
-	let timezoneOffset = timezone / 3600;
+	// let timezoneOffset = timezone / 3600;
 	// console.log(timezoneOffset);
 	let convertedTime = moment.unix(time);
-	// return moment(convertedTime).format('kk:ss');
-	return {
-		utcTime: moment(convertedTime).format('kk:ss'),
-		timezoneOffset: timezoneOffset
-	};
+	return moment(convertedTime).format('kk:ss');
+	// return {
+	// 	utcTime: moment(convertedTime).format('kk:ss'),
+	// 	timezoneOffset: timezoneOffset
+	// };
 };
 
 const convertUnixToDay = time => {
