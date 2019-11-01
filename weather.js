@@ -24,11 +24,14 @@ const displayCurrentWeather = (weather, forecast) => {
 	const currentWeather = document.querySelector('.weather-details-current');
 	const weatherContainer = document.querySelector('.weather-app');
 
-	// Change background colors if temperature is below 5 degrees Celsius.
+	// Change background colors if temperature is over 20 degrees Celsius.
 	const background =
-		weather.main.temp > 5
-			? 'linear-gradient(to bottom right, #e65c00, #f9d423)'
-			: 'linear-gradient(to bottom right, #1488cc, #2b32b2)';
+		weather.main.temp > 20
+			? 'linear-gradient(to bottom right, #ffc500, #c21500)'
+			: 'linear-gradient(to bottom right, #1cb5e0, #000046)';
+
+	// 'linear-gradient(to bottom right, #e65c00, #f9d423)' IN USE
+	// background: linear-gradient(to left, #000046, #1cb5e0);
 
 	document.body.style.background = background;
 
@@ -64,7 +67,7 @@ const displayCurrentWeather = (weather, forecast) => {
 		</div>
 		<div>
 			<p class="parameter-heading">Wind</p>
-			<p>${weather.wind.deg}&deg; @ ${weather.wind.speed} m/s</p>
+			<p>${weather.wind.deg}&deg; @ ${weather.wind.speed.toFixed(1)} m/s</p>
 		</div>
 	</div>
 	`;
@@ -86,7 +89,7 @@ const displayCurrentForecast = forecast => {
 	forecastWeatherList.innerHTML = `
 	<li>
 		<div class="forecast-day-heading">Weekday</div>
-		<div class="forecast-day-heading">Description</div>
+		<div class="forecast-day-heading"></div>
 		<div class="forecast-day-heading">Humidity</div>
 		<div class="forecast-day-heading">Pressure</div>
 		<div class="forecast-day-heading">Wind</div>
@@ -105,8 +108,43 @@ const displayCurrentForecast = forecast => {
 			</div>
 			<div class="forecast-day">${item.main.humidity}%</div>
 			<div class="forecast-day">${item.main.pressure} hPa</div>
-			<div class="forecast-day">150° @ 2.1 m/s</div>
+			<div class="forecast-day">${item.wind.deg}&deg; @ ${item.wind.speed.toFixed(
+			1
+		)} m/s</div>
 			<div class="forecast-day">${Math.floor(item.main.temp)} &deg;C</div>
 		</li>`;
 	});
+};
+
+const displayForecastEvery3Hours = (weather, forecast) => {
+	const forecastDaily = document.querySelector('#daily-forecast-list');
+
+	const currentForecastItems = forecast.list.filter(items => {
+		// console.log(
+		// 	convertUnixToDateTime(items.dt),
+		// 	convertUnixToDateTime(weather.dt)
+		// );
+		return (
+			convertUnixToDateTime(items.dt) <
+			convertUnixToDateTime(weather.dt).add(1, 'days')
+		);
+	});
+
+	// console.log(currentForecastItems);
+
+	forecastDaily.innerHTML = ``;
+
+	currentForecastItems.forEach(item => {
+		forecastDaily.innerHTML += `
+			<li>
+				<p>${convertUnixToTime(item.dt)}</p>
+				<p>${Math.floor(item.main.temp)} &deg;C</p>
+				<img class="icon" src="https://openweathermap.org/img/wn/${
+					item.weather[0].icon
+				}@2x.png" alt="Weather icon">
+			</li>
+		`;
+	});
+
+	// console.log(currentForecastItems);
 };

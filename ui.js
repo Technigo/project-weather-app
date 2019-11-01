@@ -18,6 +18,17 @@ const convertUnixToDay = time => {
 	return moment(convertedTime).format('dddd');
 };
 
+const convertUnixToDate = time => {
+	let convertedTime = moment.unix(time);
+	return moment(convertedTime).format('YYYY-MM-DD');
+};
+
+const convertUnixToDateTime = time => {
+	let convertedTime = moment.unix(time);
+	return moment(convertedTime);
+	// .format('YYYY-MM-DD kk:ss')
+};
+
 const capitalize = s => {
 	if (typeof s !== 'string') return '';
 	return s.charAt(0).toUpperCase() + s.slice(1);
@@ -40,6 +51,7 @@ const updateCity = async (longitude, latitude, formattedAddress) => {
 const updateUI = data => {
 	const { weather, forecast } = data;
 
+	displayForecastEvery3Hours(weather, forecast);
 	displayCurrentWeather(weather, forecast);
 	displayCurrentForecast(forecast);
 
