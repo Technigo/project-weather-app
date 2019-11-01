@@ -131,13 +131,7 @@ const getWeather = () => {
   }
 };
 
-const refreshWeather = position => {
-  if (typeof position === "object") {
-    city = `lat=${position.coords.latitude}&lon=${position.coords.longitude}`;
-  } else if (typeof position === "string") {
-    city = position;
-  }
-
+const getActualWeather = () => {
   fetch(
     `https://api.openweathermap.org/data/2.5/weather?${city}&units=metric&APPID=${apiKey}`
   )
@@ -146,14 +140,12 @@ const refreshWeather = position => {
     })
     .then(json => {
       if (json.cod === 200) {
-        clearData();
         let sunrise = new Date(json.sys.sunrise * 1000);
         let sunset = new Date(json.sys.sunset * 1000);
 
         document.getElementById("main").style.background = getBackgroundColor(
           json.weather[0].id
         );
-        console.log(json.weather[0].id);
 
         document.getElementById(
           "city"
@@ -173,7 +165,7 @@ const refreshWeather = position => {
           "icon"
         ).src = `https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png`;
       } else if (json.cod === 404) {
-        navigator.geolocation.getCurrentPosition(showPosition);
+        alert(`There was an error retrieving the location.`);
       } else {
         alert(`City not found.`);
       }
@@ -181,7 +173,9 @@ const refreshWeather = position => {
     .catch(err => {
       return err;
     });
+};
 
+const getNextHoursForecast = () => {
   fetch(
     `https://api.openweathermap.org/data/2.5/forecast?${city}&cnt=5&units=metric&APPID=${apiKey}`
   )
@@ -189,6 +183,7 @@ const refreshWeather = position => {
       return response.json();
     })
     .then(json => {
+      console.log(json);
       index = 1;
       json.list.forEach(weather => {
         let dt = new Date(0);
@@ -223,6 +218,20 @@ const refreshWeather = position => {
     .catch(err => {
       console.log("caught error", err);
     });
+};
+
+const refreshWeather = position => {
+  if (typeof position === "object") {
+    city = `lat=${position.coords.latitude}&lon=${position.coords.longitude}`;
+  } else if (typeof position === "string") {
+    city = position;
+  }
+
+  clearData();
+
+  getActualWeather();
+
+  getNextHoursForecast();
 };
 
 if (navigator.geolocation) {
