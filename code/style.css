@@ -5,7 +5,7 @@ body{
     display: flex;
     flex-direction: column;
     height: 100vh; /*Relative to 1% of the height of the viewport*/
-    margin:20px 0 0 0; /*So the background image goes all the way*/
+    /*margin:0 0 0 0; /*So the background image goes all the way*/
 }
 #switchCity{
     border: 1px solid navy;
@@ -86,11 +86,11 @@ hr{
     width: 60px;
     margin: 0 0 8px 0;
 }
-.forecast-n-footer {
+.forecastSection {
     padding: 10px;
     text-align: center;
 }
-.forecast-n-footer h1{
+.forecastSection h1{
     margin-bottom: 0;
 }
 .bigLine{
@@ -112,3 +112,23 @@ ul{
 #forecastMinMax{
     text-align: right;
 }
+
+.footer{
+    position: absolute;
+    bottom: 0;
+}
+footer{
+    display:flex;
+    justify-content: space-around;
+    font-size: 10px;
+    background: none;
+    align-items: center;
+    }
+    footer img {
+      width: 70px;
+      border-radius: 0;
+      margin: 10px;
+    }
+    footer a{
+      text-decoration: none;
+    }

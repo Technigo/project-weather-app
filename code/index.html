@@ -12,7 +12,7 @@
 </head>
 
 <body id="body">
-    <div id="today">
+    <section id="today">
         <!--<button id="switchCity" onclick="showKalmar()">Show me Kalmar</button>-->
         <h1 id="location"></h1>
         <div class="temp-n-icon">
@@ -35,16 +35,27 @@
                 <h4 id="sunset"></h4>
             </div>
         </div>
-    </div>
+    </section>
     <hr class="bigLine">
-    <div class="forecast-n-footer">
+    <section class="forecastSection">
         <h1>Forecast</h1>
         <div class="forecast">
             <ul id="forecastDates"></ul>
             <ul id="forecastDescription"></ul>
             <ul id="forecastMinMax"></ul>
         </div>
-    </div>
+    </section>
+    <section class="footer">
+        <footer>
+            <img class="logo" src="technigo-logo.svg" alt="Technigo logo">
+            <div>
+                <p class="footer-text"> This is a school project for the Technigo Bootcamp 2019.<br>Questions? Email: <a
+                        href="mailto:matilda.j.arvidsson@gmail.com">matilda.j.arvidsson@gmail.com</a>
+                </p>
+            </div>
+        </footer>
+    </section>
+
     <script type="text/javascript" src="./weather2.js"></script>
 </body>
 

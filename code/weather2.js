@@ -13,6 +13,9 @@ const showKalmar = () => {
     fetchToday()
     fetchForecast()
 }
+const showPuertoRico = () => {
+    city = "Puerto Rico, CO"
+}
 
 
 let todaysDate = new Date()
