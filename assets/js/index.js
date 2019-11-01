@@ -1,6 +1,6 @@
 //DOM selectors
-const widgetCurrent = document.getElementById('current')
-const widgetForecast = document.getElementById('forecast')
+const theCurrent = document.getElementById('current')
+const theForecast = document.getElementById('forecast')
 //Data storage
 const days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
 const weather = {}
@@ -36,7 +36,7 @@ fetch(forecastWeatherAPI)
   })
 
 const printWeather = () => {
-  widgetCurrent.innerHTML = ` 
+  theCurrent.innerHTML = ` 
     <div class="current-top">
       <div class="current-city">
         <h2>${weather.city}</h2>
@@ -83,7 +83,7 @@ const createForecast = (index, json) => {
 }
 
 const printForecast = () => {
-  widgetForecast.innerHTML = `
+  theForecast.innerHTML = `
     ${forecast.map((day) => {
       return `
         <div class="day">
