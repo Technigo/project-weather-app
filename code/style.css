@@ -8,16 +8,16 @@ body {
   margin: 0;
 }
 
-h2 {
-  font-size: 30px;
-  margin: 0;
-  font-weight: normal;
-}
-
 h1 {
   font-size: 38px;
   margin: 0;
   font-weight: bold;
+}
+
+h2 {
+  font-size: 30px;
+  margin: 0;
+  font-weight: normal;
 }
 
 h3 {
@@ -182,7 +182,7 @@ footer {
   
   .main-bottom {
     width: 65%;
-    font-size: 17px;
+    font-size: 18px;
     border-bottom: none;
   }
 
@@ -203,11 +203,6 @@ footer {
 /* Accordion for forecast details */
 .forecast-details {
   text-align: left;
-  line-height: 0.8;
-  font-size: 11px;
-  height: 0px; 
-  opacity: 0; 
-  overflow: hidden;
   transition: none;
 }
 
@@ -220,13 +215,16 @@ footer {
 
 /* Adds a + after the div */
 .forecast::after {
-  content: '+';
-  font-weight: bold;
+  margin-top: 30px;
+  content: 'Show details';
+  font-size: 12px;
+  margin-bottom: 30px;
 } 
 
 /* Changes to a - if class .active is added */
 .forecast.active::after {
-  content: '-';
+  content: 'Details:';
+  font-size: 12px;
   font-weight: bold;
 }
 
