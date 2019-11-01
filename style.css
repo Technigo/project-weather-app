@@ -1,0 +1,63 @@
+body {
+  background: white;
+  margin: 0 auto;
+  font-family: "Quicksand", sans-serif;
+}
+
+/**Top Section**/
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.top-container {
+  width: 100%;
+  text-align: center;
+  font-size: 25px;
+  height: 400px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: url(Assets/clouds.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h2 {
+  font-size: 35px;
+  margin: 0;
+  padding-top: 30px;
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: bold;
+  padding-top: 20px;
+  margin: 0;
+}
+
+h3 {
+  font-size: 20px;
+  margin: 0;
+  padding-top: 15px;
+  padding-bottom: 20px;
+}
+
+.today-second {
+  margin: 5px 0 0 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#sunrise {
+  padding-right: 120px;
+}
+
+/**Bottom Section**/
