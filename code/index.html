@@ -8,12 +8,12 @@
     <title>Project 5: Weather app</title>
     <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
 </head>
-<!--<p id="switchCity">Show me Kalmar</p>-->
 
-<body>
+<body id="body">
     <div id="today">
-        <h1>Today's weather in:</h1>
+        <!--<button id="switchCity" onclick="showKalmar()">Show me Kalmar</button>-->
         <h1 id="location"></h1>
         <div class="temp-n-icon">
             <h2 id="temperature"></h2>
@@ -37,7 +37,7 @@
         </div>
     </div>
     <div class="forecast-n-footer">
-        <h1>Forecast:</h1>
+        <h1>Forecast</h1>
         <div class="forecast">
             <ul id="forecastDates"></ul>
             <ul id="forecastDescription"></ul>

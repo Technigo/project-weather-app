@@ -1,5 +1,5 @@
 body{
-    background: linear-gradient(goldenrod, tan);
+    background: linear-gradient(rgb(14, 14, 80), rgb(0, 116, 161));
     color:white;
     font-family: 'Nunito', sans-serif;
     display: flex;
@@ -39,10 +39,10 @@ body{
     align-items: center;
     padding: 10px;
     /* width: 100%; */ /*When I got rid of this I got rid of horizontal scroll??*/
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("stockholm_night.jpeg");
-    background-position: center; /*Centers the image vertically*/
-    background-repeat: no-repeat;/*The image should only be shown once*/
-    background-size: 100vh; /*Makes the image go all over*/
+   /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("stockholm_night.jpeg");
+   /* background-position: center; /*Centers the image vertically*/
+   /* background-repeat: no-repeat;/*The image should only be shown once*/
+    /*background-size: 100vh; /*Makes the image go all over*/
 }
 h1{
     margin: 0;

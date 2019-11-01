@@ -91,7 +91,7 @@ const fetchToday = () => {
             //WHICH BACKGROUND-IMG TO SHOW//
             let timeNow = todaysDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
             if (timeNow >= sunriseHoursMinutes && timeNow <= sunsetHoursMinutes) {
-                document.getElementById("body").style.background = "linear-gradient(goldenrod, tan)"
+                document.getElementById("today").style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(stockholm_day.jpeg)"
 
             }
 
@@ -138,6 +138,43 @@ const fetchForecast = () => {
                 if (index === 0) {
                     return
                 }
+
+                //ICON FOR FORECAST WEATHER//
+                let forecastWeather = weatherValues[0].weather[0].description
+                let forecastMain = weatherValues[0].weather[0].main
+
+
+                if (forecastWeather === "scattered clouds"
+                    || forecastWeather === "few clouds") {
+                    forecastDescription1 = `<img src="./icons_white/scattered_cloud.png">`
+                } else if (forecastWeather === "overcast clouds"
+                    || forecastWeather === "broken clouds") {
+                    forecastDescription1 = `<img src="./icons_white/overcast_cloud.png">`
+                } else if (forecastWeather === "clear sky") {
+                    forecastDescription1 = `<img src="./icons_white/clear_sky.png">`
+                } else if (forecastMain === "Snow") {
+                    forecastDescription1 = `<img src="./icons_white/snow.png">`
+                } else if (forecastWeather === "light rain"
+                    || forecastWeather === "moderate rain"
+                    || forecastMain === "Drizzle") {
+                    forecastDescription1 = `<img src="./icons_white/rain_light.png">`
+                } else if (forecastWeather === "heavy intensity rain"
+                    || forecastWeather === "very heavy rain"
+                    || forecastWeather === "extreme rain"
+                    || forecastWeather === "freezing rain"
+                    || forecastWeather === "light intensity shower rain"
+                    || forecastWeather === "shower rain"
+                    || forecastWeather === "heavy intensity shower"
+                    || forecastWeather === "ragged shower rain") {
+                    forecastDescription1 = `<img src="./icons_white/rain_heavy.png">`
+                } else if (forecastMain === "Thunderstorm") {
+                    forecastDescription1 = `<img src="./icons_white/ligthning.png">`
+                } else if (forecastMain === "Fog") {
+                    forecastDescription1 = `<img src="./icons_white/fog.png">`
+                } else {
+                    forecastDescription1 = `<img src="./icons_white/window.png">`
+                }
+
                 const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
                 /*console.log(dayNames[todaysDate.getDay()])*/
                 const wholeDate = new Date(date)
@@ -150,6 +187,10 @@ const fetchForecast = () => {
                 forecastMinMax.innerHTML += `<li>${maxTemp.toFixed()} C° / ${minTemp.toFixed()} C°</li>`
             })
 
+
+
+            //forecastDescription1.src = `https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"`
+            //forecastDescription2.src = `https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"`
             console.log(dates)
         })
 
