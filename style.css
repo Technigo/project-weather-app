@@ -1,0 +1,151 @@
+html{
+  height: 100%;
+}
+
+body {
+  font-family: 'Comfortaa', cursive;
+  margin: 0;
+  height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  background:
+  linear-gradient(
+    to bottom,
+    rgba(28, 155, 240, 0.5),
+    rgba(189, 224, 245, 0.5)
+  )
+}
+
+
+#weatherHeadline {
+
+  background-image: url(attila-suranyi-J2e5yxS5qMY-unsplash.jpg);
+  
+  background-size: cover;
+  height: 300px;
+  color: white;
+  margin: 0;
+  
+}
+
+h1 {
+  text-align: center;
+  margin: 0;
+  padding-top: 130px;
+  text-shadow: 0 2px 0 black;
+  font-size: 40px;
+  font-weight: bolder;
+}
+
+#temperature {
+  text-align: center;
+  background-color: #818181;
+  margin: 0;
+  background: 0;
+  color: #333333;
+}
+
+#sunriseSunset {
+  text-align: center;
+  color: #333333;
+}
+
+
+h4 {
+  margin-left: 42px;
+  margin-top: 40px;
+  color: #333333;
+
+}
+
+li {
+  padding: 5px;
+  color: #333333;
+ letter-spacing: 0.1em;
+  
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+footer {
+  font-size: 12px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 10px;
+  text-align: center;
+  color: #333333; 
+}
+
+
+/*** TABLET ***/
+@media (min-width: 480px) {
+
+#weatherHeadline {
+  height: 400px;
+  padding-top: 200px;
+}
+
+h1 {
+  padding-top: 75px;
+  font-size: 80px;
+}
+
+h2 {
+  font-size: 45px;
+}
+
+h3 {
+  font-size: 30px;
+}
+
+h4 {
+font-size: 25px;
+}
+
+#forecast {
+  font-size: 20px; 
+}
+
+}  
+
+
+/*** DESKTOP ***/
+@media (min-width: 769px) {
+
+  body{
+    background-color: rgba(28, 155, 240, 0.5);
+    background-repeat: no-repeat;
+  }
+
+  #weatherHeadline {
+    height: 600px;
+    padding-top: 300px;
+  }
+
+  h1 {
+    font-size: 100px;
+    text-shadow: 0 3px 0 black;
+} 
+
+  footer {
+display: flex; 
+flex-direction: column;
+justify-content: flex-start;
+}
+
+h4 {
+  margin-left: 85px;
+}
+
+#forecast {
+  padding-bottom: 75px;
+  margin-left: 50px;
+}
+
+}
