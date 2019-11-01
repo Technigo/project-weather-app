@@ -5,13 +5,26 @@ const containerWeather = document.getElementById('weatherNow')
 const containerSun = document.getElementById('sunRiseSet')
 const apiKey = '996158b88361cd2c1991a7aee0bf6883'
 
-fetch(`http://api.openweathermap.org/data/2.5/weather?q=Kalmar,se&units=metric&APPID=${apiKey}`)
+fetch(`http://api.openweathermap.org/data/2.5/weather?q=Kalmar,SE&units=metric&APPID=${apiKey}`)
     .then((response) => {
         return response.json()
     })
     .then((json) => {
         containerWeather.innerHTML = `<h1>The weather in ${json.name} is ${json.weather[0].description} and it is ${json.main.temp.toFixed(1)} degrees.</h1>`
-        containerSun.innerHTML = `<h1>Sun rises at ${json.sys.sunrise} and sets at ${json.sys.sunset}.</h1>`
+        //fixing UNIX time stamp with help from Jolanta
+        //Declare variable for the time of sunrise/sunset
+        const unixTimestampSunrise = json.sys.sunrise
+        const unixTimestampSunset = json.sys.sunset
+
+        //To get sunrise/sunset time in hours:minutes:seconds
+        const sunrise = new Date(unixTimestampSunrise * 1000)
+        const sunset = new Date(unixTimestampSunset * 1000)
+
+        //Declare new variable to show only hh:mm
+        const sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' })
+        const sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' })
+
+        containerSun.innerHTML = `<h1>Sun rises at ${sunriseTime} and sets at ${sunsetTime}.</h1>`
         console.log(json)
     })
     .catch((err) => {
@@ -111,6 +124,9 @@ const handle5DayForecast = (json) => {
 }
 
 // Call the forecast endpoint for the selected city, parse the json, then call the function above
-fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Kalmar,Sweden&appid=${apiKey}&units=metric`)
+fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Kalmar,SE&appid=${apiKey}&units=metric`)
     .then((res) => res.json())
     .then(handle5DayForecast)
+    .catch((err) => {
+        console.log('caught error', err)
+    })
