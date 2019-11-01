@@ -107,7 +107,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${place}&units=metric&A
             } else { */
             container.innerHTML = `<h1>Get your sunnies ready! ${city} is looking for a lot of sun today!</h2>`
         } else if (id >= 801 && id <= 804) {
-            container.innerHTML = `<h1>Don't forget your favourite hoodie today! Could be a little cloudy in ${city} today!</h2>`
+            container.innerHTML = `<h1>Don't forget your favourite hoodie today! Could be a little cloudy in ${city}!</h2>`
         }
 
         // PICTURES
