@@ -167,6 +167,16 @@ const handle5DayForecast = (json) => {
         const maxTemp = Math.max(...temps)
         const avTemp = (minTemp + maxTemp) / 2
 
+        /*  const days = [
+             'Sunday',
+             'Monday',
+             'Tuesday',
+             'Wednesday',
+             'Thursday',
+             'Friday',
+             'Saturday'
+         ] */
+
         // console.log(date, minTemp, maxTemp, avTemp)
 
         forecastDiv.innerHTML += `<li>${date} ${avTemp.toFixed(0)}°C</li>`
