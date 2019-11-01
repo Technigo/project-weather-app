@@ -1,0 +1,103 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  display: flex;
+  min-height: 100vh;
+}
+
+.weather-app{
+  width: 320px;
+  margin: auto;
+  background-color: blue; 
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #000;
+}
+
+.current{
+  display: flex;
+  flex-direction: column;
+}
+
+.current-top {
+  background: linear-gradient(to bottom, #57c1eb 0%,#246fa8 100%);
+  width: 100%;
+  display: flex;
+}
+
+.current-city {
+  padding: 20px;
+  font-size: 1.2rem;
+}
+
+.current-city h2 {
+  font-size: 2rem;
+}
+
+.current-icon {
+  font-size: 4rem;
+  padding: 20px;
+}
+
+.current-details {
+  background-color: cornsilk;
+  padding: 20px;
+  display: flex;
+  border: 1px solid #000;
+}
+
+.current-temperature {
+  flex-basis: 50%;
+  font-size: 4rem;
+}
+
+.current-sun {
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.forecast {
+  background-color: #d5d5d7;
+}
+
+.day {
+  background: linear-gradient(0deg, rgba(153,153,153,1) 0%, rgba(213,213,215,1) 30%, rgba(213,213,215,1) 70%, rgba(153,153,153,1) 100%);
+  display: flex;
+}
+
+.day-name{
+  flex-basis: 60%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.temperatures {
+  flex-basis: 40%;
+  display: flex;
+}
+
+.minimum,
+.maximum {
+  display: flex;
+  flex-basis: 50%;
+  align-items: center;
+  font-size: 1.2rem;
+  justify-content: space-around;
+}
+
+.minimum {
+  background-color: #000066;
+  color: #d5d5d7;
+}
+
+.maximum {
+  background-color: #87ceeb;
+}
