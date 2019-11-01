@@ -53,6 +53,9 @@ body{
 .current-temperature {
   flex-basis: 50%;
   font-size: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .current-sun {
