@@ -152,7 +152,7 @@ const getActualWeather = () => {
         //   .setAttribute("src", getBackgroundVideo(json.weather[0].id));
         document.getElementById(
           "video"
-        ).innerHTML += `<source src="${getBackgroundVideo(
+        ).innerHTML = `<source src="${getBackgroundVideo(
           json.weather[0].id
         )}.mp4" type="video/mp4"></source><source src="${getBackgroundVideo(
           json.weather[0].id
