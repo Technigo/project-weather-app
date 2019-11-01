@@ -12,6 +12,8 @@ const theDayTemp = document.getElementById("day-temp");
 
 const forecastDiv = document.getElementById('forecast-section')
 
+// TESTING ICON PICTURE
+const theCurrentIcon = document.getElementById("currentIcon");
 
 
 
@@ -25,6 +27,7 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Malm%C3%B6&units=metric
         temperatureDegree.innerHTML = json.main.temp.toFixed(1) + " °C"
         temperatureMinMax.innerHTML = `min ${json.main.temp_min.toFixed(1)} °C / max ${json.main.temp_max.toFixed(1)} °C`
         temperatureDescription.innerHTML = `It's ${json.weather[0].description}`
+        theCurrentIcon.innerHTML = `<img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png"  alt="icon for weather" />`
 
         let theSunriseTime = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
         let theSunsetTime = new Date(json.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
@@ -32,6 +35,17 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Malm%C3%B6&units=metric
         theSunset.innerHTML = `The sun goes down: ${theSunsetTime}`
         theSunrise.innerHTML = `The sun rises: ${theSunriseTime}`
 
+        // Change background color depending on if its hot or cold temperature. 
+        //less than 10 degree = blue background. 11-20 degree green background. 20+ yellow backround.
+        let todaysTemp = json.main.temp.toFixed(1)
+        const theBodyBackground = document.getElementById("backgroundColor")
+        if (todaysTemp <= 10) {
+            theBodyBackground.style.background = "linear-gradient(to right bottom, #065fa3, #0d74ae, #2a88b6, #499cbd, #68afc4)"
+        } else if (todaysTemp >= 11 && todaysTemp <= 20) {
+            theBodyBackground.style.background = "linear-gradient(to right bottom, #157116, #3a8e30, #5aac4a, #79ca64, #99ea7f)"
+        } else {
+            theBodyBackground.style.background = "linear-gradient(to right bottom, #dc831e, #e29929, #e7af37, #ebc548, #eeda5c)"
+        }
     });
 
 // FORECAST SECTION
@@ -56,7 +70,8 @@ const handle5DayForecast = (json) => {
         }
 
         const weatherValues = item[1]
-            //Fixing dates to days
+
+        //Fixing dates to days
         const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
         const date = (item[0])
         const todaysDate = new Date(date)
@@ -70,7 +85,11 @@ const handle5DayForecast = (json) => {
         const minTemp = Math.min(...temps)
         const maxTemp = Math.max(...temps)
 
-        forecastDiv.innerHTML += `<li>${weekdayName} - min: ${minTemp.toFixed(1)} °C, max: ${maxTemp.toFixed(1)} °C</li>`
+        //get the weather descritopn for the forecast 
+        const descriptions = weatherValues[0].weather[0].description
+        const icons = weatherValues[0].weather[0].icon
+
+        forecastDiv.innerHTML += `<li>${weekdayName} - min: ${minTemp.toFixed(1)} °C, max: ${maxTemp.toFixed(1)} °C <img src="https://openweathermap.org/img/wn/${weatherValues[0].weather[0].icon}@2x.png" id="icon" alt="icons for weather" /> </li>`
     })
 }
 

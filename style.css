@@ -3,13 +3,11 @@
     box-sizing: border-box;
 }
 
-body {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+#backgroundColor {
     color: white;
-    background: linear-gradient(rgb(47, 150, 163), rgb(48, 62, 143));
     font-family: 'Montserrat', sans-serif;
+    height: 150vh;
+    width: 650px;
 }
 
 header {
@@ -31,14 +29,17 @@ header {
 
 .forecast-container {
     display: flex;
+    width: 100%;
     flex-direction: column;
-    text-align: center;
+    justify-content: space-around;
     padding: 20px;
 }
 
 #forecast-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
     list-style: none;
+    color: black;
+}
+
+#icon {
+    width: 10%;
 }
