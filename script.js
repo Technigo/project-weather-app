@@ -86,19 +86,19 @@ const getWindDirection = degrees => {
 
 const getBackgroundVideo = cod => {
   if (cod >= 200 && cod < 300) {
-    return "assets/thunderstorm.mp4";
+    return "assets/thunderstorm";
   } else if (cod >= 300 && cod < 400) {
-    return "assets/drizzle.mp4";
+    return "assets/drizzle";
   } else if (cod >= 500 && cod < 600) {
-    return "assets/rain.mp4";
+    return "assets/rain";
   } else if (cod >= 600 && cod < 700) {
-    return "assets/snow.mp4";
+    return "assets/snow";
   } else if (cod >= 700 && cod < 800) {
-    return "assets/fog.mp4";
+    return "assets/fog";
   } else if (cod === 800) {
-    return "assets/clear.mp4";
+    return "assets/clear";
   } else if (cod > 800) {
-    return "assets/cloudy.mp4";
+    return "assets/cloudy";
   }
 };
 
@@ -147,9 +147,16 @@ const getActualWeather = () => {
         let sunrise = new Date((json.sys.sunrise + json.timezone) * 1000);
         let sunset = new Date((json.sys.sunset + json.timezone) * 1000);
 
-        document
-          .getElementById("video")
-          .setAttribute("src", getBackgroundVideo(json.weather[0].id));
+        // document
+        //   .getElementById("video")
+        //   .setAttribute("src", getBackgroundVideo(json.weather[0].id));
+        document.getElementById(
+          "video"
+        ).innerHTML += `<source src="${getBackgroundVideo(
+          json.weather[0].id
+        )}.mp4" type="video/mp4"></source><source src="${getBackgroundVideo(
+          json.weather[0].id
+        )}.webm" type="video/webm"></source><p>This browser doesn't support video...</p>`;
         document.getElementById(
           "city"
         ).innerHTML = `${json.name}, ${json.sys.country}`;
