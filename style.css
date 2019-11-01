@@ -37,6 +37,7 @@ input[Type="text"] {
   padding: 6px;
   font-size: 20px;
   height: 26px;
+  width: 175px;
   border: none;
   border-radius: 2px;
 }
