@@ -1,0 +1,25 @@
+const handle5DayForecast = json => {
+ const forecastDiv = document.getElementById("forecast");
+ const dates = {};
+ json.list.forEach(weather => {
+   const date = weather.dt_txt.split(" ")[0];
+   if (dates[date]) {
+     dates[date].push(weather);
+   } else {
+     dates[date] = [weather];
+   }
+ });
+ Object.entries(dates).forEach((item, index) => {
+   if (index === 0) {
+     return;
+   }
+   const date = item[0];
+   const weatherValues = item[1];
+   const temps = weatherValues.map(value => value.main.temp);
+   const minTemp = Math.min(...temps);
+   const maxTemp = Math.max(...temps);
+   forecastDiv.innerHTML += `<li>${date} - min: ${minTemp.toFixed(
+     1
+   )}, max: ${maxTemp.toFixed(1)}</li>`;
+ });
+};

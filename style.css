@@ -1,3 +1,6 @@
 body {
   font-family: 'Gochi Hand', cursive;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
 }

@@ -1,0 +1,31 @@
+    let weatherDescription;
+    let weatherIcon;
+    let weatherId;
+
+    listitem.weather.forEach(weatherInformation => {
+      return ((weatherDescription = weatherInformation.description),
+        (weatherIcon = weatherinformation.icon),
+        (weatherId = weatherInformation.id)
+      );
+    });
+
+    const getWeatherConditionImage = getWeatherConditionNumber => {
+      if (getWeatherConditionNumber >= 200 && WeatherConditionNumber <= 232) {
+        console.log("Thunderstrom");
+      } else if (
+        (WeatherConditionNumber >= 300 && WeatherConditionNumber <= 321) ||
+        (WeatherConditionNumber >= 500 && WeatherConditionNumber <= 232)
+      ) {
+        console.log("Rain");
+      } else if (WeatherConditionNumber >= 600 && WeatherConditionNumber <= 622) {
+        console.log("Snow");
+      } else if (WeatherConditionNumber >= 701 && WeatherConditionNumber <= 781) {
+        console.log("Mist");
+      } else if (WeatherConditionNumber === 800) {
+        console.log("Clear sky");
+      } else if (WeatherConditionNumber >= 801 && WeatherConditionNumber <= 804) {
+        console.log("clouds");
+      } else {
+        console.log("Can't forcast weather");
+      }
+    }
