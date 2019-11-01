@@ -46,6 +46,10 @@ function toggle() {
   this.classList.toggle("active");
 }
 
+function rotate() {
+  this.classList.toggle("rotate");
+}
+
 const clearData = () => {
   document.getElementById("city").innerHTML = "";
   document.getElementById("summary").innerHTML = "";
@@ -80,21 +84,21 @@ const getWindDirection = degrees => {
   }
 };
 
-const getBackgroundColor = cod => {
+const getBackgroundVideo = cod => {
   if (cod >= 200 && cod < 300) {
-    return "#717a7d";
+    return "assets/thunderstorm.mp4";
   } else if (cod >= 300 && cod < 400) {
-    return "#8caeab";
+    return "assets/drizzle.mp4";
   } else if (cod >= 500 && cod < 600) {
-    return "#9BBB99";
+    return "assets/rain.mp4";
   } else if (cod >= 600 && cod < 700) {
-    return "#cdc9c9";
+    return "assets/snow.mp4";
   } else if (cod >= 700 && cod < 800) {
-    return "#dcdcdc";
+    return "assets/fog.mp4";
   } else if (cod === 800) {
-    return "#7ec0ee";
+    return "assets/clear.mp4";
   } else if (cod > 800) {
-    return "#ABA39A";
+    return "assets/cloudy.mp4";
   }
 };
 
@@ -140,13 +144,12 @@ const getActualWeather = () => {
     })
     .then(json => {
       if (json.cod === 200) {
-        let sunrise = new Date(json.sys.sunrise * 1000);
-        let sunset = new Date(json.sys.sunset * 1000);
+        let sunrise = new Date((json.sys.sunrise + json.timezone) * 1000);
+        let sunset = new Date((json.sys.sunset + json.timezone) * 1000);
 
-        document.getElementById("main").style.background = getBackgroundColor(
-          json.weather[0].id
-        );
-
+        document
+          .getElementById("video")
+          .setAttribute("src", getBackgroundVideo(json.weather[0].id));
         document.getElementById(
           "city"
         ).innerHTML = `${json.name}, ${json.sys.country}`;
@@ -165,9 +168,13 @@ const getActualWeather = () => {
           "icon"
         ).src = `https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png`;
       } else if (json.cod === 404) {
-        alert(`There was an error retrieving the location.`);
+        // alert(`There was an error retrieving the location.`);
+        document.getElementById(
+          "city"
+        ).innerHTML = `There was an error retrieving the location.`;
       } else {
-        alert(`City not found.`);
+        //alert(`City not found.`);
+        document.getElementById("city").innerHTML = `Location not found.`;
       }
     })
     .catch(err => {
@@ -214,6 +221,11 @@ const getNextHoursForecast = () => {
       document.getElementById("section3").onclick = toggle;
       document.getElementById("section4").onclick = toggle;
       document.getElementById("section5").onclick = toggle;
+      document.getElementById("arrow1").onclick = rotate;
+      document.getElementById("arrow2").onclick = rotate;
+      document.getElementById("arrow3").onclick = rotate;
+      document.getElementById("arrow4").onclick = rotate;
+      document.getElementById("arrow5").onclick = rotate;
     })
     .catch(err => {
       console.log("caught error", err);
