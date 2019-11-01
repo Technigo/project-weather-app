@@ -23,6 +23,12 @@ h1 {
   font-weight: 600;
   text-align: center;
 }
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 2.5rem;
+}
 /* Main grid */
 main {
   width: 100%;
@@ -36,7 +42,7 @@ main {
 }
 
 /* Today's forecast */
-.forecast-today {
+.current-forecast {
   align-items: center;
   color: #efefef;
   display: flex;
@@ -44,7 +50,7 @@ main {
   background-color: #333;
   position: relative;
 }
-.forecast-today::after {
+.current-forecast::after {
   justify-self: flex-start;
   border-left: 40px solid transparent;
   border-right: 40px solid transparent;
@@ -55,7 +61,7 @@ main {
   bottom: -40px;
   width: 0;
 }
-.weather-today {
+.current-weather {
   align-items: center;
   background-color: cornflowerblue;
   border-radius: 100%;
@@ -65,11 +71,11 @@ main {
   height: 250px;
   width: 250px;
 }
-.temperature-today {
+.current-temperature {
   font-size: 4rem;
   font-weight: 500;
 }
-.weather-today .weather-description::first-letter {
+.current-weather-description::first-letter {
   text-transform: uppercase;
 }
 
@@ -78,6 +84,47 @@ main {
   justify-content: space-between;
   width: 100%;
 }
+
+/* Multiday forecast */
+.forecast-time {
+  display: grid;
+  border-bottom: 1px solid #333;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 1rem;
+  padding: 1.5rem 0.5rem;
+  width: 100%;
+  position: relative;
+}
+
+.forecast-time:nth-child(even) {
+  background-color: #bbb;
+}
+.time {
+  font-weight: 500;
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 1;
+}
+
+.max-temperature {
+  font-weight: 500;
+  grid-column: 4 / span 2;
+  grid-row: 1 / span 1;
+}
+
+.min-temperature {
+  grid-column: 4 / span 2;
+  grid-row: 2 / span 1;
+}
+.weather-icon {
+  height: 60px;
+  width: 60px;
+  grid-column: 2 / span 2;
+  grid-row: 1 / span 2;
+  top: -25px;
+  position: absolute;
+}
+
 /* Weekday's forecast */
 .forecast {
   margin-top: 2rem;
@@ -89,125 +136,6 @@ main {
   grid-template-rows: repeat(2, 1fr);
   padding: 0 1rem;
 }
-.forecast .forecast-details:nth-child(even) {
-  background-color: #bfd5f2;
-}
-.forecast-weekday {
-  font-weight: 500;
-  grid-column: 1 / span 2;
-  grid-row: 1 / span 1;
-}
-.forecast-time {
-  grid-column: 3 / span 2;
-  grid-row: 1 / span 1;
-}
-
-.forecast-date {
-  grid-column: 1 / span 4;
-  grid-row: 2 / span 1;
-}
-
-.forecast-temperature {
-  grid-column: 6 / span 2;
-  grid-row: 1 / span 1;
-  text-align: center;
-}
-
-.forecast-description {
-  grid-column: 5 / span 4;
-  grid-row: 2 / span 1;
-  text-align: center;
-}
-
-.forecast-description::first-letter {
-  text-transform: uppercase;
-}
-.icon {
-  grid-column: 7 / span 2;
-  grid-row: 1 / span 1;
-  text-align: center;
-}
-.icon img {
-  height: 40px;
-  width: 40px;
-}
-/* Today's forecast */
-/*.forecast-today {
-  align-items: center;
-  background-color: #333;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-.forecast-today::after {
-  border-left: 40px solid transparent;
-  border-right: 40px solid transparent;
-  border-top: 40px solid #333;
-  content: "";
-  position: absolute;
-  bottom: -40px;
-}
-.forecast {
-  margin-top: 2rem;
-}
-.city {
-  display: block;
-  font-size: 1.5rem;
-  text-align: center;
-}
-.weather-today {
-  align-items: center;
-  background-color: cornflowerblue;
-  border-radius: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 200px;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  width: 200px;
-}
-.forecast-today .temperature {
-  font-size: 5rem;
-  font-weight: 500;
-}
-.weather-description::first-letter {
-  text-transform: uppercase;
-}*/
-/* Forecast for the four consecutive days */
-/*.forecast {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-.forecast-day {
-  border-bottom: 1px solid cornflowerblue;
-  display: grid;
-  grid-gap: 0.5em;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-.forecast .forecast-weekday {
-  grid-column: 1 / span 4;
-  grid-row: 1 / span 1;
-}
-.forecast .forecast-date {
-  grid-column: 1 / span 4;
-  grid-row: 2 / span 1;
-}
-.forecast .temperature {
-  grid-column: 5 / span 4;
-  grid-row: 1 / span 1;
-}
-
-.forecast .weather-description {
-  grid-column: 5 / span 4;
-  grid-row: 2 / span 1;
-}
-*/
 
 @media only screen and (min-width: 1024px) {
   main {
@@ -217,7 +145,9 @@ main {
   }
   .forecast-image {
     display: block;
+    background-attachment: fixed;
     background-size: cover;
+    background-repeat: no-repeat;
     grid-column: 1 / span 5;
     grid-row: 1 / span 8;
   }

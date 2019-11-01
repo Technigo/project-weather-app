@@ -1,103 +1,121 @@
-const forecastToday = document.getElementById("forecastToday");
-const temperatureToday = document.getElementById("temperatureToday");
-const forecastImage = document.getElementById("forecastImage");
-const weatherDescriptionToday = document.getElementById(
-  "weatherDescriptionToday"
-);
-const sun = document.getElementById("sun");
-const forecastCity = document.getElementById("city");
-const fourDayForecast = document.getElementById("forecast");
+const currentForecastImage = document.getElementById("forecastImage");
+const multidayForecast = document.getElementById("multidayForecast");
+const currentForecast = document.getElementById("currentForecast");
 const today = new Date();
 const apiKey = "61a23a5c50a7b6f6de8daad2de48ae27";
 const forecastLocation = "Stockholm,SE";
+const forecastData = [];
 
 // Fetch data from Open Weather map
 const handleWeatherForecast = json => {
   console.log(json);
-
-  getForecastNow(json);
-  getFourDayNoonForecast(json);
+  getForecastData(json);
+  forecastData.forEach(displayForecast);
+  forecastData.forEach(displayCurrentForecast);
 };
 
-const getForecastNow = json => {
-  // City
-  const city = json.city.name;
-  forecastCity.innerHTML = city;
+const getForecastData = json => {
+  const filterForecastData = json.list.filter(weather => {
+    const forecast = {};
+    forecast.city = json.city.name;
+    // Sunset and sunrise information
+    const timestampSunrise = new Date(json.city.sunrise * 1000);
+    const timestampSunset = new Date(json.city.sunset * 1000);
+    forecast.sunrise = timestampToHoursAndMinutes(timestampSunrise);
+    forecast.sunset = timestampToHoursAndMinutes(timestampSunset);
+    // Populate forecast object
+    const weatherTime = new Date(weather.dt_txt);
+    forecast.date = timestampToDate(weatherTime);
+    forecast.time = timestampToHoursAndMinutes(weatherTime);
 
-  // Sunset and sunrise information
-  const timestampSunrise = new Date(json.city.sunrise * 1000);
-  const timestampSunset = new Date(json.city.sunset * 1000);
-  const sunrise = convertTimestampToTime(timestampSunrise);
-  const sunset = convertTimestampToTime(timestampSunset);
+    //forecast.weekday = timestampToWeekday(weatherTime);
+    forecast.weekday = isToday(today, weatherTime);
 
-  sun.innerHTML = `<span class="sunrise">Sunrise: ${sunrise}</span>`;
-  sun.innerHTML += `<span class="sunset">Sunset: ${sunset}</span>`;
+    forecast.temperature = Math.floor(weather.main.temp);
+    forecast.temperatureMin = Math.floor(weather.main.temp_min);
+    forecast.temperatureMax = Math.floor(weather.main.temp_max);
+    forecast.description = weather.weather[0].description;
+    forecast.icon = weather.weather[0].icon;
+    forecast.id = weather.weather[0].id;
 
-  // Current weather condition and description
-  const currentWeatherCondition = json.list[0].weather[0].id;
-  const currentWeatherDescription = json.list[0].weather[0].description;
-  getWeatherConditionImage(currentWeatherCondition);
-  weatherDescriptionToday.innerHTML += currentWeatherDescription;
-
-  // Current temperature
-  const currentTemperature = Math.round(json.list[0].main.temp);
-  temperatureToday.innerHTML += `${currentTemperature}&#176;`;
-};
-// Check if weekday is today
-const isToday = (currentWeekday, forecastWeekday) => {
-  // If the date is equal to today's date
-  if (currentWeekday.getDate() === forecastWeekday.getDate()) {
-    // Return Today instead of weekday name
-    return "Today";
-  } else {
-    // Else return weekday name
-    return convertTimestampToWeekday(forecastWeekday);
-  }
-};
-
-// Get forecast for noon (except today)
-const getFourDayNoonForecast = json => {
-  const onlyNoonForecast = json.list.filter(forecastItem => {
-    const forecastItemTime = new Date(forecastItem.dt_txt);
-    if (
-      forecastItemTime.getHours() === 12 &&
-      forecastItemTime.getDate() !== today.getDate()
-    ) {
-      const forecastTimestamp = new Date(forecastItem.dt_txt);
-      const forecastDate = convertTimestampToDayInMonth(forecastTimestamp);
-      const forecastTime = convertTimestampToTime(forecastTimestamp);
-      const forecastWeekday = isToday(today, forecastTimestamp);
-      const forecastTemperature = Math.floor(forecastItem.main.temp);
-
-      let forecastWeatherDescription;
-      let forecastWeatherIcon;
-
-      forecastItem.weather.forEach(forecastWeather => {
-        forecastWeatherDescription = forecastWeather.description;
-        forecastWeatherIcon = forecastWeather.icon;
-      });
-      //Flytta upp från nedanför, behöver inte returnerna något behöver inte ha variablerna utanför heller?
-      fourDayForecast.innerHTML += `<p class="forecast-details"><span class="forecast-weekday">${forecastWeekday}</span><span class="forecast-time">${forecastTime}</span><span class="forecast-date">${forecastDate}</span> 
-      <span class="forecast-temperature">${forecastTemperature} &#176;</span><span class="forecast-description">${forecastWeatherDescription}</span><span class="icon"><img src="https://openweathermap.org/img/wn/${forecastWeatherIcon}@2x.png" alt="${forecastWeatherDescription}"</span></p>`;
-    }
+    // Add forecast object to array
+    forecastData.push(forecast);
   });
 };
 
-const convertTimestampToTime = timestamp => {
+forecastData.forEach(
+  (displayCurrentForecast = (item, index) => {
+    if (index === 0) {
+      // Current temperature
+      let output;
+      output = `<h1>Today's weather in ${item.city}</h1>`;
+      output += "<p class='current-weather'>";
+      output += `${item.temperature}&#176;`;
+      output += `${item.description}`;
+      output += "</p>";
+      output += "<p class='sun-information'>";
+      output += `<span class="sunrise">Sunrise: ${item.sunrise}</span>`;
+      output += `<span class="sunset">Sunset: ${item.sunset}</span>`;
+      output += "</p>";
+      currentForecast.innerHTML = output;
+
+      getWeatherConditionImage(item.id);
+    }
+    console.log(item.sunset);
+  })
+);
+
+forecastData.forEach(
+  (displayForecast = (item, index) => {
+    const currentDay = item.weekday;
+    let previousItem = index - 1;
+    console.log(previousItem);
+
+    //const yesterday = previousItem.weekday;
+    if (index === 0) {
+      multidayForecast.innerHTML = `<h2>${item.weekday} ${item.date}</h2>`;
+    } else if (
+      forecastData[index].weekday !== forecastData[previousItem].weekday
+    ) {
+      multidayForecast.innerHTML += `<h2>${item.weekday} ${item.date}</h2>`;
+    }
+    let output = "<p class='forecast-time'>";
+    output += `<span class="time">${item.time}</span>`;
+    output += `<span class="max-temperature">${item.temperatureMax}</span>`;
+    output += `<span class="min-temperature">${item.temperatureMin}</span>`;
+    output += `<img class="weather-icon" src="https://openweathermap.org/img/wn/${item.icon}@2x.png" alt="${item.description}"/>`;
+    output += "</p>";
+    multidayForecast.innerHTML += output;
+  })
+);
+
+const timestampToHoursAndMinutes = timestamp => {
   return timestamp.toLocaleTimeString([], { timeStyle: "short" });
 };
 
-const convertTimestampToDayInMonth = timestamp => {
+const timestampToDate = timestamp => {
   return timestamp.toLocaleDateString("en-GB", {
     day: "numeric",
     month: "long"
   });
 };
 
-const convertTimestampToWeekday = timestamp => {
+const timestampToWeekday = timestamp => {
   return timestamp.toLocaleDateString("en-GB", {
     weekday: "long"
   });
+};
+
+// Check if weekday is today
+const isToday = (today, currentWeekday) => {
+  // If the date is equal to today's date
+  if (today.getDate() === currentWeekday.getDate()) {
+    // Return Today instead of weekday name
+    return "Today";
+  } else {
+    // Else return weekday name
+    return timestampToWeekday(currentWeekday);
+  }
 };
 
 // Get different images depending on weather condition
@@ -115,10 +133,10 @@ const getWeatherConditionImage = weatherConditionNumber => {
     console.log("Mist, dust or smoke");
   } else if (weatherConditionNumber === 800) {
     console.log("Clear sky");
-    forecastImage.style.backgroundImage = "url('clear.jpg')";
+    currentForecastImage.style.backgroundImage = "url('clear.jpg')";
   } else if (weatherConditionNumber >= 801 && weatherConditionNumber <= 804) {
     console.log("Clouds");
-    forecastImage.style.backgroundImage = "url('overcast.jpg')";
+    currentForecastImage.style.backgroundImage = "url('overcast.jpg')";
   } else {
     console.log("Can't forecast weather");
   }
@@ -131,5 +149,4 @@ fetch(
   .then(response => {
     return response.json();
   })
-
   .then(handleWeatherForecast);
