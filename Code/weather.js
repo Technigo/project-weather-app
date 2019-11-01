@@ -4,50 +4,45 @@ const forecastImage = document.getElementById("forecastImage");
 const weatherDescriptionToday = document.getElementById(
   "weatherDescriptionToday"
 );
-const sunriseToday = document.getElementById("sunriseToday");
-const sunsetToday = document.getElementById("sunsetToday");
+const sun = document.getElementById("sun");
 const forecastCity = document.getElementById("city");
 const fourDayForecast = document.getElementById("forecast");
 const today = new Date();
-console.log(`Idag${today}`);
 const apiKey = "61a23a5c50a7b6f6de8daad2de48ae27";
 const forecastLocation = "Stockholm,SE";
 
-const handleTodaysWeatherForecast = json => {};
 // Fetch data from Open Weather map
 const handleWeatherForecast = json => {
   console.log(json);
-  const city = json.city.name;
 
-  const sunset = new Date(json.city.sunset * 1000);
-
-  forecastCity.innerHTML = city;
-  fourDayForecast.innerHTML = `<h2>Forecast for the next four days</h2>`;
-
-  // Convert the time to a string that displays local time, use timestyle short to display hours and minutes
-
-  const timeSunset = convertTimestampToTime(sunset);
-
-  sunsetToday.innerHTML = `Sunset: ${timeSunset}`;
-  getTodaysSunrise(json);
-
-  const getTodaysWeatherDescription = () => {
-    const thisWeatherDescription = json.list[0].weather[0].description;
-    console.log(`${thisWeatherDescription}`);
-    weatherDescriptionToday.innerHTML += thisWeatherDescription;
-  };
-  getTodaysWeatherDescription();
-  const getTodaysTemperature = () => {
-    const thisTemp = Math.round(json.list[0].main.temp);
-    console.log(`${temperatureToday}`);
-    temperatureToday.innerHTML += `${thisTemp}&#176;`;
-  };
-
-  getTodaysTemperature();
-
-  onlyNoonForecast(json);
+  getForecastNow(json);
+  getFourDayNoonForecast(json);
 };
 
+const getForecastNow = json => {
+  // City
+  const city = json.city.name;
+  forecastCity.innerHTML = city;
+
+  // Sunset and sunrise information
+  const timestampSunrise = new Date(json.city.sunrise * 1000);
+  const timestampSunset = new Date(json.city.sunset * 1000);
+  const sunrise = convertTimestampToTime(timestampSunrise);
+  const sunset = convertTimestampToTime(timestampSunset);
+
+  sun.innerHTML = `<span class="sunrise">Sunrise: ${sunrise}</span>`;
+  sun.innerHTML += `<span class="sunset">Sunset: ${sunset}</span>`;
+
+  // Current weather condition and description
+  const currentWeatherCondition = json.list[0].weather[0].id;
+  const currentWeatherDescription = json.list[0].weather[0].description;
+  getWeatherConditionImage(currentWeatherCondition);
+  weatherDescriptionToday.innerHTML += currentWeatherDescription;
+
+  // Current temperature
+  const currentTemperature = Math.round(json.list[0].main.temp);
+  temperatureToday.innerHTML += `${currentTemperature}&#176;`;
+};
 // Check if weekday is today
 const isToday = (currentWeekday, forecastWeekday) => {
   // If the date is equal to today's date
@@ -59,6 +54,35 @@ const isToday = (currentWeekday, forecastWeekday) => {
     return convertTimestampToWeekday(forecastWeekday);
   }
 };
+
+// Get forecast for noon (except today)
+const getFourDayNoonForecast = json => {
+  const onlyNoonForecast = json.list.filter(forecastItem => {
+    const forecastItemTime = new Date(forecastItem.dt_txt);
+    if (
+      forecastItemTime.getHours() === 12 &&
+      forecastItemTime.getDate() !== today.getDate()
+    ) {
+      const forecastTimestamp = new Date(forecastItem.dt_txt);
+      const forecastDate = convertTimestampToDayInMonth(forecastTimestamp);
+      const forecastTime = convertTimestampToTime(forecastTimestamp);
+      const forecastWeekday = isToday(today, forecastTimestamp);
+      const forecastTemperature = Math.floor(forecastItem.main.temp);
+
+      let forecastWeatherDescription;
+      let forecastWeatherIcon;
+
+      forecastItem.weather.forEach(forecastWeather => {
+        forecastWeatherDescription = forecastWeather.description;
+        forecastWeatherIcon = forecastWeather.icon;
+      });
+      //Flytta upp från nedanför, behöver inte returnerna något behöver inte ha variablerna utanför heller?
+      fourDayForecast.innerHTML += `<p class="forecast-details"><span class="forecast-weekday">${forecastWeekday}</span><span class="forecast-time">${forecastTime}</span><span class="forecast-date">${forecastDate}</span> 
+      <span class="forecast-temperature">${forecastTemperature} &#176;</span><span class="forecast-description">${forecastWeatherDescription}</span><span class="icon"><img src="https://openweathermap.org/img/wn/${forecastWeatherIcon}@2x.png" alt="${forecastWeatherDescription}"</span></p>`;
+    }
+  });
+};
+
 const convertTimestampToTime = timestamp => {
   return timestamp.toLocaleTimeString([], { timeStyle: "short" });
 };
@@ -76,53 +100,7 @@ const convertTimestampToWeekday = timestamp => {
   });
 };
 
-const onlyNoonForecast = json => {
-  // only print the forecast for noon
-  const noonForecast = json.list.filter(listitem => {
-    const thisTime = new Date(listitem.dt_txt);
-    if (thisTime.getHours() === 12 && thisTime.getDate() !== today.getDate()) {
-      const fullDateTime = new Date(listitem.dt_txt);
-      const forecastDate = convertTimestampToDayInMonth(fullDateTime);
-      const forecastWeekday = isToday(today, fullDateTime);
-
-      let weatherDescription;
-      let weatherIcon;
-      let weatherId;
-
-      listitem.weather.forEach(weatherInformation => {
-        return (
-          (weatherDescription = weatherInformation.description),
-          (weatherIcon = weatherInformation.icon),
-          (weatherId = weatherInformation.id)
-        );
-      });
-      console.log(`This weather id: ${weatherId}`);
-      getWeatherConditionImage(weatherId);
-      console.log(weatherId === 804);
-      console.log(weatherIcon);
-      fourDayForecast.innerHTML += `<p class="forecast-details"><span class="forecast-weekday">${forecastWeekday}</span> <span class="forecast-date">${forecastDate}</span> 
-      <span class="forecast-temperature">${Math.floor(
-        listitem.main.temp
-      )} &#176;</span><span class="forecast-description">${weatherDescription}</span><span class="icon"><img src="http://openweathermap.org/img/wn/${weatherIcon}@2x.png" alt="${weatherDescription}"</span></p>`;
-      if (weatherDescription === "overcast clouds") {
-        document.body.style.backgroundImage =
-          "url('http://127.0.0.1:5500/overcast.jpg')";
-      } else {
-        document.body.style.backgroundImage =
-          "url('http://127.0.0.1:5500/scattered-clouds.jpg')";
-      }
-    }
-  });
-};
-
-const getTodaysSunrise = json => {
-  const sunrise = new Date(json.city.sunrise * 1000);
-  console.log(`Sunrise${json.city.sunrise}`);
-  const timeSunrise = convertTimestampToTime(sunrise);
-  console.log(`KOnv${timeSunrise}`);
-  return (sunriseToday.innerHTML = `Sunrise: ${timeSunrise}`);
-};
-
+// Get different images depending on weather condition
 const getWeatherConditionImage = weatherConditionNumber => {
   if (weatherConditionNumber >= 200 && weatherConditionNumber <= 232) {
     console.log("Thunderstorm");
@@ -137,19 +115,21 @@ const getWeatherConditionImage = weatherConditionNumber => {
     console.log("Mist, dust or smoke");
   } else if (weatherConditionNumber === 800) {
     console.log("Clear sky");
+    forecastImage.style.backgroundImage = "url('clear.jpg')";
   } else if (weatherConditionNumber >= 801 && weatherConditionNumber <= 804) {
     console.log("Clouds");
+    forecastImage.style.backgroundImage = "url('overcast.jpg')";
   } else {
     console.log("Can't forecast weather");
   }
 };
 
 fetch(
-  `http://api.openweathermap.org/data/2.5/forecast?q=${forecastLocation}&units=metric&APPID=${apiKey}`
+  `https://api.openweathermap.org/data/2.5/forecast?q=${forecastLocation}&units=metric&APPID=${apiKey}`
 )
   // If promise is fulfilled convert response to json and return it
   .then(response => {
     return response.json();
   })
-  // Console log json
+
   .then(handleWeatherForecast);
