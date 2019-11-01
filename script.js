@@ -1,3 +1,4 @@
+//DOM 
 const container = document.getElementById('weather')
 const title = document.getElementById('weatherTitle')
 const sunRiseSet = document.getElementById('weatherSun')
@@ -12,6 +13,7 @@ const theTypeWeather = document.getElementById('typeOfWeather')
 const theMintemp = document.getElementById('tempMin')
 const theMaxtemp = document.getElementById('tempMax')
 
+//FIRST FETCH **********************************************************
 
 fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=9c5547207014dca2db40f4f51bbb601a')
     .then((response) => {
@@ -21,30 +23,35 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     
         json.weather.forEach((el) => {
             const temperature = Math.round(json.main.temp * 10 ) / 10
+            const id = el.id
             const desc = el.description
-            
-            const chooseWeather = () => {   
-                if(desc.includes("clear")) {
+
+                // comparing ids assigned to a different weathers
+                if(id === 800) {
                     theImage.src = `./img/sun1.png`
-                } else if (desc.includes('few')) {
+                } else if (id === 801) {
                     theImage.src = `./img/sunbehind1.png`
-                } else if (desc.includes('clouds') && !desc.includes('few')) {
+                } else if (id >= 802 && id <= 804) {
                     theImage.src = `./img/clouds1.png`
-                } else if (desc.includes('rain')) {
-                    theImage.src = `./img/rain2.png`
-                } else if (desc.includes('thunderstorm')) {
+                } else if (id >= 500 && id <= 531) {
+                    theImage.src = `./img/rainstrong.png`
+                } else if (id >= 200 && id <= 232) {
                     theImage.src = `./img/thunder1.png`
-                } else if (desc.includes('snow')) {
+                } else if (id >= 600 && id <= 622) {
                     theImage.src = `./img/snow1.png`
-                }
-            }
-            chooseWeather()
+                } else if (id >= 300 && id <= 321) {
+                    theImage.src = `./img/drizzle.png`
+                } else {
+                    theImage.src = `./img/fog.png`
+                } 
+            
 
             title.innerHTML = `<p class="main-temp">${temperature} <span>&#176;C</span></p>`
             title.innerHTML += `<h1>${json.name}</h1>`
             title.innerHTML += `<p>${desc}</p>`   
         })
 
+        // A function that holds all the information about sunrise and sunset
         const aboutRiseandSet = () => {
             const sunrise = json.sys.sunrise
             const sunset = json.sys.sunset
@@ -53,6 +60,8 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
             let sunriseMin = sunriseConverted.getMinutes()
             let sunsetMin = sunsetConverted.getMinutes()
 
+
+            //Adding 0 in front of a number if minutes are less than 10 to avoid having time like 16:9
             if (sunriseMin < 10 ) { 
                 sunriseMin = '0' + sunriseMin;
                 } else {
@@ -72,6 +81,8 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
         
     })
 
+//Second fetch***************************************************
+
     fetch('http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&cnt=40&APPID=9c5547207014dca2db40f4f51bbb601a')
     .then((response) => {
         return response.json()
@@ -82,22 +93,17 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
             
             const day = item.dt
             const dayConverted = new Date(day * 1000);
-            let dayMin = dayConverted.getMinutes()
             let dayHours = dayConverted.getHours()
             let dayWeekday = dayConverted.getDay()
             let theDayWeekdayArr = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
             let month = dayConverted.getMonth() + 1
             const temperaturemin = Math.round(item.main.temp_min * 10 ) / 10
             const temperaturemax = Math.round(item.main.temp_max * 10 ) / 10
-            
-            if (dayMin < 10 ) { 
-                dayMin = '0' + dayMin;
-                } else {
-                dayMin = dayMin + '';
-            }
 
+            //Pick data from all the days at 13:00 
             if(dayHours === 13){
 
+                //Assign the number that specifys a day to a day in theDayWeekdayaArr
                 theDayWeekdayArr.forEach((el, index) => {
                     if(dayWeekday === index) {
                         theDate.innerHTML += `<p>${el} ${dayConverted.getDate()}/${month}</p>`
@@ -129,7 +135,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
                 
                 }) 
             }
-
+            //Pick minimal temperatures from all the days at 7:00 
             if(dayHours === 7){
                 theMintemp.innerHTML += `<p>${temperaturemin} /</p>`
             }
