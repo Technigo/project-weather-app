@@ -34,9 +34,6 @@ li {
 }
 
 @media (max-width: 600px) {
-    body {
-        background: pink;
-    }
     h1 {
         font-size: 2em;
     }
@@ -47,7 +44,6 @@ li {
 
 @media (min-width: 601px) and (max-width: 800px) {
     body {
-        background: lightgreen;
         text-align: center;
     }
     h1 {
@@ -57,7 +53,6 @@ li {
 
 @media (min-width: 801px) and (max-width: 1200px) {
     body {
-        background: lightsalmon;
         text-align: center;
         max-width: 800px;
     }
@@ -67,11 +62,7 @@ li {
 }
 
 @media (min-width: 1201px) {
-    content {
-        justify-content: center;
-    }
     body {
-        background: lightgoldenrodyellow;
         text-align: center;
         max-width: 800px;
     }

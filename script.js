@@ -74,6 +74,23 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${place}&units=metric&A
 
         const id = json.weather[0].id
 
+        // BACKGROUD
+
+        if (id >= 200 && id <= 232) {
+            document.body.style.backgroundColor = "#003366"
+            document.body.style.color = "#c2e2e2"
+        } else if (id >= 300 && id <= 531) {
+            document.body.style.backgroundColor = "#7EB0DA"
+        } else if (id >= 600 && id <= 622) {
+            document.body.style.backgroundColor = "#D8DBE2"
+        } else if (id >= 701 && id <= 781) {
+            document.body.style.backgroundColor = "#DFE9EB"
+        } else if (id === 800) {
+            document.body.style.backgroundColor = "#FFE900"
+        } else if (id >= 801 && id <= 804) {
+            document.body.style.backgroundColor = "#68A9E2"
+        }
+
         // GREETING
 
         if (id >= 200 && id <= 232) {
@@ -97,7 +114,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${place}&units=metric&A
 
 
         if (id >= 200 && id <= 232) {
-            weatherImage.src = "umbrella.png"
+            weatherImage.src = "thor.png"
         } else if (id >= 300 && id <= 531) {
             weatherImage.src = "umbrella.png"
         } else if (id >= 600 && id <= 622) {
