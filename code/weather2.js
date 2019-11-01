@@ -156,7 +156,7 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
                 theDescription.src = "./icons/window.png"
             }*/
             const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-            console.log(dayNames[todaysDate.getDay()])
+            /*console.log(dayNames[todaysDate.getDay()])*/
             const wholeDate = new Date(date)
             const dayName = (dayNames[wholeDate.getDay()])
 
