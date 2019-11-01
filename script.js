@@ -5,7 +5,7 @@ const APIkey = "ead60d2e1c3fff29cccec12bd6a43922"
 
 const header = document.getElementById('weather')
 
-fetch(`http://api.openweathermap.org/data/2.5/weather?q=${place}&units=metric&APPID=${APIkey}`)
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=${place}&units=metric&APPID=${APIkey}`)
     .then((response) => {
         return response.json()
     })
@@ -50,7 +50,7 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=${place}&units=metric&AP
 
 const container = document.getElementById('greetings')
 
-fetch(`http://api.openweathermap.org/data/2.5/weather?q=${place}&units=metric&APPID=${APIkey}`)
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=${place}&units=metric&APPID=${APIkey}`)
     .then((response) => {
         return response.json()
     })
@@ -157,6 +157,6 @@ const handle5DayForecast = (json) => {
     })
 }
 
-fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${place}&units=metric&APPID=${APIkey}`)
+fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${place}&units=metric&APPID=${APIkey}`)
     .then((res) => res.json())
     .then(handle5DayForecast)

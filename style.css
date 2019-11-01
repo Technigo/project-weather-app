@@ -1,6 +1,7 @@
 body {
     font-family: 'Lato', sans-serif;
     margin: 2em;
+    justify-content: space-around;
 }
 
 p {
@@ -25,7 +26,6 @@ ul {
     list-style-type: none;
     padding-inline-start: 0px;
     font-size: 1.2em;
-    display: block;
 }
 
 li {
