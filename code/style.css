@@ -5,7 +5,7 @@ body{
     display: flex;
     flex-direction: column;
     height: 100vh; /*Relative to 1% of the height of the viewport*/
-    margin:20px 0 0 0; /*So the background image goes all the way*/
+    margin:30px 0 0 0; /*So the background image goes all the way*/
 }
 #switchCity{
     border: 1px solid navy;
@@ -38,7 +38,7 @@ body{
     flex-direction: column;
     align-items: center;
     padding: 10px;
-    margin-bottom: 30px;
+    margin-bottom:15px;
     /* width: 100%; */ /*When I got rid of this I got rid of horizontal scroll??*/
    /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("stockholm_night.jpeg");
    /* background-position: center; /*Centers the image vertically*/
@@ -46,7 +46,6 @@ body{
     /*background-size: 100vh; /*Makes the image go all over*/
 }
 h1{
-    margin: 0;
 }
 
 #todaysMinMax, #todaysWind{
@@ -61,8 +60,9 @@ img{
 }
 .sunset-sunrise{
     display:flex;
-    width: 50%;
+    width: 80%;
     justify-content: space-between;
+    margin-top: 20px;
 }
 .sunset-sunrise img{
     width: 50px;
@@ -81,7 +81,7 @@ p{
     /* display:inline; */
 }
 hr{
-    border-top: 1px solid t;
+    border-top: 1px solid white;
     border-bottom: none;
     width: 60px;
     margin: 0 0 8px 0;
@@ -90,6 +90,13 @@ hr{
     padding: 10px;
     text-align: center;
 }
+.forecast-n-footer h1{
+    margin-bottom: 0;
+}
+.bigLine{
+    width: 300px;
+align-self: center;
+}
 .forecast{
     display:flex;
     justify-content: space-between;
@@ -97,6 +104,7 @@ hr{
 ul{
     list-style-type: none;
     padding: 0;
+    font-size: 14px;
 }
 #forecastDates{
     text-align: left;
