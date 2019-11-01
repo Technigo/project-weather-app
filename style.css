@@ -1,12 +1,18 @@
 body {
-  /* background: linear-gradient(to left, rgba(97, 153, 153, 0),
-  rgb(50, 162, 226)); */
-  background: lightblue;
   color: darkblue;
+} 
+
+.background {
+  width: 100vw;
+  height: 100vw;
 }
 
 p {
   padding-bottom: 2px;
+}
+
+#infoTop {
+  margin: 1px;
 }
 
 img {
