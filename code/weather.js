@@ -19,6 +19,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
         let sunset = new Date(time2 * 1000)
         sun.innerHTML += `<p>Sunrise: ${`${sunrise.getHours()}.00`}</p>`
         sun.innerHTML += `<p>Sunset: ${`${sunset.getHours()}:${sunset.getMinutes()}`}</p>`
+
         const id = json.weather[0].id
         if (id >= 200 && id <= 232) {
             weatherIcon.src = "assets/lighting.png"
@@ -40,7 +41,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
             //partly cloudly 
         }
 
-        header.innerHTML = `<h1> ${json.name}</h1>`
+
 
 
 
