@@ -5,7 +5,7 @@ body{
     display: flex;
     flex-direction: column;
     height: 100vh; /*Relative to 1% of the height of the viewport*/
-    margin:30px 0 0 0; /*So the background image goes all the way*/
+    margin:20px 0 0 0; /*So the background image goes all the way*/
 }
 #switchCity{
     border: 1px solid navy;
