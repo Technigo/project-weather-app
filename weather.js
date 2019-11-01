@@ -24,22 +24,33 @@ const displayCurrentWeather = (weather, forecast) => {
 	const currentWeather = document.querySelector('.weather-details-current');
 	const sunrise = convertUnixToTime(weather.sys.sunrise, weather.timezone);
 	const sunriseUtcSuffix =
-		sunrise.timezoneOffset >= 0 ? '+' : `-${sunrise.timezoneOffset * -1}`;
+		sunrise.timezoneOffset >= 0
+			? `+${sunrise.timezoneOffset}`
+			: `-${sunrise.timezoneOffset * -1}`;
 	const sunset = convertUnixToTime(weather.sys.sunset, weather.timezone);
 	const sunsetUtcSuffix =
-		sunset.timezoneOffset >= 0 ? '+' : `-${sunset.timezoneOffset * -1}`;
+		sunset.timezoneOffset >= 0
+			? `+${sunset.timezoneOffset}`
+			: `-${sunset.timezoneOffset * -1}`;
+
+	const background =
+		weather.main.temp > 5
+			? 'linear-gradient(to bottom right, #e65c00, #f9d423)'
+			: 'linear-gradient(to bottom right, #1488cc, #2b32b2)';
+
+	document.body.style.background = background;
 
 	// Update current weather
 	currentWeather.innerHTML = `
 	<p class="current-temperature">${Math.floor(weather.main.temp)} &deg;C</p>
 	<img src="https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png">
-	<p class="location">${weather.name}, ${weather.sys.country}</p>
+	<p class="location">${weather.displayName}</p>
 	<p class="overall-weather">${capitalize(weather.weather[0].description)}</p>
 	<p class="sunrise-sunset">Sunrise<span>${
 		sunrise.utcTime
 	} UTC${sunriseUtcSuffix}</span></p>
 	<p class="sunrise-sunset">Sunset<span>${
-		sunrise.utcTime
+		sunset.utcTime
 	} UTC${sunsetUtcSuffix}</span></p>
 	
 	<div class="statistics">
@@ -53,11 +64,11 @@ const displayCurrentWeather = (weather, forecast) => {
 		</div>
 		<div>
 			<p class="parameter-heading">Temp	(min)</p>
-			<p>${Math.floor(weather.main.temp_min)} &deg;C</p>
+			<p>${weather.main.temp_min.toFixed(1)} &deg;C</p>
 		</div>
 		<div>
 			<p class="parameter-heading">Temp (max)</sup></p>
-			<p>${Math.floor(weather.main.temp_max)} &deg;C</p>
+			<p>${weather.main.temp_max.toFixed(1)} &deg;C</p>
 		</div>
 		<div>
 			<p class="parameter-heading">Wind</p>

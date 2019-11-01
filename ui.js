@@ -7,10 +7,8 @@ const convertUnixToTime = (time, timezone) => {
 	let convertedTime = moment.unix(time);
 	// return moment(convertedTime).format('kk:ss');
 	return {
-		utcTime: moment(convertedTime)
-			.add(timezoneOffset, 'hours')
-			.format('kk:ss'),
-		timezoneOffset
+		utcTime: moment(convertedTime).format('kk:ss'),
+		timezoneOffset: timezoneOffset
 	};
 };
 
