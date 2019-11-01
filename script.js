@@ -41,15 +41,21 @@ const handle5DayForecast = (json) => {
         const minTemp = Math.min(...temps)
         const maxTemp = Math.max(...temps)
 
-        forecast.innerHTML += `<li>${date} -  ${minTemp.toFixed(0)} to ${maxTemp.toFixed(0)}°</li>`
+        const day = (date) => {
+            new Date()
+            const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+        }
+        forecast.innerHTML += `<p>${date} -  ${minTemp.toFixed(0)} to ${maxTemp.toFixed(0)}°</p>`
     })
 }
 
 //create day from date
-const date = new Date()
-const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-console.log(dayNames[date.getDay()])
+// const date = new Date()
+// const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
+// const weekday= (dates) => {const date = new Date()
+//     const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+// }
 
         
 
@@ -63,8 +69,8 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     console.log(json)
 
     place.innerHTML = (json.name)
-    temp.innerHTML = (json.main.temp)
-    weather.innerHTML = (json.weather[0].description)
+    temp.innerHTML = (`<h2>${json.main.temp}°</h2>`)
+    weather.innerHTML = (`<p>Today is mainly ${json.weather[0].description}</p>`)
 
     //Declare variable for the time of sunrise/sunset and get them in hours:minutes:seconds GMT
     const sunriseCalc = new Date(json.sys.sunrise * 1000);
@@ -74,8 +80,8 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     const sunriseTime = sunriseCalc.toLocaleTimeString([], { timeStyle: 'short' })
     const sunsetTime = sunsetCalc.toLocaleTimeString([], { timeStyle: 'short' })
 
-    sunrise.innerHTML += (sunriseTime)
-    sunset.innerHTML = (sunsetTime)
+    sunrise.innerHTML += (`Sunrise at ${sunriseTime}`)
+    sunset.innerHTML += (`Sunset at ${sunsetTime}`)
         
     })
 
@@ -89,3 +95,26 @@ fetch('http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=
 })
 
 .then (handle5DayForecast)
+
+
+//STYLING
+let time = 06
+const background = document.body.style.background
+document.body.style.background = "url('/assets/04.jpg')";
+// Background depending on time
+if (time >= 00 && time < 03) {
+    console.log('Night')
+    document.body.style.background = "url('/assets/00.jpg')";
+} else if (time >= 03 && time < 04) {
+    document.body.style.background = "url('/assets/03.jpg')";
+} else if (time >= 04 && time < 06) {
+    document.body.style.background = "url('/assets/04.jpg')";
+} else if (time = 06 && time < 08) {
+    document.body.style.background = "url('/assets/06.jpg')";
+}  else if (time >= 08) {
+    document.body.style.background = "url('/assets/08.jpg')";
+} else {
+    console.log('Other')
+    document.body.style.background = "url('/assets/09.jpg')";
+}
+  
