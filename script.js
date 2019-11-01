@@ -8,7 +8,7 @@ const sunriseContainer = document.getElementById("sunrise");
 const sunsetContainer = document.getElementById("sunset");
 
 fetch(
-  "http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=d0398012f9d3d7dc84a0eecbfd46c69a"
+  "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=d0398012f9d3d7dc84a0eecbfd46c69a"
 )
   .then((response) => {
     return response.json();
@@ -68,7 +68,8 @@ const handle5DayForecast = (json) => {
     const minTemp = Math.min(...temps)
     const maxTemp = Math.max(...temps)
     console.log(date, minTemp, maxTemp)
-
+    
+    //the descriptions for the forecast
     const firstForecast = document.getElementById("day1")
     const secondForecast = document.getElementById("day2")
     const thirdForecast = document.getElementById("day3")
@@ -77,17 +78,17 @@ const handle5DayForecast = (json) => {
 
 
     // += gives the whole list
-    forecastDiv.innerHTML += `<ul>${date} | min: ${minTemp.toFixed(1)}° | max: ${maxTemp.toFixed(1)}° | </ul>`
-    //forecastDiv.innerHTML += `<ul>${date} | min: ${minTemp.toFixed(1)}° | max: ${maxTemp.toFixed(1)}° | ${json.list[0].weather[0].main} </ul>`
-    firstForecast.innerHTML = `<p> ${json.list[0].weather[0].main}</p>`;
-    secondForecast.innerHTML = `<p> ${json.list[8].weather[0].main}</p>`;
-    thirdForecast.innerHTML = `<p> ${json.list[16].weather[0].main}</p>`;
-    forthForecast.innerHTML = `<p> ${json.list[24].weather[0].main}</p>`;
-    fifthForecast.innerHTML = `<p> ${json.list[32].weather[0].main}</p>`;
+    forecastDiv.innerHTML += `<ul>${date} | min: ${minTemp.toFixed(1)}° | max: ${maxTemp.toFixed(1)}°  </ul>`
+    
+    firstForecast.innerHTML = `<p> | ${json.list[7].weather[0].main.toLowerCase()}</p>`;
+    secondForecast.innerHTML = `<p> | ${json.list[15].weather[0].main.toLowerCase()}</p>`;
+    thirdForecast.innerHTML = `<p>  | ${json.list[23].weather[0].main.toLowerCase()}</p>`;
+    forthForecast.innerHTML = `<p> | ${json.list[31].weather[0].main.toLowerCase()}</p>`;
+    fifthForecast.innerHTML = `<p> | ${json.list[39].weather[0].main.toLowerCase()}</p>`;
   })
 }
 
-fetch(`http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=d0398012f9d3d7dc84a0eecbfd46c69a`)
+fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=d0398012f9d3d7dc84a0eecbfd46c69a`)
   .then((res) => res.json())
   .then(handle5DayForecast)
 

@@ -28,6 +28,7 @@ body {
 .forecastBox {
     display: flex;
     flex-direction: row;
+    justify-content: center;
 }
 .descriptionDiv ul {
 
@@ -61,17 +62,30 @@ ul ul {
   @media (min-width: 651px) and (max-width: 1023px) {
 p {
     font-size: 25px;
+    margin-bottom: 20px;
+    margin-top: 0;
 }
-ul {
-    font-size: 3vw;
+ul ul {
+    font-size: 25px;
 }
   }
 
   @media (min-width: 1024px) {
+.todays-weather {
+  margin-left: inherit;
+}
+
+.greet {
+    align-self: center;
+}
+
 p {
     font-size: 30px;
+    margin-bottom: 20px;
+    margin-top: 0;
 }
-ul {
+
+ul ul {
     font-size: 30px;  
 }
   }
