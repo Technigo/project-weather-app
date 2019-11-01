@@ -147,7 +147,7 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&c
         forecastBottom.innerHTML +=
           `<section class="forecast" id="forecast${index}">
         <div class="forecast-date">${shortDate}</div>
-        <div class="forecast-time"><b>${shortTime}</b></div>
+        <div class="forecast-time">${shortTime}</div>
         <div class="forecast-icon">${weatherIcon}</div>
         <div class="forecast-temp">${averageTemp.toFixed(1)} &deg;C</div>
         </section>

@@ -98,6 +98,16 @@ a {
   padding-top: 10px;
 }
 
+.forecast-date, .forecast-time {
+  min-width: 45px;
+  text-align: left;
+}
+
+.forecast-icon, .forecast-temp {
+  min-width: 45px;
+  text-align: right;
+}
+
 /* Accordion for forecast details */
 .forecast-details {
   line-height: 0.8;
@@ -197,6 +207,10 @@ footer {
     width: 100%;
     border-top: 1px solid #D1D9D4;
     border-bottom: 1px solid #D1D9D4;    
+  }
+
+  .forecast-date, .forecast-time, .forecast-icon, .forecast-temp {
+    text-align: center;
   }
 
 
