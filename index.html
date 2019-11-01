@@ -9,37 +9,57 @@
   <title>What's the weather</title>
 </head>
 <body>
-  <div class="weatherTop" id="weatherNow">
-      <img src="" alt="">
+  <main>
+  <div  id="weatherNow">
+      <!--<img src="" alt="">-->
       <h1 id="city"></h1>
-      <p id="temperature"></p>
+      <div class="icon">
+          <img id="weather_icon" src="" alt="">
+          <p id="temperature"></p>
+        </div>
+    
+      
       <p id="description"></p>
+     
       <div class="sunTimes">
         <img class="sunsetSunrise" src="/assets/sunrise.png" alt="sunrise">
         <p class="sunrise" id="sunrise"></p>
         <img class="sunsetSunrise" src="/assets/sunset.png" alt="sunrise">
         <p id="sunset"></p>
      </div>
+
+      
   </div>
+
 
   <div id="weatherFiveDays">
     <div class="timeContainer">
+        <img id="iconOne" src="" alt="">
       <p id="timeOne"></p>
-      <img class="descriptionAnimation" src="/assets/Group 16.png" alt="">
+      
       <p id="descriptionOne"></p>
       <p id="tempOne"></p>
     </div>
     <div class="timeContainer">
+      <img id="iconTwo" src="" alt="">
       <p id="timeTwo"></p>
       <p id="descriptionTwo"></p>
       <p id="tempTwo"></p>
     </div>
     <div class="timeContainer">
+      <img id="iconThree" src="" alt="">
       <p id="timeThree"></p>
       <p id="descriptionThree"></p>
       <p id="tempThree"></p>
     </div>
   </div>
+
+
+</main>
+
+
   <script src="script.js"></script>
+ 
+ 
 </body>
 </html>

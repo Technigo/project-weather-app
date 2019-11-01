@@ -14,13 +14,25 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     const description = json.weather[0].description
     document.getElementById("description").innerHTML += `${description}`
 
+    const weather_icon = document.getElementById("weather_icon")
+    weather_icon.src = `http://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png`
+
     const sunriseUTC = json.sys.sunrise
-    const newSunriseDate = new Date(sunriseUTC * 1000).getHours()
-    document.getElementById("sunrise").innerHTML += `Sunrise: ${newSunriseDate}.00`
+    const sunrise = new Date(sunriseUTC * 1000).getHours()
+    document.getElementById("sunrise").innerHTML += `Sunrise: ${sunrise}.00`
     const sunsetUTC = json.sys.sunset
-    const newSunsetDate = new Date(sunsetUTC * 1000).getHours()
-    document.getElementById("sunset").innerHTML += `Sunset: ${newSunsetDate}.00`
+    const sunset = new Date(sunsetUTC * 1000).getHours()
+    document.getElementById("sunset").innerHTML += `Sunset: ${sunset}.00`
   })
+
+  const now = new Date(Date.now())
+
+  const nightTime = now < sunrise || now > sunset
+
+  if (nightTime) {
+    document.body.style.backgroundColor = "#242525"
+    document.body.style.color = "#c2e2e2"
+  }
 
 
   const containerTwo = document.getElementById("weatherFiveDays")
@@ -33,10 +45,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
       
       
   
-      json.list.forEach((timeSet) => {
-      new Date (timeSet * 1000).toLocaleTimeString()
-      containerTwo.innerHTML += `<p>${json.list[0].dt} </p>`
-    })
+   
   
      
       // Time interval One
@@ -46,6 +55,8 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
 
       
       document.getElementById("descriptionOne").innerHTML += `${json.list[0].weather[0].description}`
+      const forecastIcon1 = document.getElementById("iconOne")
+      forecastIcon1.src = `http://openweathermap.org/img/wn/${json.list[0].weather[0].icon}@2x.png`
 
       const minTempOne = json.list[0].main.temp_min
       const maxTempOne = json.list[0].main.temp_max
@@ -60,6 +71,9 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
 
       const description2 = json.list[1].weather[0].description
       document.getElementById("descriptionTwo").innerHTML += `${description2}`
+      const forecastIcon2 = document.getElementById("iconTwo")
+      forecastIcon2.src = `http://openweathermap.org/img/wn/${json.list[0].weather[0].icon}@2x.png`
+      
 
       const minTempTwo = json.list[1].main.temp_min
       const maxTempTwo = json.list[1].main.temp_max
@@ -74,6 +88,8 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
 
       const description3 = json.list[2].weather[0].description
       document.getElementById("descriptionThree").innerHTML += `${description3}`
+      const forecastIcon3 = document.getElementById("iconThree")
+      forecastIcon3.src = `http://openweathermap.org/img/wn/${json.list[0].weather[0].icon}@2x.png`
      
       const minTempThree = json.list[1].main.temp_min
       const maxTempThree = json.list[1].main.temp_max
@@ -85,6 +101,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
       //const getDay = json.list[0]
       //const dayByName = new Date(getDay * 1000).toString().split(' ')[0]
      
+
     })
     
-     
+

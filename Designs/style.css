@@ -1,35 +1,30 @@
 body {
-  background: white;
+  background: lightblue;
   width: 100%;
   margin: 0 auto;
   font-family: 'Roboto', sans-serif;
-
+  
 }
 
 main {
   border-radius: 16px;
-  background: cornflowerblue;
-  width: 100%;
-  height: 100%;
-  padding-bottom: 400px;
+}
+
+#forecast  {
+ list-style-type: none;
 }
 
 .weatherTop {
- background: url(/assets/images-clouds.png);
+/* background: url(/assets/images-clouds.png);
  background-size: cover;
  border-radius: 30px;
+ */
 
 }
 
 #weatherFiveDays {
   width: 100%;
   padding-top: 50px;
-
-}
-
-.icon {
-  display: flex;
-  justify-content: center;
 }
 
 .timeContainer {
@@ -42,11 +37,11 @@ main {
   margin-right: 4%;
   margin-left: 4%;
   border-radius: 20px;
-  padding: 10px;
 }
 
 
-#description, h1 {
+
+p, h1 {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -57,6 +52,7 @@ main {
 .sunTimes {
   display: flex;
   width: 100%;
+  flex-direction: column;
 
 }
   
@@ -64,18 +60,24 @@ main {
 
 #temperature {
   font-size: 80px;
-  margin-bottom: 5px;
-  margin-top: 0;
+  margin-bottom: 50px;
   
 
 }
 
 
 .sunsetSunrise {
-  width: 30px;
+  width: 40px;
   height: 30px;
-  padding-left: 10%;
+  padding-left: 0%;
   padding-top: 3%;
+  
 }
 
+img.descriptionAnimation {
+  height: 20px;
+  padding-top: 4%;
+  padding-right: 3%;
+
+}
 
