@@ -59,10 +59,9 @@ button {
   position: absolute;
   top: 0;
   bottom: 0;
+  left: 0;
+  right: 0;
   overflow: auto;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
 }
 
 video {
@@ -141,7 +140,6 @@ h1 {
 
 .active + .detail {
   display: inline;
-  height: 40px;
 }
 
 .rotate {
@@ -186,7 +184,7 @@ h1 {
 
 @media (min-width: 900px) {
   .weather-data {
-    margin-top: 100px;
+    margin-top: 70px;
     margin-left: 10%;
     margin-right: 10%;
   }
