@@ -22,6 +22,7 @@ const getForecast = async (longitude, latitude) => {
 
 const displayCurrentWeather = (weather, forecast) => {
 	const currentWeather = document.querySelector('.weather-details-current');
+	const weatherContainer = document.querySelector('.weather-app');
 
 	// Change background colors if temperature is below 5 degrees Celsius.
 	const background =
@@ -67,6 +68,8 @@ const displayCurrentWeather = (weather, forecast) => {
 		</div>
 	</div>
 	`;
+
+	weatherContainer.classList.remove('hide');
 };
 
 const displayCurrentForecast = forecast => {
