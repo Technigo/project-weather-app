@@ -205,6 +205,7 @@ footer {
   .forecast {
     flex-direction: column;
     width: 100%;
+    margin-top: 10px;
     border-top: 1px solid #D1D9D4;
     border-bottom: 1px solid #D1D9D4;    
   }
