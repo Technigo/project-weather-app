@@ -65,6 +65,9 @@ li {
     p {
         font-size: 1.3em;
     }
+    img {
+        max-width: 8em;
+    }
     h1 {
         font-size: 3em;
     }
@@ -80,6 +83,9 @@ li {
     }
     p {
         font-size: 1.5em;
+    }
+    img {
+        max-width: 10em;
     }
     h1 {
         font-size: 3.24em;
