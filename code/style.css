@@ -114,8 +114,7 @@ ul{
 }
 
 .footer{
-    position: absolute;
-    bottom: 0;
+    margin-top: auto;
 }
 footer{
     display:flex;
