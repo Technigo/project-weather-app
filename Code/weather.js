@@ -5,7 +5,7 @@ const containerWeather = document.getElementById('weatherNow')
 const containerSun = document.getElementById('sunRiseSet')
 const apiKey = '996158b88361cd2c1991a7aee0bf6883'
 
-fetch(`http://api.openweathermap.org/data/2.5/weather?q=Kalmar,SE&units=metric&APPID=${apiKey}`)
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=Kalmar,SE&units=metric&APPID=${apiKey}`)
     .then((response) => {
         return response.json()
     })
