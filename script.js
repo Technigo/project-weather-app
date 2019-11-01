@@ -10,7 +10,7 @@ const container3 = document.getElementById("sunriseSunset")
 
 
 
-fetch("http://api.openweathermap.org/data/2.5/weather?q=Alicante,es&units=metric&APPID=e57c9fd6de5974ecd857b3b40415a881")
+fetch("https://api.openweathermap.org/data/2.5/weather?q=Alicante,es&units=metric&APPID=e57c9fd6de5974ecd857b3b40415a881")
   .then((response) => {
     return response.json()
   })
