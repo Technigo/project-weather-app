@@ -5,7 +5,7 @@ body{
     display: flex;
     flex-direction: column;
     height: 100vh; /*Relative to 1% of the height of the viewport*/
-    margin:0; /*So the background image goes all the way*/
+    margin:20px 0 0 0; /*So the background image goes all the way*/
 }
 #switchCity{
     border: 1px solid navy;
@@ -38,6 +38,7 @@ body{
     flex-direction: column;
     align-items: center;
     padding: 10px;
+    margin-bottom: 30px;
     /* width: 100%; */ /*When I got rid of this I got rid of horizontal scroll??*/
    /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("stockholm_night.jpeg");
    /* background-position: center; /*Centers the image vertically*/
