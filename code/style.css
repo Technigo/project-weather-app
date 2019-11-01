@@ -1,6 +1,6 @@
 body{
-    background-color:white;
-    color:black;
+    background: linear-gradient(goldenrod, tan);
+    color:white;
     font-family: 'Nunito', sans-serif;
     display: flex;
     flex-direction: column;
@@ -16,7 +16,7 @@ body{
     background: rgb(80, 175, 143);
 }
 #temperature{
-    text-shadow: 4px 4px 6px tomato;
+    text-shadow: 2px 2px 4px tomato;
 }
 .temp-n-icon{
     display: flex;
@@ -37,7 +37,6 @@ body{
     display:flex;
     flex-direction: column;
     align-items: center;
-    color:white;
     padding: 10px;
     width: 100%;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("stockholm_night.jpeg");
@@ -86,12 +85,21 @@ hr{
     width: 60px;
     margin: 0 0 8px 0;
 }
-.forecast{
+.forecast-n-footer {
     padding: 10px;
+    text-align: center;
+}
+.forecast{
     display:flex;
     justify-content: space-between;
 }
 ul{
     list-style-type: none;
     padding: 0;
+}
+#forecastDates{
+    text-align: left;
+}
+#forecastMinMax{
+    text-align: right;
 }

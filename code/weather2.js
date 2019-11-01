@@ -21,7 +21,7 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         let temperatureRounded = Math.round(json.main.temp * 10) / 10
         theTemperature.innerHTML = `${temperatureRounded} C°`
         if (Math.sign(temperatureRounded) === 0 || Math.sign(temperatureRounded) === -1) {
-            theTemperature.style.textShadow = "4px 4px 6px teal"
+            theTemperature.style.textShadow = "2px 2px 4px aqua"
         }
 
         //ICON FOR TODAYS WEATHER//
@@ -53,6 +53,8 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
             theDescription.src = "./icons_white/rain_heavy.png"
         } else if (todaysWeatherMain === "Thunderstorm") {
             theDescription.src = "./icons_white/ligthning.png"
+        } else if (todaysWeatherMain === "Fog") {
+            theDescription.src = "./icons_white/fog.png"
         } else {
             theDescription.src = "./icons_white/window.png"
         }
@@ -160,7 +162,7 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
 
             forecastDates.innerHTML += `<li>${dayName}</li>`
             forecastDescription.innerHTML += `<li>symbol</li>`
-            forecastMinMax.innerHTML += `<li>${Math.round(minTemp * 10) / 10} C° / ${Math.round(maxTemp * 10) / 10} C°</li>`
+            forecastMinMax.innerHTML += `<li>${maxTemp.toFixed()} C° / ${minTemp.toFixed()} C°</li>`
         })
 
     })
