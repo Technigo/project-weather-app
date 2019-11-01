@@ -55,11 +55,11 @@ const displayCurrentWeather = (weather, forecast) => {
 			<p>${weather.main.pressure} hPa</p>
 		</div>
 		<div>
-			<p class="parameter-heading">Temp	(min)</p>
+			<p class="parameter-heading">Temp. (min)</p>
 			<p>${weather.main.temp_min.toFixed(1)} &deg;C</p>
 		</div>
 		<div>
-			<p class="parameter-heading">Temp (max)</sup></p>
+			<p class="parameter-heading">Temp. (max)</sup></p>
 			<p>${weather.main.temp_max.toFixed(1)} &deg;C</p>
 		</div>
 		<div>
@@ -83,7 +83,15 @@ const displayCurrentForecast = forecast => {
 	console.log('FilteredItems', filteredForecast);
 
 	// Reset forecast weather
-	forecastWeatherList.innerHTML = '';
+	forecastWeatherList.innerHTML = `
+	<li>
+		<div class="forecast-day-heading">Weekday</div>
+		<div class="forecast-day-heading">Description</div>
+		<div class="forecast-day-heading">Humidity</div>
+		<div class="forecast-day-heading">Pressure</div>
+		<div class="forecast-day-heading">Wind</div>
+		<div class="forecast-day-heading">Temp.</div>
+	</li>`;
 
 	// Update forecast weather
 	filteredForecast.forEach(item => {
@@ -93,8 +101,11 @@ const displayCurrentForecast = forecast => {
 			<div>
 				<img class="icon" src="https://openweathermap.org/img/wn/${
 					item.weather[0].icon
-				}@2x.png" alt="Weather icon">&nbsp;
+				}@2x.png" alt="Weather icon">
 			</div>
+			<div class="forecast-day">${item.main.humidity}%</div>
+			<div class="forecast-day">${item.main.pressure} hPa</div>
+			<div class="forecast-day">150° @ 2.1 m/s</div>
 			<div class="forecast-day">${Math.floor(item.main.temp)} &deg;C</div>
 		</li>`;
 	});
