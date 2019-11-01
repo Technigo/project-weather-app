@@ -1,23 +1,49 @@
 // city, temp, humidiy
+
+
+
 fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=f48cb7911f220b235e97074a198afa46')
 
     .then((Response) => {
         return Response.json()
     })
     .then((json) => {
-        header.innerHTML = `<h1> ${json.name} weather right now is </h1>`
+        //this code below is not showing up
         const temp = json.main.temp
         const temp1 = temp.toFixed(0.1)
-        weather.innerHTML += `<p>Temperature: ${temp1} °C</p>`
-        weather.innerHTML += `${json.weather[0].description}`
-        weather.innerHTML += `<p>humidity:${json.main.humidity}%`
-
+        document.getElementById("temp").innerHTML += `Temperature: ${temp1} °C`
+        document.getElementById("humidity").innerHTML += `humidity:${json.main.humidity}%`
         const time1 = json.sys.sunrise
         const time2 = json.sys.sunset
         let sunrise = new Date(time1 * 1000)
         let sunset = new Date(time2 * 1000)
         sun.innerHTML += `<p>Sunrise: ${`${sunrise.getHours()}.00`}</p>`
         sun.innerHTML += `<p>Sunset: ${`${sunset.getHours()}:${sunset.getMinutes()}`}</p>`
+        const id = json.weather[0].id
+        if (id >= 200 && id <= 232) {
+            weatherIcon.src = "assets/lighting.png"
+            //lighting 
+        } else if (id >= 300 && id <= 531) {
+            weatherIcon.src = "assets/rain.png"
+            //rain
+        } else if (id >= 600 && id <= 622) {
+            theImage.src = "assets/snow.png"
+            //snow
+        } else if (id >= 701 && id <= 781) {
+            weatherIcon.src = "assets/fog.png"
+            //Fog
+        } else if (id === 800) {
+            weatherIcon.src = "assets/sun.png"
+            //sun
+        } else if (id >= 801 && id <= 804) {
+            weatherIcon.src = "assets/sunCloud.png"
+            //partly cloudly 
+        }
+
+        header.innerHTML = `<h1> ${json.name}</h1>`
+
+
+
     });
 
 // 5 day forcast, stockholm
