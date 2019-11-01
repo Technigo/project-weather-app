@@ -46,8 +46,14 @@ li {
     body {
         text-align: center;
     }
+    p {
+        font-size: 1.3em;
+    }
     h1 {
         font-size: 2.44em;
+    }
+    ul {
+        font-size: 1.4em;
     }
 }
 
@@ -56,8 +62,14 @@ li {
         text-align: center;
         max-width: 800px;
     }
+    p {
+        font-size: 1.3em;
+    }
     h1 {
         font-size: 3em;
+    }
+    ul {
+        font-size: 1.5em;
     }
 }
 
@@ -66,7 +78,13 @@ li {
         text-align: center;
         max-width: 800px;
     }
+    p {
+        font-size: 1.5em;
+    }
     h1 {
         font-size: 3.24em;
+    }
+    ul {
+        font-size: 1.6em;
     }
 }
