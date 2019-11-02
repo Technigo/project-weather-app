@@ -23,12 +23,12 @@ const getForecastData = json => {
     // Sunset and sunrise information
     const timestampSunrise = new Date(json.city.sunrise * 1000);
     const timestampSunset = new Date(json.city.sunset * 1000);
-    forecast.sunrise = timestampToHoursAndMinutes(timestampSunrise);
-    forecast.sunset = timestampToHoursAndMinutes(timestampSunset);
+    forecast.sunrise = timestampSunToHoursAndMinutes(timestampSunrise);
+    forecast.sunset = timestampSunToHoursAndMinutes(timestampSunset);
     // Populate forecast object
     const weatherTime = new Date(weather.dt * 1000);
-    forecast.date = timestampToDate(weatherTime).toString();
-    forecast.time = timestampToHoursAndMinutes(weatherTime).toString();
+    forecast.date = timestampToDate(weatherTime);
+    forecast.time = timestampToHoursAndMinutes(weatherTime);
 
     //forecast.weekday = timestampToWeekday(weatherTime);
     forecast.weekday = isToday(today, weatherTime);
@@ -93,12 +93,24 @@ forecastData.forEach(
   })
 );
 
+const timestampSunToHoursAndMinutes = timestamp => {
+  return timestamp.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+};
+
 const timestampToHoursAndMinutes = timestamp => {
-  return timestamp.toLocaleTimeString([], { timeStyle: "short" });
+  return timestamp.toLocaleTimeString([], {
+    timeZone: "UTC",
+    hour: "2-digit",
+    minute: "2-digit"
+  });
 };
 
 const timestampToDate = timestamp => {
   return timestamp.toLocaleDateString([], {
+    timeZone: "UTC",
     day: "numeric",
     month: "long"
   });
@@ -106,6 +118,7 @@ const timestampToDate = timestamp => {
 
 const timestampToWeekday = timestamp => {
   return timestamp.toLocaleDateString([], {
+    timeZone: "UTC",
     weekday: "long"
   });
 };
