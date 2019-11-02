@@ -12,6 +12,23 @@ body {
     border-radius: 5%;
     padding: 10px;
     margin: 30px;
+    text-align: center;
 }
+
+#forecast-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid white;
+    border-radius: 5%;
+    padding: 10px;
+    margin: 30px;
+    text-align: center;
+}
+
+li {
+  margin: 10px;
+}
+
 
 
