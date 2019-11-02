@@ -1,5 +1,9 @@
-const containerSthlm = document.getElementById("stockholm-weather")
-
+const currentCity = document.getElementById("current-city")
+const currentTemp = document.getElementById("current-temp")
+const currentType = document.getElementById("current-type")
+const currentIcon = document.getElementById("current-icon")
+const currentSunRise = document.getElementById("current-sunrise")
+const currentSunSet = document.getElementById("current-sunset")
 
 
 fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&appid=42da1ed967bb60f77a80f7975f8783b9')
@@ -19,11 +23,54 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
         const sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' })
         const sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' })
 
-        containerSthlm.innerHTML = `<h1>Todays weather in ${json.name}</h1> <h2>${json.main.temp.toFixed(1)}</h2>`
+        currentCity.innerHTML = `<h1>Todays weather in ${json.name}</h1>`
+        currentTemp.innerHTML += `<h3>Temp ${json.main.temp.toFixed(0)} &#8451;<h3>`
 
-        json.weather.forEach((weatherType, weatherIcon) => {
-            containerSthlm.innerHTML += `<p>${weatherType.description}</p>`
-            containerSthlm.innerHTML += `<img src="http://openweathermap.org/img/wn/10d@2x.png" ${weatherIcon.icon} />`
+        currentSunRise.innerHTML += `<p>Sunrise: ${sunriseTime}</p>`
+        currentSunSet.innerHTML += `<p>Sunset: ${sunsetTime}<p>`
+
+        json.weather.forEach((currenttype) => {
+            currentType.innerHTML += `<h3>${currenttype.description}</h3>`
+            currentIcon.innerHTML += `<img src="http://openweathermap.org/img/wn/${currenttype.icon}@2x.png"/>`
+
         })
-        containerSthlm.innerHTML += `<p>Sunrise ${sunriseTime} Sunset${sunsetTime}</p>`
+
     })
+
+/* const apiKey = '84a3e2c91df6843f5cc1f61e17add9d0'
+const location = 'Stockholm,SE'
+
+const handle5DayForecast = (json) => {
+const forecastDiv = document.getElementById('forecast')
+const dates = {}
+
+json.list.forEach((weather) => {
+    const date = weather.dt_txt.split(' ')[0]
+    if (dates[date]) {
+        dates[date].push(weather)
+    } else {
+        dates[date] = [weather]
+    }
+})
+
+Object.entries(dates).forEach((item, index) => {
+    if (index === 0) {
+        return
+    }
+
+    const date = item[0]
+    const weatherValues = item[1]
+
+    const temps = weatherValues.map((value) => value.main.temp)
+    const minTemp = Math.min(...temps)
+    const maxTemp = Math.max(...temps)
+
+    forecastDiv.innerHTML += `<li>${date} - min: ${minTemp.toFixed(1)}, max: ${maxTemp.toFixed(
+        1
+    )}</li>`
+})
+}
+
+fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${apiKey}&units=metric`)
+.then((res) => res.json())
+.then(handle5DayForecast) */
