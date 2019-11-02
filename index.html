@@ -11,13 +11,9 @@
 </head>
 
 <body>
-    <div class="main" id="main">
-        <div class="header">
-            <div class="hamburguer">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
+    <main id="main">
+        <header>
+            <a href="https://www.technigo.io" target="_blank"><img src="assets/logo.svg" alt="Company logo"></a>
            
             <div class="search">
                 <form action="javascript:getWeather()" id="search-bar">
@@ -25,24 +21,26 @@
                     <button type="submit" id="fetch-weather">&#9740;</button>
                 </form>
             </div>
-        </div>
+        </header>
+
         <video preload autoplay muted loop playsinline id="video">
             <source src="" type="video/mp4">
             </source>
+            <p>This browser doesn't support video...</p>
         </video>
         
-        <div class="weather-data">
+        <section class="weather-data">
             <h1 id="city">Loading...</h1>
-            <div class="current-block">
-                <div class="current">
+            <summary class="current-block">
+                <summary class="current">
                     <p class="summary" id="summary"></p>
                     <img id="icon" alt="Weather representation"></img>
-                </div>
+                </summary>
                 <p class="sunrise-sunset" id="sunrise-sunset"></p>
-            </div>
+            </summary>
             <section class="forecast" id="forecast"></section>
-        </div>
-    </div>
+        </section>
+    </main>
     <script src="./script.js"></script>
 </body>
 
