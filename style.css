@@ -75,6 +75,7 @@ video {
   top: 0;
   background: rgba(204, 204, 204, 0.8);
   border-radius: 10px;
+  overflow: hidden;
 }
 
 h1 {

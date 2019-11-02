@@ -62,7 +62,7 @@ function inCaseOfError(error) {
 }
 
 //Toggle functions for accordion menu
-function toggle() {
+function toggle(num) {
   this.classList.toggle("active");
 }
 
@@ -74,6 +74,7 @@ function rotate() {
 const clearData = () => {
   document.getElementById("main").style.background = "white";
   document.getElementById("city").innerHTML = "";
+  document.getElementById("temperature").innerHTML = "";
   document.getElementById("description").innerHTML = "";
   document.getElementById("icon").style.display = "none";
   document.getElementById("forecast").innerHTML = "";
