@@ -2,7 +2,10 @@
 //Present some data on your web app
 
 const containerWeather = document.getElementById('weatherNow')
-const containerSun = document.getElementById('sunRiseSet')
+const containerTempNow = document.getElementById('tempNow')
+const containerWeatherShort = document.getElementById('weatherShort')
+const containerSunrise = document.getElementById('sunrise')
+const containerSunset = document.getElementById('sunset')
 const apiKey = '996158b88361cd2c1991a7aee0bf6883'
 
 fetch(`https://api.openweathermap.org/data/2.5/weather?q=Kalmar,SE&units=metric&APPID=${apiKey}`)
@@ -10,7 +13,11 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=Kalmar,SE&units=metric&
         return response.json()
     })
     .then((json) => {
-        containerWeather.innerHTML = `<h1>The weather in ${json.name} is ${json.weather[0].description} and it is ${json.main.temp.toFixed(1)} degrees.</h1>`
+        containerTempNow.innerHTML = `<p>Temp ${json.main.temp.toFixed(1)}°</p>`
+        console.log(containerTempNow)
+
+        containerWeather.innerHTML = `<h1>The weather in ${json.name} is ${json.weather[0].description} and ${json.main.temp.toFixed(1)}°.</h1>`
+
         //fixing UNIX time stamp with help from Jolanta
         //Declare variable for the time of sunrise/sunset
         const unixTimestampSunrise = json.sys.sunrise
@@ -24,7 +31,8 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=Kalmar,SE&units=metric&
         const sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' })
         const sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' })
 
-        containerSun.innerHTML = `<h1>Sun rises at ${sunriseTime} and sets at ${sunsetTime}.</h1>`
+        containerSunrise.innerHTML = `<p>Sunrise ${sunriseTime}</p>`
+        containerSunset.innerHTML = `<p>Sunset ${sunsetTime}</p>`
         console.log(json)
     })
     .catch((err) => {
@@ -98,7 +106,7 @@ const handle5DayForecast = (json) => {
         const weatherValues = item[1]
 
         //Fixing dates to days (with the help fo Damian And Linda I)
-        const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+        const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
         const todaysDate = new Date(date)
         const weekdayName = `${weekDays[todaysDate.getDay()]}`
 
@@ -119,7 +127,7 @@ const handle5DayForecast = (json) => {
 
         // Finally! Now we have the date, along with the min and max temp for that day. We can add it to
         // the list of <li> elements in the forecastDiv.
-        forecastContainer.innerHTML += `<li>${weekdayName} - min: ${minTemp.toFixed(1)}, max: ${maxTemp.toFixed(1)}</li>`
+        forecastContainer.innerHTML += `<li>${weekdayName} ${minTemp.toFixed(1)}°-${maxTemp.toFixed(1)}°</li>`
     })
 }
 
