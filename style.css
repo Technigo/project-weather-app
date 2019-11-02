@@ -36,8 +36,14 @@ footer {
 
 /* This applies from 600 px onwards */
 
-@media (min-width: 600px) {
+@media (min-width: 576px) {
     body {
         background-color: aliceblue;
+    }
+}
+
+@media (min-width: 768px) {
+    body {
+        background-color: bisque;
     }
 }
