@@ -1,5 +1,5 @@
 fetch(
-  "http://api.openweathermap.org/data/2.5/weather?q=Stockholm,SE&units=metric&APPID=f470af9640f5a3ff24b68ba60ee15c10"
+  "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,SE&units=metric&APPID=f470af9640f5a3ff24b68ba60ee15c10"
 )
   //The Json from the API//
 
@@ -44,6 +44,8 @@ fetch(
       theWeather.innerHTML = `<img src="Assets/snow" alt="icon" width=\"70px\">`;
     } else if (json.weather[0].description === "thunderstorm") {
       theWeather.innerHTML = `<img src="Assets/thunderstorm" alt="icon" width=\"70px\">`;
+    } else if (json.weather[0].description === "scattered clouds") {
+      theWeather.innerHTML = `<img src="Assets/cloudy.png" alt="icon" width=\"70px\">`;
     }
   });
 
@@ -80,9 +82,9 @@ const handle5DayForecast = json => {
     const minTemp = Math.min(...temps);
     const maxTemp = Math.max(...temps);
 
-    forecastDiv.innerHTML += `<li>${date} - min: ${minTemp.toFixed(
+    forecastDiv.innerHTML += `<li>Date: ${date}  Min. temp: ${minTemp.toFixed(
       1
-    )}, max: ${maxTemp.toFixed(1)}</li>`;
+    )} &deg;C Max. temp: ${maxTemp.toFixed(1)} &deg;C</li>`;
   });
 };
 
@@ -91,3 +93,5 @@ fetch(
 )
   .then(res => res.json())
   .then(handle5DayForecast);
+
+const forecastBottom = document.getElementById("forecast-bottom");

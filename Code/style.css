@@ -36,7 +36,7 @@ body {
 #city {
   font-size: 35px;
   margin: 0;
-  padding-top: 30px;
+  padding-top: 40px;
   font-weight: normal;
   justify-content: center;
   padding-bottom: 20px;
@@ -60,7 +60,7 @@ body {
   font-size: 20px;
   margin: 0;
   padding-top: 15px;
-  padding-bottom: 5px;
+  padding-bottom: 15px;
   justify-content: center;
 }
 
@@ -87,9 +87,48 @@ body {
 
 #forecast {
   list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 30px;
 }
 
 .bottom-container {
   display: flex;
   width: 100‰;
+  height: 100%;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+li {
+  padding-bottom: 20px;
+  border-bottom: 2px solid rgb(209, 201, 220);
+  width: 100%;
+  font-size: 15px;
+  padding-top: 30px;
+}
+
+footer {
+  width: 100%;
+  display: block;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 5px;
+}
+
+/* Media Query Desktop */
+
+@media (min-width: 900px) {
+  #sunset {
+    padding-left: 200px;
+  }
+
+  #forecast {
+    font-size: 40px;
+  }
+
+  li {
+    font-size: 30px;
+  }
 }
