@@ -7,13 +7,12 @@
   margin: 0;
   padding: 0;
 }
+
 body {
-  background-color: #333;
-  background-repeat: no-repeat;
-  background-size: cover;
   width: 100%;
   height: 100vh;
 }
+
 section {
   padding: 1rem;
   width: 100%;
@@ -21,6 +20,7 @@ section {
 h1 {
   font-size: 2rem;
   font-weight: 600;
+  color: #efefef;
   text-align: center;
 }
 
@@ -29,130 +29,243 @@ h2 {
   font-weight: 600;
   margin-top: 2.5rem;
 }
-/* Main grid */
-main {
-  width: 100%;
-}
-.forecast-image {
-  display: none;
-}
 
-.forecast-container {
-  background-color: #efefef;
-}
-
-/* Today's forecast */
-.current-forecast {
-  align-items: center;
+/* Header */
+.site-header {
+  display: grid;
   color: #efefef;
-  display: flex;
-  flex-direction: column;
-  background-color: #333;
-  position: relative;
+  grid-template-columns: repeat(18, 1fr);
+  grid-template-rows: auto /*repeat(6, 1fr)*/;
+  padding-top: 1.5rem;
 }
-.current-forecast::after {
-  justify-self: flex-start;
-  border-left: 40px solid transparent;
-  border-right: 40px solid transparent;
-  border-top: 40px solid #333;
-  content: "";
-  height: 0;
-  position: absolute;
-  bottom: -40px;
-  width: 0;
+.site-title {
+  grid-column: 2 / span 16;
+  grid-row: 1 / span 2;
+}
+.city {
+  display: block;
+  font-size: 2rem;
 }
 .current-weather {
-  align-items: center;
-  background-color: cornflowerblue;
-  border-radius: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 250px;
-  width: 250px;
+  display: grid;
+  grid-column: 2 / span 16;
+  grid-row: 3 / span 2;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto /*repeat(6, 1fr)*/;
+  padding-top: 2rem;
 }
+
 .current-temperature {
-  font-size: 4rem;
-  font-weight: 500;
+  align-self: center;
+  font-size: 3rem;
+  grid-column: 5 / span 2;
+  grid-row: 1 / span 2;
+  justify-self: end;
+  padding-bottom: 0.4rem;
+}
+.current-weather-icon {
+  height: 70px;
+  grid-column: 7 / span 2;
+  grid-row: 1 / span 2;
+  width: auto;
+}
+.current-weather-description {
+  grid-column: 2 / span 10;
+  grid-row: 3 / span 2;
+  padding-top: 1rem;
+  text-align: center;
 }
 .current-weather-description::first-letter {
   text-transform: uppercase;
 }
 
 .sun-information {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+  display: grid;
+  grid-column: 2 / span 16;
+  grid-row: 5 / span 2;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.sun-icon {
+  align-self: center;
+  display: inline-block;
+  height: 40px;
+  width: auto;
+}
+
+.sunrise {
+  grid-column: 1 / span 6;
+  grid-row: 2 / span 1;
+}
+
+.sun-icon.sunrise {
+  grid-column: 1 / span 6;
+  grid-row: 1 / span 1;
+}
+
+.sunset {
+  grid-column: 8 / span 6;
+  grid-row: 2 / span 1;
+  justify-self: end;
+}
+
+.sun-icon.sunset {
+  grid-column: 8 / span 6;
+  grid-row: 1 / span 1;
 }
 
 /* Multiday forecast */
-.forecast-time {
+.forecast-container {
+  background-color: #efefef;
+}
+.forecast {
+  margin: 0 auto;
+  width: 95%;
+}
+
+.date {
+  border-bottom: 2px solid #333;
+  display: block;
+  margin-top: 0.2rem;
+  padding-bottom: 0.8rem;
+}
+
+.forecast-details {
   display: grid;
-  border-bottom: 1px solid #333;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(2, 1fr);
   grid-gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(1, 1fr);
   padding: 1.5rem 0.5rem;
-  width: 100%;
   position: relative;
 }
 
-.forecast-time:nth-child(even) {
-  background-color: #bbb;
-}
 .time {
   font-weight: 500;
-  grid-column: 1 / span 2;
+  grid-column: 1 / span 1;
   grid-row: 1 / span 1;
 }
 
 .max-temperature {
   font-weight: 500;
-  grid-column: 4 / span 2;
+  grid-column: 3 / span 1;
   grid-row: 1 / span 1;
 }
 
 .min-temperature {
-  grid-column: 4 / span 2;
-  grid-row: 2 / span 1;
+  grid-column: 4 / span 1;
+  grid-row: 1 / span 1;
 }
 .weather-icon {
-  height: 60px;
-  width: 60px;
+  align-self: top;
   grid-column: 2 / span 2;
-  grid-row: 1 / span 2;
-  top: -25px;
-  position: absolute;
+  grid-row: 1 / span 1;
+  height: 30px;
+  width: auto;
 }
 
-/* Weekday's forecast */
-.forecast {
-  margin-top: 2rem;
-}
-.forecast-details {
-  align-items: center;
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  padding: 0 1rem;
-}
-
-@media only screen and (min-width: 1024px) {
-  main {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(8, 1fr);
+/* Tablet size */
+@media only screen and (min-width: 668px) {
+  .sunrise,
+  .sun-icon.sunrise {
+    grid-column: 3 / span 2;
   }
-  .forecast-image {
-    display: block;
+
+  .sunset,
+  .sun-icon.sunset {
+    grid-column: 9 / span 2;
+  }
+
+  .forecast {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 500px;
+  }
+}
+
+/* Desktop size */
+@media only screen and (min-width: 1024px) {
+  body {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+  }
+
+  .site-header {
+    align-items: flex-end;
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
-    grid-column: 1 / span 5;
+    display: flex;
+    grid-column: 1 / span 7;
     grid-row: 1 / span 8;
+    height: 100vh;
+    padding: 1rem 1rem 1rem 1rem;
+    position: fixed;
+    width: 70%;
   }
-  .forecast-container {
-    grid-column: 6 / span 3;
+
+  main {
+    grid-column: 8 / span 3;
     grid-row: 1 / span 8;
+    position: relative;
+  }
+
+  .site-title {
+    font-weight: 500;
+    text-align: left;
+  }
+  .city {
+    font-weight: 500;
+    font-size: 5rem;
+  }
+  .sun-information {
+    grid-gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto /*repeat(6, 1fr)*/;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+  .current-weather {
+    align-content: center;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto /*repeat(6, 1fr)*/;
+    margin: 0 2rem 1rem 0.5rem;
+    width: 150px;
+  }
+  .current-temperature {
+    align-self: end;
+    font-size: 4.375rem;
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+    line-height: 1;
+  }
+  .current-weather-icon {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+  }
+  .current-weather-description {
+    align-self: center;
+    grid-column: 1 / span 2;
+    grid-row: 2 / span 1;
+    line-height: 1.5;
+  }
+  .sunrise,
+  .sunset {
+    justify-self: center;
+  }
+  .sunrise,
+  .sun-icon.sunrise {
+    grid-column: 1 / span 2;
+  }
+
+  .sunset,
+  .sun-icon.sunset {
+    grid-column: 3 / span 2;
+  }
+
+  .current-weather-icon,
+  .sun-icon {
+    height: 70px;
   }
 }

@@ -1,10 +1,12 @@
-const currentForecastImage = document.getElementById("forecastImage");
+const currentForecastImage = document.getElementById("siteHeader");
+const siteHeader = document.getElementById("siteHeader");
 const multidayForecast = document.getElementById("multidayForecast");
 const currentForecast = document.getElementById("currentForecast");
 const today = new Date();
 const apiKey = "61a23a5c50a7b6f6de8daad2de48ae27";
 const forecastLocation = "Stockholm,SE";
 const forecastData = [];
+const dayHeading = document.getElementsByClassName("day");
 
 // Fetch data from Open Weather map
 const handleWeatherForecast = json => {
@@ -48,16 +50,19 @@ forecastData.forEach(
     if (index === 0) {
       // Current temperature
       let output;
-      output = `<h1>Today's weather in ${item.city}</h1>`;
-      output += "<p class='current-weather'>";
-      output += `${item.temperature}&#176;`;
-      output += `${item.description}`;
+      siteHeader.innerHTML = `<h1 class="site-title">Today's weather in <span class="city">${item.city}</span></h1>`;
+      output = "<p class='current-weather'>";
+      output += `<span class="current-temperature">${item.temperature}&#176;</span> `;
+      output += `<img class="current-weather-icon" src="assets/${item.icon}.svg" alt="${item.description}"/>`;
+      output += `<span class="current-weather-description">${item.description}</span>`;
       output += "</p>";
       output += "<p class='sun-information'>";
-      output += `<span class="sunrise">Sunrise: ${item.sunrise}</span>`;
-      output += `<span class="sunset">Sunset: ${item.sunset}</span>`;
+      output += `<img class="sun-icon sunrise" src="assets/sunrise.svg" alt="Sunrise. Icon by Nook Fulloption from the Noun Project."/>`;
+      output += `<span class="sunrise">${item.sunrise}</span> `;
+      output += `<img class="sun-icon sunset" src="assets/sunset.svg" alt="Sunset. Icon by Nook Fulloption from the Noun Project."/>`;
+      output += `<span class="sunset">${item.sunset}</span>`;
       output += "</p>";
-      currentForecast.innerHTML = output;
+      siteHeader.innerHTML += output;
 
       getWeatherConditionImage(item.id);
     }
@@ -73,17 +78,17 @@ forecastData.forEach(
 
     //const yesterday = previousItem.weekday;
     if (index === 0) {
-      multidayForecast.innerHTML = `<h2>${item.weekday} ${item.date}</h2>`;
+      multidayForecast.innerHTML = `<h2 class="day">${item.weekday} <span class="date">${item.date}</span></h2>`;
     } else if (
       forecastData[index].weekday !== forecastData[previousItem].weekday
     ) {
-      multidayForecast.innerHTML += `<h2>${item.weekday} ${item.date}</h2>`;
+      multidayForecast.innerHTML += `<h2 class="day">${item.weekday} <span class="date">${item.date}</span></h2>`;
     }
-    let output = "<p class='forecast-time'>";
-    output += `<span class="time">${item.time}</span>`;
-    output += `<span class="max-temperature">${item.temperatureMax}</span>`;
-    output += `<span class="min-temperature">${item.temperatureMin}</span>`;
-    output += `<img class="weather-icon" src="https://openweathermap.org/img/wn/${item.icon}@2x.png" alt="${item.description}"/>`;
+    let output = "<p class='forecast-details'>";
+    output += `<span class="time">${item.time}</span> `;
+    output += `<span class="max-temperature">Max: ${item.temperatureMax}&#176;</span> `;
+    output += `<span class="min-temperature">Min: ${item.temperatureMin}&#176;</span> `;
+    output += `<img class="weather-icon" src="assets/${item.icon}.svg" alt="${item.description}. Icon by Nook Fulloption from the Noun Project."/>`;
     output += "</p>";
     multidayForecast.innerHTML += output;
   })
@@ -122,13 +127,16 @@ const isToday = (today, currentWeekday) => {
 const getWeatherConditionImage = weatherConditionNumber => {
   if (weatherConditionNumber >= 200 && weatherConditionNumber <= 232) {
     console.log("Thunderstorm");
+    currentForecastImage.style.backgroundImage = "url('clear.jpg')";
   } else if (
     (weatherConditionNumber >= 300 && weatherConditionNumber <= 321) ||
     (weatherConditionNumber >= 500 && weatherConditionNumber <= 531)
   ) {
     console.log("Rain");
+    currentForecastImage.style.backgroundImage = "url('clear.jpg')";
   } else if (weatherConditionNumber >= 600 && weatherConditionNumber <= 622) {
     console.log("Snow");
+    currentForecastImage.style.backgroundImage = "url('clear.jpg')";
   } else if (weatherConditionNumber >= 701 && weatherConditionNumber <= 781) {
     console.log("Mist, dust or smoke");
   } else if (weatherConditionNumber === 800) {
@@ -139,6 +147,7 @@ const getWeatherConditionImage = weatherConditionNumber => {
     currentForecastImage.style.backgroundImage = "url('overcast.jpg')";
   } else {
     console.log("Can't forecast weather");
+    currentForecastImage.style.backgroundImage = "url('clear.jpg')";
   }
 };
 
