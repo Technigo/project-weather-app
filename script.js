@@ -32,6 +32,8 @@ const monthShortNames = [
 
 let city = "";
 
+let weatherId = "";
+
 function locationRetrieved(pos) {
   let crd = pos.coords;
   city = `lat=${crd.latitude}&lon=${crd.longitude}`;
@@ -147,16 +149,13 @@ const getActualWeather = () => {
         let sunrise = new Date((json.sys.sunrise + json.timezone) * 1000);
         let sunset = new Date((json.sys.sunset + json.timezone) * 1000);
 
-        // document
-        //   .getElementById("video")
-        //   .setAttribute("src", getBackgroundVideo(json.weather[0].id));
-        document.getElementById(
-          "video"
-        ).innerHTML = `<source src="${getBackgroundVideo(
-          json.weather[0].id
-        )}.mp4" type="video/mp4"></source><source src="${getBackgroundVideo(
-          json.weather[0].id
-        )}.webm" type="video/webm"></source><p>This browser doesn't support video...</p>`;
+        document
+          .getElementById("video")
+          .setAttribute(
+            "src",
+            `${getBackgroundVideo(json.weather[0].id)}.webm`
+          );
+
         document.getElementById(
           "city"
         ).innerHTML = `${json.name}, ${json.sys.country}`;
@@ -175,12 +174,10 @@ const getActualWeather = () => {
           "icon"
         ).src = `https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png`;
       } else if (json.cod === 404) {
-        // alert(`There was an error retrieving the location.`);
         document.getElementById(
           "city"
         ).innerHTML = `There was an error retrieving the location.`;
       } else {
-        //alert(`City not found.`);
         document.getElementById("city").innerHTML = `Location not found.`;
       }
     })
@@ -197,11 +194,10 @@ const getNextHoursForecast = () => {
       return response.json();
     })
     .then(json => {
-      console.log(json);
       index = 1;
       json.list.forEach(weather => {
-        let dt = new Date(0);
-        dt.setUTCSeconds(weather.dt);
+        let dt = new Date(weather.dt * 1000);
+
         document.getElementById(
           "forecast"
         ).innerHTML += `<div class="main-forecast" id="section${index}"><div>${dt.getDate()} ${
