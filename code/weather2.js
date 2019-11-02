@@ -91,10 +91,10 @@ const fetchToday = () => {
             sunriseTime.innerHTML = `${sunriseHoursMinutes}`
             sunsetTime.innerHTML = `${sunsetHoursMinutes}`
 
-            //WHICH BACKGROUND-IMG TO SHOW//
+            //WHICH BACKGROUND TO SHOW//
             let timeNow = todaysDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
             if (timeNow >= sunriseHoursMinutes && timeNow <= sunsetHoursMinutes) {
-                document.getElementById("body").style.background = "linear-gradient(goldenrod, tan)"
+                document.getElementById("body").style.background = "linear-gradient(rgb(0, 70, 161), rgb(2, 183, 255))"
 
             }
 
@@ -149,8 +149,9 @@ const fetchForecast = () => {
                 console.log(weatherValues[0].weather[0].description)
 
                 forecastDates.innerHTML += `<li>${dayName}</li>`
-                forecastDescription.innerHTML += `<li>${weatherValues[0].weather[0].description}</li>`
+                forecastDescription.innerHTML += `<li><img src="https://openweathermap.org/img/wn/${weatherValues[0].weather[0].icon}@2x.png" alt="weathericons"/></li>`
                 forecastMinMax.innerHTML += `<li>${maxTemp.toFixed()} C° / ${minTemp.toFixed()} C°</li>`
+                // forecastDescription.innerHTML += ``
             })
 
             console.log(dates)

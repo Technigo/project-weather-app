@@ -4,7 +4,7 @@ body{
     font-family: 'Nunito', sans-serif;
     display: flex;
     flex-direction: column;
-    height: 100vh; /*Relative to 1% of the height of the viewport*/
+    height: 120vh; /*Relative to 1% of the height of the viewport*/
     /*margin:0 0 0 0; /*So the background image goes all the way*/
 }
 #switchCity{
@@ -99,15 +99,23 @@ align-self: center;
 }
 .forecast{
     display:flex;
-    justify-content: space-between;
+   /*justify-content: space-between;*/
 }
 ul{
     list-style-type: none;
-    padding: 0;
-    font-size: 14px;
+    /*padding: 0;*/
+    font-size: 18px;
+    justify-content:;
 }
+li{
+    height:auto;
+    display: flex;
+    padding:8px 0;
+}
+
 #forecastDates{
     text-align: left;
+    padding:0;
 }
 #forecastMinMax{
     text-align: right;
