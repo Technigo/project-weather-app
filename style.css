@@ -1,49 +1,130 @@
+html {
+  width: 100%;
+}
 body {
   background: white;
   width: 100%;
   margin: 0 auto;
   font-family: 'Roboto', sans-serif;
+  color: black;
 
 }
 
 main {
   border-radius: 16px;
+  
   background: cornflowerblue;
   width: 100%;
   height: 100%;
   padding-bottom: 400px;
+  padding-top: 40px;
 }
 
-.weatherTop {
- background: url(/assets/images-clouds.png);
- background-size: cover;
- border-radius: 30px;
 
+.weatherTop {
+ padding-top: 50px;
+ padding-bottom: 50px;
+ background-size: cover;
+ margin-top: -50px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+
+}
+
+.rain {
+  background: url("/assets/rain.jpeg");
+  background-size: cover;
+}
+
+.cloudy {
+  background: url("/assets/cloud-anim.jpg");
+  background-image: linear-gradient(white, cornflowerblue);
+  background-size: cover;
+}
+
+.clear {
+  background: url("/assets/clear-sky.jpg");
+  background-image: linear-gradient(rgb(31, 79, 169), cornflowerblue);
+  background-size: cover;
+}
+
+.mist {
+  background: url("/assets/mist.png");
+  background-image: linear-gradient(grey, cornflowerblue);
+  background-size: cover;
+
+}
+
+.nightMist {
+  background-image: linear-gradient(darkgrey, rgb(1, 1, 59) );
+  color: white;
+  
+}
+
+.night {
+  background: rgb(1, 1, 59);
+  color: white;
 }
 
 #weatherFiveDays {
-  width: 100%;
-  padding-top: 50px;
+  width: 80%;
+  padding-top: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-bottom: none;
 
+}
+
+ul {
+  display: flex;
+  flex: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+
+  
+  
+  
+  
+}
+
+li {
+  list-style-type: none;
+  width: 15%;
+ 
+  
+
+}
+
+img {
+  margin-bottom: 0%;
 }
 
 .icon {
   display: flex;
-  justify-content: center;
+  flex-direction: center;
+  
 }
 
 .timeContainer {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-content: center;
-  background: white;
+  background: lightslategray;
   margin-bottom: 2%;
   margin-right: 4%;
-  margin-left: 4%;
+  
   border-radius: 20px;
-  padding: 10px;
+  padding: 5px;
+  padding-bottom: 0;
+  height: 60px;
 }
+
 
 
 #description, h1 {
@@ -52,11 +133,16 @@ main {
   justify-content: center;
 }
 
+p {
+
+}
 
 
 .sunTimes {
   display: flex;
   width: 100%;
+  flex-direction: row;
+  justify-content: space-evenly;
 
 }
   
@@ -74,8 +160,32 @@ main {
 .sunsetSunrise {
   width: 30px;
   height: 30px;
-  padding-left: 10%;
+ 
   padding-top: 3%;
 }
 
+#iconOne, #iconTwo, #iconThree {
+margin-top: -4%;
 
+height: 80px;
+}
+
+@media (min-width: 600px) {
+  ul {
+    width: 40%;
+    margin-left: 4%;
+  }
+
+  li {
+    width: 100%;
+  }
+
+  .sunTimes {
+    justify-content: center;
+    
+  }
+
+  #sunset {
+    padding-left: 5%;
+  }
+}
