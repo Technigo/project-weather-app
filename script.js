@@ -151,10 +151,7 @@ const getActualWeather = () => {
 
         document
           .getElementById("video")
-          .setAttribute(
-            "src",
-            `${getBackgroundVideo(json.weather[0].id)}.webm`
-          );
+          .setAttribute("src", `${getBackgroundVideo(json.weather[0].id)}.mp4`);
 
         document.getElementById(
           "city"
