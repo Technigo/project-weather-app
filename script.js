@@ -26,7 +26,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
             const id = el.id
             const desc = el.description
 
-                // comparing ids assigned to a different weathers
+                // comparing ids assigned to a different weathers and showing the correct picture based on that
                 if(id === 800) {
                     theImage.src = `./img/sun1.png`
                 } else if (id === 801) {
@@ -73,8 +73,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
                 sunsetMin = sunsetMin + '';
             }
             
-            sunRiseSet.innerHTML += `<p>sunrise  ${sunriseConverted.getHours()}:${sunriseMin}</p>`
-            sunRiseSet.innerHTML += `<p>sunset  ${sunsetConverted.getHours()}:${sunsetMin}</p>` 
+            title.innerHTML += `<div id="weatherSun"><p>sunrise  ${sunriseConverted.getHours()}:${sunriseMin}</p><p>sunset  ${sunsetConverted.getHours()}:${sunsetMin}</p></div>`
         }
         aboutRiseandSet()
 
@@ -103,7 +102,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
             //Pick data from all the days at 13:00 
             if(dayHours === 13){
 
-                //Assign the number that specifys a day to a day in theDayWeekdayaArr
+                //Assign the number that specifies a day to a day in theDayWeekdayaArr
                 theDayWeekdayArr.forEach((el, index) => {
                     if(dayWeekday === index) {
                         theDate.innerHTML += `<p>${el} ${dayConverted.getDate()}/${month}</p>`

@@ -16,32 +16,34 @@ body, html {
 #weather {
     width: 100%;
     height: 100%;
-    background-color: #fff;
+    background: #fff;
 }
+
+/*** TOP ***/
 
 .weatherBackground {
     width: 100%;
-    height: 50vh;
+    height: 50%;
     background: linear-gradient(#979bff, #caccff);
     color: #fff;
-    /* clip-path: ellipse(50% 65% at 50% 10%); */
     border-bottom-left-radius: 50% 20%;
     border-bottom-right-radius: 50% 20%;
+
+    display: flex;
+    justify-content: space-around;
 }
 
 #weatherTitle {
-    margin-top: 4rem;
-    margin-left: 2rem;
-    /* width: 50%; */
-}
+    align-self: center; 
+} 
 
 #weatherSun {
     display: flex;
-    margin-top: .5rem;
-    /* margin-left: 2rem;  */
-    justify-content: space-around;
-    /*width: 60%; */
+    justify-content: space-between;
+    width: 120%;
 }
+
+
 
 .main-temp {
     font-size: 5rem;
@@ -56,16 +58,11 @@ body, html {
 }
 
 .image{
-     height: 120px;
-     width: auto;
-    align-self: center; 
-    /* justify-self: flex-start; */
+    height: 35%;
+    align-self: center;
 }
 
-.flex {
-    display: flex;
-    justify-content: space-around;
-}
+/***BOTTOM***/
 
 #weatherBottom {
     font-weight: 500;
@@ -74,10 +71,8 @@ body, html {
 
 .list {
     display: flex;
-    /* padding: 1rem; */
     justify-content: center;
     padding-bottom: 2rem;
-    /* padding-right: 1rem; */
 }
 
 #date p,
@@ -92,17 +87,9 @@ body, html {
     padding-top: 2rem;
 } 
 
-
-
 #date,
 #typeOfWeather {
     padding: .5rem;
-}
-
-#date {
-    /* justify-self: flex-start;
-    justify-items: flex-start;
-    justify-content: flex-start; */
 }
 
 #typeOfWeather {
@@ -110,12 +97,6 @@ body, html {
     flex-direction: column;
 }
 
-#tempMin,
-#tempMax {
-    /* justify-items: flex-end;
-    justify-self: flex-end;
-    justify-content: flex-end; */
-}
 #tempMin {
     padding: .5rem 0 .5rem .5rem;
 }
@@ -135,13 +116,13 @@ body, html {
     padding-top: 2rem;
 }
 
+/***MEDIA QUERIES ***/
 
 @media (min-width: 550px) {
 
     #weather {
         width: 70%;
-       height: 90%;
-        background-color: #fff;
+        height: 90%;
         border: 2px solid #eee;
         margin: 0 auto;
         position: relative;
@@ -190,19 +171,9 @@ body, html {
 }
 
 @media (min-width: 1800px) {
-    #weatherTitle {
-        margin-top: 6rem;
-    }
 
-    #weatherTitle p:last-child {
-        font-size: 20px;
-    }
-    
-    #weatherSun {
-        display: flex;
-        margin-top: 1rem;
+    .weatherBackground {
         justify-content: space-evenly;
-        font-size: 20px;
     }
     
     .main-temp {
@@ -211,10 +182,6 @@ body, html {
     
     .main-temp span {
         font-size: 2.5rem;
-    }
-    
-    .image{
-        height: 160px;
     }
 
     #weatherBottom {
