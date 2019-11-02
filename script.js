@@ -64,7 +64,7 @@ function rotate() {
 const clearData = () => {
   document.getElementById("main").style.background = "white";
   document.getElementById("city").innerHTML = "";
-  document.getElementById("summary").innerHTML = "";
+  document.getElementById("description").innerHTML = "";
   document.getElementById("icon").style.display = "none";
   document.getElementById("forecast").innerHTML = "";
   document.getElementById("sunrise-sunset").innerHTML = "";
@@ -156,10 +156,17 @@ const getActualWeather = () => {
           "city"
         ).innerHTML = `${json.name}, ${json.sys.country}`;
         document.getElementById(
-          "summary"
-        ).innerHTML += `<p class="temperature">${json.main.temp.toFixed(
-          1
-        )}°</p>${json.weather[0].main.toLowerCase()}`;
+          "temperature"
+        ).innerHTML += `${json.main.temp.toFixed(1)}`;
+
+        document.getElementById(
+          "description"
+        ).innerHTML += `${json.weather[0].main.toLowerCase()}`;
+        document.getElementById("icon").style.display = "inline";
+        document.getElementById(
+          "icon"
+        ).src = `https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png`;
+
         document.getElementById(
           "sunrise-sunset"
         ).innerHTML = `<p>current time: ${(
@@ -171,10 +178,6 @@ const getActualWeather = () => {
         ).slice(-2)} | sunset: ${("0" + sunset.getUTCHours()).slice(-2)}:${(
           "0" + sunset.getUTCMinutes()
         ).slice(-2)}`;
-        document.getElementById("icon").style.display = "block";
-        document.getElementById(
-          "icon"
-        ).src = `https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png`;
       } else if (json.cod === "404") {
         document.getElementById(
           "city"
