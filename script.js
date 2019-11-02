@@ -31,22 +31,32 @@ function locationError(err) {
 function inCaseOfError(error) {
   switch (error.code) {
     case error.PERMISSION_DENIED:
-      alert(
-        "User denied the request for Geolocation. Please type a city on the search bar."
-      );
+      document.getElementById(
+        "city"
+      ).innerHTML = `ERROR!<p class="error-message">You denied our request for Geolocation.</p><img src="assets/error-geolocation.jpg" alt="Error message image"><p class="error-message-detail">Please allow geolocation for weather forecast of your location or type a city on the search bar.</p>`;
+      document.getElementById("video").src = undefined;
+      document.getElementById("main").style.background = "salmon";
       break;
     case error.POSITION_UNAVAILABLE:
-      alert(
-        "Location information is unavailable. Please type a city on the search bar."
-      );
+      document.getElementById(
+        "city"
+      ).innerHTML = `ERROR!<p class="error-message">Location information is unavailable.</p><img src="assets/error-geolocation.jpg" alt="Error message image"><p class="error-message-detail"> Please type a city on the search bar.</p>`;
+      document.getElementById("video").src = undefined;
+      document.getElementById("main").style.background = "salmon";
       break;
     case error.TIMEOUT:
-      alert(
-        "The request to get user location timed out. Please type a city on the search bar."
-      );
+      document.getElementById(
+        "city"
+      ).innerHTML = `ERROR!<p class="error-message">The request to get your location timed out.</p><img src="assets/error-geolocation.jpg" alt="Error message image"><p class="error-message-detail"> Please type a city on the search bar.</p>`;
+      document.getElementById("video").src = undefined;
+      document.getElementById("main").style.background = "salmon";
       break;
     case error.UNKNOWN_ERROR:
-      alert("An unknown error occurred. Please type a city on the search bar.");
+      document.getElementById(
+        "city"
+      ).innerHTML = `ERROR!<p class="error-message">An unknown error occurred.</p><img src="assets/error-geolocation.jpg" alt="Error message image"><p class="error-message-detail"> Please type a city on the search bar.</p>`;
+      document.getElementById("video").src = undefined;
+      document.getElementById("main").style.background = "salmon";
       break;
   }
 }
@@ -127,7 +137,7 @@ const isItNight = (time, sunrise, sunset) => {
 //Gets current weather from API.
 //Sets background accordingly to weather id (using getBackgroundVideo and isItNight).
 //Fills city, summary, sunrise-sunset and icon elements
-//Prints error message if 404 message is retrieved
+//Prints error message if 404 message is retrieved from API
 const getActualWeather = () => {
   fetch(
     `https://api.openweathermap.org/data/2.5/weather?${city}&units=metric&APPID=${apiKey}`
@@ -157,7 +167,7 @@ const getActualWeather = () => {
         ).innerHTML = `${json.name}, ${json.sys.country}`;
         document.getElementById(
           "temperature"
-        ).innerHTML += `${json.main.temp.toFixed(1)}`;
+        ).innerHTML += `${json.main.temp.toFixed(1)}°`;
 
         document.getElementById(
           "description"
@@ -187,7 +197,7 @@ const getActualWeather = () => {
       } else {
         document.getElementById(
           "city"
-        ).innerHTML = `RROR!<p class="error-message">Location not found.</p><img src="assets/error.jpg" alt="Error message image"><p class="error-message-detail">Please check if you typed it correctly.</p>`;
+        ).innerHTML = `ERROR!<p class="error-message">Location not found.</p><img src="assets/error.jpg" alt="Error message image"><p class="error-message-detail">Please check if you typed it correctly.</p>`;
       }
     })
     .catch(err => {
@@ -195,6 +205,11 @@ const getActualWeather = () => {
     });
 };
 
+//This functions gets the forecast for the next 15 hours in intervals of 3 hours.
+//With help from a forEach loop the function goes through the 5 indexs of the array.
+//It prints day and month, temperature and icon.
+//On the accordion detail is prints weather description, wind speed and direction, pressure and humidity.
+//It also calls toggle functions for showing/hidding the accordion menu detail and rotate the icon.
 const getNextHoursForecast = () => {
   fetch(
     `https://api.openweathermap.org/data/2.5/forecast?${city}&cnt=5&units=metric&APPID=${apiKey}`
@@ -246,6 +261,12 @@ const getNextHoursForecast = () => {
     });
 };
 
+//Function called when the search bar button is clicked.
+//It verifies the text input is not empty and if not:
+//1. clears the data from the DOM.
+//2. invokes refreshWeather with the content from the search bar.
+//3. resets the content of text input field
+//OBS: the position contains "q=" as the search query differs from the geolocation one.
 const getWeather = () => {
   if (document.getElementById("location").value === "") {
     alert("Please type in a city.");
@@ -257,6 +278,11 @@ const getWeather = () => {
   }
 };
 
+//Main function to be called.
+//1. validates if position is either a string or an object.
+//2.1 if object then var city is built with lat and lon
+//2.2 if string it must have been invoked from getWeather and keeps it as it is
+//3. calls API for actualWeather and NextHoursForecast
 const refreshWeather = position => {
   if (typeof position === "object") {
     city = `lat=${position.coords.latitude}&lon=${position.coords.longitude}`;
@@ -271,8 +297,5 @@ const refreshWeather = position => {
   getNextHoursForecast();
 };
 
-if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(refreshWeather, inCaseOfError);
-} else {
-  refreshWeather("Stockholm, SE");
-}
+//Validates if geolocation is available and calls function accordingly
+navigator.geolocation.getCurrentPosition(refreshWeather, inCaseOfError);

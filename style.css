@@ -97,25 +97,24 @@ h1 {
 }
 
 /*** CURRENT WEATHER CONTAINER ***/
-.current {
+.current-summary {
   display: flex;
   justify-content: left;
   align-items: center;
   flex-direction: row;
 }
 
-img#icon {
-  width: 35%;
+.temp-description {
+  flex-basis: 30%;
 }
 
-.summary {
-  /* text-align: left;
-  margin: 0;
-  padding: 0; */
+img#icon {
+  width: 150px;
+  display: none;
 }
 
 .temperature {
-  font-size: 40px;
+  font-size: 60px;
   font-weight: bold;
   margin-bottom: 0px;
   margin: 0;
