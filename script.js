@@ -26,7 +26,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         sunUpSunDown.innerHTML += `Sunrise at ${sunriseTime} | Sunset at ${sunsetTime}`
     })
 
-// Here I'll fetch data from the upcoming weather in Tokyo, listing max and min temperature. 
+// Here I'll fetch data from the upcoming weather in Tokyo, listing max and min temperatures 
 const upcomingWeather = document.getElementById('nextWeather')
 fetch('https://api.openweathermap.org/data/2.5/forecast?q=Tokyo,Japan&units=metric&APPID=82792eb4459b56038cc8a4b53d2f5c3d')
     .then((response) => {
