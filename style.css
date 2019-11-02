@@ -1,13 +1,17 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: lightpink;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     width: 100%;
+    height: 100px;
 }
 
 .stockholm-container {
     font-size: 20px;
     width: 100%;
-    padding: 15px;
     text-align: center;
 }
 
@@ -25,7 +29,6 @@ body {
     font-size: 20px;
     width: 100%;
     text-align: center;
-    padding: 15px;
     padding-bottom: 100px;
 }
 
@@ -35,7 +38,7 @@ footer {
     width: 100%;
 }
 
-/* This applies from 600 px onwards */
+/* Mobile opt */
 
 @media (min-width: 576px) {
     body {
