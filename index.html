@@ -15,6 +15,11 @@
 			defer
 			src="https://cdn.jsdelivr.net/npm/moment@2.24.0/min/moment-with-locales.min.js"
 		></script>
+		<script
+			defer
+      src="https://kit.fontawesome.com/8e1c42b850.js"
+      crossorigin="anonymous"
+    ></script>
 		<script defer src="weather.js"></script>
 		<script defer src="ui.js"></script>
 		<script defer src="app.js"></script>
@@ -32,6 +37,10 @@
 						placeholder="Enter a location"
 					/>
 				</form>
+			</div>
+
+			<div id="info-message" class="info-message hide">
+				<h1>Search for weather around the world!</h1><i class="fas fa-hand-point-up"></i>
 			</div>
 
 			<div class="weather-app hide">

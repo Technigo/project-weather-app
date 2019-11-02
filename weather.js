@@ -20,17 +20,11 @@ const getForecast = async (longitude, latitude) => {
 	return data;
 };
 
-const displayCurrentWeather = (weather, forecast) => {
+const displayCurrentWeather = weather => {
 	const currentWeather = document.querySelector('.weather-details-current');
-	const weatherContainer = document.querySelector('.weather-app');
 	let background = '';
 
-	// const background =
-	// 	weather.main.temp > 15
-	// 		? 'linear-gradient(to bottom right, #ffc500, #c21500)'
-	// 		: 'linear-gradient(to bottom right, #1cb5e0, #000046)';
-
-	// Change background colors based on current temperature.
+	// Change background colors based on current temperature
 	if (weather.main.temp > 20) {
 		background = 'linear-gradient(to bottom right, #ffc500, #c21500)';
 	} else if (weather.main.temp > 10) {
@@ -41,7 +35,7 @@ const displayCurrentWeather = (weather, forecast) => {
 
 	document.body.style.background = background;
 
-	// Update current weather
+	// Update current weather template
 	currentWeather.innerHTML = `
 	<p class="current-temperature">${Math.floor(weather.main.temp)} &deg;C</p>
 	<img src="https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png">
@@ -77,8 +71,6 @@ const displayCurrentWeather = (weather, forecast) => {
 		</div>
 	</div>
 	`;
-
-	weatherContainer.classList.remove('hide');
 };
 
 const displayCurrentForecast = forecast => {
@@ -89,7 +81,7 @@ const displayCurrentForecast = forecast => {
 		return convertUnixToTime(item.dt) === '13:00';
 	});
 
-	// Reset forecast weather
+	// Reset forecast with headings before updating the forecast template
 	forecastWeatherList.innerHTML = `
 	<li>
 		<div class="forecast-day-heading"></div>
@@ -130,8 +122,10 @@ const displayForecastEvery3Hours = (weather, forecast) => {
 		);
 	});
 
+	// Reset 24-hour forecast template
 	forecastDaily.innerHTML = ``;
 
+	// Generate 24-hour forecast template
 	currentForecastItems.forEach(item => {
 		forecastDaily.innerHTML += `
 			<li>

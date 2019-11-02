@@ -47,9 +47,21 @@ body {
 	/* border: 1px solid green; */
 }
 
-.weather-app {
-	/* width: 100%; */
-	/* border: 1px solid crimson; */
+.info-message {
+	color: rgba(255, 255, 255, 0.7);
+	margin-top: 50px;
+	text-align: center;
+	/* display: none; */
+}
+
+.info-message h1 {
+	display: inline-block;
+	font-size: 20px;
+}
+
+.info-message i {
+	font-size: 50px;
+	margin-left: 30px;
 }
 
 .search-location {
@@ -391,4 +403,8 @@ input[type='text']::placeholder {
 	}
 	.weather-details-forecast {
 		padding: 0px 20px 20px 20px;
+	}
+	.info-message h1 {
+		font-size: 30px;
+	}
 }
