@@ -22,7 +22,7 @@ body {
   width: 100%;
   text-align: center;
   font-size: 25px;
-  height: 450px;
+  height: 460px;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -60,7 +60,7 @@ body {
   font-size: 20px;
   margin: 0;
   padding-top: 15px;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
   justify-content: center;
 }
 

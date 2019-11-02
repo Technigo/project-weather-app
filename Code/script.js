@@ -46,6 +46,12 @@ fetch(
       theWeather.innerHTML = `<img src="Assets/thunderstorm" alt="icon" width=\"70px\">`;
     } else if (json.weather[0].description === "scattered clouds") {
       theWeather.innerHTML = `<img src="Assets/cloudy.png" alt="icon" width=\"70px\">`;
+    } else if (json.weather[0].description === "light intensity drizzle") {
+      theWeather.innerHTML = `<img src="Assets/rain.png" alt="icon" width=\"70px\">`;
+    } else if (json.weather[0].description === "drizzle") {
+      theWeather.innerHTML = `<img src="Assets/rain.png" alt="icon" width=\"70px\">`;
+    } else if (json.weather[0].description === "mist") {
+      theWeather.innerHTML = `<img src="Assets/mist.png" alt="icon" width=\"70px\">`;
     }
   });
 
@@ -82,9 +88,9 @@ const handle5DayForecast = json => {
     const minTemp = Math.min(...temps);
     const maxTemp = Math.max(...temps);
 
-    forecastDiv.innerHTML += `<li>Date: ${date}  Min. temp: ${minTemp.toFixed(
+    forecastDiv.innerHTML += `<li>Date: ${date} | Min. temp: ${minTemp.toFixed(
       1
-    )} &deg;C Max. temp: ${maxTemp.toFixed(1)} &deg;C</li>`;
+    )} &deg;C | Max. temp: ${maxTemp.toFixed(1)} &deg;C</li>`;
   });
 };
 
