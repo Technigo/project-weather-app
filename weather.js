@@ -23,15 +23,21 @@ const getForecast = async (longitude, latitude) => {
 const displayCurrentWeather = (weather, forecast) => {
 	const currentWeather = document.querySelector('.weather-details-current');
 	const weatherContainer = document.querySelector('.weather-app');
+	let background = '';
 
-	// Change background colors if temperature is over 20 degrees Celsius.
-	const background =
-		weather.main.temp > 20
-			? 'linear-gradient(to bottom right, #ffc500, #c21500)'
-			: 'linear-gradient(to bottom right, #1cb5e0, #000046)';
+	// const background =
+	// 	weather.main.temp > 15
+	// 		? 'linear-gradient(to bottom right, #ffc500, #c21500)'
+	// 		: 'linear-gradient(to bottom right, #1cb5e0, #000046)';
 
-	// 'linear-gradient(to bottom right, #e65c00, #f9d423)' IN USE
-	// background: linear-gradient(to left, #000046, #1cb5e0);
+	// Change background colors based on current temperature.
+	if (weather.main.temp > 20) {
+		background = 'linear-gradient(to bottom right, #ffc500, #c21500)';
+	} else if (weather.main.temp > 10) {
+		background = 'linear-gradient(to bottom right, #dce35b, #45b649)';
+	} else {
+		background = 'linear-gradient(to bottom right, #1cb5e0, #000046)';
+	}
 
 	document.body.style.background = background;
 
@@ -83,12 +89,10 @@ const displayCurrentForecast = forecast => {
 		return convertUnixToTime(item.dt) === '13:00';
 	});
 
-	console.log('FilteredItems', filteredForecast);
-
 	// Reset forecast weather
 	forecastWeatherList.innerHTML = `
 	<li>
-		<div class="forecast-day-heading">Weekday</div>
+		<div class="forecast-day-heading"></div>
 		<div class="forecast-day-heading"></div>
 		<div class="forecast-day-heading">Humidity</div>
 		<div class="forecast-day-heading">Pressure</div>
@@ -120,17 +124,11 @@ const displayForecastEvery3Hours = (weather, forecast) => {
 	const forecastDaily = document.querySelector('#daily-forecast-list');
 
 	const currentForecastItems = forecast.list.filter(items => {
-		// console.log(
-		// 	convertUnixToDateTime(items.dt),
-		// 	convertUnixToDateTime(weather.dt)
-		// );
 		return (
 			convertUnixToDateTime(items.dt) <
 			convertUnixToDateTime(weather.dt).add(1, 'days')
 		);
 	});
-
-	// console.log(currentForecastItems);
 
 	forecastDaily.innerHTML = ``;
 
@@ -145,6 +143,4 @@ const displayForecastEvery3Hours = (weather, forecast) => {
 			</li>
 		`;
 	});
-
-	// console.log(currentForecastItems);
 };
