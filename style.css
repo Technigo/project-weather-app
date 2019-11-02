@@ -7,7 +7,11 @@
     color: white;
     font-family: 'Montserrat', sans-serif;
     height: 150vh;
-    width: 650px;
+    background: linear-gradient(to bottom, #106163, #1b7578, #26898d, #319ea4, #3cb4bb);
+}
+
+.sun {
+    padding: 50px;
 }
 
 header {
@@ -27,19 +31,41 @@ header {
     padding: 5px;
 }
 
-.forecast-container {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    justify-content: space-around;
-    padding: 20px;
-}
-
 #forecast-section {
-    list-style: none;
-    color: black;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
 }
 
-#icon {
-    width: 10%;
+#forecast-section ul {
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: white 1.5px dashed;
+    list-style: none;
+    padding: 0px;
+    align-items: center;
+}
+
+#weekdays {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    text-align: right;
+}
+
+#minmax-Temp {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#icon-images {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+footer {
+    margin-top: 40px;
+    text-align: center;
 }

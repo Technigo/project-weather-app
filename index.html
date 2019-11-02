@@ -13,29 +13,33 @@
 
 <body>
     <div id="backgroundColor">
+        <section class="sun">
+            <div id="sunrise-time">Sunrise</div>
+            <div id="sunset-time">Sunset</div>
+        </section>
 
         <header>
-            <h1>Today's weather in:</h1>
+            <h1></h1>
+            <div id="temperature-description">Weather description</div>
             <h1 id="location-timezone">Location</h1>
+            <div id="currentIcon">Icon</div>
+
             <h2 id="temperature-degree">temperature</h2>
+            <h4 id="todaysTempMinMax">min/max temp</h4>
         </header>
 
-        <section class="todays-weather-section">
-            <h4 id="todaysTempMinMax">min/max temp</h4>
-            <div id="temperature-description">Weather description</div>
-            <div id="currentIcon">Icon</div>
-            <div id="sunset-time">Sunset</div>
-            <div id="sunrise-time">Sunrise</div>
-        </section>
-
-        <section class="forecast-container">
-            <h2>5-day forecast</h2>
-            <div id="forecast-section">
-            </div>
-        </section>
-        <script src="script1.js"></script>
-        <!-- <script src="script.js"></script> -->
+        <div id="forecast-section">
+            <h2>Forecast</h2>
+        </div>
+        <footer>
+            <p>This is a school project for the Technigo Bootcamp 2019. <br> Questions? Email: <a href="">isell.linda@gmail.com<a href=""></a></p>
+            <br>
+            <img id="logo" src="technigo.png" alt="Technigo logo"></div>
+    </footer>
     </div>
+
+    <script src="script1.js"></script>
+
 </body>
 
 </html>
