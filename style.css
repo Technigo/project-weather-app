@@ -103,14 +103,12 @@ h1 {
   align-items: center;
 }
 
-.current img {
-  flex-basis: 50%;
-  width: 50%;
+img#icon {
+  width: 35%;
   display: none;
 }
 
 .summary {
-  flex-basis: 30%;
   text-align: left;
   margin: 0;
   padding: 0;
