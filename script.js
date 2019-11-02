@@ -80,12 +80,6 @@ const clearData = () => {
   document.getElementById("sunrise-sunset").innerHTML = "";
 };
 
-// function showPosition(position) {
-//   console.log("before: " + city);
-//   city = `lat=${position.coords.latitude}&lon=${position.coords.longitude}`;
-//   console.log("after: " + city);
-// }
-
 //Function that translates wind degrees to cardinal directions
 const getWindDirection = degrees => {
   if (degrees < 45) {
@@ -167,7 +161,7 @@ const getActualWeather = () => {
         ).innerHTML = `${json.name}, ${json.sys.country}`;
         document.getElementById(
           "temperature"
-        ).innerHTML += `${json.main.temp.toFixed(1)}°`;
+        ).innerHTML = `${json.main.temp.toFixed(1)}°`;
 
         document.getElementById(
           "description"
