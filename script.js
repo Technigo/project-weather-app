@@ -48,7 +48,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
 
             title.innerHTML = `<p class="main-temp">${temperature} <span>&#176;C</span></p>`
             title.innerHTML += `<h1>${json.name}</h1>`
-            title.innerHTML += `<p>${desc}</p>`   
+            title.innerHTML += `<p id="type">${desc}</p>`   
         })
 
         // A function that holds all the information about sunrise and sunset
