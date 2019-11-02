@@ -1,3 +1,4 @@
+//Here I'll write the consts that I'll be using for the page. 
 const container = document.getElementById('myWeather')
 const theTemperature = document.getElementById('temperature')
 const theCity = document.getElementById('city')
@@ -8,6 +9,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     .then((response) => {
         return response.json()
     })
+    // Formula for counting the sunrise and sunset time
     .then((json) => {
         const unixTimestampSunrise = json.sys.sunrise
         const unixTimestampSunset = json.sys.sunset
@@ -24,6 +26,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         sunUpSunDown.innerHTML += `Sunrise at ${sunriseTime} | Sunset at ${sunsetTime}`
     })
 
+// Here I'll fetch data from the upcoming weather in Tokyo, listing max and min temperature. 
 const upcomingWeather = document.getElementById('nextWeather')
 fetch('https://api.openweathermap.org/data/2.5/forecast?q=Tokyo,Japan&units=metric&APPID=82792eb4459b56038cc8a4b53d2f5c3d')
     .then((response) => {

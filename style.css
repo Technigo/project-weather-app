@@ -21,9 +21,23 @@ body {
 }
 
 .tokyo-container {
+    font-size: 20px;
     padding: 15px;
     width: 100%;
     text-align: center;
+    padding-bottom: 100px;
 }
 
-@media (min-width: 650px)
+footer {
+    display: block;
+    font-size: 11px;
+    width: 100%;
+}
+
+/* This applies from 600 px onwards */
+
+@media (min-width: 600px) {
+    body {
+        background-color: aliceblue;
+    }
+}
