@@ -26,9 +26,9 @@ const getForecastData = json => {
     forecast.sunrise = timestampToHoursAndMinutes(timestampSunrise);
     forecast.sunset = timestampToHoursAndMinutes(timestampSunset);
     // Populate forecast object
-    const weatherTime = new Date(weather.dt_txt);
-    forecast.date = timestampToDate(weatherTime);
-    forecast.time = timestampToHoursAndMinutes(weatherTime);
+    const weatherTime = new Date(weather.dt * 1000);
+    forecast.date = timestampToDate(weatherTime).toString();
+    forecast.time = timestampToHoursAndMinutes(weatherTime).toString();
 
     //forecast.weekday = timestampToWeekday(weatherTime);
     forecast.weekday = isToday(today, weatherTime);
@@ -74,7 +74,6 @@ forecastData.forEach(
   (displayForecast = (item, index) => {
     const currentDay = item.weekday;
     let previousItem = index - 1;
-    console.log(previousItem);
 
     //const yesterday = previousItem.weekday;
     if (index === 0) {
@@ -99,14 +98,14 @@ const timestampToHoursAndMinutes = timestamp => {
 };
 
 const timestampToDate = timestamp => {
-  return timestamp.toLocaleDateString("en-GB", {
+  return timestamp.toLocaleDateString([], {
     day: "numeric",
     month: "long"
   });
 };
 
 const timestampToWeekday = timestamp => {
-  return timestamp.toLocaleDateString("en-GB", {
+  return timestamp.toLocaleDateString([], {
     weekday: "long"
   });
 };
