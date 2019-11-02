@@ -1,3 +1,8 @@
+html {
+  height: 100%;
+  margin: 0 auto;
+}
+
 body {
   background: white;
   margin: 0 auto;
@@ -17,36 +22,54 @@ body {
   width: 100%;
   text-align: center;
   font-size: 25px;
-  height: 400px;
+  height: 450px;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
   flex-direction: column;
-  align-items: center;
   background: url(Assets/clouds.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  align-items: center;
 }
 
-h2 {
+#city {
   font-size: 35px;
   margin: 0;
   padding-top: 30px;
   font-weight: normal;
+  justify-content: center;
+  padding-bottom: 20px;
 }
 
-h1 {
-  font-size: 40px;
-  font-weight: bold;
-  padding-top: 20px;
-  margin: 0;
+.circle {
+  font-size: 30px;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: rgb(199, 188, 205);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+  border: solid 1.5px black;
+  opacity: 0.6;
 }
 
-h3 {
+#weather {
   font-size: 20px;
   margin: 0;
   padding-top: 15px;
-  padding-bottom: 20px;
+  padding-bottom: 5px;
+  justify-content: center;
+}
+
+#weather:first-letter {
+  text-transform: uppercase;
+}
+
+.today-main {
+  align-items: center;
 }
 
 .today-second {
@@ -61,3 +84,12 @@ h3 {
 }
 
 /**Bottom Section**/
+
+#forecast {
+  list-style-type: none;
+}
+
+.bottom-container {
+  display: flex;
+  width: 100‰;
+}
