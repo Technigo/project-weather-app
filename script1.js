@@ -18,7 +18,7 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Malm%C3%B6&units=metric
     })
     .then((json) => {
         console.log(json);
-        locationTimezone.innerHTML = json.name
+        locationTimezone.innerHTML = `${json.name}`
         temperatureDegree.innerHTML = json.main.temp.toFixed(1) + " °C"
         temperatureMinMax.innerHTML = `min ${json.main.temp_min.toFixed(1)} °C | max ${json.main.temp_max.toFixed(1)} °C`
         temperatureDescription.innerHTML = `It's ${json.weather[0].description} in`
@@ -43,15 +43,17 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Malm%C3%B6&units=metric
 
         // CHANGE BACKGROUND NIGHT/DAY
         const theBodyBackground = document.getElementById("backgroundColor")
-        let todayTime = new Date()
-        let timeNow = todayTime.getTime();
-        if (timeNow >= theSunrise && timeNow <= theSunset) {
-            theBodyBackground.style.background = "linear-gradient(to right bottom, #dc831e, #e29929, #e7af37, #ebc548, #eeda5c)"
-        } else {
-            theBodyBackground.style.background = "linear-gradient(to bottom, #103554, #12426a, #145081, #175e98, #1c6cb0)"
+        let todayTime = new Date().toLocaleTimeString([], { timeStyle: 'short' })
+        if (todayTime < theSunset) {
+            theBodyBackground.style.background = "#F3DC8D"
+            theBodyBackground.style.color = "#2A5510"
+        } else if (todayTime > theSunset) {
+            theBodyBackground.style.background = "#164A68"
+            theBodyBackground.style.color = "#fff"
         }
-
     });
+
+
 
 // FORECAST SECTION
 const handle5DayForecast = (json) => {
@@ -98,7 +100,7 @@ const handle5DayForecast = (json) => {
             `<ul>
         <li id="weekdays">${weekdayName}</li>  
         <li id="icon-images"><img src="https://openweathermap.org/img/wn/${weatherValues[0].weather[0].icon}@2x.png" id="icon" alt="icons for weather" /> </li>
-        <li id="minmax-Temp"> min: ${minTemp.toFixed(1)} °C / max: ${maxTemp.toFixed(1)} °C</li>
+        <li id="minmax-Temp"> min: ${minTemp.toFixed(1)} °C | max: ${maxTemp.toFixed(1)} °C</li>
         </ul>`
     })
 }

@@ -1,3 +1,12 @@
+/* colors:
+
+#F47775 - pink
+#F4F7F8 - light light blue ish
+#164A68 - darker blue
+#A3DEF7 - light blue
+#2A5510 - darker green
+#F7E9B9 - light peach ish */
+
 * {
     margin: 0;
     box-sizing: border-box;
@@ -6,11 +15,11 @@
 #backgroundColor {
     color: white;
     font-family: 'Montserrat', sans-serif;
-    height: 150vh;
+    height: 170vh;
     background: linear-gradient(to bottom, #106163, #1b7578, #26898d, #319ea4, #3cb4bb);
 }
 
-.sun {
+.sun-section {
     padding: 50px;
 }
 
@@ -27,8 +36,8 @@ header {
     font-size: 4em;
 }
 
-.todays-weather-section {
-    padding: 5px;
+#todaysTempMinMax {
+    padding: 10px;
 }
 
 #forecast-section {
@@ -50,7 +59,7 @@ header {
     display: flex;
     flex-direction: column;
     width: 30%;
-    text-align: right;
+    text-align: left;
 }
 
 #minmax-Temp {
@@ -68,4 +77,27 @@ header {
 footer {
     margin-top: 40px;
     text-align: center;
+}
+
+
+/* MEDIA QUERY DESKTOP */
+
+@media (min-width: 900px) {
+    .sun-section {
+        margin-left: 25%;
+    }
+    #forecast-section {
+        width: 50%;
+        margin-left: 25%;
+    }
+    #forecast-section ul {
+        display: flex;
+        border-bottom: white 1.5px dashed;
+        list-style: none;
+        padding: 0px;
+        align-items: center;
+    }
+    #weekdays {
+        text-align: center;
+    }
 }
