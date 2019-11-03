@@ -78,7 +78,7 @@ function toggle() {
   } else {
     accordion -= 1;
   }
-  height += accordion * 125;
+  height += accordion * 150;
 
   if (height > document.getElementById("main").clientHeight) {
     document.getElementById("video").style.height = `${height}px`;
