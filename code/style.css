@@ -25,12 +25,12 @@ body{
 .temp-n-icon h2{
     display:inline;
     margin:2px;
-    font-size: 50px;
+    font-size: 30px;
 }
 .temp-n-icon img{
     display: inline;
-    height:auto;
-    width:70px;
+    height:50px;
+    width:50px;
 
 }
 
@@ -47,11 +47,12 @@ body{
     /*background-size: 100vh; /*Makes the image go all over*/
 }
 h1{
+    font-size: 30px;
 }
 
 #todaysMinMax, #todaysWind{
     margin:2px;
-    font-size: 14px;
+    font-size: 16px;
 }
 .winddiv{
     display:flex;
@@ -92,7 +93,7 @@ hr{
     text-align: center;
 }
 .forecastSection h1{
-    margin-bottom: 0;
+    margin: 0;
 }
 .bigLine{
     width: 300px;
@@ -103,6 +104,9 @@ align-self: center;
     justify-content: center;
     height: 100%;
    /*justify-content: space-between;*/
+}
+#forecastDescription{
+    margin:9px;
 }
 ul{
     display:flex;
