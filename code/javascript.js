@@ -5,7 +5,6 @@ fetch("http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     }).then((json) => {
         console.log(json)
         const jsonText = JSON.stringify(json);
-        // document.getElementById("i").innerText = jsonText;
         setHtmlData(json);
     }).catch((err) => {
         console.log("caught error", err)
@@ -13,16 +12,18 @@ fetch("http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
 // fetch("http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=81056f8102cf170efbadf6ea579c361c")
 //     .then(response => response.json())
 //     .then(response2 => console.log(response2))
+function round(degrees, precision) {
+    var multiplier = Math.pow(10, precision || 0);
+    return Math.round(degrees * multiplier) / multiplier;
+}
+
 function setHtmlData(data) {
     //today´s weather
     const cityName = data.name;
     document.getElementById("city-name").innerText = cityName;
     // degrees & state of the sky
     const degrees = data.main.temp;
-    function round(degrees, precision) {
-        var multiplier = Math.pow(10, precision || 0);
-        return Math.round(degrees * multiplier) / multiplier;
-    }
+
     document.getElementById("temp-degrees").innerText = round(degrees) + " ° ";
     const stateOfTheSky = data.weather[0].main;
     document.getElementById("sky-display").innerText = stateOfTheSky;
@@ -52,12 +53,17 @@ fetch("http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=
         console.log("caught error", err1)
     });
 
+const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
 function daysOfWeekData(json) {
     //days of the week and temperature
-    json.list.forEach(element => {
-        let theDate = new Date(element.dt * 1000)
-        console.log(theDate.toString());
-    });
+    for (var i = 0; i < 40; i += 8) {
+        let theDate = new Date(json.list[i].dt * 1000)
+        console.log(weekDays[theDate.getDay()] + " " + json.list[i].main.temp);
+        console.log("day" + ((i / 8) + 1));
+        document.getElementById("day" + ((i / 8) + 1)).innerText = weekDays[theDate.getDay()];
+        document.getElementById("temp" + ((i / 8) + 1)).innerText = round(json.list[i].main.temp, 0);
+    };
 }
 
 
