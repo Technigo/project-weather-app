@@ -16,7 +16,7 @@ const weekdays = [
 ];
 
 fetch(
-    "http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=da417ece928b0291f06b75fca4777157"
+    "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=da417ece928b0291f06b75fca4777157"
   )
   .then(response => {
     return response.json();
@@ -28,7 +28,7 @@ fetch(
     console.log(json);
 
     city.innerHTML = json.city.name;
-    weather_icon.src = `http://openweathermap.org/img/wn/${json.list[0].weather[0].icon}@2x.png`
+    weather_icon.src = `https://openweathermap.org/img/wn/${json.list[0].weather[0].icon}@2x.png`
     temp.innerHTML = `${getNumber(Math.round(json.list[0].main.temp))}&deg;C`;
 
     sunrise.innerHTML = `${("0" + sunRise.getHours()).slice(-2)}:${("0" + sunRise.getMinutes()).slice(-2)}`;
@@ -40,7 +40,7 @@ fetch(
 
       weekdaysDiv.innerHTML += `<div class="week_days"> 
                                   <div>${weekdays[date.getDay()]}</div>
-                                  <img src="http://openweathermap.org/img/wn/${day.weather[0].icon}.png">
+                                  <img src="https://openweathermap.org/img/wn/${day.weather[0].icon}.png">
                                   <div>${getNumber(Math.round(day.main.temp))}&deg;C </div>
                                 </div>`;
     });
