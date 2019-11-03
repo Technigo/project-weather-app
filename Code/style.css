@@ -1,26 +1,34 @@
 *, *::before, *::after {box-sizing: inherit}
 html {
-    font-size: 16px;
+    font-size: 17px;
 }
 
 body {
     margin: 0px;
     box-sizing: border-box;
-    font-family: Montserrat;    
+    font-family: 'Montserrat', sans-serif;   
 }
 
 h1 {
-    margin: 2.5rem 1rem;
+    margin: 2.0rem 1rem;
     padding: 0rem;
+    font-weight: bold 2000;
+    color: #164A68;
 }
 
 header {
-    background: skyblue;
+    background:#A3DEF7;
     height: auto;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     max-width: 375px;
+    /* color: #F47775
+    #F4F7F8
+    #164A68
+    #A3DEF7
+    #2A5510
+    #F7E9B9; */
 
 }
 
@@ -32,7 +40,7 @@ header {
     padding: 0rem;
     font-size: 1rem;
     line-height: 0em;
-    color: white;
+    color: #F4F7F8;
 }
 
 nav {
@@ -42,13 +50,14 @@ nav {
 }
 
 nav a {
-    color: white;
+    color: #F4F7F8;
     text-decoration: none;
     font-size: 1rem;
+    line-height: 0em;
 }
 
 main {
-    background: skyblue;
+    background:#A3DEF7;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -56,12 +65,26 @@ main {
     max-width: 375px;
 
 }
+.weather {
+    background:#A3DEF7;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#iconNow {
+    height: 1.5rem;
+    margin: 1rem;
+}
 
 li {
     list-style: none;
     margin: 0.4rem 1rem ;
-    padding: 0;
+    padding: 0px 2px;
     text-align: justify;
+    font-size: 1rem;
+    color: #164A68;
+    
 }
  
 li:after {

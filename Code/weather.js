@@ -6,7 +6,9 @@ const containerTempNow = document.getElementById('tempNow')
 const containerWeatherShort = document.getElementById('weatherShort')
 const containerSunrise = document.getElementById('sunrise')
 const containerSunset = document.getElementById('sunset')
+const containerIconNow = document.getElementById('iconNow')
 const apiKey = '996158b88361cd2c1991a7aee0bf6883'
+
 
 fetch(`https://api.openweathermap.org/data/2.5/weather?q=Kalmar,SE&units=metric&APPID=${apiKey}`)
     .then((response) => {
@@ -15,6 +17,8 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=Kalmar,SE&units=metric&
     .then((json) => {
         containerTempNow.innerHTML = `<p>Temp ${json.main.temp.toFixed(1)}°</p>`
         console.log(containerTempNow)
+
+        containerIconNow.innerHTML = `<img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="" />`
 
         containerWeather.innerHTML = `<h1>The weather in ${json.name} is ${json.weather[0].description} and ${json.main.temp.toFixed(1)}°.</h1>`
 
