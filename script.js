@@ -72,7 +72,6 @@ let accordion = 0;
 function toggle() {
   this.classList.toggle("active");
   let height = document.getElementById("main").clientHeight;
-  console.log(this.id);
 
   if (this.classList.contains("active")) {
     accordion += 1;
