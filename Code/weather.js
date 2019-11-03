@@ -83,15 +83,14 @@ const displayMultidayForecast = (currentForecast, index) => {
     multidayForecast.innerHTML += `<h2 class="day">${currentForecast.weekday} <span class="date">${currentForecast.date}</span></h2>`;
 
     // Else print forecast details
-  } else {
-    let output = "<p class='forecast-details'>";
-    output += `<span class="time">${currentForecast.time}</span> `;
-    output += `<span class="max-temperature">Max: <br/>${currentForecast.temperatureMax}&#176;</span> `;
-    output += `<span class="min-temperature">Min: <br/>${currentForecast.temperatureMin}&#176;</span> `;
-    output += `<img class="weather-icon" src="assets/icons/${currentForecast.icon}.svg" alt="${currentForecast.description}. Icon by Nook Fulloption from the Noun Project."/>`;
-    output += "</p>";
-    multidayForecast.innerHTML += output;
   }
+  let output = "<p class='forecast-details'>";
+  output += `<span class="time">${currentForecast.time}</span> `;
+  output += `<span class="max-temperature">Max: <br/>${currentForecast.temperatureMax}&#176;</span> `;
+  output += `<span class="min-temperature">Min: <br/>${currentForecast.temperatureMin}&#176;</span> `;
+  output += `<img class="weather-icon" src="assets/icons/${currentForecast.icon}.svg" alt="${currentForecast.description}. Icon by Nook Fulloption from the Noun Project."/>`;
+  output += "</p>";
+  multidayForecast.innerHTML += output;
 };
 
 // Time in hours and minutes
@@ -129,40 +128,40 @@ const isToday = (today, currentWeekday) => {
   }
 };
 
-// Get different images depending on weather condition
+// Set different classed depending on weather condition
 const getWeatherConditionImage = weatherConditionNumber => {
   const currentForecastImage = document.getElementById("siteHeader");
 
+  // Stormy
   if (weatherConditionNumber >= 200 && weatherConditionNumber <= 232) {
-    console.log("Thunderstorm");
-    currentForecastImage.style.backgroundImage = "url('clear.jpg')";
-    siteHeader.classList.add("currently-stormy");
+    siteHeader.setAttribute("class", "site-header currently-stormy");
+
+    // Rainy
   } else if (
     (weatherConditionNumber >= 300 && weatherConditionNumber <= 321) ||
     (weatherConditionNumber >= 500 && weatherConditionNumber <= 531)
   ) {
-    console.log("Rain");
-    currentForecastImage.style.backgroundImage = "url('clear-mobile.jpg')";
-    siteHeader.classList.add("currently-rainy");
+    siteHeader.setAttribute("class", "site-header currently-rainy");
+
+    // Snowy
   } else if (weatherConditionNumber >= 600 && weatherConditionNumber <= 622) {
-    console.log("Snow");
-    currentForecastImage.style.backgroundImage = "url('clear.jpg')";
-    siteHeader.classList.add("currently-snowing");
+    siteHeader.setAttribute("class", "site-header currently-snowy");
+
+    // Misty
   } else if (weatherConditionNumber >= 701 && weatherConditionNumber <= 781) {
-    console.log("Mist, dust or smoke");
-    siteHeader.classList.add("currently-misty");
+    siteHeader.setAttribute("class", "site-header currently-misty");
+
+    // Clear
   } else if (weatherConditionNumber === 800) {
-    console.log("Clear sky");
-    currentForecastImage.style.backgroundImage = "url('clear.jpg')";
-    siteHeader.classList.add("currently-sunny");
+    siteHeader.setAttribute("class", "site-header currently-clear");
+
+    // Cloudy
   } else if (weatherConditionNumber >= 801 && weatherConditionNumber <= 804) {
-    console.log("Clouds");
-    siteHeader.classList.add("currently-cloudy");
-    //currentForecastImage.style.backgroundImage = "url('overcast.jpg')";
+    siteHeader.setAttribute("class", "site-header currently-cloudy");
+
+    // I fno condition should match use default
   } else {
-    console.log("Can't forecast weather");
-    currentForecastImage.style.backgroundImage = "url('clear.jpg')";
-    siteHeader.classList.add("default");
+    siteHeader.setAttribute("class", "site-header");
   }
 };
 

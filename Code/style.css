@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,500&display=swap");
+
 * {
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
@@ -17,42 +18,46 @@ section {
   padding: 1rem;
   width: 100%;
 }
+
+h1,
+h2 {
+  font-weight: 600;
+}
+
 h1 {
   font-size: 2rem;
-  font-weight: 600;
   color: #efefef;
   text-align: center;
 }
 
 h2 {
   font-size: 1.5rem;
-  font-weight: 600;
   margin-top: 2.5rem;
 }
-/* Background images */
-.currently-cloudy {
-  background-image: url("assets/rain-320x318.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: auto;
-  width: 100%;
-}
+
 /* Header */
 .site-header {
-  display: grid;
+  background-size: cover;
+  background-repeat: no-repeat;
   color: #efefef;
+  display: grid;
   grid-template-columns: repeat(18, 1fr);
-  grid-template-rows: auto /*repeat(6, 1fr)*/;
+  grid-template-rows: auto;
+  height: auto;
   padding-top: 1.5rem;
+  width: 100%;
 }
+
 .site-title {
   grid-column: 2 / span 16;
   grid-row: 1 / span 2;
 }
+
 .city {
   display: block;
   font-size: 2rem;
 }
+
 .current-weather {
   display: grid;
   grid-column: 2 / span 16;
@@ -70,18 +75,21 @@ h2 {
   justify-self: end;
   padding-bottom: 0.4rem;
 }
+
 .current-weather-icon {
   height: 70px;
   grid-column: 7 / span 2;
   grid-row: 1 / span 2;
   width: auto;
 }
+
 .current-weather-description {
   grid-column: 2 / span 10;
   grid-row: 3 / span 2;
   padding-top: 1rem;
   text-align: center;
 }
+
 .current-weather-description::first-letter {
   text-transform: uppercase;
 }
@@ -122,20 +130,47 @@ h2 {
   grid-row: 1 / span 1;
 }
 
+/* Background images */
+
+.currently-clear {
+  background-image: url("assets/clear-320x318.jpg");
+}
+
+.currently-cloudy {
+  background-image: url("assets/clouds-320x318.jpg");
+}
+
+.currently-misty {
+  background-image: url("assets/mist-320x318.jpg");
+}
+
+.currently-rainy {
+  background-image: url("assets/rain-320x318.jpg");
+}
+
+.currently-snowy {
+  background-image: url("assets/snow-320x318.jpg");
+}
+
+.currently-stormy {
+  background-image: url("assets/thunderstorm-320x318.jpg");
+}
+
 /* Multiday forecast */
+
 .forecast-container {
   background-color: #efefef;
 }
+
 .forecast {
   margin: 0 auto;
   width: 95%;
 }
-svg {
-  fill: #fff;
-}
+
 .forecast h2::first-letter {
   text-transform: uppercase;
 }
+
 .date {
   border-bottom: 2px solid #333;
   display: block;
@@ -170,8 +205,8 @@ svg {
   grid-row: 1 / span 1;
   text-align: center;
 }
+
 .weather-icon {
-  align-self: top;
   grid-column: 2 / span 2;
   grid-row: 1 / span 1;
   height: 30px;
@@ -179,20 +214,84 @@ svg {
 }
 
 @media only screen and (min-width: 375px) {
+  .currently-clear {
+    background-image: url("assets/clear-376x318.jpg");
+  }
+
   .currently-cloudy {
+    background-image: url("assets/clouds-376x318.jpg");
+  }
+
+  .currently-misty {
+    background-image: url("assets/mist-376x318.jpg");
+  }
+
+  .currently-rainy {
     background-image: url("assets/rain-376x318.jpg");
   }
+
+  .currently-snowy {
+    background-image: url("assets/snow-376x318.jpg");
+  }
+
+  .currently-stormy {
+    background-image: url("assets/thunderstorm-376x318.jpg");
+  }
 }
-@media only screen and (min-width: 415px) {
+
+@media only screen and (min-width: 414px) {
+  .currently-clear {
+    background-image: url("assets/clear-414x318.jpg");
+  }
+
   .currently-cloudy {
+    background-image: url("assets/clouds-414x318.jpg");
+  }
+
+  .currently-misty {
+    background-image: url("assets/mist-414x318.jpg");
+  }
+
+  .currently-rainy {
     background-image: url("assets/rain-414x318.jpg");
   }
+
+  .currently-snowy {
+    background-image: url("assets/snow-414x318.jpg");
+  }
+
+  .currently-stormy {
+    background-image: url("assets/thunderstorm-414x318.jpg");
+  }
 }
+
 /* Tablet size */
+
 @media only screen and (min-width: 668px) {
+  .currently-clear {
+    background-image: url("assets/clear-845x318.jpg");
+  }
+
   .currently-cloudy {
+    background-image: url("assets/clouds-845x318.jpg");
+  }
+
+  .currently-misty {
+    background-image: url("assets/mist-845x318.jpg");
+  }
+
+  .currently-rainy {
     background-image: url("assets/rain-845x318.jpg");
   }
+
+  .currently-snowy {
+    background-image: url("assets/snow-845x318.jpg");
+  }
+
+  .currently-stormy {
+    background-image: url("assets/thunderstorm-845x318.jpg");
+  }
+
   .sunrise,
   .sun-icon.sunrise {
     grid-column: 3 / span 2;
@@ -211,6 +310,7 @@ svg {
 }
 
 /* Desktop size */
+
 @media only screen and (min-width: 1024px) {
   body {
     display: grid;
@@ -218,8 +318,28 @@ svg {
     grid-template-rows: repeat(10, 1fr);
   }
 
+  .currently-clear {
+    background-image: url("assets/clear-1440x900.jpg");
+  }
+
   .currently-cloudy {
+    background-image: url("assets/clouds-1440x900.jpg");
+  }
+
+  .currently-misty {
+    background-image: url("assets/mist-1440x900.jpg");
+  }
+
+  .currently-rainy {
     background-image: url("assets/rain-1440x900.jpg");
+  }
+
+  .currently-snowy {
+    background-image: url("assets/snow-1440x900.jpg");
+  }
+
+  .currently-stormy {
+    background-image: url("assets/thunderstorm-1440x900.jpg");
   }
 
   .site-header {
@@ -243,44 +363,52 @@ svg {
     font-weight: 500;
     text-align: left;
   }
+
   .city {
     font-weight: 500;
     font-size: 5rem;
   }
+
   .sun-information {
     grid-gap: 1rem;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto /*repeat(6, 1fr)*/;
+    grid-template-rows: auto;
     line-height: 1.5;
     margin-bottom: 1rem;
   }
+
   .current-weather {
     align-content: center;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto /*repeat(6, 1fr)*/;
+    grid-template-rows: auto;
     margin: 0 2rem 1rem 0.5rem;
     width: 150px;
   }
+
   .current-temperature {
     align-self: end;
     grid-column: 1 / span 1;
     grid-row: 1 / span 1;
     line-height: 0.8;
   }
+
   .current-weather-icon {
     grid-column: 2 / span 1;
     grid-row: 1 / span 1;
   }
+
   .current-weather-description {
     align-self: center;
     grid-column: 1 / span 2;
     grid-row: 2 / span 1;
     line-height: 1.5;
   }
+
   .sunrise,
   .sunset {
     justify-self: center;
   }
+
   .sunrise,
   .sun-icon.sunrise {
     grid-column: 1 / span 2;
