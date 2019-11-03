@@ -6,13 +6,14 @@ const URL_SUFFIX = `&units=metric&appid=${API_KEY}`
 const FORECAST_TIME_OF_DAY = 15 //The time of day (+- 1 hour) that the forecast should take
 const DEGREE_TYPE = "&deg;C"
 const WEEKDAY_SHORT = [
+    "Sun",
     "Mon",
     "Tue",
     "Wed",
     "Thu",
     "Fri",
     "Sat",
-    "Sun",
+    
 ]
 
 // A  weather URL is made up of xxx_URL + cityName + URL_SUFFIX. Should use country code to avoid duplicate cities but let's keep it simple for now...
@@ -95,7 +96,7 @@ const loadForecastedWeather = (cityName) => {
                 const tempNode = document.createElement("P") // Holder temperature
 
                 // Add content to all Nodes
-                dayNode.appendChild(document.createTextNode(`${WEEKDAY_SHORT[elementDate.getDay() - 1]}`))
+                dayNode.appendChild(document.createTextNode(`${WEEKDAY_SHORT[elementDate.getDay()]}`))
                 iconNode.src = `https://openweathermap.org/img/wn/${element.weather[0].icon.substring(0,2)}d@2x.png` // force to use "Day symbol"
                 iconDivNode.appendChild(iconNode)
                 tempNode.appendChild(document.createTextNode(`${element.main.temp.toFixed(1)} \u00B0C`))
