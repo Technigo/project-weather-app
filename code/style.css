@@ -3,6 +3,7 @@ body {
   font-family: 'Advent Pro', sans-serif;
   background: rgb(188, 229, 241);
   color: #fff;
+  font-size: 20px;
 }
 
 h1 {
@@ -16,9 +17,6 @@ h2 {
   margin: 0%;
 }
 
-h3 {
-  font-size: 20px; 
-}
 
 .flex-container {
   margin: 20px auto;
@@ -27,7 +25,6 @@ h3 {
   width: 90%;
   height: auto;
   display: flex;
-  /*flex-wrap: wrap;*/
   justify-content: space-around;
   align-items: center; 
 }
@@ -43,8 +40,7 @@ h3 {
   justify-content: center;
   text-align: center;
   /* The "linear-gradient" gives a darker feeling to the her image*/
-  /* Image / copied the relative path for the pic */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/Users/theresaulwahn/Desktop/project-weather-app/code/Pictures/Miami.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/Users/theresaulwahn/Desktop/project-weather-app/code/pictures/Miami.jpg");
   background-repeat: no-repeat;
   /* To make the her picture cover the screen */
   background-size: cover;
@@ -55,31 +51,33 @@ h3 {
 .flex-info {
   width: auto;
     height: auto;
-    /*display: flex;
-    flex-wrap: wrap;*/
     justify-content: space-around;
-    align-items: center;
+   
 }
 
 .flex-sunrise {
-  padding-top: 100px;
+  padding-top: 80px;
   width: auto;
   height: auto;
- 
-  /*flex-wrap: wrap;*/
   justify-content: space-around;
-  /*align-items: center;*/
 }
 
 .flex-sunset {
   width: auto;
   height: auto;
-
-  /*display: flex;
-  /*flex-wrap: wrap;*/
   justify-content: space-around;
-  /*align-items: center;*/
 }
+
+.forecast {
+  list-style-type: none;
+  width: auto;
+  height: auto;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px;
+  word-spacing: 7px;
+}
+
 footer {
   display: flex;
   align-items: center;
