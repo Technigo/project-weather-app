@@ -28,55 +28,56 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
     const sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' })
     const sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' })
 
-    //THE WEATHER SHOWN IN MAIN-TODAY
-    theCity.innerHTML = `<h2>${json.name}</h2>`
-    theTemp.innerHTML = `<h1>${json.main.temp.toFixed(1)} &deg;C</h1>`
-    theWeather.innerHTML = `${json.weather[0].description}`
-    theSunrise.innerHTML = `<img src=\"assets/sunrise.png\" width=\"50px\""></br>${sunriseTime}`
-    theSunset.innerHTML = `<img src=\"assets/sunset.png\" width=\"50px\""></br>${sunsetTime}`
-
     //Get current time to compare with sunrise & sunset for different bg-img
     const currentTime = new Date().toLocaleTimeString([], { timeStyle: 'short' })
 
     let dayTime
     if (currentTime > sunriseTime && currentTime < sunsetTime) {
-      dayTime = true
-    } else {
-      dayTime = false
+      dayTime
     }
 
-    if (dayTime === true && window.matchMedia("(max-width: 750px)").matches) {
+    if (dayTime && window.matchMedia("(max-width: 750px)").matches) {
       mainTop.style.backgroundImage = "url('assets/camp-day-small.jpg')"
-    } else if (dayTime === true && window.matchMedia("(min-width: 750px)").matches) {
+    } else if (dayTime && window.matchMedia("(min-width: 750px)").matches) {
       mainTop.style.backgroundImage = "url('assets/camp-day-big.jpg')"
-    } else if (dayTime === false && window.matchMedia("(max-width: 750px)").matches) {
+    } else if (!dayTime && window.matchMedia("(max-width: 750px)").matches) {
       mainTop.style.backgroundImage = "url('assets/camp-night-small.jpg')"
-    } else if (dayTime === false && window.matchMedia("(min-width: 750px)").matches) {
+    } else if (!dayTime && window.matchMedia("(min-width: 750px)").matches) {
       mainTop.style.backgroundImage = "url('assets/camp-night-big.jpg')"
     }
 
     //Conditions for showing icons instead of string for weather description
-    if (json.weather[0].description === "clear sky") {
-      theWeather.innerHTML = `<img src=\"assets/clear-sky-day.png\" width=\"80px\""></br>`
-    } else if (json.weather[0].description === "clear sky" && dayTime === false) {
-      theWeather.innerHTML = `<img src=\"assets/clear-sky-night.png\" width=\"80px\""></br>`
-    } else if (json.weather[0].description === "few clouds") {
-      theWeather.innerHTML = `<img src=\"assets/few-clouds-day.png\" width=\"80px\""></br>`
-    } else if (json.weather[0].description === "few clouds" && dayTime === false) {
-      theWeather.innerHTML = `<img src=\"assets/few-clouds-night.png\" width=\"80px\""></br>`
-    } else if (json.weather[0].description === "scattered clouds" || json.weather[0].description === "overcast clouds") {
-      theWeather.innerHTML = `<img src=\"assets/scattered-clouds.png\" width=\"80px\""></br>`
-    } else if (json.weather[0].description === "broken clouds") {
-      theWeather.innerHTML = `<img src=\"assets/broken-clouds.png\" width=\"70px\""></br>`
-    } else if (json.weather[0].description.includes("rain") || json.weather[0].description.includes("drizzle")) {
-      theWeather.innerHTML = `<img src=\"assets/broken-clouds.png\" width=\"80px\""></br>`
-    } else if (json.weather[0].description.includes("thunderstorm")) {
-      theWeather.innerHTML = `<img src=\"assets/thunderstorm.png\" width=\"80px\""></br>`
-    } else if (json.weather[0].description.includes("snow")) {
-      theWeather.innerHTML = `<img src=\"assets/snow.png\" width=\"80px\""></br>`
-    } else if (json.weather[0].description === "mist" || json.weather[0].description === "fog") {
-      theWeather.innerHTML = `<img src=\"assets/mist.png\" width=\"80px\""></br>`
+    const weatherId = json.weather[0].id
+    let weatherIcon
+
+    if (weatherId === 800 && dayTime) {
+      weatherIcon = `<img src=\"assets/clear-sky-day.png\" width=\"80px\"">`
+    } else if (weatherId === 800 && !dayTime) {
+      weatherIcon = `<img src=\"assets/clear-sky-night.png\" width=\"80px\"">`
+    } else if (weatherId === 801 && dayTime) {
+      weatherIcon = `<img src=\"assets/few-clouds-day.png\" width=\"80px\"">`
+    } else if (weatherId === 801 && !dayTime) {
+      weatherIcon = `<img src=\"assets/few-clouds-night.png\" width=\"80px\"">`
+    } else if (weatherId === 802) {
+      weatherIcon = `<img src=\"assets/scattered-clouds.png\" width=\"80px\"">`
+    } else if (weatherId === 803 || weatherId === 804) {
+      weatherIcon = `<img src=\"assets/broken-clouds.png\" width=\"80px\"">`
+    } else if (weatherId >= 300 && weatherId < 600) {
+      weatherIcon = `<img src=\"assets/rain.png\" width=\"80px\"">`
+    } else if (weatherId >= 200 && weatherId < 300) {
+      weatherIcon = `<img src=\"assets/thunderstorm.png\" width=\"80px\"">`
+    } else if (weatherId >= 600 && weatherId < 700) {
+      weatherIcon = `<img src=\"assets/snow.png\" width=\"80px\"">`
+    } else if (weatherId >= 700 && weatherId < 800) {
+      weatherIcon = `<img src=\"assets/mist.png\" width=\"80px\"">`
     }
+
+    //THE WEATHER SHOWN IN MAIN-TODAY
+    theCity.innerHTML = `${json.name}`
+    theTemp.innerHTML = `${json.main.temp.toFixed(1)} &deg;C`
+    theWeather.innerHTML = `${weatherIcon}`
+    theSunrise.innerHTML = `<img src=\"assets/sunrise.png\" width=\"50px\""></br>${sunriseTime}`
+    theSunset.innerHTML = `<img src=\"assets/sunset.png\" width=\"50px\""></br>${sunsetTime}`
 
   })
 
@@ -114,29 +115,30 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&c
         const realDate = new Date(date * 1000)
         const shortDate = `${realDate.getDate()} ${months[realDate.getMonth()]}`
         const shortTime = `${addZeros(realDate.getUTCHours())}:${addZeros(realDate.getMinutes())}`
+        console.log(shortTime)
 
         //To get the average temperature for the forecast
         const averageTemp = (forecast.main.temp_max + forecast.main.temp_min) / 2
 
         //Conditions for showing icons instead of string for weather description - using let for eatherIcon since the conditions assign new values
-        const weatherDay = forecast.weather[0].description
+        const weatherId = forecast.weather[0].id
         let weatherIcon
 
-        if (weatherDay === "clear sky") {
+        if (weatherId === 800) {
           weatherIcon = `<img src=\"assets/clear-sky-day.png\" width=\"25px\"">`
-        } else if (weatherDay === "few clouds") {
+        } else if (weatherId === 801) {
           weatherIcon = `<img src=\"assets/few-clouds-day.png\" width=\"25px\"">`
-        } else if (weatherDay === "scattered clouds" || weatherDay === "overcast clouds") {
+        } else if (weatherId === 802) {
           weatherIcon = `<img src=\"assets/scattered-clouds.png\" width=\"25px\"">`
-        } else if (weatherDay === "broken clouds") {
+        } else if (weatherId === 803 || weatherId === 804) {
           weatherIcon = `<img src=\"assets/broken-clouds.png\" width=\"25px\"">`
-        } else if (weatherDay.includes("rain") || weatherDay.includes("drizzle")) {
-          weatherIcon = `<img src=\"assets/broken-clouds.png\" width=\"25px\"">`
-        } else if (weatherDay.includes("thunderstorm")) {
+        } else if (weatherId >= 300 && weatherId < 600) {
+          weatherIcon = `<img src=\"assets/rain.png\" width=\"25px\"">`
+        } else if (weatherId >= 200 && weatherId < 300) {
           weatherIcon = `<img src=\"assets/thunderstorm.png\" width=\"25px\"">`
-        } else if (weatherDay.includes("snow")) {
+        } else if (weatherId >= 600 && weatherId < 700) {
           weatherIcon = `<img src=\"assets/snow.png\" width=\"25px\"">`
-        } else if (weatherDay === "mist" || weatherDay === "fog") {
+        } else if (weatherId >= 700 && weatherId < 800) {
           weatherIcon = `<img src=\"assets/mist.png\" width=\"25px\"">`
         }
 
@@ -146,18 +148,18 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&c
         //Creates two section with separete divs in themn
         forecastBottom.innerHTML +=
           `<section class="forecast" id="forecast${index}">
-        <div class="forecast-date">${shortDate}</div>
-        <div class="forecast-time">${shortTime}</div>
-        <div class="forecast-icon">${weatherIcon}</div>
-        <div class="forecast-temp">${averageTemp.toFixed(1)} &deg;C</div>
-        </section>
+              <div class="forecast-date">${shortDate}</div>
+              <div class="forecast-time">${shortTime}</div>
+              <div class="forecast-icon">${weatherIcon}</div>
+              <div class="forecast-temp">${averageTemp.toFixed(1)} &deg;C</div>
+          </section>
         
-        <section class="forecast-details">
-        <p>Weather: ${forecast.weather[0].description}</p>
-        <p>Wind: ${forecast.wind.speed.toFixed(0)} m/s</p>
-        <p>Max temp: ${forecast.main.temp_max.toFixed(1)} &deg;C</p>
-        <p>Min temp: ${forecast.main.temp_min.toFixed(1)} &deg;C</p>
-        </section>`
+          <section class="forecast-details">
+            <p>Weather: ${forecast.weather[0].description}</p>
+            <p>Wind: ${forecast.wind.speed.toFixed(0)} m/s</p>
+            <p>Max temp: ${forecast.main.temp_max.toFixed(1)} &deg;C</p>
+            <p>Min temp: ${forecast.main.temp_min.toFixed(1)} &deg;C</p>
+          </section>`
 
         //Index increases for every loop
         index++
