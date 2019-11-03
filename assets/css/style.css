@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -9,21 +9,21 @@ html {
   font-family:'Open Sans', sans-serif;
 }
 
-body{
+body {
   display: flex;
   height: 100vh;
   max-width: 450px;
   margin: 0 auto;
 }
 
-.weather-app{
+.weather-app {
   width: 100%;
   margin: auto;
   display: flex;
   flex-direction: column;
 }
 
-.current{
+.current {
   display: flex;
   flex-direction: column;
   border-bottom: 3px solid #000;
@@ -82,7 +82,7 @@ body{
   border-bottom: 1px solid #000;
 }
 
-.day-name{
+.day-name {
   flex-basis: 60%;
   padding: 20px;
   display: flex;

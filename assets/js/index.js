@@ -89,9 +89,9 @@ const createForecast = (index, json) => {
     day: day,
     minTemp: (Math.round(minTemp * 10) / 10).toFixed(1),
     maxTemp: (Math.round(maxTemp * 10) / 10).toFixed(1),
-    id: json.list[index+Math.floor(i/2)].weather[0].id
+    id: json.list[index+Math.floor(i/2)].weather[0].id // weather icon for that day is from middle of the day
   })
-  //Returning how meny items from list array we used to build that day object 
+  //Returning how many items from list array we used to build that day object 
   return i
 }
 
