@@ -8,6 +8,7 @@ const containerSunrise = document.getElementById('sunrise')
 const containerSunset = document.getElementById('sunset')
 const containerIconNow = document.getElementById('iconNow')
 const apiKey = '996158b88361cd2c1991a7aee0bf6883'
+const background = document.getElementById('background')
 
 
 fetch(`https://api.openweathermap.org/data/2.5/weather?q=Kalmar,SE&units=metric&APPID=${apiKey}`)
@@ -15,7 +16,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=Kalmar,SE&units=metric&
         return response.json()
     })
     .then((json) => {
-        containerTempNow.innerHTML = `<p>Temp ${json.main.temp.toFixed(1)}°</p>`
+        containerTempNow.innerHTML = `<p>${json.weather[0].main} | Temp ${json.main.temp.toFixed(1)}°</p>`
         console.log(containerTempNow)
 
         containerIconNow.innerHTML = `<img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="" />`
@@ -38,6 +39,34 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=Kalmar,SE&units=metric&
         containerSunrise.innerHTML = `<p>Sunrise ${sunriseTime}</p>`
         containerSunset.innerHTML = `<p>Sunset ${sunsetTime}</p>`
         console.log(json)
+
+        // const mainWeather = json.weather[0].main
+        const mainWeather = "Clouds"
+        if (mainWeather === "Rain") {
+            console.log("Det finns inget dåligt väder")
+            document.getElementById('background').classList.add('backgroundRain')
+            background.innerHTML = `<p>It's nice out, also with some rain - just take your joggers an' go running!</p>`
+            return
+        }
+        else if (mainWeather === "Clear") {
+            console.log("Hello Sun, beach-time")
+            document.getElementById('background').classList.add('backgroundSun')
+            background.innerHTML = `<p>Wonderful weather for a picknic or lunch outdoors!</p>`
+            return
+        }
+        else if (mainWeather === "Clouds") {
+            console.log("Go to the forest")
+            document.getElementById('background').classList.add('backgroundClouds')
+            background.innerHTML = `<p>Get creative today! Use the day for baking, painting, training or fixing something broken! Also take a walk in the forest!</p>`
+            return
+        }
+        else {
+            console.log("Hello")
+            document.getElementById('background').classList.add('backgroundElse')
+            background.innerHTML = `<p>Hallo handsome!</p>`
+            return
+        }
+
     })
     .catch((err) => {
         console.log('caught error', err)

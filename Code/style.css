@@ -6,29 +6,63 @@ html {
 body {
     margin: 0px;
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;   
+    font-family: 'Montserrat', sans-serif; 
+    max-width: 375px;  
 }
 
 h1 {
     margin: 2.0rem 1rem;
-    padding: 0rem;
-    font-weight: bold 2000;
-    color: #164A68;
+    padding: 1rem 0rem;
+    font-weight: bold;
+    color: black;
+}
+
+p {
+    font-weight: regular;
+    color: black; 
 }
 
 header {
     background:#A3DEF7;
-    height: auto;
+    height: 120px;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    max-width: 375px;
-    /* color: #F47775
-    #F4F7F8
-    #164A68
-    #A3DEF7
-    #2A5510
-    #F7E9B9; */
+    
+    color: #F47775 #F4F7F8 #164A68 #A3DEF7 #2A5510 #F7E9B9;
+
+}
+
+.backgroundElse{
+    background:#A3DEF7;
+    display: block;
+    height: auto;
+    margin: 0rem;
+    padding: 1rem;
+}
+
+.backgroundRain{
+    background:#F47775;
+    display: block;
+    height: auto;
+    margin: 0rem;
+    padding: 1rem;
+}
+
+.backgroundSun{
+    background:#F7E9B9;
+    display: block;
+    height: auto;
+    margin: 0rem;
+    padding: 1rem;
+}
+
+.backgroundClouds{
+    background: linear-gradient(#164A68, #F4F7F8);
+    display: block;
+    height: auto;
+    margin: 0rem;
+    padding: 1rem;
 
 }
 
@@ -40,7 +74,6 @@ header {
     padding: 0rem;
     font-size: 1rem;
     line-height: 0em;
-    color: #F4F7F8;
 }
 
 nav {
@@ -54,6 +87,7 @@ nav a {
     text-decoration: none;
     font-size: 1rem;
     line-height: 0em;
+    text-align: end;
 }
 
 main {
@@ -83,7 +117,7 @@ li {
     padding: 0px 2px;
     text-align: justify;
     font-size: 1rem;
-    color: #164A68;
+    color: black;
     
 }
  
@@ -91,6 +125,16 @@ li:after {
     content: "";
     display: inline-block;
     width: 100%;
+}
+
+footer p {
+    font-size: 0.8rem;
+    color: white;
+    text-align: center;
+    background-color:#A3DEF7;
+    height: auto;
+    margin: 0px;
+    padding-bottom: 5px;
 }
 
 
