@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: -webkit-linear-gradient(-45deg, #82869b 20%,#143eeb 75%);
+  background: -webkit-linear-gradient(-3deg, #143eeb 20%,#9ca2bb 90%);
 }
 
 #today{
@@ -10,11 +10,15 @@ body {
  align-items: center;
  font-family: 'Lato', sans-serif;
 }
+h1{
+ font-size:1em;
+
+}
 
  
 h3{
-scroll-margin: initial;
-font-size: 15px;
+ scroll-margin: initial;
+ font-size: 15px;
 }
 
 
@@ -28,22 +32,24 @@ ul{
 
 li{
  color: rgb(36, 31, 31);
- font-size: 15px;
 }
 
 img{
-width: 70px;
-height: auto;
+ width: 70px;
+ height: auto;
 }
 
 
 @media screen and (min-width: 768px) {
     li {
-     font-size: 30px;
+     font-size: 1.3em;
+    }
+    #today{
+     font-size: 1.3em;
     }
     
     h3{
-    font-size: 30px;
+     font-size: 1.3em;
     }
     
     
@@ -52,14 +58,14 @@ height: auto;
 
 @media screen and (min-width: 1024px) {
     li {
-     font-size: 30px;
+     font-size: 1.3em;
     }
     #today{
-    font-size: 30px;
+     font-size: 1.3em;
     }
     
     h3{
-     font-size: 30px;
+     font-size: 1.3em;
     }
 
 }
