@@ -26,7 +26,12 @@ body {
   height: 300px;
   color: white;
   margin: 0;
-  
+}
+
+#weatherInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 h1 {
@@ -53,17 +58,19 @@ h1 {
 
 
 h4 {
-  margin-left: 42px;
+  /* margin-left: 42px; */
   margin-top: 40px;
   color: #333333;
-
 }
 
 li {
   padding: 5px;
   color: #333333;
- letter-spacing: 0.1em;
-  
+  letter-spacing: 0.1em;
+}
+
+ul {
+  padding-inline-start: 0;
 }
 
 p {
@@ -85,6 +92,11 @@ footer {
 
 /*** TABLET ***/
 @media (min-width: 480px) {
+
+body {
+  background: rgba(28, 155, 240, 0.5);
+    
+}
 
 #weatherHeadline {
   height: 400px;
@@ -112,40 +124,37 @@ font-size: 25px;
   font-size: 20px; 
 }
 
+footer {
+  display: none;
+}
+
 }  
 
 
 /*** DESKTOP ***/
-@media (min-width: 769px) {
+@media (min-width: 800px) {
 
-  body{
-    background-color: rgba(28, 155, 240, 0.5);
-    background-repeat: no-repeat;
-  }
+body{
+  background-color: rgba(28, 155, 240, 0.5);
+}
 
-  #weatherHeadline {
-    height: 600px;
-    padding-top: 300px;
-  }
+#weatherHeadline {
+  height: 600px;
+  padding-top: 300px;
+}
 
-  h1 {
-    font-size: 100px;
-    text-shadow: 0 3px 0 black;
+h1 {
+  font-size: 100px;
+  text-shadow: 0 3px 0 black;
 } 
 
-  footer {
-display: flex; 
-flex-direction: column;
-justify-content: flex-start;
+footer {
+  display: none;
 }
 
-h4 {
-  margin-left: 85px;
-}
 
 #forecast {
   padding-bottom: 75px;
-  margin-left: 50px;
 }
 
 }

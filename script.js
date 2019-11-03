@@ -8,8 +8,6 @@ const container2 = document.getElementById("temperature")
 const container3 = document.getElementById("sunriseSunset")
 
 
-
-
 fetch("https://api.openweathermap.org/data/2.5/weather?q=Alicante,es&units=metric&APPID=e57c9fd6de5974ecd857b3b40415a881")
   .then((response) => {
     return response.json()
@@ -30,10 +28,7 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Alicante,es&units=metri
     const sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' })
     const sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' })
 
-    container3.innerHTML = `<h3> Sunrise ${sunriseTime} Sunset ${sunsetTime}</h3>`
-
-
-
+    container3.innerHTML = `<h3>${sunriseTime} Sunset ${sunsetTime}</h3>`
 
   })
 
@@ -67,7 +62,6 @@ const handle5DayForecast = (json) => {
 
     forecastDiv.innerHTML += `<li> ${date} - min: ${minTemp.toFixed(0)}, max: ${maxTemp.toFixed(0)}</li > `
   })
-
 
 }
 
