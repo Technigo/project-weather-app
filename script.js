@@ -41,6 +41,7 @@ const handle5DayForecast = (json) => {
         const minTemp = Math.min(...temps)
         const maxTemp = Math.max(...temps)
 
+
         // const day = (date[]) => {
         //     new Date()
         //     const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
@@ -60,7 +61,7 @@ const handle5DayForecast = (json) => {
         
 
     // TODAYS weather
-fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=3234696c6c8945542b6d5204a0d55386')
+fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=3234696c6c8945542b6d5204a0d55386')
 .then ((response) => {
     return response.json()
 })
@@ -87,7 +88,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
 
     //FORECAST
 
-fetch('http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&cnt=40&APPID=3234696c6c8945542b6d5204a0d55386')
+fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&cnt=40&APPID=3234696c6c8945542b6d5204a0d55386')
     
 .then ((response) => {
     return response.json()
