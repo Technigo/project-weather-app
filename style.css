@@ -32,6 +32,7 @@ ul{
 
 li{
  color: rgb(36, 31, 31);
+ display: block;
 }
 
 img{

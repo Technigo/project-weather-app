@@ -3,7 +3,7 @@
 const api_key = "3927ba6963ab68cfceebff54c1ee693f";
 const container = document.getElementById("today");
 
-const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 const weathers = {
   Cloudy: "noun_weather.png",
