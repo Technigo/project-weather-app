@@ -40,7 +40,7 @@ h2 {
   justify-content: center;
   text-align: center;
   /* The "linear-gradient" gives a darker feeling to the her image*/
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/Users/theresaulwahn/Desktop/project-weather-app/code/pictures/Miami.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/Users/theresaulwahn/Desktop/project-weather-app/pictures/Miami.jpg");
   background-repeat: no-repeat;
   /* To make the her picture cover the screen */
   background-size: cover;
@@ -87,3 +87,29 @@ footer {
   margin: 0px;
   font-size: 0.8em;
 }
+
+/**** Media Queries ***/
+
+@media (min-width: 650px) {
+ 
+  .hero-alltheweather {
+    margin: 10px 0;
+   
+  }
+
+  /*.forecast {
+    display: inline;
+  }*/
+}
+@media (min-width: 1024px) {
+
+  .hero-alltheweather {
+    align-items: center;
+  }
+
+ /* .forecast {
+    align-items: center;
+  }*/
+    
+}
+
