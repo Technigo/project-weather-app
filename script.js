@@ -66,6 +66,7 @@ function inCaseOfError(error) {
 //It adds 125px when detail open and removes it when collapsing detail
 //It verifies if height is lower than client height to not remove more than it should
 //It then rotates the icon depending on detail open or not
+//OBS: Does not work in Safari for some reason
 let accordion = 0;
 
 function toggle() {
@@ -282,11 +283,6 @@ const getNextHoursForecast = () => {
       document.getElementById("section3").onclick = toggle;
       document.getElementById("section4").onclick = toggle;
       document.getElementById("section5").onclick = toggle;
-      // document.getElementById("arrow1").onclick = rotate;
-      // document.getElementById("arrow2").onclick = rotate;
-      // document.getElementById("arrow3").onclick = rotate;
-      // document.getElementById("arrow4").onclick = rotate;
-      // document.getElementById("arrow5").onclick = rotate;
     })
     .catch(err => {
       console.log("caught error", err);
