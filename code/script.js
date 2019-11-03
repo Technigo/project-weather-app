@@ -24,7 +24,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     document.getElementById("description").innerHTML += `${description}`
 
    
-    weather_icon.src = `http://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png`
+    weather_icon.src = `https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png`
 
     const sunriseUTC = json.sys.sunrise
     const sunsetUTC = json.sys.sunset
