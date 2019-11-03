@@ -7,11 +7,15 @@ body {
     url(/assets/BG06.jpg); */
     color: #fff;
     font-family: 'Raleway', sans-serif;
+    font-size: 18px;
 }
 
 h1 {
     font-style: bold;
     font-size: 50px;
+}
+
+h3 {
 }
 
 #forecast, #today {

@@ -41,11 +41,11 @@ const handle5DayForecast = (json) => {
         const minTemp = Math.min(...temps)
         const maxTemp = Math.max(...temps)
 
-        const day = (date) => {
-            new Date()
-            const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-        }
-        forecast.innerHTML += `<p>${date} -  ${minTemp.toFixed(0)} to ${maxTemp.toFixed(0)}°</p>`
+        // const day = (date[]) => {
+        //     new Date()
+        //     const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+        // }
+        forecast.innerHTML += `<p><h3>${date}</h3> -  ${minTemp.toFixed(0)} to ${maxTemp.toFixed(0)}°</p>`
     })
 }
 
@@ -77,7 +77,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     const sunsetCalc = new Date(json.sys.sunset * 1000)
 
     //Declare new variable to show only hh:mm
-    const sunriseTime = sunriseCalc.toLocaleTimeString([], { timeStyle: 'short' })
+    const sunriseTime = sunriseCalc.toLocaleTimeString([], { timeStyle: 'short' }) 
     const sunsetTime = sunsetCalc.toLocaleTimeString([], { timeStyle: 'short' })
 
     sunrise.innerHTML += (`Sunrise at ${sunriseTime}`)
@@ -98,7 +98,7 @@ fetch('http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=
 
 
 //STYLING
-let time = 06
+let time = 09
 const background = document.body.style.background
 document.body.style.background = "url('/assets/04.jpg')";
 // Background depending on time
@@ -113,8 +113,8 @@ if (time >= 00 && time < 03) {
     document.body.style.background = "url('/assets/06.jpg')";
 }  else if (time >= 08) {
     document.body.style.background = "url('/assets/08.jpg')";
-} else {
+}   else {
     console.log('Other')
-    document.body.style.background = "url('/assets/09.jpg')";
+    document.body.style.background = "url('/assets/09_rain.jpg')";
 }
   
