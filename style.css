@@ -1,47 +1,65 @@
 body {
   margin: 0;
-  background: -webkit-linear-gradient(-45deg, #82869b 20%,#143eeb 100%);
-  }
+  padding: 0;
+  background: -webkit-linear-gradient(-45deg, #82869b 20%,#143eeb 75%);
+}
 
 #today{
  display: flex;
  flex-direction: column;
  align-items: center;
-  
+ font-family: 'Lato', sans-serif;
 }
 
- h1{
-box-shadow: inset 3px 7px 2px 5px rgba(0, 0, 0, .1);
-}
-
-.forecast_container{
-display: flex;
-flex-direction: column;
-}
-
-#forecastdates{
-}
-
-
-
-
-
-
-.sunset-sunrise{
- display: flex;
- width: 50%;
- justify-content: space-between;
  
+h3{
+scroll-margin: initial;
+font-size: 15px;
 }
+
 
 ul{
  display: flex;
  flex-direction: column;
  align-items: center;
+ font-family: 'Lato', sans-serif;
+ padding: inherit;
 }
 
 li{
- color: black;
+ color: rgb(36, 31, 31);
+ font-size: 15px;
+}
 
+img{
+width: 70px;
+height: auto;
+}
+
+
+@media screen and (min-width: 768px) {
+    li {
+     font-size: 30px;
+    }
+    
+    h3{
+    font-size: 30px;
+    }
+    
+    
+}
+   
+
+@media screen and (min-width: 1024px) {
+    li {
+     font-size: 30px;
+    }
+    #today{
+    font-size: 30px;
+    }
+    
+    h3{
+     font-size: 30px;
+    }
 
 }
