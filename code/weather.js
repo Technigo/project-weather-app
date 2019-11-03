@@ -11,7 +11,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
         //this code below is not showing up
         const temp = json.main.temp
         const temp1 = temp.toFixed(0.1)
-        document.getElementById("temp").innerHTML += `Temperature: ${temp1} °C`
+        document.getElementById("temp").innerHTML += ` ${temp1} °C`
         document.getElementById("humidity").innerHTML += `humidity:${json.main.humidity}%`
         const time1 = json.sys.sunrise
         const time2 = json.sys.sunset
@@ -56,7 +56,6 @@ fetch('http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=
     })
 
     .then((json) => {
-        forcast.innerHTML = `<h2> Hourly forcast</h2>`
 
         //day 1 
         // Time interval One
@@ -69,6 +68,7 @@ fetch('http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=
         const minTemp = minTempOne.toFixed(0.1)
         const maxTemp = maxTempOne.toFixed(0.1)
         document.getElementById("hour1").innerHTML += `<p>${minTemp} ° / ${maxTemp} °C</p>`
+
 
 
         //day 2

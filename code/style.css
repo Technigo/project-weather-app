@@ -1,13 +1,90 @@
-#hour1 {
-    background-color: pink;
+.container {
+    margin: 0;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+}
 
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+}
+
+#hour1,
+#hour2,
+#hour3 {
+
+    background-color: pink;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
 
 }
 
-#weatherIcon {
-    width: 75px;
+
+#stockholm img {
+    display: flex;
+    justify-content: center;
+}
+
+img {
+    height: 250px;
+
+
 }
 
 .stockholm {
-    width: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+#sun {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+
+.weatherIcon {
+    display: flex;
+    justify-content: space-between;
+
+
+}
+
+.weatherIcon img {
+
+    height: 40px;
+    padding: 20px;
+}
+
+
+#temp {
+    padding-right: 10px;
+
+}
+
+section {
+    background-color: aqua;
+    border-top-right-radius: 40% 10%;
+    border-top-left-radius: 40% 10%;
+    padding-top: 10px;
+}
+
+.container2 {
+    background-color: beige;
+    height: 400px;
+    padding-top: 20px;
+    border-top-right-radius: 60% 20%;
+    border-top-left-radius: 60% 20%;
+
 }

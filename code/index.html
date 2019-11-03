@@ -11,25 +11,38 @@
 
 <body>
     <div class="container">
-        <div id="header">
-            <img class="stockholm" src="assets/Stockholm_Building.png" />
+
+        <div class="todayWeather">
+            <div class="weatherIcon">
+                <img id="weatherIcon" src="" />
+                <h1 id="temp">
+                    </h>
+            </div>
         </div>
-        <section>
-            <div class="weather">
-                <div class="weatherIcon">
-                    <img id="weatherIcon" src="" />
-                </div>
-                <p id="temp"></p>
+        <div class="stockholm">
+            <img src="assets/Stockholm_Building.png" />
+        </div>
+        <h1>STOCKHOLM</h1>
+        <div class="otherInfo">
+            <div id="sun">
                 <p id="humidity"></p>
             </div>
-            <div id="sun"></div>
-            <div id="forcast"></div>
-            <div id="hour1"></div>
-            <div id="hour2"></div>
-            <div id="hour3"></div>
+        </div>
+
+        <section>
+            <div class="container2">
+                <h3>Forcast</h3>
+                <div id="forcast"></div>
+                <div id="hour1"></div>
+                <div id="hour2"></div>
+                <div id="hour3"></div>
+            </div>
 
         </section>
-        <script src="weather.js"></script>
+
+    </div>
+
+    <script src="weather.js"></script>
 </body>
 
 </html>
