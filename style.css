@@ -15,7 +15,6 @@
 #backgroundColor {
     color: white;
     font-family: 'Montserrat', sans-serif;
-    height: 170vh;
     background: linear-gradient(to bottom, #106163, #1b7578, #26898d, #319ea4, #3cb4bb);
 }
 
