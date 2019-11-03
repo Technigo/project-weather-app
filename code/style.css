@@ -31,8 +31,13 @@ body {
   margin: 0 10px;
 }
 
+.item img {
+  height: 70px;
+  width: auto;
+}
+
 .suntime img {
-  height: 20px;
+  height: 30px;
   width: auto;
 }
 
@@ -43,11 +48,13 @@ footer {
   font-style: italic;
 }
 
+/*MEDIA QUERIES*/
+
 @media (min-width: 668px) {
   .wrapper {
     margin: 40px 60px;
-    max-width: 1600px;
   }
+  
   h1 {
     font-size: 50px;
   }
