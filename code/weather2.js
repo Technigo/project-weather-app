@@ -81,7 +81,7 @@ const fetchToday = () => {
             let minRounded = Math.round(json.main.temp_min * 10) / 10
             let maxRounded = Math.round(json.main.temp_max * 10) / 10
 
-            minMax.innerHTML = `${maxRounded} C° / ${minRounded} C°`
+            minMax.innerHTML = `${maxRounded} C° / <span style="color:lightslategrey">${minRounded} C°</span>`
             todaysWind.innerHTML = `${Math.round(json.wind.speed)} m/s`
 
             //SUNRISE SUNSET//
@@ -94,7 +94,7 @@ const fetchToday = () => {
             //WHICH BACKGROUND TO SHOW//
             let timeNow = todaysDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
             if (timeNow >= sunriseHoursMinutes && timeNow <= sunsetHoursMinutes) {
-                document.getElementById("body").style.background = "linear-gradient(rgb(0, 70, 161), rgb(2, 183, 255))"
+                document.getElementById("body").style.background = "#5c94bd"
 
             }
 
@@ -149,8 +149,8 @@ const fetchForecast = () => {
                 console.log(weatherValues[0].weather[0].description)
 
                 forecastDates.innerHTML += `<li>${dayName}</li>`
-                forecastDescription.innerHTML += `<li><img src="https://openweathermap.org/img/wn/${weatherValues[0].weather[0].icon}@2x.png" alt="weathericons"/></li>`
-                forecastMinMax.innerHTML += `<li>${maxTemp.toFixed()} C° / ${minTemp.toFixed()} C°</li>`
+                forecastDescription.innerHTML += `<li id="weatherIcons"><img src="https://openweathermap.org/img/wn/${weatherValues[0].weather[0].icon}@2x.png" alt="weathericons"/></li>`
+                forecastMinMax.innerHTML += `<li>${maxTemp.toFixed()} C° / <span style="color:lightslategray">${minTemp.toFixed()} C°</span></li>`
                 // forecastDescription.innerHTML += ``
             })
 

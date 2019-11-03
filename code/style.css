@@ -1,11 +1,12 @@
 body{
-    background: linear-gradient(rgb(14, 14, 80), rgb(0, 116, 161));
+    background:#1b3e59;
     color:white;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     display: flex;
     flex-direction: column;
     height: 120vh; /*Relative to 1% of the height of the viewport*/
     /*margin:0 0 0 0; /*So the background image goes all the way*/
+    margin:0;
 }
 #switchCity{
     border: 1px solid navy;
@@ -17,6 +18,7 @@ body{
 }
 #temperature{
     text-shadow: 2px 2px 4px tomato;
+    font-weight: normal;
 }
 .temp-n-icon{
     display: flex;
@@ -99,18 +101,27 @@ align-self: center;
 }
 .forecast{
     display:flex;
+    height: 100%;
    /*justify-content: space-between;*/
 }
 ul{
+    display:flex;
+    flex-direction: column;
     list-style-type: none;
     /*padding: 0;*/
     font-size: 18px;
-    justify-content:;
 }
 li{
-    height:auto;
-    display: flex;
+    /* height:auto; */
+    /* display: flex; */
     padding:8px 0;
+    height: 40px;
+}
+#weatherIcons img{
+width: 40px;
+height: 40px;
+text-align: center;
+    
 }
 
 #forecastDates{
@@ -127,9 +138,10 @@ li{
 footer{
     display:flex;
     justify-content: space-around;
-    font-size: 10px;
+    font-size: 12px;
     background: none;
     align-items: center;
+    margin: 10px;
     }
     footer img {
       width: 70px;
@@ -138,4 +150,5 @@ footer{
     }
     footer a{
       text-decoration: none;
+      color:royalblue;
     }
