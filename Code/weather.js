@@ -101,19 +101,80 @@ const timestampToHoursAndMinutes = timestamp => {
   });
 };
 
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December"
+];
+
 // Date with day in month and month name (long version)
 const timestampToDate = timestamp => {
-  return timestamp.toLocaleDateString([], {
-    day: "numeric",
-    month: "long"
+  const day = timestamp.toLocaleDateString([], {
+    day: "numeric"
   });
+  const month = timestamp.toLocaleDateString([], {
+    month: "numeric"
+  });
+
+  let monthName;
+
+  if (month === "1") {
+    monthName = months[0];
+  } else if (month === "2") {
+    monthName = months[1];
+  } else if (month === "3") {
+    monthName = months[2];
+  } else if (month === "4") {
+    monthName = months[3];
+  } else if (month === "5") {
+    monthName = months[4];
+  } else if (month === "6") {
+    monthName = months[5];
+  } else if (month === "7") {
+    monthName = months[6];
+  } else if (month === "8") {
+    monthName = months[7];
+  } else if (month === "9") {
+    monthName = months[8];
+  } else if (month === "10") {
+    monthName = months[9];
+  } else if (month === "11") {
+    monthName = months[10];
+  } else if (month === "12") {
+    monthName = months[11];
+  }
+  return `${day} ${monthName}`;
 };
 
 // Weekday name (long version)
 const timestampToWeekday = timestamp => {
-  return timestamp.toLocaleDateString([], {
+  const weekday = timestamp.toLocaleDateString([], {
     weekday: "long"
   });
+  if (weekday === "måndag") {
+    return "monday";
+  } else if (weekday === "tisdag") {
+    return "tuesday";
+  } else if (weekday === "onsdag") {
+    return "wednesday";
+  } else if (weekday === "torsdag") {
+    return "thursday";
+  } else if (weekday === "fredag") {
+    return "friday";
+  } else if (weekday === "lördag") {
+    return "saturday";
+  } else if (weekday === "söndag") {
+    return "sunday";
+  }
 };
 
 // Check if weekday is today
