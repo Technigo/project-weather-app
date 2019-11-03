@@ -1,172 +1,175 @@
-const currentForecastImage = document.getElementById("siteHeader");
-const siteHeader = document.getElementById("siteHeader");
-const multidayForecast = document.getElementById("multidayForecast");
-const currentForecast = document.getElementById("currentForecast");
-const today = new Date();
 const apiKey = "61a23a5c50a7b6f6de8daad2de48ae27";
 const forecastLocation = "Stockholm,SE";
 const forecastData = [];
-const dayHeading = document.getElementsByClassName("day");
+const today = new Date();
 
-// Fetch data from Open Weather map
 const handleWeatherForecast = json => {
-  console.log(json);
-  getForecastData(json);
-  forecastData.forEach(displayForecast);
-  forecastData.forEach(displayCurrentForecast);
-};
-
-const getForecastData = json => {
-  const filterForecastData = json.list.filter(weather => {
+  // Filter and store certain data from the json file in objects
+  // that are stored in the array forecastData
+  const filterForecastData = json.list.filter(data => {
+    // Forecast object to store information for different days
     const forecast = {};
+
+    // City name
     forecast.city = json.city.name;
+
     // Sunset and sunrise information
     const timestampSunrise = new Date(json.city.sunrise * 1000);
     const timestampSunset = new Date(json.city.sunset * 1000);
-    forecast.sunrise = timestampSunToHoursAndMinutes(timestampSunrise);
-    forecast.sunset = timestampSunToHoursAndMinutes(timestampSunset);
-    // Populate forecast object
-    const weatherTime = new Date(weather.dt * 1000);
-    forecast.date = timestampToDate(weatherTime);
-    forecast.time = timestampToHoursAndMinutes(weatherTime);
+    forecast.sunrise = timestampToHoursAndMinutes(timestampSunrise);
+    forecast.sunset = timestampToHoursAndMinutes(timestampSunset);
 
-    //forecast.weekday = timestampToWeekday(weatherTime);
-    forecast.weekday = isToday(today, weatherTime);
+    // Date, time and weekday information
+    const forecastTime = new Date(data.dt * 1000);
+    forecast.date = timestampToDate(forecastTime);
+    forecast.time = timestampToHoursAndMinutes(forecastTime);
+    forecast.weekday = isToday(today, forecastTime);
 
-    forecast.temperature = Math.floor(weather.main.temp);
-    forecast.temperatureMin = Math.floor(weather.main.temp_min);
-    forecast.temperatureMax = Math.floor(weather.main.temp_max);
-    forecast.description = weather.weather[0].description;
-    forecast.icon = weather.weather[0].icon;
-    forecast.id = weather.weather[0].id;
+    // Temperature information
+    forecast.temperature = Math.round(data.main.temp);
+    forecast.temperatureMin = Math.round(data.main.temp_min);
+    forecast.temperatureMax = Math.round(data.main.temp_max);
+
+    // Weather description, icon and id
+    forecast.description = data.weather[0].description;
+    forecast.icon = data.weather[0].icon;
+    forecast.id = data.weather[0].id;
 
     // Add forecast object to array
     forecastData.push(forecast);
   });
+
+  forecastData.forEach(displayCurrentForecast);
+  forecastData.forEach(displayMultidayForecast);
 };
 
-forecastData.forEach(
-  (displayCurrentForecast = (item, index) => {
-    if (index === 0) {
-      // Current temperature
-      let output;
-      siteHeader.innerHTML = `<h1 class="site-title">Today's weather in <span class="city">${item.city}</span></h1>`;
-      output = "<p class='current-weather'>";
-      output += `<span class="current-temperature">${item.temperature}&#176;</span> `;
-      output += `<img class="current-weather-icon" src="assets/${item.icon}.svg" alt="${item.description}"/>`;
-      output += `<span class="current-weather-description">${item.description}</span>`;
-      output += "</p>";
-      output += "<p class='sun-information'>";
-      output += `<img class="sun-icon sunrise" src="assets/sunrise.svg" alt="Sunrise. Icon by Nook Fulloption from the Noun Project."/>`;
-      output += `<span class="sunrise">${item.sunrise}</span> `;
-      output += `<img class="sun-icon sunset" src="assets/sunset.svg" alt="Sunset. Icon by Nook Fulloption from the Noun Project."/>`;
-      output += `<span class="sunset">${item.sunset}</span>`;
-      output += "</p>";
-      siteHeader.innerHTML += output;
+const displayCurrentForecast = (currentForecast, index) => {
+  const siteHeader = document.getElementById("siteHeader");
 
-      getWeatherConditionImage(item.id);
-    }
-    console.log(item.sunset);
-  })
-);
+  // If forecast is the first in the array print current forecast info
+  if (index === 0) {
+    let output;
 
-forecastData.forEach(
-  (displayForecast = (item, index) => {
-    const currentDay = item.weekday;
-    let previousItem = index - 1;
+    siteHeader.innerHTML = `<h1 class="site-title">Today's weather in <span class="city">${currentForecast.city}</span></h1>`;
+    output = "<p class='current-weather'>";
+    output += `<span class="current-temperature">${currentForecast.temperature}&#176;</span>`;
+    output += `<img class="current-weather-icon" src="assets/icons/${currentForecast.icon}-w.svg" alt="${currentForecast.description}"/>`;
+    output += `<span class="current-weather-description">${currentForecast.description}</span>`;
+    output += "</p>";
+    output += "<p class='sun-information'>";
+    output += `<img class="sun-icon sunrise" src="assets/icons/sunrise-w.svg" alt="Sunrise. Icon by Nook Fulloption from the Noun Project."/>`;
+    output += `<span class="sunrise">${currentForecast.sunrise}</span> `;
+    output += `<img class="sun-icon sunset" src="assets/icons/sunset-w.svg" alt="Sunset. Icon by Nook Fulloption from the Noun Project."/>`;
+    output += `<span class="sunset">${currentForecast.sunset}</span>`;
+    output += "</p>";
+    siteHeader.innerHTML += output;
 
-    //const yesterday = previousItem.weekday;
-    if (index === 0) {
-      multidayForecast.innerHTML = `<h2 class="day">${item.weekday} <span class="date">${item.date}</span></h2>`;
-    } else if (
-      forecastData[index].weekday !== forecastData[previousItem].weekday
-    ) {
-      multidayForecast.innerHTML += `<h2 class="day">${item.weekday} <span class="date">${item.date}</span></h2>`;
-    }
+    // Get the weather image for the current weather using the weather id
+    getWeatherConditionImage(currentForecast.id);
+  }
+};
+
+const displayMultidayForecast = (currentForecast, index) => {
+  const multidayForecast = document.getElementById("multidayForecast");
+  const currentDay = currentForecast.weekday;
+  let previousIndex = index - 1;
+
+  // If it is the first forecast in the array print heading with weekday and date info
+  if (index === 0) {
+    multidayForecast.innerHTML = `<h2 class="day">${currentForecast.weekday} <span class="date">${currentForecast.date}</span></h2>`;
+
+    // If the current forecast day isn't the same as the previously printed forecast, print a new heading
+  } else if (currentDay !== forecastData[previousIndex].weekday) {
+    multidayForecast.innerHTML += `<h2 class="day">${currentForecast.weekday} <span class="date">${currentForecast.date}</span></h2>`;
+
+    // Else print forecast details
+  } else {
     let output = "<p class='forecast-details'>";
-    output += `<span class="time">${item.time}</span> `;
-    output += `<span class="max-temperature">Max: ${item.temperatureMax}&#176;</span> `;
-    output += `<span class="min-temperature">Min: ${item.temperatureMin}&#176;</span> `;
-    output += `<img class="weather-icon" src="assets/${item.icon}.svg" alt="${item.description}. Icon by Nook Fulloption from the Noun Project."/>`;
+    output += `<span class="time">${currentForecast.time}</span> `;
+    output += `<span class="max-temperature">Max: <br/>${currentForecast.temperatureMax}&#176;</span> `;
+    output += `<span class="min-temperature">Min: <br/>${currentForecast.temperatureMin}&#176;</span> `;
+    output += `<img class="weather-icon" src="assets/icons/${currentForecast.icon}.svg" alt="${currentForecast.description}. Icon by Nook Fulloption from the Noun Project."/>`;
     output += "</p>";
     multidayForecast.innerHTML += output;
-  })
-);
-
-const timestampSunToHoursAndMinutes = timestamp => {
-  return timestamp.toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit"
-  });
+  }
 };
 
+// Time in hours and minutes
 const timestampToHoursAndMinutes = timestamp => {
   return timestamp.toLocaleTimeString([], {
-    timeZone: "UTC",
     hour: "2-digit",
     minute: "2-digit"
   });
 };
 
+// Date with day in month and month name (long version)
 const timestampToDate = timestamp => {
   return timestamp.toLocaleDateString([], {
-    timeZone: "UTC",
     day: "numeric",
     month: "long"
   });
 };
 
+// Weekday name (long version)
 const timestampToWeekday = timestamp => {
   return timestamp.toLocaleDateString([], {
-    timeZone: "UTC",
     weekday: "long"
   });
 };
 
 // Check if weekday is today
 const isToday = (today, currentWeekday) => {
-  // If the date is equal to today's date
+  // If the date is equal to today's date return "Today" instead of weekday name
   if (today.getDate() === currentWeekday.getDate()) {
-    // Return Today instead of weekday name
     return "Today";
-  } else {
+
     // Else return weekday name
+  } else {
     return timestampToWeekday(currentWeekday);
   }
 };
 
 // Get different images depending on weather condition
 const getWeatherConditionImage = weatherConditionNumber => {
+  const currentForecastImage = document.getElementById("siteHeader");
+
   if (weatherConditionNumber >= 200 && weatherConditionNumber <= 232) {
     console.log("Thunderstorm");
     currentForecastImage.style.backgroundImage = "url('clear.jpg')";
+    siteHeader.classList.add("currently-stormy");
   } else if (
     (weatherConditionNumber >= 300 && weatherConditionNumber <= 321) ||
     (weatherConditionNumber >= 500 && weatherConditionNumber <= 531)
   ) {
     console.log("Rain");
-    currentForecastImage.style.backgroundImage = "url('clear.jpg')";
+    currentForecastImage.style.backgroundImage = "url('clear-mobile.jpg')";
+    siteHeader.classList.add("currently-rainy");
   } else if (weatherConditionNumber >= 600 && weatherConditionNumber <= 622) {
     console.log("Snow");
     currentForecastImage.style.backgroundImage = "url('clear.jpg')";
+    siteHeader.classList.add("currently-snowing");
   } else if (weatherConditionNumber >= 701 && weatherConditionNumber <= 781) {
     console.log("Mist, dust or smoke");
+    siteHeader.classList.add("currently-misty");
   } else if (weatherConditionNumber === 800) {
     console.log("Clear sky");
     currentForecastImage.style.backgroundImage = "url('clear.jpg')";
+    siteHeader.classList.add("currently-sunny");
   } else if (weatherConditionNumber >= 801 && weatherConditionNumber <= 804) {
     console.log("Clouds");
-    currentForecastImage.style.backgroundImage = "url('overcast.jpg')";
+    siteHeader.classList.add("currently-cloudy");
+    //currentForecastImage.style.backgroundImage = "url('overcast.jpg')";
   } else {
     console.log("Can't forecast weather");
     currentForecastImage.style.backgroundImage = "url('clear.jpg')";
+    siteHeader.classList.add("default");
   }
 };
 
+// Fetch data from Open Weather map
 fetch(
   `https://api.openweathermap.org/data/2.5/forecast?q=${forecastLocation}&units=metric&APPID=${apiKey}`
 )
-  // If promise is fulfilled convert response to json and return it
   .then(response => {
     return response.json();
   })

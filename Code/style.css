@@ -29,7 +29,14 @@ h2 {
   font-weight: 600;
   margin-top: 2.5rem;
 }
-
+/* Background images */
+.currently-cloudy {
+  background-image: url("assets/rain-320x318.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: auto;
+  width: 100%;
+}
 /* Header */
 .site-header {
   display: grid;
@@ -51,7 +58,7 @@ h2 {
   grid-column: 2 / span 16;
   grid-row: 3 / span 2;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: auto /*repeat(6, 1fr)*/;
+  grid-template-rows: auto;
   padding-top: 2rem;
 }
 
@@ -123,7 +130,12 @@ h2 {
   margin: 0 auto;
   width: 95%;
 }
-
+svg {
+  fill: #fff;
+}
+.forecast h2::first-letter {
+  text-transform: uppercase;
+}
 .date {
   border-bottom: 2px solid #333;
   display: block;
@@ -150,11 +162,13 @@ h2 {
   font-weight: 500;
   grid-column: 3 / span 1;
   grid-row: 1 / span 1;
+  text-align: center;
 }
 
 .min-temperature {
   grid-column: 4 / span 1;
   grid-row: 1 / span 1;
+  text-align: center;
 }
 .weather-icon {
   align-self: top;
@@ -164,8 +178,21 @@ h2 {
   width: auto;
 }
 
+@media only screen and (min-width: 375px) {
+  .currently-cloudy {
+    background-image: url("assets/rain-376x318.jpg");
+  }
+}
+@media only screen and (min-width: 415px) {
+  .currently-cloudy {
+    background-image: url("assets/rain-414x318.jpg");
+  }
+}
 /* Tablet size */
 @media only screen and (min-width: 668px) {
+  .currently-cloudy {
+    background-image: url("assets/rain-845x318.jpg");
+  }
   .sunrise,
   .sun-icon.sunrise {
     grid-column: 3 / span 2;
@@ -191,11 +218,12 @@ h2 {
     grid-template-rows: repeat(10, 1fr);
   }
 
+  .currently-cloudy {
+    background-image: url("assets/rain-1440x900.jpg");
+  }
+
   .site-header {
     align-items: flex-end;
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
     display: flex;
     grid-column: 1 / span 7;
     grid-row: 1 / span 8;
@@ -235,10 +263,9 @@ h2 {
   }
   .current-temperature {
     align-self: end;
-    font-size: 4.375rem;
     grid-column: 1 / span 1;
     grid-row: 1 / span 1;
-    line-height: 1;
+    line-height: 0.8;
   }
   .current-weather-icon {
     grid-column: 2 / span 1;
