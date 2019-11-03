@@ -6,27 +6,40 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>WeatherApp</title>
     <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300&display=swap" rel="stylesheet">
+
 </head>
 <body>
-    <header>
+    <!-- <header>
         <h1>WeatherApp</h1>
-    </header>
+    </header> -->
+    <div class="rounded-bg"></div>
     <main>
         <section class="weather-current">
-            <h3 id="current-temperature"></h3>
+            <div class="current-temp">
+                <h3 id="current-temperature"></h3>
+                <p>&deg;C</p>
+            </div>
+            
             <p id=city-name></p>
             <p id="weather-description"></p>
-            <p id="sunrise"></p>
-            <p id="sunset"></p>
+            <div class="sunrise-sunset">
+                <div class="sunrise">
+                    <p id="sunrise"></p>
+                </div>
+                <div class="sunrise">
+                    <p id="sunset"></p>
+                </div>
+            </div>
         </section>
         <section class="weather-forecast">
-            <ul id="forecast-weather-list">
+            <ul id="forecast-weather-list" class="forecast-list">
             </ul>
 
         </section>
     </main>
     <footer>
-        <h2>WeatherApp Footer</h2>
+        <!-- <p>WeatherApp Footer</p> -->
     </footer>
     
 </body>

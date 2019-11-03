@@ -4,7 +4,7 @@ const FORECAST_URL = "http://api.openweathermap.org/data/2.5/forecast?q="
 const CURRENT_URL = "http://api.openweathermap.org/data/2.5/weather?q="
 const URL_SUFFIX = `&units=metric&appid=${API_KEY}`
 const FORECAST_TIME_OF_DAY = 15 //The time of day (+- 1 hour) that the forecast should take
-
+const DEGREE_TYPE = "&deg;C"
 const WEEKDAY_SHORT = [
     "Mon",
     "Tue",
@@ -49,10 +49,10 @@ const loadCurrentWeather = (cityName) => {
         document.getElementById("weather-description").innerHTML = json.weather[0].main
         
         const sunrise = new Date(json.sys.sunrise*1000)
-        document.getElementById("sunrise").innerHTML = `Sunrise: ${sunrise.getHours()}:${sunrise.getMinutes()}`
+        document.getElementById("sunrise").innerHTML = `sunrise: ${sunrise.getHours()}:${sunrise.getMinutes()}`
         
         const sunset = new Date(json.sys.sunset*1000)
-        document.getElementById("sunset").innerHTML = `Sunset: ${sunset.getHours()}:${sunset.getMinutes()}`
+        document.getElementById("sunset").innerHTML = `sunset: ${sunset.getHours()}:${sunset.getMinutes()}`
         // console.log(json)
     })
 }
@@ -60,8 +60,7 @@ const loadCurrentWeather = (cityName) => {
 //selects the weather at 3pm each day
 const forecastSelector = (element) => {
     const elementDate = new Date(element.dt*1000)
-    
-    
+
     if (elementDate.getDate() == (new Date()).getDate()) {
         // Skip today's date in the forecast
         return false
@@ -91,18 +90,28 @@ const loadForecastedWeather = (cityName) => {
                 
                 // Create all Nodes
                 const dayNode = document.createElement("P") // Holder for day (Mon/Tue/...)
-                const imgNode = document.createElement("IMG") // Holder for img
+                const iconDivNode = document.createElement("DIV") //holds the img
+                const iconNode = document.createElement("IMG") // Holder for img
                 const tempNode = document.createElement("P") // Holder temperature
 
                 // Add content to all Nodes
                 dayNode.appendChild(document.createTextNode(`${WEEKDAY_SHORT[elementDate.getDay() - 1]}`))
-                imgNode.src = `http://openweathermap.org/img/wn/${element.weather[0].icon.substring(0,2)}d@2x.png` // force to use "Day symbol"
-                tempNode.appendChild(document.createTextNode(`${element.main.temp.toFixed(1)}`))
+                iconNode.src = `http://openweathermap.org/img/wn/${element.weather[0].icon.substring(0,2)}d@2x.png` // force to use "Day symbol"
+                iconDivNode.appendChild(iconNode)
+                tempNode.appendChild(document.createTextNode(`${element.main.temp.toFixed(1)} \u00B0C`))
                 
+                dayNode.classList.add("forecast-day")
+                tempNode.classList.add("forecast-temp")
+                iconDivNode.classList.add("forecast-icon")
                 // Add all nodes to liNode
                 liNode.appendChild(dayNode)
-                liNode.appendChild(imgNode)
+                liNode.appendChild(iconDivNode)
                 liNode.appendChild(tempNode)
+
+                //add class for styling each list item
+                liNode.classList.add("forecast-listitem")
+                
+                //add liNode to list of forecast days
                 weatherList.appendChild(liNode)
         })
 
@@ -110,7 +119,7 @@ const loadForecastedWeather = (cityName) => {
     })
 }
 
-cityName = "Norsjö"
+cityName = "Norsjö" // To be replaced with function to choose any city
 console.log(cityName)
 
 loadCurrentWeather(cityName)

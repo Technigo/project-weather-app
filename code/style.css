@@ -1,0 +1,121 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html, body {
+    font-family: 'Roboto', sans-serif;
+}
+
+main {
+    /* max-width:  400px; */
+}
+/* .rounded-bg {
+    position:absolute;
+    background: #ddd;
+    width:800px;
+    height:800px;
+    left: 50%;
+    top: -530px;
+    border-bottom-left-radius:50%;
+    border-bottom-right-radius:50%;
+    z-index: 5;
+    overflow: hidden;
+    transform: translate(-50%, 0%);
+} */
+
+ul {
+    list-style-type: none;
+}
+
+h3 {
+    font-size: 72px;
+    weight: 300;
+}
+
+.weather-current {
+    padding:20px;
+    height: 250px;
+    z-index: 10;
+    /* box-sizing: content-box; */
+
+    border-bottom-left-radius:50%;
+    border-bottom-right-radius:50%;
+    background-color: rgb(191, 202, 227);
+}
+
+.weather-forecast {
+    background-color: #fff;
+    padding: 20px;
+    z-index: 4;
+}
+
+.current-temp p {
+    font-size: 36px;
+    weight: 300;
+    margin-top: 8px;
+}
+
+main, .current-temp {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.sunrise-sunset {
+    display: flex;
+    flex-wrap: wrap;
+}
+.sunrise, .sunset {
+    width: 50%;
+}
+
+.weather-current, .weather-forecast {
+    width: 100%;
+}
+
+.forecast-list {
+    width: 100%;
+}
+.forecast-listitem {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    margin: 5px 0 5px 0;
+}
+.forecast-listitem:hover {
+    background-color: #eee;
+    border-bottom-left-radius:20px;
+    border-bottom-right-radius:20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.forecast-listitem img {
+    width: 50px;
+    height: 50px;
+    /* object-position: -5px -5px; default value: image is centered */
+    /* margin: 0 auto; */
+
+}
+.forecast-day {
+    width: 40%;
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+.forecast-icon {
+    width: 30%;
+    object-fit: none;
+    /* object-position: 150% 150%; */
+    overflow: hidden;
+    height: 50px;
+}
+.forecast-temp {
+    width: 30%;
+}
+
+footer {
+    height: 40px;
+}
