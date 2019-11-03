@@ -1,65 +1,107 @@
-.mainContainer {
+body{
+    margin:0px;
+}
+
+* {
+    font-family: 'McLaren', cursive;
+}
+
+.backgroundContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: left;
-    background-color: white;
-    background-image: url(skypicture.jpg);
-    background-size: cover;
-    
+    background-size: cover;  
 }
+
+.sunny {
+    background-image: url(sun.jpg);
+}
+
+.rainy {
+    background-image: url(rain.jpg);
+}
+
+.cloudy{
+    background-image: url(clouds.png);
+}
+
+.snowy{
+    background-image: url(snow.jpg); 
+}
+
+.other{
+    background-image: linear-gradient(rgb(101, 179, 243), rgb(185, 201, 206));
+}
+
 .allWeather{
     border: 2px solid black;
-    height: 350px;
+    height: 450px;
     margin-top: 50px;
     margin-bottom: 50px;
     background-color: white;
     padding: 30px;
     text-align: center;
-    
-
+    border-radius: 20px;
+    width: 70%;
 }
 
 h1{
-    font-size: 3em;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    
-    
+    font-size: 2.5em;
+    margin: 0px 0px 15px 0px;  
 }
 
 .temp{
     font-size: 1.8em;
     text-align: center;
 }
+
 .temp p{
-    margin:0px;
-    
+    margin:0px;   
 }
 
-.days{
+p{
+    margin: 10px 0px 10px;
+}
+
+.forcast{
+    display: flex;
+    flex-wrap:wrap; 
     text-align: left;
+    margin-top: 40px;
+    font-size: 0.9em;
+}
+
+.forcastDay{
+    flex-basis:15%;
+    margin: 0px 5px 10px 0px;
+}
+
+.forcastTemp{
+   flex-basis:20%;
+}
+
+.forcastDescription{
+    flex-basis: 60%;
 }
 
 .toControlSunriseandset{
     display: flex;
     justify-content: space-between;
 }
+
 .toControlSunriseandset p{
-    margin: 20px 0px 0px;
+    margin: 0px 0px 10px;
 }
 
 @media (min-width: 650px){
     .allWeather{
         width: 300px;
-        height: 400px;
+        height: 450px;
     }
+
     h1{
-        margin-top: 20px;
-    }
-    
+        margin-top: 10px;
+    }   
 }
 
-@media (min-width: 900px){
-
-}
