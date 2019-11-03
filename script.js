@@ -32,9 +32,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
         json.weather.forEach((currenttype) => {
             currentType.innerHTML += `<h3>${currenttype.description}</h3>`
             currentIcon.innerHTML += `<img src="https://openweathermap.org/img/wn/${currenttype.icon}@2x.png"/>`
-
         })
-
     })
 
 const apiKey = '42da1ed967bb60f77a80f7975f8783b9'
@@ -124,7 +122,7 @@ const handle5DayForecast = (json) => {
 
         // Finally! Now we have the date, along with the min and max temp for that day. We can add it to
         // the list of <li> elements in the list5DaysForecast.
-        list5DayForecast.innerHTML += `<li>${date} min: ${minTemp.toFixed(1)}, max: ${maxTemp.toFixed(1)}</li>`
+        list5DayForecast.innerHTML += `<li>${date} ${minTemp.toFixed(1)}&#8451;/${maxTemp.toFixed(1)}&#8451;</li>`
     })
 }
 

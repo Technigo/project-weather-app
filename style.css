@@ -15,6 +15,10 @@ body {
     text-align: center;
 }
 
+#current-container div {
+    margin: -5px;
+}
+
 #forecast-container {
     display: flex;
     flex-direction: column;
@@ -26,9 +30,26 @@ body {
     text-align: center;
 }
 
-li {
-  margin: 10px;
+#forecast-container p {
+    margin: -5px;
 }
 
+li {
+    margin: 10px;
+}
 
-
+@media (min-width: 650px) {
+    #current-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border: 1px solid white;
+        border-radius: 5%;
+        padding: 10px;
+        margin: 30px;
+        text-align: center;
+    }
+    #current-container h1 {
+        text-align: left;
+    }
+}
