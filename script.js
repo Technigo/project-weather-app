@@ -46,10 +46,10 @@ if (navigator.geolocation) {
                 theSunset.innerHTML = `Sunset: ${sunset}`;
             });
     });
-} else {
-    //does not work?..
-    //h1.innerHTML = "Geolocation is not supported by this browser.";
-}
+    } else {
+        //does not work?..
+        //h1.innerHTML = "Geolocation is not supported by this browser.";
+    }
 
 // 5 DAY FORECAST - NEW API LINK
 if (navigator.geolocation) {

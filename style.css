@@ -79,6 +79,27 @@ footer {
 }
 
 
+/* GEOLOCATION */
+
+#weather-geolocation {
+    border-bottom: white 1.5px dashed;
+    padding-left: 50px;
+    text-align: center;
+}
+
+#weather-geolocation h2,
+h3 {
+    padding: 5px;
+}
+
+#weather-geolocation ul,
+li {
+    text-align: start;
+    list-style: none;
+    padding: 5px;
+}
+
+
 /* MEDIA QUERY DESKTOP */
 
 @media (min-width: 900px) {
@@ -98,5 +119,9 @@ footer {
     }
     #weekdays {
         text-align: center;
+    }
+    #weather-geolocation {
+        width: 50%;
+        margin-left: 25%;
     }
 }
