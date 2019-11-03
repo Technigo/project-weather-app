@@ -5,22 +5,21 @@ body {
   background: white;
   width: 100%;
   margin: 0 auto;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   color: black;
-
+  letter-spacing: 2px;
 }
 
 main {
   border-radius: 16px;
-  
   background: cornflowerblue;
   width: 100%;
   height: 100%;
-  padding-bottom: 400px;
+  padding-bottom: 10px;
   padding-top: 40px;
 }
 
-
+/* Top section for today's forecast */
 .weatherTop {
  padding-top: 50px;
  padding-bottom: 50px;
@@ -29,23 +28,88 @@ main {
  display: flex;
  flex-direction: column;
  align-items: center;
-
+ width: 100%;
 }
 
+h1 {
+  margin-bottom: 0;
+  text-transform: uppercase;
+}
+
+#description, h1 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.sunTimes {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+#temperature {
+  font-size: 80px;
+  margin-bottom: 5px;
+  margin-top: 0;
+}
+
+.sunsetSunrise {
+  width: 30px;
+  height: 30px;
+  padding-top: 3%;
+}
+
+/* Weather forecast for 5 up-coming days*/
+
+#weatherFiveDays {
+  width: 80%;
+  padding-top: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-bottom: none;
+}
+
+ul {
+  display: flex;
+  flex: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+li {
+  list-style-type: none;
+  width: 15%;
+}
+
+.icon {
+  display: flex;
+  flex-direction: center;
+}
+
+/* Background colors shifting depending on weather */
+
 .rain {
-  background: url("/assets/rain.jpeg");
-  background-size: cover;
+  background-image: linear-gradient(rgb(173, 169, 169), rgb(165, 161, 161), cornflowerblue);
 }
 
 .cloudy {
-  background: url("/assets/cloud-anim.jpg");
-  background-image: linear-gradient(white, cornflowerblue);
-  background-size: cover;
+  background-image: linear-gradient(rgb(173, 169, 169), white, cornflowerblue);
+}
+
+.littleCloudy {
+  background-image: linear-gradient(rgb(173, 169, 169), cornflowerblue, rgb(173, 169, 169), cornflowerblue);
+
 }
 
 .clear {
   background: url("/assets/clear-sky.jpg");
-  background-image: linear-gradient(rgb(31, 79, 169), cornflowerblue);
+  background-image: linear-gradient(rgb(250, 227, 50), rgb(31, 79, 169), cornflowerblue);
   background-size: cover;
 }
 
@@ -56,133 +120,44 @@ main {
 
 }
 
-.nightMist {
-  background-image: linear-gradient(darkgrey, rgb(1, 1, 59) );
-  color: white;
-  
+.snow {
+  background-image: linear-gradient(rgb(250, 246, 246), white, cornflowerblue);
 }
 
-.night {
-  background: rgb(1, 1, 59);
-  color: white;
-}
-
-#weatherFiveDays {
-  width: 80%;
-  padding-top: 0px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-bottom: none;
-
-}
-
-ul {
-  display: flex;
-  flex: row;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid black;
-
-  
-  
-  
-  
-}
-
-li {
-  list-style-type: none;
-  width: 15%;
- 
-  
-
-}
-
-img {
-  margin-bottom: 0%;
-}
-
-.icon {
-  display: flex;
-  flex-direction: center;
-  
-}
-
-.timeContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-content: center;
-  background: lightslategray;
-  margin-bottom: 2%;
-  margin-right: 4%;
-  
-  border-radius: 20px;
-  padding: 5px;
-  padding-bottom: 0;
-  height: 60px;
-}
-
-
-
-#description, h1 {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-p {
-
-}
-
-
-.sunTimes {
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-  justify-content: space-evenly;
-
-}
-  
-
-
-#temperature {
-  font-size: 80px;
-  margin-bottom: 5px;
-  margin-top: 0;
-  
-
-}
-
-
-.sunsetSunrise {
-  width: 30px;
-  height: 30px;
- 
-  padding-top: 3%;
-}
-
-#iconOne, #iconTwo, #iconThree {
-margin-top: -4%;
-
-height: 80px;
-}
-
+/* media queries for laptop size */
 @media (min-width: 600px) {
   ul {
-    width: 40%;
+    width: 60%;
     margin-left: 4%;
   }
 
   li {
-    width: 100%;
+    width: 80%;
   }
 
   .sunTimes {
     justify-content: center;
-    
+    margin-left: 2%;
+    width: 100%;
+  }
+
+  #sunset {
+    margin-left: 3%;
+  }
+}
+
+/* Media Queries for desktop size */
+@media (min-width: 900px) {
+  .sunTimes {
+    width: 100%;
+  }
+
+  ul {
+    width: 60%;
+  }
+
+  li {
+    width: 80%;
   }
 
   #sunset {

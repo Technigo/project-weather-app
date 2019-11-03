@@ -5,66 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> 
-  <title>What's the weather</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto&display=swap" rel="stylesheet">   <title>What's the weather</title>
 </head>
 <body>
+  
   <main id="mainContainer">
-   
+  <!-- Top Section for todays's weather forecast-->
     <div class="weatherTop" id="weatherNow">
-     
-       
       <h1 id="city"></h1>
+      <p id="date"></p>
       <div class="icon">
-          <img id="weather_icon" src="" alt="">
+          <img id="weather_icon" src="" >
           <p id="temperature"></p>
-        </div>
-    
-      
+      </div>
       <p id="description"></p>
      
       <div class="sunTimes">
-        <!--<img class="sunsetSunrise" src="/assets/sunrise.png" alt="sunrise">-->
         <p class="sunrise" id="sunrise"></p>
-        <!--<img class="sunsetSunrise" src="/assets/sunset.png" alt="sunrise">-->
         <p id="sunset"></p>
      </div>
-
-      
   </div>
 
-
-  <ul id="weatherFiveDays">
-    
-    <!---
-
-      <p id="time"></p>
-      <img id="icon" src="" alt="">
-      <p id="temp"></p>
-
-
-
-    <div class="timeContainer">
-      
-      <p id="timeTwo"></p>
-      <img id="iconTwo" src="" alt="">
-      <p id="tempTwo"></p>
-    </div>
-    <div class="timeContainer">
-     
-      <p id="timeThree"></p>
-      <img id="iconThree" src="" alt="">
-      <p id="tempThree"></p>
-    </div>
--->
-</ul>
-
+<!-- Forecast for 5 up-coming days incl. weekday, weather icon and temperature-->
+  <ul id="weatherFiveDays"></ul>
 
 </main>
 
-
   <script src="script.js"></script>
- 
  
 </body>
 </html>
