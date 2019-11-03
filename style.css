@@ -18,7 +18,7 @@ h1{
  
 h3{
  scroll-margin: initial;
- font-size: 15px;
+ font-size: 0.8em;
 }
 
 
@@ -58,14 +58,14 @@ img{
 
 @media screen and (min-width: 1024px) {
     li {
-     font-size: 1.3em;
+     font-size: 1.4em;
     }
     #today{
-     font-size: 1.3em;
+     font-size: 1.4em;
     }
     
     h3{
-     font-size: 1.3em;
+     font-size: 1.4em;
     }
 
 }
