@@ -62,12 +62,49 @@ function inCaseOfError(error) {
 }
 
 //Toggle functions for accordion menu
-function toggle(num) {
-  this.classList.toggle("active");
-}
+//It resizes the height of the content according to the accordion menu
+//It adds 125px when detail open and removes it when collapsing detail
+//It verifies if height is lower than client height to not remove more than it should
+//It then rotates the icon depending on detail open or not
+let accordion = 0;
 
-function rotate() {
-  this.classList.toggle("rotate");
+function toggle() {
+  this.classList.toggle("active");
+  let height = document.getElementById("main").clientHeight;
+  console.log(this.id);
+
+  if (this.classList.contains("active")) {
+    accordion += 1;
+  } else {
+    accordion -= 1;
+  }
+  height += accordion * 125;
+
+  if (height > document.getElementById("main").clientHeight) {
+    document.getElementById("video").style.height = `${height}px`;
+  } else {
+    document.getElementById("video").style.height = document.getElementById(
+      "main"
+    ).clientHeight;
+  }
+
+  switch (this.id) {
+    case "section1":
+      document.getElementById("arrow1").classList.toggle("rotate");
+      break;
+    case "section2":
+      document.getElementById("arrow2").classList.toggle("rotate");
+      break;
+    case "section3":
+      document.getElementById("arrow3").classList.toggle("rotate");
+      break;
+    case "section4":
+      document.getElementById("arrow4").classList.toggle("rotate");
+      break;
+    case "section5":
+      document.getElementById("arrow5").classList.toggle("rotate");
+      break;
+  }
 }
 
 //Function to clear containers before loading a new location
@@ -178,7 +215,7 @@ const getActualWeather = () => {
           "0" + currentTime.getUTCHours()
         ).slice(-2)}:${("0" + currentTime.getUTCMinutes()).slice(
           -2
-        )}</p>sunrise ${("0" + sunrise.getUTCHours()).slice(-2)}:${(
+        )}</p>sunrise: ${("0" + sunrise.getUTCHours()).slice(-2)}:${(
           "0" + sunrise.getUTCMinutes()
         ).slice(-2)} | sunset: ${("0" + sunset.getUTCHours()).slice(-2)}:${(
           "0" + sunset.getUTCMinutes()
@@ -229,7 +266,7 @@ const getNextHoursForecast = () => {
           1
         )}°<img src="https://openweathermap.org/img/wn/${
           weather.weather[0].icon
-        }.png" alt="Weather representation"> <span id="arrow${index}">&#x25B6;</span></div></div>
+        }.png" alt="Weather representation"><span id="arrow${index}">&#x25B6;</span></div></div>
         <div class="detail">
         <p><b>Weather description:</b> ${weather.weather[0].description}</p>
         <p><b>Wind speed (m/s):</b> ${weather.wind.speed.toFixed(0)}</p>
@@ -245,11 +282,11 @@ const getNextHoursForecast = () => {
       document.getElementById("section3").onclick = toggle;
       document.getElementById("section4").onclick = toggle;
       document.getElementById("section5").onclick = toggle;
-      document.getElementById("arrow1").onclick = rotate;
-      document.getElementById("arrow2").onclick = rotate;
-      document.getElementById("arrow3").onclick = rotate;
-      document.getElementById("arrow4").onclick = rotate;
-      document.getElementById("arrow5").onclick = rotate;
+      // document.getElementById("arrow1").onclick = rotate;
+      // document.getElementById("arrow2").onclick = rotate;
+      // document.getElementById("arrow3").onclick = rotate;
+      // document.getElementById("arrow4").onclick = rotate;
+      // document.getElementById("arrow5").onclick = rotate;
     })
     .catch(err => {
       console.log("caught error", err);
