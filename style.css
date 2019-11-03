@@ -1,27 +1,205 @@
 body {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
     background-color:lightblue;
     font-family: 'Shadows Into Light', cursive;
-    font-size:22px;
+    font-size:20px;
+    box-sizing:border-box;
+    margin:0px;
 }
 
+/*** HEADER ***/
+
+header {
+    background:whitesmoke;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    border: 2px solid black;
+    border-radius: 16px;
+    margin:0 0 2px;
+  }
+  
+  .hamburger {
+    display:flex;
+    width:30px;
+    height:30px;
+    flex-direction:column;
+    justify-content:space-between;
+    margin-right:24px;
+  }
+
+  .hamburger div {
+    width:30px;
+    height:5px;
+    background:black;
+    border-radius:5px;
+  }
+  
+  header img {
+    height:60px;
+    width: 50px;
+    background:lavender;
+    border:1px solid black;
+    border-radius:16px;
+  }
+  
+  nav {
+  display:none;
+  }
+  
+  nav a {
+    color:black;
+    text-decoration:none;
+    margin-left:16px;
+  }
+
+/** THE WEATHER CONTAINER **/
 
 #weatherApp {
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-height:500px;
-width: 400px;
-border:4px solid;
-background-image: url(stockholm.jpg);
+background-color:lightblue;
+height:100vh;
+max-width: 667px;
+border:2px solid;
+border-radius: 16px;
+background-image: url(weather.jpeg);
 background-size: cover;
 background-repeat: no-repeat;
 }
 
-/* overlay {
-    height:500px;
-    width: 400px;
-    opacity: 0.5;
-    position: absolute;
-    z-index: -1; 
-} */
+#presentation, #city, #temperature {
+    margin:5px;
+}
+
+#weather-description {
+    display: flex;
+    flex-direction: column;
+    width:200px;
+    margin:5px;
+}
+
+#weather-icon {
+    display:flex;
+    justify-content: center;
+}
+
+/** The WeatherIcon Image **/
+
+#weatherIcon {
+    display: flex;
+    justify-content: center;
+    height:60px;
+    width: 60px;
+}
+
+#sunrise, #sunset {
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+}
+
+/** The sunset & sunrise img **/
+
+img {
+    justify-content: center;
+    height:40px;
+    width:40px;
+    margin:10px
+}
+
+h1 {
+    display:flex;
+    justify-content: center;
+    margin:0;
+    font-size:30px;
+}
+
+h4, h3 {
+    display:flex;
+    justify-content: center;
+    margin:0;
+    font-size:20px;
+}
+
+p {
+    margin:0px;
+    font-size:30px;
+}
+
+footer {
+    width: 100%;
+    display: block;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 5px;
+}
+
+/** MEDIA QUERIES **/
+
+/** TABLETS **/
+
+@media (min-width: 667px) {
+    header {
+        justify-content:space-between;
+            height: 80px;
+      }
+    
+      nav {
+        display:inline-block;
+      }
+
+      .hamburger {
+        display:none;
+      }
+
+      #weatherApp {
+        height:800px;
+        max-width: 1024px;
+        border:3px solid;
+        }
+
+        h1 {
+            font-size:40px;
+        }
+
+        h2, h3 {
+            font-size:30px;
+        }
+
+}
+
+/** DESKTOP **/
+
+@media (min-width: 1024px){
+
+    header {
+        justify-content:space-between;
+        height: 100px;
+      }
+    
+      nav {
+        display:inline-block;
+      }
+    
+      nav a {
+          font-size:20px;
+      }
+      .hamburger {
+        display:none;
+      }
+
+      #weatherApp {
+        height:800px;
+        max-width: none;
+        border:3px solid;
+        }
+}

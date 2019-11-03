@@ -8,19 +8,36 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
     <title>Weather App</title>
-
 </head>
 
 <body>
-    <section id="weatherApp">
-        <div id="presentation">
-            <p>Todays weather in:</p>
+    <header>
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
-        <div id="location"></div>
+        <img src="weathericon.png" alt="Weather Icon">
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Other Cities</a>
+            <a href="#">Weather News</a>
+        </nav>
+    </header>
+    <section id="weatherApp">
+        <div id="presentation"></div>
+        <div id="city"></div>
         <div id="temperature"></div>
+        <div id="weather-description">
+            <div id="weather-icon"></div>
+        </div>
         <div id="sunrise"></div>
         <div id="sunset"></div>
+        <ul id="forecast">
+            <p>Longtime forcast:</p>
+        </ul>
     </section>
+    <footer>© Angelica Brodin 2019</footer>
     <script src="weather.js"></script>
 </body>
 
