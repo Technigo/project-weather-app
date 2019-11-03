@@ -108,16 +108,11 @@ li {
 }
 
 .clear {
-  background: url("/assets/clear-sky.jpg");
   background-image: linear-gradient(rgb(250, 227, 50), rgb(31, 79, 169), cornflowerblue);
-  background-size: cover;
 }
 
 .mist {
-  background: url("/assets/mist.png");
   background-image: linear-gradient(grey, cornflowerblue);
-  background-size: cover;
-
 }
 
 .snow {
