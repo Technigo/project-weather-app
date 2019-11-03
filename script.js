@@ -98,6 +98,14 @@ fetch('http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=
 
 
 //STYLING
+// unsuccessful attempt to fetch timestamp to change background depending on time
+// const time = (Date.prototype.timeNow) => {
+//     return ((this.getHours() < 10)?"0":"") + this.getHours() +":"+ ((this.getMinutes() < 10)?"0":"") + this.getMinutes();
+// }
+
+// console.log(time)
+
+
 let time = 09
 const background = document.body.style.background
 document.body.style.background = "url('/assets/04.jpg')";
@@ -117,4 +125,3 @@ if (time >= 00 && time < 03) {
     console.log('Other')
     document.body.style.background = "url('/assets/09_rain.jpg')";
 }
-  
