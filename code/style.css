@@ -29,8 +29,6 @@ body{
 }
 .temp-n-icon img{
     display: inline;
-    height:50px;
-    width:50px;
 
 }
 
@@ -57,17 +55,19 @@ h1{
 .winddiv{
     display:flex;
 }
+#windicon{
+    width: 25px;
+height: 25px;
+}
 img{
-    width:25px;
+    width: 50px;
+    height: 50px;
 }
 .sunset-sunrise{
     display:flex;
     width: 80%;
     justify-content: space-between;
     margin-top: 20px;
-}
-.sunset-sunrise img{
-    width: 50px;
 }
 .sunsetdiv, .sunrisediv{
     display:flex;
@@ -106,14 +106,14 @@ align-self: center;
    /*justify-content: space-between;*/
 }
 #forecastDescription{
-    margin:9px;
+    margin:5px;
 }
 ul{
     display:flex;
     flex-direction: column;
     list-style-type: none;
     /*padding: 0;*/
-    font-size: 18px;
+    font-size: 16px;
 }
 li{
     /* height:auto; */
@@ -122,8 +122,6 @@ li{
     height: 40px;
 }
 #weatherIcons img{
-width: 40px;
-height: 40px;
 text-align: center;
     
 }
@@ -156,3 +154,69 @@ footer{
       text-decoration: none;
       color:royalblue;
     }
+
+
+
+    /***TABLET***/
+@media (min-width: 668px) and (max-width: 1024px){
+    ul {
+    font-size: 22px;
+}
+img{
+    width: 80px;
+    height: 80px;
+}
+.temp-n-icon h2{
+    font-size: 50px;
+}
+#todaysMinMax, #todaysWind{
+    font-size: 20px;
+}
+.sunset-sunrise{
+    width: 50%;
+}
+h4{
+    text-align: center;
+}
+hr{
+width: 150px;
+}
+.bigLine{
+    width: 600px;
+}
+}
+
+/***DESKTOP***/
+@media (min-width: 1025px){
+    ul {
+        font-size: 22px;
+    }
+    img{
+        width: 80px;
+        height: 80px;
+    }
+    .temp-n-icon h2{
+        font-size: 50px;
+    }
+    #todaysMinMax, #todaysWind{
+        font-size: 20px;
+    }
+    .sunset-sunrise{
+        width: 30%;
+    }
+    h4{
+        text-align: center;
+    }
+    hr{
+    width: 150px;
+    }
+    .bigLine{
+        width: 450px;
+    }
+
+}
+/***SUPER-SMALL PHONES AS MY OWN***/
+/*@media (min-width: 0px) and (max-width: 326px) {
+    ul {
+        font-size: 14px;
+    }*/
