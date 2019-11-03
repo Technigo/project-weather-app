@@ -12,6 +12,9 @@ searchBox.addListener('places_changed', () => {
 	const latitude = place.geometry.location.lat();
 	const longitude = place.geometry.location.lng();
 
+	// Reset search input field
+	searchElement.value = '';
+
 	// Update location in weather app
 	updateCity(longitude, latitude, place.formatted_address)
 		.then(data => {
@@ -32,7 +35,7 @@ if (
 	localStorage.getItem('latitude') &&
 	localStorage.getItem('place')
 ) {
-	// Update location in weather app based on data ain localStorage
+	// Update location in weather app based on data in localStorage
 	updateCity(
 		localStorage.getItem('longitude'),
 		localStorage.getItem('latitude'),

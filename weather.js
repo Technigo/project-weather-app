@@ -27,7 +27,7 @@ const displayCurrentWeather = weather => {
 	// Change background colors based on current temperature
 	if (weather.main.temp > 20) {
 		background = 'linear-gradient(to bottom right, #ffc500, #c21500)';
-	} else if (weather.main.temp > 10) {
+	} else if (weather.main.temp >= 10) {
 		background = 'linear-gradient(to bottom right, #dce35b, #247026)';
 	} else {
 		background = 'linear-gradient(to bottom right, #1cb5e0, #000046)';
