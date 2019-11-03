@@ -12,7 +12,7 @@ const weathers = {
 };
 
 fetch(
-  `http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${api_key}`
+  `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${api_key}`
 )
   .then(response => {
     return response.json();
@@ -37,7 +37,7 @@ fetch(
     container.innerHTML = `<h1>Today's weather in: </h1> <h1 id="location">${json.name}
     </h1>  <h2>${json.main.temp}&#8451;</h2> <img src="noun_Drizzle.png"${weathers[json.weather[0].main]}/>
       
-     <h3 id="todaysMinMax">${json.main.temp_min} &#8451; /
+     <h3 id="todaysMinMax">${json.main.temp_min}&#8451; /
    ${json.main.temp_max} &#8451;</h3>	<h3> sunrise ${sunriseHour} sunset ${sunsetHour} </h3>`;
   });
 
