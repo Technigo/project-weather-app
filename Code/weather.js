@@ -2,7 +2,7 @@
 //Present some data on your web app
 
 const containerWeather = document.getElementById('weatherNow')
-const containerTempNow = document.getElementById('tempNow')
+const containerTempNow = document.getElementById('weatherAndTempNow')
 const containerWeatherShort = document.getElementById('weatherShort')
 const containerSunrise = document.getElementById('sunrise')
 const containerSunset = document.getElementById('sunset')
@@ -40,12 +40,12 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=Kalmar,SE&units=metric&
         containerSunset.innerHTML = `<p>Sunset ${sunsetTime}</p>`
         console.log(json)
 
-        // const mainWeather = json.weather[0].main
-        const mainWeather = "Clouds"
+        //Some reponsive presentation with weather main as condition for color and message
+        const mainWeather = json.weather[0].main
         if (mainWeather === "Rain") {
             console.log("Det finns inget dåligt väder")
             document.getElementById('background').classList.add('backgroundRain')
-            background.innerHTML = `<p>It's nice out, also with some rain - just take your joggers an' go running!</p>`
+            background.innerHTML = `<p>It's cozy inside but nice outdoors, also with some rain - just take your joggers an' go running!</p>`
             return
         }
         else if (mainWeather === "Clear") {

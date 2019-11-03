@@ -26,45 +26,11 @@ header {
     background:#A3DEF7;
     height: 120px;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
-    
-    color: #F47775 #F4F7F8 #164A68 #A3DEF7 #2A5510 #F7E9B9;
+}   
 
-}
 
-.backgroundElse{
-    background:#A3DEF7;
-    display: block;
-    height: auto;
-    margin: 0rem;
-    padding: 1rem;
-}
-
-.backgroundRain{
-    background:#F47775;
-    display: block;
-    height: auto;
-    margin: 0rem;
-    padding: 1rem;
-}
-
-.backgroundSun{
-    background:#F7E9B9;
-    display: block;
-    height: auto;
-    margin: 0rem;
-    padding: 1rem;
-}
-
-.backgroundClouds{
-    background: linear-gradient(#164A68, #F4F7F8);
-    display: block;
-    height: auto;
-    margin: 0rem;
-    padding: 1rem;
-
-}
 
 .hamburger {
     display: flex;
@@ -90,6 +56,39 @@ nav a {
     text-align: end;
 }
 
+.backgroundElse{
+    background:#A3DEF7;
+    display: block;
+    height: auto;
+    margin: 0rem;
+    padding: 1rem;
+}
+
+.backgroundRain{
+    background:linear-gradient(#A3DEF7, #F4F7F8, #A3DEF7); 
+    display: block;
+    height: auto;
+    margin: 0rem;
+    padding: 1rem;
+}
+
+.backgroundSun{
+    background:linear-gradient(#F7E9B9,#A3DEF7);
+    display: block;
+    height: auto;
+    margin: 0rem;
+    padding: 1rem;
+}
+
+.backgroundClouds{
+    background: linear-gradient(#164A68, #F4F7F8, #A3DEF7);
+    display: block;
+    height: auto;
+    margin: 0rem;
+    padding: 1rem;
+
+}
+
 main {
     background:#A3DEF7;
     height: auto;
@@ -99,6 +98,7 @@ main {
     max-width: 375px;
 
 }
+
 .weather {
     background:#A3DEF7;
     display: flex;
@@ -134,7 +134,7 @@ footer p {
     background-color:#A3DEF7;
     height: auto;
     margin: 0px;
-    padding-bottom: 5px;
+    padding: 10px;
 }
 
 
