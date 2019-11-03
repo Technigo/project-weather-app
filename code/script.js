@@ -6,7 +6,7 @@ const currentSunRise = document.getElementById("current-sunrise")
 const currentSunSet = document.getElementById("current-sunset")
 
 
-fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&appid=42da1ed967bb60f77a80f7975f8783b9')
+fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&appid=42da1ed967bb60f77a80f7975f8783b9')
     .then((response) => {
         return response.json()
     })

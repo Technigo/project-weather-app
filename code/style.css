@@ -40,16 +40,17 @@ li {
 
 @media (min-width: 650px) {
     #current-container {
-        display: flex;
         flex-direction: row;
-        align-items: center;
-        border: 1px solid white;
-        border-radius: 5%;
-        padding: 10px;
-        margin: 30px;
-        text-align: center;
     }
     #current-container h1 {
         text-align: left;
     }
+}
+
+@media (min-width: 900px) {
+    #current-container {
+        justify-content: space-between;
+    }
+
+   
 }
