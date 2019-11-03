@@ -1,7 +1,7 @@
 const API_KEY = "ad96db07a123e6ca29acb372e202f428" // Should be put in a file that is not committed to Github but let's skip it for now.
 // some global constants
-const FORECAST_URL = "http://api.openweathermap.org/data/2.5/forecast?q="
-const CURRENT_URL = "http://api.openweathermap.org/data/2.5/weather?q="
+const FORECAST_URL = "https://api.openweathermap.org/data/2.5/forecast?q="
+const CURRENT_URL = "https://api.openweathermap.org/data/2.5/weather?q="
 const URL_SUFFIX = `&units=metric&appid=${API_KEY}`
 const FORECAST_TIME_OF_DAY = 15 //The time of day (+- 1 hour) that the forecast should take
 const DEGREE_TYPE = "&deg;C"
@@ -96,7 +96,7 @@ const loadForecastedWeather = (cityName) => {
 
                 // Add content to all Nodes
                 dayNode.appendChild(document.createTextNode(`${WEEKDAY_SHORT[elementDate.getDay() - 1]}`))
-                iconNode.src = `http://openweathermap.org/img/wn/${element.weather[0].icon.substring(0,2)}d@2x.png` // force to use "Day symbol"
+                iconNode.src = `https://openweathermap.org/img/wn/${element.weather[0].icon.substring(0,2)}d@2x.png` // force to use "Day symbol"
                 iconDivNode.appendChild(iconNode)
                 tempNode.appendChild(document.createTextNode(`${element.main.temp.toFixed(1)} \u00B0C`))
                 
