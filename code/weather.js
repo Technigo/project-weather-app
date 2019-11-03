@@ -52,8 +52,8 @@ fetch('http://api.openweathermap.org/data/2.5/forecast?q=Miami,%20USA&units=metr
   return response.json()
 })
 .then((json) => {
-  wednesdayBox.innerHTML= `<h3>Wednesday min:${json.list[15].main.temp_min.toFixed(1)}° - max:${json.list[18].main.temp_max.toFixed(1)}° with ${json.list[18].weather[0].description}</h3>`
-  thursdayBox.innerHTML=`<h3>Thursday min:${json.list[23].main.temp_min.toFixed(1)}° - max:${json.list[26].main.temp_max.toFixed(1)}° with ${json.list[26].weather[0].description}</h3>`
+  wednesdayBox.innerHTML= `<h3>Wednesday: min:${json.list[15].main.temp_min.toFixed(1)}° - max:${json.list[18].main.temp_max.toFixed(1)}° with ${json.list[18].weather[0].description}</h3>`
+  thursdayBox.innerHTML=`<h3>Thursday: min ${json.list[23].main.temp_min.toFixed(1)}°| max ${json.list[26].main.temp_max.toFixed(1)}° with ${json.list[26].weather[0].description}</h3>`
   fridayBox.innerHTML= `<h3>Friday min:${json.list[31].main.temp_min.toFixed(1)}° - max:${json.list[34].main.temp_max.toFixed(1)}° with ${json.list[34].weather[0].description}</h3>`
   saturdayBox.innerHTML= `<h3>Saturday min:${json.list[39].main.temp_min.toFixed(1)}° - max:${json.list[38].main.temp_max.toFixed(1)}° with ${json.list[38].weather[0].description}</h3>`
   
