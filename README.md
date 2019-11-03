@@ -1,3 +1,6 @@
+This weeks task was to create a weather app and fetch data from an open API and show todays weather and a forcast of 3-5 days, to do some styling and make it responsive.
+It was superfun to do and task number 4 quite difficult./Anna
+
 # Build a Weather Web App :sunny:
 
 This week's project is to build a simple weather web app that tells today's weather and temperature, and a weekly forecast using a weather API.
