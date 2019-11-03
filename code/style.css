@@ -17,7 +17,6 @@ body{
     background: rgb(80, 175, 143);
 }
 #temperature{
-    text-shadow: 2px 2px 4px tomato;
     font-weight: normal;
 }
 .temp-n-icon{
@@ -101,6 +100,7 @@ align-self: center;
 }
 .forecast{
     display:flex;
+    justify-content: center;
     height: 100%;
    /*justify-content: space-between;*/
 }

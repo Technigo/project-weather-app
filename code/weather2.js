@@ -34,7 +34,10 @@ const fetchToday = () => {
             let temperatureRounded = Math.round(json.main.temp * 10) / 10
             theTemperature.innerHTML = `${temperatureRounded} C°`
             if (Math.sign(temperatureRounded) === 0 || Math.sign(temperatureRounded) === -1) {
-                theTemperature.style.textShadow = "2px 2px 4px aqua"
+                /*theTemperature.style.textShadow = "2px 2px 4px aqua"*/
+                theTemperature.innerHTML = `${temperatureRounded} <span style="text-shadow:2px 2px 4px aqua">C°</span>`
+            } else {
+                theTemperature.innerHTML = `${temperatureRounded} <span style="text-shadow:2px 2px 4px tomato">C°</span>`
             }
 
             //ICON FOR TODAYS WEATHER//
