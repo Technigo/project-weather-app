@@ -33,7 +33,7 @@ fetch(
     //Conditions for changing icons next to weather description//
 
     if (json.weather[0].description === "broken clouds") {
-      theWeather.innerHTML = `<img src="Assets/broken-clouds.png" alt="icon" width=70px">`;
+      theWeather.innerHTML = `<img src="Assets/broken-clouds.png" alt="icon" width=80px">`;
     } else if (json.weather[0].description === "clouds") {
       theWeather.innerHTML = `<img src="Assets/scattered-clouds" alt="icon" width=\"70px\">`;
     } else if (json.weather[0].description === "clear sky") {
