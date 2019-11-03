@@ -1,8 +1,9 @@
 body {
   margin: 0;
   padding: 0;
-  background: -webkit-linear-gradient(-3deg, #143eeb 20%,#9ca2bb 90%);
+  background:-webkit-linear-gradient(-3deg, #14eb6e99 20%,#9ca2bb 90%);
 }
+
 
 #today{
  display: flex;
@@ -12,7 +13,10 @@ body {
 }
 h1{
  font-size:1em;
+}
 
+h2{
+font-size: 1em;
 }
 
  
@@ -28,6 +32,7 @@ ul{
  align-items: center;
  font-family: 'Lato', sans-serif;
  padding: inherit;
+ font-variant: titling-caps;
 }
 
 li{
