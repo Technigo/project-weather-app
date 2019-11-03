@@ -17,16 +17,7 @@ const WEEKDAY_SHORT = [
 
 // A  weather URL is made up of xxx_URL + cityName + URL_SUFFIX. Should use country code to avoid duplicate cities but let's keep it simple for now...
 
-// object containing the weather apps relevant information 
-const mainCityWeather = {
-    name: "",
-    currentWeather: {
-        temp: "",
-        description: "",
-        sunrise: "",
-        sunset: ""
-    }
-}
+
 // add test attributes
 
 // function to test the API, not used
@@ -43,30 +34,24 @@ let testFunction = (requestTypeUrl, cityName) => {
     })
     console.log("Finished testFunction.")
 }
-//testFunction(FORECAST_URL, mainCityWeather.name)
-//testFunction(CURRENT_URL, mainCityWeather.name)
+//testFunction(FORECAST_URL, cityName)
+//testFunction(CURRENT_URL, cityName)
 
 // loads and prints the current weather div info
-const loadCurrentWeather = (obj) => {
-    fetch(`${CURRENT_URL}${obj.name}${URL_SUFFIX}`)
+const loadCurrentWeather = (cityName) => {
+    fetch(`${CURRENT_URL}${cityName}${URL_SUFFIX}`)
     .then(response => {
         return response.json()
     }).then(json => {
-        // Hmm, will likely not need to add this to an object...
-        obj.currentWeather.temp = json.main.temp.toFixed(1)
-        obj.currentWeather.description = json.weather[0].main
-        obj.currentWeather.sunrise = json.sys.sunrise
-        obj.currentWeather.sunset = json.sys.sunset
+       
+        document.getElementById("city-name").innerHTML = cityName
+        document.getElementById("current-temperature").innerHTML = json.main.temp.toFixed(1)
+        document.getElementById("weather-description").innerHTML = json.weather[0].main
         
-        // Instead only populate the DOM as it's async (cannot populate DOM before promise is received)
-        document.getElementById("city-name").innerHTML = mainCityWeather.name
-        document.getElementById("current-temperature").innerHTML = mainCityWeather.currentWeather.temp
-        document.getElementById("weather-description").innerHTML = mainCityWeather.currentWeather.description
-        
-        const sunrise = new Date(mainCityWeather.currentWeather.sunrise*1000)
+        const sunrise = new Date(json.sys.sunrise*1000)
         document.getElementById("sunrise").innerHTML = `Sunrise: ${sunrise.getHours()}:${sunrise.getMinutes()}`
         
-        const sunset = new Date(mainCityWeather.currentWeather.sunset*1000)
+        const sunset = new Date(json.sys.sunset*1000)
         document.getElementById("sunset").innerHTML = `Sunset: ${sunset.getHours()}:${sunset.getMinutes()}`
         // console.log(json)
     })
@@ -88,8 +73,8 @@ const forecastSelector = (element) => {
 }
 
 // loads and prints the forecasted div info
-const loadForecastedWeather = (obj) => {
-    fetch(`${FORECAST_URL}${obj.name}${URL_SUFFIX}`)
+const loadForecastedWeather = (cityName) => {
+    fetch(`${FORECAST_URL}${cityName}${URL_SUFFIX}`)
     .then(response => {
         return response.json()
     }).then(json => {
@@ -125,8 +110,8 @@ const loadForecastedWeather = (obj) => {
     })
 }
 
-mainCityWeather.name = "Norsjö"
-console.log(mainCityWeather)
+cityName = "Norsjö"
+console.log(cityName)
 
-loadCurrentWeather(mainCityWeather)
-loadForecastedWeather(mainCityWeather)
+loadCurrentWeather(cityName)
+loadForecastedWeather(cityName)
