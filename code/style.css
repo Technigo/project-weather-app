@@ -127,7 +127,7 @@ li {
   }
 
   li {
-    width: 80%;
+    width: 70%;
   }
 
   .sunTimes {
@@ -143,17 +143,21 @@ li {
 
 /* Media Queries for desktop size */
 @media (min-width: 900px) {
+  #weatherFiveDays {
+   width: 60%;
+   margin-left: 16%;
+  }
   .sunTimes {
     width: 100%;
   }
 
   ul {
     width: 50%;
-    margin-left: 5%;
+    margin-left: 4%;
   }
 
   li {
-    width: 80%;
+    width: 70%;
   }
 
   #sunset {
