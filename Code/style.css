@@ -37,6 +37,7 @@ h2 {
 
 /* Header */
 .site-header {
+  background-color #333;
   background-size: cover;
   background-repeat: no-repeat;
   color: #efefef;
@@ -211,6 +212,15 @@ h2 {
   grid-row: 1 / span 1;
   height: 30px;
   width: auto;
+}
+
+.attribution {
+  text-align: center;
+  padding: 1rem;
+}
+
+.attribution a {
+  font-size: 0.8rem;
 }
 
 @media only screen and (min-width: 375px) {
