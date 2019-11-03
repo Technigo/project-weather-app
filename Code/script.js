@@ -184,7 +184,7 @@ const handle5DayForecast = json => {
 
 // Call the forecast endpoint for the selected city, parse the json, then call the function above
 fetch(
-	`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`
+	`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=${apiKey}`
 )
 	.then(res => res.json())
 	.then(handle5DayForecast);
