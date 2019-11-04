@@ -33,8 +33,9 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
 
     let dayTime
     if (currentTime > sunriseTime && currentTime < sunsetTime) {
-      dayTime
+      dayTime = true
     }
+    console.log(currentTime, dayTime)
 
     if (dayTime && window.matchMedia("(max-width: 750px)").matches) {
       mainTop.style.backgroundImage = "url('assets/camp-day-small.jpg')"
@@ -115,7 +116,6 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&c
         const realDate = new Date(date * 1000)
         const shortDate = `${realDate.getDate()} ${months[realDate.getMonth()]}`
         const shortTime = `${addZeros(realDate.getUTCHours())}:${addZeros(realDate.getMinutes())}`
-        console.log(shortTime)
 
         //To get the average temperature for the forecast
         const averageTemp = (forecast.main.temp_max + forecast.main.temp_min) / 2
