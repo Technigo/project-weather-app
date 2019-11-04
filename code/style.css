@@ -1,6 +1,6 @@
 body {
-  margin: auto;
-  background-color: rgb(164, 222, 250);
+   margin: auto;
+   background-image: linear-gradient(to right,#92b9ff , #dcdcfd);
 }
 
 .wrapper {

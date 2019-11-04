@@ -35,7 +35,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
     const mainWeather = json.weather[0].main
 
     if (mainWeather === "Snow" || mainWeather === "Rain") {
-      document.getElementById("background").style.background = "rgb(135, 166, 242)";  
+      document.getElementById("background").style.background = "linear-gradient(to right, #a5c1ff, #246cf0)"
     return
     }
   });
