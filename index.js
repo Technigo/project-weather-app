@@ -28,8 +28,16 @@ fetch(
     console.log(json);
 
     city.innerHTML = json.city.name;
+
+    const options = {
+      weekday: "short",
+      year: "numeric",
+      month: "short",
+      day: "numeric"
+    }
     const newDate = new Date(json.list[0].dt_txt)
-    const todayDate = newDate.toDateString()
+    const todayDate = newDate.toLocaleDateString("en-US", options)
+
     document.getElementById("date").innerHTML = `${todayDate}`
 
     weather_icon.src = `https://openweathermap.org/img/wn/${json.list[0].weather[0].icon}@2x.png`
@@ -39,15 +47,20 @@ fetch(
     sunset.innerHTML = `${("0" + sunSet.getHours()).slice(-2)}:${("0" + sunSet.getMinutes()).slice(-2)}`;
 
     json.list.forEach(day => {
-      let date = new Date(day.dt_txt);
-      if (date.getHours() != "12") return;
+      setTimeout(function () {
+        let date = new Date(day.dt_txt);
+        if (date.getHours() != "12") return;
 
-      weekdaysDiv.innerHTML += `<div class="week_days"> 
-                                  <div>${weekdays[date.getDay()]}</div>
-                                  <img src="https://openweathermap.org/img/wn/${day.weather[0].icon}.png">
-                                  <div>${getNumber(Math.round(day.main.temp))}&deg;C </div>
-                                </div>`;
-    });
+        weekdaysDiv.innerHTML += `<div class="week_days"> 
+                                    <div>${weekdays[date.getDay()]}</div>
+                                    <img src="https://openweathermap.org/img/wn/${day.weather[0].icon}.png">
+                                    <div>${getNumber(Math.round(day.main.temp))}&deg;C </div>
+                                  </div>`;
+      });
+
+
+    }, 400)
+
   });
 
 //  Function to add a '+' in front of positive numbers
