@@ -21,7 +21,7 @@ searchBox.addListener('places_changed', () => {
 			// Update the UI
 			updateUI(data);
 
-			// Set current city in localStorage when API request is successful
+			// Set current location in localStorage when API request is successful
 			localStorage.setItem('longitude', data.weather.longitude);
 			localStorage.setItem('latitude', data.weather.latitude);
 			localStorage.setItem('place', data.weather.displayName);
@@ -29,7 +29,7 @@ searchBox.addListener('places_changed', () => {
 		.catch(err => console.log(err));
 });
 
-// When the user enters the site localStorage is checked for previous entered city
+// When the user enters revisits the app localStorage is checked for previous entered location
 if (
 	localStorage.getItem('longitude') &&
 	localStorage.getItem('latitude') &&

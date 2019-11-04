@@ -51,9 +51,9 @@ const updateCity = async (longitude, latitude, formattedAddress) => {
 // Geerates and presents the weather and forecast information in the UI
 const updateUI = data => {
 	const { weather, forecast } = data;
-	displayForecastEvery3Hours(weather, forecast);
 	displayCurrentWeather(weather);
-	displayCurrentForecast(forecast);
+	displayForecast24hours(weather, forecast);
+	displayForecast5days(forecast);
 
 	// Display weather details container
 	if (weatherContainer.classList.contains('hide')) {

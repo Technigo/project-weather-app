@@ -22,18 +22,18 @@ const getForecast = async (longitude, latitude) => {
 
 const displayCurrentWeather = weather => {
 	const currentWeather = document.querySelector('.weather-details-current');
-	let background = '';
+	let backgroundColor = '';
 
 	// Change background colors based on current temperature
 	if (weather.main.temp > 20) {
-		background = 'linear-gradient(to bottom right, #ffc500, #c21500)';
+		backgroundColor = 'linear-gradient(to bottom right, #ffc500, #c21500)';
 	} else if (weather.main.temp >= 10) {
-		background = 'linear-gradient(to bottom right, #dce35b, #247026)';
+		backgroundColor = 'linear-gradient(to bottom right, #dce35b, #247026)';
 	} else {
-		background = 'linear-gradient(to bottom right, #1cb5e0, #000046)';
+		backgroundColor = 'linear-gradient(to bottom right, #1cb5e0, #000046)';
 	}
 
-	document.body.style.background = background;
+	document.body.style.background = backgroundColor;
 
 	// Update current weather template
 	currentWeather.innerHTML = `
@@ -73,7 +73,7 @@ const displayCurrentWeather = weather => {
 	`;
 };
 
-const displayCurrentForecast = forecast => {
+const displayForecast5days = forecast => {
 	const forecastWeatherList = document.querySelector('#forecast-list');
 
 	// Filtering out one forcast out of six, per day.
@@ -81,7 +81,7 @@ const displayCurrentForecast = forecast => {
 		return convertUnixToTime(item.dt) === '13:00';
 	});
 
-	// Reset forecast with headings before updating the forecast template
+	// Reset 24-hour forecast template with headings before generating the forecast template
 	forecastWeatherList.innerHTML = `
 	<li>
 		<div class="forecast-day-heading"></div>
@@ -92,7 +92,7 @@ const displayCurrentForecast = forecast => {
 		<div class="forecast-day-heading">Temp.</div>
 	</li>`;
 
-	// Update forecast weather
+	// Generate 5-day forecast weather
 	filteredForecast.forEach(item => {
 		forecastWeatherList.innerHTML += `
 		<li>
@@ -112,7 +112,7 @@ const displayCurrentForecast = forecast => {
 	});
 };
 
-const displayForecastEvery3Hours = (weather, forecast) => {
+const displayForecast24hours = (weather, forecast) => {
 	const forecastDaily = document.querySelector('#daily-forecast-list');
 
 	const currentForecastItems = forecast.list.filter(items => {
