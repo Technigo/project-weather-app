@@ -9,12 +9,19 @@
 </head>
 
 <body>
+  <h2 id="weatherTitel">Weather forecast</h2>
+  <div class="weather-menu">
+  <div id="stockholmWeather" onClick="stockholmWeather()">Stockholm</div>
+  <div id="romeWeather" onClick="romeWeather()">Rome</div>
+  <div id="barcelonaWeather" onClick="barcelonaWeather()">Barcelona</div>
+  <div id="parisWeather" onClick="parisWeather()">Paris</div>
+  </div>
   <div id="weatherToday"></div>
-  <img id="image" src="umbrella.svg">
+  <img id="image" src="">
   <div id="weatherCity"></div>
   <div id="weatherWeekly"></div>
   <div id="forecast"></div>
-  <div class="hamburger-menu" onClick="veniceWeather()">
+  <div class="hamburger-menu" onClick="document.location.reload(true)">
     <div></div>
     <div></div>
     <div></div>

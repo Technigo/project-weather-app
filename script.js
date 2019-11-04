@@ -12,6 +12,7 @@ const mainTemperature = (json) => {
   if(mainTemp < 10) {
     document.body.style.background = 'linear-gradient(to left, rgba(97, 153, 153, 0), rgb(50, 162, 226))' 
     document.body.style.color = 'darkblue'
+    document.getElementById("image").src="umbrella.svg"
   } else {
     document.body.style.background = 'linear-gradient(to right, rgba(228, 200, 45, 0), rgb(226, 200, 50))'
     document.body.style.color = 'darkgreen'
@@ -57,25 +58,16 @@ const handle5DayForecast = (json) => {
 }
 
 
-const veniceWeather = () => {
-  const forecastDiv = document.getElementById('forecast')
-  container.innerHTML=``
-  forecastDiv.innerHTML=``
-
-  fetch('https://api.openweathermap.org/data/2.5/weather?q=Venice,Italy&units=metric&APPID=60a9f45b45a7b39b290afa28477d7241')
-  .then((res) => res.json())
-  .then(mainTemperature)
-
-  fetch('https://api.openweathermap.org/data/2.5/forecast?q=Venice,Italy&units=metric&cnt=39&APPID=60a9f45b45a7b39b290afa28477d7241')
-  .then((res) => res.json())
-  .then(handle5DayForecast)
-}
-
-
 const stockholmWeather = () => {
   const forecastDiv = document.getElementById('forecast')
+  document.getElementById("weatherTitel").innerHTML=''
+  document.getElementById("stockholmWeather").innerHTML=''
+  document.getElementById("romeWeather").innerHTML=''
+  document.getElementById("barcelonaWeather").innerHTML=''
+  document.getElementById("parisWeather").innerHTML=''
   container.innerHTML=``
   forecastDiv.innerHTML=``
+  
   fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=60a9f45b45a7b39b290afa28477d7241')
   .then((res) => res.json())
   .then(mainTemperature)
@@ -86,10 +78,61 @@ const stockholmWeather = () => {
 }
 
 
-fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=60a9f45b45a7b39b290afa28477d7241')
+const romeWeather = () => {
+  const forecastDiv = document.getElementById('forecast')
+  document.getElementById("weatherTitel").innerHTML=''
+  document.getElementById("stockholmWeather").innerHTML=''
+  document.getElementById("romeWeather").innerHTML=''
+  document.getElementById("barcelonaWeather").innerHTML=''
+  document.getElementById("parisWeather").innerHTML=''
+  container.innerHTML=``
+  forecastDiv.innerHTML=``
+
+  fetch('https://api.openweathermap.org/data/2.5/weather?q=Rome,Italy&units=metric&APPID=60a9f45b45a7b39b290afa28477d7241')
   .then((res) => res.json())
   .then(mainTemperature)
-  
-fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&cnt=39&APPID=60a9f45b45a7b39b290afa28477d7241')
+
+  fetch('https://api.openweathermap.org/data/2.5/forecast?q=Rome,Italy&units=metric&cnt=39&APPID=60a9f45b45a7b39b290afa28477d7241')
   .then((res) => res.json())
   .then(handle5DayForecast)
+}
+
+
+const barcelonaWeather = () => {
+  const forecastDiv = document.getElementById('forecast')
+  document.getElementById("weatherTitel").innerHTML=''
+  document.getElementById("stockholmWeather").innerHTML=''
+  document.getElementById("romeWeather").innerHTML=''
+  document.getElementById("barcelonaWeather").innerHTML=''
+  document.getElementById("parisWeather").innerHTML=''
+  container.innerHTML=``
+  forecastDiv.innerHTML=``
+  
+  fetch('https://api.openweathermap.org/data/2.5/weather?q=Barcelona,Spain&units=metric&APPID=60a9f45b45a7b39b290afa28477d7241')
+  .then((res) => res.json())
+  .then(mainTemperature)
+
+  fetch('https://api.openweathermap.org/data/2.5/forecast?q=Barcelona,Spain&units=metric&cnt=39&APPID=60a9f45b45a7b39b290afa28477d7241')
+  .then((res) => res.json())
+  .then(handle5DayForecast)
+}
+
+
+const parisWeather = () => {
+  const forecastDiv = document.getElementById('forecast')
+  document.getElementById("weatherTitel").innerHTML=''
+  document.getElementById("stockholmWeather").innerHTML=''
+  document.getElementById("romeWeather").innerHTML=''
+  document.getElementById("barcelonaWeather").innerHTML=''
+  document.getElementById("parisWeather").innerHTML=''
+  container.innerHTML=``
+  forecastDiv.innerHTML=``
+  
+  fetch('https://api.openweathermap.org/data/2.5/weather?q=Paris,France&units=metric&APPID=60a9f45b45a7b39b290afa28477d7241')
+  .then((res) => res.json())
+  .then(mainTemperature)
+
+  fetch('https://api.openweathermap.org/data/2.5/forecast?q=Paris,France&units=metric&cnt=39&APPID=60a9f45b45a7b39b290afa28477d7241')
+  .then((res) => res.json())
+  .then(handle5DayForecast)
+}
