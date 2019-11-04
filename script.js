@@ -6,7 +6,7 @@ const theSunrise = document.getElementById("theSunrise")
 const theSunset = document.getElementById("theSunset")
 const theImage = document.getElementById("currentImg")
 
-fetch("http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=395e18f0b5a692062416becf9c89b0c7")
+fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=395e18f0b5a692062416becf9c89b0c7")
   .then((response) => {
     return response.json()
   })
@@ -27,35 +27,35 @@ fetch("http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     const id = json.weather[0].id
     switch (true) {
       case id >= 200 && id <= 232:
-        currentImg.src = "http://openweathermap.org/img/wn/11d@2x.png"
+        currentImg.src = "https://openweathermap.org/img/wn/11d@2x.png"
         currentCondition.innerHTML = `<h2>"Thunder is your inner beauty and lightening is your loving spark."</h2>`
         break;
       case id >= 300 && id <= 321 || id >= 500 && id <= 531:
-        currentImg.src = "http://openweathermap.org/img/wn/09d@2x.png"
+        currentImg.src = "https://openweathermap.org/img/wn/09d@2x.png"
         currentCondition.innerHTML = `<h2>A rainy day is the perfect time for Javascript!</h2>`
         break;
       case id >= 600 && id <= 622:
-        currentImg.src = "http://openweathermap.org/img/wn/13d@2x.png"
+        currentImg.src = "https://openweathermap.org/img/wn/13d@2x.png"
         currentCondition.innerHTML = `<h2>Snow</h2>`
         break;
       case id >= 701 && id <= 781:
-        currentImg.src = "http://openweathermap.org/img/wn/50d@2x.png"
+        currentImg.src = "https://openweathermap.org/img/wn/50d@2x.png"
         currentCondition.innerHTML = `<h2>Mist</h2>`
         break;
       case id === 800:
-        currentImg.src = "http://openweathermap.org/img/wn/01d@2x.png"
+        currentImg.src = "https://openweathermap.org/img/wn/01d@2x.png"
         currentCondition.innerHTML = `<h2>"Sunlight! The most precious gold to be found on Earth."</h2>`
         break;
       case id === 801:
-        currentImg.src = "http://openweathermap.org/img/wn/02d@2x.png"
+        currentImg.src = "https://openweathermap.org/img/wn/02d@2x.png"
         currentCondition.innerHTML = `<h2>Few clouds. Aren't the clouds beautiful? They look like big balls of cotton... I could just lie here all day, and watch them drift by... while coding</h2>`
         break;
       case id === 802:
-        currentImg.src = "http://openweathermap.org/img/wn/03d@2x.png"
+        currentImg.src = "https://openweathermap.org/img/wn/03d@2x.png"
         currentCondition.innerHTML = `<h2>Scattered clouds.</h2>`
         break;
       case id === 803 || 804:
-        currentImg.src = "http://openweathermap.org/img/wn/04d@2x.png"
+        currentImg.src = "https://openweathermap.org/img/wn/04d@2x.png"
         currentCondition.innerHTML = `<h2>Broken clouds. There are no rules of architecture for a castle in the clouds...</h2>`
       default:
     }
@@ -71,7 +71,7 @@ const weekdayCondition = document.getElementById("weekdayCondition")
 const weekdayTemp = document.getElementById("weekdayTemp")
 
 fetch(
-    "http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=395e18f0b5a692062416becf9c89b0c7"
+    "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=395e18f0b5a692062416becf9c89b0c7"
   )
   .then(response => {
     return response.json()
