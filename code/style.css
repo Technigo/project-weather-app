@@ -157,6 +157,9 @@ footer{
     .big-line{
         width: 600px;
     }
+    footer{
+        justify-content: center;
+    }
     }
 
 /***DESKTOP***/
@@ -185,6 +188,9 @@ footer{
     }
     .big-line{
         width: 450px;
+    }
+    footer{
+        justify-content: center;
     }
 
 }
