@@ -29,7 +29,7 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Alicante,es&units=metri
     const sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' })
 
     container3.innerHTML = `<h3>sunrise ${sunriseTime} <br>
-                            Sunset ${sunsetTime}</h3>`
+                            sunset ${sunsetTime}</h3>`
 
   })
 
