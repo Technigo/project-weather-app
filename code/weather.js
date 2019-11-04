@@ -10,7 +10,7 @@ let usaTime = new Date().toLocaleString("en-US", {timeZone: "America/New_York"})
 usaTime = new Date(usaTime);
 console.log('USA time: '+usaTime.toLocaleString())
 
-fetch('http://api.openweathermap.org/data/2.5/weather?q=Miami,%20USA,3166-2US-FLL&units=metric&APPID=804400298ac4f45795306a8ea7ab8f5e')
+fetch('https://api.openweathermap.org/data/2.5/weather?q=Miami,%20USA,3166-2US-FLL&units=metric&APPID=804400298ac4f45795306a8ea7ab8f5e')
 .then((response) => {
   return response.json()
 })
@@ -92,7 +92,7 @@ const handle5DayForecast = (json) => {
 // iterate over each day
 // calculate values that we want to show on the page
 
-fetch('http://api.openweathermap.org/data/2.5/forecast?q=Miami,%20USA&units=metric&APPID=c4ff459e6977fcdff3cc5fa6319866b6')
+fetch('https://api.openweathermap.org/data/2.5/forecast?q=Miami,%20USA&units=metric&APPID=c4ff459e6977fcdff3cc5fa6319866b6')
   .then((res) => res.json())
   .then(handle5DayForecast)
   .catch((err) => console.log(err.message))
