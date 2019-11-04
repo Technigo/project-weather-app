@@ -10,16 +10,22 @@
 </head>
 
 <body>
-    <h2>Today´s weather in:</h2>
-    <header>
-        <h1 class="city" id="city-name"></h1>
-        <h1 class="degrees" id="temp-degrees"></h1>
-        <h1 class="sky-weather" id="sky-display"></h1>
-    </header>
-    <div class="sunset" id="sunset"></div>
-    <div class="sunrise" id="sunrise"></div>
+    <section class="flex-parent-main">
+        <h2>Today´s weather in:</h2>
+        <header>
+            <h1 class="city" id="city-name"></h1>
+            <div class="parentDegrees">
+                <h1 class="degrees" id="temp-degrees"></h1>
+                <h1 class="sky-weather" id="sky-display"></h1>
+            </div>
+        </header>
+        <div class="sun-container">
+            <div class="sunset" id="sunset"></div>
+            <div class="sunrise" id="sunrise"></div>
+        </div>
+    </section>
     <section class="forecast">
-        <table>
+        <table class="table">
             <tr>
                 <th id="day1"> </th>
                 <td id="temp1"></td>

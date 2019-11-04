@@ -9,9 +9,8 @@ fetch("http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     }).catch((err) => {
         console.log("caught error", err)
     });
-// fetch("http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=81056f8102cf170efbadf6ea579c361c")
-//     .then(response => response.json())
-//     .then(response2 => console.log(response2))
+
+//Function to round the degrees
 function round(degrees, precision) {
     var multiplier = Math.pow(10, precision || 0);
     return Math.round(degrees * multiplier) / multiplier;
@@ -62,7 +61,7 @@ function daysOfWeekData(json) {
         console.log(weekDays[theDate.getDay()] + " " + json.list[i].main.temp);
         console.log("day" + ((i / 8) + 1));
         document.getElementById("day" + ((i / 8) + 1)).innerText = weekDays[theDate.getDay()];
-        document.getElementById("temp" + ((i / 8) + 1)).innerText = round(json.list[i].main.temp, 0);
+        document.getElementById("temp" + ((i / 8) + 1)).innerText = round(json.list[i].main.temp, 0) + " ° ";
     };
 }
 

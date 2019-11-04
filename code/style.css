@@ -1,0 +1,51 @@
+
+body {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    border: 3px solid grey;
+    height: 800px;
+    text-align: center;
+}
+
+h1 {
+   font-size: 40px;
+}
+
+h2 {
+   font-size: 30px;
+}
+
+.parentDegrees {
+    border: 3px solid grey;
+    display: flex;
+    justify-content: center;
+}
+.degrees {
+    flex-wrap: wrap;
+    border: 3px solid grey;
+    padding: 8px;
+}
+.sky-weather {
+    flex-wrap: wrap;
+    border: 3px solid grey;
+    padding: 8px; 
+}
+.sun-container {
+    font-size: 25px;
+}
+.table {
+    border: 3px solid grey;
+    width: 100%;
+    padding: 20px;
+
+}
+tr {
+    font-size: 25px;   
+}
+th {
+    border: 3px solid grey;
+    width: 40%;
+}
+td {
+    border: 3px solid grey;
+    width: 40%;
+}
