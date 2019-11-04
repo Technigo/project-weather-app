@@ -28,6 +28,10 @@ fetch(
     console.log(json);
 
     city.innerHTML = json.city.name;
+    const newDate = new Date(json.list[0].dt_txt)
+    const todayDate = newDate.toDateString()
+    document.getElementById("date").innerHTML = `${todayDate}`
+
     weather_icon.src = `https://openweathermap.org/img/wn/${json.list[0].weather[0].icon}@2x.png`
     temp.innerHTML = `${getNumber(Math.round(json.list[0].main.temp))}&deg;C`;
 

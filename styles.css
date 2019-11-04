@@ -41,6 +41,9 @@ footer {
   border-radius: 20px;
   height: 500px;
   text-align: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 h4 {
@@ -50,6 +53,14 @@ h4 {
 p {
   margin: 0;
 }
+
+.temp-cityname-icon {
+  padding-bottom: 20px;
+}
+
+
+
+
 
 #temp {
   font-size: 50px;
