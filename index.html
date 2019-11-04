@@ -6,20 +6,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Abel|Quicksand&display=swap" rel="stylesheet">
   <title>Weather Forecast</title>
 </head>
 
 <body>
-  <section id="currentWeather">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-  </section>
+  <div class="content-wrapper">
+    <section id="currentWeather">
+      <div class="currentInfo">
+        <div id="currentLocation"></div>
+        <div id="currentTemp"></div>
+        <div id="currentCondition"></div>
+        <div id="theSunrise"></div>
+        <div id="theSunset"></div>
+      </div>
+      <div>
+        <img id="currentImg" src="" />
+      </div>
+    </section>
 
-  <section id="fiveDayForecast">
-  </section>
+    <section id="fiveDayForecast">
+      <div id="theWeekdays"></div>
+      <div id="weekdayCondition"></div>
+      <div id="weekdayTemp"></div>
+    </section>
+  </div>
 </body>
 <script src="script.js"></script>
 
