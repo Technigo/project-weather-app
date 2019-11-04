@@ -5,161 +5,94 @@ const wind = document.getElementById("todaysWind")
 const theDescription = document.getElementById("description")
 const sunriseTime = document.getElementById("sunrise")
 const sunsetTime = document.getElementById("sunset")
-
-let city = "Stockholm,Sweden"
-
-const showKalmar = () => {
-    city = "Kalmar,Sweden"
-    fetchToday()
-    fetchForecast()
-}
-const showPuertoRico = () => {
-    city = "Puerto Rico, CO"
-}
-
+const city = "Stockholm,Sweden"
 
 let todaysDate = new Date()
 
-const fetchToday = () => {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=7309e4a5829fafe809df835ad95f18ea`)
-        .then((response) => {
-            return response.json()
-        })
-        .then((json) => {
-            console.log(json)
-            theLocation.innerHTML = json.name
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=7309e4a5829fafe809df835ad95f18ea`)
+    .then((response) => {
+        return response.json()
+    })
+    .then((json) => {
+        theLocation.innerHTML = json.name
 
+        //TODAY'S TEMP//
+        let temperatureRounded = json.main.temp.toFixed(1)
+        theTemperature.innerHTML = `${temperatureRounded} C°`
+        //COLD OR WARM TEXT-SHADOW ON °//
+        if (Math.sign(temperatureRounded) === 0 || Math.sign(temperatureRounded) === -1) {
+            theTemperature.innerHTML = `${temperatureRounded} C<span style="text-shadow:2px 2px 4px aqua">°</span>`
+        } else {
+            theTemperature.innerHTML = `${temperatureRounded} C<span style="text-shadow:2px 2px 4px tomato">°</span>`
+        }
 
-            //COLD OR WARM TEXT-SHADOW//
-            let temperatureRounded = Math.round(json.main.temp * 10) / 10
-            theTemperature.innerHTML = `${temperatureRounded} C°`
-            if (Math.sign(temperatureRounded) === 0 || Math.sign(temperatureRounded) === -1) {
-                /*theTemperature.style.textShadow = "2px 2px 4px aqua"*/
-                theTemperature.innerHTML = `${temperatureRounded} <span style="text-shadow:2px 2px 4px aqua">C°</span>`
-            } else {
-                theTemperature.innerHTML = `${temperatureRounded} <span style="text-shadow:2px 2px 4px tomato">C°</span>`
-            }
+        //TODAYS WEATHER ICON//
+        theDescription.innerHTML = `<img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="weathericon"/>`
 
-            //ICON FOR TODAYS WEATHER//
-            let todaysWeather = json.weather[0].description
-            let todaysWeatherMain = json.weather[0].main
+        //MIN-MAX TEMP OF TODAY//
+        let minRounded = Math.round(json.main.temp_min * 10) / 10
+        let maxRounded = Math.round(json.main.temp_max * 10) / 10
 
-            if (todaysWeather === "scattered clouds"
-                || todaysWeather === "few clouds") {
-                theDescription.src = "./icons_white/scattered_cloud.png"
-            } else if (todaysWeather === "overcast clouds"
-                || todaysWeather === "broken clouds") {
-                theDescription.src = "./icons_white/overcast_cloud.png"
-            } else if (todaysWeather === "clear sky") {
-                theDescription.src = "./icons_white/clear_sky.png"
-            } else if (todaysWeatherMain === "Snow") {
-                theDescription.src = "./icons_white/snow.png"
-            } else if (todaysWeather === "light rain"
-                || todaysWeather === "moderate rain"
-                || todaysWeatherMain === "Drizzle") {
-                theDescription.src = "./icons_white/rain_light.png"
-            } else if (todaysWeather === "heavy intensity rain"
-                || todaysWeather === "very heavy rain"
-                || todaysWeather === "extreme rain"
-                || todaysWeather === "freezing rain"
-                || todaysWeather === "light intensity shower rain"
-                || todaysWeather === "shower rain"
-                || todaysWeather === "heavy intensity shower"
-                || todaysWeather === "ragged shower rain") {
-                theDescription.src = "./icons_white/rain_heavy.png"
-            } else if (todaysWeatherMain === "Thunderstorm") {
-                theDescription.src = "./icons_white/ligthning.png"
-            } else if (todaysWeatherMain === "Fog") {
-                theDescription.src = "./icons_white/fog.png"
-            } else {
-                theDescription.src = "./icons_white/window.png"
-            }
+        minMax.innerHTML = `${maxRounded} C° / <span style="color:rgb(179, 179, 179)">${minRounded} C°</span>`
+        todaysWind.innerHTML = `${Math.round(json.wind.speed)} m/s`
 
+        //SUNRISE SUNSET//
+        let sunriseHoursMinutes = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        let sunsetHoursMinutes = new Date(json.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
 
+        sunriseTime.innerHTML = `${sunriseHoursMinutes}`
+        sunsetTime.innerHTML = `${sunsetHoursMinutes}`
 
+        //WHICH BACKGROUND TO SHOW//
+        let timeNow = todaysDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        if (timeNow >= sunriseHoursMinutes && timeNow <= sunsetHoursMinutes) {
+            document.getElementById("body").style.background = "#5c94bd"
+        }
+    })
 
-            console.log(json.weather)
-
-            //MIN-MAX TEMP OF TODAY//
-            let minRounded = Math.round(json.main.temp_min * 10) / 10
-            let maxRounded = Math.round(json.main.temp_max * 10) / 10
-
-            minMax.innerHTML = `${maxRounded} C° / <span style="color:lightslategrey">${minRounded} C°</span>`
-            todaysWind.innerHTML = `${Math.round(json.wind.speed)} m/s`
-
-            //SUNRISE SUNSET//
-            let sunriseHoursMinutes = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-            let sunsetHoursMinutes = new Date(json.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-
-            sunriseTime.innerHTML = `${sunriseHoursMinutes}`
-            sunsetTime.innerHTML = `${sunsetHoursMinutes}`
-
-            //WHICH BACKGROUND TO SHOW//
-            let timeNow = todaysDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-            if (timeNow >= sunriseHoursMinutes && timeNow <= sunsetHoursMinutes) {
-                document.getElementById("body").style.background = "#5c94bd"
-
-            }
-
-
-        })
-
-
-}
-fetchToday()
 
 //FORECAST///
 
-
-const dates = {} //to group the dates//
+const dates = {}
 const forecastDates = document.getElementById("forecastDates")
 const forecastDescription = document.getElementById("forecastDescription")
 const forecastMinMax = document.getElementById("forecastMinMax")
 
-const fetchForecast = () => {
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=7309e4a5829fafe809df835ad95f18ea`)
-        .then((response) => {
-            return response.json()
-        })
-        .then((json) => {
-            console.log(json)
-            json.list.forEach((weather) => {
-                const date = weather.dt_txt.split(' ')[0] //to split date from hours//
-                if (dates[date]) {
-                    dates[date].push(weather)
-                }
-                else {
-                    dates[date] = [weather]
-                }
-            })
-
-
-            Object.entries(dates).forEach((item, index) => {
-                const date = item[0]
-                const weatherValues = item[1]
-                const temps = weatherValues.map((value) => value.main.temp)
-                const minTemp = Math.min(...temps)
-                const maxTemp = Math.max(...temps)
-                //To not show today's date//
-                if (index === 0) {
-                    return
-                }
-                const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-                /*console.log(dayNames[todaysDate.getDay()])*/
-                const wholeDate = new Date(date)
-                const dayName = (dayNames[wholeDate.getDay()])
-
-                console.log(weatherValues[0].weather[0].description)
-
-                forecastDates.innerHTML += `<li>${dayName}</li>`
-                forecastDescription.innerHTML += `<li id="weatherIcons"><img src="https://openweathermap.org/img/wn/${weatherValues[0].weather[0].icon}@2x.png" alt="weathericons"/></li>`
-                forecastMinMax.innerHTML += `<li>${maxTemp.toFixed()} C° / <span style="color:lightslategray">${minTemp.toFixed()} C°</span></li>`
-                // forecastDescription.innerHTML += ``
-            })
-
-            console.log(dates)
+fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=7309e4a5829fafe809df835ad95f18ea`)
+    .then((response) => {
+        return response.json()
+    })
+    .then((json) => {
+        json.list.forEach((weather) => {
+            const date = weather.dt_txt.split(' ')[0]
+            if (dates[date]) {
+                dates[date].push(weather)
+            }
+            else {
+                dates[date] = [weather]
+            }
         })
 
+        Object.entries(dates).forEach((item, index) => {
+            const date = item[0]
+            const weatherValues = item[1]
+            const temps = weatherValues.map((value) => value.main.temp)
+            const minTemp = Math.min(...temps)
+            const maxTemp = Math.max(...temps)
 
-}
-fetchForecast()
+            if (index === 0) {
+                return
+            }
+
+            //DATES TO DAYS//
+            const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+            const wholeDate = new Date(date)
+            const dayName = (dayNames[wholeDate.getDay()])
+
+            //FORECAST DAYS, ICONS, MAX-MIN-TEMP//
+            forecastDates.innerHTML += `<li>${dayName}</li>`
+            forecastDescription.innerHTML += `<li id="weatherIcons"><img src="https://openweathermap.org/img/wn/${weatherValues[0].weather[0].icon}@2x.png" alt="weathericons"/></li>`
+            forecastMinMax.innerHTML += `<li>${maxTemp.toFixed()} C° / <span style="color:rgb(179, 179, 179)">${minTemp.toFixed()} C°</span></li>`
+        })
+
+    })

@@ -4,50 +4,48 @@ body{
     font-family: 'Open Sans', sans-serif;
     display: flex;
     flex-direction: column;
-    height: 120vh; /*Relative to 1% of the height of the viewport*/
-    /*margin:0 0 0 0; /*So the background image goes all the way*/
+    height: 100vh;
     margin:0;
 }
-#switchCity{
-    border: 1px solid navy;
-    font-size: 12px;
-    width: 95px;
-    padding: 2px;
-    border-radius: 5px;
-    background: rgb(80, 175, 143);
+img{
+    width: 50px;
+    height: 50px;
+}
+h1{
+    font-size: 30px;
+}
+h4{
+    margin:0;
+}
+#location{
+    margin-bottom: 0;
 }
 #temperature{
     font-weight: normal;
 }
 .temp-n-icon{
     display: flex;
+    align-items: center;
+    margin-left: 20px;
 }
-.temp-n-icon h2{
+    .temp-n-icon h2{
+        display:inline;
+        margin:2px;
+        font-size: 30px;
+}
+#description img{
     display:inline;
-    margin:2px;
-    font-size: 30px;
+    width: 80px;
+    height: 80px;
+    margin-top: 10px;
 }
-.temp-n-icon img{
-    display: inline;
-
-}
-
 #today{
     display:flex;
     flex-direction: column;
     align-items: center;
     padding: 10px;
     margin-bottom:15px;
-    /* width: 100%; */ /*When I got rid of this I got rid of horizontal scroll??*/
-   /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("stockholm_night.jpeg");
-   /* background-position: center; /*Centers the image vertically*/
-   /* background-repeat: no-repeat;/*The image should only be shown once*/
-    /*background-size: 100vh; /*Makes the image go all over*/
 }
-h1{
-    font-size: 30px;
-}
-
 #todaysMinMax, #todaysWind{
     margin:2px;
     font-size: 16px;
@@ -57,11 +55,7 @@ h1{
 }
 #windicon{
     width: 25px;
-height: 25px;
-}
-img{
-    width: 50px;
-    height: 50px;
+    height: 25px;
 }
 .sunset-sunrise{
     display:flex;
@@ -72,15 +66,6 @@ img{
 .sunsetdiv, .sunrisediv{
     display:flex;
     flex-direction: column;
-
-}
-
-h4, h5{
-    margin:0;
-}
-p{
-    margin: 0;
-    /* display:inline; */
 }
 hr{
     border-top: 1px solid white;
@@ -92,18 +77,17 @@ hr{
     padding: 10px;
     text-align: center;
 }
-.forecastSection h1{
-    margin: 0;
+    .forecastSection h1{
+        margin: 0;
 }
 .bigLine{
     width: 300px;
-align-self: center;
+    align-self: center;
 }
 .forecast{
     display:flex;
     justify-content: center;
     height: 100%;
-   /*justify-content: space-between;*/
 }
 #forecastDescription{
     margin:5px;
@@ -112,20 +96,12 @@ ul{
     display:flex;
     flex-direction: column;
     list-style-type: none;
-    /*padding: 0;*/
     font-size: 16px;
 }
 li{
-    /* height:auto; */
-    /* display: flex; */
     padding:8px 0;
     height: 40px;
 }
-#weatherIcons img{
-text-align: center;
-    
-}
-
 #forecastDates{
     text-align: left;
     padding:0;
@@ -133,7 +109,6 @@ text-align: center;
 #forecastMinMax{
     text-align: right;
 }
-
 .footer{
     margin-top: auto;
 }
@@ -155,36 +130,34 @@ footer{
       color:royalblue;
     }
 
-
-
     /***TABLET***/
 @media (min-width: 668px) and (max-width: 1024px){
     ul {
-    font-size: 22px;
-}
-img{
-    width: 80px;
-    height: 80px;
-}
-.temp-n-icon h2{
-    font-size: 50px;
-}
-#todaysMinMax, #todaysWind{
-    font-size: 20px;
-}
-.sunset-sunrise{
-    width: 50%;
-}
-h4{
-    text-align: center;
-}
-hr{
-width: 150px;
-}
-.bigLine{
-    width: 600px;
-}
-}
+        font-size: 22px;
+    }
+    img{
+        width: 80px;
+        height: 80px;
+    }
+    .temp-n-icon h2{
+        font-size: 50px;
+    }
+    #todaysMinMax, #todaysWind{
+        font-size: 20px;
+    }
+    .sunset-sunrise{
+        width: 50%;
+    }
+    h4{
+        text-align: center;
+    }
+    hr{
+        width: 150px;
+    }
+    .bigLine{
+        width: 600px;
+    }
+    }
 
 /***DESKTOP***/
 @media (min-width: 1025px){
@@ -208,15 +181,10 @@ width: 150px;
         text-align: center;
     }
     hr{
-    width: 150px;
+        width: 150px;
     }
     .bigLine{
         width: 450px;
     }
 
 }
-/***SUPER-SMALL PHONES AS MY OWN***/
-/*@media (min-width: 0px) and (max-width: 326px) {
-    ul {
-        font-size: 14px;
-    }*/
