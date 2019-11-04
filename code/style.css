@@ -99,7 +99,7 @@ a {
   height: 0px; /*For CSS animation*/
   opacity: 0; /*For CSS animation*/
   overflow: hidden; /*For CSS animation*/
-  transition: all 0.6s ease-in-out; /*For CSS animation*/
+  transition: all 0.5s ease-in-out; /*For CSS animation*/
 }
 
 .active + .forecast-details {
@@ -181,6 +181,7 @@ footer {
   }
 
   .forecast-bottom {
+    min-height: 310px;
     text-align: center;
     flex-direction: row;
     justify-content: space-evenly;
@@ -202,29 +203,30 @@ footer {
 /* Accordion for forecast details */
 .forecast-details {
   text-align: left;
-  transition: none;
+  /* transition: none; */
+}
+
+.forecast.active {
+  border-bottom: none;
 }
 
 .active + .forecast-details {
   opacity: 1;
   width: 100%;
-  align-self: flex-end;
   border-bottom: 1px solid #D1D9D4;
 }
 
 /* Adds a + after the div */
 .forecast::after {
-  margin-top: 30px;
+  margin-top: 10px;
   content: 'Show details';
   font-size: 12px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 } 
 
 /* Changes to a - if class .active is added */
 .forecast.active::after {
   content: 'Details:';
-  font-size: 12px;
-  font-weight: bold;
 }
 
 }

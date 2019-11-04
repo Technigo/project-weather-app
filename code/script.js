@@ -35,7 +35,6 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
     if (currentTime > sunriseTime && currentTime < sunsetTime) {
       dayTime = true
     }
-    console.log(currentTime, dayTime)
 
     if (dayTime && window.matchMedia("(max-width: 750px)").matches) {
       mainTop.style.backgroundImage = "url('assets/camp-day-small.jpg')"
@@ -147,19 +146,21 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&c
 
         //Creates two section with separete divs in themn
         forecastBottom.innerHTML +=
-          `<section class="forecast" id="forecast${index}">
-              <div class="forecast-date">${shortDate}</div>
-              <div class="forecast-time">${shortTime}</div>
-              <div class="forecast-icon">${weatherIcon}</div>
-              <div class="forecast-temp">${averageTemp.toFixed(1)} &deg;C</div>
-          </section>
+          `<section class="forecast-wrap">
+              <section class="forecast" id="forecast${index}">
+               <div class="forecast-date">${shortDate}</div>
+                <div class="forecast-time">${shortTime}</div>
+                <div class="forecast-icon">${weatherIcon}</div>
+                <div class="forecast-temp">${averageTemp.toFixed(1)} &deg;C</div>
+              </section>
         
-          <section class="forecast-details">
-            <p>Weather: ${forecast.weather[0].description}</p>
-            <p>Wind: ${forecast.wind.speed.toFixed(0)} m/s</p>
-            <p>Max temp: ${forecast.main.temp_max.toFixed(1)} &deg;C</p>
-            <p>Min temp: ${forecast.main.temp_min.toFixed(1)} &deg;C</p>
-          </section>`
+              <section class="forecast-details">
+                <p>Weather: ${forecast.weather[0].description}</p>
+                <p>Wind: ${forecast.wind.speed.toFixed(0)} m/s</p>
+                <p>Max temp: ${forecast.main.temp_max.toFixed(1)} &deg;C</p>
+                <p>Min temp: ${forecast.main.temp_min.toFixed(1)} &deg;C</p>
+              </section>
+            </section>`
 
         //Index increases for every loop
         index++
