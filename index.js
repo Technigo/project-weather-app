@@ -23,9 +23,9 @@ fetch(
   })
 
   .then(json => {
+    console.log(json);
     let sunRise = new Date(json.city.sunrise * 1000);
     let sunSet = new Date(json.city.sunset * 1000);
-    console.log(json);
 
     city.innerHTML = json.city.name;
 
@@ -46,25 +46,32 @@ fetch(
     sunrise.innerHTML = `${("0" + sunRise.getHours()).slice(-2)}:${("0" + sunRise.getMinutes()).slice(-2)}`;
     sunset.innerHTML = `${("0" + sunSet.getHours()).slice(-2)}:${("0" + sunSet.getMinutes()).slice(-2)}`;
 
+    // Creates an array with the days (at 12:00) which should be displayed
     let dayArray = []
     json.list.forEach(day => {
       let date = new Date(day.dt_txt);
       if (date.getHours() == "12") {
         dayArray.push(day)
-
-        weekdaysDiv.innerHTML += `<div class="week_days"> 
-        <div>${weekdays[date.getDay()]}</div>
-        <img src="https://openweathermap.org/img/wn/${day.weather[0].icon}.png">
-        <div>${getNumber(Math.round(day.main.temp))}&deg;C </div>
-      </div>`;
       }
-
-
-
     })
     console.log(dayArray)
+    displayDays(dayArray)
   })
 
+const displayDays = (dayArray) => {
+  console.log("displayDays function")
+  console.log(dayArray.length)
+  for (i = 0; i < dayArray.length; i++) {
+    console.log(dayArray[i])
+    let currentDate = new Date(dayArray[i].dt_txt)
+    let currentDay = currentDate.getDay()
+    weekdaysDiv.innerHTML += `<div class="week_days"> 
+                                <div>${weekdays[currentDay]}</div>
+                                  <img src="https://openweathermap.org/img/wn/${dayArray[i].weather[0].icon}.png">
+                                <div>${getNumber(Math.round(dayArray[i].main.temp))}&deg;C </div>
+                            </div>`
+  }
+}
 //  Function to add a '+' in front of positive numbers
 const getNumber = (theNumber) => {
   if (theNumber > 0) {
