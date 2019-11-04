@@ -1,31 +1,37 @@
+    const weatherInformation = json.weather
+
     let weatherDescription;
     let weatherIcon;
     let weatherId;
-
-    listitem.weather.forEach(weatherInformation => {
-      return ((weatherDescription = weatherInformation.description),
-        (weatherIcon = weatherinformation.icon),
+    listitem.weather.forEach((weatherInformation) => {
+      return (
+        (weatherDescription = weatherInformation.description),
+        (weatherIcon = weatherInformation.icon),
         (weatherId = weatherInformation.id)
       );
-    });
+    })
 
-    const getWeatherConditionImage = getWeatherConditionNumber => {
-      if (getWeatherConditionNumber >= 200 && WeatherConditionNumber <= 232) {
-        console.log("Thunderstrom");
+
+    const getWeatherConditionImage = weatherConditionNumber => {
+      if (weatherConditionNumber >= 200 && weatherConditionNumber <= 232) {
+        console.log("Thunderstorm");
       } else if (
-        (WeatherConditionNumber >= 300 && WeatherConditionNumber <= 321) ||
-        (WeatherConditionNumber >= 500 && WeatherConditionNumber <= 232)
+        (weatherConditionNumber >= 300 && weatherConditionNumber <= 321) ||
+        (weatherConditionNumber >= 500 && weatherConditionNumber <= 531)
       ) {
         console.log("Rain");
-      } else if (WeatherConditionNumber >= 600 && WeatherConditionNumber <= 622) {
+      } else if (weatherConditionNumber >= 600 && weatherConditionNumber <= 622) {
         console.log("Snow");
-      } else if (WeatherConditionNumber >= 701 && WeatherConditionNumber <= 781) {
-        console.log("Mist");
-      } else if (WeatherConditionNumber === 800) {
+      } else if (weatherConditionNumber >= 701 && weatherConditionNumber <= 781) {
+        console.log("Mist, dust or smoke");
+      } else if (weatherConditionNumber === 800) {
         console.log("Clear sky");
-      } else if (WeatherConditionNumber >= 801 && WeatherConditionNumber <= 804) {
-        console.log("clouds");
+        forecastImage.style.backgroundImage = "url('clear.jpg')";
+      } else if (weatherConditionNumber >= 801 && weatherConditionNumber <= 804) {
+        console.log("Clouds");
+        forecastImage.style.backgroundImage = "url('overcast.jpg')";
       } else {
-        console.log("Can't forcast weather");
+        console.log("Can't forecast weather");
       }
-    }
+    };
+
