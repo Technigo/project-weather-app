@@ -6,4 +6,5 @@ ${sunUp}
 ${sunSet}
 ${icon}
 ${weatherType}
+
 </article>`;
