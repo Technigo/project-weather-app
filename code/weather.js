@@ -79,7 +79,7 @@ const handle5DayForecast = (json) => {
   
     
     //+= keeps the old command but updates it with new info
-    forecastDiv.innerHTML += `<li>${date} | low: ${minTemp.toFixed(1)}° | high: ${maxTemp.toFixed(1)}° | ${json.list[38].weather[0].description}</li>`
+    forecastDiv.innerHTML += `<li>${date} | &#8595;${minTemp.toFixed(1)}° | &#8593;${maxTemp.toFixed(1)}° | ${json.list[38].weather[0].description}</li>`
    
   })
 

@@ -17,12 +17,12 @@ h2 {
   margin: 0%;
 }
 
+/******** WEATHER INFORMATION ******/
 
 .flex-container {
   margin: 20px auto;
   width: 90%;
   background: rgba(195, 213, 224, 0.877);
-  width: 90%;
   height: auto;
   display: flex;
   justify-content: space-around;
@@ -31,7 +31,7 @@ h2 {
 
 .hero-alltheweather {
   width: 450px;
-  height: 600px;
+  height: auto;
   margin-top: 10px;
   border-radius: 20px;
   border: 1px solid white;
@@ -39,8 +39,10 @@ h2 {
   background-color: rgb(123, 203, 240);
   justify-content: center;
   text-align: center;
+  /*text transform capitalize gives big first letter in every words */
+  text-transform: capitalize;
   /* The "linear-gradient" gives a darker feeling to the her image*/
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/Users/theresaulwahn/Desktop/project-weather-app/pictures/Miami.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../pictures/Miami.jpg');
   background-repeat: no-repeat;
   /* To make the her picture cover the screen */
   background-size: cover;
@@ -48,14 +50,21 @@ h2 {
   /* The image change size on all screens */
   position: relative
 }
+
 .flex-info {
   width: auto;
-    height: auto;
-    justify-content: space-around;
-   
+  height: auto;
+  justify-content: space-around;
 }
 
-.flex-sunrise {
+.suninfo {
+  padding-top: 105px;
+  width: auto;
+  height: auto;
+  justify-content: space-around;
+}
+
+/*.flex-sunrise {
   padding-top: 80px;
   width: auto;
   height: auto;
@@ -66,18 +75,19 @@ h2 {
   width: auto;
   height: auto;
   justify-content: space-around;
-}
+}*/
 
 .forecast {
   list-style-type: none;
   width: auto;
   height: auto;
-  align-items: center;
   justify-content: space-around;
   padding: 20px;
   word-spacing: 7px;
+  line-height: 1.5;
+  text-transform: capitalize;
 }
-
+/**** FOOTER ***/
 footer {
   display: flex;
   align-items: center;
@@ -94,22 +104,37 @@ footer {
  
   .hero-alltheweather {
     margin: 10px 0;
-   
+    height: 600px;
   }
 
-  /*.forecast {
+  .suninfo{
+    display: flex;
+  }
+
+  .forecast {
     display: inline;
-  }*/
+    line-height: 200%;
+    border-radius: 0;
+  }
 }
 @media (min-width: 1024px) {
 
   .hero-alltheweather {
     align-items: center;
+    height: 600px;
   }
-
- /* .forecast {
-    align-items: center;
-  }*/
+  .flex-info {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 40px;
+  }
+  .suninfo{
+    display: flex;
+  }
+  .forecast {
+    line-height: 300%;
+    padding-top: 40px;
+  }
     
 }
 
