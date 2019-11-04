@@ -20,12 +20,26 @@ function setHtmlData(data) {
     //today´s weather
     const cityName = data.name;
     document.getElementById("city-name").innerText = cityName;
+
     // degrees & state of the sky
     const degrees = data.main.temp;
-
     document.getElementById("temp-degrees").innerText = round(degrees) + " ° ";
     const stateOfTheSky = data.weather[0].main;
     document.getElementById("sky-display").innerText = stateOfTheSky;
+    const iconOfState = data.weather[0].icon;
+    document.getElementById("icon").innerHTML = `<img src="https://openweathermap.org/img/wn/${iconOfState}@2x.png" alt="" />`;
+
+    // defining background color 
+    var color;
+    if (stateOfTheSky == "Clear") {
+        color = "#d9f9ff";
+    } else if (stateOfTheSky == "Snow") {
+        color = "#FFFFFF";
+    } else {
+        color = "#c2baba";
+    }
+    document.getElementById("background").style = `background-color: ${color};`;
+
     // sunset & sunrise
     //Declare variable for the time of sunrise/sunset
     const unixTimestampSunrise = data.sys.sunrise
