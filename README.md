@@ -33,7 +33,7 @@ Your task is to present the data: the city name, the temperature (rounded to 1 d
 Show the time for sunrise and sunset in a readable time format (Example: 13:00 or 1 PM). 
 You will have to format the date from milliseconds to a readble format.
 
-**#4 Weather forecast
+**#4 Weather forecast**
 
 Show a forecast for the next 5-7 days. With min and max temperature and the description.
 
