@@ -1,0 +1,25 @@
+body {
+  display: flex;
+  margin: 0;
+  height: 100%;
+  font-size: 14px;
+  background: linear-gradient(#9030fd, #ffffff);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  justify-content: center;
+}
+
+.todaysWeather {
+  margin-top: 20px;
+  padding: 20px;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.todaysWeather-clear {
+  background: gray;
+}
+
+article img {
+  width: 150px;
+}

@@ -16,14 +16,9 @@ fetch(
       temp: json.main.temp,
       sunUp: json.sys.sunrise,
       sunSet: json.sys.sunset,
-      icon: json.weather.main,
-      weatherType: json.weather.main
+      icon: json.weather[0].icon,
+      weatherType: json.weather[0].main.toLowerCase()
     });
 
     document.getElementById("todaysWeather").innerHTML = weather;
   });
-
-// present wather 5 day
-// Sunset..
-// background/icon according to weather
-//
