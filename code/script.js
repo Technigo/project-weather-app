@@ -66,7 +66,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         if (times.getHours() != "12") return
 
        const day = `<li>${weekdays[times.getDay()]}</li>`
-       const icon = `<img src="http://openweathermap.org/img/wn/${time.weather[0].icon}.png"`
+       const icon = `<img src="https://openweathermap.org/img/wn/${time.weather[0].icon}.png"`
        const temp = `<p>${Math.round(time.main.temp)} ° </p>`
 
        containerTwo.innerHTML += `<ul>${day} ${icon} ${temp}</ul>`
