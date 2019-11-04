@@ -107,7 +107,9 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Malm%C3%B6&units=metri
     .then(handle5DayForecast)
     .catch((err) => alert(err.message))
 
-//GEOLOCATION 
+
+
+//GEOLOCATION SECTION
 let long;
 let lat;
 const theWeatherGeo = document.getElementById("weather-geolocation");
@@ -138,23 +140,17 @@ if (navigator.geolocation) {
                     minute: "2-digit"
                 });
 
-                //Set DOM Elemens from the API'
                 theWeatherGeo.innerHTML +=
                     `
-                    <h3>Weather in your location:</h3>
-                    <h2>${geoName} </h2>  
-                    <h3>It's ${geoDescription} </h3>
-
-                    <h2>${geoTemp.toFixed(1)} C°</h2>
-                    <h4>min: ${geoTempMin.toFixed(1)} C° |  max: ${geoTempMax.toFixed(1)} C°</h4>
-                    <ul>
-                  
-                <li>Sunrise: ${geoSunrise}</li>
-                <li>Sunset: ${geoSunset}</li>
-      
-                </ul>`
-
-
+                    <h3>Weather at your place:</h3>
+                    <h3>${geoName} </h3>  
+                    <p>It's ${geoDescription} </p>
+                    <p>${geoTemp.toFixed(1)} C°</p>
+                    <p>min: ${geoTempMin.toFixed(1)} C° |  max: ${geoTempMax.toFixed(1)} C°</p>
+                    
+                <p>Sunrise: ${geoSunrise}</p>
+                <p>Sunset: ${geoSunset}</p>
+                <p id="border-bottom-geo"></p>`
             });
     });
 } else {

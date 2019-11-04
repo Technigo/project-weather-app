@@ -19,7 +19,7 @@
 }
 
 .sun-section {
-    padding: 50px;
+    padding: 40px;
 }
 
 header {
@@ -76,27 +76,23 @@ header {
 footer {
     margin-top: 40px;
     text-align: center;
+    font-size: .7em;
 }
 
 
 /* GEOLOCATION */
 
 #weather-geolocation {
-    border-bottom: white 1.5px dashed;
-    padding-left: 50px;
-    text-align: center;
+    width: 100%;
+    padding: 0px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
 }
 
-#weather-geolocation h2,
-h3 {
-    padding: 5px;
-}
-
-#weather-geolocation ul,
-li {
-    text-align: start;
-    list-style: none;
-    padding: 5px;
+#border-bottom-geo {
+    padding-top: 20px;
+    border-bottom: white 2px dashed;
 }
 
 
