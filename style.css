@@ -4,21 +4,43 @@ body {
   margin: -0px;
 }
 
-
-
 header {
-  background-color: lightcoral;
+  background-image: linear-gradient( rgba(214, 132, 226, 0.795), rgba(113, 165, 233, 0.795));
   padding: 10px;
   border-bottom-left-radius: 50% 20%;
-  border-bottom-right-radius: 50% 20%
-  
+  border-bottom-right-radius: 50% 20%;
 }
 
+h1 {
+  font-size: 50px;
+  color: rgba(255, 255, 255, 0.89);
+  font-weight: lighter;
+}
+
+h2 {
+  font-size: 28px;
+  color: rgba(255, 255, 255, 0.726)
+}
+
+h3 {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.555)
+}
+
+h4{
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.555)
+}
+
+h5{
+  font-size: 28px;
+  color:  rgba(214, 132, 226, 0.795);
+}
 
 .hamburger div{
   width: 35px;
   height: 5px;
-  background-color: black;
+  background-color: rgba(215, 58, 240, 0.699);
   margin: 6px 10px;
 }
 
@@ -28,4 +50,175 @@ header {
   justify-content: center;
   align-items: flex-start;
   margin-left: 17%;
+}
+
+.topweather img {
+  float: left;
+  align-self: flex-end;
+  margin-right: 15%;
+  width: 30%;
+  margin-top: -20px;
+}
+
+.bigTemp {
+  margin-bottom: -65px;
+  margin-top: -100px;
+}
+
+.cityTop {
+  margin-bottom: -43px;
+}
+
+.weatherdescription {
+  margin-bottom: -30px;
+}
+
+.sunTime {
+  padding-bottom: 20px;
+}
+
+.weatherforecast{  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.forecastHead{
+  display: flex;
+  flex-direction: row;
+  margin-left: 26px;
+}
+
+.forecastHead img {
+  height: 40px;
+  margin-top: 40px;
+  margin-left: 10px;
+}
+
+ul {
+  list-style-type: none;
+ line-height: 35px;
+ font-size: 18px;
+ padding: 10px 40px;
+ margin-top: -20px;
+ border: 4px solid rgba(207, 165, 207, 0.336);
+ border-radius: 20px;
+ color: rgba(113, 165, 233, 0.795)
+}
+
+/* iPads */
+
+@media screen and (min-device-width: 668px) and (max-device-width: 1023px) {
+
+  h1 {
+    font-size: 80px;
+  }
+
+h2 {
+  font-size: 28px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h5{
+  font-size: 38px;
+}
+
+  .hamburger {
+    display: none;
+  }
+
+  .topweather {
+    margin-left: 17%;
+  }
+
+  
+  .topweather img {
+    margin-right: 15%;
+    width: 30%;
+    margin-top: -10px;
+  }
+
+
+  .bigTemp {
+    margin-bottom: -50px;
+    margin-top: -200px;
+  }
+
+  ul {
+   line-height: 45px;
+   font-size: 28px;
+  }
+
+  .forecastHead img {
+    height: 60px;
+    margin-top: 50px;
+  }
+}
+
+/* Computer */
+
+@media screen and (min-width: 1024px) {
+
+  .hamburger {
+    display: none;
+  }
+
+  h1 {
+    font-size: 90px;
+  }
+
+h2 {
+  font-size: 38px;
+}
+
+h3 {
+  font-size: 30px;
+}
+
+h4{
+  font-size: 26px;
+}
+
+  h5{
+    font-size: 48px;
+  }
+  
+  ul {
+    line-height: 55px;
+    font-size: 38px;
+   }
+
+   .topweather img {
+    margin-top: 20px;
+  }
+
+   .bigTemp {
+    margin-bottom: -80px;
+    margin-top: -350px;
+    margin-left: 100px;
+  }
+ 
+   .forecastHead img {
+     height: 70px;
+     margin-top: 70px;
+   }
+
+   .cityTop{
+     margin-left: 100px;
+     margin-bottom: -60px;
+   }
+
+   .weatherdescription {
+     margin-left: 100px;
+   }
+
+   .sunTime {
+     padding-bottom: 50px;
+     margin-left: 100px;
+   }
+
 }
