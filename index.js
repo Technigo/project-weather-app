@@ -3,7 +3,6 @@ const weatherIcon = document.getElementById("weather_icon");
 const temp = document.getElementById("temp");
 const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
-const weekdaysDiv = document.getElementById("weekdays");
 
 const weekdays = [
   "Sun",
@@ -31,7 +30,6 @@ fetch(
 
     const options = {
       weekday: "short",
-      year: "numeric",
       month: "short",
       day: "numeric"
     }
@@ -54,13 +52,13 @@ fetch(
         dayArray.push(day)
       }
     })
-    console.log(dayArray)
+
     displayDays(dayArray)
   })
 
+// Function that creates the 
 const displayDays = (dayArray) => {
-  console.log("displayDays function")
-  console.log(dayArray.length)
+  const weekdaysDiv = document.getElementById("weekdays");
   for (i = 0; i < dayArray.length; i++) {
     console.log(dayArray[i])
     let currentDate = new Date(dayArray[i].dt_txt)
@@ -69,7 +67,7 @@ const displayDays = (dayArray) => {
                                 <div>${weekdays[currentDay]}</div>
                                   <img src="https://openweathermap.org/img/wn/${dayArray[i].weather[0].icon}.png">
                                 <div>${getNumber(Math.round(dayArray[i].main.temp))}&deg;C </div>
-                            </div>`
+                              </div>`
   }
 }
 //  Function to add a '+' in front of positive numbers

@@ -36,14 +36,10 @@ footer {
   background: linear-gradient(196deg, rgba(75, 102, 235, 0.873) 5%, rgba(215, 224, 255, 0.803) 100%);
   color: rgba(233, 230, 242, 0.995);
   width: 90%;
-  max-width: 400px;
-  padding: 10px 30px;
+  max-width: 300px;
+  padding: 10px 10px;
   border-radius: 20px;
-  height: 500px;
   text-align: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
 }
 
 h4 {
@@ -54,9 +50,6 @@ p {
   margin: 0;
 }
 
-.main-info {
-  padding-bottom: 20px;
-}
 
 #temp {
   font-size: 50px;
@@ -64,6 +57,11 @@ p {
 
 #city {
   margin-bottom: 10px;
+}
+
+.sunrise-sunset {
+  margin-top: 0px;
+  margin-bottom: 20px;
 }
 
 #sunrise,
@@ -74,9 +72,12 @@ p {
 
 #weekdays {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  gap: 10px;
-  margin-top: 50px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  row-gap: 20px;
+  column-gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 30px;
 }
 
 .week_days {
@@ -86,4 +87,22 @@ p {
   height: 100%;
   width: 100%;
   align-content: center;
+}
+
+@media only screen and (min-width: 400px) {
+  #weatherapp {
+    background: rgb(75, 101, 235);
+    background: linear-gradient(196deg, rgba(75, 102, 235, 0.873) 5%, rgba(215, 224, 255, 0.803) 100%);
+    color: rgba(233, 230, 242, 0.995);
+    width: 90%;
+    max-width: 390px;
+    padding: 10px 10px;
+    border-radius: 20px;
+    text-align: center;
+  }
+
+  #weekdays {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
 }
