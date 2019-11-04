@@ -1,5 +1,8 @@
 body {
-  color: darkblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Jomolhari','Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 } 
 
 .background {
@@ -30,12 +33,25 @@ ul {
 }
 
 li {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding-bottom: 10px;
 }
 
+.hamburger-menu {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: auto;
+  height: 25px;
+  width: 30px;
+}
 
-
-
-
-
+.hamburger-menu div {
+  background: black;
+  border-radius: 5px;
+  height: 4px;
+  width: 30px;
+}
