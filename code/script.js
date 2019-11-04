@@ -63,7 +63,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
       console.log(json)
       json.list.forEach(time => {
         const times = new Date (time.dt_txt)
-        if (times.getHours() != "12") return
+        if (times.getHours() != "09") return
 
        const day = `<li>${weekdays[times.getDay()]}</li>`
        const icon = `<img src="https://openweathermap.org/img/wn/${time.weather[0].icon}.png"`
