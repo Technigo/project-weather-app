@@ -1,4 +1,4 @@
-This is project number 6 for Technigo 2019. It was my first time working with an API and it was really fun. I still struggle a little bit with objects and arrays (tried to cut out the last property of the forecast, but found that there IS no last property of an object since they have no order at all?). Learning by doing! This is my weather-app: https://project-weather-app-hippiekick.netlify.com/
+This is project number 6 for Technigo 2019. It was my first time working with an API and it was really fun. Learning by doing! This is my weather-app: https://project-weather-app-hippiekick.netlify.com/
 
 # Short description of task: Build a Weather Web App :sunny:
 
