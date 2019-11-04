@@ -5,9 +5,9 @@ const temperature = document.getElementById(`temp`);
 const description = document.getElementById(`desc`);
 const forecastTemp = document.getElementById(`forecast`);
 
-const api = `http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=54da82efb468485965f06d89cb0c03a3`;
+const api = `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=54da82efb468485965f06d89cb0c03a3`;
 
-// TEMPERATURE
+// TEMPERATUREgot commit
 
 fetch(api)
   .then(response => {
@@ -84,7 +84,7 @@ const handle5DayForecast = json => {
 };
 
 fetch(
-  `http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=54da82efb468485965f06d89cb0c03a3`
+  `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=54da82efb468485965f06d89cb0c03a3`
 )
   .then(res => res.json())
   .then(handle5DayForecast);
