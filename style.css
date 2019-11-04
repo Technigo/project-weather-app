@@ -1,124 +1,126 @@
-* {
-  box-sizing: border-box;
-}
-
-/*header {
-  justify-content: space-between;
-}*/
-/*header {
-  width: 100%;
-  height: 50%;
-  margin-bottom: 30px;
-  margin-top: 80px;
-  margin-left: 30px;
-  background-color: yellow;
-}
-
-/*img {
-  width: 80px;
-  height: 65px;
-}*/
-/*body,
-html {
-  height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: absolute;
-}*/
-
 body {
-  /*height: 100vh;*/
+
+  /*width: auto;*/
   display: flex;
-  justify-content: center;
+  /*justify-content: center;*/
   flex-direction: column;
-  /*align-items: center;*/
+  align-items: center;
   /*background: linear-gradient(red, orange, brown);*/
   background: linear-gradient(orange, orangered,rgb(177, 26, 10), rgb(16, 116, 16));
-  /*background: blue;*/
-  font-family: "Shadows Into Light", cursive;
+  /*background: linear-gradient( rgb(177, 26, 10),orangered,rgb(237, 156, 5), rgb(16, 116, 16));*/
+  font-family: 'Montserrat', sans-serif;
   color: white;
-  border: 1px solid lightblue;
-  margin: 30px;
-  padding: 20px;
-  padding-left: 30px;
-  
+  overflow-x: hidden;
+}
+
+header {
+  margin-top: 50px;
+  justify-content: center;
+  flex-direction: column;
 }
 
 h1 {
-  font-size: 65px;
-  display: flex;
-  justify-content: left;
+  font-size: 40px;
+  /*display: flex;*/
+  justify-content: center;
   flex-direction: column;
-  align-items: flex-start;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  margin-left: 15px;
+  align-items: center; 
+  display: flex;
+  flex-wrap: wrap;
 }
-
 /* TODAYS WEATHER */
 h2 {
-  font-size: 40px;
-  margin-left: 15px;
-  margin-top: 0px;
-  /*background-color: red;*/
+  /*font-size: 25px;*/
+  margin-top: 10px;
+  text-align: center;
 }
 
 /* SUNRISE and SUNSET */
 h3 {
-  font-size: 30px;
-  margin: 0px;
-  padding-left: 190px;
-  margin-bottom: 10px;
-  /*margin-left: 5px;*/
+  /*font-size: 25px;*/
+  text-align: center;
+  margin-bottom: 0px;
+  flex-direction: row;
+  display: flex;  
 }
 
 hr.new4 {
-  border-top: 1px dotted brown;
-  width: 100%;
-  
-
+  border: 1px dotted rgb(123, 35, 18);
+  width: 55%;
+  margin-top: 50px;
+  margin-bottom: 35px;
 }
 
 /* 5 DAY FORECAST */
 #forecast {
-  font-size: 30px;
-  display: flex;
-  /*justify-content: center;*/
+  font-size: 20px;
+  justify-content: center;
   flex-direction: column;
-  align-items: left;
-  margin-top: 20px;
-  margin-bottom: 30px;
-  padding-top: 0px;
-  /*background-color: rgb(242, 66, 26);*/
-  /*background: linear-gradient(orange, rgb(3, 104, 3));*/
-  border-radius: 10px;
-  padding-left: 80px;
-
-  
+  align-items: center;
+  margin-bottom: 35px;
 }
 
-p {
-  font-size: 30px;
+/*p {
+  font-size: 25px;
   padding: 0px;
   margin: 5px;
   color: white;
-}
+}*/
+@media (min-width: 651px) and (max-width: 1023px) {
 
-h4 {
-  align-items: baseline;
-  padding-left: 170px;
-  /*margin-top: 60px;*/
-  padding-bottom: 1px;
-}
-/* MOBIL */
-
-@media (min-width: 650px) {
-  header {
-    justify-content: space-between;
+  .sunContainer {
+  flex-direction: row;
+  display: flex;
   }
 
-  .body {
-    width: 100%;
+  .sunriseContainer {
+    padding-right: 20px;
+    padding-top: 20px;
+  }
+  .sunsetContainer {
+    padding-right: 20px;
+    padding-top: 20px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+#forecast {
+  padding-bottom: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  h1 {
+    margin-top: 45px;
+  }
+  
+  .sunContainer {
+  flex-direction: row;
+  display: flex;
+  }
+
+  .sunriseContainer {
+    padding-right: 25px;
+    padding-top: 20px;
+  }
+  .sunsetContainer {
+    padding-right: 25px;
+    padding-top: 20px;
+  }
+  h3 {
+    font-size: 20px;
+  }
+
+  hr.new4 {
+    width: 25%;
+  }
+
+#forecast {
+  font-size: 20px;
+  background-repeat: no-repeat;
+  padding-top: 20px;
+  /*padding-bottom: 80px;*/
+  padding-bottom: 40px;
   }
 }
