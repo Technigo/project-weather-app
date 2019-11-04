@@ -50,10 +50,10 @@ h4{
     margin:2px;
     font-size: 16px;
 }
-.winddiv{
+.wind-div{
     display:flex;
 }
-#windicon{
+.wind-icon{
     width: 25px;
     height: 25px;
 }
@@ -63,7 +63,7 @@ h4{
     justify-content: space-between;
     margin-top: 20px;
 }
-.sunsetdiv, .sunrisediv{
+.sunset-div, .sunrise-div{
     display:flex;
     flex-direction: column;
 }
@@ -73,14 +73,14 @@ hr{
     width: 60px;
     margin: 0 0 8px 0;
 }
-.forecastSection {
+.forecast-section {
     padding: 10px;
     text-align: center;
 }
-    .forecastSection h1{
+    .forecast-section h1{
         margin: 0;
 }
-.bigLine{
+.big-line{
     width: 300px;
     align-self: center;
 }
@@ -154,7 +154,7 @@ footer{
     hr{
         width: 150px;
     }
-    .bigLine{
+    .big-line{
         width: 600px;
     }
     }
@@ -183,7 +183,7 @@ footer{
     hr{
         width: 150px;
     }
-    .bigLine{
+    .big-line{
         width: 450px;
     }
 

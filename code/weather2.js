@@ -19,6 +19,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
         //TODAY'S TEMP//
         let temperatureRounded = json.main.temp.toFixed(1)
         theTemperature.innerHTML = `${temperatureRounded} C°`
+
         //COLD OR WARM TEXT-SHADOW ON °//
         if (Math.sign(temperatureRounded) === 0 || Math.sign(temperatureRounded) === -1) {
             theTemperature.innerHTML = `${temperatureRounded} C<span style="text-shadow:2px 2px 4px aqua">°</span>`
@@ -90,9 +91,16 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&A
             const dayName = (dayNames[wholeDate.getDay()])
 
             //FORECAST DAYS, ICONS, MAX-MIN-TEMP//
-            forecastDates.innerHTML += `<li>${dayName}</li>`
-            forecastDescription.innerHTML += `<li id="weatherIcons"><img src="https://openweathermap.org/img/wn/${weatherValues[0].weather[0].icon}@2x.png" alt="weathericons"/></li>`
-            forecastMinMax.innerHTML += `<li>${maxTemp.toFixed()} C° / <span style="color:rgb(179, 179, 179)">${minTemp.toFixed()} C°</span></li>`
+            console.log(typeof weatherValues)
+            try {
+                forecastDescription.innerHTML += `<li id="weatherIcons">
+            <img src="https://openweathermap.org/img/wn/${weatherValues[3].weather[0].icon}@2x.png" alt="weathericons"/></li>`
+                forecastDates.innerHTML += `<li>${dayName}</li>`
+                forecastMinMax.innerHTML += `<li>${maxTemp.toFixed()} C° / <span style="color:rgb(179, 179, 179)">${minTemp.toFixed()} C°</span></li>`
+            } catch (error) {
+                console.log(`Next day of forecast will come soon`)
+            }
+
         })
 
     })
