@@ -7,7 +7,9 @@ html {
 
 body {
   margin: auto;
+  background:#A3DEF7;
 }
+
 
 h1 {
   margin: 2.0rem 1rem;
@@ -23,10 +25,8 @@ p {
 
 header {
   background:#A3DEF7;
-  height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  height: 8rem;
+  display: block;  
 }   
 
 .hamburger {
@@ -36,6 +36,7 @@ header {
   margin: 0px;
   padding: 1rem;
   line-height: 0em;
+  /* text-align: left; */
 }
 
 
@@ -90,10 +91,10 @@ header {
 }
 
 .backgroundDrizzle{
-  background: linear-gradient(#F4F7F8,grey, #A3DEF7);
+  background: linear-gradient(#F4F7F8,grey);
   display: block;
   height: auto;
-  margin: 0rem;
+  margin: 1rem, 0rem;
   padding: 1rem;
 
 }
@@ -155,8 +156,11 @@ a {
 /* Ipads och liggande mobiler */
 @media (min-width: 400px) {
 
-  #forecast {
-    width: 70%;
+  .wrapping {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
   }
 }
 
@@ -166,9 +170,7 @@ a {
   html {
     font-size: 18px;
   }
-  #forecast {
-    width: 50%;
-  }
+
 }
 
 /* Laptops*/
@@ -179,9 +181,6 @@ a {
     font-size: 20px;
   }
 
-  #forecast {
-    width: 40%;
-  }
 }
 
 /* Big screens */
@@ -192,9 +191,6 @@ a {
     font-size: 22px;  
   }
 
-  #forecast {
-    width: 30%;
-  }
 }
 
 

@@ -1,5 +1,7 @@
 
-//Present some data on your web app
+//Weatherdata for the  web app
+
+//Current weather
 
 const containerWeather = document.getElementById('weatherNow')
 const containerTempNow = document.getElementById('weatherAndTempNow')
@@ -16,7 +18,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=Kalmar,SE&units=metric&
     return response.json()
   })
   .then((json) => {
-    containerTempNow.innerHTML = `<p>${json.weather[0].main} | Temp ${json.main.temp.toFixed(1)}°</p>`
+    containerTempNow.innerHTML = `<p>${json.weather[0].main} | Temp ${json.main.temp.toFixed(0)}°</p>`
     console.log(containerTempNow)
 
     containerIconNow.innerHTML = `<img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="" />`
@@ -91,7 +93,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=Kalmar,SE&units=metric&
   })
 
 
-//Weather forecast Damians solution
+//Weather forecast (Damians solution - keeping all the comments)
 
 
 // This function handles the eventual response from the API (at the bottom)
@@ -157,7 +159,7 @@ const handle5DayForecast = (json) => {
     const weatherValues = item[1]
 
     //Fixing dates to days (with the help fo Damian And Linda I)
-    const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+    const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     const todaysDate = new Date(date)
     const weekdayName = `${weekDays[todaysDate.getDay()]}`
 
@@ -178,7 +180,7 @@ const handle5DayForecast = (json) => {
 
     // Finally! Now we have the date, along with the min and max temp for that day. We can add it to
     // the list of <li> elements in the forecastDiv.
-    forecastContainer.innerHTML += `<li>${weekdayName} ${minTemp.toFixed(1)}°-${maxTemp.toFixed(1)}°</li>`
+    forecastContainer.innerHTML += `<li>${weekdayName} ${minTemp.toFixed(0)}°-${maxTemp.toFixed(0)}°</li>`
   })
 }
 
