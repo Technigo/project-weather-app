@@ -45,7 +45,7 @@ h2 {
   /*text transform capitalize gives big first letter in every words */
   text-transform: capitalize;
   /* The "linear-gradient" gives a darker feeling to the her image*/
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../pictures/Miami.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../code/pictures/Miami.jpg');
   background-repeat: no-repeat;
   /* To make the her0 picture cover the app */
   background-size: cover;
