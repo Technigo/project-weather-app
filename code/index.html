@@ -10,18 +10,35 @@
   </head>
   
   <body>
+    <!---Flex container to give the app a grey background and to keep the app inside-->
     <section class ="flex-container">
+     
+      <!--Wanted to give the app a picture from the city it aimed for - hero container section-->
       <section class = "hero-alltheweather">
-        <div class="flex-info" id="todaysinfo"><p>Loading...</p></div>
-       
-      <section class ="suninfo">
-        <div class="flex-sunrise" id="sunriseinfo">Loading...</div> 
-        <div class="flex-sunset" id="sunsetinfo">Loading...</div>
-      </section>
-      <div>
-        <ul class="forecast" id="forecast"></ul>
-      </div>    
+     
+        <!--Flexbox to make todays information flexible-->
+        <div class="flex-info" id="todaysinfo">
+          <!--Text which gives the user info that the weather is being uploaded-->
+          <p>Loading...</p>
+        </div>
+
+        <!-- section for the sun info and to keep both of the information posts flexible-->
+        <section class ="suninfo">
+          <div class="flex-sunrise" id="sunriseinfo">
+            <p>Loading...</p>
+          </div> 
+          <div class="flex-sunset" id="sunsetinfo">
+            <p>Loading...</p>
+          </div>
+        </section>
+        
+        <!-- section with a list for the 5 day forecast-->
+        <div>
+          <ul class="forecast" id="forecast"></ul>
+        </div>    
+      
       </section> 
+    
     </section>
       
     <footer>
