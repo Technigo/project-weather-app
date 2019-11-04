@@ -25,56 +25,67 @@ We've asked a couple of different designer to do their take on this project. if 
 
 ### #1 Get started with the weather API.
 
-[Sign up for a free Open Weather Map account](https://home.openweathermap.org/users/sign_up). Once signed in, go to the "Api Keys" tab and copy the API Key. You can use the API Key in the APPID parameter when making calls to the openweathermap API.
+[Sign up for a free Open Weather Map account](https://home.openweathermap.org/users/sign_up). Once signed in, go to the "Api Keys" tab and copy the API Key.
+
+1bb2bd4710426096b85d92a0ac4a7a94 Default
+54da82efb468485965f06d89cb0c03a3 Emmasapi
+
+You can use the API Key in the APPID parameter when making calls to the openweathermap API.
 
 For example, to get the current weather in Stockholm, you can use the url below. Remember to replace "YOUR_API_KEY" with the API key you copied from your dashboard.
 
-http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=YOUR_API_KEY
+http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=54da82efb468485965f06d89cb0c03a3
+
+
+
+54da82efb468485965f06d89cb0c03a3
+
 
 
 The response should look something like this (this has been run through jsonlint.com to add newlines and indentation):
 
 ```json
-
 {
-	"coord": {
-		"lon": 18.06,
-		"lat": 59.33
-	},
-	"weather": [{
-		"id": 800,
-		"main": "Clear",
-		"description": "clear sky",
-		"icon": "01d"
-	}],
-	"base": "stations",
-	"main": {
-		"temp": 6.47,
-		"pressure": 1007,
-		"humidity": 56,
-		"temp_min": 6,
-		"temp_max": 7
-	},
-	"visibility": 10000,
-	"wind": {
-		"speed": 3.6,
-		"deg": 200
-	},
-	"clouds": {
-		"all": 0
-	},
-	"dt": 1509709800,
-	"sys": {
-		"type": 1,
-		"id": 5420,
-		"message": 0.0024,
-		"country": "SE",
-		"sunrise": 1509689610,
-		"sunset": 1509720490
-	},
-	"id": 2673730,
-	"name": "Stockholm",
-	"cod": 200
+  "coord": {
+    "lon": 18.06,
+    "lat": 59.33
+  },
+  "weather": [
+    {
+      "id": 800,
+      "main": "Clear",
+      "description": "clear sky",
+      "icon": "01d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 6.47,
+    "pressure": 1007,
+    "humidity": 56,
+    "temp_min": 6,
+    "temp_max": 7
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 3.6,
+    "deg": 200
+  },
+  "clouds": {
+    "all": 0
+  },
+  "dt": 1509709800,
+  "sys": {
+    "type": 1,
+    "id": 5420,
+    "message": 0.0024,
+    "country": "SE",
+    "sunrise": 1509689610,
+    "sunset": 1509720490
+  },
+  "id": 2673730,
+  "name": "Stockholm",
+  "cod": 200
 }
 ```
 
@@ -86,9 +97,11 @@ You will need to use the `fetch()` function in JavaScript to load the weather da
 
 Your task is to present the data: the city name, the temperature (rounded to 1 decimal place), and what type of weather it is (the "description" in the JSON)
 
+https://openweathermap.org/current
+
 ### #3 Sunrise and sunset 🌇
 
-Show the time for sunrise and sunset in a readable time format (Example: 13:00 or 1 PM). 
+Show the time for sunrise and sunset in a readable time format (Example: 13:00 or 1 PM).
 You will have to format the date from milliseconds to a readble format.
 
 [Here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) is a useful resource for how to do this.
@@ -98,17 +111,18 @@ You will have to format the date from milliseconds to a readble format.
 Show a forecast for the next 5-7 days. With min and max temperature and the description.
 In the openweathermap API there's another endpoint that will give us a forecast of the next seven days.
 
-http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&cnt=5&APPID=YOUR_API_KEY
+http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&cnt=5&APPID=54da82efb468485965f06d89cb0c03a3
 
 Here you can change city and amount of days.
 
-*Parameters:*
+_Parameters:_
 **q** city name and country code divided by comma, use ISO 3166 country codes
 
 **cnt** number of days returned (from 1 to 16)
 
 The response should look something like this, where the list is an array of objects and the objects are the days:
-``` 
+
+```
 "cod": "200",
 "message": 0,
 "cnt": 5,
@@ -202,10 +216,10 @@ Once you get the data onto your site, style it to look like ine of the provided 
 
 ## Requirements 🧪
 
-- You should fetch data from the API using fetch() in JavaScript 
+- You should fetch data from the API using fetch() in JavaScript
 - All data in the sketch above should be present and fetched from the API
-- The presentation of the data should be in the specified format. 
-- The page should work on mobile (mobile first!), tablet and desktop (Be responsive)- 
+- The presentation of the data should be in the specified format.
+- The page should work on mobile (mobile first!), tablet and desktop (Be responsive)-
 - Code follows Technigo’s code guidelines.
 - Contribute by helping others with this project on Stack Overflow.
 - If selected; demo your solution for your team.
@@ -225,7 +239,7 @@ Once you get the data onto your site, style it to look like ine of the provided 
 
 ## How to get help 🆘
 
-Ask for help and share your knowledge about this project with the 'weather-app' tag on [Stack Overflow](https://stackoverflow.com/c/technigo/questions). Talk to your team on Slack and help each other out. Do some research about your problem, you are surely not the first one with this problem, Google is your friend 🙂. And you can of course also book a tech call. 
+Ask for help and share your knowledge about this project with the 'weather-app' tag on [Stack Overflow](https://stackoverflow.com/c/technigo/questions). Talk to your team on Slack and help each other out. Do some research about your problem, you are surely not the first one with this problem, Google is your friend 🙂. And you can of course also book a tech call.
 
 ## Stretch Goals 🏃‍♂
 
@@ -233,16 +247,16 @@ Make sure you've commited and pushed a version of your project before starting w
 
 **_Design_**
 
-Change the colors of the page based on the weather. If the weather is warm – use warm colors. If the weather is colder, use cold colors. If you really want to push you CSS muscles you can even make a [background gradient.](https://www.w3schools.com/css/css3_gradients.asp) 
+Change the colors of the page based on the weather. If the weather is warm – use warm colors. If the weather is colder, use cold colors. If you really want to push you CSS muscles you can even make a [background gradient.](https://www.w3schools.com/css/css3_gradients.asp)
 
 **_Deep-dive_**
 
-***Use your location***
+**_Use your location_**
 
-Use the [Geolocation API](https://www.w3schools.com/html/html5_geolocation.asp) that is built in to your browser to fetch the city that you are located in atm and show the weather for your location. 
+Use the [Geolocation API](https://www.w3schools.com/html/html5_geolocation.asp) that is built in to your browser to fetch the city that you are located in atm and show the weather for your location.
 
-***Add multiple cities***
+**_Add multiple cities_**
 
-Give the user the option to choose between a couple of your favourite cities. 
+Give the user the option to choose between a couple of your favourite cities.
 
 #### 🚨 Don't forget to add, commit and push the changes to GitHub when you're done. 🏁
