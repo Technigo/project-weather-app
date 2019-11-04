@@ -38,7 +38,9 @@ const displayCurrentWeather = weather => {
 	// Update current weather template
 	currentWeather.innerHTML = `
 	<p class="current-temperature">${Math.floor(weather.main.temp)} &deg;C</p>
-	<img src="https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png">
+	<img src="https://openweathermap.org/img/wn/${
+		weather.weather[0].icon
+	}@2x.png" alt="weather condition">
 	<p class="location">${weather.displayName}</p>
 	<p class="overall-weather">${capitalize(weather.weather[0].description)}</p>
 	<p class="sunrise-sunset">Sunrise<span>${convertUnixToTime(
@@ -100,7 +102,7 @@ const displayForecast5days = forecast => {
 			<div>
 				<img class="icon" src="https://openweathermap.org/img/wn/${
 					item.weather[0].icon
-				}@2x.png" alt="Weather icon">
+				}@2x.png" alt="weather condition">
 			</div>
 			<div class="forecast-day">${item.main.humidity}%</div>
 			<div class="forecast-day">${item.main.pressure} hPa</div>
@@ -133,7 +135,7 @@ const displayForecast24hours = (weather, forecast) => {
 				<p>${Math.floor(item.main.temp)} &deg;C</p>
 				<img class="icon" src="https://openweathermap.org/img/wn/${
 					item.weather[0].icon
-				}@2x.png" alt="Weather icon">
+				}@2x.png" alt="weather condition">
 			</li>
 		`;
 	});
