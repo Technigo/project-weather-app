@@ -8,11 +8,14 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
         return Response.json()
     })
     .then((json) => {
-        //this code below is not showing up
+
+
         const temp = json.main.temp
         const temp1 = temp.toFixed(0.1)
-        document.getElementById("temp").innerHTML += ` ${temp1} °C`
+        document.getElementById("temp").innerHTML += `${temp1}°C `
+
         document.getElementById("humidity").innerHTML += `humidity:${json.main.humidity}%`
+
         const time1 = json.sys.sunrise
         const time2 = json.sys.sunset
         let sunrise = new Date(time1 * 1000)
@@ -40,9 +43,12 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
             weatherIcon.src = "assets/sunCloud.png"
             //partly cloudly 
         }
+        const newDate = new Date(json.dt * 1000)
+        const todayDate = newDate.toDateString()
+        document.getElementById("date").innerHTML = `${todayDate}`
 
-
-
+        const description = json.weather[0].description
+        document.getElementById("description").innerHTML += `<h3>${description}</h3>`
 
 
     });
