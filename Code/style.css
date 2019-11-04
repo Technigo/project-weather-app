@@ -1,141 +1,203 @@
 *, *::before, *::after {box-sizing: inherit}
 html {
-    font-size: 17px;
+  font-size: 17px;
+  box-sizing: border-box;
+  font-family: 'Montserrat'; 
 }
 
 body {
-    margin: 0px;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif; 
-    max-width: 375px;  
+  margin: auto;
 }
 
 h1 {
-    margin: 2.0rem 1rem;
-    padding: 1rem 0rem;
-    font-weight: bold;
-    color: black;
+  margin: 2.0rem 1rem;
+  padding: 1rem 0rem;
+  font-weight: bold;
+  color: black;
 }
 
 p {
-    font-weight: regular;
-    color: black; 
+  font-weight: regular;
+  color: black; 
 }
 
 header {
-    background:#A3DEF7;
-    height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  background:#A3DEF7;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }   
 
-
-
 .hamburger {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    margin: 0.4rem 1rem;
-    padding: 0rem;
-    font-size: 1rem;
-    line-height: 0em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 0px;
+  padding: 1rem;
+  line-height: 0em;
 }
 
-nav {
-    display: inline-block;
-    margin: 0.4rem 1rem;
-    padding: 0rem;
-}
-
-nav a {
-    color: #F4F7F8;
-    text-decoration: none;
-    font-size: 1rem;
-    line-height: 0em;
-    text-align: end;
-}
 
 .backgroundElse{
-    background:#A3DEF7;
-    display: block;
-    height: auto;
-    margin: 0rem;
-    padding: 1rem;
+  background:#A3DEF7;
+  display: block;
+  height: auto;
+  margin: 0rem;
+  padding: 1rem;
 }
 
 .backgroundRain{
-    background:linear-gradient(#A3DEF7, #F4F7F8, #A3DEF7); 
-    display: block;
-    height: auto;
-    margin: 0rem;
-    padding: 1rem;
+  background:linear-gradient(#A3DEF7, #F4F7F8, #A3DEF7); 
+  display: block;
+  height: auto;
+  margin: 0rem;
+  padding: 1rem;
 }
 
 .backgroundSun{
-    background:linear-gradient(#F7E9B9,#A3DEF7);
-    display: block;
-    height: auto;
-    margin: 0rem;
-    padding: 1rem;
+  background:linear-gradient(#F7E9B9,#A3DEF7);
+  display: block;
+  height: auto;
+  margin: 0rem;
+  padding: 1rem;
 }
 
 .backgroundClouds{
-    background: linear-gradient(#164A68, #F4F7F8, #A3DEF7);
-    display: block;
-    height: auto;
-    margin: 0rem;
-    padding: 1rem;
+  background: linear-gradient(#164A68, #F4F7F8, #A3DEF7);
+  display: block;
+  height: auto;
+  margin: 0rem;
+  padding: 1rem;
+
+}
+
+.backgroundSnow{
+  background: linear-gradient(#F4F7F8, white);
+  display: block;
+  height: auto;
+  margin: 0rem;
+  padding: 1rem;
+}
+
+.backgroundThunderstorm{
+  background: linear-gradient(#164A68,grey, #A3DEF7);
+  display: block;
+  height: auto;
+  margin: 0rem;
+  padding: 1rem;
+
+}
+
+.backgroundDrizzle{
+  background: linear-gradient(#F4F7F8,grey, #A3DEF7);
+  display: block;
+  height: auto;
+  margin: 0rem;
+  padding: 1rem;
 
 }
 
 main {
-    background:#A3DEF7;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    max-width: 375px;
-
+  background:#A3DEF7;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .weather {
-    background:#A3DEF7;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+  background:#A3DEF7;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 #iconNow {
-    height: 1.5rem;
-    margin: 1rem;
+  height: 1.5rem;
+  margin: 1rem;
 }
 
+
 li {
-    list-style: none;
-    margin: 0.4rem 1rem ;
-    padding: 0px 2px;
-    text-align: justify;
-    font-size: 1rem;
-    color: black;
+  list-style: none;
+  margin: 0.4rem 1rem ;
+  padding: 0px 2px;
+  text-align: justify;
+  font-size: 1rem;
+  color: black;
     
 }
  
 li:after {
-    content: "";
-    display: inline-block;
-    width: 100%;
+  content: "";
+  display: inline-block;
+  width: 100%;
 }
 
-footer p {
-    font-size: 0.8rem;
-    color: white;
-    text-align: center;
-    background-color:#A3DEF7;
-    height: auto;
-    margin: 0px;
-    padding: 10px;
+footer {
+  background-color:#A3DEF7;
+  width: 100%;
+  margin: 0px;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.8rem;
 }
+
+
+a {
+  color: #F4F7F8;
+  text-decoration:none;
+}
+
+/* MEDIA QUERIES */
+
+/* Ipads och liggande mobiler */
+@media (min-width: 400px) {
+
+  #forecast {
+    width: 70%;
+  }
+}
+
+/* Ipads och liggande mobiler */
+@media (min-width: 780px) {
+
+  html {
+    font-size: 18px;
+  }
+  #forecast {
+    width: 50%;
+  }
+}
+
+/* Laptops*/
+
+@media (min-width: 1024px) {
+
+  html {
+    font-size: 20px;
+  }
+
+  #forecast {
+    width: 40%;
+  }
+}
+
+/* Big screens */
+
+@media (min-width: 1680px) {
+
+  html {
+    font-size: 22px;  
+  }
+
+  #forecast {
+    width: 30%;
+  }
+}
+
+
 
 
 
