@@ -46,16 +46,23 @@ fetch(
     sunrise.innerHTML = `${("0" + sunRise.getHours()).slice(-2)}:${("0" + sunRise.getMinutes()).slice(-2)}`;
     sunset.innerHTML = `${("0" + sunSet.getHours()).slice(-2)}:${("0" + sunSet.getMinutes()).slice(-2)}`;
 
+    let dayArray = []
     json.list.forEach(day => {
       let date = new Date(day.dt_txt);
-      if (date.getHours() != "12") return;
+      if (date.getHours() == "12") {
+        dayArray.push(day)
 
-      weekdaysDiv.innerHTML += `<div class="week_days"> 
-                                    <div>${weekdays[date.getDay()]}</div>
-                                    <img src="https://openweathermap.org/img/wn/${day.weather[0].icon}.png">
-                                    <div>${getNumber(Math.round(day.main.temp))}&deg;C </div>
-                                  </div>`;
+        weekdaysDiv.innerHTML += `<div class="week_days"> 
+        <div>${weekdays[date.getDay()]}</div>
+        <img src="https://openweathermap.org/img/wn/${day.weather[0].icon}.png">
+        <div>${getNumber(Math.round(day.main.temp))}&deg;C </div>
+      </div>`;
+      }
+
+
+
     })
+    console.log(dayArray)
   })
 
 //  Function to add a '+' in front of positive numbers
