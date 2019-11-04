@@ -30,6 +30,14 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
     containerTemp.innerHTML = `<p>Temp: ${Math.round(json.main.temp_max)}°C | ${Math.round(json.main.temp_min)}°C</p>`;
     containersunrise.innerHTML = `<p><img src="sunrise.png">${sunriseTime}</p>`;
     containersunset.innerHTML = `<p><img src="sunset.png">${sunsetTime}</p>`;
+
+    //Change background if todays weather is snow or rain
+    const mainWeather = json.weather[0].main
+
+    if (mainWeather === "Snow" || mainWeather === "Rain") {
+      document.getElementById("background").style.background = "rgb(135, 166, 242)";  
+    return
+    }
   });
 
 /// API for 5 days
