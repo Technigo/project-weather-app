@@ -22,9 +22,11 @@ searchBox.addListener('places_changed', () => {
 			updateUI(data);
 
 			// Set current location in localStorage when API request is successful
-			localStorage.setItem('longitude', data.weather.longitude);
-			localStorage.setItem('latitude', data.weather.latitude);
-			localStorage.setItem('place', data.weather.displayName);
+			const { longitude, latitude, displayName } = data.weather;
+
+			localStorage.setItem('longitude', longitude);
+			localStorage.setItem('latitude', latitude);
+			localStorage.setItem('place', displayName);
 		})
 		.catch(err => console.log(err));
 });
