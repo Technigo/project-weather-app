@@ -51,11 +51,12 @@ const displayCurrentWeather = weather => {
 	}@2x.png" alt="weather condition">
   <p class="location">${displayName}</p>
   <p class="overall-weather">${capitalize(weather.weather[0].description)}</p>
-  <p class="sunrise-sunset">Sunrise<span>${convertUnixToTime(
-		sunrise
-	)}</span></p>
-  <p class="sunrise-sunset">Sunset<span>${convertUnixToTime(sunset)}</span></p>
-  
+	<p class="sunrise-sunset">
+		Sunrise <span>${convertUnixToTime(sunrise)}</span>
+	</p>
+	<p class="sunrise-sunset">
+		Sunset <span>${convertUnixToTime(sunset)}</span>
+	</p>
   <div class="statistics">
     <div>
       <p class="parameter-heading">Humidity</p>
