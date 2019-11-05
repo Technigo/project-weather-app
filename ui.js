@@ -40,7 +40,7 @@ const updateCity = async (longitude, latitude, formattedAddress) => {
 	weather.displayName = formattedAddress;
 	weather.longitude = longitude;
 	weather.latitude = latitude;
-	console.log('test');
+
 	// Returning weather and forecast object
 	return {
 		weather,
