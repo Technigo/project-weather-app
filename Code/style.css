@@ -25,7 +25,6 @@ footer {
 	flex-direction: row;
 	max-width: 250px;
 	justify-content: space-between;
-	padding-bottom: ;
 }
 
 @media screen and (min-width: 500px) {
