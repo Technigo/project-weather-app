@@ -33,8 +33,9 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
        thePic.innerHTML = 'img src="/img/clouds.png />'
    } else if (condition === 'rain') {
        thePic.innerHTML === 'img src"/img/umbrella.png'
+   } else if (condition === 'snow') {
+       thePic.innerHTML = 'img src=/img/snowflake.png'
    }
-   
 
   console.log(json)
 
