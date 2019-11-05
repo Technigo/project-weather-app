@@ -7,7 +7,7 @@ searchBox.addListener('places_changed', () => {
 	const place = searchBox.getPlaces()[0];
 
 	if (place == null) return;
-
+	console.log('test');
 	// Get latitude and latitude
 	const latitude = place.geometry.location.lat();
 	const longitude = place.geometry.location.lng();

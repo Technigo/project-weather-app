@@ -6,7 +6,7 @@ const getWeather = async (longitude, latitude) => {
 
 	const response = await fetch(base + query);
 	const data = await response.json();
-
+	console.log('test');
 	return data;
 };
 
