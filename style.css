@@ -1,0 +1,117 @@
+body{
+  background: #699cb8;
+  color: #FFF;
+  font-family: 'Barlow', sans-serif;
+}
+
+h1{
+ font-size: 100px;
+ margin: 0;
+ /* display: inline; */
+}
+
+h2{
+  font-size: 32px;
+  margin: 0px;
+  color: #FFF;
+}
+
+h3{
+  /* display: inline; */
+  font-size: 45px;
+}
+
+p{
+  font-size: 18px;
+  margin: 7px 0 0 0;
+}
+
+span{
+  font-size: 50px;
+  color: #FFF;
+}
+
+#hero{
+  border: solid #4a6f83 3px;
+  border-radius: 16px;
+  padding: 12px 24px 24px 24px;
+  margin: 22px 7px 7px 7px;
+  display: flex;
+  flex-direction: column;
+}
+
+#current{
+  margin: 50px 7px;
+  text-align: center;
+}
+ 
+#weather-icon{
+  /* width: 50px;
+  height: 100%; */
+}
+
+#weather-text{
+  text-align: center;
+}
+
+#weather-info{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#sunlightAndDescription{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 80px;
+
+}
+
+#sunset{
+  display:flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+#sunrise{
+  display: flex;
+  flex-direction: column;
+}
+
+#sunriseP{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+}
+
+/* #sunriseTime{
+  font-size: 55px;
+} */
+
+
+#sunsetP{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+}
+
+#forecastMain{
+  border: solid #4a6f83 3px;
+  border-radius: 16px;
+  padding: 24px;
+  margin: 12px 7px 7px 7px;
+}
+
+.descriptionText::first-letter{
+  text-transform: uppercase;
+}
+
+.descriptionText{
+  font-size: 24px;
+}
+/* 
+.main{
+  background: blue;
+
+} */
