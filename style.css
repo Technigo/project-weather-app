@@ -1,5 +1,5 @@
 body {
-
+  height: 100vh;
   /*width: auto;*/
   display: flex;
   /*justify-content: center;*/
@@ -7,8 +7,10 @@ body {
   align-items: center;
   /*background: linear-gradient(red, orange, brown);*/
   background: linear-gradient(orange, orangered,rgb(177, 26, 10), rgb(16, 116, 16));
+  background-repeat: no-repeat;
   /*background: linear-gradient( rgb(177, 26, 10),orangered,rgb(237, 156, 5), rgb(16, 116, 16));*/
   font-family: 'Montserrat', sans-serif;
+  font-weight: lighter;
   color: white;
   overflow-x: hidden;
 }
@@ -113,14 +115,14 @@ hr.new4 {
   }
 
   hr.new4 {
-    width: 25%;
+    width: 30%;
   }
 
 #forecast {
   font-size: 20px;
-  background-repeat: no-repeat;
-  padding-top: 20px;
+  /*background-repeat: no-repeat;*/
+  /*padding-top: 20px;*/
   /*padding-bottom: 80px;*/
-  padding-bottom: 40px;
+  /*padding-bottom: 40px;*/
   }
 }

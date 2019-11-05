@@ -14,8 +14,6 @@ fetch(
     description.innerHTML = `<h1>${json.main.temp.toFixed(1)}°c </h1><h2>${
       json.weather[0].description
       }</h2>`;
-    //icon = data.currently.icon.ToUppercase()
-    //console.log(icon)
 
     const unixTimestampSunrise = json.sys.sunrise;
     let sunrise = new Date(unixTimestampSunrise * 1000);
@@ -29,7 +27,7 @@ fetch(
     sunsetContainer.innerHTML = `<h3> Sunset ${sunsetTime}</h3>`;
 
     console.log(json);
-    //console.log(weatherAsJSON)
+    console.log(weatherAsJSON)
   });
 
 
@@ -57,11 +55,11 @@ fetch(
       )}°  |  ${json.list[39].main.temp_max.toFixed(1)}°C | ${
       json.list[39].weather[0].description
       }</p>`;
-  });
+  })
 
-//.catch(err => {
-//console.log("caught error", err);
-//});
+  .catch(err => {
+    console.log("caught error", err);
+  });
 
 let weatherAsJSON = JSON;
 console.log(weatherAsJSON)
