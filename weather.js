@@ -37,42 +37,42 @@ const displayCurrentWeather = weather => {
 
 	// Update current weather template
 	currentWeather.innerHTML = `
-	<p class="current-temperature">${Math.floor(weather.main.temp)} &deg;C</p>
-	<img src="https://openweathermap.org/img/wn/${
+  <p class="current-temperature">${Math.floor(weather.main.temp)} &deg;C</p>
+  <img src="https://openweathermap.org/img/wn/${
 		weather.weather[0].icon
 	}@2x.png" alt="weather condition">
-	<p class="location">${weather.displayName}</p>
-	<p class="overall-weather">${capitalize(weather.weather[0].description)}</p>
-	<p class="sunrise-sunset">Sunrise<span>${convertUnixToTime(
+  <p class="location">${weather.displayName}</p>
+  <p class="overall-weather">${capitalize(weather.weather[0].description)}</p>
+  <p class="sunrise-sunset">Sunrise<span>${convertUnixToTime(
 		weather.sys.sunrise
 	)}</span></p>
-	<p class="sunrise-sunset">Sunset<span>${convertUnixToTime(
+  <p class="sunrise-sunset">Sunset<span>${convertUnixToTime(
 		weather.sys.sunset
 	)}</span></p>
-	
-	<div class="statistics">
-		<div>
-			<p class="parameter-heading">Humidity</p>
-			<p>${weather.main.humidity}%</p>
-		</div>
-		<div>
-			<p class="parameter-heading">Pressure</p>
-			<p>${weather.main.pressure} hPa</p>
-		</div>
-		<div>
-			<p class="parameter-heading">Temp. (min)</p>
-			<p>${weather.main.temp_min.toFixed(1)} &deg;C</p>
-		</div>
-		<div>
-			<p class="parameter-heading">Temp. (max)</sup></p>
-			<p>${weather.main.temp_max.toFixed(1)} &deg;C</p>
-		</div>
-		<div>
-			<p class="parameter-heading">Wind</p>
-			<p>${weather.wind.deg}&deg; @ ${weather.wind.speed.toFixed(1)} m/s</p>
-		</div>
-	</div>
-	`;
+  
+  <div class="statistics">
+    <div>
+      <p class="parameter-heading">Humidity</p>
+      <p>${weather.main.humidity}%</p>
+    </div>
+    <div>
+      <p class="parameter-heading">Pressure</p>
+      <p>${weather.main.pressure} hPa</p>
+    </div>
+    <div>
+      <p class="parameter-heading">Temp. (min)</p>
+      <p>${weather.main.temp_min.toFixed(1)} &deg;C</p>
+    </div>
+    <div>
+      <p class="parameter-heading">Temp. (max)</sup></p>
+      <p>${weather.main.temp_max.toFixed(1)} &deg;C</p>
+    </div>
+    <div>
+      <p class="parameter-heading">Wind</p>
+      <p>${weather.wind.deg}&deg; @ ${weather.wind.speed.toFixed(1)} m/s</p>
+    </div>
+  </div>
+  `;
 };
 
 const displayForecast5days = forecast => {
@@ -85,32 +85,32 @@ const displayForecast5days = forecast => {
 
 	// Reset 24-hour forecast template with headings before generating the forecast template
 	forecastWeatherList.innerHTML = `
-	<li>
-		<div class="forecast-day-heading"></div>
-		<div class="forecast-day-heading"></div>
-		<div class="forecast-day-heading">Humidity</div>
-		<div class="forecast-day-heading">Pressure</div>
-		<div class="forecast-day-heading">Wind</div>
-		<div class="forecast-day-heading">Temp.</div>
-	</li>`;
+  <li>
+    <div class="forecast-day-heading"></div>
+    <div class="forecast-day-heading"></div>
+    <div class="forecast-day-heading">Humidity</div>
+    <div class="forecast-day-heading">Pressure</div>
+    <div class="forecast-day-heading">Wind</div>
+    <div class="forecast-day-heading">Temp.</div>
+  </li>`;
 
 	// Generate 5-day forecast weather
 	filteredForecast.forEach(item => {
 		forecastWeatherList.innerHTML += `
-		<li>
-			<div class="forecast-day">${convertUnixToDay(item.dt)}</div>
-			<div>
-				<img class="icon" src="https://openweathermap.org/img/wn/${
+    <li>
+      <div class="forecast-day">${convertUnixToDay(item.dt)}</div>
+      <div>
+        <img class="icon" src="https://openweathermap.org/img/wn/${
 					item.weather[0].icon
 				}@2x.png" alt="weather condition">
-			</div>
-			<div class="forecast-day">${item.main.humidity}%</div>
-			<div class="forecast-day">${item.main.pressure} hPa</div>
-			<div class="forecast-day">${item.wind.deg}&deg; @ ${item.wind.speed.toFixed(
-			1
-		)} m/s</div>
-			<div class="forecast-day">${Math.floor(item.main.temp)} &deg;C</div>
-		</li>`;
+      </div>
+      <div class="forecast-day">${item.main.humidity}%</div>
+      <div class="forecast-day">${item.main.pressure} hPa</div>
+      <div class="forecast-day">${
+				item.wind.deg
+			}&deg; @ ${item.wind.speed.toFixed(1)} m/s</div>
+      <div class="forecast-day">${Math.floor(item.main.temp)} &deg;C</div>
+    </li>`;
 	});
 };
 
@@ -130,13 +130,13 @@ const displayForecast24hours = (weather, forecast) => {
 	// Generate 24-hour forecast template
 	currentForecastItems.forEach(item => {
 		forecastDaily.innerHTML += `
-			<li>
-				<p>${convertUnixToTime(item.dt)}</p>
-				<p>${Math.floor(item.main.temp)} &deg;C</p>
-				<img class="icon" src="https://openweathermap.org/img/wn/${
+      <li>
+        <p>${convertUnixToTime(item.dt)}</p>
+        <p>${Math.floor(item.main.temp)} &deg;C</p>
+        <img class="icon" src="https://openweathermap.org/img/wn/${
 					item.weather[0].icon
 				}@2x.png" alt="weather condition">
-			</li>
-		`;
+      </li>
+    `;
 	});
 };

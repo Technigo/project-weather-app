@@ -1,90 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<link rel="stylesheet" href="style.css" />
-		<link href="https://fonts.googleapis.com/css?family=Roboto:300&display=swap" rel="stylesheet">
-		<script
-			defer
-			type="text/javascript"
-			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7Gitmjz0O19z8B9-xB6ByRkCKkpOA5H8&libraries=places"
-		></script>
-		<script
-			defer
-			src="https://cdn.jsdelivr.net/npm/moment@2.24.0/min/moment-with-locales.min.js"
-		></script>
-		<script
-			defer
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300&display=swap" rel="stylesheet">
+    <script
+      defer
+      type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7Gitmjz0O19z8B9-xB6ByRkCKkpOA5H8&libraries=places"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/moment@2.24.0/min/moment-with-locales.min.js"
+    ></script>
+    <script
+      defer
       src="https://kit.fontawesome.com/8e1c42b850.js"
       crossorigin="anonymous"
     ></script>
-		<script defer src="weather.js"></script>
-		<script defer src="ui.js"></script>
-		<script defer src="app.js"></script>
-		<title>Weather App</title>
-	</head>
-	<body>
-		<div class="container">
+    <script defer src="weather.js"></script>
+    <script defer src="ui.js"></script>
+    <script defer src="app.js"></script>
+    <title>Weather App</title>
+  </head>
+  <body>
+    <div class="container">
 
-			<div class="search-location">
-				<form>
-					<input
-						type="text"
-						class="city-search"
-						data-city-search
-						placeholder="Enter a location"
-					/>
-				</form>
-			</div>
+      <div class="search-location">
+        <form>
+          <input
+            type="text"
+            class="city-search"
+            data-city-search
+            placeholder="Enter a location"
+          />
+        </form>
+      </div>
 
-			<div id="info-message" class="info-message hide">
-				<h1>Search for weather around the world!</h1><i class="fas fa-hand-point-up"></i>
-			</div>
+      <div id="info-message" class="info-message hide">
+        <h1>Search for weather around the world!</h1><i class="fas fa-hand-point-up"></i>
+      </div>
 
-			<div class="weather-app hide">
-				<div class="weather-details">
-					<div class="weather-details-current">
-						<p class="current-temperature">27 &deg;C</p>
-						<img src="http://openweathermap.org/img/wn/01d@2x.png">
-						<p class="location">Rio de Janeiro, BR</p>
-						<p class="overall-weather">Overcast clouds</p>
-						<p class="parameter-heading">Sunrise<span>09:52</span></p><p class="parameter-heading">Sunrise<span>09:52</span></p>	
-						<div class="statistics">
-							<div>
-								<p class="parameter-heading">Humidity</p>
-								<p>85%</p>
-							</div>
-							<div>
-								<p class="parameter-heading">Pressure</p>
-								<p>1013 hPa</p>
-							</div>
-							<div>
-								<p class="parameter-heading">Temp	(min)</p>
-								<p>26 &deg;C</p>
-							</div>
-							<div>
-								<p class="parameter-heading">Temp (max)</sup></p>
-								<p>28 &deg;C</p>
-							</div>
-							<div>
-								<p class="parameter-heading">Wind</p>
-								<p>130&deg; @ 23m/s</p>
-							</div>
-						</div>	
-					</div>
-				</div>
-				<div class="daily-forecast">
-					<h3>24-hour forecast</h3>
-					<ul id="daily-forecast-list"></ul>
-				</div>
-				<div class="weather-details-forecast">
-					<h3>5-day forecast</h3>
-					<ul id="forecast-list"></ul>
-				</div>
-			</div>
+      <div class="weather-app hide">
+        <div class="weather-details">
+          <div class="weather-details-current">
+            <p class="current-temperature">27 &deg;C</p>
+            <img src="http://openweathermap.org/img/wn/01d@2x.png">
+            <p class="location">Rio de Janeiro, BR</p>
+            <p class="overall-weather">Overcast clouds</p>
+            <p class="parameter-heading">Sunrise<span>09:52</span></p><p class="parameter-heading">Sunrise<span>09:52</span></p>	
+            <div class="statistics">
+              <div>
+                <p class="parameter-heading">Humidity</p>
+                <p>85%</p>
+              </div>
+              <div>
+                <p class="parameter-heading">Pressure</p>
+                <p>1013 hPa</p>
+              </div>
+              <div>
+                <p class="parameter-heading">Temp	(min)</p>
+                <p>26 &deg;C</p>
+              </div>
+              <div>
+                <p class="parameter-heading">Temp (max)</sup></p>
+                <p>28 &deg;C</p>
+              </div>
+              <div>
+                <p class="parameter-heading">Wind</p>
+                <p>130&deg; @ 23m/s</p>
+              </div>
+            </div>	
+          </div>
+        </div>
+        <div class="daily-forecast">
+          <h3>24-hour forecast</h3>
+          <ul id="daily-forecast-list"></ul>
+        </div>
+        <div class="weather-details-forecast">
+          <h3>5-day forecast</h3>
+          <ul id="forecast-list"></ul>
+        </div>
+      </div>
 
-		</div>
-	</body>
+    </div>
+  </body>
 </html>
