@@ -1,84 +1,83 @@
 body {
   height: 100vh;
-  /*width: auto;*/
   display: flex;
-  /*justify-content: center;*/
   flex-direction: column;
   align-items: center;
-  /*background: linear-gradient(red, orange, brown);*/
   background: linear-gradient(orange, orangered,rgb(177, 26, 10), rgb(16, 116, 16));
-  background-repeat: no-repeat;
-  /*background: linear-gradient( rgb(177, 26, 10),orangered,rgb(237, 156, 5), rgb(16, 116, 16));*/
   font-family: 'Montserrat', sans-serif;
-  font-weight: lighter;
   color: white;
-  overflow-x: hidden;
+  
 }
 
 header {
   margin-top: 50px;
-  justify-content: center;
-  flex-direction: column;
 }
 
 h1 {
   font-size: 40px;
-  /*display: flex;*/
-  justify-content: center;
   flex-direction: column;
   align-items: center; 
   display: flex;
-  flex-wrap: wrap;
-}
-/* TODAYS WEATHER */
-h2 {
-  /*font-size: 25px;*/
-  margin-top: 10px;
-  text-align: center;
 }
 
-/* SUNRISE and SUNSET */
-h3 {
-  /*font-size: 25px;*/
+/* WEATHER DESCRIPTION */
+h2 {
+  font-size: 20px;
+  margin-top: 10px;
   text-align: center;
+  text-transform: capitalize;
+}
+
+svg {
+  width: 90px;
+  height: 60px;
+}
+
+/* SUNRISE / SUNSET */
+h3 {
+  font-size: 15px;
   margin-bottom: 0px;
-  flex-direction: row;
   display: flex;  
 }
 
 hr.new4 {
   border: 1px dotted rgb(123, 35, 18);
-  width: 55%;
-  margin-top: 50px;
+  width: 40%;
+  margin-top: 30px;
   margin-bottom: 35px;
 }
 
 /* 5 DAY FORECAST */
 #forecast {
   font-size: 20px;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
   margin-bottom: 35px;
+  text-align-last: justify;
 }
 
-/*p {
-  font-size: 25px;
-  padding: 0px;
+li {
+  list-style-type: none;
+  padding: 0;
   margin: 5px;
-  color: white;
-}*/
-@media (min-width: 651px) and (max-width: 1023px) {
+}
 
+/* TABLET */
+
+@media (min-width: 651px) and (max-width: 1023px) {
   .sunContainer {
   flex-direction: row;
   display: flex;
+  }
+
+  svg {
+    width: 100px;
+    height: 70px;
   }
 
   .sunriseContainer {
     padding-right: 20px;
     padding-top: 20px;
   }
+
   .sunsetContainer {
     padding-right: 20px;
     padding-top: 20px;
@@ -87,11 +86,13 @@ hr.new4 {
   h3 {
     font-size: 20px;
   }
+
 #forecast {
   padding-bottom: 20px;
   }
 }
 
+/* DESKTOP */ 
 @media (min-width: 1024px) {
   h1 {
     margin-top: 45px;
@@ -103,26 +104,28 @@ hr.new4 {
   }
 
   .sunriseContainer {
-    padding-right: 25px;
+    padding-right: 10px;
     padding-top: 20px;
   }
   .sunsetContainer {
-    padding-right: 25px;
+    /*padding-left: 25px;*/
     padding-top: 20px;
   }
+
+  svg {
+    width: 100px;
+    height: 70px;
+  }
+
   h3 {
     font-size: 20px;
   }
 
   hr.new4 {
-    width: 30%;
+    width: 20%;
   }
 
 #forecast {
   font-size: 20px;
-  /*background-repeat: no-repeat;*/
-  /*padding-top: 20px;*/
-  /*padding-bottom: 80px;*/
-  /*padding-bottom: 40px;*/
   }
 }

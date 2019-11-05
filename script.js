@@ -20,6 +20,15 @@ fetch(
     let sunriseTime = sunrise.toLocaleString([], { timeStyle: "short" });
     sunriseContainer.innerHTML = `<h3> Sunrise ${sunriseTime}</h3>`;
 
+    /* TO BE UPDATED 
+    const icon = `<img src="https://openweathermap.org/img/wn/${time.weather[0].icon}.png"`
+    /*json.main.weather.description // 'partly cloudy'
+    const currentWeather = json.main.weather.description
+
+    if (currentWeather === 'coudy') {
+      document.getElementById('imageContainer').innerHTML = '<img src="/images/couds.jpg" />'
+    }*/
+
 
     const unixTimestampSunset = json.sys.sunset;
     let sunset = new Date(unixTimestampSunset * 1000);
@@ -30,7 +39,7 @@ fetch(
     console.log(weatherAsJSON)
   });
 
-
+//// FORECAST ////
 fetch(
   "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&cnt=&APPID=45a10c27e52d21ffc58df69a934778b7"
 )
@@ -38,25 +47,43 @@ fetch(
     return response.json();
   })
   .then(json => {
-    forecast.innerHTML = `<p>MON ${json.list[30].main.temp_min.toFixed(
-      1
-    )}°  |  ${json.list[32].main.temp_max.toFixed(1)}°C | ${
-      json.list[32].weather[0].description
-      } </p><p>TUE ${json.list[38].main.temp_min.toFixed(
-        1
-      )}°  |  ${json.list[39].main.temp_max.toFixed(1)}°C |  ${
-      json.list[39].weather[0].description
-      }</p><p>WED ${json.list[38].main.temp_min.toFixed(
-        1
-      )}°  |  ${json.list[39].main.temp_max.toFixed(1)}°C | ${
-      json.list[39].weather[0].description
-      }</p><p>THU ${json.list[38].main.temp_min.toFixed(
-        1
-      )}°  |  ${json.list[39].main.temp_max.toFixed(1)}°C | ${
-      json.list[39].weather[0].description
-      }</p>`;
-  })
 
+    const dates = {}
+    json.list.forEach((weather) => {
+
+      const date = weather.dt_txt.split(' ')[0]
+
+      if (dates[date]) {
+        dates[date].push(weather)
+
+      } else {
+        dates[date] = [weather]
+      }
+    })
+
+    Object.entries(dates).forEach((item, index) => {
+      // The first item in our dates list is going to be today, so we can skip it (we're showing the current
+      // weather at the top of our weather app)
+      if (index === 0) {
+        return
+      }
+
+      const date = item[0]
+      const weatherValues = item[1]
+      const temps = weatherValues.map((value) => value.main.temp)
+
+      const minTemp = Math.min(...temps)
+      const maxTemp = Math.max(...temps)
+
+      // 2019-11-05
+      const dateAsObject = new Date(date)
+      const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+
+      // Finally! Now we have the date, along with the min and max temp for that day. We can add it to
+      // the list of <li> elements in the forecastDiv.
+      forecast.innerHTML += `<li>${dayNames[dateAsObject.getDay()]} ${minTemp.toFixed(1)}°C | ${maxTemp.toFixed(1)}°C</li>`
+    })
+  })
   .catch(err => {
     console.log("caught error", err);
   });
