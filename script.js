@@ -26,8 +26,11 @@ fetch(
       sunUp: sunriseTime,
       sunSet: sunsetTime,
       icon: json.weather[0].icon,
-      weatherType: json.weather[0].main.toLowerCase()
+      specWeatherType: json.weather[0].description.toUpperCase()
     });
+
+    const app = document.getElementById("weatherApp");
+    app.classList.add(`weatherapp-${json.weather[0].main.toLowerCase()}`);
 
     document.getElementById("todaysWeather").innerHTML = weather;
   });
@@ -74,6 +77,6 @@ fetch(
         arr.push(weatherObject);
       }
     });
-    const innerHTML = arr.join("");
+    const innerHTML = arr.join(" ");
     document.querySelector(".forecastContainer").innerHTML = innerHTML;
   });

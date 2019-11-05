@@ -6,25 +6,54 @@ body {
   justify-content: center;
 }
 
-.todayweather {
-  width: 90%;
-  max-width: 800px;
+.todaysWeather {
+  /* border: red 1px solid; */
+  margin-top: 10px;
+  padding: 20px;
 }
 
-.todaysWeather {
-  margin-top: 10px;
-  padding: 60px;
-  flex-direction: column;
-  /* flex-wrap: wrap; */
+.weatherapp {
+  border-radius: 20px;
+  margin: 20px;
+  width: 90%;
+  max-width: 800px;
 }
 
 .weatherapp-clear {
   background: linear-gradient(#868df1, #ededf7);
 }
-
 .weatherapp-clouds {
   background: linear-gradient(rgb(97, 97, 97), #ededf7);
 }
-article img {
+.weatherapp-snow {
+  background: linear-gradient(rgb(231, 231, 231), #ccccfa);
+}
+.weatherapp-rain {
+  background: linear-gradient(rgb(228, 216, 255), #aaaaaa);
+}
+/* .weatherapp-mist {
+  background: linear-gradient(rgb(97, 97, 97), #ededf7);
+}   */
+
+.todaysWeather img {
   width: 90px;
+}
+
+.forecastContainer {
+  /* border: blue 2px solid; */
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.forecastweather {
+  display: flex;
+  /* border: black 2px solid; */
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.forecastweather img {
+  width: 50px;
 }
