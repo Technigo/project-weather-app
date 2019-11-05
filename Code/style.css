@@ -14,15 +14,18 @@ body {
 	margin-top: 20px;
 }
 
-li {
-	border-bottom: 1px dotted black;
-	max-width: 350px;
-}
-
 footer {
 	display: flex;
 	justify-content: center;
 	font-size: 12px;
+}
+
+#forecast {
+	display: flex;
+	flex-direction: row;
+	max-width: 250px;
+	justify-content: space-between;
+	padding-bottom: ;
 }
 
 @media screen and (min-width: 500px) {

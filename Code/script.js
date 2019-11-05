@@ -93,44 +93,36 @@ fetch(
 			json.weather[0].description === "fog"
 		) {
 			weatherMessage.innerHTML = `<img src=\"assets/mist.png\"> <h2>Just like the Stephen King novel, the mist is upon ${json.name}. Maybe we should ${activity.badWeather}</h2>`;
+		} else if (json.weather[0].main === "Thunder") {
+			weatherMessage.innerHTML = `<img src=\"assets/thunder.png\"> <h2>Oh, how cozy. It is a thunderstorm in ${json.name}. Maybe we should ${activity.badWeather}</h2>`;
+			document.getElementById("wrapper").style.backgroundColor = "#9999ff";
 		}
 	});
 
-// This function handles the eventual response from the API (at the bottom)
+const weekdays = document.getElementById("weeklyForecast");
+const forecastTemp = document.getElementById("forecastTemp");
 
-const handle5DayForecast = json => {
-	const forecastDiv = document.getElementById("forecast");
-	const dates = {};
-
-	json.list.forEach(weather => {
-		const date = weather.dt_txt.split(" ")[0];
-
-		if (dates[date]) {
-			dates[date].push(weather);
-		} else {
-			dates[date] = [weather];
-		}
-	});
-
-	Object.entries(dates).forEach((item, index) => {
-		if (index === 0) {
-			return;
-		}
-
-		const date = item[0];
-		const weatherValues = item[1];
-		const temps = weatherValues.map(value => value.main.temp);
-		const minTemp = Math.min(...temps);
-		const maxTemp = Math.max(...temps);
-
-		forecastDiv.innerHTML += `<li>${date}: min: ${minTemp.toFixed(
-			1
-		)}°, max: ${maxTemp.toFixed(1)}°</li>`;
-	});
-};
-
+// API for 5 day forecast
 fetch(
 	`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=${apiKey}`
 )
-	.then(res => res.json())
-	.then(handle5DayForecast);
+	.then(response => {
+		return response.json();
+	})
+
+	// Setting to show weekdays
+	.then(json => {
+		console.log(json);
+		json.list.forEach(day => {
+			const time = new Date(day.dt * 1000);
+
+			if (time.getUTCHours() === 12) {
+				const weekday = new Intl.DateTimeFormat("en-US", {
+					weekday: "long",
+				}).format(time);
+
+				weeklyForecast.innerHTML += `<p>${weekday}</p>`;
+				forecastTemp.innerHTML += `<p>${Math.floor(day.main.temp)}°C</p>`;
+			}
+		});
+	});
