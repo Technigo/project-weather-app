@@ -1,36 +1,50 @@
 body {
-    margin: 0;
     background-color: white;
     color: black;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    box-sizing: border-box;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     margin-top: 50px;
+    justify-content: center;
 }
 
-h1,
-h2 {
-  margin: 0; 
+h1 {
+  font-size: 30px;
 }
 
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 15px;
+}
 .currentWeather {
-margin: auto;
-text-align: center;
-}
-#city {
-  font-family: Arial, Helvetica, sans-serif
-}
-
-#weatherPic {
-  width: 16em;
-}
-#sunrise {
   justify-content: center;
 }
 
+img {
+ width: 80px;
+ height: 80px;
+}
 
-/*@media (min-width: 650px) {
-  
-}*/
+.sunriseSunset {
+  display:flex;
+  width: 80%;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+#weeklyForecast {
+  margin: 5px;
+  text-align: center;
+  padding: 0px;
+
+}
+@media (min-width: 668px) and (max-width: 1024px) {
+  img{
+    width: 80px;
+    height: 80px;
+  }
+
+}

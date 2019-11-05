@@ -9,25 +9,34 @@
 </head>
 
 <body>
-  <section class="currentWeather">
-        <div> 
-        <h1 id="city"></h1>
+  <section class="main">
+        <div >
+          <h1 id="city"></h1>
         </div>
-        <div><h2 id="temperature"></h2>
+        <div class="currentWeather">
+          <h2 id="temperature"></h2>
         </div>
+        <div id="weatherPic">
+            </div>
         <div id="todaysWeather">
         </div>
-        <div id="weatherPic" src="img">
+    <section class="sunriseSunset">
+        <div>
+          <p id="sunrise"></p>
         </div>
-        <div> <p id="sunrise"></p>
+        <div>
+          <p id="sunset"></p>
         </div>
-        <div> <p id="sunset"></p>
-        </div>
-        
+    </section>
+  </section>
+    
+    <section  class=forecast>
+    <ul id="weeklyForecast">
+    </ul>
   </section>
   
   
-  
+ 
   <script src="script.js"></script>
 </body>
 </html>
