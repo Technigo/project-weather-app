@@ -95,6 +95,7 @@ const handle5DayForecast = (json) => {
   })
 
 
+
   // const date = newDate()
   // const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 
@@ -133,7 +134,7 @@ const handle5DayForecast = (json) => {
 
     // Finally! Now we have the date, along with the min and max temp for that day. We can add it to
     // the list of <li> elements in the forecastDiv.
-    forecastDiv.innerHTML += `<li>${date} - min: ${minTemp.toFixed(1)}, max: ${maxTemp.toFixed(1)}</li>`
+    forecastDiv.innerHTML += `<li>${date}: min ${minTemp.toFixed(1)} <span>& max</span> ${maxTemp.toFixed(1)}</li>`
   })
 }
 
