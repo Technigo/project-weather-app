@@ -3,7 +3,7 @@ const city = document.getElementById(`city`)
 const description = document.getElementById(`description`)
 const sun = document.getElementById(`sun`)
 const forecast = document.getElementById(`forecast`)
-const weatherAPI = `http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=d1862226e2bf07d0d8d418921e586230`
+const weatherAPI = `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=d1862226e2bf07d0d8d418921e586230`
 
 
 
