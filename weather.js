@@ -45,7 +45,7 @@ const displayCurrentWeather = weather => {
 
 	// Update current weather template
 	currentWeather.innerHTML = `
-  <p class="current-temperature">${Math.floor(temperature)} &deg;C</p>
+  <p class="current-temperature">${Math.round(temperature)} &deg;C</p>
   <img src="https://openweathermap.org/img/wn/${
 		weather.weather[0].icon
 	}@2x.png" alt="weather condition">
