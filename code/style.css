@@ -1,6 +1,7 @@
 body {
     margin: 0;
     position: relative;
+    background: whitesmoke;
 }
 
 /*stockholm,*/
@@ -23,7 +24,7 @@ h2 {
 
 /*discription, temp*/
 h3 {
-
+    font-size: 20px;
     font-family: 'Josefin Sans', sans-serif;
     text-align: center;
     color: cornflowerblue;
@@ -34,7 +35,9 @@ h3 {
 }
 
 p {
+    text-align: center;
     font-family: 'Josefin Sans', sans-serif;
+    font-size: 20px;
 }
 
 
@@ -66,7 +69,7 @@ img {
     background: cornsilk;
 }
 
-}
+
 
 .stockholm {
     display: flex;
@@ -74,8 +77,13 @@ img {
 }
 
 #sun {
+    background: #d5e5e7;
     display: flex;
     justify-content: space-evenly;
+    border-radius: 19px;
+    margin: 10px;
+    padding: 11px;
+
 }
 
 #description p {
@@ -119,13 +127,12 @@ img {
     padding: 20px;
     background-image: url('assets/waves.png');
     display: block;
-    background-size: 140%;
-    height: 380px;
+    background-size: 150%;
+    height: 490px;
     background-repeat: no-repeat;
 
-
-
 }
+
 
 #hour1,
 #hour2,
@@ -138,4 +145,10 @@ img {
     display: flex;
     justify-content: space-around;
     border-color: #82d6f2;
+}
+
+.weatherDis {
+    color: cornflowerblue;
+    text-align: center;
+
 }

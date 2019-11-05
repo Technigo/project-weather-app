@@ -1,7 +1,3 @@
-// city, temp, humidiy
-
-
-
 fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=f48cb7911f220b235e97074a198afa46')
 
     .then((Response) => {
@@ -14,14 +10,14 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
         const temp1 = temp.toFixed(0.1)
         document.getElementById("temp").innerHTML += `${temp1}°C `
 
-        document.getElementById("humidity").innerHTML += `humidity:${json.main.humidity}%`
+        document.getElementById("humidity").innerHTML += `humidity: ${json.main.humidity}%`
 
         const time1 = json.sys.sunrise
         const time2 = json.sys.sunset
         let sunrise = new Date(time1 * 1000)
         let sunset = new Date(time2 * 1000)
-        sun.innerHTML += `<p>Sunrise: ${`${sunrise.getHours()}.00`}</p>`
-        sun.innerHTML += `<p>Sunset: ${`${sunset.getHours()}:${sunset.getMinutes()}`}</p>`
+        sun.innerHTML += `<p id="sunrise">Sunrise: ${`${sunrise.getHours()}.00`}</p>`
+        sun.innerHTML += `<p id ="sunset">Sunset: ${`${sunset.getHours()}:${sunset.getMinutes()}`}</p>`
 
         const id = json.weather[0].id
         if (id >= 200 && id <= 232) {
@@ -68,7 +64,7 @@ fetch('http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=
         const hour1 = json.list[0].dt
         const time1 = new Date(hour1 * 1000).getHours()
         document.getElementById("hour1").innerHTML += `<p>${time1}.00</P>`
-        document.getElementById("hour1").innerHTML += `<p>${json.list[0].weather[0].description}</p>`
+        document.getElementById("hour1").innerHTML += `<p class ="weatherDis">${json.list[0].weather[0].description}</p>`
         const minTempOne = json.list[0].main.temp_min
         const maxTempOne = json.list[0].main.temp_max
         const minTemp = minTempOne.toFixed(0.1)
@@ -81,7 +77,7 @@ fetch('http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=
         const hour2 = json.list[1].dt
         const time2 = new Date(hour2 * 1000).getHours()
         document.getElementById("hour2").innerHTML += `<p>${time2}.00</p>`
-        document.getElementById("hour2").innerHTML += `<p>${json.list[1].weather[0].description}</p>`
+        document.getElementById("hour2").innerHTML += `<p class ="weatherDis">${json.list[1].weather[0].description}</p>`
         const minTempTwo = json.list[1].main.temp_min
         const maxTempTwo = json.list[1].main.temp_max
         const minTemp2 = minTempTwo.toFixed(0.1)
@@ -93,7 +89,7 @@ fetch('http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=
         const hour3 = json.list[2].dt
         const time3 = new Date(hour3 * 1000).getHours()
         document.getElementById("hour3").innerHTML += `<p>${time3}.00 </p>`
-        document.getElementById("hour3").innerHTML += `<p>${json.list[2].weather[0].description} </p>`
+        document.getElementById("hour3").innerHTML += `<p class ="weatherDis">${json.list[2].weather[0].description} </p>`
         const minTempThree = json.list[2].main.temp_min
         const maxTempThree = json.list[2].main.temp_max
         const minTemp3 = minTempThree.toFixed(0.1)
