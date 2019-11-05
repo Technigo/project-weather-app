@@ -24,10 +24,18 @@ const displayCurrentWeather = weather => {
 	const currentWeather = document.querySelector('.weather-details-current');
 	let backgroundColor = '';
 
+	// Destructuring weather object
+	const {
+		main: { temp: temperature, humidity, pressure, temp_min, temp_max },
+		sys: { sunrise, sunset },
+		wind,
+		displayName
+	} = weather;
+
 	// Change background colors based on current temperature
-	if (weather.main.temp > 20) {
+	if (temperature > 20) {
 		backgroundColor = 'linear-gradient(to bottom right, #ffc500, #c21500)';
-	} else if (weather.main.temp >= 10) {
+	} else if (temperature >= 10) {
 		backgroundColor = 'linear-gradient(to bottom right, #dce35b, #247026)';
 	} else {
 		backgroundColor = 'linear-gradient(to bottom right, #1cb5e0, #000046)';
@@ -37,39 +45,37 @@ const displayCurrentWeather = weather => {
 
 	// Update current weather template
 	currentWeather.innerHTML = `
-  <p class="current-temperature">${Math.floor(weather.main.temp)} &deg;C</p>
+  <p class="current-temperature">${Math.floor(temperature)} &deg;C</p>
   <img src="https://openweathermap.org/img/wn/${
 		weather.weather[0].icon
 	}@2x.png" alt="weather condition">
-  <p class="location">${weather.displayName}</p>
+  <p class="location">${displayName}</p>
   <p class="overall-weather">${capitalize(weather.weather[0].description)}</p>
   <p class="sunrise-sunset">Sunrise<span>${convertUnixToTime(
-		weather.sys.sunrise
+		sunrise
 	)}</span></p>
-  <p class="sunrise-sunset">Sunset<span>${convertUnixToTime(
-		weather.sys.sunset
-	)}</span></p>
+  <p class="sunrise-sunset">Sunset<span>${convertUnixToTime(sunset)}</span></p>
   
   <div class="statistics">
     <div>
       <p class="parameter-heading">Humidity</p>
-      <p>${weather.main.humidity}%</p>
+      <p>${humidity}%</p>
     </div>
     <div>
       <p class="parameter-heading">Pressure</p>
-      <p>${weather.main.pressure} hPa</p>
+      <p>${pressure} hPa</p>
     </div>
     <div>
       <p class="parameter-heading">Temp. (min)</p>
-      <p>${weather.main.temp_min.toFixed(1)} &deg;C</p>
+      <p>${temp_min.toFixed(1)} &deg;C</p>
     </div>
     <div>
       <p class="parameter-heading">Temp. (max)</sup></p>
-      <p>${weather.main.temp_max.toFixed(1)} &deg;C</p>
+      <p>${temp_max.toFixed(1)} &deg;C</p>
     </div>
     <div>
       <p class="parameter-heading">Wind</p>
-      <p>${weather.wind.deg}&deg; @ ${weather.wind.speed.toFixed(1)} m/s</p>
+      <p>${wind.deg}&deg; @ ${wind.speed.toFixed(1)} m/s</p>
     </div>
   </div>
   `;
