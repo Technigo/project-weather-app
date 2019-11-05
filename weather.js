@@ -116,7 +116,7 @@ const displayForecast5days = forecast => {
       <div class="forecast-day">${
 				item.wind.deg
 			}&deg; @ ${item.wind.speed.toFixed(1)} m/s</div>
-      <div class="forecast-day">${Math.floor(item.main.temp)} &deg;C</div>
+      <div class="forecast-day">${Math.round(item.main.temp)} &deg;C</div>
     </li>`;
 	});
 };
@@ -139,7 +139,7 @@ const displayForecast24hours = (weather, forecast) => {
 		forecastDaily.innerHTML += `
       <li>
         <p>${convertUnixToTime(item.dt)}</p>
-        <p>${Math.floor(item.main.temp)} &deg;C</p>
+        <p>${Math.round(item.main.temp)} &deg;C</p>
         <img class="icon" src="https://openweathermap.org/img/wn/${
 					item.weather[0].icon
 				}@2x.png" alt="weather condition">
