@@ -26,7 +26,7 @@ fetch(
       sunUp: sunriseTime,
       sunSet: sunsetTime,
       icon: json.weather[0].icon,
-      specWeatherType: json.weather[0].description.toUpperCase()
+      specWeatherType: json.weather[0].description
     });
 
     const app = document.getElementById("weatherApp");
