@@ -127,9 +127,10 @@ img {
     padding: 20px;
     background-image: url('assets/waves.png');
     display: block;
-    background-size: 150%;
-    height: 490px;
+    background-size: 200%;
     background-repeat: no-repeat;
+    background-position: top;
+
 
 }
 
@@ -141,10 +142,10 @@ img {
     margin-top: 20px;
     padding: 10px;
     border-radius: 20px;
-    border-style: solid;
+
     display: flex;
     justify-content: space-around;
-    border-color: #82d6f2;
+    background-color: #82d6f25c;
 }
 
 .weatherDis {
