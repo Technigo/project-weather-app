@@ -7,9 +7,22 @@ body {
 }
 
 .todaysWeather {
+  display: flex;
   /* border: red 1px solid; */
   margin-top: 10px;
-  padding: 20px;
+  padding: 10px;
+  border-bottom: rgb(187, 187, 187) 1px solid;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.todayImg {
+  /* border: red 1px solid; */
+  /* align-items: center; */
+}
+
+.todayWea {
+  /* border: red 1px solid; */
 }
 
 .weatherapp {
@@ -17,6 +30,20 @@ body {
   margin: 20px;
   width: 90%;
   max-width: 800px;
+  box-shadow: 0px 2px 5px 2px rgb(187, 187, 187);
+  background: linear-gradient(blue, white);
+}
+
+h1 {
+  font-size: 20px;
+}
+
+h2 {
+  font-size: 40px;
+}
+
+p {
+  font-size: 15px;
 }
 
 .weatherapp-clear {
@@ -26,17 +53,20 @@ body {
   background: linear-gradient(rgb(97, 97, 97), #ededf7);
 }
 .weatherapp-snow {
-  background: linear-gradient(rgb(231, 231, 231), #ccccfa);
+  background: linear-gradient(rgb(204, 204, 204), rgb(139, 131, 255));
 }
 .weatherapp-rain {
-  background: linear-gradient(rgb(228, 216, 255), #aaaaaa);
+  background: linear-gradient(rgb(119, 119, 119), #cec5ff);
 }
-/* .weatherapp-mist {
-  background: linear-gradient(rgb(97, 97, 97), #ededf7);
-}   */
+.weatherapp-mist {
+  background: linear-gradient(
+    rgb(194, 194, 194),
+    rgb(161, 161, 161) rgb(228, 216, 255)
+  );
+}
 
 .todaysWeather img {
-  width: 90px;
+  width: 100px;
 }
 
 .forecastContainer {
@@ -45,6 +75,7 @@ body {
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: space-between;
+  padding-inline-start: 0px;
 }
 
 .forecastweather {
