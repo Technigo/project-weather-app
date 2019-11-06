@@ -4,7 +4,7 @@ const currentTempContainer = document.getElementById("currentTemp");
 const apiKey = "6aa09e2ff9fbbd8c9a0b402db6f492f6";
 
 fetch(
-  `http://api.openweathermap.org/data/2.5/weather?q=Stockholm,se&APPID=${apiKey}&units=metric`
+  `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,se&APPID=${apiKey}&units=metric`
 )
   .then(response => {
     return response.json();
@@ -55,7 +55,7 @@ const getWeekDayFromDayOfWeek = dayOfWeek => {
 };
 
 fetch(
-  `http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,se&APPID=${apiKey}&units=metric`
+  `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,se&APPID=${apiKey}&units=metric`
 )
   .then(response => {
     return response.json();
