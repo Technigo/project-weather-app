@@ -122,7 +122,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
                     theMaxtemp.innerHTML += `<p>&nbsp;${temperaturemax}&#176;C</p>`
                 }) 
             }
-            //Pick minimal temperatures from all the days at 7:00 
+            //Pick min temperature for all days at 7:00 
             if(dayHours === 7){
                 theMintemp.innerHTML += `<p>${temperaturemin} /</p>`
             }
