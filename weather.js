@@ -33,6 +33,7 @@ fetch(
     theSunset.innerHTML += `Sunset at ${sunsetTime}`
 
     const now = new Date(Date.now())
+    //const now = new Date(Date.now() + 10800000)
 
     const nightTime = now < sunrise || now > sunset
 
@@ -42,6 +43,7 @@ fetch(
     }
 
     const id = json.weather[0].id
+    //const id = 800
     if (id >= 200 && id <= 232) {
       theImage.src = "images/lightning.png"
     } else if (id >= 300 && id <= 531) {
