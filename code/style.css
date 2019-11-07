@@ -73,7 +73,9 @@ p {
 .forecastweather {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
+  /* width: 90%; */
+  margin: 0 20px 0 20px;
 }
 
 .forecastweather img {
@@ -83,7 +85,7 @@ p {
 /* Media queries */
 
 @media (min-width: 668px) {
-  .todaysWeather img {
-    width: 200px;
+  .forecastweather {
+    margin: 0 70px 0 70px;
   }
 }

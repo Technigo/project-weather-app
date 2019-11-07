@@ -64,8 +64,8 @@ fetch(
   .then(json => {
     const arr = [];
     json.list.forEach(item => {
-      const date = new Date(item.dt_txt);
-      const isNoon = date.getHours() === 12;
+      const date = new Date(item.dt * 1000);
+      const isNoon = date.getHours() === 13;
 
       if (isNoon) {
         const weatherObject = forecast({
