@@ -1,7 +1,6 @@
 body {
     font-family: 'Lato', sans-serif;
     margin: 2em;
-    justify-content: space-around;
 }
 
 p {
@@ -33,64 +32,20 @@ li {
     line-height: 1.7em;
 }
 
-@media (max-width: 600px) {
-    h1 {
-        font-size: 2em;
+@media (min-width: 430px) {
+    head {
+        display: flex;
     }
-    ul {
-        text-align: center;
-    }
-}
-
-@media (min-width: 601px) and (max-width: 800px) {
     body {
+        font-size: 1.1em;
+        max-width: 425px;
+        margin: 0 auto;
         text-align: center;
+        padding-top: 1em;
     }
-    p {
-        font-size: 1.3em;
-    }
-    h1 {
-        font-size: 2.44em;
-    }
-    ul {
-        font-size: 1.4em;
-    }
-}
-
-@media (min-width: 801px) and (max-width: 1200px) {
-    body {
-        text-align: center;
-        max-width: 800px;
-    }
-    p {
-        font-size: 1.3em;
-    }
-    img {
-        max-width: 8em;
-    }
-    h1 {
-        font-size: 3em;
-    }
-    ul {
-        font-size: 1.5em;
-    }
-}
-
-@media (min-width: 1201px) {
-    body {
-        text-align: center;
-        max-width: 800px;
-    }
-    p {
-        font-size: 1.5em;
-    }
-    img {
-        max-width: 10em;
-    }
-    h1 {
-        font-size: 3.24em;
-    }
-    ul {
-        font-size: 1.6em;
+    #ul,
+    #li {
+        width: 45%;
+        word-spacing: 8em;
     }
 }
