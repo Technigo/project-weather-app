@@ -7,7 +7,6 @@ body{
 h1{
  font-size: 100px;
  margin: 0;
- /* display: inline; */
 }
 
 h2{
@@ -17,13 +16,13 @@ h2{
 }
 
 h3{
-  /* display: inline; */
   font-size: 45px;
 }
 
 p{
   font-size: 18px;
   margin: 7px 0 0 0;
+  align-self: baseline;
 }
 
 span{
@@ -39,6 +38,8 @@ li{
 
 ul{
   padding-inline-start: 0;
+  text-align: center;
+  margin: 50px 0 50px 0;
 }
 
 #hero{
@@ -53,11 +54,6 @@ ul{
 #current{
   margin: 50px 7px;
   text-align: center;
-}
- 
-#weather-icon{
-  /* width: 50px;
-  height: 100%; */
 }
 
 #weather-text{
@@ -94,11 +90,6 @@ ul{
   color: black;
 }
 
-/* #sunriseTime{
-  font-size: 55px;
-} */
-
-
 #sunsetP{
   display: flex;
   flex-direction: column;
@@ -111,6 +102,10 @@ ul{
   border-radius: 16px;
   padding: 24px;
   margin: 12px 7px 7px 7px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .descriptionText::first-letter{
@@ -126,6 +121,7 @@ ul{
 ul{
   text-align: center;
   margin-top: 48px;
+
 }
 
 li{
@@ -147,8 +143,6 @@ h2{
 
 @media (min-width:900px){
 body{
-  /* background: url(./background2.jpg) no-repeat center; */
-  /* background-size: cover; */
  background: #27546d;
  display: flex;
   flex-direction: column;
