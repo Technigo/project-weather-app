@@ -80,6 +80,6 @@ const handle5DayForecast = (json) => {
   })
 }
 
-fetch(`http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=e6f81f7ee0b06f58ce16c675c25714c4`)
+fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=e6f81f7ee0b06f58ce16c675c25714c4`)
   .then((res) => res.json())
   .then(handle5DayForecast)
