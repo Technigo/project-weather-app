@@ -37,7 +37,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     } else if (temp <= 0) {
       weatherHighlight.style.color = "darkslategray"
     } else {
-      curweatherHighlightrentTemp.style.color = "green"
+      curweatherHighlightrentTemp.style.color = "white"
     }
 
   })
