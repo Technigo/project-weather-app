@@ -6,11 +6,6 @@ body {
   background: linear-gradient(to left, rgba(113, 209, 209, 0), rgb(3, 105, 168));
 } 
 
-/* .background {
-  width: 100vw;
-  height: 100vw;
-} */
-
 .weather-menu {
   font-size: 28px;
 }
@@ -60,4 +55,12 @@ li {
   border-radius: 5px;
   height: 4px;
   width: 30px;
+}
+
+@media(min-width: 768px) {
+  #stockholmWeather:hover, #romeWeather:hover, 
+  #barcelonaWeather:hover, #parisWeather:hover {
+    cursor: pointer;
+    opacity: 0.5;
+  }
 }

@@ -58,7 +58,7 @@ const handle5DayForecast = (json) => {
 }
 
 
-const stockholmWeather = () => {
+const emptyWeather = () => {
   const forecastDiv = document.getElementById('forecast')
   document.getElementById("weatherTitel").innerHTML=''
   document.getElementById("stockholmWeather").innerHTML=''
@@ -67,6 +67,11 @@ const stockholmWeather = () => {
   document.getElementById("parisWeather").innerHTML=''
   container.innerHTML=``
   forecastDiv.innerHTML=``
+}
+
+
+const stockholmWeather = () => {
+  emptyWeather();
   
   fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=60a9f45b45a7b39b290afa28477d7241')
   .then((res) => res.json())
@@ -79,14 +84,7 @@ const stockholmWeather = () => {
 
 
 const romeWeather = () => {
-  const forecastDiv = document.getElementById('forecast')
-  document.getElementById("weatherTitel").innerHTML=''
-  document.getElementById("stockholmWeather").innerHTML=''
-  document.getElementById("romeWeather").innerHTML=''
-  document.getElementById("barcelonaWeather").innerHTML=''
-  document.getElementById("parisWeather").innerHTML=''
-  container.innerHTML=``
-  forecastDiv.innerHTML=``
+  emptyWeather();
 
   fetch('https://api.openweathermap.org/data/2.5/weather?q=Rome,Italy&units=metric&APPID=60a9f45b45a7b39b290afa28477d7241')
   .then((res) => res.json())
@@ -99,14 +97,7 @@ const romeWeather = () => {
 
 
 const barcelonaWeather = () => {
-  const forecastDiv = document.getElementById('forecast')
-  document.getElementById("weatherTitel").innerHTML=''
-  document.getElementById("stockholmWeather").innerHTML=''
-  document.getElementById("romeWeather").innerHTML=''
-  document.getElementById("barcelonaWeather").innerHTML=''
-  document.getElementById("parisWeather").innerHTML=''
-  container.innerHTML=``
-  forecastDiv.innerHTML=``
+  emptyWeather();
   
   fetch('https://api.openweathermap.org/data/2.5/weather?q=Barcelona,Spain&units=metric&APPID=60a9f45b45a7b39b290afa28477d7241')
   .then((res) => res.json())
@@ -119,15 +110,8 @@ const barcelonaWeather = () => {
 
 
 const parisWeather = () => {
-  const forecastDiv = document.getElementById('forecast')
-  document.getElementById("weatherTitel").innerHTML=''
-  document.getElementById("stockholmWeather").innerHTML=''
-  document.getElementById("romeWeather").innerHTML=''
-  document.getElementById("barcelonaWeather").innerHTML=''
-  document.getElementById("parisWeather").innerHTML=''
-  container.innerHTML=``
-  forecastDiv.innerHTML=``
-  
+  emptyWeather();
+
   fetch('https://api.openweathermap.org/data/2.5/weather?q=Paris,France&units=metric&APPID=60a9f45b45a7b39b290afa28477d7241')
   .then((res) => res.json())
   .then(mainTemperature)
