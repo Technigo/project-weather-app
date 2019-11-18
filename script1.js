@@ -26,7 +26,6 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Malm%C3%B6&units=metric
         theSunrise.innerHTML = `Sunrise ${theSunriseTime}`
         theSunset.innerHTML = `Sunset ${theSunsetTime}`
 
-
         // Change background color depending on if its hot or cold temperature. 
         //less than 10 degree = blue background. 11-20 degree green background. 20+ yellow backround.
         // let todaysTemp = json.main.temp.toFixed(1)
@@ -91,12 +90,13 @@ const handle5DayForecast = (json) => {
 
         //get the weather descriptipn for the forecast (not using in HTML at the moment)
         const descriptions = weatherValues[0].weather[0].description
-        const icons = weatherValues[0].weather[0].icon
+        const icons = weatherValues[4].weather[0].icon
 
+        console.log(weatherValues)
         forecastDiv.innerHTML +=
             `<ul>
         <li id="weekdays">${weekdayName}</li>  
-        <li id="icon-images"><img src="https://openweathermap.org/img/wn/${weatherValues[0].weather[0].icon}@2x.png" id="icon" alt="icons for weather" /> </li>
+        <li id="icon-images"><img src="https://openweathermap.org/img/wn/${icons}@2x.png" id="icon" alt="icons for weather" /> </li>
         <li id="minmax-Temp"> min: ${minTemp.toFixed(1)} °C | max: ${maxTemp.toFixed(1)} °C</li>
         </ul>`
     })
@@ -105,7 +105,7 @@ const handle5DayForecast = (json) => {
 fetch("https://api.openweathermap.org/data/2.5/forecast?q=Malm%C3%B6&units=metric&APPID=8cbd9193bf1986e2387d169ac2d73a9e")
     .then((res) => res.json())
     .then(handle5DayForecast)
-    .catch((err) => alert(err.message))
+    //.catch((err) => alert(err.message))
 
 
 
