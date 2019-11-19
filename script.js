@@ -3,7 +3,7 @@ const sunContainer = document.getElementById('sunUpDown');
 const currentSky = document.getElementById('sky')
 
 
-fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=80c5dd84564bfbfbbae5184faea61c48')
+fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=80c5dd84564bfbfbbae5184faea61c48')
   .then((response) => {
     return response.json()
   })
@@ -35,11 +35,11 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
         currentSky.innerHTML = ` <img src="assets/suncloud.png" alt="Sun and cloud">`
       } else if (json.weather[0].icon === "04d") {
         currentSky.innerHTML = `<p>Today there is a cloudy sky, might be smart to bring an umbrella.</p> <img src="assets/cloud.png" alt="Cloudy">`
-      } else if (json.weather[0].icon === "03n" && json.weather[0].icon === "04n") {
+      } else if (json.weather[0].icon === "03n" || json.weather[0].icon === "04n") {
         currentSky.innerHTML = `<img src="assets/cloudn.png" alt="Cloudy night">`
-      } else if (json.weather[0].icon === "09d" && json.weather[0].icon === "10d") {
+      } else if (json.weather[0].icon === "09d" || json.weather[0].icon === "10d") {
         currentSky.innerHTML = `<p>Today's accessories are the famous rainboots and a fancy umbrella.</p> <img src="assets/rain.png" alt="Rain">`
-      } else if (json.weather[0].icon === "09n" && json.weather[0].icon === "10n") {
+      } else if (json.weather[0].icon === "09n" || json.weather[0].icon === "10n") {
         currentSky.innerHTML = `<img src="assets/rainn.png" alt="Rain night">`
       } else if (json.weather[0].icon === "11d") {
         currentSky.innerHTML = `<img src="assets/thunder.png" alt="Thunder">`
@@ -64,7 +64,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     container.innerHTML += `<p>Temp is ${json.main.temp.toFixed(1)} &#176</p>`
     sunContainer.innerHTML += `<p>Sunrise: ${sunriseTime} <image src="sunrise.png"></p>`
     sunContainer.innerHTML += `<p>Sunset: ${sunsetTime}<image src="sunset.png"></p>`
-  })
+  }).catch(console.error())
 
 
 const handle5DayForecast = (json) => {
