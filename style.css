@@ -1,0 +1,87 @@
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#backgroundColor {
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+}
+
+header {
+    text-align: center;
+    padding: 40px;
+}
+
+#location-timezone {
+    font-size: 40px;
+    text-align: center;
+}
+
+#temperature-degree {
+    font-size: 25px;
+}
+
+#todaysTempMinMax {
+    padding: 20px;
+}
+
+#minmax-Temp {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#icon-images {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.forecast-section {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+.forecast{
+    display:flex;
+    justify-content: center;
+    height: 100%;
+}
+ul{
+    display:flex;
+    flex-direction: column;
+    list-style: none;
+    font-size: 16px;
+}
+li{
+    padding:5px 0;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    /* background: #ccc;
+    margin-bottom: 2px; */
+}
+#forecastDates{
+    text-align: left;
+}
+#forecastDescription{
+    /* margin:5px; */
+}
+#forecastMinMax{
+    text-align: right;
+}
+
+@media (max-width: 600px) {
+    ul,  li {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    #forecastDescription img{
+        width: 80px;
+        height: 80px;
+    }
+}
