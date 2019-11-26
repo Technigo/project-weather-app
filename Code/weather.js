@@ -180,6 +180,7 @@ const handle5DayForecast = (json) => {
 
     // Finally! Now we have the date, along with the min and max temp for that day. We can add it to
     // the list of <li> elements in the forecastDiv.
+
     forecastContainer.innerHTML += `<li>${weekdayName} ${minTemp.toFixed(0)}°-${maxTemp.toFixed(0)}°</li>`
   })
 }
