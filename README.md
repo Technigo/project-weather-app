@@ -1,6 +1,21 @@
-Project 5 - Weather Web App @ Technigo Bootcamp
+# Project 6 - Weather Web App @ Technigo Bootcamp
 
-HEAD
-This week's project was a simple weather web application that shows today's weather and temperature and a forecast using a weather API. The purpose of the project was to learn the following: how to use an API, how to use fetch() in JS, how to use promises in JS, basic JSON.
+Week 5th's project was to build a simple weather web application that shows today's weather and temperature and a forecast using a weather API. 
+
+https://agnes-weather.netlify.com/
+
+## The requirements for this project:
+
+- Working with an API
+- Basic JSON
+- Using fetch() in JavaScript
+- Using promises in JavaScript
+
+## Technologies used:
+
+HTML5
+CSS3
+React
+JSX
 
 Icons by the Noun Project
