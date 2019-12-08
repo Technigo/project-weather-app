@@ -9,7 +9,7 @@ I have included a section with Geolocation and the background color will change 
 
 
 
-## What we have learnt 🧠
+## Learning objectives 🧠
 
 - What an API is and how to use it
 - Basic JSON
@@ -18,6 +18,8 @@ I have included a section with Geolocation and the background color will change 
 - How to work with the Date() object in JavaScript
 
 ## Technologies used
-HTML5
-CSS3
-JavaScript
+HTML5  
+CSS3  
+JavaScript  
+
+Linda Isell, Technigo bootcamp 2019
