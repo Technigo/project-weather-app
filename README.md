@@ -17,11 +17,7 @@ I have included a section with Geolocation and the background color will change 
 - How to use promises in JavaScript
 - How to work with the Date() object in JavaScript
 
-## Requirements 🧪
-
-- You should fetch data from the API using fetch() in JavaScript
-- All data in the sketch above should be present and fetched from the API
-- The presentation of the data should be in the specified format.
-- The page should work on mobile (mobile first!), tablet and desktop (Be responsive)-
-
-
+## Technologies used
+HTML5
+CSS3
+JavaScript
