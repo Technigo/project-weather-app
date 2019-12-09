@@ -1,5 +1,5 @@
 //fetch weather for Stockholm
-fetch("http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=81056f8102cf170efbadf6ea579c361c")
+fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=81056f8102cf170efbadf6ea579c361c")
     .then((response) => {
         return response.json()
     }).then((json) => {
@@ -56,7 +56,7 @@ function setHtmlData(data) {
     document.getElementById("sunrise").innerText = "Sunrise: " + sunriseTime;
 }
 //fetch forecast for 7 days of the week in Stockholm 
-fetch("http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=81056f8102cf170efbadf6ea579c361c")
+fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=81056f8102cf170efbadf6ea579c361c")
     .then((response) => {
         return response.json()
     }).then((response2) => {
