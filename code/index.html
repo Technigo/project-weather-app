@@ -2,54 +2,60 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css?family=Jockey+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./style.css">
+  <link href="https://fonts.googleapis.com/css?family=Jockey+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+  <title>Document</title>
 </head>
 
 <body>
 
-
+  <section>
+    <!-- Header -->
     <header>
-        <div class="todayWeather">
-            <div class="weatherIcon">
-                <img id="weatherIcon" src="" />
-                <h3 id="temp"></h3>
-            </div>
+      <div class="todayWeather">
+        <div class="weatherIcon">
+          <img id="weatherIcon" src="" alt="icon" />
+          <h3 id="temp"></h3>
         </div>
-        <div class="stockholm">
-            <img id="" src="assets/Stockholm_Building.png" />
-        </div>
+      </div>
+      <div class="stockholm">
+        <img id="" src="assets/Stockholm_Building.png" />
+      </div>
     </header>
+    <!-- Header -->
+
+    <!-- other info -->
     <div class="otherInfo"></div>
     <div id="description">
-        <h1>STOCKHOLM</h1>
-        <h2 id="date"></h2>
+      <h1>STOCKHOLM</h1>
+      <h2 id="date"></h2>
     </div>
+    <!-- other info -->
 
 
-    </div>
     <div id="sun">
-        <p id="humidity"></p>
+      <p id="humidity"></p>
     </div>
+
     <div class=" container2">
-        <h2>FORCAST</h1>
-            <div id="forcast"></div>
-            <div id="hour1"></div>
-            <div id="hour2"></div>
-            <div id="hour3"></div>
+      <h2>FORCAST</h2>
+      <span id="forcast"></span>
+      <span id="hour1"></span>
+      <span id="hour2"></span>
+      <span id="hour3"></span>
     </div>
     </div>
+  </section>
 
 
 
 
 
-    <script src="weather.js"></script>
+  <script src="weather.js"></script>
 </body>
 
 </html>
