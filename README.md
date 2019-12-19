@@ -1,8 +1,18 @@
-My sixth project at Technigo's frontend boot camp.
-This week's project was to build a simple weather web app that shows today's weather and temperature, and a 5-day forecast using a weather API.
-In this project I learned how to fetch data from an API, basic JSON, how to use `fetch()` and promises and work with the `Date()` object in JavaScript. I also used CSS grid for this project.
+# Weather app
 
-## View the site
+A simple weather app that displays the current weather and a 5 day forecast for Stockholm. One of my projects during Technigo frontend boot camp.
+
+## What did I do?
+
+I started this project with looking at what kind of data I could get from the open weather API. Then I made sure that I could fetch the data and display it.
+
+I made a simple sketch of the structure and created a mobile first site.
+
+In this project I used fetch to get data from the API, basic JSON, Javscript, HTML and CSS. I used grid for the layout.
+
+If i had more time I would probably use an accordion for the 5 day forecast.
+
+## See the weather app in action
 
 [Weather app](https://project6-weather-app-emmie.netlify.com/)
 
