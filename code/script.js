@@ -1,3 +1,6 @@
+const apiKey = '42da1ed967bb60f77a80f7975f8783b9'
+const myLocation = 'Stockholm,SE'
+
 const currentCity = document.getElementById("current-city")
 const currentTemp = document.getElementById("current-temp")
 const currentType = document.getElementById("current-type")
@@ -6,7 +9,7 @@ const currentSunRise = document.getElementById("current-sunrise")
 const currentSunSet = document.getElementById("current-sunset")
 
 
-fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&appid=42da1ed967bb60f77a80f7975f8783b9')
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=${myLocation}&units=metric&appid=${apiKey}`)
     .then((response) => {
         return response.json()
     })
@@ -24,10 +27,10 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         const sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' })
 
         currentCity.innerHTML = `<h1>Todays weather in ${json.name}</h1>`
-        currentTemp.innerHTML += `<h3>Temp ${json.main.temp.toFixed(0)} &#8451;<h3>`
+        currentTemp.innerHTML += `<h3>Temp ${json.main.temp.toFixed(0)} &#8451;</h3>`
 
         currentSunRise.innerHTML += `<p>Sunrise: ${sunriseTime}</p>`
-        currentSunSet.innerHTML += `<p>Sunset: ${sunsetTime}<p>`
+        currentSunSet.innerHTML += `<p>Sunset: ${sunsetTime}</p>`
 
         json.weather.forEach((currenttype) => {
             currentType.innerHTML += `<h3>${currenttype.description}</h3>`
@@ -35,46 +38,29 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         })
     })
 
-const apiKey = '42da1ed967bb60f77a80f7975f8783b9'
-const myLocation = 'Stockholm,SE'
 
-// Iterate over the items 'list
-// Group them by day
-// Iterate over each day
-// Calculate values
 
-// This function handles the eventual response from the API (at the bottom)
+// Iterate over the items in json 'list' property. Group them by day. Iterate over each day. Calculate values.
+
+// This function handles the response from the API and puts it in <ul>"5-day-forecast"</ul> in the DOM.
 const handle5DayForecast = (json) => {
-    // I have a <ul> in the DOM with an id of forecast which is where I want to put
-    // the daily forecast once we've built it.
     const list5DayForecast = document.getElementById("5-day-forecast")
 
-    // The json we have in this function has a property called 'list' which has around
-    // 40 objects - each with the weather for a time in the upcoming days. It's ~40 items
-    // because it returns the temperature for every 3 hours.
-    //
-    // Since we only want to show 1 entry in the forecast div per day, we need to group
-    // those 40 entries. This 'dates' object is what I'm going to use for that. In the end,
-    // it will have a property for each date, and each property's value will be an array of all the 
-    // weather objects for that day.
-    // 
-    // For example:
-    //    { "2019-10-30": [...] }
+    // json property 'list' has 40 objects, returns temperature for every 3 hours.
+    // To show 1 entry/day – group those 40 entries.
+    // This empty 'dates' object will store a property for each date with value as array of all
+    // weather objects that day.  { "2019-10-30": [...] }
     const dates = {}
 
-    // Iterate over each of these ungrouped weather objects.
+    // Iterate over each ungrouped weather objects.
     json.list.forEach((weather) => {
-        // Each weather object has a 'dt_txt' property which looks like '2019-10-31 18:00'.
-        // I want the '2019-10-31' to be able to say which date this entry belongs to, but I don't care
-        // about what time of day the entry is for.
-        // 
-        // So, if we split the date on ' ', we end up with an array with the date and the time, 
-        // like this: ['2019-10-31', '18:00']. Then I select the first item from that array [0]
-        // and assign it to the 'date' variable.
+        // Each weather object has a 'dt_txt': '2019-10-31 18:00'. We want the date only.
+        // split the date on ' ', end up with an array with the date and the time,['2019-10-31', '18:00']
+        // Select the first item from that array [0] and assign it to the 'date' variable.
         const date = weather.dt_txt.split(' ')[0]
 
-        // This is where we start adding values to the arrays in the 'dates' object we defined above.
-        // First, we check if the 'dates' object already has a property for the date we got from the
+        // Start adding values to the arrays in the 'dates' object above.
+        // Check if the 'dates' object already has a property for the date we got from the
         // string above...
         if (dates[date]) {
             // If the 'dates' object DID have the date we're working with, then we know we already
@@ -94,6 +80,7 @@ const handle5DayForecast = (json) => {
     Object.entries(dates).forEach((item, index) => {
         // The first item in our dates list is going to be today, so we can skip it (we're showing the current
         // weather at the top of our weather app)
+        // Commented out since it only showed 4 days forecast
         if (index === 0) {
             return
         }
@@ -102,8 +89,13 @@ const handle5DayForecast = (json) => {
         // item is the value. So, for example, if our object was { "2019-10-30": [] }, then the 'item' variable we
         // have here will be ['2019-10-30', []]. We can assign those two items in our array to more meaningful
         // variables:
-        const date = item[0]
+        // Adding day names after Damiens code
+        const days = ['SUN', 'MON', 'TUES', 'WED', 'THUR', 'FRI', 'SAT']
+        // Changing the variable 'date': const date = item[0] to get day names instead of dates
+        const date = days[new Date(item[0]).getDay()]
         const weatherValues = item[1]
+
+
 
         // So now our new 'weatherValues' is the array of weather objects for the current date we're iterating.
         // We can use .map to select a bunch of values from those objects - their temps. See .map docs here:
@@ -130,3 +122,4 @@ const handle5DayForecast = (json) => {
 fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${myLocation}&appid=${apiKey}&units=metric`)
     .then((res) => res.json())
     .then(handle5DayForecast)
+
