@@ -123,3 +123,4 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${myLocation}&appid=${
     .then((res) => res.json())
     .then(handle5DayForecast)
 
+
