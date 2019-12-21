@@ -2,6 +2,7 @@ const apiKey = '42da1ed967bb60f77a80f7975f8783b9'
 const myLocation = 'Stockholm,SE'
 
 const currentCity = document.getElementById("current-city")
+const currentDate = document.getElementById("current-date")
 const currentTemp = document.getElementById("current-temp")
 const currentType = document.getElementById("current-type")
 const currentIcon = document.getElementById("current-icon")
@@ -14,6 +15,18 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${myLocation}&units=met
         return response.json()
     })
     .then((json) => {
+
+        currentCity.innerHTML = `<h1>Todays weather in ${json.name}</h1>`
+
+        //Declare variable for the current date
+        const unixTimeStampCurrentDate = json.dt
+
+        //To get current date in year/month/day
+        const today = new Date(unixTimeStampCurrentDate * 1000)
+
+        currentDate.innerHTML = `<h4>${today.toDateString()}</h4>`
+        currentTemp.innerHTML += `<h3>Temp ${json.main.temp.toFixed(0)} &#8451;</h3>`
+
         //Declare variable for the time of sunrise/sunset
         const unixTimestampSunrise = json.sys.sunrise
         const unixTimestampSunset = json.sys.sunset
@@ -26,9 +39,6 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${myLocation}&units=met
         const sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' })
         const sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' })
 
-        currentCity.innerHTML = `<h1>Todays weather in ${json.name}</h1>`
-        currentTemp.innerHTML += `<h3>Temp ${json.main.temp.toFixed(0)} &#8451;</h3>`
-
         currentSunRise.innerHTML += `<p>Sunrise: ${sunriseTime}</p>`
         currentSunSet.innerHTML += `<p>Sunset: ${sunsetTime}</p>`
 
@@ -37,7 +47,6 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${myLocation}&units=met
             currentIcon.innerHTML += `<img src="https://openweathermap.org/img/wn/${currenttype.icon}@2x.png"/>`
         })
     })
-
 
 
 // Iterate over the items in json 'list' property. Group them by day. Iterate over each day. Calculate values.
@@ -81,9 +90,9 @@ const handle5DayForecast = (json) => {
         // The first item in our dates list is going to be today, so we can skip it (we're showing the current
         // weather at the top of our weather app)
         // Commented out since it only showed 4 days forecast
-        if (index === 0) {
-            return
-        }
+        // if (index === 0) {
+        //    return
+        //}
 
         // Object.entries breaks our object into an array, where the first item is the key and the second
         // item is the value. So, for example, if our object was { "2019-10-30": [] }, then the 'item' variable we

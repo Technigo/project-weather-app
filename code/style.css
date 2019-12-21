@@ -29,6 +29,10 @@ body {
     margin: -5px;
 }
 
+h4 {
+    margin: 5px;
+}
+
 #forecast-container {
     display: flex;
     flex-direction: column;
