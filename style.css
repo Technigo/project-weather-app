@@ -1,6 +1,7 @@
 body {
   margin: 0;
-  height: 100%;
+  display: flex;
+  justify-content: center;
   font-family: 'Quicksand', sans-serif;
   font-family: 'Abel', sans-serif;
   font-size: 14px;
@@ -27,6 +28,7 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 500px;
 }
 
 #currentWeather {

@@ -161,3 +161,7 @@ Use the [Geolocation API](https://www.w3schools.com/html/html5_geolocation.asp) 
 Give the user the option to choose between a couple of your favourite cities. 
 
 #### 🚨 Don't forget to add, commit and push the changes to GitHub when you're done. 🏁
+
+Links
+https://openweathermap.org/weather-conditions
+
