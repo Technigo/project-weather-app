@@ -11,3 +11,5 @@ This weeks requirements
 - Contribute by helping others with this project on Stack Overflow.
 - If selected; demo your solution for your team.
 
+Deployed project on Netlify:
+https://app.netlify.com/sites/weather-app-anna-almestal/overview
