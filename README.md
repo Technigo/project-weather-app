@@ -1,5 +1,5 @@
 # Weather Web App 
-the objective was to build a simple weather web app that shows today's weather and temperature and a forecast using a weather API.
+The objective was to build a simple weather web app that shows today's weather and temperature and a forecast using a weather API.
 
 ## Learning Object
 * What an API is and how to use it
