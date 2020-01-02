@@ -1,6 +1,14 @@
 # Weather Web App 
+the objective was to build a simple weather web app that shows today's weather and temperature and a forecast using a weather API.
 
-This week's project is to build a simple weather web app that tells today's weather and temperature, and a weekly forecast using a weather API. but in my case i used a hourly forcast.
-The web app, before stretch goals should look something along the lines of this:
+## Learning Object
+* What an API is and how to use it
+* Basic JSON
+* How to use fetch() in JavaScript
+* How to use promises in JavaScript
+* How to work with the Date() object in JavaScript
 
-This week i chocie to focus more on creating  icons and a symbol for stockholm, of couse with a little help from the Noun Project it made quicker to have a base to create the design upon.
+## Technologies implemented
+* HTML5
+* CSS3
+* JavaScript
