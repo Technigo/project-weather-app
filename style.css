@@ -3,10 +3,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(orange, orangered,rgb(177, 26, 10), rgb(16, 116, 16));
+  /* background: linear-gradient(orange, orangered,rgb(177, 26, 10), rgb(16, 116, 16)); */
+  background: linear-gradient(rgb(230, 178, 83), orangered,rgb(90, 44, 184), rgb(6, 1, 41));
   font-family: 'Montserrat', sans-serif;
   color: white;
-  
 }
 
 header {
@@ -17,7 +17,7 @@ h1 {
   font-size: 40px;
   flex-direction: column;
   align-items: center; 
-  display: flex;
+  display: flex;  
 }
 
 /* WEATHER DESCRIPTION */
@@ -26,11 +26,21 @@ h2 {
   margin-top: 10px;
   text-align: center;
   text-transform: capitalize;
+  border-bottom: 1px dotted rgb(123, 35, 18);
+  width: 100%;
+  padding-bottom: 30px;  
 }
 
-svg {
+/* svg {
   width: 90px;
-  height: 60px;
+  height: 60px; */
+  /* border-bottom: 2px dotted rgb(123, 35, 18);
+  border-radius: 50%;
+
+  width: 100%;
+  margin-top: 10px; 
+  padding-bottom: 30px;  */
+  
 }
 
 /* SUNRISE / SUNSET */
@@ -38,6 +48,7 @@ h3 {
   font-size: 15px;
   margin-bottom: 0px;
   display: flex;  
+  margin-top: 20px;
 }
 
 hr.new4 {
@@ -57,7 +68,7 @@ hr.new4 {
 li {
   list-style-type: none;
   padding: 0;
-  margin: 5px;
+  margin: 5px; 
 }
 
 /* TABLET */

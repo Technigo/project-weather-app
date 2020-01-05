@@ -11,7 +11,7 @@ fetch(
   .then(json => {
     //const container2 = document.getElementById("description");
     weathers.innerHTML = `<h1> ${json.name} </h1>`;
-    description.innerHTML = `<h1>${json.main.temp.toFixed(1)}°c </h1><h2>${
+    description.innerHTML = `<h1>${json.main.temp.toFixed(1)} </h1><h2>${
       json.weather[0].description
       }</h2>`;
 
@@ -28,7 +28,6 @@ fetch(
     if (currentWeather === 'coudy') {
       document.getElementById('imageContainer').innerHTML = '<img src="/images/couds.jpg" />'
     }*/
-
 
     const unixTimestampSunset = json.sys.sunset;
     let sunset = new Date(unixTimestampSunset * 1000);
@@ -77,7 +76,7 @@ fetch(
 
       // 2019-11-05
       const dateAsObject = new Date(date)
-      const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+      const dayNames = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
 
       // Finally! Now we have the date, along with the min and max temp for that day. We can add it to
       // the list of <li> elements in the forecastDiv.
