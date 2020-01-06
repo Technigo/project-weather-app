@@ -77,7 +77,7 @@ In an API like this, there's a bunch of useful information in there - including 
 
 I used the `fetch()` function in JavaScript to load the weather data into my page, and then I selected the values I wanted to inject into the DOM from the JSON which comes from the API.
 
-### #2 I presented some data on your web app
+### #2 The presented data on my web app
 
 The city name, the temperature (rounded to 1 decimal place), and what type of weather it is (the "description" in the JSON)
 
@@ -190,7 +190,7 @@ The response should look something like this, where the list is an array of obje
 }
 ```
 
-### #5 Style your weather app 🎨
+### #5 Styling of my weather app 🎨
 
 I used a hero picture with a shadow to make it look good and welcoming!
 
