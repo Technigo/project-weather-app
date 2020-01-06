@@ -1,6 +1,6 @@
-#The Weather Web App :sunny: / See the site here: https://mrsucodesproject6themiamiweatherapp.netlify.com/?
+## The Weather Web App :sunny: / See the site here: https://mrsucodesproject6themiamiweatherapp.netlify.com/?
 
-This time I built a simple weather web app that tells today's weather and temperature, and a weekly forecast using a weather API - in Miami!! :sunny:
+Here I've built a simple weather web app that tells today's weather and temperature, and a weekly forecast using a weather API - in Miami!! :sunny:
 
 ---
 
@@ -94,7 +94,7 @@ In the openweathermap API there's another endpoint that will give us a forecast 
 
 http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&cnt=5&APPID=YOUR_API_KEY
 
-Here you I changed city and amount of days.
+Here I changed city and amount of days.
 
 *Parameters:*
 **q** city name and country code divided by comma, use ISO 3166 country codes
