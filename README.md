@@ -1,5 +1,5 @@
 
-# a Weather Web App :sunny:
+# A Weather Web App :sunny:
 
 I built a simple weather web app that tells today's weather and temperature in Stockholm, and a weekly forecast using the Open Weather API that I signed up for.
 
