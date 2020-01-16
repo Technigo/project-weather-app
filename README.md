@@ -1,15 +1,20 @@
-Built during the Technigo Boot Camp as project-6
+A weather app with data fetched from an open weather API, showing the daily weather and a 5 days forecast.
 
 
-This weeks requirements
+Learning objectives:
 
-- You should fetch data from the API using `fetch()` in JavaScript 
-- All data in the sketch above should be present and fetched from the API
-- The presentation of the data should be in the specified format. 
-- The page should work on mobile (mobile first!), tablet and desktop (Be responsive)
-- Code follows Technigo’s code guidelines.
-- Contribute by helping others with this project on Stack Overflow.
-- If selected; demo your solution for your team.
+- What an API is and how to Fetch data from an it using fetch() in JavaScript 
+- How to use promises in JavaScript
+- Follow a given design
+- Responsive website
+- Using SVGs
+- Using JSON
+
+
+Technology implemented:
+- JavaScript
+- HTML
+- CSS
 
 Deployed project on Netlify:
 https://app.netlify.com/sites/weather-app-anna-almestal/overview
