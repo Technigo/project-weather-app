@@ -17,4 +17,4 @@ Technology implemented:
 - CSS
 
 Deployed project on Netlify:
-https://app.netlify.com/sites/weather-app-anna-almestal/overview
+https://weather-app-anna-almestal.netlify.com/
