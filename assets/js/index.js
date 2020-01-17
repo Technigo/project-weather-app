@@ -30,7 +30,7 @@ fetch(forecastWeatherAPI)
     return response.json()
   })
   .then((json) => {
-    //Building array of single days 
+    //Building array of single days
     let index = 0
     while (index < json.list.length) {
       //Adding amount of used items to build day object to index to skip no 1 item but all items from that day
@@ -41,7 +41,7 @@ fetch(forecastWeatherAPI)
 
 //Template for current weather section
 const printWeather = () => {
-  theCurrent.innerHTML = ` 
+  theCurrent.innerHTML = `
     <div class="current-top">
       <div class="current-city">
         <h2>${weather.city}</h2>
@@ -59,20 +59,20 @@ const printWeather = () => {
         <span><i class="wi wi-sunrise"></i> ${weather.sunrise}</span>
         <span><i class="wi wi-sunset"></i> ${weather.sunset}</span>
       </div>
-    </div>      
+    </div>
     </div>
   `
 }
 
-//Creating every single day and adding to array 
+//Creating every single day and adding to array
 const createForecast = (index, json) => {
   //Extracting day from json
   let day = new Date(json.list[index].dt * 1000).getDay()
   //Creating min and max temperature from first item for that day
   let minTemp = json.list[index].main.temp_min
   let maxTemp = json.list[index].main.temp_max
-  //Looping thru all item for that day 
-  let i = 0;
+  //Looping thru all item for that day
+  let i = 0
   while ((index + i) < json.list.length && (new Date(json.list[index + i].dt * 1000).getDay()) === day) {
     //Finding minimum temperature
     if (minTemp > json.list[index + i].main.temp_min) {
@@ -89,9 +89,9 @@ const createForecast = (index, json) => {
     day: day,
     minTemp: (Math.round(minTemp * 10) / 10).toFixed(1),
     maxTemp: (Math.round(maxTemp * 10) / 10).toFixed(1),
-    id: json.list[index+Math.floor(i/2)].weather[0].id // weather icon for that day is from middle of the day
+    id: json.list[index + Math.floor(i / 2)].weather[0].id // weather icon for that day is from middle of the day
   })
-  //Returning how many items from list array we used to build that day object 
+  //Returning how many items from list array we used to build that day object
   return i
 }
 
@@ -99,7 +99,7 @@ const createForecast = (index, json) => {
 const printForecast = () => {
   theForecast.innerHTML = `
     ${forecast.map((day) => {
-      return `
+    return `
         <div class="day">
           <div class="day-name">
             <h4>${days[day.day]} <i class="wi wi-owm-${day.id}"></i></h4>
@@ -107,12 +107,12 @@ const printForecast = () => {
           <div class="temperatures">
             <div class="minimum">
               <span>${day.minTemp}<i class="wi wi-celsius"></i></span>
-            </div> 
-            <div class="maximum">           
+            </div>
+            <div class="maximum">
               <span>${day.maxTemp}<i class="wi wi-celsius"></i></span>
             </div>
           </div>
         </div>`
-    }).join("")}
+  }).join("")}
   `
 }
