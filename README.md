@@ -1,15 +1,12 @@
-﻿# Weather Web App - project
+﻿`PROJECT 6`
+ 
+ # Weather Web App 
+ 
+In this project I've created a weather forecast app. The app presents current weather, sunrise and sundown, 5 days forecast and icon that represent the current weather. 
 
-Elements in this project:
-- Using API 
-- Basic JSON
-- `fetch()` in JavaScript
-- Promises in JavaScript
-- `Date()` object in JavaScript
-
-
-- Sunrise and sunset 
-
-- Weather forecast
+# Includes 
+* API 
+* Basic JSON
+* JavaScript ES6 (`fetch()`, Promises & `Date()`)
 
 See it: https://weather-sara.netlify.com
