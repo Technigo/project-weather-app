@@ -1,6 +1,17 @@
 # Weather app
 
-A simple weather app that displays the current weather and a 5 day forecast for Stockholm. One of my projects during Technigo frontend boot camp.
+A simple weather app that displays the current weather and a 5 day forecast for Stockholm.
+
+## See the weather app in action
+
+[Weather app](https://project6-weather-app-emmie.netlify.com/)
+
+## Tech and techniques
+- JavaScript
+- Fetch (to get JSON data from the API)
+- HTML
+- CSS
+- Grid
 
 ## What did I do?
 
@@ -8,13 +19,7 @@ I started this project with looking at what kind of data I could get from the op
 
 I made a simple sketch of the structure and created a mobile first site.
 
-In this project I used fetch to get data from the API, basic JSON, Javscript, HTML and CSS. I used grid for the layout.
-
 If i had more time I would probably use an accordion for the 5 day forecast.
-
-## See the weather app in action
-
-[Weather app](https://project6-weather-app-emmie.netlify.com/)
 
 ## Images and icons in this project
 
