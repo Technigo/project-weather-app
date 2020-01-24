@@ -22,7 +22,7 @@ https://home.openweathermap.org/users/sign_up
 
 **_Design_**
 
-I used design 2 as inspiration in layout, colors and fonts.
+I used a design as inspiration in layout, colors and fonts.
 
 I changed the colors of a section based on the weather and added a message about what you can do. [background gradient.](https://www.w3schools.com/css/css3_gradients.asp) 
 
