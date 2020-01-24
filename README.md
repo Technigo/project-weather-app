@@ -1,8 +1,6 @@
-This was the second project of the second sprint on the Technigo Frontend Bootcamp, which was focused on Javascript.
-
 ## 1. What is this?
 
-The purpose of this assignment was to create a basic weather app, showing today's weather as well as next hours forecast. This was built using Open Weather Map API. 
+The purpose of this project was to create a basic weather app, showing today's weather as well as next hours forecast. This was built using Open Weather Map API. 
 The purpose of this exercise was to learn basic JSON, how to use fetch() and what promises are, but also to work with Date() in JavaScript.
 
 
