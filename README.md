@@ -3,7 +3,7 @@
 
 I built a simple weather web app that tells today's weather and temperature in Stockholm, and a weekly forecast using the Open Weather API that I signed up for.
 
-You can see it here: https://lucid-boyd-4f1d2b.netlify.com/
+You can see it here: https://weather-app-petrabrinck.netlify.com/ 
 ## What i learned 🧠
 
 - What an API is and how to use it
