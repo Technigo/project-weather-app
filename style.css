@@ -1,79 +1,240 @@
-/** Id love to get some feedback on how I can make the background-image for tabletop proportional, and fill the whole backgrond. Thank you!**/
+body{
+  margin:0px;
+}
 
-.body {
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.weather {
+  font-weight: bold;
   display: flex;
-  text-align: center;
+  text-align: left;
+  font-size: 32px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.backgroundContainer {
+  display: flex;
   justify-content: center;
+  align-items: center;
 }
 
-#sunrisesunset {
-  justify-content: space-evenly;
-  width: 35%;
-  font-family: 'Montserrat', sans-serif;
+.svgCloud {
+  display: none;
 }
 
-li {
-  list-style-type: none;
-  margin: 0;
-  padding: 16px;
+.cloudy .svgCloud {
+  display: unset;
+  display: flex;
+  justify-content: flex-start;
 }
 
-#forecast {
-  font-family: 'Montserrat', sans-serif;
+.cloudy .allWeather {
+  color: #F47775;
+  background-color: #F4F7F8;
+}
+.cloudy .forcastDayTemp {
+  border-bottom: dotted 2px #F47775;
 }
 
-#dailyweather {
-  font-family: 'Montserrat', sans-serif;
+.svgRain {
+  display: none;
+}
+
+.rainy .svgRain {
+  display: unset;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.rainy .allWeather {
+  color: #164A68;
+  background-color: #A3DEF7;
+}
+
+.rainy .forcastDayTemp {
+  border-bottom: dotted 2px #164A68;
+}
+
+.svgSun {
+  display: none;
+}
+
+.sunny .svgSun {
+  display: unset;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.sunny .allWeather {
+  color: #2A5510;
+  background-color: #F7E9B9;
+}
+
+.sunny .forcastDayTemp {
+  border-bottom: dotted 2px #2A5510;
+}
+
+.other .allWeather {
+  color: black;
+  background-color: whitesmoke;
+}
+
+.other .forcastDayTemp {
+  border-bottom: dotted 2px black;
+}
+
+.allWeather{
   text-align: center;
-  padding-bottom: 20px;
+  width: 100%;
+  padding: 30px 30px 450px 30px;
 }
 
-.weathercontainer {
+h1 {
+  font-size: 40px; 
+  font-weight: bold;
+  display: flex;
+  text-align: left;
+  margin-top: 7px;
+}
+
+.temp{
+  display: flex;
+  margin: 0px;
+}
+
+p {
+  margin-left: 2px;
+  margin: 10px;
+  font-size: 17px;
+}
+
+.toControlSunriseandset p{
+  margin: 2px;
+}
+
+.forcast{
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.forcastDayTemp {
+  display: flex;
+  justify-content: space-between;
+  /*border-bottom: dotted 2px black;*/
+}
+
+.toControlSunriseandset{
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  margin-bottom: 60px;
+}
+
+.sunrise {
+  display: flex;
+  margin: 0px;
+}
+
+.sunset {
+  display: flex;
+  margin: 0px;
+}
+
+@media (min-width: 650px){
+  .allWeather{
+    padding: 100px 100px 850px 100px;
+  }
+
+  .toControlSunriseandset{
+    margin-bottom: 100px;
+  }
+
+  .toControlSunriseandset p{
+    margin: 2px;
+  }
+
+  h1{
+    font-size: 42px; 
+    font-weight: bold;
+    display: flex;
+    text-align: left;
+    margin-top: margin-top: 12px;
+  }
+
+  .weather {
+    margin-top: 0px;
+    margin-bottom: 40px;
+    font-size: 42px; 
+  }
+
+  p {
+    margin: 10px;
+    font-size: 17px;
+  }
+ 
+}
+
+@media (min-width: 900px){
+
+.backgroundContainer {
+  display: flex;
+  justify-content: center;
   align-items: center;
+  text-align: center;
+}
+
+body {
+  background-color: #121212;
+}
+
+.allWeather{
   border: 2px solid black;
-  padding-bottom: 25px;
-  border-radius: 5%;
-  background-image: url(./stockholm.jpeg);
-  background-size;: contain;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 100%;
-  color: azure;
+  width: 375px;
+  height: 812px;
+  background-color: white;
+  padding: 30px;
+  text-align: center;
+  border-radius: 20px;
+  margin-top: 10%;
+  margin-bottom: 10%;
 }
 
-/*** MEDIA-QUERIES ***/
-
-@media (min-width: 512px) {
-  .weathercontainer {
-    border: unset;
-    border-radius: unset;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 25px;
-    background-image: url(./stockholm.jpeg);
-    background-repeat: repeat-x;
-    width: 900px;
-    height: auto;
-    margin: 0;
-  }
+.allWeather{
+  padding: 40px 40px 40px 40px;
 }
 
-@media (min-width: 900px) {
-  .weathercontainer {
-    border: unset;
-    border-radius: unset;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 25px;
-    background-image: unset;
-    background-color: black;
-    background-repeat: repeat-x;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-  }
+.weather {
+  font-weight: bold;
+  display: flex;
+  text-align: left;
+  font-size: 36px;
+  margin-top: 10px;
+  margin-bottom: 40px;
 }
+
+h1 {
+  font-size: 42px;
+  font-weight: bold;
+  display: flex;
+  text-align: left;
+  margin-top: 7px;
+}
+
+.toControlSunriseandset{
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  margin-bottom: 80px;
+}
+
+p {
+  margin-left: 2px;
+  margin: 10px;
+  font-size: 17px;
+}
+}  

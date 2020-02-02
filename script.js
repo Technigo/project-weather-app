@@ -1,119 +1,67 @@
-/** I wrote this code as well cuz I wanted to change the backgrunddepending on weather. But it dosent work. Can yoy help me to esplain why? Thank you:   
-  if (json.weather[0].description.includes ("cloud")){
-  weathercontainer.innerHTML = `<img src="Designs/Design #2/Icons/noun_Cloud_1188486.svg">`;
-   }
-   else if(json.weather[0].description.includes ("rain")){
-  weathercontainer.innerHTML = `<img src="Designs/Design #2/Icons/noun_Umbrella_2030530.svg">`;
-   }
-   else {
-  weathercontainer.innerHTML = `<img src="Designs/Design #2/Icons/noun_Sunglasses_2055147.svg">`;
-   } */
+const weatherContainer = document.getElementById("weather");
+const tempContainer = document.getElementById("temp");
+const sunriseContainer = document.getElementById("sunrise");
+const sunsetContainer = document.getElementById("sunset");
+const forcastContainer = document.getElementById("forcast");
+const dayNames = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 
-
-
-
-const apiKey = 'ef7399cb41eac9ec2fe0157a2f52fe78'
-//const location = 'Stockholm, SE'
-
-const handle5dayForecast = (json) => {
-const forecastDiv = document.getElementById('forecast')
-const dates = {}
-const dailyweather = document.getElementById('dailyweather')
-const sunrisesunset = document.getElementById('sunrisesunset')
-
- /** The weather today **/
-
-fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=ef7399cb41eac9ec2fe0157a2f52fe78')
-
+fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=f4893e301384d5deeafa555ccaa61aaa")
 .then((response) => {
-  return response.json()
+  return response.json();
 })
 .then((json) => {
-    dailyweather.innerHTML = `<h1>There are ${json.main.temp.toFixed(1)}&#176 in ${json.name} </h1>`
-    dailyweather.innerHTML += `<img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="" />`
-    
-    /**Sunrise sunset */
-    
-    const sunrise = new Date(json.sys.sunrise * 1000) //unixtimestamp to time
-    const sunriseTime = sunrise.toLocaleTimeString([], {timeStyle: 'short'})
-    
-    const sunset = new Date(json.sys.sunset * 1000)
-    const sunsetTime = sunset.toLocaleTimeString([], {timeStyle: 'short'})
-    sunrisesunset.innerHTML =`<h2>Sunrise ${sunriseTime} Sunset ${sunsetTime}</h2>`
+  console.log(json);
+  weatherContainer.innerHTML = `<h1> ${json.name} </h1>`;
+  tempContainer.innerHTML = `<p>${json.weather[0].description}</p><p> | </p><p> ${json.main.temp.toFixed(1)} &#176;</p>`;
   
-    
-})
+  //use to test different weatherbackgrounds
+  //json.weather[0].description="mist"
+  //${json.weather[0].description}
 
-
-// 5 days weather-rapport 
-
-  json.list.forEach((weather) => {
-    const date = weather.dt_txt.split(' ')[0]
-    if (dates[date]) {
-      dates[date].push(weather)
-    } else {
-      dates[date] = [weather]
-    }
-  }) 
- 
-
-
-
-Object.entries(dates).forEach((item, index) => {
-    if (index === 0) {
-      return
-    }
-
-    const date = item [0]
-    const weatherValues = item[1]
-    
-    const temps = weatherValues.map((value) => value.main.temp)
-    const minTemp = Math.min(...temps)
-    const maxTemp = Math.max(...temps)
-
-    forecastDiv.innerHTML += `<li>${date} - min: ${minTemp.toFixed(1)} &#176, max: ${maxTemp.toFixed(1)} &#176</li>`
-
-  })
-
+  if (json.weather[0].description.includes ("sun")){
+    document.getElementById("backgroundContainer").classList.add("sunny");
+    document.getElementById("weather").innerHTML = `<h1>Get your sunnies on. Stockholm is looking rather great today.</h1>`;    
   }
+  else if(json.weather[0].description.includes ("rain")){
+    document.getElementById("backgroundContainer").classList.add("rainy"); 
+    document.getElementById("weather").innerHTML = `<h1>Dont forget your umbrella. Its wet in Stockholm today.</h1>`;       
+  }
+  else if(json.weather[0].description.includes ("cloud")){ 
+    document.getElementById("backgroundContainer").classList.add("cloudy");
+    document.getElementById("weather").innerHTML = `<h1>Light a fire and get cozy. Stockholm is looking grey today. </h1>`;
+  }
+  else{
+    document.getElementById("backgroundContainer").classList.add("other");
+    document.getElementById("weather").innerHTML = `<h1>Stockholm </h1>`;
+  }
+  
+  let sunrise = new Date(json.sys.sunrise * 1000)
+  let sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' });
+  
+  let sunset = new Date(json.sys.sunset * 1000)
+  let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' });
+  
+  sunriseContainer.innerHTML = `<p>sunrise ${sunriseTime} </p>`;
+  sunsetContainer.innerHTML = `<p>sunset ${sunsetTime} </p>`;
+})
 
-  fetch('http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=ef7399cb41eac9ec2fe0157a2f52fe78')
-  .then((res) => res.json())
-  .then(handle5dayForecast) 
-
- 
-
-
-
-
-
-
-  //Step 3-code
-
-
-/**
-const container = document.getElementById('rapport')
-const container2 = document.getElementById('rapport2')
-
-fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=ef7399cb41eac9ec2fe0157a2f52fe78')
-
+fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=f4893e301384d5deeafa555ccaa61aaa")
 .then((response) => {
   return response.json()
 })
-.then((json) => {
-    container.innerHTML = `<h1>There are ${json.main.temp.toFixed(1)} degrees and ${json.weather[0].description} in ${json.name} </h1>`
-    const sunrise = new Date(json.sys.sunrise * 1000) //unixtimestamp to time
-    const sunriseTime = sunrise.toLocaleTimeString([], {timeStyle: 'short'})
-    
-    const sunset = new Date(json.sys.sunset * 1000)
-    const sunsetTime = sunset.toLocaleTimeString([], {timeStyle: 'short'})
-    container2.innerHTML =`<h2>Sunrise ${sunriseTime} Sunset ${sunsetTime}</h2>`
-  
-    
-}) **/
+.then((json) =>{
+  console.log(json);
+  let forcast = ""; 
+  json.list.forEach((element) =>{
+    let weatherDate = new Date(element.dt * 1000);
+    console.log(weatherDate.getHours());
+    if (weatherDate.getHours() === 13){
+      forcast += `<div class="forcastDayTemp"><p class="forecastDay">${dayNames[weatherDate.getDay()]}</p> <p class="forecastDay">${element.main.temp.toFixed(1)} &#176;</p></div>`;
+      console.log(dayNames[weatherDate.getDay()]);
+    }
+  });
+  forcastContainer.innerHTML = forcast;
+});
 
-//In case of error-code
-
-/**catch((err) => console.log(err.message))**/
 
 
