@@ -13,12 +13,14 @@ const city = document.getElementById("city")
 const temp = document.getElementById("temp")
 const wind = document.getElementById("wind")
 const description = document.getElementById("description")
+const sunrise = document.getElementById("sunrise")
+const sunset = document.getElementById("sunset")
 
 // Fetch function
 const key = "3c481a17ec1c4b275eed746ad29d58b1"
 const stockholm = "2673730"
 const units = "metric"
-const url = `http://api.openweathermap.org/data/2.5/forecast?id=${stockholm}&units=${units}&appid=${key}`
+const weatherUrl = `http://api.openweathermap.org/data/2.5/forecast?id=${stockholm}&units=${units}&appid=${key}`
 let weatherResponse;
 
 
@@ -39,13 +41,19 @@ const getWeatherForecast = async (url) => {
       temp.innerHTML = `Current temp in ${myJson.city.name} is ${myJson.list[0].main.temp}&#176`
       wind.innerHTML = `Wind speed: ${myJson.list[0].wind.speed} m/s`
       description.innerHTML = `Description: ${myJson.list[0].weather[0].description}`
+      
+      // Convert sunrise and sunset from unix timestamp
+      let convertedSunrise = new Date(myJson.city.sunrise * 1000) 
+      let convertedSunset = new Date(myJson.city.sunset * 1000)
+      sunrise.innerHTML = `Sunrise: ${convertedSunrise.toLocaleTimeString({}, {timeStyle: 'short'})}`
+      sunset.innerHTML = `Sunset: ${convertedSunset.toLocaleTimeString({}, {timeStyle: 'short'})}`
     })
     .catch((err) => {
       console.log(err)
     })
 }
 
-getWeatherForecast(url);
+getWeatherForecast(weatherUrl);
 
 
 
