@@ -1,5 +1,7 @@
 const containerToday = document.getElementById("todays-weather");
 const containerFiveDays = document.getElementById("five-day-weather");
+const containerWeather = document.getElementById("weather");
+const dots = document.getElementById("dot-container");
 
 fetch(
   "https://api.openweathermap.org/data/2.5/weather?q=Malmoe,Sweden&units=metric&APPID=778e796f3254363f06afef1bc4ea2b4f"
@@ -19,6 +21,17 @@ fetch(
 
     containerToday.innerHTML += `<p>Sunrise: ${sunriseTime}<br>
     Sunset: ${sunsetTime}</p>`;
+
+    if (temperatureFormat(json.main.temp) < 10) {
+      containerWeather.style.background =
+        "linear-gradient(15deg, rgba(34,122,224,1) 0%, rgba(81,217,255,1) 100%)";
+    } else if (temperatureFormat(json.main.temp) > 20) {
+      containerWeather.style.background =
+        "linear-gradient(15deg, rgba(78,221,134,1) 0%, rgba(249,255,179,1) 100%)";
+    } else {
+      containerWeather.style.background =
+        "linear-gradient(15deg, rgba(226,44,44,1) 0%, rgba(246,255,115,1) 100%)";
+    }
   });
 
 fetch(

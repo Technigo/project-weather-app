@@ -1,6 +1,7 @@
 body {
   background: #fff;
-  font-family: "Imprima", sans-serif;
+  color: #fff;
+  font-family: "Nixie One", cursive;
   display: flex;
   justify-content: center;
   text-align: center;
@@ -8,14 +9,23 @@ body {
 
 h1 {
   font-family: "Fredoka One", cursive;
+  margin: 0;
+  font-size: 30px;
 }
 
 h2 {
   font-family: "Fredoka One", cursive;
+  margin: 5px 0;
+  font-size: 25px;
+}
+
+p {
+  margin: 5px 0;
 }
 
 section {
   background: powderblue;
+  padding: 10px;
 }
 
 .dot-container {
@@ -23,12 +33,13 @@ section {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin: 15px 0 10px 0;
 }
 
 .dots {
   height: 8px;
   width: 8px;
-  background: #000;
+  background: #fff;
   border-radius: 50%;
   margin: 0 5px;
 }
