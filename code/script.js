@@ -10,17 +10,22 @@ fetch(
     return response.json();
   })
   .then(json => {
+    console.log(json);
     const sunriseTime = timeFormat(json.sys.sunrise);
     const sunsetTime = timeFormat(json.sys.sunset);
+    const weather = json.weather[0].main;
+
+    console.log(typeof weather);
 
     containerToday.innerHTML = `<h2>${json.name}</h2>`;
+    containerToday.innerHTML += `<img src="${checkWeather(weather)}" alt="">`;
     containerToday.innerHTML += `<p>${temperatureFormat(
       json.main.temp
     )}°C and ${json.weather[0].description}
     </p>`;
 
-    containerToday.innerHTML += `<p>Sunrise: ${sunriseTime}<br>
-    Sunset: ${sunsetTime}</p>`;
+    containerToday.innerHTML += `<p>  Sunrise: ${sunriseTime}<br>
+     Sunset: ${sunsetTime}</p>`;
 
     if (temperatureFormat(json.main.temp) < 10) {
       containerWeather.style.background =
@@ -45,6 +50,8 @@ fetch(
       item.dt_txt.includes("12:00")
     );
 
+    console.log(filteredForecast);
+
     filteredForecast.forEach(day => {
       containerFiveDays.innerHTML += `<p>${weekdayFormat(
         day.dt
@@ -53,6 +60,25 @@ fetch(
       )}°C</p>`;
     });
   });
+
+const checkWeather = weatherType => {
+  const typesOfWeather = [
+    "Clear",
+    "Cloudy",
+    "Drizzle",
+    "Rain",
+    "Snow",
+    "Thunderstorm"
+  ];
+
+  for (let i = 0; i < typesOfWeather.length; i++) {
+    if (typesOfWeather[i] === weatherType) {
+      let imageIcone = `images/${weatherType}.png`;
+      return imageIcone;
+    }
+  }
+  return "images/Rainbow.png";
+};
 
 const timeFormat = timeStamp => {
   const time = new Date(timeStamp * 1000).toLocaleTimeString([], {
