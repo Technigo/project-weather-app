@@ -1,7 +1,6 @@
 const containerToday = document.getElementById("todays-weather");
 const containerFiveDays = document.getElementById("five-day-weather");
 const containerWeather = document.getElementById("weather");
-const dots = document.getElementById("dot-container");
 
 fetch(
   "https://api.openweathermap.org/data/2.5/weather?q=Malmoe,Sweden&units=metric&APPID=778e796f3254363f06afef1bc4ea2b4f"
@@ -11,13 +10,14 @@ fetch(
   })
   .then(json => {
     console.log(json);
+    console.log(json.weather[0].main);
+    console.log(typeof json.main.temp);
+
     const sunriseTime = timeFormat(json.sys.sunrise);
     const sunsetTime = timeFormat(json.sys.sunset);
     const weather = json.weather[0].main;
 
-    console.log(typeof weather);
-
-    containerToday.innerHTML = `<h2>${json.name}</h2>`;
+    containerToday.innerHTML = `<h3>${json.name}</h3>`;
     containerToday.innerHTML += `<img src="${checkWeather(weather)}" alt="">`;
     containerToday.innerHTML += `<p>${temperatureFormat(
       json.main.temp
@@ -32,10 +32,10 @@ fetch(
         "linear-gradient(15deg, rgba(34,122,224,1) 0%, rgba(81,217,255,1) 100%)";
     } else if (temperatureFormat(json.main.temp) > 20) {
       containerWeather.style.background =
-        "linear-gradient(15deg, rgba(78,221,134,1) 0%, rgba(249,255,179,1) 100%)";
+        "linear-gradient(15deg, rgba(226,44,44,1) 0%, rgba(246,255,115,1) 100%)";
     } else {
       containerWeather.style.background =
-        "linear-gradient(15deg, rgba(226,44,44,1) 0%, rgba(246,255,115,1) 100%)";
+        "linear-gradient(15deg, rgba(78,221,134,1) 0%, rgba(249,255,179,1) 100%)";
     }
   });
 
