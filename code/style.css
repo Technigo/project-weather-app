@@ -1,0 +1,55 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+/* FONTS
+font-family: 'Alata', sans-serif;
+font-family: 'Nunito', sans-serif;
+ */
+
+ :root {
+   --main-font: 'Alata', sans-serif;
+   --second-font: 'Nunito', sans-serif;
+   --main-color: #fff;
+ }
+
+body {
+  background-color: aquamarine;
+}
+
+.header-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  background-color: brown;
+}
+
+.header-menu h2 {
+  font-family: var(--main-font);
+  color: var(--main-color)
+}
+
+.current-weather {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 90vh;
+  background-color: blue;
+}
+
+.current-weather p {
+  font-family: var(--main-font);
+}
+
+@media only screen and (min-width: 300px) and (max-width: 640px) {
+  .current-weather {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-width: 641px) and (max-width: 1024px) {
+
+}
