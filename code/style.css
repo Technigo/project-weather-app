@@ -130,7 +130,7 @@ section {
 }
 
 button {
-  font-size: 20px;
+  font-size: 17px;
   font-family: "Nixie One", cursive;
   margin: 0 5px;
   border: 1px black solid;
@@ -263,6 +263,8 @@ button:active {
   .icons {
     display: block;
   }
+  button {
+    font-size: 25px;
 }
 
 @media (min-width: 1025px) {
