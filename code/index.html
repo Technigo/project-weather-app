@@ -13,10 +13,21 @@
   </head>
   <body>
     <header id="header">
-      <h1>Todays weather in:</h1>
+      <h1>Todays weather:</h1>
     </header>
+    <div class="button-container">
+      <button id="malmo" onclick="userChoice('Malmoe')">Malmo</button>
+      <button id="gbg" onclick="userChoice('Gothenburg')">Gothenburg</button>
+      <button id="sthlm" onclick="userChoice('Stockholm')">Stockholm</button>
+    </div>
+    <div class="pick-city" id="pick-city">
+      <h2>Pick a city to see todays weather and a 5-day forecast!</h2>
+      <img src="images/tree1.png" alt="" />
+      <img src="images/tree3.png" alt="" />
+      <img src="images/tree2.png" alt="" />
+    </div>
     <section id="weather">
-      <h2>Todays weather in:</h2>
+      <h2>Todays weather:</h2>
       <div id="todays-weather"></div>
       <div class="dot-container">
         <div class="dots" id="dots"></div>
@@ -37,6 +48,11 @@
         >
       </div>
     </section>
+    <div class="button-container-mobile">
+      <button id="malmo" onclick="userChoice('Malmoe')">Malmö</button>
+      <button id="gbg" onclick="userChoice('Gothenburg')">Göteborg</button>
+      <button id="sthlm" onclick="userChoice('Stockholm')">Stockholm</button>
+    </div>
     <div class="forced-footer"></div>
     <footer id="footer">
       <div class="icons">

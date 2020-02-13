@@ -45,6 +45,23 @@ header {
   display: none;
 }
 
+.pick-city {
+  background: linear-gradient(
+    15deg,
+    rgba(34, 122, 224, 1) 0%,
+    rgba(81, 217, 255, 1) 100%
+  );
+  padding: 10px;
+  margin: 20px auto;
+  border-radius: 20px;
+  width: 90%;
+}
+
+.button-container {
+  margin-top: 20px;
+  display: none;
+}
+
 img {
   height: 40px;
   width: 40px;
@@ -55,11 +72,16 @@ img {
 }
 
 section {
-  background: powderblue;
+  background: linear-gradient(
+    15deg,
+    rgba(34, 122, 224, 1) 0%,
+    rgba(81, 217, 255, 1) 100%
+  );
   padding: 10px;
   margin: 10px auto;
   border-radius: 20px;
   width: 90%;
+  display: none;
 }
 
 .dot-container {
@@ -107,6 +129,14 @@ section {
   display: none;
 }
 
+button {
+  font-size: 20px;
+  font-family: "Nixie One", cursive;
+  border: 2px black solid;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
 @media (min-width: 560px) {
   body {
     min-height: 100vh;
@@ -125,6 +155,15 @@ section {
     display: none;
   }
 
+  .pick-city {
+    width: 50%;
+    padding: 10px 90px;
+  }
+
+  .pick-city h2 {
+    display: block;
+    font-size: 40px;
+  }
   a {
     text-decoration: none;
     color: #000;
@@ -148,11 +187,16 @@ section {
 
   header {
     display: block;
-    background-color: #f0f0f0;
+    background: linear-gradient(
+      15deg,
+      rgba(34, 122, 224, 1) 0%,
+      rgba(81, 217, 255, 1) 100%
+    );
     padding: 20px 0;
   }
 
   section {
+    margin-top: 30px;
     width: 60%;
     min-width: 400px;
     max-width: 450px;
@@ -166,6 +210,15 @@ section {
   .forced-footer {
     display: block;
     flex: 1;
+    height: auto;
+  }
+
+  .button-container-mobile {
+    display: none;
+  }
+
+  .button-container {
+    display: block;
   }
 
   .mobile-line {
@@ -177,7 +230,11 @@ section {
   }
   footer {
     color: #000;
-    background: #f0f0f0;
+    background: linear-gradient(
+      15deg,
+      rgba(34, 122, 224, 1) 0%,
+      rgba(81, 217, 255, 1) 100%
+    );
     width: 100%;
     height: 40px;
     padding: 0;
