@@ -1,0 +1,14 @@
+
+.container{
+    width: 90vw;
+    margin: 0px auto;
+    background-color: wheat;
+}
+
+
+
+@media screen and (min-width: 992px){
+    .container{
+        width: 900px;
+    }
+}
