@@ -111,8 +111,8 @@ section {
     font-size: 55px;
     display: block;
     color: white;
-    text-shadow: -1px -1px 5px #8a8a8a, 1px -1px 5px #8a8a8a,
-      -1px 1px 5px #8a8a8a, 1px 1px 5px #8a8a8a;
+    text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000,
+      1px 1px 1px #000;
   }
 
   h2 {
@@ -121,11 +121,13 @@ section {
 
   a {
     text-decoration: none;
-    color: #8a8a8a;
+    color: #000;
     font-weight: bolder;
   }
   #todays-weather h3 {
     font-size: 45px;
+    text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000,
+      1px 1px 1px #000;
   }
 
   #todays-weather p {
@@ -134,6 +136,8 @@ section {
 
   h3 {
     font-size: 30px;
+    text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000,
+      1px 1px 1px #000;
   }
 
   #five-day-weather p {
@@ -144,25 +148,6 @@ section {
     display: block;
     background-color: #f0f0f0;
     padding: 20px 0;
-    /* background: rgb(212, 212, 213);
-    background: linear-gradient(
-      180deg,
-      rgba(212, 212, 213, 1) 50%,
-      rgba(212, 212, 213, 0.861782212885154) 60%,
-      rgba(212, 212, 213, 0.6909138655462185) 70%,
-      rgba(212, 212, 213, 0.4051995798319328) 80%,
-      rgba(212, 212, 213, 0.20632002801120453) 90%,
-      rgba(212, 212, 213, 0) 100%
-    ); */
-    /* background: rgb(212, 212, 213);
-    background: linear-gradient(
-      90deg,
-      rgba(212, 212, 213, 0) 0%,
-      rgba(212, 212, 213, 0.7) 12%,
-      rgba(212, 212, 213, 1) 25%,
-      rgba(212, 212, 213, 1) 75%,
-      rgba(212, 212, 213, 0.7) 88%,
-      rgba(212, 212, 213, 0) 100% ); */
   }
 
   section {
@@ -189,7 +174,7 @@ section {
     display: none;
   }
   footer {
-    color: #8a8a8a;
+    color: #000;
     background: #f0f0f0;
     width: 100%;
     height: 40px;
