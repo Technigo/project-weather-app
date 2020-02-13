@@ -5,8 +5,9 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Reykjavik,Iceland&units
     return response.json()
   })
   .then((json) => {
-    // container.innerHTML = `<p>The temperature in Reykjavík, Iceland is currently ${json.main.temp}°c, feels like ${json.main.feels_like}°c</p>`
-    container.innerHTML = `<p>${json.weather[0].description} | ${json.main.temp}°c</p>`
-    container.innerHTML += `<p>feels like: ${json.main.feels_like}°c</p>`
+    
+    container.innerHTML = `<p>${json.weather[0].description} | ${json.main.temp.toFixed(1)}°c</p>`
+    container.innerHTML += `<p>feels like: ${json.main.feels_like.toFixed(1)}°c</p>`
+    container.innerHTML += `<p>The temperature in ${json.name} is currently ${json.main.temp.toFixed(1)}°c, feels like ${json.main.feels_like.toFixed(1)}°c</p>`
   
   })
