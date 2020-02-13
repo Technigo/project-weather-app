@@ -9,20 +9,23 @@ fetch("http://api.openweathermap.org/data/2.5/forecast?q=karlstad,SWE&units=metr
 
 .then((json) => {
   console.log(json)
+
 // today's forecast 
+
   let sunriseDateTime = new Date(json.city.sunrise * 1000);
   let sunsetDateTime = new Date(json.city.sunset * 1000);
 
-  document.getElementById("cityName").innerHTML = `<h2>${json.city.name}</h2>`;
-  document.getElementById("temperature").innerHTML += `<p>${json.list[0].main.temp}°c </p>`
-
- 
-  document.getElementById("weatherConditions").innerHTML += `<p>${json.list[0].weather[0].description}</p>`;
+  document.getElementById("weatherConditions").innerHTML = `${json.list[0].weather[0].description} | &nbsp`;
+  document.getElementById("temperature").innerHTML = `${roundNumber(json.list[0].main.temp)}°c`
   document.getElementById("weatherConditionsImage").src = `https://openweathermap.org/img/wn/${json.list[0].weather[0].icon}@2x.png`
+  document.getElementById("sunrise").innerHTML += `&nbsp ${sunriseDateTime.getHours()}.${sunriseDateTime.getMinutes()}`;
+  document.getElementById("sunset").innerHTML += `&nbsp ${sunsetDateTime.getHours()}.${sunsetDateTime.getMinutes()}`;
 
-  document.getElementById("sunrise").innerHTML += `<p>${sunriseDateTime.getHours()}:${sunriseDateTime.getMinutes()}</p>`;
-  
-  document.getElementById("sunset").innerHTML += `<p>${sunsetDateTime.getHours()}:${sunsetDateTime.getMinutes()}</p>`;
+  if (json.list[0].weather[0].main === "Clouds") {
+    document.getElementById("weatherAdvice").innerHTML = `Light a fire and get cosy. ${json.city.name} is looking grey today.`;
+    document.getElementById("body").style.background = "#f4f7f8";
+    document.getElementById("body").style.color = "#f47775";
+  }
  
 // this week's forecast
 
@@ -35,20 +38,17 @@ document.getElementById("day3").innerHTML = `${getDayOfWeek(filteredJson[2].dt)}
 document.getElementById("day4").innerHTML = `${getDayOfWeek(filteredJson[3].dt)}`
 document.getElementById("day5").innerHTML = `${getDayOfWeek(filteredJson[4].dt)}`
 
-document.getElementById("tempDay1").innerHTML = `${+filteredJson[0].main.temp.toFixed(1)}°c`
-document.getElementById("tempDay2").innerHTML = `${+filteredJson[1].main.temp.toFixed(1)}°c`
-document.getElementById("tempDay3").innerHTML = `${+filteredJson[2].main.temp.toFixed(1)}°c`
-document.getElementById("tempDay4").innerHTML = `${+filteredJson[3].main.temp.toFixed(1)}°c`
-document.getElementById("tempDay5").innerHTML = `${+filteredJson[4].main.temp.toFixed(1)}°c`
+document.getElementById("tempDay1").innerHTML = `${roundNumber(filteredJson[0].main.temp)}°c`
+document.getElementById("tempDay2").innerHTML = `${roundNumber(filteredJson[1].main.temp)}°c`
+document.getElementById("tempDay3").innerHTML = `${roundNumber(filteredJson[2].main.temp)}°c`
+document.getElementById("tempDay4").innerHTML = `${roundNumber(filteredJson[3].main.temp)}°c`
+document.getElementById("tempDay5").innerHTML = `${roundNumber(filteredJson[4].main.temp)}°c`
  
-//   json.list.forEach((day) => {
-//   //  console.log(day);
-       
-//    document.getElementById("weatherConditions").innerHTML = `<p>${day.weather[0].description}</p>`;
-  
-       
-//  })
 })
+
+const roundNumber = (temperature) => {
+ return Math.round(temperature);
+}
 
 const getDayOfWeek = (param) => {
   let date = new Date (param * 1000);

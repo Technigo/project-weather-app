@@ -6,24 +6,21 @@
   <link rel="stylesheet" type="text/css" href="style.css">
   <title>Malin's weather app</title>
 </head>
-<body>
+<body id="body">
 
-  <h1>Today's weather in:</h1> 
-  <!-- dagens väder - en ska bort från veckodagarna -->
-  
-  <h2 id= "cityName">City's name</h2>
+   <section class="todays-details">
+    <p id= "weatherConditions"></p>
+    <p id= "temperature"></p>
+        
+  </section>
+  <section class="sun-up-down">
+    <p id = "sunrise">Sunrise</p>
+    <p id = "sunset">Sunset</p>
+  </section>
 
   <img id="weatherConditionsImage" src="" alt="img todays weather">
 
-  <section class="todays-details">
-    <p id= "temperature">Temperature:</p>
-    <p id= "weatherConditions">Conditions:</p>
-    
-  </section>
-  <section class="todays-details">
-    <p id = "sunrise">Sunrise:</p>
-    <p id = "sunset">Sunset:</p>
-  </section>
+  <h2 id= "weatherAdvice"></h2>
 
   <section class= "weekly-forecast">
     <div class="weekday">
@@ -42,7 +39,7 @@
       <p id= "day4">day4</p>
       <p id= "tempDay4">temp4</p>
     </div>
-    <div class="weekday">
+    <div class="weekday last-day">
       <p id= "day5">day5</p>
       <p id= "tempDay5">temp5</p>
     </div>
