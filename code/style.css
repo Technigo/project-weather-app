@@ -55,6 +55,7 @@ header {
   margin: 20px auto;
   border-radius: 20px;
   width: 90%;
+  display: block;
 }
 
 .button-container {
@@ -264,6 +265,7 @@ button:active {
   }
   button {
     font-size: 25px;
+  }
 }
 
 @media (min-width: 1025px) {
