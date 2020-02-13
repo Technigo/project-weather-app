@@ -6,13 +6,15 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,se&units=metri
     return response.json()
   })
   .then((json) => {
-    console.log(json)
-    container.innerHTML = `<h1>${json.name}, Temp is: ${json.main.temp}°C, Weather is: ${weather[1]} (är en array..) </h1>`
+
+    console.log(json) // checking the json from open weather
+
+    container.innerHTML = `<h1>${json.name}, Temp is: ${json.main.temp}°C </h1>`
+
+    json.weather.forEach((sky) => {
+      container.innerHTML += `<p>Weather is: ${sky.description} </p>`
+    });
 
     sunStatus.innerHTML = `<h1>Sunrise: ${json.sys.sunrise} and Sunset: ${json.sys.sunset}</h1>`
-    /*
-          json.people.forEach((person) => {
-            container.innerHTML += `<p>${person.name} is on the ${person.craft}</p>`
-          }); */
 
   })
