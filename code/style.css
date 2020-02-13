@@ -1,4 +1,18 @@
 html {
   background: linear-gradient(90deg, rgba(131,193,207,1) 0%, rgb(176, 233, 224) 62%, rgb(208, 214, 218) 100%);
-  font-family: font-family: 'Noto Sans', sans-serif;;
+  /* font-family: font-family: 'Noto Sans', sans-serif;; */
+  font-family: 'Montserrat', sans-serif;
+}
+
+#weather {
+  float: right;
+}
+
+h2 {
+  border-bottom: 3px solid black;
+}
+
+p {
+  text-align: right;
+  margin: 3px 10px;
 }

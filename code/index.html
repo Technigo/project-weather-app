@@ -7,16 +7,31 @@
   <link rel="shortcut icon" href="img/favicon-2.png" type="image/x-icon">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
-  <title>WEATHER // Today's Forecast</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+  <title>WEATHER FORECAST</title>
 </head>
 
 <body>
   <section id="weather">
-    <div id="currentWeather"></div>
-    <h1>PROV</h1>
-    <div id="forecast"></div>
+
+    <!-- <div id="currentWeather"></div> -->
+    <div id="today">
+      <h2 id="todayWeather">Todays Forecast:</h2>
+      <p>Location: <span id="city"></span></p>
+      <p>Temperature: <span id="temp"></span>°C</p>
+      <p id="date"></p>
+    </div>
+      <p>Sunrise: <span id="sunrise"></span></p>
+      <p>Sunset: <span id="sunset"></span></p>
+
+    <!-- <div id="forecast"></div> -->
   </section>
+
+  <section id="weekForecast">
+  </section>
+
 
   <script src="weather.js"></script>
 </body>
+
 </html>
