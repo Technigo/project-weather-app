@@ -4,10 +4,8 @@ body {
   color: #fff;
   font-family: "Nixie One", cursive;
   display: flex;
-  /* justify-content: center; */
-  text-align: center;
-  min-height: 100vh;
   flex-direction: column;
+  text-align: center;
   padding: 0;
   margin: 0;
 }
@@ -100,6 +98,9 @@ section {
 }
 
 @media (min-width: 560px) {
+  body {
+    min-height: 100vh;
+  }
   h1 {
     font-family: "Fredoka One", cursive;
     margin: 0;
@@ -127,6 +128,7 @@ section {
   }
 
   section {
+    flex: 1;
   }
 
   .mobile-line {
