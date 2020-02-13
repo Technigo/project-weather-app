@@ -6,6 +6,7 @@ body {
   display: flex;
   flex-direction: column;
   text-align: center;
+  justify-content: center;
   padding: 0;
   margin: 0;
 }
@@ -18,12 +19,16 @@ h2 {
   font-family: "Fredoka One", cursive;
   margin: 0;
   font-size: 30px;
+  text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000,
+    1px 1px 1px #000;
 }
 
 h3 {
   font-family: "Fredoka One", cursive;
   margin: 5px 0;
   font-size: 25px;
+  text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000,
+    1px 1px 1px #000;
 }
 
 p {
@@ -71,6 +76,7 @@ section {
   background: #fff;
   border-radius: 50%;
   margin: 0 5px;
+  border: 1px solid black;
 }
 
 .dots:nth-child(even) {
@@ -126,8 +132,6 @@ section {
   }
   #todays-weather h3 {
     font-size: 45px;
-    text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000,
-      1px 1px 1px #000;
   }
 
   #todays-weather p {
@@ -136,8 +140,6 @@ section {
 
   h3 {
     font-size: 30px;
-    text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000,
-      1px 1px 1px #000;
   }
 
   #five-day-weather p {
