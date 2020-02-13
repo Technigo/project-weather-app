@@ -78,6 +78,10 @@ section {
   width: 10px;
 }
 
+.forced-footer {
+  display: none;
+}
+
 .mobile-line {
   border: 0;
   height: 1px;
@@ -104,7 +108,7 @@ section {
   h1 {
     font-family: "Fredoka One", cursive;
     margin: 0;
-    font-size: 40px;
+    font-size: 55px;
     display: block;
     color: white;
     text-shadow: -1px -1px 5px #8a8a8a, 1px -1px 5px #8a8a8a,
@@ -120,14 +124,60 @@ section {
     color: #8a8a8a;
     font-weight: bolder;
   }
+  #todays-weather h3 {
+    font-size: 45px;
+  }
+
+  #todays-weather p {
+    font-size: 25px;
+  }
+
+  h3 {
+    font-size: 30px;
+  }
+
+  #five-day-weather p {
+    font-size: 15px;
+  }
 
   header {
     display: block;
     background-color: #f0f0f0;
     padding: 20px 0;
+    /* background: rgb(212, 212, 213);
+    background: linear-gradient(
+      180deg,
+      rgba(212, 212, 213, 1) 50%,
+      rgba(212, 212, 213, 0.861782212885154) 60%,
+      rgba(212, 212, 213, 0.6909138655462185) 70%,
+      rgba(212, 212, 213, 0.4051995798319328) 80%,
+      rgba(212, 212, 213, 0.20632002801120453) 90%,
+      rgba(212, 212, 213, 0) 100%
+    ); */
+    /* background: rgb(212, 212, 213);
+    background: linear-gradient(
+      90deg,
+      rgba(212, 212, 213, 0) 0%,
+      rgba(212, 212, 213, 0.7) 12%,
+      rgba(212, 212, 213, 1) 25%,
+      rgba(212, 212, 213, 1) 75%,
+      rgba(212, 212, 213, 0.7) 88%,
+      rgba(212, 212, 213, 0) 100% ); */
   }
 
   section {
+    width: 60%;
+    min-width: 400px;
+    max-width: 450px;
+  }
+
+  img {
+    height: 50px;
+    width: 50px;
+  }
+
+  .forced-footer {
+    display: block;
     flex: 1;
   }
 
