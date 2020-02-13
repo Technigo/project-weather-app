@@ -1,0 +1,61 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  margin-top: 50px;
+  margin-bottom: 5px;
+  
+}
+
+h2 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+p {
+  margin: 0;
+}
+
+#weatherConditionsImage {
+  height: 150px;
+  width: 150px;
+}
+
+.todays-details {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 60%;
+  height: 45px;
+}
+
+.todays-details > p {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  flex-direction: column;
+
+}
+
+.weekly-forecast {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 300px;
+  width: 80%;
+  padding: 20px;
+}
+
+.weekday {
+  display: inline-flex;
+  justify-content: space-evenly;
+  width: 90%;
+}
+
+.weekday > p {
+  display: inline-flex;
+  justify-content: space-between;
+ 
+}
