@@ -132,9 +132,26 @@ section {
 button {
   font-size: 20px;
   font-family: "Nixie One", cursive;
-  border: 2px black solid;
+  margin: 0 5px;
+  border: 1px black solid;
   background-color: #fff;
   border-radius: 10px;
+  box-shadow: 2px 1px 1px 0 #000;
+  transition-duration: 0.3s;
+}
+
+button:focus {
+  outline: 0;
+}
+
+button:hover {
+  box-shadow: 0 0 1px 0 #000;
+  transform: scale(1.1);
+}
+button:active {
+  /*Added a pushed down feature instead of the same as when hovered*/
+  box-shadow: inset 2px 1px 1px 0 #000;
+  outline: none;
 }
 
 @media (min-width: 560px) {
@@ -196,7 +213,7 @@ button {
   }
 
   section {
-    margin-top: 30px;
+    margin: 30px auto;
     width: 60%;
     min-width: 400px;
     max-width: 450px;

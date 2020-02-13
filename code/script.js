@@ -44,10 +44,6 @@ const userChoice = city => {
         styleContainers(
           "linear-gradient(15deg, rgba(226,44,44,1) 0%, rgba(246,255,115,1) 100%)"
         );
-      } else if (temeperatur === undefined) {
-        styleContainers(
-          "linear-gradient(15deg, rgba(34,122,224,1) 0%, rgba(81,217,255,1) 100%)"
-        );
       } else {
         styleContainers(
           "linear-gradient(15deg, rgba(78,221,134,1) 0%, rgba(249,255,179,1) 100%)"
