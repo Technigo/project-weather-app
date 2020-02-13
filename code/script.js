@@ -72,8 +72,8 @@ const checkWeather = weatherType => {
 
   for (let i = 0; i < typesOfWeather.length; i++) {
     if (typesOfWeather[i] === weatherType) {
-      let imageIcone = `images/${weatherType}.png`;
-      return imageIcone;
+      let imageIcon = `images/${weatherType}.png`;
+      return imageIcon;
     }
   }
   return "images/Rainbow.png";
