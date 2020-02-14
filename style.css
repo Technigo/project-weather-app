@@ -2,15 +2,14 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* color: #f47775; */
+  font-family: 'Fjalla One', sans-serif;
 }
 
-
 h2 {
-  font-size: 45px;
+  font-size: 40px;
   margin-top: 10px;
   margin-bottom: 25px;
-  width: 70%;
+  width: 80%;
 }
 
 p {
@@ -19,16 +18,23 @@ p {
 }
 
 #weatherConditionsImage {
-  height: 100px;
-  width: 100px;
+  height: 120px;
+  width: 120px;
+  animation: pulsate 4s linear infinite;
+}
+
+.weather-image-section {
+  width: 80%;
+  margin-top: 15px;
 }
 
 .todays-details {
   display: inline-flex;
   justify-content: flex-start;
   align-items: center;
-  width: 90%;
+  width: 80%;
   height: 45px;
+  margin-top: 10px;
 }
 
 .sun-up-down {
@@ -36,16 +42,8 @@ p {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  width: 90%;
+  width: 80%;
   height: 60px;
-}
-
-.todays-details > p {
-  display: flex;
-  align-items: center;
-  margin: 0;
-  flex-direction: column;
-
 }
 
 .weekly-forecast {
@@ -61,7 +59,7 @@ p {
 .weekday {
   display: inline-flex;
   justify-content: space-between;
-  width: 90%;
+  width: 80%;
   border-bottom: dotted rgb(214, 164, 172) 1px;
 }
 
@@ -72,4 +70,18 @@ p {
 
 .last-day {
   border-bottom: none;
+}
+
+/* image animation below */
+
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

@@ -1,5 +1,4 @@
 
-let weekdays = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 
 fetch("http://api.openweathermap.org/data/2.5/forecast?q=karlstad,SWE&units=metric&appid=81d357180ff563fe7c461222930c95a7") 
 
@@ -21,15 +20,61 @@ fetch("http://api.openweathermap.org/data/2.5/forecast?q=karlstad,SWE&units=metr
   document.getElementById("sunrise").innerHTML += `&nbsp ${sunriseDateTime.getHours()}.${sunriseDateTime.getMinutes()}`;
   document.getElementById("sunset").innerHTML += `&nbsp ${sunsetDateTime.getHours()}.${sunsetDateTime.getMinutes()}`;
 
-  if (json.list[0].weather[0].main === "Clouds") {
+  if (json.list[0].weather[0].id >= 802 && json.list[0].weather[0].id <= 804 ) { // cloudy weather
     document.getElementById("weatherAdvice").innerHTML = `Light a fire and get cosy. ${json.city.name} is looking grey today.`;
     document.getElementById("body").style.background = "#f4f7f8";
     document.getElementById("body").style.color = "#f47775";
+    document.getElementById("weatherConditionsImage").src = "Designs/Design-2/icons/noun_Cloud_1188486.svg"
   }
+
+  else if (json.list[0].weather[0].id === 800 || json.list[0].weather[0].id === 801 )  { //sunny weather
+    document.getElementById("weatherAdvice").innerHTML = `Don't forget your sunglasses. 
+    ${json.city.name} is shining today!`;
+    document.getElementById("body").style.background = "#f8f8d5";
+    document.getElementById("body").style.color = "#237a23";
+
+    if (json.list[0].weather[0].id === 800) {
+      document.getElementById("weatherConditionsImage").src = "Designs/Design-2/icons/noun_Sunglasses_2055147.svg" 
+    }
+    else { 
+      document.getElementById("weatherConditionsImage").src = "Designs/Design-2/icons/noun_cloudysun.svg"
+    }
+  }
+
+  else if (json.list[0].weather[0].icon === "50d" ) { // atmosphere group
+    document.getElementById("weatherAdvice").innerHTML = `Maybe indoor activities today. 
+    ${json.city.name} is full of ${json.list[0].weather[0].main.toLowerCase()}`;
+    document.getElementById("body").style.background = "#f4f7f8";
+    document.getElementById("body").style.color = "rgb(51, 86, 123)";
+  }
+  
+  else if (json.list[0].weather[0].icon === "13d" ) { // snow
+      document.getElementById("weatherAdvice").innerHTML = `Is it Christmas already? 
+      ${json.city.name} is full of ${json.list[0].weather[0].main.toLowerCase()} today`;
+      document.getElementById("body").style.background = "#bde8fa";
+      document.getElementById("body").style.color = "rgb(172, 78, 68)";
+      document.getElementById("weatherConditionsImage").src = "Designs/Design-2/icons/noun_snow.svg"
+    }
+
+  else if (json.list[0].weather[0].id >= 300 && json.list[0].weather[0].id <= 531) { // rain / drizzle
+      document.getElementById("weatherAdvice").innerHTML = `Bring your umbrella! 
+      ${json.city.name} is full of ${json.list[0].weather[0].main.toLowerCase()} today`;
+      document.getElementById("body").style.background = "#bde8fa";
+      document.getElementById("body").style.color = "#164a68";
+      document.getElementById("weatherConditionsImage").src = "Designs/Design-2/icons/noun_Umbrella_2030530.svg"
+    }
+
+    else if (json.list[0].weather[0].id >= 300 && json.list[0].weather[0].id <= 531) { // thunder
+      document.getElementById("weatherAdvice").innerHTML = `Relax  indoors today! 
+     There is a ${json.list[0].weather[0].main.toLowerCase()} in ${json.city.name}!`;
+      document.getElementById("body").style.background = "#abb2b5";
+      document.getElementById("body").style.color = "rgb(87, 72, 71)";
+      document.getElementById("weatherConditionsImage").src = "Designs/Design-2/icons/noun_storm.svg"
+    }
  
 // this week's forecast
 
-const filteredJson = json.list.filter(item => item.dt_txt.includes('12:00')) // each days' weather att noon
+const filteredJson = json.list.filter(item => item.dt_txt.includes('00:00:00')) // each days' weather at midnight
 console.log(filteredJson)
 
 document.getElementById("day1").innerHTML = `${getDayOfWeek(filteredJson[0].dt)}`
@@ -51,11 +96,12 @@ const roundNumber = (temperature) => {
 }
 
 const getDayOfWeek = (param) => {
+  let weekdays = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
   let date = new Date (param * 1000);
 
   let specificDay = date.getDay();
   
-return weekdays[specificDay];
+  return weekdays[specificDay]
 }
 
-console.log(weekdays)
+
