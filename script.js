@@ -16,15 +16,21 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=stockholm,Sweden&units=
     containerTodayCelsius.innerHTML = `<h1> °C ${json.main.temp} </h1>`
     containerTodayCloud.innerHTML = `<h1> Feels like ${json.weather[0].main}</h1>`
 
-    let sunrise = json.sys.sunrise;
-    let sunriseDate = new Date(sunrise*1000);
+    //let sunrise = json.sys.sunrise;
+    //let sunriseDate = new Date(sunrise*1000);
 
-    containerSunrise.innerHTML = `<h2> Sunrise: ${sunriseDate} </h2>`
+    let sunrise = new Date(json.sys.sunrise * 1000)
+    let sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' });
 
-    let sunset = json.sys.sunset;
-    let sunsetDate = new Date(sunset*1000);
+    containerSunrise.innerHTML = `<h2> Sunrise: ${sunriseTime} </h2>`
 
-    containerSunset.innerHTML = `<h2> Sunset:${sunsetDate} </h2>`
+    //let sunset = json.sys.sunset;
+    //let sunsetDate = new Date(sunset*1000);
+
+    let sunset = new Date(json.sys.sunrise * 1000)
+    let sunsetTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' });
+
+    containerSunset.innerHTML = `<h2> Sunset: ${sunsetTime} </h2>`
     })
   .catch((err) =>{
     console.log("caught error", err)
