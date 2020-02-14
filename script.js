@@ -68,44 +68,47 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=London&appid=2b9468766d
         rise: sunyList[0],
         set: sunyList[1]
     }
-    const weatherObjectList = Object.values(weatherObject)
-    const myToday = document.getElementById('weatherToday')
-    weatherObjectList.forEach((value) => {
-        myToday.innerHTML += `<p>${value}</p>`
-    })
-
-    console.log('my list', weatherObjectList)
+  
+   
     console.log("my object", weatherObject)
     const icons = {
-        clouds: "media/clouds.svg",
-        rain: "media/rain.svg",
-        clear: "media/clear.svg"
+        clouds: {image: "media/clouds.svg", bgColor: '#F4F7F8', fontColor: '#F47775', head: `Light a fire and get cozy. ${weatherObject.city} is looking gray today`},
+        rain: {image: "media/rain.svg", bgColor: '#A3DEF7', fontColor: '#164A68', head: `Don't forget your umbrella Its wet in ${weatherObject.city} today`,},
+        clear: {image:  "media/clear.svg", bgColor: '#F7E9B9', fontColor: '#2A5510', head: `Get your sunnies on. ${weatherObject.city} is looking rather great today`}
     }
 
     const pictures = () => {
         console.log("inside function", weatherObject.name)
-        let image = "blank"
+        let choice = "blank"
         if (weatherObject.name === "Clouds") {
-            image = icons.clouds
+            choice = icons.clouds
         }
         else if (weatherObject.name === "Rain") {
-            image = icons.rain
+            choice = icons.rain
         }
         else if (weatherObject.name === "Clear") {
-            image = icons.clear
+            choice = icons.clear
         }
         else if (weatherObject.name === "Snow") {
-            image = icons.rain
+            choice = icons.rain
         }
-        console.log("image", image)
-        return image
+        console.log("image", choice)
+        return choice
     }
-    console.log(weatherObject)
-
+    
+    const myChoice = pictures()
+    console.log(myChoice)
     const todayWeather = [json.main.temp, json.main.feels_like, json.main.temp_min, json.main.temp_max]
-    document.getElementById('todayIcon').src = pictures()
-
-
+    document.getElementById('todayIcon').src = myChoice.image
+    const myToday = document.getElementById('weatherToday')
+    myToday.innerHTML += `<p>${weatherObject.name} | ${weatherObject.temp}</p>`
+    const myTotal = document.getElementById('container')
+    myTotal.style.backgroundColor = myChoice.bgColor
+    myTotal.style.color = myChoice.fontColor
+    myToday.innerHTML += `<p>sunrise ${weatherObject.rise}</p>`
+    myToday.innerHTML += `<p>sunset ${weatherObject.set}</p>`
+    document.getElementById('headline').innerHTML = myChoice.head
+    
 })
 // fetch 5 -days
 // api.openweathermap.org/data/2.5/forecast?q=London&appid=2b9468766d0e54560c7e599762d2e80b
@@ -133,38 +136,26 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=London&appid=2b9468766
         return (item.time === "12:00:00")
     })
     console.log(weatherShow)
-    const icons = {
-        clouds: "media/clouds.svg",
-        rain: "media/rain.svg",
-        clear: "media/clear.svg"
-    }
 
-    const smallPictures = (thing) => {
-        const object = thing
-        console.log("inside function", object)
-        let image = "blank"
-        if (object.name === "Clouds") {
-            image = icons.clouds
-        }
-        else if (oject.name === "Rain") {
-            image = icons.rain
-        }
-        else if (object.name === "Clear") {
-            image = icons.clear
-        }
-        else if (object.name === "Snow") {
-            image = icons.rain
-        }
-        console.log("image", image)
-        return image
-    }
+//const myTry = pictures()
+
 
 
     const weekText = document.getElementById('forecast')
-    weatherShow.forEach((day) => {
-        weekText.innerHTML += `<p>${day.weekDay} ${day.date}   ${day.temp} ${day.name} ${day.wind}</p>`
+    const fontCol = document.getElementById('headline').style.color
+    weatherShow.forEach((day, index, arr) => {
+        const myIndex = index.toString()
+        const myString = document.getElementById(myIndex)
+        myString.innerHTML += `<p>${day.weekDay} ${day.date}   ${day.temp} ${day.name} ${day.wind}</p>`
+        
+        myString.style.borderTopColor = fontCol
+        myString.style.borderTopStyle = 'dotted'
+        myString.style.borderWidth = 'thin'
+        
     })
+    
 })
+
 
 
 // console.log(moreAboutPokemons);

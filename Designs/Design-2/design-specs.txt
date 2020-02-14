@@ -7,9 +7,11 @@ Weights: bold and regular
 
 colors:
 
-#F47775
-#F4F7F8
-#164A68
-#A3DEF7
-#2A5510
-#F7E9B9
+#F47775 = gray-red = cloudy
+#F4F7F8 = very light cyan = cloudy
+#164A68 = dark cyan blue = rainy
+#A3DEF7 = light cyan = rainy
+#2A5510 = dark green = sunny
+#F7E9B9 = light yellow = sunny
+
+
