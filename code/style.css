@@ -46,10 +46,16 @@ header {
 }
 
 .pick-city {
-  background: linear-gradient(
+  /* background: linear-gradient(
     15deg,
     rgba(34, 122, 224, 1) 0%,
     rgba(81, 217, 255, 1) 100%
+  ); */
+  background: rgb(255, 105, 187);
+  background: linear-gradient(
+    41deg,
+    rgba(255, 105, 187, 1) 0%,
+    rgba(255, 204, 239, 1) 100%
   );
   padding: 10px;
   margin: 20px auto;
@@ -72,10 +78,16 @@ img {
 }
 
 section {
-  background: linear-gradient(
+  /* background: linear-gradient(
     15deg,
     rgba(34, 122, 224, 1) 0%,
     rgba(81, 217, 255, 1) 100%
+  ); */
+  background: rgb(255, 105, 187);
+  background: linear-gradient(
+    41deg,
+    rgba(255, 105, 187, 1) 0%,
+    rgba(255, 204, 239, 1) 100%
   );
   padding: 10px;
   margin: 10px auto;
@@ -204,10 +216,16 @@ button:active {
 
   header {
     display: block;
-    background: linear-gradient(
+    /* background: linear-gradient(
       15deg,
       rgba(34, 122, 224, 1) 0%,
       rgba(81, 217, 255, 1) 100%
+    ); */
+    background: rgb(255, 105, 187);
+    background: linear-gradient(
+      41deg,
+      rgba(255, 105, 187, 1) 0%,
+      rgba(255, 204, 239, 1) 100%
     );
     padding: 20px 0;
   }
@@ -247,10 +265,16 @@ button:active {
   }
   footer {
     color: #000;
-    background: linear-gradient(
+    /* background: linear-gradient(
       15deg,
       rgba(34, 122, 224, 1) 0%,
       rgba(81, 217, 255, 1) 100%
+    ); */
+    background: rgb(255, 105, 187);
+    background: linear-gradient(
+      41deg,
+      rgba(255, 105, 187, 1) 0%,
+      rgba(255, 204, 239, 1) 100%
     );
     width: 100%;
     height: 40px;

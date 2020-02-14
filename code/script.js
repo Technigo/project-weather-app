@@ -8,6 +8,7 @@ const footer = document.getElementById("footer");
 const userChoice = city => {
   containerWeather.style.display = "block";
   document.getElementById("pick-city").style.display = "none";
+
   const weatherToday = `https://api.openweathermap.org/data/2.5/weather?q=${city},Sweden&units=metric&APPID=778e796f3254363f06afef1bc4ea2b4f`;
 
   const weatherFiveDays = `https://api.openweathermap.org/data/2.5/forecast?q=${city},Sweden&units=metric&APPID=778e796f3254363f06afef1bc4ea2b4f`;
@@ -17,16 +18,13 @@ const userChoice = city => {
       return response.json();
     })
     .then(json => {
-      console.log(json);
-      console.log(json.weather[0].main);
-      console.log(typeof json.main.temp);
-
       const sunriseTime = timeFormat(json.sys.sunrise);
       const sunsetTime = timeFormat(json.sys.sunset);
+
       const weather = json.weather[0].main;
       const temperature = json.main.temp;
 
-      containerToday.innerHTML = `<h3>${json.name}</h3>`;
+      containerToday.innerHTML = `<h3>${/*json.name*/ cityFormat(city)}</h3>`;
       containerToday.innerHTML += `<img src="${checkWeather(weather)}" alt="">`;
       containerToday.innerHTML += `<p>${temperatureFormat(temperature)}°C and ${
         json.weather[0].description
@@ -46,7 +44,7 @@ const userChoice = city => {
         );
       } else {
         styleContainers(
-          "linear-gradient(15deg, rgba(78,221,134,1) 0%, rgba(249,255,179,1) 100%)"
+          "linear-gradient(200deg, rgba(136,255,183,1) 0%, rgba(26,182,92,1) 100%)"
         );
       }
     });
@@ -60,7 +58,6 @@ const userChoice = city => {
         item.dt_txt.includes("03:00")
       );
 
-      console.log(filteredForecast);
       containerFiveDays.innerHTML = "";
       filteredForecast.forEach(day => {
         containerFiveDays.innerHTML += `<p>${weekdayFormat(day.dt)}
@@ -117,12 +114,14 @@ const temperatureFormat = temp => {
   return tempFormat.toFixed(1);
 };
 
-// document
-//   .getElementById("malmo")
-//   .addEventListener("click", userChoice("Malmoe"));
-// document
-//   .getElementById("gbg")
-//   .addEventListener("click", userChoice("Gothenburg"));
-// document
-//   .getElementById("sthlm")
-//   .addEventListener("click", userChoice("Stockholm"));
+const cityFormat = city => {
+  if (city === "Malmoe") {
+    city = "Malmö";
+    return city;
+  } else if (city === "Gothenburg") {
+    city = "Göteborg";
+    return city;
+  } else {
+    return city;
+  }
+};
