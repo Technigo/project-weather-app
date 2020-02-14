@@ -1,6 +1,7 @@
 const container = document.getElementById('forecast')
 const sunriseContainer = document.getElementById('sunrise')
 const sunsetContainer = document.getElementById('sunset')
+const fiveDayForecastContainer = document.getElementById('fiveDaysForecast')
 
 fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=6f2155bea70058c9c702a90730859c85')
   .then((response) => {
@@ -27,5 +28,16 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
 
     sunsetContainer.innerHTML = `<h2> Sunset: ${sunsetTime} </h2>`
     sunriseContainer.innerHTML = `<h2> Sunrise: ${sunriseTime} </h2>`
-
   });
+
+fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=6f2155bea70058c9c702a90730859c85')
+  .then((response) => {
+    return response.json()
+  })
+  .then((json) => {
+    const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
+
+    filteredForecast.forEach((day) => {
+      fiveDayForecastContainer.innerHTML += `<p> The overal weather: ${day.weather[0].description}. </p>`
+    })
+  })
