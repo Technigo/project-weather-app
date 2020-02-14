@@ -44,6 +44,17 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=London&appid=2b9468766d
 }).then((json) => {
     console.log(json)
     const times = (new Date(json.dt * 1000)).toUTCString().split(' ')
+    const suny = [json.sys.sunrise, json.sys.sunset]
+    console.log("sun", suny)
+    const sunyNew = suny.map((item) => {
+        return (new Date(item * 1000)).toUTCString().split(' ')
+    })
+    console.log(sunyNew)
+    const sunyList = sunyNew.map((item) => {
+        const clock = item[4].split(':')
+        return `${clock[0]}:${clock[1]}`
+    })
+    console.log(sunyList)
     const noSecond = times[4].split(':')
     console.log(times)
     let weatherObject = {
@@ -53,7 +64,9 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=London&appid=2b9468766d
         temp: `${(json.main.temp - 273.15).toFixed(1)} C`,
         weekDay: times[0].replace(',', ''),
         date: `${times[1]} ${times[2]} ${times[3]}`,
-        time: `${noSecond[0]}:${noSecond[1]}`
+        time: `${noSecond[0]}:${noSecond[1]}`,
+        rise: sunyList[0],
+        set: sunyList[1]
     }
     const weatherObjectList = Object.values(weatherObject)
     const myToday = document.getElementById('weatherToday')
