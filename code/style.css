@@ -17,7 +17,7 @@ h1 {
 
 h2 {
   font-family: "Fredoka One", cursive;
-  margin: 0;
+  margin: 20px 40px 0 40px;
   font-size: 30px;
   text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000,
     1px 1px 1px #000;
@@ -46,24 +46,14 @@ header {
 }
 
 .pick-city {
-  /* background: linear-gradient(
-    15deg,
-    rgba(34, 122, 224, 1) 0%,
-    rgba(81, 217, 255, 1) 100%
-  ); */
   background: rgb(255, 105, 187);
   background: linear-gradient(
     41deg,
     rgba(255, 105, 187, 1) 0%,
     rgba(255, 204, 239, 1) 100%
   );
-  /* padding: 10px;
-  margin: 20px auto;
-  border-radius: 20px;
-  width: 90%; */
-  padding: 20px 0 20px 0;
+  padding: 20px 0 0 0;
   margin: auto;
-  margin-bottom: 10px;
   width: 100%;
   display: block;
   height: 100vh;
@@ -89,11 +79,10 @@ section {
     rgba(255, 105, 187, 1) 0%,
     rgba(255, 204, 239, 1) 100%
   );
-  padding: 20px 0 20px 0;
-  margin: auto;
-  margin-bottom: 10px;
+  padding: 20px 0 0 0;
   width: 100%;
   display: none;
+  height: 100vh;
 }
 
 .dot-container {
@@ -170,6 +159,13 @@ button:active {
   outline: none;
 }
 
+.mobile-footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
 @media (min-width: 560px) {
   body {
     min-height: 100vh;
@@ -223,11 +219,6 @@ button:active {
 
   header {
     display: block;
-    /* background: linear-gradient(
-      15deg,
-      rgba(34, 122, 224, 1) 0%,
-      rgba(81, 217, 255, 1) 100%
-    ); */
     background: rgb(255, 105, 187);
     background: linear-gradient(
       41deg,
@@ -235,7 +226,7 @@ button:active {
       rgba(255, 204, 239, 1) 100%
     );
     padding: 20px 0;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
 
   section {
@@ -243,7 +234,7 @@ button:active {
     width: 60%;
     min-width: 400px;
     max-width: 450px;
-
+    height: auto;
     border-radius: 20px;
   }
 
@@ -264,7 +255,7 @@ button:active {
 
   .button-container {
     display: block;
-    margin: 20px 0;
+    margin: 20px 0 0 0;
   }
 
   .mobile-line {
