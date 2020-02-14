@@ -188,7 +188,7 @@ button:active {
     width: 50%;
     padding: 10px 90px;
     border-radius: 20px;
-    margin-top: 30px;
+    margin: 30px auto;
     height: auto;
   }
 
