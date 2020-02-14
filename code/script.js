@@ -4,6 +4,13 @@ const description = document.querySelector('#description')
 const sunrise = document.querySelector('#sunrise')
 const sunset = document.querySelector('#sunset')
 
+const timeFormat = (ms) => {
+  let time = new Date(ms * 1000).toLocaleTimeString([], {
+    timeStyle: 'short'
+  })
+  return time;
+}
+
 
 
 fetch('http://api.openweathermap.org/data/2.5/weather?q=Malmo,Sweden&units=metric&APPID=302165d90858a8a500d4198d9bc63d2b')
@@ -15,18 +22,10 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Malmo,Sweden&units=metri
     description.innerHTML = json.weather[0].description
     temperature.innerHTML = `${json.main.temp.toFixed(1)}°`
 
-    const getHoursAndMinutes = (milliseconds) => {
-      let date = new Date(milliseconds * 1000)
-      let hours = date.getHours()
-      hours = (`0${hours}`).slice(-2)
-      let minutes = date.getMinutes()
-      minutes = (`0${minutes}`).slice(-2)
 
-      return `${hours}:${minutes}`
-    }
+    sunrise.innerHTML = timeFormat(json.sys.sunrise)
+    sunset.innerHTML = timeFormat(json.sys.sunset)
 
-    sunrise.innerHTML = getHoursAndMinutes(json.sys.sunrise)
-    sunset.innerHTML = getHoursAndMinutes(json.sys.sunset)
 
 
 
@@ -40,7 +39,8 @@ fetch('http://api.openweathermap.org/data/2.5/forecast?q=Malmo&units=metric&appi
     return response.json()
   })
   .then((json) => {
-    // console.log(json.name)
+    const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
+    console.log(filteredForecast)
   })
   .catch((err) => {
     console.log("oops error", err)
