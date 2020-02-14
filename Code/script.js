@@ -13,7 +13,7 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=stockholm,Sweden&units=
   .then ((json) => {
     console.log(json);
     containerTodayCity.innerHTML = `<h1>  City: ${json.name} </h1>`
-    containerTodayCelsius.innerHTML = `<h1> °C ${json.main.temp} </h1>`
+    containerTodayCelsius.innerHTML = `<h1> °C ${json.main.temp.toFixed(1)} </h1>`
     containerTodayCloud.innerHTML = `<h1> Feels like ${json.weather[0].main}</h1>`
 
     //let sunrise = json.sys.sunrise;
