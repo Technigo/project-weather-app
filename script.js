@@ -19,6 +19,18 @@ document.getElementById('killerImage').src = mystery.killer.image
    var date = new Date(1546108200 * 1000);
     console.log(date.toUTCString())
     var fixed = rounded.toFixed(1);
+
+    // Here a date has been assigned 
+// while creating Date object 
+var dateobj = new Date('October 15, 1996 05:35:32'); 
+  
+// Contents of above date object is converted 
+// into a string using toString() function. 
+var B = dateobj.toString(); 
+  
+// Printing the converted string. 
+document.write(B); 
+a.replaceAt(4,'');
 ========================================== 
 */
 
@@ -31,14 +43,25 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=London&appid=2b9468766d
     return response.json()
 }).then((json) => {
     console.log(json)
-
+    const times = (new Date(json.dt * 1000)).toUTCString().split(' ')
+    const noSecond = times[4].split(':')
+    console.log(times)
     let weatherObject = {
+        city: json.name,
         name: json.weather[0].main,
         description: json.weather[0].description,
-        temp: (json.main.temp - 273.15).toFixed(1),
-        date: (new Date(json.dt * 1000)).toUTCString()
+        temp: `${(json.main.temp - 273.15).toFixed(1)} C`,
+        weekDay: times[0].replace(',', ''),
+        date: `${times[1]} ${times[2]} ${times[3]}`,
+        time: `${noSecond[0]}:${noSecond[1]}`
     }
+    const weatherObjectList = Object.values(weatherObject)
+    const myToday = document.getElementById('weatherToday')
+    weatherObjectList.forEach((value) => {
+        myToday.innerHTML += `<p>${value}</p>`
+    })
 
+    console.log('my list', weatherObjectList)
     console.log("my object", weatherObject)
     const icons = {
         clouds: "media/clouds.svg",
@@ -66,12 +89,9 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=London&appid=2b9468766d
     }
     console.log(weatherObject)
 
-    today.innerHTML += `<h1> The city is ${json.name}</h1>`
-    today.innerHTML += `<p> Weather ${json.weather[0].main} the description ${json.weather[0].description} <br> today ${weatherObject.date} temperature ${weatherObject.temp} </p>`
     const todayWeather = [json.main.temp, json.main.feels_like, json.main.temp_min, json.main.temp_max]
     document.getElementById('todayIcon').src = pictures()
-    console.log(todayWeather)
-    console.log(json.weather[0])
+
 
 })
 // fetch 5 -days
@@ -81,11 +101,14 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=London&appid=2b9468766
 }).then((jsonweek) => {
     console.log('week', jsonweek)
     console.log("day1", jsonweek.list[0])
+    const weekTimes = (new Date(jsonweek.dt * 1000)).toUTCString().split(' ')
 
     const myFunc = () => {
         let dayListWeather = []
         jsonweek.list.forEach((item) => {
-            dayListWeather.push({ name: item.weather[0].main, description: item.weather[0].description, temp: (item.main.temp - 273.15), date: item.dt_txt, wind: item.wind.speed })
+            const weekTime = (new Date(item.dt * 1000)).toUTCString().split(' ')
+            const y = item.dt_txt.split(' ')
+            dayListWeather.push({ name: item.weather[0].main, description: item.weather[0].description, temp: ((item.main.temp - 273.15).toFixed(1) + 'C'), weekDay: weekTime[0], date: y[0], time: y[1], wind: item.wind.speed })
 
         })
         return dayListWeather
@@ -93,6 +116,41 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=London&appid=2b9468766
     }
     const newArr = myFunc()
     console.log(newArr)
+    const weatherShow = newArr.filter((item) => {
+        return (item.time === "12:00:00")
+    })
+    console.log(weatherShow)
+    const icons = {
+        clouds: "media/clouds.svg",
+        rain: "media/rain.svg",
+        clear: "media/clear.svg"
+    }
+
+    const smallPictures = (thing) => {
+        const object = thing
+        console.log("inside function", object)
+        let image = "blank"
+        if (object.name === "Clouds") {
+            image = icons.clouds
+        }
+        else if (oject.name === "Rain") {
+            image = icons.rain
+        }
+        else if (object.name === "Clear") {
+            image = icons.clear
+        }
+        else if (object.name === "Snow") {
+            image = icons.rain
+        }
+        console.log("image", image)
+        return image
+    }
+
+
+    const weekText = document.getElementById('forecast')
+    weatherShow.forEach((day) => {
+        weekText.innerHTML += `<p>${day.weekDay} ${day.date}   ${day.temp} ${day.name} ${day.wind}</p>`
+    })
 })
 
 
