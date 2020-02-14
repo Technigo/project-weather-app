@@ -7,5 +7,5 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
 })
 
 .then((json) => {
-  container.innerHTML = `<h1>Today's weather in ${json.name} </h1>`
+  container.innerHTML = `<h1> ${json.name} is ${json.main.temp} celsius and ${json.weather[0].description}.</h1>`
 })
