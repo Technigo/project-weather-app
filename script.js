@@ -27,8 +27,8 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=stockholm,Sweden&units=
     //let sunset = json.sys.sunset;
     //let sunsetDate = new Date(sunset*1000);
 
-    let sunset = new Date(json.sys.sunrise * 1000)
-    let sunsetTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' });
+    let sunset = new Date(json.sys.sunset * 1000)
+    let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' });
 
     containerSunset.innerHTML = `<h2> Sunset: ${sunsetTime} </h2>`
     })
