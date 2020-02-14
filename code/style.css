@@ -57,11 +57,16 @@ header {
     rgba(255, 105, 187, 1) 0%,
     rgba(255, 204, 239, 1) 100%
   );
-  padding: 10px;
+  /* padding: 10px;
   margin: 20px auto;
   border-radius: 20px;
-  width: 90%;
+  width: 90%; */
+  padding: 20px 0 20px 0;
+  margin: auto;
+  margin-bottom: 10px;
+  width: 100%;
   display: block;
+  height: 100vh;
 }
 
 .button-container {
@@ -78,21 +83,16 @@ img {
 }
 
 section {
-  /* background: linear-gradient(
-    15deg,
-    rgba(34, 122, 224, 1) 0%,
-    rgba(81, 217, 255, 1) 100%
-  ); */
   background: rgb(255, 105, 187);
   background: linear-gradient(
     41deg,
     rgba(255, 105, 187, 1) 0%,
     rgba(255, 204, 239, 1) 100%
   );
-  padding: 10px;
-  margin: 10px auto;
-  border-radius: 20px;
-  width: 90%;
+  padding: 20px 0 20px 0;
+  margin: auto;
+  margin-bottom: 10px;
+  width: 100%;
   display: none;
 }
 
@@ -141,6 +141,10 @@ section {
   display: none;
 }
 
+.button-container-mobile {
+  margin: 20px 0 10px 0;
+}
+
 button {
   font-size: 17px;
   font-family: "Nixie One", cursive;
@@ -187,6 +191,9 @@ button:active {
   .pick-city {
     width: 50%;
     padding: 10px 90px;
+    border-radius: 20px;
+    margin-top: 30px;
+    height: auto;
   }
 
   .pick-city h2 {
@@ -228,6 +235,7 @@ button:active {
       rgba(255, 204, 239, 1) 100%
     );
     padding: 20px 0;
+    margin-bottom: 30px;
   }
 
   section {
@@ -235,6 +243,8 @@ button:active {
     width: 60%;
     min-width: 400px;
     max-width: 450px;
+
+    border-radius: 20px;
   }
 
   img {
@@ -254,6 +264,7 @@ button:active {
 
   .button-container {
     display: block;
+    margin: 20px 0;
   }
 
   .mobile-line {
