@@ -29,14 +29,14 @@ const userChoice = city => {
       const currentHour = currentTime.getHours();
       console.log(currentHour);
 
-      containerToday.innerHTML = `<h3>${/*json.name*/ cityFormat(city)}</h3>`;
+      containerToday.innerHTML = `<h3>${cityFormat(city)}</h3>`;
       containerToday.innerHTML += `<img src="${checkWeather(
         weather,
         currentHour
       )}" alt="">`;
-      containerToday.innerHTML += `<p>${temperatureFormat(temperature)}°C and ${
-        json.weather[0].description
-      }
+      containerToday.innerHTML += `<p>${temperatureFormat(
+        temperature
+      )}${String.fromCharCode(186)}C and ${json.weather[0].description}
     </p>`;
 
       containerToday.innerHTML += `<p>  Sunrise: ${sunriseTime}<br>
@@ -72,25 +72,27 @@ const userChoice = city => {
       filteredForecast.forEach(day => {
         containerFiveDays.innerHTML += `<p>${weekdayFormat(day.dt)}
       
-      ${temperatureFormat(day.main.temp)}°C feels like: ${temperatureFormat(
+      ${temperatureFormat(day.main.temp)}${String.fromCharCode(
+          186
+        )}C feels like: ${temperatureFormat(
           day.main.feels_like
-        )}°C</p>`;
+        )}${String.fromCharCode(186)}C</p>`;
       });
     });
 };
 
 //Dark background between 22-06
 const checkTime = time => {
-  if (time > 22 || time < 08) {
-    containerWeather.style.backgroundImage = "url(images/stardust.png)";
-    containerWeather.style.background =
-      "linear-gradient(51deg, rgba(58,67,82,1) 0%, rgba(18,31,88,1) 100%)";
+  if (time >= 22 || time <= 06) {
+    styleContainers(
+      "linear-gradient(51deg, rgba(58,67,82,1) 0%, rgba(18,31,88,1) 100%)"
+    );
   }
 };
 
 //Styles background
 const styleContainers = backgroundColour => {
-  containerWeather.style.background = backgroundColour;
+  containerWeather.style.backgroundImage = backgroundColour;
   footer.style.background = backgroundColour;
   header.style.background = backgroundColour;
 };
@@ -106,7 +108,7 @@ const checkWeather = (weatherType, hours) => {
     "Thunderstorm"
   ];
 
-  if (hours > 22 || hours < 06) {
+  if (hours >= 22 || hours <= 06) {
     return "images/Night.png";
   } else {
     for (let i = 0; i < typesOfWeather.length; i++) {
@@ -145,10 +147,10 @@ const temperatureFormat = temp => {
 //Writes city names in Swedish
 const cityFormat = city => {
   if (city === "Malmoe") {
-    city = "Malmö";
+    city = `Malm${String.fromCharCode(246)}`;
     return city;
   } else if (city === "Gothenburg") {
-    city = "Göteborg";
+    city = `G${String.fromCharCode(246)}teborg`;
     return city;
   } else {
     return city;
