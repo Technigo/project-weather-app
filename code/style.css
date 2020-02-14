@@ -52,7 +52,6 @@ header {
     rgba(255, 105, 187, 1) 0%,
     rgba(255, 204, 239, 1) 100%
   );
-  padding: 20px 0 0 0;
   margin: auto;
   width: 100%;
   display: block;
@@ -186,7 +185,7 @@ button:active {
 
   .pick-city {
     width: 50%;
-    padding: 10px 90px;
+    padding: 20px 90px;
     border-radius: 20px;
     margin: 30px auto;
     height: auto;
@@ -236,6 +235,7 @@ button:active {
     max-width: 450px;
     height: auto;
     border-radius: 20px;
+    padding: 20px 0 40px 0;
   }
 
   img {
@@ -267,11 +267,6 @@ button:active {
   }
   footer {
     color: #000;
-    /* background: linear-gradient(
-      15deg,
-      rgba(34, 122, 224, 1) 0%,
-      rgba(81, 217, 255, 1) 100%
-    ); */
     background: rgb(255, 105, 187);
     background: linear-gradient(
       41deg,
