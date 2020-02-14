@@ -1,4 +1,10 @@
-const containerToday = document.getElementById("todaysweather")
+const containerTodayCity = document.getElementById("todaysweathercity")
+const containerTodayCelsius = document.getElementById("todaysweathercelsius")
+const containerTodayCloud = document.getElementById("containertodaycloud")
+const containerSunrise = document.getElementById("sunrise")
+const containerSunset = document.getElementById("sunset")
+    
+
 
 fetch("https://api.openweathermap.org/data/2.5/weather?q=stockholm,Sweden&units=metric&APPID=8ba6b8f613b670c947149eaad6fdfef7")
   .then((response) => {
@@ -6,8 +12,20 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=stockholm,Sweden&units=
   })
   .then ((json) => {
     console.log(json);
-    containerToday.innerHTML = `<h1> The weather in ${json.name} today is ${json.main.temp} celsius and ${json.weather[0].main}</h1>`
-  })
+    containerTodayCity.innerHTML = `<h1>  City: ${json.name} </h1>`
+    containerTodayCelsius.innerHTML = `<h1> °C ${json.main.temp} </h1>`
+    containerTodayCloud.innerHTML = `<h1> Feels like ${json.weather[0].main}</h1>`
+
+    let sunrise = json.sys.sunrise;
+    let sunriseDate = new Date(sunrise*1000);
+
+    containerSunrise.innerHTML = `<h2> Sunrise: ${sunriseDate} </h2>`
+
+    let sunset = json.sys.sunset;
+    let sunsetDate = new Date(sunset*1000);
+
+    containerSunset.innerHTML = `<h2> Sunset:${sunsetDate} </h2>`
+    })
   .catch((err) =>{
     console.log("caught error", err)
   })
