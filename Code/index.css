@@ -11,10 +11,11 @@ header{
 }
 
 h1{
-color: yellow;
+color: rgb(255, 0, 221);
 }
 h2 {
 color: green;
+font-size: 40px;
 
 }
 /*.todaysweather{
@@ -42,8 +43,16 @@ padding: 20px;
 
 @media (min-width: 667px) and (max-width: 1024px){
 
+  body{
+    background-color: green;
+  }
+
 }
 
 @media (min-width: 1025px){
+
+  body{
+    background-color: grey;
+  }
 
 }
