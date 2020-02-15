@@ -1,14 +1,18 @@
 // APIs links
 const currentWeatherAPI = "http://api.openweathermap.org/data/2.5/weather?q=helsinki&appid=1c5c00b108885200d83efb308cec13d8"
+const forecastWeatherAPI = "http://api.openweathermap.org/data/2.5/forecast?q=helsinki&appid=1c5c00b108885200d83efb308cec13d8"
 
 // Data storage
 const weather = {}
+const forecast = []
+
 
 // DOM elements
 const currentWeather = document.getElementById('current')
+const forecastWeather = document.getElementById('forecast')
 
 
-// Fetch data
+// Fetch current weather
 fetch(currentWeatherAPI)
 
   .then((response) => {
@@ -31,7 +35,7 @@ fetch(currentWeatherAPI)
     printWeather()
   })
 
-// Print data onto DOM
+// Print current weather onto DOM
 const printWeather = () => {
   currentWeather.innerHTML = `
       <div>
@@ -45,3 +49,25 @@ const printWeather = () => {
 }
 
 
+// Fetch forecast weather
+fetch(forecastWeatherAPI)
+  .then((response) => {
+    return response.json()
+  })
+  .then((jsonFile) => {
+    let index = 0
+    while (index < jsonFile.list.length) {
+      index += createForecast(index, jsonFile)
+    }
+    printForecast()
+  })
+
+
+// Create forecast
+
+
+
+// Print forecast onto DOM
+const printForecast = () => {
+
+}
