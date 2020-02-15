@@ -1,12 +1,13 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Creating a weather app using API's and JavaScript to show a 5 day forecast.
 
 ## The problem
 
 Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+This project had the rockiest start I've ever put myself through. Doubting that I ever could create an app neverless understand the concept of APIs. Proud that I pushed through every obstacle and became creative with my solutions.
+
+
 
 ## View it live
 

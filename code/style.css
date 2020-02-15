@@ -5,6 +5,8 @@ html {
   background-repeat: no-repeat;
   min-height: 100%;
   font-family: 'Montserrat', sans-serif;
+  border: 10px solid black;
+  padding: 20px;
 }
 
 body {
@@ -20,20 +22,18 @@ body {
   width: 100%;
   justify-content: space-between;
   align-items: flex-end;
-  /* float: right;
-  display: block; */
-  /* line-height: 30px; */
    padding: 20px;
    position: relative;
+   margin-bottom: 50px;
 }
 
 #today p {
   font-size: 20px;
-  line-height: 30px;
+  line-height: 20px;
 }
 
 #whatWeather {
-  width: 40px;
+  width: 100px;
   float: center;
   display: block;
   padding: 5px;
@@ -42,9 +42,9 @@ body {
 }
 
 h2 {
-  border-bottom: 3px solid black;
-  font-size: 40px;
-  margin: 0px 5px
+  text-align: right;
+  font-size: 90px;
+  margin: 5px;
 }
 
 p {
@@ -85,4 +85,10 @@ span {
   border-radius: 40px;
   opacity: 0.6;
   margin-top: 40px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  color: black
 }

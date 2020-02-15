@@ -12,9 +12,9 @@ const fiveDayForecast = document.getElementById("fiveDayForecast")
 const londonWeatherToday = document.getElementById("london")
 const barcelonaWeatherToday = document.getElementById("barcelona")
 const weatherIcon = document.getElementById("whatWeather")
-const cold = "img/Group16.png"
-const both = "img/Group34.png"
-const warm = "img/Group37.png"
+const cold = "img/snowy.png"
+const both = "img/semi.png"
+const warm = "img/sunny.png"
 
 
 
