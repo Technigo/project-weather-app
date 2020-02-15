@@ -1,4 +1,16 @@
 body {
-  background: black;
-  color: white;
+  background: white;
+  color: black;
+}
+
+div {
+  margin: 50px auto;
+}
+
+.good {
+  background: yellow;
+}
+
+.bad {
+  background: darkgrey;
 }

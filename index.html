@@ -8,13 +8,21 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-  <div id="forcast">
-    <p>Loading...</p>
+<body onLoad="weather()">
+
+  <div id="current"></div>
+
+  <div id="forecast"></div>
+
+  <div class="search">
+    <input type="text" id="city" value="Stockholm">
+    <button id="orderButton" onclick=chooseCity();weather();>Check</button>
   </div>
+
 </body>
 
 <!--Should script be inside or below body?-->
+<!-- <script src="script_current.js"></script> -->
 <script src="script.js"></script>
 
 </html>
