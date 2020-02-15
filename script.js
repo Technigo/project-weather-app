@@ -61,7 +61,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=London&appid=2b9468766d
         city: json.name,
         name: json.weather[0].main,
         description: json.weather[0].description,
-        temp: `${(json.main.temp - 273.15).toFixed(1)} C`,
+        temp: `${(json.main.temp - 273.15).toFixed(1)}&#8451;`,
         weekDay: times[0].replace(',', ''),
         date: `${times[1]} ${times[2]} ${times[3]}`,
         time: `${noSecond[0]}:${noSecond[1]}`,
@@ -101,7 +101,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=London&appid=2b9468766d
     const todayWeather = [json.main.temp, json.main.feels_like, json.main.temp_min, json.main.temp_max]
     document.getElementById('todayIcon').src = myChoice.image
     const myToday = document.getElementById('weatherToday')
-    myToday.innerHTML += `<p>${weatherObject.name} | ${weatherObject.temp}</p>`
+    myToday.innerHTML += `<p>${weatherObject.description} | ${weatherObject.temp}</p>`
     const myTotal = document.getElementById('container')
     myTotal.style.backgroundColor = myChoice.bgColor
     myTotal.style.color = myChoice.fontColor
@@ -124,7 +124,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=London&appid=2b9468766
         jsonweek.list.forEach((item) => {
             const weekTime = (new Date(item.dt * 1000)).toUTCString().split(' ')
             const y = item.dt_txt.split(' ')
-            dayListWeather.push({ name: item.weather[0].main, description: item.weather[0].description, temp: ((item.main.temp - 273.15).toFixed(1) + 'C'), weekDay: weekTime[0], date: y[0], time: y[1], wind: item.wind.speed })
+            dayListWeather.push({ name: item.weather[0].main, description: item.weather[0].description, temp: ((item.main.temp - 273.15).toFixed(1)), weekDay: weekTime[0], date: y[0], time: y[1], wind: item.wind.speed })
 
         })
         return dayListWeather
@@ -146,7 +146,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=London&appid=2b9468766
     weatherShow.forEach((day, index, arr) => {
         const myIndex = index.toString()
         const myString = document.getElementById(myIndex)
-        myString.innerHTML += `<p>${day.weekDay} ${day.date}   ${day.temp} ${day.name} ${day.wind}</p>`
+        myString.innerHTML += `<p>${day.weekDay} ${day.date}</p><p>${day.temp}&#8451;</p>`
         
         myString.style.borderTopColor = fontCol
         myString.style.borderTopStyle = 'dotted'

@@ -4,7 +4,16 @@
     margin: 0px auto;
     background-color: #d8dabe;
     color: #60785c;
-    font-family: "Montsserat", "Helvetica";
+    font-family: "Montsserat", "Helvetica", sans-serif;
+}
+.forecast{
+    width: 100%;
+}
+.align{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .today{
@@ -20,8 +29,8 @@
     
 }
 
-@media screen and (min-width: 992px){
+@media screen and (min-width: 576px){
     .container{
-        width: 900px;
+        width: 500px;
     }
 }
