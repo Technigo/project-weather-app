@@ -1,5 +1,9 @@
 html {
-  background: linear-gradient(90deg, rgba(131,193,207,1) 0%, rgb(176, 233, 224) 62%, rgb(208, 214, 218) 100%);
+  /* background: linear-gradient(90deg, rgba(131,193,207,1) 0%, rgb(176, 233, 224) 62%, rgb(208, 214, 218) 100%); */
+  background-image: url("img/clouds4.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100%;
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -8,6 +12,13 @@ html {
   display: block;
   line-height: 30px;
   padding: 20px;
+}
+
+#whatWeather {
+  width: 40px;
+  float: center;
+  display: block;
+  padding: 5px;
 }
 
 h2 {
@@ -23,15 +34,10 @@ span {
   font-weight: bold;
 }
 
-/* #realTemp {
-  font-style: italic;
-  font-size: small;
-} */
-
 #fiveDayForecast {
   float: right;
   background-color: white;
-  opacity: 0.5;
+  opacity: 0.7;
   border-radius: 50px;
   padding: 20px;
   margin: 20px 30px;

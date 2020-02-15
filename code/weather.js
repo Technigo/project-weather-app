@@ -10,11 +10,10 @@ const week = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat']
 const forecastDiv = document.getElementById('weekday')
 const fiveDayForecast = document.getElementById("fiveDayForecast")
 const weatherIcon = document.getElementById("whatWeather")
-const icons = {
-  cold: "img/Group16.png",
-  both: "img/Group34.png",
-  warm: "img/Group37.png"
-}
+const cold = "img/Group16.png"
+const both = "img/Group34.png"
+const warm = "img/Group37.png"
+
 
 
 // My API links with API keys
@@ -40,14 +39,13 @@ fetch(weatherNow)
     sunrise.innerHTML = weather.sunrise
     sunset.innerHTML = weather.sunset
 
-    // if(weather.temp > 5) {
-    //   weatherIcon.src = icons.warm
-    // } else if(weather.temp > 0) {
-    //   weatherIcon.src = icons.both
-    // } else {
-    //   weatherIcon.src = icons.cold
-        // document.getElementById("whatWeather") = 
-    // }
+    if(weather.temp > 5) {
+        document.getElementById("whatWeather").src = warm
+    } else if(weather.temp > 0) {
+        document.getElementById("whatWeather").src = both
+    } else {
+        document.getElementById("whatWeather").src = cold
+    }
   })
 
   })
@@ -73,76 +71,5 @@ fetch(weatherForecast)
   })
   })
   
-  // let whatDay = day.getDay()
-  // console.log(week[whatDay])
-
-  // const filteredForecast = json.list.filter(item => item.dt_txt.includes('03:00'));
-  // containerFiveDays.innerHTML = "";
-  // filteredForecast.forEach(day => {
-  //  const date = new Date(day.dt * 1000)
-  //  const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  //  let dayOfWeek = weekdays[date.getDay()];
-  // containerFiveDays.innerHTML += `<p> ${dayOfWeek} ${day.main.temp.toFixed(0)} °C </p>`
-  //   })
-
-// fetch(weatherForecast)
-//   .then(response => {
-//     return response.json()
-//   })
-
-//   .then(handle5DayForecast)
-    // const filteredForecast = json.list.filter(item => item.dt_txt.includes('15:00'))
-    // console.log(filteredForecast)
-
-    // console.log(Object.values(filteredForecast)[0]);
-
-
-// let today = new Date().toISOString().slice(0, 10)
-// date.innerHTML = today
-
-// console.log(today)
-
-
-// const handle5DayForecast = (json) => {
-//   const dates = {}
-
-//   // Iterate over each of these ungrouped weather objects.
-//   json.list.forEach((weather) => {
-//       const date = weather.dt_txt.split(' ')[0]
-//       if (dates[date]) {
-
-//           dates[date].push(weather)
-//       } else {
-//           dates[date] = [weather]
-//       }
-//   })
-
-//   Object.entries(dates).forEach((item, index) => {
-//       if (index === 0) {
-//           return
-//       }
-
-//       const date = item[0]
-//       const weatherValues = item[1]
-
-//       const temps = weatherValues.map((value) => value.main.temp)
-//       const minTemp = Math.min(...temps)
-//       const maxTemp = Math.max(...temps)
-
-//       forecastDiv.innerHTML += `<p>${date} - min: ${Math.round(minTemp)}, max: ${Math.round(maxTemp)}</p>`
-//   })
-// }
-
-// fetch(weatherForecast)
-//   .then(response => {
-//     return response.json()
-//   })
-
-//   .then(handle5DayForecast)
-    // const filteredForecast = json.list.filter(item => item.dt_txt.includes('15:00'))
-    // console.log(filteredForecast)
-
-    // console.log(Object.values(filteredForecast)[0]);
-  // })
 
   
