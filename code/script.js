@@ -1,15 +1,24 @@
-const city = document.getElementById('city')
-const temp = document.getElementById('temp')
-const description = document.getElementById('description')
+const cityContainer = document.getElementById('city')
+const tempContainer = document.getElementById('temp')
+const descriptionContainer = document.getElementById('description')
+const sunriseContainer = document.getElementById('sunrise')
+const sunsetContainer = document.getElementById('sunset')
 
 fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=60032cdd91d77852bfb39762c09118fe')
   .then((response) => {
     return response.json()
   })
   .then((json) => {
-    city.innerHTML = json.name
+    cityContainer.innerHTML = json.name
+    tempContainer.innerHTML = `${json.main.temp.toFixed(1)} °`
+    descriptionContainer.innerHTML = json.weather[0].description
 
-    temp.innerHTML = `${json.main.temp.toFixed(1)} °`
+    const sunriseConversion = new Date(json.sys.sunrise * 1000)
+    const sunsetConversion = new Date(json.sys.sunset * 1000)
 
-    description.innerHTML = json.weather[0].description
+    const sunriseTime = sunriseConversion.toLocaleTimeString([], { timeStyle: 'short' })
+    const sunsetTime = sunsetConversion.toLocaleTimeString([], { timeStyle: 'short' })
+
+    sunriseContainer.innerHTML = `Sunrise: ${sunriseTime}`
+    sunsetContainer.innerHTML = `Sunset: ${sunsetTime}`
   })
