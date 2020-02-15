@@ -9,18 +9,34 @@
 </head>
 
 <body>
-  <section id="weather">
+  <section class="weather" id="weather">
+    <p>TODAY'S WEATHER</p>
     <h1 id="city"></h1>
-    <p id="temp"></p>
+    <p id="weatherImage"></p>
+    <p class="temp" id="temp"></p>
     <p id="description"></p>
 
-    <section id="dayNight">
-      <p id="sunrise"></p>
-      <p id="sunset"></p>
+    <section class="day-night" id="dayNight">
+      <p class="sunrise" id="sunrise">
+        <img src="./assets/040-sunrise.png" alt="sunrise">
+      </p>
+      <p class="sunset" id="sunset">
+        <img src="./assets/041-sunset.png" alt="sunset">
+      </p>
     </section>
   </section>
 
-  <section class="forecast" id="forecast"></section>
+  <h2 class="forecast-main">FORECAST</h2>
+
+  <section class="forecast" id="forecast">
+  </section>
+
+  <footer>
+    <p>
+      Icons by <a href="https://www.flaticon.com/authors/iconixar">iconixar</a> from <a
+        href="https://www.flaticon.com/home"></a> www.flaticon.com
+    </p>
+  </footer>
 
   <script src="./script.js"></script>
 </body>

@@ -1,15 +1,73 @@
 body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 180px;
+  background: #faf8ef;
   font-family: Arial, Helvetica, sans-serif;
+  color: #172f42;
 }
 
-sup {
-  vertical-align: text-top;
-  font-size: x-small;
+h2 {
+  font-size: 15px;
+  font-weight: lighter;
 }
 
+img {
+  height: 8em;
+}
+
+.weather {
+  background: #172f42;
+  display: grid;
+  padding: 0 20px;
+  color: #faf8ef;
+  text-align: center;
+}
+
+.temp {
+  font-size: 50px;
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
+}
+
+.day-night {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.sunrise, .sunset {
+  display: flex;
+  flex-direction: column;
+}
+
+.sunrise {
+  align-items: flex-start;
+}
+
+.sunset {
+  align-items: flex-end;
+}
+
+.sunrise img, .sunset img {
+  height: 2.5em;
+  width: 2.5em;
+}
+
+.sunset img {
+  vertical-align: right;
+}
+
+.forecast-main {
+  text-align: center;
+  margin-top: 1.5em;
+  margin-bottom: 0;
+  font-size: 0.8em;
+  font-weight: bold;
+}
 
 .forecast {
   display: inline-grid;
+  width: 100%;
   grid-template-columns: auto auto auto auto auto;
 }
 
@@ -17,4 +75,27 @@ sup {
   padding: 10px;
   display: grid;
   text-align: center;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  padding: 20px 0;
+  background: #172f42;
+  height: 50px;
+}
+
+footer p {
+  padding: 10px;
+  color: #faf8ef;
+  font-size: 10px;
+  text-align: center;
+}
+
+footer a {
+  text-decoration: none;
+  color: #faf8ef;
+  font-weight: bold;
 }
