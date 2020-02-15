@@ -5,21 +5,43 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="./style.css" />
   <title>Wheather</title>
 </head>
 
 <body>
-  <h3>Todays weather in:</h3>
-  <div id="currentWeather">
-    Loading…
-  </div>
-  <h2 id=cityName></h2>
-  <h1 id=temperature></h1>
-  <secton class="week">
-    <h4 id=Day></h4>
-    <h4 id=daysTemperature></h4>
-  </secton>
-  <script src="script.js"></script>
+  <section>
+    <section>
+      <header>
+        <h3>TODAYS WEATHER</h3>
+        <h1>Stockholm</h1>
+      </header>
+      <section id="todayWeather">
+        <section class="info">
+          <p id="todayTemp"></p>
+          <p id="description">Molnigt</p>
+        </section>
+        <section class="symbol">
+          <p id=currentCondition></p>
+        </section>
+      </section>
+      <section class="todaytime">
+        <section class="todaysunrise">
+          <p class="label">SUNRISE</p>
+          <p id="sr">06:00</p>
+        </section>
+        <section class="todaysunset">
+          <p class="label">SUNSET</p>
+          <p id="ss">23:00</p>
+        </section>
+      </section>
+      <h3>COMING UP</h3>
+      <br>
+      <section id="weekWeather">
+      </section>
+    </section>
+    <section id="currentWeather"></section>
+    <script src="script.js"></script>
 </body>
 
 </html>
