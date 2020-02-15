@@ -7,6 +7,7 @@ const sunRise = document.getElementById("sunRise");
 const sunSet = document.getElementById("sunSet");
 
 const weatherForecast = document.getElementById("weather-5day");
+// const weatherForecastImage = document.getElementById("weather-5day-image");
 
 // -------------- API link variables:
 const weatherOneDayApi =
@@ -68,25 +69,53 @@ fetch(weatherForecastApi)
     return response.json();
   })
   .then((json) => {
-    console.log('forecast json object', json);
-
-
+    // console.log('forecast json object', json);
     // filtrerar ut alla "kl 12" och skapar en ny Array: **************
     const filteredForecast = json.list.filter(item => item.dt_txt.includes("12:00"));
     console.log('filtered array', filteredForecast);
-
+    /*
     filteredForecast.forEach((forecast) => {
-
-      weatherForecast.innerHTML += `<h3>date: ${forecast.dt} / ${forecast.weather[0].description} / ${forecast.main.temp.toFixed(1)}°C </h3>`;
+      weatherForecast.innerHTML += `<h3>date: ${forecast.dt} / ${forecast.weather[0].description} / ${forecast.main.temp.toFixed(1)}°C `;
     });
-    
-    
+   */
+    filteredForecast.forEach(day => {
+      const date = new Date(day.dt * 1000)
+      console.log('new date:', date)
+      const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+      let dayOfWeek = weekdays[date.getDay()];
+      weatherForecast.innerHTML += `<p> ${dayOfWeek} ${day.main.temp.toFixed(0)} °C </p>`
+      // weatherForecastImage.innerHTML += `<img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="" />`
+    })
     // console.log(filteredForecast.toLocaleString(`en-US`)); 
     // console.log(weatherForecast);
     // console.log(filteredForecast.forecast.main.temp);
     // console.log(weather.sunrise = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], {timeStyle: "short"}))
-
   })
+
+
+/*
+const filteredForecast = json.list.filter(item => item.dt_txt.includes('03:00'));
+containerFiveDays.innerHTML = "";
+
+filteredForecast.forEach(day => {
+ const date = new Date(day.dt * 1000)
+ const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+ let dayOfWeek = weekdays[date.getDay()];
+containerFiveDays.innerHTML += `<p> ${dayOfWeek} ${day.main.temp.toFixed(0)} °C </p>`
+      })
+
+
+
+
+
+*/
+
+
+
+
+
+
+
 
 /*
    filteredForecast.forEach((forecast) => {
@@ -99,13 +128,13 @@ fetch(weatherForecastApi)
 
 */
 
-  // -------------- 
-    // Weather Icon - Works men behöver flera statements
-    /*
-    const currentWeather = json.weather[0].icon
-    console.log('icon:', currentWeather)
-    if (json.weather[0].icon === '04d') {
-      weatherImage.innerHTML = `<img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="" />`;
-    }
-    */
-    // -------------- 
+// -------------- 
+// Weather Icon - Works men behöver flera statements
+/*
+const currentWeather = json.weather[0].icon
+console.log('icon:', currentWeather)
+if (json.weather[0].icon === '04d') {
+  weatherImage.innerHTML = `<img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="" />`;
+}
+*/
+// -------------- 
