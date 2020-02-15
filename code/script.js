@@ -1,4 +1,4 @@
-const container = document.getElementById('Gothenburg')
+const container = document.getElementById('today')
 
 fetch('http://api.openweathermap.org/data/2.5/weather?q=Gotenburg&units=metric&appid=3b69213b480a303abeec34f0262802f0')
   .then((response) => {
@@ -7,12 +7,22 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Gotenburg&units=metric&a
   .then((json) => {
     json.main.temp = Math.round(json.main.temp)
     container.innerHTML = `<h2>${json.main.temp}&degC</h2>`
-    // console.log(json.main.temp)
+
+
+    if (json.main.temp > 6) {
+      document.getElementById("gbg-image").style.backgroundImage = 'linear-gradient(to bottom, rgba(143, 249, 185, 0.52), rgba(244, 244, 247, 0.73)), url("gbg-img.jpg")';
+    } else if (json.main.temp > 16) {
+      document.getElementById("gbg-image").style.backgroundImage = 'linear-gradient(to bottom, rgba(249, 190, 130, 0.52), rgba(244, 244, 247, 0.73)), url("gbg-img.jpg")';
+    } else if (json.main.temp > 22) {
+      document.getElementById("gbg-image").style.backgroundImage = 'linear-gradient(to bottom, rgba(241, 69, 41, 0.28), rgba(244, 244, 247, 0.73)), url("gbg-img.jpg")';
+
+    }
     // DESCRIPTION
     json.weather.forEach((now) => {
       container.innerHTML += `<p>${now.description} </p>
       <img src=https://openweathermap.org/img/wn/${now.icon}@2x.png></img>`
       //SUNRISE; SUNSET
+
       let rise = new Date(json.sys.sunrise * 1000);
       let up = rise.toLocaleTimeString([], {
         timeStyle: 'short'
@@ -27,19 +37,10 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Gotenburg&units=metric&a
       // console.log(json.sys.sunset)
       // console.log(set)
 
-      const warmColors = () => {
-        if (json.main.temp < 3)
-
-          console.log("hello")
-      }
-      warmColors()
-
-
-
-
 
     })
   })
+
 
 
 //FORECAST
