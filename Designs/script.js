@@ -1,17 +1,21 @@
 const container =  document.getElementById('weatherInfo')
-const containerSunrise = document.getElementById("sunrise")
-const containerSunset = document.getElementById("sunset")
+const containerSunrise = document.getElementById('sunrise')
+const containerSunset = document.getElementById('sunset')
+const URLDay = 'http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=69828f6ac304f247815bc18fa686b778'
+const URLForecast ='https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=69828f6ac304f247815bc18fa686b778'
+const fiveDays = document.getElementById('fiveDays')
+const titleDays = document.getElementById('title')
 
-fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=69828f6ac304f247815bc18fa686b778')
+fetch(URLDay)
   .then((response) => {
     return response.json();
   })
   .then((myJson) => {
-    container.innerHTML = `<h1>${myJson.name} ${myJson.main.temp} c and ${myJson.weather[0].description}</h1>`
+    container.innerHTML = `<h1>${myJson.name} ${Math.round(myJson.main.temp)} celcius and ${myJson.weather[0].description}</h1>`
  
   })
 
-  fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=69828f6ac304f247815bc18fa686b778')
+  fetch(URLDay)
   .then((response) => {
     return response.json();
   })
@@ -26,8 +30,27 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
  
     containerSunset.innerHTML = `<h2> Sunset: ${sunsetTime} </h2>`
   })
-
   
- 
+  fetch(URLForecast)
+  .then((response) => {
+    return response.json();
+  })
+
+  .then((json) => {
+
+    titleDays.innerHTML = `<h4>5 Days</h4>`
+    
+    json.forEach((days) => {
+
+    //fiveDays.innerHTML += `<h1> ${days.list.main.temp}</h1>`
+  
+  }) 
+
+})
+
+
+
+
+
 
  
