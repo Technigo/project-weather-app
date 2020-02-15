@@ -20,7 +20,7 @@ fetch("http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     document.getElementById("description").innerHTML = `${json.weather[0].description}`
     document.getElementById("todayTemp").innerHTML = `${shortTemp}˚`
     document.getElementById("currentCondition").innerHTML += `<img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="" />`
-    document.getElementById("currentWeather").innerHTML = `<h2>The current weather in ${json.name} is ${shortTemp}ºC and the weather is ${json.weather[0].description}. Soluppgång ${sunriseTime}. Solnedgång ${sunsetTime}.</h2>`
+    //document.getElementById("currentWeather").innerHTML = `<h2>The current weather in ${json.name} is ${shortTemp}ºC and the weather is ${json.weather[0].description}. Soluppgång ${sunriseTime}. Solnedgång ${sunsetTime}.</h2>`
     document.getElementById("sr").innerHTML = `${sunriseTime}`
     document.getElementById("ss").innerHTML = `${sunsetTime}`
   })

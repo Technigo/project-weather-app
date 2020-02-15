@@ -1,29 +1,39 @@
 body {
   font-family: roboto, Arial, Helvetica, sans-serif;
-  background-image: url(assets/moln1.jpg);
-
+  background-image: url(assets/moln4.jpg)
 }
 
 header {
   display: flex;
   flex-direction: column;
   height: 100px;
-
+  margin-top: 30px;
+  margin-bottom: 2px;
 }
 
 h1 {
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 45px;
-  margin-top: 5px;
+  font-size: 50px;
+  margin-top: 02px;
+  margin-bottom: 5px;
+  color: aliceblue;
 }
 
 h3 {
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
-  margin-bottom: auto;
-  margin-top: 24px;
+  margin-bottom: 22px;
   font-size: 15px;
+
+}
+
+h4 {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 22px;
+  font-size: 15px;
+  color: rgb(252, 158, 100);
 }
 
 p {
@@ -31,31 +41,40 @@ p {
 }
 
 #todayWeather {
-  background-color: rgb(249, 219, 224);
+  background-color: rgba(255, 255, 255, 0.3);
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  height: 250px;
+  height: 235px;
+  margin-top: 9px;
+  border-radius: 3px;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+
 }
 
 #description {
   margin-top: 0px;
   font-size: 18px;
   text-transform: capitalize;
-  margin-left: 21px;
-
+  margin-left: 42px;
 }
 
 #todayTemp {
   font-size: 100px;
   margin-top: 45px;
   margin-bottom: 0px;
-  margin-left: 20px;
+  margin-left: 40px;
   margin-right: 20px;
 }
 
+.symbol {
+  margin-left: 20px;
+}
+
 .todaytime {
-  background-color: lightpink;
+
   display: flex;
   justify-content: space-evenly;
   height: 70px;
@@ -63,7 +82,6 @@ p {
 }
 
 .todaysunrise {
-  background-color: rgb(254, 212, 218);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -78,12 +96,11 @@ p {
 }
 
 #sr {
-  font-size: 20px;
+  font-size: 25px;
   margin-top: auto;
 }
 
 .todaysunset {
-  background-color: rgb(254, 212, 218);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -91,29 +108,36 @@ p {
 }
 
 #ss {
-  font-size: 20px;
+  font-size: 25px;
   margin-top: auto;
 }
 
-#weekWeather {}
+#weekWeather {
+  margin-top: 0px;
+}
 
 .dayRow {
   display: flex;
-  width: 100%;
+  width: 75%;
   background-color: lightskyblue;
+  background-color: rgba(255, 255, 255, 0.4);
   justify-content: space-around;
   height: 20px;
   margin-bottom: 10px;
+  padding-top: 3px;
+  border-radius: 3px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .dayLabel {
-  background-color: rgb(208, 244, 255);
+
   width: 20%;
   text-align: center;
 }
 
 .dayTemp {
   width: 20%;
-  background-color: rgb(208, 244, 255);
+
   text-align: center;
 }
