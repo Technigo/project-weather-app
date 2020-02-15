@@ -109,3 +109,19 @@ fetch(londonWeather)
     barcelonaWeatherToday.innerHTML = `<p>${nextCity}: ${weather.temp}°C // feels like: ${weather.feels_like}°C</p>`
   })
   })
+
+  function myIcon() {
+    var elem = document.getElementById("whatWeather");   
+    var pos = 0;
+    var id = setInterval(frame, 10);
+    function frame() {
+      if (pos == 200) {
+        clearInterval(id);
+      } else {
+        pos++; 
+        elem.style.top = pos + 'px'; 
+        elem.style.right = pos + 'px'; 
+      }
+    }
+  }
+  myIcon()

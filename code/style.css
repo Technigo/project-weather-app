@@ -24,6 +24,7 @@ body {
   display: block; */
   /* line-height: 30px; */
    padding: 20px;
+   position: relative;
 }
 
 #today p {
@@ -37,6 +38,7 @@ body {
   display: block;
   padding: 5px;
   margin: 10px;
+  position: absolute;
 }
 
 h2 {
