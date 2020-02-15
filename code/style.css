@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+}
+
+body {
+  background-color: aquamarine;
+}
+
+.weatherForecast {
+  background-color: #FFF433;
+  padding: 20px;
+  margin: 20px;
+}
+
+#fiveDaysWeather {
+  margin: 20px auto;
+}
