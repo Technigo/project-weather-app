@@ -123,8 +123,9 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=London&appid=2b9468766
         let dayListWeather = []
         jsonweek.list.forEach((item) => {
             const weekTime = (new Date(item.dt * 1000)).toUTCString().split(' ')
+            console.log(weekTime)
             const y = item.dt_txt.split(' ')
-            dayListWeather.push({ name: item.weather[0].main, description: item.weather[0].description, temp: ((item.main.temp - 273.15).toFixed(1)), weekDay: weekTime[0], date: y[0], time: y[1], wind: item.wind.speed })
+            dayListWeather.push({ name: item.weather[0].main, description: item.weather[0].description, temp: ((item.main.temp - 273.15).toFixed(1)), weekDay: weekTime[0], month: weekTime[2], date: weekTime[1], time: y[1], wind: item.wind.speed })
 
         })
         return dayListWeather
@@ -143,10 +144,29 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=London&appid=2b9468766
 
     const weekText = document.getElementById('forecast')
     const fontCol = document.getElementById('headline').style.color
+    const symbol = (weather) => {
+        let img = 'X'
+        if (weather === 'Clouds'){
+            img = '&#9729;'
+        }
+        else if (weather === 'Rain'){
+            img = '&#9730;'
+        }
+        else if (weather === 'Clear'){
+            img = '&#9728;'
+        }
+        else {
+            img =  '&#9733;'
+        }
+        
+    return img
+    }
+    
+    
     weatherShow.forEach((day, index, arr) => {
         const myIndex = index.toString()
         const myString = document.getElementById(myIndex)
-        myString.innerHTML += `<p>${day.weekDay} ${day.date}</p><p>${day.temp}&#8451;</p>`
+        myString.innerHTML += `<p>${day.weekDay} ${day.month} ${day.date}</p><p>${symbol(day.name)} ${day.temp}&#8451;</p>`
         
         myString.style.borderTopColor = fontCol
         myString.style.borderTopStyle = 'dotted'
