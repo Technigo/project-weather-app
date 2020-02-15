@@ -1,0 +1,90 @@
+html {
+  font-family: 'roboto', sans-serif;
+  background-color: white;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.gbg-image {
+
+  background-image: linear-gradient(to bottom, rgba(245, 246, 249, 0.52), rgba(244, 244, 247, 0.73)), url("gbg-img.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+.today-container {
+  height: 400px;
+  padding: 20px;
+  color: black;
+}
+
+
+.forecast {
+  height: 600px;
+  background-color: whitesmoke;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  padding: 16px 5px;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.forecast p {
+  font-size: 1.5rem;
+}
+
+#forecast-weekday {
+  flex-direction: column;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#forecast-temp {
+  flex-direction: column;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
+#forecast-icon {
+  flex-direction: column;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#forecast-description {
+  flex-direction: column;
+  display: none;
+  justify-content: space-evenly;
+}
+
+
+
+/*MEDIA QUERY TABLET AND BIGGER*/
+@media(min-width:667px) {
+  #forecast-description {
+    flex-direction: column;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+}
+
+/*background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(244, 244, 247, 0.73)),
+url("gbg-img.jpg");

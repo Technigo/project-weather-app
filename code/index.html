@@ -1,23 +1,30 @@
->
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weather App</title>
-</head>
+    <title>Weather App</title>
+  </head>
 
-<body>
-  <section>
-    <h3>Today's weather in</h3>
-    <h1>Gothenburg</h1>
-    <div id="Gothenburg">
-    </div>
-    Loading...
-  </section>
-  <script src="script.js">
-  </script>
-</body>
+  <body>
+    <section class="today-container gbg-image">
+      <h3>Today's weather in</h3>
+      <h1>Gothenburg</h1>
+      <div id="Gothenburg"></div>
+    </section>
+    <section class="forecast">
+      <div id="forecast-weekday"></div>
+      <div id="forecast-temp"></div>
+      <div id="forecast-description"></div>
+      <div id="forecast-icon"></div>
+    </section>
 
+    <script src="script.js"></script>
+  </body>
 </html>
