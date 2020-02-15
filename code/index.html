@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="img/fav.png" type="image/x-icon">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
   <title>WEATHER FORECAST</title>
@@ -15,7 +15,7 @@
 
     <!-- <div id="currentWeather"></div> -->
     <div id="today">
-      <h2 id="todayWeather">Todays Forecast:</h2>
+      <h2 id="todayWeather">Todays Forecast</h2>
       <img src="" id="whatWeather" alt="icon">
       <p>Location: <span id="city"></span></p>
       <p>Temperature: <span id="temp"></span>°C</p>
@@ -24,11 +24,17 @@
     </div>
       <p>Sunrise: <span id="sunrise"></span></p>
       <p>Sunset: <span id="sunset"></span></p>
-
   </section>
 
-  <section id="fiveDayForecast">
-  </section>
+
+  <section id="fiveDayForecast"></section>
+
+  
+  <div id="compareCities">
+    <p>Today:</p>
+    <section id="london"></section>
+    <section id="barcelona"></section>
+  </div>
 
 
   <script src="weather.js"></script>
