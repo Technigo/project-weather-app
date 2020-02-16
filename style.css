@@ -5,3 +5,8 @@ body {
   font-size: 1rem;
 }
 
+sup {
+  vertical-align: text-top;
+  font-size: xx-small;
+}
+
