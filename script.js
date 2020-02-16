@@ -8,11 +8,17 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
   })
   .then((json) => {
 
+    const sunrise = new Date(json.sys.sunrise * 1000)
+    const sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' })
+
+    const sunset = new Date(json.sys.sunset * 1000)
+    const sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' })
+
     const temp = Math.round(json.main.temp * 10) / 10
 
-    information.innerHTML = `<h1>${json.weather[0].description}|${temp}</h1>`
-    information.innerHTML += `<h1>sunrise ${json.sys.sunrise}</h1>`
-    information.innerHTML += `<h1>sunrise ${json.sys.sunset}</h1>`
+    information.innerHTML = `<h1>${json.weather[0].description} | ${temp}°</h1>`
+    information.innerHTML += `<h1>sunrise ${sunriseTime}</h1>`
+    information.innerHTML += `<h1>sunset ${sunsetTime}</h1>`
     text.innerHTML = `<h1>Light a fire and get cosy. ${json.name} is looking grey today.</h1>`
   })
 
@@ -25,7 +31,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
 
     filteredForecast.forEach((weekday) => {
-      week.innerHTML += `<p>DAY ${weekday.dt} TEMPERATUR ${weekday.main.temp}</p>`
+      week.innerHTML += `<p>DAY ${weekday.dt}    TEMPERATUR ${weekday.main.temp}</p>`
     })
 
   })
