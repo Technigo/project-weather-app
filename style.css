@@ -1,0 +1,57 @@
+body {
+  position: relative;
+  margin: 20px;
+  padding-bottom: 100px;
+  background: #fff;
+  font-family: Helvetica, sans-serif;
+  color: #141414;
+}
+
+h2 {
+  text-align: center;
+  font-size: 24px;
+}
+
+p {
+  text-align: center;
+  font-size: 16px;
+}
+
+.weather {
+  padding: 10px;
+  background-color: #eca900;
+}
+
+.dayNight {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: none;
+}
+
+.sunrise {
+  margin: 0;
+  width: 30%;
+  padding: 10px;
+  background-color: cadetblue;
+  flex-grow: 1;
+  align-self: auto;
+}
+
+.sunset {
+  margin: 0;
+  width: 30%;
+  padding: 10px;
+  background-color: crimson;
+  flex-grow: 1;
+  align-self: auto;
+}
+
+.forecast {
+  padding: 10px;
+  background-color: blueviolet;
+}
+
+span {
+  margin-left: 50px;
+}
