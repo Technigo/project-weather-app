@@ -1,0 +1,45 @@
+body {
+    font-family: 'Roboto', sans-serif;  
+    font-weight: light;
+    }
+    .sky {
+        width: 100%;
+        min-height:30vh;
+        background-image: linear-gradient(13deg, #525bd5 0%, #31246c 100%);
+        border-radius: 0 0 50% 50%;
+    }
+    h2 {
+        font-size: 20px;
+    }
+    #weatherapi {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        align-content: flex-end;
+        padding-bottom: 2em;
+    }
+    h3 {
+        padding-bottom: 1em;
+        color: white;
+    }
+    #weekreport {
+        align-self: flex-start;
+        padding-left: 1em;
+        color: rgb(15, 15, 15);
+       
+    }
+    table{
+        font-size: 50px;
+    }
+    .day.main.temp {
+        text-align: right;
+    }
+    .rainy {
+        background-image: ☔;
+    }
+    .cloudy {
+        background-image: ☁️;
+    }
+    .sunny {
+        background-image: ☀️;
+    }
