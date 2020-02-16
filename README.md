@@ -8,4 +8,4 @@ Step one was to create a api key and call for the json data in a fetch promise. 
 
 ## View it live
 
-
+https://lucid-kowalevski-25dae7.netlify.com/
