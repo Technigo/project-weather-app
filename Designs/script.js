@@ -6,7 +6,21 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Marbella,Spain&units=met
 
   })
   .then((json) => {
+
     city.innerHTML = json.name
     temp.innerHTML = `${json.main.temp.toFixed(1)} °`
     description.innerHTML = json.weather[0].description
+
+    const sunriseConversion = new Date(json.sys.sunrise * 1000)
+    const sunsetConversion = new Date(json.sys.sunset * 1000)
+
+    const sunriseTime = sunriseConversion.toLocaleTimeString([], {
+      timeStyle: 'short'
+    })
+    const sunsetTime = sunsetConversion.toLocaleTimeString([], {
+      timeStyle: 'short'
+    })
+
+    sunrise.innerHTML = `Sunrise: ${sunriseTime}`
+    sunset.innerHTML = `Sunset: ${sunsetTime}`
   })
