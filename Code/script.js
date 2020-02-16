@@ -4,7 +4,6 @@ const forecastWeatherAPI = "http://api.openweathermap.org/data/2.5/forecast?q=he
 
 // Data storage
 const weather = {}
-const forecast = []
 const days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
 
 
@@ -27,6 +26,7 @@ fetch(currentWeatherAPI)
     weather.description = jsonFile.weather[0].description
 
     let sunrise = new Date((jsonFile.sys.sunrise + jsonFile.timezone) * 1000)
+    weather.sunriseTime = sunrise
     sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short', timeZone: "UTC" })
     weather.sunrise = sunriseTime
 
@@ -46,9 +46,14 @@ const printWeather = () => {
           ${weather.description}
           ${weather.sunrise}
           ${weather.sunset}
+
       </div>
     `
 }
+
+// Weather images
+
+
 
 /*  ---- FORECAST WEATHER ---- */
 
@@ -64,11 +69,13 @@ fetch(forecastWeatherAPI)
       const date = new Date(day.dt * 1000)
       let weekDay = days[date.getDay()]
       forecastWeather.innerHTML += `
-      <p> 
-      ${weekDay}
-      ${(day.main.temp / 100).toFixed(2)} celcius
-      ${day.weather[0].description}
-      </p>`
+      <div class="weekday">
+      <p>${weekDay}</p>
+      <p>${(day.main.temp / 100).toFixed(2)} &#8451;</p>
+      <p>${day.weather[0].description}</p>
+      </div>`
     })
   })
 
+
+/*  ---- BACKGROUND ANIMATION ---- */

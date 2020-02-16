@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400,700&display=swap');
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+
+/* ---- BACKGROUND ----- */
+
+body{
+  background: linear-gradient(45deg, 
+  #d65db1,
+  #ff6f91,
+  #ff9671,
+  #ffc75f,
+  #f9f871
+  );
+  height: 100vh;
+  background-size: 400%;
+  animation: background-animation 5s infinite alternate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes background-animation {
+  0% {background-position: left;}
+  100% {background-position: right;}
+}
+
+/* ---- MAIN BODY ---- */
+
+main{
+  background: #e3edf7;
+  width: 90vw;
+  height: 70vh;
+  border-radius: 0px 12px 0px 12px;
+  border: 12px solid #e3edf7;
+  display: grid;
+  grid-template-rows: 4fr 1fr;
+  grid-template-areas: "current" "forecast";
+  grid-row-gap: 12px;
+}
+
+#current{
+  padding: 12px;
+  grid-area: current;
+  border-radius: 12px 12px 12px 12px;
+  box-shadow: 
+  6px 6px 10px -1px rgba(0,0,0,0.15),
+  -6px -6px 10px -1px rgba(255,255,255,0.7);
+  ;
+}
+
+#forecast{
+  padding: 12px;
+  grid-area: forecast;
+  border-radius: 12px 12px 12px 12px;
+  box-shadow: 
+  6px 6px 10px -1px rgba(0,0,0,0.15),
+  -6px -6px 10px -1px rgba(255,255,255,0.7);
+  ;
+  display: flex;
+}
+
+.weekday{
+  width: ;
+}
