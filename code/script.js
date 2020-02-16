@@ -21,12 +21,12 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Gotenburg&units=metric&
       container.innerHTML += `<p>${now.description} </p>
       <img src=https://openweathermap.org/img/wn/${now.icon}@2x.png></img>`
       //SUNRISE; SUNSET
-      let rise = new Date(json.sys.sunrise * 1000);
-      let up = rise.toLocaleTimeString([], {
+      const rise = new Date(json.sys.sunrise * 1000);
+      const up = rise.toLocaleTimeString([], {
         timeStyle: 'short'
       })
-      let set = new Date(json.sys.sunset * 1000);
-      let down = set.toLocaleTimeString([], {
+      const set = new Date(json.sys.sunset * 1000);
+      const down = set.toLocaleTimeString([], {
         timeStyle: 'short'
       })
       container.innerHTML += `<p>Sunrise: ${up} - Sunset: ${down}</p>`
