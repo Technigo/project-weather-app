@@ -36,6 +36,7 @@ p {
 #forecast {
   display: flex;
   flex-direction: row;
+  color: antiquewhite;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
