@@ -1,14 +1,3 @@
-/*
-API KEY: 3c481a17ec1c4b275eed746ad29d58b1
-API CALL: http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID={APIKEY}
-
-5 day forecast example for Stockholm and the units is metric
-api.openweathermap.org/data/2.5/forecast?id=2673730&units=metric&appid=3c481a17ec1c4b275eed746ad29d58b1
-
-city id stockholm: 2673730
-*/
-
-// Testing to print out some of the respons from the api
 const city = document.getElementById("city")
 const temp = document.getElementById("temp")
 const wind = document.getElementById("wind")
@@ -34,7 +23,7 @@ const getWeatherForecast = async (url) => {
     .then((myJson) => {
       // Update weather in Stockholm
       todayForecast(myJson)
-      // Invoke fivedayforecast function when its done here
+      // Update weather 5 day forecast
       fiveDayForecast(myJson)
     })
     .catch((err) => {
@@ -46,19 +35,17 @@ getWeatherForecast(weatherUrl);
 
 
 const todayForecast = (myJson) => {
-  // Targeting my id and update with current information from api.
-  // This is how I can show big card information about stockholm.
   // Add icon depending on myJson.list[0].weather.id, rain, cloudy, sunny etc.
-  city.innerHTML = `City: ${myJson.city.name}`
-  temp.innerHTML = `Current temp in ${myJson.city.name} is ${myJson.list[0].main.temp}&#176`
-  wind.innerHTML = `Wind speed: ${myJson.list[0].wind.speed} m/s`
-  description.innerHTML = `Description: ${myJson.list[0].weather[0].description}`
+  city.innerHTML = `${myJson.city.name}`
+  temp.innerHTML = `${myJson.list[0].main.temp}&#176`
+  wind.innerHTML = `${myJson.list[0].wind.speed} m/s`
+  description.innerHTML = `${myJson.list[0].weather[0].description}`
 
   // Convert sunrise and sunset from unix timestamp
   let convertedSunrise = new Date(myJson.city.sunrise * 1000) 
   let convertedSunset = new Date(myJson.city.sunset * 1000)
-  sunrise.innerHTML = `Sunrise: ${convertedSunrise.toLocaleTimeString({}, {timeStyle: 'short'})}`
-  sunset.innerHTML = `Sunset: ${convertedSunset.toLocaleTimeString({}, {timeStyle: 'short'})}`
+  sunrise.innerHTML = `${convertedSunrise.toLocaleTimeString({}, {timeStyle: 'short'})}`
+  sunset.innerHTML = `${convertedSunset.toLocaleTimeString({}, {timeStyle: 'short'})}`
 }
 
 
@@ -99,12 +86,12 @@ const fiveDayForecast = (myJson) => {
       // Stores the highest valued number from this date into maxTemp
       maxTemp = Math.max(...temps)
 
-      // console.log(weekday[2])
+      // Create new date based on items date, then later converting that to getDay()
       dayName = new Date(item[0])
 
       // Display each date and min/max temp
       console.log(`${weekday[dayName.getDay()]}: ${minTemp}`)
       console.log(`${weekday[dayName.getDay()]}: ${maxTemp}`)
-      forecast.innerHTML += `<p>${weekday[dayName.getDay()]}: ${minTemp}&#176 - ${maxTemp}&#176</p>`
+      forecast.innerHTML += `<span><p class="icon day">${weekday[dayName.getDay()]}</p> <p class="icon min-max-temp"> ${minTemp}&#176 - ${maxTemp}&#176</p></span>`
     })
 }

@@ -9,25 +9,30 @@
 </head>
 <body>
   
-  <!-- HEAEDER -->
-  <header class="header-menu">
-    <h2>Clickbait Dashboard</h2>
-  </header>
 
   <!-- WEATHER INFO -->
   <section class="weather">
     <article class="weather-today">
-      <p id="city"></p>
-      <p id="temp"></p>
-      <p id="description"></p>
-      <p id="wind"></p>
-      <p id="sunrise"></p>
-      <p id="sunset"></p>
-    </article>
+      <h1 id="city"></h1>
+        <article class="small-card">
+          <p class="icon temp" id="temp"></p>
+          <p class="icon description" id="description"></p>
+          <p class="icon wind" id="wind"></p>
+        </article>
 
-    <article id="forecast" class="weather-forecast">
-      <!-- 5 day forecast here -->
+        <article class="small-card">
+          <p class="icon sun">Sunrise</p>
+          <p class="icon rise" id="sunrise"></p>
+          <p class="icon set" id="sunset"></p>
+          <p class="icon sun">Sunset</p>
+        </article>
+
     </article>
+    <article>
+      <h1>5 day forecast</h1>
+      <article class="weather-forecast" id="forecast">
+      </article>
+  </article>
   </section>
 
 
