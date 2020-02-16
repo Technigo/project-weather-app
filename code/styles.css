@@ -6,25 +6,20 @@ html {
   flex-direction: column;
   text-align: center;
   box-sizing: border-box;
-
 }
 
 #gbg-image {
-
   background-image: linear-gradient(to bottom, rgba(245, 246, 249, 0.52), rgba(244, 244, 247, 0.73)), url("gbg-img.jpg");
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-
 }
 
 .today-container p {
   font-size: 1.5rem;
 }
-
-
 
 h1 {
   font-size: 2.5rem;
@@ -38,13 +33,11 @@ h2 {
   height: 500px;
   padding: 20px;
   color: black;
-
 }
-
 
 .forecast {
   height: 600px;
-  background-color: whitesmoke;
+  background-color: rgb(249, 244, 244);
   display: flex;
   text-align: center;
   justify-content: center;
@@ -82,14 +75,18 @@ h2 {
   justify-content: space-evenly;
 }
 
+footer {
+  height: 100px;
+  width: auto;
+  text-align: center;
+  padding: 40px;
+  color: rgb(110, 109, 109);
+}
 
 
 /*MEDIA QUERY TABLET AND BIGGER*/
 @media(min-width:667px) {
   #forecast-description {
-    flex-direction: column;
     display: flex;
-    justify-content: space-evenly;
   }
-
 }
