@@ -1,18 +1,22 @@
-// My variables
+// Variables
 const forecast = []
 const weather = {}
+const week = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat']
+
+// To get content in HTML
 const city = document.getElementById("city");
 const temp = document.getElementById("temp");
 const feels = document.getElementById("feels")
 const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
-const week = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat']
 const forecastDiv = document.getElementById('weekday')
 const fiveDayForecast = document.getElementById("fiveDayForecast")
 const londonWeatherToday = document.getElementById("london")
 const barcelonaWeatherToday = document.getElementById("barcelona")
 const osloWeatherToday = document.getElementById("oslo")
 const weatherIcon = document.getElementById("whatWeather")
+
+// Icon pics
 const cold = "img/snowy.png"
 const both = "img/semi.png"
 const warm = "img/sunny.png"
@@ -27,7 +31,7 @@ const barcelonaWeather = "http://api.openweathermap.org/data/2.5/weather?q=Barce
 const osloWeather = "http://api.openweathermap.org/data/2.5/weather?q=Oslo&units=metric&APPID=01b7bdc37404b6f3860ddce923c61a11"
 
 
-// Todays weather 
+// Todays weather local
 fetch(weatherNow)
   .then(response => {
     return response.json()
@@ -56,7 +60,7 @@ fetch(weatherNow)
 
   })
 
-// 5 day forecast
+// 5 day forecast local
 fetch(weatherForecast) 
   .then(response => {
     return response.json()
@@ -82,7 +86,7 @@ fetch(weatherForecast)
   })
   
 
-//Comparing with two extra cities - London&Barcelona
+//Comparing with three extra cities - London, Barcelona, Oslo
 fetch(londonWeather)
   .then(response => {
     return response.json()
