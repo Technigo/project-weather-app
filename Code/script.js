@@ -5,14 +5,16 @@ const forecastWeatherAPI = "http://api.openweathermap.org/data/2.5/forecast?q=he
 // Data storage
 const weather = {}
 const forecast = []
+const days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
 
 
 // DOM elements
 const currentWeather = document.getElementById('current')
 const forecastWeather = document.getElementById('forecast')
 
+/*  ---- CURRENT WEATHER ---- */
 
-// Fetch current weather
+// Fetch data of current weather
 fetch(currentWeatherAPI)
 
   .then((response) => {
@@ -48,26 +50,25 @@ const printWeather = () => {
     `
 }
 
+/*  ---- FORECAST WEATHER ---- */
 
-// Fetch forecast weather
+// Fetch data of forecast weather
 fetch(forecastWeatherAPI)
   .then((response) => {
     return response.json()
   })
   .then((jsonFile) => {
-    let index = 0
-    while (index < jsonFile.list.length) {
-      index += createForecast(index, jsonFile)
-    }
-    printForecast()
+    const filteredJsonFile = jsonFile.list.filter(item => item.dt_txt.includes('12:00'))
+
+    filteredJsonFile.forEach(day => {
+      const date = new Date(day.dt * 1000)
+      let weekDay = days[date.getDay()]
+      forecastWeather.innerHTML += `
+      <p> 
+      ${weekDay}
+      ${(day.main.temp / 100).toFixed(2)} celcius
+      ${day.weather[0].description}
+      </p>`
+    })
   })
 
-
-// Create forecast
-
-
-
-// Print forecast onto DOM
-const printForecast = () => {
-
-}
