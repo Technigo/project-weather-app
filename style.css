@@ -1,0 +1,26 @@
+body { 
+display: flex;
+flex-direction: column;
+align-items: center;
+flex-wrap: wrap;
+background-image: linear-gradient(45deg, #FBDA61 0%, rgb(221, 113, 189) 100%);
+background-position: 100%;  
+background-repeat: no-repeat;
+background-attachment: fixed;
+font-family: 'Amatic SC', cursive;
+color: white;
+text-shadow: 1px 1px darkgrey;
+}
+
+h1 {
+font-size: 30px;
+font-weight: bold;
+}
+
+h2 {
+font-size: 40px;
+}
+
+h3 {
+  font-size: 20px;
+}
