@@ -2,3 +2,13 @@ body {
   margin: 3rem;
   font-family: 'Avenir', sans-serif;
 }
+
+button {
+  background-color: black;
+  color: white;
+  margin-top: 2rem;
+  padding: .8rem 1rem;
+  border: 0;
+  font-family: inherit;
+  font-size: .9rem;
+}
