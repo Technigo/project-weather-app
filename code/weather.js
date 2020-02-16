@@ -11,6 +11,7 @@ const forecastDiv = document.getElementById('weekday')
 const fiveDayForecast = document.getElementById("fiveDayForecast")
 const londonWeatherToday = document.getElementById("london")
 const barcelonaWeatherToday = document.getElementById("barcelona")
+const osloWeatherToday = document.getElementById("oslo")
 const weatherIcon = document.getElementById("whatWeather")
 const cold = "img/snowy.png"
 const both = "img/semi.png"
@@ -23,6 +24,7 @@ const weatherNow = "http://api.openweathermap.org/data/2.5/weather?q=Stockholm,S
 const weatherForecast = "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=01b7bdc37404b6f3860ddce923c61a11"
 const londonWeather = "http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&APPID=01b7bdc37404b6f3860ddce923c61a11"
 const barcelonaWeather = "http://api.openweathermap.org/data/2.5/weather?q=Barcelona,esp&units=metric&APPID=01b7bdc37404b6f3860ddce923c61a11"
+const osloWeather = "http://api.openweathermap.org/data/2.5/weather?q=Oslo&units=metric&APPID=01b7bdc37404b6f3860ddce923c61a11"
 
 
 // Todays weather 
@@ -75,8 +77,8 @@ fetch(weatherForecast)
       let feelsLike = (Math.round(day.main.feels_like * 10) / 10)
       // const date = new Date(day.dt)
       fiveDayForecast.innerHTML += `<p>${whatDay}: ${temperature}°C // feels like: ${feelsLike}°C`
-  })
-  })
+      })
+    })
   })
   
 
@@ -87,14 +89,12 @@ fetch(londonWeather)
 
   .then(json => {
     console.log(json)
-    console.log(weather.sunrise = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], { timeStyle: 'short' }))
-    console.log(weather.sunset = new Date(json.sys.sunset * 1000).toLocaleTimeString([], { timeStyle: 'short' }))
     console.log(weather.temp = (Math.round(json.main.temp * 10) / 10))
     console.log(weather.feels_like = (Math.round(json.main.feels_like * 10) / 10))
     let nextCity = json.name
 
-    londonWeatherToday.innerHTML = `<p>${nextCity}: ${weather.temp}°C // feels like: ${weather.feels_like}°C</p>`
-  })
+    londonWeatherToday.innerHTML = `<p>${nextCity}: ${weather.temp}°C </p>`
+    })
   })
 
   fetch(barcelonaWeather)
@@ -103,14 +103,26 @@ fetch(londonWeather)
 
   .then(json => {
     console.log(json)
-    console.log(weather.sunrise = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], { timeStyle: 'short' }))
-    console.log(weather.sunset = new Date(json.sys.sunset * 1000).toLocaleTimeString([], { timeStyle: 'short' }))
     console.log(weather.temp = (Math.round(json.main.temp * 10) / 10))
     console.log(weather.feels_like = (Math.round(json.main.feels_like * 10) / 10))
     let nextCity = json.name
 
-    barcelonaWeatherToday.innerHTML = `<p>${nextCity}: ${weather.temp}°C // feels like: ${weather.feels_like}°C</p>`
+    barcelonaWeatherToday.innerHTML = `<p>${nextCity}: ${weather.temp}°C</p>`
+    })
   })
+
+  fetch(osloWeather)
+  .then(response => {
+    return response.json()
+
+  .then(json => {
+    console.log(json)
+    console.log(weather.temp = (Math.round(json.main.temp * 10) / 10))
+    console.log(weather.feels_like = (Math.round(json.main.feels_like * 10) / 10))
+    let nextCity = json.name
+
+    osloWeatherToday.innerHTML = `<p>${nextCity}: ${weather.temp}°C</p>`
+    })
   })
 
 
