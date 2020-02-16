@@ -1,13 +1,14 @@
-const container = document.getElementById("weather");
+// const container = document.getElementById("weather");
 const cityWeather = document.getElementById("city");
 const weatherDescription = document.getElementById("description");
-
 const weatherImage = document.getElementById("weather-image");
 
 const sunRise = document.getElementById("sunRise");
 const sunSet = document.getElementById("sunSet");
 
-const weatherForecast = document.getElementById("weather-5day");
+// const weatherForecast = document.getElementById("weather-5day");
+const weatherForecastDay = document.getElementById("forecast-weekday");
+const weatherForecastTemp = document.getElementById("forecast-temp");
 
 
 // -------------- API link variables:
@@ -25,16 +26,17 @@ fetch(weatherOneDayApi)
     return response.json();
   })
   .then((json) => {
-    console.log('checking first json', json) // checking the json from open weather
-    container.innerHTML = `<h1>${json.main.temp.toFixed(1)}°C </h1>`;
+    // console.log('checking first json', json) // checking the json from open weather
+    // container.innerHTML = `${json.main.temp.toFixed(1)}°`;
 
-    cityWeather.innerHTML = `<h1> ${json.name}  </h1>`;
+    cityWeather.innerHTML = `${json.name} is just a great city! We need some more text.`;
 
     json.weather.forEach(sky => {
-      weatherDescription.innerHTML += `<h1>${sky.description} </h1>`;
+      weatherDescription.innerHTML += `${sky.description} | ${json.main.temp.toFixed(1)}° `;
     });
-    weatherImage.innerHTML = `<img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="" />`;
-    console.log('check if image is picked up:', weatherImage)
+    weatherImage.innerHTML = `<img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="Weather Icon" />`;
+
+    // console.log('check if image is picked up:', weatherImage)
     // -------------- 
     // Weather Icon
     /*
@@ -50,14 +52,10 @@ fetch(weatherOneDayApi)
     // console.log(weather.sunset = new Date(json.sys.sunset * 1000).toLocaleTimeString([], { timeStyle: 'short' }))
     // -------------- 
     // Sunrise and Sunset:
-    sunRise.innerHTML = weather.sunrise = new Date(
-      json.sys.sunrise * 1000
-    ).toLocaleTimeString([], {
+    sunRise.innerHTML = weather.sunrise = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], {
       timeStyle: "short"
     });
-    sunSet.innerHTML = weather.sunset = new Date(
-      json.sys.sunset * 1000
-    ).toLocaleTimeString([], {
+    sunSet.innerHTML = weather.sunset = new Date(json.sys.sunset * 1000).toLocaleTimeString([], {
       timeStyle: "short"
     });
     // -------------- 
@@ -76,7 +74,7 @@ fetch(weatherForecastApi)
     // console.log('forecast json object', json);
     // filtrerar ut alla "kl 12" och skapar en ny Array: **************
     const filteredForecast = json.list.filter(item => item.dt_txt.includes("12:00"));
-    console.log('filtered array', filteredForecast);
+    // console.log('filtered array', filteredForecast);
     /*
     filteredForecast.forEach((forecast) => {
       weatherForecast.innerHTML += `<h3>date: ${forecast.dt} / ${forecast.weather[0].description} / ${forecast.main.temp.toFixed(1)}°C `;
@@ -84,11 +82,12 @@ fetch(weatherForecastApi)
    */
     filteredForecast.forEach(day => {
       const date = new Date(day.dt * 1000)
-      console.log('new date:', date)
+      // console.log('new date:', date)
       const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
       let dayOfWeek = weekdays[date.getDay()];
-      weatherForecast.innerHTML += `<p> ${dayOfWeek} ${day.main.temp.toFixed(0)} °C </p>`
-      // weatherForecastImage.innerHTML += `<img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="" />`
+      weatherForecastDay.innerHTML += `<p> ${dayOfWeek}</p>`
+      weatherForecastTemp.innerHTML += `<p> ${day.main.temp.toFixed(0)} °</p>`
+
     })
     // console.log(filteredForecast.toLocaleString(`en-US`)); 
     // console.log(weatherForecast);

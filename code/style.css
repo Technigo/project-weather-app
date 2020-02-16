@@ -1,10 +1,61 @@
 html {
-background-color: #F7E9B9;
+  background-color: #F7E9B9;
+
 
 }
 
 body {
-font-family: 'Montserrat', sans-serif;
-color: #2A5510;
+  font-family: 'Montserrat', sans-serif;
+  color: #2A5510;
+  padding: 0px;
+  margin: 0px;
+
+}
+
+h1 {
+  margin: 0px;
+}
+
+.box-container {
+  padding: 20px 20px;
+
+}
+
+.top-info {
+  font-weight: 100;
+  font-size: 16px;
+  text-transform: lowercase;
+  padding: 0px 20px;
+  margin: 2px;
+}
+
+
+.city-info {
+  max-width: 90%;
+  font-weight: 700;
+  font-size: 26px;
+  padding: 0px 20px;
+}
+
+.city-info p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  /* border: rgb(43, 226, 168) solid 5px; */
+}
+
+.city-info img {
+  height: 70px;
+}
+
+
+.forecast-info {
+  font-weight: 100;
+  font-size: 16px;
+  text-transform: lowercase;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 20px;
+  margin: 0px;
+
 
 }

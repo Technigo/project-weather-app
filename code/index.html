@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,34 +11,46 @@
 
 <body>
 
+  <div class="box-container">
 
-  <section>
-    <h3>Today's weather:</h3>
-  </section>
+    <!-- Top section - Day info -->
 
-  <section >
-    <p id="city"></p>
-    <p id="weather"></p>
-    <p id="description"></p>
-  </section>
+    <section class="top-info">
+      <div class="">
+        <p id="description"></p>
+        <p id="weather"></p>
+      </div>
 
-  <section id="weather-image">
-    <p>IMAGE HERE</p>
-  </section>
+      <p>Sunrise</p>
+      <p id="sunRise"></p>
+      <p>Sunset</p>
+      <p id="sunSet"></p>
+    </section>
 
-  <section id="sunStatus">
-    <p>Sunrise:</p>
-    <p id="sunRise"></p>
-    <p>Sunset:</p>
-    <p id="sunSet"></p>
-  </section>
+    <!-- Middle section - Image and City -->
 
-  <section>
-    <h1>5-day forecast, Stockholm:</h1>
-    <p id="weather-5day"></p>
-    <p id="weather-5day-image"></p>
-  </section>
-  
+    <section class="city-info">
+      <p id="weather-image"></p>
+      <p id="city"></p>
+    </section>
+
+
+
+    <section id="sunStatus">
+
+    </section>
+
+    <!-- bot section - Forecast -->
+
+    <section class="forecast-info">
+      <p id="forecast-weekday"></p>
+      <p id="forecast-temp"></p>
+    </section>
+
+
+  </div>
+
+
 
 
 
