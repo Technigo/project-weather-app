@@ -1,0 +1,51 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  text-align: center;
+  justify-content: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin: 20px;
+
+}
+
+h1 {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: black;
+  font-size: 15px;
+  margin: 10px;
+}
+
+#city {
+  font-size: 35px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  text-align: center;
+  justify-content: center;
+}
+
+#temp {
+  float: center;
+  margin: 5px;
+  margin: 10px 2px 15px 2px;
+  font-size: 20px;
+
+}
+
+#description {
+  float: center;
+  margin: 10px 2px 15px 2px;
+  font-size: 20px;
+}
+
+.weekdays {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  text-align: center;
+  justify-content: center;
+}

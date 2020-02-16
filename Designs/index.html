@@ -4,22 +4,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="style.css">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Weather</title>
 </head>
 
 <body>
+  <h1>Todays Weather In: </h1>
   <div id="city"></div>
-  <div id="temp"></div>
-  <div id="description"></div>
+  <section class="container">
+    <div id="temp"></div>
+    <div id="description"></div>
+  </section>
   <div id="sunrise"></div>
   <div id="sunset"></div>
   <div id="sunriseConversion"></div>
   <div id="sunsetConversion"></div>
   <div id="sunriseTime"></div>
   <div id="sunsetTime"></div>
-  <div id="containerFiveDays"></div>
-
+  <section class="weekdays">
+    <div id="containerFiveDays"></div>
+  </section>
 
 
   <script src="./script.js"></script>

@@ -8,7 +8,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Marbella,Spain&units=met
   .then((json) => {
 
     city.innerHTML = json.name
-    temp.innerHTML = `${json.main.temp.toFixed(1)} °`
+    temp.innerHTML = `${json.main.temp.toFixed(1)}°`
     description.innerHTML = json.weather[0].description
 
     const sunriseConversion = new Date(json.sys.sunrise * 1000)
@@ -36,7 +36,8 @@ fetch('http://api.openweathermap.org/data/2.5/forecast?q=marbella,spain&appid=32
       const date = new Date(day.dt * 1000)
       const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
       let dayOfWeek = weekdays[date.getDay()];
-      containerFiveDays.innerHTML += `<p> ${dayOfWeek} ${day.main.temp.toFixed(0)} ° </p>`
+      containerFiveDays.innerHTML += ` ${dayOfWeek} ${day.main.temp.toFixed(0)} ° `
+
     })
 
 
