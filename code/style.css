@@ -1,3 +1,11 @@
+:root {
+  --color-hot: #FF5733;
+  --color-warm: #FFBD33;
+  --color-medium: #FFE033;
+  --color-cool: #33C4FF;
+  --color-cold: #338AFF;
+}
+
 body {
   margin: 3rem;
   font-family: 'Avenir', sans-serif;

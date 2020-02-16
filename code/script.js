@@ -1,3 +1,25 @@
+// Geolocation test
+const geoBtn = document.getElementById("geo");
+
+const getLocation = () => {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    geoBtn.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+const showPosition = (position) => {
+  let coordLat = position.coords.latitude
+  let coordLong = position.coords.longitude
+  let apiString = `https://api.openweathermap.org/data/2.5/forecast?lat=${coordLat}&lon=${coordLong}&appid=302165d90858a8a500d4198d9bc63d2b`
+  console.log(apiString)
+}
+
+// Geo location button on click
+document.querySelector('#geo').addEventListener('click', getLocation)
+
+
 // Todays weather
 fetch('https://api.openweathermap.org/data/2.5/weather?q=Malmo,Sweden&units=metric&APPID=302165d90858a8a500d4198d9bc63d2b')
   .then((response) => {
@@ -13,26 +35,20 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Malmo,Sweden&units=metr
       return time;
     }
 
-    // Geolocation test
-    const geoBtn = document.getElementById("geo");
+    // Change body background color depending on current temperature
+    const currentTemp = +json.main.temp.toFixed(0)
 
-    function getLocation() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-      } else {
-        geoBtn.innerHTML = "Geolocation is not supported by this browser.";
-      }
+    if (currentTemp < -5) {
+      document.body.style.backgroundColor = 'var(--color-cold)'
+    } else if (currentTemp < 2) {
+      document.body.style.backgroundColor = 'var(--color-cool)'
+    } else if (currentTemp <= 10) {
+      document.body.style.backgroundColor = 'var(--color-medium)'
+    } else if (currentTemp <= 20) {
+      document.body.style.backgroundColor = 'var(--color-warm)'
+    } else {
+      document.body.style.backgroundColor = 'var(--color-hot)'
     }
-
-    function showPosition(position) {
-      let coordLat = position.coords.latitude
-      let coordLong = position.coords.longitude
-      let apiString = `https://api.openweathermap.org/data/2.5/forecast?lat=${coordLat}&lon=${coordLong}&appid=302165d90858a8a500d4198d9bc63d2b`
-      console.log(apiString)
-    }
-
-    getLocation()
-
 
     // Print out to DOM
     document.querySelector('#city').innerHTML = json.name
