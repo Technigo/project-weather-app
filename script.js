@@ -28,10 +28,14 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
     return response.json()
   })
   .then((json) => {
-    const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
+    const filteredForecast = json.list.filter(item => item.dt_txt.includes('03:00'))
 
-    filteredForecast.forEach((weekday) => {
-      week.innerHTML += `<p>DAY ${weekday.dt}    TEMPERATUR ${weekday.main.temp}</p>`
+    containerFiveDays.innerHTML = ""
+    filteredForecast.forEach(day => {
+      const date = new Date(day.dt * 1000)
+      const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+      let dayOfWeek = weekdays[date.getDay()]
+      containerFiveDays.innerHTML += `<p> ${dayOfWeek} ${day.main.temp.toFixed(0)} °C </p>`
     })
 
   })
