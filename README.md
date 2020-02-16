@@ -1,13 +1,11 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This app is presenting weather information and forecast for Stockholm, Sweden from the API at https://openweathermap.org/
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Step one was to create a api key and call for the json data in a fetch promise. Step two was to filter and display this information in the html. Step three was to make a second fetch for a five days forecast. If I had more time I would loop the accurate day for each weekday and I would add more cities to forecast for. This project was dificult to deploy with netlify.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+
