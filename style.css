@@ -1,0 +1,42 @@
+h1 {
+    margin: 40px 40px 0px 40px;
+}
+
+.current {
+    display: flex;
+}
+
+.current div {
+    margin: 0px 40px;
+}
+
+.sunrise-sunset {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.forecastWeather {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+}
+
+.forecast {
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#forecastDays {
+    margin-left: 20px;
+    flex-grow: 2;
+}
+
+#forecastIcon {
+    margin-right: 20px;
+}
+
+#forecastTemp {
+    margin-right: 20px;
+}
