@@ -15,12 +15,15 @@ const wind = document.getElementById("wind")
 const description = document.getElementById("description")
 const sunrise = document.getElementById("sunrise")
 const sunset = document.getElementById("sunset")
+const forecast = document.getElementById("forecast")
+const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
-// Fetch function
-const key = "3c481a17ec1c4b275eed746ad29d58b1" //Should be hidden in .gitignore
+
+// Fetch weather url
+const weatherKey = "3c481a17ec1c4b275eed746ad29d58b1" //Should be hidden in .gitignore
 const stockholm = "2673730"
 const units = "metric"
-const weatherUrl = `http://api.openweathermap.org/data/2.5/forecast?id=${stockholm}&units=${units}&appid=${key}`
+const weatherUrl = `http://api.openweathermap.org/data/2.5/forecast?id=${stockholm}&units=${units}&appid=${weatherKey}`
 
 
 const getWeatherForecast = async (url) => {
@@ -60,23 +63,48 @@ const todayForecast = (myJson) => {
 
 
 const fiveDayForecast = (myJson) => {
-  // Do my five day forecast here!
+  
+  const forecastObj = {}
 
-  myJson.list.forEach((main) => {
-    // Find all date and time, use split to get rid of time
-    const date = main.dt_txt.split(' ')[0]
-    console.log(date)
- })
+  myJson.list.forEach((element) => {
+    // Find all date and time in each element, use split to get rid of time
+    const date = element.dt_txt.split(' ')[0]
+    
+    if (forecastObj[date]) {
+      forecastObj[date].push(element)
+    } else {
+      forecastObj[date] = [element]
+    }
+  })
+
+
+    // Run on each element in forecastObj, removes todays date and looks for lowest temp and highest temp in each element
+    Object.entries(forecastObj).forEach((item, index) => {
+
+      // Removes todays date, since we want to see the next five days
+      if (index === 0) {
+        return
+      }
+      
+      // Start att the first date in the array
+      const date = item[0]
+      // Store all elements from that date to weatherValues
+      const weatherValues = item[1]
+
+      // Create a new array named temps and store all of this dates temp
+      const temps = weatherValues.map((value) => value.main.temp)
+
+      // Stores the lowest valued number from this date into minTemp
+      minTemp = Math.min(...temps)
+      // Stores the highest valued number from this date into maxTemp
+      maxTemp = Math.max(...temps)
+
+      // console.log(weekday[2])
+      dayName = new Date(item[0])
+
+      // Display each date and min/max temp
+      console.log(`${weekday[dayName.getDay()]}: ${minTemp}`)
+      console.log(`${weekday[dayName.getDay()]}: ${maxTemp}`)
+      forecast.innerHTML += `<p>${weekday[dayName.getDay()]}: ${minTemp}&#176 - ${maxTemp}&#176</p>`
+    })
 }
-
-
-// TrafikLAB
-// Företaget som hanterar all kollektivtrafik, bland annat SL.
-// Skapat ett konto, godkänt licenser och avtal.
-// https://www.trafiklab.se/api/sl-storningsinformation-2
-// API nyckel: 47b6750ccfc04bfd9145a16eeda8fad4
-
-/* fetch url till sl
-https://api.sl.se/api2/deviations.Json?key=47b6750ccfc04bfd9145a16eeda8fad4&transportMode=metro
-*/
-

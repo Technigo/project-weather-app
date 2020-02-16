@@ -32,7 +32,7 @@ body {
   color: var(--main-color)
 }
 
-.current-weather {
+.weather {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -40,12 +40,18 @@ body {
   background-color: blue;
 }
 
-.current-weather p {
+.weather-today {
+}
+
+.weather-forecast {
+}
+
+.weather p {
   font-family: var(--main-font);
 }
 
 @media only screen and (min-width: 300px) and (max-width: 640px) {
-  .current-weather {
+  .weather {
     flex-direction: column;
   }
 }
