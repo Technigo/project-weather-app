@@ -61,7 +61,7 @@ footer {
 }
 
 
-/*Animations testning*/
+/*Animations testning
 .todays-weather img {
     
   animation: pulse 1s linear infinite;
@@ -81,4 +81,4 @@ footer {
    -webkit-transform: scale(1);
   transform: scale(1);
   }
-}
+}*/
