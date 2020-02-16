@@ -37,9 +37,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
 //WEATHER FORECAST 
 
 const handle5DayForecast = (json) => {
-
   const forecastDiv = document.getElementById('forecast')
-
   const dates = {}
 
 
@@ -65,10 +63,13 @@ const handle5DayForecast = (json) => {
     const dates = new Date(item[0])
     const dayName = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
-    forecastDiv.innerHTML += `<li>${dayName[dates.getDay()]}  ${minTemp.toFixed(1)} / ${maxTemp.toFixed(1)}</li>`
-
+    forecastDiv.innerHTML += `<div class="week_days">
+    <div>${dayName[dates.getDay()]}</div> 
+    <div>${minTemp.toFixed(1)}°c / ${maxTemp.toFixed(1)}°c</div>
+    </div>`
   })
 }
 fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&appid=80c5dd84564bfbfbbae5184faea61c48&units=metric')
   .then((res) => res.json())
   .then(handle5DayForecast)
+

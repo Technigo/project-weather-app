@@ -5,22 +5,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
   <title>Project: Weather app</title>
 </head>
 
 <body>
-  <header id="todaysWeather">
+  <header id="todaysWeather" class="todays-weather">
     <h1 id="location">Location</h1>
-    <p id='tempDegrees'>Degrees</p>
-    <p id='currentIcon'></p>
     <p id='tempDescription'>Description</p>
+    <p id='tempDegrees' class="degrees">Degrees</p>
+    <p id='currentIcon'></p>
     <p id='tempFeelsLike'>Feels like: </p>
     <p id='whenSunrise'>Sunrise: </p>
     <p id='whenSunset'>Sunset: </p>
   </header>
 
-  <div id="forecast">
-    <p id='currentIcon'></p>
+  <div id="forecast" class="forecast">
   </div>
   <script src="script.js"></script>
 </body>
