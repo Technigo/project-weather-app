@@ -2,7 +2,9 @@ const userLocation = document.getElementById('location')
 const tempDegees = document.getElementById('tempDegrees')
 const tempDescription = document.getElementById('tempDescription')
 const tempFeelsLike = document.getElementById('tempFeelsLike')
-const theCurrentIcon = document.getElementById("currentIcon");
+const theCurrentIcon = document.getElementById('currentIcon');
+const weatherBackground = document.getElementById('todaysWeather')
+const minMax = document.getElementById('minMax')
 
 // TODAYS WEATHER
 
@@ -15,6 +17,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     console.log(json)
     userLocation.innerHTML = `${json.name}`
     tempDegrees.innerHTML = `${json.main.temp.toFixed(1)}°C`
+    minMax.innerHTML = `Min: ${json.main.temp_min.toFixed(1)}°C | Max: ${json.main.temp_min.toFixed(1)}°C`
     tempFeelsLike.innerHTML += `${json.main.feels_like.toFixed(1)}°C`
     theCurrentIcon.innerHTML += `<img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png"  alt="icon for weather" />`
 
@@ -40,7 +43,6 @@ const handle5DayForecast = (json) => {
   const forecastDiv = document.getElementById('forecast')
   const dates = {}
 
-
   json.list.forEach((weather) => {
     const date = weather.dt_txt.split(' ')[0]
     if (dates[date]) {
@@ -62,10 +64,12 @@ const handle5DayForecast = (json) => {
     const maxTemp = Math.max(...temps)
     const dates = new Date(item[0])
     const dayName = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+    const icons = weatherValues[4].weather[0].icon
 
     forecastDiv.innerHTML += `<div class="week_days">
     <div>${dayName[dates.getDay()]}</div> 
-    <div>${minTemp.toFixed(1)}°c / ${maxTemp.toFixed(1)}°c</div>
+    <div><img src="https://openweathermap.org/img/wn/${icons}@2x.png" id="icon" alt="icons for weather" /></div>
+    <div>${minTemp.toFixed(1)}°c</div>
     </div>`
   })
 }
