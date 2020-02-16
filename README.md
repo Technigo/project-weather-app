@@ -11,10 +11,10 @@ Then went on to fetching the five day forecast where I got stuck on every single
 
 Style wise I've tried to stick with my kind of sense of style that is minimalistic but with a few details. Having a cloudy background image that fits the purpose of the app - hey weather! Styled the content using flexbox and tried to think from a user experience perspective. There should be some space to make it easy to read without having to scroll to much to find information. Framed the window with a solid black border that I thought wrapped the content in a good way.
 
-Added a small anitmation to my weather icon. Where the icon changes depending on degrees. If it's below 0 it will be a snowy cloud, if it's between 0 to +5 it will show a clouded sun and over 5 degrees it's sunny. Super proud of getting my if-statement to work and my animation too! Also put three European cities at the bottom of the page to compare todays weather to.
+Added a small anitmation to my weather icon. Where the icon changes depending on degrees. If it's below 0 it will be a snowy cloud, if it's between 0 to +5 it will show a clouded sun and over 5 degrees it's sunny. Super proud of getting my if-statement to work and my animation too! Also put three European cities at the bottom of the page to compare todays weather to. Some stretch goals are checked!
 
 If I had more time I would have liked to have the forecast grouped per day with a bit more info maybe. To have tomorrow in it's own card with more data and so on. The overall feeling is still that I'm very satisfied with my work this week and that I've learned more this week than with the projects before even though it's a rollercoster! 
 
 ## View it live
 
-Deployed site: 
+Deployed site: https://tender-goodall-aa3edb.netlify.com
