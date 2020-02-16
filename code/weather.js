@@ -62,22 +62,25 @@ fetch(weatherForecast)
   .then(json => {
     console.log(json)
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
-    console.log(filteredForecast)
+    // console.log(filteredForecast)
     
     filteredForecast.forEach(day => {
+      const date = new Date(day.dt * 1000)
+      let newDay = date.getDay()
+      let whatDay = week[newDay + 1]
+      console.log(whatDay)
+      // new Date(json.list[index].dt * 1000).getDay()
+      
       let temperature = (Math.round(day.main.temp * 10) / 10)
       let feelsLike = (Math.round(day.main.feels_like * 10) / 10)
-      const date = new Date(day.dt * 1000)
-      let whatDay = week[date.getDay()]
-      console.log(whatDay)
+      // const date = new Date(day.dt)
       fiveDayForecast.innerHTML += `<p>${whatDay}: ${temperature}°C // feels like: ${feelsLike}°C`
   })
   })
   })
   
 
-// const londonWeather = "http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&APPID=01b7bdc37404b6f3860ddce923c61a11"
-
+//Comparing with two extra cities - London&Barcelona
 fetch(londonWeather)
   .then(response => {
     return response.json()
@@ -110,6 +113,8 @@ fetch(londonWeather)
   })
   })
 
+
+//Animation for weather icon
   function myIcon() {
     var elem = document.getElementById("whatWeather");   
     var pos = 0;

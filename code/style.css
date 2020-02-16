@@ -29,7 +29,6 @@ body {
 
 #today p {
   font-size: 20px;
-  line-height: 20px;
 }
 
 #whatWeather {
@@ -85,10 +84,5 @@ span {
   border-radius: 40px;
   opacity: 0.6;
   margin-top: 40px;
-}
-
-footer {
-  position: absolute;
-  bottom: 0;
-  color: black
+  line-height: 20px;
 }
