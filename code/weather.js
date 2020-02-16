@@ -73,7 +73,7 @@ fetch(weatherForecast)
     filteredForecast.forEach(day => {
       const date = new Date(day.dt * 1000)
       let newDay = date.getDay()
-      let whatDay = week[newDay + 1]
+      let whatDay = week[newDay]
       console.log(whatDay)
       // new Date(json.list[index].dt * 1000).getDay()
       
@@ -85,6 +85,7 @@ fetch(weatherForecast)
     })
   })
   
+
 
 //Comparing with three extra cities - London, Barcelona, Oslo
 fetch(londonWeather)
@@ -130,6 +131,7 @@ fetch(londonWeather)
   })
 
 
+  
 //Animation for weather icon
   function myIcon() {
     var elem = document.getElementById("whatWeather");   
