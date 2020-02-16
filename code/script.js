@@ -1,13 +1,14 @@
 const container = document.getElementById("weather");
-// const container2 = document.getElementById("weather-5day")
-// const sunStatus = document.getElementById("sunStatus")
+const cityWeather = document.getElementById("city");
+const weatherDescription = document.getElementById("description");
+
 const weatherImage = document.getElementById("weather-image");
 
 const sunRise = document.getElementById("sunRise");
 const sunSet = document.getElementById("sunSet");
 
 const weatherForecast = document.getElementById("weather-5day");
-// const weatherForecastImage = document.getElementById("weather-5day-image");
+
 
 // -------------- API link variables:
 const weatherOneDayApi =
@@ -25,9 +26,12 @@ fetch(weatherOneDayApi)
   })
   .then((json) => {
     console.log('checking first json', json) // checking the json from open weather
-    container.innerHTML = `<h1>${json.name} & Temp: ${json.main.temp.toFixed(1)}°C </h1>`;
+    container.innerHTML = `<h1>${json.main.temp.toFixed(1)}°C </h1>`;
+
+    cityWeather.innerHTML = `<h1> ${json.name}  </h1>`;
+
     json.weather.forEach(sky => {
-      container.innerHTML += `<h1>Weather is: ${sky.description} </h1>`;
+      weatherDescription.innerHTML += `<h1>${sky.description} </h1>`;
     });
     weatherImage.innerHTML = `<img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="" />`;
     console.log('check if image is picked up:', weatherImage)
