@@ -24,11 +24,11 @@ const warm = "img/sunny.png"
 
 
 // My API links with API keys
-const weatherNow = "http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=01b7bdc37404b6f3860ddce923c61a11"
+const weatherNow = "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=01b7bdc37404b6f3860ddce923c61a11"
 const weatherForecast = "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=01b7bdc37404b6f3860ddce923c61a11"
-const londonWeather = "http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&APPID=01b7bdc37404b6f3860ddce923c61a11"
-const barcelonaWeather = "http://api.openweathermap.org/data/2.5/weather?q=Barcelona,esp&units=metric&APPID=01b7bdc37404b6f3860ddce923c61a11"
-const osloWeather = "http://api.openweathermap.org/data/2.5/weather?q=Oslo&units=metric&APPID=01b7bdc37404b6f3860ddce923c61a11"
+const londonWeather = "https://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&APPID=01b7bdc37404b6f3860ddce923c61a11"
+const barcelonaWeather = "https://api.openweathermap.org/data/2.5/weather?q=Barcelona,esp&units=metric&APPID=01b7bdc37404b6f3860ddce923c61a11"
+const osloWeather = "https://api.openweathermap.org/data/2.5/weather?q=Oslo&units=metric&APPID=01b7bdc37404b6f3860ddce923c61a11"
 
 
 // Todays weather local
