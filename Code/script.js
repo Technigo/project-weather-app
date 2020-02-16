@@ -14,20 +14,20 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=stockholm,Sweden&units=
   })
   .then ((json) => {
     //console.log(json);
-    containerTodayCity.innerHTML = `<h1>  City: ${json.name} </h1>`
-    containerTodayCelsius.innerHTML = `<h1> °C ${json.main.temp.toFixed(0)} </h1>`
-    containerTodayCloud.innerHTML = `<h1> Feels like ${json.weather[0].main}</h1>`
+    containerTodayCity.innerHTML = `<h1> ${json.name} </h1>`
+    containerTodayCelsius.innerHTML = `<h1>  ${json.main.temp.toFixed(0)} <sup>°C</sup> and ${json.weather[0].main} </h1>`
+    //containerTodayCloud.innerHTML = `<h1> Feels like ${json.weather[0].main}</h1>`
 
     let sunrise = new Date(json.sys.sunrise * 1000)
     let sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' });
 
-    containerSunrise.innerHTML = `<h2> 🔝 ${sunriseTime} </h2>`
+    containerSunrise.innerHTML = `<h2> Sunrise: ${sunriseTime} </h2>`
 
     const sunset = new Date(json.sys.sunset * 1000)
     const sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' });
 
 
-    containerSunset.innerHTML = `<h2> 🔙 ${sunsetTime} </h2>`
+    containerSunset.innerHTML = `<h2> Sunset: ${sunsetTime} </h2>`
     })
   .catch((err) =>{
     console.log("caught error", err)
@@ -41,7 +41,7 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=stockholm,Sweden&units=
 
     .then ((json) => {
       //console.log(json);
-      const filteredForecast = json.list.filter(item => item.dt_txt.includes('03:00'));
+      const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
 
 
       //console.log(filteredForecast);
@@ -51,7 +51,7 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=stockholm,Sweden&units=
         const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
         let dayOfWeek = weekdays[date.getDay()];
         
-        containerFiveDays.innerHTML += `<p> ${dayOfWeek} ${day.main.temp.toFixed(0)} °C </p>`
+        containerFiveDays.innerHTML += `<h2> ${dayOfWeek} ${day.main.temp.toFixed(0)} <sup>°C</sup> </h2>`
       })
     })
 

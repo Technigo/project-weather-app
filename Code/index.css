@@ -1,58 +1,60 @@
 body{
-  background-color: #F8F7F2;
+  background-color: #FFF7EE;
+}
+
+.main{
+ margin: 110px;
 }
 
 header{
  border: 3px solid green;
  padding: 20px;
- font-size: 30px;
- text-align: center;
  height: 70px;
 }
 
-h1{
-color: rgb(255, 0, 221);
+article{
+font-size: 50px;
+text-align: center;
+color: #FC8B93;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-weight: lighter;
 }
-h2 {
-color: green;
-font-size: 40px;
 
+h1{
+color: #FC8B93;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-weight: lighter;
 }
-/*.todaysweather{
-  color: blue;
-}*/
+
+h2 {
+color: #FC8B93;
+font-size: 25px;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-weight: lighter;
+}
 
 .today{
-border: 3px solid red;
 padding: 20px;
-
+text-align: center;
+font-size: 30px;
 }
 
 .sun{
- border: 3px solid blue;
- padding: 20px;
- text-align: center;
+padding: 20px;
+text-align: center;
 }
 
 .fivedays{
- border: 4px solid pink;
- text-align: center;
+border: 4px solid pink;
+text-align: center;
 
 }
 
 
 @media (min-width: 667px) and (max-width: 1024px){
 
-  body{
-    background-color: green;
-  }
-
 }
 
 @media (min-width: 1025px){
-
-  body{
-    background-color: grey;
-  }
 
 }
