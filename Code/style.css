@@ -33,11 +33,9 @@ body{
 /* ---- MAIN BODY ---- */
 
 main{
-  background: #e3edf7;
+  background: transparent;
   width: 90vw;
   height: 70vh;
-  border-radius: 0px 12px 0px 12px;
-  border: 12px solid #e3edf7;
   display: grid;
   grid-template-rows: 4fr 1fr;
   grid-template-areas: "current" "forecast";
@@ -45,22 +43,28 @@ main{
 }
 
 #current{
+  background: #e3edf7;
   padding: 12px;
   grid-area: current;
-  border-radius: 12px 12px 12px 12px;
-  box-shadow: 
-  6px 6px 10px -1px rgba(0,0,0,0.15),
-  -6px -6px 10px -1px rgba(255,255,255,0.7);
-  ;
+  border-radius: 0px 12px 0px 12px;
+  box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15);
 }
 
 #forecast{
+  background: #e3edf7;
   padding: 12px;
   grid-area: forecast;
-  border-radius: 12px 12px 12px 12px;
-  box-shadow: 
+  border-radius: 0px 12px 0px 12px;
+  box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15);
+  display: flex;
+}
+
+
+/* SAMPLE FOR DESIGN
+
+box-shadow: 
   6px 6px 10px -1px rgba(0,0,0,0.15),
   -6px -6px 10px -1px rgba(255,255,255,0.7);
   ;
-  display: flex;
-}
+
+*/
