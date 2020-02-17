@@ -1,10 +1,10 @@
 body {
   position: relative;
-  margin: 20px;
+  margin: 0;
   padding-bottom: 100px;
   background: #fff;
   font-family: Helvetica, sans-serif;
-  color: #141414;
+  color: #fff;
 }
 
 h2 {
@@ -17,9 +17,14 @@ p {
   font-size: 16px;
 }
 
+header {
+  height: 50px;
+  background: #F22E8A;
+}
+
 .weather {
   padding: 10px;
-  background-color: #eca900;
+  background-color: #0468BF;
 }
 
 .dayNight {
@@ -33,7 +38,7 @@ p {
   margin: 0;
   width: 30%;
   padding: 10px;
-  background-color: cadetblue;
+  background-color: #F2B544;
   flex-grow: 1;
   align-self: auto;
 }
@@ -42,16 +47,21 @@ p {
   margin: 0;
   width: 30%;
   padding: 10px;
-  background-color: crimson;
+  background-color: #F22E8A;
   flex-grow: 1;
   align-self: auto;
 }
 
 .forecast {
   padding: 10px;
-  background-color: blueviolet;
+  background-color: #8cddc5;
 }
 
 span {
   margin-left: 50px;
+}
+
+footer {
+  height: 50px;
+  background-color: #F2B544;
 }

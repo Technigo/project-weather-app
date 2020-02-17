@@ -13,7 +13,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
 
 //Reminder, rounded to 1 decimal place 
 .then((json) => {
-  container.innerHTML = `<h2> ${json.name} is ${json.main.temp.toFixed(1)}&#730C and 
+  container.innerHTML = `<h2> ${json.name} is ${json.main.temp.toFixed(1)}&#730<sup>C</sup> and 
   ${json.weather[0].description}.</h2>`
 
     const sunrise = new Date (json.sys.sunrise*1000);
@@ -41,6 +41,6 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
     const weekdays = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
     let dayOfWeek = weekdays[date.getDay()];
 
-    conForecast.innerHTML += `<h2>${dayOfWeek} <span>${day.main.temp.toFixed(1)}&#730C</span></h2>`
+    conForecast.innerHTML += `<h2>${dayOfWeek} <span>${day.main.temp.toFixed(1)}&#730<sup>C</sup></span></h2>`
   })
 })
