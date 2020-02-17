@@ -1,21 +1,76 @@
+html, body {
+    height: 100%;
+}
+body {
+    margin: 0;
+}
 
 .Container {
     display: flex;
-    flex-direction: row;
+    align-items: center;
     justify-content: center;
-    background-color: aquamarine;
-    width: 400px;
-    height: 600px;
-    border-radius: 5%;
+    height: 700px;
 }
 
 .weather-deck {
     margin: 20px;
+    width: 400px;
+    height: 600px;
+    justify-content: center;
+    background-color: aquamarine;
+    border-radius: 5%;
+  
 }
 
 .app-titel {
+    padding-top: 20px;
     padding-bottom: 40px;
     text-align: center;
     text-transform: uppercase;
+    font-family: 'Odibee Sans', cursive;
+    letter-spacing: 2px;
+}
+
+.temp {
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Odibee Sans', cursive;
+    letter-spacing: 2px;
+}
+
+
+.city {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Odibee Sans', cursive;
+    letter-spacing: 2px;
+}
+
+
+.dec {
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Odibee Sans', cursive;
+    letter-spacing: 2px;
+}
+
+.sunrise {
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Odibee Sans', cursive;
+    letter-spacing: 2px;
+}
+
+.sunset {
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Odibee Sans', cursive;
+    letter-spacing: 2px;
 }
 
