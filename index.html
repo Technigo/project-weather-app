@@ -12,25 +12,37 @@
 
 <body>
     <div class="container" id="container">
+        <section class="header">
+
+            <article class="form">
+                <h2>Which city do you love?</h2>
+                <select id="europe" name="europe">
+                    <option value="London">London</option>
+                    <option value="Paris">Paris</option>
+                    <option value="Madrid">Madrid</option>
+                    <option value="Lissabon">Lissabon</option>
+                    <option value="Stockholm">Stockholm</option>
+                    <option value="Rome">Rome</option>
+                    <option value="Athens">Athens</option>
+                    <option value="Berlin">Berlin</option>
+                </select>
+
+            </article>
+            <button class="button" id="buttonCity">Pick City</button>
+        </section>
         <section class="today">
             <article id="weatherToday">
             </article>
-            <article id="currentWeather" >
+            <article id="currentWeather">
             </article>
-             <img id="todayIcon" src="#">
-                <h1 id ="headline"></h1>
-            <article class= "forecast" id="forecast">
-               <div class = "align" id = "0"></div>
-                <div class = "align" id = "1"></div>
-                <div class = "align" id = "2"></div>
-                <div class = "align" id = "3"></div>
-                <div class = "align" id = "4"></div>
-                
+            <img id="todayIcon" src="#">
+            <h1 id="headline"></h1>
+            <article class="forecast" id="forecast">
 
             </article>
-            
+
         </section>
-      
+
     </div>
     <script src="script.js"></script>
 </body>
