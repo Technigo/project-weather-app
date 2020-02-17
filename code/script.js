@@ -5,7 +5,10 @@ const description = document.getElementById("description")
 const sunrise = document.getElementById("sunrise")
 const sunset = document.getElementById("sunset")
 const forecast = document.getElementById("forecast")
+const img = document.getElementById("show-img")
 const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+
+
 
 
 // Fetch weather url
@@ -13,7 +16,7 @@ const weatherKey = "3c481a17ec1c4b275eed746ad29d58b1" //Should be hidden in .git
 const stockholm = "2673730"
 const units = "metric"
 const weatherUrl = `http://api.openweathermap.org/data/2.5/forecast?id=${stockholm}&units=${units}&appid=${weatherKey}`
-
+console.log(weatherUrl)
 
 const getWeatherForecast = async (url) => {
   await fetch(url)
@@ -33,19 +36,19 @@ const getWeatherForecast = async (url) => {
 
 getWeatherForecast(weatherUrl);
 
-
 const todayForecast = (myJson) => {
   // Add icon depending on myJson.list[0].weather.id, rain, cloudy, sunny etc.
   city.innerHTML = `${myJson.city.name}`
   temp.innerHTML = `${myJson.list[0].main.temp}&#176`
   wind.innerHTML = `${myJson.list[0].wind.speed} m/s`
   description.innerHTML = `${myJson.list[0].weather[0].description}`
+  img.src = `http://openweathermap.org/img/wn/${myJson.list[0].weather[0].icon}.png`
 
   // Convert sunrise and sunset from unix timestamp
   let convertedSunrise = new Date(myJson.city.sunrise * 1000) 
   let convertedSunset = new Date(myJson.city.sunset * 1000)
-  sunrise.innerHTML = `${convertedSunrise.toLocaleTimeString({}, {timeStyle: 'short'})}`
-  sunset.innerHTML = `${convertedSunset.toLocaleTimeString({}, {timeStyle: 'short'})}`
+  sunrise.innerHTML = `🌇 ${convertedSunrise.toLocaleTimeString({}, {timeStyle: 'short'})}`
+  sunset.innerHTML = `🌆 ${convertedSunset.toLocaleTimeString({}, {timeStyle: 'short'})}`
 }
 
 

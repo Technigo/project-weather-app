@@ -23,7 +23,7 @@ font-family: 'Nunito', sans-serif;
   background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
 }
 
-.weather-today {
+.big-card {
   min-height: 50vh;
   width: 100vw;
   display: flex;
@@ -150,6 +150,11 @@ h1 {
     height: 100vh;
   }
 
+  .big-card {
+    width: 50vw;
+    min-height: 60vh;
+  }
+
   .icon {
     height: 6vw;
     width: 20vw;
@@ -167,11 +172,21 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 50vw;
   }
 
   .weather-forecast span {
     display: flex;
     flex-direction: row;
+  }
+
+  .big-card h1 {
+    margin-bottom: 0px;
+  }
+
+  img {
+    height: 6vh;
+    width: 6vh;
   }
 }
 
@@ -181,14 +196,15 @@ h1 {
     height: 100vh;
   }
 
-  .weather-today {
-    width: 60vw;
+  .big-card {
+    width: 50vw;
   }
 
   .weather-forecast {
     display: flex;
     flex-direction: column;
-    width: auto;
+    width: 50vw;
+    margin-top: 2vw;
   }
 
   .small-card {
@@ -213,4 +229,12 @@ h1 {
     flex-direction: row;
   }
 
+  .big-card h1 {
+    margin-bottom: 0px;
+  }
+
+  img {
+    height: 6vh;
+    width: 6vh;
+  }
 }
