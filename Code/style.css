@@ -43,6 +43,9 @@ main{
   grid-row-gap: 12px;
 }
 
+
+/* ---- CURRENT WEATHER ---- */
+
 .current{
   background: #e3edf7;
   padding: 12px;
@@ -55,11 +58,14 @@ main{
 .current h1{
   font-size: 2.15rem;
   font-weight: 400;
+  text-align: center;
 }
 
-.current h2{
-  font-size: 1.2rem;
+.current h2 {
+  margin: 5px 0;
+  font-size: 1rem;
   font-weight: 300;
+  text-align: center;
 }
 
 .current p{
@@ -69,9 +75,33 @@ main{
 }
 
 .current img{
-  height: 30px;
-  width: 30px;
+  object-fit: contain;
 }
+
+#headerCaption {
+  margin-top: 5px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 30px;
+  font-size: 1.05rem;
+  font-weight: 300;
+}
+
+#headerCaption img {
+  width: 30px;
+  height: 30px;
+}
+
+#figureCaption {
+  padding: 0 25px;
+  font-size: 0.85rem;
+  font-weight: 300;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* ---- FORECAST ---- */
 
 .forecast{
   background: #e3edf7;
