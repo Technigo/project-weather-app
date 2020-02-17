@@ -43,15 +43,14 @@ fetch(currentWeatherAPI)
 // Print current weather onto DOM
 const printWeather = () => {
   currentWeather.innerHTML = `
+    <h2>${weather.day}</h2>
     <h1>Weather in ${weather.location}</h1>
-    <h4>${weather.day}</h4>
-    <div>
+
       ${weather.temp} &#8451;
       ${weather.description}
       ${weather.sunrise}
       ${weather.sunset}
-    </div>
-    <p>* All times are local time for Helsinki.</p>
+
     `
 }
 
