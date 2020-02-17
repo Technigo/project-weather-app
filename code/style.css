@@ -4,19 +4,58 @@
   --color-medium: #FFE033;
   --color-cool: #33C4FF;
   --color-cold: #338AFF;
+
+  --font-family: 'Avenir', sans-serif;
+}
+
+*:focus {
+  outline: none;
 }
 
 body {
   margin: 3rem;
-  font-family: 'Avenir', sans-serif;
+  font-family: var(--font-family);
+}
+
+.dropdown {
+  display: inline-block;
+  vertical-align: top;
+  width: 140px;
+  height: 40px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #f6f6f6 url('https://www.pikpng.com/pngl/m/465-4655861_triangle-down-comments-black-down-arrow-png-clipart.png') no-repeat 88% 55%;
+  background-size: 10%;
+}
+
+select {
+  padding: 10px;
+  width: 100%;
+  border: none;
+  font-family: var(--font-family);
+  font-size: .9rem;
+  font-weight: 500;
+  color: black;
+  cursor: pointer;
+  box-shadow: none;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 button {
   background-color: black;
+  height: 40px;
   color: white;
-  margin-top: 2rem;
-  padding: .8rem 1rem;
+  padding: 0 1.5rem;
   border: 0;
   font-family: inherit;
   font-size: .9rem;
+  font-weight: 500;
+  margin-left: .5rem;
+}
+
+button#geo {
+  display: none;
 }

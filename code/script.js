@@ -1,3 +1,4 @@
+/*
 // Geolocation test
 const geoBtn = document.getElementById("geo");
 
@@ -14,85 +15,102 @@ const btnClicked = () => {
   const showPosition = (position) => {
     let coordLat = position.coords.latitude
     let coordLong = position.coords.longitude
-    let apiString = `https://api.openweathermap.org/data/2.5/forecast?lat=${coordLat}&lon=${coordLong}&appid=302165d90858a8a500d4198d9bc63d2b`
-    console.log(apiString)
+    let newApiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${coordLat}&lon=${coordLong}&appid=302165d90858a8a500d4198d9bc63d2b`
+
+    console.log(newApiUrl)
+    return newApiUrl
   }
+
   getLocation()
-
 }
-
 
 // Geo location button on click
 document.querySelector('#geo').addEventListener('click', btnClicked)
 
-let apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Malmo,Sweden&units=metric&APPID=302165d90858a8a500d4198d9bc63d2b'
+*/
 
-// Todays weather
-fetch(apiUrl)
-  .then((response) => {
-    return response.json()
-  })
-  .then((json) => {
+const selectCity = () => {
+  const citySelectBox = document.querySelector('#cities')
+  let userCity = citySelectBox.options[citySelectBox.selectedIndex].value
 
-    // Convert milliseconds to HH:MM
-    const timeFormat = (ms) => {
-      let time = new Date(ms * 1000).toLocaleTimeString([], {
-        timeStyle: 'short'
-      })
-      return time;
-    }
+  // Todays weather
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${userCity},Sweden&units=metric&APPID=302165d90858a8a500d4198d9bc63d2b`)
+    .then((response) => {
+      return response.json()
+    })
+    .then((json) => {
 
-    // Change body background color depending on current temperature
-    const currentTemp = +json.main.temp.toFixed(0)
 
-    if (currentTemp < -5) {
-      document.body.style.backgroundColor = 'var(--color-cold)'
-    } else if (currentTemp < 2) {
-      document.body.style.backgroundColor = 'var(--color-cool)'
-    } else if (currentTemp <= 10) {
-      document.body.style.backgroundColor = 'var(--color-medium)'
-    } else if (currentTemp <= 20) {
-      document.body.style.backgroundColor = 'var(--color-warm)'
-    } else {
-      document.body.style.backgroundColor = 'var(--color-hot)'
-    }
 
-    // Print out to DOM
-    document.querySelector('#city').innerHTML = json.name
-    document.querySelector('#description').innerHTML = json.weather[0].description
-    document.querySelector('#temperature').innerHTML = `${json.main.temp.toFixed(1)}°`
-    document.querySelector('#wind').innerHTML = `${json.wind.speed.toFixed(1)} m/s`
+      // Convert milliseconds to HH:MM
+      const timeFormat = (ms) => {
+        let time = new Date(ms * 1000).toLocaleTimeString([], {
+          timeStyle: 'short'
+        })
+        return time;
+      }
 
-    document.querySelector('#sunrise').innerHTML = timeFormat(json.sys.sunrise)
-    document.querySelector('#sunset').innerHTML = timeFormat(json.sys.sunset)
+      // Change body background color depending on current temperature
+      const setBgColor = (bgCol) => {
+        document.body.style.backgroundColor = bgCol;
+      };
 
-  })
-  .catch((err) => {
-    console.log("oops error", err)
-  })
+      const currentTemp = +json.main.temp.toFixed(0)
 
-// 5 day forecast
-fetch('https://api.openweathermap.org/data/2.5/forecast?q=Malmo&units=metric&appid=302165d90858a8a500d4198d9bc63d2b')
-  .then((response) => {
-    return response.json()
-  })
-  .then((json) => {
-    // Filter the forecast list array to get info from 06:00 each day
-    const filteredForecast = json.list.filter(item => item.dt_txt.includes('06:00'))
+      if (currentTemp < -5) {
+        setBgColor('var(--color-cold)')
+      } else if (currentTemp < 2) {
+        setBgColor('var(--color-cool)')
+      } else if (currentTemp <= 10) {
+        setBgColor('var(--color-medium)')
+      } else if (currentTemp <= 20) {
+        setBgColor('var(--color-warm)')
+      } else {
+        setBgColor('var(--color-hot)')
+      }
 
-    // Loops through filteredForecast
-    filteredForecast.forEach(day => {
+      // Print out to DOM
+      const cityName = document.querySelector('#city')
+      cityName.innerHTML = json.name
+      document.querySelector('#description').innerHTML = json.weather[0].description
+      document.querySelector('#temperature').innerHTML = `${json.main.temp.toFixed(1)}°`
+      document.querySelector('#wind').innerHTML = `${json.wind.speed.toFixed(1)} m/s`
 
-      // Return weekday
-      let date = new Date(day.dt * 1000);
-      let weekday = date.toLocaleDateString('en-US', {
-        weekday: 'short'
-      });
+      document.querySelector('#sunrise').innerHTML = timeFormat(json.sys.sunrise)
+      document.querySelector('#sunset').innerHTML = timeFormat(json.sys.sunset)
 
-      document.querySelector('#forecast').innerHTML += `<p>${weekday} ${day.main.temp.toFixed(1)}° ${day.wind.speed.toFixed(1)}m/s</p>`
+    })
+    .catch((err) => {
+      console.log("oops error", err)
     })
 
-  })
-  .catch((err) => {
-    console.log("oops error", err)
-  })
+
+  // 5 day forecast
+  fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${userCity}&units=metric&appid=302165d90858a8a500d4198d9bc63d2b`)
+    .then((response) => {
+      return response.json()
+    })
+    .then((json) => {
+      // Filter the forecast list array to get info from 06:00 each day
+      const filteredForecast = json.list.filter(item => item.dt_txt.includes('06:00'))
+
+      // Loops through filteredForecast
+      filteredForecast.forEach(day => {
+
+        // Return weekday
+        let date = new Date(day.dt * 1000);
+        let weekday = date.toLocaleDateString('en-US', {
+          weekday: 'short'
+        });
+
+        document.querySelector('#forecast').innerHTML += `<p>${weekday} ${day.main.temp.toFixed(1)}° ${day.wind.speed.toFixed(1)}m/s</p>`
+      })
+
+    })
+    .catch((err) => {
+      console.log("oops error", err)
+    })
+
+}
+
+document.querySelector('#pickCityButton').addEventListener('click', selectCity)
