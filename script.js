@@ -1,7 +1,7 @@
 // const container = document.getElementById("main");
 // const launchCountHeader = document.getElementById("launchCount");
 
-const apiCurrent = 'http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&appid=8174b34f755933df367987fbb0eefd50';
+const apiCurrent = 'http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=8174b34f755933df367987fbb0eefd50';
 const apiForecast = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=8174b34f755933df367987fbb0eefd50';
 const weatherCurrent = document.getElementById("weather-current");
 const weatherForecast = document.getElementById("weather-forecast");
