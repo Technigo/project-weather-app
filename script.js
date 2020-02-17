@@ -42,11 +42,16 @@ fetch(URLDay)
     return response.json();
   })
   .then((myJson) => {
-    const filteredForecast = myJson.list.filter(item => item.dt_txt.includes('15:00'))
+    const filteredForecast = myJson.list.filter(item => item.dt_txt.includes('12:00'))
     filteredForecast.forEach((day) => {
     containerFive.innerHTML += `<li>${Math.round(day.main.temp.toFixed(1))}<sup>°C</sup></li>`
-     
-   }) 
+   
+    const daysForecast = new Date(day.dt * 1000)
+    const showDateString = daysForecast.toLocaleDateString('en-US', {weekday: 'short'});
+      
+      containerDay.innerHTML += `<li>${showDateString}</li>`
+
+   })    
  })
 
  
