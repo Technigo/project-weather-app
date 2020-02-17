@@ -1,7 +1,7 @@
 body {
   position: relative;
   margin: 0;
-  padding-bottom: 180px;
+  padding-bottom: 150px;
   font-family: Arial, Helvetica, sans-serif;
   color: #172f42;
 }
@@ -16,6 +16,7 @@ img {
 }
 
 .weather {
+  height: 100vh;
   background: #172f42;
   background-repeat: no-repeat;
   -webkit-background-size: cover;
@@ -26,6 +27,7 @@ img {
 
 .weather-today {
   display: grid;
+  height: 100vh;
   padding: 0 20px;
   background: rgba(0, 0, 0, 0.5);
   color: #fff;
@@ -36,6 +38,10 @@ img {
   font-size: 50px;
   margin-block-start: 0.5em;
   margin-block-end: 0.5em;
+}
+
+.min-temp {
+  color: rgba(255, 255, 255, 0.425);
 }
 
 .day-night {
@@ -67,7 +73,7 @@ img {
 
 .forecast-main {
   text-align: center;
-  margin-top: 1.5em;
+  margin-top: 2em;
   margin-bottom: 0;
   font-size: 0.8em;
   font-weight: bold;
@@ -94,14 +100,12 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 50px;
+  height: 100px;
   padding: 20px 0;
   background: #172f42;
-  height: 50px;
 }
 
 footer p {
-  padding: 10px;
   color: #fff;
   font-size: 10px;
   text-align: center;
@@ -111,4 +115,32 @@ footer a {
   text-decoration: none;
   color: #fff;
   font-weight: bold;
+}
+
+.credit-main {
+  padding: 10px;
+  color: #fff;
+  font-size: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.credit-creators {
+  height: 0;
+  margin: 0;
+  padding: 5px;
+  color: #fff;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 1s ease-in-out;
+  -webkit-transition: all 0.7s ease-in-out;
+  -moz-transition: all 0.7s ease-in-out;
+  -ms-transition: all 0.7s ease-in-out;
+  -o-transition: all 0.7s ease-in-out;
+}
+
+.active + .credit-creators {
+  opacity: 1;
+  height: 50px;
+  padding: 5px;
 }

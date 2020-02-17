@@ -22,7 +22,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     tempContainer.innerHTML = `${json.main.temp.toFixed(1)}&#730`
 
     // Display current weather description
-    descriptionContainer.innerHTML = json.weather[0].description
+    descriptionContainer.innerHTML = `${json.weather[0].description} | ${json.main.temp_max.toFixed(1)}&#730 / <span class="min-temp">${json.main.temp_min.toFixed(1)}&#730</span>`
 
     // Display sunrise and sunset times
     const sunriseTime = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
@@ -82,7 +82,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     } else if (weatherId >= 300 && weatherId < 600) {
       weatherBackground.style.backgroundImage = 'url("./assets/backgrounds/snow.jpg")' //Rain
     } else if (weatherId >= 200 && weatherId < 300) {
-      weatherBackground.style.backgroundImage = 'url("./assets/backgrounds/snow.jpg")' //Thunderstorm
+      weatherBackground.style.backgroundImage = 'url("./assets/backgrounds/rain.jpg")' //Thunderstorm
     }
   })
 
@@ -138,3 +138,9 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
     console.log("caught error", err)
   })
 
+
+function toggle() {
+  this.classList.toggle("active")
+}
+
+document.getElementById("credit").onclick = toggle
