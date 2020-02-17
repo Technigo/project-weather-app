@@ -52,7 +52,7 @@ const timeFormat = (ms) => {
 }
 
 
-fetch('http://api.openweathermap.org/data/2.5/weather?id=3336568&lang=se&units=metric&appid=0f30fbe5053a599d0719ec7212d88866')
+fetch('https://api.openweathermap.org/data/2.5/weather?id=3336568&lang=se&units=metric&appid=0f30fbe5053a599d0719ec7212d88866')
   .then((response) => {
     return response.json()
   })
@@ -96,7 +96,7 @@ timeFormat()
 //Five days forecast
 
 
-fetch('http://api.openweathermap.org/data/2.5/forecast?id=3336568&lang=se&units=metric&appid=0f30fbe5053a599d0719ec7212d88866')
+fetch('https://api.openweathermap.org/data/2.5/forecast?id=3336568&lang=se&units=metric&appid=0f30fbe5053a599d0719ec7212d88866')
   .then((response) => {
     return response.json()
   })
