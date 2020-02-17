@@ -40,14 +40,14 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Malmo,Sweden&units=met
   .then((json) => {
 
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
-    const day = new Date(filteredForecast[0].dt * 1000)
-    const weekday = day.getDay()
 
-    fiveDaysContainer.innerHTML = `<h2>This is the day: ${weekday} This is the temperature: ${filteredForecast[0].main.temp.toFixed(1)} </h2>`
+    filteredForecast.forEach((weatherDay) => {
 
+      const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+      let day = new Date(weatherDay.dt * 1000).getDay()
+
+      let temperatureDay = weatherDay.main.temp.toFixed(1)
+      fiveDaysContainer.innerHTML += `<h2>This is the day: ${weekdays[day]}. This is the temperature: ${temperatureDay}</h2>`
+    });
 
   })
-
-
-
-// http://api.openweathermap.org/data/2.5/weather?q=Malmo,Sweden&units=metric&APPID=224e607ac22e4aef9578da3aaa6f0b85
