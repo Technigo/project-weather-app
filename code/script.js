@@ -20,14 +20,12 @@ const userChoice = city => {
     .then(json => {
       const sunriseTime = timeFormat(json.sys.sunrise);
       const sunsetTime = timeFormat(json.sys.sunset);
-      console.log(json);
 
       const weather = json.weather[0].main;
       const temperature = json.main.temp;
 
       const currentTime = new Date();
       const currentHour = currentTime.getHours();
-      console.log(currentHour);
 
       containerToday.innerHTML = `<h3>${cityFormat(city)}</h3>`;
       containerToday.innerHTML += `<img src="${checkWeather(
@@ -42,20 +40,7 @@ const userChoice = city => {
       containerToday.innerHTML += `<p>  Sunrise: ${sunriseTime}<br>
      Sunset: ${sunsetTime}</p>`;
 
-      if (temperatureFormat(temperature) < 10) {
-        styleContainers(
-          "linear-gradient(15deg, rgba(34,122,224,1) 0%, rgba(81,217,255,1) 100%)"
-        );
-      } else if (temperatureFormat(temperature) > 20) {
-        styleContainers(
-          "linear-gradient(15deg, rgba(226,44,44,1) 0%, rgba(246,255,115,1) 100%)"
-        );
-      } else {
-        styleContainers(
-          "linear-gradient(200deg, rgba(136,255,183,1) 0%, rgba(26,182,92,1) 100%)"
-        );
-      }
-
+      tempCheck(temperature);
       checkTime(currentHour);
     });
 
@@ -70,24 +55,15 @@ const userChoice = city => {
       console.log(filteredForecast);
       containerFiveDays.innerHTML = "";
       filteredForecast.forEach(day => {
-        containerFiveDays.innerHTML += `<p>${weekdayFormat(day.dt)}
-      
-      ${temperatureFormat(day.main.temp)}${String.fromCharCode(
+        containerFiveDays.innerHTML += `<p>${weekdayFormat(
+          day.dt
+        )} ${temperatureFormat(day.main.temp)}${String.fromCharCode(
           186
         )}C feels like: ${temperatureFormat(
           day.main.feels_like
         )}${String.fromCharCode(186)}C</p>`;
       });
     });
-};
-
-//Dark background between 22-06
-const checkTime = time => {
-  if (time >= 22 || time <= 06) {
-    styleContainers(
-      "linear-gradient(51deg, rgba(58,67,82,1) 0%, rgba(18,31,88,1) 100%)"
-    );
-  }
 };
 
 //Styles background
@@ -97,7 +73,33 @@ const styleContainers = backgroundColour => {
   header.style.background = backgroundColour;
 };
 
-//Changes icon based on weather/hour of day
+//Checks temperature and calls styleContainer function to style based on temp
+const tempCheck = temp => {
+  if (temperatureFormat(temp) < 10) {
+    styleContainers(
+      "linear-gradient(15deg, rgba(34,122,224,1) 0%, rgba(81,217,255,1) 100%)"
+    );
+  } else if (temperatureFormat(temp) > 20) {
+    styleContainers(
+      "linear-gradient(15deg, rgba(226,44,44,1) 0%, rgba(246,255,115,1) 100%)"
+    );
+  } else {
+    styleContainers(
+      "linear-gradient(200deg, rgba(136,255,183,1) 0%, rgba(26,182,92,1) 100%)"
+    );
+  }
+};
+
+//Checks time and calls styleContainer function to style based on time
+const checkTime = time => {
+  if (time >= 22 || time <= 06) {
+    styleContainers(
+      "linear-gradient(51deg, rgba(58,67,82,1) 0%, rgba(18,31,88,1) 100%)"
+    );
+  }
+};
+
+//Changes icon based on weather/time of day
 const checkWeather = (weatherType, hours) => {
   const typesOfWeather = [
     "Clear",
@@ -132,9 +134,9 @@ const timeFormat = timeStamp => {
 
 //Writes weekday based on date
 const weekdayFormat = timeStamp => {
-  const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  let date = new Date(timeStamp * 1000);
-  let dayOfWeek = weekdays[date.getDay()];
+  const weekday = new Date(timeStamp * 1000);
+  const dayOfWeek = weekday.toLocaleDateString("en-US", { weekday: "short" });
+
   return dayOfWeek;
 };
 

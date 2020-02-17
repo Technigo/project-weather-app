@@ -1,7 +1,6 @@
 body {
   flex-direction: column;
   background: #fff;
-  background-image: url(images/arches);
   color: #fff;
   font-family: "Nixie One", cursive;
   display: flex;
@@ -235,7 +234,7 @@ button:active {
     max-width: 450px;
     height: auto;
     border-radius: 20px;
-    padding: 20px 0 40px 0;
+    padding: 20px 0;
   }
 
   img {
@@ -286,9 +285,6 @@ button:active {
   button {
     font-size: 25px;
   }
-}
-
-@media (min-width: 1025px) {
 }
 
 @-webkit-keyframes breathing {
