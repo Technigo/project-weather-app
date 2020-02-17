@@ -10,9 +10,16 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     return response.json()
   })
   .then((json) => {
+    // Display city name  
     cityContainer.innerHTML = json.name
+
+    //Display current temp
     tempContainer.innerHTML = `${json.main.temp.toFixed(1)}&#730`
+
+    //Display current weather description
     descriptionContainer.innerHTML = json.weather[0].description
+
+    // Determine which weather icon to display
 
     const weatherId = json.weather[0].id
     let weatherIcon
@@ -42,11 +49,13 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     weatherPic.innerHTML = `${weatherIcon}`
 
 
+    // Display sunrise and sunset times
+
     const sunriseConversion = new Date(json.sys.sunrise * 1000)
     const sunsetConversion = new Date(json.sys.sunset * 1000)
 
-    const sunriseTime = sunriseConversion.toLocaleTimeString([], { timeStyle: 'short' })
-    const sunsetTime = sunsetConversion.toLocaleTimeString([], { timeStyle: 'short' })
+    const sunriseTime = sunriseConversion.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    const sunsetTime = sunsetConversion.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
 
     sunriseContainer.innerHTML += sunriseTime
     sunsetContainer.innerHTML += sunsetTime
