@@ -3,7 +3,7 @@ const forecast = []
 const weather = {}
 const week = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat']
 
-// To get content in HTML
+// DOM
 const city = document.getElementById("city");
 const temp = document.getElementById("temp");
 const feels = document.getElementById("feels")
@@ -23,7 +23,7 @@ const warm = "img/sunny.png"
 
 
 
-// My API links with API keys
+// API links with API keys
 const weatherNow = "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=01b7bdc37404b6f3860ddce923c61a11"
 const weatherForecast = "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=01b7bdc37404b6f3860ddce923c61a11"
 const londonWeather = "https://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&APPID=01b7bdc37404b6f3860ddce923c61a11"
@@ -37,12 +37,11 @@ fetch(weatherNow)
     return response.json()
   
   .then(json => {
-    console.log(json)
-    console.log(weather.sunrise = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], { timeStyle: 'short' }))
-    console.log(weather.sunset = new Date(json.sys.sunset * 1000).toLocaleTimeString([], { timeStyle: 'short' }))
-    console.log(weather.temp = (Math.round(json.main.temp * 10) / 10))
-    console.log(weather.feels_like = (Math.round(json.main.feels_like * 10) / 10))
-    console.log(weather.city = json.name)
+    weather.sunrise = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], { timeStyle: 'short' })
+    weather.sunset = new Date(json.sys.sunset * 1000).toLocaleTimeString([], { timeStyle: 'short' })
+    weather.temp = (Math.round(json.main.temp * 10) / 10)
+    weather.feels_like = (Math.round(json.main.feels_like * 10) / 10)
+    weather.city = json.name
     city.innerHTML = weather.city
     temp.innerHTML = weather.temp
     feels.innerHTML = weather.feels_like
@@ -68,34 +67,30 @@ fetch(weatherForecast)
   .then(json => {
     console.log(json)
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
-    // console.log(filteredForecast)
-    
+
     filteredForecast.forEach(day => {
       const date = new Date(day.dt * 1000)
       let newDay = date.getDay()
       let whatDay = week[newDay]
       console.log(whatDay)
-      // new Date(json.list[index].dt * 1000).getDay()
-      
       let temperature = (Math.round(day.main.temp * 10) / 10)
       let feelsLike = (Math.round(day.main.feels_like * 10) / 10)
-      // const date = new Date(day.dt)
-      fiveDayForecast.innerHTML += `<p>${whatDay}: ${temperature}°C // feels like: ${feelsLike}°C`
+      
+      fiveDayForecast.innerHTML += `<p>${whatDay}: ${temperature}°C // feels like: ${feelsLike}°C` 
       })
     })
   })
   
 
 
-//Comparing with three extra cities - London, Barcelona, Oslo
+// Comparing with three extra cities - London, Barcelona, Oslo
 fetch(londonWeather)
   .then(response => {
     return response.json()
 
   .then(json => {
-    console.log(json)
-    console.log(weather.temp = (Math.round(json.main.temp * 10) / 10))
-    console.log(weather.feels_like = (Math.round(json.main.feels_like * 10) / 10))
+    weather.temp = (Math.round(json.main.temp * 10) / 10)
+    weather.feels_like = (Math.round(json.main.feels_like * 10) / 10)
     let nextCity = json.name
 
     londonWeatherToday.innerHTML = `<p>${nextCity}: ${weather.temp}°C </p>`
@@ -107,9 +102,8 @@ fetch(londonWeather)
     return response.json()
 
   .then(json => {
-    console.log(json)
-    console.log(weather.temp = (Math.round(json.main.temp * 10) / 10))
-    console.log(weather.feels_like = (Math.round(json.main.feels_like * 10) / 10))
+    weather.temp = (Math.round(json.main.temp * 10) / 10)
+    weather.feels_like = (Math.round(json.main.feels_like * 10) / 10)
     let nextCity = json.name
 
     barcelonaWeatherToday.innerHTML = `<p>${nextCity}: ${weather.temp}°C</p>`
@@ -121,9 +115,8 @@ fetch(londonWeather)
     return response.json()
 
   .then(json => {
-    console.log(json)
-    console.log(weather.temp = (Math.round(json.main.temp * 10) / 10))
-    console.log(weather.feels_like = (Math.round(json.main.feels_like * 10) / 10))
+    weather.temp = (Math.round(json.main.temp * 10) / 10)
+    weather.feels_like = (Math.round(json.main.feels_like * 10) / 10)
     let nextCity = json.name
 
     osloWeatherToday.innerHTML = `<p>${nextCity}: ${weather.temp}°C</p>`
@@ -132,7 +125,7 @@ fetch(londonWeather)
 
 
   
-//Animation for weather icon
+// Animation for weather icon
   function myIcon() {
     var elem = document.getElementById("whatWeather");   
     var pos = 0;
