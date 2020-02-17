@@ -1,6 +1,6 @@
 // APIs links
-const currentWeatherAPI = "http://api.openweathermap.org/data/2.5/weather?q=helsinki&appid=1c5c00b108885200d83efb308cec13d8"
-const forecastWeatherAPI = "http://api.openweathermap.org/data/2.5/forecast?q=helsinki&appid=1c5c00b108885200d83efb308cec13d8"
+const currentWeatherAPI = "https://api.openweathermap.org/data/2.5/weather?q=helsinki&appid=1c5c00b108885200d83efb308cec13d8"
+const forecastWeatherAPI = "https://api.openweathermap.org/data/2.5/forecast?q=helsinki&appid=1c5c00b108885200d83efb308cec13d8"
 
 // Data storage
 const weather = {}
