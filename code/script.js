@@ -29,7 +29,7 @@ fetch(weatherOneDayApi)
     // console.log('checking first json', json) // checking the json from open weather
     // container.innerHTML = `${json.main.temp.toFixed(1)}°`;
 
-    cityWeather.innerHTML = `${json.name} is just a great city! We need some more text.`;
+    cityWeather.innerHTML = `${json.name} is a great city! We need some more text.`;
 
     json.weather.forEach(sky => {
       weatherDescription.innerHTML += `${sky.description} | ${json.main.temp.toFixed(1)}° `;
@@ -55,6 +55,7 @@ fetch(weatherOneDayApi)
     sunRise.innerHTML = weather.sunrise = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], {
       timeStyle: "short"
     });
+    // console.log(sunRise.innerHTML)
     sunSet.innerHTML = weather.sunset = new Date(json.sys.sunset * 1000).toLocaleTimeString([], {
       timeStyle: "short"
     });
