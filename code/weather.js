@@ -1,6 +1,4 @@
-// Variables
-const forecast = []
-const weather = {}
+// Week array
 const week = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat']
 
 // DOM
@@ -19,7 +17,6 @@ const weatherIcon = document.getElementById("whatWeather")
 const cold = "img/snowy.png"
 const both = "img/semi.png"
 const warm = "img/sunny.png"
-
 
 
 // API links with API keys
@@ -65,14 +62,12 @@ fetch(weatherForecast)
 
   .then(json => {
     console.log(json)
-    console.log(json.list[0].dt_txt.split(' ')[0])
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
 
     filteredForecast.forEach(day => {
       const date = new Date(day.dt * 1000)
       let newDay = date.getDay()
       let whatDay = week[newDay]
-      console.log(whatDay)
       let temperature = (Math.round(day.main.temp * 10) / 10)
       let feelsLike = (Math.round(day.main.feels_like * 10) / 10)
       
@@ -83,7 +78,7 @@ fetch(weatherForecast)
   
 
 
-// Comparing with three extra cities - London, Barcelona, Oslo
+// Forecasting three extra cities - London, Barcelona, Oslo
 fetch(londonWeather)
   .then(response => {
     return response.json()
@@ -126,18 +121,18 @@ fetch(londonWeather)
 
   
 // Animation for weather icon
-  function myIcon() {
-    var elem = document.getElementById("whatWeather");   
-    var pos = 0;
-    var id = setInterval(frame, 10);
-    function frame() {
-      if (pos == 200) {
-        clearInterval(id);
-      } else {
-        pos++; 
-        elem.style.top = pos + 'px'; 
-        elem.style.right = pos + 'px'; 
-      }
+function myIcon() {
+  var elem = document.getElementById("whatWeather")
+  var pos = 0
+  var id = setInterval(frame, 10)
+  function frame() {
+    if (pos == 200) {
+      clearInterval(id)
+    } else {
+      pos++
+      elem.style.top = pos + 'px'
+      elem.style.right = pos + 'px'
     }
   }
-  myIcon()
+}
+myIcon()
