@@ -17,6 +17,14 @@ fetch("http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     })
     const longTemp = json.main.temp
     const shortTemp = longTemp.toFixed(1);
+
+    /*if (json.weather[0].description.includes("broken clouds")) {
+        document.getElementById("rubrik").style.color = "grey";
+      } else {
+        document.getElementById("rubrik").style.color = "white";
+      } 
+*/
+
     document.getElementById("description").innerHTML = `${json.weather[0].description}`
     document.getElementById("todayTemp").innerHTML = `${shortTemp}˚`
     document.getElementById("currentCondition").innerHTML += `<img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="" />`
@@ -38,15 +46,29 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
 
     const containerFiveDays = document.getElementById("weekWeather")
 
-    containerFiveDays.innerHTML = "";
-    filteredForecast.forEach(day => {
-      const date = new Date(day.dt * 1000)
-      const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-      let dayOfWeek = weekdays[date.getDay()];
-      containerFiveDays.innerHTML += `<div class="dayRow"><div class="dayLabel">${dayOfWeek}</div> <div class="dayTemp">${day.main.temp.toFixed(0)} °C </div></div>`
+    filteredForecast.forEach((day) => {
+      const date = new Date(day.dt_txt);
+      console.log(day);
+
+      const datestring = date.toLocaleDateString('en-US', {
+        weekday: 'short'
+      });
+      console.log(`${datestring}`)
+      console.log(`${day.main.temp.toFixed(1)}`)
+      containerFiveDays.innerHTML += `<div class="dayRow"><div class="dayLabel">${datestring}</div> <div class="dayTemp">${day.main.temp.toFixed(1)} °C <img src="https://openweathermap.org/img/wn/${day.weather[0].icon}.png" class="dayIcon" /></div></div>`
+
+      console.log(`<img src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" />`)
     })
-    console.log(containerFiveDays)
   })
+/* containerFiveDays.innerHTML = "";
+ filteredForecast.forEach(day => {
+   const date = new Date(day.dt * 1000)
+   const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+   let dayOfWeek = weekdays[date.getDay()];
+   containerFiveDays.innerHTML += `<div class="dayRow"><div class="dayLabel">${dayOfWeek}</div> <div class="dayTemp">${day.main.temp.toFixed(1)} °C </div></div>`
+            })
+          //console.log(containerFiveDays)*/
+
 
 /*filteredForecast.forEach(item => {
   console.log(item.weather[0].description)
