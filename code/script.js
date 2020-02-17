@@ -102,11 +102,40 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
 
     filteredForecast.forEach((day) => {
-      const date = new Date(day.dt * 1000)
-      const weekdays = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
-      let dayOfWeek = weekdays[date.getDay()];
 
-      forecastContainer.innerHTML += `<section class="dayForecast"><h2>${dayOfWeek}</h2><p>${day.main.temp.toFixed(1)}&#730</p></section>`
+      const dayOfWeek = new Date(day.dt * 1000).toLocaleDateString('en-US', { weekday: 'short' })
+
+      const weatherId = day.weather[0].id
+
+      console.log(weatherId)
+
+      let weatherIcon
+
+      if (weatherId === 800) {
+        weatherIcon = `<img src="./assets/color/039-sun.png" alt="sun">` //Clear day sun
+      } else if (weatherId === 801) {
+        weatherIcon = `<img src="./assets/color/038-cloudy-3.png" alt="sun and cloud">` //Few clouds
+      } else if (weatherId === 802) {
+        weatherIcon = `<img src="./assets/color/011-cloudy.png" alt="two clouds">` //Scattered clouds
+      } else if (weatherId === 803 || weatherId === 804) {
+        weatherIcon = `<img src="./assets/color/001-cloud.png" alt="cloud">` //Broken or overcast clouds
+      } else if (weatherId >= 700 && weatherId < 800) {
+        weatherIcon = `<img src="./assets/color/017-fog.png" alt="cloud with fog">` //Atmosphere mist, dust, fog etc.
+      } else if (weatherId >= 600 && weatherId < 700) {
+        weatherIcon = `<img src="./assets/color/006-snowy.png" alt="cloud with snow">` //Snow
+      } else if (weatherId >= 300 && weatherId < 600) {
+        weatherIcon = `<img src="./assets/color/003-rainy.png" alt="cloud with rain">` //Rain
+      } else if (weatherId >= 200 && weatherId < 300) {
+        weatherIcon = `<img src="./assets/color/045-thunder.png" alt="thunder">` //Thunderstorm
+      }
+
+
+      forecastContainer.innerHTML +=
+        `<section class="dayForecast">
+          <h2>${dayOfWeek}</h2>
+          <p>${weatherIcon}</p>
+          <p>${day.main.temp.toFixed(1)}&#730</p>
+        </section>`
     })
   })
 
