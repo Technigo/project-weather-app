@@ -26,7 +26,7 @@ fetch(weatherOneDayApi)
     return response.json();
   })
   .then((json) => {
-    // console.log('checking first json', json) // checking the json from open weather
+    console.log('checking first json', json) // checking the json from open weather
     // container.innerHTML = `${json.main.temp.toFixed(1)}°`;
 
     // cityWeather.innerHTML = `${json.name} is a great city! We need some more text.`;
