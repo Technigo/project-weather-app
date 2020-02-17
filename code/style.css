@@ -1,111 +1,89 @@
-@media (max-width: 667px) {
-  html {
-    /* background: linear-gradient(90deg, rgba(131,193,207,1) 0%, rgb(176, 233, 224) 62%, rgb(208, 214, 218) 100%); */
-    background-image: url("img/clouds4.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    min-height: 100%;
-    font-family: 'Montserrat', sans-serif;
-    border: 10px solid black;
-    padding: 20px;
-  }
-
-  body {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  #weather {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding: 20px;
-    position: relative;
-    margin-bottom: 50px;
-  }
-
-  #today p {
-    font-size: 20px;
-  }
-
-  #whatWeather {
-    width: 100px;
-    float: center;
-    display: block;
-    padding: 5px;
-    margin: 10px;
-    position: absolute;
-  }
-
-  h2 {
-    text-align: right;
-    font-size: 90px;
-    margin: 5px;
-  }
-
-  p {
-    text-align: right;
-    margin: 3px 10px;
-  }
-
-  p:hover {
-    font-style: italic;
-  }
-
-  span {
-    font-weight: bold;
-  }
-
-  #fiveDayForecast {
-    float: right;
-    background-color: white;
-    opacity: 0.7;
-    border-radius: 50px;
-    padding: 20px;
-    margin: 20px 30px;
-    width: 80%;
-  }
-
-  #fiveDayForecast p {
-    line-height: 50px;
-    text-align: center;
-  }
-
-  #compareCities {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-    background: white;
-    border-radius: 40px;
-    opacity: 0.6;
-    margin-top: 40px;
-    line-height: 20px;
-  }
+html {
+  /* background: linear-gradient(90deg, rgba(131,193,207,1) 0%, rgb(176, 233, 224) 62%, rgb(208, 214, 218) 100%); */
+  background-image: url("img/clouds4.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100%;
+  font-family: 'Montserrat', sans-serif;
+  border: 10px solid black;
+  padding: 20px;
 }
-@media (max-width: 1024px) {
-  html {
-    overflow-y: auto;
-  }
-  #weatherChildren {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 90%
-  }
 
-  #fiveDayforecast {
-    width: 100%;
-  }
-
-  #compareCities {
-    width: 100;
-    margin: 20px 30px;
-    padding: 20px;
-  }
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
+
+#weather {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-end;
+   padding: 20px;
+   position: relative;
+   margin-bottom: 50px;
+}
+
+#today p {
+  font-size: 20px;
+}
+
+#whatWeather {
+  width: 100px;
+  float: center;
+  display: block;
+  padding: 5px;
+  margin: 10px;
+  position: absolute;
+}
+
+h2 {
+  text-align: right;
+  font-size: 90px;
+  margin: 5px;
+}
+
+p {
+  text-align: right;
+  margin: 3px 10px;
+}
+
+p:hover {
+  font-style: italic;
+}
+
+span {
+  font-weight: bold;
+}
+
+#fiveDayForecast {
+  float: right;
+  background-color: white;
+  opacity: 0.7;
+  border-radius: 50px;
+  padding: 20px;
+  margin: 20px 30px;
+  width: 80%;
+}
+
+#fiveDayForecast p {
+  line-height: 50px;
+  text-align: center;
+}
+
+#compareCities {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  background: white;
+  border-radius: 40px;
+  opacity: 0.6;
+  margin-top: 40px;
+  line-height: 20px;
+}
+
