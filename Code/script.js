@@ -34,20 +34,23 @@ fetch(currentWeatherAPI)
     sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short', timeZone: "UTC" })
     weather.sunset = sunsetTime
 
+    let currentDay = new Date(jsonFile.dt)
+    weather.day = currentDay
+
     printWeather()
   })
 
 // Print current weather onto DOM
 const printWeather = () => {
   currentWeather.innerHTML = `
-      <div>
-          ${weather.location}
-          ${weather.temp}
-          ${weather.description}
-          ${weather.sunrise}
-          ${weather.sunset}
-
-      </div>
+    <h1>Weather in ${weather.location}</h1>
+    <h4>${weather.day}</h4>
+    <div>
+      ${weather.temp} &#8451;
+      ${weather.description}
+      ${weather.sunrise}
+      ${weather.sunset}
+    </div>
     `
 }
 
