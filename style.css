@@ -1,0 +1,37 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif; 
+}
+
+h1 {
+  text-align: center;
+}
+
+p {
+  text-align: left;
+  font-family: 'Montserrat', sans-serif; 
+  margin: 2px 2px 2px;
+}
+
+#sunnyDays {
+  background-color: #F7E9B9;
+  color: #2A5510;
+}
+
+#rainyDays {
+  background-color:
+  #A3DEF7;
+  color: #164A68;
+}
+
+#cloudyDays {
+  background-color: #F4F7F8;
+  color: #F47775; 
+}
+
+#dayByDay {
+  padding: 10px 0px 10px;
+}
