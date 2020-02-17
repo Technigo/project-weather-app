@@ -44,6 +44,7 @@ h2 {
   text-align: right;
   font-size: 90px;
   margin: 5px;
+  font-weight: bolder;
 }
 
 p {
@@ -83,7 +84,30 @@ span {
   background: white;
   border-radius: 40px;
   opacity: 0.6;
-  margin-top: 40px;
+  margin: 20px 30px;
   line-height: 20px;
 }
+
+#weatherChildren {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 90%;
+}
+
+@media (max-width: 668px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #weatherChildren {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 
