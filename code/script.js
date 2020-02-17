@@ -1,37 +1,11 @@
-/*
-// Geolocation test
-const geoBtn = document.getElementById('geo');
-
-const btnClicked = () => {
-
-  const getLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-      geoBtn.innerHTML = 'Geolocation is not supported by this browser.';
-    }
-  }
-
-  const showPosition = (position) => {
-    let coordLat = position.coords.latitude
-    let coordLong = position.coords.longitude
-    let newApiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${coordLat}&lon=${coordLong}&appid=302165d90858a8a500d4198d9bc63d2b`
-
-    console.log(newApiUrl)
-    return newApiUrl
-  }
-
-  getLocation()
-}
-
-// Geo location button on click
-document.querySelector('#geo').addEventListener('click', btnClicked)
-
-*/
-
 const selectCity = () => {
+
   const citySelectBox = document.querySelector('#cities')
   let userCity = citySelectBox.options[citySelectBox.selectedIndex].value
+
+  // Remove intro text after button is clicked
+  const introText = document.querySelector('#intro')
+  if (introText) introText.remove()
 
   // Todays weather
   fetch(`https://api.openweathermap.org/data/2.5/weather?q=${userCity},Sweden&units=metric&APPID=302165d90858a8a500d4198d9bc63d2b`)
@@ -40,20 +14,18 @@ const selectCity = () => {
     })
     .then((json) => {
 
-
-
       // Convert milliseconds to HH:MM
       const timeFormat = (ms) => {
         let time = new Date(ms * 1000).toLocaleTimeString([], {
           timeStyle: 'short'
         })
-        return time;
+        return time
       }
 
       // Change body background color depending on current temperature
       const setBgColor = (bgCol) => {
-        document.body.style.backgroundColor = bgCol;
-      };
+        document.body.style.backgroundColor = bgCol
+      }
 
       const currentTemp = +json.main.temp.toFixed(0)
 
@@ -83,7 +55,7 @@ const selectCity = () => {
             return '🌤'
             break
           case 'Clouds':
-            return '🌥'
+            return '☁️'
             break
           case 'Drizzle':
             return '⛈'
@@ -131,10 +103,10 @@ const selectCity = () => {
       filteredForecast.forEach(day => {
 
         // Return weekday
-        let date = new Date(day.dt * 1000);
+        let date = new Date(day.dt * 1000)
         let weekday = date.toLocaleDateString('en-US', {
           weekday: 'short'
-        });
+        })
 
         document.querySelector('#forecast').innerHTML += `
         <tr>
@@ -152,3 +124,30 @@ const selectCity = () => {
 }
 
 document.querySelector('#pickCityButton').addEventListener('click', selectCity)
+
+
+/*
+// Geolocation test – getLocation() returns url with coordinates of current location
+
+const getLocation = () => {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition)
+  } else {
+    console.log('Geolocation is not supported by this browser.')
+  }
+}
+
+const showPosition = (position) => {
+  let coordLat = position.coords.latitude
+  let coordLong = position.coords.longitude
+  let newApiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${coordLat}&lon=${coordLong}&appid=302165d90858a8a500d4198d9bc63d2b`
+
+  console.log(newApiUrl)
+  return newApiUrl
+}
+
+getLocation()
+
+// Geo location button on click
+document.querySelector('#geo').addEventListener('click', btnClicked)
+*/

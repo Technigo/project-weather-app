@@ -11,9 +11,10 @@
 
 <body>
 
-  <div class="select-city-container">
+  <header>
+    <h3 id="intro">Select a location:</h3>
     <div class="dropdown">
-      <select id="cities">Pick a city
+      <select id="cities">
         <option value="Arctic">Arctic</option>
         <option value="Antarctica">Antarctica</option>
         <option value="Copenhagen">Copenhagen</option>
@@ -26,24 +27,23 @@
     </div>
 
     <button id="pickCityButton">OK</button>
-  </div>
+    <!-- <button id="geo">Get location</button> -->
+  </header>
 
-  <button id="geo">Get location</button>
+  <main>
+    <h1 id="city"></h1>
+    <h2 id="temperature"></h2>
+    <h3 id="description"></h3>
+    <p id="wind"></p>
 
+    <p id="sunrise"></p>
+    <p id="sunset"></p>
 
-  <h1 id="city"></h1>
-  <h2 id="temperature"></h2>
-  <h3 id="description"></h3>
-  <p id="wind"></p>
+    <table class="forecast-table">
+      <tbody id="forecast"></tbody>
+    </table>
 
-  <p id="sunrise"></p>
-  <p id="sunset"></p>
-
-  <table class="forecast-table">
-    <tbody id="forecast">
-
-    </tbody>
-  </table>
+  </main>
 
   <script src="script.js"></script>
 </body>

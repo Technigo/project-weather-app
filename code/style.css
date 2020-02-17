@@ -4,7 +4,7 @@
   --color-plus: rgb(255, 224, 51);
   --color-minus: rgb(108, 196, 255);
   --color-cool: rgb(25, 144, 255);
-  --color-cold: rgb(16, 89, 184);
+  --color-cold: rgb(9, 92, 170);
 
   --font-family: 'Avenir', sans-serif;
 }
@@ -14,26 +14,38 @@
 }
 
 body {
-  margin: 3rem;
+  margin: 2rem 3rem;
   font-family: var(--font-family);
+  transition: all .3s ease-in-out;
+}
+
+main {
+  margin-top: 2rem;
 }
 
 h1 {
-  font-size: 2.6rem;
+  font-size: 2rem;
   margin-bottom: 0;
 }
 
 h2 {
-  font-size: 2rem;
-  margin-top: 0;
+  font-size: 3rem;
+  margin: 0;
 }
 
 h3 {
   font-size: 1.4rem;
 }
 
+p {
+  margin: .2rem;
+}
+
 .icon {
   display: inline-block;
+  vertical-align: middle;
+  margin-left: -1rem;
+  font-size: 3rem;
 }
 
 .forecast-table {
@@ -82,8 +94,4 @@ button {
   font-size: .9rem;
   font-weight: 500;
   margin-left: .5rem;
-}
-
-button#geo {
-  display: none;
 }
