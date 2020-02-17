@@ -1,6 +1,7 @@
+const containerBody = document.getElementById("body")
+
 const containerTodayCity = document.getElementById("todaysweathercity")
 const containerTodayCelsius = document.getElementById("todaysweathercelsius")
-const containerTodayCloud = document.getElementById("containertodaycloud")
 const containerSunrise = document.getElementById("sunrise")
 const containerSunset = document.getElementById("sunset")
 
@@ -13,10 +14,13 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=stockholm,Sweden&units=
     return response.json();
   })
   .then ((json) => {
-    //console.log(json);
+    console.log(json);
+    // Display city name
     containerTodayCity.innerHTML = `<h1> ${json.name} </h1>`
-    containerTodayCelsius.innerHTML = `<h1>  ${json.main.temp.toFixed(0)} <sup>°C</sup> and ${json.weather[0].main} </h1>`
-    //containerTodayCloud.innerHTML = `<h1> Feels like ${json.weather[0].main}</h1>`
+    //Display current temp and current weather description
+    containerTodayCelsius.innerHTML = `<h1>  ${json.main.temp.toFixed(0)}<sup>°C</sup> and ${json.weather[0].description} </h1>`
+
+    // Display sunrise and sunset times
 
     let sunrise = new Date(json.sys.sunrise * 1000)
     let sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' });
@@ -26,9 +30,23 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=stockholm,Sweden&units=
     const sunset = new Date(json.sys.sunset * 1000)
     const sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' });
 
-
     containerSunset.innerHTML = `<h2> Sunset: ${sunsetTime} </h2>`
-    })
+
+    //Change color of the background
+
+    const weatherId = json.main.temp
+
+    if (weatherId === 2 ) {
+      containerBody.style.background = "#DFDCD4"
+    }
+    else if (weatherId >= 4.0 ) {
+      containerBody.style.background = "#FFF7EE"
+    }
+    else if (weatherId <= 1,9 ) {
+      containerBody.style.background = "#FBBDAF"
+    }
+
+  })
   .catch((err) =>{
     console.log("caught error", err)
   })
@@ -41,14 +59,15 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=stockholm,Sweden&units=
 
     .then ((json) => {
       //console.log(json);
-      const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
 
+      //Display current 5 days
+      const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
 
       //console.log(filteredForecast);
       containerFiveDays.innerHTML = "";
       filteredForecast.forEach(day => {
         const date = new Date(day.dt * 1000)
-        const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         let dayOfWeek = weekdays[date.getDay()];
         
         containerFiveDays.innerHTML += `<h2> ${dayOfWeek} ${day.main.temp.toFixed(0)} <sup>°C</sup> </h2>`

@@ -3,17 +3,16 @@ body{
 }
 
 .main{
- margin: 110px;
+ margin: 75px;
 }
 
 header{
- border: 3px solid green;
  padding: 20px;
- height: 70px;
+ height: auto;
 }
 
 article{
-font-size: 50px;
+font-size: 30px;
 text-align: center;
 color: #FC8B93;
 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -24,37 +23,101 @@ h1{
 color: #FC8B93;
 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 font-weight: lighter;
+font-size: 25px;
+text-align: center;
 }
 
 h2 {
 color: #FC8B93;
-font-size: 25px;
+font-size: 23px;
 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 font-weight: lighter;
+text-align: left;
 }
 
 .today{
-padding: 20px;
-text-align: center;
-font-size: 30px;
+padding: 10px;
 }
 
 .sun{
-padding: 20px;
-text-align: center;
+padding: 10px;
 }
 
 .fivedays{
-border: 4px solid pink;
-text-align: center;
-
+padding: 20px;
 }
 
-
 @media (min-width: 667px) and (max-width: 1024px){
+
+.main{
+margin: 110px;
+}
+
+header{
+padding: 20px;
+}
+
+article{
+font-size: 40px;
+}
+
+h1{
+font-size: 35px;
+}
+
+h2 {
+font-size: 30px;
+text-align: left;
+}
+
+.today{
+padding: 15px;
+}
+
+.sun{
+padding: 15px;
+}
+
+.fivedays{
+padding: 15px;
+}
 
 }
 
 @media (min-width: 1025px){
+
+.main{
+margin: 110px;
+}
+
+header{
+padding: 20px;
+height: 70px;
+}
+
+article{
+font-size: 50px;
+}
+
+h1{
+font-size: 40px;
+}
+
+h2 {
+font-size: 35px;
+text-align: center;
+}
+
+.today{
+padding: 20px;
+}
+
+.sun{
+padding: 20px;
+}
+
+.fivedays{
+padding: 20px;
+}
 
 }
