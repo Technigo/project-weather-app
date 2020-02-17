@@ -41,25 +41,25 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     const weatherId = json.weather[0].id
 
     if (weatherId === 800 && dayTime) {
-      weatherIcon = `<img src"./assets/white/039-sun.png" alt="sun">` //Clear day sun
+      weatherIcon = '<img src"./assets/white/039-sun.png" alt="sun">' //Clear day sun
     } else if (weatherId === 800 && !dayTime) {
-      weatherIcon = `<img src="./assets/white/024-night-4.png" alt="moon">` //Clear night moon
+      weatherIcon = '<img src="./assets/white/024-night-4.png" alt="moon">' //Clear night moon
     } else if (weatherId === 801 && dayTime) {
-      weatherIcon = `<img src="./assets/white/038-cloudy-3.png" alt="sun and cloud">` //Few clouds day
+      weatherIcon = '<img src="./assets/white/038-cloudy-3.png" alt="sun and cloud">' //Few clouds day
     } else if (weatherId === 801 && !dayTime) {
-      weatherIcon = `<img src="./assets/white/002-cloud-1.png" alt="sun and cloud">` //Few clouds night
+      weatherIcon = '<img src="./assets/white/002-cloud-1.png" alt="sun and cloud">' //Few clouds night
     } else if (weatherId === 802) {
-      weatherIcon = `<img src="./assets/white/011-cloudy.png" alt="two clouds">` //Scattered clouds
+      weatherIcon = '<img src="./assets/white/011-cloudy.png" alt="two clouds">' //Scattered clouds
     } else if (weatherId === 803 || weatherId === 804) {
-      weatherIcon = `<img src="./assets/white/001-cloud.png" alt="cloud">` //Broken or overcast clouds
+      weatherIcon = '<img src="./assets/white/001-cloud.png" alt="cloud">' //Broken or overcast clouds
     } else if (weatherId >= 700 && weatherId < 800) {
-      weatherIcon = `<img src="./assets/white/017-fog.png" alt="cloud with fog">` //Atmosphere mist, dust, fog etc.
+      weatherIcon = '<img src="./assets/white/017-fog.png" alt="cloud with fog">' //Atmosphere mist, dust, fog etc.
     } else if (weatherId >= 600 && weatherId < 700) {
-      weatherIcon = `<img src="./assets/white/006-snowy.png" alt="cloud with snow">` //Snow
+      weatherIcon = '<img src="./assets/white/006-snowy.png" alt="cloud with snow">' //Snow
     } else if (weatherId >= 300 && weatherId < 600) {
-      weatherIcon = `<img src="./assets/white/003-rainy.png" alt="cloud with rain">` //Rain
+      weatherIcon = '<img src="./assets/white/003-rainy.png" alt="cloud with rain">' //Rain
     } else if (weatherId >= 200 && weatherId < 300) {
-      weatherIcon = `<img src="./assets/white/045-thunder.png" alt="thunder">` //Thunderstorm
+      weatherIcon = '<img src="./assets/white/045-thunder.png" alt="thunder">' //Thunderstorm
     }
 
     weatherPic.innerHTML = `${weatherIcon}`
@@ -107,27 +107,27 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
       const weatherId = day.weather[0].id
 
       if (weatherId === 800) {
-        weatherIcon = `<img src="./assets/color/039-sun.png" alt="sun">` //Clear day sun
+        weatherIcon = '<img src="./assets/color/039-sun.png" alt="sun">' //Clear day sun
       } else if (weatherId === 801) {
-        weatherIcon = `<img src="./assets/color/038-cloudy-3.png" alt="sun and cloud">` //Few clouds
+        weatherIcon = '<img src="./assets/color/038-cloudy-3.png" alt="sun and cloud">' //Few clouds
       } else if (weatherId === 802) {
-        weatherIcon = `<img src="./assets/color/011-cloudy.png" alt="two clouds">` //Scattered clouds
+        weatherIcon = '<img src="./assets/color/011-cloudy.png" alt="two clouds">' //Scattered clouds
       } else if (weatherId === 803 || weatherId === 804) {
-        weatherIcon = `<img src="./assets/color/001-cloud.png" alt="cloud">` //Broken or overcast clouds
+        weatherIcon = '<img src="./assets/color/001-cloud.png" alt="cloud">' //Broken or overcast clouds
       } else if (weatherId >= 700 && weatherId < 800) {
-        weatherIcon = `<img src="./assets/color/017-fog.png" alt="cloud with fog">` //Atmosphere mist, dust, fog etc.
+        weatherIcon = '<img src="./assets/color/017-fog.png" alt="cloud with fog">' //Atmosphere mist, dust, fog etc.
       } else if (weatherId >= 600 && weatherId < 700) {
-        weatherIcon = `<img src="./assets/color/006-snowy.png" alt="cloud with snow">` //Snow
+        weatherIcon = '<img src="./assets/color/006-snowy.png" alt="cloud with snow">' //Snow
       } else if (weatherId >= 300 && weatherId < 600) {
-        weatherIcon = `<img src="./assets/color/003-rainy.png" alt="cloud with rain">` //Rain
+        weatherIcon = '<img src="./assets/color/003-rainy.png" alt="cloud with rain">' //Rain
       } else if (weatherId >= 200 && weatherId < 300) {
-        weatherIcon = `<img src="./assets/color/045-thunder.png" alt="thunder">` //Thunderstorm
+        weatherIcon = '<img src="./assets/color/045-thunder.png" alt="thunder">' //Thunderstorm
       }
 
       // Display day, icon and temp in forecast section
       forecastContainer.innerHTML +=
         `<section class="dayForecast">
-          <h2>${dayOfWeek}</h2>
+          <h2>${dayOfWeek.toUpperCase()}</h2>
           <p>${weatherIcon}</p>
           <p>${day.main.temp.toFixed(1)}&#730</p>
         </section>`
