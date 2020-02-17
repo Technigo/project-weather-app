@@ -1,27 +1,34 @@
 // Geolocation test
 const geoBtn = document.getElementById("geo");
 
-const getLocation = () => {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else {
-    geoBtn.innerHTML = "Geolocation is not supported by this browser.";
+const btnClicked = () => {
+
+  const getLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      geoBtn.innerHTML = "Geolocation is not supported by this browser.";
+    }
   }
+
+  const showPosition = (position) => {
+    let coordLat = position.coords.latitude
+    let coordLong = position.coords.longitude
+    let apiString = `https://api.openweathermap.org/data/2.5/forecast?lat=${coordLat}&lon=${coordLong}&appid=302165d90858a8a500d4198d9bc63d2b`
+    console.log(apiString)
+  }
+  getLocation()
+
 }
 
-const showPosition = (position) => {
-  let coordLat = position.coords.latitude
-  let coordLong = position.coords.longitude
-  let apiString = `https://api.openweathermap.org/data/2.5/forecast?lat=${coordLat}&lon=${coordLong}&appid=302165d90858a8a500d4198d9bc63d2b`
-  console.log(apiString)
-}
 
 // Geo location button on click
-document.querySelector('#geo').addEventListener('click', getLocation)
+document.querySelector('#geo').addEventListener('click', btnClicked)
 
+let apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Malmo,Sweden&units=metric&APPID=302165d90858a8a500d4198d9bc63d2b'
 
 // Todays weather
-fetch('https://api.openweathermap.org/data/2.5/weather?q=Malmo,Sweden&units=metric&APPID=302165d90858a8a500d4198d9bc63d2b')
+fetch(apiUrl)
   .then((response) => {
     return response.json()
   })
@@ -73,19 +80,16 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Malmo&units=metric&app
     // Filter the forecast list array to get info from 06:00 each day
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('06:00'))
 
-    // Return weekday
-    const getDayOfWeek = (param) => {
-
-      let weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-      let date = new Date(param * 1000);
-      let specificDay = date.getDay();
-
-      return weekdays[specificDay]
-    }
-
     // Loops through filteredForecast
     filteredForecast.forEach(day => {
-      document.querySelector('#forecast').innerHTML += `<p>${getDayOfWeek(day.dt)} ${day.main.temp.toFixed(1)}° ${day.wind.speed.toFixed(1)}m/s</p>`
+
+      // Return weekday
+      let date = new Date(day.dt * 1000);
+      let weekday = date.toLocaleDateString('en-US', {
+        weekday: 'short'
+      });
+
+      document.querySelector('#forecast').innerHTML += `<p>${weekday} ${day.main.temp.toFixed(1)}° ${day.wind.speed.toFixed(1)}m/s</p>`
     })
 
   })
