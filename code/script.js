@@ -138,7 +138,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
     console.log("caught error", err)
   })
 
-
+// Function used to toggle credits
 function toggle() {
   this.classList.toggle("active")
 }
