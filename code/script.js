@@ -1,46 +1,44 @@
+const weatherBackground = document.getElementById('weather')
 const cityContainer = document.getElementById('city')
 const weatherPic = document.getElementById('weatherImage')
 const tempContainer = document.getElementById('temp')
 const descriptionContainer = document.getElementById('description')
 const sunriseContainer = document.getElementById('sunrise')
 const sunsetContainer = document.getElementById('sunset')
-const weatherBackground = document.getElementById('weather')
+const forecastContainer = document.getElementById('forecast')
+const currentTime = new Date().toLocaleTimeString()
+let weatherIcon
 
+// Current weather
 fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=60032cdd91d77852bfb39762c09118fe')
   .then((response) => {
     return response.json()
   })
   .then((json) => {
-    // Display city name  
+    // Display city name
     cityContainer.innerHTML = json.name
 
-    //Display current temp
+    // Display current temp
     tempContainer.innerHTML = `${json.main.temp.toFixed(1)}&#730`
 
-    //Display current weather description
+    // Display current weather description
     descriptionContainer.innerHTML = json.weather[0].description
 
     // Display sunrise and sunset times
-
-    const sunriseConversion = new Date(json.sys.sunrise * 1000)
-    const sunsetConversion = new Date(json.sys.sunset * 1000)
-
-    const sunriseTime = sunriseConversion.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-    const sunsetTime = sunsetConversion.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    const sunriseTime = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    const sunsetTime = new Date(json.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
 
     sunriseContainer.innerHTML += sunriseTime
     sunsetContainer.innerHTML += sunsetTime
 
-    // Determine which weather icon to display
-    const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-
+    // Determine if it is day or night, used when picking background and icon
     let dayTime
     if (currentTime > sunriseTime && currentTime < sunsetTime) {
       dayTime = true
     }
 
+    // Determine which weather icon to display
     const weatherId = json.weather[0].id
-    let weatherIcon
 
     if (weatherId === 800 && dayTime) {
       weatherIcon = `<img src"./assets/white/039-sun.png" alt="sun">` //Clear day sun
@@ -66,6 +64,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
 
     weatherPic.innerHTML = `${weatherIcon}`
 
+    // Determine which background to display
     if (weatherId === 800 && dayTime) {
       weatherBackground.style.backgroundImage = 'url("./assets/backgrounds/clear-day.jpg")' //Clear day
     } else if (weatherId === 800 && !dayTime) {
@@ -91,25 +90,21 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     console.log("caught error", err)
   })
 
-const forecastContainer = document.getElementById('forecast')
-
+// 5-day forecast
 fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=60032cdd91d77852bfb39762c09118fe')
   .then((response) => {
     return response.json()
   })
   .then((json) => {
-
+    // Filter the api list to only display UTC 12:00
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
 
     filteredForecast.forEach((day) => {
-
+      // Used to display day of week later
       const dayOfWeek = new Date(day.dt * 1000).toLocaleDateString('en-US', { weekday: 'short' })
 
+      // Used to display icon later
       const weatherId = day.weather[0].id
-
-      console.log(weatherId)
-
-      let weatherIcon
 
       if (weatherId === 800) {
         weatherIcon = `<img src="./assets/color/039-sun.png" alt="sun">` //Clear day sun
@@ -129,7 +124,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
         weatherIcon = `<img src="./assets/color/045-thunder.png" alt="thunder">` //Thunderstorm
       }
 
-
+      // Display day, icon and temp in forecast section
       forecastContainer.innerHTML +=
         `<section class="dayForecast">
           <h2>${dayOfWeek}</h2>
