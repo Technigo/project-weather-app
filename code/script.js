@@ -19,7 +19,7 @@ const weatherForecastApi =
 // console.log(weatherForecast)
 // -------------- 
 
-
+// document.body.style.background = "#"+((1<<24)*Math.random()|0).toString(16);
 
 fetch(weatherOneDayApi)
   .then((response) => {
@@ -29,12 +29,14 @@ fetch(weatherOneDayApi)
     // console.log('checking first json', json) // checking the json from open weather
     // container.innerHTML = `${json.main.temp.toFixed(1)}°`;
 
-    cityWeather.innerHTML = `${json.name} is a great city! We need some more text.`;
+    // cityWeather.innerHTML = `${json.name} is a great city! We need some more text.`;
 
     json.weather.forEach(sky => {
       weatherDescription.innerHTML += `${sky.description} | ${json.main.temp.toFixed(1)}° `;
+      cityWeather.innerHTML = `${json.name}, prepare for ${sky.description} today. 👍🏻🌻`;
     });
-    weatherImage.innerHTML = `<img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="Weather Icon" />`;
+    // weatherImage.innerHTML = `<img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="Weather Icon" />`;
+    weatherImage.innerHTML = `<img src="./img/${json.weather[0].icon}@2x.png" alt="Weather Icon" />`;
 
     // console.log('check if image is picked up:', weatherImage)
     // -------------- 
@@ -62,9 +64,6 @@ fetch(weatherOneDayApi)
     // -------------- 
   });
 
-
-
-
 // the weatherForecast - Step 4 :
 
 fetch(weatherForecastApi)
@@ -72,15 +71,27 @@ fetch(weatherForecastApi)
     return response.json();
   })
   .then((json) => {
-    // console.log('forecast json object', json);
+    console.log('forecast json object', json.list[0].dt_txt.split(' ')[0]);
     // filtrerar ut alla "kl 12" och skapar en ny Array: **************
+    // const filteredForecast = json.list.filter(item => item.dt_txt.includes("12:00"));
     const filteredForecast = json.list.filter(item => item.dt_txt.includes("12:00"));
-    // console.log('filtered array', filteredForecast);
+    console.log('filtered array', filteredForecast);
+
+    /*
+    Make a day object for TODAY and for the list and then remove TODAY:
+    https://stackoverflow.com/questions/43855166/how-to-tell-if-two-dates-are-in-the-same-day
+
+
+    */
+
+
+
     /*
     filteredForecast.forEach((forecast) => {
       weatherForecast.innerHTML += `<h3>date: ${forecast.dt} / ${forecast.weather[0].description} / ${forecast.main.temp.toFixed(1)}°C `;
     });
    */
+
     filteredForecast.forEach(day => {
       const date = new Date(day.dt * 1000)
       // console.log('new date:', date)

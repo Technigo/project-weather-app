@@ -1,7 +1,5 @@
 html {
   background-color: #F7E9B9;
-
-
 }
 
 body {
@@ -9,7 +7,6 @@ body {
   color: #2A5510;
   padding: 0px;
   margin: 0px;
-
 }
 
 h1 {
@@ -17,23 +14,35 @@ h1 {
 }
 
 .box-container {
-  padding: 20px 20px;
-
+  padding: 20px 10px;
 }
 
 .top-info {
   font-weight: 100;
   font-size: 16px;
   text-transform: lowercase;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 0px 20px;
-  margin: 2px;
+  margin: 20px 0px;
 }
 
+.sun-status {
+  flex-direction: row;
+  padding: 2px 0px;
+}
+
+.sun-status img {
+  height: 15px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
 
 .city-info {
   max-width: 90%;
   font-weight: 700;
-  font-size: 26px;
+  font-size: 28px;
   padding: 0px 20px;
 }
 
@@ -44,7 +53,9 @@ h1 {
 }
 
 .city-info img {
-  height: 70px;
+  height: 90px;
+  margin-top: 20px;
+  margin-bottom: 0px;
 }
 
 
@@ -56,6 +67,5 @@ h1 {
   justify-content: space-between;
   padding: 0px 20px;
   margin: 0px;
-
-
+  max-width: 90%;
 }
