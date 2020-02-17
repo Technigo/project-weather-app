@@ -1,0 +1,80 @@
+body {
+  background: no-repeat center fixed;
+  background-color: #A9C9FF;
+  background-image: linear-gradient(168deg, #A9C9FF 0%, #FFBBEC 100%);
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  margin: 2em;
+}
+
+p {
+  margin: 0;
+}
+
+.weather-app {
+  display: flex;
+}
+
+.sunrise-sunset {
+  display: flex;
+  flex-wrap: wrap;
+  width: 120px;
+  justify-content: space-between;
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+.sunrise-sunset p {
+  justify-content: space-between;
+}
+
+.main {
+  display: flex;
+  align-items: flex-end;
+}
+
+.temp-of-the-day {
+  font-size: 6em;
+  font-family: 'Fredoka One', cursive;
+  margin: 1em 0 0 0;
+}
+
+.feels-like {
+  font-size: 2em;
+  font-family: 'Fredoka One', cursive;
+  margin: 2em 0 1em 0;
+}
+
+.city {
+  font-size: 2.5em;
+  font-family: 'Fredoka One', cursive;
+  margin: 0 0 0.2em 0;
+}
+
+.description {
+  font-family: 'Fredoka One', cursive;
+  margin: 0 0 2em 0;
+  font-size: 1.5em;
+}
+
+.forecast-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.forecast {
+  font-size: 1.1em;
+  line-height: 2em;
+}
+
+.forecast p {
+  align-items: center;
+  border-bottom: 2px dotted #fff;
+  width: 296px;
+}
+
+@media (max-width:900px) {
+  .weather-app {
+  flex-direction: column;
+}
+}

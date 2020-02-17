@@ -5,23 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Roboto&display=swap" rel="stylesheet">
   <title>🌤Weather App</title>
 </head>
 <body>
-  <div id="weatherAPI">
-    Loading...
-  </div>
-  <div id="tempOfTheDay">
-    Todays temperature...
-  </div>
-  <div id="city">
-    Where?
-  </div>
-  <div id="description">
-    What kind of weather?
-  </div>
-  <div id="forecast">
-  </div>
+  <div class="weather-app">
+    <div class="sunrise-sunset" id="sunriseAndSet">
+      Sunrise and sunset time ...
+    </div>
+    <div class="main">
+      <div class="temp-of-the-day" id="tempOfTheDay">
+        Todays temperature...
+      </div>
+      <div class="feels-like" id="feelsLike">
+        Feels like...
+      </div>
+    </div>
+    <div class="city" id="city">
+      Where?
+    </div>
+    <div class="description" id="description">
+      What kind of weather?
+    </div>
+    <div class="forecast-container">
+      <div class="forecast" id="forecast">
+      </div>
+    </div> 
+  </div> 
 
   <script src="script.js"></script>
 </body>
