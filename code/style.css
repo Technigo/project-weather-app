@@ -1,0 +1,65 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+header {
+ text-align: center;
+ margin: 50px;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-weight: lighter;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 38px;
+  font-weight: lighter;
+}
+
+h3 {
+  text-transform: capitalize;
+  font-style: italic;
+  font-weight: lighter;
+  font-size: 15px;
+}
+
+h4 {
+  text-transform: capitalize;
+  font-weight: lighter;
+}
+
+.main-container {
+  width: 80%;
+  border: black solid 1px;
+  align-content: center;
+  display: inline;
+}
+
+.weather-description {
+  margin: 20px;
+}
+
+.container {
+  margin: 30px;
+  text-align: center;
+}
+
+.sun-information {
+  flex-direction: row;
+  display: flex;
+  justify-content: space-evenly;
+  text-transform: capitalize;
+}
+
+.container-forecast {
+text-align: center;
+}

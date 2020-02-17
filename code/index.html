@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="main-container">
+    <header>
+      <!-- TODAY'S WEATHER GENERAL INFORMATION -->
+      <h1>today's weather in</h1>
+      <h2 id="location"></h2>
+      <h2 id="temp"></h2>
+      <div class="weather-icon">
+        <img id="weatherIcon" src="" alt="weather icon">
+      </div>
+      <div class="weather-description">
+        <h3 id="description"></h3>
+      </div>
+      <div class="container">
+        <h4 id="humidity">humidity:</h4>
+        <h4 id="windSpeed">wind speed:</h4>
+      </div>
+
+      <div class="sun-information">
+        <p id="sunrise">sunrise:</p>
+        <p id="sunset">sunset:</p>
+      </div>
+    </header>
+
+    <main>
+      <!-- 5 days FORECAST -->
+      <div id="containerFiveDays" class="container-forecast"></div>
+    </main>
+
+    <script src="script.js"></script>
+  </div>
+</body>
+
+</html>
