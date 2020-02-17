@@ -34,8 +34,15 @@ fetch(apiCurrent)
 fetch(apiForecast)
     .then((response) => {
       return response.json()
+    })
     .then((json) => {
-      console.log(json)
+      const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
+      console.log(filteredForecast)
+      filteredForecast.forEach((day) => {
+        const date = new Date(day.dt * 1000)
+        let weekday = week[date.getDay()]
+        console.log(weekday)
+        fiveDayForecast.innerHTML += `<p>${weekday}: ${day.main.temp} °C</p>`
     })
     })
 
