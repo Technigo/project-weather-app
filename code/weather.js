@@ -7,9 +7,8 @@ const week = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat']
 const city = document.getElementById("city");
 const temp = document.getElementById("temp");
 const feels = document.getElementById("feels")
-const sunrise = document.getElementById("sunrise");
-const sunset = document.getElementById("sunset");
-const forecastDiv = document.getElementById('weekday')
+const sunrise = document.getElementById("sunrise")
+const sunset = document.getElementById("sunset")
 const fiveDayForecast = document.getElementById("fiveDayForecast")
 const londonWeatherToday = document.getElementById("london")
 const barcelonaWeatherToday = document.getElementById("barcelona")
@@ -66,6 +65,7 @@ fetch(weatherForecast)
 
   .then(json => {
     console.log(json)
+    console.log(json.list[0].dt_txt.split(' ')[0])
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
 
     filteredForecast.forEach(day => {
