@@ -68,6 +68,11 @@ main{
   font-size: 0.75rem;
 }
 
+.current img{
+  height: 30px;
+  width: 30px;
+}
+
 .forecast{
   background: #e3edf7;
   padding: 12px;

@@ -6,10 +6,12 @@ const forecastWeatherAPI = "http://api.openweathermap.org/data/2.5/forecast?q=he
 const weather = {}
 const days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
 
-
 // DOM elements
-const currentWeather = document.getElementById('current')
+const header = document.getElementById('header')
+const figcaption = document.getElementById('figcaption')
+const figure = document.getElementById('figure')
 const forecastWeather = document.getElementById('forecast')
+
 
 /*  ---- CURRENT WEATHER ---- */
 
@@ -42,16 +44,16 @@ fetch(currentWeatherAPI)
 
 // Print current weather onto DOM
 const printWeather = () => {
-  currentWeather.innerHTML = `
+  header.innerHTML = `
     <h2>${weather.day}</h2>
     <h1>Weather in ${weather.location}</h1>
-
-      ${weather.temp} &#8451;
-      ${weather.description}
-      ${weather.sunrise}
-      ${weather.sunset}
-
     `
+  figcaption.innerHTML = `
+    <img src="/Assets/Icons/temp.png" alt=""> ${weather.temp} &#8451;
+    <img src="/Assets/Icons/sunrise.png" alt="">${weather.sunrise}
+    <img src="/Assets/Icons/sunset.png" alt="">${weather.sunset}
+    `
+  figure.innerHTML = `${weather.description}`
 }
 
 // Weather images
