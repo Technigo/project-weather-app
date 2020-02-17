@@ -1,6 +1,6 @@
 /*
 // Geolocation test
-const geoBtn = document.getElementById("geo");
+const geoBtn = document.getElementById('geo');
 
 const btnClicked = () => {
 
@@ -8,7 +8,7 @@ const btnClicked = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);
     } else {
-      geoBtn.innerHTML = "Geolocation is not supported by this browser.";
+      geoBtn.innerHTML = 'Geolocation is not supported by this browser.';
     }
   }
 
@@ -57,12 +57,14 @@ const selectCity = () => {
 
       const currentTemp = +json.main.temp.toFixed(0)
 
-      if (currentTemp < -5) {
+      if (currentTemp < -10) {
         setBgColor('var(--color-cold)')
-      } else if (currentTemp < 2) {
+      } else if (currentTemp < -5) {
         setBgColor('var(--color-cool)')
-      } else if (currentTemp <= 10) {
-        setBgColor('var(--color-medium)')
+      } else if (currentTemp <= 0) {
+        setBgColor('var(--color-minus)')
+      } else if (currentTemp < 10) {
+        setBgColor('var(--color-plus)')
       } else if (currentTemp <= 20) {
         setBgColor('var(--color-warm)')
       } else {
@@ -74,11 +76,37 @@ const selectCity = () => {
         return str.charAt(0).toUpperCase() + str.slice(1)
       }
 
+      // Show icon based on weather description
+      const weatherIcon = () => {
+        switch (json.weather[0].main) {
+          case 'Clear':
+            return '🌤'
+            break
+          case 'Clouds':
+            return '🌥'
+            break
+          case 'Drizzle':
+            return '⛈'
+            break
+          case 'Rain':
+            return '🌧'
+            break
+          case 'Snow':
+            return '🌨'
+            break
+          case 'Thunderstorm':
+            return '🌩'
+            break
+          default:
+            return '🌫'
+        }
+      }
+
       // Print out to DOM
       const cityName = document.querySelector('#city')
       cityName.innerHTML = json.name
+      document.querySelector('#temperature').innerHTML = `${json.main.temp.toFixed(1)}° <div class="icon">${weatherIcon()}</div>`
       document.querySelector('#description').innerHTML = capitalize(json.weather[0].description)
-      document.querySelector('#temperature').innerHTML = `${json.main.temp.toFixed(1)}°`
       document.querySelector('#wind').innerHTML = `Wind: ${json.wind.speed.toFixed(1)} m/s`
 
       document.querySelector('#sunrise').innerHTML = `Sunrise: ${timeFormat(json.sys.sunrise)}`
@@ -86,7 +114,7 @@ const selectCity = () => {
 
     })
     .catch((err) => {
-      console.log("oops error", err)
+      console.log('oops error', err)
     })
 
 
@@ -118,7 +146,7 @@ const selectCity = () => {
 
     })
     .catch((err) => {
-      console.log("oops error", err)
+      console.log('oops error', err)
     })
 
 }

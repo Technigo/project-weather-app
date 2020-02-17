@@ -1,9 +1,10 @@
 :root {
-  --color-hot: #FF5733;
-  --color-warm: #FFBD33;
-  --color-medium: #FFE033;
-  --color-cool: #33C4FF;
-  --color-cold: #338AFF;
+  --color-hot: rgb(255, 93, 57);
+  --color-warm: rgb(255, 167, 51);
+  --color-plus: rgb(255, 224, 51);
+  --color-minus: rgb(108, 196, 255);
+  --color-cool: rgb(25, 144, 255);
+  --color-cold: rgb(16, 89, 184);
 
   --font-family: 'Avenir', sans-serif;
 }
@@ -29,6 +30,10 @@ h2 {
 
 h3 {
   font-size: 1.4rem;
+}
+
+.icon {
+  display: inline-block;
 }
 
 .forecast-table {
