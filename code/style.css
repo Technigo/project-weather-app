@@ -27,21 +27,28 @@ h2 {
 
 h3 {
   text-transform: capitalize;
-  font-style: italic;
   font-weight: lighter;
-  font-size: 15px;
+  font-size: 13px;
 }
 
 h4 {
   text-transform: capitalize;
   font-weight: lighter;
+  font-size: 12px;
 }
 
 .main-container {
+  display: flex;
+  justify-content: center;
+  margin: 30px 10px;
+}
+
+.container-box {
+  border: bisque solid 1px;
+  border-radius: 8px;
   width: 80%;
-  border: black solid 1px;
-  align-content: center;
-  display: inline;
+  display: flex;
+  flex-direction: column;
 }
 
 .weather-description {
@@ -55,11 +62,30 @@ h4 {
 
 .sun-information {
   flex-direction: row;
+  font-size: 12px;
   display: flex;
   justify-content: space-evenly;
   text-transform: capitalize;
 }
 
-.container-forecast {
+.sun-icon {
+  width: 20%;
+  margin-right: 14px;
+}
+
+.forecast-container {
+  text-align: center;
+}
+
+.forecast p {
+font-size: 12px;
 text-align: center;
+justify-content: center;
+margin: 30px 10px;
+}
+
+#grad1 {
+  background-color: #ffddb2;
+  background-image: linear-gradient(180deg, #ffddb2 0%, #ffffff 100%);
+  
 }

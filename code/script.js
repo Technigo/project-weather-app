@@ -14,6 +14,9 @@ fetch(apiWeather)
     const temp = json.main.temp;
     const temp1 = temp.toFixed(0.1);
     document.getElementById("temp").innerHTML += `${temp1}°C`;
+    if (temp <= 10) {
+      document.getElementById("").innerHTML = background - image: linear - gradient(180deg, #ffddb2 0 %, #ffffff 100 %);
+    }
 
     // Weather icon https://openweathermap.org/weather-conditions
     const weatherConditions = json.weather[0].id;
@@ -33,7 +36,7 @@ fetch(apiWeather)
       weatherIcon.src = "assets/day_icons/few_clouds.png"
     } else if (weatherConditions === 802) {
       weatherIcon.src = "assets/day_icons/scattered_clouds.png"
-    } else if (weatherConditions === 803) {
+    } else if (weatherConditions >= 803 && weatherConditions >= 804) {
       weatherIcon.src = "assets/day_icons/broken_clouds.png"
     }
 
