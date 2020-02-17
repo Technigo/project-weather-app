@@ -18,8 +18,17 @@ img {
 
 .weather {
   background: #172f42;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.weather-today {
   display: grid;
   padding: 0 20px;
+  background: rgba(0, 0, 0, 0.5);
   color: #faf8ef;
   text-align: center;
 }

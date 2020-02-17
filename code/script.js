@@ -4,6 +4,7 @@ const tempContainer = document.getElementById('temp')
 const descriptionContainer = document.getElementById('description')
 const sunriseContainer = document.getElementById('sunrise')
 const sunsetContainer = document.getElementById('sunset')
+const weatherBackground = document.getElementById('weather')
 
 fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=60032cdd91d77852bfb39762c09118fe')
   .then((response) => {
@@ -19,7 +20,24 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     //Display current weather description
     descriptionContainer.innerHTML = json.weather[0].description
 
+    // Display sunrise and sunset times
+
+    const sunriseConversion = new Date(json.sys.sunrise * 1000)
+    const sunsetConversion = new Date(json.sys.sunset * 1000)
+
+    const sunriseTime = sunriseConversion.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    const sunsetTime = sunsetConversion.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+
+    sunriseContainer.innerHTML += sunriseTime
+    sunsetContainer.innerHTML += sunsetTime
+
     // Determine which weather icon to display
+    const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+
+    let dayTime
+    if (currentTime > sunriseTime && currentTime < sunsetTime) {
+      dayTime = true
+    }
 
     const weatherId = json.weather[0].id
     let weatherIcon
@@ -48,17 +66,25 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
 
     weatherPic.innerHTML = `${weatherIcon}`
 
-
-    // Display sunrise and sunset times
-
-    const sunriseConversion = new Date(json.sys.sunrise * 1000)
-    const sunsetConversion = new Date(json.sys.sunset * 1000)
-
-    const sunriseTime = sunriseConversion.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-    const sunsetTime = sunsetConversion.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-
-    sunriseContainer.innerHTML += sunriseTime
-    sunsetContainer.innerHTML += sunsetTime
+    if (weatherId === 800 && dayTime) {
+      weatherBackground.style.backgroundImage = 'url("./assets/backgrounds/clear-day.jpg")' //Clear day
+    } else if (weatherId === 800 && !dayTime) {
+      weatherBackground.style.backgroundImage = 'url("./assets/backgrounds/clear-night.jpg")' //Clear night
+    } else if (weatherId === 801 || weatherId === 802) {
+      weatherBackground.style.backgroundImage = 'url("./assets/backgrounds/cloud-day.jpg")' //Cloud day
+    } else if (weatherId === 801 || weatherId === 802 && !dayTime) {
+      weatherBackground.style.backgroundImage = 'url("./assets/backgrounds/cloud-night.jpg")' //Cloud night
+    } else if (weatherId === 803 || weatherId === 804) {
+      weatherBackground.style.backgroundImage = 'url("./assets/backgrounds/overcast.jpg")' //Broken or overcast clouds
+    } else if (weatherId >= 700 && weatherId < 800) {
+      weatherBackground.style.backgroundImage = 'url("./assets/backgrounds/fog.jpg")' //Atmosphere mist, dust, fog etc.
+    } else if (weatherId >= 600 && weatherId < 700) {
+      weatherBackground.style.backgroundImage = 'url("./assets/backgrounds/snow.jpg")' //Snow
+    } else if (weatherId >= 300 && weatherId < 600) {
+      weatherBackground.style.backgroundImage = 'url("./assets/backgrounds/snow.jpg")' //Rain
+    } else if (weatherId >= 200 && weatherId < 300) {
+      weatherBackground.style.backgroundImage = 'url("./assets/backgrounds/snow.jpg")' //Thunderstorm
+    }
   })
 
   .catch((err) => {
