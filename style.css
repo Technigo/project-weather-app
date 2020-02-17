@@ -8,12 +8,19 @@ body {
 
 h1 {
   text-align: center;
+  padding: 10px;
 }
 
 p {
   text-align: left;
   font-family: 'Montserrat', sans-serif; 
   margin: 2px 2px 2px;
+  border-bottom: black dotted 1px;
+}
+
+img {
+  height: 75px;
+  width: auto;
 }
 
 #sunnyDays {
@@ -32,6 +39,45 @@ p {
   color: #F47775; 
 }
 
+#containerToday {
+  margin: 10px;
+}
+
 #dayByDay {
-  padding: 10px 0px 10px;
+  padding-bottom: 15px; 
+  font-weight: bold;
+}
+
+
+@media screen and (min-width: 1024px) {
+  body{
+    display: flex;
+    align-items: center;
+  }
+
+  p {
+    margin: 15px 0px 15px;
+    padding-left: 10px;
+  }
+
+#containerToday {
+  display: block;
+  width: auto;
+  text-align: center;
+}  
+
+ #fiveDaysForecast {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+ }
+
+ #dayByDay {
+   padding-left: 15px; 
+ }
+
+#sunrise {
+  display: flex;
+} 
 }
