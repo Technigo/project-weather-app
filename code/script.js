@@ -55,11 +55,11 @@ fetch(weatherOneDayApi)
     // -------------- 
     // Sunrise and Sunset:
     sunRise.innerHTML = weather.sunrise = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], {
-      timeStyle: "short"
+      hour: '2-digit', minute: '2-digit'
     });
     console.log(sunRise.innerHTML)
     sunSet.innerHTML = weather.sunset = new Date(json.sys.sunset * 1000).toLocaleTimeString([], {
-      timeStyle: "short"
+      hour: '2-digit', minute: '2-digit'
     });
     // -------------- 
   });
