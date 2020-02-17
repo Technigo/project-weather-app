@@ -29,8 +29,8 @@ fetch(apiCurrent)
     console.log(weather.sunrise = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], { timeStyle: 'short' }))
     console.log(weather.sunset = new Date(json.sys.sunset * 1000).toLocaleTimeString([], { timeStyle: 'short' }))
     city.innerHTML = weather.city
-    temperatureMin.innerHTML += `Min ${weather.temperatureMin} °C`
-    temperatureMax.innerHTML += `Max ${weather.temperatureMax} °C`
+    temperatureMin.innerHTML += `Low ${weather.temperatureMin} °C`
+    temperatureMax.innerHTML += `High ${weather.temperatureMax} °C`
     description.innerHTML += `${weather.main} (${weather.description})`
     sunrise.innerHTML += `Sunrise: ${weather.sunrise} o'clock`
     sunset.innerHTML += `Sunset: ${weather.sunset} o'clock`
