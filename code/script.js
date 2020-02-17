@@ -15,6 +15,28 @@ fetch(apiWeather)
     const temp1 = temp.toFixed(0.1);
     document.getElementById("temp").innerHTML += `${temp1}°C`;
 
+    // Weather icon https://openweathermap.org/weather-conditions
+    const weatherConditions = json.weather[0].id;
+    if (weatherConditions >= 200 && weatherConditions <= 232) {
+      weatherIcon.src = "assets/day_icons/thunderstorm.png"
+    } else if (weatherConditions >= 300 && weatherConditions <= 321) {
+      weatherIcon.src = "assets/day_icons/shower_rain.png"
+    } else if (weatherConditions >= 500 && weatherConditions <= 531) {
+      weatherIcon.src = "assets/day_icons/rain.png"
+    } else if (weatherConditions >= 600 && weatherConditions <= 622) {
+      weatherIcon.src = "assets/day_icons/snow.png"
+    } else if (weatherConditions >= 701 && weatherConditions <= 781) {
+      weatherIcon.src = "assets/day_icons/mist.png"
+    } else if (weatherConditions === 800) {
+      weatherIcon.src = "assets/day_icons/clear_sky.png"
+    } else if (weatherConditions === 801) {
+      weatherIcon.src = "assets/day_icons/few_clouds.png"
+    } else if (weatherConditions === 802) {
+      weatherIcon.src = "assets/day_icons/scattered_clouds.png"
+    } else if (weatherConditions === 803) {
+      weatherIcon.src = "assets/day_icons/broken_clouds.png"
+    }
+
     const description = json.weather[0].description;
     document.getElementById("description").innerHTML += `${description}`;
 

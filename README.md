@@ -1,12 +1,14 @@
 # Weather App
 
-Replace this readme with your own information about your project.
+This project is a simple weather web app that shows today's weather and temperature, and a 5-day forecast using a weather API.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+## What I learnt
 
-## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+- What an API is and how to use it
+- Basic JSON
+- How to use `fetch()` in JavaScript
+- How to use promises in JavaScript
+- How to work with the `Date()` object in JavaScript
 
 ## View it live
 
