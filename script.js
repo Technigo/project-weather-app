@@ -31,7 +31,9 @@ fetch(
 
     const unixTimestampSunset = json.sys.sunset;
     let sunset = new Date(unixTimestampSunset * 1000);
-    let sunsetTime = sunset.toLocaleString([], { timeStyle: "short" });
+    // let sunsetTime = sunset.toLocaleString([], { timeStyle: "short" });
+    let sunsetTime = sunset.toLocaleString([], { hour: '2-digit', minute: '2-digit' })
+
     sunsetContainer.innerHTML = `<h3> Sunset ${sunsetTime}</h3>`;
 
     console.log(json);
