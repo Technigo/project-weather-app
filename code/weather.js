@@ -38,7 +38,7 @@ fetch(weatherNow)
   
   .then(json => {
     weather.sunrise = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-    weather.sunset = new Date(json.sys.sunset * 1000).toLocaleTimeString([], { timeStyle: 'short' })
+    weather.sunset = new Date(json.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     weather.temp = (Math.round(json.main.temp * 10) / 10)
     weather.feels_like = (Math.round(json.main.feels_like * 10) / 10)
     weather.city = json.name
