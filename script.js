@@ -17,7 +17,8 @@ fetch(
 
     const unixTimestampSunrise = json.sys.sunrise;
     let sunrise = new Date(unixTimestampSunrise * 1000);
-    let sunriseTime = sunrise.toLocaleString([], { timeStyle: "short" });
+    // let sunriseTime = sunrise.toLocaleString([], { timeStyle: "short" });
+    let sunriseTime = sunrise.toLocaleString([], { hour: '2-digit', minute: '2-digit' })
     sunriseContainer.innerHTML = `<h3> Sunrise ${sunriseTime}</h3>`;
 
     /* TO BE UPDATED 
