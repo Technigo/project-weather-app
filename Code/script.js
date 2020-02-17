@@ -34,8 +34,8 @@ fetch(currentWeatherAPI)
     sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short', timeZone: "UTC" })
     weather.sunset = sunsetTime
 
-    let currentDay = new Date(jsonFile.dt)
-    weather.day = currentDay
+    let currentTime = new Date()
+    weather.day = currentTime.toLocaleTimeString([], { dateStyle: "full", timeStyle: "short", timeZone: "Europe/Helsinki" })
 
     printWeather()
   })
@@ -51,6 +51,7 @@ const printWeather = () => {
       ${weather.sunrise}
       ${weather.sunset}
     </div>
+    <p>* All times are local time for Helsinki.</p>
     `
 }
 
