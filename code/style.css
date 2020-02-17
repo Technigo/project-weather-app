@@ -88,6 +88,9 @@ span {
 }
 
 @media (max-width: 1024px) {
+  html {
+    overflow-y: auto;
+  }
   #weatherChildren {
     display: flex;
     flex-direction: row;
