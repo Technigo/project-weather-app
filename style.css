@@ -1,0 +1,27 @@
+html {
+  background-color: bisque;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#city {
+  font-size: 200%;
+}
+
+#weather-current {
+  border: rgb(255, 152, 203);
+  border-style: solid;
+  border-radius: 10%;
+  padding: 0px 10px;
+}
+
+#weather-forecast {
+  border: rgb(255, 152, 203);
+  border-style: solid;
+  border-radius: 10%;
+  padding: 0px 10px;
+  margin-top: 30px;
+}
