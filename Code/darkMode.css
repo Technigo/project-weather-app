@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700&display=swap');
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Ubuntu', sans-serif;
+  color: white;
+}
+
+
+/* ---- BACKGROUND ----- */
+
+body{
+  background: linear-gradient(45deg, 
+  #720AB6,
+  #2822C0,
+  #093CA4,
+  #065BB2,
+  #069ACC
+  );
+  height: 100vh;
+  width: 100vw;
+  background-size: 400%;
+  animation: background-animation 5s infinite alternate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes background-animation {
+  0% {background-position: left;}
+  100% {background-position: right;}
+}
+
+/* ---- MAIN BODY ---- */
+
+main{
+  background: transparent;
+  width: 90vw;
+  height: 70vh;
+  display: grid;
+  grid-template-rows: 4fr 1fr;
+  grid-template-areas: "current" "forecast";
+  grid-row-gap: 12px;
+}
+
+
+/* ---- CURRENT WEATHER ---- */
+
+.current{
+  background: black;
+  padding: 12px;
+  grid-area: current;
+  border-radius: 0px 12px 0px 12px;
+  box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15);
+  position: relative;
+}
+
+.current h1{
+  font-size: 2.15rem;
+  font-weight: 400;
+  text-align: center;
+}
+
+.current h2 {
+  margin: 5px 0;
+  font-size: 1rem;
+  font-weight: 300;
+  text-align: center;
+}
+
+.current p{
+  position: absolute;
+  bottom: 12px;
+  font-size: 0.75rem;
+}
+
+.current img{
+  object-fit: contain;
+}
+
+#headerCaption {
+  margin-top: 5px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 30px;
+  font-size: 1.05rem;
+  font-weight: 300;
+}
+
+#headerCaption img {
+  width: 30px;
+  height: 30px;
+}
+
+#figureCaption {
+  padding: 0 25px;
+  font-size: 0.85rem;
+  font-weight: 300;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* ---- FORECAST ---- */
+
+.forecast{
+  background: black;
+  padding: 12px;
+  grid-area: forecast;
+  border-radius: 0px 12px 0px 12px;
+  box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15);
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
+/* SAMPLE FOR DESIGN
+
+box-shadow: 
+  6px 6px 10px -1px rgba(0,0,0,0.15),
+  -6px -6px 10px -1px rgba(255,255,255,0.7);
+  ;
+
+*/

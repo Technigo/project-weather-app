@@ -11,6 +11,7 @@ const header = document.getElementById('header')
 const headerCaption = document.getElementById('headerCaption')
 const figure = document.getElementById('figure')
 const forecastWeather = document.getElementById('forecast')
+const head = document.getElementById('head')
 
 
 /*  ---- CURRENT WEATHER ---- */
@@ -49,12 +50,8 @@ const printWeather = () => {
     <h2>${weather.day}</h2>
     <h1>Weather in ${weather.location}</h1>
     `
-  headerCaption.innerHTML = `
-    <img src="/Assets/Icons/temperature.png" alt=""> ${weather.temp} &#8451;
-    <img src="/Assets/Icons/sunrise.png" alt="">${weather.sunrise}
-    <img src="/Assets/Icons/sunset.png" alt="">${weather.sunset}
-    `
   weatherImage()
+  darkMode()
 }
 
 // Weather images
@@ -70,19 +67,43 @@ const weatherImage = () => {
   }
   else if (code < 700) {
     figure.innerHTML = `<img src="/Assets/snowy.png" alt="">`
-    figureCaption.innerHTML = `Hipster ice: I was water before it got cool. Soo, just for your information, it will be some ${weather.description}`
+    figureCaption.innerHTML = `Hipster ice: I was water before it got cool. Soo, just for your information, it will be some ${weather.description}.`
   }
   else if (code < 800) {
     figure.innerHTML = `<img src="/Assets/windy.png" alt="">`
-    figureCaption.innerHTML = `Here in ${weather.location} you're mostly experiencing some ${weather.description}`
+    figureCaption.innerHTML = `You wanna have a bad hair day? Then make sure to get some fresh air, cause it will most likely be some ${weather.description}.`
   }
   else if (code == 800) {
     figure.innerHTML = `<img src="/Assets/sunny.png" alt="">`
-    figureCaption.innerHTML = `Here in ${weather.location} you're mostly experiencing some ${weather.description}`
+    figureCaption.innerHTML = `What happens when a piggy gets sunburned? It's bacon in the sun. It will most likely be some ${weather.description} so put your sunglasses on!`
   }
   else {
     figure.innerHTML = `<img src="/Assets/cloudy.png" alt="">`
     figureCaption.innerHTML = `Oh, for crying out cloud! You're mostly experiencing some ${weather.description} today.`
+  }
+}
+
+// Dark mode
+const darkMode = () => {
+  let sunset = weather.sunset // 17 
+  let sunrise = weather.sunrise // 08 < 17
+  let currentTime = new Date()
+  currentTime = currentTime.toLocaleTimeString([], { timeStyle: "short", timeZone: "Europe/Helsinki" })
+  if (currentTime <= sunrise && currentTime >= sunset) {
+    head.innerHTML += `<link rel="stylesheet" href="style.css">`
+    headerCaption.innerHTML = `
+    <img src="/Assets/Icons/temperature.png" alt=""> ${weather.temp} &#8451;
+    <img src="/Assets/Icons/sunrise.png" alt="">${weather.sunrise}
+    <img src="/Assets/Icons/sunset.png" alt="">${weather.sunset}
+    `
+  }
+  else {
+    head.innerHTML += `<link rel="stylesheet" href="darkMode.css">`
+    headerCaption.innerHTML = `
+    <img src="/Assets/Icons/Darkmode/temperature.png" alt=""> ${weather.temp} &#8451;
+    <img src="/Assets/Icons/Darkmode/sunrise.png" alt="">${weather.sunrise}
+    <img src="/Assets/Icons/Darkmode/sunset.png" alt="">${weather.sunset}
+    `
   }
 }
 
