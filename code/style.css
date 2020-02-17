@@ -17,6 +17,29 @@ body {
   font-family: var(--font-family);
 }
 
+h1 {
+  font-size: 2.6rem;
+  margin-bottom: 0;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-top: 0;
+}
+
+h3 {
+  font-size: 1.4rem;
+}
+
+.forecast-table {
+  margin-top: 3rem;
+  width: 100%;
+}
+
+.forecast-table tr td:first-child {
+  font-weight: 600;
+}
+
 .dropdown {
   display: inline-block;
   vertical-align: top;

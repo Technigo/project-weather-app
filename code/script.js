@@ -69,15 +69,20 @@ const selectCity = () => {
         setBgColor('var(--color-hot)')
       }
 
+      // Capitalize first letter of string
+      const capitalize = (str) => {
+        return str.charAt(0).toUpperCase() + str.slice(1)
+      }
+
       // Print out to DOM
       const cityName = document.querySelector('#city')
       cityName.innerHTML = json.name
-      document.querySelector('#description').innerHTML = json.weather[0].description
+      document.querySelector('#description').innerHTML = capitalize(json.weather[0].description)
       document.querySelector('#temperature').innerHTML = `${json.main.temp.toFixed(1)}°`
-      document.querySelector('#wind').innerHTML = `${json.wind.speed.toFixed(1)} m/s`
+      document.querySelector('#wind').innerHTML = `Wind: ${json.wind.speed.toFixed(1)} m/s`
 
-      document.querySelector('#sunrise').innerHTML = timeFormat(json.sys.sunrise)
-      document.querySelector('#sunset').innerHTML = timeFormat(json.sys.sunset)
+      document.querySelector('#sunrise').innerHTML = `Sunrise: ${timeFormat(json.sys.sunrise)}`
+      document.querySelector('#sunset').innerHTML = `Sunset: ${timeFormat(json.sys.sunset)}`
 
     })
     .catch((err) => {
@@ -103,7 +108,12 @@ const selectCity = () => {
           weekday: 'short'
         });
 
-        document.querySelector('#forecast').innerHTML += `<p>${weekday} ${day.main.temp.toFixed(1)}° ${day.wind.speed.toFixed(1)}m/s</p>`
+        document.querySelector('#forecast').innerHTML += `
+        <tr>
+          <td>${weekday} </td>
+          <td>${day.main.temp.toFixed(1)}° </td>
+          <td>${day.wind.speed.toFixed(1)}m/s</td>
+        </tr>`
       })
 
     })
