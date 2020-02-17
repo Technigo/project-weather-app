@@ -25,25 +25,25 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     let weatherIcon
 
     if (weatherId === 800 && dayTime) {
-      weatherIcon = `<img src"./assets/039-sun.png">` //Clear day sun
+      weatherIcon = `<img src"./assets/white/039-sun.png" alt="sun">` //Clear day sun
     } else if (weatherId === 800 && !dayTime) {
-      weatherIcon = `<img src="./assets/024-night-4.png">` //Clear night moon
+      weatherIcon = `<img src="./assets/white/024-night-4.png" alt="moon">` //Clear night moon
     } else if (weatherId === 801 && dayTime) {
-      weatherIcon = `<img src="./assets/038-cloudy-3.png">` //Few clouds day
+      weatherIcon = `<img src="./assets/white/038-cloudy-3.png" alt="sun and cloud">` //Few clouds day
     } else if (weatherId === 801 && !dayTime) {
-      weatherIcon = `<img src="./assets/002-cloud-1.png">` //Few clouds night
+      weatherIcon = `<img src="./assets/white/002-cloud-1.png" alt="sun and cloud">` //Few clouds night
     } else if (weatherId === 802) {
-      weatherIcon = `<img src="./assets/011-cloudy.png">` //Scattered clouds
+      weatherIcon = `<img src="./assets/white/011-cloudy.png" alt="two clouds">` //Scattered clouds
     } else if (weatherId === 803 || weatherId === 804) {
-      weatherIcon = `<img src="./assets/001-cloud.png">` //Broken or overcast clouds
+      weatherIcon = `<img src="./assets/white/001-cloud.png" alt="cloud">` //Broken or overcast clouds
     } else if (weatherId >= 700 && weatherId < 800) {
-      weatherIcon = `<img src="./assets/017-foog.png">` //Atmosphere mist, dust, fog etc.
+      weatherIcon = `<img src="./assets/white/017-fog.png" alt="cloud with fog">` //Atmosphere mist, dust, fog etc.
     } else if (weatherId >= 600 && weatherId < 700) {
-      weatherIcon = `<img src="./assets/006-snowy.png">` //Snow
+      weatherIcon = `<img src="./assets/white/006-snowy.png" alt="cloud with snow">` //Snow
     } else if (weatherId >= 300 && weatherId < 600) {
-      weatherIcon = `<img src="./assets/003-rainy.png">` //Rain
+      weatherIcon = `<img src="./assets/white/003-rainy.png" alt="cloud with rain">` //Rain
     } else if (weatherId >= 200 && weatherId < 300) {
-      weatherIcon = `<img src="./assets/045-thunder.png">` //Thunderstorm
+      weatherIcon = `<img src="./assets/white/045-thunder.png" alt="thunder">` //Thunderstorm
     }
 
     weatherPic.innerHTML = `${weatherIcon}`
