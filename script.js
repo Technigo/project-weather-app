@@ -17,7 +17,7 @@ const today = new Date()
 console.log(today)
 
 //JSON STOCKHOLM WEATHER FOR TODAY
-fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=b09042e161870e44988114035ff61156')
+fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=b09042e161870e44988114035ff61156')
   .then((response) => {
     return response.json()
   })
