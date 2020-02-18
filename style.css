@@ -1,0 +1,30 @@
+body {
+  margin: 0px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  display: flex;
+  flex-flow: column wrap;
+  background-color: rgb(2, 23, 36);
+  font-size: 18px;
+  color: white;
+}
+
+h1 {
+  font-family: 'Abril Fatface', cursive;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--gray-lighter);
+  font-size: 30px;
+  text-align: left;
+  color: rgb(255, 255, 255);
+}
+
+h2 {
+ font-size: 25px;
+}
+
+#weather {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
