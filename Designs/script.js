@@ -54,7 +54,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=York,uk&units=metric&A
         //^^adds weekday names and numbers that I can use to create new filtered arrays. A weatherType 
         // to switch below to an Image.
 
-        document.getElementById('weather-future').innerHTML = editedForecast[4].dt_txt
+
 
         editedForecast.forEach(val => {
             val.icon = val.weatherType
@@ -80,6 +80,10 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=York,uk&units=metric&A
         const fridays = editedForecast.filter(item => item.day.includes('Fri'))
         const saturdays = editedForecast.filter(item => item.day.includes('Sat'))
         const sundays = editedForecast.filter(item => item.day.includes('Sun'))
+
+        document.getElementById('weather-future').innerHTML += editedForecast[0].day
+        document.getElementById('weather-future').innerHTML += thursdays[0].dayNumber
+
 
         //^^^Groups the array items according to their weekday so that I can search them for the min/max temperatures.
 
