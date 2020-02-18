@@ -30,7 +30,6 @@ h3 {
   text-transform: capitalize;
   font-weight: lighter;
   font-size: 15px;
-  background-image: ;
 }
 
 h4 {
@@ -60,6 +59,21 @@ h4 {
 .container {
   margin: 25px;
   text-align: center;
+}
+
+.weather-icon img {
+  animation: pulse 5s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0% {
+    transform: scale(1);
+    }
+    50% {
+    transform: scale(1.8);
+    }
+    100% {
+      transform: scale(1);
+  }
 }
 
 .sun-information {
@@ -117,7 +131,7 @@ justify-content: center;
     font-size: 17px;
     margin: 8px;
     }
-}
+  }
 
 @media (max-width: 321px) {
   .main-container {
