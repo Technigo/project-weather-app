@@ -1,38 +1,4 @@
-//container
-
-
-//fetch
-/* 
-========================================== 
-const container = document.getElementById('astros')
-fetch('http://api.open-notify.org/astros.json').then((response)=>{
-    return response.json()
-}).then((json) =>{
-    console.log(json)
-    container.innerHTML =`<h1> There are ${json.number} people in space</h1>`
-json.people.forEach(element => {
-    container.innerHTML += `<p>${element.name} is on craft ${element.craft}</p> `
-});
-
-})
-document.getElementById('killerImage').src = mystery.killer.image
-   var date = new Date(1546108200 * 1000);
-    console.log(date.toUTCString())
-    var fixed = rounded.toFixed(1);
-
-    // Here a date has been assigned 
-// while creating Date object 
-var dateobj = new Date('October 15, 1996 05:35:32'); 
-  
-// Contents of above date object is converted 
-// into a string using toString() function. 
-var B = dateobj.toString(); 
-  
-// Printing the converted string. 
-document.write(B); 
-a.replaceAt(4,'');
-========================================== 
-*/
+// funtion reacts to button
 
 const myFunc = () => {
 
@@ -40,31 +6,26 @@ const myFunc = () => {
     const today = document.getElementById('currentWeather')
     const orginalApi = 'https://api.openweathermap.org/data/2.5/weather?q=London&appid=2b9468766d0e54560c7e599762d2e80b'
     const weatherapi = 'https://api.openweathermap.org/data/2.5/weather?q='
-    // let cityApi = 'London'
-
-    // cityApi = 'Madrid'
     const apiId = '&appid=2b9468766d0e54560c7e599762d2e80b'
     const newApi = `https://api.openweathermap.org/data/2.5/weather?q=${cityApi}&appid=2b9468766d0e54560c7e599762d2e80b`
 
-    //fetch
+    //fetch today
     fetch(newApi).then((response) => {
         return response.json()
     }).then((json) => {
-        console.log(json)
-        const times = (new Date(json.dt * 1000)).toUTCString().split(' ')
+        // dealing with json
+        const times = (new Date(json.dt * 1000)).toUTCString().split(' ') // dealing with date
         const suny = [json.sys.sunrise, json.sys.sunset]
         console.log("sun", suny)
         const sunyNew = suny.map((item) => {
             return (new Date(item * 1000)).toUTCString().split(' ')
         })
-        console.log(sunyNew)
         const sunyList = sunyNew.map((item) => {
             const clock = item[4].split(':')
-            return `${clock[0]}:${clock[1]}`
+            return `${clock[0]}:${clock[1]}`  // removing seconds
         })
-        console.log(sunyList)
         const noSecond = times[4].split(':')
-        console.log(times)
+        // my weather object contains and sort relevant information
         let weatherObject = {
             city: json.name,
             name: json.weather[0].main,
@@ -78,7 +39,7 @@ const myFunc = () => {
         }
 
 
-        console.log("my object", weatherObject)
+        // changing color, text, and image based on weather
         const icons = {
             clouds: { image: "media/clouds.svg", bgColor: '#F4F7F8', fontColor: '#F47775', head: `Light a fire and get cozy. ${weatherObject.city} is looking gray today` },
             rain: { image: "media/rain.svg", bgColor: '#A3DEF7', fontColor: '#164A68', head: `Don't forget your umbrella Its wet in ${weatherObject.city} today`, },
@@ -91,22 +52,19 @@ const myFunc = () => {
             if (weatherObject.name === "Clouds" || weatherObject.name === "Mist") {
                 choice = icons.clouds
             }
-            else if (weatherObject.name === "Rain") {
+            else if (weatherObject.name === "Rain" || weatherObject.name === "Snow") {
                 choice = icons.rain
             }
             else if (weatherObject.name === "Clear") {
                 choice = icons.clear
             }
-            else if (weatherObject.name === "Snow") {
-                choice = icons.rain
-            }
-            console.log("image", choice)
+
             return choice
         }
 
         const myChoice = pictures()
-        console.log(myChoice)
-        const todayWeather = [json.main.temp, json.main.feels_like, json.main.temp_min, json.main.temp_max]
+
+        //const todayWeather = [json.main.temp, json.main.feels_like, json.main.temp_min, json.main.temp_max]
         document.getElementById('todayIcon').src = myChoice.image
         const myToday = document.getElementById('weatherToday')
         myToday.innerHTML = `<p>${weatherObject.description} | ${weatherObject.temp}</p>`
@@ -122,15 +80,12 @@ const myFunc = () => {
     const secondApi = `https://api.openweathermap.org/data/2.5/forecast?q=${cityApi}&appid=2b9468766d0e54560c7e599762d2e80b`
 
     // fetch 5 -days
-    // api.openweathermap.org/data/2.5/forecast?q=London&appid=2b9468766d0e54560c7e599762d2e80b
     fetch(secondApi).then((response) => {
         return response.json()
     }).then((jsonweek) => {
-        console.log('week', jsonweek)
-        console.log("day1", jsonweek.list[0])
-        const weekTimes = (new Date(jsonweek.dt * 1000)).toUTCString().split(' ')
-
-        const myFunc = () => {
+        // dealing with json object
+        const weatherWeek = () => {
+            // collecting relevant information
             let dayListWeather = []
             jsonweek.list.forEach((item) => {
                 const weekTime = (new Date(item.dt * 1000)).toUTCString().split(' ')
@@ -142,18 +97,13 @@ const myFunc = () => {
             return dayListWeather
 
         }
-        const newArr = myFunc()
-        console.log(newArr)
+        const newArr = weatherWeek()
+        // getting one temp per day
         const weatherShow = newArr.filter((item) => {
             return (item.time === "12:00:00")
         })
-        console.log(weatherShow)
+        // Showing icon for days to come
 
-        //const myTry = pictures()
-
-
-
-        const weekText = document.getElementById('forecast')
         const fontCol = document.getElementById('headline').style.color
         const symbol = (weather) => {
             let img = 'X'
@@ -172,7 +122,7 @@ const myFunc = () => {
 
             return img
         }
-
+        // reseting week everytime a new city is choosen
         const myDiv = document.getElementById('forecast')
         myDiv.innerHTML = ""
         weatherShow.forEach((day, index, arr) => {
@@ -192,8 +142,3 @@ const myFunc = () => {
 }
 document.getElementById('buttonCity').onclick = myFunc
 
-// console.log(moreAboutPokemons);
-// const newArray = moreAboutPokemons.map(val => {
-//   return val.name;
-// });
-// console.log(newArray);
