@@ -5,6 +5,7 @@ const containerWeather = document.getElementById('weather')
 const containerCelcius = document.getElementById('celsius')
 const containerSunsetRise = document.getElementById('sunsetSunrise')
 const containerForecast = document.getElementById('forecast')
+const currentCondition = document.getElementById('weather')
 
 
 
@@ -19,30 +20,47 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
   containerCelcius.innerHTML += `<h1> ${tempAsJSON}${'&#730;'}<sup>C</sup>  </h1>`
   json.weather.forEach( (report)=> {
   containerWeather.innerHTML += `<h2>${report.description}</h2>`  
+  
+
+
 
 });
 
 
-const windSpeed = () => {
-  let windSpeed = json.wind.speed 
-  
-  containerSunsetRise.innerHTML += `Wind speed: ${windSpeed}`
-}
-windSpeed()
 
-const sunrise = () => {
+const weatherToday = () => {
+  let windSpeed = json.wind.speed
+  
   let sunrise = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], {timeStyle:'short'})
-  containerSunsetRise.innerHTML += `<h4> Sunrise: ${sunrise} </h4>`
-  
+  let sunset = new Date(json.sys.sunset * 1000).toLocaleTimeString([], {timeStyle:'short'})
+ containerSunsetRise.innerHTML += `<h4> Sunrise: ${sunrise} </h4> <h4>Sunset: ${sunset} </h4> <h4> wind speed ${windSpeed}</h4>`
+ 
 }
-sunrise()
 
-const sunset = () => {
-let sunset = new Date(json.sys.sunset * 1000).toLocaleTimeString([], {timeStyle:'short'})
-containerSunsetRise.innerHTML += `<h4> Sunset: ${sunset} </h4>`
-  }
 
-sunset()
+
+weatherToday()
+
+// const windSpeed = () => {
+//   let windSpeed = json.wind.speed 
+  
+//   containerSunsetRise.innerHTML += `Wind speed: $`
+// }
+// windSpeed()
+
+// const sunrise = () => {
+//   let sunrise = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], {timeStyle:'short'})
+//   containerSunsetRise.innerHTML += `<h4> Sunrise: ${sunrise} </h4>`
+  
+// }
+// sunrise()
+
+// const sunset = () => {
+// let sunset = new Date(json.sys.sunset * 1000).toLocaleTimeString([], {timeStyle:'short'})
+// containerSunsetRise.innerHTML += `<h4> Sunset: ${sunset} </h4>`
+//   }
+
+// sunset()
 
 
 
@@ -80,11 +98,14 @@ filteredForecast.forEach((temp) => {
   console.log(temperature)
   console.log(temp)
   //console.log(daysName)
-
   const temperatureDays = new Date (temp.dt_txt)
   const correctDayFormat = temperatureDays.toLocaleDateString('en-US', {weekday:'short'})
+  containerForecast.innerHTML +=  `<img src="https://openweathermap.org/img/wn/${temp.weather[0].icon}@2x.png" alt="" />`
+//`<img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="" />`;
   document.getElementById('forecast').innerHTML += `<p> ${correctDayFormat}  ${temperature} ${'&#730;'} c </p>`
+  
 })
+
 
 
 //fungerade dagar!!

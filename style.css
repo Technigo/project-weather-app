@@ -35,8 +35,16 @@ h2 {
   color: white;
 }
 
+#weatherImage {
+  display: flex;
+  justify-content: center;
+}
+
 p {
   font-size: 14px;
+  background-color: rgba(247, 247, 247, 0.205);
+  padding: 5px 40px;
+  border-radius: 45px;
 
 }
 
