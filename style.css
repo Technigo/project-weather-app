@@ -1,0 +1,62 @@
+html {
+  background: rgb(69,108,249);
+  background: linear-gradient(90deg, rgba(56, 98, 250, 0.643) 0%, rgba(146, 177, 250, 0.615) 50%, rgba(177, 204, 247, 0.652) 100%);
+  font-family: 'Biryani', sans-serif;
+  font-weight: 200;
+  
+}
+
+.hamburger-menu {
+  margin: 20px 0 10px 10px
+}
+
+.hamburger {
+  background-color: white;
+  height: 2px;
+  width: 20px;
+  margin: 4px;
+  border-radius: 50px;
+}
+
+h1 {
+  margin: 10px auto;
+  text-align: center;
+  
+}
+
+h2 {
+  color: rgba(89, 89, 92, 0.781);
+  font-size: 20px;
+  
+}
+
+#celsius {
+  font-size: 30px;
+  color: white;
+}
+
+p {
+  font-size: 14px;
+
+}
+
+sup {
+  font-size: 35px;
+}
+
+.city-and-weather {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
+
+}
+
+h4 {
+  margin: 10px auto;
+}
+
+#forecast {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
