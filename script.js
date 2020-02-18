@@ -37,10 +37,10 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     // TODAYS SUNRISE/SUNSET
 
     const sunRiseTime = new Date(json.sys.sunrise * 1000)
-    sunRise.innerHTML = `Sunrise: ${sunRiseTime.toLocaleTimeString([], { timeStyle: 'short' })}, `
+    sunRise.innerHTML = `Sunrise: ${sunRiseTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}, `
 
     const sunSetTime = new Date(json.sys.sunset * 1000)
-    sunSet.innerHTML += `Sunset: ${sunSetTime.toLocaleTimeString([], { timeStyle: 'short' })}`
+    sunSet.innerHTML += `Sunset: ${sunSetTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`
   });
 
 
@@ -57,7 +57,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
 
     // TOMORROWS WEATHER
-    const date1 = new Date(filteredForecast[0].dt_txt)
+    const date1 = new Date(filteredForecast[0].dt_txt.replace(" ", "T"))
     const day1 = date1.toLocaleDateString('en-US', { weekday: 'long' })
     todayPlus1.innerHTML = day1
     todayPlus1.innerHTML += `: ${filteredForecast[0].main.temp} ºC, `
