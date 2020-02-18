@@ -1,13 +1,11 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Displaying the weather in a city using Fetch() to get data from openweathermap.org API and handle the data, displaying information on a responsive site.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Im familiar with Fetch(), the biggest problem was to display the minTemp and maxTemp each day.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+[Link](https://goofy-torvalds-e1df57.netlify.com/)
