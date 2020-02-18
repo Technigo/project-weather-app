@@ -89,7 +89,7 @@ const darkMode = () => {
   let sunrise = weather.sunrise // 08 < 17
   let currentTime = new Date()
   currentTime = currentTime.toLocaleTimeString([], { timeStyle: "short", timeZone: "Europe/Helsinki" })
-  if (currentTime <= sunrise && currentTime >= sunset) {
+  if (sunrise <= currentTime && currentTime < sunset) {
     head.innerHTML += `<link rel="stylesheet" href="style.css">`
     headerCaption.innerHTML = `
     <img src="/Assets/Icons/temperature.png" alt=""> ${weather.temp} &#8451;
