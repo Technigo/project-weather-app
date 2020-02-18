@@ -51,6 +51,17 @@ fetch(weatherNow)
     } else {
         document.getElementById("whatWeather").src = cold
     }
+    console.log(json)
+    let thisDay = new Date()
+    let thisTime = thisDay.getHours()
+    console.log(thisTime)
+
+    if(thisTime >= 15 || thisTime <= 06) {
+      document.body.style.backgroundImage = "url('img/nightclouds.png" 
+    } else {
+    }
+    
+    
   })
 
   })
