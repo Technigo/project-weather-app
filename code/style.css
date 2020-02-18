@@ -1,6 +1,6 @@
 html {
   background-color: #F7E9B9;
-  
+
 }
 
 body {
@@ -15,10 +15,10 @@ h1 {
 }
 
 
-
 .box-container {
   background-color: #F7E9B9;
   padding: 0px 10px;
+  max-width: 450px;
 }
 
 .top-info {
@@ -44,7 +44,7 @@ h1 {
 }
 
 .city-info {
-  max-width: 90%;
+  
   font-weight: 700;
   font-size: 28px;
   padding: 0px 20px;
@@ -74,10 +74,25 @@ h1 {
   max-width: 80%;
 }
 
-footer { 
-  height: auto
+.horizontal-bar {
+  font-weight: 100;
+  font-size: 10px;
+  text-align: center;
+  margin-top: auto
 }
 
+.horizontal-bar img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 15px;
+}
+
+footer {
+  height: auto
+}
+/*
 footer p {
   font-weight: 100;
   font-size: 10px;
@@ -91,4 +106,100 @@ footer img {
   margin-right: auto;
   width: 100%;
   height: 15px;
+}
+*/
+
+/****** MEDIA QUERIES FOR RESPONSIVE DESIGN ******/
+@media (min-width: 668px) {
+ 
+  .box-container {
+    max-width: 750px;
+    margin: 0px;
+
+  }
+  .top-info {
+    font-weight: 200;
+    font-size: 18px;
+    flex-direction: row;
+    margin-bottom: 10px;
+  }
+  .city-info {
+    width: auto;
+    font-weight: 700;
+    font-size: 34px;
+    padding: 0px 20px;
+    margin-left: 50px;
+    flex-direction: row;
+  }
+  .city-info p {
+    
+    width: 550px;
+  }
+  .city-info img {
+    
+    margin-left: auto;
+    margin-right: auto;
+   
+  }
+  .forecast-info {
+    
+    font-size: 24px;
+    text-transform: lowercase;
+    display: flex;
+    justify-content: space-around;
+    padding: 0px 20px;
+    margin: 0px;
+    max-width: 80%;
+  }
+  .horizontal-bar p {
+    font-size: 14px;
+  }
+
+
+}
+
+@media (min-width: 900px) {
+
+  .box-container {
+    max-width: 1200px;
+    margin: 0px;
+
+  }
+
+  .top-info {
+    font-weight: 500;
+    font-size: 20px;
+    flex-direction: row;
+    margin-bottom: 10px;
+    max-width: 80%;
+    padding-left: 120px;
+    padding-right: 120px;
+    
+  }
+
+  .city-info {
+    text-align: center;
+
+    
+  }
+  .city-info img {
+    display: block;
+  }
+  .city-info p {
+    text-align: center;
+    width: auto;
+    font-size: 40px;
+    margin: 0px 60px;
+    
+  }
+  .forecast-info {
+    max-width: 100%;
+    padding-left: 35%;
+    padding-right: 35%;
+    
+  }
+
+
+
+
 }
