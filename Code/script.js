@@ -58,27 +58,27 @@ const printWeather = () => {
 const weatherImage = () => {
   let code = weather.code
   if (code < 300) {
-    figure.innerHTML = `<img src="/Assets/thunder.png" alt="">`
+    figure.innerHTML = `<img src="/Code/Assets/thunder.png" alt="">`
     figureCaption.innerHTML = `Not sure if just a thunderstorm, or if we're being invaded by Russia. However, stay inside it will be ${weather.description}!`
   }
   else if (code < 600) {
-    figure.innerHTML = `<img src="/Assets/rainy.png" alt="">`
+    figure.innerHTML = `<img src="/Code/Assets/rainy.png" alt="">`
     figureCaption.innerHTML = `Why does Snoop Dog always have an umbrella? Fo'Drizzle! Yo, you should too, it will be ${weather.description} fo'shizzle!`
   }
   else if (code < 700) {
-    figure.innerHTML = `<img src="/Assets/snowy.png" alt="">`
+    figure.innerHTML = `<img src="/Code/Assets/snowy.png" alt="">`
     figureCaption.innerHTML = `Hipster ice: I was water before it got cool. Soo, just for your information, it will be some ${weather.description}.`
   }
   else if (code < 800) {
-    figure.innerHTML = `<img src="/Assets/windy.png" alt="">`
+    figure.innerHTML = `<img src="/Code/Assets/windy.png" alt="">`
     figureCaption.innerHTML = `You wanna have a bad hair day? Then make sure to get some fresh air, cause it will most likely be some ${weather.description}.`
   }
   else if (code == 800) {
-    figure.innerHTML = `<img src="/Assets/sunny.png" alt="">`
+    figure.innerHTML = `<img src="/Code/Assets/sunny.png" alt="">`
     figureCaption.innerHTML = `What happens when a piggy gets sunburned? It's bacon in the sun. It will most likely be some ${weather.description} so put your sunglasses on!`
   }
   else {
-    figure.innerHTML = `<img src="/Assets/cloudy.png" alt="">`
+    figure.innerHTML = `<img src="/Code/Assets/cloudy.png" alt="">`
     figureCaption.innerHTML = `Oh, for crying out cloud! You're mostly experiencing some ${weather.description} today.`
   }
 }
@@ -92,17 +92,17 @@ const darkMode = () => {
   if (sunrise <= currentTime && currentTime < sunset) {
     head.innerHTML += `<link rel="stylesheet" href="style.css">`
     headerCaption.innerHTML = `
-    <img src="/Assets/Icons/temperature.png" alt=""> ${weather.temp} &#8451;
-    <img src="/Assets/Icons/sunrise.png" alt="">${weather.sunrise}
-    <img src="/Assets/Icons/sunset.png" alt="">${weather.sunset}
+    <img src="/Code/Assets/Icons/temperature.png" alt=""> ${weather.temp} &#8451;
+    <img src="/Code/Assets/Icons/sunrise.png" alt="">${weather.sunrise}
+    <img src="/Code/Assets/Icons/sunset.png" alt="">${weather.sunset}
     `
   }
   else {
     head.innerHTML += `<link rel="stylesheet" href="darkMode.css">`
     headerCaption.innerHTML = `
-    <img src="/Assets/Icons/Darkmode/temperature.png" alt=""> ${weather.temp} &#8451;
-    <img src="/Assets/Icons/Darkmode/sunrise.png" alt="">${weather.sunrise}
-    <img src="/Assets/Icons/Darkmode/sunset.png" alt="">${weather.sunset}
+    <img src="/Code/Assets/Icons/Darkmode/temperature.png" alt=""> ${weather.temp} &#8451;
+    <img src="/Code/Assets/Icons/Darkmode/sunrise.png" alt="">${weather.sunrise}
+    <img src="/Code/Assets/Icons/Darkmode/sunset.png" alt="">${weather.sunset}
     `
   }
 }
