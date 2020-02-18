@@ -54,10 +54,9 @@ fetch(weatherNow)
     console.log(json)
     let thisDay = new Date()
     let thisTime = thisDay.getHours()
-    console.log(thisTime)
 
-    if(thisTime >= 15 || thisTime <= 06) {
-      document.body.style.backgroundImage = "url('img/nightclouds.png" 
+    if(thisTime >= 20 || thisTime <= 06) {
+      document.body.style.backgroundImage = "url('img/nightclouds.png')" 
     } else {
     }
     
@@ -74,7 +73,7 @@ fetch(weatherForecast)
   .then(json => {
     console.log(json)
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
-
+    console.log(filteredForecast)
     filteredForecast.forEach(day => {
       const date = new Date(day.dt * 1000)
       let newDay = date.getDay()
@@ -87,7 +86,6 @@ fetch(weatherForecast)
     })
   })
   
-
 
 // Forecasting three extra cities - London, Barcelona, Oslo
 fetch(londonWeather)
