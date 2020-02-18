@@ -6,11 +6,15 @@ const chooseCity = () => {
   console.log(city)
 }
 
-const weather = () => {
+const weather = (otherCity) => {
 
   const currentContainer = document.getElementById("current");
   const forecastContainer = document.getElementById("forecast");
 
+  if (otherCity) {
+    city = otherCity
+  }
+  console.log(city)
 
 
   // CURRENT
@@ -35,10 +39,10 @@ const weather = () => {
       currentContainer.innerHTML += `<p>The sun was rising at ${sunrise}<p>`
       currentContainer.innerHTML += `<p>The sun was setting at ${sunset}<p>`
 
-      temprature = json.main.temp
-      wind = json.wind.speed
-      clouds = json.clouds.all
-      rain = (json.weather[0].main === 'Snow' || json.weather[0].main === 'Rain') ? true : false;
+      const temprature = json.main.temp
+      const wind = json.wind.speed
+      const clouds = json.clouds.all
+      const rain = (json.weather[0].main === 'Snow' || json.weather[0].main === 'Rain') ? true : false;
 
       document.body.className = goodOrBad(rain, clouds, wind, temprature)
       console.log(goodOrBad(rain, clouds, wind, temprature))
@@ -47,6 +51,8 @@ const weather = () => {
 
 
     });
+
+  currentContainer.innerHTML += `<p>One more line<p>`
 
   // FORECAST
 
@@ -58,12 +64,18 @@ const weather = () => {
     })
     .then((json) => {
       console.log(json);
+      const filterTime = 12 // What time to forcast
+      const timeZone = json.city.timezone / 3600 //timezone difference from UTC in hours
+      const localFilterTime = timeFilter(filterTime, timeZone) // Converts to local time in 3hour steps
 
-      const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
+      console.log(localFilterTime)
 
-      console.log(filteredForecast);
+      //filters the list using UTC time, closest 3 hour to 12:00 local time 
+      const filteredForecast = json.list.filter(item => item.dt_txt.includes(`${localFilterTime}:00`))
 
-      forecastContainer.innerHTML = `${json.city.name}`
+      //const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
+
+      forecastContainer.innerHTML = `Here is the 5 day forcast for ${json.city.name}`
 
       for (let index = 0; index < filteredForecast.length; index++) {
 
@@ -79,7 +91,7 @@ const weather = () => {
 
         const image = ""
 
-        forecastContainer.innerHTML += `<div id="day${index}"> <h1>${day}</h1> <p>${temp} &#176;C</p> <p>${weather}</p> <img src="${iconFile}"></div>`
+        forecastContainer.innerHTML += `<div id="day${index}"> <h1>${day}</h1><p>${localFilterTime+timeZone}:00 local time<p> <p>${temp} &#176;C</p> <p>${weather}</p> <img src="${iconFile}"></div>`
 
       }
 
@@ -132,4 +144,56 @@ const goodOrBad = (rain, clouds, wind, temprature) => {
   } else {
 
   }
+}
+
+// Function to filter local time closest to 12 in 3 hour steps 
+
+const timeFilter = (filterTime, timezone) => {
+  let result = filterTime - timezone
+  console.log(result)
+  result = result + ((result + result % 3) % 3) // result - (result % 3) turns the result to a divider of 3 by removing the remainder
+  console.log(result)
+  return result
+}
+
+const goodCities = []
+
+const goodWeather = () => {
+
+  // fetch(
+  //     `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=e6dd4de800de3576c7c23ef944a736c4`
+  //   )
+  //   .then((response) => {
+  //     return response.json();
+  //   })
+  //   .then((json) => {
+  //     console.log(json);
+  //   })
+
+  const cities = ["stockholm", "helsinki", "las vegas", "los angeles", "sidney", "madrid", "oman"]
+
+  cities.forEach(element => {
+    fetch(
+        `http://api.openweathermap.org/data/2.5/weather?q=${element}&units=metric&appid=e6dd4de800de3576c7c23ef944a736c4`
+      )
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => {
+        const temprature = json.main.temp
+        const wind = json.wind.speed
+        const clouds = json.clouds.all
+        const rain = (json.weather[0].main === 'Snow' || json.weather[0].main === 'Rain') ? true : false;
+        console.log(element)
+        console.log(goodOrBad(rain, clouds, wind, temprature))
+        if (goodOrBad(rain, clouds, wind, temprature) === "good") {
+          goodCities.push(element)
+        }
+        console.log('list ' + goodCities)
+      })
+
+  });
+  randomCity = goodCities[Math.floor(Math.random() * goodCities.length)];
+  console.log('list ' + goodCities)
+  console.log('random ' + randomCity)
 }
