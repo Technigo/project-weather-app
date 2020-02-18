@@ -1,8 +1,5 @@
-
 fetch('https://api.openweathermap.org/data/2.5/weather?q=York,uk&units=metric&appid=d38c8d249211767107a91f311ddf4268')
-    .then((response) => {
-        return response.json()
-    })
+    .then((response) => response.json())
     .then((weather) => {
         console.log(weather)
         document.getElementById('temperature').innerHTML = `${Math.round(weather.main.temp)} &#8451`
