@@ -7,7 +7,6 @@ const forecastTemperature = document.getElementById('forecast-temperature')
 const forecastDay = document.getElementById('forecast-day')
 const weatherIcon = document.getElementById('weather-icon')
 const bigContainer = document.getElementById('big-container')
-const forecastBorder = document.getElementById('forecast')
 
 const sunny = {
   backgroundColor: 'linear-gradient(315deg, #e8af39 0%, #f9d976 74%)',
@@ -44,7 +43,7 @@ const otherWeather = {
 }
 
 
-fetch('http://api.openweathermap.org/data/2.5/weather?q=Malmoe,Sweden&units=metric&APPID=224e607ac22e4aef9578da3aaa6f0b85')
+fetch('https://api.openweathermap.org/data/2.5/weather?q=Malmoe,Sweden&units=metric&APPID=224e607ac22e4aef9578da3aaa6f0b85')
   .then((response) => {
     return response.json()
   })
@@ -84,7 +83,6 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Malmoe,Sweden&units=metr
       weatherIcon.src = cloudy.icon
       bigContainer.style.backgroundImage = cloudy.backgroundColor
       bigContainer.style.color = cloudy.color
-      forecastContainer.style.borderBottom = cloudy.border
 
     } else if (json.weather[0].main === "Snow") {
       placeContainer.innerHTML = `<h1>Put on a scarf. It is snowing in ${json.name} today.</h1>`
@@ -100,6 +98,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Malmoe,Sweden&units=metr
 
     } else {
       placeContainer.innerHTML = `<h1>This is today's weather in ${json.name}.</h1>`
+      weatherIcon.src = weather.icon
     }
   })
 
@@ -119,7 +118,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Malmo,Sweden&units=met
       });
       let temperatureDay = weatherForecast.main.temp.toFixed(1)
 
-      // I should've been able to just add the h2 but I could not make the styling work if I only added the h2s inside an already made div in the HTML.
+      // I should've been able to just add the h2 but I could not make the border appear if I only added the h2s inside an already made div in the HTML. But his also makes it not possible to style it according to the innerHTML in the if/else in the first fetch()
       forecastContainer.innerHTML += `<div class="forecast"><h2>${day.toLowerCase()}</h2><h2>${temperatureDay}°</h2></div>`
 
     });
