@@ -152,12 +152,20 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=York,uk&units=metric&A
             }
         ]
 
+        maxTemperature(sundays)
+        maxTemperature(mondays)
+        maxTemperature(tuesdays)
+        maxTemperature(wednesdays)
+        maxTemperature(thursdays)
+        maxTemperature(fridays)
+        maxTemperature(saturdays)
+
         // ^^This array lets me match the min/max Temps taken from my weekday arrays and displays them with the
         //relevant day. The index number of object matches the dayNumber given for each day by .getDay(). 
 
         const uniqueDays = editedForecast.filter(item => item.dt_txt.includes("12:00"))
 
-        document.getElementById('weather-future').innerHTML = temperatures[3].name
+        document.getElementById('weather-future').innerHTML = temperatures[3].tempMax
         //^^^Gives one array item of each day so that I can display them in HTML
         const today = new Date().getDay()
         const future = document.getElementById('weather-future')
