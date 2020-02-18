@@ -1,10 +1,11 @@
 html {
-  background: rgb(69,108,249);
-  background: linear-gradient(90deg, rgba(56, 98, 250, 0.643) 0%, rgba(146, 177, 250, 0.615) 50%, rgba(177, 204, 247, 0.652) 100%);
+  /* background: rgb(69,108,249); */
+  background: linear-gradient(90deg, rgba(69,108,249,0) 0%, rgba(174,195,246,0.35808035714285713) 46%, rgba(221,234,255,0.7295089285714286) 100%);  
   font-family: 'Biryani', sans-serif;
   font-weight: 200;
-  
 }
+
+
 
 .hamburger-menu {
   margin: 20px 0 10px 10px
