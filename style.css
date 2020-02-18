@@ -33,7 +33,7 @@ p {
   background-color: #0468bf;
 }
 
-.dayNight {
+.suncontainer {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -64,6 +64,7 @@ p {
   background-color: #8cddc5;
 }
 
+/* Space between day and temp */
 span {
   margin-left: 50px;
 }
@@ -74,10 +75,19 @@ span {
   background-color: #f2b544;
 }
 
+.foot p {
+  margin: 0;
+  padding: 30px;
+  font-size: 10px;
+  color: #f3c571;
+}
+
+/* Resposive part for tablet & desktop with fancy background */
 @media (min-width: 768px) {
   body {
     background-image: url("spots.svg");
   }
+
   .appcontainer {
     background-color: #fff;
     margin: 50px auto;
