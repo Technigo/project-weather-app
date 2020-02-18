@@ -10,7 +10,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=York,uk&units=metric&ap
         document.getElementById('description').innerHTML = `${json.weather[0].description}`
         const sunrise = new Date((json.sys.sunrise) * 1000)
         const sunset = new Date((json.sys.sunset) * 1000)
-        const sunriseShort = sunrise.toLocaleTimeString([], { timeStyle: 'short', timeZone: 'GMT', hour12: false })
+        const sunriseShort = sunrise.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', timeZone: 'GMT', hour12: false })
         const sunsetShort = sunset.toLocaleTimeString([], { hour12: false, timeStyle: 'short', timeZone: 'GMT' })
         document.getElementById('suntimes').innerHTML = `<span>sunrise:</span> <span>${sunriseShort}</span>
         <span>sunset:</span> <span>${sunsetShort}</span>`
