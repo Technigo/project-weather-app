@@ -20,16 +20,22 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=York,uk&units=metric&ap
 
             if (time >= 18 || time < 6) {
                 document.getElementById('image').src = "./Design-1/assets/moon.png"
+                document.getElementById('weatherToday').className = 'night';
             } else if (time >= 6 && time < 18 && weather.weather[0].main === 'Clear') {
                 document.getElementById('image').src = './Design-1/assets/sun.png'
+                document.getElementById('weatherToday').className = 'day-clear'
             } else if (time >= 6 && time < 18 && weather.weather[0].main === 'Rain') {
                 document.getElementById('image').src = './Design-1/assets/rain.png'
+                document.getElementById('weatherToday').className = 'day-grey'
             } else {
                 document.getElementById('image').src = './Design-1/assets/clouds.png'
+                document.getElementById('weatherToday').className = 'day-grey'
             }
 
         }
         displayImage(weather)
+
+
 
 
     });

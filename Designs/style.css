@@ -13,9 +13,35 @@ body {
     font-family: 'Roboto';
     font-weight: lighter;
     color: white;
+    background-image: linear-gradient(to bottom right, rgba(172,203,228,1),rgba(218,231,242,1))
+   
+}
+
+.night {
+    display: flex;
+    height: 60%;
+    font-family: 'Roboto';
+    font-weight: lighter;
+    color: white;
     background-image: linear-gradient(to bottom right,rgba(32,35,102,1),rgba(124,125,165,1));
-   
-   
+}
+
+.day-clear {
+    display: flex;
+    height: 60%;
+    font-family: 'Roboto';
+    font-weight: lighter;
+    color: white;
+    background-image: linear-gradient(to bottom right, rgba(172,203,228,1),rgba(218,231,242,1))
+}
+
+.day-grey {
+    display: flex;
+    height: 60%;
+    font-family: 'Roboto';
+    font-weight: lighter;
+    color: white;
+    background-image: linear-gradient(to bottom right, rgba(126,132,146,1),rgba(209,211,214,1))
 }
 
 .img-wrapper {
