@@ -5,12 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <p id="city">Loading..</p>
-    <p id="temperature"></p>
-    <p id="description"></p>
+    <section class="weather-today">
+        <div class="today-wrapper">
+            <h1 class="today-temp" id="temperature"></h1>
+            <h2 class="today-city" id="city">Loading..</h2>
+            <p id="description"></p>
+            <p class="suntimes" id="suntimes"></p>
+        </div>
+        <div class="img-wrapper">
+            <img src="./Design-1/assets/moon.png" height="100" alt="">
+        </div>
+    </section>
+    <section class="forecasts-wrapper">
+        <div class="forecasts" id="weather-future"></div>
+    </section>
+
     <script src="./script.js"></script>
 </body>
 

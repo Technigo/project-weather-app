@@ -1,0 +1,80 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+}
+
+.weather-today {
+    display: flex;
+    height: 60%;
+    font-family: 'Roboto';
+    font-weight: lighter;
+    color: white;
+    background-image: linear-gradient(to bottom right,rgba(32,35,102,1),rgba(124,125,165,1));
+   
+   
+}
+
+.img-wrapper {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-bottom: 80px;
+}
+.today-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 90%;
+    align-items: flex-start;
+    justify-content: flex-end;
+    
+    padding-left: 16px;
+}
+.today-temp {
+    font-size: 55px;
+   
+    display: flex;
+    margin: 0;
+}
+
+.today-city {
+    
+    display: flex;
+    margin: 0;
+}
+.suntimes {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.forecasts-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 40%;
+}
+.forecasts {
+    width: 90%;
+}
+.forecasts-wrapper p {
+   font-family: 'Roboto';
+   font-weight: lighter;
+    display: flex;
+    justify-content: space-between;
+
+    
+    
+}
+
+@media (min-width: 1025px) {
+    .today-wrapper {
+        width: 30%;
+    }
+}
