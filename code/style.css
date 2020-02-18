@@ -92,21 +92,24 @@ img {
 
 .forecast-main {
   text-align: center;
-  margin-top: 2em;
-  margin-bottom: 0;
+  margin-top: 4em;
+  margin-bottom: 2em;
   font-size: 0.8em;
   font-weight: bold;
 }
 
 .forecast {
-  display: inline-grid;
+  display: grid;
+  row-gap: 20px;
   width: 100%;
-  grid-template-columns: auto auto auto auto auto;
 }
 
 .dayForecast {
   padding: 10px;
   display: grid;
+  grid-template-columns: 30% 30% 30%;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
@@ -122,7 +125,7 @@ hr {
   margin-block-start: 2em;
   margin-block-end: 1em;
   background: #172f42;
-  border: 0.3px solid #172f42;
+  border: 0.5px solid #172f42;
 }
 
 /*** Footer styling ***/
@@ -131,7 +134,7 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 100px;
+  height: 120px;
   padding: 20px 0;
 }
 
@@ -171,15 +174,36 @@ footer a {
 .active + .credit-creators {
   opacity: 1;
   height: 50px;
-  padding: 5px;
+  padding: 10px;
 }
 
 /*** MEDIA QUERIES ***/
 
 @media (min-width: 668px) {
+  .weather {
+    height: 100%;
+  }
+  
+  .current-weather {
+    height: 100%;
+  }
+
+  .forecast {
+    display: inline-grid;
+    grid-template-columns: auto auto auto auto auto;
+  }
+
+  .dayForecast {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
+    text-align: center;
+  }
+
 
 }
 
 @media (min-width: 1025px) {
-
+ 
 }
