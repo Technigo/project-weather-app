@@ -12,4 +12,4 @@ This project is a simple weather web app that shows today's weather and temperat
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://condescending-lamarr-c448e6.netlify.com/
