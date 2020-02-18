@@ -5,18 +5,19 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Shadows Into Light', cursive;
 }
 
 header {
  text-align: center;
- margin: 50px;
+ margin-top: 20px;
+ margin-bottom: 10px;
 }
 
 h1 {
   text-transform: uppercase;
   font-weight: lighter;
-  font-size: 15px;
+  font-size: 18px;
   margin-bottom: 15px;
 }
 
@@ -28,13 +29,14 @@ h2 {
 h3 {
   text-transform: capitalize;
   font-weight: lighter;
-  font-size: 13px;
+  font-size: 15px;
+  background-image: ;
 }
 
 h4 {
   text-transform: capitalize;
   font-weight: lighter;
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .main-container {
@@ -44,7 +46,7 @@ h4 {
 }
 
 .container-box {
-  border: bisque solid 1px;
+  border: white solid 2px;
   border-radius: 8px;
   width: 90%;
   display: flex;
@@ -62,7 +64,7 @@ h4 {
 
 .sun-information {
   flex-direction: row;
-  font-size: 12px;
+  font-size: 14px;
   display: flex;
   justify-content: space-evenly;
   text-transform: capitalize;
@@ -80,26 +82,28 @@ h4 {
 
 .forecast-title {
   font-size: 22px;
+  letter-spacing: 4px;
 }
 
 .forecast p {
-font-size: 12px;
+font-size: 16px;
+margin: 8px;
 text-align: center;
 justify-content: center;
-margin: 30px 10px;
 }
 
 #grad1 {
-  background-color: #FFDDB2;
-  background-image: linear-gradient(180deg, #FFDDB2 0%, #FFFFFF 100%);
+  background-color: #ffffff;
+  background-image: linear-gradient(0deg, #ffffff 24%, #9eb8e2 100%);        
 }
 
 /* MEDIA QUERIES */
 @media (min-width: 767px) {
-  h4 {
-    font-size: 15px;
+  .forecast-title {
+    font-size: 18px;
   }
   .container-box {
+    border: none;
     width: 100%;
     height: 100%;
   }
@@ -109,6 +113,10 @@ margin: 30px 10px;
   .sun-icon {
     width: 35%;
   }
+  .forecast p {
+    font-size: 17px;
+    margin: 8px;
+    }
 }
 
 @media (max-width: 321px) {

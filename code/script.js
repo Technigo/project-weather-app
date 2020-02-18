@@ -73,6 +73,6 @@ fetch(apiForecast)
 
       const weekDaysString = date.toLocaleDateString("en-US", { weekday: "short" });
 
-      containerFiveDays.innerHTML += `<p> ${weekDaysString} ${day.main.temp.toFixed(0)} °C </p>`
+      containerFiveDays.innerHTML += `<p> ${weekDaysString} ${day.main.temp.toFixed(0)} °C</p>`
     })
   });
