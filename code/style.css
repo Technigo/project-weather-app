@@ -1,0 +1,11 @@
+
+body {
+
+  background-image: linear-gradient(white,lightblue,blue,darkblue);
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 1000px;
+  background-size: cover;
+  text-align: center;
+}
+
