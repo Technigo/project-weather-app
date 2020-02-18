@@ -1,12 +1,15 @@
 html {
-  background-color: #F7E9B9;
+/* background-color: #F7E9B9;  */
+/* background-color: #FBAB7E;  */
+background-image: linear-gradient(0deg, #FBAB7E 0%, #f7e9b9 54%); 
+
 
 }
 
 body {
   font-family: 'Montserrat', sans-serif;
-  color: #2A5510;
-  padding: 0px;
+  color: rgb(0, 66, 67);
+  /* color: #2A5510; */
   margin: 0px;
 }
 
@@ -16,9 +19,9 @@ h1 {
 
 
 .box-container {
-  background-color: #F7E9B9;
   padding: 0px 10px;
   max-width: 450px;
+  
 }
 
 .top-info {
@@ -53,7 +56,6 @@ h1 {
 .city-info p {
   margin-top: 0px;
   margin-bottom: 0px;
-  /* border: rgb(43, 226, 168) solid 5px; */
 }
 
 .city-info img {
@@ -61,7 +63,6 @@ h1 {
   margin-top: 0px;
   margin-bottom: 0px;
 }
-
 
 .forecast-info {
   font-weight: 100;
@@ -90,24 +91,9 @@ h1 {
 }
 
 footer {
-  height: auto
-}
-/*
-footer p {
-  font-weight: 100;
-  font-size: 10px;
-  text-align: center;
-  margin-top: auto
+  height: 300px
 }
 
-footer img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  height: 15px;
-}
-*/
 
 /****** MEDIA QUERIES FOR RESPONSIVE DESIGN ******/
 @media (min-width: 668px) {
@@ -121,7 +107,8 @@ footer img {
     font-weight: 200;
     font-size: 18px;
     flex-direction: row;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    margin-top: 15px;
   }
   .city-info {
     width: auto;
@@ -132,17 +119,13 @@ footer img {
     flex-direction: row;
   }
   .city-info p {
-    
     width: 550px;
   }
   .city-info img {
-    
     margin-left: auto;
     margin-right: auto;
-   
   }
   .forecast-info {
-    
     font-size: 24px;
     text-transform: lowercase;
     display: flex;
@@ -154,8 +137,6 @@ footer img {
   .horizontal-bar p {
     font-size: 14px;
   }
-
-
 }
 
 @media (min-width: 900px) {
@@ -163,43 +144,37 @@ footer img {
   .box-container {
     max-width: 1200px;
     margin: 0px;
-
   }
 
   .top-info {
     font-weight: 500;
     font-size: 20px;
     flex-direction: row;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     max-width: 80%;
     padding-left: 120px;
     padding-right: 120px;
-    
   }
 
   .city-info {
     text-align: center;
-
-    
   }
+
   .city-info img {
     display: block;
   }
+
   .city-info p {
     text-align: center;
     width: auto;
     font-size: 40px;
     margin: 0px 60px;
-    
   }
+
   .forecast-info {
     max-width: 100%;
     padding-left: 35%;
     padding-right: 35%;
     
   }
-
-
-
-
 }
