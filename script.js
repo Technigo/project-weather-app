@@ -174,7 +174,7 @@ const goodWeather = () => {
 
   cities.forEach(element => {
     fetch(
-        `http://api.openweathermap.org/data/2.5/weather?q=${element}&units=metric&appid=e6dd4de800de3576c7c23ef944a736c4`
+        `https://api.openweathermap.org/data/2.5/weather?q=${element}&units=metric&appid=e6dd4de800de3576c7c23ef944a736c4`
       )
       .then((response) => {
         return response.json();
