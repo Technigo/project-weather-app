@@ -69,9 +69,9 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
       weatherBackground.style.backgroundImage = 'url("./assets/backgrounds/clear-day.jpg")' //Clear day
     } else if (weatherId === 800 && !dayTime) {
       weatherBackground.style.backgroundImage = 'url("./assets/backgrounds/clear-night.jpg")' //Clear night
-    } else if (weatherId === 801 || weatherId === 802 && dayTime) {
+    } else if (weatherId === 801 && dayTime || weatherId === 802 && dayTime) {
       weatherBackground.style.backgroundImage = 'url("./assets/backgrounds/cloud-day.jpg")' //Cloud day
-    } else if (weatherId === 801 || weatherId === 802 && !dayTime) {
+    } else if (weatherId === 801 && !dayTime || weatherId === 802 && !dayTime) {
       weatherBackground.style.backgroundImage = 'url("./assets/backgrounds/cloud-night.jpg")' //Cloud night
     } else if (weatherId === 803 || weatherId === 804) {
       weatherBackground.style.backgroundImage = 'url("./assets/backgrounds/overcast.jpg")' //Broken or overcast clouds
