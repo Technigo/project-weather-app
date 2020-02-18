@@ -58,35 +58,35 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
 
     // TOMORROWS WEATHER
     const date1 = new Date(filteredForecast[0].dt_txt.replace(" ", "T"))
-    const day1 = date1.toLocaleDateString('en-US', { weekday: 'long' })
+    const day1 = date1.toLocaleDateString('en-US', { weekday: "short" })
     todayPlus1.innerHTML = day1
     todayPlus1.innerHTML += `: ${filteredForecast[0].main.temp} ºC, `
     todayPlus1.innerHTML += filteredForecast[0].weather[0].description
 
     //DAY AFTER TOMORROW
-    const date2 = new Date(filteredForecast[1].dt_txt)
-    const day2 = date2.toLocaleDateString('en-US', { weekday: 'long' })
+    const date2 = new Date(filteredForecast[1].dt_txt.replace(" ", "T"))
+    const day2 = date2.toLocaleDateString('en-US', { weekday: "short" })
     todayPlus2.innerHTML = day2
     todayPlus2.innerHTML += `: ${filteredForecast[1].main.temp} ºC, `
     todayPlus2.innerHTML += filteredForecast[1].weather[0].description
 
     // 2 DAYS AFTER TOMORROW
-    const date3 = new Date(filteredForecast[2].dt_txt)
-    const day3 = date3.toLocaleDateString('en-US', { weekday: 'long' })
+    const date3 = new Date(filteredForecast[2].dt_txt.replace(" ", "T"))
+    const day3 = date3.toLocaleDateString('en-US', { weekday: "short" })
     todayPlus3.innerHTML = day3
     todayPlus3.innerHTML += `: ${filteredForecast[2].main.temp} ºC, `
     todayPlus3.innerHTML += filteredForecast[2].weather[0].description
 
     //AND SO ON..
-    const date4 = new Date(filteredForecast[3].dt_txt)
-    const day4 = date4.toLocaleDateString('en-US', { weekday: 'long' })
+    const date4 = new Date(filteredForecast[3].dt_txt.replace(" ", "T"))
+    const day4 = date4.toLocaleDateString('en-US', { weekday: "short" })
     todayPlus4.innerHTML = day4
     todayPlus4.innerHTML += `: ${filteredForecast[3].main.temp} ºC, `
     todayPlus4.innerHTML += filteredForecast[3].weather[0].description
 
     // AND SO ON
-    const date5 = new Date(filteredForecast[4].dt_txt)
-    const day5 = date5.toLocaleDateString('en-US', { weekday: 'long' })
+    const date5 = new Date(filteredForecast[4].dt_txt.replace(" ", "T"))
+    const day5 = date5.toLocaleDateString('en-US', { weekday: "short" })
     todayPlus5.innerHTML = day5
     todayPlus5.innerHTML += `: ${filteredForecast[4].main.temp} ºC, `
     todayPlus5.innerHTML += filteredForecast[4].weather[0].description
