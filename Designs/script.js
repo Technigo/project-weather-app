@@ -107,6 +107,14 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=York,uk&units=metric&A
         //^^^Functions for finding min/max Temperatures. Called with the weekday arrays created above. Setting
         // minTemp to empty gives it a value of 0 so that it always appears lower, thus I had to pre-set it to a 
         // high number.
+        maxTemperature(sundays)
+        maxTemperature(mondays)
+        maxTemperature(tuesdays)
+        maxTemperature(wednesdays)
+        maxTemperature(thursdays)
+        maxTemperature(fridays)
+        maxTemperature(saturdays)
+
 
         const temperatures = [
             {
@@ -152,13 +160,6 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=York,uk&units=metric&A
             }
         ]
 
-        maxTemperature(sundays)
-        maxTemperature(mondays)
-        maxTemperature(tuesdays)
-        maxTemperature(wednesdays)
-        maxTemperature(thursdays)
-        maxTemperature(fridays)
-        maxTemperature(saturdays)
 
         // ^^This array lets me match the min/max Temps taken from my weekday arrays and displays them with the
         //relevant day. The index number of object matches the dayNumber given for each day by .getDay(). 
