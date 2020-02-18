@@ -1,26 +1,51 @@
 body {
-  background-image: url('./Design-1/assets/back.png');
-  background-attachment: fixed;
+  /* background-image: url('./Design-1/assets/back.png'); */
+  background-image: linear-gradient(white, blue);
+  /* /* 
   background-size: cover;
-  background-color: grey;
+  background-attachment: fixed; */
+  height: auto;
   display: flex;
   flex-direction: column;
   align-content: center;
   text-align: center;
   justify-content: center;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  margin: 20px;
+  border-left: 10px solid black;
+  border-right: 10px solid black;
+  border-radius: 25px;
+}
+
+/* body:before,
+body:after {
+  content: "";
+  position: fixed;
+  background: black;
+  left: 0;
+  right: 0;
+  height: 10px;
+  border-radius: 25px;
+} */
+
+body:before {
+  top: 0;
+  border-radius: 25px;
+}
+
+body:after {
+  bottom: 0;
+  border-radius: 25px;
 }
 
 h1 {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: black;
-  font-size: 25px;
+  font-size: 20px;
   margin: 20px;
 }
 
 #city {
-  font-size: 45px;
+  font-size: 60px;
   margin: 20px;
 }
 
@@ -32,8 +57,14 @@ h1 {
   text-align: center;
   justify-content: center;
   margin: 20px;
+}
 
+#sunrise {
+  font-size: 18px;
+}
 
+#sunset {
+  font-size: 18px;
 }
 
 #temp {
@@ -50,16 +81,17 @@ h1 {
   font-size: 20px;
 }
 
-.p {
-  size: auto;
-
+p {
+  display: block;
+  margin: 5px;
+  color: white;
 }
 
-.weekdays {
-  background-color: white;
-  border-radius: 5px;
-  margin: 10px;
-
-
-
+#containerFiveDays {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  text-align: center;
+  justify-content: center;
+  margin: 20px 0px 20px 0px;
 }
