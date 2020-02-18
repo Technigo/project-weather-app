@@ -1,4 +1,5 @@
 const sunriseAndSet = document.getElementById('sunriseAndSet')
+const weatherLogo = document.getElementById('weatherIcon')
 const tempOfTheDay = document.getElementById('tempOfTheDay')
 const city = document.getElementById('city')
 const weatherDescription = document.getElementById('description')
@@ -23,6 +24,51 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Reykjavik,Iceland&units
 
     sunriseAndSet.innerHTML = `<p>Sunrise: ${sunriseTime}</p>`
     sunriseAndSet.innerHTML += `<p>Sunset: ${sunsetTime}</p>`
+
+    // ******** NIGHT OR DAY *********
+
+    let timeOfDay = new Date()
+    let hours = timeOfDay.toLocaleTimeString('is',{ timeStyle: 'short',hour12: false})
+    console.log(sunriseTime)
+    console.log(timeOfDay)
+
+
+    // ******* WEATHER ICONS *********
+
+    const cloudyImg = {
+      image: 'assets/cloud-solid.svg'
+    }
+
+    const rainImg = {
+      image: 'assets/cloud-rain-solid.svg'
+    }
+
+    const clearImg = {
+      image: 'assets/sun-solid.svg'
+    }
+
+    const snowImg = {
+      image: 'assets/snowflake-solid.svg'
+    }
+
+    const whatKindOfWeather = () => {
+      if(json.weather[0].main === 'Rain'){
+        weatherIcon.innerHTML = `<img src="${rainImg.image}" height="100" alt="">`
+      } else if (json.weather[0].main === 'Clouds') {
+        weatherIcon.innerHTML = `<img src="${cloudyImg.image}" height="100" alt="">`
+      } else if (json.weather[0].main === 'Clear') {
+        weatherIcon.innerHTML = `<img src="${clearImg.image}" height="100" alt="">`
+      } else if (json.weather[0].main === 'Snow') {
+        weatherIcon.innerHTML = `<img src="${snowImg.image}" height="100" alt="">`
+      }else if (json.weather[0].main === 'Rain'){
+        weatherIcon.innerHTML = `<img src="${rainImg.image}" height="100" alt="">`
+      }
+    }
+
+    whatKindOfWeather()
+    
+      
+    
 
     tempOfTheDay.innerHTML = `${json.main.temp.toFixed(1)}°`
     tempFeelsLike.innerHTML = `${json.main.feels_like.toFixed(1)}°`
@@ -56,7 +102,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Reykjavik,Iceland&units
         const feelsLike = (day.main.feels_like)
       
 
-      forecast.innerHTML += `<p>${weekdayName} ${temp.toFixed(1)}° // ${feelsLike.toFixed(1)}</p>` 
+      forecast.innerHTML += `<p>${weekdayName} ${temp.toFixed(1)}° ${feelsLike.toFixed(1)}</p>` 
       })
 
     })
