@@ -33,7 +33,7 @@ fetch(apiWeather)
       weatherIcon.src = "assets/day_icons/few_clouds.png"
     } else if (weatherConditions === 802) {
       weatherIcon.src = "assets/day_icons/scattered_clouds.png"
-    } else if (weatherConditions >= 803 && weatherConditions >= 804) {
+    } else if (weatherConditions >= 803 && weatherConditions <= 804) {
       weatherIcon.src = "assets/day_icons/broken_clouds.png"
     }
 

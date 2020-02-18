@@ -75,6 +75,7 @@ h4 {
 
 .forecast-container {
   text-align: center;
+  display: block;
 }
 
 .forecast p {
@@ -87,5 +88,10 @@ margin: 30px 10px;
 #grad1 {
   background-color: #ffddb2;
   background-image: linear-gradient(180deg, #ffddb2 0%, #ffffff 100%);
-  
+}
+
+#grad2 {
+background-color: #FEE140;
+background-image: linear-gradient(90deg, #FEE140 0%, #FA709A 100%);
+
 }
