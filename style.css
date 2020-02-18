@@ -1,3 +1,9 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 html {
   height: 100%;
   margin: 0;
@@ -16,16 +22,18 @@ main {
   background-image: linear-gradient(315deg, #eec0c6 0%, #7ee8fa 74%);
 }
 
+ul {
+  list-style-type: none; 
+}
+
 li {
-  list-style-type:none;
   padding: 8px;
 }
 
 .top {
   display:flex;
-  justify-content: left baseline;
+  justify-content: center;
   font-size: 1.7rem;
-  padding-left: 30px;
 }
 
 .top h1 {
@@ -43,7 +51,39 @@ li {
   display:flex;
   background-color: rgb(250, 249, 249);
   font-size: 1rem;
-  padding: 10px;
+  padding: 10px 35px;
+}
+
+.topNav {
+  background: #222;
+  padding: 5px 20px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+}
+
+.item {
+  width: 100%;
+  text-align: center;
+}
+.item.active {
+  display: block;
+}
+
+.menu li {
+  font-size: 16px;
+  padding: 15px 5px;
+  white-space: nowrap;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }
 
 sup {
@@ -69,10 +109,6 @@ main {
   font-size: 3rem;
 }
 
-.hamburger {
-  display: none;
-}
-
 .forecast {
   display:flex;
   font-size: 2rem;
@@ -80,6 +116,20 @@ main {
   justify-content: center;
 }
 
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item {
+  display: block;
+  width: auto;
+ }
+.menu li {
+  padding: 15px 10px;
+ }
 }
 
 @media (min-width: 1025px) {
@@ -102,6 +152,21 @@ nav a {
   margin: 10px;
 }
 
+.item {
+  display: block;
+  width: auto;
+ }
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+.menu li {
+  padding: 15px 10px;
+}
+
 .top {
   display:flex;
   justify-content: center;
@@ -111,10 +176,6 @@ nav a {
 
 .top h1 {
   font-size: 3rem;
-}
-
-.hamburger {
-  display: none;
 }
 
 .forecast {
@@ -132,9 +193,6 @@ nav a {
 
 .day-night h2 {
   padding: 15px;
-}
-
-
-
+ }
 
 }
