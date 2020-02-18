@@ -152,18 +152,20 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=York,uk&units=metric&A
         const future = document.getElementById('weather-future')
         const printForecast = (weekday) => { //check this without if statement and i = 1 after noon!!!
             let i;
-            for (i = 0; i < weekday.length; i++) {
-                if (weekday[i].dayNumber !== today) {
-                    future.innerHTML += `<p><span>${weekday[i].day}</span> <span>${weekday[1].icon}</span>
+            for (i = 1; i < weekday.length; i++) {
+                weekday[i].dayNumber !== today
+                future.innerHTML += `<p><span>${weekday[i].day}</span> <span>${weekday[1].icon}</span>
                     <span> ${Math.round(temperatures[weekday[i].dayNumber].tempMax)} /
                     ${Math.round(temperatures[weekday[i].dayNumber].tempMin)} ℃</span> </p>`
-                }
+
             }
         }
 
         //^^^Makes sure it isn't displaying information for today, then displays information to HTML. 
 
         printForecast(uniqueDays)
+
+
 
 
 
