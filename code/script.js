@@ -3,15 +3,16 @@ const sunriseContainer = document.getElementById('sunrise')
 const sunsetContainer = document.getElementById('sunset')
 const fiveDayForecastContainer = document.getElementById('fiveDaysForecast')
 
+//To display the weather right now
 fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=6f2155bea70058c9c702a90730859c85')
   .then((response) => {
     return response.json()
   })
   .then((json) => {
-    container.innerHTML = `<h2> In ${json.name} the temperature is ${json.main.temp.toFixed(1)} degrees </h2 > `
+    container.innerHTML = `<h3>Today´s weather in:</h3> <h1> ${json.name}</h1> <h1>${json.main.temp.toFixed(1)} °C </h1 > `
 
     json.weather.forEach((element) => {
-      container.innerHTML += `<h2>and has ${element.description}.</h2>`
+      container.innerHTML += `<h3> ${element.description}</h3>`
     })
 
     //Declare variable for the time of sunrise/sunset
@@ -26,10 +27,11 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     let sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' })
     let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' })
 
-    sunsetContainer.innerHTML = `<h2> Sunset: ${sunsetTime} </h2>`
-    sunriseContainer.innerHTML = `<h2> Sunrise: ${sunriseTime} </h2>`
+    sunsetContainer.innerHTML = `<h5> Sunset: ${sunsetTime} </h5>`
+    sunriseContainer.innerHTML = `<h5> Sunrise: ${sunriseTime} </h5>`
   });
 
+//To dislay 5 days forecast 
 fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=6f2155bea70058c9c702a90730859c85')
   .then((response) => {
     return response.json()
@@ -37,7 +39,10 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
   .then((json) => {
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
 
+
     filteredForecast.forEach((day) => {
-      fiveDayForecastContainer.innerHTML += `<p> The overal weather: ${day.weather[0].description}. </p>`
+      let date = new Date(day.dt * 1000)
+      let dayName = date.toLocaleDateString("en-US", { weekday: "short" })
+      fiveDayForecastContainer.innerHTML += `<p>${dayName}: ${day.main.temp} °C</p>`
     })
   })
