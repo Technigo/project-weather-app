@@ -166,7 +166,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=York,uk&units=metric&A
 
         const uniqueDays = editedForecast.filter(item => item.dt_txt.includes("12:00"))
 
-        document.getElementById('weather-future').innerHTML = temperatures[3].tempMax
+        document.getElementById('weather-future').innerHTML = maxTemperature(wednesdays)
         //^^^Gives one array item of each day so that I can display them in HTML
         const today = new Date().getDay()
         const future = document.getElementById('weather-future')
