@@ -114,13 +114,13 @@ justify-content: center;
 }
 
 /* MEDIA QUERIES */
-@media (min-width: 767px) {
+@media (min-width: 759px) {
   .forecast-title {
     font-size: 18px;
   }
   .container-box {
     border: none;
-    width: 100%;
+    width: 70%;
     height: 100%;
   }
   .sun-information {
@@ -137,9 +137,9 @@ justify-content: center;
 
 @media (max-width: 321px) {
   .main-container {
-min-width: 40%;
+    min-width: 40%;
   }
   .container-box {
-    min-width: 40%;
+    min-width: 60%;
   }
 }
