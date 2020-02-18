@@ -81,8 +81,16 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=York,uk&units=metric&A
         const saturdays = editedForecast.filter(item => item.day.includes('Sat'))
         const sundays = editedForecast.filter(item => item.day.includes('Sun'))
 
-        document.getElementById('weather-future').innerHTML += editedForecast[0].day
-        // document.getElementById('weather-future').innerHTML += thursdays[0].dayNumber
+        const sundaySafari = editedForecast.filter(item => item.dayNumber === 0)
+        const mondaySafari = editedForecast.filter(item => item.dayNumber === 1)
+        const tuesdaySafari = editedForecast.filter(item => item.dayNumber === 2)
+        const wednesdaySafari = editedForecast.filter(item => item.dayNumber === 3)
+        const thursdaySafari = editedForecast.filter(item => item.dayNumber === 4)
+        const fridaySafari = editedForecast.filter(item => item.dayNumber === 5)
+        const saturdaySafari = editedForecast.filter(item => item.dayNumber === 6)
+
+        document.getElementById('weather-future').innerHTML += wednesdaySafari[0].dt_txt
+
 
 
         //^^^Groups the array items according to their weekday so that I can search them for the min/max temperatures.
