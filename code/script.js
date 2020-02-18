@@ -16,8 +16,10 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Reykjavik,Iceland&units
     const timestampSunrise = json.sys.sunrise
     const timestampSunset = json.sys.sunset
 
-    let sunrise = new Date (timestampSunrise * 1000)
-    let sunset = new Date (timestampSunset * 1000)
+    let sunrise = new Date(timestampSunrise * 1000)
+    let sunset = new Date(timestampSunset * 1000)
+
+    console.log(sunrise)
 
     let sunriseTime = sunrise.toLocaleTimeString('is',{ timeStyle: 'short',hour12: false})
     let sunsetTime = sunset.toLocaleTimeString('is',{timeStyle: 'short', hour12: false})
@@ -107,7 +109,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Reykjavik,Iceland&units
       console.log(filteredForecast)
 
       filteredForecast.forEach(day => {
-        const weekday = new Date(day.dt_txt)
+        const weekday = new Date(day.dt_txt.replace(' ', 'T'))
         console.log(weekday)
         const weekdayName = weekday.toLocaleDateString('is', {weekday: 'long'})
 
