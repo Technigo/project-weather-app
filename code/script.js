@@ -14,9 +14,6 @@ fetch(apiWeather)
     const temp = json.main.temp;
     const temp1 = temp.toFixed(0.1);
     document.getElementById("temp").innerHTML += `${temp1}°C`;
-    if (temp <= 10) {
-      document.getElementById("").innerHTML = background - image: linear - gradient(180deg, #ffddb2 0 %, #ffffff 100 %);
-    }
 
     // Weather icon https://openweathermap.org/weather-conditions
     const weatherConditions = json.weather[0].id;
