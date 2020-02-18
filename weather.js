@@ -6,6 +6,7 @@ const containerCelcius = document.getElementById('celsius')
 const containerSunsetRise = document.getElementById('sunsetSunrise')
 const containerForecast = document.getElementById('forecast')
 const currentCondition = document.getElementById('weather')
+const conditionImg = document.getElementById('weatherImage')
 
 
 
@@ -30,38 +31,16 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
 
 const weatherToday = () => {
   let windSpeed = json.wind.speed
-  
+  conditionImg.innerHTML += `<img id="weatherPicToday" src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="" />`;
   let sunrise = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], {timeStyle:'short'})
   let sunset = new Date(json.sys.sunset * 1000).toLocaleTimeString([], {timeStyle:'short'})
- containerSunsetRise.innerHTML += `<h4> Sunrise: ${sunrise} </h4> <h4>Sunset: ${sunset} </h4> <h4> wind speed ${windSpeed}</h4>`
+ containerSunsetRise.innerHTML += `<h4> Sunrise: ${sunrise} </h4> <h4>Sunset: ${sunset} </h4>`
  
 }
 
 
 
 weatherToday()
-
-// const windSpeed = () => {
-//   let windSpeed = json.wind.speed 
-  
-//   containerSunsetRise.innerHTML += `Wind speed: $`
-// }
-// windSpeed()
-
-// const sunrise = () => {
-//   let sunrise = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], {timeStyle:'short'})
-//   containerSunsetRise.innerHTML += `<h4> Sunrise: ${sunrise} </h4>`
-  
-// }
-// sunrise()
-
-// const sunset = () => {
-// let sunset = new Date(json.sys.sunset * 1000).toLocaleTimeString([], {timeStyle:'short'})
-// containerSunsetRise.innerHTML += `<h4> Sunset: ${sunset} </h4>`
-//   }
-
-// sunset()
-
 
 
 })
@@ -100,9 +79,9 @@ filteredForecast.forEach((temp) => {
   //console.log(daysName)
   const temperatureDays = new Date (temp.dt_txt)
   const correctDayFormat = temperatureDays.toLocaleDateString('en-US', {weekday:'short'})
-  containerForecast.innerHTML +=  `<img src="https://openweathermap.org/img/wn/${temp.weather[0].icon}@2x.png" alt="" />`
+  const pictures =  `<img id="picsForecast" src="https://openweathermap.org/img/wn/${temp.weather[0].icon}@2x.png" alt="" />`
 //`<img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="" />`;
-  document.getElementById('forecast').innerHTML += `<p> ${correctDayFormat}  ${temperature} ${'&#730;'} c </p>`
+  document.getElementById('forecast').innerHTML += `<h6> ${correctDayFormat}  ${temperature} ${'&#730;'} c ${pictures} </h6>`
   
 })
 

@@ -21,13 +21,22 @@ html {
 h1 {
   margin: 10px auto;
   text-align: center;
+  font-size: 38px;
+  margin-bottom: 0;
   
 }
 
 h2 {
   color: rgba(89, 89, 92, 0.781);
-  font-size: 20px;
+  font-size: 18px;
+  margin-top: 0;
   
+}
+
+.city-and-description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #celsius {
@@ -40,13 +49,28 @@ h2 {
   justify-content: center;
 }
 
-p {
-  font-size: 14px;
+h6 {
+  font-size: 16px;
   background-color: rgba(247, 247, 247, 0.205);
-  padding: 5px 40px;
+  padding: 5px 20%;
   border-radius: 45px;
-
+  display: flex;
+  
+  align-items: center;
+  margin: 5px auto
 }
+
+#weatherPicToday{
+  height: 120px;
+  width: 120px;
+}
+
+#picsForecast {
+  width: 50px;
+  height: 50px;
+  padding: 5px;
+}
+
 
 sup {
   font-size: 35px;
@@ -61,10 +85,18 @@ sup {
 
 h4 {
   margin: 10px auto;
+  
 }
 
 #forecast {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+#sunsetSunrise {
+  display: flex;
+  color: rgba(80, 80, 79, 0.808);
+  font-size: 14px;
+  text-transform: uppercase;
 }
