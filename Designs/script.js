@@ -3,17 +3,34 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=York,uk&units=metric&ap
     .then((response) => {
         return response.json()
     })
-    .then((json) => {
-        console.log(json)
-        document.getElementById('temperature').innerHTML = `${Math.round(json.main.temp)} &#8451`
-        document.getElementById('city').innerHTML = `${json.name}`
-        document.getElementById('description').innerHTML = `${json.weather[0].description}`
-        const sunrise = new Date((json.sys.sunrise) * 1000)
-        const sunset = new Date((json.sys.sunset) * 1000)
+    .then((weather) => {
+        console.log(weather)
+        document.getElementById('temperature').innerHTML = `${Math.round(weather.main.temp)} &#8451`
+        document.getElementById('city').innerHTML = `${weather.name}`
+        document.getElementById('description').innerHTML = `${weather.weather[0].description}`
+        const sunrise = new Date((weather.sys.sunrise) * 1000)
+        const sunset = new Date((weather.sys.sunset) * 1000)
         const sunriseShort = sunrise.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', timeZone: 'GMT', hour12: false })
         const sunsetShort = sunset.toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit', timeZone: 'GMT' })
         document.getElementById('suntimes').innerHTML = `<span>sunrise:</span> <span>${sunriseShort}</span>
         <span>sunset:</span> <span>${sunsetShort}</span>`
+
+        const displayImage = (weather) => {
+            const time = new Date().getHours()
+
+            if (time >= 18 || time < 6) {
+                document.getElementById('image').src = "./Design-1/assets/moon.png"
+            } else if (time >= 6 && time < 18 && weather.weather[0].main === 'Clear') {
+                document.getElementById('image').src = './Design-1/assets/sun.png'
+            } else if (time >= 6 && time < 18 && weather.weather[0].main === 'Rain') {
+                document.getElementById('image').src = './Design-1/assets/rain.png'
+            } else {
+                document.getElementById('image').src = './Design-1/assets/clouds.png'
+            }
+
+        }
+        displayImage(weather)
+
 
     });
 
