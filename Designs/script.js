@@ -89,7 +89,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=York,uk&units=metric&A
         const fridaySafari = editedForecast.filter(item => item.dayNumber === 5)
         const saturdaySafari = editedForecast.filter(item => item.dayNumber === 6)
 
-        document.getElementById('weather-future').innerHTML += editedForecast[0].dayNumber
+        document.getElementById('weather-future').innerHTML = editedForecast[0].dayNumber
 
 
 
