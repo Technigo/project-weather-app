@@ -54,6 +54,8 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=York,uk&units=metric&A
         //^^adds weekday names and numbers that I can use to create new filtered arrays. A weatherType 
         // to switch below to an Image.
 
+        document.getElementById('weather-future').innerHTML = editedForecast[4].dt_txt
+
         editedForecast.forEach(val => {
             val.icon = val.weatherType
             switch (val.icon) {
@@ -107,13 +109,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=York,uk&units=metric&A
         //^^^Functions for finding min/max Temperatures. Called with the weekday arrays created above. Setting
         // minTemp to empty gives it a value of 0 so that it always appears lower, thus I had to pre-set it to a 
         // high number.
-        maxTemperature(sundays)
-        maxTemperature(mondays)
-        maxTemperature(tuesdays)
-        maxTemperature(wednesdays)
-        maxTemperature(thursdays)
-        maxTemperature(fridays)
-        maxTemperature(saturdays)
+
 
 
         const temperatures = [
@@ -166,7 +162,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=York,uk&units=metric&A
 
         const uniqueDays = editedForecast.filter(item => item.dt_txt.includes("12:00"))
 
-        document.getElementById('weather-future').innerHTML = wednesdays[0].dt_txt
+
         //^^^Gives one array item of each day so that I can display them in HTML
         const today = new Date().getDay()
         const future = document.getElementById('weather-future')
