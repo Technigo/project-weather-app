@@ -108,8 +108,6 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=York,uk&units=metric&A
         // minTemp to empty gives it a value of 0 so that it always appears lower, thus I had to pre-set it to a 
         // high number.
 
-
-
         const temperatures = [
             {
                 name: 'sunday',
@@ -152,10 +150,6 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=York,uk&units=metric&A
                 tempMax: maxTemperature(saturdays),
                 tempMin: minTemperature(saturdays)
             }
-
-
-
-
         ]
 
         // ^^This array lets me match the min/max Temps taken from my weekday arrays and displays them with the
@@ -163,14 +157,11 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=York,uk&units=metric&A
 
         const uniqueDays = editedForecast.filter(item => item.dt_txt.includes("12:00"))
 
+        document.getElementById('weather-future').innerHTML = uniqueDays[0].weather[0].main
         //^^^Gives one array item of each day so that I can display them in HTML
-
-
-
-
         const today = new Date().getDay()
         const future = document.getElementById('weather-future')
-        const printForecast = (weekday) => { //check this without if statement and i = 1 after noon!!!
+        const printForecast = (weekday) => {
             let i;
             for (i = 0; i < weekday.length; i++) {
                 if (weekday[i].dayNumber !== today) {
@@ -184,8 +175,5 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=York,uk&units=metric&A
         //^^^Makes sure it isn't displaying information for today, then displays information to HTML. 
 
         printForecast(uniqueDays)
-
-
-
 
     })
