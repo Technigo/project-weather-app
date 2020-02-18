@@ -25,7 +25,7 @@ fetch(currentWeatherAPI)
 
   .then((jsonFile) => {
     weather.location = jsonFile.name
-    weather.temp = (jsonFile.main.temp / 100).toFixed(1)
+    weather.temp = (jsonFile.main.temp - 273.15).toFixed(1)
     weather.description = jsonFile.weather[0].description
     weather.code = jsonFile.weather[0].id
 
@@ -85,8 +85,8 @@ const weatherImage = () => {
 
 // Dark mode
 const darkMode = () => {
-  let sunset = weather.sunset // 17 
-  let sunrise = weather.sunrise // 08 < 17
+  let sunset = weather.sunset
+  let sunrise = weather.sunrise
   let currentTime = new Date()
   currentTime = currentTime.toLocaleTimeString([], { timeStyle: "short", timeZone: "Europe/Helsinki" })
   if (sunrise <= currentTime && currentTime < sunset) {
@@ -116,7 +116,7 @@ fetch(forecastWeatherAPI)
     return response.json()
   })
   .then((jsonFile) => {
-    const filteredJsonFile = jsonFile.list.filter(item => item.dt_txt.includes('12:00'))
+    const filteredJsonFile = jsonFile.list.filter(item => item.dt_txt.includes('03:00'))
 
     filteredJsonFile.forEach(day => {
       const date = new Date(day.dt * 1000)
@@ -124,11 +124,11 @@ fetch(forecastWeatherAPI)
       forecastWeather.innerHTML += `
       <div class="weekday">
       <p>${weekDay}</p>
-      <p>${(day.main.temp / 100).toFixed(2)} &#8451;</p>
+      <p>${(day.main.temp - 273.15).toFixed(1)} &#8451;</p>
       <p>${day.weather[0].description}</p>
       </div>`
     })
   })
 
 
-/*  ---- BACKGROUND ANIMATION ---- */
+
