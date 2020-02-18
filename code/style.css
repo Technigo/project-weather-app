@@ -1,4 +1,6 @@
 body {
+  display: flex;
+  justify-content: center;
   background: no-repeat center fixed;
   background-color: #A9C9FF;
   background-image: linear-gradient(168deg, #A9C9FF 0%, #FFBBEC 100%);
@@ -13,6 +15,8 @@ p {
 
 .weather-app {
   display: flex;
+  justify-content: center;
+  max-width: 450px;
 }
 
 .sunrise-sunset {
@@ -83,5 +87,17 @@ p.sunrise-sunset {
 @media (max-width:900px) {
   .weather-app {
   flex-direction: column;
+  }
+}
+
+@media (min-width:900px) {
+  .weather-app {
+    margin-top: 5em;
+  }
+
+  .forecast {
+    margin-top: 12em;
+    margin-left: 2em;
+    
   }
 }
