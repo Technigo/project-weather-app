@@ -1,4 +1,8 @@
 body {
+  background-image: url('./Design-1/assets/back.png');
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: grey;
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -6,26 +10,30 @@ body {
   justify-content: center;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   margin: 20px;
-
 }
 
 h1 {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: black;
-  font-size: 15px;
-  margin: 10px;
+  font-size: 25px;
+  margin: 20px;
 }
 
 #city {
-  font-size: 35px;
+  font-size: 45px;
+  margin: 20px;
 }
 
-.container {
+
+.today {
   display: flex;
   flex-direction: row;
   align-content: center;
   text-align: center;
   justify-content: center;
+  margin: 20px;
+
+
 }
 
 #temp {
@@ -42,10 +50,16 @@ h1 {
   font-size: 20px;
 }
 
+.p {
+  size: auto;
+
+}
+
 .weekdays {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  text-align: center;
-  justify-content: center;
+  background-color: white;
+  border-radius: 5px;
+  margin: 10px;
+
+
+
 }
