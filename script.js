@@ -1,19 +1,19 @@
-//HTML
+// API urls
+const weatherAPI =
+  "https://api.openweathermap.org/data/2.5/weather?q=Helsingborg,Sweden&units=metric&APPID=3053f069033c799a9b5c60d9d3887e6c";
+const forecastAPI =
+  "https://api.openweathermap.org/data/2.5/forecast?q=Helsingborg,Sweden&units=metric&APPID=3053f069033c799a9b5c60d9d3887e6c";
+
+//DOM Selectors
 const cityName = document.getElementById("city");
 const containerWeather = document.getElementById("weather");
 const containerSunset = document.getElementById("sunset");
 const containerSunrise = document.getElementById("sunrise");
 const containerForecast = document.getElementById("forecast");
-const weatherAPI =
-  "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=3053f069033c799a9b5c60d9d3887e6c";
-const forecastAPI =
-  "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=3053f069033c799a9b5c60d9d3887e6c";
 
 //Weather section
 fetch(weatherAPI)
-  .then(response => {
-    return response.json();
-  })
+  .then(response => response.json())
 
   .then(json => {
     cityName.innerHTML = `<h1>${json.name}</h1>`;
@@ -35,9 +35,7 @@ fetch(weatherAPI)
 
 //Five day forcast
 fetch(forecastAPI)
-  .then(response => {
-    return response.json();
-  })
+  .then(response => response.json())
 
   .then(json => {
     const filteredForecast = json.list.filter(item =>
