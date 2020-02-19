@@ -238,8 +238,16 @@ footer a {
     text-align: center;
     padding: 10px;
   }
+}
 
+@media (orientation: landscape) and (max-width: 1024px) {
+  .weather {
+    height: 150vh;
+  }
 
+  .current-weather {
+    height: 150vh;
+  }
 }
 
 @media (min-width: 1025px) {
