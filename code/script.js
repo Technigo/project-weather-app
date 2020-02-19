@@ -35,6 +35,7 @@ const selectCity = () => {
 
       // Remove all classes from body
       document.body.className = ''
+      document.body.style = ''
 
       // Change body background color depending on current temperature
       const currentTemp = +json.main.temp.toFixed(0)

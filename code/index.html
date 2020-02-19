@@ -10,43 +10,44 @@
 </head>
 
 <body>
+  <div class="wrapper">
 
-  <header>
+    <header>
+      <h2 id="intro">Select a location:</h2>
 
-    <h2 id="intro">Select a location:</h2>
+      <div class="dropdown">
+        <select id="cities">
+          <option value="" disabled selected>Location</option>
+          <option value="Arctic">Arctic</option>
+          <option value="Antarctica">Antarctica</option>
+          <option value="Copenhagen">Copenhagen</option>
+          <option value="Cairo">Cairo</option>
+          <option value="Kiruna">Kiruna</option>
+          <option value="New York">New York</option>
+          <option value="Patagonia">Patagonia</option>
+          <option value="Stockholm">Stockholm</option>
+        </select>
+      </div>
 
-    <div class="dropdown">
-      <select id="cities">
-        <option value="" disabled selected>Location</option>
-        <option value="Arctic">Arctic</option>
-        <option value="Antarctica">Antarctica</option>
-        <option value="Copenhagen">Copenhagen</option>
-        <option value="Cairo">Cairo</option>
-        <option value="Kiruna">Kiruna</option>
-        <option value="New York">New York</option>
-        <option value="Patagonia">Patagonia</option>
-        <option value="Stockholm">Stockholm</option>
-      </select>
-    </div>
+      <!-- <button id="geo">Get location</button> -->
+    </header>
 
-    <!-- <button id="geo">Get location</button> -->
-  </header>
+    <main>
 
-  <main>
+      <h1 id="city"></h1>
+      <h2 id="temperature"></h2>
+      <h3 id="description"></h3>
 
-    <h1 id="city"></h1>
-    <h2 id="temperature"></h2>
-    <h3 id="description"></h3>
+      <table class="today-table">
+        <tbody id="today"></tbody>
+      </table>
 
-    <table class="today-table">
-      <tbody id="today"></tbody>
-    </table>
+      <table class="forecast-table">
+        <tbody id="forecast"></tbody>
+      </table>
 
-    <table class="forecast-table">
-      <tbody id="forecast"></tbody>
-    </table>
-
-  </main>
+    </main>
+  </div>
 
   <script src="script.js"></script>
 </body>

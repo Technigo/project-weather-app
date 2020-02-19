@@ -4,43 +4,48 @@
   --font-family: 'Avenir', sans-serif;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 *:focus {
   outline: none;
 }
 
-html {
-  height: 100%;
-}
-
 body {
-  height: 100%;
   margin: 2rem;
   font-family: var(--font-family);
-  transition: all .3s ease-in-out;
+  transition: background .3s ease-in-out;
 }
 
 .bg-color-hot {
-  background: linear-gradient(rgb(255, 93, 57), rgb(194, 62, 32));
+  background-color: rgb(233, 85, 52);
 }
 
 .bg-color-warm {
-  background: linear-gradient(rgb(255, 167, 51), rgb(206, 120, 8));
+  background-color: rgb(250, 165, 53);
 }
 
 .bg-color-plus {
-  background: linear-gradient(rgb(70, 197, 112), rgb(15, 148, 75));
+  background-color: rgb(55, 192, 101);
 }
 
 .bg-color-minus {
-  background: linear-gradient(rgb(155, 214, 253), rgb(93, 190, 255));
+  background-color: rgb(152, 214, 255);
 }
 
 .bg-color-cool {
-  background: linear-gradient(rgb(75, 168, 255), rgb(9, 121, 226));
+  background-color: rgb(20, 130, 233);
 }
 
 .bg-color-cold {
-  background: linear-gradient(rgb(37, 86, 245), rgb(26, 66, 199));
+  background-color: rgb(6, 42, 158);
+  color: #fff;
+}
+
+.wrapper {
+  max-width: 30rem;
+  margin: auto;
 }
 
 h1 {
@@ -73,6 +78,7 @@ header h2 {
   position: relative;
   display: inline-block;
   vertical-align: top;
+  max-width: 20rem;
   width: 100%;
   height: 40px;
   background-color: #fff;
@@ -135,7 +141,6 @@ table {
 .icon {
   display: inline-block;
   vertical-align: middle;
-  margin-left: -.5rem;
   font-size: 3rem;
 
   animation-name: scale-icon;
