@@ -1,13 +1,11 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This project was a part of the Technigo coding bootcamp. The assignment was to create a weather app that fetched data from an API and showed todays' weather and a five day forecast.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+This was the first assignment where I fetched data from an API and to find and show that data in a correct and user friendly way was the main challenge. Apart from the app showing different temperatures and weather conditions the icons and background also changes depending on the forecast.  
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Get the weather forecast for Stockholm here: https://annas-weather-app.netlify.com 
