@@ -46,16 +46,14 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=York,uk&units=metric&A
 
         const editedForecast = forecast.list.map(function (val, i, arr) {
             const newVal = { ...val }
-            newVal.day = new Date(newVal.dt_txt).toLocaleDateString([], { weekday: 'short' })
-            newVal.dayNumber = new Date(newVal.dt_txt).getDay()
-            newVal.safariDay = new Date(newVal.dt * 1000).getDay()
+            newVal.day = new Date(newVal.dt * 1000).toLocaleDateString([], { weekday: 'short' })
+            newVal.dayNumber = new Date(newVal.dt * 1000).getDay()
             newVal.weatherType = newVal.weather[0].main
             return newVal
         })
         //^^adds weekday names and numbers that I can use to create new filtered arrays. A weatherType 
         // to switch below to an Image.
 
-        document.getElementById('weather-future').innerHTML = editedForecast[0].safariDay
 
 
         editedForecast.forEach(val => {
@@ -83,13 +81,13 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=York,uk&units=metric&A
         const saturdays = editedForecast.filter(item => item.day.includes('Sat'))
         const sundays = editedForecast.filter(item => item.day.includes('Sun'))
 
-        const sundaySafari = editedForecast.filter(item => item.dayNumber === 0)
-        const mondaySafari = editedForecast.filter(item => item.dayNumber === 1)
-        const tuesdaySafari = editedForecast.filter(item => item.dayNumber === 2)
-        const wednesdaySafari = editedForecast.filter(item => item.dayNumber === 3)
-        const thursdaySafari = editedForecast.filter(item => item.dayNumber === 4)
-        const fridaySafari = editedForecast.filter(item => item.dayNumber === 5)
-        const saturdaySafari = editedForecast.filter(item => item.dayNumber === 6)
+        // const sundaySafari = editedForecast.filter(item => item.dayNumber === 0)
+        // const mondaySafari = editedForecast.filter(item => item.dayNumber === 1)
+        // const tuesdaySafari = editedForecast.filter(item => item.dayNumber === 2)
+        // const wednesdaySafari = editedForecast.filter(item => item.dayNumber === 3)
+        // const thursdaySafari = editedForecast.filter(item => item.dayNumber === 4)
+        // const fridaySafari = editedForecast.filter(item => item.dayNumber === 5)
+        // const saturdaySafari = editedForecast.filter(item => item.dayNumber === 6)
 
 
 
