@@ -1,4 +1,18 @@
 // Weather today
+const cityNameSwedish = name => {
+  if (name === 'Skanoer med Falsterbo') {
+    name = `Skan${String.fromCharCode(246)}r med Falsterbo`;
+    return name;
+  }
+}
+
+const timeFormat = (ms) => {
+  let time = new Date(ms * 1000).toLocaleTimeString([], {
+    hour: '2-digit', minute: '2-digit'
+  })
+  return time;
+}
+
 const cloudyDays = {
   name: 'Clouds',
   bColor: '#d7dfe2',
@@ -44,21 +58,13 @@ let container = document.getElementById('containerToday')
 let sunrise = document.getElementById('sunrise')
 let sunset = document.getElementById('sunset')
 
-const timeFormat = (ms) => {
-  let time = new Date(ms * 1000).toLocaleTimeString([], {
-    hour: '2-digit', minute: '2-digit'
-  })
-  return time;
-}
-
-
 fetch('https://api.openweathermap.org/data/2.5/weather?id=3336568&lang=se&units=metric&appid=0f30fbe5053a599d0719ec7212d88866')
   .then((response) => {
     return response.json()
   })
 
   .then((json) => {
-    container.innerHTML = `<h1> Dagens väder i ${json.name}, ${json.weather[0].description} och ${json.main.temp.toFixed(1)} °C.</h1>`
+    container.innerHTML = `<h1> Dagens väder i ${cityNameSwedish(json.name)}, ${json.weather[0].description} och ${json.main.temp.toFixed(1)} °C.</h1>`
 
     sunrise.innerHTML = `<h2> Soluppgång ${timeFormat(json.sys.sunrise)} </h2> `
     sunset.innerHTML = `<h2> Solnedgång ${timeFormat(json.sys.sunset)}</h2>`
@@ -90,11 +96,10 @@ fetch('https://api.openweathermap.org/data/2.5/weather?id=3336568&lang=se&units=
     }
   });
 
+cityNameSwedish('Skanoer med Falsterbo')
 timeFormat()
 
-
 //Five days forecast
-
 
 fetch('https://api.openweathermap.org/data/2.5/forecast?id=3336568&lang=se&units=metric&appid=0f30fbe5053a599d0719ec7212d88866')
   .then((response) => {
@@ -114,5 +119,4 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?id=3336568&lang=se&units
       <p>${day.main.temp.toFixed(1)}°C</p></div>`
     });
   })
-
 
