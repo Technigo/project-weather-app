@@ -23,14 +23,19 @@ body {
         color: white;
     }
     #weekreport {
-        align-self: flex-start;
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        justify-content:space-between;
         padding-left: 1em;
         color: rgb(15, 15, 15);
        
     }
-    table{
-        font-size: 50px;
+    .description {
+        padding: 10px;
     }
+    
     .day.main.temp {
         text-align: right;
     }
