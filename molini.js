@@ -1,6 +1,6 @@
 // The URLs
-const URLDay = 'https://api.openweathermap.org/data/2.5/weather?q=Sanremo,Italia&units=metric&APPID=69828f6ac304f247815bc18fa686b778'
-const URLForecast ='https://api.openweathermap.org/data/2.5/forecast?q=Sanremo,Italia&units=metric&APPID=69828f6ac304f247815bc18fa686b778'
+const URLDay = 'https://api.openweathermap.org/data/2.5/weather?q=Molini,Italia&units=metric&APPID=69828f6ac304f247815bc18fa686b778'
+const URLForecast ='https://api.openweathermap.org/data/2.5/forecast?q=Molini,Italia&units=metric&APPID=69828f6ac304f247815bc18fa686b778'
 
 //My DOM selectors
 const container =  document.getElementById('weatherInfo')
@@ -17,7 +17,7 @@ fetch(URLDay)
     const icon = `http://openweathermap.org/img/w/${myJson.weather[0].icon}.png`
     container.innerHTML = 
     `<h1>${Math.round(myJson.main.temp.toFixed(1))}
-    <sup>°C</sup></h1><h2>${myJson.name}</h2> 
+    <sup>°C</sup></h1><h2>${myJson.name} di Triora</h2> 
     <h3>${myJson.weather[0].description}</h3>
     <img src=${icon} />`
   })
