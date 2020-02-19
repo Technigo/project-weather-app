@@ -8,35 +8,47 @@ h1 {
   margin-right: 30px;
   }
 
+  /* TODAYS WEATHER */
+
 .todaysWeather {
   height: 40%;
   padding-left: 20px;
-  border-width: 0;
   border-radius: 100% 0% 100% 0% / 0% 79% 21% 100% ;
-  background-image: linear-gradient( #9599E2,  #8BC6EC);
   color: #fff;
   display: flex;
   flex-direction: column;
 }
 
 .temp {
-display: flex;
-flex-direction: row;
-}
-
-.sunriseAndSunset {
   display: flex;
   flex-direction: row;
-}
-
-.weatherPic img {
-  height: 100px;
-  margin-top: 44px;
 }
 
 .temp sup {
   vertical-align: text-top;
   font-size: large;
+}
+.weatherPic img {
+  height: 100px;
+  margin-top: 44px;
+}
+  
+.sunriseAndSunset {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 26px;
+}
+
+#sunrise {
+  margin-right: 10px;
+}
+
+/* FIVE DAYS FORECAST */
+
+.fiveDayForcast {
+  display: flex;
+  flex-direction: row;
+  padding-left: 20px;
 }
 
 .fiveDayForcast sup {
@@ -44,9 +56,27 @@ flex-direction: row;
   font-size: small;
 }
 
-#sunrise {
-  margin-right: 10px;
+.fiveDays {
+  height: 60%;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
+
+.weatherPicSmall {
+  height: 60%;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.weatherPicSmall img {
+  height: 40px;
+  margin: 5px;
+}
+
 
 @media (min-width: 668px) {
 
@@ -57,33 +87,16 @@ flex-direction: row;
   .todaysWeather {
     align-items: center;
     border-radius: 0 0 75% 75% / 40%;
+    padding: 0;
   }
 
- 
-.weatherPic img {
-  height: 120px;
-  margin-top: 64px;
-}
-  
   .fiveDayForcast {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+  }
+ 
+  .weatherPic img {
+   height: 120px;
+    margin-top: 64px;
   }
 
-}
-
-@media (min-width: 1025px) {
-  body {
-    font-size: 18px;
-  }
-
-  h2 {
-    font-size: 22px;
-  }
-
-  h3 {
-    font-size: 18px;
-  }
-  
 }
