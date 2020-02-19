@@ -1,13 +1,13 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+A small weather dashboard based on OpenWeather. The dashboard is showing the current weather in Stockholm and a forecast for five days.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The project is mainly done in javascript and css. Two separate api endpoints are used, one to display the details of the current weather and one used for the forcast. If/else if statements are used to select icons and backgrounds based in the weather description from json. Grid is the main layout system used to structure the elements in css. Two media queries are used to make the site responsive, and one media query is used to enable dark mode based on the user's device setting. 
+
+If I had more time I would like to change so that the user can either choose between different cities or make it so that the forecast is automatically updated based on the users location. 
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+View site here: https://small-weather-forecast.netlify.com/
