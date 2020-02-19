@@ -1,5 +1,6 @@
+
 body {
-  background-color: #F4F7F8;
+  margin: 0 0 0 0;
 }
 
 
@@ -7,27 +8,77 @@ body {
   font-family: 'Poppins', sans-serif;
   font-size: 8px;
   text-align: left;
-  color: #F47775;
   letter-spacing: 1px;
+  margin-left: 10px;
   margin-bottom: 30px;
 }
-
 
 #weather {
   font-family: 'Poppins', sans-serif;
   font-size: 20px;
   text-align: left;
-  color: #F47775;
+  margin-left: 10px;
   letter-spacing: 1px;
   margin-bottom: 30px;
+}
+
+.clear {
+  color: #2A5510;
+  background-color: #F7E9B9;
+  margin: 0 0 0 0;
+}
+
+.clouds {
+  color: #F47775;
+  background-color: #F4F7F8;
+  margin: 0 0 0 0;
+}
+
+.rain {
+  color: #2B5E7B;
+  background-color: #BDE8FA;
+  margin: 0 0 0 0;
 }
 
 #containerFiveDays {
   font-family: 'Poppins', sans-serif;
   font-size: 15px;
   text-align: left;
-  color: #F47775;
+  margin-left: 10px;
   letter-spacing: 1px;
-  margin-bottom: 30px;
 }
 
+/*** MEDIA QUERIES ***/
+@media (min-width:650px) {
+
+  #information {
+    text-align: center;
+  }
+  
+  #weather {
+    text-align: center;
+  }
+  
+  #containerFiveDays {
+    text-align: center;
+  }
+}
+
+  @media (min-width: 900px){
+  
+    #information {
+      font-size: 20px;
+      text-align: center;
+    }
+    
+    #weather {
+      font-size: 40px;
+      text-align: center;
+    }
+    
+    
+    #containerFiveDays {
+      font-size: 30px;
+      text-align: center;
+    }
+    }
