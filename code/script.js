@@ -7,11 +7,6 @@ const wind = document.querySelector('#wind')
 const todaysWeatherTable = document.querySelector('#today')
 const forecastContainer = document.querySelector('#forecast')
 
-// Add random background color to body just for fun
-const randomColor = Math.floor(Math.random() * 16777215).toString(16);
-const randomBgColor = `#${randomColor}`
-document.body.style.backgroundColor = randomBgColor
-
 const selectCity = () => {
   let userCity = citySelectBox.options[citySelectBox.selectedIndex].value
 
@@ -36,6 +31,13 @@ const selectCity = () => {
       // Remove all classes from body
       document.body.className = ''
       document.body.style = ''
+
+      // Add dark overlay if time is between 22 – 06
+      currentTime = new Date().getHours()
+      console.log(currentTime)
+      if (currentTime < 6 || currentTime >= 22) {
+        document.body.classList.add('night-shift')
+      }
 
       // Change body background color depending on current temperature
       const currentTemp = +json.main.temp.toFixed(0)
