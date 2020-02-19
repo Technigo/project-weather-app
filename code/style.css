@@ -1,7 +1,7 @@
 :root {
   --color-hot: rgb(255, 93, 57);
   --color-warm: rgb(255, 167, 51);
-  --color-plus: rgb(255, 224, 51);
+  --color-plus: rgb(70, 197, 144);
   --color-minus: rgb(108, 196, 255);
   --color-cool: rgb(25, 144, 255);
   --color-cold: rgb(9, 92, 170);
@@ -65,6 +65,11 @@ p {
   100% {
     transform: scale(1);
   }
+}
+
+.today-table tr td:first-child {
+  width: 5rem;
+  font-weight: 600;
 }
 
 .forecast-table {

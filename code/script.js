@@ -1,15 +1,17 @@
-const cityName = document.querySelector('#city')
-const todaysWeatherContainer = document.querySelector('#todaysWeather')
+const introText = document.querySelector('#intro')
+const citySelectBox = document.querySelector('#cities')
+const city = document.querySelector('#city')
+const temp = document.querySelector('#temperature')
+const description = document.querySelector('#description')
+const wind = document.querySelector('#wind')
+const todaysWeatherTable = document.querySelector('#today')
 const forecastContainer = document.querySelector('#forecast')
 
 
 const selectCity = () => {
-
-  const citySelectBox = document.querySelector('#cities')
   let userCity = citySelectBox.options[citySelectBox.selectedIndex].value
 
   // Remove intro text after button is clicked
-  const introText = document.querySelector('#intro')
   if (introText) introText.remove()
 
   // Todays weather
@@ -80,13 +82,14 @@ const selectCity = () => {
       }
 
       // Print out to DOM
-      todaysWeatherContainer.innerHTML = `
-        <h1 id="city">${json.name}</h1>
-        <h2 id="temperature">${json.main.temp.toFixed(1)}° <div class="icon">${weatherIcon()}</div></h2>
-        <h3 id="description">${capitalize(json.weather[0].description)}</h3>
-        <p>Wind: ${json.wind.speed.toFixed(1)} m/s</p>
-        <p>Sunrise: ${timeFormat(json.sys.sunrise)}</p>
-        <p>Sunset: ${timeFormat(json.sys.sunset)}</p>
+      city.innerHTML = json.name
+      temp.innerHTML = `${json.main.temp.toFixed(1)}° <div class="icon">${weatherIcon()}</div>`
+      description.innerHTML = capitalize(json.weather[0].description)
+
+      todaysWeatherTable.innerHTML = `
+        <tr><td>Wind:</td><td>${json.wind.speed.toFixed(1)} m/s</td></tr>
+        <tr><td>Sunrise:</td><td>${timeFormat(json.sys.sunrise)}</td></tr>
+        <tr><td>Sunset:</td><td>${timeFormat(json.sys.sunset)}</td></tr>
       `
     })
     .catch((err) => {
@@ -115,11 +118,11 @@ const selectCity = () => {
         })
 
         forecastContainer.innerHTML += `
-        <tr>
-          <td>${weekday} </td>
-          <td>${day.main.temp.toFixed(1)}° </td>
-          <td>${day.wind.speed.toFixed(1)}m/s</td>
-        </tr>`
+          <tr>
+            <td>${weekday} </td>
+            <td>${day.main.temp.toFixed(1)}° </td>
+            <td>${day.wind.speed.toFixed(1)}m/s</td>
+          </tr>`
       })
 
     })
