@@ -15,7 +15,7 @@ img {
   height: 6em;
 }
 
-/*** Current weather styling ***/
+/*** Current weather background ***/
 
 .weather {
   height: 100vh;
@@ -26,6 +26,44 @@ img {
   -o-background-size: cover;
   background-size: cover;
 }
+
+.clear-day {
+  background-image: url("./assets/backgrounds/clear-day.jpg");
+}
+
+.clear-night {
+  background-image: url("./assets/backgrounds/clear-night.jpg");
+}
+
+.cloud-day {
+  background-image: url("./assets/backgrounds/cloud-day.jpg");
+}
+
+.cloud-night {
+  background-image: url("./assets/backgrounds/cloud-night.jpg");
+}
+
+.overcast {
+  background-image: url("./assets/backgrounds/overcast.jpg");
+}
+
+.fog {
+  background-image: url("./assets/backgrounds/fog.jpg");
+}
+
+.snow {
+  background-image: url("./assets/backgrounds/snow.jpg");
+}
+
+.rain {
+  background-image: url("./assets/backgrounds/rain.jpg");
+}
+
+.thunder {
+  background-image: url("./assets/backgrounds/thunder.jpg");
+}
+
+/*** Current weather styling ***/
 
 .current-weather {
   display: grid;
@@ -270,7 +308,6 @@ footer a {
 @media (prefers-color-scheme: dark) {
   body {
     background: #172f42;
-    color: #fff;
   }
 
   hr {
@@ -278,7 +315,7 @@ footer a {
     border: 0.5px solid #fff;
   }
 
-  footer p, footer a, .credit-main {
+  body, footer p, footer a, .credit-main {
     color: #fff;
   }
 }

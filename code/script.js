@@ -1,3 +1,8 @@
+// API URL's
+const weatherURL = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=60032cdd91d77852bfb39762c09118fe'
+const forecastURL = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=60032cdd91d77852bfb39762c09118fe'
+
+// DOM selectors
 const weatherBackground = document.getElementById('weather')
 const cityContainer = document.getElementById('city')
 const weatherPic = document.getElementById('weatherImage')
@@ -7,39 +12,33 @@ const sunriseContainer = document.getElementById('sunrise')
 const sunsetContainer = document.getElementById('sunset')
 const forecastContainer = document.getElementById('forecast')
 const currentTime = new Date().toLocaleTimeString()
+
+// Global variable
 let weatherIcon
 
 // Current weather
-fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=60032cdd91d77852bfb39762c09118fe')
+fetch(weatherURL)
   .then((response) => {
     return response.json()
   })
   .then((json) => {
-    // Display city name
-    cityContainer.innerHTML = json.name
-
-    // Display current temp
-    tempContainer.innerHTML = `${json.main.temp.toFixed(1)}&#730`
-
-    // Display current weather description
-    descriptionContainer.innerHTML = `${json.weather[0].description} | ${json.main.temp_max.toFixed(1)}&#730 / <span class="min-temp">${json.main.temp_min.toFixed(1)}&#730</span>`
-
-    // Display sunrise and sunset times
+    // variables
+    const cityName = json.name
+    const currentTemp = `${json.main.temp.toFixed(1)}&#730`
+    const currentWeatherDescription = json.weather[0].description
+    const maxTemp = json.main.temp_max.toFixed(1)
+    const minTemp = json.main.temp_min.toFixed(1)
     const sunriseTime = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     const sunsetTime = new Date(json.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-
-    sunriseContainer.innerHTML += sunriseTime
-    sunsetContainer.innerHTML += sunsetTime
+    const weatherId = json.weather[0].id
+    let dayTime
 
     // Determine if it is day or night, used when picking background and icon
-    let dayTime
     if (currentTime > sunriseTime && currentTime < sunsetTime) {
       dayTime = true
     }
 
     // Determine which weather icon to display
-    const weatherId = json.weather[0].id
-
     if (weatherId === 800 && dayTime) {
       weatherIcon = '<img src"./assets/white/039-sun.png" alt="sun">' //Clear day sun
     } else if (weatherId === 800 && !dayTime) {
@@ -62,28 +61,34 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
       weatherIcon = '<img src="./assets/white/045-thunder.png" alt="thunder">' //Thunderstorm
     }
 
-    weatherPic.innerHTML = `${weatherIcon}`
-
     // Determine which background to display
     if (weatherId === 800 && dayTime) {
-      weatherBackground.style.backgroundImage = 'url("./assets/backgrounds/clear-day.jpg")' //Clear day
+      weatherBackground.classList.add("clear-day")
     } else if (weatherId === 800 && !dayTime) {
-      weatherBackground.style.backgroundImage = 'url("./assets/backgrounds/clear-night.jpg")' //Clear night
+      weatherBackground.classList.add("clear-night")
     } else if (weatherId === 801 && dayTime || weatherId === 802 && dayTime) {
-      weatherBackground.style.backgroundImage = 'url("./assets/backgrounds/cloud-day.jpg")' //Cloud day
+      weatherBackground.classList.add("cloud-day")
     } else if (weatherId === 801 && !dayTime || weatherId === 802 && !dayTime) {
-      weatherBackground.style.backgroundImage = 'url("./assets/backgrounds/cloud-night.jpg")' //Cloud night
+      weatherBackground.classList.add("cloud-night")
     } else if (weatherId === 803 || weatherId === 804) {
-      weatherBackground.style.backgroundImage = 'url("./assets/backgrounds/overcast.jpg")' //Broken or overcast clouds
+      weatherBackground.classList.add("overcast")
     } else if (weatherId >= 700 && weatherId < 800) {
-      weatherBackground.style.backgroundImage = 'url("./assets/backgrounds/fog.jpg")' //Atmosphere mist, dust, fog etc.
+      weatherBackground.classList.add("fog")
     } else if (weatherId >= 600 && weatherId < 700) {
-      weatherBackground.style.backgroundImage = 'url("./assets/backgrounds/snow.jpg")' //Snow
+      weatherBackground.classList.add("snow")
     } else if (weatherId >= 300 && weatherId < 600) {
-      weatherBackground.style.backgroundImage = 'url("./assets/backgrounds/rain.jpg")' //Rain
+      weatherBackground.classList.add("rain")
     } else if (weatherId >= 200 && weatherId < 300) {
-      weatherBackground.style.backgroundImage = 'url("./assets/backgrounds/thunder.jpg")' //Thunderstorm
+      weatherBackground.classList.add("thunder")
     }
+
+    // Return and set innerHTML properties
+    cityContainer.innerHTML = cityName
+    tempContainer.innerHTML = currentTemp
+    descriptionContainer.innerHTML = `${currentWeatherDescription} | ${maxTemp}&#730 / <span class="min-temp">${minTemp}&#730</span>`
+    sunriseContainer.innerHTML += sunriseTime
+    sunsetContainer.innerHTML += sunsetTime
+    weatherPic.innerHTML = `${weatherIcon}`
   })
 
   .catch((err) => {
@@ -91,7 +96,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
   })
 
 // 5-day forecast
-fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=60032cdd91d77852bfb39762c09118fe')
+fetch(forecastURL)
   .then((response) => {
     return response.json()
   })
@@ -100,12 +105,11 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
 
     filteredForecast.forEach((day) => {
-      // Used to display day of week later
+      // Variables
       const dayOfWeek = new Date(day.dt * 1000).toLocaleDateString('en-US', { weekday: 'short' })
-
-      // Used to display icon later
       const weatherId = day.weather[0].id
 
+      // Determine which weather icon to display
       if (weatherId === 800) {
         weatherIcon = '<img src="./assets/color/039-sun.png" alt="sun">' //Clear day sun
       } else if (weatherId === 801) {
@@ -124,7 +128,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
         weatherIcon = '<img src="./assets/color/045-thunder.png" alt="thunder">' //Thunderstorm
       }
 
-      // Display day, icon and temp in forecast section
+      // Return and set innerHTML properties
       forecastContainer.innerHTML +=
         `<section class="dayForecast">
           <h2>${dayOfWeek.toUpperCase()}</h2>
