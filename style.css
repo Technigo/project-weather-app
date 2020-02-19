@@ -1,0 +1,22 @@
+body {
+  background-color: lavender;
+  margin: 0;
+  font-family: ;
+}
+
+.top {
+  margin-top: 20%;
+  display: flex;
+  justify-content: center;
+
+}
+
+.windImage {
+  width: 30px;
+  height: 30px;
+}
+
+.windData {
+  display: inline-block;
+  justify-content: space-around;
+}
