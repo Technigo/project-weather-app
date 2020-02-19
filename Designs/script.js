@@ -48,13 +48,15 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=York,uk&units=metric&A
             const newVal = { ...val }
             newVal.day = new Date(newVal.dt_txt).toLocaleDateString([], { weekday: 'short' })
             newVal.dayNumber = new Date(newVal.dt_txt).getDay()
+            newVal.safari = new Date(newVal.dt_txt)
+            newVal.safariDay = newVal.safari.getDay();
             newVal.weatherType = newVal.weather[0].main
             return newVal
         })
         //^^adds weekday names and numbers that I can use to create new filtered arrays. A weatherType 
         // to switch below to an Image.
 
-        document.getElementById('weather-future').innerHTML = editedForecast[0].dt_txt
+        document.getElementById('weather-future').innerHTML = editedForecast[0].safariDay
 
 
         editedForecast.forEach(val => {
