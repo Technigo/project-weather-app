@@ -1,6 +1,11 @@
 body {
-  background-image: url(assets/moln4.jpg);
   font-family: 'roboto', sans-serif;
+  background-color: wheat;
+  background-image: url(assets/moln4.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  margin: 0;
 }
 
 header {
@@ -34,25 +39,29 @@ h4 {
   text-align: center;
   margin-bottom: 22px;
   font-size: 15px;
-  color: rgb(252, 158, 100);
+  color: white;
 }
 
 p {
   font-size: 50px;
 }
 
+.todayContainer {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+
 #todayWeather {
   background-color: rgba(255, 255, 255, 0.3);
+  /*background-image: linear-gradient(rgba(255, 111, 0, 0.488), rgba(255, 0, 0, 0));*/
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  height: 235px;
+  height: 200px;
   margin-top: 9px;
   border-radius: 3px;
-  width: 95%;
-  margin-left: auto;
-  margin-right: auto;
-
+  width: 100%;
 }
 
 #description {
@@ -100,6 +109,7 @@ p {
 #sr {
   font-size: 25px;
   margin-top: auto;
+  color: rgb(252, 158, 100);
 }
 
 .todaysunset {
@@ -112,10 +122,12 @@ p {
 #ss {
   font-size: 25px;
   margin-top: auto;
+  color: rgb(252, 158, 100);
 }
 
 #weekWeather {
   margin-top: 0px;
+  margin-bottom: 40px;
 }
 
 .dayRow {
@@ -124,7 +136,7 @@ p {
   background-color: lightskyblue;
   background-color: rgba(255, 255, 255, 0.4);
   justify-content: space-around;
-  height: 40px;
+  height: 35px;
   line-height: 40px;
   margin-bottom: 10px;
   padding-top: 3px;

@@ -18,23 +18,21 @@ fetch("http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     const longTemp = json.main.temp
     const shortTemp = longTemp.toFixed(1);
 
-    /*if (json.weather[0].description.includes("broken clouds")) {
-        document.getElementById("rubrik").style.color = "grey";
-      } else {
-        document.getElementById("rubrik").style.color = "white";
-      } 
-*/
+    if (json.weather[0].description.includes('clear')) {
+      document.getElementById("rubrik").style.color = "white";
+    } else {
+      document.getElementById("rubrik").style.color = "white";
+    }
 
     document.getElementById("description").innerHTML = `${json.weather[0].description}`
     document.getElementById("todayTemp").innerHTML = `${shortTemp}˚`
     document.getElementById("currentCondition").innerHTML += `<img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="" />`
-    //document.getElementById("currentWeather").innerHTML = `<h2>The current weather in ${json.name} is ${shortTemp}ºC and the weather is ${json.weather[0].description}. Soluppgång ${sunriseTime}. Solnedgång ${sunsetTime}.</h2>`
     document.getElementById("sr").innerHTML = `${sunriseTime}`
     document.getElementById("ss").innerHTML = `${sunsetTime}`
+    //console.log(`${json.main.temp_min}`)
+    //console.log(`${json.main.temp_max}`)
   })
 
-
-//const week = document.getElementById("city")
 
 fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=8e3b288ccb7e41d96fd2f44603191864")
   .then((response) => {
@@ -42,22 +40,22 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
   })
   .then((json) => {
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
-    console.log(filteredForecast)
+    //console.log(filteredForecast)
 
     const containerFiveDays = document.getElementById("weekWeather")
 
     filteredForecast.forEach((day) => {
       const date = new Date(day.dt_txt);
-      console.log(day);
+      console.log(date);
 
-      const datestring = date.toLocaleDateString('en-US', {
+      const dayName = date.toLocaleDateString('en-US', {
         weekday: 'short'
       });
-      console.log(`${datestring}`)
-      console.log(`${day.main.temp.toFixed(1)}`)
-      containerFiveDays.innerHTML += `<div class="dayRow"><div class="dayLabel">${datestring}</div> <div class="dayTemp">${day.main.temp.toFixed(1)} °C <img src="https://openweathermap.org/img/wn/${day.weather[0].icon}.png" class="dayIcon" /></div></div>`
+      //console.log(`${dayName}`)
+      //console.log(`${day.main.temp.toFixed(1)}`)
+      containerFiveDays.innerHTML += `<div class="dayRow"><div class="dayLabel">${dayName}</div> <div class="dayTemp">${day.main.temp.toFixed(1)} °C <img src="https://openweathermap.org/img/wn/${day.weather[0].icon}.png" class="dayIcon" /></div></div>`
 
-      console.log(`<img src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" />`)
+      //console.log(`<img src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" />`)
     })
   })
 /* containerFiveDays.innerHTML = "";
@@ -69,17 +67,10 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
             })
           //console.log(containerFiveDays)*/
 
-
 /*filteredForecast.forEach(item => {
   console.log(item.weather[0].description)
   console.log(item.main.temp)
-})
-
-filteredForecast.forEach(item => {
   console.log(item.main.temp)
-  console.log(item.main.temp)
-
-filteredForecast.forEach(item => {
   console.log(item.main.temp_min)
   console.log(item.main.temp_max)
 })
