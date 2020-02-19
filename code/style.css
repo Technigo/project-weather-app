@@ -205,5 +205,80 @@ footer a {
 }
 
 @media (min-width: 1025px) {
- 
+ .current-weather {
+   grid-template-columns: 210px 60px 100px auto;
+   grid-template-rows: 50px 150px 150px 150px 50px 10px;
+ }
+
+ .weather-today {
+   grid-column-start: 1;
+   grid-column-end: 5;
+   grid-row-start: 1;
+   align-self: flex-start;
+   text-align: center;
+   padding: 20px 0 0 0;
+ }
+
+ #city {
+   grid-column-start: 1;
+   grid-row-start: 4;
+   margin: 10px 0;
+   font-size: 50px;
+   text-align: left;
+ }
+
+ #weatherImage {
+   grid-column-start: 2;
+   grid-row-start: 5;
+   text-align: left;
+ }
+
+  #weatherImage img {
+  width: 30px;
+  height: 30px;
+  align-self: flex-end;
+  text-align: left;
+}
+
+ .temp {
+   grid-column-start: 3;
+   grid-row-start: 4;
+   align-self: flex-end;
+   font-size: 50px;
+   margin: 10px 0;
+ }
+
+ #description {
+   grid-column-start: 1;
+   grid-row-start: 5;
+   text-align: left;
+ }
+
+ .day-night {
+   grid-column-start: 1;
+   grid-column-end: 5;
+   grid-row-start: 1;
+   font-size: 10px;
+ }
+
+ .sunrise img, .sunset img {
+  height: 2.5em;
+  width: 2.5em;
+}
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #172f42;
+    color: #fff;
+  }
+
+  hr {
+    background: #fff;
+    border: 0.5px solid #fff;
+  }
+
+  footer p, footer a, .credit-main {
+    color: #fff;
+  }
 }
