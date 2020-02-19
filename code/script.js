@@ -34,7 +34,6 @@ const selectCity = () => {
 
       // Add dark overlay if time is between 22 – 06
       currentTime = new Date().getHours()
-      console.log(currentTime)
       if (currentTime < 6 || currentTime >= 22) {
         document.body.classList.add('night-shift')
       }
