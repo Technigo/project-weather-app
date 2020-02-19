@@ -24,7 +24,7 @@ header {
   border: white solid 2px;
   padding-top: 5px;
   border-radius: 8px;
-  width: 90%;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
