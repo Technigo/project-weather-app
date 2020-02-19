@@ -17,7 +17,7 @@ header {
 .main-container {
   display: flex;
   justify-content: center;
-  margin: 0 auto;
+  margin: 0 auto; 
 }
 
 .container-box {
@@ -78,6 +78,7 @@ h4 {
   text-align: center;
 }
 
+/* Weather icon pulse */
 .weather-icon img {
   animation: pulse 5s ease-in-out infinite;
   }

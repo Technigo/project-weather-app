@@ -93,6 +93,5 @@ document.addEventListener('DOMContentLoaded', () => {
       themeToggle.innerText = 'Switch to dark mode';
     }
     localStorage.setItem('theme', 'dark-theme.css');
-
   })
 })
