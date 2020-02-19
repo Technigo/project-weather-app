@@ -54,7 +54,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=York,uk&units=metric&A
         //^^adds weekday names and numbers that I can use to create new filtered arrays. A weatherType 
         // to switch below to an Image.
 
-        document.getElementById('weather-future').innerHTML = editedForecast[0].dayNumber
+        document.getElementById('weather-future').innerHTML = editedForecast[0].dt
 
 
         editedForecast.forEach(val => {
