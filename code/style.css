@@ -15,6 +15,7 @@
 
 body {
   margin: 2rem 3rem;
+  background-color: #e6e6e6;
   font-family: var(--font-family);
   transition: all .3s ease-in-out;
 }
@@ -58,18 +59,26 @@ p {
 }
 
 .dropdown {
+  position: relative;
   display: inline-block;
   vertical-align: top;
   width: 140px;
   height: 40px;
+  background-color: #fff;
   overflow: hidden;
   cursor: pointer;
-  background: #f6f6f6 url('https://www.pikpng.com/pngl/m/465-4655861_triangle-down-comments-black-down-arrow-png-clipart.png') no-repeat 88% 55%;
-  background-size: 10%;
+}
+
+.dropdown::after {
+  position: absolute;
+  content: '↓';
+  right: .8rem;
+  top: .5rem;
+  pointer-events: none;
 }
 
 select {
-  padding: 10px;
+  padding: .6rem .8rem;
   width: 100%;
   border: none;
   font-family: var(--font-family);

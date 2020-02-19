@@ -99,6 +99,9 @@ const selectCity = () => {
       // Filter the forecast list array to get info from 06:00 each day
       const filteredForecast = json.list.filter(item => item.dt_txt.includes('06:00'))
 
+      const forecastContainer = document.querySelector('#forecast')
+      forecastContainer.innerHTML = ''
+
       // Loops through filteredForecast
       filteredForecast.forEach(day => {
 
@@ -108,7 +111,7 @@ const selectCity = () => {
           weekday: 'short'
         })
 
-        document.querySelector('#forecast').innerHTML += `
+        forecastContainer.innerHTML += `
         <tr>
           <td>${weekday} </td>
           <td>${day.main.temp.toFixed(1)}° </td>
