@@ -3,61 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Weather app</title>
 </head>
-<body>
-    <div id="city"></div>
+<body id="body">
 
-    <div class="current">
-      <div id="currentWeather"></div>
-    <div id="currentTemp"></div>  
+    <div class="header">
+        <div id="currentTemp"></div>  
+        <div class="current">
+            <div id="city"></div>
+            <div id="currentWeather"></div>
+            <div id="feelsLike"></div>
+        </div>
+        <div class="sunrise-sunset">
+        <div id="sunrise"></div>
+        <div id="sunriseTime"></div>
+        <div id="sunset"></div> 
+        <div id="sunsetTime"></div>
+        </div>
+
+        <div id="background-sun">
+            <div class="sun"></div>
+        </div>
+
+        <div id="background-suncloud">
+            <div class="sun"></div>
+            <div class="x1-sun">
+                <div class="cloud"></div>
+            </div>
+            <div class="x2-sun">
+                <div class="cloud"></div>
+            </div>
+        </div>
+
+        <div id="background-cloud">
+            <div class="x1">
+                <div class="cloud"></div>
+            </div>
+            <div class="x2">
+                <div class="cloud"></div>
+            </div>
+        </div>
+
+        <div id="background-rain">
+            <div class="raindrop">
+            💧 
+            </div>
+            <div class="raindrop">
+            💧 
+            </div>
+            <div class="raindrop">
+            💧 
+            </div>
+            <div class="raindrop">
+            💧 
+            </div>
+            <div class="raindrop">
+            💧 
+            </div>
+            <div class="raindrop">
+            💧 
+            </div>
+            <div class="raindrop">
+            💧 
+            </div>
+            <div class="raindrop">
+            💧 
+            </div>
+            <div class="raindrop">
+            💧  
+            </div>
+            <div class="raindrop">
+            💧 
+            </div>
+        </div>
+
+        <div id="background-thunderstorm">
+            <div class="bolt1"></div>
+            <div class="bolt2"></div>
+            <div class="raindrop2">
+            💧 
+            </div>
+            <div class="raindrop2">
+            💧 
+            </div>
+            <div class="raindrop2">
+            💧 
+            </div>
+            <div class="raindrop2">
+            💧 
+            </div>
+            <div class="raindrop2">
+            💧 
+            </div>
+            <div class="raindrop2">
+            💧 
+            </div>
+            <div class="raindrop2">
+            💧 
+            </div>
+            <div class="raindrop2">
+            💧 
+            </div>
+            <div class="raindrop2">
+            💧  
+            </div>
+            <div class="raindrop2">
+            💧 
+            </div>
+        </div>
+
+        <div id="background-snow">
+            <div class="snowflake">
+            ❅
+            </div>
+            <div class="snowflake">
+            ❅
+            </div>
+            <div class="snowflake">
+            ❆
+            </div>
+            <div class="snowflake">
+            ❄
+            </div>
+            <div class="snowflake">
+            ❅
+            </div>
+            <div class="snowflake">
+            ❆
+            </div>
+            <div class="snowflake">
+            ❄
+            </div>
+            <div class="snowflake">
+            ❅
+            </div>
+            <div class="snowflake">
+            ❆
+            </div>
+            <div class="snowflake">
+            ❄
+            </div>
+        </div>
+
+        <div id="background-mist">
+            <div class="x1-mist">
+                <div class="misty-cloud"></div>
+            </div>
+            <div class="x2-mist">
+                <div class="misty-cloud"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container-forecastWeather">
+        <div class="forecastWeatherDay" id="forecastWeatherDay"></div> 
+        <div class="forecastWeatherTemp" id="forecastWeatherTemp"></div>
     </div>
     
-    <div class="sunrise-sunset">
-       <div id="sunrise"></div>
-       <div id="sunriseTime"></div>
-       <div id="sunset"></div> 
-       <div id="sunsetTime"></div>
-    </div>
-    
-    <div class="forecastWeather" id="forecastWeather">
-        <!-- <div class="forecast">
-            <div id="day1"></div>
-            <div class="forecastInfo">
-                <div id="day1Icon"></div>
-                <div id="day1Temp"></div>
-            </div>
-        </div>
-        <div class="forecast">
-            <div class="day2" id="day2"></div>
-            <div class="forecastInfo">
-                <div id="day2Icon"></div>
-                <div id="day2Temp"></div>
-            </div>
-        </div>
-        <div class="forecast">
-            <div id="day3"></div>
-            <div class="forecastInfo"> 
-                <div id="day3Icon"></div>
-                <div id="day3Temp"></div>
-            </div>
-        </div>
-        <div class="forecast">
-            <div id="day4"></div>
-            <div class="forecastInfo">
-                <div id="day4Icon"></div>
-                <div id="day4Temp"></div>
-            </div>
-        </div>
-        <div class="forecast">
-            <div id="day5"></div>
-            <div class="forecastInfo">
-                <div id="day5Icon"></div>
-                <div id="day5Temp"></div>
-            </div>
-        </div> -->
-    </div>
     
     <script src="script.js"></script>
 </body>
