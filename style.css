@@ -1,10 +1,16 @@
 html {
   /* background: rgb(69,108,249); */
-  background: linear-gradient(90deg, rgba(69,108,249,0) 0%, rgba(174,195,246,0.35808035714285713) 46%, rgba(221,234,255,0.7295089285714286) 100%);  
-  font-family: 'Biryani', sans-serif;
+  /* background: linear-gradient(90deg, rgba(69,108,249,0) 0%, rgba(174,195,246,0.35808035714285713) 46%, rgba(221,234,255,0.7295089285714286) 100%);   */
+  /* font-family: 'Biryani', sans-serif; */
+  font-family: 'Nunito', sans-serif;
+  text-transform: uppercase;
   font-weight: 200;
+  /* color: rgba(255, 255, 255, 0.911); */
 }
 
+body {
+  margin: 0;
+}
 
 
 .hamburger-menu {
@@ -19,18 +25,19 @@ html {
   border-radius: 50px;
 }
 
-h1 {
+.city-and-weather h1 {
   margin: 10px auto;
   text-align: center;
-  font-size: 38px;
+  font-size: 100px;
   margin-bottom: 0;
   
 }
 
 h2 {
-  color: rgba(89, 89, 92, 0.781);
+  color: rgba(221, 221, 221, 0.781);
   font-size: 18px;
   margin-top: 0;
+  margin-bottom: 0;
   
 }
 
@@ -40,33 +47,56 @@ h2 {
   align-items: center;
 }
 
+.city-and-description h1 {
+  font-size: 45px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.733);
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+
 #celsius {
   font-size: 30px;
   color: white;
 }
-
+/* 
 #weatherImage {
   display: flex;
   justify-content: center;
+} */
+
+.weatherSymbol {
+  height: 150px;
+  width: 150px;
+}
+
+.weatherSymbolFore {
+  height: 50px;
+  width: 50px;
 }
 
 h6 {
   font-size: 16px;
-  background-color: rgba(247, 247, 247, 0.205);
-  padding: 5px 20%;
-  border-radius: 45px;
+  /* background-color: rgba(247, 247, 247, 0.205); */
+   padding: 0; 
+  /* border-radius: 45px; */
   display: flex;
-  
+  width: 80%;
+  justify-content: space-between;
+  margin: 0;
+  border-bottom: white dotted 2px;
   align-items: center;
-  margin: 5px auto
+  /* margin: 5px auto; */
+  color: rgba(255, 255, 255, 0.733)
 }
 
-#weatherPicToday{
+#weatherIconToday{
   height: 120px;
   width: 120px;
 }
 
-#picsForecast {
+#picsForecast,
+#weatherPicToday {
   width: 50px;
   height: 50px;
   padding: 5px;
@@ -100,4 +130,49 @@ h4 {
   color: rgba(80, 80, 79, 0.808);
   font-size: 14px;
   text-transform: uppercase;
+}
+
+/* #otherCountries h1 {
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+
+} */
+
+#otherCountries {
+  background-color: rgba(255, 255, 255, 0.123);
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#otherCountries h2 {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  border-bottom: dotted white 2px;
+  align-items: center;
+  color: white;
+}
+
+.fav-location {
+  font-size: 20px;
+  text-align: center;
+  padding-top: 20px;
+  color: rgb(255, 255, 255);
+}
+
+.day {
+  background: rgb(230,127,249);
+  background: linear-gradient(180deg, rgba(100, 223, 228, 0.847) 0%, rgba(189,174,246,0.9352232142857143) 48%, rgba(248, 175, 218, 0.752) 100%);
+}
+
+ .night{
+  
+  background: rgb(6,35,131);
+background: linear-gradient(180deg, rgba(19, 23, 36, 0.847) 0%, rgba(89, 125, 160, 0.935) 48%, rgba(110, 211, 187, 0.752) 100%);
 }
