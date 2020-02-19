@@ -2,8 +2,8 @@ body {
   position: relative;
   margin: 0;
   padding-bottom: 150px;
-  font-family: Arial, Helvetica, sans-serif;
   color: #172f42;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 h2 {
@@ -79,19 +79,19 @@ img {
   font-size: 10px;
 }
 
-#city {
+.forecast-city {
  align-self: flex-end;
 }
 
-#weatherImage {
+.weather-image {
   align-self: center;
 }
 
 .temp {
   align-self: center;
-  font-size: 70px;
   margin-block-start: 0.5em;
   margin-block-end: 0.5em;
+  font-size: 70px;
 }
 
 .min-temp {
@@ -143,12 +143,12 @@ img {
 }
 
 .dayForecast {
-  padding: 10px;
   display: grid;
   grid-template-columns: 30% 30% 30%;
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 10px;
 }
 
 .dayForecast img {
@@ -162,8 +162,8 @@ hr {
   width: 60%;
   margin-block-start: 2em;
   margin-block-end: 1em;
-  background: #172f42;
   border: 0.5px solid #172f42;
+  background: #172f42;
 }
 
 /*** Footer styling ***/
@@ -177,22 +177,22 @@ footer {
 }
 
 footer p {
+  text-align: center;
   color: #172f42;
   font-size: 10px;
-  text-align: center;
 }
 
 footer a {
-  text-decoration: none;
   color: #172f42;
   font-weight: bold;
+  text-decoration: none;
 }
 
 .credit-main {
+  text-align: center;
   padding: 5px;
   color: #172f42;
   font-size: 10px;
-  text-align: center;
   cursor: pointer;
 }
 
@@ -210,9 +210,9 @@ footer a {
 }
 
 .active + .credit-creators {
-  opacity: 1;
   height: 50px;
   padding: 10px;
+  opacity: 1;
 }
 
 /*** MEDIA QUERIES ***/
@@ -232,11 +232,11 @@ footer a {
   }
 
   .dayForecast {
-    padding: 10px;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto auto auto;
     text-align: center;
+    padding: 10px;
   }
 
 
@@ -257,36 +257,36 @@ footer a {
    padding: 20px 0 0 0;
  }
 
- #city {
+ .forecast-city {
    grid-column-start: 1;
    grid-row-start: 4;
-   margin: 10px 0;
    font-size: 50px;
    text-align: left;
+   margin: 10px 0;
  }
 
- #weatherImage {
+ .weather-image {
    grid-column-start: 2;
    grid-row-start: 5;
    text-align: left;
  }
 
-  #weatherImage img {
-  width: 30px;
-  height: 30px;
+  .weather-image img {
   align-self: flex-end;
   text-align: left;
+  width: 30px;
+  height: 30px;
   }
 
  .temp {
    grid-column-start: 3;
    grid-row-start: 4;
    align-self: flex-end;
-   font-size: 50px;
    margin: 10px 0;
+   font-size: 50px;
   }
 
- #description {
+ .weather-description {
    grid-column-start: 1;
    grid-row-start: 5;
    text-align: left;
@@ -304,7 +304,7 @@ footer a {
   width: 2.5em;
   }
 
-  #weatherImage img {
+  .weather-image img {
   animation-name: zoom;
   animation-duration: 3s;
   animation-iteration-count: infinite;
