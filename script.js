@@ -2,7 +2,6 @@
 const city = document.getElementById('city')
 const temp = document.getElementById('temperature')
 const coord = document.getElementById('coord')
-const icon = document.getElementById('icon')
 const sunRise = document.getElementById('sun')
 const sunSet = document.getElementById('sun')
 const todayPlus1 = document.getElementById('todayPlus1')
@@ -10,13 +9,12 @@ const todayPlus2 = document.getElementById('todayPlus2')
 const todayPlus3 = document.getElementById('todayPlus3')
 const todayPlus4 = document.getElementById('todayPlus4')
 const todayPlus5 = document.getElementById('todayPlus5')
-const weatherSection = document.getElementById("weatherSection")
 
 
 
 //TODAYS DATE
 const today = new Date()
-console.log(today)
+// console.log(today)
 
 //JSON STOCKHOLM WEATHER FOR TODAY
 fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=b09042e161870e44988114035ff61156')
@@ -25,15 +23,12 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
   })
   .then((json) => {
 
-    console.log(json)
+    // console.log(json)
     //CITY
     city.innerHTML = json.name
 
     //LONG/LAT
     coord.innerHTML = `Longitude: ${json.coord.lon}, Latitude: ${json.coord.lat}`
-
-    //ICON
-    icon.innerHTML = `<img src=${json.weather[0].icon}/>`
 
     //TODAYS TEMPERATURE
     temp.innerHTML = Math.round(json.main.temp)
@@ -62,7 +57,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
   })
   .then((json) => {
 
-    console.log(json)
+    // console.log(json)
 
     //WEATHER AT 12AM
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
@@ -104,8 +99,8 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
 
 
 
-    console.log(filteredForecast[0].dt_txt)
-    console.log(filteredForecast)
+    // console.log(filteredForecast[0].dt_txt)
+    // console.log(filteredForecast)
 
 
 
