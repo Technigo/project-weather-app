@@ -6,22 +6,45 @@ body {
   font-family: 'Montserrat', sans-serif;
   background-image: url('img/background.svg');
   background-color: #cccccc;
-  background-size: auto;
-  display: flex;
+  background-size: cover;
+  color: #AD7718;
 }
 
+h3 {
+  margin: 40px 0 20px 0;
+  text-align: center;
+
+}
 p {
   margin-bottom: 5px;
 }
 
 .weatherApp {
   width: 80%;
+  height: 80%;
   margin: 20px auto ;
   padding: 20px;
-  background-color: burlywood;
+  background-color: #F7E9B9;
+  display: flex;
+  flex-direction: column;
 
 }
 
-#fiveDaysWeather {
+.cold { 
+  background-color: #ACD8E2;
+  color: #164A68;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px dotted grey;
   margin: 20px auto;
+  padding: 0;
 }
+
+.todaysWeather {
+  text-align: center;
+}
+

@@ -5,20 +5,18 @@
 <style type="text/css">
 	.st0{fill:#F47775;}
 	.st1{fill:#E6E6E6;}
-	.st2{fill:#164A68;}
-	.st3{fill:#A3DEF7;}
-	.st4{fill:#2A5510;}
-	.st5{fill:#F7E9B9;}
-	.st6{fill:#DCE6EF;}
-	.st7{opacity:0.4;fill:none;}
+	.st2{fill:#EFFFEE;}
+	.st3{opacity:0.4;fill:none;}
+	.st4{fill:#164A68;}
+	.st5{fill:#ACD8E2;}
+	.st6{fill:#AD7718;}
+	.st7{fill:#F7E9B9;}
+	.st8{fill:#597551;}
+	.st9{fill:#D0E8CF;}
 </style>
-<rect x="-81" y="-721" class="st0" width="1920" height="72"/>
-<rect x="-81" y="-685" class="st1" width="1920" height="72"/>
-<rect x="-81" y="-492" class="st2" width="1920" height="72"/>
-<rect x="-81" y="-456" class="st3" width="1920" height="72"/>
-<rect x="-81" y="-244" class="st4" width="1920" height="72"/>
-<rect x="-81" y="-280" class="st5" width="1920" height="72"/>
-<rect class="st6" width="1920" height="1080"/>
+<rect x="-81" y="-1022" class="st0" width="1920" height="72"/>
+<rect x="-81" y="-986" class="st1" width="1920" height="72"/>
+<rect class="st2" width="1920" height="1080"/>
 <image style="overflow:visible;opacity:0.4;" width="512" height="512" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAQAAABecRxxAAAABGdBTUEAALGPC/xhBQAAACBjSFJN
 AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAJcEhZ
 cwAADsQAAA7EAZUrDhsAAAAHdElNRQfkAhMNJgXCAbzdAAAjwElEQVR42u3deZwUxd3H8e/Ossux
@@ -7707,5 +7705,11 @@ iIiIiIiIiIiIiNX/A5PppLllkGpKAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIwLTAyLTE5VDEzOjM4
 OjEyKzAwOjAw0zAfZAAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMC0wMi0xOVQxMzozODoxMiswMDow
 MKJtp9gAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwaAAAAAElFTkSuQmCC" transform="matrix(0.084 0 0 0.084 374 306)">
 </image>
-<rect x="35" y="39" class="st7" width="42.99" height="42.99"/>
+<rect x="35" y="39" class="st3" width="42.99" height="42.99"/>
+<rect x="-196" y="-390" class="st4" width="1920" height="72"/>
+<rect x="-132" y="-346" class="st5" width="1920" height="72"/>
+<rect x="-68" y="-121" class="st6" width="1920" height="72"/>
+<rect x="-111" y="-155" class="st7" width="1920" height="72"/>
+<rect x="-208" y="-555" class="st8" width="1920" height="72"/>
+<rect x="-251" y="-589" class="st9" width="1920" height="72"/>
 </svg>
