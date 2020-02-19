@@ -24,6 +24,7 @@ flex-wrap: wrap;
 border-bottom: 1px solid rgba(255, 255, 255, 0.411);
 }
 
+
 h1 {
 font-size: 20px;
 margin-bottom: 0;
@@ -35,23 +36,23 @@ margin: 10px;
 }
 
 p {
-  font-size: 15px;
-  margin-top: 0;
+font-size: 15px;
+margin-top: 0;
 }
 
 h3 {
-  font-size: 25px;
-  margin: 0;
+font-size: 25px;
+margin: 0;
 }
 
 h4 {
-  margin-top: 0;
-  margin-bottom: 30px;
+margin-top: 0;
+margin-bottom: 30px;
 }
 
 .temperature {
 font-size: 40px;
-margin: 15px
+margin-bottom: 15px
 }
 
 .upcomming-weather-container {
@@ -65,18 +66,32 @@ flex-wrap: wrap;
 }
 
 .todays-weather-container:hover, .upcomming-weather-container:hover {
-  transform: scale(1.40);
-  border-bottom: none;
+transform: scale(1.40);
+border-bottom: none;
+}
+
+.cold {
+  background-image: linear-gradient(45deg, rgb(181, 218, 213) 0%, rgb(138, 167, 199) 100%);
+  background-position: 100%;  
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.warm {
+  background-image: linear-gradient(45deg, rgb(245, 204, 56) 0%, rgb(201, 82, 36) 100%);
+  background-position: 100%;  
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 
 @media (min-width: 768px) {
   body {
-    flex-direction: inherit;
-    justify-content: space-around;
+  flex-direction: inherit;
+  justify-content: space-around;
   }
 
   .todays-weather-container {
-    border-bottom: none;
+  border-bottom: none;
   }
 }
