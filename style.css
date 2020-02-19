@@ -25,10 +25,10 @@ body {
 
 .hamburger {
   background-color: white;
-  height: 2px;
-  width: 20px;
   margin: 4px;
   border-radius: 50px;
+  width: 40px;
+  height: 4px;
 }
 
 .city-and-weather h1 {
@@ -131,6 +131,7 @@ h4 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 40px;
 }
 
 #sunsetSunrise {
@@ -179,18 +180,18 @@ h4 {
   color: rgb(255, 255, 255);
 }
 
-.day {
+.day{
   background: rgb(230,127,249);
   background: linear-gradient(180deg, rgba(100, 223, 228, 0.847) 0%, rgba(189,174,246,0.9352232142857143) 48%, rgba(248, 175, 218, 0.752) 100%);
-  padding-bottom: 50px;
+  padding-bottom: 100px;
   
 }
 
- .night{
+.night{
   
   /* background: rgb(6,35,131); */
 background: linear-gradient(180deg, rgba(19, 23, 36, 0.847) 0%, rgba(89, 125, 160, 0.935) 48%, rgba(110, 211, 187, 0.752) 100%);
-padding-bottom: 50px;
+padding-bottom: 100px;
 
 }
 
@@ -225,8 +226,18 @@ padding-bottom: 50px;
     
   }
  .hamburger {
-   width: 40px;
-   height: 4px;
+   width: 50px;
+   height: 6px;
+   margin-bottom: 10px;
+ }
+
+ #sunsetSunrise {
+   font-size: 20px;
+ }
+
+ .up-down {
+   height: 70px;
+   width: 70px;
  }
   
 
