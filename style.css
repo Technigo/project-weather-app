@@ -19,6 +19,30 @@ h1 {
   flex-direction: column;
 }
 
+.clouds {
+  background: linear-gradient(#747d8c, #ced6e0);
+}
+
+.partlyCloudy {
+  background: linear-gradient(#70a1ff, #4b6584);
+}
+
+.rain {
+  background: linear-gradient(#2f3640, #7f8fa6);
+}
+
+.snow {
+  background: linear-gradient( #f7f1e3, #d1d8e0);
+}
+
+.sun {
+  background: linear-gradient( #9599E2,  #8BC6EC);
+}
+
+.other {
+  background: linear-gradient( #9599E2,  #8BC6EC);
+}
+
 .temp {
   display: flex;
   flex-direction: row;

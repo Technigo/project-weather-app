@@ -6,8 +6,9 @@ const sunsetHour = document.getElementById('sunset')
 const weatherIcon = document.getElementById('weatherPic')
 const weatherIconSmall = document.getElementById('weatherPicSmall')
 
+// TODAYS WEATHER SECTION
 
-fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm&units=metric&appid=daa63c3c6a7ab1c38288ee0bfde25241')
+fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm&units=metric&appid=daa63c3c6a7ab1c38288ee0bfde25241')
   .then((response) => {
     return response.json()
   })
@@ -23,31 +24,32 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm&units=metric&a
     if (json.weather[0].id === 804) {
       //clouds
       weatherPic.innerHTML = '<img src="cloud.png">'
-      todaysWeather.style.background = 'linear-gradient(#747d8c, #ced6e0)'
+      todaysWeather.classList.toggle('clouds')
     } else if (json.weather[0].id < 804 && json.weather[0].id > 800) {
       //partly cloudy
       weatherPic.innerHTML = '<img src="cloudy.png">'
-      todaysWeather.style.background = 'linear-gradient(#70a1ff, #4b6584)'
+      todaysWeather.classList.toggle('partlyCloudy')
     } else if (json.weather[0].id < 532 && json.weather[0].id > 499) {
       //rain
       weatherPic.innerHTML = '<img src="rainy.png">'
-      todaysWeather.style.background = 'linear-gradient(#2f3640, #7f8fa6)'
+      todaysWeather.classList.toggle('rain')
     } else if (json.weather[0].id < 623 && json.weather[0].id > 599) {
       //snow
       weatherPic.innerHTML = '<img src="snowy.png">'
-      todaysWeather.style.background = 'linear-gradient( #f7f1e3, #d1d8e0)'
+      todaysWeather.classList.toggle('snow')
     } else if (json.weather[0].id === 800) {
       //clear/sunny
       weatherPic.innerHTML = '<img src="sun.png">'
-      todaysWeather.style.background = 'linear-gradient( #9599E2,  #8BC6EC)'
+      todaysWeather.classList.toggle('sun')
     } else {
       weatherPic.innerHTML = ' '
-      todaysWeather.style.background = 'linear-gradient( #9599E2,  #8BC6EC)'
+      todaysWeather.classList.toggle('other')
     }
   })
 
+// FIVE DAYS FORECAST
 
-fetch('http://api.openweathermap.org/data/2.5/forecast?q=Stockholm&units=metric&appid=daa63c3c6a7ab1c38288ee0bfde25241')
+fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm&units=metric&appid=daa63c3c6a7ab1c38288ee0bfde25241')
   .then((response) => {
     return response.json()
   })
