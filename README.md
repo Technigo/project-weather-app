@@ -1,13 +1,15 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+In week 6 of Technigo Bootcamp our project was to build a simple weather web app that shows today's weather and temperature, sunsrise & sunset, and a 5-day forecast using an open weather API.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+In this project I have learned to fecth information from an api and to manipulate it so that it shows in a easy and readable way. 
+
+If i had more time I would try to do some animations in the app and make it catch the location of the user. 
+
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Here you can see the app live and what the weather is in Skanör & Falsterbo. 
+https://cranky-cori-8e6189.netlify.com/
