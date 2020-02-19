@@ -1,3 +1,5 @@
+/* General styles */
+
 :root {
   --color-hot: rgb(255, 93, 57);
   --color-warm: rgb(255, 167, 51);
@@ -14,14 +16,10 @@
 }
 
 body {
-  margin: 2rem 3rem;
+  margin: 2rem;
   background-color: #0a2fc4;
   font-family: var(--font-family);
   transition: all .3s ease-in-out;
-}
-
-main {
-  margin-top: 2rem;
 }
 
 h1 {
@@ -42,6 +40,57 @@ p {
   margin: .2rem;
 }
 
+
+/* Header */
+
+header h2 {
+  margin-bottom: 2rem;
+  line-height: 1;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  height: 40px;
+  background-color: #fff;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.dropdown::after {
+  position: absolute;
+  content: '↓';
+  right: .8rem;
+  top: .7rem;
+  pointer-events: none;
+}
+
+select {
+  padding: .7rem .8rem;
+  width: 100%;
+  border: none;
+  font-family: var(--font-family);
+  font-size: .9rem;
+  font-weight: 500;
+  color: black;
+  cursor: pointer;
+  box-shadow: none;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Main content */
+
+main {
+  margin-top: 2rem;
+}
+
+
+
 .icon {
   display: inline-block;
   vertical-align: middle;
@@ -50,7 +99,6 @@ p {
 
   animation-name: scale-icon;
   animation-duration: 1s;
-
 }
 
 @keyframes scale-icon {
@@ -81,40 +129,7 @@ p {
   font-weight: 600;
 }
 
-.dropdown {
-  position: relative;
-  display: inline-block;
-  vertical-align: top;
-  width: 140px;
-  height: 40px;
-  background-color: #fff;
-  overflow: hidden;
-  cursor: pointer;
-}
 
-.dropdown::after {
-  position: absolute;
-  content: '↓';
-  right: .8rem;
-  top: .6rem;
-  pointer-events: none;
-}
-
-select {
-  padding: .6rem .8rem;
-  width: 100%;
-  border: none;
-  font-family: var(--font-family);
-  font-size: .9rem;
-  font-weight: 500;
-  color: black;
-  cursor: pointer;
-  box-shadow: none;
-  background-color: transparent;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
 
 button {
   background-color: black;

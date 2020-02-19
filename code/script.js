@@ -132,7 +132,7 @@ const selectCity = () => {
 
 }
 
-document.querySelector('#pickCityButton').addEventListener('click', selectCity)
+citySelectBox.addEventListener('change', selectCity)
 
 
 /*
