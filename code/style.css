@@ -45,8 +45,26 @@ p {
 .icon {
   display: inline-block;
   vertical-align: middle;
-  margin-left: -1rem;
+  margin-left: -.5rem;
   font-size: 3rem;
+
+  animation-name: scale-icon;
+  animation-duration: 1s;
+
+}
+
+@keyframes scale-icon {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.4);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 .forecast-table {
