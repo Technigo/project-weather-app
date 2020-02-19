@@ -18,57 +18,85 @@ body {
     width: 350px;
     height: 600px;
     justify-content: center;
-    background-color: aquamarine;
     border-radius: 5%;
   
 }
 
-.app-titel {
-    padding-top: 20px;
-    padding-bottom: 40px;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+.cold {
+    background-image: linear-gradient(to bottom right, rgba(19, 42, 92, 0.63), rgba(90, 193, 221, 0.562));
+
 }
 
-.temp {
-    font-size: 20px;
+.warm {
+    background-image: linear-gradient(to bottom right, rgba(235, 135, 68, 0.63), rgba(255, 255, 164, 0.562));
+}
+
+
+.app-titel {
+    padding-top: 20px;
+    padding-bottom: 20px;
     text-align: center;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
+    font-size: 15px;
 }
 
 
 .city {
     padding-top: 20px;
-    padding-bottom: 10px;
-    text-align: center;
-    letter-spacing: 2px;
+    font-size: 20px;
+    text-align: left;
+    padding-left: 20px;
+    letter-spacing: 1px;
 }
 
-
-.dec {
-    font-size: 20px;
-    text-align: center;
-    letter-spacing: 2px;
+.temp_dec {
+    padding-top: 20px;
+    font-size: 15px;
+    text-align: left;
+    padding-left: 20px;
+    letter-spacing: 1px;
 }
 
 .sunrise {
-    font-size: 20px;
-    text-align: center;
-    letter-spacing: 2px;
+    font-size: 12px;
+    text-align: left;
+    padding-left: 20px;
+    letter-spacing: 1px;
+    padding-bottom: 2px;
 }
 
 .sunset {
-    font-size: 20px;
-    text-align: center;
-    letter-spacing: 2px;
+    font-size: 12px;
+    text-align: left;
+    padding-left: 20px;
+    letter-spacing: 1px;
 }
 
+.text_cold {
+    padding-top: 20px;
+    padding-left: 20px;
+    font-size: 25px;
+    color: rgb(40, 75, 116);
+}
+
+.text_warm {
+    padding-top: 20px;
+    padding-left: 20px;
+    font-size: 25px;
+    color: rgb(243, 185, 24);
+}
+
+/* .text_warm {
+    padding-top: 20px;
+    padding-left: 20px;
+    font-size: 25px;
+    color: rgb(218, 158, 47);
+} */
+
 .weekdayForecast {
-    padding-top: 50px;
-    padding-right: 10px;
+    padding-right: 20px;
     font-size: 15px;
-    text-align: right;
-    letter-spacing: 2px;
+    text-align: center;
+    letter-spacing: 1px;
 }
 
