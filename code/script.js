@@ -7,6 +7,10 @@ const wind = document.querySelector('#wind')
 const todaysWeatherTable = document.querySelector('#today')
 const forecastContainer = document.querySelector('#forecast')
 
+// Add random background color to body just for fun
+const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+const randomBgColor = `#${randomColor}`
+document.body.style.backgroundColor = randomBgColor
 
 const selectCity = () => {
   let userCity = citySelectBox.options[citySelectBox.selectedIndex].value
@@ -29,25 +33,24 @@ const selectCity = () => {
         return time
       }
 
-      // Change body background color depending on current temperature
-      const setBgColor = (bgCol) => {
-        document.body.style.backgroundColor = bgCol
-      }
+      // Remove all classes from body
+      document.body.className = ''
 
+      // Change body background color depending on current temperature
       const currentTemp = +json.main.temp.toFixed(0)
 
       if (currentTemp < -10) {
-        setBgColor('var(--color-cold)')
+        document.body.classList.add('bg-color-cold')
       } else if (currentTemp < -5) {
-        setBgColor('var(--color-cool)')
+        document.body.classList.add('bg-color-cool')
       } else if (currentTemp <= 0) {
-        setBgColor('var(--color-minus)')
+        document.body.classList.add('bg-color-minus')
       } else if (currentTemp < 10) {
-        setBgColor('var(--color-plus)')
+        document.body.classList.add('bg-color-plus')
       } else if (currentTemp <= 20) {
-        setBgColor('var(--color-warm)')
+        document.body.classList.add('bg-color-warm')
       } else {
-        setBgColor('var(--color-hot)')
+        document.body.classList.add('bg-color-hot')
       }
 
       // Capitalize first letter of string
@@ -55,35 +58,9 @@ const selectCity = () => {
         return str.charAt(0).toUpperCase() + str.slice(1)
       }
 
-      // Show icon based on weather description
-      const weatherIcon = () => {
-        switch (json.weather[0].main) {
-          case 'Clear':
-            return '🌤'
-            break
-          case 'Clouds':
-            return '☁️'
-            break
-          case 'Drizzle':
-            return '⛈'
-            break
-          case 'Rain':
-            return '🌧'
-            break
-          case 'Snow':
-            return '🌨'
-            break
-          case 'Thunderstorm':
-            return '🌩'
-            break
-          default:
-            return '🌫'
-        }
-      }
-
       // Print out to DOM
       city.innerHTML = json.name
-      temp.innerHTML = `${json.main.temp.toFixed(1)}° <div class="icon">${weatherIcon()}</div>`
+      temp.innerHTML = `${json.main.temp.toFixed(1)}° <div class="icon">${weatherIcon(json.weather[0].main)}</div>`
       description.innerHTML = capitalize(json.weather[0].description)
 
       todaysWeatherTable.innerHTML = `
@@ -121,6 +98,7 @@ const selectCity = () => {
           <tr>
             <td>${weekday} </td>
             <td>${day.main.temp.toFixed(1)}° </td>
+            <td>${weatherIcon(day.weather[0].main)}</td>
             <td>${day.wind.speed.toFixed(1)}m/s</td>
           </tr>`
       })
@@ -134,6 +112,32 @@ const selectCity = () => {
 
 citySelectBox.addEventListener('change', selectCity)
 
+
+// Show icon based on weather description
+const weatherIcon = (description) => {
+  switch (description) {
+    case 'Clear':
+      return '🌤'
+      break
+    case 'Clouds':
+      return '☁️'
+      break
+    case 'Drizzle':
+      return '⛈'
+      break
+    case 'Rain':
+      return '🌧'
+      break
+    case 'Snow':
+      return '🌨'
+      break
+    case 'Thunderstorm':
+      return '🌩'
+      break
+    default:
+      return '🌫'
+  }
+}
 
 /*
 // Geolocation test – getLocation() returns url with coordinates of current location

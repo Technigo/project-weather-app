@@ -1,13 +1,6 @@
 /* General styles */
 
 :root {
-  --color-hot: rgb(255, 93, 57);
-  --color-warm: rgb(255, 167, 51);
-  --color-plus: rgb(70, 197, 144);
-  --color-minus: rgb(108, 196, 255);
-  --color-cool: rgb(25, 144, 255);
-  --color-cold: rgb(9, 92, 170);
-
   --font-family: 'Avenir', sans-serif;
 }
 
@@ -15,11 +8,39 @@
   outline: none;
 }
 
+html {
+  height: 100%;
+}
+
 body {
+  height: 100%;
   margin: 2rem;
-  background-color: #0a2fc4;
   font-family: var(--font-family);
   transition: all .3s ease-in-out;
+}
+
+.bg-color-hot {
+  background: linear-gradient(rgb(255, 93, 57), rgb(194, 62, 32));
+}
+
+.bg-color-warm {
+  background: linear-gradient(rgb(255, 167, 51), rgb(206, 120, 8));
+}
+
+.bg-color-plus {
+  background: linear-gradient(rgb(70, 197, 112), rgb(15, 148, 75));
+}
+
+.bg-color-minus {
+  background: linear-gradient(rgb(155, 214, 253), rgb(93, 190, 255));
+}
+
+.bg-color-cool {
+  background: linear-gradient(rgb(75, 168, 255), rgb(9, 121, 226));
+}
+
+.bg-color-cold {
+  background: linear-gradient(rgb(37, 86, 245), rgb(26, 66, 199));
 }
 
 h1 {
@@ -89,30 +110,8 @@ main {
   margin-top: 2rem;
 }
 
-
-
-.icon {
-  display: inline-block;
-  vertical-align: middle;
-  margin-left: -.5rem;
-  font-size: 3rem;
-
-  animation-name: scale-icon;
-  animation-duration: 1s;
-}
-
-@keyframes scale-icon {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.4);
-  }
-
-  100% {
-    transform: scale(1);
-  }
+table {
+  border-spacing: 0;
 }
 
 .today-table tr td:first-child {
@@ -129,8 +128,36 @@ main {
   font-weight: 600;
 }
 
+.forecast-table tr td:nth-child(3) {
+  font-size: 1.5rem;
+}
 
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: -.5rem;
+  font-size: 3rem;
 
+  animation-name: scale-icon;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes scale-icon {
+  0% {
+    transform: scale(1);
+  }
+
+  30% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* 
 button {
   background-color: black;
   height: 40px;
@@ -141,4 +168,4 @@ button {
   font-size: .9rem;
   font-weight: 500;
   margin-left: .5rem;
-}
+} */
