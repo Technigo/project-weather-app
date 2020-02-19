@@ -48,8 +48,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=York,uk&units=metric&A
             const newVal = { ...val }
             newVal.day = new Date(newVal.dt_txt).toLocaleDateString([], { weekday: 'short' })
             newVal.dayNumber = new Date(newVal.dt_txt).getDay()
-            newVal.safari = new Date(newVal.dt_txt)
-            newVal.safariDay = +newVal.safari.getDay();
+            newVal.safariDay = new Date(newVal.dt * 1000).getDay()
             newVal.weatherType = newVal.weather[0].main
             return newVal
         })
