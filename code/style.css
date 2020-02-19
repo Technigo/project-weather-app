@@ -17,7 +17,7 @@ header {
 .main-container {
   display: flex;
   justify-content: center;
-  margin: 20px 10px;
+  margin: 0 auto;
 }
 
 .container-box {
@@ -131,6 +131,9 @@ justify-content: center;
 
 /* MEDIA QUERIES */
 @media (min-width: 759px) {
+  .main-container {
+    margin: 20px 10px;
+  }
   .forecast-title {
     font-size: 18px;
   }
