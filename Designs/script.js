@@ -47,13 +47,14 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=York,uk&units=metric&A
         const editedForecast = forecast.list.map(function (val, i, arr) {
             const newVal = { ...val }
             newVal.day = new Date(newVal.dt_txt).toLocaleDateString([], { weekday: 'short' })
-            newVal.dayNumber = +new Date(newVal.dt_txt).getDay()
+            newVal.dayNumber = new Date(newVal.dt_txt).getDay()
             newVal.weatherType = newVal.weather[0].main
             return newVal
         })
         //^^adds weekday names and numbers that I can use to create new filtered arrays. A weatherType 
         // to switch below to an Image.
 
+        document.getElementById('weather-future').innerHTML = editedForecast[0]
 
 
         editedForecast.forEach(val => {
@@ -89,7 +90,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=York,uk&units=metric&A
         const fridaySafari = editedForecast.filter(item => item.dayNumber === 5)
         const saturdaySafari = editedForecast.filter(item => item.dayNumber === 6)
 
-        document.getElementById('weather-future').innerHTML = editedForecast[0].dayNumber
+
 
 
 
