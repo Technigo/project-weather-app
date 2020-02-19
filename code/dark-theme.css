@@ -1,4 +1,8 @@
 /* Dark mode theme */
+.container-box {
+  padding-bottom: 110px;
+}
+
 h1,
 h2,
 h3,
