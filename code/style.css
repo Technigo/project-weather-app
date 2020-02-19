@@ -3,13 +3,23 @@
 }
 
 body {
-  background-color: aquamarine;
+  font-family: 'Montserrat', sans-serif;
+  background-image: url('img/background.svg');
+  background-color: #cccccc;
+  background-size: auto;
+  display: flex;
 }
 
-.weatherForecast {
-  background-color: #FFF433;
+p {
+  margin-bottom: 5px;
+}
+
+.weatherApp {
+  width: 80%;
+  margin: 20px auto ;
   padding: 20px;
-  margin: 20px;
+  background-color: burlywood;
+
 }
 
 #fiveDaysWeather {
