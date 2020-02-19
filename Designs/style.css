@@ -1,10 +1,9 @@
 body {
-  /* background-image: url('./Design-1/assets/back.png'); */
   background-image: linear-gradient(white, blue);
-  /* /* 
   background-size: cover;
-  background-attachment: fixed; */
-  height: auto;
+  background-attachment: fixed;
+  height: 600px;
+  width: auto;
   display: flex;
   flex-direction: column;
   align-content: center;
