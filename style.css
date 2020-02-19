@@ -6,10 +6,16 @@ html {
   text-transform: uppercase;
   font-weight: 200;
   /* color: rgba(255, 255, 255, 0.911); */
+  height: 100%;
+  
 }
 
 body {
   margin: 0;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  
 }
 
 
@@ -116,6 +122,8 @@ sup {
 
 h4 {
   margin: 10px auto;
+  display: flex;
+  align-items: center;
   
 }
 
@@ -130,6 +138,11 @@ h4 {
   color: rgba(80, 80, 79, 0.808);
   font-size: 14px;
   text-transform: uppercase;
+}
+
+.up-down {
+  height: 50px;
+  width: 50px;
 }
 
 /* #otherCountries h1 {
@@ -169,10 +182,57 @@ h4 {
 .day {
   background: rgb(230,127,249);
   background: linear-gradient(180deg, rgba(100, 223, 228, 0.847) 0%, rgba(189,174,246,0.9352232142857143) 48%, rgba(248, 175, 218, 0.752) 100%);
+  padding-bottom: 50px;
+  
 }
 
  .night{
   
-  background: rgb(6,35,131);
+  /* background: rgb(6,35,131); */
 background: linear-gradient(180deg, rgba(19, 23, 36, 0.847) 0%, rgba(89, 125, 160, 0.935) 48%, rgba(110, 211, 187, 0.752) 100%);
+padding-bottom: 50px;
+
+}
+
+@media only screen and (min-width: 600px) {
+
+  .section-tablet-size {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  #forecast {
+    width: 40%;
+    background-color: rgba(255, 255, 255, 0.144);
+    height: 300px;
+    
+  }
+
+  #otherCountries {
+    width: 40%;
+    margin: 0;
+    height: 300px;
+  }
+
+  .city-and-description {
+    align-items: flex-end;
+    margin-right: 50px;
+  }
+
+  .city-and-description h1 {
+    font-size: 80px;
+    
+  }
+ .hamburger {
+   width: 40px;
+   height: 4px;
+ }
+  
+
+}
+
+
+@media only screen and (min-width: 1020px) {
+
 }
