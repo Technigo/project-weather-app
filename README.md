@@ -1,13 +1,11 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This assignment was about making a weather-forecast-app, using APIs for the first time.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I divided the layout in two sections, the weather today and the weather for the coming five days. I made it responsive to show less information on mobile and a little more on tablet and desktop. I used the icons that I got through json to illustrate the weather and also made the colors change with current temperatures. I used help through Stack Overflow.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://hopeful-minsky-f822d0.netlify.com/
