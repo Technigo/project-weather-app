@@ -4,10 +4,7 @@ body {
 }
 
 .header {
-    /* background-color: white; */
     padding: 40px 0px;
-    /* border-radius: 0% 0% 35% 35%; */
-    /* top: 50%; */
 }
 
 h1 {
@@ -410,7 +407,7 @@ p {
 
 .misty-cloud:after, .misty-cloud:before {
     background: rgb(255, 255, 255);
-    box-shadow: 0 0 100px 100px rgb(255, 255, 255);
+    box-shadow: 0 0 150px 150px rgb(255, 255, 255);
 	content: '';
 	position: absolute;
 	z-indeX: -1;
@@ -430,4 +427,114 @@ p {
 	height: 180px;
 	right: 50px;
 	top: -90px;
+}
+
+/* Moon */
+
+#background-night {
+    bottom: 0;
+    left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+    z-index: -1;
+    visibility: hidden;
+}
+
+.moon {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 150px;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: 30px 20px 0px 0px #fff; 
+}
+
+/******* Styling depending on screen size *******/
+
+@media (min-width: 700px) {
+    .header {
+        padding-top: 100px;
+    }
+    
+    h1 {
+        max-width: 380px;
+        margin: 40px auto 10px auto
+    }
+    
+    .current {
+        max-width: 380px;
+        margin: 0px auto;
+    }
+
+    .current div {
+        margin: 0px;
+    }
+
+    .sunrise-sunset {
+        justify-content: flex-end;
+        max-width: 380px;
+        margin: 0px auto;
+    }
+
+    .sunrise-sunset div {
+        margin-left: 10px;
+    }
+
+    .container-forecastWeather {
+        max-width: 380px;
+        margin: 0px auto;
+    }
+
+    #background-sun {
+        max-width: 450px;
+        margin: 0px auto;
+    }
+
+    .sun {
+        margin: 0;
+    }
+
+    .bolt1 {
+        margin: 60px auto 0px 250px;
+    }
+
+    .bolt2 {
+        margin: 150px 450px 0px 20px;
+    }
+
+    .sun {
+        margin: 0;
+    }
+
+    #background-night {
+        max-width: 380px;
+        margin: 0px auto;
+    }
+
+    .moon {
+      margin: 50px 0px;  
+    }
+    
+}
+
+@media (min-width: 1024px) {
+    .header {
+        padding-top: 150px;
+    }
+
+    .bolt1 {
+        margin: 60px 20px 0px auto;
+    }
+
+    .bolt2 {
+        margin: 150px auto 0px 20px;
+    }
+
+    .moon {
+        margin: 100px 0px;  
+      }
 }
