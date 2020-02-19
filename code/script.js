@@ -1,3 +1,8 @@
+const cityName = document.querySelector('#city')
+const todaysWeatherContainer = document.querySelector('#todaysWeather')
+const forecastContainer = document.querySelector('#forecast')
+
+
 const selectCity = () => {
 
   const citySelectBox = document.querySelector('#cities')
@@ -75,15 +80,14 @@ const selectCity = () => {
       }
 
       // Print out to DOM
-      const cityName = document.querySelector('#city')
-      cityName.innerHTML = json.name
-      document.querySelector('#temperature').innerHTML = `${json.main.temp.toFixed(1)}° <div class="icon">${weatherIcon()}</div>`
-      document.querySelector('#description').innerHTML = capitalize(json.weather[0].description)
-      document.querySelector('#wind').innerHTML = `Wind: ${json.wind.speed.toFixed(1)} m/s`
-
-      document.querySelector('#sunrise').innerHTML = `Sunrise: ${timeFormat(json.sys.sunrise)}`
-      document.querySelector('#sunset').innerHTML = `Sunset: ${timeFormat(json.sys.sunset)}`
-
+      todaysWeatherContainer.innerHTML = `
+        <h1 id="city">${json.name}</h1>
+        <h2 id="temperature">${json.main.temp.toFixed(1)}° <div class="icon">${weatherIcon()}</div></h2>
+        <h3 id="description">${capitalize(json.weather[0].description)}</h3>
+        <p>Wind: ${json.wind.speed.toFixed(1)} m/s</p>
+        <p>Sunrise: ${timeFormat(json.sys.sunrise)}</p>
+        <p>Sunset: ${timeFormat(json.sys.sunset)}</p>
+      `
     })
     .catch((err) => {
       console.log('oops error', err)
@@ -99,7 +103,6 @@ const selectCity = () => {
       // Filter the forecast list array to get info from 06:00 each day
       const filteredForecast = json.list.filter(item => item.dt_txt.includes('06:00'))
 
-      const forecastContainer = document.querySelector('#forecast')
       forecastContainer.innerHTML = ''
 
       // Loops through filteredForecast

@@ -15,7 +15,7 @@
 
 body {
   margin: 2rem 3rem;
-  background-color: #e6e6e6;
+  background-color: #0a2fc4;
   font-family: var(--font-family);
   transition: all .3s ease-in-out;
 }
@@ -73,7 +73,7 @@ p {
   position: absolute;
   content: '↓';
   right: .8rem;
-  top: .5rem;
+  top: .6rem;
   pointer-events: none;
 }
 
