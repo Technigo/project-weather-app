@@ -2,7 +2,7 @@ const text = document.getElementById('weather')
 const information = document.getElementById('information')
 const week = document.getElementById('week')
 const color = document.getElementById('color')
-const todaysWeatherURL = `http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=ed6c467c63ec2c7c04687ba8b5eb0732`
+const todaysWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=ed6c467c63ec2c7c04687ba8b5eb0732`
 const forecastWeatherURL = `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=ed6c467c63ec2c7c04687ba8b5eb0732`
 
 
