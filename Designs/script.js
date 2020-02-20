@@ -1,6 +1,6 @@
 const container = document.getElementById('MarbellaWeather')
 
-fetch('http://api.openweathermap.org/data/2.5/weather?q=Marbella,Spain&units=metric&APPID=329f2a2705f51547d2ed78a937fa0051')
+fetch('https://api.openweathermap.org/data/2.5/weather?q=Marbella,Spain&units=metric&APPID=329f2a2705f51547d2ed78a937fa0051')
   .then((response) => {
     return response.json()
 
@@ -58,7 +58,6 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=marbella,spain&units=m
       const dateString = date.toLocaleDateString('en-us', {
         weekday: 'short'
       })
-
 
       containerFiveDays.innerHTML += ` <p> ${dateString} ${day.main.temp.toFixed(1)} °</p> `
     })
