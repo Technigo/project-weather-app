@@ -1,13 +1,8 @@
 html {
-  /* background: rgb(69,108,249); */
-  /* background: linear-gradient(90deg, rgba(69,108,249,0) 0%, rgba(174,195,246,0.35808035714285713) 46%, rgba(221,234,255,0.7295089285714286) 100%);   */
-  /* font-family: 'Biryani', sans-serif; */
   font-family: 'Nunito', sans-serif;
   text-transform: uppercase;
   font-weight: 200;
-  /* color: rgba(255, 255, 255, 0.911); */
   height: 100%;
-  
 }
 
 body {
@@ -15,7 +10,6 @@ body {
   height: 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  
 }
 
 
@@ -36,7 +30,6 @@ body {
   text-align: center;
   font-size: 100px;
   margin-bottom: 0;
-  
 }
 
 h2 {
@@ -44,7 +37,6 @@ h2 {
   font-size: 18px;
   margin-top: 0;
   margin-bottom: 0;
-  
 }
 
 .city-and-description {
@@ -65,11 +57,6 @@ h2 {
   font-size: 30px;
   color: white;
 }
-/* 
-#weatherImage {
-  display: flex;
-  justify-content: center;
-} */
 
 .weatherSymbol {
   height: 150px;
@@ -83,20 +70,17 @@ h2 {
 
 h6 {
   font-size: 16px;
-  /* background-color: rgba(247, 247, 247, 0.205); */
-   padding: 0; 
-  /* border-radius: 45px; */
+  padding: 0;
   display: flex;
   width: 80%;
   justify-content: space-between;
   margin: 0;
   border-bottom: white dotted 2px;
   align-items: center;
-  /* margin: 5px auto; */
   color: rgba(255, 255, 255, 0.733)
 }
 
-#weatherIconToday{
+#weatherIconToday {
   height: 120px;
   width: 120px;
 }
@@ -117,14 +101,12 @@ sup {
   display: flex;
   justify-content: space-evenly;
   align-items: flex-end;
-
 }
 
 h4 {
   margin: 10px auto;
   display: flex;
   align-items: center;
-  
 }
 
 #forecast {
@@ -145,15 +127,6 @@ h4 {
   height: 50px;
   width: 50px;
 }
-
-/* #otherCountries h1 {
-  font-size: 17px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-
-} */
 
 #otherCountries {
   background-color: rgba(255, 255, 255, 0.123);
@@ -180,19 +153,15 @@ h4 {
   color: rgb(255, 255, 255);
 }
 
-.day{
-  background: rgb(230,127,249);
+.day {
+  background: rgb(230, 127, 249);
   background: linear-gradient(180deg, rgba(100, 223, 228, 0.847) 0%, rgba(210, 158, 245, 0.935) 48%, rgba(247, 182, 220, 0.945) 100%);
   padding-bottom: 250px;
-  
-}
+ }
 
-.night{
-  
-  /* background: rgb(6,35,131); */
-background: linear-gradient(180deg, rgba(19, 23, 36, 0.847) 0%, rgba(89, 125, 160, 0.935) 48%, rgba(110, 211, 187, 0.752) 100%);
-padding-bottom: 100px;
-
+.night {
+  background: linear-gradient(180deg, rgba(19, 23, 36, 0.847) 0%, rgba(89, 125, 160, 0.935) 48%, rgba(110, 211, 187, 0.752) 100%);
+  padding-bottom: 250px;
 }
 
 @media only screen and (min-width: 600px) {
@@ -207,7 +176,6 @@ padding-bottom: 100px;
     width: 40%;
     background-color: rgba(255, 255, 255, 0.144);
     height: 300px;
-    
   }
 
   #otherCountries {
@@ -223,27 +191,27 @@ padding-bottom: 100px;
 
   .city-and-description h1 {
     font-size: 80px;
-    
   }
- .hamburger {
-   width: 50px;
-   height: 6px;
-   margin-bottom: 10px;
- }
 
- #sunsetSunrise {
-   font-size: 20px;
- }
+  .hamburger {
+    width: 50px;
+    height: 6px;
+    margin-bottom: 10px;
+  }
 
- .up-down {
-   height: 70px;
-   width: 70px;
- }
-  
+  #sunsetSunrise {
+    font-size: 20px;
+  }
+
+  .up-down {
+    height: 70px;
+    width: 70px;
+  }
+
 
 }
 
 
 @media only screen and (min-width: 1020px) {
-
+  
 }

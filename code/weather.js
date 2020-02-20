@@ -1,5 +1,3 @@
-// http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=ed2d4804e9f1b16e037cdf4e25100bc4
-
 const container = document.getElementById('city') 
 const containerWeather = document.getElementById('weather')
 const containerCelcius = document.getElementById('celsius')
