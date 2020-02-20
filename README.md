@@ -1,13 +1,11 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Assignment from Technigo bootcamp. Create an weather app and practice fetching data from a public API.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The difficult part was to make sense of all the data and the arrays and to filter out the objects I didn't need. Also to manage converting microseconds to seconds and then to convert that data into a date to be able to use it on my site.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+malins-weather-app.netlify.com
