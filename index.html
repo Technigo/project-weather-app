@@ -10,17 +10,22 @@
 
 <body onLoad="weather()">
 
-  <div id="current"></div>
 
-  <div id="forecast"></div>
+  <div class="container" id="current"></div>
 
-  <div class="search">
-    <input type="text" id="city" value="Stockholm">
-    <button id="checkButton" onclick=chooseCity();weather();>Check</button>
+  <div class="container" id="forecast"></div>
+
+  <div class="container">
+    <div class="search">
+      <input type="text" id="city" value="Reykjavik">
+      <a href="#"><button id="checkButton" onclick=chooseCity();weather();>Check</button></a>
+    </div>
+
+    <div class="good-weather">
+      <a href="#"><button id="goodWeather" onclick=findGoodWeather()>Just find me some good weather</button></a>
+    </div>
   </div>
-  <div class="good-weather">
-    <button id="goodWeather" onclick=goodWeather()>Find me some good weather</button>
-  </div>
+
 </body>
 
 <!--Should script be inside or below body?-->
