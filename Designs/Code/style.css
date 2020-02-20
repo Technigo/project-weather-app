@@ -6,6 +6,39 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+.text-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    height: 50px;
+}
+
+h1 {
+    justify-content: center;
+    color: darkmagenta;
+    padding-bottom: 5px;
+}
+
+.menu-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+}
+
+.WeatherMenu {
+    justify-content: center;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+select {
+background-color: rgb(226, 177, 160);
+padding: 20px;
+}
+
 .Container {
     display: flex;
     align-items: center;
@@ -13,13 +46,12 @@ body {
     height: 700px;
 }
 
-.weather-deck {
+#weatherCard {
     margin: 20px;
     width: 350px;
     height: 600px;
     justify-content: center;
     border-radius: 5%;
-  
 }
 
 .cold {
@@ -40,17 +72,21 @@ body {
     font-size: 15px;
 }
 
-
 .city {
     padding-top: 20px;
+    padding-bottom: 10px;
     font-size: 20px;
     text-align: left;
     padding-left: 20px;
     letter-spacing: 1px;
 }
 
-.temp_dec {
-    padding-top: 20px;
+#icon {
+    padding-left: 20px;
+    text-align: left;
+}
+
+.tempdec {
     font-size: 15px;
     text-align: left;
     padding-left: 20px;
@@ -72,29 +108,22 @@ body {
     letter-spacing: 1px;
 }
 
-.text_cold {
-    padding-top: 20px;
+.textcold {
+    padding-top: 10px;
     padding-left: 20px;
     font-size: 25px;
     color: rgb(40, 75, 116);
 }
 
-.text_warm {
-    padding-top: 20px;
+.textwarm {
+    padding-top: 10px;
     padding-left: 20px;
+    padding-right: 10px;
     font-size: 25px;
     color: rgb(243, 185, 24);
 }
 
-/* .text_warm {
-    padding-top: 20px;
-    padding-left: 20px;
-    font-size: 25px;
-    color: rgb(218, 158, 47);
-} */
-
 .weekdayForecast {
-    padding-right: 20px;
     font-size: 15px;
     text-align: center;
     letter-spacing: 1px;
