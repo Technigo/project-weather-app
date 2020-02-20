@@ -32,8 +32,8 @@ const weatherToday = () => {
   let windSpeed = json.wind.speed
   const weatherSymbol= json.weather[0].icon
   conditionImg.innerHTML += `<img class="weatherSymbol" src="${weatherSymbol}.png" alt="">`
-  let sunrise = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], {timeStyle:'short'})
-  let sunset = new Date(json.sys.sunset * 1000).toLocaleTimeString([], {timeStyle:'short'})
+  let sunrise = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})
+  let sunset = new Date(json.sys.sunset * 1000).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})
  containerSunsetRise.innerHTML += `<h4> Sunrise: ${sunrise} <img class="up-down" src="sunrise.png"> </h4> <h4>Sunset: ${sunset} <img class="up-down" src="sunset.png"> </h4>`
  
 

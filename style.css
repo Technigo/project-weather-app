@@ -182,8 +182,8 @@ h4 {
 
 .day{
   background: rgb(230,127,249);
-  background: linear-gradient(180deg, rgba(100, 223, 228, 0.847) 0%, rgba(189,174,246,0.9352232142857143) 48%, rgba(248, 175, 218, 0.752) 100%);
-  padding-bottom: 100px;
+  background: linear-gradient(180deg, rgba(100, 223, 228, 0.847) 0%, rgba(210, 158, 245, 0.935) 48%, rgba(247, 182, 220, 0.945) 100%);
+  padding-bottom: 250px;
   
 }
 
