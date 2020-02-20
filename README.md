@@ -1,13 +1,21 @@
 # Weather App
 
-Replace this readme with your own information about your project.
+The city or The beach, weather forecast
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This project was to start working with API's. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I had a lot of issues and this was a difucult project for me since I never worked with a Api before, But I also really enjoyed it. 
+
+I thought the fetch aspect was easy but got some issue later on.
+
+Adding the forecast was hard for me, I look up youtube wideos and check a lot of questions on Stack Overflow. I managed to fix it.
+
+When I added more cities, that messed up my code a lot, the changing color fuction and the forecast did go crazy.
+For this once I got help from a developer friend, that is very good a troubleshooting and found the problem right away, I didn't have a stop to the function, it was just contiuning invoking when clicking on new cities. 
+
+For next weeks I would like to be more active on Stack Overflow.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
