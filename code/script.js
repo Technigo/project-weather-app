@@ -142,7 +142,7 @@ const weatherIcon = (description) => {
 }
 
 /*
-// Geolocation test – getLocation() returns url with coordinates of current location
+// TODO: Geolocation test – getLocation() returns url with coordinates of current location
 
 const getLocation = () => {
   if (navigator.geolocation) {
