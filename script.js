@@ -18,6 +18,8 @@ const round = (number, decimal) => {
 }
 
 
+
+
 ///// CONVERTING TO LOCAL TIME //////
 const localTime = (timeSeconds, timeZone) => {
 
@@ -28,8 +30,10 @@ const localTime = (timeSeconds, timeZone) => {
   seconds = timeInLocal.getSeconds()
   timeInLocal.setSeconds(seconds + cityOffset + localOffset)
 
-  return timeInLocal.toLocaleDateString([], {
+  return timeInLocal.toLocaleDateString('en-GB', {
     timeStyle: 'short',
+    hour: 'numeric',
+    minute: 'numeric'
   })
 }
 
@@ -44,7 +48,7 @@ const timeFilter = (filterTime, timezone) => {
 ////// GOD OR BAD ALGO /////
 
 const goodOrBad = (main, clouds, wind, temprature) => {
-  const bad = ["Thunderstorm", "Rain", "Snow", "Smoke", "Dust", "Fog", "Sand", "Ash", "Squall", "Tornado"]
+  const bad = ["Thunderstorm", "Rain", "Mist", "Snow", "Smoke", "Dust", "Fog", "Sand", "Ash", "Squall", "Tornado"]
 
   // badWeather is true if main can be found in bad
   const badWeather = bad.includes(main)
@@ -247,11 +251,11 @@ const findGoodWeather = (array) => {
         } else {
           checkedCityArray.push(randomCity)
           console.log("Adding to list " + checkedCityArray + checkedCityArray.length)
-          if (checkedCityArray.length < 18) {
+          if (checkedCityArray.length < 1) {
             findGoodWeather(array)
           } else {
             console.log("No good weather found")
-            document.getElementById("current").innerHTML = `<h1>No good weather found right now</h1>`
+            document.getElementById("current").innerHTML = `<h1>No good weather found right now, try again!</h1>`
             document.getElementById("forecast").innerHTML = ``
 
           }
@@ -259,6 +263,9 @@ const findGoodWeather = (array) => {
       })
   }
 }
+
+
+let cityList = []
 
 // Getting a list of cities and running findGoodWeather() //
 const citiesToCheck = () => {
@@ -274,21 +281,23 @@ const citiesToCheck = () => {
     .then((response) => {
       return response.json()
     })
-    .then((cityList) => {
+    .then((citiesJson) => {
 
       let cityArray = []
-      cityList.forEach(element => {
+      citiesJson.forEach(element => {
         cityArray.push(element.city)
       })
+      console.log("hej " + cityArray)
+      cityList = cityArray
+      //findGoodWeather(cityArray)
 
-      findGoodWeather(cityArray)
     })
 
     .catch((error) => {
       console.log(error)
     })
 }
-
+citiesToCheck()
 
 
 
