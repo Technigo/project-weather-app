@@ -1,0 +1,42 @@
+body {
+  font-family: 'Fredericka the Great', cursive;
+  color: rgba(51, 50, 50, 0.877);
+
+}
+
+.weather-header {
+  font-size: 42px;
+  margin-bottom: 20px;
+
+}
+
+.temperature {
+  font-size: 32px;
+  margin-top: 0px;
+}
+
+.sun {
+  font-size: 22px;
+  margin-top: 0px;
+}
+
+.weatherContainer {
+  height: 100vh;
+  width: 100vw;
+}
+
+.cold {
+  background: rgb(72, 187, 202);
+}
+
+.warm {
+  background: salmon;
+}
+
+#weatherSection {
+  padding: 100px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
