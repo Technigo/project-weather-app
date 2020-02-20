@@ -24,7 +24,7 @@ const sunnyDays = {
   name: 'Clear',
   bColor: '#F7E9B9',
   pColor: '#2A5510',
-  image: 'Icons/icon_sun.png'
+  image: 'Icons/icoon_sun.png'
 }
 
 const rainyDays = {
