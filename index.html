@@ -4,16 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
   <title>Weather</title>
 </head>
 
-<body class="body">
-  <div id="weather">
-    Loading...
-  </div>  
-  <div id= "five-day-forecast">
-  </div>
+<body class="body" id="body">
+  <header>
+    <section id="headerTemp" class="header-temp"></section>
+    <img id="todayWeather" src="">  
+  </header>
+  <section class="main-container">
+    <section id="today" class="today">
+      <section id="weather" class="weather">
+        Loading...
+      </section>
+    </section>
+    <section id="fiveDays" class="five-days"></section>
+  </section>
 
   <script src="./weather.js"></script>
+
 </body>
 </html>

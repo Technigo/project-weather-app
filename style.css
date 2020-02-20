@@ -1,3 +1,94 @@
+*, *::before, *::after { box-sizing: inherit; }
+
+html {
+  box-sizing: border-box;
+}
+
 .body {
   background-color: lightyellow;
+  font-family: 'Open Sans', sans-serif;
 }
+
+h1 {
+font-size: 40px;
+}
+
+h2 {
+font-size: 30px;
+margin-block-start: 0;
+}
+
+h4 {
+  font-size: 15px;
+  margin-block-end: 0;
+}
+
+.hot {
+  background-color: lightsalmon;
+}
+.warm {
+  background-color: lightpink;
+}
+.medium {
+  background-color: powderblue;
+}
+.cold {
+  background-color: lightblue;
+}
+.cold {
+  background-color: powderblue;
+}
+.header-temp {
+  padding-top: 32px;
+  margin: 32px;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.weather {
+  display: flex;
+  flex-direction: column;
+  margin: 16px;
+
+}
+
+.sun-rise-set {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 16px;
+}
+
+.five-days {
+  display: flex;
+  flex-direction: column;
+  margin: 16px;
+}
+
+.forecast-icon {
+  display: flex;
+  width: 40px;
+}
+
+/* Media Queries */
+@media (min-width: 668px) {
+.main-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.today {
+  width: 40%;
+  flex-grow: 1;
+}
+
+.five-days {
+  width: 40%;
+  flex-grow: 1;
+}
+}
+ 
