@@ -10,6 +10,7 @@ body {
 h1 {
     margin: 40px 50px 10px 50px;
     text-align: end;
+    font-size: 40px;
 }
 
 .current div {
@@ -19,7 +20,11 @@ h1 {
 
 h2  {
     margin: 0px;
-    font-size: 20px;
+    font-size: 22px;
+}
+
+.current p {
+    font-size: 18px;
 }
 
 p {
@@ -30,6 +35,7 @@ p {
     display: flex;
     justify-content: space-between;
     margin: 30px 50px;
+    font-size: 17px;
 }
 
 .container-forecastWeather {
@@ -68,6 +74,47 @@ p {
     margin-right: 20px;
     line-height: 30px;
 }
+
+.search-box {
+    background-color: white;
+    height: 180px;
+    border-radius: 25px;
+    margin: 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+#citySearcher {
+    width: 200px;
+    margin: 15px auto 10px auto;
+    padding: 5px;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 2px;
+    background: #ffffff;
+    box-shadow:  3px 3px 9px #dbdbdb, -3px -3px 9px #ffffff;
+    font-family: 'Montserrat', sans-serif;;
+    font-size: 16px;
+}
+
+button {
+    width: 212px;
+    margin: 0px auto;
+    padding: 5px;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 2px;
+    background: #ffffff;
+    box-shadow:  3px 3px 9px #dbdbdb, -3px -3px 9px #ffffff;
+    font-family: 'Montserrat', sans-serif;;
+    font-size: 16px;
+}
+
+#errorMessage {
+    margin-top: 20px;
+}
+
 
 /******* ANIMATIONS *******/
 
@@ -487,6 +534,11 @@ p {
     .container-forecastWeather {
         max-width: 380px;
         margin: 0px auto;
+    }
+
+    .search-box {
+        max-width: 380px;
+        margin: 40px auto;
     }
 
     #background-sun {
