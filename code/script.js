@@ -18,12 +18,14 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     const longTemp = json.main.temp
     const shortTemp = longTemp.toFixed(1);
 
+    // Changing color of the city depending on description
     if (json.weather[0].description.includes('clear')) {
       document.getElementById("rubrik").style.color = "white";
     } else {
       document.getElementById("rubrik").style.color = "orange";
     }
 
+    // Changing color of a container depending on temperature
     let tempContainer = document.getElementById("todayWeather")
 
     if (shortTemp < -5) {
@@ -34,6 +36,7 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
       tempContainer.classList.toggle("ok")
     }
 
+    // Changing the dom
     document.getElementById("description").innerHTML = `${json.weather[0].description}`
     document.getElementById("todayTemp").innerHTML = `${shortTemp}˚`
     document.getElementById("currentCondition").innerHTML += `<img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="" />`
