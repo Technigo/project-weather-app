@@ -8,10 +8,10 @@ body {
   font-family: 'Shadows Into Light', cursive;
 }
 
-header {
+.current-weather {
  text-align: center;
  margin-top: 20px;
- margin-bottom: 10px;
+ margin-bottom: 5px;
 }
 
 .main-container {
@@ -21,10 +21,6 @@ header {
 }
 
 .container-box {
-  border-radius: 12px;
-  background: linear-gradient(145deg, #B4CDF5, #97ADCE);
-  box-shadow:  10px 10px 20px #A6BEE3, 
-              -10px -10px 20px #AAC2E7;
   padding-top: 5px;
   width: 100%;
   display: flex;
@@ -102,6 +98,7 @@ h4 {
   display: flex;
   justify-content: space-evenly;
   text-transform: capitalize;
+  padding-bottom: 10px;
 }
 
 .sun-icon {
@@ -117,7 +114,7 @@ h4 {
 
 .forecast-title {
   font-size: 22px;
-  letter-spacing: 4px;
+  letter-spacing: 10px;
 }
 
 .forecast p {

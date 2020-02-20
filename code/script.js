@@ -77,7 +77,6 @@ fetch(apiForecast)
     })
   });
 
-// this one is jut to wait for the page to load
 document.addEventListener('DOMContentLoaded', () => {
 
   const themeStylesheet = document.getElementById('theme');
