@@ -22,6 +22,7 @@ body {
   margin-bottom: 30px;
 }
 
+
 .clear {
   color: #2A5510;
   background-color: #F7E9B9;
@@ -50,6 +51,14 @@ body {
 
 /*** MEDIA QUERIES ***/
 @media (min-width:650px) {
+
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+  }
+
 
   #information {
     text-align: center;
