@@ -3,6 +3,7 @@ const weatherUrl = `http://api.openweathermap.org/data/2.5/weather?q=Umea,Sweden
 
 
 // DOM Selectors
+const weatherHeader = document.getElementById('weatherHeader')
 const weatherSection = document.getElementById('weatherSection')
 
 
@@ -17,16 +18,13 @@ fetch(weatherUrl)
   .then((json) => {
     console.log(json)
     const icon = `http://openweathermap.org/img/w/${json.weather[0].icon}.png`
-    weatherSection.innerHTML = `
-    
-      <img class="weatherIcon" src=${icon} />
-      <h1>${json.name}</h1>
-      <p>${json.main.temp.toFixed(0)} °</p>
-      <p>Weather: ${json.weather[0].main}</p>
+    weatherSection.innerHTML = ` 
+      <h1>${json.name} </h1> 
+      <img class"weatherIcon" id="icon" src=${icon} />    
+      <p class="description">${json.weather[0].main}</p>  
+      <h2>${json.main.temp.toFixed(0)} °</h2>
+      
       <img class="windImage" id='windIcon' src='assets/wind.png' alt="wind icon"/>
       <p class="windData">${json.wind.speed} m/s</p>`
-
-
-
 
   })
