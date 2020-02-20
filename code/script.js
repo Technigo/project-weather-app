@@ -56,7 +56,7 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
 
     filteredForecast.forEach((day) => {
       const date = new Date(day.dt_txt);
-      console.log(date);
+      //console.log(date);
 
       const dayName = date.toLocaleDateString('en-US', {
         weekday: 'short'
