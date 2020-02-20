@@ -59,7 +59,7 @@ fetch(uppsalaForecast)
   let temperature = temp.main.temp.toFixed(0) 
   console.log(temperature)
   console.log(temp)
-  const temperatureDays = new Date (temp.dt_txt).replace(" ", "T")
+  const temperatureDays = new Date(temp.dt_txt.replace(' ', 'T'))
   const correctDayFormat = temperatureDays.toLocaleDateString('en-US', {weekday:'short'})
   const weatherSymbol= temp.weather[0].icon
   document.getElementById('forecast').innerHTML += `<h6> ${correctDayFormat} ${temperature} ${'&#730;'}c <img class="weatherSymbolFore" src="${weatherSymbol}.png" alt=""> </h6> `
