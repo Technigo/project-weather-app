@@ -7,8 +7,7 @@ body {
 h1 {
   font-size: 20px;
   text-align: center;
-  background-color: rgb(224, 200, 178);
-  border-radius: 20px;
+  margin-top: 10px;
 }
 
 h2 {
@@ -23,22 +22,49 @@ p {
 }
 
 .top {
-  margin-top: 5%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  margin-top: 20%;
+  background-color: lemonchiffon;
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  margin: 20%;
 }
 
+
 .description {
-  display: inline-block;
+  display: inline-flex;
   padding: 20px;
   font-size: 30px;
   font-weight: bold;
   margin-bottom: 0;
+  margin-top: 10px;
 }
 
+.sunUp {
+  width: 40px;
+  height: 40px;
+}
+
+.sunUpData {
+  display: inline-flex;
+  vertical-align: middle;
+  font-size: 10px;
+}
+
+.sunDown {
+  width: 40px;
+  height: 40px;
+}
+
+.sunDownData {
+  display: inline-flex;
+  vertical-align: middle;
+  font-size: 10px;
+}
 
 .windImage {
   width: 20px;
@@ -47,6 +73,7 @@ p {
 }
 
 .windData {
-  display: inline-block;
+  display: inline-flex;
+  vertical-align: middle;
   padding: 10px;
 }
