@@ -11,7 +11,6 @@ body {
 
 }
 
-
 div {
   margin: 10px 0;
 }
@@ -47,6 +46,8 @@ h3 {
 }
 
 
+/* Body classes depending on weather */
+
 .good {
   background: orangered;
   color: rgb(255, 225, 1);
@@ -58,3 +59,7 @@ h3 {
   color: rgb(205, 205, 205);
 
 }
+
+/* Classes for divs depending on temp */
+
+/* gradients */
