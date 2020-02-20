@@ -1,6 +1,6 @@
 // WEATHER GENERAL INFORMATION
-
 const apiWeather = "https://api.openweathermap.org/data/2.5/weather?id=2673730&units=metric&appid=cb1cb364426bfa018c80b0e628ac10c8";
+
 fetch(apiWeather)
   .then((response) => {
     return response.json();
@@ -55,8 +55,8 @@ fetch(apiWeather)
   });
 
 // WEATHER FORECAST 5 DAYS
-
 const apiForecast = "https://api.openweathermap.org/data/2.5/forecast?id=2673730&units=metric&APPID=cb1cb364426bfa018c80b0e628ac10c8"
+
 fetch(apiForecast)
   .then((response) => {
     return response.json();

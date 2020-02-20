@@ -21,9 +21,11 @@ header {
 }
 
 .container-box {
-  border: white solid 2px;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #B4CDF5, #97ADCE);
+  box-shadow:  10px 10px 20px #A6BEE3, 
+              -10px -10px 20px #AAC2E7;
   padding-top: 5px;
-  border-radius: 8px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -133,15 +135,16 @@ justify-content: center;
 /* MEDIA QUERIES */
 @media (min-width: 759px) {
   .main-container {
-    margin: 20px 10px;
+    margin: 0;
   }
   .forecast-title {
     font-size: 18px;
   }
   .container-box {
     border: none;
-    width: 70%;
+    width: 100%;
     height: 100%;
+    padding-bottom: 0;
   }
   .sun-information {
     font-size: 25px;
