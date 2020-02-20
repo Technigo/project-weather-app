@@ -21,7 +21,7 @@ h1 {
   font-weight: 100;
   text-align: center;
   font-weight: bold;
-  font-size: 50px;
+  font-size: 55px;
   margin-top: 2px;
   margin-bottom: 5px;
   color: aliceblue;
@@ -32,7 +32,6 @@ h3 {
   text-align: center;
   margin-bottom: 22px;
   font-size: 15px;
-
 }
 
 h4 {
@@ -51,10 +50,7 @@ p {
   margin-right: 15px;
 }
 
-
 #todayWeather {
-  background-color: rgba(255, 255, 255, 0.3);
-  /*background-image: linear-gradient(rgba(255, 111, 0, 0.488), rgba(255, 0, 0, 0));*/
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -62,6 +58,18 @@ p {
   margin-top: 9px;
   border-radius: 3px;
   width: 100%;
+}
+
+.warm {
+  background-color: rgba(250, 130, 2, 0.2);
+}
+
+.cold {
+  background-color: rgba(57, 82, 99, 0.3);
+}
+
+.ok {
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 #description {

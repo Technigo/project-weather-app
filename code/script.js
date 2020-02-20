@@ -21,7 +21,17 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     if (json.weather[0].description.includes('clear')) {
       document.getElementById("rubrik").style.color = "white";
     } else {
-      document.getElementById("rubrik").style.color = "white";
+      document.getElementById("rubrik").style.color = "orange";
+    }
+
+    let tempContainer = document.getElementById("todayWeather")
+
+    if (shortTemp < -5) {
+      tempContainer.classList.toggle("cold")
+    } else if (shortTemp > 25) {
+      tempContainer.classList.toggle("warm")
+    } else {
+      tempContainer.classList.toggle("ok")
     }
 
     document.getElementById("description").innerHTML = `${json.weather[0].description}`
@@ -64,8 +74,8 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
    const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
    let dayOfWeek = weekdays[date.getDay()];
    containerFiveDays.innerHTML += `<div class="dayRow"><div class="dayLabel">${dayOfWeek}</div> <div class="dayTemp">${day.main.temp.toFixed(1)} °C </div></div>`
-            })
-          //console.log(containerFiveDays)*/
+   })
+  //console.log(containerFiveDays)*/
 
 /*filteredForecast.forEach(item => {
   console.log(item.weather[0].description)
