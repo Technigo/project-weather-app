@@ -6,10 +6,14 @@ body {
 }
 
 h2 {
-  font-size: 40px;
-  margin-top: 10px;
-  margin-bottom: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 80%;
+  height: 200px;
+  font-size: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 p {
@@ -26,6 +30,7 @@ p {
 .weather-image-section {
   width: 80%;
   margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .todays-details {
@@ -119,7 +124,7 @@ p {
 @media (min-width: 668px) {
 
   h2 {
-    font-size: 60px;
+    font-size: 55px;
     width: 60%;
     margin-top: 30px;
     margin-bottom: 30px;
@@ -131,6 +136,7 @@ p {
 
   .todays-details {
     width: 60%;
+    height: 100px;
   }
 
   .sun-up-down {
@@ -153,4 +159,14 @@ p {
 
 }
 
+@media (min-width: 1025px) {
+  h2 {
+    font-size: 60px;
+  }
 
+  .weekly-forecast {
+    height: 350px;
+}
+
+
+}

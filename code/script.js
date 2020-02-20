@@ -1,4 +1,4 @@
-
+let dateTimeConvertFactor = 1000;
 
 fetch("https://api.openweathermap.org/data/2.5/forecast?q=karlstad,SWE&units=metric&appid=81d357180ff563fe7c461222930c95a7") 
 
@@ -6,87 +6,99 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=karlstad,SWE&units=met
     return response.json()
   })
 
-.then((json) => {
-  console.log(json)
+.then((weatherData) => {
+    // today's forecast 
 
-// today's forecast 
+  let sunriseDateTime = new Date(weatherData.city.sunrise * dateTimeConvertFactor);
+  let sunsetDateTime = new Date(weatherData.city.sunset * dateTimeConvertFactor);
+  let currentWeatherForecast = weatherData.list[0];
 
-  let sunriseDateTime = new Date(json.city.sunrise * 1000);
-  let sunsetDateTime = new Date(json.city.sunset * 1000);
+  document.getElementById("weatherConditions").innerHTML = `${currentWeatherForecast.weather[0].description}`;
+  document.getElementById("temperature").innerHTML = `${roundNumber(currentWeatherForecast.main.temp)}°c`
+  document.getElementById("weatherConditionsImage").src = `https://openweathermap.org/img/wn/${currentWeatherForecast.weather[0].icon}@2x.png`
+  document.getElementById("sunrise").innerHTML += `${("0" + sunriseDateTime.getHours()).slice(-2)}.${("0" + sunriseDateTime.getMinutes()).slice(-2)}`;
+  document.getElementById("sunset").innerHTML += ` ${sunsetDateTime.getHours()}.${("0" + sunsetDateTime.getMinutes()).slice(-2)}`;
 
-  document.getElementById("weatherConditions").innerHTML = `${json.list[0].weather[0].description} | &nbsp`;
-  document.getElementById("temperature").innerHTML = `${roundNumber(json.list[0].main.temp)}°c`
-  document.getElementById("weatherConditionsImage").src = `https://openweathermap.org/img/wn/${json.list[0].weather[0].icon}@2x.png`
-  document.getElementById("sunrise").innerHTML += `&nbsp ${sunriseDateTime.getHours()}.${sunriseDateTime.getMinutes()}`;
-  document.getElementById("sunset").innerHTML += `&nbsp ${sunsetDateTime.getHours()}.${sunsetDateTime.getMinutes()}`;
-
-  if (json.list[0].weather[0].main === "Clouds") { // cloudy weather
-    document.getElementById("weatherAdvice").innerHTML = `Light a fire and get cosy. ${json.city.name} is looking grey today.`;
-    document.getElementById("body").classList.add("cloudy");
-    document.getElementById("weatherConditionsImage").src = "Designs/Design-2/icons/noun_Cloud_1188486.svg"
+   if (currentWeatherForecast.weather[0].main === "Clouds" ) { // cloudy weather
+    setWeatherAdviceAndStyling(
+      `Light a fire and get cosy. ${weatherData.city.name} is looking grey today.`, 
+      "cloudy", 
+      "Designs/Design-2/icons/noun_Cloud_1188486.svg"
+    );
   }
 
-  else if (json.list[0].weather[0].id === 800)  { //sunny weather
-    document.getElementById("weatherAdvice").innerHTML = `Don't forget your sunglasses. 
-    ${json.city.name} is shining today!`;
-    document.getElementById("body").classList.add("sunny");
+  else if (currentWeatherForecast.weather[0].id === 800 || currentWeatherForecast.weather[0].id === 801)  { //sunny weather
+    let image = "Designs/Design-2/icons/noun_cloudysun.svg"
+
+    if (currentWeatherForecast.weather[0].id === 800) {
+      image = "Designs/Design-2/icons/noun_Sunglasses_2055147.svg" 
+    }
    
-    if (json.list[0].weather[0].id === 800) {
-      document.getElementById("weatherConditionsImage").src = "Designs/Design-2/icons/noun_Sunglasses_2055147.svg" 
-    }
-    else { 
-      document.getElementById("weatherConditionsImage").src = "Designs/Design-2/icons/noun_cloudysun.svg"
-    }
+    setWeatherAdviceAndStyling(
+      `Don't forget your sunglasses. ${weatherData.city.name} is shining today!`,
+      "sunny",
+      image,
+    );
   }
 
-  else if (json.list[0].weather[0].icon === "50d" ) { // atmosphere group
-    document.getElementById("weatherAdvice").innerHTML = `Maybe indoor activities today. 
-    ${json.city.name} is full of ${json.list[0].weather[0].main.toLowerCase()}`;
-    document.getElementById("body").classList.add("atmosphere");
+  else if (currentWeatherForecast.weather[0].icon === "50d") { // atmosphere group
+    setWeatherAdviceAndStyling(
+      `Maybe indoor activities today. ${weatherData.city.name} is full of ${currentWeatherForecast.weather[0].main.toLowerCase()}`, 
+      "atmosphere"
+    );
   }
   
-  else if (json.list[0].weather[0].main === "Snow") { // snow
-      document.getElementById("weatherAdvice").innerHTML = `Is it Christmas already? 
-      ${json.city.name} is full of ${json.list[0].weather[0].main.toLowerCase()} today`;
-      document.getElementById("body").classList.add("snow");
-      document.getElementById("weatherConditionsImage").src = "Designs/Design-2/icons/noun_snow.svg"
+  else if (currentWeatherForecast.weather[0].main === "Snow") { // snow
+    setWeatherAdviceAndStyling(
+      `Is it Christmas already? ${weatherData.city.name} is full of ${currentWeatherForecast.weather[0].main.toLowerCase()} today`,
+      "snow",
+      "Designs/Design-2/icons/noun_snow.svg"
+    );
   }
 
-  else if (json.list[0].weather[0].main === "Rain") { // rain / drizzle
-      document.getElementById("weatherAdvice").innerHTML = `Bring your umbrella! 
-      ${json.city.name} is full of ${json.list[0].weather[0].main.toLowerCase()} today`;
-      document.getElementById("body").classList.add("rain");
-      document.getElementById("weatherConditionsImage").src = "Designs/Design-2/icons/noun_Umbrella_2030530.svg"
+  else if (currentWeatherForecast.weather[0].main === "Rain") { // rain / drizzle
+    setWeatherAdviceAndStyling(
+      `Bring your umbrella! It's raining in ${weatherData.city.name} today`,
+      "rain",
+      "Designs/Design-2/icons/noun_Umbrella_2030530.svg"
+    );
   }
 
-    else if (json.list[0].weather[0].main === "Thunderstorm") { // thunder
-      document.getElementById("weatherAdvice").innerHTML = `Relax  indoors today! 
-     There is a ${json.list[0].weather[0].main.toLowerCase()} in ${json.city.name}!`;
-      document.getElementById("body").classList.add("thunder");
-      document.getElementById("weatherConditionsImage").src = "Designs/Design-2/icons/noun_storm.svg"
+    else if (currentWeatherForecast.weather[0].main === "Thunderstorm") { // thunder
+      setWeatherAdviceAndStyling(
+        `Relax  indoors today! There is a ${currentWeatherForecast.weather[0].main.toLowerCase()} in ${weatherData.city.name}!`,
+        "thunder",
+        "Designs/Design-2/icons/noun_storm.svg"
+      );
   }
  
 // this week's forecast
 
-const filteredJsonDay = json.list.filter(item => item.dt_txt.includes('00:00:00')) // each days' day of week
-console.log(filteredJsonDay)
+  const today = new Date();
+  const todaysDate = `${today.getFullYear()}-${('0' + (today.getMonth()+1)).slice(-2)}-${('0' + today.getDate()).slice(-2)}`;
+  
+  const filteredDays = weatherData.list.filter(item => !item.dt_txt.includes(todaysDate) && item.dt_txt.includes('12:00')); 
+  const weeklyForecastElement = document.getElementById("weeklyForecast");
 
-const filteredJsonTemp = json.list.filter(item => item.dt_txt.includes('12:00')) // each days' temp at noon
-console.log(filteredJsonTemp)
+  filteredDays.forEach(day => {
+    weeklyForecastElement.innerHTML += `
+    <div class="weekday"> 
+      <p> ${getDayOfWeek(day.dt)} </p>
+      <p> ${roundNumber(day.main.temp)}°c</p>
+    </div>`;
+  });
 
-document.getElementById("day1").innerHTML = `${getDayOfWeek(filteredJsonDay[0].dt)}`
-document.getElementById("day2").innerHTML = `${getDayOfWeek(filteredJsonDay[1].dt)}`
-document.getElementById("day3").innerHTML = `${getDayOfWeek(filteredJsonDay[2].dt)}`
-document.getElementById("day4").innerHTML = `${getDayOfWeek(filteredJsonDay[3].dt)}`
-document.getElementById("day5").innerHTML = `${getDayOfWeek(filteredJsonDay[4].dt)}`
-
-document.getElementById("tempDay1").innerHTML = `${roundNumber(filteredJsonTemp[0].main.temp)}°c`
-document.getElementById("tempDay2").innerHTML = `${roundNumber(filteredJsonTemp[1].main.temp)}°c`
-document.getElementById("tempDay3").innerHTML = `${roundNumber(filteredJsonTemp[2].main.temp)}°c`
-document.getElementById("tempDay4").innerHTML = `${roundNumber(filteredJsonTemp[3].main.temp)}°c`
-document.getElementById("tempDay5").innerHTML = `${roundNumber(filteredJsonTemp[4].main.temp)}°c`
- 
 })
+
+const setWeatherAdviceAndStyling = (advice, body, image = null) => {
+
+  document.getElementById("weatherAdvice").innerHTML = advice;
+  document.getElementById("body").classList.add(body);
+
+  if (image != null) {
+    document.getElementById("weatherConditionsImage").src = image;
+  }
+}
 
 const roundNumber = (temperature) => {
  return Math.round(temperature);
@@ -94,7 +106,7 @@ const roundNumber = (temperature) => {
 
 const getDayOfWeek = (param) => {
   let weekdays = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-  let date = new Date (param * 1000);
+  let date = new Date (param * dateTimeConvertFactor);
 
   let specificDay = date.getDay();
   
