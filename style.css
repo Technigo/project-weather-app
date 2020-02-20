@@ -72,6 +72,36 @@ p {
   border-bottom: none;
 }
 
+/* Styling for different weather */
+
+.cloudy {
+  background: #f4f7f8;
+  color: #f47775;
+}
+.sunny {
+  background-color: #f8f8d5;
+  color: #237a23;
+}
+
+.atmosphere {
+  background: #f4f7f8;
+  color: rgb(51, 86, 123);
+}
+.snow {
+  background: #bde8fa;
+  color: rgb(172, 78, 68);
+}
+
+.rain {
+  background-color: #bde8fa;
+  color: #164a68;
+}
+
+.thunder {
+  background-color: #abb2b5;
+  color: rgb(87, 72, 71);
+}
+
 /* image animation below */
 
 @keyframes pulsate {
@@ -85,3 +115,42 @@ p {
     transform: scale(1);
   }
 }
+
+@media (min-width: 668px) {
+
+  h2 {
+    font-size: 60px;
+    width: 60%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  p {
+    font-size: 30px;
+  }
+
+  .todays-details {
+    width: 60%;
+  }
+
+  .sun-up-down {
+    width: 60%;
+  }
+
+  .weather-image-section {
+    width: 60%;
+    margin-top: 50px;
+  }
+
+  #weatherConditionsImage {
+    height: 150px;
+    width: 150px;
+  }
+
+  .weekly-forecast {
+    height: 300px;
+  }
+
+}
+
+
