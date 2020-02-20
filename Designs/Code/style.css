@@ -16,7 +16,7 @@ body {
 
 h1 {
     justify-content: center;
-    color: darkmagenta;
+    color: rgb(139, 120, 139);
     padding-bottom: 5px;
 }
 
@@ -36,7 +36,6 @@ h1 {
 
 select {
 background-color: rgb(226, 177, 160);
-padding: 20px;
 }
 
 .Container {

@@ -17,6 +17,7 @@ const showWeather = city => {
 const cityToday = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=bb2b0bb45cd18a1f48ff2ac55b77750a`
 const cityForecast = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=bb2b0bb45cd18a1f48ff2ac55b77750a`
 
+// The JSON 
     fetch(cityToday)
     .then((Response) => {
         return Response.json()
@@ -27,9 +28,6 @@ const cityForecast = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&
         textwarm.innerHTML = null;
 
         cityName.innerHTML = json.name 
-
-        // icon.innerHTML = `http://openweathermap.org/img/w/${json.weather[0].icon}.png`
-        
 
         const icon = `http://openweathermap.org/img/w/${json.weather[0].icon}.png`;
         
@@ -79,5 +77,3 @@ const cityForecast = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&
 
 WeatherMenu.addEventListener("change", () => showWeather(WeatherMenu.value));
 
-// buttonChoose1.addEventListener('click', () => showWeather("New York"));
-// buttonChoose2.addEventListener('click', () => showWeather("Miami"));
