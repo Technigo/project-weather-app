@@ -30,8 +30,8 @@ const localTime = (timeSeconds, timeZone) => {
   seconds = timeInLocal.getSeconds()
   timeInLocal.setSeconds(seconds + cityOffset + localOffset)
 
-  return timeInLocal.toLocaleDateString('en-GB', {
-    timeStyle: 'short',
+  return timeInLocal.toLocaleTimeString('en-GB', {
+    // timeStyle: 'short',
     hour: 'numeric',
     minute: 'numeric'
   })
