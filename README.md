@@ -1,12 +1,14 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Technigo bootcamp. The task was to build an weather page with a open API.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Got the information from a API with fetch. 
+I had problem with the stylig, couldn't get the background for the whole webpage. 
+If I had more time I would definitely fix that. 
+
+Also if I had more time I would add more styling and more information from the API. 
 
 ## View it live
 
