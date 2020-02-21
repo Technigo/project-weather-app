@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Johannas Weather App</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+</head>
+
+<body id="body" class="night" class="day" class="cold" class="warm" class="hot">
+  <header id="header">
+
+    <section class="city-weather">
+      <h4>Show weather for</h4>
+      <select id="citySelector" class="city-selector">
+        <option class="dropdown" value="" disabled selected>Select city</option>
+        <option class="dropdown" value="Norrkoeping,Sweden">Norrköping</option>
+        <option class="dropdown" value="Stockholm,Sweden">Stockholm</option>
+        <option class="dropdown" value="Gothenburg,Sweden">Göteborg</option>
+        <option class="dropdown" value="Marbella,Spain">Marbella</option>
+        <option class="dropdown" value="Bangkok,Thailand">Bangkok</option>
+      </select>
+    </section>
+
+    <section class="todays-weather">
+      <div id="weather" class="weather">
+        <div id="weather1" class="weather1"></div>
+        <div id="weather2" class="weather2"></div>
+      </div>
+      <div id="sun" class="sun"></div>
+    </section>
+
+  </header>
+
+  <section id="forecastHeader" class="forecast-header"></section>
+
+  <section id="forecast" class="forecast">
+    <div id="forecastDay" class="forecast-day"></div>
+    <div id="forecastDescription" class="forecast-descr"></div>
+    <div id="forecastIcon" class="forecast-icon"></div>
+    <div id="forecastTemperature" class="forecast-temp"></div>
+    <div id="forecastWind" class="forecast-wind"></div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
