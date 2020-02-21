@@ -1,13 +1,16 @@
 # Weather App
 
-Replace this readme with your own information about your project.
+A weather app showing the current temperature in Reykjavík, Iceland and how it feels + a 5 day forecast.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+This is my first time working with an API and it was a really cool project but it was also one of the more frustrating ones. 
+I think my main problem was how I structured the website in the HTML.
+
+If I had more time I would figure out how to change the background depending on if it is night or day. I would move the temperature and 'Feels like' apart so there was space in the middle.
+
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+See the weather-app here: https://dazzling-lovelace-cca7c7.netlify.com/
