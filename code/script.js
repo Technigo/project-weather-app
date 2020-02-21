@@ -117,7 +117,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Reykjavik,Iceland&units
         const feelsLike = (day.main.feels_like)
       
 
-      forecast.innerHTML += `<p>${weekdayName} ${temp.toFixed(1)}° ${feelsLike.toFixed(1)}</p>` 
+      forecast.innerHTML += `<p>${weekdayName} ${temp.toFixed(1)}° // Feels like: ${feelsLike.toFixed(1)}</p>` 
       })
 
     })
