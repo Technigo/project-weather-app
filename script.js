@@ -169,7 +169,7 @@ const weather = (location) => {
         const pre = (weather === "clear sky" || weather === "few clouds") ? "a" : "some" // if pre and descWeather
 
         // Printing each day
-        forecastContainer.innerHTML += `<div class="day"> <p>A <strong>${day}</strong> with<br>${pre} ${weather}<br>and ${temp} &#176;C<div><img src=${iconFile} alt="weather icon"></div></div>`
+        forecastContainer.innerHTML += `<div class="day"> <p>A <strong>${day}</strong> with ${pre} ${weather} and ${temp}&nbsp&#176;C<div><img src=${iconFile} alt="weather icon"></div></div>`
         // <div id="day${index}"></div>
       }
 
