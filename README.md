@@ -1,13 +1,14 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This was project was made by me at week 5 in the Technigo bootcamp. The project was to do a weather app by fetching two different API's, for todays weather and a five day forecast. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I had many difficulties during this project, I wanted to use icons connected to the current weather in Marbella. 
+I didn't manage to make it work with the clouds descriptions in the API's objects so instead I used "if-statements" on todays degrees. 
+If I knew how I would make my icons work on the forecast but I didn't fully unsterstood how to make it work with my "if-statement" in my forEach. 
+
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://elastic-northcutt-4731c9.netlify.com/
