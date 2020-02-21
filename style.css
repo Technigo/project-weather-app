@@ -28,21 +28,18 @@ html {
   background-color: linen;
 }
 h1 {
-  font-size: 80px;
-  margin-bottom: 0;
+  font-size: 60px;
 }
 h2 {
   font-size: 30px;
   margin-block-start: 0;
-  margin: 0;
 }
 h3 {
-  text-transform: capitalize;  
+  text-transform: capitalize;   
 }
 h4 {
   font-size: 15px;
   margin-block-end: 0;
-  margin: 0;
 }
 p {
   text-align: justify;
@@ -69,14 +66,14 @@ p {
 .weather {
   display: flex;
   flex-direction: column;
-  margin: 0px 32px;
+  margin: 32px;
 }
 
 .sun-rise-set {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 0px 32px;
+  margin: 32px;
 }
 
 .five-days {
