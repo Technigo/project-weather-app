@@ -1,4 +1,9 @@
 
+// The APIs
+
+const cityToday = 'http://api.openweathermap.org/data/2.5/weather?q=New%20York&units=metric&APPID=bb2b0bb45cd18a1f48ff2ac55b77750a'
+const cityForecast = 'http://api.openweathermap.org/data/2.5/forecast?q=New%20York&units=metric&appid=bb2b0bb45cd18a1f48ff2ac55b77750a'
+
 
 // My DOM selector 
 
@@ -13,12 +18,8 @@ const weekday = ('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday
 
 const showWeather = city => {
 
-// The APIs
-const cityToday = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=bb2b0bb45cd18a1f48ff2ac55b77750a`
-const cityForecast = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=bb2b0bb45cd18a1f48ff2ac55b77750a`
-
 // The JSON 
-    fetch(cityToday)
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=bb2b0bb45cd18a1f48ff2ac55b77750a`)
     .then((Response) => {
         return Response.json()
     })
@@ -56,7 +57,7 @@ const cityForecast = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&
 
     })
 
-    fetch(cityForecast)
+    fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=bb2b0bb45cd18a1f48ff2ac55b77750a`)
     .then((Response) => {
         return Response.json()
     })
