@@ -100,7 +100,7 @@ const success = (position) => {
         let weekday = (new Date(item.dt * 1000)).toLocaleDateString("en-GB", { weekday: "short" })
 
         let figure = weatherImage(icon);
-        forecast.innerHTML += `${weekday} ${temperature}&#8451; ${figure}`;
+        forecast.innerHTML += `<p>${weekday} ${temperature}&#8451; ${figure}</p>`;
       });
 
     })

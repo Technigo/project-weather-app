@@ -14,7 +14,7 @@ body{
   );
   background-size: 400%;
   animation: background-animation 5s infinite alternate;
-  height: 100vh;
+  height: 100%;
 }
 
 @keyframes background-animation {
@@ -28,8 +28,4 @@ body{
 
 .menu-branding {
   background: rgba(214, 93, 177, 0.5);
-}
-
-.current > a {
-  color: #f9f871;
 }

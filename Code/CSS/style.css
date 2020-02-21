@@ -7,9 +7,10 @@
 }
 
 body{
-  height: 100%;
+  height: 100vh;
   line-height: 1.5;
   color: white;
+  text-shadow: rgba(0, 0, 0, 0.479) 1px 0 5px;
 }
 
 /* ---- BURGER NAVIGATION ---- */
@@ -63,22 +64,27 @@ h1 {
   padding: 0;
 }
 
-h3 {
-  font-size: 1rem;
-  font-weight: 300;
-}
-
 h2{
   font-size: 2rem;
-  font-weight: 500;
+  font-weight: 300;
   line-height: 1;
   padding: 0;
   margin-bottom: 0.5rem;
 }
 
+h3 {
+  font-size: 1rem;
+  font-weight: 300;
+}
+
 a {
   color: white;
   text-decoration: none;
+}
+
+i{
+  text-shadow: none;
+  margin: 0 5px;
 }
 
 header{
@@ -89,7 +95,7 @@ header{
 
 main {
   padding: 4rem;
-  height: 100%;
+  min-height: 100vh;
 }
 
 #home {
@@ -185,7 +191,7 @@ main {
 }
 
 .current > a {
-  color: #d65db1;
+  color: #f9f871;
 }
 
 /* ---- CURRENT WEATHER ----- */
@@ -200,7 +206,7 @@ main {
   );
   background-size: 400%;
   animation: background-animation 5s infinite alternate;
-  height: 100vh;
+  height: 100%;
 }
 
 @keyframes background-animation {
@@ -208,18 +214,30 @@ main {
   100% {background-position: right;}
 }
 
+.sun{
+  margin: 1rem 0;
+}
+
+.forecast-weather{
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+
+
+
 
 /* ------ BIG CITIES ----- */
 .city{
   margin: 2rem 0;
 }
 
+
 /* ----- MEDIA QUERY ----- */
 
 @media screen and (max-width: 500px){
   h1, h2 {
     margin-top: 10vh;
-    font-weight: 500;
   }
 }
 
