@@ -1,9 +1,5 @@
-
-
-
-// http://openweathermap.org/img/wn/10d@2x.png
-
 const tempToday = document.getElementById('headerTemp')
+const skyToday = document.getElementById('headerPicture')
 const weatherInfo = document.getElementById('weather')
 const sunMoves = document.getElementById('SunRiseSet')
 const forecasted = document.getElementById('fiveDays')
@@ -11,18 +7,22 @@ const body = document.getElementById('body')
 const locationDropdown = document.getElementById('locationDropdown')
 const  weatherIcon = document.getElementById('weatherImage')
 
-const weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,SE&units=metric&APPID=00620bb638ed0fa5525452696e39c3ed`
-const forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=00620bb638ed0fa5525452696e39c3ed`
-//APID = 00620bb638ed0fa5525452696e39c3ed
 
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(displayLocationInfo);
+}
+function displayLocationInfo(position) {
+  const lng = position.coords.longitude;
+  const lat = position.coords.latitude;
+
+  const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&APPID=00620bb638ed0fa5525452696e39c3ed`
+  const forecastURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&units=metric&APPID=00620bb638ed0fa5525452696e39c3ed`
 
   fetch(weatherURL)
     .then(response => response.json())
     .then((jsonWeather) => {
-      console.log(jsonWeather.weather[0].icon)
       const temperature = Math.round(jsonWeather.main.temp * 10) / 10;
       const feelsLike = Math.round(jsonWeather.main.feels_like * 10) / 10;
-      tempToday.innerHTML = `<img class="weather-image" src="https://openweathermap.org/img/wn/${jsonWeather.weather[0].icon}@2x.png"/>`; 
       tempToday.innerHTML += `<h1>${temperature}&#730;<h/1>`;
       weatherInfo.innerHTML = `<h4>But feels like ${feelsLike}&#730; in </h4>`;
       weatherInfo.innerHTML += `<h2>${jsonWeather.name}</h2>`;
@@ -46,39 +46,18 @@ const forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=Stockhol
       } else {
         body.classList.toggle("freezing");
       }
-    })
-/*
-fetch(forecastURL)
-  .then(response => response.json())
-  .then(json => {
-    const dateObject = {}
-    const forecastData = json.list;
-    forecastData.forEach(item => {
-      const date = item.dt_txt.split(" ")[0];
-      if (dateObject[date]) {
-        dateObject[date].push(item)
+      if (jsonWeather.weather[0].main == "Clear") {
+        skyToday.innerHTML = `<img class="weather-image" src="./assets/sun.png">`
+      } else if (jsonWeather.weather[0].main == "Clouds") {
+        skyToday.innerHTML = `<img class="weather-image" src="./assets/cloud.png">`
+      } else if (jsonWeather.weather[0].main == "Rain") {
+        skyToday.innerHTML = `<img class="weather-image" src="./assets/rain.png">`
+      } else if (jsonWeather.weather[0].main == "Snow") {
+        skyToday.innerHTML = `<img class="weather-image" src="./assets/snow.png">`
       } else {
-        dateObject[date] = [item]
+        skyToday.innerHTML = `<img class="weather-image" src=".assets/alltInget.png">`
       }
     })
-    Object.entries(dateObject).forEach(item => {
-      const date = item[0]
-      const weekday= new Date(date)
-      const forecastDay = weekday.toLocaleDateString('en-SE', { weekday: 'long' });
-      const weatherData = item[1]
-      const temps = weatherData.map(value => value.main.temp);
-      const maxT = Math.max(...temps);
-      const maxTemp = Math.round(maxT * 10) /10;
-      const minT = Math.min(...temps);
-      const minTemp = Math.round(minT * 10) / 10;
-      console.log(forecastDay, minTemp, maxTemp);
-      forecasted.innerHTML +=`<table class="forecast-table">
-        <td>${forecastDay}</td><td>Max temp ${maxTemp}</td><td>Min Temp${minTemp}</td>
-      </table>`
-    })
-  }); */
-
-// http://openweathermap.org/img/wn/10d@2x.png
 
   fetch(forecastURL)
     .then(response => response.json())
@@ -90,17 +69,11 @@ fetch(forecastURL)
         const upcomingDays = new Date(forecast.dt_txt);
         const fiveDays = upcomingDays.toLocaleDateString('en-SE', { weekday: 'long' });
         const icon = (forecast.weather[0].icon)
-        console.log(fiveDays)
-        console.log(temperature, feelsLike)
-        console.log("https://openweathermap.org/img/wn/${icon}@2x.png");
         forecasted.innerHTML += `<table class="forecast-table"><td>${fiveDays}<td/>
-      <td><img src="https://openweathermap.org/img/wn/${icon}.png" class= "forecast-icon"/></td><td>${temperature}&#730;</td>`
+      <td><img src="https://openweathermap.org/img/wn/${icon}.png" class= "forecast-icon"/></td><td>${temperature}&#730;</td></table>`
       })
     })
+  }
 
-
-
-    /*`<p>${fiveDays} <p/>
-      <img src="https://openweathermap.org/img/wn/${icon}.png" class= "forecast-icon"/><p>${temperature}&#730; (Will feel like ${feelsLike}&#730;)</p>`*/
-
+ 
 

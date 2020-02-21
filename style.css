@@ -4,10 +4,29 @@ html {
   box-sizing: border-box;
 }
 
-.body {
-  font-family: 'Open Sans', sans-serif;
+/*body gradients*/
+.hot {
+  background-image: linear-gradient(#ffc371, #ff5f6d);
+}
+.warm {
+  background-image: linear-gradient(#bfe9ff, #ff6e7f);
+}
+.medium {
+  background-image: linear-gradient(#ffd194, #70e1f5);
+}
+.cold {
+  background-image: linear-gradient(#b6fbff, #83a4d4);
+}
+.freezing {
+  background-image: linear-gradient(#fff, #076585);
 }
 
+
+/*fonts*/
+.body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: linen;
+}
 h1 {
   font-size: 40px;
 }
@@ -22,39 +41,17 @@ h4 {
   font-size: 15px;
   margin-block-end: 0;
 }
-
 p {
   text-align: justify;
   font-size: 20px;
 }
 
-.forecast-table {
-  table-layout: fixed;
-  border-collapse: collapse;
-  width: 100%;
-  border: 1px solid #ddd;
-  font-size: 20px;
-}
+/*containers*/
+
 
 .weather-image {
   height: 200px;
   float: right;
-}
-
-.hot {
-  background-image: linear-gradient(white, salmon);
-}
-.warm {
-  background-image: linear-gradient(white, pink);
-}
-.medium {
-  background-image: linear-gradient(white, lightblue);
-}
-.cold {
-  background-image: linear-gradient(white, powderblue);
-}
-.freezing {
-  background-image: linear-gradient(white, blue);
 }
 
 .header-temp {
@@ -88,12 +85,18 @@ p {
   justify-content: space-around;
 }
 
+.forecast-table {
+  table-layout: fixed;
+  width: 100%;
+  font-size: 20px;
+}
+
 .forecast-icon {
   display: flex;
   width: 40px;
 }
 
-/* Media Queries */
+/* Media Queries bigger screens*/
 @media (min-width: 668px) {
 .main-container {
   display: flex;
