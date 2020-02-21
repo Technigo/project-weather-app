@@ -42,10 +42,10 @@ fetch(apiFiveDaysWeather)
   .then((json) => {
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
 
-
     filteredForecast.forEach((day) => {
+      const icon = `http://openweathermap.org/img/w/${day.weather[0].icon}.png`;
       let date = new Date(day.dt * 1000)
       let dayName = date.toLocaleDateString("en-US", { weekday: "short" })
-      fiveDayForecastContainer.innerHTML += `<p>${dayName}     ${day.main.temp}°C</p>`
+      fiveDayForecastContainer.innerHTML += `<p>${dayName} ${day.main.temp}°C</p><img class="icon" src=${icon}>`
     })
   })

@@ -1,7 +1,7 @@
 
 body {
   font-family: 'Nanum Gothic', sans-serif;
-  background-image: linear-gradient(white,lightblue,blue,darkblue);
+  background-image: linear-gradient(white,lightblue,blue);
   background-position: center;
   background-repeat: no-repeat;
   height: 1000px;
@@ -15,9 +15,15 @@ body {
 
 #fiveDaysForecast {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
+  align-items: center;
 }
 
+.icon {
+  height: 40px;
+  width: 40px;
+  
+}
 img {
   height: 65px;
 }
@@ -38,7 +44,8 @@ footer p {
   .sunrise-sunset {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    margin-top: 100px; 
   }
 
   .next-five-days {
