@@ -8,11 +8,6 @@ p {
   display: inline;
   margin: 0rem;
 }
-hr {
-  border: none;
-  border-top: 1px dotted #F47775;
-  clear: both;
-}
 .top-container {
   display: flex;
   flex-flow: column wrap;
@@ -22,22 +17,18 @@ hr {
 .citycontainer {
   display: flex;
   flex-direction: column;
-  align-items: left;
+  align-items: flex-start;
   padding: 2rem 2rem 1rem 2rem; 
   font-size: 30px;
   font-weight: 1500; 
 }
-.forecast-container {
+.forecast-box {
   display: flex;
-  flex-flow: column wrap;
-  justify-content: stretch;
-  text-align: justify;
-  padding: 2rem 2rem 1rem 2rem; 
-}
-.forecast-table {
-  table-layout: fixed;
+  flex-flow: row;
+  justify-content: space-around;
+  padding: 1em 0em; 
+  border-bottom: 1px dotted;
   width: 100%;
-  border-bottom: 1px dotted #F47775;
 }
 .cloudy {
   color: #F47775;

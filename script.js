@@ -8,9 +8,6 @@ const sunriseContainer = document.getElementById('sunrisetime')
 const sunsetContainer = document.getElementById('sunsettime')
 const cityContainer = document.getElementById('citycontainer')
 const forecastContainer = document.getElementById('forecast-container')
-const weekdayContainer = document.getElementById('weekday-name')
-const forecastDescriptionContainer = document.getElementById('forecast-description')
-const forecastTemperatureContainer = document.getElementById('forecast-temperature')
 
 
 fetch(apiToday)
@@ -39,8 +36,7 @@ fetch(apiToday)
     //toggle the background color, font color, the message and the weather icon depending on the weather description
     const backgroundToggle = () => {
       const weatherDescription = weatherArray.weather[0].description
-
-      if (weatherDescription.includes("clouds")) {
+      if (weatherDescription.includes("clouds") || weatherDescription.includes("snow")) {
         bodyContainer.classList.toggle("cloudy");
         cityContainer.innerHTML += `<img src="icons/cloudy.svg"> <h1> Light a fire and get cosy. ${weatherArray.name} is looking grey today.</h1>`
       }
@@ -54,7 +50,6 @@ fetch(apiToday)
       }
     }
     backgroundToggle();
-
   })
 
 fetch(apiForecast)
@@ -75,18 +70,11 @@ fetch(apiForecast)
       const forecastWeather = forecastArray.weather[0].description
       // define the weather icon here
       const weatherIcon = (forecastArray.weather[0].icon)
-      // print out date, weather description and the main temperature heref
-      forecastContainer.innerHTML += `<table class="forecast-table"><td>${forcastDayString}</td> <td><img src="http://openweathermap.org/img/w/${weatherIcon}.png"/></td> <td>${forecastWeather}</td> <td> ${forecastTemp}°C </td> </table>`
-
+      // print out date, weather icon, weather description and the main temperature here
+      forecastContainer.innerHTML += `<div class="forecast-box"><p>${forcastDayString}</p> <p><img src="http://openweathermap.org/img/w/${weatherIcon}.png"/></p> <p>${forecastWeather}</p> <p> ${forecastTemp}°C </p> </div>`
     })
-
-
-
-
-
   })
 
 
 
 
-//weather icon http://openweathermap.org/img/w/${weatherArray.weather[0].icon}.png
