@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(to bottom right,rgb(226, 16, 216),rgb(40, 40, 240));
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+}
+.weekforecast-container {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 450px;
+    padding: 30px;
+
+}
+.typeofweather {
+    display: flex;
+    flex-direction: column;
+}
+.weather-container {
+    border: 3px solid white;
+    border-radius: 5px;
+    padding:40px;
+}
+.todays-weather {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+@media (max-width:920px){
+    .weather-container {
+        width: 75%;
+        height:500px;
+    }}
