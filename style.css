@@ -1,0 +1,81 @@
+body {
+ margin: 0px;
+ padding: 0px;
+ background-color: rgba(235, 197, 208, 0.849);
+ font-size: 20px;
+ font-family: simonetta;
+ text-align: center;
+}
+
+
+#main {
+ width: 100%;
+ height: auto;
+ padding: 20px 10px;
+ margin: auto;
+}
+
+#sunRise {
+ width: 100%;
+ height: auto;
+ padding: 10px;
+ margin: 10px auto;
+}
+
+#sunSet {
+ width: 100%;
+ height: auto;
+ padding: 10px;
+ margin: 10px auto;
+}
+
+#week {
+ width: 100%;
+ height: auto;
+ padding: 30px 10px;
+ margin: auto;
+}
+
+@media (min-width : 668px) {
+ body {
+  padding-top: 100px;
+ }
+ #main {
+  background-color: whitesmoke;
+  width: 75%;
+  height: auto;
+  border-radius: 10px;
+ }
+ #sunRise {
+  background-color: whitesmoke;
+  width: 75%;
+  height: auto;
+  border-radius: 10px;
+ }
+ #sunSet {
+  background-color: whitesmoke;
+  width: 75%;
+  height: auto; 
+  border-radius: 10px;
+ }
+ #week {
+  background-color: whitesmoke;
+  width: 75%;
+  height: auto; 
+  border-radius: 10px;
+ }
+}
+@media (min-width : 1040px) {
+ #main {
+  width: 50%;
+ }
+ #sunRise { 
+  width: 50%;
+ }
+ #sunSet {
+  width: 50%;
+ }
+ #week {
+  width: 50%;
+ }
+}
