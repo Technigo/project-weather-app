@@ -1,13 +1,12 @@
 body {
-  font-family: 'Fredericka the Great', cursive;
+  font-family: 'Lacquer', sans-serif;
   color: rgba(51, 50, 50, 0.877);
-
+  background: rgb(248, 224, 232);
 }
 
 .weather-header {
   font-size: 42px;
   margin-bottom: 20px;
-
 }
 
 .temperature {
@@ -16,8 +15,11 @@ body {
 }
 
 .sun {
+  max-width: 300px;
   font-size: 22px;
   margin-top: 0px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .weatherContainer {
@@ -26,11 +28,13 @@ body {
 }
 
 .cold {
-  background: rgb(72, 187, 202);
+  background-color: #8EC5FC;
+  background-image: linear-gradient(62deg, #8EC5FC 10%, #F8E0E8 40%);
 }
 
 .warm {
-  background: salmon;
+  background-color: #ff255a;
+  background-image: linear-gradient(235deg, #faa3b9 20%, #f8e0e8 80%, #f8e0e8 80%);
 }
 
 #weatherSection {
@@ -38,5 +42,18 @@ body {
   max-width: 400px;
   margin-left: auto;
   margin-right: auto;
+}
 
+#day-temp {
+  max-width: 300px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.weatherIcon {
+  height: 100px;
+  width: 100px;
+  border: 2px solid;
 }
