@@ -4,12 +4,6 @@ body {
   font-size: 18px;
   background-color: ivory;
 }
-.top-container {
-  display: flex;
-  flex-flow: column wrap;
-  padding: 2rem 2rem 1rem 2rem; 
-  text-align: left;
-}
 p {
   display: inline;
   margin: 0rem;
@@ -18,6 +12,12 @@ hr {
   border: none;
   border-top: 1px dotted #F47775;
   clear: both;
+}
+.top-container {
+  display: flex;
+  flex-flow: column wrap;
+  padding: 2rem 2rem 1rem 2rem; 
+  text-align: left;
 }
 .citycontainer {
   display: flex;
@@ -52,11 +52,4 @@ hr {
   background-color: #F7E9B9;
 }
 
-/* 
-.cold {
-  background-color: #F4F7F8;
-}
-.warm {
-  background-color: #F7E9B9;
-} 
-*/
+
