@@ -1,15 +1,10 @@
 body {
-  /* font-family: 'IBM Plex Mono', monospace; */
   font-family: Arial, Helvetica, sans-serif;
   background: blue;
   color: white;
-  margin: 0;
+  margin: 25px 0;
   min-height: 100vh;
   background: linear-gradient(23deg, rgba(50, 0, 150, 1) 0%, rgba(0, 0, 255, 1) 40%, rgba(0, 0, 255, 1) 60%, rgba(16, 110, 255, 1) 100%);
-  /* display: flex;
-  flex-direction: column;
-   align-content: center; 
-  align-items: flex-start; */
 
 }
 
@@ -27,33 +22,43 @@ body {
 
 
 .container {
-  margin: 50px 7%;
+  margin: 0px 7% 50px 7%;
   width: 70%;
   max-width: 350px;
-  /* padding: 10px;
-  border: rgb(24, 213, 255) solid 1px; */
   padding-left: 25px;
 }
+
 
 #sunrise {
   width: 60%;
   max-width: 300px;
 }
 
+
 #forcast {
   margin-top: 100px;
 }
 
+
 .side {
   margin-left: -25px;
 }
+
+
+.day {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.5em;
+}
+
 
 h1 {
   font-size: 2em;
   font-weight: normal;
   margin: 0 0 30px 0;
   line-height: 150%;
-
 }
 
 
@@ -65,24 +70,13 @@ h2 {
 }
 
 
-strong {
-  filter: brightness(1.5);
-}
+strong {}
 
-.day {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  /* height: 200px; */
-  /* padding: 10px;
-  border: rgb(24, 213, 255) solid 1px; */
-  font-size: 1.5em;
-}
 
 p {
   max-width: 175px;
 }
+
 
 img {
   width: 90px;
@@ -90,7 +84,8 @@ img {
   /* to optically align the images */
 }
 
-/* Form */
+
+/* FORM */
 
 input {
   font-family: Arial, Helvetica, sans-serif;
@@ -107,6 +102,7 @@ input {
   margin-bottom: 15px;
 }
 
+
 button {
   height: 40px;
   padding: 7px;
@@ -117,6 +113,7 @@ button {
   cursor: pointer;
   border: 0;
 }
+
 
 button:hover {
   color: grey;

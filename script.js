@@ -155,8 +155,6 @@ const weather = (location) => {
         // Just getting weekday
         const options = {
           weekday: 'long',
-          //month: 'long',
-          //day: 'numeric'
         };
 
         // getting weekday
