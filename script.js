@@ -1,13 +1,7 @@
-//API
-//const weatherUrl =
-// const forecastUrl =
-
-// DOM Selectors
 const weatherHeader = document.getElementById('weatherHeader')
 const weatherSection = document.getElementById('weatherSection')
 const cityDropDown = document.getElementById('cityDropDown')
 const forecast = document.getElementById('forecast')
-
 
 
 const showWheater = city => {
@@ -43,11 +37,9 @@ const showWheater = city => {
 
       <h2>${json.main.temp.toFixed(0)} °</h2>   
 
-      <p class="sunUpData"> <img class="sunUp" id="upSun" src='assets/sunrise.png' alt="Sunrise icon"/>
-      ${sunUpTime}</p>  
-
-      <p class="sunDownData"> <img class="sunDown" id"downSun" src='assets/sunset.png' alt="Sunset icon"/>
-      ${sunDownTime}</p>
+      <p class="sunUpDownData"> <img class="sunUp" id="upSun" src='assets/sunrise.png' alt="Sunrise icon"/>
+      ${sunUpTime} <img class="sunDown" id"downSun" src='assets/sunset.png' alt="Sunset icon"/>
+      ${sunDownTime}</p>  
 
       <p class="windData"><img class="windImage" id='windIcon' src='assets/wind.png' alt="wind icon"/>
       ${json.wind.speed} m/s</p>
@@ -69,7 +61,6 @@ const showForecast = city => {
 
       const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
 
-
       filteredForecast.forEach(day => {
         const weekday = new Date(day.dt_txt.replace(' ', 'T'))
 
@@ -79,19 +70,10 @@ const showForecast = city => {
 
         const temp = (day.main.temp)
 
-
         forecast.innerHTML += `
         <p>${weekdayName} ${temp.toFixed(1)}°</p>
          `
       })
-
-
     })
-
-
-
-
 }
-
-
 cityDropDown.addEventListener("change", () => showForecast(cityDropDown.value))

@@ -17,20 +17,46 @@ h2 {
 }
 
 p {
-  font-size: 20px;
+  font-size: 18px;
   text-align: center;
 }
 
-.top {
+.cityMenu {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.mainInfo {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 20%;
+}
+
+.todayWeather {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
   background-color: lemonchiffon;
   border-radius: 50%;
   width: 300px;
   height: 300px;
+  margin-left: 12px;
+}
+
+.forecastSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(153, 177, 165);
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  margin-top: 20px;
   margin-left: 12px;
 }
 
@@ -46,9 +72,10 @@ p {
 .sunUp {
   width: 30px;
   height: 30px;
+  margin-right: 5px;
 }
 
-.sunUpData {
+.sunUpDownData {
   flex-direction: row;
   font-size: 15px;
   margin: 0;
@@ -57,22 +84,37 @@ p {
 .sunDown {
   width: 30px;
   height: 30px;
-}
-
-.sunDownData {
-  flex-direction: row;
-  font-size: 15px;
-  margin: 0;
+  margin-left: 10px;
+  margin-right: 5px;
 }
 
 .windImage {
   width: 20px;
   height: 20px;
-  margin-left: 30px;
+  margin-left: 35px;
+  margin-right: 10px;
 }
 
 .windData {
   display: inline-flex;
   vertical-align: middle;
   padding: 10px;
+}
+
+
+
+@media (min-width:668px) {
+  .mainInfo {
+    flex-direction: row;
+  }
+
+  .todayWeather {
+    margin-top: 20%;
+    border-radius: 0;
+  }
+
+  .forecastSection {
+    margin-top: 20%;
+    border-radius: 0;
+  }
 }

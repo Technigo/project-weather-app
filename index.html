@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <label>
+  <label class="cityMenu">
     Choose a city:
     <select id="cityDropDown">
       <option value="">pick</option>
@@ -21,19 +21,24 @@
       <option value="Umea,Sweden">Umeå</option>
     </select>
   </label>
-  <section class="top">
-    <div class="weatherInfo" id="weatherSection">
-      <img id="icon" src="" />
-      <img id="upSun" src="" />
-      <img id="downSun" src="" />
-      <img id="windIcon" src="" />
-    </div>
+  <div class="mainInfo">
 
-  </section>
-  <section class="forecastSection">
-    <p class="forecastData" id="forecast"></p>
-  </section>
+    <section class="todayWeather">
+      <div class="weatherInfo" id="weatherSection">
+        Todays weather
+        <img id="icon" src="" />
+        <img id="upSun" src="" />
+        <img id="downSun" src="" />
+        <img id="windIcon" src="" />
+      </div>
 
+
+    </section>
+    <section class="forecastSection">
+
+      <p class="forecastData" id="forecast">Forecast</p>
+    </section>
+  </div>
   <script src="./script.js"></script>
 </body>
 
