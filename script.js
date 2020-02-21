@@ -11,7 +11,7 @@
 
 
 //Variables in global scope
-const apiUrl1 = 'http://api.openweathermap.org/data/2.5/weather?q=Linkoping,Sweden&units=metric&APPID=b7b3760be0be4014c46afb19d0320b13'
+const apiUrl1 = 'https://api.openweathermap.org/data/2.5/weather?q=Linkoping,Sweden&units=metric&APPID=b7b3760be0be4014c46afb19d0320b13'
 const apiUrl2 = 'https://api.openweathermap.org/data/2.5/forecast?q=Linkoping,Sweden&units=metric&APPID=b7b3760be0be4014c46afb19d0320b13'
 const container = document.getElementById('main');
 const sunUp = document.getElementById('sunRise');
