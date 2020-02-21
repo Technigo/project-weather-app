@@ -33,10 +33,10 @@ fetch(weatherOneDayApi)
     // console.log(json.main.temp)
 
     // Change main text color and icons, based on temp:
-    if (json.main.temp < 5) {
+    if (json.main.temp <= 5) {
       cityWeather.classList.toggle('cold-temp-city')
       iconsTemp.innerHTML = `❄️☃️🙌🏻`
-    } else if (json.main.temp > 20) {
+    } else if (json.main.temp >= 20) {
       cityWeather.classList.toggle('hot-temp-city')
       iconsTemp.innerHTML = `☀️⛱😅`
     } else {
@@ -45,10 +45,12 @@ fetch(weatherOneDayApi)
     }
     // Sunrise and Sunset:
     sunRise.innerHTML = weather.sunrise = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], {
-      hour: '2-digit', minute: '2-digit'
+      hour: '2-digit',
+      minute: '2-digit'
     });
     sunSet.innerHTML = weather.sunset = new Date(json.sys.sunset * 1000).toLocaleTimeString([], {
-      hour: '2-digit', minute: '2-digit'
+      hour: '2-digit',
+      minute: '2-digit'
     });
   });
 
@@ -63,7 +65,7 @@ fetch(weatherForecastApi)
     // New filtered array: 
     const filteredForecast = json.list.filter(item => item.dt_txt.includes("09:00"));
     // console.log('filtered forecast array', filteredForecast);
- 
+
     filteredForecast.forEach(day => {
       const date = new Date(day.dt * 1000)
       // console.log('new date:', date)
@@ -73,5 +75,3 @@ fetch(weatherForecastApi)
       weatherForecastTemp.innerHTML += `<p> ${day.main.temp.toFixed(0)} ° | ${day.weather[0].main} </p>`
     });
   });
-
-
