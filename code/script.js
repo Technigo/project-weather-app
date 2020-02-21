@@ -1,5 +1,5 @@
-const apiToday = 'http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&appid=0d132ddb58c8876e79d1539a65dccf8b'
-const apiForecast = 'http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&appid=0d132ddb58c8876e79d1539a65dccf8b'
+const apiToday = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&appid=0d132ddb58c8876e79d1539a65dccf8b'
+const apiForecast = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&appid=0d132ddb58c8876e79d1539a65dccf8b'
 const bodyContainer = document.getElementById('body')
 const topContainer = document.getElementById('top-container')
 const todayContainer = document.getElementById('todayname')
