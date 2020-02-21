@@ -5,39 +5,58 @@ html {
 }
 
 .body {
-  background-color: lightyellow;
   font-family: 'Open Sans', sans-serif;
 }
 
 h1 {
-font-size: 40px;
+  font-size: 40px;
 }
-
 h2 {
-font-size: 30px;
-margin-block-start: 0;
+  font-size: 30px;
+  margin-block-start: 0;
 }
-
+h3 {
+  text-transform: capitalize;   
+}
 h4 {
   font-size: 15px;
   margin-block-end: 0;
 }
 
+p {
+  text-align: justify;
+  font-size: 20px;
+}
+
+.forecast-table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 20px;
+}
+
+.weather-image {
+  height: 200px;
+  float: right;
+}
+
 .hot {
-  background-color: lightsalmon;
+  background-image: linear-gradient(white, salmon);
 }
 .warm {
-  background-color: lightpink;
+  background-image: linear-gradient(white, pink);
 }
 .medium {
-  background-color: powderblue;
+  background-image: linear-gradient(white, lightblue);
 }
 .cold {
-  background-color: lightblue;
+  background-image: linear-gradient(white, powderblue);
 }
-.cold {
-  background-color: powderblue;
+.freezing {
+  background-image: linear-gradient(white, blue);
 }
+
 .header-temp {
   padding-top: 32px;
   margin: 32px;
@@ -46,26 +65,27 @@ h4 {
 .main-container {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .weather {
   display: flex;
   flex-direction: column;
-  margin: 16px;
-
+  margin: 32px;
 }
 
 .sun-rise-set {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 16px;
+  margin: 32px;
 }
 
 .five-days {
   display: flex;
   flex-direction: column;
-  margin: 16px;
+  margin: 32px;
+  justify-content: space-around;
 }
 
 .forecast-icon {
@@ -77,8 +97,7 @@ h4 {
 @media (min-width: 668px) {
 .main-container {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+  flex-flow: row wrap;
 }
 
 .today {
