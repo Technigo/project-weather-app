@@ -6,15 +6,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>What's the weather</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+
 </head>
 
 <body id="body">
 
-  <div class="container" id="current"></div>
+  <section class="container" id="current">
 
-  <div class="container" id="forecast"></div>
+    <div class="main-weather large">I spot some clear sky in Stockholm today</div>
+    <div class="sun-rise medium">The sun was rising at 6.45 this morning and will be setting at 17.00 tonight</div>
 
-  <div class="container">
+  </section>
+
+  <section class="container" id="forecast">
+
+    <div class="weekday medium">Wednesday</div>
+    <div class="temp small">7,6 C</div>
+    <div class="image">ICON</div>
+
+  </section>
+
+  <section class="container">
     <div class="search">
       <input type="text" id="city" value="Reykjavik">
       <a href="#"><button id="checkButton" onclick=chooseCity();>Check</button></a>
@@ -24,7 +37,7 @@
       <a href="#"><button id="goodWeather" onclick=findGoodWeather(cityList)>Just find me some good
           weather</button></a>
     </div>
-  </div>
+  </section>
 
 </body>
 

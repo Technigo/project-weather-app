@@ -31,7 +31,6 @@ const localTime = (timeSeconds, timeZone) => {
   timeInLocal.setSeconds(seconds + cityOffset + localOffset)
 
   return timeInLocal.toLocaleTimeString('en-GB', {
-    // timeStyle: 'short',
     hour: 'numeric',
     minute: 'numeric'
   })
@@ -102,8 +101,8 @@ const weather = (location) => {
       document.body.className = goodBad
 
       // Adding text to HTML
-      currentContainer.innerHTML = `<h1>I spot ${pre} ${descWeather} in ${cityName}, ${country} right now<h1>`
-      currentContainer.innerHTML += `<h1>— and it feels like it's about ${round(tempratureFeels, 0)} degrees ${warmCold}<h1>`
+      currentContainer.innerHTML = `<h1>I spot ${pre} ${descWeather} in ${cityName}, ${country} right now.<h1>`
+      currentContainer.innerHTML += `<h1>And it feels like it's about ${round(tempratureFeels, 0)} degrees ${warmCold}<h1>`
       //currentContainer.innerHTML += `<h1>This will be a ${goodBad} day!<h1>`
 
       // calls function to turn sunrise UTC time into local time
@@ -111,7 +110,7 @@ const weather = (location) => {
       sunset = localTime(json.sys.sunset, json.timezone)
 
       // Adding text to HTML
-      currentContainer.innerHTML += `<h3>The sun was rising at ${sunrise} this morning and will be setting at ${sunset} tonight</h3>`
+      currentContainer.innerHTML += `<h3>This morning the sun was rising at ${sunrise} and it will be setting at ${sunset} tonight</h3>`
 
       // console logs if the weather is good or bad and its parameters 
       console.log(`Main weather:${mainWeather}, Cloud:${clouds}, Wind:${wind}, Temp:${temprature}`)
@@ -143,7 +142,7 @@ const weather = (location) => {
       const filteredForecast = json.list.filter(item => item.dt_txt.includes(`${localFilterTime}:00`))
 
       // Resets the HTML div
-      forecastContainer.innerHTML = `<h1>Be prepered!</h1>`
+      forecastContainer.innerHTML = `<h2>Be prepered for</h2>`
 
 
 
@@ -169,7 +168,7 @@ const weather = (location) => {
         const pre = (weather === "clear sky" || weather === "few clouds") ? "a" : "some" // if pre and descWeather
 
         // Printing each day
-        forecastContainer.innerHTML += `<div class="day"> <h2>${day} will bring you ${pre} ${weather}</h2><img src=${iconFile}>  <h3>${temp} &#176;C</h3></div>`
+        forecastContainer.innerHTML += `<div class="day"> <h2>— ${pre} ${weather} on ${day}</h2><img src=${iconFile}>  <h3>${temp} &#176;C</h3></div>`
         // <div id="day${index}"></div>
       }
 
@@ -186,7 +185,7 @@ const defaultCity = "stockholm"
 const getLocation = () => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(usePosition);
-    document.getElementById("current").innerHTML = `<h1>Having a look at your location—please wait! <h1>`
+    document.getElementById("current").innerHTML = `<h1>Having a look at your area—please wait! <h1>`
   } else {
     console.log("Geolocation is not supported by this browser.")
     weather(`q=${defaultCity}`)
@@ -216,11 +215,10 @@ const random = (array) => {
 
 // Saves already checked cities
 let checkedCityArray = []
-
+let delay = false
 
 // Takes a list of cities and check a random one until good weather is found
 const findGoodWeather = (array) => {
-
   let randomCity = random(array)
   console.log('Random result: ' + randomCity)
 
@@ -250,18 +248,20 @@ const findGoodWeather = (array) => {
           checkedCityArray = [] // resetting checked cities
         } else {
           checkedCityArray.push(randomCity)
-          console.log("Adding to list " + checkedCityArray + checkedCityArray.length)
-          if (checkedCityArray.length < 1) {
-            findGoodWeather(array)
+          console.log("Checked : " + checkedCityArray + " Total: " + checkedCityArray.length)
+          if (checkedCityArray.length < 18) {
+            findGoodWeather(array) //runs the funcion again if less than 18 cities hav been checked
           } else {
             console.log("No good weather found")
-            document.getElementById("current").innerHTML = `<h1>No good weather found right now, try again!</h1>`
-            document.getElementById("forecast").innerHTML = ``
+            document.getElementById("current").innerHTML = `<h1>No good weather found right now, try again in a bit!</h1>`
+            document.getElementById("forecast").innerHTML = `<h1></h1>`
+            checkedCityArray = [] // quick fix to reset the checkedCityArray.length
 
           }
         }
       })
   }
+
 }
 
 
@@ -287,10 +287,7 @@ const citiesToCheck = () => {
       citiesJson.forEach(element => {
         cityArray.push(element.city)
       })
-      console.log("hej " + cityArray)
       cityList = cityArray
-      //findGoodWeather(cityArray)
-
     })
 
     .catch((error) => {
