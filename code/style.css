@@ -1,6 +1,4 @@
-* {
-  margin: 0;
-}
+
 body {
   font-family: "Montserrat", sans-serif;
   background-image: url("img/background.svg");
@@ -8,12 +6,8 @@ body {
   background-size: cover;
   color: #597551;
 }
-h3 {
-  margin: 40px 0 20px 0;
-  text-align: center;
-}
+
 p {
-  margin-bottom: 5px;
 }
 
 #weatherAppId {
@@ -22,6 +16,8 @@ p {
   height: 80%;
   margin: 20px auto;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 hr {
@@ -34,6 +30,10 @@ hr {
 
 .todaysWeather {
   text-align: center;
+}
+
+.todaysWeather img {
+  width: 100px;
 }
 
 .fiveDaysWeather {
@@ -59,7 +59,7 @@ hr {
   justify-content: space-evenly;
 }
 #forecastIcon img {
-  width: 30px;
+  width: 40px;
 }
 
 footer {
