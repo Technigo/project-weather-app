@@ -68,6 +68,7 @@ const weather = (location) => {
 
   // HTML divs
   const currentContainer = document.getElementById("current")
+  const sunriseContainer = document.getElementById("sunrise")
   const forecastContainer = document.getElementById("forecast")
 
 
@@ -89,7 +90,7 @@ const weather = (location) => {
       const clouds = json.clouds.all
       const mainWeather = json.weather[0].main
       const descWeather = json.weather[0].description
-      const warmCold = (json.main.feels_like >= 0) ? "warm" : "cold" // degrees warm or cold
+      const warmCold = (json.main.feels_like > 0.5) ? "warm" : "cold" // degrees warm or cold
 
       //const conditions = ["few", "clear", "thunderstorm"]
       const pre = (descWeather.includes("few") || descWeather.includes("clear") || descWeather.includes("thunderstorm")) ? "a" : "some" // text uses "a" or "some"     
@@ -101,8 +102,8 @@ const weather = (location) => {
       document.body.className = goodBad
 
       // Adding text to HTML
-      currentContainer.innerHTML = `<h1>I spot ${pre} ${descWeather} in ${cityName}, ${country} right now.<h1>`
-      currentContainer.innerHTML += `<h1>And it feels like it's about ${round(tempratureFeels, 0)} degrees ${warmCold}<h1>`
+      currentContainer.innerHTML = `<h1 class="side">Right now<h1><h1>I spot ${pre} <strong>${descWeather}</strong> in ${cityName}, ${country}.</h1> <h1>And it feels like it's about <strong>${round(tempratureFeels, 0)} degrees</strong> ${warmCold}<h1>`
+
       //currentContainer.innerHTML += `<h1>This will be a ${goodBad} day!<h1>`
 
       // calls function to turn sunrise UTC time into local time
@@ -110,7 +111,7 @@ const weather = (location) => {
       sunset = localTime(json.sys.sunset, json.timezone)
 
       // Adding text to HTML
-      currentContainer.innerHTML += `<h3>This morning the sun was rising at ${sunrise} and it will be setting at ${sunset} tonight</h3>`
+      sunriseContainer.innerHTML = `<h2>This morning the sun was rising at <strong>${sunrise}</strong> and it will be setting at <strong>${sunset}</strong> tonight</h2>`
 
       // console logs if the weather is good or bad and its parameters 
       console.log(`Main weather:${mainWeather}, Cloud:${clouds}, Wind:${wind}, Temp:${temprature}`)
@@ -142,7 +143,7 @@ const weather = (location) => {
       const filteredForecast = json.list.filter(item => item.dt_txt.includes(`${localFilterTime}:00`))
 
       // Resets the HTML div
-      forecastContainer.innerHTML = `<h2>Be prepered for</h2>`
+      forecastContainer.innerHTML = `<h1 class="side">Prepare for</h1>`
 
 
 
@@ -164,11 +165,11 @@ const weather = (location) => {
         const temp = round(filteredForecast[index].main.temp, 1)
         const weather = filteredForecast[index].weather[0].description
         const iconType = filteredForecast[index].weather[0].icon
-        const iconFile = "https://openweathermap.org/img/wn/" + iconType + ".png"
+        const iconFile = "icons/" + iconType + ".svg"
         const pre = (weather === "clear sky" || weather === "few clouds") ? "a" : "some" // if pre and descWeather
 
         // Printing each day
-        forecastContainer.innerHTML += `<div class="day"> <h2>— ${pre} ${weather} on ${day}</h2><img src=${iconFile}>  <h3>${temp} &#176;C</h3></div>`
+        forecastContainer.innerHTML += `<div class="day"> <p>A <strong>${day}</strong> with<br>${pre} ${weather}<br>and ${temp} &#176;C<div><img src=${iconFile} alt="weather icon"></div></div>`
         // <div id="day${index}"></div>
       }
 
@@ -185,7 +186,7 @@ const defaultCity = "stockholm"
 const getLocation = () => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(usePosition);
-    document.getElementById("current").innerHTML = `<h1>Having a look at your area—please wait! <h1>`
+    document.getElementById("current").innerHTML = `<h1>Having a look at your area, please wait! <h1>`
   } else {
     console.log("Geolocation is not supported by this browser.")
     weather(`q=${defaultCity}`)
