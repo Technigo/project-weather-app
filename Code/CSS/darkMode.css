@@ -21,3 +21,19 @@ body{
   0% {background-position: left;}
   100% {background-position: right;}
 }
+
+.menu-nav{
+  background: rgba(114, 10, 182, 0.9);
+}
+
+.menu-branding {
+  background: rgba(114, 10, 182, 0.5);
+}
+
+.nav-link:hover{
+  color: #f9f871;
+}
+
+.current > a {
+  color: #f9f871;
+}

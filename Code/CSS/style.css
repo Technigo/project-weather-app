@@ -10,6 +10,7 @@ body{
   height: 100%;
   line-height: 1.5;
   background-color: thistle;
+  color: white;
 }
 
 /* ---- BURGER NAVIGATION ---- */
@@ -55,17 +56,25 @@ body{
 
 /* ---- HEADER ---- */
 
-.large-heading{
+h1 {
   font-size: 6rem;
-  font-weight: 400;
+  font-weight: 300;
   margin: 20vh 0 1rem 0;
   line-height: 1;
   padding: 0;
 }
 
-.small-heading {
+h3 {
   font-size: 1rem;
   font-weight: 300;
+}
+
+h2{
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1;
+  padding: 0;
+  margin-bottom: 0.5rem;
 }
 
 a {
@@ -82,21 +91,12 @@ header{
 main {
   padding: 4rem;
   height: 100%;
-  color: yellow;
 }
 
 #home {
   overflow: hidden;
 }
 
-.icons{
-  font-size: 1.5rem;
-}
-
-.icons a:hover{
-  color: blueviolet;
-  transition: all 0.5s ease-out;
-}
 
 /* ---- BACKGROUND ----- */
 
@@ -145,7 +145,7 @@ main {
 /* Slide in from top */
 .menu-nav{
   padding: 0;
-  background: rgba(47, 23, 182, 0.9);
+  background: rgba(214, 93, 177, 0.8);
   list-style: none;
   transform: translate3d(0, -100%, 0);
   transition: all 0.5s ease-out;
@@ -158,7 +158,7 @@ main {
 /* RIGHT MENU */
 /* Slide in from bottom */
 .menu-branding {
-  background: rgb(72, 48, 206, 0.9);
+  background: rgba(214, 93, 177, 0.5);
   transform: translate3d(0, 100%, 0);
   transition: all 0.5s ease-out;
 }
@@ -183,16 +183,16 @@ main {
 }
 
 .nav-link:hover{
-  color: yellow;
+  color: #f9f871;
   text-shadow: black 1px 0 5px;
 }
 
 .current > a {
-  color: yellow;
+  color: #f9f871;
   text-shadow: black 1px 0 10px;
 }
 
-/* ---- CURRENT WEATHER BACKGROUND ----- */
+/* ---- CURRENT WEATHER ----- */
 
 .current-weather-background {
   background: linear-gradient(45deg, 
@@ -207,39 +207,36 @@ main {
   height: 100vh;
 }
 
-.dark-mode {
-  background: linear-gradient(45deg, 
-  #720AB6,
-  #2822C0,
-  #093CA4,
-  #065BB2,
-  #069ACC
-  );
-}
-
 @keyframes background-animation {
   0% {background-position: left;}
   100% {background-position: right;}
 }
 
 
+/* ------ BIG CITIES ----- */
+.city{
+  margin: 2rem 0;
+}
+
 /* ----- MEDIA QUERY ----- */
 
 @media screen and (max-width: 500px){
-  .large-heading {
+  h1, h2 {
     margin-top: 10vh;
+    font-weight: 500;
   }
 }
 
 @media screen and (max-width: 768px){
   main {
     align-items: center;
-    text-align: center;
+    font-size: 0.85rem;
   }
 
-  .large-heading {
+  h1, h2 {
     line-height: 1;
     margin-bottom: 1rem;
+    font-size: 2rem;
   }
 
   ul.menu-nav, div.menu-branding {
@@ -253,26 +250,13 @@ main {
   }
 
   .menu-nav {
-    height: 75vh;
+    height: 50vh;
     transform: translate3d(-100%, 0, 0);
     font-size: 2rem;
   }
 
   .menu-branding {
-    height: 25vh;
+    height: 50vh;
     transform: translate3d(100%, 0, 0);
-  }
-
-
-  .about-info {
-    grid-template-areas: 
-    "bioimage"
-    "bio"
-    "item1"
-    "item2"
-    "item3"
-    ;
-    grid-template-columns: 1fr;
-
   }
 }
