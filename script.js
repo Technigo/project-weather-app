@@ -65,7 +65,7 @@ const showForecast = city => {
       filteredForecast.forEach(day => {
         const weekday = new Date(day.dt_txt.replace(' ', 'T'))
 
-        const weekdayName = weekday.toLocaleDateString('se', {
+        const weekdayName = weekday.toLocaleDateString('sv', {
           weekday: 'long'
         })
 
