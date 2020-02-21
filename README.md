@@ -1,13 +1,16 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Current and forecast weather app with data from an API. Geolocation and different js and CSS animations. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I would totally do a different approach next time. I dig too deep into the syntax and how API and json works. Lost a lot of time with that. 
+
+Neither doing a good layout nor cleaning the code is something that can be done in one day. Lesson learned. Especially if you're a perfectionist like I am. Never being satisfied enough is also something I need to work with.
+
+Conclusion, better time management and structure next time. 
+
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://rautellin-weather-app.netlify.com
