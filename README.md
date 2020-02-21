@@ -19,4 +19,5 @@ For next weeks I would like to be more active on Stack Overflow.
 
 
 ## View it live
-
+https://eloquent-aryabhata-0cf63b.netlify.com/
+http://127.0.0.1:5500/project-weather-app/Designs/Code/index.html
