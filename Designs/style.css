@@ -1,5 +1,4 @@
 body {
-  /* background-image: url('./Design-1/assets/back.png'); */
   background-image: linear-gradient(white, blue);
   background-size: cover;
   background-attachment: fixed;
@@ -14,17 +13,6 @@ body {
   border-right: 10px solid black;
   border-radius: 25px;
 }
-
-/* body:before,
-body:after {
-  content: "";
-  position: fixed;
-  background: black;
-  left: 0;
-  right: 0;
-  height: 10px;
-  border-radius: 25px;
-} */
 
 body:before {
   top: 0;

@@ -17,16 +17,16 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Marbella,Spain&units=me
     const cloudy = {
       image: 'cloudy.gif'
     }
-    const bad = {
+    const cold = {
       image: 'cold.gif'
     }
     const weather = () => {
       if (json.main.temp >= 19) {
         document.getElementById('weatherImage').src = clear.image
-      } else if (json.main.temp >= 15) {
+      } else if (json.main.temp >= 12) {
         document.getElementById('weatherImage').src = cloudy.image
       } else {
-        document.getElementByID('weatherImage').src = bad.image
+        document.getElementByID('weatherImage').src = cold.image
       }
     }
     weather()
