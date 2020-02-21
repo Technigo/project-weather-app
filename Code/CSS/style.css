@@ -186,12 +186,13 @@ main {
   transition: all 0.5s ease-out;
 }
 
-.nav-link:hover{
-  text-shadow: black 2px 0 5px;
+.current > a {
+  text-decoration: underline;
 }
 
-.current > a {
-  color: #f9f871;
+.nav-link:hover{
+  text-shadow: black 2px 0 5px;
+  text-decoration: none;
 }
 
 /* ---- CURRENT WEATHER ----- */
