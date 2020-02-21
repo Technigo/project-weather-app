@@ -18,10 +18,7 @@ body {
 }
 
 form {
-
-
 position: absolute;
-
 }
 
 .drop-down {
@@ -30,7 +27,6 @@ font-size: 13px;
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 6px;
-  
   overflow-x: hidden;
   min-width: 140%;
   background-image: url('./Design-1/assets/dropdown.png');
@@ -49,11 +45,7 @@ font-size: 13px;
     width: 140%;
     z-index: 10;
     font-size: 1em;
-   
-    
-
 }
-
 
 .night {
     display: flex;
@@ -138,12 +130,6 @@ font-size: 13px;
 
 .forecasts-wrapper span {
     width: 150px;
-}
-
-@media (min-width: 360px) {
-    form {
-        min-width: 1%;
-    }
 }
 
 @media (min-width: 1025px) {
