@@ -20,5 +20,5 @@ I used the APIs and basic Json.
 Add icons... I struggled, but had to leave it du to lack of time...   
 
 ## View it live
+Link to web: https://zen-beaver-453731.netlify.com/
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
