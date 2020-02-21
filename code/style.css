@@ -4,10 +4,37 @@ body {
     }
     .sky {
         width: 100%;
-        min-height:30vh;
+        min-height:35vh;
         background-image: linear-gradient(13deg, #525bd5 0%, #31246c 100%);
-        border-radius: 0 0 50% 50%;
+        border-radius: 0 0 40% 40%;
+        display: flex;
+        flex-direction: column;
     }
+
+
+.maintemp {
+    font-size: 35px;
+    width: 90%;
+    margin: 60px 0 0 20px;
+}
+.cityname{
+    font-size: 18px;
+    width: 90%;
+    margin: 15px 0 0 20px;
+}
+.citytemp {
+    font-size: 18px;
+    width: 90%;
+    margin: 5px 0 0 20px; 
+}
+.sunrise-set{
+    font-size: 18px;
+    width: 90%;
+    margin: 5px 0 0 20px;
+    padding-bottom: 40px;
+}
+
+
     h2 {
         font-size: 20px;
     }
@@ -16,7 +43,7 @@ body {
         align-items: center;
         flex-direction: column;
         align-content: flex-end;
-        padding-bottom: 2em;
+        padding-bottom: 1em;
     }
     h3 {
         padding-bottom: 1em;
@@ -31,6 +58,30 @@ body {
         padding-left: 1em;
         color: rgb(15, 15, 15);
        
+    }
+    #day-forecast {
+      line-height: 55px;
+    }
+    #description-forecast {
+        line-height: 55px;
+        display: none;
+    }
+    #temp-forecast{
+        line-height: 55px;
+    }
+    /* Change color */
+    .cold {
+        background-image: ❄️;
+        color: rgb(57, 156, 156);
+    }
+    .warmish {
+        color: rgb(190, 202, 20);
+    }
+    .hot{
+        color: rgb(221, 125, 90);
+    }
+    .fire {
+        color: rgb(236, 13, 13);
     }
     .description {
         padding: 10px;
@@ -48,3 +99,31 @@ body {
     .sunny {
         background-image: ☀️;
     }
+
+    @media only screen and (min-width: 678px){
+        
+        #description-forecast {
+            display: inline;
+        }
+        
+
+    }
+
+
+
+    /* ANIMATION 
+
+        #icon-forecast {
+            animation: pulse 3s infinite;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(0.8);
+            } 
+            70% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(0.8);
+            }
+        }*/
