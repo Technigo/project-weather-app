@@ -1,23 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head id="head">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Menu</title>
   <link rel="stylesheet" href="/Code/CSS/style.css">
+  <title>Document</title>
 </head>
 
 <body>
+  <header>
+    <div class="menu-btn" id="menuBtn">
+      <div class="btn-line">
+        <div></div>
+      </div>
+    </div>
 
-  <main>
+    <nav class="menu" id="menu">
+      <div class="menu-branding" id="menuBranding">
+      </div>
+      <ul class="menu-nav" id="menuNav">
+        <li class="nav-item current">
+          <a href="/Code/index.html" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="/Code/geolocation.html" class="nav-link">Current position</a>
+        </li>
+        <li class="nav-item">
+          <a href="/Code/biggestCities.html" class="nav-link">Biggest Cities</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-    <h1>Menu</h1>
-    Pick current location <a href="geolocation.html">Here</a> or biggest cities <a href="biggestCities.html">Here</a>
-
+  <main id="home">
+    <h1 class="large-heading">Weather Application</h1>
+    <h2 class="small-heading">Home for your favorite weather app</h2>
   </main>
 
+  <script src="https://kit.fontawesome.com/c0cf9e70e6.js" crossorigin="anonymous"></script>
+  <script src="/Code/JavaScript/script.js"></script>
 </body>
 
 </html>

@@ -9,21 +9,43 @@
   <link rel="stylesheet" href="/Code/CSS/style.css">
 </head>
 
-<body>
+<body class="current-weather-background">
 
-  <main>
+  <header>
+    <div class="menu-btn" id="menuBtn">
+      <div class="btn-line">
+        <div></div>
+      </div>
+    </div>
 
-    <h1 id="header">Weather for </h1>
-    <section class="current-weather" id="currentWeather"></section>
-    <section class="sun" id="sun"></section>
+    <nav class="menu" id="menu">
+      <div class="menu-branding" id="menuBranding">
+        <div class="portrait"></div>
+      </div>
+      <ul class="menu-nav" id="menuNav">
+        <li class="nav-item">
+          <a href="/Code/index.html" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item current">
+          <a href="/Code/geolocation.html" class="nav-link">Current position</a>
+        </li>
+        <li class="nav-item">
+          <a href="/Code/biggestCities.html" class="nav-link">Biggest Cities</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-    <section class="forecast-weather" id="forecastWeather"> </section>
-    <p>*This weather is based on your current position.</p>
+  <h1 id="header">Weather for </h1>
+  <section class="current-weather" id="currentWeather"></section>
+  <section class="sun" id="sun"></section>
 
-  </main>
+  <section class="forecast-weather" id="forecastWeather"> </section>
+  <p>*This weather is based on your current position and the time is shown in local time.</p>
 
 
   <script src="https://kit.fontawesome.com/c0cf9e70e6.js" crossorigin="anonymous"></script>
+  <script src="/Code/JavaScript/script.js"></script>
   <script src="/Code/JavaScript/geolocation.js"></script>
 </body>
 
