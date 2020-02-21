@@ -13,11 +13,10 @@ Adding the forecast was hard for me, I look up youtube wideos and check a lot of
 When I added more cities, that messed up my code a lot, the changing color fuction and the forecast did go crazy.
 For this once I got help from a developer friend, that is very good a troubleshooting and found the problem right away, I didn't have a stop to the function, it was just contiuning invoking when clicking on new cities. 
 
-Also had major issues with my netlify and github didn't connect, doesn't work for me. 
+Also had major issues with my netlify and github didn't connect, doesn't work for me, I need help with that.
 
 For next weeks I would like to be more active on Stack Overflow.
 
 
 ## View it live
 https://eloquent-aryabhata-0cf63b.netlify.com/
-http://127.0.0.1:5500/project-weather-app/Designs/Code/index.html
