@@ -1,12 +1,23 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This project in one of the assignment within the Tecnigo Bootcamp. The challenge this week is to work with API.  
+The goles for the project: 
+- What an API is and how to use it
+- Basic JSON
+- How to use `fetch()` in JavaScript
+- How to use promises in JavaScript
+- How to work with the `Date()` object in JavaScript
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+# Tools and techniques?
+I feched data from the https://home.openweathermap.org/, and I used 2 different APIs, one for todays weather and another for the forecast.
+
+# What technologies is used? 
+I used the APIs and basic Json.
+
+# If I had more time, what would be next?
+Add icons... I struggled, but had to leave it du to lack of time...   
 
 ## View it live
 
