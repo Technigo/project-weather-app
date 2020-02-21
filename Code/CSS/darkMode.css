@@ -4,7 +4,7 @@ body{
   color: white;
 }
 
-.current-weather-background {
+#weatherBackground {
   background: linear-gradient(45deg, 
   #720AB6,
   #2822C0,
@@ -23,15 +23,11 @@ body{
 }
 
 .menu-nav{
-  background: rgba(114, 10, 182, 0.9);
+  background: rgba(214, 93, 177, 0.8);
 }
 
 .menu-branding {
-  background: rgba(114, 10, 182, 0.5);
-}
-
-.nav-link:hover{
-  color: #f9f871;
+  background: rgba(214, 93, 177, 0.5);
 }
 
 .current > a {
