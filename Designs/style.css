@@ -17,15 +17,22 @@ body {
    
 }
 
+form {
+
+
+position: absolute;
+
+}
+
 .drop-down {
 font-size: 13px;
   padding: 8px 8px 8px 0px;
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 6px;
-  position: relative;
+  
   overflow-x: hidden;
-  width: 140%;
+  min-width: 140%;
   background-image: url('./Design-1/assets/dropdown.png');
   background-repeat: no-repeat;
   background-size: 1.5em;
@@ -40,9 +47,9 @@ font-size: 13px;
     padding: 0;
     border-radius: 0;
     width: 140%;
-    position: relative;
     z-index: 10;
     font-size: 1em;
+   
     
 
 }
@@ -110,6 +117,7 @@ font-size: 13px;
     justify-content: space-between;
 }
 .forecasts-wrapper {
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -130,6 +138,12 @@ font-size: 13px;
 
 .forecasts-wrapper span {
     width: 150px;
+}
+
+@media (min-width: 360px) {
+    form {
+        min-width: 1%;
+    }
 }
 
 @media (min-width: 1025px) {
