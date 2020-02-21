@@ -10,13 +10,13 @@ The goles for the project:
 
 ## The problem
 
-# Tools and techniques?
+### Tools and techniques?
 I feched data from the https://home.openweathermap.org/, and I used 2 different APIs, one for todays weather and another for the forecast.
 
-# What technologies is used? 
+### What technologies is used? 
 I used the APIs and basic Json.
 
-# If I had more time, what would be next?
+### If I had more time, what would be next?
 Add icons... I struggled, but had to leave it du to lack of time...   
 
 ## View it live
