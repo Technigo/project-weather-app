@@ -60,11 +60,12 @@ const showForecast = city => {
     .then((json) => {
 
       const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
+      console.log(filteredForecast)
 
       filteredForecast.forEach(day => {
         const weekday = new Date(day.dt_txt.replace(' ', 'T'))
 
-        const weekdayName = weekday.toLocaleDateString('is', {
+        const weekdayName = weekday.toLocaleDateString('se', {
           weekday: 'long'
         })
 
