@@ -1,12 +1,13 @@
 html {
-background-image: linear-gradient(0deg, #FBAB7E 0%, #f7e9b9 54%); 
-padding-bottom: 200px;
+  background-image: linear-gradient(0deg, #FBAB7E 0%, #f7e9b9 54%);
+  padding-bottom: 400px;
 }
 
 body {
   font-family: 'Montserrat', sans-serif;
   color: rgb(0, 66, 67);
   margin: 0px;
+  margin-bottom: 400px;
 }
 
 h1 {
@@ -16,9 +17,11 @@ h1 {
 .cold-temp-city {
   color: rgb(79, 146, 205);
 }
+
 .hot-temp-city {
   color: rgb(220, 103, 0);
 }
+
 .neutral-temp-city {
   color: rgb(0, 66, 67);
 }
@@ -51,7 +54,7 @@ h1 {
 }
 
 .city-info {
-  
+
   font-weight: 700;
   font-size: 28px;
   padding: 0px 20px;
@@ -78,6 +81,7 @@ h1 {
   margin: 0px;
   max-width: 80%;
 }
+
 .forecast-info img {
   height: 12px;
 }
@@ -104,12 +108,13 @@ h1 {
 
 /****** MEDIA QUERIES FOR RESPONSIVE DESIGN ******/
 @media (min-width: 668px) {
- 
+
   .box-container {
     max-width: 750px;
     margin: 0px;
 
   }
+
   .top-info {
     font-weight: 200;
     font-size: 18px;
@@ -117,6 +122,7 @@ h1 {
     margin-bottom: 15px;
     margin-top: 15px;
   }
+
   .city-info {
     width: auto;
     font-weight: 700;
@@ -125,13 +131,16 @@ h1 {
     margin-left: 50px;
     flex-direction: row;
   }
+
   .city-info p {
     width: 550px;
   }
+
   .city-info img {
     margin-left: auto;
     margin-right: auto;
   }
+
   .forecast-info {
     font-size: 24px;
     text-transform: lowercase;
@@ -141,9 +150,11 @@ h1 {
     margin: 0px;
     max-width: 80%;
   }
+
   .forecast-info img {
     height: 18px;
   }
+
   .horizontal-bar p {
     font-size: 14px;
   }
@@ -152,7 +163,7 @@ h1 {
 @media (min-width: 900px) {
 
   .box-container {
-    max-width: 1200px;
+    max-width: 3000px;
     margin: 0px;
   }
 
@@ -186,6 +197,7 @@ h1 {
     padding-left: 35%;
     padding-right: 35%;
   }
+
   .forecast-info img {
     height: 22px;
   }
