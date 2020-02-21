@@ -10,17 +10,20 @@
 </head>
 
 <body>
-    <header>
-        <form action="">
-            <select name="cities" id="cities">
-                <option value="York,uk">York</option>
-                <option value="Manchester,uk">Manchester</option>
-                <option value="Carlisle,uk">Carlisle</option>
-                <option value="Winchester,uk">Winchester</option>
-            </select>
-        </form>
-    </header>
+
     <section id="weatherToday" class="weather-today">
+        <form action="">
+            <div class="drop-down">
+                <select class="cities" name="cities" id="cities">
+                    <option value="York,uk">York</option>
+                    <option value="Manchester,uk">Manchester</option>
+                    <option value="Carlisle,uk">Carlisle</option>
+                    <option value="Winchester,uk">Winchester</option>
+                    <option value="dubai,ae">Dubai</option>
+                </select>
+            </div>
+        </form>
+
         <div class="today-wrapper">
             <h1 class="today-temp" id="temperature"></h1>
             <h2 class="today-city" id="city">Loading..</h2>

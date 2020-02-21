@@ -48,30 +48,29 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=York,uk&units=metric&A
             const newVal = { ...val }
             newVal.day = new Date(newVal.dt * 1000).toLocaleDateString([], { weekday: 'short' })
             newVal.dayNumber = new Date(newVal.dt * 1000).getDay()
-            newVal.weatherType = newVal.weather[0].main
             return newVal
         })
-        //^^adds weekday names and numbers that I can use to create new filtered arrays. A weatherType 
-        // to switch below to an Image.
+        //^^adds weekday names and numbers that I can use to create new filtered arrays. 
 
-
-
-        editedForecast.forEach(val => {
-            val.icon = val.weatherType
-            switch (val.icon) {
-                case "Rain":
-                    val.icon = "🌧";
-                    break;
-                case "Clouds":
-                    val.icon = "🌥";
-                    break
-                case "Clear":
-                    val.icon = "🌞";
-                    break
-                default:
-                    val.icon = ''
-            }
-        })
+        // editedForecast.forEach(val => {
+        //     val.icon = val.weather[0].main
+        //     switch (val.icon) {
+        //         case "Rain":
+        //             val.icon = "🌧";
+        //             break;
+        //         case "Clouds":
+        //             val.icon = "🌥";
+        //             break
+        //         case "Clear":
+        //             val.icon = "🌞";
+        //             break
+        //         case "Snow":
+        //             val.icon = "🌨";
+        //             break
+        //         default:
+        //             val.icon = '⭐️'
+        //     }
+        // })
 
         const mondays = editedForecast.filter(item => item.day.includes('Mon'))
         const tuesdays = editedForecast.filter(item => item.day.includes('Tue'))
@@ -170,7 +169,8 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=York,uk&units=metric&A
             let i;
             for (i = 0; i < weekday.length; i++) {
                 if (weekday[i].dayNumber !== today) {
-                    future.innerHTML += `<p><span>${weekday[i].day}</span> <span>${weekday[1].icon}</span>
+                    const icon = `https://openweathermap.org/img/w/${weekday[i].weather[0].icon}.png`
+                    future.innerHTML += `<p><span>${weekday[i].day}</span> <span><img src=${icon} /></span>
                     <span> ${Math.round(temperatures[weekday[i].dayNumber].tempMax)} /
                     ${Math.round(temperatures[weekday[i].dayNumber].tempMin)} ℃</span> </p>`
                 }
@@ -234,30 +234,31 @@ const showWeather = (city) => {
                 const newVal = { ...val }
                 newVal.day = new Date(newVal.dt * 1000).toLocaleDateString([], { weekday: 'short' })
                 newVal.dayNumber = new Date(newVal.dt * 1000).getDay()
-                newVal.weatherType = newVal.weather[0].main
                 return newVal
             })
-            //^^adds weekday names and numbers that I can use to create new filtered arrays. A weatherType 
-            // to switch below to an Image.
+            //^^adds weekday names and numbers that I can use to create new filtered arrays. 
 
 
 
-            editedForecast.forEach(val => {
-                val.icon = val.weatherType
-                switch (val.icon) {
-                    case "Rain":
-                        val.icon = "🌧";
-                        break;
-                    case "Clouds":
-                        val.icon = "🌥";
-                        break
-                    case "Clear":
-                        val.icon = "🌞";
-                        break
-                    default:
-                        val.icon = ''
-                }
-            })
+            // editedForecast.forEach(val => {
+            //     val.icon = val.weather[0].main
+            //     switch (val.icon) {
+            //         case "Rain":
+            //             val.icon = "🌧";
+            //             break;
+            //         case "Clouds":
+            //             val.icon = "🌥";
+            //             break
+            //         case "Clear":
+            //             val.icon = "🌞";
+            //             break
+            //         case "Snow":
+            //             val.icon = "🌨";
+            //             break
+            //         default:
+            //             val.icon = '🌏';
+            //     }
+            // })
 
             const mondays = editedForecast.filter(item => item.day.includes('Mon'))
             const tuesdays = editedForecast.filter(item => item.day.includes('Tue'))
@@ -354,10 +355,12 @@ const showWeather = (city) => {
             const future = document.getElementById('weather-future')
             const printForecast = (weekday) => {
                 future.innerHTML = ''
+
                 let i;
                 for (i = 0; i < weekday.length; i++) {
                     if (weekday[i].dayNumber !== today) {
-                        future.innerHTML += `<p><span>${weekday[i].day}</span> <span>${weekday[1].icon}</span>
+                        const icon = `https://openweathermap.org/img/w/${weekday[i].weather[0].icon}.png`
+                        future.innerHTML += `<p><span>${weekday[i].day}</span> <span><img src=${icon} /></span>
                         <span> ${Math.round(temperatures[weekday[i].dayNumber].tempMax)} /
                         ${Math.round(temperatures[weekday[i].dayNumber].tempMin)} ℃</span> </p>`
                     }
@@ -371,7 +374,5 @@ const showWeather = (city) => {
         })
 
 }
-
-
 
 citySelector.addEventListener("change", () => showWeather(citySelector.value));

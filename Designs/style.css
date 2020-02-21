@@ -17,6 +17,37 @@ body {
    
 }
 
+.drop-down {
+font-size: 13px;
+  padding: 8px 8px 8px 0px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  position: relative;
+  overflow-x: hidden;
+  width: 140%;
+  background-image: url('./Design-1/assets/dropdown.png');
+  background-repeat: no-repeat;
+  background-size: 1.5em;
+  background-position: 95% center;
+  margin: 10px 0 0 10px;
+}
+.cities {
+    background: transparent;
+    margin: 0;
+    line-height: 1;
+    border: 0;
+    padding: 0;
+    border-radius: 0;
+    width: 140%;
+    position: relative;
+    z-index: 10;
+    font-size: 1em;
+    
+
+}
+
+
 .night {
     display: flex;
     height: 60%;
@@ -94,9 +125,11 @@ body {
    font-weight: lighter;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
 
-    
-    
+.forecasts-wrapper span {
+    width: 150px;
 }
 
 @media (min-width: 1025px) {
