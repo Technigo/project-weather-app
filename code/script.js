@@ -1,5 +1,5 @@
-const apiTodaysWeather = ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=6f2155bea70058c9c702a90730859c85')
-const apiFiveDaysWeather = ('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=6f2155bea70058c9c702a90730859c85')
+const apiTodaysWeather = ('https://api.openweathermap.org/data/2.5/weather?q=Gothenburg,Sweden&units=metric&APPID=6f2155bea70058c9c702a90730859c85')
+const apiFiveDaysWeather = ('https://api.openweathermap.org/data/2.5/forecast?q=Gothenburg,Sweden&units=metric&APPID=6f2155bea70058c9c702a90730859c85')
 const container = document.getElementById('forecast')
 const sunriseContainer = document.getElementById('sunrise')
 const sunsetContainer = document.getElementById('sunset')
@@ -30,8 +30,8 @@ fetch(apiTodaysWeather)
     let sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' })
     let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' })
 
-    sunsetContainer.innerHTML = `<h5> sunset: ${sunsetTime} </h5>`
-    sunriseContainer.innerHTML = `<h5> sunrise: ${sunriseTime} </h5>`
+    sunsetContainer.innerHTML = `<h5> sunset 🌇 ${sunsetTime} </h5>`
+    sunriseContainer.innerHTML = `<h5> sunrise 🌅 ${sunriseTime} </h5>`
   });
 
 //To dislay 5 days forecast 
@@ -42,9 +42,10 @@ fetch(apiFiveDaysWeather)
   .then((json) => {
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
 
+
     filteredForecast.forEach((day) => {
       let date = new Date(day.dt * 1000)
       let dayName = date.toLocaleDateString("en-US", { weekday: "short" })
-      fiveDayForecastContainer.innerHTML += `<p>${dayName} ${day.main.temp}°C</p>`
+      fiveDayForecastContainer.innerHTML += `<p>${dayName}     ${day.main.temp}°C</p>`
     })
   })

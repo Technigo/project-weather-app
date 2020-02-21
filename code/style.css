@@ -9,8 +9,45 @@ body {
   text-align: center;
 }
 
+.next-five-days {
+  display: none;
+}
+
 #fiveDaysForecast {
   display: flex;
   flex-direction: column;
+}
+
+img {
+  height: 65px;
+}
+
+footer p {
+  font-size: 10px;
+  margin-top: 70px;
+}
+
+@media (min-width: 667px){
  
+  main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .sunrise-sunset {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .next-five-days {
+    display: block;
+  }
+
+  footer p {
+    margin-top: 200px;
+    text-align: right;
+    padding-right: 30px;
+  }
 }
