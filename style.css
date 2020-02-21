@@ -31,39 +31,38 @@ p {
   border-radius: 50%;
   width: 300px;
   height: 300px;
-  margin: 20%;
+  margin-left: 12px;
 }
 
 
 .description {
-  display: inline-flex;
-  padding: 20px;
   font-size: 30px;
   font-weight: bold;
-  margin-bottom: 0;
+  margin-bottom: 10px;
   margin-top: 10px;
+  margin-right: 25px;
 }
 
 .sunUp {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
 }
 
 .sunUpData {
-  display: inline-flex;
-  vertical-align: middle;
-  font-size: 10px;
+  flex-direction: row;
+  font-size: 15px;
+  margin: 0;
 }
 
 .sunDown {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
 }
 
 .sunDownData {
-  display: inline-flex;
-  vertical-align: middle;
-  font-size: 10px;
+  flex-direction: row;
+  font-size: 15px;
+  margin: 0;
 }
 
 .windImage {
