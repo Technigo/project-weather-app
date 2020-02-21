@@ -1,6 +1,6 @@
 
 body {
-
+  font-family: 'Nanum Gothic', sans-serif;
   background-image: linear-gradient(white,lightblue,blue,darkblue);
   background-position: center;
   background-repeat: no-repeat;
@@ -9,3 +9,8 @@ body {
   text-align: center;
 }
 
+#fiveDaysForecast {
+  display: flex;
+  flex-direction: column;
+ 
+}
