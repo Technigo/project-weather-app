@@ -12,6 +12,7 @@ const errorMessage = document.getElementById('errorMessage')
 
 const clearSky = {
     name: '01d',
+    nameIcon: '01',
     image: 'assets/clearsky.png',
     color: '#FC8822',
     backgroundColor: '#ffbf87',
@@ -20,6 +21,7 @@ const clearSky = {
 
 const fewClouds = {
     name: '02d',
+    nameIcon: '02',
     image: 'assets/fewclouds.png',
     color: '#FC8822',
     backgroundColor: '#9ee0ff',
@@ -28,6 +30,7 @@ const fewClouds = {
 
 const scatteredClouds = {
     name: '03d',
+    nameIcon: '03',
     image: 'assets/scatteredclouds.png',
     color: '#666666',
     backgroundColor: '#9ee0ff',
@@ -36,6 +39,7 @@ const scatteredClouds = {
 
 const brokenClouds = {
     name: '04d',
+    nameIcon: '04',
     image: 'assets/brokenclouds.png',
     color: '#666666',
     backgroundColor: '#cccaca',
@@ -44,6 +48,7 @@ const brokenClouds = {
 
 const showerRain = {
     name: '09d',
+    nameIcon: '09',
     image: 'assets/showerrain.png',
     color: '#044485',
     backgroundColor: '#8faac4',
@@ -52,6 +57,7 @@ const showerRain = {
 
 const rain = {
     name: '10d',
+    nameIcon: '10',
     image: 'assets/rain.png',
     color: '#044485',
     backgroundColor: '#8faac4',
@@ -60,6 +66,7 @@ const rain = {
 
 const thunderstorm = {
     name: '11d',
+    nameIcon: '11',
     image: 'assets/thunderstorm.png',
     color: '#333333',
     backgroundColor: '#828282',
@@ -68,6 +75,7 @@ const thunderstorm = {
 
 const snow = {
     name: '13d',
+    nameIcon: '13',
     image: 'assets/snow.png',
     color: '#54bfff',
     backgroundColor: '#e0f3ff',
@@ -76,6 +84,7 @@ const snow = {
 
 const mist = {
     name: '50d',
+    nameIcon: '50',
     image: 'assets/mist.png',
     color: '#999999',
     backgroundColor: '#dfe8ed',
@@ -102,6 +111,7 @@ const weatherIcons = [
     night
 ]
 
+let activeAnimation
 
 const chooseWeather = (city) => {
     containerForecastTemp.innerHTML = ''
@@ -130,6 +140,10 @@ const chooseWeather = (city) => {
             containerSunsetTime.innerHTML = `<p>${sunsetTime}</p>` 
 
             function toggleAnimation(animation) {
+                if (activeAnimation) {
+                    document.getElementById(activeAnimation).style.visibility = 'hidden'
+                } 
+                activeAnimation = animation
                 document.getElementById(animation).style.visibility = 'visible'
             }
 
@@ -174,7 +188,7 @@ const chooseWeather = (city) => {
             const filteredForecastLunch = json.list.filter(item => item.dt_txt.includes('12:00:00'))
             filteredForecastLunch.forEach(forecast => {
                 let forecastElement = document.createElement('div')
-                const icon = weatherIcons.find(weatherIcon => forecast.weather[0].icon.includes(weatherIcon.name))
+                const icon = weatherIcons.find(weatherIcon => forecast.weather[0].icon.includes(weatherIcon.nameIcon))
 
                 const date = forecast.dt_txt.split(" ")[0]
                 const weatherData = dateObject[date]
