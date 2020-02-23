@@ -126,7 +126,7 @@ const chooseWeather = (city) => {
             containerCurrentTemp.innerHTML = `<h1>${json.main.temp.toFixed(1)}&deg;C</h1>`
             containerCity.innerHTML = `<h2>${json.name}</h2>`
             containerCurrentWeather.innerHTML = `<p>${json.weather[0].description}</p>`
-            containerFeelsLike.innerHTML = `<p>feels like: ${json.main.feels_like}</p>`
+            containerFeelsLike.innerHTML = `<p>feels like: ${json.main.feels_like.toFixed(1)}</p>`
             
             const unixTimestampSunrise = json.sys.sunrise
             const unixTimestampSunset = json.sys.sunset
@@ -199,7 +199,7 @@ const chooseWeather = (city) => {
 
                 forecastElement.innerHTML = `
                     <img class="forecastIcon" src="${icon.image}" alt="${forecast.weather[0].icon}"></img>
-                    <div class="forecastTemp">${minTemp}&deg;C / ${maxTemp}&deg;C</div>`
+                    <div class="forecastTemp">${minTemp.toFixed(1)}&deg;C / ${maxTemp.toFixed(1)}&deg;C</div>`
                 forecastElement.classList.add(`forecast2`)
                 containerForecastTemp.appendChild(forecastElement)
             })
