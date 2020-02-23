@@ -38,12 +38,12 @@ const showWeather = city => {
         cityTemp.innerHTML = `<p> ${json.weather[0].description}&#x3021;${json.main.temp.toFixed(0)} &#8451;</p>`
     
         const sunriseConvert = new Date((json.sys.sunrise + json.timezone) *1000)
-        const sunriseTime = sunriseConvert.toLocaleDateString([],{ timeStyle: 'short'})
+        const sunriseTime = sunriseConvert.toLocaleDateString([],{ hour: '2-digit', minute: '2-digit' })
     
         sunrise.innerHTML = `Sunrise: ${sunriseTime}`
     
         const sunsetConvert = new Date((json.sys.sunset + json.timezone) *1000)  
-        const sunsetTime = sunsetConvert.toLocaleDateString([],{ timeStyle: 'short' })
+        const sunsetTime = sunsetConvert.toLocaleDateString([],{ hour: '2-digit', minute: '2-digit' })
     
         sunset.innerHTML = `Sunset: ${sunsetTime}` 
 
