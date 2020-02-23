@@ -25,7 +25,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
 .then((json) => {
     console.log(json)
     city.innerHTML = `<h2/>${json.name}</h2>`
-    container.innerHTML = `<h2/>${json.weather[0].main} ${json.weather[0].icon} ${json.main.temp.toFixed(1)} &#8451</h2>`
+    container.innerHTML = `<h2/>${json.weather[0].main} <img src="${json.weather[0].icon}"> ${json.main.temp.toFixed(1)} &#8451</h2>`
     
    
     const sunriseConversion = new Date(json.sys.sunrise * 1000)
