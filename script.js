@@ -1,8 +1,8 @@
-// funtion reacts to button
+// funtion reacts to button, document.getElementById('europe').value  New%20York
 
 const myFunc = () => {
 
-    cityApi = document.getElementById('europe').value
+    const cityApi = document.getElementById('europe').value
     const today = document.getElementById('currentWeather')
     const orginalApi = 'https://api.openweathermap.org/data/2.5/weather?q=London&appid=2b9468766d0e54560c7e599762d2e80b'
     const weatherapi = 'https://api.openweathermap.org/data/2.5/weather?q='
@@ -16,7 +16,6 @@ const myFunc = () => {
         // dealing with json
         const times = (new Date(json.dt * 1000)).toUTCString().split(' ') // dealing with date
         const suny = [json.sys.sunrise, json.sys.sunset]
-        console.log("sun", suny)
         const sunyNew = suny.map((item) => {
             return (new Date(item * 1000)).toUTCString().split(' ')
         })
@@ -48,7 +47,7 @@ const myFunc = () => {
 
         const pictures = () => {
             console.log("inside function", weatherObject.name)
-            let choice = "blank"
+            let choice = ""
             if (weatherObject.name === "Clouds" || weatherObject.name === "Mist") {
                 choice = icons.clouds
             }
@@ -57,6 +56,9 @@ const myFunc = () => {
             }
             else if (weatherObject.name === "Clear") {
                 choice = icons.clear
+            }
+            else {
+                choice = "blank"
             }
 
             return choice
@@ -75,7 +77,10 @@ const myFunc = () => {
         myToday.innerHTML += `<p>sunset ${weatherObject.set}</p>`
         document.getElementById('headline').innerHTML = myChoice.head
 
-    })
+    }).catch(err => {
+        console.log(err);
+        document.getElementById('error1').innerHTML = `Sorry there was an error, ${err}`
+    });
 
     const secondApi = `https://api.openweathermap.org/data/2.5/forecast?q=${cityApi}&appid=2b9468766d0e54560c7e599762d2e80b`
 
@@ -89,7 +94,6 @@ const myFunc = () => {
             let dayListWeather = []
             jsonweek.list.forEach((item) => {
                 const weekTime = (new Date(item.dt * 1000)).toUTCString().split(' ')
-                console.log(weekTime)
                 const y = item.dt_txt.split(' ')
                 dayListWeather.push({ name: item.weather[0].main, description: item.weather[0].description, temp: ((item.main.temp - 273.15).toFixed(1)), weekDay: weekTime[0], month: weekTime[2], date: weekTime[1], time: y[1], wind: item.wind.speed })
 
@@ -127,8 +131,6 @@ const myFunc = () => {
         myDiv.innerHTML = ""
         weatherShow.forEach((day, index, arr) => {
             const myIndex = index.toString()
-
-
             myDiv.innerHTML += `<div class = "align" id = ${myIndex}><p>${day.weekDay} ${day.month} ${day.date}</p><p>${symbol(day.name)} ${day.temp}&#8451;</p> </div>`
             const myString = document.getElementById(myIndex)
             myString.style.borderTopColor = fontCol
@@ -137,7 +139,10 @@ const myFunc = () => {
 
         })
 
-    })
+    }).catch(err => {
+        console.log(err);
+        document.getElementById('error2').innerHTML = `Sorry there was an error, ${err}`
+    });
 
 }
 document.getElementById('buttonCity').onclick = myFunc
