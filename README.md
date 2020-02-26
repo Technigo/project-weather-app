@@ -1,13 +1,13 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Technigo Remote Bootcamp project to learn and practice fetching info with API requests.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Started with fetching the info from OpenWeather, spending quite some time trying to access various parts of the information. When I had the basics covered, I played around with various pieces of information (max- min temp and dropdown city-selector). Got a bit messy so reverted back to basic five day forecast with icons and geolocation.
+If I had more time, I'd make a fallback/response for when the geolocater is not working or the user is not allowing access to her or his whereabouts.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Technigo Project Weather App:
+https://gifted-golick-886bea.netlify.com/
