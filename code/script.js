@@ -107,7 +107,6 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Reykjavik,Iceland&units
 
       filteredForecast.forEach(day => {
         const weekday = new Date(day.dt_txt.replace(' ', 'T'))
-        console.log(weekday)
         const weekdayName = weekday.toLocaleDateString('is', {weekday: 'long'})
 
         const temp = (day.main.temp)
