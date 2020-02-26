@@ -30,7 +30,6 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Reykjavik,Iceland&units
 
     const colorOfNight = {
       backgroundColor: '#160c3b',
-      // backgroundImage: linear-gradient('135deg', '#160c3b', '1%', '#5c61e7', '100%')
 
     }
 
