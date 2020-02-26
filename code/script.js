@@ -18,7 +18,6 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Reykjavik,Iceland&units
     let sunrise = new Date(timestampSunrise * 1000)
     let sunset = new Date(timestampSunset * 1000)
 
-    console.log(sunrise)
 
     let sunriseTime = sunrise.toLocaleTimeString('is',{ timeStyle: 'short',hour12: false})
     let sunsetTime = sunset.toLocaleTimeString('is',{timeStyle: 'short', hour12: false})
