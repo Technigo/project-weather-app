@@ -1,7 +1,7 @@
 const tempToday = document.getElementById('headerTemp')
 const skyToday = document.getElementById('headerPicture')
 const weatherInfo = document.getElementById('weather')
-const sunMoves = document.getElementById('SunRiseSet')
+const sunMoves = document.getElementById('sunRiseSet')
 const forecasted = document.getElementById('fiveDays')
 const body = document.getElementById('body')
 const locationDropdown = document.getElementById('locationDropdown')
@@ -12,11 +12,11 @@ if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(displayLocationInfo);
 }
 function displayLocationInfo(position) {
-  const lng = position.coords.longitude;
-  const lat = position.coords.latitude;
+  const longitude = position.coords.longitude;
+  const latitude = position.coords.latitude;
 
-  const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&APPID=00620bb638ed0fa5525452696e39c3ed`
-  const forecastURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&units=metric&APPID=00620bb638ed0fa5525452696e39c3ed`
+  const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&APPID=00620bb638ed0fa5525452696e39c3ed`
+  const forecastURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&APPID=00620bb638ed0fa5525452696e39c3ed`
 
   fetch(weatherURL)
     .then(response => response.json())
