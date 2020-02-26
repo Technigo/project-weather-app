@@ -11,7 +11,6 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Reykjavik,Iceland&units
   })
   .then((json) => {
     
-    console.log(json)
   
     const timestampSunrise = json.sys.sunrise
     const timestampSunset = json.sys.sunset
