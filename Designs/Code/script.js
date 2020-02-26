@@ -7,8 +7,6 @@ const cityForecast = 'https://api.openweathermap.org/data/2.5/forecast?q=New%20Y
 
 // My DOM selector 
 
-const buttonChoose1 = document.getElementById('buttonCity1')
-const buttonChoose2 = document.getElementById('buttonCity2')
 const cityName = document.getElementById('city')
 const iconWeather = document.getElementById('icon')
 const cityTemp = document.getElementById('tempdec')
