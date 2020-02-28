@@ -1,6 +1,6 @@
 //WEATER TODAY
 
-const weatherUrl = 'http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=98db751c8d3a6ca2838ff31c950cf0fc';
+const weatherUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=98db751c8d3a6ca2838ff31c950cf0fc';
 
 const theStart = document.getElementById ('Title')
 const currentDate = new Date( ) 
@@ -29,7 +29,7 @@ fetch(weatherUrl)
     //FORECAST 
 
     const theCenter = document.getElementById ('Middle')
-    const forecastUrl = 'http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&appid=98db751c8d3a6ca2838ff31c950cf0fc'
+    const forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&appid=98db751c8d3a6ca2838ff31c950cf0fc'
 
     fetch(forecastUrl)
     .then ((response) => {
