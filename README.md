@@ -20,5 +20,5 @@ I used the APIs and basic Json.
 Add icons... I struggled, but had to leave it du to lack of time...   
 
 ## View it live
-Link to web: https://zen-beaver-453731.netlify.com/
+Link to web: https://stoic-dubinsky-09f8f1.netlify.com
 
