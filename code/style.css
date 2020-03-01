@@ -51,6 +51,7 @@ h2 {
   color: rgba(255, 255, 255, 0.733);
   font-weight: 700;
   letter-spacing: 4px;
+  text-align: center;
 }
 
 #celsius {
@@ -190,7 +191,7 @@ h4 {
   }
 
   .city-and-description h1 {
-    font-size: 80px;
+    font-size: 70px;
   }
 
   .hamburger {
