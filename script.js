@@ -6,7 +6,6 @@ const key = "e6dd4de800de3576c7c23ef944a736c4"
 ///// City from HTML form /////
 const chooseCity = () => {
   const city = document.getElementById("city").value;
-  console.log("City from html form: " + city)
   weather(`q=${city}`)
 }
 
@@ -113,10 +112,6 @@ const weather = (location) => {
       // Adding text to HTML
       sunriseContainer.innerHTML = `<h3>This morning the sun was rising at <strong>${sunrise}</strong> and it will be setting at <strong>${sunset}</strong> tonight</h3>`
 
-      // console logs if the weather is good or bad and its parameters 
-      console.log(`Main weather:${mainWeather}, Cloud:${clouds}, Wind:${wind}, Temp:${temprature}`)
-      console.log("Good or bad: " + goodBad)
-
     })
     .catch((err) => {
       console.log("Fetch current error: " + err);
@@ -135,9 +130,6 @@ const weather = (location) => {
       const filterTime = 12 // What time to forcast each day
       const timeZone = json.city.timezone / 3600 //timezone difference from UTC in hours
       const localFilterTime = timeFilter(filterTime, timeZone) // Converts to local time in 3hour steps
-
-      console.log(`UTC forcast time: ${localFilterTime}:00`)
-      console.log(`Local forcast time: ${localFilterTime+timeZone}:00`)
 
       //filters the list (using UTC time, closest 3 hour to 12:00 local time) 
       const filteredForecast = json.list.filter(item => item.dt_txt.includes(`${localFilterTime}:00`))
@@ -186,7 +178,6 @@ const getLocation = () => {
     navigator.geolocation.getCurrentPosition(usePosition);
     document.getElementById("current").innerHTML = `<h2>Having a look at your area, please wait! <h2>`
   } else {
-    console.log("Geolocation is not supported by this browser.")
     weather(`q=${defaultCity}`)
   }
 }
@@ -217,10 +208,8 @@ let delay = false
 // Takes a list of cities and check a random one until good weather is found
 const findGoodWeather = (array) => {
   let randomCity = random(array)
-  console.log('Random result: ' + randomCity)
 
   if (checkedCityArray.includes(randomCity)) {
-    console.log("Already checked " + randomCity)
     checkOneCity(cityArray)
   } else {
 
@@ -238,18 +227,14 @@ const findGoodWeather = (array) => {
         const mainWeather = json.weather[0].main
         const goodBad = goodOrBad(mainWeather, clouds, wind, temprature)
 
-        console.log("Checking: " + cityName)
-        console.log("Weather is : " + goodBad)
         if (goodBad === "good") {
           weather(`q=${randomCity}`) //redundent to check the city again, could use the info if I add more functions 
           checkedCityArray = [] // resetting checked cities
         } else {
           checkedCityArray.push(randomCity)
-          console.log("Checked : " + checkedCityArray + " Total: " + checkedCityArray.length)
           if (checkedCityArray.length < 18) {
             findGoodWeather(array) //runs the funcion again if less than 18 cities hav been checked
           } else {
-            console.log("No good weather found")
             document.getElementById("current").innerHTML = `<h2>No good weather found right now, try again in a bit!</h2>`
             document.getElementById("forecast").innerHTML = `<h2></h2>`
             checkedCityArray = [] // quick fix to reset the checkedCityArray.length

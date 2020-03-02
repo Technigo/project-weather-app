@@ -104,7 +104,9 @@ input {
 }
 
 
+
 button {
+  background: white;
   height: 40px;
   padding: 7px;
   color: black;
@@ -113,8 +115,6 @@ button {
   outline: none;
   cursor: pointer;
   border: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
 }
 
 
