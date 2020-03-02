@@ -112,6 +112,8 @@ button {
   outline: none;
   cursor: pointer;
   border: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
 
