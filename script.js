@@ -102,16 +102,16 @@ const weather = (location) => {
       document.body.className = goodBad
 
       // Adding text to HTML
-      currentContainer.innerHTML = `<h1 class="side">Right now<h1><h1>I spot ${pre} <strong>${descWeather}</strong> in ${cityName}, ${country}.</h1> <h1>And it feels like it's about <strong>${round(tempratureFeels, 0)} degrees</strong> ${warmCold}<h1>`
+      currentContainer.innerHTML = `<h1 class="side">Right now<h1><h2>I spot ${pre} <strong>${descWeather}</strong> in ${cityName}, ${country}.</h2> <h2>And it feels like it's about <strong>${round(tempratureFeels, 0)} degrees</strong> ${warmCold}<h2>`
 
-      //currentContainer.innerHTML += `<h1>This will be a ${goodBad} day!<h1>`
+      //currentContainer.innerHTML += `<h2>This will be a ${goodBad} day!<h2>`
 
       // calls function to turn sunrise UTC time into local time
       sunrise = localTime(json.sys.sunrise, json.timezone)
       sunset = localTime(json.sys.sunset, json.timezone)
 
       // Adding text to HTML
-      sunriseContainer.innerHTML = `<h2>This morning the sun was rising at <strong>${sunrise}</strong> and it will be setting at <strong>${sunset}</strong> tonight</h2>`
+      sunriseContainer.innerHTML = `<h3>This morning the sun was rising at <strong>${sunrise}</strong> and it will be setting at <strong>${sunset}</strong> tonight</h3>`
 
       // console logs if the weather is good or bad and its parameters 
       console.log(`Main weather:${mainWeather}, Cloud:${clouds}, Wind:${wind}, Temp:${temprature}`)
@@ -184,7 +184,7 @@ const defaultCity = "stockholm"
 const getLocation = () => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(usePosition);
-    document.getElementById("current").innerHTML = `<h1>Having a look at your area, please wait! <h1>`
+    document.getElementById("current").innerHTML = `<h2>Having a look at your area, please wait! <h2>`
   } else {
     console.log("Geolocation is not supported by this browser.")
     weather(`q=${defaultCity}`)
@@ -194,8 +194,6 @@ const getLocation = () => {
 const usePosition = (position) => {
   const latitude = position.coords.latitude
   const longitude = position.coords.longitude
-  console.log(position.coords.latitude)
-  console.log(position.coords.longitude)
   const apiLocation = `lat=${latitude}&lon=${longitude}`
   weather(apiLocation)
 }
@@ -252,8 +250,8 @@ const findGoodWeather = (array) => {
             findGoodWeather(array) //runs the funcion again if less than 18 cities hav been checked
           } else {
             console.log("No good weather found")
-            document.getElementById("current").innerHTML = `<h1>No good weather found right now, try again in a bit!</h1>`
-            document.getElementById("forecast").innerHTML = `<h1></h1>`
+            document.getElementById("current").innerHTML = `<h2>No good weather found right now, try again in a bit!</h2>`
+            document.getElementById("forecast").innerHTML = `<h2></h2>`
             checkedCityArray = [] // quick fix to reset the checkedCityArray.length
 
           }
