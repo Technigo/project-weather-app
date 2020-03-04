@@ -546,6 +546,11 @@ button {
         margin: 0px auto;
     }
 
+    #background-suncloud {
+        max-width: 450px;
+        margin: 0px auto;
+    }
+
     .sun {
         margin: 0;
     }
@@ -556,10 +561,6 @@ button {
 
     .bolt2 {
         margin: 150px 450px 0px 20px;
-    }
-
-    .sun {
-        margin: 0;
     }
 
     #background-night {
