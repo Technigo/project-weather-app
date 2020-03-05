@@ -10,6 +10,7 @@ I had the most problems with the 5 day forecast and getting the pictures to work
 ## View it live
 
 So this is where the netlify link goes 👍 
+https://nifty-torvalds-ac9881.netlify.com/
 
 ## Requirements (_from canvas) 
 - You should fetch data from the API using `fetch()` in JavaScript ✔ 
