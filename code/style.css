@@ -2,25 +2,48 @@ body {
     font-family: 'Roboto', sans-serif;  
     font-weight: light;
     }
-    .sky {
-        width: 100%;
-        min-height:35vh;
-        background-image: linear-gradient(13deg, #525bd5 0%, #31246c 100%);
-        border-radius: 0 0 40% 40%;
-        display: flex;
-        flex-direction: column;
+.dropdown-select {
+    width: 50%;
+    margin-left: 25%;
+    border: solid 1px #fff;
+    outline: solid 2px #888;
+    padding-bottom: 3px;
+}
+
+.visually-hidden {
+    position: absolute !important;
+    height: 1px; 
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap; /* added line */
+}
+
+.sky {
+    width: 100%;
+    min-height:35vh;
+    background-image: linear-gradient(13deg, #525bd5 0%, #31246c 100%);
+    border-radius: 0 0 40% 40%;
+    display: flex;
+    flex-direction: column;
     }
 
-
+.introtxt{
+    padding-top: 40px;
+    color: white;
+    font-weight: bold;
+}
 .maintemp {
     font-size: 35px;
     width: 90%;
     margin: 60px 0 0 20px;
 }
 .cityname{
-    font-size: 18px;
+    font-size: 38px;
     width: 90%;
     margin: 15px 0 0 20px;
+    font-family: 'Pacifico', cursive;
 }
 .citytemp {
     font-size: 18px;
@@ -35,95 +58,100 @@ body {
 }
 
 
-    h2 {
-        font-size: 20px;
+h2 {
+    font-size: 20px;
+}
+#weatherapi {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-content: flex-end;
+    padding-bottom: 1em;
     }
-    #weatherapi {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        align-content: flex-end;
-        padding-bottom: 1em;
+
+h3 {
+    padding-bottom: 1em;
+    color: white;
     }
-    h3 {
-        padding-bottom: 1em;
-        color: white;
+
+#weekreport {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    padding-left: 1em;
+    color: rgb(15, 15, 15);  
     }
-    #weekreport {
-        width: 80%;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: row;
-        justify-content:space-between;
-        padding-left: 1em;
-        color: rgb(15, 15, 15);
-       
+
+#day-forecast {
+    line-height: 55px;
     }
-    #day-forecast {
-      line-height: 55px;
+#description-forecast {
+    line-height: 55px;
+    display: none;
     }
-    #description-forecast {
-        line-height: 55px;
-        display: none;
+#temp-forecast{
+    line-height: 55px;
     }
-    #temp-forecast{
-        line-height: 55px;
+
+/* Change color */
+.cold {
+    width: 100%;
+    min-height:35vh;
+    background-image: linear-gradient(13deg, #6ec3eb 0%, #7380f3 100%);
+    border-radius: 0 0 40% 40%;
+    display: flex;
+    flex-direction: column;
     }
-    /* Change color */
-    .cold {
-        background-image: ❄️;
-        color: rgb(57, 156, 156);
-    }
-    .warmish {
-        color: rgb(190, 202, 20);
-    }
-    .hot{
-        color: rgb(221, 125, 90);
-    }
-    .fire {
-        color: rgb(236, 13, 13);
-    }
-    .description {
-        padding: 10px;
-    }
+
+.warmish {
+    width: 100%;
+    min-height:35vh;
+    background-image: linear-gradient(13deg, #52d5a3 0%, #c5ee78 100%);
+    border-radius: 0 0 40% 40%;
+    display: flex;
+    flex-direction: column;
+}
+.hot{
+    width: 100%;
+    min-height:35vh;
+    background-image: linear-gradient(13deg, #bdd552 0%, #f3c86a 100%);
+    border-radius: 0 0 40% 40%;
+    display: flex;
+    flex-direction: column;
+}
+.fire {
+    width: 100%;
+    min-height:35vh;
+    background-image: linear-gradient(13deg, #f0f34a 0%, #f04444 100%);
+    border-radius: 0 0 40% 40%;
+    display: flex;
+    flex-direction: column;
+}
     
-    .day.main.temp {
+.description {
+        padding: 10px;
+}
+    
+.day.main.temp {
         text-align: right;
-    }
-    .rainy {
+}
+.rainy {
         background-image: ☔;
-    }
-    .cloudy {
+}
+.cloudy {
         background-image: ☁️;
-    }
-    .sunny {
+}
+.sunny {
         background-image: ☀️;
-    }
+}
 
     @media only screen and (min-width: 678px){
         
-        #description-forecast {
-            display: inline;
-        }
-        
+#description-forecast {
+    display: inline;
+}
+
 
     }
-
-
-
-    /* ANIMATION 
-
-        #icon-forecast {
-            animation: pulse 3s infinite;
-        }
-        @keyframes pulse {
-            0% {
-                transform: scale(0.8);
-            } 
-            70% {
-                transform: scale(1);
-            }
-            100% {
-                transform: scale(0.8);
-            }
-        }*/

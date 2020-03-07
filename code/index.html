@@ -5,17 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet"> 
     <title>Document</title>
 </head>
 <body>
+    
+   
+   
+    <span id="cityDropdownLabel" class="dropdown-label"> <!--span -sr-only / visually hidden /option selected disabled--> 
+        <select id="cityDropdown" class="dropdown-select">
+            <option selected disabled class="visually-hidden" >Choose one</option>
+            <option value="Stockholm, Sweden">Stockholm</option>
+            <option value="Lulea, Sweden">Luleå</option>
+            <option value="Gothenburg, Sweden">Göteborg</option>
+            <option value="Malmoe, Sweden">Malmö</option>
+        </select>
+    </span>
+
     <div class="moon-sun">  
         <div class="sky">
-            <div id="day-sun"></div>
-            <div id="weatherapi"></div>
+            <div id="day-sun"><span class="cityimg"></span></div>
+            <div id="weatherapi"><p class="introtxt"> CHOOSE YOUR CITY↑</p></div>
         </div>
     </div>
     <section id="weekreport">
-        <div id="day-forecast"></div>
+        <div id="day-forecast"> </div>
         <div id="icon-forecast"></div>
         <div id="description-forecast"></div>
         <div id="temp-forecast"></div>
