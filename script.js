@@ -5,6 +5,8 @@ const sunriseHour = document.getElementById('sunrise')
 const sunsetHour = document.getElementById('sunset')
 const weatherIcon = document.getElementById('weatherPic')
 const weatherIconSmall = document.getElementById('weatherPicSmall')
+const fiveDayForcastContainer = document.getElementById('fiveDayForcast')
+
 
 // TODAYS WEATHER SECTION
 
@@ -56,28 +58,39 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm&units=metric
   .then((json) => {
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
     filteredForecast.forEach((day) => {
+
+
+
       const weekday = new Date(day.dt * 1000).toLocaleDateString('sv-SE', { weekday: 'long' })
-      fiveDays.innerHTML += `<p>${weekday} ${day.main.temp.toFixed(0)}<sup>&#8451</sup></p>`
+      const temperature = day.main.temp.toFixed(0)
+      let weatherIcon
 
       if (day.weather[0].id === 800) {
         //clear/sunny
-        weatherPicSmall.innerHTML += '<img src="sun.png">'
+        weatherIcon = 'sun.png'
       } else if (day.weather[0].id === 804) {
         //clouds
-        weatherPicSmall.innerHTML += '<img src="cloud.png">'
+        weatherIcon = 'cloud.png'
       } else if (day.weather[0].id < 532 && day.weather[0].id > 499) {
         //rain
-        weatherPicSmall.innerHTML += '<img src="rainy.png">'
+        weatherIcon = 'rainy.png'
       } else if (day.weather[0].id < 623 && day.weather[0].id > 599) {
         //snow
-        weatherPicSmall.innerHTML += '<img src="snowy.png">'
+        weatherIcon = 'snowy.png'
       } else if (day.weather[0].id < 804 && day.weather[0].id > 800) {
         //partly cloudy
-        weatherPicSmall.innerHTML += '<img src="cloudy.png">'
+        weatherIcon = 'cloudy.png'
       }
       else {
-        weatherPicSmall.innerHTML += ' '
+        weatherIcon = ' '
       }
+
+      fiveDayForcastContainer.innerHTML += `
+        <div>
+          <p>${weekday} ${temperature}<sup>&#8451</sup></p>
+          <img src="${weatherIcon}" alt="Idag är det ${temperature} grader">
+        </div>
+      `
     })
   })
 
