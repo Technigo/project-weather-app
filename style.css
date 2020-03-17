@@ -70,9 +70,9 @@ h1 {
 /* FIVE DAYS FORECAST */
 
 .fiveDayForcast {
-  display: flex;
-  flex-direction: row;
-  padding-left: 20px;
+  padding: 20px;
+  width: 100%;
+  max-width: 200px;
 }
 
 .fiveDayForcast sup {
@@ -80,25 +80,19 @@ h1 {
   font-size: small;
 }
 
-.fiveDays {
-  height: 60%;
-  margin: 20px;
+.fiveDayForcast div {
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
 }
 
-.weatherPicSmall {
-  height: 60%;
-  margin: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+.fiveDayForcast p {
+flex-grow: 1;
 }
 
-.weatherPicSmall img {
-  height: 40px;
-  margin: 5px;
+.fiveDayForcast img {
+  width: 40px;
+  height: 40px; 
 }
 
 
@@ -114,13 +108,9 @@ h1 {
     padding: 0;
   }
 
-  .fiveDayForcast {
+  .fiveDayForecastContainer {
+    display: flex;
     justify-content: center;
-  }
- 
-  .weatherPic img {
-   height: 120px;
-    margin-top: 64px;
   }
 
 }
