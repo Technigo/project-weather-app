@@ -86,8 +86,8 @@ biggestCities.forEach((item) => {
       let temp = (currentWeather.main.temp - 273.15).toFixed(1);
       let description = currentWeather.weather[0].description;
 
-      let sunset = (new Date(currentWeather.sys.sunset * 1000)).toLocaleDateString("sv-SE", { timeStyle: "short", timeZone: `${timeZone}` });
-      let sunrise = (new Date(currentWeather.sys.sunrise * 1000)).toLocaleDateString("sv-SE", { timeStyle: "short", timeZone: `${timeZone}` });
+      let sunset = (new Date(currentWeather.sys.sunset * 1000)).toLocaleTimeString("sv-SE", { timeStyle: "short", timeZone: `${timeZone}` });
+      let sunrise = (new Date(currentWeather.sys.sunrise * 1000)).toLocaleTimeString("sv-SE", { timeStyle: "short", timeZone: `${timeZone}` });
 
       let figure = weatherImage(icon);
       current.innerHTML = `The current temperature is ${temp}&#8451; and there are some ${description}. ${figure}`;
