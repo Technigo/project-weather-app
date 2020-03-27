@@ -106,7 +106,7 @@ main {
 /* ---- BACKGROUND ----- */
 
 #background{
-  background: url(/Code/Images/background.jpg);
+  background: url(/Images/background.jpg);
   background-attachment: fixed;
   background-size: cover;
 }
