@@ -1,10 +1,10 @@
 // API for the cities, current weather
 
-const tokyoAPI = "http://api.openweathermap.org/data/2.5/weather?q=tokyo&appid=1c5c00b108885200d83efb308cec13d8"
-const delhiAPI = "http://api.openweathermap.org/data/2.5/weather?q=delhi&appid=1c5c00b108885200d83efb308cec13d8"
-const shanghaiAPI = "http://api.openweathermap.org/data/2.5/weather?q=shanghai&appid=1c5c00b108885200d83efb308cec13d8"
-const mexicoCityAPI = "http://api.openweathermap.org/data/2.5/weather?q=mexico&city&appid=1c5c00b108885200d83efb308cec13d8"
-const saoPauloAPI = "http://api.openweathermap.org/data/2.5/weather?q=sao&paulo&appid=1c5c00b108885200d83efb308cec13d8"
+const tokyoAPI = "https://api.openweathermap.org/data/2.5/weather?q=tokyo&appid=1c5c00b108885200d83efb308cec13d8"
+const delhiAPI = "https://api.openweathermap.org/data/2.5/weather?q=delhi&appid=1c5c00b108885200d83efb308cec13d8"
+const shanghaiAPI = "https://api.openweathermap.org/data/2.5/weather?q=shanghai&appid=1c5c00b108885200d83efb308cec13d8"
+const mexicoCityAPI = "https://api.openweathermap.org/data/2.5/weather?q=mexico&city&appid=1c5c00b108885200d83efb308cec13d8"
+const saoPauloAPI = "https://api.openweathermap.org/data/2.5/weather?q=sao&paulo&appid=1c5c00b108885200d83efb308cec13d8"
 
 
 // DOM elements
