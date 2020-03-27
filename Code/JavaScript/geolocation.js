@@ -75,8 +75,8 @@ const success = (position) => {
 
       header.innerHTML += `${currentWeather.name} `;
 
-      let sunriseTime = (new Date(currentWeather.sys.sunrise * 1000)).toLocaleDateString("sv-SE", { timeStyle: "short" });
-      let sunsetTime = (new Date(currentWeather.sys.sunset * 1000)).toLocaleDateString("sv-SE", { timeStyle: "short" });
+      let sunriseTime = (new Date(currentWeather.sys.sunrise * 1000)).toLocaleTimeString("sv-SE", { timeStyle: "short" });
+      let sunsetTime = (new Date(currentWeather.sys.sunset * 1000)).toLocaleTimeString("sv-SE", { timeStyle: "short" });
 
       sun.innerHTML = `${sunriseIcon} ${sunriseTime} ${sunsetIcon}${sunsetTime}`;
 
