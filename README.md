@@ -1,28 +1,20 @@
-# Weather App
+# Weather App API
 
-This was one of the projects at Technigo Bootcamp with focus on javascript and API's.
+My weather app was built during Technigo Bootcamp. This site let's you see the current weather in Stockholm as well as a forecast for the up coming 5 days. 
 
-# Tech used and learned 🧠
+# Tech used 🧠
 
-- What an API is and how to use it
-- Basic JSON
-- How to use `fetch()` in JavaScript
-- How to use promises in JavaScript
-- How to work with the `Date()` object in JavaScript
+- API Fetch()
+- Json
+- Javascript ES6
+- API Promises
+- Javascript date()
+- HTML
+- CSS
 
-# Requirements 🧪
+# Information
 
-- You should fetch data from the API using `fetch()` in JavaScript
-- All data in the sketch above should be present and fetched from the API
-- The presentation of the data should be in the specified format.
-- The page should work on mobile (mobile first!), tablet and desktop (Be responsive)
-- Code follows Technigo’s code guidelines.
-- Contribute by helping others with this project on Stack Overflow.
-- If selected; demo your solution for your team.
-
-# The problem
-
-If I would have more time on this project I would definitely try to clean up the code and make it shorter and smarter. I would also add different backgrounds depending on the weather and time of the day. 
+I really enjoyed working with this project. I want to go back to it in the future and work on the styling including changing the background colors based on weather and time of the day. It would also be nice to add geolocation to be able to see the weather from multiple places.
 
 # View it live
 
