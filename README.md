@@ -2,13 +2,13 @@
 
 This was one of the projects at Technigo Bootcamp with focus on javascript and API's.
 
-# Tech used and learned 🧠
+# Tech used 🧠
 
-- What an API is and how to use it
-- Basic JSON
-- How to use `fetch()` in JavaScript
-- How to use promises in JavaScript
-- How to work with the `Date()` object in JavaScript
+- API Fetch(), Date() & Promises
+- JSON
+- Javascript
+- CSS
+- HTML
 
 # Requirements 🧪
 
@@ -16,9 +16,6 @@ This was one of the projects at Technigo Bootcamp with focus on javascript and A
 - All data in the sketch above should be present and fetched from the API
 - The presentation of the data should be in the specified format.
 - The page should work on mobile (mobile first!), tablet and desktop (Be responsive)
-- Code follows Technigo’s code guidelines.
-- Contribute by helping others with this project on Stack Overflow.
-- If selected; demo your solution for your team.
 
 # The problem
 
