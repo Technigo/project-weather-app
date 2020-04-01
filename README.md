@@ -16,7 +16,7 @@ https://rautellin-weather-app.netlify.com
 
 ## Requirements I reached 🧪
 
-* To fetch data from the API using `fetch() in JavaScript
+* To fetch data from the API using `fetch()` in JavaScript
 * Based on the geolocation display name of city, current tempereature and weather conditions and the forecast
 * App is responsive
 
