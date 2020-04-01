@@ -11,7 +11,7 @@ https://rautellin-weather-app.netlify.com
 * The syntax behind API and JSON
 * How to use `fetch()` in Javascript
 * How to use promises in JavaScript
-* How to work with the Date() object in JavaScript
+* How to work with the `Date()` object in JavaScript
 * How to work with time difference
 
 ## Requirements I reached 🧪
