@@ -20,7 +20,7 @@ If I had more time I would like to change so that the user can either choose bet
 
 * HTML5
 * CSS3
-* JavaScript JS6
+* JavaScript ES6
 
 ## View it live
 
