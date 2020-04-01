@@ -1,16 +1,30 @@
-# Weather App
+# Weather App 
 
-Current and forecast weather app with data from an API. Geolocation and different js and CSS animations. 
-
-## The problem
-
-I would totally do a different approach next time. I dig too deep into the syntax and how API and json works. Lost a lot of time with that. 
-
-Neither doing a good layout nor cleaning the code is something that can be done in one day. Lesson learned. Especially if you're a perfectionist like I am. Never being satisfied enough is also something I need to work with.
-
-Conclusion, better time management and structure next time. 
-
+Current and weekly forecast weather app with data from an API
 
 ## View it live
 
 https://rautellin-weather-app.netlify.com
+
+## What I learned 🧠
+
+* The syntax behind API and JSON
+* How to use `fetch()` in Javascript
+* How to use promises in JavaScript
+* How to work with the Date() object in JavaScript
+* How to work with time difference
+
+## Requirements I reached 🧪
+
+* To fetch data from the API using fetch() in JavaScript
+* Based on the geolocation display name of city, current tempereature and weather conditions and the forecast
+* App is responsive
+
+## Stretch-goals I reached 🧘
+
+* Used geolocation
+* Used different icons depending on the current weather
+* Used different CSS animations for the navbar and for the background showing a gradient background that moves
+* Made a darkmode based on the current time
+* Added multiple cities
+
