@@ -9,7 +9,7 @@ const img = document.getElementById("show-img")
 const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
 
-const weatherKey = "3c481a17ec1c4b275eed746ad29d58b1" 
+const weatherKey = "3c481a17ec1c4b275eed746ad29d58b1" // hide in gitignore
 const stockholm = "2673730"
 const units = "metric"
 const weatherUrl = `https://api.openweathermap.org/data/2.5/forecast?id=${stockholm}&units=${units}&appid=${weatherKey}`
@@ -21,7 +21,7 @@ const getWeatherForecast = async (url) => {
       return response.json()
     })
     .then((myJson) => {
-
+      console.log(myJson)
       todayForecast(myJson)
       fiveDayForecast(myJson)
 
