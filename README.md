@@ -1,6 +1,6 @@
 # Weather App
 
-In week 6 of Technigo Bootcamp our project was to build a simple weather web app that shows today's weather and temperature, sunsrise & sunset, and a 5-day forecast using an open weather API.
+In week 6 of Technigo Bootcamp our project was to build a simple weather web app that shows today's weather and temperature, sunsrise & sunset, and a 5-day forecast using an open weather API. In my app you can see the wheater in lovely Skanör & Falsterbo in the south of Sweden. 
 
 ## The problem
 
