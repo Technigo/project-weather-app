@@ -2,7 +2,7 @@
 
 The assignment was to build a weather web app that shows today's weather and temperature, and a 5-day forecast using a weather API.
 
-## The problem
+## Approach
 
 I created an app that fetches data from the API based on what city the user selects in a dropdown. It shows today's weather and a 5-day forecast. The background-color changes depending on the temperature, and I also added a night shift mode between 22.00 – 06.00. The icons is added based on the weather description string and here I used a switch statement. 
 
@@ -10,6 +10,6 @@ I started making the Geo location stretch goal but decided to leave it for later
 
 I could think of a thousand additions to this project, but if I had more time I would (besides from the geo location) make an array of the select options instead of adding them in the html, and I would build a function to insert åäö in city names (now I just avoided using any of those cities).
 
-## View it live
+## Deployed
 
 https://technigo-weather-app.netlify.com/
