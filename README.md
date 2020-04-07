@@ -1,6 +1,14 @@
 # Weather App
 
-Creating a weather app using API's and JavaScript to show a 5 day forecast.
+Creating a weather app using API's and JavaScript to show a 5 day forecast 🌻💦⚡️🙋‍♀️
+
+## Code
+I've used:
+  * **API**
+  * **JavaScript**
+  * **CSS**
+  * **HTML**
+  * **Animation**
 
 ## The problem
 
