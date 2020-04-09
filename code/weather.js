@@ -1,8 +1,8 @@
 const weatherUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=d563e29445b827968160d0c39a96cdcd'
 const forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=d563e29445b827968160d0c39a96cdcd'
 const weatherSection = document.getElementById('weatherSection')
-const weatherContainer = document.getElementsByClassName('weatherContainer')
-const weatherIcon = document.getElementsByClassName('weatherIcon')
+const weatherContainer = document.getElementById('weatherContainer')
+const weatherIcon = document.getElementById('weatherIcon')
 
 
 //------------------Weather----------------------------//
@@ -35,13 +35,13 @@ fetch(weatherUrl)
     //------------------Main Weather----------------------------//
 
     weatherSection.innerHTML = `
-      <h1 class="weather-header">The weather in: ${weatherJson.name}</h1>
-      <p class="temperature">temp: ${weatherJson.main.temp.toFixed(1)}</p>
-      <div class="sun"><p >sunrise: ${sunriseTime}</p><p>sunset: ${sunsetTime}</p></div>
-      `
+        <h1 class="weather-header">The weather in:<span id='upperCase'> ${weatherJson.name}</span></h1>
+        <p class="temperature">temp: ${weatherJson.main.temp.toFixed(1)}</p>
+        <div class="sun"><p><span id='upperCase'> sunrise: ${sunriseTime}</span></p><p><span id='upperCase'> sunset: ${sunsetTime}</span></p></div>
+        `
 
     //_______________CODE NOT WORKING!!!______________________________//
-    if (weather.main.temp < 10) {
+    if (weatherJson.main.temp < 10) {
       weatherContainer.classList.toggle("cold")
     } else {
       weatherContainer.classList.toggle("warm")
@@ -70,16 +70,17 @@ fetch(weatherUrl)
     }
 
     const whatKindOfWeather = () => {
+      console.log("My console")
       if (weatherJson.weather[0].main === 'Clouds') {
-        weatherIcon.innerHTML = `<img src="${cloudImg.image} >`
+        weatherIcon.innerHTML = `<img src=${cloudImg.image} >`
       } else if (weatherJson.weather[0].main === 'Clouds') {
-        weatherIcon.innerHTML = `<img src="${cloudyImg.image}>`
+        weatherIcon.innerHTML = `<img src=${cloudyImg.image}>`
       } else if (weatherJson.weather[0].main === 'Clear') {
-        weatherIcon.innerHTML = `<img src="${clearImg.image}>`
+        weatherIcon.innerHTML = `<img src=${clearImg.image}>`
       } else if (weatherJson.weather[0].main === 'Snow') {
-        weatherIcon.innerHTML = `<img src="${snowImg.image}>`
+        weatherIcon.innerHTML = `<img src=${snowImg.image}>`
       } else if (weatherJson.weather[0].main === 'Rain') {
-        weatherIcon.innerHTML = `<img src="${rainImg.image}>`
+        weatherIcon.innerHTML = `<img src=${rainImg.image}>`
       }
     }
 
@@ -110,10 +111,14 @@ fetch(forecastUrl)
       const forecastTemp = (day.main.temp)
       const weatherSection = document.getElementById('weatherSection')
       weatherSection.innerHTML +=
-        `<section id="day-temp">
+        `
+        <div class="forecastData">
+        <section id="day-temp">
         <div id="day"><p>${weekdayName}</p></div>
         <div id="temp"><p>${forecastTemp.toFixed(1)}</p></div>
-        </section>`
+        </div>
+        </section>
+        `
 
     })
   })

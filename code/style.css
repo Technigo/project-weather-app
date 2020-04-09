@@ -1,11 +1,12 @@
 body {
-  font-family: 'Lacquer', sans-serif;
+  font-family: 'Patrick Hand', cursive;
   color: rgba(51, 50, 50, 0.877);
   background: rgb(248, 224, 232);
+  margin: 0;
 }
 
 .weather-header {
-  font-size: 42px;
+  font-size: 49px;
   margin-bottom: 20px;
 }
 
@@ -23,8 +24,10 @@ body {
 }
 
 .weatherContainer {
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
+  display: flex;
+
 }
 
 .cold {
@@ -38,10 +41,12 @@ body {
 }
 
 #weatherSection {
-  padding: 100px;
+  padding: 10px;
   max-width: 400px;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
+
 }
 
 #day-temp {
@@ -53,7 +58,21 @@ body {
 }
 
 .weatherIcon {
-  height: 100px;
-  width: 100px;
-  border: 2px solid;
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  top: 15%;
+  left: 45%;
+}
+
+.weatherIcon img {
+  width: 100%;
+}
+
+#upperCase {
+  text-transform: uppercase;
+}
+
+.forecastData p {
+  font-size: 28px;
 }
