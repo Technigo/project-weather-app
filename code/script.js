@@ -36,6 +36,8 @@ fetch(weatherURL)
     // Determine if it is day or night, used when picking background and icon
     if (currentTime > sunriseTime && currentTime < sunsetTime) {
       dayTime = true
+    } else {
+      dayTime = false
     }
 
     // Determine which weather icon to display
