@@ -42,7 +42,7 @@ fetch(weatherURL)
 
     // Determine which weather icon to display
     if (weatherId === 800 && dayTime) {
-      weatherIcon = '<img src"./assets/white/039-sun.png" alt="sun">'
+      weatherIcon = '<img src="./assets/white/039-sun.png" alt="sun">'
     } else if (weatherId === 800 && !dayTime) {
       weatherIcon = '<img src="./assets/white/024-night-4.png" alt="moon">'
     } else if (weatherId === 801 && dayTime) {
