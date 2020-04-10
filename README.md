@@ -11,4 +11,4 @@ If I knew how I would make my icons work on the forecast but I didn't fully unst
 
 ## View it live
 
-https://elastic-northcutt-4731c9.netlify.com/
+https://weather-app-bytuliany.netlify.com
