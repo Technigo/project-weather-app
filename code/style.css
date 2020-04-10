@@ -182,7 +182,7 @@ footer {
 footer p {
   text-align: center;
   color: #172f42;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 footer a {
@@ -195,7 +195,7 @@ footer a {
   text-align: center;
   padding: 5px;
   color: #172f42;
-  font-size: 10px;
+  font-size: 12px;
   cursor: pointer;
 }
 
