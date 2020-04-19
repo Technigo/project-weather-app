@@ -1,15 +1,22 @@
-# Weather App
+# Weather App 🌤💦❄️
 
-A weather app showing the current temperature in Reykjavík, Iceland and how it feels + a 5 day forecast.
+A weather app showing the current temperature in Reykjavík, Iceland and how it feels + a 5 day forecast using the [Open Weather Map API](https://openweathermap.org/)
 
 
-## The problem
+## Tech
 
-This is my first time working with an API and it was a really cool project but it was also one of the more frustrating ones. 
+- JavaScript
+- API
+- JSON
+- Flexbox
+- CSS
+- HTML
+
+## How I did it
+
+This is my first time working with an API and JSON and it was a really cool project but it was also one of the more frustrating ones. 
+
 I think my main problem was how I structured the website in the HTML.
-
-If I had more time I would figure out how to change the background depending on if it is night or day. I would move the temperature and 'Feels like' apart so there was space in the middle.
-
 
 ## View it live
 
