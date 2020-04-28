@@ -5,7 +5,7 @@ const containerWeather = document.getElementById("weather");
 const header = document.getElementById("header");
 const footer = document.getElementById("footer");
 
-const userChoice = city => {
+const userChoice = (city) => {
   document.getElementById("pick-city").style.display = "none";
   containerWeather.style.display = "block";
 
@@ -14,10 +14,10 @@ const userChoice = city => {
   const weatherFiveDays = `https://api.openweathermap.org/data/2.5/forecast?q=${city},Sweden&units=metric&APPID=778e796f3254363f06afef1bc4ea2b4f`;
 
   fetch(weatherToday)
-    .then(response => {
+    .then((response) => {
       return response.json();
     })
-    .then(json => {
+    .then((json) => {
       const sunriseTime = timeFormat(json.sys.sunrise);
       const sunsetTime = timeFormat(json.sys.sunset);
 
@@ -45,16 +45,15 @@ const userChoice = city => {
     });
 
   fetch(weatherFiveDays)
-    .then(response => {
+    .then((response) => {
       return response.json();
     })
-    .then(json => {
-      const filteredForecast = json.list.filter(item =>
+    .then((json) => {
+      const filteredForecast = json.list.filter((item) =>
         item.dt_txt.includes("03:00")
       );
-      console.log(filteredForecast);
       containerFiveDays.innerHTML = "";
-      filteredForecast.forEach(day => {
+      filteredForecast.forEach((day) => {
         containerFiveDays.innerHTML += `<p>${weekdayFormat(
           day.dt
         )} ${temperatureFormat(day.main.temp)}${String.fromCharCode(
@@ -66,15 +65,8 @@ const userChoice = city => {
     });
 };
 
-//Styles background
-const styleContainers = backgroundColour => {
-  containerWeather.style.backgroundImage = backgroundColour;
-  footer.style.background = backgroundColour;
-  header.style.background = backgroundColour;
-};
-
 //Checks temperature and calls styleContainer function to style based on temp
-const tempCheck = temp => {
+const tempCheck = (temp) => {
   if (temperatureFormat(temp) < 10) {
     styleContainers(
       "linear-gradient(15deg, rgba(34,122,224,1) 0%, rgba(81,217,255,1) 100%)"
@@ -91,12 +83,19 @@ const tempCheck = temp => {
 };
 
 //Checks time and calls styleContainer function to style based on time
-const checkTime = time => {
+const checkTime = (time) => {
   if (time >= 22 || time <= 06) {
     styleContainers(
       "linear-gradient(51deg, rgba(58,67,82,1) 0%, rgba(18,31,88,1) 100%)"
     );
   }
+};
+
+//Styles background
+const styleContainers = (backgroundColour) => {
+  containerWeather.style.backgroundImage = backgroundColour;
+  footer.style.background = backgroundColour;
+  header.style.background = backgroundColour;
 };
 
 //Changes icon based on weather/time of day
@@ -107,7 +106,7 @@ const checkWeather = (weatherType, hours) => {
     "Drizzle",
     "Rain",
     "Snow",
-    "Thunderstorm"
+    "Thunderstorm",
   ];
 
   if (hours >= 22 || hours <= 06) {
@@ -124,16 +123,16 @@ const checkWeather = (weatherType, hours) => {
 };
 
 //Formats time to be HH:MM
-const timeFormat = timeStamp => {
+const timeFormat = (timeStamp) => {
   const time = new Date(timeStamp * 1000).toLocaleTimeString([], {
     hour: "2-digit",
-    minute: "2-digit"
+    minute: "2-digit",
   });
   return time;
 };
 
 //Writes weekday based on date
-const weekdayFormat = timeStamp => {
+const weekdayFormat = (timeStamp) => {
   const weekday = new Date(timeStamp * 1000);
   const dayOfWeek = weekday.toLocaleDateString("en-US", { weekday: "short" });
 
@@ -141,13 +140,13 @@ const weekdayFormat = timeStamp => {
 };
 
 //Formats temp to always have one decimal
-const temperatureFormat = temp => {
+const temperatureFormat = (temp) => {
   let tempFormat = Math.round(temp * 10) / 10;
   return tempFormat.toFixed(1);
 };
 
 //Writes city names in Swedish
-const cityFormat = city => {
+const cityFormat = (city) => {
   if (city === "Malmoe") {
     city = `Malm${String.fromCharCode(246)}`;
     return city;
