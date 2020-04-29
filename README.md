@@ -8,4 +8,4 @@ The challenge for this project was learning what an API is and how to use it. To
 
 ## View it live
 
-https://compassionate-hoover-547cdb.netlify.com/
+https://er-project-weather-app.netlify.app/
