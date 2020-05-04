@@ -38,7 +38,7 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=stockholm,Sweden&units=
     if (weatherId === 2 ) {
       containerBody.style.background = "#DFDCD4"
     }
-    else if (weatherId >= 4.0 ) {
+    else if (weatherId >= 4 ) {
       containerBody.style.background = "#FFF7EE"
     }
     else if (weatherId <= 1,9 ) {
