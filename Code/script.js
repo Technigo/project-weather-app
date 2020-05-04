@@ -58,7 +58,6 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=stockholm,Sweden&units=
     })
 
     .then ((json) => {
-      //console.log(json);
 
       //Display current 5 days
       const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
