@@ -75,5 +75,4 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=stockholm,Sweden&units=
     })
 
     .catch((err) =>{
-      //console.log("caught error", err)
     })
