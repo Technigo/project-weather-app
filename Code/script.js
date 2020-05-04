@@ -14,7 +14,6 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=stockholm,Sweden&units=
     return response.json();
   })
   .then ((json) => {
-    console.log(json);
     // Display city name
     containerTodayCity.innerHTML = `<h1> ${json.name} </h1>`
     //Display current temp and current weather description
