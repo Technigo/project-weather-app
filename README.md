@@ -1,6 +1,6 @@
 # Good Weather&ensp;|&ensp;[View Live &#10555;](https://olle-weather-app.netlify.app/)
 
-Weather App built with "Vanilla" JavaScript using OpenWeather API.
+Weather Web App built with ”Vanilla” JavaScript using OpenWeather API.
 
 ### Geolocation, search and conditional rendering
 It shows today's weather and temperature, a 5-day forecast and time of sunsets and sunrise. It uses the browsers Geolocation to detect what city to check, and there’s also a simple search function. The color of the sites conditionally renders based on the weather. 
@@ -12,10 +12,10 @@ The sunrise and sunset is converted from unix timestamp, and then offset with th
 As a bonus future I added a function to find a random location with good weather. It fetches a random city, and if the weather is good based on a set of conditions it returns the weather. Due to the limitation of the free API, it returns false after 20 failed attempts and asks the user to try again.  
 
 ## Core Tech
-* `fetch()` API
+* Fetch API
 * Promises
 * Geolocation
-* `new Date()` 
+* Date() 
 * Unix time conversion
 * JavaScript ES6
 
