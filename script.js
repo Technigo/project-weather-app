@@ -111,7 +111,7 @@ const weather = (location) => {
     })
     .catch((err) => {
       console.log("Fetch current error: " + err);
-      document.getElementById("current").innerHTML = `<h2>Not a city, try again</h2>`
+      document.getElementById("current").innerHTML = `<h2>Location not found, try again</h2>`
       document.getElementById("forecast").innerHTML = ""
       document.getElementById("sunrise").innerHTML = ""
     })
@@ -135,6 +135,9 @@ const weather = (location) => {
       // Resets the HTML div
       forecastContainer.innerHTML = `<h1 class="side">Prepare for</h1>`
 
+      if (filteredForecast.length === 0) {
+        forecastContainer.innerHTML += `<h2>No forcast found<h2>`
+      }
 
       ///// PRINTING EACH DAY /////
       for (let index = 0; index < filteredForecast.length; index++) {
