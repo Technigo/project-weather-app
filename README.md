@@ -1,6 +1,6 @@
 # Good Weather&ensp;|&ensp;[View Live &#10555;](https://olle-weather-app.netlify.app/)
 
-Weather Web App built with ”Vanilla” JavaScript using OpenWeather API.
+Weather Web App built with 'Vanilla' JavaScript using OpenWeather API.
 
 ### Geolocation, search and conditional rendering
 It shows today's weather and temperature, a 5-day forecast and time of sunsets and sunrise. It uses the browsers Geolocation to detect what city to check, and there’s also a simple search function. The color of the sites conditionally renders based on the weather. 
