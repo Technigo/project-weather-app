@@ -9,27 +9,33 @@
 </head>
 
 <body>
-  <section class="container">
+  <article>
 
-    <div class="search">
-      <input type="text" id="city" value="Reykjavik">
-      <button id="checkButton" onclick="chooseCity()">Check</button>
-    </div>
+    <section class="container">
 
-    <div class="good-weather">
-      <button id="goodWeather" onclick="findGoodWeather(cityList)">Find some good weather!</button>
-    </div>
+      <div class="search">
+        <input type="text" id="city" value="Reykjavik">
+        <button id="checkButton" onclick="chooseCity()">Check</button>
+      </div>
 
-  </section>
+      <div class="good-weather">
+        <button id="goodWeather" onclick="findGoodWeather(cityList)">Find some good weather!</button>
+      </div>
 
-  <section class="container" id="current">
-  </section>
+    </section>
 
-  <section class="container" id="sunrise">
-  </section>
+    <section class="container" id="current">
+    </section>
 
-  <section class="container" id="forecast">
-  </section>
+    <section class="container" id="sunrise">
+    </section>
+
+  </article>
+
+  <article>
+    <section class="container" id="forecast">
+    </section>
+  </article>
 
   <script src="script.js"></script>
 </body>

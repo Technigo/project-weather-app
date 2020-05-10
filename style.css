@@ -60,6 +60,13 @@ h2 {
   margin: 0;
 }
 
+h3 {
+  font-size: 1.25em;
+  line-height: 150%;
+  font-weight: normal;
+  margin: 0;
+}
+
 p {
   max-width: 175px;
 }
@@ -76,7 +83,7 @@ img {
 input {
   font-family: Arial, Helvetica, sans-serif;
   height: 30px;
-  width: 50%;
+  width: 115px;
   padding: 5px 15px;
   outline: none;
   border: none;
@@ -102,4 +109,30 @@ button {
 
 button:hover {
   color: grey;
+}
+
+
+/* QUERIES */
+
+@media (min-width: 768px) {
+  body {
+    margin-left: 10%;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    margin-left: 0;
+    display: flex;
+  }
+
+  article {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  article :nth-child(1) { 
+    order: 2; 
+  }
 }
