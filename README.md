@@ -20,7 +20,7 @@ As a bonus future I added a function to find a random location with good weather
 * JavaScript ES6
 
 ## Screenshot
-![Screenshot](screenshot.png)
+![Screenshot](screenshot.jpg)
 
 ## View it live
 https://olle-weather-app.netlify.app
