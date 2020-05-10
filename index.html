@@ -6,10 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>What's the weather</title>
   <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
+  <section class="container">
+
+    <div class="search">
+      <input type="text" id="city" value="Reykjavik">
+      <button id="checkButton" onclick="chooseCity()">Check</button>
+    </div>
+
+    <div class="good-weather">
+      <button id="goodWeather" onclick="findGoodWeather(cityList)">Find some good weather!</button>
+    </div>
+
+  </section>
 
   <section class="container" id="current">
   </section>
@@ -18,18 +29,6 @@
   </section>
 
   <section class="container" id="forecast">
-  </section>
-
-  <section class="container">
-    <div class="search">
-      <input type="text" id="city" value="Reykjavik">
-      <a href="#"></a><button id="checkButton" onclick=chooseCity();>Check</button></a>
-    </div>
-
-    <div class="good-weather">
-      <a href="#"><button id="goodWeather" onclick=findGoodWeather(cityList)>Just find me some good
-          weather!</button></a>
-    </div>
   </section>
 
   <script src="script.js"></script>

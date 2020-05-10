@@ -1,5 +1,5 @@
 // OPEN WEATHER API ID
-//const key = "c333ad1637e15b11d381a890076be47b"
+// const key = "c333ad1637e15b11d381a890076be47b"
 const key = "e6dd4de800de3576c7c23ef944a736c4"
 
 
@@ -15,8 +15,6 @@ const round = (number, decimal) => {
   const rounded = Math.round(number * (Math.pow(10, decimal))) / (Math.pow(10, decimal))
   return rounded
 }
-
-
 
 
 ///// CONVERTING TO LOCAL TIME //////
@@ -44,7 +42,6 @@ const timeFilter = (filterTime, timezone) => {
 
 
 ////// GOD OR BAD ALGO /////
-
 const goodOrBad = (main, clouds, wind, temprature) => {
   const bad = ["Thunderstorm", "Rain", "Mist", "Snow", "Smoke", "Dust", "Fog", "Sand", "Ash", "Squall", "Tornado"]
 
@@ -72,10 +69,9 @@ const weather = (location) => {
 
 
   ///// CURRENT WEATHER /////
-
   fetch(
-      `https://api.openweathermap.org/data/2.5/weather?${location}&units=metric&appid=${key}`
-    )
+    `https://api.openweathermap.org/data/2.5/weather?${location}&units=metric&appid=${key}`
+  )
     .then((response) => {
       return response.json();
     })
@@ -115,14 +111,16 @@ const weather = (location) => {
     })
     .catch((err) => {
       console.log("Fetch current error: " + err);
+      document.getElementById("current").innerHTML = `<h2>Not a city, try again</h2>`
+      document.getElementById("forecast").innerHTML = ""
+      document.getElementById("sunrise").innerHTML = ""
     })
 
 
   ///// WEATHER FORECAST /////
-
   fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?${location}&units=metric&appid=${key}`
-    )
+    `https://api.openweathermap.org/data/2.5/forecast?${location}&units=metric&appid=${key}`
+  )
     .then((response) => {
       return response.json();
     })
@@ -138,9 +136,7 @@ const weather = (location) => {
       forecastContainer.innerHTML = `<h1 class="side">Prepare for</h1>`
 
 
-
       ///// PRINTING EACH DAY /////
-
       for (let index = 0; index < filteredForecast.length; index++) {
         const date = new Date(filteredForecast[index].dt * 1000)
 
@@ -160,9 +156,7 @@ const weather = (location) => {
 
         // Printing each day
         forecastContainer.innerHTML += `<div class="day"> <p>A <strong>${day}</strong> with ${pre} ${weather} and ${temp}&nbsp&#176;C<div><img src=${iconFile} alt="weather icon"></div></div>`
-        // <div id="day${index}"></div>
       }
-
     })
     .catch((err) => {
       console.log("Fetch forcast error: " + err);
@@ -173,10 +167,11 @@ const weather = (location) => {
 ///// GET LOCATION /////
 const defaultCity = "stockholm"
 
+// Using geo-location //
 const getLocation = () => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(usePosition);
-    document.getElementById("current").innerHTML = `<h2>Having a look at your area, please wait! <h2>`
+    document.getElementById("current").innerHTML = `<h2>Finding your area, please wait! <h2>`
   } else {
     weather(`q=${defaultCity}`)
   }
@@ -188,13 +183,12 @@ const usePosition = (position) => {
   const apiLocation = `lat=${latitude}&lon=${longitude}`
   weather(apiLocation)
 }
+
 getLocation()
-//weather(`q=${defaultCity}`)
 
 
 
-
-//// BONUS! FINDING RANDOM GOOD WEATHER BUTTON ////
+//// BONUS! FINDING RANDOM GOOD WEATHER ////
 
 ///// Random position in array /////
 const random = (array) => {
@@ -203,24 +197,26 @@ const random = (array) => {
 
 // Saves already checked cities
 let checkedCityArray = []
-let delay = false
+
+// limit to not overrun the API
+let numberToCheck = 18
 
 // Takes a list of cities and check a random one until good weather is found
 const findGoodWeather = (array) => {
   let randomCity = random(array)
 
   if (checkedCityArray.includes(randomCity)) {
-    checkOneCity(cityArray)
+    console.log(randomCity + " is checked");
+    findGoodWeather(array) // if random city is already checked
   } else {
 
     fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${randomCity}&units=metric&appid=${key}`
-      )
+      `https://api.openweathermap.org/data/2.5/weather?q=${randomCity}&units=metric&appid=${key}`
+    )
       .then((response) => {
         return response.json();
       })
       .then((json) => {
-        const cityName = json.name
         const temprature = json.main.temp
         const wind = json.wind.speed
         const clouds = json.clouds.all
@@ -228,38 +224,38 @@ const findGoodWeather = (array) => {
         const goodBad = goodOrBad(mainWeather, clouds, wind, temprature)
 
         if (goodBad === "good") {
-          weather(`q=${randomCity}`) //redundent to check the city again, could use the info if I add more functions 
-          checkedCityArray = [] // resetting checked cities
+          weather(`q=${randomCity}`) // redundent to check the city again 
+          numberToCheck = checkedCityArray.length + 18 // resets the limit 
         } else {
           checkedCityArray.push(randomCity)
-          if (checkedCityArray.length < 18) {
+          if (checkedCityArray.length < numberToCheck) {
             findGoodWeather(array) //runs the funcion again if less than 18 cities hav been checked
           } else {
-            document.getElementById("current").innerHTML = `<h2>No good weather found right now, try again in a bit!</h2>`
-            document.getElementById("forecast").innerHTML = `<h2></h2>`
-            checkedCityArray = [] // quick fix to reset the checkedCityArray.length
-
+            console.log("No good weather found " + checkedCityArray.length);
+            document.getElementById("current").innerHTML = `<h2>No good weather found right now, try again in a while.</h2>`
+            document.getElementById("forecast").innerHTML = ""
+            document.getElementById("sunrise").innerHTML = ""
+            numberToCheck += 18 // add to be able to run again 
           }
         }
       })
+      .catch((err) => {
+        console.log("Random city name error: " + err);
+        findGoodWeather(array) //runs again if random city name error
+      })
   }
-
 }
-
 
 let cityList = []
 
 // Getting a list of cities and running findGoodWeather() //
 const citiesToCheck = () => {
 
-  // List of cities
-  // const cityArray = ["stockholm", "las vegas", "los angeles", "sydney", "madrid", "dubai", "cape town", "havana", "nice", "hawaii", "loja", "sao paulo", "canary islands", "malaga", "san diego", "cyprus", "morocco"]
-
-  ///// USING JSON LIST OF CITIES /////
+  ///// USING JSON LIST OF CITIES TO CHECK /////
   const listOfCities = `https://raw.githubusercontent.com/mahemoff/geodata/master/cities_with_countries.txt`
 
   fetch(
-      listOfCities)
+    listOfCities)
     .then((response) => {
       return response.json()
     })
@@ -279,9 +275,7 @@ const citiesToCheck = () => {
 citiesToCheck()
 
 
-
-/// Adding a country convertion found online ///
-
+/// Country convertion from ISO to Name ///
 const isoCountries = {
   'AF': 'Afghanistan',
   'AX': 'Aland Islands',

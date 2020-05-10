@@ -5,7 +5,6 @@ body {
   margin: 25px 0;
   min-height: 100vh;
   background: linear-gradient(23deg, rgba(50, 0, 150, 1) 0%, rgba(0, 0, 255, 1) 40%, rgba(0, 0, 255, 1) 60%, rgba(16, 110, 255, 1) 100%);
-
 }
 
 /* Body classes depending on weather */
@@ -14,12 +13,10 @@ body {
   background: linear-gradient(23deg, rgba(255, 61, 0, 1) 0%, rgba(255, 140, 0, 1) 40%, rgba(255, 140, 0, 1) 78%, rgba(255, 220, 0, 1) 100%);
 }
 
-
 .bad {
   background: rgba(40, 40, 40, 1);
   background: linear-gradient(23deg, rgba(0, 0, 0, 1) 0%, rgba(40, 40, 40, 1) 40%, rgba(60, 60, 60, 1) 80%, rgba(89, 89, 89, 1) 100%);
 }
-
 
 .container {
   margin: 0px 7% 50px 7%;
@@ -28,22 +25,18 @@ body {
   padding-left: 25px;
 }
 
-
 #sunrise {
   width: 60%;
   max-width: 300px;
 }
 
-
 #forcast {
   margin-top: 100px;
 }
 
-
 .side {
   margin-left: -25px;
 }
-
 
 .day {
   display: flex;
@@ -53,15 +46,12 @@ body {
   font-size: 1.5em;
 }
 
-
-h1,
-h2 {
+h1 {
   font-size: 2em;
   font-weight: normal;
   margin: 0 0 30px 0;
   line-height: 150%;
 }
-
 
 h2 {
   font-size: 1.5em;
@@ -70,14 +60,9 @@ h2 {
   margin: 0;
 }
 
-
-strong {}
-
-
 p {
   max-width: 175px;
 }
-
 
 img {
   width: 90px;
@@ -103,8 +88,6 @@ input {
   margin-bottom: 15px;
 }
 
-
-
 button {
   background: white;
   height: 40px;
@@ -116,7 +99,6 @@ button {
   cursor: pointer;
   border: 0;
 }
-
 
 button:hover {
   color: grey;
