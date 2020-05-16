@@ -24,4 +24,4 @@ If I had more time I would like to change so that the user can either choose bet
 
 ## View it live
 
-View site here: https://small-weather-forecast.netlify.com/
+https://small-weather-forecast.netlify.app/
