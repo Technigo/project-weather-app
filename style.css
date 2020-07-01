@@ -13,16 +13,17 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: white;
 }
-.weekforecast-container {
+.weather-container {
     display:flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     width: 450px;
     padding: 30px;
+    margin: 40px;
 
 }
-.typeofweather {
+.main {
     display: flex;
     flex-direction: column;
 }
@@ -30,11 +31,14 @@ body {
     border: 3px solid white;
     border-radius: 5px;
     padding:40px;
+    min-width: auto;
 }
-.todays-weather {
+.sunRise, .sunSet {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    padding: 10px;
+    margin: 20px;
     
 }
 @media (max-width:920px){

@@ -1,33 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>🌪 Weather</title>
-</head>
-<body>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Simonetta&display=swap" rel="stylesheet">
+    <title>🌪 Weather App</title>
+  </head>
+  <body>
+      <section class="weather-container">
+        <div id="weatherContainer"></div>
+        
+        <div id="sunrise"></div>
 
-    <div class="weather-container">
-        <div class="todays-weather">
-            <h1>Todays Weather Forecast</h1>
-            <div id="city"></div>
-            <div id="weather">weather report coming your way!</div>
-            <div id="temp">tempex</div>
-            <div id="description">descex</div>
-            <div id="sunrise"></div>
-            <div id="sunset"></div>
-            <img src="" alt="">
-        </div>
-        <div id="weekForecast">
-            <div class="weekforecast-container">
-                <div id="date"></div>
-                <div id="typeOfWeather"></div>
-                <div id="tempMin"></div>
-                <div id="tempMax"></div>
-            </div>
-        </div>
-    </div>
+        <div id="sunset"></div>
+        
+        <div id="week"></div>
+    </section>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
