@@ -1,63 +1,69 @@
-*, *::before, *::after { box-sizing: inherit; }
-
-html {
-  box-sizing: border-box;
-}
-
 /*body gradients*/
 .hot {
-  background-image: linear-gradient(#ffc371, #ff5f6d);
+  background-image: linear-gradient(white, #ca010b);
 }
 .warm {
-  background-image: linear-gradient(#bfe9ff, #ff6e7f);
+  background-image: linear-gradient(white, #ff6961);
 }
 .medium {
-  background-image: linear-gradient(#ffd194, #70e1f5);
+  background-image: linear-gradient(white, #fc8eac);
 }
 .cold {
-  background-image: linear-gradient(#b6fbff, #83a4d4);
+  background-image: linear-gradient(white, #b0cde1);
 }
 .freezing {
-  background-image: linear-gradient(#fff, #076585);
+  background-image: linear-gradient(#fff, #4269c8);
 }
 
-
-/*fonts*/
 .body {
   font-family: 'Open Sans', sans-serif;
   background-color: linen;
+  margin: 0;
+  padding: 5%;
 }
+
 h1 {
   font-size: 80px;
+  margin-block-start: 0;
   margin-bottom: 0;
 }
+
 h2 {
   font-size: 30px;
   margin-block-start: 0;
   margin: 0;
 }
+
 h3 {
   text-transform: capitalize;  
 }
+
 h4 {
   font-size: 15px;
   margin-block-end: 0;
   margin: 0;
 }
+
 p {
-  text-align: justify;
   font-size: 20px;
 }
 
-/*containers*/
+header {
+  display: flex;
+  flex-direction: column;
+}
+
 .weather-image {
-  height: 200px;
-  float: right;
+  height: 250px;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5%;
 }
 
 .header-temp {
-  padding-top: 32px;
-  margin: 32px;
+  margin: 5%;
 }
 
 .main-container {
@@ -69,20 +75,28 @@ p {
 .weather {
   display: flex;
   flex-direction: column;
-  margin: 0px 32px;
+  margin: 0 5%;
 }
 
-.sun-rise-set {
+.sun-section {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  margin: 0px 32px;
+}
+
+.sun-moves {
+  display: flex;
+  flex-direction: column;
+  margin: 5%;
+}
+
+.sun-moves p {
+  margin: 0;
 }
 
 .five-days {
   display: flex;
   flex-direction: column;
-  margin: 32px;
+  margin: 5%;
   justify-content: space-around;
 }
 
@@ -99,6 +113,17 @@ p {
 
 /* Media Queries bigger screens*/
 @media (min-width: 668px) {
+
+header {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
+}
+
+h1 {
+margin-top: 50%;
+}
+
 .main-container {
   display: flex;
   flex-flow: row wrap;
