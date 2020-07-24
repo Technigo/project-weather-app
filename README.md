@@ -10,4 +10,4 @@ If I had more time, I'd make a fallback/response for when the geolocater is not 
 ## View it live
 
 Technigo Project Weather App:
-https://gifted-golick-886bea.netlify.com/
+https://weather-project-technigo.netlify.app/
