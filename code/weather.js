@@ -1,3 +1,4 @@
+
 const tempToday = document.getElementById('headerTemp')
 const skyToday = document.getElementById('headerPicture')
 const weatherInfo = document.getElementById('weather')
@@ -6,7 +7,7 @@ const sunDown = document.getElementById('sunSet')
 const forecasted = document.getElementById('fiveDays')
 const body = document.getElementById('body')
 const locationDropdown = document.getElementById('locationDropdown')
-const  weatherIcon = document.getElementById('weatherImage')
+const weatherIcon = document.getElementById('weatherImage')
 
 
 if (navigator.geolocation) {
@@ -67,7 +68,7 @@ function displayLocationInfo(position) {
     .then(response => response.json())
     .then((jsonForecast) => {
       const filteredForecast = jsonForecast.list.filter(item => item.dt_txt.includes('12:00'))
-      filteredForecast.forEach((forecast) => { 
+      filteredForecast.forEach((forecast) => {
         const temperature = Math.round(forecast.main.temp * 10) / 10;
         const feelsLike = Math.round(forecast.main.feels_like * 10) / 10;
         const upcomingDays = new Date(forecast.dt_txt);
@@ -77,7 +78,6 @@ function displayLocationInfo(position) {
       <td><img src="https://openweathermap.org/img/wn/${icon}.png" class= "forecast-icon"/></td><td>${temperature}&#730;</td></table>`
       })
     })
-  }
+}
 
- 
 
