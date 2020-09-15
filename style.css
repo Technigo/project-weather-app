@@ -2,35 +2,57 @@
     box-sizing: border-box;
 }
 
+.body {
+    padding: 0 7px;
+}
+
+.menu {
+    font-size: 3em;
+    margin: 10px 0 0 10px;
+    color: rgb(255 255 255 / 0.86);
+}
+
 .cool {
     background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
     color: white;
+    -webkit-animation: AnimationName 18s ease infinite;
+    -moz-animation: AnimationName 18s ease infinite;
+    animation: AnimationName 18s ease infinite;
 }
 
 .medium {
     background-color: #a8edea;
     background-image: linear-gradient(180deg, #0c7a75 0%, #ff93b6 100%);
     color: white;
+    -webkit-animation: AnimationName 18s ease infinite;
+    -moz-animation: AnimationName 18s ease infinite;
+    animation: AnimationName 18s ease infinite;
 }
 
 .warm {
-    background: #FDC830;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(180deg, #F37335, #FDC830);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(180deg, #F37335, #FDC830);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+    background: linear-gradient(180deg, #F37335, #FDC830);
     color: white;
+    -webkit-animation: AnimationName 18s ease infinite;
+    -moz-animation: AnimationName 18s ease infinite;
+    animation: AnimationName 18s ease infinite;
 }
 
 .cool-night {
     background-image: linear-gradient(180deg, #30cfd0 0%, #330867 100%);
     color: white;
+    -webkit-animation: AnimationName 18s ease infinite;
+    -moz-animation: AnimationName 18s ease infinite;
+    animation: AnimationName 18s ease infinite;
 }
 
 .medium-night {
-    background-image: linear-gradient(180deg, #191c58 0%, #2f103d 49%, #23546c 100%);
+    background: linear-gradient(183deg, #146751, #1b2150);
+    background-size: 400% 400%;
+    -webkit-animation: AnimationName 18s ease infinite;
+    -moz-animation: AnimationName 18s ease infinite;
+    animation: AnimationName 18s ease infinite;
+    /* background-image: linear-gradient(180deg, #191c58 0%, #2f103d 49%, #23546c 100%); */
     color: white;
 }
 
@@ -47,7 +69,7 @@
 }
 
 .small-icon {
-    height: 70px;
+    height: 40px;
 }
 
 .weather-icon {
@@ -84,7 +106,7 @@
     font-size: 3em;
     margin: 0;
     font-family: 'Roboto', sans-serif;
-    font-weight: 900;
+    font-weight: 500;
 }
 
 .conditions {
@@ -96,7 +118,7 @@
 }
 
 .current-temperature {
-    font-size: 3em;
+    font-size: 5em;
     margin: 0;
 }
 
@@ -141,6 +163,7 @@
 .top-flex-wrapper {
     display: flex;
     flex-direction: column;
+    margin-top: 10px;
 }
 
 .middle-flex-wrapper {
@@ -151,6 +174,12 @@
 .bottom-flex-wrapper {
     display: flex;
     justify-content: space-between;
+    margin-top: 30px;
+}
+
+bottom-text-flex-wrapper {
+    display: flex;
+    flex-direction: column;
 }
 
 .sunset-wrapper {
@@ -200,151 +229,217 @@ body,
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(2, 1.3fr) repeat(2, 0.7fr);
-    /* grid-template-rows: 2.6fr repeat(5, 0.5fr) 1fr; */
-    grid-template-rows: auto;
-    gap: 4px 4px;
+    grid-template-columns: repeat(2, 2.5fr) 1.89fr;
+    grid-template-rows: 3fr repeat(6, 0.4fr);
+    /* grid-template-rows: auto; */
+    /* gap: 4px 4px; */
     grid-template-areas:
-        "mainweather mainweather mainweather mainweather"
-        "weatherday1 iconday1 tempday1 feelslikeday1"
-        "weatherday2 iconday2 tempday2 feelslikeday2"
-        "weatherday3 iconday3 tempday3 feelslikeday3"
-        "weatherday4 iconday4 tempday4 feelslikeday4"
-        "weatherday5 iconday5 tempday5 feelslikeday5"
-        ". . . .";
+        "mainweather mainweather mainweather"
+        "weatherday1 iconday1 tempday1"
+        "weatherday2 iconday2 tempday2"
+        "weatherday3 iconday3 tempday3"
+        "weatherday4 iconday4 tempday4"
+        "weatherday5 iconday5 tempday5"
+        ". . .";
 }
 
 .mainweather {
     grid-area: mainweather;
     padding: 5px;
+    margin: 45px 10px 0px 10px;
+    color: rgb(255 255 255 / 0.86);
 }
 
 .weatherday1 {
     grid-area: weatherday1;
     background-color: transparent;
-    align-self: center;
+    align-items: stretch;
 }
 
 .weatherday2 {
     grid-area: weatherday2;
     background-color: transparent;
-    align-self: center;
+    align-items: stretch;
 }
 
 .weatherday3 {
     grid-area: weatherday3;
     background-color: transparent;
-    align-self: center;
+    align-items: stretch;
 }
 
 .weatherday4 {
     grid-area: weatherday4;
     background-color: transparent;
-    align-self: center;
+    align-items: stretch;
 }
 
 .weatherday5 {
     grid-area: weatherday5;
     background-color: transparent;
-    align-self: center;
+    align-items: stretch;
 }
 
 .iconday1 {
     grid-area: iconday1;
     background-color: transparent;
-    justify-self: center;
-
+    /* justify-self: center; */
+    align-items: stretch;
 }
 
 .iconday2 {
     grid-area: iconday2;
     background-color: transparent;
-    justify-self: center;
-
+    /* justify-self: center; */
+    align-items: stretch;
 }
 
 .iconday3 {
     grid-area: iconday3;
     background-color: transparent;
-    justify-self: center;
+    /* justify-self: center; */
+    align-items: stretch;
 }
 
 .iconday4 {
     grid-area: iconday4;
     background-color: transparent;
-    justify-self: center;
+    /* justify-self: center; */
+    align-items: stretch;
 }
 
 .iconday5 {
     grid-area: iconday5;
     background-color: transparent;
-    justify-self: center;
+    /* justify-self: center; */
+    align-items: stretch;
 }
 
 .tempday1 {
     grid-area: tempday1;
     background-color: transparent;
-    align-self: center;
+    align-items: stretch;
 }
 
 .tempday2 {
     grid-area: tempday2;
     background-color: transparent;
-    align-self: center;
+    /* align-self: center; */
+    align-items: stretch;
 }
 
 .tempday3 {
     grid-area: tempday3;
     background-color: transparent;
-    align-self: center;
+    align-items: stretch;
 }
 
 .tempday4 {
     grid-area: tempday4;
     background-color: transparent;
-    align-self: center;
+    align-items: stretch;
 }
 
 .tempday5 {
     grid-area: tempday5;
     background-color: transparent;
-    align-self: center;
+    align-items: stretch;
 }
 
 .feelslikeday1 {
     grid-area: feelslikeday1;
     background-color: transparent;
-    align-self: center;
+    align-items: stretch;
+    display: none;
 }
 
 .feelslikeday2 {
     grid-area: feelslikeday2;
     background-color: transparent;
-    align-self: center;
+    align-items: stretch;
+    display: none;
 }
 
 .feelslikeday3 {
     grid-area: feelslikeday3;
     background-color: transparent;
-    align-self: center;
+    align-items: stretch;
+    display: none;
 }
 
 .feelslikeday4 {
     grid-area: feelslikeday4;
     background-color: transparent;
-    align-self: center;
+    align-items: stretch;
+    display: none;
 }
 
 .feelslikeday5 {
     grid-area: feelslikeday5;
     background-color: transparent;
-    align-self: center;
+    align-items: stretch;
+    display: none;
 
 }
 
 .gridCell {
     padding: 0 8px;
-    color: #4a4545;
+    color: #fff;
+    font-weight: bold;
     font-size: 14px;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+}
 
+
+.css-selector {
+    background: linear-gradient(183deg, #146751, #1b2150);
+    background-size: 400% 400%;
+
+    -webkit-animation: AnimationName 18s ease infinite;
+    -moz-animation: AnimationName 18s ease infinite;
+    animation: AnimationName 18s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0% {
+        background-position: 0% 9%
+    }
+
+    50% {
+        background-position: 100% 92%
+    }
+
+    100% {
+        background-position: 0% 9%
+    }
+}
+
+@-moz-keyframes AnimationName {
+    0% {
+        background-position: 0% 9%
+    }
+
+    50% {
+        background-position: 100% 92%
+    }
+
+    100% {
+        background-position: 0% 9%
+    }
+}
+
+@keyframes AnimationName {
+    0% {
+        background-position: 0% 9%
+    }
+
+    50% {
+        background-position: 100% 92%
+    }
+
+    100% {
+        background-position: 0% 9%
+    }
 }

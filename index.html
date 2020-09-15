@@ -3,13 +3,14 @@
 
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
         <title>Document</title>
         <link rel="stylesheet" href="./style.css">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap" rel="stylesheet">
     </head>
 
-    <body>
+    <body id="body">
+        <!--   <div class="menu">&#9776;</div>-->
         <!-- A grid to put the values in-->
         <div class="grid-container">
             <div class="mainweather" id="mainWeather">
@@ -32,8 +33,10 @@
                     </label>
                 </div>
                 <div class="bottom-flex-wrapper">
-                    <p id="today" class="today"></p>
-                    <p id="conditions" class="conditions"></p>
+                    <div class="bottom-text-flex-wrapper">
+                        <p id="today" class="today"></p>
+                        <p id="conditions" class="conditions"></p>
+                    </div>
                     <p id="feelsLikeTemperature" class="feels-like-temperature"><span>Feels like</span></p>
                     <div class="sun-wrapper">
                         <div class="sunrise-wrapper">
@@ -65,11 +68,12 @@
             <div class="tempday3 gridCell" id="tempDay3">tempday3</div>
             <div class="tempday4 gridCell" id="tempDay4">tempday4</div>
             <div class="tempday5 gridCell" id="tempDay5">tempday5</div>
-            <div class="feelslikeday1 gridCell" id="feelsLikeDay1">feelsLikeDay1</div>
-            <div class="feelslikeday2 gridCell" id="feelsLikeDay2">feelsLikeDay2</div>
-            <div class="feelslikeday3 gridCell" id="feelsLikeDay3">feelsLikeDay3</div>
-            <div class="feelslikeday4 gridCell" id="feelsLikeDay4">feelsLikeDay4</div>
-            <div class="feelslikeday5 gridCell" id="feelsLikeDay5">feelsLikeDay5</div>
+            <!--  <div class="feelslikeday1" id="feelsLikeDay1">feelsLikeDay1</div>
+            <div class="feelslikeday2" id="feelsLikeDay2">feelsLikeDay2</div>
+            <div class="feelslikeday3" id="feelsLikeDay3">feelsLikeDay3</div>
+            <div class="feelslikeday4" id="feelsLikeDay4">feelsLikeDay4</div>
+            <div class="feelslikeday5" id="feelsLikeDay5">feelsLikeDay5</div>
+         -->
         </div>
         <script src="./script.js"></script>
     </body>

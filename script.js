@@ -34,7 +34,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
         //console.log(json["sys"].sunset);
         //console.log(json["weather"][0].main);
         setSunValues(json["sys"].sunrise, json["sys"].sunset);
-        setConditions(json["weather"][0].main);
+        setConditions(json["weather"][0].description);
         setTemperatureColor(json["main"].temp, json.dt);
 
         //let iconID = json["weather"][0]["icon"];
@@ -93,8 +93,8 @@ const setTemperatureColor = (temp, timestamp) => {
 
     let todayDate = new Date(timestamp * 1000);
     let timeForWeatherUpdate = todayDate.getHours();
-    let divToChange = document.getElementById('mainWeather');
-
+    //let divToChange = document.getElementById('mainWeather');
+    let divToChange = document.getElementById('body');
     console.log(timeForWeatherUpdate + "TIME TO CONSIDER W COLOR");
 
     //Display day colors
@@ -191,10 +191,10 @@ const populateGrid = (element, index, array) => {
     let currentWeatherDayCell = 'weatherDay' + idIndexForHTML;
     let currentIconDayCell = 'iconDay' + idIndexForHTML;
     let currentTempDayCell = 'tempDay' + idIndexForHTML;
-    let currentFeelsLikeDayCell = 'feelsLikeDay' + idIndexForHTML;
+    //let currentFeelsLikeDayCell = 'feelsLikeDay' + idIndexForHTML;
 
 
-    console.log(currentWeatherDayCell, currentIconDayCell, currentTempDayCell, currentFeelsLikeDayCell);
+    // console.log(currentWeatherDayCell, currentIconDayCell, currentTempDayCell, currentFeelsLikeDayCell);
     let dayOfWeek = getDayOfWeek(element["dt"]);
     console.log("DayofWeek:" + dayOfWeek);
     //console.log("Timestamp: " + element["dt"]);
@@ -214,7 +214,7 @@ const populateGrid = (element, index, array) => {
     document.getElementById(currentWeatherDayCell).innerHTML = dayOfWeek;
     document.getElementById(currentIconDayCell).firstChild.src = iconURL;
     document.getElementById(currentTempDayCell).innerHTML = dayTemp;
-    document.getElementById(currentFeelsLikeDayCell).innerHTML = feelsLikeTemp;
+    // document.getElementById(currentFeelsLikeDayCell).innerHTML = feelsLikeTemp;
 }
 
 //These functions will be used in the loop to populate the grid, they don't set any values themselves,
