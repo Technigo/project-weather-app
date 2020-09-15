@@ -6,40 +6,70 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <link rel="stylesheet" href="./style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap" rel="stylesheet">
     </head>
 
     <body>
         <!-- A grid to put the values in-->
         <div class="grid-container">
             <div class="mainweather" id="mainWeather">
-                <img src="" id="weatherIcon" class="weather-icon" />
-                <p id="currentTemperature"></p>
-                <p id="feelsLikeTemperature"></p>
-                <h1 id="myLocationName"> City </h1>
-                <p id="conditions"></p>
-                <p id="sunRise"></p>
-                <p id="sunSet"></p>
+                <div class="top-flex-wrapper">
+                    <img src="" id="weatherIcon" class="weather-icon" />
+                    <p id="currentTemperature" class="current-temperature"></p>
+                </div>
+                <div class="middle-flex-wrapper">
+                    <h1 id="myLocationName" class="my-location-name"> City </h1>
+                    <label for="city-select" class="city-label">
+                        <img src="./icons/location.png" class="location-icon" id="locationIcon" />
+                        <select type="select" name="city-select" id="citySelect" class="city-select"
+                            onchange="selectCity()">
+                            <option class="select-option" value=""></option>
+                            <option class="select-option" value="myLoc">Use my location</option>
+                            <option class="select-option" value="STH">Stockholm</option>
+                            <option class="select-option" value="ND">New Delhi</option>
+                            <option class="select-option" value="SY">Sydney</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="bottom-flex-wrapper">
+                    <p id="today" class="today"></p>
+                    <p id="conditions" class="conditions"></p>
+                    <p id="feelsLikeTemperature" class="feels-like-temperature"><span>Feels like</span></p>
+                    <div class="sun-wrapper">
+                        <div class="sunrise-wrapper">
+                            <!--<img src="./icons/sunrise.png" class="icon-sun" />-->
+                            <p id="sunRise" class="sun-rise-p"></p>
+                            <span class="sun-up">&lsaquo;</span>
+                        </div>
+                        <div class="sunset-wrapper">
+                            <!--<img src="./icons/sunset.png" class="icon-sun" />-->
+                            <p id="sunSet" class="sun-set-p"></p>
+                            <span class="sun-down">&lsaquo;</span>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="sun-text-wrapper">-->
             </div>
-            <div class="weatherday1" id="weatherDay1">Day1</div>
-            <div class="weatherday2" id="weatherDay2">Day2</div>
-            <div class="weatherday3" id="weatherDay3">Day3</div>
-            <div class="weatherday4" id="weatherDay4">Day4</div>
-            <div class="weatherday5" id="weatherDay5">Day5</div>
-            <div class="iconday1" id="iconDay1"><img class="small-icon" src="" /></div>
-            <div class="iconday2" id="iconDay2"><img class="small-icon" src="" /></div>
-            <div class="iconday3" id="iconDay3"><img class="small-icon" src="" /></div>
-            <div class="iconday4" id="iconDay4"><img class="small-icon" src="" /></div>
-            <div class="iconday5" id="iconDay5"><img class="small-icon" src="" /></div>
-            <div class="tempday1" id="tempDay1">tempday1</div>
-            <div class="tempday2" id="tempDay2">tempday2</div>
-            <div class="tempday3" id="tempDay3">tempday3</div>
-            <div class="tempday4" id="tempDay4">tempday4</div>
-            <div class="tempday5" id="tempDay5">tempday5</div>
-            <div class="feelslikeday1" id="feelsLikeDay1">feelsLikeDay1</div>
-            <div class="feelslikeday2" id="feelsLikeDay2">feelsLikeDay2</div>
-            <div class="feelslikeday3" id="feelsLikeDay3">feelsLikeDay3</div>
-            <div class="feelslikeday4" id="feelsLikeDay4">feelsLikeDay4</div>
-            <div class="feelslikeday5" id="feelsLikeDay5">feelsLikeDay5</div>
+            <div class="weatherday1 gridCell" id="weatherDay1">Day1</div>
+            <div class="weatherday2 gridCell" id="weatherDay2">Day2</div>
+            <div class="weatherday3 gridCell" id="weatherDay3">Day3</div>
+            <div class="weatherday4 gridCell" id="weatherDay4">Day4</div>
+            <div class="weatherday5 gridCell" id="weatherDay5">Day5</div>
+            <div class="iconday1 gridCell" id="iconDay1"><img class="small-icon" src="" /></div>
+            <div class="iconday2 gridCell" id="iconDay2"><img class="small-icon" src="" /></div>
+            <div class="iconday3 gridCell" id="iconDay3"><img class="small-icon" src="" /></div>
+            <div class="iconday4 gridCell" id="iconDay4"><img class="small-icon" src="" /></div>
+            <div class="iconday5 gridCell" id="iconDay5"><img class="small-icon" src="" /></div>
+            <div class="tempday1 gridCell" id="tempDay1">tempday1</div>
+            <div class="tempday2 gridCell" id="tempDay2">tempday2</div>
+            <div class="tempday3 gridCell" id="tempDay3">tempday3</div>
+            <div class="tempday4 gridCell" id="tempDay4">tempday4</div>
+            <div class="tempday5 gridCell" id="tempDay5">tempday5</div>
+            <div class="feelslikeday1 gridCell" id="feelsLikeDay1">feelsLikeDay1</div>
+            <div class="feelslikeday2 gridCell" id="feelsLikeDay2">feelsLikeDay2</div>
+            <div class="feelslikeday3 gridCell" id="feelsLikeDay3">feelsLikeDay3</div>
+            <div class="feelslikeday4 gridCell" id="feelsLikeDay4">feelsLikeDay4</div>
+            <div class="feelslikeday5 gridCell" id="feelsLikeDay5">feelsLikeDay5</div>
         </div>
         <script src="./script.js"></script>
     </body>

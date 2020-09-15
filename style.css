@@ -1,23 +1,192 @@
+* {
+    box-sizing: border-box;
+}
+
 .cool {
-    background-color: #0093E9;
-    background-image: linear-gradient(180deg, #0093E9 0%, #80D0C7 100%);
+    background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+    color: white;
 }
 
 .medium {
     background-color: #a8edea;
-    background-image: linear-gradient(180deg, #a8edea 0%, #fed6e3 100%);
+    background-image: linear-gradient(180deg, #0c7a75 0%, #ff93b6 100%);
+    color: white;
 }
 
 .warm {
-    background-color: #FEE140;
-    background-image: linear-gradient(180deg, #FEE140 0%, #FA709A 100%);
+    background: #FDC830;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(180deg, #F37335, #FDC830);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(180deg, #F37335, #FDC830);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+    color: white;
+}
+
+.cool-night {
+    background-image: linear-gradient(180deg, #30cfd0 0%, #330867 100%);
+    color: white;
+}
+
+.medium-night {
+    background-image: linear-gradient(180deg, #191c58 0%, #2f103d 49%, #23546c 100%);
+    color: white;
+}
+
+.warm-night {
+
+    background: #c31432;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #240b36, #c31432);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(180deg, #240b36, #c31432);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    color: white;
 }
 
 .small-icon {
     height: 70px;
 }
 
+.weather-icon {
+    transform: scale(1);
+    animation: pulse 2s infinite;
+    align-self: flex-end;
+    height: 140px;
+}
+
+.icon-sun {
+    height: 30px;
+    margin: 0 3px;
+}
+
+.sun-up {
+    transform: rotate(90deg);
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.sun-down {
+    transform: rotate(-90deg);
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.sun-set-p,
+.sun-rise-p {
+    margin-bottom: 0;
+}
+
+
+.my-location-name {
+    font-size: 3em;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+}
+
+.conditions {
+    align-self: baseline;
+}
+
+.feels-like-temperature {
+    display: none;
+}
+
+.current-temperature {
+    font-size: 3em;
+    margin: 0;
+}
+
+.city-select {
+    width: 50px;
+    background: transparent;
+    color: #333;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+}
+
+.city-select,
+.select-option {
+    background-color: white;
+    font-family: 'Roboto', sans-serif;
+    padding: 5px;
+}
+
+.location-icon {
+    width: 25px;
+}
+
+.city-label {
+    position: relative;
+}
+
+.city-select:after {
+    content: "";
+    position: absolute;
+    left: 55px;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    background: #e83474;
+    /*Other styles*/
+}
+
+.top-flex-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.middle-flex-wrapper {
+    display: flex;
+    align-items: baseline;
+}
+
+.bottom-flex-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sunset-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+}
+
+.sunrise-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.sun-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        /* box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7); */
+    }
+
+    70% {
+        transform: scale(1);
+        /* box-shadow: 0 0 0 10px rgba(0, 0, 0, 0); */
+    }
+
+    100% {
+        transform: scale(0.95);
+        /* box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); */
+    }
+}
 
 
 /*All of the grid properties below*/
@@ -26,12 +195,13 @@ body,
 .grid-container {
     height: 100%;
     margin: 0;
+    font-family: 'Roboto', sans-serif;
 }
 
 .grid-container {
     display: grid;
     grid-template-columns: repeat(2, 1.3fr) repeat(2, 0.7fr);
-    grid-template-rows: 3.5fr repeat(5, 0.5fr) 1fr;
+    grid-template-rows: 2.6fr repeat(5, 0.5fr) 1fr;
     gap: 4px 4px;
     grid-template-areas:
         "mainweather mainweather mainweather mainweather"
@@ -45,111 +215,133 @@ body,
 
 .mainweather {
     grid-area: mainweather;
+    padding: 5px;
 }
 
 .weatherday1 {
     grid-area: weatherday1;
     background-color: transparent;
+    align-self: center;
 }
 
 .weatherday2 {
     grid-area: weatherday2;
     background-color: transparent;
+    align-self: center;
 }
 
 .weatherday3 {
     grid-area: weatherday3;
     background-color: transparent;
+    align-self: center;
 }
 
 .weatherday4 {
     grid-area: weatherday4;
     background-color: transparent;
+    align-self: center;
 }
 
 .weatherday5 {
     grid-area: weatherday5;
     background-color: transparent;
+    align-self: center;
 }
 
 .iconday1 {
     grid-area: iconday1;
     background-color: transparent;
+    justify-self: center;
+
 }
 
 .iconday2 {
     grid-area: iconday2;
     background-color: transparent;
+    justify-self: center;
+
 }
 
 .iconday3 {
     grid-area: iconday3;
     background-color: transparent;
+    justify-self: center;
 }
 
 .iconday4 {
     grid-area: iconday4;
     background-color: transparent;
+    justify-self: center;
 }
 
 .iconday5 {
     grid-area: iconday5;
     background-color: transparent;
+    justify-self: center;
 }
 
 .tempday1 {
     grid-area: tempday1;
     background-color: transparent;
+    align-self: center;
 }
 
 .tempday2 {
     grid-area: tempday2;
     background-color: transparent;
+    align-self: center;
 }
 
 .tempday3 {
     grid-area: tempday3;
     background-color: transparent;
+    align-self: center;
 }
 
 .tempday4 {
     grid-area: tempday4;
     background-color: transparent;
+    align-self: center;
 }
 
 .tempday5 {
     grid-area: tempday5;
     background-color: transparent;
+    align-self: center;
 }
 
 .feelslikeday1 {
     grid-area: feelslikeday1;
     background-color: transparent;
+    align-self: center;
 }
 
 .feelslikeday2 {
     grid-area: feelslikeday2;
     background-color: transparent;
+    align-self: center;
 }
 
 .feelslikeday3 {
     grid-area: feelslikeday3;
     background-color: transparent;
+    align-self: center;
 }
 
 .feelslikeday4 {
     grid-area: feelslikeday4;
     background-color: transparent;
+    align-self: center;
 }
 
 .feelslikeday5 {
     grid-area: feelslikeday5;
     background-color: transparent;
+    align-self: center;
 }
 
-
-/* For presentation only, no need to copy the code below */
-.grid-container * {
-    border: 1px solid transparent;
-    position: relative;
+.gridCell {
+    padding: 5px;
+    color: #333;
+    font-size: 14px;
 }

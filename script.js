@@ -7,16 +7,18 @@
  5 day forecast: api.openweathermap.org/data/2.5/forecast?q={city name}&appid={your api key}
  */
 
+let city = 'Stockholm,Sweden';
+
 const container = document.getElementById('weatherContainer');
 
 //Fetches the weather for today
-fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=852f52634242cb87b1f198b7ea5e2706')
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=852f52634242cb87b1f198b7ea5e2706`)
     .then((response) => {
         return response.json()
     })
     .then((json) => {
         // container.innerHTML = `<h1>There are ${json.number} number of people in space right now.</h1>`
-        // console.log(json);
+        console.log(json);
         // const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
         // console.log("After filtering" + filteredForecast);
 
@@ -26,12 +28,14 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         setCityName(json.name);
         setTodayTemperature(json["main"].temp);
         setFeelsLikeTemp(json["main"]["feels_like"]);
+        setDayandTime(json.dt);
+        //console.log(weatherTime);
         // console.log(json["sys"].sunrise);
         //console.log(json["sys"].sunset);
         //console.log(json["weather"][0].main);
         setSunValues(json["sys"].sunrise, json["sys"].sunset);
         setConditions(json["weather"][0].main);
-        setTemperatureColor(json["main"].temp);
+        setTemperatureColor(json["main"].temp, json.dt);
 
         //let iconID = json["weather"][0]["icon"];
         setMainWeatherIcon(json["weather"][0]["icon"]);
@@ -85,11 +89,28 @@ const setConditions = (weatherConditions) => {
 }
 
 //This is for changing the background in the app depending of the temperature
-const setTemperatureColor = (temp) => {
+const setTemperatureColor = (temp, timestamp) => {
+
+    let todayDate = new Date(timestamp * 1000);
+    let timeForWeatherUpdate = todayDate.getHours();
     let divToChange = document.getElementById('mainWeather');
-    temp < 10 ? divToChange.classList.toggle('cool') : 0;
-    temp >= 10 && temp <= 20 ? divToChange.classList.toggle('medium') : 0;
-    temp > 20 ? divToChange.classList.toggle('warm') : 0;
+
+    console.log(timeForWeatherUpdate + "TIME TO CONSIDER W COLOR");
+
+    //Display day colors
+    if (timeForWeatherUpdate > 7 && timeForWeatherUpdate < 21) {
+        console.log("daytime");
+        temp < 10 ? divToChange.classList.toggle('cool') : 0;
+        temp >= 10 && temp <= 20 ? divToChange.classList.toggle('medium') : 0;
+        temp > 20 ? divToChange.classList.toggle('warm') : 0;
+    } else {
+        console.log("nighttime");
+        temp < 10 ? divToChange.classList.toggle('cool-night') : 0;
+        temp >= 10 && temp <= 20 ? divToChange.classList.toggle('medium-night') : 0;
+        temp > 20 ? divToChange.classList.toggle('warm-night') : 0;
+    }
+
+
 
 }
 
@@ -97,6 +118,21 @@ const setMainWeatherIcon = (iconID) => {
     let iconURL = (`http://openweathermap.org/img/wn/${iconID}@2x.png`);
     document.getElementById('weatherIcon').src = iconURL;
 }
+
+const setDayandTime = (timestamp) => {
+
+    let todayDate = new Date(timestamp * 1000);
+    let timeForWeatherUpdate = todayDate.toLocaleTimeString('sv-SE', {
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+
+    let dayName = getDayOfWeek(timestamp);
+    console.log(dayName, timeForWeatherUpdate);
+    document.getElementById('today').innerHTML = dayName;
+}
+
+
 
 //Fetch a 5 day forecast
 /*Värden att hämta:
@@ -130,7 +166,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
     });
 */
 /*New version where the foreach-function is outside the fetch function*/
-fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=852f52634242cb87b1f198b7ea5e2706')
+fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=852f52634242cb87b1f198b7ea5e2706`)
     .then((response) => {
         return response.json()
     })
@@ -209,4 +245,10 @@ const convertTemp = (temp) => {
 const getWeatherIcon = (iconID) => {
     let iconURL = (`http://openweathermap.org/img/wn/${iconID}@2x.png`);
     return iconURL;
+}
+
+const selectCity = () => {
+    let selectedCity = document.getElementById('citySelect').value;
+    console.log("Selected city: " + selectedCity);
+
 }
