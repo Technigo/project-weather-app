@@ -1,0 +1,112 @@
+html,
+body,
+.grid-container {
+    height: 100%;
+    margin: 0;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1.3fr) repeat(2, 0.7fr);
+    grid-template-rows: 3.5fr repeat(5, 0.5fr) 1fr;
+    gap: 4px 4px;
+    grid-template-areas:
+        "mainweather mainweather mainweather mainweather"
+        "weatherday1 iconday1 maxday1 minday1"
+        "weatherday2 iconday2 maxday2 minday2"
+        "weatherday3 iconday3 maxday3 minday3"
+        "weatherday4 iconday4 maxday4 minday4"
+        "weatherday5 iconday5 maxday5 minday5"
+        ". . . .";
+}
+
+.mainweather {
+    grid-area: mainweather;
+}
+
+.weatherday1 {
+    grid-area: weatherday1;
+}
+
+.weatherday2 {
+    grid-area: weatherday2;
+}
+
+.weatherday3 {
+    grid-area: weatherday3;
+}
+
+.weatherday4 {
+    grid-area: weatherday4;
+}
+
+.weatherday5 {
+    grid-area: weatherday5;
+}
+
+.iconday1 {
+    grid-area: iconday1;
+}
+
+.iconday2 {
+    grid-area: iconday2;
+}
+
+.iconday3 {
+    grid-area: iconday3;
+}
+
+.iconday4 {
+    grid-area: iconday4;
+}
+
+.iconday5 {
+    grid-area: iconday5;
+}
+
+.maxday1 {
+    grid-area: maxday1;
+}
+
+.maxday2 {
+    grid-area: maxday2;
+}
+
+.maxday3 {
+    grid-area: maxday3;
+}
+
+.maxday4 {
+    grid-area: maxday4;
+}
+
+.maxday5 {
+    grid-area: maxday5;
+}
+
+.minday1 {
+    grid-area: minday1;
+}
+
+.minday2 {
+    grid-area: minday2;
+}
+
+.minday3 {
+    grid-area: minday3;
+}
+
+.minday4 {
+    grid-area: minday4;
+}
+
+.minday5 {
+    grid-area: minday5;
+}
+
+
+/* For presentation only, no need to copy the code below */
+.grid-container * {
+    border: 1px solid #fff;
+    position: relative;
+}
