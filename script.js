@@ -31,6 +31,10 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         //console.log(json["weather"][0].main);
         setSunValues(json["sys"].sunrise, json["sys"].sunset);
         setConditions(json["weather"][0].main);
+        setTemperatureColor(json["main"].temp);
+
+        //let iconID = json["weather"][0]["icon"];
+        setMainWeatherIcon(json["weather"][0]["icon"]);
         //Iterera över people-arrayen.
         //json.people.forEach((person) => {
         //"Invalid API key. Please see http://openweathermap.org/faq#error401 for more info."
@@ -80,6 +84,19 @@ const setConditions = (weatherConditions) => {
     document.getElementById("conditions").innerHTML = weatherConditions;
 }
 
+//This is for changing the background in the app depending of the temperature
+const setTemperatureColor = (temp) => {
+    let divToChange = document.getElementById('mainWeather');
+    temp < 10 ? divToChange.classList.toggle('cool') : 0;
+    temp >= 10 && temp <= 20 ? divToChange.classList.toggle('medium') : 0;
+    temp > 20 ? divToChange.classList.toggle('warm') : 0;
+
+}
+
+const setMainWeatherIcon = (iconID) => {
+    let iconURL = (`http://openweathermap.org/img/wn/${iconID}@2x.png`);
+    document.getElementById('weatherIcon').src = iconURL;
+}
 
 //Fetch a 5 day forecast
 /*Värden att hämta:
@@ -140,23 +157,26 @@ const populateGrid = (element, index, array) => {
     let currentTempDayCell = 'tempDay' + idIndexForHTML;
     let currentFeelsLikeDayCell = 'feelsLikeDay' + idIndexForHTML;
 
+
     console.log(currentWeatherDayCell, currentIconDayCell, currentTempDayCell, currentFeelsLikeDayCell);
     let dayOfWeek = getDayOfWeek(element["dt"]);
     console.log("DayofWeek:" + dayOfWeek);
     //console.log("Timestamp: " + element["dt"]);
-    let weatherDescription = element["weather"][0]["main"]
-    console.log("Weather Desc: " + weatherDescription);
+    //let weatherDescription = element["weather"][0]["main"]
+    //console.log("Weather Desc: " + weatherDescription);
     // console.log("Weather: " + element["weather"][0]["main"]);
     let dayTemp = convertTemp(element["main"]["temp"]);
     console.log("Got daytemp: " + dayTemp);
     //   console.log("Temp: " + element["main"]["temp"]);
     let feelsLikeTemp = convertTemp(element["main"]["feels_like"]);
     console.log("Got feelsliketemp: " + feelsLikeTemp);
+
+    let iconURL = getWeatherIcon(element["weather"][0]["icon"]);
     // console.log("TempFeel: " + element["main"]["feels_like"]);
 
     /*Set the value of current element in corresponding cell in the grid*/
     document.getElementById(currentWeatherDayCell).innerHTML = dayOfWeek;
-    document.getElementById(currentIconDayCell).innerHTML = weatherDescription;
+    document.getElementById(currentIconDayCell).firstChild.src = iconURL;
     document.getElementById(currentTempDayCell).innerHTML = dayTemp;
     document.getElementById(currentFeelsLikeDayCell).innerHTML = feelsLikeTemp;
 }
@@ -184,4 +204,9 @@ const convertTemp = (temp) => {
     let tempRounded = Math.round(temp * 10) / 10;
     let temperatureString = (`${tempRounded} °C`)
     return temperatureString;
+}
+
+const getWeatherIcon = (iconID) => {
+    let iconURL = (`http://openweathermap.org/img/wn/${iconID}@2x.png`);
+    return iconURL;
 }

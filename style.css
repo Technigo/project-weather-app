@@ -1,3 +1,26 @@
+.cool {
+    background-color: #0093E9;
+    background-image: linear-gradient(180deg, #0093E9 0%, #80D0C7 100%);
+}
+
+.medium {
+    background-color: #a8edea;
+    background-image: linear-gradient(180deg, #a8edea 0%, #fed6e3 100%);
+}
+
+.warm {
+    background-color: #FEE140;
+    background-image: linear-gradient(180deg, #FEE140 0%, #FA709A 100%);
+
+}
+
+.small-icon {
+    height: 70px;
+}
+
+
+
+/*All of the grid properties below*/
 html,
 body,
 .grid-container {
@@ -26,107 +49,107 @@ body,
 
 .weatherday1 {
     grid-area: weatherday1;
-    background-color: goldenrod;
+    background-color: transparent;
 }
 
 .weatherday2 {
     grid-area: weatherday2;
-    background-color: goldenrod;
+    background-color: transparent;
 }
 
 .weatherday3 {
     grid-area: weatherday3;
-    background-color: goldenrod;
+    background-color: transparent;
 }
 
 .weatherday4 {
     grid-area: weatherday4;
-    background-color: goldenrod;
+    background-color: transparent;
 }
 
 .weatherday5 {
     grid-area: weatherday5;
-    background-color: goldenrod;
+    background-color: transparent;
 }
 
 .iconday1 {
     grid-area: iconday1;
-    background-color: navajowhite;
+    background-color: transparent;
 }
 
 .iconday2 {
     grid-area: iconday2;
-    background-color: navajowhite;
+    background-color: transparent;
 }
 
 .iconday3 {
     grid-area: iconday3;
-    background-color: navajowhite;
+    background-color: transparent;
 }
 
 .iconday4 {
     grid-area: iconday4;
-    background-color: navajowhite;
+    background-color: transparent;
 }
 
 .iconday5 {
     grid-area: iconday5;
-    background-color: navajowhite;
+    background-color: transparent;
 }
 
 .tempday1 {
     grid-area: tempday1;
-    background-color: mediumaquamarine;
+    background-color: transparent;
 }
 
 .tempday2 {
     grid-area: tempday2;
-    background-color: mediumaquamarine;
+    background-color: transparent;
 }
 
 .tempday3 {
     grid-area: tempday3;
-    background-color: mediumaquamarine;
+    background-color: transparent;
 }
 
 .tempday4 {
     grid-area: tempday4;
-    background-color: mediumaquamarine;
+    background-color: transparent;
 }
 
 .tempday5 {
     grid-area: tempday5;
-    background-color: mediumaquamarine;
+    background-color: transparent;
 }
 
 .feelslikeday1 {
     grid-area: feelslikeday1;
-    background-color: cadetblue;
+    background-color: transparent;
 }
 
 .feelslikeday2 {
     grid-area: feelslikeday2;
-    background-color: cadetblue;
+    background-color: transparent;
 }
 
 .feelslikeday3 {
     grid-area: feelslikeday3;
-    background-color: cadetblue;
+    background-color: transparent;
 }
 
 .feelslikeday4 {
     grid-area: feelslikeday4;
-    background-color: cadetblue;
+    background-color: transparent;
 }
 
 .feelslikeday5 {
     grid-area: feelslikeday5;
-    background-color: cadetblue;
+    background-color: transparent;
 }
 
 
 /* For presentation only, no need to copy the code below */
 .grid-container * {
-    border: 1px solid #fff;
+    border: 1px solid transparent;
     position: relative;
 }
