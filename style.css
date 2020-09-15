@@ -12,11 +12,11 @@ body,
     gap: 4px 4px;
     grid-template-areas:
         "mainweather mainweather mainweather mainweather"
-        "weatherday1 iconday1 maxday1 minday1"
-        "weatherday2 iconday2 maxday2 minday2"
-        "weatherday3 iconday3 maxday3 minday3"
-        "weatherday4 iconday4 maxday4 minday4"
-        "weatherday5 iconday5 maxday5 minday5"
+        "weatherday1 iconday1 tempday1 feelslikeday1"
+        "weatherday2 iconday2 tempday2 feelslikeday2"
+        "weatherday3 iconday3 tempday3 feelslikeday3"
+        "weatherday4 iconday4 tempday4 feelslikeday4"
+        "weatherday5 iconday5 tempday5 feelslikeday5"
         ". . . .";
 }
 
@@ -26,82 +26,102 @@ body,
 
 .weatherday1 {
     grid-area: weatherday1;
+    background-color: goldenrod;
 }
 
 .weatherday2 {
     grid-area: weatherday2;
+    background-color: goldenrod;
 }
 
 .weatherday3 {
     grid-area: weatherday3;
+    background-color: goldenrod;
 }
 
 .weatherday4 {
     grid-area: weatherday4;
+    background-color: goldenrod;
 }
 
 .weatherday5 {
     grid-area: weatherday5;
+    background-color: goldenrod;
 }
 
 .iconday1 {
     grid-area: iconday1;
+    background-color: navajowhite;
 }
 
 .iconday2 {
     grid-area: iconday2;
+    background-color: navajowhite;
 }
 
 .iconday3 {
     grid-area: iconday3;
+    background-color: navajowhite;
 }
 
 .iconday4 {
     grid-area: iconday4;
+    background-color: navajowhite;
 }
 
 .iconday5 {
     grid-area: iconday5;
+    background-color: navajowhite;
 }
 
-.maxday1 {
-    grid-area: maxday1;
+.tempday1 {
+    grid-area: tempday1;
+    background-color: mediumaquamarine;
 }
 
-.maxday2 {
-    grid-area: maxday2;
+.tempday2 {
+    grid-area: tempday2;
+    background-color: mediumaquamarine;
 }
 
-.maxday3 {
-    grid-area: maxday3;
+.tempday3 {
+    grid-area: tempday3;
+    background-color: mediumaquamarine;
 }
 
-.maxday4 {
-    grid-area: maxday4;
+.tempday4 {
+    grid-area: tempday4;
+    background-color: mediumaquamarine;
 }
 
-.maxday5 {
-    grid-area: maxday5;
+.tempday5 {
+    grid-area: tempday5;
+    background-color: mediumaquamarine;
 }
 
-.minday1 {
-    grid-area: minday1;
+.feelslikeday1 {
+    grid-area: feelslikeday1;
+    background-color: cadetblue;
 }
 
-.minday2 {
-    grid-area: minday2;
+.feelslikeday2 {
+    grid-area: feelslikeday2;
+    background-color: cadetblue;
 }
 
-.minday3 {
-    grid-area: minday3;
+.feelslikeday3 {
+    grid-area: feelslikeday3;
+    background-color: cadetblue;
 }
 
-.minday4 {
-    grid-area: minday4;
+.feelslikeday4 {
+    grid-area: feelslikeday4;
+    background-color: cadetblue;
 }
 
-.minday5 {
-    grid-area: minday5;
+.feelslikeday5 {
+    grid-area: feelslikeday5;
+    background-color: cadetblue;
 }
 
 
