@@ -201,7 +201,8 @@ body,
 .grid-container {
     display: grid;
     grid-template-columns: repeat(2, 1.3fr) repeat(2, 0.7fr);
-    grid-template-rows: 2.6fr repeat(5, 0.5fr) 1fr;
+    /* grid-template-rows: 2.6fr repeat(5, 0.5fr) 1fr; */
+    grid-template-rows: auto;
     gap: 4px 4px;
     grid-template-areas:
         "mainweather mainweather mainweather mainweather"
@@ -338,10 +339,12 @@ body,
     grid-area: feelslikeday5;
     background-color: transparent;
     align-self: center;
+
 }
 
 .gridCell {
-    padding: 5px;
-    color: #333;
+    padding: 0 8px;
+    color: #4a4545;
     font-size: 14px;
+
 }
