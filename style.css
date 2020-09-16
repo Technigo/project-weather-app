@@ -230,8 +230,7 @@ body,
 .grid-container {
     display: grid;
     grid-template-columns: repeat(2, 2.5fr) 1.89fr;
-    grid-template-rows: 3fr repeat(6, 0.4fr);
-    /* grid-template-rows: auto; */
+    grid-template-rows: 60vh repeat(5, minmax(65px, auto)) repeat(3, minmax(109px, auto));
     /* gap: 4px 4px; */
     grid-template-areas:
         "mainweather mainweather mainweather"
@@ -240,14 +239,24 @@ body,
         "weatherday3 iconday3 tempday3"
         "weatherday4 iconday4 tempday4"
         "weatherday5 iconday5 tempday5"
+        "mainweatherCell mainweatherCell mainweatherCell"
+        "mainweatherCell mainweatherCell mainweatherCell"
+        "mainweatherCell mainweatherCell mainweatherCell"
         ". . .";
 }
+
+.mainweatherCell1 {
+    grid-area: mainWeatherCell1;
+}
+
 
 .mainweather {
     grid-area: mainweather;
     padding: 5px;
-    margin: 45px 10px 0px 10px;
+    margin: 0;
     color: rgb(255 255 255 / 0.86);
+    position: sticky;
+    top: 0;
 }
 
 .weatherday1 {
@@ -382,14 +391,15 @@ body,
 
 }
 
-.gridCell {
+.gridCell,
+.mainWeatherCell {
     padding: 0 8px;
-    color: #fff;
-    font-weight: bold;
+    color: #333;
     font-size: 14px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #FBF9F9;
     display: flex;
     align-items: center;
+    border-bottom: 1px solid #f6f1f1;
 }
 
 

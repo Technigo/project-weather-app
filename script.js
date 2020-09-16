@@ -19,31 +19,18 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
     .then((json) => {
         // container.innerHTML = `<h1>There are ${json.number} number of people in space right now.</h1>`
         console.log(json);
-        // const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
-        // console.log("After filtering" + filteredForecast);
 
-        //console.log("City name: ", json.name);
-        //console.log("Current temp: ", json["main"].temp);
-        // console.log(temperature);
         setCityName(json.name);
         setTodayTemperature(json["main"].temp);
         setFeelsLikeTemp(json["main"]["feels_like"]);
         setDayandTime(json.dt);
-        //console.log(weatherTime);
-        // console.log(json["sys"].sunrise);
-        //console.log(json["sys"].sunset);
-        //console.log(json["weather"][0].main);
         setSunValues(json["sys"].sunrise, json["sys"].sunset);
         setConditions(json["weather"][0].description);
         setTemperatureColor(json["main"].temp, json.dt);
-
-        //let iconID = json["weather"][0]["icon"];
+        setHumidity(json["main"].humidity);
+        setWindSpeed(json["wind"]["speed"]);
         setMainWeatherIcon(json["weather"][0]["icon"]);
-        //Iterera över people-arrayen.
-        //json.people.forEach((person) => {
-        //"Invalid API key. Please see http://openweathermap.org/faq#error401 for more info."
-        //container.innerHTML += `<p>${person.name} is on the ${person.craft}</p>`
-        //})
+
     })
     .catch((error) => {
         console.log(error);
@@ -63,7 +50,7 @@ const setTodayTemperature = (temp) => {
 const setFeelsLikeTemp = (feelTemp) => {
     let tempRounded = Math.round(feelTemp * 10) / 10;
     let temperatureString = (`${tempRounded} °C`)
-    document.getElementById("feelsLikeTemperature").innerHTML = temperatureString;
+    document.getElementById("weatherCellFeelsLikeTemp").innerHTML = temperatureString;
 }
 
 const setSunValues = (sunRise, sunSet) => {
@@ -80,8 +67,8 @@ const setSunValues = (sunRise, sunSet) => {
         hour: '2-digit',
         minute: '2-digit'
     });
-    document.getElementById("sunRise").innerHTML = sunriseLocaleTimeString;
-    document.getElementById("sunSet").innerHTML = sunsetLocaleTimeString;
+    document.getElementById("weatherCellSunRise").innerHTML = sunriseLocaleTimeString;
+    document.getElementById("weatherCellSunSet").innerHTML = sunsetLocaleTimeString;
 }
 
 const setConditions = (weatherConditions) => {
@@ -93,8 +80,8 @@ const setTemperatureColor = (temp, timestamp) => {
 
     let todayDate = new Date(timestamp * 1000);
     let timeForWeatherUpdate = todayDate.getHours();
-    //let divToChange = document.getElementById('mainWeather');
-    let divToChange = document.getElementById('body');
+    let divToChange = document.getElementById('mainWeather');
+    // let divToChange = document.getElementById('body');
     console.log(timeForWeatherUpdate + "TIME TO CONSIDER W COLOR");
 
     //Display day colors
@@ -109,9 +96,6 @@ const setTemperatureColor = (temp, timestamp) => {
         temp >= 10 && temp <= 20 ? divToChange.classList.toggle('medium-night') : 0;
         temp > 20 ? divToChange.classList.toggle('warm-night') : 0;
     }
-
-
-
 }
 
 const setMainWeatherIcon = (iconID) => {
@@ -120,7 +104,6 @@ const setMainWeatherIcon = (iconID) => {
 }
 
 const setDayandTime = (timestamp) => {
-
     let todayDate = new Date(timestamp * 1000);
     let timeForWeatherUpdate = todayDate.toLocaleTimeString('sv-SE', {
         hour: '2-digit',
@@ -130,6 +113,15 @@ const setDayandTime = (timestamp) => {
     let dayName = getDayOfWeek(timestamp);
     console.log(dayName, timeForWeatherUpdate);
     document.getElementById('today').innerHTML = dayName;
+}
+
+const setHumidity = (humidity) => {
+    document.getElementById('weatherCellHumidity').innerHTML = humidity;
+}
+
+const setWindSpeed = (windSpeed) => {
+    console.log("In set windspeed, got value:" + windSpeed);
+    document.getElementById('weatherCellWindSpeed').innerHTML = (`${windSpeed} m/s`);
 }
 
 
@@ -223,7 +215,8 @@ const getDayOfWeek = (timestamp) => {
     console.log("In get day of week, got timestamp:" + timestamp);
     let dayText = "";
     let inDate = new Date(timestamp * 1000);
-    let dayOfWeek = inDate.getUTCDay();
+    let dayOfWeek = inDate.getDay();
+    console.log(inDate.getDate());
     console.log("Found day of week:" + dayOfWeek);
     dayOfWeek === 0 ? dayText = 'Sunday' : 0;
     dayOfWeek === 1 ? dayText = 'Monday' : 0;
