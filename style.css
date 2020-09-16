@@ -391,6 +391,10 @@ body,
 
 }
 
+.hidden {
+    display: none;
+}
+
 .gridCell,
 .mainWeatherCell {
     padding: 0 8px;
