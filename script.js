@@ -7,6 +7,23 @@
  5 day forecast: api.openweathermap.org/data/2.5/forecast?q={city name}&appid={your api key}
  */
 
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+
+    } else {
+        console.log("Geolocation is not supported by this browser.");
+    }
+}
+
+function showPosition(position) {
+    document.getElementById('longitude').innerHTML = (position.coords.longitude);
+    document.getElementById('latitude').innerHTML = (position.coords.latitude);
+}
+
+getLocation();
+
 let city = 'Stockholm,Sweden';
 
 const container = document.getElementById('weatherContainer');
@@ -124,39 +141,6 @@ const setWindSpeed = (windSpeed) => {
     document.getElementById('weatherCellWindSpeed').innerHTML = (`${windSpeed} m/s`);
 }
 
-
-
-//Fetch a 5 day forecast
-/*Värden att hämta:
-    Veckodag
-    Väder beskrivning
-    Temp High
-    Temp Low
-*/
-
-
-/*
-fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=852f52634242cb87b1f198b7ea5e2706')
-    .then((response) => {
-        return response.json()
-    })
-    .then((json) => {
-
-        console.log("The five day forecast before filtering", json);
-        const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
-        console.log("The forecast after filtering: " + filteredForecast + typeof filteredForecast);
-        filteredForecast.forEach(element => {
-            console.log(element);
-            console.log("Timestamp: " + element["dt"]);
-            console.log("Weather: " + element["weather"][0]["main"]);
-            console.log("Temp: " + element["main"]["temp"]);
-            console.log("TempFeel: " + element["main"]["feels_like"]);
-        });
-    })
-    .catch((error) => {
-        console.log(error);
-    });
-*/
 /*New version where the foreach-function is outside the fetch function*/
 fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=852f52634242cb87b1f198b7ea5e2706`)
     .then((response) => {
@@ -208,6 +192,7 @@ const populateGrid = (element, index, array) => {
     document.getElementById(currentTempDayCell).innerHTML = dayTemp;
     // document.getElementById(currentFeelsLikeDayCell).innerHTML = feelsLikeTemp;
 }
+
 
 //These functions will be used in the loop to populate the grid, they don't set any values themselves,
 //only returning values. 
