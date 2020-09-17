@@ -1,30 +1,6 @@
 /*API KEY 852f52634242cb87b1f198b7ea5e2706
  */
-var getLocationOptions = {
-    enableHighAccuracy: true,
-    timeout: 5000,
-    maximumAge: 0
-};
 
-function gotLocation(pos) {
-    //What to do on gotLocation
-    var coordinates = pos.coords;
-
-    console.log('Your current position is:');
-    console.log(`Latitude : ${coordinates.latitude}`);
-    console.log(`Longitude: ${coordinates.longitude}`);
-    console.log(`More or less ${coordinates.accuracy} meters.`);
-    //Call the functions using co-ordinates as input values. 
-    getCurrentWeather(coordinates.latitude, coordinates.longitude);
-    getFiveDayForecast(coordinates.latitude, coordinates.longitude);
-}
-
-function error(err) {
-    console.log(`Couldn't get the user position, using default position instead.(${err.code}): ${err.message}`);
-}
-
-//Get the users current position.
-navigator.geolocation.getCurrentPosition(gotLocation, error, getLocationOptions);
 
 
 let city = 'Stockholm,Sweden';
@@ -32,6 +8,7 @@ const container = document.getElementById('weatherContainer');
 
 //Example: api.openweathermap.org/data/2.5/weather?lat=35&lon=139
 //Get todays weather
+//This function will run at start and get the weather for current position. 
 const getCurrentWeather = (lat, lon) => {
     //Fetch weather for today
     const latitude = lat;
@@ -64,6 +41,7 @@ const getCurrentWeather = (lat, lon) => {
 
 const getFiveDayForecast = (lat, lon) => {
     //Get 5day forecast
+    console.log("In five day forecast, coordinates are:" + lat, lon);
     const latitude = lat;
     const longitude = lon;
 
@@ -77,6 +55,32 @@ const getFiveDayForecast = (lat, lon) => {
             const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
             console.log("The forecast after filtering: " + filteredForecast + typeof filteredForecast);
             filteredForecast.forEach(populateGrid);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}
+
+//Black level,explore other endpoint of API
+const getUVIndex = (lat, lon) => {
+    //Get uv-index
+    console.log("######## In get uv-index, coordinates are:" + lat, lon);
+    const latitude = lat;
+    const longitude = lon;
+
+    fetch(`https://api.openweathermap.org/data/2.5/uvi?lat=${latitude}&lon=${longitude}&APPID=852f52634242cb87b1f198b7ea5e2706`)
+        .then((response) => {
+            return response.json()
+        })
+        .then((json) => {
+
+            console.log("UV index object", json);
+            let uvIndexValue = json.value;
+            console.log("### The UV-index value is:" + uvIndexValue);
+            setUVIndex(json.value);
+            // const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
+            //console.log("The forecast after filtering: " + filteredForecast + typeof filteredForecast);
+            //filteredForecast.forEach(populateGrid);
         })
         .catch((error) => {
             console.log(error);
@@ -123,23 +127,39 @@ const setConditions = (weatherConditions) => {
 //This is for changing the background in the app depending of the temperature
 const setTemperatureColor = (temp, timestamp) => {
 
+    console.log("!!!!in setTemperatureColor");
+    console.log("!!!!!temp is:" + temp);
+
     let todayDate = new Date(timestamp * 1000);
     let timeForWeatherUpdate = todayDate.getHours();
+
     let divToChange = document.getElementById('mainWeather');
+
+
     // let divToChange = document.getElementById('body');
     console.log(timeForWeatherUpdate + "TIME TO CONSIDER W COLOR");
-
+    //Clear previous set color-class on the div
+    divToChange.classList.remove('cool', 'medium', 'warm', 'cool-night', 'medium-night', 'warm-night');
     //Display day colors
     if (timeForWeatherUpdate > 7 && timeForWeatherUpdate < 21) {
         console.log("daytime");
-        temp < 10 ? divToChange.classList.toggle('cool') : 0;
-        temp >= 10 && temp <= 20 ? divToChange.classList.toggle('medium') : 0;
-        temp > 20 ? divToChange.classList.toggle('warm') : 0;
+        console.log("divToChange: " + divToChange);
+        if (temp < 10) {
+            divToChange.classList.toggle('cool');
+        } else if (temp >= 10 && temp <= 20) {
+            divToChange.classList.toggle('medium');
+        } else {
+            divToChange.classList.toggle('warm');
+        }
     } else {
         console.log("nighttime");
-        temp < 10 ? divToChange.classList.toggle('cool-night') : 0;
-        temp >= 10 && temp <= 20 ? divToChange.classList.toggle('medium-night') : 0;
-        temp > 20 ? divToChange.classList.toggle('warm-night') : 0;
+        if (temp < 10) {
+            divToChange.classList.toggle('cool-night');
+        } else if (temp >= 10 && temp <= 20) {
+            divToChange.classList.toggle('medium-night');
+        } else {
+            divToChange.classList.toggle('warm-night');
+        }
     }
 }
 
@@ -169,9 +189,12 @@ const setWindSpeed = (windSpeed) => {
     document.getElementById('weatherCellWindSpeed').innerHTML = (`<p>WIND</p> <p>${windSpeed} m/s</p>`);
 }
 
-//Here was the location of fetch 5-day forecast
-/*New version where the foreach-function is outside the fetch function*/
-
+const setUVIndex = (uvIndex) => {
+    console.log("in set uv-index");
+    let uvIndexRounded = Math.floor(uvIndex);
+    console.log(uvIndexRounded + "Rounded");
+    document.getElementById('weatherCellUvIndex').innerHTML = (`<p>UV-INDEX</p> <p>${uvIndexRounded}</p>`);
+}
 
 const populateGrid = (element, index, array) => {
     console.log("In populate grid");
@@ -240,8 +263,110 @@ const getWeatherIcon = (iconID) => {
     return iconURL;
 }
 
-const selectCity = () => {
-    let selectedCity = document.getElementById('citySelect').value;
-    console.log("Selected city: " + selectedCity);
 
+/* PGM FLOW **/
+const getUserLocation = (inLat, inLon) => {
+
+    //Fallback parameters. Stockholm.
+    const fallBackLat = 59.3194903;
+    const fallBackLon = 18.075060000000007;
+
+    var getLocationOptions = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+    };
+
+    function gotLocation(pos) {
+        //What to do on gotLocation
+        var coordinates = pos.coords;
+        console.log('Your current position is:');
+        console.log(`Latitude : ${coordinates.latitude}`);
+        console.log(`Longitude: ${coordinates.longitude}`);
+        console.log(`More or less ${coordinates.accuracy} meters.`);
+
+        //Call the get-weather functions using co-ordinates as input values. 
+        getCurrentWeather(coordinates.latitude, coordinates.longitude);
+        getFiveDayForecast(coordinates.latitude, coordinates.longitude);
+        getUVIndex(coordinates.latitude, coordinates.longitude);
+
+    }
+
+    function error(err) {
+        /* Stockholm, fallback value. 
+        lat  59.3194903.
+        Lon: 18.075060000000007.*/
+        console.log(`Couldn't get the user position, using default position instead.(${err.code}): ${err.message}`);
+
+        getCurrentWeather(fallBackLat, fallBackLon);
+        getFiveDayForecast(fallBackLat, fallBackLon);
+        getUVIndex(fallBackLat, fallBackLon);
+    }
+
+    //onLoad Get the users current position.
+    //Check here if the input is empty, if yes, get weather by userPosition coordinates. 
+    //Else, get weather by passed coordinates.
+    console.log("Input parameters for getLocation are: " + inLat, inLon);
+
+    if ((!inLat) && (!inLon)) {
+        navigator.geolocation.getCurrentPosition(gotLocation, error, getLocationOptions);
+    }
+    //If inLat and inLon are not defined/empty/null, use current location for user.
+
+    //If inLat and inLon has values, use them to get the weather
+    else {
+        console.log("There are values in inlat and inlon, using them to get weather");
+        getCurrentWeather(inLat, inLon);
+        getFiveDayForecast(inLat, inLon);
+    }
+
+    //If the input has values, use them and call getCurrentWeather, getFiveDayForeCast
 }
+
+
+const getPresetCityLongitude = (cityAbbreviation) => {
+    let lon =
+        cityAbbreviation === "SY" ? 151.209900 :
+        cityAbbreviation === "ND" ? 77.216721 :
+        cityAbbreviation === "STH" ? 18.075060000000007 :
+        0;
+    console.log(lon);
+    return lon;
+}
+
+const getPresetCityLatitude = (cityAbbreviation) => {
+    let lat =
+        cityAbbreviation === "SY" ? -33.865143 :
+        cityAbbreviation === "ND" ? 28.644800 :
+        cityAbbreviation === "STH" ? 59.3194903 :
+        0;
+    console.log(lat);
+    return lat;
+}
+
+/*
+
+const getRandomDegree = (from, to, fixed) => {
+    return (Math.random() * (to - from) + from).toFixed(fixed) * 1;
+    // .toFixed() returns string, so ' * 1' is a trick to convert to number
+}
+
+console.log(
+    getRandomDegree(-180, 180, 3)
+);
+*/
+
+const selectCity = () => {
+
+    let selectedCity = document.getElementById('citySelect').value;
+    console.log("Selected city is:" + selectedCity);
+
+    selectedCity === "" || selectedCity === "myLoc" ? getUserLocation() :
+        selectedCity === "SY" ? getUserLocation(getPresetCityLatitude("SY"), getPresetCityLongitude("SY")) :
+        selectedCity === "ND" ? getUserLocation(getPresetCityLatitude("ND"), getPresetCityLongitude("ND")) :
+        selectedCity === "STH" ? getUserLocation(getPresetCityLatitude("STH"), getPresetCityLongitude("STH")) :
+        //selectedCity === "RANDOM" ? getUserLocation(getRandomDegree(-180, 180, 3), getRandomDegree(-180, 180, 3)) :
+        console.log("Doesn't work");
+}
+
+selectCity();
