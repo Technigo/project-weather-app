@@ -237,7 +237,7 @@ html,
     display: grid;
     grid-template-columns: repeat(2, 2.5fr) 1.89fr;
     /* grid-template-rows: 60vh repeat(5, minmax(65px, auto)) repeat(3, minmax(109px, auto)); */
-    grid-template-rows: 60vh repeat(5, minmax(6vh, auto)) repeat(3, minmax(13.3vh, auto));
+    grid-template-rows: 60vh repeat(5, minmax(6vh, auto)) minmax(2vh, auto) repeat(3, minmax(13.3vh, auto));
     /* gap: 4px 4px; */
     grid-template-areas:
         "mainweather mainweather mainweather"
@@ -246,6 +246,7 @@ html,
         "weatherday3 iconday3 tempday3"
         "weatherday4 iconday4 tempday4"
         "weatherday5 iconday5 tempday5"
+        "weatherday6 iconday6 tempday6"
         "mainweatherCell mainweatherCell mainweatherCell"
         "mainweatherCell mainweatherCell mainweatherCell"
         "mainweatherCell mainweatherCell mainweatherCell"
@@ -299,6 +300,12 @@ html,
     align-items: stretch;
 }
 
+.weatherday6 {
+    grid-area: weatherday6;
+    background-color: transparent;
+    align-items: stretch;
+}
+
 .iconday1 {
     grid-area: iconday1;
     background-color: transparent;
@@ -334,6 +341,13 @@ html,
     align-items: stretch;
 }
 
+.iconday6 {
+    grid-area: iconday6;
+    background-color: transparent;
+    /* justify-self: center; */
+    align-items: stretch;
+}
+
 .tempday1 {
     grid-area: tempday1;
     background-color: transparent;
@@ -361,6 +375,12 @@ html,
 
 .tempday5 {
     grid-area: tempday5;
+    background-color: transparent;
+    align-items: stretch;
+}
+
+.tempday6 {
+    grid-area: tempday6;
     background-color: transparent;
     align-items: stretch;
 }
@@ -414,6 +434,13 @@ html,
     display: flex;
     align-items: center;
     border-bottom: 1px solid #f6f1f1;
+}
+
+.emptyCell {
+    padding: 0 8px;
+    background-color: #FBF9F9;
+    display: flex;
+    align-items: center;
 }
 
 

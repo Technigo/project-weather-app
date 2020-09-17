@@ -43,13 +43,13 @@ const setCityName = (name) => {
 
 const setTodayTemperature = (temp) => {
     let tempRounded = Math.round(temp * 10) / 10;
-    let temperatureString = (`${tempRounded} °C`)
+    let temperatureString = (`${tempRounded} °`)
     document.getElementById("currentTemperature").innerHTML = temperatureString;
 }
 
 const setFeelsLikeTemp = (feelTemp) => {
     let tempRounded = Math.round(feelTemp * 10) / 10;
-    let temperatureString = (`${tempRounded} °C`)
+    let temperatureString = (`${tempRounded} °`)
     document.getElementById("weatherCellFeelsLikeTemp").innerHTML = temperatureString;
 }
 
