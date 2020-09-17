@@ -35,50 +35,51 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
   const day1 = document.getElementById('day1');
 
   fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=3f1c95b540a45d2a48ff596267d9d939')
-  .then((response) => {
-    return response.json();
-  })
+    .then((response) => {
+      return response.json();
+    })
 
-  .then ((json) => {
-    //Filters out forecast at 12:00 for coming 5 days
-    const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
+    .then ((json) => {
+      //Filters out forecast at 12:00 for coming 5 days
+      const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
 
-    console.log(filteredForecast);
-    
-    const unixDay1 = filteredForecast[0].dt;
-    const unixDay1ToMili = new Date(unixDay1 * 1000);
+      for (i=0; i < filteredForecast.length; i++) {  //Loop to generate data to be shown for coming 5 days
 
-    let weekday = unixDay1ToMili.getDay();
-    switch (weekday) {
-      case 0:
-        weekday = "Sunday";
-        break;
-      case 1:
-        weekday = "Monday";
-        break;
-      case 2:
-        weekday = "Tuesday";
-        break;
-      case 3:
-        weekday = "Wednesday";
-        break;
-      case 4:
-        weekday = "Thursday";
-        break;
-      case 5:
-        weekday = "Friday";
-        break;
-      case  6:
-        weekday = "Saturday";
-    };
+        const unixDay = filteredForecast[i].dt;  // Date in UNIX
+        const unixDayToMili = new Date(unixDay * 1000);  // Convert to nice date format we can use
 
-    const minTemp = Math.floor(filteredForecast[0].main.temp_min);
-    const maxTemp = Math.floor(filteredForecast[0].main.temp_max);
+        let weekday = unixDayToMili.getDay();  //getDay will return a number between 0-6, switch statement to return the date's name, not just a number
+        switch (weekday) {
+          case 0:
+            weekday = "Sunday";
+            break;
+          case 1:
+            weekday = "Monday";
+            break;
+          case 2:
+            weekday = "Tuesday";
+            break;
+          case 3:
+            weekday = "Wednesday";
+            break;
+          case 4:
+            weekday = "Thursday";
+            break;
+          case 5:
+            weekday = "Friday";
+            break;
+          case  6:
+            weekday = "Saturday";
+        };
 
-    let day1 = document.getElementById('day1');
-    day1.innerText = `${weekday} | Min Temp: ${minTemp} | Max Temp: ${maxTemp}`;
-  })
+        const minTemp = Math.floor(filteredForecast[i].main.temp_min);
+        const maxTemp = Math.floor(filteredForecast[i].main.temp_max);
 
-  .catch((error) => {
-    console.log(error);
-  });
+        let dayElement = document.getElementById(`day${[i]}`);
+        dayElement.innerText = `${weekday} | Min Temp: ${minTemp} | Max Temp: ${maxTemp}`;
+      };
+    })
+
+    .catch((error) => {
+      console.log(error);
+    });
