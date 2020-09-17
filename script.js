@@ -1,41 +1,87 @@
 /*API KEY 852f52634242cb87b1f198b7ea5e2706
  */
+var getLocationOptions = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+};
 
-/*For example, to get the current weather in Stockholm, you can use the url below.
- Remember to replace "YOUR_API_KEY" with the API key you copied from your dashboard.
- 
- 5 day forecast: api.openweathermap.org/data/2.5/forecast?q={city name}&appid={your api key}
- */
+function gotLocation(pos) {
+    //What to do on gotLocation
+    var coordinates = pos.coords;
+
+    console.log('Your current position is:');
+    console.log(`Latitude : ${coordinates.latitude}`);
+    console.log(`Longitude: ${coordinates.longitude}`);
+    console.log(`More or less ${coordinates.accuracy} meters.`);
+    //Call the functions using co-ordinates as input values. 
+    getCurrentWeather(coordinates.latitude, coordinates.longitude);
+    getFiveDayForecast(coordinates.latitude, coordinates.longitude);
+}
+
+function error(err) {
+    console.log(`Couldn't get the user position, using default position instead.(${err.code}): ${err.message}`);
+}
+
+//Get the users current position.
+navigator.geolocation.getCurrentPosition(gotLocation, error, getLocationOptions);
+
 
 let city = 'Stockholm,Sweden';
-
 const container = document.getElementById('weatherContainer');
 
-//Fetches the weather for today
-fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=852f52634242cb87b1f198b7ea5e2706`)
-    .then((response) => {
-        return response.json()
-    })
-    .then((json) => {
-        // container.innerHTML = `<h1>There are ${json.number} number of people in space right now.</h1>`
-        console.log(json);
+//Example: api.openweathermap.org/data/2.5/weather?lat=35&lon=139
+//Get todays weather
+const getCurrentWeather = (lat, lon) => {
+    //Fetch weather for today
+    const latitude = lat;
+    const longitude = lon;
 
-        setCityName(json.name);
-        setTodayTemperature(json["main"].temp);
-        setFeelsLikeTemp(json["main"]["feels_like"]);
-        setDayandTime(json.dt);
-        setSunValues(json["sys"].sunrise, json["sys"].sunset);
-        setConditions(json["weather"][0].description);
-        setTemperatureColor(json["main"].temp, json.dt);
-        setHumidity(json["main"].humidity);
-        setWindSpeed(json["wind"]["speed"]);
-        setMainWeatherIcon(json["weather"][0]["icon"]);
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&APPID=852f52634242cb87b1f198b7ea5e2706`)
+        .then((response) => {
+            return response.json()
+        })
+        .then((json) => {
+            // container.innerHTML = `<h1>There are ${json.number} number of people in space right now.</h1>`
+            console.log(json);
 
-    })
-    .catch((error) => {
-        console.log(error);
-    });
+            setCityName(json.name);
+            setTodayTemperature(json["main"].temp);
+            setFeelsLikeTemp(json["main"]["feels_like"]);
+            setDayandTime(json.dt);
+            setSunValues(json["sys"].sunrise, json["sys"].sunset);
+            setConditions(json["weather"][0].description);
+            setTemperatureColor(json["main"].temp, json.dt);
+            setHumidity(json["main"].humidity);
+            setWindSpeed(json["wind"]["speed"]);
+            setMainWeatherIcon(json["weather"][0]["icon"]);
 
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}
+
+const getFiveDayForecast = (lat, lon) => {
+    //Get 5day forecast
+    const latitude = lat;
+    const longitude = lon;
+
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&APPID=852f52634242cb87b1f198b7ea5e2706`)
+        .then((response) => {
+            return response.json()
+        })
+        .then((json) => {
+
+            console.log("The five day forecast before filtering", json);
+            const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
+            console.log("The forecast after filtering: " + filteredForecast + typeof filteredForecast);
+            filteredForecast.forEach(populateGrid);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}
 
 const setCityName = (name) => {
     document.getElementById("myLocationName").innerHTML = name;
@@ -74,7 +120,6 @@ const setSunValues = (sunRise, sunSet) => {
 const setConditions = (weatherConditions) => {
     document.getElementById("conditions").innerHTML = weatherConditions;
 }
-
 //This is for changing the background in the app depending of the temperature
 const setTemperatureColor = (temp, timestamp) => {
 
@@ -124,21 +169,9 @@ const setWindSpeed = (windSpeed) => {
     document.getElementById('weatherCellWindSpeed').innerHTML = (`<p>WIND</p> <p>${windSpeed} m/s</p>`);
 }
 
+//Here was the location of fetch 5-day forecast
 /*New version where the foreach-function is outside the fetch function*/
-fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=852f52634242cb87b1f198b7ea5e2706`)
-    .then((response) => {
-        return response.json()
-    })
-    .then((json) => {
 
-        console.log("The five day forecast before filtering", json);
-        const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
-        console.log("The forecast after filtering: " + filteredForecast + typeof filteredForecast);
-        filteredForecast.forEach(populateGrid);
-    })
-    .catch((error) => {
-        console.log(error);
-    });
 
 const populateGrid = (element, index, array) => {
     console.log("In populate grid");
@@ -175,7 +208,6 @@ const populateGrid = (element, index, array) => {
     document.getElementById(currentTempDayCell).innerHTML = dayTemp;
     // document.getElementById(currentFeelsLikeDayCell).innerHTML = feelsLikeTemp;
 }
-
 
 //These functions will be used in the loop to populate the grid, they don't set any values themselves,
 //only returning values. 
