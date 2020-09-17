@@ -230,7 +230,8 @@ body,
 .grid-container {
     display: grid;
     grid-template-columns: repeat(2, 2.5fr) 1.89fr;
-    grid-template-rows: 60vh repeat(5, minmax(65px, auto)) repeat(3, minmax(109px, auto));
+    /* grid-template-rows: 60vh repeat(5, minmax(65px, auto)) repeat(3, minmax(109px, auto)); */
+    grid-template-rows: 50vh repeat(5, minmax(10vh, auto)) repeat(3, minmax(16vh, auto));
     /* gap: 4px 4px; */
     grid-template-areas:
         "mainweather mainweather mainweather"
