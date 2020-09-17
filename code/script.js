@@ -15,9 +15,9 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
   .then((json) => {
     console.log(json);
 
-    cityName.innerText = json.name;
-    temperature.innerText = Math.floor(json.main.temp);
-    description.innerText = json.weather[0].description;
+    cityName.innerText = `City: ${json.name}`;
+    temperature.innerText = `Temperature: ${Math.floor(json.main.temp)}`;
+    description.innerText = `Description: ${json.weather[0].description}`;
 
     const sunriseValue = json.sys.sunrise; //Sunrise and Sunset times in UNIX
     const sunsetValue = json.sys.sunset;
@@ -27,8 +27,24 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     const set = new Date(sunsetValue * 1000);
 
     /* From the Date format we got above from sun and set, extract only the hours and minutes - using slice method on the minutes part so that it shows the 0 when minutes are less than 10, otherwise it will show 19:2 instead of 19:02. Got this from StackO: https://stackoverflow.com/questions/8935414/getminutes-0-9-how-to-display-two-digit-numbers */
-    sunrise.innerText = `${sun.getHours()}:${('0'+ sun.getMinutes()).slice(-2)}`;
-    sunset.innerText = `${set.getHours()}:${('0'+ set.getMinutes()).slice(-2)}`;
+    sunrise.innerText = `Sunrise: ${sun.getHours()}:${('0'+ sun.getMinutes()).slice(-2)}`;
+    sunset.innerText = `Sunset: ${set.getHours()}:${('0'+ set.getMinutes()).slice(-2)}`;
+  })
+
+  .catch((error) => {
+    console.log(error);
+  });
+
+  // New Fetch for the 5 days Forecast
+  fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=3f1c95b540a45d2a48ff596267d9d939')
+  .then((response) => {
+    return response.json();
+  })
+
+  .then ((json) => {
+    //Filters out forecast at 12:00 for coming 5 days
+    const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
+    console.log(filteredForecast);
   })
 
   .catch((error) => {
