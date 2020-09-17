@@ -43,6 +43,8 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
       //Filters out forecast at 12:00 for coming 5 days
       const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
 
+      console.log(filteredForecast);
+
       for (i=0; i < filteredForecast.length; i++) {  //Loop to generate data to be shown for coming 5 days
 
         const unixDay = filteredForecast[i].dt;  // Date in UNIX
@@ -74,9 +76,13 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
 
         const minTemp = Math.floor(filteredForecast[i].main.temp_min);
         const maxTemp = Math.floor(filteredForecast[i].main.temp_max);
-
-        let dayElement = document.getElementById(`day${[i]}`);
-        dayElement.innerText = `${weekday} | Min Temp: ${minTemp} | Max Temp: ${maxTemp}`;
+                
+        const dayElement = document.getElementById(`day${[i]}`);
+        dayElement.innerText = `${weekday} | Min Temp: ${minTemp} | Max Temp: ${maxTemp} | Icon: `;
+        
+        const iconID = filteredForecast[i].weather[0].icon;
+        const iconElement = document.getElementById(`icon${[i]}`);
+        iconElement.src = `http://openweathermap.org/img/wn/${iconID}@2x.png`;
       };
     })
 
