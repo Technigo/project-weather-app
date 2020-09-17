@@ -173,6 +173,7 @@
     display: flex;
     justify-content: space-between;
     margin-top: 80px;
+    font-size: 1.2em;
 }
 
 .today {
@@ -428,7 +429,7 @@ html,
 .gridCell,
 .mainWeatherCell {
     padding: 0 8px;
-    color: #333;
+    color: #5e5b5b;
     font-size: 14px;
     background-color: #FBF9F9;
     display: flex;

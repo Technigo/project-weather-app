@@ -99,8 +99,7 @@ const setTemperatureColor = (temp, timestamp) => {
 }
 
 const setMainWeatherIcon = (iconID) => {
-    let iconURL = (`
-            http: //openweathermap.org/img/wn/${iconID}@2x.png`);
+    let iconURL = (`http://openweathermap.org/img/wn/${iconID}@2x.png`);
     document.getElementById('weatherIcon').src = iconURL;
 }
 
