@@ -2,10 +2,6 @@
     box-sizing: border-box;
 }
 
-.body {
-    padding: 0 7px;
-}
-
 .menu {
     font-size: 3em;
     margin: 10px 0 0 10px;
@@ -111,6 +107,7 @@
 
 .conditions {
     align-self: baseline;
+    margin: 7px 0;
 }
 
 .feels-like-temperature {
@@ -120,6 +117,7 @@
 .current-temperature {
     font-size: 5em;
     margin: 0;
+    margin-top: 30px;
 }
 
 .city-select {
@@ -174,10 +172,14 @@
 .bottom-flex-wrapper {
     display: flex;
     justify-content: space-between;
-    margin-top: 30px;
+    margin-top: 80px;
 }
 
-bottom-text-flex-wrapper {
+.today {
+    margin: 0;
+}
+
+.bottom-text-flex-wrapper {
     display: flex;
     flex-direction: column;
 }
@@ -220,18 +222,22 @@ bottom-text-flex-wrapper {
 
 /*All of the grid properties below*/
 html,
-body,
 .grid-container {
     height: 100%;
     margin: 0;
     font-family: 'Roboto', sans-serif;
 }
 
+.body {
+    margin: 0;
+    max-height: 100vh;
+}
+
 .grid-container {
     display: grid;
     grid-template-columns: repeat(2, 2.5fr) 1.89fr;
     /* grid-template-rows: 60vh repeat(5, minmax(65px, auto)) repeat(3, minmax(109px, auto)); */
-    grid-template-rows: 50vh repeat(5, minmax(10vh, auto)) repeat(3, minmax(16vh, auto));
+    grid-template-rows: 60vh repeat(5, minmax(7.7vh, auto)) repeat(3, minmax(13.3vh, auto));
     /* gap: 4px 4px; */
     grid-template-areas:
         "mainweather mainweather mainweather"
@@ -258,6 +264,9 @@ body,
     color: rgb(255 255 255 / 0.86);
     position: sticky;
     top: 0;
+    display: flex;
+    flex-direction: column;
+
 }
 
 .weatherday1 {
