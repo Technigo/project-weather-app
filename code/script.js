@@ -11,8 +11,6 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
   })
 
   .then((json) => {
-    console.log(json);
-
     cityName.innerText = `City: ${json.name}`;
     temperature.innerText = `Temperature: ${Math.floor(json.main.temp)}`;
     description.innerText = `Description: ${json.weather[0].description}`;
@@ -34,6 +32,8 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
   });
 
   // New Fetch for the 5 days Forecast
+  const day1 = document.getElementById('day1');
+
   fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=3f1c95b540a45d2a48ff596267d9d939')
   .then((response) => {
     return response.json();
@@ -42,7 +42,41 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
   .then ((json) => {
     //Filters out forecast at 12:00 for coming 5 days
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
+
     console.log(filteredForecast);
+    
+    const unixDay1 = filteredForecast[0].dt;
+    const unixDay1ToMili = new Date(unixDay1 * 1000);
+
+    let weekday = unixDay1ToMili.getDay();
+    switch (weekday) {
+      case 0:
+        weekday = "Sunday";
+        break;
+      case 1:
+        weekday = "Monday";
+        break;
+      case 2:
+        weekday = "Tuesday";
+        break;
+      case 3:
+        weekday = "Wednesday";
+        break;
+      case 4:
+        weekday = "Thursday";
+        break;
+      case 5:
+        weekday = "Friday";
+        break;
+      case  6:
+        weekday = "Saturday";
+    };
+
+    const minTemp = Math.floor(filteredForecast[0].main.temp_min);
+    const maxTemp = Math.floor(filteredForecast[0].main.temp_max);
+
+    let day1 = document.getElementById('day1');
+    day1.innerText = `${weekday} | Min Temp: ${minTemp} | Max Temp: ${maxTemp}`;
   })
 
   .catch((error) => {
