@@ -181,7 +181,7 @@ const setDayandTime = (timestamp) => {
 }
 
 const setHumidity = (humidity) => {
-    document.getElementById('weatherCellHumidity').innerHTML = (`<p>HUMIDITY</p> <p>${humidity}</p>`);
+    document.getElementById('weatherCellHumidity').innerHTML = (`<p>HUMIDITY</p> <p>${humidity}%</p>`);
 }
 
 const setWindSpeed = (windSpeed) => {
@@ -327,7 +327,7 @@ const getUserLocation = (inLat, inLon) => {
 const getPresetCityLongitude = (cityAbbreviation) => {
     let lon =
         cityAbbreviation === "SY" ? 151.209900 :
-        cityAbbreviation === "ND" ? 77.216721 :
+        cityAbbreviation === "SEA" ? -122.335167 :
         cityAbbreviation === "STH" ? 18.075060000000007 :
         0;
     console.log(lon);
@@ -337,7 +337,7 @@ const getPresetCityLongitude = (cityAbbreviation) => {
 const getPresetCityLatitude = (cityAbbreviation) => {
     let lat =
         cityAbbreviation === "SY" ? -33.865143 :
-        cityAbbreviation === "ND" ? 28.644800 :
+        cityAbbreviation === "SEA" ? 47.608013 :
         cityAbbreviation === "STH" ? 59.3194903 :
         0;
     console.log(lat);
@@ -363,7 +363,7 @@ const selectCity = () => {
 
     selectedCity === "" || selectedCity === "myLoc" ? getUserLocation() :
         selectedCity === "SY" ? getUserLocation(getPresetCityLatitude("SY"), getPresetCityLongitude("SY")) :
-        selectedCity === "ND" ? getUserLocation(getPresetCityLatitude("ND"), getPresetCityLongitude("ND")) :
+        selectedCity === "SEA" ? getUserLocation(getPresetCityLatitude("SEA"), getPresetCityLongitude("SEA")) :
         selectedCity === "STH" ? getUserLocation(getPresetCityLatitude("STH"), getPresetCityLongitude("STH")) :
         //selectedCity === "RANDOM" ? getUserLocation(getRandomDegree(-180, 180, 3), getRandomDegree(-180, 180, 3)) :
         console.log("Doesn't work");

@@ -9,7 +9,7 @@
 }
 
 .cool {
-    background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+    background-image: linear-gradient(to top, #ffffff 0%, #0085c2 100%);
     color: white;
     -webkit-animation: AnimationName 18s ease infinite;
     -moz-animation: AnimationName 18s ease infinite;
@@ -17,8 +17,8 @@
 }
 
 .medium {
-    background-color: #a8edea;
-    background-image: linear-gradient(180deg, #0c7a75 0%, #ff93b6 100%);
+    background-color: #fff;
+    background-image: linear-gradient(to top, #ffffff 0%, #087fa5 100%);
     color: white;
     -webkit-animation: AnimationName 18s ease infinite;
     -moz-animation: AnimationName 18s ease infinite;
@@ -27,7 +27,7 @@
 
 .warm {
 
-    background: linear-gradient(180deg, #F37335, #FDC830);
+    background: linear-gradient(to top, #fff 0%, #ff7622 100%);
     color: white;
     -webkit-animation: AnimationName 18s ease infinite;
     -moz-animation: AnimationName 18s ease infinite;
@@ -35,7 +35,7 @@
 }
 
 .cool-night {
-    background-image: linear-gradient(180deg, #30cfd0 0%, #330867 100%);
+    background-image: linear-gradient(to top, #3f89b5 0%, #000000 100%);
     color: white;
     -webkit-animation: AnimationName 18s ease infinite;
     -moz-animation: AnimationName 18s ease infinite;
@@ -43,7 +43,7 @@
 }
 
 .medium-night {
-    background: linear-gradient(183deg, #146751, #1b2150);
+    background-image: linear-gradient(to top, #009688 0%, #23413e 49%, #000000 100%);
     background-size: 400% 400%;
     -webkit-animation: AnimationName 18s ease infinite;
     -moz-animation: AnimationName 18s ease infinite;
@@ -54,11 +54,8 @@
 
 .warm-night {
 
-    background: #c31432;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #240b36, #c31432);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(180deg, #240b36, #c31432);
+
+    background: linear-gradient(to top, #8b2106, #000000);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
     color: white;
@@ -101,7 +98,7 @@
 .my-location-name {
     font-size: 3em;
     margin: 0;
-    font-family: 'Roboto', sans-serif;
+
     font-weight: 500;
 }
 
@@ -135,7 +132,7 @@
 .city-select,
 .select-option {
     background-color: white;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Karla', sans-serif;
     padding: 5px;
 }
 
@@ -172,7 +169,7 @@
 .bottom-flex-wrapper {
     display: flex;
     justify-content: space-between;
-    margin-top: 80px;
+    margin-top: 30px;
     font-size: 1.2em;
 }
 
@@ -226,12 +223,13 @@ html,
 .grid-container {
     height: 100%;
     margin: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Karla', sans-serif;
 }
 
 .body {
     margin: 0;
     max-height: 100vh;
+    font-family: 'Karla', sans-serif;
 }
 
 .grid-container {
@@ -261,7 +259,7 @@ html,
 
 .mainweather {
     grid-area: mainweather;
-    padding: 5px;
+    padding: 0 10px;
     margin: 0;
     color: rgb(255 255 255 / 0.86);
     position: sticky;
@@ -426,27 +424,30 @@ html,
     display: none;
 }
 
-.gridCell,
-.mainWeatherCell {
-    padding: 0 8px;
+.gridCell {
+    padding: 0 25px;
     color: #5e5b5b;
     font-size: 14px;
-    background-color: #FBF9F9;
+    background-color: #fff;
     display: flex;
     align-items: center;
     border-bottom: 1px solid #f6f1f1;
 }
 
 .mainWeatherCell {
+    padding: 0 15px;
     flex-direction: column;
+    color: #5e5b5b;
     align-items: flex-start;
     justify-content: space-around;
     display: flex;
     justify-content: space-evenly;
+    border-bottom: 1px solid #f6f1f1;
 }
 
 .mainWeatherCell>p {
     margin: 0;
+    font-size: 11px;
 }
 
 .emptyCell {
