@@ -7,23 +7,6 @@
  5 day forecast: api.openweathermap.org/data/2.5/forecast?q={city name}&appid={your api key}
  */
 
-
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-
-    } else {
-        console.log("Geolocation is not supported by this browser.");
-    }
-}
-
-function showPosition(position) {
-    document.getElementById('longitude').innerHTML = (position.coords.longitude);
-    document.getElementById('latitude').innerHTML = (position.coords.latitude);
-}
-
-getLocation();
-
 let city = 'Stockholm,Sweden';
 
 const container = document.getElementById('weatherContainer');
