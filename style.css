@@ -237,7 +237,7 @@ html,
     display: grid;
     grid-template-columns: repeat(2, 2.5fr) 1.89fr;
     /* grid-template-rows: 60vh repeat(5, minmax(65px, auto)) repeat(3, minmax(109px, auto)); */
-    grid-template-rows: 60vh repeat(5, minmax(6vh, auto)) minmax(2vh, auto) repeat(3, minmax(13.3vh, auto));
+    grid-template-rows: 60vh repeat(5, minmax(7vh, auto)) minmax(2vh, auto) repeat(3, minmax(13.3vh, auto));
     /* gap: 4px 4px; */
     grid-template-areas:
         "mainweather mainweather mainweather"
@@ -434,6 +434,18 @@ html,
     display: flex;
     align-items: center;
     border-bottom: 1px solid #f6f1f1;
+}
+
+.mainWeatherCell {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.mainWeatherCell>p {
+    margin: 0;
 }
 
 .emptyCell {

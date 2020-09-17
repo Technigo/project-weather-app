@@ -50,7 +50,7 @@ const setTodayTemperature = (temp) => {
 const setFeelsLikeTemp = (feelTemp) => {
     let tempRounded = Math.round(feelTemp * 10) / 10;
     let temperatureString = (`${tempRounded} °`)
-    document.getElementById("weatherCellFeelsLikeTemp").innerHTML = temperatureString;
+    document.getElementById("weatherCellFeelsLikeTemp").innerHTML = (`<p>FEELS LIKE</p> <p>${temperatureString}</p>`);
 }
 
 const setSunValues = (sunRise, sunSet) => {
@@ -67,8 +67,8 @@ const setSunValues = (sunRise, sunSet) => {
         hour: '2-digit',
         minute: '2-digit'
     });
-    document.getElementById("weatherCellSunRise").innerHTML = sunriseLocaleTimeString;
-    document.getElementById("weatherCellSunSet").innerHTML = sunsetLocaleTimeString;
+    document.getElementById("weatherCellSunRise").innerHTML = (`<p>SUN &uarr;</p> <p>${sunriseLocaleTimeString}`);
+    document.getElementById("weatherCellSunSet").innerHTML = (`<p>SUN &darr;</p> <p>${sunsetLocaleTimeString}`);
 }
 
 const setConditions = (weatherConditions) => {
@@ -99,7 +99,8 @@ const setTemperatureColor = (temp, timestamp) => {
 }
 
 const setMainWeatherIcon = (iconID) => {
-    let iconURL = (`http://openweathermap.org/img/wn/${iconID}@2x.png`);
+    let iconURL = (`
+            http: //openweathermap.org/img/wn/${iconID}@2x.png`);
     document.getElementById('weatherIcon').src = iconURL;
 }
 
@@ -116,12 +117,12 @@ const setDayandTime = (timestamp) => {
 }
 
 const setHumidity = (humidity) => {
-    document.getElementById('weatherCellHumidity').innerHTML = humidity;
+    document.getElementById('weatherCellHumidity').innerHTML = (`<p>HUMIDITY</p> <p>${humidity}</p>`);
 }
 
 const setWindSpeed = (windSpeed) => {
     console.log("In set windspeed, got value:" + windSpeed);
-    document.getElementById('weatherCellWindSpeed').innerHTML = (`${windSpeed} m/s`);
+    document.getElementById('weatherCellWindSpeed').innerHTML = (`<p>WIND</p> <p>${windSpeed} m/s</p>`);
 }
 
 /*New version where the foreach-function is outside the fetch function*/
