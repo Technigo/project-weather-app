@@ -23,10 +23,13 @@ const getCurrentWeather = (lat, lon) => {
             console.log(json);
 
             setCityName(json.name);
+            let timeZone = (json.timezone);
+            console.log("¤¤¤¤¤ Got TimeZone :" + timeZone);
+
             setTodayTemperature(json["main"].temp);
             setFeelsLikeTemp(json["main"]["feels_like"]);
-            setDayandTime(json.dt);
-            setSunValues(json["sys"].sunrise, json["sys"].sunset);
+            setDayandTime(json.dt, json.timezone);
+            setSunValues(json["sys"].sunrise, json["sys"].sunset, json.timezone);
             setConditions(json["weather"][0].description);
             setTemperatureColor(json["main"].temp, json.dt);
             setHumidity(json["main"].humidity);
@@ -103,20 +106,36 @@ const setFeelsLikeTemp = (feelTemp) => {
     document.getElementById("weatherCellFeelsLikeTemp").innerHTML = (`<p>FEELS LIKE</p> <p>${temperatureString}</p>`);
 }
 
-const setSunValues = (sunRise, sunSet) => {
+const setSunValues = (sunRise, sunSet, timeZone) => {
 
-    let sunRiseDate = new Date(sunRise * 1000);
-    let sunSetDate = new Date(sunSet * 1000);
-    // Hours part from the timestamp
+    let timeZoneSec = timeZone * 60;
+    let sunRiseDate = new Date((sunRise) * 1000);
+    let sunSetDate = new Date((sunSet) * 1000);
+
+    //Millisecond offset utc
+    //let getTimezoneOffsetSunSet = (sunSetDate.getTimezoneOffset() * 60) * 1000;
+    //let getTimezoneOffsetSunRise = (sunRiseDate.getTimezoneOffset() * 60) * 1000;
+
+    //console.log(getTimezoneOffsetSunSet + " __________millisecond OFFSET_____");
+
+
+
+
+
     let sunriseLocaleTimeString = sunRiseDate.toLocaleTimeString('sv-SE', {
         hour: '2-digit',
         minute: '2-digit'
+
     });
 
     let sunsetLocaleTimeString = sunSetDate.toLocaleTimeString('sv-SE', {
         hour: '2-digit',
         minute: '2-digit'
     });
+
+
+
+    //console.log("SUNRISE AND SUNSET" + sunriseLocaleTimeString, sunsetLocaleTimeString);
     document.getElementById("weatherCellSunRise").innerHTML = (`<p>SUN &uarr;</p> <p>${sunriseLocaleTimeString}`);
     document.getElementById("weatherCellSunSet").innerHTML = (`<p>SUN &darr;</p> <p>${sunsetLocaleTimeString}`);
 }
@@ -168,9 +187,12 @@ const setMainWeatherIcon = (iconID) => {
     document.getElementById('weatherIcon').src = iconURL;
 }
 
-const setDayandTime = (timestamp) => {
-    let todayDate = new Date(timestamp * 1000);
-    let timeForWeatherUpdate = todayDate.toLocaleTimeString('sv-SE', {
+const setDayandTime = (timestamp, timezone) => {
+    //convert timestamp to milliseconds
+    let todayDate = new Date((timestamp + timezone) * 1000);
+
+    //let timeZoneAdd = 
+    let timeForWeatherUpdate = todayDate.toTimeString('sv-SE', {
         hour: '2-digit',
         minute: '2-digit'
     });
