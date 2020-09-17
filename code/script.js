@@ -1,5 +1,3 @@
-/* API Key to Open Weather: 3f1c95b540a45d2a48ff596267d9d939 */
-
 const cityName = document.getElementById('city-name');
 const temperature = document.getElementById('temperature');
 const description = document.getElementById('description');
