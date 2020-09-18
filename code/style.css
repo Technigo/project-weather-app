@@ -1,0 +1,227 @@
+html {
+    box-sizing: border-box;
+    font-family: 'Cabin', Sans-Serif;
+  }
+  
+*, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+body {
+    margin: 0;    
+}
+
+/** HEADER SECTION **/
+
+header {
+    margin: 0;
+    height: 375px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.header-text-weather {
+    text-align: center;
+    font-size: 28px;
+    text-transform: uppercase;
+    font-family: 'Roboto Condensed', Sans-Serif;
+}
+
+.header-text-location {
+    text-align: center;
+    font-size: 14px;
+}
+
+.header-text-celcius {
+    text-align: center;
+    font-size: 82px;
+    font-family: 'Roboto Condensed', Sans-Serif;
+}
+
+.header-weather-wrapper {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    flex-direction: column;
+    height: inherit;
+    background: linear-gradient(270deg, #ff6800, #ff0000, #fff000);
+    background-size: 600% 600%;
+
+    -webkit-animation: AnimationName 10s ease infinite;
+    -moz-animation: AnimationName 10s ease infinite;
+    animation: AnimationName 10s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+/* BLUE ANIMATION
+    background: linear-gradient(270deg, #0e4bef, #6e42e2, #4b0082);
+    background-size: 600% 600%;
+
+    -webkit-animation: AnimationName 10s ease infinite;
+    -moz-animation: AnimationName 10s ease infinite;
+    animation: AnimationName 10s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+*/
+
+/* HAMBURGER STYLING  */
+
+/* Style the navigation menu */
+.topnav {
+    overflow: hidden;
+    background-color:transparent;
+    position: relative;
+  }
+  
+  /* Hide the links inside the navigation menu (except for logo/home) */
+  .topnav #myLinks {
+    display: none;
+    margin-bottom: 200px;
+    background-color:rgba(255,255,255, 0.9)
+  }
+  
+  /* Style navigation menu links */
+  .topnav a {
+    color: black;
+    padding: 14px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+  }
+  
+  /* Style the hamburger menu */
+  .topnav a.icon {
+    background: transparent;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  
+  /* Add a transparent background color on mouse-over */
+  .topnav a:hover {
+    background-color: rgba(255,255,255, 0.9);
+    color: black;
+  }
+  
+  /* Style the active link (or home/logo) */
+  .active {
+    background-color: transparent;
+    color: white;
+    font-family: 'Roboto Condensed', Sans-Serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+/** WEATHER SECTION **/
+
+.weekly-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
+    border-bottom: #bfbfbf 1px dashed;
+}
+
+.text-weekday {
+    width: 25%;
+    text-align: center;
+    font-family: 'Roboto Condensed', Sans-Serif;
+}
+
+.img-weather {
+    width: 20%;
+}
+
+.text-celcius {
+    width: 25%;
+    margin: 0;
+    text-align: center;
+    font-family: 'Cabin', Sans-Serif;
+    font-weight: lighter;
+}
+
+h2 {
+    margin: 0;
+}
+
+h3 {
+    margin: 0;
+}
+
+h1 {
+    margin: 0;
+}
+
+/** FOOTER SECTION **/
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    height: 200px;
+    border: 20px solid #efefef;
+}
+
+.logo {
+    width: 15%;
+}
+
+.company-title {
+    font-family: 'Roboto Condensed', Sans-Serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    padding: 20px;
+}
+
+.footer-links-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.footer-links {
+    text-transform: uppercase;
+    font-size: 12px;
+}

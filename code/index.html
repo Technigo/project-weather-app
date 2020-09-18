@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/code/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Cabin|Roboto:400,700|Roboto+Condensed:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Weather App</title>
+</head>
+
+<body>
+
+    <header>
+
+    <!-- HAMBURGER MENU -->
+    <div class="topnav">
+        <a href="#home" class="active">Luna weather</a>
+        <!-- Navigation links (hidden by default) -->
+        <div id="myLinks">
+            <a href="#news">WEATHER</a>
+            <a href="#contact">CONTACT</a>
+            <a href="#about">ABOUT LUNA</a>
+        </div>
+        <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+        
+        <div class="header-weather-wrapper">
+            <h2 class="header-text-weather">Sunny</h2>
+            <h3 class="header-text-location">Stockholm, Sweden</h3>
+            <h1 class="header-text-celcius">+20°</h1>
+        </div>
+
+    </header>
+
+
+    <section class="weekly-weather">
+        <div class="weekly-wrapper">
+            <h3 class="text-weekday">MON</h3>
+            <img class="img-weather" src="icons/sunny.png" alt="illustration of weather">
+            <p class="text-celcius">10 c</p>
+        </div>
+        <div class="weekly-wrapper">
+            <h3 class="text-weekday">TUE</h3>
+            <img class="img-weather" src="icons/night.png" alt="illustration of weather">
+            <p class="text-celcius">10 c</p>
+        </div>
+        <div class="weekly-wrapper">
+            <h3 class="text-weekday">WED</h3>
+            <img class="img-weather" src="icons/cloudy-sunny.png" alt="illustration of weather">
+            <p class="text-celcius">10 c</p>
+        </div>
+        <div class="weekly-wrapper">
+            <h3 class="text-weekday">THU</h3>
+            <img class="img-weather" src="icons/sunny.png" alt="illustration of weather">
+            <p class="text-celcius">10 c</p>
+        </div>
+        <div class="weekly-wrapper">
+            <h3 class="text-weekday">FRI</h3>
+            <img class="img-weather" src="icons/rainy.png" alt="illustration of weather">
+            <p class="text-celcius">10 c</p>
+        </div>
+        <div class="weekly-wrapper">
+            <h3 class="text-weekday">SAT</h3>
+            <img class="img-weather" src="icons/stromy.png" alt="illustration of weather">
+            <p class="text-celcius">10 c</p>
+        </div>
+        <div class="weekly-wrapper">
+            <h3 class="text-weekday">SUN</h3>
+            <img class="img-weather" src="icons/cloudy-sunny.png" alt="illustration of weather">
+            <p class="text-celcius">10 c</p>
+        </div>
+    </section>
+
+    <footer>
+        <h3 class="company-title">luna weather</h3>
+        <div class="footer-links-wrapper">
+            <p class="footer-links">weather</p>
+            <p class="footer-links">contact</p>
+            <p class="footer-links">about luna</p>
+        </div>
+    </footer>
+    
+</body>
+
+<script src="/code/weather.js"></script>
+
+</html>
