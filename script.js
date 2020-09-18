@@ -106,9 +106,38 @@ const setFeelsLikeTemp = (feelTemp) => {
     document.getElementById("weatherCellFeelsLikeTemp").innerHTML = (`<p>FEELS LIKE</p> <p>${temperatureString}</p>`);
 }
 
+const convertTimeToLocal = (timestamp, timezone) => {
+    let time = timestamp * 1000;
+    let tz = timezone * 1000;
+
+    let date = new Date(time + tz);
+
+    let year = date.getUTCFullYear();
+    let month = date.getUTCMonth() + 1;
+    let day = date.getUTCDate();
+    let hour = date.getUTCHours();
+    let minutes = date.getUTCMinutes();
+    let milliseconds = date.getUTCMilliseconds()
+
+    const dateWithoutConversion = new Date(Date.UTC(year, month, day, hour, minutes, milliseconds));
+
+    let dateString = dateWithoutConversion.toUTCString().toString();
+    let subHour = dateString.substring(dateString.indexOf(":") - 2, dateString.indexOf(":"));
+    let subMinutes = dateString.substring(dateString.indexOf(":") + 1, dateString.indexOf(":") + 3);
+    console.log(subHour);
+    console.log(subMinutes);
+    let fullTime = (`${subHour}:${subMinutes}`);
+    console.log(fullTime);
+    return fullTime;
+}
+
 const setSunValues = (sunRise, sunSet, timeZone) => {
 
-    let timeZoneSec = timeZone * 60;
+    let sunRiseTimeString = convertTimeToLocal(sunRise, timeZone);
+    let sunSetTimeString = convertTimeToLocal(sunSet, timeZone);
+
+
+    /*let timeZoneSec = timeZone * 60;
     let sunRiseDate = new Date((sunRise) * 1000);
     let sunSetDate = new Date((sunSet) * 1000);
 
@@ -117,10 +146,6 @@ const setSunValues = (sunRise, sunSet, timeZone) => {
     //let getTimezoneOffsetSunRise = (sunRiseDate.getTimezoneOffset() * 60) * 1000;
 
     //console.log(getTimezoneOffsetSunSet + " __________millisecond OFFSET_____");
-
-
-
-
 
     let sunriseLocaleTimeString = sunRiseDate.toLocaleTimeString('sv-SE', {
         hour: '2-digit',
@@ -133,11 +158,11 @@ const setSunValues = (sunRise, sunSet, timeZone) => {
         minute: '2-digit'
     });
 
-
+*/
 
     //console.log("SUNRISE AND SUNSET" + sunriseLocaleTimeString, sunsetLocaleTimeString);
-    document.getElementById("weatherCellSunRise").innerHTML = (`<p>SUN &uarr;</p> <p>${sunriseLocaleTimeString}`);
-    document.getElementById("weatherCellSunSet").innerHTML = (`<p>SUN &darr;</p> <p>${sunsetLocaleTimeString}`);
+    document.getElementById("weatherCellSunRise").innerHTML = (`<p>SUN &uarr;</p> <p>${sunRiseTimeString}`);
+    document.getElementById("weatherCellSunSet").innerHTML = (`<p>SUN &darr;</p> <p>${sunSetTimeString}`);
 }
 
 const setConditions = (weatherConditions) => {
