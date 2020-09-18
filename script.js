@@ -20,7 +20,7 @@ const getCurrentWeather = (lat, lon) => {
         })
         .then((json) => {
             // container.innerHTML = `<h1>There are ${json.number} number of people in space right now.</h1>`
-            console.log(json);
+            console.log("TODAYS WEATHER: ", json);
 
             setCityName(json.name);
             let timeZone = (json.timezone);
@@ -31,10 +31,11 @@ const getCurrentWeather = (lat, lon) => {
             setDayandTime(json.dt, json.timezone);
             setSunValues(json["sys"].sunrise, json["sys"].sunset, json.timezone);
             setConditions(json["weather"][0].description);
-            setTemperatureColor(json["main"].temp, json.dt);
+            setTemperatureColor(json["main"].temp, json.dt, json.timezone);
             setHumidity(json["main"].humidity);
             setWindSpeed(json["wind"]["speed"]);
-            setMainWeatherIcon(json["weather"][0]["icon"]);
+            console.log("WEATHER ID" + json["weather"][0]["id"]);
+            setMainWeatherIcon(json["weather"][0]["id"], json.dt, json.timezone);
 
         })
         .catch((error) => {
@@ -53,16 +54,20 @@ const getFiveDayForecast = (lat, lon) => {
             return response.json()
         })
         .then((json) => {
-
+            console.log("in fiveday forecast, got timezone" + json.city.timezone);
             console.log("The five day forecast before filtering", json);
             const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
             console.log("The forecast after filtering: " + filteredForecast + typeof filteredForecast);
+            //json.city.timezone add this in filteredforecast? 
+
             filteredForecast.forEach(populateGrid);
         })
         .catch((error) => {
             console.log(error);
         });
 }
+
+
 
 //Black level,explore other endpoint of API
 const getUVIndex = (lat, lon) => {
@@ -107,6 +112,7 @@ const setFeelsLikeTemp = (feelTemp) => {
 }
 
 const convertTimeToLocal = (timestamp, timezone) => {
+    //Struggled showing the time in local time, without any GMT conversion. Made it work with this.
     let time = timestamp * 1000;
     let tz = timezone * 1000;
 
@@ -135,57 +141,50 @@ const setSunValues = (sunRise, sunSet, timeZone) => {
 
     let sunRiseTimeString = convertTimeToLocal(sunRise, timeZone);
     let sunSetTimeString = convertTimeToLocal(sunSet, timeZone);
-
-
-    /*let timeZoneSec = timeZone * 60;
-    let sunRiseDate = new Date((sunRise) * 1000);
-    let sunSetDate = new Date((sunSet) * 1000);
-
-    //Millisecond offset utc
-    //let getTimezoneOffsetSunSet = (sunSetDate.getTimezoneOffset() * 60) * 1000;
-    //let getTimezoneOffsetSunRise = (sunRiseDate.getTimezoneOffset() * 60) * 1000;
-
-    //console.log(getTimezoneOffsetSunSet + " __________millisecond OFFSET_____");
-
-    let sunriseLocaleTimeString = sunRiseDate.toLocaleTimeString('sv-SE', {
-        hour: '2-digit',
-        minute: '2-digit'
-
-    });
-
-    let sunsetLocaleTimeString = sunSetDate.toLocaleTimeString('sv-SE', {
-        hour: '2-digit',
-        minute: '2-digit'
-    });
-
-*/
-
     //console.log("SUNRISE AND SUNSET" + sunriseLocaleTimeString, sunsetLocaleTimeString);
     document.getElementById("weatherCellSunRise").innerHTML = (`<p>SUN &uarr;</p> <p>${sunRiseTimeString}`);
     document.getElementById("weatherCellSunSet").innerHTML = (`<p>SUN &darr;</p> <p>${sunSetTimeString}`);
 }
 
+const getDayOrNight = (timestamp, timezone) => {
+    let isday = false;
+
+    let timeForUpdate = convertTimeToLocal(timestamp, timezone);
+    let hour = parseInt(timeForUpdate.substring(0, 2));
+    console.log("in getdayor night, time is: " + hour);
+
+    if (hour >= 6 && hour < 21) {
+        isday = true;
+        console.log("in getdayornight, time is daytime.");
+    }
+    return isday;
+}
+
 const setConditions = (weatherConditions) => {
-    document.getElementById("conditions").innerHTML = weatherConditions;
+
+    let weatherConditionString = `${weatherConditions.charAt(0).toUpperCase()}${weatherConditions.substring(1)}`;
+    document.getElementById("conditions").innerHTML = weatherConditionString;
 }
 //This is for changing the background in the app depending of the temperature
-const setTemperatureColor = (temp, timestamp) => {
+const setTemperatureColor = (temp, timestamp, timezone) => {
 
     console.log("!!!!in setTemperatureColor");
     console.log("!!!!!temp is:" + temp);
 
-    let todayDate = new Date(timestamp * 1000);
-    let timeForWeatherUpdate = todayDate.getHours();
-
+    //    let todayDate = new Date(timestamp * 1000);
+    //  let hour = todayDate.getHours();
+    let timeForUpdate = convertTimeToLocal(timestamp, timezone);
+    let hour = timeForUpdate.substring(0, 2);
+    console.log(hour);
     let divToChange = document.getElementById('mainWeather');
 
 
     // let divToChange = document.getElementById('body');
-    console.log(timeForWeatherUpdate + "TIME TO CONSIDER W COLOR");
+    console.log(hour + "TIME TO CONSIDER W COLOR");
     //Clear previous set color-class on the div
     divToChange.classList.remove('cool', 'medium', 'warm', 'cool-night', 'medium-night', 'warm-night');
     //Display day colors
-    if (timeForWeatherUpdate > 7 && timeForWeatherUpdate < 21) {
+    if (hour >= 6 && hour < 21) {
         console.log("daytime");
         console.log("divToChange: " + divToChange);
         if (temp < 10) {
@@ -207,25 +206,55 @@ const setTemperatureColor = (temp, timestamp) => {
     }
 }
 
-const setMainWeatherIcon = (iconID) => {
-    let iconURL = (`http://openweathermap.org/img/wn/${iconID}@2x.png`);
-    document.getElementById('weatherIcon').src = iconURL;
+const setMainWeatherIcon = (weatherID, time, timezone) => {
+
+    //console.log("in set main weather, id is:" + weatherID);
+
+    let weatherSrc = getWeatherIcon(weatherID, time, timezone, "mainWeather");
+    /*if (weatherID >= 200 && weatherID < 300) {
+        //Thunder
+        weatherSrc = 'thunder.svg';
+    } else if (weatherID >= 300 && weatherID < 500) {
+        //Drizzle
+        weatherSrc = 'drizzle.svg';
+    } else if (weatherID >= 500 && weatherID < 600) {
+        //Rain
+        weatherSrc = 'rain.svg';
+    } else if (weatherID >= 600 && weatherID < 700) {
+        //Snow
+        weatherSrc = 'snow.svg';
+    } else if (weatherID >= 700 && weatherID < 800) {
+        //Foggy
+        weatherSrc = 'foggy.svg';
+    } else if (weatherID = 800) {
+        //Clear skies
+        weatherSrc = 'sunny.svg';
+    } else if (weatherID > 800) {
+        //Cloudy
+        weatherSrc = 'cloudy.svg';
+    }*/
+
+    document.getElementById('weatherIcon').src = (`./icons/weather/mainWeather/${weatherSrc}`);
 }
 
 const setDayandTime = (timestamp, timezone) => {
     //convert timestamp to milliseconds
-    let todayDate = new Date((timestamp + timezone) * 1000);
+    let todayString = convertTimeToLocal(timestamp, timezone);
+    //    let hour = todayString.substring(0, 2);
+
+    // console.log(time);
 
     //let timeZoneAdd = 
-    let timeForWeatherUpdate = todayDate.toTimeString('sv-SE', {
+    /* let hour = todayDate.toTimeString('sv-SE', {
         hour: '2-digit',
         minute: '2-digit'
     });
-
+*/
     let dayName = getDayOfWeek(timestamp);
-    console.log(dayName, timeForWeatherUpdate);
-    document.getElementById('today').innerHTML = dayName;
+
+    document.getElementById('today').innerHTML = (`${dayName}, ${todayString}`);
 }
+
 
 const setHumidity = (humidity) => {
     document.getElementById('weatherCellHumidity').innerHTML = (`<p>HUMIDITY</p> <p>${humidity}%</p>`);
@@ -233,7 +262,7 @@ const setHumidity = (humidity) => {
 
 const setWindSpeed = (windSpeed) => {
     console.log("In set windspeed, got value:" + windSpeed);
-    document.getElementById('weatherCellWindSpeed').innerHTML = (`<p>WIND</p> <p>${windSpeed} m/s</p>`);
+    document.getElementById('weatherCellWindSpeed').innerHTML = (` <p> WIND </p> <p>${windSpeed} m/s </p>`);
 }
 
 const setUVIndex = (uvIndex) => {
@@ -268,13 +297,13 @@ const populateGrid = (element, index, array) => {
     //   console.log("Temp: " + element["main"]["temp"]);
     let feelsLikeTemp = convertTemp(element["main"]["feels_like"]);
     console.log("Got feelsliketemp: " + feelsLikeTemp);
-
-    let iconURL = getWeatherIcon(element["weather"][0]["icon"]);
+    console.log("in populate grid element date and timezone:", element.dt, element.timezone);
+    let iconURL = getWeatherIcon(element["weather"][0]["id"], 0, 0, "populateGrid");
     // console.log("TempFeel: " + element["main"]["feels_like"]);
 
     /*Set the value of current element in corresponding cell in the grid*/
     document.getElementById(currentWeatherDayCell).innerHTML = dayOfWeek;
-    document.getElementById(currentIconDayCell).firstChild.src = iconURL;
+    document.getElementById(currentIconDayCell).firstChild.src = `./icons/weather/${iconURL}`;
     document.getElementById(currentTempDayCell).innerHTML = dayTemp;
     // document.getElementById(currentFeelsLikeDayCell).innerHTML = feelsLikeTemp;
 }
@@ -286,6 +315,7 @@ const getDayOfWeek = (timestamp) => {
     let dayText = "";
     let inDate = new Date(timestamp * 1000);
     let dayOfWeek = inDate.getDay();
+
     console.log(inDate.getDate());
     console.log("Found day of week:" + dayOfWeek);
     dayOfWeek === 0 ? dayText = 'Sunday' : 0;
@@ -305,9 +335,48 @@ const convertTemp = (temp) => {
     return temperatureString;
 }
 
-const getWeatherIcon = (iconID) => {
-    let iconURL = (`http://openweathermap.org/img/wn/${iconID}@2x.png`);
-    return iconURL;
+const getWeatherIcon = (weatherID, time = 0, timezone = 0, caller) => {
+    let isday = false;
+    if (caller === "mainWeather") {
+        isday = getDayOrNight(time, timezone);
+    }
+
+
+    console.log("in getWEatherIcon, weather ID is" + weatherID);
+    console.log("caller is: " + caller);
+    console.log("isday is: " + isday);
+    let weatherSrc = "";
+    if (weatherID >= 200 && weatherID < 300) {
+        //Thunder
+        weatherSrc = 'thunder.png';
+    } else if (weatherID >= 300 && weatherID < 500) {
+        //Drizzle
+        weatherSrc = 'drizzle.png';
+    } else if (weatherID >= 500 && weatherID < 600) {
+        //Rain
+        weatherSrc = 'rain.png';
+    } else if (weatherID >= 600 && weatherID < 700) {
+        //Snow
+        weatherSrc = 'snow.png';
+    } else if (weatherID >= 700 && weatherID < 800) {
+        //Foggy
+        weatherSrc = 'foggy.png';
+    } else if (weatherID === 800) {
+
+        if (!isday && caller === "mainWeather") {
+            weatherSrc = 'clear-night.png'
+        } else weatherSrc = 'sunny.png';
+        //Clear skies
+
+    } else if (weatherID === 801) {
+        if (!isday && caller === "mainWeather") {
+            weatherSrc = 'cloudy-night.png'
+        } else weatherSrc = 'suncloud.png';
+    } else if (weatherID > 801) {
+        //Cloudy
+        weatherSrc = 'cloudy.png';
+    }
+    return weatherSrc;
 }
 
 
@@ -375,7 +444,11 @@ const getPresetCityLongitude = (cityAbbreviation) => {
     let lon =
         cityAbbreviation === "SY" ? 151.209900 :
         cityAbbreviation === "SEA" ? -122.335167 :
-        cityAbbreviation === "STH" ? 18.075060000000007 :
+        cityAbbreviation === "STH" ? 18.065 :
+        cityAbbreviation === "SHA" ? 121.469170 :
+        cityAbbreviation === "SP" ? -46.636 :
+        cityAbbreviation === "SAP" ? 141.350006 :
+        cityAbbreviation === "SEO" ? 126.978 :
         0;
     console.log(lon);
     return lon;
@@ -385,7 +458,11 @@ const getPresetCityLatitude = (cityAbbreviation) => {
     let lat =
         cityAbbreviation === "SY" ? -33.865143 :
         cityAbbreviation === "SEA" ? 47.608013 :
-        cityAbbreviation === "STH" ? 59.3194903 :
+        cityAbbreviation === "STH" ? 59.333 :
+        cityAbbreviation === "SHA" ? 31.224361 :
+        cityAbbreviation === "SP" ? -23.547 :
+        cityAbbreviation === "SAP" ? 43.066666 :
+        cityAbbreviation === "SEO" ? 37.568 :
         0;
     console.log(lat);
     return lat;
@@ -412,6 +489,9 @@ const selectCity = () => {
         selectedCity === "SY" ? getUserLocation(getPresetCityLatitude("SY"), getPresetCityLongitude("SY")) :
         selectedCity === "SEA" ? getUserLocation(getPresetCityLatitude("SEA"), getPresetCityLongitude("SEA")) :
         selectedCity === "STH" ? getUserLocation(getPresetCityLatitude("STH"), getPresetCityLongitude("STH")) :
+        selectedCity === "SHA" ? getUserLocation(getPresetCityLatitude("SHA"), getPresetCityLongitude("SHA")) :
+        selectedCity === "SP" ? getUserLocation(getPresetCityLatitude("SP"), getPresetCityLongitude("SP")) :
+        selectedCity === "SEO" ? getUserLocation(getPresetCityLatitude("SEO"), getPresetCityLongitude("SEO")) :
         //selectedCity === "RANDOM" ? getUserLocation(getRandomDegree(-180, 180, 3), getRandomDegree(-180, 180, 3)) :
         console.log("Doesn't work");
 }
