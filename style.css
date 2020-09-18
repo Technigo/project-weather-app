@@ -232,7 +232,8 @@ html,
     grid-template-columns: repeat(2, 2.5fr) 1.89fr;
 
     /* grid-template-rows: 60vh repeat(5, minmax(7vh, auto)) minmax(2vh, auto) repeat(3, minmax(13.3vh, auto)); */
-    grid-template-rows: 60vh repeat(5, minmax(6vh, auto)) minmax(7vh, auto) repeat(3, minmax(13.3vh, auto));
+    /* grid-template-rows: 60vh repeat(5, minmax(6vh, auto)) minmax(7vh, auto) repeat(3, minmax(13.3vh, auto)); */
+    grid-template-rows: 56vh repeat(5, minmax(6vh, auto)) minmax(12vh, auto) repeat(3, minmax(13.3vh, auto));
     /* gap: 4px 4px; */
     grid-template-areas: "mainweather mainweather mainweather"
         "weatherday1 iconday1 tempday1"
