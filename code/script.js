@@ -122,3 +122,28 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Panama&units=metric&APPI
   .catch((error) => {
     console.log(error);
   });
+
+  // Fetch to get Seoul weather
+fetch('http://api.openweathermap.org/data/2.5/weather?q=Seoul&units=metric&APPID=3f1c95b540a45d2a48ff596267d9d939')
+.then((response) => {
+  return response.json();
+})
+
+.then((json) => {
+  console.log(json);
+
+  const seoulName = document.getElementById('seoul-name');
+  seoulName.innerText = `${json.name}`;
+  
+  const seoulIcon = document.getElementById('seoul-icon');
+  const seoulIconID = json.weather[0].icon;
+  seoulIcon.src = `./assets/${seoulIconID}.png`;
+
+  const seoulTempElement = document.getElementById('seoul-temp');
+  const seoulTemp = json.main.temp;
+  seoulTempElement.innerText = `${Math.floor(json.main.temp)}°C`;
+})
+
+.catch((error) => {
+  console.log(error);
+});
