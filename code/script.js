@@ -79,15 +79,18 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
         const dayElement = document.getElementById(`day${[i]}`);
         dayElement.innerText = `${weekday}`;
         
-        const iconID = filteredForecast[i].weather[0].icon;
+        const iconID = filteredForecast[i].weather[0].icon; //Gets icon code from API
         const iconElement = document.getElementById(`icon${[i]}`);
         iconElement.src = `./assets/${iconID}.png`;
 
-        const minTemp = Math.floor(filteredForecast[i].main.temp_min);
+        const minTemp = Math.floor(filteredForecast[i].main.temp_min); //Gets min and max temp from API and rounds it up
         const maxTemp = Math.floor(filteredForecast[i].main.temp_max);
-
         const minMaxTemp = document.getElementById(`minMax${[i]}`);
         minMaxTemp.innerText = `${minTemp}°C / ${maxTemp}°C`;
+
+        const descriptionFromAPI = filteredForecast[i].weather[0].description; //Gets description from API
+        const description = document.getElementById(`description${[i]}`);
+        description.innerText = descriptionFromAPI;
       };
     })
 

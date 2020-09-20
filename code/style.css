@@ -64,6 +64,10 @@ body {
     width: 113px; /*set up specific width so that weather icons can align*/
 }
 
+.forecast-description {
+    display: none;
+}
+
 /* MEDIA QUERIES */
 /* Tablet */
 @media (min-width: 667px) and (max-width: 1024px) {
@@ -99,6 +103,10 @@ body {
     .forecast-icon {
         width: 60px;
         height: 60px;
+    }
+
+    .forecast-description {
+        display: block;
     }
 }
 
