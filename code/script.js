@@ -76,15 +76,18 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
             weekday = "Saturday";
         };
 
-        const minTemp = Math.floor(filteredForecast[i].main.temp_min);
-        const maxTemp = Math.floor(filteredForecast[i].main.temp_max);
-                
         const dayElement = document.getElementById(`day${[i]}`);
-        dayElement.innerText = `${weekday} | Min Temp: ${minTemp}°C | Max Temp: ${maxTemp}°C | Icon: `;
+        dayElement.innerText = `${weekday}`;
         
         const iconID = filteredForecast[i].weather[0].icon;
         const iconElement = document.getElementById(`icon${[i]}`);
         iconElement.src = `./assets/${iconID}.png`;
+
+        const minTemp = Math.floor(filteredForecast[i].main.temp_min);
+        const maxTemp = Math.floor(filteredForecast[i].main.temp_max);
+
+        const minMaxTemp = document.getElementById(`minMax${[i]}`);
+        minMaxTemp.innerText = `${minTemp}°C / ${maxTemp}°C`;
       };
     })
 

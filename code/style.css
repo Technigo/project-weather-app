@@ -42,14 +42,27 @@ body {
     justify-content: space-around;
 }
 
+.forecast-container {
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    margin-bottom: 10px;
+    align-items: center;
+}
 
+.forecast-icon {
+    width: 35px;
+    height: 35px;
+}
 
+.forecast-minmax, .forecast-day {
+    font-size: 20px;
+}
 
-
-
-
-img {
-    width: 50px;
+.forecast-day {
+    width: 113px;
 }
 
 
