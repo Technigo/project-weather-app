@@ -21,6 +21,11 @@ header {
     color: white;
 }
 
+/* hide title (only ipad and laptop) */
+.header-title {
+    display: none;
+}
+
 .header-text-weather {
     text-align: center;
     font-size: 28px;
@@ -107,50 +112,95 @@ header {
     overflow: hidden;
     background-color:transparent;
     position: relative;
-  }
+}
   
-  /* Hide the links inside the navigation menu (except for logo/home) */
-  .topnav #myLinks {
+/* Hide the links inside the navigation menu (except for logo/home) */
+.topnav #myLinks {
     display: none;
     margin-bottom: 200px;
     background-color:rgba(255,255,255, 0.9)
-  }
+}
   
-  /* Style navigation menu links */
-  .topnav a {
+/* Style navigation menu links */
+.topnav a {
     color: black;
     padding: 14px 16px;
     text-decoration: none;
     display: block;
     font-size: 16px;
-  }
+}
   
-  /* Style the hamburger menu */
-  .topnav a.icon {
+/* Style the hamburger menu */
+.topnav a.icon {
     background: transparent;
     display: block;
     position: absolute;
     right: 0;
     top: 0;
-  }
+}
   
-  /* Add a transparent background color on mouse-over */
-  .topnav a:hover {
+/* Add a transparent background color on mouse-over */
+.topnav a:hover {
     background-color: rgba(255,255,255, 0.9);
     color: black;
-  }
+}
   
-  /* Style the active link (or home/logo) */
-  .active {
+/* Style the active link (or home/logo) */
+.active {
     background-color: transparent;
     color: white;
     font-family: 'Roboto Condensed', Sans-Serif;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 18px;
-  }
+}
+
+/* Responsive designs */
+
+/* For tablet only */
+@media screen and (min-width: 667px) and (max-width: 1024px) {
+
+    header {
+        width: 100%;
+        background-color: black;
+        height: 200px;
+    }
+
+    .topnav a {
+        color: white;
+    }
+
+    .topnav a:hover {
+        color: black;
+    }
+
+    .header-weather-wrapper {
+        display: none;
+    }
+
+    .header-title {
+        display: block;
+        text-align: center;
+        margin-top: 70px;
+        color: white;
+        font-family: 'Roboto Condensed', Sans-Serif;
+        text-transform: uppercase;
+        font-size: 50px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
+    }
+}
+
 
 /** WEATHER SECTION **/
+
+/* hide section (only ipad and laptop) */
+.weekly-weather-focus {
+    display: none;
+}
 
 .weekly-wrapper {
     display: flex;
@@ -190,6 +240,87 @@ h3 {
 
 h1 {
     margin: 0;
+}
+
+/* For tablet only */
+@media screen and (min-width: 667px) and (max-width: 1024px) {
+    
+    
+    .weekly-weather-focus {
+        display: block;
+        width: 70%;
+        margin: auto;
+        padding: 30px;
+        border: 20px solid #efefef;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        background: linear-gradient(270deg, #ff6800, #ff0000, #fff000);
+        background-size: 600% 600%;
+    
+        -webkit-animation: AnimationName 10s ease infinite;
+        -moz-animation: AnimationName 10s ease infinite;
+        animation: AnimationName 10s ease infinite;
+    }
+    
+    @-webkit-keyframes AnimationName {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+    @-moz-keyframes AnimationName {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+    @keyframes AnimationName {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+
+    .focus-weather {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 100%;
+    }
+
+    .focus-title {
+        color: black;
+        font-size: 30px;
+        text-transform: uppercase;
+        width: 60%;
+        font-family: 'Roboto Condensed', Sans-Serif;
+        font-weight: lighter;
+    }
+
+    .focus-weather .header-text-celcius {
+        color: black;
+        width: 40%;
+    }
+
+    .weekly-weather {
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: auto;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        padding: 20px;
+        border: 20px solid #efefef;
+    }
+
+    .weekly-wrapper {
+        width: 100%;
+    }
+
+}
+
+
+/* For computer only */
+@media (min-width: 1025px) {
+
 }
 
 /** FOOTER SECTION **/
