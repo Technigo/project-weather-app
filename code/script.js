@@ -35,7 +35,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     console.log(error);
   });
 
-  // New Fetch for the 5 days Forecast
+// New Fetch for the 5 days Forecast
   const day1 = document.getElementById('day1');
 
   fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=3f1c95b540a45d2a48ff596267d9d939')
@@ -97,3 +97,28 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     .catch((error) => {
       console.log(error);
     });
+
+// Fetch to get Panama weather
+fetch('http://api.openweathermap.org/data/2.5/weather?q=Panama&units=metric&APPID=3f1c95b540a45d2a48ff596267d9d939')
+  .then((response) => {
+    return response.json();
+  })
+
+  .then((json) => {
+    console.log(json);
+
+    const panamnaName = document.getElementById('panana-name');
+    panamnaName.innerText = `${json.name}`;
+    
+    const panamaIcon = document.getElementById('panama-icon');
+    const panamaIconID = json.weather[0].icon;
+    panamaIcon.src = `./assets/${panamaIconID}.png`;
+
+    const panamaTempElement = document.getElementById('panama-temp');
+    const panamaTemp = json.main.temp;
+    panamaTempElement.innerText = `${Math.floor(json.main.temp)}°C`;
+  })
+
+  .catch((error) => {
+    console.log(error);
+  });

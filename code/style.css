@@ -68,6 +68,11 @@ body {
     display: none;
 }
 
+.vacation-spots {
+    /* display: none; */
+    font-size: 30px;
+}
+
 /* MEDIA QUERIES */
 /* Tablet */
 @media (min-width: 667px) and (max-width: 1024px) {
@@ -106,6 +111,10 @@ body {
     }
 
     .forecast-description {
+        display: block;
+    }
+
+    .vacation-spots {
         display: block;
     }
 }
