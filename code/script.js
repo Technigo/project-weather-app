@@ -15,9 +15,9 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     const mainIconID = json.weather[0].icon;
     mainIcon.src = `./assets/${mainIconID}.png`;
 
-    cityName.innerText = `City: ${json.name}`;
-    temperature.innerText = `Temperature: ${Math.floor(json.main.temp)}`;
-    description.innerText = `Description: ${json.weather[0].description}`;
+    cityName.innerText = `${json.name}`;
+    temperature.innerText = `${Math.floor(json.main.temp)}°C`;
+    description.innerText = `${json.weather[0].description.toUpperCase()}`;
 
     const sunriseValue = json.sys.sunrise; //Sunrise and Sunset times in UNIX
     const sunsetValue = json.sys.sunset;
@@ -80,7 +80,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
         const maxTemp = Math.floor(filteredForecast[i].main.temp_max);
                 
         const dayElement = document.getElementById(`day${[i]}`);
-        dayElement.innerText = `${weekday} | Min Temp: ${minTemp} | Max Temp: ${maxTemp} | Icon: `;
+        dayElement.innerText = `${weekday} | Min Temp: ${minTemp}°C | Max Temp: ${maxTemp}°C | Icon: `;
         
         const iconID = filteredForecast[i].weather[0].icon;
         const iconElement = document.getElementById(`icon${[i]}`);

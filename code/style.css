@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+.icon-temp {
+    /* border: 2px solid blue; */
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+#temperature {
+    font-size: 70px;
+    font-weight: bold;
+}
+
+#main-icon {
+    width: 40%;
+}
+
+#city-name {
+    font-size: 50px;
+    margin: 0;
+}
+
+.main-data {
+    margin-left: 10px;
+    text-align: center;
+}
+
+#description, #sunrise, #sunset {
+    margin-top: 3px;
+    font-size: 20px;
+}
+
+.sun-set-values {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+
+
+
+
+
+img {
+    width: 50px;
+}
+
+
+
+
+
+
+/* MEDIA QUERIES */
+/* Tablet */
+/* @media (min-width: 667px) and (max-width: 1024px) */
+
+/* Desktop */
+/* @media (min-width: 1025px) */
