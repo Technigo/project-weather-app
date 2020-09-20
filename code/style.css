@@ -6,7 +6,6 @@ body {
 }
 
 .icon-temp {
-    /* border: 2px solid blue; */
     display: flex;
     width: 100%;
     justify-content: space-around;
@@ -62,17 +61,50 @@ body {
 }
 
 .forecast-day {
-    width: 113px;
+    width: 113px; /*set up specific width so that weather icons can align*/
+}
+
+/* MEDIA QUERIES */
+/* Tablet */
+@media (min-width: 667px) and (max-width: 1024px) {
+    #temperature {
+        font-size: 110px;
+        font-weight: bold;
+    }
+
+    #city-name {
+        font-size: 70px;
+    }
+
+    #description, #sunrise, #sunset {
+        margin-top: 3px;
+        font-size: 30px;
+    }
+
+    .forecast {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+    }
+    
+    .forecast-container {
+        flex-direction: column;
+        width: 18%;
+    }
+
+    .forecast-day {
+        width: auto; /*overwrite specific width set above*/
+    }
+
+    .forecast-icon {
+        width: 60px;
+        height: 60px;
+    }
 }
 
 
 
 
-
-
-/* MEDIA QUERIES */
-/* Tablet */
-/* @media (min-width: 667px) and (max-width: 1024px) */
 
 /* Desktop */
 /* @media (min-width: 1025px) */
