@@ -16,6 +16,24 @@ const fetchWeather = () => {
     });
 };
 
+const fetchForecast = () => {
+    return fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=7d01b328e34c450986cb7faef032a771`
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => {
+        //console.log(json.name);
+        //console.log(json.main.temp);
+        //const roundedWeather = Math.round(json.main.temp * 10) / 10;
+        //console.log(roundedWeather);
+        //console.log(json.weather[0].description);
+        sthlmForecast(json);
+        //return json;
+      });
+  };
+
 const sthlmWeather = (weather) => {
     console.log(weather.main.temp);
     document.getElementById("sthlm").innerHTML += `${weather.main.temp}`
@@ -26,6 +44,12 @@ const sthlmWeather = (weather) => {
     document.getElementById("sthlm").innerHTML += `<p>Sunrise: ${(sunrise.getHours()) <= 9 ? `0`:``}${sunrise.getHours()}:${sunrise.getMinutes()}</p>`
     document.getElementById("sthlm").innerHTML += `<p>Sunset: ${(sunset.getHours()) <= 9 ? `0`:``}${sunset.getHours()}:${sunset.getMinutes()}</p>`
     //console.log(sunrise.getHours());
+}
+
+const sthlmForecast = (forecast) => {
+    const filteredForecast = forecast.list.filter(item => item.dt_txt.includes('12:00'))
+    //console.log(filteredForecast)
+    filteredForecast.forEach((day) => console.log(day.main.temp_min, day.main.temp_max))
 }
 
 /*let sthlmWeather = fetchWeather().then((weather) => {
