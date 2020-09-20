@@ -105,8 +105,6 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Panama&units=metric&APPI
   })
 
   .then((json) => {
-    console.log(json);
-
     const panamnaName = document.getElementById('panana-name');
     panamnaName.innerText = `${json.name}`;
     
@@ -123,15 +121,13 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Panama&units=metric&APPI
     console.log(error);
   });
 
-  // Fetch to get Seoul weather
+// Fetch to get Seoul weather
 fetch('http://api.openweathermap.org/data/2.5/weather?q=Seoul&units=metric&APPID=3f1c95b540a45d2a48ff596267d9d939')
 .then((response) => {
   return response.json();
 })
 
 .then((json) => {
-  console.log(json);
-
   const seoulName = document.getElementById('seoul-name');
   seoulName.innerText = `${json.name}`;
   
@@ -142,6 +138,29 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Seoul&units=metric&APPID
   const seoulTempElement = document.getElementById('seoul-temp');
   const seoulTemp = json.main.temp;
   seoulTempElement.innerText = `${Math.floor(json.main.temp)}°C`;
+})
+
+.catch((error) => {
+  console.log(error);
+});
+
+// Fetch to get Brussels weather
+fetch('http://api.openweathermap.org/data/2.5/weather?q=Brussels&units=metric&APPID=3f1c95b540a45d2a48ff596267d9d939')
+.then((response) => {
+  return response.json();
+})
+
+.then((json) => {
+  const brusselsName = document.getElementById('brussels-name');
+  brusselsName.innerText = `${json.name}`;
+  
+  const brusselsIcon = document.getElementById('brussels-icon');
+  const brusselsIconID = json.weather[0].icon;
+  brusselsIcon.src = `./assets/${brusselsIconID}.png`;
+
+  const brusselsTempElement = document.getElementById('brussels-temp');
+  const brusselsTemp = json.main.temp;
+  brusselsTempElement.innerText = `${Math.floor(json.main.temp)}°C`;
 })
 
 .catch((error) => {

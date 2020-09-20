@@ -71,13 +71,19 @@ body {
     display: none;
 }
 
+.other-cities {
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
 .vacation-container {
     font-size: 30px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 
-.panama-container, .seoul-container {
+.panama-container, .seoul-container, .brussels-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -86,10 +92,11 @@ body {
     -webkit-backdrop-filter: blur(20px);
     width: 250px;
     margin-right: 20px;
+    margin-left: 20px;
 }
 
-#panama-icon, #seoul-icon {
-    width: 150px;
+#panama-icon, #seoul-icon, #brussels-icon {
+    width: 30%;
 }
 
 /* MEDIA QUERIES */
@@ -137,10 +144,6 @@ body {
         display: block;
     }
 }
-
-
-
-
 
 /* Desktop */
 /* @media (min-width: 1025px) */
