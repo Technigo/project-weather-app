@@ -1,3 +1,4 @@
+const mainIcon = document.getElementById('main-icon');
 const cityName = document.getElementById('city-name');
 const temperature = document.getElementById('temperature');
 const description = document.getElementById('description');
@@ -11,6 +12,9 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
   })
 
   .then((json) => {
+    const mainIconID = json.weather[0].icon;
+    mainIcon.src = `./assets/${mainIconID}.png`;
+
     cityName.innerText = `City: ${json.name}`;
     temperature.innerText = `Temperature: ${Math.floor(json.main.temp)}`;
     description.innerText = `Description: ${json.weather[0].description}`;
@@ -42,8 +46,6 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     .then ((json) => {
       //Filters out forecast at 12:00 for coming 5 days
       const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
-
-      console.log(filteredForecast);
 
       for (i=0; i < filteredForecast.length; i++) {  //Loop to generate data to be shown for coming 5 days
 
@@ -82,7 +84,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
         
         const iconID = filteredForecast[i].weather[0].icon;
         const iconElement = document.getElementById(`icon${[i]}`);
-        iconElement.src = `http://openweathermap.org/img/wn/${iconID}@2x.png`;
+        iconElement.src = `./assets/${iconID}.png`;
       };
     })
 
