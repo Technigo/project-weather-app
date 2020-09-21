@@ -43,7 +43,7 @@ const generatedHTMLForWeatherToday = (weatherToday) => {
 };
 
 const generatedHTMLForWeatherForecast = (filteredForecast) => {
-  //printDay(filteredForecast.dt_txt)//What day is it
+  //printDay(filteredForecast.dt_txt) //Should tell what day it is but doesn't work at the moment
     console.log(filteredForecast.main.temp)
   const dailyTemp = calculateTemperature(filteredForecast.main.temp);
   return dailyTemp
