@@ -80,13 +80,13 @@ body {
     font-weight: bold;
 }
 
-.vacation-container {
+#vacation-container {
     font-size: 30px;
     display: flex;
     justify-content: space-between;
 }
 
-.panama-container, .seoul-container, .brussels-container {
+.vacation-city-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -98,7 +98,7 @@ body {
     margin-left: 20px;
 }
 
-#panama-icon, #seoul-icon, #brussels-icon {
+.vacation-city-icon {
     width: 30%;
 }
 

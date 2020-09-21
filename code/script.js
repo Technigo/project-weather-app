@@ -49,9 +49,8 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
   .then ((json) => {
     //Filters out forecast at 12:00 for coming 5 days
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));  //Creates array with data for coming 5 days
-    console.log(filteredForecast);
 
-    filteredForecast.forEach((forecastDay) => { //Calls generateHTMLForForecast function to dynamically create the HTML content for the coming 5 days
+    filteredForecast.forEach((forecastDay) => {
       forecastContent.innerHTML += generateHTMLForForecast(forecastDay);
     });  
   })
@@ -88,22 +87,29 @@ const generateHTMLForForecast = day => {
 };
 
 // Fetch to get Panama weather
+const vacationContainer = document.getElementById('vacation-container');
+
 fetch(`http://api.openweathermap.org/data/2.5/weather?q=Panama&units=metric&APPID=${API_KEY}`)
   .then((response) => {
     return response.json();
   })
 
   .then((json) => {
-    const panamnaName = document.getElementById('panana-name');
-    panamnaName.innerText = `${json.name}`;
-    
-    const panamaIcon = document.getElementById('panama-icon');
-    const panamaIconID = json.weather[0].icon;
-    panamaIcon.src = `./assets/${panamaIconID}.png`;
+    vacationContainer.innerHTML += generateVacationHTML(json); //Calls generateVacationHTML to create data for vacation city
+  })
 
-    const panamaTempElement = document.getElementById('panama-temp');
-    const panamaTemp = json.main.temp;
-    panamaTempElement.innerText = `${Math.floor(json.main.temp)}°C`;
+  .catch((error) => {
+    console.log(error);
+  });
+
+// Fetch to get Brussels weather
+fetch(`http://api.openweathermap.org/data/2.5/weather?q=Brussels&units=metric&APPID=${API_KEY}`)
+  .then((response) => {
+    return response.json();
+  })
+
+  .then((json) => {
+    vacationContainer.innerHTML += generateVacationHTML(json); //Calls generateVacationHTML to create data for vacation city
   })
 
   .catch((error) => {
@@ -112,46 +118,35 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=Panama&units=metric&APPI
 
 // Fetch to get Seoul weather
 fetch(`http://api.openweathermap.org/data/2.5/weather?q=Seoul&units=metric&APPID=${API_KEY}`)
-.then((response) => {
-  return response.json();
-})
+  .then((response) => {
+    return response.json();
+  })
 
-.then((json) => {
-  const seoulName = document.getElementById('seoul-name');
-  seoulName.innerText = `${json.name}`;
-  
-  const seoulIcon = document.getElementById('seoul-icon');
-  const seoulIconID = json.weather[0].icon;
-  seoulIcon.src = `./assets/${seoulIconID}.png`;
+  .then((json) => {
+    vacationContainer.innerHTML += generateVacationHTML(json); //Calls generateVacationHTML to create data for vacation city
+  })
 
-  const seoulTempElement = document.getElementById('seoul-temp');
-  const seoulTemp = json.main.temp;
-  seoulTempElement.innerText = `${Math.floor(json.main.temp)}°C`;
-})
+  .catch((error) => {
+    console.log(error);
+  });
 
-.catch((error) => {
-  console.log(error);
-});
+//Function to get data for vacation cities
+const generateVacationHTML = city => {
+  //Get vacation city name
+  const vacationCityName = city.name;
 
-// Fetch to get Brussels weather
-fetch(`http://api.openweathermap.org/data/2.5/weather?q=Brussels&units=metric&APPID=${API_KEY}`)
-.then((response) => {
-  return response.json();
-})
+  //Get vacation city weather icon
+  const vacationCityIcon = city.weather[0].icon;
 
-.then((json) => {
-  const brusselsName = document.getElementById('brussels-name');
-  brusselsName.innerText = `${json.name}`;
-  
-  const brusselsIcon = document.getElementById('brussels-icon');
-  const brusselsIconID = json.weather[0].icon;
-  brusselsIcon.src = `./assets/${brusselsIconID}.png`;
+  //Get vacation city temperature
+  const vacationCityTemp = city.main.temp;
 
-  const brusselsTempElement = document.getElementById('brussels-temp');
-  const brusselsTemp = json.main.temp;
-  brusselsTempElement.innerText = `${Math.floor(json.main.temp)}°C`;
-})
-
-.catch((error) => {
-  console.log(error);
-});
+  // Create dynamic HTML code to return
+  let vacationHTML = '';
+  vacationHTML += `<div class="vacation-city-container">`;
+  vacationHTML += `<p>${vacationCityName}</p>`;
+  vacationHTML += `<img class="vacation-city-icon" src='./assets/${vacationCityIcon}.png'>`;
+  vacationHTML += `<p>${Math.floor(vacationCityTemp)}°C</p>`;
+  vacationHTML += `</div>`;
+  return vacationHTML;
+  };
