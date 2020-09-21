@@ -6,8 +6,7 @@ body {
    
 }
 
-
-.full {
+.fullApp {
     width: 80%;
     max-width: 650px;
     height: 80%;
@@ -16,6 +15,11 @@ body {
     display: flex;
     flex-direction: column;
     background-color: #4e89ae;
+}
+
+
+.hero-img {
+   
 }
 
 .todaysWeather {
@@ -27,10 +31,12 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    margin-top: 20px;
 }
 
-.weekly{
+.fiveDaysWeather{
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 30px;
     
 }

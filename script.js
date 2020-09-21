@@ -51,12 +51,20 @@ fetch(apiUrlForecast)
         return Response.json()
     })
     .then ((json) => {
-        console.log(json)  
-        const limitedArray = json.list.splice(1,5,)
-        console.log(limitedArray) 
+        const filteredForecast = json.list.filter(item =>
+        item.dt_txt.includes("12:00")
+        );
+        filteredForecast.forEach(day => {
+            let date = new Date(day.dt * 1000);
+            let dayName = date.toLocaleDateString("en-US", { weekday: "long" });
+            const dayTemp = day.main.temp;
+            const weekTemp = dayTemp.toFixed(0.1);
 
-        forecastContainer.innerHTML = `<h4>  ${limitedArray}  </h4>`
- })   
+            document.getElementById('forecastDay').innerHTML += `<p>${dayName}</p>`
+            document.getElementById('forecastTemp').innerHTML += `<p>${weekTemp}</p>`
+    });  
+ 
+});
 
 
 
