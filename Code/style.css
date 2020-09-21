@@ -1,0 +1,25 @@
+body {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color:#edae49;
+}
+
+#cityname{
+border: 5px solid #00798c;
+border-radius: 7px;
+padding: 12px;
+width: 25%;
+align-items: center;
+}
+.banner{
+ width: 200px; 
+}
+
+h1 {
+  font-size: large;
+}
+
+#currentWeather {
+  margin: 40px 0px;
+}
