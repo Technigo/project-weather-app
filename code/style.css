@@ -1,0 +1,27 @@
+/* 
+font-family: 'Work Sans', sans-serif;
+weights: 100,400,600,800 
+*/
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: rgb(21,21,21);
+    color: rgba(255,255,255,0.87);
+    font-family: 'Work Sans', sans-serif;
+}
+
+main {
+    border: 1px solid rgba(255,255,255,0.15);
+    width: 375px;
+    height: 667px;
+    margin: auto;
+    margin-top: 120px;
+    border-radius: 8px;
+    box-shadow: 0px 12px 24px rgba(0,0,0,0.5);
+    padding: 24px;
+}
+
