@@ -7,15 +7,20 @@ const calculateTemperature = (number) => {
     return roundedTemp
 }
 
+const generatedHTMLForWeatherToday = (weatherToday) => {
+
+    const temperature = calculateTemperature(weatherToday.main.temp)//This is using json.main.temp as a parameter instead of number.
+    containerToday.innerHTML = `<h1>This is ${weatherToday.name}</h1>`
+    descriptionToday.innerHTML = `The temperature today is ${temperature} degrees and it's ${weatherToday.weather[0].description} outside.`//Since weather is an array, we need to access the index of 0, and then we can locate the object keyvalues i.e .description. This has to be done even if there is only one array, as in this case.
+}
+
 const fetchWeatherToday = () => {
     fetch(apiUrlToday)
     .then ((response) => {
         return response.json()
     })
-    .then ((json) => {
-        containerToday.innerHTML = `<h1>This is ${json.name}</h1>`
-        const temperature = calculateTemperature(json.main.temp)//This is using json.main.temp as a parameter instead of number.
-        descriptionToday.innerHTML = `The temperature today is ${temperature} degrees and it's ${json.weather[0].description} outside.`//Since weather is an array, we need to access the index of 0, and then we can locate the object keyvalues i.e .description. This has to be done even if there is only one array, as in this case.
+    .then ((weatherToday) => {
+        generatedHTMLForWeatherToday(weatherToday)
     })
 }
 
