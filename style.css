@@ -1,0 +1,30 @@
+
+
+body {
+    margin: 0;
+    background-color: #43658b;
+   
+}
+
+
+.full {
+    width: 80%;
+    max-width: 650px;
+    height: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #4e89ae;
+}
+
+.todaysWeather {
+    text-align: center;
+}
+
+
+.sun {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
