@@ -12,8 +12,6 @@ const calculatedTemperature = (number) => {
 };
 
 
-
-
 //function for sunrise and suntime that only includes hours and minutes 
 const calculatingSun = (time) => {
     const sunTime = new Date(time * 1000);
@@ -28,19 +26,16 @@ const calculatingSun = (time) => {
 };
 
 
-
-
 //functions to print a short day of our 5 day weather forcast 
 const printDay = (day) => {
-    const forcastDays = new Date(day);
+    const forcastDays = new Date(day * 1000);
+    console.log(forcastDays)
     const forcastDaysString = forcastDays.ToLocalDateString('en-US', {
         weekday: 'short',
     });
     console.log(forcastDaysString);
     return forcastDaysString; 
 };
-
-
 
 
 //Functions to invoke already created functions and manipulate the DOM
@@ -63,30 +58,34 @@ const generatedHTMLForWeatherToday = (weatherToday) => {
     //separate everyting instead of return in one row! 
     let weatherTodayHTML = '';
     weatherTodayHTML += `<section class="weatherToday">`;
-    weatherTodayHTML += `<p> Location: ${weatherToday.name}: Weather Today: ${weatherToday.weather[0].description}: 
-    ${temperature} \xB0: Sunrise at: ${sunrise}: Sunset at ${sunset} </p>`
+    weatherTodayHTML += `<div class="location"> Location: ${weatherToday.name}</div>` 
+    weatherTodayHTML += `<p> Weather Today: ${weatherToday.weather[0].description}</p>`
+    weatherTodayHTML += `<p> Temperature: ${temperature} \xB0</p>`
+    weatherTodayHTML += `<p> Sunrise at: ${sunrise}: Sunset at ${sunset}</p>`
     weatherTodayHTML += `</section>`; 
     return weatherTodayHTML; 
 };
 
 
 const generatedHTMLForWeatherForcast = (filteredForcast) => {
-    //printDay(filteredForcast.dt_txt) //Tell what day it concerns, does not work ATM 
+    //printDay(filteredForcast.dt); //Tell what day it concerns, does not work ATM 
     console.log(filteredForcast.main.temp); //can console.log this, but cant make it work when invoking the printDay()
 
     const dailyTemp = calculatedTemperature(filteredForcast.main.temp);
-    return dailyTemp
+    const tempFeelsLike = calculatedTemperature(filteredForcast.main.feels_like)
+    //return dailyTemp;
     //Other information to take in. 
     //description for next five days "partly clody, sun".... changed with an image using if statments....?? 
     //min and max temp for the day. 
 
     //separate and build up the section tree VANS example
-    //let launchHTML = '';
-    //launchHTML += `<section class="launch">`;
-    //launchHTML += ` <img src='${launchOutcomeImageUrl}'>`;
-    //launchHTML += ` <p>${launch.flight_number}: ${launch.mission_name} - ${launchDateString} ${launchTimeString}</p>`;
-    //launchHTML += `</section>`;
-    //return launchHTML;*/ //This is code from Van to use in forecast HTML
+    let weatherForcast = '';
+    weatherForcast += `<section class="weatherForcast">`;
+    //weatherForcast += ` <img src='${launchOutcomeImageUrl}'>`;
+    weatherForcast += `<p>Temperature: ${dailyTemp} \xB0</p>`;
+    weatherForcast += `<p>Feels like: ${tempFeelsLike} \xB0</p>`;
+    weatherForcast += `</section>`;
+    return weatherForcast; //This is code from Van to use in forecast HTML
 };
 
 
