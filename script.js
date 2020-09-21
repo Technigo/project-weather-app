@@ -49,6 +49,13 @@ const generatedHTMLForWeatherForecast = (filteredForecast) => {
   return dailyTemp
   //Weather description for the next five days
   //Humidity and wind
+
+ /*let launchHTML = '';
+  launchHTML += `<section class="launch">`;
+  launchHTML += ` <img src='${launchOutcomeImageUrl}'>`;
+  launchHTML += ` <p>${launch.flight_number}: ${launch.mission_name} - ${launchDateString} ${launchTimeString}</p>`;
+  launchHTML += `</section>`;
+  return launchHTML;*/ //This is code from Van to use in forecast HTML
 };
 
 const fetchWeatherToday = () => {
@@ -71,7 +78,7 @@ const fetchWeatherForecast = () => {
         item.dt_txt.includes("12:00")
       );
       console.log(filteredForecast);
-      
+
       filteredForecast.forEach((forecast) => {
         containerForecast.innerHTML += generatedHTMLForWeatherForecast(forecast);
       });
