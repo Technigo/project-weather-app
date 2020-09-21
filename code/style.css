@@ -1,0 +1,14 @@
+img {
+  width: 40px;
+  height: 40px;
+}
+
+.launch {
+  display: flex;
+}
+
+.weather-forecast {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
