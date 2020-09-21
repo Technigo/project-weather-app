@@ -27,10 +27,11 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     /* Multiply by 1000 because the data is given to us in UNIX which is in seconds, but Javascript uses milliseconds internally, this way we get the right date. */
     const sun = new Date(sunriseValue * 1000);
     const set = new Date(sunsetValue * 1000);
+    const sunriseHour = sun.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit', hour12: false,});
+    const sunsetHour = set.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit', hour12: false,});
 
-    /* From the Date format we got above from sun and set, extract only the hours and minutes - using slice method on the minutes part so that it shows the 0 when minutes are less than 10, otherwise it will show 19:2 instead of 19:02. Got this from StackO: https://stackoverflow.com/questions/8935414/getminutes-0-9-how-to-display-two-digit-numbers */
-    sunrise.innerText = `Sunrise: ${sun.getHours()}:${('0'+ sun.getMinutes()).slice(-2)}`;
-    sunset.innerText = `Sunset: ${set.getHours()}:${('0'+ set.getMinutes()).slice(-2)}`;
+    sunrise.innerText = `Sunrise: ${sunriseHour}`;
+    sunset.innerText = `Sunset: ${sunsetHour}`;
   })
 
   .catch((error) => {
