@@ -1,0 +1,4 @@
+.weatherToday {
+    display: flex; 
+    flex-direction: column;
+}
