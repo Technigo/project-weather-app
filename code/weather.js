@@ -13,7 +13,8 @@ const weatherHeader = document.getElementById('weatherHeader');
         console.log(weatherObjects);
             for (weather in weatherObjects) {
                 console.log(weather)
-            }
+                container.innerHTML += `<p>${JSON.stringify(weather)}</p>`;  
+            };          
         });
 
         //Your task is to present the data: the city name, the temperature (rounded to 1 decimal place), and what type of weather it is (the "description" in the JSON)
