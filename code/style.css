@@ -5,6 +5,7 @@ body {
     background-position: center;
 }
 
+/*Styling Main Top section */
 .icon-temp {
     display: flex;
     width: 100%;
@@ -41,13 +42,14 @@ body {
     justify-content: space-around;
 }
 
+/* Styling 5 days forecast section*/
 .forecast-container {
     display: flex;
     justify-content: space-around;
-    background-color: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(10px);
-    margin-bottom: 10px;
     align-items: center;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(20px);
+    margin-bottom: 10px;
 }
 
 .forecast-icon {
@@ -67,6 +69,7 @@ body {
     display: none;
 }
 
+/* Vacation Spots Styling*/
 .vacation-spots {
     display: none;
 }
@@ -116,7 +119,7 @@ body {
         font-size: 30px;
     }
 
-    .forecast {
+    #main-forecast-data {
         display: flex;
         justify-content: space-around;
         margin-top: 20px;
