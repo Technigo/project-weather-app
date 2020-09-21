@@ -1,3 +1,5 @@
+import { API_KEY } from './key.js';
+
 const mainIcon = document.getElementById('main-icon');
 const cityName = document.getElementById('city-name');
 const temperature = document.getElementById('temperature');
@@ -6,7 +8,7 @@ const description = document.getElementById('description');
 const sunrise = document.getElementById('sunrise');
 const sunset = document.getElementById('sunset');
 
-fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=3f1c95b540a45d2a48ff596267d9d939')
+fetch(`http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${API_KEY}`)
   .then((response) => {
     return response.json();
   })
@@ -36,9 +38,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
   });
 
 // New Fetch for the 5 days Forecast
-  const day1 = document.getElementById('day1');
-
-  fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=3f1c95b540a45d2a48ff596267d9d939')
+  fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=${API_KEY}`)
     .then((response) => {
       return response.json();
     })
@@ -47,7 +47,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
       //Filters out forecast at 12:00 for coming 5 days
       const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
 
-      for (i=0; i < filteredForecast.length; i++) {  //Loop to generate data to be shown for coming 5 days
+      for (let i=0; i < filteredForecast.length; i++) {  //Loop to generate data to be shown for coming 5 days
 
         const unixDay = filteredForecast[i].dt;  // Date in UNIX
         const unixDayToMili = new Date(unixDay * 1000);  // Convert to nice date format we can use
@@ -99,7 +99,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     });
 
 // Fetch to get Panama weather
-fetch('http://api.openweathermap.org/data/2.5/weather?q=Panama&units=metric&APPID=3f1c95b540a45d2a48ff596267d9d939')
+fetch(`http://api.openweathermap.org/data/2.5/weather?q=Panama&units=metric&APPID=${API_KEY}`)
   .then((response) => {
     return response.json();
   })
@@ -122,7 +122,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Panama&units=metric&APPI
   });
 
 // Fetch to get Seoul weather
-fetch('http://api.openweathermap.org/data/2.5/weather?q=Seoul&units=metric&APPID=3f1c95b540a45d2a48ff596267d9d939')
+fetch(`http://api.openweathermap.org/data/2.5/weather?q=Seoul&units=metric&APPID=${API_KEY}`)
 .then((response) => {
   return response.json();
 })
@@ -145,7 +145,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Seoul&units=metric&APPID
 });
 
 // Fetch to get Brussels weather
-fetch('http://api.openweathermap.org/data/2.5/weather?q=Brussels&units=metric&APPID=3f1c95b540a45d2a48ff596267d9d939')
+fetch(`http://api.openweathermap.org/data/2.5/weather?q=Brussels&units=metric&APPID=${API_KEY}`)
 .then((response) => {
   return response.json();
 })
