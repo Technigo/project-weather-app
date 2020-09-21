@@ -28,3 +28,9 @@ body {
     flex-direction: row;
     justify-content: space-evenly;
 }
+
+.weekly{
+    display: flex;
+    flex-direction: column;
+    
+}
