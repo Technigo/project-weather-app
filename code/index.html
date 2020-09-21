@@ -1,13 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" />
     <title>Document</title>
 </head>
+
 <body>
-    <p id="sthlm">Temperature in Stockholms is Currently: </p>
+    <div class="current">
+        <p id="sthlm">Temperature in Stockholm is Currently: </p>
+    </div>
+    <div class = "forecast">
+        <div class ="day">
+            <p class="next-day" id="day1"></p>
+            <p class="day-temp" id="day1-temp"></p>
+        </div>
+        <div class ="day">
+            <p class="next-day" id="day2"></p>
+            <p class="day-temp" id="day2-temp"></p>
+        </div>
+        <div class ="day">
+            <p class="next-day" id="day3"></p>
+            <p class="day-temp" id="day3-temp"></p>
+        </div>
+        <div class ="day">
+            <p class="next-day" id="day4"></p>
+            <p class="day-temp" id="day4-temp"></p>
+        </div>
+        <div class ="day">
+            <p class="next-day" id="day5"></p>
+            <p class="day-temp" id="day5-temp"></p>
+        </div>
+    </div>
     <script src="./weather.js"></script>
 </body>
+
 </html>

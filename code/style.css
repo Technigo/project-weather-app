@@ -1,0 +1,13 @@
+.current {
+    height: 400px;
+}
+
+.forecast {
+    display: flex;
+    flex-direction: column;
+}
+
+.day {
+    display: flex;
+    justify-content:space-between
+}
