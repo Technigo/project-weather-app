@@ -34,7 +34,6 @@ h1 {
 
 p.description, p.temp, p.sun {
   text-align: center;
-
 }
 
 p.temp {
@@ -51,18 +50,46 @@ div.container-five-day {
   border-bottom: 1px dotted;
 }
 
+video {
+  display: none;
+}
 
-/* DESIGN SPEC
-Weights: bold and regular
+@media (min-width: 667px) {
+  video {
+    display: none;
+  }
 
-colors:
+  section {
+    width: 100%;
+  }
 
-#F47775
-#F4F7F8
-#164A68
-#A3DEF7
-#2A5510
-#F7E9B9
-*/
+  .hero-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(./Video/weatheripad.jpg);
+    height: 400px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
 
-/
+  .hero-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(167, 47, 63);
+  }
+
+  h1 {
+    line-height: 1.4;
+    margin-top: 120px;
+  }
+}
+
+@media (min-width: 1024px) {
+  video {
+    display: block;
+  }
+  }
+
