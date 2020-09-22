@@ -18,6 +18,11 @@ fetch(apiURL)
     console.log(weather);
   });
 
+// round number to one decimal
+const round = (number) => {
+  return Math.round(number * 10) / 10;
+};
+
 const weatherToDay = () => {
   fetch(apiURL)
     .then((response) => {
@@ -25,8 +30,10 @@ const weatherToDay = () => {
     })
     .then((data) => {
       city.innerHTML = data.city.name;
-      temp.innerHTML = data.list[1].main.temp;
-      console.log(data.list[1].main.temp);
+      temp.innerHTML = round(data.list[1].main.temp);
+      feelsLikeTemp.innerHTML = round(data.list[1].main.feels_like);
+      //console.log(data.list[1].weather[0].description);
+      weatherToday.innerHTML = data.list[1].weather[0].description;
     });
 };
 
