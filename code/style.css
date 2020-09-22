@@ -1,4 +1,82 @@
+html {
+  background: rgb(34, 128, 195);
+  background: linear-gradient(
+    0deg,
+    rgba(34, 128, 195, 1) 14%,
+    rgba(117, 202, 210, 1) 94%
+  );
+  background-size: auto;
+  height: 100%;
+  background-repeat: no-repeat;
+}
+
+body {
+  margin: 0;
+}
+
+h1 {
+  color: aliceblue;
+  font-family: "didot";
+  font-size: 25px;
+  padding: 10px;
+}
+
+h2 {
+  color: #ffff;
+  font-size: 60px;
+  margin: 0;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(249, 247, 247, 0),
+    rgba(254, 254, 254, 0.75),
+    rgba(237, 237, 237, 0)
+  );
+}
+
+.current-weather {
+  width: 100%;
+  text-align: center;
+}
+
+.sunrise-sunset {
+  display: inline-flex;
+}
+
+#weather-description { 
+  text-transform:capitalize;
+}
+
+
+.five-day-forecast {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+#forecast {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-family: "didot";
+  font-size:25px;
+  padding: 20px;
+  font-size:15px;
+  color:#ffff;
+}
+
+.column { 
+  flex-basis: 50%;
+  padding-bottom: 30px;
+}
+
 p {
-    color:black;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: rgb(243, 243, 243);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 14px;
 }

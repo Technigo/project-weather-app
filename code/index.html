@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <title>Document</title>
-</head>
-<body>
-    <section class id = "weather-loading">
-        <p>Loading...</p>
-        <p id = "city"></p>
-        <p id = "temperature">Current Temperature: </p>
-        <p id = "weather-description"></p>
-        <p id = "real-feel">Feels like: </p>
-        <p id = "wind">Wind Speed:</p>
-        <p id = "uv">UV index: </p>
-        <p id = "sunrise"> Sunrise: </p>
-        <p id = "sunset"> Sunset: </p>
-        
-
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Project Weather App</title>
+  </head>
+  <body>
+    <section class="current-weather">
+      <h1 id="city"></h1>
+      <h2 id="temperature"></h2>
+      <p id="weather-description"></p>
+        <p id="real-feel">Feels like:</p>
+        <p id="wind">Wind Speed:</p>
+        <p id="uv">UV index:</p>
+    <section class="sunrise-sunset">
+        <p id="sunrise">Sunrise:</p>
+        <p id="sunset">Sunset:</p>
+      </section>
     </section>
-    
+    <hr />
+    <section class="five-day-forecast">
+      <h1>Next Five Days</h1>
+      <div id="forecast"></div>
+    </section>
     <script src="./script.js"></script>
-</body>
+  </body>
 </html>
