@@ -3,7 +3,7 @@ body {
 }
 
 
-.main-container {
+main {
   margin: auto;
   width: 296px;
   height: 67px;
@@ -11,4 +11,8 @@ body {
   font-family: Montserrat;
   font-size: 21px;
   font-weight: 400;
+}
+
+.container-five-day {
+  display: flex;
 }
