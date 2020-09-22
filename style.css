@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    background-image:
+    url('https://media3.giphy.com/media/4N1FZFE5AGO3qrUGkw/source.gif');
+    background-size: auto;
+}
+
+.weatherBoard {
+margin: 60px auto;
+background-color: aliceblue;
+width: 350px;
+height: 700px;
+border-radius: 10px;
+opacity: 0.9;
+display: flex;
+font-family: arial, sans-serif;
+}
+
+h3 {
+    font-family: arial, sans-serif;
+    padding-left: 20px;
+}
+
+h1 {
+    font-family: arial, sans-serif;
+    padding-left: 30px;
+    
+}
+
+table {
+   
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    display: block;
+    padding-top: 300px;
+    
+  }
+  
+  td,
+  th {
+    width: 70px;
+    text-align: left;
+    padding: 29px;
+   
+  }
+  
+  tr:nth-child(even) {
+    background-color: #b5ddf0;
+  }
