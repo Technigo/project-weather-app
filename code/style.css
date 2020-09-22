@@ -1,0 +1,47 @@
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+h1 {
+    font-weight: 300;
+    font-size: 120px;
+    margin: 5px;
+    margin-left: 0;
+}
+
+h2 {
+    font-weight: 300;
+    font-size: 35px;
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.description {
+    font-size: 20px;
+}
+
+.section-top {
+    background-image: linear-gradient( #8589FF, #E7E8FF);
+    color: white;
+    padding-left: 30px;
+    padding-top: 132px;
+}
+
+.section-top p {
+    margin: 5px;
+    margin-left: 0;
+}
+
+.info-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.sun-times {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    padding-right: 30px;
+    margin-top: 10px;
+}
