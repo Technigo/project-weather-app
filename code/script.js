@@ -43,6 +43,68 @@ const fetchWeather = (city) => {
   fetchCurrentWeather(city);
 }
 
+const fetchWeatherImage = (weather) => {
+  // Purpose of this function should be to fetch an image and load it to the DOM, depending on the weather type.
+  // Available: Clouds, Clear, Snow, Rain, Drizzle, Thunderstorm.
+  const image = document.getElementById("weatherIcon");
+
+  if(weather === 'Clouds') {
+    console.log("It's cloudy today.");
+    image.src = "./assets/ic_cloudy.svg";
+    
+  } else if(weather === 'Clear') {
+    console.log("Sun's out!");
+    image.src = "./assets/ic_clear.svg";
+    
+  } else if(weather === 'Snow') {
+    console.log("Brrr – snowy now.");
+    image.src = "./assets/ic_snow.svg";
+    
+  } else if(weather === 'Rain') {
+    console.log("Best bring an umbrella, son, cuz' it's pouring down.");
+    image.src = "./assets/ic_rain.svg";
+    
+  } else if(weather === 'Drizzle') {
+    console.log("My rap name would be 'Young Drizzle'");
+    image.src = "./assets/ic_drizzle.svg";
+    
+  } else if(weather === 'Thunderstorm') {
+    console.log("Oh hey, it's Thor! ⚡️");
+    image.src = "./assets/ic_thunder.svg";
+    
+  } else {
+    console.log("This... This is a weather type we've never seen before. Call the president.")
+    image.src = "./assets/ic_sun.svg";
+    
+  }
+}
+
+const fetchForecastEmojis = (weather) => {
+  if(weather === 'Clouds') {
+    return "🌥";
+
+  } else if(weather === 'Clear') {
+    return "🌞";
+  
+  } else if(weather === 'Snow') {
+    return "🌨";
+  
+  } else if(weather === 'Rain') {
+    return "🌧";
+  
+  } else if(weather === 'Drizzle') {
+    return "🌧";
+
+  } else if(weather === 'Thunderstorm') {
+    return "⛈";
+  
+  } else {
+    return "🤯";
+  }
+}
+
+
+
 // Function which fetches current weather data from a city, and populates the main objects in the DOM.
 const fetchCurrentWeather = (cityName) => {
   fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=607d94111f1f9c343f38c10112b16e3c`).then((response) => {
@@ -58,13 +120,12 @@ const fetchCurrentWeather = (cityName) => {
     description.innerHTML = weatherObject.weather[0].description;
     sunrise.innerHTML = formatTime(weatherObject.sys.sunrise);
     sunset.innerHTML = formatTime(weatherObject.sys.sunset);
+
+    fetchWeatherImage(weatherObject.weather[0].main);
   })
 }
 
-fetchCurrentWeather(cityName);
-
-
-// 5-day forecast function
+// 5-day forecast function. This one was hard.
 const fetchForecast = (cityName) => {
   fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=607d94111f1f9c343f38c10112b16e3c`).then((response) => {
     return response.json();
@@ -93,19 +154,15 @@ const fetchForecast = (cityName) => {
       <div id="forecastRow" class="forecast-row">
         <span class="forecast-date">${date}</span>
         <div class="forecast-temp">
-          <span>☀</span>
+          <span>${fetchForecastEmojis(weather)}</span>
           <span>${kelvinToCelsius(temp)}°</span>
         </div>
         <span class="forecast-weather">${weather}</span>        
         </div>
       </section>`
 
-    
     });
-
-    
   })
 }
 
-
-fetchForecast(cityName);
+fetchWeather(cityName);
