@@ -31,8 +31,15 @@ const weatherForecast = () => {
         filteredForecast.forEach((item => {
         const forecastTemp = item.main.temp.toFixed(0)
         const forecastDay = new Date(item.dt * 1000).toLocaleDateString('se-SE', {weekday: 'short'})
-        const forecastDescription = item.weather[0].description
-        weatherForecastContainer.innerHTML += `<div class="forecast-day"><p>${forecastDay}</p><p>${forecastDescription} - ${forecastTemp} &deg </p></div>`
+        // const forecastDescription = item.weather[0].description
+        let forecastImage = "";
+        if (item.weather[0].icon === "04d") {
+            forecastImage = "./assets/Group16.png"
+        } else if (item.weather[0].icon === "03d") { 
+            forecastImage = "./assets/Group34.png"
+        }
+        
+         weatherForecastContainer.innerHTML += `<div class="forecast-day"><p>${forecastDay}</p><p><img src="${forecastImage}"/> ${forecastTemp} &deg </p></div>`
         }))
         
     })
