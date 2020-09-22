@@ -12,20 +12,21 @@
         <div id="weatherToday" class="weather-today-wrapper"></div>
         <div id="weatherForecast" class="weather-forcast-wrapper"></div>
 
-        <form>
-            <div class="form-group">
-                <label for="cityNamePicked">What's the weather in....?</label>
-                  <input
-                    type="text"
-                    id="cityNamePicked"
-                    name="ciyNamePicked"
-                  />
-            </div>
+    
+        <div class="select-city">
+            <label for="cityNamePicked">What's the weather in....?</label>
+                <input
+                type="text"
+                id="cityNamePicked"
+                name="ciyNamePicked"
+                />
+            <button onclick="citySelected()">
+                <p>Search</p>
+            </button>
+        </div>
             
-        </form>
-        <button onclick="citySelected()">
-            <p>Search</p>
-        </button>
+      
+        
     </section>
 
     <script defer src="./script.js"></script>

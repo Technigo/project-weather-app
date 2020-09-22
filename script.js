@@ -77,6 +77,8 @@ const weatherTodayBackgroundColor = (temp) => {
         containerToday.style.backgroundColor = '#e6550d'; 
 }
 
+
+//function invoked when search button is clicked
 const citySelected = () => {
     containerToday.innerHTML = ''; //to clear default city today value
     containerForecast.innerHTML = ''; //to clear default city forcast value
