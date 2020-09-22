@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather app</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="weather-info">
+      <div id="weather">
+        <span id="description">N/A</span>
+        <span>|</span>
+        <span id="degrees">N/A</span>
+      </div>
+      <div class="sun">
+        <p>
+          sunrise:
+          <span id="sunrise">3:08</span>
+        </p>
+        <p>
+          sunset:
+          <span id="sunset">23:08</span>
+        </p>
+      </div>
+    </div>
+    <h1 id="where">
+      Weather in:
+      <span id="cityName"> N/A </span>
+    </h1>
+    <div class="weather-message">
+      <img src="" id="icon" />
+      <p id="weatherComment">Hey, take your glasses</p>
+    </div>
+
+    <main id="weatherByDay"></main>
+    <script src="script.js"></script>
+  </body>
+</html>
