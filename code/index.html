@@ -11,31 +11,39 @@
 
 <body>
     <div class="current">
+        <label for="cars">Choose city:</label>
+        <select name="city" id="city-label" onchange="changeCity()">
+            <option value="stockholm">Stockholm</option>
+            <option value="eskilstuna">Eskilstuna</option>
+            <option value="järfälla">Järfälla</option>
+            <option value="vindö">Vindö</option>
+        </select>
+        <button onclick="getLocation()">Current Location</button>
         <p class="current-temp" id="current"><span>&#8451</span></p>
-        <p class="current-city" id="city">Stockholm</p>
-        <div class = "sun">
-            <p class ="suntext" id="sunrise">Sunrise: </p>
-            <p class ="suntext" id="sunset">Sunset: </p>
+        <p class="current-city" id="city"></p>
+        <div class="sun">
+            <p class="suntext" id="sunrise"></p>
+            <p class="suntext" id="sunset"></p>
         </div>
     </div>
-    <div class = "forecast">
-        <div class ="day">
+    <div class="forecast">
+        <div class="day">
             <p class="next-day" id="day1"></p>
             <p class="day-temp" id="day1-temp"></p>
         </div>
-        <div class ="day">
+        <div class="day">
             <p class="next-day" id="day2"></p>
             <p class="day-temp" id="day2-temp"></p>
         </div>
-        <div class ="day">
+        <div class="day">
             <p class="next-day" id="day3"></p>
             <p class="day-temp" id="day3-temp"></p>
         </div>
-        <div class ="day">
+        <div class="day">
             <p class="next-day" id="day4"></p>
             <p class="day-temp" id="day4-temp"></p>
         </div>
-        <div class ="day">
+        <div class="day">
             <p class="next-day" id="day5"></p>
             <p class="day-temp" id="day5-temp"></p>
         </div>
