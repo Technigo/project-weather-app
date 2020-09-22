@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Weather app</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
   <main id="main">
@@ -29,8 +29,21 @@
       <div id="">Sunset: <span id="sunset"></span> 
       </div>
 
+      <h2>5-day forecast</h2>
+      <section id="forecastBox"></section>
+        <!-- <div id="forecastRow" class="forecast-row">
+          <span>Monday</span>
+          <div class="forecastWeather">
+            <span>☀</span>
+            <span>18°</span>
+          </div>
+            <span>Clear</span>        
+        </div> -->
+      </section>
+
 
   </main>
   <script src="script.js" defer></script>
+  <script src="countryTransform.js" defer></script>
 </body>
 </html>
