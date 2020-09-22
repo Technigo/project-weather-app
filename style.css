@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+}
+
+.day {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.day-box {
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid #000;
+    justify-content: space-around;
+    margin: 5px;
+}

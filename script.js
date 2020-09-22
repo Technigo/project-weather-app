@@ -6,10 +6,25 @@ const apiUrlToday =
 const apiUrlForecast =
   "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=95b6172379fabb04319de6c9e2aa34ae";
 
+//Creat function that calls all temperaturefunctions
+const callTempFunctions = () => {
+
+} 
+
 const calculateTemperature = (number) => {
   const roundedTemp = Math.round(number * 10) / 10; //By adding *10 AND adding /10 the number is rounded up to nearest integer with one decimal. If only using round() the number is rounded up to nearest integer.
   return roundedTemp;
-};
+}; 
+
+//Create function that shows min/max temp
+const minMaxTemperature = (number) => {
+//API main.temp_min main.temp_max
+}
+
+//Create function that shows 'feels like'temp
+const feelsLikeTemperature = (number) => {
+ //API main.feels_like
+}
 
 const calculatingSun = (time) => {
   const sunTime = new Date(time * 1000);
@@ -27,8 +42,8 @@ const printDay = (day) => {
   const forecastDaysString = forecastDays.toLocaleDateString("en-US", {
     weekday: "short",
   });
-  console.log(forecastDaysString);
-  return forecastDaysString;
+  /* console.log(forecastDaysString); */
+  return forecastDaysString; //Would like for this to also return the date of the day
 };
 
 const generatedHTMLForWeatherToday = (weatherToday) => {
@@ -43,14 +58,21 @@ const generatedHTMLForWeatherToday = (weatherToday) => {
 };
 
 const generatedHTMLForWeatherForecast = (filteredForecast) => {
-  //printDay(filteredForecast.dt_txt) //Should tell what day it is but doesn't work at the moment
-    console.log(filteredForecast.main.temp)
-  const dailyTemp = calculateTemperature(filteredForecast.main.temp);
-  return dailyTemp
+  const day = printDay(filteredForecast.dt_txt);
+  //Tells what day it is
+  console.log(filteredForecast.main.temp);
+  const dailyTemp = calculateTemperature(filteredForecast.main.temp); //Would also like for this to tell min/max-temp
+
+  let innerText = '';
+  innerText += `<div class="day-box">`;
+  innerText += `<p class="day">${day}</p>`;
+  innerText += `<p>${dailyTemp}</p>`
+  innerText += `</div>`;
+  return innerText;
   //Weather description for the next five days
   //Humidity and wind
 
- /*let launchHTML = '';
+  /*let launchHTML = '';
   launchHTML += `<section class="launch">`;
   launchHTML += ` <img src='${launchOutcomeImageUrl}'>`;
   launchHTML += ` <p>${launch.flight_number}: ${launch.mission_name} - ${launchDateString} ${launchTimeString}</p>`;
@@ -78,9 +100,12 @@ const fetchWeatherForecast = () => {
         item.dt_txt.includes("12:00")
       );
       console.log(filteredForecast);
+      containerForecast.innerHTML = `<h1>The weather for the next five days will be:</h1>`
 
       filteredForecast.forEach((forecast) => {
-        containerForecast.innerHTML += generatedHTMLForWeatherForecast(forecast);
+        containerForecast.innerHTML += generatedHTMLForWeatherForecast(
+          forecast
+        );
       });
     });
 };
