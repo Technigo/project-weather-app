@@ -10,9 +10,24 @@ const fetchedApiInfo = () => {
     .then((weatherInfo) => {
         //Accesing the data from the api via json and putting it into specified html elements
         city.innerText = weatherInfo.name;
+
+        const temperature = weatherInfo.main.temp.toFixed(1);
         //toFixed()rounds the number up or down
-        temperature.innerText = weatherInfo.main.temp.toFixed(1); 
-        weatherType.innerText = weatherInfo.weather[0].description;
+        document.getElementById("temperature").innerText = `${temperature} c`; 
+        document.getElementById("weatherType").innerText = weatherInfo.weather[0].description;
+
+        //new Date is creating a copy of a new object for us to fill
+        const sunrise = new Date(weatherInfo.sys.sunrise * 1000);
+        //Time specified is in seconds, not milliseconds? So we have to convert it to milliseconds because seconds would take longer to convert?
+        const sunriseTimeHours = sunrise.getHours();
+        const sunriseTimeMinutes = sunrise.getMinutes();
+        //getHours and getMinutes will convert the UTC to local time according to your computer
+        document.getElementById("sunrise").innerHTML = `Sunrise: ${sunriseTimeHours}:${sunriseTimeMinutes}`;
+
+        const sunset = new Date(weatherInfo.sys.sunset * 1000);
+        const sunsetTimeHours = sunset.getHours();
+        const sunsetTimeMinutes = sunset.getMinutes();
+        document.getElementById("sunset").innerHTML = `Sunset: ${sunsetTimeHours}:${sunsetTimeMinutes}`;
     });
 };
 
