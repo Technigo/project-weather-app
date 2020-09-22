@@ -13,14 +13,14 @@ fetch (apiUrl)
     // populateForecast(todayForecast);
   });
 
-fetch (forecastUrl)
-  .then((response) => {
-    return response.json();
-  })
-  .then((forecast) => {
-    const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
-    populateForecast(forecast);
-  });
+// fetch (forecastUrl)
+//   .then((response) => {
+//     return response.json();
+//   })
+//   .then((forecast) => {
+//     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
+//     populateForecast(forecast);
+//   });
   
 
 function populateDetails(todayForecast) {
@@ -44,13 +44,13 @@ function populateSummary(todayForecast) {
   const sunnyDay = todayDescription.includes('clear');
 
   if (rainyDay) {
-    document.getElementById('img').src = './assets/rainnyDay.svg';
+    document.getElementById('img').src = '../assets/rainnyDay.svg';
     document.getElementById('sumMessage').innerHTML = `Don't forget your umbrellar. It is wet in ${city} today.`;
   } else if (cloudyDay) {
-    document.getElementById('img').src = './assets/cloudyDay.svg';
+    document.getElementById('img').src = '../assets/cloudyDay.svg';
     document.getElementById('sumMessage').innerHTML = `Light a fire and get cosy. It is cloudy in ${city} today.`;
   } else if (sunnyDay) {
-    document.getElementById('img').src = './assets/sunnyDay.svg';
+    document.getElementById('img').src = '../assets/sunnyDay.svg';
     document.getElementById('sumMessage').innerHTML = `Get your sunnies on. ${city} is looking rather great today.`;
   } else {
     document.getElementById('sumMessage').innerHTML = `Get yourself ready for the all-weather-in-one today`;
