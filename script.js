@@ -11,23 +11,22 @@ const fetchWeather = () => {
       const temp = weather.main.temp;
       const tempFeelsLike = weather.main.feels_like;
       const description = weather.weather[0].main;
-      const sunrise = weather.sys.sunrise;
-      const sunset = weather.sys.sunset;
+      const sunrise = new Date(weather.sys.sunrise * 1000);
+      const sunriseTime = sunrise.toLocaleTimeString([]);
+      const sunset = new Date(weather.sys.sunset * 1000);
+      const sunsetTime = sunset.toLocaleTimeString([]);
       const weatherContainer = document.getElementById('weather-container');
 
-      weatherContainer.innerHTML = `${city} ${temp.toFixed(
+      weatherContainer.innerHTML = `<h1>${city}</h1>`;
+      weatherContainer.innerHTML += `<h2>${temp.toFixed(
         1
-      )} ${description} Feels like: ${tempFeelsLike.toFixed(1)}`;
-
-      console.log();
+      )} ${description}</h2>`;
+      weatherContainer.innerHTML += `<p>Feels like: ${tempFeelsLike.toFixed(
+        1
+      )}</p>`;
+      weatherContainer.innerHTML += `<p>Sunrise ${sunriseTime}</p>`;
+      weatherContainer.innerHTML += `<p>Sunset ${sunsetTime}</p>`;
+      console.log(weather);
     });
 };
 fetchWeather();
-
-//the data i want
-//town
-//sunrise
-//sunset
-//temp
-//feels like
-//description
