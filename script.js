@@ -1,6 +1,6 @@
-let citySearched = 'Stockholm';
-//const apiUrlToday = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5`
-//const apiUrlForcast = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5`
+let citySearched = 'Kil';
+//const apiUrlToday = `http://api.openweathermap.org/data/2.5/weather?q=${citySearched}&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5`
+//const apiUrlForcast = `https://api.openweathermap.org/data/2.5/forecast?q=${citySearched}&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5`
 //const apiUrlToday = 'http://api.openweathermap.org/data/2.5/weather?q=Kil,Sweden&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5'
 //const apiUrlForcast = 'https://api.openweathermap.org/data/2.5/forecast?q=Kil,Sweden&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5'
 //const container = document.getElementById('wrapper');
@@ -78,10 +78,13 @@ const weatherTodayBackgroundColor = (temp) => {
 }
 
 const citySelected = () => {
+    containerToday.innerHTML = ''; //to clear default city today value
+    containerForecast.innerHTML = ''; //to clear default city forcast value
     citySearched = document.getElementById("cityNamePicked").value;
     console.log(citySearched)
     fetchWeatherForcast(citySearched);
     fetchWeatherToday(citySearched);
+    document.getElementById("cityNamePicked").value = ''; //to clear input value after search
 }
 
 
@@ -164,6 +167,7 @@ const generatedHTMLForWeatherForcast = (filteredForcast) => {
 
 
 //Function to fetch API regarding todays weather 
+
 /*
 const fetchWeatherToday = () => {
     fetch(apiUrlToday).then((response) => {
@@ -176,10 +180,13 @@ const fetchWeatherToday = () => {
         //but I have specified weatherTodayHTML and assigned it to class weatherToday styled in css...
     });
 }
-fetchWeatherToday();
+fetchWeatherToday(citySearched);
 */
+
+
 const fetchWeatherToday = (citySearched) => {
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${citySearched}&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5`).then((response) => {
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${citySearched}&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5`)
+    .then((response) => {
         return response.json();
     }).then((weatherToday) => {
         //container.innerHTML += generatedHTMLForWeatherToday(weatherToday)
@@ -211,12 +218,14 @@ const fetchWeatherForcast = () => {
         });
     });
 };
-fetchWeatherForcast();
+fetchWeatherForcast(citySearched);
 //filteredForcast();
 */
 
+
 const fetchWeatherForcast = (citySearched) => {
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${citySearched}&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5`).then((response) => {
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${citySearched}&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5`)
+    .then((response) => {
         return response.json();
     }).then((weatherForcast) => {
         //console.log(weatherForcast)
