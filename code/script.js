@@ -1,12 +1,12 @@
 
 // Location Variables
-const city = 'Porto,Portugal';
+const city = 'Porto, Portugal';
 const cityName = document.getElementById('city');
 
 // API Variables
 const apiCurrentWeatherUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=09124a2f59a3124951523d476ed8a36d`;
 const apiForecastWeatherUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=09124a2f59a3124951523d476ed8a36d`;
-const apiUvIndexUrl = 'http://api.openweathermap.org/data/2.5/uvi?lat=41.15&lon=8.61&appid=09124a2f59a3124951523d476ed8a36d';
+const apiUvIndexUrlPorto = 'http://api.openweathermap.org/data/2.5/uvi?lat=41.15&lon=8.61&appid=09124a2f59a3124951523d476ed8a36d';
 
 // Weather Variables 
 const currentTemperature = document.getElementById("temperature");
@@ -15,6 +15,7 @@ const realFeel = document.getElementById('real-feel');
 const currentWind = document.getElementById('wind');
 const sunrise = document.getElementById('sunrise');
 const sunset = document.getElementById('sunset');
+const uvIndexPorto = document.getElementById('uv')
 
 // Date Variable 
 let todaysDate = new Date();
@@ -27,6 +28,7 @@ const updateCityWeather = (weatherInfo) => {
     updateRoundTemperatures(weatherInfo);
     updateWind(weatherInfo);
 };
+
 
 // Current and real feel rounded temperature function
 
@@ -45,8 +47,7 @@ const updateWind = (weatherInfo) => {
     currentWind.innerHTML += `${wind} m/s`;
 };
 
-  // SUNRISE & SUNSET Function
-
+// SUNRISE & SUNSET Function
 const sunriseSunset = (weatherInfo) => {
     const sunriseTime = new Date(weatherInfo.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     const sunsetTime = new Date(weatherInfo.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -54,8 +55,16 @@ const sunriseSunset = (weatherInfo) => {
     sunset.innerHTML += `${sunsetTime}`;
 };
 
-// Fetch Data
+// UV index Function 
 
+const updateUvIndex = (uvInfo) => {
+    const uvIndex = uvInfo.value;
+    uv.innerHTML += `${uvIndex}`;
+}
+
+
+
+// Fetch Weather Data
 fetch(apiCurrentWeatherUrl)
     .then((response) => { 
         return response.json()
@@ -67,5 +76,19 @@ fetch(apiCurrentWeatherUrl)
       .catch((error) => {
         console.log(error) 
     })
+
+// Fetch UV index Data from Porto
+fetch(apiUvIndexUrlPorto)
+    .then((response) => {
+        return response.json()
+    })
+.then ((json) => {
+    console.log(json)
+    updateUvIndex(json);
+})
+.catch((error) => {
+    console.log(error) 
+})
+
 
 
