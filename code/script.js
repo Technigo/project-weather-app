@@ -6,10 +6,11 @@ const apiUrl = 'http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Swede
 const humidity = document.getElementById('humidity');
 const windSpeed = document.getElementById('windSpeed');
 const feelsLikeTemp = document.getElementById('feelsLikeTemp');
-const sunrise = document.getElementById('sunrise');
-const sunset = document.getElementById('sunset');
+//const sunrise = document.getElementById('sunrise');
 const minTemp = document.getElementById('minTemp');
 const maxTemp = document.getElementById('maxTemp');
+const sunriseTime = document.getElementById('sunriseTime');
+const sunsetTime = document.getElementById('sunsetTime');
 
 fetch(apiUrl)
 .then(response => {
@@ -23,12 +24,14 @@ fetch(apiUrl)
     feelsLikeTemp.innerHTML = `Feels like ${Math.floor(weatherObject.main.feels_like)} °C`;
     minTemp.innerHTML = `Min ${Math.floor(weatherObject.main.temp_min)} °C`;
     maxTemp.innerHTML = `Max ${Math.floor(weatherObject.main.temp_max)} °C`;
-    sunrise.innerHTML = weatherObject.sys.sunrise;
-    sunset.innerHTML = weatherObject.sys.sunset;
+    const sunrise = weatherObject.sys.sunrise;
+    console.log(sunrise);
+    //const sunriseTime = sunrise.toLocaleTimeString('sv-SE');
+    sunset = weatherObject.sys.sunset;
     city.innerHTML = weatherObject.name;
     currentTemperature.innerHTML = `${Math.floor(weatherObject.main.temp)} °C`;
     weatherType.innerHTML = weatherObject.weather[0].description; 
-    
-
-    
-})
+    //converting the data given UNIX (in seconds) to milliseconds which is used in JS
+    sunriseTime.innerHTML = `Sunrise:  ${new Date(sunrise * 1000).toLocaleTimeString('sv-SE',{hour: '2-digit', minute: '2-digit'})}`;
+    sunsetTime.innerHTML = `Sunset: ${new Date(sunset * 1000).toLocaleTimeString('sv-SE',{hour: '2-digit', minute: '2-digit'})}`;
+});
