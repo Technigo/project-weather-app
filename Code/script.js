@@ -6,11 +6,10 @@ let climate = document.getElementById("climate");
 let sunRiseTime = document.getElementById("sunrise");
 let sunSetTime = document.getElementById("sunset");
 
-
 // GET WEATHER REPORT
 let enteredCityLocation = "Stockholm";
 
-const apiOneDay = `http://api.openweathermap.org/data/2.5/weather?q=${enteredCityLocation}&appid=3eb926770233f3bacc440bffc14e56a4`;
+const apiOneDay = `https://api.openweathermap.org/data/2.5/weather?q=${enteredCityLocation}&appid=3eb926770233f3bacc440bffc14e56a4`;
 
 fetch(apiOneDay)
   .then((response) => {
@@ -62,7 +61,7 @@ fetch(apiOneDay)
     };
   })
 
-const apiFiveDays = `http://api.openweathermap.org/data/2.5/forecast?q=${enteredCityLocation}&appid=3eb926770233f3bacc440bffc14e56a4`;
+const apiFiveDays = `https://api.openweathermap.org/data/2.5/forecast?q=${enteredCityLocation}&appid=3eb926770233f3bacc440bffc14e56a4`;
 
 fetch(apiFiveDays)
   .then((response) => {
