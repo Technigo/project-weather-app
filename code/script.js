@@ -15,7 +15,7 @@ fetch(weatherAPI)
     const sunriseString = sunrise.toLocaleTimeString('se-SE', {hour: '2-digit', minute:'2-digit'})
     const sunset = new Date(weather.sys.sunset * 1000)
     const sunsetString = sunset.toLocaleTimeString('se-SE', {hour: '2-digit', minute:'2-digit'})
-    currentWeatherContainer.innerHTML = `<h1>${weather.name} ${weatherTemp} &deg ${weather.weather[0].description}</h1><h2>Sunrise: ${sunriseString} Sunset: ${sunsetString} </h2>`
+    currentWeatherContainer.innerHTML = `<h1>${weatherTemp} &deg</h1><h2>${weather.name}</h2><p>${weather.weather[0].description}</p><div class="sun"><p>Sunrise: ${sunriseString} </p> <p>Sunset: ${sunsetString} </p></div>`
 })
 
 }
@@ -26,14 +26,13 @@ const weatherForecast = () => {
         return response.json();
     })
     .then ((forecast) => {
-        console.log(forecast)
         const filteredForecast = forecast.list.filter(item => item.dt_txt.includes('12:00'));
         console.log(filteredForecast)
         filteredForecast.forEach((item => {
         const forecastTemp = item.main.temp.toFixed(0)
-        const forecastDay = new Date(item.dt * 1000).toLocaleDateString('se-SE', {weekday: 'long'})
+        const forecastDay = new Date(item.dt * 1000).toLocaleDateString('se-SE', {weekday: 'short'})
         const forecastDescription = item.weather[0].description
-        weatherForecastContainer.innerHTML += `<h1>${forecastDay} ${forecastTemp} &deg ${forecastDescription} </h1>`
+        weatherForecastContainer.innerHTML += `<div class="forecast-day"><p>${forecastDay}</p><p>${forecastDescription} - ${forecastTemp} &deg </p></div>`
         }))
         
     })
@@ -41,4 +40,4 @@ const weatherForecast = () => {
 
 
 currentWeather();
-weatherForecast ();
+weatherForecast();
