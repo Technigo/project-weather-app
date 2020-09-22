@@ -8,6 +8,7 @@ const description = document.getElementById('description');
 const sunrise = document.getElementById('sunrise');
 const sunset = document.getElementById('sunset');
 
+//Main fetch to get Stockholm weather
 fetch(`http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${API_KEY}`)
   .then((response) => {
     return response.json();
@@ -18,7 +19,7 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     mainIcon.src = `./assets/${mainIconID}.png`;
 
     cityName.innerText = `${json.name}`;
-    temperature.innerText = `${Math.floor(json.main.temp)}°C`;
+    temperature.innerText = `${json.main.temp.toFixed()}°C`;
     description.innerText = `${json.weather[0].description.toUpperCase()}`;
 
     const sunriseValue = json.sys.sunrise; //Sunrise and Sunset times in UNIX
@@ -49,7 +50,7 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
   .then ((json) => {
     //Filters out forecast at 12:00 for coming 5 days
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));  //Creates array with data for coming 5 days
-
+    
     filteredForecast.forEach((forecastDay) => {
       forecastContent.innerHTML += generateHTMLForForecast(forecastDay);
     });  
@@ -72,8 +73,8 @@ const generateHTMLForForecast = day => {
   const descriptionFromAPI = day.weather[0].description; //Gets description from API
 
   //Get Min Max Temperatures
-  const minTemp = Math.floor(day.main.temp_min); //Gets min and max temp from API and rounds it up
-  const maxTemp = Math.floor(day.main.temp_max);
+  const minTemp = day.main.feels_like.toFixed(); //Gets min and max temp from API and rounds it up
+  const maxTemp = day.main.temp_max.toFixed();
 
   // Create dynamic HTML code to return
   let forecastHTML = '';
@@ -81,7 +82,7 @@ const generateHTMLForForecast = day => {
   forecastHTML += `<p class="forecast-day">${specificWeekday}</p>`;
   forecastHTML += `<img class="forecast-icon" src='./assets/${iconID}.png'>`;
   forecastHTML += `<p class="forecast-description">${descriptionFromAPI}</p>`;
-  forecastHTML += `<p class="forecast-minmax">${minTemp}°C / ${maxTemp}°C</p>`;
+  forecastHTML += `<p class="forecast-minmax">${maxTemp}°C / ${minTemp}°C</p>`;
   forecastHTML += `</div>`;
   return forecastHTML;
 };
@@ -146,7 +147,7 @@ const generateVacationHTML = city => {
   vacationHTML += `<div class="vacation-city-container">`;
   vacationHTML += `<p>${vacationCityName}</p>`;
   vacationHTML += `<img class="vacation-city-icon" src='./assets/${vacationCityIcon}.png'>`;
-  vacationHTML += `<p>${Math.floor(vacationCityTemp)}°C</p>`;
+  vacationHTML += `<p>${vacationCityTemp.toFixed()}°C</p>`;
   vacationHTML += `</div>`;
   return vacationHTML;
   };
