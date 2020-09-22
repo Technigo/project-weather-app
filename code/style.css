@@ -65,16 +65,12 @@ body {
     width: 113px; /*set up specific width so that weather icons can align*/
 }
 
-.forecast-description {
-    display: none;
-}
-
 /* Vacation Spots Styling*/
-.vacation-spots {
+.vacation-spots, .sthlm-img, .forecast-description, .forecast-text {
     display: none;
 }
 
-.other-cities {
+.other-cities, .forecast-text {
     font-size: 30px;
     text-align: center;
     font-weight: bold;
@@ -92,7 +88,6 @@ body {
     align-items: center;
     background-color: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
     width: 250px;
     margin-right: 20px;
     margin-left: 20px;
@@ -149,4 +144,67 @@ body {
 }
 
 /* Desktop */
-/* @media (min-width: 1025px) */
+@media (min-width: 1025px) {
+    .main-city-data {
+        display: flex;
+        margin: 30px auto;
+        justify-content: center;
+    }
+
+    .sthlm-img {
+        display: block;
+        height: 600px;
+    }
+
+    .city-data-right {
+        display: flex;
+        flex-direction: column;
+        width: 480px;
+        background-color: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(20px);
+    }
+
+    .icon-temp, .main-data, .sun-set-values {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #temperature {
+        margin-bottom: 0;
+    }
+
+    #city-name {
+        font-size: 50px;
+    }
+
+    #description, #sunrise, #sunset {
+        margin-top: 3px;
+        font-size: 25px;
+    }
+
+    #main-forecast-data {
+        display: flex;
+        justify-content: space-around;
+        width: 80%;
+        margin: auto;
+    }
+    
+    .forecast-container {
+        flex-direction: column;
+        width: 17%;
+    }
+
+    .forecast-day {
+        width: auto; /*overwrite specific width set above*/
+    }
+
+    .forecast-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .forecast-description, .forecast-text, .vacation-spots {
+        display: block;
+    }
+}
