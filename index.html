@@ -8,23 +8,22 @@
     <title>Document</title>
 </head>
 <body>
+        <section class="container-all">
     <main id="main">
-
-        <h1>today's weather in <span id="weather-header"></span></h1>
-            <p>temp today <span id="temp-today"></span></p>
-            <p><span id="description-today"></span></p>
-            <p>sunrise <span id="sunrise-today"></span></p>
-            <p>sunset <span id="sunset-today"></span></p>
-            
-            <div id="container-five-day">
-                <p><span id="day2"></span></p>
-                <p><span id="day3"></span></p>
-                <p><span id="day4"></span></p>
-                <p><span id="day5"></span></p>
-                <p><span id="day6"></span></p>
+        
+        
+        <h1>Today's weather in <span id="weather-header"></span></h1>
+        <div class="top">
+            <p class="description"><span id="description-today"></span></p>
+            <p class="temp"><span id="temp-today"></span></p>
+            <p class="sun">sunrise: <span id="sunrise-today"></span></p>
+            <p class="sun">sunset: <span id="sunset-today"></span></p>
+        </div>    
+        <div class="bottom">
+                <div id="container-five-day"></div>
             </div>
     </main>
-    
+</section>
     <script src="./script.js"></script>
 </body>
 </html>

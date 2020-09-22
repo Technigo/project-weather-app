@@ -2,17 +2,59 @@ body {
   margin: 0 auto;
 }
 
+* {
+  box-sizing: border-box;
+}
 
-main {
+section {
   margin: auto;
   width: 296px;
   height: 67px;
   color: #f47775;
-  font-family: Montserrat;
-  font-size: 21px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
   font-weight: 400;
 }
 
+.top {
+  margin-top: 50px;
+  line-height: .3;
+}
+
+h1 {
+  margin-top: 70px;
+  margin-bottom: 70px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+p.description, p.temp, p.sun {
+  text-align: center;
+}
+
+p.temp {
+  font-size: 38px;
+}
 .container-five-day {
   display: flex;
+ 
 }
+
+p.day-temp {
+  display: inline-block;
+}
+
+/* DESIGN SPEC
+Weights: bold and regular
+
+colors:
+
+#F47775
+#F4F7F8
+#164A68
+#A3DEF7
+#2A5510
+#F7E9B9
+*/
+
+/
