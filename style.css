@@ -40,3 +40,15 @@ body {
     margin-top: 30px;
     
 }
+
+
+#forecastIcon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+#forecastIcon img {
+    width: 35px;  
+}
