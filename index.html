@@ -4,12 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Forcast</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css"/>
 </head>
 <body>
     <section id="wrapper" class="weather-container">
         <div id="weatherToday" class="weather-today-wrapper"></div>
         <div id="weatherForecast" class="weather-forcast-wrapper"></div>
+
+        <form>
+            <div class="form-group">
+                <label for="cityNamePicked">What's the weather in....?</label>
+                  <input
+                    type="text"
+                    id="cityNamePicked"
+                    name="ciyNamePicked"
+                  />
+            </div>
+            
+        </form>
+        <button onclick="citySelected()">
+            <p>Search</p>
+        </button>
     </section>
 
     <script defer src="./script.js"></script>

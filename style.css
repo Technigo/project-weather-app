@@ -1,6 +1,9 @@
 * {
     margin: 0;
+}
 
+body {
+    font-family: 'Quicksand', sans-serif;
 }
 
 p {
@@ -10,7 +13,8 @@ p {
 }
 
 .weather-today-wrapper {
-    border: 2px solid salmon;
+    /*border: 2px solid salmon;*/
+    background: '';
     height: 40vh;
     position: relative;
     display: flex; 
@@ -30,6 +34,11 @@ p {
 .location-information {
     align-self: flex-start;
     margin-left: 10px;
+}
+
+.location {
+    font-size: 24px;
+    font-weight: 500;
 }
 
 .temp {
@@ -56,7 +65,7 @@ p {
 
 
 .weather-forcast {
-    border: 2px solid grey;
+    /*border: 2px solid grey;*/
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -65,10 +74,29 @@ p {
 
 .day {
     width: 140px;
+    font-weight: 500;
 }
 
 img {
     border-radius: 50%;
     height: 50px;
     width: 50px;
+}
+
+/****MEDIA FOR TABLET *****/
+@media (min-width: 768px) {
+    .weather-container {
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+    }
+    .weather-today-wrapper, .weather-forcast-wrapper {
+        max-width: 80%;
+    }
+}
+
+
+/****MEDIA FOR DESKTOP *****/
+@media (min-width: 1024px) {
+    
 }

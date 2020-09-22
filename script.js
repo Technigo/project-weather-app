@@ -1,5 +1,8 @@
-const apiUrlToday = 'http://api.openweathermap.org/data/2.5/weather?q=Kil,Sweden&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5'
-const apiUrlForcast = 'https://api.openweathermap.org/data/2.5/forecast?q=Kil,Sweden&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5'
+let citySearched = 'Stockholm';
+//const apiUrlToday = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5`
+//const apiUrlForcast = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5`
+//const apiUrlToday = 'http://api.openweathermap.org/data/2.5/weather?q=Kil,Sweden&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5'
+//const apiUrlForcast = 'https://api.openweathermap.org/data/2.5/forecast?q=Kil,Sweden&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5'
 //const container = document.getElementById('wrapper');
 const containerToday = document.getElementById("weatherToday"); //change to location? 
 //const descriptionToday = document.getElementById("text");
@@ -38,51 +41,6 @@ const printDay = (day) => {
     return forcastDaysString; 
 };
 
-
-/*
-//link to page https://openweathermap.org/weather-conditions#Icon-list
-const weatherIconArray = [
-    {
-       description: 'clear Sky',
-       icon: '01d.png',
-    },
-    {
-        description: 'few Clouds',
-        icon: '02d.png',
-     },
-     {
-        description: 'scattered clouds',
-        icon: '03d.png',
-     },
-     {
-        description: 'broken clouds',
-        icon: '04d.png',
-     },
-     {
-        description: 'shower rain',
-        icon: '09d.png',
-     },
-     {
-        description: 'rain',
-        icon: '10d.png',
-     },
-     {
-        description: 'thunderstorm',
-        icon: '11d.png',
-     },
-     {
-        description: 'snow',
-        icon: '13d.png',
-     },
-     {
-        description: '	mist',
-        icon: '50d.png',
-     },
-
-]
-*/
-
-
 //Function to limit amount of description to be able to link them to an icon 
 const iconDependingOnWeather = (item) => {
     const iconMainDescription = item
@@ -91,12 +49,39 @@ const iconDependingOnWeather = (item) => {
     //const iconMainDescriptionForcast = weatherForcast.weather[0].main
     //console.log(iconMainDescriptionForcast)
     if (iconMainDescription === 'Clouds') {
-        return "./cloudy.png"
+        return 'http://openweathermap.org/img/wn/03d@2x.png'
     } else if (iconMainDescription === 'Clear'){
-        return "./sunny.png"
+        return 'http://openweathermap.org/img/wn/01d@2x.png'
+    } else if (iconMainDescription === 'Rain') {
+        return 'http://openweathermap.org/img/wn/10d@2x.png'
+    } else if (iconMainDescription === 'Thunderstorm') {
+        return 'http://openweathermap.org/img/wn/11d@2x.png'
+    } else if (iconMainDescription === 'Drizzle') {
+        return 'http://openweathermap.org/img/wn/09d@2x.png'
+    } else if (iconMainDescription === 'Snow') {
+        return 'http://openweathermap.org/img/wn/13d@2x.png'
     } else 
-        return "./rainy.png"
+        return 'http://openweathermap.org/img/wn/50d@2x.png'
+
     //return iconMainDescription
+}
+
+//Is it correct to have a , sep??
+const weatherTodayBackgroundColor = (temp) => {
+    if (temp < 0, temp <= 6) {
+        containerToday.style.backgroundColor = '#e5f5f9';
+    } else if (temp > 6, temp <= 20) {
+       containerToday.style.backgroundColor = '#fdae6b';
+       console.log(temp) 
+    } else 
+        containerToday.style.backgroundColor = '#e6550d'; 
+}
+
+const citySelected = () => {
+    citySearched = document.getElementById("cityNamePicked").value;
+    console.log(citySearched)
+    fetchWeatherForcast(citySearched);
+    fetchWeatherToday(citySearched);
 }
 
 
@@ -108,8 +93,9 @@ const generatedHTMLForWeatherToday = (weatherToday) => {
     const sunrise = calculatingSun(weatherToday.sys.sunrise); //resue already created function an adds in argument about API sunsrise time
     const sunset = calculatingSun(weatherToday.sys.sunset);
     const iconToday = iconDependingOnWeather(weatherToday.weather[0].main)
-    const description = weatherToday.weather[0].main
-
+    const description = weatherToday.weather[0].description
+    
+    weatherTodayBackgroundColor(weatherToday.main.temp);
     //containerToday.innerHTML = `<h1>Location: ${weatherToday.name}</h1>`;
     //descriptionToday.innerHTML = `The temperature today is: ${temperature} degrees, ${weatherToday.weather[0].description} outside.
     //Sun rises at ${sunrise} sun sets at ${sunset}`;
@@ -178,6 +164,7 @@ const generatedHTMLForWeatherForcast = (filteredForcast) => {
 
 
 //Function to fetch API regarding todays weather 
+/*
 const fetchWeatherToday = () => {
     fetch(apiUrlToday).then((response) => {
         return response.json();
@@ -190,9 +177,23 @@ const fetchWeatherToday = () => {
     });
 }
 fetchWeatherToday();
+*/
+const fetchWeatherToday = (citySearched) => {
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${citySearched}&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5`).then((response) => {
+        return response.json();
+    }).then((weatherToday) => {
+        //container.innerHTML += generatedHTMLForWeatherToday(weatherToday)
+        containerToday.innerHTML += generatedHTMLForWeatherToday(weatherToday); 
+        //added descriptionToday.innerHTML +=  on row 95
+        //this prins everyting as a p tag (text id in html)
+        //but I have specified weatherTodayHTML and assigned it to class weatherToday styled in css...
+    });
+}
+fetchWeatherToday(citySearched);
 
 
 
+/*
 //function to fetch forcast API 
 const fetchWeatherForcast = () => {
     fetch(apiUrlForcast).then((response) => {
@@ -212,4 +213,22 @@ const fetchWeatherForcast = () => {
 };
 fetchWeatherForcast();
 //filteredForcast();
+*/
 
+const fetchWeatherForcast = (citySearched) => {
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${citySearched}&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5`).then((response) => {
+        return response.json();
+    }).then((weatherForcast) => {
+        //console.log(weatherForcast)
+        const filteredForcast = weatherForcast.list.filter((item) => 
+        item.dt_txt.includes('12:00')
+        );
+        console.log(filteredForcast);
+
+        filteredForcast.forEach((forcast) => {
+            //container.innerHTML += generatedHTMLForWeatherForcast(forcast) //if we only have one wrapper
+            containerForecast.innerHTML += generatedHTMLForWeatherForcast(forcast)
+        });
+    });
+};
+fetchWeatherForcast(citySearched);
