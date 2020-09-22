@@ -74,21 +74,23 @@ fetch(forecastSTHLM)
 
 // Requirements
 // 🔵  Blue Level (Minimum Requirements)
-// - You should fetch data from the API using `fetch()` in JavaScript
+
 // - All data in the sketch above should be present and fetched from the API
 // - The presentation of the data should be in the specified format.
 // - The page should work on mobile (mobile first!), tablet and desktop (Be responsive)
 
 // Make sure you've committed and pushed a version of your project before starting with the intermediary and advanced goals.
 
+
+
 // 🔴  Red Level (Intermediary Goals)
 // - Change the colors of the page based on the weather. If the weather is warm – use warm colors. If the weather is colder, use cold colors. If you really want to push you CSS muscles you can even make a [background gradient](https://www.w3schools.com/css/css3_gradients.asp)
-// - Add multiple cities 🏙
+// - Add multiple cities 
 // Give the user the option to choose between a couple of your favorite cities.
 // - Include visual indicators for the type of weather, cloudy/sunny/rainy/etc
 
 // ⚫  Black Level (Advanced Goals)
-// - **Use your location 🗺**
+// - **Use your location *
 // Use the [Geolocation API](https://www.w3schools.com/html/html5_geolocation.asp) that is built in to your browser to fetch the city that you are located in atm and show the weather for your location.
 // - Explore the API and use another endpoint of the Weather API to include supplementary information
 // - Add some CSS animations to your app, e.g. pulsating sun/rain drops
