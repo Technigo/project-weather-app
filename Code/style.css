@@ -1,25 +1,61 @@
-body {
-  display: flex;
-  flex-direction: column;
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+  height: 100vh;
+  background-image: url(./images/quino-al-mBQIfKlvowM-unsplash.jpg);
+  background-color: purple;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: top center;font-family: Arial, Helvetica, sans-serif;
+  background-size: cover;
+
+}
+
+#app-container{
+width: 50vh;
+margin: 15px auto;
+background-color: rgba(240, 248, 255, 0.6);
+}
+
+#temp{
   text-align: center;
-  background-color:#edae49;
+  font-size: 50pt;
+  font-weight: 700;
+  margin: 5px 0;
+  text-shadow: rgba(0, 0, 0, 0.3);
 }
 
-#cityname{
-border: 5px solid #00798c;
-border-radius: 7px;
-padding: 12px;
-width: 25%;
-align-items: center;
-}
-.banner{
- width: 200px; 
+#temp #temp-value {
+  color: black;
 }
 
-h1 {
-  font-size: large;
+#temp #temp-unit{
+  color:black;
+  font-size: 3rem;
+} 
+
+#temp-icon {
+  margin: 20px;
+  width: 40%;
+  height: auto;
 }
 
-#currentWeather {
-  margin: 40px 0px;
+#location {
+  color: black;
+  font-size: 2.5rem;
+  text-align: center;
+  padding-top: 20px;
 }
+
+#climate, #suntime {
+  color: black;
+  font-size: 2rem;
+  text-align: center;
+  padding:20px 0;
+}
+
+
+
