@@ -6,49 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway:300,400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Alegreya|Questrial" rel="stylesheet">
 </head>
 
 <body>
 
     <main class="fullApp" id="weatherAppId">
 
-        <div class="hero-img">
-            <p>here there will be an image/animation</p>
-        </div>
+        <header id="todaysWeatherIcon"></header>
 
 
+        <section class="todaysWeather">
 
-    <section class="todaysWeather">
+            <div class="temperature" id="temperature"></div>
+            <div class="cityName" id="name"></div>
+            <div id="sort"></div>
 
-        <div id="temperature"></div>
-        <div id="name"></div>
-        <div id="sort"></div>
-     
-    </section>
+        </section>
 
-<section class="sun">
+        <section class="sun">
 
-        <div id="sunrise"></div>
-        <div id="sunset"></div>
+            <div id="sunrise"></div>
+            <div id="sunset"></div>
 
-</section>
+        </section>
 
 
-        <section class="fiveDaysWeather"id="forecast">
-            
+        <section class="fiveDaysWeather" id="forecast">
+
             <div id="forecastDay"></div>
             <div id="forecastTemp"></div>
             <div id="forecastIcon"></div>
-                  
-        
-    </section> 
 
-    
 
-</main>  
+        </section>
 
 
 
+    </main>
 
     <script src="./script.js"></script>
 

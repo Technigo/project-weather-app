@@ -1,4 +1,8 @@
 
+html {
+    font-family:'Raleway', Sans-Serif;
+}
+
 
 body {
     margin: 0;
@@ -18,12 +22,30 @@ body {
 }
 
 
-.hero-img {
-   
+#todaysWeatherIcon {
+    display: flex;
+    flex-direction: row-reverse;    
 }
 
+#todaysWeatherIcon img {
+    width: 150px;
+}
+
+
+
 .todaysWeather {
-    text-align: center;
+    font-family: 'Questrial', Sans-Serif;
+    text-align: left;
+    margin-left: 5px;
+}
+
+
+.temperature{
+    font-size: 40px;
+}
+
+.cityName {
+    font-size: 30px;    
 }
 
 
@@ -32,13 +54,16 @@ body {
     flex-direction: row;
     justify-content: space-evenly;
     margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .fiveDaysWeather{
     display: flex;
     justify-content: space-between;
-    margin-top: 30px;
-    
+    margin-top: 30px; 
+    margin-bottom: 30px;  
+    border-top: #43658b 2px dotted; 
+    padding-top: 20px;
 }
 
 
@@ -51,4 +76,53 @@ body {
 
 #forecastIcon img {
     width: 35px;  
+}
+
+
+
+
+  /***  Media Quaries  Tablet  ***/
+  
+  @media screen and (min-width: 667px) and (max-width:1024px) {
+
+    .fiveDaysWeather{
+        justify-content: space-evenly;
+    }
+
+    #todaysWeatherIcon img {
+        width: 250px;
+    }
+
+    .todaysWeather {
+        margin-left: 100px;
+    }
+
+    .temperature {
+        font-size: 50px;
+    }
+  }
+
+
+
+
+
+/***  Media Quaries  Desktop ***/
+  
+@media screen and (min-width: 1024px) {
+
+    .fiveDaysWeather{
+        justify-content: space-evenly;
+    }
+
+    #todaysWeatherIcon img {
+        width: 250px;
+    }
+
+    .todaysWeather {
+        margin-left: 100px;
+    }
+
+    .temperature {
+        font-size: 60px;
+    }
 }

@@ -28,12 +28,14 @@ fetch(apiUrl)
         return Response.json()
     })
     .then ((json) => {
-        nameContainer.innerHTML = `<h1>Lets find out how the wheater is in ${json.name}</h1>`;
-        sortContainer.innerHTML = `<h1>The temperature is ${json.weather[0].description}</h1>`;
+        nameContainer.innerHTML = `<h1>${json.name}</h1>`;
+        sortContainer.innerHTML = `<h2>${json.weather[0].description}</h2>`;
 
          const roundedTemperature = json.main.temp.toFixed(0.1);
-         tempContainer.innerHTML += `<h1>The temperature is ${roundedTemperature}°C</h1>`;
-         console.log(roundedTemperature)
+         tempContainer.innerHTML += `<h1> ${roundedTemperature}°C</h1>`;
+//WEATHER ICON  
+
+           
          
     
 //This changes the sunrise/sunset to readable
@@ -71,6 +73,7 @@ fetch(apiUrlForecast)
             document.getElementById('forecastDay').innerHTML += `<p>${dayName}</p>`
             document.getElementById('forecastTemp').innerHTML += `<p>${weekTemp}°C</p>`
             document.getElementById('forecastIcon').innerHTML += `<img src=https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png></img>`
+            document.getElementById('todaysWeatherIcon').innerHTML = `<img src=https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png></img>` 
     });  
  
 });
