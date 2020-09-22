@@ -1,10 +1,13 @@
 apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=Longyearbyen,Norway&units=metric&APPID=8990d7a0fe5c73c6c0fe06bb994b1035"
+apiUrlForcast = "https://api.openweathermap.org/data/2.5/forecast?q=Longyearbyen,Norway&units=metric&APPID=8990d7a0fe5c73c6c0fe06bb994b1035"
+
 const containerToday = document.getElementById('weatherMain');
 const containerTemp = document.getElementById('weatherTemp');
 const containerTempFeel = document.getElementById('weatherTempFeel');
 const containerDescription = document.getElementById('weatherDescription');
 const containerSunRise = document.getElementById('sunrise');
 const containerSunSet = document.getElementById('sunset');
+const containerForcast = document.getElementById('weatherForcast');
 
 /// make this into a one line function instead?
 /// calculating a rounded number for the temp
@@ -21,8 +24,7 @@ const readableTime = (time) => {
         minute: '2-digit',
         hour12: false,
     });
-    console.log(readableTime)
-    return sunTimeString
+    return sunTimeString;
 }
 
 /// Displaying todays weather forcast 
@@ -35,7 +37,12 @@ const generatedHTMLForWeatherToday = (weatherMain) => {
     containerSunSet.innerHTML = readableTime(weatherMain.sys.sunset)
 }
 
-/// getting the API
+const generatedHTMLForWeatherForcast = (filteredForcast) => {
+    const weekday = printDay(filteredForcast.dt_txt); //Tell what day it concerns, does not work ATM 
+    console.log(filteredForcast.main.temp); //can console.log this, but cant make it work when invoking the printDay()
+}
+
+/// getting the API for todays weather
 fetch(apiUrl)
     .then((response) => {
         return response.json()
@@ -43,3 +50,23 @@ fetch(apiUrl)
     .then((weatherMain) => {
         generatedHTMLForWeatherToday(weatherMain)
     })
+
+
+/// getting the API for weather forcast
+fetch(apiUrlForcast).then((response) => {
+    return response.json();
+})
+    .then((weatherForcast) => {
+        const filteredForcast = weatherForcast.list.filter(item =>
+            item.dt_txt.includes('12:00')
+        );
+        console.log(filteredForcast) /// it works to here
+
+        //filteredForcast.forEach((forcast) => {
+           // containerForcast.innerHTML = generatedHTMLForWeatherForcast(forcast)
+        });
+   // });
+
+
+
+
