@@ -1,7 +1,8 @@
+import { API_KEY } from './api.js';
 const apiUrlToday =
-  'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=1b88c4f43ad39c2f3a5e33a74b5bba27';
+  'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID={API_KEY}';
 const apiUrlForecast =
-  'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=1b88c4f43ad39c2f3a5e33a74b5bba27';
+  'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID={API_KEY}';
 //const header = document.getElementById('header');
 const container = document.getElementById('main');
 //const pWeather = document.getElementById('weather');
