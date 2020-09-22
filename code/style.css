@@ -79,7 +79,8 @@ body {
 #vacation-container {
     font-size: 30px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 .vacation-city-container {
@@ -88,9 +89,8 @@ body {
     align-items: center;
     background-color: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(20px);
-    width: 250px;
-    margin-right: 20px;
-    margin-left: 20px;
+    width: 80%;
+    margin: auto;
 }
 
 .vacation-city-icon {
@@ -134,12 +134,17 @@ body {
         height: 60px;
     }
 
-    .forecast-description {
+    .forecast-description, .vacation-spots {
         display: block;
     }
 
     .vacation-spots {
-        display: block;
+        width: 98%;
+        margin: auto;
+    }
+
+    .vacation-city-photo {
+        display: none;
     }
 }
 
@@ -192,7 +197,7 @@ body {
     
     .forecast-container {
         flex-direction: column;
-        width: 17%;
+        width: 19%;
     }
 
     .forecast-day {
@@ -206,5 +211,25 @@ body {
 
     .forecast-description, .forecast-text, .vacation-spots {
         display: block;
+    }
+
+    #vacation-container {
+        width: 80%;
+        margin: auto;
+    }
+
+    .vacation-data-photo {
+        display: flex;
+        justify-content: center;
+    }
+
+    .vacation-city-container {
+        margin: 0;
+        width: 50%;
+    }
+
+    .vacation-city-photo {
+        width: 45%;
+        object-fit: cover;
     }
 }

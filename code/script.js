@@ -143,10 +143,13 @@ const generateVacationHTML = city => {
 
   // Create dynamic HTML code to return
   let vacationHTML = '';
+  vacationHTML += `<div class="vacation-data-photo">`;
   vacationHTML += `<div class="vacation-city-container">`;
   vacationHTML += `<p>${vacationCityName}</p>`;
   vacationHTML += `<img class="vacation-city-icon" src='./assets/${vacationCityIcon}.png'>`;
   vacationHTML += `<p>${vacationCityTemp.toFixed()}°C</p>`;
+  vacationHTML += `</div>`;
+  vacationHTML += `<img class="vacation-city-photo" src='./assets/${vacationCityName}.jpg'>`;
   vacationHTML += `</div>`;
   return vacationHTML;
   };
