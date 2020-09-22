@@ -9,6 +9,9 @@ let sunSetTime = document.getElementById("sunset");
 // GET WEATHER REPORT
 let enteredCityLocation = "Stockholm";
 
+
+// Fetch Data for current weather
+
 const apiOneDay = `https://api.openweathermap.org/data/2.5/weather?q=${enteredCityLocation}&appid=3eb926770233f3bacc440bffc14e56a4`;
 
 fetch(apiOneDay)
@@ -41,6 +44,8 @@ fetch(apiOneDay)
     sunRiseTime.textContent = formattedSunrise;
     sunSetTime.textContent = formattedSunset;
 
+    // Changing Icons for weather using if-else
+
     if (id < 250) {
       tempIcon.src = './images/icons/thunder.png';
     }
@@ -60,6 +65,8 @@ fetch(apiOneDay)
       tempIcon.src = './images/icon/badweather.png';
     };
   })
+
+// Fetch Data for next 5 days
 
 const apiFiveDays = `https://api.openweathermap.org/data/2.5/forecast?q=${enteredCityLocation}&appid=3eb926770233f3bacc440bffc14e56a4`;
 
