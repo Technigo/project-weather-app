@@ -22,8 +22,8 @@ fetch(apiUrl)
 
         // Get temp and rounds up or down with 1 place decimal.
         tempToday.innerHTML = `${Math.round(weatherObject.main.temp * 10) / 10}°`;
-        
         descriptionToday.innerHTML = weatherObject.weather[0].description;   
+        
         
         // Create two variables that stores the API values
         const sunriseValue = weatherObject.sys.sunrise;
@@ -40,6 +40,8 @@ fetch(apiUrl)
         // The values from the API - collected, stored in new variabales and converted - is returned to the html to be output in browser
         sunriseToday.innerHTML = `${sunriseToLocaleString}`;
         sunsetToday.innerHTML = `${sunsetToLocaleString}`;
+        
+
     });
 
 // FIVE DAY FORECAST 
@@ -79,7 +81,6 @@ const generateHTMLForForecast = day => {
     fiveDayForecastHTML += `<div class="container-five-day">`;
     fiveDayForecastHTML += `<p class="weekday-name">${weekdayName}</p>`;
     fiveDayForecastHTML += `<p class="day-temp">${dayTemp}°</p>`;
-
     fiveDayForecastHTML += `</div>`;
     return fiveDayForecastHTML;
 };
