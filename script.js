@@ -4,6 +4,8 @@ const locationStockholm = document.getElementById('location-sthlm')
 const sunriseSTHLM = document.getElementById('sunrise-sthlm')
 const sunsetSTHLM = document.getElementById('sunset-sthlm')
 const nowSTHLM = document.getElementById('now-sthlm')
+const icoSTHLM = document.getElementById('now-icon')
+const descSTHLM = document.getElementById('now-desc-sthlm')
 
 fetch(weatherTodaySTHLM)
   .then((response) => {
@@ -23,12 +25,14 @@ fetch(weatherTodaySTHLM)
     const sunset = ( new Date(sunsetCalc)).toLocaleTimeString('sv-SE', {
       hour12: false, 
       hour: '2-digit',
-      minute: '2-digit'
+      miu8sznute: '2-digit'
     })
-    locationStockholm.innerHTML = `${sthlm.weather[0].main} | ${tempNow} \u00b0`
+    locationStockholm.innerHTML = `${sthlm.weather[0].main} | ${tempNow}\u00b0C`
     sunriseSTHLM.innerHTML = `Sunrise ${sunrise}`
     sunsetSTHLM.innerHTML = `Sunset ${sunset}`
-    nowSTHLM.innerHTML = `Right now we're seeing ${sthlm.weather[0].description} and it feels like ${nowFeelsLike} \u00b0 in ${sthlm.name}.`
+    nowSTHLM.innerHTML = `It feels like ${nowFeelsLike}\u00b0C in ${sthlm.name}.`
+    descSTHLM.innerHTML = sthlm.weather[0].description
+    icoSTHLM.src = `http://openweathermap.org/img/wn/${sthlm.weather[0].icon}@2x.png`
 })
 
 // Stockholm - 5 day forecast
@@ -54,10 +58,12 @@ fetch(forecastSTHLM)
       
       fiveDay.innerHTML += 
       `<p class="date">${dayName}</p>
-      <p class="description">(day.weather.description)</p>
-      <p class="temp">${dayTemp}\u00b0</p>`    
+      <p class="temp">${dayTemp}\u00b0C</p>
+      <img src="http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" />
+      <p class="description">${day.weather[0].description}</p>`    
   })
 })
+
 
     
 // Step 5 - Style your weather app

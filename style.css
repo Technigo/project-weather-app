@@ -1,0 +1,46 @@
+body {
+  background: hotpink;
+  font-family: sans-serif;
+  font-size: 14px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app-container {
+  background: #fff;
+}
+
+section {
+ background: orange
+}
+
+article {
+  background: green;
+  width: 320px;
+}
+
+div {
+  background: lightpink;
+  padding-left: 8px;
+}
+
+p {
+  background: #ccc;
+  margin: 3px;
+}
+
+h1 {
+  font-size: 50px;
+  text-align: center;
+}
+
+.today {
+  height: 180px;
+}
+
+img {
+  height: 45px;
+}
+
