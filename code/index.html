@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="author" content="Ylva Nilsson" />
+    <title>Weather Forcast</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="icon"
+      type="image/svg"
+      sizes="16x16"
+      href="/project-weather-app/Designs/Design-2/icons/noun_Cloud_1188486.svg"
+    />
+    <title>Weather App - Technigo Project</title>
+  </head>
+  <body>
+    <!-- <div id="astros">Loading...</div> -->
+
+    <section id="wrapper" class="weather-container">
+        <div id="weatherToday" class="weather-today-wrapper"></div>
+        <div id="weatherForecast" class="weather-forcast-wrapper"></div>
+
+    
+        <div class="select-city">
+            <label for="cityNamePicked" class="city-serch">Search favourite city</label>
+            <input
+            type="text"
+            id="cityNamePicked"
+            name="ciyNamePicked"
+            onkeydown = "if (event.keyCode == 13)
+                document.getElementById('btnSearch').click()"
+            />
+
+            <input class="search-btn"
+            type = "button"
+            id = "btnSearch"
+            value = "Search"
+            onclick = "citySelected();"
+            />  
+        </div>
+            
+        <!----<button onclick="citySelected()">
+            <p>Search</p>----->
+        </button>
+        
+    </section>
+
+    <script src="weather.js"></script>
+  </body>
+</html>

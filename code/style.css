@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+}
+
+body {
+  font-family: "Quicksand", sans-serif;
+}
+
+p {
+  width: 100px;
+  text-align: end;
+  margin-right: 10px;
+}
+
+/*style for weather today wrapper*/
+.weather-today-wrapper {
+  background: "";
+  height: 40vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+/*additional img styling to seperate from other img*/
+.weather-today-wrapper img {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  right: 10px;
+  top: 10px;
+}
+
+.location-information {
+  align-self: flex-start;
+  margin-left: 10px;
+}
+
+.temp {
+  font-size: 58px;
+}
+
+.location {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.sun-information {
+  flex-direction: row;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.sunrise,
+.sunset {
+  margin: 0 10px;
+}
+
+/*style for weather forcast wrapper*/
+.weather-forcast-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.weather-forcast {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.day {
+  width: 140px;
+  font-weight: 500;
+}
+
+img {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+/****MEDIA FOR TABLET *****/
+@media (min-width: 768px) {
+  .weather-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .weather-today-wrapper,
+  .weather-forcast-wrapper {
+    max-width: 80%;
+  }
+}
+
+/****MEDIA FOR DESKTOP *****/
+@media (min-width: 1024px) {
+}
