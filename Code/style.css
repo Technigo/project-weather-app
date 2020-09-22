@@ -13,10 +13,11 @@ body{
 
 }
 
-#app-container{
-width: 40%;
+.app-container{
+width: 70%;
 margin: 15px auto;
 background-color: rgba(240, 248, 255, 0.6);
+border-radius: 10px;
 }
 
 #temp{
@@ -38,7 +39,7 @@ background-color: rgba(240, 248, 255, 0.6);
 
 #temp-icon {
   margin: 20px;
-  width: 15%;
+  width: 60%;
   height: auto;
 }
 

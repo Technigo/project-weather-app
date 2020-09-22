@@ -50,12 +50,12 @@ fetch(apiOneDay)
       tempIcon.src = './images/icons/heavyrain.png';
     } else if (id < 650) {
       tempIcon.src = './images/icons/snow.png';
-    } else if (id < 800) {
+    } else if (id < 700) {
       tempIcon.src = './images/icons/thunder.png';
     } else if (id == 800) {
       tempIcon.src = './images/icons/badweather.png';
     } else if (id > 800) {
-      tempIcon.src = './images/icons/clear.png';
+      tempIcon.src = './images/icons/cloudy.png';
     } else {
       tempIcon.src = './images/icon/badweather.png';
     };
