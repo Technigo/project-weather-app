@@ -1,0 +1,72 @@
+/*** GENERAL STYLING ***/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+* {
+    -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+} 
+  
+h1 {
+  font-weight: bold;
+}
+
+p {
+  margin: 4px;
+}
+
+/*** Styling of the 'box' with the weather ***/
+.weather-wrapper {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  padding: 1px 10px;
+  border: 1px solid #000;
+}
+
+.weather-pic {
+  height: 100px;
+  width: 100px;
+  margin: 10px 0px;
+}
+
+.weather-today, .another-day {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.one {
+  border-bottom: 1px dashed #000;
+}
+
+.two {
+  margin-bottom: 10px;
+}
+
+.sunrise, .sunset {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+
+/*** Styling of the Footer ***/
+footer {
+  position: relative;
+  bottom: 0;
+  padding: 10px;
+  margin-top: 50px;
+  text-align: center;
+  font-size: 12px;
+}
+
