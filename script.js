@@ -15,11 +15,21 @@ const calculatedTemperature = (number) => {
     return roundedTemp;
 };
 
+const localeTime = (time) => {
+    const clock = new Date (time * 1000);
+    const clockToString = clock.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+    })
+    console.log(clockToString)
+    return clockToString;
+}
 
 //function for sunrise and suntime that only includes hours and minutes 
 const calculatingSun = (time) => {
     const sunTime = new Date(time * 1000);
-    const sunTimeString = sunTime.toLocaleTimeString('sv-SE', {
+    const sunTimeString = sunTime.toLocaleTimeString('en-US', {
       hour: '2-digit',
       minute: '2-digit',
       hour12: false,
@@ -33,18 +43,18 @@ const calculatingSun = (time) => {
 //functions to print a short day of our 5 day weather forcast 
 const printDay = (day) => {
     const forcastDays = new Date(day);
-    console.log(forcastDays)
+    //console.log(forcastDays)
     const forcastDaysString = forcastDays.toLocaleDateString('en-US', {
         weekday: 'short',
       });
-    console.log(forcastDaysString);
+    //console.log(forcastDaysString);
     return forcastDaysString; 
 };
 
 //Function to limit amount of description to be able to link them to an icon 
 const iconDependingOnWeather = (item) => {
     const iconMainDescription = item
-    console.log(iconMainDescription)
+    //console.log(iconMainDescription)
 
     //const iconMainDescriptionForcast = weatherForcast.weather[0].main
     //console.log(iconMainDescriptionForcast)
@@ -72,7 +82,7 @@ const weatherTodayBackgroundColor = (temp) => {
         containerToday.style.backgroundColor = '#e5f5f9';
     } else if (temp > 6, temp <= 20) {
        containerToday.style.backgroundColor = '#fdae6b';
-       console.log(temp) 
+       //console.log(temp) 
     } else 
         containerToday.style.backgroundColor = '#e6550d'; 
 }
@@ -83,7 +93,7 @@ const citySelected = () => {
     containerToday.innerHTML = ''; //to clear default city today value
     containerForecast.innerHTML = ''; //to clear default city forcast value
     citySearched = document.getElementById("cityNamePicked").value;
-    console.log(citySearched)
+    //console.log(citySearched)
     fetchWeatherForcast(citySearched);
     fetchWeatherToday(citySearched);
     document.getElementById("cityNamePicked").value = ''; //to clear input value after search
@@ -95,6 +105,7 @@ const generatedHTMLForWeatherToday = (weatherToday) => {
     const temperature = calculatedTemperature(weatherToday.main.temp); //argument to get info about temperature inside our API
     
     //console.log(weatherToday.sys.sunrise)
+    const timeInCity = localeTime(weatherToday.dt)
     const sunrise = calculatingSun(weatherToday.sys.sunrise); //resue already created function an adds in argument about API sunsrise time
     const sunset = calculatingSun(weatherToday.sys.sunset);
     const iconToday = iconDependingOnWeather(weatherToday.weather[0].main)
@@ -102,19 +113,15 @@ const generatedHTMLForWeatherToday = (weatherToday) => {
     
     weatherTodayBackgroundColor(weatherToday.main.temp);
     //containerToday.innerHTML = `<h1>Location: ${weatherToday.name}</h1>`;
-    //descriptionToday.innerHTML = `The temperature today is: ${temperature} degrees, ${weatherToday.weather[0].description} outside.
-    //Sun rises at ${sunrise} sun sets at ${sunset}`;
-    //Weather is an array in the API, need to access the index of 0, and then locate the object keyvalues i.e .description. 
-    //This has to be done even if there is only one array, as in this case.
-    //descriptionToday.innerHTML = `Sun rises at ${sunrise} sun sets at ${sunset}`;
-
-     //separate everyting instead of return in one row! 
+    
+     //separate and build up the HTML tree
      let weatherTodayHTML = '';
      weatherTodayHTML += ` <img src='${iconToday}'>`;
      weatherTodayHTML += `<div class="location-information">`;
      weatherTodayHTML += `<div class="temp"> ${temperature} \xB0 </div>`
      weatherTodayHTML += `<div class="location"> ${weatherToday.name} </div>` 
      weatherTodayHTML += `<div class="description"> ${description} </div>` 
+     weatherTodayHTML += `<div class="description"> ${timeInCity} </div>` 
      weatherTodayHTML += `</div>`
     
      weatherTodayHTML += `<div class="sun-information">`;
@@ -143,21 +150,14 @@ const generatedHTMLForWeatherToday = (weatherToday) => {
 
 
 const generatedHTMLForWeatherForcast = (filteredForcast) => {
-    const weekday = printDay(filteredForcast.dt_txt); //Tell what day it concerns, does not work ATM 
-    console.log(filteredForcast.main.temp); //can console.log this, but cant make it work when invoking the printDay()
+    const weekday = printDay(filteredForcast.dt_txt); //Tell what day it concerns,
+    //console.log(filteredForcast.main.temp); //can console.log this, but cant make it work when invoking the printDay()
 
     const dailyTemp = calculatedTemperature(filteredForcast.main.temp);
     const tempFeelsLike = calculatedTemperature(filteredForcast.main.feels_like); 
-
-
     const iconForcast = iconDependingOnWeather(filteredForcast.weather[0].main);
 
-    //return dailyTemp;
-    //Other information to take in. 
-    //description for next five days "partly clody, sun".... changed with an image using if statments....?? 
-    //min and max temp for the day. 
-
-    //separate and build up the section tree VANS example
+    //separate and build up the HTML tree
     let weatherForcast = '';
     weatherForcast += `<div class="weather-forcast">`;
     weatherForcast += `<div class="day">${weekday}</div>`;
@@ -169,7 +169,6 @@ const generatedHTMLForWeatherForcast = (filteredForcast) => {
 
 
 //Function to fetch API regarding todays weather 
-
 /*
 const fetchWeatherToday = () => {
     fetch(apiUrlToday).then((response) => {
@@ -234,7 +233,7 @@ const fetchWeatherForcast = (citySearched) => {
         const filteredForcast = weatherForcast.list.filter((item) => 
         item.dt_txt.includes('12:00')
         );
-        console.log(filteredForcast);
+        //console.log(filteredForcast);
 
         filteredForcast.forEach((forcast) => {
             //container.innerHTML += generatedHTMLForWeatherForcast(forcast) //if we only have one wrapper

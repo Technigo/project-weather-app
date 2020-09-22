@@ -14,18 +14,26 @@
 
     
         <div class="select-city">
-            <label for="cityNamePicked">What's the weather in....?</label>
-                <input
-                type="text"
-                id="cityNamePicked"
-                name="ciyNamePicked"
-                />
-            <button onclick="citySelected()">
-                <p>Search</p>
-            </button>
+            <label for="cityNamePicked" class="city-serch">Search favourite city</label>
+            <input
+            type="text"
+            id="cityNamePicked"
+            name="ciyNamePicked"
+            onkeydown = "if (event.keyCode == 13)
+                document.getElementById('btnSearch').click()"
+            />
+
+            <input class="search-btn"
+            type = "button"
+            id = "btnSearch"
+            value = "Search"
+            onclick = "citySelected();"
+            />  
         </div>
             
-      
+        <!----<button onclick="citySelected()">
+            <p>Search</p>----->
+        </button>
         
     </section>
 

@@ -12,8 +12,8 @@ p {
     margin-right: 10px;
 }
 
+/*style for weather today wrapper*/
 .weather-today-wrapper {
-    /*border: 2px solid salmon;*/
     background: '';
     height: 40vh;
     position: relative;
@@ -23,6 +23,7 @@ p {
     justify-content: space-evenly;
 }
 
+/*additional img styling to seperate from other img*/
 .weather-today-wrapper img {
     position: absolute;
     height: 100px;
@@ -36,13 +37,13 @@ p {
     margin-left: 10px;
 }
 
+.temp {
+    font-size: 58px;
+}
+
 .location {
     font-size: 24px;
     font-weight: 500;
-}
-
-.temp {
-    font-size: 58px;
 }
 
 .sun-information {
@@ -56,16 +57,14 @@ p {
     margin: 0 10px;
 }
 
-
+/*style for weather forcast wrapper*/
 .weather-forcast-wrapper {
     display: flex;
     flex-direction: column;
     margin-left: 10px;
 }
 
-
 .weather-forcast {
-    /*border: 2px solid grey;*/
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -82,6 +81,8 @@ img {
     height: 50px;
     width: 50px;
 }
+
+
 
 /****MEDIA FOR TABLET *****/
 @media (min-width: 768px) {
