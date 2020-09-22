@@ -1,4 +1,4 @@
-const baseURL = 'http://api.openweathermap.org/data/2.5/'
+const baseURL = 'https://api.openweathermap.org/data/2.5/'
 const weather = ['weather','forecast']
 const apiKey = '1fdca83a9693b3d0d79182ed5ca69207'
 let cityName = ''
