@@ -9,7 +9,7 @@ const sunrise = document.getElementById('sunrise');
 const sunset = document.getElementById('sunset');
 
 //Main fetch to get Stockholm weather
-fetch(`http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${API_KEY}`)
+fetch(`http://api.openweathermap.org/data/2.5/weather?q=Stockholm&units=metric&APPID=${API_KEY}`)
   .then((response) => {
     return response.json();
   })
@@ -42,7 +42,7 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
 // New Fetch for the 5 days Forecast
 const forecastContent = document.getElementById('main-forecast-data');
 
-fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=${API_KEY}`)
+fetch(`http://api.openweathermap.org/data/2.5/forecast?q=Stockholm&units=metric&appid=${API_KEY}`)
   .then((response) => {
     return response.json();
   })
@@ -50,7 +50,6 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
   .then ((json) => {
     //Filters out forecast at 12:00 for coming 5 days
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));  //Creates array with data for coming 5 days
-    
     filteredForecast.forEach((forecastDay) => {
       forecastContent.innerHTML += generateHTMLForForecast(forecastDay);
     });  
