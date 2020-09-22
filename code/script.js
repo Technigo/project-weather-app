@@ -1,6 +1,6 @@
 const apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=Ho%20chi%20minh,Vietnam&units=metric&APPID=e27fc7790a6a4c3537de471b9d7612ce"
 
-const forecastUrl = "http://api.openweathermap.org/data/2.5/forecast?q=Ho%20Chi%20Minh,Vietnam&appid=e27fc7790a6a4c3537de471b9d7612ce"
+const forecastUrl = "http://api.openweathermap.org/data/2.5/forecast?q=Ho%20Chi%20Minh,Vietnam&units=metric&appid=e27fc7790a6a4c3537de471b9d7612ce"
 
 
 fetch (apiUrl)
@@ -8,32 +8,33 @@ fetch (apiUrl)
     return response.json();
   })
   .then((todayForecast) => {
+    populateHeader(todayForecast)
     populateDetails(todayForecast);
     populateSummary(todayForecast);
-    // populateForecast(todayForecast);
   });
 
-// fetch (forecastUrl)
-//   .then((response) => {
-//     return response.json();
-//   })
-//   .then((forecast) => {
-//     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
-//     populateForecast(forecast);
-//   });
-  
+  function populateHeader(todayForecast) {
+    const city = todayForecast.name
+    const today = new Date(todayForecast.dt*1000);
+    document.getElementById('headerMessage').innerHTML = `Welcome to the Weather Forecast of ${city} on ${today}`
+  };
 
-function populateDetails(todayForecast) {
-  const timezone = todayForecast.timezone;
-  const country = todayForecast.sys.country;
+
+  function populateDetails(todayForecast) {
   const todayDescription = todayForecast.weather[0].description;
   const todayTemperature = todayForecast.main.temp;
-  const todaySunRise = new Date(todayForecast.sys.sunrise * 1000).toLocaleTimeString(country);
-  const todaySunSet = new Date(todayForecast.sys.sunset * 1000).toLocaleTimeString(country);
+  const todaySunRise = new Date(todayForecast.sys.sunrise * 1000);
+  const sunRiseHour = todaySunRise.toLocaleTimeString('en-VN', {
+    hour12: false,
+  })
+  const todaySunSet = new Date(todayForecast.sys.sunset * 1000);
+  const sunSetHour = todaySunSet.toLocaleTimeString('en-VN', {
+    hour12: false,
+  })
 
   document.getElementById('des').innerHTML = `${todayDescription} | ${todayTemperature}`
-  document.getElementById('sunRise').innerHTML = `Sunrise: ${todaySunRise}`;
-  document.getElementById('sunSet').innerHTML = `Sunset: ${todaySunSet}`;
+  document.getElementById('sunRise').innerHTML = `Sunrise: ${sunRiseHour}`;
+  document.getElementById('sunSet').innerHTML = `Sunset: ${sunSetHour}`;
 }
 
 function populateSummary(todayForecast) {
@@ -57,10 +58,25 @@ function populateSummary(todayForecast) {
   }
 }
 
-function populateForecast(forecast){
+fetch (forecastUrl)
+  .then((response) => {
+    return response.json();
+  })
+  .then((forecast) => {
+    const filteredForecast = forecast.list.filter(item => item.dt_txt.includes('12:00'));
 
-}
+    filteredForecast.forEach((item) => {
+      const temperature = item.main.temp;
+      const date = new Date(item.dt * 1000);
+      const weekday = date.toLocaleDateString('en-VN', {
+        weekday: 'short'
+      });
+      document.getElementById('foreCast').innerHTML += `<p>${weekday} ......${temperature}</p>`;
+    });
+  })
 
-
+    
 
   
+
+   
