@@ -1,7 +1,9 @@
 
-// Location + API links 
+// Location Variables
 const city = 'Porto,Portugal';
 const cityName = document.getElementById('city');
+
+// API Variables
 const apiCurrentWeatherUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=09124a2f59a3124951523d476ed8a36d`;
 const apiForecastWeatherUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=09124a2f59a3124951523d476ed8a36d`;
 const apiUvIndexUrl = 'http://api.openweathermap.org/data/2.5/uvi?lat=41.15&lon=8.61&appid=09124a2f59a3124951523d476ed8a36d';
@@ -17,34 +19,50 @@ const sunset = document.getElementById('sunset');
 // Date Variable 
 let todaysDate = new Date();
 
-//Fetch Data
+// Main function that shows the updated weather
+const updateCityWeather = (weatherInfo) => { 
+    cityName.innerHTML = city;
+    weatherDescription.innerHTML = weatherInfo.weather.map((weather) => weather.description);
+    sunriseSunset(weatherInfo);
+    updateRoundTemperatures(weatherInfo);
+    updateWind(weatherInfo);
+};
 
-    fetch(apiCurrentWeatherUrl)
-    .then((response)=> { 
+// Current and real feel rounded temperature function
+
+const updateRoundTemperatures = (weatherInfo) => {
+    const roundedTemperature = weatherInfo.main.temp.toFixed(1);
+    currentTemperature.innerHTML += `${roundedTemperature}°C`;
+
+    const realFeelRoundedTemp = weatherInfo.main.feels_like.toFixed(1);
+    realFeel.innerHTML += `${realFeelRoundedTemp}°C`;
+};
+
+// WIND Function 
+
+const updateWind = (weatherInfo) => { 
+    const wind = weatherInfo.wind.speed;
+    currentWind.innerHTML += `${wind} m/s`;
+};
+
+  // SUNRISE & SUNSET Function
+
+const sunriseSunset = (weatherInfo) => {
+    const sunriseTime = new Date(weatherInfo.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const sunsetTime = new Date(weatherInfo.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    sunrise.innerHTML += `${sunriseTime}`;
+    sunset.innerHTML += `${sunsetTime}`;
+};
+
+// Fetch Data
+
+fetch(apiCurrentWeatherUrl)
+    .then((response) => { 
         return response.json()
     })
-    .then((porto) => { 
-        console.log(porto);
-        cityName.innerHTML = city;
-
-        //Current and real feel rounded temperature 
-        const roundedTemperature = porto.main.temp.toFixed(1);
-        currentTemperature.innerHTML += `${roundedTemperature}°C`;
-
-        const realFeelRoundedTemp = porto.main.feels_like.toFixed(1);
-        realFeel.innerHTML += `${realFeelRoundedTemp}°C`;
-
-        weatherDescription.innerHTML = porto.weather.map((weather) => weather.description);
-
-        //WIND
-        const wind = porto.wind.speed;
-        currentWind.innerHTML += `${wind} m/s`;
-
-        //SUNRISE & SUNSET//
-        const sunriseTime = new Date(porto.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        const sunsetTime = new Date(porto.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        sunrise.innerHTML += `${sunriseTime}`;
-        sunset.innerHTML += `${sunsetTime}`;
+    .then((json) => { 
+        console.log(json);
+        updateCityWeather(json);    
     })
       .catch((error) => {
         console.log(error) 
