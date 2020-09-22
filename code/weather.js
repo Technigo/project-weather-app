@@ -11,51 +11,118 @@ const fetchWeather = () => {
 };
 
 const getDayOfWeek = (dayOfWeek) => {
-    return isNaN(dayOfWeek) ? null : 
-      ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][dayOfWeek];
-}
+  return isNaN(dayOfWeek)
+    ? null
+    : [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ][dayOfWeek];
+};
 
 const fetchForecast = () => {
-    return fetch(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=59.3326&lon=18.0649&%20exclude=current,minutely,hourly&appid=7d01b328e34c450986cb7faef032a771&units=metric`
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((json) => {
-        sthlmForecast(json);
-      });
-  };
+  return fetch(
+    `https://api.openweathermap.org/data/2.5/onecall?lat=59.3326&lon=18.0649&%20exclude=current,minutely,hourly&appid=7d01b328e34c450986cb7faef032a771&units=metric`
+  )
+    .then((response) => {
+      return response.json();
+    })
+    .then((json) => {
+      sthlmForecast(json);
+    });
+};
 
-  const sthlmWeather = (weather) => {
-    console.log(weather.main.temp);
-    document.getElementById("sthlm").innerHTML += `${weather.main.temp}`
-    //console.log(new Date(weather.sys.sunrise * 1000));
-    const sunrise = new Date(weather.sys.sunrise * 1000);
-    const sunset = new Date(weather.sys.sunset * 1000);
-    console.log((new Date(weather.sys.sunset * 1000)).getMinutes());
-    document.getElementById("sthlm").innerHTML += `<p>Sunrise: ${(sunrise.getHours()) <= 9 ? `0`:``}${sunrise.getHours()}:${sunrise.getMinutes()}</p>`
-    document.getElementById("sthlm").innerHTML += `<p>Sunset: ${(sunset.getHours()) <= 9 ? `0`:``}${sunset.getHours()}:${sunset.getMinutes()}</p>`
-    //console.log(sunrise.getHours());
-}
+const sthlmWeather = (weather) => {
+  console.log(weather.main.temp);
+  document.getElementById("sthlm").innerHTML += `${weather.main.temp}`;
+  //console.log(new Date(weather.sys.sunrise * 1000));
+  const sunrise = new Date(weather.sys.sunrise * 1000);
+  const sunset = new Date(weather.sys.sunset * 1000);
+  console.log(new Date(weather.sys.sunset * 1000).getMinutes());
+  document.getElementById("sthlm").innerHTML += `<p>Sunrise: ${
+    sunrise.getHours() <= 9 ? `0` : ``
+  }${sunrise.getHours()}:${sunrise.getMinutes()}</p>`;
+  document.getElementById("sthlm").innerHTML += `<p>Sunset: ${
+    sunset.getHours() <= 9 ? `0` : ``
+  }${sunset.getHours()}:${sunset.getMinutes()}</p>`;
+  //console.log(sunrise.getHours());
+};
+
+const getIcon = (desc) => {
+  let imgsrc;
+  console.log(desc);
+  if (desc == "Clouds") return (imgsrc = "clouds.png");
+  else return (imsrc = "clear.png");
+};
 
 const sthlmForecast = (forecast) => {
-    document.getElementById("sthlm").innerHTML += `${forecast.current.temp}`
-    document.getElementById("day1").innerHTML = `${(getDayOfWeek(new Date(forecast.daily[0].dt * 1000).getDay()))}`
-    document.getElementById("day2").innerHTML = `${(getDayOfWeek(new Date(forecast.daily[1].dt * 1000).getDay()))}`
-    document.getElementById("day3").innerHTML = `${(getDayOfWeek(new Date(forecast.daily[2].dt * 1000).getDay()))}`
-    document.getElementById("day4").innerHTML = `${(getDayOfWeek(new Date(forecast.daily[3].dt * 1000).getDay()))}`
-    document.getElementById("day5").innerHTML = `${(getDayOfWeek(new Date(forecast.daily[4].dt * 1000).getDay()))}`
-    document.getElementById("day1-temp").innerHTML = `${Math.round(forecast.daily[0].temp.min)} / ${Math.round(forecast.daily[0].temp.max)}`;
-    document.getElementById("day2-temp").innerHTML = `${Math.round(forecast.daily[1].temp.min)} / ${Math.round(forecast.daily[1].temp.max)}`;
-    document.getElementById("day3-temp").innerHTML = `${Math.round(forecast.daily[2].temp.min)} / ${Math.round(forecast.daily[2].temp.max)}`;
-    document.getElementById("day4-temp").innerHTML = `${Math.round(forecast.daily[3].temp.min)} / ${Math.round(forecast.daily[3].temp.max)}`;
-    document.getElementById("day5-temp").innerHTML = `${Math.round(forecast.daily[4].temp.min)} / ${Math.round(forecast.daily[4].temp.max)}`;
-    console.log(forecast.daily[0].temp.min)
-    console.log(forecast.daily[0].temp.max)
-}
+  //Current temp. movw to new function
+  const currentTemp = document.getElementById("current");
+  currentTemp.innerHTML = `${Math.round(forecast.current.temp)}&#8451`;
 
+  //get sunrise/sunset
+  const sunriseHTML = document.getElementById("sunrise");
+  const sunsetHTML = document.getElementById("sunset");
+  const sunrise = new Date(forecast.current.sunrise * 1000);
+  const sunriseString = sunrise.toLocaleTimeString("en-US", {
+    timestyle: "short",
+    hour12: false,
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+  const sunset = new Date(forecast.current.sunset * 1000);
+  const sunsetString = sunset.toLocaleTimeString("en-US", {
+    timestyle: "short",
+    hour12: false,
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+  sunriseHTML.innerHTML += sunriseString;
+  sunsetHTML.innerHTML += sunsetString;
 
+  //Get days for forecast
+  document.getElementById("day1").innerHTML = `${getDayOfWeek(
+    new Date(forecast.daily[0].dt * 1000).getDay()
+  )}`;
+  document.getElementById("day2").innerHTML = `${getDayOfWeek(
+    new Date(forecast.daily[1].dt * 1000).getDay()
+  )}`;
+  document.getElementById("day3").innerHTML = `${getDayOfWeek(
+    new Date(forecast.daily[2].dt * 1000).getDay()
+  )}`;
+  document.getElementById("day4").innerHTML = `${getDayOfWeek(
+    new Date(forecast.daily[3].dt * 1000).getDay()
+  )}`;
+  document.getElementById("day5").innerHTML = `${getDayOfWeek(
+    new Date(forecast.daily[4].dt * 1000).getDay()
+  )}`;
+  document.getElementById("day1-temp").innerHTML += `<img src='${getIcon(
+    forecast.daily[0].weather[0].main
+  )}'>   `;
+
+  //Dates with forecast
+  document.getElementById("day1-temp").innerHTML += ` ${Math.round(
+    forecast.daily[0].temp.min
+  )} / ${Math.round(forecast.daily[0].temp.max)}`;
+  document.getElementById("day2-temp").innerHTML = `${Math.round(
+    forecast.daily[1].temp.min
+  )} / ${Math.round(forecast.daily[1].temp.max)}`;
+  document.getElementById("day3-temp").innerHTML = `${Math.round(
+    forecast.daily[2].temp.min
+  )} / ${Math.round(forecast.daily[2].temp.max)}`;
+  document.getElementById("day4-temp").innerHTML = `${Math.round(
+    forecast.daily[3].temp.min
+  )} / ${Math.round(forecast.daily[3].temp.max)}`;
+  document.getElementById("day5-temp").innerHTML = `${Math.round(
+    forecast.daily[4].temp.min
+  )} / ${Math.round(forecast.daily[4].temp.max)}`;
+  console.log(forecast.daily[0].temp.min);
+  console.log(forecast.daily[0].temp.max);
+};
 
 /*const fetchForecast = () => {
     return fetch(
