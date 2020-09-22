@@ -70,8 +70,8 @@ fetch(apiUrlFiveDay)
 // A function that retrieve and convert data from the API in a readable format.
 const generateHTMLForForecast = day => {
     const weekdayUnix = day.dt;
-    const weekdayShortFormat = new Date(weekdayUnix * 1000);
-    const weekdayName = weekdayShortFormat.toLocaleDateString('en-US', {weekday: 'short'}).toLowerCase();
+    const weekdayLong = new Date(weekdayUnix * 1000);
+    const weekdayName = weekdayLong.toLocaleDateString('en-US', {weekday: 'long'}).toLowerCase();
     const dayTemp = `${Math.round(day.main.temp * 10) / 10}`;
 
     // And creates HTML code that is returned

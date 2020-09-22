@@ -32,17 +32,21 @@ p.description, p.temp, p.sun {
   text-align: center;
 }
 
+p.sun {
+  margin-bottom: 40px;
+}
+
 p.temp {
   font-size: 38px;
 }
-.container-five-day {
+div.container-five-day {
   display: flex;
- 
+  justify-content: space-between;
+  line-height:.5;
+  
+  border-bottom: 1px dotted;
 }
 
-p.day-temp {
-  display: inline-block;
-}
 
 /* DESIGN SPEC
 Weights: bold and regular
