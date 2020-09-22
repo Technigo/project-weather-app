@@ -1,12 +1,22 @@
 const baseURL = 'http://api.openweathermap.org/data/2.5/'
 const weather = ['weather','forecast']
 const apiKey = '1fdca83a9693b3d0d79182ed5ca69207'
-let cityName = 'Stockholm,Sweden'
+let cityName = ''
 
 const container = document.getElementById('weather')
-console.log(container)
+const cityForm = document.querySelector('form');
 
-const getWeather = () => {
+
+cityForm.addEventListener('submit', (event) => {
+
+    event.preventDefault()
+
+    cityName = cityForm.city.value
+    cityForm.reset();
+
+const getWeather = (cityName) => {
+    
+
     fetch(`${baseURL}${weather[0]}?q=${cityName}&units=metric&APPID=${apiKey}`)
         .then(response => response.json())
         .then((result) => {
@@ -18,13 +28,15 @@ const getWeather = () => {
             console.log(timeAM)
             container.innerHTML = `Temperature today: ${temperature}`
             container.innerHTML += `Location: ${result.name}`
-            container.innerHTML += `Forecast: ${result.weather[0].description}`
+            container.innerHTML += `Weather conditions: ${result.weather[0].description}`
             container.innerHTML += `Sunrise at: ${timeAM}`
             container.innerHTML += `Sundown at: ${timePM}`
         });
 };
 
-const getForecast = () => {
+const getForecast = (cityName) => {
+
+
     fetch(`${baseURL}${weather[1]}?q=${cityName}&units=metric&APPID=${apiKey}`)
         .then(response => response.json())
         .then((result) => {
@@ -42,7 +54,8 @@ const getForecast = () => {
 
 }
 
-getWeather()
-getForecast()
-//https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=1fdca83a9693b3d0d79182ed5ca69207
-//http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=1fdca83a9693b3d0d79182ed5ca69207
+getWeather(cityName)
+getForecast(cityName)
+
+})
+
