@@ -1,6 +1,6 @@
 const changeCity = () => {
     let city = document.getElementById("city-label").value 
-    console.log(city)
+    document.getElementById("city").innerHTML = city;
     fetchWeather(city)
 }
 
@@ -10,6 +10,7 @@ const getLocation = () => {
     } else { 
       console.log("Geolocation is not supported by this browser.");
     }
+
 }
 
 const getLatLongCurrent = (position) => {
@@ -42,13 +43,13 @@ const getDayOfWeek = (dayOfWeek) => {
   return isNaN(dayOfWeek)
     ? null
     : [
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat",
       ][dayOfWeek];
 };
 
@@ -66,21 +67,31 @@ const fetchForecast = (lat, lon) => {
 };
 
 const getIcon = (desc) => {
-  let imgsrc;
+  /*let imgsrc;
   console.log(desc);
   if (desc == "Clouds") return (imgsrc = "clouds.png");
-  else return (imsrc = "clear.png");
+  else return (imsrc = "clear.png");*/
 };
 
 const sthlmForecast = (forecast) => {
   //get current city
   const currentCity = forecast.timezone.split("/")[1]
   const currentCityHTML = document.getElementById("city")
-  currentCityHTML.innerHTML = currentCity
+  currentCityHTML.innerHTML == "" ? currentCityHTML.innerHTML = currentCity : currentCityHTML.innerHTML += "";
+  let citySet = true;
+  //currentCityHTML.innerHTML = currentCity
 
   //get current temp
   const currentTemp = document.getElementById("current");
   currentTemp.innerHTML = `${Math.round(forecast.current.temp)}&#8451`;
+
+  //get current weather icon
+  const currentIcon = document.getElementById("current-icon");
+  currentIcon.src = `${forecast.current.weather[0].icon}@2x.png`;
+
+  //get current weather
+  const currentWeather = document.getElementById("current-weather")
+  currentWeather.innerHTML = forecast.current.weather[0].description;
 
   //get sunrise/sunset
   const sunriseHTML = document.getElementById("sunrise");
@@ -118,26 +129,46 @@ const sthlmForecast = (forecast) => {
   document.getElementById("day5").innerHTML = `${getDayOfWeek(
     new Date(forecast.daily[4].dt * 1000).getDay()
   )}`;
-  document.getElementById("day1-temp").innerHTML = `<img src='${getIcon(
-    forecast.daily[0].weather[0].main
-  )}'>   `;
+//   document.getElementById("day1-temp").innerHTML = `<img src='${getIcon(
+//     forecast.daily[0].weather[0].main
+//   )}'>   `;
+
 
   //Dates with forecast
-  document.getElementById("day1-temp").innerHTML += ` ${Math.round(
+  document.getElementById("day1-temp").innerHTML = `<img src='${
+    forecast.daily[0].weather[0].icon
+  }@2x.png'>   `;
+  document.getElementById("day1-temp").innerHTML += `<span>${Math.round(
     forecast.daily[0].temp.min
-  )} / ${Math.round(forecast.daily[0].temp.max)}`;
-  document.getElementById("day2-temp").innerHTML = `${Math.round(
+  )} / ${Math.round(forecast.daily[0].temp.max)}</span>`;
+
+  document.getElementById("day2-temp").innerHTML = `<img src='${
+    forecast.daily[1].weather[0].icon
+  }@2x.png'>   `;
+  document.getElementById("day2-temp").innerHTML += `<span>${Math.round(
     forecast.daily[1].temp.min
-  )} / ${Math.round(forecast.daily[1].temp.max)}`;
-  document.getElementById("day3-temp").innerHTML = `${Math.round(
+  )} / ${Math.round(forecast.daily[1].temp.max)}</span>`;
+
+  document.getElementById("day3-temp").innerHTML = `<img src='${
+    forecast.daily[2].weather[0].icon
+  }@2x.png'>   `;
+  document.getElementById("day3-temp").innerHTML += `<span>${Math.round(
     forecast.daily[2].temp.min
-  )} / ${Math.round(forecast.daily[2].temp.max)}`;
-  document.getElementById("day4-temp").innerHTML = `${Math.round(
+  )} / ${Math.round(forecast.daily[2].temp.max)}</span>`;
+
+  document.getElementById("day4-temp").innerHTML = `<img src='${
+    forecast.daily[3].weather[0].icon
+  }@2x.png'>   `;
+  document.getElementById("day4-temp").innerHTML += `<span>${Math.round(
     forecast.daily[3].temp.min
-  )} / ${Math.round(forecast.daily[3].temp.max)}`;
-  document.getElementById("day5-temp").innerHTML = `${Math.round(
+  )} / ${Math.round(forecast.daily[3].temp.max)}</span>`;
+
+  document.getElementById("day5-temp").innerHTML = `<img src='${
+    forecast.daily[4].weather[0].icon
+  }@2x.png'>   `;
+  document.getElementById("day5-temp").innerHTML += `<span>${Math.round(
     forecast.daily[4].temp.min
-  )} / ${Math.round(forecast.daily[4].temp.max)}`;
+  )} / ${Math.round(forecast.daily[4].temp.max)}</span>`;
 };
 
 /*const sthlmWeather = (weather) => {
