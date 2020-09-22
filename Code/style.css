@@ -14,7 +14,7 @@ body{
 }
 
 .app-container{
-width: 70%;
+width: 350px;
 margin: 15px auto;
 background-color: rgba(240, 248, 255, 0.6);
 border-radius: 10px;
@@ -26,36 +26,32 @@ border-radius: 10px;
   font-weight: 700;
   margin: 5px 0;
   text-shadow: rgba(0, 0, 0, 0.3);
+  color: red;
 }
-
-#temp #temp-value {
-  color: black;
-}
-
-#temp #temp-unit{
-  color:black;
-  font-size: 3rem;
-} 
 
 #temp-icon {
-  margin: 20px;
-  width: 60%;
+  width: 30%;
   height: auto;
 }
 
 #location {
   color: black;
-  font-size: 2.5rem;
+  font-size: 40px;
   text-align: center;
   padding-top: 20px;
 }
 
 #climate, #suntime {
   color: black;
-  font-size: 2rem;
+  font-size: 20px;
   text-align: center;
   padding:20px 0;
 }
 
-
-
+.forecast {
+  text-align: center;
+  width: 350px;
+  margin: 15px auto;
+  background-color: rgba(240, 248, 255, 0.6);
+  border-radius: 10px;
+}
