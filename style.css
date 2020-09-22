@@ -3,19 +3,72 @@
 
 }
 
-.weatherToday {
+p {
+    width: 100px;
+    text-align: end;
+    margin-right: 10px;
+}
+
+.weather-today-wrapper {
     border: 2px solid salmon;
     height: 40vh;
+    position: relative;
     display: flex; 
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
 }
 
+.weather-today-wrapper img {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    right: 10px;
+    top: 10px;
+}
 
-.weatherForcast {
+.location-information {
+    align-self: flex-start;
+    margin-left: 10px;
+}
+
+.temp {
+    font-size: 58px;
+}
+
+.sun-information {
+    flex-direction: row;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.sunrise, .sunset {
+    margin: 0 10px;
+}
+
+
+.weather-forcast-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+
+.weather-forcast {
     border: 2px solid grey;
     display: flex;
     flex-wrap: wrap;
-    flex-basis: ;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.day {
+    width: 140px;
+}
+
+img {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
 }

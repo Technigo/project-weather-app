@@ -1,8 +1,9 @@
 const apiUrlToday = 'http://api.openweathermap.org/data/2.5/weather?q=Kil,Sweden&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5'
 const apiUrlForcast = 'https://api.openweathermap.org/data/2.5/forecast?q=Kil,Sweden&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5'
+//const container = document.getElementById('wrapper');
 const containerToday = document.getElementById("weatherToday"); //change to location? 
-const descriptionToday = document.getElementById("text");
-const containerForecast = document.getElementById("forecastWrapper");
+//const descriptionToday = document.getElementById("text");
+const containerForecast = document.getElementById("weatherForecast");
 
 
 //Function for temp rounded to one decimal 
@@ -28,14 +29,75 @@ const calculatingSun = (time) => {
 
 //functions to print a short day of our 5 day weather forcast 
 const printDay = (day) => {
-    const forcastDays = new Date(day * 1000);
+    const forcastDays = new Date(day);
     console.log(forcastDays)
-    const forcastDaysString = forcastDays.ToLocalDateString('en-US', {
+    const forcastDaysString = forcastDays.toLocaleDateString('en-US', {
         weekday: 'short',
-    });
+      });
     console.log(forcastDaysString);
     return forcastDaysString; 
 };
+
+
+/*
+//link to page https://openweathermap.org/weather-conditions#Icon-list
+const weatherIconArray = [
+    {
+       description: 'clear Sky',
+       icon: '01d.png',
+    },
+    {
+        description: 'few Clouds',
+        icon: '02d.png',
+     },
+     {
+        description: 'scattered clouds',
+        icon: '03d.png',
+     },
+     {
+        description: 'broken clouds',
+        icon: '04d.png',
+     },
+     {
+        description: 'shower rain',
+        icon: '09d.png',
+     },
+     {
+        description: 'rain',
+        icon: '10d.png',
+     },
+     {
+        description: 'thunderstorm',
+        icon: '11d.png',
+     },
+     {
+        description: 'snow',
+        icon: '13d.png',
+     },
+     {
+        description: '	mist',
+        icon: '50d.png',
+     },
+
+]
+*/
+
+
+//Function to limit amount of description to be able to link them to an icon 
+const iconDependingOnWeather = (item) => {
+    const iconMainDescription = item
+    console.log(iconMainDescription)
+
+    //const iconMainDescriptionForcast = weatherForcast.weather[0].main
+    //console.log(iconMainDescriptionForcast)
+    if (iconMainDescription === 'Clouds') {
+        return "./cloudy.png"
+    } else if (iconMainDescription === 'Clear'){
+        return "./sunny.png"
+    } else 
+        return "./rainy.png"
+    //return iconMainDescription
+}
 
 
 //Functions to invoke already created functions and manipulate the DOM
@@ -45,7 +107,8 @@ const generatedHTMLForWeatherToday = (weatherToday) => {
     //console.log(weatherToday.sys.sunrise)
     const sunrise = calculatingSun(weatherToday.sys.sunrise); //resue already created function an adds in argument about API sunsrise time
     const sunset = calculatingSun(weatherToday.sys.sunset);
-
+    const iconToday = iconDependingOnWeather(weatherToday.weather[0].main)
+    const description = weatherToday.weather[0].main
 
     //containerToday.innerHTML = `<h1>Location: ${weatherToday.name}</h1>`;
     //descriptionToday.innerHTML = `The temperature today is: ${temperature} degrees, ${weatherToday.weather[0].description} outside.
@@ -54,25 +117,50 @@ const generatedHTMLForWeatherToday = (weatherToday) => {
     //This has to be done even if there is only one array, as in this case.
     //descriptionToday.innerHTML = `Sun rises at ${sunrise} sun sets at ${sunset}`;
 
+     //separate everyting instead of return in one row! 
+     let weatherTodayHTML = '';
+     weatherTodayHTML += ` <img src='${iconToday}'>`;
+     weatherTodayHTML += `<div class="location-information">`;
+     weatherTodayHTML += `<div class="temp"> ${temperature} \xB0 </div>`
+     weatherTodayHTML += `<div class="location"> ${weatherToday.name} </div>` 
+     weatherTodayHTML += `<div class="description"> ${description} </div>` 
+     weatherTodayHTML += `</div>`
     
+     weatherTodayHTML += `<div class="sun-information">`;
+     //weatherTodayHTML += `<p> Weather Today: ${weatherToday.weather[0].main}</p>`
+     weatherTodayHTML += `<div class="sunrise"> Sunrise ${sunrise}</div>`
+     weatherTodayHTML += `<div class="sunset"> Sunset ${sunset}</div>`
+     weatherTodayHTML += `</div>`
+     //weatherTodayHTML += `</div>`; 
+     return weatherTodayHTML; 
+
+
+
+    /* ORIGINAL 
     //separate everyting instead of return in one row! 
     let weatherTodayHTML = '';
-    weatherTodayHTML += `<section class="weatherToday">`;
+    //weatherTodayHTML += `<div class="weatherTodayContainer">`;
     weatherTodayHTML += `<div class="location"> Location: ${weatherToday.name}</div>` 
-    weatherTodayHTML += `<p> Weather Today: ${weatherToday.weather[0].description}</p>`
-    weatherTodayHTML += `<p> Temperature: ${temperature} \xB0</p>`
-    weatherTodayHTML += `<p> Sunrise at: ${sunrise}: Sunset at ${sunset}</p>`
-    weatherTodayHTML += `</section>`; 
+    weatherTodayHTML += `<div class="temp"> ${temperature} \xB0</div>`
+    weatherTodayHTML += ` <img src='${iconToday}'>`;
+    //weatherTodayHTML += `<p> Weather Today: ${weatherToday.weather[0].main}</p>`
+    weatherTodayHTML += `<div class="sun-time"> Sunrise at: ${sunrise}: Sunset at ${sunset}</div>`
+    //weatherTodayHTML += `</div>`; 
     return weatherTodayHTML; 
+    */
 };
 
 
 const generatedHTMLForWeatherForcast = (filteredForcast) => {
-    //printDay(filteredForcast.dt); //Tell what day it concerns, does not work ATM 
+    const weekday = printDay(filteredForcast.dt_txt); //Tell what day it concerns, does not work ATM 
     console.log(filteredForcast.main.temp); //can console.log this, but cant make it work when invoking the printDay()
 
     const dailyTemp = calculatedTemperature(filteredForcast.main.temp);
-    const tempFeelsLike = calculatedTemperature(filteredForcast.main.feels_like)
+    const tempFeelsLike = calculatedTemperature(filteredForcast.main.feels_like); 
+
+
+    const iconForcast = iconDependingOnWeather(filteredForcast.weather[0].main);
+
     //return dailyTemp;
     //Other information to take in. 
     //description for next five days "partly clody, sun".... changed with an image using if statments....?? 
@@ -80,11 +168,11 @@ const generatedHTMLForWeatherForcast = (filteredForcast) => {
 
     //separate and build up the section tree VANS example
     let weatherForcast = '';
-    weatherForcast += `<section class="weatherForcast">`;
-    //weatherForcast += ` <img src='${launchOutcomeImageUrl}'>`;
-    weatherForcast += `<p>Temperature: ${dailyTemp} \xB0</p>`;
-    weatherForcast += `<p>Feels like: ${tempFeelsLike} \xB0</p>`;
-    weatherForcast += `</section>`;
+    weatherForcast += `<div class="weather-forcast">`;
+    weatherForcast += `<div class="day">${weekday}</div>`;
+    weatherForcast += ` <img src='${iconForcast}'>`;
+    weatherForcast += `<p>${dailyTemp} \xB0/ ${tempFeelsLike} \xB0</p>`;
+    weatherForcast += `</div>`;
     return weatherForcast; //This is code from Van to use in forecast HTML
 };
 
@@ -94,7 +182,8 @@ const fetchWeatherToday = () => {
     fetch(apiUrlToday).then((response) => {
         return response.json();
     }).then((weatherToday) => {
-        descriptionToday.innerHTML += generatedHTMLForWeatherToday(weatherToday); 
+        //container.innerHTML += generatedHTMLForWeatherToday(weatherToday)
+        containerToday.innerHTML += generatedHTMLForWeatherToday(weatherToday); 
         //added descriptionToday.innerHTML +=  on row 95
         //this prins everyting as a p tag (text id in html)
         //but I have specified weatherTodayHTML and assigned it to class weatherToday styled in css...
@@ -116,6 +205,7 @@ const fetchWeatherForcast = () => {
         console.log(filteredForcast);
 
         filteredForcast.forEach((forcast) => {
+            //container.innerHTML += generatedHTMLForWeatherForcast(forcast) //if we only have one wrapper
             containerForecast.innerHTML += generatedHTMLForWeatherForcast(forcast)
         });
     });
