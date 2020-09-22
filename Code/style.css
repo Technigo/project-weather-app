@@ -1,5 +1,4 @@
 *{
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
@@ -15,7 +14,7 @@ body{
 }
 
 #app-container{
-width: 50vh;
+width: 40%;
 margin: 15px auto;
 background-color: rgba(240, 248, 255, 0.6);
 }
@@ -39,7 +38,7 @@ background-color: rgba(240, 248, 255, 0.6);
 
 #temp-icon {
   margin: 20px;
-  width: 40%;
+  width: 15%;
   height: auto;
 }
 

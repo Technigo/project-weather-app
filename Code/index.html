@@ -9,10 +9,10 @@
 </head>
 
 <body>
-  <div id="app-container">
+
+  <section class="app-container">
     <div id="location">
-      <!-- <input id="input-box" type="text" placeholder="Enter city name..." autocomplete="off"> -->
-      <p>Stockholm</p>
+      <p id="currentCityName">Stockholm</p>
     </div>
     <div id="temp">
       <img id="temp-icon" src="./images/Icons/default.png" alt="weather Icon">
@@ -25,9 +25,32 @@
       <p id="sunrise">Sunrise</p>
       <p id="sunset">Sunset</p>
     </div>
+  </section>
 
-    <script src="script.js"></script>
-  </div>
+  <section class="forecast">
+    <div>
+      <p id="day1">Loading...</p>
+      <p id="day1Temp">Loading...</p>
+    </div>
+    <div>
+      <p id="day2">Loading...</p>
+      <p id="day2Temp">Loading...</p>
+    </div>
+    <div>
+      <p id="day3">Loading...</p>
+      <p id="day3Temp">Loading...</p>
+    </div>
+    <div>
+      <p id="day4">Loading...</p>
+      <p id="day4Temp">Loading...</p>
+    </div>
+    <div>
+      <p id="day5">Loading...</p>
+      <p id="day5Temp">Loading...</p>
+    </div>
+  </section>
+  <script src="script.js"></script>
+
 </body>
 
 </html>
