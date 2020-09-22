@@ -21,7 +21,9 @@ fetch(apiUrlCurrWeather)
   //data is available here
   console.log(weatherObject);
   const currDate = new Date();
+  console.log(`Current date: ${currDate}`);
   const dateFormatted = currDate.toLocaleDateString('se-SE');
+  console.log(`Current date formatted: ${dateFormatted}`);
   //you can add more options at the same time
   const timeFormatted = currDate.toLocaleTimeString('se-SE', {timeStyle: "long"});
 
@@ -29,15 +31,39 @@ fetch(apiUrlCurrWeather)
   city.innerHTML = weatherObject.name;
   temp.innerHTML = weatherObject.main.temp;
   description.innerHTML = weatherObject.weather[0].description;
-  sunrise.innerHTML = weatherObject.sys.sunrise;
 
-  // let sunriseTimeFormatted = weatherObject.sys.sunrise.toLocaleTimeString('se-SE');
-  // sunrise.innerHTML = sunriseTimeFormatted;
   
-  sunset.innerHTML = weatherObject.sys.sunset;
+  const sunriseUnixStamp = weatherObject.sys.sunrise;
+  const sunsetUnixStamp = weatherObject.sys.sunset;
+ 
+  const sunriseTime = formatUnix(sunriseUnixStamp);
+  console.log(`SunriseTime variable: ${sunriseTime}`);
+  const sunsetTime = formatUnix(sunsetUnixStamp);
+  console.log(`SunsetTime variable: ${sunsetTime}`);
+  //formatting sunrise/sunset unix stamps (in ms)
+  // console.log(`Unix sunrise stamp: ${sunriseUnixStamp}`);
+  // const sunriseDate = new Date(sunriseUnixStamp * 1000);
+  // console.log(`Sunrise date: ${sunriseDate}`);
+  // const sunriseTime = sunriseDate.toLocaleTimeString('se-SE', {timeStyle: "short"});
+  // console.log(`Sunrise time: ${sunriseTime}`);
+
+  // const sunriseHour = sunriseDate.getHours();
+  // console.log(`Hours from the date: ${sunriseHour}`);
+  // const sunriseMinutes = sunriseDate.getMinutes();
+  // console.log(`Sunrise in minutes: ${sunriseMinutes}`);
+
+  sunrise.innerHTML = sunriseTime;
+  sunset.innerHTML = sunsetTime;
+  
   document.getElementById("date").innerHTML = dateFormatted;
   document.getElementById("time").innerHTML = timeFormatted;
-  
-
 
 });
+
+
+//formatting sunrise/sunset unix stamps (in ms)
+const formatUnix = (unixStamp) => {
+  const stampDate = new Date(unixStamp * 1000);
+  const stampTime = stampDate.toLocaleTimeString('se-SE', {timeStyle: "short"});
+  return stampTime;
+};
