@@ -7,8 +7,10 @@ const apiUrlForecast =
   "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=95b6172379fabb04319de6c9e2aa34ae";
 
 //Creat function that calls all temperaturefunctions
-const callTempFunctions = () => {
-
+const callTempFunctions = (number) => {
+  calculateTemperature(number)
+  minMaxTemperature(number)
+  feelsLikeTemperature(number)
 } 
 
 const calculateTemperature = (number) => {
@@ -18,6 +20,9 @@ const calculateTemperature = (number) => {
 
 //Create function that shows min/max temp
 const minMaxTemperature = (number) => {
+  const minTemp = Math.round(number * 10) / 10;
+  console.log(`The min is ${minTemp}`)
+  //minMaxTemperature(filteredForecast.list[0].main.temp_min)
 //API main.temp_min main.temp_max
 }
 
@@ -62,15 +67,22 @@ const generatedHTMLForWeatherForecast = (filteredForecast) => {
   //Tells what day it is
   console.log(filteredForecast.main.temp);
   const dailyTemp = calculateTemperature(filteredForecast.main.temp); //Would also like for this to tell min/max-temp
-
+  const minMax = minMaxTemperature(filteredForecast.list[0].main.temp_min) //Make use of minMaxfunction! Get an errormessage ATM 
+  /*Uncaught (in promise) TypeError: Cannot read property '0' of undefined
+  at generatedHTMLForWeatherForecast (script.js:70)
+  at script.js:113
+  at Array.forEach (<anonymous>)
+  at script.js:112 */
+  
   let innerText = '';
   innerText += `<div class="day-box">`;
   innerText += `<p class="day">${day}</p>`;
-  innerText += `<p>${dailyTemp}</p>`
+  innerText += `<p>${dailyTemp} degrees</p>`
   innerText += `</div>`;
   return innerText;
   //Weather description for the next five days
   //Humidity and wind
+  
 
   /*let launchHTML = '';
   launchHTML += `<section class="launch">`;
