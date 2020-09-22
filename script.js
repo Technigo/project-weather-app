@@ -1,6 +1,6 @@
 const apiUrlCurrWeather = "http://api.openweathermap.org/data/2.5/weather?q=Lund,Sweden&units=metric&APPID=81897fae64080a6ccc65fb8b9cecf3b8";
-// const apiUrl5DayForecast;
-const container = document.getElementById("weather-info");
+
+const container = document.getElementById("weather-info-daily");
 const city = document.getElementById("city");
 const temp = document.getElementById("temperature");
 const description = document.getElementById("description");
@@ -27,12 +27,12 @@ fetch(apiUrlCurrWeather)
   //you can add more options at the same time
   const timeFormatted = currDate.toLocaleTimeString('se-SE', {timeStyle: "long"});
 
-  container.innerHTML = `Weather information`;
+  container.innerHTML = `Daily Weather information`;
   city.innerHTML = weatherObject.name;
   temp.innerHTML = weatherObject.main.temp;
   description.innerHTML = weatherObject.weather[0].description;
 
-  
+  //formatting unix stamp to time
   const sunriseUnixStamp = weatherObject.sys.sunrise;
   const sunsetUnixStamp = weatherObject.sys.sunset;
  
@@ -67,3 +67,28 @@ const formatUnix = (unixStamp) => {
   const stampTime = stampDate.toLocaleTimeString('se-SE', {timeStyle: "short"});
   return stampTime;
 };
+
+//FORECAST
+const apiUrl5DayForecast = "https://api.openweathermap.org/data/2.5/forecast?q=Lund,Sweden&units=metric&APPID=81897fae64080a6ccc65fb8b9cecf3b8";
+console.log(`5 day forecast: ${apiUrl5DayForecast}`);
+
+fetch(apiUrl5DayForecast)
+.then((response) => {
+  return response.json();
+})
+.then((forecastObject) => {
+  console.log(forecastObject);
+  //extract element called list which is an array, from the object
+  const listArray = forecastObject.list;
+  console.log(`Array of weather forecast: ${listArray}`);
+
+  //filters the listArray, returning a new array with items dt_text 12:00 
+  const listFiltered = listArray.filter(item => item.dt_text.includes('12:00:00'));
+  console.log(`${listFiltered}`);
+
+  //iterate through an array and get the first element (assuming it's the date)
+  // listArray.forEach((list) => {
+  //   console.log(list.dt)
+  //   return list[0]
+  // })
+});
