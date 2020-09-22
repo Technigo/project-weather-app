@@ -15,10 +15,10 @@ fetch("http://api.open-notify.org/astros.json")
   }); */
 
 let citySearched = "Kil";
-//const apiUrlToday = `http://api.openweathermap.org/data/2.5/weather?q=${citySearched}&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5`
-//const apiUrlForcast = `https://api.openweathermap.org/data/2.5/forecast?q=${citySearched}&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5`
-//const apiUrlToday = 'http://api.openweathermap.org/data/2.5/weather?q=Kil,Sweden&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5'
-//const apiUrlForcast = 'https://api.openweathermap.org/data/2.5/forecast?q=Kil,Sweden&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5'
+//const apiUrlToday = `https://api.openweathermap.org/data/2.5/weather?q=${citySearched}&units=metric&APPID=bb01c6104c60aa55995fd66eb0340647`
+//const apiUrlForcast = `https://api.openweathermap.org/data/2.5/forecast?q=${citySearched}&units=metric&APPID=bb01c6104c60aa55995fd66eb0340647`
+//const apiUrlToday = 'https://api.openweathermap.org/data/2.5/weather?q=Kil,Sweden&units=metric&APPID=bb01c6104c60aa55995fd66eb0340647'
+//const apiUrlForcast = 'https://api.openweathermap.org/data/2.5/forecast?q=Kil,Sweden&units=metric&APPID=bb01c6104c60aa55995fd66eb0340647'
 //const container = document.getElementById('wrapper');
 const containerToday = document.getElementById("weatherToday"); //change to location?
 //const descriptionToday = document.getElementById("text");
@@ -192,7 +192,7 @@ const generatedHTMLForWeatherForcast = (filteredForcast) => {
 
 const fetchWeatherToday = (citySearched) => {
   fetch(
-    `http://api.openweathermap.org/data/2.5/weather?q=${citySearched}&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5`
+    `https://api.openweathermap.org/data/2.5/weather?q=${citySearched}&units=metric&APPID=bb01c6104c60aa55995fd66eb0340647`
   )
     .then((response) => {
       return response.json();
@@ -230,7 +230,7 @@ fetchWeatherToday(citySearched);
 
 const fetchWeatherForcast = (citySearched) => {
   fetch(
-    `https://api.openweathermap.org/data/2.5/forecast?q=${citySearched}&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5`
+    `https://api.openweathermap.org/data/2.5/forecast?q=${citySearched}&units=metric&APPID=bb01c6104c60aa55995fd66eb0340647`
   )
     .then((response) => {
       return response.json();
