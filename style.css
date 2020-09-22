@@ -1,0 +1,14 @@
+body {
+  margin: 0 auto;
+}
+
+
+.main-container {
+  margin: auto;
+  width: 296px;
+  height: 67px;
+  color: #f47775;
+  font-family: Montserrat;
+  font-size: 21px;
+  font-weight: 400;
+}
