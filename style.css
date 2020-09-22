@@ -11,3 +11,15 @@
     font-family: 'Courier New', Courier, monospace;
     font-size: 30px;font-weight: 500;
   }
+
+  .daily-weather {
+    border: 1px solid blue;
+  }
+
+  .forecast {
+    border: 1px solid red;
+  }
+
+  .five-day-forecast {
+
+  }

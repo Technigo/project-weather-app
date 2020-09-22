@@ -1,11 +1,11 @@
 const apiUrlCurrWeather = "http://api.openweathermap.org/data/2.5/weather?q=Lund,Sweden&units=metric&APPID=81897fae64080a6ccc65fb8b9cecf3b8";
 
-const container = document.getElementById("weather-info-daily");
+const container = document.getElementById("weatheInfoDaily");
 const city = document.getElementById("city");
 const temp = document.getElementById("temperature");
 const description = document.getElementById("description");
-const sunrise = document.getElementById("sunrise-time");
-const sunset = document.getElementById("sunset-time");
+const sunrise = document.getElementById("sunriseTime");
+const sunset = document.getElementById("sunsetTime");
 
 //fetching the data
 fetch(apiUrlCurrWeather)
@@ -19,11 +19,11 @@ fetch(apiUrlCurrWeather)
 .then((weatherObject) => {
   //when we have the data api returns, we log it
   //data is available here
-  console.log(weatherObject);
+  // console.log(weatherObject);
   const currDate = new Date();
-  console.log(`Current date: ${currDate}`);
+  // console.log(`Current date: ${currDate}`);
   const dateFormatted = currDate.toLocaleDateString('se-SE');
-  console.log(`Current date formatted: ${dateFormatted}`);
+  // console.log(`Current date formatted: ${dateFormatted}`);
   //you can add more options at the same time
   const timeFormatted = currDate.toLocaleTimeString('se-SE', {timeStyle: "long"});
 
@@ -37,9 +37,9 @@ fetch(apiUrlCurrWeather)
   const sunsetUnixStamp = weatherObject.sys.sunset;
  
   const sunriseTime = formatUnix(sunriseUnixStamp);
-  console.log(`SunriseTime variable: ${sunriseTime}`);
+  // console.log(`SunriseTime variable: ${sunriseTime}`);
   const sunsetTime = formatUnix(sunsetUnixStamp);
-  console.log(`SunsetTime variable: ${sunsetTime}`);
+  // console.log(`SunsetTime variable: ${sunsetTime}`);
   //formatting sunrise/sunset unix stamps (in ms)
   // console.log(`Unix sunrise stamp: ${sunriseUnixStamp}`);
   // const sunriseDate = new Date(sunriseUnixStamp * 1000);
@@ -70,25 +70,32 @@ const formatUnix = (unixStamp) => {
 
 //FORECAST
 const apiUrl5DayForecast = "https://api.openweathermap.org/data/2.5/forecast?q=Lund,Sweden&units=metric&APPID=81897fae64080a6ccc65fb8b9cecf3b8";
-console.log(`5 day forecast: ${apiUrl5DayForecast}`);
+const forecastText = document.getElementById("5DayForecast");
+
 
 fetch(apiUrl5DayForecast)
 .then((response) => {
   return response.json();
 })
 .then((forecastObject) => {
-  console.log(forecastObject);
+  // console.log(forecastObject);
   //extract element called list which is an array, from the object
   const listArray = forecastObject.list;
-  console.log(`Array of weather forecast: ${listArray}`);
+  // console.log(`Array of weather forecast: ${listArray}`);
 
-  //filters the listArray, returning a new array with items dt_text 12:00 
-  const listFiltered = listArray.filter(item => item.dt_text.includes('12:00:00'));
-  console.log(`${listFiltered}`);
+  //filter out info for each day at 12:00
+  const listArrayFiltered = listArray.filter(item => item.dt_txt.includes('12:00'));
+  console.log(`Filtered array: ${listArrayFiltered}`);
+  listArrayFiltered.forEach((day => {
+    console.log(`Each day: ${day}`);
+    const date = new Date(day.dt * 1000);
+    console.log(`Date: ${date}`);
+    const weekday = date.toLocaleDateString('se-SE', {weekday: "short"});
+    console.log(`Weekday: ${weekday}`);
+    const dailyTemp = day.main.temp;
+    console.log(`Daily temp: ${dailyTemp}`);
 
-  //iterate through an array and get the first element (assuming it's the date)
-  // listArray.forEach((list) => {
-  //   console.log(list.dt)
-  //   return list[0]
-  // })
+    forecastText.innerHTML += `<p>${weekday} ${dailyTemp}°C</p>`; 
+  }))
+
 });
