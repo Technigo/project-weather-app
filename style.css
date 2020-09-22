@@ -91,5 +91,9 @@ video {
   video {
     display: block;
   }
+
+  .hero-image {
+    display: none;
+  }
   }
 
