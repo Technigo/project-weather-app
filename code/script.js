@@ -81,22 +81,22 @@ const fetchWeatherImage = (weather) => {
 
 const fetchForecastEmojis = (weather) => {
   if(weather === 'Clouds') {
-    return "🌥";
+    return "☁️";
 
   } else if(weather === 'Clear') {
-    return "🌞";
+    return "☀️";
   
   } else if(weather === 'Snow') {
-    return "🌨";
+    return "❄️";
   
   } else if(weather === 'Rain') {
-    return "🌧";
+    return "💦";
   
   } else if(weather === 'Drizzle') {
-    return "🌧";
+    return "💧";
 
   } else if(weather === 'Thunderstorm') {
-    return "⛈";
+    return "⚡️";
   
   } else {
     return "🤯";
