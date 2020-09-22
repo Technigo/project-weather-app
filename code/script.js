@@ -9,7 +9,7 @@ const sunrise = document.getElementById('sunrise');
 const sunset = document.getElementById('sunset');
 
 //Main fetch to get Stockholm weather
-fetch(`http://api.openweathermap.org/data/2.5/weather?q=Stockholm&units=metric&APPID=${API_KEY}`)
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=Stockholm&units=metric&APPID=${API_KEY}`)
   .then((response) => {
     return response.json();
   })
@@ -42,7 +42,7 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=Stockholm&units=metric&A
 // New Fetch for the 5 days Forecast
 const forecastContent = document.getElementById('main-forecast-data');
 
-fetch(`http://api.openweathermap.org/data/2.5/forecast?q=Stockholm&units=metric&appid=${API_KEY}`)
+fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Stockholm&units=metric&appid=${API_KEY}`)
   .then((response) => {
     return response.json();
   })
@@ -89,7 +89,7 @@ const generateHTMLForForecast = day => {
 // Fetch to get Panama weather
 const vacationContainer = document.getElementById('vacation-container');
 
-fetch(`http://api.openweathermap.org/data/2.5/weather?q=Panama&units=metric&APPID=${API_KEY}`)
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=Panama&units=metric&APPID=${API_KEY}`)
   .then((response) => {
     return response.json();
   })
@@ -103,7 +103,7 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=Panama&units=metric&APPI
   });
 
 // Fetch to get Brussels weather
-fetch(`http://api.openweathermap.org/data/2.5/weather?q=Brussels&units=metric&APPID=${API_KEY}`)
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=Brussels&units=metric&APPID=${API_KEY}`)
   .then((response) => {
     return response.json();
   })
@@ -117,7 +117,7 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=Brussels&units=metric&AP
   });
 
 // Fetch to get Seoul weather
-fetch(`http://api.openweathermap.org/data/2.5/weather?q=Seoul&units=metric&APPID=${API_KEY}`)
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=Seoul&units=metric&APPID=${API_KEY}`)
   .then((response) => {
     return response.json();
   })
