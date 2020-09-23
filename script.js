@@ -11,10 +11,12 @@ fetch(currentWeatherUrl)
         console.log(currentWeather);
         weatherInfoTop.innerHTML += generateHTMLForWeatherInfoTop(currentWeather);
         cityHeader.innerHTML = currentWeather.name;
-        
     });
 
 const generateHTMLForWeatherInfoTop = currentWeather => {
+    const weatherDescription = currentWeather.weather[0].main;       
+    const currentTemperature = currentWeather.main.temp.toFixed(1); //rounding to 1 decimal
+    const currentWeatherFeelsLike = currentWeather.main.feels_like.toFixed(1);
     const sunriseTime = new Date(currentWeather.sys.sunrise * 1000);
     const sunriseTimeString = sunriseTime.toLocaleTimeString('sv-SE', {
        timestyle: 'long',
@@ -22,25 +24,28 @@ const generateHTMLForWeatherInfoTop = currentWeather => {
        hour: '2-digit', 
        minute:'2-digit'
     });
-    console.log(sunriseTimeString);
 
     const sunsetTime = new Date(currentWeather.sys.sunset * 1000);
     const sunsetTimeString = sunsetTime.toLocaleTimeString('sv-SE', {
         timestyle: 'short',
         hour12: false,
         hour: '2-digit', 
-        minute:'2-digit'
+        minute:'2-digit',
     });
-    console.log(sunsetTimeString);
-    const weatherDescription = currentWeather.weather[0].main;       
-    const currentTemperature = currentWeather.main.temp.toFixed(1); //rounding to 1 decimal
-    console.log(currentTemperature);
-    const currentWeatherFeelsLike = currentWeather.main.feels_like.toFixed(1);
-    const sunUp = currentWeather.sys.sunrise;
-    const sunDown = currentWeather.sys.sunset;
-}
 
-const forecastWeatherUrl = `http://api.openweathermap.org/data/2.5/forecast?q=Gothenburg,Sweden&units=metric&appid=${API_KEY}`
+    let weatherInfoTopHTML = '';
+    weatherInfoTopHTML += `<p>${weatherDescription}</p>`;
+    weatherInfoTopHTML += `<p>${currentTemperature}°</p>`;
+    weatherInfoTopHTML += `<p>° feels like: ${currentWeatherFeelsLike}°</p>`;
+    weatherInfoTopHTML += `<p>Sunrise: ${sunriseTimeString}</p>`;
+    weatherInfoTopHTML += `<p>Sunset: ${sunsetTimeString}</p>`;
+    return weatherInfoTopHTML;
+};
+
+
+
+
+const forecastWeatherUrl = `http://api.openweathermap.org/data/2.5/forecast?q=Gothenburg,Sweden&units=metric&appid=${API_KEY}`;
 
 fetch(forecastWeatherUrl)
     .then((response) => {
