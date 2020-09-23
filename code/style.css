@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    background-image: linear-gradient(to right, white,  lightblue, lightyellow, lightyellow,lightblue, white);
+}
+
+.main-container {
+    margin: 50px 200px;
+    padding: 20px;
+    border-radius: 50px;
+    background-color: white;
+    opacity: 0.8;
+}
+
+.weather-container {
+    margin: 50px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+ul {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
