@@ -10,10 +10,11 @@ Desktop version will maintain this data and show photos of the different cities 
 
 ## How I built it - What I learned
 
-- I have used JavScript's fetch() method to get all the data I need from the Open Weather API 🌦
+- I have used JavScript's fetch() method to get all the data I need from the Open Weather API 🌦 This is our first time working with an API, so I learned about understanding its documentation and the different parameters in its URL.
+- Learned about promises and how to extract the data from JSON object 💪
 - The HTML elements showing the data gathered from the API are created dynamically on JavaScript. I've set it up so these elements are created inside of containers, which makes it easier to style on CSS using Flexboxes.
 - Each section is a different Flexbox, which changes direction depending on the device it is being viewed from.
-- I've learned several new things while building this project: the Date() object, which I'm using to get weekdays and hours; also how to dynamically create HTML elements and when to use this approach instead of having already hard-coded HTML
+- I've learned several new methods while building this project: the Date() object in combination with the toLocaleTimString() method, which I'm using to get weekdays and hours; also how to dynamically create HTML elements and when to use this approach instead of having already hard-coded HTML.
 
 ## View it live
 
