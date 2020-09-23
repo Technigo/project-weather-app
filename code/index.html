@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WeatherNow</title>
     <link href="./style.css" rel="stylesheet"  type="text/css">
-    <title>Document</title>
+    <link rel="icon" href="../Designs/Design-1/assets/Group34.png"  type="image/x-icon" />
 </head>
 <body>
         <section class="container-all">
@@ -17,12 +17,17 @@
                 <div class="hero-text">
                     <h1 style="font-size:50px"></h1>
                     <p></p>
-                    <h1>Today's weather in <span id="weather-header"></span></h1>
+                    <h1><span id="weather-header"></span></h1>
                     <div class="top">
-                        <p class="description"><span id="description-today"></span></p>
+
+                        <div class="description-image">
+                            <p class="description"><span id="description-today"></span></p>
+                            <img class="image" id="weather-image" src="http://openweathermap.org/img/wn/04d@2x.png" width="100" alt="">
+                        </div>
+
                         <p class="temp"><span id="temp-today"></span></p>
-                        <p class="sun">sunrise: <span id="sunrise-today"></span></p>
-                        <p class="sun">sunset: <span id="sunset-today"></span></p>
+                        <p class="sun"><span id="sunrise-today"></span></p>
+                        <p class="sun"><span id="sunset-today"></span></p>
                     </div>    
                     <div class="bottom">
                         <div id="container-five-day"></div>

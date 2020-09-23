@@ -8,8 +8,7 @@ const tempToday = document.getElementById('temp-today');
 const descriptionToday = document.getElementById('description-today');
 const sunriseToday = document.getElementById('sunrise-today');
 const sunsetToday = document.getElementById('sunset-today');
-
-
+const weatherImage = document.getElementById('weather-image')
 fetch(apiUrl)
     .then((response) => {
         return response.json();
@@ -18,11 +17,17 @@ fetch(apiUrl)
     .then((weatherObject) => {
 
         // Update weather in Stockholm from API
-        weatherHeader.innerHTML = weatherObject.name
+        weatherHeader.innerHTML = `Today's weather in ${weatherObject.name}`
 
         // Get temp and rounds up or down with 1 place decimal.
         tempToday.innerHTML = `${Math.round(weatherObject.main.temp * 10) / 10}°`
-        descriptionToday.innerHTML = weatherObject.weather[0].description   
+        descriptionToday.innerHTML = weatherObject.weather[0].description  
+
+
+        // HOW DO THIS?
+        //const imageValue = weatherObject.weather[0].icon 
+        //weatherImage.innerHTML = `icon ${imageValue}`
+
         
         // Create two variables that stores the API values
         const sunriseValue = weatherObject.sys.sunrise;
@@ -37,8 +42,8 @@ fetch(apiUrl)
         const sunsetToLocaleString = sunsetConverted.toLocaleTimeString ('en-US', {hour: '2-digit', minute: '2-digit', hour12: false,});
 
         // The values from the API - collected, stored in new variabales and converted - is returned to the html to be output in browser
-        sunriseToday.innerHTML = `${sunriseToLocaleString}`;
-        sunsetToday.innerHTML = `${sunsetToLocaleString}`;
+        sunriseToday.innerHTML = `sunrise: ${sunriseToLocaleString}`;
+        sunsetToday.innerHTML = `sunset: ${sunsetToLocaleString}`;
     });
 
 // FIVE DAY FORECAST 
