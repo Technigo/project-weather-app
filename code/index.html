@@ -5,34 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather app</title>
     <link rel="stylesheet" href="./styles.css" />
+    <!----Google fonts link-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,500;1,100;1,600;1,800&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div class="weather-info">
-      <div id="weather">
-        <span id="description">N/A</span>
-        <span>|</span>
-        <span id="degrees">N/A</span>
+    <header>
+      <div class="weather-info">
+        <div id="weather">
+          <span id="description">N/A</span>
+          <span>|</span>
+          <span id="degrees">N/A</span>
+        </div>
+        <div class="sun">
+          <p>
+            sunrise|
+            <span id="sunrise">N/A</span>
+          </p>
+          <p>
+            sunset|
+            <span id="sunset">N/A</span>
+          </p>
+        </div>
       </div>
-      <div class="sun">
-        <p>
-          sunrise:
-          <span id="sunrise">3:08</span>
-        </p>
-        <p>
-          sunset:
-          <span id="sunset">23:08</span>
-        </p>
+    </header>
+    <section class="central-message">
+      <h1 class="where">
+        weather in:
+        <span id="cityName"> N/A </span>
+      </h1>
+      <div class="weather-message">
+        <img src="" id="icon" />
+        <p id="weatherComment">Hey, take your glasses</p>
       </div>
-    </div>
-    <h1 id="where">
-      Weather in:
-      <span id="cityName"> N/A </span>
-    </h1>
-    <div class="weather-message">
-      <img src="" id="icon" />
-      <p id="weatherComment">Hey, take your glasses</p>
-    </div>
-
+    </section>
     <main id="weatherByDay"></main>
     <script src="script.js"></script>
   </body>
