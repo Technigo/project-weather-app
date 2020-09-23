@@ -22,19 +22,16 @@ fetch(currentWeatherUrl)
 const currentWeatherToday = (json) => {
     temperature.innerHTML = json.main.temp.toFixed(0.5)
     city.innerHTML = json.name
-    date.innerHTML = new Date()
+    date.innerHTML = new Date().toLocaleString('en-CA')
     description.innerHTML = json.weather[0].description
     tempFeelsLike.innerHTML = json.main.feels_like.toFixed(0.5)
 
     const sunriseToronto = new Date(json.sys.sunrise * 1000)
-    const sunriseTorontoTime = sunriseToronto.toLocaleTimeString([], { timeStyle: 'short' })
+    const sunriseTorontoTime = sunriseToronto.toLocaleTimeString('en-CA', { timeStyle: 'short' })
     sunrise.innerHTML = sunriseTorontoTime
 
     const sunsetToronto = new Date(json.sys.sunset * 1000)
     const sunsetTorontoTime = sunsetToronto.toLocaleTimeString([], { timeStyle: 'short' })
     sunset.innerHTML = sunsetTorontoTime
-
-
-
 }
 
