@@ -15,9 +15,17 @@ const showHamburgerMenu = () => {
         navBar.style.display = "none";
     }
 };
+const showNavBar = () => {
+    const mediaSize = window.matchMedia("(min-width: 1024px)")
+    if(mediaSize.matches) {
+        navBar.style.display = "flex";
+    } else { 
+        navBar.style.display = "none";
+    }
+}
 
 const currentWeather = (API) => {
-navBar.style.display = "none";
+showNavBar();
 fetch(API)
 .then((respons) => {
     return respons.json();

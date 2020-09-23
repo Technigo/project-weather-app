@@ -193,6 +193,7 @@ nav a {
         display: none;
     }
 
+
     .current-main {
         width: 90%;
         margin: 30px;
@@ -243,9 +244,14 @@ nav a {
 
     header nav {
         display: flex;
+        position: relative;
+        flex-direction: row;
+        background-color: transparent;
         width: 40%;
-        justify-content: space-evenly;
         color: white;
+        border-radius: 0;
+        padding: 0;
+        top: 0;
     }
 
     nav a {
