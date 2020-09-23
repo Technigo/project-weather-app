@@ -3,14 +3,13 @@ html {
     font-family:'Raleway', Sans-Serif;
 }
 
-
 body {
     margin: 0;
-    background-color: #43658b;
-   
+    background-color: #43658b; 
 }
 
-.fullApp {
+
+.weatherApp {
     width: 80%;
     max-width: 650px;
     height: 80%;
@@ -18,26 +17,23 @@ body {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    background-color: #4e89ae;
+    background-color: #4e89ae; 
+}
+
+.todaysWeather {
+    padding: 10px;  
 }
 
 
 #todaysWeatherIcon {
     display: flex;
-    flex-direction: row-reverse;    
+    flex-direction: row-reverse;   
 }
 
 #todaysWeatherIcon img {
     width: 150px;
 }
 
-
-
-.todaysWeather {
-    font-family: 'Questrial', Sans-Serif;
-    text-align: left;
-    margin-left: 5px;
-}
 
 
 .temperature{
@@ -57,13 +53,22 @@ body {
     margin-bottom: 10px;
 }
 
+.todaysWeather {
+    font-family: 'Questrial', Sans-Serif;
+    text-align: left;
+    margin-left: 5px;
+}
+
+
 .fiveDaysWeather{
     display: flex;
     justify-content: space-between;
     margin-top: 30px; 
     margin-bottom: 30px;  
     border-top: #43658b 2px dotted; 
+    border-bottom: #43658b 2px dotted; 
     padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 
@@ -73,10 +78,70 @@ body {
     justify-content: space-between;
 }
 
-
 #forecastIcon img {
     width: 35px;  
 }
+
+
+/*FAVOURITE CITY DESIGN*/
+
+#favouriteCityAll {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px; 
+    margin-bottom: 30px;  
+    border-top: #43658b 2px dotted; 
+    border-bottom: #43658b 2px dotted; 
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.favouriteCityAll h2 {
+    text-align: center;
+    text-decoration: underline;
+    color: white;
+}
+
+/*OSLO*/
+
+.todaysWeatherOslo {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+#todaysWeatherIconOslo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+#todaysWeatherIconOslo img { 
+    width: 35px;
+}
+
+
+
+
+/*ALICANTE*/
+.todaysWeatherAlicante {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+#todaysWeatherIconOAlicante {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+#todaysWeatherIconAlicante img {
+    width: 35px;
+}
+
 
 
 
@@ -93,12 +158,15 @@ body {
         width: 250px;
     }
 
-    .todaysWeather {
-        margin-left: 100px;
-    }
-
     .temperature {
         font-size: 50px;
+    }
+
+    .todaysWeatherOslo {
+        justify-content: space-evenly;
+    }
+    .todaysWeatherAlicante {
+        justify-content: space-evenly;
     }
   }
 
@@ -118,11 +186,17 @@ body {
         width: 250px;
     }
 
-    .todaysWeather {
-        margin-left: 100px;
-    }
-
     .temperature {
         font-size: 60px;
     }
+
+    .todaysWeatherOslo {
+        justify-content: space-evenly;
+    }
+
+    .todaysWeatherAlicante {
+        justify-content: space-evenly;
+    }
+
+
 }

@@ -1,5 +1,18 @@
+
+//API KEY 
+
+
+//API Stockholm 
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=54a820a4b63e82050a15212c06998bb0";
 const apiUrlForecast = "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=54a820a4b63e82050a15212c06998bb0";
+
+//API Oslo 
+const apiUrlOslo = "https://api.openweathermap.org/data/2.5/weather?q=Oslo,Norway&units=metric&APPID=54a820a4b63e82050a15212c06998bb0";
+const apiUrlForecastOslo = "https://api.openweathermap.org/data/2.5/forecast?q=Oslo,Norway&units=metric&APPID=54a820a4b63e82050a15212c06998bb0";
+
+//API Alicante 
+const apiUrlAlicante = "https://api.openweathermap.org/data/2.5/weather?q=Alicante,Spain&units=metric&APPID=54a820a4b63e82050a15212c06998bb0";
+const apiUrlForecastAlicante = "https://api.openweathermap.org/data/2.5/forecast?q=Alicante,Spain&units=metric&APPID=54a820a4b63e82050a15212c06998bb0";
 
 
 const nameContainer = document.getElementById('name');
@@ -32,11 +45,7 @@ fetch(apiUrl)
         sortContainer.innerHTML = `<h2>${json.weather[0].description}</h2>`;
 
          const roundedTemperature = json.main.temp.toFixed(0.1);
-         tempContainer.innerHTML += `<h1> ${roundedTemperature}°C</h1>`;
-//WEATHER ICON  
-
-           
-         
+         tempContainer.innerHTML += `<h1> ${roundedTemperature}°C</h1>`;         
     
 //This changes the sunrise/sunset to readable
         const sunrise = new Date(json.sys.sunrise * 1000);
@@ -79,13 +88,85 @@ fetch(apiUrlForecast)
 });
 
 
+ // RED LEVEL, ADD NEW CITY OSLO 
 
- //const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
+ const nameContainerOslo = document.getElementById('nameOslo');
+ const tempContainerOslo = document.getElementById('temperatureOslo');
+ const forecastContainerOslo = document.getElementById('forecastOslo')
+
+//NAME OF CITY, TEMPERATURE, SORT OF WEATHER, SUNRISE, SUNSET
+
+fetch(apiUrlOslo)
+    .then((Response) => { 
+        return Response.json()
+    })
+    .then ((json) => {
+        nameContainerOslo.innerHTML = `<p>${json.name}</p>`;
+        const roundedTemperature = json.main.temp.toFixed(0.1);
+        tempContainerOslo.innerHTML += `<p> ${roundedTemperature}°C</p>`;        
+    })
+    .catch((error) => {
+        console.log(error) 
+     }) ;
+ 
+
+//WEATHER FORECAST OSLO 
+
+fetch(apiUrlForecastOslo)
+    .then((Response) => { 
+        return Response.json()
+    })
+    .then ((json) => {
+        const filteredForecastOslo = json.list.filter(item =>
+        item.dt_txt.includes("12:00")
+        );
+        filteredForecastOslo.forEach(day => {
+            let date = new Date(day.dt * 1000);
+            //let dayName = date.toLocaleDateString("en-US", { weekday: "long" });
+            const dayTemp = day.main.temp;
+            const weekTemp = dayTemp.toFixed(0.1);
+            document.getElementById('todaysWeatherIconOslo').innerHTML = `<img src=https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png></img>` 
+    });  
+ 
+});
 
 
+ // RED LEVEL, ADD NEW CITY ALICANTE 
+
+ const nameContainerAlicante = document.getElementById('nameAlicante');
+ const tempContainerAlicante = document.getElementById('temperatureAlicante');
+ const forecastContainerAlicante = document.getElementById('forecastAlicante')
+
+//NAME OF CITY, TEMPERATURE, SORT OF WEATHER, SUNRISE, SUNSET
+
+fetch(apiUrlAlicante)
+    .then((Response) => { 
+        return Response.json()
+    })
+    .then ((json) => {
+        nameContainerAlicante.innerHTML = `<p>${json.name}</p>`;
+        const roundedTemperature = json.main.temp.toFixed(0.1);
+        tempContainerAlicante.innerHTML += `<p> ${roundedTemperature}°C</p>`;        
+    })
+    .catch((error) => {
+        console.log(error) 
+     }) ;
 
 
-    //const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
-    // filteredForecast is now an array with only the data from 12:00 each day.
-
-
+     fetch(apiUrlForecastAlicante)
+     .then((Response) => { 
+         return Response.json()
+     })
+     .then ((json) => {
+         const filteredForecastOslo = json.list.filter(item =>
+         item.dt_txt.includes("12:00")
+         );
+         filteredForecastOslo.forEach(day => {
+             let date = new Date(day.dt * 1000);
+             //let dayName = date.toLocaleDateString("en-US", { weekday: "long" });
+             const dayTemp = day.main.temp;
+             const weekTemp = dayTemp.toFixed(0.1);
+             document.getElementById('todaysWeatherIconAlicante').innerHTML = `<img src=https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png></img>` 
+     });  
+  
+ });     

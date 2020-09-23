@@ -12,24 +12,21 @@
 
 <body>
 
-    <main class="fullApp" id="weatherAppId">
+    <main class="weatherApp" id="weatherAppId">
 
-        <header id="todaysWeatherIcon"></header>
+        <section class="todaysWeather" id="todaysWeather">
+            <div id="changeColor">
+                <div id="todaysWeatherIcon"></div>
+                <div class="temperature" id="temperature"></div>
+                <div class="cityName" id="name"></div>
+                <div id="sort"></div>
 
 
-        <section class="todaysWeather">
+                <section class="sun">
 
-            <div class="temperature" id="temperature"></div>
-            <div class="cityName" id="name"></div>
-            <div id="sort"></div>
-
-        </section>
-
-        <section class="sun">
-
-            <div id="sunrise"></div>
-            <div id="sunset"></div>
-
+                    <div id="sunrise"></div>
+                    <div id="sunset"></div>
+            </div>
         </section>
 
 
@@ -38,9 +35,40 @@
             <div id="forecastDay"></div>
             <div id="forecastTemp"></div>
             <div id="forecastIcon"></div>
-
+        </section>
 
         </section>
+
+        <!--Todays Weather in different cities-->
+        
+        <section class="favouriteCityAll">
+
+            <h2>More cities today</h2>
+
+            <!--OSLO-->
+            <div class="todaysWeatherOslo">
+                <div id="nameOslo"></div>
+                <div id="temperatureOslo"></div>
+                <div id="todaysWeatherIconOslo"></div>  
+            </div>
+
+      
+
+            <!--ALICANTE-->
+            <div class="todaysWeatherAlicante">
+                <div id="todaysWeatherIconAlicante"></div>
+                <div id="temperatureAlicante"></div>
+                <div id="nameAlicante"></div>
+            </div>
+
+        </section>
+
+
+
+
+
+
+
 
 
 
