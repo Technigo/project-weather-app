@@ -3,9 +3,8 @@ const forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?q=Stockhol
 
 const cityElement = document.getElementById("city")
 const tempElement = document.getElementById("temp")
-const mainElement = document.getElementById("main") // might use to decide image/background image
-const descriptionElement = document.getElementById("description") // might not use
-const iconElement = document.getElementById("icon") // is this an icon??? how to use?
+const iconElement = document.getElementById("icon")
+const descriptionElement = document.getElementById("description")
 const sunriseElement = document.getElementById("sunrise")
 const sunsetElement = document.getElementById("sunset")
 
@@ -17,7 +16,7 @@ fetch(weatherUrl)
         generateHTML(weather) // use map to create new object, check Wed code session
     })
     .catch((error) => {
-        console.log("Error", error)
+        console.log("JSON not fetched", error)
     })
 
 const generateHTML = weather => {
@@ -26,16 +25,13 @@ const generateHTML = weather => {
     const sunset = time[1]
 
     const icon = getIcon(weather.weather[0].icon)
-    //console.log(weather.weather[0].icon)
-    console.log(icon)
 
     cityElement.innerHTML = weather.name
-    sunriseElement.innerHTML = `Sunrise: ${sunrise} ` // need to format
-    sunsetElement.innerHTML = `Sunset: ${sunset} `
-    tempElement.innerHTML = `${Math.round(weather.main.temp)}°` //should I round directly here insteaad?
-    iconElement.innerHTML = `<img src='${icon}'>`
+    tempElement.innerHTML = `${Math.round(weather.main.temp)}°`
+    iconElement.innerHTML = `<img src='${icon}'>` // this can't be the way to do it
     descriptionElement.innerHTML = weather.weather[0].description.charAt(0).toUpperCase() + weather.weather[0].description.slice(1)
-    //mainElement.innerHTML = weather.weather[0].main
+    sunriseElement.innerHTML = `Sunrise: ${sunrise} `
+    sunsetElement.innerHTML = `Sunset: ${sunset} `
 }
 
 const handleTime = (sunrise, sunset) => {
@@ -44,12 +40,10 @@ const handleTime = (sunrise, sunset) => {
     const options = { hour: '2-digit', minute: '2-digit' }
     const sunriseTime = sunriseDate.toLocaleTimeString([], options)
     const sunsetTime = sunsetDate.toLocaleTimeString([], options)
-    console.log(sunriseTime)
-    console.log(sunsetTime)
-    return time = [sunriseTime, sunsetTime]
+    return time = [sunriseTime, sunsetTime] // did I just return TWO arguments from a function??
 }
 
-const getIcon = icon => {
+const getIcon = icon => { // YES!! I made the icon work! Without having to do endless conditionals based on weather/temperature..
     const iconUrl1 = 'http://openweathermap.org/img/wn/'
     const iconUrl2 = '@2x.png'
     return icon = iconUrl1.concat(icon.concat(iconUrl2))
