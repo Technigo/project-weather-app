@@ -7,6 +7,44 @@ const BodenForecastAPI = 'https://api.openweathermap.org/data/2.5/forecast?q=Bod
 const KlintanAPI = 'http://api.openweathermap.org/data/2.5/weather?q=Robertsfors,Sweden&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723&lang=sv';
 const KlintanForecastAPI = 'https://api.openweathermap.org/data/2.5/forecast?q=Robertsfors,Sweden&units=metric&APPID=2163e0bcc8eaa7f0951284d8a650a723';
 
+const stad = document.getElementById("stad");
+const long = document.getElementById("long");
+let lat =''
+let lon =''
+let geoLocationAPI = ''
+
+
+ const getLocationAPI = (callback) => {
+
+     const getLocation = () => {
+         if (navigator.geolocation) {
+             navigator.geolocation.getCurrentPosition(setCoordinates); 
+         } else {
+             stad.innerHTML ="Geolocation is not supported by this browser.";
+      }
+     }
+     const setCoordinates = (position) => {
+         lat = position.coords.latitude
+         lon = position.coords.longitude
+         geoLocationAPI = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723&lang=sv`
+         geoLocationForcastAPI = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723`
+         callback();
+     }
+     
+     getLocation();
+     
+ }
+
+ const setLocationAPI = () => {
+    showCurrentWeather(geoLocationAPI);
+    showWeatherForecast(geoLocationForcastAPI);
+
+}
+ getLocationAPI(setLocationAPI);
+
+
+// coordinates API = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=2163e0bcc8eaa7f0951284d8a650a723`;
+
 
 const currentWeatherContainer = document.getElementById("current-weather-container");
 const weatherForecastContainer = document.getElementById("weather-forecast-container");
@@ -129,5 +167,5 @@ const showWeatherForecast = (forecastAPI) => {
 
 //On page load
 
-showCurrentWeather(StockholmAPI);
-showWeatherForecast(StockholmForecastAPI);
+// showCurrentWeather(geoLocationAPI);
+// showWeatherForecast(StockholmForecastAPI);

@@ -18,15 +18,15 @@
         <div class="desktop-header">
             <h2>Weather</h2>
             <nav id="nav-bar">
-                <a href="#" onclick="currentWeather(StockholmAPI), weatherForecast(StockholmForecastAPI);">Stockholm</a>
-                <a href="#" onclick="currentWeather(UmeaAPI), weatherForecast(UmeaForecastAPI);">Umeå</a>
-                <a href="#" onclick="currentWeather(KlintanAPI), weatherForecast(KlintanForecastAPI);">Klintan</a>
-                <a href="#" onclick="currentWeather(BodenAPI), weatherForecast(BodenForecastAPI);">Boden</a>
+                <a href="#" onclick="showCurrentWeather(StockholmAPI), showWeatherForecast(StockholmForecastAPI);">Stockholm</a>
+                <a href="#" onclick="showCurrentWeather(UmeaAPI), showWeatherForecast(UmeaForecastAPI);">Umeå</a>
+                <a href="#" onclick="showCurrentWeather(KlintanAPI), showWeatherForecast(KlintanForecastAPI);">Klintan</a>
+                <a href="#" onclick="showCurrentWeather(BodenAPI), showWeatherForecast(BodenForecastAPI);">Boden</a>
             </nav>
         </div>
     </header>
     <section class="current-main" id="current-main">
-        <section class="current-weather" id="current-weather-container"></section>
+        <section class="current-weather" id="current-weather-container"><p id="stad">LAT</p><p id="long">LONG</p></section>
     </section>  
     <section class="forecast" id="weather-forecast-container">
         
