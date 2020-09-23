@@ -1,7 +1,5 @@
 //Get todays weather
-
 const getCurrentWeather = (lat, lon) => {
-
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&APPID=852f52634242cb87b1f198b7ea5e2706`)
         .then((response) => {
             return response.json()
@@ -14,30 +12,29 @@ const getCurrentWeather = (lat, lon) => {
         });
 }
 
+//Set the values in the main weather section.
 const populateMainWeather = (json) => {
     setCityName(json.name);
-    setTodayTemperature(json["main"].temp);
-    setFeelsLikeTemp(json["main"]["feels_like"]);
+    setTodayTemperature(json.main.temp);
+    setFeelsLikeTemp(json.main.feels_like);
     setDayandTime(json.dt, json.timezone);
-    setSunValues(json["sys"].sunrise, json["sys"].sunset, json.timezone);
-    setConditions(json["weather"][0].description);
-    setTemperatureColor(json["main"].temp, json.dt, json.timezone);
-    setHumidity(json["main"].humidity);
-    setWindSpeed(json["wind"]["speed"]);
-    setMainWeatherIcon(json["weather"][0]["id"], json.dt, json.timezone);
+    setSunValues(json.sys.sunrise, json.sys.sunset, json.timezone);
+    setConditions(json.weather[0].description);
+    setTemperatureColor(json.main.temp, json.dt, json.timezone);
+    setHumidity(json.main.humidity);
+    setWindSpeed(json.wind.speed);
+    setMainWeatherIcon(json.weather[0].id, json.dt, json.timezone);
 }
 
 //Get the five day forecast
 const getFiveDayForecast = (lat, lon) => {
-
-
     fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&APPID=852f52634242cb87b1f198b7ea5e2706`)
         .then((response) => {
             return response.json()
         })
         .then((json) => {
             //Only pick objects for 12:00
-            const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
+            const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
             //Add all five days to the grid in the html
             filteredForecast.forEach(populateForecastGrid);
         })
@@ -46,6 +43,7 @@ const getFiveDayForecast = (lat, lon) => {
         });
 }
 
+//Set values in the weather-grid (the forecast). Iterate over the grid using array index in combination with the ID of each cell.
 const populateForecastGrid = (element, index) => {
     //Create selectors to get the correct the ids of the grid
     let idIndexForHTML = index + 1;
@@ -53,9 +51,9 @@ const populateForecastGrid = (element, index) => {
     let currentIconDayCell = 'iconDay' + idIndexForHTML;
     let currentTempDayCell = 'tempDay' + idIndexForHTML;
 
-    let dayOfWeek = getDayOfWeek(element["dt"]);
-    let dayTemp = getRoundedTemperatureString(element["main"]["temp"]);
-    let iconURL = getWeatherIcon(element["weather"][0]["id"], 0, 0, "populateGrid");
+    let dayOfWeek = getDayOfWeek(element.dt);
+    let dayTemp = getRoundedTemperatureString(element.main.temp);
+    let iconURL = getWeatherIcon(element.weather[0].id, 0, 0, "populateGrid");
 
     /*Set the value of current element in corresponding cell in the grid*/
     document.getElementById(currentWeatherDayCell).innerHTML = dayOfWeek;
@@ -63,9 +61,8 @@ const populateForecastGrid = (element, index) => {
     document.getElementById(currentTempDayCell).innerHTML = dayTemp;
 }
 
-//Black level,explore other endpoint of API, UV-index API
+//Black level,explore other endpoint of API, Get UV-index API
 const getUVIndex = (lat, lon) => {
-
     fetch(`https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&APPID=852f52634242cb87b1f198b7ea5e2706`)
         .then((response) => {
             return response.json()
@@ -118,8 +115,6 @@ const setTemperatureColor = (temp, timestamp, timezone) => {
     divToChange.classList.remove('cool', 'medium', 'warm', 'cool-night', 'medium-night', 'warm-night');
     //Display day colors
     if (hour >= 6 && hour < 19) {
-        console.log("daytime");
-        console.log("divToChange: " + divToChange);
         if (temp < 10) {
             divToChange.classList.toggle('cool');
         } else if (temp >= 10 && temp <= 20) {
@@ -127,8 +122,9 @@ const setTemperatureColor = (temp, timestamp, timezone) => {
         } else {
             divToChange.classList.toggle('warm');
         }
-    } else {
-        console.log("nighttime");
+    }
+    //Display night colors
+    else {
         if (temp < 10) {
             divToChange.classList.toggle('cool-night');
         } else if (temp >= 10 && temp <= 20) {
@@ -147,9 +143,9 @@ const setMainWeatherIcon = (weatherID, time, timezone) => {
 
 //Call the helper functions to retreive time and day, then set it
 const setDayandTime = (timestamp, timezone) => {
-    let todayString = getTimeConvertedToLocal(timestamp, timezone);
-    let dayName = getDayOfWeek(timestamp);
-    document.getElementById('today').innerHTML = (`${dayName}, ${todayString}`);
+    let todayTime = getTimeConvertedToLocal(timestamp, timezone);
+    let todayName = getDayOfWeek(timestamp);
+    document.getElementById('today').innerHTML = (`${todayName}, ${todayTime}`);
 }
 
 const setHumidity = (humidity) => {
@@ -167,7 +163,6 @@ const setUVIndex = (uvIndex) => {
 
 //Get-functions
 const getDayOfWeek = (timestamp) => {
-
     let dayText = "";
     let inDate = new Date(timestamp * 1000);
     let dayOfWeek = inDate.getDay();
@@ -197,9 +192,10 @@ const getRoundedTemperatureString = (temp) => {
     return temperatureString;
 }
 
+/*This function takes the timestamp and the timezone (offset from UTC in seconds), creates a UTC date object 
+/and returns a string without any conversion based on the location of the client. */
 const getTimeConvertedToLocal = (timestamp, timezone) => {
-    //Struggled showing the time in local time, without any GMT conversion. Made it work with this, creating a UTC date with timezone offset
-    // and then create substrings of hour and minutes from it. 
+
     let time = timestamp * 1000;
     let tz = timezone * 1000;
     let date = new Date(time + tz);
@@ -209,10 +205,14 @@ const getTimeConvertedToLocal = (timestamp, timezone) => {
     let hour = date.getUTCHours();
     let minutes = date.getUTCMinutes();
     let milliseconds = date.getUTCMilliseconds();
+    //Create the UTC date object
     const dateWithoutConversion = new Date(Date.UTC(year, month, day, hour, minutes, milliseconds));
+    //Make it into a string
     let dateString = dateWithoutConversion.toUTCString().toString();
+    //Using substring to extract the hour and minutes
     let subHour = dateString.substring(dateString.indexOf(":") - 2, dateString.indexOf(":"));
     let subMinutes = dateString.substring(dateString.indexOf(":") + 1, dateString.indexOf(":") + 3);
+    //Put the hour and minutes back together in a fullTime string, no conversion to the clients timezone will be done.
     let fullTime = (`${subHour}:${subMinutes}`);
     //Returns a string with the time. 
     return fullTime;
@@ -225,7 +225,6 @@ const getWeatherIcon = (weatherID, time = 0, timezone = 0, caller) => {
     if (caller === "mainWeather") {
         isday = getDayOrNight(time, timezone);
     }
-
     //Determine which weather icon to return, depending of weather-id in json-object. 
     let weatherSrc = "";
     if (weatherID >= 200 && weatherID < 300) {
@@ -261,7 +260,6 @@ const getUserLocation = (inLat, inLon) => {
     //Fallback location parameters. Stockholm.
     const fallBackLat = 59.333;
     const fallBackLon = 18.065;
-
     var getLocationOptions = {
         enableHighAccuracy: true,
         timeout: 5000,
@@ -277,23 +275,19 @@ const getUserLocation = (inLat, inLon) => {
     }
 
     function error(err) {
-        //This is invoked if something goes wrong when getting the users coordinates. Stockholm are set as fallback.
+        //Error handling- This is invoked if something goes wrong when getting the users coordinates. Stockholm are set as fallback.
         console.log(err);
         getCurrentWeather(fallBackLat, fallBackLon);
         getFiveDayForecast(fallBackLat, fallBackLon);
         getUVIndex(fallBackLat, fallBackLon);
     }
-
-
     //Check here if the input latitude and longitude is empty. if yes - get the weather by userPosition coordinates. 
     //Else, get weather by the passed coordinates.
     if ((!inLat) && (!inLon)) {
         navigator.geolocation.getCurrentPosition(gotLocation, error, getLocationOptions);
     }
-
     //If inLat and inLon has values, the user has selected a city in the select box. Use them to get the weather
     else {
-        console.log("There are values in inlat and inlon, using them to get weather");
         getCurrentWeather(inLat, inLon);
         getFiveDayForecast(inLat, inLon);
     }
@@ -310,7 +304,6 @@ const getPresetCityLongitude = (cityAbbreviation) => {
         cityAbbreviation === "SAP" ? 141.350006 :
         cityAbbreviation === "SEO" ? 126.978 :
         0;
-    console.log(lon);
     return lon;
 }
 
@@ -324,7 +317,6 @@ const getPresetCityLatitude = (cityAbbreviation) => {
         cityAbbreviation === "SAP" ? 43.066666 :
         cityAbbreviation === "SEO" ? 37.568 :
         0;
-    console.log(lat);
     return lat;
 }
 
