@@ -19,21 +19,38 @@
       </header>
 
       <section class id="main">
-        <div class id="city">Toronto, ON</div>
-        <div class id="date">Wed 23 September 2020</div>
+        <div class id="city"></div>
+        <div class id="date"></div>
       </section>
 
       <section class id="current">
-        <div class id="temperature">16°c</div>
-        <div class id="description">Partially cloudy</div>
+        <p>Current temperature:</p>
+        <div class id="temperature"></div>
+        <p>Visibility:</p>
+        <div class id="description"></div>
 
         <section class id="highLow">
-          <div class id="H">H:24°c</div>
+          <p>H:</p>
+          <div class id="H">24°c</div>
           /
-          <div id="L">L:14°c</div>
+          <p>L:</p>
+          <div id="L">14°c</div>
+        </section>
+
+        <section class id="feels">
+          <p>Feels Like:</p>
+          <div class id="feelsLike"></div>
+        </section>
+
+        <section class id="sunUpSunDown">
+          <p>Sunrise:</p>
+          <div class id="sunriseTO"></div>
+          <p>Sunset:</p>
+          <div class id="sunsetTO"></div>
         </section>
       </section>
     </section>
+
     <script src="./weather.js"></script>
   </body>
 </html>
