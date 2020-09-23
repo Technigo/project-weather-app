@@ -6,22 +6,39 @@
     <link rel="stylesheet" href="./style.css" />
     <title>Project Weather App</title>
   </head>
+
   <body>
     <section class="current-weather">
       <h1 id="city"></h1>
       <h2 id="temperature"></h2>
       <p id="weather-description"></p>
-        <p id="real-feel">Feels like:</p>
-        <p id="wind">Wind Speed:</p>
-        <p id="uv">UV index:</p>
-    <section class="sunrise-sunset">
-        <p id="sunrise">Sunrise:</p>
-        <p id="sunset">Sunset:</p>
+
+      <div class="real-feel">
+        <img src="./assets/temp.svg" alt="thermometer"/>
+        <p id="real-feel">Feels like: </p>
+       <div>
+
+        <div class ="wind">
+        <img src="./assets/wind.svg" alt="wind sign"/>
+        <p id="wind">Wind Speed: </p>
+      </div>
+
+        <div class ="uv">
+          <img src="./assets/uv.svg" alt="uv_symbol"/>
+          <p id="uv">UV index: </p>
+        </div>
+      </div>
+
+      <section class="sunrise-sunset">
+        <img src="./assets/sunrise.svg" alt="sunrise symbol"/>
+        <p id="sunrise">Sunrise: </p>
+        <img src="./assets/sunset.svg" alt="sunset symbol"/>
+        <p id="sunset">Sunset: </p>
       </section>
     </section>
     <hr />
     <section class="five-day-forecast">
-      <h1>Next Five Days</h1>
+      <h1>Next Days</h1>
       <div id="forecast"></div>
     </section>
     <script src="./script.js"></script>

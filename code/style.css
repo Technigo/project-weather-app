@@ -1,4 +1,4 @@
-html {
+body {
   background: rgb(34, 128, 195);
   background: linear-gradient(
     0deg,
@@ -6,12 +6,9 @@ html {
     rgba(117, 202, 210, 1) 94%
   );
   background-size: auto;
-  height: 100%;
   background-repeat: no-repeat;
-}
-
-body {
   margin: 0;
+  padding: 10px;
 }
 
 h1 {
@@ -19,12 +16,45 @@ h1 {
   font-family: "didot";
   font-size: 25px;
   padding: 10px;
+  margin: 0;
 }
 
 h2 {
   color: #ffff;
-  font-size: 60px;
+  font-size: 55px;
   margin: 0;
+}
+
+.current-weather {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+}
+
+#weather-description { 
+  text-transform:capitalize;
+}
+
+#real-feel { 
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.wind, .uv {
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+
+.current-weather img {
+  width: 25px;
+  height: 25px;
+  padding: 10px;
+}
+
+.sunrise-sunset {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 hr {
@@ -37,20 +67,6 @@ hr {
     rgba(237, 237, 237, 0)
   );
 }
-
-.current-weather {
-  width: 100%;
-  text-align: center;
-}
-
-.sunrise-sunset {
-  display: inline-flex;
-}
-
-#weather-description { 
-  text-transform:capitalize;
-}
-
 
 .five-day-forecast {
   display: block;
