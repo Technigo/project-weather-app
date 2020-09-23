@@ -14,6 +14,7 @@ const currentWeatherContainer = document.getElementById("current-weather-contain
 const weatherForecastContainer = document.getElementById("weather-forecast-container");
 const currentWeatherMain = document.getElementById("current-main");
 const navBar = document.getElementById("nav-bar");
+const hamburgerMenu = document.getElementById("hamburger-menu")
 
 // Getting current geo location
 
@@ -55,16 +56,21 @@ const setLocationAPI = () => {
 const showHamburgerMenu = () => {
     if(navBar.style.display === "none") {
         navBar.style.display = "flex";
+        hamburgerMenu.style.flexDirection = "row"
+
     } else {
         navBar.style.display = "none";
+        hamburgerMenu.style.flexDirection = "column"
     }
 };
 const showNavBar = () => {
     const mediaSize = window.matchMedia("(min-width: 1024px)")
     if(mediaSize.matches) {
         navBar.style.display = "flex";
+        hamburgerMenu.style.flexDirection = "row"
     } else { 
         navBar.style.display = "none";
+        hamburgerMenu.style.flexDirection = "column"
     }
 }
 

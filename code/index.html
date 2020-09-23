@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <div class="hamburger-menu" onclick="showHamburgerMenu()">
+        <div class="hamburger-menu" id="hamburger-menu" onclick="showHamburgerMenu()">
             <div></div>
             <div></div>
             <div></div>
@@ -21,11 +21,11 @@
                 <a href="#" onclick="showCurrentWeather(UmeaAPI), showWeatherForecast(UmeaForecastAPI);">Umeå</a>
                 <a href="#" onclick="showCurrentWeather(KlintanAPI), showWeatherForecast(KlintanForecastAPI);">Robertsfors</a>
                 <a href="#" onclick="showCurrentWeather(BodenAPI), showWeatherForecast(BodenForecastAPI);">Boden</a>
-                <a href="#" onclick="getLocationAPI(setLocationAPI);">Din position</a>
+                <a href="#" onclick="getLocationAPI(setLocationAPI);" class="din-position">Din position</a>
             </nav>
         </div>
     </header>
-    
+
     <section class="current-main" id="current-main">
         <section class="current-weather" id="current-weather-container"></section>
     </section> 
