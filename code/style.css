@@ -21,6 +21,7 @@ body {
 h1 {
   font-weight: bold;
   font-size: 25px;
+  margin-left: 4px;
 }
 
 p {
@@ -28,16 +29,42 @@ p {
 }
 
 /* Styling of the input element and buttons */
+.place-pic {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px; 
+}
+
 .input-data {
-  margin: 15px;
+  margin: 15px 0px 0px 0px;
+  display: flex;
+  flex-direction: row;
+}
+
+.city-input {
+  padding: 7px;
+  border: 1px solid#42ade3;
+  font-family: 'Montserrat', sans-serif;
+  width: 125px;
+}
+
+.city-button {
+  border: 1px solid #42ade3;
+  padding: 7px;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #a0dcfa;
+}
+
+.city-button:hover {
+  font-weight: bold;
 }
 
 /*** Styling of the 'box' with the weather ***/
 .weather-wrapper {
-  margin-top: 30px;
+  margin-top: 15px;
   margin-bottom: 20px;
-  padding: 1px 10px;
-  width: 80vw;
+  padding: 15px;
+  width: 90vw;
 }
 
 .city {
@@ -45,7 +72,11 @@ p {
   margin-bottom: 10px;
 }
 
-.weather-today, .another-day {
+.wind {
+  margin-top: 8px;
+}
+
+.weather-today, .anotherday {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -113,6 +144,11 @@ footer {
 }
 
 @media (min-width: 1025px) { /* Desktop device */
+  h1 {
+    font-size: 45px;
+    margin: 50px;
+  }
+
   p {
     margin: 10px;
   }
@@ -120,7 +156,7 @@ footer {
   .wrapper-two {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     height: 60vh;
   }
 
@@ -129,7 +165,7 @@ footer {
   }
 
   .weather-pic {
-    margin-bottom: 80px;
+    margin: 20px 10px 80px 40px;
     height: 235px;
     width: 235px;
   }

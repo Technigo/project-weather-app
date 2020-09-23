@@ -7,8 +7,15 @@ const wind = document.getElementById('wind');
 const sunrise = document.getElementById('sunrise');
 const sunset = document.getElementById('sunset');
 
+let cityName = ''; // Just creating this variable
 
-// Function connected to the button in HTML - starts fetching weather when city is choosen
+const startFunction = () => { // Function for loading data for Gothenburg when the page loads first time
+    let cityName = 'Gothenburg';
+    forecastFunction(cityName);
+    todaysWeatherfunction(cityName);
+}
+
+// Function connected to the 'Choose-city'-button in HTML - starts fetching weather when city is choosen
 const fetchWeather = (cityName) => {
     forecastFunction(cityName);
     todaysWeatherfunction(cityName);
@@ -21,20 +28,22 @@ const todaysWeatherfunction = (cityName) => {
         return response.json();
     })
     .then((todaysweather) => {
-        city.innerHTML = `${todaysweather.name}, ${todaysweather.sys.country}`;
-        todaysDate.innerHTML = `${new Date().toLocaleDateString('en-US',  {weekday: 'short'},)} |`;
-        weatherDescr.innerHTML = `${todaysweather.weather[0].description} `;
-        todaysTemperature.innerHTML = `| ${todaysweather.main.temp.toFixed(1)}°`;
-        wind.innerHTML = `wind speed: ${todaysweather.wind.speed} (m/s)`
+        city.innerHTML = `${todaysweather.name}, ${todaysweather.sys.country}`; // City-name
+        todaysDate.innerHTML = `${new Date().toLocaleDateString('en-US', 
+        {weekday: 'short'},)}`; // Today's weekday
+        weatherDescr.innerHTML = `${todaysweather.weather[0].description} `; // Weather description
+        todaysTemperature.innerHTML = `${todaysweather.main.temp.toFixed(1)} °C`; // Temperature
+        wind.innerHTML = `wind speed: ${todaysweather.wind.speed} (m/s)` // Wind
 
-        // Sunrise & Sunset - fixing the format - Multiply by 1000 because data given in seconds.
-        sunrise.innerHTML += new Date(todaysweather.sys.sunrise * 1000).toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit', hour12: false,});
-        sunset.innerHTML += new Date(todaysweather.sys.sunset * 1000).toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit', hour12: false,});
+        sunrise.innerHTML = new Date(todaysweather.sys.sunrise * 1000).toLocaleTimeString('en-US', 
+        {hour: '2-digit', minute:'2-digit', hour12: false,}); // Sunrise time
+        sunset.innerHTML = new Date(todaysweather.sys.sunset * 1000).toLocaleTimeString('en-US', 
+        {hour: '2-digit', minute:'2-digit', hour12: false,}); // Sunset time
         
-        const weatherPicID = todaysweather.weather[0].icon; // Variable for getting the weather icon from the API
-        weatherPic.src = `./assets/${weatherPicID}.png`; // Stored pics per weather icon id
+        const weatherPicID = todaysweather.weather[0].icon; // Variable for the weather icon from API
+        weatherPic.src = `./assets/${weatherPicID}.png`; // Stored pics per weather icon id 
 
-        // Function to get the border different colors based on the temperature
+        // Function to give the border different colors based on the temperature
         coloringFunction = () => {
             if (todaysweather.main.temp > 30.0) {
                 document.getElementById("weatherColor").style.border = "10px solid #f29d74";
@@ -82,32 +91,33 @@ const forecastFunction = (cityName) => {
     })
     .then((forecast) => {
         // filteredForecast is now an array with only the data from 12:00 each day.
-        const filteredForecast = forecast.list.filter(item => item.dt_txt.includes('12:00'))
+        const filteredForecast = forecast.list.filter(item => item.dt_txt.includes('12:00'));
         
         // Variables and array for name on the upcoming days
         const today = new Date()
         const todayWeekday = today.getDay()
-        var days = ['mon','tue','wed','thu','fri','sat', 'sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
-        
-        todayplus1.innerHTML = `${days[todayWeekday]} |`;
-        descplus1.innerHTML = `${forecast.list[0].weather[0].description}`
-        temperatureplus1.innerHTML = `| ${forecast.list[0].main.temp.toFixed(1)}°`;
-        todayplus2.innerHTML = `${days[todayWeekday+1]} |`;
-        descplus2.innerHTML = `${forecast.list[1].weather[0].description}`
-        temperatureplus2.innerHTML = `| ${forecast.list[1].main.temp.toFixed(1)}°`;
-        todayplus3.innerHTML = `${days[todayWeekday+2]} |`;
-        descplus3.innerHTML = `${forecast.list[2].weather[0].description}`
-        temperatureplus3.innerHTML = `| ${forecast.list[2].main.temp.toFixed(1)}°`;
-        todayplus4.innerHTML = `${days[todayWeekday+3]} |`;
-        descplus4.innerHTML = `${forecast.list[3].weather[0].description}`
-        temperatureplus4.innerHTML = `| ${forecast.list[3].main.temp.toFixed(1)}°`;
-        todayplus5.innerHTML = `${days[todayWeekday+4]} |`;
-        descplus5.innerHTML = `${forecast.list[4].weather[0].description}`
-        temperatureplus5.innerHTML = `| ${forecast.list[4].main.temp.toFixed(1)}°`;
+        var days = ['Mon','Tue','Wed','Thu','Fri','Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+     
+        todayplus1.innerHTML = `${new Date(filteredForecast[0].dt_txt).toLocaleDateString('en-US', 
+        {weekday: 'short'},)}`;
+        descplus1.innerHTML = `${filteredForecast[0].weather[0].description}`
+        temperatureplus1.innerHTML = ` ${filteredForecast[0].main.temp.toFixed(1)} °C`;
+        todayplus2.innerHTML = `${new Date(filteredForecast[1].dt_txt).toLocaleDateString('en-US', 
+        {weekday: 'short'},)}`;
+        descplus2.innerHTML = `${filteredForecast[1].weather[0].description}`
+        temperatureplus2.innerHTML = ` ${filteredForecast[1].main.temp.toFixed(1)} °C`;
+        todayplus3.innerHTML = `${new Date(filteredForecast[2].dt_txt).toLocaleDateString('en-US', 
+        {weekday: 'short'},)}`;
+        descplus3.innerHTML = `${filteredForecast[2].weather[0].description}`
+        temperatureplus3.innerHTML = ` ${filteredForecast[2].main.temp.toFixed(1)} °C`;
+        todayplus4.innerHTML = `${new Date(filteredForecast[3].dt_txt).toLocaleDateString('en-US', 
+        {weekday: 'short'},)}`;
+        descplus4.innerHTML = `${filteredForecast[3].weather[0].description}`
+        temperatureplus4.innerHTML = ` ${filteredForecast[3].main.temp.toFixed(1)} °C`;
+        todayplus5.innerHTML = `${new Date(filteredForecast[4].dt_txt).toLocaleDateString('en-US', 
+        {weekday: 'short'},)}`;
+        descplus5.innerHTML = `${filteredForecast[4].weather[0].description}`
+        temperatureplus5.innerHTML = ` ${filteredForecast[4].main.temp.toFixed(1)} °C`;
+    
     })
-};
-
-// Function to restart / clean the settings when changing city
-const restart= () => {
-    document.location.href = "";
 };

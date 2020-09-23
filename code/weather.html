@@ -7,16 +7,17 @@
     <link rel="icon" type="image/ico" href="./Images/favicon.ico">
     <title>Weather</title>
 </head>
-<body>
+<body onload="startFunction()" >
     <div class="input-data">
-        <input id="cityName" name="cityName" type="text" value="" placeholder="Enter a city"/>
-        <button type="button" onclick="fetchWeather(document.getElementById('cityName').value)">Choose this city!</button>
-        <button onclick="restart()" id="restartButton">Refresh data!</button>
+        <div class="placeholder">
+            <img class="place-pic" src="./Images/placeholder.png"/>
+        </div>
+        <div class="input-field">
+            <input id="cityName" class="city-input" name="cityName" type="text" value="" placeholder="Enter your city"/>
+            <button class="city-button" type="button" onclick="fetchWeather(document.getElementById('cityName').value)">Choose this city!</button>
+        </div>
     </div>
-    
-
     <div id="weatherColor" class="weather-wrapper">
-        <h1>WEATHER?!</h1>
         <div class="wrapper-two">
             <div class="todays-forecast">
                 <p id="city" class="city"></p>
@@ -45,27 +46,27 @@
             </div>
             <h1></h1>
             <div class="forecast-5-days">
-                <div class="another-day one">
+                <div class="anotherday one">
                     <p id="todayplus1"></p>
                     <p id="descplus1"></p>
                     <p id="temperatureplus1"></p>
                 </div>
-                <div class="another-day one">
+                <div class="anotherday one">
                     <p id="todayplus2"></p>
                     <p id="descplus2"></p>
                     <p id="temperatureplus2"></p>
                 </div>
-                <div class="another-day one">
+                <div class="anotherday one">
                     <p id="todayplus3"></p>
                     <p id="descplus3"></p>
                     <p id="temperatureplus3"></p>
                 </div>
-                <div class="another-day one">
+                <div class="anotherday one">
                     <p id="todayplus4"></p>
                     <p id="descplus4"></p>
                     <p id="temperatureplus4"></p>
                 </div>
-                <div class="another-day two">
+                <div class="anotherday two">
                     <p id="todayplus5"></p>
                     <p id="descplus5"></p>
                     <p id="temperatureplus5"></p>
