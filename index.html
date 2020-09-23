@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,21 +8,24 @@
     <link rel="stylesheet" href="./style.css" />
     <title>Document</title>
 </head>
+
 <body>
     <h1>Longyearbyen</h1>
-    <section>
+    <section class="hero-wrapper">
         <h1><span id="weatherMain"></span></h1>
-        <h1>Temp <span id="weatherTemp"></span></h1>
-        <h1>Feels like <span id="weatherTempFeel"></span></h1>
+        <h1><span id="weatherTemp"></span>&#x2103;</h1>
+        <h1>Feels like <span id="weatherTempFeel"></span>&#x2103;</h1>
         <h2> - in general the day will have <span id="weatherDescription"></span></h2>
+        <h3>Sunrise: <span id="sunrise"></span></h3>
+        <h3> Sunset: <span id="sunset"></span></h3>
     </section>
-    <h3>The sun will rise a <span id="sunrise"></span> and set at <span id="sunset"></span></h3>
 
-    <main id="forecast">
+    <main id="weatherForcast">
 
     </main>
 
     <script src="./weather.js"></script>
-    
+
 </body>
+
 </html>

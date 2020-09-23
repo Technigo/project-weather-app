@@ -38,15 +38,14 @@ const generatedHTMLForWeatherToday = (weatherMain) => {
 }
 
 const generatedHTMLForWeatherForcast = (filteredForcast) => {
-    const weekday = printDay(filteredForcast.dt_txt); //Tell what day it concerns, does not work ATM 
+    //const weekday = printDay(filteredForcast.dt_txt); //Tell what day it concerns, does not work ATM 
     console.log(filteredForcast.main.temp); //can console.log this, but cant make it work when invoking the printDay()
 }
 
 /// getting the API for todays weather
-fetch(apiUrl)
-    .then((response) => {
-        return response.json()
-    })
+fetch(apiUrl).then((response) => {
+    return response.json()
+})
     .then((weatherMain) => {
         generatedHTMLForWeatherToday(weatherMain)
     })
@@ -54,18 +53,19 @@ fetch(apiUrl)
 
 /// getting the API for weather forcast
 fetch(apiUrlForcast).then((response) => {
-    return response.json();
+    return response.json()
 })
     .then((weatherForcast) => {
         const filteredForcast = weatherForcast.list.filter(item =>
-            item.dt_txt.includes('12:00')
-        );
-        console.log(filteredForcast) /// it works to here
+            item.dt_txt.includes('12:00'))
+            console.log(filteredForcast) /// it works to here
+            // generatedHTMLForWeatherForcast(filteredForcast)
+        filteredForcast.forEach((forcast) => {
+            containerForcast.innerHTML = generatedHTMLForWeatherForcast(forcast)
+    });
 
-        //filteredForcast.forEach((forcast) => {
-           // containerForcast.innerHTML = generatedHTMLForWeatherForcast(forcast)
-        });
-   // });
+    })
+
 
 
 
