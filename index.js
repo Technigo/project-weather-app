@@ -22,4 +22,11 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
         let sunRise = new Date (json.city.sunriese *1000);
         let sunSet = new Date (json.city.sunriese *1000);
         city.innerHTML = json.city.name;
+        
+        const options = {
+            weekdays:"short",
+            month: "short",
+            day: "numeric"
+        }
+        const newDate = new Date(json.list[index])
     })
