@@ -3,39 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="./styles.css" />
+  <link rel="stylesheet" href="./style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Overlock:wght@400;700;900&display=swap" rel="stylesheet">
   <title>Weather App</title>
 </head>
+
 <body>
-  <section class="app-container" id="app-container">
-    <article class="stockholm" id="stockholm">
-      <div>
-        <p id="location-sthlm"></p>
-        <p id="sunrise-sthlm"></p>
-        <p id="sunset-sthlm"></p>
-        <h1 id="now-sthlm"></h1>
+  <section id="app-container">
+  <!-- Top left lines -->
+    <div class="top-left"> 
+      <p id="current-weather"></p>
+      <p id="sunrise"></p>
+      <p id="sunset"></p>
+    </div>
+
+  <!-- Headline content -->
+    <div class="now">
+      <img class="today" id="now-icon"/>
+      <h1 id="now"></h1>
+    </div>
+
+  <!-- 5 day forecast -->
+    <div class="five-day" id="five-Day">
+      <!-- JavaScript to inject forecast -->
+    </div>
+  
+  <!-- Swipe indicators -->
+    <div class="swipe">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+  <!-- Footer -->
+    <footer>
+      <div class="footer">
+        Made by Peggy @<a href="https://blipsandclicks.com">blipsandclicks</a>
+        during Technigo Bootcamp 2020 for educational purposes.
       </div>
-      
-      <div class="five-day" id="five-Day">
-        
-        <!-- <p class="date" id="day1-date-sthlm">Loading....</p>
-        <p class="temp" id="day1-sthlm">Loading....</p>
+    </footer>
+  </section>
 
-        <p class="date" id="day2-date-sthlm">Loading....</p>
-        <p class="temp" id="day2-sthlm">Loading....</p>
-
-        <p class="date" id="day3-date-sthlm">Loading....</p>
-        <p class="temp" id="day3-sthlm">Loading....</p>
-
-        <p class="date" id="day4-date-sthlm">Loading....</p>
-        <p class="temp" id="day4-sthlm">Loading....</p>
-
-        <p class="date" id="day5-date-sthlm">Loading....</p>
-        <p class="temp" id="day5-sthlm">Loading....</p> -->
-      </div>
-    </article>
-
-    </section>
   <script src="./script.js"></script>
 </body>
 </html>

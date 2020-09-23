@@ -1,38 +1,48 @@
-// Stockholm - Current weather
-const weatherTodaySTHLM = 'http://api.openweathermap.org/data/2.5/weather?id=2673730&units=metric&appid=eb46c8c17530a3d02461794022d39d32'
-const locationStockholm = document.getElementById('location-sthlm')
-const sunriseSTHLM = document.getElementById('sunrise-sthlm')
-const sunsetSTHLM = document.getElementById('sunset-sthlm')
-const nowSTHLM = document.getElementById('now-sthlm')
+// Current weather
+const stockholm = 2673730
+const apiNow = `http://api.openweathermap.org/data/2.5/weather?id=${stockholm}&units=metric&appid=eb46c8c17530a3d02461794022d39d32`
+const currentWeather = document.getElementById('current-weather')
+const sunriseTime = document.getElementById('sunrise')
+const sunsetTime = document.getElementById('sunset')
+const now = document.getElementById('now')
+const ico = document.getElementById('now-icon')
+const desc = document.getElementById('now-desc')
 
-fetch(weatherTodaySTHLM)
+fetch(apiNow)
   .then((response) => {
     return response.json()
 })
-  .then((sthlm) => {
-    console.log(sthlm)
-    const tempNow = Math.round(sthlm.main.temp)
-    const nowFeelsLike = Math.round(sthlm.main.feels_like)
-    const sunriseCalc = new Date(sthlm.sys.sunrise * 1000)
-    const sunrise = ( new Date(sunriseCalc)).toLocaleTimeString('sv-SE', {
+  .then((city) => {
+    console.log(city)
+    const dateCheck = new Date(city.dt * 1000)
+    const todayIs = (new Date(dateCheck)).toLocaleDateString()
+    console.log(`TODAY: ${todayIs}`)
+
+
+    const tempNow = Math.round(city.main.temp)
+    const nowFeelsLike = Math.round(city.main.feels_like)
+    const sunriseCalc = new Date(city.sys.sunrise * 1000)
+    const sunrise = (new Date(sunriseCalc)).toLocaleTimeString('sv-SE', {
       hour12: false, 
       hour: '2-digit',
       minute: '2-digit'
     })
-    const sunsetCalc = new Date(sthlm.sys.sunset * 1000)
-    const sunset = ( new Date(sunsetCalc)).toLocaleTimeString('sv-SE', {
+    const sunsetCalc = new Date(city.sys.sunset * 1000)
+    const sunset = (new Date(sunsetCalc)).toLocaleTimeString('sv-SE', {
       hour12: false, 
       hour: '2-digit',
       minute: '2-digit'
     })
-    locationStockholm.innerHTML = `${sthlm.weather[0].main} | ${tempNow} \u00b0`
-    sunriseSTHLM.innerHTML = `Sunrise ${sunrise}`
-    sunsetSTHLM.innerHTML = `Sunset ${sunset}`
-    nowSTHLM.innerHTML = `Right now we're seeing ${sthlm.weather[0].description} and it feels like ${nowFeelsLike} \u00b0 in ${sthlm.name}.`
+    currentWeather.innerHTML = `${city.weather[0].main} | ${tempNow}\u00b0C`
+    sunriseTime.innerHTML = `Sunrise ${sunrise}`
+    sunsetTime.innerHTML = `Sunset ${sunset}`
+    now.innerHTML = `It feels like ${nowFeelsLike}\u00b0C in ${city.name}.`
+    // desc.innerHTML = city.weather[0].description
+    ico.src = `http://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png`
 })
 
 // Stockholm - 5 day forecast
-const forecastSTHLM = 'http://api.openweathermap.org/data/2.5/forecast?id=2673730&units=metric&appid=eb46c8c17530a3d02461794022d39d32'
+const forecastSTHLM = `http://api.openweathermap.org/data/2.5/forecast?id=${stockholm}&units=metric&appid=eb46c8c17530a3d02461794022d39d32`
 const fiveDay = document.getElementById('five-Day') 
 
 
@@ -51,15 +61,18 @@ fetch(forecastSTHLM)
         day: 'numeric'
       })
       const dayTemp = Math.round(day.main.feels_like)
-      
+
+      console.log(date)
+
       fiveDay.innerHTML += 
       `<p class="date">${dayName}</p>
-      <p class="description">(day.weather.description)</p>
-      <p class="temp">${dayTemp}\u00b0</p>`    
+      <p class="temp">${dayTemp}\u00b0C</p>
+      <img src="http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" />
+      <p class="description">${day.weather[0].description}</p>`    
   })
 })
 
-    
+
 // Step 5 - Style your weather app
 
 // Once you get the data onto your site, style it to look like one of the provided designs.
@@ -75,14 +88,16 @@ fetch(forecastSTHLM)
 
 // Make sure you've committed and pushed a version of your project before starting with the intermediary and advanced goals.
 
+
+
 // 🔴  Red Level (Intermediary Goals)
 // - Change the colors of the page based on the weather. If the weather is warm – use warm colors. If the weather is colder, use cold colors. If you really want to push you CSS muscles you can even make a [background gradient](https://www.w3schools.com/css/css3_gradients.asp)
-// - Add multiple cities 🏙
+// - Add multiple cities 
 // Give the user the option to choose between a couple of your favorite cities.
 // - Include visual indicators for the type of weather, cloudy/sunny/rainy/etc
 
 // ⚫  Black Level (Advanced Goals)
-// - **Use your location 🗺**
+// - **Use your location *
 // Use the [Geolocation API](https://www.w3schools.com/html/html5_geolocation.asp) that is built in to your browser to fetch the city that you are located in atm and show the weather for your location.
 // - Explore the API and use another endpoint of the Weather API to include supplementary information
 // - Add some CSS animations to your app, e.g. pulsating sun/rain drops
