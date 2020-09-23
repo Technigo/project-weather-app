@@ -43,6 +43,10 @@ p.temp {
   margin-bottom: 50px;
 }
 
+.description.image {
+  justify-content: center;
+}
+
 div.container-five-day {
   display: flex;
   justify-content: space-between;

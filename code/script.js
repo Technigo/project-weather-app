@@ -1,6 +1,6 @@
 // TODAY'S FORECAST
 
-const apiUrl = 'http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=20216c09e09f267ccc58282554c77ecf';
+const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=20216c09e09f267ccc58282554c77ecf';
 
 const container = document.getElementById('main');
 const weatherHeader = document.getElementById('weather-header');
