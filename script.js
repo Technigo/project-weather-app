@@ -1,7 +1,7 @@
 let citySearched = 'Kil';
-//const apiUrlToday = `http://api.openweathermap.org/data/2.5/weather?q=${citySearched}&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5`
+//const apiUrlToday = `https://api.openweathermap.org/data/2.5/weather?q=${citySearched}&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5`
 //const apiUrlForcast = `https://api.openweathermap.org/data/2.5/forecast?q=${citySearched}&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5`
-//const apiUrlToday = 'http://api.openweathermap.org/data/2.5/weather?q=Kil,Sweden&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5'
+//const apiUrlToday = 'https://api.openweathermap.org/data/2.5/weather?q=Kil,Sweden&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5'
 //const apiUrlForcast = 'https://api.openweathermap.org/data/2.5/forecast?q=Kil,Sweden&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5'
 //const container = document.getElementById('wrapper');
 const containerToday = document.getElementById("weatherToday"); //change to location? 
@@ -15,6 +15,23 @@ const calculatedTemperature = (number) => {
     return roundedTemp;
 };
 
+/*
+const localeTime = (time) => {
+    const clock = new Date(time * 1000);   
+    const options = {
+        timeZone: 'Asia/Ho_Chi_Minh',
+        timeStyle: 'short',
+        hour12: false,
+      }
+    const intlTime = new Intl.DateTimeFormat('en', options).format(clock)
+    //const clockToString = clock.toLocaleTimeString('en-US', {
+    //console.log(clock)
+    //const clockToString = new Intl.DateTimeFormat('en-US', { timeZone: 'UTC' });
+    console.log(intlTime)
+    //return clockToString;
+}
+*/
+
 const localeTime = (time) => {
     const clock = new Date (time * 1000);
     const clockToString = clock.toLocaleTimeString('en-US', {
@@ -25,6 +42,7 @@ const localeTime = (time) => {
     console.log(clockToString)
     return clockToString;
 }
+
 
 //function for sunrise and suntime that only includes hours and minutes 
 const calculatingSun = (time) => {
@@ -44,8 +62,10 @@ const calculatingSun = (time) => {
 const printDay = (day) => {
     const forcastDays = new Date(day);
     //console.log(forcastDays)
-    const forcastDaysString = forcastDays.toLocaleDateString('en-US', {
+    const forcastDaysString = forcastDays.toLocaleDateString('en-SE', {
         weekday: 'short',
+        month: 'short',
+        day: 'numeric',
       });
     //console.log(forcastDaysString);
     return forcastDaysString; 
@@ -78,13 +98,23 @@ const iconDependingOnWeather = (item) => {
 
 //Is it correct to have a , sep??
 const weatherTodayBackgroundColor = (temp) => {
-    if (temp < 0, temp <= 6) {
-        containerToday.style.backgroundColor = '#e5f5f9';
+    const containerColor = document.querySelector('.class-color')
+    console.log(containerColor)
+//const img = document.getElementById('weatherToday') //added
+    if (temp < 0, temp <= 6) {  
+        containerColor.style.backgroundColor = 'blue';
+        //containerToday.style.filter = "brightness(30%)";
+        //containerToday.style.backgroundColor = '#e5f5f9';
     } else if (temp > 6, temp <= 20) {
-       containerToday.style.backgroundColor = '#fdae6b';
+        containerColor.style.backgroundColor = 'orange';
+        //containerToday.style.filter = "brightness(70%)";
+       //containerToday.style.backgroundColor = '#fdae6b';
        //console.log(temp) 
     } else 
-        containerToday.style.backgroundColor = '#e6550d'; 
+        containerColor.style.backgroundColor = 'red'
+
+        //containerToday.style.filter = "brightness(100%)";
+        //containerToday.style.backgroundColor = '#e6550d'; 
 }
 
 
@@ -98,6 +128,7 @@ const citySelected = () => {
     fetchWeatherToday(citySearched);
     document.getElementById("cityNamePicked").value = ''; //to clear input value after search
 }
+
 
 
 //Functions to invoke already created functions and manipulate the DOM
@@ -116,54 +147,38 @@ const generatedHTMLForWeatherToday = (weatherToday) => {
     
      //separate and build up the HTML tree
      let weatherTodayHTML = '';
-     weatherTodayHTML += ` <img src='${iconToday}'>`;
+     //moved img from here
      weatherTodayHTML += `<div class="location-information">`;
-     weatherTodayHTML += `<div class="temp"> ${temperature} \xB0 </div>`
+     weatherTodayHTML += `<div class="temp"> ${temperature} \xB0c </div>`
      weatherTodayHTML += `<div class="location"> ${weatherToday.name} </div>` 
      weatherTodayHTML += `<div class="description"> ${description} </div>` 
-     weatherTodayHTML += `<div class="description"> ${timeInCity} </div>` 
+     weatherTodayHTML += `<div class="local-time"> ${timeInCity} </div>` 
+     
      weatherTodayHTML += `</div>`
-    
-     weatherTodayHTML += `<div class="sun-information">`;
-     //weatherTodayHTML += `<p> Weather Today: ${weatherToday.weather[0].main}</p>`
+     //weatherTodayHTML += ` <img src='${iconToday}'/>`;
+     weatherTodayHTML += `<div class="sun-information">`
      weatherTodayHTML += `<div class="sunrise"> Sunrise ${sunrise}</div>`
      weatherTodayHTML += `<div class="sunset"> Sunset ${sunset}</div>`
      weatherTodayHTML += `</div>`
-     //weatherTodayHTML += `</div>`; 
      return weatherTodayHTML; 
-
-
-
-    /* ORIGINAL 
-    //separate everyting instead of return in one row! 
-    let weatherTodayHTML = '';
-    //weatherTodayHTML += `<div class="weatherTodayContainer">`;
-    weatherTodayHTML += `<div class="location"> Location: ${weatherToday.name}</div>` 
-    weatherTodayHTML += `<div class="temp"> ${temperature} \xB0</div>`
-    weatherTodayHTML += ` <img src='${iconToday}'>`;
-    //weatherTodayHTML += `<p> Weather Today: ${weatherToday.weather[0].main}</p>`
-    weatherTodayHTML += `<div class="sun-time"> Sunrise at: ${sunrise}: Sunset at ${sunset}</div>`
-    //weatherTodayHTML += `</div>`; 
-    return weatherTodayHTML; 
-    */
 };
 
 
 const generatedHTMLForWeatherForcast = (filteredForcast) => {
     const weekday = printDay(filteredForcast.dt_txt); //Tell what day it concerns,
-    //console.log(filteredForcast.main.temp); //can console.log this, but cant make it work when invoking the printDay()
+        //console.log(filteredForcast.main.temp); //can console.log this, but cant make it work when invoking the printDay()
 
     const dailyTemp = calculatedTemperature(filteredForcast.main.temp);
-    const tempFeelsLike = calculatedTemperature(filteredForcast.main.feels_like); 
+    const humidity = calculatedTemperature(filteredForcast.main.humidity); 
     const iconForcast = iconDependingOnWeather(filteredForcast.weather[0].main);
 
     //separate and build up the HTML tree
     let weatherForcast = '';
     weatherForcast += `<div class="weather-forcast">`;
     weatherForcast += `<div class="day">${weekday}</div>`;
-    weatherForcast += ` <img src='${iconForcast}'>`;
-    weatherForcast += `<p>${dailyTemp} \xB0/ ${tempFeelsLike} \xB0</p>`;
-    weatherForcast += `</div>`;
+    weatherForcast += `<img src='${iconForcast}'/>`;
+    weatherForcast += `<p>${dailyTemp} \xB0c/ ${humidity} %</p>`;
+    weatherForcast += `</div>`; 
     return weatherForcast; //This is code from Van to use in forecast HTML
 };
 
@@ -186,12 +201,13 @@ fetchWeatherToday(citySearched);
 
 
 const fetchWeatherToday = (citySearched) => {
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${citySearched}&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${citySearched}&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5`)
     .then((response) => {
         return response.json();
     }).then((weatherToday) => {
         //container.innerHTML += generatedHTMLForWeatherToday(weatherToday)
         containerToday.innerHTML += generatedHTMLForWeatherToday(weatherToday); 
+        console.log('in fetch weather today')
         //added descriptionToday.innerHTML +=  on row 95
         //this prins everyting as a p tag (text id in html)
         //but I have specified weatherTodayHTML and assigned it to class weatherToday styled in css...
@@ -199,29 +215,6 @@ const fetchWeatherToday = (citySearched) => {
 }
 fetchWeatherToday(citySearched);
 
-
-
-/*
-//function to fetch forcast API 
-const fetchWeatherForcast = () => {
-    fetch(apiUrlForcast).then((response) => {
-        return response.json();
-    }).then((weatherForcast) => {
-        //console.log(weatherForcast)
-        const filteredForcast = weatherForcast.list.filter((item) => 
-        item.dt_txt.includes('12:00')
-        );
-        console.log(filteredForcast);
-
-        filteredForcast.forEach((forcast) => {
-            //container.innerHTML += generatedHTMLForWeatherForcast(forcast) //if we only have one wrapper
-            containerForecast.innerHTML += generatedHTMLForWeatherForcast(forcast)
-        });
-    });
-};
-fetchWeatherForcast(citySearched);
-//filteredForcast();
-*/
 
 
 const fetchWeatherForcast = (citySearched) => {
@@ -235,9 +228,10 @@ const fetchWeatherForcast = (citySearched) => {
         );
         //console.log(filteredForcast);
 
-        filteredForcast.forEach((forcast) => {
+        filteredForcast.map((forcast) => {
             //container.innerHTML += generatedHTMLForWeatherForcast(forcast) //if we only have one wrapper
             containerForecast.innerHTML += generatedHTMLForWeatherForcast(forcast)
+            console.log('forcast test')
         });
     });
 };

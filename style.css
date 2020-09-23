@@ -1,5 +1,6 @@
 * {
     margin: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -9,32 +10,77 @@ body {
 p {
     width: 100px;
     text-align: end;
-    margin-right: 10px;
+    /*margin-right: 10px;*/
+}
+
+img {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    filter: opacity(1)
 }
 
 /*style for weather today wrapper*/
-.weather-today-wrapper {
-    background: '';
-    height: 40vh;
-    position: relative;
-    display: flex; 
+.weather-container {
+    width: 100vw;
+    display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
 }
 
-/*additional img styling to seperate from other img*/
+.container {
+    height: 40vh;
+    position: relative;
+    width: 100%;
+}
+
+/*class which lays under weather-today-wrapper to change
+color depending on weather temp in js file.*/ 
+.class-color {
+    background-color: red;
+    height: 40vh;
+    padding: 30px 10px;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    z-index: -1;
+}
+
+/*opacity 0.8 to show underlying background color in class-color*/
+.weather-today-wrapper {
+    background: url('./unsplash.weather.jpg') no-repeat center center; /*changed from ''*/
+    background-size: cover; /*added*/
+    color: #ffffff;
+    height: 40vh;
+    padding: 30px 10px;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    opacity: 0.8;
+    /*display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;*/
+}
+
+/*additional img styling to seperate from other img
 .weather-today-wrapper img {
     position: absolute;
     height: 100px;
     width: 100px;
     right: 10px;
     top: 10px;
+    filter: opacity(0.5) drop-shadow(0 0 0 rgb(113, 109, 109));
 }
+*/
 
 .location-information {
-    align-self: flex-start;
-    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    margin: 30px 10px;
 }
 
 .temp {
@@ -47,9 +93,9 @@ p {
 }
 
 .sun-information {
-    flex-direction: row;
+    /*flex-direction: row;*/
     display: flex;
-    width: 100%;
+    /*width: 100%;*/
     justify-content: space-between;
 }
 
@@ -57,11 +103,22 @@ p {
     margin: 0 10px;
 }
 
+/*
+.bottom-wrapper {
+    background: url(./unsplash.weather.jpg) no-repeat center center;
+    background-size: cover;
+    filter: opacity(0.7) grayscale(20%);
+    color: #A4A3A1
+}*/
+
 /*style for weather forcast wrapper*/
 .weather-forcast-wrapper {
+    color: rgb(94, 92, 92);
     display: flex;
     flex-direction: column;
-    margin-left: 10px;
+    margin: 30px 10px;
+    /*width: 100%;*/
+   
 }
 
 .weather-forcast {
@@ -69,35 +126,69 @@ p {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    
 }
 
 .day {
     width: 140px;
-    font-weight: 500;
 }
 
-img {
-    border-radius: 50%;
-    height: 50px;
-    width: 50px;
+
+/*style for search section*/
+
+.searched-city {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    font-size: 18px;
+    font-family: inherit;
+    font-weight: 400;
+    color: rgb(94, 92, 92)
+}
+
+input {
+    border: none; 
+    border-bottom: 1px solid rgb(94, 92, 92); 
+    width: 300px;
+    margin-top: 20px;
+}
+
+
+/*styling for search*/
+/*for style. Can I move onclick function to enter click? */
+.search-btn {
+    display:none;
 }
 
 
 
 /****MEDIA FOR TABLET *****/
 @media (min-width: 768px) {
-    .weather-container {
-        display: flex;
-        flex-direction: column;
-        align-items:center;
+    .sun-information{
+        justify-content: space-around;
     }
-    .weather-today-wrapper, .weather-forcast-wrapper {
-        max-width: 80%;
+
+    .weather-today-wrapper img {
+        right: 80px;
+        top: 50px;
+    }
+
+    .weather-forcast-wrapper {
+        align-self: center;
+        width: 70%;
     }
 }
+    
+
 
 
 /****MEDIA FOR DESKTOP *****/
 @media (min-width: 1024px) {
-    
+    .weather-forcast-wrapper {
+        align-self: center;
+        width: 50%;
+    }
 }

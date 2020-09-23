@@ -1,42 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Forcast</title>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css"/>
+    <link rel="stylesheet" href="./style.css" />
 </head>
+
 <body>
     <section id="wrapper" class="weather-container">
-        <div id="weatherToday" class="weather-today-wrapper"></div>
-        <div id="weatherForecast" class="weather-forcast-wrapper"></div>
-
-    
-        <div class="select-city">
-            <label for="cityNamePicked" class="city-serch">Search favourite city</label>
-            <input
-            type="text"
-            id="cityNamePicked"
-            name="ciyNamePicked"
-            onkeydown = "if (event.keyCode == 13)
-                document.getElementById('btnSearch').click()"
-            />
-
-            <input class="search-btn"
-            type = "button"
-            id = "btnSearch"
-            value = "Search"
-            onclick = "citySelected();"
-            />  
+        <div class="container">
+            <div class="class-color"></div>
+            <div id="weatherToday" class="weather-today-wrapper"></div>
         </div>
-            
+       
+        <div id="weatherForecast" class="weather-forcast-wrapper"></div>
+            <div class="searched-city">
+                <label for="cityNamePicked" class="city-serch">What's the weather in your favourite city?</label>
+                <input type="input" 
+                id="cityNamePicked" 
+                name="ciyNamePicked"
+                placeholder="" 
+                onkeydown="if (event.keyCode == 13) 
+                    document.getElementById('btnSearch').click()" />
+
+                <input class="search-btn" 
+                type="button" 
+                id="btnSearch" 
+                value="Search" 
+                onclick="citySelected();" />
+            </div>
+
         <!----<button onclick="citySelected()">
             <p>Search</p>----->
         </button>
-        
+
     </section>
 
     <script defer src="./script.js"></script>
 </body>
+
 </html>
+
+<!----
+--->
