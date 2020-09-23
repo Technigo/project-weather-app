@@ -2,11 +2,13 @@ const containerToday = document.getElementById("weatherToday");
 const descriptionToday = document.getElementById("text");
 const containerForecast = document.getElementById("forecastWrapper");
 const apiUrlToday =
-  "http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=95b6172379fabb04319de6c9e2aa34ae";
+  "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=95b6172379fabb04319de6c9e2aa34ae";
 const apiUrlForecast =
   "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=95b6172379fabb04319de6c9e2aa34ae";
 
-//Creat function that calls all temperaturefunctions
+//TEMPERATURE FUNCTIONS
+
+  //Create function that calls all temperaturefunctions
 const callTempFunctions = (number) => {
   calculateTemperature(number);
   minMaxTemperature(number);
@@ -31,6 +33,8 @@ const feelsLikeTemperature = (number) => {
   //API main.feels_like
 };
 
+//DATE FUNCTIONS
+
 const calculatingSun = (time) => {
   const sunTime = new Date(time * 1000);
   const sunTimeString = sunTime.toLocaleTimeString("sv-SE", {
@@ -53,15 +57,39 @@ const printDay = (day) => {
   return forecastDaysString;
 };
 
+//ICON FUNCTIONS
+const iconWeather = (item) => {
+  const iconMain = item
+  
+  if (iconMain === 'Clouds') {
+    return  'http://openweathermap.org/img/wn/03d@2x.png'
+  } else if (iconMain === 'Clear') {
+    return 'http://openweathermap.org/img/wn/01d@2x.png'
+  } else if (iconMain === 'Snow') {
+    return 'http://openweathermap.org/img/wn/13d@2x.png'
+  } else if (iconMain === 'Rain') {
+    return 'http://openweathermap.org/img/wn/10d@2x.png'
+  } else if (iconMain === 'Drizzle') {
+    return 'http://openweathermap.org/img/wn/09d@2x.png'
+  } else if (iconMain === 'Thunderstorm') {
+    return 'http://openweathermap.org/img/wn/11d@2x.png'
+  } else 
+    return 'http://openweathermap.org/img/wn/50d@2x.png'
+
+}
+
+//DISPLAY FUNCTIONS
+
 const generatedHTMLForWeatherToday = (weatherToday) => {
   const temperature = calculateTemperature(weatherToday.main.temp); //This is using json.main.temp as a parameter instead of number.
   console.log(weatherToday.sys.sunrise);
   const sunrise = calculatingSun(weatherToday.sys.sunrise);
   const sunset = calculatingSun(weatherToday.sys.sunset);
   const description = weatherToday.weather[0].description;
+  const icon = iconWeather(weatherToday.weather[0].main)
 
   let dailyForecastHTML = "";
-  dailyForecastHTML += `<img src= ''/>`;
+  dailyForecastHTML += `<img src= '${icon}'/>`; //This needs to be 
   dailyForecastHTML += `<div class="local-info">`;
   dailyForecastHTML += `<div class="temperature">${temperature} \xB0 </div>`;
   dailyForecastHTML += `<div class="city">${weatherToday.name}</div>`;
@@ -95,13 +123,6 @@ const generatedHTMLForWeatherForecast = (filteredForecast) => {
   return innerText;
   //Weather description for the next five days
   //Humidity and wind
-
-  /*let launchHTML = '';
-  launchHTML += `<section class="launch">`;
-  launchHTML += ` <img src='${launchOutcomeImageUrl}'>`;
-  launchHTML += ` <p>${launch.flight_number}: ${launch.mission_name} - ${launchDateString} ${launchTimeString}</p>`;
-  launchHTML += `</section>`;
-  return launchHTML;*/ //This is code from Van to use in forecast HTML
 };
 
 const fetchWeatherToday = () => {
