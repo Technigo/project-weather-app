@@ -202,32 +202,33 @@ header {
     display: none;
 }
 
-.weekly-wrapper {
+.weekly-weather {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 100%;
-    padding: 10px 0;
-    border-bottom: #bfbfbf 1px dashed;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
 }
 
-.text-weekday {
-    width: 25%;
-    text-align: center;
+.weekly-weather-day-wrapper, .weekly-weather-temp-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.weekly-weather-day {
+    text-align: left;
     font-family: 'Roboto Condensed', Sans-Serif;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
-.img-weather {
-    width: 20%;
-}
-
-.text-celcius {
-    width: 25%;
-    margin: 0;
+.weekly-weather-temp {
     text-align: center;
     font-family: 'Cabin', Sans-Serif;
     font-weight: lighter;
+} 
+
+.img-weather {
+    width: 20%;
 }
 
 h2 {
@@ -299,6 +300,8 @@ h1 {
         width: 40%;
     }
 
+    /*
+
     .weekly-weather {
         width: 70%;
         display: flex;
@@ -310,6 +313,7 @@ h1 {
         padding: 20px;
         border: 20px solid #efefef;
     }
+    */
 
     .weekly-wrapper {
         width: 100%;
