@@ -13,7 +13,11 @@ body {
   /* height: 100vh; */
 }
 
-.main-container {
+.search-container {
+  display: flex;
+}
+
+.main-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,20 +28,30 @@ body {
   border-bottom: solid 1px lightgray;
 }
 
-.today-wrapper {
+.main-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  padding: 0 25px;
 }
 
-.today-header {
+.main-weather-container {
+}
+
+.main-header {
   font-size: 80px;
+  margin: auto;
 }
 
-.today-icon-container {
+.main-weather h2,
+h3 {
+  margin: auto;
+}
+
+.main-icon-container {
   margin-bottom: 150px;
-  margin-right: -22px;
+  margin-right: -37px;
 }
 
 .today-icon-container img {
@@ -91,6 +105,10 @@ body {
   align-items: center;
   justify-content: space-between;
   margin: 5px 0;
+}
+
+.weather-forecast p {
+  margin: auto;
 }
 
 .icon {
