@@ -1,4 +1,5 @@
 //Get todays weather
+
 const getCurrentWeather = (lat, lon) => {
 
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&APPID=852f52634242cb87b1f198b7ea5e2706`)
