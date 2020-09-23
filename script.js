@@ -79,19 +79,26 @@ const iconDependingOnWeather = (item) => {
     //const iconMainDescriptionForcast = weatherForcast.weather[0].main
     //console.log(iconMainDescriptionForcast)
     if (iconMainDescription === 'Clouds') {
-        return 'http://openweathermap.org/img/wn/03d@2x.png'
+        return './cloud.png'
+        //return 'http://openweathermap.org/img/wn/03d@2x.png'
     } else if (iconMainDescription === 'Clear'){
-        return 'http://openweathermap.org/img/wn/01d@2x.png'
+        return './sun.png'
+        //return 'http://openweathermap.org/img/wn/01d@2x.png'
     } else if (iconMainDescription === 'Rain') {
-        return 'http://openweathermap.org/img/wn/10d@2x.png'
+        return './rainy.png'
+        //return 'http://openweathermap.org/img/wn/10d@2x.png'
     } else if (iconMainDescription === 'Thunderstorm') {
-        return 'http://openweathermap.org/img/wn/11d@2x.png'
+        return './thunder.png'
+        //return 'http://openweathermap.org/img/wn/11d@2x.png'
     } else if (iconMainDescription === 'Drizzle') {
-        return 'http://openweathermap.org/img/wn/09d@2x.png'
+        return './drizzle.png'
+        //return 'http://openweathermap.org/img/wn/09d@2x.png'
     } else if (iconMainDescription === 'Snow') {
-        return 'http://openweathermap.org/img/wn/13d@2x.png'
+        return './snow.png'
+        //return 'http://openweathermap.org/img/wn/13d@2x.png'
     } else 
-        return 'http://openweathermap.org/img/wn/50d@2x.png'
+        return './drizzle.png'   
+    //return 'http://openweathermap.org/img/wn/50d@2x.png'
 
     //return iconMainDescription
 }
