@@ -49,14 +49,16 @@ const weatherIconChange = (weather) =>{
     document.getElementById('weatherIcon').src = './assets/cloudy.svg';
     } if (weather == "Clear" || weather == "Sunny") {
     document.getElementById('weatherIcon').src= './assets/sun.svg';
-    }if (weather == "Mist" || weather == "Fog") {
+    } if (weather == "Mist" || weather == "Fog") {
     document.getElementById('weatherIcon').src= './assets/mist.svg';
-    }if (weather == "Snow"){
+    } if (weather == "Snow"){
     document.getElementById('weatherIcon').src= './assets/snow.svg';
-    }if (weather == "Hail"){
+    } if (weather == "Hail"){
     document.getElementById('weatherIcon').src= './assets/hail.svg';
-    }
+    } if (weather == "Thunder"){
+    document.getElementById('weatherIcon').src= './assets/thunderstorms.svg';
   }
+}
   
 // Current and real feel rounded temperature function
 
