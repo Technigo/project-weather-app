@@ -1,4 +1,5 @@
 let city = 'Stockholm';
+const button = document.getElementById('btn-search')
 
 const containerToday = document.getElementById("weatherToday");
 //const descriptionToday = document.getElementById("text");
@@ -76,7 +77,7 @@ const iconWeather = (item) => {
 
 }
 
-//BUTTON FUNCTION - Doesn't work at, error cannot read value of null
+//BUTTON FUNCTION 
 const citySearch = () => {
   containerToday.innerHTML = ''; //This is needed to clear the default value
   containerForecast.innerHTML = '';
@@ -86,6 +87,7 @@ const citySearch = () => {
   fetchWeatherToday(city);
   document.getElementById('cityNameSearch').value = ''; //Clearing input value after search
 }
+button.addEventListener('keydown', )
 
 //DISPLAY FUNCTIONS
 
