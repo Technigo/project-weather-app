@@ -1,0 +1,36 @@
+.body {
+    margin: 0;
+    box-sizing: border-box;
+    /* background: #cedee7; */
+    /* background: linear-gradient(90deg, rgba(173, 216, 230, 1) 23%, rgba(217, 251, 255, 0.969625350140056) 58%, rgba(129, 212, 250, 1) 89%); */
+}
+
+.wrapper {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    /* text-align: center; */
+    height: 100vh;
+    background: rgb(173, 216, 230);
+    background: linear-gradient(90deg, rgba(173, 216, 230, 1) 13%, rgba(83, 142, 255, 1) 46%, rgba(129, 212, 250, 1) 90%);
+    color: #fff;
+}
+
+.location,
+.weather-info {
+    height: 30vh;
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.weather-info {
+    flex-direction: row;
+}
+
+.location h1 {
+    font-size: 100px;
+}
