@@ -8,8 +8,7 @@
     box-sizing: border-box;
 }
 
-html,
-body {
+html, body {
     height: 100%;
     position: relative;
 }
@@ -194,7 +193,7 @@ a:hover {
 
     .vacation-spots {
         width: 98%;
-        margin: auto auto 60px auto;
+        margin: auto auto 60px auto; /* overwrites margin set above*/
     }
 
     .vacation-city-photo {

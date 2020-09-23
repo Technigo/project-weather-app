@@ -143,7 +143,7 @@ const generateVacationHTML = city => {
 
   // Create dynamic HTML code to return
   let vacationHTML = '';
-  vacationHTML += `<div class="vacation-data-photo">`;
+  vacationHTML += `<div class="vacation-data-photo">`;  //created this extra div container for styling purposes: to create a flexbox
   vacationHTML += `<div class="vacation-city-container">`;
   vacationHTML += `<p>${vacationCityName}</p>`;
   vacationHTML += `<img class="vacation-city-icon" src='./assets/${vacationCityIcon}.png'>`;
