@@ -1,5 +1,6 @@
 body {
     font-family: "Roboto", sans-serif;
+    margin: 0px;
 }
 
 h1 {
@@ -26,6 +27,8 @@ h2 {
     color: white;
     padding-left: 30px;
     padding-top: 132px;
+    border-bottom-left-radius: 80% 20%;
+    border-bottom-right-radius: 80% 20%;
 }
 
 .section-top p {
@@ -36,6 +39,7 @@ h2 {
 .info-text {
     display: flex;
     flex-direction: column;
+    margin-bottom: 100px;
 }
 
 .sun-times {
@@ -44,4 +48,24 @@ h2 {
     font-size: 20px;
     padding-right: 30px;
     margin-top: 10px;
+    margin-bottom: 70px;
+}
+
+/*BOTTOM SECTION*/
+
+.section-bottom {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 0px;
+    padding-bottom: 50px;
+    color: #707070;
+}
+
+.forecast {
+    display: flex;
+    justify-content: space-between;
+}
+
+.forecast img {
+    width: 50px;
 }

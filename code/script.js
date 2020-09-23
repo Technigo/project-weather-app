@@ -4,9 +4,11 @@ const description = document.getElementById("description");
 const sunrise = document.getElementById("sunriseTime");
 const sunset = document.getElementById("sunsetTime");
 
+const API_KEY = "e3f7767c281ddc6599588c383f72962d";
+const API_URL_TODAY = `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${API_KEY}`
+const API_URL_FORECAST = `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=${API_KEY}`
 
-
-fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=e3f7767c281ddc6599588c383f72962d")
+fetch(API_URL_TODAY)
     .then((response) => {
         return response.json();
     })
@@ -30,12 +32,14 @@ const updateWeatherToday = (json) => {
     sunset.innerHTML = sunsetProperTime;
 };
 
-fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=e3f7767c281ddc6599588c383f72962d")
+fetch(API_URL_FORECAST)
     .then((response) => {
         return response.json();
     })
     .then((json) => {
         updateWeatherForecast(json);
+        // console.log(json.list[0].weather[0].icon)
+        
     });
 
 
@@ -83,20 +87,33 @@ const updateWeatherForecast = (json) => {
     day4.innerHTML = getWeekday(4);
     day5.innerHTML = getWeekday(5);
 
+    // Update the weather icons for the next five days
+    const icon1 = document.getElementById("icon1")
+    const icon2 = document.getElementById("icon2")
+    const icon3 = document.getElementById("icon3")
+    const icon4 = document.getElementById("icon4")
+    const icon5 = document.getElementById("icon5")
+
+    icon1.innerHTML = `<img src= "https://openweathermap.org/img/wn/${json.list[1].weather[0].icon}@2x.png" alt="weather icon" />`
+    icon2.innerHTML = `<img src= "https://openweathermap.org/img/wn/${json.list[2].weather[0].icon}@2x.png" alt="weather icon" />`
+    icon3.innerHTML = `<img src= "https://openweathermap.org/img/wn/${json.list[3].weather[0].icon}@2x.png" alt="weather icon" />`
+    icon4.innerHTML = `<img src= "https://openweathermap.org/img/wn/${json.list[4].weather[0].icon}@2x.png" alt="weather icon" />`
+    icon5.innerHTML = `<img src= "https://openweathermap.org/img/wn/${json.list[5].weather[0].icon}@2x.png" alt="weather icon" />`
+
+
     // Get minimum and maximum temperatures for the next five days
-    const jsonComplete = json 
 
-    const day1MinTemp = getMinTemperature(jsonComplete, 1).toFixed(1);
-    const day2MinTemp = getMinTemperature(jsonComplete, 2).toFixed(1);
-    const day3MinTemp = getMinTemperature(jsonComplete, 3).toFixed(1);
-    const day4MinTemp = getMinTemperature(jsonComplete, 4).toFixed(1);
-    const day5MinTemp = getMinTemperature(jsonComplete, 5).toFixed(1);
+    const day1MinTemp = getMinTemperature(json, 1).toFixed(1);
+    const day2MinTemp = getMinTemperature(json, 2).toFixed(1);
+    const day3MinTemp = getMinTemperature(json, 3).toFixed(1);
+    const day4MinTemp = getMinTemperature(json, 4).toFixed(1);
+    const day5MinTemp = getMinTemperature(json, 5).toFixed(1);
 
-    const day1MaxTemp = getMaxTemperature(jsonComplete, 1).toFixed(1);
-    const day2MaxTemp = getMaxTemperature(jsonComplete, 2).toFixed(1);
-    const day3MaxTemp = getMaxTemperature(jsonComplete, 3).toFixed(1);
-    const day4MaxTemp = getMaxTemperature(jsonComplete, 4).toFixed(1);
-    const day5MaxTemp = getMaxTemperature(jsonComplete, 5).toFixed(1);
+    const day1MaxTemp = getMaxTemperature(json, 1).toFixed(1);
+    const day2MaxTemp = getMaxTemperature(json, 2).toFixed(1);
+    const day3MaxTemp = getMaxTemperature(json, 3).toFixed(1);
+    const day4MaxTemp = getMaxTemperature(json, 4).toFixed(1);
+    const day5MaxTemp = getMaxTemperature(json, 5).toFixed(1);
 
     // Update DOM with min and max temperatures
     const day1Temp = document.getElementById("day1Temp");
