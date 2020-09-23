@@ -29,9 +29,9 @@ fetch(apiUrlToday)
     //retriving the weather from json
     weatherHeader.innerHTML = `${json.weather[0].description}`
     //retriving the sunrise from json
-    sunriseHeader.innerHTML = `sunrise: ${getTimeFormat(json.sys.sunrise)}`
+    sunriseHeader.innerHTML = `${getTimeFormat(json.sys.sunrise)}`
     //retriving the sunset from json
-    sunsetHeader.innerHTML = `sunset: ${getTimeFormat(json.sys.sunset)}`
+    sunsetHeader.innerHTML = `${getTimeFormat(json.sys.sunset)}`
 })
 
 //fetch the data from api - weekly forecast
@@ -50,7 +50,7 @@ fetch(apiUrlWeekly)
     });
 
     filteredForecast.forEach((temp) => {
-      containerTemp.innerHTML += `<p class="weekly-weather-temp">${getNumberFormat(temp.main.temp)}°C</p>`
+      containerTemp.innerHTML += `<p class="weekly-weather-temp">${getNumberFormat(temp.main.temp)} °C</p>`
     });
   })
 

@@ -32,13 +32,18 @@
     <h1 class="header-title">
         Your local weather app
     </h1>
-        
+    
         <div class="header-weather-wrapper">
-            <h2 id="headerWeather" class="header-text-weather"></h2>
-            <h3 id="headerLocation" class="header-text-location"></h3>
+            <h2 id="headerLocation" class="header-text-location"></h3>
+            <h3 id="headerWeather" class="header-text-weather"></h2>
             <h1 id="headerCelcius" class="header-text-celcius"></h1>
-            <h3 id="headerSunrise" class="header-text-location">sunrise</h3>
-            <h3 id="headerSunset" class="header-text-location">sunset</h3>
+            <div class="sun-wrapper">
+                <img class="header-icon-sun" src="./icons/sunrise.png" alt="sunrise">
+                <h3 id="headerSunrise" class="header-text-sun"></h3>
+                <h3 id="headerSunrise" class="header-text-sun">|</h3>
+                <img class="header-icon-sun" src="./icons/sunset.png" alt="sunset">
+                <h3 id="headerSunset" class="header-text-sun"></h3>
+            </div>
         </div>
 
     </header>
@@ -56,44 +61,6 @@
 
         <div id="weeklyWeatherDay" class="weekly-weather-day-wrapper"></div>
         <div id="weeklyWeatherTemp" class="weekly-weather-temp-wrapper"></div>
-
-        <!-- 
-        <div class="weekly-wrapper">
-            <h3 class="text-weekday">MON</h3>
-            <img class="img-weather" src="icons/sunny.png" alt="illustration of weather">
-            <p class="text-celcius">10 c</p>
-        </div>
-        <div class="weekly-wrapper">
-            <h3 class="text-weekday">TUE</h3>
-            <img class="img-weather" src="icons/night.png" alt="illustration of weather">
-            <p class="text-celcius">10 c</p>
-        </div>
-        <div class="weekly-wrapper">
-            <h3 class="text-weekday">WED</h3>
-            <img class="img-weather" src="icons/cloudy-sunny.png" alt="illustration of weather">
-            <p class="text-celcius">10 c</p>
-        </div>
-        <div class="weekly-wrapper">
-            <h3 class="text-weekday">THU</h3>
-            <img class="img-weather" src="icons/sunny.png" alt="illustration of weather">
-            <p class="text-celcius">10 c</p>
-        </div>
-        <div class="weekly-wrapper">
-            <h3 class="text-weekday">FRI</h3>
-            <img class="img-weather" src="icons/rainy.png" alt="illustration of weather">
-            <p class="text-celcius">10 c</p>
-        </div>
-        <div class="weekly-wrapper">
-            <h3 class="text-weekday">SAT</h3>
-            <img class="img-weather" src="icons/stromy.png" alt="illustration of weather">
-            <p class="text-celcius">10 c</p>
-        </div>
-        <div class="weekly-wrapper">
-            <h3 class="text-weekday">SUN</h3>
-            <img class="img-weather" src="icons/cloudy-sunny.png" alt="illustration of weather">
-            <p class="text-celcius">10 c</p>
-        </div>
-        -->
 
     </section>
 

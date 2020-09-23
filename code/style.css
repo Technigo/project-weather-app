@@ -1,6 +1,7 @@
 html {
     box-sizing: border-box;
-    font-family: 'Cabin', Sans-Serif;
+    font-family: 'Roboto Condensed', Sans-Serif;
+    color: black
   }
   
 *, *:before, *:after {
@@ -18,7 +19,6 @@ header {
     height: 375px;
     display: flex;
     flex-direction: column;
-    color: white;
 }
 
 /* hide title (only ipad and laptop) */
@@ -26,22 +26,41 @@ header {
     display: none;
 }
 
-.header-text-weather {
-    text-align: center;
-    font-size: 28px;
-    text-transform: uppercase;
-    font-family: 'Roboto Condensed', Sans-Serif;
-}
-
 .header-text-location {
     text-align: center;
-    font-size: 14px;
+    font-size: 26px;
+    text-transform: uppercase;
+    margin: 5px;
+}
+
+.header-text-weather {
+    font-weight: lighter;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 18px;
 }
 
 .header-text-celcius {
     text-align: center;
     font-size: 82px;
-    font-family: 'Roboto Condensed', Sans-Serif;
+}
+
+.sun-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3px;
+}
+
+.header-text-sun {
+    text-align: center;
+    font-size: 18px;
+    font-weight: lighter;
+    margin: 4px;
+}
+
+.header-icon-sun {
+    width: 6%;
 }
 
 .header-weather-wrapper {
@@ -79,7 +98,7 @@ header {
     100%{background-position:0% 50%}
 }
 
-/* BLUE ANIMATION
+/* BLUE ANIMATION for bad weather
     background: linear-gradient(270deg, #0e4bef, #6e42e2, #4b0082);
     background-size: 600% 600%;
 
@@ -207,11 +226,14 @@ header {
     flex-direction: row;
     justify-content: space-between;
     padding: 20px;
+    width: 90%;
+    margin: auto;
 }
 
 .weekly-weather-day-wrapper, .weekly-weather-temp-wrapper {
     display: flex;
     flex-direction: column;
+    width: 50%;
 }
 
 .weekly-weather-day {
@@ -222,10 +244,16 @@ header {
 }
 
 .weekly-weather-temp {
-    text-align: center;
+    text-align: right;
     font-family: 'Cabin', Sans-Serif;
     font-weight: lighter;
 } 
+
+.weekly-weather-day, .weekly-weather-temp {
+    border-bottom: dashed 1px #bfbfbf;
+    padding-bottom: 20px;
+    margin-right: 1px;
+}
 
 .img-weather {
     width: 20%;
