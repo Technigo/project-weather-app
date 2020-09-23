@@ -18,11 +18,11 @@ fetch(apiUrl)
     .then((weatherObject) => {
 
         // Update weather in Stockholm from API
-        weatherHeader.innerHTML = weatherObject.name;
+        weatherHeader.innerHTML = weatherObject.name
 
         // Get temp and rounds up or down with 1 place decimal.
-        tempToday.innerHTML = `${Math.round(weatherObject.main.temp * 10) / 10}°`;
-        descriptionToday.innerHTML = weatherObject.weather[0].description;   
+        tempToday.innerHTML = `${Math.round(weatherObject.main.temp * 10) / 10}°`
+        descriptionToday.innerHTML = weatherObject.weather[0].description   
         
         // Create two variables that stores the API values
         const sunriseValue = weatherObject.sys.sunrise;
