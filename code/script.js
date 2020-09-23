@@ -3,7 +3,7 @@ const forecastAPI = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockhol
 
 const currentWeatherContainer = document.getElementById("current-weather-container");
 const weatherForecastContainer = document.getElementById("weather-forecast-container");
-
+const currentWeatherMain = document.getElementById("current-main");
 
 const currentWeather = () => {
 fetch(weatherAPI)
@@ -17,8 +17,24 @@ fetch(weatherAPI)
     const sunset = new Date(weather.sys.sunset * 1000)
     const sunsetString = sunset.toLocaleTimeString('se-SE', {hour: '2-digit', minute:'2-digit'})
     const weatherDescription = weather.weather[0].description
+    const weatherType = weather.weather[0].main
+
+    const setWeatherColors = () => {
+        if (weatherType === 'Clouds') {
+        currentWeatherMain.classList.add('clouds');
+        } else if (weatherType === 'Rain') {
+            currentWeatherMain.classList.add('rain');
+        } else if (weatherType === 'Clear') {
+            currentWeatherMain.classList.add('clear');
+        } else if (weatherType === 'Snow') {
+            currentWeatherMain.classList.add('snow');
+        }
+    
+    }
+    setWeatherColors();
     currentWeatherContainer.innerHTML = `<h1>${weatherTemp}<sup>&degC</sup></h1><h2>${weather.name}</h2><p>${weatherDescription}</p><div class="sun"><p>Sunrise: ${sunriseString} </p> <p>Sunset: ${sunsetString} </p></div>`
 })
+
 
 }
 
@@ -34,34 +50,31 @@ const weatherForecast = () => {
         const forecastTemp = item.main.temp.toFixed(0)
         const forecastDay = new Date(item.dt * 1000).toLocaleDateString('se-SE', {weekday: 'short'})
         let forecastImage = "";
-        if (item.weather[0].icon === "01d") {
-            forecastImage = "http://openweathermap.org/img/wn/01d@2x.png"
-        } else if (item.weather[0].icon === "02d") { 
-            forecastImage = "http://openweathermap.org/img/wn/02d@2x.png"
-        }
-        else if (item.weather[0].icon === "03d") { 
-            forecastImage = "http://openweathermap.org/img/wn/03d@2x.png"
-        }
-        else if (item.weather[0].icon === "04d") { 
-            forecastImage = "http://openweathermap.org/img/wn/04d@2x.png"
-        }
-        else if (item.weather[0].icon === "09d") { 
-            forecastImage = "http://openweathermap.org/img/wn/09d@2x.png"
-        }
-        else if (item.weather[0].icon === "10d") { 
-            forecastImage = "http://openweathermap.org/img/wn/10d@2x.png"
-        }
-        else if (item.weather[0].icon === "11d") { 
-            forecastImage = "http://openweathermap.org/img/wn/11d@2x.png"
-        }
-        else if (item.weather[0].icon === "13d") { 
-            forecastImage = "http://openweathermap.org/img/wn/13d@2x.png"
-        }
-        else if (item.weather[0].icon === "50d") { 
-            forecastImage = "http://openweathermap.org/img/wn/50d@2x.png"
-        }
-
         let forecastHTML = '';
+
+        const setForecastImage = () => {
+            if (item.weather[0].icon === "01d") {
+                forecastImage = "http://openweathermap.org/img/wn/01d@2x.png"
+            } else if (item.weather[0].icon === "02d") { 
+                forecastImage = "http://openweathermap.org/img/wn/02d@2x.png"
+            } else if (item.weather[0].icon === "03d") { 
+                forecastImage = "http://openweathermap.org/img/wn/03d@2x.png"
+            } else if (item.weather[0].icon === "04d") { 
+                forecastImage = "http://openweathermap.org/img/wn/04d@2x.png"
+            } else if (item.weather[0].icon === "09d") { 
+                forecastImage = "http://openweathermap.org/img/wn/09d@2x.png"
+            } else if (item.weather[0].icon === "10d") { 
+                forecastImage = "http://openweathermap.org/img/wn/10d@2x.png"
+            } else if (item.weather[0].icon === "11d") { 
+                forecastImage = "http://openweathermap.org/img/wn/11d@2x.png"
+            } else if (item.weather[0].icon === "13d") { 
+                forecastImage = "http://openweathermap.org/img/wn/13d@2x.png"
+            } else if (item.weather[0].icon === "50d") { 
+                forecastImage = "http://openweathermap.org/img/wn/50d@2x.png"
+            }
+        } 
+        setForecastImage();
+        
         forecastHTML += `<div class="forecast-day">`;
         forecastHTML += ` <p>${forecastDay}</p>`;
         forecastHTML += ` <div class="temp">`;
