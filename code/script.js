@@ -16,25 +16,28 @@ fetch (apiUrl)
   function populateHeader(todayForecast) {
     const city = todayForecast.name
     const today = new Date(todayForecast.dt*1000);
-    document.getElementById('headerMessage').innerHTML = `Welcome to the Weather Forecast of ${city} on ${today}`
+    // document.getElementById('headerMessage').innerHTML = `Welcome to the Weather Forecast of ${city} on ${today}`
   };
 
 
   function populateDetails(todayForecast) {
   const todayDescription = todayForecast.weather[0].description;
   const todayTemperature = todayForecast.main.temp;
-  const todaySunRise = new Date(todayForecast.sys.sunrise * 1000);
-  const sunRiseHour = todaySunRise.toLocaleTimeString('en-VN', {
-    hour12: false,
-  })
-  const todaySunSet = new Date(todayForecast.sys.sunset * 1000);
-  const sunSetHour = todaySunSet.toLocaleTimeString('en-VN', {
-    hour12: false,
-  })
 
-  document.getElementById('des').innerHTML = `${todayDescription} | ${todayTemperature}`
-  document.getElementById('sunRise').innerHTML = `Sunrise: ${sunRiseHour}`;
-  document.getElementById('sunSet').innerHTML = `Sunset: ${sunSetHour}`;
+  const sunrise = new Date(todayForecast.sys.sunrise * 1000);
+  const sunset = new Date(todayForecast.sys.sunset * 1000);
+  const options = {
+      timeZone: 'Asia/Ho_Chi_Minh',
+      timeStyle: 'short',
+      hour12: false,
+    }
+  const sunriseTime = new Intl.DateTimeFormat('en-US', options).format(sunrise);
+  const sunsetTime = new Intl.DateTimeFormat('en-US', options).format(sunset);
+  console.log(sunriseTime);
+
+  document.getElementById('des').innerHTML = `${todayDescription} | ${todayTemperature}°C`
+  document.getElementById('sunRise').innerHTML = `Sunrise: ${sunriseTime}`;
+  document.getElementById('sunSet').innerHTML = `Sunset: ${sunsetTime}`;
 }
 
 function populateSummary(todayForecast) {
@@ -67,11 +70,15 @@ fetch (forecastUrl)
 
     filteredForecast.forEach((item) => {
       const temperature = item.main.temp;
+      const tempShort = parseFloat(temperature).toFixed(1);
+      
+      
+
       const date = new Date(item.dt * 1000);
       const weekday = date.toLocaleDateString('en-VN', {
         weekday: 'short'
       });
-      document.getElementById('foreCast').innerHTML += `<p>${weekday} ......${temperature}</p>`;
+      document.getElementById('foreCast').innerHTML += `<p>${weekday} ......${tempShort}°C</p>`;
     });
   })
 
