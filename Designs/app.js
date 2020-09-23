@@ -6,6 +6,7 @@ const description = document.getElementById('description')
 const sunrise = document.getElementById('sunrise')
 const sunset = document.getElementById('sunset')
 const temp = document.getElementById('temp')
+const icon = document.getElementById('icon')
 
 const day2 = document.getElementById('day2')
 const day3 = document.getElementById('day3')
@@ -15,7 +16,7 @@ const day5 = document.getElementById('day5')
 fetch(weatherToday)
     .then((response) => {
         return response.json()
-    })                          //Tells what the weather is now.
+    })                          //Tells what the weather is today.
     .then((json) => {
         updateWeatherToday(json)
 
@@ -24,14 +25,14 @@ fetch(weatherToday)
 fetch(weatherForecast)
     .then((response) => {
         return response.json()
-    })
+    })                          // Tells the forecast the next 5 days
     .then((json) => {
         console.log(json)
         updateWeatherForecast(json)
 
     })
 
-
+//Todays weather
 const updateWeatherToday = (todayWeatherJson) => {
     city.innerHTML = todayWeatherJson.name
     description.innerHTML = todayWeatherJson.weather[0].description
@@ -54,41 +55,60 @@ const updateWeatherToday = (todayWeatherJson) => {
 
     })
 
-    sunrise.innerHTML = sunriseTimeString
-    sunset.innerHTML = sunsetTimeString
-    temp.innerHTML = `${Math.round(todayWeatherJson.main.temp)} ° `
+    sunrise.innerHTML = `Sunrise ${sunriseTimeString}`
+    sunset.innerHTML = `Sunset ${sunsetTimeString}`
+    temp.innerHTML = `${Math.round(todayWeatherJson.main.temp)}° `
 
-}
+    const icon = document.getElementById('icon')
+    icon.src = `images/${todayWeatherJson.weather[0].icon}.png`
 
-const updateWeatherForecast = (weatherForecastJson) => {
+}//make icon for todays weather aswell
+
+// the forecast 
+
+
+const updateWeatherForecast = (weatherForecastJson) => { 
+
+    // FIltered the data so it only picks the 12:00 data everyday.
     const filteredForecast = weatherForecastJson.list.filter(item => item.dt_txt.includes('12:00'))
     console.log(filteredForecast)
 
-    const day1Data = filteredForecast[0]
 
-    // Set day 1 name
-    const day1Name = document.getElementById('day1-name')
-    const day1Date = new Date(day1Data.dt * 1000)
-    const dayString = day1Date.toLocaleDateString('en-US', {
-        weekday: 'short'
+    filteredForecast.forEach((day, index) => { 
+        console.log(`day${index+1}-name`)
+        
+        //The loop gives the ID a new name so it matches the one in the HTML file so it is shown on the site
+        const dayName = document.getElementById(`day${index+1}-name`)
+
+        //Calculates the new date from milliseconds to a readeble day date...
+        const dayDate = new Date(day.dt * 1000)
+        
+        // ... and calculate witch day it is and gives it a shorter name
+        const dayString = dayDate.toLocaleDateString('en-US', {
+            weekday: 'short'
+        
+        })
+        
+        // Show the name of the day on the site
+        dayName.innerHTML = dayString
+
+        //the icon is selected from the API. 
+        const dayIcon = document.getElementById(`day${index+1}-icon`)
+
+
+        dayIcon.src = `images/${day.weather[0].icon}.png`
+
+        
+        const tempDay = document.getElementById(`day${index+1}-temp`)
+
+
+        tempDay.innerHTML = `${Math.round(day.main.temp)}°`
+
+        
     })
 
-    day1Name.innerHTML = dayString
-
-    // Update icon
-    const day1Icon = document.getElementById('day1-icon')
-    day1Icon.src = `images/${day1Data.weather[0].icon}.png`
-
-    //Update temp day 1 
-    const tempDay1 = document.getElementById('day1-temp')
-    tempDay1.innerHTML = `${Math.round(day1Data.main.temp)} °`
     
-
-
-    //day2 
-    // day3  
-    // day4  
-    // day5  
+    
 
 
 

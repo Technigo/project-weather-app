@@ -1,0 +1,31 @@
+body {
+background-color: antiquewhite;
+}
+
+#daily-weather {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+#city {
+color: brown;
+font-size: large;
+}
+
+#sun {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#icon {
+    align-self: center;
+}
+
+.days {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+}
