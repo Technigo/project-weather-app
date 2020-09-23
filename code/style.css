@@ -11,6 +11,15 @@ body {
   padding: 10px;
 }
 
+body.warm {
+  background: rgb(192,128,235); 
+  background: linear-gradient(
+    0deg,
+    rgba(192,128,235,1) 0%, 
+    rgba(253,29,88,1) 50%,
+    rgba(246,197,109,1) 100%)
+}
+
 p {
   color: rgb(243, 243, 243);
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -18,12 +27,35 @@ p {
   font-size: 14px;
 }
 
+/* OTHER CITIES BUTTONS */
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 30px;
+}
+
+button {
+  padding: 7px 28px;
+  font-family: 'didot';
+  color:rgb(255, 255, 255);
+  background:rgba(255, 255, 255, 0.356);
+  border: none;
+  font-size: 13px;
+  border-radius: 8px;
+  margin: 10px;
+}
+
+button:hover {
+  background: rgba(248, 248, 248, 0.726);
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
 /* CITY */
 h1 {
   color: aliceblue;
   font-family: "didot";
   font-size: 25px;
-  padding: 10px;
   margin: 0;
 }
 
@@ -38,18 +70,23 @@ h2 {
 
 /* CURRENT WEATHER SECTION */
 
+#weatherIcon { 
+  width:75px;
+  height:50px;
+}
+
 .current-weather {
   display: flex;
   flex-direction: column;
   width: 100%;
   text-align: center;
+  align-items: center;
 }
 
 #weather-description {
   font-family: Georgia, 'Times New Roman', Times, serif;
   text-transform: capitalize;
   margin-top: 0;
-  padding: 5px;
 }
 
 #real-feel {
@@ -116,6 +153,15 @@ hr {
 
 @media screen and (min-width:768px) {
 
+  button {
+    padding: 7px 35px;
+    font-size: 20px;
+  }
+
+  .current-weather img {
+    padding: 18px;
+  }
+
   p {
     font-size: 20px;
   }
@@ -143,6 +189,15 @@ hr {
 /* MEDIA QUERY DESKTOP */
 
 @media screen and (min-width:1024px) {
+
+  button {
+    padding: 7px 35px;
+    font-size: 20px;
+  }
+
+  h1 { 
+    padding-top:30px;
+  }
 
 .desktop-container { 
   background-color: rgba(255, 255, 255, 0.219);

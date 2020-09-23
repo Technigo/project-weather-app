@@ -8,33 +8,39 @@
   </head>
 
   <body>
-    <section class = "desktop-container">
+    <div class ='buttons'>
+        <button id="porto"> Porto</button>
+        <button id="london"> London</button>
+        <button id="stockholm"> Stockholm</button>
+    </div>
+    <section class="desktop-container">
     <section class="current-weather">
       <h1 id="city"></h1>
       <h2 id="temperature"></h2>
+      <img id="weatherIcon" src="">
       <p id="weather-description"></p>
 
       <div class="real-feel">
         <img src="./assets/temp.svg" alt="thermometer"/>
-        <p id="real-feel">Feels like: </p>
+        <p id="real-feel"></p>
        <div>
 
         <div class ="wind">
         <img src="./assets/wind.svg" alt="wind sign"/>
-        <p id="wind">Wind Speed: </p>
+        <p id="wind"></p>
       </div>
 
         <div class ="uv">
           <img src="./assets/uv.svg" alt="uv_symbol"/>
-          <p id="uv">UV index: </p>
+          <p id="uv"></p>
         </div>
       </div>
 
       <section class="sunrise-sunset">
         <img src="./assets/sunrise.svg" alt="sunrise symbol"/>
-        <p id="sunrise">Sunrise: </p>
+        <p id="sunrise"> </p>
         <img src="./assets/sunset.svg" alt="sunset symbol"/>
-        <p id="sunset">Sunset: </p>
+        <p id="sunset"></p>
       </section>
     </section>
     <hr />
