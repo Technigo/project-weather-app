@@ -3,29 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.google.com/specimen/Montserrat">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
   <title>Weather Forecast</title>
 </head>
-<body>
+<body class="body">
   <div class="wrap">
-    <div id="mainContainer">
+    <div class="main-container">
       <div class="header">
         <p id="headerMessage"></p>
       </div>
       <div id="details" class="details">
-        <p id="des" class=des></p>
-        <p id="sunRise"></p>
-        <p id="sunSet"></p>
+        <div class="first-row">
+          <p id="des" class="des"></p>
+          <p class="symbol">|</p>
+          <p id="temp" class="temp"></p>
+        </div>
+        <p id="sunRise" class="rise-set"></p>
+        <p id="sunSet" class="rise-set"></p>
       </div>
       <div id="summary" class="summary">
-        <img id="img" src="">
-        <p id="sumMessage"></p>
+        <img id="img" class="img" src="">
+        <p id="sumMessage" class="sum-message"></p>
       </div>
-      <div id="foreCast" class="forecast">
+      <div id="forecast" class="forecast">
+      </div>
+      <div class="search">
+        <input list="city">
+          <datalist id="city">
+            <option value="Stockholm">
+            <option value="Paris">
+            <option value="London">
+            <option value="New York">
+            <option value="Beijing">
+          </datalist>
+        <button id="button">Search</button>
       </div>
     </div>
   </div>
+    
   <script src="script.js"></script>
 </body>
 </html>

@@ -8,8 +8,80 @@ body {
 }
 
 .wrap {
-  margin: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
-.textTransform {
+
+.main-container {
+  padding: 12px 25px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 400px;
+}
+
+.des::first-letter {
   text-transform: capitalize;
+}
+
+.first-row {
+  display: flex;
+}
+.des, .temp {
+  margin: 0;
+}
+
+.symbol {
+  margin: auto 5px;
+}
+
+.rise-set {
+  margin: 5px auto;
+}
+
+.img {
+  display: block;
+  margin: 40px 0px 30px 0px;
+  height: 50px;
+  width: auto;
+}
+
+.forecast {
+  padding: 10px 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sum-message {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 5px auto;
+  padding-right: 10px;
+}
+
+.day {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0px;
+  border-bottom: 1px dotted #F47775;
+}
+
+.search {
+  text-align: center;
+}
+
+.cloudy-day {
+  background-image: linear-gradient(rgba(244,247,248,0.2), rgba(244,247,248,1));
+  color:#F47775;
+}
+
+.sunny-day {
+  background-image: linear-gradient(rgba(244,233,185,0.2), rgba(247,233,185,1));
+  color:#2A5510;
+}
+
+.rainy-day {
+  background-image: linear-gradient(rgba(163,222,247,0.2), rgba(163,222,247,1));
+  color:#164A68;
 }
