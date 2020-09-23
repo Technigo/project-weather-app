@@ -45,10 +45,12 @@ const calculatingSun = (time) => {
 const printDay = (day) => {
   const forecastDays = new Date(day);
   const forecastDaysString = forecastDays.toLocaleDateString("en-US", {
-    weekday: "short",
+    weekday: "short", 
+    month: 'short',
+    day: 'numeric'
   });
   /* console.log(forecastDaysString); */
-  return forecastDaysString; //Would like for this to also return the date of the day
+  return forecastDaysString; 
 };
 
 const generatedHTMLForWeatherToday = (weatherToday) => {
@@ -67,7 +69,7 @@ const generatedHTMLForWeatherForecast = (filteredForecast) => {
   //Tells what day it is
   console.log(filteredForecast.main.temp);
   const dailyTemp = calculateTemperature(filteredForecast.main.temp); //Would also like for this to tell min/max-temp
-  const minMax = minMaxTemperature(filteredForecast.list[0].main.temp_min) //Make use of minMaxfunction! Get an errormessage ATM 
+  //const minMax = minMaxTemperature(filteredForecast.list[0].main.temp_min) //Make use of minMaxfunction! Get an errormessage ATM 
   /*Uncaught (in promise) TypeError: Cannot read property '0' of undefined
   at generatedHTMLForWeatherForecast (script.js:70)
   at script.js:113
