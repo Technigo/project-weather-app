@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather app</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;400;600;800&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+  <header>
+
+    
+  </header>
+  <main id="main">
+      <!-- <form action="">
+        <input type="text" name="cityNameInput" id="cityNameInput" value="" placeholder="Enter a city">
+        <button type="button" onclick="fetchWeather(document.getElementById('cityNameInput').value)">Go</button>
+      </form> -->
+
+      <h1>And now, today's weather:</h1>
+      <div id="">City: <span id="city"></span> 
+      </div>
+      <div id="">Country: <span id="country"></span> 
+      </div>
+      <div id="">Temperature: <span id="temperature"></span> 
+      </div>
+      <div id="">Feels like: <span id="tempfeelslike"></span> 
+      </div>
+      <div id="">Weather description: <span id="weathertype"></span> 
+      </div>
+      <div id="">Additional description: <span id="description"></span> 
+      </div>
+      <div id="">Sunrise: <span id="sunrise"></span> 
+      </div>
+      <div id="">Sunset: <span id="sunset"></span> 
+      </div>
+
+      <img src="./assets/ic_cloudy.svg" id="weatherIcon" class="svg weather-icon" alt="weather icon"/>
+
+      <h2>5-day forecast</h2>
+      <section id="forecastBox"></section>
+
+      
+      </section>
+
+
+  </main>
+  <script src="script.js" defer></script>
+  <script src="countryTransform.js" defer></script>
+  <!-- <script src="svgColor.js" defer></script> -->
+</body>
+</html>

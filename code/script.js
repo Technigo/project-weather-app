@@ -113,7 +113,7 @@ const fetchCurrentWeather = (cityName) => {
 
     city.innerHTML = weatherObject.name;
     country.innerHTML = getCountryName(weatherObject.sys.country);
-    localtime.innerHTML = formatTime(weatherObject.dt);
+    // localtime.innerHTML = formatTime(weatherObject.dt);
     temperature.innerHTML = Math.round(weatherObject.main.temp)+"°";
     tempFeelsLike.innerHTML = Math.round(weatherObject.main.feels_like)+"°";
     weatherType.innerHTML = weatherObject.weather[0].main;

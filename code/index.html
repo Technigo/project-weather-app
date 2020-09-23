@@ -9,44 +9,39 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-  <main id="main">
-      <form action="">
-        <input type="text" name="cityNameInput" id="cityNameInput" value="" placeholder="Enter a city">
-        <button type="button" onclick="fetchWeather(document.getElementById('cityNameInput').value)">Go</button>
-      </form>
+<main>
+  <header>
+    <div class="location">
+      <span id="city">STOCKHOLM</span>
+      <span id="country">SWEDEN</span>
+    </div>
+    <button class="button-primary">
+      <img src="./assets/ic_globe.svg" alt="globe icon">
+      <span>SET LOCATION</span>
+    </button>
+    
+  </header>
+  <section id="main">
+    <div class="main-weathertop">
+      <div class=""></div>
 
-      <h1>And now, today's weather:</h1>
-      <div id="">City: <span id="city"></span> 
-      </div>
-      <div id="">Country: <span id="country"></span> 
-      </div>
-      <div id="">Local time: <span id="localtime"></span> 
-      </div>
-      <div id="">Temperature: <span id="temperature"></span> 
-      </div>
-      <div id="">Feels like: <span id="tempfeelslike"></span> 
-      </div>
-      <div id="">Weather description: <span id="weathertype"></span> 
-      </div>
-      <div id="">Additional description: <span id="description"></span> 
-      </div>
-      <div id="">Sunrise: <span id="sunrise"></span> 
-      </div>
-      <div id="">Sunset: <span id="sunset"></span> 
-      </div>
+    </div>
+    <div class="main-weatherbottom">
 
-      <img src="./assets/ic_cloudy.svg" id="weatherIcon" class="svg weather-icon" alt="weather icon"/>
-
-      <h2>5-day forecast</h2>
-      <section id="forecastBox"></section>
-
-      
-      </section>
+    </div>
 
 
-  </main>
-  <script src="script.js" defer></script>
-  <script src="countryTransform.js" defer></script>
+  </section>
+
+  <footer>
+    <div class="footer-top">
+      <img src="./assets/clouds-top-border.svg" alt="Clouds border">
+    </div>
+    <div class="footer-main"></div>
+  </footer>
+</main>
+  <!-- <script src="script.js" defer></script>
+  <script src="countryTransform.js" defer></script> -->
   <!-- <script src="svgColor.js" defer></script> -->
 </body>
 </html>
