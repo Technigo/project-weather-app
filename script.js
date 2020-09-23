@@ -1,7 +1,7 @@
 let city = 'Stockholm';
 
 const containerToday = document.getElementById("weatherToday");
-const descriptionToday = document.getElementById("text");
+//const descriptionToday = document.getElementById("text");
 const containerForecast = document.getElementById("forecastWrapper");
 
 //TEMPERATURE FUNCTIONS
@@ -137,17 +137,19 @@ const generatedHTMLForWeatherForecast = (filteredForecast) => {
 };
 
 const fetchWeatherToday = (city) => {
-  fetch(`"https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=95b6172379fabb04319de6c9e2aa34ae"`)
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=95b6172379fabb04319de6c9e2aa34ae`)
     .then((response) => {
       return response.json();
     })
     .then((weatherToday) => {
       containerToday.innerHTML += generatedHTMLForWeatherToday(weatherToday);
     });
+    
 };
+fetchWeatherToday(city)
 
 const fetchWeatherForecast = (city) => {
-  fetch(`"https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=95b6172379fabb04319de6c9e2aa34ae"`)
+  fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=95b6172379fabb04319de6c9e2aa34ae`)
     .then((response) => {
       return response.json();
     })
@@ -162,4 +164,6 @@ const fetchWeatherForecast = (city) => {
         containerForecast.innerHTML += generatedHTMLForWeatherForecast(forecast);
       });
     });
+    
 };
+fetchWeatherForecast(city)
