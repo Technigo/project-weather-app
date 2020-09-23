@@ -276,7 +276,7 @@ const getUserLocation = (inLat, inLon) => {
 
     function error(err) {
         //Error handling- This is invoked if something goes wrong when getting the users coordinates. Stockholm are set as fallback.
-        console.log(err);
+        console.log(err.message);
         getCurrentWeather(fallBackLat, fallBackLon);
         getFiveDayForecast(fallBackLat, fallBackLon);
         getUVIndex(fallBackLat, fallBackLon);
