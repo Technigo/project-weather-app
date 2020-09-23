@@ -5,6 +5,8 @@ const apiKey = "e33f1cc192401277e601a6aed3a82800"
 const weatherLocation = document.getElementById('location');
 const weatherDescription = document.getElementById('description');
 const weatherTemperature = document.getElementById('temperature');
+const weatherSunrise = document.getElementById('sunrise')
+const weatherSunset = document.getElementById('sunset')
 
 fetch(apiToday)
   .then((response) => {
@@ -17,8 +19,13 @@ fetch(apiToday)
 const weatherToday = (json) => {
 weatherLocation.innerHTML = json.name;
 weatherDescription.innerHTML = json.weather[0].description
-weatherTemperature.innerHTML = json.main.temp.toFixed(0.5)
+
+// Sunrise & Sunset
+weatherSunrise.innerHTML = new Date(json.sys.sunrise * 1000).toLocaleTimeString([]);
+weatherSunset.innerHTML = new Date(json.sys.sunset * 1000).toLocaleTimeString([]);
 }
+
+
 
 
 
