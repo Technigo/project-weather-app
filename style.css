@@ -11,26 +11,37 @@
     flex-direction: column;
     align-items: center;
     /* justify-content: center; */
-    /* text-align: center; */
+    text-align: center;
     height: 100vh;
-    background: rgb(173, 216, 230);
-    background: linear-gradient(90deg, rgba(173, 216, 230, 1) 13%, rgba(83, 142, 255, 1) 46%, rgba(129, 212, 250, 1) 90%);
+    background: #add8e6;
+    /* background: rgb(173, 216, 230);
+    background: linear-gradient(90deg, rgba(173, 216, 230, 1) 13%, rgba(83, 142, 255, 1) 46%, rgba(129, 212, 250, 1) 90%); */
     color: #fff;
 }
 
-.location,
 .weather-info {
-    height: 30vh;
+    /* height: 800vh; */
     width: 50%;
-    display: flex;
+    /* display: flex; */
     justify-content: space-around;
     align-items: center;
 }
 
-.weather-info {
-    flex-direction: row;
-}
 
-.location h1 {
+/* .weather-info {
+    /* flex-direction: row; */
+
+
+}
+.weather-info h1 {
     font-size: 100px;
+}
+.weather-info img {
+    width: 40px;
+}
+.forecast {
+    margin-top: 50px;
+    /* display: flex;
+    flex-direction: column;
+    display: block; */
 }
