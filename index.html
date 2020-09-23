@@ -4,26 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Overlock:wght@400;700;900&display=swap" rel="stylesheet">
   <title>Weather App</title>
 </head>
 <body>
-  <section class="app-container" id="app-container">
-    <article class="stockholm" id="stockholm">
-      <div>
-        <p id="location-sthlm"></p>
-        <p id="sunrise-sthlm"></p>
-        <p id="sunset-sthlm"></p>
-        <h1 id="now-sthlm"></h1>
-        <p id="now-desc-sthlm"></p>
-        <img class="today" id="now-icon"/>
-      
-      </div>
-      
-      <div class="five-day" id="five-Day">
-      </div>
-    </article>
+  <section id="app-container">
 
-    </section>
+    <div class="top-left"> 
+      <p id="location"></p>
+      <p id="sunrise"></p>
+      <p id="sunset"></p>
+    </div>
+    
+    <div class="now">
+      <h1 id="now"></h1>
+      <img class="today" id="now-icon"/>
+      <p id="now-desc"></p>
+    </div>
+
+    <div class="five-day" id="five-Day">
+      <!-- JavaScript to inject forecast -->
+    </div>
+
+  </section>
+  
   <script src="./script.js"></script>
 </body>
 </html>
