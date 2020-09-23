@@ -11,7 +11,6 @@ h1 {
     margin: 0;
     align-items: flex-start;
     padding: 0;
-    
 }
 
 h2 {
@@ -46,14 +45,18 @@ sup {
     border: 2px solid white;
     margin: 7px;
     border-radius: 2px;
-
 }
 
-.forecast-day img {
-    width: 50px;
-    height: 50px;
+header h2 {
+    position: absolute;
+    right: 15px;
+    margin: 15px;
+    color: white;
 }
 
+header nav {
+    display: none;
+}
 .current-main {
     display: flex;
     justify-content: center;
@@ -73,6 +76,10 @@ sup {
     color: white;
 }
 
+.forecast {
+    padding-top: 50px;
+}
+
 .forecast p {
     color: #aaa;
     font-weight: 600;
@@ -89,16 +96,17 @@ sup {
     margin: 2px;
 }
 
+.forecast-day img {
+    width: 50px;
+    height: 50px;
+}
+
 .temp {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 30%;
-}
-
-.forecast {
-    padding-top: 50px;
 }
 
 .forecast-day:hover {
@@ -112,3 +120,113 @@ sup {
     align-items: center;
     margin: 15px 0;
 }
+
+@media (min-width: 768px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #fafafa;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        background-color: #333;
+        width: 100%;
+    }
+
+    .desktop-header {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        height: 80px;
+        width: 100%;
+    }
+
+    header h2 {
+        position: relative;
+        right: 0;
+        margin: 15px;
+        color: white;
+    }
+    
+    header nav {
+        display: none;
+    }
+
+    .current-main {
+        width: 90%;
+        margin: 30px;
+        border-radius: 10px;
+        box-shadow: 5px 5px 5px #eee;
+    }
+
+    .forecast {
+        display: flex;
+        width: 90%;
+        padding-top: 0;
+    }
+
+    .forecast-day {
+        height: 20vh;
+        width: 15%;
+        margin: 1%;
+        flex-direction: column;
+        justify-content: center;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 5px 5px 5px #eee;
+        
+    }
+    .temp {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .forecast-day img {
+        width: 80px;
+        height: 80px;
+    }
+
+    
+}
+
+@media (min-width: 1024px) {
+    
+    header {
+        justify-content: center;
+    }
+
+    .desktop-header {
+        justify-content: space-between;
+        width: 60%;
+    }
+
+    header nav {
+        display: flex;
+        width: 40%;
+        justify-content: space-evenly;
+        color: white;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: 400;
+    }
+    .hamburger-menu {
+        display: none;
+    }
+
+    .current-main {
+        width: 60%;
+    }
+
+    .forecast {
+        width: 60%;
+    }
+
+}
+
