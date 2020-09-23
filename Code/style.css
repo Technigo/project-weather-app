@@ -8,7 +8,8 @@ body{
   background-color: purple;
   overflow: hidden;
   background-repeat: no-repeat;
-  background-position: top center;font-family: Arial, Helvetica, sans-serif;
+  background-position: top center;
+  font-family: Arial, Helvetica, sans-serif;
   background-size: cover;
 
 }
@@ -54,4 +55,15 @@ border-radius: 10px;
   margin: 15px auto;
   background-color: rgba(240, 248, 255, 0.6);
   border-radius: 10px;
+}
+
+#suntime {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#suntime img {
+  width: 40px;
 }

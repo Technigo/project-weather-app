@@ -1,45 +1,42 @@
-//apiKey = "3eb926770233f3bacc440bffc14e56a4"
-let cityLocation = document.getElementById("currentCityName");
-let tempIcon = document.getElementById("temp-icon");
-let tempValue = document.getElementById("temp-value");
-let climate = document.getElementById("climate");
-let sunRiseTime = document.getElementById("sunrise");
-let sunSetTime = document.getElementById("sunset");
 
 // GET WEATHER REPORT
-let enteredCityLocation = "Stockholm";
+const enteredCityLocation = "Stockholm, Sweden";
 
 
-// Fetch Data for current weather
+//API's
 
-const apiOneDay = `https://api.openweathermap.org/data/2.5/weather?q=${enteredCityLocation}&appid=3eb926770233f3bacc440bffc14e56a4`;
+const API_ONE_DAY = `https://api.openweathermap.org/data/2.5/weather?q=${enteredCityLocation}&appid=3eb926770233f3bacc440bffc14e56a4`;
+const API_FIVE_DAYS = `https://api.openweathermap.org/data/2.5/forecast?q=${enteredCityLocation}&appid=3eb926770233f3bacc440bffc14e56a4`;
 
-fetch(apiOneDay)
-  .then((response) => {
-    return response.json();
-  })
+
+// Weather Variables
+const cityLocation = document.getElementById("currentCityName");
+const tempIcon = document.getElementById("temp-icon");
+const tempValue = document.getElementById("temp-value");
+const climate = document.getElementById("climate");
+const sunRiseTime = document.getElementById("sunrise");
+const sunSetTime = document.getElementById("sunset");
+
+fetch(API_ONE_DAY)
+  .then((response) => { return response.json(); })
   .then(data => {
-    const { name } = data;
-    const { feels_like } = data.main;
-    const { sunrise } = data.sys;
-    const { sunset } = data.sys;
     const { id, main } = data.weather[0];
-    cityLocation.textContent = name;
-    tempValue.textContent = Math.round(feels_like - 273)
+    cityLocation.textContent = data.name;
+    tempValue.textContent = Math.round(data.main.temp - 273);
     climate.textContent = main;
     console.log(data);
 
-    var unixSunriseTime = new Date(sunrise * 1000);
-    var sunriseHour = unixSunriseTime.getHours();
-    var sunriseMinutes = "0" + unixSunriseTime.getMinutes();
-    var sunriseSeconds = "0" + unixSunriseTime.getSeconds();
-    var formattedSunrise = `Sunrise : ${sunriseHour}:${sunriseMinutes.substr(-2)}:${sunriseSeconds.substr(-2)}`;
+    //Calculation of Sunrise time
+    const sunriseHour = new Date(data.sys.sunrise * 1000).getHours();
+    const sunriseMinutes = "0" + new Date(data.sys.sunrise * 1000).getMinutes();
+    const sunriseSeconds = "0" + new Date(data.sys.sunrise * 1000).getSeconds();
+    const formattedSunrise = `${sunriseHour}:${sunriseMinutes.substr(-2)}:${sunriseSeconds.substr(-2)}`;
 
-    var unixSunsetTime = new Date(sunset * 1000);
-    var sunsetHour = unixSunsetTime.getHours();
-    var sunsetMinutes = "0" + unixSunsetTime.getMinutes();
-    var sunsetSeconds = "0" + unixSunsetTime.getSeconds();
-    var formattedSunset = `Sunset : ${sunsetHour}:${sunsetMinutes.substr(-2)}:${sunsetSeconds.substr(-2)}`;
+    // Calculation of Sunset time
+    const sunsetHour = new Date(data.sys.sunset * 1000).getHours();
+    const sunsetMinutes = "0" + new Date(data.sys.sunset * 1000).getMinutes();
+    const sunsetSeconds = "0" + new Date(data.sys.sunset * 1000).getSeconds();
+    const formattedSunset = `${sunsetHour}:${sunsetMinutes.substr(-2)}:${sunsetSeconds.substr(-2)}`;
 
     sunRiseTime.textContent = formattedSunrise;
     sunSetTime.textContent = formattedSunset;
@@ -51,30 +48,37 @@ fetch(apiOneDay)
     }
     else if (id < 350) {
       tempIcon.src = './images/icons/lightrain.png';
-    } else if (id < 550) {
+    }
+    else if (id < 550) {
       tempIcon.src = './images/icons/heavyrain.png';
-    } else if (id < 650) {
+    }
+    else if (id < 650) {
       tempIcon.src = './images/icons/snow.png';
-    } else if (id < 700) {
+    }
+    else if (id < 700) {
       tempIcon.src = './images/icons/thunder.png';
-    } else if (id == 800) {
-      tempIcon.src = './images/icons/badweather.png';
-    } else if (id > 800) {
+    }
+    else if (id == 800) {
+      tempIcon.src = './images/icons/clear.png';
+    }
+    else if (id > 800) {
       tempIcon.src = './images/icons/cloudy.png';
-    } else {
+    }
+    else {
       tempIcon.src = './images/icon/badweather.png';
     };
   })
 
+// Date Variables
+let todaysDate = new Date();
+const daysOfTheWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
 // Fetch Data for next 5 days
 
-const apiFiveDays = `https://api.openweathermap.org/data/2.5/forecast?q=${enteredCityLocation}&appid=3eb926770233f3bacc440bffc14e56a4`;
-
-fetch(apiFiveDays)
-  .then((response) => {
-    return response.json();
-  })
+fetch(API_FIVE_DAYS)
+  .then((response) => { return response.json(); })
   .then((data) => {
-    console.log(data);
-  });
+    console.log(data)
 
+    const { temp_max, temp_min } = data.list
+  });
