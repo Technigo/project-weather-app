@@ -4,7 +4,7 @@ const button = document.getElementById('search-button');
 const input = document.getElementById('input');
 console.log(typeof input.value);
 let cityName = 'Stockholm'; // ändra till geolocation sen
-let API_URL_TODAY = `https://api.openweathermap.org/data/2.5/weather?q=stockholm&units=metric&APPID=${API_KEY}`;
+let API_URL_TODAY = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${API_KEY}`;
 let API_URL_FORECAST = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&APPID=${API_KEY}`;
 //const mainContainer = document.getElementById('main-container');
 
@@ -13,12 +13,15 @@ button.addEventListener('click', () => {
 
   cityName = inputValue;
   API_URL_FORECAST = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&APPID=${API_KEY}`;
+  API_URL_TODAY = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${API_KEY}`;
+
   console.log(API_URL_FORECAST);
 
   console.log(inputValue);
 
   console.log(cityName);
-  //fetchWeatherToday();
+  fetchWeatherToday(API_URL_TODAY);
+  console;
   fetchWeatherForecast(API_URL_FORECAST);
   console.log(cityName);
   input.value = '';
@@ -77,15 +80,22 @@ const fetchWeatherToday = (url) => {
       console.log(temperature);
       const city = weatherArray.name;
       const description = weatherArray.weather[0].main;
+      const icon = `http://openweathermap.org/img/wn/${weatherArray.weather[0].icon}@2x.png`;
+      console.log(icon);
       const sunrise = setSunTime(weatherArray.sys.sunrise);
       const sunset = setSunTime(weatherArray.sys.sunset);
-      return { city, description, sunrise, sunset };
+      //return { city, description, sunrise, sunset };
       //  });
-      //  console.log(newWeatherArray);
+      document.getElementById(
+        'main-temperature'
+      ).innerHTML = `${temperature}\u00B0`;
+      document.getElementById('main-city').innerHTML = city;
+      document.getElementById('main-description').innerHTML = description;
+      document.getElementById('main-icon').src = icon;
+      document.getElementById('sunrise').innerHTML = sunrise;
+      document.getElementById('sunset').innerHTML = sunset;
     });
 };
-
-fetchWeatherToday(API_URL_TODAY);
 
 // fetch(API_URL_TODAY)
 //   .then((response) => {
@@ -213,3 +223,4 @@ const filterForecast = (forecastArray) => {
 };
 
 fetchWeatherForecast(API_URL_FORECAST);
+fetchWeatherToday(API_URL_TODAY);
