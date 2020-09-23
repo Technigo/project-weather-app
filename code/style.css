@@ -11,6 +11,14 @@ body {
   padding: 10px;
 }
 
+p {
+  color: rgb(243, 243, 243);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 14px;
+}
+
+/* CITY */
 h1 {
   color: aliceblue;
   font-family: "didot";
@@ -19,11 +27,16 @@ h1 {
   margin: 0;
 }
 
+/* CURRENT TEMPERATURE */
+
 h2 {
   color: #ffff;
+  font-family: "didot";
   font-size: 55px;
   margin: 0;
 }
+
+/* CURRENT WEATHER SECTION */
 
 .current-weather {
   display: flex;
@@ -32,11 +45,16 @@ h2 {
   text-align: center;
 }
 
-#weather-description { 
-  text-transform:capitalize;
+#weather-description {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-transform: capitalize;
+  margin-top: 0;
+  padding: 5px;
 }
 
-#real-feel { 
+#real-feel {
+  font-family: "didot";
+  font-style: italic;
   margin-top: 0;
   margin-bottom: 30px;
 }
@@ -57,6 +75,8 @@ h2 {
   justify-content: space-evenly;
 }
 
+/* DIVIDER*/
+
 hr {
   border: 0;
   height: 1px;
@@ -67,6 +87,8 @@ hr {
     rgba(237, 237, 237, 0)
   );
 }
+
+/* NEXT DAYS FORECAST */
 
 .five-day-forecast {
   display: block;
@@ -79,20 +101,53 @@ hr {
   flex-direction: row;
   flex-wrap: wrap;
   font-family: "didot";
-  font-size:25px;
+  font-size: 25px;
   padding: 20px;
-  font-size:15px;
-  color:#ffff;
+  font-size: 15px;
+  color: #ffff;
 }
 
-.column { 
+.column {
   flex-basis: 50%;
   padding-bottom: 30px;
 }
 
-p {
-  color: rgb(243, 243, 243);
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  font-size: 14px;
+/* MEDIA QUERY TABLET */
+
+@media screen and (min-width:768px) {
+
+  p {
+    font-size: 20px;
+  }
+
+  /* CITY */
+  h1 {
+    font-size: 35px;
+  }
+
+  /* CURRENT TEMPERATURE */
+
+  h2 {
+    font-size: 65px;
+  }
+
+  .sunrise-sunset {
+    justify-content: center;
+  }
+
+  #forecast {
+    font-size: 25px;
+  }
+}
+
+/* MEDIA QUERY DESKTOP */
+
+@media screen and (min-width:1024px) {
+
+.desktop-container { 
+  background-color: rgba(255, 255, 255, 0.219);
+  border-radius: 40px;
+  margin: auto;
+  width: 50%;
+}
 }
