@@ -32,7 +32,7 @@ const generateHTML = weather => {
     cityElement.innerHTML = weather.name
     sunriseElement.innerHTML = `Sunrise: ${sunrise} ` // need to format
     sunsetElement.innerHTML = `Sunset: ${sunset} `
-    tempElement.innerHTML = `${weather.main.temp.toFixed(1)}°` //should I round directly here insteaad?
+    tempElement.innerHTML = `${Math.round(weather.main.temp)}°` //should I round directly here insteaad?
     iconElement.innerHTML = `<img src='${icon}'>`
     descriptionElement.innerHTML = weather.weather[0].description.charAt(0).toUpperCase() + weather.weather[0].description.slice(1)
     //mainElement.innerHTML = weather.weather[0].main

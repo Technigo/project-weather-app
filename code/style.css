@@ -3,54 +3,108 @@ body {
     font-family: 'Noto Sans', sans-serif;
 }
 
-.main-container {
-    /* width: 60%; 
-    margin: 5% auto; 
-    border-radius: 40px; */
-    padding: 1%;
-    background-color: white;
-    opacity: 0.9;
-    background-image: linear-gradient(to right,  lightyellow, lightblue);
-}
-
-ul {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: 0;
-    font-size: 14px;
-}
-
-li {
-    list-style: none;
-}
-
-#city {
-    font-size: 20px;
-}
-
 .weather-container {
-    margin: 50px;
+    padding: 40px 10px 10px 10px;
+    background-image: linear-gradient(to right, rgb(139, 204, 226),rgb(55, 55, 255));
     text-align: center;
 }
+
+.weather {
+    margin: 30px;
+}
+
+h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 400;
+} 
 
 h1 {
     margin: 0;
     font-size: 40px;
 }
 
-h2 {
+p {
+    margin: 0;
+}
+
+h3 {
     margin: 0;
     font-size: 20px;
     font-weight: 400;
 }
 
-p {
-    margin: 0;
-}
-
-#description {
+ul {
+    margin: 20px;
+    padding: 0;
     font-size: 16px;
-    font-style: italic;
 }
 
+li {
+    list-style: none;
+}
+
+.weather-container ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+.forecast-container li {
+    padding: 10px;
+    border-bottom: 1px solid rgb(55, 55, 255);
+}
+
+#last {
+    border-bottom: none;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .weather-container {
+        padding: 100px 150px 20px 150px;
+    }
+    .forecast-container {
+        padding: 50px 150px 50px 150px;
+    }
+    body {
+      background-color:  rgb(209, 232, 240);
+    }
+    .weather-container li {
+        padding: 10px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .weather-container {
+        margin: 50px;
+        width: 500px;
+        background-image: url('https://images.unsplash.com/photo-1574434824953-d11603f64d49?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60');
+        background-size: cover;
+        background-position: 50% 100%;
+        border-radius: 20px;
+    }
+
+    .weather {
+        padding: 10px;
+    }
+
+    .forecast-container {
+        margin: 50px;
+        width: 520px;
+        background-color: rgb(209, 232, 240);
+        border-radius: 20px;
+    } 
+
+    body {
+      display: flex;
+      justify-content: space-evenly;
+      background-image: linear-gradient(to right, rgb(139, 204, 226),rgb(55, 55, 255));
+    }
+
+    .forecast-container li {
+        padding: 20px;
+    } 
+
+    .weather-container li {
+        padding: 0;
+    } 
+  }
