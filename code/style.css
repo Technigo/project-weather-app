@@ -39,9 +39,15 @@ body {
 .main-weather-container {
 }
 
-.main-header {
+.main-temperature {
   font-size: 80px;
   margin: auto;
+}
+
+.main-city {
+}
+
+.main-description {
 }
 
 .main-weather h2,
@@ -94,7 +100,7 @@ h3 {
   -webkit-transform: rotate(-45deg);
 }
 
-.forecast-container {
+.forecasts {
   display: flex;
   flex-direction: column;
   padding: 0 25px;
