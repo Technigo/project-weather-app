@@ -20,24 +20,29 @@ body {
   
 h1 {
   font-weight: bold;
+  font-size: 25px;
 }
 
 p {
   margin: 4px;
 }
 
-/*** Styling of the 'box' with the weather ***/
-.weather-wrapper {
-  margin-top: 50px;
-  margin-bottom: 20px;
-  padding: 1px 10px;
-  border: 1px solid #000;
+/* Styling of the input element and buttons */
+.input-data {
+  margin: 15px;
 }
 
-.weather-pic {
-  height: 100px;
-  width: 100px;
-  margin: 10px 0px;
+/*** Styling of the 'box' with the weather ***/
+.weather-wrapper {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  padding: 1px 10px;
+  width: 80vw;
+}
+
+.city {
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
 .weather-today, .another-day {
@@ -46,18 +51,35 @@ p {
   justify-content: space-between;
 }
 
+.sunrise, .sunset, .wind {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+
+.sunrise-pic, .sunset-pic, .wind-pic {
+  width: 20px;
+  height: 20px;
+  margin: 2px; 
+}
+
+.picture-div {
+  display: flex;
+  justify-content: center;
+}
+
+.weather-pic {
+  height: 135px;
+  width: 135px;
+  margin: 10px 0px;
+}
+
 .one {
   border-bottom: 1px dashed #000;
 }
 
 .two {
   margin-bottom: 10px;
-}
-
-.sunrise, .sunset {
-  display: flex;
-  flex-direction: row;
-  justify-content: left;
 }
 
 /*** Styling of the Footer ***/
@@ -70,3 +92,54 @@ footer {
   font-size: 12px;
 }
 
+@media (min-width: 668px) { /* Tablet device */
+  p{
+    margin-top: 10px;
+  }
+
+  .weather-wrapper {
+    width: 80vw;
+  }
+
+  .sunrise-pic, .sunset-pic, .wind-pic {
+    margin-top: 12px; 
+  }
+
+  .weather-pic {
+    margin-bottom: 40px;
+    height: 180px;
+    width: 180px;
+  }
+}
+
+@media (min-width: 1025px) { /* Desktop device */
+  p {
+    margin: 10px;
+  }
+
+  .wrapper-two {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 60vh;
+  }
+
+  .picture-div {
+    margin: 20px 10px 70px 10px;
+  }
+
+  .weather-pic {
+    margin-bottom: 80px;
+    height: 235px;
+    width: 235px;
+  }
+
+  .todays-forecast, .forecast-5-days {
+    margin-top: 50px;
+  }
+
+  footer {
+    position: relative;
+    bottom: 0;
+  }
+}

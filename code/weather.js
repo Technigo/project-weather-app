@@ -3,24 +3,29 @@ const city = document.getElementById('city');
 const todaysDate = document.getElementById('todaysDate');
 const weatherDescr = document.getElementById('weatherDescr');
 const todaysTemperature = document.getElementById('todaysTemperature');
+const wind = document.getElementById('wind');
 const sunrise = document.getElementById('sunrise');
 const sunset = document.getElementById('sunset');
 
-// API URL's
-const todaysWeatherUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Gothenburg,Sweden&units=metric&APPID=22db637cf647bcd1513c052513b7d54c'
-const weatherForecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=Gothenburg,Sweden&units=metric&APPID=22db637cf647bcd1513c052513b7d54c'
+
+// Function connected to the button in HTML - starts fetching weather when city is choosen
+const fetchWeather = (cityName) => {
+    forecastFunction(cityName);
+    todaysWeatherfunction(cityName);
+}
 
 // Function for today's weather
-const todaysWeatherfunction = () => {
-    fetch(todaysWeatherUrl)
+const todaysWeatherfunction = (cityName) => {
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=22db637cf647bcd1513c052513b7d54c`)
     .then((response) => {
         return response.json();
     })
     .then((todaysweather) => {
-        city.innerHTML = todaysweather.name;
+        city.innerHTML = `${todaysweather.name}, ${todaysweather.sys.country}`;
         todaysDate.innerHTML = `${new Date().toLocaleDateString('en-US',  {weekday: 'short'},)} |`;
         weatherDescr.innerHTML = `${todaysweather.weather[0].description} `;
         todaysTemperature.innerHTML = `| ${todaysweather.main.temp.toFixed(1)}°`;
+        wind.innerHTML = `wind speed: ${todaysweather.wind.speed} (m/s)`
 
         // Sunrise & Sunset - fixing the format - Multiply by 1000 because data given in seconds.
         sunrise.innerHTML += new Date(todaysweather.sys.sunrise * 1000).toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit', hour12: false,});
@@ -28,9 +33,29 @@ const todaysWeatherfunction = () => {
         
         const weatherPicID = todaysweather.weather[0].icon; // Variable for getting the weather icon from the API
         weatherPic.src = `./assets/${weatherPicID}.png`; // Stored pics per weather icon id
+
+        // Function to get the border different colors based on the temperature
+        coloringFunction = () => {
+            if (todaysweather.main.temp > 30.0) {
+                document.getElementById("weatherColor").style.border = "10px solid #f29d74";
+            } else if (todaysweather.main.temp > 20.0) {
+                document.getElementById("weatherColor").style.border = "10px solid #ebbd73";
+            } else if (todaysweather.main.temp > 15.0) {
+                document.getElementById("weatherColor").style.border = "10px solid #a7f2c2";
+            } else if (todaysweather.main.temp > 10.0) {
+                document.getElementById("weatherColor").style.border = "10px solid #b6f0e0";
+            } else if  (todaysweather.main.temp > 0.0) {
+                document.getElementById("weatherColor").style.border = "10px solid #bbf2ee";
+            } else if (todaysweather.main.temp < 0.0) {
+                document.getElementById("weatherColor").style.border = "10px solid #bee3eb";
+            } else {
+                document.getElementById("weatherColor").style.border = "10px solid #f5b0a4";
+            }
+        };
+        coloringFunction(); // Invoking the function
+    
     })
 };
-todaysWeatherfunction();
 
 // Variables for 5 day forecast
 const todayplus1 = document.getElementById('todayplus1');
@@ -50,8 +75,8 @@ const descplus5 = document.getElementById('descplus5');
 const temperatureplus5 = document.getElementById('temperatureplus5');
 
 // Function for fetching the weather forecast for the next 5 days
-const forecastFunction = () => {
-    fetch(weatherForecastUrl)
+const forecastFunction = (cityName) => {
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&APPID=22db637cf647bcd1513c052513b7d54c`)
     .then((response) => {
         return response.json();
     })
@@ -62,7 +87,7 @@ const forecastFunction = () => {
         // Variables and array for name on the upcoming days
         const today = new Date()
         const todayWeekday = today.getDay()
-        var days = ['Mon','Tue','Wed','Thu','Fri','Sat', 'Sun']
+        var days = ['mon','tue','wed','thu','fri','sat', 'sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
         
         todayplus1.innerHTML = `${days[todayWeekday]} |`;
         descplus1.innerHTML = `${forecast.list[0].weather[0].description}`
@@ -81,4 +106,8 @@ const forecastFunction = () => {
         temperatureplus5.innerHTML = `| ${forecast.list[4].main.temp.toFixed(1)}°`;
     })
 };
-forecastFunction();
+
+// Function to restart / clean the settings when changing city
+const restart= () => {
+    document.location.href = "";
+};
