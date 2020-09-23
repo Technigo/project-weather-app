@@ -15,7 +15,23 @@
         <div id="weatherToday"></div>
         <p id="text"></p>
     </section>
-    <section id="forecastWrapper"></section>
+
+
+    <section id="forecastWrapper">
+        <input 
+        type="text"
+        id="cityNameSearch"
+        name="cityNameSearch"
+        onkeydown="if (event.keyCode == 13)
+        document.getElementById('btnSearch').click()">
+
+        <input 
+        class="search-btn"
+        type="button"
+        id="btnSearch"
+        value="Search"
+        onclick="citySearch()" />
+    </section>
 
     <script src="./script.js"></script>
 </body>

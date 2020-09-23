@@ -1,10 +1,8 @@
+let city = 'Stockholm';
+
 const containerToday = document.getElementById("weatherToday");
 const descriptionToday = document.getElementById("text");
 const containerForecast = document.getElementById("forecastWrapper");
-const apiUrlToday =
-  "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=95b6172379fabb04319de6c9e2aa34ae";
-const apiUrlForecast =
-  "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=95b6172379fabb04319de6c9e2aa34ae";
 
 //TEMPERATURE FUNCTIONS
 
@@ -78,6 +76,17 @@ const iconWeather = (item) => {
 
 }
 
+//BUTTON FUNCTION - Doesn't work at, error cannot read value of null
+const citySearch = () => {
+  containerToday.innerHTML = ''; //This is needed to clear the default value
+  containerForecast.innerHTML = '';
+  city = document.getElementById('cityNameSearch').value; //this sets the searchvalue to whatever the input is
+
+  fetchWeatherForecast(city);
+  fetchWeatherToday(city);
+  document.getElementById('cityNameSearch').value = ''; //Clearing input value after search
+}
+
 //DISPLAY FUNCTIONS
 
 const generatedHTMLForWeatherToday = (weatherToday) => {
@@ -108,6 +117,8 @@ const generatedHTMLForWeatherForecast = (filteredForecast) => {
   //Tells what day it is
   console.log(filteredForecast.main.temp);
   const dailyTemp = calculateTemperature(filteredForecast.main.temp); //Would also like for this to tell min/max-temp
+  
+  
   //const minMax = minMaxTemperature(filteredForecast.list[0].main.temp_min) //Make use of minMaxfunction! Get an errormessage ATM
   /*Uncaught (in promise) TypeError: Cannot read property '0' of undefined
   at generatedHTMLForWeatherForecast (script.js:70)
@@ -125,8 +136,8 @@ const generatedHTMLForWeatherForecast = (filteredForecast) => {
   //Humidity and wind
 };
 
-const fetchWeatherToday = () => {
-  fetch(apiUrlToday)
+const fetchWeatherToday = (city) => {
+  fetch(`"https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=95b6172379fabb04319de6c9e2aa34ae"`)
     .then((response) => {
       return response.json();
     })
@@ -135,8 +146,8 @@ const fetchWeatherToday = () => {
     });
 };
 
-const fetchWeatherForecast = () => {
-  fetch(apiUrlForecast)
+const fetchWeatherForecast = (city) => {
+  fetch(`"https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=95b6172379fabb04319de6c9e2aa34ae"`)
     .then((response) => {
       return response.json();
     })
@@ -148,9 +159,7 @@ const fetchWeatherForecast = () => {
       containerForecast.innerHTML = `<h1>The weather for the next five days will be:</h1>`;
 
       filteredForecast.forEach((forecast) => {
-        containerForecast.innerHTML += generatedHTMLForWeatherForecast(
-          forecast
-        );
+        containerForecast.innerHTML += generatedHTMLForWeatherForecast(forecast);
       });
     });
 };
