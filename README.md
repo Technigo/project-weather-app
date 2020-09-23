@@ -8,4 +8,4 @@ I started with the fetch functions, making sure all the data was retrieved and p
 When I had everything in place for a specified city, I changed the code into using geo-location. 
 
 ## View it live
-https://karro-weather-app.netlify.app/
+https://karro-weather.netlify.app/
