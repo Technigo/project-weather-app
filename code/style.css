@@ -32,6 +32,8 @@ sup {
     
 }
 
+/* HEADER */
+
 .hamburger-menu {
     margin: 15px;
     position: absolute;
@@ -77,6 +79,9 @@ nav a {
     font-weight: 600;
     margin: 10px;
 }
+
+/* CURRENT WEATHER */ 
+
 .current-main {
     display: flex;
     justify-content: center;
@@ -111,6 +116,16 @@ nav a {
     height: auto;
     color: white;
 }
+
+.sun {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0;
+}
+
+/* FORECAST */
 
 .forecast {
     padding-top: 50px;
@@ -149,13 +164,8 @@ nav a {
     background-color: #fafafa;
 }
 
-.sun {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin: 15px 0;
-}
+
+/* TABLET */
 
 @media (min-width: 768px) {
     body {
@@ -192,7 +202,6 @@ nav a {
         display: none;
     }
 
-
     .current-main {
         width: 90%;
         margin: 30px;
@@ -215,8 +224,8 @@ nav a {
         background-color: white;
         border-radius: 10px;
         box-shadow: 5px 5px 5px #eee;
-        
     }
+
     .temp {
         width: 100%;
         flex-direction: column;
@@ -226,9 +235,9 @@ nav a {
         width: 80px;
         height: 80px;
     }
-
-    
 }
+
+/* DESKTOP */
 
 @media (min-width: 1024px) {
     

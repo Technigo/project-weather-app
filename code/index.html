@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>WEATHER</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
-
 </head>
 <body>
     <header>
@@ -20,16 +19,18 @@
             <nav id="nav-bar">
                 <a href="#" onclick="showCurrentWeather(StockholmAPI), showWeatherForecast(StockholmForecastAPI);">Stockholm</a>
                 <a href="#" onclick="showCurrentWeather(UmeaAPI), showWeatherForecast(UmeaForecastAPI);">Umeå</a>
-                <a href="#" onclick="showCurrentWeather(KlintanAPI), showWeatherForecast(KlintanForecastAPI);">Klintan</a>
+                <a href="#" onclick="showCurrentWeather(KlintanAPI), showWeatherForecast(KlintanForecastAPI);">Robertsfors</a>
                 <a href="#" onclick="showCurrentWeather(BodenAPI), showWeatherForecast(BodenForecastAPI);">Boden</a>
+                <a href="#" onclick="getLocationAPI(setLocationAPI);">Din position</a>
             </nav>
         </div>
     </header>
+    
     <section class="current-main" id="current-main">
-        <section class="current-weather" id="current-weather-container"><p id="stad">LAT</p><p id="long">LONG</p></section>
-    </section>  
+        <section class="current-weather" id="current-weather-container"></section>
+    </section> 
+
     <section class="forecast" id="weather-forecast-container">
-        
     </section>
     
     <script src="script.js"></script>

@@ -1,3 +1,4 @@
+// APIs from different cities
 const StockholmAPI = 'http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723&lang=sv';
 const StockholmForecastAPI = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=2163e0bcc8eaa7f0951284d8a650a723';
 const UmeaAPI = 'http://api.openweathermap.org/data/2.5/weather?q=Umea,Sweden&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723&lang=sv';
@@ -7,21 +8,29 @@ const BodenForecastAPI = 'https://api.openweathermap.org/data/2.5/forecast?q=Bod
 const KlintanAPI = 'http://api.openweathermap.org/data/2.5/weather?q=Robertsfors,Sweden&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723&lang=sv';
 const KlintanForecastAPI = 'https://api.openweathermap.org/data/2.5/forecast?q=Robertsfors,Sweden&units=metric&APPID=2163e0bcc8eaa7f0951284d8a650a723';
 
-const stad = document.getElementById("stad");
-const long = document.getElementById("long");
+// Getting HTML elements
+
+const currentWeatherContainer = document.getElementById("current-weather-container");
+const weatherForecastContainer = document.getElementById("weather-forecast-container");
+const currentWeatherMain = document.getElementById("current-main");
+const navBar = document.getElementById("nav-bar");
+
+// Getting current geo location
+
 let lat =''
 let lon =''
 let geoLocationAPI = ''
+let geoLocationForcastAPI = ''
 
-
- const getLocationAPI = (callback) => {
+const getLocationAPI = (callback) => {
 
      const getLocation = () => {
          if (navigator.geolocation) {
              navigator.geolocation.getCurrentPosition(setCoordinates); 
          } else {
-             stad.innerHTML ="Geolocation is not supported by this browser.";
-      }
+            showCurrentWeather(StockholmAPI);
+            showWeatherForecast(StockholmForecastAPI);
+         }
      }
      const setCoordinates = (position) => {
          lat = position.coords.latitude
@@ -33,23 +42,15 @@ let geoLocationAPI = ''
      
      getLocation();
      
- }
+}
 
- const setLocationAPI = () => {
+const setLocationAPI = () => {
     showCurrentWeather(geoLocationAPI);
     showWeatherForecast(geoLocationForcastAPI);
 
 }
- getLocationAPI(setLocationAPI);
 
-
-// coordinates API = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=2163e0bcc8eaa7f0951284d8a650a723`;
-
-
-const currentWeatherContainer = document.getElementById("current-weather-container");
-const weatherForecastContainer = document.getElementById("weather-forecast-container");
-const currentWeatherMain = document.getElementById("current-main");
-const navBar = document.getElementById("nav-bar");
+//Shows or hides the navigation bar
 
 const showHamburgerMenu = () => {
     if(navBar.style.display === "none") {
@@ -66,6 +67,8 @@ const showNavBar = () => {
         navBar.style.display = "none";
     }
 }
+
+//Fetches the API and shows the data of today's weather
 
 const showCurrentWeather = (API) => {
     showNavBar();
@@ -111,6 +114,8 @@ const showCurrentWeather = (API) => {
 
 
 }
+
+//Fetches the API and shows the data of the 5 day forecast
 
 const showWeatherForecast = (forecastAPI) => {
     fetch(forecastAPI)
@@ -167,5 +172,5 @@ const showWeatherForecast = (forecastAPI) => {
 
 //On page load
 
-// showCurrentWeather(geoLocationAPI);
-// showWeatherForecast(StockholmForecastAPI);
+getLocationAPI(setLocationAPI);
+
