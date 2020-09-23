@@ -7,9 +7,8 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <h1>Weather Forecast</h1>
-
-    <section class="weather-wrap">
+    <section class id="weather-wrap">
+      <h1>Weather Forecast</h1>
       <header>
         <input
           type="text"
@@ -18,15 +17,21 @@
           placeholder="Find a city . . ."
         />
       </header>
+
       <section class id="main">
-        <div id="city">Toronto, ON</div>
-        <div id="date">Wed 23 September 2020</div>
+        <div class id="city">Toronto, ON</div>
+        <div class id="date">Wed 23 September 2020</div>
       </section>
 
       <section class id="current">
-        <div id="temperature">16<span>°c</span></div>
-        <div id="weather">Partially cloudy</div>
-        <div id="hi-low">11°c / 18°c</div>
+        <div class id="temperature">16°c</div>
+        <div class id="description">Partially cloudy</div>
+
+        <section class id="highLow">
+          <div class id="H">H:24°c</div>
+          /
+          <div id="L">L:14°c</div>
+        </section>
       </section>
     </section>
     <script src="./weather.js"></script>

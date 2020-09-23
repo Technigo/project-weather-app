@@ -13,6 +13,31 @@ body {
   background-position: top center;
 }
 
+h1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 50px;
+}
+
+#main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#current {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+#highLow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
 #weather-wrap {
   display: flex;
   flex-direction: column;
@@ -32,5 +57,7 @@ header input {
   padding: 10px 15px;
   border: none;
   outline: none;
+  border-bottom: 2px solid snow;
+  border-radius: 8px;
   background-color: rgb(196, 214, 221);
 }
