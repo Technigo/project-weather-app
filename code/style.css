@@ -13,7 +13,6 @@ body {
 }
 
 /** HEADER SECTION **/
-
 header {
     margin: 0;
     height: 375px;
@@ -31,6 +30,7 @@ header {
     font-size: 26px;
     text-transform: uppercase;
     margin: 5px;
+    font-weight: bold;
 }
 
 .header-text-weather {
@@ -38,11 +38,14 @@ header {
     text-align: center;
     text-transform: uppercase;
     font-size: 18px;
+    margin: 0;
 }
 
 .header-text-celcius {
     text-align: center;
     font-size: 82px;
+    font-weight: bold;
+    margin: 0;
 }
 
 .sun-wrapper {
@@ -73,7 +76,7 @@ header {
     right: 0;
     z-index: -1;
     flex-direction: column;
-    height: inherit;
+    height: 375px;
     background: linear-gradient(270deg, #ff6800, #ff0000, #fff000);
     background-size: 600% 600%;
 
@@ -187,14 +190,11 @@ header {
 
     .topnav a {
         color: white;
+        font-size: 20px;
     }
 
     .topnav a:hover {
         color: black;
-    }
-
-    .header-weather-wrapper {
-        display: none;
     }
 
     .header-title {
@@ -202,7 +202,6 @@ header {
         text-align: center;
         margin-top: 70px;
         color: white;
-        font-family: 'Roboto Condensed', Sans-Serif;
         text-transform: uppercase;
         font-size: 50px;
         position: absolute;
@@ -211,8 +210,77 @@ header {
         right: 0;
         z-index: 2;
     }
+
+    .header-weather-wrapper {
+        position: initial;
+        width: 80%;
+        margin: auto;
+        margin-top: 40px;
+        border: 20px solid #efefef;
+    }
+
+    .header-text-location {
+        font-size: 36px;
+    }
+
+    .header-text-weather {
+        font-size: 26px;
+    }
+
+    .header-text-celcius {
+        font-size: 92px;
+    }
+
+    .header-text-sun {
+        font-size: 22px;
+    }
+
+    .header-icon-sun {
+        width: 8%;
+    }
 }
 
+/* For computer only */
+@media (min-width: 1025px) {
+
+    header {
+        width: 100%;
+        background-color: black;
+        height: 220px;
+    }
+
+    .topnav a {
+        color: white;
+        font-size: 20px;
+    }
+
+    .topnav a:hover {
+        color: black;
+    }
+
+    .header-title {
+        display: block;
+        text-align: center;
+        margin-top: 70px;
+        color: white;
+        text-transform: uppercase;
+        font-size: 50px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
+    }
+
+    .header-weather-wrapper {
+        position: initial;
+        width: 40%;
+        margin: auto;
+        margin-top: 40px;
+        border: 20px solid #efefef;
+    }
+
+}
 
 /** WEATHER SECTION **/
 
@@ -259,96 +327,24 @@ header {
     width: 20%;
 }
 
-h2 {
-    margin: 0;
-}
-
-h3 {
-    margin: 0;
-}
-
-h1 {
-    margin: 0;
-}
-
 /* For tablet only */
 @media screen and (min-width: 667px) and (max-width: 1024px) {
     
-    
-    .weekly-weather-focus {
-        display: block;
-        width: 70%;
-        margin: auto;
-        padding: 30px;
-        border: 20px solid #efefef;
-        margin-bottom: 20px;
-        margin-top: 20px;
-        background: linear-gradient(270deg, #ff6800, #ff0000, #fff000);
-        background-size: 600% 600%;
-    
-        -webkit-animation: AnimationName 10s ease infinite;
-        -moz-animation: AnimationName 10s ease infinite;
-        animation: AnimationName 10s ease infinite;
-    }
-    
-    @-webkit-keyframes AnimationName {
-        0%{background-position:0% 50%}
-        50%{background-position:100% 50%}
-        100%{background-position:0% 50%}
-    }
-    @-moz-keyframes AnimationName {
-        0%{background-position:0% 50%}
-        50%{background-position:100% 50%}
-        100%{background-position:0% 50%}
-    }
-    @keyframes AnimationName {
-        0%{background-position:0% 50%}
-        50%{background-position:100% 50%}
-        100%{background-position:0% 50%}
-    }
-
-    .focus-weather {
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        width: 100%;
-    }
-
-    .focus-title {
-        color: black;
-        font-size: 30px;
-        text-transform: uppercase;
-        width: 60%;
-        font-family: 'Roboto Condensed', Sans-Serif;
-        font-weight: lighter;
-    }
-
-    .focus-weather .header-text-celcius {
-        color: black;
-        width: 40%;
-    }
-
-    /*
-
     .weekly-weather {
-        width: 70%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin: auto;
-        margin-bottom: 20px;
-        margin-top: 20px;
-        padding: 20px;
+        width: 80%;
         border: 20px solid #efefef;
-    }
-    */
-
-    .weekly-wrapper {
-        width: 100%;
+        margin: auto;
+        margin-top: 40px;
     }
 
+    .weekly-weather-day {
+        font-size: 20px;
+    }
+
+    .weekly-weather-temp {
+        font-size: 20px;
+    }
 }
-
 
 /* For computer only */
 @media (min-width: 1025px) {
@@ -376,6 +372,7 @@ footer {
     font-size: 18px;
     text-transform: uppercase;
     padding: 20px;
+    margin: 0;
 }
 
 .footer-links-wrapper {
@@ -387,4 +384,22 @@ footer {
 .footer-links {
     text-transform: uppercase;
     font-size: 12px;
+}
+
+/* For tablet only */
+
+@media screen and (min-width: 667px) and (max-width: 1024px) {
+    
+    footer {
+        margin-top: 40px;
+    }
+
+    .company-title {
+        font-size: 24px;
+    }
+
+    .footer-links {
+        font-size: 16px;
+    }
+
 }
