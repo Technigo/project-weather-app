@@ -7,17 +7,72 @@
   box-sizing: border-box;
 }
 
+p {
+  margin: 0 auto;
+  padding: 0 auto;
+}
 
 body {
     margin: 0;
     display: flex;
-    align-items: center;
+    /* align-items: center; this moves the forecast to the center */
     flex-direction: column;
     font-family: "Montserrat", sans-serif;
 }
 
-main{
+.background{
+  background-image: linear-gradient(to right, #283048, #859398);
   display: flex;
   align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  margin-bottom: 20px;
+}
 
+/* colors for changing background depending on weather descritpion I think!
+cold #7474BF to #348AC7
+cold #24C6DC to #514A9D
+SUNNY #2BC0E4 to #EAECC6
+SUNNY #FF8008 to #FFC837
+
+cloudy background-image: linear-gradient(to right, #ECE9E6, #FFFFFF);
+
+
+*/
+
+.city-title{
+  font-size: 2.5em;
+  text-align: center;
+}
+
+.temp-main-info{
+  display: flex;
+  justify-content: space-evenly;
+  color: #c9c9c9;
+}
+
+.weather-descriptions{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: #c9c9c9;
+}
+
+.sun{
+  display: flex;
+  flex-direction: column;
+  margin: 30px 0px;
+}
+
+
+.forcast{
+  display: flex;
+  align-items: center;
+  margin: 0px 0px 30px;
+}
+
+.weather-forecast{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }

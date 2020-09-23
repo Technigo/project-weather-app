@@ -6,25 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="./style.css" />
-    <title>Document</title>
+    <title>A weather forcast page for isolated placce(s)</title>
 </head>
 
 <body>
-    <h1>Longyearbyen</h1>
-    <section class="hero-wrapper">
-        <h1><span id="weatherMain"></span></h1>
-        <h1><span id="weatherTemp"></span>&deg;</h1>
-        <h1>Feels like <span id="weatherTempFeel"></span>&deg;</h1>
-        <h2> - in general the day will have <span id="weatherDescription"></span></h2>
-        <h3>Sunrise: <span id="sunrise"></span></h3>
-        <h3> Sunset: <span id="sunset"></span></h3>
+  
+    <section class="background">
+        <h1 class="city-title">Longyearbyen</h1>
+        <div class="temp-main-info">
+            <h1><span id="weatherTemp"></span>&deg; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="weatherMain"></span></h1>
+            <img id="weatherImage"/>
+        </div>
+        <div class="weather-descriptions">
+            <h1>Feels like <span id="weatherTempFeel"></span>&deg;</h1>
+            <h2> - in general the day will have <span id="weatherDescription"></span></h2>
+        </div>
+        <div class="sun">
+            <p class="main-p">Sunrise: <span id="sunrise"></span></p>
+            <p class="main-p">Sunset: <span id="sunset"></span></p>
+        </div>
     </section>
 
-    <main>
-        <div id="weatherForecast"></div>
+    <section class="forcast">
+        <div class="weather-forecast" id="weatherForecast"></div>
         <!-- <span id="forecastDays"></span> <span id="forecasttemp"></span> </h3> -->
 
-    </main>
+    </section>
 
     <script src="./weather.js"></script>
 

@@ -3,12 +3,13 @@ apiUrlForcast = "https://api.openweathermap.org/data/2.5/forecast?q=Longyearbyen
 
 const containerToday = document.getElementById('weatherMain');
 const containerTemp = document.getElementById('weatherTemp');
+const containerImage = document.getElementById('weatherImage');
 const containerTempFeel = document.getElementById('weatherTempFeel');
 const containerDescription = document.getElementById('weatherDescription');
 const containerSunRise = document.getElementById('sunrise');
 const containerSunSet = document.getElementById('sunset');
 const containerForcast = document.getElementById('weatherForecast');
-//const containerForcastTemp = document.getElementById('forecasttemp');
+
 
 /// make this into a one line function instead?
 /// calculating a rounded number for the temp
@@ -37,13 +38,21 @@ const readableDate = (date) => {
 
     })
     return dateReadableDate;
-    
 }
+
+/// function for icon of the day
+//const iconDependingOnWeather = (item) => {
+   // const iconMainDescription = item
+    //if (iconDependingOnWeather === "Clouds")
+    //console.log(iconDependingOnWeather)
+    //return 'http://openweathermap.org/img/wn/03d@2x.png'
+//}
 
 /// Displaying todays weather forcast 
 const generatedHTMLForWeatherToday = (weatherMain) => {
     containerToday.innerHTML = `${weatherMain.weather[0].main}`
     containerTemp.innerHTML = roundtemp(weatherMain.main.temp)
+    ///containerImage.innerHTML = iconDependingOnWeather(weatherMain.weather[0].main)
     containerTempFeel.innerHTML = roundtemp(weatherMain.main.feels_like)
     containerDescription.innerHTML = `${weatherMain.weather[0].description}`
     containerSunRise.innerHTML = readableTime(weatherMain.sys.sunrise)
@@ -55,12 +64,8 @@ const generatedHTMLForWeatherForcast = (forecast) => {
     containerForcast.innerHTML += "<div>"
     containerForcast.innerHTML += readableDate(forecast.dt_txt)
     containerForcast.innerHTML += "&nbsp;&nbsp;&nbsp;"
-    containerForcast.innerHTML += roundtemp(forecast.main.temp)
+    containerForcast.innerHTML += `${roundtemp(forecast.main.temp)}&deg;`
     containerForcast.innerHTML += "</div>"
-    
-    console.log(roundtemp(forecast.main.temp)) // this works
-    console.log(readableDate(forecast.dt_txt)) // this work
-
 }
 
 /// getting the API for todays weather
