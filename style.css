@@ -2,6 +2,58 @@
     box-sizing: border-box;
 }
 
+body {
+    margin: 0;
+}
+
+.weather-container {
+    border: 2px solid red;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr) ;
+}
+
+.daily-wrapper {
+    position: relative;
+    grid-column: span 8;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 2px solid #ffa500;
+}
+
+.daily-wrapper img {
+    position: absolute;
+    top: -5px;
+    right: 10px;
+    width: 100px;
+}
+
+.city {
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.forecast-wrapper {
+    grid-column: span 4;
+    border: 2px solid blue;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.search-field {
+    grid-column: span 4;
+    border: 2px solid green;
+    display: flex;
+    align-items: center;
+}
+
+.search-container {
+    border: 2px solid pink;
+}
+/*
 .day {
     font-size: 20px;
     font-weight: 700;
@@ -14,4 +66,4 @@
     justify-content: space-around;
     margin: 5px;
     width: 50%
-}
+}*/

@@ -20,9 +20,11 @@ const calculateTemperature = (number) => {
 };
 
 //Create function that shows min/max temp
-const minMaxTemperature = (number) => {
-  const minTemp = Math.round(number * 10) / 10;
-  console.log(`The min is ${minTemp}`);
+const minMaxTemperature = (item) => {
+  //const filteredForecast = json.list.filter(item => item.dt_txt.includes(day1Date)) Code from Henrike
+  const minTempArray = item.map(day => day.main.temp_min);
+  console.log(minTempArray)
+  return minTempArray
   //minMaxTemperature(filteredForecast.list[0].main.temp_min)
   //API main.temp_min main.temp_max
 };
@@ -56,6 +58,17 @@ const printDay = (day) => {
   return forecastDaysString;
 };
 
+const printTime = (time) => {
+  //Is there another way tp do this? My time is a few minutes off..
+  const hour = new Date (time * 1000);
+  const localTimeString = hour.toLocaleTimeString('en-SE', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  })
+  return localTimeString;
+}
+
 //ICON FUNCTIONS
 const iconWeather = (item) => {
   const iconMain = item
@@ -87,7 +100,7 @@ const citySearch = () => {
   fetchWeatherToday(city);
   document.getElementById('cityNameSearch').value = ''; //Clearing input value after search
 }
-button.addEventListener('keydown', )
+//button.addEventListener('keydown', )
 
 //DISPLAY FUNCTIONS
 
@@ -98,15 +111,17 @@ const generatedHTMLForWeatherToday = (weatherToday) => {
   const sunset = calculatingSun(weatherToday.sys.sunset);
   const description = weatherToday.weather[0].description;
   const icon = iconWeather(weatherToday.weather[0].main)
+  const localTime = printTime(weatherToday.dt)
 
   let dailyForecastHTML = "";
   dailyForecastHTML += `<img src= '${icon}'/>`; //This needs to be 
   dailyForecastHTML += `<div class="local-info">`;
-  dailyForecastHTML += `<div class="temperature">${temperature} \xB0 </div>`;
   dailyForecastHTML += `<div class="city">${weatherToday.name}</div>`;
+  dailyForecastHTML += `<div class="local.time">${localTime}</div>`;
+  dailyForecastHTML += `<div class="temperature">${temperature} \xB0 </div>`;
   dailyForecastHTML += `<div class="description">${description}</div>`;
-  dailyForecastHTML += `<div class="description">${sunrise}</div>`;
-  dailyForecastHTML += `<div class="description">${sunset}</div>`;
+  dailyForecastHTML += `<div class="description">Sunrise ${sunrise}</div>`;
+  dailyForecastHTML += `<div class="description">Sunset ${sunset}</div>`;
   dailyForecastHTML += `</div>`;
   return dailyForecastHTML
 
@@ -131,7 +146,7 @@ const generatedHTMLForWeatherForecast = (filteredForecast) => {
   let innerText = "";
   innerText += `<div class="day-box">`;
   innerText += `<p class="day">${day}</p>`;
-  innerText += `<p>${dailyTemp} degrees</p>`;
+  innerText += `<p>${dailyTemp} \xB0</p>`;
   innerText += `</div>`;
   return innerText;
   //Weather description for the next five days
@@ -164,6 +179,8 @@ const fetchWeatherForecast = (city) => {
 
       filteredForecast.forEach((forecast) => {
         containerForecast.innerHTML += generatedHTMLForWeatherForecast(forecast);
+      const minMax = minMaxTemperature(filteredForecast)
+      console.log(minMax)
       });
     });
     
