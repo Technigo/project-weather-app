@@ -3,9 +3,9 @@
 }
 body {
   margin: 10px;
-  padding: 10px;
   background-color: #f7e9b9;
   font-family: "Montserrat", sans-serif;
+  color: #2a5510;
 }
 *,
 *:before,
@@ -13,26 +13,26 @@ body {
   box-sizing: inherit;
 }
 header {
-  margin: 0;
+  margin: 0px;
   position: relative;
+  font-size: 4vw;
 }
-.weather-message {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+/* .weather-message {
+/*margin-top: 0px;
+//padding-top: 0px;
+} */
 
 .where {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+  font-size: 5vw;
   font-weight: 100;
+  padding-top: 50px;
 }
 #cityName {
-  font-size: 60px;
+  font-size: 15vw;
   font-weight: 100;
 }
 #weatherByDay {
@@ -40,4 +40,22 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-size: 5vw;
+}
+.weather-message {
+  font-size: 8vw;
+}
+#icon {
+  display: block;
+  width: 20vw;
+  height: 20vw;
+  color: #2a5510;
+}
+@media screen and (min-width: 768px) {
+  .weather-message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
