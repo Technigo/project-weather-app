@@ -1,17 +1,24 @@
-const apiUrl = 'http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=038843ef5b6fc0faa93abadfa0f18663'
-const apiForecast = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=038843ef5b6fc0faa93abadfa0f18663Y'
-const container = document.getElementById('main');
-const weatherHeader = document.getElementById('weatherHeader');
+//Weather Today in Stockholm
 
-    fetch(apiUrl)
-        .then((response) => {
-            return response.json();
-         })
-        .then((weatherObjects) => {
-        weatherHeader.innerHTML = weatherObjects.name + weatherObjects.weather[0].description + weatherObjects.main.temp
-        });
+const apiToday = 'http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=e33f1cc192401277e601a6aed3a82800'
+const apiKey = "e33f1cc192401277e601a6aed3a82800"
+const weatherLocation = document.getElementById('location');
+const weatherDescription = document.getElementById('description');
+const weatherTemperature = document.getElementById('temperature');
 
-        //Your task is to present the data: the city name, the temperature (rounded to 1 decimal place), and what type of weather it is (the "description" in the JSON)
+fetch(apiToday)
+  .then((response) => {
+    return response.json();
+    })
+  .then((json) => {
+    weatherToday(json)
+  })
 
-        
+const weatherToday = (json) => {
+weatherLocation.innerHTML = json.name;
+weatherDescription.innerHTML = json.weather[0].description
+weatherTemperature.innerHTML = json.main.temp.toFixed(0.5)
+}
+
+
 
