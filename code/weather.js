@@ -5,6 +5,8 @@ const apiUrlWeekly = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockho
 const temperaturHeader = document.getElementById('headerCelcius');
 const locationHeader = document.getElementById('headerLocation');
 const weatherHeader = document.getElementById('headerWeather');
+const sunriseHeader = document.getElementById('headerSunrise');
+const sunsetHeader = document.getElementById('headerSunset');
 
 const isoCountries = {
   'SE' : 'Sweden',
@@ -24,6 +26,11 @@ fetch(apiUrlToday)
     locationHeader.innerHTML = `${json.name}, ${getCountryName(json.sys.country)}`
     //retriving the weather from json
     weatherHeader.innerHTML = `${json.weather[0].description}`
+    //retriving the sunrise from json
+    sunriseHeader.innerHTML = `sunrise: ${getTimeFormat(json.sys.sunrise)}`
+    //retriving the sunset from json
+    sunsetHeader.innerHTML = `sunset: ${getTimeFormat(json.sys.sunset)}`
+
 })
 
 //function to convert temperature to 1 decimal
@@ -38,6 +45,13 @@ function getCountryName (countryCode) {
   } else {
       return countryCode;
   }
+}
+
+//function to convert sunrise/sunset to readble format
+const getTimeFormat = (time) => {
+  const formatTime = new Date(time * 1000).toLocaleTimeString([],
+  {hour: '2-digit', minute: '2-digit'});
+  return formatTime;
 }
 
 /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
