@@ -34,11 +34,11 @@ const generateHTMLForWeatherInfoTop = currentWeather => {
     });
 
     let weatherInfoTopHTML = '';
-    weatherInfoTopHTML += `<p>${weatherDescription}</p>`;
-    weatherInfoTopHTML += `<p>${currentTemperature}°</p>`;
-    weatherInfoTopHTML += `<p>° feels like: ${currentWeatherFeelsLike}°</p>`;
-    weatherInfoTopHTML += `<p>Sunrise: ${sunriseTimeString}</p>`;
-    weatherInfoTopHTML += `<p>Sunset: ${sunsetTimeString}</p>`;
+    weatherInfoTopHTML += `<p class="weather-info-text">${weatherDescription}</p>`;
+    weatherInfoTopHTML += `<p class="weather-info-text">${currentTemperature}°</p>`;
+    weatherInfoTopHTML += `<p class="weather-info-text">° feels like: ${currentWeatherFeelsLike}°</p>`;
+    weatherInfoTopHTML += `<p class="weather-info-text">Sunrise: ${sunriseTimeString}</p>`;
+    weatherInfoTopHTML += `<p class="weather-info-text">Sunset: ${sunsetTimeString}</p>`;
     return weatherInfoTopHTML;
 };
 
