@@ -9,6 +9,8 @@ const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
 const feels = document.getElementById("feels");
 
+const monday = document.getElementById("monday");
+
 const today = document.getElementsByClassName("today");
 console.log(today);
 
@@ -19,10 +21,10 @@ fetch(currentUrl)
 
 .then((json) => {
    console.log(json);
-    degree.innerHTML = (json.main.temp) + ` C °`;
-    feels.innerHTML = (json.main.feels_like) + ` C °`;
+    degree.innerHTML = Math.round(json.main.temp)+ " °";
+    feels.innerHTML = Math.round(json.main.feels_like)+ " °";
     city.innerHTML = json.name;
-    country.innerHTML = json.sys.country;
+    country.innerHTML = (json.sys.country);
 
     json.weather.forEach(item => {
         weather.innerHTML = item.description
@@ -43,5 +45,14 @@ fetch(fiveDayUrl)
 
 .then((json) => {
     console.log(json);
-    monday.innerHTML = (json.main.temp) + ` C °`;
+
+    json.list.forEach(item => {
+        date.innerHTML = item.dt_txt
+        
+    })
+    json.list.forEach(item => {
+        temp.innerHTML = (item.main.temp) + ` C °`;
+        
+    })
+   
 })
