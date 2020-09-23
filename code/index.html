@@ -5,36 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WeatherNow</title>
     <link href="./style.css" rel="stylesheet"  type="text/css">
-    <link rel="icon" href="../Designs/Design-1/assets/Group34.png"  type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="icon" href="./icons/01d.png"  type="image/x-icon" />
 </head>
 <body>
-        <section class="container-all">
-            <video loop muted autoplay preload="auto">
-                <source src="Video/TimeLapsecompressed.mp4" video type="video/mp4" />
-            </video>
-            <main id="main">
-                <div class="hero-image"></div>
-                <div class="hero-text">
-                    <h1 style="font-size:50px"></h1>
-                    <p></p>
-                    <h1><span id="weather-header"></span></h1>
-                    <div class="top">
+    <section class="container-all">
+        <video loop muted autoplay preload="auto">
+            <source src="Video/TimeLapsecompressed.mp4" video type="video/mp4" />
+        </video>
+        <main id="main">
+            <div class="hero-image"></div>
+            <div class="hero-text">
+                <h1 style="font-size:50px"></h1>
+                <p></p>
+                <h1><span id="weather-header"></span></h1>
+                <div class="top">
 
-                        <div class="description-image">
-                            <p class="description"><span id="description-today"></span></p>
-                            <img class="image" id="weather-image" src="http://openweathermap.org/img/wn/04d@2x.png" width="100" alt="">
-                        </div>
+                    <div class="description-image">
+                        <p class="description"><span id="description-today"></span></p>
+                        <img class="image" id="weather-image" src="" width="50" alt="">
+                    </div>
 
-                        <p class="temp"><span id="temp-today"></span></p>
-                        <p class="sun"><span id="sunrise-today"></span></p>
-                        <p class="sun"><span id="sunset-today"></span></p>
-                    </div>    
-                    <div class="bottom">
-                        <div id="container-five-day"></div>
-                    </div>
-                    </div>
-            </main>
-        </section>
+                    <p class="temp"><span id="temp-today"></span></p>
+                    <p class="sun"><span id="sunrise-today"></span></p>
+                    <p class="sun"><span id="sunset-today"></span></p>
+                </div>    
+                <div class="bottom">
+                    <div id="container-five-day"></div>
+                </div>
+                </div>
+        </main>
+    </section>
     <script src="./script.js"></script>
 </body>
 </html>

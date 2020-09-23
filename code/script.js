@@ -9,11 +9,11 @@ const descriptionToday = document.getElementById('description-today');
 const sunriseToday = document.getElementById('sunrise-today');
 const sunsetToday = document.getElementById('sunset-today');
 const weatherImage = document.getElementById('weather-image')
+
 fetch(apiUrl)
     .then((response) => {
         return response.json();
     })
-
     .then((weatherObject) => {
 
         // Update weather in Stockholm from API
@@ -25,8 +25,8 @@ fetch(apiUrl)
 
 
         // HOW DO THIS?
-        //const imageValue = weatherObject.weather[0].icon 
-        //weatherImage.innerHTML = `icon ${imageValue}`
+        const imageValue = weatherObject.weather[0].icon 
+        weatherImage.src = `./icons/${imageValue}.png`
 
         
         // Create two variables that stores the API values
@@ -87,26 +87,6 @@ const generateHTMLForForecast = day => {
     return fiveDayForecastHTML;
 };
 
-
-    /*
-    const forecastDay2 = document.getElementById('day2')
-    const forecastDay3 = document.getElementById('day3')
-    const forecastDay4 = document.getElementById('day4')
-    const forecastDay5 = document.getElementById('day5')
-    const forecastDay6 = document.getElementById('day6')
-    
-    forecastDay2.innerHTML = fiveDayArray.list[0].sys.dt_txt;
-    forecastDay3.innerHTML = fiveDayArray.list[1].sys.dt_txt;
-    forecastDay4.innerHTML = fiveDayArray.list[2].sys.dt_txt;
-    forecastDay5.innerHTML = fiveDayArray.list[3].sys.dt_txt;
-    forecastDay6.innerHTML = fiveDayArray.list[4].sys.dt_txt;
-
-    forecastDay2.innerHTML = `${Math.round(fiveDayArray.list[0].main.temp * 10) / 10} °C`;
-    forecastDay3.innerHTML = `${Math.round(fiveDayArray.list[1].main.temp * 10) / 10} °C`;
-    forecastDay4.innerHTML = `${Math.round(fiveDayArray.list[2].main.temp * 10) / 10} °C`;
-    forecastDay5.innerHTML = `${Math.round(fiveDayArray.list[3].main.temp * 10) / 10} °C`;
-    forecastDay6.innerHTML = `${Math.round(fiveDayArray.list[4].main.temp * 10) / 10} °C`;
-    */
 
 
 
