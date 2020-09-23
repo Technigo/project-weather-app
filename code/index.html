@@ -5,21 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
     <title>Weather App</title>
 </head>
 
 <body>
 
     <div class="main-container">
-        <div class="weather-container">
-            <h2 id="city"></h2>
-            <h1 id="temp"></h1>
-            <h2 id="main"></h2>
-            <p id="date"></p>
+
+        <header>
             <ul>
                 <li id="sunrise"></li>
+                <li id="city"></li>
                 <li id="sunset"></li>
             </ul>
+        </header>
+
+        <div class="weather-container">
+
+            <h1 id="temp"></h1>
+            <p id="icon"></p>
+            <h2 id="description"></h2>
         </div>
 
         <div class="forecast-container">
