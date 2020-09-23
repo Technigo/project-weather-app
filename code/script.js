@@ -2,6 +2,11 @@ const StockholmAPI = 'http://api.openweathermap.org/data/2.5/weather?q=Stockholm
 const StockholmForecastAPI = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=2163e0bcc8eaa7f0951284d8a650a723';
 const UmeaAPI = 'http://api.openweathermap.org/data/2.5/weather?q=Umea,Sweden&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723&lang=sv';
 const UmeaForecastAPI = 'https://api.openweathermap.org/data/2.5/forecast?q=Umea,Sweden&units=metric&APPID=2163e0bcc8eaa7f0951284d8a650a723';
+const BodenAPI = 'http://api.openweathermap.org/data/2.5/weather?q=Boden,Sweden&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723&lang=sv';
+const BodenForecastAPI = 'https://api.openweathermap.org/data/2.5/forecast?q=Boden,Sweden&units=metric&APPID=2163e0bcc8eaa7f0951284d8a650a723';
+const KlintanAPI = 'http://api.openweathermap.org/data/2.5/weather?q=Robertsfors,Sweden&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723&lang=sv';
+const KlintanForecastAPI = 'https://api.openweathermap.org/data/2.5/forecast?q=Robertsfors,Sweden&units=metric&APPID=2163e0bcc8eaa7f0951284d8a650a723';
+
 
 const currentWeatherContainer = document.getElementById("current-weather-container");
 const weatherForecastContainer = document.getElementById("weather-forecast-container");
