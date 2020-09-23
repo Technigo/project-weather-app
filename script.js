@@ -1,7 +1,8 @@
 const apiUrlCurrWeather = "http://api.openweathermap.org/data/2.5/weather?q=Lund,Sweden&units=metric&APPID=81897fae64080a6ccc65fb8b9cecf3b8";
 
-const container = document.getElementById("weatheInfoDaily");
-const city = document.getElementById("city");
+// const city = document.getElementById("city");
+// const country = document.getElementById("country");
+const cityCountry = document.getElementById("cityCountry");
 const temp = document.getElementById("temperature");
 const description = document.getElementById("description");
 const sunrise = document.getElementById("sunriseTime");
@@ -11,7 +12,7 @@ const sunset = document.getElementById("sunsetTime");
 fetch(apiUrlCurrWeather)
 .then((response) => {
   //status of the response - low level computer communication
-  // console.log(response);
+  console.log(response);
   //we ask for the response from json - can take long time
   //we can put a lot of code here
   return response.json();
@@ -19,17 +20,21 @@ fetch(apiUrlCurrWeather)
 .then((weatherObject) => {
   //when we have the data api returns, we log it
   //data is available here
-  // console.log(weatherObject);
+  // console.log(`Weather object: ${weatherObject}`);
   const currDate = new Date();
   // console.log(`Current date: ${currDate}`);
-  const dateFormatted = currDate.toLocaleDateString('se-SE');
+  const dateFormatted = currDate.toLocaleDateString('se-SE', {month: "long", day: "2-digit"},);
   // console.log(`Current date formatted: ${dateFormatted}`);
   //you can add more options at the same time
-  const timeFormatted = currDate.toLocaleTimeString('se-SE', {timeStyle: "long"});
+  const timeFormatted = currDate.toLocaleTimeString('se-SE', {timeStyle: "short"});
 
-  container.innerHTML = `Daily Weather information`;
-  city.innerHTML = weatherObject.name;
-  temp.innerHTML = weatherObject.main.temp;
+  // city.innerHTML = weatherObject.name;
+  // country.innerHTML = weatherObject.sys.country; //how do I transform SE -> Sweden?
+
+  //city + country
+  cityCountry.innerHTML = `${weatherObject.name}, ${weatherObject.sys.country}`;
+
+  temp.innerHTML = `${weatherObject.main.temp}°`;
   description.innerHTML = weatherObject.weather[0].description;
 
   //formatting unix stamp to time

@@ -4,23 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
     <title>Document</title>
   </head>
   <body>
     <section class="daily-weather">
-      <div id="weatheInfoDaily">Loading weather ...</div>
-      <div>City: <span id="city"></span></div>
-      <div>Temperature:<span id="temperature"></span></div>
-      <div>Description: <span id="description"></span></div>
-      <div>Sunrise: <span id="sunriseTime"></span></div>
-      <div>Sunset: <span id="sunsetTime"></span></div>
-      <div>Date: <span id="date"></span></div>
-      <div>Current time: <span id="time"></span></div>
+      <div class="time-location-date">
+        <p class="current-time" id="time">current time ...</p>
+        <p class="current-location" id="cityCountry">city ...</p>
+        <p class="current-date" id="date">date ...</p>
+      </div>
+     
+      <div class="first-row">
+        <p id="description">description ...</p>
+        <p>|</p>
+        <p id="temperature">temperature ...</p>
+      </div>
+      <div class="sunrise-row">
+        <p>sunrise</p>
+        <p id="sunriseTime">sunrise ...</p>
+      </div>
+      <div class="sunset-row">
+        <p>sunset</p>
+        <p id="sunsetTime">sunset ...</p>
+      </div>
+      
+      
+      
+      
     </section>
     <section class="forecast">
       <div class="five-day-forecast" id="5DayForecast">Loading forecast ...</div>
 
     </section>
+    <footer>
+      <a target="_blank" href="https://icons8.com/icons/set/cloud">Cloud icon</a> icon by 
+      <a target="_blank" href="https://icons8.com">Icons8</a>
+    </footer>
 
     <script src="./script.js"></script>
   </body>
