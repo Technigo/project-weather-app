@@ -44,11 +44,17 @@ const updateCityWeather = (weatherInfo) => {
 
 const weatherIconChange = (weather) =>{
     if (weather == "Rain") {
-    document.getElementById('weatherIcon').src = './assets/rain.png';
+    document.getElementById('weatherIcon').src = './assets/rain.svg';
     } if (weather == "Clouds") {
-    document.getElementById('weatherIcon').src = './assets/cloudy.png';
+    document.getElementById('weatherIcon').src = './assets/cloudy.svg';
     } if (weather == "Clear" || weather == "Sunny") {
-    document.getElementById('weatherIcon').src= './assets/sunny.png';
+    document.getElementById('weatherIcon').src= './assets/sun.svg';
+    }if (weather == "Mist" || weather == "Fog") {
+    document.getElementById('weatherIcon').src= './assets/mist.svg';
+    }if (weather == "Snow"){
+    document.getElementById('weatherIcon').src= './assets/snow.svg';
+    }if (weather == "Hail"){
+    document.getElementById('weatherIcon').src= './assets/hail.svg';
     }
   }
   

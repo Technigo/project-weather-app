@@ -66,13 +66,14 @@ h2 {
   font-family: "didot";
   font-size: 55px;
   margin: 0;
+  padding: 10px;
 }
 
 /* CURRENT WEATHER SECTION */
 
 #weatherIcon { 
   width:75px;
-  height:50px;
+  height:80px;
 }
 
 .current-weather {
