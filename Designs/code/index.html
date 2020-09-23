@@ -7,7 +7,28 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <h1>Stockholm Weather</h1>
+    <h1>Weather Forecast</h1>
+
+    <section class="weather-wrap">
+      <header>
+        <input
+          type="text"
+          autocomplete="off"
+          class="search-box"
+          placeholder="Find a city . . ."
+        />
+      </header>
+      <section class id="main">
+        <div id="city">Toronto, ON</div>
+        <div id="date">Wed 23 September 2020</div>
+      </section>
+
+      <section class id="current">
+        <div id="temperature">16<span>°c</span></div>
+        <div id="weather">Partially cloudy</div>
+        <div id="hi-low">11°c / 18°c</div>
+      </section>
+    </section>
     <script src="./weather.js"></script>
   </body>
 </html>

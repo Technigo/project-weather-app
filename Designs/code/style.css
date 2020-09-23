@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto Mono", monospace;
+  background-image: url(./img/skies.jpg);
+  background-size: cover;
+  background-position: top center;
+}
+
+#weather-wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 5px 5px;
+}
+
+header input {
+  width: 100%;
+  max-width: 250px;
+  padding: 10px 15px;
+  border: none;
+  outline: none;
+  background-color: rgb(196, 214, 221);
+}

@@ -1,9 +1,16 @@
 // const apiKey = "c2889b12ee617ea787319a19a98a5906"
 
-fetch("http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=1b8f5ef70f56d3c197524d5c84ecb9d0")
+const city = 'Toronto, Canada'
+const cityName = document.getElementById('city')
+const currentWeather = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=c2889b12ee617ea787319a19a98a5906`
+const weatherForecast = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=c2889b12ee617ea787319a19a98a5906`
+
+//Fetch with JSON
+fetch(currentWeather)
     .then((response) => {
         return response.json()
     })
-    .then((json) => {
-        console.log(json)
+    .then((theSix) => {
+        console.log(theSix)
+        cityName.innerHTML = city
     })
