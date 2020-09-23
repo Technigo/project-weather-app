@@ -1,35 +1,14 @@
 // Current weather
 const stockholm = 2673730
-
-// const cities = [
-//   {
-//     name: 'Stockholm',
-//     id: 2673730
-//   },
-//   {
-//     name: 'San Francisco',
-//     id: 5391959
-//   },
-//   {
-//     name: 'London',
-//     id: 2643743
-//   },
-//   {
-//     name: 'Taipei',
-//     id: 1665148
-//   }
-// ]
-// need method of picking city along with default to Stockholm on page load.
-
-const weatherSTHLM = `http://api.openweathermap.org/data/2.5/weather?id=${stockholm}&units=metric&appid=eb46c8c17530a3d02461794022d39d32`
-const where = document.getElementById('location')
+const apiNow = `http://api.openweathermap.org/data/2.5/weather?id=${stockholm}&units=metric&appid=eb46c8c17530a3d02461794022d39d32`
+const currentWeather = document.getElementById('current-weather')
 const sunriseTime = document.getElementById('sunrise')
 const sunsetTime = document.getElementById('sunset')
 const now = document.getElementById('now')
 const ico = document.getElementById('now-icon')
 const desc = document.getElementById('now-desc')
 
-fetch(weatherSTHLM)
+fetch(apiNow)
   .then((response) => {
     return response.json()
 })
@@ -54,11 +33,11 @@ fetch(weatherSTHLM)
       hour: '2-digit',
       minute: '2-digit'
     })
-    where.innerHTML = `${city.weather[0].main} | ${tempNow}\u00b0C`
+    currentWeather.innerHTML = `${city.weather[0].main} | ${tempNow}\u00b0C`
     sunriseTime.innerHTML = `Sunrise ${sunrise}`
     sunsetTime.innerHTML = `Sunset ${sunset}`
     now.innerHTML = `It feels like ${nowFeelsLike}\u00b0C in ${city.name}.`
-    desc.innerHTML = city.weather[0].description
+    // desc.innerHTML = city.weather[0].description
     ico.src = `http://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png`
 })
 

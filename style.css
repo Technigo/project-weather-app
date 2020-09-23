@@ -1,7 +1,8 @@
 body {
-  background: hotpink;
+  background: #a3c2c2;
   font-family: 'Overlock', cursive, sans-serif;
   font-size: 16px;
+  color: #333;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -9,67 +10,70 @@ body {
 }
 
 section {
-  background: green;
   width: 320px;
+  height: 100%;
+  /* border-left: 1px solid navy; */
+  box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
+                0 2px 4px rgba(0,0,0,0.07), 
+                0 4px 8px rgba(0,0,0,0.07), 
+                0 8px 16px rgba(0,0,0,0.07),
+                0 16px 32px rgba(0,0,0,0.07), 
+                0 32px 64px rgba(0,0,0,0.07);
 }
 
-/* Weather Now */
-.now {
-  background: lightseagreen;
-  align-self: center;
-}
-
-div {
-  background: lightpink;
-  padding-left: 8px;
-}
-
+/* Weather Today */
 .top-left {
-  background: lightgreen;
+  padding-left: 26px;
+  margin-top: 16px;
 }
 
 p {
-  background: #ccc;
   margin: 3px;
-}
-
-h1 {
-  font-size: 50px;
-  text-align: center;
-  margin: 16px 0 0 0;
 }
 
 .today {
   height: 130px;
+  width: 130px;
   margin: 0;
+}
+
+.now {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+h1 {
+  font-size: 50px;
+  text-align: left;
+  margin: 0 0 26px 0;
+  padding-left: 26px;
 }
 
 /* Forecast */
 .five-day {
-  background: lightcoral;
-  font-size: 14px;
+  font-size: 13px;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-around;
   max-width: 320px;
+  padding-left: 26px;
 }
 
 .date {
-  background: red;
-  width: 50px;
-  text-justify: newspaper;
-  flex: none;
-}
-
-.temp{
-  background: blue;
   width: 45px;
   flex: none;
 }
-.description {
-  background: purple;
-  width: 150px;
+
+.temp {
+  width: 40px;
   flex: none;
+}
+.description {
+  width: 120px;
+  flex: none;
+  padding-left: 26px;
 }
 
 img {
@@ -77,3 +81,36 @@ img {
   flex: none;
 }
 
+/* Swipe Nav */
+.swipe {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 40;
+  margin: 20px 0;
+}
+
+.swipe div {
+  height: 10px;
+  width: 10px;
+  background: #fff;
+  border-radius: 50%;
+  margin: 3px;
+}
+
+/* Footer */
+footer {
+  padding: 26px 26px 10px 26px;
+}
+
+.footer {
+  width: 100%;
+  bottom: 0;
+  text-align: center;
+  font-size: 10px;
+}
+
+footer a {
+  text-decoration: none;
+  color: #333;
+}

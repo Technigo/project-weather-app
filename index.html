@@ -7,27 +7,42 @@
   <link href="https://fonts.googleapis.com/css2?family=Overlock:wght@400;700;900&display=swap" rel="stylesheet">
   <title>Weather App</title>
 </head>
+
 <body>
   <section id="app-container">
-
+  <!-- Top left lines -->
     <div class="top-left"> 
-      <p id="location"></p>
+      <p id="current-weather"></p>
       <p id="sunrise"></p>
       <p id="sunset"></p>
     </div>
-    
+
+  <!-- Headline content -->
     <div class="now">
-      <h1 id="now"></h1>
       <img class="today" id="now-icon"/>
-      <p id="now-desc"></p>
+      <h1 id="now"></h1>
     </div>
 
+  <!-- 5 day forecast -->
     <div class="five-day" id="five-Day">
       <!-- JavaScript to inject forecast -->
     </div>
-
-  </section>
   
+  <!-- Swipe indicators -->
+    <div class="swipe">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+  <!-- Footer -->
+    <footer>
+      <div class="footer">
+        Made by Peggy @<a href="https://blipsandclicks.com">blipsandclicks</a>
+        during Technigo Bootcamp 2020 for educational purposes.
+      </div>
+    </footer>
+  </section>
+
   <script src="./script.js"></script>
 </body>
 </html>
