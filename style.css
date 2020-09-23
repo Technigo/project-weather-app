@@ -15,3 +15,9 @@ body {
     flex-direction: column;
     font-family: "Montserrat", sans-serif;
 }
+
+main{
+  display: flex;
+  align-items: center;
+
+}

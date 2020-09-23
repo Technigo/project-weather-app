@@ -7,7 +7,8 @@ const containerTempFeel = document.getElementById('weatherTempFeel');
 const containerDescription = document.getElementById('weatherDescription');
 const containerSunRise = document.getElementById('sunrise');
 const containerSunSet = document.getElementById('sunset');
-const containerForcast = document.getElementById('weatherForcast');
+const containerForcast = document.getElementById('weatherForecast');
+//const containerForcastTemp = document.getElementById('forecasttemp');
 
 /// make this into a one line function instead?
 /// calculating a rounded number for the temp
@@ -23,8 +24,20 @@ const readableTime = (time) => {
         hour: '2-digit',
         minute: '2-digit',
         hour12: false,
-    });
+    })
     return sunTimeString;
+}
+
+/// calculating the date into readable format
+const readableDate = (date) => {
+    const readableDate = new Date(date)
+    const dateReadableDate = readableDate.toLocaleDateString('en-US', {
+        weekday: 'short',
+        day: "numeric",
+
+    })
+    return dateReadableDate;
+    
 }
 
 /// Displaying todays weather forcast 
@@ -37,9 +50,17 @@ const generatedHTMLForWeatherToday = (weatherMain) => {
     containerSunSet.innerHTML = readableTime(weatherMain.sys.sunset)
 }
 
-const generatedHTMLForWeatherForcast = (filteredForcast) => {
-    //const weekday = printDay(filteredForcast.dt_txt); //Tell what day it concerns, does not work ATM 
-    console.log(filteredForcast.main.temp); //can console.log this, but cant make it work when invoking the printDay()
+/// Display weather forecast
+const generatedHTMLForWeatherForcast = (forecast) => {
+    containerForcast.innerHTML += "<div>"
+    containerForcast.innerHTML += readableDate(forecast.dt_txt)
+    containerForcast.innerHTML += "&nbsp;&nbsp;&nbsp;"
+    containerForcast.innerHTML += roundtemp(forecast.main.temp)
+    containerForcast.innerHTML += "</div>"
+    
+    console.log(roundtemp(forecast.main.temp)) // this works
+    console.log(readableDate(forecast.dt_txt)) // this work
+
 }
 
 /// getting the API for todays weather
@@ -58,15 +79,9 @@ fetch(apiUrlForcast).then((response) => {
     .then((weatherForcast) => {
         const filteredForcast = weatherForcast.list.filter(item =>
             item.dt_txt.includes('12:00'))
-            console.log(filteredForcast) /// it works to here
-            // generatedHTMLForWeatherForcast(filteredForcast)
-        filteredForcast.forEach((forcast) => {
-            containerForcast.innerHTML = generatedHTMLForWeatherForcast(forcast)
-    });
+        // generatedHTMLForWeatherForcast(filteredForcast)
+        filteredForcast.forEach((forecast) => {
+            generatedHTMLForWeatherForcast(forecast)
+        });
 
     })
-
-
-
-
-
