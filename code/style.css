@@ -58,6 +58,24 @@ header h2 {
 
 header nav {
     display: none;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: 70px;
+    width: 100%;
+    padding: 15px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+nav a {
+    color: #aaa;
+    text-decoration: none;
+    font-weight: 600;
+    margin: 10px;
 }
 .current-main {
     display: flex;

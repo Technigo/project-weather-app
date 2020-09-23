@@ -10,18 +10,18 @@
 </head>
 <body>
     <header>
-        <div class="hamburger-menu">
+        <div class="hamburger-menu" onclick="showHamburgerMenu()">
             <div></div>
             <div></div>
             <div></div>
         </div>
         <div class="desktop-header">
             <h2>Weather</h2>
-            <nav>
-                <a href="#">Boden</a>
-                <a href="#">Stockholm</a>
-                <a href="#">Klintan</a>
-                <a href="#">Umeå</a>
+            <nav id="nav-bar">
+                <a href="#" onclick="currentWeather(StockholmAPI), weatherForecast(StockholmForecastAPI);">Stockholm</a>
+                <a href="#" onclick="currentWeather(UmeaAPI), weatherForecast(UmeaForecastAPI);">Umeå</a>
+                <a href="#" onclick="currentWeather(KlintanAPI);">Klintan</a>
+                <a href="#" onclick="currentWeather(BodenAPI);">Boden</a>
             </nav>
         </div>
     </header>
