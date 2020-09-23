@@ -194,7 +194,7 @@ a:hover {
 
     .vacation-spots {
         width: 98%;
-        margin: auto;
+        margin: auto auto 60px auto;
     }
 
     .vacation-city-photo {
