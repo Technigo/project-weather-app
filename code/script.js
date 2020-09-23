@@ -93,13 +93,12 @@ const updateUvIndex = (uvInfo) => {
 // Fetch UV index Data 
 
 const loadUvIndex = (latitude, longitude) => { 
-    const apiUvIndexUrl = `http://api.openweathermap.org/data/2.5/uvi?lat=${latitude}&lon=${longitude}&appid=09124a2f59a3124951523d476ed8a36d`;
+    const apiUvIndexUrl = `https://api.openweathermap.org/data/2.5/uvi?lat=${latitude}&lon=${longitude}&appid=09124a2f59a3124951523d476ed8a36d`;
     fetch(apiUvIndexUrl)
     .then((response) => {
         return response.json()
     })
     .then ((json) => {
-        console.log(json)
         updateUvIndex(json);
     })
     .catch((error) => {
@@ -131,7 +130,6 @@ const updateMinMaxTemps = (data) => {
             };
         }
     });
-    console.log(minMaxTemps)
     const forecast = document.getElementById('forecast');
     forecast.innerHTML = "";
     for (const date in minMaxTemps) { 
@@ -144,7 +142,7 @@ const updateMinMaxTemps = (data) => {
 // Fetch 5-day Forecast Data
 
 const loadFiveDaysWeatherForecast = (city) => { 
-    const apiForecastWeatherUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=09124a2f59a3124951523d476ed8a36d`;
+    const apiForecastWeatherUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=09124a2f59a3124951523d476ed8a36d`;
     
     fetch(apiForecastWeatherUrl)
     .then((response) => { return response.json(); })
@@ -154,13 +152,12 @@ const loadFiveDaysWeatherForecast = (city) => {
 
 // Fetch Weather Data
 const loadWeatherCity = (city) => {
-    const apiCurrentWeatherUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=09124a2f59a3124951523d476ed8a36d`;
+    const apiCurrentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=09124a2f59a3124951523d476ed8a36d`;
     fetch(apiCurrentWeatherUrl)
     .then((response) => { 
         return response.json()
     })
     .then((json) => { 
-        console.log(json);
         updateCityWeather(json);    
     })
       .catch((error) => {
