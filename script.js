@@ -21,21 +21,7 @@ let sunRise = document.getElementById("sunRise");
 let sunSet = document.getElementById("sunSet");
 
 // *** forecast
-//day 1
-let day1 = document.getElementById("day1");
-let temp1 = document.getElementById("temp1");
-//day 2
-let day2 = document.getElementById("day2");
-let temp2 = document.getElementById("temp2");
-//day 3
-let day3 = document.getElementById("day3");
-let temp3 = document.getElementById("temp3");
-//day 4
-let day4 = document.getElementById("day4");
-let temp4 = document.getElementById("temp4");
-//day 5
-let day5 = document.getElementById("day5");
-let temp5 = document.getElementById("temp5");
+let forecast = document.getElementById("forecast");
 
 ////////////////////////////////////////////////////////////////////////////
 
@@ -104,57 +90,17 @@ const weatherForcast = () => {
       );
       console.log(filteredForecast);
 
-      // *** weather day 1 (tomorrow)
-      firstDay = time(filteredForecast[0].dt);
-      // making 'day1' time to e.g. "Thursday"
-      day1.innerHTML = `${firstDay.toLocaleDateString(["en-GB"], {
-        weekday: "long",
-      })}`;
-      // temp of day 1
-      temp1.innerHTML = round(filteredForecast[0].main.temp);
-      // *** weather day 2
-      secondDay = time(filteredForecast[1].dt);
-      day2.innerHTML = `${secondDay.toLocaleDateString(["en-GB"], {
-        weekday: "long",
-      })}`;
-      // temp of day 2
-      temp2.innerHTML = round(filteredForecast[1].main.temp);
-      // *** weather day 3
-      thirdDay = time(filteredForecast[2].dt);
-      day3.innerHTML = `${thirdDay.toLocaleDateString(["en-GB"], {
-        weekday: "long",
-      })}`;
-      // temp of day 3
-      temp3.innerHTML = round(filteredForecast[2].main.temp);
-      // *** weather day 4
-      fourthDay = time(filteredForecast[3].dt);
-      day4.innerHTML = `${fourthDay.toLocaleDateString(["en-GB"], {
-        weekday: "long",
-      })}`;
-      // temp of day 4
-      temp4.innerHTML = round(filteredForecast[3].main.temp);
-      // *** weather day 5
-      fifthDay = time(filteredForecast[4].dt);
-      day5.innerHTML = `${fifthDay.toLocaleDateString(["en-GB"], {
-        weekday: "long",
-      })}`;
-      // temp of day 5
-      temp5.innerHTML = round(filteredForecast[4].main.temp);
+      filteredForecast.forEach((item) => {
+        // making time to weekdays
+        const day = time(item.dt).toLocaleDateString(["en-GB"], {
+          weekday: "long",
+        });
 
-      /*
-      city.innerHTML = data.city.name;
+        const temp = round(item.main.temp);
 
-
-      temp.innerHTML = round(data.list[1].main.temp);
-      feelsLikeTemp.innerHTML = round(data.list[1].main.feels_like);
-      weatherToday.innerHTML = data.list[1].weather[0].description;
-      // sunrise
-      sunrise = time(data.city.sunrise);
-      sunRise.innerHTML = `${sunrise.getHours()}:${sunrise.getMinutes()}`;
-      // sunset
-      sunset = time(data.city.sunset);
-      sunSet.innerHTML = `${sunset.getHours()}:${sunset.getMinutes()}`;
-      */
+        // writing to html
+        forecast.innerHTML += `<p>${day}: ${temp}°C<p>`;
+      });
     });
 };
 
