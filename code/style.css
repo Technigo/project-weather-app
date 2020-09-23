@@ -90,16 +90,15 @@ nav a {
     border-bottom-right-radius: 50% 15%;
 }
 
+.clear {
+    background-image: linear-gradient(#1a345f, #5085da);
+}
 .clouds {
     background-image: linear-gradient(#657986, #c0daeb);
 }
 
 .rain {
     background-image: linear-gradient(#43525c, #9ab2c2);
-}
-
-.clear {
-    background-image: linear-gradient(#1a345f, #5085da);
 }
 
 .snow {
