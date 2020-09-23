@@ -1,19 +1,24 @@
 import {API_KEY} from './api-key.js';
 
+//--------------------------------General variables-------------------------------
 const currentWeatherUrl = `http://api.openweathermap.org/data/2.5/weather?q=Göteborg,Sweden&units=metric&APPID=${API_KEY}`
-const weatherInfoTop = document.querySelector('.weather-info-textbox');
+const forecastWeatherUrl = `http://api.openweathermap.org/data/2.5/forecast?q=Gothenburg,Sweden&units=metric&appid=${API_KEY}`;
+const currentWeatherInfo = document.querySelector('.weather-info-textbox');
 const cityHeader = document.querySelector('.city');
+const forecastWeatherInfo = document.querySelector('.forecast-weather-info-textbox');
+
+//---------------------------------Fetch API current weather---------------------
 fetch(currentWeatherUrl)
     .then((response) => {
         return response.json();
     })
     .then((currentWeather) => {
-        console.log(currentWeather);
-        weatherInfoTop.innerHTML += generateHTMLForWeatherInfoTop(currentWeather);
+        currentWeatherInfo.innerHTML += generateHTMLForCurrentWeatherInfo(currentWeather);
         cityHeader.innerHTML = currentWeather.name;
     });
 
-const generateHTMLForWeatherInfoTop = currentWeather => {
+//-------------Function to generate HTML for current weather info on top of page-----
+const generateHTMLForCurrentWeatherInfo = currentWeather => {
     const weatherDescription = currentWeather.weather[0].main;       
     const currentTemperature = currentWeather.main.temp.toFixed(1); //rounding to 1 decimal
     const currentWeatherFeelsLike = currentWeather.main.feels_like.toFixed(1);
@@ -33,19 +38,16 @@ const generateHTMLForWeatherInfoTop = currentWeather => {
         minute:'2-digit',
     });
 
-    let weatherInfoTopHTML = '';
-    weatherInfoTopHTML += `<p class="weather-info-text">${weatherDescription}</p>`;
-    weatherInfoTopHTML += `<p class="weather-info-text">${currentTemperature}°</p>`;
-    weatherInfoTopHTML += `<p class="weather-info-text">° feels like: ${currentWeatherFeelsLike}°</p>`;
-    weatherInfoTopHTML += `<p class="weather-info-text">Sunrise: ${sunriseTimeString}</p>`;
-    weatherInfoTopHTML += `<p class="weather-info-text">Sunset: ${sunsetTimeString}</p>`;
-    return weatherInfoTopHTML;
+    let currentWeatherInfoHTML = '';
+    currentWeatherInfoHTML += `<p class="weather-info-text">${weatherDescription}</p>`;
+    currentWeatherInfoHTML += `<p class="weather-info-text">${currentTemperature}°</p>`;
+    currentWeatherInfoHTML += `<p class="weather-info-text">° feels like: ${currentWeatherFeelsLike}°</p>`;
+    currentWeatherInfoHTML += `<p class="weather-info-text">Sunrise: ${sunriseTimeString}</p>`;
+    currentWeatherInfoHTML += `<p class="weather-info-text">Sunset: ${sunsetTimeString}</p>`;
+    return currentWeatherInfoHTML;
 };
 
-
-
-
-const forecastWeatherUrl = `http://api.openweathermap.org/data/2.5/forecast?q=Gothenburg,Sweden&units=metric&appid=${API_KEY}`;
+//--------------------
 
 fetch(forecastWeatherUrl)
     .then((response) => {
@@ -53,4 +55,10 @@ fetch(forecastWeatherUrl)
     })
     .then((forecastWeather) => {
         console.log(forecastWeather);
+        forecastWWeatherInfo.innerHTML += generateHTMLForForecastWeatherInfo(forecastWeather);
     });
+
+    //-------------Function to generate HTML for current weather info on top of page-----
+//  const generateHTMLForForecastWeatherInfo = forecastWeather => {
+
+//  }
