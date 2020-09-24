@@ -21,6 +21,8 @@ const currentWeatherMain = document.getElementById("current-main");
 const navBar = document.getElementById("nav-bar");
 const hamburgerMenu = document.getElementById("hamburger-menu")
 const loading = document.getElementById("loading")
+const sunriseSpan = document.getElementById("sunrise")
+const sunsetSpan = document.getElementById("sunset")
 
 // Getting current geo location
 
@@ -141,7 +143,9 @@ const showCurrentWeather = (API) => {
                 }
             }
             setWeatherColors();
-            currentWeatherContainer.innerHTML = `<h1>${weatherTemp}<sup>&degC</sup></h1><h2>${weather.name}</h2><p>${weatherDescription}</p><div class="sun"><p>Sunrise: ${sunriseString} </p> <p>Sunset: ${sunsetString} </p></div>`
+            currentWeatherContainer.innerHTML = `<h1>${weatherTemp}<sup>&degC</sup></h1><h2>${weather.name}</h2><p>${weatherDescription}</p>`
+            sunriseSpan.innerHTML = `<p> ${sunriseString} </p>`
+            sunsetSpan.innerHTML = `<p> ${sunsetString} </p>`
         })
 
 

@@ -130,11 +130,12 @@ nav img {
 
 .current-main {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: flex-end;
-    margin: 0;
+    align-items: center;
+    /* margin: 0; */
     width: 100%;
-    height: 400px;
+    height: auto;
     background-color: #5085da;
     background-image: linear-gradient(#1a345f, #5085da);
     border-bottom-left-radius: 50% 15%;
@@ -157,18 +158,35 @@ nav img {
 }
 
 .current-weather {
-    margin: 50px 20px;
+    /* margin: 50px; */
+    box-sizing: border-box;
+    padding: 60px 20px 0 20px;
+    width: 100%;
+    height: auto;
+    min-height: 200px;
+    color: white;
+}
+
+.sunrise {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: flex-end; */
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 20px 20px 20px;
     width: 100%;
     height: auto;
     color: white;
 }
 
-.sun {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin: 15px 0;
+.sunrise p {
+    font-size: 15px;
+}
+
+.sunrise img {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
 }
 
 /* FORECAST */
