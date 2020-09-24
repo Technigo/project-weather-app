@@ -104,7 +104,8 @@ const sthlmForecast = (forecast) => {
   //loop through each day and set HTML
   slicedForecast.forEach((day, index) => {
     daysInForecast[index].querySelector(".next-day").innerHTML = `${getDayOfWeek(new Date(day.dt * 1000).getDay())}`;
-    daysInForecast[index].querySelector(".day-temp").innerHTML = `<img src='${day.weather[0].icon}@2x.png'>   `;
+    daysInForecast[index].querySelector(".day-temp").innerHTML = `<span class="tablet">${Math.round(day.wind_speed)} m/s</span>`;
+    daysInForecast[index].querySelector(".day-temp").innerHTML += `<img src='${day.weather[0].icon}@2x.png'>   `;
     daysInForecast[index].querySelector(".day-temp").innerHTML += `<span>${Math.round(day.temp.min)} / ${Math.round(day.temp.max)}</span>`;
   })
 }
