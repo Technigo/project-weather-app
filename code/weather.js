@@ -50,7 +50,6 @@ const iconUpdate = (weather) => {
     } if (weather == "Thunder") {
         document.getElementById('visibilityIcon').src = './assets/cloudy.png'
     }
-    console.log(img)
 }
 //Fetch with JSON - Current Weather
 fetch(currentWeatherUrl)
