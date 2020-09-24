@@ -73,15 +73,15 @@ function populateSummary(todayForecast) {
   const city = todayForecast.name;
 
   if (rainyDay) {
-    document.getElementById('img').src = '../assets/rainnyDay.svg';
+    document.getElementById('img').src = './assets/rainnyDay.svg';
     document.getElementById('sumMessage').innerHTML = `Don't forget your umbrellar. It is wet in ${city} today.`;
     document.querySelector('.main-container').classList.add('rainy-day');
   } else if (cloudyDay) {
-    document.getElementById('img').src = '../assets/cloudyDay.svg';
+    document.getElementById('img').src = './assets/cloudyDay.svg';
     document.getElementById('sumMessage').innerHTML = `Light a fire and get cosy. It is cloudy in ${city} today.`;
     document.querySelector('.main-container').classList.add('cloudy-day');
   } else if (sunnyDay){
-    document.getElementById('img').src = '../assets/sunnyDay.svg';
+    document.getElementById('img').src = './assets/sunnyDay.svg';
     document.getElementById('sumMessage').innerHTML = `Get your sunnies on. ${city} is looking rather great today.`;
     document.querySelector('.main-container').classList.add('sunny-day');
   } else {
