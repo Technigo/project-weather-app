@@ -60,36 +60,28 @@ h3 {
 
 @media (min-width: 768px) and (max-width: 1023px) {
     .weather-container {
-        padding: 100px 150px 20px 150px;
+        padding: 100px 180px 50px 180px;
     }
     .forecast-container {
         padding: 50px 150px 50px 150px;
-    }
-    .weather-container li {
-        padding: 10px;
     }
   }
 
   @media (min-width: 1024px) {
     .weather-container {
-        padding: 100px 150px 20px 150px;
+        padding: 100px 360px 70px 360px;
     }
     .weather-container ul {
-        padding-left: 200px;
-        padding-right: 200px;
         justify-content: space-evenly;
     }
     .forecast-container {
-        padding: 20px 400px 20px 400px;
-    }
-    .weather-container li {
-        padding: 10px;
+        display: flex; 
+        justify-content: space-evenly; 
     }
     #forecastTable {
         display: flex;
         justify-content: space-around;
         text-align: center;
-        margin: 0;
     }
     .forecast-row  {
         padding: 50px;

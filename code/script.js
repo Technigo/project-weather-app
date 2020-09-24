@@ -7,19 +7,14 @@ const iconElement = document.getElementById("icon")
 const descriptionElement = document.getElementById("description")
 const sunriseElement = document.getElementById("sunrise")
 const sunsetElement = document.getElementById("sunset")
-
 const forecastTableElement = document.getElementById("forecastTable")
-const forecastDayElement = document.getElementById("forecastDay")
-const forecastIconElement = document.getElementById("forecastIcon")
-const forecastTempElement = document.getElementById("forecastTemp")
-const lastElement = document.getElementById("last")
 
 fetch(weatherUrl)
     .then((response) => {
         return response.json()
     })
     .then((weather) => {
-        generateWeather(weather) // create new object containing only the data I use - next time
+        generateWeather(weather) // create new object containing only the data I use?
     })
     .catch((error) => {
         console.log("Fetch error", error)
@@ -30,7 +25,7 @@ fetch(forecastUrl)
         return response.json()
     })
     .then((forecast) => {
-        generateForecast(forecast) // create new object containing only the data I use - next time
+        generateForecast(forecast) // create new object containing only the data I use?
     })
     .catch((error) => {
         console.log("Fetch error", error)
@@ -55,14 +50,14 @@ const generateWeather = weather => {
 }
 
 const generateForecast = forecast => {
-    const noonForecast = forecast.list.filter(item => item.dt_txt.includes('12:00')) // filter already in fetch - next time
+    const noonForecast = forecast.list.filter(item => item.dt_txt.includes('12:00')) // filter already in fetch?
 
     noonForecast.forEach((forecast) => {
         forecastTableElement.innerHTML += generateHTML(forecast)
     })
 }
 
-const generateHTML = (forecast) => { // superproud if this! felt like a mountain but after support and help from classmates it was suddenly doable.
+const generateHTML = (forecast) => {
     handleDay(forecast.dt)
     const day = shortForecastDay
 
@@ -84,7 +79,7 @@ const handleTime = (sunrise, sunset) => {
     const options = { hour: '2-digit', minute: '2-digit' }
     const sunriseTime = sunriseDate.toLocaleTimeString([], options)
     const sunsetTime = sunsetDate.toLocaleTimeString([], options)
-    return time = [sunriseTime, sunsetTime] // did I just return TWO arguments from a function??
+    return time = [sunriseTime, sunsetTime]
 }
 
 const handleDay = day => {
@@ -93,7 +88,7 @@ const handleDay = day => {
     return shortForecastDay = forecastDay.substring(0, 3)
 }
 
-const getIcon = icon => { // YES!! I made the icon work! Without having to do endless conditionals based on weather/temperature..
+const getIcon = icon => {
     const iconUrl1 = 'http://openweathermap.org/img/wn/'
     const iconUrl2 = '@2x.png'
     return icon = iconUrl1.concat(icon.concat(iconUrl2))
