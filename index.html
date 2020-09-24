@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
+      rel="stylesheet"
+    />
+    <title>Weather</title>
+  </head>
+  <body>
+    <section id="todayWeather">
+      <div class="title">
+        <h1 class="title-header">
+          Today's weather in:
+          <span id="city"></span>,
+          <span id="country"></span>
+          <div id="description"></div>
+        </h1>
+
+        <div class="today-info">
+          <div class="temperature" id="temperature">
+            <div class="average-temp">
+              Average Temerature: <span id="averageTemp"></span>
+            </div>
+            <div class="min-temp">min: <span id="minTemp"></span></div>
+            <div class="max-temp">max: <span id="maxTemp"></span></div>
+            <div class="fills-like">
+              Feels Like: <span id="feelsLike"></span>
+            </div>
+            <div class="wind">Wind Speed: <span id="windSpeed"></span></div>
+            <div class="sunrise">Sunrise: <span id="sunrise"></span></div>
+            <div class="sunset">Sunset: <span id="sunset"></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="fiveDayForcast">
+      <section class="forcast">
+        <div class="filtredForcastDate">Date:</div>
+        <div class="filtredForcastTemperatureMin">Temperature:</div>
+      </section>
+
+      <section class="forcast">
+        <div class="filtredForcastDate">Date:</div>
+        <div class="filtredForcastTemperatureMin">Temperature:</div>
+      </section>
+
+      <section class="forcast">
+        <div class="filtredForcastDate">Date:</div>
+        <div class="filtredForcastTemperatureMin">Temperature:</div>
+      </section>
+
+      <section class="forcast">
+        <div class="filtredForcastDate">Date:</div>
+        <div class="filtredForcastTemperatureMin">Temperature:</div>
+      </section>
+
+      <section class="forcast">
+        <div class="filtredForcastDate">Date:</div>
+        <div class="filtredForcastTemperatureMin">Temperature:</div>
+      </section>
+    </section>
+
+    <script src="weather.js"></script>
+  </body>
+</html>
