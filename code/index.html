@@ -10,9 +10,13 @@
 </head>
 <body>
     <section class="container-all">
-        <video loop muted autoplay preload="auto">
-            <source src="Video/TimeLapsecompressed.mp4" video type="video/mp4" />
-        </video>
+      
+        <div class="video-wrapper">
+            <video loop muted autoplay preload="auto">
+                <source src="videoImages/TimeLapsecompressed.mp4" video type="video/mp4" />
+            </video>
+        </div>
+
         <main id="main">
             <div class="hero-image"></div>
             <div class="hero-text">
@@ -23,7 +27,7 @@
 
                     <div class="description-image">
                         <p class="description"><span id="description-today"></span></p>
-                        <img class="image" id="weather-image" src="" width="50" alt="">
+                        <img class="image" id="weather-image" src="" width="70" alt="">
                     </div>
 
                     <p class="temp"><span id="temp-today"></span></p>
@@ -33,7 +37,7 @@
                 <div class="bottom">
                     <div id="container-five-day"></div>
                 </div>
-                </div>
+                
         </main>
     </section>
     <script src="./script.js"></script>
