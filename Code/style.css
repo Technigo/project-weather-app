@@ -4,21 +4,31 @@
 }
 body{
   height: 100vh;
-  background-image: url(./images/quino-al-mBQIfKlvowM-unsplash.jpg);
-  background-color: purple;
-  overflow: hidden;
+  background: rgb(186,195,34);
+  background: linear-gradient(0deg, rgba(186,195,34,1) 0%, rgba(253,45,45,1) 100%);
   background-repeat: no-repeat;
   background-position: top center;
   font-family: Arial, Helvetica, sans-serif;
   background-size: cover;
 
 }
-
+.header {
+  background-color: rgba(240, 248, 255, 0.6);
+  text-align: center;
+  padding: 30 0;
+  border-bottom-left-radius: 30% 20%;
+  border-bottom-right-radius: 30% 20%;
+  text-shadow: rgba(0, 0, 0, 0.3);
+  color: blue;
+  font-size: 30px;
+}
 .app-container{
 width: 350px;
-margin: 15px auto;
+margin: 40px auto;
+padding-bottom: 40px;;
 background-color: rgba(240, 248, 255, 0.6);
-border-radius: 10px;
+border-bottom-left-radius: 30% 20%;
+border-bottom-right-radius: 30% 20%;
 }
 
 #temp{
@@ -49,7 +59,7 @@ border-radius: 10px;
   padding:20px 0;
 }
 
-.forecast {
+.forecast-five {
   text-align: center;
   width: 350px;
   margin: 15px auto;

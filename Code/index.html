@@ -10,29 +10,36 @@
 
 <body>
 
-  <section class="app-container">
-    <div id="location">
-      <p id="currentCityName">Stockholm</p>
-    </div>
-    <div id="temp">
-      <img id="temp-icon" src="./images/Icons/default.png" alt="weather Icon">
-      <p><span id="temp-value">30</span><span id="temp-unit">&degc</span></p>
-    </div>
-    <div id="climate">
-      <p>Sunny</p>
-    </div>
-    <div id="suntime">
-      <img src="./images/Icons/dawn.png" alt="Sunrise">
-      <p id="sunrise"></p>
-      </p>
-      <img src="./images/Icons/sunset.png" alt="Sunset">
-      <p id="sunset"></p>
-    </div>
-  </section>
-  <section class="five-day-forecast">
-    <h1>Next Days</h1>
-    <div id="forecast"></div>
-  </section>
+  <header class="header">
+    <h1>Daily and Weekly Weather ...</h1>
+  </header>
+  <main>
+    <section class="app-container">
+      <div id="location">
+        <p id="currentCityName">Stockholm</p>
+      </div>
+      <div id="temp">
+        <img id="temp-icon" src="./images/Icons/default.png" alt="weather Icon">
+        <p><span id="temp-value">30</span><span id="temp-unit">&degc</span></p>
+      </div>
+      <div id="climate">
+        <p>Sunny</p>
+      </div>
+      <div id="suntime">
+        <img src="./images/Icons/dawn.png" alt="Sunrise">
+        <p id="sunrise"></p>
+        </p>
+        <img src="./images/Icons/sunset.png" alt="Sunset">
+        <p id="sunset"></p>
+      </div>
+    </section>
+    <section class="forecast-five">
+      <h1>Next Days</h1>
+      <div id="forecast" class="forecast"></div>
+    </section>
+  </main>
+
+
 
   <script src="script.js"></script>
 
