@@ -17,17 +17,17 @@
         <div class="desktop-header">
             <h2>Weather</h2>
             <nav id="nav-bar">
-                <a href="#" onclick="showCurrentWeather(StockholmAPI), showWeatherForecast(StockholmForecastAPI);">Stockholm</a>
-                <a href="#" onclick="showCurrentWeather(UmeaAPI), showWeatherForecast(UmeaForecastAPI);">Umeå</a>
-                <a href="#" onclick="showCurrentWeather(KlintanAPI), showWeatherForecast(KlintanForecastAPI);">Robertsfors</a>
-                <a href="#" onclick="showCurrentWeather(BodenAPI), showWeatherForecast(BodenForecastAPI);">Boden</a>
+                <a href="#" onclick="showCurrentWeather(StockholmAPI), showWeatherForecast(stockholmDailyAPI);">Stockholm</a>
+                <a href="#" onclick="showCurrentWeather(UmeaAPI), showWeatherForecast(umeaDailyAPI);">Umeå</a>
+                <a href="#" onclick="showCurrentWeather(KlintanAPI), showWeatherForecast(klintanDailyAPI);">Robertsfors</a>
+                <a href="#" onclick="showCurrentWeather(BodenAPI), showWeatherForecast(bodenDailyAPI);">Boden</a>
                 <a href="#" onclick="getLocationAPI(setLocationAPI);" class="din-position">Din position</a>
             </nav>
         </div>
     </header>
 
     <section class="current-main" id="current-main">
-        <section class="current-weather" id="current-weather-container"></section>
+        <section class="current-weather" id="current-weather-container"><p>Today</p></section>
     </section> 
 
     <section class="forecast" id="weather-forecast-container">
