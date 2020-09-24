@@ -3,36 +3,41 @@ import { apiLinkWeatherInfo } from './api-keysecure.js';
 import { apiLinkFiveDayForecast } from './api-keysecure.js';
 
 
-//Using a function to fetch the data from the apilink variable
 const fetchedApiInfo = () => {
     fetch(apiLinkWeatherInfo)
     .then((response) => {
         return response.json()
     })
     .then((weatherInfo) => {
-        //Accesing the data from the api via json and putting it into specified html elements
-        //Stockholm weather section
-        document.getElementById("city").innerText = weatherInfo.name; //City
+        
+        //Get Stockholm weather info
+        document.getElementById("city").innerText = weatherInfo.name.toUpperCase(); 
 
-        const temperature = weatherInfo.main.temp.toFixed(1);//City temp
+        //Get Stockholm temp
+        const temperature = weatherInfo.main.temp.toFixed(1);
         //toFixed()rounds the number up or down
         document.getElementById("temperature").innerHTML = `${temperature} &#176`; 
-        document.getElementById("weatherType").innerText = weatherInfo.weather[0].description;
 
+        //Get Stockholm weather description
+        document.getElementById("weatherType").innerText = weatherInfo.weather[0].description.toUpperCase();
+
+        //Get weather icon based on description
         const iconId = weatherInfo.weather[0].icon;
         document.getElementById("iconImage").src = `./images/${iconId}.png`;
 
-        //Sunrise & sunset section
+        //Get sunrise & sunset of Stockholm
         //new Date is creating a copy of a new object for us to fill
+        //Converting from UNIX seconds to milliseconds as js uses millseconds
+        //getHours and getMinutes will convert the UTC to local time according to your computer
         const sunrise = new Date(weatherInfo.sys.sunrise * 1000);
         const sunriseTimeHours = sunrise.getHours();
         const sunriseTimeMinutes = sunrise.getMinutes();
-        //getHours and getMinutes will convert the UTC to local time according to your computer
-        document.getElementById("sunrise").innerHTML = `Sunrise: ${sunriseTimeHours}:${sunriseTimeMinutes}`;
 
         const sunset = new Date(weatherInfo.sys.sunset * 1000);
         const sunsetTimeHours = sunset.getHours();
         const sunsetTimeMinutes = sunset.getMinutes();
+
+        document.getElementById("sunrise").innerHTML = `Sunrise: ${sunriseTimeHours}:${sunriseTimeMinutes}`;
         document.getElementById("sunset").innerHTML = `Sunset: ${sunsetTimeHours}:${sunsetTimeMinutes}`;
     });
     fetch(apiLinkFiveDayForecast)
@@ -40,18 +45,19 @@ const fetchedApiInfo = () => {
         return response.json()
     })
     .then((fiveDayForecastInfo) => {
-        const filteredList = fiveDayForecastInfo.list.filter(item => item.dt_txt.includes('12:00'));
+        //Get forecast in Stockholm for next 5 days
         //Filtering the next 5 day's with the list info at 12:00 that day
-        console.log(filteredList);
+        const filteredList = fiveDayForecastInfo.list.filter(item => item.dt_txt.includes('12:00'));
 
         /* ------ DAY 1 FORECAST ---- */
-        const dayOneDate = new Date(filteredList[0].dt * 1000);
         //Taking the first array from the filteredList and accessing the date for that day. Passing that as an argument in the new Date so it can convert it into today's date and time.
-        var days = ["Sunday","Monday","Tuesay","Wednesday","Thursday","Friday","Sat"];
+        const dayOneDate = new Date(filteredList[0].dt * 1000);  
+        //Created an array with weekday names.Then used the dayOneDate together with the getDay() method to select from the array which day it is. The getDay method tells you this is number format e.g. 1 = Sunday. Which I think then selects that from the array of days.     
+        var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
         const finalDayOneDate = days[dayOneDate.getDay()];
-        //Created an array with weekday names. Then used the dayOneDate together with the getDay() method to select from the array which day it is. The getDay method tells you this is number format e.g. 1 = Sunday. Which I think then selects that from the array of days.
-        const dayOneTemp = filteredList[0].main.temp.toFixed(1); 
-        //Taking the first array index from the filteredList and accessing the temperature for that day whilst rounding the temperature to one decimal place. 
+        //Taking the first array index from the filteredList and accessing the temperature for that day whilst rounding the temperature to one decimal place.
+        const dayOneTemp = filteredList[0].main.temp.toFixed(1);  
+        //Getting description and icon for the next five days
         const dayOneDescription = filteredList[0].weather[0].description;
         const dayOneDescpIcon = filteredList[0].weather[0].icon;
 
@@ -85,7 +91,6 @@ const fetchedApiInfo = () => {
         document.getElementById("day3Icon").src = `./images/${dayThreeDescpIcon}.png`;
         document.getElementById("day3Temp").innerHTML = `${dayThreeTemp} &#176`;
 
-
         /* ------ DAY 4 FORECAST ---- */
         const dayFourDate = new Date(filteredList[3].dt * 1000);
         const finalDayFourDate = days[dayFourDate.getDay()];
@@ -97,7 +102,6 @@ const fetchedApiInfo = () => {
         document.getElementById("day4Type").innerHTML = `${dayFourDescription}`;
         document.getElementById("day4Icon").src = `./images/${dayFourDescpIcon}.png`;
         document.getElementById("day4Temp").innerHTML = `${dayFourTemp} &#176`;
-
 
         /* ------ DAY 5 FORECAST ---- */
         const dayFiveDate = new Date(filteredList[4].dt * 1000);
