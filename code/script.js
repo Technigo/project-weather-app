@@ -41,11 +41,11 @@ const updateCityWeather = (weatherInfo) => {
     weatherIconChange(weatherInfo.weather[0].main)
 };
 
-const weatherIconChange = (weather) =>{
+const weatherIconChange = (weather) => {
     if (weather == "Rain") {
     document.getElementById('weatherIcon').src = './assets/rain.svg';
     } if (weather == "Clouds") {
-    document.getElementById('weatherIcon').src = './assets/cloudy.svg';
+    document.getElementById('weatherIcon').src = './assets/partly-cloudy-day.svg';
     } if (weather == "Clear" || weather == "Sunny") {
     document.getElementById('weatherIcon').src= './assets/sun.svg';
     } if (weather == "Mist" || weather == "Fog") {
@@ -190,7 +190,3 @@ document.getElementById('stockholm').addEventListener('click', () => {
     initializePage(city, latitude, longitude);
 });
 initializePage(city, latitude, longitude);
-
-
-
-
