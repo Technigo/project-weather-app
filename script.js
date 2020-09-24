@@ -1,4 +1,6 @@
-const apiUrlCurrWeather = "http://api.openweathermap.org/data/2.5/weather?q=Lund,Sweden&units=metric&APPID=81897fae64080a6ccc65fb8b9cecf3b8";
+//VARIABLES weather
+const API_KEY = "81897fae64080a6ccc65fb8b9cecf3b8";
+const API_URL_WEATHER = `http://api.openweathermap.org/data/2.5/weather?q=Lund,Sweden&units=metric&APPID=${API_KEY}`;
 
 // const city = document.getElementById("city");
 // const country = document.getElementById("country");
@@ -8,9 +10,18 @@ const description = document.getElementById("description");
 const sunrise = document.getElementById("sunriseTime");
 const sunset = document.getElementById("sunsetTime");
 
-//fetching the data
-fetch(apiUrlCurrWeather)
-.then((response) => {
+//ALL the functions
+//formatting sunrise/sunset unix stamps (in ms)
+const formatUnix = (unixStamp) => {
+  const stampDate = new Date(unixStamp * 1000);
+  const stampTime = stampDate.toLocaleTimeString('se-SE', {timeStyle: "short"});
+  return stampTime;
+};
+
+
+//FETCHING the weather data
+fetch(API_URL_WEATHER)
+  .then((response) => {
   //status of the response - low level computer communication
   console.log(response);
   //we ask for the response from json - can take long time
@@ -66,19 +77,12 @@ fetch(apiUrlCurrWeather)
 });
 
 
-//formatting sunrise/sunset unix stamps (in ms)
-const formatUnix = (unixStamp) => {
-  const stampDate = new Date(unixStamp * 1000);
-  const stampTime = stampDate.toLocaleTimeString('se-SE', {timeStyle: "short"});
-  return stampTime;
-};
-
 //FORECAST
-const apiUrl5DayForecast = "https://api.openweathermap.org/data/2.5/forecast?q=Lund,Sweden&units=metric&APPID=81897fae64080a6ccc65fb8b9cecf3b8";
+const API_URL_FORECAST = `https://api.openweathermap.org/data/2.5/forecast?q=Lund,Sweden&units=metric&APPID=${API_KEY}`;
 const forecastText = document.getElementById("5DayForecast");
 
 
-fetch(apiUrl5DayForecast)
+fetch(API_URL_FORECAST)
 .then((response) => {
   return response.json();
 })
@@ -91,7 +95,21 @@ fetch(apiUrl5DayForecast)
   //filter out info for each day at 12:00
   const listArrayFiltered = listArray.filter(item => item.dt_txt.includes('12:00'));
   console.log(`Filtered array: ${listArrayFiltered}`);
-  listArrayFiltered.forEach((day => {
+
+  //uncomment if the test doesn't work
+  // listArrayFiltered.forEach((day => {
+  //   console.log(`Each day: ${day}`);
+  //   const date = new Date(day.dt * 1000);
+  //   console.log(`Date: ${date}`);
+  //   const weekday = date.toLocaleDateString('se-SE', {weekday: "short"});
+  //   console.log(`Weekday: ${weekday}`);
+  //   const dailyTemp = day.main.temp;
+  //   console.log(`Daily temp: ${dailyTemp}`);
+
+  //   forecastText.innerHTML += `<p>${weekday}</p><p>${dailyTemp}°C</p>`; 
+  // }))
+
+  listArrayFiltered.forEach((day, index => {
     console.log(`Each day: ${day}`);
     const date = new Date(day.dt * 1000);
     console.log(`Date: ${date}`);
@@ -100,7 +118,9 @@ fetch(apiUrl5DayForecast)
     const dailyTemp = day.main.temp;
     console.log(`Daily temp: ${dailyTemp}`);
 
-    forecastText.innerHTML += `<p>${weekday} ${dailyTemp}°C</p>`; 
+    forecastText.innerHTML += `<p>${weekday}</p><p>${dailyTemp}°C</p>`; 
   }))
+
+
 
 });

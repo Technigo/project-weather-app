@@ -5,7 +5,7 @@
   font-family: 'Montserrat', sans-serif;
   color: #164a68;
   font-size: 20px;
-}
+};
 
   span {
     font-size: 30px;
@@ -14,26 +14,48 @@
 
   .daily-weather {
     height: 33vh;
+    margin: 0 20px;
     border: 1px solid blue;
   }
 
-  .current-time, .current-location, .current-date {
+  .time-location-date {
+    margin-bottom: 20px;
+  }
+
+  .current-location {
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  .current-time, 
+  .current-location, 
+  .current-date {
     display: flex;
     justify-content: center;
     margin: 3px;
   }
 
-  .first-row, .sunrise-row, .sunset-row {
+  .current-time,
+  .current-date {
+    font-size: 15px;
+  }
+
+  .first-row, 
+  .sunrise-row, 
+  .sunset-row {
     display: flex;
     justify-content: left;
   }
 
-  .first-row > p, .sunrise-row > p, .sunset-row > p {
+  .first-row > p, 
+  .sunrise-row > p, 
+  .sunset-row > p {
     margin: 3px;
   }
 
   .forecast {
     height: 60vh;
+    margin: 0 20px;
     border: 1px solid red;
   }
 
@@ -41,6 +63,7 @@
 
   }
 
+  /**FOOTER style**/
   footer {
     height: 7vh;
     text-align: center;
@@ -49,4 +72,10 @@
     left: 0;
 
     border: 1px solid green;
+  }
+
+  /**MEDIA QUERIES**/
+  /*tablet view*/
+  @media (min-width: 668px) {
+    
   }
