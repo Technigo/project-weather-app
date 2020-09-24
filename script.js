@@ -12,6 +12,7 @@ const description = document.getElementById('weather-type');
 const sunRise = document.getElementById('rise');
 const sunSet = document.getElementById('set');
 const forecast = document.getElementById('5days');
+const iconElem = document.getElementById('icon');
 
 
 fetch(weatherUrl)
@@ -22,7 +23,8 @@ fetch(weatherUrl)
         city.innerHTML = currentWeather.name;
         temperature.innerHTML = `${currentWeather.main.temp.toFixed(1)} °C`;
         description.innerHTML = currentWeather.weather[0].description;
-
+        const weatherPicID = currentWeather.weather[0].icon;
+        weatherPic.src = `./assets/${weatherPicID}.png`;
 
         const sunriseTime = new Date(currentWeather.sys.sunrise * 1000);
         const sunriseTimeString = sunriseTime.toLocaleTimeString('sv-SE', {
