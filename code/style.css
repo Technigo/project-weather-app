@@ -8,7 +8,7 @@
 
 body {
   font-family: "Roboto Mono", monospace;
-  background-image: url(./img/skies.jpg);
+  background-image: url(/assets/skies.jpg);
   background-size: cover;
   background-position: top center;
 }
@@ -22,14 +22,15 @@ h1 {
   letter-spacing: 3px;
 }
 
+/* MAIN SECTION, CURRENT WEATHER */
 p {
   font-size: 25px;
-  color: lightcoral;
+  color: rgb(199, 125, 125);
   font-weight: 600;
 }
 
 #main {
-  background-color: lavenderblush;
+  background-color: rgb(243, 245, 250);
   border-bottom: 2px solid snow;
   border-radius: 8px;
   background-position: center;
@@ -42,18 +43,18 @@ p {
   font-size: 18px;
 }
 
-#current {
+.current {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   padding-top: 10px;
 }
-/* #highLow {
+#highLow {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-} */
+  justify-content: space-evenly;
+}
 #weather-wrap {
   display: flex;
   flex-direction: column;

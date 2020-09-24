@@ -4,9 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Project 6: Weather App</title>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="/code/style.css" />
   </head>
   <body>
+    <!-- MAIN SECTION, CURRENT WEATHER -->
     <section class id="weather-wrap">
       <h1>Weather Forecast</h1>
       <header>
@@ -20,6 +21,7 @@
     </section>
 
     <section class id="main">
+      <img src="/assets/cntower.png" height="100px" />
       <div class id="city"><p>Toronto, ON</p></div>
       <div class id="date"></div>
 
@@ -50,6 +52,18 @@
       </section>
     </section>
 
-    <script src="./weather.js"></script>
+    <!-- FORECAST SECTION -->
+    <section class id="forecast-wrap">
+      <h2>5 day forecast</h2>
+      <div class id="weatherForecast">
+        <p class id="day1"></p>
+        <p class id="day2"></p>
+        <p class id="day3"></p>
+        <p class id="day4"></p>
+        <p class id="day5"></p>
+      </div>
+    </section>
+
+    <script src="/code/weather.js"></script>
   </body>
 </html>
