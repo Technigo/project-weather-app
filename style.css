@@ -1,0 +1,46 @@
+*, *::before, *::after { 
+  box-sizing: inherit; 
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 40px;
+  color: #F47775;
+}
+
+.topInfo {
+ font-weight: 400;
+}
+
+.weatherIcon {
+  padding-top: 60px;
+}
+
+.weatherCitat {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+#weekfive {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  border-bottom: 1px dotted #F47775;
+}
+
+#weekday{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+
+#weektemp {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
