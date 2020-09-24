@@ -78,6 +78,7 @@ function populateSummary(todayForecast) {
     document.querySelector('.main-container').classList.add('rainy-day');
     document.querySelector('.main-container').classList.remove('cloudy-day');
     document.querySelector('.main-container').classList.remove('sunny-day');
+    document.querySelector('.main-container').classList.remove('other-day');
 
   } else if (cloudyDay) {
     document.getElementById('img').src = './assets/cloudyDay.svg';
@@ -85,16 +86,20 @@ function populateSummary(todayForecast) {
     document.querySelector('.main-container').classList.add('cloudy-day');
     document.querySelector('.main-container').classList.remove('rainy-day');
     document.querySelector('.main-container').classList.remove('sunny-day');
+    document.querySelector('.main-container').classList.remove('other-day');
   } else if (sunnyDay){
     document.getElementById('img').src = './assets/sunnyDay.svg';
     document.getElementById('sumMessage').innerHTML = `Get your sunnies on. ${city} is looking rather great today.`;
     document.querySelector('.main-container').classList.add('sunny-day');
     document.querySelector('.main-container').classList.remove('rainy-day');
     document.querySelector('.main-container').classList.remove('cloudy-day');
+    document.querySelector('.main-container').classList.remove('other-day');
   } else {
+    document.getElementById('img').src = './assets/cloud-moon-rain.svg';
     document.getElementById('sumMessage').innerHTML = `Get yourself ready for the all-weather-in-one today`;
+    document.querySelector('.main-container').classList.add('other-day');
     document.querySelector('.main-container').classList.remove('sunny-day');
-    document.querySelector('.main-container').classList.remove('rainny-day');
+    document.querySelector('.main-container').classList.remove('rainy-day');
     document.querySelector('.main-container').classList.remove('cloudy-day');
   }
 }
