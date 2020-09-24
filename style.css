@@ -5,7 +5,7 @@ html {
 
 body {
     margin: 0;
-    background-color: #43658b; 
+    background-color: #3282b8; 
 }
 
 
@@ -17,7 +17,7 @@ body {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    background-color: #4e89ae; 
+    background-color: #bbe1fa;    
 }
 
 .todaysWeather {
@@ -33,8 +33,6 @@ body {
 #todaysWeatherIcon img {
     width: 150px;
 }
-
-
 
 .temperature{
     font-size: 40px;
@@ -102,47 +100,23 @@ body {
     color: white;
 }
 
-/*OSLO*/
 
-.todaysWeatherOslo {
-    display: flex;
-    justify-content: space-between;
-}
-
-
-#todaysWeatherIconOslo {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-}
-
-#todaysWeatherIconOslo img { 
-    width: 35px;
-}
-
-
-
-
-/*ALICANTE*/
-.todaysWeatherAlicante {
+/*OSLO, ALICANTE , BERLIN*/
+.todaysWeatherOslo, .todaysWeatherAlicante, .todaysWeatherBerlin  {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
 }
 
-#todaysWeatherIconOAlicante {
+#todaysWeatherIconOslo, #todaysWeatherIconOAlicante , #todaysWeatherIconBerlin {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
 }
 
-#todaysWeatherIconAlicante img {
+#todaysWeatherIconOslo img, #todaysWeatherIconAlicante img , #todaysWeatherIconBerlin img{
     width: 35px;
 }
-
-
 
 
 
@@ -162,19 +136,14 @@ body {
         font-size: 50px;
     }
 
-    .todaysWeatherOslo {
-        justify-content: space-evenly;
-    }
-    .todaysWeatherAlicante {
+    .todaysWeatherOslo, .todaysWeatherAlicante, .todaysWeatherBerlin {
         justify-content: space-evenly;
     }
   }
 
 
 
-
-
-/***  Media Quaries  Desktop ***/
+/***  Media Quaries Desktop ***/
   
 @media screen and (min-width: 1024px) {
 
@@ -190,13 +159,7 @@ body {
         font-size: 60px;
     }
 
-    .todaysWeatherOslo {
+    .todaysWeatherOslo, .todaysWeatherAlicante, .todaysWeatherBerlin {
         justify-content: space-evenly;
     }
-
-    .todaysWeatherAlicante {
-        justify-content: space-evenly;
-    }
-
-
 }
