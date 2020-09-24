@@ -13,7 +13,7 @@ body {
   box-sizing: inherit;
 }
 header {
-  margin: 0px;
+  margin-top: 15px;
   position: relative;
   font-size: 4vw;
 }

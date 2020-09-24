@@ -1,7 +1,14 @@
-const url1 =
-  "https://api.openweathermap.org/data/2.5/weather?q=Barcelona,Spain&units=metric&APPID=65baa001e8c7b91e12c081e5f04cb9a6";
-const url2 =
-  "http://api.openweathermap.org/data/2.5/forecast?q=Barcelona,Spain&units=metric&APPID=65baa001e8c7b91e12c081e5f04cb9a6";
+const API_KEY = "65baa001e8c7b91e12c081e5f04cb9a6";
+
+// const city = ["London,UK","Milan,Italy","New York,USA","Istanbul,Turkey","Barcelona,Spain","Mexico city,Mexico","Stockholm,Sweden","Moscow,Russia"];
+
+if (value === "london") {
+  const city = city[0];
+}
+
+const API_URL1 = `https://api.openweathermap.org/data/2.5/weather?q=Palma,Spain&units=metric&APPID=${API_KEY}`;
+
+const API_URL2 = `https://api.openweathermap.org/data/2.5/forecast?q=Palma,Spain&units=metric&APPID=${API_KEY}`;
 
 //variables that will be used to display the results in html
 //const weatherNow = document.getElementById("description");
@@ -14,10 +21,8 @@ const url2 =
 
 //function that fetches the weather information at the moment
 const fetchWeather = () => {
-  fetch(url1)
-    .then((response) => {
-      return response.json();
-    })
+  fetch(API_URL1)
+    .then((response) => response.json())
     .then((weatherDoc) => {
       //weather conditions description at the moment
       document.getElementById("description").innerHTML =
@@ -81,10 +86,8 @@ fetchWeather();
 
 //function that fetches the weather from the second weather forecast url
 const fetchWeatherForecast = () => {
-  fetch(url2)
-    .then((response) => {
-      return response.json();
-    })
+  fetch(API_URL2)
+    .then((response) => response.json())
     .then((json) => {
       //filter data and get the array that includes only extracted data for 12:00pm each day
       const filteredForecast = json.list.filter((item) =>
@@ -109,25 +112,31 @@ const showWeatherByDay = (day) => {
   });
 
   // function for changing icons in each day
+  const conditions = day.weather[0].main;
+  const showSmallIcon = () => {
+    if (conditions === "Clear") {
+      ("./images/sun.png");
+    } else if (conditions === "Rain") {
+      ("./images/umbrella.png");
+    } else {
+      ("./images/umbrella.png");
+    }
+  };
 
-  // const conditions = day.weather[0].main;
-  // const whichIconToShow = () => {
-  // if (conditions === "Clear") {
-  //   ("./images/sun.png");
-  //   } else if (conditions === "Rain"){
-  //     ("./images/umbrella.png");
-  //   } else {
-  // ("./images/clouds.png");
-  // };
+  //small icons rotation in the forecast
 
-  // console.log(whichIconToShow());
+  let forecastWeatherByDay = "";
+  forecastWeatherByDay += `<section class="weekDay">`;
+  forecastWeatherByDay += ` <img src='${showSmallIcon()}'>`;
+  forecastWeatherByDay += `<p>${theWeekDay} ${Math.round(day.main.temp)}ºC</p>`;
+  forecastWeatherByDay += `</section>`;
+  return forecastWeatherByDay;
 
-  //<img src="${whichIconToShow}"
-
-  return `<p>${theWeekDay}....................${Math.round(
-    day.main.temp
-  )}ºC</p>`;
+  // return `<p>${theWeekDay}....................${Math.round(
+  //   day.main.temp
+  // )}ºC</p>`;
 };
 fetchWeatherForecast();
+
 //${day.main.humidity}%
 //${Math.round(day.main.feels_like)}
