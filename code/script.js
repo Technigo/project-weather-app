@@ -73,7 +73,7 @@ function populateSummary(todayForecast) {
   const city = todayForecast.name;
 
   if (rainyDay) {
-    document.getElementById('img').src = '../assets/iPhone X-XS – 1.png';
+    document.getElementById('img').src = '../assets/rainnyDay.svg';
     document.getElementById('sumMessage').innerHTML = `Don't forget your umbrellar. It is wet in ${city} today.`;
     document.querySelector('.main-container').classList.add('rainy-day');
   } else if (cloudyDay) {

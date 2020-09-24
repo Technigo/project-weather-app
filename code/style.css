@@ -89,3 +89,7 @@ body {
   background-image: linear-gradient(rgba(163,222,247,0.2), rgba(163,222,247,1));
   color:#164A68;
 }
+
+.forecast {
+  background-image: url("../assets/rainnyDay.svg");
+}
