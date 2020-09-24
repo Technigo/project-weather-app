@@ -24,11 +24,21 @@ const daysOfTheWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "
 const backgroundChange = (weatherInfo) => { 
     if (weatherInfo.main.temp.toFixed(1) >= 18 || weatherInfo.main.feels_like.toFixed(1) >= 18) {
         body.classList.add('warm')
-    } else{ 
+    } else { 
         body.classList.remove('warm')
     }
 }
 
+//Function to change background according to time of day 
+
+const backgroundChangeTime = () => {
+    const currentTime = new Date().getHours();
+    if (currentTime >= 20 || currentTime <= 5) {
+        body.classList.add('nightime')
+    } else {
+        body.classList.remove('nightime')
+    }
+}
 
 // Main function that shows the updated weather
 const updateCityWeather = (weatherInfo) => { 
@@ -39,23 +49,24 @@ const updateCityWeather = (weatherInfo) => {
     updateWind(weatherInfo);
     backgroundChange(weatherInfo);
     weatherIconChange(weatherInfo.weather[0].main)
+    backgroundChangeTime();
 };
 
 const weatherIconChange = (weather) => {
     if (weather == "Rain") {
-    document.getElementById('weatherIcon').src = './assets/rain.svg';
-    } if (weather == "Clouds") {
-    document.getElementById('weatherIcon').src = './assets/partly-cloudy-day.svg';
-    } if (weather == "Clear" || weather == "Sunny") {
-    document.getElementById('weatherIcon').src= './assets/sun.svg';
-    } if (weather == "Mist" || weather == "Fog") {
-    document.getElementById('weatherIcon').src= './assets/mist.svg';
-    } if (weather == "Snow"){
-    document.getElementById('weatherIcon').src= './assets/snow.svg';
-    } if (weather == "Hail"){
-    document.getElementById('weatherIcon').src= './assets/hail.svg';
-    } if (weather == "Thunder"){
-    document.getElementById('weatherIcon').src= './assets/thunderstorms.svg';
+        document.getElementById('weatherIcon').src = './assets/rain.svg';
+    } else if (weather == "Clouds"){
+        document.getElementById('weatherIcon').src = './assets/partly-cloudy-day.svg';
+    } else if (weather == "Clear" || weather == "Sunny") {
+        document.getElementById('weatherIcon').src= './assets/sun.svg';
+    } else if (weather == "Mist" || weather == "Fog") {
+        document.getElementById('weatherIcon').src= './assets/mist.svg';
+    } else if (weather == "Snow"){
+        document.getElementById('weatherIcon').src= './assets/snow.svg';
+    } else if (weather == "Hail"){
+        document.getElementById('weatherIcon').src= './assets/hail.svg';
+    } else if (weather == "Thunder"){
+        document.getElementById('weatherIcon').src= './assets/thunderstorms.svg';
   }
 }
   
@@ -135,6 +146,7 @@ const updateMinMaxTemps = (data) => {
     };
     
 }
+
 
 // Fetch 5-day Forecast Data
 const loadFiveDaysWeatherForecast = (city) => { 

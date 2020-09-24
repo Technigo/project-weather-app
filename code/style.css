@@ -19,6 +19,13 @@ body.warm {
     rgba(246,197,109,1) 100%)
 }
 
+body.nightime {
+  background: rgb(132,136,189);
+  background: linear-gradient(0deg, 
+  rgba(132,136,189,1) 0%, 
+  rgb(3, 7, 65) 72%);
+}
+
 p {
   color: rgb(243, 243, 243);
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
