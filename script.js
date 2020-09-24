@@ -43,7 +43,7 @@ const iconDependingOnWeather = (item) => {
   } else if (iconMainDescription === 'Snow') {
     return 'http://openweathermap.org/img/wn/13d@2x.png'
   } else if (iconMainDescription === 'Rain') {
-    return 'http://openweathermap.org/img/wn/10d@2x.png'
+    return 'http://openweathermap.org/img/wn/09d@2x.png'
   } else if (iconMainDescription === 'Drizzle') {
     return 'http://openweathermap.org/img/wn/09d@2x.png'
   } else if (iconMainDescription === 'Thunderstorm') {
@@ -54,8 +54,7 @@ const iconDependingOnWeather = (item) => {
 
 const generatedHTMLForWeatherToday = (weatherToday) => {
   const temperature = calculateTemperature(weatherToday.main.temp); //This is using json.main.temp as a parameter instead of number.
-  //console.log(weatherToday.sys.sunrise);
-  //Lägg in time in city
+  //Add time in city also
   const sunrise = calculatingSun(weatherToday.sys.sunrise);
   const sunset = calculatingSun(weatherToday.sys.sunset);
   const iconToday = iconDependingOnWeather(weatherToday.weather[0].main)
@@ -66,14 +65,16 @@ const generatedHTMLForWeatherToday = (weatherToday) => {
   // descriptionToday.innerHTML += `The sun rises at ${sunrise} and sets at ${sunset}`; //Kommenterar ut pga specar längre ner istället
   let weatherTodayHTML = '';
   weatherTodayHTML += `<div class="location-information">`;
-  weatherTodayHTML += `<div class="temp">${temperature}</div>`
-  weatherTodayHTML += `<div class="location">${weatherToday.name}</div>`//Staden
-  weatherTodayHTML += `<div class="description">${description}</div>`//description typ broken clouds
-  weatherTodayHTML += `<div class="description"></div>`//description typ broken clouds
-  
-  weatherTodayHTML += `<div class="description"></div>`//Time in city
+  weatherTodayHTML += `<div class="temp">${temperature} <span class="celsius">&#8451;</span></div>`
+  weatherTodayHTML += `<div class="location">${weatherToday.name}</div>`//Location name
+  weatherTodayHTML += `<div class="description">${description}</div>`//description like "broken clouds"
+  weatherTodayHTML += `<div class="sunrise-sunset">`
+  weatherTodayHTML += `<div class="sunrise">Sunrise ${sunrise}</div>`
+  weatherTodayHTML += `<div class="sunset">Sunset ${sunset}</div>`
+  //Div for time in city should go here
+  weatherTodayHTML += `</div>`
   weatherTodayHTML += `</div>`;
-  weatherTodayHTML += `<img src='${iconToday}'>`; //Bilden utanför pga kunna sätta position absolute
+  weatherTodayHTML += `<img class="icon-today" src='${iconToday}'>`; //Bilden utanför pga kunna sätta position absolute
   return weatherTodayHTML;
 };
 
@@ -85,15 +86,16 @@ const generatedHTMLForWeatherForecast = (filteredForecast) => {
   const iconForecast = iconDependingOnWeather(filteredForecast.weather[0].main);
   return dailyTemp
 
-  let WeatherForecast ='';
-  weatherForecast += `<div class="weather-forecast">`;
-  weatherForecast += `<div class="weekday"></div>`;
-  weatherForecast += `<img src='${icon}'>`;
-  weatherForecast += `<p>${dailyTemp} \xB0/ ${}`
+  // let WeatherForecast ='';
+  // weatherForecast += `<div class="weather-forecast">`;
+  // weatherForecast += `<div class="weekday"></div>`;
+  // weatherForecast += `<img src='${icon}'>`;
+  // weatherForecast += `<p>${dailyTemp} \xB0/ ${}`
   //Weather description for the next five days
   //Humidity and wind
 };
 
+//Fetch-function for weather today:
 const fetchWeatherToday = () => {
   fetch(apiUrlToday)
     .then((response) => {
@@ -101,10 +103,12 @@ const fetchWeatherToday = () => {
     })
     .then((weatherToday) => {
       containerToday.innerHTML = generatedHTMLForWeatherToday(weatherToday);
+      //because: const containerToday = document.getElementById("weatherToday");
     });
 };
 fetchWeatherToday();
 
+//Fetch-function for weather forecast
 const fetchWeatherForecast = () => {
   fetch(apiUrlForecast)
     .then((response) => {
