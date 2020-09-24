@@ -1,4 +1,106 @@
 body {
     font-family: 'Montserrat', sans-serif; 
+    margin: auto 0;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
+
+h2 {
+    font-size: 25px;
+    font-weight: 400;
+    margin: 0px;
+}
+
+h3 {
+    font-weight: 400;
+}
+
+p {
+    margin: 0px;
+    font-weight: 400;
+}
+
+.header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-container h2 {
+    margin: 5px 0px;
+}
+
+.todays-weather-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    padding: 10px 0px;
+}
+
+.city-temperature {
+    font-size: 50px;
+    padding: 0px;
+    margin: 15px 0px 5px 0px;
+}
+
+.todays-weather-type {
+    padding: 0px;
+    margin: 5px 0px;
+    font-size: 25px;
+}
+
+.sunrise-sunset-parent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin: 20px 0px; */
+    padding: 10px 0px 0px 0px;
+    /* background: lightgoldenrodyellow; */
+}
+
+.sunrise-sunset-parent p {
+    /* margin: 0px 5px; */
+    padding: 20px;
+    font-size: 18px;
+}
+
+.sunrise-sunset-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.fiveday-forecast-parent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.fiveday-header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.five-day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.forecast-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 10px 0px;
+}
+
 
