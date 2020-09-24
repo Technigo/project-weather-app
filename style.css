@@ -10,14 +10,11 @@ body {
 p {
     width: 100px;
     text-align: end;
-    /*margin-right: 10px;*/
 }
 
 img {
-    border-radius: 50%;
     height: 40px;
     width: 40px;
-    filter: opacity(1)
 }
 
 /*style for weather today wrapper*/
@@ -27,16 +24,17 @@ img {
     flex-direction: column;
 }
 
-.container {
+.weather-wrapper {
     height: 40vh;
     position: relative;
     width: 100%;
+    color: #ffffff;
 }
 
 /*class which lays under weather-today-wrapper to change
 color depending on weather temp in js file.*/ 
-.class-color {
-    background-color: ''; /*'red'*/
+.background-color {
+    background-color: ''; 
     height: 100%;
     padding: 30px 10px;
     width: 100%;
@@ -49,9 +47,8 @@ color depending on weather temp in js file.*/
 
 /*opacity 0.8 to show underlying background color in class-color*/
 .weather-today-wrapper {
-    background: url('./unsplash-weather-s.jpg') no-repeat center center; /*changed from ''*/
-    background-size: cover; /*added*/
-    color: #ffffff;
+    background: url('./unsplash-weather-s.jpg') no-repeat center center; 
+    background-size: cover; 
     height: 100%;
     padding: 30px 10px;
     width: 100%;
@@ -60,27 +57,24 @@ color depending on weather temp in js file.*/
     flex-direction: column;
     justify-content: space-around;
     opacity: 0.8;
-    /*display: flex; 
-    flex-direction: column;
+}
+
+.weather-information {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: space-evenly;*/
+    margin: 0 10px; 
 }
 
-/*additional img styling to seperate from other img
-.weather-today-wrapper img {
-    position: absolute;
-    height: 100px;
-    width: 100px;
-    right: 10px;
-    top: 10px;
-    filter: opacity(0.5) drop-shadow(0 0 0 rgb(113, 109, 109));
+.weather-information img {
+    height: 60px;
+    width: 60px;
 }
-*/
-
+    
 .location-information {
     display: flex;
     flex-direction: column;
-    margin: 30px 10px;
+    margin: 0 10px 30px;
 }
 
 .temp {
@@ -93,9 +87,7 @@ color depending on weather temp in js file.*/
 }
 
 .sun-information {
-    /*flex-direction: row;*/
     display: flex;
-    /*width: 100%;*/
     justify-content: space-between;
 }
 
@@ -103,15 +95,12 @@ color depending on weather temp in js file.*/
     margin: 0 10px;
 }
 
-
 /*style for weather forcast wrapper*/
 .weather-forcast-wrapper {
     color: rgb(94, 92, 92);
     display: flex;
     flex-direction: column;
-    margin: 30px 10px;
-    /*width: 100%;*/
-   
+    margin: 30px 10px;  
 }
 
 .weather-forcast {
@@ -119,8 +108,7 @@ color depending on weather temp in js file.*/
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
-    
+    align-items: center;  
 }
 
 .day {
@@ -129,7 +117,6 @@ color depending on weather temp in js file.*/
 
 
 /*style for search section*/
-
 .searched-city {
     display: flex;
     flex-direction: column;
@@ -157,8 +144,6 @@ input {
     display:none;
 }
 
-
-
 /****MEDIA FOR TABLET *****/
 @media (min-width: 768px) {
     .location-information{
@@ -180,15 +165,11 @@ input {
     }
 }
     
-
-
-
 /****MEDIA FOR DESKTOP *****/
 @media (min-width: 1024px) {
-    .container {
+    .weather-wrapper {
         height: 50vh;
     }
-
 
     .weather-forcast-wrapper {
         align-self: center;
