@@ -15,7 +15,6 @@
   .daily-weather {
     height: 33vh;
     margin: 0 25px;
-    border: 1px solid blue;
   }
 
   .time-location-date {
@@ -60,8 +59,6 @@
 
   .statement-image-text {
     text-align: left;
-
-    border: 1px solid green;
   }
 
   .statement-image-text > p {
@@ -74,8 +71,6 @@
   .forecast {
     height: 30vh;
     margin: 0 25px;
-
-    border: 1px solid red;
   }
 
   .five-day-forecast :last-child {
@@ -104,8 +99,6 @@
     left: 0;
     padding: 3px;
     font-variant: all-small-caps;
-
-    border: 1px solid green;
   }
 
   footer > p {
@@ -130,13 +123,19 @@
       .daily-weather, 
       .statement, 
       .forecast {
-        margin: 0 50px;
+        margin: 0 100px;
       }
       .statement-image-text > p {
         font-size: 40px;
       }
       footer > p {
-        font-size: 20px;
+        font-size: 21px;
       }  
+  }
+
+  @media (min-width: 1024px) {
+    *{
+      max-width: 1025px;
+    }
   }
    

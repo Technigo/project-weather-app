@@ -1,6 +1,6 @@
 //VARIABLES weather
 const API_KEY = "81897fae64080a6ccc65fb8b9cecf3b8";
-const API_URL_WEATHER = `http://api.openweathermap.org/data/2.5/weather?q=Lund,Sweden&units=metric&APPID=${API_KEY}`;
+const API_URL_WEATHER = `https://api.openweathermap.org/data/2.5/weather?q=Lund,Sweden&units=metric&APPID=${API_KEY}`;
 
 // const city = document.getElementById("city");
 // const country = document.getElementById("country");
