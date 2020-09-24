@@ -24,7 +24,9 @@ body {
     color: white;
     padding: 0px 50px 0px 20px;
     background: linear-gradient(160deg, rgba(26,23,65,1) 0%, rgba(61,59,122,1) 88%, rgba(78,75,148,1) 100%);
-    border-radius: 0px 0px 15% 15%;
+    border-bottom-left-radius: 100% 20%;
+    border-bottom-right-radius: 100% 20%;
+
 }
 
 .temp {
