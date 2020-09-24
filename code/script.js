@@ -74,7 +74,7 @@ const changeLocButton = document.getElementById('location-button')
 // Main function - Main Weather API
 const fetchWeatherData = (selectedCity) => {
   city = selectedCity
-  const apiUrl = `http://api.openweathermap.org/data/2.5/weather?units=metric&q=${city}&appid=${API_KEY}`;
+  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${city}&appid=${API_KEY}`;
   fetch(apiUrl)
     .then((results) => {
       return results.json();
@@ -115,7 +115,7 @@ const fetchWeatherData = (selectedCity) => {
 // Main function - 5-day Forecast API
 const fetchForecastData = (selectedCity) => {
   city = selectedCity
-  const apiUrlForFiveDays = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${API_KEY}`;
+  const apiUrlForFiveDays = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${API_KEY}`;
   fetch(apiUrlForFiveDays)
     .then((results) => {
       return results.json();
