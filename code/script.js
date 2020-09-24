@@ -74,7 +74,7 @@ function populateSummary(todayForecast) {
 
   if (rainyDay) {
     document.getElementById('img').src = './assets/rainyDay.svg';
-    document.getElementById('sumMessage').innerHTML = `Don't forget your umbrellar. It is wet in ${city} today.`;
+    document.getElementById('sumMessage').innerHTML = `Don't forget your umbrella. It is wet in ${city} today.`;
     document.querySelector('.main-container').classList.add('rainy-day');
     document.querySelector('.main-container').classList.remove('cloudy-day');
     document.querySelector('.main-container').classList.remove('sunny-day');
