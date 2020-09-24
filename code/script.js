@@ -19,7 +19,7 @@ fetch(weatherUrl)
         return response.json()
     })
     .then((weather) => {
-        generateWeather(weather) // use map to create new object, check Wed code session
+        generateWeather(weather) // create new object containing only the data I use - next time
     })
     .catch((error) => {
         console.log("Fetch error", error)
@@ -30,29 +30,32 @@ fetch(forecastUrl)
         return response.json()
     })
     .then((forecast) => {
-        generateForecast(forecast) // use map to create new object
+        generateForecast(forecast) // create new object containing only the data I use - next time
     })
     .catch((error) => {
         console.log("Fetch error", error)
     })
 
 const generateWeather = weather => {
+    const city = weather.name
+    const temp = Math.round(weather.main.temp)
     const icon = getIcon(weather.weather[0].icon)
+    const description = weather.weather[0].description.charAt(0).toUpperCase() + weather.weather[0].description.slice(1)
 
     handleTime(weather.sys.sunrise, weather.sys.sunset)
     const sunrise = time[0]
     const sunset = time[1]
 
-    cityElement.innerHTML = weather.name
-    tempElement.innerHTML = `${Math.round(weather.main.temp)}°`
+    cityElement.innerHTML = city
+    tempElement.innerHTML = `${temp}°`
     iconElement.innerHTML = `<img src='${icon}'>`
-    descriptionElement.innerHTML = weather.weather[0].description.charAt(0).toUpperCase() + weather.weather[0].description.slice(1)
+    descriptionElement.innerHTML = description
     sunriseElement.innerHTML = `Sunrise: ${sunrise} `
     sunsetElement.innerHTML = `Sunset: ${sunset} `
 }
 
 const generateForecast = forecast => {
-    const noonForecast = forecast.list.filter(item => item.dt_txt.includes('12:00')) // filter already in fetch?
+    const noonForecast = forecast.list.filter(item => item.dt_txt.includes('12:00')) // filter already in fetch - next time
 
     noonForecast.forEach((forecast) => {
         forecastTableElement.innerHTML += generateHTML(forecast)
@@ -64,12 +67,13 @@ const generateHTML = (forecast) => { // superproud if this! felt like a mountain
     const day = shortForecastDay
 
     const icon = getIcon(forecast.weather[0].icon)
+    const temp = Math.round(forecast.main.temp)
 
     let forecastHTML = ''
     forecastHTML += `<li class="forecast-row">`
     forecastHTML += `<p>${day}</p> `
     forecastHTML += `<div><img src='${icon}'></div > `
-    forecastHTML += `<p>${Math.round(forecast.main.temp)}°</p > `
+    forecastHTML += `<p>${temp}°</p > `
     forecastHTML += `</li> `
     return (forecastHTML)
 }
