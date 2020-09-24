@@ -9,63 +9,60 @@
 </head>
 <body>
     <main>
-        <header class="header-container">
-            <h2 class="city-header" id="city"></h2>
-        </header>
+        <section class="main-container">
+            <header class="header-container">
+                <h2 id="city"></h2>
+            </header>
 
-        <div class="todays-weather-container">
-            <img src="" id="iconImage"  width="150px"></img>
-            <p class="city-temperature" id="temperature"></p>
-            <p class="todays-weather-type" id="weatherType"></p> 
-        </div>
-        
-        <section class="sunrise-sunset-parent">
-            <div class="sunrise-sunset-child">
-                <img src="./images/sunrise.png" alt="Illustration of sunrise" width="70px">
-                <p id="sunrise"></p>
+            <div class="todays-weather-container">
+                <img src="" id="iconImage"  width="150px"></img>
+                <p class="city-temperature" id="temperature"></p>
+                <p class="todays-weather-type" id="weatherType"></p> 
             </div>
-            <div class="sunrise-sunset-child">
-                <img src="./images/sunset.png" alt="Illustration of sunset" width="70px">
-                <p id="sunset"></p>                
-            </div>
-        </section>
+            
+            <section class="sunrise-sunset-parent">
+                <div class="sunrise-sunset-child">
+                    <img src="./images/sunrise.png" alt="Illustration of sunrise" width="70px">
+                    <p id="sunrise"></p>
+                </div>
+                <div class="sunrise-sunset-child">
+                    <img src="./images/sunset.png" alt="Illustration of sunset" width="70px">
+                    <p id="sunset"></p>                
+                </div>
+            </section>
 
-        <section class="fiveday-forecast-parent">
-            <div class="fiveday-header-container">
-                <!-- <h2>5 day forecast</h2> -->
-            </div>
-            <div class="five-day">
+            <section class="fiveday-forecast-container">
                 <div class="forecast-container">
-                    <p id="day1Day"></p> 
-                    <p id="day1Type"></p> 
-                    <img src="" id="day1Icon" width="20px"></img>
-                    <p id="day1Temp"></p>
+                    <p id="day1Day" class="forecast-day"></p> 
+                    <p id="day1Type" class="forecast-type"></p> 
+                    <img src="" id="day1Icon" class="forecast-icon"></img>
+                    <p id="day1Temp" class="forecast-temp"></p>
                 </div>
                 <div class="forecast-container">
-                    <p id="day2Day"></p> 
-                    <p id="day2Type"></p> 
-                    <img src="" id="day2Icon" width="20px"></img>
-                    <p id="day2Temp"></p> 
+                    <p id="day2Day" class="forecast-day"></p> 
+                    <p id="day2Type" class="forecast-type"></p> 
+                    <img src="" id="day2Icon" class="forecast-icon"></img>
+                    <p id="day2Temp" class="forecast-temp"></p> 
                 </div>
                 <div class="forecast-container">
-                    <p id="day3Day"></p> 
-                    <p id="day3Type"></p> 
-                    <img src="" id="day3Icon" width="20px"></img>
-                    <p id="day3Temp"></p> 
+                    <p id="day3Day" class="forecast-day"></p> 
+                    <p id="day3Type" class="forecast-type"></p> 
+                    <img src="" id="day3Icon" class="forecast-icon"></img>
+                    <p id="day3Temp" class="forecast-temp"></p> 
                 </div>
                 <div class="forecast-container">
-                    <p id="day4Day"></p>
-                    <p id="day4Type"></p>
-                    <img src="" id="day4Icon" width="20px"></img>  
-                    <p id="day4Temp"></p> 
+                    <p id="day4Day" class="forecast-day"></p>
+                    <p id="day4Type" class="forecast-type"></p>
+                    <img src="" id="day4Icon"class="forecast-icon"></img>  
+                    <p id="day4Temp" class="forecast-temp"></p> 
                 </div>
                 <div class="forecast-container">
-                    <p id="day5Day"></p> 
-                    <p id="day5Type"></p>
-                    <img src="" id="day5Icon" width="20px"></img>  
-                    <p id="day5Temp"></p>
+                    <p id="day5Day" class="forecast-day"></p> 
+                    <p id="day5Type" class="forecast-type"></p>
+                    <img src="" id="day5Icon" class="forecast-icon"></img>  
+                    <p id="day5Temp" class="forecast-temp"></p>
                 </div>
-            </div> 
+            </section>
         </section>
     </main>
 
