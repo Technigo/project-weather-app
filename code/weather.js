@@ -121,7 +121,8 @@ const sthlmForecast = (forecast) => {
   //loop through each day and set HTML
   slicedForecast.forEach((day, index) => {
     daysInForecast[index].querySelector(".next-day").innerHTML = `${getDayOfWeek(new Date(day.dt * 1000).getDay())}`;
-    //daysInForecast[index].querySelector("img.day-temp").src = `<img src='${day.weather[0].icon}@2x.png'>   `;
+    daysInForecast[index].querySelector(".day-temp").innerHTML = `<img src='${day.weather[0].icon}@2x.png'>   `;
+    daysInForecast[index].querySelector(".day-temp").innerHTML += `<span>${Math.round(day.temp.min)} / ${Math.round(day.temp.max)}</span>`;
   })
   
 
@@ -163,40 +164,40 @@ const sthlmForecast = (forecast) => {
   
 
   //Dates with forecast
-  document.getElementById("day1-temp").innerHTML = `<img src='${
-    forecast.daily[0].weather[0].icon
-  }@2x.png'>   `;
-  document.getElementById("day1-temp").innerHTML += `<span>${Math.round(
-    forecast.daily[0].temp.min
-  )} / ${Math.round(forecast.daily[0].temp.max)}</span>`;
+//   document.getElementById("day1-temp").innerHTML = `<img src='${
+//     forecast.daily[0].weather[0].icon
+//   }@2x.png'>   `;
+//   document.getElementById("day1-temp").innerHTML += `<span>${Math.round(
+//     forecast.daily[0].temp.min
+//   )} / ${Math.round(forecast.daily[0].temp.max)}</span>`;
 
-  document.getElementById("day2-temp").innerHTML = `<img src='${
-    forecast.daily[1].weather[0].icon
-  }@2x.png'>   `;
-  document.getElementById("day2-temp").innerHTML += `<span>${Math.round(
-    forecast.daily[1].temp.min
-  )} / ${Math.round(forecast.daily[1].temp.max)}</span>`;
+//   document.getElementById("day2-temp").innerHTML = `<img src='${
+//     forecast.daily[1].weather[0].icon
+//   }@2x.png'>   `;
+//   document.getElementById("day2-temp").innerHTML += `<span>${Math.round(
+//     forecast.daily[1].temp.min
+//   )} / ${Math.round(forecast.daily[1].temp.max)}</span>`;
 
-  document.getElementById("day3-temp").innerHTML = `<img src='${
-    forecast.daily[2].weather[0].icon
-  }@2x.png'>   `;
-  document.getElementById("day3-temp").innerHTML += `<span>${Math.round(
-    forecast.daily[2].temp.min
-  )} / ${Math.round(forecast.daily[2].temp.max)}</span>`;
+//   document.getElementById("day3-temp").innerHTML = `<img src='${
+//     forecast.daily[2].weather[0].icon
+//   }@2x.png'>   `;
+//   document.getElementById("day3-temp").innerHTML += `<span>${Math.round(
+//     forecast.daily[2].temp.min
+//   )} / ${Math.round(forecast.daily[2].temp.max)}</span>`;
 
-  document.getElementById("day4-temp").innerHTML = `<img src='${
-    forecast.daily[3].weather[0].icon
-  }@2x.png'>   `;
-  document.getElementById("day4-temp").innerHTML += `<span>${Math.round(
-    forecast.daily[3].temp.min
-  )} / ${Math.round(forecast.daily[3].temp.max)}</span>`;
+//   document.getElementById("day4-temp").innerHTML = `<img src='${
+//     forecast.daily[3].weather[0].icon
+//   }@2x.png'>   `;
+//   document.getElementById("day4-temp").innerHTML += `<span>${Math.round(
+//     forecast.daily[3].temp.min
+//   )} / ${Math.round(forecast.daily[3].temp.max)}</span>`;
 
-  document.getElementById("day5-temp").innerHTML = `<img src='${
-    forecast.daily[4].weather[0].icon
-  }@2x.png'>   `;
-  document.getElementById("day5-temp").innerHTML += `<span>${Math.round(
-    forecast.daily[4].temp.min
-  )} / ${Math.round(forecast.daily[4].temp.max)}</span>`;
+//   document.getElementById("day5-temp").innerHTML = `<img src='${
+//     forecast.daily[4].weather[0].icon
+//   }@2x.png'>   `;
+//   document.getElementById("day5-temp").innerHTML += `<span>${Math.round(
+//     forecast.daily[4].temp.min
+//   )} / ${Math.round(forecast.daily[4].temp.max)}</span>`;
 }
 
 
