@@ -8,22 +8,10 @@ const descriptionElement = document.getElementById("description")
 const sunriseElement = document.getElementById("sunrise")
 const sunsetElement = document.getElementById("sunset")
 
-const dayOneElement = document.getElementById("dayOne")
-const dayTwoElement = document.getElementById("dayTwo")
-const dayThreeElement = document.getElementById("dayThree")
-const dayFourElement = document.getElementById("dayFour")
-const dayFiveElement = document.getElementById("dayFive")
-
-/* QUESTIONS FOR 1:1 
-
-1. I want the short weekday name in English from the forecast data - how do I do that? 
-   Managed to get the weekday number and the full date with toString - both which require some handling to get to the short weekday name.
-   See generateForecast() and handleDay().
-
-2. I got the icon from the API to work, but there must be a better way to handle this in html and js than my solution.. 
-   Also, how do I change the size of the icon? Probably by styling the image in css, but right now I have a p element in html which gets its image content from js.
-   See generateWeather() and <p id="icon"> in html.
-*/
+const forecastTableElement = document.getElementById("forecastTable")
+const forecastDayElement = document.getElementById("forecastDay")
+const forecastIconElement = document.getElementById("forecastIcon")
+const forecastTempElement = document.getElementById("forecastTemp")
 
 fetch(weatherUrl)
     .then((response) => {
@@ -56,10 +44,36 @@ const generateWeather = weather => {
 
     cityElement.innerHTML = weather.name
     tempElement.innerHTML = `${Math.round(weather.main.temp)}°`
-    iconElement.innerHTML = `<img src='${icon}'>` // this can't be the way to handle the icon, and how can i handle the icon size?
+    iconElement.innerHTML = `<img src='${icon}'>`
     descriptionElement.innerHTML = weather.weather[0].description.charAt(0).toUpperCase() + weather.weather[0].description.slice(1)
     sunriseElement.innerHTML = `Sunrise: ${sunrise} `
     sunsetElement.innerHTML = `Sunset: ${sunset} `
+}
+
+
+
+
+const generateForecast = forecast => {
+    const noonForecast = forecast.list.filter(item => item.dt_txt.includes('12:00')) // filter already in fetch?
+
+    noonForecast.forEach((forecast) => {
+        forecastTableElement.innerHTML += generateHTML(forecast)
+    })
+}
+
+const generateHTML = forecast => {
+    handleDay(forecast.dt)
+    const day = shortForecastDay
+
+    const icon = getIcon(forecast.weather[0].icon)
+
+    let forecastHTML = ''
+    forecastHTML += `<li class="forecast-row">`
+    forecastHTML += `<p>${day}</p> `
+    forecastHTML += `<div><img src='${icon}'></div > `
+    forecastHTML += `<p>${Math.round(forecast.main.temp)}°</p > `
+    forecastHTML += `</li> `
+    return forecastHTML
 }
 
 const handleTime = (sunrise, sunset) => {
@@ -71,23 +85,10 @@ const handleTime = (sunrise, sunset) => {
     return time = [sunriseTime, sunsetTime] // did I just return TWO arguments from a function??
 }
 
-const generateForecast = forecast => {
-    const noonForecast = forecast.list.filter(item => item.dt_txt.includes('12:00')) // filter already in fetch?
-
-    handleDay(noonForecast[0].dt)
-    const day = forecastDay
-
-    const icon = getIcon(noonForecast[0].weather[0].icon)
-
-    dayOneElement.innerHTML = `${day} <br>`
-    dayOneElement.innerHTML += noonForecast[0].main.temp += `<br>`
-    dayOneElement.innerHTML += `<img src='${icon}'>`
-}
-
-const handleDay = day => { // want only short day name in english
+const handleDay = day => {
     const forecastDate = new Date(day * 1000)
-    //return forecastDay = forecastDate.getDay()  // create array with weekdays? must be js built in function for this..
-    return forecastDay = forecastDate.toString() // filter out the first three in the returned string? easier than the array but still..
+    const forecastDay = forecastDate.toString()
+    return shortForecastDay = forecastDay.substring(0, 3)
 }
 
 const getIcon = icon => { // YES!! I made the icon work! Without having to do endless conditionals based on weather/temperature..
