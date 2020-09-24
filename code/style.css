@@ -29,61 +29,82 @@ body {
   background-image: linear-gradient(19deg, #ff984b 0%, #f3d6e8 100%);
 }
 
+.info-text {
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 200;
+  margin-left: 5px;
+}
+
 .capitalized {
   text-transform: capitalize;
 }
 
 /* ------------------ Change location ------------------  */
-.change-location--box {
+.change-location {
   padding: 30px;
+  width: 100%;
+  text-align: center;
 }
 
 .change-location--form {
   margin-top: 10px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .change-location--input {
   /* font-size: 20px; */
   padding: 5px;
-  width: 50%;
+  width: 20%;
   background: none;
   border: 1px solid #000;
 }
 
 .change-location--button {
-  height: 27px;
+  height: 28px;
   padding: 5px 20px;
   background: #000;
   color: #fff;
-  border: none;
+  border: 1px solid #000;
 }
 
 /* ------------------ Today's temperature ------------------  */
 .main-weather--box {
   width: 20vw;
-  margin: 40px auto;
+  margin: 40px auto; 
+}
+
+.main-weather--flex-wrapper {
+  display: flex;
+  align-items: flex-start;
+}
+
+.main-weather--left, .main-weather--right {
+  width: 50%;
+}
+
+.main-weather--right {
+  text-align: right;
 }
 
 .main-weather--city {
-  font-size: 28px;
-  margin-top: 10px;
+  font-size: 46px;
 }
 
 .main-weather--weather-image {
-  width: 200px;
-  height: 200px;
+  width: 89vw;
+  height: auto;
+  margin-bottom: 10px;
 }
 
 .main-weather--weather {
-  margin: 0 0 30px 0;
+  margin: 5px 0 30px 0;
 }
 
 .main-weather--temperature {
   font-size: 46px;
-  margin: 10px 0;
 }
 
 .main-weather--feels-like {
@@ -102,8 +123,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 10px 0;
-  padding: 0 20px 0 0;
+  margin: 10px 30px 10px 0;
 }
 
 .sunrise--content img,
@@ -121,27 +141,50 @@ body {
   margin: auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 15px;
   border-top: 1px dotted #000;
 }
 
-.day--name {
-  margin-right: 20px;
+.day--img {
+  display: inline-block;
+  flex-grow: 2;
+  text-align: right;
+  margin-right: 10px;
+  width: 4vw;
+}
+
+/* ------------------- FOOTER ------------------- */
+footer {
+  text-align: center;
+  margin: 50px 0;
+}
+
+.footer--text {
+  font-size: 14px;
+  margin-top: 2px;
 }
 
 /* ------------------ M E D I A  Q U E R I E S ------------------  */
 
 @media (max-width: 768px) {
-  .main-weather--box,
-  .day {
-    width: 90vw;
-    margin: auto;
-    padding: 30px;
+  .change-location {
+    text-align: left;
   }
 
-  .week-box {
-    margin: 0;
+  .change-location--input {
+    width: 90vw;
+  }
+  
+  .main-weather--box,
+  .day {
+    width: 100vw;
+    margin: auto;
+    padding: 0 30px;
+  }
+
+  .day {
+    padding: 0 30px;
   }
 
   #day1,

@@ -4,15 +4,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Technigo - Weather APP</title>
+  <title>WeatherBug</title>
   <link rel="stylesheet" href="./style.css" class="rel" />
 </head>
 
 <body>
   <main class="main">
+    <!-- LOCATION SEARCH -->
     <section class="change-location">
       <div class="change-location--box">
-        <label>Find your city:</label>
+        <label>Find your city: <span class="info-text">[city, name]</span></label>
         <div class="change-location--form">
           <input type="text" id="location-input" class="change-location--input">
           <button id="location-button" class="change-location--button">Search</button>
@@ -20,55 +21,71 @@
       </div>
     </section>
 
+    <!-- MAIN WEATHER -->
     <section class="main-weather--box">
       <img src="" class="main-weather--weather-image" id="weather-image" />
-      <h3 id="city" class="main-weather--city"></h3>
-      <h2 id="temperature" class="main-weather--temperature"></h2>
-      <p class="main-weather--feels-like">
-        Feels like: <span id="feels-like"></span>
-      </p>
-      <p id="weather" class="main-weather--weather capitalized"></p>
-
+      <div class="main-weather--flex-wrapper">
+        <div class="main-weather--left">
+          <h3 id="city" class="main-weather--city capitalized"></h3>
+          <p id="weather" class="main-weather--weather capitalized"></p>
+        </div>
+        <div class="main-weather--right">
+          <h2 id="temperature" class="main-weather--temperature"></h2>
+          <p class="main-weather--feels-like">Feels like: <span id="feels-like"></span></p>
+        </div>
+      </div>
       <div class="main-weather--sunset-and-sunrise">
         <div class="sunrise--box">
           <p class="sunrise--content">
-            <img src="./images/sunrise.png" />
+            <img id="sunrise-image" src="./images/sunrise.png" />
             <span id="sunrise" class="sunrise-span"> </span>
           </p>
         </div>
         <div class="sunset--box">
           <p class="sunset--content">
-            <img src="./images/sunset.png" />
+            <img id="sunset-image" src="./images/sunset.png" />
             <span id="sunset" class="sunset-span"> </span>
           </p>
         </div>
       </div>
     </section>
 
-    <section class="text-box"></section>
+    <!-- FORECAST -->
     <section class="week-box">
       <div class="day">
         <p class="day--name" id="name1">Tomorrow</p>
+        <div class="day--img"></div>
         <p class="day--temp" id="day1"></p>
       </div>
       <div class="day">
         <p class="day--name" id="name2">Day 2</p>
+        <div class="day--img"></div>
         <p class="day--temp" id="day2"></p>
       </div>
       <div class="day">
         <p class="day--name" id="name3">Day 3</p>
+        <div class="day--img"></div>
         <p class="day--temp" id="day3"></p>
       </div>
       <div class="day">
         <p class="day--name" id="name4">Day 4</p>
+        <div class="day--img"></div>
         <p class="day--temp" id="day4"></p>
       </div>
       <div class="day">
         <p class="day--name" id="name5">Day 5</p>
+        <div class="day--img"></div>
         <p class="day--temp" id="day5"></p>
       </div>
     </section>
   </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer--text">A website made by Karin Nordkvist @ Technigo - 5/24</p>
+    <p class="footer--text">Copyright 2020 – Icons from Noun Project</p>
+    <p class="footer--text">Gif's from Giphy</p>
+  </footer>
 
   <script src="./api.js" type="module"></script>
   <script src="./script.js" type="module"></script>
