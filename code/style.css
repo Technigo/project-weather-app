@@ -151,9 +151,13 @@ hr {
   color: #ffff;
 }
 
+#forecast img { 
+  width: 50px;
+  height: 50px;
+}
 .column {
-  flex-basis: 50%;
-  padding-bottom: 30px;
+  flex-basis: 42%;
+  margin: auto;
 }
 
 /* MEDIA QUERY TABLET */
@@ -212,6 +216,12 @@ hr {
   margin: auto;
   width: 50%;
 }
+
+#forecast img { 
+  width: 60px;
+  height: 60px;
+}
+
 }
 
 /* FOOTER */

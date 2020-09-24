@@ -20,7 +20,7 @@ let todaysDate = new Date();
 const daysOfTheWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 
-// Function to change background 
+// Function to change background according to temperature
 const backgroundChange = (weatherInfo) => { 
     if (weatherInfo.main.temp.toFixed(1) >= 18 || weatherInfo.main.feels_like.toFixed(1) >= 18) {
         body.classList.add('warm')
@@ -72,9 +72,9 @@ const weatherIconChange = (weather) => {
   
 // Current and real feel rounded temperature function
 const updateRoundTemperatures = (weatherInfo) => {
-    const roundedTemperature = weatherInfo.main.temp.toFixed(1);
+    const roundedTemperature = weatherInfo.main.temp.toFixed(0);
     currentTemperature.innerHTML = `${roundedTemperature} °C`;
-    const realFeelRoundedTemp = weatherInfo.main.feels_like.toFixed(1);
+    const realFeelRoundedTemp = weatherInfo.main.feels_like.toFixed(0);
     realFeel.innerHTML = `Feels like: ${realFeelRoundedTemp}°C`;
 };
 
@@ -109,7 +109,7 @@ const loadUvIndex = (latitude, longitude) => {
         updateUvIndex(json);
     })
     .catch((error) => {
-        console.log(error) 
+        console.log(error,"Error fetching data") 
     })
 };
 
@@ -134,15 +134,19 @@ const updateMinMaxTemps = (data) => {
             minMaxTemps[currentDate] = { 
                 minTemp: item.main.temp_min, 
                 maxTemp: item.main.temp_max,
-                dayOfWeek: daysOfTheWeek[indexOfDayOfTheWeek]
+                dayOfWeek: daysOfTheWeek[indexOfDayOfTheWeek],
+                icon: item.weather[0].icon
             };
         }
     });
+    // const icon = getIcon(item.weather[0].icon);
     const forecast = document.getElementById('forecast');
+    const forecastIcon = document.getElementById('forecastIcon');
     forecast.innerHTML = "";
     for (const date in minMaxTemps) { 
         forecast.innerHTML += `<div class="column">${minMaxTemps[date].dayOfWeek}</div>`
-        forecast.innerHTML += `<div class="column">${minMaxTemps[date].minTemp.toFixed(1)} °C | ${minMaxTemps[date].maxTemp.toFixed(1)} °C </div>`
+        forecast.innerHTML += `<img src="http://openweathermap.org/img/wn/${minMaxTemps[date].icon}@2x.png"></img>`
+        forecast.innerHTML += `<div class="column">${minMaxTemps[date].minTemp.toFixed(0)} °C | ${minMaxTemps[date].maxTemp.toFixed(0)} °C </div>`
     };
     
 }
@@ -154,7 +158,7 @@ const loadFiveDaysWeatherForecast = (city) => {
     
     fetch(apiForecastWeatherUrl)
     .then((response) => { return response.json(); })
-    .then((data) => { updateMinMaxTemps(data); }); 
+    .then((data) => { updateMinMaxTemps(data); });
 }
 
 
@@ -169,7 +173,7 @@ const loadWeatherCity = (city) => {
         updateCityWeather(json);    
     })
       .catch((error) => {
-        console.log(error) 
+        console.log(error,"Error fetching data");
     })
 }
 
