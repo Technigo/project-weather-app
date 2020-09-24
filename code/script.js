@@ -3,37 +3,41 @@ const API_KEY = 'e27fc7790a6a4c3537de471b9d7612ce'
 // Default page base Ho Chi Minh City
 updateWeatherData('Saigon');
 
-//get location of the user-ask for consent
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else {
-    prompt ("Geolocation is not supported by this browser.");
-  }
-}
-function showPosition(position) {
-  return (position.coords.latitude, position.coords.longitude) 
-}
-
 document.getElementById('city-select').addEventListener('change', (event) => {
   const cityName = event.target.value;
   updateWeatherData(cityName);
 });
 
-function updateWeatherData(cityName) {
-  const todayWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${API_KEY}`
-  const fiveDaysForecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=${API_KEY}`
-  
-  fetch(todayWeatherUrl)
+//get location of the user-ask for consent
+function showCurrentLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+      const todaysForecastUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`;
+      const fiveDaysForecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`
+
+      fetchTodaysForecast(todaysForecastUrl);
+      fetchFiveDayForecast(fiveDaysForecastUrl);
+    });
+  } else {
+    alert("Geolocation is not supported by this browser.");
+  }
+}
+
+function fetchTodaysForecast(url) {
+  fetch(url)
     .then((response) => {
       return response.json();
     })
     .then((todayForecast) => {
-      populateDetails(todayForecast, cityName);
+      populateDetails(todayForecast);
       populateSummary(todayForecast);
     });
-  
-  fetch(fiveDaysForecastUrl)
+}
+
+function fetchFiveDayForecast(url) {
+  fetch(url)
     .then((response) => {
       return response.json();
     })
@@ -55,10 +59,19 @@ function updateWeatherData(cityName) {
       document.getElementById('forecast').innerHTML = output;
     });
 }
+
+function updateWeatherData(cityName) {
+  const todayWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${API_KEY}`
+  const fiveDaysForecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=${API_KEY}`
+
+  fetchTodaysForecast(todayWeatherUrl);
+  fetchFiveDayForecast(fiveDaysForecastUrl);
+}
   
-function populateDetails(todayForecast, cityName) {
+function populateDetails(todayForecast) {
   const todayDescription = todayForecast.weather[0].description;
   const todayTemperature = todayForecast.main.temp;
+  const cityName = todayForecast.name;
 
   const sunrise = new Date(todayForecast.sys.sunrise * 1000);
   const sunset = new Date(todayForecast.sys.sunset * 1000);
@@ -109,7 +122,6 @@ function getWeatherTemplate(todayForecast) {
       color: '#164A68',
       message: `Don't forget your umbrella. It is wet in ${city} today.`
     },
-
     {
       id: 'cloud',
       description: todayDescription,
@@ -118,7 +130,6 @@ function getWeatherTemplate(todayForecast) {
       color:'#F47775',
       message: `Light a fire and get cosy. It is cloudy in ${city} today.`
     },
-
     {
       id: 'clear',
       description: todayDescription,
@@ -127,7 +138,6 @@ function getWeatherTemplate(todayForecast) {
       color:'#2A5510',
       message: `Get your sunnies on. ${city} is looking rather great today.`
     },
-
    {
       id: 'other',
       description: todayDescription,
