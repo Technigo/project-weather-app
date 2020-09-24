@@ -1,7 +1,7 @@
 /// calculating a rounded number for the temp
 const roundtemp = (number) => {
-    const roundtemp = Math.round(number * 10) / 10;
-    return roundtemp;
+    const roundtemp = Math.round(number * 10) / 10
+    return roundtemp
 }
 
 /// calculating the time into readable format
@@ -12,7 +12,7 @@ const readableTime = (time) => {
         minute: '2-digit',
         hour12: false,
     })
-    return sunTimeString;
+    return sunTimeString
 }
 
 /// calculating the date into readable format
@@ -23,7 +23,7 @@ const readableDate = (date) => {
         day: "numeric",
 
     })
-    return dateReadableDate;
+    return dateReadableDate
 }
 
 /// getting icon related to weather
@@ -59,39 +59,24 @@ let weatherColor = {
 }
 
 
-
-
 /// Displaying todays weather forcast 
 const generatedHTMLForWeatherToday = (weatherMain) => {
-    document.getElementById('weatherMain').innerHTML = `${weatherMain.weather[0].main}`
-
     const weather = weatherMain.weather[0].main
-    //const weather = "Snow"
+    document.getElementById('weatherMain').innerHTML = weatherMain.weather[0].main
     document.getElementById('backgroundColor').style.background = weatherColor[weather]
     document.getElementById('weatherImage').src = weatherIcon[weather]
-
     document.getElementById('weatherTemp').innerHTML = roundtemp(weatherMain.main.temp)
     document.getElementById('weatherTempFeel').innerHTML = roundtemp(weatherMain.main.feels_like)
-    document.getElementById('weatherDescription').innerHTML = `${weatherMain.weather[0].description}`
+    document.getElementById('weatherDescription').innerHTML = weatherMain.weather[0].description
     document.getElementById('sunrise').innerHTML = readableTime(weatherMain.sys.sunrise)
     document.getElementById('sunset').innerHTML = readableTime(weatherMain.sys.sunset)
 }
 
 /// Display weather forecast
-const generatedHTMLForWeatherForcast = (forecast) => {
-    const containerForcast = document.getElementById('weatherForecast');
-    containerForcast.innerHTML += '<div class="test">'
-    containerForcast.innerHTML += readableDate(forecast.dt_txt)
-    containerForcast.innerHTML += `${roundtemp(forecast.main.temp)}&deg;`
-    containerForcast.innerHTML += "</div>"
+const generatedHTMLForWeatherForcast = (forecast, idx) => {
+    document.getElementById('forecastTemp' + idx).innerHTML = `${roundtemp(forecast.main.temp)}&deg;`
+    document.getElementById('forecastDate' + idx).innerHTML = readableDate(forecast.dt_txt)
 }
-
-/// Display weather forecast
-//const generatedHTMLForWeatherForcast = (forecast) => {
-   // document.getElementById('weatherForecastDate').innerHTML += readableDate(forecast.dt_txt)
-    //document.getElementById('weatherForecastTemp').innerHTML += `${roundtemp(forecast.main.temp)}&deg;`
-//}   
-
 
 /// getting the API for todays weather
 apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=Longyearbyen,Norway&units=metric&APPID=8990d7a0fe5c73c6c0fe06bb994b1035"
@@ -113,8 +98,8 @@ fetch(apiUrlForcast).then((response) => {
         const filteredForcast = weatherForcast.list.filter(item =>
             item.dt_txt.includes('12:00'))
         // generatedHTMLForWeatherForcast(filteredForcast)
-        filteredForcast.forEach((forecast) => {
-            generatedHTMLForWeatherForcast(forecast)
-        });
+        filteredForcast.forEach((forecast, idx) => {
+            generatedHTMLForWeatherForcast(forecast, idx)
+        })
 
     })

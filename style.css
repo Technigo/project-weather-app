@@ -14,7 +14,7 @@ img {
   margin: 0 auto;
 }
 
-body {
+body{
   margin: 0;
   display: flex;
   align-items: center; 
@@ -30,23 +30,6 @@ padding: 20px;
 height: 75vh;
 margin-bottom: 20px;
 }
-
-
-/* colors for changing background depending on weather descritpion I think!
-cold #7474BF to #348AC7
-cold #24C6DC to #514A9D
-SUNNY #2BC0E4 to #EAECC6
-SUNNY #FF8008 to #FFC837
-SUNNY #e65c00 to #F9D423
-SNOW: #076585 to #fff
-SNOW #2193b0 to #6dd5ed
-SNOW #00B4DB #0083B0
-THUNDERSTORM #0F2027 #203A43 #2C5364
-
-cloudy background-image: linear-gradient(to right, #ECE9E6, #FFFFFF);
-
-
-*/
 
 .city-title{
   font-size: 2.5em;
@@ -72,7 +55,7 @@ cloudy background-image: linear-gradient(to right, #ECE9E6, #FFFFFF);
 }
 
 img {
-  height:100px;
+  height: 100px;
 }
 
 .h2-weather-description{
@@ -106,6 +89,11 @@ img {
   align-content: center;
   background-color: rgba(255, 255, 255, 0.12);
   margin: 0px 0px 30px;
+  width: 320px;
+  padding: 20px;
+  font-size: 1.1em;
+  color: #121111;
+  font-weight: 900;
 }
 
 .weather-forecast-date{
@@ -114,14 +102,29 @@ img {
   flex-direction: column;
 }
 
-.test{
-  color: blue;
+
+.forecast-column{
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
 }
 
-.weather-forecast{
-  width: 345px;
-  padding: 20px;
-  font-size: 1.1em;
-  color: #121111;
-  font-weight: 900;
+.forecast-row{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.forecast-date-column{
+text-align: left;
+margin-left: 10px;
+margin-bottom: 10px;
+}
+
+.forecast-temp-column{
+  text-align: right;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }

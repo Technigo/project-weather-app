@@ -14,7 +14,8 @@
     <section class="container-todaysWeather-background">
         <h1 class="city-title">Longyearbyen</h1>
         <div class="temp-main-info">
-            <h1><span id="weatherTemp"></span>&deg;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="weatherMain"></span>
+            <h1><span id="weatherTemp">
+            </span>&deg;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="weatherMain"></span>
             </h1>
         </div>
         <div class="weather-descriptions">
@@ -29,16 +30,64 @@
     </section>
 
     <section class="forcast">
-        <div class="weather-forecast" id="weatherForecast"></div>
-        <div class="test"></div>
-        <!--<table>
-            <tr class="weather-forecast-date" id="weatherForecastDate"></tr>
-            <td class="weather-forecast-temp" id="weatherForecastTemp"></td>
-        </table>-->
+        <div class="forecast-row">
+            <div class="forecast-column">
+                <div id="forecastDate0" class="forecast-date-column">
+                </div>
+            </div>
+            <div class="forecast-column">
+                <div id="forecastDate0" class="forecast-date-column">
+                </div>
+            </div>
+            <div class="forecast-column">
+                <div id="forecastTemp0" class="forecast-temp-column">
+                </div>
+            </div>
+        </div>
+        <div class="forecast-row">
+            <div class="forecast-column">
+                <div id="forecastDate1" class="forecast-date-column">
+                </div>
+            </div>
+            <div class="forecast-column">
+                <div id="forecastTemp1" class="forecast-temp-column">
+                </div>
+            </div>
+        </div>
+        <div class="forecast-row">
+            <div class="forecast-column">
+                <div id="forecastDate2" class="forecast-date-column">
+                </div>
+            </div>
+            <div class="forecast-column">
+                <div id="forecastTemp2" class="forecast-temp-column">
+                </div>
+            </div>
+        </div>
+        <div class="forecast-row">
+            <div class="forecast-column">
+                <div id="forecastDate3" class="forecast-date-column">
+                </div>
+            </div>
+            <div class="forecast-column">
+                <div id="forecastTemp3" class="forecast-temp-column">
+                </div>
+            </div>
+        </div>
+        <div class="forecast-row">
+            <div class="forecast-column">
+                <div id="forecastDate4" class="forecast-date-column">
+                </div>
+            </div>
+            <div class="forecast-column">
+                <div id="forecastTemp4" class="forecast-temp-column">
+                </div>
+            </div>
+        </div>
     </section>
 
-    <script src="./weather.js"></script>
 
+    <script src="./weather.js"></script>
 </body>
 
 </html>
