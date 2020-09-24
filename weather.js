@@ -59,7 +59,7 @@ let weatherColor = {
 }
 
 
-/// Displaying todays weather forcast 
+/// Displaying todays weather forecast 
 const generatedHTMLForWeatherToday = (weatherMain) => {
     const weather = weatherMain.weather[0].main
     document.getElementById('weatherMain').innerHTML = weatherMain.weather[0].main
@@ -73,7 +73,7 @@ const generatedHTMLForWeatherToday = (weatherMain) => {
 }
 
 /// Display weather forecast
-const generatedHTMLForWeatherForcast = (forecast, idx) => {
+const generatedHTMLForWeatherForecast = (forecast, idx) => {
     document.getElementById('forecastTemp' + idx).innerHTML = `${roundtemp(forecast.main.temp)}&deg;`
     document.getElementById('forecastDate' + idx).innerHTML = readableDate(forecast.dt_txt)
 }
@@ -88,18 +88,17 @@ fetch(apiUrl).then((response) => {
     })
 
 
-/// getting the API for weather forcast
-apiUrlForcast = "https://api.openweathermap.org/data/2.5/forecast?q=Longyearbyen,Norway&units=metric&APPID=8990d7a0fe5c73c6c0fe06bb994b1035"
+/// getting the API for weather forecast
+apiUrlForecast = "https://api.openweathermap.org/data/2.5/forecast?q=Longyearbyen,Norway&units=metric&APPID=8990d7a0fe5c73c6c0fe06bb994b1035"
 
-fetch(apiUrlForcast).then((response) => {
+fetch(apiUrlForecast).then((response) => {
     return response.json()
 })
-    .then((weatherForcast) => {
-        const filteredForcast = weatherForcast.list.filter(item =>
+    .then((weatherForecast) => {
+        const filteredForecast = weatherForecast.list.filter(item =>
             item.dt_txt.includes('12:00'))
-        // generatedHTMLForWeatherForcast(filteredForcast)
-        filteredForcast.forEach((forecast, idx) => {
-            generatedHTMLForWeatherForcast(forecast, idx)
+        filteredForecast.forEach((forecast, idx) => {
+            generatedHTMLForWeatherForecast(forecast, idx)
         })
 
     })
