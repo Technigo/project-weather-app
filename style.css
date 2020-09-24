@@ -1,12 +1,11 @@
 
-/* body {
- /*  background: linear-gradient(to top, #2980b9, #6dd5fa, #ffffff); */
- 
-/* }   * */
-
-body {
-  background-color:lightblue;
-  font-family: 'Noto Sans JP', sans-serif;
+.weatherApp {
+  font-family: 'Montserrat', sans-serif;
+  border: double black;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  background: linear-gradient(to top, #2980b9, #6dd5fa, #ffffff);
 }
 
 h1 {
@@ -43,8 +42,14 @@ h5 {
   margin-left: 50px;
 }
 
+.forecast {
+  margin-bottom: 90px;
+}
+
+
 @media screen and (min-width:768px) {
-  h5 {
-    justify-content: center;
-  }
+
+body {
+  background-color: #FFE4E1;
+}
 }

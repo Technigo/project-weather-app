@@ -1,5 +1,5 @@
 
-//TODAY'S WEATHER: CITY; TEMPERATURE, SUNSET AND SUNRISE
+//TODAY'S WEATHER: CITY, TEMPERATURE, SUNSET AND SUNRISE
 
 const city = document.getElementById("city");
 const weatherToday = document.getElementById("weatherToday");
@@ -17,7 +17,7 @@ fetch(weatherApi)
   .then((json) => {
     city.innerHTML += `<h2>${json.name}</h2>`;
     
-    temperature.innerHTML += `<h1>${json.main.temp.toFixed(1)} °</h1>`;
+    temperature.innerHTML += `<h1>${json.main.temp.toFixed(1)}°</h1>`;
     weatherToday.innerHTML += `<h3>${json.weather[0].description}</h3>`;
 
     const sunriseTime = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -28,7 +28,7 @@ fetch(weatherApi)
   })
 
 
-//FORECAST 5 DAYS
+//FORECAST 5 DAYS TEMPERATURE
   
 const forecastDayAndTemp = document.getElementById("forecastDayAndTemp");
 
@@ -40,16 +40,30 @@ fetch(forecastApi)
   })
   .then((json) => {
     const filteredForecast = json.list.filter(item => 
-        item.dt_txt.includes('12:00'));
+    item.dt_txt.includes('12:00'));
         
-        filteredForecast.forEach(item => {
-        const date = new Date(item.dt * 1000)
-        let dayName = date.toLocaleDateString("en-US", { 
+    filteredForecast.forEach(item => {
+    const date = new Date(item.dt * 1000)
+    let dayName = date.toLocaleDateString("en-US", { 
         weekday: "short" 
-        });
+    });
         
-        const dayTemperature = item.main.temp;
+    const dayTemperature = item.main.temp;
 
-            forecastDayAndTemp.innerHTML += `<h5>${dayName}: ${dayTemperature.toFixed(1)} °C</h5>`; 
+    forecastDayAndTemp.innerHTML += `<h5>${dayName}: ${dayTemperature.toFixed(1)} °C</h5>`;
+    
     });
 })
+
+
+  /*   const changeColor = {
+        color: 'green',
+    };
+
+    if (temperature > 13) {
+        document.getElementById('weatherApp').style.background = changeColor.color;
+    } else {
+        colorbackground; "blue";
+    }
+} 
+ */
