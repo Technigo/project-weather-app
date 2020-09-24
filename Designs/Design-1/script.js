@@ -1,7 +1,7 @@
 
 const apiWeatherUrl = 'http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=3d0d86970b5aff224fe8f40e9b4e2e78'
 const container = document.getElementById('main');
-const weather = document.getElementById('weatherInfo');
+const weatherElement = document.getElementById('weatherInfo');
 
 fetch(apiWeatherUrl)
 
@@ -10,22 +10,26 @@ fetch(apiWeatherUrl)
 })
 .then((weatherArray) => {
   
-    weatherInfo.innerHTML = weatherArray.name;
-    // console.log()
+  console.log(weatherArray)
 
-//   // Add HTML content for each launch
-//   weatherArray.forEach((launch) => {
-//     container.innerHTML += generateHTMLForLaunch(launch);
-//   });
-});
+  // Step **2 - Present city, temp, description, data on your web app.**
 
-// const generateHTMLForLaunch = (launch) => {
-//     // Create time strings for launch
-//     const launchDate = new Date(launch.launch_date_utc);
-//     const launchTimeString = launchDate.toLocaleTimeString('en-US', {
-//       timestyle: 'short',
-//       hour12: false,
-//     });
-//     const launchDateString = launchDate.toLocaleDateString('en-US', {
-//       weekday: 'short',
-//     });
+  weatherElement.innerHTML = weatherArray.name;
+
+  const temperatureElement = document.getElementById('temperature');
+  const y = weatherArray.main.temp;
+  const x = Math.round(y);
+  temperatureElement.innerText = x;
+  
+  const  weatherTypeElement = document.getElementById('weatherType');
+  weatherTypeElement.innerText = weatherArray.weather[0].description;
+ 
+  const sunriseElement = document.getElementById('sunrise');
+  sunriseElement.innerText = weatherArray.sys.sunrise;
+
+  const sunsetElement = document.getElementById('sunset');
+  sunsetElement.innerText = weatherArray.sys.sunset;
+
+});  
+
+
