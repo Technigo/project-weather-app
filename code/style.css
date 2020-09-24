@@ -264,10 +264,16 @@ main {
   line-height: 150px;
 }
 
-/* .temp-big-but-slightly-smaller (This is the celsius sign) {
-  font-size: 35px;
-  font-weight: 400;
-} */
+
+/* (This is the celsius sign) */
+
+.temp-big-but-slightly-smaller {
+  vertical-align: super;
+  font-size: 42px;
+  font-weight: 300;
+  vertical-align: top;
+  line-height: 60px;
+}
 
 
 footer {
@@ -309,6 +315,7 @@ svg {
   flex-direction: row;
   justify-content: space-between;
   align-items: baseline;
+  height: 32px;
 }
 
 .forecast-date {
@@ -319,6 +326,7 @@ svg {
 .forecast-temp {
   /* border: 1px dashed hotpink; */
   width: 20%;
+  font-weight: 600;
 }
 
 .forecast-weather {

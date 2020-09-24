@@ -29,12 +29,9 @@ const toggleCountrySelector = () => {
     inputCity.select();
     inputCity.focus();
   } else {
-    citySelector.style.display = "none";
-    
+    citySelector.style.display = "none"; 
   }
 }
-
-
 
 
 // formatTime() formats UNIX 10-digit timestamps to HH:MM format.
@@ -139,7 +136,7 @@ const fetchCurrentWeather = (cityName) => {
     city.innerHTML = weatherObject.name;
     country.innerHTML = getCountryName(weatherObject.sys.country);
     // localtime.innerHTML = formatTime(weatherObject.dt);
-    temperature.innerHTML = Math.round(weatherObject.main.temp)+"°";
+    temperature.innerHTML = Math.round(weatherObject.main.temp);
     tempFeelsLike.innerHTML = Math.round(weatherObject.main.feels_like)+"°";
     weatherType.innerHTML = weatherObject.weather[0].main;
     description.innerHTML = weatherObject.weather[0].description;
@@ -155,6 +152,7 @@ const fetchForecast = (cityName) => {
   fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=607d94111f1f9c343f38c10112b16e3c`).then((response) => {
     return response.json();
   }).then((forecastObject) => {
+
     // Instead of an array of 40 objects, we want one object per day. Time ≈ the current time. Empty array creation time.
     const fiveDayList = [];
 
@@ -169,6 +167,8 @@ const fetchForecast = (cityName) => {
     // Need to clear the forecastBox, since otherwise switching cities won't work (since the forEach only *adds* stuff)
     forecastBox.innerHTML = ``
     console.log(fiveDayList);
+
+    // For each element in the new array, extract the date, the temperature, and the weather. 
     fiveDayList.forEach(element => { 
       const date = element.dt_txt.slice(0,10);
       const temp = element.main.temp;
