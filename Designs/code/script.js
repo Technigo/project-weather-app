@@ -31,11 +31,10 @@ fetch(urlCurrentWeather)
     currentWeatherInfo.innerHTML += `</div>`;
 
     //if-statement to change background image, text and img depending on main weather
-    console.log(weatherArray)
         if (mainWeather === "Clouds"){
             //adding text and image
             todaysWeatherContainer.innerHTML += `<div>`;
-            todaysWeatherContainer.innerHTML = `<h1>Light a fire and get cosy. ${weatherArray.name} is looking grey today.</h1>`
+            todaysWeatherContainer.innerHTML = `<h1>Light a fire and get cosy. ${weatherArray.name} is looking grey today.</h1>`;
             todaysWeatherContainer.innerHTML += `<img src="icons/nounCloud.png">`; 
             todaysWeatherContainer.innerHTML += `</div>`;
             //color styling
@@ -44,7 +43,7 @@ fetch(urlCurrentWeather)
         }
         else if (mainWeather === "Rain"){
             todaysWeatherContainer.innerHTML += `<div>`;
-            todaysWeatherContainer.innerHTML = `<h1>Don't forget your umbrella. It's wet in ${weatherArray.name} today.</h1>`
+            todaysWeatherContainer.innerHTML = `<h1>Don't forget your umbrella. It's wet in ${weatherArray.name} today.</h1>`;
             todaysWeatherContainer.innerHTML += `<img src="icons/nounUmbrella.png">`; 
             todaysWeatherContainer.innerHTML += `</div>`;
 
@@ -53,7 +52,7 @@ fetch(urlCurrentWeather)
         }
         else if (mainWeather === "Clear"){
             todaysWeatherContainer.innerHTML += `<div>`;
-            todaysWeatherContainer.innerHTML = `<h1>Get your sunnies on. ${weatherArray.name} is looking rather great today.</h1>`
+            todaysWeatherContainer.innerHTML = `<h1>Get your sunnies on. ${weatherArray.name} is looking rather great today.</h1>`;
             todaysWeatherContainer.innerHTML += `<img src="icons/nounSunglasses.png">`; 
             todaysWeatherContainer.innerHTML += `</div>`;
 

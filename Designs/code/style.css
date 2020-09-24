@@ -1,5 +1,4 @@
 body {
-    background-color: pink;
     margin: 0;
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
@@ -23,10 +22,11 @@ body {
     display: flex;
     flex-direction: column-reverse;
     width: 80%;
+    margin-bottom: 25px;
 }
 
 .todays-weather-container img {
-    margin: 70px 0 0;
+    margin: 70px 0 5px;
     width: 70px;
 }
 
@@ -54,6 +54,15 @@ body {
     display: flex;
     justify-content: space-between;
     border-bottom: 1px dotted grey; 
+}
+
+footer {
+    margin: 60px;
+    text-align: center;
+}
+
+footer p {
+    opacity: 0.3;
 }
 
 @media (min-width: 667px) {
@@ -86,7 +95,7 @@ body {
 @media (min-width: 1024px) {
 
     .weather-app-container {
-        margin: 10px 350px;
+        margin: 10px 280px;
     }
 
     .current-weather-container {
@@ -110,8 +119,12 @@ body {
     }
 
     .todays-weather-container img {
-        margin: 20px;
+        margin: 20px 20px 30px;
         width: 200px;
+    }
+
+    .forecast-container {
+        width: 70%;
     }
 
     .forecast-container h2 {
