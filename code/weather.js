@@ -1,7 +1,7 @@
 //API KEY used for both current weather and forecast
 const apiKey = "c2889b12ee617ea787319a19a98a5906"
 
-//Current Weather values
+//Current Weather variables
 const currentWeatherUrl = "http://api.openweathermap.org/data/2.5/weather?q=Toronto,Canada&units=metric&APPID=c2889b12ee617ea787319a19a98a5906"
 const city = 'Toronto, ON'
 const date = document.getElementById('date')
@@ -42,18 +42,22 @@ fetch(currentWeatherUrl)
         currentWeatherToday(json)
     })
 
-// Five day forecast values
+// Five day forecast variables
 const weatherForecastUrl = "http://api.openweathermap.org/data/2.5/forecast?q=Toronto,Canada&units=metric&APPID=c2889b12ee617ea787319a19a98a5906"
 const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+const today = new Date()
+const days = today.getDay()
 
-const forecastWeather = (json) => {
 
+//Fetch with JSON - Forecast Weather
+const forecastWeather = () => {
+    fetch(weatherForecastUrl)
+        .then(response => response.json())
+        .then(data => {
+            const newData = data.list.filter(item => {
+                return item.dt_txt.includes('12:00')
+            })
+            console.log(newData)
+        })
 }
-//Fetch with JSON - 5 day forecast
-fetch(weatherForecastUrl)
-    .then((response) => {
-        return response.json()
-    })
-    .then((json) => {
-        weatherForecastUrl(json)
-    })
+forecastWeather()
