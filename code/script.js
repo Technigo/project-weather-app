@@ -24,6 +24,14 @@ const updateWeatherToday = (json) => {
     description.innerHTML = json.weather[0].description;
     icon0.innerHTML = `<img src= "https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="weather icon" />`
 
+    document.getElementById("windSpeed_a").innerHTML = `wind speed: ${json.wind.speed} m/s`;
+    document.getElementById("airPressure_a").innerHTML = `air pressure: ${json.main.pressure} mb`;
+    document.getElementById("humidity_a").innerHTML = `humidity: ${json.main.humidity} g/m<sup>3</sup>`;
+
+    document.getElementById("windSpeed_b").innerHTML = `wind speed: ${json.wind.speed} m/s`;
+    document.getElementById("airPressure_b").innerHTML = `air pressure: ${json.main.pressure} mb`;
+    document.getElementById("humidity_b").innerHTML = `humidity: ${json.main.humidity} g/m<sup>3</sup>`;
+
     const sunriseMillSeconds = new Date(json.sys.sunrise * 1000);
     const sunriseProperTime = sunriseMillSeconds.toLocaleTimeString([], {hour: "2-digit", minute:"2-digit"});
     sunrise.innerHTML = sunriseProperTime;
@@ -70,7 +78,7 @@ const getMaxTemperature = (json, dayNumber) => {
 const getWeekday = (dayNumber) => {
     const day0Date = new Date();
     const day0MillSeconds = day0Date.getTime();
-    const day1Date = new Date(day0MillSeconds + 86400000 * dayNumber).toLocaleDateString("sv-SE", {weekday : "short"});
+    const day1Date = new Date(day0MillSeconds + 86400000 * dayNumber).toLocaleDateString("en-US", {weekday : "short"});
     return day1Date;
 };
 
