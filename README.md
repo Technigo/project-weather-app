@@ -1,13 +1,11 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+A responsive weather application fetching data from Open Weather.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Started with the HTML structure, moved on to fetch and visualize current day and forecast weather data. For each and every step I used console.log to check whether I got the data I wanted, and if it was in a format ready to be visualized. Along the way I think of how to optimize the code and what I want to practise. There are only so many new things one can handle, next time I want to create an object only containing the data I use instead of passing the full weather and forecast object around. Styling happened along the way, when I needed a javascript-break.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://vigorous-meitner-fd9783.netlify.app/
