@@ -4,18 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <title>Project Weather App</title>
 </head>
 <body>
-
-  <section class="weatherData-container">
-    <div id="currentWeatherContainer">
+  
+  <main class="weather-app-container" id="weatherAppContainer">
+    <div class="todays-weather">
+      <section class="current-weather-container" id="currentWeatherContainer">
+        <div class="sun-info-container">
+          <p>sunrise <span id="sunrise">""</span></p>
+          <p>sunset <span id="sunset">""</span></p>
+        </div>
+      </section>
+      <section class="todays-weather-container" id="todaysWeatherContainer">
+      </section>
     </div>
-    <div id="todaysWeatherContainer">
-    </div>
-    <div id="forecastContainer">
-    </div>
-  </section>
+    <section class="forecast-container" id="forecastContainer">
+      <h2>5 days weather forecast :</h2>
+    </section>
+  </main>
 
     <script src="./script.js"></script>
 </body>

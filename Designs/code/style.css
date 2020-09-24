@@ -1,8 +1,126 @@
 body {
     background-color: pink;
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
 }
 
-.forecastContainer {
+.weather-app-container {
+    margin: 40px 50px;
+}
+
+.current-weather-container {
+   display: flex;
+   flex-direction: column-reverse;
+}
+
+.current-weather-container p {
+    font-size: 20px;
+    margin: 0;
+}
+
+.todays-weather-container {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 70%;
+}
+
+.todays-weather-container img {
+    margin: 70px 0 0;
+    width: 70px;
+}
+
+.todays-weather-container h1 {
+    font-size: 35px;
+    font-weight: 700;
+    margin-left: 0;
+}
+
+.forecast-container {
     display: flex;
     flex-direction: column;
+}
+
+.forecast-container h2 {
+    display: none;
+}
+
+.forecast-container p {
+    font-size: 20px;
+    margin: 5px 0;  
+}
+
+.forecast-information {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dotted grey; 
+}
+
+@media (min-width: 667px) {
+
+    .weather-app-container {
+        margin: 40px 150px;
+    }
+
+    .current-weather-container p {
+        font-size: 25px;
+    } 
+
+    .todays-weather-container img {
+        margin: 100px 10px 20px;
+        width: 180px;
+    }
+
+    .forecast-container h2 {
+        display: flex;
+        font-size: 25px;
+        font-weight: 400;
+    }
+
+    .forecast-container p {
+        font-size: 25px;
+        margin: 10px 0;  
+    }
+}
+
+@media (min-width: 1024px) {
+
+    .weather-app-container {
+        margin: 10px 350px;
+    }
+
+    .current-weather-container {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+     }
+
+     .current-weather-container p {
+        font-size: 30px;
+        margin: 20px;
+    } 
+
+    .sun-info-container {
+       text-align: end;
+    }
+
+    .todays-weather-container h1 {
+        font-size: 40px;
+        font-weight: 700;
+        margin: 20px;
+    }
+
+    .todays-weather-container img {
+        margin: 20px;
+        width: 200px;
+    }
+
+    .forecast-container h2 {
+        margin: 20px;
+        font-size: 30px;
+    }
+
+    .forecast-container p {
+        font-size: 30px;
+        margin: 15px 20px 20px;  
+    }
 }
