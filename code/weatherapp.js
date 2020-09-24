@@ -47,7 +47,7 @@ const fetchedApiInfo = () => {
         /* ------ DAY 1 FORECAST ---- */
         const dayOneDate = new Date(filteredList[0].dt * 1000);
         //Taking the first array from the filteredList and accessing the date for that day. Passing that as an argument in the new Date so it can convert it into today's date and time.
-        var days = ["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
+        var days = ["Sunday","Monday","Tuesay","Wednesday","Thursday","Friday","Sat"];
         const finalDayOneDate = days[dayOneDate.getDay()];
         //Created an array with weekday names. Then used the dayOneDate together with the getDay() method to select from the array which day it is. The getDay method tells you this is number format e.g. 1 = Sunday. Which I think then selects that from the array of days.
         const dayOneTemp = filteredList[0].main.temp.toFixed(1); 
