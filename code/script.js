@@ -23,6 +23,10 @@ const hamburgerMenu = document.getElementById("hamburger-menu")
 const loading = document.getElementById("loading")
 const sunriseSpan = document.getElementById("sunrise")
 const sunsetSpan = document.getElementById("sunset")
+const minMax = document.getElementById("min-max")
+const cloudAnimation = document.getElementById("cloud-symbol")
+const rainAnimation = document.getElementById("rain-symbol")
+const sunAnimation = document.getElementById("sun-symbol")
 
 // Getting current geo location
 
@@ -101,6 +105,30 @@ const showNavBar = () => {
     }
 }
 
+const showCloudAnimation = () => {
+    cloudAnimation.style.display = "block";
+    sunAnimation.style.display = "none";
+    rainAnimation.style.display = "none";
+}
+
+const showRainAnimation = () => {
+    cloudAnimation.style.display = "none";
+    sunAnimation.style.display = "none";
+    rainAnimation.style.display = "flex";
+}
+
+const showSunAnimation = () => {
+    cloudAnimation.style.display = "none";
+    sunAnimation.style.display = "flex";
+    rainAnimation.style.display = "none";
+}
+
+const hideWeatherAnimation = () => {
+    cloudAnimation.style.display = "none";
+    sunAnimation.style.display = "none";
+    rainAnimation.style.display = "none";
+}
+
 //Fetches the API and shows the data of today's weather
 
 const showCurrentWeather = (API) => {
@@ -118,6 +146,7 @@ const showCurrentWeather = (API) => {
             const sunsetString = sunset.toLocaleTimeString('se-SE', {hour: '2-digit', minute:'2-digit'})
             const weatherDescription = weather.weather[0].description
             const weatherType = weather.weather[0].main
+            console.log(weatherType);
 
             const setWeatherColors = () => {
                 if (weatherType === "Clouds") {
@@ -125,21 +154,28 @@ const showCurrentWeather = (API) => {
                     currentWeatherMain.classList.remove('clear');
                     currentWeatherMain.classList.remove('rain');
                     currentWeatherMain.classList.remove('snow');
-                } else if (weatherType === 'Rain') {
+                    showCloudAnimation();
+                } else if (weatherType === 'Rain'|| weatherType === 'Drizzle') {
                     currentWeatherMain.classList.add('rain');
                     currentWeatherMain.classList.remove('clouds');
                     currentWeatherMain.classList.remove('clear');
                     currentWeatherMain.classList.remove('snow');
+                    showRainAnimation();
                 } else if (weatherType === 'Clear') {
                     currentWeatherMain.classList.add('clear');
                     currentWeatherMain.classList.remove('clouds');
                     currentWeatherMain.classList.remove('rain');
                     currentWeatherMain.classList.remove('snow');
+                    showSunAnimation();
                 } else if (weatherType === 'Snow') {
                     currentWeatherMain.classList.add('snow');
                     currentWeatherMain.classList.remove('clouds');
                     currentWeatherMain.classList.remove('rain');
                     currentWeatherMain.classList.remove('clear');
+                    showCloudAnimation();
+                } else {
+                    hideWeatherAnimation();
+
                 }
             }
             setWeatherColors();
@@ -206,7 +242,7 @@ const showWeatherForecast = (forecastAPI) => {
                 weatherForecastContainer.innerHTML += `${forecastHTML}`;    
             }))
 
-        currentWeatherContainer.innerHTML += `<p>Min ${todayMin}&degC / Max ${todayMax}&degC</p>`
+        minMax.innerHTML = `<p>Min ${todayMin}&degC / Max ${todayMax}&degC</p>`
     
         })
     }

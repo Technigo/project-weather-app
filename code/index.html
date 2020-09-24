@@ -25,10 +25,35 @@
             </nav>
         </div>
     </header>
+
     <div class="loading" id="loading"></div>
+
     <section class="current-main" id="current-main">
+        <div class="weather-symbol" id="weather-symbol">
+            <div class="sun-symbol" id="sun-symbol">
+                <div class="inner-sun"></div>
+            </div>
+            <div class="rain-symbol" id="rain-symbol">
+                <div class="drop d1"></div>
+                <div class="drop d2"></div>
+                <div class="drop d3"></div>
+                <div class="drop d4"></div>
+            </div>
+            <div class="cloud-symbol" id="cloud-symbol">
+                <div class="cloud c1"><div class="inner-cloud"></div></div>
+                <div class="cloud c2"><div class="inner-cloud"></div></div>
+            </div>
+        </div>
+
         <section class="current-weather" id="current-weather-container"></section>
-        <div class="sunrise" id="sun-container"><img src="./assets/Sunrise.svg"/><span id="sunrise"></span><img src="./assets/Sunset.svg"/><span id="sunset"></span></div>
+        <div class ="min-max" id="min-max"></div>
+        <div class="sunrise" id="sun-container">
+            <img src="./assets/Sunrise.svg"/>
+            <span id="sunrise"></span>
+            <img src="./assets/Sunset.svg"/>
+            <span id="sunset"></span>
+        </div>
+
     </section> 
 
     <section class="forecast" id="weather-forecast-container">

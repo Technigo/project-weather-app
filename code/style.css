@@ -29,12 +29,12 @@ p {
 sup {
     font-size: 55px;
     margin-top: 8px;
-    
 }
 
 /* HEADER */
 
 .hamburger-menu {
+    z-index: 3;
     display: flex;
     flex-direction: column;
     margin: 15px;
@@ -75,6 +75,7 @@ header nav {
     background-color: white;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    z-index: 4;
 }
 
 nav a {
@@ -138,32 +139,195 @@ nav img {
     height: auto;
     background-color: #5085da;
     background-image: linear-gradient(#1a345f, #5085da);
-    border-bottom-left-radius: 50% 15%;
-    border-bottom-right-radius: 50% 15%;
+    border-bottom-left-radius: 50% 0;
+    border-bottom-right-radius: 50% 80px;
 }
+
+.weather-symbol {
+    width: 200px;
+    height: 300px;
+    position: absolute;
+    right: 0;
+    top: 60px;
+    overflow: hidden;
+    z-index: 0;
+}
+
+/* Clear weather animation */
 
 .clear {
     background-image: linear-gradient(#1a345f, #5085da);
 }
-.clouds {
-    background-image: linear-gradient(#657986, #c0daeb);
+
+@keyframes sun {
+    50% {transform: scale(0.95)};
+    /* 100% {transform: scale(0.1)}; */
 }
+
+.sun-symbol {
+    display: flex;
+    display:none;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    background-color: rgba(255, 136, 0, 0.5);
+    border-radius: 50%;
+    animation: sun 3s ease infinite;
+}
+
+.inner-sun {
+    width: 130px;
+    height: 130px;
+    background-color: #ff8800;
+    border-radius: 50%;
+}
+
+/* Rain animation */
 
 .rain {
     background-image: linear-gradient(#43525c, #9ab2c2);
 }
+
+.rain-symbol {
+    display: flex;
+    display: none;
+    height: 200px;
+    width: 200px;
+    justify-content: space-around;
+    transform: rotate(20deg);
+}
+
+.drop {
+    width: 10px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #c0daeb;
+    opacity: 25%;
+}
+
+.d1 {
+    animation: drop 1s ease-in infinite;
+    animation-fill-mode: backwards;
+} 
+
+.d2 {
+    animation: drop 1s ease-in 0.7s infinite;
+    animation-fill-mode: backwards;
+} 
+
+.d3 {
+    animation: drop 1s ease-in 0.4s infinite;
+    animation-fill-mode: backwards;
+} 
+
+.d4 {
+    animation: drop 1s ease-in 1s infinite;
+    animation-fill-mode: backwards;
+} 
+
+@keyframes drop {
+    0% {transform: translateY(-50px); opacity: 0%;}
+    50% {opacity: 50%;}
+    100% {transform: translateY(150px); opacity: 0%;}
+}
+
+
+/* CLOUDS */ 
+
+@keyframes cloud-animation {
+    0% {transform: translateX(0); opacity: 0%;}
+    25% {opacity: 50%;}
+    75% {opacity: 50%;}
+    100% {transform: translateX(150px); opacity: 0%;}
+}
+
+.clouds {
+    background-image: linear-gradient(#657986, #c0daeb);
+}
+
+.cloud-symbol {
+
+}
+
+.cloud {
+    position: relative;
+    width: 100px;
+    height: 75px;
+}
+
+.c1 {
+    animation: cloud-animation 7s linear infinite;
+    animation-fill-mode: backwards;
+}
+
+.c2 {
+    animation: cloud-animation 7s linear 3s infinite;
+    animation-fill-mode: backwards;
+}
+
+.inner-cloud {
+    position: absolute;
+    left:0;
+    right:0;
+    margin:auto;
+    bottom: 0;
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+.cloud::before {
+    position: absolute;
+    left:0;
+    bottom: 0;
+    content: "";
+    width: 35px;
+    height: 35px;
+    background-color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.cloud::after {
+    position: absolute;
+    right:0;
+    bottom: 0;
+    content: "";
+    width: 35px;
+    height: 35px;
+    background-color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+
 
 .snow {
     background-image: linear-gradient(#a9bed1, #ffffff);
 }
 
 .current-weather {
-    /* margin: 50px; */
+    z-index: 1;
     box-sizing: border-box;
     padding: 60px 20px 0 20px;
     width: 100%;
     height: auto;
-    min-height: 200px;
+    min-height: 400px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.min-max {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 20px;
     color: white;
 }
 
@@ -181,12 +345,13 @@ nav img {
 
 .sunrise p {
     font-size: 15px;
+    margin-right: 20px;
 }
 
 .sunrise img {
     width: 50px;
     height: 50px;
-    margin: 10px;
+    margin: 5px;
 }
 
 /* FORECAST */
@@ -267,6 +432,7 @@ nav img {
     }
 
     .current-main {
+        position: relative;
         width: 90%;
         margin: 30px;
         border-radius: 10px;
