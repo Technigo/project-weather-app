@@ -1,13 +1,26 @@
 # Weather App
 
-Replace this readme with your own information about your project.
+This project was made during the Technigo Bootcamp.
+We where supposed to create a dynamic weather app using API.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+This was my first time using fetch and API. 
+I started mobile first approch and went from top to bottom adding fetching the right values from the API. 
+After the fetch i went back and needed to make adjustment to the values so that they became more readable. 
+
+If i had more time i would go over my JS code and change how i created my favourite cities. At the moment it 
+is alot of repeating code and the project would be much better with another structure on that specific part.
+
+
+## TECH USED
+
+* HTML5 
+* CSS3 
+* JavaScript 
+* API 
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Here you can look at the finished project: 
