@@ -19,6 +19,20 @@ const forecastDay3 = document.getElementById("day3");
 const forecastDay4 = document.getElementById("day4");
 const forecastDay5 = document.getElementById("day5");
 
+
+const toggleCountrySelector = () => {
+  var citySelector = document.getElementById("citySelector");
+  document.getElementById("inputCity").value = "";
+  if (citySelector.style.display === "none") {
+    citySelector.style.display = "block";
+  } else {
+    citySelector.style.display = "none";
+  }
+}
+
+
+
+
 // formatTime() formats UNIX 10-digit timestamps to HH:MM format.
 const formatTime = (timestamp) => {
   // Needed to add *1000 due to account for the absence of milliseconds in Unix timestamps. 
@@ -41,6 +55,7 @@ const kelvinToCelsius = (temp) => {
 const fetchWeather = (city) => {
   fetchForecast(city);
   fetchCurrentWeather(city);
+  toggleCountrySelector();
 }
 
 const fetchWeatherImage = (weather) => {
@@ -164,3 +179,20 @@ const fetchForecast = (cityName) => {
 }
 
 fetchWeather(cityName);
+
+
+// This line of code disables submitting through the enter key (since I did an ugly-hack for the city selector)
+// Modified it to call the fetchWeather function upon pressing Enter.
+// https://stackoverflow.com/questions/5629805/disabling-enter-key-for-form/37241980
+window.addEventListener('keydown',function(e){
+  if(e.keyIdentifier=='U+000A'||e.keyIdentifier=='Enter'||e.keyCode==13)  {
+    if(e.target.nodeName=='INPUT'&&e.target.type=='text'){
+      fetchWeather(document.getElementById('inputCity').value);
+      e.preventDefault();
+      return false;
+    }
+  }
+},true);
+
+
+

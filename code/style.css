@@ -65,6 +65,19 @@ header {
   padding: 16px;
 }
 
+.header-city-selector {
+  background-color: #0C60F2;
+  padding: 20px 16px 16px 16px;
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  height: 74px;
+  z-index: 1;
+  display: none;
+  align-items: center;
+}
+
 .header-content {
   max-width: 375px;
   margin: 0 auto;
@@ -86,33 +99,76 @@ header {
   text-transform: uppercase;
 }
 
-button {
+
+.input-city {
+  border: 0;
+  height: 34px;
+  font-family: 'Work Sans', sans-serif;
+  color: #0C60F2;
+  font-weight: 800;
+}
+
+
+
+.button-primary {
   background: #FFFFFF;
-  /* height: 34px; */
   box-shadow: 0px 3px 0px #0C60F2;
+  border: 2px solid #0C60F2;
+}
+
+.button-primary:hover {
+  background-color: white;
+  border: 4px solid #0C60F2;
+}
+
+.button-primary:focus {
+  background-color: white;
+  border: 4px solid #0C60F2;
+}
+
+.button-primary:active {
+  background-color: #0C60F222;
+}
+
+.button-secondary {
+  background: #0C60F2;
+  box-shadow: 0px 3px 0px #FFFFFF;
+  border: 2px solid #FFFFFF;
+}
+
+.button-secondary:hover {
+  background-color: #0C60F2;
+  border: 4px solid white;
+}
+
+.button-secondary:focus {
+  background-color: #0C60F2;
+  border: 4px solid white;
+}
+
+.button-secondary:active {
+  background-color: #ffffff22;
+}
+
+button {
   margin-left: 8px;
   padding: 0px;
-  border: 2px solid #0C60F2;
   width: 36px;
-  height: 36px;
+  height: 34px;
   box-sizing: border-box;
 }
 
 button:hover {
-  background-color: white;
-  border: 4px solid #0C60F2;
-  width: 36px;
-  height: 36px;
+
 }
 
 button:focus {
-  background-color: white;
-  border: 4px solid #0C60F2;
+
   outline: 0;
 }
 
 button:active {
-  background-color: #0C60F222;
+
   position: relative;
   top: 4px;
   box-shadow: none;

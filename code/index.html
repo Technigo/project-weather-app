@@ -17,6 +17,21 @@
 <div class="container">
 
 
+  <div class="header-city-selector" id="citySelector">
+    <div class="header-content">
+      <div class="header-location">
+        <input type="text" class="input-city" id="inputCity">
+      </div>
+
+      <button class="button-secondary" id="applyCountrySelector" onclick="fetchWeather(document.getElementById('inputCity').value)">
+        <img src="./assets/ic_16_flight.svg" alt="globe icon">
+      </button>
+      <button class="button-secondary" id="closeCountrySelector" onclick="toggleCountrySelector()">
+        <img src="./assets/ic_16_close_white.svg" alt="globe icon">
+      </button>
+    </div>
+  </div>
+
   <header>
     <div class="header-content">
       <div class="header-location">
@@ -24,7 +39,7 @@
         <span id="country">Country</span>
       </div>
 
-      <button class="button-primary">
+      <button class="button-primary" id="selectCountry" onclick="toggleCountrySelector()">
         <img src="./assets/ic_globe.svg" alt="globe icon">
       </button>
     </div>
