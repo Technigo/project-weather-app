@@ -13,13 +13,16 @@
   </head>
   <body>
     <section class="select-city">
-      Choose your city:
-      <select name="weatherLocation">
-        <option id="palma" value="palma">Palma de Mallorca</option>
-        <option id="moscow" value="moscow">Moscow</option>
-        <option id="stockholm" value="stockholm">Stockholm</option>
-        <option id="london" value="london">London</option>
-        <option id="tokyo" value="tokyo">Tokyo</option>
+      <p class="city-choice">Choose your city:</p>
+      <select class="weather-location" onchange="selectFunction(event)">
+        <option id="palma" value="Palma">Palma de Mallorca</option>
+        <option id="moscow" value="Moscow">Moscow</option>
+        <option id="mexicoCity" value="Mexico">Mexico city</option>
+        <option id="milan" value="Milan">Milan</option>
+        <option id="newYork" value="New York">New York</option>
+        <option id="capeTown" value="Cape Town">Cape Town</option>
+        <option id="london" value="London">London</option>
+        <option id="tokyo" value="Tokyo">Tokyo</option>
       </select>
     </section>
     <header>

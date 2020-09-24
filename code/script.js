@@ -1,12 +1,9 @@
 const API_KEY = "65baa001e8c7b91e12c081e5f04cb9a6";
 
-// const city = ["London,UK","Milan,Italy","New York,USA","Istanbul,Turkey","Barcelona,Spain","Mexico city,Mexico","Stockholm,Sweden","Moscow,Russia"];
-
-if (value === "london") {
-  const city = city[0];
-}
-
-const API_URL1 = `https://api.openweathermap.org/data/2.5/weather?q=Palma,Spain&units=metric&APPID=${API_KEY}`;
+const selectFunction = (event) => {
+  console.log(event.target.value);
+  fetchWeather(event.target.value);
+};
 
 const API_URL2 = `https://api.openweathermap.org/data/2.5/forecast?q=Palma,Spain&units=metric&APPID=${API_KEY}`;
 
@@ -20,7 +17,8 @@ const API_URL2 = `https://api.openweathermap.org/data/2.5/forecast?q=Palma,Spain
 //const weatherMessage = document.getElementById("message");
 
 //function that fetches the weather information at the moment
-const fetchWeather = () => {
+const fetchWeather = (city) => {
+  const API_URL1 = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${API_KEY}`;
   fetch(API_URL1)
     .then((response) => response.json())
     .then((weatherDoc) => {
@@ -82,8 +80,7 @@ const fetchWeather = () => {
       document.getElementById("cityName").innerHTML = weatherDoc.name;
     });
 };
-fetchWeather();
-
+fetchWeather("Stockholm");
 //function that fetches the weather from the second weather forecast url
 const fetchWeatherForecast = () => {
   fetch(API_URL2)
