@@ -28,7 +28,7 @@
 }
 
 .weather-info h1 {
-    font-size: 100px;
+    font-size: 50px;
 }
 
 .weather-info img {
@@ -50,3 +50,9 @@
 .icon img {
     margin-left: 30px;
 }
+
+
+/* 
+.forecast-icon img {
+    width: 20px;
+} */

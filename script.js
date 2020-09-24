@@ -7,11 +7,11 @@ const weatherUrl = 'http://api.openweathermap.org/data/2.5/weather?q=Kaxholmen,S
 const forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=aac4bb6aff926b7baee4aa5fc6f5e50e';
 const city = document.getElementById('name');
 const date = document.getElementById('day')
-const temperature = document.getElementById('degrees');
-const description = document.getElementById('weather-type');
-const sunRise = document.getElementById('rise');
-const sunSet = document.getElementById('set');
-const forecast = document.getElementById('5days');
+    // const temperature = document.getElementById('degrees');
+    // const description = document.getElementById('weather-type');
+    // const sunRise = document.getElementById('rise');
+    // const sunSet = document.getElementById('set');
+    // const forecast = document.getElementById('5days');
 const iconElem = document.getElementById('icon');
 
 
@@ -21,8 +21,8 @@ fetch(weatherUrl)
     })
     .then((currentWeather) => {
         city.innerHTML = currentWeather.name;
-        temperature.innerHTML = `${currentWeather.main.temp.toFixed(1)} °C`;
-        description.innerHTML = currentWeather.weather[0].description;
+        document.getElementById('degrees').innerHTML = `${currentWeather.main.temp.toFixed(1)} °C`;
+        document.getElementById('weather-type').innerHTML = currentWeather.weather[0].description;
         const weatherPicID = currentWeather.weather[0].icon;
         weatherPic.src = `./assets/${weatherPicID}.png`;
 
@@ -32,8 +32,8 @@ fetch(weatherUrl)
             hour12: false,
 
         });
-        sunRise.innerHTML += sunriseTimeString;
-        console.log(sunriseTimeString);
+        document.getElementById('rise').innerHTML += sunriseTimeString;
+
 
         const sunsetTime = new Date(currentWeather.sys.sunset * 1000);
         const sunsetTimeString = sunsetTime.toLocaleTimeString('sv-SE', {
@@ -41,7 +41,7 @@ fetch(weatherUrl)
             hour12: false,
         });
 
-        sunSet.innerHTML += sunsetTimeString;
+        document.getElementById('set').innerHTML += sunsetTimeString;
         console.log(sunsetTimeString);
 
         console.log(currentWeather);
@@ -68,6 +68,7 @@ const today = () => {
 
 date.innerHTML += today();
 
+
 fetch(forecastUrl)
     .then((response) => {
         return response.json();
@@ -80,12 +81,11 @@ fetch(forecastUrl)
         filteredForecast.forEach(item => {
             let temperature = (item.main.temp).toFixed(1);
             let weekday = (new Date(item.dt * 1000)).toLocaleDateString("en-US", { weekday: "long" })
-            forecast.innerHTML += `${weekday} ${temperature} °C  <br><br>`;
+            document.getElementById('5days').innerHTML += `<p>${weekday} ${temperature} °C </p>`;
+            document.getElementById('forecastIcon').innerHTML += `<img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"/>`
+
+            // const forecastIconID = item.weather[0].icon;
+            // forecastIcon.src += `./assets/${forecastIconID}.png`;
         })
 
     });
-
-// filteredForecast.forEach(item => {
-//     let temperature = (item.main.temp - 273.15).toFixed(1);
-//     let weekday = (new Date(item.dt * 1000)).toLocaleDateString("en-US", { weekday: "short" })
-//     forecastLysekil.innerHTML += `<p>${weekday} ${temperature}&#8451;</p>`;
