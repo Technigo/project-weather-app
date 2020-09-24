@@ -1,69 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Technigo - Weather APP</title>
-    <link rel="stylesheet" href="./style.css" class="rel" />
-  </head>
-  <body>
-    <main class="main">
-      <section class="top-box">
-        <h3 id="city" class="top-box--city"></h3>
-        <h2 id="temperature" class="top-box--temperature"></h2>
-        <p class="top-box--feels-like">
-          Feels like: <span id="feels-like"></span>
-        </p>
-        <p id="weather" class="top-box--weather capitalized"></p>
 
-        <div class="sunset-and-sunrise">
-          <div class="sunrise--box">
-            <p class="sunrise--content">
-              <img src="./images/sunrise.png" /><span
-                id="sunrise"
-                class="sunrise-span"
-              >
-              </span>
-            </p>
-          </div>
-          <div class="sunset--box">
-            <p class="sunset--content">
-              <img src="./images/sunset.png" /><span
-                id="sunset"
-                class="sunset-span"
-              >
-              </span>
-            </p>
-          </div>
-        </div>
-      </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Technigo - Weather APP</title>
+  <link rel="stylesheet" href="./style.css" class="rel" />
+</head>
 
-      <section class="text-box"></section>
-      <section class="week-box">
-        <div class="day">
-          <p class="day--name" id="name1">Tomorrow</p>
-          <p id="day1"></p>
+<body>
+  <main class="main">
+    <section class="change-location">
+      <div class="change-location--box">
+        <label>Find your city:</label>
+        <div class="change-location--form">
+          <input type="text" id="location-input" class="change-location--input">
+          <button id="location-button" class="change-location--button">Search</button>
         </div>
-        <div class="day">
-          <p class="day--name" id="name2">Day 2</p>
-          <p id="day2"></p>
-        </div>
-        <div class="day">
-          <p class="day--name" id="name3">Day 3</p>
-          <p id="day3"></p>
-        </div>
-        <div class="day">
-          <p class="day--name" id="name4">Day 4</p>
-          <p id="day4"></p>
-        </div>
-        <div class="day">
-          <p class="day--name" id="name5">Day 5</p>
-          <p id="day5"></p>
-        </div>
-      </section>
-    </main>
+      </div>
+    </section>
 
-    <script src="./api.js" type="module"></script>
-    <script src="./script.js" type="module"></script>
-  </body>
+    <section class="main-weather--box">
+      <img src="" class="main-weather--weather-image" id="weather-image" />
+      <h3 id="city" class="main-weather--city"></h3>
+      <h2 id="temperature" class="main-weather--temperature"></h2>
+      <p class="main-weather--feels-like">
+        Feels like: <span id="feels-like"></span>
+      </p>
+      <p id="weather" class="main-weather--weather capitalized"></p>
+
+      <div class="main-weather--sunset-and-sunrise">
+        <div class="sunrise--box">
+          <p class="sunrise--content">
+            <img src="./images/sunrise.png" />
+            <span id="sunrise" class="sunrise-span"> </span>
+          </p>
+        </div>
+        <div class="sunset--box">
+          <p class="sunset--content">
+            <img src="./images/sunset.png" />
+            <span id="sunset" class="sunset-span"> </span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="text-box"></section>
+    <section class="week-box">
+      <div class="day">
+        <p class="day--name" id="name1">Tomorrow</p>
+        <p class="day--temp" id="day1"></p>
+      </div>
+      <div class="day">
+        <p class="day--name" id="name2">Day 2</p>
+        <p class="day--temp" id="day2"></p>
+      </div>
+      <div class="day">
+        <p class="day--name" id="name3">Day 3</p>
+        <p class="day--temp" id="day3"></p>
+      </div>
+      <div class="day">
+        <p class="day--name" id="name4">Day 4</p>
+        <p class="day--temp" id="day4"></p>
+      </div>
+      <div class="day">
+        <p class="day--name" id="name5">Day 5</p>
+        <p class="day--temp" id="day5"></p>
+      </div>
+    </section>
+  </main>
+
+  <script src="./api.js" type="module"></script>
+  <script src="./script.js" type="module"></script>
+</body>
+
 </html>

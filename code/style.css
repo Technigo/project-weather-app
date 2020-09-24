@@ -1,108 +1,149 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
 
 * {
-    margin: 0;
-    padding: 0;
-    font-weight: 700;
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
 }
 
 body {
-    font-family: 'Rubik', sans-serif;
-    /* width: 70vw; */
-    margin: auto;
-    background-color: #FAACA8;
-    background-image: linear-gradient(19deg, #FAACA8 0%, #DDD6F3 100%);
-    height: 100vh;
-    transition: background-image 1s ease;
+  font-family: 'Rubik', sans-serif;
+  margin: auto;
+  background-color: #faaca8;
+  background-image: linear-gradient(19deg, #faaca8 0%, #ddd6f3 100%);
+  height: 100%;
 }
 
 .cold-bg {
-    background-color: #6b7db5;
-    background-image: linear-gradient(19deg, #6b7db5 0%, #DDD6F3 100%);
+  background-color: #6b7db5;
+  background-image: linear-gradient(19deg, #6b7db5 0%, #ddd6f3 100%);
+}
+
+.hot-bg {
+  background-color: #ff984b;
+  background-image: linear-gradient(19deg, #ff984b 0%, #f3d6e8 100%);
 }
 
 .capitalized {
-    text-transform: capitalize;
+  text-transform: capitalize;
 }
 
+/* ------------------ Change location ------------------  */
+.change-location--box {
+  padding: 30px;
+}
+
+.change-location--form {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.change-location--input {
+  /* font-size: 20px; */
+  padding: 5px;
+  width: 50%;
+  background: none;
+  border: 1px solid #000;
+}
+
+.change-location--button {
+  height: 27px;
+  padding: 5px 20px;
+  background: #000;
+  color: #fff;
+  border: none;
+}
 
 /* ------------------ Today's temperature ------------------  */
-.top-box {
-    width: 20vw; 
-    margin: 40px auto;
+.main-weather--box {
+  width: 20vw;
+  margin: 40px auto;
 }
 
-.top-box--city {
-    font-size: 28px;
+.main-weather--city {
+  font-size: 28px;
+  margin-top: 10px;
 }
 
-.top-box--weather {
-    margin: 0 0 30px 0;
+.main-weather--weather-image {
+  width: 200px;
+  height: 200px;
 }
 
-.top-box--temperature {
-    font-size: 46px;
-    margin: 10px 0;
+.main-weather--weather {
+  margin: 0 0 30px 0;
 }
 
-.top-box--feels-like {
-    margin: 5px 0 5px 0; 
+.main-weather--temperature {
+  font-size: 46px;
+  margin: 10px 0;
 }
 
-.sunset-and-sunrise {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+.main-weather--feels-like {
+  margin: 5px 0 5px 0;
 }
 
-.sunrise--content, .sunset--content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 10px 0;
-    padding: 0 20px 0 0;
+.main-weather--sunset-and-sunrise {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-.sunrise--content img, .sunset--content img {
-    width: 90px;
+.sunrise--content,
+.sunset--content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+  padding: 0 20px 0 0;
+}
+
+.sunrise--content img,
+.sunset--content img {
+  width: 90px;
 }
 
 /* ------------------ Next week's temperature ------------------  */
 .week-box {
-    margin: 50px auto;
+  margin: 50px auto;
 }
 
 .day {
-    width: 20vw;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px;
-    border-top: 1px dotted #000;
+  width: 20vw;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  border-top: 1px dotted #000;
 }
 
 .day--name {
-    margin-right: 20px;
+  margin-right: 20px;
 }
-
 
 /* ------------------ M E D I A  Q U E R I E S ------------------  */
 
 @media (max-width: 768px) {
-    .top-box, .day {
-        width: 90vw;
-        margin: auto;
-        padding: 30px;
-    }
+  .main-weather--box,
+  .day {
+    width: 90vw;
+    margin: auto;
+    padding: 30px;
+  }
 
-    .week-box {
-        margin: 0;
-        width: 100vw;
-    }
+  .week-box {
+    margin: 0;
+  }
 
-    #day1, #day2, #day3, #day4, #day5 {
-        margin-right: 10px;
-    }
+  #day1,
+  #day2,
+  #day3,
+  #day4,
+  #day5 {
+    margin-right: 10px;
+  }
 }
