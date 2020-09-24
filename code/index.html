@@ -6,7 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="author" content="Ylva Nilsson" />
     <title>Weather Forcast</title>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
     <link
       rel="icon"
@@ -17,35 +20,30 @@
     <title>Weather App - Technigo Project</title>
   </head>
   <body>
-    <!-- <div id="astros">Loading...</div> -->
-
     <section id="wrapper" class="weather-container">
-        <div id="weatherToday" class="weather-today-wrapper"></div>
-        <div id="weatherForecast" class="weather-forcast-wrapper"></div>
+      <div id="weatherToday" class="weather-today-wrapper"></div>
+      <div id="weatherForecast" class="weather-forcast-wrapper"></div>
 
-    
-        <div class="select-city">
-            <label for="cityNamePicked" class="city-serch">Search favourite city</label>
-            <input
-            type="text"
-            id="cityNamePicked"
-            name="ciyNamePicked"
-            onkeydown = "if (event.keyCode == 13)
+      <div class="select-city">
+        <label for="cityNamePicked" class="city-serch"
+          >Search favourite city</label
+        >
+        <input
+          type="text"
+          id="cityNamePicked"
+          name="ciyNamePicked"
+          onkeydown="if (event.keyCode == 13)
                 document.getElementById('btnSearch').click()"
-            />
+        />
 
-            <input class="search-btn"
-            type = "button"
-            id = "btnSearch"
-            value = "Search"
-            onclick = "citySelected();"
-            />  
-        </div>
-            
-        <!----<button onclick="citySelected()">
-            <p>Search</p>----->
-        </button>
-        
+        <input
+          class="search-btn"
+          type="button"
+          id="btnSearch"
+          value="Search"
+          onclick="citySelected();"
+        />
+      </div>
     </section>
 
     <script src="weather.js"></script>
