@@ -5,6 +5,7 @@ const apiForcast =
 const city = document.getElementById("city");
 const country = document.getElementById("country");
 const description = document.getElementById("description");
+const weatherIcon = document.getElementById("weatherIcon");
 const averageTemp = document.getElementById("averageTemp");
 const minTemp = document.getElementById("minTemp");
 const maxTemp = document.getElementById("maxTemp");
@@ -22,11 +23,15 @@ fetch(apiWeather)
     city.innerHTML = weatherArr.name;
     country.innerHTML = weatherArr.sys.country;
     description.innerHTML = weatherArr.weather[0].description;
+    weatherIcon.src = `http://openweathermap.org/img/wn/${weatherArr.weather[0].icon}.png`;
     averageTemp.innerHTML = generateRoundedTemperature(weatherArr.main.temp);
     minTemp.innerHTML = generateRoundedTemperature(weatherArr.main.temp_min);
     maxTemp.innerHTML = generateRoundedTemperature(weatherArr.main.temp_max);
     feelsLike.innerHTML = generateRoundedTemperature(
       weatherArr.main.feels_like
+    );
+    document.getElementById("todayWeather").style.backgroundImage = background(
+      weatherArr.main.temp
     );
     windSpeed.innerHTML = weatherArr.wind.speed;
     sunrise.innerHTML = generateTimeFromMilliSec(weatherArr.sys.sunrise);
@@ -35,6 +40,13 @@ fetch(apiWeather)
 
 const generateRoundedTemperature = (temperature) => {
   return Math.round(temperature * 10) / 10;
+};
+
+const background = (averageTemp) => {
+  if (averageTemp >= 10) {
+    document.getElementById("todayWeather").style.backgroundImage =
+      "linear-gradient(#f5d20d, #615305) ";
+  }
 };
 
 const generateTimeFromMilliSec = (milliseconds) => {
