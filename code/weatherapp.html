@@ -8,21 +8,66 @@
     <title>Weather app</title>
 </head>
 <body>
-    <main id="main-container">
-        <h1>Today's weather in</h1>
-        <h1 id="city"></h1>
-        <h2 class="mainTemp" id="temperature"></h2>
-        <h2 id="weatherType"></h2>       
-        <h3 id="sunrise"></h3>
-        <h3 id="sunset"></h3>
-        <h2>5 day forecast</h2>
-        <h3 id="day1"></h3> 
-        <h3 id="day2"></h3> 
-        <h3 id="day3"></h3> 
-        <h3 id="day4"></h3> 
-        <h3 id="day5"></h3> 
-    </main>
+    <main>
+        <header class="header-container">
+            <h2 class="city-header" id="city"></h2>
+        </header>
 
+        <div class="todays-weather-container">
+            <img src="" id="iconImage"  width="80px"></img>
+            <p class="city-temperature" id="temperature"></p>
+            <p class="todays-weather-type" id="weatherType"></p> 
+        </div>
+        
+        <section class="sunrise-sunset-parent">
+            <div class="sunrise-sunset-child">
+                <img src="./images/sunrise.png" alt="Illustration of sunrise" width="70px">
+                <p id="sunrise"></p>
+            </div>
+            <div class="sunrise-sunset-child">
+                <img src="./images/sunset.png" alt="Illustration of sunset" width="70px">
+                <p id="sunset"></p>                
+            </div>
+        </section>
+
+        <section class="fiveday-forecast-parent">
+            <div class="fiveday-header-container">
+                <h2>5 day forecast</h2>
+            </div>
+            <div class="five-day">
+                <div class="forecast-container">
+                    <p id="day1Day"></p> 
+                    <p id="day1Type"></p> 
+                    <img src="" id="day1Icon" width="20px"></img>
+                    <p id="day1Temp"></p>
+                </div>
+                <div class="forecast-container">
+                    <p id="day2Day"></p> 
+                    <p id="day2Type"></p> 
+                    <img src="" id="day2Icon" width="20px"></img>
+                    <p id="day2Temp"></p> 
+                </div>
+                <div class="forecast-container">
+                    <p id="day3Day"></p> 
+                    <p id="day3Type"></p> 
+                    <img src="" id="day3Icon" width="20px"></img>
+                    <p id="day3Temp"></p> 
+                </div>
+                <div class="forecast-container">
+                    <p id="day4Day"></p>
+                    <p id="day4Type"></p>
+                    <img src="" id="day4Icon" width="20px"></img>  
+                    <p id="day4Temp"></p> 
+                </div>
+                <div class="forecast-container">
+                    <p id="day5Day"></p> 
+                    <p id="day5Type"></p>
+                    <img src="" id="day5Icon" width="20px"></img>  
+                    <p id="day5Temp"></p>
+                </div>
+            </div> 
+        </section>
+    </main>
 
     <script type="module" src="/code/weatherapp.js"></script>
 </body>
