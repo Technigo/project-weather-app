@@ -9,53 +9,53 @@ const weatherDescriptions = [
   {
     order: 1,
     name: 'Clear sky',
-    img: 'http://openweathermap.org/img/wn/01d@2x.png'
+    img: 'https://openweathermap.org/img/wn/01d@2x.png'
   },
   {
     order: 2,
     name: 'Few clouds',
-    img: 'http://openweathermap.org/img/wn/02d@2x.png'
+    img: 'https://openweathermap.org/img/wn/02d@2x.png'
   },
   {
     order: 3,
     name: 'Scattered clouds',
-    img: 'http://openweathermap.org/img/wn/03d@2x.png'
+    img: 'https://openweathermap.org/img/wn/03d@2x.png'
   },
   {
     order: 4,
     name: 'Broken clouds',
-    img: 'http://openweathermap.org/img/wn/04d@2x.png'
+    img: 'https://openweathermap.org/img/wn/04d@2x.png'
   },
   {
     order: 5,
     name: 'Shower rain',
-    img: 'http://openweathermap.org/img/wn/09d@2x.png'
+    img: 'https://openweathermap.org/img/wn/09d@2x.png'
   },
   {
     order: 6,
     name: 'Rain',
-    img: 'http://openweathermap.org/img/wn/10d@2x.png',
+    img: 'https://openweathermap.org/img/wn/10d@2x.png',
     text: "It's raining cats and dogs right now!"
   },
   {
     order: 7,
     name: 'Thunderstorm',
-    img: 'http://openweathermap.org/img/wn/11d@2x.png'
+    img: 'https://openweathermap.org/img/wn/11d@2x.png'
   },
   {
     order: 8,
     name: 'Snow',
-    img: 'http://openweathermap.org/img/wn/13d@2x.png'
+    img: 'https://openweathermap.org/img/wn/13d@2x.png'
   },
   {
     order: 9,
     name: 'Mist',
-    img: 'http://openweathermap.org/img/wn/50d@2x.png'
+    img: 'https://openweathermap.org/img/wn/50d@2x.png'
   },
   {
     order: 10,
     name: 'Clouds',
-    img: 'http://openweathermap.org/img/wn/04d@2x.png'
+    img: 'https://openweathermap.org/img/wn/04d@2x.png'
   }
 ];
 
