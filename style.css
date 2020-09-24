@@ -59,8 +59,13 @@
     border: 1px solid red;
   }
 
-  .five-day-forecast {
+  .daily-forecast {
+    display: flex;
+    justify-content: space-between;
+  }
 
+  .daily-forecast > p {
+    margin: 3px;
   }
 
   /**FOOTER style**/

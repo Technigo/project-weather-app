@@ -79,7 +79,12 @@ fetch(API_URL_WEATHER)
 
 //FORECAST
 const API_URL_FORECAST = `https://api.openweathermap.org/data/2.5/forecast?q=Lund,Sweden&units=metric&APPID=${API_KEY}`;
+
+//uncomment if the test doesn't work
 const forecastText = document.getElementById("5DayForecast");
+
+// const forecastText = document.getElementsByClassName(".daily-forecast");
+// console.log(`elements by class name: ${forecastText}`);
 
 
 fetch(API_URL_FORECAST)
@@ -92,35 +97,26 @@ fetch(API_URL_FORECAST)
   const listArray = forecastObject.list;
   // console.log(`Array of weather forecast: ${listArray}`);
 
-  //filter out info for each day at 12:00
+  //filter out info for each day at 12:00 = array of objects (days)
   const listArrayFiltered = listArray.filter(item => item.dt_txt.includes('12:00'));
+
+  //filtered array = array of objects
   console.log(`Filtered array: ${listArrayFiltered}`);
 
-  //uncomment if the test doesn't work
-  // listArrayFiltered.forEach((day => {
-  //   console.log(`Each day: ${day}`);
-  //   const date = new Date(day.dt * 1000);
-  //   console.log(`Date: ${date}`);
-  //   const weekday = date.toLocaleDateString('se-SE', {weekday: "short"});
-  //   console.log(`Weekday: ${weekday}`);
-  //   const dailyTemp = day.main.temp;
-  //   console.log(`Daily temp: ${dailyTemp}`);
-
-  //   forecastText.innerHTML += `<p>${weekday}</p><p>${dailyTemp}°C</p>`; 
-  // }))
-
-  listArrayFiltered.forEach((day, index => {
+  //loop through array to get forcasted data
+  listArrayFiltered.forEach((day => {
     console.log(`Each day: ${day}`);
     const date = new Date(day.dt * 1000);
     console.log(`Date: ${date}`);
     const weekday = date.toLocaleDateString('se-SE', {weekday: "short"});
     console.log(`Weekday: ${weekday}`);
-    const dailyTemp = day.main.temp;
+    const dailyTemp = day.main.temp.toFixed();
     console.log(`Daily temp: ${dailyTemp}`);
 
-    forecastText.innerHTML += `<p>${weekday}</p><p>${dailyTemp}°C</p>`; 
+    forecastText.innerHTML += `
+    <div class="daily-forecast">
+    <p class="weekday">${weekday}</p>
+    <p class="weekday-temp">${dailyTemp}°</p>
+    </div>`; 
   }))
-
-
-
 });
