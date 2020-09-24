@@ -1,6 +1,4 @@
-window.onload = function exampleFunction() { 
-    getLatLong("Stockholm"); 
-} 
+window.onload = () =>  getLatLong("Stockholm"); 
 
 const changeCity = () => {
     let city = document.getElementById("city-label").value 
@@ -17,8 +15,6 @@ const getLocation = () => {
 }
 
 const getCity = (position) => {
-    console.log(position.coords.latitude)
-    console.log(position.coords.longitude)
     const lat = position.coords.latitude
     const lon = position.coords.longitude
     fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=7d01b328e34c450986cb7faef032a771`)
@@ -39,18 +35,6 @@ const getLatLong = (city) => {
             fetchForecast(lat, lon)
     });
 }
-
-const fetchWeather = (city) => {
-  return fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${city},Sweden&units=metric&APPID=7d01b328e34c450986cb7faef032a771`
-  )
-    .then((response) => {
-      return response.json();
-    })
-    .then((json) => {
-      getLatLong(json);
-    });
-};
 
 const fetchForecast = (lat, lon) => {
   return fetch(
@@ -79,13 +63,7 @@ const getDayOfWeek = (dayOfWeek) => {
   };
 
 const sthlmForecast = (forecast) => {
-  //get current city
-//   const currentCity = forecast.timezone.split("/")[1]
-//   const currentCityHTML = document.getElementById("city")
-//   currentCityHTML.innerHTML == "" ? currentCityHTML.innerHTML = currentCity : currentCityHTML.innerHTML += "";
-//   let citySet = true;
-  //currentCityHTML.innerHTML = currentCity
-
+  
   //get current temp
   const currentTemp = document.getElementById("current");
   currentTemp.innerHTML = `${Math.round(forecast.current.temp)}&#8451`;
@@ -129,79 +107,6 @@ const sthlmForecast = (forecast) => {
     daysInForecast[index].querySelector(".day-temp").innerHTML = `<img src='${day.weather[0].icon}@2x.png'>   `;
     daysInForecast[index].querySelector(".day-temp").innerHTML += `<span>${Math.round(day.temp.min)} / ${Math.round(day.temp.max)}</span>`;
   })
-
-
-/*
-  //Get days for forecast. try with getelement by class name or similar. Then you can use the loop just like maks
-  document.getElementById("day1").innerHTML = `${getDayOfWeek(
-    new Date(forecast.daily[0].dt * 1000).getDay()
-  )}`;
-  document.getElementById("day2").innerHTML = `${getDayOfWeek(
-    new Date(forecast.daily[1].dt * 1000).getDay()
-  )}`;
-  document.getElementById("day3").innerHTML = `${getDayOfWeek(
-    new Date(forecast.daily[2].dt * 1000).getDay()
-  )}`;
-  document.getElementById("day4").innerHTML = `${getDayOfWeek(
-    new Date(forecast.daily[3].dt * 1000).getDay()
-  )}`;
-  document.getElementById("day5").innerHTML = `${getDayOfWeek(
-    new Date(forecast.daily[4].dt * 1000).getDay()
-  )}`;
-*/
-  //try to generate HTML with foreach
-//   let container = document.getElementById("forecast");
-//   forecastArr = forecast.daily;
-//   console.log(forecastArr)
-//   forecastArr.forEach((forecastline, index) => {
-//     container.innerHTML = "";
-//     //generate day
-//     container.innerHTML += `<div class = "day">`
-//     container.innerHTML +=     `<p class = "next day">${getDayOfWeek(new Date(forecastline.dt * 1000).getDay())}>`
-//     //generate icon
-//     container.innerHTML +=      `<p class = "day-temp">`
-//     container.innerHTML +=      `<img src='${forecastline.weather[0].icon}@2x.png'>`
-//     //generate temp
-//     container.innerHTML +=      `<span>${Math.round(forecastline.temp.min)} / ${Math.round(forecastline.temp.max)}</span>`
-//     container.innerHTML +=      `</p>`
-//     container.innerHTML +=  `</div>`
-  
-
-  //Dates with forecast
-//   document.getElementById("day1-temp").innerHTML = `<img src='${
-//     forecast.daily[0].weather[0].icon
-//   }@2x.png'>   `;
-//   document.getElementById("day1-temp").innerHTML += `<span>${Math.round(
-//     forecast.daily[0].temp.min
-//   )} / ${Math.round(forecast.daily[0].temp.max)}</span>`;
-
-//   document.getElementById("day2-temp").innerHTML = `<img src='${
-//     forecast.daily[1].weather[0].icon
-//   }@2x.png'>   `;
-//   document.getElementById("day2-temp").innerHTML += `<span>${Math.round(
-//     forecast.daily[1].temp.min
-//   )} / ${Math.round(forecast.daily[1].temp.max)}</span>`;
-
-//   document.getElementById("day3-temp").innerHTML = `<img src='${
-//     forecast.daily[2].weather[0].icon
-//   }@2x.png'>   `;
-//   document.getElementById("day3-temp").innerHTML += `<span>${Math.round(
-//     forecast.daily[2].temp.min
-//   )} / ${Math.round(forecast.daily[2].temp.max)}</span>`;
-
-//   document.getElementById("day4-temp").innerHTML = `<img src='${
-//     forecast.daily[3].weather[0].icon
-//   }@2x.png'>   `;
-//   document.getElementById("day4-temp").innerHTML += `<span>${Math.round(
-//     forecast.daily[3].temp.min
-//   )} / ${Math.round(forecast.daily[3].temp.max)}</span>`;
-
-//   document.getElementById("day5-temp").innerHTML = `<img src='${
-//     forecast.daily[4].weather[0].icon
-//   }@2x.png'>   `;
-//   document.getElementById("day5-temp").innerHTML += `<span>${Math.round(
-//     forecast.daily[4].temp.min
-//   )} / ${Math.round(forecast.daily[4].temp.max)}</span>`;
 }
 
 
