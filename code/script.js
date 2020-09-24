@@ -154,24 +154,35 @@ const showCurrentWeather = (API) => {
                     currentWeatherMain.classList.remove('clear');
                     currentWeatherMain.classList.remove('rain');
                     currentWeatherMain.classList.remove('snow');
+                    currentWeatherMain.classList.remove('mist');
                     showCloudAnimation();
                 } else if (weatherType === 'Rain'|| weatherType === 'Drizzle') {
                     currentWeatherMain.classList.add('rain');
                     currentWeatherMain.classList.remove('clouds');
                     currentWeatherMain.classList.remove('clear');
                     currentWeatherMain.classList.remove('snow');
+                    currentWeatherMain.classList.remove('mist');
                     showRainAnimation();
                 } else if (weatherType === 'Clear') {
                     currentWeatherMain.classList.add('clear');
                     currentWeatherMain.classList.remove('clouds');
                     currentWeatherMain.classList.remove('rain');
                     currentWeatherMain.classList.remove('snow');
+                    currentWeatherMain.classList.remove('mist');
                     showSunAnimation();
+                } else if (weatherType === 'Mist' || weatherType === 'Fog') {
+                    currentWeatherMain.classList.add('mist');
+                    currentWeatherMain.classList.remove('clear');
+                    currentWeatherMain.classList.remove('rain');
+                    currentWeatherMain.classList.remove('snow');
+                    currentWeatherMain.classList.remove('clouds');
+                    hideWeatherAnimation();
                 } else if (weatherType === 'Snow') {
                     currentWeatherMain.classList.add('snow');
                     currentWeatherMain.classList.remove('clouds');
                     currentWeatherMain.classList.remove('rain');
                     currentWeatherMain.classList.remove('clear');
+                    currentWeatherMain.classList.remove('mist');
                     showCloudAnimation();
                 } else {
                     hideWeatherAnimation();

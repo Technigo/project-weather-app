@@ -156,37 +156,68 @@ nav img {
 /* Clear weather animation */
 
 .clear {
-    background-image: linear-gradient(#1a345f, #5085da);
+    /* background-image: linear-gradient(#1a345f, #5085da); */
+    background-image: linear-gradient(#0d569b, #86d3ff);
 }
 
-@keyframes sun {
+@keyframes sunRings {
     50% {transform: scale(0.95)};
     /* 100% {transform: scale(0.1)}; */
 }
 
+@keyframes sun {
+    50% {transform: scale(0.98)};
+    /* 100% {transform: scale(0.1)}; */
+}
+
 .sun-symbol {
-    display: flex;
-    display:none;
+    position: absolute;
+    display: none;
     justify-content: center;
     align-items: center;
-    width: 200px;
-    height: 200px;
-    background-color: rgba(255, 136, 0, 0.5);
+    top: -15px;
+    right: -110px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     animation: sun 3s ease infinite;
 }
 
-.inner-sun {
-    width: 130px;
-    height: 130px;
-    background-color: #ff8800;
+.sun-rings {
+    position: absolute;
+    width: 225px;
+    height: 225px;
+    background-color: rgba(255, 255, 255, 0.05);
     border-radius: 50%;
+    z-index: 0;
+}
+.s1 {
+    width: 275px;
+    height: 275px;
+    animation: sunRings 3s ease 0.5s infinite;
+
+}
+
+.s2 {
+    animation: sunRings 3s ease 0.2s infinite;
+
+}
+
+.inner-sun {
+    width: 175px;
+    height: 175px;
+    /* background-color: radi; */
+    background-image: linear-gradient(-40deg,#ffd549, #da7d26);
+    border-radius: 50%;
+    z-index: 1;
+    animation: sun 3s ease infinite;
 }
 
 /* Rain animation */
 
 .rain {
-    background-image: linear-gradient(#43525c, #9ab2c2);
+    /* background-image: linear-gradient(#43525c, #9ab2c2); */
+    background-image: linear-gradient(#37525c, #8ab9ca);
 }
 
 .rain-symbol {
@@ -199,7 +230,7 @@ nav img {
 }
 
 .drop {
-    width: 10px;
+    width: 5px;
     height: 50px;
     border-radius: 10px;
     background-color: #c0daeb;
@@ -237,13 +268,14 @@ nav img {
 
 @keyframes cloud-animation {
     0% {transform: translateX(0); opacity: 0%;}
-    25% {opacity: 50%;}
-    75% {opacity: 50%;}
+    25% {opacity: 100%;}
+    75% {opacity: 100%;}
     100% {transform: translateX(150px); opacity: 0%;}
 }
 
 .clouds {
-    background-image: linear-gradient(#657986, #c0daeb);
+    /* background-image: linear-gradient(#657986, #c0daeb); */
+    background-image: linear-gradient(#55698a, #c0ceeb);
 }
 
 .cloud-symbol {
@@ -305,7 +337,9 @@ nav img {
     border-bottom-right-radius: 20px;
 }
 
-
+.mist {
+    background-image: linear-gradient(#667fa0, #7c95b6);
+}
 
 .snow {
     background-image: linear-gradient(#a9bed1, #ffffff);
