@@ -80,12 +80,7 @@ fetch(API_URL_WEATHER)
 //FORECAST
 const API_URL_FORECAST = `https://api.openweathermap.org/data/2.5/forecast?q=Lund,Sweden&units=metric&APPID=${API_KEY}`;
 
-//uncomment if the test doesn't work
 const forecastText = document.getElementById("5DayForecast");
-
-// const forecastText = document.getElementsByClassName(".daily-forecast");
-// console.log(`elements by class name: ${forecastText}`);
-
 
 fetch(API_URL_FORECAST)
 .then((response) => {
@@ -115,7 +110,7 @@ fetch(API_URL_FORECAST)
 
     forecastText.innerHTML += `
     <div class="daily-forecast">
-    <p class="weekday">${weekday}</p>
+    <p class="weekday">${weekday.toLocaleLowerCase()}</p>
     <p class="weekday-temp">${dailyTemp}°</p>
     </div>`; 
   }))

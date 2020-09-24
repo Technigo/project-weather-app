@@ -14,7 +14,7 @@
 
   .daily-weather {
     height: 33vh;
-    margin: 0 20px;
+    margin: 0 25px;
     border: 1px solid blue;
   }
 
@@ -53,17 +53,44 @@
     margin: 3px;
   }
 
+  .statement {
+    height: 30vh;
+    margin: 0 25px;
+  }
+
+  .statement-image-text {
+    text-align: left;
+
+    border: 1px solid green;
+  }
+
+  .statement-image-text > p {
+    margin: 3px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 25px;
+  }
+
   .forecast {
-    height: 60vh;
-    margin: 0 20px;
+    height: 30vh;
+    margin: 0 25px;
+
     border: 1px solid red;
+  }
+
+  .five-day-forecast :last-child {
+    border-bottom: 0;
   }
 
   .daily-forecast {
     display: flex;
     justify-content: space-between;
+    border-bottom: 1.5px;
+    border-bottom-style: dashed;
+    border-bottom-color: #164a68;;
   }
 
+  
   .daily-forecast > p {
     margin: 3px;
   }
@@ -75,12 +102,41 @@
     bottom: 0;
     right: 0;
     left: 0;
+    padding: 3px;
+    font-variant: all-small-caps;
 
     border: 1px solid green;
   }
 
+  footer > p {
+    font-size: 13px;
+  }
+
   /**MEDIA QUERIES**/
   /*tablet view*/
-  @media (min-width: 668px) {
-    
+  @media (min-width: 768px) {
+    * {
+      font-size: 30px;
+    }
+      .time-location-date {
+      margin-bottom: 40px;
+      }
+      .current-location {
+        font-size: 40px;
+      }
+      .current-time, .current-date {
+        font-size: 22px;
+      }
+      .daily-weather, 
+      .statement, 
+      .forecast {
+        margin: 0 50px;
+      }
+      .statement-image-text > p {
+        font-size: 40px;
+      }
+      footer > p {
+        font-size: 20px;
+      }  
   }
+   
