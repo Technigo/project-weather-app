@@ -22,11 +22,15 @@ const forecastDay5 = document.getElementById("day5");
 
 const toggleCountrySelector = () => {
   var citySelector = document.getElementById("citySelector");
-  document.getElementById("inputCity").value = "";
+  var inputCity = document.getElementById("inputCity")
+  inputCity.value = "";
   if (citySelector.style.display === "none") {
     citySelector.style.display = "block";
+    inputCity.select();
+    inputCity.focus();
   } else {
     citySelector.style.display = "none";
+    
   }
 }
 
@@ -96,22 +100,28 @@ const fetchWeatherImage = (weather) => {
 
 const fetchForecastEmojis = (weather) => {
   if(weather === 'Clouds') {
-    return "☁️";
+    // return "☁️";
+    return "<img src='./assets/weather-icons/ic_16_cloud.svg'";
 
   } else if(weather === 'Clear') {
-    return "☀️";
+    // return "☀️";
+    return "<img src='./assets/weather-icons/ic_16_sun.svg'";
   
   } else if(weather === 'Snow') {
-    return "❄️";
+    // return "❄️";
+    return "<img src='./assets/weather-icons/ic_16_snow.svg'";
   
   } else if(weather === 'Rain') {
-    return "💦";
+    // return "💦";
+    return "<img src='./assets/weather-icons/ic_16_rain.svg'";
   
   } else if(weather === 'Drizzle') {
-    return "💧";
+    // return "💧";
+    return "<img src='./assets/weather-icons/ic_16_rain.svg'";
 
   } else if(weather === 'Thunderstorm') {
-    return "⚡️";
+    // return "⚡️";
+    return "<img src='./assets/weather-icons/ic_16_lightning.svg'";
   
   } else {
     return "🤯";
