@@ -22,7 +22,7 @@ body {
 .todays-weather-container {
     display: flex;
     flex-direction: column-reverse;
-    width: 70%;
+    width: 80%;
 }
 
 .todays-weather-container img {
@@ -31,7 +31,7 @@ body {
 }
 
 .todays-weather-container h1 {
-    font-size: 35px;
+    font-size: 30px;
     font-weight: 700;
     margin-left: 0;
 }
