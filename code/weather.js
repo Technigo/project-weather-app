@@ -113,7 +113,21 @@ const sthlmForecast = (forecast) => {
   sunriseHTML.innerHTML = `Sunrise:  ${sunriseString}`;
   sunsetHTML.innerHTML = `Sunset:  ${sunsetString}`;
 
-  //Get days for forecast
+  //Get new array with forecast to map in new array
+  const slicedForecast = forecast.daily.slice(0, 5);
+  //get array for HTML elements to loop through
+  const daysInForecast = document.getElementsByClassName("day")
+
+  //loop through each day and set HTML
+  slicedForecast.forEach((day, index) => {
+    daysInForecast[index].querySelector(".next-day").innerHTML = `${getDayOfWeek(new Date(day.dt * 1000).getDay())}`;
+    //daysInForecast[index].querySelector("img.day-temp").src = `<img src='${day.weather[0].icon}@2x.png'>   `;
+  })
+  
+
+
+/*
+  //Get days for forecast. try with getelement by class name or similar. Then you can use the loop just like maks
   document.getElementById("day1").innerHTML = `${getDayOfWeek(
     new Date(forecast.daily[0].dt * 1000).getDay()
   )}`;
@@ -129,10 +143,24 @@ const sthlmForecast = (forecast) => {
   document.getElementById("day5").innerHTML = `${getDayOfWeek(
     new Date(forecast.daily[4].dt * 1000).getDay()
   )}`;
-//   document.getElementById("day1-temp").innerHTML = `<img src='${getIcon(
-//     forecast.daily[0].weather[0].main
-//   )}'>   `;
-
+*/
+  //try to generate HTML with foreach
+//   let container = document.getElementById("forecast");
+//   forecastArr = forecast.daily;
+//   console.log(forecastArr)
+//   forecastArr.forEach((forecastline, index) => {
+//     container.innerHTML = "";
+//     //generate day
+//     container.innerHTML += `<div class = "day">`
+//     container.innerHTML +=     `<p class = "next day">${getDayOfWeek(new Date(forecastline.dt * 1000).getDay())}>`
+//     //generate icon
+//     container.innerHTML +=      `<p class = "day-temp">`
+//     container.innerHTML +=      `<img src='${forecastline.weather[0].icon}@2x.png'>`
+//     //generate temp
+//     container.innerHTML +=      `<span>${Math.round(forecastline.temp.min)} / ${Math.round(forecastline.temp.max)}</span>`
+//     container.innerHTML +=      `</p>`
+//     container.innerHTML +=  `</div>`
+  
 
   //Dates with forecast
   document.getElementById("day1-temp").innerHTML = `<img src='${
@@ -169,67 +197,6 @@ const sthlmForecast = (forecast) => {
   document.getElementById("day5-temp").innerHTML += `<span>${Math.round(
     forecast.daily[4].temp.min
   )} / ${Math.round(forecast.daily[4].temp.max)}</span>`;
-};
+}
 
-/*const sthlmWeather = (weather) => {
-  console.log(weather.main.temp);
-  document.getElementById("sthlm").innerHTML += `${weather.main.temp}`;
-  //console.log(new Date(weather.sys.sunrise * 1000));
-  const sunrise = new Date(weather.sys.sunrise * 1000);
-  const sunset = new Date(weather.sys.sunset * 1000);
-  console.log(new Date(weather.sys.sunset * 1000).getMinutes());
-  document.getElementById("sthlm").innerHTML += `<p>Sunrise: ${
-    sunrise.getHours() <= 9 ? `0` : ``
-  }${sunrise.getHours()}:${sunrise.getMinutes()}</p>`;
-  document.getElementById("sthlm").innerHTML += `<p>Sunset: ${
-    sunset.getHours() <= 9 ? `0` : ``
-  }${sunset.getHours()}:${sunset.getMinutes()}</p>`;
-  //console.log(sunrise.getHours());
-};*/
 
-/*const fetchForecast = () => {
-    return fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=7d01b328e34c450986cb7faef032a771`
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((json) => {
-        //console.log(json.name);
-        //console.log(json.main.temp);
-        //const roundedWeather = Math.round(json.main.temp * 10) / 10;
-        //console.log(roundedWeather);
-        //console.log(json.weather[0].description);
-        sthlmForecast(json);
-        //return json;
-      });
-  };*/
-
-/*const sthlmWeather = (weather) => {
-    console.log(weather.main.temp);
-    document.getElementById("sthlm").innerHTML += `${weather.main.temp}`
-    //console.log(new Date(weather.sys.sunrise * 1000));
-    const sunrise = new Date(weather.sys.sunrise * 1000);
-    const sunset = new Date(weather.sys.sunset * 1000);
-    console.log((new Date(weather.sys.sunset * 1000)).getMinutes());
-    document.getElementById("sthlm").innerHTML += `<p>Sunrise: ${(sunrise.getHours()) <= 9 ? `0`:``}${sunrise.getHours()}:${sunrise.getMinutes()}</p>`
-    document.getElementById("sthlm").innerHTML += `<p>Sunset: ${(sunset.getHours()) <= 9 ? `0`:``}${sunset.getHours()}:${sunset.getMinutes()}</p>`
-    //console.log(sunrise.getHours());
-}*/
-
-/*const sthlmForecast = (forecast) => {
-    const filteredForecast = forecast.list.filter(item => item.dt_txt.includes('12:00'))
-    filteredForecast.forEach((day) => console.log(day.main.temp_min, day.main.temp_max))
-}*/
-
-/*let sthlmWeather = fetchWeather().then((weather) => {
-  // This will be executed later, after the results are received from the server
-  sthlmWeather = weather;
-  let sunriseSthlm = new Date(sthlmWeather.sys.sunrise);
-  console.log(sunriseSthlm.getHours())
-  document.getElementById("sthlm").innerHTML += `${sthlmWeather.main.temp}`
-});*/
-
-//setTimeout(((console.log(sthlmWeather.main)), 2000));
-
-//document.getElementById("sthlm").innerHTML += `${sthlmWeather.main.temp}`
