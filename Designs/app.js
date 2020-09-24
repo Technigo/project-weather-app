@@ -52,10 +52,10 @@ const updateWeatherToday = (todayWeatherJson) => {
         minute: '2-digit',
         hour12: false
     })
-     
+
     const now = new Date()
-    if (now < sunriseTime || now > sunsetTime) { 
-      //  document.getElementById('daily-weather').classList.toggle("daytime")
+    if (now < sunriseTime || now > sunsetTime) {
+        document.getElementById('daily-weather').classList.toggle("daytime")
     }
 
 
@@ -71,48 +71,48 @@ const updateWeatherToday = (todayWeatherJson) => {
 // the forecast 
 
 
-const updateWeatherForecast = (weatherForecastJson) => { 
+const updateWeatherForecast = (weatherForecastJson) => {
 
     // FIltered the data so it only picks the 12:00 data everyday.
     const filteredForecast = weatherForecastJson.list.filter(item => item.dt_txt.includes('12:00'))
     console.log(filteredForecast)
 
 
-    filteredForecast.forEach((day, index) => { 
-        console.log(`day${index+1}-name`)
-        
+    filteredForecast.forEach((day, index) => {
+        console.log(`day${index + 1}-name`)
+
         //The loop gives the ID a new name so it matches the one in the HTML file so it is shown on the site
-        const dayName = document.getElementById(`day${index+1}-name`)
+        const dayName = document.getElementById(`day${index + 1}-name`)
 
         //Calculates the new date from milliseconds to a readeble day date...
         const dayDate = new Date(day.dt * 1000)
-        
+
         // ... and calculate witch day it is and gives it a shorter name
         const dayString = dayDate.toLocaleDateString('en-US', {
             weekday: 'short'
-        
+
         })
-        
+
         // Show the name of the day on the site
         dayName.innerHTML = dayString
 
         //the icon is selected from the API. 
-        const dayIcon = document.getElementById(`day${index+1}-icon`)
+        const dayIcon = document.getElementById(`day${index + 1}-icon`)
 
 
         dayIcon.src = `images/${day.weather[0].icon}.png`
 
-        
-        const tempDay = document.getElementById(`day${index+1}-temp`)
+
+        const tempDay = document.getElementById(`day${index + 1}-temp`)
 
 
         tempDay.innerHTML = `${Math.round(day.main.temp)}°`
 
-        
+
     })
 
-    
-    
+
+
 
 
 
