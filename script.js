@@ -1,6 +1,6 @@
 
 //API KEY 
-const apiKey = "54a820a4b63e82050a15212c06998bb0";
+const apiKey = '54a820a4b63e82050a15212c06998bb0';
 
 //API Stockholm 
 const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${apiKey}`;
@@ -19,24 +19,13 @@ const apiUrlBerlin = `https://api.openweathermap.org/data/2.5/weather?q=Berlin,G
 const apiUrlForecastBerlin= `https://api.openweathermap.org/data/2.5/forecast?q=Berlin,Germany&units=metric&APPID=${apiKey}`;
 
 
-
 const nameContainer = document.getElementById('name');
 const tempContainer = document.getElementById('temperature');
 const sortContainer = document.getElementById('sort');
 const sunriseContainer = document.getElementById('sunrise');
 const sunsetContainer = document.getElementById('sunset');
 const forecastContainer = document.getElementById('forecast')
-
-
-
-//Console.log test 
-fetch(apiUrl)
-    .then((Response) => { 
-        return Response.json()
-    })
-    .then ((json) => {
-    console.log(json)   
- })    
+ 
  
 //NAME OF CITY, TEMPERATURE, SORT OF WEATHER, SUNRISE, SUNSET
 
@@ -64,7 +53,7 @@ fetch(apiUrl)
     })
     .catch((error) => {
         console.log(error) 
-     }) ;
+});
 
 
 //WEATHER FORECAST 
@@ -81,7 +70,7 @@ fetch(apiUrlForecast)
 
         filteredForecast.forEach(item  => {
             let date = new Date(item.dt * 1000);
-            let dayName = date.toLocaleDateString("en-US", { weekday: "long" });
+            let dayName = date.toLocaleDateString('en-US', { weekday: 'long' });
             const dayTemp = item.main.temp;
             const weekTemp = dayTemp.toFixed(0.1);
 
@@ -98,7 +87,7 @@ fetch(apiUrlForecast)
  const nameContainerOslo = document.getElementById('nameOslo');
  const tempContainerOslo = document.getElementById('temperatureOslo');
  const forecastContainerOslo = document.getElementById('forecastOslo');
- const osloIcon = document.getElementById('todaysWeatherIconOslo')
+ const osloIcon = document.getElementById('todaysWeatherIconOslo');
 
 //NAME OF CITY, TEMPERATURE
 
@@ -114,7 +103,7 @@ fetch(apiUrlOslo)
     })
     .catch((error) => {
         console.log(error) 
-     }) ;
+});
  
 
 //TODAYS WEATHER AND ICON
@@ -126,7 +115,7 @@ fetch(apiUrlForecastOslo)
     .then ((json) => {
         console.log(json)
         const filteredForecastOslo = json.list.filter(item =>
-        item.dt_txt.includes("12:00")
+        item.dt_txt.includes('12:00')
         );
         filteredForecastOslo.forEach(day => {
             let date = new Date(day.dt * 1000);
@@ -159,20 +148,20 @@ fetch(apiUrlAlicante)
     })
     .catch((error) => {
         console.log(error) 
-     });
+});
 
 //TODAYS WEATHER AND ICON
+
      fetch(apiUrlForecastAlicante)
      .then((Response) => { 
          return Response.json()
      })
      .then ((json) => {
          const filteredForecastAlicante = json.list.filter(item =>
-         item.dt_txt.includes("12:00")
+         item.dt_txt.includes('12:00')
          );
          filteredForecastAlicante.forEach(day => {
              let date = new Date(day.dt * 1000);
-             //let dayName = date.toLocaleDateString("en-US", { weekday: "long" });
              const dayTemp = day.main.temp;
              const weekTemp = dayTemp.toFixed(0.1);
              AlicanteIcon.innerHTML = `<img src=https://openweathermap.org/img/wn/${json.list[1].weather[0].icon}@2x.png></img>` 
@@ -201,16 +190,17 @@ fetch(apiUrlBerlin)
     })
     .catch((error) => {
         console.log(error) 
-     });
+});
 
 //TODAYS WEATHER AND ICON
+
      fetch(apiUrlForecastBerlin)
      .then((Response) => { 
          return Response.json()
      })
      .then ((json) => {
          const filteredForecastBerlin = json.list.filter(item =>
-         item.dt_txt.includes("12:00")
+         item.dt_txt.includes('12:00')
          );
          filteredForecastBerlin.forEach(day => {
              let date = new Date(day.dt * 1000);
