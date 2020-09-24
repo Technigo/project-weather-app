@@ -20,6 +20,7 @@ const weatherForecastContainer = document.getElementById("weather-forecast-conta
 const currentWeatherMain = document.getElementById("current-main");
 const navBar = document.getElementById("nav-bar");
 const hamburgerMenu = document.getElementById("hamburger-menu")
+const loading = document.getElementById("loading")
 
 // Getting current geo location
 
@@ -31,24 +32,40 @@ let geoLocationDailyAPI = ''
 
 const getLocationAPI = (callback) => {
 
-     const getLocation = () => {
+    const getLocation = () => {
          if (navigator.geolocation) {
-             navigator.geolocation.getCurrentPosition(setCoordinates); 
+             navigator.geolocation.getCurrentPosition(setCoordinates, handleError); 
          } else {
             showCurrentWeather(StockholmAPI);
             showWeatherForecast(StockholmForecastAPI);
          }
-     }
-     const setCoordinates = (position) => {
+    }
+    const setCoordinates = (position) => {
          lat = position.coords.latitude
          lon = position.coords.longitude
          geoLocationAPI = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723&lang=sv`
          geoLocationForcastAPI = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723`
          geoLocationDailyAPI = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723`
          callback();
-     }
-     
-     getLocation();
+    }
+    
+    const handleError = (error) => {
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                showCurrentWeather(StockholmAPI);
+                showWeatherForecast(stockholmDailyAPI);
+                break;
+            case error.POSITION_UNAVAILABLE:
+                showCurrentWeather(StockholmAPI);
+                showWeatherForecast(stockholmDailyAPI);
+                break;
+            case error.TIMEOUT:
+                showCurrentWeather(StockholmAPI);
+                showWeatherForecast(stockholmDailyAPI);
+                break;
+        }
+    }
+    getLocation();
      
 }
 
@@ -85,6 +102,7 @@ const showNavBar = () => {
 //Fetches the API and shows the data of today's weather
 
 const showCurrentWeather = (API) => {
+    loading.style.display = "none";
     showNavBar();
     fetch(API)
         .then((respons) => {
@@ -123,7 +141,7 @@ const showCurrentWeather = (API) => {
                 }
             }
             setWeatherColors();
-            currentWeatherContainer.innerHTML = `<p>Today</p><h1>${weatherTemp}<sup>&degC</sup></h1><h2>${weather.name}</h2><p>${weatherDescription}</p><div class="sun"><p>Sunrise: ${sunriseString} </p> <p>Sunset: ${sunsetString} </p></div>`
+            currentWeatherContainer.innerHTML = `<p>Idag</p><h1>${weatherTemp}<sup>&degC</sup></h1><h2>${weather.name}</h2><p>${weatherDescription}</p><div class="sun"><p>Sunrise: ${sunriseString} </p> <p>Sunset: ${sunsetString} </p></div>`
         })
 
 
