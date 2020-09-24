@@ -20,6 +20,11 @@ body {
     flex-direction: column;
     justify-content: center;
     height: 400px;
+    background: #47904d;
+    background-image: linear-gradient(#47904d, #47904d);
+    border-bottom-left-radius: 50% 20%;
+    border-bottom-right-radius: 50% 20%;
+    color: white;
 }
 
 .city-selector {
@@ -69,6 +74,11 @@ body {
     text-align: right;
 }
 
+.wind-dir{
+    width: 10px !important;
+    display: none;
+}
+
 .day-temp img {
     height: 30px;
     padding: 0 15px 0 0;
@@ -87,6 +97,10 @@ img {
 
 @media (min-width: 481px){
     .tablet {
+        display: block;
+    }
+
+    .wind-dir {
         display: block;
     }
 }
