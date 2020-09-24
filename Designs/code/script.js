@@ -3,29 +3,53 @@ const apiLysekilToday = "https://api.openweathermap.org/data/2.5/weather?q=Lysek
 console.log(apiLysekilToday);
 
 //Forecast api
-const apiLysekilForecast = "https://api.openweathermap.org/data/2.5/forecast?q=Lysekil&appid=de78a234a90e490fde95f979d2491105";
+const apiLysekilForecast = "https://api.openweathermap.org/data/2.5/forecast?q=Lysekil,Sweden&units=metric&appid=de78a234a90e490fde95f979d2491105";
 console.log(apiLysekilForecast);
 
-/*let weatherImage = (icon) => {
-if (icon > 800)
-    let figure = 'Design-2/icons/noun_Cloud_1188486.svg';
-    return figure;
+// The function returns a color depending on the temperature 
+coloringFunction = (temp) => {
+    if (temp > 30.0) {
+        return "#ed743b";
 
-} else {
-    let figure = 'Design-2/icons/noun_Umbrella_203053';
-}
-};*/
+    } else if (temp > 20.0) {
+        return "#deb045";
 
-/*let backgroundColor = (icon) => {
-    if (icon < 500){
-    document.body.style.backgroundColor = 'orange';
-    return figure;
-}  
-    else { 
-    document.body.style.backgroundColor = 'lightblue';
-    return figure;
-}
-};*/
+    } else if (temp > 10.0) {
+        return "#56d6b2";
+
+    } else if (temp > 0.0) {
+        return "#51c9b7";
+
+    } else if (temp < 0.0) {
+        return "#72c8db";
+
+    } else {
+        return "#e84a2e";
+    }
+};
+
+weatherMessage = (temp) => {
+    if (temp > 30.0) {
+        return "Don't forget sunprotection and glasses to";
+
+    } else if (temp > 20.0) {
+        return "It's gonna be warm in";
+
+    } else if (temp > 10.0) {
+        return "You better bring a jacket to";
+
+    } else if (temp > 0.0) {
+        return "Get properly dressed in";
+
+    } else if (temp < 0.0) {
+        return "Brr the winter is here in";
+
+    } else {
+        return "You will be on fire in";
+    }
+};
+
+const todaysLysekil = document.getElementById('todaysLysekil');
 
 //Todays weather api  
 fetch(apiLysekilToday).then((response) => {
@@ -33,29 +57,22 @@ fetch(apiLysekilToday).then((response) => {
 }).then((json) => {
     console.log(json)
 
-    todaysLysekil.innerHTML = `<h2>In ${json.name} there are ${json.main.temp}° and ${json.weather[0].description} today.</h2>`;
+    // Delaring the icon
+    const icon = `<img src=http://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png></img>`;
+    // Removes decimals from todays temperature 
+    json.main.temp = json.main.temp.toFixed(0)
 
-        let sunrise = (new Date(json.sys.sunrise * 1000).toLocaleTimeString("en-US", { timeStyle: "short" }));
-        let sunset = (new Date(json.sys.sunset * 1000).toLocaleString("en-US", { timeStyle: "short" }));
+    // Displays the main text of todays weather 
+    todaysLysekil.innerHTML = `${icon}<h2>${weatherMessage(json.main.temp)} ${json.name}, it will be ${json.main.temp}° and ${json.weather[0].description} today.</h2>`;
 
-    daytime.innerHTML = `Sunset ${sunrise} Sunset ${sunset}`;
+    // Displays time for sunrise and sunset and changing it to english timings
+    let sunrise = (new Date(json.sys.sunrise * 1000).toLocaleTimeString("en-US", { timeStyle: "short" }));
+    let sunset = (new Date(json.sys.sunset * 1000).toLocaleString("en-US", { timeStyle: "short" }));
 
-    coloringFunction = () => {
-                    if (json.main.temp > 30.0) {
-                            document.body.style.backgroundColor =  "#ed743b";
-                    } else if (json.main.temp > 20.0) {
-                            document.body.style.backgroundColor = "#deb045";
-                    } else if (json.main.temp > 10.0) {
-                            document.body.style.backgroundColor =  "#56d6b2";
-                    } else if  (json.main.temp > 0.0) {
-                            document.body.style.backgroundColor = "#51c9b7";
-                    } else if (json.main.temp < 0.0) {
-                            document.body.style.backgroundColor = "#72c8db";
-                    } else {
-                            document.body.style.backgroundColor =  "#e84a2e";
-                    }
-                };
-    coloringFunction();
+    daytime.innerHTML = `Sunrise ${sunrise} - Sunset ${sunset}`;
+
+    // Assign the returned color to become background color
+    document.body.style.backgroundColor = coloringFunction(json.main.temp);
 })
 
 //Forecast api
@@ -68,12 +85,14 @@ fetch(apiLysekilForecast).then((response) => {
 
         console.log(filteredForecast)
         filteredForecast.forEach(item => {
-            let temperature = (item.main.temp - 273.15).toFixed(1);
-            var icon = item.weather[0].id;
+            let temperature = (item.main.temp).toFixed(1);
+            //* Multiply by 1000 because the data is given to us in UNIX which is in seconds, but Javascript uses milliseconds internally, this way we get the right date. */
             let weekday = (new Date(item.dt * 1000)).toLocaleDateString("en-US", { weekday: "short" })
+            // Adding icon code from API 
+            let icon = `<img src=http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png></img>`;
 
-           // let figure = backgroundColor(icon);
-            forecastLysekil.innerHTML += `<p>${weekday} ${temperature}&#8451;</p>`;
+            // let figure = backgroundColor(icon);
+            forecastLysekil.innerHTML += `<p>${weekday} ${temperature}&#8451;</p> ${icon} `;
 
         });
     });
