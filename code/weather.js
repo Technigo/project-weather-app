@@ -1,30 +1,43 @@
+window.onload = function exampleFunction() { 
+    getLatLong("Stockholm"); 
+} 
+
 const changeCity = () => {
     let city = document.getElementById("city-label").value 
-    document.getElementById("city").innerHTML = city;
-    fetchWeather(city)
+    getLatLong(city)
 }
 
 const getLocation = () => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(getLatLongCurrent);
+      navigator.geolocation.getCurrentPosition(getCity);
     } else { 
       console.log("Geolocation is not supported by this browser.");
     }
 
 }
 
-const getLatLongCurrent = (position) => {
+const getCity = (position) => {
     console.log(position.coords.latitude)
     console.log(position.coords.longitude)
-    fetchForecast(position.coords.latitude, position.coords.longitude)
+    const lat = position.coords.latitude
+    const lon = position.coords.longitude
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=7d01b328e34c450986cb7faef032a771`)
+    .then(response => response.json())
+        .then(forecast => {
+            document.getElementById("city").innerHTML = forecast.city.name
+            fetchForecast(lat, lon)
+    });
 }
 
-const getLatLong = (forecast) => {
-    const lat = forecast.coord.lat
-    console.log(lat)
-    const lon = forecast.coord.lon
-    console.log(lon)
-    fetchForecast(lat, lon)
+const getLatLong = (city) => {
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},Sweden&units=metric&APPID=7d01b328e34c450986cb7faef032a771`)
+    .then(response => response.json())
+        .then(forecast => {
+            const lat = forecast.coord.lat
+            const lon = forecast.coord.lon
+            document.getElementById("city").innerHTML = forecast.name
+            fetchForecast(lat, lon)
+    });
 }
 
 const fetchWeather = (city) => {
@@ -39,23 +52,8 @@ const fetchWeather = (city) => {
     });
 };
 
-const getDayOfWeek = (dayOfWeek) => {
-  return isNaN(dayOfWeek)
-    ? null
-    : [
-        "Sun",
-        "Mon",
-        "Tue",
-        "Wed",
-        "Thu",
-        "Fri",
-        "Sat",
-      ][dayOfWeek];
-};
-
 const fetchForecast = (lat, lon) => {
   return fetch(
-    // `https://api.openweathermap.org/data/2.5/onecall?lat=59.3326&lon=18.0649&%20exclude=current,minutely,hourly&appid=7d01b328e34c450986cb7faef032a771&units=metric`
     `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&%20exclude=current,minutely,hourly&appid=7d01b328e34c450986cb7faef032a771&units=metric`
   )
     .then((response) => {
@@ -66,19 +64,26 @@ const fetchForecast = (lat, lon) => {
     });
 };
 
-const getIcon = (desc) => {
-  /*let imgsrc;
-  console.log(desc);
-  if (desc == "Clouds") return (imgsrc = "clouds.png");
-  else return (imsrc = "clear.png");*/
-};
+const getDayOfWeek = (dayOfWeek) => {
+    return isNaN(dayOfWeek)
+      ? null
+      : [
+          "Sun",
+          "Mon",
+          "Tue",
+          "Wed",
+          "Thu",
+          "Fri",
+          "Sat",
+        ][dayOfWeek];
+  };
 
 const sthlmForecast = (forecast) => {
   //get current city
-  const currentCity = forecast.timezone.split("/")[1]
-  const currentCityHTML = document.getElementById("city")
-  currentCityHTML.innerHTML == "" ? currentCityHTML.innerHTML = currentCity : currentCityHTML.innerHTML += "";
-  let citySet = true;
+//   const currentCity = forecast.timezone.split("/")[1]
+//   const currentCityHTML = document.getElementById("city")
+//   currentCityHTML.innerHTML == "" ? currentCityHTML.innerHTML = currentCity : currentCityHTML.innerHTML += "";
+//   let citySet = true;
   //currentCityHTML.innerHTML = currentCity
 
   //get current temp
@@ -124,7 +129,6 @@ const sthlmForecast = (forecast) => {
     daysInForecast[index].querySelector(".day-temp").innerHTML = `<img src='${day.weather[0].icon}@2x.png'>   `;
     daysInForecast[index].querySelector(".day-temp").innerHTML += `<span>${Math.round(day.temp.min)} / ${Math.round(day.temp.max)}</span>`;
   })
-  
 
 
 /*
