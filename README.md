@@ -25,3 +25,4 @@ is alot of repeating code and the project would be much better with another stru
 ## View it live
 
 Here you can look at the finished project: 
+https://sunnydaysplease.netlify.app/
