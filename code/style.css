@@ -13,6 +13,7 @@ Yellow:  #F6C844 */
     box-sizing: border-box;
     margin: 0;
     /* border: 1px dashed salmon; */
+    font-size: 19px;
 }
 
 html {
@@ -36,16 +37,21 @@ body {
 
 /* THIS IS THE GUY THAT HOLDS EVERYTHING IN PLACE */
 .container {
-  border: 1px solid rgba(255,255,255,1);
-  width: 375px;
-  height: 667px;
+  /* border: 1px solid rgba(255,255,255,1); */
+  width: 100%;
+  /* height: 667px; */
   margin: auto;
-  margin-top: 5%;
+  /* margin-top: 5%; */
   display: flex;
   flex-direction: column;
   align-content: space-between;
   position: relative;
   overflow: hidden;
+  position: fixed;
+  top: 0;
+  /* right: 0; */
+  bottom: 0;
+  /* left: 0; */ */
 }
 
 /* =================== everything here =================== */
@@ -54,11 +60,17 @@ body {
 header {
   background-color: white;
   /* border: 1px dashed salmon; */
-  height: 74px;
-  display: flex;
-  align-items: center;
+  height: 74px;  
   color: #0C60F2;
   padding: 16px;
+}
+
+.header-content {
+  max-width: 375px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  /* border: 1px dashed hotpink; */
 }
 
 .header-location {
@@ -117,12 +129,41 @@ button img {
 
 main {
   /* border: 1px dashed aquamarine; */
-  height: auto;
+  /* height: auto; */
+  display: flex;
   flex-grow: 1;
+  padding: 16px;
+}
+
+.main-content {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 16px;
+  flex-grow: 1;
+  max-width: 375px;
+  margin: 0 auto;
+}
+
+.image-hero-weather-container {
+  animation: MoveUpDown 4s ease-in-out infinite;
+  position: absolute;
+  /* top: 100px; */
+  right: -20px;
+  z-index: -1;
+}
+
+@keyframes MoveUpDown {
+  0%, 100% {
+    top: 100px;
+  }
+  50% {
+    top: 140px;
+  }
+}
+
+.image-hero-weather-container img {
+  width: 250px;
+  height: 250px;
 }
 
 .main-weather-top {
@@ -157,13 +198,6 @@ main {
   margin-right: 24px;
 }
 
-.image-hero-weather {
-  position: absolute;
-  top: 90px;
-  right: -20px;
-  z-index: -1;
-}
-
 
 .main-weather-bottom {
   /* border: 1px dashed sandybrown; */
@@ -172,20 +206,13 @@ main {
 .temp-big {
   font-size: 167px;
   font-weight: 100;
-  margin-bottom: -20px;
-  line-height: 10px;
+  line-height: 150px;
 }
 
-/* .temp-big-but-slightly-smaller {
+/* .temp-big-but-slightly-smaller (This is the celsius sign) {
   font-size: 35px;
   font-weight: 400;
 } */
-
-
-
-
-
-
 
 
 footer {
@@ -193,15 +220,20 @@ footer {
   height: 212px;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .footer-top {
-  height: 26px;
+  height: 24px;
+  background-image: url(./assets/clouds-top-border.svg);
+  background-repeat: repeat;
+  background-size: contain;
 }
 
-.footer-top img {
+/* .footer-top img {
   width: 100%;
-}
+  
+} */
 
 .footer-main {
   background-color: white;
@@ -238,4 +270,50 @@ svg {
   /* border: 1px dashed hotpink; */
   width: 30%;
   text-align: right;
+}
+
+.forecast-box {
+  max-width: 375px;
+  margin: 0 auto;
+}
+
+
+
+
+/* ===================== */
+
+/* 
+Breakpoints:
+<600      SMARTPHONE
+600-1024  TABLET
+>1024     DESKTOP
+*/
+
+
+/* "The one key thing to remember when trying to position a child div relative to it’s parent is that the child should be given the CSS property position:absolute; and the parent set to either position:absolute; or position:relative;" */
+
+
+@media only screen and (min-width: 407px) {
+  /* For desktop: */
+
+.main-content {
+  position: relative;
+}
+
+main {
+  max-height: 580px;
+}
+
+footer {
+  flex-grow: 1;
+}
+
+.image-hero-weather-container {
+  position: absolute;
+  top: 5%;
+  right: -20px;
+  z-index: -1;
+}
+
+
 }
