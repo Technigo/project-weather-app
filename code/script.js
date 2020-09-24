@@ -6,7 +6,8 @@ console.log(typeof input.value);
 let cityName = 'Stockholm'; // ändra till geolocation sen
 let API_URL_TODAY = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${API_KEY}`;
 let API_URL_FORECAST = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&APPID=${API_KEY}`;
-//const mainContainer = document.getElementById('main-container');
+
+console.log(wrapper);
 
 button.addEventListener('click', () => {
   const inputValue = input.value;
@@ -49,7 +50,6 @@ const fetchWeatherForecast = (url) => {
       forecasts.forEach((item, index) => {
         forecastContainer[index].querySelector('.day').innerText = item.day;
         forecastContainer[index].querySelector('.date').innerText = item.date;
-        console.log(forecastContainer[index].querySelector('.icon'));
         forecastContainer[index].querySelector('.icon').src = item.iconSrc;
         forecastContainer[index].querySelector(
           '.temperature'
@@ -63,34 +63,26 @@ const fetchWeatherToday = (url) => {
     .then((response) => response.json())
     .then((weatherArray) => {
       console.log(weatherArray);
-
-      // const forecasts = filteredArray.map((forecast) => {
-      //   const day = setDayDate(forecast.dt).forecastDayString;
-      //   const date = setDayDate(forecast.dt).forecastDateString;
-      //   const iconSrc = `http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
-      //   const temperature = temperatureRounded(forecast.main.temp);
-      //   const feelsLike = temperatureRounded(forecast.main.feels_like);
-      //   return { day, date, iconSrc, temperature, feelsLike };
-      // });
-
-      //map to create new and filtered array of today's weather
       //const weathers = weatherArray.list.map((weather) => {
       const temperature = temperatureInteger(weatherArray.main.temp);
       console.log(temperature);
       const city = weatherArray.name;
       const description = weatherArray.weather[0].main;
       const icon = `http://openweathermap.org/img/wn/${weatherArray.weather[0].icon}@2x.png`;
-      console.log(icon);
+      const date = new Date(weatherArray.dt * 1000);
+      console.log(date);
+      const hour = date.getHours();
+      console.log(hour, description);
       const sunrise = setSunTime(weatherArray.sys.sunrise);
       const sunset = setSunTime(weatherArray.sys.sunset);
-      //return { city, description, sunrise, sunset };
-      //  });
+      setBackground(hour, description, sunrise, sunset);
+      console.log(hour, description);
       document.getElementById(
         'main-temperature'
       ).innerHTML = `${temperature}\u00B0`;
       document.getElementById('main-city').innerHTML = city;
       document.getElementById('main-description').innerHTML = description;
-      document.getElementById('main-icon').src = icon;
+      // document.getElementById('main-icon').src = icon;
       document.getElementById('sunrise').innerHTML = sunrise;
       document.getElementById('sunset').innerHTML = sunset;
     });
@@ -177,7 +169,6 @@ const setSunTime = (time) => {
 
 const setDayDate = (date) => {
   const forecastDate = new Date(date * 1000);
-  console.log(forecastDate);
   const forecastDayString = forecastDate.toLocaleDateString('en-US', {
     weekday: 'short',
   });
@@ -186,6 +177,55 @@ const setDayDate = (date) => {
     day: 'numeric',
   });
   return { forecastDayString, forecastDateString };
+};
+
+const setBackground = (time, description, sunrise, sunset) => {
+  console.log(
+    'inside setBackground ' + typeof time,
+    description,
+    sunrise,
+    sunset
+  );
+  const wrapper = document.getElementById('wrapper');
+  sunrise = parseInt(sunrise);
+  sunset = parseInt(sunset);
+  console.log(sunrise, sunset);
+  // if (time > sunrise || time < sunset) {
+  //   console.log('21');
+  // }
+  if (time >= sunrise && time <= sunset) {
+    console.log('inside first if');
+    if (description === 'Clear') {
+      wrapper.style.backgroundImage = 'url(./assets/clear-day-medium.jpg)';
+    } else if (description === 'Clouds') {
+      wrapper.style.backgroundImage = 'url(./assets/clouds-day-medium.jpg)';
+    } else if (description === 'Rain' || description === 'Drizzle') {
+      wrapper.style.backgroundImage = 'url(./assets/rain-day-medium.jpg)';
+    } else if (description === 'Thunderstorm') {
+      wrapper.style.backgroundImage = 'url(./assets/thunder-day-medium.jpg)';
+    } else if (description === 'Snow') {
+      wrapper.style.backgroundImage = 'url(./assets/snow-day-medium.jpg)';
+    } else if (description === 'Mist' || description === 'Fog') {
+      wrapper.style.backgroundImage = 'url(./assets/mist-day-medium.jpg)';
+    }
+  } else if (time >= sunset || time <= sunrise) {
+    console.log('inside second if');
+    console.log(description);
+    if (description === 'Clear') {
+      wrapper.style.backgroundImage = 'url(./assets/clear-night-medium.jpg)';
+    } else if (description === 'Clouds') {
+      console.log('inside Clouds');
+      wrapper.style.backgroundImage = 'url(./assets/clouds-night-medium.jpg)';
+    } else if (description === 'Rain' || description === 'Drizzle') {
+      wrapper.style.backgroundImage = 'url(./assets/rain-night-medium.jpg)';
+    } else if (description === 'Thunderstorm') {
+      wrapper.style.backgroundImage = 'url(./assets/thunder-night-medium.jpg)';
+    } else if (description === 'Snow') {
+      wrapper.style.backgroundImage = 'url(./assets/snow-night-medium.jpg)';
+    } else if (description === 'Mist' || description === 'Fog') {
+      wrapper.style.backgroundImage = 'url(./assets/mist-night-medium.jpg)';
+    }
+  }
 };
 
 // const formateDateAndTime = (date) => {

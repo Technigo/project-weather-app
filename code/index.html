@@ -16,7 +16,7 @@
     />
   </head>
   <body>
-    <section class="wrapper">
+    <section id="wrapper" class="wrapper">
       <!-- SEARCH SECTION -->
       <section class="search-container">
         <input id="input" type="text" />
@@ -30,9 +30,9 @@
           <h2 class="main-city" id="main-city"></h2>
           <h3 class="main-description" id="main-description"></h3>
         </div>
-        <div class="main-icon">
+        <!-- <div class="main-icon">
           <img src="" alt="" id="main-icon" />
-        </div>
+        </div> -->
         <div class="main-sun">
           <div class="half-circle-container">
             <div class="half-circle"></div>
@@ -50,44 +50,64 @@
       <!-- FORECAST SECTION -->
       <section class="forecast-container">
         <article class="forecast-item">
-          <div class="forecast-date">
+          <div class="item forecast-date">
             <p class="day"></p>
             <p class="date"></p>
           </div>
-          <img class="icon" src="" alt="weather icon" />
-          <p class="temperature"></p>
+          <div class="item">
+            <img class="icon" src="" alt="weather icon" />
+          </div>
+          <div class="item">
+            <p class="temperature"></p>
+          </div>
         </article>
         <article class="forecast-item">
-          <div class="forecast-date">
+          <div class="item forecast-date">
             <p class="day"></p>
             <p class="date"></p>
           </div>
-          <img src="" class="icon" alt="weather icon" />
-          <p class="temperature"></p>
+          <div class="item">
+            <img src="" class="icon" alt="weather icon" />
+          </div>
+          <div class="item">
+            <p class="temperature"></p>
+          </div>
         </article>
         <article class="forecast-item">
-          <div class="forecast-date">
+          <div class="item forecast-date">
             <p class="day"></p>
             <p class="date"></p>
           </div>
-          <img class="icon" src="" alt="weather icon" />
-          <p class="temperature"></p>
+          <div class="item">
+            <img class="icon" src="" alt="weather icon" />
+          </div>
+          <div class="item">
+            <p class="temperature"></p>
+          </div>
         </article>
         <article class="forecast-item">
-          <div class="forecast-date">
+          <div class="item forecast-date">
             <p class="day"></p>
             <p class="date"></p>
           </div>
-          <img class="icon" src="" alt="weather icon" />
-          <p class="temperature"></p>
+          <div class="item">
+            <img class="icon" src="" alt="weather icon" />
+          </div>
+          <div class="item">
+            <p class="temperature"></p>
+          </div>
         </article>
         <article class="forecast-item">
-          <div class="forecast-date">
+          <div class="item forecast-date">
             <p class="day"></p>
             <p class="date"></p>
           </div>
-          <img class="icon" src="" alt="weather icon" />
-          <p class="temperature"></p>
+          <div class="item">
+            <img class="icon" src="" alt="weather icon" />
+          </div>
+          <div class="item">
+            <p class="temperature"></p>
+          </div>
         </article>
       </section>
     </section>
