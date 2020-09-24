@@ -14,6 +14,17 @@ const dayThreeElement = document.getElementById("dayThree")
 const dayFourElement = document.getElementById("dayFour")
 const dayFiveElement = document.getElementById("dayFive")
 
+/* QUESTIONS FOR 1:1 
+
+1. I want the short weekday name in English from the forecast data - how do I do that? 
+   Managed to get the weekday number (or with toLocaleString the full date and time string - removed as of now).
+   See generateForecast() and handleDay().
+   
+2. I got the icon from the API to work, but there must be a better way to handle this in html and js than my solution.. 
+   Also, how do I change the size of the icon? Probably by styling the image in css, but right now I have a p element in html which gets its image content from js.
+   See generateWeather() and <p id="icon"> in html.
+*/
+
 fetch(weatherUrl)
     .then((response) => {
         return response.json()
@@ -76,7 +87,7 @@ const generateForecast = forecast => {
 const handleDay = day => { // want only short day name in english
     const forecastDate = new Date(day * 1000)
     return forecastDay = forecastDate.getDay()
-    // make array with weekdays? must be js built in function for this..
+    // create array with weekdays? must be js built in function for this..
 }
 
 const getIcon = icon => { // YES!! I made the icon work! Without having to do endless conditionals based on weather/temperature..
