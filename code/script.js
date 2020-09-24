@@ -1,5 +1,5 @@
 import { API_KEY } from './api.js';
-const forecastContainer = document.getElementsByClassName('forecasts');
+const forecastContainer = document.getElementsByClassName('forecast-item');
 const button = document.getElementById('search-button');
 const input = document.getElementById('input');
 console.log(typeof input.value);
@@ -21,7 +21,6 @@ button.addEventListener('click', () => {
 
   console.log(cityName);
   fetchWeatherToday(API_URL_TODAY);
-  console;
   fetchWeatherForecast(API_URL_FORECAST);
   console.log(cityName);
   input.value = '';
@@ -186,10 +185,7 @@ const setDayDate = (date) => {
     month: 'short',
     day: 'numeric',
   });
-  return {
-    forecastDayString,
-    forecastDateString,
-  };
+  return { forecastDayString, forecastDateString };
 };
 
 // const formateDateAndTime = (date) => {
@@ -212,6 +208,37 @@ const setDayDate = (date) => {
 //     formatTime,
 //   };
 // };
+
+// const hourNow = new Date().getHours();
+// const calculateHour = (currentHour) => {
+//   if (currentHour > 0 && currentHour < 3) {
+//     return '00:00';
+//   } else if (currentHour > 3 && currentHour < 6) {
+//     return '03:00';
+//   } else if (currentHour > 6 && currentHour < 9) {
+//     return '06:00';
+//   } else if (currentHour > 9 && currentHour < 12) {
+//     return '09:00';
+//   } else if (currentHour > 12 && currentHour < 15) {
+//     return '12:00';
+//   } else if (currentHour > 15 && currentHour < 18) {
+//     return '15:00';
+//   } else if (currentHour > 18 && currentHour < 21) {
+//     return '18:00';
+//   } else if (currentHour > 21 && currentHour < 00) {
+//     return '21:00';
+//   }
+// };
+// fetch(
+//   'http://api.openweathermap.org/data/2.5/forecast?q=stockholm&appid=a422826e5990e7c36cbb837c78c405fa'
+// )
+//   .then((response) => response.json())
+//   .then((forecast) => {
+//     const filteredForecast = forecast.list.filter((item) => {
+//       return item.dt_txt.includes(calculateHour(hourNow));
+//     });
+//     console.log(filteredForecast);
+//   });
 
 const filterForecast = (forecastArray) => {
   const filteredForecast = forecastArray.list.filter((item) =>

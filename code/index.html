@@ -17,74 +17,79 @@
   </head>
   <body>
     <section class="wrapper">
+      <!-- SEARCH SECTION -->
       <section class="search-container">
         <input id="input" type="text" />
         <button id="search-button"><i class="fa fa-search"></i></button>
       </section>
 
-      <main id="main-wrapper" class="main-wrapper">
-        <section class="main-container">
-          <div class="main-weather-container">
-            <h1 class="main-temperature" id="main-temperature"></h1>
-            <h2 class="main-city" id="main-city"></h2>
-            <h3 class="main-description" id="main-description"></h3>
+      <!-- MAIN SECTION -->
+      <main class="main-container">
+        <div class="main-weather">
+          <h1 class="main-temperature" id="main-temperature"></h1>
+          <h2 class="main-city" id="main-city"></h2>
+          <h3 class="main-description" id="main-description"></h3>
+        </div>
+        <div class="main-icon">
+          <img src="" alt="" id="main-icon" />
+        </div>
+        <div class="main-sun">
+          <div class="half-circle-container">
+            <div class="half-circle"></div>
           </div>
-          <div class="main-icon-container">
-            <img src="" alt="" id="main-icon" />
+          <div class="sunrise-container">
+            <h3 id="sunrise"></h3>
           </div>
-        </section>
-        <section class="sun-container">
-          <h3 id="sunrise"></h3>
-          <h3 id="sunset"></h3>
-        </section>
+          <div class="sunset-container">
+            <h3 id="sunset"></h3>
+          </div>
+        </div>
         <a href="#" class="button"><i class="arrow"></i></a>
       </main>
-      <section id="forecastContainer" class="forecast-container"></section>
-    </section>
 
-    <!-- FORECAST SECTION -->
-    <section class="forecast-wrapper">
-      <article class="forecasts">
-        <!-- <div class="day-date"> -->
-        <p class="day"></p>
-        <p class="date"></p>
-        <!-- </div> -->
-        <img class="icon" src="" alt="weather icon" />
-        <p class="temperature"></p>
-      </article>
-      <article class="forecasts">
-        <div class="day-date">
-          <p class="day"></p>
-          <p class="date"></p>
-        </div>
-        <img src="" class="icon" alt="weather icon" />
-        <p class="temperature"></p>
-        <p class="feels-like"></p>
-      </article>
-      <article class="forecasts">
-        <div class="day-date">
-          <p class="day"></p>
-          <p class="date"></p>
-        </div>
-        <img class="icon" src="" alt="weather icon" />
-        <p class="temperature"></p>
-      </article>
-      <article class="forecasts">
-        <div class="day-date">
-          <p class="day"></p>
-          <p class="date"></p>
-        </div>
-        <img class="icon" src="" alt="weather icon" />
-        <p class="temperature"></p>
-      </article>
-      <article class="forecasts">
-        <div class="day-date">
-          <p class="day"></p>
-          <p class="date"></p>
-        </div>
-        <img class="icon" src="" alt="weather icon" />
-        <p class="temperature"></p>
-      </article>
+      <!-- FORECAST SECTION -->
+      <section class="forecast-container">
+        <article class="forecast-item">
+          <div class="forecast-date">
+            <p class="day"></p>
+            <p class="date"></p>
+          </div>
+          <img class="icon" src="" alt="weather icon" />
+          <p class="temperature"></p>
+        </article>
+        <article class="forecast-item">
+          <div class="forecast-date">
+            <p class="day"></p>
+            <p class="date"></p>
+          </div>
+          <img src="" class="icon" alt="weather icon" />
+          <p class="temperature"></p>
+        </article>
+        <article class="forecast-item">
+          <div class="forecast-date">
+            <p class="day"></p>
+            <p class="date"></p>
+          </div>
+          <img class="icon" src="" alt="weather icon" />
+          <p class="temperature"></p>
+        </article>
+        <article class="forecast-item">
+          <div class="forecast-date">
+            <p class="day"></p>
+            <p class="date"></p>
+          </div>
+          <img class="icon" src="" alt="weather icon" />
+          <p class="temperature"></p>
+        </article>
+        <article class="forecast-item">
+          <div class="forecast-date">
+            <p class="day"></p>
+            <p class="date"></p>
+          </div>
+          <img class="icon" src="" alt="weather icon" />
+          <p class="temperature"></p>
+        </article>
+      </section>
     </section>
     <script defer type="module" src="./script.js"></script>
   </body>
