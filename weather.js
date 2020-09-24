@@ -1,11 +1,12 @@
 const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=8b97619989976c72fc1e602d8c793890';
+const apiUrl2 = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=8b97619989976c72fc1e602d8c793890';
 
 
-
+//Current weather:
 fetch(apiUrl).then((response) => {
     return response.json();
 }).then((json) => {
-    container.innerHTML += `<h1>In ${json.name} temperature is ${json.main.temp.toFixed(1)} celsius right now.</h1>`;
+    container.innerHTML += `<h1>In ${json.name} temperature is ${json.main.temp.toFixed(1)}&#730<sup>c</sup> right now.</h1>`;
     //.toFixed(1) rounds the temperature to 1 decimal
     
     json.weather.forEach((weather) => {
@@ -20,6 +21,20 @@ fetch(apiUrl).then((response) => {
     container.innerHTML += `<h2> Sunrise ${sunriseTime}</h2>`;
     container.innerHTML += `<h2> Sunset ${sunsetTime} </h2>`;
  
+});
+
+//Weather Forecast for 5 days:
+fetch(apiUrl2).then((response) => {
+    return response.json();
+}).then((json) => {
+    const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
+
+    filteredForecast.forEach((day) => {
+        const date = new Date(day.dt * 1000);
+        const weekdays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+        let dayOfWeek = weekdays[date.getDay()];
+  
+        container.innerHTML += `<h2>${dayOfWeek} <span>${day.main.temp.toFixed(1)}&#730<sup>c</sup></span></h2>`;
+    });
     console.log(json)
 });
- 
