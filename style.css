@@ -2,6 +2,25 @@ body {
   background: pink;
 }
 
-main {
-  /* display: flex; */
+header {
+  display: flex;
+}
+
+p {
+  margin: 0;
+  margin-bottom: 2px;
+}
+
+.header-info {
+  margin-left: 24px;
+  margin-top: 20px;
+}
+
+.forecast {
+  width: 40%;
+  padding: 20px;
+}
+
+.forecast-info {
+  margin-bottom: 16px;
 }

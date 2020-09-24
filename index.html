@@ -6,22 +6,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="style.css">
-  <title>Document</title>
+  <title>Europe Weather</title>
+  <!-- favicon -->
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22> 🌦</text></svg>">
 </head>
 
 <body>
 
-  <h1>Weather in <span id="city"></span></h1>
-  <main id="main"></main>
+  <header>
 
-  <p>Temperature: <span id="temp"></span>°C</p>
-  <p>Feels like: <span id="feelsLikeTemp"></span>°C</p>
-  <p>Wind: <span id="wind"></span> m/s</p>
-  <p>Weather: <span id="weatherToday"></span></p>
-  <p>Sunrise: <span id="sunRise"></span></p>
-  <p>Sunset: <span id="sunSet"></span></p>
+    <div class="header-info">
+      <p id="weatherToday"></p>
+      <p>sunrise</p>
+      <p>sunset</p>
+    </div>
 
-  <div id="forecast"></div>
+    <div class="header-info">
+      <p><span id="temp"></span>°C</p>
+      <p id="sunRise"></p>
+      <p id="sunSet"></p>
+
+    </div>
+
+  </header>
+
+  <main id="main">
+    <img id="mainWeather" height="150" src="" alt="weather icon">
+    <h1><span id="city"></span><span id="mainWeather"></span></h1>
+
+
+
+    <h2>prepare for</h2>
+
+    <section class="forecast-container">
+      <div id="forecast" class="forecast"></div>
+      <div class="forecast-img"></div>
+    </section>
+
+  </main>
+
+
 
 
 
