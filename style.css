@@ -28,7 +28,8 @@ box-sizing: border-box;
 background-color: rgba(255, 255, 255, 0.12);
 padding: 20px;
 height: 75vh;
-margin-bottom: 20px;
+margin: 20px 0px;
+border-radius: 5%;
 }
 
 .city-title{
@@ -46,8 +47,6 @@ margin-bottom: 20px;
   margin-bottom: 20px;
   color: #121111;
 }
-
-
 
 .main-p-temp{
   color: #121111;
@@ -94,6 +93,7 @@ img {
   font-size: 1.1em;
   color: #121111;
   font-weight: 900;
+  border-radius: 5%;
 }
 
 .weather-forecast-date{
@@ -127,4 +127,13 @@ margin-bottom: 10px;
   text-align: right;
   margin-right: 10px;
   margin-bottom: 10px;
+}
+
+/***** MEDIA QUERIES ****/ 
+
+@media (min-width: 768px){
+
+}
+
+@media (min-width: 1024px) {
 }
