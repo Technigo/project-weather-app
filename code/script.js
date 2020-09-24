@@ -66,9 +66,7 @@ function populateDetails(todayForecast, cityName) {
 }
 
 function populateSummary(todayForecast) {
-  console.log(todayForecast);
   const weatherTemplate = getWeatherTemplate(todayForecast);
-  console.log('weatherTemplate', weatherTemplate);
 
   document.getElementById('img').src = weatherTemplate.image;
   document.getElementById('sumMessage').innerHTML = weatherTemplate.message;
@@ -90,8 +88,6 @@ function getWeatherTemplate(todayForecast) {
   } else {
     weatherId = 'other';
   }
-
-  console.log('weatherId', weatherId);
 
   const weatherTemplate = [
     {
@@ -136,6 +132,8 @@ function getWeatherTemplate(todayForecast) {
 function getTimeZone(city) {
   if (city === 'Saigon') {
     return 'Asia/Saigon'
+  } else if(city ==='Stockholm') {
+    return 'Europe/Stockholm'
   } else if(city === "Los Angeles") {
     return 'America/Los_Angeles'
   } else if (city === 'Tokyo') {
