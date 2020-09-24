@@ -1,13 +1,12 @@
 // API
-const apiToday = 'https://api.openweathermap.org/data/2.5/weather?q=Gothenburg&units=metric&APPID=22db637cf647bcd1513c052513b7d54c';
-const apiForecast = 'https://api.openweathermap.org/data/2.5/forecast?q=Gothenburg&appid=22db637cf647bcd1513c052513b7d54c';
+const apiToday = 'https://api.openweathermap.org/data/2.5/weather?q=göteborg&units=metric&APPID=22db637cf647bcd1513c052513b7d54c';
+const apiForecast = 'https://api.openweathermap.org/data/2.5/forecast?q=G%C3%B6teborg,Sweden&units=metric&APPID=150f4ff6ea1bf24cf1f0e1bdecefa90f';
 
 // OTHER
 const weatherToday = document.getElementById("weatherToday");
 const weatherForecast = document.getElementById("weatherForecast"); 
 const sunriseSunset = document.getElementById("sunriseSunset");
 const weatherIcon = document.getElementById("weatherIcon");
-
 
 
 // FETCH
@@ -25,31 +24,41 @@ fetch(apiToday)
         const sunImg = {
             image: 'icons/sun.svg'
         }
+        const mistImg = {
+            image: 'icons/mist.svg'
+        }
+        const snowImg = {
+            image: 'icons/snow.svg'
+        }
         
         // DISPLAYED WEATHER ICON ON TOP
         const weatherImg = () => {
             if(json.weather[0].main === 'Clear'){
-                weatherIcon.innerHTML = `<img src="${sunImg.image}" height="150" alt="sun">`
+                weatherIcon.innerHTML = `<img src="${sunImg.image}" height="120" alt="sun">`
             } else if (json.weather[0].main === 'Clouds'){
-                weatherIcon.innerHTML = `<img src="${cloudsImg.image}" height="150" alt="clouds">`
+                weatherIcon.innerHTML = `<img src="${cloudsImg.image}" height="120" alt="clouds">`
             } else if (json.weather[0].main === 'Rain'){
-                weatherIcon.innerHTML = `<img src="${rainImg.image}" height="150" alt="rain">`
+                weatherIcon.innerHTML = `<img src="${rainImg.image}" height="120" alt="rain">`
+            } else if (json.weather[0].main === 'Mist'){
+                weatherIcon.innerHTML = `<img src="${mistImg.image}" height="120" alt="mist">`
+            } else if (json.weather[0].main === 'Snow'){
+                weatherIcon.innerHTML = `<img src="${snowImg.image}" height="120" alt="snow">`
             }
         }
         weatherImg()
 
       
-        // TEMP IN GOTHENBURG
-        weatherToday.innerHTML = `${json.name} ${json.main.temp.toFixed(1)} C<br> ${json.weather[0].description} `;
-            const timestampSunrise = json.sys.sunrise
-            const timestampSunset = json.sys.sunset
+        // WEATHER IN GOTHENBURG
+        weatherToday.innerHTML = `${json.name} ${json.main.temp.toFixed(1)} &degC<br> ${json.weather[0].description} `;
+            const timestampSunrise = json.sys.sunrise;
+            const timestampSunset = json.sys.sunset;
 
-        let sunrise = new Date(timestampSunrise * 1000)
-        let sunset = new Date(timestampSunset * 1000)
-
-        let sunriseTime = sunrise.toLocaleTimeString('is',{ timeStyle: 'short',hour12: false})
-        let sunsetTime = sunset.toLocaleTimeString('is',{timeStyle: 'short', hour12: false})
-        sunriseSunset.innerHTML = `<p>Sunrise: ${sunriseTime} Sunset: ${sunsetTime}</p>`
+        // SUNRISE SUNSET
+        let sunrise = new Date(timestampSunrise * 1000);
+        let sunset = new Date(timestampSunset * 1000);
+        let sunriseTime = sunrise.toLocaleTimeString('is',{ timeStyle: 'short',hour12: false});
+        let sunsetTime = sunset.toLocaleTimeString('is',{timeStyle: 'short', hour12: false});
+        sunriseSunset.innerHTML = `<p>Sunrise: ${sunriseTime} Sunset: ${sunsetTime}</p>`;
     });
 
 fetch(apiForecast)
@@ -57,6 +66,19 @@ fetch(apiForecast)
         return response.json()
         })
         .then(json => {
-            const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
-            
+
+            const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
+
+            filteredForecast.forEach(day => {
+                let date = new Date(day.dt * 1000);
+                let tempDay = date.toLocaleDateString("en-us", {weekday:"long"});
+                const temp = day.main.temp;
+                const week = temp.toFixed(1);
+                const feelsLike = day.main.feels_like.toFixed(1);
+                const type = day.weather[0].main;
+
+                document.getElementById("weatherForecast").innerHTML += `<p id="temp-day">${tempDay}:</p>`
+                document.getElementById("weatherForecast").innerHTML += `<p>${type} / ${week}&degC (feels like ${feelsLike}&degC)</p>`
+
+            })
         })
