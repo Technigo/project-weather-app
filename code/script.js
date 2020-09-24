@@ -129,6 +129,7 @@ const updateMinMaxTemps = (data) => {
                 minMaxTemps[currentDate].maxTemp = item.main.temp_max;
             }
         } else {
+            //object list to be used to inject the forecast elements in HTML
             const date = new Date(item.dt*1000);
             const indexOfDayOfTheWeek = date.getDay();
             minMaxTemps[currentDate] = { 
@@ -139,7 +140,6 @@ const updateMinMaxTemps = (data) => {
             };
         }
     });
-    // const icon = getIcon(item.weather[0].icon);
     const forecast = document.getElementById('forecast');
     const forecastIcon = document.getElementById('forecastIcon');
     forecast.innerHTML = "";
