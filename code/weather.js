@@ -35,7 +35,6 @@ fetch(apiUrlToday)
 })
 
 //fetch the data from api - weekly forecast
-
 fetch(apiUrlWeekly)
   .then((response) => {
     return response.json()
@@ -83,10 +82,9 @@ const generateDayName = (name) => {
     return resultDay;
 }
 
-
-/* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
-const myFunction = () => {
-    var x = document.getElementById("myLinks");
+//function for hamburger menu
+const menuToggle = () => {
+    const x = document.getElementById("myLinks");
     if (x.style.display === "block") {
       x.style.display = "none";
     } else {

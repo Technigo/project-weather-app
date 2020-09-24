@@ -13,6 +13,7 @@ body {
 }
 
 /** HEADER SECTION **/
+
 header {
     margin: 0;
     height: 375px;
@@ -127,32 +128,32 @@ header {
 }
 */
 
-/* HAMBURGER STYLING  */
+/* Hamburget Menu  */
 
-/* Style the navigation menu */
+/* navigation menu */
 .topnav {
     overflow: hidden;
-    background-color:transparent;
+    background-color: transparent;
     position: relative;
 }
   
-/* Hide the links inside the navigation menu (except for logo/home) */
+/* Hide the links inside the navigation menu */
 .topnav #myLinks {
     display: none;
     margin-bottom: 200px;
-    background-color:rgba(255,255,255, 0.9)
+    background-color:rgba(255,255,255, 0.9);
 }
   
-/* Style navigation menu links */
+/* style navigation menu links */
 .topnav a {
     color: black;
-    padding: 14px 16px;
+    padding: 14px 16px; 
     text-decoration: none;
     display: block;
     font-size: 16px;
 }
   
-/* Style the hamburger menu */
+/* hamburger menu icon */
 .topnav a.icon {
     background: transparent;
     display: block;
@@ -161,23 +162,19 @@ header {
     top: 0;
 }
   
-/* Add a transparent background color on mouse-over */
 .topnav a:hover {
     background-color: rgba(255,255,255, 0.9);
     color: black;
 }
   
-/* Style the active link (or home/logo) */
+/* style the active link (or home/logo) */
 .active {
     background-color: transparent;
     color: white;
-    font-family: 'Roboto Condensed', Sans-Serif;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 18px;
 }
-
-/* Responsive designs */
 
 /* For tablet only */
 @media screen and (min-width: 667px) and (max-width: 1024px) {
@@ -186,6 +183,48 @@ header {
         width: 100%;
         background-color: black;
         height: 200px;
+    }
+
+    .topnav a {
+        color: black;
+        font-size: 20px;
+    }
+
+    .topnav .active {
+        color: white;
+    }
+
+    .topnav a:hover {
+        color: black;
+    }
+
+    .topnav a.icon {
+        color: white;
+    }
+
+    .header-title {
+        display: block;
+        text-align: center;
+        margin-top: 70px;
+        color: white;
+        text-transform: uppercase;
+        font-size: 50px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
+    }
+}
+
+/* For computer only */
+@media (min-width: 1025px) {
+
+    header {
+        width: 100%;
+        background-color: black;
+        height: 220px;
+        margin-bottom: 40px;
     }
 
     .topnav a {
@@ -210,6 +249,50 @@ header {
         right: 0;
         z-index: 2;
     }
+}
+
+/** WEATHER SECTION **/
+
+/* hide section (only ipad and laptop) */
+.weekly-weather-focus {
+    display: none;
+}
+
+.weekly-weather {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    width: 90%;
+    margin: auto;
+}
+
+.weekly-weather-day-wrapper, .weekly-weather-temp-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.weekly-weather-day {
+    text-align: left;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.weekly-weather-temp {
+    text-align: right;
+    font-family: 'Cabin', Sans-Serif;
+    font-weight: lighter;
+} 
+
+.weekly-weather-day, .weekly-weather-temp {
+    border-bottom: dashed 1px #bfbfbf;
+    padding-bottom: 20px;
+    margin-right: 1px;
+}
+
+/* For tablet only */
+@media screen and (min-width: 667px) and (max-width: 1024px) {
 
     .header-weather-wrapper {
         position: initial;
@@ -238,98 +321,7 @@ header {
     .header-icon-sun {
         width: 8%;
     }
-}
 
-/* For computer only */
-@media (min-width: 1025px) {
-
-    header {
-        width: 100%;
-        background-color: black;
-        height: 220px;
-    }
-
-    .topnav a {
-        color: white;
-        font-size: 20px;
-    }
-
-    .topnav a:hover {
-        color: black;
-    }
-
-    .header-title {
-        display: block;
-        text-align: center;
-        margin-top: 70px;
-        color: white;
-        text-transform: uppercase;
-        font-size: 50px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 2;
-    }
-
-    .header-weather-wrapper {
-        position: initial;
-        width: 40%;
-        margin: auto;
-        margin-top: 40px;
-        border: 20px solid #efefef;
-    }
-
-}
-
-/** WEATHER SECTION **/
-
-/* hide section (only ipad and laptop) */
-.weekly-weather-focus {
-    display: none;
-}
-
-.weekly-weather {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 20px;
-    width: 90%;
-    margin: auto;
-}
-
-.weekly-weather-day-wrapper, .weekly-weather-temp-wrapper {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-}
-
-.weekly-weather-day {
-    text-align: left;
-    font-family: 'Roboto Condensed', Sans-Serif;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.weekly-weather-temp {
-    text-align: right;
-    font-family: 'Cabin', Sans-Serif;
-    font-weight: lighter;
-} 
-
-.weekly-weather-day, .weekly-weather-temp {
-    border-bottom: dashed 1px #bfbfbf;
-    padding-bottom: 20px;
-    margin-right: 1px;
-}
-
-.img-weather {
-    width: 20%;
-}
-
-/* For tablet only */
-@media screen and (min-width: 667px) and (max-width: 1024px) {
-    
     .weekly-weather {
         width: 80%;
         border: 20px solid #efefef;
@@ -349,6 +341,30 @@ header {
 /* For computer only */
 @media (min-width: 1025px) {
 
+    .container-computer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 90%;
+        margin: auto;
+        height: 450px;
+    }
+
+    .header-weather-wrapper {
+        position: initial;
+        width: 40%;
+        height: inherit;
+        margin: 0;
+        border: 20px solid #efefef;
+    }
+
+    .weekly-weather {
+        width: 40%;
+        border: 20px solid #efefef;
+        height: inherit;
+        margin: 0;
+    }
 }
 
 /** FOOTER SECTION **/
@@ -361,14 +377,10 @@ footer {
     padding: 20px;
     height: 200px;
     border: 20px solid #efefef;
-}
-
-.logo {
-    width: 15%;
+    margin-top: 40px;
 }
 
 .company-title {
-    font-family: 'Roboto Condensed', Sans-Serif;
     font-size: 18px;
     text-transform: uppercase;
     padding: 20px;
@@ -387,7 +399,6 @@ footer {
 }
 
 /* For tablet only */
-
 @media screen and (min-width: 667px) and (max-width: 1024px) {
     
     footer {
@@ -401,5 +412,25 @@ footer {
     .footer-links {
         font-size: 16px;
     }
+}
 
+/* For computer only */
+@media (min-width: 1025px) {
+
+    .company-title {
+        font-size: 24px;
+    }
+
+    .footer-links-wrapper {
+        width: 20%;
+    }
+
+    .footer-links {
+        font-size: 14px;
+    }
+
+    .footer-links:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
 }

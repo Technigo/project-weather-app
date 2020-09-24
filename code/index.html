@@ -7,13 +7,11 @@
     <link href="https://fonts.googleapis.com/css?family=Cabin|Roboto:400,700|Roboto+Condensed:400,700" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <title>Weather App</title>
+    <title>Luna Weather</title>
 </head>
 
 <body>
-
     <header>
-
     <!-- HAMBURGER MENU -->
     <div class="topnav">
         <a href="#home" class="active">Luna weather</a>
@@ -24,7 +22,7 @@
             <a href="#about">ABOUT LUNA</a>
         </div>
         <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <a href="javascript:void(0);" class="icon" onclick="menuToggle()">
             <i class="fa fa-bars"></i>
         </a>
     </div>
@@ -32,9 +30,9 @@
     <h1 class="header-title">
         Your local weather app
     </h1>
-
     </header>
 
+    <div class="container-computer">
         <div class="header-weather-wrapper">
             <p id="headerLocation" class="header-text-location"></p>
             <p id="headerWeather" class="header-text-weather"></p>
@@ -48,22 +46,11 @@
             </div>
         </div>
 
-
-    <section class="weekly-weather-focus">
-        <div class="focus-weather">
-            <h2 class="focus-title">
-                The current weather in Stockholm, Sweden is sunny
-            </h2>
-            <h1 class="header-text-celcius">+20°</h2>
-        </div>
-    </section>
-
-    <section id="weeklyWeather" class="weekly-weather">
-
-        <div id="weeklyWeatherDay" class="weekly-weather-day-wrapper"></div>
-        <div id="weeklyWeatherTemp" class="weekly-weather-temp-wrapper"></div>
-
-    </section>
+        <section id="weeklyWeather" class="weekly-weather">
+            <div id="weeklyWeatherDay" class="weekly-weather-day-wrapper"></div>
+            <div id="weeklyWeatherTemp" class="weekly-weather-temp-wrapper"></div>
+        </section>
+    </div>
 
     <footer>
         <h3 class="company-title">luna weather</h3>
@@ -72,8 +59,7 @@
             <p class="footer-links">contact</p>
             <p class="footer-links">about luna</p>
         </div>
-    </footer>
-    
+    </footer>  
 </body>
 
 <script src="/code/weather.js"></script>
