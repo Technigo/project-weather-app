@@ -20,22 +20,15 @@ body {
     font-family: "Montserrat", sans-serif;
 }
 
-.background{
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  background-size: cover;
-  height: 80vh;
-  padding: 20px;
-  margin-bottom: 20px;
-  background: linear-gradient(to right, #283048, #465e76);
+
+.container-todaysWeather-background{
+box-sizing: border-box;
+background-color: rgba(255, 255, 255, 0.12);
+padding: 20px;
+height: 75vh;
+margin-bottom: 20px;
 }
 
-img {
-  margin: 0 auto;
-  height:100px;
-}
 
 /* colors for changing background depending on weather descritpion I think!
 cold #7474BF to #348AC7
@@ -57,6 +50,7 @@ cloudy background-image: linear-gradient(to right, #ECE9E6, #FFFFFF);
   font-size: 2.5em;
   text-align: center;
   margin: 15px 0px;
+  color: #121111;
 }
 
 .temp-main-info{
@@ -65,14 +59,30 @@ cloudy background-image: linear-gradient(to right, #ECE9E6, #FFFFFF);
   justify-content: space-evenly;
   margin-top: 10px;
   margin-bottom: 20px;
-  color: #c9c9c9;
+  color: #121111;
+}
+
+.main-p{
+  color: #121111;
+}
+
+img {
+  margin: 0 auto;
+  margin-top: 15px;
+  height:100px;
+}
+
+.h2-weather-description{
+  color: #121111;
+  font-size: 1.2em;
+  font-style: italic;
 }
 
 .weather-descriptions{
   display: flex;
   flex-direction: column;
   text-align: center;
-  color: #c9c9c9;
+
 }
 
 .sun{
@@ -80,6 +90,7 @@ cloudy background-image: linear-gradient(to right, #ECE9E6, #FFFFFF);
   display: flex;
   flex-direction: column;
   margin: 30px 0px;
+  color: #121111;
 }
 
 
@@ -87,6 +98,7 @@ cloudy background-image: linear-gradient(to right, #ECE9E6, #FFFFFF);
   box-sizing: border-box;
   display: flex;
   align-items: center;
+  background-color: rgba(255, 255, 255, 0.12);
   margin: 0px 0px 30px;
 }
 
@@ -95,8 +107,8 @@ cloudy background-image: linear-gradient(to right, #ECE9E6, #FFFFFF);
   text-align: center;
 }
 
-.weather-forecast{
+/*.weather-forecast{
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-}
+}*/

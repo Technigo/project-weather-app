@@ -1,6 +1,3 @@
-apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=Longyearbyen,Norway&units=metric&APPID=8990d7a0fe5c73c6c0fe06bb994b1035"
-apiUrlForcast = "https://api.openweathermap.org/data/2.5/forecast?q=Longyearbyen,Norway&units=metric&APPID=8990d7a0fe5c73c6c0fe06bb994b1035"
-
 const containerToday = document.getElementById('weatherMain');
 const containerTempFeel = document.getElementById('weatherTempFeel');
 const containerDescription = document.getElementById('weatherDescription');
@@ -9,7 +6,6 @@ const containerSunSet = document.getElementById('sunset');
 const containerForcast = document.getElementById('weatherForecast');
 
 
-/// make this into a one line function instead?
 /// calculating a rounded number for the temp
 const roundtemp = (number) => {
     const roundtemp = Math.round(number * 10) / 10;
@@ -38,13 +34,7 @@ const readableDate = (date) => {
     return dateReadableDate;
 }
 
-/// function for icon of the day
-const iconDependingOnWeather = (weather) => {
-   // if (weather === "Clouds")
-    //console.log(iconDependingOnWeather)
-    return 'http://openweathermap.org/img/wn/03d@2x.png'
-}
-
+/// getting icon related to weather
 let weatherIcon = {
     "Clear": "http://openweathermap.org/img/wn/01d@2x.png",
     "Clouds": "http://openweathermap.org/img/wn/03d@2x.png",
@@ -60,6 +50,7 @@ let weatherIcon = {
     "Tornado": "http://openweathermap.org/img/wn/50d@2x.png",
 }
 
+/// getting background color related to weather
 let weatherColor = {
     "Clear": "linear-gradient(to right, #e65c00, #F9D423)",
     "Clouds": "linear-gradient(to right, #bdc3c7, #465e76)",
@@ -75,27 +66,15 @@ let weatherColor = {
     "Tornado": "linear-gradient(to right, #3E5151, #DECBA4)",
 }
 
-/*
-/// function for changing background color depending on main weather
-const colorDependingOnWeather = (weather) => {
-    //weather = "Clear"
-    if (weather === "Clear") {
-        return "linear-gradient(to right, #e65c00, #F9D423)"
-    } else if (weather === "Rain") {
-        return "linear-gradient(to right, blue, gray)"
-    }
 
-}
-*/
+
 
 /// Displaying todays weather forcast 
 const generatedHTMLForWeatherToday = (weatherMain) => {
     containerToday.innerHTML = `${weatherMain.weather[0].main}`
 
-
-
     // const weather = weatherMain.weather[0].main
-    const weather = "Tornado"
+    const weather = "Clear"
     document.getElementById('backgroundColor').style.background = weatherColor[weather]
     document.getElementById('weatherImage').src = weatherIcon[weather]
 
@@ -115,7 +94,9 @@ const generatedHTMLForWeatherForcast = (forecast) => {
     containerForcast.innerHTML += "</div>"
 }
 
+
 /// getting the API for todays weather
+apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=Longyearbyen,Norway&units=metric&APPID=8990d7a0fe5c73c6c0fe06bb994b1035"
 fetch(apiUrl).then((response) => {
     return response.json()
 })
@@ -125,6 +106,8 @@ fetch(apiUrl).then((response) => {
 
 
 /// getting the API for weather forcast
+apiUrlForcast = "https://api.openweathermap.org/data/2.5/forecast?q=Longyearbyen,Norway&units=metric&APPID=8990d7a0fe5c73c6c0fe06bb994b1035"
+
 fetch(apiUrlForcast).then((response) => {
     return response.json()
 })
