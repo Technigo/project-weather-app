@@ -3,7 +3,6 @@ const API_URL = `http://api.openweathermap.org/data/2.5/weather?q=Malmo,Sweden&u
 const API_URL_5DAYS = `https://api.openweathermap.org/data/2.5/forecast?q=Malmo,Sweden&units=metric&APPID=${API_KEY}`
 
 const container = document.getElementById('weather')
-const container2 = document.getElementById('future-weather')
 
 
 fetch(API_URL)
