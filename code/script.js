@@ -10,8 +10,8 @@ document.getElementById('city-select').addEventListener('change', (event) => {
 });
 
 function updateWeatherData(cityName) {
-  const todayWeatherUrl = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${API_KEY}`
-  const fiveDaysForecastUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=${API_KEY}`
+  const todayWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${API_KEY}`
+  const fiveDaysForecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=${API_KEY}`
   
   fetch(todayWeatherUrl)
     .then((response) => {
