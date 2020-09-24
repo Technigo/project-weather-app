@@ -6,10 +6,24 @@ const apiUrlToday =
 const apiUrlForecast =
   "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=92053ce17f6df07312088f05e0a431e0";
 
+
+//Nedan: weater-today-funktioner:
+
 const calculateTemperature = (number) => {
   const roundedTemp = Math.round(number * 10) / 10; //By adding *10 AND adding /10 the number is rounded up to nearest integer with one decimal. If only using round() the number is rounded up to nearest integer.
   return roundedTemp;
 };
+
+//Nedan: mitt försök att göra en funktion för att visa tiden i staden i weather today:
+const calculateTimeInCity = (time) => {
+  const cityTime = new Date(time * 1000);
+  const cityTimeString = cityTime.toLocaleTimeString("sv-SE", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
+  return cityTimeString;
+}
 
 const calculatingSun = (time) => {
   const sunTime = new Date(time * 1000);
@@ -54,7 +68,7 @@ const iconDependingOnWeather = (item) => {
 
 const generatedHTMLForWeatherToday = (weatherToday) => {
   const temperature = calculateTemperature(weatherToday.main.temp); //This is using json.main.temp as a parameter instead of number.
-  //Add time in city also
+  const timeInCity = calculateTimeInCity (weatherToday.dt); //Add time in city also
   const sunrise = calculatingSun(weatherToday.sys.sunrise);
   const sunset = calculatingSun(weatherToday.sys.sunset);
   const iconToday = iconDependingOnWeather(weatherToday.weather[0].main)
@@ -66,9 +80,9 @@ const generatedHTMLForWeatherToday = (weatherToday) => {
   let weatherTodayHTML = '';
   weatherTodayHTML += `<div class="location-information">`;
   weatherTodayHTML += `<div class="temp">${temperature} <span class="celsius">&#8451;</span></div>`
-  weatherTodayHTML += `<div class="location">${weatherToday.name}</div>`//Location name
+  weatherTodayHTML += `<div class="location">${weatherToday.name} ${timeInCity}</div>`//Location name
   weatherTodayHTML += `<div class="description">${description}</div>`//description like "broken clouds"
-  weatherTodayHTML += `<div class="sunrise-sunset">`
+  weatherTodayHTML += `<div class="sunrise-sunset">`//added div to use flexbox
   weatherTodayHTML += `<div class="sunrise">Sunrise ${sunrise}</div>`
   weatherTodayHTML += `<div class="sunset">Sunset ${sunset}</div>`
   //Div for time in city should go here
