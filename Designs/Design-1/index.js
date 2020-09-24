@@ -4,16 +4,13 @@ const fiveDayUrl = 'http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,
 const degree = document.getElementById("degree");
 const city = document.getElementById("city");
 const weather = document.getElementById("weather");
-const sunrise = document.getElementById("sunrise");
-
-const sunset = document.getElementById("sunset");
 const feels = document.getElementById("feels");
 
-const dayOne = document.getElementById("dayOne");
-const dayTwo = document.getElementById("dayTwo");
-const dayThree = document.getElementById("dayThree");
-const dayFour = document.getElementById("dayFour");
-const dayFive = document.getElementById("dayFive");
+const sunrise = document.getElementById("sunrise");
+const sunset = document.getElementById("sunset");
+
+
+
 
 
 const formatTime = (timestamp) => {
@@ -33,7 +30,7 @@ fetch(currentUrl)
     })
 
     .then((json) => {
-
+        console.log(json)
         
         degree.innerHTML = Math.round(json.main.temp) + " °";
         city.innerHTML = json.name;
@@ -43,11 +40,52 @@ fetch(currentUrl)
         })
         feels.innerHTML = ` Feels like : ${Math.round(json.main.feels_like)}` + " °";
 
-        sunrise.innerHTML = `Sunrise ${formatTime(json.sys.sunrise)}`;
-        sunset.innerHTML = `Sunset ${formatTime(json.sys.sunset)}`;
+        sunrise.innerHTML += `Sunrise <img class="image" src="sunrise.png" alt="sunrise"./> ${formatTime(json.sys.sunrise)}`;
+        sunset.innerHTML = `Sunset  <img class="image" src="sunset.png" alt="sunset"./> ${formatTime(json.sys.sunset)}`;
     })
 
 
 
 //5-days forcast //
 
+const forecastContent = document.getElementById('main-forecast-data');
+fetch(fiveDayUrl)
+    .then((response) => {
+        return response.json()
+    })
+
+    .then ((json) => {
+        console.log(json)
+        //Filters out forecast at 12:00 for coming 5 days
+        const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));  //Creates array with data for coming 5 days
+        filteredForecast.forEach((forecastDay) => {
+            forecastContent.innerHTML += generateHTMLForForecast(forecastDay);
+          });  
+        })
+      
+        const generateHTMLForForecast = day => {
+            //Get the weekday it is
+            const weekdayInUnix = day.dt;  // Date in UNIX
+            const weekdayLongFormat = new Date(weekdayInUnix * 1000);  // Convert to nice date format we can use
+            const specificWeekday = weekdayLongFormat.toLocaleDateString('en-US', {weekday: 'long'}); 
+          
+            //Get image icon
+            const iconID = day.weather[0].icon; //Gets icon code from API
+          
+            //Get description
+            const descriptionFromAPI = day.weather[0].description; 
+          
+            //Get Min Max Temperatures
+            const minTemp = day.main.feels_like.toFixed(); //Gets min and max temp from API and rounds it up
+            const maxTemp = day.main.temp_max.toFixed();
+          
+            // Create dynamic HTML code to return
+            let forecastHTML = '';
+            forecastHTML += `<div class="forecast-container">`;
+            forecastHTML += `<p class="forecast-day">${specificWeekday}</p>`;
+            forecastHTML += `<img class="forecast-icon" src='./assets/${iconID}.png'>`;
+            forecastHTML += `<p class="forecast-description">${descriptionFromAPI}</p>`;
+            forecastHTML += `<p class="forecast-minmax">${maxTemp}°C / ${minTemp}°C</p>`;
+            forecastHTML += `</div>`;
+            return forecastHTML;
+          };

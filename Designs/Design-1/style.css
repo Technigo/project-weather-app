@@ -1,0 +1,80 @@
+body {
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    
+}
+
+  
+.today {
+border: solid red 2px; 
+display: flex;
+flex-direction: column;
+align-items: center;
+background-image: url("rainbow.jpg");
+}
+
+h1 {
+
+}
+
+#degree{
+    font-size: 60px;
+}
+
+#city{
+    font-size: 30px;
+
+}
+
+#weather {
+    font-size: 40px;
+
+}
+
+#feels{
+    font-size: 20px;
+
+}
+
+.sunny {
+    border-bottom: solid black 1px;
+    border-top: inset black 1px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px 0 10px 0;
+    font-size: 18px;
+}
+
+#sunrise {
+    
+    padding-left: 20px;
+
+}
+
+img {
+    width: 20px;
+    height: 20px;
+   
+}
+
+#sunset {
+   
+    padding-right:20px;
+}
+
+
+
+
+.forecast {
+    border: solid red 2px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2{
+    
+}
+
