@@ -10,35 +10,41 @@
 </head>
 <body>
     <section class="container-all">
+
+    <!-- VIDEO -->
+      <div class="video-wrapper">
+        <video loop muted autoplay preload="auto">
+          <source src="videoImages/TimeLapsecompressed.mp4" video type="video/mp4" />
+        </video>
+      </div>
+
+      <!-- MAIN SECTION -->
+
+      <!-- <main id="main"> -->
+        <div class="hero-image"></div>
+        
+        <div class="hero-text">
+          <h1><span id="weather-header"></span></h1>
+          <!-- <div class="top"> -->
+            <div class="description-image">
+              <p class="description"><span id="description-today"></span></p>
+              <img class="image" id="weather-image" src="" width="70" alt="">
+            </div>
+            
       
-        <div class="video-wrapper">
-            <video loop muted autoplay preload="auto">
-                <source src="videoImages/TimeLapsecompressed.mp4" video type="video/mp4" />
-            </video>
-        </div>
+            <p class="temp"><span id="temp-today"></span></p>
+            <p class="sun"><span id="sunrise-today"></span></p>
+            <p class="sun"><span id="sunset-today"></span></p>
+        
+          </div>
+        <!-- FIVE DAY FORECAST --> 
 
-        <main id="main">
-            <div class="hero-image"></div>
-            <div class="hero-text">
-                <h1 style="font-size:50px"></h1>
-                <p></p>
-                <h1><span id="weather-header"></span></h1>
-                <div class="top">
-
-                    <div class="description-image">
-                        <p class="description"><span id="description-today"></span></p>
-                        <img class="image" id="weather-image" src="" width="70" alt="">
-                    </div>
-
-                    <p class="temp"><span id="temp-today"></span></p>
-                    <p class="sun"><span id="sunrise-today"></span></p>
-                    <p class="sun"><span id="sunset-today"></span></p>
-                </div>    
-                <div class="bottom">
-                    <div id="container-five-day"></div>
-                </div>
-                
-        </main>
+        <div class="bottom">
+          <div id="container-five-day"></div>
+       
+      
+      
+    <!-- </main> -->
     </section>
     <script src="./script.js"></script>
 </body>
