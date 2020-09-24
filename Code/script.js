@@ -1,13 +1,9 @@
-
 // GET WEATHER REPORT
 const enteredCityLocation = "Stockholm, Sweden";
 
-
 //API's
-
 const API_ONE_DAY = `https://api.openweathermap.org/data/2.5/weather?q=${enteredCityLocation}&appid=3eb926770233f3bacc440bffc14e56a4`;
 const API_FIVE_DAYS = `https://api.openweathermap.org/data/2.5/forecast?q=${enteredCityLocation}&appid=3eb926770233f3bacc440bffc14e56a4`;
-
 
 // Weather Variables
 const cityLocation = document.getElementById("currentCityName");
@@ -82,12 +78,8 @@ fetch(API_FIVE_DAYS)
     return response.json();
   })
   .then((forecast) => {
-    console.log(forecast)
-
     const filteredForecast = forecast.list.filter(item => item.dt_txt.includes('12:00'));
-
     let output = '';
-
     filteredForecast.forEach((item) => {
       const maxTemperature = Math.round(item.main.temp_max - 273);
       const minTemperature = Math.round(item.main.temp_min - 273);
@@ -97,6 +89,5 @@ fetch(API_FIVE_DAYS)
       });
       output += `<p class="day">${weekday} <span>${maxTemperature}°C</span>|<span>${minTemperature}°C</span> </p>`;
     });
-
     document.getElementById('forecast').innerHTML = output;
   });
