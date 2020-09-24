@@ -1,11 +1,12 @@
 *, *::before, *::after {
     box-sizing: border-box;
-  }
+}
 
 body {
-    background-color:rgb(218, 218, 218);
+    background-color: white;
     font-family: "Roboto";
-    font-weight: lighter;
+    font-weight: 100;
+    margin: auto;
 }
 
 .day-temp-icon {
@@ -20,8 +21,10 @@ body {
 .daily-weather {
     display: flex;
     flex-direction: column;
-    color: brown;
+    color: white;
     padding: 0px 50px 0px 20px;
+    background: linear-gradient(160deg, rgba(26,23,65,1) 0%, rgba(61,59,122,1) 88%, rgba(78,75,148,1) 100%);
+    border-radius: 0px 0px 15% 15%;
 }
 
 .temp {
@@ -30,7 +33,6 @@ body {
 }
 
 .city {
-    color: brown;
     font-size: 30px;
     margin-bottom: 10px;
 }
@@ -43,22 +45,31 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    margin-top: 50px;
+    margin-top: 30px;
     font-size: 20px;
+    margin-bottom: 50px;
 }
 
 .forecast {
-    
     margin-top: 80px;
+    color: grey;
 }
 
 .days {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
+    margin: 0 20px 0 20px;
 }
 
 .days img {
     height: 50px;
+    -webkit-filter: drop-shadow(1px 1px 0 lightgrey) 
+    drop-shadow(-1px 1px 0 lightgrey) drop-shadow(1px -1px 0 lightgrey) drop-shadow(-1px -1px 0 lightgrey);
+    filter: drop-shadow(1px 1px 0 lightgrey) drop-shadow(-1px 1px 0 lightgrey) drop-shadow(1px -1px 0 lightgrey) drop-shadow(-1px -1px 0 lightgrey);
+}
+
+.daytime {
+    background: linear-gradient(160deg, rgba(116, 108, 255, 1) 0%, rgba(191, 189, 255, 1) 100%);
 }

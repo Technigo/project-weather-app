@@ -43,7 +43,6 @@ const updateWeatherToday = (todayWeatherJson) => {
         hour: '2-digit',
         minute: '2-digit',
         hour12: false
-
     })
 
     const sunsetTime = new Date(todayWeatherJson.sys.sunset * 1000)
@@ -52,11 +51,16 @@ const updateWeatherToday = (todayWeatherJson) => {
         hour: '2-digit',
         minute: '2-digit',
         hour12: false
-
     })
+     
+    const now = new Date()
+    if (now < sunriseTime || now > sunsetTime) { 
+      //  document.getElementById('daily-weather').classList.toggle("daytime")
+    }
 
-    sunrise.innerHTML = `Sunrise ${sunriseTimeString}`
-    sunset.innerHTML = `Sunset ${sunsetTimeString}`
+
+    sunrise.innerHTML = `sunrise ${sunriseTimeString}`
+    sunset.innerHTML = `sunset ${sunsetTimeString}`
     temp.innerHTML = `${Math.round(todayWeatherJson.main.temp)}° `
 
     const icon = document.getElementById('icon')
