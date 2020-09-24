@@ -1,9 +1,10 @@
-const apiUrlForecast = 'http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=461046c1b035d88b328cf5cc47778c02'
-const apiUrlFiveDays = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=461046c1b035d88b328cf5cc47778c02'
+const API_KEY='461046c1b035d88b328cf5cc47778c02'
+const API_URL_WEATHER = `http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${API_KEY}`
+const API_URL_FORECAST = `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=${API_KEY}`
 const container = document.getElementById('weather')
 const weeklyWeather = document.getElementById('weekly-weather')
 
-fetch(apiUrlForecast)
+fetch(API_URL_WEATHER)
     .then((response) => {
         return response.json()
     })
@@ -33,7 +34,7 @@ fetch(apiUrlForecast)
     })
 
 
-fetch(apiUrlFiveDays)
+fetch(API_URL_FORECAST)
     .then((response) => {
         return response.json()
     })
@@ -45,7 +46,7 @@ fetch(apiUrlFiveDays)
         filteredForecast.forEach(day => {
 
             let date = new Date(day.dt * 1000);
-            let dayName = date.toLocaleDateString(undefined, {
+            let dayName = date.toLocaleDateString('en-US', {
                 weekday: "long"
             })
             let dayTemp = day.main.temp.toFixed(1);
