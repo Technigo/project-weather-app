@@ -10,26 +10,31 @@
 </head>
 
 <body id="backgroundColor">
-  
+
     <section class="container-todaysWeather-background">
-            <h1 class="city-title">Longyearbyen</h1>
-            <div class="temp-main-info">
-                <h1><span id="weatherTemp"></span>&deg;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="weatherMain"></span>
-                </h1>
-            </div>
-            <div class="weather-descriptions">
-                <p class="main-p">Feels like <span id="weatherTempFeel"></span>&deg;</p>
-                <img id="weatherImage" />
-                <h2 class="h2-weather-description"> Today will have <span id="weatherDescription"></span></h2>
-            </div>
-            <div class="sun">
-                <p class="main-p">Sunrise: <span id="sunrise"></span></p>
-                <p class="main-p">Sunset: <span id="sunset"></span></p>
-            </div>
+        <h1 class="city-title">Longyearbyen</h1>
+        <div class="temp-main-info">
+            <h1><span id="weatherTemp"></span>&deg;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="weatherMain"></span>
+            </h1>
+        </div>
+        <div class="weather-descriptions">
+            <p class="main-p-temp">Feels like <span id="weatherTempFeel"></span>&deg;</p>
+            <img id="weatherImage" />
+            <h2 class="h2-weather-description"> Today will have <span id="weatherDescription"></span></h2>
+        </div>
+        <div class="sun">
+            <p class="main-p">Sunrise: <span id="sunrise"></span></p>
+            <p class="main-p">Sunset: <span id="sunset"></span></p>
+        </div>
     </section>
 
     <section class="forcast">
         <div class="weather-forecast" id="weatherForecast"></div>
+        <div class="test"></div>
+        <!--<table>
+            <tr class="weather-forecast-date" id="weatherForecastDate"></tr>
+            <td class="weather-forecast-temp" id="weatherForecastTemp"></td>
+        </table>-->
     </section>
 
     <script src="./weather.js"></script>
