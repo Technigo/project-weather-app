@@ -21,23 +21,23 @@ const generatedHTMLForWeatherToday = (weatherToday) => {
     const sunrise = calculatingTime(weatherToday.sys.sunrise); 
     const sunset = calculatingTime(weatherToday.sys.sunset);
     const iconToday = iconDependingOnWeather(weatherToday.weather[0].main)
-    const description = weatherToday.weather[0].description
+    const description = descriptionUppercase(weatherToday.weather[0].description)
     weatherTodayBackgroundColor(weatherToday.main.temp);
     
      //separate and build up the HTML tree
      let weatherTodayHTML = '';
      weatherTodayHTML += `<div class="weather-information">`;
-     weatherTodayHTML += `<div class="temp"> ${temperature} \xB0c </div>`
      weatherTodayHTML += `<img src='${iconToday}'/>`;  
+     weatherTodayHTML += `<h1 class="temp"> ${temperature} \xB0c </h1>`
      weatherTodayHTML += `</div>`
-     weatherTodayHTML += `<div class="location-information">`;
-     weatherTodayHTML += `<div class="location"> ${weatherToday.name} </div>` 
-     weatherTodayHTML += `<div class="description"> ${description} </div>` 
-     weatherTodayHTML += `<div class="local-time"> ${timeInCity} </div>` 
+     weatherTodayHTML += `<div class="location-information">`
+     weatherTodayHTML += `<h2> ${weatherToday.name} </h2> ` 
+     weatherTodayHTML += `<p> ${timeInCity} </p>` 
+     weatherTodayHTML += `<p> ${description}</p>` 
      weatherTodayHTML += `</div>`
      weatherTodayHTML += `<div class="sun-information">`
-     weatherTodayHTML += `<div class="sunrise"> Sunrise ${sunrise}</div>`
-     weatherTodayHTML += `<div class="sunset"> Sunset ${sunset}</div>`
+     weatherTodayHTML += `<p> Sun &uarr; ${sunrise}</p>`
+     weatherTodayHTML += `<p> Sun &darr; ${sunset}</p>`
      weatherTodayHTML += `</div>`
      return weatherTodayHTML; 
 };
@@ -75,10 +75,19 @@ const generatedHTMLForWeatherForcast = (filteredForcast) => {
     return weatherForcast; 
 };
 
+//function invoked when search button is clicked (enter)
+const citySelected = () => {
+    containerToday.innerHTML = ''; 
+    containerForecast.innerHTML = ''; 
+    citySearched = document.getElementById("cityNamePicked").value;
+    fetchWeatherForcast(citySearched);
+    fetchWeatherToday(citySearched);
+    document.getElementById("cityNamePicked").value = ''; 
+}
+
 //Function for temp rounded to one decimal 
 const calculatedTemperature = (number) => {
-    const roundedTemp = Math.round(number*10)/10; 
-    return roundedTemp;
+    return Math.round(number*10)/10;
 };
 
 //function to convert time to readble format
@@ -91,6 +100,11 @@ const calculatingTime = (time) => {
     });
     return timeSetString;
 };
+
+//capitalize first letter in weather description
+const descriptionUppercase = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1); 
+}
 
 //functions to print a short day of our 5 day weather forcast 
 const printDay = (day) => {
@@ -132,16 +146,3 @@ const weatherTodayBackgroundColor = (temp) => {
     } else 
         containerColor.style.backgroundColor = '#FF0000'
 }
-
-//function invoked when search button is clicked
-const citySelected = () => {
-    containerToday.innerHTML = ''; 
-    containerForecast.innerHTML = ''; 
-    citySearched = document.getElementById("cityNamePicked").value;
-    fetchWeatherForcast(citySearched);
-    fetchWeatherToday(citySearched);
-    document.getElementById("cityNamePicked").value = ''; 
-}
-
-
-

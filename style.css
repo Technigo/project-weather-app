@@ -7,6 +7,16 @@ body {
     font-family: 'Quicksand', sans-serif;
 }
 
+h1 {
+    font-size: 60px;
+}
+
+h2 {
+    font-size: 44px;
+    margin-bottom: 10px;
+}
+
+
 p {
     width: 100px;
     text-align: end;
@@ -17,32 +27,33 @@ img {
     width: 40px;
 }
 
-/*style for weather today wrapper*/
+/*
 .weather-container {
     width: 100vw;
-    display: flex;
-    flex-direction: column;
 }
+*/
 
 .weather-wrapper {
-    height: 40vh;
+    height: 50vh;
     position: relative;
     width: 100%;
     color: #ffffff;
 }
 
 /*class which lays under weather-today-wrapper to change
-color depending on weather temp in js file.*/ 
+color depending on weather temp statement in js file.*/ 
 .background-color {
     background-color: ''; 
-    height: 100%;
-    padding: 30px 10px;
+    height: 100%;  
     width: 100%;
     position: absolute;
+    z-index: -1;
+    /*
+    padding: 30px 10px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    z-index: -1;
+    justify-content: space-around;*/
+    
 }
 
 /*opacity 0.8 to show underlying background color in class-color*/
@@ -50,25 +61,28 @@ color depending on weather temp in js file.*/
     background: url('./unsplash-weather-s.jpg') no-repeat center center; 
     background-size: cover; 
     height: 100%;
-    padding: 30px 10px;
+    padding: 40px 10px 0 10px;
     width: 100%;
     position: absolute;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    /*justify-content: space-around;*/
     opacity: 0.8;
 }
 
 .weather-information {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    /*justify-content: space-between;
+    align-items: center;*/
     margin: 0 10px; 
 }
 
 .weather-information img {
     height: 60px;
     width: 60px;
+    filter: brightness(2);
+    align-self: flex-end;
 }
     
 .location-information {
@@ -77,8 +91,9 @@ color depending on weather temp in js file.*/
     margin: 0 10px 30px;
 }
 
-.temp {
-    font-size: 58px;
+.location-information p {
+    text-align: start;
+    font-size: 18px;
 }
 
 .location {
@@ -98,13 +113,15 @@ color depending on weather temp in js file.*/
 /*style for weather forcast wrapper*/
 .weather-forcast-wrapper {
     color: rgb(94, 92, 92);
+    margin: 30px 10px; 
     display: flex;
     flex-direction: column;
-    margin: 30px 10px;  
+    justify-content: center;
 }
 
 .weather-forcast {
-    margin-bottom: 10px;
+    padding: 5px;
+    border-bottom: 1px solid #f6f1f1;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -125,16 +142,18 @@ color depending on weather temp in js file.*/
 
 label {
     font-size: 18px;
-    font-family: inherit;
-    font-weight: 400;
+    /*font-family: inherit;*/
+    font-weight: 500;
     color: rgb(94, 92, 92)
 }
 
 input {
     border: none; 
-    border-bottom: 1px solid rgb(94, 92, 92); 
+    border-radius: 5px;
+    background-color: #f2f1ef;
     width: 300px;
-    margin-top: 20px;
+    padding: 10px;
+    margin: 20px 0;
 }
 
 
@@ -146,10 +165,6 @@ input {
 
 /****MEDIA FOR TABLET *****/
 @media (min-width: 768px) {
-    .location-information{
-        align-items: center;
-    }
-
     .sun-information{
         justify-content: space-around;
     }
@@ -159,7 +174,7 @@ input {
         top: 50px;
     }
 
-    .weather-forcast-wrapper {
+    .weather-forcast {
         align-self: center;
         width: 70%;
     }
@@ -167,11 +182,7 @@ input {
     
 /****MEDIA FOR DESKTOP *****/
 @media (min-width: 1024px) {
-    .weather-wrapper {
-        height: 50vh;
-    }
-
-    .weather-forcast-wrapper {
+    .weather-forcast {
         align-self: center;
         width: 50%;
     }

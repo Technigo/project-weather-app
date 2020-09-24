@@ -4,11 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Forcast</title>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+    <title>Weather App</title>
     <link rel="stylesheet" href="./style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+    <link
+      rel="icon"
+      type="image/png"
+      href="./favicon.png"
+      alt="favicon"
+    />
+    
 </head>
-
 <body>
     <section class="weather-container">
         <div class="weather-wrapper">
@@ -17,24 +23,23 @@
         </div>
        
         <div id="weatherForecast" class="weather-forcast-wrapper"></div>
-            <div class="searched-city">
-                <label for="cityNamePicked" class="city-serch">What's the weather in your favourite city?</label>
-                <input type="input" 
-                id="cityNamePicked" 
-                name="ciyNamePicked"
-                placeholder="" 
-                onkeydown="if (event.keyCode == 13) 
-                    document.getElementById('btnSearch').click()" />
+        <div class="searched-city">
+            <label for="cityNamePicked" class="city-serch">What's the weather in your favourite city?</label>
+            <input type="input" 
+            id="cityNamePicked" 
+            name="ciyNamePicked"
+            placeholder="" 
+            onkeydown="if (event.keyCode == 13) 
+                document.getElementById('btnSearch').click()" />
 
-                <input class="search-btn" 
-                type="button" 
-                id="btnSearch" 
-                value="Search" 
-                onclick="citySelected();" />
-            </div>
+            <input class="search-btn" 
+            type="button" 
+            id="btnSearch" 
+            value="Search" 
+            onclick="citySelected();" />
+        </div>
     </section>
 
     <script src="./script.js"></script>
 </body>
-
 </html>
