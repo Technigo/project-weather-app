@@ -7,41 +7,87 @@
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;400;600;800&display=swap" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
 </head>
+
+
 <body>
-<main>
+
+
+<div class="container">
+
+
+
+
   <header>
-    <div class="location">
-      <span id="city">STOCKHOLM</span>
-      <span id="country">SWEDEN</span>
+
+    <div class="header-location">
+      <span id="city" class="header-city">City</span>
+      <span id="country">Country</span>
     </div>
+
     <button class="button-primary">
       <img src="./assets/ic_globe.svg" alt="globe icon">
-      <span>SET LOCATION</span>
     </button>
-    
+
   </header>
-  <section id="main">
-    <div class="main-weathertop">
-      <div class=""></div>
+
+
+
+  <main>
+
+    <div class="main-weather-top">
+
+      <div class="weather-top-info">
+        <p class="weather-header" id="weathertype">Weather</p>
+        <p id="description">Description</p>
+      </div>
+
+      <div class="weather-top-suntimes">
+
+        <div class="sun-time">
+          <img src="./assets/ic_sunrise.svg" alt="icon of sunrise">
+          <p id="sunrise">00:00</p>
+        </div>
+
+        <div class="sun-time">
+          <img src="./assets/ic_sunset.svg" alt="icon of sunset">
+          <p id="sunset">00:00</p>
+        </div>
+
+      </div>
 
     </div>
-    <div class="main-weatherbottom">
 
+
+
+    <div class="main-weather-bottom">
+      <div><span id="temperature" class="temp-big">14°</span></div>
+      <p>(but it feels like <span id="tempfeelslike">12</span>)</p>
     </div>
 
 
-  </section>
+    <div class="image-hero-weather"><img id="weatherImage" src="./assets/img_sun.svg" alt=""></div>
+
+  </main>
+
+
 
   <footer>
     <div class="footer-top">
       <img src="./assets/clouds-top-border.svg" alt="Clouds border">
     </div>
-    <div class="footer-main"></div>
+    <div class="footer-main">
+      <section id="forecastBox"></section>
+    </div>
   </footer>
-</main>
-  <!-- <script src="script.js" defer></script>
-  <script src="countryTransform.js" defer></script> -->
-  <!-- <script src="svgColor.js" defer></script> -->
+
+
+
+
+</div>
+  <script src="script.js" defer></script>
+  <script src="countryTransform.js" defer></script>
+  <script src="svgColor.js" defer></script>
 </body>
 </html>

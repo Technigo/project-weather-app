@@ -5,8 +5,19 @@ weights: 100,200,400,600,800
 Blue:    #0C60F2
 Yellow:  #F6C844 */
 
+/* script, title {
+  display: none;
+} */
+
 * {
     box-sizing: border-box;
+    margin: 0;
+    /* border: 1px dashed salmon; */
+}
+
+html {
+  /* height: 100%; */
+  /* width: 100%; */
 }
 
 body {
@@ -19,10 +30,12 @@ body {
   background-color: #0C60F2;
   color: rgba(255,255,255,0.87);
   font-family: 'Work Sans', sans-serif;
+  display: flex;
 }
 
 
-main {
+/* THIS IS THE GUY THAT HOLDS EVERYTHING IN PLACE */
+.container {
   border: 1px solid rgba(255,255,255,1);
   width: 375px;
   height: 667px;
@@ -30,10 +43,178 @@ main {
   margin-top: 5%;
   display: flex;
   flex-direction: column;
+  align-content: space-between;
+  position: relative;
+  overflow: hidden;
 }
 
-main div {
+/* =================== everything here =================== */
+
+
+header {
+  background-color: white;
+  /* border: 1px dashed salmon; */
+  height: 74px;
+  display: flex;
+  align-items: center;
+  color: #0C60F2;
+  padding: 16px;
+}
+
+.header-location {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  /* border: 1px dashed #0C60F2; */
+  overflow: hidden;
+}
+
+.header-city {
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+button {
+  background: #FFFFFF;
+  /* height: 34px; */
+  box-shadow: 0px 3px 0px #0C60F2;
+  margin-left: 8px;
+  padding: 0px;
+  border: 2px solid #0C60F2;
+  width: 36px;
+  height: 36px;
+  box-sizing: border-box;
+}
+
+button:hover {
+  background-color: white;
+  border: 4px solid #0C60F2;
+  width: 36px;
+  height: 36px;
+}
+
+button:focus {
+  background-color: white;
+  border: 4px solid #0C60F2;
+  outline: 0;
+}
+
+button:active {
+  background-color: #0C60F222;
+  position: relative;
+  top: 4px;
+  box-shadow: none;
+  outline: 0;
+}
+
+button img {
+  margin: auto;
+  height: 16px;
+  width: 16px;
+}
+
+
+
+main {
+  /* border: 1px dashed aquamarine; */
+  height: auto;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px;
+}
+
+.main-weather-top {
+  /* border: 1px dashed salmon; */
+  flex-direction: row;
+  width: 50%;
+}
+
+.weather-top-info {
+  /* border: 1px dashed lime; */
   
+}
+
+.weather-top-suntimes {
+  /* border: 1px dashed lime; */
+  margin-top: 24px;
+}
+
+.weather-header {
+  color: #F6C844;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.weather-top-suntimes {
+  display: flex;
+  flex-direction: row;
+}
+
+.sun-time {
+  /* border: 1px dashed darkviolet; */
+  margin-right: 24px;
+}
+
+.image-hero-weather {
+  position: absolute;
+  top: 90px;
+  right: -20px;
+  z-index: -1;
+}
+
+
+.main-weather-bottom {
+  /* border: 1px dashed sandybrown; */
+}
+
+.temp-big {
+  font-size: 167px;
+  font-weight: 100;
+  margin-bottom: -20px;
+  line-height: 10px;
+}
+
+/* .temp-big-but-slightly-smaller {
+  font-size: 35px;
+  font-weight: 400;
+} */
+
+
+
+
+
+
+
+
+footer {
+  /* border: 1px dashed goldenrod; */
+  height: 212px;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-top {
+  height: 26px;
+}
+
+.footer-top img {
+  width: 100%;
+}
+
+.footer-main {
+  background-color: white;
+  flex-grow: 1;
+  padding: 16px;
+  color: #0C60F2;
+}
+
+/* =================== everything ends here =================== */
+
+
+svg {
+  fill: #fff;
 }
 
 .forecast-row {
@@ -57,8 +238,4 @@ main div {
   /* border: 1px dashed hotpink; */
   width: 30%;
   text-align: right;
-}
-
-svg {
-  fill: #fff;
 }

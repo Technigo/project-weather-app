@@ -46,35 +46,35 @@ const fetchWeather = (city) => {
 const fetchWeatherImage = (weather) => {
   // Purpose of this function should be to fetch an image and load it to the DOM, depending on the weather type.
   // Available: Clouds, Clear, Snow, Rain, Drizzle, Thunderstorm.
-  const image = document.getElementById("weatherIcon");
+  const image = document.getElementById("weatherImage");
 
   if(weather === 'Clouds') {
     console.log("It's cloudy today.");
-    image.src = "./assets/ic_cloudy.svg";
+    image.src = "./assets/img_cloud.svg";
     
   } else if(weather === 'Clear') {
     console.log("Sun's out!");
-    image.src = "./assets/ic_clear.svg";
+    image.src = "./assets/img_sun.svg";
     
   } else if(weather === 'Snow') {
     console.log("Brrr – snowy now.");
-    image.src = "./assets/ic_snow.svg";
+    image.src = "./assets/img_cloud.svg";
     
   } else if(weather === 'Rain') {
     console.log("Best bring an umbrella, son, cuz' it's pouring down.");
-    image.src = "./assets/ic_rain.svg";
+    image.src = "./assets/img_rain.svg";
     
   } else if(weather === 'Drizzle') {
     console.log("My rap name would be 'Young Drizzle'");
-    image.src = "./assets/ic_drizzle.svg";
+    image.src = "./assets/img_rain.svg";
     
   } else if(weather === 'Thunderstorm') {
     console.log("Oh hey, it's Thor! ⚡️");
-    image.src = "./assets/ic_thunder.svg";
+    image.src = "./assets/img_rain.svg";
     
   } else {
     console.log("This... This is a weather type we've never seen before. Call the president.")
-    image.src = "./assets/ic_sun.svg";
+    image.src = "./assets/img_sun.svg";
     
   }
 }
@@ -150,7 +150,6 @@ const fetchForecast = (cityName) => {
       const weather = element.weather[0].main;
 
       forecastBox.innerHTML += `
-      <section id="forecastBox"></section>
       <div id="forecastRow" class="forecast-row">
         <span class="forecast-date">${date}</span>
         <div class="forecast-temp">
@@ -158,8 +157,7 @@ const fetchForecast = (cityName) => {
           <span>${kelvinToCelsius(temp)}°</span>
         </div>
         <span class="forecast-weather">${weather}</span>        
-        </div>
-      </section>`
+        </div>`
 
     });
   })
