@@ -5,7 +5,7 @@
   font-family: 'Montserrat', sans-serif;
   color: #164a68;
   font-size: 20px;
-};
+}
 
   span {
     font-size: 30px;
@@ -13,7 +13,6 @@
   }
 
   .daily-weather {
-    height: 33vh;
     margin: 0 25px;
   }
 
@@ -52,9 +51,9 @@
     margin: 3px;
   }
 
-  .statement {
-    height: 30vh;
-    margin: 0 25px;
+  .statement,
+  .forecast {
+    margin: 35px 25px;
   }
 
   .statement-image-text {
@@ -66,11 +65,6 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     font-size: 25px;
-  }
-
-  .forecast {
-    height: 30vh;
-    margin: 0 25px;
   }
 
   .five-day-forecast :last-child {
@@ -92,13 +86,10 @@
 
   /**FOOTER style**/
   footer {
-    height: 7vh;
     text-align: center;
-    bottom: 0;
-    right: 0;
-    left: 0;
     padding: 3px;
     font-variant: all-small-caps;
+    border-top: 1px dotted #164a68;
   }
 
   footer > p {
@@ -106,6 +97,16 @@
   }
 
   /**MEDIA QUERIES**/
+  @media (max-width: 1024px) {
+    footer {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+
+
   /*tablet view*/
   @media (min-width: 768px) {
     * {
@@ -120,22 +121,22 @@
       .current-time, .current-date {
         font-size: 22px;
       }
-      .daily-weather, 
-      .statement, 
-      .forecast {
+      .daily-weather {
         margin: 0 100px;
       }
+
+      .statement, 
+      .forecast {
+        margin: 30px 100px;
+      }
+
       .statement-image-text > p {
         font-size: 40px;
       }
+
       footer > p {
         font-size: 21px;
       }  
   }
 
-  @media (min-width: 1024px) {
-    *{
-      max-width: 1025px;
-    }
-  }
    
