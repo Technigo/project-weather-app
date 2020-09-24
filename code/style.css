@@ -3,11 +3,18 @@ body {
     margin: 0px;
 }
 
+.icon {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 40px;
+}
+
 h1 {
     font-weight: 300;
     font-size: 120px;
     margin: 5px;
     margin-left: 0;
+    display: flex;
 }
 
 h2 {
@@ -26,7 +33,7 @@ h2 {
     background-image: linear-gradient( #8589FF, #E7E8FF);
     color: white;
     padding-left: 30px;
-    padding-top: 132px;
+    padding-top: 70px;
     border-bottom-left-radius: 80% 20%;
     border-bottom-right-radius: 80% 20%;
 }
@@ -34,6 +41,11 @@ h2 {
 .section-top p {
     margin: 5px;
     margin-left: 0;
+}
+
+.section-top span {
+    font-size: 35px;
+    padding-top: 20px;
 }
 
 .info-text {
@@ -54,18 +66,33 @@ h2 {
 /*BOTTOM SECTION*/
 
 .section-bottom {
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
     padding-top: 0px;
     padding-bottom: 50px;
     color: #707070;
 }
 
-.forecast {
+.forecast_a {
     display: flex;
     justify-content: space-between;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: lightyellow;
+    border-radius: 25%;
 }
 
-.forecast img {
+.forecast_b {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.forecast_a img {
+    width: 50px;
+}
+
+.forecast_b img {
     width: 50px;
 }

@@ -3,6 +3,7 @@ const city = document.getElementById("city");
 const description = document.getElementById("description");
 const sunrise = document.getElementById("sunriseTime");
 const sunset = document.getElementById("sunsetTime");
+const icon0 = document.getElementById("icon0")
 
 const API_KEY = "e3f7767c281ddc6599588c383f72962d";
 const API_URL_TODAY = `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${API_KEY}`
@@ -18,9 +19,10 @@ fetch(API_URL_TODAY)
 
 
 const updateWeatherToday = (json) => {
-    tempToday.innerHTML = json.main.temp.toFixed(1);
+    tempToday.innerHTML = `${json.main.temp.toFixed(1)}<span>°C</span>`;
     city.innerHTML = json.name;
     description.innerHTML = json.weather[0].description;
+    icon0.innerHTML = `<img src= "https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="weather icon" />`
 
     const sunriseMillSeconds = new Date(json.sys.sunrise * 1000);
     const sunriseProperTime = sunriseMillSeconds.toLocaleTimeString([], {hour: "2-digit", minute:"2-digit"});
@@ -122,11 +124,11 @@ const updateWeatherForecast = (json) => {
     const day4Temp = document.getElementById("day4Temp");
     const day5Temp = document.getElementById("day5Temp");
 
-    day1Temp.innerHTML = `${day1MinTemp}° / ${day1MaxTemp}° C`;
-    day2Temp.innerHTML = `${day2MinTemp}° / ${day2MaxTemp}° C`;
-    day3Temp.innerHTML = `${day3MinTemp}° / ${day3MaxTemp}° C`;
-    day4Temp.innerHTML = `${day4MinTemp}° / ${day4MaxTemp}° C`;
-    day5Temp.innerHTML = `${day5MinTemp}° / ${day5MaxTemp}° C`;
+    day1Temp.innerHTML = `${day1MinTemp}° / ${day1MaxTemp} °C`;
+    day2Temp.innerHTML = `${day2MinTemp}° / ${day2MaxTemp} °C`;
+    day3Temp.innerHTML = `${day3MinTemp}° / ${day3MaxTemp} °C`;
+    day4Temp.innerHTML = `${day4MinTemp}° / ${day4MaxTemp} °C`;
+    day5Temp.innerHTML = `${day5MinTemp}° / ${day5MaxTemp} °C`;
 
 };
 
