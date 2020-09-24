@@ -109,16 +109,16 @@ const weatherTodayBackgroundColor = (temp) => {
     console.log(containerColor)
 //const img = document.getElementById('weatherToday') //added
     if (temp < 0, temp <= 6) {  
-        containerColor.style.backgroundColor = 'blue';
+        containerColor.style.backgroundColor = '#5555ff';
         //containerToday.style.filter = "brightness(30%)";
         //containerToday.style.backgroundColor = '#e5f5f9';
     } else if (temp > 6, temp <= 20) {
-        containerColor.style.backgroundColor = 'orange';
+        containerColor.style.backgroundColor = '#ffa500';
         //containerToday.style.filter = "brightness(70%)";
        //containerToday.style.backgroundColor = '#fdae6b';
        //console.log(temp) 
     } else 
-        containerColor.style.backgroundColor = 'red'
+        containerColor.style.backgroundColor = '#FF0000'
 
         //containerToday.style.filter = "brightness(100%)";
         //containerToday.style.backgroundColor = '#e6550d'; 

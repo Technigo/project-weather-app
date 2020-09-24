@@ -36,8 +36,8 @@ img {
 /*class which lays under weather-today-wrapper to change
 color depending on weather temp in js file.*/ 
 .class-color {
-    background-color: red;
-    height: 40vh;
+    background-color: ''; /*'red'*/
+    height: 100%;
     padding: 30px 10px;
     width: 100%;
     position: absolute;
@@ -49,10 +49,10 @@ color depending on weather temp in js file.*/
 
 /*opacity 0.8 to show underlying background color in class-color*/
 .weather-today-wrapper {
-    background: url('./unsplash.weather.jpg') no-repeat center center; /*changed from ''*/
+    background: url('./unsplash-weather-s.jpg') no-repeat center center; /*changed from ''*/
     background-size: cover; /*added*/
     color: #ffffff;
-    height: 40vh;
+    height: 100%;
     padding: 30px 10px;
     width: 100%;
     position: absolute;
@@ -103,13 +103,6 @@ color depending on weather temp in js file.*/
     margin: 0 10px;
 }
 
-/*
-.bottom-wrapper {
-    background: url(./unsplash.weather.jpg) no-repeat center center;
-    background-size: cover;
-    filter: opacity(0.7) grayscale(20%);
-    color: #A4A3A1
-}*/
 
 /*style for weather forcast wrapper*/
 .weather-forcast-wrapper {
@@ -122,6 +115,7 @@ color depending on weather temp in js file.*/
 }
 
 .weather-forcast {
+    margin-bottom: 10px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -167,6 +161,10 @@ input {
 
 /****MEDIA FOR TABLET *****/
 @media (min-width: 768px) {
+    .location-information{
+        align-items: center;
+    }
+
     .sun-information{
         justify-content: space-around;
     }
@@ -187,6 +185,11 @@ input {
 
 /****MEDIA FOR DESKTOP *****/
 @media (min-width: 1024px) {
+    .container {
+        height: 50vh;
+    }
+
+
     .weather-forcast-wrapper {
         align-self: center;
         width: 50%;
