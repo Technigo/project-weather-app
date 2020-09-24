@@ -62,6 +62,7 @@ footer {
 }
 
 footer p {
+    font-size: 13px;
     opacity: 0.3;
 }
 
@@ -135,5 +136,10 @@ footer p {
     .forecast-container p {
         font-size: 30px;
         margin: 15px 20px 20px;  
+    }
+
+    footer {
+        margin-left: 300px;
+        text-align: start;
     }
 }
