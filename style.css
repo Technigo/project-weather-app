@@ -1,7 +1,8 @@
 body {
+  color: #fff;
   margin: 0;
   font-family: helvetica;
-  background: pink;
+  background: orangered;
 }
 
 header {
