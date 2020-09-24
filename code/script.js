@@ -3,9 +3,9 @@ const API_KEY = 'e27fc7790a6a4c3537de471b9d7612ce'
 // Default page base Ho Chi Minh City
 updateWeatherData('Saigon');
 
+
 document.getElementById('city-select').addEventListener('change', (event) => {
   const cityName = event.target.value;
-  console.log(cityName);
   updateWeatherData(cityName);
 });
 
@@ -66,42 +66,71 @@ function populateDetails(todayForecast, cityName) {
 }
 
 function populateSummary(todayForecast) {
+  console.log(todayForecast);
+  const weatherTemplate = getWeatherTemplate(todayForecast);
+  console.log('weatherTemplate', weatherTemplate);
+
+  document.getElementById('img').src = weatherTemplate.image;
+  document.getElementById('sumMessage').innerHTML = weatherTemplate.message;
+  document.querySelector('.main-container').style.background = weatherTemplate.background;
+  document.querySelector('.main-container').style.color = weatherTemplate.color;
+}
+
+function getWeatherTemplate(todayForecast) {
   const todayDescription = todayForecast.weather[0].description;
-  const rainyDay = todayDescription.includes('rain');
-  const cloudyDay = todayDescription.includes('cloud');
-  const sunnyDay = todayDescription.includes('clear');
   const city = todayForecast.name;
+  let weatherId = '';
 
-  if (rainyDay) {
-    document.getElementById('img').src = './assets/rainyDay.svg';
-    document.getElementById('sumMessage').innerHTML = `Don't forget your umbrella. It is wet in ${city} today.`;
-    document.querySelector('.main-container').classList.add('rainy-day');
-    document.querySelector('.main-container').classList.remove('cloudy-day');
-    document.querySelector('.main-container').classList.remove('sunny-day');
-    document.querySelector('.main-container').classList.remove('other-day');
-
-  } else if (cloudyDay) {
-    document.getElementById('img').src = './assets/cloudyDay.svg';
-    document.getElementById('sumMessage').innerHTML = `Light a fire and get cosy. It is cloudy in ${city} today.`;
-    document.querySelector('.main-container').classList.add('cloudy-day');
-    document.querySelector('.main-container').classList.remove('rainy-day');
-    document.querySelector('.main-container').classList.remove('sunny-day');
-    document.querySelector('.main-container').classList.remove('other-day');
-  } else if (sunnyDay){
-    document.getElementById('img').src = './assets/sunnyDay.svg';
-    document.getElementById('sumMessage').innerHTML = `Get your sunnies on. ${city} is looking rather great today.`;
-    document.querySelector('.main-container').classList.add('sunny-day');
-    document.querySelector('.main-container').classList.remove('rainy-day');
-    document.querySelector('.main-container').classList.remove('cloudy-day');
-    document.querySelector('.main-container').classList.remove('other-day');
+  if (todayDescription.includes('rain')) {
+    weatherId = 'rain';
+  } else if (todayDescription.includes('cloud')) {
+    weatherId = 'cloud';
+  } else if (todayDescription.includes('clear')) {
+    weatherId = 'clear';
   } else {
-    document.getElementById('img').src = './assets/cloud-moon-rain.svg';
-    document.getElementById('sumMessage').innerHTML = `Get yourself ready for the all-weather-in-one today`;
-    document.querySelector('.main-container').classList.add('other-day');
-    document.querySelector('.main-container').classList.remove('sunny-day');
-    document.querySelector('.main-container').classList.remove('rainy-day');
-    document.querySelector('.main-container').classList.remove('cloudy-day');
+    weatherId = 'other';
   }
+
+  console.log('weatherId', weatherId);
+
+  const weatherTemplate = [
+    {
+      id: 'rain',
+      description: todayDescription,
+      image: './assets/rainyDay.svg',
+      background: 'linear-gradient(rgba(163,222,247,0.2), rgba(163,222,247,1))',
+      color: '#164A68',
+      message: `Don't forget your umbrella. It is wet in ${city} today.`
+    },
+
+    {
+      id: 'cloud',
+      description: todayDescription,
+      image: './assets/cloudyDay.svg',
+      background: 'linear-gradient(rgba(244,247,248,0.2), rgba(244,247,248,1))',
+      color:'#F47775',
+      message: `Light a fire and get cosy. It is cloudy in ${city} today.`
+    },
+
+    {
+      id: 'clear',
+      description: todayDescription,
+      image: './assets/sunnyDay.svg',
+      background: 'linear-gradient(rgba(244,233,185,0.2), rgba(247,233,185,1))',
+      color:'#2A5510',
+      message: `Get your sunnies on. ${city} is looking rather great today.`
+    },
+
+   {
+      id: 'other',
+      description: todayDescription,
+      image: './assets/cloud-moon-rain.svg',
+      background: 'linear-gradient(rgba(216,187,255,0.2), rgba(216,187,255,1))',
+      color:'#5a189a',
+      message: `Enjoy the beauty of different weathers in ${city} today`
+    }
+  ]
+  return weatherTemplate.find((item) => item.id === weatherId);
 }
 
 function getTimeZone(city) {
@@ -119,9 +148,6 @@ function getTimeZone(city) {
     return 'Africa/Cairo'
   }
 }
-
-
-
 
   
 
