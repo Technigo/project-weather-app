@@ -26,11 +26,11 @@ const getWeather = (cityName) => {
             let timePM = new Date(result.sys.sunset * 1000)
             
             console.log(result)
-            container.innerHTML = `<section class="tempToday"> Temperature today: ${temperature}</section>`
+            container.innerHTML = `<section class="tempToday"> Temp today: ${temperature}°C</section>`
             container.innerHTML += `<section class="locationToday">Location: ${result.name}</section>`
             container.innerHTML += `<section class="condToday">Weather conditions: ${result.weather[0].description}</section>`
-            container.innerHTML += `<section class="sunriseToday">Sunrise at: ${timeAM}</section>`
-            container.innerHTML += `<section class="sundownToday">Sundown at: ${timePM}</section>`
+            container.innerHTML += `<section class="sunriseToday">Sunrise at: ${timeAM.toLocaleTimeString('en-US', {hour12: false, hour: '2-digit', minute: '2-digit'})}</section>`
+            container.innerHTML += `<section class="sundownToday">Sundown at: ${timePM.toLocaleTimeString('en-US', {hour12: false,  hour: '2-digit', minute: '2-digit'})}</section>`
         });
 };
 
@@ -41,11 +41,17 @@ const getForecast = (cityName) => {
         .then(response => response.json())
         .then((result) => {
 
+            console.log(result)
+            
+
             const filteredForecast = result.list.filter(item => item.dt_txt.includes('12:00'))
             filteredForecast.forEach((day) => {
 
-               // console.log(day)
-                container.innerHTML += `<section class="dailyForecast">Date: ${day.dt_txt} Temperature: ${day.main.temp}</section>`
+                let weekDay = new Date(day.dt*1000)
+                let dayName = weekDay.toLocaleDateString('en-US', {weekday: 'long',})
+                let temperature = Math.round(day.main.feels_like * 10)/10
+
+                container.innerHTML += `<section class="dailyForecast">${dayName} ${temperature}°C</section>`
 
             })
 
