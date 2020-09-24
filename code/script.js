@@ -1,8 +1,10 @@
 
+//current weather variables
 const city = document.getElementById('city');
 const currentTemperature = document.getElementById('currentTemperature');
 const weatherType = document.getElementById('weatherType');
-const apiUrl = 'http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=7d8d53e0c0365a01e3359eb496ea9fef';
+const currentWeather_API_URL = 'http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=7d8d53e0c0365a01e3359eb496ea9fef';
+const forecast_API_URL = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=7d8d53e0c0365a01e3359eb496ea9fef';
 const humidity = document.getElementById('humidity');
 const windSpeed = document.getElementById('windSpeed');
 const feelsLikeTemp = document.getElementById('feelsLikeTemp');
@@ -12,7 +14,15 @@ const maxTemp = document.getElementById('maxTemp');
 const sunriseTime = document.getElementById('sunriseTime');
 const sunsetTime = document.getElementById('sunsetTime');
 
-fetch(apiUrl)
+//forecast weather variables
+const forecastDay = document.getElementById('forecastDay');
+const forecastFeelsLikeTemp = document.getElementById('forecastFeelsLikeTemp');
+
+
+
+//current weather
+
+fetch(currentWeather_API_URL)
 .then(response => {
     return response.json();
 })
@@ -34,4 +44,29 @@ fetch(apiUrl)
     //converting the data given UNIX (in seconds) to milliseconds which is used in JS
     sunriseTime.innerHTML = `Sunrise:  ${new Date(sunrise * 1000).toLocaleTimeString('sv-SE',{hour: '2-digit', minute: '2-digit'})}`;
     sunsetTime.innerHTML = `Sunset: ${new Date(sunset * 1000).toLocaleTimeString('sv-SE',{hour: '2-digit', minute: '2-digit'})}`;
+});
+
+//forecast
+
+fetch(forecast_API_URL)
+.then(response => {
+    return response.json();
+})
+.then((forecastObject) => {
+    const listArray = forecastObject.list;
+    console.log(listArray);
+    const filteredForecast = listArray.filter(item => 
+    item.dt_txt.includes('12:00'));
+    console.log(filteredForecast);
+    filteredForecast.map(day => {
+        const date = new Date(day.dt_txt);
+        const dayName = date.toLocaleDateString('en-SE', {
+            weekday: 'long',
+            day: 'numeric'
+        })
+       forecastDay.innerHTML += `<p>${dayName}</p> `;
+       const temp = Math.floor(day.main.feels_like);
+       forecastFeelsLikeTemp.innerHTML += `<p>${temp}°C </p>`;
+    });
+    
 });
