@@ -25,12 +25,12 @@ const getWeather = (cityName) => {
             let timeAM = new Date(result.sys.sunrise * 1000)
             let timePM = new Date(result.sys.sunset * 1000)
             
-            console.log(timeAM)
-            container.innerHTML = `Temperature today: ${temperature}`
-            container.innerHTML += `Location: ${result.name}`
-            container.innerHTML += `Weather conditions: ${result.weather[0].description}`
-            container.innerHTML += `Sunrise at: ${timeAM}`
-            container.innerHTML += `Sundown at: ${timePM}`
+            console.log(result)
+            container.innerHTML = `<section class="tempToday"> Temperature today: ${temperature}</section>`
+            container.innerHTML += `<section class="locationToday">Location: ${result.name}</section>`
+            container.innerHTML += `<section class="condToday">Weather conditions: ${result.weather[0].description}</section>`
+            container.innerHTML += `<section class="sunriseToday">Sunrise at: ${timeAM}</section>`
+            container.innerHTML += `<section class="sundownToday">Sundown at: ${timePM}</section>`
         });
 };
 
@@ -45,7 +45,7 @@ const getForecast = (cityName) => {
             filteredForecast.forEach((day) => {
 
                // console.log(day)
-                container.innerHTML += `Date: ${day.dt_txt} Temperature: ${day.main.temp}`
+                container.innerHTML += `<section class="dailyForecast">Date: ${day.dt_txt} Temperature: ${day.main.temp}</section>`
 
             })
 

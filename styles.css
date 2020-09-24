@@ -1,0 +1,21 @@
+body{
+    letter-spacing: 0.2em;
+    font-size: 0.8em;
+    color: #F47775;
+}
+
+.container{
+    display: flex;
+    width: 100%;
+    height: 800px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#weather{
+    background:#eeedec;
+    width: 400px;
+    height: 400px;
+    
+}
