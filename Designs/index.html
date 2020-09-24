@@ -3,35 +3,32 @@
 
 <head>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="./sunny.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="icon" href="./images/sun.svg" type="image/x-icon" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gamleby Weather</title>
 </head>
 
 <body>
-    <section id="daily-weather">
+    <section id="daily-weather" class="daily-weather">
 
-        <div id="city">City</div>
-        <img id="icon"></img>
-        <div id="temp">Temprature</div>
-        <div id="description">Description</div>
+        <div class="day-temp-icon">
+            <div id="temp" class="temp">Temprature</div>
+            <img id="icon" class="daily-icon"></img>
+        </div>
 
-        <div id="sun">
+        <div id="city" class="city">City</div>
+        <div id="description" class="description">Description</div>
+        <div id="sun" class="sun">
             <div id="sunrise">Sunrise</div>
             <div id="sunset">Sunset</div>
         </div>
 
 
     </section>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <section id="forecast">
+
+    <section id="forecast" class="forecast">
 
         <div id="day1" class="days">
             <div id="day1-name"></div>

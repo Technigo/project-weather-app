@@ -62,7 +62,7 @@ const updateWeatherToday = (todayWeatherJson) => {
     const icon = document.getElementById('icon')
     icon.src = `images/${todayWeatherJson.weather[0].icon}.png`
 
-}//make icon for todays weather aswell
+}
 
 // the forecast 
 
