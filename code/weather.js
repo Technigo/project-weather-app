@@ -2,7 +2,7 @@
 const apiKey = "c2889b12ee617ea787319a19a98a5906"
 
 //Current Weather variables
-const currentWeatherUrl = "http://api.openweathermap.org/data/2.5/weather?q=Toronto,Canada&units=metric&APPID=c2889b12ee617ea787319a19a98a5906"
+const currentWeatherUrl = "https://api.openweathermap.org/data/2.5/weather?q=Toronto,Canada&units=metric&APPID=c2889b12ee617ea787319a19a98a5906"
 const city = 'Toronto, ON'
 const date = document.getElementById('date')
 const temperature = document.getElementById('temperature')
@@ -33,6 +33,25 @@ const currentWeatherToday = (json) => {
     const sunsetTorontoTime = sunsetToronto.toLocaleTimeString('en-CA', { timeStyle: 'short' })
     sunset.innerHTML = sunsetTorontoTime
 }
+//Changing icons depending on visibility ('description')
+const iconUpdate = (weather) => {
+    if (weather == "Clouds") {
+        document.getElementById('visibilityIcon').src = './assets/cloudy.png'
+    } if (weather == "Rain") {
+        document.getElementById('visibilityIcon').src = './assets/cloudy.png'
+    } if (weather == "Clear" || weather == "Sunny") {
+        document.getElementById('visibilityIcon').src = './assets/cloudy.png'
+    } if (weather == "Mist" || weather == "Fog") {
+        document.getElementById('visibilityIcon').src = './assets/cloudy.png'
+    } if (weather == "Snow") {
+        document.getElementById('visibilityIcon').src = './assets/cloudy.png'
+    } if (weather == "Hail") {
+        document.getElementById('visibilityIcon').src = './assets/cloudy.png'
+    } if (weather == "Thunder") {
+        document.getElementById('visibilityIcon').src = './assets/cloudy.png'
+    }
+    console.log(img)
+}
 //Fetch with JSON - Current Weather
 fetch(currentWeatherUrl)
     .then((response) => {
@@ -43,7 +62,7 @@ fetch(currentWeatherUrl)
     })
 
 // Five day forecast variables
-const weatherForecastUrl = "http://api.openweathermap.org/data/2.5/forecast?q=Toronto,Canada&units=metric&APPID=c2889b12ee617ea787319a19a98a5906"
+const weatherForecastUrl = "https://api.openweathermap.org/data/2.5/forecast?q=Toronto,Canada&units=metric&APPID=c2889b12ee617ea787319a19a98a5906"
 const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 const today = new Date()
 const days = today.getDay()
@@ -81,4 +100,5 @@ const updateMinMaxTemps = (data) => {
 // Fetch 5 day Forecast Data
 fetch(weatherForecastUrl)
     .then((response) => { return response.json() })
-    .then((data) => { updateMinMaxTemps(data) }) 
+    .then((data) => { updateMinMaxTemps(data) })
+

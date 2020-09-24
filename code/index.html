@@ -10,51 +10,40 @@
     <!-- MAIN SECTION, CURRENT WEATHER -->
     <section class id="weather-wrap">
       <h1>Weather Forecast</h1>
-      <header>
-        <input
-          type="text"
-          autocomplete="off"
-          class="search-box"
-          placeholder="Find a city . . ."
-        />
-      </header>
     </section>
 
-    <section class id="main">
-      <img src="/assets/cntower.png" height="100px" />
+    <section class="main">
+      <img src="/code/assets/cntower.png" height="100px" />
       <div class id="city"><p>Toronto, ON</p></div>
       <div class id="date"></div>
-        <p>Current temperature:</p>
-        <div class id="temperature"></div>
-        <p>Visibility:</p>
-        <div class id="description"></div>
-        <div class ="highLow">
-          <p>H:</p>
-          <div class id="H"></div>
-          <p>L:</p>
-          <div id="L"></div>
-        </div>
+      <p>Current temperature:</p>
+      <div class id="temperature"></div>
+      <p>Visibility:</p>
+      <div class id="description"></div>
+      <img id="visibilityIcon" src="" />
+      <div class="highLow">
+        <p>H:</p>
+        <div class id="H"></div>
+        <p>L:</p>
+        <div id="L"></div>
+      </div>
 
-        <section class id="feels">
-          <p>Feels Like:</p>
-          <div class id="feelsLike"></div>
-
-          <section class id="sunUpSunDown">
-            <p>Sunrise:</p>
-            <div class id="sunriseTO"></div>
-            <p>Sunset:</p>
-            <div class id="sunsetTO"></div>
-          </section>
-        </section>
-      </section>
-
-      <!-- FORECAST SECTION -->
-      <section class id="forecast-wrap">
-        <h1 class="h1-forecast">5 day forecast</h1>
-        <div class id="weatherForecast"></div>
+      <p>Feels Like:</p>
+      <div class id="feelsLike"></div>
+      <section class id="sunUpSunDown">
+        <p>Sunrise:</p>
+        <div class id="sunriseTO"></div>
+        <p>Sunset:</p>
+        <div class id="sunsetTO"></div>
       </section>
     </section>
 
+    <!-- FORECAST SECTION -->
+    <section class id="forecast-wrap">
+      <div class id="weatherForecast">
+        <h1 class="forecast-h1">THE NEXT 5 DAYS</h1>
+      </div>
+    </section>
     <script src="/code/weather.js"></script>
   </body>
 </html>

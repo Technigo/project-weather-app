@@ -8,7 +8,7 @@
 
 body {
   font-family: "Roboto Mono", monospace;
-  background-image: url(/assets/skies.jpg);
+  background-image: url(/code/assets/skies.jpg);
   background-size: cover;
   background-position: top center;
 }
@@ -17,69 +17,48 @@ h1 {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  text-align: center;
   font-size: 30px;
-  margin-top: 5px;
+  margin: 50px 50px;
   letter-spacing: 3px;
+  text-transform: uppercase;
 }
 
 /* MAIN SECTION, CURRENT WEATHER */
 p {
-  font-size: 25px;
+  font-size: 22px;
   color: rgb(199, 125, 125);
   font-weight: 600;
 }
 
-#main {
+.main {
   background-color: rgb(243, 245, 250);
+  opacity: 0.7;
   border-bottom: 2px solid snow;
   border-radius: 8px;
-  background-position: center;
-  display: flex;
-  flex-direction: column;
+  display: block;
   align-items: center;
   text-align: center;
   margin: 10px;
-  padding: 2px;
+  padding: 20px;
   font-size: 18px;
 }
 
-.current {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding-top: 10px;
-}
-#weather-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding-top: 10px;
-}
-
-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 30px 5px 5px;
-}
-
-header input {
-  width: 100%;
-  max-width: 250px;
-  padding: 10px 15px;
-  border: none;
-  outline: none;
-  border-bottom: 2px solid snow;
-  border-radius: 8px;
-  background-color: rgb(196, 214, 221);
-}
 /*FORECAST*/
 #weatherForecast {
-  background-color: white;
-  display: row;
+  background-color: rgb(243, 245, 250);
+  opacity: 0.7;
+  border-bottom: 2px solid snow;
+  border-radius: 8px;
+  display: block;
   align-items: center;
   text-align: center;
   font-size: 18px;
+  margin: 10px;
+  padding: 20px;
+}
+.forecast-h1 {
+  color: rgb(199, 125, 125);
+  font-size: 24px;
+  margin: 0;
 }
