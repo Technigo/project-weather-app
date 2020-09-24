@@ -4,17 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weather App</title>
+  <title>Karan's Weather App</title>
   <link rel="stylesheet" href="./style.css">
 </head>
 
-<body>
-
+<body class="main-body">
   <header class="header">
-    <h1>Daily and Weekly Weather ...</h1>
+    <h1>Weather App</h1>
   </header>
-  <main>
-    <section class="app-container">
+  <main class="main-app">
+    <div class="app-container">
       <div id="location">
         <p id="currentCityName">Stockholm</p>
       </div>
@@ -28,21 +27,19 @@
       <div id="suntime">
         <img src="./images/Icons/dawn.png" alt="Sunrise">
         <p id="sunrise"></p>
-        </p>
         <img src="./images/Icons/sunset.png" alt="Sunset">
         <p id="sunset"></p>
       </div>
-    </section>
-    <section class="forecast-five">
-      <h1>Next Days</h1>
+    </div>
+    <div class="forecast-five">
+      <h1 class="fiveday">5-Days Forecast</h1>
       <div id="forecast" class="forecast"></div>
-    </section>
+    </div>
   </main>
-
-
-
+  <footer>
+    <p>Made by Karan Mann as Part of the Technigo Bootcamp</p>
+  </footer>
   <script src="script.js"></script>
-
 </body>
 
 </html>

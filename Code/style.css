@@ -3,14 +3,9 @@
     padding: 0;
 }
 body{
-  height: 100vh;
-  background: rgb(186,195,34);
   background: linear-gradient(0deg, rgba(186,195,34,1) 0%, rgba(253,45,45,1) 100%);
-  background-repeat: no-repeat;
-  background-position: top center;
   font-family: Arial, Helvetica, sans-serif;
-  background-size: cover;
-
+  
 }
 .header {
   background-color: rgba(240, 248, 255, 0.6);
@@ -25,12 +20,8 @@ body{
 .app-container{
 width: 350px;
 margin: 40px auto;
-padding-bottom: 40px;;
-background-color: rgba(240, 248, 255, 0.6);
-border-bottom-left-radius: 30% 20%;
-border-bottom-right-radius: 30% 20%;
+padding-bottom: 40px;
 }
-
 #temp{
   text-align: center;
   font-size: 50pt;
@@ -39,12 +30,10 @@ border-bottom-right-radius: 30% 20%;
   text-shadow: rgba(0, 0, 0, 0.3);
   color: red;
 }
-
 #temp-icon {
   width: 30%;
   height: auto;
 }
-
 #location {
   color: black;
   font-size: 40px;
@@ -63,8 +52,6 @@ border-bottom-right-radius: 30% 20%;
   text-align: center;
   width: 350px;
   margin: 15px auto;
-  background-color: rgba(240, 248, 255, 0.6);
-  border-radius: 10px;
 }
 
 #suntime {
@@ -76,4 +63,19 @@ border-bottom-right-radius: 30% 20%;
 
 #suntime img {
   width: 40px;
+}
+
+.fiveday{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 30px;
+}
+
+.forecast {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  line-height: 40px;
+  padding-top: 30px;
+}
+footer {
+  color: black;
 }
