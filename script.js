@@ -4,10 +4,11 @@
 
 // const stad = "stockholm";
 // const stad = dropdown.value;
+const currentLocation = "berlin";
 
 const key = "5c01b021abe8da367bcecadd67235fb3";
-const apiURLcurrent = `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${key}`;
-const apiURLforcast = `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=${key}`;
+const apiURLcurrent = `https://api.openweathermap.org/data/2.5/weather?q=${currentLocation}&units=metric&APPID=${key}`;
+const apiURLforcast = `https://api.openweathermap.org/data/2.5/forecast?q=${currentLocation}&units=metric&APPID=${key}`;
 
 // *** current
 let city = document.getElementById("city");
@@ -16,9 +17,38 @@ let weather = document.getElementById("weather");
 let sunRise = document.getElementById("sunRise");
 let sunSet = document.getElementById("sunSet");
 let icon = document.getElementById("mainWeather");
+let iconForecast = document.getElementById("forecastImg");
 
 // *** forecast
 let forecast = document.getElementById("forecast");
+
+// *** weather arrays
+let fog = [
+  "Mist",
+  "Smoke",
+  "Haze",
+  "Dust",
+  "Fog",
+  "Sand",
+  "Ash",
+  "Squall",
+  "Tornado",
+];
+
+let rain = [
+  "light rain",
+  "moderate rain",
+  "heavy intensity rain",
+  "very heavy rain",
+  "extreme rain",
+];
+
+let heavyRain = [
+  "light intensity shower rain",
+  "shower rain",
+  "heavy intensity shower rain",
+  "ragged shower rain",
+];
 
 ////////////////////////////////////////////////////////////////////////////
 
@@ -57,6 +87,18 @@ const weatherToDay = () => {
       // *** main weather
       mainWeather.innerHTML = data.weather[0].main;
 
+      let localTime = data.dt;
+
+      // day-time
+      const isDay = () => {
+        if (localTime > data.sys.sunrise && localTime < data.sys.sunset) {
+          return true;
+        } else {
+          return false;
+        }
+      };
+      console.log("Is day: " + isDay());
+
       // *** sunrise
       sunrise = time(data.sys.sunrise);
       // "short" makes time show 4 numbers e.g. "06:30"
@@ -71,22 +113,62 @@ const weatherToDay = () => {
         timeStyle: "short",
       })}`;
 
+      console.log(data.sys.sunset);
+
+      // *** conditional ***
+
+      // clear
       if (data.weather[0].main === "Clear") {
         city.innerHTML = `${data.name} is looking nice today`;
-      } else if (data.weather[0].main === "Clouds") {
+        icon.src = `images/current/${isDay() ? "sun" : "moon"}.svg`;
+
+        // less than 50% clouds
+      } else if (
+        data.weather[0].description === "few clouds" ||
+        data.weather[0].description === "scattered clouds"
+      ) {
+        city.innerHTML = `${data.name} is looking okay today`;
+        icon.src = `images/current/${
+          isDay() ? "clouds-sun" : "cloudy-night"
+        }.svg`;
+
+        // more than 50% clouds
+      } else if (
+        data.weather[0].description === "broken clouds" ||
+        data.weather[0].description === "overcast clouds"
+      ) {
         city.innerHTML = `${data.name} is looking a bit grey today`;
         icon.src = "images/current/cloudy.svg";
-      } else if (
-        data.weather[0].main === "Rain" ||
-        data.weather[0].main === "Drizzle"
-      ) {
+
+        // drizzle rain
+      } else if (data.weather[0].main === "Drizzle") {
+        city.innerHTML = `${data.name} is looking so have some drizzle today`;
+        icon.src = "images/current/drizzle.svg";
+
+        // rain
+      } else if (rain.includes(data.weather[0].description)) {
         city.innerHTML = `${data.name} is looking rainy today`;
+        icon.src = "images/current/rain.svg";
+
+        // heavy rain
+      } else if (heavyRain.includes(data.weather[0].description)) {
+        city.innerHTML = `${data.name} is looking very rainy today`;
+        icon.src = "images/current/heavy-rain.svg";
+
+        // snow
       } else if (data.weather[0].main === "Snow") {
         city.innerHTML = `${data.name} is cold today. Watch out for snow!`;
+        icon.src = "images/current/snow.svg";
+
+        // fog
+      } else if (fog.includes(data.weather[0].main)) {
+        city.innerHTML = `${data.name} is looking foggy today. Watch your step!`;
+        icon.src = "images/current/wind.svg";
+
+        // thunder
       } else if (data.weather[0].main === "Thunderstorm") {
         city.innerHTML = `${data.name} is looking scary today. Watch out for thunderstorm!`;
-      } else {
-        city.innerHTML = `${data.name} is looking foggy today. Watch your step!`;
+        icon.src = "images/current/thunderstorm.svg";
       }
     });
 };
@@ -122,8 +204,14 @@ const weatherForcast = () => {
         // getting the temperature and rounds it
         const temp = round(item.main.temp);
 
+        if (item.weather[0].main === "Clear") {
+          iconForecast = `<img class="forecast-icon" src="images/current/sun.svg">`;
+        } else {
+          iconForecast = `<img class="forecast-icon" src="images/current/sun.svg">`;
+        }
+
         // writing to html
-        forecast.innerHTML += `<p class="forecast-info">A ${day} with ${weather} and a temperature of ${temp}°C<p>`;
+        forecast.innerHTML += `<p class="forecast-info">A ${day} with ${weather} and a temperature of ${temp}°C<p>${iconForecast}`;
       });
     });
 };
