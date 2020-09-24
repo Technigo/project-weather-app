@@ -59,7 +59,7 @@ const generateForecast = forecast => {
     })
 }
 
-const generateHTML = forecast => { // superproud if this! felt like a mountain but after support and help from classmates it was suddenly doable.
+const generateHTML = (forecast) => { // superproud if this! felt like a mountain but after support and help from classmates it was suddenly doable.
     handleDay(forecast.dt)
     const day = shortForecastDay
 
@@ -71,7 +71,7 @@ const generateHTML = forecast => { // superproud if this! felt like a mountain b
     forecastHTML += `<div><img src='${icon}'></div > `
     forecastHTML += `<p>${Math.round(forecast.main.temp)}°</p > `
     forecastHTML += `</li> `
-    return forecastHTML
+    return (forecastHTML)
 }
 
 const handleTime = (sunrise, sunset) => {

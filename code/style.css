@@ -1,12 +1,14 @@
 body {
     margin: 0;
     font-family: 'Noto Sans', sans-serif;
-    background-color: rgb(209, 232, 240);;
+    background-color: rgb(209, 232, 240);
+    /* background-color: rgb(235, 196, 203); */
 }
 
 .weather-container {
     padding: 40px 10px 10px 10px;
     background-image: linear-gradient(to right, rgb(139, 204, 226),rgb(55, 55, 255));
+    /* background-image: linear-gradient(to right, rgb(235, 196, 203),rgb(226, 99, 99)); */
     text-align: center;
 }
 
@@ -57,10 +59,6 @@ li {
     height: 50px;
 }
 
-#last{
-    border-bottom: none;
-}
-
 @media (min-width: 768px) and (max-width: 1023px) {
     .weather-container {
         padding: 100px 150px 20px 150px;
@@ -75,59 +73,28 @@ li {
 
   @media (min-width: 1024px) {
     .weather-container {
-        padding: 100px 400px 20px 400px;
+        padding: 100px 150px 20px 150px;
+    }
+    .weather-container ul {
+        padding-left: 200px;
+        padding-right: 200px;
+        justify-content: space-evenly;
     }
     .forecast-container {
-        padding: 50px 400px 50px 400px;
+        padding: 20px 400px 20px 400px;
     }
     .weather-container li {
         padding: 10px;
+    }
+    #forecastTable {
+        display: flex;
+        justify-content: space-around;
+        text-align: center;
+        margin: 0;
+    }
+    .forecast-row  {
+        padding: 50px;
+        border-bottom: none;
+        display: block;
     }
   }
-
-  /* @media (min-width: 1200px) {
-    .weather-container {
-        padding: 100px 500px 20px 500px;
-    }
-    .forecast-container {
-        padding: 50px 500px 50px 500px;
-    }
-    .weather-container li {
-        padding: 10px;
-    }
-  } */
-
-  /* @media (min-width: 1024px) {
-    body {
-        display: flex;
-        justify-content: space-evenly;
-        background-image: linear-gradient(to right, rgb(139, 204, 226),rgb(55, 55, 255));
-      }
-
-    .weather-container {
-        margin: 50px;
-        width: 500px;
-        height: 600px;
-        background-image: url('https://images.unsplash.com/photo-1574434824953-d11603f64d49?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60');
-        background-size: cover;
-        background-position: 100% 100%;
-        border-radius: 20px;
-    }
-
-    .weather {
-        padding: 10px;
-    }
-
-    .weather-container li {
-        padding: 0;
-    } 
-
-    .forecast-container {
-        margin: 50px;
-        width: 520px;
-        border-radius: 20px;
-        background-image: url('https://images.unsplash.com/photo-1542041721816-217845e45b14?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60');
-        background-size: cover;
-        background-position: 100% 0%;
-    }   
-  } */
