@@ -3,6 +3,17 @@ const API_KEY = 'e27fc7790a6a4c3537de471b9d7612ce'
 // Default page base Ho Chi Minh City
 updateWeatherData('Saigon');
 
+//get location of the user-ask for consent
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    prompt ("Geolocation is not supported by this browser.");
+  }
+}
+function showPosition(position) {
+  return (position.coords.latitude, position.coords.longitude) 
+}
 
 document.getElementById('city-select').addEventListener('change', (event) => {
   const cityName = event.target.value;
