@@ -1,44 +1,50 @@
-#city {
-  display: flex;
-  justify-content: center;
-}
 
-#temperature {
-  font-size: 70px;
-  margin-top: 0;
-  display: flex;
-  justify-content: center;  
-}
+/* body {
+ /*  background: linear-gradient(to top, #2980b9, #6dd5fa, #ffffff); */
+ 
+/* }   * */
 
-#weatherToday {
-  display: flex;
-  justify-content: center;
-  margin-top: 0px;
-  box-sizing: content-box;
+body {
+  background-color:lightblue;
+  font-family: 'Noto Sans JP', sans-serif;
 }
-
-#sunrise, #sunset {
-  display: flex;
-  justify-content: center;
-}
-
 
 h1 {
+  font-size: 100px;
   margin: 0;
+  display: flex;
+  justify-content: center;
 }
-
 
 h2 {
   margin-bottom: 0;
   margin-top: 100px;
+  display: flex;
+  justify-content: center;
 }
 
 h3 {
   margin-top: 10px;
   margin-bottom: 40px;
-  
+  display: flex;
+  justify-content: center;
 }
 
 h4 {
   margin: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+h5 {
+  font-size: 20px;
+  display: flex;
+  justify-content: left;
+  margin-left: 50px;
+}
+
+@media screen and (min-width:768px) {
+  h5 {
+    justify-content: center;
+  }
 }
