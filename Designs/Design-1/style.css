@@ -1,0 +1,9 @@
+.todays-weather {
+    border: 2px solid black;
+    height: 400px;
+}
+
+.weather-forecast {
+    border: 2px solid red;
+    height: 400px;
+}
