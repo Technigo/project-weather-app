@@ -9,10 +9,7 @@ const sunriseHeader = document.getElementById('headerSunrise');
 const sunsetHeader = document.getElementById('headerSunset');
 const containerDay = document.getElementById('weeklyWeatherDay');
 const containerTemp = document.getElementById('weeklyWeatherTemp');
-
-const isoCountries = {
-  'SE' : 'Sweden',
-}
+const weatherBackground = document.getElementById('weatherBackground');
 
 //FUNCTIONS 
 
@@ -32,6 +29,8 @@ fetch(apiUrlToday)
     sunriseHeader.innerHTML = `${getTimeFormat(json.sys.sunrise)}`
     //retriving the sunset from json
     sunsetHeader.innerHTML = `${getTimeFormat(json.sys.sunset)}`
+    //change background depending on weather
+    backgroundChange(json);
 })
 
 //fetch the data from api - weekly forecast
@@ -42,7 +41,6 @@ fetch(apiUrlWeekly)
   .then((json) => {
     //filter only data from 12.00
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
-    console.log(filteredForecast);
 
     filteredForecast.forEach((day) => {
       containerDay.innerHTML += `<p class="weekly-weather-day">${generateDayName(day.dt)}</p>`
@@ -60,6 +58,9 @@ const getNumberFormat = (x) => {
 
 //function to convert country code to country name
 const getCountryName = (countryCode) => {
+  const isoCountries = {
+    'SE' : 'Sweden',
+  }
   if (isoCountries.hasOwnProperty(countryCode)) {
       return isoCountries[countryCode];
   } else {
@@ -80,6 +81,15 @@ const generateDayName = (name) => {
   const formatDay = new Date(name * 1000).getDay([]);
   const resultDay = days[formatDay];
     return resultDay;
+}
+
+//function to change background depending on temp 
+const backgroundChange = (number) => { 
+  if (number.main.temp <= 15) {
+      weatherBackground.classList.add('header-weather-wrapper-cold')
+  } else { 
+      weatherBackground.classList.remove('header-weather-wrapper-cold')
+  }
 }
 
 //function for hamburger menu

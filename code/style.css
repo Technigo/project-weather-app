@@ -1,7 +1,7 @@
 html {
     box-sizing: border-box;
     font-family: 'Roboto Condensed', Sans-Serif;
-    color: black
+    color: #010101
   }
   
 *, *:before, *:after {
@@ -67,14 +67,14 @@ header {
     width: 6%;
 }
 
-.header-weather-wrapper {
+.header-weather-wrapper, .header-weather-wrapper-cold {
     display: flex;
     position: absolute;
     align-items: center;
     justify-content: center;
     top: 0;
-    left: 0;
     right: 0;
+    left: 0;
     z-index: -1;
     flex-direction: column;
     height: 375px;
@@ -102,13 +102,13 @@ header {
     100%{background-position:0% 50%}
 }
 
-/* BLUE ANIMATION for bad weather
-    background: linear-gradient(270deg, #0e4bef, #6e42e2, #4b0082);
+.header-weather-wrapper-cold {
+    background: linear-gradient(270deg, #0e4bef, #b875bb, #5e00a3);
     background-size: 600% 600%;
 
-    -webkit-animation: AnimationName 10s ease infinite;
-    -moz-animation: AnimationName 10s ease infinite;
-    animation: AnimationName 10s ease infinite;
+    -webkit-animation: AnimationName 30s ease infinite;
+    -moz-animation: AnimationName 30s ease infinite;
+    animation: AnimationName 30s ease infinite;
 }
 
 @-webkit-keyframes AnimationName {
@@ -126,7 +126,6 @@ header {
     50%{background-position:100% 50%}
     100%{background-position:0% 50%}
 }
-*/
 
 /* Hamburget Menu  */
 
@@ -146,7 +145,7 @@ header {
   
 /* style navigation menu links */
 .topnav a {
-    color: black;
+    color: #010101;
     padding: 14px 16px; 
     text-decoration: none;
     display: block;
@@ -164,7 +163,7 @@ header {
   
 .topnav a:hover {
     background-color: rgba(255,255,255, 0.9);
-    color: black;
+    color: #010101;
 }
   
 /* style the active link (or home/logo) */
@@ -181,7 +180,7 @@ header {
 
     header {
         width: 100%;
-        background-color: black;
+        background-color: #010101;
         height: 200px;
     }
 
@@ -191,22 +190,22 @@ header {
     }
 
     .topnav .active {
-        color: white;
+        color: #ffffff;
     }
 
     .topnav a:hover {
-        color: black;
+        color: #010101;
     }
 
     .topnav a.icon {
-        color: white;
+        color: #ffffff;
     }
 
     .header-title {
         display: block;
         text-align: center;
         margin-top: 70px;
-        color: white;
+        color: #ffffff;
         text-transform: uppercase;
         font-size: 50px;
         position: absolute;
@@ -222,13 +221,13 @@ header {
 
     header {
         width: 100%;
-        background-color: black;
+        background-color: #010101;
         height: 220px;
         margin-bottom: 40px;
     }
 
     .topnav a {
-        color: white;
+        color:  #ffffff;
         font-size: 20px;
     }
 
@@ -240,7 +239,7 @@ header {
         display: block;
         text-align: center;
         margin-top: 70px;
-        color: white;
+        color: #ffffff;
         text-transform: uppercase;
         font-size: 50px;
         position: absolute;
@@ -294,7 +293,7 @@ header {
 /* For tablet only */
 @media screen and (min-width: 667px) and (max-width: 1024px) {
 
-    .header-weather-wrapper {
+    .header-weather-wrapper, .header-weather-wrapper-cold {
         position: initial;
         width: 80%;
         margin: auto;
@@ -351,7 +350,7 @@ header {
         height: 450px;
     }
 
-    .header-weather-wrapper {
+    .header-weather-wrapper, .header-weather-wrapper-cold {
         position: initial;
         width: 40%;
         height: inherit;

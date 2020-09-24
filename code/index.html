@@ -11,17 +11,15 @@
 </head>
 
 <body>
+     <!-- Header section -->
     <header>
-    <!-- HAMBURGER MENU -->
     <div class="topnav">
         <a href="#home" class="active">Luna weather</a>
-        <!-- Navigation links (hidden by default) -->
         <div id="myLinks">
             <a href="#news">WEATHER</a>
             <a href="#contact">CONTACT</a>
             <a href="#about">ABOUT LUNA</a>
         </div>
-        <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
         <a href="javascript:void(0);" class="icon" onclick="menuToggle()">
             <i class="fa fa-bars"></i>
         </a>
@@ -33,7 +31,8 @@
     </header>
 
     <div class="container-computer">
-        <div class="header-weather-wrapper">
+        <!-- Todays weather section -->
+        <div id="weatherBackground" class="header-weather-wrapper">
             <p id="headerLocation" class="header-text-location"></p>
             <p id="headerWeather" class="header-text-weather"></p>
             <p id="headerCelcius" class="header-text-celcius"></p>
@@ -45,13 +44,13 @@
                 <p id="headerSunset" class="header-text-sun"></p>
             </div>
         </div>
-
+        <!-- Weekly weather section -->
         <section id="weeklyWeather" class="weekly-weather">
             <div id="weeklyWeatherDay" class="weekly-weather-day-wrapper"></div>
             <div id="weeklyWeatherTemp" class="weekly-weather-temp-wrapper"></div>
         </section>
     </div>
-
+    <!-- Footer section -->
     <footer>
         <h3 class="company-title">luna weather</h3>
         <div class="footer-links-wrapper">
