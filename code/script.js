@@ -20,6 +20,7 @@ fetch(apiStockholm)
     city.innerHTML = weatherObject.name;
     console.log(weatherObject);
     weatherDescription.innerHTML = weatherObject.weather[0].description
+    temperatures.innerHTML = weatherObject.main.temp.toFixed(0.5)
     sunrise.innerHTML = weatherObject.sys.sunrise
     sunset.innerHTML = weatherObject.sys.sunset
     console.log(weatherObject)
