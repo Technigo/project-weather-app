@@ -12,6 +12,7 @@ const forecastTableElement = document.getElementById("forecastTable")
 const forecastDayElement = document.getElementById("forecastDay")
 const forecastIconElement = document.getElementById("forecastIcon")
 const forecastTempElement = document.getElementById("forecastTemp")
+const lastElement = document.getElementById("last")
 
 fetch(weatherUrl)
     .then((response) => {
@@ -50,9 +51,6 @@ const generateWeather = weather => {
     sunsetElement.innerHTML = `Sunset: ${sunset} `
 }
 
-
-
-
 const generateForecast = forecast => {
     const noonForecast = forecast.list.filter(item => item.dt_txt.includes('12:00')) // filter already in fetch?
 
@@ -61,7 +59,7 @@ const generateForecast = forecast => {
     })
 }
 
-const generateHTML = forecast => {
+const generateHTML = forecast => { // superproud if this! felt like a mountain but after support and help from classmates it was suddenly doable.
     handleDay(forecast.dt)
     const day = shortForecastDay
 
