@@ -1,8 +1,6 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This weeks assignment was to build a simple weather web app that shows today's weather and temperature, and a 5-day forecast using a weather API from openweathermap.org. 
 
 ## The problem
 
@@ -10,4 +8,4 @@ Describe how you approached to problem, and what tools and techniques you used t
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Link to the deployed project on Netlify: 
