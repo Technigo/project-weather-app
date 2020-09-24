@@ -8,9 +8,9 @@
   <link rel="stylesheet" href="./style.css">
   <title>Weather Forecast</title>
 </head>
-<body class="body">
+<body id="body">
   <div class="wrap">
-    <div class="main-container">
+    <div id="main-container" class="main-container">
       <div class="header">
         <p id="headerMessage"></p>
       </div>
@@ -30,15 +30,14 @@
       <div id="forecast" class="forecast">
       </div>
       <div class="search">
-        <input list="city">
-          <datalist id="city">
-            <option value="Stockholm">
-            <option value="Paris">
-            <option value="London">
-            <option value="New York">
-            <option value="Beijing">
-          </datalist>
-        <button id="button">Search</button>
+        <select id="city-select">
+          <option value="Ho chi minh">Ho chi minh</option>
+          <option value="Paris">Paris</option>
+          <option value="Santiago">Santiago</option>
+          <option value="Los Angeles">Los Angeles</option>
+          <option value="Cairo">Cairo</option>
+          <option value="Tokyo">Tokyo</option>
+        </select>
       </div>
     </div>
   </div>

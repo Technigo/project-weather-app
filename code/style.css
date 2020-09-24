@@ -20,6 +20,10 @@ body {
   max-width: 400px;
 }
 
+.main-container .hide {
+  display: none;
+}
+
 .des::first-letter {
   text-transform: capitalize;
 }
