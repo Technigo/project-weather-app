@@ -1,7 +1,7 @@
 const API_KEY = 'e27fc7790a6a4c3537de471b9d7612ce'
 
 // Default page base Ho Chi Minh City
-updateWeatherData('Ho chi minh');
+updateWeatherData('Saigon');
 
 document.getElementById('city-select').addEventListener('change', (event) => {
   const cityName = event.target.value;
@@ -73,24 +73,34 @@ function populateSummary(todayForecast) {
   const city = todayForecast.name;
 
   if (rainyDay) {
-    document.getElementById('img').src = './assets/rainnyDay.svg';
+    document.getElementById('img').src = './assets/rainyDay.svg';
     document.getElementById('sumMessage').innerHTML = `Don't forget your umbrellar. It is wet in ${city} today.`;
     document.querySelector('.main-container').classList.add('rainy-day');
+    document.querySelector('.main-container').classList.remove('cloudy-day');
+    document.querySelector('.main-container').classList.remove('sunny-day');
+
   } else if (cloudyDay) {
     document.getElementById('img').src = './assets/cloudyDay.svg';
     document.getElementById('sumMessage').innerHTML = `Light a fire and get cosy. It is cloudy in ${city} today.`;
     document.querySelector('.main-container').classList.add('cloudy-day');
+    document.querySelector('.main-container').classList.remove('rainy-day');
+    document.querySelector('.main-container').classList.remove('sunny-day');
   } else if (sunnyDay){
     document.getElementById('img').src = './assets/sunnyDay.svg';
     document.getElementById('sumMessage').innerHTML = `Get your sunnies on. ${city} is looking rather great today.`;
     document.querySelector('.main-container').classList.add('sunny-day');
+    document.querySelector('.main-container').classList.remove('rainy-day');
+    document.querySelector('.main-container').classList.remove('cloudy-day');
   } else {
     document.getElementById('sumMessage').innerHTML = `Get yourself ready for the all-weather-in-one today`;
+    document.querySelector('.main-container').classList.remove('sunny-day');
+    document.querySelector('.main-container').classList.remove('rainny-day');
+    document.querySelector('.main-container').classList.remove('cloudy-day');
   }
 }
 
 function getTimeZone(city) {
-  if (city === 'Ho Chi Minh') {
+  if (city === 'Saigon') {
     return 'Asia/Saigon'
   } else if(city === "Los Angeles") {
     return 'America/Los_Angeles'
