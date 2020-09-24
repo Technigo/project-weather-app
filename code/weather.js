@@ -29,7 +29,7 @@ const getLatLong = (forecast) => {
 
 const fetchWeather = (city) => {
   return fetch(
-    `http://api.openweathermap.org/data/2.5/weather?q=${city},Sweden&units=metric&APPID=7d01b328e34c450986cb7faef032a771`
+    `https://api.openweathermap.org/data/2.5/weather?q=${city},Sweden&units=metric&APPID=7d01b328e34c450986cb7faef032a771`
   )
     .then((response) => {
       return response.json();
