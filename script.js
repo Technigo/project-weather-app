@@ -65,7 +65,7 @@ const time = (number) => {
 
 ////////////////////////////////////////////////////////////////////////////
 
-// *** WEATHER TODAY
+// *** CURRENT WEATHER
 
 const weatherToDay = () => {
   fetch(apiURLcurrent)
@@ -73,7 +73,6 @@ const weatherToDay = () => {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
       // *** city
       city.innerHTML = data.name;
 
@@ -96,7 +95,6 @@ const weatherToDay = () => {
           return false;
         }
       };
-      console.log("Is day: " + isDay());
 
       // *** sunrise
       sunrise = time(data.sys.sunrise);
@@ -112,14 +110,12 @@ const weatherToDay = () => {
         timeStyle: "short",
       })}`;
 
-      console.log(data.sys.sunset);
-
       // *** conditional ***
 
       // clear
       if (data.weather[0].main === "Clear") {
         city.innerHTML = `${data.name} is looking nice today`;
-        icon.src = `images/current/${isDay() ? "sun" : "moon"}.svg`;
+        icon.src = `images/${isDay() ? "sun" : "moon"}.svg`;
 
         // less than 50% clouds
       } else if (
@@ -127,9 +123,7 @@ const weatherToDay = () => {
         data.weather[0].description === "scattered clouds"
       ) {
         city.innerHTML = `${data.name} is looking okay today`;
-        icon.src = `images/current/${
-          isDay() ? "clouds-sun" : "cloudy-night"
-        }.svg`;
+        icon.src = `images/${isDay() ? "clouds-sun" : "cloudy-night"}.svg`;
 
         // more than 50% clouds
       } else if (
@@ -137,44 +131,44 @@ const weatherToDay = () => {
         data.weather[0].description === "overcast clouds"
       ) {
         city.innerHTML = `${data.name} is looking a bit grey today`;
-        icon.src = "images/current/cloudy.svg";
+        icon.src = "images/cloudy.svg";
 
         // drizzle rain
       } else if (data.weather[0].main === "Drizzle") {
         city.innerHTML = `${data.name} is looking so have some drizzle today`;
-        icon.src = "images/current/drizzle.svg";
+        icon.src = "images/drizzle.svg";
 
         // rain
       } else if (rain.includes(data.weather[0].description)) {
         city.innerHTML = `${data.name} is looking rainy today`;
-        icon.src = "images/current/rain.svg";
+        icon.src = "images/rain.svg";
 
         // heavy rain
       } else if (heavyRain.includes(data.weather[0].description)) {
         city.innerHTML = `${data.name} is looking very rainy today`;
-        icon.src = "images/current/heavy-rain.svg";
+        icon.src = "images/heavy-rain.svg";
 
         // snow
       } else if (data.weather[0].main === "Snow") {
         city.innerHTML = `${data.name} is cold today. Watch out for snow!`;
-        icon.src = "images/current/snow.svg";
+        icon.src = "images/snow.svg";
 
         // fog
       } else if (fog.includes(data.weather[0].main)) {
         city.innerHTML = `${data.name} is looking foggy today. Watch your step!`;
-        icon.src = "images/current/wind.svg";
+        icon.src = "images/wind.svg";
 
         // thunder
       } else if (data.weather[0].main === "Thunderstorm") {
         city.innerHTML = `${data.name} is looking scary today. Watch out for thunderstorm!`;
-        icon.src = "images/current/thunderstorm.svg";
+        icon.src = "images/thunderstorm.svg";
       }
     });
 };
 
 ////////////////////////////////////////////////////////////////////////////
 
-// *** WEATHER FORECAST
+// *** FORECAST WEATHER
 
 const weatherForcast = () => {
   fetch(apiURLforcast)
@@ -201,12 +195,54 @@ const weatherForcast = () => {
         const weather = item.weather[0].description;
 
         // getting the temperature and rounds it
-        const temp = round(item.main.temp);
+        const temp = Math.round(item.main.temp);
 
+        // *** conditional ***
+        // Don't know about this solution below, trying to not repeat myself  ¯\_(ツ)_/¯
+
+        iconForecast = `<div class="icon-container"><img class="forecast-icon" `;
+
+        // clear
         if (item.weather[0].main === "Clear") {
-          iconForecast = `<div class="icon-container"><img class="forecast-icon" src="images/current/sun.svg"></div>`;
-        } else {
-          iconForecast = `<div class="icon-container"><img class="forecast-icon" src="images/current/sun.svg"></div>`;
+          iconForecast += `src="images/sun.svg"></div>`;
+
+          // less than 50% clouds
+        } else if (
+          item.weather[0].description === "few clouds" ||
+          item.weather[0].description === "scattered clouds"
+        ) {
+          iconForecast += `src="images/clouds-sun.svg"></div>`;
+
+          // more than 50% clouds
+        } else if (
+          item.weather[0].description === "broken clouds" ||
+          item.weather[0].description === "overcast clouds"
+        ) {
+          iconForecast += `src="images/cloudy.svg"></div>`;
+
+          // drizzle rain
+        } else if (item.weather[0].main === "Drizzle") {
+          iconForecast += `src="images/drizzle.svg"></div>`;
+
+          // rain
+        } else if (rain.includes(item.weather[0].description)) {
+          iconForecast += `src="images/rain.svg"></div>`;
+
+          // heavy rain
+        } else if (heavyRain.includes(item.weather[0].description)) {
+          iconForecast += `src="images/heavy-rain.svg"></div>`;
+
+          // snow
+        } else if (item.weather[0].main === "Snow") {
+          iconForecast += `src="images/snow.svg"></div>`;
+
+          // fog
+        } else if (fog.includes(item.weather[0].main)) {
+          iconForecast += `src="images/wind.svg"></div>`;
+
+          // thunder
+        } else if (item.weather[0].main === "Thunderstorm") {
+          iconForecast += `src="images/thunderstorm.svg"></div>`;
         }
 
         // writing to html
