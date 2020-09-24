@@ -17,7 +17,6 @@ let weather = document.getElementById("weather");
 let sunRise = document.getElementById("sunRise");
 let sunSet = document.getElementById("sunSet");
 let icon = document.getElementById("mainWeather");
-let iconForecast = document.getElementById("forecastImg");
 
 // *** forecast
 let forecast = document.getElementById("forecast");
@@ -205,13 +204,13 @@ const weatherForcast = () => {
         const temp = round(item.main.temp);
 
         if (item.weather[0].main === "Clear") {
-          iconForecast = `<img class="forecast-icon" src="images/current/sun.svg">`;
+          iconForecast = `<div class="icon-container"><img class="forecast-icon" src="images/current/sun.svg"></div>`;
         } else {
-          iconForecast = `<img class="forecast-icon" src="images/current/sun.svg">`;
+          iconForecast = `<div class="icon-container"><img class="forecast-icon" src="images/current/sun.svg"></div>`;
         }
 
         // writing to html
-        forecast.innerHTML += `<p class="forecast-info">A ${day} with ${weather} and a temperature of ${temp}°C<p>${iconForecast}`;
+        forecast.innerHTML += `<div class="forecast-card"><div class="text-container"><p class="forecast-info">A ${day} with ${weather} and a temperature of ${temp}°C<p></div>${iconForecast}</div>`;
       });
     });
 };

@@ -32,14 +32,25 @@ p {
   margin-top: 20px;
 }
 
-.forecast,
-.forecast-img {
-  width: 80%;
+.text-container {
+  width: 70%;
+}
+
+.icon-container {
+  width: 30%;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.forecast-card {
+  display: flex;
+  align-items: center;
+  width: 90%;
   padding: 20px;
 }
 
 .forecast-info {
-  margin-bottom: 16px;
+  font-size: 22px;
 }
 
 .main-weather {
