@@ -1,5 +1,5 @@
 
-// Location + UV index coordinates Variables
+// Location + UV index Coordinates Variables Porto (default)
 let city = 'Porto, Portugal';
 let latitude ='41.15';
 let longitude = '8.61';
@@ -21,7 +21,6 @@ const daysOfTheWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "
 
 
 // Function to change background 
-
 const backgroundChange = (weatherInfo) => { 
     if (weatherInfo.main.temp.toFixed(1) >= 18 || weatherInfo.main.feels_like.toFixed(1) >= 18) {
         body.classList.add('warm')
@@ -61,7 +60,6 @@ const weatherIconChange = (weather) =>{
 }
   
 // Current and real feel rounded temperature function
-
 const updateRoundTemperatures = (weatherInfo) => {
     const roundedTemperature = weatherInfo.main.temp.toFixed(1);
     currentTemperature.innerHTML = `${roundedTemperature} °C`;
@@ -70,7 +68,6 @@ const updateRoundTemperatures = (weatherInfo) => {
 };
 
 // WIND Function 
-
 const updateWind = (weatherInfo) => { 
     const wind = weatherInfo.wind.speed;
     currentWind.innerHTML = `Wind Speed: ${wind} m/s`;
@@ -91,7 +88,6 @@ const updateUvIndex = (uvInfo) => {
 }
 
 // Fetch UV index Data 
-
 const loadUvIndex = (latitude, longitude) => { 
     const apiUvIndexUrl = `https://api.openweathermap.org/data/2.5/uvi?lat=${latitude}&lon=${longitude}&appid=09124a2f59a3124951523d476ed8a36d`;
     fetch(apiUvIndexUrl)
@@ -123,10 +119,11 @@ const updateMinMaxTemps = (data) => {
             }
         } else {
             const date = new Date(item.dt*1000);
+            const indexOfDayOfTheWeek = date.getDay();
             minMaxTemps[currentDate] = { 
                 minTemp: item.main.temp_min, 
                 maxTemp: item.main.temp_max,
-                dayOfWeek: daysOfTheWeek[date.getDay()]
+                dayOfWeek: daysOfTheWeek[indexOfDayOfTheWeek]
             };
         }
     });
@@ -140,7 +137,6 @@ const updateMinMaxTemps = (data) => {
 }
 
 // Fetch 5-day Forecast Data
-
 const loadFiveDaysWeatherForecast = (city) => { 
     const apiForecastWeatherUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=09124a2f59a3124951523d476ed8a36d`;
     
@@ -165,6 +161,7 @@ const loadWeatherCity = (city) => {
     })
 }
 
+// Sets up page for a city 
 const initializePage = (city, latitude, longitude) => {
     loadWeatherCity(city);
     loadFiveDaysWeatherForecast(city);
