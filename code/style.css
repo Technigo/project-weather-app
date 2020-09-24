@@ -50,11 +50,6 @@ p {
   text-align: center;
   padding-top: 10px;
 }
-#highLow {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
 #weather-wrap {
   display: flex;
   flex-direction: column;
@@ -81,3 +76,10 @@ header input {
   background-color: rgb(196, 214, 221);
 }
 /*FORECAST*/
+#weatherForecast {
+  background-color: white;
+  display: row;
+  align-items: center;
+  text-align: center;
+  font-size: 18px;
+}

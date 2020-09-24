@@ -49,15 +49,36 @@ const today = new Date()
 const days = today.getDay()
 
 
-//Fetch with JSON - Forecast Weather
-const forecastWeather = () => {
-    fetch(weatherForecastUrl)
-        .then(response => response.json())
-        .then(data => {
-            const newData = data.list.filter(item => {
-                return item.dt_txt.includes('12:00')
-            })
-            console.log(newData)
-        })
+//FUNCTION FORECAST
+const updateMinMaxTemps = (data) => {
+    let minMaxTemps = {}
+
+    data.list.forEach((item) => {
+        const currentDate = item.dt_txt.split(" ")[0]
+
+        if (minMaxTemps[currentDate]) {
+            if (item.main.temp_min < minMaxTemps[currentDate].minTemp) {
+                minMaxTemps[currentDate].minTemp = item.main.temp_min
+            }
+            if (item.main.temp_max > minMaxTemps[currentDate].maxTemp) {
+                minMaxTemps[currentDate].maxTemp = item.main.temp_max
+            }
+        } else {
+            const date = new Date(item.dt * 1000)
+            minMaxTemps[currentDate] = {
+                minTemp: item.main.temp_min,
+                maxTemp: item.main.temp_max,
+                dayOfWeek: weekDays[date.getDay()].toUpperCase()
+            }
+        }
+    })
+    for (const date in minMaxTemps) {
+        const forecast = document.getElementById('weatherForecast')
+        forecast.innerHTML += `<div class="column">${minMaxTemps[date].dayOfWeek}</div>`
+        forecast.innerHTML += `<div class="column">${minMaxTemps[date].minTemp.toFixed(0.5)} °C | ${minMaxTemps[date].maxTemp.toFixed(0.5)} °C </div>`
+    }
 }
-forecastWeather()
+// Fetch 5 day Forecast Data
+fetch(weatherForecastUrl)
+    .then((response) => { return response.json() })
+    .then((data) => { updateMinMaxTemps(data) }) 
