@@ -153,10 +153,10 @@ main {
 
 @keyframes MoveUpDown {
   0%, 100% {
-    top: 80px;
+    top: 40px;
   }
   50% {
-    top: 120px;
+    top: 80px;
   }
 }
 
@@ -308,11 +308,18 @@ footer {
 }
 
 .image-hero-weather-container {
-  position: absolute;
-  /* top: 5%; */
-  right: -20px;
+  position: absolute;  right: -20px;
   z-index: -1;
+  animation: MoveUpDown 4s ease-in-out infinite;
 }
 
+@keyframes MoveUpDown {
+  0%, 100% {
+    top: 0px;
+  }
+  50% {
+    top: 80px;
+  }
+}
 
 }
