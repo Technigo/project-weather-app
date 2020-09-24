@@ -1,9 +1,61 @@
+body {
+    margin: 0;
+    padding: 0;
+}
 .todays-weather {
     border: 2px solid black;
     height: 400px;
+    background-color: #6bbddd;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0 10px;
 }
 
-.weather-forecast {
+.forecast-container {
     border: 2px solid red;
-    height: 400px;
+    padding: 40px 10px 0 10px;
+    /*line-height: 10px;
+    height: 400px;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: space-between;
+}
+
+.heading-temperature {
+    font-size: 70px;
+}
+
+.five-day-forecast {
+    border-bottom: 1px dotted black;
+}
+
+@media (min-width: 768px) {
+    .todays-weather {
+        align-items: center;
+    }
+
+    .forecast-container {
+        align-items: center;
+    }
+
+}
+
+@media (min-width: 1025px) {
+    .todays-weather {
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+        border: none;
+    }
+
+    .forecast-container {
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+        border: none;
+    }
 }
