@@ -133,7 +133,7 @@ body {
 .main-weather--box {
   width: 100vw;
   margin: auto;
-  padding: 30px;
+  padding: 0px 30px;
 }
 
 .main-weather--city-temperature {
@@ -156,7 +156,7 @@ body {
 .main-weather--weather-image {
   width: 100%;
   height: auto;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .main-weather--weather {
