@@ -50,17 +50,16 @@ body {
     font-size: 20px;
     margin-bottom: 50px;
 }
+
 .forecastContainer {
     display: flex;
     flex-direction: column;
-    
     justify-content: space-around;
-
 }
+
 .forecast {
     margin-top: 80px;
     color: grey;
-   
 }
 
 .days {
@@ -82,17 +81,11 @@ body {
 }
 
 @media (min-width: 600px) {
-
     .forecastContainer {
         align-items: center;
     }
-
     .forecast {
         max-width: 450px;
         min-width: 400px;
-
     }
-  
-  
 }
-  

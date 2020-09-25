@@ -67,7 +67,7 @@ const updateWeatherForecast = (weatherForecastJson) => {
 
         //The variable saves the element(day) that matches the HTML id. Plus in index is so it gets on the right day because index 0. 
         const dayName = document.getElementById(`day${index + 1}-name`)
-        
+
         //Calculates the new date from milliseconds to a readeble day date...
         const dayDate = new Date(day.dt * 1000)
 
