@@ -290,6 +290,7 @@ const getUserLocation = (inLat, inLon) => {
     else {
         getCurrentWeather(inLat, inLon);
         getFiveDayForecast(inLat, inLon);
+        getUVIndex(inLat, inLon);
     }
     scrollToTop();
 }
