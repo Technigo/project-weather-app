@@ -1,11 +1,9 @@
 
 // GET WEATHER REPORT
 const enteredCityLocation = "Stockholm";
-
 //API's
 const API_ONE_DAY = `https://api.openweathermap.org/data/2.5/weather?q=${enteredCityLocation}&appid=3eb926770233f3bacc440bffc14e56a4`;
 const API_FIVE_DAYS = `https://api.openweathermap.org/data/2.5/forecast?q=${enteredCityLocation}&appid=3eb926770233f3bacc440bffc14e56a4`;
-
 // Weather Variables
 const cityLocation = document.getElementById("currentCityName");
 const tempIcon = document.getElementById("temp-icon");
@@ -13,22 +11,17 @@ const tempValue = document.getElementById("temp-value");
 const climate = document.getElementById("climate");
 const sunRiseTime = document.getElementById("sunrise");
 const sunSetTime = document.getElementById("sunset");
-
 // Getting Data for current Weather
-
 fetch(API_ONE_DAY)
   .then((response) => {
     return response.json();
   })
   .then(data => {
-    // DATA CONSOLE LOG 
-    console.log(data);
-
+    console.log(data);//CONSOLE LOG TO SEE API DATA
     const { id, main } = data.weather[0];
     cityLocation.textContent = data.name;
     tempValue.textContent = Math.round(data.main.temp - 273);
     climate.textContent = main;
-
     //Calculation of Sunrise time
     const sunriseHour = new Date(data.sys.sunrise * 1000).getHours();
     const sunriseMinutes = "0" + new Date(data.sys.sunrise * 1000).getMinutes();
@@ -37,7 +30,6 @@ fetch(API_ONE_DAY)
     const sunsetHour = new Date(data.sys.sunset * 1000).getHours();
     const sunsetMinutes = "0" + new Date(data.sys.sunset * 1000).getMinutes();
     const formattedSunset = `${sunsetHour}:${sunsetMinutes.substr(-2)}`;
-
     sunRiseTime.textContent = formattedSunrise;
     sunSetTime.textContent = formattedSunset;
     // Changing Icons for weather using if-else
@@ -69,20 +61,13 @@ fetch(API_ONE_DAY)
   .catch((error) => {
     console.log('There has been an error')
   })
-
-// Date Variables
-let todaysDate = new Date();
-const daysOfTheWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
 // Fetch Data for next 5 days
-
 fetch(API_FIVE_DAYS)
   .then((response) => {
     return response.json();
   })
   .then((forecast) => {
-
-    console.log(forecast)
+    console.log(forecast)  //CONSOLE LOG TO SEE API DATA
     const filteredForecast = forecast.list.filter(item => item.dt_txt.includes('12:00'));
     let output = '';
     filteredForecast.forEach((item) => {

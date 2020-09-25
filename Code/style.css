@@ -80,7 +80,6 @@ footer {
   padding: 20px 0;
   text-align: center;
 }
-
 /* Tablet View */
 @media (min-width: 667px) and (max-width: 1024px) {
 body {
@@ -91,9 +90,8 @@ body {
   background-color: rgba(106, 90, 205, 0.4);
   border-radius: 20px;
 }
-
 }
-
+/* Desktop View */
 @media (min-width: 1025px) {
 body {
   height: 100vh;
@@ -112,5 +110,4 @@ body {
   background-color: rgba(240, 248, 255, 0.3);
   border-radius: 20px;
 }
-
 }
