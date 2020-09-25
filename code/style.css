@@ -1,5 +1,6 @@
 * {
   margin: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -9,7 +10,7 @@ body {
 p {
   width: 100px;
   text-align: end;
-  margin-right: 10px;
+  margin-right: 40px;
 }
 
 /*style for weather today wrapper*/
@@ -26,10 +27,10 @@ p {
 /*additional img styling to seperate from other img*/
 .weather-today-wrapper img {
   position: absolute;
-  height: 100px;
-  width: 100px;
-  right: 10px;
-  top: 10px;
+  height: 200px;
+  width: 200px;
+  right: 0px;
+  top: 0px;
 }
 
 .location-information {
@@ -38,7 +39,7 @@ p {
 }
 
 .temp {
-  font-size: 58px;
+  font-size: 48px;
 }
 
 .location {

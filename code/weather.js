@@ -1,3 +1,4 @@
+const containerWeather = document.getElementById("weather");
 const containerToday = document.getElementById("weatherToday");
 const containerForecast = document.getElementById("weatherForecast");
 let citySearched = "Ösmo";
@@ -25,7 +26,7 @@ const generatedHTMLForWeatherToday = (weatherToday) => {
   const sunset = calculatingTime(weatherToday.sys.sunset);
   const iconToday = iconDependingOnWeather(weatherToday.weather[0].main);
   const description = weatherToday.weather[0].description;
-  weatherTodayBackgroundColor(weatherToday.main.temp);
+  weatherBackgroundColor(weatherToday.main.temp);
 
   // Separate and build up the HTML tree
   let weatherTodayHTML = "";
@@ -112,27 +113,27 @@ const printDay = (day) => {
 const iconDependingOnWeather = (item) => {
   const iconMainDescription = item;
   if (iconMainDescription === "Clouds") {
-    return "http://openweathermap.org/img/wn/03d@2x.png";
+    return "http://openweathermap.org/img/wn/03d@4x.png";
   } else if (iconMainDescription === "Clear") {
-    return "http://openweathermap.org/img/wn/01d@2x.png";
+    return "http://openweathermap.org/img/wn/01d@4x.png";
   } else if (iconMainDescription === "Rain") {
-    return "http://openweathermap.org/img/wn/10d@2x.png";
+    return "http://openweathermap.org/img/wn/10d@4x.png";
   } else if (iconMainDescription === "Thunderstorm") {
-    return "http://openweathermap.org/img/wn/11d@2x.png";
+    return "http://openweathermap.org/img/wn/11d@4x.png";
   } else if (iconMainDescription === "Drizzle") {
-    return "http://openweathermap.org/img/wn/09d@2x.png";
+    return "http://openweathermap.org/img/wn/09d@4x.png";
   } else if (iconMainDescription === "Snow") {
-    return "http://openweathermap.org/img/wn/13d@2x.png";
-  } else return "http://openweathermap.org/img/wn/50d@2x.png";
+    return "http://openweathermap.org/img/wn/13d@4x.png";
+  } else return "http://openweathermap.org/img/wn/50d@4x.png";
 };
 
 // Function to  change background color depending on temperature
-const weatherTodayBackgroundColor = (temp) => {
+const weatherBackgroundColor = (temp) => {
   if ((temp < 0, temp <= 6)) {
-    containerToday.style.backgroundColor = "#e5f5f9";
+    containerWeather.style.backgroundColor = "#b3cde3";
   } else if ((temp > 6, temp <= 20)) {
-    containerToday.style.backgroundColor = "#fdae6b";
-  } else containerToday.style.backgroundColor = "#e6550d";
+    containerWeather.style.backgroundColor = "#fed98e";
+  } else containerWeather.style.backgroundColor = "#fe992a";
 };
 
 // Function invoked when search button is clicked
