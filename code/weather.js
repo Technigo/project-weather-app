@@ -31,7 +31,10 @@ fetch(apiUrlToday)
     sunsetHeader.innerHTML = `${getTimeFormat(json.sys.sunset)}`
     //change background depending on weather
     backgroundChange(json);
-})
+  })
+  .catch((error) => {
+    console.log('Fetch Error', error)
+  })
 
 //fetch the data from api - weekly forecast
 fetch(apiUrlWeekly)
@@ -49,6 +52,9 @@ fetch(apiUrlWeekly)
     filteredForecast.forEach((temp) => {
       containerTemp.innerHTML += `<p class="weekly-weather-temp">${getNumberFormat(temp.main.temp)} °C</p>`
     });
+  })
+  .catch((error) => {
+    console.log('Fetch Error', error)
   })
 
 //function to convert temperature to 1 decimal
@@ -72,7 +78,7 @@ const getCountryName = (countryCode) => {
 const getTimeFormat = (time) => {
   const formatTime = new Date(time * 1000).toLocaleTimeString([],
   {hour: '2-digit', minute: '2-digit'});
-  return formatTime;
+    return formatTime;
 }
 
 //function to convert actual date to short weekday name
@@ -94,11 +100,11 @@ const backgroundChange = (number) => {
 
 //function for hamburger menu
 const menuToggle = () => {
-    const x = document.getElementById("myLinks");
-    if (x.style.display === "block") {
-      x.style.display = "none";
-    } else {
-      x.style.display = "block";
-    }
+  const x = document.getElementById("myLinks");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
   }
+}
 

@@ -2,11 +2,11 @@ html {
     box-sizing: border-box;
     font-family: 'Roboto Condensed', Sans-Serif;
     color: #010101
-  }
+}
   
 *, *:before, *:after {
     box-sizing: inherit;
-  }
+}
 
 body {
     margin: 0;    
@@ -376,7 +376,6 @@ footer {
     padding: 20px;
     height: 200px;
     border: 20px solid #efefef;
-    margin-top: 40px;
 }
 
 .company-title {
@@ -415,6 +414,10 @@ footer {
 
 /* For computer only */
 @media (min-width: 1025px) {
+
+    footer {
+        margin-top: 40px;
+    }
 
     .company-title {
         font-size: 24px;
