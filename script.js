@@ -50,9 +50,13 @@ fetch(apiUrl)
        
         sunriseContainer.innerHTML = `<h3>Sunrise: ${sunriseTime} </h3>`
         sunsetContainer.innerHTML =  `<h3>Sunset: ${sunsetTime} </h3>` 
+
+//Todays weather icon
+        document.getElementById('todaysWeatherIcon').innerHTML = `<img src=https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png></img>` 
     })
     .catch((error) => {
         console.log(error) 
+
 });
 
 
@@ -77,10 +81,11 @@ fetch(apiUrlForecast)
             document.getElementById('forecastDay').innerHTML += `<p>${dayName}</p>`
             document.getElementById('forecastTemp').innerHTML += `<p>${weekTemp}°C</p>`
             document.getElementById('forecastIcon').innerHTML += `<img src=http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png></img>`
-            document.getElementById('todaysWeatherIcon').innerHTML = `<img src=https://openweathermap.org/img/wn/${json.list[1].weather[0].icon}@2x.png></img>` 
+            
     });  
 });
 
+//${json.list[1].weather[0].icon}
 
  // RED LEVEL, ADD NEW CITY OSLO 
 
@@ -204,15 +209,10 @@ fetch(apiUrlBerlin)
          );
          filteredForecastBerlin.forEach(day => {
              let date = new Date(day.dt * 1000);
-             //let dayName = date.toLocaleDateString("en-US", { weekday: "long" });
              const dayTemp = day.main.temp;
              const weekTemp = dayTemp.toFixed(0.1);
              berlinIcon.innerHTML = `<img src=https://openweathermap.org/img/wn/${json.list[1].weather[0].icon}@2x.png></img>` 
      });  
  });       
-
-
-
-
 
 
