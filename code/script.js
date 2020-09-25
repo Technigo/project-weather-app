@@ -95,16 +95,18 @@ const showHamburgerMenu = () => {
         hamburgerMenu.style.flexDirection = "column"
     }
 };
+
+const mediaSize = window.matchMedia("(min-width: 1024px)")
 const showNavBar = () => {
-    const mediaSize = window.matchMedia("(min-width: 1024px)")
+    // const mediaSize = window.matchMedia("(min-width: 1024px)")
     if(mediaSize.matches) {
         navBar.style.display = "flex";
-        hamburgerMenu.style.flexDirection = "row"
     } else { 
         navBar.style.display = "none";
         hamburgerMenu.style.flexDirection = "column"
     }
 }
+
 
 const showCloudAnimation = () => {
     cloudAnimation.style.display = "block";
@@ -324,6 +326,8 @@ const showWeatherForecast = (forecastAPI) => {
 // }
 
 //On page load
-
+window.addEventListener("resize", showNavBar);
 getLocationAPI(setLocationAPI);
+
+
 

@@ -552,6 +552,9 @@ nav img {
         display: none;
     }
 
+    .loading-container p {
+        top: 200px; 
+}
     .current-main {
         position: relative;
         width: 90%;
@@ -618,7 +621,7 @@ nav img {
         position: relative;
         flex-direction: row;
         background-color: transparent;
-        width: 50%;
+        width: 60%;
         color: white;
         border-radius: 0;
         padding: 0;
@@ -635,7 +638,7 @@ nav img {
         background-color: transparent;
         border: 2px solid #ddd;
         color: white;
-        width: 20%;
+        width: auto;
     }
 
     .din-position:hover {
