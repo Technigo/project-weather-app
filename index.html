@@ -11,13 +11,35 @@
 </head>
 
 <body>
-    <img id="main-weather" src="./assets/012-sun.png" alt="Weather status" />
-    <div id="weather">
-        waiting for a weather update :)
+    <div class="container">
+        <section class="weatherSection">
+            <img class="city-img" src="./assets/Stockholm.jpg" alt="Stockholm and a swedish flag" />
+
+            <div class="weather-info">
+                <div class="weather-container">
+                    <p id="temperature">Loading temperature...</p>
+                    <img id="weather-img" src="" alt="Current weather" />
+                </div>
+            </div>
+            <div class="city-container">
+                <p id="city-name">Loading city...</p>
+                <p id="weather-desc">Loading description...</p>
+            </div>
+            <div class="sun-container">
+                <p id="sunrise">Loading sunrise...</p>
+                <p id="sunset">Loading sunset...</p>
+            </div>
+        </section>
+        <section class="forecastSection">
+            <p id="forecast-heading">Weather forecast 5 days</p>
+            <div id="forecast-info">
+            </div>
+        </section>
+
     </div>
-    <div id="weekly-weather">
-     
-    </div>
+    <footer>
+        <p> © 2020 Marjaana Tienaho. Project Week 6 (Project weather app) during the Technigo Frontend Bootcamp Autumn 2020.</p>
+    </footer>
     <script src="./weather.js"></script>
 </body>
 

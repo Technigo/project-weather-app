@@ -1,15 +1,58 @@
-
 body {
     background-image: url("./assets/Background.jpg");
+    background-position: center;
+    /*background-size: cover; 
+    background-repeat: no-repeat;*/
+    margin: 0;
 }
-#main-weather{
-    height: 80px;
-}
-h1{
+h1 {
     Font-Family: 'Ruda', Sans-Serif;
     Font-Size: 48px;
 }
-p{
+
+p {
     Font-Family: 'Roboto Slab', Serif;
-    Font-Size: 16px;  
+    Font-Size: 16px;
+}
+.container{
+    min-height: 100vh;
+    overflow: hidden;
+    display: block;
+    position: relative;
+    padding-bottom: 100px; 
+}
+.city-img{
+    display: none;
+  
+}
+.weather-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+#temperature {
+    font-size: 70px;
+    font-weight: bold;
+}
+
+#weather-img {
+    width: 40%;
+}
+
+#city-name {
+    font-size: 50px;
+    margin: 0;
+}
+
+
+
+
+/* Desktop */
+@media (min-width: 1025px) {
+
+.city-img{
+    display: block;
+    height: 600px;
+}
 }
