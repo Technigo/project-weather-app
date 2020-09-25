@@ -8,7 +8,7 @@
 
 body {
   font-family: "Roboto Mono", monospace;
-  background-image: url(/code/assets/skies.jpg);
+  background-image: url(./assets/skies.jpg);
   background-size: cover;
   background-position: top center;
 }
@@ -18,7 +18,7 @@ h1 {
   flex-direction: row;
   justify-content: center;
   text-align: center;
-  font-size: 30px;
+  font-size: 20px;
   margin: 50px 50px;
   letter-spacing: 3px;
   text-transform: uppercase;
@@ -26,39 +26,58 @@ h1 {
 
 /* MAIN SECTION, CURRENT WEATHER */
 p {
-  font-size: 22px;
+  font-size: 15px;
   color: rgb(199, 125, 125);
   font-weight: 600;
+  padding: 5px;
 }
 
 .main {
-  background-color: rgb(243, 245, 250);
-  opacity: 0.7;
+  background-color: rgba(190, 202, 233, 0.349);
   border-bottom: 2px solid snow;
-  border-radius: 8px;
+  border-radius: 20px;
   display: block;
   align-items: center;
   text-align: center;
-  margin: 10px;
+  width: 70%;
+  margin: auto;
   padding: 20px;
-  font-size: 18px;
+  font-size: 14px;
 }
-
+#temperature {
+  font-size: 40px;
+  color: rgba(45, 45, 66, 0.582);
+}
 /*FORECAST*/
 #weatherForecast {
-  background-color: rgb(243, 245, 250);
-  opacity: 0.7;
-  border-bottom: 2px solid snow;
-  border-radius: 8px;
-  display: block;
-  align-items: center;
-  text-align: center;
-  font-size: 18px;
-  margin: 10px;
-  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: auto;
+  padding: 8px;
 }
 .forecast-h1 {
   color: rgb(199, 125, 125);
-  font-size: 24px;
+  font-size: 18px;
   margin: 0;
+}
+.column {
+  display: flex;
+  flex-basis: 45%;
+  margin: auto;
+}
+/* CHANGING BACKGROUND */
+body.cold {
+  background: cornflowerblue;
+}
+hr {
+  margin-top: 15px;
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(210, 226, 243, 0),
+    rgba(165, 128, 163, 0.75),
+    rgba(237, 237, 237, 0)
+  );
 }

@@ -9,18 +9,18 @@
   <body>
     <!-- MAIN SECTION, CURRENT WEATHER -->
     <section class id="weather-wrap">
-      <h1>Weather Forecast</h1>
+      <h1>Toronto Forecast</h1>
     </section>
 
     <section class="main">
-      <img src="/code/assets/cntower.png" height="100px" />
+      <img class="cn-img" src="/code/assets/cntower.png" height="100px" />
       <div class id="city"><p>Toronto, ON</p></div>
       <div class id="date"></div>
       <p>Current temperature:</p>
       <div class id="temperature"></div>
       <p>Visibility:</p>
       <div class id="description"></div>
-      <img id="visibilityIcon" style="width: 60px" src="" />
+      <img id="visibilityIcon" style="width: 40px" src="" />
       <div class="highLow">
         <p>H:</p>
         <div class id="H"></div>
@@ -32,20 +32,19 @@
       <div class id="feelsLike"></div>
       <section class id="sunUpSunDown">
         <p>
-          Sunrise: <img src="/code/assets/sunrise.png" style="width: 48px" />
+          Sunrise: <img src="/code/assets/sunrise.png" style="width: 20px" />
         </p>
         <div class id="sunriseTO"></div>
 
-        <p>Sunset: <img src="/code/assets/sunset.png" style="width: 48px" /></p>
+        <p>Sunset: <img src="/code/assets/sunset.png" style="width: 20px" /></p>
         <div class id="sunsetTO"></div>
       </section>
-    </section>
-
-    <!-- FORECAST SECTION -->
-    <section class id="forecast-wrap">
-      <div class id="weatherForecast">
+      <hr />
+      <!-- FORECAST SECTION -->
+      <section class id="forecast-wrap">
         <h1 class="forecast-h1">THE NEXT 5 DAYS</h1>
-      </div>
+        <div class id="weatherForecast"></div>
+      </section>
     </section>
     <script src="/code/weather.js"></script>
   </body>

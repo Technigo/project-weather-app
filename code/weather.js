@@ -12,6 +12,7 @@ const tempHigh = document.getElementById('H')
 const tempLow = document.getElementById('L')
 const sunrise = document.getElementById('sunriseTO')
 const sunset = document.getElementById('sunsetTO')
+const body = document.getElementsByTagName('body')[0]
 
 //FUNCTION CURRENT WEATHER
 const currentWeatherToday = (json) => {
@@ -54,9 +55,18 @@ const iconUpdate = (weather) => {
         document.getElementById('visibilityIcon').src = 'assets/hail.png'
     } if (weather == 'Thunder') {
         document.getElementById('visibilityIcon').src = 'assets/thunder.png'
+    } if (weather == 'Haze') {
+        document.getElementById('visibilityIcon').src = 'assets/thunder.png'
     }
 }
-
+//CHANGING BACKGROUND DEPENDING ON TEMP
+const changeBackground = (json) => {
+    if (json.main.temp.toFixed(0.5) <= 15) {
+        body.classList.add('cold')
+    } else {
+        body.classList.remove('cold')
+    }
+}
 //Fetch with JSON - Current Weather
 fetch(currentWeatherUrl)
     .then((response) => {
@@ -68,7 +78,7 @@ fetch(currentWeatherUrl)
 
 // Five day forecast variables
 const weatherForecastUrl = "https://api.openweathermap.org/data/2.5/forecast?q=Toronto,Canada&units=metric&APPID=c2889b12ee617ea787319a19a98a5906"
-const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 const today = new Date()
 const days = today.getDay()
 
@@ -89,10 +99,11 @@ const updateMinMaxTemps = (data) => {
             }
         } else {
             const date = new Date(item.dt * 1000)
+            const trueDate = date.getDay()
             minMaxTemps[currentDate] = {
                 minTemp: item.main.temp_min,
                 maxTemp: item.main.temp_max,
-                dayOfWeek: weekDays[date.getDay()].toUpperCase()
+                dayOfWeek: weekDays[trueDate].toUpperCase()
             }
         }
     })
