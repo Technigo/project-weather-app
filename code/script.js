@@ -48,8 +48,12 @@ fetch(apiToday)
     };
     weatherImg();
 
+    const weatherBackground = () => {
+      if (json.main.temp === >= 10)
+    }
+
     // DISPLAY THE WEATHER IN GOTHENBURG RIGHT NOW
-    weatherToday.innerHTML = `Todays weather in ${json.name}:<br> ${json.main.temp.toFixed(1)} &degC<br> ${json.weather[0].description} `;
+    weatherToday.innerHTML = `${json.name} ${json.main.temp.toFixed(1)} &degC<br> ${json.weather[0].description} `;
 
     // SUNRISE SUNSET
     const sunsetSunriseFunction = () => {
