@@ -16,6 +16,7 @@ body {
     border-radius: 10px;
     position: absolute;
     visibility: hidden;
+    margin-top: 20px;
 }
 
 #weatherContainer h1 {
@@ -29,6 +30,7 @@ body {
     position: absolute;
     top: 0;
     right: 0;
+    z-index: 2;
 }
 
 #searchinput.searchControl {
@@ -77,7 +79,7 @@ body {
     display: block;
     font-size: 22px;
     text-align: right;
-    line-height: 45px;
+    line-height: 40px;
 }
 
 .wrapper {
@@ -106,6 +108,4 @@ hr {
 
 /* MEDIA QUERIES */
 
-@media (min-width: 1024px) {
-    background-size: top center;
-}
+@media (min-width: 1024px) {}

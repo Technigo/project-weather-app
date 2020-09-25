@@ -86,7 +86,7 @@ const findWeather = (resultFromServer) => {
 
     //   GET ICONS FROM OPENWEATHER MAP
     weatherIcon.src =
-        "http://openweathermap.org/img/w/" +
+        "https://openweathermap.org/img/w/" +
         resultFromServer.weather[0].icon +
         ".png";
 
@@ -104,7 +104,7 @@ const findWeather = (resultFromServer) => {
     cityHeader.innerHTML = resultFromServer.name;
 
     humidityElement.innerHTML =
-        "Humidity levels at " + resultFromServer.main.humidity + " %";
+        "Humidity " + resultFromServer.main.humidity + " %";
 
     const sunriseTime = new Date(
         resultFromServer.sys.sunrise * 1000
@@ -113,7 +113,7 @@ const findWeather = (resultFromServer) => {
         minute: "2-digit",
     });
 
-    sunriseTimeElement.innerHTML = "Sunrise at: " + sunriseTime;
+    sunriseTimeElement.innerHTML = "Sunrise: " + sunriseTime;
 
     const sunsetTime = new Date(
         resultFromServer.sys.sunset * 1000
@@ -122,7 +122,7 @@ const findWeather = (resultFromServer) => {
         minute: "2-digit",
     });
 
-    sunsetTimeElement.innerHTML = "Sunset at: " + sunsetTime;
+    sunsetTimeElement.innerHTML = "Sunset: " + sunsetTime;
     setPositionForWeatherInfo();
     input.value = "";
 };
@@ -133,27 +133,27 @@ const readForecast = (json) => {
     const forecastContainer2 = document.getElementById("forecast2");
 
     // AT 00.00
-    const filteredForecastMidnight = json.list.filter((item) =>
+    const filteredForecast = json.list.filter((item) =>
         item.dt_txt.includes("00:00:00")
     );
-    filteredForecastMidnight.forEach((forecast) => {
+    filteredForecast.forEach((forecast) => {
         let forecastElement = document.createElement("div");
         let day = new Date(forecast.dt * 1000).getDay();
-        const days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+        const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
         forecastElement.innerHTML = `
             <div class="forecastDays">${days[day]}</div>`;
         forecastElement.classList.add(`forecast1`);
         forecastContainer.appendChild(forecastElement);
     });
 
-    const dateObject = {};
+    const objectDate = {};
 
     json.list.forEach((item) => {
         const date = item.dt_txt.split(" ")[0];
-        if (dateObject[date]) {
-            dateObject[date].push(item);
+        if (objectDate[date]) {
+            objectDate[date].push(item);
         } else {
-            dateObject[date] = [item];
+            objectDate[date] = [item];
         }
     });
 
@@ -165,7 +165,7 @@ const readForecast = (json) => {
         let forecastElement = document.createElement("div");
 
         const date = forecast.dt_txt.split(" ")[0];
-        const weatherData = dateObject[date];
+        const weatherData = objectDate[date];
 
         const temps = weatherData.map((value) => value.main.temp);
 
@@ -179,7 +179,8 @@ const readForecast = (json) => {
         forecastElement.classList.add(`forecast2`);
         forecastContainer2.appendChild(forecastElement);
     });
-};
+}
+
 
 // SET POSITION FOR WEATHERINFO CONTAINER
 const setPositionForWeatherInfo = () => {
