@@ -8,6 +8,7 @@ body{
     flex-direction: column;
     width: 100%;
     height: 800px;
+    margin: 0px;
 }
 
 .container{
@@ -44,5 +45,33 @@ body{
 
 .dailyForecast{
     margin: 5px;
+    border-bottom: 1px dotted;
 
 }
+
+#getCity{
+    width: 100%;
+}
+
+input {
+    padding: 7px 32px;
+    box-sizing: border-box
+  }
+
+.button {
+    background-color: #F47775; 
+    border: none;
+    color: white;
+    padding: 7px 32px;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+@media only screen and (max-width: 600px) {
+    .container {
+      width: 100%;
+    }
+  }

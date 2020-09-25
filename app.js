@@ -28,10 +28,10 @@ const getWeather = (cityName) => {
             
             console.log(result)
             upperContainer.innerHTML = `<section class="locationToday">${result.name}</section>`
-            upperContainer.innerHTML += `<section class="tempToday">Temp: ${temperature}°C</section>`
+            upperContainer.innerHTML += `<section class="tempToday">Temp ${temperature}°C</section>`
             upperContainer.innerHTML += `<section class="condToday">${result.weather[0].description}</section>`
-            upperContainer.innerHTML += `<section class="sunriseToday">Sunrise: ${timeAM.toLocaleTimeString('en-US', {hour12: false, hour: '2-digit', minute: '2-digit'})}</section>`
-            upperContainer.innerHTML += `<section class="sundownToday">Sundown: ${timePM.toLocaleTimeString('en-US', {hour12: false,  hour: '2-digit', minute: '2-digit'})}</section>`
+            upperContainer.innerHTML += `<section class="sunriseToday">Sunrise ${timeAM.toLocaleTimeString('en-US', {hour12: false, hour: '2-digit', minute: '2-digit'})}</section>`
+            upperContainer.innerHTML += `<section class="sundownToday">Sundown ${timePM.toLocaleTimeString('en-US', {hour12: false,  hour: '2-digit', minute: '2-digit'})}</section>`
         });
 };
 
