@@ -1,7 +1,7 @@
 const WEATHER_API_KEY = config.WEATHER_API_KEY;
 
-const WEATHER_API_URL = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=' + WEATHER_API_KEY;
-const FORECAST_API_URL = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=' + WEATHER_API_KEY;
+const WEATHER_API_URL = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm&units=metric&APPID=' + WEATHER_API_KEY;
+const FORECAST_API_URL = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm&units=metric&APPID=' + WEATHER_API_KEY;
 
 const main = document.querySelector('main');
 const city = document.getElementById('city');
@@ -152,10 +152,6 @@ const returnColor = (todayIcon) => {
   })
 };
 
-const getMaxTemperature = (forecastArray, dayNumber) => {
-
-}
-
 fetch(WEATHER_API_URL)
   .then(response => response.json())
   .then(weatherArray => {
@@ -180,7 +176,6 @@ fetch(WEATHER_API_URL)
 fetch(FORECAST_API_URL)
   .then(response => response.json())
   .then((forecastArray) => {
-    console.log(forecastArray);
     const filteredForecast = forecastArray.list.filter(item => item.dt_txt.includes('12:00'));
     const forecastWeather = filteredForecast.map(day => {
       const dayName = (new Date(day.dt * 1000)).toLocaleDateString([], {
