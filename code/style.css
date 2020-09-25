@@ -51,7 +51,7 @@ body {
 }
 
 .header--image {
-  width: 15vw;
+  width: 10vw;
 }
 
 .header--image:hover {
@@ -149,7 +149,7 @@ body {
   text-align: right;
 }
 
-.main-weather--city {
+.main-weather--city, .main-weather--temperature {
   font-size: 30px;
 }
 
@@ -161,10 +161,6 @@ body {
 
 .main-weather--weather {
   margin: 5px 0 30px 0;
-}
-
-.main-weather--temperature {
-  font-size: 46px;
 }
 
 .main-weather--feels-like {
