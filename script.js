@@ -67,62 +67,61 @@ const iconDependingOnWeather = (item) => {
     return 'http://openweathermap.org/img/wn/50d@2x.png'
 }
 
-//Change background color depending on time. What sould be the parameter? THIS DON'T WORK
-//  const weatherTodayBackground = (timeInCity) => {
-//  const containerColor = document.getElementByID('weatherToday')
-//  const timeInCity = calculateTimeInCity(weatherToday.dt);
-//  const sunrise = calculatingSun(weatherToday.sys.sunrise);
-//   const sunset = calculatingSun(weatherToday.sys.sunset);
-//    if (timeInCity >= sunrise, timeInCity < sunset) {   //daytime
-//       containerColor.style.background = 'lightblue';
-//    } else if (timeInCity >= sunset, timeInCity < sunrise) //nighttime
-//       containerColor.style.background = 'black';
-//  }
+//Tried first to change background color depending on time. Didn't get that to work. Was confused with what the parameter(s) should be and what to use in the if-statement, and if I should declare any variables. Below I did a function to show different backgrounds depending on temperature instead. That works.
+ const weatherTodayBackground = (temp) => { //What is temp here?
+    const containerColor = document.querySelector('.weather-today')
 
+   if (temp < 0, temp <= 10) {   //cold
+      containerColor.style.background = 'linear-gradient(to right, #1a255e 0%, #81bfd5 100%)'; //blue
+   } else if (temp > 10, temp < 18) {//semi-warm
+      containerColor.style.background = 'linear-gradient(to right, #f7c602 0%, #fceba6 100%)'; //yellow
+   } else if (temp > 18, temp < 27) { //warm
+      containerColor.style.background = 'linear-gradient(to right, #f7a013 0%, #fce685 100%)'; //orange
+   } else //super-warm
+      containerColor.style.background = 'linear-gradient(to right, #ef5710 0%, #f9d67c 100%)'; //red
+ }
+ 
 const generatedHTMLForWeatherToday = (weatherToday) => {
   const temperature = calculateTemperature(weatherToday.main.temp); //This is using json.main.temp as a parameter instead of number.
   const timeInCity = calculateTimeInCity(weatherToday.dt);
   const sunrise = calculatingSun(weatherToday.sys.sunrise);
   const sunset = calculatingSun(weatherToday.sys.sunset);
-  const iconToday = iconDependingOnWeather(weatherToday.weather[0].main);
+  const iconToday = iconDependingOnWeather(weatherToday.weather[0].main); //Since weather is an array, we need to access the index of 0, and then we can locate the object keyvalues i.e .description. This has to be done even if there is only one array, as in this case.
   const description = weatherToday.weather[0].description
-  // const backgroundToday = weatherTodayBackground(); //Specify BG-color depending on time. Doesnt work!!!
-  // containerToday.innerHTML = `<h1>This is ${weatherToday.name}</h1>`;
-  // descriptionToday.innerHTML = `The temperature today is ${temperature} degrees and it's ${weatherToday.weather[0].description} outside.`; 
-  //Since weather is an array, we need to access the index of 0, and then we can locate the object keyvalues i.e .description. This has to be done even if there is only one array, as in this case.
-  // descriptionToday.innerHTML += `The sun rises at ${sunrise} and sets at ${sunset}`; //Kommenterar ut pga specar längre ner istället
+  weatherTodayBackground(weatherToday.main.temp);
+  
   let weatherTodayHTML = '';
   weatherTodayHTML += `<div class="location-information">`;
   weatherTodayHTML += `<div class="temp">${temperature} <span class="celsius">&#8451;</span></div>`
   weatherTodayHTML += `<div class="location">${weatherToday.name} ${timeInCity}</div>`//Location name and local time
   weatherTodayHTML += `<div class="description">${description}</div>`//description like "broken clouds"
-  weatherTodayHTML += `<div class="sunrise-sunset">`//added div to use flexbox
+  weatherTodayHTML += `<div class="sunrise-sunset">`//added div here to use flexbox
   weatherTodayHTML += `<div class="sunrise">Sunrise ${sunrise}</div>`
   weatherTodayHTML += `<div class="sunset">Sunset ${sunset}</div>`
-  //Div for time in city should go here
   weatherTodayHTML += `</div>`
   weatherTodayHTML += `</div>`;
-  weatherTodayHTML += `<img class="icon-today" src='${iconToday}'>`; //Bilden utanför pga kunna sätta position absolute
+  weatherTodayHTML += `<img class="icon-today" src='${iconToday}'>`;
   return weatherTodayHTML;
 };
 
-
 const generatedHTMLForWeatherForecast = (filteredForecast) => {
-  const weekday = printDay(filteredForecast.dt_txt); //Should tell what day it is but doesn't work at the moment
+  const weekday = printDay(filteredForecast.dt_txt);
     //console.log(filteredForecast.main.temp)
   const dailyTemp = calculateTemperature(filteredForecast.main.temp);
   const humidity = calculateTemperature(filteredForecast.main.humidity)
   const iconForecast = iconDependingOnWeather(filteredForecast.weather[0].main);
-
-   let weatherForecast ='';
+  const forecastDescription = filteredForecast.weather[0].description
+   
+  let weatherForecast ='';
    weatherForecast += `<div class="weather-forecast">`;
    weatherForecast += `<div class="weekday">${weekday}</div>`;
+   weatherForecast += `<div class="forecast-description">`
    weatherForecast += `<img src='${iconForecast}'>`;
-   weatherForecast += `<p>${dailyTemp} \xB0/ Humidity: ${humidity}</p>`
+   weatherForecast += `<p>${forecastDescription}</p>`
+   weatherForecast += `</div>`
+   weatherForecast += `<p>${dailyTemp} \xB0/ ${humidity} &#37; </p>`
    weatherForecast += `</div>`;
   return weatherForecast
-  //Weather description for the next five days
-  //Humidity and wind
 };
 
 //Fetch-function for weather today:
