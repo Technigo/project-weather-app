@@ -47,11 +47,7 @@ const printTime = (timezoneOffset) => {
   console.log(utc)
   const timezoneOffsetMs = timezoneOffset*1000;
   console.log(timezoneOffsetMs+utc)
-  const localTimestamp = new Date(timezoneOffsetMs+utc).toLocaleTimeString("sv-SE", {
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-  })
+  const localTimestamp = new Date(timezoneOffsetMs+utc)
   return localTimestamp
 }
 //ICON FUNCTIONS
@@ -115,14 +111,15 @@ const setBackground = (city) => {
   }
 };
 //Change gradient depending on time/temperature
-const setBackgroundGradient = (time, temperature) => {
+const setBackgroundGradient = (time) => {
+  const param = time.getHours()
   const gradientLayer = document.getElementById('layer')
-  if(time > 6 && time <= 12) {
-    gradientLayer.style.backgroundColor = 'rgba(214, 234, 226, 0.14)'
-  } else if(time >= 13 && time <= 20) {
-    gradientLayer.style.backgroundColor = 'rgba(216, 247, 255, 0.2)'
+  if(param > 6 && param <= 12) {
+    gradientLayer.style.backgroundColor = 'rgba(0, 0, 55, 0.4)'//214, 234, 226
+  } else if(param >= 13 && param <= 20) {
+    gradientLayer.style.backgroundColor = 'rgba(0, 0, 55, 0.3)'//216, 247, 255
   } else {
-    gradientLayer.style.backgroundColor = 'rgb(0, 0, 55, 0.5)'
+    gradientLayer.style.backgroundColor = 'rgb(0, 0, 55, 0.8)'
   }
 }
 const generatedHTMLForWeatherToday = (weatherToday) => {
@@ -131,7 +128,12 @@ const generatedHTMLForWeatherToday = (weatherToday) => {
   const sunset = calculatingSun(weatherToday.sys.sunset);
   const description = weatherToday.weather[0].description;
   const icon = iconWeather(weatherToday.weather[0].main);
-  const localTime = printTime(weatherToday.timezone);//Doesn't use timezone atm
+  const localTime = printTime(weatherToday.timezone);
+  const localTimeString = localTime.toLocaleTimeString("sv-SE", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  })
   const minTemp = calculateTemperature(weatherToday.main.temp_min);
   const maxTemp = calculateTemperature(weatherToday.main.temp_max);
   const feelTemp = calculateTemperature(weatherToday.main.feels_like);
@@ -143,7 +145,7 @@ const generatedHTMLForWeatherToday = (weatherToday) => {
   dailyForecastHTML += `<div class="temperature">${temperature} \xB0 </div>`;
   dailyForecastHTML += `<p class="feels-like">Feels like ${feelTemp} \xB0 </p>`;
   dailyForecastHTML += `<h1 class="city">${weatherToday.name}</h1>`;
-  dailyForecastHTML += `<p class="local.time">${localTime}</p>`;
+  dailyForecastHTML += `<p class="local.time">${localTimeString}</p>`;
   dailyForecastHTML += `<p class="description">${description}</p>`;
   dailyForecastHTML += `<p class="minmax-temp">min/max ${minTemp}/${maxTemp}</p>`;
   dailyForecastHTML += `<p class="sun">Sunrise ${sunrise}/ Sunset ${sunset}</p>`;
