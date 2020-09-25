@@ -27,6 +27,7 @@ const minMax = document.getElementById("min-max")
 const cloudAnimation = document.getElementById("cloud-symbol")
 const rainAnimation = document.getElementById("rain-symbol")
 const sunAnimation = document.getElementById("sun-symbol")
+const mistAnimation = document.getElementById("mist-symbol")
 
 // Getting current geo location
 
@@ -109,24 +110,35 @@ const showCloudAnimation = () => {
     cloudAnimation.style.display = "block";
     sunAnimation.style.display = "none";
     rainAnimation.style.display = "none";
+    mistAnimation.style.display = "none";
 }
 
 const showRainAnimation = () => {
     cloudAnimation.style.display = "none";
     sunAnimation.style.display = "none";
     rainAnimation.style.display = "flex";
+    mistAnimation.style.display = "none";
 }
 
 const showSunAnimation = () => {
     cloudAnimation.style.display = "none";
     sunAnimation.style.display = "flex";
     rainAnimation.style.display = "none";
+    mistAnimation.style.display = "none";
+}
+
+const showMistAnimation = () => {
+    cloudAnimation.style.display = "none";
+    sunAnimation.style.display = "none";
+    rainAnimation.style.display = "none";
+    mistAnimation.style.display = "flex";
 }
 
 const hideWeatherAnimation = () => {
     cloudAnimation.style.display = "none";
     sunAnimation.style.display = "none";
     rainAnimation.style.display = "none";
+    mistAnimation.style.display = "none";
 }
 
 //Fetches the API and shows the data of today's weather
@@ -176,7 +188,7 @@ const showCurrentWeather = (API) => {
                     currentWeatherMain.classList.remove('rain');
                     currentWeatherMain.classList.remove('snow');
                     currentWeatherMain.classList.remove('clouds');
-                    hideWeatherAnimation();
+                    showMistAnimation();
                 } else if (weatherType === 'Snow') {
                     currentWeatherMain.classList.add('snow');
                     currentWeatherMain.classList.remove('clouds');
