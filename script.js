@@ -50,11 +50,9 @@ const populateForecastGrid = (element, index) => {
     let currentWeatherDayCell = 'weatherDay' + idIndexForHTML;
     let currentIconDayCell = 'iconDay' + idIndexForHTML;
     let currentTempDayCell = 'tempDay' + idIndexForHTML;
-
     let dayOfWeek = getDayOfWeek(element.dt);
     let dayTemp = getRoundedTemperatureString(element.main.temp);
     let iconURL = getWeatherIcon(element.weather[0].id, 0, 0, "populateGrid");
-
     /*Set the value of current element in corresponding cell in the grid*/
     document.getElementById(currentWeatherDayCell).innerHTML = dayOfWeek;
     document.getElementById(currentIconDayCell).firstChild.src = `./icons/weather/${iconURL}`;
@@ -107,15 +105,11 @@ const setConditions = (weatherConditions) => {
 
 //This is for changing the background in the app depending of the temperature
 const setTemperatureColor = (temp, timestamp, timezone) => {
-    let timeForUpdate = getTimeConvertedToLocal(timestamp, timezone);
-    //let hour = timeForUpdate.substring(0, 2);
     let divToChange = document.getElementById('mainWeather');
     let isDay = getDayOrNight(timestamp, timezone);
-
     //Clear any previous set color-class on the div
     divToChange.classList.remove('cool', 'medium', 'warm', 'cool-night', 'medium-night', 'warm-night');
     //Display day colors
-    //if (hour >= 6 && hour < 19) {
     if (isDay) {
         if (temp < 10) {
             divToChange.classList.toggle('cool');
@@ -222,8 +216,8 @@ const getTimeConvertedToLocal = (timestamp, timezone) => {
 
 const getWeatherIcon = (weatherID, time = 0, timezone = 0, caller) => {
     let isday = false;
-
-    //For mainweather, in the top of the app. Take time of day into consideration when picking icon.  
+    //For mainweather, in the top of the app. Take time of day into consideration when picking icon.
+    // If caller is populateForecastGrid, don't take time of day into consideration for picking icon.  
     if (caller === "mainWeather") {
         isday = getDayOrNight(time, timezone);
     }

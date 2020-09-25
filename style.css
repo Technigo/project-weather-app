@@ -24,7 +24,7 @@ html,
 
 .cool {
     background-image: linear-gradient(to top, #ffffff 0%, #91cdda 100%);
-    color: white;
+    color: #fff;
 }
 
 .cool>.bottom-flex-wrapper {
@@ -34,28 +34,28 @@ html,
 .medium {
     background-color: #fff;
     background-image: linear-gradient(to top, #ffffff 0%, #087fa5 100%);
-    color: white;
+    color: #fff;
 }
 
 .warm {
     background: linear-gradient(to top, #fff 0%, #01736d 100%);
-    color: white;
+    color: #fff;
 }
 
 .cool-night {
     background-image: linear-gradient(to top, #ffffff 0%, #013140 100%);
-    color: white;
+    color: #fff;
 }
 
 .medium-night {
     background-color: #fff;
     background-image: linear-gradient(to top, #ffffff 0%, #012631 100%);
-    color: white;
+    color: #fff;
 }
 
 .warm-night {
     background: linear-gradient(to top, #fff 0%, #250002 100%);
-    color: white;
+    color: #fff;
 }
 
 .small-icon {
@@ -128,7 +128,7 @@ html,
 
 .city-select,
 .select-option {
-    background-color: white;
+    background-color: #fff;
     font-family: 'Karla', sans-serif;
     padding: 5px;
 }
@@ -194,7 +194,7 @@ html,
     flex-direction: row;
 }
 
-/*WEATHER FORECASE GRID*/
+/*WEATHER FORECAST GRID*/
 .grid-container {
     display: grid;
     grid-template-columns: repeat(2, 2.5fr) 1.89fr;
@@ -407,47 +407,6 @@ html,
 }
 
 /*KEYFRAMES FOR ANIMATION*/
-@-webkit-keyframes AnimationName {
-    0% {
-        background-position: 0% 9%
-    }
-
-    50% {
-        background-position: 100% 92%
-    }
-
-    100% {
-        background-position: 0% 9%
-    }
-}
-
-@-moz-keyframes AnimationName {
-    0% {
-        background-position: 0% 9%
-    }
-
-    50% {
-        background-position: 100% 92%
-    }
-
-    100% {
-        background-position: 0% 9%
-    }
-}
-
-@keyframes AnimationName {
-    0% {
-        background-position: 0% 9%
-    }
-
-    50% {
-        background-position: 100% 92%
-    }
-
-    100% {
-        background-position: 0% 9%
-    }
-}
 
 @keyframes pulse {
     0% {
