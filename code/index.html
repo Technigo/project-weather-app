@@ -7,23 +7,29 @@
     <title>Weather app</title>
 </head>
 <body>
-    <header>
+    <header class="header">
+        <h1 class="city" id="city"></h1>
     </header>
-    <section class="current-weather"></section>
-        <h1 id="city"></h1>
-        <h2 id="currentTemperature"></h2>
-        <h3 id="weatherType"></h3>
-        <h3 id="humidity"></h3>
-        <h3 id="windSpeed"></h3>
-        <h3 id="feelsLikeTemp"></h3>
-        <h3 id="sunriseTime"></h3>
-        <h3 id="sunsetTime"></h3>
-        <h3 id="minTemp"></h3>
-        <h3 id="maxTemp"></h3>
+    <section class="current-weather">
+        <h2 class="currentTemperature" id="currentTemperature"></h2>
+        <img class="today-weather-icon" id="today-weather-icon"alt="Weather icon"/>
+        <div class="current-weather-wrapper">
+            <h3 id="currentDay"></h3>
+            <h3 id="weatherType"></h3>
+            <h3 id="humidity"></h3>
+            <h3 id="windSpeed"></h3>
+            <h3 id="feelsLikeTemp"></h3>
+            <h3 id="sunriseTime"></h3>
+            <h3 id="sunsetTime"></h3>
+            <h3 id="minTemp"></h3>
+            <h3 id="maxTemp"></h3>
+        </div>
+    </section>
     <section class="forecast-weather">
-        <p id="forecastDay">
-            <p id="forecastFeelsLikeTemp"></p>
-        </p>
+        <p class="forecast-day"id="forecastDay"></p> 
+        <p class="forecast-feels-like-temp"id="forecastFeelsLikeTemp"></p>
+        <div class="weather-icon"id="weather-icon"></div>
+        
         
     </section>
     <script src="script.js"></script>

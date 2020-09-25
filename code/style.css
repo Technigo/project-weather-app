@@ -1,5 +1,59 @@
+.header {
+    display: flex;
+    justify-content: center;
+}
 
+.city {
+    font-size: 60px;
+}
 
+.current-weather {
+    background: rgb(6,6,20);
+    background: linear-gradient(90deg, rgba(6,6,20,0) 0%, rgba(18,218,236,0.33657212885154064) 59%, rgba(43,142,154,1) 100%, rgba(18,28,72,1) 100%, rgba(8,27,135,1) 100%, rgba(16,28,87,1) 100%, rgba(12,28,111,1) 100%, rgba(22,29,47,0.9266894257703081) 100%, rgba(35,180,207,1) 100%);
+    display: flex;
+    justify-content: center;
+}
+
+.currentTemperature {
+    font-size: 70px;
+}
+
+.today-weather.icon {
+    width: 200px;
+    height: auto;
+}
+
+.current-weather-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    margin-top: 150px;
+    justify-content: center;
+}
+
+.forecast-weather {
+    background: rgb(6,6,20);
+    background: linear-gradient(90deg, rgba(6,6,20,0) 0%, rgba(252,252,36,0.9782797987616099) 98%, rgba(209,218,106,1) 100%, rgba(80,43,19,1) 100%, rgba(154,79,19,1) 100%, rgba(43,142,154,1) 100%, rgba(18,28,72,1) 100%, rgba(8,27,135,1) 100%, rgba(16,28,87,1) 100%, rgba(12,28,111,1) 100%, rgba(22,29,47,0.9266894257703081) 100%, rgba(35,180,207,1) 100%);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.forecast-day {
+    font-size: 20px;
+    margin-bottom: 1px;
+    padding-top: 3px;
+}
+
+.forecast-feels-like-temp {
+    font-size: 20px;
+}
+
+.weather-icon {
+    display: flex;
+    flex-direction: column;
+}
+ 
 
 /*Styling for tablet*/
 
