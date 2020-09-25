@@ -1,8 +1,8 @@
 // API information
 import { API_KEY } from "./api.js";
 
-const API_URL_TODAY = `http://api.openweathermap.org/data/2.5/weather?q=Karlstad,Sweden&units=metric&appid=${API_KEY}`;
-const API_URL_FORECAST = `http://api.openweathermap.org/data/2.5/forecast?q=Karlstad,Sweden&units=metric&appid=${API_KEY}`;
+const API_URL_TODAY = `https://api.openweathermap.org/data/2.5/weather?q=Karlstad,Sweden&units=metric&appid=${API_KEY}`;
+const API_URL_FORECAST = `https://api.openweathermap.org/data/2.5/forecast?q=Karlstad,Sweden&units=metric&appid=${API_KEY}`;
 
 // General variables / objects
 const containerCity = document.getElementById('city');
