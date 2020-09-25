@@ -1,12 +1,51 @@
 const API_KEY = 'e27fc7790a6a4c3537de471b9d7612ce'
 
+let selectedCityName = 'Saigon';
+
 // Default page base Ho Chi Minh City
-updateWeatherData('Saigon');
+updateWeatherData(selectedCityName);
 
 document.getElementById('city-select').addEventListener('change', (event) => {
   const cityName = event.target.value;
-  updateWeatherData(cityName);
+  selectedCityName = cityName;
+  updateWeatherData();
 });
+
+const CITIES = [
+  {
+    name: 'Saigon',
+    timezone: 'Asia/Saigon'
+  },
+  {
+    name: 'Stockholm',
+    timezone: 'Europe/Stockholm'
+  },
+  {
+    name: "Los Angeles",
+    timezone: 'America/Los_Angeles'
+  },
+  {
+    name: 'Tokyo',
+    timezone: 'Japan'
+  },
+  {
+    name: 'Paris',
+    timezone: 'Europe/Paris'
+  },
+  {
+    name: 'Santiago',
+    timezone: 'America/Santiago'
+  },
+  {
+    name: 'Cairo',
+    timezone: 'Africa/Cairo'
+  },
+]
+
+const selectElement = document.getElementById('city-select');
+CITIES.forEach((item) => {
+  selectElement.innerHTML += `<option value="${item.name}">${item.name}</option>`
+})
 
 //get location of the user-ask for consent
 function showCurrentLocation() {
@@ -14,7 +53,7 @@ function showCurrentLocation() {
     navigator.geolocation.getCurrentPosition((position) => {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
-      const todaysForecastUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`;
+      const todaysForecastUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`;
       const fiveDaysForecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`
 
       fetchTodaysForecast(todaysForecastUrl);
@@ -60,9 +99,9 @@ function fetchFiveDayForecast(url) {
     });
 }
 
-function updateWeatherData(cityName) {
-  const todayWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${API_KEY}`
-  const fiveDaysForecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=${API_KEY}`
+function updateWeatherData() {
+  const todayWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${selectedCityName}&units=metric&APPID=${API_KEY}`
+  const fiveDaysForecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${selectedCityName}&units=metric&appid=${API_KEY}`
 
   fetchTodaysForecast(todayWeatherUrl);
   fetchFiveDayForecast(fiveDaysForecastUrl);
@@ -71,12 +110,14 @@ function updateWeatherData(cityName) {
 function populateDetails(todayForecast) {
   const todayDescription = todayForecast.weather[0].description;
   const todayTemperature = todayForecast.main.temp;
-  const cityName = todayForecast.name;
+  const todayTemponedeci = parseFloat(todayTemperature).toFixed(1);
 
   const sunrise = new Date(todayForecast.sys.sunrise * 1000);
   const sunset = new Date(todayForecast.sys.sunset * 1000);
+  const selectedItem = CITIES.find((item) => item.name === selectedCityName);
+
   const options = {
-    timeZone: getTimeZone(cityName),
+    timeZone: selectedItem.timezone,
     timeStyle: 'short',
     hour12: false,
   }
@@ -84,7 +125,7 @@ function populateDetails(todayForecast) {
   const sunsetTime = new Intl.DateTimeFormat('en-US', options).format(sunset);
 
   document.getElementById('des').innerHTML = `${todayDescription}`;
-  document.getElementById('temp').innerHTML = `${todayTemperature}°C`;
+  document.getElementById('temp').innerHTML = `${todayTemponedeci}°C`;
   document.getElementById('sunRise').innerHTML = `Sunrise: ${sunriseTime}`;
   document.getElementById('sunSet').innerHTML = `Sunset: ${sunsetTime}`;
 }
@@ -100,7 +141,7 @@ function populateSummary(todayForecast) {
 
 function getWeatherTemplate(todayForecast) {
   const todayDescription = todayForecast.weather[0].description;
-  const city = todayForecast.name;
+  const cityName = todayForecast.name;
   let weatherId = '';
 
   if (todayDescription.includes('rain')) {
@@ -118,17 +159,17 @@ function getWeatherTemplate(todayForecast) {
       id: 'rain',
       description: todayDescription,
       image: './assets/rainyDay.svg',
-      background: 'linear-gradient(rgba(163,222,247,0.2), rgba(163,222,247,1))',
+      background:'linear-gradient(rgba(163,222,247,0.2), rgba(163,222,247,1))',
       color: '#164A68',
-      message: `Don't forget your umbrella. It is wet in ${city} today.`
+      message: `Don't forget your umbrella. It is wet in ${cityName} today.`
     },
     {
       id: 'cloud',
       description: todayDescription,
       image: './assets/cloudyDay.svg',
-      background: 'linear-gradient(rgba(244,247,248,0.2), rgba(244,247,248,1))',
+      background:'linear-gradient(rgba(244,247,248,0.2), rgba(244,247,248,1))',
       color:'#F47775',
-      message: `Light a fire and get cosy. It is cloudy in ${city} today.`
+      message: `Light a fire and get cosy. It is cloudy in ${cityName} today.`
     },
     {
       id: 'clear',
@@ -136,7 +177,7 @@ function getWeatherTemplate(todayForecast) {
       image: './assets/sunnyDay.svg',
       background: 'linear-gradient(rgba(244,233,185,0.2), rgba(247,233,185,1))',
       color:'#2A5510',
-      message: `Get your sunnies on. ${city} is looking rather great today.`
+      message: `Get your sunnies on. ${cityName} is looking rather great today.`
     },
    {
       id: 'other',
@@ -144,31 +185,13 @@ function getWeatherTemplate(todayForecast) {
       image: './assets/cloud-moon-rain.svg',
       background: 'linear-gradient(rgba(216,187,255,0.2), rgba(216,187,255,1))',
       color:'#5a189a',
-      message: `Enjoy the beauty of different weathers in ${city} today`
+      message: `Enjoy the beauty of different weathers in ${cityName} today`
     }
   ]
   return weatherTemplate.find((item) => item.id === weatherId);
 }
 
-function getTimeZone(city) {
-  if (city === 'Saigon') {
-    return 'Asia/Saigon'
-  } else if(city ==='Stockholm') {
-    return 'Europe/Stockholm'
-  } else if(city === "Los Angeles") {
-    return 'America/Los_Angeles'
-  } else if (city === 'Tokyo') {
-    return 'Japan'
-  } else if (city === 'Paris') {
-    return 'Europe/Paris'
-  } else if (city === 'Santiago') {
-    return 'America/Santiago'
-  } else if (city === 'Cairo') {
-    return 'Africa/Cairo'
-  }
-}
 
-  
-
+// document.getElementById('wrap').innerHTML = `<video class="video-background" autoplay muted loop><source scr:'./assets/Garden - 18230.mp4' type="video/mp4"></video> `
 
 

@@ -13,8 +13,8 @@
   <link rel="stylesheet" href="./style.css">
   <title>Weather Forecast</title>
 </head>
-<body id="body">
-  <div class="wrap">
+<body id="body" class="body">
+  <div id="wrap" class="wrap">
     <div id="main-container" class="main-container">
       <div class="header">
         <p id="headerMessage"></p>
@@ -35,15 +35,7 @@
       <div id="forecast" class="forecast">
       </div>
       <div class="search">
-        <select class="city-list" id="city-select">
-          <option value="Saigon">Saigon</option>
-          <option value="Stockholm">Stockholm</option>
-          <option value="Paris">Paris</option>
-          <option value="Santiago">Santiago</option>
-          <option value="Los Angeles">Los Angeles</option>
-          <option value="Cairo">Cairo</option>
-          <option value="Tokyo">Tokyo</option>
-        </select>
+        <select class="city-list" id="city-select"></select>
         <button type="button" onclick="showCurrentLocation()">
           My location
         </button>
@@ -52,5 +44,6 @@
   </div>
     
   <script src="script.js"></script>
+  <!-- <script src="background-video.js"></script> -->
 </body>
 </html>
