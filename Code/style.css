@@ -22,7 +22,7 @@ body{
 .app-container{
   width: 350px;
   margin: 40px auto;
-  background-color: rgba(240, 248, 255, 0.5);
+  background-color: rgba(240, 248, 255, 0.3);
   border-radius: 20px;
 }
 #temp{
@@ -96,11 +96,9 @@ body {
 
 @media (min-width: 1025px) {
 body {
-  background: rgb(238,174,202);
-  background: linear-gradient( rgba(238,174,202,1) 49%, rgba(229,233,148,1) 100%);
-  background-size: auto;
-  background-repeat: no-repeat;
-  margin: 0;
+  height: 100vh;
+  background: rgb(251,69,63);
+  background: radial-gradient(circle, rgba(251,69,63,1) 0%, rgba(208,233,29,1) 100%);
 }
 .main-app {
   display: flex;
