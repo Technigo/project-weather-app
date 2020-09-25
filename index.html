@@ -4,8 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
-    <link rel="stylesheet" href="style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="test.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="icon"
       type="images/png"
@@ -13,13 +16,41 @@
       alt="favicon"
     />
   </head>
+
   <body>
-    
+    <div id="searchContainer">
+      <input
+        id="searchInput"
+        class="searchControl"
+        type="text"
+        placeholder="Search weather in your city"
+      />
+      <button id="searchBtn" class="searchControl">Search</button>
+    </div>
 
-    
+    <div id="weatherContainer">
+      <div id="weatherDescription">
+        <h1 id="cityHeader"></h1>
+        <div id="weatherMain">
+          <div id="temperature"></div>
+          <div id="weatherDescriptionHeader"></div>
+          <div><img id="documentIconImg" /></div>
+        </div>
+        <hr />
+        <div id="windSpeed" class="bottomDetails"></div>
+        <div id="humidity" class="bottomDetails"></div>
+        <div id="sunrise" class="bottomDetails"></div>
+        <div id="sunset" class="bottomDetails"></div>
+        <hr />
+        <div class="wrapper">
+          <div id="forecast" class="bottomDetails"></div>
+          <div class="container">
+            <div id="forecast2" class="bottomDetails"></div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-</main>
-
-    <script src="script.js"></script>
+    <script src="test.js"></script>
   </body>
 </html>
