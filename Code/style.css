@@ -80,6 +80,12 @@ footer {
   padding: 20px 0;
   text-align: center;
 }
+.day{
+  text-align: left;
+}
+.max-min {
+  text-align: right;
+}
 /* Tablet View */
 @media (min-width: 667px) and (max-width: 1024px) {
 body {
