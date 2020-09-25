@@ -34,21 +34,6 @@
     outline: none;
 }
 
-/* .custom-selector {
-    width: 40px;
-    position: relative;
-    overflow: hidden;
-}
-
-.city-selector {
-    margin: 20px 0 20px 0;
-    background: #47904d;
-    color: #47904d;
-    -webkit-appearance:none;
-    width: 40px;
-    position: relative;
-} */
-
 .position {
     display: flex;
     justify-content: flex-end;
@@ -68,7 +53,7 @@ body {
 }
 
 .current {
-    padding: 40px;
+    padding: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
