@@ -80,7 +80,6 @@ body {
     line-height: 45px;
 }
 
-
 .wrapper {
     display: flex;
 }
@@ -108,5 +107,5 @@ hr {
 /* MEDIA QUERIES */
 
 @media (min-width: 1024px) {
-    background-size: ;
+    background-size: top center;
 }
