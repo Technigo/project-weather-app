@@ -38,21 +38,19 @@ fetch(API_URL_TODAY)
 // Generate the url for the image
 const generateImageUrl = (weather) => {
     if (weather === 'Clouds') {
-        return './Clouds.svg'
+        return './assets/Clouds.svg'
     } else if (weather === 'Clear') {
-        return './Clear.svg'
+        return './assets/Clear.svg'
     } else if (weather === 'Rain') {
-        return './Rain.svg'
+        return './assets/Rain.svg'
     } else if (weather === 'Snow') {
-        return
+        return './assets/Snow.svg'
     } else if (weather === 'Thunderstorm') {
-        return
+        return './assets/Thunder.svg'
     } else if (weather === 'Drizzle') {
-        return
-    } else if (weather === 'Atmosphere') {
-        return
+        return './assets/Drizzle.svg'
     } else {
-        return ''
+        return './assets/Drizzle.svg'
     }
 };
 
@@ -65,15 +63,13 @@ const generateBackground = (weather) => {
     } else if (weather === 'Rain') {
         return '#A3DEF7'
     } else if (weather === 'Snow') {
-        return
+        return '#ffffff'
     } else if (weather === 'Thunderstorm') {
-        return
+        return '#1e2021'
     } else if (weather === 'Drizzle') {
-        return
-    } else if (weather === 'Atmosphere') {
-        return
+        return '#b7b8b8'
     } else {
-        return ''
+        return '#36393c'
     }
 };
 
@@ -86,15 +82,13 @@ const generateFontstyle = (weather) => {
     } else if (weather === 'Rain') {
         return '#164A68'
     } else if (weather === 'Snow') {
-        return
+        return '#000000'
     } else if (weather === 'Thunderstorm') {
-        return
+        return '#FFFF99'
     } else if (weather === 'Drizzle') {
-        return
-    } else if (weather === 'Atmosphere') {
-        return
+        return '#A52A2A'
     } else {
-        return ''
+        return '#9999ff'
     }
 };
 
@@ -116,18 +110,16 @@ const generateFriendlyReminder = (weather, city) => {
         return `Light a fire and get cosy. ${city} is looking grey today`
     } else if (weather === 'Clear') {
         return `Get your sunnies on. ${city} is looking rather great today`
-    }  else if (weather === 'Athmosphere') {
-        return `Be careful out there, the sight might not be the best in ${city} today.`
-    }  else if (weather === 'Snow') {
+    } else if (weather === 'Snow') {
         return `Dress warm if you're heading out. ${city} is cold today.`
-    }  else if (weather === 'Rain') {
+    } else if (weather === 'Rain') {
         return `Don't forget your umbrella. It's wet in ${city} today`
-    }  else if (weather === 'Drizzle') {
-        return `Not raining, but close enough. ${city}`
-    }  else if (weather === 'Thunderstorm') {
-        return `Storm incoming. ${city} is looking its best today`
+    } else if (weather === 'Drizzle') {
+        return `Not raining, but close enough. ${city} isn't looking its best today.`
+    } else if (weather === 'Thunderstorm') {
+        return `Storm incoming. ${city} isn't looking its best today`
     } else {
-        return 'Take a look out the window and see for yourself!'
+        return `Be careful out there, the sight might not be the best in ${city} today.`
     }
 };
 

@@ -5,6 +5,9 @@ body {
     font-size: 20px;
     font-weight: regular;
     padding: 15px;
+    display: flex;
+    flex-direction: column;
+    
 }
 
 .todays-info {
@@ -28,6 +31,7 @@ body {
 
 .icon {
     margin: 10px;
+    height: 75px;
 }
 
 .forecast {
@@ -39,4 +43,20 @@ body {
 
 .forecast p {
     margin: 2px 0;
+}
+
+@media (min-width: 667px) {
+
+    body {
+        align-items: center;
+    }
+
+    section {
+        width: 350px;
+    }
+
+}
+
+@media (min-width: 1024px) {
+
 }
