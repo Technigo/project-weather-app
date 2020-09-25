@@ -1,0 +1,112 @@
+body {
+    background-image: url('./images/deafault.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-attachment: fixed;
+    color: white;
+    text-shadow: 2px 2px 1px black;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#weatherContainer {
+    background-color: rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 1px 5px black;
+    padding: 30px;
+    border-radius: 10px;
+    position: absolute;
+    visibility: hidden;
+}
+
+#weatherContainer h1 {
+    margin: 5px;
+    font-size: 42px;
+    font-weight: 600;
+}
+
+#searchContainer {
+    padding: 15px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#searchinput.searchControl {
+    color: white;
+}
+
+#searchContainer input {
+    width: 200px;
+}
+
+#searchContainer button {
+    background-color: white;
+    width: 75px;
+}
+
+.searchControl {
+    box-shadow: 2px 2px 5px black;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#weatherMain {
+    display: block;
+    margin-bottom: 20px;
+}
+
+#weatherMain div {
+    display: inline-block;
+}
+
+#weatherDescriptionHeader {
+    font-size: 28px;
+    vertical-align: 50%;
+}
+
+#temperature {
+    font-size: 50px;
+    vertical-align: 25%;
+    padding-right: 10px;
+    font-weight: 800;
+
+}
+
+.bottomDetails {
+    display: block;
+    font-size: 22px;
+    text-align: right;
+    line-height: 45px;
+}
+
+
+.wrapper {
+    display: flex;
+}
+
+.container {
+    display: flex;
+}
+
+hr {
+    margin: 12px;
+}
+
+.forecast1 {
+    display: flex;
+}
+
+.forercast2 {
+    text-align: right;
+}
+
+.forecastDays {
+    padding-right: 30px;
+}
+
+/* MEDIA QUERIES */
+
+@media (min-width: 1024px) {
+    background-size: ;
+}
