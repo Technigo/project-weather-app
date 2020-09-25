@@ -182,7 +182,7 @@ function getWeatherTemplate(todayForecast) {
       background: 'rgba(0,0,0,0.34)',
       color: '#fff',
       videoSrc: './assets/Clouds - 1154.mp4',
-      poster: './assets/cloud-2941420_1920.jpg'
+      poster: './assets/cloud-2941420_1920.jpg',
       message: `Light a fire and get cosy. It is cloudy in ${cityName} today.`
     },
     {
@@ -192,7 +192,7 @@ function getWeatherTemplate(todayForecast) {
       bbackground: 'rgba(0,0,0,0.34)',
       color: '#F7E9B9',
       videoSrc: './assets/Nature - 38393.mp4',
-      poster: './assets/summer-2391348_1920.jpg'
+      poster: './assets/summer-2391348_1920.jpg',
       message: `Get your sunnies on. ${cityName} is looking rather great today.`
     },
    {
@@ -202,7 +202,7 @@ function getWeatherTemplate(todayForecast) {
       background: 'rgba(0,0,0,0.34)',
       color: '#fff',
       videoSrc: './assets/Sunrise - 22204.mp4',
-      poster: './assets/dancer-2793110_1920.jpg'
+      poster: './assets/dancer-2793110_1920.jpg',
       message: `Enjoy the beauty of different weathers in ${cityName} today`
     }
   ]
