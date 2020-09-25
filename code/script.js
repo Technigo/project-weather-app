@@ -110,7 +110,7 @@ function updateWeatherData() {
 function populateDetails(todayForecast) {
   const todayDescription = todayForecast.weather[0].description;
   const todayTemperature = todayForecast.main.temp;
-  const todayTemponedeci = parseFloat(todayTemperature).toFixed(1);
+  const todayTempOneDeci = parseFloat(todayTemperature).toFixed(1);
 
   const sunrise = new Date(todayForecast.sys.sunrise * 1000);
   const sunset = new Date(todayForecast.sys.sunset * 1000);
@@ -125,7 +125,7 @@ function populateDetails(todayForecast) {
   const sunsetTime = new Intl.DateTimeFormat('en-US', options).format(sunset);
 
   document.getElementById('des').innerHTML = `${todayDescription}`;
-  document.getElementById('temp').innerHTML = `${todayTemponedeci}°C`;
+  document.getElementById('temp').innerHTML = `${todayTempOneDeci}°C`;
   document.getElementById('sunRise').innerHTML = `Sunrise: ${sunriseTime}`;
   document.getElementById('sunSet').innerHTML = `Sunset: ${sunsetTime}`;
 }
