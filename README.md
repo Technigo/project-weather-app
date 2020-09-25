@@ -12,4 +12,5 @@ And of course learn more about JS and maybe try some red level things.
 
 ## View it live
  
-Here is the Netflify 
+Here is the Netflify: 
+https://app.netlify.com/sites/dreamy-saha-3f4a20/overview
