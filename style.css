@@ -50,10 +50,17 @@ body {
     font-size: 20px;
     margin-bottom: 50px;
 }
+.forecastContainer {
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: space-around;
 
+}
 .forecast {
     margin-top: 80px;
     color: grey;
+   
 }
 
 .days {
@@ -73,3 +80,19 @@ body {
 .daytime {
     background: linear-gradient(160deg, rgba(116, 108, 255, 1) 0%, rgba(191, 189, 255, 1) 100%);
 }
+
+@media (min-width: 600px) {
+
+    .forecastContainer {
+        align-items: center;
+    }
+
+    .forecast {
+        max-width: 450px;
+        min-width: 400px;
+
+    }
+  
+  
+}
+  
