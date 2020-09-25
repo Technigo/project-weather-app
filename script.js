@@ -46,13 +46,13 @@ const getFiveDayForecast = (lat, lon) => {
 //Set values in the weather-grid (the forecast). Iterate over the grid using array index in combination with the ID of each cell.
 const populateForecastGrid = (element, index) => {
     //Create selectors to get the correct the ids of the grid
-    let idIndexForHTML = index + 1;
-    let currentWeatherDayCell = 'weatherDay' + idIndexForHTML;
-    let currentIconDayCell = 'iconDay' + idIndexForHTML;
-    let currentTempDayCell = 'tempDay' + idIndexForHTML;
-    let dayOfWeek = getDayOfWeek(element.dt);
-    let dayTemp = getRoundedTemperatureString(element.main.temp);
-    let iconURL = getWeatherIcon(element.weather[0].id, 0, 0, "populateGrid");
+    const idIndexForHTML = index + 1;
+    const currentWeatherDayCell = 'weatherDay' + idIndexForHTML;
+    const currentIconDayCell = 'iconDay' + idIndexForHTML;
+    const currentTempDayCell = 'tempDay' + idIndexForHTML;
+    const dayOfWeek = getDayOfWeek(element.dt);
+    const dayTemp = getRoundedTemperatureString(element.main.temp);
+    const iconURL = getWeatherIcon(element.weather[0].id, 0, 0, "populateGrid");
     /*Set the value of current element in corresponding cell in the grid*/
     document.getElementById(currentWeatherDayCell).innerHTML = dayOfWeek;
     document.getElementById(currentIconDayCell).firstChild.src = `./icons/weather/${iconURL}`;
@@ -80,33 +80,33 @@ const setCityName = (name) => {
 }
 
 const setTodayTemperature = (temp) => {
-    let tempRounded = Math.round(temp * 10) / 10;
-    let temperatureString = (`${tempRounded} °`)
+    const tempRounded = Math.round(temp * 10) / 10;
+    const temperatureString = (`${tempRounded} °`)
     document.getElementById("currentTemperature").innerHTML = temperatureString;
 }
 
 const setFeelsLikeTemp = (feelTemp) => {
-    let tempRounded = Math.round(feelTemp * 10) / 10;
-    let temperatureString = (`${tempRounded} °`)
+    const tempRounded = Math.round(feelTemp * 10) / 10;
+    const temperatureString = (`${tempRounded} °`)
     document.getElementById("weatherCellFeelsLikeTemp").innerHTML = (`<p>FEELS LIKE</p> <p>${temperatureString}</p>`);
 }
 
 const setSunValues = (sunRise, sunSet, timeZone) => {
-    let sunRiseTimeString = getTimeConvertedToLocal(sunRise, timeZone);
-    let sunSetTimeString = getTimeConvertedToLocal(sunSet, timeZone);
+    const sunRiseTimeString = getTimeConvertedToLocal(sunRise, timeZone);
+    const sunSetTimeString = getTimeConvertedToLocal(sunSet, timeZone);
     document.getElementById("weatherCellSunRise").innerHTML = (`<p>SUN &uarr;</p> <p>${sunRiseTimeString}`);
     document.getElementById("weatherCellSunSet").innerHTML = (`<p>SUN &darr;</p> <p>${sunSetTimeString}`);
 }
 
 const setConditions = (weatherConditions) => {
-    let weatherConditionString = `${weatherConditions.charAt(0).toUpperCase()}${weatherConditions.substring(1)}`;
+    const weatherConditionString = `${weatherConditions.charAt(0).toUpperCase()}${weatherConditions.substring(1)}`;
     document.getElementById("conditions").innerHTML = weatherConditionString;
 }
 
 //This is for changing the background in the app depending of the temperature
 const setTemperatureColor = (temp, timestamp, timezone) => {
-    let divToChange = document.getElementById('mainWeather');
-    let isDay = getDayOrNight(timestamp, timezone);
+    const divToChange = document.getElementById('mainWeather');
+    const isDay = getDayOrNight(timestamp, timezone);
     //Clear any previous set color-class on the div
     divToChange.classList.remove('cool', 'medium', 'warm', 'cool-night', 'medium-night', 'warm-night');
     //Display day colors
@@ -133,14 +133,14 @@ const setTemperatureColor = (temp, timestamp, timezone) => {
 
 //call the helper function to get the correct icon, then set it.
 const setMainWeatherIcon = (weatherID, time, timezone) => {
-    let weatherSrc = getWeatherIcon(weatherID, time, timezone, "mainWeather");
+    const weatherSrc = getWeatherIcon(weatherID, time, timezone, "mainWeather");
     document.getElementById('weatherIcon').src = (`./icons/weather/mainWeather/${weatherSrc}`);
 }
 
 //Call the helper functions to retreive time and day, then set it
 const setDayandTime = (timestamp, timezone) => {
-    let todayTime = getTimeConvertedToLocal(timestamp, timezone);
-    let todayName = getDayOfWeek(timestamp);
+    const todayTime = getTimeConvertedToLocal(timestamp, timezone);
+    const todayName = getDayOfWeek(timestamp);
     document.getElementById('today').innerHTML = (`${todayName}, ${todayTime}`);
 }
 
@@ -153,15 +153,15 @@ const setWindSpeed = (windSpeed) => {
 }
 
 const setUVIndex = (uvIndex) => {
-    let uvIndexRounded = Math.floor(uvIndex);
+    const uvIndexRounded = Math.floor(uvIndex);
     document.getElementById('weatherCellUvIndex').innerHTML = (`<p>UV-INDEX</p> <p>${uvIndexRounded}</p>`);
 }
 
 //Get-functions
 const getDayOfWeek = (timestamp) => {
     let dayText = "";
-    let inDate = new Date(timestamp * 1000);
-    let dayOfWeek = inDate.getDay();
+    const inDate = new Date(timestamp * 1000);
+    const dayOfWeek = inDate.getDay();
     dayOfWeek === 0 ? dayText = 'Sunday' : 0;
     dayOfWeek === 1 ? dayText = 'Monday' : 0;
     dayOfWeek === 2 ? dayText = 'Tuesday' : 0;
@@ -174,7 +174,7 @@ const getDayOfWeek = (timestamp) => {
 
 const getDayOrNight = (timestamp, timezone) => {
     let isday = false;
-    let timeForUpdate = getTimeConvertedToLocal(timestamp, timezone);
+    const timeForUpdate = getTimeConvertedToLocal(timestamp, timezone);
     let hour = parseInt(timeForUpdate.substring(0, 2));
     if (hour >= 6 && hour < 19) {
         isday = true;
@@ -183,8 +183,8 @@ const getDayOrNight = (timestamp, timezone) => {
 }
 
 const getRoundedTemperatureString = (temp) => {
-    let tempRounded = Math.round(temp * 10) / 10;
-    let temperatureString = (`${tempRounded} °C`)
+    const tempRounded = Math.round(temp * 10) / 10;
+    const temperatureString = (`${tempRounded} °C`)
     return temperatureString;
 }
 
@@ -192,24 +192,24 @@ const getRoundedTemperatureString = (temp) => {
 /and returns a string without any conversion based on the location of the client. */
 const getTimeConvertedToLocal = (timestamp, timezone) => {
 
-    let time = timestamp * 1000;
-    let tz = timezone * 1000;
-    let date = new Date(time + tz);
-    let year = date.getUTCFullYear();
-    let month = date.getUTCMonth() + 1;
-    let day = date.getUTCDate();
-    let hour = date.getUTCHours();
-    let minutes = date.getUTCMinutes();
-    let milliseconds = date.getUTCMilliseconds();
+    const time = timestamp * 1000;
+    const tz = timezone * 1000;
+    const date = new Date(time + tz);
+    const year = date.getUTCFullYear();
+    const month = date.getUTCMonth() + 1;
+    const day = date.getUTCDate();
+    const hour = date.getUTCHours();
+    const minutes = date.getUTCMinutes();
+    const milliseconds = date.getUTCMilliseconds();
     //Create the UTC date object
     const dateWithoutConversion = new Date(Date.UTC(year, month, day, hour, minutes, milliseconds));
     //Make it into a string
-    let dateString = dateWithoutConversion.toUTCString().toString();
+    const dateString = dateWithoutConversion.toUTCString().toString();
     //Using substring to extract the hour and minutes
-    let subHour = dateString.substring(dateString.indexOf(":") - 2, dateString.indexOf(":"));
-    let subMinutes = dateString.substring(dateString.indexOf(":") + 1, dateString.indexOf(":") + 3);
+    const subHour = dateString.substring(dateString.indexOf(":") - 2, dateString.indexOf(":"));
+    const subMinutes = dateString.substring(dateString.indexOf(":") + 1, dateString.indexOf(":") + 3);
     //Put the hour and minutes back together in a fullTime string, no conversion to the clients timezone will be done.
-    let fullTime = (`${subHour}:${subMinutes}`);
+    const fullTime = (`${subHour}:${subMinutes}`);
     //Returns a string with the time. 
     return fullTime;
 }
@@ -256,14 +256,14 @@ const getUserLocation = (inLat, inLon) => {
     //Fallback location parameters. Stockholm.
     const fallBackLat = 59.333;
     const fallBackLon = 18.065;
-    var getLocationOptions = {
+    const getLocationOptions = {
         enableHighAccuracy: true,
         timeout: 5000,
         maximumAge: 0
     };
 
     function gotLocation(pos) {
-        var coordinates = pos.coords;
+        const coordinates = pos.coords;
         //Call the get-weather functions using co-ordinates as input values. 
         getCurrentWeather(coordinates.latitude, coordinates.longitude);
         getFiveDayForecast(coordinates.latitude, coordinates.longitude);
@@ -292,7 +292,7 @@ const getUserLocation = (inLat, inLon) => {
 }
 
 const getPresetCityLongitude = (cityAbbreviation) => {
-    let lon =
+    const lon =
         cityAbbreviation === "SY" ? 151.209900 :
         cityAbbreviation === "SEA" ? -122.335167 :
         cityAbbreviation === "STH" ? 18.065 :
@@ -305,7 +305,7 @@ const getPresetCityLongitude = (cityAbbreviation) => {
 }
 
 const getPresetCityLatitude = (cityAbbreviation) => {
-    let lat =
+    const lat =
         cityAbbreviation === "SY" ? -33.865143 :
         cityAbbreviation === "SEA" ? 47.608013 :
         cityAbbreviation === "STH" ? 59.333 :
@@ -320,7 +320,7 @@ const getPresetCityLatitude = (cityAbbreviation) => {
 //Lets the user select which city to get the weather for. If nothing is selected or "myLoc" is selected, the getUserLocation is called without parameters and will try to retrieve
 //the users position through Geo Location API. 
 const selectCity = () => {
-    let selectedCity = document.getElementById('citySelect').value;
+    const selectedCity = document.getElementById('citySelect').value;
     if (selectedCity !== "" || selectedCity !== "myLoc") {
         getUserLocation(getPresetCityLatitude(selectedCity), getPresetCityLongitude(selectedCity));
     } else getUserLocation();
