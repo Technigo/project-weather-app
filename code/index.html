@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="icon" type="image/ico" href="./Images/favicon.ico">
+    <title>Weather</title>
+</head>
+<body onload="startFunction()">
+    <!-- Top-bar with picture, input-field and a button -->
+    <div class="input-data">
+        <div class="placeholder">
+            <img 
+            class="place-pic" 
+            src="./Images/placeholder.png"
+            alt="Picture of a placeholder"
+            />
+        </div>
+        <div class="input-field">
+            <select class="city-input" name="city" id="cityName" onchange="fetchWeather(document.getElementById('cityName').value)">
+                <option value="Gothenburg">Gothenburg</option>
+                <option value="Innsbruck">Innsbruck</option>
+                <option value="Firenze">Firenze</option>
+                <option value="Barcelona">Barcelona</option>
+                <option value="Kungsbacka">Kungsbacka</option>
+                <option value="Chamonix">Chamonix</option>
+                <option value="Cape town">Cape town</option>
+                <option value="Varadero">Varadero</option>
+            </select>
+        </div>
+    </div>
+    <!-- Wrapper for the box containg the weather forecasts -->
+    <div id="weatherColor" class="weather-wrapper">
+        <div class="wrapper-two">
+            <div class="todays-forecast">
+                <p id="city" class="city"></p>
+                <div class="today">
+                    <p id="todaysDate"></p>
+                    <p id="todaysTemperature"></p>
+                </div>
+                <div class="descriptions-today">
+                    <p id="weatherDescr"></p>
+                    <p id="feelsLike"></p>
+                </div>
+                <div class="wind">
+                    <img 
+                    class="wind-pic" 
+                    src="./Images/wind.png" 
+                    alt="Picture of wind"
+                    />
+                    <p id="wind"></p>
+                </div>
+                <div class="sunrise">
+                    <img 
+                    class="sunrise-pic" 
+                    src="./Images/sunrise.png" 
+                    alt="Picture of a sunrise"
+                    />
+                    <p>sunrise</p>
+                    <p id="sunrise"></p>
+                </div>
+                <div class="sunset">
+                    <img 
+                    class="sunset-pic" 
+                    src="./Images/sunset.png" 
+                    alt="Picture of a sunset"
+                    />
+                    <p>sunset</p>
+                    <p id="sunset"></p>
+                </div>
+            </div>
+            <!-- Picture in between -->
+            <div class="picture-div">
+                <img id="weatherPic" class="weather-pic" src=""/>
+            </div>
+            <h1></h1>
+            <div class="forecast-5-days">
+                <div class="anotherday dashed">
+                    <p class="day"></p>
+                    <p class="day-descr"></p>
+                    <img id="forecastPic1" class="forecast-pic" src=""/>
+                    <p class="day-temp"></p>
+                </div>
+                <div class="anotherday dashed">
+                    <p class="day"></p>
+                    <p class="day-descr"></p>
+                    <img id="forecastPic2" class="forecast-pic" src=""/>
+                    <p class="day-temp"></p>
+                </div>
+                <div class="anotherday dashed">
+                    <p class="day"></p>
+                    <p class="day-descr"></p>
+                    <img id="forecastPic3" class="forecast-pic" src=""/>
+                    <p class="day-temp"></p>
+                </div>
+                <div class="anotherday dashed">
+                    <p class="day"></p>
+                    <p class="day-descr"></p>
+                    <img id="forecastPic4" class="forecast-pic" src=""/>
+                    <p class="day-temp"></p>
+                </div>
+                <div class="anotherday non-dashed">
+                    <p class="day"></p>
+                    <p class="day-descr"></p>
+                    <img id="forecastPic5" class="forecast-pic" src=""/>
+                    <p class="day-temp"></p>
+                </div>
+                <p class="note">* Forecast for 12:00 UTC+01:00.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        Weather APP made by Gabriella Bolin as Project 6 @Technigo's Bootcamp 2020.<br>
+        Icons made by 
+        <a href="https://www.flaticon.com/authors/freepik" 
+        title="Freepik">Freepik</a> from 
+        <a href="https://www.flaticon.com/" 
+        title="Flaticon"> www.flaticon.com</a>  
+    </footer>
+
+    <!-- Connecting the JS-file -->
+    <script src="./weather.js"></script>
+
+</body>
+</html>

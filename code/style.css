@@ -29,16 +29,16 @@ p {
 }
 
 /* Styling of the input element and buttons */
+.input-data { /* Div around them */
+  margin: 15px 0px 0px 0px;
+  display: flex;
+  flex-direction: row;
+}
+
 .place-pic {
   width: 30px;
   height: 30px;
   margin-right: 5px; 
-}
-
-.input-data {
-  margin: 15px 0px 0px 0px;
-  display: flex;
-  flex-direction: row;
 }
 
 .city-input {
@@ -46,17 +46,6 @@ p {
   border: 1px solid#42ade3;
   font-family: 'Montserrat', sans-serif;
   width: 125px;
-}
-
-.city-button {
-  border: 1px solid #42ade3;
-  padding: 7px;
-  font-family: 'Montserrat', sans-serif;
-  background-color: #a0dcfa;
-}
-
-.city-button:hover {
-  font-weight: bold;
 }
 
 /*** Styling of the 'box' with the weather ***/
@@ -68,35 +57,44 @@ p {
 }
 
 .city {
-  font-size: 20px;
+  font-size: 21px;
   margin-bottom: 10px;
+}
+
+.today {
+  border-bottom: 1px solid #000;
+  padding-bottom: 4px;
+  font-size: 19px;
+}
+
+.today, .descriptions-today, .anotherday {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .wind {
   margin-top: 8px;
 }
 
-.weather-today, .anotherday {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.sunrise, .sunset, .wind {
+.wind, .sunrise, .sunset {
   display: flex;
   flex-direction: row;
   justify-content: left;
 }
 
-.sunrise-pic, .sunset-pic, .wind-pic {
+.wind-pic, .sunrise-pic, .sunset-pic {
   width: 20px;
   height: 20px;
   margin: 2px; 
 }
 
+/* The bigger picture in the middle showing the current weather */
 .picture-div {
   display: flex;
   justify-content: center;
+  border-bottom: 1px solid #000;
+  padding-bottom: 8px;
 }
 
 .weather-pic {
@@ -105,12 +103,23 @@ p {
   margin: 10px 0px;
 }
 
-.one {
+.forecast-pic {
+  width: 25px;
+  height: 25px;
+  margin: 0px;
+}
+
+.dashed { /* Sets dashed line under each day */
   border-bottom: 1px dashed #000;
 }
 
-.two {
+.non-dashed { /* Doesn't want dashed line on the last day,
+  need some extra margin instead */
   margin-bottom: 10px;
+}
+
+.note {
+  font-size: 10px;
 }
 
 /*** Styling of the Footer ***/
@@ -150,7 +159,11 @@ footer {
   }
 
   p {
-    margin: 10px;
+    margin: 5px;
+  }
+
+  .weather-wrapper {
+    width: 90vw;
   }
 
   .wrapper-two {
@@ -158,20 +171,22 @@ footer {
     flex-direction: row;
     justify-content: space-evenly;
     height: 60vh;
+    padding: 50px;
+  }
+
+  .forecast-5-days {
+    margin-top: 50px;
   }
 
   .picture-div {
-    margin: 20px 10px 70px 10px;
+    margin: 30px 10px 20px 60px;
+    border: none;
   }
 
   .weather-pic {
     margin: 20px 10px 80px 40px;
     height: 235px;
     width: 235px;
-  }
-
-  .todays-forecast, .forecast-5-days {
-    margin-top: 50px;
   }
 
   footer {
