@@ -19,13 +19,11 @@ Describe how you approached to problem, and what tools and techniques you used t
 - HTML5
 - CSS
 
-
-
 ## Requirements Completed
 **🔵  Blue Level (Minimum)**
 - You should fetch data from the API using `fetch()` in JavaScript
 - All data in the sketch above should be present and fetched from the API
-<!-- - The presentation of the data should be in the specified format. -->
+- The presentation of the data should be in the specified format.
 - The page should work on mobile (mobile first!), tablet and desktop (Be responsive)
 
 **🔴  Red Level (Intermediary Goals)**

@@ -81,21 +81,6 @@ img {
   flex: none;
 }
 
-/* City Selector */
-.city-selector {
-  margin: 25px 0 15px 0;
-  /* width: 150px; */
-  /* position: relative; */
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  font-family: 'Open Sans', sans-serif;
-  cursor: pointer;
-}
-
-
-
-
 /* Footer */
 footer {
   padding: 26px 26px 10px 26px;
