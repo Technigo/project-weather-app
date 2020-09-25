@@ -1,5 +1,5 @@
 const currentUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=742fe8feec76d1ec7cd8207fdf08fb30';
-const fiveDayUrl = 'http://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=742fe8feec76d1ec7cd8207fdf08fb30';
+const fiveDayUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=742fe8feec76d1ec7cd8207fdf08fb30';
 
 const degree = document.getElementById("degree");
 const city = document.getElementById("city");
