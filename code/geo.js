@@ -44,7 +44,7 @@ const success = (position) => {
 
     // Insert the variables and api key to url for both todays weather and forecast weather 
     const apiGeoToday = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=de78a234a90e490fde95f979d2491105`;
-    const apiGeoForecast = `https:/api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=de78a234a90e490fde95f979d2491105`;
+    const apiGeoForecast = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=de78a234a90e490fde95f979d2491105`;
 
     fetch(apiGeoToday).then((response) => {
         return response.json()
