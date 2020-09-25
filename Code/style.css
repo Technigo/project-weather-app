@@ -1,0 +1,109 @@
+body {
+    padding:0;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.picture-container {
+    width: 100%;
+}
+
+.picture-container img {
+    position: relative;
+    text-align: center;
+    background-position: center;
+    background-repeat: none;
+    background-size: cover;
+    width: 100%;
+   
+   /*  border-radius: 100% 0% 100% 0% / 0% 34% 66% 100%; ; */
+}
+
+.picture-container h2 {
+   
+}
+
+.weather-container {
+    display: flex;
+    text-align: center;
+    padding: 40px;
+    box-sizing: border-box;
+
+}
+
+
+
+.weather-info {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    font-size: 40px;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(255, 255, 255);
+}
+
+.weather-info h2{
+    margin: 5px;
+}
+
+.todays-temp {
+    padding: 20px;
+}
+
+.city {
+    font-weight: 400;
+    font-size: 30px;
+}
+
+.sun {
+    display: flex;
+    flex-direction: row;
+
+    margin-top: 5px;
+
+}
+.sun h3{
+    font-weight: 600;
+    font-size: 15px;
+    margin: 5px;
+    letter-spacing: 1px;
+}
+
+.sunrise-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+
+   .picture-container img{
+   /* height: 100vh; */
+    width: 100%;
+}
+}
+
+
+p {
+    color: #DE5D77;
+    font-size: 20px;
+}
+
+.day-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 20px 0 20px;
+    box-sizing: border-box;
+}
+
+.weather-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
