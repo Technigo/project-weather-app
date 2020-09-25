@@ -21,11 +21,14 @@ fetch(API_ONE_DAY)
     return response.json();
   })
   .then(data => {
+    // DATA CONSOLE LOG 
+    console.log(data);
+
     const { id, main } = data.weather[0];
     cityLocation.textContent = data.name;
     tempValue.textContent = Math.round(data.main.temp - 273);
     climate.textContent = main;
-    console.log(data);
+
     //Calculation of Sunrise time
     const sunriseHour = new Date(data.sys.sunrise * 1000).getHours();
     const sunriseMinutes = "0" + new Date(data.sys.sunrise * 1000).getMinutes();

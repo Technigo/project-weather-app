@@ -3,14 +3,18 @@
     padding: 0;
 }
 body{
-  background: linear-gradient(0deg, rgba(186,195,34,1) 0%, rgba(253,45,45,1) 100%);
+  background: rgb(26,171,231);
+  background: linear-gradient( rgba(26,171,231,1) 0%, rgba(70,236,234,1) 50%, rgba(252,252,252,1) 100%);
   font-family: Arial, Helvetica, sans-serif;
+  background-size: auto;
+  background-repeat: no-repeat;
+  margin: 0;
+
   
 }
 .header {
   background-color: rgba(240, 248, 255, 0.6);
   text-align: center;
-  padding: 30 0;
   border-bottom-left-radius: 30% 20%;
   border-bottom-right-radius: 30% 20%;
   text-shadow: rgba(0, 0, 0, 0.3);
@@ -20,7 +24,6 @@ body{
 .app-container{
 width: 350px;
 margin: 40px auto;
-padding-bottom: 40px;
 }
 #temp{
   text-align: center;
@@ -78,4 +81,8 @@ padding-bottom: 40px;
 }
 footer {
   color: black;
+  border-top: 3px dotted black;
+  border-bottom: 3px dotted black;
+  padding: 20px 0;
+  text-align: center;
 }
