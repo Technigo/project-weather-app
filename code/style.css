@@ -113,6 +113,19 @@ nav img {
     100% {transform: rotate(360deg);}
 }
 
+.loading-container p {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 150px;
+    bottom: 0;
+    background-color: transparent;
+    z-index: 2;
+    color: white;
+    text-align: center;
+}
+
 .loading {
     position: absolute;
     margin: auto;
@@ -126,6 +139,7 @@ nav img {
     border-right: 10px solid white;
     border-radius: 50%;
     animation: loadingAni 2s linear infinite;
+    z-index: 2;
 }
 
 /* CURRENT WEATHER */ 
@@ -148,7 +162,7 @@ nav img {
     width: 250%;
     height: auto;
     background-color: #5085da; 
-    background-image: linear-gradient(#1a345f, #5085da);
+    background-image: linear-gradient(#afb7c5, #f0f2f5);
     border-radius: 0 0 50% 50%;
     z-index: 0;
 }
@@ -280,6 +294,7 @@ nav img {
 }
 
 .cloud-symbol {
+    display: none;
 }
 
 .cloud {
