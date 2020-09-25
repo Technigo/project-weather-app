@@ -1,16 +1,18 @@
 body {
     font-family: 'Lato', sans-serif;
     margin: 0;
-    
+    text-shadow: 1px 1px 1px black;
+    color:white;
+    background-image: linear-gradient(to top, rgb(247, 151, 151),rgb(247, 213, 150),rgb(247, 247, 172),rgb(201, 245, 201),rgb(172, 172, 244),rgb(210, 152, 251),rgb(251, 220, 251)); 
 }
 
   
 .today {
-border: solid red 2px; 
+
 display: flex;
 flex-direction: column;
 align-items: center;
-background-image: url("rainbow.jpg");
+color:white;
 }
 
 h1 {
@@ -19,6 +21,7 @@ h1 {
 
 #degree{
     font-size: 60px;
+    font
 }
 
 #city{
@@ -37,18 +40,15 @@ h1 {
 }
 
 .sunny {
-    border-bottom: solid black 1px;
-    border-top: inset black 1px;
     display: flex;
     justify-content: space-between;
     width: 100%;
-    margin-top: 20px;
-    padding: 10px 0 10px 0;
-    font-size: 18px;
+    padding: 30px 0 30px 0;
+    font-size: 20px;
+   
 }
 
 #sunrise {
-    
     padding-left: 20px;
 
 }
@@ -60,21 +60,97 @@ img {
 }
 
 #sunset {
-   
     padding-right:20px;
 }
 
 
+.outer-line {
+    position: relative;
+     height: 30px;
+    width: 100%;
+    background: linear-gradient(white, pink, lightblue);
+    
+    animation: rotate 1.5s linear infinite;
+  }
+  
+  .outer-line span {
+    position: absolute;
+    left: 0px;
+    height: 30px;
+    width: 100%;
+    background: linear-gradient(white, pink, lightblue);
+  
+  }
+  
+  span:nth-child(1) {
+    filter: blur(5px);
+  }
+  
+  span:nth-child(2) {
+    filter: blur(10px);
+  }
+  
+  span:nth-child(3) {
+    filter: blur(25px);
+  }
+  
+  span:nth-child(4) {
+    filter: blur(150px);
+  }
+  
+  .inner-circle {
+    height: 180px;
+    width: 180px;
+    position: absolute;
+    background: black;
+    top: 10px;
+    left: 10px;
+    border-radius: 50%;
+    z-index: 9;
+  }
+  
+  @keyframes rotate {
+    0% {
+      filter: hue-rotate(0deg);
+    }
+    100% {
+      filter: hue-rotate(360deg);
+    }
+  }
 
-
-.forecast {
-    border: solid red 2px; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+#main-forecast-data{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding-top: 30px;
 }
 
-h2{
+.forecast {
+    text-align: center;
+}
+
+.forecast-container {
+    padding-bottom: 30px;
+}
     
+.forecast-day {
+    margin:0;
+    margin-top:20px;
+    font-size: 35px;
+}
+
+.forecast-description {
+    margin:0;
+    font-size: 17px;
+}
+
+.forecast-minmax {
+    margin:0;
+    font-size: 25px;
+}
+
+
+h2{
+margin:0;
+padding-top:20px;
 }
 

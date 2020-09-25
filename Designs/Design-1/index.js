@@ -62,28 +62,27 @@ fetch(fiveDayUrl)
             forecastContent.innerHTML += generateHTMLForForecast(forecastDay);
           });  
         })
-      
+       
         const generateHTMLForForecast = day => {
+        
             //Get the weekday it is
             const weekdayInUnix = day.dt;  // Date in UNIX
             const weekdayLongFormat = new Date(weekdayInUnix * 1000);  // Convert to nice date format we can use
             const specificWeekday = weekdayLongFormat.toLocaleDateString('en-US', {weekday: 'long'}); 
           
-            //Get image icon
-            const iconID = day.weather[0].icon; //Gets icon code from API
+         
           
-            //Get description
+            //Weather description
             const descriptionFromAPI = day.weather[0].description; 
           
-            //Get Min Max Temperatures
-            const minTemp = day.main.feels_like.toFixed(); //Gets min and max temp from API and rounds it up
+            //Min Max Temperatures
+            const minTemp = day.main.feels_like.toFixed();
             const maxTemp = day.main.temp_max.toFixed();
           
-            // Create dynamic HTML code to return
+            //Writing out through HTML
             let forecastHTML = '';
             forecastHTML += `<div class="forecast-container">`;
             forecastHTML += `<p class="forecast-day">${specificWeekday}</p>`;
-            forecastHTML += `<img class="forecast-icon" src='./assets/${iconID}.png'>`;
             forecastHTML += `<p class="forecast-description">${descriptionFromAPI}</p>`;
             forecastHTML += `<p class="forecast-minmax">${maxTemp}°C / ${minTemp}°C</p>`;
             forecastHTML += `</div>`;
