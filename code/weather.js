@@ -21,6 +21,7 @@ const currentWeatherToday = (json) => {
     date.innerHTML = new Date().toLocaleString('en-US', { timeZone: 'Canada/Eastern', weekday: 'long', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })
     description.innerHTML = json.weather[0].description.toUpperCase()
     iconUpdate(json.weather[0].main)
+    changeBackground(json)
     tempFeelsLike.innerHTML = `${json.main.feels_like.toFixed(0.5)} °C`
     tempHigh.innerHTML = `${json.main.temp_max.toFixed(0.5)} °C`
     tempLow.innerHTML = `${json.main.temp_min.toFixed(0.5)} °C`
@@ -61,10 +62,11 @@ const iconUpdate = (weather) => {
 }
 //CHANGING BACKGROUND DEPENDING ON TEMP
 const changeBackground = (json) => {
-    if (json.main.temp.toFixed(0.5) <= 15) {
+    if (json.main.temp.toFixed(0.5) <= 10 || json.main.feels_like.toFixed(0.5) <= 10) {
         body.classList.add('cold')
-    } else {
-        body.classList.remove('cold')
+    } else if (json.main.temp.toFixed(0.5) >= 22 || json.main.feels_like.toFixed(0.5) >= 2) {
+
+        body.classList.add('warm')
     }
 }
 //Fetch with JSON - Current Weather
