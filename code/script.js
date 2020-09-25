@@ -1,6 +1,6 @@
 const API_KEY = 'e27fc7790a6a4c3537de471b9d7612ce'
 
-let selectedCityName = 'Ho Chi Minh ';
+let selectedCityName = 'Ho Chi Minh';
 
 // Default page base Ho Chi Minh City
 updateWeatherData(selectedCityName);
