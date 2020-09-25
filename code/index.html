@@ -13,22 +13,21 @@
   <link rel="stylesheet" href="./style.css">
   <title>Weather Forecast</title>
 </head>
-<body id="body" class="body">
+<body>
+  <div class="background-container"></div>
   <div id="wrap" class="wrap">
     <div id="main-container" class="main-container">
-      <div class="header">
-        <p id="headerMessage"></p>
-      </div>
-      <div id="details" class="details">
+      <div>
         <div class="first-row">
           <p id="des" class="des"></p>
           <p class="symbol">|</p>
           <p id="temp" class="temp"></p>
         </div>
-        <p id="sunRise" class="rise-set"></p>
-        <p id="sunSet" class="rise-set"></p>
+        <p id="feel-like" class="feel-rise-set"></p>
+        <p id="sunRise" class="feel-rise-set"></p>
+        <p id="sunSet" class="feel-rise-set"></p>
       </div>
-      <div id="summary" class="summary">
+      <div>
         <img id="img" class="img" src="">
         <p id="sumMessage" class="sum-message"></p>
       </div>
@@ -36,14 +35,12 @@
       </div>
       <div class="search">
         <select class="city-list" id="city-select"></select>
-        <button type="button" onclick="showCurrentLocation()">
+        <button class="mylocation" type="button" onclick="showCurrentLocation()">
           My location
         </button>
       </div>
     </div>
   </div>
-    
   <script src="script.js"></script>
-  <!-- <script src="background-video.js"></script> -->
 </body>
 </html>

@@ -1,6 +1,6 @@
 const API_KEY = 'e27fc7790a6a4c3537de471b9d7612ce'
 
-let selectedCityName = 'Saigon';
+let selectedCityName = 'Ho Chi Minh ';
 
 // Default page base Ho Chi Minh City
 updateWeatherData(selectedCityName);
@@ -13,7 +13,7 @@ document.getElementById('city-select').addEventListener('change', (event) => {
 
 const CITIES = [
   {
-    name: 'Saigon',
+    name: 'Ho Chi Minh',
     timezone: 'Asia/Saigon'
   },
   {
@@ -86,13 +86,12 @@ function fetchFiveDayForecast(url) {
       let output = '';
 
       filteredForecast.forEach((item) => {
-        const temperature = item.main.temp;
-        const tempShort = parseFloat(temperature).toFixed(1);
+        const temperature = parseFloat(item.main.temp).toFixed(1);
         const date = new Date(item.dt * 1000);
         const weekday = date.toLocaleDateString('en-US', {
           weekday: 'short'
         });
-        output += `<p class="day">${weekday} <span>${tempShort}°C</span></p>`;
+        output += `<p class="day">${weekday} <span>${temperature}°C</span></p>`;
       });
 
       document.getElementById('forecast').innerHTML = output;
@@ -109,8 +108,8 @@ function updateWeatherData() {
   
 function populateDetails(todayForecast) {
   const todayDescription = todayForecast.weather[0].description;
-  const todayTemperature = todayForecast.main.temp;
-  const todayTempOneDeci = parseFloat(todayTemperature).toFixed(1);
+  const todayTemperature = parseFloat(todayForecast.main.temp).toFixed(1);
+  const todayFeelLike = parseFloat(todayForecast.main.feels_like).toFixed(1);
 
   const sunrise = new Date(todayForecast.sys.sunrise * 1000);
   const sunset = new Date(todayForecast.sys.sunset * 1000);
@@ -125,15 +124,25 @@ function populateDetails(todayForecast) {
   const sunsetTime = new Intl.DateTimeFormat('en-US', options).format(sunset);
 
   document.getElementById('des').innerHTML = `${todayDescription}`;
-  document.getElementById('temp').innerHTML = `${todayTempOneDeci}°C`;
-  document.getElementById('sunRise').innerHTML = `Sunrise: ${sunriseTime}`;
-  document.getElementById('sunSet').innerHTML = `Sunset: ${sunsetTime}`;
+  document.getElementById('temp').innerHTML = `${todayTemperature}°C`;
+  document.getElementById('feel-like').innerHTML = `Feel like ${todayFeelLike}°C`;
+  document.getElementById('sunRise').innerHTML = `Sunrise ${sunriseTime}`;
+  document.getElementById('sunSet').innerHTML = `Sunset ${sunsetTime}`;
 }
 
 function populateSummary(todayForecast) {
   const weatherTemplate = getWeatherTemplate(todayForecast);
 
   document.getElementById('img').src = weatherTemplate.image;
+  document.getElementById('img').classList.add('wobble');
+  setTimeout(() => {
+  document.getElementById('img').classList.remove('wobble');
+  }, 1500)
+  document.querySelector('.background-container').innerHTML = `
+    <video class="background-video" autoplay muted loop>
+      <source id="video" src="${weatherTemplate.videoSrc}" type="video/mp4">
+    </video>
+  `;
   document.getElementById('sumMessage').innerHTML = weatherTemplate.message;
   document.querySelector('.main-container').style.background = weatherTemplate.background;
   document.querySelector('.main-container').style.color = weatherTemplate.color;
@@ -159,32 +168,36 @@ function getWeatherTemplate(todayForecast) {
       id: 'rain',
       description: todayDescription,
       image: './assets/rainyDay.svg',
-      background:'linear-gradient(rgba(163,222,247,0.2), rgba(163,222,247,1))',
-      color: '#164A68',
+      background: 'rgba(0,0,0,0.34)',
+      color: '#fff',
+      videoSrc: './assets/Forest - 31450.mp4',
       message: `Don't forget your umbrella. It is wet in ${cityName} today.`
     },
     {
       id: 'cloud',
       description: todayDescription,
       image: './assets/cloudyDay.svg',
-      background:'linear-gradient(rgba(244,247,248,0.2), rgba(244,247,248,1))',
-      color:'#F47775',
+      background: 'rgba(0,0,0,0.34)',
+      color: '#fff',
+      videoSrc: './assets/Clouds - 1154.mp4',
       message: `Light a fire and get cosy. It is cloudy in ${cityName} today.`
     },
     {
       id: 'clear',
       description: todayDescription,
       image: './assets/sunnyDay.svg',
-      background: 'linear-gradient(rgba(244,233,185,0.2), rgba(247,233,185,1))',
-      color:'#2A5510',
+      bbackground: 'rgba(0,0,0,0.34)',
+      color: '#F7E9B9',
+      videoSrc: './assets/Nature - 38393.mp4',
       message: `Get your sunnies on. ${cityName} is looking rather great today.`
     },
    {
       id: 'other',
       description: todayDescription,
-      image: './assets/cloud-moon-rain.svg',
-      background: 'linear-gradient(rgba(216,187,255,0.2), rgba(216,187,255,1))',
-      color:'#5a189a',
+      image: './assets/thunderstorm-sun.svg',
+      background: 'rgba(0,0,0,0.34)',
+      color: '#fff',
+      videoSrc: './assets/Sunrise - 22204.mp4',
       message: `Enjoy the beauty of different weathers in ${cityName} today`
     }
   ]
@@ -192,6 +205,5 @@ function getWeatherTemplate(todayForecast) {
 }
 
 
-// document.getElementById('wrap').innerHTML = `<video class="video-background" autoplay muted loop><source scr:'./assets/Garden - 18230.mp4' type="video/mp4"></video> `
 
 

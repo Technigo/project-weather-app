@@ -8,24 +8,17 @@ body {
 }
 
 .wrap {
-  margin-left: auto;
-  margin-right: auto;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
-/* .video-background {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
-}, */
 
 .main-container {
   padding: 12px 25px;
-  margin-left: auto;
-  margin-right: auto;
   width: 100%;
   max-width: 400px;
+  z-index: 999;
 }
 
 .des::first-letter {
@@ -35,6 +28,7 @@ body {
 .first-row {
   display: flex;
 }
+
 .des, .temp {
   margin: 0;
 }
@@ -43,14 +37,14 @@ body {
   margin: auto 5px;
 }
 
-.rise-set {
+.feel-rise-set {
   margin: 5px auto;
 }
 
 .img {
   display: block;
   margin: 40px 0px 30px 0px;
-  height: 50px;
+  height: 60px;
   width: auto;
 }
 
@@ -72,11 +66,11 @@ body {
   display: flex;
   justify-content: space-between;
   margin: 8px 0px;
-  border-bottom: 1px dotted #F47775;
+  border-bottom: 1px dotted #fff;
 }
 
 .search {
-  text-align: center
+  text-align: center;
 }
 
 .city-list {
@@ -88,44 +82,60 @@ body {
   border-radius: 5px;
 }
 
-.video-background {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
+.mylocation {
+  font-size: 15px;
+  margin: 20px;
+  background-color: rgba(0,0,0,0.4);
+  height: 30px;
+  color: #fff;
+  box-shadow: rgba (0,0,0,0.19);
 }
-/* Media queries to keep aspect ratio over different devices */
-@media (min-aspect-ratio: 16/9) {
-  .bg-video {
-      height: 300%;
-      top: -100%;
 
+.background-container {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  top: 0;
+  z-index: -999;
+}
 
-/* .flexible {
-  position:absolute;
+.background-video {
+  height: 100%;
   object-fit: cover;
   width: 100%;
-  height: 100%;
-  z-index: -999;
-  top: 0;
-  left: 0;
-} */
-/* .cloudy-day {
-  background-image: linear-gradient(rgba(244,247,248,0.2), rgba(244,247,248,1));
-  color:#F47775;
 }
 
-.sunny-day {
-  background-image: linear-gradient(rgba(244,233,185,0.2), rgba(247,233,185,1));
-  color:#2A5510;
+.wobble {
+  animation: 1s wobble ease;
 }
 
-.rainy-day {
-  background-image: linear-gradient(rgba(163,222,247,0.2), rgba(163,222,247,1));
-  color:#164A68;
+@keyframes wobble {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  15% {
+    transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+  }
+
+  30% {
+    transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
+  }
+
+  45% {
+    transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
+  }
+
+  60% {
+    transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
+  }
+
+  75% {
+    transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
 }
-.other-day {
-  background-image: linear-gradient(rgba(216,187,255,0.2), rgba(216,187,255,1));
-  color:#5a189a;
-} */
