@@ -19,11 +19,24 @@
 
             <div id="searchContainer" class="search-field">
                 <div class="search-container">
-                    <input type="text" id="cityNameSearch" name="cityNameSearch" onkeydown="if (event.keyCode == 13)
-            document.getElementById('btn-search').click()" />
-                    <!--Move this to JS line 90-->
+                    <select id="cityNameSearch" name="cityNameSearch" >
+                        <option value="Stockholm">Stockholm</option>
+                        <option value="London">London</option>
+                        <option value="Berlin">Berlin</option>
+                        <option value="Paris">Paris</option>
+                        <option value="Rome">Rome</option>
+                        <option value="San Diego">San Diego</option>
+                        <option value="Washington DC">Washington DC</option>
+                        <option value="Toronto">Toronto</option>
+                        <option value="Tokyo">Tokyo</option>
+                        <option value="Bangkok">Bangkok</option>
+                        <option value="Cairo">Cairo</option>
+                        <option value="Cape Town">Cape Town</option>
+                        <option value="Canberra">Canberra</option>
+                        <option value="Sydney">Sydney</option>
+                    </select>
 
-                    <input class="search-btn" type="button" id="btn-search" value="Search" onclick="citySearch()" />
+                    <!-- <input class="search-btn" type="button" id="btn-search" value="Search" onclick="citySearch()" /> -->
                 </div>
             </div>
         </section>

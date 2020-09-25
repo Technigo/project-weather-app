@@ -1,6 +1,5 @@
 let city = 'Stockholm';
-const button = document.getElementById('btn-search')
-
+//const button = document.getElementById('btn-search')
 const containerToday = document.getElementById("weatherToday");
 //const descriptionToday = document.getElementById("text");
 const containerForecast = document.getElementById("forecastWrapper");
@@ -19,7 +18,7 @@ const calculateTemperature = (number) => {
   return roundedTemp;
 };
 
-//Create function that shows min/max temp
+//Create function that shows min/max temp NOT WORKING ATM
 const minMaxTemperature = (item) => {
   //const filteredForecast = json.list.filter(item => item.dt_txt.includes(day1Date)) Code from Henrike
   const minTempArray = item.map(day => day.main.temp_min);
@@ -29,7 +28,7 @@ const minMaxTemperature = (item) => {
   //API main.temp_min main.temp_max
 };
 
-//Create function that shows 'feels like'temp
+//Create function that shows 'feels like'temp NOT STARTED
 const feelsLikeTemperature = (number) => {
   //API main.feels_like
 };
@@ -90,23 +89,21 @@ const iconWeather = (item) => {
 
 }
 
-//BUTTON FUNCTION 
-const citySearch = () => {
-  containerToday.innerHTML = ''; //This is needed to clear the default value
-  containerForecast.innerHTML = '';
-  city = document.getElementById('cityNameSearch').value; //this sets the searchvalue to whatever the input is
 
+//BUTTON FUNCTION 
+const citySearch = (event) => {
+  containerToday.innerHTML = ''; 
+  containerForecast.innerHTML = '';//This is needed to clear the default value
+    city = event.target.value; //this sets the searchvalue to whatever the user chooses is
   fetchWeatherForecast(city);
   fetchWeatherToday(city);
-  document.getElementById('cityNameSearch').value = ''; //Clearing input value after search
 }
-//button.addEventListener('keydown', )
+document.getElementById('cityNameSearch').addEventListener('change', (citySearch))
 
 //DISPLAY FUNCTIONS
 
 const generatedHTMLForWeatherToday = (weatherToday) => {
   const temperature = calculateTemperature(weatherToday.main.temp); //This is using json.main.temp as a parameter instead of number.
-  console.log(weatherToday.sys.sunrise);
   const sunrise = calculatingSun(weatherToday.sys.sunrise);
   const sunset = calculatingSun(weatherToday.sys.sunset);
   const description = weatherToday.weather[0].description;
@@ -132,7 +129,6 @@ const generatedHTMLForWeatherToday = (weatherToday) => {
 const generatedHTMLForWeatherForecast = (filteredForecast) => {
   const day = printDay(filteredForecast.dt_txt);
   //Tells what day it is
-  console.log(filteredForecast.main.temp);
   const dailyTemp = calculateTemperature(filteredForecast.main.temp); //Would also like for this to tell min/max-temp
   
   
@@ -174,13 +170,12 @@ const fetchWeatherForecast = (city) => {
       const filteredForecast = weatherForecast.list.filter((item) =>
         item.dt_txt.includes("12:00")
       );
-      console.log(filteredForecast);
       containerForecast.innerHTML = `<h1>The weather for the next five days will be:</h1>`;
 
       filteredForecast.forEach((forecast) => {
         containerForecast.innerHTML += generatedHTMLForWeatherForecast(forecast);
       const minMax = minMaxTemperature(filteredForecast)
-      console.log(minMax)
+      console.log(`this is ${minMax}`)
       });
     });
     
