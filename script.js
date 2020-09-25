@@ -72,13 +72,14 @@ const iconDependingOnWeather = (item) => {
     const containerColor = document.querySelector('.weather-today')
 
    if (temp < 0, temp <= 10) {   //cold
-      containerColor.style.background = 'linear-gradient(to right, #1a255e 0%, #81bfd5 100%)'; //blue
+      containerColor.style.background = 'linear-gradient(to bottom, #1a255e 0%, #81bfd5 100%)'; //blue
    } else if (temp > 10, temp < 18) {//semi-warm
-      containerColor.style.background = 'linear-gradient(to right, #f7c602 0%, #fceba6 100%)'; //yellow
+      //containerColor.style.background = 'linear-gradient(to bottom, #f7c602 0%, #fceba6 50%)'; //yellow
+      containerColor.style.background = 'linear-gradient(180deg, #f7c602 0%, #fceba6 70%, #ffffff 100%)';
    } else if (temp > 18, temp < 27) { //warm
-      containerColor.style.background = 'linear-gradient(to right, #f7a013 0%, #fce685 100%)'; //orange
+      containerColor.style.background = 'linear-gradient(180deg, #f7a013 0%, #fce685 70% #ffffff 100%)'; //orange
    } else //super-warm
-      containerColor.style.background = 'linear-gradient(to right, #ef5710 0%, #f9d67c 100%)'; //red
+      containerColor.style.background = 'linear-gradient(180deg, #ef5710 0%, #f9d67c 70% #fffff 100%)'; //red
  }
  
 const generatedHTMLForWeatherToday = (weatherToday) => {
@@ -114,10 +115,13 @@ const generatedHTMLForWeatherForecast = (filteredForecast) => {
    
   let weatherForecast ='';
    weatherForecast += `<div class="weather-forecast">`;
-   weatherForecast += `<div class="weekday">${weekday}</div>`;
-   weatherForecast += `<div class="forecast-description">`
-   weatherForecast += `<img src='${iconForecast}'>`;
+   weatherForecast += `<div class="weekday">`;
+   weatherForecast += `<p>${weekday}</p>`
    weatherForecast += `<p>${forecastDescription}</p>`
+   weatherForecast += `</div>`
+   weatherForecast += `<div class="forecast-icon">`
+   weatherForecast += `<img src='${iconForecast}'>`;
+  
    weatherForecast += `</div>`
    weatherForecast += `<p>${dailyTemp} \xB0/ ${humidity} &#37; </p>`
    weatherForecast += `</div>`;

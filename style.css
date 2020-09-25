@@ -8,10 +8,8 @@ body {
 
 .weather-today {
   width: 90vw;
-  height: 40vh;
+  height: 50vh;
   display: flex;
-  /* background-color: rgb(128, 128, 175); */
-  /* background: linear-gradient(to right, #1a255e 0%, #81bfd5 100%); */
   border-radius: 16px;
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
@@ -61,15 +59,15 @@ body {
   align-items: center;
   margin: 10px 0;
   color: #60605d;
-  background: #fcefba;
-  border-radius: 16px;
+  background: #fceba6;
+  /* border-radius: 16px; */
 }
 
 .weather-forecast:nth-child(odd) {
-  background: #edecea;
+  background: #cececc;
 }
 
-.forecast-description {
+.forecast-icon {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -78,24 +76,24 @@ body {
   width: 130px;
 }
 
-.forecast-description img {
+.forecast-icon img {
   margin-bottom: 20px;
 }
 
-.forecast-description p {
+/* .forecast-description p {
   position: absolute;
   top: 58px;
   left: 9px;
   /* width: 120px; */
-}
+/* } */ 
 
-.description::first-letter, 
-.forecast-description::first-letter {
+.weekday p::first-letter { 
+/* .forecast-description::first-letter */
   text-transform: uppercase;
 }
 
 .description {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .description,
