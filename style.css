@@ -60,6 +60,10 @@ border-radius: 5%;
   font-style: italic;
 }
 
+.weather-image{
+  animation: pulse 2s infinite;
+}
+
 .weather-descriptions{
   display: flex;
   flex-direction: column;
@@ -125,6 +129,56 @@ margin-bottom: 10px;
   margin-right: 10px;
   margin-bottom: 10px;
 }
+
+/***** ANIMATION ****/ 
+@-webkit-keyframes AnimationName {
+  0% {
+      background-position: 0% 9%
+  }
+  50% {
+      background-position: 100% 92%
+  }
+  100% {
+      background-position: 0% 9%
+  }
+}
+
+@-moz-keyframes AnimationName {
+  0% {
+      background-position: 0% 9%
+  }
+  50% {
+      background-position: 100% 92%
+  }
+  100% {
+      background-position: 0% 9%
+  }
+}
+
+@keyframes AnimationName {
+  0% {
+      background-position: 0% 9%
+  }
+  50% {
+      background-position: 100% 92%
+  }
+  100% {
+      background-position: 0% 9%
+  }
+}
+
+@keyframes pulse {
+  0% {
+      transform: scale(0.95);
+  }
+  70% {
+      transform: scale(1);
+  }
+  100% {
+      transform: scale(0.95);
+  }
+}
+
 
 /***** MEDIA QUERIES ****/ 
 
