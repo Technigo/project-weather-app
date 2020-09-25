@@ -26,8 +26,7 @@ p {
 
 .main-container {
     width: 90%;
-    margin: 30px auto 5px auto;
-    /* border: 1px solid #000; */
+    margin: 30px auto;
     padding: 20px;
     border-radius: 2px;
     background: #fae3da;
@@ -90,7 +89,7 @@ p {
     display: flex;
     flex-direction: column;
     background: #fff;
-    padding: 10px 0px;
+    padding: 20px 0px;
 }
 
 .forecast-container {
@@ -98,7 +97,6 @@ p {
     justify-content: space-evenly;
     align-items: center;
     margin-bottom: 20px;
-    height: 40px;
 }
 
 .forecast-container:last-child {
@@ -106,16 +104,11 @@ p {
 }
 
 .forecast-day {
-    margin-right: 40px;
-    width: 90px;
+    width: 80px;
 } 
 
 .forecast-icon {
     width: 35px;
-}
-
-.forecast-temp {
-    margin-left: 70px;
 }
 
 .forecast-type {
