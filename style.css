@@ -6,13 +6,25 @@
     font-family: 'Montserrat', sans-serif;
   }
 
+  h5,
+  p {
+      font-size: 21px;
+  }
+
+  p {
+      margin: 0;
+  }
+
+body {
+    margin: 0 40px;
+}
+
 .weather-info-textbox {
-    margin: 49px 40px 15px;
+    margin: 49px 0 15px;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
-    font-size: 21px;
 }
 
 .weather-info-textbox :nth-child(1) {
@@ -33,5 +45,17 @@
 .weather-info-text {
     width: 100%;
     margin: 5px;
+}
 
+.forecast-info-textbox {
+    display: flex;
+    border-bottom: dashed 1px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    padding-bottom: 10px;
+}
+
+.forecast-info-textbox:last-child {
+    border: none;
 }

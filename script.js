@@ -5,7 +5,7 @@ const API_URL_CURRENT_WEATHER = `http://api.openweathermap.org/data/2.5/weather?
 const API_URL_FORECAST_WEATHER = `http://api.openweathermap.org/data/2.5/forecast?q=Gothenburg,Sweden&units=metric&appid=${API_KEY}`;
 const currentWeatherInfo = document.querySelector('.weather-info-textbox');
 const cityHeader = document.querySelector('.city');
-const forecastInfo = document.querySelectorAll('.forecast-weather-info-textbox');
+const forecastInfo = document.querySelectorAll('.forecast-info-textbox');
 
 //---------------------------------Fetch API current weather---------------------
 fetch(API_URL_CURRENT_WEATHER)
