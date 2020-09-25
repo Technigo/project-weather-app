@@ -7,19 +7,13 @@ const containerForecast = document.getElementById("forecastWrapper");
 
 //UNSPLASH APIKEY z4PEqzbIWdyz1ZI_pAEh8rhUEdEyW1vxMjTi2kkaAfA
 
-//TEMPERATURE FUNCTIONS
-
-//Create function that calls all temperaturefunctions
-const callTempFunctions = (number) => {
-  calculateTemperature(number);
-  minMaxTemperature(number);
-  feelsLikeTemperature(number);
-};
+//TEMPERATURE FUNCTION
 const calculateTemperature = (number) => {
   const roundedTemp = Math.round(number * 10) / 10; //By adding *10 AND adding /10 the number is rounded up to nearest integer with one decimal. If only using round() the number is rounded up to nearest integer.
   return roundedTemp;
 };
 //DATE FUNCTIONS
+//This sunrise/sunset function only displays in swedish time at the moment
 const calculatingSun = (time) => {
   const sunTime = new Date(time * 1000);
   const sunTimeString = sunTime.toLocaleTimeString("sv-SE", {
@@ -37,7 +31,6 @@ const printDay = (day) => {
   });
   return forecastDaysString;
 };
-
 //This function takes the localtime, then uses the timezone from API to display local time depending on what city you choose.
 const printTime = (timezoneOffset) => {
   const d = new Date();
