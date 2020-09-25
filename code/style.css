@@ -7,10 +7,6 @@ body {
   font-family: "Quicksand", sans-serif;
 }
 
-p {
-  width: 100px;
-}
-
 /*style for weather today wrapper*/
 .weather-today-wrapper {
   background: "";
@@ -89,6 +85,7 @@ img {
 }
 
 .temp-forcast {
+  width: 100px;
   text-align: end;
 }
 
@@ -117,17 +114,16 @@ img {
 
 /****MEDIA FOR TABLET *****/
 @media (min-width: 768px) {
-  .weather-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
   .weather-today-wrapper,
   .weather-forcast-wrapper {
-    max-width: 80%;
+    max-width: 60%;
   }
 }
 
 /****MEDIA FOR DESKTOP *****/
 @media (min-width: 1024px) {
+  .weather-today-wrapper,
+  .weather-forcast-wrapper {
+    max-width: 40%;
+  }
 }
