@@ -130,7 +130,6 @@ margin-bottom: 10px;
 
 @media (min-width: 768px){
   .container-todaysWeather-background{
-    height: 50vh;
     width: 400px;
     margin-top: 100px;
     }
@@ -155,6 +154,6 @@ margin-bottom: 10px;
 
 @media (min-width: 1024px) {
   .container-todaysWeather-background{
-    height: 59vh;
+    height: 70vh;
   }
 }
