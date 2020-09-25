@@ -53,9 +53,6 @@ border-radius: 5%;
   margin-bottom: 20px;
 }
 
-img {
-  height: 100px;
-}
 
 .h2-weather-description{
   color: #121111;
@@ -132,8 +129,32 @@ margin-bottom: 10px;
 /***** MEDIA QUERIES ****/ 
 
 @media (min-width: 768px){
+  .container-todaysWeather-background{
+    height: 50vh;
+    width: 400px;
+    margin-top: 100px;
+    }
+
+  .city-title{
+    font-size: 3em;
+  }
+  
+  .main-p-temp{
+    margin-bottom: 30px;
+  }
+  
+  .h2-weather-description{
+    margin-bottom: 50px;
+  }
+
+  .forecast{
+    width: 400px;
+  }
 
 }
 
 @media (min-width: 1024px) {
+  .container-todaysWeather-background{
+    height: 59vh;
+  }
 }
