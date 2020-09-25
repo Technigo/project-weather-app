@@ -4,9 +4,9 @@ body {
   align-items: center;
   height: 100vh;
   font-family: 'Courier New', Courier, monospace;
-  background: #F8ECC2;
-  color: #6c8aa4;
-} 
+  background-image: linear-gradient(beige, whitesmoke);
+  color: #348ad4;
+}
 
 .weather-app {
   height: 90vh;
@@ -48,12 +48,13 @@ body {
 }
 
 .sunrise-sunset {
-  width: 150px;
+  width: 170px;
   padding: 1px;
   margin-top: 5px;
   font-size: 15px;
   font-weight: 300;
 }
+
 
 /* 5 day forcast */
 
@@ -74,19 +75,15 @@ body {
   margin: 5px;
 }
 
-
 @media (min-width:900px) {
   .weather-app {
     flex-direction: row;
   }
-
   .weather-icon {
     justify-content: flex-start;
   }
-
   .today-section {
-    margin-bottom: 260px;
+    margin-bottom: 250px;
     width: 350px;
   }
-} 
-
+}
