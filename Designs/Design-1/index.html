@@ -4,42 +4,45 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather API</title>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./style.css"/>
     <!-- Lägg till favidcon senare
       <link rel="icon" type="image/png" scr="./Group36.png"> --> 
     <link rel="stylesheet" href="https://fonts.google.com/specimen/Roboto">
   </head>
   <body>
-    
+    <main id="main"></main>
+
     <h1>Weather forcast: <span id="weatherInfo"></span></h1>
     
       <p id="temperature">temperature....</p>
       <p id="weatherType"> weathertype.......</p>
       <p id="sunrise"> sunrise.....</p>
       <p id="sunset"> sunset....</p>
-      
-
+ 
+      <h2>5 days weather <span id="weatherFiveDays"></span></h2> 
+ 
     <section>
-      <p id="Monday">M</p>
+      <p id="dayOne"></p>
+      <p id="minTemp"></p>
     </section>
 
     <section>
-      <p id="Tuesday">T</p>
+      <p id="dayTwo"></p>
     </section>
 
     <section>
-      <p id="Wednesday">W</p>
+      <p id="dayThree"></p>
     </section>
 
     <section>
-      <p id="Thursday">T</p>
+      <p id="dayFour"></p>
     </section>
 
     <section>
-      <p id="Friday">F</p>
+      <p id="dayFive"></p>
     </section>
 
-    <main id="main"></main>
+    
     <script defer src="./script.js"></script>
   </body>
 </html>
