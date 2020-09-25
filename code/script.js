@@ -139,7 +139,8 @@ function populateSummary(todayForecast) {
   document.getElementById('img').classList.remove('wobble');
   }, 1500)
   document.querySelector('.background-container').innerHTML = `
-    <video class="background-video" autoplay muted loop>
+    <video class="background-video" autoplay muted loop
+      poster= ${weatherTemplate.poster} >
       <source id="video" src="${weatherTemplate.videoSrc}" type="video/mp4">
     </video>
   `;
@@ -171,6 +172,7 @@ function getWeatherTemplate(todayForecast) {
       background: 'rgba(0,0,0,0.34)',
       color: '#fff',
       videoSrc: './assets/Forest - 31450.mp4',
+      poster: './assets/rain-791893_1920.jpg',
       message: `Don't forget your umbrella. It is wet in ${cityName} today.`
     },
     {
