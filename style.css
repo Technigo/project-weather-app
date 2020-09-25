@@ -23,7 +23,6 @@ body {
     height: 100vh;
     display: grid;
     grid-template-columns: repeat(8, 1fr) ;
-    /* background: rgba(0,0,0,0.5); */
 }
 
 .daily-wrapper {
@@ -96,6 +95,7 @@ p {
     margin: 2px;
 }
 
+/*ADD STYLING FOR SELECTIONMENU, fix overflow to scrollable*/
 .search-field {
     grid-column: span 8;
     height: 10vh;
