@@ -7,13 +7,12 @@ const locationHeader = document.getElementById('headerLocation');
 const weatherHeader = document.getElementById('headerWeather');
 const sunriseHeader = document.getElementById('headerSunrise');
 const sunsetHeader = document.getElementById('headerSunset');
-const containerDay = document.getElementById('weeklyWeatherDay');
-const containerTemp = document.getElementById('weeklyWeatherTemp');
+const weeklyWeather = document.getElementById('weeklyWeather');
 const weatherBackground = document.getElementById('weatherBackground');
 
 //FUNCTIONS 
 
-//fetch the data from api & create html - todays forecast
+//fetch the data from api & generate html - todays forecast
 fetch(apiUrlToday)
   .then((response) => {
     return response.json()
@@ -45,17 +44,27 @@ fetch(apiUrlWeekly)
     //filter only data from 12.00
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
 
+    //add html content for weekly forecast
     filteredForecast.forEach((day) => {
-      containerDay.innerHTML += `<p class="weekly-weather-day">${generateDayName(day.dt)}</p>`
-    });
-
-    filteredForecast.forEach((temp) => {
-      containerTemp.innerHTML += `<p class="weekly-weather-temp">${getNumberFormat(temp.main.temp)} °C</p>`
+      weeklyWeather.innerHTML += generateHTMLForDay(day);
     });
   })
   .catch((error) => {
     console.log('Fetch Error', error)
   })
+
+// generate HTML for weekly forecast 
+const generateHTMLForDay = (day) => {
+  const weekDay = generateDayName(day.dt);
+  const temperature = getNumberFormat(day.main.temp);
+
+  let dayHTML = '';
+  dayHTML += `<div class ="weekly-forecast">`;
+  dayHTML += `<p class="weekly-weather-day">${weekDay}</p>`;
+  dayHTML += `<p class="weekly-weather-temp">${temperature} °C</p>`;
+  dayHTML += `</div>`;
+  return dayHTML;
+}
 
 //function to convert temperature to 1 decimal
 const getNumberFormat = (x) => {
@@ -81,7 +90,7 @@ const getTimeFormat = (time) => {
     return formatTime;
 }
 
-//function to convert actual date to short weekday name
+//function to convert actual date to  weekday name
 const generateDayName = (name) => {
   const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']; 
   const formatDay = new Date(name * 1000).getDay([]);

@@ -259,17 +259,17 @@ header {
 
 .weekly-weather {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
-    padding: 20px;
+    padding: 20px 20px 40px 20px;
     width: 90%;
     margin: auto;
 }
 
-.weekly-weather-day-wrapper, .weekly-weather-temp-wrapper {
+.weekly-forecast {
     display: flex;
-    flex-direction: column;
-    width: 50%;
+    justify-content: space-between;
+    border-bottom: dashed 1px #bfbfbf;
 }
 
 .weekly-weather-day {
@@ -283,11 +283,6 @@ header {
     font-family: 'Cabin', Sans-Serif;
     font-weight: lighter;
 } 
-
-.weekly-weather-day, .weekly-weather-temp {
-    border-bottom: dashed 1px #bfbfbf;
-    padding-bottom: 20px;
-}
 
 /* For tablet only */
 @media screen and (min-width: 667px) and (max-width: 1024px) {
