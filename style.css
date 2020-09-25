@@ -6,7 +6,12 @@ body {
     margin: 0;
 }
 
+.wrapper {
+    width: 100%;
+}
+
 .weather-container {
+    width: 100%;
     border: 2px solid red;
     display: grid;
     grid-template-columns: repeat(8, 1fr) ;
