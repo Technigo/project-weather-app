@@ -24,7 +24,7 @@ const calculatingSun = (time) => {
   return sunTimeString;
 };
 const printDay = (day) => {
-  const forecastDays = new Date(day);
+  const forecastDays = new Date(day*1000);
   const forecastDaysString = forecastDays.toLocaleDateString("en-US", {
     weekday: "short",
     day: "numeric",
@@ -149,7 +149,7 @@ const generatedHTMLForWeatherToday = (weatherToday) => {
   //descriptionToday.innerHTML += `The sun rises at ${sunrise} and sets at ${sunset}`;
 };
 const generatedHTMLForWeatherForecast = (filteredForecast) => {
-  const day = printDay(filteredForecast.dt_txt);//Tells what day it is
+  const day = printDay(filteredForecast.dt);//Tells what day it is
   const dailyTemp = calculateTemperature(filteredForecast.main.temp);
   const icon = iconWeather(filteredForecast.weather[0].main);
 
