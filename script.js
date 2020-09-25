@@ -60,11 +60,11 @@ const generateCurrentWeatherInfo = current => {
 //-----------------------Data consuming approach, doing it anyway-----------------------
 const generateHTMLForCurrentWeatherInfo = currentWeatherObject => {
     let currentWeatherInfoHTML = '';
-    currentWeatherInfoHTML += `<p class="weather-info-text">${currentWeatherObject.weatherDescription}</p>`;
-    currentWeatherInfoHTML += `<p class="weather-info-text">${currentWeatherObject.temperature}°</p>`;
-    currentWeatherInfoHTML += `<p class="weather-info-text">° feels like: ${currentWeatherObject.temperatureFeelsLike}°</p>`;
-    currentWeatherInfoHTML += `<p class="weather-info-text">Sunrise: ${currentWeatherObject.sunriseTime}</p>`;
-    currentWeatherInfoHTML += `<p class="weather-info-text">Sunset: ${currentWeatherObject.sunsetTime}</p>`;
+    currentWeatherInfoHTML += `<h5 class="weather-info-title">${currentWeatherObject.weatherDescription}</h5>`;
+    currentWeatherInfoHTML += `<h5 class="weather-info-title">${currentWeatherObject.temperature}°</h5>`;
+    currentWeatherInfoHTML += `<p class="weather-info-text">feels like ${currentWeatherObject.temperatureFeelsLike}°</p>`;
+    currentWeatherInfoHTML += `<p class="weather-info-text">sunrise ${currentWeatherObject.sunriseTime}</p>`;
+    currentWeatherInfoHTML += `<p class="weather-info-text">sunset ${currentWeatherObject.sunsetTime}</p>`;
     return currentWeatherInfoHTML;
 };
 //-------------------------------Fetch API forecast weather-------------------------------

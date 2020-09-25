@@ -1,0 +1,37 @@
+/* General style */
+* {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+.weather-info-textbox {
+    margin: 49px 40px 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 21px;
+}
+
+.weather-info-textbox :nth-child(1) {
+    border-right: 1px solid;
+    min-width: 60px;
+}
+
+.weather-info-title {
+    display: flex;
+    margin: 15px 5px;
+    padding: 0;
+    font-size: 21px;
+    font-weight: 400;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.weather-info-text {
+    width: 100%;
+    margin: 5px;
+
+}
