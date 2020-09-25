@@ -1,12 +1,8 @@
 // APIs from different cities
 const StockholmAPI = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723&lang=sv';
-const StockholmForecastAPI = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=2163e0bcc8eaa7f0951284d8a650a723';
 const UmeaAPI = 'https://api.openweathermap.org/data/2.5/weather?q=Umea,Sweden&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723&lang=sv';
-const UmeaForecastAPI = 'https://api.openweathermap.org/data/2.5/forecast?q=Umea,Sweden&units=metric&APPID=2163e0bcc8eaa7f0951284d8a650a723&lang=sv';
 const BodenAPI = 'https://api.openweathermap.org/data/2.5/weather?q=Boden,Sweden&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723&lang=sv';
-const BodenForecastAPI = 'https://api.openweathermap.org/data/2.5/forecast?q=Boden,Sweden&units=metric&APPID=2163e0bcc8eaa7f0951284d8a650a723';
 const KlintanAPI = 'https://api.openweathermap.org/data/2.5/weather?q=Robertsfors,Sweden&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723&lang=sv';
-const KlintanForecastAPI = 'https://api.openweathermap.org/data/2.5/forecast?q=Robertsfors,Sweden&units=metric&APPID=2163e0bcc8eaa7f0951284d8a650a723';
 const stockholmDailyAPI = 'https://api.openweathermap.org/data/2.5/onecall?lat=59.3293&lon=18.0686&exclude=current,minutely,hourly,alerts&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723'
 const umeaDailyAPI = 'https://api.openweathermap.org/data/2.5/onecall?lat=63.8258&lon=20.2630&exclude=current,minutely,hourly,alerts&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723'
 const bodenDailyAPI = 'https://api.openweathermap.org/data/2.5/onecall?lat=65.8251&lon=21.6887&exclude=current,minutely,hourly,alerts&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723'
@@ -29,13 +25,17 @@ const rainAnimation = document.getElementById("rain-symbol")
 const sunAnimation = document.getElementById("sun-symbol")
 const mistAnimation = document.getElementById("mist-symbol")
 
-// Getting current geo location
+//Variables for geo location
 
 let lat =''
 let lon =''
 let geoLocationAPI = ''
 let geoLocationForcastAPI = ''
 let geoLocationDailyAPI = ''
+
+/*** FUNCTIONS ***/
+
+// Getting current geo location
 
 const getLocationAPI = (callback) => {
 
@@ -44,7 +44,7 @@ const getLocationAPI = (callback) => {
              navigator.geolocation.getCurrentPosition(setCoordinates, handleError); 
          } else {
             showCurrentWeather(StockholmAPI);
-            showWeatherForecast(StockholmForecastAPI);
+            showWeatherForecast(stockholmDailyAPI);
          }
     }
     const setCoordinates = (position) => {
@@ -79,8 +79,6 @@ const getLocationAPI = (callback) => {
 const setLocationAPI = () => {
     showCurrentWeather(geoLocationAPI);
     showWeatherForecast(geoLocationDailyAPI);
-    // showWeatherForecast(geoLocationForcastAPI);
-
 }
 
 //Shows or hides the navigation bar
@@ -96,9 +94,8 @@ const showHamburgerMenu = () => {
     }
 };
 
-const mediaSize = window.matchMedia("(min-width: 1024px)")
 const showNavBar = () => {
-    // const mediaSize = window.matchMedia("(min-width: 1024px)")
+    const mediaSize = window.matchMedia("(min-width: 1024px)")
     if(mediaSize.matches) {
         navBar.style.display = "flex";
     } else { 
@@ -107,6 +104,7 @@ const showNavBar = () => {
     }
 }
 
+//Shows or hides the weather animations
 
 const showCloudAnimation = () => {
     cloudAnimation.style.display = "block";
@@ -160,7 +158,6 @@ const showCurrentWeather = (API) => {
             const sunsetString = sunset.toLocaleTimeString('se-SE', {hour: '2-digit', minute:'2-digit'})
             const weatherDescription = weather.weather[0].description
             const weatherType = weather.weather[0].main
-            console.log(weatherType);
 
             const setWeatherColors = () => {
                 if (weatherType === "Clouds") {
@@ -219,8 +216,6 @@ const showWeatherForecast = (forecastAPI) => {
             return response.json();
         })
         .then ((forecast) => {
-            // const filteredForecast = forecast.daily.filter(item => item.dt_txt.includes('12:00'));
-            // console.log(filteredForecast)
             weatherForecastContainer.innerHTML = '';
             const forecast5Days = forecast.daily.slice(1,6);
             const todayMin = forecast.daily[0].temp.min.toFixed(0)
@@ -236,23 +231,23 @@ const showWeatherForecast = (forecastAPI) => {
     
                 const setForecastImage = () => {
                     if (weatherIcon === "01d") {
-                        forecastImage = "http://openweathermap.org/img/wn/01d@2x.png"
+                        forecastImage = "https://openweathermap.org/img/wn/01d@2x.png"
                     } else if (weatherIcon === "02d") {
-                        forecastImage = "http://openweathermap.org/img/wn/02d@2x.png"
+                        forecastImage = "https://openweathermap.org/img/wn/02d@2x.png"
                     } else if (weatherIcon === "03d") {
-                        forecastImage = "http://openweathermap.org/img/wn/03d@2x.png"
+                        forecastImage = "https://openweathermap.org/img/wn/03d@2x.png"
                     } else if (weatherIcon === "04d") {
-                        forecastImage = "http://openweathermap.org/img/wn/04d@2x.png"
+                        forecastImage = "https://openweathermap.org/img/wn/04d@2x.png"
                     } else if (weatherIcon === "09d") {
-                        forecastImage = "http://openweathermap.org/img/wn/09d@2x.png"
+                        forecastImage = "https://openweathermap.org/img/wn/09d@2x.png"
                     } else if (weatherIcon === "10d") {
-                        forecastImage = "http://openweathermap.org/img/wn/10d@2x.png"
+                        forecastImage = "https://openweathermap.org/img/wn/10d@2x.png"
                     } else if (weatherIcon === "11d") {
-                        forecastImage = "http://openweathermap.org/img/wn/11d@2x.png"
+                        forecastImage = "https://openweathermap.org/img/wn/11d@2x.png"
                     } else if (weatherIcon === "13d") {
-                        forecastImage = "http://openweathermap.org/img/wn/13d@2x.png"
+                        forecastImage = "https://openweathermap.org/img/wn/13d@2x.png"
                     } else if (weatherIcon === "50d") {
-                        forecastImage = "http://openweathermap.org/img/wn/50d@2x.png"
+                        forecastImage = "https://openweathermap.org/img/wn/50d@2x.png"
                     }
                 }
                 setForecastImage();
@@ -272,58 +267,6 @@ const showWeatherForecast = (forecastAPI) => {
         })
     }
     
-// const showWeatherForecast = (forecastAPI) => {
-//     fetch(forecastAPI)
-//     .then ((response) => {
-//         return response.json();
-//     })
-//     .then ((forecast) => {
-//         const filteredForecast = forecast.list.filter(item => item.dt_txt.includes('12:00'));
-//         console.log(filteredForecast)
-//         weatherForecastContainer.innerHTML = '';
-//         filteredForecast.forEach((forecastDay => {
-//             const forecastTemp = forecastDay.main.temp.toFixed(0)
-//             const forecastWeekday = new Date(forecastDay.dt * 1000).toLocaleDateString('se-SE', {weekday: 'short'})
-//             const weatherIcon = forecastDay.weather[0].icon
-//             let forecastImage = '';
-//             let forecastHTML = '';
-
-//             const setForecastImage = () => {
-//                 if (weatherIcon === "01d") {
-//                     forecastImage = "http://openweathermap.org/img/wn/01d@2x.png"
-//                 } else if (weatherIcon === "02d") {
-//                     forecastImage = "http://openweathermap.org/img/wn/02d@2x.png"
-//                 } else if (weatherIcon === "03d") {
-//                     forecastImage = "http://openweathermap.org/img/wn/03d@2x.png"
-//                 } else if (weatherIcon === "04d") {
-//                     forecastImage = "http://openweathermap.org/img/wn/04d@2x.png"
-//                 } else if (weatherIcon === "09d") {
-//                     forecastImage = "http://openweathermap.org/img/wn/09d@2x.png"
-//                 } else if (weatherIcon === "10d") {
-//                     forecastImage = "http://openweathermap.org/img/wn/10d@2x.png"
-//                 } else if (weatherIcon === "11d") {
-//                     forecastImage = "http://openweathermap.org/img/wn/11d@2x.png"
-//                 } else if (weatherIcon === "13d") {
-//                     forecastImage = "http://openweathermap.org/img/wn/13d@2x.png"
-//                 } else if (weatherIcon === "50d") {
-//                     forecastImage = "http://openweathermap.org/img/wn/50d@2x.png"
-//                 }
-//         }
-//         setForecastImage();
-
-//         forecastHTML += `<div class="forecast-day">`;
-//         forecastHTML += ` <p>${forecastWeekday}</p>`;
-//         forecastHTML += ` <div class="temp">`;
-//         forecastHTML += `  <img src="${forecastImage}"/><p> ${forecastTemp}&degC </p>`;
-//         forecastHTML += ` </div>`;
-//         forecastHTML += `</div>`;
-        
-//         weatherForecastContainer.innerHTML += `${forecastHTML}`;
-
-//         }))
-
-//     })
-// }
 
 //On page load
 window.addEventListener("resize", showNavBar);
