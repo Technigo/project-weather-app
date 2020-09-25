@@ -29,8 +29,8 @@ const CITIES = [
     timezone: 'Japan'
   },
   {
-    name: 'Paris',
-    timezone: 'Europe/Paris'
+    name: 'Dubai',
+    timezone: 'Asia/Dubai'
   },
   {
     name: 'Santiago',
@@ -40,6 +40,14 @@ const CITIES = [
     name: 'Cairo',
     timezone: 'Africa/Cairo'
   },
+  {
+    name: 'Ulaanbaatar',
+    timezone: 'Asia/Ulaanbaatar'
+  },
+  {
+    name: 'Brisbane',
+    timezone: 'Australia/Brisbane'
+  }
 ]
 
 const selectElement = document.getElementById('city-select');
