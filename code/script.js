@@ -8,7 +8,8 @@ const sunriseToday = document.getElementById('sunrise-today');
 const sunsetToday = document.getElementById('sunset-today');
 const weatherImage = document.getElementById('weather-image');
 
-fetch(apiUrl)
+const weatherToday = () => {
+    fetch(apiUrl)
     .then((response) => {
         return response.json();
     })
@@ -42,6 +43,8 @@ fetch(apiUrl)
         sunriseToday.innerHTML = `sunrise: ${sunriseToLocaleString}`;
         sunsetToday.innerHTML = `sunset: ${sunsetToLocaleString}`;
     });
+};   
+weatherToday()
 
 // FIVE DAY FORECAST 
 
@@ -50,9 +53,10 @@ const apiUrlFiveDay = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockh
 // Connects javascript with html - allows data generated from the generateHTMLForForcast function to be outputted in browser
 const containerFiveDay = document.getElementById('container-five-day');
 
-fetch(apiUrlFiveDay)
+const weatherFiveDay = () => {
+    fetch(apiUrlFiveDay)
     .then((response) => {
-     return response.json();
+        return response.json();
     })
 
     .then((fiveDayArray) => {
@@ -66,6 +70,8 @@ fetch(apiUrlFiveDay)
             containerFiveDay.innerHTML += generateHTMLForForecast(eachDay);
         });  
     });
+};
+weatherFiveDay()
 
 // A function that retrieve and convert data from the API in a readable format.
 const generateHTMLForForecast = day => {
@@ -82,7 +88,6 @@ const generateHTMLForForecast = day => {
     fiveDayForecastHTML += `</div>`;
     return fiveDayForecastHTML;
 };
-
 
 
 
