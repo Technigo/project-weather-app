@@ -108,13 +108,15 @@ const setConditions = (weatherConditions) => {
 //This is for changing the background in the app depending of the temperature
 const setTemperatureColor = (temp, timestamp, timezone) => {
     let timeForUpdate = getTimeConvertedToLocal(timestamp, timezone);
-    let hour = timeForUpdate.substring(0, 2);
+    //let hour = timeForUpdate.substring(0, 2);
     let divToChange = document.getElementById('mainWeather');
+    let isDay = getDayOrNight(timestamp, timezone);
 
     //Clear any previous set color-class on the div
     divToChange.classList.remove('cool', 'medium', 'warm', 'cool-night', 'medium-night', 'warm-night');
     //Display day colors
-    if (hour >= 6 && hour < 19) {
+    //if (hour >= 6 && hour < 19) {
+    if (isDay) {
         if (temp < 10) {
             divToChange.classList.toggle('cool');
         } else if (temp >= 10 && temp <= 20) {
