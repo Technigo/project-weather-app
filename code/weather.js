@@ -32,7 +32,7 @@ const generatedHTMLForWeatherToday = (weatherToday) => {
   let weatherTodayHTML = "";
   weatherTodayHTML += ` <img src='${iconToday}'>`;
   weatherTodayHTML += `<div class="location-information">`;
-  weatherTodayHTML += `<p class="temp"> ${temperature}\xB0 </p>`;
+  weatherTodayHTML += `<p class="temp-today"> ${temperature}\xB0 </p>`;
   weatherTodayHTML += `<p class="location"> ${weatherToday.name} </p>`;
   weatherTodayHTML += `<p class="description"> ${description} </p>`;
   weatherTodayHTML += `<p class="local-time"> ${timeInCity} </p>`;
