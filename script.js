@@ -75,29 +75,29 @@ document.getElementById("cityName").addEventListener("change", citySelection);
 const setBackground = (city) => {
   if (city === "Stockholm") {
     container.style.backgroundImage = "url('./assets/stockholm.jpg')";
-  } else if (city === "London") {
+  } else if (city === "London,UK") {
     container.style.backgroundImage = "url('./assets/London.jpg')";
-  } else if (city === "Berlin") {
+  } else if (city === "Berlin,DE") {
     container.style.backgroundImage = "url('./assets/Berlin.jpg')";
-  } else if (city === "Paris") {
+  } else if (city === "Paris,FR") {
     container.style.backgroundImage = "url('./assets/Paris.jpg')";
-  } else if (city === "Rome") {
-    container.style.backgroundImage = "url('./assets/Rome.jpg')";//Wrong Rome at the moment
-  } else if (city === "San Diego") {
+  } else if (city === "Rome,IT") {
+    container.style.backgroundImage = "url('./assets/Rome.jpg')";
+  } else if (city === "San Diego,US") {
     container.style.backgroundImage = "url('./assets/Diego.jpg')";
-  } else if (city === "Washington DC") {
+  } else if (city === "Washington DC,US") {
     container.style.backgroundImage = "url('./assets/DC.jpg')";
-  } else if (city === "Toronto") {
+  } else if (city === "Toronto,CA") {
     container.style.backgroundImage = "url('./assets/Toronto.jpg')";
-  } else if (city === "Tokyo") {
+  } else if (city === "Tokyo,JP") {
     container.style.backgroundImage = "url('./assets/Tokyo.jpg')";
-  } else if (city === "Bangkok") {
+  } else if (city === "Bangkok,TH") {
     container.style.backgroundImage = "url('./assets/Bangkok.jpg')";
-  } else if (city === "Cairo") {
+  } else if (city === "Cairo,EG") {
     container.style.backgroundImage = "url('./assets/Cairo.jpg')";
-  } else if (city === "Cape Town") {
+  } else if (city === "Cape Town,ZA") {
     container.style.backgroundImage = "url('./assets/Capetown.jpg')";
-  } else if (city === "Auckland") {
+  } else if (city === "Auckland,NZ") {
     container.style.backgroundImage = "url('./assets/Auckland.jpg')";
   } else {
     container.style.backgroundImage = "url('./assets/Sydney.jpg')";

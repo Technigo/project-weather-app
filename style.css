@@ -1,137 +1,144 @@
-@import url('https://fonts.googleapis.com/css2?family=Advent+Pro:wght@200;300;400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Advent+Pro:wght@200;300;400;500;600&display=swap");
 
 * {
-    box-sizing: border-box;
-    font-family: 'Advent Pro', sans-serif;
+  box-sizing: border-box;
+  font-family: "Advent Pro", sans-serif;
 }
 
 body {
-    margin: 0;
+  margin: 0;
 }
 
 .weather-container {
-    height: 100vh;
-    width: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .layer {
-    width: 100%;
-    height: 100vh;
-    display: grid;
-    grid-template-columns: repeat(8, 1fr) ;
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
 }
 
 .daily-wrapper {
-    position: relative;
-    grid-column: span 8;
-    height: 50vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
+  position: relative;
+  grid-column: span 8;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .daily-wrapper img {
-    position: absolute;
-    top: -5px;
-    right: 10px;
-    width: 100px;
+  position: absolute;
+  top: -5px;
+  right: 10px;
+  width: 100px;
 }
 
 .local-info {
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 p {
-    margin: 0 0 5px 0;
+  margin: 0 0 5px 0;
 }
 
-.minmax-temp, .sun {
-    font-size: 13px;
+.minmax-temp,
+.sun {
+  font-size: 13px;
 }
 
 .forecast-img {
-    width: 100%;
+  width: 100%;
 }
 
-.temperature, .city {
-    font-size: 35px;
-    font-weight: 500;
+.temperature,
+.city {
+  font-size: 35px;
+  font-weight: 500;
 }
 
 .city {
-    margin: 10px 0;
+  margin: 10px 0;
 }
 
 .feels-like {
-    font-style: italic;
+  font-style: italic;
 }
 
 .forecast-wrapper {
-    grid-column: span 8;
-    color: #fff;
-    height: 40vh;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  grid-column: span 8;
+  color: #fff;
+  height: 40vh;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .day-box {
-    display: flex;
-    flex-wrap: wrap;
-    text-align: center;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
 }
 
 .day {
-    margin: 2px;
+  margin: 2px;
 }
 
 /*ADD STYLING FOR SELECTIONMENU, fix overflow to scrollable*/
 .search-field {
-    grid-column: span 8;
-    height: 10vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+  grid-column: span 8;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
-@media only screen and (min-width:768px) {
-    .forecast-wrapper {
-        justify-content: space-around;
-    }
-    
-    .day-box{
-        flex-direction: column;
-        align-items: center;
-        font-size: 25px;
-    }
+@media only screen and (min-width: 768px) {
+  .forecast-wrapper {
+    justify-content: space-around;
+  }
 
-    .daily-wrapper img {
-        width: 200px;
-        top: -20px;
-        right: 0;
-        z-index: 1;
-    }
+  .day-box {
+    flex-direction: column;
+    align-items: center;
+    font-size: 25px;
+  }
 
-    .temperature, .city{
-        font-size: 50px;
-    }
+  .daily-wrapper img {
+    width: 150px;
+    top: -20px;
+    right: 40%;
+    z-index: 1;
+  }
 
-    p {
-        font-size: 22px;
-    }
+  .temperature,
+  .city {
+    font-size: 50px;
+  }
 
-    .minmax-temp, .sun {
-        font-size: 20px;
-    }
+  p {
+    font-size: 22px;
+  }
 
+  .minmax-temp,
+  .sun {
+    font-size: 20px;
+  }
+
+  .select-menu {
+    width: 200px;
+    height: 25px;
+  }
 }
