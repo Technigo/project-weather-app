@@ -1,7 +1,7 @@
 const baseURL = 'https://api.openweathermap.org/data/2.5/'
 const weather = ['weather','forecast']
 const apiKey = '1fdca83a9693b3d0d79182ed5ca69207'
-let cityName = ''
+let cityName = null
 
 const upperContainer = document.getElementById('upperContainer')
 const lowerContainer = document.getElementById('lowerContainer')
@@ -15,16 +15,13 @@ cityForm.addEventListener('submit', (event) => {
     cityName = cityForm.city.value
     cityForm.reset();
 
-
-
-getWeather(cityName)
-getForecast(cityName)
+    getWeather(cityName)
+    getForecast(cityName)
 
 })
 
 const getWeather = (cityName) => {
     
-
     fetch(`${baseURL}${weather[0]}?q=${cityName}&units=metric&APPID=${apiKey}`)
         .then(response => response.json())
         .then((result) => {
@@ -44,14 +41,12 @@ const getWeather = (cityName) => {
 
 const getForecast = (cityName) => {
 
-
     fetch(`${baseURL}${weather[1]}?q=${cityName}&units=metric&APPID=${apiKey}`)
         .then(response => response.json())
         .then((result) => {
 
             console.log(result)
             
-
             const filteredForecast = result.list.filter(item => item.dt_txt.includes('12:00'))
             filteredForecast.forEach((day) => {
 
@@ -61,9 +56,6 @@ const getForecast = (cityName) => {
 
                 lowerContainer.innerHTML += `<section class="dailyForecast">${dayName} ${temperature}°C</section>`
 
-            })
-
-            
+            })          
         })
-
 }
