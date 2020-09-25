@@ -1,42 +1,33 @@
 const weatherToday = 'http://api.openweathermap.org/data/2.5/weather?q=Gamleby,Sweden&units=metric&APPID=6ce5bf72d646ddeec36c25915a5c0762'
 const weatherForecast = 'http://api.openweathermap.org/data/2.5/forecast?q=Gamleby,Sweden&units=metric&APPID=6ce5bf72d646ddeec36c25915a5c0762'
 
-const city = document.getElementById('city')
-const description = document.getElementById('description')
 const sunrise = document.getElementById('sunrise')
 const sunset = document.getElementById('sunset')
 const temp = document.getElementById('temp')
 const icon = document.getElementById('icon')
 
-const day2 = document.getElementById('day2')
-const day3 = document.getElementById('day3')
-const day4 = document.getElementById('day4')
-const day5 = document.getElementById('day5')
-
 fetch(weatherToday)
     .then((response) => {
         return response.json()
-    })                          //Tells what the weather is today.
+    })
     .then((json) => {
         updateWeatherToday(json)
-
     })
 
 fetch(weatherForecast)
     .then((response) => {
         return response.json()
-    })                          // Tells the forecast the next 5 days
+    })
     .then((json) => {
         console.log(json)
         updateWeatherForecast(json)
-
     })
 
-//Todays weather
 const updateWeatherToday = (todayWeatherJson) => {
-    city.innerHTML = todayWeatherJson.name
-    description.innerHTML = todayWeatherJson.weather[0].description
+    document.getElementById('city').innerHTML = todayWeatherJson.name
+    document.getElementById('description').innerHTML = todayWeatherJson.weather[0].description
 
+    // Calculate the time to readable format.
     const sunriseTime = new Date(todayWeatherJson.sys.sunrise * 1000)
     const sunriseTimeString = sunriseTime.toLocaleTimeString('en-US', {
         timestyle: 'short',
@@ -53,11 +44,11 @@ const updateWeatherToday = (todayWeatherJson) => {
         hour12: false
     })
 
+    // Check the time of day and displays night or daytime.
     const now = new Date()
     if (now < sunriseTime || now > sunsetTime) {
         document.getElementById('daily-weather').classList.toggle("daytime")
     }
-
 
     sunrise.innerHTML = `sunrise ${sunriseTimeString}`
     sunset.innerHTML = `sunset ${sunsetTimeString}`
@@ -65,106 +56,39 @@ const updateWeatherToday = (todayWeatherJson) => {
 
     const icon = document.getElementById('icon')
     icon.src = `images/${todayWeatherJson.weather[0].icon}.png`
-
 }
-
-// the forecast 
-
 
 const updateWeatherForecast = (weatherForecastJson) => {
 
-    // FIltered the data so it only picks the 12:00 data everyday.
+    // Filtered data so it only picks the 12:00 data everyday.
     const filteredForecast = weatherForecastJson.list.filter(item => item.dt_txt.includes('12:00'))
-    console.log(filteredForecast)
-
 
     filteredForecast.forEach((day, index) => {
-        console.log(`day${index + 1}-name`)
 
-        //The loop gives the ID a new name so it matches the one in the HTML file so it is shown on the site
+        //The variable saves the element(day) that matches the HTML id. Plus in index is so it gets on the right day because index 0. 
         const dayName = document.getElementById(`day${index + 1}-name`)
-
+        
         //Calculates the new date from milliseconds to a readeble day date...
         const dayDate = new Date(day.dt * 1000)
 
         // ... and calculate witch day it is and gives it a shorter name
         const dayString = dayDate.toLocaleDateString('en-US', {
             weekday: 'short'
-
         })
 
         // Show the name of the day on the site
         dayName.innerHTML = dayString
 
-        //the icon is selected from the API. 
+        // The varieble saves the element (day) that matches the HTML id.
         const dayIcon = document.getElementById(`day${index + 1}-icon`)
 
-
+        //the icon is selected from the json and finds the match in my image file
         dayIcon.src = `images/${day.weather[0].icon}.png`
 
-
+        // the varieble saves the temprature for the days weather, 
         const tempDay = document.getElementById(`day${index + 1}-temp`)
 
-
+        // rounds it up so there's no decimals
         tempDay.innerHTML = `${Math.round(day.main.temp)}°`
-
-
     })
-
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-// Your task is to present the data: the city name, the temperature (rounded to 1 decimal place), and what type of weather it is (the "description" in the JSON)
-
-
-
-// const apiUrl = "https://api.spacexdata.com/v3/launches/past"
-// const container = document.getElementById('main')
-// const launchCountHeader = document.getElementById('launchCountHeader')
-
-// fetch(apiUrl).then((response) => {
-//     return response.json()
-// })
-//     .then((launchArray) => {
-//         launchCountHeader.innerHTML = launchArray.length
-//         console.log(launchArray)
-
-
-//         launchArray.forEach((launch) => {
-//             container.innerHTML += generateHTMLForLaunch(launch)
-//         })
-//     })
-//     const generateHTMLForLaunch = (launch) => {
-//         console.log(launch)
-//         const launchDate = new Date(launch.launch_date_utc)
-//         const launchTimeString = launchDate.toLocaleTimeString('en-US', {
-//             timestyle: 'short', 
-//             hour12: false, 
-//         }) 
-//         const launchDateString = launchDate.toLocaleDateString('en-US', {
-//             weekday: 'short',
-//         })
-
-//         const launchOutcome = launch.launch_success
-//         const launchOutcomeImageUrl = launchOutcome 
-//             ? './up.png' 
-//             : './down.png'
-
-//         return `<img src= ${launchOutcomeImageUrl} >`, `<p>${launch.flight_number}, ${launch.mission_name} 
-//         - ${launchDateString}, ${launchTimeString}</p>`
-//     }
