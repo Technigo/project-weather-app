@@ -1,13 +1,19 @@
 # Weather App
+This is a weather App project for Technigo Bootcamp.
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+It has a multiple city selection and displays time, temperature, which temperature it feels like, sunset/sunrise and a five day forecast.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The assignment was to creat a mobile.first weather app that uses an API.
+The blue level required fetching data from an API in JS, presenting a cityname, temperature, weather description, sunset and sunrise and a five day forecast.
+
+To push my knowledge a bit further I chose to change the background a bit. It changes depending on what city you've chosen in a menu and alse adds a transparent layer which changes the background to a darker/lighter version depending on time in the specified city.
+
+I also added an icon which changes depending on weather.
+
+I chose to go with the grid-layout this project, since I find it interesting to work with. I find that the grid-layout is a bit easier to make responsive rather than just using flex-boxes.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://nervous-jepsen-4c0b07.netlify.app/
