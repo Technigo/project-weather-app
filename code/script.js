@@ -145,7 +145,7 @@ function populateSummary(todayForecast) {
   document.getElementById('img').classList.add('wobble');
   setTimeout(() => {
   document.getElementById('img').classList.remove('wobble');
-  }, 1500)
+  }, 6000)
   document.querySelector('.background-container').innerHTML = `
     <video class="background-video" autoplay muted loop
       poster= ${weatherTemplate.poster} >

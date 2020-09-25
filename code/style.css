@@ -112,7 +112,7 @@ body {
 }
 
 .wobble {
-  animation: 1s wobble ease;
+  animation: 2s wobble ease;
 }
 
 @keyframes wobble {
