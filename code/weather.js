@@ -17,38 +17,40 @@ const sunset = document.getElementById('sunsetTO')
 const currentWeatherToday = (json) => {
     temperature.innerHTML = `${json.main.temp.toFixed(0.5)} °C`
     city.innerHTML = json.name
-    date.innerHTML = new Date().toLocaleDateString('en-CA')
+    date.innerHTML = new Date().toLocaleString("en-US", { timeZone: "Canada/Eastern" })
     description.innerHTML = json.weather[0].description.toUpperCase()
     tempFeelsLike.innerHTML = `${json.main.feels_like.toFixed(0.5)} °C`
     tempHigh.innerHTML = `${json.main.temp_max.toFixed(0.5)} °C`
     tempLow.innerHTML = `${json.main.temp_min.toFixed(0.5)} °C`
 
     //Sunrise in Toronto
-    const sunriseToronto = new Date(json.sys.sunrise * 1000)
+    let timezoneSunrise = json.sys.sunrise
+    const sunriseToronto = new Date((timezoneSunrise + json.timezone) * 1000)
     const sunriseTorontoTime = sunriseToronto.toLocaleTimeString('en-CA', { timeStyle: 'short' })
     sunrise.innerHTML = sunriseTorontoTime
 
     //Sunset in Toronto
-    const sunsetToronto = new Date(json.sys.sunset * 1000)
+    let timezoneSunset = json.sys.sunset
+    const sunsetToronto = new Date((timezoneSunset + json.timezone) * 1000)
     const sunsetTorontoTime = sunsetToronto.toLocaleTimeString('en-CA', { timeStyle: 'short' })
     sunset.innerHTML = sunsetTorontoTime
 }
 //Changing icons depending on visibility ('description')
 const iconUpdate = (weather) => {
     if (weather == "Clouds") {
-        document.getElementById('visibilityIcon').src = './assets/cloudy.png'
+        document.getElementById('visibilityIcon').src = 'code/assets/cloudy.png'
     } if (weather == "Rain") {
-        document.getElementById('visibilityIcon').src = './assets/cloudy.png'
+        document.getElementById('visibilityIcon').src = 'code/assets/cloudy.png'
     } if (weather == "Clear" || weather == "Sunny") {
-        document.getElementById('visibilityIcon').src = './assets/cloudy.png'
+        document.getElementById('visibilityIcon').src = 'code/assets/sunny.png'
     } if (weather == "Mist" || weather == "Fog") {
-        document.getElementById('visibilityIcon').src = './assets/cloudy.png'
+        document.getElementById('visibilityIcon').src = 'code/assets/cloudy.png'
     } if (weather == "Snow") {
-        document.getElementById('visibilityIcon').src = './assets/cloudy.png'
+        document.getElementById('visibilityIcon').src = 'code/assets/cloudy.png'
     } if (weather == "Hail") {
-        document.getElementById('visibilityIcon').src = './assets/cloudy.png'
+        document.getElementById('visibilityIcon').src = 'code/assets/cloudy.png'
     } if (weather == "Thunder") {
-        document.getElementById('visibilityIcon').src = './assets/cloudy.png'
+        document.getElementById('visibilityIcon').src = 'code/assets/cloudy.png'
     }
 }
 //Fetch with JSON - Current Weather
@@ -101,3 +103,12 @@ fetch(weatherForecastUrl)
     .then((response) => { return response.json() })
     .then((data) => { updateMinMaxTemps(data) })
 
+    // const sunrise = new Date(todayForecast.sys.sunrise * 1000);
+    // const sunset = new Date(todayForecast.sys.sunset * 1000);
+    // const options = {
+    //   timeZone: getTimeZone(cityName),
+    //   timeStyle: ‘short’,
+    //   hour12: false,
+    // }
+    // const sunriseTime = new Intl.DateTimeFormat(‘en-US’, options).format(sunrise);
+    // const sunsetTime = new Intl.DateTimeFormat(‘en-US’, options).format(sunset);
