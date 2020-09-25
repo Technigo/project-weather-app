@@ -22,7 +22,7 @@ const daysOfTheWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "
 
 // Function to change background according to temperature
 const backgroundChange = (weatherInfo) => { 
-    if (weatherInfo.main.temp.toFixed(0) >= 18 || weatherInfo.main.feels_like.toFixed(0) >= 18) {
+    if (weatherInfo.main.temp.toFixed(1) >= 18 || weatherInfo.main.feels_like.toFixed(1) >= 18) {
         body.classList.add('warm')
     } else { 
         body.classList.remove('warm')
@@ -72,9 +72,9 @@ const weatherIconChange = (weather) => {
   
 // Current and real feel rounded temperature function
 const updateRoundTemperatures = (weatherInfo) => {
-    const roundedTemperature = weatherInfo.main.temp.toFixed(0);
+    const roundedTemperature = weatherInfo.main.temp.toFixed(1);
     currentTemperature.innerHTML = `${roundedTemperature} °C`;
-    const realFeelRoundedTemp = weatherInfo.main.feels_like.toFixed(0);
+    const realFeelRoundedTemp = weatherInfo.main.feels_like.toFixed(1);
     realFeel.innerHTML = `Feels like: ${realFeelRoundedTemp}°C`;
 };
 
