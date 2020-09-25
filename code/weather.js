@@ -1,18 +1,26 @@
+//get location when page is loading
+
 window.onload = () =>  getLocation(); 
+
+//get location through browser
+
+const getLocation = () => {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(getCity);
+  } else { 
+    console.log("Geolocation is not supported by this browser.");
+  }
+
+}
+
+//change city by user input
 
 const changeCity = () => {
     let city = document.getElementById("city-label").value 
     getLatLong(city)
 }
 
-const getLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(getCity);
-    } else { 
-      console.log("Geolocation is not supported by this browser.");
-    }
-
-}
+//this function is just used for getting the city name (reverse geolocation) to show to the user when using "current position"
 
 const getCity = (position) => {
     const lat = position.coords.latitude
@@ -25,6 +33,8 @@ const getCity = (position) => {
     });
 }
 
+//get coordinates when user change city (using One Call API which only takes coordinates as parameter)
+
 const getLatLong = (city) => {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},Sweden&units=metric&APPID=7d01b328e34c450986cb7faef032a771`)
     .then(response => response.json())
@@ -36,6 +46,8 @@ const getLatLong = (city) => {
     });
 }
 
+//Main function for fetching forecast data
+
 const fetchForecast = (lat, lon) => {
   return fetch(
     `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&%20exclude=current,minutely,hourly&appid=7d01b328e34c450986cb7faef032a771&units=metric`
@@ -44,7 +56,7 @@ const fetchForecast = (lat, lon) => {
       return response.json();
     })
     .then((json) => {
-      sthlmForecast(json);
+      generateForecast(json);
     });
 };
 
@@ -62,7 +74,9 @@ const getDayOfWeek = (dayOfWeek) => {
         ][dayOfWeek];
   };
 
-const sthlmForecast = (forecast) => {
+//main function for generating the HTML 
+
+  const generateForecast = (forecast) => {
   
   //get current temp
   const currentTemp = document.getElementById("current");

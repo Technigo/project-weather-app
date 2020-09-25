@@ -1,13 +1,15 @@
 # Weather App
 
-Replace this readme with your own information about your project.
+Assignment was to create a responsive weather app (webpage) that uses the Openweather API to fetch data from.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Site is responsive for phone/tablet/desktop. Difference between phone/tablet is that tablet version shows wind data.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Decided to use the Onecall API from Open Weather rather than the one that was provided since I found it had more useful data and also simplified generating max/min temp. Lots of flexbox/CSS tuning in order to get the styling right. Probably could have simplified/made reuse in the CSS more if I had time.
+
+Towards the end simplified my JS by using foreach with HTML selectors.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://lazy-weather-app.netlify.app/ (it takes a while to load initially since it´s trying to fetch current position. User needs to accept location sharing for it to work correctly.)

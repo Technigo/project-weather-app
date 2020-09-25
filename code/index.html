@@ -13,6 +13,7 @@
 <body>
     <div class="current">
         <div class="position">
+            <!-- this div is just used to be able to have a custom search/select element -->
             <div class="custom-selector">
                 <select class="city-selector" name="city" id="city-label" onchange="changeCity()">
                     <option value="Stockholm">Stockholm</option>
@@ -21,6 +22,7 @@
                     <option value="Vindö">Vindö</option>
                 </select>
             </div>
+            <!-- button for getting current location of user -->
             <button onclick="getLocation()"><i class="material-icons"
                     style="font-size:35px; margin-right:10px;">&#xe55c;</i></button>
         </div>
