@@ -1,9 +1,11 @@
 // SCRIPT FOR WEATHER APP
+import {API_KEY} from './key.js';
+import {API_URL} from './key.js'
 
 // Script for todays weather in Jönköping
 const todaysWeather = document.getElementById('todaysWeather');
 
-fetch('http://api.openweathermap.org/data/2.5/weather?q=Jonkoping,Sweden&units=metric&APPID=277afbd3cf32e0e8cc059dd7cb8bcb95')
+fetch(API_URL)
      .then((response) => {
          return response.json()
      })
