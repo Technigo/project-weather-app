@@ -54,7 +54,7 @@ body {
 
 .current {
     padding: 50px;
-    margin: 10px;
+    margin: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
