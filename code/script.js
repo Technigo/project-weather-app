@@ -1,4 +1,4 @@
-const WEATHER_API_KEY: '73c5730a60c903ea682b781b386e94b4'
+const WEATHER_API_KEY = '73c5730a60c903ea682b781b386e94b4'
 
 const WEATHER_API_URL = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm&units=metric&APPID=' + WEATHER_API_KEY;
 const FORECAST_API_URL = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm&units=metric&APPID=' + WEATHER_API_KEY;
