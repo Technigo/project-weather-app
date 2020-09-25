@@ -82,7 +82,7 @@ const setBackground = (city) => {
   } else if (city === "Paris") {
     container.style.backgroundImage = "url('./assets/Paris.jpg')";
   } else if (city === "Rome") {
-    container.style.backgroundImage = "url('./assets/Rome.jpg')";
+    container.style.backgroundImage = "url('./assets/Rome.jpg')";//Wrong Rome at the moment
   } else if (city === "San Diego") {
     container.style.backgroundImage = "url('./assets/Diego.jpg')";
   } else if (city === "Washington DC") {
