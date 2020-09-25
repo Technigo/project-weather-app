@@ -12,6 +12,7 @@ The styling was a real challenge this time since most of my html-element was cre
 If I had more time:
 - I would have added more data to the 5-days forecast.
 - tried to re-write my js-code in a more optimal way. It feels like my if-statement could be more clean and structured.
+- I would have moved more code in to functions. 
 
 ## View it live
 
