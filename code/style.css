@@ -37,7 +37,7 @@
 }
 
 button {
-    width: 40px;
+    width: 50px;
     background: none;
     border: 2px;
     color: white;
@@ -45,7 +45,7 @@ button {
 }
 
 body {
-    margin: 10px;
+    margin: 0px;
 }
 
 .current {
