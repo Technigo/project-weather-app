@@ -1,16 +1,13 @@
-const WEATHER_API_KEY = '73c5730a60c903ea682b781b386e94b4'
-
-const WEATHER_API_URL = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm&units=metric&APPID=' + WEATHER_API_KEY;
-const FORECAST_API_URL = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm&units=metric&APPID=' + WEATHER_API_KEY;
+const WEATHER_API_KEY = '73c5730a60c903ea682b781b386e94b4';
 
 const main = document.querySelector('main');
-const city = document.getElementById('city');
 const temperature = document.getElementById('temperature');
 const description = document.getElementById('description');
 const picto = document.getElementById('picto');
 const sunset = document.getElementById('sunset');
 const sunrise = document.getElementById('sunrise');
 const forecasts = document.getElementsByClassName('forecast');
+const button = document.getElementById('citySubmit');
 
 backgrounds = [
   {
@@ -152,42 +149,55 @@ const returnColor = (todayIcon) => {
   })
 };
 
-fetch(WEATHER_API_URL)
-  .then(response => response.json())
-  .then(weatherArray => {
-    city.innerHTML = weatherArray.name;
-    temperature.innerHTML = `${weatherArray.main.temp.toFixed(0)}\xB0`;
-    description.innerHTML = weatherArray.weather.map((a) => a.main);
-    const todayIcon = (weatherArray.weather.map((a) => a.icon)).toString();
-    returnColor(todayIcon);
-    picto.src = 'http://openweathermap.org/img/wn/' + todayIcon + '@2x.png';
-    sunrise.innerHTML = (new Date(weatherArray.sys.sunrise * 1000)).toLocaleTimeString([], {
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: false,
-    });;
-    sunset.innerHTML = (new Date(weatherArray.sys.sunset * 1000)).toLocaleTimeString([], {
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: false,
-    });;
-  });
-
-fetch(FORECAST_API_URL)
-  .then(response => response.json())
-  .then((forecastArray) => {
-    const filteredForecast = forecastArray.list.filter(item => item.dt_txt.includes('12:00'));
-    const forecastWeather = filteredForecast.map(day => {
-      const dayName = (new Date(day.dt * 1000)).toLocaleDateString([], {
-        weekday: 'short',
-      });
-      const icon = day.weather.map((a) => a.icon);
-      const midTemp = `${day.main.temp.toFixed(0)}\xB0`;
-      return { dayName, icon, midTemp };
+// This function fetchs weather information and forecast
+const returnTodayForecast = (cityValue) => {
+  const WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue}&units=metric&APPID=` + WEATHER_API_KEY;
+  const FORECAST_API_URL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityValue}&units=metric&APPID=` + WEATHER_API_KEY;
+  fetch(WEATHER_API_URL)
+    .then(response => response.json())
+    .then(weatherArray => {
+      temperature.innerHTML = `${weatherArray.main.temp.toFixed(0)}\xB0`;
+      description.innerHTML = weatherArray.weather.map((a) => a.main);
+      const todayIcon = (weatherArray.weather.map((a) => a.icon)).toString();
+      returnColor(todayIcon);
+      picto.src = 'http://openweathermap.org/img/wn/' + todayIcon + '@2x.png';
+      sunrise.innerHTML = (new Date((weatherArray.sys.sunrise + weatherArray.timezone - 7200) * 1000)).toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+      });;
+      sunset.innerHTML = (new Date((weatherArray.sys.sunset + weatherArray.timezone - 7200) * 1000)).toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+      });;
     });
-    forecastWeather.forEach((item, index) => {
-      forecasts[index].querySelector('.day-name').innerHTML = item.dayName;
-      forecasts[index].querySelector('.day-icon').src = 'http://openweathermap.org/img/wn/' + item.icon + '.png';
-      forecasts[index].querySelector('.day-temp').innerHTML = item.midTemp;
-    })
-  });
+
+  fetch(FORECAST_API_URL)
+    .then(response => response.json())
+    .then((forecastArray) => {
+      const timeZone = forecastArray.city.timezone;
+      const filteredForecast = forecastArray.list.filter(item => item.dt_txt.includes('12:00'));
+      const forecastWeather = filteredForecast.map(day => {
+        const dayName = (new Date((day.dt + timeZone - 7200) * 1000)).toLocaleDateString([], {
+          weekday: 'short',
+        });
+        const icon = day.weather.map((a) => a.icon);
+        const midTemp = `${day.main.temp.toFixed(0)}\xB0`;
+        return { dayName, icon, midTemp };
+      });
+      forecastWeather.forEach((item, index) => {
+        forecasts[index].querySelector('.day-name').innerHTML = item.dayName;
+        forecasts[index].querySelector('.day-icon').src = 'http://openweathermap.org/img/wn/' + item.icon + '.png';
+        forecasts[index].querySelector('.day-temp').innerHTML = item.midTemp;
+      })
+    });
+}
+
+returnTodayForecast('Stockholm');
+
+button.addEventListener('click', () => {
+  const cityValue = citySelector.value;
+  console.log(cityValue);
+  returnTodayForecast(cityValue);
+});
