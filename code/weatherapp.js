@@ -17,7 +17,7 @@ const fetchedApiInfo = () => {
         //Get Stockholm temp
         const temperature = weatherInfo.main.temp.toFixed(1);
         //toFixed()rounds the number up or down
-        document.getElementById("temperature").innerHTML = `${temperature} &#176`; 
+        document.getElementById("temperature").innerHTML = `${temperature}&#176`; 
 
         //Get Stockholm weather description
         document.getElementById("weatherType").innerText = weatherInfo.weather[0].description.toUpperCase();
@@ -65,7 +65,7 @@ const fetchedApiInfo = () => {
         document.getElementById("day1Day").innerHTML = `${finalDayOneDate}`;
         document.getElementById("day1Type").innerHTML = `${dayOneDescription}`;
         document.getElementById("day1Icon").src = `./images/${dayOneDescpIcon}.png`;
-        document.getElementById("day1Temp").innerHTML = `${dayOneTemp} &#176`;
+        document.getElementById("day1Temp").innerHTML = `${dayOneTemp}&#176`;
 
 
         /* ------ DAY 2 FORECAST ---- */
@@ -78,7 +78,7 @@ const fetchedApiInfo = () => {
         document.getElementById("day2Day").innerHTML = `${finalDayTwoDate}`;
         document.getElementById("day2Type").innerHTML = `${dayTwoDescription}`;
         document.getElementById("day2Icon").src = `./images/${dayTwoDescpIcon}.png`;
-        document.getElementById("day2Temp").innerHTML = `${dayTwoTemp} &#176`;
+        document.getElementById("day2Temp").innerHTML = `${dayTwoTemp}&#176`;
 
         /* ------ DAY 3 FORECAST ---- */
         const dayThreeDate = new Date(filteredList[2].dt * 1000);
@@ -90,7 +90,7 @@ const fetchedApiInfo = () => {
         document.getElementById("day3Day").innerHTML = `${finalDayThreeDate}`;
         document.getElementById("day3Type").innerHTML = `${dayThreeDescription}`;
         document.getElementById("day3Icon").src = `./images/${dayThreeDescpIcon}.png`;
-        document.getElementById("day3Temp").innerHTML = `${dayThreeTemp} &#176`;
+        document.getElementById("day3Temp").innerHTML = `${dayThreeTemp}&#176`;
 
         /* ------ DAY 4 FORECAST ---- */
         const dayFourDate = new Date(filteredList[3].dt * 1000);
@@ -102,7 +102,7 @@ const fetchedApiInfo = () => {
         document.getElementById("day4Day").innerHTML = `${finalDayFourDate}`;
         document.getElementById("day4Type").innerHTML = `${dayFourDescription}`;
         document.getElementById("day4Icon").src = `./images/${dayFourDescpIcon}.png`;
-        document.getElementById("day4Temp").innerHTML = `${dayFourTemp} &#176`;
+        document.getElementById("day4Temp").innerHTML = `${dayFourTemp}&#176`;
 
         /* ------ DAY 5 FORECAST ---- */
         const dayFiveDate = new Date(filteredList[4].dt * 1000);
@@ -114,7 +114,7 @@ const fetchedApiInfo = () => {
         document.getElementById("day5Day").innerHTML = `${finalDayFiveDate}`;
         document.getElementById("day5Type").innerHTML = `${dayFiveDescription}`;
         document.getElementById("day5Icon").src = `./images/${dayFiveDescpIcon}.png`;
-        document.getElementById("day5Temp").innerHTML = `${dayFiveTemp} &#176`;
+        document.getElementById("day5Temp").innerHTML = `${dayFiveTemp}&#176`;
     });
 };
 
