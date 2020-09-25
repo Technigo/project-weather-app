@@ -56,7 +56,7 @@ const success = (position) => {
             let weather = (todaysgeo.weather[0].description);
 
             // Declaring the icon
-            const icon = `<img src=http://openweathermap.org/img/wn/${todaysgeo.weather[0].icon}@2x.png></img>`;
+            const icon = `<img src=https://openweathermap.org/img/wn/${todaysgeo.weather[0].icon}@2x.png></img>`;
             // Assign the returned color to become background color
             document.body.style.backgroundColor = coloringFunction(temp);
 
@@ -79,7 +79,7 @@ const success = (position) => {
                 // Multiply by 1000 because the data is given to us in UNIX which is in seconds, but Javascript uses milliseconds internally, this way we get the right date. */
                 let weekday = (new Date(item.dt * 1000)).toLocaleDateString("en-US", { weekday: "short" })
                 // Adding icon code from API 
-                let icon = `<img src=http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png></img>`;
+                let icon = `<img src=https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png></img>`;
 
                 forecastWeather.innerHTML += `${weekday} ${temperature}&#8451;${icon}<br>`;
             })

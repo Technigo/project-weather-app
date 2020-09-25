@@ -71,7 +71,7 @@ fetch(apiLysekilToday).then((response) => {
     console.log(json)
 
     // Declaring the icon
-    const icon = `<img src=http://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png></img>`;
+    const icon = `<img src=https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png></img>`;
     // Removes decimals from todays temperature 
     json.main.temp = json.main.temp.toFixed(0)
 
@@ -102,7 +102,7 @@ fetch(apiLysekilForecast).then((response) => {
             //* Multiply by 1000 because the data is given to us in UNIX which is in seconds, but Javascript uses milliseconds internally, this way we get the right date. */
             let weekday = (new Date(item.dt * 1000)).toLocaleDateString("en-US", { weekday: "short" })
             // Adding icon code from API 
-            let icon = `<img src=http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png></img>`;
+            let icon = `<img src=https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png></img>`;
 
             forecastLysekil.innerHTML += `<p>${weekday} ${temperature}&#8451;</p> ${icon} `;
 

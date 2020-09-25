@@ -6,7 +6,7 @@ const menuBranding = document.getElementById("menuBranding");
 const navItems = document.querySelectorAll(".nav-item");*/
 
 // Open menu
-
+/*
 const toggleMenu = () => {
     menuBtn.classList.toggle("close");
     menu.classList.add("show");
@@ -15,7 +15,7 @@ const toggleMenu = () => {
     navItems.forEach(item => item.classList.add("show"))
   }
   
-  /*// Close menu
+  /*//*/ Close menu
   
   const closeMenu = () => {
     menuBtn.classList.remove("close");
