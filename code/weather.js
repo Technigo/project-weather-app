@@ -43,6 +43,7 @@ fetch(apiUrlWeekly)
   .then((json) => {
     //filter only data from 12.00
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
+    console.log(filteredForecast);
 
     //add html content for weekly forecast
     filteredForecast.forEach((day) => {
@@ -57,10 +58,12 @@ fetch(apiUrlWeekly)
 const generateHTMLForDay = (day) => {
   const weekDay = generateDayName(day.dt);
   const temperature = getNumberFormat(day.main.temp);
+  const changeIcon = weatherIcon(day.weather[0].main);
 
   let dayHTML = '';
   dayHTML += `<div class ="weekly-forecast">`;
   dayHTML += `<p class="weekly-weather-day">${weekDay}</p>`;
+  dayHTML += `<img class="forecast-icon" src="${changeIcon}" alt="picture of weather">`;
   dayHTML += `<p class="weekly-weather-temp">${temperature} °C</p>`;
   dayHTML += `</div>`;
   return dayHTML;
@@ -106,6 +109,25 @@ const backgroundChange = (number) => {
       weatherBackground.classList.remove('header-weather-wrapper-cold')
   }
 }
+
+//function to change weather icon on forecast
+const weatherIcon = (condition) => {
+  if (condition === 'Clear') {
+    return ('icons/clear-sky.png');
+  } else if (condition === 'Clouds') {
+    return ('icons/broken-clouds.png');
+  } else if (condition === 'Rain') {
+    return ('icons/shower-rain.png'); 
+  } else if (condition === 'Drizzle') {
+    return ('icons/rain.png');
+  } else if (condition === 'Thunderstorm') {
+    return ('icons/thunderstorm.png');
+  } else if (condition === 'Snow') {
+    return ('icons/snow.png');
+  } else if (condition === 'Mist') {
+    return ('icons/mist.png')
+  }
+} 
 
 //function for hamburger menu
 const menuToggle = () => {

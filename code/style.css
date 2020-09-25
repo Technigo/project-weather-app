@@ -268,7 +268,9 @@ header {
 
 .weekly-forecast {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
     border-bottom: dashed 1px #bfbfbf;
 }
 
@@ -276,12 +278,19 @@ header {
     text-align: left;
     font-weight: bold;
     text-transform: uppercase;
+    width: 30%;
+}
+
+.forecast-icon {
+    width: 40px;
+    margin: auto;
 }
 
 .weekly-weather-temp {
     text-align: right;
     font-family: 'Cabin', Sans-Serif;
     font-weight: lighter;
+    width: 30%;
 } 
 
 /* For tablet only */
@@ -326,6 +335,10 @@ header {
         font-size: 20px;
     }
 
+    .forecast-icon {
+        width: 60px;
+    }
+
     .weekly-weather-temp {
         font-size: 20px;
     }
@@ -358,6 +371,11 @@ header {
         height: inherit;
         margin: 0;
     }
+
+    .forecast-icon {
+        width: 50px;
+    }
+
 }
 
 /** FOOTER SECTION **/
