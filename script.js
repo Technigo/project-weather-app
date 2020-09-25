@@ -1,0 +1,204 @@
+// APP ID FOR OPEN WEATHER MAP
+const appId = "38d8ead396b75510c605134ba40b95f7";
+// CHOICE OF UNITS
+const units = "metric";
+// TO SEARCH FOR A CITY
+const searchMethod = "q";
+
+const base_url = `https://api.openweathermap.org/data/2.5/`;
+
+const createSearchString = (type, searchTerm) => {
+    return (
+        base_url +
+        `${type}?${searchMethod}=${searchTerm}&APPID=${appId}&units=${units}`
+    );
+};
+
+// FETCH API
+const searchWeather = (searchTerm) => {
+    fetch(createSearchString("weather", searchTerm))
+        .then((result) => {
+            return result.json();
+        })
+        .then((result) => {
+            findWeather(result);
+        });
+
+};
+
+const searchForecast = (searchTerm) => {
+    fetch(createSearchString(`forecast`, searchTerm))
+        .then((result) => {
+            return result.json();
+        })
+        .then((result) => {
+            readForecast(result);
+        });
+};
+
+// SWITCH STATEMENTS FOR DYNAMIC BACKGROUND
+const findWeather = (resultFromServer) => {
+    switch (resultFromServer.weather[0].main) {
+        case "Clear":
+            document.body.style.backgroundImage = 'url("./images/clear.jpg")';
+            break;
+
+        case "Clouds":
+            document.body.style.backgroundImage = 'url("./images/cloud.jpg")';
+            break;
+
+        case "Rain":
+        case "drizzle":
+        case "mist":
+            document.body.style.backgroundImage = 'url("./images/rain.jpg")';
+            break;
+
+        case "Thunderstorm":
+            document.body.style.backgroundImage = 'url("./images/storm.jpg")';
+            break;
+
+        case "Snow":
+            document.body.style.backgroundImage = 'url("./images/snow.jpg")';
+            break;
+
+        default:
+            document.body.style.backgroundImage = 'url("./images/default.jpg")';
+            break;
+    }
+
+    // GET ALL ELEMENTS
+    const weatherDescriptionHeader = document.getElementById(
+        "weatherDescriptionHeader"
+    );
+    const temperatureElement = document.getElementById("temperature");
+
+    const windSpeedElement = document.getElementById("windSpeed");
+
+    const humidityElement = document.getElementById("humidity");
+
+    const sunriseTimeElement = document.getElementById("sunrise");
+
+    const sunsetTimeElement = document.getElementById("sunset");
+
+    const CityHeader = document.getElementById("cityHeader");
+
+    const weatherIcon = document.getElementById("documentIconImg");
+
+    //   GET ICONS FROM OPENWEATHER MAP
+    weatherIcon.src =
+        "http://openweathermap.org/img/w/" +
+        resultFromServer.weather[0].icon +
+        ".png";
+
+    // WEATHER DESCRIPTION FROM OPENWEATHER MAP
+    const resultDescription = resultFromServer.weather[0].description;
+    weatherDescriptionHeader.innerText =
+        resultDescription.charAt(0).toUpperCase() + resultDescription.slice(1);
+
+    temperatureElement.innerHTML =
+        Math.floor(resultFromServer.main.temp) + "&#176c";
+
+    windSpeedElement.innerHTML =
+        "Winds at " + Math.floor(resultFromServer.wind.speed) + " m/s";
+
+    cityHeader.innerHTML = resultFromServer.name;
+
+    humidityElement.innerHTML =
+        "Humidity levels at " + resultFromServer.main.humidity + " %";
+
+    const sunriseTime = new Date(
+        resultFromServer.sys.sunrise * 1000
+    ).toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+    });
+
+    sunriseTimeElement.innerHTML = "Sunrise at: " + sunriseTime;
+
+    const sunsetTime = new Date(
+        resultFromServer.sys.sunset * 1000
+    ).toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+    });
+
+    sunsetTimeElement.innerHTML = "Sunset at: " + sunsetTime;
+    setPositionForWeatherInfo();
+    input.value = "";
+};
+
+// FORECAST FOR 5 DAYS
+const readForecast = (json) => {
+    const forecastContainer = document.getElementById("forecast");
+    const forecastContainer2 = document.getElementById("forecast2");
+
+    // AT 00.00
+    const filteredForecastMidnight = json.list.filter((item) =>
+        item.dt_txt.includes("00:00:00")
+    );
+    filteredForecastMidnight.forEach((forecast) => {
+        let forecastElement = document.createElement("div");
+        let day = new Date(forecast.dt * 1000).getDay();
+        const days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+        forecastElement.innerHTML = `
+            <div class="forecastDays">${days[day]}</div>`;
+        forecastElement.classList.add(`forecast1`);
+        forecastContainer.appendChild(forecastElement);
+    });
+
+    const dateObject = {};
+
+    json.list.forEach((item) => {
+        const date = item.dt_txt.split(" ")[0];
+        if (dateObject[date]) {
+            dateObject[date].push(item);
+        } else {
+            dateObject[date] = [item];
+        }
+    });
+
+    // AT 12.00
+    const filteredForecastLunch = json.list.filter((item) =>
+        item.dt_txt.includes("12:00:00")
+    );
+    filteredForecastLunch.forEach((forecast) => {
+        let forecastElement = document.createElement("div");
+
+        const date = forecast.dt_txt.split(" ")[0];
+        const weatherData = dateObject[date];
+
+        const temps = weatherData.map((value) => value.main.temp);
+
+        const minTemp = Math.min(...temps);
+        const maxTemp = Math.max(...temps);
+
+        forecastElement.innerHTML = `
+            <div class="forecastTemp">${minTemp.toFixed(
+              0
+            )}&#176c  /  ${maxTemp.toFixed(0)}&#176c</div>`;
+        forecastElement.classList.add(`forecast2`);
+        forecastContainer2.appendChild(forecastElement);
+    });
+};
+
+// SET POSITION FOR WEATHERINFO CONTAINER
+const setPositionForWeatherInfo = () => {
+    let weatherContainer = document.getElementById("weatherContainer");
+    let weatherContainerHeight = weatherContainer.clientHeight;
+    let weatherContainerWidth = weatherContainer.clientWidth;
+
+    weatherContainer.style.left = `calc(50% - ${weatherContainerWidth / 2}px)`;
+    weatherContainer.style.top = `calc(50% - ${weatherContainerHeight / 1.5}px)`;
+    weatherContainer.style.visibility = "visible";
+};
+
+console.log("setPositionForWeatherInfo");
+
+document.getElementById("searchBtn").addEventListener("click", () => {
+    let searchTerm = document.getElementById("searchInput").value;
+    if (searchTerm) {
+        searchWeather(searchTerm);
+        searchForecast(searchTerm);
+    }
+    searchInput.value = "";
+});
