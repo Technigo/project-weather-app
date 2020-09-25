@@ -17,9 +17,9 @@ fetchWeatherToday(citySearched);
 //Function to invoke already created functions and manipulate the DOM
 const generatedHTMLForWeatherToday = (weatherToday) => {
     const temperature = calculatedTemperature(weatherToday.main.temp); 
-    const timeInCity = calculatingTime(weatherToday.dt)
-    const sunrise = calculatingTime(weatherToday.sys.sunrise); 
-    const sunset = calculatingTime(weatherToday.sys.sunset);
+    const timeInCity = calculatingTime(weatherToday.dt, weatherToday.timezone) //changed added timezone
+    const sunrise = calculatingTime(weatherToday.sys.sunrise, weatherToday.timezone); 
+    const sunset = calculatingTime(weatherToday.sys.sunset, weatherToday.timezone);
     const iconToday = iconDependingOnWeather(weatherToday.weather[0].main)
     const description = descriptionUppercase(weatherToday.weather[0].description)
     weatherTodayBackgroundColor(weatherToday.main.temp);
@@ -90,6 +90,7 @@ const calculatedTemperature = (number) => {
     return Math.round(number*10)/10;
 };
 
+/*
 //function to convert time to readble format
 const calculatingTime = (time) => {
     const timeSet = new Date(time * 1000);
@@ -99,7 +100,41 @@ const calculatingTime = (time) => {
       hour12: false,
     });
     return timeSetString;
+};*/
+
+const calculatingTime = (timestamp, timezone) => {
+    const timeSetString = timeConvertedToLocal(timestamp, timezone)
+    return timeSetString;
 };
+
+/*This function takes the timestamp and the timezone (offset from UTC in seconds), 
+creates a UTC date object and returns a string without any conversion based on the location of the client. */
+//help from Karolin
+const timeConvertedToLocal = (timestamp, timezone) => {
+    let time = timestamp * 1000;
+    let tz = timezone * 1000;
+    let date = new Date(time + tz);
+    let year = date.getUTCFullYear();
+    let month = date.getUTCMonth() + 1;
+    let day = date.getUTCDate();
+    let hour = date.getUTCHours();
+    let minute = date.getUTCMinutes();
+    let milliseconds = date.getUTCMilliseconds();
+    //UTC date object 
+    const dateWithoutConversion = new Date(Date.UTC(year, month, day, hour, minute, milliseconds))
+    //Make it to string 
+    let dateString = dateWithoutConversion.toUTCString().toString();
+    //using substring to extract the hour and minutes
+    
+    //let subHour = dateString, {hour:'2-digit', minute:'2-digit'};
+    //let subMinutes = dateString.hour:'2-digit', minute:'2-digit',) ;
+    
+    let subHour = dateString.substring(dateString.indexOf(":") - 2, dateString.indexOf(":"));
+    let subMinutes = dateString.substring(dateString.indexOf(":") + 1, dateString.indexOf(":") +3);
+    //Put the hour and minutes back together in a fullTime String, no conversion to the clients timezone will be done.
+    let fullTime =(`${subHour}:${subMinutes}`);
+    return fullTime;
+}
 
 //capitalize first letter in weather description
 const descriptionUppercase = (string) => {

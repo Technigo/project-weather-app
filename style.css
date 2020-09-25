@@ -81,6 +81,7 @@ color depending on weather temp statement in js file.*/
 .weather-information img {
     height: 60px;
     width: 60px;
+    margin-right: 20px;
     filter: brightness(2);
     align-self: flex-end;
 }
@@ -187,3 +188,21 @@ input {
         width: 50%;
     }
 }
+
+/*KEYFRAMES FOR ANIMATION*/
+@-webkit-keyframes AnimationName {
+    0% {
+        background-position: 0% 9%
+    }
+
+    50% {
+        background-position: 100% 92%
+    }
+
+    100% {
+        background-position: 0% 9%
+    }
+}
+
+
+
