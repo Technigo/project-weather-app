@@ -33,7 +33,6 @@ fetch(urlCurrentWeather)
     
     //invoking function to change background image, text and img depending on main weather
     changeWeatherDesign(mainWeather, weatherArray);
-
     });
 
 //fetch for 5 days forecast
@@ -49,7 +48,7 @@ fetch(urlWeatherForecast)
             forecastContainer.innerHTML += generateHTMLForForecast(forecastDay);
         });
     });
-
+ 
 const generateHTMLForForecast = (day) => {
     const weekday = day.dt;
     const weekdayShortFormat = new Date (weekday * 1000);
@@ -75,7 +74,6 @@ const changeWeatherDesign = ((mainWeather, weatherArray) => {
         todaysWeatherContainer.innerHTML += `<img src="icons/nounCloud.png">`; 
         todaysWeatherContainer.innerHTML += `</div>`;
         //color styling
-    
         body.style.background = "#F4F7F8";
         body.style.color = "#F47775";
     }
