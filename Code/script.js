@@ -1,14 +1,14 @@
 const API_KEY = '1135d0ed8f3ffc61db744af9153b5e66';
 
 const url = (city, country = "Sweden") => {
-    return `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&APPID=${API_KEY}`;
+    return `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&APPID=${API_KEY}`
 };
 
 const urlFiveDayForecast = (city, country = "Sweden") => {
-    return `https://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&units=metric&APPID=${API_KEY}`; 
+    return `https://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&units=metric&APPID=${API_KEY}`
 };
 
-const currentTemp = document.getElementById('todaysTemp')
+const currentTemp = document.getElementById('todaysTemp');
 const city = document.getElementById('city');
 
 const sunriseTime = document.getElementById('sunriseTime');
@@ -27,20 +27,14 @@ const roundNums = (num, decimals = 1) => {
 //Generate time from jason
 const generateTime = (json) => {
     const time = new Date(json * 1000);
-    const timeToString = time.toLocaleTimeString('sv-SE', {
-        hour: 'numeric',
-        minute: 'numeric',  
-    });
+    const timeToString = time.toLocaleTimeString('sv-SE', { hour: 'numeric', minute: 'numeric'});
     return timeToString;
 }
 
 //Generate date from jason
 const generateDate = (json) => {
     const date = new Date(json * 1000);
-    const dateToString = date.toLocaleDateString('sv-SE', {
-        weekday: 'long',
-        
-    });
+    const dateToString = date.toLocaleDateString('sv-SE', { weekday: 'long'});
     return dateToString;
 }
 
@@ -49,7 +43,7 @@ const generateHTMLForWeather = (stockholmWeather) => {
     sunriseTime.innerText = generateTime(stockholmWeather.sys.sunrise);
     sunsetTime.innerText = generateTime(stockholmWeather.sys.sunrise);
     city.innerText = stockholmWeather.name;
-    currentTemp.innerText = roundNums(stockholmWeather.main.temp);
+    currentTemp.innerText = `${roundNums(stockholmWeather.main.temp, 0)} °C`;
 }
 
  // Get day and temperature from json and change html
@@ -60,7 +54,7 @@ const generateHTMLFiveDayForecast = (forecast) => {
     });
 
     filteredFiveDayForecast.forEach((item, index) => {
-        days[index].querySelector('.temperature').innerText = roundNums(item.main.temp);
+        days[index].querySelector('.temperature').innerText = `${roundNums(item.main.temp)} °C`;
     });
 }
 
