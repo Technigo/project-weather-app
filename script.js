@@ -2,7 +2,7 @@
 
 // *** VARIABLES
 
-// const stad = "stockholm";
+// const stad = "arctic";
 // const stad = dropdown.value;
 const currentLocation = "berlin";
 
@@ -110,12 +110,16 @@ const weatherToDay = () => {
         timeStyle: "short",
       })}`;
 
+      // här ska vara dagläge/nattläge
+
       // *** conditional ***
 
       // clear
       if (data.weather[0].main === "Clear") {
         city.innerHTML = `${data.name} is looking nice today`;
         icon.src = `images/${isDay() ? "sun" : "moon"}.svg`;
+        // background colour
+        document.body.className = "clear";
 
         // less than 50% clouds
       } else if (
@@ -124,6 +128,8 @@ const weatherToDay = () => {
       ) {
         city.innerHTML = `${data.name} is looking okay today`;
         icon.src = `images/${isDay() ? "clouds-sun" : "cloudy-night"}.svg`;
+        // background colour
+        document.body.className = "clouds";
 
         // more than 50% clouds
       } else if (
@@ -132,36 +138,50 @@ const weatherToDay = () => {
       ) {
         city.innerHTML = `${data.name} is looking a bit grey today`;
         icon.src = "images/cloudy.svg";
+        // background colour
+        document.body.className = "more-clouds";
 
         // drizzle rain
       } else if (data.weather[0].main === "Drizzle") {
         city.innerHTML = `${data.name} is looking so have some drizzle today`;
         icon.src = "images/drizzle.svg";
+        // background colour
+        document.body.className = "drizzle";
 
         // rain
       } else if (rain.includes(data.weather[0].description)) {
         city.innerHTML = `${data.name} is looking rainy today`;
         icon.src = "images/rain.svg";
+        // background colour
+        document.body.className = "rain";
 
         // heavy rain
       } else if (heavyRain.includes(data.weather[0].description)) {
         city.innerHTML = `${data.name} is looking very rainy today`;
         icon.src = "images/heavy-rain.svg";
+        // background colour
+        document.body.className = "heavy-rain";
 
         // snow
       } else if (data.weather[0].main === "Snow") {
         city.innerHTML = `${data.name} is cold today. Watch out for snow!`;
         icon.src = "images/snow.svg";
+        // background colour
+        document.body.className = "snow";
 
         // fog
       } else if (fog.includes(data.weather[0].main)) {
         city.innerHTML = `${data.name} is looking foggy today. Watch your step!`;
         icon.src = "images/wind.svg";
+        // background colour
+        document.body.className = "fog";
 
         // thunder
       } else if (data.weather[0].main === "Thunderstorm") {
         city.innerHTML = `${data.name} is looking scary today. Watch out for thunderstorm!`;
         icon.src = "images/thunderstorm.svg";
+        // background colour
+        document.body.className = "thunder";
       }
     });
 };
@@ -182,7 +202,6 @@ const weatherForcast = () => {
       const filteredForecast = data.list.filter((item) =>
         item.dt_txt.includes("12:00")
       );
-      console.log(filteredForecast);
 
       // for each day:
       filteredForecast.forEach((item) => {
@@ -246,7 +265,7 @@ const weatherForcast = () => {
         }
 
         // writing to html
-        forecast.innerHTML += `<div class="forecast-card"><div class="text-container"><p class="forecast-info">A ${day} with ${weather} and a temperature of ${temp}°C<p></div>${iconForecast}</div>`;
+        forecast.innerHTML += `<div class="forecast-card"><div class="text-container"><p class="forecast-info">${day} with ${weather} and a temperature of ${temp}°C<p></div>${iconForecast}</div>`;
       });
     });
 };
