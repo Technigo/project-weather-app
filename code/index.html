@@ -23,16 +23,14 @@
     <section id="wrapper" class="wrapper">
       <!-- MAIN SECTION -->
       <div class="overlay">
+        <!-- SEARCH SECTION -->
+        <section class="search-box">
+          <input id="input" type="text" placeholder="" />
+          <button class="search-button" id="search-button">
+            <i class="fa fa-search"></i>
+          </button>
+        </section>
         <main class="main-container">
-          <!-- SEARCH SECTION -->
-          <section class="search-container">
-            <div class="search-box">
-              <input id="input" type="text" placeholder="" />
-              <button class="search-button" id="search-button">
-                <i class="fa fa-search"></i>
-              </button>
-            </div>
-          </section>
           <div class="main-weather">
             <h1 class="main-temperature" id="main-temperature"></h1>
             <h2 class="main-city" id="main-city"></h2>
@@ -49,7 +47,35 @@
               <p class="p-sun" id="sunset"></p>
             </div>
           </div>
-          <!-- <a href="#" class="button"><i class="arrow"></i></a> -->
+          <!-- ADDITIONAL SECTION FOR TABLET AND DESKTOP -->
+          <section class="main-additional">
+            <div class="left-column">
+              <div class="additional-item">
+                <p>Max temp:</p>
+                <p class="" id="max-temp"></p>
+              </div>
+              <div class="additional-item">
+                <p>Min temp:</p>
+                <p class="" id="min-temp"></p>
+              </div>
+              <div class="additional-item">
+                <p>Feels like:</p>
+                <p class="" id="feels-like"></p>
+              </div>
+            </div>
+            <div class="right-column">
+              <div class="additional-item">
+                <p>Humidity:</p>
+                <p class="" id="humidity"></p>
+              </div>
+              <p>Pressure:</p>
+              <p class="" id="pressure"></p>
+              <div class="additional-item">
+                <p>Visibility:</p>
+                <p class="" id="visibility"></p>
+              </div>
+            </div>
+          </section>
         </main>
 
         <!-- FORECAST SECTION -->

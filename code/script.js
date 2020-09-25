@@ -32,16 +32,81 @@ input.addEventListener('keyup', function (e) {
   }
 });
 
+const fetchWeatherToday = (url) => {
+  fetch(url)
+    .then((response) => response.json())
+    .then((weatherArray) => {
+      console.log(weatherArray);
+      console.log(weatherArray);
+      const temperature = numberNoDecimal(weatherArray.main.temp);
+      const city = weatherArray.name;
+      const description = weatherArray.weather[0].main;
+      const date = new Date(weatherArray.dt * 1000);
+      const hour = date.getHours();
+      const sunrise = setSunTime(weatherArray.sys.sunrise);
+      const sunset = setSunTime(weatherArray.sys.sunset);
+      const feelsLike = numberNoDecimal(weatherArray.main.feels_like);
+      console.log(feelsLike);
+      const humidity = weatherArray.main.humidity;
+      console.log(humidity);
+      const pressure = weatherArray.main.pressure;
+      console.log(pressure);
+      const visibility = weatherArray.visibility;
+      console.log(visibility);
+      setBackground(hour, description, sunrise, sunset);
+      document.getElementById(
+        'main-temperature'
+      ).innerHTML = `${temperature}\u00B0`;
+      document.getElementById('main-city').innerHTML = city;
+      document.getElementById('main-description').innerHTML = description;
+      document.getElementById('sunrise').innerHTML = sunrise;
+      document.getElementById('sunset').innerHTML = sunset;
+      document.getElementById('feels-like').innerHTML = `${feelsLike}\u00B0`;
+      document.getElementById('humidity').innerHTML = `${humidity}%`;
+      document.getElementById('pressure').innerHTML = `${pressure} hPa`;
+      document.getElementById('visibility').innerHTML = `${visibility} m`;
+    });
+};
+
 const fetchWeatherForecast = (url) => {
   fetch(url)
     .then((response) => response.json())
     .then((forecastArray) => {
-      // filter the array to only contain the forecast for 12:00
+      // filter the array again to only get the temperatures for this day
+      const dateNow = new Date().getDate();
+      const filteredTodayArray = forecastArray.list.filter((item) =>
+        item.dt_txt.includes(dateNow)
+      );
+
+      //map to create new array with temperatures for this day
+      const temperatures = filteredTodayArray.map((temperature) => {
+        const temp = numberOneDecimal(temperature.main.temp);
+        return temp;
+      });
+
+      // console.log(forecastArray);
+
+      // const forecastTemperatures = forecastArray.list.map(
+      //   (forecastTemperature) => {
+      //     const maxTempArray = numberOneDecimal(forecastTemperature.main.temp);
+      //     console.log(maxTempArray);
+      //     return maxTempArray;
+      //   }
+      // );
+
+      // get min and max values from the array
+      const maxTemp = Math.max(...temperatures);
+      const minTemp = Math.min(...temperatures);
+
+      // filter the array to only contain the forecast for the five next days from this hour
       const hourNow = new Date().getHours();
       const filteredArray = forecastArray.list.filter((item) =>
         item.dt_txt.includes(calculateHour(hourNow))
       );
-      console.log(filteredArray);
+
+      // addto HTML
+      document.getElementById('min-temp').innerHTML = `${minTemp}\u00B0`;
+      document.getElementById('max-temp').innerHTML = `${maxTemp}\u00B0`;
 
       // map to create new and filtered array of weather forecast
       const forecasts = filteredArray.map((forecast) => {
@@ -52,8 +117,6 @@ const fetchWeatherForecast = (url) => {
         const wind = numberOneDecimal(forecast.wind.speed);
         return { day, date, iconSrc, temperature, wind };
       });
-
-      console.log(forecasts);
 
       // forEach to add to HTML
       forecasts.forEach((item, index) => {
@@ -67,42 +130,32 @@ const fetchWeatherForecast = (url) => {
     });
 };
 
-const fetchWeatherToday = (url) => {
-  fetch(url)
-    .then((response) => response.json())
-    .then((weatherArray) => {
-      console.log(weatherArray);
-      //const weathers = weatherArray.list.map((weather) => {
-      const temperature = numberNoDecimal(weatherArray.main.temp);
-      console.log(temperature);
-      const city = weatherArray.name;
-      const description = weatherArray.weather[0].main;
-      const icon = `http://openweathermap.org/img/wn/${weatherArray.weather[0].icon}@2x.png`;
-      const date = new Date(weatherArray.dt * 1000);
-      console.log(date);
-      const hour = date.getHours();
-      console.log(hour, description);
-      const sunrise = setSunTime(weatherArray.sys.sunrise);
-      const sunset = setSunTime(weatherArray.sys.sunset);
-      setBackground(hour, description, sunrise, sunset);
-      console.log(hour, description);
-      document.getElementById(
-        'main-temperature'
-      ).innerHTML = `${temperature}\u00B0`;
-      document.getElementById('main-city').innerHTML = city;
-      document.getElementById('main-description').innerHTML = description;
-      // document.getElementById('main-icon').src = icon;
-      document.getElementById('sunrise').innerHTML = sunrise;
-      document.getElementById('sunset').innerHTML = sunset;
-    });
-};
-
 const numberOneDecimal = (number) => {
   return Math.round(number * 10) / 10;
 };
 
 const numberNoDecimal = (number) => {
   return Math.round(number);
+};
+
+const calculateHour = (currentHour) => {
+  if (currentHour >= 0 && currentHour < 3) {
+    return '00:00';
+  } else if (currentHour >= 3 && currentHour < 6) {
+    return '03:00';
+  } else if (currentHour >= 6 && currentHour < 9) {
+    return '06:00';
+  } else if (currentHour >= 9 && currentHour < 12) {
+    return '09:00';
+  } else if (currentHour >= 12 && currentHour < 15) {
+    return '12:00';
+  } else if (currentHour >= 15 && currentHour < 18) {
+    return '15:00';
+  } else if (currentHour >= 18 && currentHour < 21) {
+    return '18:00';
+  } else if (currentHour >= 21 && currentHour <= 24) {
+    return '21:00';
+  }
 };
 
 const setSunTime = (time) => {
@@ -128,22 +181,9 @@ const setDayDate = (date) => {
 };
 
 const setBackground = (time, description, sunrise, sunset) => {
-  console.log(
-    'inside setBackground ' + typeof time,
-    description,
-    sunrise,
-    sunset
-  );
   const wrapper = document.getElementById('wrapper');
-  console.log(wrapper);
-  // wrapper.style.backgroundImage = '';
-  console.log(wrapper);
   sunrise = parseInt(sunrise);
   sunset = parseInt(sunset);
-  console.log(sunrise, sunset, wrapper);
-  // if (time > sunrise || time < sunset) {
-  //   console.log('21');
-  // }
   if (time >= sunrise && time <= sunset) {
     console.log('inside first if');
     if (description === 'Clear') {
@@ -177,28 +217,8 @@ const setBackground = (time, description, sunrise, sunset) => {
       wrapper.style.backgroundImage = 'url(./assets/mist-night-medium.jpg)';
     }
   }
-  console.log(wrapper);
 };
 
-const calculateHour = (currentHour) => {
-  if (currentHour > 0 && currentHour < 3) {
-    return '00:00';
-  } else if (currentHour > 3 && currentHour < 6) {
-    return '03:00';
-  } else if (currentHour > 6 && currentHour < 9) {
-    return '06:00';
-  } else if (currentHour > 9 && currentHour < 12) {
-    return '09:00';
-  } else if (currentHour > 12 && currentHour < 15) {
-    return '12:00';
-  } else if (currentHour > 15 && currentHour < 18) {
-    return '15:00';
-  } else if (currentHour > 18 && currentHour < 21) {
-    return '18:00';
-  } else if (currentHour > 21 && currentHour < 24) {
-    return '21:00';
-  }
-};
 // fetch(
 //   'http://api.openweathermap.org/data/2.5/forecast?q=stockholm&appid=a422826e5990e7c36cbb837c78c405fa'
 // )
