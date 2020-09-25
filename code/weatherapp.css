@@ -124,7 +124,7 @@ p {
     .main-container {
         margin: 30px auto;
         /* border: 1px solid #000; */
-        width: 600px;
+        /* width: 600px; */
     }
 
     .fiveday-forecast-container {
@@ -141,13 +141,12 @@ p {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        background: yellow;
-        margin-right: 10px;
+        margin-right: 20px;
         margin-bottom: 0px;
     }
 
     .forecast-day {
-        margin-bottom: 10px;
+        margin-bottom: 20px;
         margin-right: 0px;
     }
 
@@ -158,7 +157,11 @@ p {
 
     .forecast-temp {
         margin-left: 0px;
-        margin-top: 10px;
+        margin-top: 20px;
+    }
+
+    .forecast-icon {
+       margin-bottom: 10px;
     }
 } 
 
