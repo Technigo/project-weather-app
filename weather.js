@@ -17,7 +17,7 @@ const readableTime = (time) => {
 
 /// calculating the date into readable format
 const readableDate = (date) => {
-    const readableDate = new Date(date)
+    const readableDate = new Date(date * 1000)
     const dateReadableDate = readableDate.toLocaleDateString('en-US', {
         weekday: 'short',
         day: "numeric",
@@ -75,7 +75,7 @@ const generatedHTMLForWeatherToday = (weatherMain) => {
 /// Display weather forecast
 const generatedHTMLForWeatherForecast = (forecast, idx) => {
     document.getElementById('forecastTemp' + idx).innerHTML = `${roundtemp(forecast.main.temp)}&deg;`
-    document.getElementById('forecastDate' + idx).innerHTML = readableDate(forecast.dt_txt)
+    document.getElementById('forecastDate' + idx).innerHTML = readableDate(forecast.dt)
 }
 
 /// getting the API for todays weather
