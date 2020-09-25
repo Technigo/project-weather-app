@@ -478,7 +478,7 @@ nav img {
 /* FORECAST */
 
 .forecast {
-    padding-top: 50px;
+    padding-top: 30px;
 }
 
 .forecast p {
@@ -577,6 +577,7 @@ nav img {
 
     .forecast {
         display: flex;
+        justify-content: center;
         width: 90%;
         padding-top: 0;
     }
@@ -584,7 +585,7 @@ nav img {
     .forecast-day {
         height: auto;
         width: 15%;
-        margin: 1%;
+        margin: auto;
         flex-direction: column;
         justify-content: center;
         background-color: white;
