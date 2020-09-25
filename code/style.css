@@ -287,7 +287,6 @@ header {
 .weekly-weather-day, .weekly-weather-temp {
     border-bottom: dashed 1px #bfbfbf;
     padding-bottom: 20px;
-    margin-right: 1px;
 }
 
 /* For tablet only */

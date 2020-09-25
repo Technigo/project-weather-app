@@ -13,7 +13,7 @@ const weatherBackground = document.getElementById('weatherBackground');
 
 //FUNCTIONS 
 
-//fetch the data from api - todays forecast
+//fetch the data from api & create html - todays forecast
 fetch(apiUrlToday)
   .then((response) => {
     return response.json()
@@ -59,7 +59,7 @@ fetch(apiUrlWeekly)
 
 //function to convert temperature to 1 decimal
 const getNumberFormat = (x) => {
-  return Number.parseFloat(x).toFixed(1);
+  return Number.parseFloat(x).toFixed(0);
 }
 
 //function to convert country code to country name
