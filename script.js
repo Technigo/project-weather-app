@@ -1,6 +1,7 @@
 let city = "Stockholm";
 //const button = document.getElementById('btn-search')
 const containerToday = document.getElementById("weatherToday");
+const container = document.getElementById('weatherContainer')
 //const descriptionToday = document.getElementById("text");
 const containerForecast = document.getElementById("forecastWrapper");
 
@@ -14,19 +15,11 @@ const callTempFunctions = (number) => {
   minMaxTemperature(number);
   feelsLikeTemperature(number);
 };
-
 const calculateTemperature = (number) => {
   const roundedTemp = Math.round(number * 10) / 10; //By adding *10 AND adding /10 the number is rounded up to nearest integer with one decimal. If only using round() the number is rounded up to nearest integer.
   return roundedTemp;
 };
-
-//Create function that shows 'feels like'temp NOT STARTED
-const feelsLikeTemperature = (number) => {
-  //API main.feels_like
-};
-
 //DATE FUNCTIONS
-
 const calculatingSun = (time) => {
   const sunTime = new Date(time * 1000);
   const sunTimeString = sunTime.toLocaleTimeString("sv-SE", {
@@ -36,7 +29,6 @@ const calculatingSun = (time) => {
   });
   return sunTimeString;
 };
-
 const printDay = (day) => {
   const forecastDays = new Date(day);
   const forecastDaysString = forecastDays.toLocaleDateString("en-US", {
@@ -46,17 +38,22 @@ const printDay = (day) => {
   return forecastDaysString;
 };
 
-const printTime = (time) => {
-  //Is there another way tp do this? My time is a few minutes off..
-  const hour = new Date(time * 1000);
-  const localTimeString = hour.toLocaleTimeString("en-SE", {
+//This function takes the localtime, then uses the timezone from API to display local time depending on what city you choose.
+const printTime = (timezoneOffset) => {
+  const d = new Date();
+  const localTime = d.getTime();
+  const localOffset = d.getTimezoneOffset()*60000;
+  const utc = localTime+localOffset;
+  console.log(utc)
+  const timezoneOffsetMs = timezoneOffset*1000;
+  console.log(timezoneOffsetMs+utc)
+  const localTimestamp = new Date(timezoneOffsetMs+utc).toLocaleTimeString("sv-SE", {
     hour: "2-digit",
     minute: "2-digit",
     hour12: false,
-  });
-  return localTimeString;
-};
-
+  })
+  return localTimestamp
+}
 //ICON FUNCTIONS
 const iconWeather = (item) => {
   const iconMain = item;
@@ -75,7 +72,6 @@ const iconWeather = (item) => {
     return "http://openweathermap.org/img/wn/11d@2x.png";
   } else return "http://openweathermap.org/img/wn/50d@2x.png";
 };
-
 //SELECT FUNCTION
 const citySelection = (event) => {
   containerToday.innerHTML = "";
@@ -85,60 +81,61 @@ const citySelection = (event) => {
   fetchWeatherToday(city);
 };
 document.getElementById("cityName").addEventListener("change", citySelection);
-
 //DISPLAY FUNCTIONS
-
 //Function that changes background
 const setBackground = (city) => {
   if (city === "Stockholm") {
-    containerToday.style.backgroundImage = "url('./assets/stockholm.jpg')";
+    container.style.backgroundImage = "url('./assets/stockholm.jpg')";
   } else if (city === "London") {
-    containerToday.style.backgroundImage = "url('./assets/London.jpg')";
+    container.style.backgroundImage = "url('./assets/London.jpg')";
   } else if (city === "Berlin") {
-    containerToday.style.backgroundImage = "url('./assets/Berlin.jpg')";
+    container.style.backgroundImage = "url('./assets/Berlin.jpg')";
   } else if (city === "Paris") {
-    containerToday.style.backgroundImage = "url('./assets/Paris.jpg')";
+    container.style.backgroundImage = "url('./assets/Paris.jpg')";
   } else if (city === "Rome") {
-    containerToday.style.backgroundImage = "url('./assets/Rome.jpg')";
+    container.style.backgroundImage = "url('./assets/Rome.jpg')";
   } else if (city === "San Diego") {
-    containerToday.style.backgroundImage = "url('./assets/Diego.jpg')";
+    container.style.backgroundImage = "url('./assets/Diego.jpg')";
   } else if (city === "Washington DC") {
-    containerToday.style.backgroundImage = "url('./assets/DC.jpg')";
+    container.style.backgroundImage = "url('./assets/DC.jpg')";
   } else if (city === "Toronto") {
-    containerToday.style.backgroundImage = "url('./assets/Toronto.jpg')";
+    container.style.backgroundImage = "url('./assets/Toronto.jpg')";
   } else if (city === "Tokyo") {
-    containerToday.style.backgroundImage = "url('./assets/Tokyo.jpg')";
+    container.style.backgroundImage = "url('./assets/Tokyo.jpg')";
   } else if (city === "Bangkok") {
-    containerToday.style.backgroundImage = "url('./assets/Bangkok.jpg')";
+    container.style.backgroundImage = "url('./assets/Bangkok.jpg')";
   } else if (city === "Cairo") {
-    containerToday.style.backgroundImage = "url('./assets/Cairo.jpg')";
+    container.style.backgroundImage = "url('./assets/Cairo.jpg')";
   } else if (city === "Cape Town") {
-    containerToday.style.backgroundImage = "url('./assets/Capetown.jpg')";
+    container.style.backgroundImage = "url('./assets/Capetown.jpg')";
   } else if (city === "Auckland") {
-    containerToday.style.backgroundImage = "url('./assets/Auckland.jpg')";
+    container.style.backgroundImage = "url('./assets/Auckland.jpg')";
   } else {
-    containerToday.style.backgroundImage = "url('./assets/Sydney.jpg')";
+    container.style.backgroundImage = "url('./assets/Sydney.jpg')";
   }
 };
-
 //Change gradient depending on time/temperature
-/* const setBackgroundGradient = (time) => {
-  const weatherBackground = document.getElementById('weatherContainer')
-  if(time===){
-    weatherBackground.style.background = 
+const setBackgroundGradient = (time, temperature) => {
+  const gradientLayer = document.getElementById('layer')
+  if(time > 6 && time <= 12) {
+    gradientLayer.style.backgroundColor = 'rgba(214, 234, 226, 0.14)'
+  } else if(time >= 13 && time <= 20) {
+    gradientLayer.style.backgroundColor = 'rgba(216, 247, 255, 0.2)'
+  } else {
+    gradientLayer.style.backgroundColor = 'rgb(0, 0, 55, 0.5)'
   }
-} */
-
+}
 const generatedHTMLForWeatherToday = (weatherToday) => {
   const temperature = calculateTemperature(weatherToday.main.temp); //This is using json.main.temp as a parameter instead of number.
   const sunrise = calculatingSun(weatherToday.sys.sunrise);
   const sunset = calculatingSun(weatherToday.sys.sunset);
   const description = weatherToday.weather[0].description;
   const icon = iconWeather(weatherToday.weather[0].main);
-  const localTime = printTime(weatherToday.dt);
+  const localTime = printTime(weatherToday.timezone);//Doesn't use timezone atm
   const minTemp = calculateTemperature(weatherToday.main.temp_min);
   const maxTemp = calculateTemperature(weatherToday.main.temp_max);
   const feelTemp = calculateTemperature(weatherToday.main.feels_like);
+  setBackgroundGradient(localTime)
 
   let dailyForecastHTML = "";
   dailyForecastHTML += `<img src= '${icon}'/>`;
@@ -156,7 +153,6 @@ const generatedHTMLForWeatherToday = (weatherToday) => {
   //Since weather is an array, we need to access the index of 0, and then we can locate the object keyvalues i.e .description. This has to be done even if there is only one array, as in this case.
   //descriptionToday.innerHTML += `The sun rises at ${sunrise} and sets at ${sunset}`;
 };
-
 const generatedHTMLForWeatherForecast = (filteredForecast) => {
   const day = printDay(filteredForecast.dt_txt);
   //Tells what day it is
@@ -173,7 +169,6 @@ const generatedHTMLForWeatherForecast = (filteredForecast) => {
   //Weather description for the next five days
   //Humidity and wind
 };
-
 const fetchWeatherToday = (city) => {
   fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=95b6172379fabb04319de6c9e2aa34ae`
@@ -187,7 +182,6 @@ const fetchWeatherToday = (city) => {
     });
 };
 fetchWeatherToday(city);
-
 const fetchWeatherForecast = (city) => {
   fetch(
     `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=95b6172379fabb04319de6c9e2aa34ae`

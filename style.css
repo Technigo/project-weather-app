@@ -10,25 +10,30 @@ body {
 }
 
 .weather-container {
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+}
+
+.layer {
     width: 100%;
     height: 100vh;
-    border: 2px solid red;
     display: grid;
     grid-template-columns: repeat(8, 1fr) ;
+    background: rgba(0,0,0,0.5);
 }
 
 .daily-wrapper {
     position: relative;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     grid-column: span 8;
     height: 50vh;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    border: 2px solid #ffa500;
 }
 
 .daily-wrapper img {
@@ -39,6 +44,7 @@ body {
 }
 
 .local-info {
+    color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -71,7 +77,7 @@ p {
 
 .forecast-wrapper {
     grid-column: span 8;
-    border: 2px solid blue;
+    color: #fff;
     height: 40vh;
     padding: 10px;
     display: flex;
@@ -93,10 +99,9 @@ p {
 .search-field {
     grid-column: span 8;
     height: 10vh;
-    border: 2px solid green;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
 @media only screen and (min-width:768px) {
