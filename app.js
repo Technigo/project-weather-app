@@ -3,7 +3,8 @@ const weather = ['weather','forecast']
 const apiKey = '1fdca83a9693b3d0d79182ed5ca69207'
 let cityName = ''
 
-const container = document.getElementById('weather')
+const upperContainer = document.getElementById('upperContainer')
+const lowerContainer = document.getElementById('lowerContainer')
 const cityForm = document.querySelector('form');
 
 
@@ -26,11 +27,11 @@ const getWeather = (cityName) => {
             let timePM = new Date(result.sys.sunset * 1000)
             
             console.log(result)
-            container.innerHTML = `<section class="tempToday"> Temp today: ${temperature}°C</section>`
-            container.innerHTML += `<section class="locationToday">Location: ${result.name}</section>`
-            container.innerHTML += `<section class="condToday">Weather conditions: ${result.weather[0].description}</section>`
-            container.innerHTML += `<section class="sunriseToday">Sunrise at: ${timeAM.toLocaleTimeString('en-US', {hour12: false, hour: '2-digit', minute: '2-digit'})}</section>`
-            container.innerHTML += `<section class="sundownToday">Sundown at: ${timePM.toLocaleTimeString('en-US', {hour12: false,  hour: '2-digit', minute: '2-digit'})}</section>`
+            upperContainer.innerHTML = `<section class="locationToday">${result.name}</section>`
+            upperContainer.innerHTML += `<section class="tempToday">Temp: ${temperature}°C</section>`
+            upperContainer.innerHTML += `<section class="condToday">${result.weather[0].description}</section>`
+            upperContainer.innerHTML += `<section class="sunriseToday">Sunrise: ${timeAM.toLocaleTimeString('en-US', {hour12: false, hour: '2-digit', minute: '2-digit'})}</section>`
+            upperContainer.innerHTML += `<section class="sundownToday">Sundown: ${timePM.toLocaleTimeString('en-US', {hour12: false,  hour: '2-digit', minute: '2-digit'})}</section>`
         });
 };
 
@@ -51,7 +52,7 @@ const getForecast = (cityName) => {
                 let dayName = weekDay.toLocaleDateString('en-US', {weekday: 'long',})
                 let temperature = Math.round(day.main.feels_like * 10)/10
 
-                container.innerHTML += `<section class="dailyForecast">${dayName} ${temperature}°C</section>`
+                lowerContainer.innerHTML += `<section class="dailyForecast">${dayName} ${temperature}°C</section>`
 
             })
 

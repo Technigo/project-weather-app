@@ -1,21 +1,48 @@
 body{
     letter-spacing: 0.2em;
-    font-size: 0.8em;
+    font-family: 'Montserrat';font-size: 16px;
     color: #F47775;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 800px;
 }
 
 .container{
     display: flex;
-    width: 100%;
-    height: 800px;
+    width: 400px;
+    height: 400px;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
 
-#weather{
+#upperContainer{
+    display: flex;
     background:#eeedec;
-    width: 400px;
-    height: 400px;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+
+#lowerContainer{
+    display: flex;
+    background:#eeedec;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.locationToday{
+    font-size: x-large;
     
+}
+
+.dailyForecast{
+    margin: 5px;
+
 }
