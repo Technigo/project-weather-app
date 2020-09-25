@@ -10,6 +10,7 @@ const weatherImage = document.getElementById('weather-image');
 const cityTag = document.getElementById('city');
 const temperatureTag = document.getElementById('temperature');
 const feelsLikeTag = document.getElementById('feels-like');
+const feelsLikeBox = document.querySelector('.main-weather--feels-like')
 const weatherTag = document.getElementById('weather');
 const sunriseTag = document.getElementById('sunrise');
 const sunsetTag = document.getElementById('sunset');
@@ -17,6 +18,8 @@ const sunriseImg = document.getElementById('sunrise-image');
 const sunsetImg = document.getElementById('sunset-image');
 const changeLocInput = document.getElementById('location-input')
 const changeLocButton = document.getElementById('location-button')
+const changeLocGeo = document.getElementById('location-geo')
+const weekBox = document.querySelector('.week-box')
 const weatherDescriptions = [
   {
     order: 1,
@@ -70,29 +73,32 @@ const weatherDescriptions = [
   }
 ];
 
-// Main function - Main Weather API
-const fetchWeatherData = (selectedCity) => {
+// General fetch for search-box and default city..
+const fetchData = (selectedCity) => {
   city = selectedCity
-  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${city}&appid=${API_KEY}`;
+  const forecastApiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${API_KEY}`;
+  fetchForecastData(forecastApiUrl)
+  const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${city}&appid=${API_KEY}`;
+  fetchWeatherData(weatherApiUrl)
+};
+
+// I separated the fetch-function from the api-declaration to be able
+// to use the function for different types of API-requests
+const fetchWeatherData = (apiUrl) => {
   fetch(apiUrl)
     .then((results) => {
       return results.json();
     })
     .then((weather) => {
-      // Tried to create an array of the API-object
-      const weatherArray = Object.values(weather);
-
-      cityTag.innerHTML = city;
-      temperatureTag.innerHTML = roundedNumber(weatherArray[3].temp) + ` C°`;
-      feelsLikeTag.innerHTML = roundedNumber(weatherArray[3].feels_like) + ` C°`;
-      weatherTag.innerHTML = weatherArray[1][0].description;
-      // Had to use weather-data for this because the weatherArray 
-      // is changing depending on city - ie sunrise/sunset data changes index
+      cityTag.innerHTML = weather.name;
+      temperatureTag.innerHTML = roundedNumber(weather.main.temp) + ` C°`;
+      feelsLikeTag.innerHTML = roundedNumber(weather.main.feels_like) + ` C°`;
+      weatherTag.innerHTML = weather.weather[0].description;
       sunriseTag.innerText = convertUnixTimestamp(weather.sys.sunrise);
-      sunsetTag.innerText = convertUnixTimestamp(weather.sys.sunset);
+      sunsetTag.innerHTML = convertUnixTimestamp(weather.sys.sunset);
 
       // Change image depending on current weather
-      const currentWeather = weatherArray[1][0].main;
+      const currentWeather = weather.weather[0].main;
       changeImage(currentWeather);
 
       // Change background gradient for cold/hot temperatures
@@ -113,7 +119,7 @@ const fetchWeatherData = (selectedCity) => {
       weatherImage.src = 'https://media.giphy.com/media/pvO8ugi72HKww/source.gif'
       weatherTag.innerHTML = 'No city here. Search again!'
       temperatureTag.innerHTML = ''
-      feelsLikeTag.innerHTML = "Something's wrong..."
+      feelsLikeBox.style.display = 'none'
       sunriseTag.innerText = ''
       sunsetTag.innerText = ''
       sunriseImg.src = './images/blank.png'
@@ -121,13 +127,9 @@ const fetchWeatherData = (selectedCity) => {
     });
 };
 
-
-
-// 5-day Forecast API
-const fetchForecastData = (selectedCity) => {
-  city = selectedCity
-  const apiUrlForFiveDays = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${API_KEY}`;
-  fetch(apiUrlForFiveDays)
+// 5-day Forecast Data
+const fetchForecastData = (apiUrl) => {
+  fetch(apiUrl)
     .then((results) => {
       return results.json();
     })
@@ -154,22 +156,59 @@ const fetchForecastData = (selectedCity) => {
       });
       // If error in search - remove week-box div.
     }).catch(() => {
-      document.querySelector('.week-box').style.display = 'none'
+      weekBox.style.display = 'none'
     });
-};
+}
+
+const returnErrorElements = () => {
+  sunriseImg.src = './images/sunrise.png'
+  sunsetImg.src = './images/sunset.png'
+  weekBox.style.display = 'block'
+  feelsLikeBox.style.display = 'block'
+}
 
 // SEARCH-FUNCTION
 //Changes location of weather data by changing variable 'city', rerun 
 // fetch-functions based on that, and also clear the inputfield
-changeLocButton.addEventListener('click', () => {
+const changeLocation = () => {
   city = changeLocInput.value;
-  sunriseImg.src = './images/sunrise.png'
-  sunsetImg.src = './images/sunset.png'
-  document.querySelector('.week-box').style.display = 'block'
-  fetchWeatherData(city);
-  fetchForecastData(city);
+  returnErrorElements()
+  fetchData(city);
   changeLocInput.value = "";
+}
+
+// YES, It's a quickfix. Did not have time to fix a proper form. So kill me!
+changeLocInput.addEventListener('keyup', (e) => {
+  if (e.key === 'Enter') {
+    changeLocation()
+  }
 });
+
+// Call above function with the changeLocButton.
+changeLocButton.addEventListener('click', changeLocation)
+
+// Get current longitude- and latitude values and send them into a new API-link
+// Then use the new API-link and fetch data.
+function geoLocate() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      position.timeout = .5
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+      const geoLocationForecastAPI = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`
+      const geoLocationWeatherAPI = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`
+      returnErrorElements()
+      fetchForecastData(geoLocationForecastAPI)
+      fetchWeatherData(geoLocationWeatherAPI)
+    });
+  } else {
+    alert("Geolocation is not supported by this browser.");
+  }
+}
+
+// Call above function with the Geolocate-button.
+changeLocGeo.addEventListener('click', geoLocate)
+
 
 // Convert timestamp to correct time-format
 const convertUnixTimestamp = (data) => {
@@ -252,6 +291,4 @@ const changeImage = (weather) => {
 };
 
 // Run main functions at page loading
-fetchWeatherData('Lerum, Sweden');
-fetchForecastData('Lerum, Sweden');
-
+fetchData('Lerum, Sweden');

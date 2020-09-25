@@ -6,18 +6,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WeatherBug</title>
   <link rel="stylesheet" href="./style.css" class="rel" />
+  <link rel="icon" type="image/png" href="./images/weatherbug-logo.png">
+
 </head>
 
 <body>
+
+  <header class="header">
+    <img class="header--image" src="./images/weatherbug-logo.png" />
+    <p class="header--text">WeatherBug</p>
+  </header>
+
   <main class="main">
     <!-- LOCATION SEARCH -->
     <section class="change-location">
       <div class="change-location--box">
         <label>Find your city: <span class="info-text">[city, name]</span></label>
         <div class="change-location--form">
-          <input type="text" id="location-input" class="change-location--input">
+          <input type="text" onsubmit="changeLocation()" id="location-input" class="change-location--input">
           <button id="location-button" class="change-location--button">Search</button>
         </div>
+      </div>
+      <div class="geo-location">
+        <img src="./images/location.png" id="location-geo" class="change-location--img" />
       </div>
     </section>
 
