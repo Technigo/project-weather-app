@@ -2,7 +2,6 @@ const API_KEY = "f54ca9831c8974c87fd4826fae420a1a"
 const API_URL = `http://api.openweathermap.org/data/2.5/weather?q=Malmo,Sweden&units=metric&APPID=${API_KEY}`
 const API_URL_5DAYS = `https://api.openweathermap.org/data/2.5/forecast?q=Malmo,Sweden&units=metric&APPID=${API_KEY}`
 
-const container = document.getElementById('weather')
 
 
 fetch(API_URL)
@@ -10,29 +9,64 @@ fetch(API_URL)
         return response.json()
     })
     .then((json) => {
-        container.innerHTML = `<h1>It's ${json.main.temp.toFixed(1)} degrees in ${json.name} today.</h1>`
-    
+        // const weatherContainer = document.getElementById('weather');
+        // weatherContainer.innerHTML = `<h1>${json.name}</h1>`
+
+        const cityContainer = document.getElementById('city');
+        cityContainer.innerHTML = `<h1>${json.name} hej hej</h1>`
        
+        const weatherContainer = document.getElementById('weather')
         json.weather.forEach((weather) => {
             const sunrise = new Date(json.sys.sunrise * 1000);
             const sunRiseTime = sunrise.toLocaleTimeString ('se-SV', { hour : '2-digit', minute : '2-digit'});
             const sunset = new Date(json.sys.sunset * 1000);
             const sunSetTime = sunset.toLocaleTimeString ('se-SV', { hour : '2-digit', minute : '2-digit'});
-        container.innerHTML += `<p>It's ${weather.description}. The sun rises at ${sunRiseTime} and sets at ${sunSetTime}.</p>`
-        })
+            
+            weatherContainer.innerHTML += `<p>${weather.description} | ${json.main.temp.toFixed(1)} </p>`
+            weatherContainer.innerHTML += `<p>sunrise ${sunRiseTime}</p>`
+            weatherContainer.innerHTML += `<p>sunset ${sunSetTime}</p>`
+        });
+
      }) 
     
 
+//    const weatherColors = () => {
+//        if (weather.main === "clouds")
+        
 
-// INTE KLAR MED DENNA! MÅSTE MAN GÖRA EN NY FETCH? INTE KLART MED FOREACH.
-     fetch(API_URL_5DAYS)
+//        else (weather.main === "clear")
+
+//        else if (weather.main === "rain") || (weather.main === "drizzle")
+//  }
+
+
+
+     
+
+fetch(API_URL_5DAYS)
     .then((response) => {
-        return response.json()
+        return response.json();
     })
     .then((json) => {
-        container.innerHTML += `<h1>The next five days?</h1>`
-    
-               json.weather.forEach((weather) => {
-           container.innerHTML += `<p>It's ${weather.description}. The sun rises at ${sunRiseTime} and sets at ${sunSetTime}.</p>`
-        })
+        const forecastUl = document.getElementById('forecast');
+        const filteredForecastMidDay = json.list.filter(item => item.dt_txt.includes('12:00'));
+        
+        // Didn't need all this code since todays date isn't showing
+        // const dateToday = new Date();
+        // const dayOfMonth = dateToday.getDate();
+        // const filteredForecastNotToday = filteredForecastMidDay.filter(forecast => {
+        //     const forecastDate = new Date(forecast.dt * 1000)
+        //     const forecastDay = forecastDate.getDate();
+        //     return dayOfMonth !== forecastDay;
+        // })
+
+        filteredForecastMidDay.forEach((forecast) => {
+            const forecastDate = new Date(forecast.dt * 1000);
+            const options = { weekday: 'short' };
+            const weekdayString = new Intl.DateTimeFormat('en-US', options).format(forecastDate);
+
+           forecastUl.innerHTML += `<li>${weekdayString} ${forecast.main.temp.toFixed(0)}°</li>`       
+        });
      }) 
+
+  

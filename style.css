@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+body {
+    background-color: lightgrey;
+    font-family: 'Montserrat', sans-serif;
+    padding: 40px;
+}
+
+#cloud-image {
+    display: none;
+}
+
+#sunglasses-image {
+    display: none;
+} 
+
+#umbrella-image {
+    display: none;
+} 
+
+ul {
+    list-style-type: none;
+    width: 100%;
+}
+
+li {
+    border-bottom: 1px dashed;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    display: flex;
+    justify-content: space-between;
+    }
+
+li:last-child {
+    border-bottom: 0px;
+}
