@@ -1,62 +1,86 @@
+/* #FE6925
+#FFC6C8
+*/
+
+
+
 body {
     padding:0;
     margin: 0;
     font-family: 'Montserrat', sans-serif;
+    background-color: #FFC6C8;
 }
 
-.picture-container {
-    width: 100%;
+.circle {
+    background: #FE6925;
+    border-radius: 50%;
+    width: 320px;
+    height: 320px;
+    margin: 0 auto;
+    margin-top: 160px;
 }
 
-.picture-container img {
-    position: relative;
-    text-align: center;
-    background-position: center;
-    background-repeat: none;
-    background-size: cover;
-    width: 100%;
-   
-   /*  border-radius: 100% 0% 100% 0% / 0% 34% 66% 100%; ; */
+.sun-line {
+    border-bottom: 3px solid #fff;
+    height: 10px;
+    width: 160px;
+    position: absolute;
+    top: 32%;
+    right: 0;
 }
 
-.picture-container h2 {
-   
-}
 
 .weather-container {
     display: flex;
     text-align: center;
     padding: 40px;
     box-sizing: border-box;
-
 }
 
-
+.weather-type {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-weight: 700;
+    font-size: 35px;
+    
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    
+    color: rgb(255, 255, 255);
+}
 
 .weather-info {
     display: flex;
     flex-direction: column;
-    text-align: center;
 
-    font-size: 40px;
+  
     position: absolute;
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 5%;
+    left: 10%;
+    
     color: rgb(255, 255, 255);
 }
 
 .weather-info h2{
-    margin: 5px;
+    margin: 0px;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .todays-temp {
     padding: 15px;
+    position: absolute;
+    top: 40%;
+    left: 5%;
+    font-size: 90px;
+    color: #fff;
+}
 }
 
 .city {
-    font-weight: 400;
-    font-size: 25px;
+    font-weight: 300;
+    font-size: 20px;
 }
 
 .sun {
@@ -69,7 +93,7 @@ body {
 .sun h3{
     font-weight: 400;
     font-size: 14px;
-    margin: 5px;
+    margin: 0 10px 5px 0;
     letter-spacing: 1px;
 }
 
@@ -97,7 +121,7 @@ body {
 
 
 p {
-    color: #DE5D77;
+    color: #fff;
     font-size: 20px;
 }
 
@@ -108,8 +132,9 @@ p {
     width: 100%;
     box-sizing: border-box;
     text-transform: capitalize;
-    border-bottom: 1px #DE5D77 dashed;
+    border-bottom: 2px #fff dashed;
     margin-bottom: 0px; 
+    font-weight: 400;
 }
 
 
@@ -118,5 +143,5 @@ p {
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding-top: 15px;
+    padding-top: 100px;
 }

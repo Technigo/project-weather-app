@@ -10,6 +10,7 @@ const urlFiveDayForecast = (city, country = "Sweden") => {
 
 const currentTemp = document.getElementById('todaysTemp');
 const city = document.getElementById('city');
+const weatherType = document.getElementById('weatherType');
 
 const sunriseTime = document.getElementById('sunriseTime');
 const sunsetTime = document.getElementById('sunsetTime');
@@ -44,6 +45,7 @@ const generateHTMLForWeather = (stockholmWeather) => {
     sunsetTime.innerText = generateTime(stockholmWeather.sys.sunrise);
     city.innerText = stockholmWeather.name;
     currentTemp.innerText = `${roundNums(stockholmWeather.main.temp, 0)} °C`;
+    weatherType.innerText = stockholmWeather.weather[0].main
 }
 
  // Get day and temperature from json and change html
