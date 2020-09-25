@@ -55,7 +55,9 @@ body{
 
 input {
     padding: 7px 32px;
-    box-sizing: border-box
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
   }
 
 .button {
