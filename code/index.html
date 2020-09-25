@@ -12,22 +12,26 @@
 
 <body>
     <div class="current">
-        <!-- <label for="cars">Choose city:</label> -->
         <div class="position">
-        <div class="custom-selector">
-        <select class="city-selector" name="city" id="city-label" onchange="changeCity()">
-            <option value="Stockholm">Stockholm</option>
-            <option value="Eskilstuna">Eskilstuna</option>
-            <option value="Järfälla">Järfälla</option>
-            <option value="Vindö">Vindö</option>
-        </select>
+            <div class="custom-selector">
+                <select class="city-selector" name="city" id="city-label" onchange="changeCity()">
+                    <option value="Stockholm">Stockholm</option>
+                    <option value="Eskilstuna">Eskilstuna</option>
+                    <option value="Järfälla">Järfälla</option>
+                    <option value="Vindö">Vindö</option>
+                </select>
+            </div>
+            <button onclick="getLocation()"><i class="material-icons"
+                    style="font-size:35px; margin-right:10px;">&#xe55c;</i></button>
         </div>
-        <button onclick="getLocation()"><i class="material-icons" style="font-size:35px; margin-right:10px;">&#xe55c;</i></button>
+        <div class="current-summary">
+            <p class="current-temp" id="current"><span>&#8451</span></p>
+            <div class="current-summary-weather">
+                <img class="current-img" id="current-icon" src="" width="50">
+                <p class="current-weather" id="current-weather"></p>
+            </div>
         </div>
-        <p class="current-temp" id="current"><span>&#8451</span></p>
         <p class="current-city" id="city"></p>
-        <img class="current-img" id="current-icon" src="" width="50">
-        <p class="current-weather" id="current-weather"></p>
         <div class="sun">
             <p class="suntext" id="sunrise"></p>
             <p class="suntext" id="sunset"></p>
