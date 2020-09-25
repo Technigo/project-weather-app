@@ -1,3 +1,5 @@
+//Variables to be used later on
+
 const tempToday = document.getElementById("temperatureToday");
 const city = document.getElementById("city");
 const description = document.getElementById("description");
@@ -6,8 +8,10 @@ const sunset = document.getElementById("sunsetTime");
 const icon0 = document.getElementById("icon0")
 
 const API_KEY = "e3f7767c281ddc6599588c383f72962d";
-const API_URL_TODAY = `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${API_KEY}`
-const API_URL_FORECAST = `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=${API_KEY}`
+const API_URL_TODAY = `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${API_KEY}`;
+const API_URL_FORECAST = `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=${API_KEY}`;
+
+//Two fetches to get API data for today and a 5-day-forecast
 
 fetch(API_URL_TODAY)
     .then((response) => {
@@ -17,21 +21,36 @@ fetch(API_URL_TODAY)
         updateWeatherToday(json);
     });
 
+    
+fetch(API_URL_FORECAST)
+.then((response) => {
+    return response.json();
+})
+.then((json) => {
+    updateWeatherForecast(json);
+    
+});
+
+//Function to be invoked in the first fetch for the weather today
 
 const updateWeatherToday = (json) => {
+    //Update information in the top section
     tempToday.innerHTML = `${json.main.temp.toFixed(1)}<span>°C</span>`;
     city.innerHTML = json.name;
     description.innerHTML = json.weather[0].description;
     icon0.innerHTML = `<img src= "https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="weather icon" />`
 
+    //Update extra information for the tablet version
     document.getElementById("windSpeed_a").innerHTML = `wind speed: ${json.wind.speed} m/s`;
     document.getElementById("airPressure_a").innerHTML = `air pressure: ${json.main.pressure} mb`;
     document.getElementById("humidity_a").innerHTML = `humidity: ${json.main.humidity} g/m<sup>3</sup>`;
 
+    //Update extra information for the desktop version
     document.getElementById("windSpeed_b").innerHTML = `wind speed: ${json.wind.speed} m/s`;
     document.getElementById("airPressure_b").innerHTML = `air pressure: ${json.main.pressure} mb`;
     document.getElementById("humidity_b").innerHTML = `humidity: ${json.main.humidity} g/m<sup>3</sup>`;
 
+    //Update sunrise and sunset information
     const sunriseMillSeconds = new Date(json.sys.sunrise * 1000);
     const sunriseProperTime = sunriseMillSeconds.toLocaleTimeString([], {hour: "2-digit", minute:"2-digit"});
     sunrise.innerHTML = sunriseProperTime;
@@ -42,18 +61,9 @@ const updateWeatherToday = (json) => {
     sunset.innerHTML = sunsetProperTime;
 };
 
-fetch(API_URL_FORECAST)
-    .then((response) => {
-        return response.json();
-    })
-    .then((json) => {
-        updateWeatherForecast(json);
-        // console.log(json.list[0].weather[0].icon)
-        
-    });
 
 
-//FUNCTIONS TO SUPPORT THE WEATHER FORECAST UPDATE
+//Functions to be used inside the forecast-function for the second fetch
 
 const getMinTemperature = (json, dayNumber) => {
     const day0Date = new Date();
@@ -82,6 +92,8 @@ const getWeekday = (dayNumber) => {
     return day1Date;
 };
 
+//Function to be invoked in the second fetch for the 5-day-forecast
+
 const updateWeatherForecast = (json) => {
 
     // Update the weekday for the next five days
@@ -98,17 +110,17 @@ const updateWeatherForecast = (json) => {
     day5.innerHTML = getWeekday(5);
 
     // Update the weather icons for the next five days
-    const icon1 = document.getElementById("icon1")
-    const icon2 = document.getElementById("icon2")
-    const icon3 = document.getElementById("icon3")
-    const icon4 = document.getElementById("icon4")
-    const icon5 = document.getElementById("icon5")
+    const icon1 = document.getElementById("icon1");
+    const icon2 = document.getElementById("icon2");
+    const icon3 = document.getElementById("icon3");
+    const icon4 = document.getElementById("icon4");
+    const icon5 = document.getElementById("icon5");
 
-    icon1.innerHTML = `<img src= "https://openweathermap.org/img/wn/${json.list[1].weather[0].icon}@2x.png" alt="weather icon" />`
-    icon2.innerHTML = `<img src= "https://openweathermap.org/img/wn/${json.list[2].weather[0].icon}@2x.png" alt="weather icon" />`
-    icon3.innerHTML = `<img src= "https://openweathermap.org/img/wn/${json.list[3].weather[0].icon}@2x.png" alt="weather icon" />`
-    icon4.innerHTML = `<img src= "https://openweathermap.org/img/wn/${json.list[4].weather[0].icon}@2x.png" alt="weather icon" />`
-    icon5.innerHTML = `<img src= "https://openweathermap.org/img/wn/${json.list[5].weather[0].icon}@2x.png" alt="weather icon" />`
+    icon1.innerHTML = `<img src= "https://openweathermap.org/img/wn/${json.list[1].weather[0].icon}@2x.png" alt="weather icon" />`;
+    icon2.innerHTML = `<img src= "https://openweathermap.org/img/wn/${json.list[2].weather[0].icon}@2x.png" alt="weather icon" />`;
+    icon3.innerHTML = `<img src= "https://openweathermap.org/img/wn/${json.list[3].weather[0].icon}@2x.png" alt="weather icon" />`;
+    icon4.innerHTML = `<img src= "https://openweathermap.org/img/wn/${json.list[4].weather[0].icon}@2x.png" alt="weather icon" />`;
+    icon5.innerHTML = `<img src= "https://openweathermap.org/img/wn/${json.list[5].weather[0].icon}@2x.png" alt="weather icon" />`;
 
 
     // Get minimum and maximum temperatures for the next five days

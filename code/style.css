@@ -3,39 +3,7 @@ body {
     margin: 0px;
 }
 
-.icon-and-extra {
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 40px;
-}
-
-.extra-information-tablet {
-    display: none;
-}
-
-.extra-information-desktop {
-    display: none;
-}
-
-h1 {
-    font-weight: 300;
-    font-size: 120px;
-    margin: 5px;
-    margin-left: 0;
-    display: flex;
-}
-
-h2 {
-    font-weight: 300;
-    font-size: 35px;
-    margin-left: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-.description {
-    font-size: 20px;
-}
+/*TOP-SECTION*/
 
 .section-top {
     background-image: linear-gradient( #8589FF, #E7E8FF);
@@ -56,10 +24,36 @@ h2 {
     padding-top: 20px;
 }
 
+h1 {
+    font-weight: 300;
+    font-size: 120px;
+    margin: 5px;
+    margin-left: 0;
+    display: flex;
+}
+
+h2 {
+    font-weight: 300;
+    font-size: 35px;
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
 .info-text {
     display: flex;
     flex-direction: column;
     margin-bottom: 100px;
+}
+
+.icon-and-extra {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 40px;
+}
+
+.description {
+    font-size: 20px;
 }
 
 .sun-times {
@@ -69,6 +63,16 @@ h2 {
     padding-right: 30px;
     margin-top: 10px;
     margin-bottom: 70px;
+}
+
+/*ADDITIONAL INFORMATION TO BE SHOWN IN TABLET AND DESKTOP MODE*/
+
+.extra-information-tablet {
+    display: none;
+}
+
+.extra-information-desktop {
+    display: none;
 }
 
 /*BOTTOM SECTION*/
