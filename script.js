@@ -90,11 +90,36 @@ document.getElementById("cityName").addEventListener("change", citySelection);
 
 //Function that changes background
 const setBackground = (city) => {
-
-  if(city === "Stockholm") {
-    containerToday.style.backgroundImage = "url('./assets/stockholm.jpg')"
+  if (city === "Stockholm") {
+    containerToday.style.backgroundImage = "url('./assets/stockholm.jpg')";
+  } else if (city === "London") {
+    containerToday.style.backgroundImage = "url('./assets/London.jpg')";
+  } else if (city === "Berlin") {
+    containerToday.style.backgroundImage = "url('./assets/Berlin.jpg')";
+  } else if (city === "Paris") {
+    containerToday.style.backgroundImage = "url('./assets/Paris.jpg')";
+  } else if (city === "Rome") {
+    containerToday.style.backgroundImage = "url('./assets/Rome.jpg')";
+  } else if (city === "San Diego") {
+    containerToday.style.backgroundImage = "url('./assets/Diego.jpg')";
+  } else if (city === "Washington DC") {
+    containerToday.style.backgroundImage = "url('./assets/DC.jpg')";
+  } else if (city === "Toronto") {
+    containerToday.style.backgroundImage = "url('./assets/Toronto.jpg')";
+  } else if (city === "Tokyo") {
+    containerToday.style.backgroundImage = "url('./assets/Tokyo.jpg')";
+  } else if (city === "Bangkok") {
+    containerToday.style.backgroundImage = "url('./assets/Bangkok.jpg')";
+  } else if (city === "Cairo") {
+    containerToday.style.backgroundImage = "url('./assets/Cairo.jpg')";
+  } else if (city === "Cape Town") {
+    containerToday.style.backgroundImage = "url('./assets/Capetown.jpg')";
+  } else if (city === "Auckland") {
+    containerToday.style.backgroundImage = "url('./assets/Auckland.jpg')";
+  } else {
+    containerToday.style.backgroundImage = "url('./assets/Sydney.jpg')";
   }
-}
+};
 
 //Change gradient depending on time/temperature
 /* const setBackgroundGradient = (time) => {
@@ -113,10 +138,10 @@ const generatedHTMLForWeatherToday = (weatherToday) => {
   const localTime = printTime(weatherToday.dt);
   const minTemp = calculateTemperature(weatherToday.main.temp_min);
   const maxTemp = calculateTemperature(weatherToday.main.temp_max);
-  const feelTemp = calculateTemperature(weatherToday.main.feels_like)
+  const feelTemp = calculateTemperature(weatherToday.main.feels_like);
 
   let dailyForecastHTML = "";
-  dailyForecastHTML += `<img src= '${icon}'/>`; 
+  dailyForecastHTML += `<img src= '${icon}'/>`;
   dailyForecastHTML += `<div class="local-info">`;
   dailyForecastHTML += `<div class="temperature">${temperature} \xB0 </div>`;
   dailyForecastHTML += `<p class="feels-like">Feels like ${feelTemp} \xB0 </p>`;
@@ -135,7 +160,7 @@ const generatedHTMLForWeatherToday = (weatherToday) => {
 const generatedHTMLForWeatherForecast = (filteredForecast) => {
   const day = printDay(filteredForecast.dt_txt);
   //Tells what day it is
-  const dailyTemp = calculateTemperature(filteredForecast.main.temp); 
+  const dailyTemp = calculateTemperature(filteredForecast.main.temp);
   const icon = iconWeather(filteredForecast.weather[0].main);
 
   let innerText = "";
@@ -157,7 +182,7 @@ const fetchWeatherToday = (city) => {
       return response.json();
     })
     .then((weatherToday) => {
-      setBackground(city)
+      setBackground(city);
       containerToday.innerHTML += generatedHTMLForWeatherToday(weatherToday);
     });
 };
