@@ -1,13 +1,15 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This weather app is a little tribute to my granpa who lives in little Gamleby and he, as a pensionär is very busy with keeping track of the weather. Now he has he's own app! Just need to get him internet now so he can use it...
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The problem I always struggle with is the start. I have a hard time knowing where to start. 
+The next project i will do a better working plan and also have a plan B.
+
+If I had more time I would focus on making it look good in the desktop view... 
+And of course learn more about JS and maybe try some red level things.
 
 ## View it live
-
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+ 
+Here is the Netflify 

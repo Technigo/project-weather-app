@@ -1,5 +1,5 @@
-const weatherToday = 'http://api.openweathermap.org/data/2.5/weather?q=Gamleby,Sweden&units=metric&APPID=6ce5bf72d646ddeec36c25915a5c0762'
-const weatherForecast = 'http://api.openweathermap.org/data/2.5/forecast?q=Gamleby,Sweden&units=metric&APPID=6ce5bf72d646ddeec36c25915a5c0762'
+const weatherToday = 'https://api.openweathermap.org/data/2.5/weather?q=Gamleby,Sweden&units=metric&APPID=6ce5bf72d646ddeec36c25915a5c0762'
+const weatherForecast = 'https://api.openweathermap.org/data/2.5/forecast?q=Gamleby,Sweden&units=metric&APPID=6ce5bf72d646ddeec36c25915a5c0762'
 
 const sunrise = document.getElementById('sunrise')
 const sunset = document.getElementById('sunset')
