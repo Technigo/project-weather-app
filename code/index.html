@@ -6,19 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Document</title>
 </head>
 
 <body>
     <div class="current">
         <!-- <label for="cars">Choose city:</label> -->
+        <div class="position">
+        <div class="custom-selector">
         <select class="city-selector" name="city" id="city-label" onchange="changeCity()">
             <option value="Stockholm">Stockholm</option>
             <option value="Eskilstuna">Eskilstuna</option>
             <option value="Järfälla">Järfälla</option>
             <option value="Vindö">Vindö</option>
         </select>
-        <button onclick="getLocation()">Current Location</button>
+        </div>
+        <button onclick="getLocation()"><i class="material-icons" style="font-size:35px">&#xe569;</i></button>
+        </div>
         <p class="current-temp" id="current"><span>&#8451</span></p>
         <p class="current-city" id="city"></p>
         <img class="current-img" id="current-icon" src="" width="50">
