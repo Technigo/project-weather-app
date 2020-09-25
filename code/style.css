@@ -10,10 +10,12 @@ body {
 }
 
 main {
-  width: 240px;
-  border-radius: 25px;
-  box-shadow:10px 10px 5px 0px rgba(20,20,20,0.75);
-  padding: 40px;
+  width: 100%;
+  height: 100%;
+  padding: 0 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 h1 {
@@ -67,11 +69,7 @@ p {
     width: 240px;
     height: 568px;
     padding: 0 40px;
-    /* border: 1px solid #000000; */
     border-radius: 25px;
     box-shadow:10px 10px 5px 0px rgba(20,20,20,0.75);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
   }
 }
