@@ -115,7 +115,7 @@ const timeConvertedToLocal = (timestamp, timezone) => {
     let tz = timezone * 1000;
     let date = new Date(time + tz);
     let year = date.getUTCFullYear();
-    let month = date.getUTCMonth() + 1;
+    let month = date.getUTCMonth() + 1; 
     let day = date.getUTCDate();
     let hour = date.getUTCHours();
     let minute = date.getUTCMinutes();
@@ -167,8 +167,7 @@ const iconMainDescription = item
         return './drizzle.png'
     } else if (iconMainDescription === 'Snow') {
         return './snow.png'
-    } else 
-        return './drizzle.png'
+    } else return './drizzle.png'
 }
 
 //Change background color depending on temperature

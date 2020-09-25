@@ -27,12 +27,6 @@ img {
     width: 40px;
 }
 
-/*
-.weather-container {
-    width: 100vw;
-}
-*/
-
 .weather-wrapper {
     height: 50vh;
     position: relative;
@@ -47,13 +41,7 @@ color depending on weather temp statement in js file.*/
     height: 100%;  
     width: 100%;
     position: absolute;
-    z-index: -1;
-    /*
-    padding: 30px 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;*/
-    
+    z-index: -1;  
 }
 
 /*opacity 0.8 to show underlying background color in class-color*/
@@ -66,24 +54,21 @@ color depending on weather temp statement in js file.*/
     position: absolute;
     display: flex;
     flex-direction: column;
-    /*justify-content: space-around;*/
     opacity: 0.8;
 }
 
 .weather-information {
     display: flex;
     flex-direction: column;
-    /*justify-content: space-between;
-    align-items: center;*/
-    margin: 0 10px; 
+    margin: 0 10px;   
 }
 
 .weather-information img {
     height: 60px;
     width: 60px;
-    margin-right: 20px;
     filter: brightness(2);
     align-self: flex-end;
+    animation: stretch 4s ease-in-out infinite;
 }
     
 .location-information {
@@ -133,7 +118,6 @@ color depending on weather temp statement in js file.*/
     width: 140px;
 }
 
-
 /*style for search section*/
 .searched-city {
     display: flex;
@@ -157,12 +141,17 @@ input {
     margin: 20px 0;
 }
 
-
 /*styling for search*/
 /*for style. Can I move onclick function to enter click? */
 .search-btn {
     display:none;
 }
+
+@keyframes stretch {
+    0% {transform: scale(.9);}
+    50% {transform: scale(1);}
+    100% {transform: scale(.9);}
+  }
 
 /****MEDIA FOR TABLET *****/
 @media (min-width: 768px) {
@@ -188,21 +177,3 @@ input {
         width: 50%;
     }
 }
-
-/*KEYFRAMES FOR ANIMATION*/
-@-webkit-keyframes AnimationName {
-    0% {
-        background-position: 0% 9%
-    }
-
-    50% {
-        background-position: 100% 92%
-    }
-
-    100% {
-        background-position: 0% 9%
-    }
-}
-
-
-
