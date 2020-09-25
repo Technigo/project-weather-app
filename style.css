@@ -14,17 +14,25 @@ border-radius: 10px;
 opacity: 0.9;
 display: flex;
 font-family: arial, sans-serif;
-  §111
+  
 }
 
 h3 {
     font-family: arial, sans-serif;
     padding-left: 20px;
+    padding-top: 10px;
+}
+
+
+h2 {
+  font-family: arial, sans-serif;
+  padding-left: 135px;
+  font-size: 60px;
 }
 
 h1 {
     font-family: arial, sans-serif;
-    padding-left: 30px;
+    padding-left: 135px;
     
 }
 
@@ -32,9 +40,10 @@ table {
    
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    display: block;
-    padding-top: 300px;
+    display: flex;
+    padding-top: 350px;
     align-content: center;
+  
     
   }
   
@@ -42,7 +51,8 @@ table {
   th {
     width: 70px;
     text-align: left;
-    padding: 29px;
+    padding: 20px;
+    padding-right:;
     align-content: center;
    
   }

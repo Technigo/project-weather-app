@@ -16,11 +16,11 @@ fetch(fetchWeatherToday)
     })
     .then((json) => {
         console.log(json);
-        todaysWeatherTemp.innerText = json.main.temp;
+        todaysWeatherTemp.innerText = Math.round(json.main.temp);
         todaysWeatherCity.innerText = json.name;
         todaysWeatherType.innerText = json.weather[0].description;
-        todaysWeatherSunrise.innerText = formatTime(json.sys.sunrise);
-        todaysWeatherSunset.innerText = formatTime(json.sys.sunset);
+        // todaysWeatherSunrise.innerText = formatTime(json.sys.sunrise);
+        // todaysWeatherSunset.innerText = formatTime(json.sys.sunset);
 
 
 
@@ -46,8 +46,8 @@ fetch(fetchWeatherWeek)
         return response.json();
     })
 
-filteredForecast.forEach((day) => {
-    const date = new Date(day.dt * 1000)
+filteredForecast.forEach((monday) => {
+    const date = new Date(monday.dt * 1000)
 
     // Make a Date object for right now
     const now = new Date();
