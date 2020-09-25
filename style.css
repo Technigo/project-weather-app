@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Advent+Pro:wght@200;300;400;500;600&display=swap');
+
 * {
     box-sizing: border-box;
+    font-family: 'Advent Pro', sans-serif;
 }
 
 body {
@@ -16,6 +19,8 @@ body {
 
 .daily-wrapper {
     position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
     grid-column: span 8;
     height: 50vh;
     display: flex;
@@ -32,13 +37,35 @@ body {
     width: 100px;
 }
 
+.local-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+p {
+    margin: 0 0 5px 0;
+}
+
+.minmax-temp, .sun {
+    font-size: 13px;
+}
+
 .forecast-img {
     width: 50%;
 }
 
+.temperature, .city {
+    font-size: 35px;
+    font-weight: 500;
+}
+
 .city {
-    font-weight: 600;
-    font-size: 30px;
+    margin: 10px 0;
+}
+
+.feels-like {
+    font-style: italic;
 }
 
 .forecast-wrapper {
@@ -48,7 +75,18 @@ body {
     padding: 10px;
     display: flex;
     justify-content: space-between;
-    align-content: center;
+    align-items: center;
+}
+
+.day-box {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+}
+
+.day {
+    margin: 2px;
 }
 
 .search-field {
@@ -60,6 +98,34 @@ body {
     align-items: center;
 }
 
-.search-container {
-    border: 2px solid pink;
+@media only screen and (min-width:768px) {
+    .forecast-wrapper {
+        justify-content: space-around;
+    }
+    
+    .day-box{
+        flex-direction: column;
+        align-items: center;
+        font-size: 25px;
+    }
+
+    .daily-wrapper img {
+        width: 200px;
+        top: -20px;
+        right: 0;
+        z-index: 1;
+    }
+
+    .temperature, .city{
+        font-size: 50px;
+    }
+
+    p {
+        font-size: 22px;
+    }
+
+    .minmax-temp, .sun {
+        font-size: 20px;
+    }
+
 }

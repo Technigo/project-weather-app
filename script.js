@@ -4,6 +4,8 @@ const containerToday = document.getElementById("weatherToday");
 //const descriptionToday = document.getElementById("text");
 const containerForecast = document.getElementById("forecastWrapper");
 
+//UNSPLASH APIKEY z4PEqzbIWdyz1ZI_pAEh8rhUEdEyW1vxMjTi2kkaAfA
+
 //TEMPERATURE FUNCTIONS
 
 //Create function that calls all temperaturefunctions
@@ -86,6 +88,22 @@ document.getElementById("cityName").addEventListener("change", citySelection);
 
 //DISPLAY FUNCTIONS
 
+//Function that changes background
+const setBackground = (city) => {
+
+  if(city === "Stockholm") {
+    containerToday.style.backgroundImage = "url('./assets/stockholm.jpg')"
+  }
+}
+
+//Change gradient depending on time/temperature
+/* const setBackgroundGradient = (time) => {
+  const weatherBackground = document.getElementById('weatherContainer')
+  if(time===){
+    weatherBackground.style.background = 
+  }
+} */
+
 const generatedHTMLForWeatherToday = (weatherToday) => {
   const temperature = calculateTemperature(weatherToday.main.temp); //This is using json.main.temp as a parameter instead of number.
   const sunrise = calculatingSun(weatherToday.sys.sunrise);
@@ -101,12 +119,12 @@ const generatedHTMLForWeatherToday = (weatherToday) => {
   dailyForecastHTML += `<img src= '${icon}'/>`; 
   dailyForecastHTML += `<div class="local-info">`;
   dailyForecastHTML += `<div class="temperature">${temperature} \xB0 </div>`;
-  dailyForecastHTML += `<div class="temperature">Feels like ${feelTemp} \xB0 </div>`;
-  dailyForecastHTML += `<div class="city">${weatherToday.name}</div>`;
-  dailyForecastHTML += `<div class="local.time">${localTime}</div>`;
-  dailyForecastHTML += `<div class="description">${description}</div>`;
-  dailyForecastHTML += `<div class="minimal-temp">${minTemp}/${maxTemp}</div>`;
-  dailyForecastHTML += `<div class="sun">Sunrise ${sunrise}/ Sunset ${sunset}</div>`;
+  dailyForecastHTML += `<p class="feels-like">Feels like ${feelTemp} \xB0 </p>`;
+  dailyForecastHTML += `<h1 class="city">${weatherToday.name}</h1>`;
+  dailyForecastHTML += `<p class="local.time">${localTime}</p>`;
+  dailyForecastHTML += `<p class="description">${description}</p>`;
+  dailyForecastHTML += `<p class="minmax-temp">min/max ${minTemp}/${maxTemp}</p>`;
+  dailyForecastHTML += `<p class="sun">Sunrise ${sunrise}/ Sunset ${sunset}</p>`;
   dailyForecastHTML += `</div>`;
   return dailyForecastHTML;
 
@@ -139,6 +157,7 @@ const fetchWeatherToday = (city) => {
       return response.json();
     })
     .then((weatherToday) => {
+      setBackground(city)
       containerToday.innerHTML += generatedHTMLForWeatherToday(weatherToday);
     });
 };
