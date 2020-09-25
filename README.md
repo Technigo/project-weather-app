@@ -1,13 +1,21 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+fetch todays weather via api
+fetch forecast via api
+create functions
+work with DOM
+work with foreach and filter
+convert times and temperatures
+style responsive page
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+It was fun to work with APIs
+I got to to use some parts of another weather project that I have done in the past, specifically where user can put in their city and then use API to fetch
+I got to use previous knowledge on how to style a page and make it responsive
+I got to work with innerHTML and how to manipulate DOM which is fun!
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://boring-feynman-5a32d5.netlify.app/
+https://github.com/monkeybusiness101/project-weather-app
