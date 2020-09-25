@@ -36,19 +36,20 @@ p {
 }
 
 .place-pic {
-  width: 30px;
-  height: 30px;
+  width: 22px;
+  height: 22px;
   margin-right: 5px; 
+  margin-top: 5px;
 }
 
-.city-input {
+.city-input { /* Small styling for the select field */
   padding: 7px;
   border: 1px solid#42ade3;
   font-family: 'Montserrat', sans-serif;
   width: 125px;
 }
 
-/*** Styling of the 'box' with the weather ***/
+/*** Styling of the 'box' with the weather forecast ***/
 .weather-wrapper {
   margin-top: 15px;
   margin-bottom: 20px;
@@ -93,14 +94,23 @@ p {
 .picture-div {
   display: flex;
   justify-content: center;
-  border-bottom: 1px solid #000;
-  padding-bottom: 8px;
 }
 
 .weather-pic {
   height: 135px;
   width: 135px;
-  margin: 10px 0px;
+  margin: 10px 0px 25px;
+}
+
+/* The part with the 5 days forward forecast */
+.forecast-5-days {
+  border-top: 1px solid #000;
+  padding-top: 8px;
+  margin-bottom: 10px;
+}
+
+.anotherday { /* Every day */ 
+  padding: 4px 0px;
 }
 
 .forecast-pic {
@@ -109,13 +119,8 @@ p {
   margin: 0px;
 }
 
-.dashed { /* Sets dashed line under each day */
+.dashed { /* Sets dashed line under each day (except the last one) */
   border-bottom: 1px dashed #000;
-}
-
-.non-dashed { /* Doesn't want dashed line on the last day,
-  need some extra margin instead */
-  margin-bottom: 10px;
 }
 
 .note {
@@ -132,8 +137,17 @@ footer {
   font-size: 12px;
 }
 
+a:link, a:visited, a:active { /* Fix the links in the footer a bit nicer */
+  color: #000;
+  text-decoration: none;
+}
+
+a:hover { /* When hovering the links */
+  text-decoration: underline;
+}
+
 @media (min-width: 668px) { /* Tablet device */
-  p{
+  p {
     margin-top: 10px;
   }
 
@@ -141,18 +155,23 @@ footer {
     width: 80vw;
   }
 
-  .sunrise-pic, .sunset-pic, .wind-pic {
+  .sunrise-pic, .sunset-pic, .wind-pic { /* Bigger pictures in bigger format */
     margin-top: 12px; 
   }
 
-  .weather-pic {
+  .weather-pic { /* Bigger picture in bigger format */
     margin-bottom: 40px;
     height: 180px;
     width: 180px;
   }
+
+  .anotherday { /* Some extra padding*/
+    padding: 5px;
+  }
 }
 
 @media (min-width: 1025px) { /* Desktop device */
+  /*** General styling ***/
   h1 {
     font-size: 45px;
     margin: 50px;
@@ -162,35 +181,47 @@ footer {
     margin: 5px;
   }
 
+  /** The box with the forecast info **/
   .weather-wrapper {
-    width: 90vw;
-  }
-
-  .wrapper-two {
+    width: 80vw;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    height: 60vh;
+    height: auto;
     padding: 50px;
   }
 
-  .forecast-5-days {
-    margin-top: 50px;
+  /* Some extra margins and paddings in bigger format */
+  .descriptions-today, .wind, .sunrise, .sunset {
+    padding-bottom: 10px;
+  }
+
+  .descriptions-today {
+    padding-top: 10px;
+  } 
+
+  .sunrise-pic, .sunset-pic, .wind-pic { 
+    margin-top: 6px; 
   }
 
   .picture-div {
-    margin: 30px 10px 20px 60px;
-    border: none;
-  }
+    margin: 30px 40px 20px 30px;
+  }  
 
-  .weather-pic {
-    margin: 20px 10px 80px 40px;
+  .weather-pic { /* And bigger picture */
     height: 235px;
     width: 235px;
   }
 
-  footer {
-    position: relative;
-    bottom: 0;
+  .forecast-5-days {
+    margin-top: 40px;
+  }
+
+  .anotherday {
+    padding: 10px;
+  }
+
+  .forecast-pic {
+    margin: 0px 16px;
   }
 }

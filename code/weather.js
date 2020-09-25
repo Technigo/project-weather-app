@@ -8,17 +8,17 @@ const wind = document.getElementById('wind');
 const sunrise = document.getElementById('sunrise');
 const sunset = document.getElementById('sunset');
 
-let cityName = ''; // Just creating this variable
+const API_KEY = '22db637cf647bcd1513c052513b7d54c' // API-KEY
 
-const API_KEY = '22db637cf647bcd1513c052513b7d54c'
+let cityName = ''; // Just creating the variable for cityName
 
-const startFunction = () => { // Function for loading data for Gothenburg when the page loads first time
+const startFunction = () => { // Function for loading data for Gothenburg as default when the page loads first time
     let cityName = 'Gothenburg';
     forecastFunction(cityName);
     todaysWeatherfunction(cityName);
 }
 
-// Function connected to the selecy class '.city-input' in HTML - starts fetching other weather when new city is choosen
+// Function connected to the select class '.city-input' in HTML - starts fetching other weather when new city is choosen
 const fetchWeather = (cityName) => {
     forecastFunction(cityName);
     todaysWeatherfunction(cityName);
@@ -50,6 +50,8 @@ const todaysWeatherfunction = (cityName) => {
         // Function to give the border different colors based on the temperature
         coloringFunction = () => {
             if (todaysweather.main.temp > 30.0) {
+                document.getElementById("weatherColor").style.border = "15px solid #f56b56";
+            } else if (todaysweather.main.temp > 25.0) {
                 document.getElementById("weatherColor").style.border = "15px solid #f29d74";
             } else if (todaysweather.main.temp > 20.0) {
                 document.getElementById("weatherColor").style.border = "15px solid #ebbd73";
@@ -58,7 +60,7 @@ const todaysWeatherfunction = (cityName) => {
             } else if (todaysweather.main.temp > 10.0) {
                 document.getElementById("weatherColor").style.border = "15px solid #b6f0e0";
             } else if  (todaysweather.main.temp > 0.0) {
-                document.getElementById("weatherColor").style.border = "15px solid #bbf2ee";
+                document.getElementById("weatherColor").style.border = "15px solid #bbeff2";
             } else if (todaysweather.main.temp < 0.0) {
                 document.getElementById("weatherColor").style.border = "15px solid #bee3eb";
             } else {
@@ -81,41 +83,37 @@ const forecastFunction = (cityName) => {
         const filteredForecast = forecast.list.filter(item => item.dt_txt.includes('12:00'));
 
         const newWeek = filteredForecast.map((week) => {
-            const day = (new Date(week.dt * 1000)).toLocaleDateString("en-US", { weekday: "short" }) + ` *`;
+            const day = (new Date(week.dt * 1000)).toLocaleDateString("en-US", { weekday: "short" });
             const description = week.weather[0].description;
             const temperature = week.main.temp.toFixed(1) + `°C`;
         
             return { day, description, temperature };
-
         });
 
            const weeks = document.getElementsByClassName('anotherday');
            
-           newWeek.forEach((item, index) => {        
-               weeks[index].querySelector('.day').innerText = item.day;
-               weeks[index].querySelector('.day-descr').innerText = item.description;
-               weeks[index].querySelector('.day-temp').innerText = item.temperature;
-           });
+        newWeek.forEach((item, index) => {        
+            weeks[index].querySelector('.day').innerText = item.day;
+            weeks[index].querySelector('.day-descr').innerText = item.description;
+            weeks[index].querySelector('.day-temp').innerText = item.temperature;
+        });
 
-           // To add pictures in the 5-days-forecast. I had to do them one by one.
-           // Day 1
-           const forecastPicID1 = filteredForecast[0].weather[0].icon; 
-           forecastPic1.src = `./assets/${forecastPicID1}.png`; 
-           // Day 2
-           const forecastPicID2 = filteredForecast[1].weather[0].icon; 
-           forecastPic2.src = `./assets/${forecastPicID2}.png`; 
-           // Day 3
-           const forecastPicID3 = filteredForecast[2].weather[0].icon; 
-           forecastPic3.src = `./assets/${forecastPicID3}.png`; 
-           // Day 4
-           const forecastPicID4 = filteredForecast[3].weather[0].icon; 
-           forecastPic4.src = `./assets/${forecastPicID4}.png`; 
-           // Day 5
-           const forecastPicID5 = filteredForecast[4].weather[0].icon; 
-           forecastPic5.src = `./assets/${forecastPicID5}.png`; 
+        // To add pictures in the 5-days-forecast. I had to do them one by one.
+        // Day 1
+        const forecastPicID1 = filteredForecast[0].weather[0].icon; 
+        forecastPic1.src = `./assets/${forecastPicID1}.png`; 
+        // Day 2
+        const forecastPicID2 = filteredForecast[1].weather[0].icon; 
+        forecastPic2.src = `./assets/${forecastPicID2}.png`; 
+        // Day 3
+        const forecastPicID3 = filteredForecast[2].weather[0].icon; 
+        forecastPic3.src = `./assets/${forecastPicID3}.png`; 
+        // Day 4
+        const forecastPicID4 = filteredForecast[3].weather[0].icon; 
+        forecastPic4.src = `./assets/${forecastPicID4}.png`; 
+        // Day 5
+        const forecastPicID5 = filteredForecast[4].weather[0].icon; 
+        forecastPic5.src = `./assets/${forecastPicID5}.png`; 
+
         });
     };
-        
-       
-        
-
