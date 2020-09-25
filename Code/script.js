@@ -18,6 +18,8 @@ const sunsetTime = document.getElementById('sunsetTime');
 const days = document.getElementsByClassName('day-container');
 const sunTime = document.getElementsByClassName('.sun');
 
+const body = document.getElementsByTagName('body');
+
 
 //Rounding Numbers
 const roundNums = (num, decimals = 1) => {
@@ -45,7 +47,10 @@ const generateHTMLForWeather = (stockholmWeather) => {
     sunsetTime.innerText = generateTime(stockholmWeather.sys.sunrise);
     city.innerText = stockholmWeather.name;
     currentTemp.innerText = `${roundNums(stockholmWeather.main.temp, 0)} °C`;
-    weatherType.innerText = stockholmWeather.weather[0].main
+    
+    weatherType.innerText += stockholmWeather.weather[0].main;
+    weatherType.innerHTML += `<i class='${weatherIcon(stockholmWeather.weather[0].icon)}'>`;
+    
 }
 
  // Get day and temperature from json and change html
@@ -60,12 +65,42 @@ const generateHTMLFiveDayForecast = (forecast) => {
     });
 }
 
+// Assign new Icon depending on icon from json
+const weatherIcon = (icon) => {
+    const code = icon[0] + icon[1];
+    const time = icon[2];
+    switch (code) {
+        case '01': return `wi wi-${time === 'n' ? 'night-clear' : 'day-sunny'}`;
+        case '02': return `wi wi-${time === 'n' ? 'night' : 'day'}-cloudy`;
+        case '03': return 'wi wi-cloud';
+        case '04': return 'wi wi-cloudy';
+        case '09': return 'wi wi-rain';
+        case '10': return `wi wi-${time === 'n' ? 'night' : 'day'}-rain`;
+        case '11': return 'wi wi-thunderstorm';
+        case '13': return 'wi wi-snowflake-cold';
+        case '50': return 'wi-fog';
+    };
+};
+
 
 fetch(url('Stockholm')).then((response) => {
     return response.json();
 })
 .then((stockholmWeather) => {
     generateHTMLForWeather(stockholmWeather);
+
+    if (stockholmWeather.main.temp < 0) {
+        document.body.style.backgroundColor = '#15E5FF';
+    } else {
+        document.body.style.backgroundColor = '#067F5E';
+    };
+
+    if (stockholmWeather.weather[0].main === 'Clouds') {
+        document.body.style.backgroundColor = '#067f5e';
+    } else if (stockholmWeather.weather[0].main === 'Clear') {
+        document.body.style.backgroundColor = '#FFC6C8';
+    };
+
 });
 
 
