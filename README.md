@@ -7,5 +7,8 @@ I started with the fetch functions, making sure all the data was retrieved and p
 
 When I had everything in place for a specified city, I changed the code into using geo-location. 
 
+The big problem for me was to display the local time for each location without any GMT converstions done by string methods or Date objects. I made it work after several hours of trial and error by creating a UTC-date and applied some string methods, but I'm not sure whether it is a good solution.  
+
+
 ## View it live
 https://karro-weather.netlify.app/
