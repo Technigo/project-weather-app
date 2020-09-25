@@ -1,4 +1,4 @@
-let city = 'Stockholm';
+let city = "Stockholm";
 //const button = document.getElementById('btn-search')
 const containerToday = document.getElementById("weatherToday");
 //const descriptionToday = document.getElementById("text");
@@ -6,7 +6,7 @@ const containerForecast = document.getElementById("forecastWrapper");
 
 //TEMPERATURE FUNCTIONS
 
-  //Create function that calls all temperaturefunctions
+//Create function that calls all temperaturefunctions
 const callTempFunctions = (number) => {
   calculateTemperature(number);
   minMaxTemperature(number);
@@ -16,16 +16,6 @@ const callTempFunctions = (number) => {
 const calculateTemperature = (number) => {
   const roundedTemp = Math.round(number * 10) / 10; //By adding *10 AND adding /10 the number is rounded up to nearest integer with one decimal. If only using round() the number is rounded up to nearest integer.
   return roundedTemp;
-};
-
-//Create function that shows min/max temp NOT WORKING ATM
-const minMaxTemperature = (item) => {
-  //const filteredForecast = json.list.filter(item => item.dt_txt.includes(day1Date)) Code from Henrike
-  const minTempArray = item.map(day => day.main.temp_min);
-  console.log(minTempArray)
-  return minTempArray
-  //minMaxTemperature(filteredForecast.list[0].main.temp_min)
-  //API main.temp_min main.temp_max
 };
 
 //Create function that shows 'feels like'temp NOT STARTED
@@ -42,7 +32,6 @@ const calculatingSun = (time) => {
     minute: "2-digit",
     hour12: false,
   });
-  console.log(sunTimeString);
   return sunTimeString;
 };
 
@@ -50,55 +39,50 @@ const printDay = (day) => {
   const forecastDays = new Date(day);
   const forecastDaysString = forecastDays.toLocaleDateString("en-US", {
     weekday: "short",
-    month: "short",
     day: "numeric",
   });
-  /* console.log(forecastDaysString); */
   return forecastDaysString;
 };
 
 const printTime = (time) => {
   //Is there another way tp do this? My time is a few minutes off..
-  const hour = new Date (time * 1000);
-  const localTimeString = hour.toLocaleTimeString('en-SE', {
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false
-  })
+  const hour = new Date(time * 1000);
+  const localTimeString = hour.toLocaleTimeString("en-SE", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
   return localTimeString;
-}
+};
 
 //ICON FUNCTIONS
 const iconWeather = (item) => {
-  const iconMain = item
-  
-  if (iconMain === 'Clouds') {
-    return  'http://openweathermap.org/img/wn/03d@2x.png'
-  } else if (iconMain === 'Clear') {
-    return 'http://openweathermap.org/img/wn/01d@2x.png'
-  } else if (iconMain === 'Snow') {
-    return 'http://openweathermap.org/img/wn/13d@2x.png'
-  } else if (iconMain === 'Rain') {
-    return 'http://openweathermap.org/img/wn/10d@2x.png'
-  } else if (iconMain === 'Drizzle') {
-    return 'http://openweathermap.org/img/wn/09d@2x.png'
-  } else if (iconMain === 'Thunderstorm') {
-    return 'http://openweathermap.org/img/wn/11d@2x.png'
-  } else 
-    return 'http://openweathermap.org/img/wn/50d@2x.png'
+  const iconMain = item;
 
-}
+  if (iconMain === "Clouds") {
+    return "http://openweathermap.org/img/wn/03d@2x.png";
+  } else if (iconMain === "Clear") {
+    return "http://openweathermap.org/img/wn/01d@2x.png";
+  } else if (iconMain === "Snow") {
+    return "http://openweathermap.org/img/wn/13d@2x.png";
+  } else if (iconMain === "Rain") {
+    return "http://openweathermap.org/img/wn/10d@2x.png";
+  } else if (iconMain === "Drizzle") {
+    return "http://openweathermap.org/img/wn/09d@2x.png";
+  } else if (iconMain === "Thunderstorm") {
+    return "http://openweathermap.org/img/wn/11d@2x.png";
+  } else return "http://openweathermap.org/img/wn/50d@2x.png";
+};
 
-
-//BUTTON FUNCTION 
-const citySearch = (event) => {
-  containerToday.innerHTML = ''; 
-  containerForecast.innerHTML = '';//This is needed to clear the default value
-    city = event.target.value; //this sets the searchvalue to whatever the user chooses is
+//SELECT FUNCTION
+const citySelection = (event) => {
+  containerToday.innerHTML = "";
+  containerForecast.innerHTML = ""; //This is needed to clear the default value
+  city = event.target.value; //this sets the searchvalue to whatever the user chooses is
   fetchWeatherForecast(city);
   fetchWeatherToday(city);
-}
-document.getElementById('cityNameSearch').addEventListener('change', (citySearch))
+};
+document.getElementById("cityName").addEventListener("change", citySelection);
 
 //DISPLAY FUNCTIONS
 
@@ -107,20 +91,24 @@ const generatedHTMLForWeatherToday = (weatherToday) => {
   const sunrise = calculatingSun(weatherToday.sys.sunrise);
   const sunset = calculatingSun(weatherToday.sys.sunset);
   const description = weatherToday.weather[0].description;
-  const icon = iconWeather(weatherToday.weather[0].main)
-  const localTime = printTime(weatherToday.dt)
+  const icon = iconWeather(weatherToday.weather[0].main);
+  const localTime = printTime(weatherToday.dt);
+  const minTemp = calculateTemperature(weatherToday.main.temp_min);
+  const maxTemp = calculateTemperature(weatherToday.main.temp_max);
+  const feelTemp = calculateTemperature(weatherToday.main.feels_like)
 
   let dailyForecastHTML = "";
-  dailyForecastHTML += `<img src= '${icon}'/>`; //This needs to be 
+  dailyForecastHTML += `<img src= '${icon}'/>`; 
   dailyForecastHTML += `<div class="local-info">`;
+  dailyForecastHTML += `<div class="temperature">${temperature} \xB0 </div>`;
+  dailyForecastHTML += `<div class="temperature">Feels like ${feelTemp} \xB0 </div>`;
   dailyForecastHTML += `<div class="city">${weatherToday.name}</div>`;
   dailyForecastHTML += `<div class="local.time">${localTime}</div>`;
-  dailyForecastHTML += `<div class="temperature">${temperature} \xB0 </div>`;
   dailyForecastHTML += `<div class="description">${description}</div>`;
-  dailyForecastHTML += `<div class="description">Sunrise ${sunrise}</div>`;
-  dailyForecastHTML += `<div class="description">Sunset ${sunset}</div>`;
+  dailyForecastHTML += `<div class="minimal-temp">${minTemp}/${maxTemp}</div>`;
+  dailyForecastHTML += `<div class="sun">Sunrise ${sunrise}/ Sunset ${sunset}</div>`;
   dailyForecastHTML += `</div>`;
-  return dailyForecastHTML
+  return dailyForecastHTML;
 
   //Since weather is an array, we need to access the index of 0, and then we can locate the object keyvalues i.e .description. This has to be done even if there is only one array, as in this case.
   //descriptionToday.innerHTML += `The sun rises at ${sunrise} and sets at ${sunset}`;
@@ -129,20 +117,14 @@ const generatedHTMLForWeatherToday = (weatherToday) => {
 const generatedHTMLForWeatherForecast = (filteredForecast) => {
   const day = printDay(filteredForecast.dt_txt);
   //Tells what day it is
-  const dailyTemp = calculateTemperature(filteredForecast.main.temp); //Would also like for this to tell min/max-temp
-  
-  
-  //const minMax = minMaxTemperature(filteredForecast.list[0].main.temp_min) //Make use of minMaxfunction! Get an errormessage ATM
-  /*Uncaught (in promise) TypeError: Cannot read property '0' of undefined
-  at generatedHTMLForWeatherForecast (script.js:70)
-  at script.js:113
-  at Array.forEach (<anonymous>)
-  at script.js:112 */
+  const dailyTemp = calculateTemperature(filteredForecast.main.temp); 
+  const icon = iconWeather(filteredForecast.weather[0].main);
 
   let innerText = "";
   innerText += `<div class="day-box">`;
+  innerText += `<img class="forecast-img" src= '${icon}'/>`;
   innerText += `<p class="day">${day}</p>`;
-  innerText += `<p>${dailyTemp} \xB0</p>`;
+  innerText += `<p class="day">${dailyTemp} \xB0</p>`;
   innerText += `</div>`;
   return innerText;
   //Weather description for the next five days
@@ -150,19 +132,22 @@ const generatedHTMLForWeatherForecast = (filteredForecast) => {
 };
 
 const fetchWeatherToday = (city) => {
-  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=95b6172379fabb04319de6c9e2aa34ae`)
+  fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=95b6172379fabb04319de6c9e2aa34ae`
+  )
     .then((response) => {
       return response.json();
     })
     .then((weatherToday) => {
       containerToday.innerHTML += generatedHTMLForWeatherToday(weatherToday);
     });
-    
 };
-fetchWeatherToday(city)
+fetchWeatherToday(city);
 
 const fetchWeatherForecast = (city) => {
-  fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=95b6172379fabb04319de6c9e2aa34ae`)
+  fetch(
+    `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=95b6172379fabb04319de6c9e2aa34ae`
+  )
     .then((response) => {
       return response.json();
     })
@@ -170,14 +155,11 @@ const fetchWeatherForecast = (city) => {
       const filteredForecast = weatherForecast.list.filter((item) =>
         item.dt_txt.includes("12:00")
       );
-      containerForecast.innerHTML = `<h1>The weather for the next five days will be:</h1>`;
-
       filteredForecast.forEach((forecast) => {
-        containerForecast.innerHTML += generatedHTMLForWeatherForecast(forecast);
-      const minMax = minMaxTemperature(filteredForecast)
-      console.log(`this is ${minMax}`)
+        containerForecast.innerHTML += generatedHTMLForWeatherForecast(
+          forecast
+        );
       });
     });
-    
 };
-fetchWeatherForecast(city)
+fetchWeatherForecast(city);

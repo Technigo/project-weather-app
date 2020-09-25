@@ -6,13 +6,9 @@ body {
     margin: 0;
 }
 
-.wrapper {
-    width: 100%;
-    height: 100vh;
-}
-
 .weather-container {
     width: 100%;
+    height: 100vh;
     border: 2px solid red;
     display: grid;
     grid-template-columns: repeat(8, 1fr) ;
@@ -21,7 +17,7 @@ body {
 .daily-wrapper {
     position: relative;
     grid-column: span 8;
-    height: 40vh;
+    height: 50vh;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -36,40 +32,34 @@ body {
     width: 100px;
 }
 
+.forecast-img {
+    width: 50%;
+}
+
 .city {
     font-weight: 600;
     font-size: 30px;
 }
 
 .forecast-wrapper {
-    grid-column: span 4;
+    grid-column: span 8;
     border: 2px solid blue;
+    height: 40vh;
+    padding: 10px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    align-content: center;
 }
 
 .search-field {
-    grid-column: span 4;
+    grid-column: span 8;
+    height: 10vh;
     border: 2px solid green;
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 
 .search-container {
     border: 2px solid pink;
 }
-/*
-.day {
-    font-size: 20px;
-    font-weight: 700;
-}
-
-.day-box {
-    display: flex;
-    flex-wrap: wrap;
-    border: 2px solid #000;
-    justify-content: space-around;
-    margin: 5px;
-    width: 50%
-}*/
