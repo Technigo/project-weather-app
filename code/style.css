@@ -9,8 +9,6 @@ body {
 
 p {
   width: 100px;
-  text-align: end;
-  margin-right: 40px;
 }
 
 /*style for weather today wrapper*/
@@ -27,8 +25,8 @@ p {
 /*additional img styling to seperate from other img*/
 .weather-today-wrapper img {
   position: absolute;
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
   right: 0px;
   top: 0px;
 }
@@ -44,7 +42,11 @@ p {
 
 .location {
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 600;
+}
+
+.description::first-letter {
+  text-transform: capitalize;
 }
 
 .sun-information {
@@ -64,6 +66,7 @@ p {
   display: flex;
   flex-direction: column;
   margin-left: 10px;
+  margin-right: 10px;
 }
 
 .weather-forcast {
@@ -71,6 +74,7 @@ p {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 2px dotted #ea6e4a;
 }
 
 .day {
@@ -82,6 +86,33 @@ img {
   border-radius: 50%;
   height: 50px;
   width: 50px;
+}
+
+.temp-forcast {
+  text-align: end;
+}
+
+.select-city {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0px;
+}
+
+.city-serch,
+.city-name-picked {
+  margin-bottom: 20px;
+}
+
+.city-name-picked {
+  height: 30px;
+}
+
+.search-btn {
+  height: 40px;
+  width: 100px;
+  font-size: 18px;
+  font-family: "Quicksand", sans-serif;
 }
 
 /****MEDIA FOR TABLET *****/

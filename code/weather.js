@@ -32,15 +32,15 @@ const generatedHTMLForWeatherToday = (weatherToday) => {
   let weatherTodayHTML = "";
   weatherTodayHTML += ` <img src='${iconToday}'>`;
   weatherTodayHTML += `<div class="location-information">`;
-  weatherTodayHTML += `<div class="temp"> ${temperature} \xB0 </div>`;
-  weatherTodayHTML += `<div class="location"> ${weatherToday.name} </div>`;
-  weatherTodayHTML += `<div class="description"> ${description} </div>`;
-  weatherTodayHTML += `<div class="local-time"> ${timeInCity} </div>`;
+  weatherTodayHTML += `<p class="temp"> ${temperature}\xB0 </p>`;
+  weatherTodayHTML += `<p class="location"> ${weatherToday.name} </p>`;
+  weatherTodayHTML += `<p class="description"> ${description} </p>`;
+  weatherTodayHTML += `<p class="local-time"> ${timeInCity} </p>`;
   weatherTodayHTML += `</div>`;
 
   weatherTodayHTML += `<div class="sun-information">`;
-  weatherTodayHTML += `<div class="sunrise"> Sunrise ${sunrise}</div>`;
-  weatherTodayHTML += `<div class="sunset"> Sunset ${sunset}</div>`;
+  weatherTodayHTML += `<p class="sunrise"> Sunrise ${sunrise}</p>`;
+  weatherTodayHTML += `<p class="sunset"> Sunset ${sunset}</p>`;
   weatherTodayHTML += `</div>`;
   return weatherTodayHTML;
 };
@@ -76,9 +76,9 @@ const generatedHTMLForWeatherForcast = (filteredForcast) => {
   // Separate and build up the HTML tree
   let weatherForcast = "";
   weatherForcast += `<div class="weather-forcast">`;
-  weatherForcast += `<div class="day">${weekday}</div>`;
-  weatherForcast += ` <img src='${iconForcast}'>`;
-  weatherForcast += `<p>${dailyTemp} \xB0/ ${tempFeelsLike} \xB0</p>`;
+  weatherForcast += `<p class="day">${weekday}</p>`;
+  weatherForcast += `<img src='${iconForcast}'>`;
+  weatherForcast += `<p class="temp-forcast">${dailyTemp}\xB0/ ${tempFeelsLike}\xB0</p>`;
   weatherForcast += `</div>`;
   return weatherForcast;
 };
