@@ -2,20 +2,12 @@
 const closeBtn = document.getElementsByClassName("show");
 const menu = document.getElementById("menu");
 const menuNav = document.getElementById("menuNav");
-const menuBranding = document.getElementById("menuBranding");*/
-const navItems = document.querySelectorAll(".nav-item");
+const menuBranding = document.getElementById("menuBranding");
+const navItems = document.querySelectorAll(".nav-item");*/
 
 // Open menu
-const toggleMenu = () => {
-    menuBtn.classList.toggle("close");
-    menu.classList.toggle("show");
-    menuNav.classList.toggle("show");
-    menuBranding.classList.toggle("show");
-    navItems.forEach(item => item.classList.toggle("show"))
-  }
 
-  menuBtn.addEventListener("click", toggleMenu);
-/*const toggleMenu = () => {
+const toggleMenu = () => {
     menuBtn.classList.toggle("close");
     menu.classList.add("show");
     menuNav.classList.add("show");
@@ -23,24 +15,24 @@ const toggleMenu = () => {
     navItems.forEach(item => item.classList.add("show"))
   }
   
-  // Close menu
+  /*// Close menu
   
   const closeMenu = () => {
-    menuBtn.classList.toggle("close");
+    menuBtn.classList.remove("close");
     menu.classList.remove("show");
     menuNav.classListList.remove("show");
     menuBranding.class.remove("show");
     navItems.forEach(item => item.classList.remove("show"))
   }*/
   
-  //const outsideClick = (click) => {
+  const outsideClick = (click) => {
   
-  //}
+  }
   
   // Open or close menu by clicking or touching
   
   menuBtn.addEventListener("click", toggleMenu);
-  //menuBtn.addEventListener("touchstart",toggleMenu);
+  menuBtn.addEventListener("touchstart", toggleMenu);
   
   //menu.addEventListener("click", closeMenu);
   //menu.addEventListener("touchstart", closeMenu);

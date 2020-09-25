@@ -12,7 +12,6 @@ colors:
 #164A68
 #A3DEF7
 #2A5510
-#F7E9B9
 
 
  <link href="https://fonts.google.com/specimen/Montserrat" Weights="bold" rel="stylesheet">
