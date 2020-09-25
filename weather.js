@@ -45,7 +45,7 @@ let weatherIcon = {
 /// getting background color related to weather
 let weatherColor = {
     "Clear": "linear-gradient(to right, #fdbb2d, #ededa9, #fdbb2d)",
-    "Clouds": "linear-gradient(to right, #bdc3c7, #989898, #787777)",
+    "Clouds": "linear-gradient(to right, #bdc3c7, #989898, #bdc3c7)",
     "Drizzle": "linear-gradient(to right, #8CAEAB, #D0E1E6, #8CAEAB)",
     "Fog": "linear-gradient(to right, #DECBA4, #bdc3c7)",
     "Haze": "linear-gradient(to right, #DECBA4, #bdc3c7)",
