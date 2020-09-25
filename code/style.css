@@ -10,7 +10,6 @@
     width: 30px;
     height: 30px;
     border-radius: 5%;
-    /* overflow: hidden; */
     background: url("./search_icon.png") no-repeat 90% 50%;
 }
 
@@ -33,7 +32,6 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-right: 10px;
 }
 
 button {
