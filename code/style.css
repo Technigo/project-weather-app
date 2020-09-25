@@ -17,7 +17,7 @@ body {
 .main-container {
   padding: 12px 25px;
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
   z-index: 999;
 }
 
@@ -137,5 +137,14 @@ body {
 
   to {
     transform: translate3d(0, 0, 0);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .forecast {
+    font-size: 20px;
+  }
+  .details {
+    font-size: 18px;
   }
 }
