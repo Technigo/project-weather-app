@@ -44,24 +44,25 @@ let weatherIcon = {
 
 /// getting background color related to weather
 let weatherColor = {
-    "Clear": "linear-gradient(to right, #e65c00, #F9D423)",
-    "Clouds": "linear-gradient(to right, #bdc3c7, #465e76)",
-    "Drizzle": "linear-gradient(to right, #D0E1E6, #8CAEAB)",
+    "Clear": "linear-gradient(to right, #fdbb2d, #ededa9, #fdbb2d)",
+    "Clouds": "linear-gradient(to right, #bdc3c7, #989898, #787777)",
+    "Drizzle": "linear-gradient(to right, #8CAEAB, #D0E1E6, #8CAEAB)",
     "Fog": "linear-gradient(to right, #DECBA4, #bdc3c7)",
     "Haze": "linear-gradient(to right, #DECBA4, #bdc3c7)",
     "Mist": "linear-gradient(to right, #DECBA4, #bdc3c7)",
-    "Rain": "linear-gradient(to right, #283048, #859398)",
-    "Smoke": "linear-gradient(to right, #203A43, #0F2027)",
-    "Snow": "linear-gradient(to right, #076585, #6dd5ed)",
+    "Rain": "linear-gradient(to right, #777b88, #737376, #777b88)",
+    "Smoke": "linear-gradient(to right, #525252, #918f72, #525252)",
+    "Snow": "linear-gradient(to right, #076585, #6dd5ed, #076585)",
     "Squall": "linear-gradient(to right, #DCDBDF, #bdc3c7)",
-    "Thunderstorm": "linear-gradient(to right, #0F2027, #203A43, #2C5364)",
-    "Tornado": "linear-gradient(to right, #3E5151, #DECBA4)",
+    "Thunderstorm": "linear-gradient(to right, #2a5161, #407991, #203A43)",
+    "Tornado": "linear-gradient(to right, #3E5151, #DECBA4, #3E5151)",
 }
 
 
 /// Displaying todays weather forecast 
 const generatedHTMLForWeatherToday = (weatherMain) => {
     const weather = weatherMain.weather[0].main
+    ///const weather = "Clear"
     document.getElementById('weatherMain').innerHTML = weatherMain.weather[0].main
     document.getElementById('backgroundColor').style.background = weatherColor[weather]
     document.getElementById('weatherImage').src = weatherIcon[weather]
