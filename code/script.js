@@ -291,4 +291,4 @@ const changeImage = (weather) => {
 };
 
 // Run main functions at page loading
-fetchData('Lerum, Sweden');
+geoLocate()
