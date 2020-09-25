@@ -271,6 +271,3 @@ const showWeatherForecast = (forecastAPI) => {
 //On page load
 window.addEventListener("resize", showNavBar);
 getLocationAPI(setLocationAPI);
-
-
-
