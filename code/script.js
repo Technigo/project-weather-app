@@ -211,7 +211,7 @@ function getWeatherTemplate(todayForecast) {
       color: '#fff',
       videoSrc: './assets/Sunrise - 22204.mp4',
       poster: './assets/dancer-2793110_1920.jpg',
-      message: `Enjoy four seasons in one day in ${cityName} today`
+      message: `Enjoy different kinds of weather in ${cityName} today`
     }
   ]
   return weatherTemplate.find((item) => item.id === weatherId);
