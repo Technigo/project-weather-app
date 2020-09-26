@@ -12,9 +12,19 @@ const fetchWeather = () => {
       const tempFeelsLike = weather.main.feels_like;
       const description = weather.weather[0].main;
       const sunrise = new Date(weather.sys.sunrise * 1000);
-      const sunriseTime = sunrise.toLocaleTimeString([]);
+      const sunriseTime = sunrise.toLocaleTimeString('en-EN', {
+        timestyle: 'short',
+        hour12: 'false',
+        hour: '2-digit',
+        minute: '2-digit',
+      });
       const sunset = new Date(weather.sys.sunset * 1000);
-      const sunsetTime = sunset.toLocaleTimeString([]);
+      const sunsetTime = sunset.toLocaleTimeString('en-EN', {
+        timestyle: 'short',
+        hour12: 'false',
+        hour: '2-digit',
+        minute: '2-digit',
+      });
       const weatherContainer = document.getElementById('weather-container');
       const sunContainer = document.getElementById('sunrise-sunset-container');
       const bigWeatherIconContainer = document.getElementById(
