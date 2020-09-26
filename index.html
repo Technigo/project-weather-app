@@ -11,6 +11,46 @@
     <title>Weather</title>
   </head>
   <body>
+    <section class="cities">
+      <div class="choose-cities">
+        <h3>You can choose to check weather in this cities:</h3>
+
+        <label for="skopje"
+          >Skopje
+          <input
+            type="radio"
+            id="skopje"
+            name="city"
+            value="Skopje,Macedonia"
+            onchange="getValue(this)"
+          />
+        </label>
+
+        <label for="paris">
+          Paris
+          <input
+            type="radio"
+            id="paris"
+            name="city"
+            value="Paris,France"
+            onchange="getValue(this)"
+          />
+        </label>
+
+        <label for="stockholm"
+          >Stockholm
+          <input
+            type="radio"
+            id="stockholm"
+            name="city"
+            value="Stockholm,Sweden"
+            onchange="getValue(this)"
+          />
+        </label>
+      </div>
+    </section>
+
+    <!-- -----------------------------Today Weather-------------------------------------- -->
     <section id="todayWeather">
       <div class="title">
         <h1 class="title-header">
@@ -24,12 +64,12 @@
         <div class="today-info">
           <div class="temperature" id="temperature">
             <div class="average-temp">
-              Average Temerature: <span id="averageTemp"></span>
+              Average Temerature: <span id="averageTemp"></span> °C
             </div>
-            <div class="min-temp">min: <span id="minTemp"></span></div>
-            <div class="max-temp">max: <span id="maxTemp"></span></div>
+            <div class="min-temp">min: <span id="minTemp"></span> °C</div>
+            <div class="max-temp">max: <span id="maxTemp"></span> °C</div>
             <div class="fills-like">
-              Feels Like: <span id="feelsLike"></span>
+              Feels Like: <span id="feelsLike">°C</span>
             </div>
             <div class="wind">Wind Speed: <span id="windSpeed"></span></div>
             <div class="sunrise">Sunrise: <span id="sunrise"></span></div>
@@ -42,27 +82,37 @@
     <section class="fiveDayForcast">
       <section class="forcast">
         <div class="filtredForcastDate">Date:</div>
-        <div class="filtredForcastTemperatureMin">Temperature:</div>
+        <div>
+          Temperature: <span class="filtredForcastTemperatureMin"></span> °C
+        </div>
       </section>
 
       <section class="forcast">
         <div class="filtredForcastDate">Date:</div>
-        <div class="filtredForcastTemperatureMin">Temperature:</div>
+        <div>
+          Temperature: <span class="filtredForcastTemperatureMin"></span> °C
+        </div>
       </section>
 
       <section class="forcast">
         <div class="filtredForcastDate">Date:</div>
-        <div class="filtredForcastTemperatureMin">Temperature:</div>
+        <div>
+          Temperature: <span class="filtredForcastTemperatureMin"></span> °C
+        </div>
       </section>
 
       <section class="forcast">
         <div class="filtredForcastDate">Date:</div>
-        <div class="filtredForcastTemperatureMin">Temperature:</div>
+        <div>
+          Temperature: <span class="filtredForcastTemperatureMin"></span> °C
+        </div>
       </section>
 
       <section class="forcast">
         <div class="filtredForcastDate">Date:</div>
-        <div class="filtredForcastTemperatureMin">Temperature:</div>
+        <div>
+          Temperature: <span class="filtredForcastTemperatureMin"></span> °C
+        </div>
       </section>
     </section>
     <script src="weather.js"></script>
