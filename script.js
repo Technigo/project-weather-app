@@ -48,9 +48,15 @@ const findWeather = (resultFromServer) => {
             break;
 
         case "Rain":
-        case "drizzle":
-        case "mist":
             document.body.style.backgroundImage = 'url("./images/rain.jpg")';
+            break;
+
+        case "drizzle":
+            document.body.style.backgroundImage = 'url("./images/drizzle.jpg")';
+            break;
+
+        case "mist":
+            document.body.style.backgroundImage = 'url("./images/mist.jpg")';
             break;
 
         case "Thunderstorm":
@@ -59,6 +65,22 @@ const findWeather = (resultFromServer) => {
 
         case "Snow":
             document.body.style.backgroundImage = 'url("./images/snow.jpg")';
+            break;
+
+        case "Haze":
+            document.body.style.backgroundImage = 'url("./images/haze.jpg")';
+            break;
+
+        case "smoke":
+            document.body.style.backgroundImage = 'url("./images/smoke.jpg")';
+            break;
+
+        case "tornado":
+            document.body.style.backgroundImage = 'url("./images/tornado.jpg")';
+            break;
+
+        case "fog":
+            document.body.style.backgroundImage = 'url("./images/fog.jpg")';
             break;
 
         default:
@@ -141,7 +163,7 @@ const readForecast = (json) => {
         let day = new Date(forecast.dt * 1000).getDay();
         const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
         forecastElement.innerHTML = `
-            <div class="forecastDays">${days[day]}</div>`;
+            <div id="forecastDays" class="forecastDays">${days[day]}</div>`;
         forecastElement.classList.add(`forecast1`);
         forecastContainer.appendChild(forecastElement);
     });
@@ -158,10 +180,9 @@ const readForecast = (json) => {
     });
 
     // AT 12.00
-    const filteredForecastLunch = json.list.filter((item) =>
-        item.dt_txt.includes("12:00:00")
-    );
-    filteredForecastLunch.forEach((forecast) => {
+    const filteredForecastNoon = json.list.filter((item) =>
+        item.dt_txt.includes("12:00:00"));
+    filteredForecastNoon.forEach((forecast) => {
         let forecastElement = document.createElement("div");
 
         const date = forecast.dt_txt.split(" ")[0];
@@ -173,7 +194,7 @@ const readForecast = (json) => {
         const maxTemp = Math.max(...temps);
 
         forecastElement.innerHTML = `
-            <div class="forecastTemp">${minTemp.toFixed(
+            <div id="forecastTemp" class="forecastTemp">${minTemp.toFixed(
               0
             )}&#176c  /  ${maxTemp.toFixed(0)}&#176c</div>`;
         forecastElement.classList.add(`forecast2`);

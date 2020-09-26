@@ -67,6 +67,18 @@ body {
     vertical-align: 50%;
 }
 
+#documentIconImg {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+
+#documentIconImg:hover {
+    -webkit-transform: scale(1.3);
+    transform: scale(1.5);
+}
+
 #temperature {
     font-size: 50px;
     vertical-align: 25%;
@@ -105,6 +117,8 @@ hr {
 .forecastDays {
     padding-right: 30px;
 }
+
+
 
 /* MEDIA QUERIES */
 
