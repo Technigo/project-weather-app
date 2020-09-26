@@ -6,7 +6,8 @@
 // const stad = dropdown.value;
 let currentLocation = "stockholm";
 
-const key = "5c01b021abe8da367bcecadd67235fb3";
+// const key = "5c01b021abe8da367bcecadd67235fb3";
+const key = "c333ad1637e15b11d381a890076be47b";
 
 // *** current
 let city = document.getElementById("city");
@@ -76,6 +77,7 @@ const weatherToDay = () => {
       // *** city
       city.innerHTML = data.name;
 
+      console.log(data);
       // *** temperature
       temp.innerHTML = round(data.main.temp);
 
@@ -85,7 +87,24 @@ const weatherToDay = () => {
       // *** main weather
       mainWeather.innerHTML = data.weather[0].main;
 
-      let localTime = data.dt;
+      const localTime = data.dt; // time city
+      const timeZone = data.timezone; // local time (city) difference from UTC
+      const offset = new Date().getTimezoneOffset() * 60; // time difference (stockholm) from UTC in sec
+      console.log(offset);
+
+      // *** sunrise
+      sunrise = time(data.sys.sunrise + timeZone + offset);
+      // "short" makes time show 4 numbers e.g. "06:30"
+      sunRise.innerHTML = `${sunrise.toLocaleTimeString([], {
+        timeStyle: "short",
+      })}`;
+
+      // *** sunset
+      sunset = time(data.sys.sunset + timeZone + offset);
+      // "short" makes time show 4 numbers e.g. "18:30"
+      sunSet.innerHTML = `${sunset.toLocaleTimeString([], {
+        timeStyle: "short",
+      })}`;
 
       // day-time
       const isDay = () => {
@@ -95,20 +114,6 @@ const weatherToDay = () => {
           return false;
         }
       };
-
-      // *** sunrise
-      sunrise = time(data.sys.sunrise);
-      // "short" makes time show 4 numbers e.g. "06:30"
-      sunRise.innerHTML = `${sunrise.toLocaleTimeString([], {
-        timeStyle: "short",
-      })}`;
-
-      // *** sunset
-      sunset = time(data.sys.sunset);
-      // "short" makes time show 4 numbers e.g. "18:30"
-      sunSet.innerHTML = `${sunset.toLocaleTimeString([], {
-        timeStyle: "short",
-      })}`;
 
       // day or night colour
 
@@ -310,3 +315,35 @@ const changeCity = (city) => {
   selectCityMeny();
   toTop();
 };
+
+////////////////////////////////////////////////////////////////////////////
+
+// *** GET LOCATION
+
+/* Too slow:(
+
+// geo-location
+const getLocation = () => {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(usePosition);
+    document.getElementById(
+      "loading"
+    ).innerHTML = `Finding your area, please wait...`;
+  } else {
+    weatherToDay();
+    weatherForcast();
+  }
+};
+
+const usePosition = (position) => {
+  const latitude = position.coords.latitude;
+  const longitude = position.coords.longitude;
+  currentLocation = `&lat=${latitude}&lon=${longitude}`;
+  weatherToDay();
+  weatherForcast();
+  document.getElementById("loading").innerHTML = "";
+};
+
+getLocation();
+
+ */
