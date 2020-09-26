@@ -211,6 +211,7 @@ const setPositionForWeatherInfo = () => {
     let weatherContainerHeight = weatherContainer.clientHeight;
     let weatherContainerWidth = weatherContainer.clientWidth;
 
+    // POSITION VISIBLE & IN MIDDLE OF SCREEN
     weatherContainer.style.left = `calc(50% - ${weatherContainerWidth / 2}px)`;
     weatherContainer.style.top = `calc(50% - ${weatherContainerHeight / 1.5}px)`;
     weatherContainer.style.visibility = "visible";

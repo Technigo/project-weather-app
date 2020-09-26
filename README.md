@@ -1,13 +1,25 @@
-# Weather App
+# Weather App ☀ ☔ 🌤
 
-Replace this readme with your own information about your project.
+The aim of this week's project was to create a simple weather app with data from Open weather API. The app should show today's weather and five day forecast.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+## The problem ❔
 
-## The problem
+The challenge for this week was to work with APi's and how to understand the data that was fetched. I need to push my knowledge in javascript.
+I chose to create my own design instead of the designs provided and I used both css and javascript to make the site look the way I wanted.
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+If I had more time I would have added some animations and made the site more responsive.
+
+## Learning objectives 🧠
+
+- Using an API
+- Basic JSON
+- How to use fetch() in JavaScript
+- How to use promises in JavaScript
+
+## Tech 🖧
+
+- HTML5
+- CSS3
+- JavaScript ES6
 
 ## View it live
-
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
