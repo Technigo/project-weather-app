@@ -5,13 +5,38 @@
   }
 
 body {
-    background-color: lightgrey;
+    background-color:#fffafa;
     font-family: 'Montserrat', sans-serif;
     padding: 40px;
+    color: #F47775;
+}
+
+h1 {
+    font-size: 45px;
+}
+
+p {
+    font-size: 23px;
+}
+
+.cloud {
+    background-color: #F47775;
+}
+
+.sunny {
+    background-color:#F7E9B9;
+}
+
+.rain {
+    background-color: #F4F7F8;
+}
+
+.weather-image {
+    padding: 50px 0 10px 0;
 }
 
 #cloud-image {
-    display: none;
+    display: block;
 }
 
 #sunglasses-image {
@@ -21,6 +46,10 @@ body {
 #umbrella-image {
     display: none;
 } 
+
+#city {
+    padding: 0 0 10px 0;
+}
 
 ul {
     list-style-type: none;
@@ -33,6 +62,7 @@ li {
     padding-top: 4px;
     display: flex;
     justify-content: space-between;
+    font-size: 23px;
     }
 
 li:last-child {
