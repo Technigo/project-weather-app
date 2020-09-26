@@ -5,51 +5,67 @@
 
 .city {
     font-size: 60px;
+    font-family: helvetica;
 }
 
 .current-weather {
     background: rgb(6,6,20);
     background: linear-gradient(90deg, rgba(6,6,20,0) 0%, rgba(18,218,236,0.33657212885154064) 59%, rgba(43,142,154,1) 100%, rgba(18,28,72,1) 100%, rgba(8,27,135,1) 100%, rgba(16,28,87,1) 100%, rgba(12,28,111,1) 100%, rgba(22,29,47,0.9266894257703081) 100%, rgba(35,180,207,1) 100%);
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
 }
 
-.currentTemperature {
+.current-temperature {
     font-size: 70px;
+    margin-top: 75px;
+    font-family: helvetica;
 }
 
-.today-weather.icon {
-    width: 200px;
-    height: auto;
+.current-weather-icon {
+    width: 250px;
+    height: 100px;
 }
 
 .current-weather-wrapper {
     display: flex;
     flex-direction: column;
-    margin-bottom: 10px;
-    margin-top: 150px;
     justify-content: center;
+    text-align: center;
+    background: rgb(6,6,20);
+    background: linear-gradient(90deg, rgba(6,6,20,0) 0%, rgba(252,252,36,0.9782797987616099) 98%, rgba(209,218,106,1) 100%, rgba(80,43,19,1) 100%, rgba(154,79,19,1) 100%, rgba(43,142,154,1) 100%, rgba(18,28,72,1) 100%, rgba(8,27,135,1) 100%, rgba(16,28,87,1) 100%, rgba(12,28,111,1) 100%, rgba(22,29,47,0.9266894257703081) 100%, rgba(35,180,207,1) 100%);
+}
+
+.current-weather-wrapper h3 {
+    margin-left: 0;
+    font-family: helvetica;
 }
 
 .forecast-weather {
+    /*background: rgb(6,6,20);
+    background: linear-gradient(90deg, rgba(6,6,20,0) 0%, rgba(252,252,36,0.9782797987616099) 98%, rgba(209,218,106,1) 100%, rgba(80,43,19,1) 100%, rgba(154,79,19,1) 100%, rgba(43,142,154,1) 100%, rgba(18,28,72,1) 100%, rgba(8,27,135,1) 100%, rgba(16,28,87,1) 100%, rgba(12,28,111,1) 100%, rgba(22,29,47,0.9266894257703081) 100%, rgba(35,180,207,1) 100%);*/
     background: rgb(6,6,20);
-    background: linear-gradient(90deg, rgba(6,6,20,0) 0%, rgba(252,252,36,0.9782797987616099) 98%, rgba(209,218,106,1) 100%, rgba(80,43,19,1) 100%, rgba(154,79,19,1) 100%, rgba(43,142,154,1) 100%, rgba(18,28,72,1) 100%, rgba(8,27,135,1) 100%, rgba(16,28,87,1) 100%, rgba(12,28,111,1) 100%, rgba(22,29,47,0.9266894257703081) 100%, rgba(35,180,207,1) 100%);
+    background: linear-gradient(90deg, rgba(6,6,20,0) 0%, rgba(18,218,236,0.33657212885154064) 59%, rgba(43,142,154,1) 100%, rgba(18,28,72,1) 100%, rgba(8,27,135,1) 100%, rgba(16,28,87,1) 100%, rgba(12,28,111,1) 100%, rgba(22,29,47,0.9266894257703081) 100%, rgba(35,180,207,1) 100%);
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    font-family: helvetica;
 }
 
 .forecast-day {
     font-size: 20px;
-    margin-bottom: 1px;
     padding-top: 3px;
+    margin-top: 10px;
+    margin-bottom: 29px;
 }
 
 .forecast-feels-like-temp {
     font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 29px;
+    padding-top: 3px;
 }
 
-.weather-icon {
+.forecast-weather-icon {
     display: flex;
     flex-direction: column;
 }
@@ -57,4 +73,48 @@
 
 /*Styling for tablet*/
 
+@media (min-width: 768px) and (max-width: 899px) {
+    .current-weather-wrapper h3 {
+        font-size: 25px;
+    }
+}
+
 /*Styling for desktop*/
+@media (min-width: 900px) {
+    .header {
+    background: rgb(6,6,20);
+    background: linear-gradient(90deg, rgba(6,6,20,0) 0%, rgba(252,252,36,0.9782797987616099) 98%, rgba(209,218,106,1) 100%, rgba(80,43,19,1) 100%, rgba(154,79,19,1) 100%, rgba(43,142,154,1) 100%, rgba(18,28,72,1) 100%, rgba(8,27,135,1) 100%, rgba(16,28,87,1) 100%, rgba(12,28,111,1) 100%, rgba(22,29,47,0.9266894257703081) 100%, rgba(35,180,207,1) 100%);
+    }
+
+    .city {
+        font-size: 90px;
+    }
+
+    .current-temperature {
+        font-size: 100px;
+    }
+
+    .current-weather-wrapper {
+    background: rgb(6,6,20);
+    background: linear-gradient(90deg, rgba(6,6,20,0) 0%, rgba(18,218,236,0.33657212885154064) 59%, rgba(43,142,154,1) 100%, rgba(18,28,72,1) 100%, rgba(8,27,135,1) 100%, rgba(16,28,87,1) 100%, rgba(12,28,111,1) 100%, rgba(22,29,47,0.9266894257703081) 100%, rgba(35,180,207,1) 100%);
+    }
+
+    .current-weather-wrapper h3 {
+        font-size: 30px;
+        font-weight: 200;
+    }
+
+    .forecast-day {
+        font-size: 25px;
+    }
+
+    .forecast-feels-like-temp {
+        font-size: 25px;
+    }
+
+    .forecast-weather-icon img {
+        width: 60px;
+    }
+
+
+}
