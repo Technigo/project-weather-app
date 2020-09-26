@@ -43,7 +43,6 @@ li {
 
 .forecast-container p {
   width: 50px;
-  background-color: lime;
 }
 
 .temp {
@@ -52,7 +51,6 @@ li {
 
 .forecast-container img {
   height: 50px;
-  background-color: lime;
 }
 
 h1 {
