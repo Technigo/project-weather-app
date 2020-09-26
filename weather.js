@@ -1,6 +1,10 @@
 const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=8b97619989976c72fc1e602d8c793890';
 const apiUrl2 = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=8b97619989976c72fc1e602d8c793890';
 
+const weatherDescription = document.getElementById('weatherDescription');
+//const city = document.getElementById('city');
+//const mainTemp = document.getElementById('mainTemp');
+//ovan behövs inte, förstår inte riktigt vrf, eftersom const weather/.../ behövs...
 
 //CURRENT WEATHER:
 fetch(apiUrl).then((response) => {
@@ -10,7 +14,7 @@ fetch(apiUrl).then((response) => {
     city.innerHTML += `<h1>${json.name}<h1>`;
     //.toFixed(1) rounds the temperature to 1 decimal
     json.weather.forEach((weather) => {
-    weatherDescription.innerHTML += `<p>The weather is ${weather.description}</p>`
+    weatherDescription.innerHTML += `<h1>${weather.description}</h1>`
     });
     const sunrise = new Date(json.sys.sunrise * 1000);
     const sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: "short" });
