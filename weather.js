@@ -26,7 +26,13 @@ fetch(apiUrl).then((response) => {
             document.getElementById('weatherIcon').src = './icons/noun_Cloud_1188486.svg';
         } else if (weather == "Sunny") {
             document.getElementById('weatherIcon').src = './icons/noun_Sunglasses_2055147.svg';
-        } 
+        } else if (weather == "Thunder") {
+            document.getElementById('weatherIcon').src = './icons/noun_Cloud_1188486.svg';
+        } else if (weather == "Snow") {
+            document.getElementById('weatherIcon').src = './icons/iconfinder_Snow_3741358.svg';
+        } else {
+            document.getElementById('weatherIcon').src = './icons/iconfinder_Weather_forecast_weather_station_radar_6646328.svg';
+        }
     }
 
     const sunrise = new Date(json.sys.sunrise * 1000);
