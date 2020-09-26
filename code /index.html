@@ -9,29 +9,30 @@
 </head>
 <body>
     <h1>Today's weather:</h1>
+    
+    <section class="container" id="container"> <!--Container for weather app-->
+        <div class="todays-weather" id="todays-weather">
+            <div id="weather-info" class="weather-info">
+                <p id="weather-description" class="weather-description"></p>
+                <p id="temp" class="temp"></p>
+                <p id="feels-like" class=feels-like></p>
+                <p id="sunrise" class="sunrise"></p>
+                <p id="sunset" class="sunset"></p>
+            </div>
 
-    <section class="weatherapp" id="weatherapp">
-        <div class="weatherIcon"> 
-            <img class="icon" src="./img/umbrella.png"/> 
-        </div>
-        <div class="weatherheader"> 
-            <h2 > Don't forget your umbrella!</h2>
-        </div>
-        <div class="weatherIcon"> 
-            <img class="icon" src="./img/rain.png"/> 
-        </div>
-        <div class="break"></div> <!-- line break -->
-
-        <div class="todaysWeather'" id="todaysWeather"> 
+            <div id="weather-message" class="weather-message">
+                <img class="icon" id="icon" src="">
+                <p id="message" class="message"></p>
+            </div>
             
-        </div>
-
-        <div class="break"></div> <!-- break -->
+            <div class="forecast" id="forecast"> </div>
             
-        <div class="forecast" id="forecast"> 
-         
+            <div class="search" id="search">
+                <input id="input" type="text" />
+                <button id ="search-button" class="search-button">Show weather</button>
+            </div>
         </div>
-    </section>
+    </section> <!--End of container-->
 
     <footer class="footer"> 
         <p class="footer-text"> Week 6 project by Emma Urman | Technigo fall Bootcamp 2020</p>
