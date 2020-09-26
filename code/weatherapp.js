@@ -3,8 +3,8 @@ const apiLinkWeatherInfo = "https://api.openweathermap.org/data/2.5/weather?q=St
 
 const apiLinkFiveDayForecast = "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=1aa12a879150a3460a48993824ba1347";
 
-
-const fetchedApiInfo = () => {
+//Stockholm current weather info fetched from city weather  API
+const fetchedApiInfoCityWeather = () => {
     fetch(apiLinkWeatherInfo)
     .then((response) => {
         return response.json()
@@ -41,6 +41,12 @@ const fetchedApiInfo = () => {
         document.getElementById("sunrise").innerHTML = `Sunrise: ${sunriseTimeHours}:${sunriseTimeMinutes}`;
         document.getElementById("sunset").innerHTML = `Sunset: ${sunsetTimeHours}:${sunsetTimeMinutes}`;
     });
+};
+
+fetchedApiInfoCityWeather();
+
+//Stockholm five day forescast info fetched from  5 day forecast API
+const fiveDayForecastApiInfo = () => {
     fetch(apiLinkFiveDayForecast)
     .then((response) => {
         return response.json()
@@ -118,5 +124,4 @@ const fetchedApiInfo = () => {
     });
 };
 
-fetchedApiInfo();
-
+fiveDayForecastApiInfo();
