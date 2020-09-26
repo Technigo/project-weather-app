@@ -15,6 +15,26 @@
       margin: 0;
   }
 
+html {
+    background-color: #faecec;
+    color: #164a68;
+}
+
+html.rain {
+    background-color: #bde8fa;
+    color: #164a68;
+}
+
+html.clouds {
+    background-color: #f4f7f8;
+    color: #f47775;
+}
+
+html.sun {
+    background-color: #f7e9b9;
+    color: #2a5510;
+}
+
 body {
     margin: 0 40px;
 }

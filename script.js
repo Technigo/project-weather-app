@@ -1,11 +1,13 @@
 import {API_KEY} from './api-key.js';
 
 //--------------------------------General variables-------------------------------
-const API_URL_CURRENT_WEATHER = `http://api.openweathermap.org/data/2.5/weather?q=Göteborg,Sweden&units=metric&APPID=${API_KEY}`
-const API_URL_FORECAST_WEATHER = `http://api.openweathermap.org/data/2.5/forecast?q=Gothenburg,Sweden&units=metric&appid=${API_KEY}`;
+const API_URL_CURRENT_WEATHER = `https://api.openweathermap.org/data/2.5/weather?q=Göteborg,Sweden&units=metric&APPID=${API_KEY}`
+const API_URL_FORECAST_WEATHER = `https://api.openweathermap.org/data/2.5/forecast?q=Gothenburg,Sweden&units=metric&appid=${API_KEY}`;
 const currentWeatherInfo = document.querySelector('.weather-info-textbox');
 const cityHeader = document.querySelector('.city');
 const forecastInfo = document.querySelectorAll('.forecast-info-textbox');
+const HTML = document.querySelector("html");
+
 
 //---------------------------------Fetch API current weather---------------------
 fetch(API_URL_CURRENT_WEATHER)
@@ -16,6 +18,8 @@ fetch(API_URL_CURRENT_WEATHER)
         console.log(current);
         const currentWeatherObject = generateCurrentWeatherInfo(current);
         currentWeatherInfo.innerHTML += generateHTMLForCurrentWeatherInfo(currentWeatherObject);
+        getWeatherColorIcon(currentWeatherObject.weatherDescription, current);
+ //       console.log(isWeatherColors());
         cityHeader.innerHTML = current.name;
     });
 
@@ -42,6 +46,74 @@ const getSunOutTime = data => {
         minute:'2-digit'
     });
 };
+
+//------------------Weather objects--------------
+// const rain = {
+//     description: "Rain",
+//     icon: "./icons/rain.svg"
+// };
+
+// const sun = {
+//     description: "Clear",
+//     icon: "./icons/sun.svg"
+// };
+
+// const cloud = {
+//     description: "Clouds",
+//     icon: "./icons.cloud.svg"
+// };
+
+// const myWeather = {
+//     weather: null,
+//     icon: null
+// }
+
+// //----------------------Weathers array----------------------
+// const weathers = {
+//     'rain': rain,
+//     'sun': sun,
+//     'cloud': cloud
+// };
+
+
+
+// const checkWeathers = data => {
+//     if (data === "Rain" || data === "Drizzle") {
+//         return rain;
+//     } else if (data === "Clear") {
+//         return sun;
+//     } else if (data === "Clouds" || data === "Atmosphere" || data === "Thunderstorm") {
+//         return cloud;
+//     };
+// };
+
+//----------------------Weather Functions
+
+// const pickWeather = () => {
+//     myWeather.weather = currentWeatherObjet.weatherDescription,
+
+// }
+
+//----------Function to change colors in HTML depending on current weather--------
+const getWeatherColorIcon = (data, item) => {
+    const weatherIcon = document.querySelector("#weatherIcon");
+    const weatherTitle = document.querySelector('.weather-info-main-title');
+//    const isWeather = checkWeathers(data);
+    if (data === "Rain") {
+        HTML.classList.add("rain");
+        weatherIcon.src = "./icons/rain.svg";
+  //      weatherTitle.innerText = `Light a fire and get cosy. ${current.name} is looking grey today.`
+    } else if (data === "Sun") {
+        HTML.classList.add("sun");
+        weatherIcon.src = "./icons/sun.svg";
+    } else if (data === "Clouds") {
+        HTML.classList.add("clouds");
+        weatherIcon.src = "./icons/cloud.svg";
+        weatherTitle.innerText = `Light a fire and get cosy. ${item.name} is looking grey today.`
+    };
+    console.log(data);
+};
+
 
 //-----------Function to generate HTML for current weather info on top of page----------
 const generateCurrentWeatherInfo = current => {
