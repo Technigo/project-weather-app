@@ -17,10 +17,10 @@
         <div class="desktop-header">
             <h2>Weather</h2>
             <nav id="nav-bar">
-                <a href="#" onclick="showCurrentWeather(StockholmAPI), showWeatherForecast(stockholmDailyAPI);">Stockholm</a>
-                <a href="#" onclick="showCurrentWeather(UmeaAPI), showWeatherForecast(umeaDailyAPI);">Umeå</a>
-                <a href="#" onclick="showCurrentWeather(KlintanAPI), showWeatherForecast(klintanDailyAPI);">Robertsfors</a>
-                <a href="#" onclick="showCurrentWeather(BodenAPI), showWeatherForecast(bodenDailyAPI);">Boden</a>
+                <a href="#" onclick="showCurrentWeather(stockholmCurrentAPI), showWeatherForecast(stockholmOneCallAPI);">Stockholm</a>
+                <a href="#" onclick="showCurrentWeather(umeaCurrentAPI), showWeatherForecast(umeaOneCallAPI);">Umeå</a>
+                <a href="#" onclick="showCurrentWeather(klintanCurrentAPI), showWeatherForecast(klintanOneCallAPI);">Robertsfors</a>
+                <a href="#" onclick="showCurrentWeather(bodenCurrentAPI), showWeatherForecast(bodenOneCallAPI);">Boden</a>
                 <a href="#" onclick="getLocationAPI(setLocationAPI);" class="din-position"><img src="./assets/GeoIcon.svg"/>Din position</a>
             </nav>
         </div>
@@ -29,43 +29,43 @@
         <div class="loading"></div>
         <p>Finding your location</p>
     </div>
-    <div class="current-weather-container">
-    <section class="current-main" id="current-main">
-        <div class="weather-symbol" id="weather-symbol">
-            <div class="sun-symbol" id="sun-symbol">
-                <div class="sun-rings s1"></div>
-                <div class="sun-rings s2"></div>
-                <div class="inner-sun"></div>
+    <section class="current-weather-container">
+        <div class="current-main" id="current-main">
+            <div class="weather-symbol" id="weather-symbol">
+                <div class="sun-symbol" id="sun-symbol">
+                    <div class="sun-ring-outer"></div>
+                    <div class="sun-ring-inner"></div>
+                    <div class="inner-sun"></div>
+                </div>
+                <div class="rain-symbol" id="rain-symbol">
+                    <div class="drop d1"></div>
+                    <div class="drop d2"></div>
+                    <div class="drop d3"></div>
+                    <div class="drop d4"></div>
+                </div>
+                <div class="cloud-symbol" id="cloud-symbol">
+                    <div class="cloud c1"><div class="inner-cloud"></div></div>
+                    <div class="cloud c2"><div class="inner-cloud"></div></div>
+                </div>
+                <div class="mist-symbol" id="mist-symbol">
+                    <div class="mist-drop m1"></div>
+                    <div class="mist-drops"><div class="mist-drop m2"></div><div class="mist-drop m4"></div></div>
+                    <div class="mist-drop m3"></div>
+                    <div class="mist-drops"><div class="mist-drop m5"></div><div class="mist-drop m6"></div></div>
+                </div>
             </div>
-            <div class="rain-symbol" id="rain-symbol">
-                <div class="drop d1"></div>
-                <div class="drop d2"></div>
-                <div class="drop d3"></div>
-                <div class="drop d4"></div>
-            </div>
-            <div class="cloud-symbol" id="cloud-symbol">
-                <div class="cloud c1"><div class="inner-cloud"></div></div>
-                <div class="cloud c2"><div class="inner-cloud"></div></div>
-            </div>
-            <div class="mist-symbol" id="mist-symbol">
-                <div class="mist-drop m1"></div>
-                <div class="mist-drops"><div class="mist-drop m2"></div><div class="mist-drop m4"></div></div>
-                <div class="mist-drop m3"></div>
-                <div class="mist-drops"><div class="mist-drop m5"></div><div class="mist-drop m6"></div></div>
-            </div>
-        </div>
 
-        <section class="current-weather" id="current-weather-container"></section>
-        <div class ="min-max" id="min-max"></div>
-        <div class="sunrise" id="sun-container">
-            <img src="./assets/Sunrise.svg"/>
-            <span id="sunrise"></span>
-            <img src="./assets/Sunset.svg"/>
-            <span id="sunset"></span>
-        </div>
+            <div class="current-weather" id="current-weather-container"></div>
+            <div class ="min-max" id="min-max"></div>
+            <div class="sunrise" id="sun-container">
+                <img src="./assets/Sunrise.svg"/>
+                <span id="sunrise"></span>
+                <img src="./assets/Sunset.svg"/>
+                <span id="sunset"></span>
+            </div>
 
-    </section> 
-</div>
+        </div> 
+    </section>
     
     <section class="forecast" id="weather-forecast-container">
     </section>

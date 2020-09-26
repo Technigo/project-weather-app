@@ -1,12 +1,12 @@
 // APIs from different cities
-const StockholmAPI = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723&lang=sv';
-const UmeaAPI = 'https://api.openweathermap.org/data/2.5/weather?q=Umea,Sweden&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723&lang=sv';
-const BodenAPI = 'https://api.openweathermap.org/data/2.5/weather?q=Boden,Sweden&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723&lang=sv';
-const KlintanAPI = 'https://api.openweathermap.org/data/2.5/weather?q=Robertsfors,Sweden&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723&lang=sv';
-const stockholmDailyAPI = 'https://api.openweathermap.org/data/2.5/onecall?lat=59.3293&lon=18.0686&exclude=current,minutely,hourly,alerts&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723'
-const umeaDailyAPI = 'https://api.openweathermap.org/data/2.5/onecall?lat=63.8258&lon=20.2630&exclude=current,minutely,hourly,alerts&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723'
-const bodenDailyAPI = 'https://api.openweathermap.org/data/2.5/onecall?lat=65.8251&lon=21.6887&exclude=current,minutely,hourly,alerts&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723'
-const klintanDailyAPI = 'https://api.openweathermap.org/data/2.5/onecall?lat=64.1918&lon=20.8489&exclude=current,minutely,hourly,alerts&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723'
+const stockholmCurrentAPI = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723&lang=sv';
+const umeaCurrentAPI = 'https://api.openweathermap.org/data/2.5/weather?q=Umea,Sweden&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723&lang=sv';
+const bodenCurrentAPI = 'https://api.openweathermap.org/data/2.5/weather?q=Boden,Sweden&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723&lang=sv';
+const klintanCurrentAPI = 'https://api.openweathermap.org/data/2.5/weather?q=Robertsfors,Sweden&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723&lang=sv';
+const stockholmOneCallAPI = 'https://api.openweathermap.org/data/2.5/onecall?lat=59.3293&lon=18.0686&exclude=current,minutely,hourly,alerts&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723'
+const umeaOneCallAPI = 'https://api.openweathermap.org/data/2.5/onecall?lat=63.8258&lon=20.2630&exclude=current,minutely,hourly,alerts&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723'
+const bodenOneCallAPI = 'https://api.openweathermap.org/data/2.5/onecall?lat=65.8251&lon=21.6887&exclude=current,minutely,hourly,alerts&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723'
+const klintanOneCallAPI = 'https://api.openweathermap.org/data/2.5/onecall?lat=64.1918&lon=20.8489&exclude=current,minutely,hourly,alerts&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723'
 
 
 // Getting HTML elements
@@ -30,7 +30,6 @@ const mistAnimation = document.getElementById("mist-symbol")
 let lat =''
 let lon =''
 let geoLocationAPI = ''
-let geoLocationForcastAPI = ''
 let geoLocationDailyAPI = ''
 
 /*** FUNCTIONS ***/
@@ -43,32 +42,27 @@ const getLocationAPI = (callback) => {
          if (navigator.geolocation) {
              navigator.geolocation.getCurrentPosition(setCoordinates, handleError); 
          } else {
-            showCurrentWeather(StockholmAPI);
-            showWeatherForecast(stockholmDailyAPI);
+            showDefaultCity();
          }
     }
     const setCoordinates = (position) => {
          lat = position.coords.latitude
          lon = position.coords.longitude
          geoLocationAPI = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723&lang=sv`
-         geoLocationForcastAPI = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723`
-         geoLocationDailyAPI = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723`
+         geoLocationOneCallAPI = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&units=metric&appid=2163e0bcc8eaa7f0951284d8a650a723`
          callback();
     }
     
     const handleError = (error) => {
         switch (error.code) {
             case error.PERMISSION_DENIED:
-                showCurrentWeather(StockholmAPI);
-                showWeatherForecast(stockholmDailyAPI);
+                showDefaultCity();
                 break;
             case error.POSITION_UNAVAILABLE:
-                showCurrentWeather(StockholmAPI);
-                showWeatherForecast(stockholmDailyAPI);
+                showDefaultCity();
                 break;
             case error.TIMEOUT:
-                showCurrentWeather(StockholmAPI);
-                showWeatherForecast(stockholmDailyAPI);
+                showDefaultCity();
                 break;
         }
     }
@@ -76,9 +70,14 @@ const getLocationAPI = (callback) => {
      
 }
 
+const showDefaultCity = () => {
+    showCurrentWeather(stockholmCurrentAPI);
+    showWeatherForecast(stockholmOneCallAPI);
+}
+
 const setLocationAPI = () => {
     showCurrentWeather(geoLocationAPI);
-    showWeatherForecast(geoLocationDailyAPI);
+    showWeatherForecast(geoLocationOneCallAPI);
 }
 
 //Shows or hides the navigation bar
@@ -107,31 +106,26 @@ const showNavBar = () => {
 //Shows or hides the weather animations
 
 const showCloudAnimation = () => {
+    hideWeatherAnimation();
     cloudAnimation.style.display = "block";
-    sunAnimation.style.display = "none";
-    rainAnimation.style.display = "none";
-    mistAnimation.style.display = "none";
+    currentWeatherMain.classList.add('clouds');
 }
 
 const showRainAnimation = () => {
-    cloudAnimation.style.display = "none";
-    sunAnimation.style.display = "none";
+    hideWeatherAnimation();
     rainAnimation.style.display = "flex";
-    mistAnimation.style.display = "none";
+    currentWeatherMain.classList.add('rain');
 }
 
 const showSunAnimation = () => {
-    cloudAnimation.style.display = "none";
+    hideWeatherAnimation();
     sunAnimation.style.display = "flex";
-    rainAnimation.style.display = "none";
-    mistAnimation.style.display = "none";
-}
+    currentWeatherMain.classList.add('clear');}
 
 const showMistAnimation = () => {
-    cloudAnimation.style.display = "none";
-    sunAnimation.style.display = "none";
-    rainAnimation.style.display = "none";
+    hideWeatherAnimation();
     mistAnimation.style.display = "flex";
+    currentWeatherMain.classList.add('mist');
 }
 
 const hideWeatherAnimation = () => {
@@ -139,6 +133,7 @@ const hideWeatherAnimation = () => {
     sunAnimation.style.display = "none";
     rainAnimation.style.display = "none";
     mistAnimation.style.display = "none";
+    currentWeatherMain.classList.remove('clouds','clear','snow','rain','mist');
 }
 
 //Fetches the API and shows the data of today's weather
@@ -161,43 +156,19 @@ const showCurrentWeather = (API) => {
 
             const setWeatherColors = () => {
                 if (weatherType === "Clouds") {
-                    currentWeatherMain.classList.add('clouds');
-                    currentWeatherMain.classList.remove('clear');
-                    currentWeatherMain.classList.remove('rain');
-                    currentWeatherMain.classList.remove('snow');
-                    currentWeatherMain.classList.remove('mist');
                     showCloudAnimation();
                 } else if (weatherType === 'Rain'|| weatherType === 'Drizzle') {
-                    currentWeatherMain.classList.add('rain');
-                    currentWeatherMain.classList.remove('clouds');
-                    currentWeatherMain.classList.remove('clear');
-                    currentWeatherMain.classList.remove('snow');
-                    currentWeatherMain.classList.remove('mist');
                     showRainAnimation();
                 } else if (weatherType === 'Clear') {
-                    currentWeatherMain.classList.add('clear');
-                    currentWeatherMain.classList.remove('clouds');
-                    currentWeatherMain.classList.remove('rain');
-                    currentWeatherMain.classList.remove('snow');
-                    currentWeatherMain.classList.remove('mist');
                     showSunAnimation();
                 } else if (weatherType === 'Mist' || weatherType === 'Fog') {
-                    currentWeatherMain.classList.add('mist');
-                    currentWeatherMain.classList.remove('clear');
-                    currentWeatherMain.classList.remove('rain');
-                    currentWeatherMain.classList.remove('snow');
-                    currentWeatherMain.classList.remove('clouds');
                     showMistAnimation();
                 } else if (weatherType === 'Snow') {
+                    showCloudAnimation();
                     currentWeatherMain.classList.add('snow');
                     currentWeatherMain.classList.remove('clouds');
-                    currentWeatherMain.classList.remove('rain');
-                    currentWeatherMain.classList.remove('clear');
-                    currentWeatherMain.classList.remove('mist');
-                    showCloudAnimation();
                 } else {
                     hideWeatherAnimation();
-
                 }
             }
             setWeatherColors();
@@ -205,11 +176,10 @@ const showCurrentWeather = (API) => {
             sunriseSpan.innerHTML = `<p> ${sunriseString} </p>`
             sunsetSpan.innerHTML = `<p> ${sunsetString} </p>`
         })
-
-
 }
 
 //Fetches the API and shows the data of the 5 day forecast
+
 const showWeatherForecast = (forecastAPI) => {
         fetch(forecastAPI)
         .then ((response) => {
@@ -221,37 +191,13 @@ const showWeatherForecast = (forecastAPI) => {
             const todayMin = forecast.daily[0].temp.min.toFixed(0)
             const todayMax = forecast.daily[0].temp.max.toFixed(0)
             forecast5Days.forEach((forecastDay => {
-                const forecastTemp = forecastDay.temp.day.toFixed(0)
                 const forecastWeekday = new Date(forecastDay.dt * 1000).toLocaleDateString('se-SE', {weekday: 'short'})
                 const weatherIcon = forecastDay.weather[0].icon
                 const tempMin = forecastDay.temp.min.toFixed(0)
                 const tempMax = forecastDay.temp.max.toFixed(0)
-                let forecastImage = '';
+                let forecastImage =`https://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
                 let forecastHTML = '';
-    
-                const setForecastImage = () => {
-                    if (weatherIcon === "01d") {
-                        forecastImage = "https://openweathermap.org/img/wn/01d@2x.png"
-                    } else if (weatherIcon === "02d") {
-                        forecastImage = "https://openweathermap.org/img/wn/02d@2x.png"
-                    } else if (weatherIcon === "03d") {
-                        forecastImage = "https://openweathermap.org/img/wn/03d@2x.png"
-                    } else if (weatherIcon === "04d") {
-                        forecastImage = "https://openweathermap.org/img/wn/04d@2x.png"
-                    } else if (weatherIcon === "09d") {
-                        forecastImage = "https://openweathermap.org/img/wn/09d@2x.png"
-                    } else if (weatherIcon === "10d") {
-                        forecastImage = "https://openweathermap.org/img/wn/10d@2x.png"
-                    } else if (weatherIcon === "11d") {
-                        forecastImage = "https://openweathermap.org/img/wn/11d@2x.png"
-                    } else if (weatherIcon === "13d") {
-                        forecastImage = "https://openweathermap.org/img/wn/13d@2x.png"
-                    } else if (weatherIcon === "50d") {
-                        forecastImage = "https://openweathermap.org/img/wn/50d@2x.png"
-                    }
-                }
-                setForecastImage();
-    
+
                 forecastHTML += `<div class="forecast-day">`;
                 forecastHTML += ` <p>${forecastWeekday}</p>`;
                 forecastHTML += ` <div class="temp">`;
@@ -262,7 +208,7 @@ const showWeatherForecast = (forecastAPI) => {
                 weatherForecastContainer.innerHTML += `${forecastHTML}`;    
             }))
 
-        minMax.innerHTML = `<p>Min ${todayMin}&degC / Max ${todayMax}&degC</p>`
+            minMax.innerHTML = `<p>Min ${todayMin}&degC / Max ${todayMax}&degC</p>`
     
         })
     }

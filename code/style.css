@@ -34,21 +34,21 @@ sup {
 /* HEADER */
 
 .hamburger-menu {
-    z-index: 3;
     display: flex;
     flex-direction: column;
-    margin: 15px;
     position: absolute;
+    margin: 15px;
     width: 30px;
     height: 30px;
     cursor: pointer;
+    z-index: 3;
 }
 
 .hamburger-menu div {
+    margin: 4px;
     width: 100%;
     height: 100%;
     border: 2px solid white;
-    margin: 4px;
     border-radius: 2px;
 }
 
@@ -80,17 +80,17 @@ header nav {
 }
 
 nav a {
+    margin: 0;
+    padding: 10px;
     color: #aaa;
     text-decoration: none;
     font-weight: 600;
-    margin: 0;
-    padding: 10px;
 }
 
 nav img {
+    margin-right: 5px;
     width: 20px;
     height: 20px;
-    margin-right: 5px;
 }
 
 .din-position {
@@ -121,9 +121,9 @@ nav img {
     top: 150px;
     bottom: 0;
     background-color: transparent;
-    z-index: 2;
     color: white;
     text-align: center;
+    z-index: 2;
 }
 
 .loading {
@@ -154,12 +154,13 @@ nav img {
     height: auto;
     overflow: hidden;
 }
+
 .current-main {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 250%;
+    width: 250%; /* To make the rounded bottom have sharp edges*/
     height: auto;
     background-color: #5085da; 
     background-image: linear-gradient(#afb7c5, #f0f2f5);
@@ -168,14 +169,16 @@ nav img {
 }
 
 .weather-symbol {
-    width: 200px;
-    height: 300px;
     position: absolute;
     right: 0;
     top: 60px;
+    width: 200px;
+    height: 300px;
     overflow: hidden;
     z-index: 0;
 }
+
+/** WEATHER ANIMATIONS **/
 
 /* Clear weather animation */
 
@@ -204,20 +207,23 @@ nav img {
     animation: sun 3s ease infinite;
 }
 
-.sun-rings {
+.sun-ring-outer {
+    position: absolute;
+    width: 275px;
+    height: 275px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    z-index: 0;
+    animation: sunRings 3s ease 0.5s infinite;
+}
+
+.sun-ring-inner {
     position: absolute;
     width: 225px;
     height: 225px;
     background-color: rgba(255, 255, 255, 0.05);
     border-radius: 50%;
     z-index: 0;
-}
-.s1 {
-    width: 275px;
-    height: 275px;
-    animation: sunRings 3s ease 0.5s infinite;
-}
-.s2 {
     animation: sunRings 3s ease 0.2s infinite;
 }
 
@@ -237,7 +243,6 @@ nav img {
 }
 
 .rain-symbol {
-    display: flex;
     display: none;
     height: 200px;
     width: 200px;
@@ -315,9 +320,9 @@ nav img {
 
 .inner-cloud {
     position: absolute;
+    margin:auto;
     left:0;
     right:0;
-    margin:auto;
     bottom: 0;
     width: 50px;
     height: 50px;
@@ -327,10 +332,10 @@ nav img {
 }
 
 .cloud::before {
+    content: "";
     position: absolute;
     left:0;
     bottom: 0;
-    content: "";
     width: 35px;
     height: 35px;
     background-color: white;
@@ -340,10 +345,10 @@ nav img {
 }
 
 .cloud::after {
+    content: "";
     position: absolute;
     right:0;
     bottom: 0;
-    content: "";
     width: 35px;
     height: 35px;
     background-color: white;
@@ -351,20 +356,25 @@ nav img {
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
 }
+
  /* Mist animation */
 
 .mist {
-    
     background-image: linear-gradient(#55698a, #c0ceeb);
 }
 
+@keyframes mist {
+    0% {transform: translateX(0px); opacity: 0%;}
+    50% {opacity: 50%;}
+    100% {transform: translateX(30px); opacity: 0%;}
+}
+
 .mist-symbol {
-    display: flex;
     display: none;
     flex-direction: column;
+    justify-content: space-around;
     height: 125px;
     width: 250px;
-    justify-content: space-around;
 }
 
 .mist-drop {
@@ -380,7 +390,6 @@ nav img {
     align-items: center;
     width: 250px;
     height: 10px;
-    
 }
 
 .m1 {
@@ -420,30 +429,24 @@ nav img {
     animation-fill-mode: backwards;
 }
 
-@keyframes mist {
-    0% {transform: translateX(0px); opacity: 0%;}
-    50% {opacity: 50%;}
-    100% {transform: translateX(30px); opacity: 0%;}
-}
-
 
 .snow {
     background-image: linear-gradient(#a9bed1, #ffffff);
 }
 
-/* Current Weather (Data from API) */ 
+/** TODAY'S WEATHER (Data from API) **/ 
 
 .current-weather {
-    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     box-sizing: border-box;
     padding: 60px 20px 0 20px;
     width: 40%;
     height: auto;
     min-height: 400px;
     color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    z-index: 1;
 }
 
 .min-max {
@@ -475,7 +478,7 @@ nav img {
     margin: 5px;
 }
 
-/* FORECAST */
+/** FORECAST **/
 
 .forecast {
     padding-top: 30px;
@@ -487,14 +490,14 @@ nav img {
 }
 
 .forecast-day {
-    height: 5vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #fff;
-    border-radius: 30px;
     padding: 5px 15px; 
     margin: 2px;
+    height: 5vh;
+    background-color: #fff;
+    border-radius: 30px;
 }
 
 .forecast-day img {
@@ -583,11 +586,11 @@ nav img {
     }
 
     .forecast-day {
+        flex-direction: column;
+        justify-content: center;
         height: auto;
         width: 15%;
         margin: auto;
-        flex-direction: column;
-        justify-content: center;
         background-color: white;
         border-radius: 10px;
         box-shadow: 5px 5px 5px #eee;
@@ -619,14 +622,14 @@ nav img {
 
     header nav {
         display: flex;
-        position: relative;
         flex-direction: row;
-        background-color: transparent;
+        position: relative;
+        top: 0;
         width: 60%;
+        background-color: transparent;
         color: white;
         border-radius: 0;
         padding: 0;
-        top: 0;
     }
 
     nav a {
@@ -636,10 +639,10 @@ nav img {
     }
 
     .din-position {
+        width: auto;
         background-color: transparent;
         border: 2px solid #ddd;
         color: white;
-        width: auto;
     }
 
     .din-position:hover {
