@@ -14,7 +14,7 @@ body {
     box-shadow: 1px 1px 5px black;
     padding: 30px;
     border-radius: 10px;
-    position: absolute;
+    position: sticky;
     visibility: hidden;
     margin-top: 20px;
     min-width: 300px;
