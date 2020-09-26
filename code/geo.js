@@ -14,22 +14,22 @@ menuBtn.addEventListener("click", toggleMenu);
 // The function returns a color depending on the temperature 
 coloringFunction = (temp) => {
     if (temp > 30.0) {
-        return "#ed743b";
+        return "#DBC2CF";
 
     } else if (temp > 20.0) {
-        return "#deb045";
+        return "#C7B0BC";
 
     } else if (temp > 10.0) {
-        return "#56d6b2";
+        return "#B86691";
 
     } else if (temp > 0.0) {
-        return "#51c9b7";
+        return "#A73872";
 
     } else if (temp < 0.0) {
-        return "#72c8db";
+        return "#950952";
 
     } else {
-        return "#e84a2e";
+        return "#9F1F62";
     }
 };
 
@@ -60,9 +60,14 @@ const success = (position) => {
             // Assign the returned color to become background color
             document.body.style.backgroundColor = coloringFunction(temp);
 
+
+            // Displays time for sunrise and sunset and changing it to english timings
+            let sunrise = (new Date(todaysgeo.sys.sunrise * 1000).toLocaleTimeString("en-US", { timeStyle: "short" }));
+            let sunset = (new Date(todaysgeo.sys.sunset * 1000).toLocaleString("en-US", { timeStyle: "short" }));
+
             // Displaying the geolocation weather today
-            todaysGeo.innerHTML = `${icon}<h2>It looks like you're in beatiful ${name} today!</h2>`
-            todaysWeather.innerHTML = `The tempearute there is ${temp}&#8451; and it's gonna be ${weather}.`;
+            todaysWeather.innerHTML = `${icon}<h2>It looks like you're in beatiful ${name} today!<br> The temperature is ${temp}&#8451; and it's going to be ${weather}.</h2>`
+            geodaytime.innerHTML = `Sunrise ${sunrise}<br>Sunset ${sunset}`;
         })
 
     // Geolocation forecast weather
@@ -77,11 +82,11 @@ const success = (position) => {
             filteredGeoForecast.forEach(item => {
                 let temperature = (item.main.temp).toFixed(1);
                 // Multiply by 1000 because the data is given to us in UNIX which is in seconds, but Javascript uses milliseconds internally, this way we get the right date. */
-                let weekday = (new Date(item.dt * 1000)).toLocaleDateString("en-US", { weekday: "short" })
+                let weekday = (new Date(item.dt * 1000)).toLocaleDateString("en-US", { weekday: "long" })
                 // Adding icon code from API 
                 let icon = `<img src=https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png></img>`;
 
-                forecastWeather.innerHTML += `${weekday} ${temperature}&#8451;${icon}<br>`;
+                forecastWeather.innerHTML += `${weekday} ${temperature}&#8451;<br>${icon}<br>`;
             })
         })
 

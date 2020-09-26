@@ -1,198 +1,225 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
 
- body{
-    font-family: 'Montserrat', sans-serif;
-    background-color: #C7B0BC;
- }
+/* Main styling */
 
- header{
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+header {
   position: fixed;
   z-index: 2;
   width: 100%;
 }
 
+.main {
+  background: url(background.jpg);
+  height: fit-content;
+}
+
+h1 {
+  font-size: 20px;
+}
 
 /* Navigation menu */
-.menu-btn{
-    position: absolute;
-    z-index: 3;
-    right: 35px;
-    top: 35px;
-    cursor: pointer;
-    transition: all 0.5s ease-out;
-  }
-  
-  .btn-line{
-    margin: 1em;
-    width: 40px;
-  }
-  
-  /* The nutton transforme when clicking it */
-  .btn-line::after,
-  .btn-line::before,
-  .btn-line div {
-    background-color: white;
-    content: "";
-    display: block;
-    border-radius: 3px;
-    height: 5px;
-    margin: 7px 0;
-    transition: all 0.5s ease-out;
-  }
-  
-  /* Rotation animation */
-  .close .btn-line div {
-    transform: scale(0);
-  }
-  
-  .close .btn-line::before {
-    transform: translateY(12px) rotate(135deg);
-  }
-  
-  .close .btn-line::after {
-    transform: translateY(-12px) rotate(-135deg);
-  }
-  
-  /* Font styling and welcome message */
-  
-  
-  h2{
-    font-size: 20px;
-    font-weight: 300;
-    line-height: 1;
-  }
 
-  a {
-    color: white;
-    text-decoration: none;
+.menu-btn {
+  position: absolute;
+  z-index: 3;
+  right: 35px;
+  top: 35px;
+  cursor: pointer;
+  transition: all 0.5s ease-out;
+}
+
+.btn-line {
+  margin: 1em;
+  width: 40px;
+}
+
+/* The nutton transforme when clicking it */
+
+.btn-line::after, .btn-line::before, .btn-line div {
+  background-color: white;
+  content: "";
+  display: block;
+  border-radius: 3px;
+  height: 5px;
+  margin: 7px 0;
+  transition: all 0.5s ease-out;
+}
+
+/* Rotation animation */
+
+.close .btn-line div {
+  transform: scale(0);
+}
+
+.close .btn-line::before {
+  transform: translateY(12px) rotate(135deg);
+}
+
+.close .btn-line::after {
+  transform: translateY(-12px) rotate(-135deg);
+}
+
+/* Font styling and welcome message */
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.weathertext {
+  display: flex;
+  flex-direction: column;
+  align-items: space-around;
+  justify-content: space-around;
+}
+
+.welcomeMessage {
+  color: white;
+  padding-top: 150px;
+  margin: 10px;
+  font-size: 40px;
+}
+
+#home {
+  overflow: hidden;
+}
+
+/* Menu nav settings */
+
+.menu {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  visibility: hidden;
+}
+
+.show {
+  visibility: visible;
+}
+
+.menu-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  float: right;
+  width: 50%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/*When someone clicks the nav button this happens */
+
+.menu-nav {
+  padding: 0;
+  margin: 0;
+  background: rgba(219, 194, 207, 0.8);
+  list-style: none;
+  transform: translate3d(0, -100%, 0);
+  transition: all 0.5s ease-in;
+}
+
+/* This shows the menu onclick */
+
+.menu .show {
+  transform: translate3d(0, 0, 0);
+}
+
+/* Items inside of the nav */
+
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  font-size: 15px;
+  padding: 10px;
+  font-weight: 300;
+  color: white;
+  text-decoration: none;
+  transition: all 0.5s ease-out;
+  text-align: center;
+}
+
+.current>a {
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  text-shadow: black 0px 0 2px;
+  text-decoration: none;
+}
+
+/* Todays & forecast section */
+
+.todays, .geo {
+  padding-top: 45px;
+  padding-bottom: 40px;
+  margin: 35px;
+  border-bottom: 1px solid white;
+  display: grid;
+  text-align: center;
+}
+
+.forecast, .geoforecast, .forecastGeo {
+  padding-top: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.daytime {
+  font-size: 15px;
+}
+
+/* Tablet device */
+
+@media (min-width: 668px) {
+  .welcomeMessage {
+    padding-top: 200px;
+    margin-left: 150px;
+    font-size: 100px;
   }
-  
-  .welcomeMessage{
-    color: white;
-    padding-top: 150px;
-    margin: 15px;
+  .todays, .geo {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 35px;
+    border-bottom: 1px white 1.5;
   }
-  
-  #home {
-    overflow: hidden;
-  }
-  
-  /* -- Remove entire section -- */
-  
-  /*#background{
-    background: url(/Images/background.jpg);
-    }
-  
-  #background::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background: radial-gradient(circle, rgba(255,255,255,0) 0%, rgba(199,176,188,100) 90%);
-  }
-  
-  /* Menu nav settings */
-  
-  .menu {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    visibility: hidden;
-  }
-  
-  .show {
-    visibility: visible;
-  }
-  
-  .menu-nav{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    float: right;
-    width: 50%;
-    height: 100vh;
-    overflow: hidden;
-  }
-  
-  /*When someone clicks the nav button this happens */
-  .menu-nav{
-    padding: 0;
-    margin: 0;
-    background: rgba(219, 194,207, 0.8);
-    list-style: none;
-    transform: translate3d(0, -100%, 0);
-    transition: all 0.5s ease-in;
-  }
-  
-  /* This shows the menu onclick */
-  .menu .show{
-    transform: translate3d(0, 0, 0);
-  }
-  
-  /* RIGHT MENU 
-  .menu-branding {
-    transform: translate3d(100%, 0, 0);
-    transition: all 0.5s ease-out;
-  }
-  
-  .menu-branding .show{
-    transform: translate3d(0, 0, 0);
-  }*/
-  
-  /* Items inside of the nav */
-  
-  .nav-link {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    font-size: 15px;
-    padding: 10px;
-    font-weight: 300;
-    color: white;
-    text-decoration: none;
-    transition: all 0.5s ease-out;
+  .todaysWeather, .todaysLysekil {
+    font-size: 25px;
     text-align: center;
   }
-  
-  .current > a {
-    text-decoration: none;
+  .geodaytime, .daytime, .forecastWeather, .forecastLysekil {
+    font-size: 25px;
   }
-  
-  .nav-link:hover{
-    text-shadow: black 0px 0 2px;
-    text-decoration: none;
-  }
-
-  /* Entre todays & forecast section */
-  .todays{
-    padding-top: 50px;
-    padding-bottom: 25px;
-    margin: 20px;
-    border-bottom: 1px solid gray;
-  }
-
-  .forecast{
-    margin: 20px
-  }
-
-  .daytime{
-    font-size: 15px;
-  }
-
-  .forecastLysekil{
-  border-bottom: 1px grey;
-
-  }
-
-  .geo{
-    padding-top: 50px;
-    padding-bottom: 25px;
-    margin: 20px;
-  }
-
-
-
-
+  /* Desktop device */
+  @media (min-width: 1025px) {
+    .welcomeMessage {
+      padding-top: 200px;
+      margin-left: 200px;
+      font-size: 130px;
+    }
+    .todays, .geo {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      margin: 35px;
+      border-bottom: 1px white 1.5;
+    }
+    .todaysWeather, .todaysLysekil {
+      font-size: 30px;
+      text-align: center;
+    }
+    .geodaytime, .daytime, .forecastWeather, .forecastLysekil {
+      font-size: 25px;
+    }

@@ -7,9 +7,9 @@ const toggleMenu = () => {
     menuNav.classList.toggle("show");
     menuBranding.classList.toggle("show");
     navItems.forEach(item => item.classList.toggle("show"))
-  }
+}
 
-  menuBtn.addEventListener("click", toggleMenu);
+menuBtn.addEventListener("click", toggleMenu);
 
 //Todays weather api
 const apiLysekilToday = "https://api.openweathermap.org/data/2.5/weather?q=Lysekil,Sweden&units=metric&APPID=de78a234a90e490fde95f979d2491105";
@@ -22,22 +22,22 @@ console.log(apiLysekilForecast);
 // The function returns a color depending on the temperature 
 coloringFunction = (temp) => {
     if (temp > 30.0) {
-        return "#ed743b";
+        return "#DBC2CF";
 
     } else if (temp > 20.0) {
-        return "#deb045";
+        return "#C7B0BC";
 
     } else if (temp > 10.0) {
-        return "#FFFB7D";
+        return "#B86691";
 
     } else if (temp > 0.0) {
-        return "#51c9b7";
+        return "#A73872";
 
     } else if (temp < 0.0) {
-        return "#72c8db";
+        return "#950952";
 
     } else {
-        return "#e84a2e";
+        return "#9F1F62";
     }
 };
 
@@ -100,7 +100,7 @@ fetch(apiLysekilForecast).then((response) => {
         filteredForecast.forEach(item => {
             let temperature = (item.main.temp).toFixed(1);
             //* Multiply by 1000 because the data is given to us in UNIX which is in seconds, but Javascript uses milliseconds internally, this way we get the right date. */
-            let weekday = (new Date(item.dt * 1000)).toLocaleDateString("en-US", { weekday: "short" })
+            let weekday = (new Date(item.dt * 1000)).toLocaleDateString("en-US", { weekday: "long" })
             // Adding icon code from API 
             let icon = `<img src=https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png></img>`;
 
