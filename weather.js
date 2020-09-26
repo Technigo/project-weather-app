@@ -2,11 +2,12 @@ const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Swed
 const apiUrl2 = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=8b97619989976c72fc1e602d8c793890';
 
 
-//Current weather:
+//CURRENT WEATHER
 fetch(apiUrl).then((response) => {
     return response.json();
 }).then((json) => {
-    container.innerHTML += `<h1>In ${json.name} temperature is ${json.main.temp.toFixed(1)}&#730<sup>c</sup> right now.</h1>`;
+    mainTemp.innerHTML += `<h1>${json.main.temp.toFixed(1)}&#730<sup>c</sup></h1>`;
+    city.innerHTML += `<h1>${json.name}<h1>`;
     //.toFixed(1) rounds the temperature to 1 decimal
     
     json.weather.forEach((weather) => {

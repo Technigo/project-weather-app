@@ -1,0 +1,12 @@
+body {
+    font-family: 'Montserrat';
+    /*font-size: 22px;*/
+    background-color: rgb(12, 192, 247);
+    animation-name: example;
+    animation-duration: 4s;
+}
+
+@keyframes example {
+  from {background-color: rgb(12, 192, 247)}
+  to {background-color: rgb(247, 12, 208);}
+}
