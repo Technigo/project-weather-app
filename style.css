@@ -9,6 +9,7 @@
   h5,
   p {
       font-size: 21px;
+      margin: 0
   }
 
   p {
@@ -113,29 +114,32 @@ body {
 }
 
 @media screen and (min-width: 768px) {
-  /*  .forecast-info-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-template-rows: 100px;
-    }
-    */
+
 
     .forecast-grid-headers,
     .forecast-info-textbox {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        /*display: flex;
-        justify-content: space-between;
-        align-items: center; */
+        grid-template-columns: 1fr[col-start] 1fr[col-] 1fr 1fr;
+        align-items: center;
+        justify-items: center; 
         margin: 10px 0;
         padding-bottom: 10px;
     }
 
+    .forecast-info-day-title,
+    .forecast-info-day {
+        justify-self: start;
+    }
 
+    .forecast-info-feels-like-title,
+    .forecast-info-feels-like {
+        display: inline;
+        justify-self: self-end;
+    }
 
 
     .forecast-info-icon,
     .forecast-info-feels-like {
-        display: block;
+        display: inline;
     }
 }
