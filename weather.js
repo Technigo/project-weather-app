@@ -49,9 +49,12 @@ const generateRoundedTemperature = (temperature) => {
 };
 
 const background = (averageTemp) => {
-  if (averageTemp >= 10) {
+  if (averageTemp >= 11) {
     document.getElementById("todayWeather").style.backgroundImage =
       "linear-gradient(#f5d20d, #615305) ";
+  } else {
+    document.getElementById("todayWeather").style.backgroundImage =
+      "linear-gradient(#9be3ff, #0c2833)";
   }
 };
 
