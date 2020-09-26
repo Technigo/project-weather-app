@@ -1,7 +1,7 @@
 //DECLARATIONS
 
-const apiUrlToday = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=2faa65e280281f5043a14b9b24e7aea0';
-const apiUrlWeekly = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=2faa65e280281f5043a14b9b24e7aea0';
+const apiUrlToday = `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=2faa65e280281f5043a14b9b24e7aea0`;
+const apiUrlWeekly = `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=2faa65e280281f5043a14b9b24e7aea0`;
 const temperaturHeader = document.getElementById('headerCelcius');
 const locationHeader = document.getElementById('headerLocation');
 const weatherHeader = document.getElementById('headerWeather');
@@ -43,8 +43,6 @@ fetch(apiUrlWeekly)
   .then((json) => {
     //filter only data from 12.00
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
-    console.log(filteredForecast);
-
     //add html content for weekly forecast
     filteredForecast.forEach((day) => {
       weeklyWeather.innerHTML += generateHTMLForDay(day);
@@ -78,6 +76,7 @@ const getNumberFormat = (x) => {
 const getCountryName = (countryCode) => {
   const isoCountries = {
     'SE' : 'Sweden',
+    'EE' : 'Estonia',
   }
   if (isoCountries.hasOwnProperty(countryCode)) {
       return isoCountries[countryCode];
@@ -129,13 +128,8 @@ const weatherIcon = (condition) => {
   }
 } 
 
-//function for hamburger menu
-const menuToggle = () => {
-  const x = document.getElementById("myLinks");
-  if (x.style.display === "block") {
-    x.style.display = "none";
-  } else {
-    x.style.display = "block";
-  }
-}
-
+//function to pick different location (did not have time to complete)
+ const weatherLocation = () => {
+   const selectLocation = document.getElementById('selectLocation').value;
+   return selectLocation;
+ }

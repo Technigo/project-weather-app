@@ -134,34 +134,20 @@ header {
     overflow: hidden;
     background-color: transparent;
     position: relative;
-}
-  
-/* Hide the links inside the navigation menu */
-.topnav #myLinks {
-    display: none;
-    margin-bottom: 200px;
-    background-color:rgba(255,255,255, 0.9);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
   
 /* style navigation menu links */
 .topnav a {
-    color: #010101;
     padding: 14px 16px; 
     text-decoration: none;
     display: block;
     font-size: 16px;
 }
   
-/* hamburger menu icon */
-.topnav a.icon {
-    background: transparent;
-    display: block;
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-  
-.topnav a:hover {
+.topnav:hover {
     background-color: rgba(255,255,255, 0.9);
     color: #010101;
 }
@@ -169,10 +155,26 @@ header {
 /* style the active link (or home/logo) */
 .active {
     background-color: transparent;
-    color: white;
+    color: #010101;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 18px;
+}
+
+/* style select value */
+select {
+    background-color: transparent;
+    color: #010101;
+    font-family: 'Roboto Condensed', Sans-Serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+select:hover {
+    color: #010101;
 }
 
 /* For tablet only */
@@ -214,6 +216,10 @@ header {
         right: 0;
         z-index: 2;
     }
+
+    select {
+        color: #ffffff;
+    }
 }
 
 /* For computer only */
@@ -247,6 +253,10 @@ header {
         left: 0;
         right: 0;
         z-index: 2;
+    }
+
+    select {
+        color: #ffffff;
     }
 }
 
@@ -302,6 +312,7 @@ header {
         margin: auto;
         margin-top: 40px;
         border: 20px solid #efefef;
+        padding: 200px 0;
     }
 
     .header-text-location {
@@ -375,7 +386,6 @@ header {
     .forecast-icon {
         width: 50px;
     }
-
 }
 
 /** FOOTER SECTION **/

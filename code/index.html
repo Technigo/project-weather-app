@@ -15,14 +15,13 @@
     <header>
     <div class="topnav">
         <a href="#home" class="active">Luna weather</a>
-        <div id="myLinks">
-            <a href="#news">WEATHER</a>
-            <a href="#contact">CONTACT</a>
-            <a href="#about">ABOUT LUNA</a>
-        </div>
-        <a href="javascript:void(0);" class="icon" onclick="menuToggle()">
-            <i class="fa fa-bars"></i>
-        </a>
+        <select name="city" id="selectLocation" onchange="weatherLocation()">
+            <option value="Stockholm,Sweden">Stockholm, Sweden</option>
+            <option value="Ischia,Italy">Ischia, Italy</option>
+            <option value="Põlva,Estonia">Põlva, Estonia</option>
+            <option value="Barcelona,Spain">Barcelona, Spain</option>
+            <option value="5391811">San Diego, United States</option>
+        </select>
     </div>
 
     <h1 class="header-title">
@@ -58,7 +57,5 @@
         </div>
     </footer>  
 </body>
-
-<script src="./weather.js"></script >
-
+<script src="./weather.js"></script>
 </html>
