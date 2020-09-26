@@ -13,7 +13,7 @@ body {
   align-items: center;
 }
 
-.weather-wrap {
+.weather-wrapper {
   margin: 0px 10px;
 }
 
@@ -100,11 +100,11 @@ img {
 
 /****MEDIA FOR TABLET *****/
 @media (min-width: 768px) {
-  body {
+  p {
     font-size: 18px;
   }
 
-  .weather-wrap {
+  .weather-wrapper {
     width: 400px;
   }
 
@@ -128,7 +128,7 @@ img {
 
 /****MEDIA FOR DESKTOP *****/
 @media (min-width: 1024px) {
-  .weather-wrap {
+  .weather-wrapper {
     width: 600px;
   }
 
