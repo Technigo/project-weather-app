@@ -9,38 +9,31 @@ html {
 body {
   font-family: 'Montserrat', sans-serif;
   margin: 40px;
-  color: #F47775;
+  color: #A3DEF7;
+  background-color: #35354F;
 }
 
 .topInfo {
  font-weight: 400;
 }
 
-.weatherIcon {
-  padding-top: 60px;
-}
-
-.weatherCitat {
+#location {
   font-size: 36px;
-  font-weight: 700;
 }
 
-#weekfive {
+.todayicon {
+  width: 55%;
+}
+
+.weekfive {
   display: flex;
+  justify-content: space-around;
   flex-direction: row;
-  width: 100%;
-  border-bottom: 1px dotted #F47775;
 }
 
-#weekday{
-  display: flex;
-  flex-direction: column;
-  width: 50%;
+.icons {
+  width: 10%;
 }
 
 
-#weektemp {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-}
+

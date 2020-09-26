@@ -20,7 +20,18 @@ weatherLocation.innerHTML = json.name;
 weatherDescription.innerHTML = json.weather[0].description
 weatherTemperature.innerHTML = json.main.temp.toFixed(0.5)
 
-console.log(json)
+const TodayIcon = () => {
+  const conditions = weatherDescription;
+  if (conditions === 'Clear') {
+    return "./sun.png";
+  } else if (conditions === 'Rain') {
+    return "./rain.png";
+  } else {
+    return "./cloud.png";
+  }
+};
+
+document.getElementById('location').innerHTML += `<img class="todayicon" src=${TodayIcon()}>`;
 
 
 //weatherSunrise.innerHTML = new Date(json.sys.sunrise * 1000).toLocaleTimeString([]);
@@ -73,9 +84,22 @@ const apiWeek = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sw
     const dayTemp = day.main.temp;
     const weekTemp = dayTemp.toFixed(0.1);
 
-    document.getElementById('weekday').innerHTML += `<p>${dayName}</p>`
-    document.getElementById('weektemp').innerHTML += `<p>${weekTemp}</p>`
+    document.getElementById('weekfive').innerHTML += `<p>${dayName} ${weekTemp}°</p>`
 
+     //Add Icons
+     const weatherIcons = () => {
+      const conditions = dayTemp;
+      if (conditions === 'Clear') {
+        return "./sun.png";
+      } else if (conditions === 'Rain') {
+        return "./rain.png";
+      } else {
+        return "./cloud.png";
+      }
+    };
+  
+    document.getElementById('weekfive').innerHTML += `<img class="icons" src=${weatherIcons()}>`;
+  
   });
   });
 
