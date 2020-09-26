@@ -8,11 +8,46 @@ body{
   color: #F47775;
 }
 
+/* Iphone X */
+
 h2, #location {
   font-weight: bold;
   font-size: 32px;
 }
 
-p {
+p, span {
 font-size: 18px;
+margin: 0px;
+}
+
+.first-and-middle {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+}
+
+.first-section {
+  padding-top: 40px;
+}
+
+#icon {
+  padding-bottom: 10px;
+}
+
+.middle-section {
+  padding-top: 40px;
+  width: 95%;
+}
+
+.forecast-container {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.day-1, .day-2, .day-3, .day-4, .day-5 {
+  border-bottom: 2px;
+  border-style: dashed; 
 }

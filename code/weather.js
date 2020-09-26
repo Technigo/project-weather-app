@@ -3,25 +3,27 @@ const apiWeatherToday = 'http://api.openweathermap.org/data/2.5/weather?q=Stockh
 const apiForecast = "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=e33f1cc192401277e601a6aed3a82800";
 
 //Catching id's from html
-const weatherLocation = document.getElementById('location');
-const weatherDescription = document.getElementById('description');
-const weatherTemperature = document.getElementById('temperature');
-const weatherIcon = document.getElementById('icon');
+const weatherDescription = document.getElementById('description')
+const weatherTemperature = document.getElementById('temperature')
+const weatherIcon = document.getElementById('icon')
+const weatherLocation = document.getElementById('location')
+const weatherSunrise = document.getElementById('sunrise')
+const weatherSunset = document.getElementById('sunset')
+const weatherForecast = document.getElementById('')
 
 // Fetch function
 const fetchWeather = () => {
-    fetch(apiWeatherToday)
+  fetch(apiWeatherToday)
     .then((response) => {
-    return response.json();
-    })
-    .then((json) => {
-    weatherLocation.innerHTML = json.name;
-    weatherDescription.innerHTML = json.weather[0].description
-    weatherTemperature.innerHTML = Math.round(json.main.temp)
+      return response.json()
+   })
+  .then((weather) => {
+    weatherLocation.innerHTML = weather.name;
+    weatherDescription.innerHTML = weather.weather[0].description
+    weatherTemperature.innerHTML = Math.round(weather.main.temp)
 
-// Sunrise
     const weatherSunrise = () => {
-        const dateSunrise = new Date(json.sys.sunrise * 1000);
+        const dateSunrise = new Date(weather.sys.sunrise * 1000);
         const timeSunrise = dateSunrise.toLocaleTimeString([], {
             hour: '2-digit',
             minute: '2-digit',
@@ -34,7 +36,7 @@ const fetchWeather = () => {
 // Sunset
     const weatherSunset = () => {
       document.getElementById('sunset').innerHTML += `<p>Sunset</p>`;
-        const dateSunset = new Date(json.sys.sunset * 1000);
+        const dateSunset = new Date(weather.sys.sunset * 1000);
         const timeSunset = dateSunset.toLocaleTimeString([], {
             hour: '2-digit',
             minute: '2-digit',
@@ -45,7 +47,7 @@ const fetchWeather = () => {
 
     weatherSunset();
  });
-};
+}
 
 fetchWeather();
 
