@@ -2,6 +2,7 @@
 
 import { API_KEY } from './api.js';
 const forecastContainer = document.getElementsByClassName('forecast-item');
+const hourlyForecastContainer = document.getElementsByClassName('hour-item');
 const input = document.getElementById('input');
 let latitude = 59.334591; // fallback coordinates for Stockholm
 let longitude = 18.06324;
@@ -111,7 +112,7 @@ const fetchWeatherForecast = (url) => {
   fetch(url)
     .then((response) => response.json())
     .then((forecastArray) => {
-      // filter the array again to only get the temperatures for this day
+      // filter the array to only get the temperatures for this day
       const dateNow = new Date().getDate();
       const filteredTodayArray = forecastArray.list.filter((item) =>
         item.dt_txt.includes(dateNow)
@@ -127,15 +128,44 @@ const fetchWeatherForecast = (url) => {
       const maxTemp = Math.max(...temperatures);
       const minTemp = Math.min(...temperatures);
 
-      // filter the array to only contain the forecast for the five next days from this hour
+      // add to html
+      document.getElementById('min-temp').innerHTML = `${minTemp}\u00B0`;
+      document.getElementById('max-temp').innerHTML = `${maxTemp}\u00B0`;
+
+      // create a new array using the slice() method to get the first 7 elements
+      const hourlyWeathers = forecastArray.list.slice(0, 7);
+      console.log(hourlyWeathers);
+
+      // map to create new and filtered array of hourlyWeathers
+      const hourly = hourlyWeathers.map((hour) => {
+        const hourlyHour = setTimestamp(hour.dt).hourString;
+        const hourlyIconSrc = `https://openweathermap.org/img/wn/${hour.weather[0].icon}@2x.png`;
+        const hourlyTemperature = numberNoDecimal(hour.main.temp);
+        console.log(hourlyHour, hourlyIconSrc, hourlyTemperature);
+        return { hourlyHour, hourlyIconSrc, hourlyTemperature };
+      });
+      console.log(hourly.dt);
+      // forEach to add to html
+      hourly.forEach((item, index) => {
+        if (index === 0) {
+          hourlyForecastContainer[index].querySelector('.hour-hour').innerText =
+            'Now';
+        } else {
+          hourlyForecastContainer[index].querySelector('.hour-hour').innerText =
+            item.hourlyHour;
+        }
+        hourlyForecastContainer[index].querySelector('.hour-icon').src =
+          item.hourlyIconSrc;
+        hourlyForecastContainer[index].querySelector(
+          '.hour-temp'
+        ).innerText = `${item.hourlyTemperature}\u00B0`;
+      });
+
+      // filter the array again to only contain the forecast for the five next days from this hour
       const hourNow = new Date().getHours();
       const filteredArray = forecastArray.list.filter((item) =>
         item.dt_txt.includes(calculateHour(hourNow))
       );
-
-      // add to html
-      document.getElementById('min-temp').innerHTML = `${minTemp}\u00B0`;
-      document.getElementById('max-temp').innerHTML = `${maxTemp}\u00B0`;
 
       // map to create new and filtered array of weather forecast
       const forecasts = filteredArray.map((forecast) => {
@@ -147,7 +177,7 @@ const fetchWeatherForecast = (url) => {
         return { day, date, iconSrc, temperature, wind };
       });
 
-      // forEach to add to HTML
+      // forEach to add to html
       forecasts.forEach((item, index) => {
         forecastContainer[index].querySelector('.p-day').innerText = item.day;
         forecastContainer[index].querySelector('.p-date').innerText = item.date;
@@ -195,6 +225,9 @@ const calculateHour = (currentHour) => {
  an object */
 const setTimestamp = (date) => {
   const timestamp = new Date(date * 1000);
+  const hourString = timestamp.toLocaleTimeString([], {
+    hour: '2-digit',
+  });
   const timeString = timestamp.toLocaleTimeString([], {
     hour: '2-digit',
     minute: '2-digit',
@@ -206,7 +239,7 @@ const setTimestamp = (date) => {
     month: 'short',
     day: 'numeric',
   });
-  return { timeString, dayString, dateString };
+  return { hourString, timeString, dayString, dateString };
 };
 
 const setBackground = (time, description, sunrise, sunset) => {

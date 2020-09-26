@@ -10,7 +10,6 @@ body {
   margin: 0 auto;
   font-family: 'Roboto', sans-serif;
   color: #fff;
-  /* color: rgb(21, 21, 21); */
 }
 
 /*** WRAPPER AND OVERLAY ***/
@@ -39,7 +38,8 @@ body {
     rgba(0, 0, 0, 0.4),
     rgba(255, 255, 255, 1)
   );
-  /* background-color: rgba(0, 0, 0, 0.2); */
+  background-color: rgba(0, 0, 0, 0.4);
+  overflow: auto;
   z-index: 2;
 }
 
@@ -72,15 +72,8 @@ body {
   width: 100%;
   padding: 6px 15px 6px 35px;
   color: rgba(21, 21, 21, 0.7);
-  /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset; */
-
   outline: none;
-  /* padding: 15px; */
-  /* box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.29); */
   border-radius: 20px;
-}
-
-.search-box input[type='text']:focus .search-button {
 }
 
 .search-button {
@@ -90,17 +83,10 @@ body {
   top: 50%;
   transform: translateY(-50%);
   color: #fff;
-  /* color: rgba(21, 21, 21, 0.7); */
-  /* color: rgba(255, 255, 255, 0.7); */
   left: 25px;
   font-size: 20px;
   font-weight: lighter;
   cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.search-button:hover {
-  font-size: 25px;
 }
 
 /*** MAIN ***/
@@ -182,8 +168,7 @@ h3 {
 
 .main-additional {
   display: none;
-  justify-content: space-evenly;
-  width: 30%;
+  width: 49%;
 }
 
 .additional-item {
@@ -200,13 +185,36 @@ h3 {
   color: rgba(21, 21, 21, 0.7);
 }
 
+/*** FORECAST HOUR ITEMS ***/
+
+.forecast-hour-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.forecast-hour-item + .forecast-hour-item {
+  margin-left: 2%;
+}
+
+.hour {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 /*** FORECAST ITEMS ***/
 
-.forecast-item {
+.forecast-item,
+.forecast-hour-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
+}
+
+.forecast-hour-item {
+  justify-content: space-evenly;
 }
 
 .item {
@@ -255,18 +263,16 @@ h3 {
     height: 35vh;
   }
 
-  .main-weather {
-    width: 30%;
-    align-items: flex-end;
-  }
-
-  .main-sun {
-    width: 30%;
-    align-self: flex-end;
+  .main-information {
+    display: flex;
+    flex-direction: column;
+    width: 49%;
   }
 
   .main-additional {
     display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 
   .forecast-container {
@@ -276,10 +282,14 @@ h3 {
     height: 100%;
   }
 
-  .forecast-item {
+  .forecast-item,
+  .forecast-hour-item {
     width: 75%;
-    justify-content: center;
     margin: 25px;
+  }
+
+  .forecast-hour-item {
+    justify-content: space-between;
   }
 }
 
@@ -302,7 +312,8 @@ h3 {
     font-size: 35px;
   }
 
-  .forecast-item {
+  .forecast-item,
+  .forecast-hour-item {
     width: 50%;
   }
 }

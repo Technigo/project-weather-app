@@ -14,10 +14,6 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <!-- <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/release/v5.6.3/css/all.css"
-    /> -->
   </head>
   <body>
     <section id="wrapper" class="wrapper">
@@ -31,22 +27,25 @@
           </button>
         </section>
         <main class="main-container">
-          <div class="main-weather">
-            <h1 class="main-temperature" id="main-temperature"></h1>
-            <h2 class="main-city" id="main-city"></h2>
-            <h3 class="main-description" id="main-description"></h3>
-          </div>
-          <div class="main-sun">
-            <div class="half-circle-container">
-              <div class="half-circle"></div>
+          <section class="main-information">
+            <div class="main-weather">
+              <h1 class="main-temperature" id="main-temperature"></h1>
+              <h2 class="main-city" id="main-city"></h2>
+              <h3 class="main-description" id="main-description"></h3>
             </div>
-            <div class="sunrise-container">
-              <p class="p-sun" id="sunrise"></p>
+            <div class="main-sun">
+              <div class="half-circle-container">
+                <div class="half-circle"></div>
+              </div>
+              <div class="sunrise-container">
+                <p class="p-sun" id="sunrise"></p>
+              </div>
+              <div class="sunset-container">
+                <p class="p-sun" id="sunset"></p>
+              </div>
             </div>
-            <div class="sunset-container">
-              <p class="p-sun" id="sunset"></p>
-            </div>
-          </div>
+          </section>
+
           <!-- ADDITIONAL SECTION FOR TABLET AND DESKTOP -->
           <section class="main-additional">
             <div class="left-column">
@@ -80,6 +79,57 @@
 
         <!-- FORECAST SECTION -->
         <section class="forecast-container">
+          <section class="forecast-hour-item">
+            <div class="hour-item">
+              <div class="hour">
+                <p class="hour-hour"></p>
+                <img class="hour-icon icon" src="" alt="weather icon" />
+                <p class="hour-temp"></p>
+              </div>
+            </div>
+            <div class="hour-item">
+              <div class="hour">
+                <p class="hour-hour"></p>
+                <img class="hour-icon icon" src="" alt="weather icon" />
+                <p class="hour-temp"></p>
+              </div>
+            </div>
+            <div class="hour-item">
+              <div class="hour">
+                <p class="hour-hour"></p>
+                <img class="hour-icon icon" src="" alt="weather icon" />
+                <p class="hour-temp"></p>
+              </div>
+            </div>
+            <div class="hour-item">
+              <div class="hour">
+                <p class="hour-hour"></p>
+                <img class="hour-icon icon" src="" alt="weather icon" />
+                <p class="hour-temp"></p>
+              </div>
+            </div>
+            <div class="hour-item">
+              <div class="hour">
+                <p class="hour-hour"></p>
+                <img class="hour-icon icon" src="" alt="weather icon" />
+                <p class="hour-temp"></p>
+              </div>
+            </div>
+            <div class="hour-item">
+              <div class="hour">
+                <p class="hour-hour"></p>
+                <img class="hour-icon icon" src="" alt="weather icon" />
+                <p class="hour-temp"></p>
+              </div>
+            </div>
+            <div class="hour-item">
+              <div class="hour">
+                <p class="hour-hour"></p>
+                <img class="hour-icon icon" src="" alt="weather icon" />
+                <p class="hour-temp"></p>
+              </div>
+            </div>
+          </section>
           <article class="forecast-item">
             <div class="item forecast-date">
               <p class="p-day"></p>
