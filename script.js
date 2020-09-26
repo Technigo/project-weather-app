@@ -1,7 +1,7 @@
 import {API_KEY} from './api-key.js';
 
 //--------------------------------General variables-------------------------------
-const API_URL_CURRENT_WEATHER = `https://api.openweathermap.org/data/2.5/weather?q=Göteborg,Sweden&units=metric&APPID=${API_KEY}`
+const API_URL_CURRENT_WEATHER = `https://api.openweathermap.org/data/2.5/weather?q=Gothenburg,Sweden&units=metric&APPID=${API_KEY}`
 const API_URL_FORECAST_WEATHER = `https://api.openweathermap.org/data/2.5/forecast?q=Gothenburg,Sweden&units=metric&appid=${API_KEY}`;
 const currentWeatherInfo = document.querySelector('.weather-info-textbox');
 const cityHeader = document.querySelector('.city');
@@ -18,7 +18,7 @@ fetch(API_URL_CURRENT_WEATHER)
         console.log(current);
         const currentWeatherObject = generateCurrentWeatherInfo(current);
         currentWeatherInfo.innerHTML += generateHTMLForCurrentWeatherInfo(currentWeatherObject);
-        getWeatherColorIcon(currentWeatherObject.weatherDescription, current);
+        getWeatherColorIconTitle(currentWeatherObject.weatherDescription, current);
  //       console.log(isWeatherColors());
         cityHeader.innerHTML = current.name;
     });
@@ -95,17 +95,18 @@ const getSunOutTime = data => {
 // }
 
 //----------Function to change colors in HTML depending on current weather--------
-const getWeatherColorIcon = (data, item) => {
+const getWeatherColorIconTitle = (data, item) => {
     const weatherIcon = document.querySelector("#weatherIcon");
     const weatherTitle = document.querySelector('.weather-info-main-title');
 //    const isWeather = checkWeathers(data);
-    if (data === "Rain") {
+    if (data === "Rain" || data === "Drizzle") {
         HTML.classList.add("rain");
         weatherIcon.src = "./icons/rain.svg";
-  //      weatherTitle.innerText = `Light a fire and get cosy. ${current.name} is looking grey today.`
-    } else if (data === "Sun") {
+        weatherTitle.innerText = `Don't forget your umbrella. It's wet in ${item.name} today.`
+    } else if (data === "Clear") {
         HTML.classList.add("sun");
         weatherIcon.src = "./icons/sun.svg";
+        weatherTitle.innerText = `Get your sunnies on. ${item.name} is looking rather great today.`
     } else if (data === "Clouds") {
         HTML.classList.add("clouds");
         weatherIcon.src = "./icons/cloud.svg";
@@ -120,8 +121,8 @@ const generateCurrentWeatherInfo = current => {
     const currentWeatherObject = new WeatherTemplate(
         getDateDay(current.dt),
         current.weather[0].main,
-        current.main.temp.toFixed(1),
-        current.main.feels_like.toFixed(1),
+        current.main.temp.toFixed(0),
+        current.main.feels_like.toFixed(0),
         getSunOutTime(current.sys.sunrise),
         getSunOutTime(current.sys.sunset)
     );
