@@ -1,7 +1,7 @@
 body {
   font-family: 'Kumbh Sans', sans-serif;
 }
-
+                              /* WEATHER TODAY STARTS HERE */
 .wrapper {
   width: 100vw;
 }
@@ -48,47 +48,12 @@ body {
   margin-bottom: 10px;
 }
 
-.forecast-wrapper {
-  width: 90vw;
-  margin: auto;
-}
+.weekday {
+  width: 110px;
+} 
 
-.weather-forecast {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin: 10px 0;
-  color: #60605d;
-  background: #fceba6;
-  /* border-radius: 16px; */
-}
-
-.weather-forecast:nth-child(odd) {
-  background: #cececc;
-}
-
-.forecast-icon {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 130px;
-}
-
-.forecast-icon img {
-  margin-bottom: 20px;
-}
-
-/* .forecast-description p {
-  position: absolute;
-  top: 58px;
-  left: 9px;
-  /* width: 120px; */
-/* } */ 
-
-.weekday p::first-letter { 
-/* .forecast-description::first-letter */
+.weekday p::first-letter,
+.description::first-letter { 
   text-transform: uppercase;
 }
 
@@ -110,7 +75,35 @@ body {
 
 .icon-today {
   position: absolute;
-  top: 9%;
-  left: 62%;
+  /* top: 9%;
+  left: 62%; */
+  top: 3%;
+  left: 60%;
   width: 110px;
 }
+
+                                 /* FORECAST STARTS HERE */
+
+.forecast-wrapper {
+  width: 90vw;
+  margin: auto;
+}
+
+.weather-forecast {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 15px;
+  margin: 10px 0;
+  color: #60605d;
+  font-size: 14px;
+  background: linear-gradient(180deg, #90c2d4 40%, #d1d7da 100%);
+  border-radius: 16px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.forecast-icon img {
+  width: 70px;
+}
+
