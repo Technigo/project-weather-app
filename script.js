@@ -183,6 +183,19 @@ const generateHTMLForForecastWeatherInfo = forecasts => {
         forecastInfo[index].querySelector('.forecast-info-day').innerText = item.dateDay;
         forecastInfo[index].querySelector('.forecast-info-temp').innerText = `${item.temperature}°`;
         forecastInfo[index].querySelector('.forecast-info-feels-like').innerText = `${item.temperatureFeelsLike}°`;
+        forecastInfo[index].querySelector('.forecast-info-icon').src = getWeatherIcons(item.weatherDescription)
     };
 }
+
+//-----------------------------Function to get forecast info icon---------------
+const getWeatherIcons = (weather) => {
+        if (weather === "Rain" || weather === "Drizzle") {
+            return "./icons/rain.svg"
+        } else if (weather === "Clear") {
+            return "./icons/sun.svg"
+        } else if (weather === "Clouds") {
+            return "./icons/cloud.svg"
+        };
+    };
+
 
