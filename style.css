@@ -84,7 +84,6 @@ body {
     vertical-align: 25%;
     padding-right: 10px;
     font-weight: 800;
-
 }
 
 .bottomDetails {
@@ -117,9 +116,3 @@ hr {
 .forecastDays {
     padding-right: 30px;
 }
-
-
-
-/* MEDIA QUERIES */
-
-@media (min-width: 1024px) {}

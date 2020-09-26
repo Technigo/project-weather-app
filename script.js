@@ -4,9 +4,10 @@ const appId = "38d8ead396b75510c605134ba40b95f7";
 const units = "metric";
 // TO SEARCH FOR A CITY
 const searchMethod = "q";
-
+// OPEN WEATHER MAP BASE URL
 const base_url = `https://api.openweathermap.org/data/2.5/`;
 
+// CREATE A SEARCH STRING
 const createSearchString = (type, searchTerm) => {
     return (
         base_url +
@@ -14,7 +15,7 @@ const createSearchString = (type, searchTerm) => {
     );
 };
 
-// FETCH API
+// FETCH API WEATHER
 const searchWeather = (searchTerm) => {
     fetch(createSearchString("weather", searchTerm))
         .then((result) => {
@@ -26,6 +27,7 @@ const searchWeather = (searchTerm) => {
 
 };
 
+// FETCH API WEATHER
 const searchForecast = (searchTerm) => {
     fetch(createSearchString(`forecast`, searchTerm))
         .then((result) => {
@@ -128,6 +130,7 @@ const findWeather = (resultFromServer) => {
     humidityElement.innerHTML =
         "Humidity " + resultFromServer.main.humidity + " %";
 
+    // GET SUNRISE & SUNSET 
     const sunriseTime = new Date(
         resultFromServer.sys.sunrise * 1000
     ).toLocaleTimeString([], {
@@ -202,7 +205,6 @@ const readForecast = (json) => {
     });
 }
 
-
 // SET POSITION FOR WEATHERINFO CONTAINER
 const setPositionForWeatherInfo = () => {
     let weatherContainer = document.getElementById("weatherContainer");
@@ -213,8 +215,6 @@ const setPositionForWeatherInfo = () => {
     weatherContainer.style.top = `calc(50% - ${weatherContainerHeight / 1.5}px)`;
     weatherContainer.style.visibility = "visible";
 };
-
-console.log("setPositionForWeatherInfo");
 
 document.getElementById("searchBtn").addEventListener("click", () => {
     let searchTerm = document.getElementById("searchInput").value;
