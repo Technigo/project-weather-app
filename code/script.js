@@ -17,28 +17,25 @@ fetch(apiStockholm)
 
 .then((weatherObject) => {
     city.innerHTML = weatherObject.name;
-    console.log(weatherObject);
     weatherDescription.innerHTML = weatherObject.weather[0].description.toUpperCase()
     temperatures.innerHTML = weatherObject.main.temp.toFixed(0.5)
-    // sunrise.innerHTML = weatherObject.sys.sunrise
-    // sunset.innerHTML = weatherObject.sys.sunset
+    
+    // I've tried to solve the sunrise/sunset to show hhh:mm but didn't suceed. 
+    // Have googled, asked in group chat and read every question I could find on Stack without understanding.
+    // Would very much like to get some help to understand this one.
 
-    let sunrise = weatherObject.sys.sunrise;
-    let sunriseDate = new Date(sunrise*1000);
+    // const sunriseValue = weatherObject.sys.sunrise; //Sunrise and Sunset times in UNIX
+    // const sunsetValue = weatherObject.sys.sunset;
 
-    sunrise.innerHTML = `<h2> Sunrise: ${sunriseDate} </h2>`
-
-    let sunset = weatherObject.sys.sunset;
-    let sunsetDate = new Date(sunset*1000);
-
-    sunset.innerHTML = `<h2> Sunset:${sunsetDate} </h2>`
-    console.log()
+    // const sun = new Date(sunriseValue * 1000);
+    // const set = new Date(sunsetValue * 1000);
+    // const sunriseHour = sun.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit', hour12: false,});
+    // const sunsetHour = set.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit', hour12: false,});
+    // console.log()
 })
 
-
-
-
-
+// Don't know why I can't get the forecast "apifiveDaysForecast" to work. 
+// I believe I have done it in the exactly same way as with "apiStockholm".
 
 // fetch(apiFiveDaysForecast)
 //     .then((response) => {
@@ -46,5 +43,6 @@ fetch(apiStockholm)
 // })
 
 // // Five days forecast
-// .then((weatherObject) => {
-//     fiveDays.innerHTML = weatherObject.list.dt
+// .then((forecast) => {
+//     fiveDays.innerHTML = forecast.weather[0].id;
+// })
