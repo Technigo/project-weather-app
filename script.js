@@ -4,11 +4,9 @@
 
 // const stad = "arctic";
 // const stad = dropdown.value;
-const currentLocation = "stockholm";
+let currentLocation = "stockholm";
 
 const key = "5c01b021abe8da367bcecadd67235fb3";
-const apiURLcurrent = `https://api.openweathermap.org/data/2.5/weather?q=${currentLocation}&units=metric&APPID=${key}`;
-const apiURLforcast = `https://api.openweathermap.org/data/2.5/forecast?q=${currentLocation}&units=metric&APPID=${key}`;
 
 // *** current
 let city = document.getElementById("city");
@@ -68,6 +66,8 @@ const time = (number) => {
 // *** CURRENT WEATHER
 
 const weatherToDay = () => {
+  const apiURLcurrent = `https://api.openweathermap.org/data/2.5/weather?q=${currentLocation}&units=metric&APPID=${key}`;
+
   fetch(apiURLcurrent)
     .then((response) => {
       return response.json();
@@ -114,6 +114,8 @@ const weatherToDay = () => {
 
       if (!isDay()) {
         night.classList.add("night-container");
+      } else {
+        night.classList.remove("night-container");
       }
 
       // *** conditional weather ***
@@ -155,7 +157,7 @@ const weatherToDay = () => {
         // rain
       } else if (rain.includes(data.weather[0].description)) {
         city.innerHTML = `${data.name} is looking rainy`;
-        icon.src = "images/rain.svg";
+        icon.src = `images/${isDay() ? "rain" : "rain-moon"}.svg`;
         // background colour
         document.body.className = "rain";
 
@@ -195,6 +197,8 @@ const weatherToDay = () => {
 // *** FORECAST WEATHER
 
 const weatherForcast = () => {
+  const apiURLforcast = `https://api.openweathermap.org/data/2.5/forecast?q=${currentLocation}&units=metric&APPID=${key}`;
+
   fetch(apiURLforcast)
     .then((response) => {
       return response.json();
@@ -206,6 +210,8 @@ const weatherForcast = () => {
       const filteredForecast = data.list.filter((item) =>
         item.dt_txt.includes("12:00")
       );
+
+      forecast.innerHTML = "";
 
       // for each day:
       filteredForecast.forEach((item) => {
@@ -223,7 +229,7 @@ const weatherForcast = () => {
         // *** conditional ***
         // Don't know about this solution below, trying to not repeat myself  ¯\_(ツ)_/¯
 
-        iconForecast = `<div class="icon-container"><img class="forecast-icon" `;
+        let iconForecast = `<div class="icon-container"><img class="forecast-icon" `;
 
         // clear
         if (item.weather[0].main === "Clear") {
@@ -269,6 +275,7 @@ const weatherForcast = () => {
         }
 
         // writing to html
+
         forecast.innerHTML += `<div class="forecast-card"><div class="text-container"><p class="forecast-info">${day} with ${weather} and a temperature of ${temp}°C<p></div>${iconForecast}</div>`;
       });
     });
@@ -277,9 +284,29 @@ const weatherForcast = () => {
 weatherToDay();
 weatherForcast();
 
-newCity.onclick = toggleDrinkMenu;
+////////////////////////////////////////////////////////////////////////////
 
-function toggleDrinkMenu() {
-  this.classList.toggle("open");
-  // the word "this" refers to the element that is the selector.
-}
+// *** DROP DOWN MENY
+
+// toggle meny
+const selectCityMeny = () => {
+  newCity.classList.toggle("open");
+  // scroll to bottom
+  window.scrollTo(0, document.body.scrollHeight);
+};
+
+newCity.onclick = selectCityMeny;
+
+// scroll to top
+const toTop = () => {
+  window.scroll(0, 0);
+};
+
+// avoke
+const changeCity = (city) => {
+  currentLocation = city;
+  weatherToDay();
+  weatherForcast();
+  selectCityMeny();
+  toTop();
+};
