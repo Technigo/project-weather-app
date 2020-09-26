@@ -66,7 +66,7 @@ const success = (position) => {
             let sunset = (new Date(todaysgeo.sys.sunset * 1000).toLocaleString("en-US", { timeStyle: "short" }));
 
             // Displaying the geolocation weather today
-            todaysWeather.innerHTML = `${icon}<h2>It looks like you're in beatiful ${name} today!<br> The temperature is ${temp}&#8451; and it's going to be ${weather}.</h2>`
+            todaysWeather.innerHTML = `${icon}<h2>It looks like you're in beautiful ${name} today!<br> The temperature is ${temp}&#8451; and it's going to be ${weather}.</h2>`
             geodaytime.innerHTML = `Sunrise ${sunrise}<br>Sunset ${sunset}`;
         })
 
