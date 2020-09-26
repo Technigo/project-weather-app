@@ -106,16 +106,23 @@ p {
 }
 
 .forecast-day {
-    width: 100px;
+    width: 40%;
 } 
 
 .forecast-icon {
-    width: 35px;
+    width: 30%;
+    max-height: 35px;
+    object-fit: contain;
 }
 
 .forecast-type {
     display: none;
 } 
+
+.forecast-temp {
+    width: 30%;
+    text-align: right;
+}
 
 /* Footer */
 footer {
@@ -138,6 +145,18 @@ footer p {
     margin: 20px auto;
     width: 80%;
     border-radius: 10px;
+    }
+
+    .forecast-day {
+        width: 35%;
+    } 
+    
+    .forecast-icon {
+        width: 32.5%;
+    }
+    
+    .forecast-temp {
+        width: 32.5%;
     }
 }
 
