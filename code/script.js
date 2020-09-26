@@ -89,7 +89,7 @@ const handleDay = day => {
 }
 
 const getIcon = icon => {
-  const iconUrl1 = 'http://openweathermap.org/img/wn/'
+  const iconUrl1 = 'https://openweathermap.org/img/wn/'
   const iconUrl2 = '@2x.png'
   return icon = iconUrl1.concat(icon.concat(iconUrl2))
 }
