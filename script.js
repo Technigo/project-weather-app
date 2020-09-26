@@ -149,7 +149,6 @@ const findWeather = (resultFromServer) => {
 
     sunsetTimeElement.innerHTML = "Sunset: " + sunsetTime;
     setPositionForWeatherInfo();
-    input.value = "";
 };
 
 // FORECAST FOR 5 DAYS
@@ -157,6 +156,7 @@ const readForecast = (json) => {
     const forecastContainer = document.getElementById("forecast");
     const forecastContainer2 = document.getElementById("forecast2");
 
+    // REMOVE FORECAST WHEN CHANGING CITY 
     while (forecastContainer.hasChildNodes()) {
         forecastContainer.removeChild(forecastContainer.firstChild);
     }
