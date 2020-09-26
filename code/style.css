@@ -169,13 +169,21 @@ h3 {
 .main-additional {
   display: none;
   width: 49%;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .additional-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 25px 0;
+}
+
+.additional-item p {
+  margin: 2% 0;
 }
 
 /*** FORECAST ***/
@@ -272,7 +280,6 @@ h3 {
   .main-additional {
     display: flex;
     flex-direction: row;
-    align-items: center;
   }
 
   .forecast-container {
@@ -310,6 +317,11 @@ h3 {
 
   .search-button {
     font-size: 35px;
+  }
+
+  .main-container {
+    width: 75%;
+    margin: 0 auto;
   }
 
   .forecast-item,

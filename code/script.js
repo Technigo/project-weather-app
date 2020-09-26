@@ -134,17 +134,15 @@ const fetchWeatherForecast = (url) => {
 
       // create a new array using the slice() method to get the first 7 elements
       const hourlyWeathers = forecastArray.list.slice(0, 7);
-      console.log(hourlyWeathers);
 
       // map to create new and filtered array of hourlyWeathers
       const hourly = hourlyWeathers.map((hour) => {
         const hourlyHour = setTimestamp(hour.dt).hourString;
         const hourlyIconSrc = `https://openweathermap.org/img/wn/${hour.weather[0].icon}@2x.png`;
         const hourlyTemperature = numberNoDecimal(hour.main.temp);
-        console.log(hourlyHour, hourlyIconSrc, hourlyTemperature);
         return { hourlyHour, hourlyIconSrc, hourlyTemperature };
       });
-      console.log(hourly.dt);
+
       // forEach to add to html
       hourly.forEach((item, index) => {
         if (index === 0) {
@@ -264,7 +262,6 @@ const setBackground = (time, description, sunrise, sunset) => {
     if (description === 'Clear') {
       wrapper.style.backgroundImage = 'url(./assets/clear-night-medium.jpg)';
     } else if (description === 'Clouds') {
-      console.log('inside Clouds');
       wrapper.style.backgroundImage = 'url(./assets/clouds-night-medium.jpg)';
     } else if (description === 'Rain' || description === 'Drizzle') {
       wrapper.style.backgroundImage = 'url(./assets/rain-night-medium.jpg)';

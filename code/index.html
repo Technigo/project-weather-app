@@ -5,10 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
     <title>And here's the weather</title>
-    <!-- <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
-      rel="stylesheet"
-    /> -->
     <link rel="shortcut icon" href="./assets/sun.png" type="image/png" />
     <link
       rel="stylesheet"
@@ -67,8 +63,10 @@
                 <p>Humidity:</p>
                 <p class="" id="humidity"></p>
               </div>
-              <p>Pressure:</p>
-              <p class="" id="pressure"></p>
+              <div class="additional-item">
+                <p>Pressure:</p>
+                <p class="" id="pressure"></p>
+              </div>
               <div class="additional-item">
                 <p>Visibility:</p>
                 <p class="" id="visibility"></p>
@@ -79,6 +77,7 @@
 
         <!-- FORECAST SECTION -->
         <section class="forecast-container">
+          <!-- HOURLY FORECAST -->
           <section class="forecast-hour-item">
             <div class="hour-item">
               <div class="hour">
@@ -130,6 +129,8 @@
               </div>
             </div>
           </section>
+
+          <!-- 5 DAY FORECAST -->
           <article class="forecast-item">
             <div class="item forecast-date">
               <p class="p-day"></p>
