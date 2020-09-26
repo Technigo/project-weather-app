@@ -68,7 +68,7 @@ const generateHTML = (forecast) => {
   forecastHTML += `<li class="forecast-row">`
   forecastHTML += `<p>${day}</p> `
   forecastHTML += `<div><img src='${icon}'></div > `
-  forecastHTML += `<p>${temp}°</p > `
+  forecastHTML += `<p class="temp">${temp}°</p > `
   forecastHTML += `</li> `
   return (forecastHTML)
 }

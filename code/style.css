@@ -41,6 +41,14 @@ li {
   border-bottom: none;
 }
 
+.forecast-container p {
+  width: 50px;
+}
+
+.temp {
+  text-align: right;
+}
+
 .forecast-container img {
   height: 50px;
 }
