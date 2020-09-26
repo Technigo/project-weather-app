@@ -73,8 +73,8 @@ const weatherDescriptions = [
   }
 ];
 
-// General fetch for search-box and default city..
-const fetchData = (selectedCity) => {
+// General fetch for search-box.
+const fetchAPILink = (selectedCity) => {
   city = selectedCity
   const forecastApiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${API_KEY}`;
   fetchForecastData(forecastApiUrl)
@@ -97,7 +97,7 @@ const fetchWeatherData = (apiUrl) => {
       sunriseTag.innerText = convertUnixTimestamp(weather.sys.sunrise);
       sunsetTag.innerHTML = convertUnixTimestamp(weather.sys.sunset);
 
-      // Change image depending on current weather
+      // run the changeImage-function depending on current weather
       const currentWeather = weather.weather[0].main;
       changeImage(currentWeather);
 
@@ -115,10 +115,10 @@ const fetchWeatherData = (apiUrl) => {
       // If error in search - remove weather-content, change image
     }).catch((error) => {
       console.error('Error:', error);
-      cityTag.innerHTML = 'Oops!'
+      cityTag.innerText = 'Oops!'
       weatherImage.src = 'https://media.giphy.com/media/pvO8ugi72HKww/source.gif'
-      weatherTag.innerHTML = 'No city here. Search again!'
-      temperatureTag.innerHTML = ''
+      weatherTag.innerText = 'No city here. Search again!'
+      temperatureTag.innerText = ''
       feelsLikeBox.style.display = 'none'
       sunriseTag.innerText = ''
       sunsetTag.innerText = ''
@@ -160,6 +160,7 @@ const fetchForecastData = (apiUrl) => {
     });
 }
 
+// Return the elements which are removed on search error
 const returnErrorElements = () => {
   sunriseImg.src = './images/sunrise.png'
   sunsetImg.src = './images/sunset.png'
@@ -173,9 +174,12 @@ const returnErrorElements = () => {
 const changeLocation = () => {
   city = changeLocInput.value;
   returnErrorElements()
-  fetchData(city);
+  fetchAPILink(city);
   changeLocInput.value = "";
 }
+
+// Call above function with the changeLocButton.
+changeLocButton.addEventListener('click', changeLocation)
 
 // YES, It's a quickfix. Did not have time to fix a proper form. So kill me!
 changeLocInput.addEventListener('keyup', (e) => {
@@ -184,10 +188,7 @@ changeLocInput.addEventListener('keyup', (e) => {
   }
 });
 
-// Call above function with the changeLocButton.
-changeLocButton.addEventListener('click', changeLocation)
-
-// Get current longitude- and latitude values and send them into a new API-link
+// Get current longitude- and latitude values and push them into a new API-link
 // Then use the new API-link and fetch data.
 function geoLocate() {
   if (navigator.geolocation) {
@@ -209,8 +210,7 @@ function geoLocate() {
 // Call above function with the Geolocate-button.
 changeLocGeo.addEventListener('click', geoLocate)
 
-
-// Convert timestamp to correct time-format
+// Convert timestamp to a better looking time-format
 const convertUnixTimestamp = (data) => {
   const sunsetTime = new Date(data * 1000);
   return sunsetTime.toLocaleTimeString('sv-SE', {
@@ -262,6 +262,7 @@ const calculateHour = (currentHour) => {
   }
 };
 
+// Change image depending on weather
 const changeImage = (weather) => {
   if (weather == weatherDescriptions[0].name) {
     weatherImage.src = weatherDescriptions[0].img;
@@ -290,5 +291,5 @@ const changeImage = (weather) => {
   }
 };
 
-// Run main functions at page loading
+// Run geolocate-function at page loading
 geoLocate()
