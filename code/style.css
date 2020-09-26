@@ -43,6 +43,7 @@ li {
 
 .forecast-container p {
   width: 50px;
+  background-color: lime;
 }
 
 .temp {
@@ -51,6 +52,7 @@ li {
 
 .forecast-container img {
   height: 50px;
+  background-color: lime;
 }
 
 h1 {
@@ -99,5 +101,8 @@ h3 {
     padding: 50px;
     border-bottom: none;
     display: block;
+  }
+  .temp {
+    text-align: center;
   }
 }
