@@ -52,6 +52,10 @@ p {
     background:rgb(255, 255, 255, 0.9);
 }
 
+.todays-date {
+    margin-bottom: 15px;
+}
+
 .city-temperature {
     font-size: 50px;
     padding: 0px;
