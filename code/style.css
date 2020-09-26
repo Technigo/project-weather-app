@@ -100,8 +100,29 @@ img {
 
 /****MEDIA FOR TABLET *****/
 @media (min-width: 768px) {
+  body {
+    font-size: 18px;
+  }
+
   .weather-wrap {
     width: 400px;
+  }
+
+  .weather-today-wrapper {
+    height: 30vh;
+  }
+
+  .day {
+    width: 180px;
+  }
+
+  img {
+    height: 80px;
+    width: 80px;
+  }
+
+  .select-city {
+    padding: 40px 0px 80px 0px;
   }
 }
 
@@ -109,5 +130,9 @@ img {
 @media (min-width: 1024px) {
   .weather-wrap {
     width: 600px;
+  }
+
+  .day {
+    width: 280px;
   }
 }

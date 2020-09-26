@@ -129,9 +129,9 @@ const iconDependingOnWeather = (item) => {
 
 // Function to  change background color depending on temperature
 const weatherBackgroundColor = (temp) => {
-  if ((temp < 0, temp <= 6)) {
+  if (temp < 6) {
     containerWeather.style.backgroundColor = "#b3cde3";
-  } else if ((temp > 6, temp <= 20)) {
+  } else if (temp >= 6 && temp < 21) {
     containerWeather.style.backgroundColor = "#fed98e";
   } else containerWeather.style.backgroundColor = "#fe992a";
 };
