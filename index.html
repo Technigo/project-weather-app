@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <div class="night-container">
+  <div id="night">
     <header>
 
       <div class="header-info">
@@ -27,20 +27,28 @@
     <main id="main">
 
       <img id="mainWeather" class="main-weather" height="200" src="" alt="weather icon">
-      <h1><span id="city"></span> <span id="mainWeather"></span><span id="temp"></span>°C</h1>
+      <h1><span id="city"></span> <span id="temp"></span>°C</h1>
 
 
 
       <h2>prepare for:</h2>
 
-      <section id="forecast" class="forecast-container">
+      <section id="forecast" class="forecast-container"></section>
 
-      </section>
+      <div id="newCity" class="new-city">
+        <p class="leave-town">Where do you want to go?</p>
 
+
+      </div>
+      <ul>
+        <li>Berlin</li>
+        <li>Tokyo</li>
+        <li>Paris</li>
+        <li>New York</li>
+        <li>London</li>
+        <li>Moscow</li>
+      </ul>
     </main>
-
-
-
 
   </div>
   <script src="script.js"></script>
