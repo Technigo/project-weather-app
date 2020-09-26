@@ -4,6 +4,33 @@ body {
   background-color: rgb(209, 232, 240);
 }
 
+ul {
+  margin: 20px;
+  padding: 0;
+  font-size: 16px;
+}
+
+li {
+  list-style: none;
+}
+
+h1 {
+  margin: 0;
+  font-size: 40px;
+}
+
+h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 400;
+} 
+
+h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 400;
+}
+
 .weather-container {
   padding: 50px 30px 30px 30px;
   background-image: linear-gradient(to right, rgb(139, 204, 226),rgb(55, 55, 255));
@@ -14,20 +41,10 @@ body {
   margin: 40px 0;
 }
 
-ul {
-  margin: 20px;
-  padding: 0;
-  font-size: 16px;
-}
-
 .weather-container ul {
   margin: 0;
   display: flex;
   justify-content: space-between;
-}
-
-li {
-  list-style: none;
 }
 
 .forecast-row  {
@@ -51,23 +68,6 @@ li {
 
 .forecast-container img {
   height: 50px;
-}
-
-h1 {
-  margin: 0;
-  font-size: 40px;
-}
-
-h2 {
-  margin: 0;
-  font-size: 24px;
-  font-weight: 400;
-} 
-
-h3 {
-  margin: 0;
-  font-size: 20px;
-  font-weight: 400;
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
