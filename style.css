@@ -1,5 +1,6 @@
 body {
     font-family: 'Montserrat';
+    color: white;
     /*font-size: 22px;*/
     background-color: rgb(12, 192, 247);
     animation-name: example;
