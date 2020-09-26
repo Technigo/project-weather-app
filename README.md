@@ -1,4 +1,4 @@
-README.md
+
 Weather App ⛅️
 This project is a weather web app using the Open Weather API that shows current weather and a five day forecast. The main section has city name, temperature, weather icon, a small discription of the weather as well as, sunrise and sunset times.
 
