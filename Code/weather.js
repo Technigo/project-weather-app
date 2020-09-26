@@ -1,18 +1,17 @@
-// fetch for weather info, current day
-
+// fetch weather info, current day
 fetch('http://api.openweathermap.org/data/2.5/weather?q=Nanaimo,CA&units=metric&APPID=1c52265fbcb1b6630b1b484fdf314634')
     .then((response) => {
         return response.json()
     })
     .then((json) => {
-        //city, country, current temperature & weather description
+        // city, country, current temperature & weather description
         const cityCountry = document.getElementById('city-country');
         const currentTemp = document.getElementById('current-temp');
 
         cityCountry.innerHTML = `${json.name}, ${json.sys.country}`;
         currentTemp.innerHTML = `${json.main.temp}°C, ${json.weather[0].description}`;
 
-        //sunrise
+        // sunrise  
         const sunrise = document.getElementById('sunrise');
         const sunriseValue = json.sys.sunrise
         const sRise = new Date(sunriseValue * 1000); // multiple with 1000 since the data is given in seconds and JS uses milliseconds
@@ -20,15 +19,28 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Nanaimo,CA&units=metric&
             
         sunrise.innerHTML = `Sunrise: ${sunriseHour}`;
 
-        //sunset
+        // sunset
         const sunset = document.getElementById('sunset');
         const sunsetValue = json.sys.sunset
         const sSet = new Date(sunsetValue * 1000);
         const sunsetHour = sSet.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit', hour12: false,});
 
         sunset.innerHTML = `Sunset: ${sunsetHour}`;
-
+        
     });
 
+    //fetch 5 day forecast
+    fetch('http://api.openweathermap.org/data/2.5/forecast?q=Nanaimo,CA&units=metric&appid=1c52265fbcb1b6630b1b484fdf314634')
+    .then((response) => {
+        return response.json()
+    })
+    .then((json) => {
 
+        
+        const fiveDays = document.getElementById('five-days');
+        fiveDays.innerHTML = `${json.list[11].dt_txt} ${json.list[11].main.temp}`;
+
+
+        console.log(json);
+    })
     
