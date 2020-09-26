@@ -33,7 +33,7 @@ const fetchedApiInfoCityWeather = () => {
         document.getElementById("iconImage").src = `./images/${iconId}.png`;
 
         //Get sunrise & sunset of Stockholm
-        //new Date is creating a copy of a new object for us to fill
+        //new Date is creating a copy of the date object for us to fill
         //Converting from UNIX seconds to milliseconds as js uses millseconds
         //getHours and getMinutes will convert the UTC to local time according to your computer
         const sunrise = new Date(weatherInfo.sys.sunrise * 1000);
