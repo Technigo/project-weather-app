@@ -1,58 +1,95 @@
+/*** VARIABLES ***/
+
 import { API_KEY } from './api.js';
 const forecastContainer = document.getElementsByClassName('forecast-item');
-const button = document.getElementById('search-button');
 const input = document.getElementById('input');
-console.log(typeof input.value);
-let cityName = 'Stockholm'; // ändra till geolocation sen
+let latitude = 59.334591; // fallback coordinates for Stockholm
+let longitude = 18.06324;
+let cityName = '';
+let API_URL_TODAY_LONGLAT = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`;
 let API_URL_TODAY = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${API_KEY}`;
 let API_URL_FORECAST = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&APPID=${API_KEY}`;
+let API_URL_FORECAST_LONGLAT = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`;
 
+/*** EVENTLISTENER ***/
+
+/* Eventlistener attached to input field, will perform search when enter key is
+ pressed and then assign search value to cityName and get weather for that city */
 input.addEventListener('keyup', function (e) {
   if (e.keyCode === 13) {
-    console.log('inside eventlistener');
-
-    console.log('inside event');
     const inputValue = input.value;
-
     cityName = inputValue;
     API_URL_FORECAST = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&APPID=${API_KEY}`;
     API_URL_TODAY = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${API_KEY}`;
-
-    console.log(API_URL_FORECAST);
-
-    console.log(inputValue);
-
-    console.log(cityName);
     fetchWeatherToday(API_URL_TODAY);
-
     fetchWeatherForecast(API_URL_FORECAST);
-    console.log(cityName);
     input.value = '';
     input.blur();
   }
 });
 
+/*** FUNCTIONS ***/
+
+/* Function to get the geolocation of the user */
+const getGeoLocation = () => {
+  // set the options for the geolocation.getCurrentPosition() method
+  const positionOptions = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximunAge: 0,
+  };
+
+  // get the geolocation
+  navigator.geolocation.getCurrentPosition(
+    gotLocation,
+    showError,
+    positionOptions
+  );
+
+  // anonymous function as it is passed as an argument to the
+  // geolocation.getCurrentPosition() method. Passes longitude and latitude of
+  // current position to the API's
+  function gotLocation(position) {
+    latitude = position.coords.latitude;
+    longitude = position.coords.longitude;
+    API_URL_TODAY_LONGLAT = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`;
+    API_URL_FORECAST_LONGLAT = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`;
+    fetchWeatherToday(API_URL_TODAY_LONGLAT);
+    fetchWeatherForecast(API_URL_FORECAST_LONGLAT);
+  }
+
+  // anonymous function to handle errors and sets fallback coordinates if user
+  // denies geolocation.
+  function showError(error) {
+    if (error.code === 'error.UNKNOWN_ERROR') {
+      alert('An unknown error occured');
+    } else {
+      console.log(error.message);
+    }
+    fetchWeatherToday(API_URL_TODAY_LONGLAT);
+    fetchWeatherForecast(API_URL_FORECAST_LONGLAT);
+  }
+};
+
+/* function to fetch data about today's weather and add it to html */
 const fetchWeatherToday = (url) => {
   fetch(url)
     .then((response) => response.json())
     .then((weatherArray) => {
-      console.log(weatherArray);
-      console.log(weatherArray);
+      // get data from the array
       const temperature = numberNoDecimal(weatherArray.main.temp);
       const city = weatherArray.name;
       const description = weatherArray.weather[0].main;
       const date = new Date(weatherArray.dt * 1000);
       const hour = date.getHours();
-      const sunrise = setSunTime(weatherArray.sys.sunrise);
-      const sunset = setSunTime(weatherArray.sys.sunset);
+      const sunrise = setTimestamp(weatherArray.sys.sunrise).timeString;
+      const sunset = setTimestamp(weatherArray.sys.sunset).timeString;
       const feelsLike = numberNoDecimal(weatherArray.main.feels_like);
-      console.log(feelsLike);
       const humidity = weatherArray.main.humidity;
-      console.log(humidity);
       const pressure = weatherArray.main.pressure;
-      console.log(pressure);
       const visibility = weatherArray.visibility;
-      console.log(visibility);
+
+      //set background and add data to html
       setBackground(hour, description, sunrise, sunset);
       document.getElementById(
         'main-temperature'
@@ -68,6 +105,8 @@ const fetchWeatherToday = (url) => {
     });
 };
 
+/* Function to fetch data about today's min and max temperatures and the weather
+ forecast and add it to html */
 const fetchWeatherForecast = (url) => {
   fetch(url)
     .then((response) => response.json())
@@ -84,16 +123,6 @@ const fetchWeatherForecast = (url) => {
         return temp;
       });
 
-      // console.log(forecastArray);
-
-      // const forecastTemperatures = forecastArray.list.map(
-      //   (forecastTemperature) => {
-      //     const maxTempArray = numberOneDecimal(forecastTemperature.main.temp);
-      //     console.log(maxTempArray);
-      //     return maxTempArray;
-      //   }
-      // );
-
       // get min and max values from the array
       const maxTemp = Math.max(...temperatures);
       const minTemp = Math.min(...temperatures);
@@ -104,14 +133,14 @@ const fetchWeatherForecast = (url) => {
         item.dt_txt.includes(calculateHour(hourNow))
       );
 
-      // addto HTML
+      // add to html
       document.getElementById('min-temp').innerHTML = `${minTemp}\u00B0`;
       document.getElementById('max-temp').innerHTML = `${maxTemp}\u00B0`;
 
       // map to create new and filtered array of weather forecast
       const forecasts = filteredArray.map((forecast) => {
-        const day = setDayDate(forecast.dt).forecastDayString;
-        const date = setDayDate(forecast.dt).forecastDateString;
+        const day = setTimestamp(forecast.dt).dayString;
+        const date = setTimestamp(forecast.dt).dateString;
         const iconSrc = `https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
         const temperature = numberNoDecimal(forecast.main.temp);
         const wind = numberOneDecimal(forecast.wind.speed);
@@ -130,14 +159,18 @@ const fetchWeatherForecast = (url) => {
     });
 };
 
+/* Function to round a number to one decimal */
 const numberOneDecimal = (number) => {
   return Math.round(number * 10) / 10;
 };
 
+/* Function to round a number to no decimal */
 const numberNoDecimal = (number) => {
   return Math.round(number);
 };
 
+/* Function to calculate the hour to only return data from the forecast from that
+ hour. Used to filter the forecastArray */
 const calculateHour = (currentHour) => {
   if (currentHour >= 0 && currentHour < 3) {
     return '00:00';
@@ -158,26 +191,22 @@ const calculateHour = (currentHour) => {
   }
 };
 
-const setSunTime = (time) => {
-  const sunTime = new Date(time * 1000);
-  console.log(sunTime);
-  const sunTimeString = sunTime.toLocaleTimeString([], {
+/* Function to convert a timestamp to a readable time, day, and date string. Returns
+ an object */
+const setTimestamp = (date) => {
+  const timestamp = new Date(date * 1000);
+  const timeString = timestamp.toLocaleTimeString([], {
     hour: '2-digit',
     minute: '2-digit',
   });
-  return sunTimeString;
-};
-
-const setDayDate = (date) => {
-  const forecastDate = new Date(date * 1000);
-  const forecastDayString = forecastDate.toLocaleDateString('en-US', {
+  const dayString = timestamp.toLocaleDateString('en-US', {
     weekday: 'short',
   });
-  const forecastDateString = forecastDate.toLocaleDateString('en-US', {
+  const dateString = timestamp.toLocaleDateString('en-US', {
     month: 'short',
     day: 'numeric',
   });
-  return { forecastDayString, forecastDateString };
+  return { timeString, dayString, dateString };
 };
 
 const setBackground = (time, description, sunrise, sunset) => {
@@ -185,7 +214,6 @@ const setBackground = (time, description, sunrise, sunset) => {
   sunrise = parseInt(sunrise);
   sunset = parseInt(sunset);
   if (time >= sunrise && time <= sunset) {
-    console.log('inside first if');
     if (description === 'Clear') {
       wrapper.style.backgroundImage = 'url(./assets/clear-day-medium.jpg)';
     } else if (description === 'Clouds') {
@@ -200,8 +228,6 @@ const setBackground = (time, description, sunrise, sunset) => {
       wrapper.style.backgroundImage = 'url(./assets/mist-day-medium.jpg)';
     }
   } else if (time >= sunset || time <= sunrise) {
-    console.log('inside second if');
-    console.log(description);
     if (description === 'Clear') {
       wrapper.style.backgroundImage = 'url(./assets/clear-night-medium.jpg)';
     } else if (description === 'Clouds') {
@@ -219,25 +245,6 @@ const setBackground = (time, description, sunrise, sunset) => {
   }
 };
 
-// fetch(
-//   'http://api.openweathermap.org/data/2.5/forecast?q=stockholm&appid=a422826e5990e7c36cbb837c78c405fa'
-// )
-//   .then((response) => response.json())
-//   .then((forecast) => {
-//     const filteredForecast = forecast.list.filter((item) => {
-//       return item.dt_txt.includes(calculateHour(hourNow));
-//     });
-//     console.log(filteredForecast);
-//   });
+/*** ECEXUTION ***/
 
-const filterForecast = (forecastArray) => {
-  const filteredForecast = forecastArray.list.filter((item) =>
-    item.dt_txt.includes('12:00')
-  );
-  console.log(filteredForecast[0].main.temp);
-  console.log(filteredForecast);
-  return filteredForecast;
-};
-
-fetchWeatherForecast(API_URL_FORECAST);
-fetchWeatherToday(API_URL_TODAY);
+getGeoLocation();
