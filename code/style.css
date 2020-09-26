@@ -1,0 +1,43 @@
+body {
+    margin: 0px auto;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url("images/background-image.jpg");
+    height: 800px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.weather-section-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /*background-color: black;
+    opacity: 0.3;
+    width: fit-content;
+    padding: 10px;
+    color: white;
+    border-radius: 20px; */
+}
+
+.weather-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    opacity: 0.3;
+    width: fit-content;
+    padding: 10px;
+    color: white;
+    border-radius: 20px;
+}
+
+h1 {
+
+}
+
+p {
+
+}
