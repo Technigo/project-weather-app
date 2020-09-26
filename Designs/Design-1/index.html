@@ -5,44 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather API</title>
     <link rel="stylesheet" href="./style.css"/>
+    <link rel="stylesheet" href="https://fonts.google.com/specimen/Roboto">
     <!-- Lägg till favidcon senare
       <link rel="icon" type="image/png" scr="./Group36.png"> --> 
     <link rel="stylesheet" href="https://fonts.google.com/specimen/Roboto">
   </head>
+
   <body>
-    <main id="main"></main>
+<!-- 
+    <div class="parent white"> -->
+      <!-- <div class="card purple"> -->
+        <!-- <h1>Title Here</h1> -->
+        <!-- <div class="visual yellow"></div>
+        <p>pisicing elit. Sed est error repellat veritatis.</p> -->
+      <!-- </div> -->
+    <!-- </div> -->
+<div class="grandparent-background-img">
+  
 
-    <h1>Weather forcast: <span id="weatherInfo"></span></h1>
-    
-      <p id="temperature">temperature....</p>
-      <p id="weatherType"> weathertype.......</p>
-      <p id="sunrise"> sunrise.....</p>
-      <p id="sunset"> sunset....</p>
- 
-      <h2>5 days weather <span id="weatherFiveDays"></span></h2> 
- 
-    <section>
-      <p id="dayOne"></p>
-      <p id="minTemp"></p>
-    </section>
+    <div class="parent-weather-box">
+      <h1>Weather forcast: <span id="weatherInfo"></span></h1>
+      
+        <p><span id="temperature"></span></p>
+        <p id="weatherType"> weathertype.......</p>
+        
+      <section class="sunrise-sunset">
+        <p id="sunrise"> sunrise.....</p>
+        <p id="sunset"> sunset....</p>
+      </section>
 
-    <section>
-      <p id="dayTwo"></p>
-    </section>
+    <div class="five-day-weather">
 
-    <section>
-      <p id="dayThree"></p>
-    </section>
+            <h2>5 days weather </h2> 
+            <main id="weatherFiveDays"></main>
+      
+          <section>
+            <p id="dayOne"></p>
+            <p id="minTemp"></p>
+            <p id="maxTemp"></p>
+          </section>
 
-    <section>
-      <p id="dayFour"></p>
-    </section>
+          <section>
+            <p id="dayTwo"></p>
+            <p id="minTemp"></p>
+            <p id="maxTemp"></p>
+          </section>
 
-    <section>
-      <p id="dayFive"></p>
-    </section>
+          <section>
+            <p id="dayThree"></p>
+            <p id="minTemp"></p>
+            <p id="maxTemp"></p>
+          </section>
 
-    
+          <section>
+            <p id="dayFour"></p>
+            <p id="minTemp"></p>
+            <p id="maxTemp"></p>
+          </section>
+
+          <section>
+            <p id="dayFive"></p>
+            <p id="minTemp"></p>
+            <p id="maxTemp"></p>
+          </section>
+        </div>
+      </div> 
+</div>
+
     <script defer src="./script.js"></script>
   </body>
 </html>

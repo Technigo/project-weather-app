@@ -1,6 +1,38 @@
+body {
+    background-color: rgba(125, 241, 183, 0.5);
+}
+
+.grandparent-background-img {
+    display: grid;
+    place-items: center;
+    background-image: url("vaderbakgrund.jpeg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    
+}
+
+.parent-weather-box {
+    width: clamp(23ch, 50%, 46ch);
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    background: rgba(204, 204, 204, 0.5);
+}
 
 
-main{
+.five-day-weather {
+    height: 140px;
+      width: 100%; 
+} 
+
+/* .sunrise-sunset {
+    display: flex;
+    flex-direction: row;
+    border: 1px dotted blue;
+} */
+
+#temperature {
+font-size: 50px;
 
 }
 
@@ -15,7 +47,9 @@ p {
 
 section {
     display: flex;
-    border; black 2px;
+    flex-direction: column;
+    border: black 2px;
+    
 };
 
 
