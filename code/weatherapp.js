@@ -14,6 +14,12 @@ const fetchedApiInfoCityWeather = () => {
         //Get Stockholm weather info
         document.getElementById("city").innerText = weatherInfo.name.toUpperCase(); 
 
+        //Get today's date in day/month/year format
+        const todaysDate = new Date(weatherInfo.dt * 1000);
+        const options = { day: 'numeric', month: 'short', year: 'numeric'};
+        const todaysDateFormat = todaysDate.toLocaleDateString('en-GB', options);
+        document.getElementById("todaysDate").innerText = `${todaysDateFormat}`;
+
         //Get Stockholm temp
         const temperature = weatherInfo.main.temp.toFixed(1);
         //toFixed()rounds the number up or down
