@@ -38,7 +38,7 @@ const searchForecast = (searchTerm) => {
         });
 };
 
-// SWITCH STATEMENTS FOR DYNAMIC BACKGROUND
+// SWITCH STATEMENT FOR DYNAMIC BACKGROUND
 const findWeather = (resultFromServer) => {
     switch (resultFromServer.weather[0].main) {
         case "Clear":
@@ -53,11 +53,11 @@ const findWeather = (resultFromServer) => {
             document.body.style.backgroundImage = 'url("./images/rain.jpg")';
             break;
 
-        case "drizzle":
+        case "Drizzle":
             document.body.style.backgroundImage = 'url("./images/drizzle.jpg")';
             break;
 
-        case "mist":
+        case "Mist":
             document.body.style.backgroundImage = 'url("./images/mist.jpg")';
             break;
 
@@ -73,15 +73,15 @@ const findWeather = (resultFromServer) => {
             document.body.style.backgroundImage = 'url("./images/haze.jpg")';
             break;
 
-        case "smoke":
+        case "Smoke":
             document.body.style.backgroundImage = 'url("./images/smoke.jpg")';
             break;
 
-        case "tornado":
+        case "Tornado":
             document.body.style.backgroundImage = 'url("./images/tornado.jpg")';
             break;
 
-        case "fog":
+        case "Fog":
             document.body.style.backgroundImage = 'url("./images/fog.jpg")';
             break;
 
@@ -156,6 +156,13 @@ const findWeather = (resultFromServer) => {
 const readForecast = (json) => {
     const forecastContainer = document.getElementById("forecast");
     const forecastContainer2 = document.getElementById("forecast2");
+
+    while (forecastContainer.hasChildNodes()) {
+        forecastContainer.removeChild(forecastContainer.firstChild);
+    }
+    while (forecastContainer2.hasChildNodes()) {
+        forecastContainer2.removeChild(forecastContainer2.firstChild);
+    }
 
     // AT 00.00
     const filteredForecast = json.list.filter((item) =>
