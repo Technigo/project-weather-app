@@ -13,7 +13,7 @@ const sunset = document.getElementById("sunset");
 const forcast = document.getElementsByClassName("forcast");
 
 const weatherToday = (cityName) => {
-  const apiWeather = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=9dcf660f4adfbe64a1f1edf5962b352d`;
+  const apiWeather = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=9dcf660f4adfbe64a1f1edf5962b352d`;
   fetch(apiWeather)
     .then((weather) => {
       return weather.json();
@@ -22,7 +22,7 @@ const weatherToday = (cityName) => {
       city.innerHTML = weatherArr.name;
       country.innerHTML = weatherArr.sys.country;
       description.innerHTML = weatherArr.weather[0].description;
-      weatherIcon.src = `http://openweathermap.org/img/wn/${weatherArr.weather[0].icon}.png`;
+      weatherIcon.src = `https://openweathermap.org/img/wn/${weatherArr.weather[0].icon}.png`;
       averageTemp.innerHTML = generateRoundedTemperature(weatherArr.main.temp);
       minTemp.innerHTML = generateRoundedTemperature(weatherArr.main.temp_min);
       maxTemp.innerHTML = generateRoundedTemperature(weatherArr.main.temp_max);
