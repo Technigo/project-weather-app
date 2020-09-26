@@ -117,3 +117,22 @@ hr {
 .forecastDays {
     padding-right: 30px;
 }
+
+/** MEDIA QUERIES**/
+
+
+@media (min-width: 668px) and (max-width: 1024px) {
+
+    #weatherContainer {
+        position: absolute;
+        max-width: 500px;
+    }
+}
+
+
+@media (min-width: 1200px) {
+    #weatherContainer {
+        position: absolute;
+        max-width: 500px;
+    }
+}
