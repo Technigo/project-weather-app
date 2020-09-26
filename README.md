@@ -1,13 +1,10 @@
 # Weather App
-
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This weeks project was to build a weather site using fetch and also using a oublic API.
 
 ## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I found this week extremely difficult. Since I have never coded before I believe I would have needed something more to hold on to.
+I managed to get the weather for Stockholm to work, unless the sunrise and sunset, but when I tried to fetch the 5-day forecast nothing worked.
+I tried asking questions but still don't understand this project. So I have had a hard week feeling really stuck and as you will see haven't managed to solve all the steps as required.
 
 ## View it live
-
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://tender-wing-355806.netlify.app/
