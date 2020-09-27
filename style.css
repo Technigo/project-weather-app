@@ -1,7 +1,6 @@
 body {
     font-family: 'Montserrat';
     color: white;
-    /*font-size: 22px;*/
     background-color: rgb(12, 192, 247);
     animation-name: example;
     animation-duration: 4s;
@@ -14,7 +13,7 @@ body {
 
 .header-part-1 {
   max-width: 400px; 
-  margin: 30px;
+  margin-top: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,9 +39,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  /*font-size: 40px;*/
-  font-weight: bold;
+  text-align: justify;
   margin: 30px;
 }
 
@@ -83,6 +80,7 @@ body {
   }
 
   .weather-icon {
+    margin-top: 40px;
     width: 400px;
     height: auto;
   }
@@ -90,6 +88,10 @@ body {
   .header-part-2 {
     max-width: 992px; 
     font-size: 40px;
+  }
+
+  .weather-text {
+    font-size: 35px;
   }
   
   .sunrise-sunset {
@@ -131,16 +133,21 @@ body {
     max-width: 40000px; 
     font-size: 40px;
   }
+
+  .weather-text {
+    margin: 140px;
+    font-size: 40px;
+  }
   
   .sunrise-sunset {
     max-width: 4000px; 
-    margin: 40px;
+    margin: 140px;
     font-size: 30px;
   }
   
   .forecast {
     max-width: 4000px; 
-    margin: 40px;
+    margin: 140px;
     font-size: 38px;
   }
 }
