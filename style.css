@@ -470,3 +470,43 @@ li {
     background-position: 0% 90%;
   }
 }
+
+/****************** MEDIA QUERIES ******************/
+
+/* TABLET */
+@media (min-width: 667px) and (max-width: 1024px) {
+  h1 {
+    font-size: 66px;
+    padding: 0 30px;
+  }
+
+  h2 {
+    font-size: 32px;
+    padding-left: 30px;
+  }
+
+  /* DESKTOP */
+  @media (min-width: 1025px) {
+  }
+
+  .main-weather {
+    margin-top: 0;
+    height: 350px;
+  }
+
+  .forecast-card {
+    padding-left: 50px;
+  }
+
+  .forecast-info {
+    font-size: 26px;
+  }
+
+  .forecast-icon {
+    height: 90px;
+  }
+
+  .new-city {
+    width: 85%;
+  }
+}
