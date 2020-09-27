@@ -6,7 +6,7 @@
     font-family: 'Montserrat', sans-serif;
   }
 
-  h5,
+  body,h5,
   p {
       font-size: 21px;
       margin: 0
@@ -36,7 +36,7 @@ html.sun {
     color: #2a5510;
 }
 
-body {
+main {
     margin: 0 40px;
 }
 .weather-info-main-title-container {
@@ -160,6 +160,98 @@ body {
         display: block;
         height: 22px;
     }
+
+    footer {
+        position: relative;
+        margin-top: 150px;
+    }
+
+    .asymmetric-container {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #020c44;
+        height: 75px;
+    }
+    
+    .asymmetric-container::before {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: #020c44;
+        transform-origin: top left;
+        transform: skewY(-2deg);
+        z-index: -10;
+    }
+
+    .footer-info {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 75px;
+        justify-items: center;
+        align-items: center;
+        
+    }
+    
+    .footer-info-items {
+        padding: 0px 30px;
+        font-size: 16px;
+        text-align: center;
+        color: #ffffff;
+        font-weight: 600;
+    }
+    
+    .footer-info-items:first-child {
+        justify-self: start;
+    }
+    
+    .footer-info-items:last-child {
+        justify-self: end;
+    }
+
+    .social-media-links {
+        display: flex;
+        width: 100%;
+        justify-content: space-evenly;
+     
+      }
+
+      .social-media-link {
+        color: white;
+      }
+
+      .social-media-link:hover {
+          opacity: .6;
+      }
+
+
 }
 
+@media screen and (min-width: 1024px) {
+    p,
+    h5 {
+        font-size: 24px;
+    }
+
+    .weather-info-main-title-container {
+        margin-bottom: 100px;
+    }
+
+    .weather-info-main-title {
+        width: 30%;
+        font-size: 42px;
+    }
+
+    .forecast-info-textbox {
+        border-bottom: dashed 2px;
+    }
+
+    footer {
+        margin-top: 190px;
+    }
+}
 

@@ -47,53 +47,6 @@ const getSunOutTime = data => {
     });
 };
 
-//------------------Weather objects--------------
-// const rain = {
-//     description: "Rain",
-//     icon: "./icons/rain.svg"
-// };
-
-// const sun = {
-//     description: "Clear",
-//     icon: "./icons/sun.svg"
-// };
-
-// const cloud = {
-//     description: "Clouds",
-//     icon: "./icons.cloud.svg"
-// };
-
-// const myWeather = {
-//     weather: null,
-//     icon: null
-// }
-
-// //----------------------Weathers array----------------------
-// const weathers = {
-//     'rain': rain,
-//     'sun': sun,
-//     'cloud': cloud
-// };
-
-
-
-// const checkWeathers = data => {
-//     if (data === "Rain" || data === "Drizzle") {
-//         return rain;
-//     } else if (data === "Clear") {
-//         return sun;
-//     } else if (data === "Clouds" || data === "Atmosphere" || data === "Thunderstorm") {
-//         return cloud;
-//     };
-// };
-
-//----------------------Weather Functions
-
-// const pickWeather = () => {
-//     myWeather.weather = currentWeatherObjet.weatherDescription,
-
-// }
-
 //----------Function to change colors in HTML depending on current weather--------
 const getWeatherColorIconTitle = (data, item) => {
     const weatherIcon = document.querySelector("#weatherIcon");
@@ -114,7 +67,6 @@ const getWeatherColorIconTitle = (data, item) => {
     };
     console.log(data);
 };
-
 
 //-----------Function to generate HTML for current weather info on top of page----------
 const generateCurrentWeatherInfo = current => {
@@ -197,5 +149,3 @@ const getWeatherIcons = (weather) => {
             return "./icons/cloud.svg"
         };
     };
-
-
