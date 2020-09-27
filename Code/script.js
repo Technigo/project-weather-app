@@ -11,15 +11,34 @@ const urlFiveDayForecast = (place) => {
 const currentTemp = document.getElementById('todaysTemp');
 const city = document.getElementById('city');
 const weatherType = document.getElementById('weatherType');
-
+const weatherTypeIcon = document.getElementById('weatherTypeIcon');
 const sunriseTime = document.getElementById('sunriseTime');
 const sunsetTime = document.getElementById('sunsetTime');
-
 const days = document.getElementsByClassName('day-container');
 const sunTime = document.getElementsByClassName('.sun');
-
 const body = document.getElementsByTagName('body');
+const circle = document.getElementById('circle');
+const cloud = document.getElementById('cloud');
+const drops = document.getElementById('drops');
 
+
+const showSunWeatherImage = () => {
+    circle.style.display = 'block';
+    cloud.style.display = 'none';
+    drops.style.display = 'none';
+};
+
+const showCloudWeatherImage = () => {
+    circle.style.display = 'none';
+    cloud.style.display = 'block';
+    drops.style.display = 'none';
+};
+
+const showRainWeatherImage = () => {
+    circle.style.display = 'none';
+    cloud.style.display = 'none';
+    drops.style.display = 'block';
+};
 
 //Rounding Numbers
 const roundNums = (num, decimals = 1) => {
@@ -49,15 +68,13 @@ const generateDate = (json) => {
 }
 
  // Get city, current temperature, sunrise, sunset from json and change html
-const generateHTMLForWeather = (stockholmWeather) => {
-    sunriseTime.innerText = generateTime(stockholmWeather.sys.sunrise);
-    sunsetTime.innerText = generateTime(stockholmWeather.sys.sunset);
-    city.innerText = stockholmWeather.name;
-    currentTemp.innerText = `${roundNums(stockholmWeather.main.temp, 0)} °C`;
-    
-    weatherType.innerText += stockholmWeather.weather[0].main;
-    weatherType.innerHTML += `<i class='${weatherIcon(stockholmWeather.weather[0].icon)}'>`;
-    
+const generateHTMLForWeather = (currentWeather) => {
+    sunriseTime.innerText = generateTime(currentWeather.sys.sunrise);
+    sunsetTime.innerText = generateTime(currentWeather.sys.sunset);
+    city.innerText = currentWeather.name;
+    currentTemp.innerText = `${roundNums(currentWeather.main.temp, 0)} °C`;
+    weatherType.innerText = currentWeather.weather[0].main;
+    weatherType.innerHTML += `<i class='${weatherIcon(currentWeather.weather[0].icon)}'>`;
 }
 
  // Get day and temperature from json and change html
@@ -89,54 +106,83 @@ const weatherIcon = (icon) => {
     };
 };
 
-
-//Change background depending on time
-const changeBackground = (stockholmWeather) => {
-    const currenttime = currentTime();
-    const sunrise = generateTime(stockholmWeather.sys.sunrise)
-    const sunset = generateTime(stockholmWeather.sys.sunset)
-    
-    if (currenttime > sunrise && currenttime < sunset) {
-        document.body.style.backgroundImage = 'linear-gradient(190deg, #FFC6C8 0%, #FAD56A 100%)';
-    } else {
-        document.body.style.backgroundImage = 'linear-gradient(190deg, #ffc6c8 0%, #976bb6 100%)';
+//Change background Image depending on weather type
+const bigWeatherIcon = (currentWeather) => {
+    const icon = currentWeather.weather[0].icon;
+    const code = icon[0] + icon[1];
+    switch (code) {
+        case '01': showSunWeatherImage(); 
+        case '02': showSunWeatherImage();
+        case '03': showCloudWeatherImage();
+        case '04': showCloudWeatherImage();
+        case '09': showRainWeatherImage();
+        case '10': showRainWeatherImage();
+        case '11': showRainWeatherImage();
+        case '13': showRainWeatherImage();
+        case '50': showRainWeatherImage();
     };
 };
 
-const updatedata = () => {
+//Change background depending on time
+const changeBackground = (currentWeather) => {
+    const currenttime = currentTime();
+    const sunrise = generateTime(currentWeather.sys.sunrise)
+    const sunset = generateTime(currentWeather.sys.sunset)
+
+    document.body.style.backgroundImage = currenttime > sunrise && currenttime < sunset 
+    ? 'linear-gradient(190deg, #FFC6C8 0%, #FAD56A 100%)'
+    : 'linear-gradient(190deg, #ffc6c8 0%, #976bb6 100%)'
+};
+
+const getSelectedLocation = () => {
     select = document.getElementById('selectCity');
-    console.log(select.options[select.selectedIndex].value)
     return select.options[select.selectedIndex].value;
 };
 
-fetch(url(updatedata())).then((response) => {
+
+//Fetch current weather  
+fetch(url(getSelectedLocation())).then((response) => {
     return response.json();
 })
-.then((stockholmWeather) => {
-    generateHTMLForWeather(stockholmWeather);
-    changeBackground(stockholmWeather);
-
-    const weatherTypeIcon = stockholmWeather.weather[0].icon;
+.then((currentWeather) => {
+    generateHTMLForWeather(currentWeather);
+    changeBackground(currentWeather);
+    bigWeatherIcon(currentWeather);
 });
 
 
-
-fetch(urlFiveDayForecast('Stockholm')).then((response) => {
+//Fetch 5 weather 
+fetch(urlFiveDayForecast(getSelectedLocation())).then((response) => {
     return response.json();
 })
 .then((forecast) => {
     generateHTMLFiveDayForecast(forecast);
 });
 
+//Update fetch depeding on selected city
+const update = () => {
+    fetch(url(getSelectedLocation())).then((response) => {
+        return response.json();
+    })
+    .then((currentWeather) => {
+        generateHTMLForWeather(currentWeather);
+        changeBackground(currentWeather);
+        bigWeatherIcon(currentWeather);
+    });
+
+    fetch(urlFiveDayForecast(getSelectedLocation())).then((response) => {
+        return response.json();
+    })
+    .then((forecast) => {
+        generateHTMLFiveDayForecast(forecast);
+    });
+}
 
 const getLocation = () => {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(setCoordinates);
-        console.log('yey');
-    } else {
-        console.log("Geolocation is not supported by this browser.");
-    }
-}
+    navigator.geolocation 
+    ? navigator.geolocation.getCurrentPosition(setCoordinates)
+    : console.log("Geolocation is not supported by this browser.")
+};
 
 const setCoordinates = (position) => {
     lat = position.coord.latitude

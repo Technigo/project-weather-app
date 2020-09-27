@@ -13,12 +13,16 @@ body {
     background-color: #FFC6C8;
     display: flex;
     flex-direction: column;
-    background-image: linear-gradient(190deg, #FFC6C8 0%, #fff 100%);
+}
+
+p {
+    color: #fff;
+    font-size: 20px;
 }
 
 /* Sun css */
 .circle {
-    display: ;
+    display: none;
     background: #F8934E;
     border-radius: 50%;
     width: 320px;
@@ -40,7 +44,7 @@ body {
     width: 180px;
     height: 180px;
     border-radius: 50%;
-    background: #ff6925;
+    background: #F8934E;
 }
 
 .cloud-circle:nth-child(1) {
@@ -81,7 +85,6 @@ body {
     transform:translate(35px,130px);
 }
 
-
 .drop {
     width: 100px;
     height: 100px;
@@ -115,6 +118,7 @@ body {
     left: 170px;
 }
 
+/* Current weather */
 .weather-container {
     display: flex;
     text-align: center;
@@ -127,24 +131,19 @@ body {
     text-orientation: mixed;
     font-weight: 700;
     font-size: 35px;
-    
     position: absolute;
     top: 10%;
     right: 5%;
-    
-    color: rgb(255, 255, 255);
+    color: #fff;
 }
 
 .weather-info {
     display: flex;
     flex-direction: column;
-
-  
     position: absolute;
     top: 5%;
     left: 10%;
-    
-    color: rgb(255, 255, 255);
+    color: #fff;
 }
 
 .weather-info h2{
@@ -162,7 +161,6 @@ body {
     color: #fff;
 }
 
-
 .city {
     font-weight: 300;
     font-size: 20px;
@@ -171,7 +169,6 @@ body {
 .sun {
     display: flex;
     flex-direction: row;
-
     margin-top: 5px;
 
 }
@@ -188,26 +185,11 @@ body {
     width: 100%;
 }
 
-
 .sunrise-container p {
     margin: 0;
     color: #fff;
     font-size: 16px;
     font-weight: 400;
-}
-
-@media only screen and (max-width: 600px) {
-
-   .picture-container img{
-   /* height: 100vh; */
-    width: 100%;
-}
-}
-
-
-p {
-    color: #fff;
-    font-size: 20px;
 }
 
 .day-container {
@@ -223,28 +205,45 @@ p {
     margin: 0 auto;
 }
 
-
-
 .weather-container {
     display: flex;
     flex-direction: column;
     width: 100%;
     padding-top: 100px;
     margin: 0 auto;
+    margin-bottom: 50px;
+    max-width: 500px;
 }
 
-button {
-    background-color: #4CAF50;
+select {
+    width: 100%;
     border: none;
-    color: white;
-    width: 30px;
-    height: 30px;
-    text-decoration: none;
-    padding: 0px;
-    margin: 0px;
-
-    vertical-align: middle;
-    
-    font-size: 40px;
+    padding:20px;
+    padding-left: 5%;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    background-color: #F8934E;
+    box-sizing: border-box;
 }
 
+@media only screen and (min-width: 600px) {
+    .weather-type {
+        font-size: 60px;
+        right: 10%;
+    }
+
+    .todays-temp {
+        right: 7%;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .weather-type {
+        font-size: 80px;
+    }
+
+    .todays-temp {
+        left: 30%;
+    }
+}

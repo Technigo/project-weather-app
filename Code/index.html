@@ -9,28 +9,26 @@
     <link rel="stylesheet" href="./css/weather-icons-wind.css">
     <link rel="stylesheet" href="./css/weather-icons-wind.min.css">
     <link rel="stylesheet" href="./css/weather-icons.min.css">
-    <title>Document</title>
+    <title>Weather</title>
 </head>
 <body onload="getLocation()">
-    <section class="picture-container">
-        <div class="clouds">
+    <section class="current-weather-container">
+        <div id="cloud" class="clouds">
             <div class="cloud-circle"></div>
             <div class="cloud-circle"></div>
             <div class="cloud-circle"></div>
             <div class="cloud-circle"></div>
             <div class="cloud-circle"></div>
         </div>
-        <div class="drop-container">
+        <div id="drops" class="drop-container">
             <div class="drop"></div>
             <div class="drop"></div>
             <div class="drop"></div>
             <div class="drop"></div>
         </div>
-        <div class="circle"></div>
+        <div id="circle" class="circle"></div>
         <div id="weatherType" class="weather-type"></div>
         <div class="weather-info">
-           
-           
             <h2 id="city" class="city">City</h2>
             <div class="sun">
                 <div class="sunrise-container">
@@ -42,9 +40,8 @@
                     <p id="sunsetTime"></p>
                 </div>
             </div>
-            
         </div>
-        <h2 id="todaysTemp" class="todays-temp">20°C</h2>
+        <h2 id="todaysTemp" class="todays-temp"></h2>
     </section>
  
     <section id="weatherContainer" class="weather-container">
@@ -70,12 +67,15 @@
             </div>
     </section>
     <section>
-        <select id="selectCity" onchange="updatedata();"> 
+        <select id="selectCity" onchange="update()"> 
+            <option value="Stockholm, Sweden">Stockholm</option>
             <option value="Luleå, Sweden">Luleå</option>
             <option value="New York, USA">New York</option>
+            <option value="Bangkok, Thailand">Bangkok</option>
+            <option value="Paris, France">Paris</option>
+            <option value="California, USA">California</option>
         </select>
     </section>
-    <div class="cloud"><div>
 <script src="./script.js"></script> 
 </body>
 </html>
