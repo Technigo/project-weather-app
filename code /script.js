@@ -32,6 +32,7 @@ fetch(weatherUrl)
         });
     });
 
+    // Functionality for five day forecast 
     fetch(forecastUrl)
     .then((response) => {
         return response.json();
