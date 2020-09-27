@@ -205,7 +205,7 @@ const displayTodaysWeather = (weatherArray) => {
   description.innerHTML = weatherArray.weather.map((a) => a.main)[0];
   const todayIcon = (weatherArray.weather.map((a) => a.icon)[0]).toString();
   returnColor(todayIcon);
-  picto.src = 'http://openweathermap.org/img/wn/' + todayIcon + '@2x.png';
+  picto.src = 'https://openweathermap.org/img/wn/' + todayIcon + '@2x.png';
   sunrise.innerHTML = (new Date((weatherArray.sys.sunrise + weatherArray.timezone - 7200) * 1000)).toLocaleTimeString([], {
     hour: '2-digit',
     minute: '2-digit',
@@ -232,7 +232,7 @@ const displayForecast = (forecastArray) => {
   });
   forecastWeather.forEach((item, index) => {
     forecasts[index].querySelector('.day-name').innerHTML = item.dayName;
-    forecasts[index].querySelector('.day-icon').src = 'http://openweathermap.org/img/wn/' + item.icon + '.png';
+    forecasts[index].querySelector('.day-icon').src = 'https://openweathermap.org/img/wn/' + item.icon + '.png';
     forecasts[index].querySelector('.day-temp').innerHTML = item.midTemp;
   });
 }
