@@ -1,13 +1,9 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+I need to built here a basic weather app using javascript.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Everything was a problem for the first, hard to understand a new language actually. I know the basics, how to practise in codesandbox, but using in the "real life" is much more difficult. So I started read a lot. Ask my team, what was their solutions, my friends who are developers at companies, tell me more about javascript. I asked my husband to watch my code, helped find the bugs, and now I understand. 
 
 ## View it live
-
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
