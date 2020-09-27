@@ -1,6 +1,6 @@
 //Weather from API
-const apiWeatherToday = 'http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=e33f1cc192401277e601a6aed3a82800';
-const apiForecast = "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=e33f1cc192401277e601a6aed3a82800";
+const apiWeatherToday = 'http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=e33f1cc192401277e601a6aed3a82800'
+const apiForecast = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=e33f1cc192401277e601a6aed3a82800'
 
 //Catching id's from html
 const weatherDescription = document.getElementById('description')
@@ -21,37 +21,51 @@ const fetchWeather = () => {
     weatherLocation.innerHTML = weather.name;
     weatherDescription.innerHTML = weather.weather[0].description
     weatherTemperature.innerHTML = Math.round(weather.main.temp)
-
     const weatherSunrise = () => {
         const dateSunrise = new Date(weather.sys.sunrise * 1000);
         const timeSunrise = dateSunrise.toLocaleTimeString([], {
             hour: '2-digit',
             minute: '2-digit',
-        });
-        document.getElementById('sunrise').innerHTML = timeSunrise;
-  };
+        })
+        document.getElementById('sunrise').innerHTML = timeSunrise
+  }
+    weatherSunrise()
 
-    weatherSunrise();
 
 // Sunset
     const weatherSunset = () => {
-      document.getElementById('sunset').innerHTML += `<p>Sunset</p>`;
         const dateSunset = new Date(weather.sys.sunset * 1000);
         const timeSunset = dateSunset.toLocaleTimeString([], {
             hour: '2-digit',
             minute: '2-digit',
-        });
-
-        document.getElementById('sunset').innerHTML = timeSunset;
-    };
-
-    weatherSunset();
- });
+        })
+        document.getElementById('sunset').innerHTML = timeSunset
+    }
+    weatherSunset()
+ })
 }
 
 fetchWeather();
 
+// Objects for the weatherconst currentWeather = () => {if (weatherDescription.includes("cloud") return cloudyWeather.image}
+
+const rainyWeather = {
+  name: 'rain',
+  image: 'Designs/Design-2/icons/umbrella.svg'
+  }
+
+const sunnyWeather = {
+  name: 'sunny',
+  img: `${sunglassesIcon}`
+}
+
+const cloudyWeather = {
+  name: 'cloudy',
+  img: `${cloudIcon}`
+}
+
 // Forecast for the next 5 days
+
 fetch(apiForecast)
     .then((Response) => { 
         return Response.json()
@@ -59,17 +73,17 @@ fetch(apiForecast)
     .then ((json) => {
         const filteredForecast = json.list.filter(item =>
         item.dt_txt.includes("12:00")
-        );
+        )
 
         filteredForecast.forEach(day => {
-            const date = new Date(day.dt * 1000);
+            const date = new Date(day.dt * 1000)
 
-            const dayName = date.toLocaleDateString("en-EN", { weekday: "short" });
+            const dayName = date.toLocaleDateString("en-EN", { weekday: "short" })
 
             const dayTemp = day.main.temp;
-            const weekTemp = dayTemp.toFixed(0.1);
+            const weekTemp = dayTemp.toFixed(0.1)
 
             document.getElementById('weekday').innerHTML += `<p>${dayName}</p>`
             document.getElementById('weekTemp').innerHTML += `<p>${weekTemp}°C</p>`
-    });
-});
+    })
+})
