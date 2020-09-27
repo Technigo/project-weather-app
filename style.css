@@ -1,25 +1,30 @@
 html {
   scroll-behavior: smooth;
+  /* making the mix-blend-mode working with animation */
+  /* https://medium.com/tazh-design/mix-blend-mode-not-working-try-this-d152ca2a1b08 */
+  background: #fff;
 }
 
 body {
   color: rgba(255, 255, 255, 0.8);
   margin: 0;
-  font-family: helvetica;
+  font-family: "Roboto", sans-serif;
 }
 
 header {
   display: flex;
+  flex-direction: column;
 }
 
 h1 {
-  margin: 0;
-  margin: 0 24px;
+  margin: 20px 24px 0;
   font-size: 36px;
+  letter-spacing: 1px;
+  font-weight: 900;
 }
 
 h2 {
-  margin: 26px 30px 36px;
+  margin: 36px 30px 6px;
 }
 
 p {
@@ -34,14 +39,15 @@ p {
 }
 
 .weather-today {
-  font-size: 24px;
+  font-size: 30px;
   margin-bottom: 10px;
 }
 
 /* MAIN */
 
 .main-weather {
-  margin: 60px 0 20px 20px;
+  margin: 60px 0 20px 60px;
+  text-align: center;
 }
 
 .text-container {
@@ -113,7 +119,7 @@ li {
 }
 
 .open {
-  /* cout out text to white background */
+  /* cut out text to white background */
   background: #fff;
   color: #000;
   mix-blend-mode: screen;
@@ -124,6 +130,28 @@ li {
   height: 500px;
   transition: none;
 }
+
+/* animated icon */
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.85);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+#mainWeather {
+  animation-name: pulse;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+
+/* found above animated icon soluton at ---> https://salferrarello.com/css-pulse-animation/ */
 
 /*** WEATHER COLOURS ***/
 

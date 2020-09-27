@@ -2,12 +2,9 @@
 
 // *** VARIABLES
 
-// const stad = "arctic";
-// const stad = dropdown.value;
 let currentLocation = "stockholm";
 
-// const key = "5c01b021abe8da367bcecadd67235fb3";
-const key = "c333ad1637e15b11d381a890076be47b";
+const key = "5c01b021abe8da367bcecadd67235fb3";
 
 // *** current
 let city = document.getElementById("city");
@@ -87,6 +84,7 @@ const weatherToDay = () => {
       // *** main weather
       mainWeather.innerHTML = data.weather[0].main;
 
+      // getting local time used for sunrise/sunset
       const localTime = data.dt; // time city
       const timeZone = data.timezone; // local time (city) difference from UTC
       const offset = new Date().getTimezoneOffset() * 60; // time difference (stockholm) from UTC in sec
@@ -279,9 +277,17 @@ const weatherForcast = () => {
           iconForecast += `src="images/thunderstorm.svg"></div>`;
         }
 
+        // adding "a" or "[nothing]"
+        const pre =
+          weather.includes("few") ||
+          weather.includes("clear") ||
+          weather.includes("thunderstorm")
+            ? "a"
+            : "";
+
         // writing to html
 
-        forecast.innerHTML += `<div class="forecast-card"><div class="text-container"><p class="forecast-info">${day} with ${weather} and a temperature of ${temp}°C<p></div>${iconForecast}</div>`;
+        forecast.innerHTML += `<div class="forecast-card"><div class="text-container"><p class="forecast-info">A ${day} with ${pre} ${weather} and a temperature of ${temp}°C<p></div>${iconForecast}</div>`;
       });
     });
 };
@@ -320,8 +326,6 @@ const changeCity = (city) => {
 
 // *** GET LOCATION
 
-/* Too slow:(
-
 // geo-location
 const getLocation = () => {
   if (navigator.geolocation) {
@@ -345,5 +349,3 @@ const usePosition = (position) => {
 };
 
 getLocation();
-
- */
