@@ -1,5 +1,5 @@
 const API_KEY = "f54ca9831c8974c87fd4826fae420a1a"
-const API_URL = `http://api.openweathermap.org/data/2.5/weather?q=Malmo,Sweden&units=metric&APPID=${API_KEY}`
+const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=Malmo,Sweden&units=metric&APPID=${API_KEY}`
 const API_URL_5DAYS = `https://api.openweathermap.org/data/2.5/forecast?q=Malmo,Sweden&units=metric&APPID=${API_KEY}`
 
 
@@ -53,7 +53,7 @@ fetch(API_URL)
             }
 
             setWeatherImages()
-            
+
         });
 
     })
