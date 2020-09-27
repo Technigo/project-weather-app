@@ -1,7 +1,4 @@
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
   width: 100vw;
   margin: 0;
@@ -9,10 +6,17 @@ body {
   font-weight: bold;
 }
 
-main {
+header {
+  position: fixed;
+  top: 0;
   width: 100%;
+  background-color: #000000;
+}
+
+main {
+  /* width: 100%; */
   height: 100%;
-  padding: 0 20%;
+  padding: 0 10%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,7 +24,7 @@ main {
 
 h1 {
   text-align: center;
-  margin: 10px;
+  margin: 10px 0;
 }
 
 h3 {
@@ -78,6 +82,13 @@ select {
 }
 
 @media (min-width: 768px) {
+  body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  }
+
   main {
     width: 240px;
     height: 568px;
