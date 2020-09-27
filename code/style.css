@@ -1,3 +1,5 @@
+/* I left the "border: 1px dashed" lines due to debugging purposes. */
+
 /* 
 font-family: 'Work Sans', sans-serif;
 weights: 100,200,400,600,800 
@@ -5,20 +7,11 @@ weights: 100,200,400,600,800
 Blue:    #0C60F2
 Yellow:  #F6C844 */
 
-/* script, title {
-  display: none;
-} */
-
 * {
     box-sizing: border-box;
     margin: 0;
     /* border: 1px dashed salmon; */
     font-size: 19px;
-}
-
-html {
-  /* height: 100%; */
-  /* width: 100%; */
 }
 
 body {
@@ -37,11 +30,8 @@ body {
 
 /* THIS IS THE GUY THAT HOLDS EVERYTHING IN PLACE */
 .container {
-  /* border: 1px solid rgba(255,255,255,1); */
   width: 100%;
-  /* height: 667px; */
   margin: auto;
-  /* margin-top: 5%; */
   display: flex;
   flex-direction: column;
   align-content: space-between;
@@ -49,9 +39,7 @@ body {
   overflow: hidden;
   position: fixed;
   top: 0;
-  /* right: 0; */
   bottom: 0;
-  /* left: 0; */ */
 }
 
 /* =================== everything here =================== */
@@ -99,13 +87,21 @@ header {
   text-transform: uppercase;
 }
 
-
 .input-city {
   border: 0;
   height: 34px;
   font-family: 'Work Sans', sans-serif;
   color: #0C60F2;
   font-weight: 800;
+  border-radius: 0;
+}
+
+input:active {
+  outline: 0;
+}
+
+input:focus {
+  outline: 0;
 }
 
 
@@ -158,12 +154,7 @@ button {
   box-sizing: border-box;
 }
 
-button:hover {
-
-}
-
 button:focus {
-
   outline: 0;
 }
 
@@ -185,7 +176,6 @@ button img {
 
 main {
   /* border: 1px dashed aquamarine; */
-  /* height: auto; */
   display: flex;
   flex-grow: 1;
   padding: 16px;
@@ -241,6 +231,7 @@ main {
   color: #F6C844;
   font-weight: 800;
   text-transform: uppercase;
+  font-size: 24px;
 }
 
 .weather-top-suntimes {
@@ -253,6 +244,10 @@ main {
   margin-right: 24px;
 }
 
+.sun-time img {
+  width: 32px;
+  height: 32px;
+}
 
 .main-weather-bottom {
   /* border: 1px dashed sandybrown; */
@@ -266,7 +261,6 @@ main {
 
 
 /* (This is the celsius sign) */
-
 .temp-big-but-slightly-smaller {
   vertical-align: super;
   font-size: 42px;
@@ -290,11 +284,6 @@ footer {
   background-repeat: repeat;
   background-size: contain;
 }
-
-/* .footer-top img {
-  width: 100%;
-  
-} */
 
 .footer-main {
   background-color: white;

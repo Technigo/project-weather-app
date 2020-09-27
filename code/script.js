@@ -13,26 +13,18 @@ const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
 const weatherType = document.getElementById("weathertype");
 
-const forecastDay1 = document.getElementById("day1");
-const forecastDay2 = document.getElementById("day2");
-const forecastDay3 = document.getElementById("day3");
-const forecastDay4 = document.getElementById("day4");
-const forecastDay5 = document.getElementById("day5");
-
-
+// This one toggles whether to show the city selector or not, by adding a display: none;
 const toggleCountrySelector = () => {
   var citySelector = document.getElementById("citySelector");
   var inputCity = document.getElementById("inputCity")
-  inputCity.value = "";
+
   if (citySelector.style.display === "none") {
     citySelector.style.display = "block";
-    inputCity.select();
-    inputCity.focus();
+
   } else {
     citySelector.style.display = "none"; 
   }
 }
-
 
 // formatTime() formats UNIX 10-digit timestamps to HH:MM format.
 const formatTime = (timestamp) => {
@@ -48,20 +40,16 @@ const formatTime = (timestamp) => {
   return readableTime;
 }
 
+// Function takes a Kelvin value, and returns a celsius value. 
 const kelvinToCelsius = (temp) => {
   let celsius = Math.round(temp-273.15);
   return celsius
 }
 
-const fetchWeather = (city) => {
-  fetchForecast(city);
-  fetchCurrentWeather(city);
-  toggleCountrySelector();
-}
-
+// Returns the big weather image depending on the weather.
 const fetchWeatherImage = (weather) => {
   // Purpose of this function should be to fetch an image and load it to the DOM, depending on the weather type.
-  // Available: Clouds, Clear, Snow, Rain, Drizzle, Thunderstorm.
+  // Available: Clouds, Clear, Snow, Rain, Drizzle, Thunderstorm. (MIST IS MISSING)
   const image = document.getElementById("weatherImage");
 
   if(weather === 'Clouds') {
@@ -95,6 +83,7 @@ const fetchWeatherImage = (weather) => {
   }
 }
 
+// Returns an image depending on the weather. Used in the forecast. Function is named after old purpose.
 const fetchForecastEmojis = (weather) => {
   if(weather === 'Clouds') {
     // return "☁️";
@@ -126,7 +115,6 @@ const fetchForecastEmojis = (weather) => {
 }
 
 
-
 // Function which fetches current weather data from a city, and populates the main objects in the DOM.
 const fetchCurrentWeather = (cityName) => {
   fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=607d94111f1f9c343f38c10112b16e3c`).then((response) => {
@@ -135,7 +123,6 @@ const fetchCurrentWeather = (cityName) => {
 
     city.innerHTML = weatherObject.name;
     country.innerHTML = getCountryName(weatherObject.sys.country);
-    // localtime.innerHTML = formatTime(weatherObject.dt);
     temperature.innerHTML = Math.round(weatherObject.main.temp);
     tempFeelsLike.innerHTML = Math.round(weatherObject.main.feels_like)+"°";
     weatherType.innerHTML = weatherObject.weather[0].main;
@@ -186,12 +173,20 @@ const fetchForecast = (cityName) => {
 
     });
   })
+} 
+
+// THIS IS WHERE THE MAGIC HAPPENS 👇.
+const fetchWeather = (city) => {
+  fetchForecast(city);
+  fetchCurrentWeather(city);
+  
+  toggleCountrySelector();
 }
 
+// CODE STARTS HERE
 fetchWeather(cityName);
 
-
-// This line of code disables submitting through the enter key (since I did an ugly-hack for the city selector)
+// This line of code disables submitting through the enter key (since I did an ugly-hack for the city selector). Probably bad to re-route the submit function like this, but time was short.
 // Modified it to call the fetchWeather function upon pressing Enter.
 // https://stackoverflow.com/questions/5629805/disabling-enter-key-for-form/37241980
 window.addEventListener('keydown',function(e){
