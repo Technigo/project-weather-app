@@ -36,7 +36,7 @@ class WeatherTemplate {     //JavaScript class to collect data from both API's
 
 //-----------Function to generate HTML for current weather info on top of page----------
 const generateCurrentWeatherInfo = current => {
-    const currentWeatherObject = new WeatherTemplate(   //getting a new object with info from current day
+    const currentWeatherObject = new WeatherTemplate(   //creating a new object with info from current day
         getDateDay(current.dt),                         //setting which data is the date in the current day weather object 
         current.weather[0].main,                        //setting which data is the weather description in the current day weather object 
         current.main.temp.toFixed(0),                   //setting which data is the temperature in the current day weather object 
@@ -44,7 +44,7 @@ const generateCurrentWeatherInfo = current => {
         getSunOutTime(current.sys.sunrise),             //setting which data is sunrise time in the current day weather object and how it's calculated
         getSunOutTime(current.sys.sunset)               //setting which data is the sunset time for current day and how it's calculated
     );
-    return currentWeatherObject;        //returning the weahter template so it can be picked up
+    return currentWeatherObject;        //returning the weather template so it can be picked up
 };
 //------------------Function to generate wanted time from the API-------------------
 const getSunOutTime = data => {
