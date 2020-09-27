@@ -3,8 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>⛅ Sandrine's SMHI killer ⛅</title>
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 </head>
@@ -12,22 +12,25 @@
 <body>
 
   <main>
-
+    <section class="citySelector">
+      <select name="city" id="citySelector" required>
+        <option value="stockholm" selected>Stockholm</option>
+        <option value="bordeaux">Bordeaux</option>
+        <option value="papeete">Papeete</option>
+        <option value="rom">Rome</option>
+        <option value="london">London</option>
+        <option value="sidney">Sidney</option>
+        <input id="citySubmit" type="submit" value="Display">
+      </select>
+    </section>
     <section class="today">
-      <h3>Today's weather in</h3>
-      <h1>
-        <select name="city" id="citySelector" required>
-          <option value="stockholm" selected>Stockholm</option>
-          <option value="bordeaux">Bordeaux</option>
-          <option value="papeete">Tahiti</option>
-          <option value="rom">Rome</option>
-          <option value="london">London</option>
-          <option value="sidney">Sidney</option>
-          <input id="citySubmit" type="submit" value="Submit">
-        </select>
-        <!-- <input id="input" type="text">
-        <button id="click-button">Search!</button> -->
-      </h1>
+      <!-- <h3>Today's weather in</h3> -->
+      <!-- <h1>
+        <input id="input" type="text">
+        <button id="click-button">Search!</button>
+      </h1> -->
+      <h1 id="city"></h1>
+      <h3 id="time"></h3>
       <div class="weather">
         <h1 id="temperature"></h1>
         <h1 id="description"></h1>
