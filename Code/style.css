@@ -1,11 +1,3 @@
-/* #FE6925
-#FFC6C8
-
-#15E5FF
-*/
-
-
-
 body {
     padding:0;
     margin: 0;
@@ -235,6 +227,7 @@ select {
     box-sizing: border-box;
 }
 
+/* Media queries */
 @media only screen and (min-width: 600px) {
     .weather-type {
         font-size: 60px;

@@ -134,11 +134,11 @@ const changeBackground = (currentWeather) => {
     : 'linear-gradient(190deg, #ffc6c8 0%, #976bb6 100%)'
 };
 
+//Get location from selected input
 const getSelectedLocation = () => {
     select = document.getElementById('selectCity');
     return select.options[select.selectedIndex].value;
 };
-
 
 //Update fetch depeding on selected city
 const update = () => {
@@ -159,17 +159,5 @@ const update = () => {
     });
 }
 
-const getLocation = () => {
-    navigator.geolocation 
-    ? navigator.geolocation.getCurrentPosition(setCoordinates)
-    : console.log("Geolocation is not supported by this browser.")
-};
-
-const setCoordinates = (position) => {
-    lat = position.coord.latitude
-    lon = position.coord.longitude
-    geolocationAPI = `api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`
-    
-}
 //Default fetch
 update();
