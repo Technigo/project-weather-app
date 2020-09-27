@@ -111,22 +111,6 @@ header {
     animation: AnimationName 30s ease infinite;
 }
 
-@-webkit-keyframes AnimationName {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-}
-@-moz-keyframes AnimationName {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-}
-@keyframes AnimationName {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-}
-
 /* Hamburger menu  */
 
 /* navigation menu */
@@ -145,11 +129,6 @@ header {
     text-decoration: none;
     display: block;
     font-size: 16px;
-}
-  
-.topnav:hover {
-    background-color: rgba(255,255,255, 0.9);
-    color: #010101;
 }
   
 /* style the active link (or home/logo) */
@@ -173,10 +152,6 @@ select {
     margin-right: 10px;
 }
 
-select:hover {
-    color: #010101;
-}
-
 /* For tablet only */
 @media screen and (min-width: 667px) and (max-width: 1024px) {
 
@@ -186,21 +161,9 @@ select:hover {
         height: 200px;
     }
 
-    .topnav a {
-        color: black;
-        font-size: 20px;
-    }
-
     .topnav .active {
         color: #ffffff;
-    }
-
-    .topnav a:hover {
-        color: #010101;
-    }
-
-    .topnav a.icon {
-        color: #ffffff;
+        font-size: 20px;
     }
 
     .header-title {
@@ -241,6 +204,11 @@ select:hover {
         color: black;
     }
 
+    .topnav:hover {
+        background-color: rgba(255,255,255, 0.9);
+        color: #010101;
+    }
+
     .header-title {
         display: block;
         text-align: center;
@@ -258,14 +226,14 @@ select:hover {
     select {
         color: #ffffff;
     }
+
+    select:hover {
+        color: #010101;
+        cursor: pointer;
+    }
 }
 
 /** WEATHER SECTION **/
-
-/* hide section (only ipad and laptop) */
-.weekly-weather-focus {
-    display: none;
-}
 
 .weekly-weather {
     display: flex;

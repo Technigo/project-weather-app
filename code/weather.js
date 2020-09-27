@@ -128,7 +128,7 @@ const weatherIcon = (condition) => {
   }
 } 
 
-//function to pick different location (did not have time to complete)
+//function to pick different location (NOT WORKING - did not have time to complete)
  const weatherLocation = () => {
    const selectLocation = document.getElementById('selectLocation').value;
    return selectLocation;
