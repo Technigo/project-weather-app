@@ -17,3 +17,5 @@ Technologies used:
 -HTMLS
 
 ## View it live
+
+https://liza-project-weather-app.netlify.app/
