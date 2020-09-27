@@ -10,29 +10,65 @@
 
 <body>
     <main class="wrapper">
+
+        <div class="search-container">
+            <input class="search-control" type="text" placeholder="City Name or Zipcode">
+            <button class=search-control id="search-btn">Search</button>
+
+        </div>
+
+
         <div class="weather-info">
             <h1 id="name"></h1>
             <p id="day"></p>
-            <h2 id="degrees" class="celsius"></h2>
             <div class="icon">
-                <p id=weather-type></p>
+                <h2 id="degrees" class="celsius"></h2>
                 <img id="weatherPic" src="" />
             </div>
-
-
-            <p id="rise"><img src="./img/sunrise2.png" alt="sunrise" /> Sunrise </p>
-            <p id="set"><img src="./img/sunset.png" alt="sunrise" /> Sunset </p>
+            <p id=weather-type class="type"></p>
         </div>
 
-        <div class="forecast">
-            <h1>5 days forecast</h1>
-
-            <p id="5days"></p>
+        <div class="sun">
+            <p id="sunrise"><img src="./img/sunrise2.png" alt="sunrise" /> Sunrise </p>
+            <p id="sunset"><img src="./img/sunset.png" alt="sunrise" /> Sunset </p>
+        </div>
+        <h1>5 days forecast</h1>
+        <div class="fivedays-forecast">
+            <p id="days"></p>
+            <p id="temp"></p>
             <img id="forecastIcon" src="" />
-
         </div>
+
+        <!-- <div class="fivedays-forecast">
+            <div class="forecast">
+                <p class="days"></p>
+                <p class="temp"></p>
+                <img class="icon" src="" />
+            </div>
+            <div class="forecast">
+                <p class="days"></p>
+                <p class="temp"></p>
+                <img class="icon" src="" />
+            </div>
+            <div class="forecast">
+                <p class="days"></p>
+                <p class="temp"></p>
+                <img class="icon" src="" />
+            </div>
+            <div class="forecast">
+                <p class="days"></p>
+                <p class="temp"></p>
+                <img class="icon" src="" />
+            </div>
+            <div class="forecast">
+                <p class="days"></p>
+                <p class="temp"></p>
+                <img class="icon" src="" />
+            </div> -->
+
+
     </main>
-    <script src="./script.js"></script>
+    <script src="./script.js" type="module"></script>
 
 </body>
 
