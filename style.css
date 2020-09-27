@@ -3,7 +3,7 @@ body {
     color: white;
     background-color: rgb(12, 192, 247);
     animation-name: example;
-    animation-duration: 4s;
+    animation-duration: 10s;
 }
 
 @keyframes example {
@@ -50,6 +50,7 @@ body {
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
+  border-bottom: white solid;
 }
 
 .forecast {

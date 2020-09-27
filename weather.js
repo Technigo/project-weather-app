@@ -72,13 +72,13 @@ fetch(apiUrl2).then((response) => {
     return response.json();
 }).then((json) => {
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
-
+ 
     filteredForecast.forEach((day) => {
         const date = new Date(day.dt * 1000);
         const weekdays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
         let dayOfWeek = weekdays[date.getDay()];
-  
         theWeekdays.innerHTML += `<h2>${dayOfWeek}</h2>`;
-        forecastMainTemp.innerHTML += `<h2><span>${day.main.temp.toFixed(1)}&#730<sup>c</sup></h2>`;
+        forecastMainTemp.innerHTML += `<h2>${day.main.temp.toFixed(1)}&#730<sup>c</sup></h2>`;
+      
     });
 });
