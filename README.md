@@ -10,4 +10,4 @@ After fetching data for current weather and displaying it on the html-page  I we
 
 ## View it live
 
-Link to the deployed project on Netlify: 
+Link to the deployed project on Netlify: https://w6-weather-app.netlify.app/

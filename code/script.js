@@ -51,9 +51,9 @@ fetch(weatherUrl) //Fetching data
     })
     
     const forecastInfo = day => { // Function to get the weekdays to show in the right format
-        const weekdayUnix = day.dt;
-        const weekdayLong = new Date(weekdayUnix * 1000);
-        const newWeekday = weekdayLong.toLocaleDateString('en-US', {weekday: 'long'});
+        const weekdayDT = day.dt;
+        const weekdayConverted = new Date(weekdayDT * 1000);
+        const newWeekday = weekdayConverted.toLocaleDateString('en-US', {weekday: 'long'});
     
         //Get forecast weather description
         const descriptionForecast = day.weather[0].description; 
