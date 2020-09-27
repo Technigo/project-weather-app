@@ -17,6 +17,12 @@
     margin: 0 25px;
   }
 
+  @media (min-width: 768px) {
+    .daily-weather {
+      margin: 0 100px;
+    }
+  }
+
   .time-location-date {
     margin-bottom: 20px;
   }
@@ -62,13 +68,10 @@
     justify-content: center;
   }
 
+  /*fix that part for tablet and desktop view only!*/
   .statement-image-text {
     display: flex;
-    flex-direction: column;
-    text-align: left;
     width: 80%;
-    justify-content: center;
-    padding-left: 69px;
   }
 
   .statement-image-text > p {
@@ -94,7 +97,13 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 80%;
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .five-day-forecast {
+      width: 80%;
+    }
   }
 
   
@@ -114,6 +123,12 @@
     font-size: 13px;
   }
 
+  @media (min-width: 768px) {
+    footer > p {
+      font-size: 21px;
+    }  
+  }
+
   /**MEDIA QUERIES**/
 
   /*tablet view*/
@@ -130,9 +145,6 @@
       .current-time, .current-date {
         font-size: 22px;
       }
-      .daily-weather {
-        margin: 0 100px;
-      }
 
       .statement, 
       .forecast {
@@ -142,10 +154,6 @@
       .statement-image-text > p {
         font-size: 40px;
       }
-
-      footer > p {
-        font-size: 21px;
-      }  
   }
 
   @media (min-width: 1024px) {

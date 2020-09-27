@@ -24,8 +24,7 @@ fetch(API_URL_WEATHER)
     return response.json();
   })
   .then((weatherObject) => {
-    //when we have the data api returns, we log it
-    //data is available here
+    //data from API is available here
 
     const currDate = new Date();
     const dateFormatted = currDate.toLocaleDateString("se-SE", {
@@ -41,7 +40,10 @@ fetch(API_URL_WEATHER)
     //city + country
     cityCountry.innerHTML = `${weatherObject.name}, ${weatherObject.sys.country}`;
 
+    //temperature
     temp.innerHTML = `${weatherObject.main.temp.toFixed()}°`;
+
+    //description
     description.innerHTML = weatherObject.weather[0].description;
 
     //formatting unix stamps to time
