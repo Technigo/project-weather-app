@@ -1,5 +1,5 @@
 //APIs for current weather & forecast
-const currentWeather_API_URL = 'http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=7d8d53e0c0365a01e3359eb496ea9fef';
+const currentWeather_API_URL = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=7d8d53e0c0365a01e3359eb496ea9fef';
 const forecast_API_URL = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=7d8d53e0c0365a01e3359eb496ea9fef';
 
 
@@ -43,7 +43,7 @@ fetch(currentWeather_API_URL)
     sunset = weatherObject.sys.sunset;
     city.innerHTML = weatherObject.name;
     currentTemperature.innerHTML = `${weatherObject.main.temp.toFixed(1)}°`;
-    currentWeatherIcon.src = 'http://openweathermap.org/img/wn/' + icon1 + '@2x.png';
+    currentWeatherIcon.src = 'https://openweathermap.org/img/wn/' + icon1 + '@2x.png';
     weatherType.innerHTML = weatherObject.weather[0].description; 
     //converting the data given UNIX (in seconds) to milliseconds which is used in JS
     sunriseTime.innerHTML = `Sunrise:  ${new Date(sunrise * 1000).toLocaleTimeString('sv-SE',{hour: '2-digit', minute: '2-digit'})}`;
@@ -69,8 +69,7 @@ fetch(forecast_API_URL)
     forecastDay.innerHTML += `<p>${dayName}</p> `; 
     const temp = Math.floor(day.main.feels_like);
     forecastFeelsLikeTemp.innerHTML += `<p>${temp}° </p>`;
-    forecastWeatherIcon.innerHTML += `<img src="http://openweathermap.org/img/wn/${day.weather[0].icon}.png" />`;
-    
+    forecastWeatherIcon.innerHTML += `<img src="https://openweathermap.org/img/wn/${day.weather[0].icon}.png" />`;
     }); 
 }); 
        
