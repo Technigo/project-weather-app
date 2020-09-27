@@ -58,14 +58,14 @@ const generateTime = (json) => {
     const time = new Date(json * 1000);
     const timeToString = time.toLocaleTimeString('sv-SE', { hour: 'numeric', minute: 'numeric'});
     return timeToString;
-}
+};
 
 //Generate date from jason
 const generateDate = (json) => {
     const date = new Date(json * 1000);
     const dateToString = date.toLocaleDateString('sv-SE', { weekday: 'long'});
     return dateToString;
-}
+};
 
  // Get city, current temperature, sunrise, sunset from json and change html
 const generateHTMLForWeather = (currentWeather) => {
@@ -75,7 +75,7 @@ const generateHTMLForWeather = (currentWeather) => {
     currentTemp.innerText = `${roundNums(currentWeather.main.temp, 0)} °C`;
     weatherType.innerText = currentWeather.weather[0].main;
     weatherType.innerHTML += `<i class='${weatherIcon(currentWeather.weather[0].icon)}'>`;
-}
+};
 
  // Get day and temperature from json and change html
 const generateHTMLFiveDayForecast = (forecast) => {
@@ -87,7 +87,7 @@ const generateHTMLFiveDayForecast = (forecast) => {
     filteredFiveDayForecast.forEach((item, index) => {
         days[index].querySelector('.temperature').innerText = `${roundNums(item.main.temp)} °C`;
     });
-}
+};
 
 // Assign new Icon depending on icon from json
 const weatherIcon = (icon) => {
@@ -157,7 +157,7 @@ const update = () => {
     .then((forecast) => {
         generateHTMLFiveDayForecast(forecast);
     });
-}
+};
 
 //Default fetch
 update();
