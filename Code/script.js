@@ -1,7 +1,6 @@
 
 const weatherStockholm = "https://api.openweathermap.org/data/2.5/weather?q=stockholm&units=metric&appid=e74df95bd073adf9306ac7f46ad51144";
 const forecastStockholm = "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=e74df95bd073adf9306ac7f46ad51144";
-
 const weather = document.getElementById("weatherToday");
 const city = document.getElementById("city");
 const temp = document.getElementById("temp");
@@ -11,8 +10,6 @@ const forecast = document.getElementById("forecast");
 const minMaxTemp = document.getElementById("minMaxTemp");
 const forecastTemp = document.getElementById("forecastTemp");
 
-
-    
 
 const weekdays = [
   "Sun",
@@ -41,7 +38,7 @@ fetch(weatherStockholm)
     let sunset = new Date(sunSet * 1000)
 
     city.innerHTML = json.name;
-  temp.innerHTML = json.main.temp.toFixed(1);
+    temp.innerHTML = json.main.temp.toFixed(1);
     description.innerHTML = json.weather.map((a) => a.description);
     
 
