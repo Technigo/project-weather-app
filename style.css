@@ -113,6 +113,10 @@ body {
 }
 
 @media(max-width:350px) {
+  .weather-today {
+    height: 60vh;
+  }
+
   .location-information {
     margin: 50px 12px 20px 12px;
   }
