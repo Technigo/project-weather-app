@@ -44,26 +44,13 @@ fetch(forecastApi)
         
     filteredForecast.forEach(item => {
     const date = new Date(item.dt * 1000)
-    let dayName = date.toLocaleDateString("en-US", { 
+    const dayName = date.toLocaleDateString("en-US", { 
         weekday: "short" 
-    });
+  });
         
-    const dayTemperature = item.main.temp;
+    const dayTemperature = item.main.temp.toFixed(1);
 
-    forecastDayAndTemp.innerHTML += `<h5>${dayName}: ${dayTemperature.toFixed(1)} °C</h5>`;
+    forecastDayAndTemp.innerHTML += `<h5>${dayName}: ${dayTemperature} °C</h5>`;
     
-    });
+  });
 })
-
-
-  /*   const changeColor = {
-        color: 'green',
-    };
-
-    if (temperature > 13) {
-        document.getElementById('weatherApp').style.background = changeColor.color;
-    } else {
-        colorbackground; "blue";
-    }
-} 
- */

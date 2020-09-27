@@ -1,12 +1,10 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This weeks project was to build a responsive weather app by using API.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I had short time to work on this project this week but I managed to do the blue level. I fetched external data from weather API:s, to my website. I also manipulated the DOM in javascript to show information in my weather app. If I had more time I would have added images and favourite cities.
 
 ## View it live
 
