@@ -1,5 +1,6 @@
 # Weather App - Overview
 Project done as a part of Technigo bootcamp.
+
 Build a simple weather web app that shows today's weather and temperature, and a 5-day forecast using a weather API.
 
 Learning Objectives:
