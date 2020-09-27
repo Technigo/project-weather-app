@@ -4,6 +4,7 @@ const apiUrl2 = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sw
 
 
 const weatherDescription = document.getElementById('weatherDescription');
+const weatherText = document.getElementById('weatherText');
 //const city = document.getElementById('city');
 //const mainTemp = document.getElementById('mainTemp');
 //ovan behövs inte, förstår inte riktigt vrf, eftersom const weather/.../ behövs...
@@ -24,16 +25,22 @@ fetch(apiUrl).then((response) => {
     function weatherIconShow(weather) {
         if (weather == "Rain"  || weather == "Drizzle") {
             document.getElementById('weatherIcon').src = './icons/noun_Umbrella_2030530.svg';
+            weatherText.innerHTML += "Under the umberella please! Or stay inside. Or do you dance in the rain?</h3>"
         } else if (weather == "Clouds") {
             document.getElementById('weatherIcon').src = './icons/noun_Cloud_1188486.svg';
+            weatherText.innerHTML += "Cloudy today. Maybe stay inside, light a fire and drink some warm chocolate.</h3>"
         } else if (weather == "Sunny"  ||  weather == "Clear") {
             document.getElementById('weatherIcon').src = './icons/noun_Sunglasses_2055147.svg';
+            weatherText.innerHTML += "Aaah! No clouds, no rain, let's get out and enjoy the weather.</h3>"
         } else if (weather == "Thunderstorm") {
             document.getElementById('weatherIcon').src = './icons/noun_Cloud_1188486.svg';
+            weatherText.innerHTML += "The power of nature. Stay safe inside. Light a fire and look at the spectacle through the window. Listen to the roar from the sky.</h3>"
         } else if (weather == "Snow") {
             document.getElementById('weatherIcon').src = './icons/iconfinder_Snow_3741358.svg';
+            weatherText.innerHTML += "Stay warm and cousy inside? Out skiing or build a snow man?</h3>"
         } else {
             document.getElementById('weatherIcon').src = './icons/iconfinder_Weather_forecast_weather_station_radar_6646328.svg';
+            weatherText.innerHTML += "Welcome to this weather app!</h3>"
         }
     }
 
@@ -52,6 +59,7 @@ const night = () => {
     console.log(currentTime)
     if (currentTime >= 22 && currentTime <= 04){
         document.getElementById('nightIcon').src = './icons/iconfinder_03_moon_sleepy_night_emoticon_weather_smiley_3375686.svg';
+        weatherText.innerHTML +="<h3>Hello there Night Owl! Can't sleep? Cathing stars? Dancing?</h3>";
         var element = document.getElementById("weatherIconParent");
         element.parentNode.removeChild(element);
     }

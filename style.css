@@ -14,22 +14,41 @@ body {
 
 .header-part-1 {
   max-width: 400px; 
+  margin: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
+.weather-icon-parent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .header-part-2 {
   max-width: 400px; 
+  margin: 30px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   flex-direction: row;
 }
 
+.weather-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  /*font-size: 40px;*/
+  font-weight: bold;
+  margin: 30px;
+}
+
 .sunrise-sunset {
   max-width: 400px; 
+  margin: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -38,6 +57,7 @@ body {
 
 .forecast {
   max-width: 400px; 
+  margin: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -46,60 +66,83 @@ body {
 
 /* MEDIA FOR TABLET VIEW */
 @media screen and (min-width: 740px) {
-  body {
-    background-color: blue;
-  }
-
+  
   .current-weather {
     margin: 40px;
   }
 
   .header-part-1 {
     max-width: 992px; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
     font-size: 40px;
   }
 
+  .weather-icon-parent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .weather-icon {
-    width: 80%;
+    width: 400px;
     height: auto;
   }
   
   .header-part-2 {
     max-width: 992px; 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
     font-size: 40px;
   }
   
   .sunrise-sunset {
     max-width: 992px; 
     margin: 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
     font-size: 30px;
   }
   
   .forecast {
     max-width: 992px; 
     margin: 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
     font-size: 38px;
   }
 }
 
-@media screen and (min-width: 1025px) {
-  body {
-    background-color: blue;
+/* MEDIA FOR DESKTOP VIEW */
+@media screen and (min-width: 1024px) {
+  .current-weather {
+    margin: 40px;
   }
+
+  .header-part-1 {
+    max-width: 4000px; 
+    font-size: 40px;
+  }
+
+  .weather-icon-parent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .weather-icon {
+    width: 400px;
+    height: auto;
+  }
+  
+  .header-part-2 {
+    max-width: 40000px; 
+    font-size: 40px;
+  }
+  
+  .sunrise-sunset {
+    max-width: 4000px; 
+    margin: 40px;
+    font-size: 30px;
+  }
+  
+  .forecast {
+    max-width: 4000px; 
+    margin: 40px;
+    font-size: 38px;
+  }
+}
+
 }
