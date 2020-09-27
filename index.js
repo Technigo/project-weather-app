@@ -43,25 +43,25 @@ const fetchWeatherNextWeek = 'https://api.openweathermap.org/data/2.5/forecast?q
 
 const nextWeeksWeatherInfoAPI = () => {
     fetch(fetchWeatherNextWeek)
-    .then((response) => {
-        return response.json()
-    })
-    .then((nextWeeksWeatherInfo) => {
-        const filteredList = nextWeeksWeatherInfo.list.filter(item => item.dt_txt.includes('12:00'));
+        .then((response) => {
+            return response.json()
+        })
+        .then((nextWeeksWeatherInfo) => {
+            const filteredList = nextWeeksWeatherInfo.list.filter(item => item.dt_txt.includes('12:00'));
 
-        for (let i=0; i < filteredList.length; i++) {
-            const day = new Date(filteredList[i].dt * 1000);
-            var days = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
-            const finalDay = days[day.getDay()];
-            document.getElementById(`day${i+1}Day`).innerHTML = `${finalDay}`;
+            for (let i = 0; i < filteredList.length; i++) {
+                const day = new Date(filteredList[i].dt * 1000);
+                var days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+                const finalDay = days[day.getDay()];
+                document.getElementById(`day${i + 1}Day`).innerHTML = `${finalDay}`;
 
-            const icon = filteredList[i].weather[0].icon;
-            document.getElementById(`day${i+1}Image`).src = `./images/${icon}.gif`;
+                const icon = filteredList[i].weather[0].icon;
+                document.getElementById(`day${i + 1}Image`).src = `./images/${icon}.gif`;
 
-            const temp = filteredList[i].main.temp.toFixed(1);
-            document.getElementById(`day${i+1}Temp`).innerHTML = `${temp}&#176`;
+                const temp = filteredList[i].main.temp.toFixed(1);
+                document.getElementById(`day${i + 1}Temp`).innerHTML = `${temp}&#176`;
 
-        };
-    });
+            };
+        });
 };
-    nextWeeksWeatherInfoAPI();
+nextWeeksWeatherInfoAPI();
