@@ -15,7 +15,7 @@ html {
     color: #F47775;
   }
 
-  p, span {
+  p, span, .todays-date {
     font-size: 18px;
     margin: 0px;
   }
@@ -47,11 +47,11 @@ html {
     width: 85%;
   }
 
-  #umbrellaIcon, #sunglassesIcon, #cloudIcon {
+  #cloudIcon {
     padding-bottom: 10px;
    }
 
-  h2, #location {
+  h1, #location, #date {
     font-weight: bold;
     font-size: 32px;
   }
@@ -102,16 +102,14 @@ html {
     display: flex;
     flex-direction: column;
     padding-top: 60px;
-    width: 50%;
+    width: 60%;
   }
 
-  #umbrellaIcon, #sunglassesIcon, #cloudIcon {
-    display: flex;
-    justify-content: center;
-    margin: 10px;
+  #cloudIcon {
+    display: none;
   }
 
-  h2, #location {
+  h1, #location, #date {
     font-weight: bold;
     font-size: 48px;
   }
@@ -119,7 +117,7 @@ html {
   .forecast-container {
     display: flex;
     justify-content: space-between;
-    padding: 100px 200px 100px 200px;
+    padding: 40px 150px 40px 150px;
   }
 
 }
@@ -165,10 +163,10 @@ html {
   }
 
   #cloudIcon {
-    margin: 60px;
+    margin: 150px 40px 0px 0px;
   }
 
-  h2, #location {
+  h1, #location, #date {
     font-weight: bold;
     font-size: 48px;
   }
