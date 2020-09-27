@@ -19,7 +19,6 @@ fetch(API_URL_CURRENT_WEATHER)
         const currentWeatherObject = generateCurrentWeatherInfo(current);
         currentWeatherInfo.innerHTML += generateHTMLForCurrentWeatherInfo(currentWeatherObject);
         getWeatherColorIconTitle(currentWeatherObject.weatherDescription, current);
- //       console.log(isWeatherColors());
         cityHeader.innerHTML = current.name;
     });
 
@@ -51,7 +50,6 @@ const getSunOutTime = data => {
 const getWeatherColorIconTitle = (data, item) => {
     const weatherIcon = document.querySelector("#weatherIcon");
     const weatherTitle = document.querySelector('.weather-info-main-title');
-//    const isWeather = checkWeathers(data);
     if (data === "Rain" || data === "Drizzle") {
         HTML.classList.add("rain");
         weatherIcon.src = "./icons/rain.svg";
@@ -65,7 +63,6 @@ const getWeatherColorIconTitle = (data, item) => {
         weatherIcon.src = "./icons/cloud.svg";
         weatherTitle.innerText = `Light a fire and get cosy. ${item.name} is looking grey today.`
     };
-    console.log(data);
 };
 
 //-----------Function to generate HTML for current weather info on top of page----------
@@ -78,7 +75,6 @@ const generateCurrentWeatherInfo = current => {
         getSunOutTime(current.sys.sunrise),
         getSunOutTime(current.sys.sunset)
     );
-    console.log(currentWeatherObject)
     return currentWeatherObject;
 };
 
@@ -98,7 +94,6 @@ fetch(API_URL_FORECAST_WEATHER)
         return response.json();
     })
     .then(forecastResponse => {
-        console.log(forecastResponse);
         const forecasts = generateForecastWeatherInfo(forecastResponse); 
         forecastInfo.innerHTML += generateHTMLForForecastWeatherInfo(forecasts);
     });
@@ -125,7 +120,6 @@ const generateForecastWeatherInfo = forecast => {
             null,
         );
     });
-    console.log(forecastTemplates);
     return forecastTemplates;
 };
 
