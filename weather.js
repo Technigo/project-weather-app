@@ -1,5 +1,5 @@
 const API_KEY = '461046c1b035d88b328cf5cc47778c02'
-const API_URL_WEATHER = `http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${API_KEY}`
+const API_URL_WEATHER = `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${API_KEY}`
 const API_URL_FORECAST = `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=${API_KEY}`
 
 const temperature = document.getElementById('temperature')
@@ -25,13 +25,19 @@ fetch(API_URL_WEATHER)
 
         //Set the current weather image
         const weatherImgConst = json.weather[0].icon;
-        mainIcon.src = `./assets/${weatherImgConst}.png`
+        mainIcon.src =`./assets/${weatherImgConst}.png`
 
         //Set the time for sunrise and sunset 
         const sunriseValue = new Date(json.sys.sunrise * 1000)
-        const sunriseTime = sunriseValue.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})
+        const sunriseTime = sunriseValue.toLocaleTimeString([], {
+            hour: '2-digit',
+            minute: '2-digit'
+        })
         const sunsetValue = new Date(json.sys.sunset * 1000)
-        const sunsetTime = sunsetValue.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})
+        const sunsetTime = sunsetValue.toLocaleTimeString([], {
+            hour: '2-digit',
+            minute: '2-digit'
+        })
         sunrise.innerText = `Sunrise: ${sunriseTime}`
         sunset.innerText = `Sunset: ${sunsetTime}`
     })
@@ -46,29 +52,29 @@ fetch(API_URL_FORECAST)
     })
 
     .then((json) => {
-            //Show a forecast for the next 5 days when time is 12:00
-            const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
-            filteredForecast.forEach(day => {
-                //Set weekday
-                const date = new Date(day.dt * 1000);
-                const dayName = date.toLocaleDateString('en-US', {weekday: "long"})
-                //Get weather image from API
-                const weatherImgId = day.weather[0].icon;
+        //Show a forecast for the next 5 days when time is 12:00
+        const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
+        filteredForecast.forEach(day => {
+            //Set weekday
+            const date = new Date(day.dt * 1000);
+            const dayName = date.toLocaleDateString('en-US', {
+                weekday: "long"
+            })
+            //Get weather image from API
+            const weatherImgId = day.weather[0].icon;
 
-                //Get weather description from API
-                const description = day.weather[0].description;
+            //Get weather description from API
+            const description = day.weather[0].description;
 
-                //Get min and max values from API
-                const feels = day.main.feels_like.toFixed(); //Gets feels like and max temp from API and rounds it up
-                const max = day.main.temp_max.toFixed();
-                
-                //Present result in HTML
-                        forecastContent.innerHTML += `<div class="forecast-container"> <p class="forecast-day">${dayName}</p> <img class="forecast-icon" src='./assets/${weatherImgId}.png'> <p class="forecast-description">${description}</p> <p class="forecast-minmax">${max}°C / ${feels}°C</p> </div>`
-                          
+            //Get min and max values from API
+            const feels = day.main.feels_like.toFixed(); //Gets feels like and max temp from API and rounds it up
+            const max = day.main.temp_max.toFixed();
+
+            //Present result in HTML
+            forecastContent.innerHTML += `<div class="forecast-container"> <p class="forecast-day">${dayName}</p> <img class="forecast-icon" src='./assets/${weatherImgId}.png'> <p class="forecast-description">${description}</p> <p class="forecast-minmax">${max}°C / ${feels}°C</p> </div>`
+
         })
     })
     .catch((err) => {
         console.log('Caught error: ${err}')
     })
-
-  

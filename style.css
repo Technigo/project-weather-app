@@ -149,8 +149,8 @@ body {
 /* MEDIA QUERIES desktop */
 @media (min-width: 1025px) {
     .main-city-container {
-       display: flex;
-        justify-content:center;
+        display: flex;
+        justify-content: center;
         flex-wrap: wrap;
         flex-direction: row;
         width: 80%;
@@ -222,7 +222,9 @@ body {
         display: block;
     }
 
-    #short-footer, .sun-set-container, #description {
+    #short-footer,
+    .sun-set-container,
+    #description {
         display: none;
     }
 
