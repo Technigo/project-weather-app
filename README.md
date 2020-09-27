@@ -8,4 +8,4 @@ I started with getting an API key and used two APIs: one for current weather and
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://weatherforecastbyj.netlify.app/
