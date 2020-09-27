@@ -26,6 +26,7 @@ I have booked a code-coach session after the weekend to get some input on how to
 Also I feel I have to re-watch Max lecture from this week to learn more on how to better structure the code for this project. I didn't have time for that however, but might return to this project in the future and make it better and more advanced when my knowledge has improved.
 
 I did a quite simple styling for this project, that didn't need too much tweaking to make it responsive.
+I had some difficulties positioning the background image on .weathertoday using CSS background-size/object-fit/object-position. I couldn't get the pictures positioned where I wanted. I don't know why it didn't work, since I used this before on previous projects. I solved it by instead cropping the pictures, but they still don't have ideal position for bigger screens.
 
 
 ## View it live

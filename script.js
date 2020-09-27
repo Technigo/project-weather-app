@@ -6,13 +6,11 @@ const apiUrlToday =
 const apiUrlForecast =
   "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=92053ce17f6df07312088f05e0a431e0";
 
-
 //Function to round temperature to one decimal
 const calculateTemperature = (number) => {
   const roundedTemp = Math.round(number * 10) / 10; //By adding *10 AND adding /10 the number is rounded up to nearest integer with one decimal. If only using round() the number is rounded up to nearest integer.
   return roundedTemp;
 };
-
 //Function to show time in city in proper format.
 //This seems to have a somewhat delayed local time by 4 mins. Why?
 const calculateTimeInCity = (time) => {
@@ -24,7 +22,6 @@ const calculateTimeInCity = (time) => {
   });
   return cityTimeString;
 }
-
 //Function to show time for sunrise/sunset in proper format (in weather today). Same as CalculateTimeIncity, so could be integrated into one single time-function. 
 const calculatingSun = (time) => {
   const sunTime = new Date(time * 1000);
@@ -35,7 +32,6 @@ const calculatingSun = (time) => {
   });
   return sunTimeString;
 };
-
 //Function to show date in proper format.
 const printDay = (day) => { 
   const forecastDays = new Date(day);
@@ -46,7 +42,6 @@ const printDay = (day) => {
   });
   return forecastDaysString;
 };
-
 //Function to show different weather-icons depending on current weather. Is used in the functions to generate weather today and weather forecast
 const iconDependingOnWeather = (item) => {
   const iconMainDescription = item
@@ -66,24 +61,20 @@ const iconDependingOnWeather = (item) => {
   } else (iconMainDescription === 'Atmosphere')
     return 'http://openweathermap.org/img/wn/50d@2x.png'
 }
-
-//Tried first to change background color depending on time. Didn't get that to work. Was confused with what the parameter(s) should be and what to use in the if-statement, and if I should declare any variables. Below I did a function to show different backgrounds depending on temperature instead. That works.
+//Tried first to change background gradient/picture depending on time. Didn't get that to work. Was confused with what the parameter(s) should be and what to use in the if-statement, and if I should declare any variables. Below I did a function to show different backgrounds depending on temperature instead. That works.
  const weatherTodayBackground = (temp) => { //What is the temp param here really?
     const containerColor = document.querySelector('.weather-today')
-//Maybe add different background-pictures depending on temp also below?
-//I changed background to backgroundImage and it seems to work als (because I want to add a picture behind the gradient): How do I add also a background image depending on temp?
    if (temp < 0) { //really cold
     containerColor.style.backgroundImage = 'linear-gradient(to bottom, rgba(26,37,94,0.8) 0%, rgba(129,191,213,0.8) 80%, rgba(255,255,255,1) 100%), url("./background_0_degrees.jpg")'; //dark blue
    } else if (temp > 0, temp <= 10) { //somewhat cold
       containerColor.style.backgroundImage = 'linear-gradient(to bottom, rgba(119,151,190,0.8) 0%, rgba(129,191,213,0.8) 80%, rgba(255,255,255,1) 100%), url("./background_0_10_degrees.jpg")'; //lighter blue
    } else if (temp > 10, temp < 18) {//semi-warm
-       containerColor.style.backgroundImage = 'linear-gradient(180deg, rgba(247,198,2,0.8) 0%, rgba(252,235,166,0.8) 80%, rgba(255,255,255,1) 100%), url("./background_10_18_degrees.jpg")';//yellow 
+       containerColor.style.backgroundImage = 'linear-gradient(180deg, rgba(247,198,2,0.8) 0%, rgba(252,235,166,0.8) 80%, rgba(255,255,255,1) 100%), url("./background_10_18_degrees.jpg")';//yellow (not sure the readability is great on this. Could be improved)
    } else if (temp > 18, temp < 27) { //warm
       containerColor.style.backgroundImage = 'linear-gradient(180deg, rgba(244,164,2,0.8) 0%, rgba(252,230,133,0.8) 70%, rgba(255,255,255,1) 100%), url("./background_18_27_degrees.jpg")'; //orange
    } else //super-warm
       containerColor.style.backgroundImage = 'linear-gradient(180deg, rgba(239,87,16,0.8) 0%, rgba(249,214,124,0.8) 70%, rgba(255,255,255,1) 100%), url("./background_27_degrees_more.jpg ")';//red
  }
- 
 //Function to specify content and the HTML-structure for weather today. Is called in the fetch-function for weather today.
 const generatedHTMLForWeatherToday = (weatherToday) => {
   const temperature = calculateTemperature(weatherToday.main.temp);
@@ -108,7 +99,6 @@ const generatedHTMLForWeatherToday = (weatherToday) => {
   weatherTodayHTML += `<img class="icon-today" src='${iconToday}'>`;
   return weatherTodayHTML;
 };
-
 //Function to specify content and the HTML-structure for weather forecast. Is called in the fetch-function for weather forecast.
 const generatedHTMLForWeatherForecast = (filteredForecast) => {
   const weekday = printDay(filteredForecast.dt_txt);
@@ -130,7 +120,6 @@ const generatedHTMLForWeatherForecast = (filteredForecast) => {
    weatherForecast += `</div>`;
   return weatherForecast
 };
-
 //Fetch-function for weather today:
 const fetchWeatherToday = () => {
   fetch(apiUrlToday)
@@ -142,7 +131,6 @@ const fetchWeatherToday = () => {
     });
 };
 fetchWeatherToday();
-
 //Fetch-function for weather forecast
 const fetchWeatherForecast = () => {
   fetch(apiUrlForecast)

@@ -1,6 +1,5 @@
 body {
   font-family: 'Kumbh Sans', sans-serif;
-  /* max-width: 1300px; */
   margin: auto;
 }
                               /* WEATHER TODAY STARTS HERE */
@@ -17,9 +16,8 @@ body {
   border-bottom-right-radius: 0px;
   margin: auto;
   background-size: cover;
-  object-fit: cover; /* contain - The replaced content is scaled to maintain its aspect ratio while fitting within the element's content box
-  cover - The replaced content is sized to maintain its aspect ratio while filling the element's entire content box. The object will be clipped to fit */
-  object-position: bottom center; /* The object-position property is used together with object-fit to specify how an <img> or <video> should be positioned with x/y coordinates inside its "own content box". Specifies the position of the image or video inside its content box. First value controls the x-axis and the second value controls the y-axis. Can be a string (left, center or right), or a number (in px or %). Negative values are allowed. JavaScript syntax:	object.style.objectPosition="0 10%" */
+  object-fit: cover; /* Explaied: contain = The replaced content is scaled to maintain its aspect ratio while fitting within the element's content box. cover = The replaced content is sized to maintain its aspect ratio while filling the element's entire content box. The object will be clipped to fit */
+  object-position: bottom center; /* Explained: The object-position property is used together with object-fit to specify how an <img> or <video> should be positioned with x/y coordinates inside its "own content box". Specifies the position of the image or video inside its content box. First value controls the x-axis and the second value controls the y-axis. Can be a string (left, center or right), or a number (in px or %). Negative values are allowed. JavaScript syntax:	object.style.objectPosition="0 10%" */
   max-width: 1200px;
 } 
 
@@ -88,9 +86,7 @@ body {
   left: 60%;
   width: 110px;
 }
-
                                  /* FORECAST STARTS HERE */
-
 .forecast-wrapper {
   width: 90vw;
   margin: auto;
@@ -115,7 +111,26 @@ body {
   width: 70px;
 }
 
+@media(max-width:350px) {
+  .location-information {
+    margin: 50px 12px 20px 12px;
+  }
+
+  .sunrise-sunset {
+    width: 230px;
+  }
+
+  .weather-forecast {
+    font-size: 12px;
+    padding: 3px 10px
+  }
+}
+
 @media(min-width:600px) {
+  .icon-today {
+    width: 200px;
+  }
+
   .weather-forecast {
     font-size: 16px;
   }
@@ -123,10 +138,40 @@ body {
   .description,
   .sunset,
   .sunrise {
-    font
-    -size: 20px;
+    font-size: 20px;
   }
   .sunrise-sunset {
     width: 300px;
+  }
+}
+
+@media(min-width:800px) {
+  .icon-today {
+    position: absolute;
+    top: 9%;
+    left: 67%;
+  }
+
+  .location-information {
+  margin: 80px 30px 20px 80px;
+  }
+
+  .temp {
+    font-size: 72px;
+  }
+
+  .location {
+    font-size: 32px;
+  }
+
+  .description,
+  .sunrise,
+  .sunset {
+    font-size: 22px;
+    line-height: 1.5;
+  }
+
+  .weather-forecast {
+    font-size: 18px;
   }
 }
