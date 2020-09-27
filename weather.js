@@ -1,6 +1,5 @@
-//API WITH WEATHER INFO TO FETCH:
+//API:s WITH WEATHER INFO TO FETCH:
 const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=8b97619989976c72fc1e602d8c793890';
-/*const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Phoenix&units=metric&appid=8b97619989976c72fc1e602d8c793890';*/
 const apiUrl2 = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=8b97619989976c72fc1e602d8c793890';
 
 //GLOBAL SCOPE INFO TO WEATHER:
@@ -32,7 +31,7 @@ fetch(apiUrl).then((response) => {
             document.getElementById('weatherIcon').src = './icons/noun_Sunglasses_2055147.svg';
             weatherText.innerHTML += "<h2>Aaah! No clouds, no rain, let's get out and enjoy the weather!</h2>"
         } else if (weather == "Thunderstorm") {
-            document.getElementById('weatherIcon').src = './icons/noun_Cloud_1188486.svg';
+            document.getElementById('weatherIcon').src = './icons/iconfinder_weather-8_1322060.svg';
             weatherText.innerHTML += "<h2>The power of nature. Stay safe inside, look at the spectacle through the window & listen to the roar from the sky.</h2>"
         } else if (weather == "Snow") {
             document.getElementById('weatherIcon').src = './icons/iconfinder_Snow_3741358.svg';
