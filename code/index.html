@@ -5,41 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather</title>
     <link rel="stylesheet" href="./main.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Glöm inte meta-tag & favicon  -->
 </head>
 
 <body>
-<!-- Different weather aspects -->
-    <div id="container">
-        nothing...
-    </div>
+    <!-- Different weather aspects -->
+    <section class="weather-container">
+         <div id="container">
+                nothing...
+        </div>
 
-    <div id="weather">
-
-    </div>
-
-    <div id="temperature">
-
-    </div>
+        <div id="temperature">
+        </div>
+    </section>
 
 
 
 <!-- Sun -->
-    <div id="sunRise">
+    <section class="Sun">
+        <div id="sunRise">
+        </div>
 
-    </div>
-
-    <div id="sunSet">
-
-    </div>
+        <div id="sunSet">
+        </div>
+    </section>
 
     <!-- Five day forecast-->
 
-    <div id="forecast">
-        
-    </div>
-
-
+    <section class="forecast">
+        <div class="forecast-container">
+            <p id="dayOne" class="forecast-day"></p> 
+            <!-- <p id="dayOneType" class="weather-type"></p>  -->
+            <p id="dayOneTemp" class="temp"></p>
+        </div>
+       
+    </section>
+</section>
+</main>
     
     <script defer src="./script.js"></script>
 </body>
