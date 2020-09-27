@@ -28,7 +28,7 @@ const weekdays = [
 
 const weatherToday = () => {
 
-fetch( weatherStockholm)
+fetch(weatherStockholm)
 .then((response) => {
     return response.json();
 })
