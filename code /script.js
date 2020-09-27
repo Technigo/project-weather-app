@@ -1,6 +1,7 @@
 // SCRIPT FOR WEATHER APP
-import {apiKey} from './api.js';
+/* import {apiKey} from './api.js'; This doesn't work on netlify*/
 
+const apiKey = '277afbd3cf32e0e8cc059dd7cb8bcb95';
 const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=Jönköping,Sweden&units=metric&APPID=${apiKey}`;
 const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=Jönköping,Sweden&units=metric&APPID=${apiKey}`;
 const weatherImage = document.getElementById('weatherImage');
