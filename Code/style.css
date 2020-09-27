@@ -13,40 +13,34 @@ body {
     background-color: #FFC6C8;
     display: flex;
     flex-direction: column;
+    background-image: linear-gradient(190deg, #FFC6C8 0%, #fff 100%);
 }
 
-/* .circle {
-    background: #FE6925;
+/* Sun css */
+.circle {
+    display: ;
+    background: #F8934E;
     border-radius: 50%;
     width: 320px;
     height: 320px;
     margin: 0 auto;
     margin-top: 160px;
-} */
+} 
 
-/*
-.sun-line {
-    border-bottom: 3px solid #fff;
-    height: 10px;
-    width: 160px;
-    position: absolute;
-    top: 32%;
-    right: 0;
-} */
-
+/* cloud css */
 .clouds {
+    display: none;
     position: relative;
     width: 100%;
     height: 450px;
-    transform:translate(40px,140px);
-    
-    
+    transform:translate(40px,140px);  
 }
+
 .cloud-circle {
     width: 180px;
     height: 180px;
     border-radius: 50%;
-    background: #FD91A6;
+    background: #ff6925;
 }
 
 .cloud-circle:nth-child(1) {
@@ -78,7 +72,48 @@ body {
     left: 90px;
 }
 
+/* Drops css */
+.drop-container {
+    display: none;
+    position: relative;
+    width: 100%;
+    height: 450px;
+    transform:translate(35px,130px);
+}
 
+
+.drop {
+    width: 100px;
+    height: 100px;
+    background-color: #62EAFA;
+    border-radius: 50%;
+    border-top-right-radius: 0;
+    position: absolute;
+}
+
+.drop:nth-child(1) {
+    position: absolute;
+    top: 60px;
+    left: 150px;
+}
+
+.drop:nth-child(2) {
+    position: absolute;
+    top: 150px;
+    left: 40px;
+}
+
+.drop:nth-child(3) {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.drop:nth-child(4) {
+    position: absolute;
+    top: 190px;
+    left: 170px;
+}
 
 .weather-container {
     display: flex;
@@ -211,14 +246,5 @@ button {
     vertical-align: middle;
     
     font-size: 40px;
-}
-
-button p {
-    padding:0px;
-    margin:0px;
-    font-size: 40px;
-    top: -7px;
-    position: relative;
-    vertical-align: ;
 }
 

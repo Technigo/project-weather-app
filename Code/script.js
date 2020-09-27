@@ -1,11 +1,11 @@
 const API_KEY = '1135d0ed8f3ffc61db744af9153b5e66';
 
-const url = (city, country = "Sweden") => {
-    return `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&APPID=${API_KEY}`
+const url = (place) => {
+    return `https://api.openweathermap.org/data/2.5/weather?q=${place}&units=metric&APPID=${API_KEY}`
 };
 
-const urlFiveDayForecast = (city, country = "Sweden") => {
-    return `https://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&units=metric&APPID=${API_KEY}`
+const urlFiveDayForecast = (place) => {
+    return `https://api.openweathermap.org/data/2.5/forecast?q=${place}&units=metric&APPID=${API_KEY}`
 };
 
 const currentTemp = document.getElementById('todaysTemp');
@@ -27,6 +27,13 @@ const roundNums = (num, decimals = 1) => {
     return Math.round(num * pow) / pow;
 };
 
+//Get current time
+const currentTime = () => {
+    const today = new Date();
+    const time = today.getHours() + ":" + today.getMinutes();
+    return time;
+};
+
 //Generate time from jason
 const generateTime = (json) => {
     const time = new Date(json * 1000);
@@ -44,7 +51,7 @@ const generateDate = (json) => {
  // Get city, current temperature, sunrise, sunset from json and change html
 const generateHTMLForWeather = (stockholmWeather) => {
     sunriseTime.innerText = generateTime(stockholmWeather.sys.sunrise);
-    sunsetTime.innerText = generateTime(stockholmWeather.sys.sunrise);
+    sunsetTime.innerText = generateTime(stockholmWeather.sys.sunset);
     city.innerText = stockholmWeather.name;
     currentTemp.innerText = `${roundNums(stockholmWeather.main.temp, 0)} °C`;
     
@@ -83,24 +90,33 @@ const weatherIcon = (icon) => {
 };
 
 
-fetch(url('Stockholm')).then((response) => {
+//Change background depending on time
+const changeBackground = (stockholmWeather) => {
+    const currenttime = currentTime();
+    const sunrise = generateTime(stockholmWeather.sys.sunrise)
+    const sunset = generateTime(stockholmWeather.sys.sunset)
+    
+    if (currenttime > sunrise && currenttime < sunset) {
+        document.body.style.backgroundImage = 'linear-gradient(190deg, #FFC6C8 0%, #FAD56A 100%)';
+    } else {
+        document.body.style.backgroundImage = 'linear-gradient(190deg, #ffc6c8 0%, #976bb6 100%)';
+    };
+};
+
+const updatedata = () => {
+    select = document.getElementById('selectCity');
+    console.log(select.options[select.selectedIndex].value)
+    return select.options[select.selectedIndex].value;
+};
+
+fetch(url(updatedata())).then((response) => {
     return response.json();
 })
 .then((stockholmWeather) => {
     generateHTMLForWeather(stockholmWeather);
+    changeBackground(stockholmWeather);
 
-    if (stockholmWeather.main.temp < 0) {
-        document.body.style.backgroundColor = '#15E5FF';
-    } else {
-        document.body.style.backgroundColor = '#067F5E';
-    };
-
-    if (stockholmWeather.weather[0].main === 'Clouds') {
-        document.body.style.backgroundColor = '#067f5e';
-    } else if (stockholmWeather.weather[0].main === 'Clear') {
-        document.body.style.backgroundColor = '#FFC6C8';
-    };
-
+    const weatherTypeIcon = stockholmWeather.weather[0].icon;
 });
 
 
@@ -111,4 +127,21 @@ fetch(urlFiveDayForecast('Stockholm')).then((response) => {
 .then((forecast) => {
     generateHTMLFiveDayForecast(forecast);
 });
+
+
+const getLocation = () => {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(setCoordinates);
+        console.log('yey');
+    } else {
+        console.log("Geolocation is not supported by this browser.");
+    }
+}
+
+const setCoordinates = (position) => {
+    lat = position.coord.latitude
+    lon = position.coord.longitude
+    geolocationAPI = `api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`
+    
+}
 

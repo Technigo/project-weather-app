@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./css/weather-icons.min.css">
     <title>Document</title>
 </head>
-<body>
+<body onload="getLocation()">
     <section class="picture-container">
         <div class="clouds">
             <div class="cloud-circle"></div>
@@ -20,12 +20,14 @@
             <div class="cloud-circle"></div>
             <div class="cloud-circle"></div>
         </div>
-        <div class="circle">
-            <div class="sun-line"></div>
-            <div id="weatherType" class="weather-type"></div>
-    
+        <div class="drop-container">
+            <div class="drop"></div>
+            <div class="drop"></div>
+            <div class="drop"></div>
+            <div class="drop"></div>
         </div>
-       
+        <div class="circle"></div>
+        <div id="weatherType" class="weather-type"></div>
         <div class="weather-info">
            
            
@@ -68,7 +70,10 @@
             </div>
     </section>
     <section>
-        <button>+</button>
+        <select id="selectCity" onchange="updatedata();"> 
+            <option value="Luleå, Sweden">Luleå</option>
+            <option value="New York, USA">New York</option>
+        </select>
     </section>
     <div class="cloud"><div>
 <script src="./script.js"></script> 
