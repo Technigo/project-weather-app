@@ -1,13 +1,24 @@
 # Weather App
 
-Replace this readme with your own information about your project.
+A Weather Web App built with "Vanilla" JavaScript using OpenWeather API.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+## Geolocation and conditional rendering
 
-## The problem
+Shows today's weather and temperature. A five-day forecast and time of sunsets and sunrise. It uses the browsers Geolocation to detect what city to check and the colours conditionally renders based on the weather.
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+## Date object and time conversion
+
+Sunrise and sunset are converted from unix timestamp and then offset with the time difference to show the local time for each location.
+
+## Core tech
+
+- Fetch API
+- Promises
+- Geolocation
+- Date()
+- Unix time conversion
+- JavaScript ES6
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://hello-weather.netlify.app/

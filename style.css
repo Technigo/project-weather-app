@@ -11,11 +11,6 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-header {
-  display: flex;
-  flex-direction: column;
-}
-
 h1 {
   margin: 20px 24px 0;
   font-size: 36px;
@@ -33,9 +28,13 @@ p {
 
 /************ HEADER ************/
 
+.night-container {
+  background: rgba(7, 4, 56, 0.8);
+}
+
 .header-info {
   margin-left: 24px;
-  margin-top: 20px;
+  padding-top: 20px;
 }
 
 .weather-today {
@@ -45,9 +44,24 @@ p {
 
 /* MAIN */
 
+main {
+  display: flex;
+  flex-direction: column;
+}
+
 .main-weather {
-  margin: 60px 0 20px 60px;
+  margin: auto;
   text-align: center;
+}
+
+/* forecast */
+
+.forecast-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  padding: 20px;
 }
 
 .text-container {
@@ -61,18 +75,8 @@ p {
   margin: 0;
 }
 
-/* forecast */
-
-.forecast-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 90%;
-  padding: 20px;
-}
-
 .forecast-info {
-  font-size: 22px;
+  font-size: 18px;
   margin-left: 10px;
 }
 
@@ -80,7 +84,7 @@ p {
   height: 70px;
 }
 
-/* change city */
+/* drop down meny */
 
 .new-city {
   box-sizing: border-box;
@@ -206,7 +210,7 @@ li {
     margin: 0;
   }
 
-  /* change city */
+  /* drop down meny */
 
   .new-city {
     width: 85%;
@@ -215,6 +219,10 @@ li {
 
 /* DESKTOP */
 @media (min-width: 1025px) {
+  /* body {
+    margin: 50px calc(50% - 300px);
+  } */
+
   /* header */
 
   header {
@@ -223,7 +231,8 @@ li {
   }
 
   .header-info {
-    margin: 40px 0 0 50px;
+    margin-left: 50px;
+    padding-top: 50px;
   }
 
   /* main */
@@ -234,6 +243,15 @@ li {
     margin-left: 0;
   }
 
+  h1 {
+    font-size: 42px;
+    padding-bottom: 50px;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+
   main {
     width: 600px;
     margin: auto;
@@ -241,7 +259,8 @@ li {
 
   .main-weather {
     margin-top: 0;
-    height: 160px;
+    margin-bottom: 40px;
+    height: 300px;
   }
 
   /* forecast */
@@ -263,18 +282,28 @@ li {
     margin: 0;
   }
 
+  .forecast-info {
+    font-size: 24px;
+  }
+
   .forecast-icon {
     height: 70px;
     margin-left: auto;
     margin-right: 24px;
   }
 
-  /* change city */
+  /* drop down meny */
 
   .new-city {
     width: 84%;
     cursor: pointer;
+    transition: 0.2s ease;
     margin-bottom: 40px;
+  }
+
+  .new-city:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transition: 0.2s ease;
   }
 
   .leave-town {
@@ -290,12 +319,7 @@ li {
 
 /****************************** WEATHER COLOURS ******************************/
 
-.night-container {
-  background: rgba(000, 000, 000, 0.7);
-}
-
 .clear {
-  /* color: rgba(255, 255, 255, 0.9); */
   background: linear-gradient(179deg, #c2d7f5, #9db7f9, #ffe6a6, #ffb477);
   background-size: 600% 600%;
 
