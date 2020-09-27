@@ -1,10 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
 body {
     color: rgb(0, 0, 0);
     text-align: center;
     background-image: url('./Images/background.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    height: 900px;
+    height: 860px;
+}
+
+img {
+    width: 60px;
+    height: 60px;
 }
 
 .info {
@@ -12,24 +19,61 @@ body {
 }
 
 #city-country {
-    font-size: 35px; 
+    font-family: 'Satisfy', cursive;
+    font-size: 45px; 
+    margin: 0px;
 }
 
 #current-temp {
+    font-family: 'Satisfy', cursive;
     font-size: 25px;
+    font-weight: 700;
+    margin: 4px;
 }
 
-#sunrise, #sunset {
+#description {
+    font-family: 'Satisfy', cursive;
     font-size: 20px;
-    margin: 2px;
+    margin: 0px;
+}
+
+#sunrise {
+    font-size: 20px;
+    text-align: left;
+}
+
+#sunset {
+    font-size: 20px;
+    text-align: right;
 }
 
 .weather-info {
     color: rgb(255, 255, 255);
     padding: 15px;
-    margin-bottom: 0px;
 }
 
 .forecast {
     background-color: rgba(255, 255, 255, 0.541);   
 }
+
+#logo {
+    height: 30px;
+    width: 35px;
+    margin-top: 2px;
+    margin-bottom: -15px;
+  }
+  
+  footer {
+    font-family: 'Satisfy', cursive;
+    font-size: 15px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.623);
+    background-color: rgb(255, 255, 255);
+    height: auto;
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    padding-top: 2px;
+  }
+  
+  
