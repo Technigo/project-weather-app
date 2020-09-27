@@ -1,13 +1,11 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+THe assignment this week was to build a weather app using an API. The aim was to display the current weather, a weather forecast and the sunrise and sunset time. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+It was quite difficult in the beginning as we had to start from scratch this week, so the first couple of days went to testing things out and asking peers. Then it finally started to make sense and I was able to do all the required steps. I then tried to tidy up the code as much as possible, as I had written many lines of code that was unessecary and confusing. Lastly I was inspired in my design by my peers and their demos! If I would have had more time I would have wanted to be able to add more cities. 
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://elastic-blackwell-e78f71.netlify.app/
