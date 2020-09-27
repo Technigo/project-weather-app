@@ -1,6 +1,7 @@
 const urlWeatherForecast = "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&appid=d17c2f3ed50a4604c02f6184b3cf4de6";
 const urlCurrentWeather = "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&appid=d17c2f3ed50a4604c02f6184b3cf4de6";
 
+
 const currentWeatherInfo = document.getElementById("currentWeatherContainer");
 const todaysWeatherContainer = document.getElementById("todaysWeatherContainer");
 const forecastContainer = document.getElementById("forecastContainer");

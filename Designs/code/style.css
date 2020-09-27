@@ -78,7 +78,7 @@ footer p {
 
     .todays-weather-container img {
         margin: 100px 10px 20px;
-        width: 180px;
+        width: 80px;
     }
 
     .forecast-container h2 {
@@ -121,7 +121,7 @@ footer p {
 
     .todays-weather-container img {
         margin: 20px 20px 30px;
-        width: 200px;
+        width: 100px;
     }
 
     .forecast-container {
