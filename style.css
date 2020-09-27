@@ -1,0 +1,82 @@
+* {
+  font-family: monospace, sans-serif;
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+#container {
+  margin: auto;
+  width: 90%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  color: black;
+  background-color: lightblue;
+}
+
+#weather-container {
+  display: flex;
+}
+
+#app-title {
+  width: 400px;
+  height: 50px;
+  border-radius: 10px 10px 0 0;
+  background-color: aquamarine;
+}
+
+#app-title p {
+  text-align: center;
+  padding: 15px;
+  margin: 0 auto;
+  font-size: 1.2em;
+  color: #293251;
+}
+
+#weather-icon {
+  width: 300px;
+  height: 128px;
+}
+
+#weather-icon img {
+  display: block;
+  margin: 0 auto;
+}
+
+.five-day {
+  margin: auto;
+  height: 600px;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: lightpink;
+  justify-content: center;
+}
+
+/* .day-one {
+
+} */
+
+/*----------------
+	Future Forecast
+-----------------*/
+
+@media (min-width: 880px) {
+  nav {
+    top: 5%;
+  }
+  #current {
+    font-size: 1.5rem;
+    padding-bottom: 7%;
+    padding-top: 7%;
+  }
+  #current .weatherIcon {
+    font-size: 0.82em;
+    margin: 5% auto 2%;
+  }
+  #lastUpdated {
+    padding: 3%;
+  }
+}

@@ -3,34 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
-    <title>Document</title>
+    <title>2GO</title>
+    <link rel="stylesheet" href="./style.css"/>
+    <link rel="icon" type="image/png" href="./images/rainbowsun.png" />
   </head>
+  <header>
+    <p></p>
+  
   <body>
+    <!-- <div>
+    <h1 class="app-title" /h1>
+      <p>WeatherToGo</p>
+    </div> -->
     <div id="container">
-      <div id="title">Weather2Go</div>
-      <div id="weather-container">
-        <div id="location">
-          Malmo
-          <p></p>
-        </div>
-        <div id="weather-icon">
-          <img
-            src="icons/unknown.png"
-            alt="cloud, sun, rain, snow,mist pictures"
-          />
-        </div>
-        <div id="description">
-          <p>Rain</p>
-        </div>
-        <div id="sunrise">
-          <p></p>
-        </div>
-        <div id="sunset">
-          <p></p>
-        </div>
-      </div>
+    
+    <div class="weather-container">
+    
+    <h2 id="location"></h2>
+    <p id="location-time"></p>
+  
+    <div id="weather-icon">
+      <img src="icons/unknown.png" alt="¨cloud, sun, rain, snow, mist icon">
     </div>
+    <p id="description"></p>
+   
+    <p id="main"></p>
+    <p id="sunrise"></p>
+    <p id="sunset"></p>
+  </div>
+</div>
+
+	<!-- Future Forecast -->
+	  <div class="five-day">
+      <div class="day-one">One
+        <span></span>
+      </div>
+      <div class="day-two">Two</div>
+      <div class="day-three">Three</div>
+      <div class="day-four">Four</div>
+      <div class="day-five">Five</div>
+    </div>
+
     <script src="./script.js"></script>
   </body>
 </html>
