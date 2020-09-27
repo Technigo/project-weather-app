@@ -1,3 +1,5 @@
+
+//Repeatable variables
 const baseURL = 'https://api.openweathermap.org/data/2.5/'
 const weather = ['weather','forecast']
 const apiKey = '1fdca83a9693b3d0d79182ed5ca69207'
@@ -7,7 +9,7 @@ const upperContainer = document.getElementById('upperContainer')
 const lowerContainer = document.getElementById('lowerContainer')
 const cityForm = document.querySelector('form');
 
-
+//Eventlistener that invokes daily weather and forecast function
 cityForm.addEventListener('submit', (event) => {
 
     event.preventDefault()
@@ -20,6 +22,7 @@ cityForm.addEventListener('submit', (event) => {
 
 })
 
+//Daily weather function
 const getWeather = (cityName) => {
     
     fetch(`${baseURL}${weather[0]}?q=${cityName}&units=metric&APPID=${apiKey}`)
@@ -39,6 +42,7 @@ const getWeather = (cityName) => {
         });
 };
 
+//Forecast function
 const getForecast = (cityName) => {
 
     fetch(`${baseURL}${weather[1]}?q=${cityName}&units=metric&APPID=${apiKey}`)

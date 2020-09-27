@@ -72,6 +72,8 @@ input {
     font-size: 16px;
   }
 
+  /* Make site fullscreen for smaller screens*/
+
 @media only screen and (max-width: 600px) {
     .container {
       width: 100%;
