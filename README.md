@@ -1,13 +1,17 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This weeks project was to build a simple weather app that shows today's weather, temperature and a 5 day forecast using the Open Weather API.
+The weather site had to be responsive and work on phone, tablet and desktop.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+To start with I created the backbone of my site using elements in HTML, and then in JavaScript I built a map and foreach method to populate those elements. I decided to use this route instead of buidling the HTML in JavaScript to make my site load faster. I then created variables for my API URL's and API key to help keep my fetch function clean.
+
+I used JavaScript's fetch method to get the data I needed from the Open Weather API. This is my first time working with API's, so I learned a lot about understanding its documentation and enjoyed learning about promises and how to extract that data from JSON object.
+
+Both sections are build using Flexbox, which change direction depending on the device it is being viewed from.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+My site has been tested using Google Chrome, the Chrome developer tool and Safari on mobile.
+It can be viewed here: https://project-weatherapp.netlify.app/

@@ -3,6 +3,8 @@ body {
     padding: 0;
     font-family: 'Epilogue', sans-serif;
     background-color: #e6f3f5;
+    text-align: center;
+    font-family: 'Kumbh Sans', sans-serif;
 }
 
 .hamburger {
@@ -32,6 +34,7 @@ body {
 
 .todays-weather {
     height: 400px;
+    margin-bottom: 30px;
     background-image: url(./assets/sky-day.jpg);
     background-repeat: no-repeat;
     background-attachment: local;
@@ -44,7 +47,11 @@ body {
     justify-content: center;
     padding: 0 10px;
     opacity: 0.8;
-    font-family: 'Kumbh Sans', sans-serif;
+}
+
+.five-day-heading {
+    margin-top: 50px;
+    margin-bottom: 10px;
 }
 
 .forecast-container {
@@ -54,7 +61,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: space-between;
-    font-family: 'Kumbh Sans', sans-serif;
     text-align: center;
 }
 
@@ -72,6 +78,26 @@ body {
     justify-content: space-evenly;
 }
 
+.footer {
+    margin-top: 50px;
+    padding: 10px 0;
+    background-color: rgb(211, 217, 223);
+    font-size: 11px;
+}
+
+.footer p {
+    margin: 5px;
+}
+
+.footer a {
+    text-decoration: none;
+    color: black;
+}
+
+.footer p span {
+    font-weight: bold;
+}
+
 @media (min-width: 768px) {
     .todays-weather {
         align-items: center;
@@ -85,11 +111,16 @@ body {
         display: none;
     }
 
+    .five-day-forecast {
+        width: 80%;
+        border-radius: 20px;
+    }
+
 }
 
 @media (min-width: 1025px) {
     .todays-weather {
-        width: 50%;
+        width: 80%;
         margin-left: auto;
         margin-right: auto;
         border: none;
@@ -97,15 +128,20 @@ body {
     }
 
     .forecast-container {
-        width: 50%;
+        width: 100%;
         margin-left: auto;
         margin-right: auto;
         border: none;
-        align-items: space-around;
+        flex-direction: row;
+        align-items: space-evenly;
+        flex-wrap: wrap;
     }
 
     .five-day-forecast {
-        border-radius: 20px;
-        height: 150px;
+        height: 300px;
+        flex-direction: column;
+        margin-right: 10px;
+        width: 190px;
+        
     }
 }
