@@ -1,8 +1,8 @@
 // SCRIPT FOR WEATHER APP
 import {apiKey} from './api.js';
 
-const weatherUrl = `http://api.openweathermap.org/data/2.5/weather?q=Jönköping,Sweden&units=metric&APPID=${apiKey}`;
-const forecastUrl = `http://api.openweathermap.org/data/2.5/forecast?q=Jönköping,Sweden&units=metric&APPID=${apiKey}`;
+const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=Jönköping,Sweden&units=metric&APPID=${apiKey}`;
+const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=Jönköping,Sweden&units=metric&APPID=${apiKey}`;
 const weatherImage = document.getElementById('weatherImage');
 
 
