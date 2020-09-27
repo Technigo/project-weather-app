@@ -1,14 +1,46 @@
-// API information
+// API key import
 import { API_KEY } from "./api.js";
 
 const API_URL_TODAY = `https://api.openweathermap.org/data/2.5/weather?q=Karlstad,Sweden&units=metric&appid=${API_KEY}`;
 const API_URL_FORECAST = `https://api.openweathermap.org/data/2.5/forecast?q=Karlstad,Sweden&units=metric&appid=${API_KEY}`;
 
-// General variables / objects
+// General variables 
 const containerCity = document.getElementById('city');
 const containerToday = document.getElementById('today');
 const containerForecast = document.getElementById('forecast');
 
+// Object containing styles with weather id's as keys
+const weatherObject = {
+    80: {
+        imgName: 'Clear',
+        gradientBack: 'linear-gradient(#f12711, #f5af19)'
+    },
+    8: {
+        imgName: 'Clouds',
+        gradientBack: 'linear-gradient(#654ea3, #eaafc8)'
+    },
+        
+    7: {
+        imgName: 'Fog',
+        gradientBack: 'linear-gradient(#2C3E50, #4CA1AF)'
+    },
+    6: {
+        imgName: 'Snow',
+        gradientBack: 'linear-gradient(#000428, #004e92)'
+    },
+    5: {
+        imgName: 'Rain',
+        gradientBack: 'linear-gradient(#4e54c8, #8f94fb)'
+    },
+    3: {
+        imgName: 'Drizzle',
+        gradientBack: 'linear-gradient(#7F7FD5, #91EAE4)'
+    },
+    2: {
+        imgName: 'Thunder',
+        gradientBack: 'linear-gradient(#141E30, #243B55)'
+    }
+};
 
 // fetches weather data from today
 fetch(API_URL_TODAY)
@@ -17,127 +49,71 @@ fetch(API_URL_TODAY)
 })
 .then((json) => {
     const city = json.name;
-    const weather = json.weather[0].main;
-    const weatherDetailed = json.weather[0].description;
+    const weather = json.weather[0]; //object
+    const id = weather.id;
+    console.log(id)
+
+    const weatherDetailed = weather.description;
+    console.log(weatherDetailed)
     const sunrise = json.sys.sunrise;
     const sunset = json.sys.sunset;
-    
-    // Add HTML content for todays weather
-    containerToday.innerHTML = `<p>${weatherDetailed} | ${json.main.temp}°C</p>`;
-    containerToday.innerHTML += `<p>sunrise ${generateHTMLForSunTimes(sunrise)}</p>`;
-    containerToday.innerHTML += `<p>sunset ${generateHTMLForSunTimes(sunset)}</p>`;
+   
+    // Adds HTML content for todays weather
+    containerToday.innerHTML = `<p>${weatherDetailed}</p>`; // Weather description
+    containerToday.innerHTML += `<p>sunrise ${generateHTMLForSunTimes(sunrise)}</p>`; // Sunrise
+    containerToday.innerHTML += `<p>sunset ${generateHTMLForSunTimes(sunset)}</p>`; // Sunset
 
-    // Set styling for page
-    document.getElementById('weatherMessage').innerHTML = generateFriendlyReminder(weather, city);
-    document.getElementById('icon').src = generateImageUrl(weather);
-    document.getElementById('body').style.backgroundColor = generateBackground(weather);
-    document.getElementById('body').style.color = generateFontstyle(weather);
+    // Object.keys(weatherObject) - Returns array of objects keys
+    // .reverse() - orders the keys in reverse order
+    // .find - finds the key in the object that matches the current weather id
+    const currentWeatherKey = Object.keys(weatherObject).reverse().find(key => 
+        id.toString().startsWith(key));
+    console.log(currentWeatherKey)
+   
+    // weatherInfo is an object containing the current styling picked in weatherObject
+    const weatherInfo = weatherObject[currentWeatherKey]; //Looks for current key in object
+    console.log(weatherInfo)
+    // Set styling/info depending on weather
+    document.getElementById('icon').src = generateImageUrl(weatherInfo.imgName);
+    document.getElementById('city').innerText = `${city} ${json.main.temp}°C`;
+    document.getElementById('header').style.backgroundImage = weatherInfo.gradientBack;
+    document.getElementById('footer').style.backgroundImage = weatherInfo.gradientBack;
     
 });
 
 // Generate the url for the image
 const generateImageUrl = (weather) => {
-    if (weather === 'Clouds') {
-        return './assets/Clouds.svg'
-    } else if (weather === 'Clear') {
-        return './assets/Clear.svg'
-    } else if (weather === 'Rain') {
-        return './assets/Rain.svg'
-    } else if (weather === 'Snow') {
-        return './assets/Snow.svg'
-    } else if (weather === 'Thunderstorm') {
-        return './assets/Thunder.svg'
-    } else if (weather === 'Drizzle') {
-        return './assets/Drizzle.svg'
-    } else {
-        return './assets/Drizzle.svg'
-    }
+    return `./assets/${weather || 'Unknown'}.png`;
 };
 
-// Generate the background color
-const generateBackground = (weather) => {
-    if (weather === 'Clouds') {
-        return '#F4F7F8'
-    } else if (weather === 'Clear') {
-        return '#F7E9B9'
-    } else if (weather === 'Rain') {
-        return '#A3DEF7'
-    } else if (weather === 'Snow') {
-        return '#ffffff'
-    } else if (weather === 'Thunderstorm') {
-        return '#1e2021'
-    } else if (weather === 'Drizzle') {
-        return '#b7b8b8'
-    } else {
-        return '#36393c'
-    }
-};
-
-// Generate the font color
-const generateFontstyle = (weather) => {
-    if (weather === 'Clouds') {
-        return '#F47775'
-    } else if (weather === 'Clear') {
-        return '#2A5510'
-    } else if (weather === 'Rain') {
-        return '#164A68'
-    } else if (weather === 'Snow') {
-        return '#000000'
-    } else if (weather === 'Thunderstorm') {
-        return '#FFFF99'
-    } else if (weather === 'Drizzle') {
-        return '#A52A2A'
-    } else {
-        return '#9999ff'
-    }
-};
 
 // Function to generate time for sunset/sunrise
 const generateHTMLForSunTimes = (timeStamp) => {
     // create time strings for todays weather
     const sunTime = new Date(timeStamp * 1000);
-    const sunTimeString = sunTime.toLocaleTimeString('sv-SE', {
+    return sunTime.toLocaleTimeString('sv-SE', {
         hour: '2-digit', 
         minute: '2-digit'
     });
-    return sunTimeString;
-};
-
-
-// Function to set friendly reminder depending of weather
-const generateFriendlyReminder = (weather, city) => {
-    if (weather === 'Clouds') {
-        return `Light a fire and get cosy. ${city} is looking grey today`
-    } else if (weather === 'Clear') {
-        return `Get your sunnies on. ${city} is looking rather great today`
-    } else if (weather === 'Snow') {
-        return `Dress warm if you're heading out. ${city} is cold today.`
-    } else if (weather === 'Rain') {
-        return `Don't forget your umbrella. It's wet in ${city} today`
-    } else if (weather === 'Drizzle') {
-        return `Not raining, but close enough. ${city} isn't looking its best today.`
-    } else if (weather === 'Thunderstorm') {
-        return `Storm incoming. ${city} isn't looking its best today`
-    } else {
-        return `Be careful out there, the sight might not be the best in ${city} today.`
-    }
 };
 
 
 // fetches data from forecast
 fetch(API_URL_FORECAST)
 .then((response) => {
-    return response.json( )
+    return response.json();
 })
-.then((json) => {
-    const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
+    .then((json) => {
+        
+    const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00')); // Array with data from 12
 
     filteredForecast.forEach((day) => {
         containerForecast.innerHTML += generateHTMLForForecast(day);
     });  
+        
 });
 
-// Function to generate HTML for forecast information
+//Function to generate HTML for forecast information
 const generateHTMLForForecast = (day) => {
     const forecastDate = new Date(day.dt_txt);
     const forecastDateString = forecastDate.toLocaleDateString('en-US', {

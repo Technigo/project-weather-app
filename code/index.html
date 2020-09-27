@@ -6,17 +6,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
   
-    <title>Document</title>
+    <title>Weather App</title>
 </head>
-<body id="body">
-    <section class="todays-info" id="today"></section>
-    <section class="todays-reminder" id="reminder">
-        <img class="icon" id="icon" src="">
-        <p id="weatherMessage"></p>
-    </section>
-    <section class="forecaset-container"id="forecast"></section>
 
-    
+<body id="body">
+    <header id="header">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+            <polygon class="svg--lg" fill="white" points="0,0 25,100 50,25 65,75 80,40 100,100 0,100"></polygon>
+            <polygon class="svg--sm" fill="white" points="0,0 50,100 100,50 100,100 0,100"></polygon> 
+        </svg>
+        <div class="city-wrapper">
+            <img class="icon" id="icon" src="">
+            <h1 id="city"></h1>
+        </div>
+        <div class="todays-info" id="today"></div>
+    </header>
+
+    <section class="forecast-container"id="forecast"></section>
+
+    <footer id="footer">
+        <p class="footer">Project 6, Weather App</p>
+        <p class="footer">by Anna Hellqvist @ Technigo Bootcamp 2020</p>
+        <p class="footer">Weather icons by <a href="www.flaticon.com">Flaticon</a></p>
+    </footer>
+
     <script src="./script.js" type="module"></script>
 </body>
 </html>
