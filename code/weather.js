@@ -9,7 +9,6 @@ const weatherIcon = document.getElementById('icon')
 const weatherLocation = document.getElementById('location')
 const weatherSunrise = document.getElementById('sunrise')
 const weatherSunset = document.getElementById('sunset')
-const weatherForecast = document.getElementById('')
 
 // Fetch function
 const fetchWeather = () => {
@@ -43,9 +42,13 @@ const fetchWeather = () => {
     }
     weatherSunset()
  })
+
+ 
 }
 
 fetchWeather();
+
+
 
 // Objects for the weatherconst currentWeather = () => {if (weatherDescription.includes("cloud") return cloudyWeather.image}
 
