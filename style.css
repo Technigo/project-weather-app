@@ -1,6 +1,6 @@
 body {
   font-family: 'Kumbh Sans', sans-serif;
-  margin: auto;
+  margin: 0 auto;
 }
                               /* WEATHER TODAY STARTS HERE */
 .wrapper {
@@ -8,7 +8,7 @@ body {
 }
 
 .weather-today { /* I don't know why I can't position the background image using object-position. The values I put in doesn't seem to affect the position. Why? */
-  width: 90vw;
+  width: 95vw;
   height: 50vh;
   display: flex;
   border-radius: 16px;
@@ -32,7 +32,6 @@ body {
 
 .location-information p {
   font-size: 24px;
-  
 }
 
 .temp {
@@ -88,7 +87,7 @@ body {
 }
                                  /* FORECAST STARTS HERE */
 .forecast-wrapper {
-  width: 90vw;
+  width: 95vw;
   margin: auto;
   max-width: 1200px;
 }
@@ -171,7 +170,12 @@ body {
     line-height: 1.5;
   }
 
+  .weather-today {
+    height: 65vh;
+  }
+
   .weather-forecast {
     font-size: 18px;
+    padding: 10px 30px;
   }
 }

@@ -28,6 +28,8 @@ Also I feel I have to re-watch Max lecture from this week to learn more on how t
 I did a quite simple styling for this project, that didn't need too much tweaking to make it responsive.
 I had some difficulties positioning the background image on .weathertoday using CSS background-size/object-fit/object-position. I couldn't get the pictures positioned where I wanted. I don't know why it didn't work, since I used this before on previous projects. I solved it by instead cropping the pictures, but they still don't have ideal position for bigger screens.
 
+I noticed that for some reason the weather today is not quite aligned with weather forecast. But in the inspector-tool they seem to be aligned. They are the same vw, so I don't know why this happened. I tried to check if there were any margins that caused this, but didn't figure it out.
+
 
 ## View it live
 
