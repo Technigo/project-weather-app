@@ -31,8 +31,7 @@ p {
 .clouds {
     display: block;
     position: relative;
-
-    width: 320px;
+    width: 300px;
     height: 320px;
     margin: 0 auto;
     margin-top: 160px;
@@ -59,7 +58,7 @@ p {
 .cloud-circle:nth-child(3) {
     position: absolute;
     top: 110px;
-    left: 195px;
+    left: 150px;
 }
 
 .cloud-circle:nth-child(4) {
@@ -247,4 +246,4 @@ select {
     .todays-temp {
         left: 30%;
     }
-}
+    
