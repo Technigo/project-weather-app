@@ -6,39 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" rel="stylesheet">
+    <!--Favicon sun-->
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
     <link rel="stylesheet" href="style.css" />
     <title>Weather app</title>
 </head>
 
 <body>
     <div class="container">
-        <section class="weatherSection">
-            <img class="city-img" src="./assets/Stockholm.jpg" alt="Stockholm and a swedish flag" />
-
-            <div class="weather-info">
-                <div class="weather-container">
+        <section class="main-city-container">
+            <div class="weather-container">
+                <div class="weather-img">
                     <p id="temperature">Loading temperature...</p>
-                    <img id="weather-img" src="" alt="Current weather" />
+                    <img id="city-icon" src="" alt="Current weather" />
                 </div>
             </div>
             <div class="city-container">
                 <p id="city-name">Loading city...</p>
-                <p id="weather-desc">Loading description...</p>
+                <p id="description">Loading description...</p>
             </div>
-            <div class="sun-container">
+            <div class="sun-set-container">
                 <p id="sunrise">Loading sunrise...</p>
                 <p id="sunset">Loading sunset...</p>
             </div>
         </section>
-        <section class="forecastSection">
-            <p id="forecast-heading">Weather forecast 5 days</p>
-            <div id="forecast-info">
-            </div>
-        </section>
+        <p class="forecast-text">Weather forecast 5 days</p>
+        <div id="main-forecast-data">
+        </div>
 
     </div>
     <footer>
-        <p> © 2020 Marjaana Tienaho. Project Week 6 (Project weather app) during the Technigo Frontend Bootcamp Autumn 2020.</p>
+        <p id="short-footer"> © 2020 Marjaana Tienaho.</p>
+        <p id="long-footer"> © 2020 Marjaana Tienaho. Project Week 6 (Project weather app) during the Technigo Frontend
+            Bootcamp Autumn
+            2020.</p>
     </footer>
     <script src="./weather.js"></script>
 </body>

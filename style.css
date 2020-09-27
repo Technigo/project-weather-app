@@ -1,58 +1,233 @@
+html,
 body {
-    background-image: url("./assets/Background.jpg");
-    background-position: center;
-    /*background-size: cover; 
-    background-repeat: no-repeat;*/
-    margin: 0;
-}
-h1 {
-    Font-Family: 'Ruda', Sans-Serif;
-    Font-Size: 48px;
+    height: 100%;
+    position: relative;
+    box-sizing: border-box;
 }
 
-p {
+body {
+    background-image: url(./assets/Background.jpg);
+    background-position: cover;
+    margin: 0;
     Font-Family: 'Roboto Slab', Serif;
-    Font-Size: 16px;
 }
-.container{
+
+.container {
     min-height: 100vh;
     overflow: hidden;
     display: block;
     position: relative;
-    padding-bottom: 100px; 
+    padding-bottom: 20px;
 }
-.city-img{
-    display: none;
-  
-}
-.weather-container {
-    display: flex;
+
+.weather-img {
     width: 100%;
+    display: flex;
     justify-content: space-around;
     align-items: flex-end;
 }
+
 #temperature {
     font-size: 70px;
-    font-weight: bold;
 }
 
-#weather-img {
-    width: 40%;
+#city-icon {
+    width: 35%;
 }
 
 #city-name {
-    font-size: 50px;
     margin: 0;
+    font-size: 40px;
+    padding-bottom: 10px;
 }
 
+.city-container {
+    margin-left: 10px;
+    text-align: center;
+}
 
+#description,
+#sunrise,
+#sunset {
+    margin-top: 3px;
+    font-size: 20px;
+}
 
+.sun-set-container {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 40px;
+}
 
-/* Desktop */
-@media (min-width: 1025px) {
+.forecast-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgba(220, 240, 241, 0.2);
+    margin-bottom: 10px;
+}
 
-.city-img{
+.forecast-icon {
+    width: 35px;
+    height: 35px;
+}
+
+.forecast-minmax,
+.forecast-day {
+    font-size: 20px;
+}
+
+.forecast-day {
+    width: 120px;
+}
+
+#description,
+.forecast-text,
+.forecast-description,
+#long-footer {
+    display: none;
+}
+
+#short-footer {
     display: block;
-    height: 600px;
+    text-align: center;
 }
+
+/* MEDIA QUERIES tablet */
+@media (min-width: 667px) and (max-width: 1024px) {
+    #temperature {
+        font-size: 110px;
+        font-weight: bold;
+    }
+
+    #city-name {
+        font-size: 70px;
+    }
+
+    #description,
+    #sunrise,
+    #sunset {
+        margin-top: 3px;
+        font-size: 30px;
+    }
+
+    #main-forecast-data {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+    }
+
+    .forecast-container {
+        flex-direction: column;
+        width: 20%;
+    }
+
+    .forecast-day {
+        width: auto;
+    }
+
+    .forecast-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    #description,
+    #long-footer {
+        display: block;
+    }
+
+    #short-footer {
+        display: none;
+    }
+
+    #long-footer {
+        display: block;
+        text-align: center;
+    }
+}
+
+/* MEDIA QUERIES desktop */
+@media (min-width: 1025px) {
+    .main-city-container {
+       display: flex;
+        justify-content:center;
+        flex-wrap: wrap;
+        flex-direction: row;
+        width: 80%;
+        height: 400px;
+        margin: auto;
+        margin-top: 30px;
+        background-color: rgba(220, 240, 241, 0.2);
+
+    }
+
+    .weather-container {
+        display: flex;
+
+    }
+
+    .weather-img,
+    .city-container,
+    .sun-set-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    #temperature {
+        margin-bottom: 0;
+    }
+
+    #city-name {
+        font-size: 50px;
+    }
+
+    #description,
+    #sunrise,
+    #sunset {
+        margin-top: 3px;
+        font-size: 25px;
+    }
+
+    #main-forecast-data {
+        display: flex;
+        justify-content: space-around;
+        width: 80%;
+        margin: auto;
+    }
+
+    .forecast-container {
+        flex-direction: column;
+        width: 19%;
+    }
+
+    .forecast-day {
+        width: auto;
+
+    }
+
+    .forecast-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .forecast-text {
+        font-size: 30px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    #description,
+    .forecast-text {
+        display: block;
+    }
+
+    #short-footer, .sun-set-container, #description {
+        display: none;
+    }
+
+    #long-footer {
+        display: block;
+        text-align: center;
+    }
 }

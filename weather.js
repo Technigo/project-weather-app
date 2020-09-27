@@ -3,12 +3,12 @@ const API_URL_WEATHER = `http://api.openweathermap.org/data/2.5/weather?q=Stockh
 const API_URL_FORECAST = `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=${API_KEY}`
 
 const temperature = document.getElementById('temperature')
-const weatherImg = document.getElementById('weather-img')
+const mainIcon = document.getElementById('city-icon')
 const cityName = document.getElementById('city-name')
-const weatherDesc = document.getElementById('weather-desc')
+const description = document.getElementById('description')
 const sunrise = document.getElementById('sunrise')
 const sunset = document.getElementById('sunset')
-const forecastInfo = document.getElementById('forecast-info"');
+const forecastContent = document.getElementById('main-forecast-data')
 
 
 // Get weather info for Stockholm
@@ -21,24 +21,17 @@ fetch(API_URL_WEATHER)
         //Present the temperature (rounded to 1 decimal place), the city name and what type of weather it is
         temperature.innerHTML = `${json.main.temp.toFixed(1)}°C`
         cityName.innerHTML = `${json.name}`
-        weatherDesc.innerHTML = `${json.weather[0].description}`
+        description.innerHTML = `${json.weather[0].description}`
 
         //Set the current weather image
         const weatherImgConst = json.weather[0].icon;
-        weatherImg.src = `./assets/${weatherImgConst}.png`
+        mainIcon.src = `./assets/${weatherImgConst}.png`
 
         //Set the time for sunrise and sunset 
         const sunriseValue = new Date(json.sys.sunrise * 1000)
-        const sunriseTime = sunriseValue.toLocaleTimeString([], {
-            hour: '2-digit',
-            minute: '2-digit'
-        })
-
+        const sunriseTime = sunriseValue.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})
         const sunsetValue = new Date(json.sys.sunset * 1000)
-        const sunsetTime = sunsetValue.toLocaleTimeString([], {
-            hour: '2-digit',
-            minute: '2-digit'
-        })
+        const sunsetTime = sunsetValue.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})
         sunrise.innerText = `Sunrise: ${sunriseTime}`
         sunset.innerText = `Sunset: ${sunsetTime}`
     })
@@ -66,15 +59,11 @@ fetch(API_URL_FORECAST)
                 const description = day.weather[0].description;
 
                 //Get min and max values from API
-                const min = day.main.feels_like.toFixed(); //Gets min and max temp from API and rounds it up
+                const feels = day.main.feels_like.toFixed(); //Gets feels like and max temp from API and rounds it up
                 const max = day.main.temp_max.toFixed();
                 
                 //Present result in HTML
-                        forecastInfo.innerHTML += `<div class="forecast-container">`
-                        forecastInfo.innerHTML += `<p class="forecast-day">${dayName}</p>`
-                        forecastInfo.innerHTML += `<img class="forecast-img" src='./assets/${weatherImgId}.png'>`
-                        forecastInfo.innerHTML += `<p class="forecast-description">${description}</p>`
-                        forecastInfo.innerHTML += `<p class="forecast-minmax">${max}°C / ${min}°C</p> </div>`
+                        forecastContent.innerHTML += `<div class="forecast-container"> <p class="forecast-day">${dayName}</p> <img class="forecast-icon" src='./assets/${weatherImgId}.png'> <p class="forecast-description">${description}</p> <p class="forecast-minmax">${max}°C / ${feels}°C</p> </div>`
                           
         })
     })
