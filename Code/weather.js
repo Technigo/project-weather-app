@@ -7,9 +7,11 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Nanaimo,CA&units=metric&
         // city, country, current temperature & weather description
         const cityCountry = document.getElementById('city-country');
         const currentTemp = document.getElementById('current-temp');
+       
 
         cityCountry.innerHTML = `${json.name}, ${json.sys.country}`;
-        currentTemp.innerHTML = `${json.main.temp}°C, ${json.weather[0].description}`;
+        currentTemp.innerHTML = `${json.main.temp}°C / ${json.weather[0].description}`;
+        
 
         // sunrise  
         const sunrise = document.getElementById('sunrise');
@@ -38,7 +40,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Nanaimo,CA&units=metric&
 
         
         const fiveDays = document.getElementById('five-days');
-        fiveDays.innerHTML = `${json.list[11].dt_txt} ${json.list[11].main.temp}`;
+        fiveDays.innerHTML = `${json.list[0].dt_txt} ${json.list[0].main.temp}°C`;
 
 
         console.log(json);

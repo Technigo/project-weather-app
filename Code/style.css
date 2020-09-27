@@ -1,0 +1,35 @@
+body {
+    color: rgb(0, 0, 0);
+    text-align: center;
+    background-image: url('./Images/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 900px;
+}
+
+.info {
+    height: 796px;
+}
+
+#city-country {
+    font-size: 35px; 
+}
+
+#current-temp {
+    font-size: 25px;
+}
+
+#sunrise, #sunset {
+    font-size: 20px;
+    margin: 2px;
+}
+
+.weather-info {
+    color: rgb(255, 255, 255);
+    padding: 15px;
+    margin-bottom: 0px;
+}
+
+.forecast {
+    background-color: rgba(255, 255, 255, 0.541);   
+}
