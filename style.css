@@ -31,7 +31,7 @@ p {
   margin: 0;
 }
 
-/* HEADER */
+/************ HEADER ************/
 
 .header-info {
   margin-left: 24px;
@@ -51,12 +51,13 @@ p {
 }
 
 .text-container {
-  width: 60%;
+  width: 65%;
 }
 
 .icon-container {
+  display: flex;
+  justify-content: center;
   width: 30%;
-  text-align: right;
   margin: 0;
 }
 
@@ -65,6 +66,7 @@ p {
 .forecast-card {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 90%;
   padding: 20px;
 }
@@ -78,7 +80,7 @@ p {
   height: 70px;
 }
 
-/* new city */
+/* change city */
 
 .new-city {
   box-sizing: border-box;
@@ -116,8 +118,10 @@ li {
   font-size: 36px;
   margin: 20px 0;
   color: #fff;
+  transition: 0.2s ease;
 }
 
+/* activates by JS */
 .open {
   /* cut out text to white background */
   background: #fff;
@@ -151,9 +155,140 @@ li {
   animation-iteration-count: infinite;
 }
 
-/* found above animated icon soluton at ---> https://salferrarello.com/css-pulse-animation/ */
+/****************** MEDIA QUERIES ******************/
 
-/*** WEATHER COLOURS ***/
+/* TABLET */
+@media (min-width: 667px) and (max-width: 1024px) {
+  h1 {
+    font-size: 60px;
+    padding: 0 30px;
+  }
+
+  h2 {
+    font-size: 32px;
+    padding-left: 30px;
+  }
+
+  /* main */
+
+  .main-weather {
+    margin-top: 0;
+    height: 350px;
+  }
+
+  /* forecast */
+
+  .forecast-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    padding: 10px 0;
+    margin-left: 60px;
+  }
+
+  .forecast-info {
+    font-size: 26px;
+    margin: 0;
+  }
+
+  .forecast-icon {
+    height: 90px;
+  }
+
+  .text-container {
+    width: 50%;
+  }
+
+  .icon-container {
+    text-align: right;
+    width: 30%;
+    margin: 0;
+  }
+
+  /* change city */
+
+  .new-city {
+    width: 85%;
+  }
+}
+
+/* DESKTOP */
+@media (min-width: 1025px) {
+  /* header */
+
+  header {
+    width: 600px;
+    margin: auto;
+  }
+
+  .header-info {
+    margin: 40px 0 0 50px;
+  }
+
+  /* main */
+
+  h1,
+  h2 {
+    padding: 0 50px;
+    margin-left: 0;
+  }
+
+  main {
+    width: 600px;
+    margin: auto;
+  }
+
+  .main-weather {
+    margin-top: 0;
+    height: 160px;
+  }
+
+  /* forecast */
+
+  .forecast-card {
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 40px;
+    padding: 10px 0px;
+  }
+
+  .text-container {
+    width: 55%;
+  }
+
+  .icon-container {
+    text-align: right;
+    width: 30%;
+    margin: 0;
+  }
+
+  .forecast-icon {
+    height: 70px;
+    margin-left: auto;
+    margin-right: 24px;
+  }
+
+  /* change city */
+
+  .new-city {
+    width: 84%;
+    cursor: pointer;
+    margin-bottom: 40px;
+  }
+
+  .leave-town {
+    font-size: 24px;
+  }
+
+  li:hover {
+    color: rgba(255, 255, 255, 0.5);
+    transition: 0.2s ease;
+    cursor: pointer;
+  }
+}
+
+/****************************** WEATHER COLOURS ******************************/
 
 .night-container {
   background: rgba(000, 000, 000, 0.7);
@@ -468,45 +603,5 @@ li {
   }
   100% {
     background-position: 0% 90%;
-  }
-}
-
-/****************** MEDIA QUERIES ******************/
-
-/* TABLET */
-@media (min-width: 667px) and (max-width: 1024px) {
-  h1 {
-    font-size: 66px;
-    padding: 0 30px;
-  }
-
-  h2 {
-    font-size: 32px;
-    padding-left: 30px;
-  }
-
-  /* DESKTOP */
-  @media (min-width: 1025px) {
-  }
-
-  .main-weather {
-    margin-top: 0;
-    height: 350px;
-  }
-
-  .forecast-card {
-    padding-left: 50px;
-  }
-
-  .forecast-info {
-    font-size: 26px;
-  }
-
-  .forecast-icon {
-    height: 90px;
-  }
-
-  .new-city {
-    width: 85%;
   }
 }
