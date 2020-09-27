@@ -1,5 +1,5 @@
 
-const weatherStockholm = "http://api.openweathermap.org/data/2.5/weather?q=stockholm&units=metric&appid=e74df95bd073adf9306ac7f46ad51144";
+const weatherStockholm = "https://api.openweathermap.org/data/2.5/weather?q=stockholm&units=metric&appid=e74df95bd073adf9306ac7f46ad51144";
 const forecastStockholm = "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=e74df95bd073adf9306ac7f46ad51144";
 
 const weather = document.getElementById("weatherToday");
