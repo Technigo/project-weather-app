@@ -2,53 +2,72 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css" />
-    <title>Project 6</title>
-    <link rel="stylesheet" href="./style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css" />
+  <title>Project 6</title>
+  <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-    <section class="weatherBoard">
-        <article class="todaysWeather" id="todaysWeatherId">
-            <h3>TODAY</h3>
-            <h2 id="todaysWeatherTemp"></h2>
-            <h1 id="todaysWeatherCity"></h1>
-            <h1 id="todaysWeatherType"></h1>
-            <!-- <h1 id="todaysWeatherSunrise"></h1><h1 id="todaysWeatherSunset"></h1> -->
-        </article> 
-        <article class="nextWeeksWeather-class" id="nextWeeksWeatherId">
-            <table>
-                <tr>
-                  <td>MON</td>
-                  <td id="monday"></td>
-                </tr>
-                <tr>
-                  <td>TUE</td>
-                  <td id="tuesday"></td>
-                </tr>
-                <tr>
-                  <td>WED</td>
-                  <td id="wednesday"></td>
-                </tr>
-                <tr>
-                  <td>THURS</td>
-                  <td id="thursday"></td>
-                </tr>
-                <tr>
-                  <td>FRI</td>
-                  <td id="friday"></td>
-                </tr>
-              </table>
 
-        </article>
+  <section class="weatherBoard">
+    <article class="todaysWeather" id="todaysWeatherId">
 
-    </section>
+      <h2 id="todaysWeatherTemp"></h2>
+      <h4 id="todaysWeatherCity"></h4>
+      <h5 id="todaysWeatherType"></h5>
+
+      <section class="sunTypes">
+        <div class="sunTypesImages">
+          <img src="./images/sunrise.gif" alt="Image of sunrise" width="35px">
+          <p id="todaysWeatherSunrise"></p>
+        </div>
+        <div class="sunTypesImages">
+          <img src="./images/sunset.gif" alt="Image of sunset" width="35px">
+          <p id="todaysWeatherSunset"></p>
+        </div>
+      </section>
+    </article>
+
+    <article class="nextWeeksWeather-class" id="nextWeeksWeatherId">
+      <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td id="day1Day" class="weather-day"></td>
+          <td><img src="" id="day1Image" class="weather-image" width="30px" height="30px"></img></td>
+          <td id="day1Temp" class="weather-temp"></td>
+        </tr>
+        <tr>
+          <td id="day2Day" class="weather-day"></td>
+          <td><img src="" id="day2Image" class="weather-image" width="30px" height="30px"></img></td>
+          <td id="day2Temp" class="weather-temp"></td>
+        </tr>
+        <tr>
+          <td id="day3Day" class="weather-day"></td>
+          <td><img src="" id="day3Image" class="weather-image" width="30px" height="30px"></img></td>
+          <td id="day3Temp" class="weather-temp"></td>
+        </tr>
+        <tr>
+          <td id="day4Day" class="weather-day"></td>
+          <td><img src="" id="day4Image" class="weather-image" width="30px" height="30px"></img></td>
+          <td id="day4Temp" class="weather-temp"></td>
+        </tr>
+        <tr>
+          <td id="day5Day" class="weather-day"></td>
+          <td><img src="" id="day5Image" class="weather-image" width="30px" height="30px"></img></td>
+          <td id="day5Temp" class="weather-temp"></td>
+        </tr>
+      </table>
+
+    </article>
 
 
-    <script src="index.js"></script>
+  </section>
+  <div class="TodaysImage">
+    <img id="todaysImage" src="" />
+  </div>
+  <script src="./index.js"></script>
 </body>
 
 </html>

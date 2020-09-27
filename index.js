@@ -1,13 +1,6 @@
 
 const todaysWeatherId = document.getElementById("todaysWeatherId");
-const monday = document.getElementById("monday");
-const tuesday = document.getElementById("tuesday");
-const wednesday = document.getElementById("wednesday");
-const thursday = document.getElementById("thursday");
-const friday = document.getElementById("friday");
-
-// Vi ska göra en funktion som tar UNIX-tiden, och omvandlar den till "riktig" tid.
-
+const todaysImage = document.getElementById("todaysImage")
 
 const fetchWeatherToday = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=f2f9f8b681a8d2ef3cd9a12ebdc8c363';
 fetch(fetchWeatherToday)
@@ -16,14 +9,17 @@ fetch(fetchWeatherToday)
     })
     .then((json) => {
         console.log(json);
-        todaysWeatherTemp.innerText = Math.round(json.main.temp);
+        const todaysImageId = json.weather[0].icon;
+        todaysImage.src = `./images/${todaysImageId}.gif`;
+
+        todaysWeatherTemp.innerText = Math.round(json.main.temp) + "°C";
+
         todaysWeatherCity.innerText = json.name;
+
         todaysWeatherType.innerText = json.weather[0].description;
-        // todaysWeatherSunrise.innerText = formatTime(json.sys.sunrise);
-        // todaysWeatherSunset.innerText = formatTime(json.sys.sunset);
 
-
-
+        todaysWeatherSunrise.innerText = formatTime(json.sys.sunrise);
+        todaysWeatherSunset.innerText = formatTime(json.sys.sunset);
     });
 
 const formatTime = (unixtime) => {
@@ -33,32 +29,39 @@ const formatTime = (unixtime) => {
     const minutes = "0" + date.getMinutes();
     const seconds = "0" + date.getSeconds();
 
-    const formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-    return formattedTime
-}
+    const formattedTime = hours + ':' + minutes.substr(-2);
+    return formattedTime;
 
 
-// step 4 
-const nextWeeksWeatherId = document.getElementById("nextWeeksWeatherId");
-const fetchWeatherWeek = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=YOUR_API_KEY';
-fetch(fetchWeatherWeek)
+
+};
+
+
+//STEP 4
+const nextWeeksWeatherId = document.getElementById('nextWeeksWeatherId');
+const fetchWeatherNextWeek = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=f2f9f8b681a8d2ef3cd9a12ebdc8c363';
+
+const nextWeeksWeatherInfoAPI = () => {
+    fetch(fetchWeatherNextWeek)
     .then((response) => {
-        return response.json();
+        return response.json()
     })
+    .then((nextWeeksWeatherInfo) => {
+        const filteredList = nextWeeksWeatherInfo.list.filter(item => item.dt_txt.includes('12:00'));
 
-filteredForecast.forEach((monday) => {
-    const date = new Date(monday.dt * 1000)
+        for (let i=0; i < filteredList.length; i++) {
+            const day = new Date(filteredList[i].dt * 1000);
+            var days = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+            const finalDay = days[day.getDay()];
+            document.getElementById(`day${i+1}Day`).innerHTML = `${finalDay}`;
 
-    // Make a Date object for right now
-    const now = new Date();
+            const icon = filteredList[i].weather[0].icon;
+            document.getElementById(`day${i+1}Image`).src = `./images/${icon}.gif`;
 
-    // Compare the forecast's day with the day right now
-    const isTodaysForecast = date.getDay() === now.getDay();
+            const temp = filteredList[i].main.temp.toFixed(1);
+            document.getElementById(`day${i+1}Temp`).innerHTML = `${temp}&#176`;
 
-    let dayName = week[date.getDay()]
-
-    // We don't want to include this forecast if it is for today
-    if (!isTodaysForecast) {
-        fiveDayForecast.innerHTML += `<p>${dayName}: ${day.main.temp} °C</p>`
-    }
-})
+        };
+    });
+};
+    nextWeeksWeatherInfoAPI();
