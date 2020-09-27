@@ -2,7 +2,7 @@
 
 This week's project was to build a simple weather web app that shows today's weather and temperature, and a 5-day forecast using a weather API.
 
-For this week I aimed for the blue level. And I also completed one of the red level requirements as below:
+For this week I aimed for the blue level. And I also completed two of the red level requirements as below:
 
 **🔵  Blue Level (Minimum Requirements)**
 
@@ -14,7 +14,7 @@ For this week I aimed for the blue level. And I also completed one of the red le
 **🔴  Red Level (Intermediary Goals)**
 
 - Change the colors of the page based on the weather. If the weather is warm – use warm colors. If the weather is colder, use cold colors. If you really want to push you CSS muscles you can even make a background gradient.
-
+- Include visual indicators for the type of weather, cloudy/sunny/rainy/etc.
 
 ## The problem
 

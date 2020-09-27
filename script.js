@@ -47,7 +47,7 @@ const printDay = (day) => {
   return forecastDaysString;
 };
 
-//Function to show different icons depending on current weather. Is used in the functions to generate weather today and weather forecast
+//Function to show different weather-icons depending on current weather. Is used in the functions to generate weather today and weather forecast
 const iconDependingOnWeather = (item) => {
   const iconMainDescription = item
 
@@ -70,15 +70,18 @@ const iconDependingOnWeather = (item) => {
 //Tried first to change background color depending on time. Didn't get that to work. Was confused with what the parameter(s) should be and what to use in the if-statement, and if I should declare any variables. Below I did a function to show different backgrounds depending on temperature instead. That works.
  const weatherTodayBackground = (temp) => { //What is the temp param here really?
     const containerColor = document.querySelector('.weather-today')
-
-   if (temp < 0, temp <= 10) { //cold
-      containerColor.style.background = 'linear-gradient(to bottom, #1a255e 0%, #81bfd5 100%)'; //blue
+//Maybe add different background-pictures depending on temp also below?
+//I changed background to backgroundImage and it seems to work als (because I want to add a picture behind the gradient): How do I add also a background image depending on temp?
+   if (temp < 0) { //really cold
+    containerColor.style.backgroundImage = 'linear-gradient(to bottom, rgba(26,37,94,0.8) 0%, rgba(129,191,213,0.8) 80%, rgba(255,255,255,1) 100%), url("./background_0_degrees.jpg")'; //dark blue
+   } else if (temp > 0, temp <= 10) { //somewhat cold
+      containerColor.style.backgroundImage = 'linear-gradient(to bottom, rgba(119,151,190,0.8) 0%, rgba(129,191,213,0.8) 80%, rgba(255,255,255,1) 100%), url("./background_0_10_degrees.jpg")'; //lighter blue
    } else if (temp > 10, temp < 18) {//semi-warm
-      containerColor.style.background = 'linear-gradient(180deg, #f7c602 0%, #fceba6 70%, #ffffff 100%)';//yellow
+       containerColor.style.backgroundImage = 'linear-gradient(180deg, rgba(247,198,2,0.8) 0%, rgba(252,235,166,0.8) 80%, rgba(255,255,255,1) 100%), url("./background_10_18_degrees.jpg")';//yellow 
    } else if (temp > 18, temp < 27) { //warm
-      containerColor.style.background = 'linear-gradient(180deg, #f7a013 0%, #fce685 70%, #ffffff 100%)'; //orange
+      containerColor.style.backgroundImage = 'linear-gradient(180deg, rgba(244,164,2,0.8) 0%, rgba(252,230,133,0.8) 70%, rgba(255,255,255,1) 100%), url("./background_18_27_degrees.jpg")'; //orange
    } else //super-warm
-      containerColor.style.background = 'linear-gradient(180deg, #ef5710 0%, #f9d67c 70%, #fffff 100%)'; //red
+      containerColor.style.backgroundImage = 'linear-gradient(180deg, rgba(239,87,16,0.8) 0%, rgba(249,214,124,0.8) 70%, rgba(255,255,255,1) 100%), url("./background_27_degrees_more.jpg ")';//red
  }
  
 //Function to specify content and the HTML-structure for weather today. Is called in the fetch-function for weather today.
@@ -91,6 +94,7 @@ const generatedHTMLForWeatherToday = (weatherToday) => {
   const description = weatherToday.weather[0].description
   weatherTodayBackground(weatherToday.main.temp);
   
+  //The += below appends html elements
   let weatherTodayHTML = '';
   weatherTodayHTML += `<div class="location-information">`;
   weatherTodayHTML += `<div class="temp">${temperature} <span class="celsius">&#8451;</span></div>`

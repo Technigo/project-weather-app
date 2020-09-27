@@ -1,12 +1,14 @@
 body {
   font-family: 'Kumbh Sans', sans-serif;
+  /* max-width: 1300px; */
+  margin: auto;
 }
                               /* WEATHER TODAY STARTS HERE */
 .wrapper {
   width: 100vw;
 }
 
-.weather-today {
+.weather-today { /* I don't know why I can't position the background image using object-position. The values I put in doesn't seem to affect the position. Why? */
   width: 90vw;
   height: 50vh;
   display: flex;
@@ -14,7 +16,12 @@ body {
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
   margin: auto;
-}
+  background-size: cover;
+  object-fit: cover; /* contain - The replaced content is scaled to maintain its aspect ratio while fitting within the element's content box
+  cover - The replaced content is sized to maintain its aspect ratio while filling the element's entire content box. The object will be clipped to fit */
+  object-position: bottom center; /* The object-position property is used together with object-fit to specify how an <img> or <video> should be positioned with x/y coordinates inside its "own content box". Specifies the position of the image or video inside its content box. First value controls the x-axis and the second value controls the y-axis. Can be a string (left, center or right), or a number (in px or %). Negative values are allowed. JavaScript syntax:	object.style.objectPosition="0 10%" */
+  max-width: 1200px;
+} 
 
 .location-information {
   width: 70%;
@@ -58,7 +65,7 @@ body {
 }
 
 .description {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .description,
@@ -87,6 +94,7 @@ body {
 .forecast-wrapper {
   width: 90vw;
   margin: auto;
+  max-width: 1200px;
 }
 
 .weather-forecast {
@@ -107,3 +115,18 @@ body {
   width: 70px;
 }
 
+@media(min-width:600px) {
+  .weather-forecast {
+    font-size: 16px;
+  }
+
+  .description,
+  .sunset,
+  .sunrise {
+    font
+    -size: 20px;
+  }
+  .sunrise-sunset {
+    width: 300px;
+  }
+}
