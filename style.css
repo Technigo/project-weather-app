@@ -17,9 +17,10 @@ body {
   border-bottom-right-radius: 0px;
   margin: auto;
   background-size: cover;
-  object-fit: cover; /* Explaied: contain = The replaced content is scaled to maintain its aspect ratio while fitting within the element's content box. cover = The replaced content is sized to maintain its aspect ratio while filling the element's entire content box. The object will be clipped to fit */
-  object-position: bottom center; /* Explained: The object-position property is used together with object-fit to specify how an <img> or <video> should be positioned with x/y coordinates inside its "own content box". Specifies the position of the image or video inside its content box. First value controls the x-axis and the second value controls the y-axis. Can be a string (left, center or right), or a number (in px or %). Negative values are allowed. JavaScript syntax:	object.style.objectPosition="0 10%" */
+  /*object-fit: cover; This doesn't seem to work. Why? Explaied: contain = The replaced content is scaled to maintain its aspect ratio while fitting within the element's content box. cover = The replaced content is sized to maintain its aspect ratio while filling the element's entire content box. The object will be clipped to fit */
+  /*object-position: bottom center; This doesn't seem to work. Why? Explained: The object-position property is used together with object-fit to specify how an <img> or <video> should be positioned with x/y coordinates inside its "own content box". Specifies the position of the image or video inside its content box. First value controls the x-axis and the second value controls the y-axis. Can be a string (left, center or right), or a number (in px or %). Negative values are allowed. JavaScript syntax:	object.style.objectPosition="0 10%" */
   max-width: 1200px;
+  /*overflow: hidden; Added this to try to center the content on the page, which is not entirely centered. It did not work it seems. I don't know why the content isn't quite centered?!?! */
 } 
 
 .location-information {
