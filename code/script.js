@@ -162,7 +162,7 @@ const displayTodaysWeather = (weatherArray) => {
     hour12: false,
   })}`;
   const temp = weatherArray.main.temp;
-  temperature.innerHTML = `${temp.toFixed(0)}\xB0`;
+  temperature.innerHTML = `${temp.toFixed(1)}\xB0`;
   const descriptionArray = weatherArray.weather.map((a) => a.main);
   description.innerHTML = descriptionArray[0];
   const iconArray = weatherArray.weather.map((a) => a.icon);
@@ -192,7 +192,7 @@ const displayForecast = (forecastArray) => {
     });
     const iconArray = day.weather.map((a) => a.icon);
     const icon = iconArray[0];
-    const midTemp = `${day.main.temp.toFixed(0)}\xB0`;
+    const midTemp = `${day.main.temp.toFixed(1)}\xB0`;
     return { dayName, icon, midTemp };
   });
   forecastWeather.forEach((item, index) => {
