@@ -65,7 +65,6 @@ html {
   }
 } 
 
-
 /* Ipad */
 @media (min-width: 415px) and (max-width: 1024px) {
 
@@ -161,12 +160,12 @@ html {
   .middle-section {
     display: flex;
     flex-direction: row;
-    padding-top: 80px;
-    width: 80%;
+    padding-top: 55px;
+    width: 50%;
   }
 
-  #umbrellaIcon, #sunglassesIcon, #cloudIcon {
-    margin: 40px;
+  #cloudIcon {
+    margin: 60px;
   }
 
   h2, #location {
@@ -180,8 +179,3 @@ html {
     padding: 40px 0px 40px 0px;
   }
 }
-
-
-
-
-

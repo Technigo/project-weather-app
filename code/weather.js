@@ -20,6 +20,8 @@ const fetchWeather = () => {
     weatherLocation.innerHTML = weather.name;
     weatherDescription.innerHTML = weather.weather[0].description
     weatherTemperature.innerHTML = Math.round(weather.main.temp)
+
+// Sunrise
     const weatherSunrise = () => {
         const dateSunrise = new Date(weather.sys.sunrise * 1000);
         const timeSunrise = dateSunrise.toLocaleTimeString([], {
@@ -29,7 +31,6 @@ const fetchWeather = () => {
         document.getElementById('sunrise').innerHTML = timeSunrise
   }
     weatherSunrise()
-
 
 // Sunset
     const weatherSunset = () => {
@@ -42,30 +43,9 @@ const fetchWeather = () => {
     }
     weatherSunset()
  })
-
- 
 }
 
 fetchWeather();
-
-
-
-// Objects for the weatherconst currentWeather = () => {if (weatherDescription.includes("cloud") return cloudyWeather.image}
-
-const rainyWeather = {
-  name: 'rain',
-  image: 'Designs/Design-2/icons/umbrella.svg'
-  }
-
-const sunnyWeather = {
-  name: 'sunny',
-  img: `${sunglassesIcon}`
-}
-
-const cloudyWeather = {
-  name: 'cloudy',
-  img: `${cloudIcon}`
-}
 
 // Forecast for the next 5 days
 
