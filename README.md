@@ -30,6 +30,7 @@ I would like to:
 - make all capitals to upperCase (tried a lot, I guess it is kind of ease, but I have'nt figured it out)
 - more weather info and for more cities, also for where the user is
 - icons for the weather forecast
+- understand more and maybe not have so much info in the first function for current weather/fetch api... Maybe I could have some of the info outside, like I have with the nightIcon function.
 
 
 ## View it live
