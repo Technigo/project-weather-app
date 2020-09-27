@@ -8,4 +8,4 @@ I had short time to work on this project this week but I managed to do the blue 
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Here is the link to my web site:  
