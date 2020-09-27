@@ -47,19 +47,19 @@ const iconDependingOnWeather = (item) => {
   const iconMainDescription = item
 
   if (iconMainDescription === 'Clouds') {
-    return 'http://openweathermap.org/img/wn/03d@2x.png'
+    return "https://openweathermap.org/img/wn/03d@2x.png"
   } else if (iconMainDescription === 'Clear') {
-    return 'http://openweathermap.org/img/wn/01d@2x.png'
+    return "https://openweathermap.org/img/wn/01d@2x.png"
   } else if (iconMainDescription === 'Snow') {
-    return 'http://openweathermap.org/img/wn/13d@2x.png'
+    return "https://openweathermap.org/img/wn/13d@2x.png"
   } else if (iconMainDescription === 'Rain') {
-    return 'http://openweathermap.org/img/wn/09d@2x.png'
+    return "https://openweathermap.org/img/wn/09d@2x.png"
   } else if (iconMainDescription === 'Drizzle') {
-    return 'http://openweathermap.org/img/wn/09d@2x.png'
+    return "https://openweathermap.org/img/wn/09d@2x.png"
   } else if (iconMainDescription === 'Thunderstorm') {
-    return 'http://openweathermap.org/img/wn/11d@2x.png'
+    return "https://openweathermap.org/img/wn/11d@2x.png"
   } else (iconMainDescription === 'Atmosphere')
-    return 'http://openweathermap.org/img/wn/50d@2x.png'
+    return "https://openweathermap.org/img/wn/50d@2x.png"
 }
 //Tried first to change background gradient/picture depending on time. Didn't get that to work. Was confused with what the parameter(s) should be and what to use in the if-statement, and if I should declare any variables. Below I did a function to show different backgrounds depending on temperature instead. That works.
  const weatherTodayBackground = (temp) => { //What is the temp param here really?
