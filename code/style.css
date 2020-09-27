@@ -6,25 +6,11 @@ body {
   font-weight: bold;
 }
 
-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: #000000;
-  z-index: 1;
-}
-
 main {
   height: 100%;
-  padding: 0 10%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  position: fixed;
-  top: 50px;
-  right: 0;
-  left: 0;
-  margin-top: -20px;
+  background: linear-gradient(0deg, rgba(238,242,243,1) 0%, rgba(142,158,171,1) 100%);
 }
 
 h1 {
@@ -41,11 +27,19 @@ p {
   margin: 5px 0;
 }
 
+header {
+  background: rgba(142,158,171,1);
+  height: 50px;
+}
+
 .citySelector {
+  display: none;
+}
+
+.citySearch {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50px;
 }
 
 select {
@@ -58,18 +52,17 @@ select {
 
 input {
   height: 30px;
-  width: 75px;
+  width: 142px;
   font-size: 15px;
   font-weight: bold;
   margin: 5px 10px;
 }
 
-/* .today {
-  padding-left: 30px;
-  padding-top: 70px;
+.today {
+  padding: 10px 0;
   border-bottom-left-radius: 80% 20%;
   border-bottom-right-radius: 80% 20%;
-} */
+}
 
 .weather {
   display: flex;
@@ -82,7 +75,7 @@ input {
 }
 
 .forecasts {
-  margin-top: 30px;
+  margin: 20px 10%;
 }
 
 .forecast {
@@ -111,14 +104,59 @@ input {
   align-items: center;
   }
 
+  header {
+    display: flex;
+    justify-content: space-around;
+  }
+
   main {
     width: 360px;
-    height: 600px;
-    padding: 0 40px;
-    border-radius: 25px;
+    height: fit-content;
+    border-radius: 15px;
     box-shadow:10px 10px 5px 0px rgba(20,20,20,0.75);
     top: auto;
     right: auto;
     left: auto;
   }
+
+  header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+
+  .citySelector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .today {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    padding: 25px 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  main {
+    display: flex;
+    flex-direction: row;
+    width: 800px;
+  }
+
+  .today {
+    border-top-right-radius: 30% 80%;
+    border-bottom-right-radius: 30% 80%;
+    border-bottom-left-radius: 15px;
+    width: 55%;
+  }
+
+  .forecasts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 5%;
+    width: 35%;
+  }  
 }

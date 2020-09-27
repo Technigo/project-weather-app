@@ -11,7 +11,8 @@ const picto = document.getElementById('picto');
 const sunset = document.getElementById('sunset');
 const sunrise = document.getElementById('sunrise');
 const forecasts = document.getElementsByClassName('forecast');
-const button = document.getElementById('citySubmit');
+const selectButton = document.getElementById('city-submit');
+const searchButton = document.getElementById('city-search');
 
 const bodyBackgrounds = [
   {
@@ -123,16 +124,16 @@ const returnBodyBackground = (todayIcon) => {
   })
 };
 
-// This function returns main colors depending on weather icon code
-const returnMainColor = (temp) => {
+// This function returns gradient depending on temperature
+const returnTempGradient = (temp) => {
   if (temp <= 0) {
-    main.style.backgroundImage = 'linear-gradient(45deg, rgba(122,184,234,1) 0%, rgba(255,255,255,1) 100%)';
+    today.style.backgroundImage = 'linear-gradient(45deg, rgba(0,57,115,1) 0%, rgba(67,198,172,1) 100%)';
   } else if (temp <= 15) {
-    main.style.backgroundImage = 'linear-gradient(45deg, rgba(245,244,221,1) 0%, rgba(255,210,85,1) 100%)';
+    today.style.backgroundImage = 'linear-gradient(45deg, rgba(67,198,172,1) 0%, rgba(248,255,174,1) 100%)';
   } else if (temp <= 30) {
-    main.style.backgroundImage = 'linear-gradient(45deg, rgba(255,210,85,1) 0%, rgba(226,104,58,1) 100%)';
+    today.style.backgroundImage = 'linear-gradient(45deg, rgba(248,255,174,1) 0%, rgba(254,140,0,1) 100%)';
   } else {
-    main.style.backgroundImage = 'linear-gradient(45deg, rgba(221,24,24,1) 0%, rgba(127,0,0,1) 100%)';
+    today.style.backgroundImage = 'linear-gradient(45deg, rgba(254,140,0,1) 0%, rgba(142,14,0,1) 100%)';
   }
 };
 
@@ -167,7 +168,7 @@ const displayTodaysWeather = (weatherArray) => {
   const iconArray = weatherArray.weather.map((a) => a.icon);
   const todayIcon = iconArray[0];
   returnBodyBackground(todayIcon);
-  returnMainColor(temp);
+  returnTempGradient(temp);
   picto.src = 'https://openweathermap.org/img/wn/' + todayIcon + '@2x.png';
   sunrise.innerHTML = (new Date((weatherArray.sys.sunrise + weatherArray.timezone - 7200) * 1000)).toLocaleTimeString([], {
     hour: '2-digit',
@@ -233,8 +234,14 @@ const returnWeatherByCity = (cityValue) => {
     });
 }
 
-// This function updates weather information based on city name entered by user
-button.addEventListener('click', () => {
+// This function updates weather information based on city name selected by user
+selectButton.addEventListener('click', () => {
   const cityValue = citySelector.value;
   returnWeatherByCity(cityValue);
+});
+
+// This function updates weather information based on city name entered by user
+searchButton.addEventListener('click', () => {
+  const citySearch = input.value;
+  returnWeatherByCity(citySearch);
 });

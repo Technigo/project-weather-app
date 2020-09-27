@@ -15,18 +15,25 @@
   <header>
     <section class="citySelector">
       <select name="city" id="citySelector" required>
-        <option value="stockholm" selected>Stockholm</option>
+        <option value="" disabled selected>Select a city</option>
+        <option value="stockholm">Stockholm</option>
         <option value="bordeaux">Bordeaux</option>
         <option value="papeete">Papeete</option>
-        <option value="rom">Rome</option>
         <option value="london">London</option>
         <option value="sidney">Sidney</option>
-        <input id="citySubmit" type="submit" value="Display">
       </select>
+      <button id="city-submit">Display</button>
+    </section>
+
+    <section class="citySearch">
+      <input id="input" type="text" placeholder="Type a city name">
+      <button id="city-search">Search</button>
     </section>
   </header>
 
+
   <main>
+
     <section id="today" class="today">
       <h1 id="city"></h1>
       <h3 id="time"></h3>
