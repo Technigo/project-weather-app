@@ -85,7 +85,7 @@ fetch(apiUrlForecast)
     });  
 });
 
-//${json.list[1].weather[0].icon}
+
 
  // RED LEVEL, ADD NEW CITY OSLO 
 
