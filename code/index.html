@@ -12,20 +12,23 @@
     />
   </head>
   <body>
+    <!----City selection section-->
     <section class="select-city">
       <p class="city-choice">Choose your city:</p>
       <select class="weather-location" onchange="selectFunction(event)">
+        <option id="stockholm" value="Stockholm">Stockholm</option>
         <option id="palma" value="Palma">Palma de Mallorca</option>
         <option id="moscow" value="Moscow">Moscow</option>
         <option id="mexicoCity" value="Mexico">Mexico city</option>
         <option id="milan" value="Milan">Milan</option>
         <option id="newYork" value="New York">New York</option>
-        <option id="capeTown" value="Cape Town">Cape Town</option>
+        <option id="capeTown" value="Ufa">Ufa</option>
         <option id="london" value="London">London</option>
         <option id="tokyo" value="Tokyo">Tokyo</option>
       </select>
     </section>
     <header>
+      <!----Weather information on the side-->
       <div class="weather-info">
         <div id="weather">
           <span id="description">N/A</span>
@@ -38,26 +41,34 @@
             sunrise|
             <span id="sunrise">N/A</span>
           </p>
-          <p>
+          <p class="sunsetTime">
             sunset|
             <span id="sunset">N/A</span>
           </p>
         </div>
       </div>
     </header>
+    <!----Message that changes according to the weather-->
     <section class="central-message">
       <h1 class="where">
         weather in:
         <span id="cityName"> N/A </span>
       </h1>
       <div class="weather-message">
-        <img src="./images/noun_Cloud_1188486.svg" id="icon" />
-        <p class="message-weather" id="weatherComment">
-          Hey, take your glasses
-        </p>
+        <img
+          src="./images/noun_Cloud_1188486.svg"
+          id="icon"
+          alt="image that shows the weather conditions"
+        />
+        <p class="weatherNews" id="weatherComment">N/A</p>
       </div>
     </section>
-    <main id="weatherByDay"></main>
+    <!----5 days weather forecast-->
+    <main class="forecastItems" id="weatherByDay">
+      <div id="forecastDay"></div>
+      <div id="forecastIcons"></div>
+      <div id="forecastTemp"></div>
+    </main>
     <script src="script.js"></script>
   </body>
 </html>

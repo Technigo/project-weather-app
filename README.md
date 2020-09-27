@@ -1,13 +1,19 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This project helped me learn how to fetch data from API and display it in
+a weather app.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+For this project I chose one of the giving designs and tried to make the app look as close to is as possible. I am proud of creating the structure of the page and Javascript logic from scratch.
+I managed to resolve several issues:
+-Displaying sunset/sunrise times in a readable way
+-Making the design change according to the weather conditions
+-Adding an option to choose a city
+
+Technologies used:
+-Javascript
+-CSS
+-HTMLS
 
 ## View it live
-
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.

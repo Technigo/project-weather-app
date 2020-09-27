@@ -60,10 +60,6 @@ header {
   position: relative;
   font-size: 4vw;
 }
-/* .weather-message {
-/*margin-top: 0px;
-//padding-top: 0px;
-} */
 
 .where {
   display: flex;
@@ -80,11 +76,12 @@ header {
 }
 #weatherByDay {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-around;
   align-items: center;
   font-size: 5vw;
 }
+
 .weather-message {
   font-size: 8vw;
 }
@@ -94,6 +91,13 @@ header {
   height: 20vw;
   color: #2a5510;
 }
+.little-icons {
+  display: flex;
+  flex-direction: column;
+  width: 10vw;
+  height: 10vw;
+}
+
 @media screen and (min-width: 768px) {
   .weather-message {
     display: flex;
@@ -101,4 +105,43 @@ header {
     justify-content: center;
     align-items: center;
   }
-}
+
+  .weather-location {
+    background-size: 2vw auto, 100%;
+  }
+  header {
+    font-size: 2vw;
+  }
+
+  .where {
+    font-size: 3vw;
+    margin: 0;
+    padding: 0;
+  }
+  #cityName {
+    font-size: 7vw;
+  }
+  #icon {
+    width: 10vw;
+    height: 10vw;
+  }
+  .weatherNews {
+    font-size: 5vw;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .sunsetTime {
+    margin-bottom: 0;
+  }
+  #weatherByDay {
+    font-size: 2vw;
+  }
+  .little-icons {
+    display: flex;
+    flex-direction: column;
+    width: 4vw;
+    height: 4vw;
+  }
+} ;
