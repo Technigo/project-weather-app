@@ -19,7 +19,26 @@ p {
     font-size: 23px;
 }
 
-.cloud {
+
+/* MAIN CONTENT */
+#city {
+    padding: 0 0 10px 0;
+}
+
+li {
+    border-bottom: 1px dashed;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    font-size: 23px;
+    list-style-type: none;
+}
+
+li:last-child {
+    border-bottom: 0px;
+}
+
+/* BACKGROUNDCOLORS DEPENDING ON WHICH WEATHER */
+/* .cloud {
     background-color: #F47775;
 }
 
@@ -29,42 +48,53 @@ p {
 
 .rain {
     background-color: #F4F7F8;
-}
+} */
 
+
+/* WEATHER-IMAGES */
 .weather-image {
     padding: 50px 0 10px 0;
 }
 
-#cloud-image {
+.visible {
     display: block;
 }
 
-#sunglasses-image {
+.hidden {
     display: none;
-} 
-
-#umbrella-image {
-    display: none;
-} 
-
-#city {
-    padding: 0 0 10px 0;
 }
 
-ul {
-    list-style-type: none;
-    width: 100%;
-}
+/* MEDIA QUERIES
+/* På skärmar större än 678 px */
+@media screen and (min-width: 678px) {
 
-li {
-    border-bottom: 1px dashed;
-    padding-bottom: 4px;
-    padding-top: 4px;
+main {
+    padding: 20px;
+}
+  
+.tablet-weatherandimage {
     display: flex;
     justify-content: space-between;
-    font-size: 23px;
-    }
+    padding-bottom: 40px;
+}
 
-li:last-child {
-    border-bottom: 0px;
+.weather-image {
+    padding: 0;
+} 
+
+ul {
+    padding-top: 50px;
+    text-align: center;
+}
+
+}
+  
+/* MEDIA QUERIES */
+/* På skärmar större än 1025 px */
+@media screen and (min-width: 1025px) {
+   
+#city {
+    text-align: center;
+}
+
 }
