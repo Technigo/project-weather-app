@@ -16,4 +16,6 @@ If I had more time, I would have improved the "12.00 method" in the forecast, ad
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+You can take a look at the result on https://smhi-killer.netlify.app/
+You are welcome to visit my pull request https://github.com/Technigo/project-weather-app/pull/136 and leave some comments about my code.
+Enjoy!
