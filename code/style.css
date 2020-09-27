@@ -70,7 +70,7 @@ body {
   display: flex;
   flex-direction: column;
   font-size: 17px;
-  background-color: rgb(187, 187, 187);
+  background-color: rgba(187, 187, 187, 0.536);
   border-radius: 5px;
 }
 
