@@ -7,7 +7,7 @@ const temperature = document.getElementById("temperature");
 const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
 
-const weatherApi = "http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=1c055fa282f5d9954e97fd78b7cd3c03";
+const weatherApi = "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=1c055fa282f5d9954e97fd78b7cd3c03";
 
 
 fetch(weatherApi)
@@ -52,5 +52,5 @@ fetch(forecastApi)
 
     forecastDayAndTemp.innerHTML += `<h5>${dayName}: ${dayTemperature} °C</h5>`;
     
-  });
+  })
 })
