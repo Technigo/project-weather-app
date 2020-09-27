@@ -11,15 +11,20 @@ header {
   top: 0;
   width: 100%;
   background-color: #000000;
+  z-index: 1;
 }
 
 main {
-  /* width: 100%; */
   height: 100%;
   padding: 0 10%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: fixed;
+  top: 50px;
+  right: 0;
+  left: 0;
+  margin-top: -20px;
 }
 
 h1 {
@@ -38,7 +43,9 @@ p {
 
 .citySelector {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
 }
 
 select {
@@ -46,8 +53,23 @@ select {
   width: 150px;
   font-size: 15px;
   font-weight: bold;
-  margin-bottom: 5px;
+  margin: 5px 10px;
 }
+
+input {
+  height: 30px;
+  width: 75px;
+  font-size: 15px;
+  font-weight: bold;
+  margin: 5px 10px;
+}
+
+/* .today {
+  padding-left: 30px;
+  padding-top: 70px;
+  border-bottom-left-radius: 80% 20%;
+  border-bottom-right-radius: 80% 20%;
+} */
 
 .weather {
   display: flex;
@@ -90,10 +112,13 @@ select {
   }
 
   main {
-    width: 240px;
-    height: 568px;
+    width: 360px;
+    height: 600px;
     padding: 0 40px;
     border-radius: 25px;
     box-shadow:10px 10px 5px 0px rgba(20,20,20,0.75);
+    top: auto;
+    right: auto;
+    left: auto;
   }
 }

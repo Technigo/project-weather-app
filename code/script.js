@@ -2,6 +2,7 @@ const WEATHER_API_KEY = '73c5730a60c903ea682b781b386e94b4';
 
 const body = document.querySelector('body');
 const main = document.querySelector('main');
+const today = document.getElementById('today');
 const city = document.getElementById('city');
 const time = document.getElementById('time');
 const temperature = document.getElementById('temperature');
@@ -12,132 +13,78 @@ const sunrise = document.getElementById('sunrise');
 const forecasts = document.getElementsByClassName('forecast');
 const button = document.getElementById('citySubmit');
 
-const backgrounds = [
+const bodyBackgrounds = [
   {
-    description: 'Clear sky',
     code: '01d',
-    color: 'rgb(142,197,252,0.5)',
-    gradient: 'linear-gradient(45deg, rgba(142,197,252,0.5) 0%, rgba(252,242,195,0.5) 100%)',
-    text: 'rgb(0,0,0)',
+    image: './assets/sun.jpg',
   },
   {
-    description: 'Few clouds',
     code: '02d',
-    color: 'rgb(150,150,150,0.5)',
-    gradient: 'linear-gradient(45deg, rgba(150,150,150,0.5) 0%, rgba(252,242,195,0.5) 100%)',
-    text: 'rgb(0,0,0)',
+    image: './assets/sun.jpg',
   },
   {
-    description: 'Scattered clouds',
     code: '03d',
-    color: 'rgb(153,156,162,0.5)',
-    gradient: 'linear-gradient(45deg, rgba(153,156,162,0.5) 0%, rgba(245,243,239,0.5) 100%)',
-    text: 'rgb(0,0,0)',
+    image: './assets/clouds.jpg',
   },
   {
-    description: 'Mist',
     code: '50d',
-    color: 'rgb(153,156,162,0.5)',
-    gradient: 'linear-gradient(45deg, rgba(153,156,162,0.5) 0%, rgba(245,243,239,0.5) 100%)',
-    text: 'rgb(0,0,0)',
+    image: './assets/clouds.jpg',
   },
   {
-    description: 'Broken clouds',
     code: '04d',
-    color: 'rgb(76,77,80,0.5)',
-    gradient: 'linear-gradient(45deg, rgba(76,77,80,0.5) 0%, rgba(153,156,162,0.5) 100%)',
-    text: 'rgb(0,0,0)',
+    image: './assets/clouds.jpg',
   },
   {
-    description: 'Shower rain',
     code: '09d',
-    color: 'rgb(76,77,80,0.5)',
-    gradient: 'linear-gradient(45deg, rgba(76,77,80,0.5) 0%, rgba(153,156,162,0.5) 100%)',
-    text: 'rgb(0,0,0)',
+    image: './assets/rain.jpg',
   },
   {
-    description: 'Rain',
     code: '10d',
-    color: 'rgb(76,77,80,0.5)',
-    gradient: 'linear-gradient(45deg, rgba(76,77,80,0.5) 0%, rgba(153,156,162,0.5) 100%)',
-    text: 'rgb(0,0,0)',
+    image: './assets/rain.jpg',
   },
   {
-    description: 'Thunderstorm',
     code: '11d',
-    color: 'rgb(76,77,80,0.5)',
-    gradient: 'linear-gradient(45deg, rgba(76,77,80,0.5) 0%, rgba(153,156,162,0.5) 100%)',
-    text: 'rgb(0,0,0)',
+    image: './assets/storm.jpg',
   },
   {
-    description: 'Snow',
     code: '13d',
-    color: 'rgb(76,77,80,0.5)',
-    gradient: 'linear-gradient(45deg, rgba(76,77,80,0.5) 0%, rgba(153,156,162,0.5) 100%)',
-    text: 'rgb(0,0,0)',
+    image: './assets/snow.jpg',
   },
   {
-    description: 'Clear sky night',
     code: '01n',
-    color: 'rgb(17,34,121,0.5)',
-    gradient: 'linear-gradient(45deg, rgba(17,34,121,0.5) 0%, rgba(208,213,236,0.5) 100%)',
-    text: 'rgb(255,255,255)',
+    image: './assets/night.jpg',
   },
   {
-    description: 'Few clouds night',
     code: '02n',
-    color: 'rgb(17,34,121,0.5)',
-    gradient: 'linear-gradient(45deg, rgba(17,34,121,0.5) 0%, rgba(180,180,180,0.5) 100%)',
-    text: 'rgb(255,255,255)',
+    image: './assets/night.jpg',
   },
   {
-    description: 'Scattered clouds night',
     code: '03n',
-    color: 'rgb(17,34,121,0.5)',
-    gradient: 'linear-gradient(45deg, rgba(17,34,121,0.5) 0%, rgba(153,156,162,0.5) 100%)',
-    text: 'rgb(255,255,255)',
+    image: './assets/night.jpg',
   },
   {
-    description: 'Mist night',
     code: '50n',
-    color: 'rgb(17,34,121,0.5)',
-    gradient: 'linear-gradient(45deg, rgba(17,34,121,0.5) 0%, rgba(153,156,162,0.5) 100%)',
-    text: 'rgb(255,255,255)',
+    image: './assets/night.jpg',
   },
   {
-    description: 'Broken clouds night',
     code: '04n',
-    color: 'rgb(17,34,121,0.5)',
-    gradient: 'linear-gradient(45deg, rgba(17,34,121,0.5) 0%, rgba(76,77,80,0.5) 100%)',
-    text: 'rgb(255,255,255)',
+    image: './assets/night.jpg',
   },
   {
-    description: 'Shower rain night',
     code: '09n',
-    color: 'rgb(17,34,121,0.5)',
-    gradient: 'linear-gradient(45deg, rgba(17,34,121,0.5) 0%, rgba(76,77,80,0.5) 100%)',
-    text: 'rgb(255,255,255)',
+    image: './assets/night.jpg',
   },
   {
-    description: 'Rain night',
     code: '10n',
-    color: 'rgb(17,34,121,0.5)',
-    gradient: 'linear-gradient(45deg, rgba(17,34,121,0.5) 0%, rgba(76,77,80,0.5) 100%)',
-    text: 'rgb(255,255,255)',
+    image: './assets/night.jpg',
   },
   {
-    description: 'Thunderstorm night',
     code: '11n',
-    color: 'rgb(17,34,121,0.5)',
-    gradient: 'linear-gradient(45deg, rgba(17,34,121,0.5) 0%, rgba(76,77,80,0.5) 100%)',
-    text: 'rgb(255,255,255)',
+    image: './assets/night.jpg',
   },
   {
-    description: 'Snow night',
     code: '13n',
-    color: 'rgb(17,34,121,0.5)',
-    gradient: 'linear-gradient(45deg, rgba(17,34,121,0.5) 0%, rgba(76,77,80,0.5) 100%)',
-    text: 'rgb(255,255,255)',
+    image: './assets/night.jpg',
   }
 ]
 
@@ -166,15 +113,27 @@ const days = [
   'Sat'
 ]
 
-// This function returns main colors depending on weather icon code
-const returnColor = (todayIcon) => {
-  backgrounds.forEach((item) => {
+// This function returns body background image depending on weather icon code
+const returnBodyBackground = (todayIcon) => {
+  bodyBackgrounds.forEach((item) => {
     if (item.code === todayIcon) {
-      main.style.backgroundColor = item.color;
-      main.style.backgroundImage = item.gradient;
-      main.style.color = item.text;
+      body.style.backgroundImage = `url(${item.image})`;
+      body.style.backgroundSize = 'cover';
     }
   })
+};
+
+// This function returns main colors depending on weather icon code
+const returnMainColor = (temp) => {
+  if (temp <= 0) {
+    main.style.backgroundImage = 'linear-gradient(45deg, rgba(122,184,234,1) 0%, rgba(255,255,255,1) 100%)';
+  } else if (temp <= 15) {
+    main.style.backgroundImage = 'linear-gradient(45deg, rgba(245,244,221,1) 0%, rgba(255,210,85,1) 100%)';
+  } else if (temp <= 30) {
+    main.style.backgroundImage = 'linear-gradient(45deg, rgba(255,210,85,1) 0%, rgba(226,104,58,1) 100%)';
+  } else {
+    main.style.backgroundImage = 'linear-gradient(45deg, rgba(221,24,24,1) 0%, rgba(127,0,0,1) 100%)';
+  }
 };
 
 // This function defines current location and passes information to showPosition()
@@ -201,12 +160,14 @@ const displayTodaysWeather = (weatherArray) => {
     minute: '2-digit',
     hour12: false,
   })}`;
-  temperature.innerHTML = `${weatherArray.main.temp.toFixed(0)}\xB0`;
+  const temp = weatherArray.main.temp;
+  temperature.innerHTML = `${temp.toFixed(0)}\xB0`;
   const descriptionArray = weatherArray.weather.map((a) => a.main);
   description.innerHTML = descriptionArray[0];
   const iconArray = weatherArray.weather.map((a) => a.icon);
   const todayIcon = iconArray[0];
-  returnColor(todayIcon);
+  returnBodyBackground(todayIcon);
+  returnMainColor(temp);
   picto.src = 'https://openweathermap.org/img/wn/' + todayIcon + '@2x.png';
   sunrise.innerHTML = (new Date((weatherArray.sys.sunrise + weatherArray.timezone - 7200) * 1000)).toLocaleTimeString([], {
     hour: '2-digit',
