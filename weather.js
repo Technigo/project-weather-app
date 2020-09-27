@@ -46,17 +46,17 @@ fetch(apiUrl).then((response) => {
     sunriseInfo.innerHTML += `<h2> Sunrise ${sunriseTime}</h2>`;
     sunsetInfo.innerHTML += `<h2> Sunset ${sunsetTime} </h2>`;
 });
-/*
+
 const night = () => {
     const currentTime = new Date().getHours();
-    if (currentTime >= 16 || currentTime <= 17) {
+    console.log(currentTime)
+    if (currentTime >= 22 && currentTime <= 04){
         document.getElementById('nightIcon').src = './icons/iconfinder_03_moon_sleepy_night_emoticon_weather_smiley_3375686.svg';
-    } else {
-        //INGET';
+        var element = document.getElementById("weatherIconParent");
+        element.parentNode.removeChild(element);
     }
 }
 night();
-*/
 
 
 //FORECAST FOR 5 DAYS:

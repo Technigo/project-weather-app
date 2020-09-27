@@ -43,3 +43,63 @@ body {
   align-items: center;
   flex-direction: row;
 }
+
+/* MEDIA FOR TABLET VIEW */
+@media screen and (min-width: 740px) {
+  body {
+    background-color: blue;
+  }
+
+  .current-weather {
+    margin: 40px;
+  }
+
+  .header-part-1 {
+    max-width: 992px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 40px;
+  }
+
+  .weather-icon {
+    width: 80%;
+    height: auto;
+  }
+  
+  .header-part-2 {
+    max-width: 992px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    font-size: 40px;
+  }
+  
+  .sunrise-sunset {
+    max-width: 992px; 
+    margin: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    font-size: 30px;
+  }
+  
+  .forecast {
+    max-width: 992px; 
+    margin: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    font-size: 38px;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  body {
+    background-color: blue;
+  }
+}
