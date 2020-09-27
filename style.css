@@ -8,32 +8,102 @@ html {
 
 body {
   font-family: 'Montserrat', sans-serif;
-  margin: 40px;
+  margin: 20px;
   color: #A3DEF7;
-  background-color: #35354F;
+  background-color: #373753;
 }
 
-.topInfo {
+.topinfo {
+ display: flex;
+ flex-direction: column;
+ text-align: left;
  font-weight: 400;
 }
 
+p {
+  margin: 5px;
+  font-size: 18px;
+ }
+
 #location {
-  font-size: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 46px;
 }
 
 .todayicon {
   width: 55%;
 }
 
-.weekfive {
+#weekfive {
   display: flex;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
   flex-direction: row;
 }
 
-.icons {
-  width: 10%;
+ul {
+  padding: 0;
+}
+
+#weekdayfive {
+  flex-direction: column;
+}
+
+#weektempfive {
+  flex-direction: column;
+}
+
+footer {
+  font-size: 10px;
+  margin-top: 100px;
+  text-align: center;
+  color: #A3DEF7;
+}
+
+/******** Responsive ***********/
+
+/* For tablet: */
+@media (min-width:600px) {
+
+p {
+  margin: 8px;
+  font-size: 25px;
+}
+
+.todayicon {
+  width: 30%;
+
+}
+
+#location {
+  font-size: 66px;
 }
 
 
+#weekfive {
+  justify-content: space-evenly;
+  
+}
 
+  }
+  
+  /* For desktop: */
+@media (min-width:1025px)  {
+  
+.todayicon {
+  width: 10%;
+}
+
+#weekfive {
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.topinfo {
+  text-align: center;
+ }
+
+}
