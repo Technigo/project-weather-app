@@ -105,14 +105,19 @@ const updateMinMaxTemps = (data) => {
             minMaxTemps[currentDate] = {
                 minTemp: item.main.temp_min,
                 maxTemp: item.main.temp_max,
-                dayOfWeek: weekDays[trueDate].toUpperCase()
+                dayOfWeek: weekDays[trueDate].toUpperCase(),
+                icon: item.weather[0].icon
             }
         }
     })
+    const forecast = document.getElementById('weatherForecast')
+    const forecastIcon = document.getElementById('forecastIcon')
+    forecast.innerHTML = ""
     for (const date in minMaxTemps) {
         const forecast = document.getElementById('weatherForecast')
         forecast.innerHTML += `<div class="column">${minMaxTemps[date].dayOfWeek}</div>`
-        forecast.innerHTML += `<div class="column">${minMaxTemps[date].minTemp.toFixed(0.5)} °C | ${minMaxTemps[date].maxTemp.toFixed(0.5)} °C </div>`
+        forecast.innerHTML += `<div class="column">${minMaxTemps[date].minTemp.toFixed(0.5)} °C|${minMaxTemps[date].maxTemp.toFixed(0.5)} °C </div>`
+        forecast.innerHTML += `<img src="http://openweathermap.org/img/wn/${minMaxTemps[date].icon}@2x.png"></img>`
     }
 }
 // Fetch 5 day Forecast Data
