@@ -128,3 +128,6 @@ const weatherForecastUrl = "https://api.openweathermap.org/data/2.5/forecast?q=T
 fetch(weatherForecastUrl)
     .then((response) => { return response.json() })
     .then((data) => { updateMinMaxTemps(data) })
+
+//DISCLAIMER:
+//I have trried to replace the city name with the city const, as well as the api key with the apiKey const. However, the app chooses to either not display the forecst or the current weather. As a result, I am prepared that this project will most likely not be showing up well on Netlify and will therefore need to be run through index.html.
