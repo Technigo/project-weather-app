@@ -31,7 +31,6 @@ fetch(weatherUrl)
     return response.json()
 })
     .then((json) => {
-        console.log(json)
         
         container.innerHTML = `<h1> The weather in ${json.name} is ${json.weather[0].main} with ${json.weather[0].description}. </h1>`;
 
@@ -52,7 +51,8 @@ const fiveDayForecast = () => {
     .then((fiveDayForecastInfo) => {
         const filteredList = fiveDayForecastInfo.list.filter(item => item.dt_txt.includes('12:00'));
         //Filtering the next 5 day's with the list info at 12:00 that day
-
+        
+        //One
         const dayOneDate = new Date(filteredList[1].dt * 1000);  
         var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
         const finalDayOneDate = days[dayOneDate.getDay()];
@@ -60,6 +60,40 @@ const fiveDayForecast = () => {
 
         document.getElementById("dayOne").innerHTML = `${finalDayOneDate}`;
         document.getElementById("dayOneTemp").innerHTML = `${dayOneTemp}&#176`;
+        
+        //TWO
+        const dayTwoDate = new Date(filteredList[2].dt * 1000); 
+        const finalDayTwoDate = days[dayTwoDate.getDay()];
+        const dayTwoTemp = filteredList[2].main.temp.toFixed(2);
+
+        document.getElementById("dayTwo").innerHTML = `${finalDayTwoDate}`;
+        document.getElementById("dayTwoTemp").innerHTML = `${dayTwoTemp}&#176`;
+
+        //THREE
+        const dayThreeDate = new Date(filteredList[3].dt * 1000); 
+        const finalDayThreeDate = days[dayThreeDate.getDay()];
+        const dayThreeTemp = filteredList[3].main.temp.toFixed(3);
+
+        document.getElementById("dayThree").innerHTML = `${finalDayThreeDate}`;
+        document.getElementById("dayThreeTemp").innerHTML = `${dayThreeTemp}&#176`;
+
+        //FOUR
+        const dayFourDate = new Date(filteredList[4].dt * 1000); 
+        const finalDayFourDate = days[dayFourDate.getDay()];
+        const dayFourTemp = filteredList[4].main.temp.toFixed(4);
+
+        document.getElementById("dayFour").innerHTML = `${finalDayFourDate}`;
+        document.getElementById("dayFourTemp").innerHTML = `${dayFourTemp}&#176`;
+
+        //FIVE
+        const dayFiveDate = new Date(filteredList[5].dt * 1000); 
+        const finalDayFiveDate = days[dayFiveDate.getDay()];
+        const dayFiveTemp = filteredList[5].main.temp.toFixed(5);
+
+        document.getElementById("dayFive").innerHTML = `${finalDayFiveDate}`;
+        document.getElementById("dayFiveTemp").innerHTML = `${dayFiveTemp}&#176`;
+
+
 
     });
 };
