@@ -139,7 +139,7 @@ const fetchWeatherForecast = () => {
     })
     .then((weatherForecast) => {
       const filteredForecast = weatherForecast.list.filter((item) =>
-        item.dt_txt.includes("12:00") //Filters out the 12 o'clock temps in weather forecast. This becomes a new array with objects.
+        item.dt_txt.replace(" ", "T").includes("12:00") //Filters out the 12 o'clock temps in weather forecast. This becomes a new array with objects. Tried to solve invalid date on iphone by adding T to date-format.
       );
       console.log(filteredForecast);
 
