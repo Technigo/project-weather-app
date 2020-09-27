@@ -1,19 +1,42 @@
 // SCRIPT FOR WEATHER APP
-import {API_KEY} from './key.js';
-import {API_URL} from './key.js'
+//import {apiKey} from './key.js';
+
+const apiKey = '277afbd3cf32e0e8cc059dd7cb8bcb95';
+const weatherUrl = `http://api.openweathermap.org/data/2.5/weather?q=Jönköping,Sweden&units=metric&APPID=${apiKey}`;
+const forecastUrl = `http://api.openweathermap.org/data/2.5/forecast?q=Jönköping,Sweden&units=metric&APPID=${apiKey}`;
+
 
 // Script for todays weather in Jönköping
 const todaysWeather = document.getElementById('todaysWeather');
 
-fetch(API_URL)
+fetch(weatherUrl)
      .then((response) => {
-         return response.json()
+         return response.json();
      })
-     .then((json) => {
-        todaysWeather.innerHTML = `<h2>${json.name}</h2>`
+     .then((weatherInfo) => {
+        todaysWeather.innerHTML = weatherInfo.name;
+        
 
-        json.weather.forEach((currentWeather) => {
-            todaysWeather.innerHTML += `<p>The weather in ${json.name}: ${currentWeather.main}, ${currentWeather.description}</p>`
+        weatherInfo.weather.forEach((currentWeather) => {
+            todaysWeather.innerHTML += `<p>The weather in ${weatherInfo.name}: ${currentWeather.main}, ${currentWeather.description} ${currentWeather.icon}</p>`
+            todaysWeather.innerHTML += `<p>Temperature: ${weatherInfo.main.temp.toFixed(1)} °c (feels like: ${weatherInfo.main.feels_like.toFixed(1)} °c)</p>`
+
+            const sunrise = new Date(weatherInfo.sys.sunrise * 1000);
+            const sunriseTime = (sunrise.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+            todaysWeather.innerHTML += `<p>Sunrise: ${sunriseTime} </p>`
+
+            const sunset = new Date(weatherInfo.sys.sunset * 1000);
+            const sunsetTime = (sunset.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+            todaysWeather.innerHTML += `<p>Sunset: ${sunsetTime} </p>`
+
         });
-        todaysWeather.innerHTML += `<p>The temperature is ${json.main.temp.toFixed(1)} °C</p>`
-     });
+    });
+
+    fetch(forecastUrl)
+    .then((response) => {
+        return response.json();
+    })
+    .then((json) => {
+        const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
+        console.log(json);
+    });
