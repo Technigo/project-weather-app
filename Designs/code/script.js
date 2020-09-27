@@ -52,7 +52,7 @@ fetch(urlWeatherForecast)
 const generateHTMLForForecast = (day) => {
     const weekday = day.dt;
     const weekdayShortFormat = new Date (weekday * 1000);
-    const weekdayDateString = weekdayShortFormat.toLocaleDateString([],{weekday: "short"});
+    const weekdayDateString = weekdayShortFormat.toLocaleDateString("en-US",{weekday: "short"});
     const temperature = day.main.temp;
     const temperatureRounded = Math.round(temperature);
 
