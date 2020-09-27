@@ -1,20 +1,35 @@
-body {
-    background: linear-gradient (white,blue);
-}
 
+
+body {
+    font-family: 'Dancing Script', cursive;
+    font-family: 'Indie Flower', cursive;
+    background-image: linear-gradient(45deg, white, #C5E2EE, transparent);
+}
 
 header {
 height: 30px;
-
 }
-.sun {
+.weather.container {
     display: flex;
-    flex-direction: row;
+    flex-direction: inherit;
 }
-.img {
-    height: 10px;
 
+.container {
+    width: 80%;
 }
+.temperature {
+    font-size: xx-large;
+}
+
+.Sun {
+
+    display: flex;
+    justify-content: center;
+}
+.Rise {
+    margin-right: 20px;
+}
+
 .forecast {
     width: 100%;
     padding: 10px;
@@ -22,7 +37,12 @@ height: 30px;
 
 }
 .forecast-container {
+    padding: 0;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+}
+
+p {
+    font-size: x-large
 }
