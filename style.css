@@ -100,10 +100,13 @@ p {
 #weekfive {
   align-items: center;
   justify-content: space-evenly;
+  margin-left: 300px;
+  margin-right: 300px;
 }
 
 .topinfo {
   text-align: center;
+  margin-top: 100px;
  }
 
 }

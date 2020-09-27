@@ -1,13 +1,10 @@
 # Weather App
 
-Replace this readme with your own information about your project.
+The weather app - Technig BootCamp
+The assignment was to build a weather-app and fetch data from the API using fetch() in JavaScript. The page should work on the mobile (mobile first!). 
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
-
-## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I had a very tough week, which meant that I had to lower my ambitions of striving for red and black levels. I'm still happy that I succeeded with the APIs, but really want to catch up by developing design and downloading weather icons.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+
