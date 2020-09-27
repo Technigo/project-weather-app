@@ -111,15 +111,15 @@ const bigWeatherIcon = (currentWeather) => {
     const icon = currentWeather.weather[0].icon;
     const code = icon[0] + icon[1];
     switch (code) {
-        case '01': showSunWeatherImage(); 
-        case '02': showSunWeatherImage();
-        case '03': showCloudWeatherImage();
-        case '04': showCloudWeatherImage();
-        case '09': showRainWeatherImage();
-        case '10': showRainWeatherImage();
-        case '11': showRainWeatherImage();
-        case '13': showRainWeatherImage();
-        case '50': showRainWeatherImage();
+        case '01': showSunWeatherImage(); break;
+        case '02': showSunWeatherImage(); break;
+        case '03': showCloudWeatherImage(); break;
+        case '04': showCloudWeatherImage(); break;
+        case '09': showRainWeatherImage(); break;
+        case '10': showRainWeatherImage(); break;
+        case '11': showRainWeatherImage(); break;
+        case '13': showRainWeatherImage(); break;
+        case '50': showRainWeatherImage(); break;
     };
 };
 
@@ -139,25 +139,6 @@ const getSelectedLocation = () => {
     return select.options[select.selectedIndex].value;
 };
 
-
-//Fetch current weather  
-fetch(url(getSelectedLocation())).then((response) => {
-    return response.json();
-})
-.then((currentWeather) => {
-    generateHTMLForWeather(currentWeather);
-    changeBackground(currentWeather);
-    bigWeatherIcon(currentWeather);
-});
-
-
-//Fetch 5 weather 
-fetch(urlFiveDayForecast(getSelectedLocation())).then((response) => {
-    return response.json();
-})
-.then((forecast) => {
-    generateHTMLFiveDayForecast(forecast);
-});
 
 //Update fetch depeding on selected city
 const update = () => {
@@ -190,4 +171,5 @@ const setCoordinates = (position) => {
     geolocationAPI = `api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`
     
 }
-
+//Default fetch
+update();
