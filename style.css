@@ -16,7 +16,6 @@ h2 {
     margin-bottom: 10px;
 }
 
-
 p {
     width: 100px;
     text-align: end;
@@ -44,7 +43,6 @@ color depending on weather temp statement in js file.*/
     z-index: -1;  
 }
 
-/*opacity 0.8 to show underlying background color in class-color*/
 .weather-today-wrapper {
     background: url('./unsplash-weather-s.jpg') no-repeat center center; 
     background-size: cover; 
@@ -96,7 +94,6 @@ color depending on weather temp statement in js file.*/
     margin: 0 10px;
 }
 
-/*style for weather forcast wrapper*/
 .weather-forcast-wrapper {
     color: rgb(94, 92, 92);
     margin: 30px 10px; 
@@ -127,7 +124,6 @@ color depending on weather temp statement in js file.*/
 
 label {
     font-size: 18px;
-    /*font-family: inherit;*/
     font-weight: 500;
     color: rgb(94, 92, 92)
 }
@@ -141,8 +137,6 @@ input {
     margin: 20px 0;
 }
 
-/*styling for search*/
-/*for style. Can I move onclick function to enter click? */
 .search-btn {
     display:none;
 }
@@ -151,7 +145,7 @@ input {
     0% {transform: scale(.9);}
     50% {transform: scale(1);}
     100% {transform: scale(.9);}
-  }
+}
 
 /****MEDIA FOR TABLET *****/
 @media (min-width: 768px) {

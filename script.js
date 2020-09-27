@@ -2,7 +2,7 @@ const containerToday = document.getElementById("weatherToday");
 const containerForecast = document.getElementById("weatherForecast");
 let citySearched = 'Kil';
 
-//Fetch weatherToday API
+//Fetch weather today API
 const fetchWeatherToday = (citySearched) => {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${citySearched}&units=metric&APPID=a0a9672a941bc58ae811a05987143dd5`)
     .then((response) => {
@@ -13,21 +13,20 @@ const fetchWeatherToday = (citySearched) => {
 }
 fetchWeatherToday(citySearched);
 
-
 //Function to invoke already created functions and manipulate the DOM
 const generatedHTMLForWeatherToday = (weatherToday) => {
     const temperature = calculatedTemperature(weatherToday.main.temp); 
-    const timeInCity = calculatingTime(weatherToday.dt, weatherToday.timezone) //changed added timezone
+    const timeInCity = calculatingTime(weatherToday.dt, weatherToday.timezone);
     const sunrise = calculatingTime(weatherToday.sys.sunrise, weatherToday.timezone); 
     const sunset = calculatingTime(weatherToday.sys.sunset, weatherToday.timezone);
-    const iconToday = iconDependingOnWeather(weatherToday.weather[0].main)
-    const description = descriptionUppercase(weatherToday.weather[0].description)
+    const iconToday = iconDependingOnWeather(weatherToday.weather[0].main);
+    const description = descriptionUppercase(weatherToday.weather[0].description);
     weatherTodayBackgroundColor(weatherToday.main.temp);
     
      //separate and build up the HTML tree
-     let weatherTodayHTML = '';
-     weatherTodayHTML += `<div class="weather-information">`;
-     weatherTodayHTML += `<img src='${iconToday}'/>`;  
+     let weatherTodayHTML = ''
+     weatherTodayHTML += `<div class="weather-information">`
+     weatherTodayHTML += `<img src='${iconToday}'/>`  
      weatherTodayHTML += `<h1 class="temp"> ${temperature} \xB0c </h1>`
      weatherTodayHTML += `</div>`
      weatherTodayHTML += `<div class="location-information">`
@@ -64,14 +63,13 @@ const generatedHTMLForWeatherForcast = (filteredForcast) => {
     const dailyTemp = calculatedTemperature(filteredForcast.main.temp);
     const humidity = calculatedTemperature(filteredForcast.main.humidity); 
     const iconForcast = iconDependingOnWeather(filteredForcast.weather[0].main);
-
     //separate and build up the HTML tree
-    let weatherForcast = '';
-    weatherForcast += `<div class="weather-forcast">`;
-    weatherForcast += `<div class="day">${weekday}</div>`;
+    let weatherForcast = ''
+    weatherForcast += `<div class="weather-forcast">`
+    weatherForcast += `<div class="day">${weekday}</div>`
     weatherForcast += `<img src='${iconForcast}'/>`;
-    weatherForcast += `<p>${dailyTemp} \xB0c/ ${humidity} %</p>`;
-    weatherForcast += `</div>`; 
+    weatherForcast += `<p>${dailyTemp} \xB0c/ ${humidity} %</p>`
+    weatherForcast += `</div>`
     return weatherForcast; 
 };
 
@@ -90,20 +88,9 @@ const calculatedTemperature = (number) => {
     return Math.round(number*10)/10;
 };
 
-/*
-//function to convert time to readble format
-const calculatingTime = (time) => {
-    const timeSet = new Date(time * 1000);
-    const timeSetString = timeSet.toLocaleTimeString('en-US', {
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: false,
-    });
-    return timeSetString;
-};*/
-
+//Function for local time, time for sunset and sunrise
 const calculatingTime = (timestamp, timezone) => {
-    const timeSetString = timeConvertedToLocal(timestamp, timezone)
+    const timeSetString = timeConvertedToLocal(timestamp, timezone);
     return timeSetString;
 };
 
@@ -121,14 +108,10 @@ const timeConvertedToLocal = (timestamp, timezone) => {
     let minute = date.getUTCMinutes();
     let milliseconds = date.getUTCMilliseconds();
     //UTC date object 
-    const dateWithoutConversion = new Date(Date.UTC(year, month, day, hour, minute, milliseconds))
+    const dateWithoutConversion = new Date(Date.UTC(year, month, day, hour, minute, milliseconds));
     //Make it to string 
     let dateString = dateWithoutConversion.toUTCString().toString();
     //using substring to extract the hour and minutes
-    
-    //let subHour = dateString, {hour:'2-digit', minute:'2-digit'};
-    //let subMinutes = dateString.hour:'2-digit', minute:'2-digit',) ;
-    
     let subHour = dateString.substring(dateString.indexOf(":") - 2, dateString.indexOf(":"));
     let subMinutes = dateString.substring(dateString.indexOf(":") + 1, dateString.indexOf(":") +3);
     //Put the hour and minutes back together in a fullTime String, no conversion to the clients timezone will be done.
@@ -152,7 +135,7 @@ const printDay = (day) => {
     return forcastDaysString; 
 };
 
-//Function to limit amount of description to be able to link them to an icon 
+//Function to limit the amount of weather descriptionss and to link them to an icon 
 const iconDependingOnWeather = (item) => {
 const iconMainDescription = item
     if (iconMainDescription === 'Clouds') {
@@ -177,6 +160,5 @@ const weatherTodayBackgroundColor = (temp) => {
         containerColor.style.backgroundColor = '#5555ff';
     } else if (temp > 6, temp <= 20) {
         containerColor.style.backgroundColor = '#ffa500';
-    } else 
-        containerColor.style.backgroundColor = '#FF0000'
+    } else containerColor.style.backgroundColor = '#FF0000'
 }
