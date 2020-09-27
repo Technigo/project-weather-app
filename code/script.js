@@ -202,8 +202,10 @@ const displayTodaysWeather = (weatherArray) => {
     hour12: false,
   })}`;
   temperature.innerHTML = `${weatherArray.main.temp.toFixed(0)}\xB0`;
-  description.innerHTML = weatherArray.weather.map((a) => a.main)[0];
-  const todayIcon = (weatherArray.weather.map((a) => a.icon)[0]).toString();
+  const descriptionArray = weatherArray.weather.map((a) => a.main);
+  description.innerHTML = descriptionArray[0];
+  const iconArray = weatherArray.weather.map((a) => a.icon);
+  const todayIcon = iconArray[0];
   returnColor(todayIcon);
   picto.src = 'https://openweathermap.org/img/wn/' + todayIcon + '@2x.png';
   sunrise.innerHTML = (new Date((weatherArray.sys.sunrise + weatherArray.timezone - 7200) * 1000)).toLocaleTimeString([], {
@@ -226,7 +228,8 @@ const displayForecast = (forecastArray) => {
     const dayName = (new Date((day.dt + timeZone - 7200) * 1000)).toLocaleDateString([], {
       weekday: 'short',
     });
-    const icon = day.weather.map((a) => a.icon)[0];
+    const iconArray = day.weather.map((a) => a.icon);
+    const icon = iconArray[0];
     const midTemp = `${day.main.temp.toFixed(0)}\xB0`;
     return { dayName, icon, midTemp };
   });
@@ -272,6 +275,5 @@ const returnWeatherByCity = (cityValue) => {
 // This function updates weather information based on city name entered by user
 button.addEventListener('click', () => {
   const cityValue = citySelector.value;
-  console.log(cityValue);
   returnWeatherByCity(cityValue);
 });
