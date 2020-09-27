@@ -1,13 +1,16 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+In this project I've created a weather app which dispalys:
+_ name of a city
+-Currrent temperature
+-Weather type and icon
+-sunrise and sunset
+- Five days weather forecast
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I wanted to do clean and short code. I think I managed to e.g display the forecast in just a few lines. However I didn't manage to show icons for the forecast in this way. I commented that out, since I'm still working on it. I haven't had time to fix the searchbox and geolocation yet, which I really want to do, as well as differnet backgrounds depending on the weather. Due to lack of time I haven't completed that yet, but will do later. 
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://pensive-darwin-b3e353.netlify.app/
