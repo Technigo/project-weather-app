@@ -1,0 +1,121 @@
+body {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0 20px;
+  background-image: url(./img/boris-misevic-cQltbypBFvg-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background: #232323; */
+  color: white;
+  position: relative;
+  height: 100vh;
+}
+
+p {
+  margin: 5px 0;
+  display: inline;
+}
+
+.label {
+  opacity: 0.75;
+}
+
+/* HEADER */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* SEARCH FIELD */
+
+.search-button {
+  height: 25px;
+  padding: 5px;
+}
+
+.location-input {
+  margin: 2px 0;
+  border: none;
+  padding-left: 7px;
+  display: none;
+}
+
+.location-input .active {
+  display: block;
+}
+
+/* TODAYS WEATHER */
+
+.weather-today {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.temperature-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.current-temperature-container {
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+}
+.current-temperature {
+  font-size: 72px;
+}
+
+.degrees {
+  padding-top: 10px;
+}
+
+.feels-like-container {
+  padding-bottom: 10px;
+}
+
+.weather-info-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.weather-description-container {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 15px;
+}
+
+.today-weather-image {
+  width: 60px;
+}
+
+/* FIVE DAY FORECAST */
+
+.one-day-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.weekday {
+  font-size: 16px;
+}
+
+.high-low-temp {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+/* FOOTER */
+
+.footer {
+  position: absolute;
+  bottom: 10px;
+  opacity: 0.5;
+  font-size: 12px;
+}
