@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
+}
 
 body {
     background-color:#fffafa;
@@ -25,6 +25,11 @@ p {
     padding: 0 0 10px 0;
 }
 
+.forecast-ul {
+    display: flex;
+    justify-content: space-between;
+}
+
 li {
     border-bottom: 1px dashed;
     padding-bottom: 4px;
@@ -36,20 +41,6 @@ li {
 li:last-child {
     border-bottom: 0px;
 }
-
-/* BACKGROUNDCOLORS DEPENDING ON WHICH WEATHER */
-/* .cloud {
-    background-color: #F47775;
-}
-
-.sunny {
-    background-color:#F7E9B9;
-}
-
-.rain {
-    background-color: #F4F7F8;
-} */
-
 
 /* WEATHER-IMAGES */
 .weather-image {
@@ -84,7 +75,11 @@ main {
 
 ul {
     padding-top: 50px;
-    text-align: center;
+}
+
+.forecast-ul {
+    display: flex;
+    justify-content: space-around;
 }
 
 }
@@ -95,6 +90,11 @@ ul {
    
 #city {
     text-align: center;
+}
+
+.forecast-ul {
+    display: flex;
+    justify-content: center;
 }
 
 }

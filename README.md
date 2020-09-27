@@ -1,12 +1,11 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The assignment was to create a weather app with the help of an API and show the weather for both today and the next 5 days. And to make it responsive. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I used fetch to collect data from the API. 
+If I had more time I'd change the colors and the h1-text depending on the weather aswell. And make the dotted line under the 5-day forecast to go from the day to the degrees. If I had had a lot of time I would have added more data.
 
 ## View it live
 
