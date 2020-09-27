@@ -8,39 +8,36 @@
     <title>Weather App</title>
 </head>
 <body>
-
-<!--CURRENT WEATHER--> 
-<header class="current-weather">
-        <div class="header-part-1" id="headerPart1">
-            <div id="weatherIconParent" class="weather-icon-parent">
-                <img id="weatherIcon" class="weather-icon" src="">
+    <!--CURRENT WEATHER--> 
+        <header class="current-weather">
+            <div class="header-part-1">
+                <div class="weather-icon-parent" id="weatherIconParent" >
+                    <img class="weather-icon" id="weatherIcon"  src="">
+                </div>
+                <img class="night-icon" id="nightIcon" src="">
+                <div id="weatherDescription"></div>
             </div>
-            <img id="nightIcon" src="">
-            <div class="weather-description" id="weatherDescription"></div>
-        </div>
-        <div class="header-part-2">
-            <div class="city" id="city"></div>
-            <div class="main-temp" id="mainTemp"></div>
-        </div>
-    </header>
-    <main class="container">
-        <div class="weather-text" id="weatherText"></div>
-        <div class="sunrise-sunset">
-            <div class="sunrise" id="sunriseInfo"></div>
-            <div class="sunset" id="sunsetInfo"></div>
-        </div>
-        <!--FORECAST-->
-        <div class="forecast">
-            <div class="weekdays" id="theWeekdays"></div>
-            <div class="forecast-main-temp" id="forecastMainTemp"></div>
-        </div>
-
-
-
-        
-    </main>
-
-
+            <div class="header-part-2">
+                <div id="city"></div>
+                <div  id="mainTemp"></div>
+            </div>
+        </header>
+        <main>
+            <div class="weather-text" id="weatherText"></div>
+            <div class="sunrise-sunset">
+                <div id="sunriseInfo"></div>
+                <div id="sunsetInfo"></div>
+            </div>
+            <!--FORECAST-->
+                <div class="forecast">
+                    <div id="theWeekdays"></div>
+                    <div id="forecastMainTemp"></div>
+                </div>  
+        </main> 
+        <footer>
+            <h2>© 2020 Elisa Blomberg</h2>
+            <p>Project Week 6 (Weather App) during the Technigo Frontend Bootcamp Autumn 2020.</p>
+        </footer>
         <script src="weather.js"></script>
     </body>
 </html>
