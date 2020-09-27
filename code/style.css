@@ -99,3 +99,35 @@ hr {
     rgba(237, 237, 237, 0)
   );
 }
+/* MEDIA QUERIES */
+@media screen and (min-width: 320px) and (max-width: 760px) {
+  .main {
+    width: 100%;
+    margin: auto;
+  }
+  .column {
+    width: 100%;
+    display: flex;
+    flex-basis: 22%;
+  }
+}
+@media screen and (min-width: 761px) and (max-width: 1024px) {
+  .main {
+    width: 100%;
+    margin: auto;
+    font-size: 22px;
+  }
+  .column {
+    width: 100%;
+    display: flex;
+    flex-basis: 28%;
+    font-size: 22px;
+  }
+  p,
+  h1 {
+    font-size: 30px;
+  }
+  .forecast-h1 {
+    font-size: 25px;
+  }
+}

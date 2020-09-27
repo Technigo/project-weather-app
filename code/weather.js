@@ -1,9 +1,10 @@
 //API KEY used for both current weather and forecast
-const apiKey = "c2889b12ee617ea787319a19a98a5906"
+const apiKey = 'c2889b12ee617ea787319a19a98a5906'
 
 //Current Weather variables
-const currentWeatherUrl = "https://api.openweathermap.org/data/2.5/weather?q=Toronto,Canada&units=metric&APPID=c2889b12ee617ea787319a19a98a5906"
+
 const city = 'Toronto, ON'
+const cityName = document.getElementById('city')
 const date = document.getElementById('date')
 const temperature = document.getElementById('temperature')
 const description = document.getElementById('description')
@@ -13,11 +14,11 @@ const tempLow = document.getElementById('L')
 const sunrise = document.getElementById('sunriseTO')
 const sunset = document.getElementById('sunsetTO')
 const body = document.getElementsByTagName('body')[0]
-
 //FUNCTION CURRENT WEATHER
+
 const currentWeatherToday = (json) => {
     temperature.innerHTML = `${json.main.temp.toFixed(0.5)} °C`
-    city.innerHTML = json.name
+    cityName.innerHTML = json.name
     date.innerHTML = new Date().toLocaleString('en-US', { timeZone: 'Canada/Eastern', weekday: 'long', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })
     description.innerHTML = json.weather[0].description.toUpperCase()
     iconUpdate(json.weather[0].main)
@@ -38,6 +39,23 @@ const currentWeatherToday = (json) => {
     const sunsetTorontoTime = sunsetToronto.toLocaleTimeString('en-CA', { timeStyle: 'short' })
     sunset.innerHTML = sunsetTorontoTime
 }
+//Fetch with JSON - Current Weather
+const weatherToday = () => {
+    const currentWeatherUrl = "https://api.openweathermap.org/data/2.5/weather?q=Toronto,Canada&units=metric&APPID=c2889b12ee617ea787319a19a98a5906"
+
+    fetch(currentWeatherUrl)
+        .then((response) => {
+            return response.json()
+        })
+        .then((json) => {
+            currentWeatherToday(json)
+        })
+}
+weatherToday()
+// Five day forecast variables
+const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+const today = new Date()
+const days = today.getDay()
 //Changing icons depending on visibility ('description')
 const iconUpdate = (weather) => {
     if (weather == 'Clouds') {
@@ -69,21 +87,6 @@ const changeBackground = (json) => {
         body.classList.add('warm')
     }
 }
-//Fetch with JSON - Current Weather
-fetch(currentWeatherUrl)
-    .then((response) => {
-        return response.json()
-    })
-    .then((json) => {
-        currentWeatherToday(json)
-    })
-
-// Five day forecast variables
-const weatherForecastUrl = "https://api.openweathermap.org/data/2.5/forecast?q=Toronto,Canada&units=metric&APPID=c2889b12ee617ea787319a19a98a5906"
-const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-const today = new Date()
-const days = today.getDay()
-
 
 //FUNCTION FORECAST
 const updateMinMaxTemps = (data) => {
@@ -121,6 +124,7 @@ const updateMinMaxTemps = (data) => {
     }
 }
 // Fetch 5 day Forecast Data
+const weatherForecastUrl = "https://api.openweathermap.org/data/2.5/forecast?q=Toronto,Canada&units=metric&APPID=c2889b12ee617ea787319a19a98a5906"
 fetch(weatherForecastUrl)
     .then((response) => { return response.json() })
     .then((data) => { updateMinMaxTemps(data) })
