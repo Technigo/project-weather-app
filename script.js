@@ -136,7 +136,7 @@ fetch(apiUrlForecastOslo)
  const nameContainerAlicante = document.getElementById('nameAlicante');
  const tempContainerAlicante = document.getElementById('temperatureAlicante');
  const forecastContainerAlicante = document.getElementById('forecastAlicante');
- const AlicanteIcon = document.getElementById('todaysWeatherIconAlicante')
+ const AlicanteIcon = document.getElementById('todaysWeatherIconAlicante');
  
 
 //NAME OF CITY, TEMPERATURE
@@ -178,7 +178,7 @@ fetch(apiUrlAlicante)
  const nameContainerBerlin = document.getElementById('nameBerlin');
  const tempContainerBerlin = document.getElementById('temperatureBerlin');
  const forecastContainerBerlin = document.getElementById('forecastBerlin');
- const berlinIcon = document.getElementById('todaysWeatherIconBerlin')
+ const berlinIcon = document.getElementById('todaysWeatherIconBerlin');
  
 
 //NAME OF CITY, TEMPERATURE
