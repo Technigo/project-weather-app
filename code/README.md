@@ -48,5 +48,5 @@ I would had like to:
 
 
 ## View it live
-- Netlify: 
+- Netlify: https://welcomeweather.netlify.app/
 - GitHub: https://github.com/bloeli/project-weather-app

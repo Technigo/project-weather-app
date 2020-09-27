@@ -3,12 +3,15 @@ body {
     color: white;
     background-color: rgb(12, 192, 247);
     animation-name: example;
-    animation-duration: 10s;
+    animation-duration: 16s;
 }
 
 @keyframes example {
-  from {background-color: rgb(12, 192, 247)}
-  to {background-color: rgb(247, 12, 208);}
+  0%   {background-color: rgb(12, 192, 247);}
+  25%  {background-color: rgb(247, 12, 208);}
+  50%  {background-color: rgb(187, 8, 187);}
+  75%  {background-color: rgb(247, 173, 12);}
+  100% {background-color: rgb(255, 115, 0);}
 }
 
 .header-part-1 {
