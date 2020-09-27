@@ -48,6 +48,5 @@ I would had like to:
 
 
 ## View it live
-
-GitHub:
-Netlify: 
+- Netlify: 
+- GitHub: https://github.com/bloeli/project-weather-app
