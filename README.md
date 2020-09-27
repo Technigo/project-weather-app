@@ -13,9 +13,9 @@ Learning Objectives:
 ## The problem
 The trickiest thing to solve for was exactly how to access specific keys within the API array. After this initial hurdle, the Blue Level ojbectives seemed straightforward enough. For me the most difficult problem to solve was working out how to grab and show weather for additional cities. Instead of showing data for all five cities at once, I wanted to display data for one city at a time in order to 
 
-    A) maintain a clean and simple display at any given time and 
+  A) maintain a clean and simple display at any given time and 
 
-    B) in order to reuse all the formatting and other items already present in the code.
+  B) in order to reuse all the formatting and other items already present in the code.
 
 It took a lot of working and reworking the code and figuring out exactly what phrases to search for to really nail it. Early on I had a hint from Maks which pointed me in the right direction but even then it took a few days of hitting the wall and taking a break and then coming back around to think about it with fresh eyes. Outside of figuring out the specific code, this week taught me how important it is to know exactly how to phrase what you're looking for when you're searching. We don't know what we don't know yet, so essentially I don't know what is possible, but from poking around and trying to think the logical sequence of what the code is doing, it slowly comes together. 
 
