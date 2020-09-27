@@ -71,43 +71,44 @@ fetch(apiWeatherFiveDaysUrl)
   maxTempElement.innerText = maxTemp
   console.log(maxTemp)
 
+
+  // Funktion som visar alla fem dagar samt ders min/max temp? varför visar den samma siffra?
+  // Next 5 days but for every third hour. info from 12:00 each day. 
+
   const dayOne = document.getElementById('dayOne');
-  const dayOneUnix = filteredForecast[0].dt * 1000
-  const dayOneDate = new Date (dayOneUnix)
-  const commingFiveDays = dayOneDate.toLocaleDateString('en-US', {weekday: 'long'})
-  dayOne.innerText = commingFiveDays
-  console.log(commingFiveDays) 
+  // const dayOneUnix = filteredForecast[0].dt * 1000
+  // const dayOneDate = new Date (dayOneUnix)
+  // const commingFiveDays = dayOneDate.toLocaleDateString('en-US', {weekday: 'long'})
+  // dayOne.innerText = commingFiveDays
+  // console.log(commingFiveDays)
+  
+  const dayNames = ['dayOne', 'dayTwo', 'dayThree', 'dayFour', 'dayFive']
+
+  const dtToWeekday = {
+    run: function(){ 
+      const dt1000 = this.dt * 1000
+      const dayDate = new Date (dt1000)
+      return dayDate.toLocaleDateString('en-US', {weekday: 'long'})
+    }
+  }
+
+  const result = dtToWeekday.run.call(filteredForecast[1]);
+  dayOne.innerText = result
+
+
+var i;
+    for (i = 0; i < filteredForecast.length; i++) {
+      const dayDocument = document.getElementById(dayNames[i])
+      const dayName = dtToWeekday.run.call(filteredForecast[i])
+      dayDocument.innerText = dayName;
+}
 
 })
 
-  // Hur får jag till en funktion som visar alla fem dagar samt ders min/max temp? varför visar den samma siffra?
-
-    //  // map
-    //  const fiveDaysinfo = items.map( => {
-    //   const days = weekdays
-    //   const minTemp = filteredForecast[0].main.temp_min;
-    //   const maxTemp = filteredForecast[0].main.temp_max;
-
-    //   return { weekday, minTemp, maxTemp };
-
-    //  }
 
 
-// const listArray = filteredForecast[0].dt;
-//  filteredForecast.innerText = commingFiveDays;
-// console.log(`List of weather forecast: ${commingFiveDays}`);
-
-
-// })
-
-
-// //  //extract element called list which is an array, from the object. Get info from array called list!
-
-// //  // Next 5 days but for every third hour. info from 12:00 each day. 
   
-  // console.log(`Filtered array: ${filteredForecast}`);
-
-// });
+ 
 
 
 

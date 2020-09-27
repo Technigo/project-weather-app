@@ -16,20 +16,19 @@ body {
     display: flex;
     flex-direction: column;
     padding: 2rem;
-    background: rgba(204, 204, 204, 0.5);
+    background: rgba(204, 204, 204, 0.6);
 }
 
 
 .five-day-weather {
-    height: 140px;
+    height: 300px;
       width: 100%; 
 } 
 
-/* .sunrise-sunset {
-    display: flex;
-    flex-direction: row;
-    border: 1px dotted blue;
-} */
+.sunrise-sunset {
+    display: grid;
+    /* border: 1px dotted blue; */
+}
 
 #temperature {
 font-size: 50px;
