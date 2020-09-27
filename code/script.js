@@ -12,12 +12,12 @@ const containerForecast = document.getElementById('forecast');
 // Object containing styles with weather id's as keys
 const weatherObject = {
     80: {
-        imgName: 'Clear',
-        gradientBack: 'linear-gradient(#f12711, #f5af19)'
-    },
-    8: {
         imgName: 'Clouds',
         gradientBack: 'linear-gradient(#654ea3, #eaafc8)'
+    },
+    8: {
+        imgName: 'Clear',
+        gradientBack: 'linear-gradient(#f12711, #f5af19)'
     },
         
     7: {
@@ -50,11 +50,9 @@ fetch(API_URL_TODAY)
 .then((json) => {
     const city = json.name;
     const weather = json.weather[0]; //object
-    const id = weather.id;
-    console.log(id)
+    const id = weather.id; // number
 
     const weatherDetailed = weather.description;
-    console.log(weatherDetailed)
     const sunrise = json.sys.sunrise;
     const sunset = json.sys.sunset;
    
@@ -68,11 +66,10 @@ fetch(API_URL_TODAY)
     // .find - finds the key in the object that matches the current weather id
     const currentWeatherKey = Object.keys(weatherObject).reverse().find(key => 
         id.toString().startsWith(key));
-    console.log(currentWeatherKey)
    
     // weatherInfo is an object containing the current styling picked in weatherObject
     const weatherInfo = weatherObject[currentWeatherKey]; //Looks for current key in object
-    console.log(weatherInfo)
+
     // Set styling/info depending on weather
     document.getElementById('icon').src = generateImageUrl(weatherInfo.imgName);
     document.getElementById('city').innerText = `${city} ${json.main.temp}°C`;
