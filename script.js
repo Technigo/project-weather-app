@@ -73,7 +73,7 @@ document.getElementById("cityName").addEventListener("change", citySelection);
 //DISPLAY FUNCTIONS
 //Function that changes background
 const setBackground = (city) => {
-  if (city === "Stockholm") {
+  if (city === "Stockholm,SE") {
     container.style.backgroundImage = "url('./assets/stockholm.jpg')";
   } else if (city === "London,UK") {
     container.style.backgroundImage = "url('./assets/London.jpg')";
