@@ -76,8 +76,6 @@ const getWeatherColorIconTitle = (data, item) => {
     };
 };
 
-
-
 //-----------------------Data consuming approach, doing it anyway-----------------------
 const generateHTMLForCurrentWeatherInfo = currentWeatherObject => {
     let currentWeatherInfoHTML = '';
@@ -142,4 +140,4 @@ const getWeatherIcons = (weather) => {
         } else if (weather === "Clouds") {                  //or else if the description on the weathertemplate is clouds....
             return "./icons/cloud.svg"                      ////...the function returns the source of the cloud weather icon
         };
-    };d
+    };
