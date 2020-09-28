@@ -85,6 +85,7 @@ p {
   align-items: center;
 }
 
+/*Still a bit wonky on iphone, even though it displays fine in devtools*/
 .day-box {
   display: flex;
   flex-direction: column;
@@ -100,7 +101,7 @@ p {
   margin: 2px;
 }
 
-/*ADD STYLING FOR SELECTIONMENU, fix overflow to scrollable*/
+
 .search-field {
   grid-column: span 8;
   height: 10vh;
