@@ -1,5 +1,5 @@
 // fetch weather info, current day
-fetch('http://api.openweathermap.org/data/2.5/weather?q=Nanaimo,CA&units=metric&APPID=1c52265fbcb1b6630b1b484fdf314634')
+fetch('https://api.openweathermap.org/data/2.5/weather?q=Nanaimo,CA&units=metric&APPID=1c52265fbcb1b6630b1b484fdf314634')
     .then((response) => {
         return response.json()
     })
@@ -10,7 +10,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Nanaimo,CA&units=metric&
         const description = document.getElementById('description');
 
         cityCountry.innerHTML = `${json.name}, ${json.sys.country}`;
-        currentTemp.innerHTML = `${json.main.temp}°C`;
+        currentTemp.innerHTML = `${json.main.temp}°c`;
         description.innerHTML = `${json.weather[0].description}`;
         
 
@@ -22,7 +22,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Nanaimo,CA&units=metric&
             
         sunrise.innerHTML = `<img src="./Images/sunrise.png" style="float: left;"> Sunrise: ${sunriseHour}`;
 
-        
+
         // sunset
         const sunset = document.getElementById('sunset');
         const sunsetValue = json.sys.sunset
@@ -34,7 +34,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Nanaimo,CA&units=metric&
     });
 
     //fetch 5 day forecast
-    fetch('http://api.openweathermap.org/data/2.5/forecast?q=Nanaimo,CA&units=metric&appid=1c52265fbcb1b6630b1b484fdf314634')
+    fetch('https://api.openweathermap.org/data/2.5/forecast?q=Nanaimo,CA&units=metric&appid=1c52265fbcb1b6630b1b484fdf314634')
     .then((response) => {
         return response.json()
     })
@@ -42,7 +42,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Nanaimo,CA&units=metric&
 
         
         const fiveDays = document.getElementById('five-days');
-        fiveDays.innerHTML = `${json.list[0].dt_txt} ${json.list[0].main.temp}°C`;
+        fiveDays.innerHTML = `${json.list[0].dt_txt} ${json.list[0].main.temp}°c`;
 
 
         console.log(json);
