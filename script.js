@@ -1,4 +1,4 @@
-let city = "Stockholm";
+let city = "Stockholm,SE";
 //const button = document.getElementById('btn-search')
 const containerToday = document.getElementById("weatherToday");
 const container = document.getElementById('weatherContainer')

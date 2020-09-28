@@ -88,8 +88,9 @@ p {
 .day-box {
   display: flex;
   flex-wrap: wrap;
-  text-align: center;
   justify-content: center;
+  text-align: center;
+  align-items: center;
 }
 
 .day {
