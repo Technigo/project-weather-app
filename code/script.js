@@ -15,6 +15,8 @@ fetch(weatherUrl)
   })
   .then((json) => {
 
+    //document.getElementById("temp").innerHTML = Math.round(json.main.temp)
+
     const weather = {
       city: json.name,
       temp: json.main.temp,
