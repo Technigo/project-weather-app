@@ -36,10 +36,20 @@ fetch(forecastUrl)
   .then((response) => {
     return response.json()
   })
-  .then((forecast) => {
+  .then((json) => {
 
-    console.log(forecast.list.dt)
-    generateForecast(forecast) // create new object containing only the data I use?
+    const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
+
+    const forecastArray = filteredForecast.map(item => {
+      const day = item.dt
+      const icon = item.weather[0].icon
+      const temp = item.main.temp
+      return {
+        day, icon, temp
+      }
+    })
+
+    generateForecast(forecastArray)
 
   })
   .catch((error) => {
@@ -65,20 +75,18 @@ const generateWeather = weather => {
   sunsetElement.innerHTML = `Sunset: ${sunset} `
 }
 
-const generateForecast = forecast => {
-  const noonForecast = forecast.list.filter(item => item.dt_txt.includes('12:00')) // filter already in fetch?
-
-  noonForecast.forEach((forecast) => {
+const generateForecast = forecastArray => {
+  forecastArray.forEach((forecast) => {
     forecastTableElement.innerHTML += generateHTML(forecast)
   })
 }
 
 const generateHTML = forecast => {
-  handleDay(forecast.dt)
+  handleDay(forecast.day)
   const day = shortForecastDay
 
-  const icon = getIcon(forecast.weather[0].icon)
-  const temp = Math.round(forecast.main.temp)
+  const icon = getIcon(forecast.icon)
+  const temp = Math.round(forecast.temp)
 
   let forecastHTML = ''
   forecastHTML += `<li class="forecast-row">`
