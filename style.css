@@ -1,95 +1,91 @@
-    .body {
-        margin: 0;
-        box-sizing: border-box;
-    }
-    
-    .wrapper {
-        font-family: sans-serif;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        /* text-align: center; */
-        height: 100vh;
-        background: rgb(173, 216, 230);
-        background: linear-gradient(90deg, rgba(173, 216, 230, 1) 15%, rgba(83, 142, 255, 1) 47%, rgba(129, 212, 250, 1) 79%);
-        color: #fff;
-        font-family: 'Noto Sans JP', sans-serif;
-    }
-    
-    .search-container {
-        margin-top: 30px;
-    }
-    
-    .location {
-        display: flex;
-        justify-content: space-between;
-    }
-    
-    .weather-info {
-        width: 50%;
-        justify-content: space-around;
-        align-items: center;
-    }
-    
-    .weather-info h1 {
-        font-size: 50px;
-    }
-    
-    .descr {
-        font-style: italic;
-    }
-    
-    .weather-info img {
-        width: 100px;
-        margin-left: 30px;
-    }
-    
-    .sun img {
-        width: 40px;
-    }
-    
-    .forecast {
-        margin-top: 50px;
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .fivedays-forecast {
-        display: flex;
-        justify-content: space-between;
-        margin-right: 10px;
-        margin-top: 30px;
-    }
-    
-    .fivedays-forecast .descr {
-        font-style: italic;
-    }
-    
-    .type {
-        text-transform: capitalize;
-    }
-    
-    .location {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    @media (min-width: 670px) {
+        .body {
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
         .wrapper {
-            font-size: 20px;
-            ;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            background: rgb(173, 216, 230);
+            background: linear-gradient(90deg, rgba(173, 216, 230, 1) 15%, rgba(83, 142, 255, 1) 47%, rgba(129, 212, 250, 1) 79%);
+            color: #fff;
+            font-family: 'Noto Sans JP', sans-serif;
         }
+        
+        .search.box {
+            align-items: flex-start;
+        }
+        
+        .location {
+            display: flex;
+            justify-content: space-between;
+        }
+        
         .weather-info {
+            width: 50%;
+            text-align: center;
+        }
+        
+        .weather-info h1 {
+            font-size: 50px;
+        }
+        
+        .descr {
+            font-style: italic;
+        }
+        
+        .weather-info img {
+            width: 100px;
+            margin-left: 30px;
+        }
+        
+        .sun img {
+            width: 40px;
+        }
+        
+        .fivedays-forecast {
             display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            /* margin-right: 30px; */
+            justify-content: space-between;
+            margin-right: 10px;
+            margin-top: 30px;
         }
-        .sun {
+        
+        .fivedays-forecast img {
+            width: 50px;
+            height: 50px;
+            margin-left: 30px;
+        }
+        
+        .fivedays-forecast .descr {
+            font-style: italic;
+        }
+        
+        .type {
+            text-transform: capitalize;
+        }
+        
+        .location {
             display: flex;
-            justify-content: space-around;
+            flex-direction: column;
         }
-        .sun p {
-            margin-right: 30px;
+        
+        @media (min-width: 670px) {
+            .wrapper {
+                font-size: 20px;
+            }
+            .weather-info {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+            }
+            .sun {
+                display: flex;
+                justify-content: space-around;
+            }
+            .sun p {
+                margin-right: 50px;
+            }
         }
-    }

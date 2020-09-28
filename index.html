@@ -10,11 +10,10 @@
 </head>
 
 <body>
-    <main class="wrapper">
-        <!-- <div class="search-container">
-            <input class="search-control" type="text" placeholder="City Name or Zipcode">
-            <button class=search-control id="search-btn">Search</button>
-        </div> -->
+    <main class="wrapper" id="wrapper">
+        <div class="search-box">
+            <input type="text" id="search" autocomplete="off" placeholder="Search for a city..." />
+        </div>
         <div class="location">
             <h1 id="name"></h1>
             <p id="day"></p>
@@ -22,23 +21,17 @@
         <div class="weather-info">
             <h2 id="degrees" class="celsius"></h2>
             <p id=weather-type class="type"></p>
-            <img id="weatherPic" src="" />
+            <img id="weatherPic" />
         </div>
-
         <div class="sun">
             <p id="sunrise"><img src="./img/sunrise.png" alt="sunrise" /> Sunrise </p>
-
             <p id="sunset"><img src="./img/sunset.png" alt="sunrise" /> Sunset </p>
         </div>
-
-
         <div class="fivedays-forecast">
             <p id="days"></p>
             <p id="temp"></p>
             <p id="description" class="descr"></p>
-            <img id="forecastIcon" src="" />
         </div>
-
     </main>
     <script src="./script.js" type="module"></script>
 

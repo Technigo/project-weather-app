@@ -1,25 +1,37 @@
 import { API_KEY } from './api.js';
 
-const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=Kaxholmen,Sweden&units=metric&appid=${API_KEY}`;
+const weatherbase = "https://api.openweathermap.org/data/2.5/";
 const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=Kaxholmen,Sweden&units=metric&APPID=${API_KEY}`;
-const forecastContainer = document.querySelector('.forecast');
+const searchbox = document.querySelector('#search');
 
+const setQuery = (evt) => {
+    if (evt.keyCode == 13) {
+        getResults(searchbox.value);
+        console.log(searchbox.value);
+    }
+}
 
-fetch(weatherUrl)
-    .then((response) => {
-        return response.json();
-    })
-    .then((currentWeather) => {
+searchbox.addEventListener('keypress', setQuery);
 
-        upDateWeather(currentWeather);
+function getResults(query) {
+    fetch(`${weatherbase}weather?q=${query}&units=metric&appid=${API_KEY}`)
+        .then((response) => {
+            return response.json();
+        })
+        .then((currentWeather) => {
+            console.log(currentWeather);
+            upDateWeather(currentWeather);
 
-    });
-
+        });
+}
 const upDateWeather = (currentWeather) => {
+    console.log(currentWeather);
     //update temperature, weathertype and icon
-    document.getElementById('name').innerHTML = currentWeather.name;
+    let city = document.getElementById('name');
+    city.innerHTML = `${currentWeather.name}, ${currentWeather.sys.country}`;
     document.getElementById('degrees').innerHTML = `${currentWeather.main.temp.toFixed(1)} °C`;
-    document.getElementById('weather-type').innerHTML = currentWeather.weather[0].description;
+    const description = currentWeather.weather[0].description;
+    document.getElementById('weather-type').innerHTML = description;
     const weatherPicID = currentWeather.weather[0].icon;
     weatherPic.src = `./assets/${weatherPicID}.png`;
 
@@ -33,7 +45,26 @@ const upDateWeather = (currentWeather) => {
     const sunsetTimeString = sunsetTime.toLocaleTimeString('sv-SE', { timestyle: 'long', hour: "2-digit", minute: "2-digit" });
     document.getElementById('sunset').innerHTML += sunsetTimeString;
 
+    setBackground(description);
 }
+
+const setBackground = (description) => {
+    const wrapper = document.getElementById('wrapper');
+
+    if (description === 'Clear') {
+        wrapper.style.backgroundImage = 'url(./img/clear.jpg)';
+    } else if (description === 'Clouds') {
+        wrapper.style.backgroundImage = 'url(./img/clouds.jpg)';
+    } else if (description === 'Rain' || description === 'Drizzle') {
+        wrapper.style.backgroundImage = 'url(./img/rain.jpg)';
+    } else if (description === 'Thunderstorm') {
+        wrapper.style.backgroundImage = 'url(./img/thunder.jpg)';
+    } else if (description === 'Snow') {
+        wrapper.style.backgroundImage = 'url(./assets/snow.jpg)';
+    } else if (description === 'Mist' || description === 'Fog') {
+        wrapper.style.backgroundImage = 'url(./img/fog.jpg)';
+    }
+};
 
 //get the name of the day
 const weekDays = () => {
@@ -41,7 +72,6 @@ const weekDays = () => {
     const d = new Date();
     const dayName = days[d.getDay()];
     return dayName;
-
 }
 
 const date = document.getElementById('day')
@@ -71,17 +101,8 @@ fetch(forecastUrl)
             const temperature = (forecast.main.temp).toFixed(1);
             const weatherType = forecast.weather[0].description
 
-            // const iconSrc = `https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
-
-            console.log(day);
-            console.log(temperature);
             document.getElementById('days').innerHTML += `<p>${day} &nbsp</p>`;
             document.getElementById('temp').innerHTML += `<p>${temperature} °C  &nbsp &nbsp</p>`;
             document.getElementById('description').innerHTML += `<p>${weatherType}</p>`;
-            // document.getElementById('forecastIcon').src += iconSrc;
-
-
         });
-
-
     });
