@@ -42,6 +42,7 @@ height: 30px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 30px;
+    margin-bottom: 30px;
     background-color: rgba(255, 255, 255, 0.5);
 
 }
@@ -55,5 +56,26 @@ height: 30px;
 p {
     font-size: 24px;
     line-height: 24px;
-
 }
+
+/* @media (min-width: 650px){
+
+    .body {
+        display: flex;
+
+    }
+    .forecast {
+        margin-right: 20px;
+    }
+
+    .sun-forecast {
+        display: flex;
+    }
+    .sun {
+        margin-top: 50px;
+     
+    }
+
+
+
+} */
