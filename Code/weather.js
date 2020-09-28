@@ -10,7 +10,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Nanaimo,CA&units=metric
         const description = document.getElementById('description');
 
         cityCountry.innerHTML = `${json.name}, ${json.sys.country}`;
-        currentTemp.innerHTML = `${json.main.temp}°c`;
+        currentTemp.innerHTML = `${json.main.temp.toFixed(1)}°c`;
         description.innerHTML = `${json.weather[0].description}`;
         
 
@@ -40,11 +40,22 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Nanaimo,CA&units=metric
     })
     .then((json) => {
 
+        // filter to display temperature from only 12:00 each day
+        const forecasts = json.list
+        const filteredForecast = forecasts.filter(forecast => forecast.dt_txt.includes("12:00:00"));
+
         
-        const fiveDays = document.getElementById('five-days');
-        fiveDays.innerHTML = `${json.list[0].dt_txt} ${json.list[0].main.temp}°c`;
+        // create weekday and temperature forEach filtered forecast
+        filteredForecast.forEach((forecast) => {
+            const temp = forecast.main.temp;
+            const date = new Date(forecast.dt_txt);
+            const options = { weekday: 'short' };
+            const localDateString = date.toLocaleDateString('en-EN', options);
+            const fiveDays = document.getElementById('five-days');
+   
+            fiveDays.innerHTML += `<p>${localDateString}. . . . . . . . . . . . . . . . . . .${temp.toFixed(1)}°c</p>`;
+        
+        });
 
-
-        console.log(json);
     })
     

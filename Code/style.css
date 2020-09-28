@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
 
 body {
-    font-family: 'Satisfy', cursive;
+    font-family: 'Satisfy', cursive, 'Times New Roman', Times, serif;
     color: rgb(0, 0, 0);
     font-size: 20px;
     text-align: center;
     background-image: url('./Images/background.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    height: 860px;
+    height: 900px;
 }
 
 img {
@@ -16,13 +16,9 @@ img {
     height: 60px;
 }
 
-.info {
-    height: 796px;
-}
-
 #city-country {
     font-size: 40px; 
-    margin: 0px;
+    margin: 10px;
 }
 
 #current-temp {
@@ -41,14 +37,21 @@ img {
     text-align: right;
 }
 
-.weather-info {
-    padding: 15px;
+.weather-today {
+    padding: 10px;
 }
 
 .forecast {
-    color: rgb(0, 0, 0);
-    background-color: rgba(255, 255, 255, 0.541);   
+    background-color: rgba(255, 255, 255, 0.541);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    width: auto;
+    margin: 80px 15px 80px 15px;
+    padding: 15px;
 }
+
 
 #logo {
     height: 30px;
@@ -70,7 +73,7 @@ img {
   }
   
   
-  /*** TABLET VIEW ***/
+/*** TABLET VIEW ***/
 @media (min-width: 768px) {
 
     body {
@@ -78,17 +81,13 @@ img {
     }
     
     img {
-        width: 80px;
-        height: 80px;
-    }
-    
-    .info {
-        height: 945px;
+        width: 90px;
+        height: 90px;
     }
     
     #city-country {
         font-size: 50px; 
-    }
+    } 
 
 }
 
@@ -96,8 +95,8 @@ img {
 @media (min-width: 1024px) {
     
     img {
-        width: 100px;
-        height: 100px;
+        width: 120px;
+        height: 120px;
     }
     
     #city-country {
