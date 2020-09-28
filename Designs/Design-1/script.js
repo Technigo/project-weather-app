@@ -13,7 +13,7 @@ const weekdays = [
     "Sun"
 ];
 
-fetch("https:api.openweathermap.org/data/2.5/forecast?q=Stockholm&units=metric&appid=25b3459d6eea6c3844f60f68deed9511")
+fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm&units=metric&appid=25b3459d6eea6c3844f60f68deed9511")
     .then(response => {
         return response.json();
     })
