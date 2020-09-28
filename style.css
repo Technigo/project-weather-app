@@ -93,7 +93,10 @@ p {
   align-items: center;
 }
 
-.day {
+.day, .temp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 2px;
 }
 

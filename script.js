@@ -156,8 +156,8 @@ const generatedHTMLForWeatherForecast = (filteredForecast) => {
   let innerText = "";
   innerText += `<div class="day-box">`;
   innerText += `<img class="forecast-img" src= '${icon}'/>`;
-  innerText += `<p class="day">${day}</p>`;
-  innerText += `<p class="day">${dailyTemp} \xB0</p>`;
+  innerText += `<div class="day">${day}</div>`;
+  innerText += `<div class="temp">${dailyTemp} \xB0</div>`;
   innerText += `</div>`;
   return innerText;
   //Weather description for the next five days
