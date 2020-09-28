@@ -110,8 +110,6 @@ ul {
   text-align: center;
   margin: 0 auto;
   width: 80%;
-  /* border: 4px solid #fff; */
-  /* border-style: hidden solid solid solid; */
   border-radius: 10px;
   transition: 1s ease;
   overflow: hidden;
@@ -219,7 +217,10 @@ li {
 
 /* DESKTOP */
 @media (min-width: 1025px) {
-  /* body {
+  /* 
+  saving this as a note:
+  
+  body {
     margin: 50px calc(50% - 300px);
   } */
 

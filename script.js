@@ -7,18 +7,18 @@ let currentLocation = "stockholm";
 const key = "5c01b021abe8da367bcecadd67235fb3";
 
 // *** current
-let city = document.getElementById("city");
-let temp = document.getElementById("temp");
-let weather = document.getElementById("weather");
-let sunRise = document.getElementById("sunRise");
-let sunSet = document.getElementById("sunSet");
-let icon = document.getElementById("mainWeather");
+const city = document.getElementById("city");
+const temp = document.getElementById("temp");
+const weather = document.getElementById("weather");
+const sunRise = document.getElementById("sunRise");
+const sunSet = document.getElementById("sunSet");
+const icon = document.getElementById("mainWeather");
 
 // *** forecast
-let forecast = document.getElementById("forecast");
+const forecast = document.getElementById("forecast");
 
 // *** weather arrays
-let fog = [
+const fog = [
   "Mist",
   "Smoke",
   "Haze",
@@ -30,7 +30,7 @@ let fog = [
   "Tornado",
 ];
 
-let rain = [
+const rain = [
   "light rain",
   "moderate rain",
   "heavy intensity rain",
@@ -38,7 +38,7 @@ let rain = [
   "extreme rain",
 ];
 
-let heavyRain = [
+const heavyRain = [
   "light intensity shower rain",
   "shower rain",
   "heavy intensity shower rain",
@@ -74,7 +74,6 @@ const weatherToDay = () => {
       // *** city
       city.innerHTML = data.name;
 
-      console.log(data);
       // *** temperature
       temp.innerHTML = round(data.main.temp);
 
@@ -88,7 +87,6 @@ const weatherToDay = () => {
       const localTime = data.dt; // time city
       const timeZone = data.timezone; // local time (city) difference from UTC
       const offset = new Date().getTimezoneOffset() * 60; // time difference (stockholm) from UTC in sec
-      console.log(offset);
 
       // *** sunrise
       sunrise = time(data.sys.sunrise + timeZone + offset);
@@ -207,13 +205,12 @@ const weatherForcast = () => {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
-
       // filter days weather at 12.00
       const filteredForecast = data.list.filter((item) =>
         item.dt_txt.includes("12:00")
       );
 
+      // clearing the forcast when changing city
       forecast.innerHTML = "";
 
       // for each day:
