@@ -1,4 +1,5 @@
 Link to my deployed project:
+https://vigorous-ritchie-817048.netlify.app/
 
 My reflections on how this week's project turned out:
 It was a tough nut to crack. Glad I did turn the project in, although delayed. Merely made the basic requests.
