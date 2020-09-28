@@ -3,79 +3,59 @@ const API_KEY = '4a5f208af7519fd95c6f1faa53c2e7a7';
 const API_CURRENT = `https://api.openweathermap.org/data/2.5/weather?q=Malmo,Sweden&units=metric&APPID=${API_KEY}`;
 const API_FORECAST = `https://api.openweathermap.org/data/2.5/forecast?q=Malmo,Sweden&units=metric&APPID=${API_KEY}`;
 
-const API_ONEFORALL = `https://api.openweathermap.org/data/2.5/onecall?lat={13}&lon={61}&exclude={alerts}&appid=${API_KEY}`
-//change forecast q="inputValue" to match geolocation.//
-// const inputValue = 
 
-// // SET USER'S POSITION
-// function setPosition(position){
-//   let latitude = position.coords.latitude;
-//   let longitude = position.coords.longitude;
 
-//   getWeather(latitude, longitude);
-// }
-const currentTime = document.getElementById("location-time")
+//DECLARING VARIABLES TO TARGET ELEMENTS ON PAGE
 const weatherHeader = document.getElementById("location");
 const container = document.getElementById("main");
-const icon = document.getElementById("weather-icon")
-
 const weather = document.getElementById("description");
-const forecast = document.getElementById("forecast");
 const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
-// const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
 
 
-// convert times 
-// const calculatingSun = (time) => {
-//   const sunTime = new Date(time * 1000);
-
-//   const sunTimeString = sunTime.toLocaleTimeString("sv-SE", {
-//     hour: "2-digit",
-//     minute: "2-digit",
-//     hour12: false,
-//   });
-//   return sunTimeString;
-// };
+//COLORS CHOSEN ELEMENTS
+document.getElementById("location").style.color = "red";
+document.getElementById("sunrise").style.color = "black";
+document.getElementById("sunset").style.color = "red";
 
 
-let currentDate = new Date();
+//CALCULATING/CONVERTING FUNCTIONS 2 BE INVOKED LATER AND/OR ANYWHERE IN CODE
+const calculatingSun = (time) => {
+  let sunTime = new Date(time);
+
+  return sunTime.toLocaleTimeString("sv-SE", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false
+  });
+}
 
 
-// GET WEATHER DATA FROM API PROVIDER
+// FETCH WEATHER DATA FROM API PROVIDER : CURRENT + FORECAST
 
 fetch(API_CURRENT)
   .then((response) => {
     return response.json();
 
-
   })
   .then((weatherToday) => {
-
-
+    //PRINTING 2 PAGE AND/OR INVOKING FUNCTIONS ON THE GO
     weatherHeader.innerHTML = `Weather in ${weatherToday.name}: `;
-    document.getElementById("location-time").innerHTML = currentDate;
-
     icon.innerHTML = weatherToday.weather[0].icon;
-    //function round(value, precision) or tofixed?
+    //method tofixed(1) for 1 decimal
     container.innerHTML = `Temperature is ${weatherToday.main.temp.toFixed(1)}<span>°c</span> and feels like ${weatherToday.main.feels_like.toFixed(1)}<span>°c</span>`;
-
-    // moment().format('MMMM Do YYYY, h:mm:ss a'); // September 25th 2020, 6:38:42 pm
     weather.innerHTML = `${weatherToday.weather[0].description} `;
-
-    sunrise.innerHTML = `Sunrise: ${weatherToday.sys.sunrise}`;
-    sunset.innerHTML = `Sunset: ${weatherToday.sys.sunset} `;
+    sunrise.innerHTML = `Sunrise: ${calculatingSun(weatherToday.sys.sunrise)}`;
+    sunset.innerHTML = `Sunset: ${calculatingSun(weatherToday.sys.sunset)} `;
 
   });
 
 
-
-//Wearther functions:
-const fiveDays = document.getElementsByClassName(".five-day")
-
+//WEATHER VARIABLE FOR 5 DAY FORECAST 
+const fiveDays = document.getElementsByClassName("five-day")
 
 
-//FORECAST - TEMPERATURE MIN-MAX, PRESSURE//
+//FORECAST 
 fetchForecast(API_FORECAST)
   .then((response) => {
     return response.json();
@@ -84,39 +64,22 @@ fetchForecast(API_FORECAST)
   .then((weatherForecast) => {
 
 
-    const filteredForecast = weatherForecast.list.filter(item => weatherForecast.dt_txt.includes('00:00'));
+    const filteredForecast = weatherForecast.list.filter(item => item.dt_txt.includes('12:00'));
+    console.log(filteredForecast);
+
+    filteredForecast.forEach((weatherForecast) => {
+      const temp = weatherForecast.main.temp;
+      const desc = weatherForecast.weather[0].main;
+      const date = new Date(weatherForecast.dt_txt);
+      const options = { weekday: 'short' };
+      const localDateString = date.toLocaleDateString('en-EN',
+        options);
+      // const fiveDays = document.getElementById('five-day');
+      fiveDays.innerHTML += `<p>${localDateString} ${temp.toFixed(1)}°c</p>`;
+      fiveDays.innerHTML += `<p>${desc}<p/>`;
+    });
+
   });
-
-
-
-    // const fetchForecast = (API_FORECAST) => {
-    //   fetch(API_FORECAST)
-    //     .then(response => response.json())
-    //     .then(data => {
-    //       const newForecast = weatherForecast.list.map(item => {
-    //         const tempMax = item.main.temp_max;
-    //         const tempMin = item.main.temp_min;
-    //         const descript = item.main.description;
-
-    //         return { tempMax, tempMin, descript }
-    //       });
-
-
-    // const displayWeather ()
-
-    //   const displayWeather = () => {
-    //     icons.innerHTML = `< img src = "icons/${weather.iconId}.png/>`;
-    //     location.innerHTML = `${weather.city}, ${weather.country}`;
-    //     temperature.innerHTML = `${weather.temperature.value} <span>C</>`;
-    //     description.innerHTML = weather.description;
-    //   }
-
-
-    // };
-
-
-
-    // forecastData();
 
 
 
