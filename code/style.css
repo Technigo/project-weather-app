@@ -46,7 +46,7 @@ p {
   display: none;
 }
 
-.location-input .active {
+.location-input.active {
   display: block;
 }
 
