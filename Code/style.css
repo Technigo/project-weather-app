@@ -67,8 +67,9 @@ img {
     background-color: rgb(255, 255, 255);
     height: auto;
     width: 100%;
-    position: absolute;
-    left: 0px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
     padding-top: 2px;
   }
   

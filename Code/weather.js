@@ -12,7 +12,6 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Nanaimo,CA&units=metric
         cityCountry.innerHTML = `${json.name}, ${json.sys.country}`;
         currentTemp.innerHTML = `${json.main.temp.toFixed(1)}°c`;
         description.innerHTML = `${json.weather[0].description}`;
-        
 
         // sunrise  
         const sunrise = document.getElementById('sunrise');
@@ -44,7 +43,6 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Nanaimo,CA&units=metric
         const forecasts = json.list
         const filteredForecast = forecasts.filter(forecast => forecast.dt_txt.includes("12:00:00"));
 
-        
         // create weekday and temperature forEach filtered forecast
         filteredForecast.forEach((forecast) => {
             const temp = forecast.main.temp;
@@ -54,7 +52,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Nanaimo,CA&units=metric
             const fiveDays = document.getElementById('five-days');
    
             fiveDays.innerHTML += `<p>${localDateString}. . . . . . . . . . . . . . . . . . .${temp.toFixed(1)}°c</p>`;
-        
+            
         });
 
     })
