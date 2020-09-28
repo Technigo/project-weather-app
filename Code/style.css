@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
 
 body {
+    font-family: 'Satisfy', cursive;
     color: rgb(0, 0, 0);
+    font-size: 20px;
     text-align: center;
     background-image: url('./Images/background.jpg');
     background-size: cover;
@@ -19,40 +21,32 @@ img {
 }
 
 #city-country {
-    font-family: 'Satisfy', cursive;
-    font-size: 45px; 
+    font-size: 40px; 
     margin: 0px;
 }
 
 #current-temp {
-    font-family: 'Satisfy', cursive;
-    font-size: 25px;
-    font-weight: 700;
     margin: 4px;
 }
 
 #description {
-    font-family: 'Satisfy', cursive;
-    font-size: 20px;
     margin: 0px;
 }
 
 #sunrise {
-    font-size: 20px;
     text-align: left;
 }
 
 #sunset {
-    font-size: 20px;
     text-align: right;
 }
 
 .weather-info {
-    color: rgb(255, 255, 255);
     padding: 15px;
 }
 
 .forecast {
+    color: rgb(0, 0, 0);
     background-color: rgba(255, 255, 255, 0.541);   
 }
 
@@ -64,7 +58,6 @@ img {
   }
   
   footer {
-    font-family: 'Satisfy', cursive;
     font-size: 15px;
     text-align: center;
     color: rgba(0, 0, 0, 0.623);
@@ -77,3 +70,37 @@ img {
   }
   
   
+  /*** TABLET VIEW ***/
+@media (min-width: 768px) {
+
+    body {
+        font-size: 25px;
+    }
+    
+    img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .info {
+        height: 945px;
+    }
+    
+    #city-country {
+        font-size: 50px; 
+    }
+
+}
+
+/*** DESKTOP VIEW ***/
+@media (min-width: 1024px) {
+    
+    img {
+        width: 100px;
+        height: 100px;
+    }
+    
+    #city-country {
+        font-size: 60px; 
+    }
+}
