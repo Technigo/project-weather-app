@@ -1,13 +1,14 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This week's project was to build a weather app that shows today's weather and temperature, and a 5-day forecast using a weather API.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+This week I knew I would have limited time due to work and family so I aimed for the blue level.
+I spent the most time on time formats this week. I also struggled a bit with getting the forecast image into the right place.
+
+I tried to make a hidden search function to make it possible to change the weather loacation. I didn't have time to complete this but left some of the code for this because I would like to finish it another time.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://project-weather.netlify.app/
