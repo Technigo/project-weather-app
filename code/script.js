@@ -20,7 +20,8 @@ const toggleCountrySelector = () => {
 
   if (citySelector.style.display === "none") {
     citySelector.style.display = "block";
-
+    inputCity.value = "";
+    inputCity.select();
   } else {
     citySelector.style.display = "none"; 
   }
