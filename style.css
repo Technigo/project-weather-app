@@ -15,10 +15,6 @@
             font-family: 'Noto Sans JP', sans-serif;
         }
         
-        .search.box {
-            align-items: flex-start;
-        }
-        
         .location {
             display: flex;
             justify-content: space-between;
@@ -26,7 +22,6 @@
         
         .weather-info {
             width: 50%;
-            text-align: center;
         }
         
         .weather-info h1 {
@@ -78,7 +73,6 @@
             }
             .weather-info {
                 display: flex;
-                flex-direction: row;
                 justify-content: space-around;
             }
             .sun {
