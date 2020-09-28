@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Advent+Pro:wght@200;300;400;500;600&display=swap");
 
-* {
+*,*::before, *::after {
   box-sizing: border-box;
   font-family: "Advent Pro", sans-serif;
 }

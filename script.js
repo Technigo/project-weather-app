@@ -1,11 +1,40 @@
 let city = "Stockholm,SE";
-//const button = document.getElementById('btn-search')
 const containerToday = document.getElementById("weatherToday");
-const container = document.getElementById('weatherContainer')
-//const descriptionToday = document.getElementById("text");
+const container = document.getElementById('weatherContainer');
 const containerForecast = document.getElementById("forecastWrapper");
 
-//UNSPLASH APIKEY z4PEqzbIWdyz1ZI_pAEh8rhUEdEyW1vxMjTi2kkaAfA
+const fetchWeatherToday = (city) => {
+  fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=95b6172379fabb04319de6c9e2aa34ae`
+  )
+    .then((response) => {
+      return response.json();
+    })
+    .then((weatherToday) => {
+      setBackground(city);
+      containerToday.innerHTML += generatedHTMLForWeatherToday(weatherToday);
+    });
+};
+fetchWeatherToday(city);
+const fetchWeatherForecast = (city) => {
+  fetch(
+    `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=95b6172379fabb04319de6c9e2aa34ae`
+  )
+    .then((response) => {
+      return response.json();
+    })
+    .then((weatherForecast) => {
+      const filteredForecast = weatherForecast.list.filter((item) =>
+        item.dt_txt.includes("12:00")
+      );
+      filteredForecast.forEach((forecast) => {
+        containerForecast.innerHTML += generatedHTMLForWeatherForecast(
+          forecast
+        );
+      });
+    });
+};
+fetchWeatherForecast(city);
 
 //TEMPERATURE FUNCTION
 const calculateTemperature = (number) => {
@@ -31,16 +60,14 @@ const printDay = (day) => {
   });
   return forecastDaysString;
 };
-//This function takes the localtime, then uses the timezone from API to display local time depending on what city you choose.
-const printTime = (timezoneOffset) => {
-  const d = new Date();
-  const localTime = d.getTime();
-  const localOffset = d.getTimezoneOffset()*60000;
-  const utc = localTime+localOffset;
-  console.log(utc)
-  const timezoneOffsetMs = timezoneOffset*1000;
-  console.log(timezoneOffsetMs+utc)
-  const localTimestamp = new Date(timezoneOffsetMs+utc)
+//This function takes the localtime, then uses the timezone from API to calculate the local time depending on what city you choose.
+const calculateLocalTime = (timezoneOffset) => {
+  const date = new Date(); //This uses the date method to get the date
+  const localTime = date.getTime(); //this one extracts the time in milliseconds from the date above
+  const localOffset = date.getTimezoneOffset()*60000; //This get the timezonedifference in minutes between the utc and here and turn them to milliseconds by multiplying with 60000
+  const utc = localTime+localOffset; //This adds the local time from computer and it's difference from utc.
+  const timezoneOffsetMs = timezoneOffset*1000;//This will take the timezone from API (called timezoneOffset in this parameter) and multiply by 1000 to get it to ms
+  const localTimestamp = new Date(timezoneOffsetMs+utc) //This will take the timezoneOffset+utc as parameters in the date method and store the result in a variable which I then display on the page
   return localTimestamp
 }
 //ICON FUNCTIONS
@@ -70,6 +97,7 @@ const citySelection = (event) => {
   fetchWeatherToday(city);
 };
 document.getElementById("cityName").addEventListener("change", citySelection);
+
 //DISPLAY FUNCTIONS
 //Function that changes background
 const setBackground = (city) => {
@@ -103,14 +131,14 @@ const setBackground = (city) => {
     container.style.backgroundImage = "url('./assets/Sydney.jpg')";
   }
 };
-//Change gradient depending on time/temperature
+//This changes gradient depending on time
 const setBackgroundGradient = (time) => {
-  const param = time.getHours()
+  const hour = time.getHours()
   const gradientLayer = document.getElementById('layer')
-  if(param > 6 && param <= 12) {
-    gradientLayer.style.backgroundColor = 'rgba(0, 0, 55, 0.4)'//214, 234, 226
-  } else if(param >= 13 && param <= 20) {
-    gradientLayer.style.backgroundColor = 'rgba(0, 0, 55, 0.3)'//216, 247, 255
+  if(hour > 6 && hour <= 12) {
+    gradientLayer.style.backgroundColor = 'rgba(0, 0, 55, 0.4)'
+  } else if(hour >= 13 && hour <= 20) {
+    gradientLayer.style.backgroundColor = 'rgba(0, 0, 55, 0.3)'
   } else {
     gradientLayer.style.backgroundColor = 'rgb(0, 0, 55, 0.8)'
   }
@@ -121,12 +149,12 @@ const generatedHTMLForWeatherToday = (weatherToday) => {
   const sunset = calculatingSun(weatherToday.sys.sunset);
   const description = weatherToday.weather[0].description;
   const icon = iconWeather(weatherToday.weather[0].main);
-  const localTime = printTime(weatherToday.timezone);
+  const localTime = calculateLocalTime(weatherToday.timezone);
   const localTimeString = localTime.toLocaleTimeString("sv-SE", {
     hour: "2-digit",
     minute: "2-digit",
     hour12: false,
-  })
+  });
   const minTemp = calculateTemperature(weatherToday.main.temp_min);
   const maxTemp = calculateTemperature(weatherToday.main.temp_max);
   const feelTemp = calculateTemperature(weatherToday.main.feels_like);
@@ -160,38 +188,5 @@ const generatedHTMLForWeatherForecast = (filteredForecast) => {
   innerText += `<div class="temp">${dailyTemp} \xB0</div>`;
   innerText += `</div>`;
   return innerText;
-  //Weather description for the next five days
-  //Humidity and wind
 };
-const fetchWeatherToday = (city) => {
-  fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=95b6172379fabb04319de6c9e2aa34ae`
-  )
-    .then((response) => {
-      return response.json();
-    })
-    .then((weatherToday) => {
-      setBackground(city);
-      containerToday.innerHTML += generatedHTMLForWeatherToday(weatherToday);
-    });
-};
-fetchWeatherToday(city);
-const fetchWeatherForecast = (city) => {
-  fetch(
-    `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=95b6172379fabb04319de6c9e2aa34ae`
-  )
-    .then((response) => {
-      return response.json();
-    })
-    .then((weatherForecast) => {
-      const filteredForecast = weatherForecast.list.filter((item) =>
-        item.dt_txt.includes("12:00")
-      );
-      filteredForecast.forEach((forecast) => {
-        containerForecast.innerHTML += generatedHTMLForWeatherForecast(
-          forecast
-        );
-      });
-    });
-};
-fetchWeatherForecast(city);
+
