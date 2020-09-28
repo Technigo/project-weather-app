@@ -1,19 +1,21 @@
 import { API_KEY } from "./api_key.js";
+// Store API URL's
 const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Orebro,Sweden&units=metric&APPID=${API_KEY}`;
 const forecastApiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=Orebro,Sweden&units=metric&APPID=${API_KEY}`;
 
+// Declare variables
 const location = document.getElementById("location");
 const currentTemperature = document.getElementById("currentTemperature");
 const feelsLikeTemperature = document.getElementById("feelsLikeTemperature");
 const todayMax = document.getElementById("todayMax");
 const todayMin = document.getElementById("todayMin");
 const weatherDescription = document.getElementById("weatherDescription");
+const weatherImage = document.getElementById("weatherImage");
 const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
-
 const fiveDayForeCast = document.getElementsByClassName("one-day-container");
-console.log(fiveDayForeCast);
 
+// Fetch current weather
 fetch(weatherApiUrl)
   .then((response) => {
     return response.json();
@@ -26,10 +28,13 @@ fetch(weatherApiUrl)
     todayMax.innerHTML = weatherToday.main.temp_max.toFixed();
     todayMin.innerHTML = weatherToday.main.temp_min.toFixed();
 
-    //image
+    // Get image icon name from API
+    const weatherIcon = weatherToday.weather[0].icon;
+    weatherImage.src = `./assets/${weatherIcon}.png`;
 
     weatherDescription.innerHTML = weatherToday.weather[0].description;
 
+    // Get time in ms, present as local time in format [hh:mm]
     sunrise.innerHTML = new Date(
       weatherToday.sys.sunrise * 1000
     ).toLocaleTimeString("sv-SE", {
@@ -44,15 +49,15 @@ fetch(weatherApiUrl)
       minute: "2-digit",
       hour12: false,
     });
-
-    console.log(weatherToday.weather[0].description);
   });
 
+// Fetch five day forecast
 fetch(forecastApiUrl)
   .then((response) => {
     return response.json();
   })
   .then((forecast) => {
+    // Filter the forecast list array to only get the info from 12:00 each day.
     const filteredForecast = forecast.list.filter((item) =>
       item.dt_txt.includes("12:00")
     );
@@ -62,24 +67,23 @@ fetch(forecastApiUrl)
         weekday: "short",
       });
       const description = day.weather[0].description;
-      const maxTemp = day.main.temp_max.toFixed();
-      const minTemp = day.main.temp_min.toFixed();
+      const weatherImage = day.weather[0].icon;
+      const temperature = day.main.temp.toFixed();
 
-      return { weekday, description, maxTemp, minTemp };
+      return { weekday, weatherImage, description, temperature };
     });
-    // console.log(newWeek);
 
     newWeek.forEach((item, index) => {
       fiveDayForeCast[index].querySelector(".weekday").innerText = item.weekday;
-      fiveDayForeCast[index].querySelector(".forecast-max").innerText =
-        item.maxTemp;
-      fiveDayForeCast[index].querySelector(".forecast-min").innerText =
-        item.minTemp;
-      console.log(item.description);
+      fiveDayForeCast[index].querySelector(
+        ".weather-image"
+      ).src = `./assets/${item.weatherImage}.png`;
+      fiveDayForeCast[index].querySelector(".forecast-temperature").innerText =
+        item.temperature;
     });
   });
 
-// const displaySearch = () => {
-//   const locationInput = document.getElementById("locationInput");
-//   locationInput.classList.toggle("active");
-// };
+const displaySearch = () => {
+  const locationInput = document.getElementById("locationInput");
+  locationInput.classList.toggle("active");
+};

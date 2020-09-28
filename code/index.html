@@ -12,105 +12,111 @@
   </head>
 
   <body>
-    <header class="header">
-      <h1 id="location" class="location"></h1>
-      <section class="search-field">
-        <input
-          name="location-input"
-          id="locationInput"
-          class="location-input"
-          placeholder="Enter a city"
-        />
-        <img
-          src="./img/zoom-48-2.png"
-          class="search-button"
-          alt="Search"
-          onclick="displaySearch()"
-        />
+    <!-- HEADER -->
+    <div class="body-container">
+      <header class="header">
+        <h1 id="location" class="location"></h1>
+        <section class="search-field">
+          <input
+            name="location-input"
+            id="locationInput"
+            class="location-input"
+            placeholder="Enter a city"
+          />
+          <img
+            src="./img/zoom-48-2.png"
+            class="search-button"
+            alt="Search"
+            onclick="displaySearch()"
+          />
+        </section>
+      </header>
+
+      <!-- TODAYS WEATHER -->
+
+      <section class="weather-today">
+        <div class="temperature-container">
+          <div class="current-temperature-container">
+            <p id="currentTemperature" class="current-temperature"></p>
+            <p class="degrees">&deg;C</p>
+          </div>
+          <div class="feels-like-container">
+            <p class="label">Feels like&nbsp;</p>
+            <p id="feelsLikeTemperature" class="feels-like-temperature"></p>
+            <p>&deg;C</p>
+          </div>
+          <div class="max-min-container">
+            <p id="todayMax" class="today-max"></p>
+            <p>&deg; /</p>
+            <p id="todayMin" class="today-min"></p>
+            <p>&deg;</p>
+          </div>
+        </div>
+
+        <div class="weather-info-container">
+          <div class="weather-description-container">
+            <img src="" id="weatherImage" class="today weather-image" />
+            <p id="weatherDescription" class="weather-description">Clear</p>
+          </div>
+          <div class="sunrise-container">
+            <p class="label">Sunrise&nbsp;</p>
+            <p id="sunrise" class="sunrise"></p>
+            <br />
+          </div>
+          <div class="sunset-container">
+            <p class="label">Sunset&nbsp;&nbsp;</p>
+            <p id="sunset" class="sunset"></p>
+          </div>
+        </div>
       </section>
-    </header>
 
-    <section class="weather-today">
+      <!-- FIVE DAYS FORECAST -->
 
-      <div class="temperature-container">
-        <div class="current-temperature-container">
-          <p id="currentTemperature" class="current-temperature"></p><p class="degrees">&deg;C</p>
+      <section class="five-day-forecast">
+        <div class="one-day-container">
+          <h2 class="weekday"></h2>
+          <img src="" class="forecast weather-image" />
+          <div class="forecast-temperature-container">
+            <p class="forecast-temperature"></p>
+            <p>&deg; C</p>
+          </div>
         </div>
-
-        <div class="feels-like-container">
-          <p class="label">Feels like&nbsp;</p><p id="feelsLikeTemperature" class="feels-like-temperature"></p><p>&deg;C</p>
+        <div class="one-day-container">
+          <h2 class="weekday"></h2>
+          <img src="" class="forecast weather-image" />
+          <div class="forecast-temperature-container">
+            <p class="forecast-temperature"></p>
+            <p>&deg; C</p>
+          </div>
         </div>
-
-        <div class="max-min-container">
-          <p id="todayMax" class="today-max"></p><p>&deg; /</p>
-          <p id="todayMin" class="today-min"></p><p>&deg;</p>
+        <div class="one-day-container">
+          <h2 class="weekday"></h2>
+          <img src="" class="forecast weather-image" />
+          <div class="forecast-temperature-container">
+            <p class="forecast-temperature"></p>
+            <p>&deg; C</p>
+          </div>
         </div>
-      </div>
-
-      <div class="weather-info-container">
-        <div class="weather-description-container">
-          <img src="./assets/Group16.png" class="today-weather-image" />
-          <p id="weatherDescription" class="weather-description">Clear</p>
+        <div class="one-day-container">
+          <h2 class="weekday"></h2>
+          <img src="" class="forecast weather-image" />
+          <div class="forecast-temperature-container">
+            <p class="forecast-temperature"></p>
+            <p>&deg; C</p>
+          </div>
         </div>
-
-        <div class="sunrise-container">
-          <p class="label">Sunrise&nbsp;</p><p id="sunrise" class="sunrise"></p><br>
+        <div class="one-day-container">
+          <h2 class="weekday"></h2>
+          <img src="" class="forecast weather-image" />
+          <div class="forecast-temperature-container">
+            <p class="forecast-temperature"></p>
+            <p>&deg; C</p>
+          </div>
         </div>
+      </section>
+    </div>
 
-        <div class="sunset-container">
-          <p class="label">Sunset&nbsp;&nbsp;</p><p id="sunset" class="sunset"></p>
-        </div>
-      </div>
-    </section>
-
-    <section class="five-day-forecast">
-      <div class="one-day-container">
-        <h2 class="weekday"></h2>
-        <img src="./assets/Group16.png" class="forecast-weather-image" />
-        <div class="forecast-temperature">
-          <p class="forecast-max"></p><p>&deg; /</p>
-          <p class="forecast-min"></p><p>&deg;</p>
-        </div>
-      </div>
-
-      <div class="one-day-container">
-        <h2 class="weekday"></h2>
-        <img src="./assets/Group16.png" class="forecast-weather-image" />
-        <div class="forecast-temperature">
-          <p class="forecast-max"></p><p>&deg; /</p>
-          <p class="forecast-min"></p><p>&deg;</p>
-        </div>
-      </div>
-
-      <div class="one-day-container">
-        <h2 class="weekday"></h2>
-        <img src="./assets/Group16.png" class="forecast-weather-image" />
-        <div class="forecast-temperature">
-          <p class="forecast-max"></p><p>&deg; /</p>
-          <p class="forecast-min"></p><p>&deg;</p>
-        </div>
-      </div>
-
-      <div class="one-day-container">
-        <h2 class="weekday"></h2>
-        <img src="./assets/Group16.png" class="forecast-weather-image" />
-        <div class="forecast-temperature">
-          <p class="forecast-max"></p><p>&deg; /</p>
-          <p class="forecast-min"></p><p>&deg;</p>
-        </div>
-      </div>
-
-      <div class="one-day-container">
-        <h2 class="weekday"></h2>
-        <img src="./assets/Group16.png" class="forecast-weather-image" />
-        <div class="forecast-temperature">
-          <p class="forecast-max"></p><p>&deg; /</p>
-          <p class="forecast-min"></p><p>&deg;</p>
-        </div>
-      </div>
-
-     
-    </section-five-day-forecast>
+    <!-- FOOTER -->
 
     <footer class="footer">
       <p>&copy;Petra Almgren for Technigo bootcamp 2020</p>
