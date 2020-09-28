@@ -149,7 +149,7 @@ const generatedHTMLForWeatherToday = (weatherToday) => {
   const sunset = calculatingSun(weatherToday.sys.sunset);
   const description = weatherToday.weather[0].description;
   const icon = iconWeather(weatherToday.weather[0].main);
-  const localTime = calculateLocalTime(weatherToday.timezone);
+  const localTime = calculateLocalTime(weatherToday.timezone);//This is needed when stringifying the localtime below
   const localTimeString = localTime.toLocaleTimeString("sv-SE", {
     hour: "2-digit",
     minute: "2-digit",
