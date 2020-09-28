@@ -29,7 +29,7 @@ fetch(weatherUrl)
   })
   .catch((error) => {
     console.log("Error fetching weather data", error)
-    alert("Cannot get weather data")
+    alert("Error in weather data")
   })
 
 fetch(forecastUrl)
@@ -38,7 +38,7 @@ fetch(forecastUrl)
   })
   .then((json) => {
 
-    const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
+    const filteredForecast = json.list.filter(item => item.dt_txt.includes("12:00"))
 
     const forecastArray = filteredForecast.map(item => {
       const day = item.dt
@@ -54,7 +54,7 @@ fetch(forecastUrl)
   })
   .catch((error) => {
     console.log("Error fetching forecast data", error)
-    alert("Cannot get forecast data")
+    alert("Error in forecast data")
   })
 
 const generateWeather = weather => {
@@ -88,7 +88,7 @@ const generateHTML = forecast => {
   const icon = getIcon(forecast.icon)
   const temp = Math.round(forecast.temp)
 
-  let forecastHTML = ''
+  let forecastHTML = ""
   forecastHTML += `<li class="forecast-row">`
   forecastHTML += `<p>${day}</p> `
   forecastHTML += `<div><img src='${icon}'></div > `
@@ -100,7 +100,7 @@ const generateHTML = forecast => {
 const handleTime = (sunrise, sunset) => {
   const sunriseDate = new Date(sunrise * 1000)
   const sunsetDate = new Date(sunset * 1000)
-  const options = { hour: '2-digit', minute: '2-digit' }
+  const options = { hour: "2-digit", minute: "2-digit" }
   const sunriseTime = sunriseDate.toLocaleTimeString([], options)
   const sunsetTime = sunsetDate.toLocaleTimeString([], options)
   return time = [sunriseTime, sunsetTime]
@@ -113,7 +113,7 @@ const handleDay = day => {
 }
 
 const getIcon = icon => {
-  const iconUrl1 = 'https://openweathermap.org/img/wn/'
-  const iconUrl2 = '@2x.png'
+  const iconUrl1 = "https://openweathermap.org/img/wn/"
+  const iconUrl2 = "@2x.png"
   return icon = iconUrl1.concat(icon.concat(iconUrl2))
 }
