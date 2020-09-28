@@ -13,11 +13,23 @@ fetch(weatherUrl)
   .then((response) => {
     return response.json()
   })
-  .then((weather) => {
-    generateWeather(weather) // create new object containing only the data I use?
+  .then((json) => {
+
+    const weather = {
+      city: json.name,
+      temp: json.main.temp,
+      icon: json.weather[0].icon,
+      description: json.weather[0].description,
+      sunrise: json.sys.sunrise,
+      sunset: json.sys.sunset
+    }
+
+    generateWeather(weather)
+
   })
   .catch((error) => {
-    console.log("Fetch error", error)
+    console.log("Error fetching weather data", error)
+    alert("Cannot get weather data")
   })
 
 fetch(forecastUrl)
@@ -25,19 +37,23 @@ fetch(forecastUrl)
     return response.json()
   })
   .then((forecast) => {
+
+    console.log(forecast.list.dt)
     generateForecast(forecast) // create new object containing only the data I use?
+
   })
   .catch((error) => {
-    console.log("Fetch error", error)
+    console.log("Error fetching forecast data", error)
+    alert("Cannot get forecast data")
   })
 
 const generateWeather = weather => {
-  const city = weather.name
-  const temp = Math.round(weather.main.temp)
-  const icon = getIcon(weather.weather[0].icon)
-  const description = weather.weather[0].description.charAt(0).toUpperCase() + weather.weather[0].description.slice(1)
+  const city = weather.city
+  const temp = Math.round(weather.temp)
+  const icon = getIcon(weather.icon)
+  const description = weather.description.charAt(0).toUpperCase() + weather.description.slice(1)
 
-  handleTime(weather.sys.sunrise, weather.sys.sunset)
+  handleTime(weather.sunrise, weather.sunset)
   const sunrise = time[0]
   const sunset = time[1]
 
@@ -57,7 +73,7 @@ const generateForecast = forecast => {
   })
 }
 
-const generateHTML = (forecast) => {
+const generateHTML = forecast => {
   handleDay(forecast.dt)
   const day = shortForecastDay
 
