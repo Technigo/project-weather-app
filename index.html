@@ -5,67 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
     <title>Weather Forcast</title>
 </head>
 
 <body>
     <main class="wrapper">
-
-        <div class="search-container">
+        <!-- <div class="search-container">
             <input class="search-control" type="text" placeholder="City Name or Zipcode">
             <button class=search-control id="search-btn">Search</button>
-
-        </div>
-
-
-        <div class="weather-info">
+        </div> -->
+        <div class="location">
             <h1 id="name"></h1>
             <p id="day"></p>
-            <div class="icon">
-                <h2 id="degrees" class="celsius"></h2>
-                <img id="weatherPic" src="" />
-            </div>
+        </div>
+        <div class="weather-info">
+            <h2 id="degrees" class="celsius"></h2>
             <p id=weather-type class="type"></p>
+            <img id="weatherPic" src="" />
         </div>
 
         <div class="sun">
-            <p id="sunrise"><img src="./img/sunrise2.png" alt="sunrise" /> Sunrise </p>
+            <p id="sunrise"><img src="./img/sunrise.png" alt="sunrise" /> Sunrise </p>
+
             <p id="sunset"><img src="./img/sunset.png" alt="sunrise" /> Sunset </p>
         </div>
-        <h1>5 days forecast</h1>
+
+
         <div class="fivedays-forecast">
             <p id="days"></p>
             <p id="temp"></p>
+            <p id="description" class="descr"></p>
             <img id="forecastIcon" src="" />
         </div>
-
-        <!-- <div class="fivedays-forecast">
-            <div class="forecast">
-                <p class="days"></p>
-                <p class="temp"></p>
-                <img class="icon" src="" />
-            </div>
-            <div class="forecast">
-                <p class="days"></p>
-                <p class="temp"></p>
-                <img class="icon" src="" />
-            </div>
-            <div class="forecast">
-                <p class="days"></p>
-                <p class="temp"></p>
-                <img class="icon" src="" />
-            </div>
-            <div class="forecast">
-                <p class="days"></p>
-                <p class="temp"></p>
-                <img class="icon" src="" />
-            </div>
-            <div class="forecast">
-                <p class="days"></p>
-                <p class="temp"></p>
-                <img class="icon" src="" />
-            </div> -->
-
 
     </main>
     <script src="./script.js" type="module"></script>

@@ -53,8 +53,6 @@ const today = () => {
     const current_datetime = new Date()
     const formatted_date = `${current_datetime.getDate()} ${months[current_datetime.getMonth()]} ${current_datetime.getFullYear()}`;
     return `  ${formatted_date}`;
-
-
 }
 
 date.innerHTML += today();
@@ -71,13 +69,16 @@ fetch(forecastUrl)
         const forecast = filteredArray.map((forecast) => {
             const day = (new  Date(forecast.dt  *  1000)).toLocaleDateString("en-US",   {  weekday:   "long" })
             const temperature = (forecast.main.temp).toFixed(1);
-            // const iconSrc = `<img src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"></img>`;
+            const weatherType = forecast.weather[0].description
+
+            // const iconSrc = `https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
 
             console.log(day);
             console.log(temperature);
             document.getElementById('days').innerHTML += `<p>${day} &nbsp</p>`;
-            document.getElementById('temp').innerHTML += `<p>${temperature} °C </p>`;
-            // document.getElementById('forecastIcon').src += forecast.iconSrc;
+            document.getElementById('temp').innerHTML += `<p>${temperature} °C  &nbsp &nbsp</p>`;
+            document.getElementById('description').innerHTML += `<p>${weatherType}</p>`;
+            // document.getElementById('forecastIcon').src += iconSrc;
 
 
         });
