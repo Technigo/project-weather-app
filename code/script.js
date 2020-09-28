@@ -1,13 +1,11 @@
 const API_KEY = 'e27fc7790a6a4c3537de471b9d7612ce'
 
-let selectedCityName = 'Ho Chi Minh';
-
 // Default page base Ho Chi Minh City
+let selectedCityName = 'Ho Chi Minh';
 updateWeatherData(selectedCityName);
 
 document.getElementById('city-select').addEventListener('change', (event) => {
-  const cityName = event.target.value;
-  selectedCityName = cityName;
+  selectedCityName = event.target.value;
   updateWeatherData();
 });
 
@@ -90,16 +88,19 @@ function fetchFiveDayForecast(url) {
     })
     .then((forecast) => {
       const filteredForecast = forecast.list.filter(item => item.dt_txt.includes('12:00'));
-
+      console.log(filteredForecast)
       let output = '';
 
       filteredForecast.forEach((item) => {
+        const icon = item.weather[0].icon;
+        const replacedIcon = icon.replace("n","d");
+        const iconImg = `<img src="https://openweathermap.org/img/wn/${replacedIcon}@2x.png" height="45px">`;
         const temperature = parseFloat(item.main.temp).toFixed(1);
         const date = new Date(item.dt * 1000);
         const weekday = date.toLocaleDateString('en-US', {
           weekday: 'short'
         });
-        output += `<p class="day">${weekday} <span>${temperature}°C</span></p>`;
+        output += `<p class="day"> ${weekday}<span class="icon-image"> ${iconImg}</span> <span class="temper">${temperature}°C</span></p>`;
       });
 
       document.getElementById('forecast').innerHTML = output;
@@ -145,11 +146,11 @@ function populateSummary(todayForecast) {
   document.getElementById('img').classList.add('wobble');
   setTimeout(() => {
   document.getElementById('img').classList.remove('wobble');
-  }, 6000)
+  }, 5000)
   document.querySelector('.background-container').innerHTML = `
     <video class="background-video" autoplay muted loop
       poster= ${weatherTemplate.poster} >
-      <source id="video" src="${weatherTemplate.videoSrc}" type="video/mp4">
+      <source src="${weatherTemplate.videoSrc}" type="video/mp4">
     </video>
   `;
   document.getElementById('sumMessage').innerHTML = weatherTemplate.message;
@@ -159,7 +160,7 @@ function populateSummary(todayForecast) {
 
 function getWeatherTemplate(todayForecast) {
   const todayDescription = todayForecast.weather[0].description;
-  const cityName = todayForecast.name;
+  const cityName = todayForecast.name;/*need improvement here. There is no connection between selectedCityName with cityName from the API*/
   let weatherId = '';
 
   if (todayDescription.includes('rain')) {

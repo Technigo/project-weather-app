@@ -53,9 +53,7 @@ body {
 }
 
 .forecast {
-  padding: 10px 0px;
-  display: flex;
-  flex-direction: column;
+  padding-bottom: 5px;
   font-size: 17px;
 }
 
@@ -68,17 +66,29 @@ body {
 
 .day {
   align-items: center;
-  display: flex;
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
   justify-content: space-between;
-  margin: 8px 0px;
+  margin: 3px 0px;
   border-bottom: 1px dotted #fff;
 }
 
+.weekday{
+  justify-self: start;
+}
+
+.icon-image {
+  justify-self: center;
+}
+
+.temper {
+  justify-self: end;
+}
 .search {
   text-align: center;
 }
 
-.city-list {
+.city-select {
   font-size: 15px;
   height: 30px;
   padding: 5px;
@@ -89,7 +99,7 @@ body {
 
 .mylocation {
   font-size: 15px;
-  margin: 20px;
+  margin: 5px 0 5px 30px;
   background-color: rgba(0,0,0,0.4);
   height: 30px;
   color: #fff;
