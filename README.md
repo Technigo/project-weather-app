@@ -13,7 +13,4 @@ Overall, I feel quite pleased with this project and if I had more time, I would 
 
 ## View it live
 
-Kindly note:
-
-For this project, I attempted to change my forecast and current weather URLs by replacing the city name to a variable called 'city' and the api key digits to 'apiKey', both previously defined. Each time I tried to do this, either forecast or current weather would rebel and not display the data.
-I am therefore not expecting this app to be properly displayed on Netlify and this project will instead have to be run through running the index.html file.
+This project may be viewed live here: https://sharp-curran-cf688a.netlify.app/
