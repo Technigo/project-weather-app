@@ -1,5 +1,7 @@
 //API KEY used for both current weather and forecast
 const apiKey = 'c2889b12ee617ea787319a19a98a5906'
+const currentWeatherUrl = "https://api.openweathermap.org/data/2.5/weather?q=Toronto,Canada&units=metric&APPID=c2889b12ee617ea787319a19a98a5906"
+const weatherForecastUrl = "https://api.openweathermap.org/data/2.5/forecast?q=Toronto,Canada&units=metric&APPID=c2889b12ee617ea787319a19a98a5906"
 
 //Current Weather variables
 
@@ -41,8 +43,6 @@ const currentWeatherToday = (json) => {
 }
 //Fetch with JSON - Current Weather
 const weatherToday = () => {
-    const currentWeatherUrl = "https://api.openweathermap.org/data/2.5/weather?q=Toronto,Canada&units=metric&APPID=c2889b12ee617ea787319a19a98a5906"
-
     fetch(currentWeatherUrl)
         .then((response) => {
             return response.json()
@@ -124,7 +124,6 @@ const updateMinMaxTemps = (data) => {
     }
 }
 // Fetch 5 day Forecast Data
-const weatherForecastUrl = "https://api.openweathermap.org/data/2.5/forecast?q=Toronto,Canada&units=metric&APPID=c2889b12ee617ea787319a19a98a5906"
 fetch(weatherForecastUrl)
     .then((response) => { return response.json() })
     .then((data) => { updateMinMaxTemps(data) })
