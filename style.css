@@ -1,41 +1,33 @@
 * {
   font-family: monospace, sans-serif;
-  box-sizing: border-box;
-  padding: 5px;
 }
 
 #container {
-  width: 90%;
+  width: 80%;
   height: 500px;
   margin-left: 20px;
-  padding-left: 50px;
+  padding-left: 70px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   color: rgb(300, 220, 200);
   background-image: url(./images/parasol.png);
   background-size: cover;
-  filter: opacity(0.9);
   font-weight: bolder;
   font-size: 20px;
 }
-#weather-container p {
-  text-align: center;
-  font-size: 30px;
-}
 
 #five-day {
-  margin-left: 20px;
-  margin-top: 4px;
+  margin-top: -300px;
   padding: 20px;
   width: 90%;
   height: auto;
   display: flex;
   flex-wrap: wrap;
   text-align: center;
-  background-color: blanchedalmond;
+  font-weight: bolder;
 }
 
 #five-day p {
-  padding-left: 60px;
+  padding-left: 90px;
 }
