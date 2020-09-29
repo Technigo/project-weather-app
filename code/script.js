@@ -15,7 +15,6 @@ fetch(weatherUrl)
     return response.json()
   })
   .then(json => {
-
     const weather = {
       city: json.name,
       temp: json.main.temp,
@@ -27,7 +26,6 @@ fetch(weatherUrl)
 
     const modifiedWeather = modifyWeather(weather)
     displayWeather(modifiedWeather)
-
   })
   .catch(error => {
     console.log("Error fetching weather data", error)
@@ -39,7 +37,6 @@ fetch(forecastUrl)
     return response.json()
   })
   .then(json => {
-
     const filteredForecasts = json.list.filter(item => item.dt_txt.includes("12:00"))
 
     const forecasts = filteredForecasts.map(item => {
@@ -57,7 +54,6 @@ fetch(forecastUrl)
     // displayForecasts(modifiedForecasts)
 
     displayForecast(forecasts)
-
   })
   .catch(error => {
     console.log("Error fetching forecast data", error)
