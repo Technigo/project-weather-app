@@ -1,6 +1,6 @@
 # Weather App
 
-Thw project's goal is to build weather web app that shows today's weather and temperature, and a 5-day forecast using the Open Weather API
+This project's goal is to build weather web app that shows today's weather and temperature, and a 5-day forecast using the Open Weather API
 My web app is also responsive, with different versions for mobile, tablet and desktop.
 
 ## How I built it - What I learned
