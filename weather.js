@@ -41,7 +41,7 @@ fetch(API_URL_WEATHER)
         sunset.innerText = `Sunset: ${sunsetTime}`
     })
     .catch((err) => {
-        console.log('Caught error: ${err}')
+        console.error('Caught error: ${err}')
     })
 
 // Get 5 days weather forecast
@@ -75,5 +75,5 @@ fetch(API_URL_FORECAST)
         })
     })
     .catch((err) => {
-        console.log('Caught error: ${err}')
+        console.error('Caught error: ${err}')
     })
