@@ -2,13 +2,13 @@ const API_KEY = '461046c1b035d88b328cf5cc47778c02'
 const API_URL_WEATHER = `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${API_KEY}`
 const API_URL_FORECAST = `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=${API_KEY}`
 
-const temperature = document.getElementById('temperature')
-const mainIcon = document.getElementById('city-icon')
-const cityName = document.getElementById('city-name')
-const description = document.getElementById('description')
-const sunrise = document.getElementById('sunrise')
-const sunset = document.getElementById('sunset')
-const forecastContent = document.getElementById('main-forecast-data')
+const temperature = document.getElementById('temperatureId')
+const mainIcon = document.getElementById('cityIconId')
+const cityName = document.getElementById('cityNameId')
+const description = document.getElementById('descriptionId')
+const sunrise = document.getElementById('sunriseId')
+const sunset = document.getElementById('sunsetId')
+const forecastContent = document.getElementById('mainForecastDataId')
 
 
 // Get weather info for Stockholm
@@ -16,7 +16,6 @@ fetch(API_URL_WEATHER)
     .then((response) => {
         return response.json()
     })
-
     .then((json) => {
         //Present the temperature (rounded to 1 decimal place), the city name and what type of weather it is
         temperature.innerHTML = `${json.main.temp.toFixed(1)}°C`
