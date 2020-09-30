@@ -84,6 +84,7 @@ fetch(forecastApiUrl)
   });
 
 const displaySearch = () => {
-  const locationInput = document.getElementById("locationInput");
-  locationInput.classList.toggle("active");
+  // const locationInput = document.getElementById("locationInput");
+  // locationInput.classList.toggle("active");
+  console.log("Here!");
 };

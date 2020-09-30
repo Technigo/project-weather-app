@@ -117,11 +117,13 @@ p {
 
 /* FOOTER */
 
-.footer {
+.footer p {
   position: absolute;
-  bottom: 0px;
-  padding: 5px;
-  opacity: 0.5;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  opacity: 0.75;
   font-size: 12px;
 }
 
