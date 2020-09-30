@@ -2,6 +2,7 @@ const API_KEY = "65baa001e8c7b91e12c081e5f04cb9a6";
 
 //this function helps to pass city name as the value to both fetches
 const selectFunction = (event) => {
+  //forecast.innerHTML = "";
   fetchWeather(event.target.value);
   //document.getElementById("weatherByDay").innerHTML = "";
   fetchWeatherForecast(event.target.value);
@@ -20,17 +21,23 @@ const fetchWeather = (city) => {
       document.getElementById("degrees").innerHTML = Math.round(
         weatherDoc.main.temp
       );
+
       //sunrise time in the city
-      const sunrise = () => {
+      const sunriseTime = () => {
         const newSunrise = new Date(weatherDoc.sys.sunrise * 1000);
         const sunriseTime = newSunrise.toLocaleTimeString([], {
           hour: "2-digit",
           minute: "2-digit",
           hour12: false,
         });
+
         document.getElementById("sunrise").innerHTML = sunriseTime;
       };
-      sunrise();
+      sunriseTime();
+      // const timeZone = weatherDoc.timezone;
+      // const offset = new Date().getTimezoneOffset() * 60;
+      // sunrise = (data.sys.sunrise + timeZone + offset);
+
       //sunset time in the city
       const sunset = () => {
         const newSunset = new Date(weatherDoc.sys.sunset * 1000);
@@ -81,6 +88,9 @@ const fetchWeatherForecast = (city) => {
     .then((response) => response.json())
     .then((json) => {
       //filter data and get the array that includes only extracted data for 12:00pm each day
+      document.getElementById("forecastDay").innerHTML = "";
+      document.getElementById("forecastIcons").innerHTML = "";
+      document.getElementById("forecastTemp").innerHTML = "";
       const filteredForecast = json.list.filter((item) =>
         item.dt_txt.includes("12:00")
       );
@@ -93,6 +103,8 @@ const fetchWeatherForecast = (city) => {
           day: "numeric",
           month: "short",
         });
+        //document.getElementById("weatherByDay").innerHTML = "";
+
         // function for changing icons in each day
         const showSmallIcon = () => {
           const conditions = item.weather[0].main;
@@ -104,7 +116,6 @@ const fetchWeatherForecast = (city) => {
             return "./images/clouds.png";
           }
         };
-
         document.getElementById(
           "forecastDay"
         ).innerHTML += `<p>${theWeekDay}</p>`;

@@ -17,5 +17,9 @@ Technologies used:
 -HTMLS
 
 ## View it live
+<<<<<<< HEAD
 
 https://liza-project-weather-app.netlify.app/
+=======
+https://liza-project-weather-app.netlify.app/ 
+>>>>>>> d154dd25ca24b00adf93b6df2e0662bd4dad5015
