@@ -1,13 +1,11 @@
 # Weather App
-
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+A simple weather app that tells today's weather and temperature for 5 days in Stockholm, Sweden using a public weather API.
+Working with API's to fetch external data to a weather app. The knowledge of how to use external data and public API's
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I had some difficulty getting dynamic Html in the JavaScript.To get the info I want from the API and to make a nice and responsive styling in css.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Netlify link:https://trusting-mcclintock-2855fe.netlify.app/ (not working yet)
