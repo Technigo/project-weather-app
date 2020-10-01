@@ -1,55 +1,149 @@
 body {
-    background-color: rgba(125, 241, 183, 0.5);
+  background-color: #549cec;
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23b1def2' fill-opacity='0.3'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
+/* above pattern made via heropattern.com  */
 
-.grandparent-background-img {
-    display: grid;
-    place-items: center;
-    background-image: url("vaderbakgrund.jpeg");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    
+h1,
+h2 {
+  font-family: "Bree Serif", serif, darkblue;
+  font-size: 40px;
+  margin: 5px 0px;
+  color: papayawhip;
 }
-
-.parent-weather-box {
-    width: clamp(23ch, 50%, 46ch);
-    display: flex;
-    flex-direction: column;
-    padding: 2rem;
-    background: rgba(204, 204, 204, 0.6);
-}
-
-
-.five-day-weather {
-    height: 300px;
-      width: 100%; 
-} 
-
-.sunrise-sunset {
-    display: flex;
-    /* border: 1px dotted blue; */
-}
-
-#temperature {
-font-size: 50px;
-
-}
-
-h1{
-
-};
 
 p {
+  font-family: "Bree Serif", serif;
+  font-size: 30px;
+  color: papayawhip;
+}
 
-};
+.sunrise-sunset-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 10px;
+}
+
+#sunrise,
+#sunset {
+  font-size: 30px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+/* .sunrise {
+}
+
+.sunset {
+} */
+
+img {
+  width: 50px;
+}
+
+/* 
+This gives the temperature a cool 3D effekt */
+
+#temperature {
+  transform: translate(50%, -50%);
+  text-transform: uppercase;
+  font-family: "Bree Serif", serif;
+  font-size: 70px;
+  font-weight: 700;
+  color: papayawhip;
+  text-shadow: 1px 1px 1px #919191, 1px 2px 1px #919191, 1px 3px 1px #919191,
+    1px 4px 1px #919191, 1px 5px 1px #919191, 1px 6px 1px #919191,
+    1px 7px 1px #919191, 1px 8px 1px #919191, 1px 9px 1px #919191,
+    1px 10px 1px #919191, 1px 18px 6px rgba(16, 16, 16, 0.4),
+    1px 22px 10px rgba(16, 16, 16, 0.2), 1px 25px 35px rgba(16, 16, 16, 0.2),
+    1px 30px 60px rgba(16, 16, 16, 0.4);
+}
+
+#weatherType {
+  font-size: 20px;
+  text-align: left;
+  margin: 0%;
+}
+
+/* help from using the https://thomlom.dev/how-to-make-a-list-responsive/ */
+.five-day-weather-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 10px;
+}
 
 
-section {
-    display: flex;
-    flex-direction: column;
-    border: black 2px;
-    
-};
+footer {
+  text-align: center;
+  margin-top: 15px;
+  color: sandybrown;
+}
 
+/* // Medium devices (tablets) */
+@media (min-width: 640px) {
+  h1 {
+    font-size: 50px;
+  }
 
+  h2 {
+    font-size: 30px;
+  }
 
+  p {
+    font-size: 30px;
+  }
+
+  #temperature {
+    top: 10%;
+    right: 20%;
+    font-size: 80px;
+  }
+
+  #weatherType {
+    font-size: 30px;
+    margin: 0%;
+  }
+
+  footer {
+    text-align: center;
+  }
+
+  #sunrise,
+  #sunset {
+    font-size: 30px;
+    margin-top: 30px;
+    margin-bottom: 5px;
+  }
+}
+
+/* Large devices (desktops) */
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 70px;
+  }
+
+  h2 {
+    font-size: 40px;
+  }
+
+  #temperature {
+    top: 12%;
+    right: 40%;
+    font-size: 100px;
+  }
+
+  img {
+    width: 60px;
+  }
+
+  #sunrise,
+  #sunset {
+    font-size: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  footer {
+    text-align: center;
+  }
+}

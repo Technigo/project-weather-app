@@ -11,14 +11,14 @@ fetch(apiWeatherUrl)
   .then((weatherArray) => {
     console.log(weatherArray);
 
-    // Step **2 - Present city, temp, description, data on your web app.**
+    // Step2 - Present city, temp, description, data on your web app.
 
     weatherElement.innerHTML = weatherArray.name;
 
     const temperatureElement = document.getElementById("temperature");
     const y = weatherArray.main.temp;
     const x = Math.round(y);
-    temperatureElement.innerText = x;
+    temperatureElement.innerText = x + "°c";
 
     const weatherTypeElement = document.getElementById("weatherType");
     weatherTypeElement.innerText = weatherArray.weather[0].description;
@@ -34,9 +34,8 @@ fetch(apiWeatherUrl)
       hour12: false,
     });
     sunriseElement.innerText = sunriseHour;
-    console.log(sunriseHour);
 
-    //  Sunset
+    //Sunset
     const sunsetElement = document.getElementById("sunset");
     const sunsetUnix = weatherArray.sys.sunset * 1000;
     const sunsetDate = new Date(sunsetUnix);
@@ -46,7 +45,6 @@ fetch(apiWeatherUrl)
       hour12: false,
     });
     sunsetElement.innerText = sunsetHour;
-    console.log(sunsetHour);
   });
 
 //Step 4 - Show a forecast for the next 5 days. Show the min and max temperature for each day.
@@ -62,29 +60,12 @@ fetch(apiWeatherFiveDaysUrl)
     const filteredForecast = item.list.filter((item) =>
       item.dt_txt.includes("12:00")
     );
-    console.log(filteredForecast);
 
-    // minimum temperature
-    const minTemp = filteredForecast[0].main.temp_min;
-    // const minTempElement = document.getElementById("minTemp");
-    // minTempElement.innerText = minTemp;
-    // console.log(minTemp);
+    // the temperture it feels like temperature
+    const feelsTemp = filteredForecast[0].main.feels_like;
 
     // maximnum temperature
     const maxTemp = filteredForecast[0].main.temp_max;
-    // const maxTempElement = document.getElementById("maxTemp");
-    // maxTempElement.innerText = maxTemp;
-    // console.log(maxTemp);
-
-    // Funktion som visar alla fem dagar samt ders min/max temp? varför visar den samma siffra?
-    // Next 5 days but for every third hour. info from 12:00 each day.
-
-    // const dayOne = document.getElementById("dayOne");
-    // const dayOneUnix = filteredForecast[0].dt * 1000
-    // const dayOneDate = new Date (dayOneUnix)
-    // const commingFiveDays = dayOneDate.toLocaleDateString('en-US', {weekday: 'long'})
-    // dayOne.innerText = commingFiveDays
-    // console.log(commingFiveDays)
 
     const dayNames = ["dayOne", "dayTwo", "dayThree", "dayFour", "dayFive"];
 
@@ -103,7 +84,8 @@ fetch(apiWeatherFiveDaysUrl)
     for (i = 0; i < filteredForecast.length; i++) {
       const dayDocument = document.getElementById(dayNames[i]);
       const dayName = dtToWeekday.run.call(filteredForecast[i]);
-      const minTemp = filteredForecast[i].main.temp_min; 
-      dayDocument.innerText = `${dayName}: ${minTemp}C ${maxTemp}C`;
+      const feelsTemp = filteredForecast[i].main.feels_like.toFixed();
+      const maxTemp = filteredForecast[i].main.temp_max;
+      dayDocument.innerText = `${dayName} ${maxTemp}°C feels like ${feelsTemp}°C`;
     }
   });

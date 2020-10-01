@@ -5,71 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather API</title>
     <link rel="stylesheet" href="./style.css"/>
-    <link href="https://fonts.google.com/specimen/Roboto">
-    <link rel="icon" type="image/png" scr="./Group36.png">
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
   </head>
 
   <body>
-<!-- 
-    <div class="parent white"> -->
-      <!-- <div class="card purple"> -->
-        <!-- <h1>Title Here</h1> -->
-        <!-- <div class="visual yellow"></div>
-        <p>pisicing elit. Sed est error repellat veritatis.</p> -->
-      <!-- </div> -->
-    <!-- </div> -->
-<div class="grandparent-background-img">
-  
 
+  
     <div class="parent-weather-box">
-      <h1>Weather forcast: <span id="weatherInfo"></span></h1>
+      <h1>Todays weather forcast for <span id="weatherInfo"></span></h1>
       
         <p><span id="temperature"></span></p>
-        <p id="weatherType"> weathertype.......</p>
+        <p id="weatherType"></p>
+  
         
-      <section class="sunrise-sunset">
-        
-        <p id="sunrise"> sunrise</p>
-        <p id="sunset"> sunset</p>
+      <section class="sunrise-sunset-box">
+         <div class="sunrise">
+          <p id="sunrise"> sunrise</p>
+          <img src="assets/Group37.png" alt="sol går upp">
+        </div>
+        <div class="sunset">
+          <p id="sunset"> sunset</p>
+          <img src="assets/Group34.png" alt="sol går upp">
+        </div>
       </section>
 
-    <div class="five-day-weather">
-
-            <h2>5 days weather </h2> 
-            <main id="weatherFiveDays"></main>
+      <h2>5 days weather </h2> 
+    <div class="five-day-weather-box" id="weatherFiveDays">
+           
       
-          <section>
+          <section class="dayOne">
             <p id="dayOne"></p>
-            <p id="minTemp"></p>
+            <p id="feelsTemp"></p> 
             <p id="maxTemp"></p>
           </section>
 
-          <section>
-            <p id="dayTwo"></p>
-            <p id="minTemp"></p>
+          <section class="dayTwo"> <p id="dayTwo"></p>
+            <p id="feelsTemp"></p>
             <p id="maxTemp"></p>
           </section>
 
-          <section>
+          <section class="dayThree">
             <p id="dayThree"></p>
-            <p id="minTemp"></p>
+            <p id="feelsTemp"></p>
             <p id="maxTemp"></p>
           </section>
 
-          <section>
+          <section class="dayFour">
             <p id="dayFour"></p>
-            <p id="minTemp"></p>
+            <p id="feelsTemp"></p>
             <p id="maxTemp"></p>
           </section>
 
-          <section>
+          <section class="dayFive">
             <p id="dayFive"></p>
-            <p id="minTemp"></p>
+            <p id="feelsTemp"></p>
             <p id="maxTemp"></p>
           </section>
-        </div>
       </div> 
-</div>
+    </div>
+
+    <footer> 
+       Made with &#128151 Sabina de Mare @ Technigo 2020.
+    </footer>
 
     <script defer src="./script.js"></script>
   </body>
