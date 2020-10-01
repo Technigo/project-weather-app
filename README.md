@@ -8,4 +8,4 @@ I had some difficulty getting dynamic Html in the JavaScript.To get the info I w
 
 ## View it live
 
-Netlify link:https://trusting-mcclintock-2855fe.netlify.app/ (not working yet)
+Netlify link:https://trusting-mcclintock-2855fe.netlify.app/ 
