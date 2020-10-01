@@ -13,15 +13,15 @@ fetch(API_URL1) // first fetch to get todays weather
         return response.json();
     })
     .then((todaysResults) => {
-       const city = `${todaysResults.name}`;
+       const city = todaysResults.name;
        const temperature = tempConvert(todaysResults.main.temp);
        const description = todaysResults.weather[0].description;
        const sunrise = timeConvert(todaysResults.sys.sunrise);
        const sunset = timeConvert(todaysResults.sys.sunset);
-       containerTodaysTemp.innerHTML += `${temperature}\u00B0`;
-       containerCurrentCity.innerHTML += city;
-       containerMainDescription.innerHTML += description.toUpperCase();
-       containerSunTimes.innerHTML += `Sunrise: ${sunrise} | Sunset: ${sunset}`;
+       containerTodaysTemp.innerHTML = `${temperature}\u00B0`;
+       containerCurrentCity.innerHTML = city;
+       containerMainDescription.innerHTML = description.toUpperCase();
+       containerSunTimes.innerHTML = `Sunrise: ${sunrise} | Sunset: ${sunset}`;
     });
 
     fetch(API_URL2) // second fetch to get 5 day forecast
@@ -35,16 +35,14 @@ fetch(API_URL1) // first fetch to get todays weather
                 );
                 // map to create new and filtered array of weather forecast
                 const forecasts = filteredArray.map((forecast) => {
-                    const day = setDayDate(forecast.dt);
+                    const day = setDay(forecast.dt);
                     const iconSrc = `http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
                     const temperature = tempConvert(forecast.main.temp);
                     const feelsLike = tempConvert(forecast.main.feels_like);
-                    console.log(day, iconSrc, temperature, feelsLike);
                     return {day, iconSrc, temperature, feelsLike};
                 });
                 // forEach loop to print data to HTML
                 forecasts.forEach((item, index) => {
-                    console.log(item);
                     forecastContainer[index].querySelector('.day').innerText = item.day;
                     forecastContainer[index].querySelector('.icon').src = item.iconSrc;
                     forecastContainer[index].querySelector('.temperature').innerText = `${item.temperature}\u00B0 / ${item.feelsLike}\u00B0`;
@@ -65,7 +63,7 @@ const timeConvert = (time) => {
     return sunTimeString;
 };
 
-const setDayDate = (day) => {
+const setDay = (day) => {
     const dayDate = new Date(day * 1000);
     const dayDateString = dayDate.toLocaleDateString([], {
         weekday: "long",
