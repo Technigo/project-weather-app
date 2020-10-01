@@ -59,16 +59,16 @@ fetchWeatherForcast(citySearched);
 
 //Functions to invoke already created functions and manipulate the DOM
 const generatedHTMLForWeatherForcast = (filteredForcast) => {
-    const weekday = printDay(filteredForcast.dt_txt); 
+    const weekday = printDay(filteredForcast.dt); 
     const dailyTemp = calculatedTemperature(filteredForcast.main.temp);
-    const humidity = calculatedTemperature(filteredForcast.main.humidity); 
+    const wind = calculatedTemperature(filteredForcast.wind.speed); 
     const iconForcast = iconDependingOnWeather(filteredForcast.weather[0].main);
     //separate and build up the HTML tree
     let weatherForcast = ''
     weatherForcast += `<div class="weather-forcast">`
     weatherForcast += `<div class="day">${weekday}</div>`
     weatherForcast += `<img src='${iconForcast}'/>`;
-    weatherForcast += `<p>${dailyTemp} \xB0c/ ${humidity} %</p>`
+    weatherForcast += `<p>${dailyTemp} \xB0c | ${wind} m/s</p>`
     weatherForcast += `</div>`
     return weatherForcast; 
 };
@@ -92,6 +92,17 @@ const calculatedTemperature = (number) => {
 const calculatingTime = (timestamp, timezone) => {
     const timeSetString = timeConvertedToLocal(timestamp, timezone);
     return timeSetString;
+};
+
+//functions to print a short day of our 5 day weather forcast 
+const printDay = (timestamp) => {
+    const forcastDays = new Date(timestamp * 1000);
+    const forcastDaysString = forcastDays.toLocaleDateString('en-SE', {
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric',
+      });
+    return forcastDaysString; 
 };
 
 /*This function takes the timestamp and the timezone (offset from UTC in seconds), 
@@ -124,41 +135,30 @@ const descriptionUppercase = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1); 
 }
 
-//functions to print a short day of our 5 day weather forcast 
-const printDay = (day) => {
-    const forcastDays = new Date(day);
-    const forcastDaysString = forcastDays.toLocaleDateString('en-SE', {
-        weekday: 'short',
-        month: 'short',
-        day: 'numeric',
-      });
-    return forcastDaysString; 
-};
-
 //Function to limit the amount of weather descriptionss and to link them to an icon 
 const iconDependingOnWeather = (item) => {
 const iconMainDescription = item
     if (iconMainDescription === 'Clouds') {
-        return './cloud.png'
+        return './images/cloud.png'
     } else if (iconMainDescription === 'Clear'){
-        return './sun.png'
+        return './images/sun.png'
     } else if (iconMainDescription === 'Rain') {
-        return './rainy.png'
+        return './images/rainy.png'
     } else if (iconMainDescription === 'Thunderstorm') {
-        return './thunder.png'
+        return './images/thunder.png'
     } else if (iconMainDescription === 'Drizzle') {
-        return './drizzle.png'
+        return './images/drizzle.png'
     } else if (iconMainDescription === 'Snow') {
-        return './snow.png'
-    } else return './drizzle.png'
+        return './images/snow.png'
+    } else return './images/drizzle.png'
 }
 
 //Change background color depending on temperature
 const weatherTodayBackgroundColor = (temp) => {
     const containerColor = document.querySelector('.background-color')
-    if (temp < 0, temp <= 6) {  
+    if (temp < 0 && temp <= 6) {  
         containerColor.style.backgroundColor = '#5555ff';
-    } else if (temp > 6, temp <= 20) {
+    } else if (temp > 6 && temp <= 20) {
         containerColor.style.backgroundColor = '#ffa500';
     } else containerColor.style.backgroundColor = '#FF0000'
 }

@@ -19,6 +19,7 @@ h2 {
 p {
     width: 100px;
     text-align: end;
+    font-size: 13px
 }
 
 img {
@@ -44,7 +45,7 @@ color depending on weather temp statement in js file.*/
 }
 
 .weather-today-wrapper {
-    background: url('./unsplash-weather-s.jpg') no-repeat center center; 
+    background: url('./images/unsplash-weather-s.jpg') no-repeat center center; 
     background-size: cover; 
     height: 100%;
     padding: 40px 10px 0 10px;
@@ -88,6 +89,10 @@ color depending on weather temp statement in js file.*/
 .sun-information {
     display: flex;
     justify-content: space-between;
+}
+
+.sun-information p {
+    font-size: 18px;
 }
 
 .sunrise, .sunset {

@@ -9,35 +9,32 @@
     <link
       rel="icon"
       type="image/png"
-      href="./favicon.png"
+      href="./images/favicon.png"
       alt="favicon"
     />
 </head>
 <body>
-    <section class="weather-container">
-        <div class="weather-wrapper">
-            <div class="background-color"></div>
-            <div id="weatherToday" class="weather-today-wrapper"></div>
-        </div>
+    <div class="weather-wrapper">
+        <div class="background-color"></div>
+        <div id="weatherToday" class="weather-today-wrapper"></div>
+    </div>
        
-        <div id="weatherForecast" class="weather-forcast-wrapper"></div>
-        <div class="searched-city">
-            <label for="cityNamePicked" class="city-serch">What's the weather in your favourite city?</label>
-            <input type="input" 
-            id="cityNamePicked" 
-            name="ciyNamePicked"
-            placeholder="" 
-            onkeydown="if (event.keyCode == 13) 
-                document.getElementById('btnSearch').click()" />
+    <div id="weatherForecast" class="weather-forcast-wrapper"></div>
+    <div class="searched-city">
+        <label for="cityNamePicked" class="city-serch">What's the weather in your favourite city?</label>
+        <input type="input" 
+        id="cityNamePicked" 
+        name="ciyNamePicked"
+        placeholder="" 
+        onkeydown="if (event.keyCode == 13) 
+            document.getElementById('btnSearch').click()" />
 
-            <input class="search-btn" 
-            type="button" 
-            id="btnSearch" 
-            value="Search" 
-            onclick="citySelected();" />
-        </div>
-    </section>
-
+        <input class="search-btn" 
+        type="button" 
+        id="btnSearch" 
+        value="Search" 
+        onclick="citySelected();" />
+    </div>
     <script src="./script.js"></script>
 </body>
 </html>
