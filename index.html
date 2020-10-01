@@ -11,6 +11,7 @@
 
 <body>
     <main class="wrapper" id="wrapper">
+        <!-- <div class="text-box"> -->
         <div class="search-box">
             <input type="text" id="search" autocomplete="off" placeholder="Search for a city..." />
         </div>
@@ -19,19 +20,29 @@
             <p id="day"></p>
         </div>
         <div class="weather-info">
+            <img id="weatherPic" />
             <h2 id="degrees" class="celsius"></h2>
             <p id=weather-type class="type"></p>
-            <img id="weatherPic" />
+
         </div>
         <div class="sun">
-            <p id="sunrise"><img src="./img/sunrise.png" alt="sunrise" /> Sunrise </p>
-            <p id="sunset"><img src="./img/sunset.png" alt="sunrise" /> Sunset </p>
+            <div class="rise">
+                <img src="./img/sunrise.png" alt="sunrise" />
+                <span id="sunrise"> Sunrise </span>
+            </div>
+            <div class="set">
+                <img src="./img/sunset.png" alt="sunrise" />
+                <span id="sunset">Sunset</span>
+            </div>
         </div>
         <div class="fivedays-forecast">
             <p id="days"></p>
             <p id="temp"></p>
             <p id="description" class="descr"></p>
+            <img id="icon" />
         </div>
+
+        <!-- </div> -->
     </main>
     <script src="./script.js" type="module"></script>
 
