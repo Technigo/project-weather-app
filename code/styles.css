@@ -1,6 +1,7 @@
 body{
     letter-spacing: 0.2em;
-    font-family: 'Montserrat';font-size: 16px;
+    font-family: 'Montserrat';
+    font-size: 16px;
     color: #F47775;
     display: flex;
     align-items: center;

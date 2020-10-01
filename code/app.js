@@ -13,6 +13,7 @@ const cityForm = document.querySelector('form');
 cityForm.addEventListener('submit', (event) => {
 
     event.preventDefault()
+    lowerContainer.innerHTML = ``
 
     cityName = cityForm.city.value
     cityForm.reset();
@@ -33,12 +34,12 @@ const getWeather = (cityName) => {
             let timeAM = new Date(result.sys.sunrise * 1000)
             let timePM = new Date(result.sys.sunset * 1000)
             
-            console.log(result)
             upperContainer.innerHTML = `<section class="locationToday">${result.name}</section>`
             upperContainer.innerHTML += `<section class="tempToday">${temperature}°C</section>`
             upperContainer.innerHTML += `<section class="condToday">${result.weather[0].description}</section>`
             upperContainer.innerHTML += `<section class="sunriseToday">Sunrise ${timeAM.toLocaleTimeString('en-US', {hour12: false, hour: '2-digit', minute: '2-digit'})}</section>`
             upperContainer.innerHTML += `<section class="sundownToday">Sundown ${timePM.toLocaleTimeString('en-US', {hour12: false,  hour: '2-digit', minute: '2-digit'})}</section>`
+
         });
 };
 
@@ -48,17 +49,15 @@ const getForecast = (cityName) => {
     fetch(`${baseURL}${weather[1]}?q=${cityName}&units=metric&APPID=${apiKey}`)
         .then(response => response.json())
         .then((result) => {
-
-            console.log(result)
             
             const filteredForecast = result.list.filter(item => item.dt_txt.includes('12:00'))
-            filteredForecast.forEach((day) => {
+                filteredForecast.forEach((day) => {
 
-                let weekDay = new Date(day.dt*1000)
-                let dayName = weekDay.toLocaleDateString('en-US', {weekday: 'long',})
-                let temperature = Math.round(day.main.feels_like * 10)/10
+                    let weekDay = new Date(day.dt*1000)
+                    let dayName = weekDay.toLocaleDateString('en-US', {weekday: 'long',})
+                    let temperature = Math.round(day.main.feels_like * 10)/10
 
-                lowerContainer.innerHTML += `<section class="dailyForecast">${dayName} ${temperature}°C</section>`
+                    lowerContainer.innerHTML += `<section class="dailyForecast">${dayName} ${temperature}°C</section>`
 
             })          
         })
