@@ -2,7 +2,7 @@ const API_KEY = '2c57bc1d70d090d5c103c4167c1a5a74';
 const API_URL1 = `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${API_KEY}`;
 const API_URL2 = `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=${API_KEY}`;
 
-const containerTodaysTemp = document.getElementById('todays-temperature');
+const containerTodaysTemp = document.getElementById('main-temperature');
 const containerCurrentCity = document.getElementById('main-city');
 const containerMainDescription = document.getElementById('main-description');
 const containerSunTimes = document.getElementById('sun-times');

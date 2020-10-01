@@ -1,7 +1,6 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Epilogue', sans-serif;
     background-color: #e6f3f5;
     text-align: center;
     font-family: 'Kumbh Sans', sans-serif;
@@ -23,8 +22,9 @@ body {
     border-radius: 10px;
 }
 
-.heading-temperature {
+.main-temperature {
     margin-bottom: 5px;
+    font-size: 70px;
 }
 
 .main-city {
@@ -62,10 +62,6 @@ body {
     justify-content: center;
     align-items: space-between;
     text-align: center;
-}
-
-.heading-temperature {
-    font-size: 70px;
 }
 
 .five-day-forecast {
