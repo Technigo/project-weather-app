@@ -43,7 +43,7 @@ fetch(forecastApi)
     item.dt_txt.includes('12:00'));
         
     filteredForecast.forEach(item => {
-    const date = new Date(item.dt * 1000)
+    const date = new Date(item.dt * 1000);
     const dayName = date.toLocaleDateString("en-US", { 
         weekday: "short" 
   });

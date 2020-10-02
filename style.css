@@ -1,5 +1,9 @@
+body {
+  background-color: linen;
+}
 
-.weatherApp {
+
+.weather-app {
   font-family: 'Montserrat', sans-serif;
   border: double black;
   max-width: 400px;
@@ -50,23 +54,29 @@ h5 {
 @media (min-width:668px) and (max-width: 1023px) {
 
 body {
-  background-color: #FFE4E1;
+  background-image: url(/weatherBackgroundTablet.jpg);
+  background-size: cover;
 }
 
-.weatherApp {
+.weather-app {
   max-width: 700px;
+  background: linear-gradient(to right, #e8cbc0, #636fa4);
 }
 }
 
 @media (min-width:1024px) {
 
   body {
-  background-color: lightgreen;
+  background-image: url(/weatherBackgroundDesktop.jpg);
+  background-size: cover;
+  font-size: x-large;
 }
 
-.weatherApp {
+.weather-app {
   max-width: 1400px;
-  height: 500px
+  height: 500px;
+  background: none;
+  border: none;
 }
 
 #forecastDayAndTemp {
