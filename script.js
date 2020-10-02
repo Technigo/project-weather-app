@@ -104,7 +104,7 @@ const findWeather = (resultFromServer) => {
 
     const sunsetTimeElement = document.getElementById("sunset");
 
-    const CityHeader = document.getElementById("cityHeader");
+    const cityHeader = document.getElementById("cityHeader");
 
     const weatherIcon = document.getElementById("documentIconImg");
 
@@ -123,12 +123,12 @@ const findWeather = (resultFromServer) => {
         Math.floor(resultFromServer.main.temp) + "&#176c";
 
     windSpeedElement.innerHTML =
-        "Winds at " + Math.floor(resultFromServer.wind.speed) + " m/s";
+        "Wind: " + Math.floor(resultFromServer.wind.speed) + " m/s";
 
     cityHeader.innerHTML = resultFromServer.name;
 
     humidityElement.innerHTML =
-        "Humidity " + resultFromServer.main.humidity + " %";
+        "Humidity: " + resultFromServer.main.humidity + " %";
 
     // GET SUNRISE & SUNSET 
     const sunriseTime = new Date(
