@@ -2,10 +2,11 @@ import { API_KEY } from './api.js';
 
 const input = document.querySelector('#search');
 let cityName = '';
-let city = document.getElementById('name');
-let displayDay = document.getElementById('days');
-let displayTemp = document.getElementById('temp');
-let displayType = document.getElementById('description');
+const city = document.getElementById('name');
+const displayDay = document.getElementById('days');
+const displayTemp = document.getElementById('temp');
+const displayType = document.getElementById('description');
+const displayIcon = document.getElementById('icon');
 
 //displays the geo location as default
 function geoLocate() {
@@ -16,14 +17,13 @@ function geoLocate() {
             const longitude = position.coords.longitude;
             const geoLocationForecastAPI = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`
             const geoLocationWeatherAPI = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`
-                // returnErrorElements()
             getWeatherForecast(geoLocationForecastAPI)
             getWeatherToday(geoLocationWeatherAPI)
         });
     } else {
         alert("Geolocation is not supported by this browser.");
     }
-}
+};
 
 //Change city on input and keypress
 input.addEventListener('keypress', function(e) {
@@ -35,10 +35,7 @@ input.addEventListener('keypress', function(e) {
         getWeatherToday(API_URL_TODAY);
         getWeatherForecast(API_URL_FORECAST);
         displayDay.innerHTML = '';
-        displayTemp.innerHTML = '';
-        displayType.innerHTML = '';
     }
-
 });
 
 //fetch url for today's forecast
@@ -49,10 +46,12 @@ const getWeatherToday = (url) => {
         })
         .then((currentWeather) => {
             upDateWeather(currentWeather);
+        })
+        .catch((error) => {
+            city.innerHTML = ('Oops! Try again');
 
         });
-}
-
+};
 
 //Get today's weather and update temperature, weathertype and icon
 const upDateWeather = (currentWeather) => {
@@ -63,6 +62,9 @@ const upDateWeather = (currentWeather) => {
     document.getElementById('weather-type').innerHTML = description;
     const weatherPicID = currentWeather.weather[0].icon;
     document.getElementById('weatherPic').src = `./assets/${weatherPicID}.png`;
+    const windSpeed = currentWeather.wind.speed;
+    document.getElementById('wind-speed').innerHTML = `${windSpeed} m/s`;
+
 
     //update time of sunrise
     const sunriseTime = new Date(currentWeather.sys.sunrise * 1000);
@@ -73,7 +75,7 @@ const upDateWeather = (currentWeather) => {
     const sunsetTime = new Date(currentWeather.sys.sunset * 1000);
     const sunsetTimeString = sunsetTime.toLocaleTimeString('sv-SE', { timestyle: 'long', hour: "2-digit", minute: "2-digit" });
     document.getElementById('sunset').innerHTML = sunsetTimeString;
-}
+};
 
 
 //get the name of the day
@@ -102,6 +104,7 @@ const getWeatherForecast = (url) => {
     fetch(url)
         .then((response) => {
             return response.json();
+
         })
         .then((forecastArray) => {
             const filteredArray = forecastArray.list.filter(item => item.dt_txt.includes('12:00'));
@@ -110,13 +113,10 @@ const getWeatherForecast = (url) => {
                 const day = (new Date(item.dt * 1000)).toLocaleDateString("en-US", { weekday: "long" })
                 const temperature = (item.main.temp).toFixed(1);
                 const weatherType = item.weather[0].description;
-
-                displayDay.innerHTML += `<p>${day}&nbs</p>`;
-                displayTemp.innerHTML += `<p>${temperature} °C  &nbsp &nbsp</p>`;
-                displayType.innerHTML += `<p>${weatherType}</p>`;
-
+                const image = `<img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"/>`;
+                displayDay.innerHTML += `<p class="forecast">${day}&nbsp &nbsp${image}&nbsp &nbsp${temperature} °C</p>`;
             });
-        })
-}
+        });
+};
 
 geoLocate()
