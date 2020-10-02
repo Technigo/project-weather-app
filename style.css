@@ -47,9 +47,32 @@ h5 {
 }
 
 
-@media screen and (min-width:768px) {
+@media (min-width:668px) and (max-width: 1023px) {
 
 body {
   background-color: #FFE4E1;
+}
+
+.weatherApp {
+  max-width: 700px;
+}
+}
+
+@media (min-width:1024px) {
+
+  body {
+  background-color: lightgreen;
+}
+
+.weatherApp {
+  max-width: 1400px;
+  height: 500px
+}
+
+#forecastDayAndTemp {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 50px;
 }
 }
