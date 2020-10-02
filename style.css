@@ -1,138 +1,135 @@
 body {
-    background-image: url('./images/deafault.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top center;
-    background-attachment: fixed;
-    color: white;
-    text-shadow: 2px 2px 1px black;
-    font-family: 'Montserrat', sans-serif;
+  background-image: url("./images/deafault.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-attachment: fixed;
+  color: white;
+  text-shadow: 2px 2px 1px black;
+  font-family: "Montserrat", sans-serif;
 }
 
-#weatherContainer {
-    background-color: rgba(0, 0, 0, 0.3);
-    box-shadow: 1px 1px 5px black;
-    padding: 30px;
-    border-radius: 10px;
-    position: sticky;
-    visibility: hidden;
-    margin-top: 20px;
-    min-width: 300px;
+.weatherContainer {
+  background-color: rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 1px 5px black;
+  padding: 30px;
+  border-radius: 10px;
+  position: sticky;
+  visibility: hidden;
+  margin-top: 20px;
+  min-width: 275px;
 }
 
-#weatherContainer h1 {
-    margin: 5px;
-    font-size: 42px;
-    font-weight: 600;
+.weatherContainer h1 {
+  margin: 5px;
+  font-size: 42px;
+  font-weight: 600;
 }
 
-#searchContainer {
-    padding: 15px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 2;
+.searchContainer {
+  padding: 15px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
 }
 
-#searchinput.searchControl {
-    color: white;
+.searchinput.searchControl {
+  color: white;
 }
 
-#searchContainer input {
-    width: 200px;
+.searchContainer input {
+  width: 200px;
 }
 
-#searchContainer button {
-    background-color: white;
-    width: 75px;
+.searchContainer button {
+  background-color: white;
+  width: 75px;
 }
 
 .searchControl {
-    box-shadow: 2px 2px 5px black;
-    border: none;
-    border-radius: 5px;
-    padding: 5px;
+  box-shadow: 2px 2px 5px black;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
 }
 
-#weatherMain {
-    display: block;
-    margin-bottom: 20px;
+.weatherMain {
+  display: block;
+  margin-bottom: 20px;
 }
 
-#weatherMain div {
-    display: inline-block;
+.weatherMain div {
+  display: inline-block;
 }
 
-#weatherDescriptionHeader {
-    font-size: 28px;
-    vertical-align: 50%;
+.weatherDescriptionHeader {
+  font-size: 28px;
+  vertical-align: 50%;
 }
 
-#documentIconImg {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    -webkit-transition: .3s ease-in-out;
-    transition: .3s ease-in-out;
+.documentIconImg {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
-#documentIconImg:hover {
-    -webkit-transform: scale(1.3);
-    transform: scale(1.5);
+.documentIconImg:hover {
+  -webkit-transform: scale(1.3);
+  transform: scale(1.5);
 }
 
-#temperature {
-    font-size: 50px;
-    vertical-align: 25%;
-    padding-right: 10px;
-    font-weight: 800;
+.temperature {
+  font-size: 50px;
+  vertical-align: 25%;
+  padding-right: 10px;
+  font-weight: 800;
 }
 
 .bottomDetails {
-    display: block;
-    font-size: 22px;
-    text-align: right;
-    line-height: 40px;
+  display: block;
+  font-size: 22px;
+  text-align: right;
+  line-height: 40px;
 }
 
 .wrapper {
-    display: flex;
+  display: flex;
 }
 
 .container {
-    display: flex;
+  display: flex;
 }
 
 hr {
-    margin: 12px;
+  margin: 12px;
 }
 
 .forecast1 {
-    display: flex;
+  display: flex;
 }
 
 .forercast2 {
-    text-align: right;
+  text-align: right;
 }
 
 .forecastDays {
-    padding-right: 30px;
+  padding-right: 30px;
 }
 
 /** MEDIA QUERIES**/
 
-
 @media (min-width: 668px) and (max-width: 1024px) {
-
-    #weatherContainer {
-        position: absolute;
-        max-width: 500px;
-    }
+  #weatherContainer {
+    position: absolute;
+    max-width: 500px;
+  }
 }
 
-
 @media (min-width: 1200px) {
-    #weatherContainer {
-        position: absolute;
-        max-width: 500px;
-    }
+  #weatherContainer {
+    position: absolute;
+    max-width: 500px;
+  }
 }
