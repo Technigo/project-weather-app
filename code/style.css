@@ -98,10 +98,10 @@ input {
 
 @media (min-width: 768px) {
   body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   header {

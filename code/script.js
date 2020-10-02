@@ -1,5 +1,6 @@
 const WEATHER_API_KEY = '73c5730a60c903ea682b781b386e94b4';
 
+// Variables
 const body = document.querySelector('body');
 const main = document.querySelector('main');
 const today = document.getElementById('today');
@@ -14,6 +15,7 @@ const forecasts = document.getElementsByClassName('forecast');
 const selectButton = document.getElementById('city-submit');
 const searchButton = document.getElementById('city-search');
 
+// Background image based on weather conditions and time
 const bodyBackgrounds = [
   {
     code: '01d',
@@ -89,6 +91,7 @@ const bodyBackgrounds = [
   }
 ]
 
+// Month array to be used with today's date
 const months = [
   'Jan',
   'Feb',
@@ -104,6 +107,7 @@ const months = [
   'Dec',
 ]
 
+// Day array to be used with today's date
 const days = [
   'Sun',
   'Mon',
@@ -154,28 +158,35 @@ getLocation();
 
 // This function displays today's weather
 const displayTodaysWeather = (weatherArray) => {
+  // city name
   city.innerHTML = weatherArray.name;
-  const timeStamp = new Date((weatherArray.dt + weatherArray.timezone - 7200) * 1000);
-  time.innerHTML = `${days[timeStamp.getDay()]} ${timeStamp.getDate()} ${months[timeStamp.getMonth()]} ${timeStamp.toLocaleTimeString([], {
+  // date with customized format
+  const timeStamp = new Date((weatherArray.dt + weatherArray.timezone - 7200) * 1000); // Time recalculated as local time
+  time.innerHTML = `${days[timeStamp.getDay()]} ${timeStamp.getDate()} ${months[timeStamp.getMonth()]} ${timeStamp.toLocaleTimeString('en-US', { // Customized date format
     hour: '2-digit',
     minute: '2-digit',
     hour12: false,
   })}`;
+  // Temperature with one decimal
   const temp = weatherArray.main.temp;
   temperature.innerHTML = `${temp.toFixed(1)}\xB0`;
+  returnTempGradient(temp); // First section's color based on temperature 
+  // Weather description
   const descriptionArray = weatherArray.weather.map((a) => a.main);
-  description.innerHTML = descriptionArray[0];
+  description.innerHTML = descriptionArray[0]; // Retrieving first description in case of multiple descriptions in order to fit in the layout
+  //Weather icon
   const iconArray = weatherArray.weather.map((a) => a.icon);
-  const todayIcon = iconArray[0];
-  returnBodyBackground(todayIcon);
-  returnTempGradient(temp);
-  picto.src = 'https://openweathermap.org/img/wn/' + todayIcon + '@2x.png';
-  sunrise.innerHTML = (new Date((weatherArray.sys.sunrise + weatherArray.timezone - 7200) * 1000)).toLocaleTimeString([], {
+  const todayIcon = iconArray[0]; // Retrieving first icon in case of multiple icon codes
+  returnBodyBackground(todayIcon); // Body background based on icon code
+  picto.src = 'https://openweathermap.org/img/wn/' + todayIcon + '@2x.png'; // Current weather icon
+  // Sunrise
+  sunrise.innerHTML = (new Date((weatherArray.sys.sunrise + weatherArray.timezone - 7200) * 1000)).toLocaleTimeString('en-US', {
     hour: '2-digit',
     minute: '2-digit',
     hour12: false,
   });
-  sunset.innerHTML = (new Date((weatherArray.sys.sunset + weatherArray.timezone - 7200) * 1000)).toLocaleTimeString([], {
+  // Sunset
+  sunset.innerHTML = (new Date((weatherArray.sys.sunset + weatherArray.timezone - 7200) * 1000)).toLocaleTimeString('en-US', {
     hour: '2-digit',
     minute: '2-digit',
     hour12: false,
@@ -184,10 +195,12 @@ const displayTodaysWeather = (weatherArray) => {
 
 // This function displays 5 days weather forecast
 const displayForecast = (forecastArray) => {
-  const timeZone = forecastArray.city.timezone;
+  const timeZone = forecastArray.city.timezone; // Time difference to UTC
+  // Array of weathers at 12.00
   const filteredForecast = forecastArray.list.filter(item => item.dt_txt.includes('12:00'));
+  // Array of days, icons and temperature at 12.00
   const forecastWeather = filteredForecast.map(day => {
-    const dayName = (new Date((day.dt + timeZone - 7200) * 1000)).toLocaleDateString([], {
+    const dayName = (new Date((day.dt + timeZone - 7200) * 1000)).toLocaleDateString('en-US', {
       weekday: 'short',
     });
     const iconArray = day.weather.map((a) => a.icon);
@@ -195,6 +208,7 @@ const displayForecast = (forecastArray) => {
     const midTemp = `${day.main.temp.toFixed(1)}\xB0`;
     return { dayName, icon, midTemp };
   });
+  // Displaying day, weather icon and temperature for each day in the forecast at 12.00
   forecastWeather.forEach((item, index) => {
     forecasts[index].querySelector('.day-name').innerHTML = item.dayName;
     forecasts[index].querySelector('.day-icon').src = 'https://openweathermap.org/img/wn/' + item.icon + '.png';
@@ -204,14 +218,14 @@ const displayForecast = (forecastArray) => {
 
 // This function fetchs weather information and forecast based on location
 const returnWeatherByLocation = (latitude, longitude) => {
-  const WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&APPID=` + WEATHER_API_KEY;
-  const FORECAST_API_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&APPID=` + WEATHER_API_KEY;
-  fetch(WEATHER_API_URL)
+  const WEATHER_GEOLOC_API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&APPID=` + WEATHER_API_KEY;
+  const FORECAST_GEOLOC_API_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&APPID=` + WEATHER_API_KEY;
+  fetch(WEATHER_GEOLOC_API_URL)
     .then(response => response.json())
     .then(weatherArray => {
       displayTodaysWeather(weatherArray);
     });
-  fetch(FORECAST_API_URL)
+  fetch(FORECAST_GEOLOC_API_URL)
     .then(response => response.json())
     .then((forecastArray) => {
       displayForecast(forecastArray);
@@ -220,14 +234,14 @@ const returnWeatherByLocation = (latitude, longitude) => {
 
 // This function fetchs weather information and forecast based on city name
 const returnWeatherByCity = (cityValue) => {
-  const WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue}&units=metric&APPID=` + WEATHER_API_KEY;
-  const FORECAST_API_URL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityValue}&units=metric&APPID=` + WEATHER_API_KEY;
-  fetch(WEATHER_API_URL)
+  const WEATHER_SEARCH_API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue}&units=metric&APPID=` + WEATHER_API_KEY;
+  const FORECAST_SEARCH_API_URL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityValue}&units=metric&APPID=` + WEATHER_API_KEY;
+  fetch(WEATHER_SEARCH_API_URL)
     .then(response => response.json())
     .then(weatherArray => {
       displayTodaysWeather(weatherArray);
     });
-  fetch(FORECAST_API_URL)
+  fetch(FORECAST_SEARCH_API_URL)
     .then(response => response.json())
     .then((forecastArray) => {
       displayForecast(forecastArray);
