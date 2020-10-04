@@ -1,7 +1,7 @@
 let activeCityIndex = 0
 const api_key = 'eb46c8c17530a3d02461794022d39d32'
-const app = document.getElementById('app-container')
-const dropDown = document.getElementById('city-nav')
+const app = document.getElementById('appContainer')
+const dropDown = document.getElementById('cityNav')
 
 const cities = [
   // Stockholm
@@ -27,7 +27,7 @@ let getWeatherNow = () => {
   })
   .then((city) => {
     // Top left lines
-    const currentWeather = document.getElementById('current-weather')
+    const currentWeather = document.getElementById('currentWeather')
     const sunriseTime = document.getElementById('sunrise')
     const sunsetTime = document.getElementById('sunset')
     const tempNow = Math.round(city.main.temp)
@@ -50,7 +50,7 @@ let getWeatherNow = () => {
   
     // Headline content
     const now = document.getElementById('now')
-    const ico = document.getElementById('now-icon')
+    const ico = document.getElementById('nowIcon')
     const nowFeelsLike = Math.round(city.main.feels_like)
     now.innerHTML = `It feels like ${nowFeelsLike}\u00b0C in ${city.name}.`,
     ico.src = `https://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png`
@@ -58,7 +58,7 @@ let getWeatherNow = () => {
 }
 
   // 5 day forecast
-  let fiveDay = document.getElementById('five-Day') 
+  let fiveDay = document.getElementById('fiveDay') 
 
   const getForecast = () => {
     fiveDay.innerHTML = null
