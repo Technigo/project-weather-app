@@ -1,14 +1,14 @@
 //API:s WITH WEATHER INFO TO FETCH:
-const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=8b97619989976c72fc1e602d8c793890';
-const apiUrl2 = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=8b97619989976c72fc1e602d8c793890';
+const apiCurrentWeather = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=8b97619989976c72fc1e602d8c793890';
+const apiForecastWeather = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=8b97619989976c72fc1e602d8c793890';
 
 //GLOBAL SCOPE INFO TO WEATHER:
 const weatherDescription = document.getElementById('weatherDescription');
 const weatherText = document.getElementById('weatherText');
 
 //CURRENT WEATHER:
-//Fetch the current weather/apiUrl1:
-fetch(apiUrl).then((response) => {
+//Fetch the current weather API:
+fetch(apiCurrentWeather).then((response) => {
     return response.json();
 }).then((json) => {
     //Get main temp. and cityname to the website:
@@ -40,9 +40,9 @@ fetch(apiUrl).then((response) => {
             document.getElementById('weatherIcon').src = './icons/iconfinder_Weather_forecast_weather_station_radar_6646328.svg';
             weatherText.innerHTML += "<h2>Welcome to this weather app!</h2>"
         }
-    }
-    //Calling the function:
-    weatherIconShow(json.weather[0].main)
+    };
+    weatherIconShow(json.weather[0].main);
+    //Calling the function
     //Setting sunrise and sunset to show on website with time hours and minutes:
     const sunrise = new Date(json.sys.sunrise * 1000);
     const sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: "short" });
@@ -53,23 +53,23 @@ fetch(apiUrl).then((response) => {
 });
 
 //Function that show the night icon when it is nighttime (22-04), and remove the weather icon & text so it doesn't show & adding a text to show up with the night icon:
+
 const night = () => {
     const currentTime = new Date().getHours();
-    console.log(currentTime)
-    if (currentTime >= 22 && currentTime <= 04){
+    if (currentTime >= 22 || currentTime <= 04) {
+        console.log(currentTime)
         document.getElementById('nightIcon').src = './icons/iconfinder_03_moon_sleepy_night_emoticon_weather_smiley_3375686.svg';
         weatherText.innerHTML +="<h2>Hello there Night Owl! Can't sleep? Cathing stars? Dancing?</h2>";
         var element = document.getElementById("weatherIconParent");
         element.parentNode.removeChild(element);
     }
 }
-//Calling the function for showing the night icon + text:
 night();
-
+//Calling the function for showing the night icon + text
 
 //FORECAST FOR 5 DAYS:
-////Fetch the forecast/apiUrl2:
-fetch(apiUrl2).then((response) => {
+////Fetch the forecast weather API:
+fetch(apiForecastWeather).then((response) => {
     return response.json();
 }).then((json) => {
     //filter the information so it is only shown for one time/same time every day (default is for every third hour/day):

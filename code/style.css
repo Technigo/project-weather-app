@@ -4,6 +4,7 @@ body {
     background-color: rgb(12, 192, 247);
     animation-name: example;
     animation-duration: 16s;
+    max-width: 400px;
 }
 
 @keyframes example {
@@ -15,7 +16,6 @@ body {
 }
 
 .header-part-1 {
-  max-width: 400px; 
   margin-top: 70px;
   display: flex;
   justify-content: center;
@@ -35,7 +35,6 @@ body {
 }
 
 .header-part-2 {
-  max-width: 400px; 
   margin: 30px;
   display: flex;
   justify-content: space-evenly;
@@ -47,12 +46,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: justify;
+  text-align: left;
   margin: 30px;
 }
 
 .sunrise-sunset {
-  max-width: 400px; 
   margin: 30px;
   display: flex;
   justify-content: space-between;
@@ -62,7 +60,6 @@ body {
 }
 
 .forecast {
-  max-width: 400px; 
   margin: 30px;
   display: flex;
   justify-content: space-between;
@@ -70,8 +67,7 @@ body {
   flex-direction: row;
 }
 
-footer {
-  max-width: 400px; 
+footer { 
   margin: 30px;
   text-align: center;
   border-top: white solid;
@@ -79,13 +75,16 @@ footer {
 
 /* MEDIA FOR TABLET VIEW */
 @media screen and (min-width: 740px) {
+
+  body {
+    max-width: 992px;
+  }
   
   .current-weather {
     margin: 40px;
   }
 
-  .header-part-1 {
-    max-width: 992px; 
+  .header-part-1 { 
     font-size: 40px;
   }
 
@@ -101,8 +100,7 @@ footer {
     height: auto;
   }
   
-  .header-part-2 {
-    max-width: 992px; 
+  .header-part-2 { 
     font-size: 40px;
   }
 
@@ -110,20 +108,17 @@ footer {
     font-size: 35px;
   }
   
-  .sunrise-sunset {
-    max-width: 992px; 
+  .sunrise-sunset { 
     margin: 40px;
     font-size: 30px;
   }
   
   .forecast {
-    max-width: 992px; 
     margin: 40px;
     font-size: 38px;
   }
 
   footer {
-    max-width: 992px; 
     margin: 80px;
     font-size: 32px;
     text-align: center;
@@ -133,12 +128,16 @@ footer {
 
 /* MEDIA FOR DESKTOP VIEW */
 @media screen and (min-width: 1024px) {
+
+  body {
+    max-width: 4000px;
+  }
+
   .current-weather {
     margin: 40px;
   }
 
   .header-part-1 {
-    max-width: 4000px; 
     font-size: 40px;
   }
 
@@ -154,7 +153,6 @@ footer {
   }
   
   .header-part-2 {
-    max-width: 40000px; 
     font-size: 40px;
   }
 
@@ -164,19 +162,16 @@ footer {
   }
   
   .sunrise-sunset {
-    max-width: 4000px; 
     margin: 140px;
     font-size: 30px;
   }
   
-  .forecast {
-    max-width: 4000px; 
+  .forecast { 
     margin: 140px;
     font-size: 38px;
   }
 
   footer {
-    max-width: 4000px; 
     margin: 140px;
     font-size: 32px;
     text-align: center;
