@@ -10,7 +10,7 @@ Learning Objectives:
 4. How to use promises in JavaScript
 5. How to work with the `Date()` object in JavaScript
 
-## The problem
+## Approach
 The trickiest thing to solve for was exactly how to access specific keys within the API array. After this initial hurdle, the Blue Level ojbectives seemed straightforward enough. For me the most difficult problem to solve was working out how to grab and show weather for additional cities. Instead of showing data for all five cities at once, I wanted to display data for one city at a time in order to 
 
   A) maintain a clean and simple display at any given time and 
@@ -27,7 +27,7 @@ I may come back around later on to work on the last Red Level goal, but I'm feel
 - HTML5
 - CSS
 
-## Requirements Completed
+## Completed Requirements
 🔵  Blue Level
 - You should fetch data from the API using `fetch()` in JavaScript
 - All data in the sketch above should be present and fetched from the API
