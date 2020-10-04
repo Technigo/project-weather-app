@@ -24,7 +24,7 @@ I may come back around later on to work on the last Red Level goal, but I'm feel
 - CSS
 
 ## Requirements Completed
-🔵  Blue Level (Minimum)
+🔵  Blue Level
 - You should fetch data from the API using `fetch()` in JavaScript
 - All data in the sketch above should be present and fetched from the API
 - The presentation of the data should be in the specified format.
