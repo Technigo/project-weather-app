@@ -57,7 +57,6 @@ fetch(apiCurrentWeather).then((response) => {
 const night = () => {
     const currentTime = new Date().getHours();
     if (currentTime >= 22 || currentTime <= 04) {
-        console.log(currentTime)
         document.getElementById('nightIcon').src = './icons/iconfinder_03_moon_sleepy_night_emoticon_weather_smiley_3375686.svg';
         weatherText.innerHTML +="<h2>Hello there Night Owl! Can't sleep? Cathing stars? Dancing?</h2>";
         var element = document.getElementById("weatherIconParent");
