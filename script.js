@@ -17,7 +17,7 @@ document.getElementById("sunset").style.color = "red";
 
 //CALCULATING/CONVERTING FUNCTIONS 2 BE INVOKED LATER AND/OR ANYWHERE IN CODE
 const calculatingSun = (time) => {
-  let sunTime = new Date(time);
+  let sunTime = new Date(time * 1000);
 
   return sunTime.toLocaleTimeString("sv-SE", {
     hour: "2-digit",
