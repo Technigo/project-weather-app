@@ -21,17 +21,17 @@ fetch(API_TODAY)
         const sunrise = document.getElementById('sunrise');
         const sunriseValue = json.sys.sunrise;
         const sRise = new Date(sunriseValue * 1000); // multiple with 1000 since the data is given in seconds and JS uses milliseconds
-        const sunriseHour = sRise.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit', hour12: false});
+        const sunriseHour = sRise.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit', hour12: false, timeZone: 'America/Los_Angeles'});
             
-        sunrise.innerHTML = `<img src="./Images/sunrise.png" style="float: left;"> Sunrise: ${sunriseHour}`;
+        sunrise.innerHTML = `<img class ="sunriseImg" src="./Images/sunrise.png" alt="Picture indicating a sunrise";> Sunrise: ${sunriseHour}`;
 
         // sunset
         const sunset = document.getElementById('sunset');
         const sunsetValue = json.sys.sunset
         const sSet = new Date(sunsetValue * 1000);
-        const sunsetHour = sSet.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit', hour12: false,});
+        const sunsetHour = sSet.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit', hour12: false, timeZone: 'America/Los_Angeles'});
 
-        sunset.innerHTML = `<img src="./Images/sunset.png" style="float: right;">Sunset: ${sunsetHour}`;    
+        sunset.innerHTML = `<img class ="sunsetImg" src="./Images/sunset.png" alt="Picture indicating a sunset";>Sunset: ${sunsetHour}`;    
     });
 
     //fetch 5 day forecast

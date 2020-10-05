@@ -29,8 +29,16 @@ img {
     margin: 0px;
 }
 
+.sunriseImg {
+   float: left
+}
+
 #sunrise {
     text-align: left;
+}
+
+.sunsetImg {
+    float: right;
 }
 
 #sunset {
@@ -44,8 +52,8 @@ img {
 .forecast {
     background-color: rgba(255, 255, 255, 0.541);
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     height: 300px;
     width: auto;
     margin: 80px 15px 80px 15px;
