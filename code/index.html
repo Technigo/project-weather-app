@@ -4,69 +4,74 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
-    <link rel="icon" href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/237/sun-behind-cloud_26c5.png">
+    <link
+      rel="icon"
+      href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/237/sun-behind-cloud_26c5.png"
+    />
     <title>Minimal Weather App</title>
   </head>
   <body>
-    <div class ='buttons'>
-        <button id="porto"> Porto</button>
-        <button id="london"> London</button>
-        <button id="stockholm"> Stockholm</button>
+    <div class="buttons">
+      <button id="porto">Porto</button>
+      <button id="london">London</button>
+      <button id="stockholm">Stockholm</button>
     </div>
+
     <section class="desktop-container">
-    <section class="current-weather">
-      <h1 id="city"></h1>
-      <h2 id="temperature"></h2>
-      <img id="weatherIcon" src="">
-      <p id="weather-description"></p>
+      <section class="current-weather">
+        <h1 id="city"></h1>
+        <h2 id="temperature"></h2>
+        <img id="weatherIcon" class="current-weather-icon" src="" />
+        <p id="weather-description" class="current-weather-description"></p>
 
-      <div class="real-feel">
-        <img src="./assets/temp.svg" alt="thermometer"/>
-        <p id="real-feel"></p>
-       <div>
+        <div class="real-feel">
+          <img class="small-icon" src="./assets/temp.svg" alt="thermometer" />
+          <p id="real-feel"></p>
+        </div>
 
-        <div class ="wind">
-        <img src="./assets/wind.svg" alt="wind sign"/>
-        <p id="wind"></p>
-      </div>
 
-        <div class ="uv">
-          <img src="./assets/uv.svg" alt="uv_symbol"/>
+        <div class="wind-uv">
+          <img class="small-icon" src="./assets/wind.svg" alt="wind sign" />
+          <p id="wind"></p>
+          <img class="small-icon" src="./assets/uv.svg" alt="uv_symbol" />
           <p id="uv"></p>
         </div>
-      </div>
 
-      <section class="sunrise-sunset">
-        <img src="./assets/sunrise.svg" alt="sunrise symbol"/>
-        <p id="sunrise"> </p>
-        <img src="./assets/sunset.svg" alt="sunset symbol"/>
-        <p id="sunset"></p>
+        <section class="sunrise-sunset">
+          <img class="small-icon" src="./assets/sunrise.svg" alt="sunrise symbol" />
+          <p id="sunrise"></p>
+          <img class="small-icon" src="./assets/sunset.svg" alt="sunset symbol" />
+          <p id="sunset"></p>
+        </section>
+      </section>
+
+      <hr />
+
+      <section class="five-day-forecast">
+        <h1>Next Days</h1>
+        <div id="forecast" class="next-days-forecast"></div>
       </section>
     </section>
-    <hr />
-    <section class="five-day-forecast">
-      <h1>Next Days</h1>
-      <div id="forecast"></div>
-    </section>
-</section>
-<footer>
-    <p>© 2020 Sofia Vaz Sousa 🦊</p>
-    <p>
-      <a href="https://www.linkedin.com/in/sofiavazsousa/">Linkedin</a>
-      |
-      <a href="https://github.com/sofiavazs" target="_blank">GitHub</a>
-    </p>
-    <img src="./assets/logo.svg" alt="technigo logo" />
-    <p>Project developed during the Technigo frontend development bootcamp</p>
-    <p>
-      Weather icons by
-      <a href="https://www.flaticon.com/">Flaticon</a>
-    </p>
-    <p>
-    Animated icons by
-    <a href="https://github.com/basmilius/weather-icons">Basmilius</a>
+
+    <footer>
+      <p>© 2020 Sofia Vaz Sousa 🦊</p>
+      <p>
+        <a href="https://www.linkedin.com/in/sofiavazsousa/">Linkedin</a>
+        |
+        <a href="https://github.com/sofiavazs" target="_blank">GitHub</a>
       </p>
-  </footer>
+      <img src="./assets/logo.svg" alt="technigo logo" />
+      <p>Project developed during the Technigo frontend development bootcamp</p>
+      <p>
+        Weather icons by
+        <a href="https://www.flaticon.com/">Flaticon</a>
+      </p>
+      <p>
+        Animated icons by
+        <a href="https://github.com/basmilius/weather-icons">Basmilius</a>
+      </p>
+    </footer>
+
     <script src="./script.js"></script>
   </body>
 </html>

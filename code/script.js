@@ -25,7 +25,7 @@ const backgroundChange = (weatherInfo) => {
     if (weatherInfo.main.temp.toFixed(1) >= 18 || weatherInfo.main.feels_like.toFixed(1) >= 18) {
         body.classList.add('warm')
     } else { 
-        body.classList.remove('warm')
+        body.classList.remove('warm') 
     }
 }
 
@@ -53,20 +53,20 @@ const updateCityWeather = (weatherInfo) => {
 };
 
 const weatherIconChange = (weather) => {
-    if (weather == "Rain") {
+    if (weather === "Rain") {
         document.getElementById('weatherIcon').src = './assets/rain.svg';
-    } else if (weather == "Clouds"){
+    } else if (weather === "Clouds"){
         document.getElementById('weatherIcon').src = './assets/partly-cloudy-day.svg';
-    } else if (weather == "Clear" || weather == "Sunny") {
-        document.getElementById('weatherIcon').src= './assets/sun.svg';
-    } else if (weather == "Mist" || weather == "Fog") {
-        document.getElementById('weatherIcon').src= './assets/mist.svg';
-    } else if (weather == "Snow"){
-        document.getElementById('weatherIcon').src= './assets/snow.svg';
-    } else if (weather == "Hail"){
-        document.getElementById('weatherIcon').src= './assets/hail.svg';
-    } else if (weather == "Thunder"){
-        document.getElementById('weatherIcon').src= './assets/thunderstorms.svg';
+    } else if (weather === "Clear" || weather === "Sunny") {
+        document.getElementById('weatherIcon').src = './assets/sun.svg';
+    } else if (weather === "Mist" || weather === "Fog") {
+        document.getElementById('weatherIcon').src = './assets/mist.svg';
+    } else if (weather === "Snow"){
+        document.getElementById('weatherIcon').src = './assets/snow.svg';
+    } else if (weather === "Hail"){
+        document.getElementById('weatherIcon').src = './assets/hail.svg';
+    } else if (weather === "Thunder"){
+        document.getElementById('weatherIcon').src = './assets/thunderstorms.svg';
   }
 }
   
@@ -87,9 +87,9 @@ const updateWind = (weatherInfo) => {
 // SUNRISE & SUNSET Function
 const sunriseSunset = (weatherInfo) => {
     const sunriseTime = new Date(weatherInfo.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    sunrise.innerHTML = `Sunrise: ${sunriseTime}`;
+    sunrise.innerText = `Sunrise: ${sunriseTime}`;
     const sunsetTime = new Date(weatherInfo.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    sunset.innerHTML = `Sunset: ${sunsetTime}`;
+    sunset.innerText = `Sunset: ${sunsetTime}`;
 };
 
 // UV index Function 
@@ -157,8 +157,8 @@ const loadFiveDaysWeatherForecast = (city) => {
     const apiForecastWeatherUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=09124a2f59a3124951523d476ed8a36d`;
     
     fetch(apiForecastWeatherUrl)
-    .then((response) => { return response.json(); })
-    .then((data) => { updateMinMaxTemps(data); });
+        .then((response) => { return response.json(); })
+        .then((data) => { updateMinMaxTemps(data); });
 }
 
 
@@ -206,3 +206,4 @@ document.getElementById('stockholm').addEventListener('click', () => {
     initializePage(city, latitude, longitude);
 });
 initializePage(city, latitude, longitude);
+

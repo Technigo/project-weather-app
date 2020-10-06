@@ -31,8 +31,7 @@ body.nightime {
 
 p {
   color: rgb(243, 243, 243);
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: Georgia, "Times New Roman", sans-serif;
   font-size: 14px;
 }
 
@@ -46,7 +45,7 @@ p {
 
 button {
   padding: 7px 28px;
-  font-family: "didot";
+  font-family: "didot", Verdana;
   color: rgb(255, 255, 255);
   background: rgba(255, 255, 255, 0.356);
   border: none;
@@ -63,7 +62,7 @@ button:hover {
 /* CITY */
 h1 {
   color: aliceblue;
-  font-family: "didot";
+  font-family: "didot", Verdana;
   font-size: 25px;
   margin: 0;
 }
@@ -72,7 +71,7 @@ h1 {
 
 h2 {
   color: #ffff;
-  font-family: "didot";
+  font-family: "didot", Verdana;
   font-size: 55px;
   margin: 0;
   padding: 10px;
@@ -80,9 +79,9 @@ h2 {
 
 /* CURRENT WEATHER SECTION */
 
-#weatherIcon {
-  width: 75px;
-  height: 80px;
+.current-weather-icon {
+  width: 60px;
+  height: 60px;
 }
 
 .current-weather {
@@ -93,26 +92,24 @@ h2 {
   align-items: center;
 }
 
-#weather-description {
-  font-family: Georgia, "Times New Roman", Times, serif;
+.current-weather-description {
+  font-family: Georgia, "Times New Roman", sans-serif;
   text-transform: capitalize;
   margin-top: 0;
 }
 
-#real-feel {
-  font-family: "didot";
+.real-feel {
   font-style: italic;
   margin-top: 0;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
-.wind,
-.uv {
+.wind-uv {
   display: inline-flex;
   flex-wrap: wrap;
 }
 
-.current-weather img {
+.small-icon {
   width: 25px;
   height: 25px;
   padding: 10px;
@@ -144,18 +141,18 @@ hr {
   text-align: center;
 }
 
-#forecast {
+.next-days-forecast {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  font-family: "didot";
+  font-family: "didot", Verdana;
   font-size: 25px;
   padding: 20px;
   font-size: 15px;
   color: #ffff;
 }
 
-#forecast img {
+.next-days-forecast img {
   width: 50px;
   height: 50px;
 }
@@ -195,7 +192,7 @@ hr {
     justify-content: center;
   }
 
-  #forecast {
+  .next-days-forecast {
     font-size: 25px;
   }
 }
@@ -219,7 +216,7 @@ hr {
     width: 50%;
   }
 
-  #forecast img {
+  .next-days-forecast img {
     width: 60px;
     height: 60px;
   }
