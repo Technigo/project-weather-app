@@ -1,13 +1,10 @@
 # Weather App
-
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Fetch data with APIs to do an weather app.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Using the fetch method to get data from API´s. I understood the basics but where never able to go progress but i´m proud over myself that i got a project to send in this week, with a lot of support from teachers and classmates I held my nose about surface. I struggled with the logic over the connections from on place to another and have to use last weeks knowledge, that was not super clear to my, and apply that with so much more info was hard. But the outcome is a weather app. 
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://weatherrainbow.netlify.app
