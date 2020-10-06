@@ -5,13 +5,8 @@ const degree = document.getElementById("degree");
 const city = document.getElementById("city");
 const weather = document.getElementById("weather");
 const feels = document.getElementById("feels");
-
 const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
-
-
-
-
 
 const formatTime = (timestamp) => {
     let readableTime = new Date(timestamp * 1000);
@@ -28,7 +23,6 @@ fetch(currentUrl)
     .then((response) => {
         return response.json()
     })
-
     .then((json) => {
         console.log(json)
         
@@ -44,8 +38,6 @@ fetch(currentUrl)
         sunset.innerHTML = `Sunset  <img class="image" src="sunset.png" alt="sunset"./> ${formatTime(json.sys.sunset)}`;
     })
 
-
-
 //5-days forcast //
 
 const forecastContent = document.getElementById('main-forecast-data');
@@ -53,7 +45,6 @@ fetch(fiveDayUrl)
     .then((response) => {
         return response.json()
     })
-
     .then ((json) => {
         console.log(json)
         //Filters out forecast at 12:00 for coming 5 days
@@ -69,9 +60,8 @@ fetch(fiveDayUrl)
             const weekdayInUnix = day.dt;  // Date in UNIX
             const weekdayLongFormat = new Date(weekdayInUnix * 1000);  // Convert to nice date format we can use
             const specificWeekday = weekdayLongFormat.toLocaleDateString('en-US', {weekday: 'long'}); 
-          
+          getElementBy
          
-          
             //Weather description
             const descriptionFromAPI = day.weather[0].description; 
           
