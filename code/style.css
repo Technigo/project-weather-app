@@ -16,7 +16,7 @@ html, body {
 body {
     margin: 0;
     font-family: 'Kumbh Sans', sans-serif;
-    background-image: url(./assets/background-img.png);
+    background-image: url("./assets/background-img.png");
     background-position: center;
 }
 

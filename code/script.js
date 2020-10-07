@@ -13,7 +13,6 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=Stockholm&units=metric&
   .then((response) => {
     return response.json();
   })
-
   .then((json) => {
     const mainIconID = json.weather[0].icon;
     mainIcon.src = `./assets/${mainIconID}.png`;
