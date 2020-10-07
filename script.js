@@ -11,14 +11,15 @@ const HTML = document.querySelector("html");
 
 //---------------------------------Fetch API current weather---------------------
 fetch(API_URL_CURRENT_WEATHER)
-    .then((response) => {
+    .then(response => {
         return response.json();
     })
-    .then((current) => {
+    .then(current => {
         const currentWeatherObject = generateCurrentWeatherInfo(current); //getting the data I want from the API to JS class and storing it
         currentWeatherInfo.innerHTML += generateHTMLForCurrentWeatherInfo(currentWeatherObject); //getting the data from the JS class to HTML for current day
         getWeatherColorIconTitle(currentWeatherObject.weatherDescription, current); //getting the colors of the page, the icon and the main title - these are weatherdependent
         cityHeader.innerHTML = current.name;    //displaying city in the title
+        console.log(currentWeatherObject);
     });
 
 //---------------------Create weather info from response--------------------------
@@ -33,7 +34,6 @@ class WeatherTemplate {     //JavaScript class to collect data from both API's
         this.sunsetTime = sunsetTime;
     };
 };
-
 //-----------Function to generate HTML for current weather info on top of page----------
 const generateCurrentWeatherInfo = current => {
     const currentWeatherObject = new WeatherTemplate(   //creating a new object with info from current day
@@ -88,7 +88,7 @@ const generateHTMLForCurrentWeatherInfo = currentWeatherObject => {
 };
 //-------------------------------Fetch API forecast weather-------------------------------
 fetch(API_URL_FORECAST_WEATHER)
-    .then((response) => {
+    .then(response => {
         return response.json();
     })
     .then(forecastResponse => {
@@ -98,7 +98,7 @@ fetch(API_URL_FORECAST_WEATHER)
 
 //-----------------------Function to generate wanted date from the API-----------------------
 const getDateDay = data => {
-    const dateDay = new Date(data * 1000)   //Timestamp to milliseconds
+    const dateDay = new Date(data * 1000)   //Timegstamp to milliseconds
     return dateDay.toLocaleDateString('en-GB', {    //Setting how to show day
         weekday: 'short'
     });
@@ -132,7 +132,7 @@ const generateHTMLForForecastWeatherInfo = forecasts => {
 }
 
 //-----------------------------Function to get forecast info icon---------------
-const getWeatherIcons = (weather) => {
+const getWeatherIcons = weather => {
         if (weather === "Rain" || weather === "Drizzle") {  //if the description on the weathertemplate is rain or drizzle...
             return "./icons/rain.svg"                       //...the function returns the source of the rain weather icon
         } else if (weather === "Clear") {                   // or else if the description on the weathertemplate is clear....
