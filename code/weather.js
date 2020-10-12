@@ -111,6 +111,5 @@ const forecastFunction = (cityName) => {
         // Day 5
         const forecastPicID5 = filteredForecast[4].weather[0].icon; 
         forecastPic5.src = `./assets/${forecastPicID5}.png`; 
-
         });
     };
