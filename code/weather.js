@@ -11,10 +11,10 @@ const sunset = document.getElementById('sunset');
 const API_KEY = '22db637cf647bcd1513c052513b7d54c' // API-KEY
 
 const start = () => { // Function for loading data for Gothenburg as default when the page loads first time
-    let cityName = 'Gothenburg'; // The variable for city name. Let since it can be changed further on.
+    let cityName = 'Gothenburg'; // Creating the variable for cityName. Let since it can be changed further on.
     forecastFunction(cityName);
     todaysWeatherfunction(cityName);
-}
+} 
 
 // Function connected to the select class '.city-input' in HTML - starts fetching other weather when new city is choosen
 const fetchWeather = (cityName) => {
@@ -66,6 +66,7 @@ const todaysWeatherfunction = (cityName) => {
             }
         };
         coloringFunction(); // Invoking the function
+    
     });
 };
 
@@ -87,7 +88,7 @@ const forecastFunction = (cityName) => {
             return { day, description, temperature };
         });
 
-        const weeks = document.getElementsByClassName('anotherday');
+           const weeks = document.getElementsByClassName('anotherday');
            
         newWeek.forEach((item, index) => {        
             weeks[index].querySelector('.day').innerText = item.day;
@@ -111,5 +112,6 @@ const forecastFunction = (cityName) => {
         // Day 5
         const forecastPicID5 = filteredForecast[4].weather[0].icon; 
         forecastPic5.src = `./assets/${forecastPicID5}.png`; 
+
         });
     };
