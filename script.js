@@ -2,7 +2,7 @@
 const getCurrentWeather = (lat, lon) => {
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&APPID=852f52634242cb87b1f198b7ea5e2706`)
         .then((response) => {
-            return response.json()
+            return response.json();
         })
         .then((json) => {
             populateMainWeather(json);
@@ -30,7 +30,7 @@ const populateMainWeather = (json) => {
 const getFiveDayForecast = (lat, lon) => {
     fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&APPID=852f52634242cb87b1f198b7ea5e2706`)
         .then((response) => {
-            return response.json()
+            return response.json();
         })
         .then((json) => {
             //Only pick objects for 12:00
@@ -63,7 +63,7 @@ const populateForecastGrid = (element, index) => {
 const getUVIndex = (lat, lon) => {
     fetch(`https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&APPID=852f52634242cb87b1f198b7ea5e2706`)
         .then((response) => {
-            return response.json()
+            return response.json();
         })
         .then((json) => {
             let uvIndexValue = json.value;
@@ -81,13 +81,13 @@ const setCityName = (name) => {
 
 const setTodayTemperature = (temp) => {
     const tempRounded = Math.round(temp * 10) / 10;
-    const temperatureString = (`${tempRounded} °`)
+    const temperatureString = (`${tempRounded} °`);
     document.getElementById("currentTemperature").innerHTML = temperatureString;
 }
 
 const setFeelsLikeTemp = (feelTemp) => {
     const tempRounded = Math.round(feelTemp * 10) / 10;
-    const temperatureString = (`${tempRounded} °`)
+    const temperatureString = (`${tempRounded} °`);
     document.getElementById("weatherCellFeelsLikeTemp").innerHTML = (`<p>FEELS LIKE</p> <p>${temperatureString}</p>`);
 }
 
@@ -173,18 +173,18 @@ const getDayOfWeek = (timestamp) => {
 }
 
 const getDayOrNight = (timestamp, timezone) => {
-    let isday = false;
+    let isDay = false;
     const timeForUpdate = getTimeConvertedToLocal(timestamp, timezone);
     let hour = parseInt(timeForUpdate.substring(0, 2));
     if (hour >= 6 && hour < 19) {
-        isday = true;
+        isDay = true;
     }
-    return isday;
+    return isDay;
 }
 
 const getRoundedTemperatureString = (temp) => {
     const tempRounded = Math.round(temp * 10) / 10;
-    const temperatureString = (`${tempRounded} °C`)
+    const temperatureString = (`${tempRounded} °C`);
     return temperatureString;
 }
 
@@ -215,11 +215,11 @@ const getTimeConvertedToLocal = (timestamp, timezone) => {
 }
 
 const getWeatherIcon = (weatherID, time = 0, timezone = 0, caller) => {
-    let isday = false;
+    let isDay = false;
     //For mainweather, in the top of the app. Take time of day into consideration when picking icon.
     // If caller is populateForecastGrid, don't take time of day into consideration for picking icon.  
     if (caller === "mainWeather") {
-        isday = getDayOrNight(time, timezone);
+        isDay = getDayOrNight(time, timezone);
     }
     //Determine which weather icon to return, depending of weather-id in json-object. 
     let weatherSrc = "";
@@ -239,12 +239,12 @@ const getWeatherIcon = (weatherID, time = 0, timezone = 0, caller) => {
         //Foggy
         weatherSrc = 'foggy.png';
     } else if (weatherID === 800) {
-        if (!isday && caller === "mainWeather") {
-            weatherSrc = 'clear-night.png'
+        if (!isDay && caller === "mainWeather") {
+            weatherSrc = 'clear-night.png';
         } else weatherSrc = 'sunny.png';
     } else if (weatherID === 801) {
-        if (!isday && caller === "mainWeather") {
-            weatherSrc = 'cloudy-night.png'
+        if (!isDay && caller === "mainWeather") {
+            weatherSrc = 'cloudy-night.png';
         } else weatherSrc = 'suncloud.png';
     } else if (weatherID > 801) {
         weatherSrc = 'cloudy.png';
@@ -294,26 +294,26 @@ const getUserLocation = (inLat, inLon) => {
 const getPresetCityLongitude = (cityAbbreviation) => {
     const lon =
         cityAbbreviation === "SY" ? 151.209900 :
-        cityAbbreviation === "SEA" ? -122.335167 :
-        cityAbbreviation === "STH" ? 18.065 :
-        cityAbbreviation === "SHA" ? 121.469170 :
-        cityAbbreviation === "SP" ? -46.636 :
-        cityAbbreviation === "SAP" ? 141.350006 :
-        cityAbbreviation === "SEO" ? 126.978 :
-        0;
+            cityAbbreviation === "SEA" ? -122.335167 :
+                cityAbbreviation === "STH" ? 18.065 :
+                    cityAbbreviation === "SHA" ? 121.469170 :
+                        cityAbbreviation === "SP" ? -46.636 :
+                            cityAbbreviation === "SAP" ? 141.350006 :
+                                cityAbbreviation === "SEO" ? 126.978 :
+                                    0;
     return lon;
 }
 
 const getPresetCityLatitude = (cityAbbreviation) => {
     const lat =
         cityAbbreviation === "SY" ? -33.865143 :
-        cityAbbreviation === "SEA" ? 47.608013 :
-        cityAbbreviation === "STH" ? 59.333 :
-        cityAbbreviation === "SHA" ? 31.224361 :
-        cityAbbreviation === "SP" ? -23.547 :
-        cityAbbreviation === "SAP" ? 43.066666 :
-        cityAbbreviation === "SEO" ? 37.568 :
-        0;
+            cityAbbreviation === "SEA" ? 47.608013 :
+                cityAbbreviation === "STH" ? 59.333 :
+                    cityAbbreviation === "SHA" ? 31.224361 :
+                        cityAbbreviation === "SP" ? -23.547 :
+                            cityAbbreviation === "SAP" ? 43.066666 :
+                                cityAbbreviation === "SEO" ? 37.568 :
+                                    0;
     return lat;
 }
 

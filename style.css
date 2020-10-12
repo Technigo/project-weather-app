@@ -131,6 +131,7 @@ html,
     background-color: #fff;
     font-family: 'Karla', sans-serif;
     padding: 5px;
+    cursor: pointer;
 }
 
 .location-icon {
@@ -199,25 +200,25 @@ html,
     display: grid;
     grid-template-columns: repeat(2, 2.5fr) 1.89fr;
     grid-template-rows: 56vh repeat(5, minmax(6vh, auto)) minmax(12vh, auto) repeat(3, minmax(13.3vh, auto));
-    grid-template-areas: "mainweather mainweather mainweather"
-        "weatherday1 iconday1 tempday1"
-        "weatherday2 iconday2 tempday2"
-        "weatherday3 iconday3 tempday3"
-        "weatherday4 iconday4 tempday4"
-        "weatherday5 iconday5 tempday5"
-        "weatherday6 iconday6 tempday6"
-        "mainweatherCell mainweatherCell mainweatherCell"
-        "mainweatherCell mainweatherCell mainweatherCell"
-        "mainweatherCell mainweatherCell mainweatherCell"
+    grid-template-areas: "main-weather main-weather main-weather"
+        "weather-day-1 icon-day-1 temp-day-1"
+        "weather-day-2 icon-day-2 temp-day-2"
+        "weather-day-3 icon-day-3 temp-day-3"
+        "weather-day-4 icon-day-4 temp-day-4"
+        "weather-day-5 icon-day-5 temp-day-5"
+        "weather-day-6 icon-day-6 temp-day-6"
+        "main-weather-cell main-weather-cell main-weather-cell"
+        "main-weather-cell main-weather-cell main-weather-cell"
+        "main-weather-cell main-weather-cell main-weather-cell"
         ". . .";
 }
 
-.mainweatherCell1 {
-    grid-area: mainWeatherCell1;
+.main-weather-cell1 {
+    grid-area: main-weather-cell1;
 }
 
-.mainweather {
-    grid-area: mainweather;
+.main-weather {
+    grid-area:main-weather;
     padding: 0 10px;
     margin: 0;
     position: sticky;
@@ -226,114 +227,114 @@ html,
     flex-direction: column;
 }
 
-.weatherday1 {
-    grid-area: weatherday1;
+.weather-day-1 {
+    grid-area: weather-day-1;
     background-color: transparent;
     align-items: stretch;
 }
 
-.weatherday2 {
-    grid-area: weatherday2;
+.weather-day-2 {
+    grid-area: weather-day-2;
     background-color: transparent;
     align-items: stretch;
 }
 
-.weatherday3 {
-    grid-area: weatherday3;
+.weather-day-3 {
+    grid-area: weather-day-3;
     background-color: transparent;
     align-items: stretch;
 }
 
-.weatherday4 {
-    grid-area: weatherday4;
+.weather-day-4 {
+    grid-area: weather-day-4;
     background-color: transparent;
     align-items: stretch;
 }
 
-.weatherday5 {
-    grid-area: weatherday5;
+.weather-day-5 {
+    grid-area: weather-day-5;
     background-color: transparent;
     align-items: stretch;
 }
 
-.weatherday6 {
-    grid-area: weatherday6;
+.weather-day-6 {
+    grid-area: weather-day-6;
     background-color: transparent;
     align-items: stretch;
 }
 
-.iconday1 {
-    grid-area: iconday1;
+.icon-day-1 {
+    grid-area: icon-day-1;
     background-color: transparent;
     align-items: stretch;
 }
 
-.iconday2 {
-    grid-area: iconday2;
+.icon-day-2 {
+    grid-area: icon-day-2;
     background-color: transparent;
     align-items: stretch;
 }
 
-.iconday3 {
-    grid-area: iconday3;
+.icon-day-3 {
+    grid-area: icon-day-3;
     background-color: transparent;
     align-items: stretch;
 }
 
-.iconday4 {
-    grid-area: iconday4;
+.icon-day-4 {
+    grid-area: icon-day-4;
     background-color: transparent;
     align-items: stretch;
 }
 
-.iconday5 {
-    grid-area: iconday5;
+.icon-day-5 {
+    grid-area: icon-day-5;
     background-color: transparent;
     align-items: stretch;
 }
 
-.iconday6 {
-    grid-area: iconday6;
+.icon-day-6 {
+    grid-area: icon-day-6;
     background-color: transparent;
     align-items: stretch;
 }
 
-.tempday1 {
-    grid-area: tempday1;
+.temp-day-1 {
+    grid-area: temp-day-1;
     background-color: transparent;
     align-items: stretch;
 }
 
-.tempday2 {
-    grid-area: tempday2;
+.temp-day-2 {
+    grid-area: temp-day-2;
     background-color: transparent;
     align-items: stretch;
 }
 
-.tempday3 {
-    grid-area: tempday3;
+.temp-day-3 {
+    grid-area: temp-day-3;
     background-color: transparent;
     align-items: stretch;
 }
 
-.tempday4 {
-    grid-area: tempday4;
+.temp-day-4 {
+    grid-area: temp-day-4;
     background-color: transparent;
     align-items: stretch;
 }
 
-.tempday5 {
-    grid-area: tempday5;
+.temp-day-5 {
+    grid-area: temp-day-5;
     background-color: transparent;
     align-items: stretch;
 }
 
-.tempday6 {
-    grid-area: tempday6;
+.temp-day-6 {
+    grid-area: temp-day-6;
     background-color: transparent;
     align-items: stretch;
 }
-
+/*
 .feelslikeday1 {
     grid-area: feelslikeday1;
     background-color: transparent;
@@ -368,12 +369,12 @@ html,
     align-items: stretch;
     display: none;
 }
-
+*/
 .hidden {
     display: none;
 }
 
-.gridCell {
+.grid-cell {
     padding: 0 25px;
     color: #5e5b5b;
     font-size: 14px;
@@ -383,7 +384,7 @@ html,
     border-bottom: 1px solid #f6f1f1;
 }
 
-.mainWeatherCell {
+.main-weather-cell {
     padding: 0 15px;
     flex-direction: column;
     color: #5e5b5b;
@@ -394,12 +395,12 @@ html,
     border-bottom: 1px solid #f6f1f1;
 }
 
-.mainWeatherCell>p {
+.main-weather-cell>p {
     margin: 0;
     font-size: 13px;
 }
 
-.emptyCell {
+.empty-cell {
     padding: 0 8px;
     background-color: #fff;
     display: flex;
@@ -430,11 +431,11 @@ html,
         grid-template-rows: 56vh repeat(5, minmax(8vh, auto)) minmax(12vh, auto) repeat(3, minmax(13.3vh, auto));
     }
 
-    .gridCell {
+    .grid-cell {
         justify-content: center;
     }
 
-    .mainWeatherCell {
+    .main-weather-cell {
         align-items: center;
     }
 
@@ -447,11 +448,11 @@ html,
         font-size: 2em;
     }
 
-    .mainweather {
+    .main-weather {
         padding: 0 30px;
     }
 
-    .mainWeatherCell>p {
+    .main-weather-cell>p {
         margin: 0;
         font-size: 14px;
     }
