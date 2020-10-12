@@ -30,29 +30,26 @@ p {
 
 /* Styling of the input element and buttons */
 .input-data { /* Div around them */
-  margin: 15px 0px 0px 0px;
+  margin-top: 15px;
   display: flex;
-  flex-direction: row;
 }
 
 .place-pic {
   width: 22px;
   height: 22px;
-  margin-right: 5px; 
-  margin-top: 5px;
+  margin: 5px 5px 0 0;
 }
 
 .city-input { /* Small styling for the select field */
   padding: 7px;
-  border: 1px solid#42ade3;
+  border: 1px solid #42ade3;
   font-family: 'Montserrat', sans-serif;
   width: 125px;
 }
 
 /*** Styling of the 'box' with the weather forecast ***/
 .weather-wrapper {
-  margin-top: 15px;
-  margin-bottom: 20px;
+  margin: 15px 0 20px 0;
   padding: 15px;
   width: 95vw;
 }
@@ -70,7 +67,6 @@ p {
 
 .today, .descriptions-today, .anotherday {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
 }
 
@@ -80,8 +76,7 @@ p {
 
 .wind, .sunrise, .sunset {
   display: flex;
-  flex-direction: row;
-  justify-content: left;
+  justify-content: flex-start;
 }
 
 .wind-pic, .sunrise-pic, .sunset-pic {
@@ -99,7 +94,7 @@ p {
 .weather-pic {
   height: 135px;
   width: 135px;
-  margin: 10px 0px 25px;
+  margin: 10px 0 25px;
 }
 
 /* The part with the 5 days forward forecast */
@@ -116,7 +111,7 @@ p {
 .forecast-pic {
   width: 25px;
   height: 25px;
-  margin: 0px;
+  margin: 0;
 }
 
 .dashed { /* Sets dashed line under each day (except the last one) */
@@ -185,7 +180,6 @@ a:hover { /* When hovering the links */
   .weather-wrapper {
     width: 80vw;
     display: flex;
-    flex-direction: row;
     justify-content: space-evenly;
     height: auto;
     padding: 50px;
@@ -222,6 +216,6 @@ a:hover { /* When hovering the links */
   }
 
   .forecast-pic {
-    margin: 0px 16px;
+    margin: 0 16px;
   }
 }
