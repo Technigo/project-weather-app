@@ -1,5 +1,5 @@
 /// getting the API for todays weather
-apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=Longyearbyen,Norway&units=metric&APPID=8990d7a0fe5c73c6c0fe06bb994b1035"
+const apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=Longyearbyen,Norway&units=metric&APPID=8990d7a0fe5c73c6c0fe06bb994b1035"
 fetch(apiUrl).then((response) => {
     return response.json()
 })
@@ -9,7 +9,7 @@ fetch(apiUrl).then((response) => {
 
 
 /// getting the API for weather forecast
-apiUrlForecast = "https://api.openweathermap.org/data/2.5/forecast?q=Longyearbyen,Norway&units=metric&APPID=8990d7a0fe5c73c6c0fe06bb994b1035"
+const apiUrlForecast = "https://api.openweathermap.org/data/2.5/forecast?q=Longyearbyen,Norway&units=metric&APPID=8990d7a0fe5c73c6c0fe06bb994b1035"
 
 fetch(apiUrlForecast).then((response) => {
     return response.json()
@@ -20,7 +20,6 @@ fetch(apiUrlForecast).then((response) => {
         filteredForecast.forEach((forecast, idx) => {
             generatedHTMLForWeatherForecast(forecast, idx)
         })
-
     })
 
 /// calculating a rounded number for the temp
@@ -46,13 +45,12 @@ const readableDate = (date) => {
     const dateReadableDate = readableDate.toLocaleDateString('en-US', {
         weekday: 'short',
         day: "numeric",
-
     })
     return dateReadableDate
 }
 
 /// getting icon related to weather
-let weatherIcon = {
+const weatherIcon = {
     "Clear": "https://openweathermap.org/img/wn/01d@2x.png",
     "Clouds": "https://openweathermap.org/img/wn/03d@2x.png",
     "Drizzle": "https://openweathermap.org/img/wn/09d@2x.png",
@@ -90,7 +88,7 @@ const generatedHTMLForWeatherToday = (weatherMain) => {
     document.getElementById('weatherMain').innerHTML = weatherMain.weather[0].main
     document.getElementById('backgroundColor').style.background = weatherColor[weather]
     document.getElementById('weatherImage').src = weatherIcon[weather]
-    document.getElementById('weatherTemp').innerHTML = roundtemp(weatherMain.main.temp)
+    document.getElementById('weatherTemp').innerHTML = `${roundtemp(weatherMain.main.temp)}&deg;`
     document.getElementById('weatherTempFeel').innerHTML = roundtemp(weatherMain.main.feels_like)
     document.getElementById('weatherDescription').innerHTML = weatherMain.weather[0].description
     document.getElementById('sunrise').innerHTML = readableTime(weatherMain.sys.sunrise)

@@ -23,29 +23,32 @@ body{
 }
 
 
-.container-todaysWeather-background{
-box-sizing: border-box;
+.container-todays-weather-background{
 background-color: rgba(255, 255, 255, 0.12);
 padding: 20px;
 height: 75vh;
-margin: 20px 0px;
+margin: 20px 0;
 border-radius: 5%;
 }
 
 .city-title{
   font-size: 2.5em;
   text-align: center;
-  margin: 15px 0px;
+  margin: 15px 0;
   color: #121111;
 }
 
 .temp-main-info{
   box-sizing: border-box;
   display: flex;
-  justify-content: space-evenly;
-  margin-top: 10px;
   margin-bottom: 20px;
   color: #121111;
+}
+
+.weather-temp,
+.weather-main{
+  display: inline;
+  margin: 10px;
 }
 
 .main-p-temp{
@@ -68,7 +71,6 @@ border-radius: 5%;
   display: flex;
   flex-direction: column;
   text-align: center;
-
 }
 
 .main-p{
@@ -88,7 +90,7 @@ border-radius: 5%;
   box-sizing: border-box;
   align-content: center;
   background-color: rgba(255, 255, 255, 0.12);
-  margin: 0px 0px 30px;
+  margin: 0 0 30px;
   width: 320px;
   padding: 20px;
   font-size: 1.1em;
@@ -133,37 +135,37 @@ margin-bottom: 10px;
 /***** ANIMATION ****/ 
 @-webkit-keyframes AnimationName {
   0% {
-      background-position: 0% 9%
+      background-position: 0 9%
   }
   50% {
       background-position: 100% 92%
   }
   100% {
-      background-position: 0% 9%
+      background-position: 0 9%
   }
 }
 
 @-moz-keyframes AnimationName {
   0% {
-      background-position: 0% 9%
+      background-position: 0 9%
   }
   50% {
       background-position: 100% 92%
   }
   100% {
-      background-position: 0% 9%
+      background-position: 0 9%
   }
 }
 
 @keyframes AnimationName {
   0% {
-      background-position: 0% 9%
+      background-position: 0 9%
   }
   50% {
       background-position: 100% 92%
   }
   100% {
-      background-position: 0% 9%
+      background-position: 0 9%
   }
 }
 

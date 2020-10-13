@@ -13,18 +13,18 @@
 
 <body id="backgroundColor">
 
-    <section class="container-todaysWeather-background">
+    <section class="container-todays-weather-background">
+        <div>
         <h1 class="city-title">Longyearbyen</h1>
         <div class="temp-main-info">
             <h1>
-                <span id="weatherTemp">
-                </span>&deg;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="weatherMain">
-                </span>
+                <div class="weather-temp" id="weatherTemp"></div>
+                <div class="weather-main" id="weatherMain"></div>
             </h1>
         </div>
         <div class="weather-descriptions">
             <p class="main-p-temp">Feels like <span id="weatherTempFeel"></span>&deg;</p>
-            <img class="weather-image" id="weatherImage" />
+            <img class="weather-image" id="weatherImage" alt="icon of current weather"/>
             <h2 class="h2-weather-description"> Today will have <span id="weatherDescription"></span></h2>
         </div>
         <div class="sun">
@@ -35,10 +35,6 @@
 
     <section class="forecast">
         <div class="forecast-row">
-            <div class="forecast-column">
-                <div id="forecastDate0" class="forecast-date-column">
-                </div>
-            </div>
             <div class="forecast-column">
                 <div id="forecastDate0" class="forecast-date-column">
                 </div>
@@ -89,7 +85,6 @@
             </div>
         </div>
     </section>
-
 
     <script src="./weather.js"></script>
 </body>
