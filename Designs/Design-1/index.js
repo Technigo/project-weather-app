@@ -23,9 +23,7 @@ fetch(currentUrl)
     .then((response) => {
         return response.json()
     })
-    .then((json) => {
-        console.log(json)
-        
+    .then((json) => {        
         degree.innerHTML = Math.round(json.main.temp) + " °";
         city.innerHTML = json.name;
 
