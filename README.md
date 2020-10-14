@@ -9,6 +9,6 @@ I solved the problem by help from a team mate.
 
 The site change color depending on temperature. I aimed for black level, but that was not possible with this timeframe. If I had more time I would try to use the geolocation to reach black level. I would also have tried to display the forcast date using grid instead of flexbox. 
 
-## View it live
+## View it live 
 
-https://sleepy-yalow-76fedf.netlify.app/
+https://therese-linden-weather.netlify.app/
