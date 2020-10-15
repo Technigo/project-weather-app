@@ -30,11 +30,10 @@ const forecastContainer = document.getElementById('forecast')
 //NAME OF CITY, TEMPERATURE, SORT OF WEATHER, SUNRISE, SUNSET
 
 fetch(apiUrl)
-    .then((Response) => { 
-        return Response.json()
+    .then((response) => { 
+        return response.json()
     })
     .then ((json) => {
-        console.log(json)
         nameContainer.innerHTML = `<h1>${json.name}</h1>`;
         sortContainer.innerHTML = `<h2>${json.weather[0].description}</h2>`;
 
@@ -55,7 +54,7 @@ fetch(apiUrl)
         document.getElementById('todaysWeatherIcon').innerHTML = `<img src=https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png></img>` 
     })
     .catch((error) => {
-        console.log(error) 
+        console.error() 
 
 });
 
@@ -63,25 +62,23 @@ fetch(apiUrl)
 //WEATHER FORECAST 
 
 fetch(apiUrlForecast)
-    .then((Response) => { 
-        return Response.json()
+    .then((response) => { 
+        return response.json()
     })
     .then ((json) => {
-        console.log(json)
         const filteredForecast = json.list.filter(item =>
         item.dt_txt.includes('12:00')
         );
 
         filteredForecast.forEach(item  => {
-            let date = new Date(item.dt * 1000);
-            let dayName = date.toLocaleDateString('en-US', { weekday: 'long' });
-            const dayTemp = item.main.temp;
-            const weekTemp = dayTemp.toFixed(0.1);
+        let date = new Date(item.dt * 1000);
+        let dayName = date.toLocaleDateString('en-US', { weekday: 'long' });
+        const dayTemp = item.main.temp;
+        const weekTemp = dayTemp.toFixed(0.1);
 
-            document.getElementById('forecastDay').innerHTML += `<p>${dayName}</p>`
-            document.getElementById('forecastTemp').innerHTML += `<p>${weekTemp}°C</p>`
-            document.getElementById('forecastIcon').innerHTML += `<img src=http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png></img>`
-            
+        document.getElementById('forecastDay').innerHTML += `<p>${dayName}</p>`
+        document.getElementById('forecastTemp').innerHTML += `<p>${weekTemp}°C</p>`
+        document.getElementById('forecastIcon').innerHTML += `<img src=http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png></img>`            
     });  
 });
 
@@ -97,28 +94,26 @@ fetch(apiUrlForecast)
 //NAME OF CITY, TEMPERATURE
 
 fetch(apiUrlOslo)
-    .then((Response) => { 
-        return Response.json()
+    .then((response) => { 
+        return response.json()
     })
     .then ((json) => {
-        console.log(json)
         nameContainerOslo.innerHTML = `<p>${json.name}</p>`;
         const roundedTemperature = json.main.temp.toFixed(0.1);
         tempContainerOslo.innerHTML += `<p> ${roundedTemperature}°C</p>`;        
     })
     .catch((error) => {
-        console.log(error) 
+        console.error()  
 });
  
 
 //TODAYS WEATHER AND ICON
 
 fetch(apiUrlForecastOslo)
-    .then((Response) => { 
-        return Response.json()
+    .then((response) => { 
+        return response.json()
     })
     .then ((json) => {
-        console.log(json)
         const filteredForecastOslo = json.list.filter(item =>
         item.dt_txt.includes('12:00')
         );
@@ -136,30 +131,29 @@ fetch(apiUrlForecastOslo)
  const nameContainerAlicante = document.getElementById('nameAlicante');
  const tempContainerAlicante = document.getElementById('temperatureAlicante');
  const forecastContainerAlicante = document.getElementById('forecastAlicante');
- const AlicanteIcon = document.getElementById('todaysWeatherIconAlicante');
+ const alicanteIcon = document.getElementById('todaysWeatherIconAlicante');
  
 
 //NAME OF CITY, TEMPERATURE
 
 fetch(apiUrlAlicante)
-    .then((Response) => { 
-        return Response.json()
+    .then((response) => { 
+        return response.json()
     })
     .then ((json) => {
-        console.log(json)
         nameContainerAlicante.innerHTML = `<p>${json.name}</p>`;
         const roundedTemperature = json.main.temp.toFixed(0.1);
         tempContainerAlicante.innerHTML += `<p> ${roundedTemperature}°C</p>`;        
     })
     .catch((error) => {
-        console.log(error) 
+        console.error() 
 });
 
 //TODAYS WEATHER AND ICON
 
      fetch(apiUrlForecastAlicante)
-     .then((Response) => { 
-         return Response.json()
+     .then((response) => { 
+         return response.json()
      })
      .then ((json) => {
          const filteredForecastAlicante = json.list.filter(item =>
@@ -169,7 +163,7 @@ fetch(apiUrlAlicante)
              let date = new Date(day.dt * 1000);
              const dayTemp = day.main.temp;
              const weekTemp = dayTemp.toFixed(0.1);
-             AlicanteIcon.innerHTML = `<img src=https://openweathermap.org/img/wn/${json.list[1].weather[0].icon}@2x.png></img>` 
+             alicanteIcon.innerHTML = `<img src=https://openweathermap.org/img/wn/${json.list[1].weather[0].icon}@2x.png></img>` 
      });   
  });     
 
@@ -184,24 +178,23 @@ fetch(apiUrlAlicante)
 //NAME OF CITY, TEMPERATURE
 
 fetch(apiUrlBerlin)
-    .then((Response) => { 
-        return Response.json()
+    .then((response) => { 
+        return response.json()
     })
     .then ((json) => {
-        console.log(json)
         nameContainerBerlin.innerHTML = `<p>${json.name}</p>`;
         const roundedTemperature = json.main.temp.toFixed(0.1);
         tempContainerBerlin.innerHTML += `<p> ${roundedTemperature}°C</p>`;        
     })
     .catch((error) => {
-        console.log(error) 
+        console.error()  
 });
 
 //TODAYS WEATHER AND ICON
 
      fetch(apiUrlForecastBerlin)
-     .then((Response) => { 
-         return Response.json()
+     .then((response) => { 
+         return response.json()
      })
      .then ((json) => {
          const filteredForecastBerlin = json.list.filter(item =>

@@ -26,16 +26,16 @@ body {
 }
 
 
-#todaysWeatherIcon {
+.todaysWeatherIcon {
     display: flex;
     flex-direction: row-reverse;   
 }
 
-#todaysWeatherIcon img {
+.todaysWeatherIcon img {
     width: 150px;
 }
 
-.temperature{
+.temperature {
     font-size: 40px;
 }
 
@@ -71,22 +71,23 @@ body {
 }
 
 
-#forecastIcon {
+.forecastIcon {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-#forecastIcon img {
+.forecastIcon img {
     width: 35px;  
 }
 
 
 /*FAVOURITE CITY DESIGN*/
 
-#favouriteCityAll {
+.favouriteCityAll {
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
     margin-top: 30px; 
     margin-bottom: 30px;  
     border-top: #43658b 2px dotted; 
@@ -109,13 +110,13 @@ body {
     justify-content: space-between;
 }
 
-#todaysWeatherIconOslo, #todaysWeatherIconOAlicante , #todaysWeatherIconBerlin {
+.todaysWeatherIconOslo, .todaysWeatherIconOAlicante , .todaysWeatherIconBerlin {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-#todaysWeatherIconOslo img, #todaysWeatherIconAlicante img , #todaysWeatherIconBerlin img{
+.todaysWeatherIconOslo img, .todaysWeatherIconAlicante img , .todaysWeatherIconBerlin img{
     width: 35px;
 }
 
@@ -129,7 +130,7 @@ body {
         justify-content: space-evenly;
     }
 
-    #todaysWeatherIcon img {
+    .todaysWeatherIcon img {
         width: 250px;
     }
 
@@ -146,13 +147,13 @@ body {
 
 /***  Media Quaries Desktop ***/
   
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1025px) {
 
     .fiveDaysWeather{
         justify-content: space-evenly;
     }
 
-    #todaysWeatherIcon img {
+    .todaysWeatherIcon img {
         width: 250px;
     }
 
