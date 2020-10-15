@@ -1,5 +1,5 @@
 * {
-    font-family: "Roboto";
+    font-family: "Roboto", sans-serif;
     font-weight: 100;
     font-size: 16px;
     opacity:1;
@@ -43,7 +43,7 @@ button {
 }
 
 body {
-    margin: 0px;
+    margin: 0;
 }
 
 .current {
@@ -76,7 +76,7 @@ body {
 
 .current-city {
     font-size: 20px;
-    margin: 10px 0 10px 0;
+    margin: 10px 0;
 }
 
 .sun {
@@ -108,13 +108,13 @@ body {
     align-items: center;
 }
 
-.day-temp span{
+.data-text, .tablet {
     width: 65px;
     text-align: right;
 }
 
-.wind-dir{
-    width: 10px !important;
+.wind-dir {
+    width: 10px;
     display: none;
 }
 
