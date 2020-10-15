@@ -65,7 +65,7 @@ const fiveDayForecastApiInfo = () => {
         //For loop that loops through each of the array elements (objects), accesses specific information from the objects and prints to HTML. In HTML getElementById have used the for loop to access each of the HTML elements by adding 1 each time to what the loop returns, as they are named differently e.g. day1Day, day2Day etc.
         for (let i=0; i < filteredList.length; i++) {
             const day = new Date(filteredList[i].dt * 1000);
-            var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+            const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
             const finalDay = days[day.getDay()];
             document.getElementById(`day${i+1}Day`).innerHTML = `${finalDay}`;
 

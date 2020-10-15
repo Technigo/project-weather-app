@@ -10,7 +10,7 @@ body {
 h2 {
     font-size: 25px;
     font-weight: 400;
-    margin: 0px;
+    margin: 0;
 }
 
 h3 {
@@ -18,7 +18,7 @@ h3 {
 }
 
 p {
-    margin: 0px;
+    margin: 0;
     font-weight: 400;
     font-size: 20px;
 }
@@ -37,7 +37,7 @@ p {
 }
 
 .header-container h2 {
-    margin: 5px 0px;
+    margin: 5px 0;
     padding-top: 10px;
 }
 
@@ -47,7 +47,7 @@ p {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 30px 0px;
+    padding: 30px 0;
     margin-top: 10px;
     background:rgb(255, 255, 255, 0.9);
 }
@@ -58,8 +58,8 @@ p {
 
 .city-temperature {
     font-size: 50px;
-    padding: 0px;
-    margin: 15px 0px 5px 0px;
+    padding: 0;
+    margin: 15px 0 5px 0;
 }
 
 .todays-weather-type {
@@ -71,11 +71,11 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px 0px 0px 0px;
+    padding: 20px 0 0 0;
 }
 
 .sunrise-sunset-container p {
-    padding: 10px 20px 0px;
+    padding: 10px 20px 0;
 }
 
 .sunrise-sunset {
@@ -89,7 +89,7 @@ p {
 .fiveday-forecast-container {
     display: flex;
     flex-direction: column;
-    padding: 20px 0px 0px;
+    padding: 20px 0 0;
 }
 
 .forecast-container {
@@ -142,9 +142,9 @@ footer p {
     }
 
     .main-container {
-    margin: 20px auto;
-    width: 80%;
-    border-radius: 10px;
+        margin: 20px auto;
+        width: 80%;
+        border-radius: 10px;
     }
 
     .forecast-day {
@@ -166,6 +166,7 @@ footer p {
         background-image: url(images/background-pattern-yellow.png); 
         background-size: 400px;    
     }
+
     .main-container {
         margin: 20px auto;
         width: 95%;
@@ -192,14 +193,14 @@ footer p {
         align-items: center;
         justify-content: center;
         margin-right: 10px;
-        margin-bottom: 0px;
+        margin-bottom: 0;
         width: 200px;
         border-radius: 10px;
     }
 
     .forecast-day {
         margin-bottom: 20px;
-        margin-right: 0px;
+        margin-right: 0;
         width: auto;
     }
 
@@ -209,7 +210,7 @@ footer p {
     } 
 
     .forecast-temp {
-        margin-left: 0px;
+        margin-left: 0;
         margin-top: 20px;
     }
 
