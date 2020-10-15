@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./style.css" />
     <link
       rel="icon"
       type="image/svg"
@@ -26,16 +26,16 @@
         <div id="weatherForecast" class="weather-forcast-wrapper"></div>
 
         <div class="select-city">
-          <label for="cityNamePicked" class="city-serch"
-            >Look up the weather for favourite city</label
-          >
+          <label for="cityNamePicked" class="city-serch">
+            Look up the weather for favourite city
+          </label>
           <input
             type="text"
             id="cityNamePicked"
             name="ciyNamePicked"
             class="city-name-picked"
             onkeydown="if (event.keyCode == 13)
-                document.getElementById('btnSearch').click()"
+              document.getElementById('btnSearch').click()"
           />
 
           <input
@@ -43,11 +43,11 @@
             type="button"
             id="btnSearch"
             value="Search"
-            onclick="citySelected();"
+            onclick="citySelected()"
           />
         </div>
       </div>
     </section>
-    <script src="weather.js"></script>
+    <script src="./weather.js"></script>
   </body>
 </html>

@@ -85,8 +85,7 @@ const generatedHTMLForWeatherForcast = (filteredForcast) => {
 
 // Function for temp rounded to one decimal
 const calculatedTemperature = (number) => {
-  const roundedTemp = Math.round(number * 10) / 10;
-  return roundedTemp;
+  return Math.round(number * 10) / 10;
 };
 
 // Function to convert time to a readable format

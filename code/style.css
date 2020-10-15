@@ -14,7 +14,7 @@ body {
 }
 
 .weather-wrapper {
-  margin: 0px 10px;
+  margin: 0 10px;
 }
 
 .weather-today-wrapper {
@@ -31,7 +31,7 @@ body {
   height: 150px;
   width: 150px;
   right: -10px;
-  top: 0px;
+  top: 0;
 }
 .temp-today {
   font-size: 48px;
@@ -79,7 +79,7 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 0px 80px 0px;
+  padding: 20px 0 80px 0;
 }
 
 .city-serch,
@@ -122,7 +122,7 @@ img {
   }
 
   .select-city {
-    padding: 40px 0px 80px 0px;
+    padding: 40px 0 80px 0;
   }
 }
 
