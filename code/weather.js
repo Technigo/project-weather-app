@@ -135,6 +135,15 @@ const weatherBackgroundColor = (temp) => {
   } else containerWeather.style.backgroundColor = "#fe992a";
 };
 
+// To be able to use enter on keyboard
+const input = document.getElementById("cityNamePicked");
+input.addEventListener("keydown", (event) => {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    document.getElementById("btnSearch").click();
+  }
+});
+
 // Function invoked when search button is clicked
 const citySelected = () => {
   citySearched = document.getElementById("cityNamePicked").value;
