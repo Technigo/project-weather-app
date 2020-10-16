@@ -1,3 +1,7 @@
+body {
+    font-family: 'Helvetica';
+}
+
 .header {
     display: flex;
     justify-content: center;
@@ -5,7 +9,6 @@
 
 .city {
     font-size: 60px;
-    font-family: helvetica;
 }
 
 .current-weather {
@@ -18,7 +21,6 @@
 .current-temperature {
     font-size: 70px;
     margin-top: 75px;
-    font-family: helvetica;
 }
 
 .current-weather-icon {
@@ -36,7 +38,6 @@
 
 .current-weather-wrapper h3 {
     margin-left: 0;
-    font-family: helvetica;
 }
 
 .forecast-weather {
@@ -45,7 +46,6 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    font-family: helvetica;
 }
 
 .forecast-day {
@@ -78,8 +78,8 @@
 /*Styling for desktop*/
 @media (min-width: 900px) {
     .header {
-    background: rgb(6,6,20);
-    background: linear-gradient(90deg, rgba(6,6,20,0) 0%, rgba(252,252,36,0.9782797987616099) 98%, rgba(209,218,106,1) 100%, rgba(80,43,19,1) 100%, rgba(154,79,19,1) 100%, rgba(43,142,154,1) 100%, rgba(18,28,72,1) 100%, rgba(8,27,135,1) 100%, rgba(16,28,87,1) 100%, rgba(12,28,111,1) 100%, rgba(22,29,47,0.9266894257703081) 100%, rgba(35,180,207,1) 100%);
+        background: rgb(6,6,20);
+        background: linear-gradient(90deg, rgba(6,6,20,0) 0%, rgba(252,252,36,0.9782797987616099) 98%, rgba(209,218,106,1) 100%, rgba(80,43,19,1) 100%, rgba(154,79,19,1) 100%, rgba(43,142,154,1) 100%, rgba(18,28,72,1) 100%, rgba(8,27,135,1) 100%, rgba(16,28,87,1) 100%, rgba(12,28,111,1) 100%, rgba(22,29,47,0.9266894257703081) 100%, rgba(35,180,207,1) 100%);
     }
 
     .city {
@@ -91,8 +91,8 @@
     }
 
     .current-weather-wrapper {
-    background: rgb(6,6,20);
-    background: linear-gradient(90deg, rgba(6,6,20,0) 0%, rgba(18,218,236,0.33657212885154064) 59%, rgba(43,142,154,1) 100%, rgba(18,28,72,1) 100%, rgba(8,27,135,1) 100%, rgba(16,28,87,1) 100%, rgba(12,28,111,1) 100%, rgba(22,29,47,0.9266894257703081) 100%, rgba(35,180,207,1) 100%);
+        background: rgb(6,6,20);
+        background: linear-gradient(90deg, rgba(6,6,20,0) 0%, rgba(18,218,236,0.33657212885154064) 59%, rgba(43,142,154,1) 100%, rgba(18,28,72,1) 100%, rgba(8,27,135,1) 100%, rgba(16,28,87,1) 100%, rgba(12,28,111,1) 100%, rgba(22,29,47,0.9266894257703081) 100%, rgba(35,180,207,1) 100%);
     }
 
     .current-weather-wrapper h3 {

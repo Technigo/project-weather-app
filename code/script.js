@@ -17,7 +17,7 @@ const sunsetTime = document.getElementById('sunset-time');
 const currentDay = document.getElementById('current-day');
 const currentWeatherIcon = document.getElementById('current-weather-icon');
 const today = new Date();
-const now = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+const now = `${today.getFullYear()} - ${today.getMonth()+1} ${today.getDate()}`;
 currentDay.innerHTML = `Today ${now}`;
 
 //forecast weather variables
@@ -59,22 +59,16 @@ fetch(forecast_API_URL)
 .then((forecastObject) => {
     const listArray = forecastObject.list;
     const filteredForecast = listArray.filter(item => 
-    item.dt_txt.includes('12:00'));
-    filteredForecast.map(day => {
-        const date = new Date(day.dt_txt);
-        const dayName = date.toLocaleDateString('en-SE', {
-            weekday: 'long',
-            day: 'numeric'
+        item.dt_txt.includes('12:00'));
+        filteredForecast.map(day => {
+            const date = new Date(day.dt_txt);
+            const dayName = date.toLocaleDateString('en-SE', {
+                weekday: 'long',
+                day: 'numeric'
+            });
+            forecastDay.innerHTML += `<p>${dayName}</p> `; 
+            const temp = Math.floor(day.main.feels_like);
+            forecastFeelsLikeTemp.innerHTML += `<p>${temp}° </p>`;
+            forecastWeatherIcon.innerHTML += `<img src="https://openweathermap.org/img/wn/${day.weather[0].icon}.png" />`;
         });
-    forecastDay.innerHTML += `<p>${dayName}</p> `; 
-    const temp = Math.floor(day.main.feels_like);
-    forecastFeelsLikeTemp.innerHTML += `<p>${temp}° </p>`;
-    forecastWeatherIcon.innerHTML += `<img src="https://openweathermap.org/img/wn/${day.weather[0].icon}.png" />`;
-    }); 
-}); 
-       
-      
-        
-       
-
-       
+     }); 
