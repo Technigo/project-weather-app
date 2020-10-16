@@ -20,58 +20,6 @@ const changeLocInput = document.getElementById('location-input')
 const changeLocButton = document.getElementById('location-button')
 const changeLocGeo = document.getElementById('location-geo')
 const weekBox = document.querySelector('.week-box')
-const weatherDescriptions = [
-  {
-    order: 1,
-    name: 'Clear sky',
-    img: 'https://media.giphy.com/media/WfMTAZcqJjCc8/source.gif'
-  },
-  {
-    order: 2,
-    name: 'Few clouds',
-    img: 'https://media.giphy.com/media/BWIz61sNuzVF6/source.gif'
-  },
-  {
-    order: 3,
-    name: 'Scattered clouds',
-    img: 'https://media.giphy.com/media/DjEysmrFX7S8w/source.gif'
-  },
-  {
-    order: 4,
-    name: 'Broken clouds',
-    img: 'https://media.giphy.com/media/hXlyDvoSNzM6k/source.gif'
-  },
-  {
-    order: 5,
-    name: 'Shower rain',
-    img: 'https://media.giphy.com/media/11NU4BxIpTYNGw/source.gif'
-  },
-  {
-    order: 6,
-    name: 'Rain',
-    img: 'https://media.giphy.com/media/rdKs1wbHapaQ8/source.gif',
-  },
-  {
-    order: 7,
-    name: 'Thunderstorm',
-    img: 'https://media.giphy.com/media/psD7xYVrU9Otq/source.gif'
-  },
-  {
-    order: 8,
-    name: 'Snow',
-    img: 'https://media.giphy.com/media/pa29FhX16eFlS/source.gif'
-  },
-  {
-    order: 9,
-    name: 'Mist',
-    img: 'https://media.giphy.com/media/14qIliCMe87BwA/source.gif'
-  },
-  {
-    order: 10,
-    name: 'Clouds',
-    img: 'https://media.giphy.com/media/hXlyDvoSNzM6k/source.gif'
-  }
-];
 
 // General fetch for search-box.
 const fetchAPILink = (selectedCity) => {
@@ -82,7 +30,7 @@ const fetchAPILink = (selectedCity) => {
   fetchWeatherData(weatherApiUrl)
 };
 
-// I separated the fetch-function from the api-declaration to be able
+// Separated the fetch-function from the api-declaration to be able
 // to use the function for different types of API-requests
 const fetchWeatherData = (apiUrl) => {
   fetch(apiUrl)
@@ -90,12 +38,15 @@ const fetchWeatherData = (apiUrl) => {
       return results.json();
     })
     .then((weather) => {
+      console.log(weather)
       cityTag.innerHTML = weather.name;
       temperatureTag.innerHTML = roundedNumber(weather.main.temp) + ` C°`;
       feelsLikeTag.innerHTML = roundedNumber(weather.main.feels_like) + ` C°`;
       weatherTag.innerHTML = weather.weather[0].description;
       sunriseTag.innerText = convertUnixTimestamp(weather.sys.sunrise);
       sunsetTag.innerHTML = convertUnixTimestamp(weather.sys.sunset);
+
+      console.log(weather.weather[0].main)
 
       // run the changeImage-function depending on current weather
       const currentWeather = weather.weather[0].main;
@@ -116,7 +67,7 @@ const fetchWeatherData = (apiUrl) => {
     }).catch((error) => {
       console.error('Error:', error);
       cityTag.innerText = 'Oops!'
-      weatherImage.src = 'https://media.giphy.com/media/pvO8ugi72HKww/source.gif'
+      weatherImage.src = 'https://media.giphy.com/media/U3rFVRHeGBhbq/source.gif'
       weatherTag.innerText = 'No city here. Search again!'
       temperatureTag.innerText = ''
       feelsLikeBox.style.display = 'none'
@@ -140,7 +91,6 @@ const fetchForecastData = (apiUrl) => {
       );
 
       // Function that returns day + temp
-      // from each object from filteredForecast
       const newWeek = filteredForecast.map((week) => {
         const day = getWeekday(week.dt);
         const temp = roundedNumber(week.main.temp) + ` C°`;
@@ -190,7 +140,7 @@ changeLocInput.addEventListener('keyup', (e) => {
 
 // Get current longitude- and latitude values and push them into a new API-link
 // Then use the new API-link and fetch data.
-function geoLocate() {
+const geoLocate = () => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
       position.timeout = .5
@@ -222,8 +172,8 @@ const convertUnixTimestamp = (data) => {
 };
 
 // Convert tamestamp to weekday-string
-const getWeekday = (t) => {
-  const dt = new Date(t * 1000);
+const getWeekday = (data) => {
+  const newDate = new Date(data * 1000);
   const weekday = [
     'Sunday',
     'Monday',
@@ -233,7 +183,7 @@ const getWeekday = (t) => {
     'Friday',
     'Saturday',
   ];
-  return weekday[dt.getDay()];
+  return weekday[newDate.getDay()];
 };
 
 // Rounding numbers down to one decimal
@@ -262,34 +212,24 @@ const calculateHour = (currentHour) => {
   }
 };
 
-// Change image depending on weather
 const changeImage = (weather) => {
-  if (weather == weatherDescriptions[0].name) {
-    weatherImage.src = weatherDescriptions[0].img;
-  } else if (weather == weatherDescriptions[1].name) {
-    weatherImage.src = weatherDescriptions[1].img;
-  } else if (weather == weatherDescriptions[2].name) {
-    weatherImage.src = weatherDescriptions[2].img;
-  } else if (weather == weatherDescriptions[3].name) {
-    weatherImage.src = weatherDescriptions[3].img;
-  } else if (weather == weatherDescriptions[4].name) {
-    weatherImage.src = weatherDescriptions[4].img;
-  } else if (weather == weatherDescriptions[5].name) {
-    weatherImage.src = weatherDescriptions[5].img;
-  } else if (weather == weatherDescriptions[6].name) {
-    weatherImage.src = weatherDescriptions[6].img;
-  } else if (weather == weatherDescriptions[7].name) {
-    weatherImage.src = weatherDescriptions[7].img;
-  } else if (weather == weatherDescriptions[8].name) {
-    weatherImage.src = weatherDescriptions[8].img;
-  } else if (weather == weatherDescriptions[9].name) {
-    weatherImage.src = weatherDescriptions[9].img;
-  } else if (weather == 'Haze') {
-    weatherImage.src = weatherDescriptions[8].img;
-  } else if (weather == 'Clear') {
-    weatherImage.src = weatherDescriptions[0].img;
-  }
-};
+  switch (weather) {
+    case 'Clear sky':
+      return weatherImage.src ='https://media.giphy.com/media/WfMTAZcqJjCc8/source.gif'
+    case 'Clouds':
+        return weatherImage.src = 'https://media.giphy.com/media/hXlyDvoSNzM6k/source.gif'
+    case 'Rain':
+      return weatherImage.src = 'https://media.giphy.com/media/rdKs1wbHapaQ8/source.gif'
+    case 'Drizzle':
+      return weatherImage.src = 'https://media.giphy.com/media/Eh5hHMC9aXeQ8/source.gif'
+    case 'Thunderstorm':
+      return weatherImage.src = 'https://media.giphy.com/media/psD7xYVrU9Otq/source.gif'
+    case 'Snow':
+      return weatherImage.src = 'https://media.giphy.com/media/pa29FhX16eFlS/source.gif'
+    case 'Mist':
+      return weatherImage.src = 'https://media.giphy.com/media/14qIliCMe87BwA/source.gif'
+    } 
+}
 
 // Run geolocate-function at page loading
 geoLocate()
