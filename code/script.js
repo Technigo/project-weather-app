@@ -213,11 +213,12 @@ const calculateHour = (currentHour) => {
 };
 
 const changeImage = (weather) => {
+  console.log(weather)
   switch (weather) {
-    case 'Clear sky':
+    case 'Clear':
       return weatherImage.src ='https://media.giphy.com/media/WfMTAZcqJjCc8/source.gif'
     case 'Clouds':
-        return weatherImage.src = 'https://media.giphy.com/media/hXlyDvoSNzM6k/source.gif'
+      return weatherImage.src = 'https://media.giphy.com/media/hXlyDvoSNzM6k/source.gif'
     case 'Rain':
       return weatherImage.src = 'https://media.giphy.com/media/rdKs1wbHapaQ8/source.gif'
     case 'Drizzle':
