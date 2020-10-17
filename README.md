@@ -1,4 +1,4 @@
-# Weather App
+# Weather App 🌤️
 
 For this project we had to build a weather app that shows today's weather, temperature and 5 day forecast for a specified city. This was all to be achieved by using the open weather app api and fetching the data we required via the specific api links. The data had to be displayed in the DOM and the page needed to be styled to in order to create a simple looking weather app that was also responsive for mobile, tablet and desktop devices.  
 
@@ -17,13 +17,13 @@ The last thing to do was style my weather app and make it responsive. Here I fee
 
 If I'd have more time I'd like to have added a few more cities and have the colours on the app and pattern change depending on the temperature. 
 
-Technologies & resources used:
+# Technologies & resources used:
 1. HTML, CSS and JavaScript.
 2. Googaling.
 3. Stack overflow.
 5. Advice and help from teammates and teachers. 
 
-Things I've learnt:
+# Things I've learnt:
 1. How to work with and read api data.
 2. How to access api data via fetch.
 3. How to use json and create promises.
@@ -31,5 +31,4 @@ Things I've learnt:
 5. How to style a weather app and make it responsive for mobile, tablet and desktop devices. 
 
 ## View it live
-
 https://hardcore-keller-653d90.netlify.app/
