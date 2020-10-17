@@ -17,13 +17,13 @@ The last thing to do was style my weather app and make it responsive. Here I fee
 
 If I'd have more time I'd like to have added a few more cities and have the colours on the app and pattern change depending on the temperature. 
 
-# Technologies & resources used:
+## Technologies & resources used:
 1. HTML, CSS and JavaScript.
 2. Googaling.
 3. Stack overflow.
 5. Advice and help from teammates and teachers. 
 
-# Things I've learnt:
+## Things I've learnt:
 1. How to work with and read api data.
 2. How to access api data via fetch.
 3. How to use json and create promises.
