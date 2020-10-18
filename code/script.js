@@ -16,34 +16,24 @@ fetch(apiToday)
     return response.json();
   })
   .then((json) => {
-    const cloudsImg = {
-      image: "icons/clouds.svg",
-    };
-    const rainImg = {
-      image: "icons/rain.svg",
-    };
-    const sunImg = {
-      image: "icons/sun.svg",
-    };
-    const mistImg = {
-      image: "icons/mist.svg",
-    };
-    const snowImg = {
-      image: "icons/snow.svg",
-    };
+    const cloudsImg = "./icons/clouds.svg";
+    const rainImg = "./icons/rain.svg";
+    const sunImg = "./icons/sun.svg";
+    const mistImg = "./icons/mist.svg";
+    const snowImg = "./icons/snow.svg";
 
     // DISPLAYED WEATHER ICON ON TOP
     const weatherImg = () => {
       if (json.weather[0].main === "Clear") {
-        weatherIcon.innerHTML = `<img src="${sunImg.image}" height="120" alt="sun">`;
+        weatherIcon.innerHTML = `<img src="${sunImg}" height="120" alt="sun">`;
       } else if (json.weather[0].main === "Clouds") {
-        weatherIcon.innerHTML = `<img src="${cloudsImg.image}" height="120" alt="clouds">`;
+        weatherIcon.innerHTML = `<img src="${cloudsImg}" height="120" alt="clouds">`;
       } else if (json.weather[0].main === "Rain") {
-        weatherIcon.innerHTML = `<img src="${rainImg.image}" height="120" alt="rain">`;
+        weatherIcon.innerHTML = `<img src="${rainImg}" height="120" alt="rain">`;
       } else if (json.weather[0].main === "Mist") {
-        weatherIcon.innerHTML = `<img src="${mistImg.image}" height="120" alt="mist">`;
+        weatherIcon.innerHTML = `<img src="${mistImg}" height="120" alt="mist">`;
       } else if (json.weather[0].main === "Snow") {
-        weatherIcon.innerHTML = `<img src="${snowImg.image}" height="120" alt="snow">`;
+        weatherIcon.innerHTML = `<img src="${snowImg}" height="120" alt="snow">`;
       }
     };
     weatherImg();
@@ -64,7 +54,7 @@ fetch(apiToday)
 
 // 5 DAY FORECAST
 fetch(apiForecast)
-  .then((response) => {
+  .then(response => {
     return response.json();
   })
   .then((json) => {
