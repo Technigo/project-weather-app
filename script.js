@@ -23,7 +23,6 @@ let getWeatherNow = () => {
   fetch(api)
   .then((response) => {
     return response.json()
-
   })
   .then((city) => {
     // Top left lines
@@ -55,13 +54,16 @@ let getWeatherNow = () => {
     now.innerHTML = `It feels like ${nowFeelsLike}\u00b0C in ${city.name}.`,
     ico.src = `https://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png`
   })
+  .catch(err => {
+    console.error(err)
+  })
 }
 
   // 5 day forecast
   let fiveDay = document.getElementById('fiveDay') 
 
   const getForecast = () => {
-    fiveDay.innerHTML = null
+    fiveDay.innerHTML = ''
     const forecastAPI = `https://api.openweathermap.org/data/2.5/forecast?id=${cities[activeCityIndex]}&units=metric&appid=eb46c8c17530a3d02461794022d39d32`
     fetch(forecastAPI)
     .then((response) => {
