@@ -7,20 +7,29 @@
     <title>Daily Weather</title>
 </head>
 <body>
-    <section class="todaysWeather">
-    <h1>Today's weather in: <span id="weatherToday"></span></h1>
+    <section class="todays-weather">
+        <div>
+            <h1>Today's weather in: 
+                <span id="weatherToday"></span>
+            </h1>
+        </div>
+        
     <div class="container">
-    <div id="city"></div>
-    <div id="temp"></div> 
-    <div class="description" id="description"></div> 
-    <div id="date"></div>
-    <span id="sun"></span>  
+    <div id="city" class="city">
+    </div>
+    <div id="temp" class="temp">
+    </div> 
+    <div class="description" id="description">
+    </div> 
+    <div id="date" class="date">
+        
+    </div>
+    <span id="sun" class="sun"></span>  
     </section>
 
     <section class="five-day-forecast">
-    <div id="weekdays"></div>
+    <div id="weekdays" class="weekdays"></div>
     </section>
     <script defer src="./script.js"></script>
 </body>
-</html>
 </html>
