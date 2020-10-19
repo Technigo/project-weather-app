@@ -11,7 +11,7 @@ body {
 }
 
 section {
-  width: 320px;
+  width: 100%;
   height: 100%;
   box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
                 0 2px 4px rgba(0,0,0,0.07), 
@@ -63,22 +63,18 @@ h1 {
 
 .date {
   width: 45px;
-  flex: none;
 }
 
 .temp {
   width: 40px;
-  flex: none;
 }
 .description {
   width: 120px;
-  flex: none;
   padding-left: 26px;
 }
 
 img {
   height: 45px;
-  flex: none;
 }
 
 /* City Selector */
@@ -106,4 +102,63 @@ footer {
 footer a {
   text-decoration: none;
   color: #333;
+}
+
+/* Media queries */
+@media (min-width: 768px) {  
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+  }
+  
+  .city-selector {
+    margin: 35px 0 50px 200px;
+    display: block;
+    order: 1;
+  }
+
+  .now {
+    order: 2;
+    max-width: 400px;
+    margin-left: 200px;
+  }
+
+  h1 {
+    padding: 0;
+  }
+
+  .top-left {
+    order: 3;
+    margin: 0 0 0 200px;
+    padding: 0;
+  }
+
+  .top-left p {
+    font-size: 30px;
+  }
+  
+  .five-day {
+    order: 3;
+    margin: 16px 0 100px 200px;
+    padding: 0;
+    font-size: 20px;
+    max-width: 450px;
+  }
+
+  .date {
+    width: 75px;
+  }
+
+  .description {
+    width: 200px;
+    padding-left: 13px;
+  }
+
+  footer {
+    order: 3;
+    padding: 21px 0;
+    margin-left: 200px;
+  }
 }

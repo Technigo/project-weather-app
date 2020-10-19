@@ -7,10 +7,11 @@ const sunsetTime = document.getElementById('sunset')
 const now = document.getElementById('now')
 const ico = document.getElementById('now-icon')
 
-fetch(apiNow)
+const fetchWeather = () => {
+  fetch(apiNow)
   .then((response) => {
     return response.json()
-})
+  })
   .then((city) => {
     const tempNow = Math.round(city.main.temp)
     const nowFeelsLike = Math.round(city.main.feels_like)
@@ -32,6 +33,13 @@ fetch(apiNow)
     now.innerHTML = `It feels like ${nowFeelsLike}\u00b0C in ${city.name}.`
     ico.src = `http://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png`
 })
+  .catch(err => {
+    console.error(err)
+  })
+}
+
+fetchWeather()
+
 
 // Stockholm - 5 day forecast
 const forecastSTHLM = `http://api.openweathermap.org/data/2.5/forecast?id=${stockholm}&units=metric&appid=eb46c8c17530a3d02461794022d39d32`
