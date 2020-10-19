@@ -1,26 +1,20 @@
-html,
 body {
   color: #515151;
-  margin: auto;
-  font-family: fantasy;
+  margin: auto 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .day {
-   background-image: url(day.jpg);
-   filter: blur(50%);
+   background: #138ed6a1;
    max-width: 100%;
    height: auto;
-   background-repeat: no-repeat;
    background-size: cover;
-   filter: sepia(50%);
 }
 
 .night {
-    background-image: url(night.jpg);
-    filter: blur(50%);
+    background: #0d3146a1;
     max-width: 100%;
     height: 1000px;
-    background-repeat: no-repeat;
     background-size: cover;
 }
 
@@ -30,23 +24,24 @@ body {
     justify-content: center;
 }
 
-#weatherApp {
+.weatherApp {
     width: 90%;
     max-width: 300px;
     padding: 10px 10px;
     border-radius: 2px;
     text-align: center;
-    background-color: rgba(78, 73, 73, 0.2);
+    background-color: rgba(236, 232, 232, 0.24);
     color: #f1f1f1;
     margin-top: 15%;
 }
 
-#temp {
+.temp {
     font-size: 50px;
 }
 
-#city {
+.city {
     margin-bottom: 10px;
+    font-size: 30px;
 }
 
 .sunrise-sunset {
@@ -54,11 +49,11 @@ body {
     margin-bottom: 20px;
 }
   
-#sunrise, #sunset {
+.sunrise, .sunset {
     padding: 20px;
 }
 
-#weekdays {
+.weekdays {
     display: grid;
     justify-content: center;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -68,36 +63,44 @@ body {
 }
 
 /*** MEDIA QUERIES ***/
-  @media (min-width: 600px){
+  @media (min-width: 768px){
     .container {
         height: fit-content;
+        display: flex;
         align-items: center;
+        margin-bottom: 30px;
     }
   }
   
   @media (min-width:1024px){
-    #weatherApp {
+    .weatherApp {
         width: 100%;
         max-width: 600px;
     }
 
-    #temp {
+    .mainInfo{
         display: flex;
-        font-size: 80px;
+        align-items: center;
+        height: fit-content;
+        justify-content: center;
+        margin-top: 20px;
     }
 
-    #city {
+    .temp {
         display: flex;
-        justify-content: flex-end;
+        font-size: 60px;
+    }
+
+    .city {
         margin-top: -180px;
-        font-size: 40px;
+        font-size: 50px;
         }
     
-    #date {
+    .date {
         font-size: 20px;
     }
 
-    #weekdays {
+    .weekdays {
         font-size: 18px;
     }
   }
