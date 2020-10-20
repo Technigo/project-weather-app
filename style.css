@@ -24,7 +24,7 @@ body {
     justify-content: center;
 }
 
-.weatherApp {
+.weather-app {
     width: 90%;
     max-width: 300px;
     padding: 10px 10px;
@@ -73,12 +73,12 @@ body {
   }
   
   @media (min-width:1024px){
-    .weatherApp {
+    .weather-app {
         width: 100%;
         max-width: 600px;
     }
 
-    .mainInfo{
+    .main-info{
         display: flex;
         align-items: center;
         height: fit-content;

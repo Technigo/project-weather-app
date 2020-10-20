@@ -26,6 +26,7 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm&units=metric
             month: "short",
             day: "numeric"
         }
+
         const newDate = new Date(json.list[0].dt_txt);
         const todayDate = newDate.toLocaleDateString("en-US",options);
     
@@ -62,10 +63,10 @@ const displayDays = (dayArray) => {
 }
 
 var now = new Date();
-    if (now.getHours() > 6 && now.getHours() < 20) {
-    document.body.className += "day";
+    if (now.getHours() > 6 && now.getHours() < 19) {
+        document.body.className += "day";
     } else {
-    document.body.className += "night";
+        document.body.className += "night";
     }
 
 const getNumber = (theNumber) => {
