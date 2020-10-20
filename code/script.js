@@ -12,8 +12,8 @@ const picto = document.getElementById('picto');
 const sunset = document.getElementById('sunset');
 const sunrise = document.getElementById('sunrise');
 const forecasts = document.getElementsByClassName('forecast');
-const selectButton = document.getElementById('city-submit');
-const searchButton = document.getElementById('city-search');
+const selectButton = document.getElementById('citySubmit');
+const searchButton = document.getElementById('citySearch');
 
 // Background image based on weather conditions and time
 const bodyBackgrounds = [
@@ -119,7 +119,7 @@ const days = [
 ]
 
 // This function returns body background image depending on weather icon code
-const returnBodyBackground = (todayIcon) => {
+const returnBodyBackground = todayIcon => {
   bodyBackgrounds.forEach((item) => {
     if (item.code === todayIcon) {
       body.style.backgroundImage = `url(${item.image})`;
@@ -129,7 +129,7 @@ const returnBodyBackground = (todayIcon) => {
 };
 
 // This function returns gradient depending on temperature
-const returnTempGradient = (temp) => {
+const returnTempGradient = temp => {
   if (temp <= 0) {
     today.style.backgroundImage = 'linear-gradient(45deg, rgba(0,57,115,1) 0%, rgba(67,198,172,1) 100%)';
   } else if (temp <= 15) {
@@ -147,7 +147,7 @@ const getLocation = () => {
 }
 
 // This function stores current location and starts fetching based on current location
-const showPosition = (position) => {
+const showPosition = position => {
   const latitude = position.coords.latitude;
   const longitude = position.coords.longitude;
   returnWeatherByLocation(latitude, longitude);
@@ -157,7 +157,7 @@ const showPosition = (position) => {
 getLocation();
 
 // This function displays today's weather
-const displayTodaysWeather = (weatherArray) => {
+const displayTodaysWeather = weatherArray => {
   // city name
   city.innerHTML = weatherArray.name;
   // date with customized format
@@ -172,10 +172,10 @@ const displayTodaysWeather = (weatherArray) => {
   temperature.innerHTML = `${temp.toFixed(1)}\xB0`;
   returnTempGradient(temp); // First section's color based on temperature 
   // Weather description
-  const descriptionArray = weatherArray.weather.map((a) => a.main);
+  const descriptionArray = weatherArray.weather.map(a => a.main);
   description.innerHTML = descriptionArray[0]; // Retrieving first description in case of multiple descriptions in order to fit in the layout
   //Weather icon
-  const iconArray = weatherArray.weather.map((a) => a.icon);
+  const iconArray = weatherArray.weather.map(a => a.icon);
   const todayIcon = iconArray[0]; // Retrieving first icon in case of multiple icon codes
   returnBodyBackground(todayIcon); // Body background based on icon code
   picto.src = 'https://openweathermap.org/img/wn/' + todayIcon + '@2x.png'; // Current weather icon
@@ -203,7 +203,7 @@ const displayForecast = (forecastArray) => {
     const dayName = (new Date((day.dt + timeZone - 7200) * 1000)).toLocaleDateString('en-US', {
       weekday: 'short',
     });
-    const iconArray = day.weather.map((a) => a.icon);
+    const iconArray = day.weather.map(a => a.icon);
     const icon = iconArray[0];
     const midTemp = `${day.main.temp.toFixed(1)}\xB0`;
     return { dayName, icon, midTemp };
@@ -233,7 +233,7 @@ const returnWeatherByLocation = (latitude, longitude) => {
 }
 
 // This function fetchs weather information and forecast based on city name
-const returnWeatherByCity = (cityValue) => {
+const returnWeatherByCity = cityValue => {
   const WEATHER_SEARCH_API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue}&units=metric&APPID=` + WEATHER_API_KEY;
   const FORECAST_SEARCH_API_URL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityValue}&units=metric&APPID=` + WEATHER_API_KEY;
   fetch(WEATHER_SEARCH_API_URL)

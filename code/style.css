@@ -28,15 +28,15 @@ p {
 }
 
 header {
-  background: rgba(142,158,171,1);
+  background: rgb(142,158,171);
   height: 50px;
 }
 
-.citySelector {
+.city-selector {
   display: none;
 }
 
-.citySearch {
+.city-search {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -114,9 +114,6 @@ input {
     height: fit-content;
     border-radius: 15px;
     box-shadow:10px 10px 5px 0px rgba(20,20,20,0.75);
-    top: auto;
-    right: auto;
-    left: auto;
   }
 
   header {
@@ -125,7 +122,7 @@ input {
     width: 100%;
   }
 
-  .citySelector {
+  .city-selector {
     display: flex;
     justify-content: center;
     align-items: center;
