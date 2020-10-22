@@ -10,8 +10,7 @@ const base_url = `https://api.openweathermap.org/data/2.5/`;
 // CREATE A SEARCH STRING
 const createSearchString = (type, searchTerm) => {
     return (
-        base_url +
-        `${type}?${searchMethod}=${searchTerm}&APPID=${appId}&units=${units}`
+        `${base_url}${type}?${searchMethod}=${searchTerm}&APPID=${appId}&units=${units}`
     );
 };
 
@@ -94,40 +93,29 @@ const findWeather = (resultFromServer) => {
         "weatherDescriptionHeader"
     );
     const temperatureElement = document.getElementById("temperature");
-
     const windSpeedElement = document.getElementById("windSpeed");
-
     const humidityElement = document.getElementById("humidity");
-
     const sunriseTimeElement = document.getElementById("sunrise");
-
     const sunsetTimeElement = document.getElementById("sunset");
-
     const cityHeader = document.getElementById("cityHeader");
-
     const weatherIcon = document.getElementById("documentIconImg");
 
     //   GET ICONS FROM OPENWEATHER MAP
     weatherIcon.src =
-        "https://openweathermap.org/img/w/" +
-        resultFromServer.weather[0].icon +
-        ".png";
+        `https://openweathermap.org/img/w/${resultFromServer.weather[0].icon}.png`;
 
     // WEATHER DESCRIPTION FROM OPENWEATHER MAP
     const resultDescription = resultFromServer.weather[0].description;
-    weatherDescriptionHeader.innerText =
-        resultDescription.charAt(0).toUpperCase() + resultDescription.slice(1);
+    weatherDescriptionHeader.innerText = `${resultDescription.charAt(0).toUpperCase()}${resultDescription.slice(1)}`;
 
-    temperatureElement.innerHTML =
-        Math.floor(resultFromServer.main.temp) + "&#176c";
+    temperatureElement.innerHTML = `${Math.floor(resultFromServer.main.temp)} &#176c`;
 
-    windSpeedElement.innerHTML =
-        "Wind: " + Math.floor(resultFromServer.wind.speed) + " m/s";
-
+    windSpeedElement.innerHTML = `Wind: ${Math.floor(resultFromServer.wind.speed)} m/s`;
+        
     cityHeader.innerHTML = resultFromServer.name;
 
-    humidityElement.innerHTML =
-        "Humidity: " + resultFromServer.main.humidity + " %";
+    humidityElement.innerHTML = `Humidity: ${resultFromServer.main.humidity} %` ;
+        
 
     // GET SUNRISE & SUNSET 
     const sunriseTime = new Date(
@@ -137,7 +125,7 @@ const findWeather = (resultFromServer) => {
         minute: "2-digit",
     });
 
-    sunriseTimeElement.innerHTML = "Sunrise: " + sunriseTime;
+    sunriseTimeElement.innerHTML = `Sunrise: ${sunriseTime}`;
 
     const sunsetTime = new Date(
         resultFromServer.sys.sunset * 1000
@@ -146,7 +134,7 @@ const findWeather = (resultFromServer) => {
         minute: "2-digit",
     });
 
-    sunsetTimeElement.innerHTML = "Sunset: " + sunsetTime;
+    sunsetTimeElement.innerHTML = `Sunset: ${sunsetTime}`;
     setPositionForWeatherInfo();
 };
 
