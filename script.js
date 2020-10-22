@@ -24,7 +24,6 @@ const searchWeather = (searchTerm) => {
         .then((result) => {
             findWeather(result);
         });
-
 };
 
 // FETCH API WEATHER
