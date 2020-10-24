@@ -5,8 +5,8 @@ const apiFiveDaysForecast = 'https://api.openweathermap.org/data/2.5/forecast?q=
 //Weather Variables
 const city = document.getElementById('city');
 const weatherDescription = document.getElementById('weatherDescription');
-const sunrise = document.getElementById('sunrise');
-const sunset = document.getElementById('sunset');
+// const sunrise = document.getElementById('sunrise');
+// const sunset = document.getElementById('sunset');
 const fiveDays = document.getElementById('fiveDays');
 const temperatures = document.getElementById('temperatures');
 
@@ -24,25 +24,25 @@ fetch(apiStockholm)
     // Have googled, asked in group chat and read every question I could find on Stack without understanding.
     // Would very much like to get some help to understand this one.
 
-    // const sunriseValue = weatherObject.sys.sunrise; //Sunrise and Sunset times in UNIX
-    // const sunsetValue = weatherObject.sys.sunset;
-
-    // const sun = new Date(sunriseValue * 1000);
-    // const set = new Date(sunsetValue * 1000);
-    // const sunriseHour = sun.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit', hour12: false,});
-    // const sunsetHour = set.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit', hour12: false,});
-    // console.log()
+const weatherSunrise = () => {
+    const dateSunrise = new Date(json.sys.sunrise * 1000);
+    const timeSunrise = dateSunrise.toLocaleTimeString([], {
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+  document.getElementById('sunrise').innerHTML = timeSunrise;
+  };
+    weatherSunrise();
 })
 
 // Don't know why I can't get the forecast "apifiveDaysForecast" to work. 
 // I believe I have done it in the exactly same way as with "apiStockholm".
 
-// fetch(apiFiveDaysForecast)
-//     .then((response) => {
-//         return response.json();
-// })
+fetch(apiFiveDaysForecast)
+    .then((response) => {
+        return response.json();
+})
 
 // // Five days forecast
-// .then((forecast) => {
-//     fiveDays.innerHTML = forecast.weather[0].id;
-// })
+
+const filteredWeek = json.list.filter(item => item.dt_txt.includes('12:00'));
