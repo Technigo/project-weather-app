@@ -1,142 +1,140 @@
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #e6f3f5;
-    text-align: center;
-    font-family: 'Kumbh Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #e6f3f5;
+  text-align: center;
+  font-family: "Kumbh Sans", sans-serif;
 }
 
 .hamburger {
-    width: 25px;
-    height: 18px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-top: 5px;
+  width: 25px;
+  height: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 5px;
 }
 
 .hamburger div {
-    background-color: #fff;
-    width: 25px;
-    height: 2px;
-    border-radius: 10px;
+  background-color: #fff;
+  width: 25px;
+  height: 2px;
+  border-radius: 10px;
 }
 
 .main-temperature {
-    margin-bottom: 5px;
-    font-size: 70px;
+  margin-bottom: 5px;
+  font-size: 70px;
 }
 
 .main-city {
-    margin-top: 5px;
-    font-size: 40px;
+  margin-top: 5px;
+  font-size: 40px;
 }
 
 .todays-weather {
-    height: 400px;
-    margin-bottom: 30px;
-    background-image: url(./assets/sky-day.jpg);
-    background-repeat: no-repeat;
-    background-attachment: local;
-    background-position-x: center;
-    background-position-y: 60%;
-    color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 0 10px;
-    opacity: 0.8;
+  height: 400px;
+  margin-bottom: 30px;
+  background-image: url("./assets/sky-day.jpg");
+  background-repeat: no-repeat;
+  background-attachment: local;
+  background-position-x: center;
+  background-position-y: 60%;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 10px;
+  opacity: 0.8;
 }
 
 .five-day-heading {
-    margin-top: 50px;
-    margin-bottom: 10px;
+  margin-top: 50px;
+  margin-bottom: 10px;
 }
 
 .forecast-container {
-    padding: 15px 0 0 0;
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: space-between;
-    text-align: center;
+  padding: 15px 0 0 0;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: space-between;
+  text-align: center;
 }
 
 .five-day-forecast {
-    background: rgba(250, 251, 252, 0.9);
-    margin-bottom: 8px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+  background: rgba(250, 251, 252, 0.9);
+  margin-bottom: 8px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .footer {
-    margin-top: 50px;
-    padding: 10px 0;
-    background-color: rgb(211, 217, 223);
-    font-size: 11px;
+  margin-top: 50px;
+  padding: 10px 0;
+  background-color: rgb(211, 217, 223);
+  font-size: 11px;
 }
 
 .footer p {
-    margin: 5px;
+  margin: 5px;
 }
 
 .footer a {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
 
 .footer p span {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 @media (min-width: 768px) {
-    .todays-weather {
-        align-items: center;
-    }
+  .todays-weather {
+    align-items: center;
+  }
 
-    .forecast-container {
-        align-items: center;
-    }
+  .forecast-container {
+    align-items: center;
+  }
 
-    .hamburger {
-        display: none;
-    }
+  .hamburger {
+    display: none;
+  }
 
-    .five-day-forecast {
-        width: 80%;
-        border-radius: 20px;
-    }
-
+  .five-day-forecast {
+    width: 80%;
+    border-radius: 20px;
+  }
 }
 
 @media (min-width: 1025px) {
-    .todays-weather {
-        width: 80%;
-        margin-left: auto;
-        margin-right: auto;
-        border: none;
-        border-radius: 20px;
-    }
+  .todays-weather {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    border-radius: 20px;
+  }
 
-    .forecast-container {
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        border: none;
-        flex-direction: row;
-        align-items: space-evenly;
-        flex-wrap: wrap;
-    }
+  .forecast-container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    flex-direction: row;
+    align-items: space-evenly;
+    flex-wrap: wrap;
+  }
 
-    .five-day-forecast {
-        height: 300px;
-        flex-direction: column;
-        margin-right: 15px;
-        width: 220px;
-        
-    }
+  .five-day-forecast {
+    height: 300px;
+    flex-direction: column;
+    margin-right: 15px;
+    width: 220px;
+  }
 }
