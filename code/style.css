@@ -1,23 +1,26 @@
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
 html {
-  box-sizing: border-box;  
-  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
 }
 
 /* Iphone X */
 @media (max-width: 414px) {
-
-  body{
-    background-color: #F4F7F8; 
-    color: #F47775;
+  body {
+    background-color: #f4f7f8;
+    color: #f47775;
   }
 
-  p, span, .todays-date {
+  p,
+  span,
+  .todays-date {
     font-size: 18px;
-    margin: 0px;
+    margin: 0;
   }
 
   .first-and-middle {
@@ -26,21 +29,23 @@ html {
     padding-left: 20px;
   }
 
-/* First section */
+  /* First section */
 
   .first-section {
     padding-top: 40px;
   }
 
-  .sunrise, .sunset {
+  .sunrise,
+  .sunset {
     display: flex;
   }
 
-  #sunrise, #sunset {
+  #sunrise,
+  #sunset {
     padding-left: 8px;
   }
 
-/* Middle section */
+  /* Middle section */
 
   .middle-section {
     padding-top: 40px;
@@ -49,28 +54,29 @@ html {
 
   #cloudIcon {
     padding-bottom: 10px;
-   }
+  }
 
-  h1, #location, #date {
+  h1,
+  #location,
+  #date {
     font-weight: bold;
     font-size: 32px;
   }
 
-/* Last section */
+  /* Last section */
 
   .forecast-container {
     display: flex;
     justify-content: space-between;
     padding: 40px 20px 40px 20px;
   }
-} 
+}
 
 /* Ipad */
 @media (min-width: 415px) and (max-width: 1024px) {
-
   body {
-    color: #164A68;
-    background-color: #A3DEF7;
+    color: #164a68;
+    background-color: #a3def7;
     width: 100%;
   }
 
@@ -84,17 +90,20 @@ html {
     padding-top: 100px;
   }
 
-  p, span {
+  p,
+  span {
     font-size: 36px;
     margin: 0px;
   }
 
-  .sunrise, .sunset {
+  .sunrise,
+  .sunset {
     display: flex;
     font-size: 36px;
   }
 
-  #sunrise, #sunset {
+  #sunrise,
+  #sunset {
     padding-left: 12px;
   }
 
@@ -109,7 +118,9 @@ html {
     display: none;
   }
 
-  h1, #location, #date {
+  h1,
+  #location,
+  #date {
     font-weight: bold;
     font-size: 48px;
   }
@@ -119,15 +130,13 @@ html {
     justify-content: space-between;
     padding: 40px 150px 40px 150px;
   }
-
 }
 
 /* Desktop */
 @media (min-width: 1025px) {
-
   body {
-    background-color: #F7E9B9;
-    color: #2A5510;
+    background-color: #f7e9b9;
+    color: #2a5510;
     width: 100%;
   }
 
@@ -141,17 +150,20 @@ html {
     padding-top: 40px;
   }
 
-  p, span {
+  p,
+  span {
     font-size: 36px;
     margin: 0px;
   }
 
-  .sunrise, .sunset {
+  .sunrise,
+  .sunset {
     display: flex;
     font-size: 36px;
   }
 
-  #sunrise, #sunset {
+  #sunrise,
+  #sunset {
     padding-left: 8px;
   }
 
@@ -163,10 +175,12 @@ html {
   }
 
   #cloudIcon {
-    margin: 150px 40px 0px 0px;
+    margin: 150px 40px 0 0;
   }
 
-  h1, #location, #date {
+  h1,
+  #location,
+  #date {
     font-weight: bold;
     font-size: 48px;
   }
@@ -174,6 +188,6 @@ html {
   .forecast-container {
     display: flex;
     justify-content: space-evenly;
-    padding: 40px 0px 40px 0px;
+    padding: 40px 0;
   }
 }
