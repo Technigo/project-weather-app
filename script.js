@@ -26,7 +26,7 @@ function geoLocate() {
 };
 
 //Change city on input and keypress
-input.addEventListener('keypress', function(e) {
+input.addEventListener('keypress', e => {
 
     if (e.keyCode === 13) {
         cityName = input.value;
@@ -49,7 +49,7 @@ const getWeatherToday = (url) => {
         })
         .catch((error) => {
             city.innerHTML = ('Oops! Try again');
-
+            console.error(error);
         });
 };
 
@@ -86,13 +86,13 @@ const weekDays = () => {
     return dayName;
 };
 
-const date = document.getElementById('day')
+const date = document.getElementById('day');
 date.innerHTML = weekDays();
 
 //get today's date
 const today = () => {
     const months = ["January", "Febrary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    const current_datetime = new Date()
+    const current_datetime = new Date();
     const formatted_date = `${current_datetime.getDate()} ${months[current_datetime.getMonth()]} ${current_datetime.getFullYear()}`;
     return `  ${formatted_date}`;
 };
@@ -104,18 +104,16 @@ const getWeatherForecast = (url) => {
     fetch(url)
         .then((response) => {
             return response.json();
-
         })
         .then((forecastArray) => {
             const filteredArray = forecastArray.list.filter(item => item.dt_txt.includes('12:00'));
-
             const forecast = filteredArray.map((item) => {
-                const day = (new Date(item.dt * 1000)).toLocaleDateString("en-US", { weekday: "long" })
+                const day = (new Date(item.dt * 1000)).toLocaleDateString("en-US", { weekday: "long" });
                 const temperature = (item.main.temp).toFixed(1);
                 const weatherType = item.weather[0].description;
                 const image = `<img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"/>`;
                 displayDay.innerHTML += `<p class="forecast">${day}&nbsp &nbsp${image}&nbsp &nbsp${temperature} °C</p>`;
-            });
+            });   
         });
 };
 
