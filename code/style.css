@@ -2,12 +2,14 @@ body {
     font-family: 'Montserrat';
     color: white;
     background-color: rgb(12, 192, 247);
-    animation-name: example;
-    animation-duration: 16s;
+    animation-name: background-change;
+    animation-duration: 12s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
     max-width: 400px;
 }
 
-@keyframes example {
+@keyframes background-change {
   0%   {background-color: rgb(12, 192, 247);}
   25%  {background-color: rgb(247, 12, 208);}
   50%  {background-color: rgb(187, 8, 187);}
