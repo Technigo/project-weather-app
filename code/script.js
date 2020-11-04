@@ -16,7 +16,7 @@ let API_URL_FORECAST_LONGLAT = `https://api.openweathermap.org/data/2.5/forecast
 
 /* Eventlistener attached to input field, will perform search when enter key is
  pressed and then assign search value to cityName and get weather for that city */
-input.addEventListener('keyup', function (e) {
+input.addEventListener('keyup', e => {
   if (e.keyCode === 13) {
     const inputValue = input.value;
     cityName = inputValue;
@@ -73,19 +73,19 @@ const getGeoLocation = () => {
 };
 
 /* function to fetch data about today's weather and add it to html */
-const fetchWeatherToday = (url) => {
+const fetchWeatherToday = url => {
   fetch(url)
-    .then((response) => response.json())
-    .then((weatherArray) => {
+    .then(response => response.json())
+    .then(weatherArray => {
       // get data from the array
-      const temperature = numberNoDecimal(weatherArray.main.temp);
+      const temperature = convertNumberToNoDecimal(weatherArray.main.temp);
       const city = weatherArray.name;
       const description = weatherArray.weather[0].main;
       const date = new Date(weatherArray.dt * 1000);
       const hour = date.getHours();
       const sunrise = setTimestamp(weatherArray.sys.sunrise).timeString;
       const sunset = setTimestamp(weatherArray.sys.sunset).timeString;
-      const feelsLike = numberNoDecimal(weatherArray.main.feels_like);
+      const feelsLike = convertNumberToNoDecimal(weatherArray.main.feels_like);
       const humidity = weatherArray.main.humidity;
       const pressure = weatherArray.main.pressure;
       const visibility = weatherArray.visibility;
@@ -108,20 +108,20 @@ const fetchWeatherToday = (url) => {
 
 /* Function to fetch data about today's min and max temperatures and the weather
  forecast and add it to html */
-const fetchWeatherForecast = (url) => {
+const fetchWeatherForecast = url => {
   fetch(url)
-    .then((response) => response.json())
-    .then((forecastArray) => {
+    .then(response => response.json())
+    .then(forecastArray => {
+      console.log(forecastArray);
       // filter the array to only get the temperatures for this day
       const dateNow = new Date().getDate();
-      const filteredTodayArray = forecastArray.list.filter((item) =>
+      const filteredTodayArray = forecastArray.list.filter(item =>
         item.dt_txt.includes(dateNow)
       );
 
       //map to create new array with temperatures for this day
-      const temperatures = filteredTodayArray.map((temperature) => {
-        const temp = numberOneDecimal(temperature.main.temp);
-        return temp;
+      const temperatures = filteredTodayArray.map(temperature => {
+        return convertNumberToOneDecimal(temperature.main.temp);
       });
 
       // get min and max values from the array
@@ -136,10 +136,10 @@ const fetchWeatherForecast = (url) => {
       const hourlyWeathers = forecastArray.list.slice(0, 7);
 
       // map to create new and filtered array of hourlyWeathers
-      const hourly = hourlyWeathers.map((hour) => {
+      const hourly = hourlyWeathers.map(hour => {
         const hourlyHour = setTimestamp(hour.dt).hourString;
         const hourlyIconSrc = `https://openweathermap.org/img/wn/${hour.weather[0].icon}@2x.png`;
-        const hourlyTemperature = numberNoDecimal(hour.main.temp);
+        const hourlyTemperature = convertNumberToNoDecimal(hour.main.temp);
         return { hourlyHour, hourlyIconSrc, hourlyTemperature };
       });
 
@@ -161,17 +161,17 @@ const fetchWeatherForecast = (url) => {
 
       // filter the array again to only contain the forecast for the five next days from this hour
       const hourNow = new Date().getHours();
-      const filteredArray = forecastArray.list.filter((item) =>
+      const filteredArray = forecastArray.list.filter(item =>
         item.dt_txt.includes(calculateHour(hourNow))
       );
 
       // map to create new and filtered array of weather forecast
-      const forecasts = filteredArray.map((forecast) => {
+      const forecasts = filteredArray.map(forecast => {
         const day = setTimestamp(forecast.dt).dayString;
         const date = setTimestamp(forecast.dt).dateString;
         const iconSrc = `https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
-        const temperature = numberNoDecimal(forecast.main.temp);
-        const wind = numberOneDecimal(forecast.wind.speed);
+        const temperature = convertNumberToNoDecimal(forecast.main.temp);
+        const wind = convertNumberToOneDecimal(forecast.wind.speed);
         return { day, date, iconSrc, temperature, wind };
       });
 
@@ -188,18 +188,18 @@ const fetchWeatherForecast = (url) => {
 };
 
 /* Function to round a number to one decimal */
-const numberOneDecimal = (number) => {
+const convertNumberToOneDecimal = number => {
   return Math.round(number * 10) / 10;
 };
 
 /* Function to round a number to no decimal */
-const numberNoDecimal = (number) => {
+const convertNumberToNoDecimal = number => {
   return Math.round(number);
 };
 
 /* Function to calculate the hour to only return data from the forecast from that
  hour. Used to filter the forecastArray */
-const calculateHour = (currentHour) => {
+const calculateHour = currentHour => {
   if (currentHour >= 0 && currentHour < 3) {
     return '00:00';
   } else if (currentHour >= 3 && currentHour < 6) {
@@ -221,7 +221,7 @@ const calculateHour = (currentHour) => {
 
 /* Function to convert a timestamp to a readable time, day, and date string. Returns
  an object */
-const setTimestamp = (date) => {
+const setTimestamp = date => {
   const timestamp = new Date(date * 1000);
   const hourString = timestamp.toLocaleTimeString([], {
     hour: '2-digit',
