@@ -1,9 +1,11 @@
 # Weather App
-This week's project is to build a simple weather web app that shows today's weather and temperature, and a 5-day forecast using a weather API.
+This project is done as a part of Technigo boot camp. This week's project was to build a simple weather web app that shows today's weather and temperature, and a 5-day forecast using a weather API.
 The site is responsive with mobile first in mind.
 
 ## The problem
-We had the option to choose between making our own design or trying to implement another design that we got from the brief. I liked the challenge of trying to get as close as possible to someone else's design and I chose Design nr 2. I've used flexbox to make the site responsive. I made small changes for the differnt media queries, but basically kept the same main design for all layouts. The bakground color, the icon and the main weather text changes depending on the main weather (clear, rain, snow and so on). 
+We had the option to choose between making our own design or trying to implement another design that we got from the brief. I liked the challenge of trying to get as close as possible to someone else's design. 
+
+I've used flexbox to make the site responsive. I made small changes for the differnt media queries, but basically kept the same main design for all layouts. The bakground color, the icon and the main weather text changes depending on the main weather (clear, rain, snow and so on). 
 
 I have used the fetch() method to get the data from the Open Weather API. I tried to keep the promises clean and structure and moved the if-statement and generateHtml-fucntion in to their own functions.
 
