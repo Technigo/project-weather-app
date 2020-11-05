@@ -16,6 +16,12 @@ If I had more time:
 - tried to re-write my js-code in a more optimal way. It feels like my if-statement could be more clean and structured.
 - I would have moved more code in to functions. 
 
+## TECH 
+- Javascript
+- API 
+- CSS
+- HTML 
+
 ## View it live
 
 https://angry-leakey-d4c2cc.netlify.app/
