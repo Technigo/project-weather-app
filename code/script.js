@@ -21,7 +21,7 @@ weatherDescription.innerHTML = json.weather[0].description
 weatherTemperature.innerHTML = json.main.temp.toFixed(0.5)
 
 //Add Icon
-const TodayIcon = () => {
+const todayIcon = () => {
   const conditions = json.weather[0].description;
   if (conditions === 'Clear') {
     return "./sun.png";
@@ -32,7 +32,7 @@ const TodayIcon = () => {
   }
 };
 
-document.getElementById('location').innerHTML += `<img class="todayicon" src=${TodayIcon()}>`;
+document.getElementById('location').innerHTML += `<img class="todayicon" src=${todayIcon()}>`;
 
 
 //weatherSunrise.innerHTML = new Date(json.sys.sunrise * 1000).toLocaleTimeString([]);
@@ -72,7 +72,11 @@ const apiWeek = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sw
     return response.json();
   })
   .then((json) => { 
-  console.log(json)
+  
+  })
+  .catch(err => {
+    console.error(err);
+
   
   const filteredWeek = json.list.filter(item => item.dt_txt.includes('12:00'));
   
