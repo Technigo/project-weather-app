@@ -1,4 +1,4 @@
-# Weather App&ensp;|&ensp;[View Live &#10555;](https://hello-weather.netlify.app/)
+# Weather App&ensp;|&ensp;[View Live &#10132;](https://hello-weather.netlify.app/)
 
 A Weather Web App built with "Vanilla" JavaScript using OpenWeather API.
 
