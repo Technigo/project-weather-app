@@ -1,4 +1,4 @@
-# Weather App
+# Weather App&ensp;|&ensp;[View Live &#10555;](https://hello-weather.netlify.app/)
 
 A Weather Web App built with "Vanilla" JavaScript using OpenWeather API.
 
@@ -20,5 +20,7 @@ Sunrise and sunset are converted from unix timestamp and then offset with the ti
 - JavaScript ES6
 
 ## View it live
+
+![mockup](cover.jpg)
 
 https://hello-weather.netlify.app/
