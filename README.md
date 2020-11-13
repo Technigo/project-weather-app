@@ -5,9 +5,7 @@ I've created a weather app in which you can see the current weather in Stockholm
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
-
-I had a few problems in this project. The hardest problem I faced was logging the 5 coming days from the API. I was able to log them but with the wrong temperature. I've done a lot of research but haven't been able to fix this yet. I'm striving to fix it as soon as possible.
+I had a few problems in this project. The hardest problem I faced was logging the 5 coming days from the API. What I'm striving to do next is to implement geolocation so the user can see the weather where he or she is at the moment based on their gps. 
 
 
 
