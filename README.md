@@ -24,4 +24,4 @@ If I had more time I would have added some animations and made the site more res
 
 ## View it live
 
-https://unicornweather.netlify.app/
+Check out the [weather](https://unicornweather.netlify.app/)
