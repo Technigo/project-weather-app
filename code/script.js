@@ -53,7 +53,7 @@ fetch(apiFiveDaysForecast)
     filteredWeek.forEach(weekday => {
       const date = new Date(weekday.dt * 1000);
       const dayName = date.toLocaleDateString('en-US', {
-        weekday: 'short'});
+        weekday: 'short'}) + ":"
 
       const temperature = Math.round(weekday.main.temp) + " °C"
 

@@ -29,7 +29,7 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 50px;
+  padding: 20px;
 }
 
 .weather-section {
@@ -45,15 +45,27 @@ h1 {
   border-radius: 20px;
 }
 
-.temperatures {
+.fiveDaysForecast {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.five-days {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  opacity: 0.6;
+  width: 230px;
+  padding: 20px;
+  color: white;
+  border-radius: 20px;
 }
 
 @media (min-width: 668px) and (max-width: 1024px) {
-
-/* body {
-  background-image: url("images/background_image_2.jpg");
-}    */
 
 .weather-section-box {
   display: flex;
@@ -78,10 +90,6 @@ h1 {
 
 @media (min-width: 1025px) {
 
-/* body {
-  background-image: url("images/background_image_3.jpg");
-} */
-
 .weather-section {
   width: 800px;
 }
@@ -91,10 +99,6 @@ h2 {
   font-weight: bold;
   margin-top: 3px;
 }
-
-/* p {
-  font-size: large;
-} */
 
 .city {
   font-size: 40px;
