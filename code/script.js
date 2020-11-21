@@ -16,7 +16,7 @@ fetch(apiStockholm)
 
 .then((weatherObject) => {
     city.innerHTML = weatherObject.name;
-    weatherDescription.innerHTML = weatherObject.weather[0].description.toUpperCase()
+    weatherDescription.innerHTML = weatherObject.weather[0].description
     temperatures.innerHTML = weatherObject.main.temp.toFixed(0.5) + " °C"
 
 const weatherSunrise = () => {
@@ -46,14 +46,17 @@ fetch(apiFiveDaysForecast)
     return response.json();    
   })
 
-  .then((weatherObject) => {  
-    console.log(weatherObject)
+  .then((weatherObject) => {
+
     const filteredWeek = weatherObject.list.filter(item => item.dt_txt.includes('12:00'));
-    
+
     filteredWeek.forEach(weekday => {
-      console.log(weekday)
-      const temperature = weekday.main.temp;
-      const date = new Date(weekday.main.dt_text);
-      fiveDays.innerHTML += `<p>${temperature}</p>`
+      const date = new Date(weekday.dt * 1000);
+      const dayName = date.toLocaleDateString('en-US', {
+        weekday: 'short'});
+
+      const temperature = Math.round(weekday.main.temp) + " °C"
+
+      fiveDays.innerHTML += `<p> ${dayName} ${temperature}</p>`
     })
   })
