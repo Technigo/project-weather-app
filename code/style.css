@@ -65,6 +65,10 @@ h1 {
   border-radius: 20px;
 }
 
+.sunrise {
+  font-weight: bold;
+}
+
 @media (min-width: 668px) and (max-width: 1024px) {
 
 .weather-section-box {
@@ -76,6 +80,10 @@ h1 {
 }
 
 .weather-section {
+  width: 450px;
+}
+
+.five-days {
   width: 450px;
 }
 
@@ -93,6 +101,11 @@ h1 {
 .weather-section {
   width: 800px;
 }
+
+.five-days {
+  width: 800px;
+}
+
 
 h2 {
   font-size: 40px;
