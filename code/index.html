@@ -9,46 +9,60 @@
 
   <body>
     <!-- MAIN SECTION, CURRENT WEATHER -->
-    <section class id="weather-wrap">
-      <h1>Toronto Forecast</h1>
-    </section>
-
-    <section class="main">
-      <img class="cn-img" src="./assets/cntower.png" height="100px" />
-      <div class id="city">
-        <p>Toronto, ON</p>
-      </div>
-      <div class id="date"></div>
-      <p>Current temperature:</p>
-      <div class id="temperature"></div>
-      <p>Visibility:</p>
-      <div class id="description"></div>
-      <img id="visibilityIcon" style="width: 40px" src="" />
-      <div class="highLow">
-        <p>H:</p>
-        <div class id="H"></div>
-        <p>L:</p>
-        <div id="L"></div>
-      </div>
-
-      <p>Feels Like:</p>
-      <div class id="feelsLike"></div>
-      <section class id="sunUpSunDown">
-        <p>Sunrise: <img src="./assets/sunrise.png" style="width: 20px" /></p>
-        <div class id="sunriseTO"></div>
-
-        <p>Sunset: <img src="./assets/sunset.png" style="width: 20px" /></p>
-        <div class id="sunsetTO"></div>
-      </section>
-      <hr />
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Project 6: Weather App</title>
+        <link rel="stylesheet" href="./style.css" />
+      </head>
+    
+      <body>
+        <section id="weather-wrap">
+          <h1>Toronto Forecast</h1>
+        </section>
+    
+        <section class="main">
+          <img class="cn-img" src="./assets/cntower.png" height="100px" />
+          <div id="city">
+            <p>Toronto, ON</p>
+          </div>
+          <div id="date"></div>
+          <p>Current temperature:</p>
+          <div id="temperature"></div>
+          <p>Visibility:</p>
+          <div id="description"></div>
+          <!--I tried manipulating the width of the image in css however, for some reason it just did not work-->
+          <img id="visibilityIcon" style="width: 40px" src="" />
+          <div class="high-low">
+            <p>H:</p>
+            <div id="H"></div>
+            <p>L:</p>
+            <div id="L"></div>
+          </div>
+    
+          <p>Feels Like:</p>
+          <div id="feelsLike"></div>
+          <section id="sunUpSunDown">
+            <p>
+              Sunrise: <img src="./assets/sunrise.png" style="width: 20px" />
+            </p>
+            <div id="sunriseTO"></div>
+    
+            <p>
+              Sunset: <img src="./assets/sunset.png" style="width: 20px" />
+            </p>
+            <div id="sunsetTO"></div>
+          </section>
+          <hr />
 
       <!-- FORECAST SECTION -->
-      <section class id="forecast-wrap">
+      <section id="forecast-wrap">
         <h1 class="forecast-h1">THE NEXT 5 DAYS</h1>
-        <div class id="weatherForecast"></div>
-        <div class id="forecastIcon"></div>
+        <div id="weatherForecast"></div>
+        <div id="forecastIcon"></div>
       </section>
     </section>
     <script src="./weather.js"></script>
   </body>
-</html>
+</html>;
