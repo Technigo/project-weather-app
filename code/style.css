@@ -1,4 +1,4 @@
-/* I left the "border: 1px dashed" lines due to debugging purposes. */
+
 
 /* 
 font-family: 'Work Sans', sans-serif;
@@ -8,10 +8,9 @@ Blue:    #0C60F2
 Yellow:  #F6C844 */
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    /* border: 1px dashed salmon; */
-    font-size: 19px;
+  box-sizing: border-box;
+  margin: 0;
+  font-size: 19px;
 }
 
 body {
@@ -21,12 +20,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   margin: 0;
-  background-color: #0C60F2;
-  color: rgba(255,255,255,0.87);
-  font-family: 'Work Sans', sans-serif;
+  background-color: #0c60f2;
+  color: rgba(255, 255, 255, 0.87);
+  font-family: "Work Sans", sans-serif;
   display: flex;
 }
-
 
 /* THIS IS THE GUY THAT HOLDS EVERYTHING IN PLACE */
 .container {
@@ -44,22 +42,20 @@ body {
 
 /* =================== everything here =================== */
 
-
 header {
   background-color: white;
-  /* border: 1px dashed salmon; */
-  height: 74px;  
-  color: #0C60F2;
+  height: 74px;
+  color: #0c60f2;
   padding: 16px;
 }
 
 .header-city-selector {
-  background-color: #0C60F2;
+  background-color: #0c60f2;
   padding: 20px 16px 16px 16px;
   position: absolute;
+  top: 0;
   right: 0;
   left: 0;
-  top: 0;
   height: 74px;
   z-index: 1;
   display: none;
@@ -71,14 +67,12 @@ header {
   margin: 0 auto;
   display: flex;
   align-items: center;
-  /* border: 1px dashed hotpink; */
 }
 
 .header-location {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  /* border: 1px dashed #0C60F2; */
   overflow: hidden;
 }
 
@@ -90,8 +84,8 @@ header {
 .input-city {
   border: 0;
   height: 34px;
-  font-family: 'Work Sans', sans-serif;
-  color: #0C60F2;
+  font-family: "Work Sans", sans-serif;
+  color: #0c60f2;
   font-weight: 800;
   border-radius: 0;
 }
@@ -104,41 +98,39 @@ input:focus {
   outline: 0;
 }
 
-
-
 .button-primary {
-  background: #FFFFFF;
-  box-shadow: 0px 3px 0px #0C60F2;
-  border: 2px solid #0C60F2;
+  background: #ffffff;
+  box-shadow: 0px 3px 0px #0c60f2;
+  border: 2px solid #0c60f2;
 }
 
 .button-primary:hover {
   background-color: white;
-  border: 4px solid #0C60F2;
+  border: 4px solid #0c60f2;
 }
 
 .button-primary:focus {
   background-color: white;
-  border: 4px solid #0C60F2;
+  border: 4px solid #0c60f2;
 }
 
 .button-primary:active {
-  background-color: #0C60F222;
+  background-color: #0c60f222;
 }
 
 .button-secondary {
-  background: #0C60F2;
-  box-shadow: 0px 3px 0px #FFFFFF;
-  border: 2px solid #FFFFFF;
+  background: #0c60f2;
+  box-shadow: 0px 3px 0px #ffffff;
+  border: 2px solid #ffffff;
 }
 
 .button-secondary:hover {
-  background-color: #0C60F2;
+  background-color: #0c60f2;
   border: 4px solid white;
 }
 
 .button-secondary:focus {
-  background-color: #0C60F2;
+  background-color: #0c60f2;
   border: 4px solid white;
 }
 
@@ -148,7 +140,7 @@ input:focus {
 
 button {
   margin-left: 8px;
-  padding: 0px;
+  padding: 0;
   width: 36px;
   height: 34px;
   box-sizing: border-box;
@@ -159,7 +151,6 @@ button:focus {
 }
 
 button:active {
-
   position: relative;
   top: 4px;
   box-shadow: none;
@@ -172,10 +163,7 @@ button img {
   width: 16px;
 }
 
-
-
 main {
-  /* border: 1px dashed aquamarine; */
   display: flex;
   flex-grow: 1;
   padding: 16px;
@@ -198,7 +186,8 @@ main {
 }
 
 @keyframes MoveUpDown {
-  0%, 100% {
+  0%,
+  100% {
     top: 40px;
   }
   50% {
@@ -212,23 +201,19 @@ main {
 }
 
 .main-weather-top {
-  /* border: 1px dashed salmon; */
   flex-direction: row;
   width: 50%;
 }
 
 .weather-top-info {
-  /* border: 1px dashed lime; */
-  
 }
 
 .weather-top-suntimes {
-  /* border: 1px dashed lime; */
   margin-top: 24px;
 }
 
 .weather-header {
-  color: #F6C844;
+  color: #f6c844;
   font-weight: 800;
   text-transform: uppercase;
   font-size: 24px;
@@ -240,7 +225,6 @@ main {
 }
 
 .sun-time {
-  /* border: 1px dashed darkviolet; */
   margin-right: 24px;
 }
 
@@ -250,7 +234,6 @@ main {
 }
 
 .main-weather-bottom {
-  /* border: 1px dashed sandybrown; */
 }
 
 .temp-big {
@@ -258,7 +241,6 @@ main {
   font-weight: 100;
   line-height: 150px;
 }
-
 
 /* (This is the celsius sign) */
 .temp-big-but-slightly-smaller {
@@ -269,9 +251,7 @@ main {
   line-height: 60px;
 }
 
-
 footer {
-  /* border: 1px dashed goldenrod; */
   height: 212px;
   display: flex;
   flex-direction: column;
@@ -280,7 +260,7 @@ footer {
 
 .footer-top {
   height: 24px;
-  background-image: url(./assets/clouds-top-border.svg);
+  background-image: url('./assets/clouds-top-border.svg');
   background-repeat: repeat;
   background-size: contain;
 }
@@ -289,11 +269,8 @@ footer {
   background-color: white;
   flex-grow: 1;
   padding: 16px;
-  color: #0C60F2;
+  color: #0c60f2;
 }
-
-/* =================== everything ends here =================== */
-
 
 svg {
   fill: #fff;
@@ -308,18 +285,15 @@ svg {
 }
 
 .forecast-date {
-  /* border: 1px dashed hotpink; */
   width: 50%;
 }
 
 .forecast-temp {
-  /* border: 1px dashed hotpink; */
   width: 20%;
   font-weight: 600;
 }
 
 .forecast-weather {
-  /* border: 1px dashed hotpink; */
   width: 30%;
   text-align: right;
 }
@@ -328,9 +302,6 @@ svg {
   max-width: 375px;
   margin: 0 auto;
 }
-
-
-
 
 /* ===================== */
 
@@ -341,38 +312,37 @@ Breakpoints:
 >1024     DESKTOP
 */
 
-
 /* "The one key thing to remember when trying to position a child div relative to it’s parent is that the child should be given the CSS property position:absolute; and the parent set to either position:absolute; or position:relative;" */
-
 
 @media only screen and (min-width: 407px) {
   /* For desktop: */
 
-.main-content {
-  position: relative;
-}
-
-main {
-  max-height: 580px;
-}
-
-footer {
-  flex-grow: 1;
-}
-
-.image-hero-weather-container {
-  position: absolute;  right: -20px;
-  z-index: -1;
-  animation: MoveUpDown 4s ease-in-out infinite;
-}
-
-@keyframes MoveUpDown {
-  0%, 100% {
-    top: 0px;
+  .main-content {
+    position: relative;
   }
-  50% {
-    top: 80px;
-  }
-}
 
+  main {
+    max-height: 580px;
+  }
+
+  footer {
+    flex-grow: 1;
+  }
+
+  .image-hero-weather-container {
+    position: absolute;
+    right: -20px;
+    z-index: -1;
+    animation: MoveUpDown 4s ease-in-out infinite;
+  }
+
+  @keyframes MoveUpDown {
+    0%,
+    100% {
+      top: 0px;
+    }
+    50% {
+      top: 80px;
+    }
+  }
 }

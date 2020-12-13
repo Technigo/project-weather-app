@@ -23,7 +23,7 @@ const toggleCountrySelector = () => {
     inputCity.value = "";
     inputCity.select();
   } else {
-    citySelector.style.display = "none"; 
+    citySelector.style.display = "none";
   }
 }
 
@@ -34,8 +34,8 @@ const formatTime = (timestamp) => {
 
   //Only use the HH:MM's of the readableTime
   readableTime = readableTime.toLocaleTimeString('sv-SE', {
-    hour: '2-digit', 
-    minute:'2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
     hour12: false
   });
   return readableTime;
@@ -43,7 +43,7 @@ const formatTime = (timestamp) => {
 
 // Function takes a Kelvin value, and returns a celsius value. 
 const kelvinToCelsius = (temp) => {
-  let celsius = Math.round(temp-273.15);
+  let celsius = Math.round(temp - 273.15);
   return celsius
 }
 
@@ -53,68 +53,67 @@ const fetchWeatherImage = (weather) => {
   // Available: Clouds, Clear, Snow, Rain, Drizzle, Thunderstorm. (MIST IS MISSING)
   const image = document.getElementById("weatherImage");
 
-  if(weather === 'Clouds') {
+  if (weather === 'Clouds') {
     console.log("It's cloudy today.");
     image.src = "./assets/img_cloud.svg";
-    
-  } else if(weather === 'Clear') {
+
+  } else if (weather === 'Clear') {
     console.log("Sun's out!");
     image.src = "./assets/img_sun.svg";
-    
-  } else if(weather === 'Snow') {
+
+  } else if (weather === 'Snow') {
     console.log("Brrr – snowy now.");
     image.src = "./assets/img_cloud.svg";
-    
-  } else if(weather === 'Rain') {
+
+  } else if (weather === 'Rain') {
     console.log("Best bring an umbrella, son, cuz' it's pouring down.");
     image.src = "./assets/img_rain.svg";
-    
-  } else if(weather === 'Drizzle') {
+
+  } else if (weather === 'Drizzle') {
     console.log("My rap name would be 'Young Drizzle'");
     image.src = "./assets/img_rain.svg";
-    
-  } else if(weather === 'Thunderstorm') {
+
+  } else if (weather === 'Thunderstorm') {
     console.log("Oh hey, it's Thor! ⚡️");
     image.src = "./assets/img_rain.svg";
-    
+
   } else {
     console.log("This... This is a weather type we've never seen before. Call the president.")
     image.src = "./assets/img_sun.svg";
-    
+
   }
 }
 
 // Returns an image depending on the weather. Used in the forecast. Function is named after old purpose.
 const fetchForecastEmojis = (weather) => {
-  if(weather === 'Clouds') {
+  if (weather === 'Clouds') {
     // return "☁️";
     return "<img src='./assets/weather-icons/ic_16_cloud.svg'";
 
-  } else if(weather === 'Clear') {
+  } else if (weather === 'Clear') {
     // return "☀️";
     return "<img src='./assets/weather-icons/ic_16_sun.svg'";
-  
-  } else if(weather === 'Snow') {
+
+  } else if (weather === 'Snow') {
     // return "❄️";
     return "<img src='./assets/weather-icons/ic_16_snow.svg'";
-  
-  } else if(weather === 'Rain') {
+
+  } else if (weather === 'Rain') {
     // return "💦";
     return "<img src='./assets/weather-icons/ic_16_rain.svg'";
-  
-  } else if(weather === 'Drizzle') {
+
+  } else if (weather === 'Drizzle') {
     // return "💧";
     return "<img src='./assets/weather-icons/ic_16_rain.svg'";
 
-  } else if(weather === 'Thunderstorm') {
+  } else if (weather === 'Thunderstorm') {
     // return "⚡️";
     return "<img src='./assets/weather-icons/ic_16_lightning.svg'";
-  
+
   } else {
     return "🤯";
   }
 }
-
 
 // Function which fetches current weather data from a city, and populates the main objects in the DOM.
 const fetchCurrentWeather = (cityName) => {
@@ -125,7 +124,7 @@ const fetchCurrentWeather = (cityName) => {
     city.innerHTML = weatherObject.name;
     country.innerHTML = getCountryName(weatherObject.sys.country);
     temperature.innerHTML = Math.round(weatherObject.main.temp);
-    tempFeelsLike.innerHTML = Math.round(weatherObject.main.feels_like)+"°";
+    tempFeelsLike.innerHTML = Math.round(weatherObject.main.feels_like) + "°";
     weatherType.innerHTML = weatherObject.weather[0].main;
     description.innerHTML = weatherObject.weather[0].description;
     sunrise.innerHTML = formatTime(weatherObject.sys.sunrise);
@@ -145,20 +144,20 @@ const fetchForecast = (cityName) => {
     const fiveDayList = [];
 
     // Get every 8th object from the forecastObject (since it's in 3-hour intervals), and push them into fiveDayList.
-    for (let i = 7; i<forecastObject.list.length; i+=8) {
+    for (let i = 7; i < forecastObject.list.length; i += 8) {
       fiveDayList.push(forecastObject.list[i]);
     }
 
     // Populate the DOM with data fetched. First, create a var for the section "forecastBox"
     const forecastBox = document.getElementById("forecastBox");
-    
+
     // Need to clear the forecastBox, since otherwise switching cities won't work (since the forEach only *adds* stuff)
     forecastBox.innerHTML = ``
     console.log(fiveDayList);
 
     // For each element in the new array, extract the date, the temperature, and the weather. 
-    fiveDayList.forEach(element => { 
-      const date = element.dt_txt.slice(0,10);
+    fiveDayList.forEach(element => {
+      const date = element.dt_txt.slice(0, 10);
       const temp = element.main.temp;
       const weather = element.weather[0].main;
 
@@ -171,34 +170,32 @@ const fetchForecast = (cityName) => {
         </div>
         <span class="forecast-weather">${weather}</span>        
         </div>`
-
     });
   })
-} 
+}
 
 // THIS IS WHERE THE MAGIC HAPPENS 👇.
 const fetchWeather = (city) => {
   fetchForecast(city);
   fetchCurrentWeather(city);
-  
+
   toggleCountrySelector();
 }
 
-// CODE STARTS HERE
 fetchWeather(cityName);
 
 // This line of code disables submitting through the enter key (since I did an ugly-hack for the city selector). Probably bad to re-route the submit function like this, but time was short.
 // Modified it to call the fetchWeather function upon pressing Enter.
 // https://stackoverflow.com/questions/5629805/disabling-enter-key-for-form/37241980
-window.addEventListener('keydown',function(e){
-  if(e.keyIdentifier=='U+000A'||e.keyIdentifier=='Enter'||e.keyCode==13)  {
-    if(e.target.nodeName=='INPUT'&&e.target.type=='text'){
+window.addEventListener('keydown', function (e) {
+  if (e.keyIdentifier == 'U+000A' || e.keyIdentifier == 'Enter' || e.keyCode == 13) {
+    if (e.target.nodeName == 'INPUT' && e.target.type == 'text') {
       fetchWeather(document.getElementById('inputCity').value);
       e.preventDefault();
       return false;
     }
   }
-},true);
+}, true);
 
 
 
