@@ -13,4 +13,4 @@ I wanted to do clean and short code. I think I managed to e.g display the foreca
 UPDATE: I've fixed the serach input so that users can search by city name. 
 ## View it live
 
-hhttps://github.com/stjernberg/project-weather-app
+https://github.com/stjernberg/project-weather-app
