@@ -9,7 +9,5 @@ const toggleMenu = () => {
     navItems.forEach(item => item.classList.toggle("show"))
 }
 
-menuBtn.addEventListener("click", toggleMenu);
-
 // Open or close menu by clicking or touching
 menuBtn.addEventListener("click", toggleMenu);

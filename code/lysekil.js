@@ -8,16 +8,14 @@ const toggleMenu = () => {
     menuBranding.classList.toggle("show");
     navItems.forEach(item => item.classList.toggle("show"))
 }
-
 menuBtn.addEventListener("click", toggleMenu);
 
 //Todays weather api
 const apiLysekilToday = "https://api.openweathermap.org/data/2.5/weather?q=Lysekil,Sweden&units=metric&APPID=de78a234a90e490fde95f979d2491105";
-console.log(apiLysekilToday);
 
 //Forecast api
 const apiLysekilForecast = "https://api.openweathermap.org/data/2.5/forecast?q=Lysekil,Sweden&units=metric&appid=de78a234a90e490fde95f979d2491105";
-console.log(apiLysekilForecast);
+
 
 // The function returns a color depending on the temperature 
 coloringFunction = (temp) => {
@@ -68,7 +66,6 @@ const todaysLysekil = document.getElementById('todaysLysekil');
 fetch(apiLysekilToday).then((response) => {
     return response.json()
 }).then((json) => {
-    console.log(json)
 
     // Declaring the icon
     const icon = `<img src=https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png></img>`;
@@ -93,10 +90,8 @@ fetch(apiLysekilForecast).then((response) => {
     return response.json()
 })
     .then((forecast) => {
-        console.log(forecast)
         const filteredForecast = forecast.list.filter(item => item.dt_txt.includes('12:00'))
 
-        console.log(filteredForecast)
         filteredForecast.forEach(item => {
             let temperature = (item.main.temp).toFixed(1);
             //* Multiply by 1000 because the data is given to us in UNIX which is in seconds, but Javascript uses milliseconds internally, this way we get the right date. */

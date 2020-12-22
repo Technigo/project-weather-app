@@ -75,10 +75,8 @@ const success = (position) => {
         return response.json()
     })
         .then((geoforecast) => {
-            console.log(geoforecast);
             const filteredGeoForecast = geoforecast.list.filter(item => item.dt_txt.includes('12:00'))
 
-            console.log(filteredGeoForecast);
             filteredGeoForecast.forEach(item => {
                 let temperature = (item.main.temp).toFixed(1);
                 // Multiply by 1000 because the data is given to us in UNIX which is in seconds, but Javascript uses milliseconds internally, this way we get the right date. */
@@ -91,7 +89,4 @@ const success = (position) => {
         })
 
 }
-
-console.log(success);
-
 navigator.geolocation.getCurrentPosition(success);

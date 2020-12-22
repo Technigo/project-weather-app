@@ -19,7 +19,7 @@ header {
 }
 
 .main {
-  background: url(background.jpg);
+  background: url("background.jpg");
   height: fit-content;
 }
 
@@ -170,8 +170,8 @@ a {
   text-align: center;
 }
 
-.forecast, .geoforecast, .forecastGeo {
-  padding-top: 0px;
+.forecast, .geoforecast, .forecast-geo {
+  padding-top: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -196,30 +196,34 @@ a {
     margin: 35px;
     border-bottom: 1px white 1.5;
   }
-  .todaysWeather, .todaysLysekil {
+  .todays-weather, .todaysLysekil {
     font-size: 25px;
     text-align: center;
   }
-  .geodaytime, .daytime, .forecastWeather, .forecastLysekil {
+  .geodaytime, .daytime, .forecast-weather, .forecastLysekil {
     font-size: 25px;
   }
-  /* Desktop device */
-  @media (min-width: 1025px) {
-    .welcomeMessage {
-      padding-top: 200px;
-      margin-left: 200px;
-      font-size: 130px;
-    }
-    .todays, .geo {
-      padding-top: 20px;
-      padding-bottom: 20px;
-      margin: 35px;
-      border-bottom: 1px white 1.5;
-    }
-    .todaysWeather, .todaysLysekil {
-      font-size: 30px;
-      text-align: center;
-    }
-    .geodaytime, .daytime, .forecastWeather, .forecastLysekil {
-      font-size: 25px;
-    }
+}
+
+/* Desktop device */
+
+@media (min-width: 1025px) {
+  .welcomeMessage {
+    padding-top: 200px;
+    margin-left: 200px;
+    font-size: 130px;
+  }
+  .todays, .geo {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 35px;
+    border-bottom: 1px white 1.5;
+  }
+  .todaysWeather, .todaysLysekil {
+    font-size: 30px;
+    text-align: center;
+  }
+  .geodaytime, .daytime, .forecast-weather, .forecastLysekil {
+    font-size: 25px;
+  }
+}
