@@ -187,7 +187,7 @@ tr:nth-child(odd) {
   h5 {
     font-size: 20px;
   }
-  #nextWeeksWeatherId {
+  .nextWeeksWeather-class  {
     height: 420px;
     width: 410px;
     border-collapse: collapse;
