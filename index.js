@@ -8,7 +8,6 @@ fetch(fetchWeatherToday)
         return response.json();
     })
     .then((json) => {
-        console.log(json);
         const todaysImageId = json.weather[0].icon;
         todaysImage.src = `./images/${todaysImageId}.gif`;
 
@@ -23,7 +22,6 @@ fetch(fetchWeatherToday)
     });
 
 const formatTime = (unixtime) => {
-    console.log(unixtime);
     const date = new Date(unixtime * 1000)
     const hours = date.getHours();
     const minutes = "0" + date.getMinutes();
@@ -31,9 +29,6 @@ const formatTime = (unixtime) => {
 
     const formattedTime = hours + ':' + minutes.substr(-2);
     return formattedTime;
-
-
-
 };
 
 

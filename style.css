@@ -2,28 +2,30 @@ body {
   margin: 0;
   background-image: url('https://media3.giphy.com/media/4N1FZFE5AGO3qrUGkw/source.gif');
   background-size: auto;
+  color: rgb(255, 255, 255);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.todaysWeather {
+.todays-weather {
   text-align: center;
   line-height: 1px;
   padding-top: 34px;
 }
 
-.sunTypes {
+.suntypes {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px 0px 0px 0px;
+  padding: 20px 0 0 0;
 }
 
-.sunTypes p {
-  padding: 10px 20px 0px;
+.suntypes p {
+  padding: 10px 20px 0 0;
   line-height: 0px;
   color: rgb(255, 255, 255);
 }
 
-.weatherBoard {
+.weather-board {
   display: flex;
   flex-direction: column;
   margin: 60px auto;
@@ -44,39 +46,28 @@ body {
   height: 190px;
   width: 200px;
   position: relative;
-  top: 0px;
+  top: 0;
   left: 180px;
 }
 
 h3 {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   text-align: left;
 }
 
 h2 {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   padding-top: 40px;
   font-size: 70px;
-  color: rgb(255, 255, 255);
 }
 
 h4 {
-  color: rgb(255, 255, 255);
   font-size: 40px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 h5 {
-  color: rgb(255, 255, 255);
   font-size: 15px;
 }
 
-h1 {
-  color: rgb(255, 255, 255);
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-#nextWeeksWeatherId {
+.nextWeeksWeather-class {
   height: 260px;
   width: 200px;
   font-family: arial, sans-serif;
@@ -93,7 +84,6 @@ td, th {
   text-align: left;
   align-content: flex-start;
   padding: 15px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 tr:nth-child(odd) {
@@ -108,7 +98,7 @@ tr:nth-child(odd) {
     top: 0px;
     left: 450px;
   }
-  .weatherBoard {
+  .weather-board {
     display: flex;
     flex-direction: column;
     margin: 60px auto;
@@ -118,13 +108,8 @@ tr:nth-child(odd) {
     border-radius: 10px;
     font-family: arial, sans-serif;
     position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    opacity: 0.9;
   }
-  #nextWeeksWeatherId {
+  .nextWeeksWeather-class {
     height: 400px;
     width: 420px;
     font-family: arial, sans-serif;
@@ -136,25 +121,20 @@ tr:nth-child(odd) {
     justify-content: space-around;
   }
   td, th {
-    color: rgb(255, 255, 255);
     font-size: 30px;
     text-align: left;
     align-content: flex-start;
     padding: 15px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
   .weather-image {
     height: 50px;
     width: 50px;
   }
   h2 {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     padding-top: 40px;
     font-size: 90px;
-    color: rgb(255, 255, 255);
   }
   h5 {
-    color: rgb(255, 255, 255);
     font-size: 25px;
   }
 }
@@ -165,9 +145,9 @@ tr:nth-child(odd) {
     background-image: url('https://media3.giphy.com/media/4N1FZFE5AGO3qrUGkw/source.gif');
     background-size: cover;
   }
-  .sunTypes p {
+  .suntypes p {
     font-size: 15px;
-    padding: 10px 20px 0px;
+    padding: 10px 20px 0 0;
     line-height: 0px;
     color: rgb(255, 255, 255);
   }
@@ -183,44 +163,33 @@ tr:nth-child(odd) {
     font-family: arial, sans-serif;
     position: absolute;
     top: 0;
-    left: 0;
-    bottom: 0;
     right: 0;
+    bottom: 0;
+    left: 0;
     opacity: 0.9;
   }
   #todaysImage {
     height: 300px;
     width: 300px;
     position: relative;
-    top: 0px;
+    top: 0;
     left: 800px;
   }
   h3 {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: left;
   }
   h2 {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 70px;
-    color: rgb(255, 255, 255);
   }
   h4 {
-    color: rgb(255, 255, 255);
     font-size: 40px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
   h5 {
-    color: rgb(255, 255, 255);
     font-size: 20px;
-  }
-  h1 {
-    color: rgb(255, 255, 255);
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
   #nextWeeksWeatherId {
     height: 420px;
     width: 410px;
-    font-family: arial, sans-serif;
     border-collapse: collapse;
     display: flex;
     flex-direction: column;
@@ -229,11 +198,9 @@ tr:nth-child(odd) {
     justify-content: space-around;
   }
   td, th {
-    color: rgb(255, 255, 255);
     font-size: 20px;
     text-align: left;
     align-content: flex-start;
     padding: 15px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
 }
