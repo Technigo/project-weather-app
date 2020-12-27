@@ -151,13 +151,13 @@ tr:nth-child(odd) {
     line-height: 0px;
     color: rgb(255, 255, 255);
   }
-  .weatherBoard {
+  .weather-board {
     display: flex;
     padding-top: 0px;
     flex-direction: column;
     margin: 60px auto;
     background-color: #65cdfe;
-    width: 750px;
+    width: 500px;
     height: 850px;
     border-radius: 10px;
     font-family: arial, sans-serif;
