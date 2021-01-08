@@ -13,5 +13,5 @@ If I had more time I would have:
 
 ## View it live
 
-Link to the project on Netlify: https://clever-chandrasekhar-beb443.netlify.app/
+Link to the project on Netlify: https://annas-weather-project.netlify.app/
 
