@@ -13,7 +13,7 @@ const currentLocationText = document.getElementById("currentLocationText")
 const API_KEY = "fd4c88b297db1abd3f5aaffe170147b6";
 let city = "Stockholm";
 
-const setCity = (city) => {
+const handleCityInput = (city) => {
   let API_url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&lang=se&APPID=" + API_KEY;
   fetchWeatherData(API_url);
   currentLocationText.innerHTML = city
@@ -25,18 +25,15 @@ const fetchWeatherData = (API_url) => {
     return response.json()
   })
     .then((json) => {
-    setCurrent(json)
+    setCurrentWeather(json)
   })
 }
 
-const setCurrent = (weatherData) => {
-  let sunset, sunrise
-
-  sunrise = weatherData.sys.sunrise
-  currentSunriseOrSunset(sunrise,"rise")
-  sunset = weatherData.sys.sunset
-  currentSunriseOrSunset(sunset, "set")
-
+const setCurrentWeather = (weatherData) => {
+  let sunrise = weatherData.sys.sunrise
+  let sunset = weatherData.sys.sunset
+  currentSunriseSunset(sunrise, "rise")
+  currentSunriseSunset(sunset, "set")
   currentTemperature(weatherData);
   currentWeatherCondition(weatherData)
 }
@@ -45,17 +42,18 @@ const currentTemperature = (weatherData) => {
   temperature.innerHTML = `${weatherData.main.temp} &deg;C`
 }
 
-const currentSunriseOrSunset = (sun, condition) => {
-  let setSun = new Date(sun * 1000);
-  let hours = "0" + setSun.getHours();
-  let minutes = "0" + setSun.getMinutes();
+const currentSunriseSunset = (sun, condition) => {
+    condition === "rise"
+    ? sunrise.innerHTML = `Soluppgång: ${toLocalTime(sun)}`
+    : sunset.innerHTML = `Solnedgång: ${toLocalTime(sun)}`
+}
 
-  condition === "rise" ?
-    (
-      sunrise.innerHTML = `Sunrise: ${hours.substr(-2)}:${minutes.substr(-2)}`
-    ) : (
-      sunset.innerHTML = `Sunset: ${hours.substr(-2)}:${minutes.substr(-2)}`
-    );
+const toLocalTime = (sun) => {
+  let unixToDigit = new Date(sun*1000).toLocaleTimeString([], 
+    {
+      hour: '2-digit', minute:'2-digit', hour12: false
+    });
+  return unixToDigit;
 }
 
 const currentWeatherCondition = (weatherData) => {
@@ -68,5 +66,5 @@ const currentWeatherCondition = (weatherData) => {
 
 searchLocationBtn.addEventListener("click", (event) => {
   event.preventDefault()
-  setCity(userLocationInput.value)
+  handleCityInput(userLocationInput.value)
 })
