@@ -1,0 +1,43 @@
+{
+  "cod": "200",
+  "message": 0,
+  "cnt": 40,
+
+"list": [
+      {
+        "dt": 1613422800,
+        "main": {
+          "temp": -7.16,
+          "feels_like": -11.92,
+          "temp_min": -7.57,
+          "temp_max": -7.16,
+          "pressure": 1026,
+          "sea_level": 1026,
+          "grnd_level": 1021,
+          "humidity": 94,
+          "temp_kf": 0.41
+        },
+        "weather": [
+          {
+            "id": 802,
+            "main": "Clouds",
+            "description": "scattered clouds",
+            "icon": "03n"
+          }
+        ],
+        "clouds": {
+          "all": 43
+        },
+        "wind": {
+          "speed": 2.67,
+          "deg": 239
+        },
+        "visibility": 10000,
+        "pop": 0,
+        "sys": {
+          "pod": "n"
+        },
+        "dt_txt": "2021-02-15 21:00:00"
+      }
+      ]
+}
