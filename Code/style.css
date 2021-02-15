@@ -1,3 +1,8 @@
 body {
     text-align: center;
 }
+
+
+dt {
+    margin: 20px;
+}
