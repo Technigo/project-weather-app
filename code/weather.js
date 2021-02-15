@@ -21,31 +21,39 @@ const setCity = (city) => {
 }
 
 const fetchWeatherData = (API_url) => {
+  
   fetch(API_url)
     .then((response) => {
     return response.json()
   })
     .then((json) => {
-    currentTemperature(json);
-    let sunrise = json.sys.sunrise
-    let sunset = json.sys.sunset
-    currentSunriseOrSunset(sunrise)
-    currentSunriseOrSunset(sunset)
-    currentWeatherCondition(json)
-    weatherConditionIcon(json)
+    setCurrent(json)
   })
+}
+
+const setCurrent = (weatherData) => {
+  let sunset, sunrise
+
+  sunrise = weatherData.sys.sunrise
+  currentSunriseOrSunset(sunrise,"rise")
+  sunset = weatherData.sys.sunset
+  currentSunriseOrSunset(sunset, "set")
+
+  currentTemperature(weatherData);
+  currentWeatherCondition(weatherData)
+  weatherConditionIcon(weatherData)   
 }
 
 const currentTemperature = (weatherData) => {
   temperature.innerHTML = `${weatherData.main.temp} &deg;C`
 }
 
-const currentSunriseOrSunset = (sun) => {
+const currentSunriseOrSunset = (sun, condition) => {
   let setSun = new Date(sun * 1000);
   let hours = "0" + setSun.getHours();
   let minutes = "0" + setSun.getMinutes();
 
-  hours < 014 ?
+  condition === "rise" ?
     (
       sunrise.innerHTML = `Sunrise: ${hours.substr(-2)}:${minutes.substr(-2)}`
     ) : (
