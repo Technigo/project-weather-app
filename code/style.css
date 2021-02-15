@@ -35,6 +35,24 @@ body {
   color: #31326f;
 }
 
+.search-location {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-location-inner {
+  display: flex;
+  height: 30px;
+}
+
+.search-location input {
+margin: 0;
+}
+
+.search-location-btn {
+  height: 30px;
+}
+
 .current-location-wrapper {
   display: flex;
   align-items: center;

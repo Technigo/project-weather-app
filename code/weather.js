@@ -1,22 +1,31 @@
 // All the DOM selectors stored as short variables
 const shortDescription = document.getElementById("shortDescription")
-const body = document.getElementById("body")
 const temperature = document.getElementById("temperature")
 const sunrise = document.getElementById("sunrise")
 const sunset = document.getElementById("sunset")
 const description = document.getElementById("description")
 const forecast = document.getElementById("forecast")
-const icon = document.getElementById("icon")
 const weatherIcon = document.getElementById("weatherIcon");
+const userLocationInput = document.getElementById("userLocationInput")
+const searchLocationBtn = document.getElementById("searchLocationBtn")
+const currentLocationText = document.getElementById("currentLocationText")
 // Global variables
 const API_KEY = "fd4c88b297db1abd3f5aaffe170147b6";
-let city = "Stockholm";
-const API_URL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&lang=se&APPID=" + API_KEY;
 
-const fetchWeatherData = () => {
-  fetch(API_URL).then((response) => {
+let city = "Stockholm";
+
+const setCity = (city) => {
+  let API_url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&lang=se&APPID=" + API_KEY;
+  fetchWeatherData(API_url);
+  currentLocationText.innerHTML = city
+}
+
+const fetchWeatherData = (API_url) => {
+  fetch(API_url)
+    .then((response) => {
     return response.json()
-  }).then((json) => {
+  })
+    .then((json) => {
     currentTemperature(json);
     let sunrise = json.sys.sunrise
     let sunset = json.sys.sunset
@@ -28,7 +37,7 @@ const fetchWeatherData = () => {
 }
 
 const currentTemperature = (weatherData) => {
-  temperature.innerHTML = weatherData.main.temp
+  temperature.innerHTML = `${weatherData.main.temp} &deg;C`
 }
 
 const currentSunriseOrSunset = (sun) => {
@@ -53,4 +62,9 @@ const weatherConditionIcon = (weatherData) => {
   weatherIcon.src = "https://openweathermap.org/img/wn/" + wIcon + "@2x.png"
 }
 
-fetchWeatherData();
+
+
+searchLocationBtn.addEventListener("click", (event) => {
+  event.preventDefault()
+  setCity(userLocationInput.value)
+})

@@ -14,13 +14,20 @@
 
 
 <body id="body" class="sunny">
-
+<form class="search-location">
+  
+  <label for="userLocationInput">What do you search for?</label>
+  <div class = "search-location-inner">
+  <input type="text" id="userLocationInput" name="userLocationInput" />
+  <button id="searchLocationBtn" class="search-location-btn">GO!</button>
+</div>
+</form>
 
   <section class="today">
     <div class="todays-numbers">
       <div class="current-location-wrapper" id="currentLocationWrapper">
         <img id="weatherIcon" src="" />
-        <h1 id="currentLocationText">STOCKHOLM</h1>
+        <h1 id="currentLocationText"></h1>
       </div>
       <p>
         <span id="shortDescription"></span> | <span id="temperature"></span>
