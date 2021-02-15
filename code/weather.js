@@ -11,7 +11,6 @@ const searchLocationBtn = document.getElementById("searchLocationBtn")
 const currentLocationText = document.getElementById("currentLocationText")
 // Global variables
 const API_KEY = "fd4c88b297db1abd3f5aaffe170147b6";
-
 let city = "Stockholm";
 
 const setCity = (city) => {
@@ -21,7 +20,6 @@ const setCity = (city) => {
 }
 
 const fetchWeatherData = (API_url) => {
-  
   fetch(API_url)
     .then((response) => {
     return response.json()
@@ -41,7 +39,6 @@ const setCurrent = (weatherData) => {
 
   currentTemperature(weatherData);
   currentWeatherCondition(weatherData)
-  weatherConditionIcon(weatherData)   
 }
 
 const currentTemperature = (weatherData) => {
@@ -62,14 +59,11 @@ const currentSunriseOrSunset = (sun, condition) => {
 }
 
 const currentWeatherCondition = (weatherData) => {
-  shortDescription.innerHTML = weatherData.weather[0].description
-}
-
-const weatherConditionIcon = (weatherData) => {
   let wIcon = weatherData.weather[0].icon
+
+  shortDescription.innerHTML = weatherData.weather[0].description
   weatherIcon.src = "https://openweathermap.org/img/wn/" + wIcon + "@2x.png"
 }
-
 
 
 searchLocationBtn.addEventListener("click", (event) => {
