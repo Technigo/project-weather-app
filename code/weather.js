@@ -32,6 +32,7 @@ const fetchWeatherData = (API_url) => {
 const setCurrentWeather = (weatherData) => {
   let sunrise = weatherData.sys.sunrise
   let sunset = weatherData.sys.sunset
+
   currentSunriseSunset(sunrise, "rise")
   currentSunriseSunset(sunset, "set")
   currentTemperature(weatherData);
@@ -49,11 +50,11 @@ const currentSunriseSunset = (sun, condition) => {
 }
 
 const toLocalTime = (sun) => {
-  let unixToDigit = new Date(sun*1000).toLocaleTimeString([], 
+  let unixToLocalTime = new Date(sun*1000).toLocaleTimeString([], 
     {
       hour: '2-digit', minute:'2-digit', hour12: false
     });
-  return unixToDigit;
+  return unixToLocalTime;
 }
 
 const currentWeatherCondition = (weatherData) => {
