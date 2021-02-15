@@ -1,0 +1,39 @@
+//Object { coord: {…}, weather: (1) […], base: "stations", main: {…}, visibility: 10000, wind: {…}, clouds: {…}, dt: 1613417772, sys: {…}, timezone: 3600, … }
+  app.js:12:13
+  
+GEThttp://127.0.0.1:5500/favicon.ico
+[HTTP/1.1 404 Not Found 0ms]
+
+{…}
+​
+base: "stations"
+​
+clouds: Object { all: 0 }
+​
+cod: 200
+​
+coord: Object { lon: 18.0649, lat: 59.3326 }
+​
+dt: 1613417772
+​
+id: 2673730
+​
+main: Object { temp: -6.79, feels_like: -11.37, temp_min: -9, … }
+​
+name: "Stockholm"
+​
+sys: Object { type: 1, id: 1788, country: "SE", … }
+​
+timezone: 3600
+​
+visibility: 10000
+​
+weather: Array [ {…} ]
+​
+wind: Object { speed: 2.42, deg: 241 }
+​
+<prototype>: Object { … }
+app.js:12:13
+
+​
+
