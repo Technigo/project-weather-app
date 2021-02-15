@@ -13,8 +13,8 @@ fetch(SwedenAPI)
     return response.json()
   })
     .then((json) => {
-    //  console.log(json);
-      console.log(json.weather.description)
+      console.log(json);
+      console.log(json.weather[0].description)
   
       cityName.innerHTML += `Stockholm`
     }) //it's all in one line now. 
