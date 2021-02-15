@@ -1,0 +1,127 @@
+/* This app is styled by mobile first approach, meaning,
+we've added media queries on how it should look in tablet
+and desktop. Feel free to change the styling! */
+
+/* Styling of the body. */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Styling of the body when the classname is "cloudy" */
+  .cloudy {
+    background: #F4F7F8;
+    color: #F47775;
+  }
+  
+  /* Styling of the body when the classname is "rainy" */
+  .rainy {
+    background: #A3DEF7;
+    color: #164A68;
+  }
+  
+  /* Styling of the body when the classname is "sunny" */
+  .sunny {
+    background: #F7E9B9;
+    color: #2A5510;
+  }
+  
+  /* Styling of the body when the classname is "unknown" */
+  .unknown {
+    background: #dbf6e9;
+    color: #31326f;
+  }
+  
+  =
+  /* Styling of the div with info about temperature,
+  sunrise and sunset numbers */
+  .todays-numbers {
+    margin-bottom: 30px;
+  }
+  
+  p {
+    font-size: 18px;
+    margin: 2px;
+  }
+  
+  /* Styling of the icon and description */
+  .todays-description h2 {
+    font-size: 32px;
+    max-width: 400px;
+  }
+  
+  .todays-description img {
+    height: 70px;
+  }
+  
+  
+  /* Styling of the forecast */
+  .forecast {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .forecast div {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed;
+  }
+  
+  /* The styling below takes care of if you want to implement a 
+  text input. If you don't want to use it you can remove it. */
+  footer {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  input {
+    background: #F4F7F8;
+    height: 20px;
+    width: 200px;
+    font-size: 16px;
+    border: 1px solid;
+    border-radius: 4px;
+    padding: 4px 8px;
+    margin: 30px 0;
+  }
+  
+  .cloudy input, .cloudy input::placeholder {
+    color: #F47775;
+  }
+  
+  .rainy input, .rainy input::placeholder {
+    color: #164A68;
+  }
+  
+  .sunny input, .sunny input::placeholder {
+    color:  #2A5510;
+    border-radius: 4px;
+  }
+  
+  /* Styling of how it should look in tablet and desktop */
+  @media (min-width: 668px) {
+    .todays-numbers p {
+      font-size: 20px;
+    }
+  
+    .todays-description img {
+      width: 150px;
+    }
+  
+    .todays-description h2 {
+      font-size: 38px;
+      max-width: 500px;
+    }
+  
+    .forecast {
+      max-width: 500px;
+    }
+  
+    footer {
+      width: 100%;
+      max-width: 500px;
+    }
+  }
