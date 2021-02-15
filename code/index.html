@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>My weather app</title>
+
+  <link rel="stylesheet" href="./style.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+
+<body id="body" class="sunny">
+
+
+  <section class="today">
+    <div class="todays-numbers">
+      <div class="current-location-wrapper" id="currentLocationWrapper">
+        <img id="weatherIcon" src="" />
+        <h1 id="currentLocationText">STOCKHOLM</h1>
+      </div>
+      <p>
+        <span id="shortDescription"></span> | <span id="temperature"></span>
+      </p>
+      <p id="sunrise"></p>
+      <p id="sunset"></p>
+    </div>
+    <div class="todays-description">
+
+      <img src="./assets/sun.svg" id="icon" />
+
+      <h2 id="description">Get your sunnies on. Stockholm is looking rather great today.</h2>
+    </div>
+  </section>
+
+
+  <section id="forecast" class="forecast">
+  </section>
+
+
+  <script type="text/javascript" src="./weather.js"></script>
+</body>
+
+</html>
