@@ -1,9 +1,10 @@
+const dtable = document.getElementById('dynamic');
 
 
 // Global variable
 let weather
 
-// convert datetime from API to hours
+// convert datetime from API to hours and min
 const hrsMinConverter = (param) => {
     const date = new Date(param * 1000)
     const hours = date.getHours()
@@ -12,6 +13,7 @@ const hrsMinConverter = (param) => {
     return hoursMin
 }
 
+// convert datetime from API to days and months
 const dayMonthConverter = (param) => {
     const date = new Date(param * 1000)
     const day = date.getDate()
@@ -20,15 +22,20 @@ const dayMonthConverter = (param) => {
     return dayMonth
 }
 
+// convert datatime from API to day of the week
+const dayWeekConverter = (param) => {
+  const date = new Date(param * 1000)
+  const dayOfWeek = date.getDay()
+  return dayOfWeek
+}
 
-// fetching 5 days weather data from API
+/************ TODAY WEATHER FORECAST ***************/
 const weatherData = () => {
   fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=1b672b9c637e28dafe516793b1e9bf96")
   .then((response) => {
     return response.json().then((json) => {
-      console.log(json);
       weather = json
-                  
+      console.log(weather)
       city.innerHTML= weather.name
       dayCurrent.innerHTML += dayMonthConverter(weather.dt)
       timeCurrent.innerHTML += hrsMinConverter(weather.dt)
@@ -37,11 +44,71 @@ const weatherData = () => {
       feelsTemp.innerHTML += weather.main.feels_like
       sunrise.innerHTML += hrsMinConverter(weather.sys.sunrise)
       sunset.innerHTML += hrsMinConverter(weather.sys.sunset)
-      
-
-
     });
   });
 };
-
 weatherData();
+
+/********** 5 DAYS FORECAST ***********/
+const weatherForecast = () => {
+  fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=1b672b9c637e28dafe516793b1e9bf96")
+  .then((response) => {
+    return response.json().then((json) => {
+      const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
+      console.log(filteredForecast)
+      
+      filteredForecast.map((elem) => {
+        //console.log(elem.dt)
+        //console.log(dayWeekConverter(elem.dt))
+        dw= dayWeekConverter(elem.dt)  
+        //console.log("dw", dw)
+        //console.log(dayWeekConverter(elem.dt), elem.main.feels_like)
+        if (dw === 1) {
+          dtable.innerHTML += `
+          <tr>
+            <td>Sun ${elem.main.feels_like}</td>
+          </tr>
+          `
+        } else if (dw === 2) {
+          dtable.innerHTML += `
+          <tr>
+            <td>Mon ${elem.main.feels_like}</td>
+          </tr>
+          `
+        } else if (dw === 3) {
+          dtable.innerHTML += `
+          <tr>
+            <td>Tue ${elem.main.feels_like}</td>
+          </tr>
+          `
+        } else if (dw === 4) {
+          dtable.innerHTML += `
+          <tr>
+            <td>Wed ${elem.main.feels_like}</td>
+          </tr>
+          `
+        } else if (dw === 5) {
+          dtable.innerHTML += `
+          <tr>
+            <td>Thu ${elem.main.feels_like}</td>
+          </tr>
+          `
+        } else if (dw === 6) {
+          dtable.innerHTML += `
+          <tr>
+              <td>Fri ${elem.main.feels_like}</td>
+            </tr>
+            `
+        } else if (dw === 7) {
+          dtable.innerHTML += `
+          <tr>
+            <td>Sat ${elem.main.feels_like}</td>
+          </tr>
+          `
+        }
+      })
+    })
+  })
+}
+
+weatherForecast()
