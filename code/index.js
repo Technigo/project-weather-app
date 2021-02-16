@@ -37,7 +37,7 @@ fetch(APIurl)
     .then((weatherData) => {
 
         cityName.innerHTML = `${weatherData.name}`
-        temperature.innerHTML = `${(weatherData.main.temp).toFixed(1)}`
+        temperature.innerHTML = `${(weatherData.main.temp).toFixed(1)}&#8451`
         typeOfWeather.innerHTML = `${weatherData.weather[0].description}`
 
 
