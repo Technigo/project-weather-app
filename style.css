@@ -1,0 +1,43 @@
+body {
+    background-color: rgb(102, 136, 72);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    border: black solid 2px;
+    margin: auto;
+    width: 90vw;
+}
+
+.container_today {
+    display: flex;
+}
+
+.sunrise_sunset {
+    display: flex;
+    justify-content: space-around;
+}
+
+.container_forecast {
+    display: flex;
+    flex-direction: column;
+    border: white solid 2px;
+}
+
+.forecast {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+/***** TABLET RESPONSIVE *****/
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+
+}
+
+/***** DESKTOP RESPONSIVE *****/
+@media screen and (min-device-width: 1025px) {
+
+}
+
