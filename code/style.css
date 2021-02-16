@@ -2,6 +2,11 @@
 we've added media queries on how it should look in tablet
 and desktop. Feel free to change the styling! */
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 /* Styling of the body. */
 body {
   font-family: 'Montserrat', sans-serif;
@@ -46,7 +51,7 @@ body {
 }
 
 .search-location input {
-margin: 0;
+  margin: 0;
 }
 
 .search-location-btn {
@@ -62,16 +67,11 @@ margin: 0;
 sunrise and sunset numbers */
 .todays-numbers {
   margin-bottom: 30px;
-  border: 2px solid red;
 }
 
 p {
   font-size: 18px;
   margin: 2px;
-}
-
-.todays-description {
-  border: 2px solid red;
 }
 
 /* Styling of the icon and description */
@@ -89,13 +89,42 @@ p {
 .forecast {
   width: 100%;
   max-width: 400px;
-  border: 2px solid red;
 }
 
 .forecast div {
   display: flex;
-  justify-content: space-between;
-  border-bottom: 1px dashed;
+  justify-content: space-around;
+}
+
+.forecast-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.temp-forecast {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.day-forecast {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.forecast-day-container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 50px;
+}
+
+.forecast-temp-container {
+  display: flex;
+  flex-direction: column;
+  padding-right: 50px;
 }
 
 /* The styling below takes care of if you want to implement a 
