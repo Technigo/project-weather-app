@@ -4,6 +4,8 @@ const condition = document.getElementById('condition')
 const sunrise = document.getElementById('sunrise')
 const sunset = document.getElementById('sunset')
 const weeklyForecastContainer = document.getElementById('weekly-forecast-container')
+const weekday = document.getElementById('weekday')
+const forecastTemp = document.getElementById('forecast-temp')
 
 const currentWeatherApiUrl = 'http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID='
 // Forecast 
@@ -40,6 +42,38 @@ fetch (forecastApiUrl + apiKey)
     })
     .then ((json) => {
         console.log(json)
+        const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
+        console.log(filteredForecast[0].main.temp)
+        //filteredForecast.forEach(weekday => {
+        //const dayOne = weekday.main.temp;
+        //})
+        const dayOne = filteredForecast[0].main.temp
+        const dayTwo = filteredForecast[1].main.temp
+        const dayThree = filteredForecast[2].main.temp
+        const dayFour = filteredForecast[3].main.temp
+        const dayFive = filteredForecast[4].main.temp
+        //console.log(dayOne, dayTwo, dayThree)
+        weekday.innerHTML += `
+        <p>Monday</p>
+        `
+        forecastTemp.innerHTML += `
+        <p>${dayOne}</p>
+        `
+    })
+    .catch ((err) => {
+        console.log('caught error', err)
+    })
+        const dayTwo = filteredForecast[1].main.temp
+        const dayThree = filteredForecast[2].main.temp
+        const dayFour = filteredForecast[3].main.temp
+        const dayFive = filteredForecast[4].main.temp
+        //console.log(dayOne, dayTwo, dayThree)
+        weekday.innerHTML += `
+        <p>Monday</p>
+        `
+        forecastTemp.innerHTML += `
+        <p>${dayOne}</p>
+        `
     })
     .catch ((err) => {
         console.log('caught error', err)
