@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="./main.css" type="text/css" />
+  </head>
+  <body>
+    <!-- Header displaying current weather data for the city -->
+    <header class="header-info">
+      <h1>xx &deg;C</h1>
+      <h2>City Name</h2>
+      <div class="header-info sun-times__wrapper">
+        <h3>Sunrise</h3>
+        <h3>xx:zz</h3>
+        <h3>Sunset</h3>
+        <h3>xx:zz</h3>
+      </div>
+    </header>
+
+    <!-- Weather forecast list (5 days ahead) -->
+    <section class="forecast">
+      <div class="forecast__daily">
+        <p class="forecast__daily--items">DAY</p>
+        <img src="./assets/sunny.png" alt="sunny" class="forecast__daily--items forecast__daily--image"></img>
+        <p class="forecast__daily--items">xx &deg; / xx &deg; C</p>
+      </div>
+    </section>
+    <!-- Load in script module -->
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+.header-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.sun-times__wrapper {
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}

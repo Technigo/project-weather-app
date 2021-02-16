@@ -1,0 +1,6 @@
+/* Import main layout for body */
+@import "./styles/mainLayout.css";
+
+/* Import Section styles and Element specific */
+@import "./styles/header.css";
+@import "./styles/forecast.css";

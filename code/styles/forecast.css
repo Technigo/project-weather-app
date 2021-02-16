@@ -1,0 +1,21 @@
+.forecast {
+  display: flex;
+}
+
+.forecast__daily {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 40px;
+  gap: 10px;
+  justify-items: stretch;
+  align-items: center;
+}
+
+.forecast__daily--items {
+  margin: 0;
+}
+
+.forecast__daily--image {
+  justify-self: center;
+}
