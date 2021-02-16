@@ -1,3 +1,47 @@
 body {
-  background-color: aqua;
+  margin: 0;
+  font-family: 'Rubik', sans-serif;
+}
+
+h2 {
+  font-size: 40px;
+}
+.weather-section{
+  display: flex;
+  flex-direction: column;
+  background-color: #bad7df;
+  padding: 0 20px;
+}
+
+.weather-container {
+  width: 700px;
+ 
+}
+
+.today-temp {
+  display: flex;
+}
+
+.weather-icon img {
+  width: 200px;
+  height: 200px;
+}
+
+.sun-hours {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+
+}
+
+.forcast {
+  display: flex;
+  flex-direction: column;
+  background-color: #f6f6f6;
+}
+
+.five-days {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: end;
 }
