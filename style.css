@@ -10,13 +10,17 @@ body {
     width: 90vw;
 }
 
-.container_today {
+
+.weather {
     display: flex;
+    flex-direction: column;
+    border: blue solid 2px;
 }
 
 .sunrise_sunset {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    border: yellow solid 2px;
 }
 
 .container_forecast {
@@ -27,7 +31,7 @@ body {
 
 .forecast {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 
