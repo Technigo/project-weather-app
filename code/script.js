@@ -9,7 +9,7 @@ fetch (apiDailyWeather)
         return response.json()
     })
     .then((data) => {
-        console.log(data)
+        console.log("api1", data)
         //console.log(data.main.temp)
         // get todays weather in weatehr-array using map to iterate and find right object and then return the value
         const fetchedWeather = data.weather.map(
@@ -24,3 +24,11 @@ fetch (apiDailyWeather)
             mainWeather.innerHTML = `${fetchedWeather}`
             dailyForecast.innerHTML = `${data.main.temp}`
     })
+
+    fetch (apiWeeklyWeather)
+        .then((response) => {
+            return response.json()
+        })
+        .then((data) => {
+            console.log("api2",data)
+        })
