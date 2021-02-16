@@ -118,7 +118,6 @@ const currentWeatherCondition = (weatherData) => {
   weatherIcon.src = "https://openweathermap.org/img/wn/" + wIcon + "@2x.png"
 }
 
-
 const renderSearchBox = () => {
   searchBox.innerHTML = `
   <form class="search-location">
@@ -169,7 +168,6 @@ const clearAll = () => {
 }
 
 // Eventlisteners
-
 currentLocationIcon.addEventListener("click", () => {})
 
 magnifyingGlassIcon.addEventListener("click", () => {
