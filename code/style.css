@@ -16,6 +16,46 @@ body {
   align-items: center;
 }
 
+.navbar-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-container p {
+  font-size: 12;
+  display: inline-block;
+
+}
+
+.navbar-container p:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-map-icon {
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+}
+
+.navbar-magnifyingglass-icon {
+  height: 50px;
+  width: 50px;
+  padding-left: 30px;
+  cursor: pointer;
+}
+
+.searchbox-toggle {
+  display: none;
+}
+
 .stormy {
   background: #6d8088;
   color: rgb(10, 20, 26);
@@ -208,4 +248,8 @@ input {
     width: 100%;
     max-width: 500px;
   }
+}
+
+.active {
+  display: block;
 }

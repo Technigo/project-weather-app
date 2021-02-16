@@ -11,7 +11,30 @@
 
 
 <body id="body" class="sunny">
-  <form class="search-location">
+
+  <div class="navbar-container">
+    <div class="navbar-inner" id="locationWrapper">
+      <div class="navbar-map-icon">
+        <img id="currentLocationIcon"
+          src="https://www.flaticon.com/svg/vstatic/svg/854/854929.svg?token=exp=1613481818~hmac=eac97d291e38a4b7ba0d6f11c9f88c61"
+          alt="" />
+      </div>
+      <p>Min Plats</p>
+    </div>
+    <div class="navbar-inner" id="searchWrapper">
+      <div class="navbar-magnifyingglass-icon">
+        <img id="magnifyingGlassIcon"
+          src="https://www.flaticon.com/svg/vstatic/svg/751/751381.svg?token=exp=1613482088~hmac=1c166a20dbf39051b4afa3f65ed56a5e"
+          alt="" />
+      </div>
+      <p>Sök</p>
+    </div>
+  </div>
+
+  <div id="searchLocationContainer">
+    <div id="searchbox-toggle" class="searchbox-toggle"></div>
+  </div>
+  <!-- <form class="search-location">
     <label for="userLocationInput">
     </label>
     <div class="search-location-inner">
@@ -20,7 +43,7 @@
         GO!
       </button>
     </div>
-  </form>
+  </form> -->
 
   <section class="today">
     <div class="todays-numbers">
@@ -29,7 +52,7 @@
         <h1 id="currentLocationText"></h1>
       </div>
       <p>
-        <span id="shortDescription"></span> | <span id="temperature"></span>
+        <span id="shortDescription"></span><span id="temperature"></span>
       </p>
       <p id="sunrise"></p>
       <p id="sunset"></p>
@@ -56,7 +79,6 @@
       Get your sunnies on. Stockholm is looking rather great today.
     </h2>
   </div>
-
 
   <script type="text/javascript" src="./weather.js"></script>
 </body>
