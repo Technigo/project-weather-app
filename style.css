@@ -1,3 +1,21 @@
 body {
-    background-color: aqua;
+    background-color: rgb(246, 247, 244);
+    font-family: Roboto;
+}
+
+.main {
+    background-color: aquamarine;
+    border-bottom-left-radius: 20%;
+    border-bottom-right-radius: 40%;
+}
+
+.sunrise-sunset {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 40px;
+}
+
+.weekday {
+    display: flex;
+    justify-content: space-between;
 }
