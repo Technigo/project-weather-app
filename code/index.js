@@ -34,12 +34,12 @@ fetch(forecastAPIUrl)
         return response.json()
     })
     .then((forecastData) => {
-        const filteredForecast = forecastData.list.filter(item => item.dt_txt.includes('12:00'))
-        console.log(filteredForecast)
-        console.log(forecastData.list[0].main.temp_min)
-        forecastData.forEach(() => {
-            forecast.innerHTML += `
+            const filteredForecast = forecastData.list.filter(item => item.dt_txt.includes('12:00'))
+            console.log(filteredForecast)
+            console.log(forecastData.list[0].main.temp_min)
+            filteredForecast => {
+                forecast.innerHTML += `
             <p>Temp min: ${forecastData.list[0].main.temp_min} , Temp max: ${forecastData.list[0].main.temp_max}</p>
         `
-        })
+            })
     })
