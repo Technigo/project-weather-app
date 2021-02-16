@@ -1,36 +1,24 @@
+const apiUrl = 'http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=800ddea444fa8b1532e3492f09d4432d'
 const city = document.getElementById('city')
+const currentTemp = document.getElementById('currentTemp')
+const feelsLikeTemp = document.getElementById('feelsLikeTemp')
+const weatherDescrValue = document.getElementById('weatherDescription')
 
+fetch(apiUrl)
+    .then((response) => {
+        return response.json()
+    })
+    .then((json) => {
+        city.innerHTML = `${json.name}`;
 
+        let currentTempValue = `${json.main.temp}`
+        currentTempValue = Number(currentTempValue).toFixed(1);
+        currentTemp.innerHTML += `${currentTempValue}`
 
-const fetchWeatherData = () => {
-    fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=800ddea444fa8b1532e3492f09d4432d')
-        .then((reponse) => {
-            return response.json()
-        })
-        .then((json) => {
-            console.log(json)
-        })
-}
+        weatherDescrValue.innerHTML = `${json.weather[0].description}`
 
+        let feelsLikeTempValue = `${json.main.feels_like}`
+        feelsLikeTempValue = Number(feelsLikeTempValue).toFixed(1);
+        feelsLikeTemp.innerHTML += `${feelsLikeTempValue}`
 
-
-
-
-
-
-
-
-// const fetchPokemons = () => {
-//   /*Fetch all pokemons here*/
-//   fetch("https://pokeapi.co/api/v2/pokemon/?limit=10")
-//     .then((response) => {
-//       return response.json();
-//     })
-//     .then((json) => {
-//       console.log(json.results);
-//       console.log(json.results[0].name);
-//       json.results.forEach((pokemons) => {
-//         console.log(pokemons.name);
-//       });
-//     });
-// };
+    })
