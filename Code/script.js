@@ -17,12 +17,8 @@ const dayFive = document.getElementById("dayFive")
 const OurAPI = "http://api.openweathermap.org/data/2.5/forecast/daily?q=Stockholm&cnt=10&appid=886705b4c1182eb1c69f28eb8c520e20&units=metric"
 //http://api.openweathermap.org/data/2.5/forecast?q=Stockholm&units=metric&appid=3c8d0ca53cf60cf5802dc4c0325edd88
 
-
-//let day1 = json.list[1]
-//let day2 = json.list[2]
-//let day3 = json.list[3]
-//let day4 = json.list[4]
-//let day5 = json.list[5]
+// Global Variable
+let Weather
 
 
 const SthlmTemp = () => {
@@ -30,6 +26,14 @@ const SthlmTemp = () => {
         return response.json();
     }).then((json) => {
         
+        Weather = [
+            json.list[0]["temp"]["day"],
+            json.list[1]["temp"]["day"],
+            json.list[2]["temp"]["day"],
+            json.list[3]["temp"]["day"],
+            json.list[4]["temp"]["day"],
+            json.list[5]["temp"]["day"]
+        ]
         /*let datte = json.list[0].sunrise;
         let dateRise = new Date(unixRise*1000).toLocaleTimeString().replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3");
         console.log(dateRise)*/
@@ -73,11 +77,41 @@ const SthlmTemp = () => {
         sunRise.innerHTML = `The Sun rises at ${dateRise} AM `
         sunSet.innerHTML = `The Sunset is at ${dateSet} PM` 
         // The upcoming 5 days temp (PS! We need a function that prints the day automatically )
-        dayOne.innerHTML = `${newDateArray[1]}: ${json.list[1]["temp"]["day"]} ℃`;
+        
+        /*let dates = newDateArray.forEach((date) => {
+            dayOne.innerHTML += `<dt class ="date">${date}</dt>`
+            //dates = document.getElementsByClassName("date")
+        });
+
+        let weath = Weather.forEach((weather) =>{
+            dayOne.innerHTML += `${weather}`
+        });
+        
+        dayOne.innerHTML = `${dates}: ${weath}`*/
+
+
+    /*const dateAndWeather = {
+        date: newDateArray,
+        weather: Weather,
+    }       
+    const testArray = [dateAndWeather];
+    console.log(testArray)
+
+    testArray.forEach((test) => {
+        dayOne.innerHTML += `${test.date[0]}:${test.weather[0]}`
+    })*/
+    for (let i = 1; i < newDateArray.length && i < Weather.length; i++) {
+        dayOne.innerHTML += `<dt>${newDateArray[i]}: ${Weather[i]} </dt>`
+    }
+
+
+
+
+        /*dayOne.innerHTML = `${newDateArray[1]}: ${Weather[1]} ℃`;
         dayTwo.innerHTML = `${newDateArray[2]}: ${json.list[2]["temp"]["day"]} ℃`;
         dayThree.innerHTML = `${newDateArray[3]}: ${json.list[3]["temp"]["day"]} ℃`;
         dayFour.innerHTML = `${newDateArray[4]}: ${json.list[4]["temp"]["day"]} ℃`;
-        dayFive.innerHTML = `${newDateArray[5]}: ${json.list[5]["temp"]["day"]} ℃`;
+        dayFive.innerHTML = `${newDateArray[5]}: ${json.list[5]["temp"]["day"]} ℃`;*/
 
     })
 }
