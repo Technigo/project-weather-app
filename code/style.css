@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+
+body {
+ font-family:'Roboto', sans-serif;
+ margin: 0;
+}
+
+.container-weather {
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, #cecdff 0%, rgba(126,124,255,1) 100%);
+    border-bottom-left-radius: 25%;
+    border-bottom-right-radius: 25%;
+    padding:30px 30px 50px;
+    color: white;
+    
+
+}
+ h1 {
+    font-weight: 300;
+    font-size: 100px;
+    margin-bottom: 0px;
+    position: relative;
+ }
+
+h1 span {
+    font-size: 30px;
+    position: absolute;
+    top: 15px
+}
+
+ h2 {
+    font-weight: 300; 
+    margin: 0;
+    font-size: 30px;
+ }
+
+ h3 {
+    font-weight: 300;
+    margin: 0;
+ }
+.sun {
+    display: flex;
+    justify-content: space-between;
+    font-size: 22px;
+    margin: 20px 0;
+}
+
+.container-forecast {
+    padding: 30px;
+}
+
+.weekdays {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    margin: 20px 0;
+}
+
+.temperature {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
