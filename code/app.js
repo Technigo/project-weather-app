@@ -36,6 +36,7 @@ const weatherData = () => {
     return response.json().then((json) => {
       weather = json
       console.log(weather)
+      console.log("today", dayWeekConverter(weather.dt))
       city.innerHTML= weather.name
       dayCurrent.innerHTML += dayMonthConverter(weather.dt)
       timeCurrent.innerHTML += hrsMinConverter(weather.dt)
@@ -55,7 +56,7 @@ const weatherForecast = () => {
   .then((response) => {
     return response.json().then((json) => {
       const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
-      console.log(filteredForecast)
+      console.log("filtered data",filteredForecast)
       
       filteredForecast.map((elem) => {
         //console.log(elem.dt)
@@ -63,46 +64,60 @@ const weatherForecast = () => {
         dw= dayWeekConverter(elem.dt)  
         //console.log("dw", dw)
         //console.log(dayWeekConverter(elem.dt), elem.main.feels_like)
-        if (dw === 1) {
+        if (dw === 0) {
           dtable.innerHTML += `
           <tr>
             <td>Sun ${elem.main.feels_like}</td>
+            <td>${elem.weather[0].description}</td>
+
+          </tr>
+          `
+        } else if (dw === 1) {
+          dtable.innerHTML += `
+          <tr>
+            <td>Mon ${elem.main.feels_like}</td>
+            <td>${elem.weather[0].description}</td>
+
           </tr>
           `
         } else if (dw === 2) {
           dtable.innerHTML += `
           <tr>
-            <td>Mon ${elem.main.feels_like}</td>
+            <td>Tue ${elem.main.feels_like}</td>
+            <td>${elem.weather[0].description}</td>
+
           </tr>
           `
         } else if (dw === 3) {
           dtable.innerHTML += `
           <tr>
-            <td>Tue ${elem.main.feels_like}</td>
+            <td>Wed ${elem.main.feels_like}</td>
+            <td>${elem.weather[0].description}</td>
+
           </tr>
           `
         } else if (dw === 4) {
           dtable.innerHTML += `
           <tr>
-            <td>Wed ${elem.main.feels_like}</td>
+            <td>Thu ${elem.main.feels_like}</td>
+            <td>${elem.weather[0].description}</td>
+
           </tr>
           `
         } else if (dw === 5) {
           dtable.innerHTML += `
           <tr>
-            <td>Thu ${elem.main.feels_like}</td>
-          </tr>
-          `
+            <td>Fri ${elem.main.feels_like}</td>
+            <td>${elem.weather[0].description}</td>
+
+            </tr>
+            `
         } else if (dw === 6) {
           dtable.innerHTML += `
           <tr>
-              <td>Fri ${elem.main.feels_like}</td>
-            </tr>
-            `
-        } else if (dw === 7) {
-          dtable.innerHTML += `
-          <tr>
             <td>Sat ${elem.main.feels_like}</td>
+            <td>${elem.weather[0].description}</td>
+
           </tr>
           `
         }
