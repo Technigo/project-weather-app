@@ -48,7 +48,6 @@ const fetchWeatherForecast = (API_urlForecast) => {
     })
 
   const setCurrentWeatherForecast = (WeatherForecast) => {
-    console.log(WeatherForecast);
     forecastTemperature(WeatherForecast)
   }
 }
@@ -58,9 +57,10 @@ const forecastTemperature = (forecastData) => {
 
   filteredData.forEach(item => forecastTemp.innerHTML += `
     <li>
+      <img class="forecast-icon" src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"/> 
       ${item.main.temp} &deg;C
     </li>
-  `)
+  ` ); 
   filteredData.forEach(item => forecastDay.innerHTML += `
     <li>
       ${weekdays[new Date(item.dt_txt).getDay()]}

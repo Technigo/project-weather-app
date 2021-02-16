@@ -133,7 +133,7 @@ body {
 /* styling of the today section when the class is  "sunny" */
 .sunny .today {
   background: #c2790b;
-  background-image: url("https://images.unsplash.com/photo-1588526779453-57a0d3d15963?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80");
+  background-image: url("./assets/sunny1920px.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;  
@@ -142,7 +142,7 @@ body {
 /* styling of the today section when the class is  "cloudy" */
 .cloudy .today {
   background: #142127;
-  background-image: url("https://images.unsplash.com/photo-1483702721041-b23de737a886?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1353&q=80");
+  background-image: url("./assets/cloudy1920px.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;  
@@ -151,7 +151,7 @@ body {
 /* styling of the today section when the class is  "rainy" */
 .rainy .today {
   background: #004c6d;
-  background-image: url("https://images.unsplash.com/photo-1527571083252-f24c32e9d8c1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
+  background-image: url("./assets/rainy1920px.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;  
@@ -161,7 +161,7 @@ body {
 /* styling of the today section when the class is  "snowy" */
 .snowy .today {
   background: #004c6d;
-  background-image: url("https://images.unsplash.com/photo-1607263182271-1eab7965edea?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80");
+  background-image: url("./assets/snowy1920px.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;  
@@ -171,7 +171,7 @@ body {
 /* styling of the today section when the class is  "stormy" */
 .stormy .today {
   background: #004c6d;
-  background-image: url("https://images.unsplash.com/photo-1500740516770-92bd004b996e?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1352&q=80");
+  background-image: url("./assets/stormy1920px.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;  
@@ -230,34 +230,40 @@ p {
   display: flex;
   justify-content: space-around;
   width: 80%;
+  padding-top: 10px;
 }
 
-.temp-forecast {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-
-.day-forecast {
+.forecast-day {
   list-style: none;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: space-between;
+  height: 150px;
 }
 
-.forecast-day-container {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  padding-left: 50px;
+.forecast-day li {
+  height: 30px;
+  display:flex;
+  align-items: center;
 }
 
-.forecast-temp-container {
-  margin-top: 20px;
+.forecast-temp {
+  list-style: none;
   display: flex;
   flex-direction: column;
-  padding-right: 50px;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 150px;
+}
+
+.forecast-temp li {
+  display: flex;
+  align-items: center;
+}
+
+.forecast-icon {
+  width: 30px;
 }
 
 /*searchbar styling */
