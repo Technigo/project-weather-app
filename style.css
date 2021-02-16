@@ -1,5 +1,6 @@
 body {
-    background-color: rgb(246, 247, 244);
+    margin: auto;
+    background-color: #ffffff;
     font-family: Roboto;
 }
 
@@ -7,6 +8,7 @@ body {
     background-color: aquamarine;
     border-bottom-left-radius: 20%;
     border-bottom-right-radius: 40%;
+    padding: 70px 20px 0px 20px;
 }
 
 .sunrise-sunset {
@@ -15,7 +17,22 @@ body {
     padding-bottom: 40px;
 }
 
+.weekly-forecast {
+    max-width: 400px;
+    margin: auto;
+}
+
 .weekday {
     display: flex;
     justify-content: space-between;
 }
+
+
+/* MEDIA QUERIES TABLET */
+
+@media (min-width: 768px) {}
+
+
+/* MEDIA QUERIES DESKTOP */
+
+@media (min-width: 992px) {}
