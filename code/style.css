@@ -16,6 +16,16 @@ body {
   align-items: center;
 }
 
+.stormy {
+  background: #6d8088;
+  color: rgb(10, 20, 26);
+}
+
+.snowy {
+  background: #f9fbfc;
+  color: #5f9ca7;
+}
+
 /* Styling of the body when the classname is "cloudy" */
 .cloudy {
   background: #F4F7F8;
@@ -61,6 +71,19 @@ body {
 .current-location-wrapper {
   display: flex;
   align-items: center;
+}
+
+.today {
+  height: 250px;
+  border-bottom: solid black;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.sunrise-sunset-wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 /* Styling of the div with info about temperature,
@@ -126,6 +149,7 @@ p {
   flex-direction: column;
   padding-right: 50px;
 }
+
 
 /* The styling below takes care of if you want to implement a 
 text input. If you don't want to use it you can remove it. */
