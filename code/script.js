@@ -2,11 +2,12 @@
 const StockholmAPI = 'http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=1f53b6ca8e6cbcf1c51848ca6c257778'
 const StockholmForecastAPI = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=1f53b6ca8e6cbcf1c51848ca6c257778'
 const cityName = document.getElementById('cityName')
-const sydneyApi = 'https://api.openweathermap.org/data/2.5/weather?q=Sydney&appid=2430dd2cc5de1b93bed8a082b8dda9c5';
-const chicagoApi = 'https://api.openweathermap.org/data/2.5/weather?q=Chicago&appid=2430dd2cc5de1b93bed8a082b8dda9c5';
-const hongKongApi = 'https://api.openweathermap.org/data/2.5/weather?q=Johannesburg&appid=2430dd2cc5de1b93bed8a082b8dda9c5';
-const johannesburgApi = 'https://api.openweathermap.org/data/2.5/weather?q=HongKong&appid=2430dd2cc5de1b93bed8a082b8dda9c5';
-const quitoApi = 'https://api.openweathermap.org/data/2.5/weather?q=Quito&appid=2430dd2cc5de1b93bed8a082b8dda9c5';
+const weatherContainer = document.getElementById('weatherContainer')
+const sydneyApi = 'https://api.openweathermap.org/data/2.5/weather?q=Sydney&appid=2430dd2cc5de1b93bed8a082b8dda9c5'
+const chicagoApi = 'https://api.openweathermap.org/data/2.5/weather?q=Chicago&appid=2430dd2cc5de1b93bed8a082b8dda9c5'
+const hongKongApi = 'https://api.openweathermap.org/data/2.5/weather?q=Johannesburg&appid=2430dd2cc5de1b93bed8a082b8dda9c5'
+const johannesburgApi = 'https://api.openweathermap.org/data/2.5/weather?q=HongKong&appid=2430dd2cc5de1b93bed8a082b8dda9c5'
+const quitoApi = 'https://api.openweathermap.org/data/2.5/weather?q=Quito&appid=2430dd2cc5de1b93bed8a082b8dda9c5'
 
 console.log('API fetch starting')
 
@@ -14,31 +15,35 @@ const weekday = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday
 
 fetch(StockholmAPI)
   .then((response) => {
-    console.log(`Response ok? ${response.ok}`) //take away later
-    console.log(`Response status: ${response.status}`) //take away later
-    console.log('API Response Received');
-
+//    console.log(`Response ok? ${response.ok}`) //take away later
+//    console.log(`Response status: ${response.status}`) //take away later
+//    console.log('API Response Received');
     return response.json()
   })
-    .then((json) => {
-      console.log(json); //take away later?
-      console.log(json.weather[0].description)
-      const myFunction = () => {
-          var num = json.main.temp
-          var n = num.toFixed(1)
-          document.getElementById('cityName').innerHTML = n
-      }
-      console.log(myFunction)
+    .then((data) => {
+//      console.log(data);   //take away later?
+    
+    const num = data.main.temp
+    const n = Math.round(num * 10) / 10
 
-      cityName.innerHTML += `Stockholm`
-    }) //it's all in one line now - fix this!
+      weatherContainer.innerHTML += `<div>
+        <h1>Today's weather in: ${data.name}<h1/>
+        <h2>${n}</h2>
+        <h3>${data.weather[0].description}</h3>
+        
+        </div>`
+    }) 
 /*
+var number = 12.3456789
+var rounded = Math.round(number * 10) / 10
+
 function myFunction() {
   var num = 5.56789;
   var n = num.toFixed(2);
   document.getElementById("demo").innerHTML = n;
 }
 */
+
 fetch(StockholmForecastAPI)
   .then((response) => {
 
