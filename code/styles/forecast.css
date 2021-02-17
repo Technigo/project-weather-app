@@ -1,5 +1,6 @@
 .forecast {
   display: flex;
+  flex-direction: column;
 }
 
 .forecast__daily {
@@ -18,4 +19,5 @@
 
 .forecast__daily--image {
   justify-self: center;
+  height: 100%;
 }

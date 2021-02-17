@@ -14,3 +14,17 @@ export const getWeatherToday = (data) => {
 
   return html;
 };
+
+export const getForecastElement = (data) => {
+  let html = "";
+
+  html += `
+    <div class="forecast__daily">
+        <p class="forecast__daily--items">${data.day}</p>
+        <img src="./assets/${data.type.main}-${data.type.icon}.svg" alt="${data.type.description}" class="forecast__daily--items forecast__daily--image"></img>
+        <p class="forecast__daily--items">${data.minTemp} &deg; / ${data.maxTemp} &deg; C</p>
+    </div>
+    `;
+
+  return html;
+};

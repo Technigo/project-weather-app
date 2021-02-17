@@ -1,8 +1,9 @@
 // Import scripts
-import { getWeatherToday } from "./scripts/elements.js";
+import { getWeatherToday, getForecastElement } from "./scripts/elements.js";
 
 // DOM Elements
 const weatherToday = document.getElementById("weatherToday");
+const forecastContainer = document.getElementById("forecast");
 
 // Global variables
 const API_KEY = "a184167860dd69b553e449fca6814afb",
@@ -15,7 +16,7 @@ const fetchWeatherToday = () => {
     .then((response) => response.json())
     .then((data) => {
       const sunTimes = formatTime([data.sys.sunrise, data.sys.sunset]);
-      let weatherData = {
+      const weatherData = {
         temp: data.main.temp.toFixed(1),
         type: data.weather[0].description,
         city: CITY,
@@ -23,11 +24,51 @@ const fetchWeatherToday = () => {
         sunset: sunTimes[1],
       };
       weatherToday.innerHTML = getWeatherToday(weatherData);
+
       // DEBUG: remove on submission
       console.log(data);
       console.log(weatherData);
     })
     .catch((err) => console.log(`Error was thrown: ${err.message}`));
+};
+
+const fetchWeatherForecast = () => {
+  fetch(`${API_URL}forecast?q=${CITY}&units=metric&appid=${API_KEY}`)
+    .then((response) => response.json())
+    .then((data) => {
+      const forecastDataList = filterForecastData(data.list);
+
+      forecastDataList.forEach((forecast) => {
+        forecastContainer.innerHTML += getForecastElement(forecast);
+      });
+
+      // DEBUG: remove on submission
+      console.log(data);
+      console.log(forecastDataList);
+    });
+};
+
+const filterForecastData = (data) => {
+  let forecastDataList = [];
+
+  const middayForecasts = data.filter((item) => {
+    return item.dt_txt.includes("12:00:00");
+  });
+
+  middayForecasts.forEach((forecast) => {
+    forecastDataList.push({
+      day: getDayOfWeek(forecast.dt_txt).toUpperCase(),
+      type: {
+        icon: forecast.weather[0].icon,
+        main: forecast.weather[0].main,
+        description: forecast.weather[0].description,
+      },
+      minTemp: forecast.main.temp_min.toFixed(1),
+      maxTemp: forecast.main.temp_max.toFixed(1),
+    });
+  });
+
+  return forecastDataList;
 };
 
 const formatTime = (times) => {
@@ -40,5 +81,11 @@ const formatTime = (times) => {
   return formattedTimes;
 };
 
+const getDayOfWeek = (date) => {
+  const dateObj = new Date(date);
+  return new Intl.DateTimeFormat("default", { weekday: "short" }).format(dateObj);
+};
+
 /* EXECUTE PAGE LOAD FUNCTIONS */
 fetchWeatherToday();
+fetchWeatherForecast();
