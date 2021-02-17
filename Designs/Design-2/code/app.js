@@ -1,7 +1,9 @@
-const weatherUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=6afa2e7606c18a4e48270ffd081e86a3';
-const weatherForcastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=c292983c49498a3cff73c1806ef955ba';
+const apiKey = "6afa2e7606c18a4e48270ffd081e86a3";
+const weatherUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=' + apiKey;
+const weatherForcastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID='+ apiKey;
 const weatherSection = document.getElementById('weatherSection');
 const forcast = document.getElementById('forcast');
+
 
 
 //let unix
