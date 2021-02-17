@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgb(143,138,231);
+    background: linear-gradient(180deg, rgba(143,138,231,1) 0%, rgba(135,176,245,1) 48%, rgba(191,240,250,1) 100%);
+    color: blue;
+}

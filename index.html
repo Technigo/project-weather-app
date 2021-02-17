@@ -4,17 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css"/>
     <title>Document</title>
 </head>
 <body>
-    <section id="container">
-        <div id="city-name"></div>
-        <div id="temperature"></div>
-        <div id="weather"></div>
-        <div id="sunrise-time"></div>
-        <div id="sunset-time"></div>
-        <div id="forecast"></div>
+    <section class="container">
+        <section class="todays-weather" id="todays-weather">
+            <div id="weather"></div>
+            <div id="temperature"></div>
+            <div id="sunrise-time"></div>
+            <div id="sunset-time"></div>
+        </section>
+        <section class="weather-description" id="weather-description">
+            <div id="city-name"></div>
+        </section>
+        <section class="forecast-container" id="forecast-container">
+            <div id="forecast"></div>
+        </section>
     </section>
+
     <script src="script.js"></script>
 </body>
 </html>
