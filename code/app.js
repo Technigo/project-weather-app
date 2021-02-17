@@ -56,9 +56,11 @@ fetch(todaysWeatherUrl)
       let weekday = (new Date(item.dt * 1000)).toLocaleDateString("en-US", { weekday: "long" })
       let icon = `<img src=https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png></img>`;
 
-      fiveDayForecast.innerHTML += `<p>${weekday} ${temperature}ºC</p> ${icon} `;
+      fiveDayForecast.innerHTML += `<p> ${weekday} ${temperature}ºC </p>${icon}  `; //paragraf makes the icon stay in line
     
       });
     });
 
 
+     
+    
