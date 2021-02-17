@@ -1,0 +1,26 @@
+body {
+    margin: 0;
+    background-color: #FFF;
+}
+
+.main-content {
+    border: solid black 1px;
+    width: 80%;
+    margin: 30px auto;
+}
+
+.today-weather {
+    text-align: center;
+}
+
+
+
+
+
+/* @media (min-width: 668 px) {
+
+}
+
+@media (min-width: 1025px {
+    
+} */
