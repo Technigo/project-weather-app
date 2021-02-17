@@ -4,24 +4,20 @@ const condition = document.getElementById('condition')
 const sunrise = document.getElementById('sunrise')
 const sunset = document.getElementById('sunset')
 const weeklyForecastContainer = document.getElementById('weekly-forecast-container')
+const weekday = document.getElementById('weekday')
+const forecastTemp = document.getElementById('forecast-temp')
 
-const currentWeatherApiUrl = 'http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Swedentockholm,Sweden&units=metric&APPID='
+const currentWeatherApiUrl = 'http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID='
 // Forecast 
 const forecastApiUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID='
 const apiKey = '3addfde144e16d817dcc3a5e9a46ea59' 
 
-//Convert unix to time
+// Convert unix to time
 const unixToTime = (unix) => {
     const dateObj = new Date(unix * 1000)
     const timeString = dateObj.getHours() + ':' + dateObj.getMinutes()
     return timeString
 }
-
-// const readableTime = () => {
-//     currentTime = new Date()
-
-//     console.log()
-// }
 
 // fetch API
 fetch (currentWeatherApiUrl + apiKey) 
@@ -40,13 +36,6 @@ fetch (currentWeatherApiUrl + apiKey)
         console.log('caught error', err)
     })
 
-   
-const getWeekday = (daysFromToday) => {
-    const now = new Date()
-    const week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'] 
-    return week[now.getDay() + daysFromToday]
-}
-
     
 
 fetch (forecastApiUrl + apiKey)
@@ -60,19 +49,23 @@ fetch (forecastApiUrl + apiKey)
         //filteredForecast.forEach(weekday => {
         //const dayOne = weekday.main.temp;
         //})
-
-        for(let i = 0; i < 5; i++) {
-            const iconUrl = `http://openweathermap.org/img/wn/${filteredForecast[i].weather[0].icon}@2x.png`
-            weeklyForecastContainer.innerHTML += 
-            `
-                <div class="day">
-                    <p>${getWeekday(i + 1)}</p>
-                    <img src="${iconUrl}">
-                    <p>${Math.round(filteredForecast[i].main.temp)}</p>
-                </div>
-            `
-        }
+        const dayOne = filteredForecast[0].main.temp
+        const dayTwo = filteredForecast[1].main.temp
+        const dayThree = filteredForecast[2].main.temp
+        const dayFour = filteredForecast[3].main.temp
+        const dayFive = filteredForecast[4].main.temp
+        //console.log(dayOne, dayTwo, dayThree)
+        weekday.innerHTML += `
+        <p>Monday</p>
+        `
+        forecastTemp.innerHTML += `
+        <p>${dayOne}</p>
+        `
     })
+    .catch ((err) => {
+        console.log('caught error', err)
+    })
+
     .catch ((err) => {
         console.log('caught error', err)
     })
