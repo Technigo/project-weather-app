@@ -16,9 +16,8 @@ fetch(todaysUrl)
     .then((json) => {
 
         // variables to display weather data
-        let city = json.name
+        let city = json.name.toUpperCase()
         let temp = json.main.temp.toFixed(1)
-        // let weatherType = json.weather[0].description
         let sunrise = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], {timeStyle: 'short'})
         let sunset = new Date(json.sys.sunset * 1000).toLocaleTimeString([], {timeStyle: 'short'})
         
@@ -31,8 +30,8 @@ fetch(todaysUrl)
         weatherHTML += `<section class="weather">`
         weatherHTML += `<div class="temp_city_weather">`
         weatherHTML += `<div class="temp_city">`
-        weatherHTML += `<h2>${temp}°C</h2>`
-        weatherHTML += `<h1>${city}</h1>`
+        weatherHTML += `<h1>${temp}°C</h1>`
+        weatherHTML += `<h2>${city}</h2>`
         weatherHTML += `</div>`
         weatherHTML += `<img src="https://openweathermap.org/img/wn/${wIcon}@2x.png" />`
         weatherHTML += `</div>`
@@ -77,7 +76,7 @@ fetch(forecastUrl)
         forecastHTML += `<p>${forecastDate}</p>`
         forecastHTML += `<div class="forecast_weather_temp">`
         forecastHTML += `<img class="forecast_icon" src="https://openweathermap.org/img/wn/${wIcon}@2x.png" />`
-        forecastHTML += `<p>${forecastTemp}°C</p>`
+        forecastHTML += `<p class="forecast_temp">${forecastTemp}°C</p>`
         forecastHTML += `</div>`
         forecastHTML += `</section>`
 
