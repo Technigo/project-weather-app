@@ -11,6 +11,66 @@ body {
     padding: 70px 20px 0px 20px;
 }
 
+
+/***************** Hamburger menu *****************/
+
+
+/* hiding the checkbox*/
+
+#menu {
+    visibility: hidden;
+}
+
+
+/* hamburger*/
+
+label,
+label::before,
+label::after {
+    position: absolute;
+    width: 35px;
+    height: 4px;
+    border-radius: 20px;
+    background: #000000;
+    transition: 0.6s;
+    -webkit-transition: 0.6s;
+}
+
+label {
+    cursor: pointer;
+}
+
+label::before {
+    content: "";
+    transform: translateY(-10px);
+    -webkit-transform: translateY(-10px)
+}
+
+label::after {
+    content: "";
+    transform: translateY(10px);
+    -webkit-transform: translateY(10px)
+}
+
+
+/*animate when checked*/
+
+
+/* 
+#menu:checked+label {
+    width: 0px;
+}
+
+#menu:checked+label::before {
+    transform: rotate(45deg) translate(0px);
+    -webkit-transform: rotate(45deg) translate(0px);
+}
+
+#menu:checked+label::after {
+    transform: rotate(-45deg) translate(0px);
+    -webkit-transform: rotate(-45deg) translate(0px);
+} */
+
 .sunrise-sunset {
     display: flex;
     justify-content: space-around;
