@@ -8,6 +8,8 @@ const sunset = document.getElementById("sunset")
 const currentWeatherContainer = document.getElementById("currentWeatherContainer")
 const icon = document.getElementById("icon")
 const weatherMessage = document.getElementById("weatherMessage")
+const weekDays = document.getElementById("weekDays")
+const temperatureForecast = document.getElementById("temperatureForecast")
 
 //Getting current weather information and changing inner.HTML accordingly
 fetch(CURRENT_WEATHER_URL)
@@ -63,9 +65,19 @@ fetch(FORECAST_URL)
     })
     .then((data) => {
         console.log(data)
-           
+        const filteredForecast = data.list.filter(item => item.dt_txt.includes("12:00"))
+        console.log(filteredForecast) 
+        
+        
+        filteredForecast.forEach((data) => { 
+            weekDays.innerHTML += `<p>${data.dt}</p>` 
+            const day = new Date(data.dt * 1000)
+            console.log(day)
+        
+
+        })
     })
-    
+ 
     // Method to catch errors during fetch()
     .catch(error => { 
         currentWeatherContainer.innerHTML = `<h1>${error}. "Something went wrong!"<h1>`
