@@ -5,9 +5,11 @@ const weatherSection = document.getElementById('weatherSection');
 const forcast = document.getElementById('forcast');
 
 
-
+// Function that expect date in format that can be used to create a date object
+// Function also adjust for iOS limitations in Date
 let returnWeekDay = (date) => { 
   let daysInWeek = ["Sunday", "Monday","Tuesday", "Wednesday","Thursday","Friday","Saturday"];
+  //fix date issue in IoS by converting space between date and time into a T
   let inputDate = new Date(date.replace(' ', 'T'));
   /*
   // old solution with different code for both non ios and ios
