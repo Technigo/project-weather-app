@@ -6,14 +6,31 @@ body {
  margin: 0;
 }
 
+
+.hamburger div {
+    background-color: white;
+    width: 40px;
+    height: 3px;
+    margin: 8px;
+    border-radius: 10px;
+}
+
+.menu {
+    background-color: white;
+    width: 100vW;
+    height: 100vh;
+}
+
+.hidden {
+    display: none
+}
+
 .container-weather {
     background: rgb(255,255,255);
-    background: linear-gradient(0deg, #cecdff 0%, rgba(126,124,255,1) 100%);
-    border-bottom-left-radius: 25%;
-    border-bottom-right-radius: 25%;
+    background: linear-gradient(0deg, #d8d7ff 0%, #8fa9ff 100%);
+    border-radius: 0% 0% 50% 50% / 85% 85% 15% 15%;
     padding:30px 30px 50px;
     color: white;
-    
 
 }
  h1 {
@@ -61,4 +78,8 @@ h1 span {
     width: 50%;
     display: flex;
     justify-content: space-between;
+}
+
+.temperature img {
+    width: 30px;
 }
