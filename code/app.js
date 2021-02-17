@@ -77,8 +77,8 @@ fetch(weatherForcastUrl)
 
     filteredForecast.forEach((filteredForecast) => {
       let dayInWeek = returnWeekDay(filteredForecast.dt_txt);
-      console.log(filteredForecast.dt_txt);
-      if (dayInWeek == null) dayInWeek = filteredForecast.dt_txt;
+      //console.log(filteredForecast.dt_txt);
+      //if (dayInWeek == null) dayInWeek = filteredForecast.dt_txt;
       let temp5Days = `${filteredForecast.main.temp}`
       let temp5DaysRounded = Math.round(temp5Days)
       let iconId = filteredForecast.weather[0].icon;
