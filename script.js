@@ -68,17 +68,12 @@ fetch(apiUrlForecast)
   const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
   console.log(filteredForecast)
 
-  filteredForecast.map((temp) => {
-    console.log(temp.main.temp.toFixed(0))    
+  // TEMPERATURE & WEATHER
+  filteredForecast.map((forecast) => {
+    console.log(forecast.main.temp.toFixed(0))
+    console.log(forecast.weather[0].description) //hårdkodat, skriv kommentar senare
+    console.log(forecast.dt)
   })
 
-  // WEATHER
-  // const weatherDesc = filteredForecast.filter(item => item.weather.description)
-  // console.log(weatherDesc)
-  // filteredForecast.map((weather) => {
-
-  //   // console.log(weather.weather.description)
-    
-  // })
 
 })
