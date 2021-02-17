@@ -5,16 +5,22 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    border: black solid 2px;
     margin: auto;
-    width: 90vw;
+    width: 85vw;
 }
 
-
+/***** Today's weather *****/
 .weather {
     display: flex;
     flex-direction: column;
     border: blue solid 2px;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.temp_city_weather {
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .sunrise_sunset {
@@ -23,10 +29,13 @@ body {
     border: yellow solid 2px;
 }
 
+/***** Forecast *****/
 .container_forecast {
     display: flex;
     flex-direction: column;
     border: white solid 2px;
+    padding: 10px;
+    border-radius: 15px;
 }
 
 .forecast {
@@ -34,6 +43,15 @@ body {
     justify-content: space-between;
 }
 
+/***** COLORS *****/
+
+.cold {
+
+}
+
+.warm {
+
+}
 
 /***** TABLET RESPONSIVE *****/
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
