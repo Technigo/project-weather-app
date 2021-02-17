@@ -42,11 +42,21 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
                 const temperature = Math.floor(item.main.temp);
 
   
-                fiveDaysForecast.innerHTML +=`
-                    <div>
-                        <h5>${weekDayNames} ${temperature} °C</h5>
-                    </div>
-                    `;             
+
+            // INNER HTML
+                fiveDaysForecast.innerHTML += `
+                    <span style='display: flex'>
+                        <p style='border-bottom: 1px solid blue; width: 80%'>${weekDayNames}</p>
+                        <p style='border-bottom: 1px solid blue; width: 15%'> ${temperature}°C</p>
+                    </span>
+                    `;   
+
+                // fiveDaysForecast.innerHTML +=`
+                //     <span style='display: flex'>
+                //         <p style='border-bottom: 1px solid blue; width: 80%'>${weekDayNames}</p>
+                //         <p style='border-bottom: 1px solid blue; width: 15%'>${temperature} °C</p>
+                //     </span>
+                //     `;             
 
 
         });
