@@ -67,13 +67,11 @@ h4 {
 
 .temperature-app {
     position: absolute;
-    border: 1px solid black;
     display: flex;
     justify-content: center;
     flex-direction: column;
     max-width: 700px;
     width: 100vw;
-    padding-top: 0;
     height: 100vh;
 }
 
@@ -83,18 +81,20 @@ h4 {
 }
 
 
-@media (min-width: 537px) {
+@media (min-width: 768px) {
+    body {
+        background-color: #f4cdd2;
+    }
+    
     main {
         align-items: center;
         width: 768px;
         height: 1024px;
     }   
     
-    .temperature-app, .img-background  {
-        width: 768px;
-        height: 1024px;
+    .temperature-app {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
-
 
     
     h1 {
