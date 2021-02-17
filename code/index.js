@@ -59,8 +59,18 @@ fetch(forecastAPIUrl)
     .then((forecastData) => {
         const filteredForecast = forecastData.list.filter(item => item.dt_txt.includes('12:00')) /*function taken from hint-section to filter out forecasts from 12:00 PM*/
         const threeDayForecast = filteredForecast.slice(0, 3) //Forecast for three days (mobile view)
-        console.log(filteredForecast)
+            // const weatherStatus = filteredForecast.list.filter(status => status.weather.name)
+            // const weatherStatus = filteredForecast.forEach(forecastData.list[0].weather[0].main)
 
+
+        filteredForecast.forEach((object) => {
+                return object.weather
+            })
+            // const weatherStatus = forecastData.weather.map((value) => {
+            //     return value.main
+            // })
+
+        console.log(filteredForecast)
 
         /*a forEach that interates through the filtered array extracting the min and max temp of the comming 5 days*/
         threeDayForecast.forEach((forecastSingle) => {
@@ -85,4 +95,24 @@ fetch(forecastAPIUrl)
                     </div>
                 `
         })
+
     })
+
+
+
+
+
+
+//mood.innerHTML += `<h2>Light a fire and get cosy. ${data.name} is looking grey today.</h2>`
+// const weatherMessage = () => {
+//     if (weatherDescription[0] === "Clouds") {
+//         console.log('working')
+//         currentWeather.innerHTML += `<img src="./noun_Cloud_1188486.svg">`
+//         mood.innerHTML += `<h2>Light a fire and get cosy. ${data.name} is looking grey today.</h2>`
+//     } else if (weatherDescription === "Rain") {
+//         mood.innerHTML += `<img src="./noun_Cloud_1188486.svg">`
+//         mood.innerHTML += `<h2>Light a fire and get cosy. ${data.name} is looking grey today.</h2>`
+//     }
+// }
+// weatherMessage()
+// })
