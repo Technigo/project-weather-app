@@ -1,0 +1,288 @@
+/*Between line 1-14 is styling to keep the footer in the bottom, didn't want a sticky one - main-container class is also used for this purporse */
+* {
+    box-sizing: border-box;
+}
+
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    position: relative;
+}
+
+body {
+    margin: 0;
+    font-family: 'Kumbh Sans', sans-serif;
+    background-image: url("./assets/background-img.png");
+    background-position: center;
+}
+
+.main-container {
+    min-height: 100vh; /* will cover the 100% of viewport */
+    overflow: hidden;
+    display: block;
+    position: relative;
+    padding-bottom: 100px; /* height of footer */
+}
+
+/*Styling Main Top section */
+.icon-temp {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+#temperature {
+    font-size: 70px;
+    font-weight: bold;
+}
+
+#main-icon {
+    width: 40%;
+}
+
+#city-name {
+    font-size: 50px;
+    margin: 0;
+}
+
+.main-data {
+    margin-left: 10px;
+    text-align: center;
+}
+
+#description, #sunrise, #sunset {
+    margin-top: 3px;
+    font-size: 20px;
+}
+
+.sun-set-values {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Styling 5 days forecast section*/
+.forecast-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(20px);
+    margin-bottom: 10px;
+}
+
+.forecast-icon {
+    width: 35px;
+    height: 35px;
+}
+
+.forecast-minmax, .forecast-day {
+    font-size: 20px;
+}
+
+.forecast-day {
+    width: 113px; /*set up specific width so that weather icons can align*/
+}
+
+/* Vacation Spots Styling*/
+.vacation-spots, .sthlm-img, .forecast-description, .forecast-text {
+    display: none;
+}
+
+.other-cities, .forecast-text {
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#vacation-container {
+    font-size: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.vacation-city-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(20px);
+    width: 80%;
+    margin: auto;
+}
+
+.vacation-city-icon {
+    width: 30%;
+}
+
+.vacation-spots {
+    margin-bottom: 60px;
+}
+
+footer {
+    background-color: #92b3c8;
+    color: white;
+    height: 100px;
+    margin-top: 100px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: none;
+}
+
+.footer-text {
+    margin-top: 0;
+    padding-top: 1px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    color: #fbd347;
+}
+
+/* MEDIA QUERIES */
+/* Tablet */
+@media (min-width: 667px) and (max-width: 1024px) {
+    #temperature {
+        font-size: 110px;
+        font-weight: bold;
+    }
+
+    #city-name {
+        font-size: 70px;
+    }
+
+    #description, #sunrise, #sunset {
+        margin-top: 3px;
+        font-size: 30px;
+    }
+
+    #main-forecast-data {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+    }
+    
+    .forecast-container {
+        flex-direction: column;
+        width: 19%;
+    }
+
+    .forecast-day {
+        width: auto; /*overwrite specific width set above*/
+    }
+
+    .forecast-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .forecast-description, .vacation-spots, footer {
+        display: block;
+    }
+
+    .vacation-spots {
+        width: 98%;
+        margin: auto auto 60px auto; /* overwrites margin set above*/
+    }
+
+    .vacation-city-photo {
+        display: none;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1025px) {
+    .main-city-data {
+        display: flex;
+        margin: 30px auto;
+        justify-content: center;
+    }
+
+    .sthlm-img {
+        display: block;
+        height: 600px;
+    }
+
+    .city-data-right {
+        display: flex;
+        flex-direction: column;
+        width: 480px;
+        background-color: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(20px);
+    }
+
+    .icon-temp, .main-data, .sun-set-values {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #temperature {
+        margin-bottom: 0;
+    }
+
+    #city-name {
+        font-size: 50px;
+    }
+
+    #description, #sunrise, #sunset {
+        margin-top: 3px;
+        font-size: 25px;
+    }
+
+    #main-forecast-data {
+        display: flex;
+        justify-content: space-around;
+        width: 80%;
+        margin: auto;
+    }
+    
+    .forecast-container {
+        flex-direction: column;
+        width: 19%;
+    }
+
+    .forecast-day {
+        width: auto; /*overwrite specific width set above*/
+    }
+
+    .forecast-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .forecast-description, .forecast-text, .vacation-spots, footer {
+        display: block;
+    }
+
+    #vacation-container {
+        width: 80%;
+        margin: auto;
+    }
+
+    .vacation-data-photo {
+        display: flex;
+        justify-content: center;
+    }
+
+    .vacation-city-container {
+        margin: 0;
+        width: 50%;
+    }
+
+    .vacation-city-photo {
+        width: 45%;
+        object-fit: cover;
+    }
+}
