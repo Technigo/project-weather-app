@@ -17,80 +17,48 @@ fetch(todaysWeatherUrl)
   .then((response) => {
       return response.json();
   })
-  // .then((json) => {
-  //   console.log(json);
-  //   cityName.innerHTML =`<h2>${json.name}</h2>`;
-  //   mainTemperature.innerHTML = `<h3>${json.main.temp} ºC</h3>`;
-  //   sunrise.innerHTML = `Sunrise: ${json.sunrise}`;
-  //   sunset.innerHTML = `Sunset: ${json.sunset}`;
-  //     const sunriseValue = json.sys.sunrise; //Sunrise and Sunset times in UNIX
-  //     const sunsetValue = json.sys.sunset;
-  //     /* Multiply by 1000 because the data is given to us in UNIX which is in seconds, but Javascript uses milliseconds. */
-  //     const sun = new Date(sunriseValue * 1000);
-  //     const set = new Date(sunsetValue * 1000);
-  //     const sunriseHour = sun.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit', hour12: false,});
-  //     const sunsetHour = set.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit', hour12: false,});
-  //     sunrise.innerHTML = `<h3> Sunrise: ${sunriseHour}</h3>`; //lets try to find  nice pics instead of text
-  //     sunset.innerHTML = `<h3>Sunset: ${sunsetHour}</h3>`;
-  //     weatherIcon.innerHTML += //full link beause we do not have the image ourselves and to fetch the specific icon for today
-  //     `<img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" height="150px" alt="${json.weather[0].description} icon" />`
-  //     weatherDescription.innerHTML +=`${json.weather[0].description}`;
-  //     weatherFeelsLike.innerHTML += `<h4>(Feels like: ${json.main.feels_like}ºC)</h4>`; 
-  //     //fiveDayForecast += `${forecastDate.toLocalDateString('en-US', {weekday: })}`
-  
-  // })
+  .then((json) => {
+    console.log(json);
+    cityName.innerHTML =`<h2>${json.name}</h2>`;
+    mainTemperature.innerHTML = `<h3>${json.main.temp.toFixed(1)} ºC</h3>`;
+    sunrise.innerHTML = `Sunrise: ${json.sunrise}`;
+    sunset.innerHTML = `Sunset: ${json.sunset}`;
+      const sunriseValue = json.sys.sunrise; //Sunrise and Sunset times in UNIX
+      const sunsetValue = json.sys.sunset;
+      /* Multiply by 1000 because the data is given to us in UNIX which is in seconds, but Javascript uses milliseconds. */
+      const sun = new Date(sunriseValue * 1000);
+      const set = new Date(sunsetValue * 1000);
+      const sunriseHour = sun.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit', hour12: false,});
+      const sunsetHour = set.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit', hour12: false,});
+      sunrise.innerHTML = `<h3> Sunrise: ${sunriseHour}</h3>`; //lets try to find  nice pics instead of text
+      sunset.innerHTML = `<h3>Sunset: ${sunsetHour}</h3>`;
+      weatherIcon.innerHTML += //full link beause we do not have the image ourselves and to fetch the specific icon for today
+      `<img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" height="150px" alt="${json.weather[0].description} icon" />`
+      weatherDescription.innerHTML +=`${json.weather[0].description}`;
+      weatherFeelsLike.innerHTML += `<h4>(Feels like: ${json.main.feels_like.toFixed(1)}ºC)</h4>`; 
+     
+  })
   .catch(error => {
     container.innerHTML = error;
 })
   .finally(() => console.log('Finished!'));
 
-     // fetch(todaysWeatherUrl)
-
-  // .then((response) => {
-  //     return response.json();
-  // })
-  
-  //New fetch for 5 days forecast
-
- 
-
   fetch(fiveDayForecastStockholm)
 
-  .then((response) => {
-    return response.json();
-})
-  .then((json) => {
-    const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
-    filteredForecast.forEach((json.list) => {
-    fiveDayForecast.innerHTML += `<div>${forecastDate.toLocaleString}{weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})} </div>`
-    
-    }
+   .then((response) => {
+     return response.json();
   })
-const forecastDate = new Date((data.dt + data.timezone) * 1000);
-forecastDate.innerHTML += `<div>${forecastDate.toLocaleString}{weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})} </div>`;
-forecastDate.innerHTML += `<p>${specificWeekday}</p>`
+   .then((forecast) => {
+      const filteredForecast = forecast.list.filter(item => item.dt_txt.includes('12:00'))
+    
+      filteredForecast.forEach(item => {
+      let temperature = (item.main.temp).toFixed(1);
+      let weekday = (new Date(item.dt * 1000)).toLocaleDateString("en-US", { weekday: "long" })
+      let icon = `<img src=https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png></img>`;
+
+      fiveDayForecast.innerHTML += `<p>${weekday} ${temperature}ºC</p> ${icon} `;
+    
+      });
+    });
 
 
-//playing around with getting the 5 days 
-
-// 
-//   const firstDayList = json.list.filter(item => item.dt_txt.includes("12:00"))
-//   //Whenever you call the API, just create an array of dateStrings and then, (where list is the array returned from the API and dateStringList is the array of dateStrings) var firstDayList = list.filter(item -> item.dt_text.includes(dateStringList[0]) 
-
-
-/*
-advanced test of geo location
-
-
-if("geolocation" in navigator) {
-  navigator.geolocation.getLocation(setPosition, error);
-
-  else{
-    alert ('Browser do not support geolocation')
-  }
-}
-
-let api = "https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=f463a96f9ee6b3233c3a141a391ac3cf";
-
-
-*/
