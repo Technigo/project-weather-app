@@ -1,21 +1,45 @@
 body {
-    background-color: rgb(102, 136, 72);
+    box-sizing: border-box;
+    background-color: rgb(209, 163, 110);
+    width: 100vw;
+    margin: auto;
+    font-family: 'Comfortaa', cursive;
+}
+/*
+.background_cold {
+    background-color: rgb(18, 58, 85);
+    display: none;
 }
 
+.background_warm {
+    background-color: rgb(209, 163, 110);
+    display: none;
+}
+*/
 .container {
     display: flex;
     flex-direction: column;
+    justify-self: center;
     margin: auto;
-    width: 85vw;
+    padding: 25px;
+    height: 90vh;
 }
 
 /***** Today's weather *****/
+
+.container_today {
+    background-color: rgba(255, 255, 255, 0.548);
+    padding: 10px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
 .weather {
     display: flex;
     flex-direction: column;
-    border: blue solid 2px;
-    padding: 10px;
-    border-radius: 15px;
+}
+
+.weather img {
+
 }
 
 .temp_city_weather {
@@ -26,14 +50,14 @@ body {
 .sunrise_sunset {
     display: flex;
     justify-content: space-between;
-    border: yellow solid 2px;
+    width: 100%;
 }
 
 /***** Forecast *****/
+
 .container_forecast {
     display: flex;
     flex-direction: column;
-    border: white solid 2px;
     padding: 10px;
     border-radius: 15px;
 }
@@ -43,23 +67,103 @@ body {
     justify-content: space-between;
 }
 
-/***** COLORS *****/
-
-.cold {
-
-}
-
-.warm {
-
+.forecast_weather_temp {
+    display: flex;
 }
 
 /***** TABLET RESPONSIVE *****/
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
 
+    .container {
+        flex-direction: row;
+        justify-content: center;
+        padding: 25px;
+    }
+    
+    /* Todays weather */
+    
+    .container_today {
+        width: 40vw;
+        height: 50vh;
+        margin-right: 25px;
+    }
+
+    .weather {
+        height: 100%;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .temp_city_weather {
+        flex-direction: column-reverse;
+        align-content: center;
+    }
+    
+    .weather img {
+        width: 40px;
+    }
+
+    .sunrise_sunset {
+
+    }
+    
+    /* Forecast */
+    
+    .container_forecast {
+        justify-content: space-evenly;
+        width: 40vw;
+        height: 50vh;
+    }
+
+    .forecast img {
+        height: 60px;
+    }
 }
+
 
 /***** DESKTOP RESPONSIVE *****/
 @media screen and (min-device-width: 1025px) {
 
+    .container {
+        flex-direction: row;
+        justify-content: center;
+        
+    }
+
+    /* Todays weather */
+
+    .container_today {
+        width: 30vw;
+        height: 70vh;
+        margin-right: 25px;
+    }
+
+    .weather {
+        height: 100%;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .temp_city_weather {
+        flex-direction: column-reverse;
+        align-content: center;
+    }
+
+    .weather img {
+        height: 100px;
+        width: 100px;
+    }
+
+    /* Forecast */
+
+    .container_forecast {
+        justify-content: space-evenly;
+        width: 30vw;
+        height: 70vh;
+    }
+
+    .forecast img {
+        height: 65px;
+    }
 }
 

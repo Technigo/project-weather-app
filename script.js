@@ -6,6 +6,8 @@ const forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockhol
 const containerToday = document.getElementById('containerToday')
 const containerForecast = document.getElementById('containerForecast')
 
+
+
 // API today's weather
 fetch(todaysUrl)
     .then((response) => {
@@ -16,11 +18,13 @@ fetch(todaysUrl)
         // variables to display weather data
         let city = json.name
         let temp = json.main.temp.toFixed(1)
-        let weatherType = json.weather[0].description
+        // let weatherType = json.weather[0].description
         let sunrise = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], {timeStyle: 'short'})
         let sunset = new Date(json.sys.sunset * 1000).toLocaleTimeString([], {timeStyle: 'short'})
         
-         
+
+        
+        let wIcon = json.weather[0].icon
         
         // HTML today's weather
         let weatherHTML = ''
@@ -30,9 +34,8 @@ fetch(todaysUrl)
         weatherHTML += `<h2>${temp}°C</h2>`
         weatherHTML += `<h1>${city}</h1>`
         weatherHTML += `</div>`
-        weatherHTML += `<p>${weatherType}</p>`
+        weatherHTML += `<img src="https://openweathermap.org/img/wn/${wIcon}@2x.png" />`
         weatherHTML += `</div>`
-        //weatherHTML +=  `<img src="${currentCondition}/>`
         weatherHTML += `<div class="sunrise_sunset">`
         weatherHTML += `<p>Sunrise: ${sunrise}`
         weatherHTML += `<p>Sunset: ${sunset}`
@@ -48,10 +51,11 @@ fetch(forecastUrl)
             return response.json()
     })
     .then((data) => {
-    
+        
         const filteredForecast = data.list.filter(item => item.dt_txt.includes('12:00'))
     
         filteredForecast.forEach(data => {
+        let wIcon = data.weather[0].icon
         
         // displays the forecast weekday
         let theDate = new Date(data.dt_txt)
@@ -64,17 +68,17 @@ fetch(forecastUrl)
         weekday[5] = 'Friday'
         weekday[6] = 'Saturday'
         let forecastDate = weekday[theDate.getDay()]
-        console.log(forecastDate)
 
         let forecastTemp = data.main.temp.toFixed(1)
-        let forecastWeatherType = data.weather[0].description
         
         // HTML forecast weather
         let forecastHTML = ''
         forecastHTML += `<section class="forecast">`
         forecastHTML += `<p>${forecastDate}</p>`
-        forecastHTML += `<p>${forecastWeatherType}</p>`
+        forecastHTML += `<div class="forecast_weather_temp">`
+        forecastHTML += `<img class="forecast_icon" src="https://openweathermap.org/img/wn/${wIcon}@2x.png" />`
         forecastHTML += `<p>${forecastTemp}°C</p>`
+        forecastHTML += `</div>`
         forecastHTML += `</section>`
 
         containerForecast.innerHTML += forecastHTML
