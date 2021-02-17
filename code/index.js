@@ -64,10 +64,10 @@ fetch(APIurl)
         threeDayForecast.forEach((forecastSingle) => {
             forecast.innerHTML += `
                 <div class="forecast">
-                <div class="days-of-week">
-                <p>${daysOfWeek(forecastSingle.dt)}</p>
-                <p>${(forecastSingle.main.temp_max).toFixed(0)} &#8451 </p>
+                <div class="forecast-elements">
+                <p class="days-of-week">${daysOfWeek(forecastSingle.dt)}</p>
                 <img class="icons" src="/assets/snowflake.png" alt="">
+                <p class="forecast-temp">${(forecastSingle.main.temp_max).toFixed(0)} &#8451 </p>
                 </div>
                 </div>
             `
