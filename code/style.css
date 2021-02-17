@@ -9,11 +9,20 @@ body {
     margin: 30px auto;
 }
 
-.today-weather {
-    text-align: center;
+.todays-weather {
+    font-family: Montserrat;
+    font-weight: bold;
 }
 
+.todays-weather-small {
+    font-family: Montserrat;
+}
 
+.weekdays-container {
+    display: flex;
+    justify-content: space-between;
+    font-family: Montserrat;
+}
 
 
 
