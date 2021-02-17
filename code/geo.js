@@ -12,7 +12,7 @@ const toggleMenu = () => {
 menuBtn.addEventListener("click", toggleMenu);
 
 // The function returns a color depending on the temperature 
-coloringFunction = (temp) => {
+const coloringFunction = (temp) => {
     if (temp > 30.0) {
         return "#DBC2CF";
 
@@ -62,8 +62,8 @@ const success = (position) => {
 
 
             // Displays time for sunrise and sunset and changing it to english timings
-            let sunrise = (new Date(todaysgeo.sys.sunrise * 1000).toLocaleTimeString("en-US", { timeStyle: "short" }));
-            let sunset = (new Date(todaysgeo.sys.sunset * 1000).toLocaleString("en-US", { timeStyle: "short" }));
+            const sunrise = new Date(todaysgeo.sys.sunrise * 1000).toLocaleTimeString("en-US", { timeStyle: "short" });
+            const sunset = new Date(todaysgeo.sys.sunset * 1000).toLocaleString("en-US", { timeStyle: "short" });
 
             // Displaying the geolocation weather today
             todaysWeather.innerHTML = `${icon}<h2>It looks like you're in beautiful ${name} today!<br> The temperature is ${temp}&#8451; and it's going to be ${weather}.</h2>`
