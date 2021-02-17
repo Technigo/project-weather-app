@@ -19,24 +19,21 @@ fetch(currentWeatherUrl)
     currentWeather.innerHTML += `<p>sunrise: ${new Date(data.sys.sunrise * 1000).toLocaleString('se-SE', {hour:'numeric', minute: 'numeric'})}</p>`
     currentWeather.innerHTML += `<p>sunset: ${new Date(data.sys.sunset * 1000).toLocaleString('se-SE', {hour:'numeric', minute: 'numeric'})}</p>`
 
+  
   //mood.innerHTML += `<h2>Light a fire and get cosy. ${data.name} is looking grey today.</h2>`
-  })
-
   const weatherMessage = () => {
-    const weatherDescription = data.weather.map((value) => {
-      return value.main
-      })
-  if (weatherDescription === "Clouds") {
-    console.log('working')
-    currentWeather.innerHTML += `<img src="./noun_Cloud_1188486.svg">`
-    mood.innerHTML += `<h2>Light a fire and get cosy. ${data.name} is looking grey today.</h2>`
-  } else if (weatherDescription === "Rain") {
-    mood.innerHTML += `<img src="./noun_Cloud_1188486.svg">`
-    mood.innerHTML += `<h2>Light a fire and get cosy. ${data.name} is looking grey today.</h2>`
+    if (weatherDescription[0] === "Clouds") {
+      console.log('working')
+      currentWeather.innerHTML += `<img src="./noun_Cloud_1188486.svg">`
+      mood.innerHTML += `<h2>Light a fire and get cosy. ${data.name} is looking grey today.</h2>`
+    } else if (weatherDescription[0] === "Rain") {
+      mood.innerHTML += `<img src="./noun_Cloud_1188486.svg">`
+      mood.innerHTML += `<h2>Light a fire and get cosy. ${data.name} is looking grey today.</h2>`
+    }
   }
-}
-
-weatherMessage()
+  
+  weatherMessage()
+  })
 
 
 
