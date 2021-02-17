@@ -12,28 +12,32 @@
 </head>
 
 <body>
-<div class="main">
-    <div>
-        <img class="img-background" src="/assets/sunny.png" alt="">
-    </div>
-    <div class="temperature-app" id="temperatureapp">
-        <h2 id="cityname"></h2>
-        <h3 id="type-of-weather"></h3>
-        <h1 id="temperature"></h1>
-        
-        <div id='sunrise-and-sunset'>
-        <h4 id="sunrise"></h4>
-        <h4 id="sunset"></h4>
+    <div class="main">
+        <div>
+            <img class="img-background" src="/assets/sunny.png" alt="">
         </div>
-        
+        <div class="temperature-app" id="temperatureapp">
+            <h2 id="cityname"></h2>
+            <h3 id="type-of-weather"></h3>
+            <h1 id="temperature"></h1>
 
-        <!-- FORECAST -->
-        <div >
-            <h3 class="forecast" id='forecast'></h3>
+            <div id='sunrise-and-sunset'>
+                <h4 id="sunrise"></h4>
+                <h4 id="sunset"></h4>
+            </div>
+
+
+            <!-- 3-day FORECAST -->
+            <div>
+                <h3 class='three-day-forecast forecast' id='three-day-forecast'></h3>
+            </div>
+
+            <!-- 5-day FORECAST -->
+            <div>
+                <h3 class='five-day-forecast forecast' id='five-day-forecast'></h3>
+            </div>
         </div>
-
     </div>
-</div>
     <script src="index.js"></script>
 </body>
 

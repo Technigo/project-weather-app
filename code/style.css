@@ -1,14 +1,21 @@
-body, html {
+body,
+html {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     height: 100%;
     overflow: hidden;
 }
 
+
 /* SCREEN SIZE - MOBILE AND TABLET */
 
+
 /* FONTS, SIZES */
-h1, h2, h3, h4 {
+
+h1,
+h2,
+h3,
+h4 {
     color: #fff;
 }
 
@@ -47,11 +54,10 @@ h4 {
     margin-top: 0px;
 }
 
-
 .main {
     display: flex;
     justify-content: space-around;
-    text-align: center;  
+    text-align: center;
 }
 
 .img-background {
@@ -80,42 +86,46 @@ h4 {
     justify-content: space-around;
 }
 
+.five-day-forecast {
+    display: none
+}
+
+@media (min-width: 414px) {
+    .five-day-forecast {
+        display: flex
+    }
+    .three-day-forecast {
+        display: none
+    }
+}
 
 @media (min-width: 768px) {
     body {
         background-color: #f4cdd2;
     }
-    
     main {
         align-items: center;
         width: 768px;
         height: 1024px;
-    }   
-    
+    }
     .temperature-app {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
-
-    
     h1 {
         font-size: 100px;
     }
-    
     h2 {
         font-size: 30px;
     }
-    
     h3 {
         font-size: 35px;
     }
-    
     h4 {
         font-size: 30px;
     }
     .days-of-week {
         font-size: 25px;
     }
-    
     .forecast-temp {
         font-size: 30px;
         font-weight: 600;
