@@ -9,4 +9,6 @@
     background: rgb(143,138,231);
     background: linear-gradient(180deg, rgba(143,138,231,1) 0%, rgba(135,176,245,1) 48%, rgba(191,240,250,1) 100%);
     color: blue;
+    width: 100vw;
+    height: 100vh;
 }
