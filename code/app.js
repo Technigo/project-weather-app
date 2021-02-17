@@ -11,8 +11,7 @@ let returnWeekDay = (date) => {
   let inputDate = new Date(date);
   // fix for iOS
   if(Number.isNaN(inputDate.getMonth())) {
-    let arr = fullDate.split(/[- :]/);
-    inputDate = new Date(arr[0], arr[1]-1, arr[2], arr[3], arr[4], arr[5]);
+    inputDate = new Date(date.replace(' ', 'T'));
   }
   return daysInWeek[inputDate.getDay()];
 }
