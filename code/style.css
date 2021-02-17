@@ -6,11 +6,12 @@
   text-align: center;
 }
 .container {
-  padding: 20px; 
+  padding: 60px 20px; 
   margin: 20px;
-  background: linear-gradient(-45deg, #a4b10d, #e73c7e, #23a6d5, #23d5ab);
+  background: linear-gradient(-45deg, #28b10d, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   animation: gradient 10s ease infinite;
+  /* border-radius: 200px 0; */
 }
 .temperature-container {
   display: block;
@@ -23,20 +24,18 @@
 }
 .sunrise-sunset-container {
   display: flex;
-  justify-content: space-around;
-  padding-top: 30px;
+  justify-content: space-evenly;
+  padding-top: 20px;
 }
 .sunrise-sunset-container + * {
   flex-direction: row;
 }
+.five-day-forecast {
+  
+}
 
 
-/* gradient background */
-/* body {
-  background: linear-gradient(-45deg, #a4b10d, #e73c7e, #23a6d5, #23d5ab);
-	background-size: 400% 400%;
-	animation: gradient 10s ease infinite;
-} */
+
 @keyframes gradient {
 	0% {
 		background-position: 0% 50%;
