@@ -28,7 +28,7 @@ const fetchWeatherToday = () => {
         sunrise: sunTimes[0],
         sunset: sunTimes[1],
       };
-      weatherToday.innerHTML = getWeatherToday(weatherData);
+      weatherToday.innerHTML += getWeatherToday(weatherData);
 
       // DEBUG: remove on submission
       console.log(data);

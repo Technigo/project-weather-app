@@ -1,7 +1,17 @@
 .header-info {
   height: 480px;
-  background-image: url("../assets/bkg.svg");
-  background-position: bottom;
+  overflow: hidden;
+  position: relative;
+}
+.svg-container {
+}
+
+.header-info__bkg {
+  position: absolute;
+  z-index: -1;
+  width: 200vw;
+  top: -50vw;
+  left: -50vw;
 }
 
 .header-info__wrapper {
