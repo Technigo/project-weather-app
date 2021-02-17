@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css" />
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
     <title>Weather</title>
 </head>
 <body>
@@ -14,10 +14,18 @@
         <div id="dayCurrent">Today: </div>
         <div id="timeCurrent">Time: </div>
         <div id="sky">weather: </div>
-        <div id="temperature">temperature </div>
+        <div id="temperature">
+            <img src="./images/thermometer_cart1.jpg" width="60" height="90"/>
+            
+        </div>
         <div id="feelsTemp">feels like </div>
-        <div id="sunrise">sunrise </div>
-        <div id="sunset">sunset </div>
+        <div id="sunrise"> 
+            <img src="./images/sunrise_cart2.jpg" width="44" height="30"/>
+            
+        </div>
+        <div id="sunset">
+            <img src="./images/sunset_cart1.jpg" width="44" height="30"/>
+        </div>
     </section>
         
     <h2 class = forecast>5 days forecast</h2>
@@ -25,7 +33,7 @@
     
     <table id="dynamic">
     </table>
-    
+    <canvas id="line-chart" width="300" height="200"></canvas>
     <script src="./app.js"></script>
 </body>
 </html>

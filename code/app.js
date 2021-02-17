@@ -2,7 +2,9 @@ const dtable = document.getElementById('dynamic');
 
 
 // Global variable
-let weather
+let weather, daysWeek, comboArray,
+dWeek,
+ tempPoints
 
 // convert datetime from API to hours and min
 const hrsMinConverter = (param) => {
@@ -41,8 +43,8 @@ const weatherData = () => {
       dayCurrent.innerHTML += dayMonthConverter(weather.dt)
       timeCurrent.innerHTML += hrsMinConverter(weather.dt)
       sky.innerHTML += weather.weather[0].main
-      temperature.innerHTML += weather.main.temp
-      feelsTemp.innerHTML += weather.main.feels_like
+      temperature.innerHTML += `${Math.round(weather.main.temp)}C` 
+      feelsTemp.innerHTML += `${Math.round(weather.main.feels_like)}C`
       sunrise.innerHTML += hrsMinConverter(weather.sys.sunrise)
       sunset.innerHTML += hrsMinConverter(weather.sys.sunset)
     });
@@ -65,9 +67,10 @@ const weatherForecast = () => {
         //console.log("dw", dw)
         //console.log(dayWeekConverter(elem.dt), elem.main.feels_like)
         if (dw === 0) {
+          
           dtable.innerHTML += `
           <tr>
-            <td>Sun ${elem.main.feels_like}</td>
+            <td>Sun ${Math.round(elem.main.feels_like)}C</td>
             <td>${elem.weather[0].description}</td>
 
           </tr>
@@ -75,7 +78,7 @@ const weatherForecast = () => {
         } else if (dw === 1) {
           dtable.innerHTML += `
           <tr>
-            <td>Mon ${elem.main.feels_like}</td>
+            <td>Mon ${Math.round(elem.main.feels_like)}C</td>
             <td>${elem.weather[0].description}</td>
 
           </tr>
@@ -83,7 +86,7 @@ const weatherForecast = () => {
         } else if (dw === 2) {
           dtable.innerHTML += `
           <tr>
-            <td>Tue ${elem.main.feels_like}</td>
+            <td>Tue ${Math.round(elem.main.feels_like)}C</td>
             <td>${elem.weather[0].description}</td>
 
           </tr>
@@ -91,7 +94,7 @@ const weatherForecast = () => {
         } else if (dw === 3) {
           dtable.innerHTML += `
           <tr>
-            <td>Wed ${elem.main.feels_like}</td>
+            <td>Wed ${Math.round(elem.main.feels_like)}C</td>
             <td>${elem.weather[0].description}</td>
 
           </tr>
@@ -99,7 +102,7 @@ const weatherForecast = () => {
         } else if (dw === 4) {
           dtable.innerHTML += `
           <tr>
-            <td>Thu ${elem.main.feels_like}</td>
+            <td>Thu ${Math.round(elem.main.feels_like)}C</td>
             <td>${elem.weather[0].description}</td>
 
           </tr>
@@ -107,7 +110,7 @@ const weatherForecast = () => {
         } else if (dw === 5) {
           dtable.innerHTML += `
           <tr>
-            <td>Fri ${elem.main.feels_like}</td>
+            <td>Fri ${Math.round(elem.main.feels_like)}C</td>
             <td>${elem.weather[0].description}</td>
 
             </tr>
@@ -115,7 +118,7 @@ const weatherForecast = () => {
         } else if (dw === 6) {
           dtable.innerHTML += `
           <tr>
-            <td>Sat ${elem.main.feels_like}</td>
+            <td>Sat ${Math.round(elem.main.feels_like)}C</td>
             <td>${elem.weather[0].description}</td>
 
           </tr>
@@ -127,3 +130,63 @@ const weatherForecast = () => {
 }
 
 weatherForecast()
+
+/*************************WEATHER GRAPH *******************/
+const tempGraph = () => {
+  fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=1b672b9c637e28dafe516793b1e9bf96")
+  .then((response) => {
+    return response.json().then((json) => {
+      const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
+      console.log("filtered data graph",filteredForecast)
+      const tempPoints = filteredForecast.map((elem) => {
+        //daysWeek = dayWeekConverter(elem.dt)  
+        return elem.main.temp
+      })  
+      console.log("temperature",tempPoints)
+      
+      const Days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+
+      const datePoints = filteredForecast.map((elem) => {
+        return dayWeekConverter(elem.dt)
+      })  
+      console.log(datePoints)
+        
+      const dWeek = datePoints.map((day) => {
+        return Days[day]
+      })
+      console.log(dWeek)
+
+      
+      const comboArray = dWeek.map((e,i) => {
+        return [e, tempPoints[i]]
+
+      })
+      console.log(comboArray)
+      
+      new Chart(document.getElementById("line-chart"), {
+        type: 'line',
+        data: {
+          labels: dWeek,
+          datasets: [{ 
+              data:tempPoints,
+              label: "actual temperature at noon",
+              borderColor: "#3e95cd",
+              fill: false
+            }, 
+          ]
+        },
+        options: {
+          legend: {
+            display: false
+          },
+          title: {
+            display: true,
+            text: 'actual temperature at noon'
+          }
+        }
+      });
+  })  
+})
+}
+tempGraph()
+
