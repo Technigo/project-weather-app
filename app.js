@@ -1,6 +1,5 @@
 // Global variables
 const API_KEY = '4b089f476bd9961f1c727a0625472b1f'
-// let city = “Stockholm”;
 const weather = document.getElementById('weather');
 const sunrise = document.getElementById('sunrise');
 const sunset = document.getElementById('sunset');
@@ -17,58 +16,44 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
         const sunriseReadableTime = sunriseTime.toLocaleTimeString([], { timeStyle: 'short'})
         const sunsetReadableTime = sunsetTime.toLocaleTimeString([], { timeStyle: 'short'})
 
-        console.log(json);
         city.innerHTML = `${json.name}`;
         weather.innerHTML = `${json.weather[0].main} | ${Math.floor(json.main.temp)}°C`;
         sunrise.innerHTML = `Sun Up: ${sunriseReadableTime}`;
         sunset.innerHTML = ` Sun Down: ${sunsetReadableTime}`;
     })
 
+    
+
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=${API_KEY}`)
-
-            
-
-.then((response) => {
+    .then((response) => {
         return response.json();
-    })
-    .then((json) => {
-        console.log(json)
-        console.log(json.list[0].main)
-        console.log(json.list.filter(item => item.dt_txt.includes('12:00')))
-;
-        const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
-        
-        // let d = new Date();
-        // let weekday = new Array(7);
-        // weekday[0] = "Sunday";
-        // weekday[1] = "Monday";
-        // weekday[2] = "Tuesday";
-        // weekday[3] = "Wednesday";
-        // weekday[4] = "Thursday";
-        // weekday[5] = "Friday";
-        // weekday[6] = "Saturday";
+        })
+        .then((json) => {
+                // A variable that saves information each day at 12.00
+            const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
 
-        // let n = weekday[d.getDay()];
+            // A loop for the filteredForecast variable
+            filteredForecast.forEach((item) => {
+                //A variable that saves the date and time each day
+                const weekDays = new Date(item.dt_txt);
+                // A variable that svaes a shorter version of the date each day
+                const weekDayNames = weekDays.toLocaleDateString('en-US', {weekday: 'short'});
+                // A variable that saves the temperature each day
+                const temperature = Math.floor(item.main.temp);
 
-        filteredForecast.forEach((item) => {
-            const weekDays = new Date(item.dt_txt);
-            const day = weekDays.getDay();
-            console.log(`Hello ${day}`);
+  
+                fiveDaysForecast.innerHTML +=`
+                    <div>
+                        <h5>${weekDayNames} ${temperature} °C</h5>
+                    </div>
+                    `;             
 
-            // console.log(weekDay)
-            console.log(item.main.temp);
-            //fiveDaysForecast.innerHTML += `${item.main.temp}`;
 
-            // fiveDaysForecast.innerHTML += `<section class="5-days-forecast"`;
-            fiveDaysForecast.innerHTML += `<p>${item.main.temp}, ${item.dt_txt}</p>`;
-            // fiveDaysForecast.innerHTML += `</section>`;
         });
 
 
-        //day1.innerHTML = filteredForecast.forEach((item) => {
-          //  console.log(item.main.temp);
-       // });
 
-        
 
     })
+
+
