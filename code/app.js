@@ -8,11 +8,14 @@ const forcast = document.getElementById('forcast');
 
 let returnWeekDay = (date) => { 
   let daysInWeek = ["Sunday", "Monday","Tuesday", "Wednesday","Thursday","Friday","Saturday"];
+  let inputDate = new Date(date.replace(' ', 'T'));
+  /*
+  // old solution with different code for both non ios and ios
   let inputDate = new Date(date);
   // fix for iOS
   if(Number.isNaN(inputDate.getMonth())) {
     inputDate = new Date(date.replace(' ', 'T'));
-  }
+  }*/
   return daysInWeek[inputDate.getDay()];
 }
 
