@@ -84,9 +84,9 @@ fetch(weatherForcastUrl)
       `
     })
   })
-    .catch(error => {
-      filteredForecast.innerHTML = `${error}`
-    })
+  .catch(error => {
+    filteredForecast.innerHTML = `${error}`
+  })
 };
 
   
