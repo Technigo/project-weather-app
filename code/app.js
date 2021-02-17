@@ -1,27 +1,24 @@
 const dtable = document.getElementById('dynamic');
 const selectCity = document.getElementById('selectCity');
-//const URL =  "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=1b672b9c637e28dafe516793b1e9bf96"
-// const today = "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=1b672b9c637e28dafe516793b1e9bf96"  
-// const URL5d = "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=1b672b9c637e28dafe516793b1e9bf96"
+
 // Global variable
-let weather, daysWeek, comboArray,
-dWeek, value, tempPoints, 
+let weather, daysWeek, dWeek, value, tempPoints, 
 NEW_1URL = "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=1b672b9c637e28dafe516793b1e9bf96",
 NEW_5URL = "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=1b672b9c637e28dafe516793b1e9bf96"
 
 // convert datetime from API to hours and min
+// we have to subtract extra 1hr from msec data otherwise we are referring everything to UTC time zone
 const hrsMinConverter = (param) => {
-  
-    const date = new Date(param * 1000)
-    const hours = date.getHours()
-    const min = date.getMinutes()
-    hoursMin = `${hours}:${min}`
-    return hoursMin
+  const date = new Date(param * 1000-3600000)
+  const hours = date.getHours()
+  const min = date.getMinutes()
+  hoursMin = `${hours}:${min}`
+  return hoursMin
 }
 
 // convert datetime from API to days and months
 const dayMonthConverter = (param) => {
-    const date = new Date(param * 1000)
+    const date = new Date(param * 1000-3600000)
     const day = date.getDate()
     const month = date.getMonth()
     dayMonth = `${day}/${month+1}`
@@ -30,35 +27,33 @@ const dayMonthConverter = (param) => {
 
 // convert datatime from API to day of the week
 const dayWeekConverter = (param) => {
-  const date = new Date((param)* 1000)
+  const date = new Date(param* 1000)
   const dayOfWeek = date.getDay()
   return dayOfWeek
 }
 
 /************ TODAY WEATHER FORECAST ***************/
 const weatherData = () => {
-  console.log(NEW_1URL)
   fetch(NEW_1URL)
   .then((response) => {
     return response.json().then((json) => {
       weather = json
-      console.log(weather)
-      console.log("today", dayWeekConverter(weather.dt))
       city.innerHTML += weather.name
-      dayCurrent.innerHTML+= `Today: ${dayMonthConverter(weather.dt)}`
-      timeCurrent.innerHTML += `Time: ${hrsMinConverter(weather.dt)}`
+      dayCurrent.innerHTML+= `Today: ${dayMonthConverter(weather.dt + weather.timezone)}`
+      timeCurrent.innerHTML += `Time: ${hrsMinConverter(weather.dt + weather.timezone)}`
       sky.innerHTML += `
         <tr>
         <td> ${weather.weather[0].main}</td>
         <td><img src="https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png"/></td>
         </tr>  
         `
-
-
-      temperature.innerHTML += `Temperature: ${Math.round(weather.main.temp)}C` 
+      temperature.innerHTML += `Temperature: ${Math.round(weather.main.temp)}C
+        <img src="./images/thermometer_cart1.jpg" width="60" height="90"/>` 
       feelsTemp.innerHTML+= `Feels like: ${Math.round(weather.main.feels_like)}C`
-      sunrise.innerHTML += hrsMinConverter(weather.sys.sunrise)
-      sunset.innerHTML += hrsMinConverter(weather.sys.sunset)
+      sunrise.innerHTML += `<img src="./images/sunrise_cart2.jpg" width="44" height="30"/>
+        ${hrsMinConverter(weather.sys.sunrise+ weather.timezone)}`
+      sunset.innerHTML += `<img src="./images/sunset_cart1.jpg" width="44" height="30"/>
+        ${hrsMinConverter(weather.sys.sunset + weather.timezone)}`
     });
   });
 };
@@ -66,7 +61,6 @@ weatherData();
 
 /********** 5 DAYS FORECAST ***********/
 const weatherForecast = () => {
-  
   fetch(NEW_5URL)
   .then((response) => {
     return response.json().then((json) => {
@@ -74,7 +68,6 @@ const weatherForecast = () => {
       console.log("filtered data",filteredForecast)
       filteredForecast.map((elem) => {
         dw= dayWeekConverter(elem.dt)  
-        
         if (dw === 0) {
           dtable.innerHTML += `
           <tr>
@@ -139,40 +132,30 @@ const weatherForecast = () => {
 weatherForecast()
 
 /*************************WEATHER GRAPH *******************/
-
-//fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=1b672b9c637e28dafe516793b1e9bf96")
-//
 const tempGraph = () => {
   fetch(NEW_5URL)
   .then((response) => {
     return response.json().then((json) => {
       const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
-      console.log("filtered data graph",filteredForecast)
       const tempPoints = filteredForecast.map((elem) => {
-        //daysWeek = dayWeekConverter(elem.dt)  
         return elem.main.temp
       })  
-      console.log("temperature",tempPoints)
-      
       const Days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-
       const datePoints = filteredForecast.map((elem) => {
         return dayWeekConverter(elem.dt)
       })  
-      console.log(datePoints)
-        
+              
       const dWeek = datePoints.map((day) => {
         return Days[day]
       })
-      console.log(dWeek)
-
       
+      /**
       const comboArray = dWeek.map((e,i) => {
         return [e, tempPoints[i]]
 
       })
       console.log(comboArray)
-      
+      **/
       new Chart(document.getElementById("line-chart"), {
         type: 'line',
         data: {
@@ -201,18 +184,12 @@ const tempGraph = () => {
 tempGraph()
 
 const myCity = () => {
-
-  
   const value = selectCity.options[selectCity.selectedIndex].value
-
-  console.log("the selected city", value)
   NEW_1URL = `https://api.openweathermap.org/data/2.5/weather?q=${value}&units=metric&APPID=1b672b9c637e28dafe516793b1e9bf96`
   NEW_5URL = `https://api.openweathermap.org/data/2.5/forecast?q=${value}&units=metric&APPID=1b672b9c637e28dafe516793b1e9bf96`
-  
   weatherData()
   weatherForecast()
   tempGraph()
-
 }
 
 selectCity.addEventListener("change", () => {
@@ -222,6 +199,8 @@ selectCity.addEventListener("change", () => {
   sky.innerHTML = ""
   temperature.innerHTML = ""
   feelsTemp.innerHTML = ""
+  sunrise.innerHTML = ""
+  sunset.innerHTML = ""
   dtable.innerHTML = ""
   myCity(selectCity.value)
 })

@@ -1,3 +1,27 @@
 body {
     background-color: rgb(225, 225, 243)
 }
+.city-title {
+    color: navy;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+/******************  MEDIA QUARIES  *********************/
+@media(min-width: 768px) {
+}
+
+
+
+@media(min-width: 1200px) {
+}
