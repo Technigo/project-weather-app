@@ -33,10 +33,17 @@ fetch(todaysWeatherUrl)
       const sunsetHour = set.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit', hour12: false,});
       sunrise.innerHTML = `Sunrise: ${sunriseHour}`;
       sunset.innerHTML = `Sunset: ${sunsetHour}`;
-      //weatherDescription.innerHTML +=`${json.weather[0].description}`;
-      weatherIcon.innerHTML += 
+      weatherDescription.innerHTML +=`${json.weather[0].description}`;
+      weatherIcon.innerHTML += //full link beause we do not have the image ourselves and to fetch the specific icon for today
       `<img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="${json.weather[0].description} icon" />`
   })
+
+
+ // to get the description for the weather... ?  
+  //  const weatherInfo = json.list.forEach((day)=>{
+  //   weatherDescription.innerHTML += `<p> The overal weather: ${day.weather[0].description}. </p>`
+  // }
+
 
     // fetch(todaysWeatherUrl)
 
@@ -49,6 +56,8 @@ fetch(todaysWeatherUrl)
   // })
   //New fetch for 5 days forecast
 
+  //const fiveDayForecast = document.getElementById('five-day-forecast')
+
 //   fetch(fiveDayForecastStockholm)
 //   .then((response) => {
 //     return response.json();
@@ -60,6 +69,7 @@ fetch(todaysWeatherUrl)
 //     }
 //   })
 
+//We need to create a variable that takes the value for each day and generates the 5 days in a nice forma
 
 
 //playing around with getting the 5 days 
