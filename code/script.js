@@ -52,19 +52,20 @@ fetch(StockholmForecastAPI)
   const filteredForecast = data.list.filter(item => item.dt_txt.includes('12:00'))
     console.log(filteredForecast)
     filteredForecast.forEach((day) => {
-        let temp = day.main.temp
-        let feelsLike = day.main.feels_like //change these two to fells like and temp instead? No difference btw max and min from this API. 
-        const image = feelsLike 
-        if (feelsLike =< 0) {
-          'Group16.png'
-        } else if (feelsLike <= 5) {
-          'Group34.png'
-        } else if (feelsLike > 5) {
-          'Group36.png'
-        } else (feelsLike > 15) { //kan tas bort senare, stå endast else
-          'Group37.png'
+        let temp = day.main.temp //avrunda till heltal
+        let feelsLike = day.main.feels_like //avrunda till heltal
+        
+        let image = feelsLike () => { //eller const
+          if (feelsLike =< 0) { 
+            'snow.png'
+          } else if (feelsLike <= 5) { //kan en skriva grader så här?
+            'Group34.png'
+          } else if (feelsLike > 5) {
+            'Group36.png'
+          } else (feelsLike > 15) { //kan tas bort sen, stå endast else
+            'Group37.png'
         }
-
+        } 
         console.log(temp, feelsLike)
 
         let nextDays = new Date(day.dt_txt)
@@ -78,7 +79,6 @@ fetch(StockholmForecastAPI)
         <h3>Feels like: ${image} ${feelsLike}°</h3>
         </div>
         `
-
     })
   })
 
