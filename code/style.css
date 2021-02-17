@@ -1,10 +1,37 @@
 * {
  box-sizing: border-box;
+ text-align: center;
 }
-
-.body {
+/* .body {
   margin: 0;
   background-position: center;
   display: block;
+} */
+.header + * {
+  text-align: center;
 }
+.container {
+border: 4px solid orange;
+padding: 20px; 
+margin: 20px;;
+}
+.temperature-container {
+  display: block;
+  justify-content: center;
+}
+.weather-description {
+  padding-top: 10px;
+  text-transform: capitalize;
+  font-size: 25px;
+}
+.sunrise-sunset-container {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 30px;
+}
+.sunrise-sunset-container + * {
+  flex-direction: row;
+}
+
+
 
