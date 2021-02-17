@@ -3,45 +3,90 @@ body {
   font-family: 'Rubik', sans-serif;
 }
 
-h2 {
+h1 {
   font-size: 40px;
 }
+
+h2 {
+  font-size: 50px;
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+}
+
 .weather-section{
   display: flex;
   flex-direction: column;
-  background-color: #bad7df;
+  justify-content: space-around;
+  /* background-color: #bad7df; */
+  /* background-color: #a1cae2; */
+
+  background: linear-gradient(to top,#87cefa 0%, #f0ff99 100%);
+
   padding: 0 20px;
+  height: 50vh;
 }
 
 .weather-container {
-  width: 700px;
+  /* max-width: 700px; */
  
 }
 
 .today-temp {
   display: flex;
+  justify-content: space-evenly;
+}
+
+.today {
+  padding-top: 15px;
 }
 
 .weather-icon img {
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
 }
 
 .sun-hours {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+}
 
+.sun-hours p {
+  font-size: 25px;
 }
 
 .forcast {
   display: flex;
   flex-direction: column;
   background-color: #f6f6f6;
+  padding: 25px 80px 0 80px;
+  background-color:#87cefa;
+  /*background-color: #cfc5a5;*/
 }
 
 .five-days {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   text-align: end;
+  align-items: center;
+}
+
+.five-days img {
+   /*background-color: #bad7df;*/
+}
+
+.five-days p {
+  font-size: 20px;
+}
+
+/**** MEDIA QUERIES ***/
+@media (min-width: 700px) {
+  .weather-container {
+    margin: 0 auto;
+    width: 700px;
+  }
+
 }
