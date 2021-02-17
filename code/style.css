@@ -1,0 +1,73 @@
+/* Global css variables used for colors */
+:root {
+  
+  --secondary: #1b1a1a; 
+  --hot: linear-gradient(30deg, #bb4e4ef6, #be3131);
+  --kindaHot: linear-gradient(30deg, #ffc400f6, #be3131);
+  --lessHot: linear-gradient(30deg, #a8cbfa, #2f5d99);
+  --aLittleCold: linear-gradient(30deg, #20569e, #2f5d99);
+  --okayItsCold: linear-gradient(30deg, #ffffff, #00122a);
+}
+
+body {
+  color: var(--secondary);
+  font-family: 'Montserrat', sans-serif;
+  margin: 0 40px 0 40px;
+  height: 100vh;
+  letter-spacing: 1px;
+}
+
+/*** HEADER ICON ***/ 
+.header {
+  display: flex;
+  justify-content: center;
+  margin: 30px;
+}
+
+.header__img {
+  width: 80px;
+}
+
+.header__img:hover {
+  animation: rotation 5s linear infinite;
+}
+
+.header__img:hover::after {
+  animation: none;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) ;
+  }
+}
+
+.today {
+  line-height: 7px;
+  margin: 40px 0 20px 0;
+}
+
+.sun {
+  padding: 10px 20px 10px 0;
+  display: inline-block;
+  font-size: 12px;
+  text-align: center;
+}
+
+.sun__icon {
+  width: 45px;
+}
+
+.list li {
+  list-style-type: none; 
+  border-bottom: dotted 1px;
+  padding: 10px;
+  display: flex;  
+  justify-content: space-between;
+}
+
+
+

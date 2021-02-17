@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
+  <link rel ="icon" type="image/png" href="sun.png">
+  <link rel="stylesheet" href="./style.css">
+  <title>Weather App</title>
+</head>
+<body>
+
+
+  <header class=header>
+    <img class="header__img" src="sun.png" />
+  </header>
+
+  <section class='today'>
+    <h3 id="temperature"></h3>
+    <div class="sun">
+      <img class="sun__icon" src="sunrise.png" />
+      <p id="sunrise"></p>
+    </div>
+    <div class="sun">
+      <img class="sun__icon" src="sunset.png" />
+      <p id="sunset"></p>
+    </div>
+  </section>
+  
+  <h1>Today's lovely weather in <span id="city"></span></h1>
+  
+  <p id="container" class='list'>
+  </p>
+
+  
+  <form id="form">
+    <input id="country" type="text" value="Sweden">
+    <input id="selected-city" type="text" value="Stockholm">
+
+    <button id='submit' class="button">Kör</button>
+  </form>
+  
+  
+
+<script src="./script.js"></script>
+</body>
+</html>
