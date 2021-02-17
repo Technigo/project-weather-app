@@ -1,0 +1,28 @@
+* {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: min(25vw, 120px);
+}
+
+h1 + span {
+  font-size: min(8vw, 40px);
+}
+
+h2 {
+  font-size: min(7vw, 34px);
+}
+
+h3,
+p {
+  font-size: min(4vw, 22px);
+}

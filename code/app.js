@@ -18,7 +18,12 @@ const fetchWeatherToday = () => {
       const sunTimes = formatTime([data.sys.sunrise, data.sys.sunset]);
       const weatherData = {
         temp: data.main.temp.toFixed(1),
-        type: data.weather[0].description,
+        // type: data.weather[0].description,
+        type: {
+          icon: data.weather[0].icon,
+          main: data.weather[0].main,
+          description: data.weather[0].description,
+        },
         city: CITY,
         sunrise: sunTimes[0],
         sunset: sunTimes[1],

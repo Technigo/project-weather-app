@@ -1,9 +1,23 @@
 .header-info {
   display: flex;
   flex-direction: column;
+  /* margin: 75px 0; */
+}
+
+.header-info__wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.header-info__icon {
+  height: min(30vw, 150px);
+  position: relative;
+  top: 20px;
+  align-self: flex-end;
 }
 
 .sun-times__wrapper {
   flex-flow: row nowrap;
   justify-content: space-between;
+  margin: 15px 0;
 }
