@@ -1,11 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body{
+    background-color:#E8E8E8;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: white; 
+    
+}
 img{
     width: 50px;
     height: 50px;
 }
 
-#dayOrNight {
-    background: url("./Designs/icons/day.jpg"); 
-    background-size: cover;
-    background-position: center;  
-
+.weather-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap:20px;
+    margin: 0 50%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+ 
 }
+
+.day-time{
+    background: linear-gradient( 0deg, rgb(170, 189, 132) 0%, rgb(208, 194, 163) 72% );
+}
+
+.night-time{
+    background: linear-gradient( 0deg, rgba(132, 136, 189, 1) 0%, rgb(3, 7, 65) 72% );
+}
+
+.current-city{
+    font-size: 25px;
+    margin-bottom: 10px;
+    color: white;
+}
+.current-temp{
+    margin:0;
+    font-size: 20px;
+    color: white;
+}
+
+#city{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.day {
+    display:grid;
+    grid-template-columns: 1fr;
+    width: 500px;
+    height: 350px;
+    background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.50), rgba(157, 147, 154, 0.9)),url("./Designs/icons/day.jpg");
+    background-size: cover;
+    background-position: center; 
+    border-radius: 10%; 
+}
+
+ .night{
+    display:grid;
+    grid-template-columns: 1fr;
+    width: 500px;
+    height: 350px;
+    background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.50), rgba(157, 147, 154, 0.9)),url("./Designs/icons/night.jpg");
+    background-size: cover;
+    background-position: center; 
+    border-radius: 10%; 
+}
+.current-city{
+    display: flex; 
+    justify-self:center;
+    margin-top: 35px;
+}
+
+.current-conditions{    
+    color: white;
+    display: flex;
+    align-self: flex-end;
+    justify-content: space-between;
+}
+
+
+.sunrise-and-sunset{
+    display: flex;
+    
+}
+.type-of-weather{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+#currentWeather{
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Forcast 5 days*/
+
+.head-forecast{
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    border-bottom: solid 1px;
+}
+
+#all-days{
+    width: 500px;
+    height: 400px;;
+    display: grid;
+    grid-template-columns: 175px 175px 200px;
+    
+    border-bottom: solid 1px;
+    
+}
+.icon{
+    margin-bottom: 20px;
+}
+
