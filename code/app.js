@@ -68,8 +68,8 @@ const filterForecastData = (data) => {
         main: forecast.weather[0].main,
         description: forecast.weather[0].description,
       },
-      minTemp: forecast.main.temp_min.toFixed(1),
-      maxTemp: forecast.main.temp_max.toFixed(1),
+      minTemp: forecast.main.temp_min.toFixed(0),
+      maxTemp: forecast.main.temp_max.toFixed(0),
     });
   });
 

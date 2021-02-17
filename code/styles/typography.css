@@ -10,6 +10,13 @@ p {
   margin: 0;
 }
 
+h1,
+h2,
+h3,
+h1 + span {
+  color: white;
+}
+
 h1 {
   font-size: min(25vw, 120px);
 }

@@ -2,23 +2,25 @@ export const getWeatherToday = (data) => {
   let html = "";
 
   html += `
-  <img 
-      src="./assets/${data.type.main}-${data.type.icon}.svg" 
-      alt="${data.type.description}" 
-      class="header-info__icon"
-  ></img>
   <div class="header-info__wrapper">
-    <h1>${data.temp}</h1>
-    <span>&deg;C</span>
+    <img 
+        src="./assets/${data.type.main}-${data.type.icon}.svg" 
+        alt="${data.type.description}" 
+        class="header-info__icon"
+    ></img>
+    <div class="header-title__wrapper">
+        <h1>${data.temp}</h1>
+        <span>&deg;C</span>
     </div>
     <h2>${data.city}</h2>
     <h3>${data.type.description}</h3>
-    <div class="header-info sun-times__wrapper">
+    <div class="sun-times__wrapper">
         <h3>sunrise</h3>
         <h3>${data.sunrise}</h3>
         <h3>sunset</h3>
         <h3>${data.sunset}</h3>
-    </div>
+    </div>  
+  </div>
     `;
 
   return html;

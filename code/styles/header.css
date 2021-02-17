@@ -1,10 +1,16 @@
 .header-info {
-  display: flex;
-  flex-direction: column;
-  /* margin: 75px 0; */
+  height: 480px;
+  background-image: url("../assets/bkg.svg");
+  background-position: bottom;
 }
 
 .header-info__wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 0 30px;
+}
+
+.header-title__wrapper {
   display: flex;
   flex-flow: row nowrap;
 }
@@ -17,6 +23,7 @@
 }
 
 .sun-times__wrapper {
+  display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   margin: 15px 0;
