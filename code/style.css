@@ -10,7 +10,6 @@ and desktop. Feel free to change the styling! */
 /* Styling of the body. */
 body {
   font-family: 'Montserrat', sans-serif;
-  margin: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,15 +17,15 @@ body {
 
 .navbar-container {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  background-color:rgba(255, 255, 255, 0.514);
+  width: 100%;
 }
 
 .navbar-container p {
   font-size: 12;
   display: inline-block;
-
 }
 
 .navbar-container p:hover {
@@ -39,102 +38,165 @@ body {
   align-items: center;
 }
 
-.navbar-map-icon {
-  height: 50px;
-  width: 50px;
-  cursor: pointer;
-}
-
+.navbar-map-icon,
 .navbar-magnifyingglass-icon {
-  height: 50px;
-  width: 50px;
-  padding-left: 30px;
+  width: 40px;
+  height: 40px;
   cursor: pointer;
+  padding-right: 10px;
+  padding: 5px 0;
+  opacity: 0.7;
 }
 
-.searchbox-toggle {
-  display: none;
+.navbar-map-icon{
+  padding-right: 10px;
+}
+.navbar-magnifyingglass-icon {
+  padding-left: 10px;
 }
 
-.stormy {
-  background: #6d8088;
-  color: rgb(10, 20, 26);
-}
-
-.snowy {
-  background: #f9fbfc;
-  color: #5f9ca7;
-}
-
-/* Styling of the body when the classname is "cloudy" */
-.cloudy {
-  background: #F4F7F8;
-  color: #F47775;
-}
-
-/* Styling of the body when the classname is "rainy" */
-.rainy {
-  background: #A3DEF7;
-  color: #164A68;
+.navbar-magnifyingglass-icon:hover,
+.navbar-map-icon:hover {
+  opacity: 1;
 }
 
 /* Styling of the body when the classname is "sunny" */
 .sunny {
-  background: #F7E9B9;
-  color: #2A5510;
+  background: #b7e2e2;
+  color: #075e59;
 }
 
-/* Styling of the body when the classname is "unknown" */
-.unknown {
+/* Styling of the body when the classname is "cloudy" */
+.cloudy {
+  background: #ebdece;
+  color: #0f2b3b;
+}
+
+/* Styling of the body when the classname is "rainy" */
+.rainy {
+  background: #82aabd;
+  color: #0e202b;
+}
+
+/* Styling of the body when the classname is "snowy" */
+.snowy {
+  background: #dceff8;
+  color: #394f77;
+}
+
+/* Styling of the body when the classname is "stormy" */
+.stormy {
+  background: #3d494e;
+  color: rgb(255, 255, 255);
+}
+
+/* Styling of the body when the classname is "other" */
+.other {
   background: #dbf6e9;
   color: #31326f;
 }
 
 .search-location {
-  display: flex;
+  display: none;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .search-location-inner {
   display: flex;
   height: 30px;
+  width: 100%;
 }
 
 .search-location input {
   margin: 0;
+  flex: 1 1 auto;
 }
 
 .search-location-btn {
   height: 30px;
-}
-
-.current-location-wrapper {
-  display: flex;
-  align-items: center;
+  width: 70px;
 }
 
 .today {
-  height: 250px;
+  height: 300px;
   border-bottom: solid black;
-  width: 100%;
+  width: 100vw;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  font-weight: bold;
 }
 
-.sunrise-sunset-wrapper {
+/* styling of the today section when the class is  "sunny" */
+.sunny .today {
+  background: #c2790b;
+  background-image: url("./assets/sunny1920px.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;  
+}
+
+/* styling of the today section when the class is  "cloudy" */
+.cloudy .today {
+  background: #142127;
+  background-image: url("./assets/cloudy1920px.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;  
+}
+
+/* styling of the today section when the class is  "rainy" */
+.rainy .today {
+  background: #004c6d;
+  background-image: url("./assets/rainy1920px.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;  
+}
+
+
+/* styling of the today section when the class is  "snowy" */
+.snowy .today {
+  background: #004c6d;
+  background-image: url("./assets/snowy1920px.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;  
+}
+
+
+/* styling of the today section when the class is  "stormy" */
+.stormy .today {
+  background: #004c6d;
+  background-image: url("./assets/stormy1920px.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;  
+}
+
+.today-location-wrapper {
   display: flex;
-  flex-direction: column;
+  align-items: center;
 }
 
 /* Styling of the div with info about temperature,
 sunrise and sunset numbers */
 .todays-numbers {
+  height: 80%;
   margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 p {
   font-size: 18px;
   margin: 2px;
+  display: inline;
 }
 
 /* Styling of the icon and description */
@@ -147,52 +209,64 @@ p {
   height: 70px;
 }
 
+.today-surise-sunset {
+  display: flex;
+  height: 100px;
+  flex-direction: column;
+  justify-content: flex-end;
+}
 
 /* Styling of the forecast */
 .forecast {
-  width: 100%;
+  width: 100vw;
   max-width: 400px;
-}
-
-.forecast div {
+  margin: 20px 0;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
 }
 
 .forecast-container {
   display: flex;
   justify-content: space-around;
+  width: 80%;
+  padding-top: 10px;
 }
 
-.temp-forecast {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-
-.day-forecast {
+.forecast-day {
   list-style: none;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: space-between;
+  height: 150px;
 }
 
-.forecast-day-container {
+.forecast-day li {
+  height: 30px;
+  display:flex;
+  align-items: center;
+}
+
+.forecast-temp {
+  list-style: none;
   display: flex;
   flex-direction: column;
-  padding-left: 50px;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 150px;
 }
 
-.forecast-temp-container {
+.forecast-temp li {
   display: flex;
-  flex-direction: column;
-  padding-right: 50px;
+  align-items: center;
 }
 
+.forecast-icon {
+  width: 30px;
+}
 
-/* The styling below takes care of if you want to implement a 
-text input. If you don't want to use it you can remove it. */
+/*searchbar styling */
 footer {
   width: 100%;
   max-width: 400px;
@@ -209,9 +283,15 @@ input {
   margin: 30px 0;
 }
 
+.sunny input,
+.sunny input::placeholder {
+  color: #2A5510;
+  border-radius: 4px;
+}
+
 .cloudy input,
 .cloudy input::placeholder {
-  color: #F47775;
+  color: #182844;
 }
 
 .rainy input,
@@ -219,16 +299,23 @@ input {
   color: #164A68;
 }
 
-.sunny input,
-.sunny input::placeholder {
+.snowy input,
+.snowyinput::placeholder {
   color: #2A5510;
   border-radius: 4px;
 }
 
+.stormy input,
+.stormy input::placeholder {
+  color: #2A5510;
+  border-radius: 4px;
+}
+
+
 /* Styling of how it should look in tablet and desktop */
 @media (min-width: 668px) {
   .todays-numbers p {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .todays-description img {
@@ -251,5 +338,5 @@ input {
 }
 
 .active {
-  display: block;
+  display: flex;
 }

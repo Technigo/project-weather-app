@@ -12,7 +12,7 @@
 
 <body id="body" class="sunny">
 
-  <div class="navbar-container">
+  <nav class="navbar-container">
     <div class="navbar-inner" id="locationWrapper">
       <div class="navbar-map-icon">
         <img id="currentLocationIcon" src="./assets/currentLocation.svg" alt="" />
@@ -25,12 +25,10 @@
       </div>
       <p>Sök</p>
     </div>
-  </div>
+  </nav>
 
-  <div id="searchLocationContainer">
-    <div id="searchbox-toggle" class="searchbox-toggle"></div>
-  </div>
-  <!-- <form class="search-location">
+
+  <form class="search-location" id="searchbox">
     <label for="userLocationInput">
     </label>
     <div class="search-location-inner">
@@ -39,33 +37,30 @@
         GO!
       </button>
     </div>
-  </form> -->
+  </form>
+
 
   <section class="today">
+    <div class="today-location-wrapper" id="currentLocationWrapper">
+      <img id="weatherIcon" src="" />
+      <h1 id="currentLocationText"></h1>
+    </div>
     <div class="todays-numbers">
-      <div class="current-location-wrapper" id="currentLocationWrapper">
-        <img id="weatherIcon" src="" />
-        <h1 id="currentLocationText"></h1>
-      </div>
       <p>
         <span id="shortDescription"></span><span id="temperature"></span>
       </p>
-      <p id="sunrise"></p>
-      <p id="sunset"></p>
+      <div class="today-sunrise-sunset">
+        <p id="sunrise"></p>
+        <p id="sunset"></p>
+      </div>
     </div>
   </section>
 
   <section id="forecast" class="forecast">
-    <center>
-      <h1>5-dagars prognos</h1>
-    </center>
+    <h1>5-dagars prognos</h1>
     <div class="forecast-container">
-      <div class="forecast-day-container">
-        <ul id="forecastDay" class="day-forecast"></ul>
-      </div>
-      <div class="forecast-temp-container">
-        <ul id="forecastTemp" class="temp-forecast"></ul>
-      </div>
+        <ul id="forecastDay" class="forecast-day"></ul>
+        <ul id="forecastTemp" class="forecast-temp"></ul>
     </div>
   </section>
 
