@@ -9,19 +9,18 @@
     <title>Weather</title>
 </head>
 <body>
+    <!--Today weather-->
     <section class="today" id="today">
         <div id="city"> </div>
-        <div id="dayCurrent">Today: </div>
-        <div id="timeCurrent">Time: </div>
+        <div id="dayCurrent"></div>
+        <div id="timeCurrent"></div>
         <div id="sky">weather: </div>
         <div id="temperature">
             <img src="./images/thermometer_cart1.jpg" width="60" height="90"/>
-            
-        </div>
-        <div id="feelsTemp">feels like </div>
+        </div><br>
+        <div id="feelsTemp"></div><br>
         <div id="sunrise"> 
             <img src="./images/sunrise_cart2.jpg" width="44" height="30"/>
-            
         </div>
         <div id="sunset">
             <img src="./images/sunset_cart1.jpg" width="44" height="30"/>
@@ -31,9 +30,25 @@
     <h2 class = forecast>5 days forecast</h2>
     <h3 class=table>at noon it feels like</h2>
     
+    <!-- Table for 5 days forecast-->    
     <table id="dynamic">
     </table>
+
+    <!--Line graph-->
     <canvas id="line-chart" width="300" height="200"></canvas>
+
+    <!--City selector: dropdown menu-->
+    <select id="selectCity">
+      <option value="Stockholm,Sweden">Stockholm</option>
+      <option value="Bangkok,Thailand">Bangkok</option>
+      <option value="Hanoi,Vietnam">Hanoi</option>
+      <option value="Madrid,Spain">Madrid</option>
+      <option value="Manila,Philippines">Manila</option>
+      <option value="Oslo,Norway">Oslo</option>
+      <option value="Paris,France">Paris</option>
+      <option value="Tokyo,Japan">Tokyo</option>
+    </select>
+
     <script src="./app.js"></script>
 </body>
 </html>
