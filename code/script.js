@@ -7,6 +7,7 @@ const sunset = document.getElementById("sunset")
 const description = document.getElementById("description")
 const forecast = document.getElementById("forecast")
 const icon = document.getElementById("icon")
+const bigIcon = document.getElementById("big-icon")
 
 // Global variables
 const API_KEY = "d54b10c260730aa99d10c1f676d759e6"
@@ -28,10 +29,12 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     .then((data) => {
         const temp = Math.floor(data.main.temp)  
         const condition = data.weather[0].description
+        const icon = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${data.weather[0].icon}.svg`
         const sunriseText = sunTime(data.sys.sunrise);
         const sunsetText = sunTime(data.sys.sunset);
+        bigIcon.innerHTML = `<img class="big-image" id="big-icon" src="${icon}"/>`
         shortDescription.innerText = `${condition}`   
-        temperature.innerText = `${temp} °C`
+        temperature.innerHTML = `${temp} <span class="celsius">°C</span>`
         sunrise.innerText = `Sunrise: ${sunriseText}`
         sunset.innerText = `Sunset: ${sunsetText}`
         console.log(temp) 
@@ -48,12 +51,18 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
         const filteredForecast = data.list.filter(item => item.dt_txt.includes('12:00'))
         filteredForecast.forEach((forecastItem) => {
             let loopOverWeek = weekdays[(new Date(forecastItem.dt_txt).getDay())]
-            let loopOverTemp = Math.floor(forecastItem.main.temp)
+            let loopOverTemp = Math.floor(forecastItem.main.temp);
+            let icon = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${forecastItem.weather[0].icon}.svg`;
 
+            console.log(bigIcon);
+            
             forecast.innerHTML +=  `
             <div>
                 <p>${loopOverWeek}</p>
-                <p>Temp: ${loopOverTemp} °C</p>
+                <div>   
+                    <img class="small-icons" src="${icon}">
+                    <p>${loopOverTemp} °C</p>
+                </div>
             </div>`
         });
     });

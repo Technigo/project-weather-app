@@ -12,7 +12,7 @@
   
   <!-- Link to Montserrat which is used in our design. Feel free to
   use another one or remove this if you don't want a google font. -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
 
 <!-- We gave the body an id to be able to change the background
@@ -25,24 +25,24 @@ any class at all. We will add classes in the JavaScript file instead -->
   to be able to style it according to the design. Feel free to
   take a look in the CSS file and change whatever you like. -->
   <section class="today">
-    <div class="todays-numbers">
-      <!-- We give these paragraphs id's so that we can change the
-      innerHTML after we fetched the weather data in the JavaScript.
-      We put in some dummy data so that you can see how it will look,
-      but we will replace this with the data from the API -->
-      <p>
-        <span id="shortDescription">clear</span> | <span id="temperature"> 23 °C</span>
-      </p>
-      <p id="sunrise">sunrise: 08.00</p>
-      <p id="sunset">sunset: 22.30</p>
+    <div class="today-container"> 
+      <div class="todays-numbers">
+        <h1 class="temperature" id="temperature"> 23 <span class="celsius">°C</span></h1>
+        <h2 class="location">Stockholm</h2>
+        <p>
+          <span id="shortDescription">clear</span>
+        </p>
+        <div class="sun-div">
+          <p>
+            <span class="sun" id="sunrise">sunrise: 08.00</span>
+            <span class="sun" id="sunset">sunset: 22.30</span>
+          </p>
+        </div> 
+      </div>
+      <div class="todays-description">
+      </div>
     </div>
-    <div class="todays-description">
-      <!-- Here's another id that we will use to change the source
-      of this image after we've fetched the weather data. -->
-      <img src="./assets/sun.svg" id="icon"/>
-      <!-- Another id to be able to change the description -->
-      <h2 id="description">Get your sunnies on. Stockholm is looking rather great today.</h2>
-    </div>
+    <img class="big-image" id="big-icon"/>
   </section>
 
   <!-- Another id to be able to add the forecast data to our HTML. -->
