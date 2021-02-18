@@ -84,6 +84,7 @@ h4 {
 .forecast {
     display: flex;
     justify-content: space-around;
+    margin: 0 20px;
 }
 
 .five-day-forecast {
@@ -92,7 +93,8 @@ h4 {
 
 @media (min-width: 414px) {
     .five-day-forecast {
-        display: flex
+        display: flex;
+        margin: 0 15px;
     }
     .three-day-forecast {
         display: none
