@@ -1,5 +1,5 @@
-const CURRENT_WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather?q=Helsinki&units=metric&appid=9aeed004b4643ec679ac5d430384d994"
-const FORECAST_URL = "https://api.openweathermap.org/data/2.5/forecast?q=Helsinki&units=metric&appid=9aeed004b4643ec679ac5d430384d994"
+const CURRENT_WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather?q=Helsinki&units=metric&appid=9aeed004b4643ec679ac5d430384d994"
+const FORECAST_URL = "http://api.openweathermap.org/data/2.5/forecast?q=Helsinki&units=metric&appid=9aeed004b4643ec679ac5d430384d994"
 
 const cityName = document.getElementById("cityName")
 const currentTemperature = document.getElementById("currentTemperature")
