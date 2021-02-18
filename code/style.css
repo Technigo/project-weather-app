@@ -94,7 +94,6 @@ body {
 
 /* Styling of the body when the classname is "other" */
 .other {
-  background: rgb(255, 255, 255);
   background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(69, 69, 69, 1) 100%);
 }
 
@@ -116,9 +115,36 @@ body {
   flex: 1 1 auto;
 }
 
+.search-bar {
+  border-radius: 0px;
+  outline: none;
+}
+
 .search-location-btn {
-  height: 30px;
-  width: 70px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  padding: 3px 16px;
+  border: 1px solid #2a7aaf;
+  border-radius: 0px;
+  background: #44c6ff;
+  background: -webkit-gradient(linear, left top, left bottom, from(#44c6ff), to(#2a7aaf));
+  background: -moz-linear-gradient(top, #44c6ff, #2a7aaf);
+  background: linear-gradient(to bottom, #44c6ff, #2a7aaf);
+  text-shadow: #1a4c6e 1px 1px 1px;
+  font: normal normal bold 15px arial;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.search-location-btn:hover {
+  border: 1px solid #3498db;
+  background: #52eeff;
+  background: -webkit-gradient(linear, left top, left bottom, from(#52eeff), to(#3292d2));
+  background: -moz-linear-gradient(top, #52eeff, #3292d2);
+  background: linear-gradient(to bottom, #52eeff, #3292d2);
+  color: #ffffff;
+  text-decoration: none;
 }
 
 .today {
@@ -130,6 +156,7 @@ body {
   align-items: center;
   flex-direction: column;
   font-weight: bold;
+  position: relative;
 }
 
 /* styling of the today section when the class is  "sunny" */
@@ -173,7 +200,7 @@ body {
 /* styling of the today section when the class is  "stormy" */
 .stormy .today {
   background: #004c6d;
-  background-image: url("./assets/stormy64px.jpg");
+  background-image: url("./assets/stormy640px.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -181,10 +208,67 @@ body {
 
 .other .today {
   background: #004c6d;
-  background-image: url("https://images.unsplash.com/photo-1606235571543-39db5bf60462?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
+  background-image: url("./assets/other640px.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.raindrop {
+  display: none;
+}
+
+.rainy .raindrop {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 0 50% 50% 50%;
+  border: 0.5px solid rgb(3, 21, 71);
+  background-color: rgba(3, 44, 71, 0.651);
+  transform: rotate(45deg);
+  margin-top: 20px;
+  animation: drop 2s linear infinite;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  opacity: 0;
+}
+
+.rainy .raindrop:nth-of-type(2n) {
+  left: 20%;
+  top: 40%;
+  animation-duration: 2.5s;
+}
+
+.rainy .raindrop:nth-of-type(3n) {
+  left: 70%;
+  top: 30%;
+  animation-duration: 1.5s;
+}
+
+.rainy .raindrop:nth-of-type(4n) {
+  left: 5%;
+  top: 10%;
+  animation-duration: 2.2s;
+}
+
+.rainy .raindrop:nth-of-type(5n) {
+  left: 90%;
+  top: 20%;
+  animation-duration: 2.2s;
+}
+
+
+@keyframes drop {
+  50% {
+    transform: translateY(100px) rotate(45deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(150px) rotate(45deg);
+    opacity: 0;
+  }
 }
 
 .today-location-wrapper {
@@ -298,7 +382,7 @@ input {
   width: 200px;
   font-size: 16px;
   border: 1px solid;
-  border-radius: 4px;
+  border-radius: 0px;
   padding: 4px 8px;
   margin: 30px 0;
 }
@@ -306,7 +390,6 @@ input {
 .sunny input,
 .sunny input::placeholder {
   color: #c2790b;
-  border-radius: 4px;
 }
 
 .cloudy input,
@@ -321,19 +404,12 @@ input {
 
 .snowy input,
 .snowyinput::placeholder {
-  color: #2A5510;
-  border-radius: 4px;
+  color: #4a4e47;
 }
 
 .stormy input,
 .stormy input::placeholder {
-  color: #2A5510;
-  border-radius: 4px;
-}
-
-button {
-  border-radius: 5px;
-  color: white;
+  color: #10121a;
 }
 
 .sunny button {
@@ -384,9 +460,46 @@ button {
     max-width: 500px;
   }
 
-
   .search-location-inner {
     width: 25%;
+  }
+
+  /* styling of the today section when the class is  "sunny" */
+  .sunny .today {
+    background: #c2790b;
+    background-image: url("./assets/sunny1920px.jpg");
+  }
+
+  /* styling of the today section when the class is  "cloudy" */
+  .cloudy .today {
+    background: #142127;
+    background-image: url("./assets/cloudy1920px.jpg");
+  }
+
+  /* styling of the today section when the class is  "rainy" */
+  .rainy .today {
+    background: #004c6d;
+    background-image: url("./assets/rainy1920px.jpg");
+  }
+
+
+  /* styling of the today section when the class is  "snowy" */
+  .snowy .today {
+    background: #004c6d;
+    background-image: url("./assets/snowy1920px.jpg");
+  }
+
+
+  /* styling of the today section when the class is  "stormy" */
+  .stormy .today {
+    background: #004c6d;
+    background-image: url("./assets/stormy1920px.jpg");
+  }
+
+  .other .today {
+    background: #004c6d;
+    background-image: url("./assets/other1920px.jpg");
+    background-position: center;
   }
 }
 
