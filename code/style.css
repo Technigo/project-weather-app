@@ -258,6 +258,46 @@ body {
   animation-duration: 2.2s;
 }
 
+.snowflake {
+  display: none;
+}
+
+.snowy .snowflake {
+  display: block;
+  width: 10px;
+  height: 10px;
+  animation: drop 2s linear infinite;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  opacity: 0;
+  color: white;
+}
+
+.snowy .snowflake:nth-of-type(2n) {
+  left: 20%;
+  top: 40%;
+  animation-duration: 2.5s;
+}
+
+.snowy .snowflake:nth-of-type(3n) {
+  left: 70%;
+  top: 30%;
+  animation-duration: 1.5s;
+}
+
+.snowy .snowflake:nth-of-type(4n) {
+  left: 5%;
+  top: 10%;
+  animation-duration: 2.2s;
+}
+
+.snowy .snowflake:nth-of-type(5n) {
+  left: 90%;
+  top: 20%;
+  animation-duration: 2.2s;
+}
+
 
 @keyframes drop {
   50% {
@@ -468,18 +508,24 @@ input {
   .sunny .today {
     background: #c2790b;
     background-image: url("./assets/sunny1920px.jpg");
+    background-position: center;
+    background-size: cover;
   }
 
   /* styling of the today section when the class is  "cloudy" */
   .cloudy .today {
     background: #142127;
     background-image: url("./assets/cloudy1920px.jpg");
+    background-position: center;
+    background-size: cover;
   }
 
   /* styling of the today section when the class is  "rainy" */
   .rainy .today {
     background: #004c6d;
     background-image: url("./assets/rainy1920px.jpg");
+    background-position: center;
+    background-size: cover;
   }
 
 
@@ -487,6 +533,8 @@ input {
   .snowy .today {
     background: #004c6d;
     background-image: url("./assets/snowy1920px.jpg");
+    background-position: center;
+    background-size: cover;
   }
 
 
@@ -494,12 +542,15 @@ input {
   .stormy .today {
     background: #004c6d;
     background-image: url("./assets/stormy1920px.jpg");
+    background-position: center;
+    background-size: cover;
   }
 
   .other .today {
     background: #004c6d;
     background-image: url("./assets/other1920px.jpg");
     background-position: center;
+    background-size: cover;
   }
 }
 
