@@ -1,3 +1,33 @@
 body{
     font-family: 'Montserrat', sans-serif;
 }
+
+.container {
+    border: 2px solid pink;
+    width: 300px;
+    margin: 20px auto;
+    padding: 40px;
+    background-color: #F47775;
+    color:#F4F7F8;
+}
+
+.today-weather {
+    line-height: 5px;
+    font-weight: normal;
+}
+
+.city-name {
+    font-size: 1.5em;
+}
+
+.forecast {
+    padding-bottom: 10px;
+    border-bottom: 1px dotted #F4F7F8;
+    line-height: 10px;
+    font-weight: normal;
+}
+
+.forecast-information{
+    text-align-last: justify;
+    margin-top: 30px;
+}
