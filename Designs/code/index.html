@@ -5,10 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sunny side up! - Weather app project</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="container"></div>
-    <div id="forecast"></div>
+    <section id="todaysWeather" class="todays-weather">
+        <div id="current-location" class="current-location">
+        </div>
+
+        <div class="sun-hours">
+            <div id="sunrise" class="sunrise">    
+            </div>
+
+            <div id="sunset" class="sunset">
+            </div>
+
+        </div>
+    </section>
+    <div id="forecast" class="forecast"></div>
     <script src="./script.js"></script>
 </body>
 </html>

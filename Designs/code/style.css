@@ -1,0 +1,33 @@
+
+.todays-weather {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background: rgb(202, 172, 203);
+    }
+
+   .city-name {
+       font-size: 32px;
+   } 
+
+.temperature {
+    font-size: 36px;
+}
+
+.sun-hours {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.sunrise {
+    display: flex;
+    flex-direction: column;
+}
+
+.sunset {
+  display: flex;
+  flex-direction: column;
+}
+    
