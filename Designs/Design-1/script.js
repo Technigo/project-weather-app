@@ -10,36 +10,33 @@ const week = document.getElementById('week')
 
 
 fetch(url)
-.then((response) => {
-    console.log(`Status: ${response.status}`);
-    return response.json();
-    
-  })
-
+.then((response) => (response.json()))
 .then((data) => {
  
-  city.innerHTML += `<p> ${data.name}</p>`; 
-  weather.innerHTML += ` <p>${data.weather[0].main} - ${data.weather[0].description}</p>`;
-  temperature.innerHTML += `<p> ${data.main.temp.toFixed(1)} ºC</p>`;
+  city.innerHTML += ` ${data.name}`; 
+  temperature.innerHTML += ` ${data.main.temp.toFixed(1)} ºC`;
+  weather.innerHTML += ` ${data.weather[0].description}`;
   sunrise.innerHTML +=`${new Date((data.sys.sunrise + data.timezone) * 1000).toLocaleTimeString()}`
   sunset.innerHTML += `${new Date((data.sys.sunset + data.timezone) * 1000).toLocaleTimeString()}`
 })
 
+.catch((error)=>{
+  mainContainer.innerHTML = `<h2>Ooops, an error has occurred! Please try again later.<h2>`
+})
 
 fetch(forecastUrl)
-.then((response) => {
-    console.log(`Status: ${response.status}`);
-    return response.json();
-    
-  })
- 
+.then((response) => (response.json())) 
 .then((data) => {
-    const filteredForecast = data.list.filter(item => item.dt_txt.includes('12:00'))
-  
-    filteredForecast.forEach(item => {
-    let temperature = (item.main.temp).toFixed(1);
-    let weekday = (new Date(item.dt * 1000)).toLocaleDateString("en-US", {weekday: "long"});
+  const filteredForecast = data.list.filter(item => item.dt_txt.includes('12:00'))
 
-    week.innerHTML += `<p>${weekday} ${temperature} ºC</p>`;
-  })
+  filteredForecast.forEach(item => {
+  let temperature = (item.main.temp).toFixed(1);
+  let weekday = (new Date(item.dt * 1000)).toLocaleDateString("en-US", {weekday: "long"});
+
+  week.innerHTML += `<p>${weekday} ${temperature} ºC</p>`;
+})
+})
+
+.catch((error)=>{
+  mainContainer.innerHTML = `<h2>Ooops, an error has occurred! Please try again later.<h2>`
 })
