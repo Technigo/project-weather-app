@@ -1,185 +1,180 @@
-/* This app is styled by mobile first approach, meaning,
-we've added media queries on how it should look in tablet
-and desktop. Feel free to change the styling! */
 
-/* Styling of the body. */
 body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* Header with current weather information */
+
+.today {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to bottom, #868aff, #a9a5ff, #e7e8ff);
+  margin-bottom: 50px;
+  width: 100vw;
+  padding: 0px 0px 80px 0px;
+  border-radius: 0 0 50% 50% / 30px;
+  color: white;
+  position: relative;
+}
+
+.today-container {
+  padding: 0px 20px;
+  width: 80%;
+}
   
-  /* Styling of the body when the classname is "cloudy"
-  .cloudy {
-    background: #F4F7F8;
-    color: #F47775;
-  }
-  
-  /* Styling of the body when the classname is "rainy" */
-  /* .rainy {
-    background: #A3DEF7;
-    color: #164A68;
-  } */
-  
-  /* Styling of the body when the classname is "sunny" */
-  /* .sunny {
-    background: #F7E9B9;
-    color: #2A5510;
-  }
-   */
-  /* Styling of the body when the classname is "unknown" */
-  /* .unknown {
-    background: #dbf6e9;
-    color: #31326f;
-  } */
- 
-  /* Styling of the div with info about temperature,
-  sunrise and sunset numbers */
-  .todays-numbers {
-    margin-bottom: 30px;
-  }
-  
+.todays-info {
+  margin-bottom: 30px;
+}
+
+p {
+  font-size: 20px;
+  margin: 2px;
+}
+
+.temperature {
+  display: flex;
+  font-size: 80px;
+  margin-bottom: 0;
+}
+
+.celsius {
+  font-size: 30px;
+  margin: 10px 0px 0px 4px;
+}
+
+.location {
+  font-size: 40px;
+  margin: 0;
+}
+
+.big-image {
+  top: 5%;
+  right: 5%;
+  position: absolute;
+}
+
+.big-image img {
+  width: 150px;
+}
+
+.sun-div {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.sun:first-child {
+  margin-right: 20px;
+}
+
+.fa-sun, .fa-moon {
+  color: #FFD347;
+}
+
+.next-button {
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  font-size: 50px;
+  position: absolute;
+  bottom: 2%;
+  right: 3%;
+  color: rgba(85, 83, 83, 0.7);
+  padding: 10px;
+  cursor: pointer;
+  outline: none;
+}
+
+.next-button:hover {
+  color: #868aff;
+}
+
+/* Forecast container */
+
+.forecast {
+  width: 100%;
+  max-width: 80%;
+}
+
+.forecast div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.small-icons {
+  width: 40px;
+  margin-right: 25px;
+  margin-top: -10px;
+}
+
+
+/* Media Queries */
+
+@media (min-width: 500px) {
   p {
-    font-size: 18px;
-    margin: 2px;
-  }
-  
-  /* Styling of the icon and description */
-  .todays-description h2 {
-    font-size: 32px;
-    max-width: 400px;
-  }
-  
-  .todays-description img {
-    height: 70px;
-  }
-  
-  .today {
-    display: flex;
-    align-items: center;
-    background: linear-gradient(to bottom, #868aff, #a9a5ff, #e7e8ff);
-    margin-bottom: 50px;
-    width: 100vw;
-    padding: 0px 0px 80px 0px;
-    border-radius: 0 0 50% 50% / 30px;
-    color: white;
-  }
+    font-size: 26px;
+  } 
 
-  .today-container {
-    padding: 0px 20px;
-    width: 80%;
-  }
-
-  .big-image {
-    margin: 0px 0px 120px 220px;
-    position: absolute;
-  }
-
-  .big-image img {
-      width: 150px;
-  }
-  
-  .temperature {
-    display: flex;
-    font-size: 80px;
-    margin-bottom: 0;
-  }
-
-  .celsius {
-    font-size: 30px;
-    margin: 10px 0px 0px 4px;
-  }
-
-  .location {
-      font-size: 40px;
-      margin: 0;
-  }
-
-  .sun-div {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-    font-size: 20px;
-  }
-
-  .sun:first-child {
-    margin-right: 20px;
-  }
-
-  /* Styling of the forecast */
   .forecast {
-    width: 100%;
-    max-width: 300px;
-  }
-  
-  .forecast div {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
+    height: 50vh;
   }
 
   .small-icons {
-    width: 40px;
+    width: 70px;
     margin-right: 25px;
     margin-top: -10px;
   }
 
- 
-  
-  /* The styling below takes care of if you want to implement a 
-  text input. If you don't want to use it you can remove it. */
-  footer {
-    width: 100%;
-    max-width: 400px;
+  .today {
+    justify-content: center;
+    align-items: center;
   }
-  
-  input {
-    background: #F4F7F8;
-    height: 20px;
-    width: 200px;
-    font-size: 16px;
-    border: 1px solid;
-    border-radius: 4px;
-    padding: 4px 8px;
-    margin-top: 30px;
+
+  .sun-div {
+    justify-content: space-between;
+    font-size: 30px;
   }
-  
-  .cloudy input, .cloudy input::placeholder {
-    color: #F47775;
+
+  .temperature {
+    font-size: 120px;
   }
-  
-  .rainy input, .rainy input::placeholder {
-    color: #164A68;
+
+  .today-container {
+    width: 70%;
   }
-  
-  .sunny input, .sunny input::placeholder {
-    color:  #2A5510;
-    border-radius: 4px;
+
+  .big-image img {
+    width: 250px;
   }
-  
-  /* Styling of how it should look in tablet and desktop */
-  @media (min-width: 668px) {
-    .todays-numbers p {
-      font-size: 20px;
-    }
-  
-    .todays-description img {
-      width: 150px;
-    }
-  
-    .todays-description h2 {
-      font-size: 38px;
-      max-width: 500px;
-    }
-  
-    .forecast {
-      max-width: 500px;
-    }
-  
-    footer {
-      width: 100%;
-      max-width: 500px;
-    }
+
+  .big-image {
+    top: 10%;
+    right: 10%;
   }
+}
+
+@media (min-width: 768px) {
+  p {
+    font-size: 36px;
+  }
+
+  .sun-div {
+    font-size: 36px;
+  }
+
+  .next-button {
+    font-size: 70px;
+  }
+
+  .forecast {
+    max-width: 60%;
+    height: 50vh;
+  }
+}

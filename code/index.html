@@ -3,52 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Change the title to your own -->
   <title>My weather app</title>
-  
-  <!-- Connection to the CSS file -->
   <link rel="stylesheet" href="./style.css">
-  
-  <!-- Link to Montserrat which is used in our design. Feel free to
-  use another one or remove this if you don't want a google font. -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/37c653cfef.js" crossorigin="anonymous"></script>
 </head>
 
-<!-- We gave the body an id to be able to change the background
-color in the JavaScript file later on. Change the class to "rainy"
-and see what happens. PS. You can remove it so it starts out without
-any class at all. We will add classes in the JavaScript file instead -->
-<body id="body" class="sunny">
+<!-- Header with current weather information -->
 
-  <!-- We gave this section and the descendant divs a class name
-  to be able to style it according to the design. Feel free to
-  take a look in the CSS file and change whatever you like. -->
+<body>
   <section class="today" id="today">
     <div class="today-container"> 
-      <!-- <input type="text"> -->
-      <div class="todays-numbers">
-        <h1 class="temperature" id="temperature"> 23 </h1>
-        <h2 class="location">Stockholm</h2>
+      <div class="todays-info">
+        <h1 class="temperature" id="temperature"></h1> 
+        <h2 class="location" id="location"></h2>
         <p>
-          <span id="shortDescription">clear</span>
+          <span id="shortDescription"></span>
         </p>
         <div class="sun-div">
-            <span class="sun" id="sunrise">sunrise: 08.00</span>
-            <span class="sun" id="sunset">sunset: 22.30</span>
+          <span class="sun" id="sunrise"></span>
+          <span class="sun" id="sunset"></span>
         </div> 
-      </div>
-      <div class="todays-description">
       </div>
     </div>
     <span id="big-icon" class="big-image"></span>
+    <button class="next-button" id="nextButton"><i class="fas fa-chevron-right"></i></button>
   </section>
 
-  <!-- Another id to be able to add the forecast data to our HTML. -->
+  <!-- Forecast container -->
   <section id="forecast" class="forecast">
   </section>
 
-  <!-- Connection to the JavaScript file -->
   <script src="./script.js"></script>
 </body>
 </html>
