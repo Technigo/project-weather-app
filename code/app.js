@@ -66,8 +66,9 @@ const filterForecastData = (data) => {
   });
 
   middayForecasts.forEach((forecast) => {
+    const dayOfWeek = getDayOfWeek(forecast.dt_txt).toUpperCase();
     forecastDataList.push({
-      day: getDayOfWeek(forecast.dt_txt).toUpperCase(),
+      day: dayOfWeek,
       type: {
         icon: forecast.weather[0].icon,
         main: forecast.weather[0].main,
