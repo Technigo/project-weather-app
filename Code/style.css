@@ -29,6 +29,32 @@ body {
 }
 
 
+@media (min-width: 658px) {
+    .body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .container {
+        width: 80%;
+        margin-top: 20px;
+
+    }
+}
+
+@media (min-width: 1028px) {
+    .body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .container {
+        width: 40%;
+        margin-top: 40px;
+
+    }
+}
+
 
 
 
