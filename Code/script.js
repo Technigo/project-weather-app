@@ -4,12 +4,8 @@ const tempCelsius = document.getElementById("tempCelsius")
 const sunSet = document.getElementById("sunSet")
 const sunRise = document.getElementById("sunRise")
 const highlight = document.getElementById("highlight")
-const container = document.getElementById("container")
-const dayOne = document.getElementById("dayOne")
-const dayTwo = document.getElementById("dayTwo")
-const dayThree = document.getElementById("dayThree")
-const dayFour = document.getElementById("dayFour")
-const dayFive = document.getElementById("dayFive")
+const forecast = document.getElementById("forecast")
+const container = document.querySelector(".container") // We are getting a class from index that why we use querySelector
 
 
 // TO do = Find how you can get access to the upcoming 5 days weather forecast. 
@@ -36,6 +32,7 @@ const SthlmTemp = () => {
         const tempToday = Math.round(json.list[0]["temp"]["day"])
         const minTempToday = Math.round(json.list[0]["temp"]["min"])
         const maxTempToday = Math.round(json.list[0]["temp"]["max"])
+        const currentWeatherBackground = json.list[0]["weather"][0]["main"]
       
       
         //Sunset time
@@ -100,11 +97,11 @@ const SthlmTemp = () => {
       console.log(fiveDaysId[0])
 
       // Adding API information into HTML elements 
-        highlight.innerHTML = `Today the ${weatherToday}`
-        cityName.innerHTML = `<h3>${city}</h3>`
-        tempCelsius.innerHTML = ` Current: <img src='http://openweathermap.org/img/wn/${currentWeatherIcon}@2x.png'> ${tempToday}℃ / Min: ${minTempToday}℃  /Max: ${maxTempToday}℃` // The weather icon will be changed depending on time and is affected by an function that will trigger and if else statement(its its cloudy === this picture etc.)
-        sunRise.innerHTML = `The Sun rises at ${dateRise} AM <img src=${Rise} width="40"> ` 
-        sunSet.innerHTML = `The Sunset is at ${dateSet} PM <img src=${Sunset} width="40">` //${cloudSun}
+        cityName.innerHTML = `<h1 class="city-name">${city}</h1>`  
+        highlight.innerHTML = `<h2 class="weather-description"> ${weatherToday} <img src='http://openweathermap.org/img/wn/${currentWeatherIcon}@2x.png'></h2>`
+        tempCelsius.innerHTML = `<p class="min-max">Current:  ${tempToday}℃ / Min: ${minTempToday}℃  /Max: ${maxTempToday}℃</p>` // The weather icon will be changed depending on time and is affected by an function that will trigger and if else statement(its its cloudy === this picture etc.)
+        sunRise.innerHTML = `<p class="sunrise">The sunrise: ${dateRise} AM <img src=${Rise} width="40"> </p>` 
+        sunSet.innerHTML = `<p class="sunset">The sunset:  ${dateSet} PM <img src=${Sunset} width="40"></p>` //${cloudSun}
 
 
     // for (let i = 0; i < dateFiveDays.length && i < temperatureFiveDays.length; i++) {
@@ -113,10 +110,38 @@ const SthlmTemp = () => {
     dateFiveDays.forEach((date, index)=>{
       const temperature = temperatureFiveDays[index];
       const icon = fiveDaysId[index];
-      dayOne.innerHTML += `<dt>${date}: ${temperature} <img src="http://openweathermap.org/img/wn/${icon}@2x.png" width="40px" > </dt>`
-
+      forecast.innerHTML += `<dt class="forecast-line">${date}: ${temperature} <img src="http://openweathermap.org/img/wn/${icon}@2x.png" width="40px" > </dt>`
     })
-
+    switch (currentWeatherBackground){
+      case 'Clouds': {
+        container.style.backgroundColor = "#94b5c0"
+        highlight.innerHTML += `<h2 class="weather-description"> Today is not a good day</h2>`
+        break;
+      }
+      case 'Rain':{
+        container.style.backgroundColor = "yellow"
+        break;
+      }
+      case 'Snow':{
+        container.style.backgroundColor = "red"
+        break;
+      }
+      case 'Thunderstorm':{
+        container.style.backgroundColor = "blue"
+        break;
+      }
+      case 'Drizzle':{
+        container.style.backgroundColor = "gray"
+        break;
+      }
+      case 'Clear':{
+        container.style.backgroundColor = "green"
+        break;
+      }
+      default :
+      container.style.backgroundColor = "black"
+      break;
+    }  
     
 
 

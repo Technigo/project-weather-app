@@ -3,6 +3,22 @@ body {
 }
 
 
-dt {
+.forecast-line {
     margin: 20px;
+    border: solid black 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }
+
+.weather-description, .sunrise, .sunset {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
