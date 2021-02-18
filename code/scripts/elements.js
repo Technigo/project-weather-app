@@ -1,5 +1,10 @@
 export const getWeatherToday = (data) => {
-  let html = "";
+  let html = `<img
+    class="btn icon-hamburger"
+    id="btnSideMenu"
+    src="./assets/icon-hamburger.svg"
+    alt="icon side menu"
+  />`;
 
   html += `  
     <img 

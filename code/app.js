@@ -4,17 +4,19 @@ import { getWeatherToday, getForecastElement } from "./scripts/elements.js";
 // DOM Elements
 const weatherToday = document.getElementById("weatherToday");
 const headerContainer = document.getElementById("headerContainer");
-const sideMenu = document.getElementById("sideMenu");
+const navBar = document.getElementById("navBar");
 const forecastContainer = document.getElementById("forecast");
 
 // Global variables
 const API_KEY = "a184167860dd69b553e449fca6814afb",
-  API_URL = "https://api.openweathermap.org/data/2.5/",
-  CITY = "La Motte";
+  API_URL = "https://api.openweathermap.org/data/2.5/";
+
+let city = "La Motte";
 
 /* FUNCTIONS */
 const fetchWeatherToday = () => {
-  fetch(`${API_URL}weather?q=${CITY}&units=metric&appid=${API_KEY}`)
+  weatherToday.innerHTML = "";
+  fetch(`${API_URL}weather?q=${city}&units=metric&appid=${API_KEY}`)
     .then((response) => response.json())
     .then((data) => {
       const sunTimes = formatTime([data.sys.sunrise, data.sys.sunset]);
@@ -26,7 +28,7 @@ const fetchWeatherToday = () => {
           main: data.weather[0].main,
           description: data.weather[0].description,
         },
-        city: CITY,
+        city: city,
         sunrise: sunTimes[0],
         sunset: sunTimes[1],
       };
@@ -40,7 +42,8 @@ const fetchWeatherToday = () => {
 };
 
 const fetchWeatherForecast = () => {
-  fetch(`${API_URL}forecast?q=${CITY}&units=metric&appid=${API_KEY}`)
+  forecast.innerHTML = "";
+  fetch(`${API_URL}forecast?q=${city}&units=metric&appid=${API_KEY}`)
     .then((response) => response.json())
     .then((data) => {
       const forecastDataList = filterForecastData(data.list);
@@ -93,8 +96,8 @@ const getDayOfWeek = (date) => {
   return new Intl.DateTimeFormat("default", { weekday: "short" }).format(dateObj);
 };
 
-const toggleSideMenu = () => {
-  sideMenu.classList.toggle("open");
+const toggleNavBar = () => {
+  navBar.classList.toggle("open");
 };
 const toggleMoreInfo = () => {
   forecast.classList.toggle("close");
@@ -102,6 +105,19 @@ const toggleMoreInfo = () => {
   headerContainer.querySelector("#sunTimes").classList.toggle("expanded");
   headerContainer.querySelector(".btn-round#showMore").classList.toggle("expanded");
   headerContainer.querySelector("img#showMore").classList.toggle("turn");
+};
+
+const changeCity = (newCity) => {
+  city = newCity;
+  fetchWeatherForecast();
+  fetchWeatherToday();
+};
+
+const toggleCityLinks = (target) => {
+  navBar.querySelectorAll("a").forEach((link) => {
+    link.setAttribute("current", false);
+  });
+  target.setAttribute("current", true);
 };
 
 /* EXECUTE PAGE LOAD FUNCTIONS */
@@ -112,15 +128,23 @@ fetchWeatherForecast();
 headerContainer.addEventListener("click", (event) => {
   const target = event.target;
   if (target.id === "btnSideMenu") {
-    toggleSideMenu();
+    toggleNavBar();
   } else if (target.id === "showMore") {
     toggleMoreInfo();
   }
 });
 
-sideMenu.addEventListener("click", (event) => {
+navBar.addEventListener("click", (event) => {
   const target = event.target;
   if (target.id === "btnClose") {
-    toggleSideMenu();
+    toggleNavBar();
+  } else if (target.hasAttribute("current")) {
+    changeCity(target.innerText);
+    toggleCityLinks(target);
   }
 });
+
+// listCities.addEventListener("click", (event) => {
+//   const target = event.target;
+//   console.log(target);
+// });

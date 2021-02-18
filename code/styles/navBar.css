@@ -1,0 +1,40 @@
+.nav-bar {
+  position: absolute;
+  z-index: 2;
+  background-color: var(--primary);
+  width: 250px;
+  height: 100%;
+  transform: translateX(-250px);
+  display: flex;
+  flex-direction: column;
+  line-height: 3;
+  transition: all 0.8s ease;
+}
+
+.nav-bar > a {
+  padding: 0 20px;
+}
+
+.nav-bar__btn {
+  align-self: flex-end;
+}
+
+.nav-bar.open {
+  transform: translateX(0px);
+}
+
+/* Styles for links and their different states */
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  cursor: pointer;
+  background-color: var(--secondary);
+}
+
+a[current="true"] {
+  background-color: var(--dark);
+}

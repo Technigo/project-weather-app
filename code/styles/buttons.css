@@ -18,3 +18,9 @@
   position: absolute;
   bottom: 0;
 }
+.btn:hover {
+  cursor: pointer;
+}
+.btn:hover:not(.icon-arrow-left) {
+  transform: scale(1.05);
+}

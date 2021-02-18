@@ -18,14 +18,17 @@
   display: none;
 }
 
-.nav-bar {
-  display: block;
-  order: -1;
+.nav-bar__btn {
+  display: none;
 }
-
-.list-cities {
-  margin: 0;
+.nav-bar {
+  transform: translateX(0px);
   display: flex;
   flex-direction: row;
+  height: auto;
+  width: 100%;
   justify-content: space-around;
+  padding: 15px 0;
+  position: relative;
+  transition: none;
 }

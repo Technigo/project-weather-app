@@ -9,35 +9,19 @@
   </head>
   <body>
     <!-- Shown by default (mobile) hides in large devices -->
-    <div class="side-menu" id="sideMenu">
-      <img class="icon-arrow-left" id="btnClose" src="./assets/icon-arrow.svg" />
-      <ul id="listCities" class="list-cities">
-        <li>La Motte</li>
-        <li>Stockholm</li>
-        <li>Berlin</li>
-      </ul>
-    </div>
-
+    <nav class="nav-bar" id="navBar">
+      <img class="btn nav-bar__btn icon-arrow-left" id="btnClose" src="./assets/icon-arrow.svg" />
+      <a current="true">La Motte</a>
+      <a current="false">Stockholm</a>
+      <a current="false">Berlin</a>
+    </nav>
     <!-- Header displaying current weather data for the city -->
     <header class="header-info" id="headerContainer">
       <img class="header-info__bkg" src="./assets/bkg.svg" alt="gradient background image" />
 
       <div class="header-info__wrapper" id="weatherToday">
-        <nav class="nav-bar">
-          <ul id="listCities" class="list-cities">
-            <li>La Motte</li>
-            <li>Stockholm</li>
-            <li>Berlin</li>
-          </ul>
-        </nav>
-        <img
-          class="icon-hamburger"
-          id="btnSideMenu"
-          src="./assets/icon-hamburger.svg"
-          alt="icon side menu"
-        />
         <!-- Daily weather for city inserted on page load -->
-        <div class="btn-round btn--float" id="showMore">
+        <div class="btn btn-round btn--float" id="showMore">
           <img class="icon-arrow-down" id="showMore" src="./assets/icon-arrow.svg" />
         </div>
       </div>

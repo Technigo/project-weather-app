@@ -9,7 +9,7 @@
 @import "./styles/mainLayout.css";
 
 /* Import Section styles and Element specific */
-@import "./styles/sideMenu.css";
+@import "./styles/navBar.css";
 @import "./styles/header.css";
 @import "./styles/forecast.css";
 

@@ -1,6 +1,7 @@
 :root {
   --primary: #757aff;
   --secondary: #8d90fd;
+  --dark: #595dc0;
   --shadow: #bbbbbb;
 }
 
@@ -9,6 +10,6 @@ body {
   height: 100vh;
 }
 
-.nav-bar {
+/* .nav-bar {
   display: none;
-}
+} */
