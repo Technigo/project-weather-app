@@ -25,7 +25,7 @@ fetch(todaysUrl)
         let temp = json.main.temp.toFixed(1)
         let sunrise = new Date(json.sys.sunrise * 1000).toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'})
         let sunset = new Date(json.sys.sunset * 1000).toLocaleString(navigator.language, {hour: '2-digit', minute:'2-digit'})
-        //([], {timeStyle: 'short'})
+        // old ending of sunrise and sunset. keep until other proves OK ([], {timeStyle: 'short'})
         let weatherType = json.weather[0].main
         let wIcon = json.weather[0].icon
 
@@ -47,8 +47,8 @@ fetch(todaysUrl)
                 body.classList.add = 'drizzly'
                 weatherText.innerHTML = `<p>It drizzles in ${cityName}. Let's stay inside and binge watch Netflix!</p>`
             } else {
-                body.classList.add = 'bad'
-                weatherText.innerHTML = `<p>Bad weather in ${cityName}. Let's get cosy!</p>`
+                body.classList.add = 'grey'
+                weatherText.innerHTML = `<p>Not the greatest weather in ${cityName}. Let's get cosy!</p>`
             }  
         } 
         moodGenerator()
@@ -105,12 +105,12 @@ fetch(forecastUrl)
         weekday[5] = 'Friday'
         weekday[6] = 'Saturday'
         let forecastDate = weekday[theDate.getDay()]
-        let newDate = new Date(forecastDate.replace(' ', 'T'));
+        //let newDate = new Date(forecastDate.replace(' ', 'T'));
 
         // HTML forecast weather
         let forecastHTML = ''
         forecastHTML += `<section class="forecast">`
-        forecastHTML += `<p>${newDate}</p>`
+        forecastHTML += `<p>${forecastDate}</p>`
         forecastHTML += `<div class="forecast_weather_temp">`
         forecastHTML += `<img class="forecast_icon" src="https://openweathermap.org/img/wn/${wIcon}@2x.png" />`
         forecastHTML += `<p class="forecast_temp">${forecastTemp}°C</p>`
