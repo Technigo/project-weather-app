@@ -8,9 +8,9 @@
 .container {
   padding: 60px 20px; 
   margin: 20px;
-  background: linear-gradient(-45deg, #28b10d, #e73c7e, #23a6d5, #23d5ab);
+  background: linear-gradient(-45deg, #28b10d, #e73c7e, #23a6d5, #23d5ab); 
   background-size: 400% 400%;
-  animation: gradient 10s ease infinite;
+  animation: gradient 10s ease infinite; 
   /* border-radius: 200px 0; */
 }
 .temperature-container {
@@ -30,10 +30,6 @@
 .sunrise-sunset-container + * {
   flex-direction: row;
 }
-.five-day-forecast {
-  
-}
-
 
 
 @keyframes gradient {
