@@ -5,11 +5,22 @@
     }
     
     .main {
-        background-color: aquamarine;
-        border-bottom-left-radius: 20%;
-        border-bottom-right-radius: 40%;
+        background-color: blue;
+        /* border-bottom-left-radius: 20%;
+        border-bottom-right-radius: 40%; */
         padding: 20px 20px 0px 30px;
         color: white;
+        border-radius: 0 0 300% 300%/0 0 50% 50%;
+        z-index: -1;
+        /* display: flex; */
+    }
+    
+    .main-day {
+        background: linear-gradient(#8f95ff, #e9eaff);
+    }
+    
+    .main-night {
+        background: linear-gradient(#25275c, #6b6eab);
     }
     /***************** Hamburger menu *****************/
     /* hiding the checkbox*/
@@ -46,9 +57,15 @@
     }
     /* end of hamburger*/
     
+    .sthlm-icon {
+        color: white;
+        width: 30%;
+    }
+    
     .main-temp-container {
         display: flex;
         margin: 90px 0 0 0;
+        position: relative;
     }
     
     .current-temp {
@@ -62,17 +79,58 @@
         font-weight: bold;
     }
     
+    .feels-like-temp {
+        margin: 0 0 0 10px;
+        position: absolute;
+        bottom: 14px;
+        right: 30px;
+        font-size: 20px;
+    }
+    
+    .city-name {
+        margin: 0;
+        font-size: 28px;
+    }
+    
+    .weather-description {
+        margin: 0;
+    }
+    
     .sunrise-sunset {
         display: flex;
         justify-content: space-around;
-        padding-bottom: 40px;
+        /* align-self: center; */
+        /* align-items: center; */
+    }
+    
+    .sunrise-sunset p {
+        margin: 0;
+    }
+    
+    .button-container {
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+    .round-button {
+        border-radius: 50%;
+        background-color: #8086ff;
+        color: white;
+        font-size: 30px;
+        width: 80px;
+        height: 80px;
+        border-style: none;
+        box-shadow: 0 15px 20px -6px rgb(194, 192, 192);
+        z-index: 1;
+        position: relative;
+        top: 35px;
+        right: 10px;
     }
     
     .weekly-forecast {
         max-width: 400px;
         margin: auto;
-        display: flex;
-        flex-direction: column;
+        padding-top: 50px;
     }
     
     .weekday-forecast-div {
@@ -93,7 +151,52 @@
     }
     /* MEDIA QUERIES TABLET */
     
-    @media (min-width: 768px) {}
+    @media (min-width: 768px) {
+        .sunrise-sunset {
+            padding: 0 0 30px 0;
+        }
+        .button-container {
+            display: none;
+        }
+        .current-weather-icon {
+            width: 80px;
+        }
+    }
     /* MEDIA QUERIES DESKTOP */
     
-    @media (min-width: 992px) {}
+    @media (min-width: 992px) {
+        .current-temp {
+            font-size: 120px;
+        }
+        .current-temp-sign {
+            font-size: 80px;
+        }
+        .feels-like-temp {
+            font-size: 30px;
+            position: static;
+            padding-top: 90px;
+        }
+        .city-name {
+            font-size: 60px;
+            margin-top: 20px;
+        }
+        .weather-description {
+            font-size: 40px;
+        }
+        .sunrise-sunset {
+            width: 1000px;
+            margin: auto;
+        }
+        .sunrise-sunset p {
+            font-size: 28px;
+        }
+        .weekly-forecast {
+            font-size: 24px;
+            width: 800px;
+            align-items: center;
+        }
+        .forecast-icons {
+            margin-left: 20px;
+            padding-right: 30px;
+        }
+    }

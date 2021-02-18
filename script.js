@@ -26,13 +26,31 @@ fetch(apiUrl)
 
         let sunriseValue = new Date((json.sys.sunrise) * 1000)
         sunrise.innerHTML += `0${sunriseValue.getHours()}:${sunriseValue.getMinutes()}`
+        console.log(sunriseValue)
 
         let sunsetValue = new Date((json.sys.sunset) * 1000)
         sunset.innerHTML += `${sunsetValue.getHours()}:${sunsetValue.getMinutes()}`
 
+        const mainContainerChange = ((sunriseValue, sunsetValue) => {
+
+            const mainContainer = document.getElementById('main')
+            let currentTime = new Date()
+            console.log(currentTime)
+            console.log(sunsetValue)
+
+            if (currentTime >= sunriseValue && currentTime < sunsetValue) {
+                mainContainer.classList.add('main-day')
+            } else if (currentTime <= sunriseValue && currentTime > sunsetValue) {
+                mainContainer.classList.add('main-night')
+                console.log('else')
+            }
+        })
+
+        mainContainerChange(sunriseValue, sunsetValue)
+
         let iconValue = json.weather[0].icon
         console.log(iconValue)
-        currentWeatherIcon.innerHTML = ` <img src="http://openweathermap.org/img/wn/${iconValue}.png"/> `
+        currentWeatherIcon.innerHTML += ` <img class="current-weather-icon" src="http://openweathermap.org/img/wn/${iconValue}.png"/> `
     })
 
 fetch(apiUrlForecast)

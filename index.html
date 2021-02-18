@@ -12,25 +12,29 @@
 </head>
 
 <body>
-    <main class="main">
+    <main id="main" class="main">
         <!-- Hamburger menu -->
         <input id="menu" type="checkbox">
         <label for="menu"></label>
 
         <section class="main-temp-container">
+
             <h1 class="current-temp" id="currentTemp"></h1>
             <p class="current-temp-sign">°c</p>
+            <p id="feelsLikeTemp" class="feels-like-temp">Feels like </p>
         </section>
+        <h2 id="city" class="city-name">City</h2>
 
         <div class="main-weather-icon" id="currentWeatherIcon">
+            <h3 id="weatherDescription" class="weather-description"></h3>
         </div>
-        <h5 id="feelsLikeTemp">Feels like </h5>
-        <h2 id="city">City</h2>
-        <h3 id="weatherDescription"></h3>
 
         <div class="sunrise-sunset">
             <p id="sunrise">Sunrise </p>
             <p id="sunset">Sunset </p>
+        </div>
+        <div class="button-container">
+            <button class="round-button">></button>
         </div>
     </main>
 
