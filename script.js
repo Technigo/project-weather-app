@@ -1,16 +1,21 @@
 // API's
-const todaysUrl = 'http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=947f288ad7c7a6c1279353f3ee6f09d1'
-const forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=947f288ad7c7a6c1279353f3ee6f09d1'
+const todaysUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Göteborg,Sweden&units=metric&APPID=947f288ad7c7a6c1279353f3ee6f09d1'
+const forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=Göteborg,Sweden&units=metric&APPID=947f288ad7c7a6c1279353f3ee6f09d1'
 
 // DOM
+const body = document.body
 const containerToday = document.getElementById('containerToday')
 const containerForecast = document.getElementById('containerForecast')
 const weatherText = document.getElementById('weatherText')
 
 // API fetch today's weather
 fetch(todaysUrl)
-    .then((response) => {
+    .then(response => {
+        if (response.ok) {
         return response.json()
+        } else {
+            throw 'Oops, something went wrong.'
+        }
     })
     .then((json) => {
 
@@ -26,16 +31,22 @@ fetch(todaysUrl)
         // HTML weather text for tablet and desktop
         const moodGenerator = () => {
             if (weatherType === "Clouds") {
+                body.classList.add = 'cloudy'
                 weatherText.innerHTML = `<p>Clouds are covering ${cityName}. Let's hope they'll be gone soon!</p>`
             } else if (weatherType === "Clear") {
+                body.classList.add = 'clear'
                 weatherText.innerHTML = `<p>It's sunny in ${cityName}. Put your sun glasses on and get outside!</p>`
             } else if (weatherType === "Snow") {
+                body.classList.add = 'snowy'
                 weatherText.innerHTML = `<p>It's snowy in ${cityName}. Gather your friends and go out and make some snow angels!</p>`
             } else if (weatherType === "Rain") {
+                body.classList.add = 'rainy'
                 weatherText.innerHTML = `<p>It's rainy in ${cityName}. Let's stay inside and binge watch Netflix!</p>`
             } else if (weatherType === "Drizzle") {
+                body.classList.add = 'drizzly'
                 weatherText.innerHTML = `<p>It drizzles in ${cityName}. Let's stay inside and binge watch Netflix!</p>`
             } else {
+                body.classList.add = 'thunder'
                 weatherText.innerHTML = `<p>Thunderstorms in ${cityName}. Stay inside and keep away from power outlets!</p>`
             }  
         } 
@@ -60,10 +71,18 @@ fetch(todaysUrl)
         containerToday.innerHTML += weatherHTML
     })
 
+    .catch(error => {
+        containerToday.innerHTML = `<p>${error}</p>`
+    })
+
 // API fetch 5 day forecast
 fetch(forecastUrl)
-    .then((response) => {
-            return response.json()
+    .then(response => {
+        if (response.ok) {
+        return response.json()
+        } else {
+            throw 'Oops, something went wrong.'
+        }
     })
     .then((data) => {
         
@@ -98,5 +117,9 @@ fetch(forecastUrl)
 
         containerForecast.innerHTML += forecastHTML
         })
+    })
+
+    .catch(error => {
+        containerForecast.innerHTML = `<p>${error}</p>`
     })
 

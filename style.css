@@ -1,9 +1,33 @@
 body {
     box-sizing: border-box;
-    background-color: rgb(20, 77, 92);
     position: relative;
     overflow: hidden;
     font-family: 'Comfortaa', cursive;
+    background-color: rgb(20, 77, 92);
+}
+
+.cloudy {
+    background-color: rgb(92, 20, 60);
+}
+
+.clear {
+    background-color: rgb(20, 77, 92);
+}
+
+.snowy {
+    background-color: rgb(20, 77, 92);
+}
+
+.rainy {
+    background-color: rgb(143, 179, 47);
+}
+
+.drizzly {
+    background-color: rgb(179, 216, 119);
+}
+
+.thunder {
+    background-color: rgb(37, 45, 48);
 }
 
 h1 {
