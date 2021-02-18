@@ -46,9 +46,10 @@ const getWeatherData = (data) => {
 
 // Function for forecast
 const getForecastData = (data) => {
+  const getDate = date => new Date(date.replace(' ', 'T')).toLocaleDateString('en-US', {weekday: 'long'});
   const filteredForecast = data.list.filter(item => item.dt_txt.includes('12:00'));
   filteredForecast.forEach((forecastItem) => {
-    const loopOverWeek = new Date(forecastItem.dt_txt + 'Z').toLocaleDateString('en-US', {weekday: 'long'});
+    const loopOverWeek = getDate(forecastItem.dt_txt);
     const loopOverTemp = Math.floor(forecastItem.main.temp);
     const icon = `https://openweathermap.org/img/wn/${forecastItem.weather[0].icon}@2x.png`;
     forecast.innerHTML +=  `
