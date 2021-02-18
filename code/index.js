@@ -6,7 +6,6 @@ let sunrise = document.getElementById('sunrise')
 let sunriseAndSunset = document.getElementById('sunrise-and-sunset')
 let shortForecast = document.getElementById('three-day-forecast')
 let longForecast = document.getElementById('five-day-forecast')
-let icons = document.getElementById('icons')
 let backgroundImage = document.getElementById('img-background')
 
 // Functions
@@ -71,7 +70,6 @@ fetch(APIurl)
             backgroundImage.innerHTML += `
             <img id="img-background" class="img-background" alt="" src="/assets/sunny3.png">
             `
-
         }
     })
 
@@ -88,47 +86,30 @@ fetch(forecastAPIUrl)
         // })
         // console.log(forecastDescriptions)
 
-        // forecastDescriptions.forEach(element => {
-        //     if (element === 'Clouds') {
-        //         icons.innerHTML += `
-        //         src='./assets/clouds.png'
-        //         `
-        //         cloudImg = `<img  `
-
-        //     }
-        //     console.log(element)
-        // })
-
-
-
-
-
 
         /*a forEach that interates through the filtered array extracting the min and max temp of the comming 5 days*/
         threeDayForecast.forEach((forecastSingle) => {
 
-
-            const weatherIconStatus =
                 shortForecast.innerHTML += `
                 <div class="forecast">
                 <div class="forecast-elements">
                 <p class="days-of-week">${daysOfWeek(forecastSingle.dt)}</p>
-                <img class="icons" id="icons" src="/assets/clouds.png">
-                <p class="forecast-temp">${(forecastSingle.main.temp_max).toFixed(0)} &#8451 </p>
+                <img class="icons" id="icons" src="/assets/snow.png">
+                <p class="forecast-temp">${(forecastSingle.main.temp_max).toFixed(0)}&#8451 </p>
                 </div>
                 </div>
             `
         })
+
         filteredForecast.forEach((forecastSingle) => {
             longForecast.innerHTML += `
                     <div class="forecast">
                     <div class="forecast-elements">
                     <p class="days-of-week">${daysOfWeek(forecastSingle.dt)}</p>
-                    <img class="icons" src="/assets/snow.png" alt="">
+                    <img class="icons" alt="" src=/assets/rain.png>
                     <p class="forecast-temp">${(forecastSingle.main.temp_max).toFixed(0)} &#8451 </p>
                     </div>
                     </div>
                 `
         })
-
     })
