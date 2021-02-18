@@ -1,9 +1,8 @@
 body {
     box-sizing: border-box;
     background-color: rgb(20, 77, 92);
-    width: 100vw;
-    height: 100vh;
-    margin: auto;
+    position: relative;
+    overflow: hidden;
     font-family: 'Comfortaa', cursive;
 }
 
@@ -19,30 +18,26 @@ h2 {
     margin: 0;
 }
 
-.container_today p {
-    color:rgb(10, 39, 48)
-}
-
 .container {
     display: flex;
     flex-direction: column;
-    background-color: "";
     margin: auto;
-    padding: 25px;
-    height: 90vh;
+    padding: 15px 15px 5px 15px;
+    height: 100vh;
 }
 
-
-/***** Today's weather *****/
+/* Today's weather */
 
 .container_today {
-    background-color: rgba(255, 255, 255, 0.432);
+    background-color: rgba(255, 255, 255, 0.637);
     padding: 10px;
     border-radius: 15px;
     margin-bottom: 15px;
 }
 
-
+.container_today p {
+    color:rgb(10, 39, 48)
+}
 
 .weather {
     display: flex;
@@ -65,13 +60,13 @@ h2 {
     width: 100%;
 }
 
-/***** Forecast *****/
+/* Forecast */
 
 .container_forecast {
     background-color: rgba(255, 255, 255, 0.432);
     display: flex;
     flex-direction: column;
-    padding: 10px 25px;
+    padding: 10px 10px;
     border-radius: 15px;
 }
 
@@ -89,16 +84,15 @@ h2 {
     height: 70px;
 }
 
+/* Weather text */
+
+.weather_text {
+    display: none;
+}
 
 /***** TABLET RESPONSIVE *****/
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-
-    .container {
-        flex-direction: row;
-        justify-content: center;
-        padding: 25px;
-    }
-
+    
     h1 {
         font-size: 70px;
     }
@@ -107,8 +101,11 @@ h2 {
         font-size: 30px;
     }
 
-    .container_forecast p {
-        font-size: 18px;
+    .container {
+        flex-direction: row;
+        justify-content: center;
+        padding: 40px;
+        height: 50vh;
     }
     
     /* Todays weather */
@@ -125,19 +122,15 @@ h2 {
         justify-content: space-between;
     }
 
-    .temp_city_weather {
-        flex-direction: column-reverse;
-        align-content: center;
-    }
-    
     .weather img {
         width: 150px;
         height: 150px;
         margin: auto;
     }
 
-    .sunrise_sunset {
-
+    .temp_city_weather {
+        flex-direction: column-reverse;
+        align-content: center;
     }
     
     /* Forecast */
@@ -148,20 +141,33 @@ h2 {
         height: 50vh;
     }
 
+    .container_forecast p {
+        font-size: 18px;
+    }
+
     .forecast img {
         height: 60px;
+    }
+
+    /* Weather text */
+
+    .weather_text {
+        display: block;
+        text-align: center;
+        width: 90vw;
+        margin: auto;
+    }
+
+    .weather_text p {
+        font-size: 30px;
+        margin-top: 50px;
+        color: rgba(255, 255, 255, 0.384);
     }
 }
 
 
 /***** DESKTOP RESPONSIVE *****/
 @media screen and (min-device-width: 1025px) {
-
-    .container {
-        flex-direction: row;
-        justify-content: center;
-        
-    }
 
     h1 {
         font-size: 70px;
@@ -171,17 +177,11 @@ h2 {
         font-size: 30px;
     }
 
-    .container_today p {
-        font-size: 18px;
-    }
-    .container_forecast p {
-        font-size: 22px;
-    }
-
-    .weather img {
-        width: 200px;
-        height: 200px;
-        margin: auto;
+    .container {
+        flex-direction: row;
+        justify-content: center;
+        height: 70vh;
+        padding-top: 35px;
     }
 
     /* Todays weather */
@@ -193,6 +193,10 @@ h2 {
         padding-left: 25px;
         margin-right: 25px;
     }
+    
+    .container_today p {
+        font-size: 18px;
+    }
 
     .weather {
         height: 100%;
@@ -200,11 +204,16 @@ h2 {
         align-items: center;
     }
 
+    .weather img {
+        width: 200px;
+        height: 200px;
+        margin: auto;
+    }
+
     .temp_city_weather {
         flex-direction: column-reverse;
         align-content: center;
     }
-
 
     /* Forecast */
 
@@ -215,9 +224,27 @@ h2 {
         padding: 10px 35px;
     }
 
+    .container_forecast p {
+        font-size: 22px;
+    }
+
     .forecast img {
         width: 90px;
         height: 90px;
+    }
+
+    /* Weather text */
+
+    .weather_text {
+        display: block;
+        text-align: center;
+    }
+
+    .weather_text p {
+        font-size: 30px;
+        margin: 0;
+        margin-top: 60px;
+        color: rgba(255, 255, 255, 0.384);
     }
 }
 

@@ -5,45 +5,41 @@ const forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockhol
 // DOM
 const containerToday = document.getElementById('containerToday')
 const containerForecast = document.getElementById('containerForecast')
-const moodText = document.getElementById('moodText')
+const weatherText = document.getElementById('weatherText')
 
-
-
-// API today's weather
+// API fetch today's weather
 fetch(todaysUrl)
     .then((response) => {
         return response.json()
     })
     .then((json) => {
 
-        // variables to display weather data
+        // Variables to display weather data
         let city = json.name.toUpperCase()
+        let cityName = json.name
         let temp = json.main.temp.toFixed(1)
         let sunrise = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], {timeStyle: 'short'})
         let sunset = new Date(json.sys.sunset * 1000).toLocaleTimeString([], {timeStyle: 'short'})
         let weatherType = json.weather[0].main
         let wIcon = json.weather[0].icon
 
-// Probem with the moodGenerator
-//let text = ''
-  const moodGenerator = () => {
-
-    if (weatherType === "Clouds") {
-        console.log('clouds')
-    } else if (weatherType === "Clear") {
-        console.log('clear')
-    } else if (weatherType === "Snow") {
-        console.log('snow')
-    } else if (weatherType === "Rain") {
-        console.log('rain')
-    } else if (weatherType === "Drizzle") {
-        console.log('drizzle')
-    } else {
-        console.log('thunderstorm')
-    }  
-  } 
-  moodGenerator()
-
+        // HTML weather text for tablet and desktop
+        const moodGenerator = () => {
+            if (weatherType === "Clouds") {
+                weatherText.innerHTML = `<p>Clouds are covering ${cityName}. Let's hope they'll be gone soon!</p>`
+            } else if (weatherType === "Clear") {
+                weatherText.innerHTML = `<p>It's sunny in ${cityName}. Put your sun glasses on and get outside!</p>`
+            } else if (weatherType === "Snow") {
+                weatherText.innerHTML = `<p>It's snowy in ${cityName}. Gather your friends and go out and make some snow angels!</p>`
+            } else if (weatherType === "Rain") {
+                weatherText.innerHTML = `<p>It's rainy in ${cityName}. Let's stay inside and binge watch Netflix!</p>`
+            } else if (weatherType === "Drizzle") {
+                weatherText.innerHTML = `<p>It drizzles in ${cityName}. Let's stay inside and binge watch Netflix!</p>`
+            } else {
+                weatherText.innerHTML = `<p>Thunderstorms in ${cityName}. Stay inside and keep away from power outlets!</p>`
+            }  
+        } 
+        moodGenerator()
 
         // HTML today's weather
         let weatherHTML = ''
@@ -64,7 +60,7 @@ fetch(todaysUrl)
         containerToday.innerHTML += weatherHTML
     })
 
-// API 5 day forecast
+// API fetch 5 day forecast
 fetch(forecastUrl)
     .then((response) => {
             return response.json()
@@ -74,9 +70,11 @@ fetch(forecastUrl)
         const filteredForecast = data.list.filter(item => item.dt_txt.includes('12:00'))
     
         filteredForecast.forEach(data => {
+        
+        let forecastTemp = data.main.temp.toFixed(1)
         let wIcon = data.weather[0].icon
         
-        // displays the forecast weekday
+        // Displays the forecast weekday
         let theDate = new Date(data.dt_txt)
         let weekday = new Array(theDate)
         weekday[0] = 'Sunday'
@@ -88,8 +86,6 @@ fetch(forecastUrl)
         weekday[6] = 'Saturday'
         let forecastDate = weekday[theDate.getDay()]
 
-        let forecastTemp = data.main.temp.toFixed(1)
-        
         // HTML forecast weather
         let forecastHTML = ''
         forecastHTML += `<section class="forecast">`
