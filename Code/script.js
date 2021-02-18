@@ -23,7 +23,7 @@ fetch(currentWeatherUrl)
   
   //mood.innerHTML += `<h2>Light a fire and get cosy. ${data.name} is looking grey today.</h2>`
   const weatherMessage = () => {
-    if (weatherDescription[0] === "Sun") {
+    if (weatherDescription[0] === "Clouds") {
       console.log('working')
       mood.innerHTML += `<img src="icons/Cloud.svg">`
       mood.innerHTML += `<h2>Light a fire and get cosy. ${data.name} is looking grey today.</h2>`
@@ -32,7 +32,7 @@ fetch(currentWeatherUrl)
       mood.innerHTML += `<img src="icons/Umbrella.svg">`
       mood.innerHTML += `<h2>Don't forget your umbrella! It's wet in ${data.name} today.</h2>`
       body.classList.add("rain")
-    } else if (weatherDescription[0] === "Clouds") {
+    } else if (weatherDescription[0] === "Sun") {
       mood.innerHTML += `<img src="icons/sun.svg">`
       mood.innerHTML += `<h2>Get sunnies on! ${data.name} is looking rather great today.</h2>`
       body.classList.add("sun")
