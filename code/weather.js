@@ -7,11 +7,11 @@ const sunset = document.getElementById("sunset")
 const description = document.getElementById("description")
 const forecast = document.getElementById("forecast")
 const weatherIcon = document.getElementById("weatherIcon")
-const searchBox= document.getElementById("searchbox")
+const searchBox = document.getElementById("searchbox")
 const currentLocationText = document.getElementById("currentLocationText")
 const forecastTemp = document.getElementById("forecastTemp")
 const forecastDay = document.getElementById("forecastDay")
-const currentLocationIcon = document.getElementById("currentLocationIcon")
+const currentLocationIcon = document.getElementById("locationWrapper")
 const magnifyingGlassIcon = document.getElementById("searchWrapper")
 const searchLocationBtn = document.getElementById("searchLocationBtn")
 const userLocationInput = document.getElementById("userLocationInput")
@@ -21,12 +21,43 @@ const weekdays = ["Söndag", "Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag",
 const API_KEY = "fd4c88b297db1abd3f5aaffe170147b6";
 let city = "";
 
+
+
 const handleCityInput = (city) => {
   let API_urlCurrent = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&lang=se&APPID=" + API_KEY;
   let API_urlForecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=metric&lang=se&APPID=" + API_KEY;
   fetchWeatherData(API_urlCurrent);
   fetchWeatherForecast(API_urlForecast)
   currentLocationText.innerHTML = city
+}
+
+// Functions 
+const getPosition = () => {
+
+  const options = () => {
+    enableHighAccuracy: true;
+    timeout: 5000;
+    maximumAge: 0;
+  }
+
+  const success = (position) => {
+    let crd = position.coords;
+    console.log('Your current position is:');
+    console.log(`Latitude : ${crd.latitude}`);
+    console.log(`Longitude: ${crd.longitude}`);
+    console.log(`More or less ${crd.accuracy} meters.`);
+
+    let API_urlPosCurrent = "https://api.openweathermap.org/data/2.5/weather?lat=" + crd.latitude + "&lon=" + crd.longitude + "&units=metric&lang=se&appid=" + API_KEY;
+    let API_urlPosForecast = "https://api.openweathermap.org/data/2.5/forecast?lat=" + crd.latitude + "&lon=" + crd.longitude + "&units=metric&lang=se&appid=" + API_KEY;
+    fetchWeatherData(API_urlPosCurrent);
+    fetchWeatherForecast(API_urlPosForecast);
+  }
+
+  const error = (error) => {
+    console.warn(`ERROR(${error.code}): ${error.message}`);
+  }
+
+  navigator.geolocation.getCurrentPosition(success, error, options);
 }
 
 const fetchWeatherData = (API_url) => {
@@ -36,6 +67,7 @@ const fetchWeatherData = (API_url) => {
     })
     .then((json) => {
       setCurrentWeather(json)
+      currentLocationText.innerHTML = json.name
     })
 }
 const fetchWeatherForecast = (API_urlForecast) => {
@@ -60,7 +92,7 @@ const forecastTemperature = (forecastData) => {
       <img class="forecast-icon" src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"/> 
       ${item.main.temp} &deg;C
     </li>
-  ` ); 
+  `);
   filteredData.forEach(item => forecastDay.innerHTML += `
     <li>
       ${weekdays[new Date(item.dt_txt).getDay()]}
@@ -132,14 +164,20 @@ const clearAll = () => {
   userLocationInput.value = ""
 }
 
+// Functions that runs when the page loads.
+getPosition()
+
 // Eventlisteners
-currentLocationIcon.addEventListener("click", () => {})
+currentLocationIcon.addEventListener("click", () => {
+  getPosition()
+  clearAll()
+})
 
 searchLocationBtn.addEventListener("click", (event) => {
   event.preventDefault()
   handleCityInput(userLocationInput.value)
   searchBox.classList.toggle("active")
-  clearAll() 
+  clearAll()
 })
 
 magnifyingGlassIcon.addEventListener("click", () => {

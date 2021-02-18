@@ -19,7 +19,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color:rgba(255, 255, 255, 0.514);
+  background-color: rgba(255, 255, 255, 0.514);
   width: 100%;
 }
 
@@ -48,9 +48,10 @@ body {
   opacity: 0.7;
 }
 
-.navbar-map-icon{
+.navbar-map-icon {
   padding-right: 10px;
 }
+
 .navbar-magnifyingglass-icon {
   padding-left: 10px;
 }
@@ -136,7 +137,7 @@ body {
   background-image: url("./assets/sunny1920px.jpg");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;  
+  background-size: cover;
 }
 
 /* styling of the today section when the class is  "cloudy" */
@@ -145,7 +146,7 @@ body {
   background-image: url("./assets/cloudy1920px.jpg");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;  
+  background-size: cover;
 }
 
 /* styling of the today section when the class is  "rainy" */
@@ -154,7 +155,7 @@ body {
   background-image: url("./assets/rainy1920px.jpg");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;  
+  background-size: cover;
 }
 
 
@@ -164,7 +165,7 @@ body {
   background-image: url("./assets/snowy1920px.jpg");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;  
+  background-size: cover;
 }
 
 
@@ -174,7 +175,7 @@ body {
   background-image: url("./assets/stormy1920px.jpg");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;  
+  background-size: cover;
 }
 
 .today-location-wrapper {
@@ -244,7 +245,7 @@ p {
 
 .forecast-day li {
   height: 30px;
-  display:flex;
+  display: flex;
   align-items: center;
 }
 
@@ -260,6 +261,8 @@ p {
 .forecast-temp li {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 100px;
 }
 
 .forecast-icon {
