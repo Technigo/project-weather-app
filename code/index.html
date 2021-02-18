@@ -10,23 +10,27 @@
 </head>
 
 <body>
-    <section class="menu hidden" id="menu">
-        <button id="stockholm-button">Stockholm</button>
-        <button id="barcelona-button">Barcelona</button>
-        <button id="sydney-button">Sydney</button>
-    </section>
-    <div id="container-weather" class="container-weather">
-        <div class="hamburger" id="hamburger">
-            <div></div>
-            <div></div>
-            <div></div>
+    <div class="container">
+        <section class="menu hidden" id="menu">
+            <select name="cities" id="cities" class="cities">
+                <option value="59, 18" selected disabled>Find your favorite city</option>
+                <option value="Stockholm,Sweden">Stockholm</option>
+                <option value="Barcelona,Spain">Barcelona</option>
+                <option value="Sydney,Australia">Sydney</option>
+            </select>
+        </section>
+        <div id="container-weather" class="container-weather">
+            <div class="hamburger" id="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div id="inner-container-weather" class="inner-container-weather"></div>
         </div>
-        <div id="inner-container-weather" class="inner-container-weather"></div>
-    </div>
-    <div id="container-forecast" class="container-forecast">
+        <div id="container-forecast" class="container-forecast">
 
+        </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 
