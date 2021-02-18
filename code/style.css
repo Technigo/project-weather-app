@@ -51,7 +51,6 @@ body {
   background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(69, 69, 69, 1) 100%);
 }
 
-
 .navbar-container {
   display: flex;
   justify-content: center;
@@ -239,7 +238,6 @@ body {
   background-size: cover;
 }
 
-
 /* styling of the today section when the class is  "snowy" */
 .snowy .today {
   background-image: url("./assets/snowy640px.jpg");
@@ -247,7 +245,6 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
-
 
 /* styling of the today section when the class is  "stormy" */
 .stormy .today {
@@ -513,7 +510,6 @@ p {
     background-size: cover;
   }
 
-
   /* styling of the today section when the class is  "snowy" */
   .snowy .today {
     background: #004c6d;
@@ -521,7 +517,6 @@ p {
     background-position: center;
     background-size: cover;
   }
-
 
   /* styling of the today section when the class is  "stormy" */
   .stormy .today {
