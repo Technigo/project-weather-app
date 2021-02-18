@@ -104,8 +104,7 @@ const forecastTemperature = (forecastData) => {
   `);
   filteredData.forEach((item) => {
     let day = item.dt_txt.split(/[- :]/)
-    console.log(item.dt_txt.split(/[- :]/))
-    date= new Date(day[0], day[1], day[2], day[3], day[4], day[5])
+    let date = new Date(day[0], day[1], day[2], day[3], day[4], day[5])
     forecastDay.innerHTML += `
     <li>
       ${weekdays[date.getDay()]}
