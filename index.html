@@ -8,14 +8,21 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="temperature">temperature</div>
-    <div id="city">city</div>
-    <div id="condition">condition</div>
-    <div id="sunrise">🌅 </div>
-    <div id="sunset">🌇 </div>
-    <div id="weekly-forecast-container">     
-
-    </div>
+    <section class="top-container">
+        <div class="local-information">
+            <div id="city">city</div>
+            <div id="temperature" class="temperature-now">temperature</div>
+            <div id="icon-today">icon</div>
+            <div id="condition" class="condition">condition</div>
+        </div>
+        <div class="sunrise-sunset">
+            <div id="sunrise">🌅 </div>
+            <div id="sunset">🌇 </div>
+        </div>
+    </section>
+    <section class="forecast-container">
+        <div id="weekly-forecast-container"></div>   
+    </section>
 
     <script src="./script.js"></script>
 </body>

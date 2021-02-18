@@ -1,4 +1,71 @@
+* {
+    border: 1px solid pink;
+}
+
+body {
+    margin: 20px; 
+}
+
+.top-container {
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.local-information {
+    text-align: center;
+    padding: 10px;
+}
+
+.city-local {
+    font-size: 50px;
+    font-style: bold;
+}
+
+.temperature-now {
+    font-size: 70px;
+    font-style: bold;
+}
+
+.sunrise-sunset {
+    width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.forecast-container {
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    margin: 0 auto;
+}
+
 .day {
+    height: 40px;
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    overflow: hidden;
 }
+
+.week-day-name {
+    width: 300px;
+}
+
+.day img {
+    /* height: 30px; */
+    width: 60px;
+    height: 100%;
+    object-fit: cover;
+    
+}
+
+

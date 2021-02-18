@@ -1,6 +1,7 @@
 const temperature = document.getElementById('temperature')
 const city = document.getElementById('city')
 const condition = document.getElementById('condition')
+const iconToday = document.getElementById('icon-today')
 const sunrise = document.getElementById('sunrise')
 const sunset = document.getElementById('sunset')
 const weeklyForecastContainer = document.getElementById('weekly-forecast-container')
@@ -21,13 +22,13 @@ fetch (currentWeatherApiUrl + apiKey)
         return response.json()
     })
     .then ((json) => {
-        temperature.innerHTML = Math.round(json.main.temp)
+        temperature.innerHTML = Math.round(json.main.temp)+ '°C'
         city.innerHTML = 
         `
-            ${json.name}
-            <img src='http://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png'>
+            <h1 class = city-local>${json.name}</h1>
         `
-        condition.innerHTML = json.weather[0].description
+        iconToday.innerHTML = `<img src='http://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png'>`
+        condition.innerHTML = json.weather[0].description.charAt(0).toUpperCase() + json.weather[0].description.slice(1)
         sunrise.innerHTML = `<p>Sunrise ${timeCalculator(json.sys.sunrise)}</p>` // (json.sys.sunrise) filters into timestamp in TimeCalculator function
         sunset.innerHTML = `<p>Sunset ${timeCalculator(json.sys.sunset)}</p>`
         console.log(json)
@@ -59,8 +60,8 @@ fetch (forecastApiUrl + apiKey)
             `
                 <div class="day">
                     <p>${getWeekday(i + 1)}</p>
-                    <img src="${iconUrl}">
-                    <p>${Math.round(filteredForecast[i].main.temp)}</p>
+                    <img class="icon-forecast" src="${iconUrl}">
+                    <p>${Math.round(filteredForecast[i].main.temp)}°C</p>
                 </div>
             `
         }
