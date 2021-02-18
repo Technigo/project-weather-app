@@ -3,6 +3,7 @@ const forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockhol
 const currentWeather = document.getElementById('currentWeather')
 const forecast = document.getElementById('forecast')
 const mood = document.getElementById('mood')
+const body = document.getElementById('body')
 
 
 //CURRENT FETCH
@@ -15,20 +16,30 @@ fetch(currentWeatherUrl)
     return value.main
     })
   
-    currentWeather.innerHTML = `<p>${data.main.temp.toFixed()} | ${weatherDescription}</p>`
-    currentWeather.innerHTML += `<p>sunrise: ${new Date(data.sys.sunrise * 1000).toLocaleString('se-SE', {hour:'numeric', minute: 'numeric'})}</p>`
-    currentWeather.innerHTML += `<p>sunset: ${new Date(data.sys.sunset * 1000).toLocaleString('se-SE', {hour:'numeric', minute: 'numeric'})}</p>`
+    currentWeather.innerHTML = `<p>${weatherDescription} | ${data.main.temp.toFixed()}</p>`
+    currentWeather.innerHTML += `<p>sunrise ${new Date(data.sys.sunrise * 1000).toLocaleString('se-SE', {hour:'numeric', minute: 'numeric'})}</p>`
+    currentWeather.innerHTML += `<p>sunset ${new Date(data.sys.sunset * 1000).toLocaleString('se-SE', {hour:'numeric', minute: 'numeric'})}</p>`
 
   
   //mood.innerHTML += `<h2>Light a fire and get cosy. ${data.name} is looking grey today.</h2>`
   const weatherMessage = () => {
-    if (weatherDescription[0] === "Clouds") {
+    if (weatherDescription[0] === "Sun") {
       console.log('working')
-      currentWeather.innerHTML += `<img src="./noun_Cloud_1188486.svg">`
+      mood.innerHTML += `<img src="icons/Cloud.svg">`
       mood.innerHTML += `<h2>Light a fire and get cosy. ${data.name} is looking grey today.</h2>`
+      body.classList.add("cloud")
     } else if (weatherDescription[0] === "Rain") {
-      mood.innerHTML += `<img src="./noun_Cloud_1188486.svg">`
-      mood.innerHTML += `<h2>Light a fire and get cosy. ${data.name} is looking grey today.</h2>`
+      mood.innerHTML += `<img src="icons/Umbrella.svg">`
+      mood.innerHTML += `<h2>Don't forget your umbrella! It's wet in ${data.name} today.</h2>`
+      body.classList.add("rain")
+    } else if (weatherDescription[0] === "Clouds") {
+      mood.innerHTML += `<img src="icons/sun.svg">`
+      mood.innerHTML += `<h2>Get sunnies on! ${data.name} is looking rather great today.</h2>`
+      body.classList.add("sun")
+    } else if (weatherDescription[0] === "Snow") {
+      mood.innerHTML += `<img src="icons/snowflake.svg">`
+      mood.innerHTML += `<h2>Put our warmest coat on! ${data.name} is rather chilly today.</h2>`
+      body.classList.add("snow")
     }
   }
   
@@ -43,20 +54,17 @@ fetch(currentWeatherUrl)
     return response.json()
    })
    .then((data) => {
-    
-    
-    console.log('data!', data.list.main)
     const filteredForecast = data.list.filter(item => item.dt_txt.includes('12:00'))
-    
-    
+
     filteredForecast.forEach((value) => {
       const forecastDate = new Date(value.dt * 1000);
       console.log(value.dt)
-      forecast.innerHTML += `<div><h3>${forecastDate.toLocaleString('en-US', {weekday: 'long'})}</h3>`
-      
-      forecast.innerHTML += `<p>Temp:${value.main.temp}</p>`
-
-      //forecast.innerHTML += `<p>max-temp:${value.main.temp_max}</p>`
-      forecast.innerHTML += `</div>`
+      forecast.innerHTML += `
+      <div class="day-temp">
+        <p>${forecastDate.toLocaleString('en-US', {weekday: 'long'})}</p>
+        <p>${value.main.temp.toFixed()}º</p>
+      </div>
+      <hr class="line">
+      `
     })
    })

@@ -1,3 +1,136 @@
 body {
-  background-color: aqua;
+  font-family: 'Montserrat', sans-serif;
+  margin: 50px 35px 0px 35px;
+}
+
+.cloud {
+  color: #F47775;
+  background-color: #F4F7F8;
+}
+
+.rain {
+  color: #164A68;
+  background-color: #A3DEF7;
+} 
+
+.sun {
+  color: #2A5510;
+  background-color: #F7E9B9;
+}
+
+.snow {
+  color: #000000;
+  background-color: #ffffff;
+}
+
+.current-weather {
+  margin-bottom: 70px;
+}
+
+h2 {
+  font-size: 36px;
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+p {
+  font-size: 20px;
+  margin: 2px;
+}
+
+.day-temp {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.line {
+  border: 0;
+  border-top: 0.5px dashed;
+  border-color: inherit;
+}
+
+.footer {
+  font-size: 10px;
+  text-align: center;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  margin-top: 40px;
+  padding-bottom: 15px;
+}
+
+/* TABLET RESPONSIVE */
+@media (min-width: 768px) and (max-width: 991px) {
+  body {
+    margin: 10%;
+  }
+
+  .mood {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h2 {
+    font-size: 45px;
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  img {
+    width: 100px;
+  }
+
+  .footer {
+    font-size: 15px;
+    margin-top: 100px;
+  }
+}
+
+
+/* DESKTOP RESPONSIVE */
+@media (min-width: 992px) {
+  body {
+    margin: 100px;
+  }
+
+  .main {
+    max-width: 700px;
+    margin: auto;
+  }
+
+  .current-weather {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  p {
+    font-size: 30px;
+  }
+
+  .mood {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h2 {
+    font-size: 55px;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 70px;
+  }
+
+  img {
+    width: 100px;
+  }
+
+  .footer {
+    font-size: 15px;
+    margin-top: 100px;
+  }
 }
