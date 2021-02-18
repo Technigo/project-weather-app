@@ -4,11 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Weather App</title>
+    <link rel="stylesheet" href="./style.css" />
+    <title>Document</title>
 </head>
 <body>
-    <section id="weather-forecast" class="weatherForecast"></section>
-    <script src="script.js"></script> 
+    <section class="header-section">
+        <div class="content">
+            <h1>Today's weather in<span id="city-name"></span></h1>
+            <p><span id="temperature"></span></p>
+            <p><span id="description"></span></p>
+            <div id="sun">
+
+            </div>
+        </div>
+    </section>
+    <main id="main" class="main-section">
+        <div class="weather-forecast"> 
+        </div>
+    </main>
+    <script src="script.js"></script>  
+
 </body>
 </html>
