@@ -4,11 +4,12 @@ body {
 }
 
 h1 {
-  font-size: 40px;
+  font-size: 30px;
+  font-weight: 300;
 }
 
 h2 {
-  font-size: 50px;
+  font-size: 55px;
   text-align: center;
 }
 
@@ -20,32 +21,27 @@ h3 {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  /* background-color: #bad7df; */
-  /* background-color: #a1cae2; */
-
-  background: linear-gradient(to top,#87cefa 0%, #f0ff99 100%);
-
+  /* background: linear-gradient(to top,#87cefa 0%, #f0ff99 100%); */
   padding: 0 20px;
   height: 50vh;
-}
-
-.weather-container {
-  /* max-width: 700px; */
- 
+  background: rgb(17,3,249);
+  background: linear-gradient(0deg, rgba(17,3,249,1) 0%, rgba(122,51,232,1) 36%, rgba(240,255,153,1) 100%);
 }
 
 .today-temp {
   display: flex;
   justify-content: space-evenly;
+  color: #1f1b5c
 }
 
 .today {
   padding-top: 15px;
+  padding-left: 20px;
 }
 
 .weather-icon img {
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
 }
 
 .sun-hours {
@@ -55,16 +51,19 @@ h3 {
 }
 
 .sun-hours p {
-  font-size: 25px;
+  font-size: 18px;
+  font-weight: 300;
+  color: white;
 }
 
 .forcast {
   display: flex;
   flex-direction: column;
-  background-color: #f6f6f6;
-  padding: 25px 80px 0 80px;
-  background-color:#87cefa;
+  /* background-color: #f6f6f6; */
+  padding: 20px 40px 0 40px;
+  /* background-color:#87cefa; */
   /*background-color: #cfc5a5;*/
+  background-color: rgb(17,3,249);;
 }
 
 .five-days {
@@ -75,14 +74,49 @@ h3 {
 }
 
 .five-days img {
-   /*background-color: #bad7df;*/
+   width: 60px;
 }
 
 .five-days p {
-  font-size: 20px;
+  font-size: 18px;
+  color: white;
 }
 
 /**** MEDIA QUERIES ***/
+@media (min-width: 500px) {
+  h1 {
+    font-size: 40px;
+    }
+
+  h2 {
+    font-size: 50px;
+    text-align: center;
+    }
+    
+  .sun-hours p {
+    font-size: 25px;
+    }
+
+  .forcast {
+    display: flex;
+    flex-direction: column;
+    padding: 25px 80px 0 80px;
+    /*background-color:#87cefa;*/
+    /*background-color: #cfc5a5;*/
+    }
+
+  .five-days p {
+    font-size: 20px;
+    }
+    
+  .five-days img {
+    width: 100px;
+  }
+    
+}
+
+
+
 @media (min-width: 700px) {
   .weather-container {
     margin: 0 auto;
