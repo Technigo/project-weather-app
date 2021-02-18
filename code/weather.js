@@ -4,7 +4,8 @@ const shortDescription = document.getElementById("shortDescription")
 const temperature = document.getElementById("temperature")
 const sunrise = document.getElementById("sunrise")
 const sunset = document.getElementById("sunset")
-const description = document.getElementById("description")
+const quoteText = document.getElementById("quoteOfTheDay")
+const quoteAuthor = document.getElementById("quoteAuthor")
 const forecast = document.getElementById("forecast")
 const weatherIcon = document.getElementById("weatherIcon")
 const searchBox = document.getElementById("searchbox")
@@ -102,10 +103,9 @@ const forecastTemperature = (forecastData) => {
     </li>
   `);
   filteredData.forEach((item) => {
-    let day = new Date(item.dt_txt).toString().split(/[- :]/)
     forecastDay.innerHTML += `
     <li>
-      ${day[0]}
+      ${weekdays[new Date(item.dt_txt).getDay()]}
     </li>
   `
   })
@@ -180,14 +180,23 @@ const clearAll = () => {
   userLocationInput.value = ""
 }
 
-const quoteOfTheDat = () => {
+const quoteOfTheDay = () => {
 
+  fetch("https://favqs.com/api/qotd")
+    .then((response) => {
+      return response.json()
+    })
+    .then((json) => {
+      quoteText.innerHTML = json.quote.body
+      quoteAuthor.innerHTML = "- " + json.quote.author
+    })
 
 
 }
 
 // Functions that runs when the page loads.
 getPosition()
+quoteOfTheDay()
 
 // Eventlisteners
 currentLocationIcon.addEventListener("click", () => {

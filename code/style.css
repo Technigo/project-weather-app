@@ -201,13 +201,15 @@ p {
 }
 
 /* Styling of the icon and description */
-.todays-description h2 {
-  font-size: 32px;
-  max-width: 400px;
+.todays-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.todays-description img {
-  height: 70px;
+.quote-of-the-day {
+  text-align: center;
 }
 
 .today-surise-sunset {
