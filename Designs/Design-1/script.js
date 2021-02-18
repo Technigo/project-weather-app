@@ -3,6 +3,9 @@ const mainContainer = document.getElementById('main')
 const city = document.getElementById('city')
 const weather = document.getElementById('weather')
 const temperature = document.getElementById('temperature')
+const sunrise = document.getElementById('sunrise')
+const sunset = document.getElementById('sunset')
+
 
 
 fetch(url)
@@ -15,4 +18,6 @@ fetch(url)
   city.innerHTML += ` ${data.name}`; 
   weather.innerHTML += ` ${data.weather[0].main} - ${data.weather[0].description}`;
   temperature.innerHTML +=  ` ${data.main.temp.toFixed(1)}`;
+  sunrise.innerHTML += ` ${data.sys.sunrise}`
+  sunset.innerHTML += `${data.sys.sunset}`
 })  
