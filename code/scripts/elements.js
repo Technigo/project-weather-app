@@ -3,7 +3,7 @@ export const getWeatherToday = (data) => {
 
   html += `  
     <img 
-        src="./assets/${data.type.main}-${data.type.icon}.svg" 
+        src="./assets/${data.type.icon}.svg" 
         alt="${data.type.description}" 
         class="header-info__icon"
     />
@@ -33,7 +33,7 @@ export const getForecastElement = (data) => {
             ${data.day}
         </p>
         <img 
-            src="./assets/${data.type.main}-${data.type.icon}.svg" 
+            src="./assets/${data.type.icon}.svg" 
             alt="${data.type.description}" 
             class="forecast__daily--items forecast__daily--image"
         ></img>
