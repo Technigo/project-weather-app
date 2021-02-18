@@ -122,16 +122,6 @@ p {
     font-size: 26px;
   } 
 
-  .forecast {
-    height: 50vh;
-  }
-
-  .small-icons {
-    width: 70px;
-    margin-right: 25px;
-    margin-top: -10px;
-  }
-
   .today {
     justify-content: center;
     align-items: center;
@@ -158,6 +148,12 @@ p {
     top: 10%;
     right: 10%;
   }
+
+  .small-icons {
+    width: 70px;
+    margin-right: 25px;
+    margin-top: -10px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -175,6 +171,5 @@ p {
 
   .forecast {
     max-width: 60%;
-    height: 50vh;
   }
 }
