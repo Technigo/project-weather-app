@@ -1,8 +1,7 @@
 body {
+    font-family: 'Lora', serif;
     margin: 0;
 }
-
-
 
 
 .todays-weather {
@@ -12,18 +11,19 @@ body {
     text-align: center;
     background: rgb(202, 172, 203);
     }
+
 .todays-weather h4 {
     font-size: 18px;
     margin-top: 10px;
 }
 
-   .city-name {
-       font-size: 36px;
-       margin-bottom: 0px;
-   } 
+.city-name {
+    font-size: 36px;
+    margin-bottom: 0px;
+} 
 
 .temperature {
-    font-size: 46px;
+    font-size: 72px;
     margin-top: 0px;
     margin-bottom: 20px;
 }
@@ -47,4 +47,23 @@ body {
   display: flex;
   flex-direction: column;
 }
-    
+
+.forecast-section {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 18px;
+}
+
+.forecast div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.forecast div p {
+   margin: 18px;
+   align-self: flex-end; 
+   width: 25%;
+   text-align: left;
+  padding-left: 20px;
+}

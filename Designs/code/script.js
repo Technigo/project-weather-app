@@ -48,7 +48,7 @@ fetch(WEATHER_URL)
         currentLocation.innerHTML += `
             <h2 class="city-name">${data.name}</h2>
             <h4>${data.weather[0].description}</h4>
-            <h1 class="temperature">${fixedTemperature} &#x2103</h1>
+            <h1 class="temperature">${fixedTemperature}&deg;</h1>
         `
         sunriseBox.innerHTML += `
             <img src ="./ikons/icons8-sunrise-96.png"> 
@@ -82,7 +82,13 @@ fetch(FORECAST_URL)
             const forecastDate = new Date((item.dt + timezone) * 1000)    
             const weekday = {weekday:'long'}
             let fixedTempForecast = item.main.temp.toFixed()
-            forecast.innerHTML += `<p>${forecastDate.toLocaleDateString('en-US', weekday)} <img src=${icon}> ${fixedTempForecast} &#x2103</p>` 
+            forecast.innerHTML += `
+            <div>
+            <p>${forecastDate.toLocaleDateString('en-US', weekday)}</p> 
+            <img src=${icon}> 
+            <p>${fixedTempForecast}&deg;</p>
+            </div>
+            ` 
            
         })
     })
