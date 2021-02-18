@@ -69,7 +69,7 @@ body {
 
 /* Styling of the body when the classname is "cloudy" */
 .cloudy {
-  background: #ebdece;
+  background: #e7e3de;
   color: #0f2b3b;
 }
 
@@ -210,6 +210,10 @@ p {
 
 .quote-of-the-day {
   text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 25px;
+  padding-left: 25px;
 }
 
 .today-surise-sunset {
