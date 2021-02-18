@@ -31,8 +31,7 @@ fetch(StockholmAPI)
     const date = new Date((data.dt) * 1000); //amount of milliseconds passed since January 1st 1970
     const sunriseDate = new Date((data.sys.sunrise) * 1000);
     const sunsetDate = new Date((data.sys.sunset) * 1000);
-    const icon = 'http://openweathermap.org/img/wn/' + data.weather[0].icon +'@2x.png'
-
+    const icon = 'http://openweathermap.org/img/wn/' + data.weather[0].icon +'.png'
     //ta bort Today's weather in: ?? 
       weatherContainer.innerHTML += `<div>
         <h1>${tempRounded}° <img src="${icon}"<h1/>
@@ -61,7 +60,7 @@ fetch(StockholmForecastAPI)
         let feelsLike = day.main.feels_like
         let feelsLikeRounded = Math.round(feelsLike)
 
-        let icon = 'http://openweathermap.org/img/wn/' + day.weather[0].icon +'@2x.png' // http://openweathermap.org/img/wn/10d@2x.png
+        let icon = 'http://openweathermap.org/img/wn/' + day.weather[0].icon +'.png' 
 
         console.log(tempRounded, feelsLikeRounded)
 
