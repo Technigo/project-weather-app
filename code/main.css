@@ -1,39 +1,47 @@
 
 
 body {
-    font-family: 'Indie Flower', cursive;
-    background-image: linear-gradient(45deg, white, #C5E2EE, transparent);
-    min-height: 1200px;
+    font-family: 'Abel', sans-serif;
+    background-image: url("billy.jpg");
+    min-height: 1000px;
+    
 }
+.wrapper {
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.header {
+    color: white;
+    font-size: larger;
+    padding: 10px;
+}
+
 .weather-container {
     display: flex;
     flex-direction: column;
     text-align: center;
+    padding-top: 20px;
+
 }
 .container {
-    width: 80%;
-    display: contents;
+    display: none;
 }
 .temperature {
-    font-size: xx-large;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 100px;
+    font-weight: bolder;
 }
 .sun {
-    display: flex;
-    justify-content: center;
+    display: none;
 }
-.rise {
-    margin-right: 20px;
+.rise, .set {
+    margin: 20px;
 }
 .forecast {
     width: 300px;
     padding: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.4);
 }
 .forecast-container {
     padding: 0;
@@ -42,24 +50,46 @@ body {
     justify-content: space-around;
 }
 p {
-    font-size: 24px;
-    line-height: 24px;
+    font-size: 30px;
+    line-height: 30px;
 }
 
-/* @media (min-width: 650px){
-
-    .body {
+@media (min-width: 650px){
+    .wrapper {
         display: flex;
-
-    }
-    .forecast {
-        margin-right: 20px;
-    }
-    .sun-forecast {
-        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        color: gray;
     }
     .sun {
-        margin-top: 50px;
-     
+        display: flex;
+        justify-content: center;
+        margin-left: 20px;
+        max-width: 300px;
     }
-} */
+    .forecast{
+        background-color: rgba(255, 255, 255, 0.4);
+        margin-left: 20px;
+        max-width: 300px;
+    }
+    .weather-container {
+        background-color: rgba(255, 255, 255, 0.4);
+        margin-left: 20px;
+        padding: 20px;
+        max-width: 300px;
+        min-width: 200px;
+    }
+    .container {
+        display: contents;
+    }
+
+    .header {
+        font-size: 40px;
+        padding: 0;
+    }
+
+    .sun {
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+  
+} 

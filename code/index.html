@@ -5,24 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather</title>
     <link rel="stylesheet" href="./main.css"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Indie+Flower&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
 </head>
 
 <body>
+<header class="header">
+    <h1> STOCKHOLM WEATHER</h1>
+</header>
+
+<section class="wrapper">
 
     <!-- Different weather aspects -->
     <section class="weather-container">
-         <div id="container" class="container">
-                Nothing..
+         <div id="container" class="container">       
         </div>
 
         <div id="temperature" class="temperature">
         </div>
     </section>
 
-
-<section class="sun-forecast">
 <!-- Sun -->
     <section class="sun">
         <div id="rise" class="rise">
@@ -37,31 +39,25 @@
     </section>
 
     <!-- Five day forecast-->
-
     <section class="forecast">
         <div class="forecast-container">
             <p id="dayOne" class="forecast-day"></p> 
-            <!-- <p id="dayOneType" class="weather-type"></p>  -->
             <p id="dayOneTemp" class="temp"></p>
         </div>
         <div class="forecast-container">
             <p id="dayTwo" class="forecast-day"></p> 
-            <!-- <p id="dayOneType" class="weather-type"></p>  -->
             <p id="dayTwoTemp" class="temp"></p>
         </div>
         <div class="forecast-container">
             <p id="dayThree" class="forecast-day"></p> 
-            <!-- <p id="dayOneType" class="weather-type"></p>  -->
             <p id="dayThreeTemp" class="temp"></p>
         </div>
         <div class="forecast-container">
             <p id="dayFour" class="forecast-day"></p> 
-            <!-- <p id="dayOneType" class="weather-type"></p>  -->
             <p id="dayFourTemp" class="temp"></p>
         </div>
         <div class="forecast-container">
             <p id="dayFive" class="forecast-day"></p> 
-            <!-- <p id="dayOneType" class="weather-type"></p>  -->
             <p id="dayFiveTemp" class="temp"></p>
         </div>
     </section>
