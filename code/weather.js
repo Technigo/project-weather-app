@@ -32,35 +32,40 @@ const handleCityInput = (city) => {
 }
 
 // Functions 
+
+/* This function will get the longitude and latitude coordinates from the users browser,
+then the function will fetch from the weather API and print the the current weather and 5 day forecast.*/
 const getPosition = () => {
 
+  /* This function will try and get the most accurate position of the user */
   const options = () => {
     enableHighAccuracy: true;
     timeout: 5000;
     maximumAge: 0;
   }
 
+  /* If the the app is able to get the users location it will take the coordinates and push them into the fetch function. */
   const success = (position) => {
     let crd = position.coords;
-    console.log('Your current position is:');
-    console.log(`Latitude : ${crd.latitude}`);
-    console.log(`Longitude: ${crd.longitude}`);
-    console.log(`More or less ${crd.accuracy} meters.`);
-
     let API_urlPosCurrent = "https://api.openweathermap.org/data/2.5/weather?lat=" + crd.latitude + "&lon=" + crd.longitude + "&units=metric&lang=se&appid=" + API_KEY;
     let API_urlPosForecast = "https://api.openweathermap.org/data/2.5/forecast?lat=" + crd.latitude + "&lon=" + crd.longitude + "&units=metric&lang=se&appid=" + API_KEY;
     fetchWeatherData(API_urlPosCurrent);
     fetchWeatherForecast(API_urlPosForecast);
   }
 
+  /* If the app is unable to get the users current position is till display an error message in the console. */
   const error = (error) => {
-    console.warn(`ERROR(${error.code}): ${error.message}`);
+    console.warn(`ERROR(${error.code}): Kunde inte hitta din nuvarande position.`);
   }
 
+  /* This line retrieves the coordinates from the users browser.  */
   navigator.geolocation.getCurrentPosition(success, error, options);
 }
 
+/* This function will send a fetch erquest to the API URL and convert the response to json */
 const fetchWeatherData = (API_url) => {
+
+  /* We fetch from the API URL */
   fetch(API_url)
     .then((response) => {
       return response.json()
@@ -70,6 +75,8 @@ const fetchWeatherData = (API_url) => {
       currentLocationText.innerHTML = json.name
     })
 }
+
+/* This function will send a fetch erquest to the API URL and convert the response to json */
 const fetchWeatherForecast = (API_urlForecast) => {
   fetch(API_urlForecast)
     .then((response) => {
@@ -84,6 +91,7 @@ const fetchWeatherForecast = (API_urlForecast) => {
   }
 }
 
+/* This function will take the json object and filter out all the days that includes the 12:00 timestamp. We then render a 5 day forecast on the DOM for the user to see */
 const forecastTemperature = (forecastData) => {
   let filteredData = forecastData.list.filter((item) => item.dt_txt.includes("12:00"))
 
@@ -95,11 +103,12 @@ const forecastTemperature = (forecastData) => {
   `);
   filteredData.forEach(item => forecastDay.innerHTML += `
     <li>
-      ${weekdays[new Date(item.dt_txt).getDay()]}
+      ${weekdays[new Date(Date.parse(item.dt_txt)).getDay()]}
     </li>
   `)
 }
 
+/* This function will set teh temperature, sunrise and sunset for the chosen city. */
 const setCurrentWeather = (weatherData) => {
   let sunrise = weatherData.sys.sunrise
   let sunset = weatherData.sys.sunset
