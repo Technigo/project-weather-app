@@ -24,25 +24,24 @@ any class at all. We will add classes in the JavaScript file instead -->
   <!-- We gave this section and the descendant divs a class name
   to be able to style it according to the design. Feel free to
   take a look in the CSS file and change whatever you like. -->
-  <section class="today">
+  <section class="today" id="today">
     <div class="today-container"> 
+      <!-- <input type="text"> -->
       <div class="todays-numbers">
-        <h1 class="temperature" id="temperature"> 23 <span class="celsius">°C</span></h1>
+        <h1 class="temperature" id="temperature"> 23 </h1>
         <h2 class="location">Stockholm</h2>
         <p>
           <span id="shortDescription">clear</span>
         </p>
         <div class="sun-div">
-          <p>
             <span class="sun" id="sunrise">sunrise: 08.00</span>
             <span class="sun" id="sunset">sunset: 22.30</span>
-          </p>
         </div> 
       </div>
       <div class="todays-description">
       </div>
     </div>
-    <img class="big-image" id="big-icon"/>
+    <span id="big-icon" class="big-image"></span>
   </section>
 
   <!-- Another id to be able to add the forecast data to our HTML. -->
