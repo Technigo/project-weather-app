@@ -1,5 +1,5 @@
-const CURRENT_WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather?q=Paris&units=metric&appid=9aeed004b4643ec679ac5d430384d994"
-const FORECAST_URL = "http://api.openweathermap.org/data/2.5/forecast?q=Paris&units=metric&appid=9aeed004b4643ec679ac5d430384d994"
+const CURRENT_WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather?q=Helsinki&units=metric&appid=9aeed004b4643ec679ac5d430384d994"
+const FORECAST_URL = "https://api.openweathermap.org/data/2.5/forecast?q=Helsinki&units=metric&appid=9aeed004b4643ec679ac5d430384d994"
 
 const cityName = document.getElementById("cityName")
 const currentTemperature = document.getElementById("currentTemperature")
@@ -53,9 +53,13 @@ const fetchCurrentWeather = () => {
             } else if (weatherDescription === "thunderstorm" || "rain" || "shower rain" || "snow"){
                 icon.innerHTML += `<img src=${umbrellaIcon}> </img>`
                 weatherMessage.innerHTML += `<h2>Don't forget your umbrella. It's wet in ${data.name} today.</h2>`
+                container.style.backgroundColor = "#A3DEF7";
+                container.style.color = "#164A68";
             } else {
                 icon.innerHTML += `<img src=${cloudIcon}> </img>`
                 weatherMessage.innerHTML += `<h2>Light a fire, get cosy ${data.name} is looking grey today.</h2>`
+                container.style.backgroundColor = "#F47775";
+                container.style.color = "#F4F7F8";
             }        
         })
         // Method to catch errors during fetch()
@@ -79,6 +83,7 @@ const fetchForecastWeather = () => {
         .then((data) => {
             //filter the information so it is only shown for same time (12:00) every day 
             const filteredForecast = data.list.filter(item => item.dt_txt.includes("12:00"))
+            console.log(filteredForecast)
             //Looping through the filtered weather array to get and show weekday and temperature information
             filteredForecast.forEach((data) => { 
                 const date = new Date(data.dt * 1000)

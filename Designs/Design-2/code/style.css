@@ -3,7 +3,6 @@ body{
 }
 
 .container {
-    border: 2px solid pink;
     width: 300px;
     margin: 20px auto;
     padding: 40px;
@@ -30,4 +29,40 @@ body{
 .forecast-information{
     text-align-last: justify;
     margin-top: 30px;
+}
+
+/** MEDIA QUERIES **/
+@media (min-width:667px) {
+.container {
+    width: 400px;
+}
+}
+
+@media (min-width:1024px) {
+.container {
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+}
+.current-weather-container {
+    text-align: center;
+    display: flex;
+}
+
+.today-weather {
+    padding: 40px;
+    font-size: 1.2em;
+}
+
+.forecast-information {
+    width: 400px;
+    align-self: center;
+    font-size: 1.2em;
+}
+.weather-message-container {
+    width: 400px;
+    align-self: center;
+    font-size: 1.1em;
+}
+
 }
