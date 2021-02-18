@@ -6,7 +6,7 @@ const sunRise = document.getElementById("sunRise")
 const highlight = document.getElementById("highlight")
 const forecast = document.getElementById("forecast")
 const container = document.querySelector(".container") // We are getting a class from index that why we use querySelector
-
+const body = document.querySelector(".body")
 
 // TO do = Find how you can get access to the upcoming 5 days weather forecast. 
 // Global Variable
@@ -114,32 +114,49 @@ const SthlmTemp = () => {
     })
     switch (currentWeatherBackground){
       case 'Clouds': {
-        container.style.backgroundColor = "#94b5c0"
-        highlight.innerHTML += `<h2 class="weather-description"> Today is not a good day</h2>`
+        container.style.backgroundColor = "#d3e0ea"
+        highlight.innerHTML += `<h2 class="weather-description"> No sunshine on the horizon!</h2>`
+        container.style.color = "#276678"
+        body.style.backgroundColor = "#276678"
         break;
       }
       case 'Rain':{
-        container.style.backgroundColor = "yellow"
+        container.style.backgroundColor = "#94b5c0" 
+        highlight.innerHTML += `<h2 class="weather-description"> Don't forget your umbrella</h2>`
+        container.style.color = "#0a043c"
         break;
       }
       case 'Snow':{
-        container.style.backgroundColor = "red"
+        container.style.backgroundColor = "#d3e0ea"
+        highlight.innerHTML += `<h2 class="weather-description"> Time to build a snowman!</h2>`
+        container.style.color = "0a043c"
         break;
       }
       case 'Thunderstorm':{
-        container.style.backgroundColor = "blue"
+        container.style.backgroundColor = "1687a7"
+        highlight.innerHTML += `<h2 class="weather-description"> Hold your hat!</h2>`
+        container.style.color = "#f6f5f5"
         break;
       }
       case 'Drizzle':{
-        container.style.backgroundColor = "gray"
+        container.style.backgroundColor = "#aaaaaa"
+        highlight.innerHTML += `<h2 class="weather-description"> It's just nasty outside... </h2>`
+        container.style.color = "#f6f6f6"
+        body.style.backgroundColor = "#383e56"
         break;
       }
       case 'Clear':{
-        container.style.backgroundColor = "green"
+        container.style.backgroundColor = "#fce38a"
+        highlight.innerHTML += `<h2 class="weather-description"> Don't forget your sunglasses! </h2>`
+        container.style.color = "#6b011f"
+        body.style.backgroundColor = "#6b011f"
         break;
       }
       default :
-      container.style.backgroundColor = "black"
+      container.style.backgroundColor = "#c6a9a3"
+      highlight.innerHTML += `<h2 class="weather-description"> Be careful when you are driving!</h2>`
+      container.style.color = "#350b40"
+      body.style.backgroundColor = "#350b40"
       break;
     }  
     

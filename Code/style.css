@@ -1,11 +1,21 @@
 body {
     text-align: center;
+    background-color: #350b40;
+    
+}
+
+.container {
+    font-family: Verdana, Geneva, Tahoma, sans-serif; /* example */
+    font-weight: bold; /* example */
+    color: white; /* example */
+    border-radius: 25px;
+    padding: 15px;
 }
 
 
 .forecast-line {
     margin: 20px;
-    border: solid black 2px;
+    /*border: solid black 2px; */
     display: flex;
     justify-content: center;
     align-items: center;
