@@ -13,6 +13,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
 }
 
 .navbar-container {
@@ -93,8 +94,8 @@ body {
 
 /* Styling of the body when the classname is "other" */
 .other {
-  background: #dbf6e9;
-  color: #31326f;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(69, 69, 69, 1) 100%);
 }
 
 .search-location {
@@ -107,7 +108,7 @@ body {
 .search-location-inner {
   display: flex;
   height: 30px;
-  width: 100%;
+  width: 60%;
 }
 
 .search-location input {
@@ -134,7 +135,7 @@ body {
 /* styling of the today section when the class is  "sunny" */
 .sunny .today {
   background: #c2790b;
-  background-image: url("./assets/sunny1920px.jpg");
+  background-image: url("./assets/sunny640px.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -143,7 +144,7 @@ body {
 /* styling of the today section when the class is  "cloudy" */
 .cloudy .today {
   background: #142127;
-  background-image: url("./assets/cloudy1920px.jpg");
+  background-image: url("./assets/cloudy640px.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -152,7 +153,7 @@ body {
 /* styling of the today section when the class is  "rainy" */
 .rainy .today {
   background: #004c6d;
-  background-image: url("./assets/rainy1920px.jpg");
+  background-image: url("./assets/rainy640px.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -162,7 +163,7 @@ body {
 /* styling of the today section when the class is  "snowy" */
 .snowy .today {
   background: #004c6d;
-  background-image: url("./assets/snowy1920px.jpg");
+  background-image: url("./assets/snowy640px.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -172,7 +173,15 @@ body {
 /* styling of the today section when the class is  "stormy" */
 .stormy .today {
   background: #004c6d;
-  background-image: url("./assets/stormy1920px.jpg");
+  background-image: url("./assets/stormy64px.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.other .today {
+  background: #004c6d;
+  background-image: url("https://images.unsplash.com/photo-1606235571543-39db5bf60462?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -210,10 +219,16 @@ p {
 
 .quote-of-the-day {
   text-align: center;
+  font-weight: 500;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-right: 25px;
   padding-left: 25px;
+}
+
+.quote-of-the-day-author {
+  font-weight: 500;
+  font-style: italic;
 }
 
 .today-surise-sunset {
@@ -276,10 +291,6 @@ p {
 }
 
 /*searchbar styling */
-footer {
-  width: 100%;
-  max-width: 400px;
-}
 
 input {
   background: #F4F7F8;
@@ -294,7 +305,7 @@ input {
 
 .sunny input,
 .sunny input::placeholder {
-  color: #2A5510;
+  color: #c2790b;
   border-radius: 4px;
 }
 
@@ -320,6 +331,34 @@ input {
   border-radius: 4px;
 }
 
+button {
+  border-radius: 5px;
+  color: white;
+}
+
+.sunny button {
+  background-color: #c2790b;
+}
+
+.cloudy button {
+  background-color: #182844;
+}
+
+.rainy button {
+  background-color: #164A68;
+}
+
+.snowy button {
+  background-color: #8a857f;
+}
+
+.stormy button {
+  background-color: #1b1d27;
+}
+
+.other button {
+  background-color: #313131;
+}
 
 /* Styling of how it should look in tablet and desktop */
 @media (min-width: 668px) {
@@ -343,6 +382,11 @@ input {
   footer {
     width: 100%;
     max-width: 500px;
+  }
+
+
+  .search-location-inner {
+    width: 25%;
   }
 }
 
