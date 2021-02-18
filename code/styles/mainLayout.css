@@ -1,8 +1,14 @@
 :root {
   --primary: #757aff;
+  --secondary: #8d90fd;
   --shadow: #bbbbbb;
 }
 
 body {
   margin: 0;
+  height: 100vh;
+}
+
+.nav-bar {
+  display: none;
 }

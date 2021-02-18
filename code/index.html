@@ -8,9 +8,10 @@
     <link rel="stylesheet" href="./main.css" type="text/css" />
   </head>
   <body>
+    <!-- Shown by default (mobile) hides in large devices -->
     <div class="side-menu" id="sideMenu">
       <img class="icon-arrow-left" id="btnClose" src="./assets/icon-arrow.svg" />
-      <ul class="list-cities">
+      <ul id="listCities" class="list-cities">
         <li>La Motte</li>
         <li>Stockholm</li>
         <li>Berlin</li>
@@ -20,7 +21,15 @@
     <!-- Header displaying current weather data for the city -->
     <header class="header-info" id="headerContainer">
       <img class="header-info__bkg" src="./assets/bkg.svg" alt="gradient background image" />
+
       <div class="header-info__wrapper" id="weatherToday">
+        <nav class="nav-bar">
+          <ul id="listCities" class="list-cities">
+            <li>La Motte</li>
+            <li>Stockholm</li>
+            <li>Berlin</li>
+          </ul>
+        </nav>
         <img
           class="icon-hamburger"
           id="btnSideMenu"
@@ -28,9 +37,9 @@
           alt="icon side menu"
         />
         <!-- Daily weather for city inserted on page load -->
-      </div>
-      <div class="btn-round btn--float">
-        <img class="icon-arrow-right" src="./assets/icon-arrow.svg" />
+        <div class="btn-round btn--float">
+          <img class="icon-arrow-right" src="./assets/icon-arrow.svg" />
+        </div>
       </div>
     </header>
 

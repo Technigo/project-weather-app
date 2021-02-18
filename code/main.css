@@ -12,3 +12,5 @@
 @import "./styles/sideMenu.css";
 @import "./styles/header.css";
 @import "./styles/forecast.css";
+
+@import "./styles/largeDevices.css" (min-width: 550px);

@@ -1,0 +1,31 @@
+.forecast {
+  margin: 30px auto;
+  max-width: 500px;
+}
+
+.header-info__wrapper {
+  margin: 0 auto;
+  height: 100%;
+  max-width: 500px;
+}
+
+.btn-round:hover {
+  background-color: var(--secondary);
+  cursor: pointer;
+}
+
+.icon-hamburger {
+  display: none;
+}
+
+.nav-bar {
+  display: block;
+  order: -1;
+}
+
+.list-cities {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
