@@ -8,6 +8,7 @@ const dailyTemp = document.getElementById('dailyTemp')
 const sunrise = document.getElementById('sunrise')
 const sunset = document.getElementById('sunset')
 const city = document.getElementById('location')
+const iconDailyWeather = document.getElementById('iconDailyWeather')
 const mainWeather = document.getElementById('mainWeather')
 
 // fetch URL for daily weather (can make it shorter - one line)
@@ -18,7 +19,7 @@ fetch (URLDAILYWEATHER)
     })
     // recive the unpacked response and do something with the data
     .then((data) => {
-        //console.log("daily URL", data)
+        console.log("daily URL", data)
 
         // round up todays temperature, no decimal
         const temp = data.main.temp
@@ -34,13 +35,26 @@ fetch (URLDAILYWEATHER)
             sunset.innerHTML = `Sunset: ${sunsetHour}`
 
         // get todays weather in weatehr-array using map to iterate and find right object and then return the value
-        const fetchedWeather = data.weather.map(
+        const fetchDailyWeather = data.weather.map(
             (weatherData) => {
-            return weatherData.main
+            return weatherData.description
             })
             city.innerHTML = `The weather in + ${data.name}:`
-            mainWeather.innerHTML = `${fetchedWeather}`
+            mainWeather.innerHTML = `${fetchDailyWeather}`
+
+        // icon 
+        //const fetchIconDailyWeather = data.weather.map(
+          //  (weatherIcon) => {
+          //  return weatherIcon.icon
+          //  })
+          //  iconDailyWeather.innerHTML += `<img src="${fetchIconDailyWeather}" alt="icon">`
+
+            let fetchIconDailyWeather = 'http://openweathermap.org/img/wn/' + data.weather[0].icon +'@2x.png'
+            {
+                iconDailyWeather.innerHTML += `<img src="${fetchIconDailyWeather}" alt="weather icon">`
+            }    
     })
+        
 
     //.cath(error => {}) always something we should do. Add if else to first .then() depending on what to return
     .catch( err => {
