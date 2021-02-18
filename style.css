@@ -1,18 +1,74 @@
 :root {
   --primary: #F2D7CC;
   --secondary: #4D3834;
+  --third: #1E292B;
+  --fourth: #96776A;
 }
 
-body {
+body, html {
   height: 100%;
   margin: 0;
+  background-color: var(--primary);
 }
 
 .bg {
   background-image: url(./Assets/kualalumpur.jpg);
-  height: 100%;
+  background-size: cover;  
+  height: 50%;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  width: 100%;
+  height: 50%;
+  object-fit: scale-down;
+  color: #F2D7CC;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
+h2 {
+  width: 70%;
+  margin: auto;
+  justify-content: center;
+  }
+
+  .summary {
+    display: flex;
+    flex-direction: column;
+    border: solid  #4D3834 2px;
+    /*width: 35%;*/
+    padding: 10px;  
+    color: #F2D7CC;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: 100px;
+  }
+  
+  .icon {
+    border: solid #4D3834 1px;
+    width: 35%;
+    height: 100px;
+  }
+  
+  p {
+    margin: 0%;
+  }
+  
+  .forecastContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  
+  }
+  
+  p .forecastContainer {
+    width: 100%;
+  }
+
+/** MEDIA QUERIES **/
+
+/** TABLET**/
+@media 
