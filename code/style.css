@@ -8,7 +8,7 @@
 .container {
   padding: 60px 20px; 
   margin: 20px;
-  background: linear-gradient(-45deg, #28b10d, #e73c7e, #23a6d5, #23d5ab); 
+  background: linear-gradient(-45deg, #a7db9c, #d3aaba, #81c6df, #a5e5d6); 
   background-size: 400% 400%;
   animation: gradient 10s ease infinite; 
   /* border-radius: 200px 0; */
@@ -30,16 +30,30 @@
 .sunrise-sunset-container + * {
   flex-direction: row;
 }
-
+.weather-icon {
+  animation: bounce 1s infinite linear;
+  display: inline-block;
+  position: relative; 
+}
+/* .five-day-forecast {
+  animation: pulse 2s infinite linear;
+  display: inline-block;
+  position: relative;
+} */
 
 @keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+	0% { background-position: 0% 50%; }
+	50% { background-position: 100% 50%; }
+	100% { background-position: 0% 50%; }
+}
+@keyframes bounce {
+  0% { top: 0; }
+  50% { top: -0.2em; }
+  70% { top: -0.3em; }
+  100% { top: 0; }
+}
+@keyframes pulse {
+	0% { opacity: 1; }
+	50% { opacity: 0.5; }
+	100% { opacity: 1; }
 }
