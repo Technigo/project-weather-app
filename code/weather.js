@@ -22,7 +22,7 @@ const API_KEY = "fd4c88b297db1abd3f5aaffe170147b6";
 let city = "";
 
 
-
+/* This function is called when the user seatches for a city and it will render the city name on the screen. */
 const handleCityInput = (city) => {
   let API_urlCurrent = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&lang=se&APPID=" + API_KEY;
   let API_urlForecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=metric&lang=se&APPID=" + API_KEY;
@@ -101,14 +101,17 @@ const forecastTemperature = (forecastData) => {
       ${item.main.temp} &deg;C
     </li>
   `);
-  filteredData.forEach(item => forecastDay.innerHTML += `
+  filteredData.forEach((item) => {
+    let day = new Date(item.dt_txt).toString().split(/[- :]/)
+    forecastDay.innerHTML += `
     <li>
-      ${weekdays[new Date(Date.parse(item.dt_txt)).getDay()]}
+      ${day[0]}
     </li>
-  `)
+  `
+  })
 }
 
-/* This function will set teh temperature, sunrise and sunset for the chosen city. */
+/* These set of functions will set the temperature, sunrise and sunset for the chosen city and render the information on the screen. */
 const setCurrentWeather = (weatherData) => {
   let sunrise = weatherData.sys.sunrise
   let sunset = weatherData.sys.sunset
@@ -131,6 +134,7 @@ const currentSunriseSunset = (sun, condition) => {
     sunset.innerHTML = `Sol ned: ${toLocalTime(sun)}`
 }
 
+/* This function will convert the time to the useres local time. */
 const toLocalTime = (sun) => {
   let unixToLocalTime = new Date(sun * 1000).toLocaleTimeString([], {
     hour: '2-digit',
@@ -140,6 +144,7 @@ const toLocalTime = (sun) => {
   return unixToLocalTime;
 }
 
+/* This function will set the weather icon next to the city name depending on what the weather condition is. The icon ID is fetched from the API and rendered accordingly. */
 const currentWeatherCondition = (weatherData) => {
   let wIcon = weatherData.weather[0].icon
 
@@ -147,6 +152,7 @@ const currentWeatherCondition = (weatherData) => {
   weatherIcon.src = "https://openweathermap.org/img/wn/" + wIcon + "@2x.png"
 }
 
+/* This function will render a background on the screen depengin on what kind of weather it is. We have fetched the ID from the API and we check the ID range and then render an image accordingly. */
 const weatherBackground = (id) => {
   let condition = ""
 
@@ -166,11 +172,18 @@ const weatherBackground = (id) => {
   body.classList.add(condition)
 }
 
+/* This fuinction will reset the text, temperature and location input when called. */
 const clearAll = () => {
   forecastDay.innerHTML = ""
   forecastTemp.innerHTML = ""
   body.className = ""
   userLocationInput.value = ""
+}
+
+const quoteOfTheDat = () => {
+
+
+
 }
 
 // Functions that runs when the page loads.
