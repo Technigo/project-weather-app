@@ -10,6 +10,8 @@ const sunset = document.getElementById('sunset')
 const city = document.getElementById('location')
 const iconDailyWeather = document.getElementById('iconDailyWeather')
 const mainWeather = document.getElementById('mainWeather')
+const weekForecast = document.getElementById('weekForecast')
+
 
 // fetch URL for daily weather (can make it shorter - one line)
 fetch (URLDAILYWEATHER)
@@ -54,7 +56,6 @@ fetch (URLDAILYWEATHER)
                 iconDailyWeather.innerHTML += `<img src="${fetchIconDailyWeather}" alt="weather icon">`
             }    
     })
-        
 
     //.cath(error => {}) always something we should do. Add if else to first .then() depending on what to return
     .catch( err => {
@@ -71,7 +72,23 @@ fetch (URLDAILYWEATHER)
         })
         .then((data) => {
             console.log("weekly URL",data)
-            //copied from step 4
-            //const filteredForcast = data.list.filter(item => item.dt_txt.includes('12:00'))
-            //console.log(filteredForcast)
+            //filter forcast to get the weather 12:00 each day
+            const filteredForcast = data.list.filter(item => item.dt_txt.includes('12:00'))
+            console.log(filteredForcast)
+
+            // loopa through the array and return weather for each day
+            filteredForcast.forEach((day)=>{
+                const date = new Date (day.dt*1000)
+                let dayName = date.toLocaleDateString('se-SE', {weekday:'short'})
+                //console.log('day name', dayName, day.weather[0].description, day.main.temp)
+                weekForecast.innerHTML += `
+                    <tr>
+                        <td>${dayName}</td>
+                        <td>${day.weather[0].description}</td>
+                        <td>${day.main.temp.toFixed()}</td>
+                    </tr>`
+
+              })
+              
         })
+
