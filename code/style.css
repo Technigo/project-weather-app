@@ -1,4 +1,41 @@
-h1 {
-    color: red;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+body {
+    margin: 0; 
+    font-family: 'Roboto', 'sans-serif';
+}
+
+.weather-container {
+    width: 100vw;
+    background-image: linear-gradient(#5E5F9D,#242552);
+    border-radius: 0px 0px 30px 30px; 
+    color: white; 
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+/*
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+*/
+}
+
+.sunrise-sunset {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.forcast-container {
+
+}
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 992px) {
 
 }

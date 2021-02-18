@@ -32,15 +32,20 @@ fetch(StockholmAPI)
     const sunriseDate = new Date((data.sys.sunrise) * 1000);
     const sunsetDate = new Date((data.sys.sunset) * 1000);
     const icon = 'http://openweathermap.org/img/wn/' + data.weather[0].icon +'.png'
-    //ta bort Today's weather in: ?? 
+    
       weatherContainer.innerHTML += `<div>
-        <h1>${tempRounded}° <img src="${icon}"<h1/>
+        <div class="data">
         <h2>Today's weather in: ${data.name}</h2> 
+        <h1>${tempRounded}°<h1/>
+        <img src="${icon}">
         <h3>${data.weather[0].description}</h3>         
-        <h5>Date: ${date.toLocaleDateString('sv-SE', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})}</h5>
-        <h5>Time: ${date.getHours()}:${date.getMinutes()}</h5>
-        <h5>Sunrise: ${sunriseDate.getHours()}:${sunriseDate.getMinutes()}</h5>
-        <h5>Sunset: ${sunsetDate.getHours()}:${sunsetDate.getMinutes()}</h5>
+        <p>${date.toLocaleDateString('sv-SE', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})}</p>
+        <p>${date.getHours()}:${date.getMinutes()}</p>
+        </div>
+        <div class="sunrise-sunset">
+        <p>Sunrise: ${sunriseDate.getHours()}:${sunriseDate.getMinutes()}</p>
+        <p>Sunset: ${sunsetDate.getHours()}:${sunsetDate.getMinutes()}</p>
+        </div>
         </div>`
     }) 
 
