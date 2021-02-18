@@ -66,7 +66,7 @@ const getForecastData = (data) => {
 
 // Function for cities 
 const stockholmWeather = () => {
-fetch(`http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${API_KEY}`)
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${API_KEY}`)
   .then((response) => {
     return response.json();
   })
@@ -84,7 +84,7 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
 }
         
 const parisWeather = () => {
-fetch(`http://api.openweathermap.org/data/2.5/weather?q=Paris&units=metric&APPID=${API_KEY}`)
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=Paris&units=metric&APPID=${API_KEY}`)
   .then((response) => {
       return response.json();
   })
@@ -102,7 +102,7 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=Paris&units=metric&APPID
 }
 
 const valenciaWeather = () => {
-fetch(`http://api.openweathermap.org/data/2.5/weather?q=Valencia,Spain&units=metric&APPID=${API_KEY}`)
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=Valencia,Spain&units=metric&APPID=${API_KEY}`)
   .then((response) => {           
     return response.json();
   })      
