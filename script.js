@@ -10,30 +10,26 @@ const currentWeatherApiUrl = 'http://api.openweathermap.org/data/2.5/weather?q=S
 const forecastApiUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID='
 const apiKey = '3addfde144e16d817dcc3a5e9a46ea59' 
 
-//Convert unix to time
-const unixToTime = (unix) => {
-    const dateObj = new Date(unix * 1000)
-    const timeString = dateObj.getHours() + ':' + dateObj.getMinutes()
-    return timeString
+// This function converts the data for time into a readable format. (t.ex sunrise time of day)
+const timeCalculator = (timestamp) => {
+    const dateObject = new Date((timestamp) * 1000).toLocaleTimeString([], {timeStyle: 'short'})
+    return dateObject 
 }
 
-// const readableTime = () => {
-//     currentTime = new Date()
-
-//     console.log()
-// }
-
-// fetch API
-fetch (currentWeatherApiUrl + apiKey) 
+fetch (currentWeatherApiUrl + apiKey)
     .then ((response) => {
         return response.json()
     })
     .then ((json) => {
         temperature.innerHTML = Math.round(json.main.temp)
-        city.innerHTML = json.name
+        city.innerHTML = 
+        `
+            ${json.name}
+            <img src='http://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png'>
+        `
         condition.innerHTML = json.weather[0].description
-        sunrise.innerHTML = (unixToTime(json.sys.sunrise))
-        sunset.innerHTML = (unixToTime(json.sys.sunset))
+        sunrise.innerHTML = `<p>Sunrise ${timeCalculator(json.sys.sunrise)}</p>` // (json.sys.sunrise) filters into timestamp in TimeCalculator function
+        sunset.innerHTML = `<p>Sunset ${timeCalculator(json.sys.sunset)}</p>`
         console.log(json)
     })
     .catch ((err) => {
@@ -46,7 +42,6 @@ const getWeekday = (daysFromToday) => {
     const week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'] 
     return week[now.getDay() + daysFromToday]
 }
-
     
 
 fetch (forecastApiUrl + apiKey)
@@ -57,10 +52,7 @@ fetch (forecastApiUrl + apiKey)
         console.log(json)
         const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
         console.log(filteredForecast[0].main.temp)
-        //filteredForecast.forEach(weekday => {
-        //const dayOne = weekday.main.temp;
-        //})
-
+        
         for(let i = 0; i < 5; i++) {
             const iconUrl = `http://openweathermap.org/img/wn/${filteredForecast[i].weather[0].icon}@2x.png`
             weeklyForecastContainer.innerHTML += 
