@@ -18,6 +18,8 @@ fetch(url)
   city.innerHTML += ` ${data.name}`; 
   weather.innerHTML += ` ${data.weather[0].main} - ${data.weather[0].description}`;
   temperature.innerHTML +=  ` ${data.main.temp.toFixed(1)}`;
-  sunrise.innerHTML += ` ${data.sys.sunrise}`
-  sunset.innerHTML += `${data.sys.sunset}`
+  sunrise.innerHTML += ` ${new Date((data.sys.sunrise + data.timezone) * 1000).toLocaleTimeString()}`
+  sunset.innerHTML += ` ${new Date((data.sys.sunset + data.timezone) * 1000).toLocaleTimeString()}`
+  
+  
 })  
