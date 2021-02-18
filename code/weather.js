@@ -190,8 +190,6 @@ const quoteOfTheDay = () => {
       quoteText.innerHTML = json.quote.body
       quoteAuthor.innerHTML = "- " + json.quote.author
     })
-
-
 }
 
 // Functions that runs when the page loads.
