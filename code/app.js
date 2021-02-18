@@ -3,6 +3,8 @@ import { getWeatherToday, getForecastElement } from "./scripts/elements.js";
 
 // DOM Elements
 const weatherToday = document.getElementById("weatherToday");
+const headerContainer = document.getElementById("headerContainer");
+const sideMenu = document.getElementById("sideMenu");
 const forecastContainer = document.getElementById("forecast");
 
 // Global variables
@@ -91,6 +93,25 @@ const getDayOfWeek = (date) => {
   return new Intl.DateTimeFormat("default", { weekday: "short" }).format(dateObj);
 };
 
+const toggleSideMenu = () => {
+  sideMenu.classList.toggle("open");
+};
+
 /* EXECUTE PAGE LOAD FUNCTIONS */
 fetchWeatherToday();
 fetchWeatherForecast();
+
+/* EVENT LISTENERS */
+headerContainer.addEventListener("click", (event) => {
+  const target = event.target;
+  if (target.id === "btnSideMenu") {
+    toggleSideMenu();
+  }
+});
+
+sideMenu.addEventListener("click", (event) => {
+  const target = event.target;
+  if (target.id === "btnClose") {
+    toggleSideMenu();
+  }
+});

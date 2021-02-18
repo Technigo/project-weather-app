@@ -3,7 +3,10 @@
   overflow: hidden;
   position: relative;
 }
-.svg-container {
+
+.icon-hamburger {
+  position: absolute;
+  margin-top: 30px;
 }
 
 .header-info__bkg {

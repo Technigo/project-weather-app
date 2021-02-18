@@ -8,17 +8,34 @@
     <link rel="stylesheet" href="./main.css" type="text/css" />
   </head>
   <body>
+    <div class="side-menu" id="sideMenu">
+      <img class="icon-arrow-left" id="btnClose" src="./assets/icon-arrow.svg" />
+      <ul class="list-cities">
+        <li>La Motte</li>
+        <li>Stockholm</li>
+        <li>Berlin</li>
+      </ul>
+    </div>
+
     <!-- Header displaying current weather data for the city -->
-    <header class="header-info" id="weatherToday">
+    <header class="header-info" id="headerContainer">
       <img class="header-info__bkg" src="./assets/bkg.svg" alt="gradient background image" />
-      <!-- Daily weather for city inserted on page load -->
+      <div class="header-info__wrapper" id="weatherToday">
+        <img
+          class="icon-hamburger"
+          id="btnSideMenu"
+          src="./assets/icon-hamburger.svg"
+          alt="icon side menu"
+        />
+        <!-- Daily weather for city inserted on page load -->
+      </div>
     </header>
 
     <!-- Weather forecast list (5 days ahead) -->
     <section class="forecast" id="forecast">
       <!-- 5 day forecast inserted on page load -->
     </section>
-    <!-- Load in script module -->
-    <script type="module" src="./app.js"></script>
   </body>
+  <!-- Load in script module -->
+  <script type="module" src="./app.js"></script>
 </html>

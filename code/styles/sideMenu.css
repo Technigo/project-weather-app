@@ -1,0 +1,24 @@
+.side-menu {
+  position: absolute;
+  z-index: 2;
+  background-color: var(--primary);
+  width: 250px;
+  height: 100%;
+  transform: translateX(-250px);
+  transition: all 0.8s ease;
+}
+
+.side-menu.open {
+  transform: translateX(0px);
+}
+
+.icon-arrow-left {
+  transform: rotate(180deg);
+  width: 15px;
+  float: right;
+  margin: 20px;
+}
+
+.list-cities {
+  margin: 40px 20px;
+}

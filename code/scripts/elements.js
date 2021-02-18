@@ -1,13 +1,12 @@
 export const getWeatherToday = (data) => {
   let html = "";
 
-  html += `
-  <div class="header-info__wrapper">
+  html += `  
     <img 
         src="./assets/${data.type.main}-${data.type.icon}.svg" 
         alt="${data.type.description}" 
         class="header-info__icon"
-    ></img>
+    />
     <div class="header-title__wrapper">
         <h1>${data.temp}</h1>
         <span>&deg;C</span>
@@ -20,7 +19,6 @@ export const getWeatherToday = (data) => {
         <h3>sunset</h3>
         <h3>${data.sunset}</h3>
     </div>  
-  </div>
     `;
 
   return html;

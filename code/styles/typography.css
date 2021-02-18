@@ -33,3 +33,10 @@ h3,
 p {
   font-size: min(4vw, 22px);
 }
+
+ul {
+  color: white;
+  list-style: none;
+  padding: 0;
+  line-height: 3;
+}
