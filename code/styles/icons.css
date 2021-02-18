@@ -1,0 +1,15 @@
+.icon-hamburger {
+  position: absolute;
+  margin-top: 30px;
+}
+
+.icon-arrow-left {
+  transform: rotate(180deg);
+  width: 15px;
+  float: right;
+  margin: 20px;
+}
+
+.icon-arrow-right {
+  width: 20px;
+}

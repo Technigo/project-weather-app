@@ -12,13 +12,6 @@
   transform: translateX(0px);
 }
 
-.icon-arrow-left {
-  transform: rotate(180deg);
-  width: 15px;
-  float: right;
-  margin: 20px;
-}
-
 .list-cities {
   margin: 40px 20px;
 }

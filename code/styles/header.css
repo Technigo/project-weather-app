@@ -1,12 +1,7 @@
 .header-info {
-  height: 480px;
+  height: 450px;
   overflow: hidden;
   position: relative;
-}
-
-.icon-hamburger {
-  position: absolute;
-  margin-top: 30px;
 }
 
 .header-info__bkg {

@@ -1,8 +1,10 @@
 /* Import Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 
-/* Import Typography */
+/* Import Typography & Icons & Buttons */
 @import "./styles/typography.css";
+@import "./styles/icons.css";
+@import "./styles/buttons.css";
 /* Import main layout for body */
 @import "./styles/mainLayout.css";
 
