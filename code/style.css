@@ -82,4 +82,16 @@ h1 span {
 
 .temperature img {
     width: 30px;
+    height: 30px;
+}
+
+.image-weather {
+    position: absolute;
+    width: 200px;
+    top: -100px;
+    left: 170px;
+}
+
+.inner-container-weather {
+position: relative;
 }
