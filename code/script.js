@@ -6,7 +6,6 @@ const weeksWeather = document.getElementById('weeks-weather')
 const cityHeader = document.getElementById('city')
 const sunrise = document.getElementById('sunrise')
 const sunset = document.getElementById('sunset')
-// const weekdaysContainer = document.getElementById('weekdays-container')
 
 fetch(apiUrlToday)
   .then((response) => {
@@ -17,6 +16,8 @@ fetch(apiUrlToday)
     }
   })
   .then((data) => {
+
+    // const weatherMain = data.weather[0].main
 
     const sunrise = new Date (data.sys.sunrise * 1000).toLocaleTimeString('sv-SE', {
         hour: '2-digit', minute: '2-digit',
@@ -31,22 +32,40 @@ fetch(apiUrlToday)
       <p>sunrise: ${sunrise}</p>
       <p>sunset: ${sunset}</p>
     `
-    // sunrise.innerHTML = `
-    //   ${new Date (data.sys.sunrise * 1000).toLocaleTimeString('sv-SE', {
-    //   hour: '2-digit',
-    //   minute: '2-digit',
-    //   })}
-    // `
-    // sunset.innerHTML = `
-    //   ${new Date (data.sys.sunset * 1000).toLocaleTimeString('sv-SE', {
-    //   hour: '2-digit',
-    //   minute: '2-digit',
-    //   })}
-    // `
     
-    cityHeader.innerHTML = `
-      ${data.name}
-    `
+    // const weatherMessage = () => {
+    //   if (weatherMain === 'clear') {
+    //     console.log('clear')
+    //   } else if (weatherMain === 'rain') {
+    //     console.log('rain')
+    //   } else {
+    //     console.log('grey')
+    //   }    
+    // }
+    // weatherMessage()
+
+    const weatherMain = data.weather[0].main
+
+    switch (weatherMain) {
+      case 'clear':
+        todaysWeather.innerHTML = `
+          <img class="weather-image" src=${sunglasses.svg} alt=${'a pair of sunglasses'}
+          <h1>Get your sunnies on. ${data.name} is looking rather great today.</h1>
+        `
+        break
+      case 'rain':
+        todaysWeather.innerHTML = `
+          <img class="weather-image" src=${umbrella.svg} alt=${'an umbrella'}
+          <h1>Don't forget your umbrella. It's wet in ${data.name}today.</h1>
+        `
+        break
+      default:
+        todaysWeather.innerHTML = `
+          <img class="weather-image" src=${cloud.svg} alt=${'a cloud'}
+          <h1>Light a fire and get cosy. ${data.name} is looking grey today.</h1>
+        `
+    }
+
   })
   .catch(error => {
     todaysWeather.innerHTML = `
@@ -63,15 +82,14 @@ fetch(apiUrlFiveDays)
     }
   })
   .then((data) => {
-
+    
     const filteredForecast = data.list.filter(day => day.dt_txt.includes('12:00'))
     filteredForecast.forEach(day => {
       const forecastDay = new Date (day.dt_txt)
       weeksWeather.innerHTML += `
-      <div class='weekdays-container'><div class='day'>${forecastDay.toLocaleString('en-us', {weekday: 'short'})}</div><div class='temp-container'>${day.main.temp.toFixed(0)} &#176C</div></div>
+      <div class='weekdays-container'><div class='day-container'>${forecastDay.toLocaleString('en-us', {weekday: 'short'})}</div><div class='temp-container'>${day.main.temp.toFixed(0)} &#176C</div></div>
     ` 
     })
-
   })
   .catch(error => {
     weeksWeather.innerHTML = `
