@@ -2,13 +2,65 @@
 * {
   font-family: 'Montserrat', sans-serif;
 }
+
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
     background: rgb(143,138,231);
     background: linear-gradient(180deg, rgba(143,138,231,1) 0%, rgba(135,176,245,1) 48%, rgba(191,240,250,1) 100%);
-    color: blue;
+    color: #092163;
     width: 100vw;
     height: 100vh;
+    padding-top: 20px;    
+}
+
+.todays-weather {
+  text-align: center;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+.forecast-container {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+}
+
+.weather-icon {
+  margin-top: 20px;
+  
+}
+
+.forecast-paragraph {
+  border-bottom: 1px solid black;
+  max-width: 250px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.forecast-container img {
+ margin: 0 50px;
+ width: 50px;
+ height: 50px;
+ overflow: hidden;
+}
+
+
+@media (min-width: 767px) {
+.container {
+  width: 400px;
+  height: 700px;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 0 0 20px gray;
+  margin-top: 20px;  
+}
+body {
+  display: flex;
+  justify-content: center;
+}
 }
