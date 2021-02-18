@@ -1,39 +1,41 @@
 body {
     margin: 0;
-    background-color: #FFF;
+    /* background-color: #FFF; */
+    font-family: Montserrat;
 }
 
 .main-content {
-    border: solid black 1px;
     width: 80%;
     margin: 30px auto;
 }
 
 .todays-weather {
-    font-family: Montserrat;
     font-weight: bold;
-}
-
-.weather-image
-
-.todays-weather-small {
-    font-family: Montserrat;
+    font-size: 25px;
+    margin-top: 25%;
 }
 
 .weekdays-container {
     display: flex;
     justify-content: space-between;
-    font-family: Montserrat;
+    border-bottom: 1.5px dashed;
+    padding-bottom: 7px;
+    padding-top: 7px;
+}
+
+.five-day-forecast :last-child {
+    border-bottom: none;
 }
 
 /* colors:
 
-#F47775
-#F4F7F8
-#164A68
-#A3DEF7
-#2A5510
-#F7E9B9 */
+#F47775 = red font-color
+#F4F7F8 = ljusgrå?
+#164A68 = blue font-color
+#A3DEF7 = blue background-color
+#2A5510 = green font-color
+#F7E9B9 = yellow background-color
+*/
 
 
 /* @media (min-width: 668 px) {

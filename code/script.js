@@ -9,15 +9,9 @@ const sunset = document.getElementById('sunset')
 
 fetch(apiUrlToday)
   .then((response) => {
-    if (response.ok) {
-      return response.json()
-    } else {
-      throw 'Oops, something went wrong!'
-    }
+    return (response.ok ? response.json() : 'Oops, something went wrong!')
   })
   .then((data) => {
-
-    // const weatherMain = data.weather[0].main
 
     const sunrise = new Date (data.sys.sunrise * 1000).toLocaleTimeString('sv-SE', {
         hour: '2-digit', minute: '2-digit',
@@ -32,37 +26,33 @@ fetch(apiUrlToday)
       <p>sunrise: ${sunrise}</p>
       <p>sunset: ${sunset}</p>
     `
-    
-    // const weatherMessage = () => {
-    //   if (weatherMain === 'clear') {
-    //     console.log('clear')
-    //   } else if (weatherMain === 'rain') {
-    //     console.log('rain')
-    //   } else {
-    //     console.log('grey')
-    //   }    
-    // }
-    // weatherMessage()
 
     const weatherMain = data.weather[0].main
 
     switch (weatherMain) {
       case 'clear':
+        document.body.style.backgroundColor = '#F7E9B9'
+        document.body.style.color ='#2A5510'
         todaysWeather.innerHTML = `
-          <img class="weather-image" src=${sunglasses.svg} alt=${'a pair of sunglasses'}
+          <img class="weather-image" src=${'./assets/sunglasses.svg'} alt=${'a pair of sunglasses'} />
           <h1>Get your sunnies on. ${data.name} is looking rather great today.</h1>
         `
         break
       case 'rain':
+        document.body.style.backgroundColor = '#A3DEF7'
+        document.body.style.color = '#164A68'
         todaysWeather.innerHTML = `
-          <img class="weather-image" src=${umbrella.svg} alt=${'an umbrella'}
+          <img class="weather-image" src=${'./assets/umbrella.svg'} alt=${'an umbrella'} />
           <h1>Don't forget your umbrella. It's wet in ${data.name}today.</h1>
         `
         break
       default:
-        todaysWeather.innerHTML = `
-          <img class="weather-image" src=${cloud.svg} alt=${'a cloud'}
+      document.body.style.backgroundColor = '#F4F7F8'
+      document.body.style.color = '#F47775'
+      todaysWeather.innerHTML = `
+          <img class="weather-image" src=${'./assets/cloud.svg'} alt=${'a cloud'} />
           <h1>Light a fire and get cosy. ${data.name} is looking grey today.</h1>
+          
         `
     }
 
@@ -75,11 +65,7 @@ fetch(apiUrlToday)
 
 fetch(apiUrlFiveDays)
   .then((response) => {
-    if (response.ok) {
-      return response.json()
-    } else {
-      throw 'Oops, something went wrong!'
-    }
+    return (response.ok ? response.json() : 'Oops, something went wrong!')
   })
   .then((data) => {
     
