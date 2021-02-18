@@ -1,3 +1,9 @@
+body {
+    margin: 0;
+}
+
+
+
 
 .todays-weather {
     display: flex;
@@ -6,19 +12,26 @@
     text-align: center;
     background: rgb(202, 172, 203);
     }
+.todays-weather h4 {
+    font-size: 18px;
+}
 
    .city-name {
-       font-size: 32px;
+       font-size: 36px;
    } 
 
 .temperature {
-    font-size: 36px;
+    font-size: 46px;
 }
 
 .sun-hours {
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+.sun-hours img {
+    width: 72px;;
 }
 
 .sunrise {
