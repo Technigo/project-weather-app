@@ -16,6 +16,42 @@ body {
   height: 100vh;
 }
 
+/* Styling of the body when the classname is "sunny" */
+.sunny {
+  background: #b7e2e2;
+  color: #075e59;
+}
+
+/* Styling of the body when the classname is "cloudy" */
+.cloudy {
+  background: #e7e3de;
+  color: #0f2b3b;
+}
+
+/* Styling of the body when the classname is "rainy" */
+.rainy {
+  background: #82aabd;
+  color: #0e202b;
+}
+
+/* Styling of the body when the classname is "snowy" */
+.snowy {
+  background: #dceff8;
+  color: #394f77;
+}
+
+/* Styling of the body when the classname is "stormy" */
+.stormy {
+  background: #3d494e;
+  color: rgb(255, 255, 255);
+}
+
+/* Styling of the body when the classname is "other" */
+.other {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(69, 69, 69, 1) 100%);
+}
+
+
 .navbar-container {
   display: flex;
   justify-content: center;
@@ -62,41 +98,6 @@ body {
   opacity: 1;
 }
 
-/* Styling of the body when the classname is "sunny" */
-.sunny {
-  background: #b7e2e2;
-  color: #075e59;
-}
-
-/* Styling of the body when the classname is "cloudy" */
-.cloudy {
-  background: #e7e3de;
-  color: #0f2b3b;
-}
-
-/* Styling of the body when the classname is "rainy" */
-.rainy {
-  background: #82aabd;
-  color: #0e202b;
-}
-
-/* Styling of the body when the classname is "snowy" */
-.snowy {
-  background: #dceff8;
-  color: #394f77;
-}
-
-/* Styling of the body when the classname is "stormy" */
-.stormy {
-  background: #3d494e;
-  color: rgb(255, 255, 255);
-}
-
-/* Styling of the body when the classname is "other" */
-.other {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(69, 69, 69, 1) 100%);
-}
-
 .search-location {
   display: none;
   flex-direction: column;
@@ -110,14 +111,40 @@ body {
   width: 60%;
 }
 
-.search-location input {
+.search-bar {
   margin: 0;
   flex: 1 1 auto;
+  background: #F4F7F8;
+  height: 28px;
+  width: 200px;
+  font-size: 16px;
+  outline: none;
+  border: solid rgba(0, 0, 0, 0.596) 0.5px;
 }
 
-.search-bar {
-  border-radius: 0px;
-  outline: none;
+.sunny input,
+.sunny input::placeholder {
+  color: #0ea76c;
+}
+
+.cloudy input,
+.cloudy input::placeholder {
+  color: #182844;
+}
+
+.rainy input,
+.rainy input::placeholder {
+  color: #164A68;
+}
+
+.snowy input,
+.snowyinput::placeholder {
+  color: #4a4e47;
+}
+
+.stormy input,
+.stormy input::placeholder {
+  color: #10121a;
 }
 
 .search-location-btn {
@@ -125,9 +152,7 @@ body {
   text-align: center;
   vertical-align: middle;
   padding: 3px 16px;
-  border: 1px solid #2a7aaf;
   border-radius: 0px;
-  background: #44c6ff;
   background: -webkit-gradient(linear, left top, left bottom, from(#44c6ff), to(#2a7aaf));
   background: -moz-linear-gradient(top, #44c6ff, #2a7aaf);
   background: linear-gradient(to bottom, #44c6ff, #2a7aaf);
@@ -147,6 +172,37 @@ body {
   text-decoration: none;
 }
 
+.sunny button {
+  background: -webkit-gradient(linear, left top, left bottom, from(#0bc28b), to(#064d37));
+  background: -moz-linear-gradient(top, #0bc28b, #064d37);
+  background: linear-gradient(to bottom, #0bc28b, #064d37);
+}
+
+.cloudy button {
+  background-color: #182844;
+  background: -webkit-gradient(linear, left top, left bottom, from(#9dada7), to(#384f5c));
+  background: -moz-linear-gradient(top, #9dada7, #384f5c);
+  background: linear-gradient(to bottom, #9dada7, #384f5c);
+}
+
+.rainy button {
+  background: -webkit-gradient(linear, left top, left bottom, from(#5fa8c7), to(#325166));
+  background: -moz-linear-gradient(top, #5fa8c7, #325166);
+  background: linear-gradient(to bottom, #5fa8c7, #325166);
+}
+
+.snowy button {
+  background: -webkit-gradient(linear, left top, left bottom, from(#b9d6e2), to(#779299));
+  background: -moz-linear-gradient(top, #b9d6e2, #779299);
+  background: linear-gradient(to bottom, #b9d6e2, #779299);
+}
+
+.stormy button {
+  background: -webkit-gradient(linear, left top, left bottom, from(#4d6068), to(#1b1d27));
+  background: -moz-linear-gradient(top, #4d6068, #1b1d27);
+  background: linear-gradient(to bottom, #4d6068, #1b1d27);
+}
+
 .today {
   height: 300px;
   border-bottom: solid black;
@@ -161,7 +217,6 @@ body {
 
 /* styling of the today section when the class is  "sunny" */
 .sunny .today {
-  background: #c2790b;
   background-image: url("./assets/sunny640px.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -170,7 +225,6 @@ body {
 
 /* styling of the today section when the class is  "cloudy" */
 .cloudy .today {
-  background: #142127;
   background-image: url("./assets/cloudy640px.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -179,7 +233,6 @@ body {
 
 /* styling of the today section when the class is  "rainy" */
 .rainy .today {
-  background: #004c6d;
   background-image: url("./assets/rainy640px.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -189,7 +242,6 @@ body {
 
 /* styling of the today section when the class is  "snowy" */
 .snowy .today {
-  background: #004c6d;
   background-image: url("./assets/snowy640px.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -199,7 +251,6 @@ body {
 
 /* styling of the today section when the class is  "stormy" */
 .stormy .today {
-  background: #004c6d;
   background-image: url("./assets/stormy640px.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -207,7 +258,6 @@ body {
 }
 
 .other .today {
-  background: #004c6d;
   background-image: url("./assets/other640px.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -298,7 +348,6 @@ body {
   animation-duration: 2.2s;
 }
 
-
 @keyframes drop {
   50% {
     transform: translateY(100px) rotate(45deg);
@@ -339,15 +388,13 @@ p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 20px;
 }
 
 .quote-of-the-day {
   text-align: center;
   font-weight: 500;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-right: 25px;
-  padding-left: 25px;
+  padding: 25px 10px;
 }
 
 .quote-of-the-day-author {
@@ -412,68 +459,6 @@ p {
 
 .forecast-icon {
   width: 30px;
-}
-
-/*searchbar styling */
-
-input {
-  background: #F4F7F8;
-  height: 20px;
-  width: 200px;
-  font-size: 16px;
-  border: 1px solid;
-  border-radius: 0px;
-  padding: 4px 8px;
-  margin: 30px 0;
-}
-
-.sunny input,
-.sunny input::placeholder {
-  color: #c2790b;
-}
-
-.cloudy input,
-.cloudy input::placeholder {
-  color: #182844;
-}
-
-.rainy input,
-.rainy input::placeholder {
-  color: #164A68;
-}
-
-.snowy input,
-.snowyinput::placeholder {
-  color: #4a4e47;
-}
-
-.stormy input,
-.stormy input::placeholder {
-  color: #10121a;
-}
-
-.sunny button {
-  background-color: #c2790b;
-}
-
-.cloudy button {
-  background-color: #182844;
-}
-
-.rainy button {
-  background-color: #164A68;
-}
-
-.snowy button {
-  background-color: #8a857f;
-}
-
-.stormy button {
-  background-color: #1b1d27;
-}
-
-.other button {
-  background-color: #313131;
 }
 
 /* Styling of how it should look in tablet and desktop */
