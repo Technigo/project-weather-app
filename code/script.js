@@ -4,12 +4,12 @@ const weatherUrl ='https://api.openweathermap.org/data/2.5/weather?q=Stockholm,S
 const forecastURL ='https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=f03e81d089081eb6bc8048a2ff0048e8'
 
 //constants variables for weather temp/ description/ main
-const container = document.getElementById('container')
-const temperature = document.getElementById('temperature')
+const container = document.getElementById('container');
+const temperature = document.getElementById('temperature');
 // const weather = document.getElementById('weather')
 
-const sunRise = document.getElementById('sunRise')
-const sunSet = document.getElementById('sunSet')
+const sunRise = document.getElementById('sunRise');
+const sunSet = document.getElementById('sunSet');
 
 
 // So you can read the time in HH:MM

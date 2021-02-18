@@ -1,21 +1,15 @@
 
 
 body {
-    font-family: 'Dancing Script', cursive;
     font-family: 'Indie Flower', cursive;
     background-image: linear-gradient(45deg, white, #C5E2EE, transparent);
-}
-
-header {
-height: 30px;
+    min-height: 1200px;
 }
 .weather-container {
     display: flex;
     flex-direction: column;
     text-align: center;
-
 }
-
 .container {
     width: 80%;
     display: contents;
@@ -25,18 +19,14 @@ height: 30px;
     margin-left: auto;
     margin-right: auto;
 }
-
-.Sun {
-
+.sun {
     display: flex;
     justify-content: center;
 }
-.Rise {
+.rise {
     margin-right: 20px;
 }
-
 .forecast {
-    
     width: 300px;
     padding: 10px;
     margin-left: auto;
@@ -44,7 +34,6 @@ height: 30px;
     margin-top: 30px;
     margin-bottom: 30px;
     background-color: rgba(255, 255, 255, 0.5);
-
 }
 .forecast-container {
     padding: 0;
@@ -52,7 +41,6 @@ height: 30px;
     flex-direction: row;
     justify-content: space-around;
 }
-
 p {
     font-size: 24px;
     line-height: 24px;
@@ -67,7 +55,6 @@ p {
     .forecast {
         margin-right: 20px;
     }
-
     .sun-forecast {
         display: flex;
     }
@@ -75,7 +62,4 @@ p {
         margin-top: 50px;
      
     }
-
-
-
 } */
