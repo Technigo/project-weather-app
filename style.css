@@ -1,22 +1,93 @@
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     background: beige;
     font-family: Helvetica, sans-serif;
 }
+.summary-text {
+    margin:5px;
+}
 
 .app-container {
+    margin: 0 auto;
+    width: 90%;
     display: flex;
     flex-direction: column;
-    width: 90%;
-    margin: 0;
+    padding-top: 20px;
+    /* justify-content: center; */
 }
 
+.summary-container {
+    width: 75%;
+    display: flex; 
+    justify-content: space-between;
+}
+
+.summary-left-side {
+    display: flex;
+    flex-direction: column;
+}
+
+/* .summary-right-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+} */
 
 .image-container {
-
+    padding-top: 30px;
 }
 
+.rainbow {
+    width: 150px;
+}
+
+.stockholm {
+
+}
 
 .five-days-forecast {
 /* display: flex; */
 
 }
+
+.five-days-container {
+    /* width: 75%; */
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+}
+
+
+.weekday-left {
+    display: flex;
+}
+
+.temp-right {
+    display: flex;
+}
+
+
+/* MEDIA QUERIES */
+
+/* TABLET */
+@media (min-width: 768px) and (max-width: 991px){
+.app-container{
+width: 80%;
+max-width: 600px;
+
+}
+}
+
+/* COMPUTER */
+@media (min-width: 992px){
+.app-container {
+    max-width: 600px;
+    padding-top: 50px;
+}
+}
+

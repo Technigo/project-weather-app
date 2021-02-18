@@ -1,10 +1,8 @@
 // Global variables
 const API_KEY = '4b089f476bd9961f1c727a0625472b1f'
-const weather = document.getElementById('weather');
-const sunrise = document.getElementById('sunrise');
-const sunset = document.getElementById('sunset');
-const city = document.getElementById('city');
+const summaryContainer = document.getElementById('summary-container');
 const fiveDaysForecast = document.getElementById('5-days-forecast');
+const imageContainer = document.getElementById('image-container');
 
 fetch(`http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${API_KEY}`)
     .then((response) => {
@@ -15,12 +13,56 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
         const sunsetTime = new Date(json.sys.sunset * 1000);
         const sunriseReadableTime = sunriseTime.toLocaleTimeString([], { timeStyle: 'short'})
         const sunsetReadableTime = sunsetTime.toLocaleTimeString([], { timeStyle: 'short'})
+        const todayDay = new Date(json.dt * 1000); // Todays date
+        const todayDayNames = todayDay.toLocaleDateString('en-US', {weekday: 'long', year: 'numeric', month: 'short'}); // Todays date in short string version
+        const weather = json.weather[0].main;
 
         city.innerHTML = `${json.name}`;
-        weather.innerHTML = `${json.weather[0].main} | ${Math.floor(json.main.temp)}°C`;
-        sunrise.innerHTML = `Sun Up: ${sunriseReadableTime}`;
-        sunset.innerHTML = ` Sun Down: ${sunsetReadableTime}`;
-    })
+
+        summaryContainer.innerHTML += `
+            <section class = "summary-container">
+                <div class = "summary-left-side">
+                    <p class = "summary-text">${todayDayNames}</p>
+                    <p class = "summary-text">${weather} | ${Math.floor(json.main.temp)}°C</p>
+                    <p class = "summary-text">Sun Up: ${sunriseReadableTime}</p>
+                    <p class = "summary-text">Sun Down: ${sunsetReadableTime}</p>
+                </div>
+            </section>
+        `;
+
+        const weatherImage = () => {
+            if (weather === "Clouds") {
+                imageContainer.innerHTML = `
+                <img src="./noun_Cloud_1188486.svg">
+                `;
+            } else if (weather === "Rain") {
+                imageContainer.innerHTML = `
+                <img src="./noun_Umbrella_2030530.svg">
+                `;
+            } else if (weather === "Sun") {
+                imageContainer.innerHTML = `
+                <img src="./noun_Sunglasses_2055147.svg">
+                `;
+            } else {
+                imageContainer.innerHTML = `
+                <img class = "rainbow" src="./rainbow.png">
+                `;
+            }
+    
+        }
+
+        weatherImage();
+
+        city.innerHTML = `
+        <h1>${json.name}</h1>
+        `;
+    });
+
+ // <div class = "summary-right-side">
+                //     <p class = "summary-text">${json.main.humidity} Humidity</p>
+                //     <p class = "summary-text">${json.wind.speed} Wind</p>
+                // </div>
+
 
     
 
@@ -41,28 +83,20 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
                 // A variable that saves the temperature each day
                 const temperature = Math.floor(item.main.temp);
 
-  
-
             // INNER HTML
-                fiveDaysForecast.innerHTML += `
-                    <span style='display: flex'>
-                        <p style='border-bottom: 1px solid blue; width: 80%'>${weekDayNames}</p>
-                        <p style='border-bottom: 1px solid blue; width: 15%'> ${temperature}°C</p>
-                    </span>
-                    `;   
-
-                // fiveDaysForecast.innerHTML +=`
-                //     <span style='display: flex'>
-                //         <p style='border-bottom: 1px solid blue; width: 80%'>${weekDayNames}</p>
-                //         <p style='border-bottom: 1px solid blue; width: 15%'>${temperature} °C</p>
-                //     </span>
-                //     `;             
+            fiveDaysForecast.innerHTML += `
+                <article class = "five-days-container">
+                    <div class = "weekday-left">
+                        <p>${weekDayNames}</p>
+                    </div>
+                    <div class = "temp-right">
+                        <p> ${temperature}°C</p>
+                    </div>
+                </article>
+            `;   
 
 
         });
-
-
-
 
     })
 
