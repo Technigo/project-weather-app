@@ -22,6 +22,7 @@ const weekdays = ["Söndag", "Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag",
 const API_KEY = "fd4c88b297db1abd3f5aaffe170147b6";
 let city = "";
 
+// Functions 
 
 /* This function is called when the user seatches for a city and it will render the city name on the screen. */
 const handleCityInput = (city) => {
@@ -31,8 +32,6 @@ const handleCityInput = (city) => {
   fetchWeatherForecast(API_urlForecast)
   currentLocationText.innerHTML = city
 }
-
-// Functions 
 
 /* This function will get the longitude and latitude coordinates from the users browser,
 then the function will fetch from the weather API and print the the current weather and 5 day forecast.*/
@@ -75,6 +74,10 @@ const fetchWeatherData = (API_url) => {
       setCurrentWeather(json)
       currentLocationText.innerHTML = json.name
     })
+    .catch((error) => {
+      alert("Är du säker på att du skrev in en korrekt plats? Försök igen.")
+      getPosition()
+    })
 }
 
 /* This function will send a fetch erquest to the API URL and convert the response to json */
@@ -103,9 +106,11 @@ const forecastTemperature = (forecastData) => {
     </li>
   `);
   filteredData.forEach((item) => {
+    let day = item.dt_txt.split(/[- :]/)
+    let date = new Date(day[0], day[1], day[2], day[3], day[4], day[5]) //day and date is rebuilt in a format that all OS should be able to understand
     forecastDay.innerHTML += `
     <li>
-      ${weekdays[new Date(item.dt_txt).getDay()]}
+      ${weekdays[date.getDay()]}
     </li>
   `
   })
