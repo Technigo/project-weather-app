@@ -1,8 +1,18 @@
 body {
+    
     background-color: rgb(225, 225, 243);
     color: rgb(2, 2, 139);
     
+    
+    
 
+}
+
+.weather-widget {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
 }
 .city-title {
     color: navy;
@@ -24,6 +34,10 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    font-size: 20px;
+    padding-bottom: 10px;
+    width: 100%;
+    
 
     
 }
@@ -33,6 +47,8 @@ body {
     flex-direction: row;
     justify-content: space-around;
     align-items: flex-start;
+    width:80%;
+    
     
 
 }
@@ -64,14 +80,14 @@ h3 {
     display: flex;
     
     justify-content: center;
-    margin-top: 2px; 
+    margin-top: px; 
     margin-bottom: 0;
-    padding: 0;
+    padding-top: 5px;
 } 
 .forecast {
     
     display: flex;
-    padding: 10px;
+    padding: 0 10px 0px 10px;
     flex-direction: column;
     align-items: center;
     margin-right: -50px;
@@ -82,8 +98,8 @@ h3 {
     display: flex;
     
     justify-content: center;
-    padding: 10px;
-    margin: 0px -30px 5px 10px;
+    padding: 5px;
+    margin: 0px -30px 0px 10px;
     width: 90%;
     
     

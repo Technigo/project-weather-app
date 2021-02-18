@@ -39,7 +39,7 @@ const weatherData = () => {
     return response.json().then((json) => {
       weather = json
       city.innerHTML += weather.name
-      dayCurrent.innerHTML+= `${dayMonthConverter(weather.dt + weather.timezone)}`
+      dayCurrent.innerHTML+= `<strong>${dayMonthConverter(weather.dt + weather.timezone)}</strong>`
       timeCurrent.innerHTML += `${hrsMinConverter(weather.dt + weather.timezone)}`
       sky.innerHTML += `
         <tr>

@@ -9,30 +9,31 @@
     <title>Weather</title>
 </head>
 <body>
-    <!--Today weather-->
-    <section class="today" id="today">
-        <div id="city" class="city-title"></div><br>
+    <section class="widget">
+      <!--Today weather-->
+      <section class="today" id="today">
+          <div id="city" class="city-title"></div><br>
 
-        <div class="now">
-            <div id="dayCurrent"></div>
-            <div id="timeCurrent"></div>
-            <div id="sky"></div>
-            <div id="temperature"></div><br>
-        </div>
+          <div class="now">
+              <div id="dayCurrent"></div>
+              <div id="timeCurrent"></div>
+              <div id="sky"></div>
+              <div id="temperature"></div><br>
+          </div>
         
-        <div id="feelsTemp"></div><br>
-        <div class="sun">
-            <div id="sunrise"></div>
-            <div id="sunset"></div>
-        </div>
+          <div id="feelsTemp"></div><br>
+          <div class="sun">
+              <div id="sunrise"></div>
+              <div id="sunset"></div>
+          </div>
         
-    </section>
+      </section>
 
+      <h3 class="f-feels">at noon feels</h3>
     
-    <section class="forecast">
+      <section class="forecast">
 
         
-        <h3 class="f-feels">feels at noon</h3>
     
 
         <!-- Table for 5 days forecast-->    
@@ -40,26 +41,41 @@
         </table>
 
         
-    </section>
+      </section>
     
-    <section class="chart">
+      <section class="chart">
         <!--Line graph-->
         <canvas id="line-chart" width="300" height="200"></canvas>
        
+      </section>
+
+      <!--City selector: dropdown menu-->
+      <select id="selectCity">
+        <option value="Stockholm,Sweden">Stockholm</option>
+        <option value="Bangkok,Thailand">Bangkok</option>
+        <option value="Hanoi,Vietnam">Hanoi</option>
+        <option value="Madrid,Spain">Madrid</option>
+        <option value="Manila,Philippines">Manila</option>
+        <option value="Oslo,Norway">Oslo</option>
+        <option value="Paris,France">Paris</option>
+        <option value="Tokyo,Japan">Tokyo</option>
+      </select>
+
+
+
+
+
+
+
+
+
+
     </section>
+      
 
-    <!--City selector: dropdown menu-->
-    <select id="selectCity">
-      <option value="Stockholm,Sweden">Stockholm</option>
-      <option value="Bangkok,Thailand">Bangkok</option>
-      <option value="Hanoi,Vietnam">Hanoi</option>
-      <option value="Madrid,Spain">Madrid</option>
-      <option value="Manila,Philippines">Manila</option>
-      <option value="Oslo,Norway">Oslo</option>
-      <option value="Paris,France">Paris</option>
-      <option value="Tokyo,Japan">Tokyo</option>
-    </select>
 
+
+    
     <script src="./app.js"></script>
 </body>
 </html>
