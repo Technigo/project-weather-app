@@ -20,7 +20,7 @@ body, html {
   width: 100%;
   height: 50%;
   object-fit: scale-down;
-  color: #F2D7CC;
+  color: var(--primary);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -33,42 +33,53 @@ h2 {
   justify-content: center;
   }
 
-  .summary {
-    display: flex;
-    flex-direction: column;
-    border: solid  #4D3834 2px;
-    /*width: 35%;*/
-    padding: 10px;  
-    color: #F2D7CC;
-    width: -moz-fit-content;
-    width: fit-content;
-    height: 100px;
-  }
-  
-  .icon {
-    border: solid #4D3834 1px;
-    width: 35%;
-    height: 100px;
-  }
-  
-  p {
-    margin: 0%;
-  }
-  
-  .forecastContainer {
+.summary {
+  display: flex;
+  flex-direction: column;
+  /* border: solid  #4D3834 2px; */
+  /*width: 35%;*/
+  padding: 10px;  
+  color: var(--primary);
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 100px;
+  font-weight: 500;
+}
+
+.icon {
+  /* border: solid #4D3834 1px; */
+  width: 35%;
+  height: 100px;
+  opacity: 0.6;
+  padding: 10px;  
+}
+
+p {
+  margin: 0%;
+}
+
+.forecastContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
-  
-  }
-  
-  p .forecastContainer {
-    width: 100%;
-  }
+  margin: 50px 0px;
+  height: 300px;
+}
+
+p .forecastContainer {
+  width: 100%;
+}
+
+.forecast {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: solid var(--secondary) 1px;
+  padding: 10px;
+}
 
 /** MEDIA QUERIES **/
 
 /** TABLET**/
-@media 
+/* @media  */
