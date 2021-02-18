@@ -11,6 +11,11 @@
   top: -50vw;
   left: -50vw;
 }
+.header-info.expanded {
+  height: 100%;
+  background: rgb(133, 137, 255);
+  background: linear-gradient(180deg, rgba(133, 137, 255, 1) 0%, rgba(232, 233, 255, 1) 100%);
+}
 
 .header-info__wrapper {
   display: flex;
@@ -36,4 +41,13 @@
   flex-flow: row nowrap;
   justify-content: space-between;
   margin: 15px 0;
+}
+
+.sun-times__wrapper.expanded {
+  flex-wrap: wrap;
+  margin-top: 50px;
+  line-height: 3;
+}
+.sun-times__wrapper.expanded > h3 {
+  width: 50%;
 }

@@ -96,6 +96,13 @@ const getDayOfWeek = (date) => {
 const toggleSideMenu = () => {
   sideMenu.classList.toggle("open");
 };
+const toggleMoreInfo = () => {
+  forecast.classList.toggle("close");
+  headerContainer.classList.toggle("expanded");
+  headerContainer.querySelector("#sunTimes").classList.toggle("expanded");
+  headerContainer.querySelector(".btn-round#showMore").classList.toggle("expanded");
+  headerContainer.querySelector("img#showMore").classList.toggle("turn");
+};
 
 /* EXECUTE PAGE LOAD FUNCTIONS */
 fetchWeatherToday();
@@ -106,6 +113,8 @@ headerContainer.addEventListener("click", (event) => {
   const target = event.target;
   if (target.id === "btnSideMenu") {
     toggleSideMenu();
+  } else if (target.id === "showMore") {
+    toggleMoreInfo();
   }
 });
 

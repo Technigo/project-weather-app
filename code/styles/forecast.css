@@ -4,6 +4,10 @@
   margin: 30px;
 }
 
+.forecast.close {
+  display: none;
+}
+
 .forecast__daily {
   display: grid;
   width: 100%;

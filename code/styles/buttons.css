@@ -13,3 +13,8 @@
   order: 1;
   align-self: flex-end;
 }
+
+.btn--float.expanded {
+  position: absolute;
+  bottom: 0;
+}

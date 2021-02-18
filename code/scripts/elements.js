@@ -13,7 +13,7 @@ export const getWeatherToday = (data) => {
     </div>
     <h2>${data.city}</h2>
     <h3>${data.type.description}</h3>
-    <div class="sun-times__wrapper">
+    <div class="sun-times__wrapper" id="sunTimes">
         <h3>sunrise</h3>
         <h3>${data.sunrise}</h3>
         <h3>sunset</h3>
