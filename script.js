@@ -5,6 +5,7 @@ const forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockhol
 // DOM
 const containerToday = document.getElementById('containerToday')
 const containerForecast = document.getElementById('containerForecast')
+const moodText = document.getElementById('moodText')
 
 
 
@@ -20,11 +21,30 @@ fetch(todaysUrl)
         let temp = json.main.temp.toFixed(1)
         let sunrise = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], {timeStyle: 'short'})
         let sunset = new Date(json.sys.sunset * 1000).toLocaleTimeString([], {timeStyle: 'short'})
-        
-
-        
+        let weatherType = json.weather[0].main
         let wIcon = json.weather[0].icon
-        
+
+// Probem with the moodGenerator
+//let text = ''
+  const moodGenerator = () => {
+
+    if (weatherType === "Clouds") {
+        console.log('clouds')
+    } else if (weatherType === "Clear") {
+        console.log('clear')
+    } else if (weatherType === "Snow") {
+        console.log('snow')
+    } else if (weatherType === "Rain") {
+        console.log('rain')
+    } else if (weatherType === "Drizzle") {
+        console.log('drizzle')
+    } else {
+        console.log('thunderstorm')
+    }  
+  } 
+  moodGenerator()
+
+
         // HTML today's weather
         let weatherHTML = ''
         weatherHTML += `<section class="weather">`
