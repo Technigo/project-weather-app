@@ -3,14 +3,13 @@
 
 
 body{
-    background-color:#E8E8E8;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     margin: 0; 
     color: white; 
     display: flex;
     justify-content: center;
-    
+    height: 100vh;  
 }
 img{
     justify-self: center;
@@ -28,16 +27,19 @@ img{
     justify-content: center;
     align-content: center;      
     margin: 30px;
-    border: solid 2px;  
 }
 
 .day-time{
     background: linear-gradient( 0deg, rgb(170, 189, 132) 0%, rgb(208, 194, 163) 72% );
     background-size: cover;
+    background-repeat: no-repeat;
+
 }
 
 .night-time{
     background: linear-gradient( 0deg, rgba(132, 136, 189, 1) 0%, rgb(3, 7, 65) 72% );
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .current-city{
@@ -58,7 +60,6 @@ img{
     align-items: center;
 }
 
-
 .day {
     display:grid;
     grid-template-columns: 1fr;
@@ -72,8 +73,7 @@ img{
  .night{
     display:grid;
     grid-template-columns: 1fr;
-/*     width: 50%;
-    height: 350px; */
+    width: 100%;
     background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.50), rgba(157, 147, 154, 0.9)),url("./Designs/icons/night.jpg");
     background-size: cover;
     background-position: center; 
@@ -91,7 +91,6 @@ img{
     align-self: flex-end;
     justify-content: space-between;
 }
-
 
 .sunrise-and-sunset{
     display: flex;
@@ -114,6 +113,7 @@ img{
 
 .head-forecast{
     display: flex;
+    width: 200px;
     justify-content: center;
     border-bottom: solid 1px;
 }
@@ -124,7 +124,6 @@ img{
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    border-bottom: solid 1px;
     
 }
 .icon{
@@ -133,21 +132,35 @@ img{
 }
 
 .forcast-temp{
-    justify-self: flex-end;
+    justify-self: center;
+}
+
+.weekday{
+    justify-self: center;
 }
 
 @media (min-width: 768px) and (max-width:991px){
     .weather-container{
-        width: 400px;
+        width: 600px;
     }
-    /* #all-days{
-        grid-template-columns: 2fr 2fr 2fr;
-    } */
 
+    .current-city{
+        font-size: 40px;
+    }
+    .current-temp{
+        font-size: 25px;
+    }
 }
 
 @media (min-width:992px){
     .weather-container{
         width: 500px;
     }
+    .current-city{
+        font-size: 40px;
+    }
+    .current-temp{
+        font-size: 25px;
+    }
+
 }
