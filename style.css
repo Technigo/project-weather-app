@@ -10,15 +10,16 @@ body{
     color: white; 
     display: flex;
     justify-content: center;
-    background-repeat: no-repeat;
     
 }
 img{
+    justify-self: center;
     width: 50px;
     height: 50px;
 }
 
 .weather-container{
+    width: 300px;
     display: grid;
     grid-template-columns: 1fr;
     gap: 4px;
@@ -61,7 +62,7 @@ img{
 .day {
     display:grid;
     grid-template-columns: 1fr;
-    width: 360px;
+    width: 100%;
     background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.50), rgba(157, 147, 154, 0.9)),url("./Designs/icons/day.jpg");
     background-size: cover;
     background-position: center; 
@@ -112,7 +113,6 @@ img{
 /* Forcast 5 days*/
 
 .head-forecast{
-    width: 500px;
     display: flex;
     justify-content: center;
     border-bottom: solid 1px;
@@ -121,18 +121,33 @@ img{
 #all-days{
 /*     width: 500px;
     height: 400px;; */
+    width: 100%;
     display: grid;
-    grid-template-columns: 100px 100px 100px;
-    
+    grid-template-columns: 1fr 1fr 1fr;
     border-bottom: solid 1px;
     
 }
 .icon{
     margin-bottom: 20px;
+    justify-self: center;
 }
 
-@media (min-width: 680px) and (max-width:1024px){
-    .day{
+.forcast-temp{
+    justify-self: flex-end;
+}
+
+@media (min-width: 768px) and (max-width:991px){
+    .weather-container{
         width: 400px;
+    }
+    /* #all-days{
+        grid-template-columns: 2fr 2fr 2fr;
+    } */
+
+}
+
+@media (min-width:992px){
+    .weather-container{
+        width: 500px;
     }
 }
