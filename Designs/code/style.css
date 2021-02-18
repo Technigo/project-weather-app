@@ -60,10 +60,20 @@ body {
     flex-direction: row;
     justify-content: space-evenly;
 }
-.forecast div p {
+.forecast-weekday {
    margin: 18px;
    align-self: flex-end; 
    width: 25%;
    text-align: left;
   padding-left: 20px;
+}
+
+.forecast-temp {
+  width: 25%;
+  margin: 18px;
+}
+
+.forecast div img {
+    width: 48px;
+    height: 48px;
 }

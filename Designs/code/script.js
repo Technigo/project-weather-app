@@ -84,9 +84,9 @@ fetch(FORECAST_URL)
             let fixedTempForecast = item.main.temp.toFixed()
             forecast.innerHTML += `
             <div>
-            <p>${forecastDate.toLocaleDateString('en-US', weekday)}</p> 
+            <p class="forecast-weekday">${forecastDate.toLocaleDateString('en-US', weekday)}</p> 
             <img src=${icon}> 
-            <p>${fixedTempForecast}&deg;</p>
+            <p class="forecast-temp">${fixedTempForecast}&deg;</p>
             </div>
             ` 
            
