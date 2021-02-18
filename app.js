@@ -73,6 +73,8 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
         .then((json) => {
                 // A variable that saves information each day at 12.00
             const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
+            console.log(filteredForecast)
+            console.log(filteredForecast[0].weather[0].description)
 
             // A loop for the filteredForecast variable
             filteredForecast.forEach((item) => {
@@ -82,22 +84,65 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
                 const weekDayNames = weekDays.toLocaleDateString('en-US', {weekday: 'short'});
                 // A variable that saves the temperature each day
                 const temperature = Math.floor(item.main.temp);
+                 // A variable accordion answer: weather description
+                const weatherDescription = item.weather[0].description;
+                console.log(weatherDescription);
+
+                
 
             // INNER HTML
             fiveDaysForecast.innerHTML += `
-                <article class = "five-days-container">
+            <article class = "five-days-container">
+                <div class = "accordion-header" id = "accordionHeader">
                     <div class = "weekday-left">
                         <p>${weekDayNames}</p>
                     </div>
                     <div class = "temp-right">
                         <p> ${temperature}°C</p>
                     </div>
-                </article>
+                </div>
+                <div class = "accordion-content" id = "accordionContent">
+                    <p>${weatherDescription}</p>
+                </div>
+            </article>
             `;   
 
+            // ACCORDION
+            function toggle() {
+                this.classList.toggle("open")
+            }
 
+            document.getElementById("accordionHeader").onclick = toggle
+            const accordionContent = document.getElementById("accordionContent");
         });
 
-    })
+    });
+
+    // function toggle() {
+    //     this.classList.toggle("open")
+    //   }
+      
+    //   document.getElementById("question-1").onclick = toggle
+    //   document.getElementById("question-2").onclick = toggle
+      
+    //   const answer1 = document.getElementById('answer-1');
+    //   const answer2 = document.getElementById('answer-2');
+
+
+    // <section class="accordion">
+     
+    //   <h2 class="h2-headline">FAQ</h2>
+
+    //   <div class="question" id="question-1">Itinerary</div>
+    //   <div class="answer" id="answer-1">
+    //     <p>Lorem ipsum...</p>
+    //   </div>
+    // </section>
+
+
+
+   
+
+
 
 
