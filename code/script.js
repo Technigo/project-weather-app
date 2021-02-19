@@ -18,8 +18,8 @@ fetch(url)
   city.innerHTML += ` ${data.name}`; 
   temperature.innerHTML += ` ${data.main.temp.toFixed(1)} ºC`;
   weather.innerHTML += `${data.weather[0].description}`;
-  sunrise.innerHTML +=`${new Date((data.sys.sunrise + data.timezone) * 1000).toLocaleTimeString()}`
-  sunset.innerHTML += `${new Date((data.sys.sunset + data.timezone) * 1000).toLocaleTimeString()}`
+  sunrise.innerHTML +=`${new Date((data.sys.sunrise + data.timezone) * 1000).toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit', hour12:false,})}`
+  sunset.innerHTML += `${new Date((data.sys.sunset + data.timezone) * 1000).toLocaleTimeString('en-US',{hour: '2-digit', minute:'2-digit', hour12:false,})}`
 })
 
 .catch((error)=>{
@@ -34,8 +34,10 @@ fetch(forecastUrl)
   filteredForecast.forEach(item => {
   let temperature = (item.main.temp).toFixed(1);
   let weekday = (new Date(item.dt * 1000)).toLocaleDateString("en-US", {weekday: "long"});
+  let weatherPicture = `<img src=https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png></img>`;
 
-  week.innerHTML += `<p>${weekday} ${temperature} ºC</p>`;
+  week.innerHTML += `
+    <p>${weekday}  ${weatherPicture} ${temperature} ºC</p>`;
 })
 })
 
