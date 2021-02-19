@@ -67,18 +67,15 @@ const drawForecast = () => {
   });
 };
 
+/** This function formats the epoch date strings into a week day string */
 const getDayOfWeek = (date) => {
-  // 1. format the epoch time string to readable js format
+  // 1. format the epoch date string to readable date format
   let _date = new Date(date * 1000).toString();
-  // console.log(_date);
-  // 2. format the new readable date into iOS readable date
-  // let __date = new Date(_date.replace(/-/g, "/"));
-  // console.log(__date);
-  // let _date = formatIOSDate(date);
-  // const dateStrings = new Date(date * 1000).toString().split(" ");
+  // 2. only return the first word (which is the day of the week)
   return _date.split(" ")[0];
 };
 
+/** This function formats the epoch time string to readable format */
 const formatTime = (times) => {
   let formattedTimes = [];
   times.forEach((time) => {
@@ -89,9 +86,12 @@ const formatTime = (times) => {
   return formattedTimes;
 };
 
+/** This function toggles the side navbar open and close  */
 const toggleNavBar = () => {
   navBar.classList.toggle("open");
 };
+
+/** This function toggles expanded view of current weather data */
 const toggleMoreInfo = () => {
   forecast.classList.toggle("close");
   headerContainer.classList.toggle("expanded");
@@ -118,6 +118,30 @@ const toggleCityLinks = (target) => {
   target.setAttribute("current", true);
 };
 
+/** This function uses geoLocation API to get current position */
+const getLocation = () => {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    alert("Geolocation is not supported by this browser.");
+  }
+};
+
+/** This function is triggered by getLocation()
+ *  1. It inserts the current location as a city object in weatherData
+ *  2. Then it fetches the data for the location
+ */
+const showPosition = (pos) => {
+  weatherData.city = {
+    name: "My Location",
+    position: {
+      lat: pos.coords.latitude,
+      long: pos.coords.longitude,
+    },
+  };
+  fetchWeatherData();
+};
+
 /* EXECUTE PAGE LOAD FUNCTIONS */
 fetchWeatherData();
 
@@ -136,7 +160,12 @@ navBar.addEventListener("click", (event) => {
   if (target.id === "btnClose") {
     toggleNavBar();
   } else if (target.hasAttribute("current")) {
-    changeCity(target.innerText);
+    if (target.innerText === "My Location") {
+      getLocation();
+    } else {
+      changeCity(target.innerText);
+    }
+    toggleNavBar();
     toggleCityLinks(target);
   }
 });
