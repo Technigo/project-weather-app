@@ -1,1 +1,77 @@
-{\rtf1}
+
+html {
+  font-family: "Nunito", sans-serif;
+}
+
+body {
+  height: 100vh;
+}
+
+.weather-container {
+  margin: 0 15px;
+}
+
+.weather-section {
+  height: 50%;
+}
+
+.forecast {
+  height: 50%;
+}
+
+.five-day-forecast {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0;
+}
+
+.current-weather {
+}
+
+.hamburger-menu {
+  width: 40px;
+  margin: 0;
+}
+
+.current-temp-and-icon {
+  display: flex;
+  flex-direction: row;
+}
+
+.current-temp {
+  font-size: 70px;
+  margin: 0 0 0;
+}
+
+.celsius {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.sunrise-sunset {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 0 30px 0;
+}
+
+/* Weather Icons */
+.current-icon {
+  width: 200px;
+  margin-left: 100px;
+  top: 0;
+  left: 70px;
+  position: absolute;
+}
+
+.city-name {
+  margin: 0;
+}
+.weather-description {
+  margin: 0;
+}
+
+.forecast-icon {
+  width: 16%;
+}
