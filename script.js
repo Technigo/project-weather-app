@@ -95,22 +95,12 @@ fetch(forecastUrl)
         let wIcon = data.weather[0].icon
         
         // Displays the forecast weekday
-        const forecastDay = new Date(data.dt_txt).toLocaleString('en-US', { weekday: 'long'})
-
-        /*let theDate = new Date(data.dt_txt)
-        let weekday = new Array(theDate)
-        weekday[0] = 'Sunday'
-        weekday[1] = 'Monday'
-        weekday[2] = 'Tuesday'
-        weekday[3] = 'Wednesday'
-        weekday[4] = 'Thursday'
-        weekday[5] = 'Friday'
-        weekday[6] = 'Saturday'
-        let forecastDate = weekday[theDate.getDay()]
-        const d = new Date(forecastDate.replace(' ', 'T'))*/
-
-        //let newDate = new Date(forecastDate.replace(' ', 'T'));
-
+        let forecastDay = new Date(data.dt_txt).toLocaleString('en-US', { weekday: 'long'})
+        const newDay = () => {
+            forecastDay = new Date(forecastDay.replace('', 'T'));
+            newDay()}
+            
+        
         // HTML forecast weather
         let forecastHTML = ''
         forecastHTML += `<section class="forecast">`
