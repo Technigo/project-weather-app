@@ -1,47 +1,55 @@
 body {
     margin: 0;
-    /* background-color: #FFF; */
     font-family: Montserrat;
 }
 
 .main-content {
-    width: 80%;
-    margin: 30px auto;
+    width: 300px;
+    margin: 40px auto;
 }
 
+h1 {
+    margin-top: 10px;
+}
+
+p {
+    margin: 2px;
+    font-size: 21px;
+}
+
+/* TODAYS WEATHER */
 .todays-weather {
+    margin-top: 25%;
     font-weight: bold;
     font-size: 25px;
-    margin-top: 25%;
 }
 
+.todays-weather-small {
+    margin-left: 8px;
+}
+
+/* FIVE DAY FORECAST */
 .weekdays-container {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1.5px dashed;
+    border-bottom: 1.5px dotted;
     padding-bottom: 7px;
-    padding-top: 7px;
+    padding-top: 6px;
+    font-size: 18px;
 }
 
 .five-day-forecast :last-child {
     border-bottom: none;
+    /* removes the border at the bottom*/
 }
 
-/* colors:
+@media (min-width: 668px) {
+    .main-content {
+        width: 350px;
+        margin-top: 70px;
+    }
 
-#F47775 = red font-color
-#F4F7F8 = ljusgrå?
-#164A68 = blue font-color
-#A3DEF7 = blue background-color
-#2A5510 = green font-color
-#F7E9B9 = yellow background-color
-*/
-
-
-/* @media (min-width: 668 px) {
-
+    .weather-image {
+        width: 120px;
+    }
 }
-
-@media (min-width: 1025px {
-    
-} */

@@ -1,13 +1,11 @@
+This is a project made during the Technigo Bootcamp.
+
 # Weather App
-
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This weeks assignment was to build a simple weather web app that shows today's weather and temperature, and a 5-day forecast using a weather API. The aim was to practise using API:s, json, fetch, promises and the Date-object in Javascript. 
 
 ## The problem
+We decided to implement a pre-made design that we tried to copy as best we could. There's three different designs with different background- and font-colors, images and heading depending of what type of weather it is. We solved that by using a switch statement and fetched the current weather from the API, changing the appearance of the design from within the switch. 
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+If we had had more time maybe we would have made a design of our own, with icons and more cities to chose from. 
 
 ## View it live
-
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
