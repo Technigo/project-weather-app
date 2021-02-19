@@ -2,7 +2,7 @@ const todayContainer = document.getElementById("today-container");
 const weekdaysContainer = document.getElementById("weekdays");
 const nightDay = document.getElementById("night-day")
 const apiUrl =
-  "http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=ad72cba3e69f19b6bfee096375f2b3f9";
+  "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=ad72cba3e69f19b6bfee096375f2b3f9";
 const apiFiveDaysUrl =
   "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=ad72cba3e69f19b6bfee096375f2b3f9";
 fetch(apiUrl)
