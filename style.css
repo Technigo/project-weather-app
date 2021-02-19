@@ -13,8 +13,9 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    /* height: 100vh; */
 }
+
 img{
     justify-self: center;
     width: 50px;
@@ -24,7 +25,7 @@ img{
 .wrapper{
     display: flex;
     width: 300px;
-    height: 550px;
+    /* height: 550px; */
 }
 .weather-container{
     display: flex;
@@ -59,6 +60,11 @@ img{
     margin:0;
     font-size: 20px;
     color: white;
+}
+
+.feels-like {
+    font-size: 12px;
+    font-style: italic;
 }
 
 #city{
@@ -135,7 +141,7 @@ img{
     
 }
 .icon{
-    margin-bottom: 20px;
+        margin-bottom: 20px;
     justify-self: center;
     align-self: center;
 }

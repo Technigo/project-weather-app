@@ -20,10 +20,11 @@ fetch (`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metr
         return response.json();
     }).then ((data) => {
         
-        
+        //console.log(data.main)
         let cityTemp = data.main.temp.toFixed(1)
         let sunRise = new Date(data.sys.sunrise * 1000)
         let sunSet =new Date(data.sys.sunset * 1000)
+        let feelsLike = data.main.feels_like.toFixed(0)
 
         //Adds a 0 
         const hourAndMinutes = (i) =>{
@@ -61,6 +62,7 @@ fetch (`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metr
         
         city.innerHTML += `<p class="current-city"> ${data.name}</p>`
         city.innerHTML += `<p class="current-temp"> ${cityTemp} &#8451</p>`
+        city.innerHTML += `<p class="feels-like"> Feels like ${feelsLike} &#8451</p>`
 
             const weatherDescription = ()=>{
         currentWeather.innerHTML += `<p> ${data.weather[0].description}</p>`
