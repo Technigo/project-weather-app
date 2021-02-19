@@ -31,7 +31,7 @@ fetch(apiUrl)
     })
 
     //MAIN INFORMATION AND LOCATION
-    const { id, main } = json.weather[0];
+    const { id } = json.weather[0]; 
     if (id < 250) {
       // THUNDER
       icon.innerHTML += `<img src="assets/thunder.svg">`
