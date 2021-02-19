@@ -1,8 +1,8 @@
-/* {
+* {
     /* border: 1px solid black;  */
-    /* margin: 0;
-    padding: 0; 
-} */
+    margin: 0; 
+    /* padding: 0;  */
+}
 
 body {
     margin: 20px; 
@@ -31,12 +31,13 @@ body {
 }
 
 .city-local {
-    font-size: 50px;
+    font-size: 40px;
     font-style: bold;
+    margin: 24px 0;
 }
 
 .temperature-now {
-    font-size: 70px;
+    font-size: 60px;
     font-style: bold;
 }
 
