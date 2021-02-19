@@ -1,4 +1,15 @@
+// TO Do List
+// [X] Do a defaul page with the selector
+// [] Fix the timezone
+// [] Animation bounce
+// [] Accordion for upcoming forecast
+// [] Add gradient to our CSS
+
+
+
+
 // All the DOMs are here
+const selectCity = document.getElementById("select-city")
 const cityName = document.getElementById("cityName")
 const tempCelsius = document.getElementById("tempCelsius")
 const sunSet = document.getElementById("sunSet")
@@ -7,10 +18,18 @@ const highlight = document.getElementById("highlight")
 const forecast = document.getElementById("forecast")
 const container = document.querySelector(".container") // We are getting a class from index that why we use querySelector
 const body = document.querySelector(".body")
+const upcomingWeatherText = document.getElementById("upcoming-weather")
+
+
+//Selector
+//let selection = document.querySelector("select")
+//let result = document.querySelector("h2")
 
 // TO do = Find how you can get access to the upcoming 5 days weather forecast. 
 // Global Variable
-const OurAPI = "http://api.openweathermap.org/data/2.5/forecast/daily?q=Stockholm&cnt=10&appid=886705b4c1182eb1c69f28eb8c520e20&units=metric"
+
+//--------------Tog bort denna som test-------------------------
+//const OurAPI = "http://api.openweathermap.org/data/2.5/forecast/daily?q=Stockholm&cnt=10&appid=886705b4c1182eb1c69f28eb8c520e20&units=metric"
 //http://api.openweathermap.org/data/2.5/forecast?q=Stockholm&units=metric&appid=3c8d0ca53cf60cf5802dc4c0325edd88
 
 // Global Variable
@@ -19,11 +38,23 @@ let Rise = "./pics/sunrise.png"
 let Sunset = "./pics/1.webp"
 
 
+// selection.addEventListener("change", () => { 
+//   sel = selection.options[selection.selectedIndex].value
+//   //result.innerText = sel;
 
-const SthlmTemp = () => {
+  //let OurAPI = "http://api.openweathermap.org/data/2.5/forecast/daily?q=Stockholm&cnt=10&appid=886705b4c1182eb1c69f28eb8c520e20&units=metric"
+
+
+
+
+
+  const SthlmTemp = (userChoice) => {
+    const OurAPI = `http://api.openweathermap.org/data/2.5/forecast/daily?q=${userChoice}&cnt=10&appid=886705b4c1182eb1c69f28eb8c520e20&units=metric` 
     fetch(OurAPI).then((response) => {
         return response.json();
     }).then((json) => {
+
+      
         
         // Local Variables 
         const weatherToday = json.list[0]["weather"][0]["description"]
@@ -34,27 +65,32 @@ const SthlmTemp = () => {
         const maxTempToday = Math.round(json.list[0]["temp"]["max"])
         const currentWeatherBackground = json.list[0]["weather"][0]["main"]
       
-      
-        //Sunset time
-        const unixSet = json.list[0].sunset;
-        //Calculation to convert unix stamp to normal timezone
-        const dateSet = new Date(unixSet*1000).toLocaleTimeString().replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3");
-  
+        //Timezone
+        const TimeZone = json.city.timezone;
+        const timezoneOffSet = new Date().getTimezoneOffset()*60;
+        
         //Sunrise time
-        const unixRise = json.list[0].sunrise;
-        //Calculation to convert unix stamp to normal timezone
-        const dateRise = new Date(unixRise*1000).toLocaleTimeString().replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3");
+        const sunRiseUnix = json.list[0].sunrise;
+        const sunriseDate = new Date((sunRiseUnix + TimeZone + timezoneOffSet)*1000);
+        //sunRise.innerHTML = `Sunrise: ${sunriseDate.getHours()}:${sunriseDate.getMinutes()} <img src=${Rise} width="40">`
+        sunRise.innerHTML = sunriseDate.getHours() >9? `Sunrise: ${sunriseDate.getHours()}:${sunriseDate.getMinutes()} <img src=${Rise} width="40">` : `Sunrise: 0${sunriseDate.getHours()}:${sunriseDate.getMinutes()} <img src=${Rise} width="40">`
+
+        //Sunset time
+        const sunSetUnix = json.list[0].sunset;
+        const sunsetDate = new Date((sunSetUnix + TimeZone + timezoneOffSet)*1000)
+        sunSet.innerHTML = `Sunset: ${sunsetDate.getHours()}:${sunsetDate.getMinutes()} <img src=${Sunset} width="40">`
+        
         
         //Temperature for 10 days
         const temperatureArrayDays =  Array.from(
             json.list, item => item.temp.day
         );
-        //Rounding the temperature to integer
+        //Rounding the temperature to integer and replacing the array above by using .Map
         const temperatureArrayDaysRounded = temperatureArrayDays.map((element) => {
           const roundedTemp = Math.round(Number(element));
           return roundedTemp
         });
-        //Temperature 5 days
+        //Temperature 5 days (We only select day 1 to 5 out of our 10 days)
         const temperatureFiveDays = temperatureArrayDaysRounded.filter((day, index) => {
           return index > 0 && index < 6
         });
@@ -92,7 +128,7 @@ const SthlmTemp = () => {
             return index >0 && index <6
             }
         )
-        const array = [1, 4, ]
+        //const array = [1, 4, ]
 
       console.log(fiveDaysId[0])
 
@@ -100,9 +136,9 @@ const SthlmTemp = () => {
         cityName.innerHTML = `<h1 class="city-name">${city}</h1>`  
         highlight.innerHTML = `<h2 class="weather-description"> ${weatherToday} <img src='http://openweathermap.org/img/wn/${currentWeatherIcon}@2x.png'></h2>`
         tempCelsius.innerHTML = `<p class="min-max">Current:  ${tempToday}℃ / Min: ${minTempToday}℃  /Max: ${maxTempToday}℃</p>` // The weather icon will be changed depending on time and is affected by an function that will trigger and if else statement(its its cloudy === this picture etc.)
-        sunRise.innerHTML = `<p class="sunrise">The sunrise: ${dateRise} AM <img src=${Rise} width="40"> </p>` 
-        sunSet.innerHTML = `<p class="sunset">The sunset:  ${dateSet} PM <img src=${Sunset} width="40"></p>` //${cloudSun}
-
+        //sunRise.innerHTML = `<p class="sunrise">The sunrise: ${dateRise} AM <img src=${Rise} width="40"> </p>` 
+        //sunSet.innerHTML = `<p class="sunset">The sunset:  ${dateSet} PM <img src=${Sunset} width="40"></p>` //${cloudSun}
+        upcomingWeatherText.innerHTML = `<h4>Upcoming Weather Forecast</h4>`
 
     // for (let i = 0; i < dateFiveDays.length && i < temperatureFiveDays.length; i++) {
     //     dayOne.innerHTML += `<dt>${dateFiveDays[i]}: ${temperatureFiveDays[i]} <img src="http://openweathermap.org/img/wn/11d@2x.png" width="40px" > </dt>`
@@ -110,7 +146,8 @@ const SthlmTemp = () => {
     dateFiveDays.forEach((date, index)=>{
       const temperature = temperatureFiveDays[index];
       const icon = fiveDaysId[index];
-      forecast.innerHTML += `<dt class="forecast-line">${date}: ${temperature} <img src="http://openweathermap.org/img/wn/${icon}@2x.png" width="40px" > </dt>`
+      dayOne.innerHTML += `<dt class="forecast-line">${date}: ${temperature} <img src="http://openweathermap.org/img/wn/${icon}@2x.png" width="40px" > </dt>`
+    // forecast.innerHTML += `<dt class="forecast-line">${date}: ${temperature} <img src="http://openweathermap.org/img/wn/${icon}@2x.png" width="40px" > </dt>`
     })
     switch (currentWeatherBackground){
       case 'Clouds': {
@@ -124,18 +161,21 @@ const SthlmTemp = () => {
         container.style.backgroundColor = "#94b5c0" 
         highlight.innerHTML += `<h2 class="weather-description"> Don't forget your umbrella</h2>`
         container.style.color = "#0a043c"
+        body.style.backgroundColor = "#276678" //
         break;
       }
       case 'Snow':{
         container.style.backgroundColor = "#d3e0ea"
         highlight.innerHTML += `<h2 class="weather-description"> Time to build a snowman!</h2>`
         container.style.color = "0a043c"
+        body.style.backgroundColor = "#f2a154" //
         break;
       }
       case 'Thunderstorm':{
         container.style.backgroundColor = "1687a7"
         highlight.innerHTML += `<h2 class="weather-description"> Hold your hat!</h2>`
         container.style.color = "#f6f5f5"
+        body.style.backgroundColor = "#493323"
         break;
       }
       case 'Drizzle':{
@@ -159,27 +199,14 @@ const SthlmTemp = () => {
       body.style.backgroundColor = "#350b40"
       break;
     }  
-    
-
-
-
-        /*dayOne.innerHTML = `${newDateArray[1]}: ${Weather[1]} ℃`;
-        dayTwo.innerHTML = `${newDateArray[2]}: ${json.list[2]["temp"]["day"]} ℃ : <img src='http://openweathermap.org/img/wn/${json.list[0]["weather"][0]["icon"]}@2x.png' >`;
-        dayThree.innerHTML = `${newDateArray[3]}: ${json.list[3]["temp"]["day"]} ℃`;
-        dayFour.innerHTML = `${newDateArray[4]}: ${json.list[4]["temp"]["day"]} ℃`;
-        dayFive.innerHTML = `${newDateArray[5]}: ${json.list[5]["temp"]["day"]} ℃`;*/
-
-
-        /*const displayIcons = () => {
-          if (WEATHER_ICONS.attribute === )
-        }
-*/
 
 
     })
 }
 
-SthlmTemp()
 
-
-
+SthlmTemp('Stockholm')
+selectCity.addEventListener('change', () => {
+  dayOne.innerHTML = '';
+  SthlmTemp(selectCity.value)
+}) 
