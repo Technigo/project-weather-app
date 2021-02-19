@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My weather app</title>
+  <link rel="stylesheet" href="./style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/37c653cfef.js" crossorigin="anonymous"></script>
+</head>
+
+<!-- Header with current weather information -->
+
+<body>
+  <section class="today" id="today">
+    <div class="today-container"> 
+      <div class="todays-info">
+        <h1 class="temperature" id="temperature"></h1> 
+        <h2 class="location" id="location"></h2>
+        <p>
+          <span id="shortDescription"></span>
+        </p>
+        <div class="sun-div">
+          <span class="sun" id="sunrise"></span>
+          <span class="sun" id="sunset"></span>
+        </div> 
+      </div>
+    </div>
+    <span id="big-icon" class="big-image"></span>
+    <button class="next-button" id="nextButton"><i class="fas fa-chevron-right"></i></button>
+  </section>
+
+  <!-- Forecast container -->
+  <section id="forecast" class="forecast">
+  </section>
+
+  <script src="./script.js"></script>
+</body>
+</html>
