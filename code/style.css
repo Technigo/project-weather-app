@@ -1,0 +1,235 @@
+body {
+  font-family: 'Quicksand', sans-serif;
+  margin: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+/* Styling of weather types */
+.clear{
+  background-image: linear-gradient(#d3b769, #f1e1b4);
+  color: #695216;
+  
+}
+.clouds {
+  background-image: linear-gradient(#56A7DC, #b2cee0);
+  color: #13485a;
+}
+
+.drizzle{
+  background-image: linear-gradient(#E1DDD1, #FFFFFF);
+  color: #5278a0;
+
+}
+
+.snow {
+  background-image: linear-gradient(#D4E0EA, #b2cee0);
+  color: #7292AA;
+}
+
+.rain {
+  background-image: linear-gradient(#A7ADBB, #FFFFFF);
+  color: #5278a0;
+}
+
+.thunderstorm {
+  background: #dbf6e9;
+  color: #31326f;
+}
+.mist {
+  background-image: linear-gradient(#A7ADBB, #E1DDD1);
+  color: #132b44;
+}
+
+
+/* Styling of the div with info about temperature,
+sunrise and sunset numbers */
+.today{
+  display: contents;
+}
+.todays-numbers {
+  margin-bottom: 50px;
+}
+
+h2 {
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+h3, span { 
+  margin: 0 0 5px 0;
+  font-weight: bold;
+  text-align: center;
+}
+
+p {
+  font-size: 15px;
+  display: table-cell;
+  text-align: center;
+  padding: 10px;
+}
+
+.city-button{
+  font-size: 15px;
+  display: table-cell;
+  text-align: center;
+  background-color: #F4F7F8;
+  border-radius: 10px;
+  box-shadow: 0 9px #999;
+
+}
+
+/* Styling of the icon and description */
+.todays-description {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.todays-description p {
+  font-size: 32px;
+  max-width: 400px;
+}
+
+.icon-img {
+  width: 100px;
+}
+
+
+/* Styling of the forecast */
+.forecast {
+  width: 100%;
+  max-width: 400px;
+}
+
+.forecast img {
+  height: 40px;
+}
+
+.forecast div {
+  width: 100%;
+  display: flex;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.days {
+  width: 50% !important;
+}
+
+.weather-type {
+  width: 20% !important;
+  display: flex;
+  justify-content: center;
+}
+
+.min-temp, .max-temp {
+  width: 20% !important;
+  display: flex;
+  justify-content:flex-end;
+}
+
+.cities-popup{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  background-image: linear-gradient(#A7ADBB, #FFFFFF);
+  display: none;
+  
+}
+.cities-popup-on{
+  display: flex;
+  flex-direction: column;
+}
+
+.close{
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color:black;
+  align-self: flex-end;
+  margin-right: 15px;
+}
+
+.cities-popup-list{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  list-style: none;
+  font-size: 20px;
+  margin-top: 20px;
+  padding: 0px;
+  height: 80%;
+  justify-content: space-between;
+}
+
+/* The styling below takes care of if you want to implement a 
+text input. If you don't want to use it you can remove it. */
+footer {
+  width: 100%;
+  max-width: 400px;
+}
+
+
+/* Styling of how it should look in tablet and desktop */
+@media (min-width: 668px) {
+  .todays-numbers {
+    display: inline;
+  }
+
+  .todays-numbers h2 {
+    font-size: 45px;
+  }
+
+  .todays-numbers h3 {
+    font-size: 35px;
+  }
+  
+  .todays-numbers p {
+    font-size: 30px; 
+  }
+
+  .icon-img {
+    width: 150px;
+  }
+
+  .todays-description img {
+    width: 200px;
+  }
+
+  .todays-description p {
+    font-size: 50px;
+    max-width: 500px;
+    padding-top: 10%;
+  }
+
+  .forecast {
+    max-width: 700px;
+    padding-top: 5%;
+  }
+
+  .forecast h3 {
+    font-size: 30px;
+  }
+
+  .forecast img {
+    height: 70px;
+  }
+
+  footer {
+    width: 100%;
+    max-width: 500px;
+  }
+  .cities-popup-list{
+    font-size: 40px;
+  }
+
+  .close{
+    font-size: 60px;
+    margin-right: 3%;
+  }
+}
