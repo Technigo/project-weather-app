@@ -1,8 +1,7 @@
 # Weather App 🌡️ ☁️ 
 
-Replace this readme with your own information about your project.
+In this project we've built a weather app.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
 
 ## The problem
 

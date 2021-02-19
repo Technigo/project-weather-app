@@ -18,7 +18,6 @@ fetch(apiUrl)
     return response.json()
   })
   .then((json) => {
-    // SUMMARY - WEATHER AND TEMPERATURE + SUNRISE AND SUNSET
     json.weather.map((weather) => {
       temperature = json.main.temp
       const sunriseDate = new Date((json.sys.sunrise + json.timezone) * 1000) 
@@ -29,36 +28,28 @@ fetch(apiUrl)
         <p>sunset ${sunsetDate.getHours()}:${sunsetDate.getMinutes()}</p>`
     })
 
-    //MAIN INFORMATION AND LOCATION
     const { id } = json.weather[0] 
     if (id < 250) {
-      // THUNDER
       icon.innerHTML += `<img src="assets/thunder.svg">`
       mainInformation.innerHTML += `<h2>Enjoy the fireworks, the thunder are rollin in ${json.name}!</h2>`
     } else if (id < 550) {
-      // RAIN
       icon.innerHTML += `<img src="assets/rain.svg">`
       mainInformation.innerHTML += `<h2>Take your umbrella out in ${json.name} and dance in the rain!</h2>`
     } else if (id < 650) {
-      // SNOW
       icon.innerHTML += `<img src="assets/snowy.svg">`
       mainInformation.innerHTML += `<h2>The snow is falling in ${json.name} get out there and make a snowman!</h2>`
     } else if (id < 700) {
-      // HAZE
       icon.innerHTML += `<img src="assets/hazecloud.svg">`
       mainInformation.innerHTML += `<h2>Bring a good mood and clear the haze in ${json.name}!</h2>`
     } else if (id == 800) {
-      // CLEAR
       icon.innerHTML += `<img src="assets/sun.svg">`  
       mainInformation.innerHTML += `<h2>Soak up the sun in ${json.name}, but don't forget the sunblock!</h2>`
     } else if (id > 800) {
-      // CLOUDY
       icon.innerHTML += `<img src="assets/cloud.svg">`
       mainInformation.innerHTML += `<h2>It's looking grey today in ${json.name}. Put on a colorful shirt!</h2>`
     } else {
-      // BAD
       icon.innerHTML += `<img src="assets/whirlpool.svg">`
-      mainInformation.innerHTML += `<h2>The weather is crazy in ${json.name}today.. Stay inside!</h2>`
+      mainInformation.innerHTML += `<h2>The weather is crazy in ${json.name} today.. Stay inside!</h2>`
     }
   })
   .catch(err => {
@@ -73,10 +64,8 @@ fetch(apiUrlForecast)
   })
   .then((json) => {
     const timezone = json.city.timezone
-    
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
 
-    // DAY, WEATHER AND TEMPERATURE
     filteredForecast.map((forecast) => {
       const mainTemperature = forecast.main.temp.toFixed(0)
       const weatherDiscription = forecast.weather[0].description 
@@ -90,9 +79,6 @@ fetch(apiUrlForecast)
         <span>${mainTemperature} &#8451</span>
         </p>`
     })
-
-
-
   })
   .catch(err => {
     console.error(err)
