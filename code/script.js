@@ -14,7 +14,9 @@ fetch(url)
 .then((response) => (response.json()))
 .then((data) => {
  
+  let currentWeatherPic = `<img src=https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png></img>`; 
   
+  weatherIcon.innerHTML = `${currentWeatherPic}`; 
   city.innerHTML += ` ${data.name}`; 
   temperature.innerHTML += ` ${data.main.temp.toFixed(1)} ºC`;
   weather.innerHTML += `${data.weather[0].description}`;
@@ -37,7 +39,8 @@ fetch(forecastUrl)
   let weatherPicture = `<img src=https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png></img>`;
 
   week.innerHTML += `
-    <p>${weekday}  ${weatherPicture} ${temperature} ºC</p>`;
+    <p>${weekday}${weatherPicture}${temperature} ºC</p>
+    `;
 })
 })
 
