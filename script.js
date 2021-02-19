@@ -3,9 +3,7 @@ const forecast = document.getElementById("forecast-container")
 const todaysWeather = document.getElementById("todays-weather")
 const container = document.getElementById("container")
 
-const STHLM_URL ="http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=cd2e520714b56e5fd7e92da11e1db7f3"
-
-fetch (STHLM_URL)
+fetch ("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=cd2e520714b56e5fd7e92da11e1db7f3")
   .then((response) => {
     return response.json()
   })
@@ -38,7 +36,7 @@ fetch ("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&unit
       const forecastTemp = Math.round(filteredForecast[i].main.temp * 10) / 10
       const icon = filteredForecast[i].weather[0].icon
       forecast.innerHTML +=`
-        <p class="forecast-paragraph">${days} <img src="http://openweathermap.org/img/wn/${icon}@2x.png">${forecastTemp}°C</p>
+        <p class="forecast-paragraph">${days} <img src="https://openweathermap.org/img/wn/${icon}@2x.png">${forecastTemp}°C</p>
       `
     }
   })
