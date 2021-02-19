@@ -11,8 +11,22 @@ body {
     border-radius: 25px;
     padding: 15px;
 }
+.headline{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.select-city {
+    background-color: black;
+    border-radius: 5px;
+    width: 200px;
+    padding: 10px;
+    font-size: 20px;
+}
 
-
+.sun-class {
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
 .forecast-line {
     margin: 20px;
     /*border: solid black 2px; */
@@ -22,12 +36,27 @@ body {
     
 }
 
-.weather-description, .sunrise, .sunset {
+.weather-description, .sunRise, .sunSet {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.animated-icon {
+    position: relative;
+    animation-name: bounce;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-delay: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes bounce {
+    0%   {left:0px; top:0px;}
+    50%  {left:0px; top:10px;}
+    100% {left:0px; top:0px;}
+}
 
 @media (min-width: 658px) {
     .body {

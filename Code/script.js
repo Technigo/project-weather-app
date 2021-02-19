@@ -1,7 +1,7 @@
 // TO Do List
 // [X] Do a defaul page with the selector
-// [] Fix the timezone
-// [] Animation bounce
+// [X] Fix the timezone
+// [X] Animation bounce
 // [] Accordion for upcoming forecast
 // [] Add gradient to our CSS
 
@@ -72,15 +72,18 @@ let Sunset = "./pics/1.webp"
         //Sunrise time
         const sunRiseUnix = json.list[0].sunrise;
         const sunriseDate = new Date((sunRiseUnix + TimeZone + timezoneOffSet)*1000);
-        //sunRise.innerHTML = `Sunrise: ${sunriseDate.getHours()}:${sunriseDate.getMinutes()} <img src=${Rise} width="40">`
-        sunRise.innerHTML = sunriseDate.getHours() >9? `Sunrise: ${sunriseDate.getHours()}:${sunriseDate.getMinutes()} <img src=${Rise} width="40">` : `Sunrise: 0${sunriseDate.getHours()}:${sunriseDate.getMinutes()} <img src=${Rise} width="40">`
-
+        //sunRise.innerHTML = sunriseDate.getHours() >9? `Sunrise: ${sunriseDate.getHours()}:${sunriseDate.getMinutes()} <img src=${Rise} width="40">` : `Sunrise: 0${sunriseDate.getHours()}:${sunriseDate.getMinutes()} <img src=${Rise} width="40">`
+        
+        sunRise.innerHTML = sunriseDate.getHours()>9? `<span class="sun-class">Sunrise: ${sunriseDate.getHours()}:</span>`: `<span class="sun-class">Sunrise: 0${sunriseDate.getHours()}:</span>`
+        sunRise.innerHTML += sunriseDate.getMinutes()>9? `<span class="sun-class"> ${sunriseDate.getMinutes()} <img src=${Rise} width="40">`:`<span class="sun-class"> 0${sunriseDate.getMinutes()} <img src=${Rise} width="40">`
         //Sunset time
         const sunSetUnix = json.list[0].sunset;
         const sunsetDate = new Date((sunSetUnix + TimeZone + timezoneOffSet)*1000)
-        sunSet.innerHTML = `Sunset: ${sunsetDate.getHours()}:${sunsetDate.getMinutes()} <img src=${Sunset} width="40">`
-        
-        
+        //sunSet.innerHTML = sunsetDate.getHours() >9 ? `Sunset: ${sunsetDate.getHours()}:${sunsetDate.getMinutes()} <img src=${Sunset} width="40">` : `Sunset: 0${sunsetDate.getHours()}:${sunsetDate.getMinutes()} <img src=${Sunset} width="40">`;
+        //sunSet.innerHTML = sunsetDate.getMinutes() >9 ? `Sunset: ${sunsetDate.getHours()}:${sunsetDate.getMinutes()} <img src=${Sunset} width="40">` : `Sunset: ${sunsetDate.getHours()}:0${sunsetDate.getMinutes()} <img src=${Sunset} width="40">`;
+        sunSet.innerHTML = sunsetDate.getHours()>9? `<span class="sun-class">Sunrise: ${sunsetDate.getHours()}:</span>`: `<span class="sun-class">Sunrise: 0${sunsetDate.getHours()}:</span>`
+        sunSet.innerHTML += sunsetDate.getMinutes()>9? `<span class="sun-class"> ${sunsetDate.getMinutes()} <img src=${Sunset} width="40">`:`<span class="sun-class"> 0${sunsetDate.getMinutes()} <img src=${Sunset} width="40">`
+
         //Temperature for 10 days
         const temperatureArrayDays =  Array.from(
             json.list, item => item.temp.day
@@ -134,7 +137,7 @@ let Sunset = "./pics/1.webp"
 
       // Adding API information into HTML elements 
         cityName.innerHTML = `<h1 class="city-name">${city}</h1>`  
-        highlight.innerHTML = `<h2 class="weather-description"> ${weatherToday} <img src='http://openweathermap.org/img/wn/${currentWeatherIcon}@2x.png'></h2>`
+        highlight.innerHTML = `<h2 class="weather-description"> ${weatherToday} <img class="animated-icon" src='http://openweathermap.org/img/wn/${currentWeatherIcon}@2x.png'></h2>`
         tempCelsius.innerHTML = `<p class="min-max">Current:  ${tempToday}℃ / Min: ${minTempToday}℃  /Max: ${maxTempToday}℃</p>` // The weather icon will be changed depending on time and is affected by an function that will trigger and if else statement(its its cloudy === this picture etc.)
         //sunRise.innerHTML = `<p class="sunrise">The sunrise: ${dateRise} AM <img src=${Rise} width="40"> </p>` 
         //sunSet.innerHTML = `<p class="sunset">The sunset:  ${dateSet} PM <img src=${Sunset} width="40"></p>` //${cloudSun}
@@ -146,15 +149,17 @@ let Sunset = "./pics/1.webp"
     dateFiveDays.forEach((date, index)=>{
       const temperature = temperatureFiveDays[index];
       const icon = fiveDaysId[index];
-      dayOne.innerHTML += `<dt class="forecast-line">${date}: ${temperature} <img src="http://openweathermap.org/img/wn/${icon}@2x.png" width="40px" > </dt>`
+      dayOne.innerHTML += `<dt class="forecast-line">${date}: ${temperature}℃ <img src="http://openweathermap.org/img/wn/${icon}@2x.png" width="40px" > </dt>`
     // forecast.innerHTML += `<dt class="forecast-line">${date}: ${temperature} <img src="http://openweathermap.org/img/wn/${icon}@2x.png" width="40px" > </dt>`
     })
     switch (currentWeatherBackground){
       case 'Clouds': {
-        container.style.backgroundColor = "#d3e0ea"
+        container.style.backgroundColor = "#276678"
         highlight.innerHTML += `<h2 class="weather-description"> No sunshine on the horizon!</h2>`
-        container.style.color = "#276678"
-        body.style.backgroundColor = "#276678"
+        container.style.color = "#d3e0ea"
+        body.style.backgroundColor = "#d3e0ea"
+        selectCity.style.color = "#276678"
+        selectCity.style.backgroundColor = "#d3e0ea" 
         break;
       }
       case 'Rain':{
@@ -162,20 +167,26 @@ let Sunset = "./pics/1.webp"
         highlight.innerHTML += `<h2 class="weather-description"> Don't forget your umbrella</h2>`
         container.style.color = "#0a043c"
         body.style.backgroundColor = "#276678" //
+        selectCity.style.backgroundColor = "#276678"
+        selectCity.style.color = "#94b5c0" 
         break;
       }
       case 'Snow':{
         container.style.backgroundColor = "#d3e0ea"
         highlight.innerHTML += `<h2 class="weather-description"> Time to build a snowman!</h2>`
-        container.style.color = "0a043c"
-        body.style.backgroundColor = "#f2a154" //
+        container.style.color = "#0a043c"
+        body.style.backgroundColor = "#0a043c" //
+        selectCity.style.backgroundColor = "#0a043c"
+        selectCity.style.color = "#d3e0ea";
         break;
       }
       case 'Thunderstorm':{
-        container.style.backgroundColor = "1687a7"
+        container.style.backgroundColor = "#1687a7"
         highlight.innerHTML += `<h2 class="weather-description"> Hold your hat!</h2>`
         container.style.color = "#f6f5f5"
         body.style.backgroundColor = "#493323"
+        selectCity.style.backgroundColor = "#493323"
+        selectCity.style.color = "#1687a7";
         break;
       }
       case 'Drizzle':{
@@ -183,6 +194,8 @@ let Sunset = "./pics/1.webp"
         highlight.innerHTML += `<h2 class="weather-description"> It's just nasty outside... </h2>`
         container.style.color = "#f6f6f6"
         body.style.backgroundColor = "#383e56"
+        selectCity.style.backgroundColor = "#383e56"
+        selectCity.style.color = "#aaaaaa";
         break;
       }
       case 'Clear':{
@@ -190,6 +203,8 @@ let Sunset = "./pics/1.webp"
         highlight.innerHTML += `<h2 class="weather-description"> Don't forget your sunglasses! </h2>`
         container.style.color = "#6b011f"
         body.style.backgroundColor = "#6b011f"
+        selectCity.style.backgroundColor = "#6b011f"
+        selectCity.style.color = "#fce38a";
         break;
       }
       default :
@@ -197,6 +212,8 @@ let Sunset = "./pics/1.webp"
       highlight.innerHTML += `<h2 class="weather-description"> Be careful when you are driving!</h2>`
       container.style.color = "#350b40"
       body.style.backgroundColor = "#350b40"
+      selectCity.style.backgroundColor = "#350b40"
+      selectCity.style.color = "#c6a9a3";
       break;
     }  
 
