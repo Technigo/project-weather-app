@@ -3,31 +3,19 @@ const innerContainerWeather = document.querySelector("#inner-container-weather")
 const containerForecast = document.querySelector("#container-forecast")
 const hamburger = document.querySelector("#hamburger")
 const menu = document.querySelector("#menu")
-const stockholmButton = document.querySelector("#stockholm-button")
-const barcelonaButton = document.querySelector("#barcelona-button")
-const sydneyButton = document.querySelector("#sydney-button")
-const cities = document.querySelector("#cities")
-
-hamburger.addEventListener("click", () => {
-    toggle()
-})
-
-const toggle = () => {
-    menu.classList.toggle("hidden")
-}
+const cities = document.querySelectorAll(".cities")
 
 const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
+// fetches the data for a location from the API, creates HTML to display the main temperature, city name, weather description and time of sunrise and sunset
 const getWeather = (location) => {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&APPID=bb54e9dec92e93ad760de1e57539382a`)
         .then((response) => {
             return response.json()
         })
         .then((data) => {
-            console.log(data)
             let sunrise = new Date((data.sys.sunrise + data.timezone) * 1000)
             let sunset = new Date((data.sys.sunset + data.timezone) * 1000)
-            console.log(data.sys.sunrise)
             innerContainerWeather.innerHTML = `
         <div class="main-weather">
         <img class="image-weather" src="./assets/${data.weather[0].main.toLowerCase()}.png">
@@ -44,44 +32,17 @@ const getWeather = (location) => {
                 <span>${sunset.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
             </h3>    
         `
+            // changes background color depending on time of day
             if (Date.now() > (data.sys.sunset * 1000)) {
-                console.log("late")
                 containerWeather.style.background = "linear-gradient(0deg, rgba(104,104,171,1) 0%, rgba(12,11,91,1) 100%)"
             } else {
-                console.log("early")
+                containerWeather.style.background = "linear-gradient(0deg, #d8d7ff 0%, #8fa9ff 100%)"
             }
         })
 }
 
-console.log((Date.now()))
 
-// const getForecast = (location) => {
-//     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=metric&APPID=bb54e9dec92e93ad760de1e57539382a`)
-//         .then((response) => {
-//             return response.json()
-//         })
-//         .then((data) => {
-//             console.log(data)
-//             const filteredForecast = data.list.filter(item => item.dt_txt.includes('12:00'))
-//             console.log(filteredForecast)
-//             containerForecast.innerHTML = ""
-//             for (let i = 0; i < filteredForecast.length; i++) {
-//                 let weekday = new Date(filteredForecast[i].dt * 1000)
-//                 let description = filteredForecast[i].weather[0].main.toLowerCase()
-//                 containerForecast.innerHTML += `
-//             <div class="weekdays">
-//                 <span>${days[weekday.getDay()]}</span>
-//                 <span class="temperature">
-//                     <img src="./assets/${description}.png">
-//                     <span>${Math.round(filteredForecast[i].main.temp)}°C</span>
-//                 </span>
-//             </div>
-//             `
-//             }
-//         })
-// }
-
-
+// fetches the forecast data for a location from the API, extracts min/max temperature, weekday and weather description, and creates HTML to display that
 const getForecast = (location) => {
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=metric&APPID=bb54e9dec92e93ad760de1e57539382a`)
         .then(response => response.json())
@@ -136,8 +97,6 @@ const getForecast = (location) => {
                 })
                 minTemps.push(Math.round(dailyMinTemp))
             }
-            console.log(maxTemps)
-            console.log(minTemps)
 
             //this loop captures the weekday and the main description of the weather for each day of the five-day-forecast at 9am
             let weekdays = []
@@ -150,8 +109,6 @@ const getForecast = (location) => {
 
             //finally, this loop creates the HTML and fills in the weekday, the main description of the weather,
             // and the max and min temperatures for each day
-            console.log(weekdays)
-            console.log(descriptionWeather)
             for (let i = 0; i < 5; i++) {
                 containerForecast.innerHTML += `
                     <div class="weekdays">
@@ -166,24 +123,25 @@ const getForecast = (location) => {
         })
 }
 
+// these run when the page is loaded, to have a default location shown
 getWeather("Stockholm,Sweden")
 getForecast("Stockholm,Sweden")
 
-cities.addEventListener("change", () => {
-    const value = cities.value;
-    getWeather(value)
-    getForecast(value)
+// opens and closes the hamburger menu
+const toggle = () => {
+    menu.classList.toggle("hidden")
+}
+
+// eventlisteners for hamburger menu and cities inside
+hamburger.addEventListener("click", () => {
     toggle()
 })
 
-// const getLocation = () => {
-//     if (navigator.geolocation) {
-//         navigator.geolocation.getCurrentPosition(showPosition);
-//     } else {
-//         alert("Geolocation is not supported by this browser.");
-//     }
-// }
-// const showPosition = (position) => {
-//     alert(`Latitude: ${Math.round(position.coords.latitude)}, Longitude: ${Math.round(position.coords.longitude)}`);
-// }
-// getLocation()
+for (let city of cities) {
+    city.addEventListener("click", () => {
+        const value = city.innerText;
+        getWeather(value)
+        getForecast(value)
+        toggle()
+    })
+}

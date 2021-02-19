@@ -2,10 +2,13 @@
 
 
 body {
- font-family:'Roboto', sans-serif;
- margin: 0;
+    font-family:'Roboto', sans-serif;
+    margin: 0;
 }
 
+.container {
+    position: relative;
+}
 
 .hamburger div {
     background-color: white;
@@ -17,12 +20,18 @@ body {
 
 .menu {
     background-color: white;
-    width: 100vW;
-    height: 100vh;
-    background: #757aff;
+    width: 35%;
+    position: absolute;
+    border: 1px solid black;
+}
 
-    /* display: flex;
-    justify-content: center; */
+.cities {
+    padding: 5px;
+    font-family:'Roboto', sans-serif;
+    font-size: 15px;
+    width: 100%;
+    color: black;
+    border: none;
 }
 
 .hidden {
@@ -35,14 +44,25 @@ body {
     border-radius: 0% 0% 50% 50% / 85% 85% 15% 15%;
     padding:30px 30px 50px;
     color: white;
-
 }
- h1 {
+
+.inner-container-weather {
+    position: relative;
+}
+
+.image-weather {
+    position: absolute;
+    width: 200px;
+    top: -100px;
+    left: 170px;
+}
+
+h1 {
     font-weight: 300;
     font-size: 100px;
     margin-bottom: 0px;
     position: relative;
- }
+}
 
 h1 span {
     font-size: 30px;
@@ -50,16 +70,16 @@ h1 span {
     top: 15px
 }
 
- h2 {
+h2 {
     font-weight: 300; 
     margin: 0;
     font-size: 30px;
- }
+}
 
- h3 {
+h3 {
     font-weight: 300;
     margin: 0;
- }
+}
 .sun {
     display: flex;
     justify-content: space-between;
@@ -89,34 +109,11 @@ h1 span {
     height: 30px;
 }
 
-.image-weather {
-    position: absolute;
-    width: 200px;
-    top: -100px;
-    left: 170px;
-}
-
-.inner-container-weather {
-position: relative;
-}
-.cities {
-    padding: 10px;
-    font-family:'Roboto', sans-serif;
-    font-size: 40px;
-    width: 100%;
-    background-color: #757aff;
-    color: white;
-    border: none;
-}
-/* option {
-    background: rgba(0, 0, 0, 0);
-} */
 
 @media (min-width: 768px)  {
     body {
-    display: flex;
-    justify-content: center;
-     
+        display: flex;
+        justify-content: center;
     }
 
     .container {
@@ -135,20 +132,25 @@ position: relative;
         margin: 20px 50px;
     }
 
-    .menu {
-        width: 100%;
-    }
 }
 
 @media (min-width: 992px)  {
     body {
-    display: flex;
-    justify-content: center;
-     
+        display: flex;
+        justify-content: center;
     }
 
     .container {
         width: 60%;
+    }
+
+    .menu {
+        width: 25%;
+        right: 0;
+    }
+
+    .cities {
+        padding: 0 5px;
     }
 
     .container-weather {
@@ -165,6 +167,7 @@ position: relative;
         order: 1;
         margin-left: 50px;
     }
+
     h1 {
         margin-top: 0;
     }
@@ -175,9 +178,5 @@ position: relative;
 
     .weekdays {
         margin: 20px 50px;
-    }
-
-    .menu {
-        width: 100%;
     }
 }
