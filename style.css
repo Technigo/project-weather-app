@@ -135,14 +135,17 @@ img{
 .icon{
     margin-bottom: 20px;
     justify-self: center;
+    align-self: center;
 }
 
 .forcast-temp{
     justify-self: center;
+    align-self: center;
 }
 
 .weekday{
     justify-self: center;
+    align-self: center;
 }
 
 @media (min-width: 768px) and (max-width:991px){

@@ -11,6 +11,7 @@ const icons = document.getElementById('icons')
 const weekday = document.getElementById('weekday')
 const temp = document.getElementById('temp')
 const dayOfTheWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
 let minMax, currentDate, minTemp, maxTemp
 
 
@@ -92,20 +93,12 @@ fetch (`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metr
             
             //forecast including 5 days
             const filteredForecast = data.list.filter(item => item.dt_txt.includes('12:00'))
-            // let dayTemp = data.list[0].main.temp_min;
-
-            //console.log(dayTemp)
 
             // finding out min and max temprature for each day
             const updateMinMaxTemps = () => {
             minMax = {};
             data.list.forEach((day) => {
             currentDate = day.dt_txt.split(" ")[0];
-
-            //allDays.innerHTML += `<div class="forcast-temp"> <p>${day.list.main.temp_min.toFixed(2)} &#8451 / ${day.list.main.temp_max.toFixed(2)} &#8451</p></div>`
-            //console.log(day.main.temp_min)
-            
-            //console.log(currentDate)
 
             if (minMax[currentDate]) {
                 if (day.main.temp_min < minMax[currentDate].minTemp) {
@@ -121,13 +114,14 @@ fetch (`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metr
                 }
     
             }
-            // allDays.innerHTML += `<div class="forcast-temp"> <p>${minMax[currentDate].minTemp.toFixed(2)} &#8451 / ${minMax[currentDate].maxTemp.toFixed(2)} &#8451</p></div>`
         }) 
+
         return minMax
+
         }
+
         updateMinMaxTemps()
             
-                //console.log(data)
             
                 filteredForecast.forEach((day) => {
                     currentDate = day.dt_txt.split(" ")[0];
@@ -150,9 +144,6 @@ fetch (`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metr
                         allDays.innerHTML += `<img src="./Designs/icons/cloudy.svg"/>`   
                     }
                     allDays.innerHTML += `<div class="forcast-temp"> <p>${minMax[currentDate].minTemp.toFixed(0)} &#8451 / ${minMax[currentDate].maxTemp.toFixed(0)} &#8451</p></div>`
-                    
-                    
-                    //console.log(data)
                 })
         })
           
