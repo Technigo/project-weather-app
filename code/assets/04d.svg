@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 64 64">
+    <defs>
+        <clipPath id="a">
+            <polygon points="41.8,20.3 46.3,26.9 46.5,31.5 51.8,34 53.5,39.9 61.6,39.9 61,27 51.7,18.5 41.8,20.3"
+                fill="none" />
+        </clipPath>
+    </defs>
+    <g clip-path="url(#a)">
+        <path
+            d="M 34.2 33.5 a 4 4 0 0 0 4 4 H 54.8 a 4.3 4.3 0 0 0 0.8 -8.6 a 3.5 3.5 0 0 0 0.1 -0.7 a 4.1 4.1 0 0 0 -6.1 -3.5 a 6.1 6.1 0 0 0 -11.3 3.2 a 6.3 6.3 0 0 0 0.2 1.5 h -0.2 A 4 4 0 0 0 34.2 33.5 Z"
+            fill="#cacaca" stroke="#cacaca" stroke-linejoin="round" stroke-width="2" />
+    </g>
+    <path
+        d="M 46.5 31.5 l -0.3 0 a 10.5 10.5 0 0 0 -19.1 -8 a 7 7 0 0 0 -10.6 6 a 7.2 7.2 0 0 0 0.1 1.1 A 7.5 7.5 0 0 0 18 45.5 a 4.2 4.2 0 0 0 0.5 0 v 0 h 28 a 7 7 0 0 0 0 -14 Z"
+        fill="#efefef" stroke="#efefef" stroke-linejoin="round" stroke-width="3" />
+</svg>

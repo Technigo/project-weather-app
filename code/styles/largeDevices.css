@@ -1,0 +1,36 @@
+.forecast {
+  margin: 30px auto;
+  max-width: 500px;
+}
+
+.header-info__wrapper {
+  margin: 0 auto;
+  height: 100%;
+  max-width: 500px;
+}
+
+.btn-round:hover {
+  background-color: var(--secondary);
+  cursor: pointer;
+}
+
+.icon-hamburger {
+  display: none;
+}
+
+.nav-bar__btn {
+  display: none;
+}
+
+/* Makes sure that the navbar is moved to top of page (instead of acting like a sidebar) */
+.nav-bar {
+  transform: translateX(0px);
+  display: flex;
+  flex-direction: row;
+  height: auto;
+  width: 100%;
+  justify-content: space-around;
+  padding: 15px 0;
+  position: relative;
+  transition: none;
+}

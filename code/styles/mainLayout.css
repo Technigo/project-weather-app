@@ -1,0 +1,13 @@
+/* Global css variables used for colors */
+:root {
+  --primary: #757aff;
+  --secondary: #8d90fd;
+  --dark: #595dc0;
+  --shadow: #bbbbbb;
+}
+
+/* Alignment and size for main application wrappers */
+body {
+  margin: 0;
+  height: 100vh;
+}
