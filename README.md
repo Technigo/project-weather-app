@@ -18,4 +18,4 @@ To solve problems, we used console.log a lot, we logged every part of the code i
 
 ## View it live
 
-Link to published site:
+Link to published site:https://amazing-heyrovsky-e06b09.netlify.app/
