@@ -29,25 +29,25 @@ fetch(todaysUrl)
         let weatherType = json.weather[0].main
         let wIcon = json.weather[0].icon
 
-        // HTML weather text for tablet and desktop
+        // HTML weather text for tablet and desktop, also changes bg color depending on weather type
         const moodGenerator = () => {
             if (weatherType === "Clouds") {
-                body.classList.add = 'cloudy'
+                body.classList.add('cloudy')
                 weatherText.innerHTML = `<p>Clouds are covering ${cityName}. Let's hope they'll be gone soon!</p>`
             } else if (weatherType === "Clear") {
-                body.classList.add = 'clear'
+                body.classList.add('clear')
                 weatherText.innerHTML = `<p>It's sunny in ${cityName}. Put your sun glasses on and get outside!</p>`
             } else if (weatherType === "Snow") {
-                body.classList.add = 'snowy'
+                body.classList.add('snowy')
                 weatherText.innerHTML = `<p>It's snowy in ${cityName}. Gather your friends and go out and make some snow angels!</p>`
             } else if (weatherType === "Rain") {
-                body.classList.add = 'rainy'
+                body.classList.add('rainy')
                 weatherText.innerHTML = `<p>It's rainy in ${cityName}. Let's stay inside and binge watch Netflix!</p>`
             } else if (weatherType === "Drizzle") {
-                body.classList.add = 'drizzly'
+                body.classList.add('drizzly')
                 weatherText.innerHTML = `<p>It drizzles in ${cityName}. Let's stay inside and binge watch Netflix!</p>`
             } else {
-                body.classList.add = 'grey'
+                body.classList.add('grey')
                 weatherText.innerHTML = `<p>Not the greatest weather in ${cityName}. Let's get cosy!</p>`
             }  
         } 
