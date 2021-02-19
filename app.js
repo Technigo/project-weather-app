@@ -13,8 +13,8 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
         const sunsetTime = new Date(json.sys.sunset * 1000);
         const sunriseReadableTime = sunriseTime.toLocaleTimeString([], { timeStyle: 'short'})
         const sunsetReadableTime = sunsetTime.toLocaleTimeString([], { timeStyle: 'short'})
-        const todayDay = new Date(json.dt * 1000); // Todays date
-        const todayDayNames = todayDay.toLocaleDateString('en-US', {weekday: 'long', year: 'numeric', month: 'short'}); // Todays date in short string version
+        const todayDay = new Date(json.dt * 1000); 
+        const todayDayNames = todayDay.toLocaleDateString('en-US', {weekday: 'long', year: 'numeric', month: 'short'});
         const weather = json.weather[0].main;
 
         city.innerHTML = `${json.name}`;
@@ -30,6 +30,7 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
             </section>
         `;
 
+        //Weather Icon
         const weatherImage = () => {
             if (weather === "Clouds") {
                 imageContainer.innerHTML = `
@@ -39,32 +40,30 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
                 imageContainer.innerHTML = `
                 <img src="./noun_Umbrella_2030530.svg">
                 `;
-            } else if (weather === "Sun") {
+            } else if (weather === "Clear sky") {
                 imageContainer.innerHTML = `
                 <img src="./noun_Sunglasses_2055147.svg">
                 `;
+            } else if (weather === "Snow") {
+                imageContainer.innerHTML = `
+                <img class = "icon" src="./snowflake.svg">
+                `; 
+             } else if (weather === "Mist") {
+                imageContainer.innerHTML = `
+                <img class = "icon" src="./haze.png">
+                `;        
             } else {
                 imageContainer.innerHTML = `
-                <img class = "rainbow" src="./rainbow.png">
+                <img class = "icon" src="./rainbow.png">
                 `;
             }
-    
         }
-
         weatherImage();
 
         city.innerHTML = `
         <h1>${json.name}</h1>
         `;
     });
-
- // <div class = "summary-right-side">
-                //     <p class = "summary-text">${json.main.humidity} Humidity</p>
-                //     <p class = "summary-text">${json.wind.speed} Wind</p>
-                // </div>
-
-
-    
 
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=${API_KEY}`)
     .then((response) => {
@@ -73,8 +72,6 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
         .then((json) => {
                 // A variable that saves information each day at 12.00
             const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
-            console.log(filteredForecast)
-            console.log(filteredForecast[0].weather[0].description)
 
             // A loop for the filteredForecast variable
             filteredForecast.forEach((item) => {
@@ -86,14 +83,13 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
                 const temperature = Math.floor(item.main.temp);
                  // A variable accordion answer: weather description
                 const weatherDescription = item.weather[0].description;
-                console.log(weatherDescription);
-
-                
+            
+                const feelsLike= item.main.feels_like;
+    
 
             // INNER HTML
             fiveDaysForecast.innerHTML += `
-            <article class = "five-days-container">
-                <div class = "accordion-header" id = "accordionHeader">
+                <div class = "accordion-header">
                     <div class = "weekday-left">
                         <p>${weekDayNames}</p>
                     </div>
@@ -101,47 +97,25 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
                         <p> ${temperature}°C</p>
                     </div>
                 </div>
-                <div class = "accordion-content" id = "accordionContent">
-                    <p>${weatherDescription}</p>
+                <div class = "accordion-content">
+                        <p>${weatherDescription}, feels like ${feelsLike} </p>
                 </div>
-            </article>
             `;   
 
-            // ACCORDION
+        //     ACCORDION
             function toggle() {
-                this.classList.toggle("open")
+                this.classList.toggle('open')
             }
-
-            document.getElementById("accordionHeader").onclick = toggle
-            const accordionContent = document.getElementById("accordionContent");
+            const accordionContent = document.querySelectorAll(".accordion-header");
+            accordionContent.forEach(item =>{
+                item.onclick = toggle
+            })
         });
 
     });
 
-    // function toggle() {
-    //     this.classList.toggle("open")
-    //   }
-      
-    //   document.getElementById("question-1").onclick = toggle
-    //   document.getElementById("question-2").onclick = toggle
-      
-    //   const answer1 = document.getElementById('answer-1');
-    //   const answer2 = document.getElementById('answer-2');
+    
 
-
-    // <section class="accordion">
-     
-    //   <h2 class="h2-headline">FAQ</h2>
-
-    //   <div class="question" id="question-1">Itinerary</div>
-    //   <div class="answer" id="answer-1">
-    //     <p>Lorem ipsum...</p>
-    //   </div>
-    // </section>
-
-
-
-   
 
 
 
