@@ -21,7 +21,7 @@ body{
 
 .forecast {
     padding-bottom: 10px;
-    border-bottom: 1px dotted #F4F7F8;
+    /*border-bottom: 1px dotted #F4F7F8;*/
     line-height: 10px;
     font-weight: normal;
 }
@@ -29,6 +29,8 @@ body{
 .forecast-information{
     text-align-last: justify;
     margin-top: 30px;
+    text-decoration-line: underline;
+    text-decoration-style: dotted;   
 }
 
 /** MEDIA QUERIES **/
