@@ -3,18 +3,17 @@ https://fonts.google.com/specimen/Roboto
 
 weights: light
 
-2 SEKTIONER i 2 olika men tydliga färger, lite som Hero image var... fast det är bara en bakgrund alt en bild om vi vill att det ska vara som Hero image? 
+2 sections in two different colors. 
+Top section with a slightly gradient background.  
 
-Ska vi göra en gradient background?? 
-Top to bottom som https://sad-snyder-d2fc68.netlify.app/
-
-FÄRGER: t.ex. dessa ~ fyll på här!
-
+COLORS inspiration: 
 code\Designs\Design-1\iPhone XR-XS Max – 1.png
+
 Midnight blue: #242552
+Purple-ish: #5e5f9d
+
 White text
 Black text
 
-Purple-ish: 
-#5e5f9d
+
 

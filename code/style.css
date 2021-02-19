@@ -6,36 +6,117 @@ body {
 }
 
 .weather-container {
-    width: 100vw;
-    background-image: linear-gradient(#5E5F9D,#242552);
+    height: 60vh;
+    background-image: linear-gradient(#96d8f2,#242552);
     border-radius: 0px 0px 30px 30px; 
     color: white; 
     padding: 0 20px; /*ändrat till 0 20*/
     display: flex;
     justify-content: space-around;
-    flex-direction: row; /**/
-/*   flex-wrap: wrap; */
-/*
+    flex-direction: row;
+}
+.temp-icon {
     display: flex;
-    flex-direction: column;
     justify-content: space-around;
-*/
+    flex-direction: row;
+    
+}
+
+.temp {
+    width: 50px; 
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    margin: 5px;
 }
 
 .sunrise-sunset {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
-.forcast-container {
-
+.forecast-days {
+    padding: 20px 20px 0 20px;
+    display: flex; 
+    justify-content: space-between;
+    flex-direction: column;
+    /* flex-wrap: wrap;  */
 }
 
+.weekday {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.weekday p {
+    font-size: 20px; 
+}
+
+.forecast-temp-feels-like {
+    display: flex;
+    flex-direction: row;
+}
+
+/**** MEDIA QUERIES ***/
 @media (min-width: 768px) {
+    .weather-description {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .weather-today h2 {
+        font-size: 50px;
+        text-align: center;
+    }
 
+    .weather-today h1 {
+        font-size: 40px; 
+    }
+
+    .weather-description h3 {
+        font-size: 20px;
+    }
+
+    .weather-description p {
+        font-size: 16px;
+    }
+
+    .sunrise-sunset p {
+        font-size: 25px;
+    }
+
+    .weekday p {
+        font-size: 24px;
+    }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 993px) {
+    h1 {
+        font-size: bold 60px;
+    }
+    .weather-description {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .weather-description h3 {
+        font-size: 20px;
+    }
+    .sunrise-sunset p {
+        font-size: 20px;
+    }
+    .weekday p {
+        font-size: 20px;
+
+    }
+    .sunset-sunrise {
+        justify-content: center;
+        align-items: center;
+    }
 
 }
