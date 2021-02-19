@@ -33,6 +33,7 @@ img{
     background: linear-gradient( 0deg, rgb(170, 189, 132) 0%, rgb(208, 194, 163) 72% );
     background-size: cover;
     background-repeat: no-repeat;
+    height: 100vh;  
 
 }
 
@@ -40,6 +41,7 @@ img{
     background: linear-gradient( 0deg, rgba(132, 136, 189, 1) 0%, rgb(3, 7, 65) 72% );
     background-size: cover;
     background-repeat: no-repeat;
+    height: 100vh;  
 }
 
 .current-city{
@@ -155,7 +157,6 @@ img{
 @media (min-width:992px){
     .weather-container{
         width: 500px;
-
     }
     .current-city{
         font-size: 40px;
