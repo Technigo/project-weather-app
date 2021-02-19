@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,43 +8,38 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="body">
+  <div class="container">
+      <div class="container1" style="text-align: center;">
+          <h3 class="headline">Check the weather in</h3>
+          <select id="select-city" class="select-city">
+              <option disabled hidden selected>Select city</option>
+              <option value="London">London</option>
+              <option value="Berlin">Berlin</option>
+              <option value="Paris">Paris</option>
+              <option value="Madrid">Madrid</option>
+              <option value="Stockholm">Stockholm</option>
+              <option value="Bishkek">Bishkek</option>
+              <option value="Taipei">Taipei</option>
+              <option value="Bogota">Bogota</option>
+              <option value="Havanna">Havanna</option>
+              <option value="Bangkok">Bangkok</option>
+          </select>
+      </div>
+      <div id="cityName"></div>
+      <div id="highlight"></div>
+      <div id="tempCelsius"> </div>
+      <div id="sunRise" class="sunRise"></div>
+      <div id="sunSet" class="sunSet"></div>
 
-    
-
-    <div class="container">
-        <div class="container1" style="text-align: center;">
-            <h3 class="headline">Check the weather in</h3>
-            <select id="select-city" class="select-city">
-                <option disabled hidden selected>Select city</option><!--disabled hidden selected-->
-                <option value="London">London</option>
-                <option value="Berlin">Berlin</option>
-                <option value="Paris">Paris</option>
-                <option value="Madrid">Madrid</option>
-                <option value="Stockholm">Stockholm</option>
-                <option value="Bishkek">Bishkek</option>
-                <option value="Taipei">Taipei</option>
-                <option value="Bogota">Bogota</option>
-                <option value="Havanna">Havanna</option>
-                <option value="Bangkok">Bangkok</option>
-            </select>
-        </div>
-        <div id="cityName"></div>
-        <div id="highlight"></div> 
-        <div id="tempCelsius"> </div> 
-        <div id="sunRise" class="sunRise"></div> 
-        <div id="sunSet" class="sunSet"></div>
-    
-        <dl>
-            <h4 id="upcoming-weather"></h4> <!-- Find a way to hide this oneUpcoming weather forecast-->
-            <div id="dayOne"></div> <!-- forecast-->
-        </dl>
-    </div>
-
-
-
-
-
+      <dl>
+          <h4 id="upcoming-weather">Upcoming Weather Forecast</h4>
+          <div id="dayOne"></div>
+      </dl>
+  </div>
+  
     <script src="./script.js"></script>
 </body>
+
 </html>

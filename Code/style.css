@@ -1,19 +1,21 @@
 body {
     text-align: center;
-    background-color: #350b40; /* */
+    background-color: #350b40; 
     
 }
 
 .container {
-    font-family: Verdana, Geneva, Tahoma, sans-serif; /* example */
-    font-weight: bold; /* example */
-    color: white; /* example */
+    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+    font-weight: bold; 
+    color: white; 
     border-radius: 25px;
     padding: 15px;
 }
+
 .headline{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
 .select-city {
     background-color: black;
     border-radius: 5px;
@@ -27,9 +29,9 @@ body {
     align-items: center;
     justify-content:center;
 }
+
 .forecast-line {
     margin: 20px;
-    /*border: solid black 2px; */
     display: flex;
     justify-content: center;
     align-items: center;
