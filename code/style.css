@@ -153,17 +153,11 @@ p {
   .small-icons {
     width: 70px;
     height: 70px;
-    margin-right: 25px;
-    margin-top: -10px;
   }
 }
 
 @media (min-width: 768px) {
-  p {
-    font-size: 36px;
-  }
-
-  .sun-div {
+  p, .sun-div {
     font-size: 36px;
   }
 

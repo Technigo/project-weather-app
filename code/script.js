@@ -39,7 +39,8 @@ const getWeatherData = (data) => {
   sunrise.innerHTML = `<i class="fas fa-sun"></i> ${sunriseText}`;
   sunset.innerHTML = `<i class="fas fa-moon"></i> ${sunsetText}`;
   let changeBackground = new Date().getHours();
-    if (changeBackground > 20 && changeBackground < 6) {
+  console.log(changeBackground)
+    if (changeBackground > 20 || changeBackground < 6) {
       today.style.background = "linear-gradient(to bottom, #222350, #313263, #404176, #4f518a, #5f619f)"
     } 
 }
