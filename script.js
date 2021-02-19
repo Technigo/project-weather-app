@@ -8,6 +8,12 @@ const containerToday = document.getElementById('containerToday')
 const containerForecast = document.getElementById('containerForecast')
 const weatherText = document.getElementById('weatherText')
 
+const returnWeekDay = (date) => {
+    const daysInWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    let inputDate = new Date(date.replace(' ', 'T'))
+    return daysInWeek[inputDate.getDay()]
+}
+
 // API fetch today's weather
 fetch(todaysUrl)
     .then(response => {
@@ -96,15 +102,16 @@ fetch(forecastUrl)
         let forecastTemp = data.main.temp.toFixed(1)
         let wIcon = data.weather[0].icon
         
+        let dayInWeek = returnWeekDay(data.dt_txt)
         // Displays the forecast weekday
-        let forecastDay = new Date(data.dt_txt).toLocaleString('en-US', { weekday: 'long'})
-        const newDay = forecastDay.replace(' ', 'T')
-        console.log(newDay)
+        //let forecastDay = new Date(data.dt_txt).toLocaleString('en-US', { weekday: 'long'})
+
 
         // HTML forecast weather
         containerForecast.innerHTML += `
         <section class="forecast">
-        <p>${newDay}</p>
+        <p>${dayInWeek}</p>
+        <div class="forecast_weather_temp">
         <div class="forecast_weather_temp">
         <img class="forecast_icon" src="https://openweathermap.org/img/wn/${wIcon}@2x.png" />
         <p class="forecast_temp">${forecastTemp}°C</p>
