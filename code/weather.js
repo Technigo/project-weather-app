@@ -17,14 +17,14 @@ const API_KEY = "3d7fce6feca82d6b1a292f951247862b"
 const cities = ["Stockholm", "Barcelona", "Berlin","London","Milan","Madrid","Paris","Copenhagen","Rome","Moskva"]
 
 /***** CURRENT DAY INFORMATION *****/
-// Function to call the current day Fect and recall it when one city is selected. 
+// Function to call the current day fetch and recall it when one city is selected
 
 const fetchCurrentDay=(city)=>{
 fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${API_KEY}`)
     .then((response) => {
         return response.json()
         
-    })
+})
 
     .then((json) => {
         body.classList =''
@@ -81,12 +81,14 @@ const hourConversion = (milliseconds) => {
     let date = new Date(unitTime).toLocaleTimeString();
     return date
 }
+
 //function to get the index of each day
 const getWeekday = (weekdate) => {
     const week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     const weekdayNumber = new Date(weekdate).getDay()
     return week[weekdayNumber]
 }
+
 //Function to select icon image per weather
 const weatherIcon = (weatherDescription) => {
     if (weatherDescription === 'Clear') {
@@ -107,13 +109,15 @@ const weatherIcon = (weatherDescription) => {
         return 'unknown_.svg'
     }
 }
-//***** MODAL TO DISPLAY CITIES *****/ */
+
+/***** MODAL TO DISPLAY CITIES *****/
 const renderCitiesList = () =>{
     cities.forEach((cityListName)=>{
         citiesList.innerHTML +=`
         <li onclick="fetchCurrentDay('${cityListName}')">${cityListName}</li> `
     })
 }
+
 // open / close popup
 const openCitiesList = () => {
     openListPopup.classList.add("cities-popup-on")
@@ -127,4 +131,3 @@ cityName.addEventListener('click', openCitiesList)
 closeList.addEventListener('click', closeCitiesList)
 renderCitiesList()
 fetchCurrentDay("Stockholm")
-
