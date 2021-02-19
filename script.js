@@ -1,5 +1,4 @@
 // API's
-//const todaysUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Göteborg,Sweden&units=metric&APPID=947f288ad7c7a6c1279353f3ee6f09d1'
 const todaysUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Göteborg&units=metric&APPID=947f288ad7c7a6c1279353f3ee6f09d1'
 const forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=Göteborg&units=metric&APPID=947f288ad7c7a6c1279353f3ee6f09d1'
 
@@ -24,10 +23,13 @@ fetch(todaysUrl)
         const city = json.name.toUpperCase()
         const cityName = json.name
         const temp = json.main.temp.toFixed(1)
-        const sunrise = new Date(json.sys.sunrise * 1000).toLocaleString(navigator.language, {hour: '2-digit', minute:'2-digit'})
-        const sunset = new Date(json.sys.sunset * 1000).toLocaleString(navigator.language, {hour: '2-digit', minute:'2-digit'})
+        const timezoneOffset = new Date().getTimezoneOffset() * 60
+        const sunrise = new Date((json.sys.sunrise + json.timezone + timezoneOffset) * 1000).toLocaleString(navigator.language, {hour: '2-digit', minute:'2-digit'})
+        const sunset = new Date((json.sys.sunset + json.timezone + timezoneOffset) * 1000).toLocaleString(navigator.language, {hour: '2-digit', minute:'2-digit'})
         const weatherType = json.weather[0].main
         const wIcon = json.weather[0].icon
+
+       
 
         // HTML weather text for tablet and desktop, also changes bg color depending on weather type
         const moodGenerator = () => {
@@ -96,10 +98,6 @@ fetch(forecastUrl)
         
         // Displays the forecast weekday
         let forecastDay = new Date(data.dt_txt).toLocaleString('en-US', { weekday: 'long'})
-        const newDay = () => {
-            forecastDay = new Date(forecastDay.replace('', 'T'));
-            newDay()}
-            
         
         // HTML forecast weather
         let forecastHTML = ''
