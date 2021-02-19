@@ -1,5 +1,6 @@
 // Import scripts
 import { getWeatherToday, getForecastElement } from "./scripts/elements.js";
+import { getCities } from "./scripts/cities.js";
 
 // DOM Elements
 const weatherToday = document.getElementById("weatherToday");
@@ -9,89 +10,75 @@ const forecastContainer = document.getElementById("forecast");
 
 // Global variables
 const API_KEY = "a184167860dd69b553e449fca6814afb",
-  API_URL = "https://api.openweathermap.org/data/2.5/";
+  API_URL = "https://api.openweathermap.org/data/2.5/onecall?";
+let weatherData = {},
+  forecastSize = 6;
 
-let city = "La Motte";
+// set the default city
+weatherData.city = getCities("La Motte");
 
 /* FUNCTIONS */
-const fetchWeatherToday = () => {
+
+// Fetch weather data from onecall api endpoint
+// and insert relevant data into global weatherData object
+const fetchWeatherData = () => {
+  fetch(
+    `${API_URL}lat=${weatherData.city.position.lat}&lon=${weatherData.city.position.long}&exclude=minutely,hourly&units=metric&appid=${API_KEY}`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      weatherData["current"] = data.current;
+      // makes sure we only add a certtain number of forecast days.
+      weatherData["daily"] = data.daily.slice(1, forecastSize).map((item) => item);
+      // weatherData obj is now ready! Time to trigger the draw functions
+      drawWeatherToday();
+      drawForecast();
+      // DEBUG: remove on submission
+      console.log("WEATHER DATA: ", weatherData);
+    })
+    .catch((err) => console.log(`Error was thrown: ${err.message}`));
+};
+
+const drawWeatherToday = () => {
+  // 1. clear any data on the element
   weatherToday.innerHTML = "";
-  fetch(`${API_URL}weather?q=${city}&units=metric&appid=${API_KEY}`)
-    .then((response) => response.json())
-    .then((data) => {
-      const sunTimes = formatTime([data.sys.sunrise, data.sys.sunset]);
-      const weatherData = {
-        temp: data.main.temp.toFixed(1),
-        // type: data.weather[0].description,
-        type: {
-          icon: data.weather[0].icon,
-          main: data.weather[0].main,
-          description: data.weather[0].description,
-        },
-        city: city,
-        sunrise: sunTimes[0],
-        sunset: sunTimes[1],
-      };
-      weatherToday.innerHTML += getWeatherToday(weatherData);
+  // 2. Format any relevant data
+  const sunTimes = formatTime([weatherData.current.sunrise, weatherData.current.sunset]);
+  weatherData.current.sunrise = sunTimes[0];
+  weatherData.current.sunset = sunTimes[1];
+  weatherData.current.temp = weatherData.current.temp.toFixed(1);
 
-      // DEBUG: remove on submission
-      console.log(data);
-      console.log(weatherData);
-    })
-    .catch((err) => console.log(`Error was thrown: ${err.message}`));
+  // Insert data into element
+  weatherToday.innerHTML += getWeatherToday(weatherData.current, weatherData.city);
 };
 
-const fetchWeatherForecast = () => {
+const drawForecast = () => {
+  // 1. clear any data on the element
   forecast.innerHTML = "";
-  fetch(`${API_URL}forecast?q=${city}&units=metric&appid=${API_KEY}`)
-    .then((response) => response.json())
-    .then((data) => {
-      const forecastDataList = filterForecastData(data.list);
-
-      forecastDataList.forEach((forecast) => {
-        forecastContainer.innerHTML += getForecastElement(forecast);
-      });
-
-      // DEBUG: remove on submission
-      console.log(data);
-      console.log(forecastDataList);
-    })
-    .catch((err) => console.log(`Error was thrown: ${err.message}`));
-};
-
-const filterForecastData = (data) => {
-  let forecastDataList = [];
-
-  const middayForecasts = data.filter((item) => {
-    return item.dt_txt.includes("12:00:00");
+  // 2. Loop through the daily forecasts
+  // a. format any relevant data
+  // b. insert data into forecast element
+  weatherData.daily.forEach((dailyForecast, index) => {
+    const dayOfWeek = getDayOfWeek(dailyForecast.dt).toUpperCase();
+    weatherData.daily[index]["day"] = dayOfWeek;
+    weatherData.daily[index].temp.min = weatherData.daily[index].temp.min.toFixed(0);
+    weatherData.daily[index].temp.max = weatherData.daily[index].temp.max.toFixed(0);
+    forecast.innerHTML += getForecastElement(dailyForecast);
   });
-
-  middayForecasts.forEach((forecast) => {
-    const dayOfWeek = getDayOfWeek(forecast.dt_txt).toUpperCase();
-    forecastDataList.push({
-      day: dayOfWeek,
-      type: {
-        icon: forecast.weather[0].icon,
-        main: forecast.weather[0].main,
-        description: forecast.weather[0].description,
-      },
-      minTemp: forecast.main.temp_min.toFixed(0),
-      maxTemp: forecast.main.temp_max.toFixed(0),
-    });
-  });
-
-  return forecastDataList;
 };
 
 const getDayOfWeek = (date) => {
-  let _date = formatIOSDate(date);
-  const dateStrings = new Date(_date).toString().split(" ");
-  return dateStrings[0];
+  // 1. format the epoch time string to readable js format
+  let _date = new Date(date * 1000).toString();
+  // console.log(_date);
+  // 2. format the new readable date into iOS readable date
+  // let __date = new Date(_date.replace(/-/g, "/"));
+  // console.log(__date);
+  // let _date = formatIOSDate(date);
+  // const dateStrings = new Date(date * 1000).toString().split(" ");
+  return _date.split(" ")[0];
 };
 
-function formatIOSDate(date) {
-  return new Date(date.replace(/-/g, "/"));
-}
 const formatTime = (times) => {
   let formattedTimes = [];
   times.forEach((time) => {
@@ -109,18 +96,21 @@ const toggleMoreInfo = () => {
   forecast.classList.toggle("close");
   headerContainer.classList.toggle("expanded");
   headerContainer.querySelector("#sunTimes").classList.toggle("expanded");
-  headerContainer
-    .querySelector(".btn-round#showMore")
-    .classList.toggle("expanded");
+  headerContainer.querySelector(".btn-round#showMore").classList.toggle("expanded");
   headerContainer.querySelector("img#showMore").classList.toggle("turn");
 };
 
+/** This function changes the weatherData city object based on selected city by user */
 const changeCity = (newCity) => {
-  city = newCity;
-  fetchWeatherForecast();
-  fetchWeatherToday();
+  // 1. clear the weatherData global variable
+  weatherData = {};
+  // 2. set the new city
+  weatherData.city = getCities(newCity);
+  // 3. Trigger the fetch data function to load new data on site
+  fetchWeatherData();
 };
 
+/** This function toggles visual indication that a city is selected and currently viewed */
 const toggleCityLinks = (target) => {
   navBar.querySelectorAll("a").forEach((link) => {
     link.setAttribute("current", false);
@@ -129,8 +119,7 @@ const toggleCityLinks = (target) => {
 };
 
 /* EXECUTE PAGE LOAD FUNCTIONS */
-fetchWeatherToday();
-fetchWeatherForecast();
+fetchWeatherData();
 
 /* EVENT LISTENERS */
 headerContainer.addEventListener("click", (event) => {
@@ -151,8 +140,3 @@ navBar.addEventListener("click", (event) => {
     toggleCityLinks(target);
   }
 });
-
-// listCities.addEventListener("click", (event) => {
-//   const target = event.target;
-//   console.log(target);
-// });
