@@ -31,7 +31,7 @@ fetch(apiUrl)
 
     const hr = new Date().getHours();
     let isDay;
-    if (hr > json.sys.sunrise && hr < json.sys.sunset) {
+    if (hr > sunrise && hr < sunset) {
       isDay = true;
       nightDay.classList.add('day');
     } else {
