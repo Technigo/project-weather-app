@@ -55,7 +55,8 @@ const fetchWeatherForecast = () => {
       // DEBUG: remove on submission
       console.log(data);
       console.log(forecastDataList);
-    });
+    })
+    .catch((err) => console.log(`Error was thrown: ${err.message}`));
 };
 
 const filterForecastData = (data) => {
