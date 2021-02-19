@@ -82,9 +82,13 @@ const filterForecastData = (data) => {
   return forecastDataList;
 };
 
+function formatDate(date) {
+  return new Date(date.replace(/-/g, "/"));
+}
 const getDayOfWeek = (date) => {
-  const dateStrings = new Date(date).toString().split(" ");
-  // console.log(dates);
+  let _date = formatDate(date);
+  const dateStrings = new Date(_date).toString().split(" ");
+  console.log(dateStrings);
   return dateStrings[0];
 };
 
