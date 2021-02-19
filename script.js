@@ -40,7 +40,7 @@ fetch(apiUrl)
 
             if (currentTime >= sunriseValue && currentTime < sunsetValue) {
                 mainContainer.classList.add('main-day')
-            } else if (currentTime <= sunriseValue && currentTime > sunsetValue) {
+            } else {
                 mainContainer.classList.add('main-night')
                 console.log('else')
             }
@@ -76,7 +76,7 @@ fetch(apiUrlForecast)
                 </div>
                 <div class="icons-and-temp">
                     <img class="forecast-icons" src="http://openweathermap.org/img/wn/${iconValue2}.png"/>
-                    <p>${forecastTemp} °/</p>
+                    <p>${forecastTemp} °</p>
                     <p class="feels-like-temp-text">Feels like ${feelsLikeTempForecast} °C</p>
                 </div>
             </div>

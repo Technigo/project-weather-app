@@ -8,11 +8,16 @@
     <title>The Weather App</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Advent+Pro&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
+
+    <!-- Top section -->
     <main id="main" class="main">
+
         <!-- Hamburger menu -->
         <input id="menu" type="checkbox">
         <label for="menu"></label>
@@ -21,8 +26,11 @@
 
             <h1 class="current-temp" id="currentTemp"></h1>
             <p class="current-temp-sign">°c</p>
+            <img class="sthlm-icon" src="./stockholm-col.svg" alt="Stockholm siluette">
             <p id="feelsLikeTemp" class="feels-like-temp">Feels like </p>
+
         </section>
+
         <h2 id="city" class="city-name">City</h2>
 
         <div class="main-weather-icon" id="currentWeatherIcon">
@@ -38,8 +46,12 @@
         </div>
     </main>
 
+    <!-- Forecast section -->
     <section id="weeklyForecast" class="weekly-forecast"></section>
 
+    <section class="bottom-button">
+        <button class="tablet-desktop-button">Detailed forecast</button>
+    </section>
 
 
     <script src="./script.js"></script>
