@@ -1,13 +1,16 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The assignment was to create a weather app using an API by the fetching a forecast and other information.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The plan was to do the basic JS first and from there on add more API features and styling. We managed to follow the plan well.
+The biggest issue we had was following a predetermined styling. But it was very good practice at the same time. Another issue was that the dates were not fetched properly on IOS devices. This was solved through using Google.
+
+We mainly used Google, console.log and the dev tool to solve the issues we had.
+
+If we would have had more time we would have added a search function for the city and geolocation as well as a loop over the API to fetch all its cities.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://best-weatherapp-ever.netlify.app/
