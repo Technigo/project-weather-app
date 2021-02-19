@@ -1,13 +1,12 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The weeks project was to build a Weather App where we were supposed to show the weather in a city with a 5 days forecast.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We had some trouble with displaying diffrent days, but we solved it by using the filter method and sorted the temperatures by one single hour per day. Default response from API is to show several hours each day.
+If we had more time we would have added diffrent cities to choose between and changing the color of the background depending on the temperature.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://elastic-mirzakhani-e20ab1.netlify.app/
