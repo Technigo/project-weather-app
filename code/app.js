@@ -82,6 +82,11 @@ const filterForecastData = (data) => {
   return forecastDataList;
 };
 
+const getDayOfWeek = (date) => {
+  const dateObj = new Date(date);
+  return dateObj.toLocaleString("en-US", { weekday: "short" });
+};
+
 const formatTime = (times) => {
   let formattedTimes = [];
   times.forEach((time) => {
@@ -92,11 +97,6 @@ const formatTime = (times) => {
   return formattedTimes;
 };
 
-const getDayOfWeek = (date) => {
-  const dateObj = new Date(date);
-  return new Intl.DateTimeFormat("default", { weekday: "short" }).format(dateObj);
-};
-
 const toggleNavBar = () => {
   navBar.classList.toggle("open");
 };
@@ -104,7 +104,9 @@ const toggleMoreInfo = () => {
   forecast.classList.toggle("close");
   headerContainer.classList.toggle("expanded");
   headerContainer.querySelector("#sunTimes").classList.toggle("expanded");
-  headerContainer.querySelector(".btn-round#showMore").classList.toggle("expanded");
+  headerContainer
+    .querySelector(".btn-round#showMore")
+    .classList.toggle("expanded");
   headerContainer.querySelector("img#showMore").classList.toggle("turn");
 };
 
