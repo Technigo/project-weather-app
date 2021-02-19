@@ -13,7 +13,7 @@ Describe how you approached to problem, and what tools and techniques you used t
 If you had more time, what would be next?
 
 ## View it live
-At netlify here:
+At netlify: https://pensive-goldwasser-55ee84.netlify.app/
 
 Created by: Caroline Byström and Malin Gustafsson.
 
