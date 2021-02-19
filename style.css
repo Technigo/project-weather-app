@@ -1,24 +1,31 @@
 * {
-    border: 1px solid pink;
-}
+    /* border: 1px solid black;  */
+} 
 
 body {
     margin: 20px; 
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
 }
 
 .top-container {
     width: 450px;
     display: flex;
     flex-direction: column;
-    border: 2px solid black;
+    border: 1px solid black;
     align-items: center;
+    border-bottom: none;
+    border-radius: 20px 20px 0 0;
     justify-content: center;
     margin: 0 auto;
+    background: linear-gradient(to bottom left , #F4F7F8, #F47775);
+    padding-top: 20px;
 }
 
 .local-information {
     text-align: center;
     padding: 10px;
+    
 }
 
 .city-local {
@@ -31,20 +38,39 @@ body {
     font-style: bold;
 }
 
+.condition p {
+    color: white;
+    font-size: 30px;
+    margin: 0;
+    position: relative;
+    top: -20px;
+}
+
 .sunrise-sunset {
     width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-}
+  padding-bottom: 10px;
+ }
 
 .forecast-container {
     width: 450px;
     display: flex;
     flex-direction: column;
-    border: 2px solid black;
+    border: 1px solid black;
+    border-top:none;
+    border-radius: 0 0 20px 20px;
     margin: 0 auto;
+    background: linear-gradient(to bottom right , #F47775, #F4F7F8);
+    padding: 20px 0;
+}
+
+.divider {
+    background: #F4F7F8;
+    height: 1px;
+    width: 80%;
 }
 
 .day {
@@ -54,10 +80,11 @@ body {
     align-items: center;
     justify-content: space-evenly;
     overflow: hidden;
+    margin: 0 40px;
 }
 
 .week-day-name {
-    width: 300px;
+    width: 80px;
 }
 
 .day img {
@@ -65,7 +92,33 @@ body {
     width: 60px;
     height: 100%;
     object-fit: cover;
+    margin-right: 50px;
     
+}
+
+/* MEDIA QUERIES */
+
+@media (min-width: 768px) {
+    .top-container, .forecast-container {
+        width: 550px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .top-container {
+        width: 650px;
+        font-size: 20px;
+    }    
+    .forecast-container {
+        width: 650px;
+        font-size: 20px;
+    }
+    .week-day-name {
+        font-size: 20px;
+    }
+    .day {
+        height: 60px;
+    }
 }
 
 
