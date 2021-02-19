@@ -30,6 +30,8 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
             </section>
         `;
 
+        console.log('hellohello');
+
         //Weather Icon
         const weatherImage = () => {
             if (weather === "Clouds") {
