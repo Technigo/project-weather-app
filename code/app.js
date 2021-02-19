@@ -106,7 +106,7 @@ const weatherForecast = () => {
         if (dw === 0) {
           dtable.innerHTML += `
           <tr>
-            <td>Sun ${Math.round(elem.main.feels_like)}C</td>
+            <td>Sun ${Math.round(elem.main.feels_like)}°C</td>
             <td>${elem.weather[0].description}</td>
             <td><img class="forecast-icon" src="https://openweathermap.org/img/wn/${elem.weather[0].icon}@2x.png"></td>
           </tr>
