@@ -1,3 +1,7 @@
+# Project members
+
+Marielle Ohlsson & Katharina Liebig
+
 # Weather App
 
 The goal of this project was to create a weather app using APIs.
