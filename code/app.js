@@ -29,13 +29,12 @@ fetch(capeTownWeather)
     let cityName = json.name;
     let weatherDescription = json.weather[0].description;
     let iconID = json.weather[0].icon;
-    let sunriseAPI = `${json.sys.sunrise}`
-    let sunsetAPI = `${json.sys.sunset}`
-    let timeZone = `${json.timezone}`
-    let sunrise = new Date(sunriseAPI*1000).toLocaleTimeString([], {timeStyle: 'short'});
-    let sunset = new Date(sunsetAPI*1000).toLocaleTimeString([], {timeStyle: 'short'});
-    // let sunset = new Date((sunsetAPI + json.timezone + (new Date().getTimezoneOffset() * 60)) * 1000);
-    // const sunset = new Date((sunset + timezone + (new Date().getTimezoneOffset() * 60)) * 1000)
+    let sunriseAPI = json.sys.sunrise
+    let sunsetAPI = json.sys.sunset
+    let timeZone = json.timezone
+    let sunrise = new Date((sunriseAPI + timeZone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString([], {timeStyle: 'short'});
+    let sunset = new Date((sunsetAPI + timeZone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString([], {timeStyle: 'short'});
+    
 
     weatherSection.innerHTML = `
     <div class="current-weather">
