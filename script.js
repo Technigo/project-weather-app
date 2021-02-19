@@ -7,15 +7,17 @@ const temperature = document.getElementById('temperature')
 const sunrise = document.getElementById('sunrise')
 const sunset = document.getElementById('sunset')
 const week = document.getElementById('week')
-
+const header = document.getElementById('header')
+const weatherIcon = document.getElementById('weather-icon')
 
 fetch(url)
 .then((response) => (response.json()))
 .then((data) => {
  
+  
   city.innerHTML += ` ${data.name}`; 
   temperature.innerHTML += ` ${data.main.temp.toFixed(1)} ºC`;
-  weather.innerHTML += ` ${data.weather[0].description}`;
+  weather.innerHTML += `${data.weather[0].description}`;
   sunrise.innerHTML +=`${new Date((data.sys.sunrise + data.timezone) * 1000).toLocaleTimeString()}`
   sunset.innerHTML += `${new Date((data.sys.sunset + data.timezone) * 1000).toLocaleTimeString()}`
 })
