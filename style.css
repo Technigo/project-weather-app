@@ -27,7 +27,6 @@ img{
     display: flex;
     width: 300px;
     height: 100%; 
-    margin: 20px; 
 }
 .weather-container{
     display: flex;
