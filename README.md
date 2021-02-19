@@ -8,4 +8,4 @@ We started with the basic requerments. Used google and Stackoverflow alot. We di
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://matildas-and-ylvas-weather-app.netlify.app/
