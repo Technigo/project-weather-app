@@ -2,8 +2,9 @@
 
 * {
    margin: 0;
-  }
-  
+   padding: 0;
+}
+
 
 body{
     font-family: 'Poppins', sans-serif;
@@ -159,7 +160,6 @@ img{
 @media (min-width: 768px) and (max-width:991px){
     .wrapper{
         width: 400px;
-        height: 600px;
     }
     .current-city{
         font-size: 30px;
@@ -172,7 +172,6 @@ img{
 @media (min-width:992px){
     .wrapper{
         width: 500px;
-        height: 600px;
     }
     .current-city{
         font-size: 45px;
