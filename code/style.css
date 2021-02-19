@@ -1,29 +1,45 @@
 
 html {
   font-family: "Nunito", sans-serif;
+  color: white;
 }
 
 body {
   height: 100vh;
+  max-width: 100vw;
+  background-color: blue;
+  margin: 0;
 }
 
 .weather-container {
-  margin: 0 15px;
+  height: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+
 }
 
 .weather-section {
   height: 50%;
+  margin: 0 15px; 
+
 }
 
 .forecast {
   height: 50%;
+  margin: 0;
 }
 
 .five-day-forecast {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  margin: 2px 0;
+  color: black;
+  padding: 0 15px;
+  background-color: white;
+
 }
 
 .current-weather {
@@ -58,9 +74,9 @@ body {
 
 /* Weather Icons */
 .current-icon {
-  width: 200px;
+  width: 150px;
   margin-left: 100px;
-  top: 0;
+  top: 15px;
   left: 70px;
   position: absolute;
 }
@@ -73,5 +89,94 @@ body {
 }
 
 .forecast-icon {
-  width: 16%;
+  width: 30px;
+}
+
+.tribute {
+  margin: 0;
+}
+
+/* TABLET */
+
+@media (min-width: 767px) {
+  
+
+  .weather-section {
+    margin-left: 50px;
+  }
+
+  .sunrise-sunset {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 15px 0;
+  }
+
+  .sunrise-sunset p{
+    margin: 2px 0;
+  }
+
+  .current-icon {
+    width: 150px;
+    margin-left: 100px;
+    top: 15px;
+    left: 70px;
+    position: relative;
+  }
+
+  .current-temp {
+    font-size: 100px;
+  }
+
+  .celsius {
+    font-size: 30px;
+
+  }
+
+  html {
+   font-size: 2rem;
+  }
+
+  .tribute {
+    margin: 50px;
+  }
+
+  .five-day-forecast p {
+    margin: 15px 0;
+  }
+
+  .current-icon {
+    width: 200px;
+    
+  }
+
+  .hamburger-menu {
+    margin: 10px 0;
+    
+  }
+}
+
+@media (min-width: 920px) {
+ 
+
+  .weather-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .current-icon {
+    margin: 0px;  
+    top: 0px;
+    left: 0px;
+  }
+
+  .forecast {
+    margin: 100px 0;
+  }
+
+  .hamburger-menu {
+    width: 60px;
+    margin: 0;
+  }
 }
