@@ -52,7 +52,7 @@ body {
 
 .image-weather {
     position: absolute;
-    width: 200px;
+    width: 150px;
     top: -100px;
     left: 170px;
 }
@@ -163,6 +163,7 @@ h3 {
     }
 
     .image-weather {
+        width: 200px;
         position: static;
         order: 1;
         margin-left: 50px;
