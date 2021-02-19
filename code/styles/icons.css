@@ -1,5 +1,6 @@
 .icon-hamburger {
   position: absolute;
+  width: 7vw;
   margin-top: 30px;
 }
 
@@ -10,11 +11,19 @@
 }
 
 .icon-arrow-down {
-  width: 20px;
+  width: 7vw;
+  max-width: 20px;
   transform: rotate(90deg);
   transition: all 0.5s ease;
 }
 
 .icon-arrow-down.turn {
   transform: rotate(270deg);
+}
+
+.icon-wind {
+  width: 5vw;
+  max-width: 40px;
+  position: relative;
+  top: 13px;
 }

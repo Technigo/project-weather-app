@@ -2,8 +2,14 @@
   display: flex;
   justify-content: center;
   background-color: var(--primary);
-  width: clamp(25px, 20vw, 100px);
-  height: clamp(25px, 20vw, 100px);
+  /* width: clamp(25px, 20vw, 100px); */
+  width: 20vw;
+  max-width: 100px;
+  /* min-width: 25px; */
+  /* height: clamp(25px, 20vw, 100px); */
+  height: 20vw;
+  max-height: 100px;
+  /* min-height: 25px; */
   border-radius: 100px;
   box-shadow: 5px 2px 5px var(--shadow);
 }

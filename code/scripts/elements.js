@@ -23,6 +23,19 @@ export const getWeatherToday = (currentWeather, city) => {
       <h3>sunset</h3>
       <h3>${currentWeather.sunset}</h3>
     </div>
+    <div class="other-info hidden" id="moreInfo">
+      <h3>humidity</h3>
+      <h3>${currentWeather.humidity} %</h3>
+      <h3>wind</h3>
+      <h3>${currentWeather.wind_speed} m/s 
+        <img 
+          class="icon-wind" 
+          src="./assets/icon-arrow-up.svg"
+          style="transform: rotate(${currentWeather.wind_deg}deg)" />
+      </h3>
+      <h3>air pressure</h3>
+      <h3>${currentWeather.pressure} hPa</h3>
+    </div>
     <div class="btn btn-round btn--float" id="showMore">
       <img class="icon-arrow-down" id="showMore" src="./assets/icon-arrow.svg" />
     </div>  

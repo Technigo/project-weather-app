@@ -96,6 +96,7 @@ const toggleMoreInfo = () => {
   forecast.classList.toggle("close");
   headerContainer.classList.toggle("expanded");
   headerContainer.querySelector("#sunTimes").classList.toggle("expanded");
+  headerContainer.querySelector("#moreInfo").classList.toggle("hidden");
   headerContainer.querySelector(".btn-round#showMore").classList.toggle("expanded");
   headerContainer.querySelector("img#showMore").classList.toggle("turn");
 };
