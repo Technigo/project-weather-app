@@ -5,9 +5,10 @@ const condition = document.getElementById('condition')
 const iconToday = document.getElementById('icon-today')
 const sunrise = document.getElementById('sunrise')
 const sunset = document.getElementById('sunset')
+const topContainer = document.getElementById('top-container')
 const weeklyForecastContainer = document.getElementById('weekly-forecast-container')
 
-const currentWeatherApiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Swedentockholm,Sweden&units=metric&APPID='
+const currentWeatherApiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID='
 // Forecast 
 const forecastApiUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID='
 const apiKey = '3addfde144e16d817dcc3a5e9a46ea59' 
@@ -37,6 +38,7 @@ fetch (currentWeatherApiUrl + apiKey)
     })
     .catch ((err) => {
         console.log('caught error', err)
+        topContainer.innerHTML = `caught error: ${err}`
     })
   
 const getWeekday = (daysFromToday) => {
@@ -68,4 +70,5 @@ fetch (forecastApiUrl + apiKey)
     })
     .catch ((err) => {
         console.log('caught error', err)
+        weeklyForecastContainer.innerHTML = `caught error: ${err}`
     })
