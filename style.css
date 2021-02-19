@@ -1,0 +1,270 @@
+    body {
+        margin: auto;
+        background-color: #ffffff;
+        font-family: Roboto;
+    }
+    /***************** Main section *****************/
+    
+    .main {
+        background-color: blue;
+        padding: 20px 20px 0px 30px;
+        color: white;
+        border-radius: 0 0 300% 300%/0 0 50% 50%;
+        z-index: -1;
+    }
+    
+    .main-day {
+        background: linear-gradient(#8f95ff, #e9eaff);
+    }
+    
+    .main-night {
+        background: linear-gradient(#25275c, #6b6eab);
+    }
+    
+    .sthlm-icon {
+        display: none;
+    }
+    /***************** Hamburger menu *****************/
+    /* hiding the checkbox*/
+    
+    #menu {
+        visibility: hidden;
+        display: flex;
+        align-items: flex-start;
+    }
+    /* hamburger*/
+    
+    label,
+    label::before,
+    label::after {
+        position: absolute;
+        width: 28px;
+        height: 3px;
+        border-radius: 20px;
+        background: white;
+    }
+    
+    label {
+        cursor: pointer;
+    }
+    
+    label::before {
+        content: "";
+        transform: translateY(-8px);
+    }
+    
+    label::after {
+        content: "";
+        transform: translateY(8px);
+    }
+    
+    .sthlm-icon {
+        color: white;
+        width: 30%;
+    }
+    
+    .main-temp-container {
+        display: flex;
+        margin: 90px 0 0 0;
+        position: relative;
+    }
+    
+    .current-temp {
+        font-size: 85px;
+        margin: 0;
+    }
+    
+    .current-temp-sign {
+        font-size: 40px;
+        margin: 0;
+        font-weight: bold;
+    }
+    
+    .feels-like-temp {
+        margin: 0 0 0 10px;
+        position: absolute;
+        bottom: 14px;
+        right: 30px;
+        font-size: 20px;
+    }
+    
+    .city-name {
+        margin: 0;
+        font-size: 28px;
+    }
+    
+    .weather-description {
+        margin: 0;
+    }
+    
+    .sunrise-sunset {
+        display: flex;
+        justify-content: space-around;
+    }
+    
+    .sunrise-sunset p {
+        margin: 0;
+    }
+    
+    .button-container {
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+    .round-button {
+        border-radius: 50%;
+        background-color: #8086ff;
+        color: white;
+        font-size: 50px;
+        font-family: Advent Pro;
+        width: 90px;
+        height: 90px;
+        border-style: none;
+        box-shadow: 0 15px 20px -6px rgb(194, 192, 192);
+        z-index: 1;
+        position: relative;
+        top: 35px;
+        right: 10px;
+    }
+    
+    .round-button:hover {
+        cursor: pointer;
+        transform: scale(1.2);
+    }
+    /***************** Forecast section *****************/
+    
+    .weekly-forecast {
+        max-width: 80%;
+        margin: auto;
+        padding-top: 50px;
+    }
+    
+    .weekday-forecast-div {
+        display: flex;
+        justify-content: space-around;
+    }
+    
+    .weekday-forecast-div:hover {
+        background-color: rgb(194, 192, 192, 0.1);
+        cursor: pointer;
+        transform: scale(1.025);
+    }
+    
+    .icons-and-temp {
+        display: flex;
+        justify-content: space-between;
+        width: 250px;
+    }
+    
+    .forecast-icons {
+        padding-right: 15px;
+    }
+    
+    .feels-like-temp-text {
+        padding-left: 10px;
+        width: 125px;
+    }
+    /***************** Tablet-desktop button *****************/
+    
+    .bottom-button {
+        display: none;
+    }
+    
+    .tablet-desktop-button {
+        display: none;
+    }
+    /***************** Media queries Tablet *****************/
+    
+    @media (min-width: 768px) {
+        .sthlm-icon {
+            display: flex;
+            width: 20%;
+            position: relative;
+            z-index: 2;
+            margin-left: 20%;
+            opacity: 0.8;
+        }
+        .sunrise-sunset {
+            padding: 0 0 30px 0;
+            font-weight: bold;
+        }
+        .button-container {
+            display: none;
+        }
+        .current-weather-icon {
+            width: 80px;
+        }
+        .bottom-button {
+            display: flex;
+            justify-content: center;
+            margin: 50px 0 0 0;
+        }
+        .tablet-desktop-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #8086ff;
+            color: white;
+            font-size: 20px;
+            font-family: Roboto;
+            font-weight: bold;
+            width: 250px;
+            height: 60px;
+            border-style: none;
+            box-shadow: 0 15px 20px -6px rgb(194, 192, 192);
+            margin-bottom: 30px;
+        }
+        .tablet-desktop-button:hover {
+            cursor: pointer;
+            opacity: 0.8;
+            transform: scale(1.1);
+        }
+    }
+    /***************** Media queries Desktop *****************/
+    
+    @media (min-width: 992px) {
+        .current-temp {
+            font-size: 120px;
+        }
+        .current-temp-sign {
+            font-size: 80px;
+        }
+        .feels-like-temp {
+            font-size: 30px;
+            position: absolute;
+            left: 0;
+        }
+        .city-name {
+            font-size: 80px;
+            margin-top: 20px;
+        }
+        .weather-description {
+            font-size: 40px;
+        }
+        .sunrise-sunset {
+            width: 1000px;
+            margin: auto;
+        }
+        .sunrise-sunset p {
+            font-size: 28px;
+        }
+        .weekly-forecast {
+            font-size: 24px;
+            width: 800px;
+            align-items: center;
+        }
+        .icons-and-temp {
+            display: flex;
+            justify-content: space-evenly;
+            width: 400px;
+        }
+        .forecast-icons {
+            margin-left: 20px;
+            margin-top: 12px;
+            height: 50px;
+        }
+        .feels-like-temp-text {
+            width: 200px;
+            padding: 0;
+        }
+    }
