@@ -4,10 +4,6 @@
   margin: 30px;
 }
 
-.forecast.close {
-  display: none;
-}
-
 .forecast__daily {
   display: grid;
   width: 100%;
@@ -25,4 +21,10 @@
 .forecast__daily--image {
   justify-self: center;
   height: 100%;
+}
+
+/* EXPANDED */
+
+.forecast.close {
+  display: none;
 }

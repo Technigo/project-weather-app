@@ -1,3 +1,4 @@
+/** This function returns a city object based on cityName parameter */
 export const getCities = (cityName) => {
   const cities = [
     {

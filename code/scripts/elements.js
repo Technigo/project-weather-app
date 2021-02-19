@@ -1,3 +1,5 @@
+/** These functions returns a html element with the given data */
+
 export const getWeatherToday = (currentWeather, city) => {
   let html = `
     <img
@@ -46,7 +48,6 @@ export const getWeatherToday = (currentWeather, city) => {
 
 export const getForecastElement = (data) => {
   let html = "";
-
   html += `
     <div class="forecast__daily">
       <p class="forecast__daily--items">

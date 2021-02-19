@@ -13,4 +13,5 @@
 @import "./styles/header.css";
 @import "./styles/forecast.css";
 
+/* Import styles specific to large screens */
 @import "./styles/largeDevices.css" (min-width: 550px);

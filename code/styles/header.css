@@ -6,21 +6,7 @@
   position: relative;
 }
 
-.header-info__bkg {
-  position: absolute;
-  z-index: -1;
-  width: 200vw;
-  top: -50vw;
-  left: -50vw;
-}
-
-.header-info.expanded {
-  height: 100%;
-  max-height: 100vh;
-  background: var(--primary);
-  background: linear-gradient(180deg, rgba(133, 137, 255, 1) 0%, rgba(232, 233, 255, 1) 100%);
-}
-
+/* Wrappers */
 .header-info__wrapper {
   display: flex;
   flex-direction: column;
@@ -33,6 +19,16 @@
   flex-flow: row nowrap;
 }
 
+/* Background image */
+.header-info__bkg {
+  position: absolute;
+  z-index: -1;
+  width: 200vw;
+  top: -50vw;
+  left: -50vw;
+}
+
+/* The weather type icon */
 .header-info__icon {
   height: min(30vw, 150px);
   position: relative;
@@ -40,6 +36,10 @@
   align-self: flex-end;
 }
 
+/* Position and styles for:
+  - sun times
+  - other info (only visible in expanded mode)  
+*/
 .sun-times__wrapper,
 .other-info {
   display: flex;
@@ -57,6 +57,14 @@
   display: none;
 }
 
+/* EXPANDED */
+.header-info.expanded {
+  height: 100%;
+  max-height: 100vh;
+  background: var(--primary);
+  background: linear-gradient(180deg, rgba(133, 137, 255, 1) 0%, rgba(232, 233, 255, 1) 100%);
+}
+
 .sun-times__wrapper.expanded,
 .other-info:not(.hidden) {
   flex-wrap: wrap;
@@ -64,6 +72,7 @@
   margin-bottom: 5px;
   line-height: 3;
 }
+
 .sun-times__wrapper.expanded > h3,
 .other-info:not(.hidden) > h3 {
   width: 50%;

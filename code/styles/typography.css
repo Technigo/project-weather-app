@@ -1,7 +1,12 @@
+/* Set default font family and weight */
 * {
   font-family: "Roboto", sans-serif;
   font-weight: 300;
 }
+
+/** Sets the margon to 0 on used elements as default 
+* (may be overidden by other classes further down the load queue) 
+*/
 
 h1,
 h2,
@@ -17,6 +22,7 @@ h1 + span {
   color: white;
 }
 
+/* Set any font sizes for the used typography elements */
 h1 {
   font-size: min(25vw, 120px);
 }

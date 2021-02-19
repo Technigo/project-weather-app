@@ -21,6 +21,8 @@
 .nav-bar__btn {
   display: none;
 }
+
+/* Makes sure that the navbar is moved to top of page (instead of acting like a sidebar) */
 .nav-bar {
   transform: translateX(0px);
   display: flex;

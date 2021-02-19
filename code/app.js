@@ -1,14 +1,17 @@
-// Import scripts
+/* ----------------------------- Import scripts ----------------------------- */
+
 import { getWeatherToday, getForecastElement } from "./scripts/elements.js";
 import { getCities } from "./scripts/cities.js";
 
-// DOM Elements
+/* ------------------------------ DOM Elements ------------------------------ */
+
 const weatherToday = document.getElementById("weatherToday");
 const headerContainer = document.getElementById("headerContainer");
 const navBar = document.getElementById("navBar");
 const forecastContainer = document.getElementById("forecast");
 
-// Global variables
+/* ---------------------------- Global variables ---------------------------- */
+
 const API_KEY = "a184167860dd69b553e449fca6814afb",
   API_URL = "https://api.openweathermap.org/data/2.5/onecall?";
 let weatherData = {},
@@ -17,10 +20,13 @@ let weatherData = {},
 // set the default city
 weatherData.city = getCities("La Motte");
 
-/* FUNCTIONS */
+/* -------------------------------------------------------------------------- */
+/*                                  FUNCTIONS                                 */
+/* -------------------------------------------------------------------------- */
 
-// Fetch weather data from onecall api endpoint
-// and insert relevant data into global weatherData object
+/** This function fetches weather data from onecall api endpoint.
+ * Then insert relevant data into global weatherData object
+ */
 const fetchWeatherData = () => {
   fetch(
     `${API_URL}lat=${weatherData.city.position.lat}&lon=${weatherData.city.position.long}&exclude=minutely,hourly&units=metric&appid=${API_KEY}`
@@ -33,12 +39,11 @@ const fetchWeatherData = () => {
       // weatherData obj is now ready! Time to trigger the draw functions
       drawWeatherToday();
       drawForecast();
-      // DEBUG: remove on submission
-      console.log("WEATHER DATA: ", weatherData);
     })
     .catch((err) => console.log(`Error was thrown: ${err.message}`));
 };
 
+/** This function uses the weather data obj to draw todays weather */
 const drawWeatherToday = () => {
   // 1. clear any data on the element
   weatherToday.innerHTML = "";
@@ -52,6 +57,7 @@ const drawWeatherToday = () => {
   weatherToday.innerHTML += getWeatherToday(weatherData.current, weatherData.city);
 };
 
+/** This function uses the weather data obj to draw the forecast */
 const drawForecast = () => {
   // 1. clear any data on the element
   forecast.innerHTML = "";
@@ -143,10 +149,14 @@ const showPosition = (pos) => {
   fetchWeatherData();
 };
 
-/* EXECUTE PAGE LOAD FUNCTIONS */
+/* ------------------------------ ON PAGE LOAD ------------------------------ */
+
 fetchWeatherData();
 
-/* EVENT LISTENERS */
+/* -------------------------------------------------------------------------- */
+/*                               EVENT LISTENERS                              */
+/* -------------------------------------------------------------------------- */
+
 headerContainer.addEventListener("click", (event) => {
   const target = event.target;
   if (target.id === "btnSideMenu") {
