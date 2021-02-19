@@ -33,9 +33,6 @@ fetch(url)
   } else {
   	document.body.className = 'clear';
   }
-
-
-
 })
 
 .catch((error)=>{

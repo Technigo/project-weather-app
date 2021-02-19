@@ -9,12 +9,10 @@ body {
   height: 100%;
   font-family: "Assistant", sans-serif;
   color: aliceblue;
-  font-size: 1.8rem;
 }
 
 h1 {
   font-size: 4rem;
-  color: aliceblue;
 }
 
 h2 {
@@ -25,11 +23,16 @@ h2 {
 h3 {
   font-size: 1.6rem;
 }
+
 .main {
-  overflow: hidden;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
-/*Current weather section*/
+/*** Current weather section ***/
 
 .current-data {
   margin-top: 3rem;
@@ -40,10 +43,11 @@ h3 {
 }
 
 .set-rise-values {
-  display: inline-block;
+  display: flex;
   justify-content: space-between;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   margin-top: 1.5rem;
+  width: 250px;
 }
 
 .forecast-container {
@@ -55,6 +59,8 @@ h3 {
   margin: 2.5rem;
   padding: 40px 40px 65px 40px;
   border: aliceblue solid 1px;
+  width: 80%;
+  font-size: 1.5rem;
 }
 
 .week p {
@@ -62,6 +68,12 @@ h3 {
   display: flex;
   justify-content: space-between;
 }
+
+footer {
+  display: none;
+}
+
+/*** Backgrounds according to weather description ***/
 
 body.clear {
   background-image: linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
@@ -98,15 +110,36 @@ body.rainy {
   );
 }
 
-/**** Media queries****/
+/*** Media queries ***/
 /*Tablet*/
 
-@media (min-width: 667px) and (max-width: 1024px) {
+@media (min-width: 768px) {
+  .forecast-container {
+    margin-bottom: 5rem;
+  }
+
   .set-rise-values {
-    width: 500px;
     display: flex;
     justify-content: space-around;
     font-size: 1.5rem;
     margin-top: 1.5rem;
+    width: 700px;
   }
+
+  footer {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main {
+    overflow: hidden;
+  }
+}
+footer {
+  background-color: aliceblue;
+  color: #7f96a0;
+  height: 50px;
+  text-align: center;
+  padding: 18px;
 }
