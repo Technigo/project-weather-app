@@ -26,7 +26,7 @@ img{
 .wrapper{
     display: flex;
     width: 300px;
-    height: 550px;
+    height: 100%
 }
 .weather-container{
     display: flex;
@@ -177,7 +177,7 @@ img{
         font-size: 45px;
     }
     .current-temp{
-        font-size: 30px;
+        font-size: 30px; 
     }
 
 }
