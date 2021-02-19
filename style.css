@@ -37,7 +37,9 @@ img{
 }
 
 .day-time{
-    background: linear-gradient( 0deg, rgb(170, 189, 132) 0%, rgb(208, 194, 163) 72% );
+    /* background: linear-gradient( 0deg, rgb(170, 189, 132) 0%, rgb(208, 194, 163) 72% ); */
+    background: linear-gradient(0deg,rgba(34, 128, 195, 1) 14%, rgba(117, 202, 210, 1) 94%
+      );
     background-size: cover;
     background-repeat: no-repeat;
 }

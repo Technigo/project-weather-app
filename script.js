@@ -40,7 +40,8 @@ fetch (`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metr
         let minutesSunSet = hourAndMinutes(sunSet.getMinutes())
 
         const changeBackground = () => {
-            const time = (new Date(data.dt * 1000).getHours());
+            // const time = (new Date(data.dt * 1000).getHours());
+            const time=9;
                 if (time >= 7 && time <= 17) {
                     weatherDescDiv.classList.add('day')
                     body.classList.add('day-time')
