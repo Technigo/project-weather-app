@@ -7,7 +7,6 @@
 
 body {
   height: 100%;
-  background-image: linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
   font-family: "Assistant", sans-serif;
   color: aliceblue;
   font-size: 1.8rem;
@@ -33,6 +32,7 @@ h3 {
 /*Current weather section*/
 
 .current-data {
+  margin-top: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -53,4 +53,60 @@ h3 {
   align-items: center;
   font-size: 1.8rem;
   margin: 2.5rem;
+  padding: 40px 40px 65px 40px;
+  border: aliceblue solid 1px;
+}
+
+.week p {
+  border-bottom: aliceblue solid 1px;
+  display: flex;
+  justify-content: space-between;
+}
+
+body.clear {
+  background-image: linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
+}
+
+body.sunny {
+  background-image: linear-gradient(
+    to right top,
+    #ff4e50,
+    #ff713e,
+    #ff932b,
+    #ffb41d,
+    #f9d423
+  );
+}
+body.cloudy {
+  background-image: linear-gradient(
+    to right top,
+    #63747c,
+    #71858e,
+    #7f96a0,
+    #8da8b2,
+    #9bbac5
+  );
+}
+body.rainy {
+  background-image: linear-gradient(
+    to right top,
+    #637c7b,
+    #718e8c,
+    #7ea09e,
+    #8db2b0,
+    #9bc5c3
+  );
+}
+
+/**** Media queries****/
+/*Tablet*/
+
+@media (min-width: 667px) and (max-width: 1024px) {
+  .set-rise-values {
+    width: 500px;
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+  }
 }

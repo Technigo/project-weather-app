@@ -22,6 +22,20 @@ fetch(url)
   weather.innerHTML += `${data.weather[0].description}`;
   sunrise.innerHTML +=`${new Date((data.sys.sunrise + data.timezone) * 1000).toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit', hour12:false,})}`
   sunset.innerHTML += `${new Date((data.sys.sunset + data.timezone) * 1000).toLocaleTimeString('en-US',{hour: '2-digit', minute:'2-digit', hour12:false,})}`
+
+ 
+ if( data.weather[0].description.indexOf('rain') > 0 ) {
+  	document.body.className = 'rainy';
+  } else if( data.weather[0].description.indexOf('cloud') > 0 ) {
+  	document.body.className = 'cloudy';
+  } else if( data.weather[0].description.indexOf('sunny') > 0 ) {
+  	document.body.className = 'sunny';
+  } else {
+  	document.body.className = 'clear';
+  }
+
+
+
 })
 
 .catch((error)=>{
