@@ -7,7 +7,7 @@ const sunrise = document.getElementById('sunrise')
 const sunset = document.getElementById('sunset')
 const weeklyForecastContainer = document.getElementById('weekly-forecast-container')
 
-const currentWeatherApiUrl = 'http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Swedentockholm,Sweden&units=metric&APPID='
+const currentWeatherApiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Swedentockholm,Sweden&units=metric&APPID='
 // Forecast 
 const forecastApiUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID='
 const apiKey = '3addfde144e16d817dcc3a5e9a46ea59' 
