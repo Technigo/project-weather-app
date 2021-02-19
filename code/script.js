@@ -15,7 +15,6 @@ fetch (URLDAILYWEATHER)
     })
     .then((data) => {
         console.log("daily URL", data)
-
         //weather
         const fetchDailyWeather = data.weather[0].main 
         // temperature
@@ -33,48 +32,48 @@ fetch (URLDAILYWEATHER)
 
         // Todays weather
         const iconDailyWeather = () => {
-        //console.log(fetchDailyWeather)
+        console.log(fetchDailyWeather)
                if (fetchDailyWeather === "Drizzle") {
                     mainDailyWeather.innerHTML = `
                     <div class="main-wrapper">
                         <img class="weather_icon" src="./assets/004-rain.svg" alt="icon weather">
-                        <h1 class="main-heading"> The weather in ${data.name} is sunny bring your sunscreen</h1>
+                        <h1 class="main-heading"> The weather in ${data.name} is drizzel, you might want an umbrella.</h1>
                     </div>`
                } else if (fetchDailyWeather === "Clear") {
                     mainDailyWeather.innerHTML = `
                     <div class="main-wrapper">
                         <img class="weather_icon" src="./assets/001-sun.svg" alt="icon weather">
-                        <h1 class="main-heading"> The weather in ${data.name} is sunny bring your sunscreen</h1>
+                        <h1 class="main-heading"> The weather in ${data.name} is sunny, don't forget your sunglases.</h1>
                     </div>`
                } else if (fetchDailyWeather === "Rain") {
                     mainDailyWeather.innerHTML = `
                     <div class="main-wrapper">
                         <img class="weather_icon" src="./assets/004-rain.svg" alt="icon weather">
-                        <h1 class="main-heading"> The weather in ${data.name} is sunny bring your sunscreen</h1>
+                        <h1 class="main-heading"> The weather in ${data.name} is rainy, bring your raincoat.</h1>
                     </div>`
                } else if (fetchDailyWeather === "Thunderstorm") {
                     mainDailyWeather.innerHTML = `
                     <div class="main-wrapper">
                         <img class="weather_icon" src="./assets/010-thunderstorm.svg" alt="icon weather">
-                        <h1 class="main-heading"> The weather in ${data.name} is sunny bring your sunscreen</h1>
+                        <h1 class="main-heading"> The weather in ${data.name} is stormy, better stay inside.</h1>
                      </div>`
                } else if (fetchDailyWeather === "Snow") {
                     mainDailyWeather.innerHTML = `
                     <div class="main-wrapper">
                         <img class="weather_icon" src="./assets/009-snowy.svg" alt="icon weather">
-                        <h1 class="main-heading"> The weather in ${data.name} is sunny bring your sunscreen</h1>
+                        <h1 class="main-heading"> The weather in ${data.name} is snowy, bring out your skies.</h1>
                     </div>`
                } else if (fetchDailyWeather === "Clouds") {
                     mainDailyWeather.innerHTML = `
                     <div class="main-wrapper">
                         <img class="weather_icon" src="./assets/002-cloud.svg" alt="icon weather">
-                        <h1 class="main-heading"> The weather in ${data.name} is sunny bring your sunscreen</h1>
+                        <h1 class="main-heading"> The weather in ${data.name} is cloudy, a perfect day to strole around.</h1>
                     </div>`
                } else {
                     mainDailyWeather.innerHTML = `
                     <div class="main-wrapper">
                         <img class="weather_icon" src="./assets/030-haze.svg" alt="icon weather">
-                        <h1 class="main-heading"> The weather in ${data.name} is sunny bring your sunscreen</h1>
+                        <h1 class="main-heading"> The weather in ${data.name} is foggy, dont get lost in the mist.</h1>
                     </div>`
                }
             }
