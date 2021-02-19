@@ -4,10 +4,8 @@ const URLWEEKLYFORECAST = 'https://api.openweathermap.org/data/2.5/forecast?q=St
 
 // All the DOM selectors stored as short variables
 const containerDailyWeather = document.getElementById('containerDailyWeather')
-const dailyTemp = document.getElementById('dailyTemp') 
-const sunrise = document.getElementById('sunrise')
-const sunset = document.getElementById('sunset')
-const city = document.getElementById('location')
+const topDailyWeather = document.getElementById('topDailyWeather') 
+const mainDailyWeather = document.getElementById('mainDailyWeather')
 const icon = document.getElementById('icon')
 const mainWeather = document.getElementById('mainWeather')
 const weekForecast = document.getElementById('weekForecast')
@@ -23,36 +21,48 @@ fetch (URLDAILYWEATHER)
         // temperature
         const temp = data.main.temp
         const roundedTemp = temp.toFixed() // no decimal
-        dailyTemp.innerHTML = `Todays temperature: ${roundedTemp}°` // add html element here or in index.html?
-
         // sunrise and sunset
         const sunriseHour = new Date((data.sys.sunrise)*1000).toLocaleTimeString('se-SE', {hour:'numeric', minute: 'numeric'})
-            sunrise.innerHTML = `Sunrise: ${sunriseHour}`// add html element here or in index.html?
-        
         const sunsetHour = new Date(data.sys.sunset*1000).toLocaleTimeString('se-SE', {hour:'numeric', minute: 'numeric'})
-            sunset.innerHTML = `Sunset: ${sunsetHour}` // add html-element here or in index.html?
+        topDailyWeather.innerHTML = `
+        <div>
+            <p>Todays temperature: ${roundedTemp}°</p>
+            <p>Sunrise: ${sunriseHour}</p>
+            <p>Sunset: ${sunsetHour}</p>
+        </div>`
 
-        // Todays weather from weather-array
+        // Todays weather
         const fetchDailyWeather = data.weather[0].main 
-            city.innerHTML = `The weather in ${data.name}:` // add html-element here or in index.html?
-            mainWeather.innerHTML = `${fetchDailyWeather}` // add html-element here or in index.html?
-
-        // Icons - daily weather 
-           const iconDailyWeather = () => {
-               if (fetchDailyWeather == "Drizzle") {
-                   icon.innerHTML = `<img class="weather_icon" src="./assets/004-rain.svg" alt="icon weather">`
-               } else if (fetchDailyWeather == "Clear") {
-                   icon.innerHTML = `<img class="weather_icon" src="./assets/001-sun.svg" alt="icon weather">`
-               } else if (fetchDailyWeather == "Rain") {
-                   icon.innerHTML = `<img class="weather_icon" src="./assets/004-rain.svg" alt="icon weather">`
-               } else if (fetchDailyWeather == "Thunderstorm") {
-                   icon.innerHTML = `<img class="weather_icon" src="./assets/010-thunderstorm.svg" alt="icon weather">`
-               } else if (fetchDailyWeather == "Snow") {
-                   icon.innerHTML = `<img class="weather_icon" src="./assets/009-snowy.svg" alt="icon weather">`
-               } else if (fetchDailyWeather == "Clouds") {
-                   icon.innerHTML = `<img class="weather_icon" src="./assets/002-cloud.svg" alt="icon weather">`
+        const iconDailyWeather = () => {
+        //console.log(fetchDailyWeather)
+               if (fetchDailyWeather === "Drizzle") {
+                    mainDailyWeather.innerHTML = `
+                        <p> The weather in ${data.name} is sunny bring your sunscreen</p>
+                        <img class="weather_icon" src="./assets/004-rain.svg" alt="icon weather">`
+               } else if (fetchDailyWeather === "Clear") {
+                    mainDailyWeather.innerHTML = `
+                        <p> The weather in ${data.name} is sunny bring your sunscreen</p>
+                        <img class="weather_icon" src="./assets/001-sun.svg" alt="icon weather">`
+               } else if (fetchDailyWeather === "Rain") {
+                    mainDailyWeather.innerHTML = `
+                        <p> The weather in ${data.name} is sunny bring your sunscreen</p>
+                        <img class="weather_icon" src="./assets/004-rain.svg" alt="icon weather">`
+               } else if (fetchDailyWeather === "Thunderstorm") {
+                    mainDailyWeather.innerHTML = `
+                        <p> The weather in ${data.name} is sunny bring your sunscreen</p>
+                        <img class="weather_icon" src="./assets/010-thunderstorm.svg" alt="icon weather">`
+               } else if (fetchDailyWeather === "Snow") {
+                    mainDailyWeather.innerHTML = `
+                        <p> The weather in ${data.name} is sunny bring your sunscreen</p>
+                        <img class="weather_icon" src="./assets/009-snowy.svg" alt="icon weather">`
+               } else if (fetchDailyWeather === "Clouds") {
+                    mainDailyWeather.innerHTML = `
+                        <p> The weather in ${data.name} is sunny bring your sunscreen</p>
+                        <img class="weather_icon" src="./assets/002-cloud.svg" alt="icon weather">`
                } else {
-                   icon.innerHTML = `<img class="weather_icon" src="./assets/Group34.png" alt="icon weather">`
+                    mainDailyWeather.innerHTML = `
+                        <p> The weather in ${data.name} is sunny bring your sunscreen</p>
+                        <img class="weather_icon" src="./assets/030-haze.svg" alt="icon weather">`
                }
             }
             iconDailyWeather()
@@ -64,6 +74,7 @@ fetch (URLDAILYWEATHER)
     .finally(() => console.log('Request finished'))
 
     // fetch URL for weekly forecast
+    //const fetchWeekly 
     fetch (URLWEEKLYFORECAST)
         .then((response) => {
             return response.json()
@@ -81,7 +92,7 @@ fetch (URLDAILYWEATHER)
                 //console.log('day name', dayName, day.weather[0].description, day.main.temp)
 
                 const iconWeeklyForecast = () => {
-                    if (day.weather[0].main == "Drizzle") {
+                    if (day.weather[0].main === "Drizzle") {
                         weekForecast.innerHTML += `
                         <tr>
                             <td>${dayName}</td>
@@ -91,7 +102,7 @@ fetch (URLDAILYWEATHER)
                             <td>${day.main.temp.toFixed()}°</td>
                         </tr>`
 
-                    } else if (day.weather[0].main == "Clear") {
+                    } else if (day.weather[0].main === "Clear") {
                         weekForecast.innerHTML += `
                         <tr>
                             <td>${dayName}</td>
@@ -100,7 +111,7 @@ fetch (URLDAILYWEATHER)
                             </td>
                             <td>${day.main.temp.toFixed()}°</td>
                         </tr>`
-                    } else if (day.weather[0].main == "Rain") {
+                    } else if (day.weather[0].main === "Rain") {
                         weekForecast.innerHTML += `
                         <tr>
                             <td>${dayName}</td>
@@ -109,7 +120,7 @@ fetch (URLDAILYWEATHER)
                             </td>
                             <td>${day.main.temp.toFixed()}°</td>
                         </tr>`
-                    } else if (day.weather[0].main == "Thunderstorm") {
+                    } else if (day.weather[0].main === "Thunderstorm") {
                         weekForecast.innerHTML += `
                         <tr>
                             <td>${dayName}</td>
@@ -118,7 +129,7 @@ fetch (URLDAILYWEATHER)
                             </td>
                             <td>${day.main.temp.toFixed()}°</td>
                         </tr>`
-                    } else if (day.weather[0].main == "Snow") {
+                    } else if (day.weather[0].main === "Snow") {
                         weekForecast.innerHTML += `
                         <tr>
                             <td>${dayName}</td>
@@ -127,7 +138,7 @@ fetch (URLDAILYWEATHER)
                             </td>
                             <td>${day.main.temp.toFixed()}°</td>
                         </tr>`
-                    } else if (day.weather[0].main == "Clouds") {
+                    } else if (day.weather[0].main === "Clouds") {
                         weekForecast.innerHTML += `
                         <tr>
                             <td>${dayName}</td>
@@ -137,6 +148,15 @@ fetch (URLDAILYWEATHER)
                             <td>${day.main.temp.toFixed()}°</td>
                         </tr>`
                     } else {
+                        weekForecast.innerHTML += `
+                        <tr>
+                            <td>${dayName}</td>
+                            <td>
+                                <img src="./assets/030-haze.svg" alt="icon weather">
+                            </td>
+                            <td>${day.main.temp.toFixed()}°</td>
+                        </tr>`
+
                         
                     }
                  }
