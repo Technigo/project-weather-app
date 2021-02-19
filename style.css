@@ -3,6 +3,7 @@
         background-color: #ffffff;
         font-family: Roboto;
     }
+    /***************** Main section *****************/
     
     .main {
         background-color: blue;
@@ -56,7 +57,6 @@
         content: "";
         transform: translateY(8px);
     }
-    /* end of hamburger*/
     
     .sthlm-icon {
         color: white;
@@ -100,8 +100,6 @@
     .sunrise-sunset {
         display: flex;
         justify-content: space-around;
-        /* align-self: center; */
-        /* align-items: center; */
     }
     
     .sunrise-sunset p {
@@ -133,6 +131,7 @@
         cursor: pointer;
         transform: scale(1.2);
     }
+    /***************** Forecast section *****************/
     
     .weekly-forecast {
         max-width: 80%;
@@ -165,6 +164,7 @@
         padding-left: 10px;
         width: 125px;
     }
+    /***************** Tablet-desktop button *****************/
     
     .bottom-button {
         display: none;
@@ -173,7 +173,7 @@
     .tablet-desktop-button {
         display: none;
     }
-    /* MEDIA QUERIES TABLET */
+    /***************** Media queries Tablet *****************/
     
     @media (min-width: 768px) {
         .sthlm-icon {
@@ -220,7 +220,7 @@
             transform: scale(1.1);
         }
     }
-    /* MEDIA QUERIES DESKTOP */
+    /***************** Media queries Desktop *****************/
     
     @media (min-width: 992px) {
         .current-temp {

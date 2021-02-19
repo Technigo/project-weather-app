@@ -14,46 +14,37 @@
 </head>
 
 <body>
-
     <!-- Top section -->
     <main id="main" class="main">
-
         <!-- Hamburger menu -->
         <input id="menu" type="checkbox">
         <label for="menu"></label>
-
         <section class="main-temp-container">
-
-            <h1 class="current-temp" id="currentTemp"></h1>
+            <h1 id="currentTemp" class="current-temp"></h1>
             <p class="current-temp-sign">°c</p>
             <img class="sthlm-icon" src="./stockholm-col.svg" alt="Stockholm siluette">
             <p id="feelsLikeTemp" class="feels-like-temp">Feels like </p>
-
         </section>
-
         <h2 id="city" class="city-name">City</h2>
-
-        <div class="main-weather-icon" id="currentWeatherIcon">
+        <div id="currentWeatherIcon" class="main-weather-icon">
             <h3 id="weatherDescription" class="weather-description"></h3>
         </div>
-
         <div class="sunrise-sunset">
             <p id="sunrise">Sunrise </p>
             <p id="sunset">Sunset </p>
         </div>
+        <!-- End of Top section -->
+        <!-- Button for mobile view -->
         <div class="button-container">
             <button class="round-button">></button>
         </div>
     </main>
-
     <!-- Forecast section -->
     <section id="weeklyForecast" class="weekly-forecast"></section>
-
+    <!-- Button for tablet & desktop view -->
     <section class="bottom-button">
         <button class="tablet-desktop-button">Detailed forecast</button>
     </section>
-
-
     <script src="./script.js"></script>
 </body>
 
