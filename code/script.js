@@ -60,36 +60,37 @@ fetch(StockholmForecastAPI)
     } 
   })
   .then((data) => {
-  console.log(data)
-  const filteredForecast = data.list.filter(item => item.dt_txt.includes('12:00'))
-    console.log(filteredForecast)
-    filteredForecast.forEach((day) => {
-      let temp = day.main.temp
-      let tempRounded = Math.round(temp)
+    console.log(data)
+    const filteredForecast = data.list.filter(item => item.dt_txt.includes('12:00'))
+      console.log(filteredForecast)
 
-      let feelsLike = day.main.feels_like
-      let feelsLikeRounded = Math.round(feelsLike)
-      let icon = 'http://openweathermap.org/img/wn/' + day.weather[0].icon +'.png' 
+      filteredForecast.forEach((day) => {
+        let temp = day.main.temp
+        let tempRounded = Math.round(temp)
 
-      console.log(tempRounded, feelsLikeRounded)
+        let feelsLike = day.main.feels_like
+        let feelsLikeRounded = Math.round(feelsLike)
+        let icon = 'http://openweathermap.org/img/wn/' + day.weather[0].icon +'.png' 
 
-      let nextDays = new Date(day.dt_txt)
-      let weekdayInteger = nextDays.getDay()
-      console.log(day.dt_txt)
-      console.log(weekday[weekdayInteger])
+        console.log(tempRounded, feelsLikeRounded)
 
-      forecastContainer.innerHTML += `<div class="forecast-days">
-      <div class="weekday">
-      <p>${weekday[weekdayInteger]}<p>
-      <div class="forecast-temp-feels-like">
-      <img src="${icon}" alt="weather icon">
-      <p>Temp: ${tempRounded}° </p>           
-      <p>/ Feels like: ${feelsLikeRounded}°</p>      
-      </div>
-      </div>
-      </div>
-      `
-    })
+        let nextDays = new Date(day.dt_txt)
+        let weekdayInteger = nextDays.getDay()
+        console.log(day.dt_txt)
+        console.log(weekday[weekdayInteger])
+
+        forecastContainer.innerHTML += `<div class="forecast-days">
+        <div class="weekday">
+        <p>${weekday[weekdayInteger]}<p>
+        <div class="forecast-temp-feels-like">
+        <img src="${icon}" alt="weather icon">
+        <p>Temp: ${tempRounded}° </p>           
+        <p>/ Feels like: ${feelsLikeRounded}°</p>      
+        </div>
+        </div>
+        </div>
+        `
+      })
   })
   .catch(error => {
     forecastContainer.innterHTML = `<h1>${error}</h1>`

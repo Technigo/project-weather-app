@@ -10,7 +10,7 @@ body {
     background-image: linear-gradient(#96d8f2,#242552);
     border-radius: 0px 0px 30px 30px; 
     color: white; 
-    padding: 0 20px; /*ändrat till 0 20*/
+    padding: 0 20 20 20px; /*padding is overriden*/
     display: flex;
     justify-content: space-around;
     flex-direction: row;
@@ -19,7 +19,6 @@ body {
     display: flex;
     justify-content: space-around;
     flex-direction: row;
-    
 }
 
 .temp {
@@ -32,24 +31,27 @@ body {
     margin: 5px;
 }
 
+.temp-icon h1 {
+    font-size: 45px;
+}
+
 .sunrise-sunset {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.forecast-days {
+.forecast-container {
     padding: 20px 20px 0 20px;
     display: flex; 
     justify-content: space-between;
     flex-direction: column;
-    /* flex-wrap: wrap;  */
 }
 
 .weekday {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .weekday p {
@@ -63,34 +65,35 @@ body {
 
 /**** MEDIA QUERIES ***/
 @media (min-width: 768px) {
+    .weather-container {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+    }
+
     .weather-description {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
     }
-    .weather-today h2 {
-        font-size: 50px;
-        text-align: center;
-    }
-
-    .weather-today h1 {
-        font-size: 40px; 
-    }
 
     .weather-description h3 {
-        font-size: 20px;
+        font-size: 19px;
     }
 
     .weather-description p {
-        font-size: 16px;
+        font-size: 19px;
+    }
+    .temp-icon h1 {
+        font-size: 50px;
     }
 
     .sunrise-sunset p {
-        font-size: 25px;
+        font-size: 20px;
     }
-
+    
     .weekday p {
-        font-size: 24px;
+        font-size: 20px;
     }
 }
 
