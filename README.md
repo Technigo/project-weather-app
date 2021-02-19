@@ -9,4 +9,4 @@ If we had more time we would have added diffrent cities to choose between and ch
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://jolly-bohr-475fff.netlify.app/
