@@ -9,4 +9,4 @@ If we had more time we would have added diffrent cities to choose between and ch
 
 ## View it live
 
-https://jolly-bohr-475fff.netlify.app/
+https://elastic-mirzakhani-e20ab1.netlify.app/
