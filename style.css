@@ -4,7 +4,7 @@ body {
     overflow: hidden;
     height: 100vh;
     font-family: 'Comfortaa', cursive;
-    background-image: linear-gradient(rgba(10, 64, 78, 0.486), rgb(12, 64, 78));
+    background-image: white;
 }
 
 .cloudy {
@@ -63,7 +63,7 @@ h2 {
 
 .container_today p {
     font-size: 15px;
-    color:rgb(10, 39, 48)
+    color:rgb(10, 39, 48);
 }
 
 .weather {
@@ -79,6 +79,11 @@ h2 {
 .temp_city_weather {
     display: flex;
     justify-content: space-between;
+}
+
+.temp_city_weather p {
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 
 .sunrise_sunset {
@@ -164,6 +169,11 @@ h2 {
         flex-direction: column-reverse;
         align-content: center;
     }
+
+    .temp_city_weather p {
+        text-align: center;
+        font-size: 20px;
+    }
     
     /* Forecast */
     
@@ -248,6 +258,13 @@ h2 {
     .temp_city_weather {
         flex-direction: column-reverse;
         align-content: center;
+    }
+
+    .temp_city_weather p {
+        font-size: 20px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        text-align: center;
     }
 
     /* Forecast */

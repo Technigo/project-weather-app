@@ -8,10 +8,11 @@ const containerToday = document.getElementById('containerToday')
 const containerForecast = document.getElementById('containerForecast')
 const weatherText = document.getElementById('weatherText')
 
-const returnWeekDay = (date) => {
-    const daysInWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-    let inputDate = new Date(date.replace(' ', 'T'))
-    return daysInWeek[inputDate.getDay()]
+// Function to show weekdays in iOS - if not used it shows them as undefined
+const returnWeekday = (date) => {
+    const weekdayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    const inputDate = new Date(date.replace(' ', 'T'))
+    return weekdayNames[inputDate.getDay()]
 }
 
 // API fetch today's weather
@@ -20,10 +21,9 @@ fetch(todaysUrl)
         if (response.ok) {
         return response.json()
         } else {
-            throw 'Oops, something went wrong.';
+            throw 'Oops, something went wrong.'
         }
     })
-    
     .then((json) => {
 
         // Variables to display weather data
@@ -34,33 +34,43 @@ fetch(todaysUrl)
         const sunrise = new Date((json.sys.sunrise + json.timezone + timezoneOffset) * 1000).toLocaleString(navigator.language, {hour: '2-digit', minute:'2-digit'})
         const sunset = new Date((json.sys.sunset + json.timezone + timezoneOffset) * 1000).toLocaleString(navigator.language, {hour: '2-digit', minute:'2-digit'})
         const weatherType = json.weather[0].main
+        const weatherDescription = json.weather[0].description
         const wIcon = json.weather[0].icon
 
-
         // HTML weather text for tablet and desktop, also changes bg color depending on weather type
-        const moodGenerator = () => {
-            if (weatherType === "Clouds") {
+        switch (weatherType) {
+            case 'Clouds':
                 body.classList.add('cloudy')
-                weatherText.innerHTML = `<p>Clouds are covering ${cityName}. Let's hope they'll be gone soon!</p>`
-            } else if (weatherType === "Clear") {
+                weatherText.innerHTML = `
+                <p>Clouds are covering ${cityName}. Let's hope they'll be gone soon!</p>`
+                break
+            case 'Clear':
                 body.classList.add('clear')
-                weatherText.innerHTML = `<p>It's sunny in ${cityName}. Put your sun glasses on and get outside!</p>`
-            } else if (weatherType === "Snow") {
+                weatherText.innerHTML = `
+                <p>It's sunny in ${cityName}. Put your sun glasses on and get outside!</p>`
+                break
+            case 'Snow':
                 body.classList.add('snowy')
-                weatherText.innerHTML = `<p>It's snowy in ${cityName}. Gather your friends and go out and make some snow angels!</p>`
-            } else if (weatherType === "Rain") {
+                weatherText.innerHTML = `
+                <p>It's snowy in ${cityName}. Gather your friends and go out and make some snow angels!</p>`
+                break
+            case 'Rain':
                 body.classList.add('rainy')
-                weatherText.innerHTML = `<p>It's rainy in ${cityName}. Let's stay inside and binge watch Netflix!</p>`
-            } else if (weatherType === "Drizzle") {
+                weatherText.innerHTML = `
+                <p>It's rainy in ${cityName}. Let's stay inside and binge watch Netflix!</p>`
+                break
+            case 'Drizzle':
                 body.classList.add('drizzly')
-                weatherText.innerHTML = `<p>It drizzles in ${cityName}. Let's stay inside and binge watch Netflix!</p>`
-            } else {
+                weatherText.innerHTML = `
+                <p>It drizzles in ${cityName}. Let's stay inside and binge watch Netflix!</p>`
+                break
+            default:
                 body.classList.add('grey')
-                weatherText.innerHTML = `<p>Not the greatest weather in ${cityName}. Let's get cosy inside!</p>`
-            }  
-        } 
-        moodGenerator()
-
+                weatherText.innerHTML = `
+                <p>Not the greatest weather in ${cityName}. Let's cosy up inside!</p>`
+                break
+        }
+        
         // HTML today's weather
         containerToday.innerHTML = `
         <section class="weather">
@@ -68,6 +78,7 @@ fetch(todaysUrl)
         <div class="temp_city">
         <h1>${temp}°C</h1>
         <h2>${city}</h2>
+        <p>${weatherDescription}</p>
         </div>
         <img src="https://openweathermap.org/img/wn/${wIcon}@2x.png" />
         </div>
@@ -79,9 +90,9 @@ fetch(todaysUrl)
     })
     
     .catch(error => {
-        containerToday.innerHTML = `<p>${error}</p>`
+        containerToday.innerHTML = `
+        <p>${error}</p>`
     })
-
 
 // API fetch 5 day forecast
 
@@ -90,7 +101,7 @@ fetch(forecastUrl)
         if (response.ok) {
         return response.json()
         } else {
-            throw 'Oops, something went wrong.';
+            throw 'Oops, something went wrong.'
         }
     })
     .then((data) => {
@@ -99,18 +110,14 @@ fetch(forecastUrl)
     
         filteredForecast.forEach(data => {
         
-        let forecastTemp = data.main.temp.toFixed(1)
-        let wIcon = data.weather[0].icon
-        
-        let dayInWeek = returnWeekDay(data.dt_txt)
-        // Displays the forecast weekday
-        //let forecastDay = new Date(data.dt_txt).toLocaleString('en-US', { weekday: 'long'})
-
+        const forecastTemp = data.main.temp.toFixed(1)
+        const wIcon = data.weather[0].icon
+        const weekday = returnWeekday(data.dt_txt)
 
         // HTML forecast weather
         containerForecast.innerHTML += `
         <section class="forecast">
-        <p>${dayInWeek}</p>
+        <p>${weekday}</p>
         <div class="forecast_weather_temp">
         <div class="forecast_weather_temp">
         <img class="forecast_icon" src="https://openweathermap.org/img/wn/${wIcon}@2x.png" />
