@@ -1,7 +1,54 @@
-img {
-    width: 50px;
+body {
+    margin: 0;
+    box-sizing: border-box;
+    background: lightskyblue;
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.top {
+    margin: 30px;
+}
+
+.top-text {
+    margin: 5px 0px 5px 0px;
+}
+
+.main-weather {
+    margin: 30px;
 }
 
 .weather_icon {
-    width: 150px;
+    width: 100px;
+}
+
+.main-heading {
+    font-size: 40px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.forecast {
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+}
+
+.forecast-wraper {
+    display: flex;
+    width: 100%;
+    margin: auto;
+    justify-content: space-between;
+    border-bottom: 1px solid #000;
+}
+
+.forecast-content-wraper {
+    display: flex;
+}
+
+img {
+    width: 35px;
+    margin-right: 10px;
 }

@@ -6,8 +6,6 @@ const URLWEEKLYFORECAST = 'https://api.openweathermap.org/data/2.5/forecast?q=St
 const containerDailyWeather = document.getElementById('containerDailyWeather')
 const topDailyWeather = document.getElementById('topDailyWeather') 
 const mainDailyWeather = document.getElementById('mainDailyWeather')
-const icon = document.getElementById('icon')
-const mainWeather = document.getElementById('mainWeather')
 const weekForecast = document.getElementById('weekForecast')
 
 // fetch URL for daily weather
@@ -18,6 +16,8 @@ fetch (URLDAILYWEATHER)
     .then((data) => {
         console.log("daily URL", data)
 
+        //weather
+        const fetchDailyWeather = data.weather[0].main 
         // temperature
         const temp = data.main.temp
         const roundedTemp = temp.toFixed() // no decimal
@@ -25,44 +25,57 @@ fetch (URLDAILYWEATHER)
         const sunriseHour = new Date((data.sys.sunrise)*1000).toLocaleTimeString('se-SE', {hour:'numeric', minute: 'numeric'})
         const sunsetHour = new Date(data.sys.sunset*1000).toLocaleTimeString('se-SE', {hour:'numeric', minute: 'numeric'})
         topDailyWeather.innerHTML = `
-        <div>
-            <p>Todays temperature: ${roundedTemp}°</p>
-            <p>Sunrise: ${sunriseHour}</p>
-            <p>Sunset: ${sunsetHour}</p>
+        <div class="top-wraper">
+            <p class="top-text">${fetchDailyWeather} ${roundedTemp}°</p>
+            <p class="top-text">Sunrise ${sunriseHour}</p>
+            <p class="top-text">Sunset ${sunsetHour}</p>
         </div>`
 
         // Todays weather
-        const fetchDailyWeather = data.weather[0].main 
         const iconDailyWeather = () => {
         //console.log(fetchDailyWeather)
                if (fetchDailyWeather === "Drizzle") {
                     mainDailyWeather.innerHTML = `
-                        <p> The weather in ${data.name} is sunny bring your sunscreen</p>
-                        <img class="weather_icon" src="./assets/004-rain.svg" alt="icon weather">`
+                    <div class="main-wrapper">
+                        <img class="weather_icon" src="./assets/004-rain.svg" alt="icon weather">
+                        <h1 class="main-heading"> The weather in ${data.name} is sunny bring your sunscreen</h1>
+                    </div>`
                } else if (fetchDailyWeather === "Clear") {
                     mainDailyWeather.innerHTML = `
-                        <p> The weather in ${data.name} is sunny bring your sunscreen</p>
-                        <img class="weather_icon" src="./assets/001-sun.svg" alt="icon weather">`
+                    <div class="main-wrapper">
+                        <img class="weather_icon" src="./assets/001-sun.svg" alt="icon weather">
+                        <h1 class="main-heading"> The weather in ${data.name} is sunny bring your sunscreen</h1>
+                    </div>`
                } else if (fetchDailyWeather === "Rain") {
                     mainDailyWeather.innerHTML = `
-                        <p> The weather in ${data.name} is sunny bring your sunscreen</p>
-                        <img class="weather_icon" src="./assets/004-rain.svg" alt="icon weather">`
+                    <div class="main-wrapper">
+                        <img class="weather_icon" src="./assets/004-rain.svg" alt="icon weather">
+                        <h1 class="main-heading"> The weather in ${data.name} is sunny bring your sunscreen</h1>
+                    </div>`
                } else if (fetchDailyWeather === "Thunderstorm") {
                     mainDailyWeather.innerHTML = `
-                        <p> The weather in ${data.name} is sunny bring your sunscreen</p>
-                        <img class="weather_icon" src="./assets/010-thunderstorm.svg" alt="icon weather">`
+                    <div class="main-wrapper">
+                        <img class="weather_icon" src="./assets/010-thunderstorm.svg" alt="icon weather">
+                        <h1 class="main-heading"> The weather in ${data.name} is sunny bring your sunscreen</h1>
+                     </div>`
                } else if (fetchDailyWeather === "Snow") {
                     mainDailyWeather.innerHTML = `
-                        <p> The weather in ${data.name} is sunny bring your sunscreen</p>
-                        <img class="weather_icon" src="./assets/009-snowy.svg" alt="icon weather">`
+                    <div class="main-wrapper">
+                        <img class="weather_icon" src="./assets/009-snowy.svg" alt="icon weather">
+                        <h1 class="main-heading"> The weather in ${data.name} is sunny bring your sunscreen</h1>
+                    </div>`
                } else if (fetchDailyWeather === "Clouds") {
                     mainDailyWeather.innerHTML = `
-                        <p> The weather in ${data.name} is sunny bring your sunscreen</p>
-                        <img class="weather_icon" src="./assets/002-cloud.svg" alt="icon weather">`
+                    <div class="main-wrapper">
+                        <img class="weather_icon" src="./assets/002-cloud.svg" alt="icon weather">
+                        <h1 class="main-heading"> The weather in ${data.name} is sunny bring your sunscreen</h1>
+                    </div>`
                } else {
                     mainDailyWeather.innerHTML = `
-                        <p> The weather in ${data.name} is sunny bring your sunscreen</p>
-                        <img class="weather_icon" src="./assets/030-haze.svg" alt="icon weather">`
+                    <div class="main-wrapper">
+                        <img class="weather_icon" src="./assets/030-haze.svg" alt="icon weather">
+                        <h1 class="main-heading"> The weather in ${data.name} is sunny bring your sunscreen</h1>
+                    </div>`
                }
             }
             iconDailyWeather()
@@ -94,70 +107,67 @@ fetch (URLDAILYWEATHER)
                 const iconWeeklyForecast = () => {
                     if (day.weather[0].main === "Drizzle") {
                         weekForecast.innerHTML += `
-                        <tr>
-                            <td>${dayName}</td>
-                            <td>
+                        <div class="forecast-wraper">
+                            <p>${dayName}</p>
+                            <div class="forecast-content-wraper">
                                 <img src="./assets/004-rain.svg" alt="icon weather">
-                            </td>
-                            <td>${day.main.temp.toFixed()}°</td>
-                        </tr>`
-
+                                <p>${day.main.temp.toFixed()}°</>
+                            </div>
+                        </div>`
                     } else if (day.weather[0].main === "Clear") {
                         weekForecast.innerHTML += `
-                        <tr>
-                            <td>${dayName}</td>
-                            <td>
+                        <div class="forecast-wraper">
+                            <p>${dayName}</p>
+                            <div class="forecast-content-wraper">
                                 <img src="./assets/001-sun.svg" alt="icon weather">
-                            </td>
-                            <td>${day.main.temp.toFixed()}°</td>
-                        </tr>`
+                                <p>${day.main.temp.toFixed()}°</>
+                            </div>
+                        </div>`
                     } else if (day.weather[0].main === "Rain") {
                         weekForecast.innerHTML += `
-                        <tr>
-                            <td>${dayName}</td>
-                            <td>
+                        <div class="forecast-wraper">
+                            <p>${dayName}</p>
+                            <div class="forecast-content-wraper">
                                 <img src="./assets/004-rain.svg" alt="icon weather">
-                            </td>
-                            <td>${day.main.temp.toFixed()}°</td>
-                        </tr>`
+                                <p>${day.main.temp.toFixed()}°</>
+                            </div>
+                        </div>`
                     } else if (day.weather[0].main === "Thunderstorm") {
                         weekForecast.innerHTML += `
-                        <tr>
-                            <td>${dayName}</td>
-                            <td>
+                        <div class="forecast-wraper">
+                            <p>${dayName}</p>
+                            <div class="forecast-content-wraper">
                                 <img src="./assets/010-thunderstorm.svg" alt="icon weather">
-                            </td>
-                            <td>${day.main.temp.toFixed()}°</td>
-                        </tr>`
+                                <p>${day.main.temp.toFixed()}°</>
+                            </div>
+                        </div>`
                     } else if (day.weather[0].main === "Snow") {
                         weekForecast.innerHTML += `
-                        <tr>
-                            <td>${dayName}</td>
-                            <td>
+                        <div class="forecast-wraper">
+                            <p>${dayName}</p>
+                            <div class="forecast-content-wraper">
                                 <img src="./assets/009-snowy.svg" alt="icon weather">
-                            </td>
-                            <td>${day.main.temp.toFixed()}°</td>
-                        </tr>`
+                                <p>${day.main.temp.toFixed()}°</>
+                            </div>
+                        </div>`
                     } else if (day.weather[0].main === "Clouds") {
                         weekForecast.innerHTML += `
-                        <tr>
-                            <td>${dayName}</td>
-                            <td>
+                        <div class="forecast-wraper">
+                            <p>${dayName}</p>
+                            <div class="forecast-content-wraper">
                                 <img src="./assets/002-cloud.svg" alt="icon weather">
-                            </td>
-                            <td>${day.main.temp.toFixed()}°</td>
-                        </tr>`
+                                <p>${day.main.temp.toFixed()}°</>
+                            </div>
+                        </div>`
                     } else {
                         weekForecast.innerHTML += `
-                        <tr>
-                            <td>${dayName}</td>
-                            <td>
+                        <div class="forecast-wraper">
+                            <p>${dayName}</p>
+                            <div class="forecast-content-wraper">
                                 <img src="./assets/030-haze.svg" alt="icon weather">
-                            </td>
-                            <td>${day.main.temp.toFixed()}°</td>
-                        </tr>`
-
-                        
+                                <p>${day.main.temp.toFixed()}°</>
+                            </div>
+                        </div>`
                     }
                  }
                  iconWeeklyForecast()
