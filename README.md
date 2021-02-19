@@ -16,4 +16,4 @@ If we had more time we would add more cities and change the background image dep
 
 ## View it live
 
-To view the site we've created, check it here: 
+To view the site we've created, check it here: https://unruffled-hermann-c68ef3.netlify.app/ 

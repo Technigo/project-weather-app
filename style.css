@@ -68,18 +68,15 @@ p {
   align-items: center;
   margin: 50px 0px;
   height: 300px;
+  padding: 0 10%;
 }
 
 .forecast {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   border-bottom: solid var(--secondary) 1px;
   padding: 10px;
-}
-
-p .forecast-container {
-  width: 100%;
 }
 
 .footer {
