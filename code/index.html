@@ -6,44 +6,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
-  <link rel ="icon" type="image/png" href="sun.png">
+  <link rel ="icon" type="image/png" href="sun2.png">
   <link rel="stylesheet" href="./style.css">
   <title>Weather App</title>
 </head>
+
 <body>
-
-
+  <!--Logo-->
   <header class=header>
-    <img class="header__img" src="sun.png" />
+    <img class="header__img" src="sun2.png" />
+    <h3 class="header__text">WeatherOracle</h3>
   </header>
 
-  <section class='today'>
-    <h3 id="temperature"></h3>
-    <div class="sun">
-      <img class="sun__icon" src="sunrise.png" />
+  <!--Header with city name-->
+  <section class="current-weather-text">
+    <h3>Current weather in </h3>
+    <h1><span id="city"></span></h1>
+  </section>
+
+  <!--Today's weather-->
+  <section class="weather">
+    <h3 class="weather__text" id="temperature"></h3>
+    <div class="weather__type">
+      <img class="weather__icon" src="sunrise.png" />
       <p id="sunrise"></p>
     </div>
-    <div class="sun">
-      <img class="sun__icon" src="sunset.png" />
+    <div class="weather__type">
+      <img class="weather__icon" src="sunset.png" />
       <p id="sunset"></p>
     </div>
   </section>
+
+  <!--Forecast weather-->
+  <div id="forecast-container" class="forecast__list">
+  </div>
+
+  <!--Search for city-->
+  <section class="input-form">
+    <form class="form">
+      <h3>Choose your city</h3>
+      <input id="selected-city" type="text" value= "" placeholder="City name">
+      <button id="submit" class="button">Search</button>
+    </form>   
+  </section>
   
-  <h1>Today's lovely weather in <span id="city"></span></h1>
-  
-  <p id="container" class='list'>
-  </p>
+  <!--Footer-->
+  <footer class="footer">
+    <p class="footer__header">App made by:</p>
+    <p class="footer__text">Maria Pogosjan</p>
+    <p class="footer__text">Emma Bartl</p>
+    <p class="footer__text">Martin Danielsson</p>
+  </footer>
 
   
-  <form id="form">
-    <input id="country" type="text" value="Sweden">
-    <input id="selected-city" type="text" value="Stockholm">
-
-    <button id='submit' class="button">Kör</button>
-  </form>
-  
-  
-
-<script src="./script.js"></script>
+  <script src="./script.js"></script>
 </body>
 </html>

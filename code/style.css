@@ -1,73 +1,225 @@
 /* Global css variables used for colors */
+
 :root {
-  
-  --secondary: #1b1a1a; 
-  --hot: linear-gradient(30deg, #bb4e4ef6, #be3131);
-  --kindaHot: linear-gradient(30deg, #ffc400f6, #be3131);
-  --lessHot: linear-gradient(30deg, #a8cbfa, #2f5d99);
-  --aLittleCold: linear-gradient(30deg, #20569e, #2f5d99);
-  --okayItsCold: linear-gradient(30deg, #ffffff, #00122a);
+  --first: #1b1a1a; 
+  --hot: linear-gradient(30deg, #ffffff, #e68659);
+  --kindaHot: linear-gradient(30deg, #ffffff, #ffdb3a);
+  --lessHot: linear-gradient(30deg, #f1efef, #2b76da);
+  --aLittleCold: linear-gradient(30deg,#f1efef, #2c54d6);
+  --okayItsCold: #2c1dff;
+}
+
+html { /*Do we need this?*/
+  background-image: var(--hot); 
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
 }
 
 body {
-  color: var(--secondary);
+  color: var(--first);
   font-family: 'Montserrat', sans-serif;
-  margin: 0 40px 0 40px;
-  height: 100vh;
+  margin: 0 30px 0 30px;  /*Do we need this?*/ 
   letter-spacing: 1px;
+  font-weight: bold;
 }
 
 /*** HEADER ICON ***/ 
 .header {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   margin: 30px;
+  perspective: 1000px;
 }
 
 .header__img {
-  width: 80px;
+  width: 160px;
+  animation: rotation 4s linear infinite;
+
 }
 
-.header__img:hover {
-  animation: rotation 5s linear infinite;
-}
-
-.header__img:hover::after {
-  animation: none;
-}
 
 @keyframes rotation {
   from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg) ;
+    transform: rotateY(360deg);
   }
 }
 
-.today {
-  line-height: 7px;
-  margin: 40px 0 20px 0;
+.header__text {
+  margin-top: 0;
 }
 
-.sun {
-  padding: 10px 20px 10px 0;
-  display: inline-block;
-  font-size: 12px;
+h3 {
+  font-size: 14px;
+}
+
+h1 {
+  margin-top: 10px;
+  font-size: 30px;
+}
+
+/*** Todays weather ***/
+.weather {
+  margin: 40px 0 60px 0;
+  background-color: rgba(254, 244, 244, 0.351);
+  border-radius: 20px;
+  box-shadow: rgba(235, 231, 231, 0.632) 3px 3px 8px;
   text-align: center;
 }
 
-.sun__icon {
-  width: 45px;
+.weather__text {
+  padding-top: 15px;
+  font-size: 25px;
+  letter-spacing: 2px;
 }
 
-.list li {
-  list-style-type: none; 
-  border-bottom: dotted 1px;
-  padding: 10px;
-  display: flex;  
+.weather__type {
+  padding: 10px 20px 10px 0;
+  display: inline-block;
+  margin-left: 20px
+}
+
+.weather__icon {
+  width: 70px;
+}
+
+/*** Forecast starts here ***/
+.forecast__list {
+  margin-top: 100px;
+  box-sizing: border-box;
+  display: flex;
   justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
 }
 
+.forecast-day-wrapper { 
+  border-bottom: dotted 1px;
+  display: flex;  
+  justify-content: space-between; 
+}
+
+.forecast-day-wrapper:first-child {
+ border-top: dotted 1px;
+}
+
+.forecast__day {
+  padding-top: 15px;
+  justify-self: flex-start; /*Do we need this?*/ 
+  width: 300px;
+}
+
+.forecast__temp {
+  padding-top: 15px;
+  width: 100px;
+  text-align: right;
+}
+
+.forecast__icon {
+  width: 150px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.forecast-day-wrapper img {
+  width: 50px; 
+}
+
+/*** Form for selecting city ***/
+.input-form {
+  max-height: 500px;
+  bottom: 0;
+  box-sizing: border-box;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+}
+
+.form h3 {
+  text-align: center;
+}
+
+.form input, 
+.button {
+  margin: 5px;
+  padding: 8px;
+  border: none; 
+  box-shadow: 2px 2px rgba(2, 2, 2, 0.625);
+  border-radius: 5px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.button {
+  background-color: var(--first);
+  color: white;  
+  box-shadow: none;
+}
+
+/*** Footer ***/
+
+.footer {
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.footer__header {
+  line-height: 0;
+}
+
+.footer__text {
+  font-size: 10px;
+  text-align: center;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  body {
+    margin: 0 80px 0 80px;
+  }
+
+  .weather__icon {
+    width: 50px;
+  }
 
 
+  .forecast__icon {
+    width: 300px;
+  }
+}
+
+@media (min-width: 1200px) {
+  body {
+    margin: 0 120px 0 120px;
+  }
+
+  .weather__icon {
+    width: 80px;
+  }
+  .weather h3 {
+    font-size: 30px;
+  }
+
+  .weather p {
+    font-size: 20px;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  .forecast__icon {
+    width: 800px;
+  }
+
+  .form input, 
+  .button {
+    margin: 5px 100px;
+  }
+}
