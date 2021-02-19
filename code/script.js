@@ -18,21 +18,20 @@ const weekday = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday
 
 fetch(StockholmAPI)
   .then((response) => {
-//    console.log(`Response ok? ${response.ok}`) //take away later
-//    console.log(`Response status: ${response.status}`) //take away later
-//    console.log('API Response Received');
-    return response.json()
+    if (response.ok) {
+      return response.json()
+    } else {
+      throw "Something went wrong"
+    }
   })
-    .then((data) => {
-//      console.log(data);   //take away later?
-    
+  .then((data) => {
     const temp = data.main.temp
     const tempRounded = Math.round(temp * 10) / 10 //eller toFixed()
     const date = new Date((data.dt) * 1000); //amount of milliseconds passed since January 1st 1970
     const sunriseDate = new Date((data.sys.sunrise) * 1000);
     const sunsetDate = new Date((data.sys.sunset) * 1000);
-    const icon = 'http://openweathermap.org/img/wn/' + data.weather[0].icon +'.png'
-    
+    const icon = 'http://openweathermap.org/img/wn/' + data.weather[0].icon +'@4x.png'
+
       weatherContainer.innerHTML += `<div>
         <div class="data">
         <h2>Today's weather in: ${data.name}</h2> 
@@ -47,44 +46,47 @@ fetch(StockholmAPI)
         <p>Sunset: ${sunsetDate.getHours()}:${sunsetDate.getMinutes()}</p>
         </div>
         </div>`
-    }) 
+    })
+    .catch(error => {
+      weatherContainer.innerHTML = `${error}`
+    })
+
 
 fetch(StockholmForecastAPI)
   .then((response) => {
-    return response.json()
+    if (response.ok) {
+      return response.json()
+    } else {
+      throw "Something went wrong"
+    } 
   })
-
   .then((data) => {
-    //console.log(data)
+  //console.log(data)
   const filteredForecast = data.list.filter(item => item.dt_txt.includes('12:00'))
     console.log(filteredForecast)
     filteredForecast.forEach((day) => {
-        let temp = day.main.temp
-        let tempRounded = Math.round(temp)
+      let temp = day.main.temp
+      let tempRounded = Math.round(temp)
 
-        let feelsLike = day.main.feels_like
-        let feelsLikeRounded = Math.round(feelsLike)
+      let feelsLike = day.main.feels_like
+      let feelsLikeRounded = Math.round(feelsLike)
+      let icon = 'http://openweathermap.org/img/wn/' + day.weather[0].icon +'.png' 
 
-        let icon = 'http://openweathermap.org/img/wn/' + day.weather[0].icon +'.png' 
+      console.log(tempRounded, feelsLikeRounded)
 
-        console.log(tempRounded, feelsLikeRounded)
+      let nextDays = new Date(day.dt_txt)
+      let weekdayInteger = nextDays.getDay()
+      console.log(day.dt_txt)
+      console.log(weekday[weekdayInteger])
 
-        let nextDays = new Date(day.dt_txt)
-        let weekdayInteger = nextDays.getDay()
-        console.log(day.dt_txt)
-        console.log(weekday[weekdayInteger])
-
-        forecastContainer.innerHTML += `<div>
-        <h3>${weekday[weekdayInteger]}<h3>
-        <h3>Temp: ${tempRounded}°</h3>
-        <h3>Feels like: <img src="${icon}"> ${feelsLikeRounded}°</h3>
-        </div>
-        `
+      forecastContainer.innerHTML += `<div>
+      <h3>${weekday[weekdayInteger]}<h3>
+      <h3>Temp: ${tempRounded}°</h3>
+      <h3>Feels like: <img src="${icon}"> ${feelsLikeRounded}°</h3>
+      </div>
+      `
     })
   })
-
-// fetch the data from the API. Then if you console.log the json
-// you'll see that we only care about the array called list.
-
-//const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
-// filteredForecast is now an array with only the data from 12:00 each day.
+  .catch(error => {//console.log('error! ', error))
+    forecastContainer.innterHTML = `<h1>${error}</h1>`
+  })

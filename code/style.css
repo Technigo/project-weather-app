@@ -10,11 +10,11 @@ body {
     background-image: linear-gradient(#5E5F9D,#242552);
     border-radius: 0px 0px 30px 30px; 
     color: white; 
-    padding: 20px;
+    padding: 0 20px; /*ändrat till 0 20*/
     display: flex;
     justify-content: space-around;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: row; /**/
+/*   flex-wrap: wrap; */
 /*
     display: flex;
     flex-direction: column;
