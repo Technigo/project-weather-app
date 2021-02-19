@@ -55,6 +55,7 @@ fetch(todaysUrl)
         } 
         moodGenerator()
 
+        // HTML today's weather
         containerToday.innerHTML = `
         <section class="weather">
         <div class="temp_city_weather">
@@ -69,33 +70,15 @@ fetch(todaysUrl)
         <p>Sunset: ${sunset}</p>
         </div>
         </section>`
- 
-        // HTML today's weather
-       /*
-        let weatherHTML = ''
-        weatherHTML += `<section class="weather">`
-        weatherHTML += `<div class="temp_city_weather">`
-        weatherHTML += `<div class="temp_city">`
-        weatherHTML += `<h1>${temp}°C</h1>`
-        weatherHTML += `<h2>${city}</h2>`
-        weatherHTML += `</div>`
-        weatherHTML += `<img src="https://openweathermap.org/img/wn/${wIcon}@2x.png" />`
-        weatherHTML += `</div>`
-        weatherHTML += `<div class="sunrise_sunset">`
-        weatherHTML += `<p>Sunrise: ${sunrise}</p>`
-        weatherHTML += `<p>Sunset: ${sunset}</p>`
-        weatherHTML += `</div>`
-        weatherHTML += `</section>`
-        
-        containerToday.innerHTML += weatherHTML
-       */
     })
-
+    
     .catch(error => {
         containerToday.innerHTML = `<p>${error}</p>`
     })
 
+
 // API fetch 5 day forecast
+
 fetch(forecastUrl)
     .then(response => {
         if (response.ok) {
@@ -115,23 +98,21 @@ fetch(forecastUrl)
         
         // Displays the forecast weekday
         let forecastDay = new Date(data.dt_txt).toLocaleString('en-US', { weekday: 'long'})
-        
+        const newDay = forecastDay.replace(' ', 'T')
+        console.log(newDay)
+
         // HTML forecast weather
-        let forecastHTML = ''
-        forecastHTML += `<section class="forecast">`
-        forecastHTML += `<p>${forecastDay}</p>`
-        forecastHTML += `<div class="forecast_weather_temp">`
-        forecastHTML += `<img class="forecast_icon" src="https://openweathermap.org/img/wn/${wIcon}@2x.png" />`
-        forecastHTML += `<p class="forecast_temp">${forecastTemp}°C</p>`
-        forecastHTML += `</div>`
-        forecastHTML += `</section>`
-
-        containerForecast.innerHTML += forecastHTML
-        })
+        containerForecast.innerHTML += `
+        <section class="forecast">
+        <p>${newDay}</p>
+        <div class="forecast_weather_temp">
+        <img class="forecast_icon" src="https://openweathermap.org/img/wn/${wIcon}@2x.png" />
+        <p class="forecast_temp">${forecastTemp}°C</p>
+        </div>
+        </section>`
     })
-
+})
     .catch(error => {
         containerForecast.innerHTML = `
         <p>${error}</p>`
     })
-
