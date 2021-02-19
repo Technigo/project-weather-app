@@ -54,6 +54,7 @@ fetch(APIurl)
         `
             /*if-string which specifies which background image to use based off of the current temperature*/
             // weatherData.main.temp = 20 /*use for testing of if-string since temperature is almost always below 0 now :)*/
+        weatherData.main.temp = 9;
         if (weatherData.main.temp < 0) {
             backgroundImage.innerHTML += `
             <img id="img-background" class="img-background" alt="" src="/assets/foggy.png">
