@@ -82,16 +82,15 @@ const filterForecastData = (data) => {
   return forecastDataList;
 };
 
-function formatDate(date) {
-  return new Date(date.replace(/-/g, "/"));
-}
 const getDayOfWeek = (date) => {
-  let _date = formatDate(date);
+  let _date = formatIOSDate(date);
   const dateStrings = new Date(_date).toString().split(" ");
-  console.log(dateStrings);
   return dateStrings[0];
 };
 
+function formatIOSDate(date) {
+  return new Date(date.replace(/-/g, "/"));
+}
 const formatTime = (times) => {
   let formattedTimes = [];
   times.forEach((time) => {
