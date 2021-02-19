@@ -4,7 +4,7 @@ const summaryContainer = document.getElementById('summary-container');
 const fiveDaysForecast = document.getElementById('5-days-forecast');
 const imageContainer = document.getElementById('image-container');
 
-fetch(`http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${API_KEY}`)
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${API_KEY}`)
     .then((response) => {
         return response.json();
     })
