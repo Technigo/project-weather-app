@@ -20,7 +20,7 @@ const cities = ["Stockholm", "Barcelona", "Berlin","London","Milan","Madrid","Pa
 // Function to call the current day Fect and recall it when one city is selected. 
 
 const fetchCurrentDay=(city)=>{
-fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${API_KEY}`)
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${API_KEY}`)
     .then((response) => {
         return response.json()
         
