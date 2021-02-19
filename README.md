@@ -1,13 +1,12 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+To extract information from API to create your own weather app. The app should be responsive and show the currents days information as well as a forecast.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Using the fetch() method we could get the information from the API. We has separare fetches for the current information and the forecast. Within these two fetches we populated the HTML with the APIs data. After we did some styling to create the app.
+If we had more time we might have tried creating a function for the forecast rather than replicating the same forEach for two arrays of different lengths, but we are satisfied now to turn in as is.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://weather-in-stockholm-forecast.netlify.app/

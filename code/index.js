@@ -147,7 +147,5 @@ fetch(forecastAPIUrl)
         shortForecastDescriptions.forEach((shortForecastDescription, index) => {
             icons(shortForecastDescription, `icons-short-${index}`)
         })
-
-
-
+        
     })
