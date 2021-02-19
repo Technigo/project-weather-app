@@ -12,4 +12,4 @@ If we had more time would have liked for the weekdays to be printed in full (e.g
 
 ## View it live
 
-To view the site live, please follow this link: 
+To view the site live, please follow this link: https://cranky-euler-1b243b.netlify.app/
