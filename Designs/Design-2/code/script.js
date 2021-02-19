@@ -29,9 +29,9 @@ const fetchCurrentWeather = () => {
             const sunsetDate = new Date((data.sys.sunset + data.timezone + timezoneOffset) * 1000)
 
             const weatherDescription = data.weather[0].description   
-            const cloudIcon = "../icons/noun_Cloud_1188486.svg"
-            const sunglassesIcon = "../icons/noun_Sunglasses_2055147.svg"
-            const umbrellaIcon = "../icons/noun_Umbrella_2030530.svg"
+            const cloudIcon = "./icons/noun_Cloud_1188486.svg"
+            const sunglassesIcon = "./icons/noun_Sunglasses_2055147.svg"
+            const umbrellaIcon = "./icons/noun_Umbrella_2030530.svg"
             let container = document.getElementById("container");
             
             //Showing temperature, sunrise, sunset and city name
