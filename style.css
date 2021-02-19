@@ -139,10 +139,10 @@ img{
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    
 }
+
 .icon{
-        margin-bottom: 20px;
+    margin-bottom: 20px;
     justify-self: center;
     align-self: center;
 }
@@ -179,5 +179,4 @@ img{
     .current-temp{
         font-size: 30px; 
     }
-
 }
