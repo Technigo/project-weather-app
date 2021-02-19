@@ -42,9 +42,6 @@ body {
 
 }
 
-.current-weather {
-}
-
 .hamburger-menu {
   width: 40px;
   margin: 0;
@@ -96,6 +93,17 @@ body {
   margin: 0;
 }
 
+a:link {
+  text-decoration: none;
+  color: blue;
+  background-color: white;
+  border-radius: 3px;
+}
+
+a:visited {
+  color: #1f0524;
+}
+
 /* TABLET */
 
 @media (min-width: 767px) {
@@ -141,6 +149,10 @@ body {
     margin: 50px;
   }
 
+  a:link {
+    border-radius: 7px;
+  }
+
   .five-day-forecast p {
     margin: 15px 0;
   }
@@ -178,5 +190,10 @@ body {
   .hamburger-menu {
     width: 60px;
     margin: 0;
+  }
+
+  .tribute {
+    font-size: 25px;
+
   }
 }
