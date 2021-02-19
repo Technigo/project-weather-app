@@ -5,17 +5,25 @@ const sunriseBox = document.getElementById('sunrise')
 const sunsetBox = document.getElementById('sunset')
 const forecast = document.getElementById('forecast')
 
-
 let icon 
+let sunHours
 
 const sunTime = (time) => {
-    let sunHours = new Date(time * 1000)
-
-    return sunHours.toLocaleTimeString("sv-SE", {
+    sunHours = new Date(time * 1000)
+        return sunHours.toLocaleTimeString("sv-SE", {
         hour: "2-digit", 
         minute: "2-digit",
         hour12: false
     })
+}
+
+const backgroundImage = (data) => {
+    const today = new Date()
+    const currentTime = `${today.getHours()}:${today.getMinutes()}`
+    if (currentTime >= data.sys.sunrise && currentTime <= data.sys.sunset) {
+        currentLocation.classList.add('day')
+    }
+
 }
 
 const weatherIcon = (item) => {
@@ -43,7 +51,8 @@ fetch(WEATHER_URL)
     }) 
     .then((data) => {
         let fixedTemperature = data.main.temp.toFixed()
-        let sunrise = data.sys.sunrise
+        //let sunrise = data.sys.sunrise
+        backgroundImage(data)
     
         currentLocation.innerHTML += `
             <h2 class="city-name">${data.name}</h2>

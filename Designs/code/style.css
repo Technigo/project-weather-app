@@ -4,9 +4,14 @@ body {
     height: 100vh;
 }
 
-.background-video {
+/*.background-video {
     position: relative;
     height: 50vh;
+}*/
+
+.overflow-handler {
+    overflow: hidden;
+    width: 100vw;
 }
 
 .todays-weather {
@@ -14,11 +19,28 @@ body {
     flex-direction: column;
     justify-content: center;
     text-align: center; 
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     right: 0;
-        /*background: rgb(202, 172, 203); */
+    
+    
+}
+
+.todays-weather::after {
+    content: '';
+    position: absolute;
+    background: radial-gradient(#00A0B0 10%, #7fc844 100%);
+    border-radius: 100%;
+    right: -200px;
+    left: -200px;
+    top: -200px;
+    bottom: 0;
+    z-index: -1;
+}
+
+.day {
+    background: linear-gradient(#653D7C 60%, #00A0B0 100%);
 }
 
 .todays-weather h4 {
