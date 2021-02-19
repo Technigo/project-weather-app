@@ -1,5 +1,6 @@
 const dtable = document.getElementById('dynamic');
 const selectCity = document.getElementById('selectCity');
+let colorWidget = document.getElementById("weather-widget");
 
 // Global variable
 let weather, daysWeek, dWeek, value, tempPoints, 
@@ -27,7 +28,7 @@ const dayMonthConverter = (param) => {
 
 // convert datatime from API to day of the week
 const dayWeekConverter = (param) => {
-  const date = new Date(param* 1000)
+  const date = new Date(param* 1000-3600000)
   const dayOfWeek = date.getDay()
   return dayOfWeek
 }
@@ -47,13 +48,47 @@ const weatherData = () => {
         <td><img class="big-icon" src="https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png"/></td>
         </tr>  
         `
-      temperature.innerHTML += `${Math.round(weather.main.temp)}C
-        <!--<img src="./images/thermometer_cart1.jpg" width="60" height="90"/>-->` 
+      temperature.innerHTML += `${Math.round(weather.main.temp)}C` 
       feelsTemp.innerHTML+= `Feels like: ${Math.round(weather.main.feels_like)}C`
-      sunrise.innerHTML += `<img src="./images/sunrise_cart2.jpg" width="44" height="30"/>
-        ${hrsMinConverter(weather.sys.sunrise+ weather.timezone)}`
-      sunset.innerHTML += `<img src="./images/sunset_cart1.jpg" width="44" height="30"/>
-        ${hrsMinConverter(weather.sys.sunset + weather.timezone)}`
+
+      sunrise.innerHTML += `<img src="./images/sunrise_cart2.jpg" width="44" height="30"/>`
+      sunset.innerHTML += `<img src="./images/sunset_cart1.jpg" width="44" height="30"/>`
+     
+      sundata.innerHTML += `${hrsMinConverter(weather.sys.sunrise+ weather.timezone)} &emsp;&emsp;&emsp;
+      ${hrsMinConverter(weather.sys.sunset + weather.timezone)}`
+
+      // fetching temperature- dependent background color
+      const tm = Math.round(weather.main.temp) 
+      
+      if (tm <= -10) {
+        colorWidget.style.background = "rgb(209,204,249)";
+      } else if (tm > -10 && tm <= -5) {
+        colorWidget.style.background = "rgb(204,228,249)";
+
+      } else if (tm > -5 && tm <= 0) {
+        colorWidget.style.background = "rgb(204,241,249)";
+
+      } else if (tm > 0 && tm <= 5) {
+        colorWidget.style.background = "rgb(204,249,240)";
+
+      }else if (tm > 5 && tm <= 10) {
+        colorWidget.style.background = "rgb(204,249,218)";
+
+      } else if (tm > 10 && tm <= 15) {
+        colorWidget.style.background = "rgb(216,249,204)";
+
+      } else if (tm > 15 && tm <= 20) {
+        colorWidget.style.background = "rgb(215,237,182)";
+
+      } else if (tm > 20 && tm <= 25) {
+        colorWidget.style.background = "rgb(228,234,161)";
+      
+      } else if (tm > 25 && tm <= 30) {
+        colorWidget.style.background = "rgb(249,236,204)";
+      
+      } else if (tm > 30) {
+        colorWidget.style.background = "rgb(249,207,204)";
+      }
     });
   });
 };
@@ -149,20 +184,13 @@ const tempGraph = () => {
         return Days[day]
       })
       
-      /**
-      const comboArray = dWeek.map((e,i) => {
-        return [e, tempPoints[i]]
-
-      })
-      console.log(comboArray)
-      **/
       new Chart(document.getElementById("line-chart"), {
         type: 'line',
         data: {
           labels: dWeek,
           datasets: [{ 
               data:tempPoints,
-              label: "actual temperature at noon",
+              //label: "actual temperature at noon",
               borderColor: "#3e95cd",
               fill: false
             }, 
@@ -173,7 +201,7 @@ const tempGraph = () => {
             display: false
           },
           title: {
-            display: true,
+            display: false,
             text: 'actual temperature at noon'
           }
         }
@@ -201,6 +229,7 @@ selectCity.addEventListener("change", () => {
   feelsTemp.innerHTML = ""
   sunrise.innerHTML = ""
   sunset.innerHTML = ""
+  sundata.innerHTML =""
   dtable.innerHTML = ""
   myCity(selectCity.value)
 })
