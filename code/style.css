@@ -27,7 +27,7 @@ h1 {
 
 h2 {
     font-size: 20vw;
-    margin: 10px 0 50px;
+    margin: 10px 0 0;
     font-weight: 400;
     font-family: 'Bilbo Swash Caps', cursive;
 }
@@ -42,6 +42,11 @@ h4 {
     font-size: 4vw;
     margin: 3px;
     font-weight: 400;
+}
+
+.day-of-week {
+    margin-top: 0px;
+    font-size: 3vw;
 }
 
 .days-of-week {
@@ -107,10 +112,12 @@ h4 {
     main {
         align-items: center;
         width: 768px;
-        height: 1024px;
+        /*height: 1024px;*/
+        height: 100vh;
     }
     .temperature-app {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        height: 100vh;
     }
     h1 {
         font-size: 100px;
@@ -125,13 +132,21 @@ h4 {
         font-size: 30px;
     }
     .days-of-week {
-        font-size: 25px;
+        font-size: 2vh;
+        margin: 0 30px;
+    }
+    .day-of-week {
+        font-size: 2vh;
     }
     .forecast-temp {
-        font-size: 30px;
+        font-size: 2vh;
         font-weight: 600;
     }
     .icons {
         max-width: 50px;
+    }
+    .forecast {
+        justify-content:center;
+        max-width: 700px;
     }
 }
