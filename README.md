@@ -1,12 +1,10 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This is a weather app that shows the weather forecast for the current as well as five upcoming days.The forecast includes some other features such as feels like and sunset and sunrise.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We faced some problems styling the Header,We got help of CSS grid to solve it.We used fetch to get the data and enjected catch to handle the probable errors. 
 
 ## View it live
 
