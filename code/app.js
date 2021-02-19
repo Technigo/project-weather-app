@@ -48,8 +48,8 @@ const weatherData = () => {
         <td><img class="big-icon" src="https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png"/></td>
         </tr>  
         `
-      temperature.innerHTML += `${Math.round(weather.main.temp)}C` 
-      feelsTemp.innerHTML+= `Feels like: ${Math.round(weather.main.feels_like)}C`
+      temperature.innerHTML += `${Math.round(weather.main.temp)}°C` 
+      feelsTemp.innerHTML+= `Feels like: ${Math.round(weather.main.feels_like)}°C`
 
       sunrise.innerHTML += `<img src="./images/sunrise_cart2.jpg" width="44" height="30"/>`
       sunset.innerHTML += `<img src="./images/sunset_cart1.jpg" width="44" height="30"/>`
@@ -114,7 +114,7 @@ const weatherForecast = () => {
         } else if (dw === 1) {
           dtable.innerHTML += `
           <tr>
-            <td>Mon ${Math.round(elem.main.feels_like)}C</td>
+            <td>Mon ${Math.round(elem.main.feels_like)}°C</td>
             <td>${elem.weather[0].description}</td>
             <td><img class="forecast-icon" src="https://openweathermap.org/img/wn/${elem.weather[0].icon}@2x.png"></td>
           </tr>
@@ -122,7 +122,7 @@ const weatherForecast = () => {
         } else if (dw === 2) {
           dtable.innerHTML += `
           <tr>
-            <td>Tue ${Math.round(elem.main.feels_like)}C</td>
+            <td>Tue ${Math.round(elem.main.feels_like)}°C</td>
             <td>${elem.weather[0].description}</td>
             <td><img class="forecast-icon" src="https://openweathermap.org/img/wn/${elem.weather[0].icon}@2x.png"></td>
           </tr>
@@ -130,7 +130,7 @@ const weatherForecast = () => {
         } else if (dw === 3) {
           dtable.innerHTML += `
           <tr>
-            <td>Wed ${Math.round(elem.main.feels_like)}C</td>
+            <td>Wed ${Math.round(elem.main.feels_like)}°C</td>
             <td>${elem.weather[0].description}</td>
             <td><img class="forecast-icon" src="https://openweathermap.org/img/wn/${elem.weather[0].icon}@2x.png"></td>
           </tr>
@@ -138,7 +138,7 @@ const weatherForecast = () => {
         } else if (dw === 4) {
           dtable.innerHTML += `
           <tr>
-            <td>Thu ${Math.round(elem.main.feels_like)}C</td>
+            <td>Thu ${Math.round(elem.main.feels_like)}°C</td>
             <td>${elem.weather[0].description}</td>
             <td><img class="forecast-icon" src="https://openweathermap.org/img/wn/${elem.weather[0].icon}@2x.png"></td>
           </tr>
@@ -146,7 +146,7 @@ const weatherForecast = () => {
         } else if (dw === 5) {
           dtable.innerHTML += `
           <tr>
-            <td>Fri ${Math.round(elem.main.feels_like)}C</td>
+            <td>Fri ${Math.round(elem.main.feels_like)}°C</td>
             <td>${elem.weather[0].description}</td>
             <td><img class="forecast-icon" src="https://openweathermap.org/img/wn/${elem.weather[0].icon}@2x.png"></td>
             </tr>
@@ -154,7 +154,7 @@ const weatherForecast = () => {
         } else if (dw === 6) {
           dtable.innerHTML += `
           <tr>
-            <td>Sat ${Math.round(elem.main.feels_like)}C</td>
+            <td>Sat ${Math.round(elem.main.feels_like)}°C</td>
             <td>${elem.weather[0].description}</td>
             <td><img class="forecast-icon" src="https://openweathermap.org/img/wn/${elem.weather[0].icon}@2x.png"></td>
           </tr>
