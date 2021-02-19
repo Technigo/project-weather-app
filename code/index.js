@@ -57,23 +57,23 @@ fetch(APIurl)
         weatherData.main.temp = 9;
         if (weatherData.main.temp < 0) {
             backgroundImage.innerHTML += `
-            <img id="img-background" class="img-background" alt="" src="/assets/foggy.png">
+            <img id="img-background" class="img-background" alt="" src="assets/foggy.png">
             `
         } else if (weatherData.main.temp > 0 && weatherData.main.temp < 3) {
             backgroundImage.innerHTML += `
-            <img id="img-background" class="img-background" alt="" src="/assets/windy.png">
+            <img id="img-background" class="img-background" alt="" src="assets/windy.png">
             `
         } else if (weatherData.main.temp > 3 && weatherData.main.temp < 10) {
             backgroundImage.innerHTML += `
-            <img id="img-background" class="img-background" alt="" src="/assets/clear.png">
+            <img id="img-background" class="img-background" alt="" src="assets/clear.png">
             `
         } else if (weatherData.main.temp >= 10 && weatherData.main.temp <= 20) {
             backgroundImage.innerHTML += `
-            <img id="img-background" class="img-background" alt="" src="/assets/rainy.png">
+            <img id="img-background" class="img-background" alt="" src="assets/rainy.png">
             `
         } else {
             backgroundImage.innerHTML += `
-            <img id="img-background" class="img-background" alt="" src="/assets/sunny3.png">
+            <img id="img-background" class="img-background" alt="" src="assets/sunny3.png">
             `
         }
     })
