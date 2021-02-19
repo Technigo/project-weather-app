@@ -14,8 +14,8 @@ const getWeather = (location) => {
             return response.json()
         })
         .then((data) => {
-            let sunrise = new Date((data.sys.sunrise + data.timezone) * 1000)
-            let sunset = new Date((data.sys.sunset + data.timezone) * 1000)
+            let sunrise = new Date((data.sys.sunrise + data.timezone + (new Date().getTimezoneOffset() * 60)) * 1000)
+            let sunset = new Date((data.sys.sunset + data.timezone + (new Date().getTimezoneOffset() * 60)) * 1000)
             innerContainerWeather.innerHTML = `
         <div class="main-weather">
         <img class="image-weather" src="./assets/${data.weather[0].main.toLowerCase()}.png">
@@ -33,7 +33,7 @@ const getWeather = (location) => {
             </h3>    
         `
             // changes background color depending on time of day
-            if (Date.now() > (data.sys.sunset * 1000)) {
+            if (Date.now() < (data.sys.sunrise * 1000) || Date.now() > (data.sys.sunset * 1000)) {
                 containerWeather.style.background = "linear-gradient(0deg, rgba(104,104,171,1) 0%, rgba(12,11,91,1) 100%)"
             } else {
                 containerWeather.style.background = "linear-gradient(0deg, #d8d7ff 0%, #8fa9ff 100%)"
