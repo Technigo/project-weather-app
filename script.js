@@ -9,16 +9,18 @@ fetch ("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
   })
   .then((json) => {
     const temp = Math.round(json.main.temp * 10) / 10
+    const timezoneOffset = new Date().getTimezoneOffset() * 60
     const typeOfWeather = json.weather[0].description
-    const timeOfSunrise = new Date((json.sys.sunrise + json.timezone) * 1000).toLocaleTimeString("sv-US", {hour:"2-digit", minute:"2-digit"})
-    const timeOfSunset = new Date((json.sys.sunset + json.timezone) * 1000).toLocaleTimeString("sv-US", {hour:"2-digit", minute:"2-digit"})
+    const timeOfSunrise = new Date((json.sys.sunrise + json.timezone + timezoneOffset) * 1000).toLocaleTimeString("sv-US", {hour:"2-digit", minute:"2-digit"})
+    const timeOfSunset = new Date((json.sys.sunset + json.timezone + timezoneOffset) * 1000).toLocaleTimeString("sv-US", {hour:"2-digit", minute:"2-digit"})
     const nameOfCity = json.name
-    city.innerHTML=`<h1>${nameOfCity}</h1>`
+
     todaysWeather.innerHTML=`
       <p>${typeOfWeather} | ${temp}°C</p>
       <p>Sunrise: ${timeOfSunrise}</p> 
       <p>Sunset: ${timeOfSunset}</p>
     `
+    city.innerHTML=`<h1>${nameOfCity}</h1>`
   })
   .catch (error => {
     console.error(error)

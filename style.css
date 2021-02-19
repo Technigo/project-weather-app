@@ -8,7 +8,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgb(143,138,231);
   background: linear-gradient(180deg, rgba(143,138,231,1) 0%, rgba(135,176,245,1) 48%, rgba(191,240,250,1) 100%);
   color: #092163;
   width: 100vw;
@@ -31,7 +30,7 @@ h1 {
 }
 
 .forecast-paragraph {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgb(0, 0, 0);
   max-width: 250px;
   display: flex;
   justify-content: space-evenly;
