@@ -1,6 +1,7 @@
 // API's
-const todaysUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Göteborg,Sweden&units=metric&APPID=947f288ad7c7a6c1279353f3ee6f09d1'
-const forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=Göteborg,Sweden&units=metric&APPID=947f288ad7c7a6c1279353f3ee6f09d1'
+//const todaysUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Göteborg,Sweden&units=metric&APPID=947f288ad7c7a6c1279353f3ee6f09d1'
+const todaysUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Göteborg&units=metric&APPID=947f288ad7c7a6c1279353f3ee6f09d1'
+const forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=Göteborg&units=metric&APPID=947f288ad7c7a6c1279353f3ee6f09d1'
 
 // DOM
 const body = document.body
@@ -20,14 +21,13 @@ fetch(todaysUrl)
     .then((json) => {
 
         // Variables to display weather data
-        let city = json.name.toUpperCase()
-        let cityName = json.name
-        let temp = json.main.temp.toFixed(1)
-        let sunrise = new Date(json.sys.sunrise * 1000).toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'})
-        let sunset = new Date(json.sys.sunset * 1000).toLocaleString(navigator.language, {hour: '2-digit', minute:'2-digit'})
-        // old ending of sunrise and sunset. keep until other proves OK ([], {timeStyle: 'short'})
-        let weatherType = json.weather[0].main
-        let wIcon = json.weather[0].icon
+        const city = json.name.toUpperCase()
+        const cityName = json.name
+        const temp = json.main.temp.toFixed(1)
+        const sunrise = new Date(json.sys.sunrise * 1000).toLocaleString(navigator.language, {hour: '2-digit', minute:'2-digit'})
+        const sunset = new Date(json.sys.sunset * 1000).toLocaleString(navigator.language, {hour: '2-digit', minute:'2-digit'})
+        const weatherType = json.weather[0].main
+        const wIcon = json.weather[0].icon
 
         // HTML weather text for tablet and desktop, also changes bg color depending on weather type
         const moodGenerator = () => {
@@ -48,7 +48,7 @@ fetch(todaysUrl)
                 weatherText.innerHTML = `<p>It drizzles in ${cityName}. Let's stay inside and binge watch Netflix!</p>`
             } else {
                 body.classList.add('grey')
-                weatherText.innerHTML = `<p>Not the greatest weather in ${cityName}. Let's get cosy!</p>`
+                weatherText.innerHTML = `<p>Not the greatest weather in ${cityName}. Let's get cosy inside!</p>`
             }  
         } 
         moodGenerator()
@@ -95,10 +95,7 @@ fetch(forecastUrl)
         let wIcon = data.weather[0].icon
         
         // Displays the forecast weekday
-        const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-        const d = new Date(data.dt_txt)
-        const forecastDay = weekdays[d.getDay()]
-
+        const forecastDay = new Date(data.dt_txt).toLocaleString('en-US', { weekday: 'long'})
 
         /*let theDate = new Date(data.dt_txt)
         let weekday = new Array(theDate)
