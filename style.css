@@ -2,43 +2,45 @@ body {
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
+    height: 100vh;
     font-family: 'Comfortaa', cursive;
-    background-color: rgb(20, 77, 92);*/
+    background-image: linear-gradient(rgba(10, 64, 78, 0.486), rgb(12, 64, 78));
 }
 
 .cloudy {
-    background-color: rgb(65, 24, 46);
+    background-image: linear-gradient(rgba(10, 64, 78, 0.486), rgb(12, 64, 78));
 }
 
 .clear {
-    background-color: rgb(78, 228, 158);
+    background-image: linear-gradient(rgba(253, 217, 15, 0.534), rgb(253, 217, 15));
 }
 
 .snowy {
-    background-color: rgb(110, 179, 175);
+    background-image: linear-gradient(rgba(110, 179, 176, 0.384), rgb(107, 168, 165));
 }
 
 .rainy {
-    background-color: rgb(12, 36, 73);
+    background-image: linear-gradient(rgba(12, 36, 73, 0.582), rgb(8, 28, 58));
 }
 
 .drizzly {
-    background-color: rgb(15, 90, 80);
+    background-image: linear-gradient(rgba(15, 90, 80, 0.712), rgb(11, 80, 71));
 }
 
 .grey {
-    background-color: rgb(37, 45, 48);
+    background-image: linear-gradient(rgb(37, 45, 48, 0.418), rgb(37, 45, 48));
+    
 }
 
 h1 {
-    font-size: 36px;
+    font-size: 2.25rem;
     margin: 0;
     margin-top: 20px;
     margin-bottom: 10px;
 }
 
 h2 {
-    font-size: 20px;
+    font-size: 1.25rem;
     margin: 0;
 }
 
@@ -118,14 +120,17 @@ h2 {
 }
 
 /***** TABLET RESPONSIVE *****/
-@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+
     
     h1 {
         font-size: 70px;
+        text-align: center;
     }
 
     h2 {
         font-size: 30px;
+        text-align: center;
     }
 
     .container {
@@ -188,20 +193,23 @@ h2 {
     .weather_text p {
         font-size: 30px;
         margin-top: 50px;
-        color: rgba(255, 255, 255, 0.384);
+        color: rgba(255, 255, 255, 0.527);
     }
 }
 
 
 /***** DESKTOP RESPONSIVE *****/
-@media screen and (min-device-width: 1025px) {
+@media screen and (min-width: 1025px) {
+
 
     h1 {
         font-size: 70px;
+        text-align: center;
     }
 
     h2 {
         font-size: 30px;
+        text-align: center;
     }
 
     .container {
@@ -271,7 +279,7 @@ h2 {
         font-size: 30px;
         margin: 0;
         margin-top: 60px;
-        color: rgba(255, 255, 255, 0.384);
+        color: rgba(255, 255, 255, 0.527);
     }
 }
 

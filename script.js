@@ -14,9 +14,10 @@ fetch(todaysUrl)
         if (response.ok) {
         return response.json()
         } else {
-            throw 'Oops, something went wrong.'
+            throw 'Oops, something went wrong.';
         }
     })
+    
     .then((json) => {
 
         // Variables to display weather data
@@ -29,7 +30,6 @@ fetch(todaysUrl)
         const weatherType = json.weather[0].main
         const wIcon = json.weather[0].icon
 
-       
 
         // HTML weather text for tablet and desktop, also changes bg color depending on weather type
         const moodGenerator = () => {
@@ -55,7 +55,23 @@ fetch(todaysUrl)
         } 
         moodGenerator()
 
+        containerToday.innerHTML = `
+        <section class="weather">
+        <div class="temp_city_weather">
+        <div class="temp_city">
+        <h1>${temp}°C</h1>
+        <h2>${city}</h2>
+        </div>
+        <img src="https://openweathermap.org/img/wn/${wIcon}@2x.png" />
+        </div>
+        <div class="sunrise_sunset">
+        <p>Sunrise: ${sunrise}</p>
+        <p>Sunset: ${sunset}</p>
+        </div>
+        </section>`
+ 
         // HTML today's weather
+       /*
         let weatherHTML = ''
         weatherHTML += `<section class="weather">`
         weatherHTML += `<div class="temp_city_weather">`
@@ -66,12 +82,13 @@ fetch(todaysUrl)
         weatherHTML += `<img src="https://openweathermap.org/img/wn/${wIcon}@2x.png" />`
         weatherHTML += `</div>`
         weatherHTML += `<div class="sunrise_sunset">`
-        weatherHTML += `<p>Sunrise: ${sunrise}`
-        weatherHTML += `<p>Sunset: ${sunset}`
+        weatherHTML += `<p>Sunrise: ${sunrise}</p>`
+        weatherHTML += `<p>Sunset: ${sunset}</p>`
         weatherHTML += `</div>`
         weatherHTML += `</section>`
         
         containerToday.innerHTML += weatherHTML
+       */
     })
 
     .catch(error => {
@@ -84,7 +101,7 @@ fetch(forecastUrl)
         if (response.ok) {
         return response.json()
         } else {
-            throw 'Oops, something went wrong.'
+            throw 'Oops, something went wrong.';
         }
     })
     .then((data) => {
@@ -114,6 +131,7 @@ fetch(forecastUrl)
     })
 
     .catch(error => {
-        containerForecast.innerHTML = `<p>${error}</p>`
+        containerForecast.innerHTML = `
+        <p>${error}</p>`
     })
 
