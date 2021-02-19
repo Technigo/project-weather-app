@@ -30,7 +30,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
         body.classList =''
         temperature.innerHTML = `${Math.round(json.main.temp * 10) / 10}°C`
         cityName.innerHTML = `${json.name}`
-        icon.src= `/code/assets/${weatherIcon(json.weather[0].main)}`
+        icon.src= `assets/${weatherIcon(json.weather[0].main)}`
         shortDescription.innerHTML = `${json.weather[0].description}`
         sunrise.innerHTML = `Sunrise ${hourConversion(json.sys.sunrise)}`
         sunset.innerHTML = `Sunset ${hourConversion(json.sys.sunset)}`
@@ -61,7 +61,7 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&A
                     <h3>${getWeekday(forecastDay.dt_txt)}</h3>
                 </div>
                 <div class="weather-type">
-                    <img src="/code/assets/${weatherIcon(forecastDay.weather[0].main)}">
+                    <img src="assets/${weatherIcon(forecastDay.weather[0].main)}">
                 </div>
                 <div class="min-temp">
                     <h3>${Math.round(forecastDay.main.temp_min)}°C</h3>
