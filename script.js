@@ -95,7 +95,12 @@ fetch(forecastUrl)
         let wIcon = data.weather[0].icon
         
         // Displays the forecast weekday
-        let theDate = new Date(data.dt_txt)
+        const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+        const d = new Date(data.dt_txt)
+        const forecastDay = weekdays[d.getDay()]
+
+
+        /*let theDate = new Date(data.dt_txt)
         let weekday = new Array(theDate)
         weekday[0] = 'Sunday'
         weekday[1] = 'Monday'
@@ -105,12 +110,14 @@ fetch(forecastUrl)
         weekday[5] = 'Friday'
         weekday[6] = 'Saturday'
         let forecastDate = weekday[theDate.getDay()]
+        const d = new Date(forecastDate.replace(' ', 'T'))*/
+
         //let newDate = new Date(forecastDate.replace(' ', 'T'));
 
         // HTML forecast weather
         let forecastHTML = ''
         forecastHTML += `<section class="forecast">`
-        forecastHTML += `<p>${forecastDate}</p>`
+        forecastHTML += `<p>${forecastDay}</p>`
         forecastHTML += `<div class="forecast_weather_temp">`
         forecastHTML += `<img class="forecast_icon" src="https://openweathermap.org/img/wn/${wIcon}@2x.png" />`
         forecastHTML += `<p class="forecast_temp">${forecastTemp}°C</p>`
