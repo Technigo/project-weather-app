@@ -7,17 +7,9 @@ const forcast = document.getElementById('forcast');
 
 // Function that expect date in format that can be used to create a date object
 // Function also adjust for iOS limitations in Date
-let returnWeekDay = (date) => { 
-  let daysInWeek = ["Sunday", "Monday","Tuesday", "Wednesday","Thursday","Friday","Saturday"];
-  //fix date issue in IoS by converting space between date and time into a T
+const returnWeekDay = (date) => {
+  const daysInWeek = ["Sunday", "Monday","Tuesday", "Wednesday","Thursday","Friday","Saturday"];
   let inputDate = new Date(date.replace(' ', 'T'));
-  /*
-  // old solution with different code for both non ios and ios
-  let inputDate = new Date(date);
-  // fix for iOS
-  if(Number.isNaN(inputDate.getMonth())) {
-    inputDate = new Date(date.replace(' ', 'T'));
-  }*/
   return daysInWeek[inputDate.getDay()];
 }
 
@@ -31,7 +23,6 @@ fetch(weatherUrl)
     }
   })
   .then((json)=> {
-    // console.log(json)
     let tempToday = `${json.main.temp}`
     let tempTodayRounded = Math.round(tempToday)
     let cityName = json.name;
@@ -45,7 +36,7 @@ fetch(weatherUrl)
     weatherSection.innerHTML = `
     <div class="today-temp">
       <div class="today">
-        <h2>${tempTodayRounded} °C</h2>  
+        <h2>${tempTodayRounded} °C</h2>
         <h1>${cityName}</h1>
         <h3>${weatherDescription} </h3>
       </div>
@@ -56,14 +47,14 @@ fetch(weatherUrl)
     <div class="sun-hours">
       <p>Sunrise: ${sunrise}</p>
       <p>Sunset: ${sunset}</p>
-    </div> 
+    </div>
     `
   })
   .catch(error => {
     weatherSection.innerHTML = `${error}`
   })
 }
-  
+
 const fetch5DayForcast = () => {
 fetch(weatherForcastUrl)
   .then((response) => {
@@ -79,8 +70,6 @@ fetch(weatherForcastUrl)
 
     filteredForecast.forEach((filteredForecast) => {
       let dayInWeek = returnWeekDay(filteredForecast.dt_txt);
-      //console.log(filteredForecast.dt_txt);
-      //if (dayInWeek == null) dayInWeek = filteredForecast.dt_txt;
       let temp5Days = `${filteredForecast.main.temp}`
       let temp5DaysRounded = Math.round(temp5Days)
       let iconId = filteredForecast.weather[0].icon;
@@ -98,7 +87,7 @@ fetch(weatherForcastUrl)
   })
 };
 
-  
 
-fetchTodaysWeather(); 
+
+fetchTodaysWeather();
 fetch5DayForcast();
