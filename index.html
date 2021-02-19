@@ -7,31 +7,34 @@
     <link rel="stylesheet" href="./style.css">
     <title>Weather app</title>
 </head>
-<body id="body">
 
-<div class = "wrapper">
-    <section class = "weather-container">
-        <div id="weather-container__info">
-            <div class="current-city">
-                <div id="city"></div>
+<body id="body">
+    <div class = "wrapper">
+        <div class = "weather-container">
+
+<!-- Current city & conditions -->
+            <div id="weather-container__info">
+                <div class="current-city">
+                    <div id="city"></div>
+                </div>
+                <div class="current-conditions">
+                    <div class="type-of-weather">
+                        <div id="currentWeather"></div>
+                    </div>
+                    <div class="sunrise-and-sunset">
+                        <div id="sunRise"></div>
+                        <div id="sunSet"></div>
+                    </div>
+                </div>
             </div>
-        <div class="current-conditions">
-            <div class="type-of-weather">
-                <div id="currentWeather"></div>
+            
+<!-- Forecast 5 days  -->
+            <div class="head-forecast">
+                <h1>Forecast</h1>
             </div>
-            <div class="sunrise-and-sunset">
-                <div id="sunRise"></div>
-                <div id="sunSet"></div>
-            </div>
+            <div id="all-days"></div>
         </div>
     </div>
-    
-    <div class="head-forecast">
-    <h1>Forecast</h1>
-    </div>
-    <div id="all-days"></div>
-</section>
-</div>
 
     <script src="./script.js"></script>
 </body>
