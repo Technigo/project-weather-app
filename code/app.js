@@ -83,8 +83,9 @@ const filterForecastData = (data) => {
 };
 
 const getDayOfWeek = (date) => {
-  const dateObj = new Date(date);
-  return dateObj.toLocaleString("en-US", { weekday: "short" });
+  const dateStrings = new Date(date).toString().split(" ");
+  // console.log(dates);
+  return dateStrings[0];
 };
 
 const formatTime = (times) => {
