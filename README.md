@@ -1,13 +1,11 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The goal was to practice fetching data from an API, and then displaying in a weather app. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We looked at at the API documentation and checked how to reach the data we wanted to use. We used Javascript to display a current weather and 5 day forecast in HTML format for Cape Town. 
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://cape-town-weather.netlify.app/
