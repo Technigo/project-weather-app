@@ -3,47 +3,47 @@ const cityName = document.getElementById('city-name');
 const temperature = document.getElementById('temperature');
 const description = document.getElementById('description');
 const sun = document.getElementById('sun');
-const container = document.getElementById('main');
+const weatherContainer = document.getElementById('header-container');
+const forecastContainer = document.getElementById('main');
 
-console.log('API Fetch starting')
-//fetch sends a request to our server
-//our js is executing line 11 directly after the fetch
-//when the response comes back after x seconds the .then function is executed
-//When you got the information from the stream (from server) - only then try to get the json
+
 fetch(WEATHER_URL)
   .then((response) => {
-    console.log(`Response OK? ${response.ok}`);
-    console.log(`Response Status: ${response.status}`);
-    console.log('Response recieved');
-    //Now - convert it to json:
     return response.json();
   })
-  // the conversion is available to us here:
+
+
   .then((data) => {
-    console.log(data);
-    cityName.innerHTML = ` ${data.city.name} `;
-    // I moved the filtere
-    const filteredForecast = data.list.filter(item => item.dt_txt.includes('12:00'))
-    
-    filteredForecast.forEach(() => {
-        temperature.innerHTML = ` ${(filteredForecast[0].main.temp).toFixed(0)}`;
-        //description.innerHTLM = ` ${filteredForecast.weather.description}`;
-    });
-    
-    
-    sun.innerHTML = `
-          <p>Sunrise is: ${new Date((data.city.sunrise + data.city.timezone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</p>
-          <p>Sunset is: ${new Date((data.city.sunset + data.city.timezone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</p>
-      `;
-     
-    filteredForecast.forEach((weather) => {
-      //const temp = weather.main.temp; 
-      //const type = weather.weather.description;
-      
+    let tempToday = data.list.filter(item => item.dt_txt.includes('12:00'));
+    let cityName = data.city.name;
+    let sunriseTime = new Date((data.city.sunrise + data.city.timezone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+    let sunsetTime = new Date((data.city.sunset + data.city.timezone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+    let weatherDescription = data.list[0[2]];
+
+    weatherContainer.innerHTML = `
+    <div class='weatherToday'>
+        <h1>${tempToday}</h1>
+        <h1>${cityName}</h1>
+        <h1>${weatherDescription}</h1>
+    </div>
+    <div class='sunTime'>
+        <p>Sunrise is: ${sunriseTime}</p>
+        <p>Sunset is: ${sunsetTime}</p>
+    </div>
+    `
+    })
+
+
+    // const filteredForecast = data.list.filter(item => item.dt_txt.includes('12:00'));
+    // const tempToday = () => (filteredForecast[0].main.temp).toFixed(0);
+
+
+    /*filteredForecast.forEach((weather) => {
       container.innerHTML += `
         <section class="forecast">         
           <p>${(weather.main.temp).toFixed(0)}</p>
           <p>${weather.weather[0].description}</p>
         </section>`;
     });
-  });
+*/
+ 
