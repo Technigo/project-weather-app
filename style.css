@@ -1,7 +1,5 @@
 * {
-    /* border: 1px solid black;  */
     margin: 0; 
-    /* padding: 0;  */
 }
 
 body {
@@ -50,12 +48,12 @@ body {
 }
 
 .sunrise-sunset {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-  padding-bottom: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-bottom: 10px;
  }
 
 .forecast-container {
@@ -91,12 +89,10 @@ body {
 }
 
 .day img {
-    /* height: 30px; */
     width: 60px;
     height: 100%;
     object-fit: cover;
     margin-right: 50px;
-    
 }
 
 /* MEDIA QUERIES */
