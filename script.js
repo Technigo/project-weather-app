@@ -2,7 +2,6 @@ const WEATHER_URL = 'https://api.openweathermap.org/data/2.5/forecast?q=Kiruna,S
 const cityName = document.getElementById('city-name');
 const temperature = document.getElementById('temperature');
 const description = document.getElementById('description');
-
 const container = document.getElementById('forecast-section');
 
 fetch(WEATHER_URL)
@@ -20,11 +19,11 @@ fetch(WEATHER_URL)
     const sunset = new Date((data.city.sunset + data.city.timezone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
     const temp = (filteredForecast[0].main.temp).toFixed(0);
     
-    cityName.innerHTML = `Today's weather in ${city}`;
-    temperature.innerHTML = `get dressed for ${temp}°`;
-    sunriseTime.innerHTML = `hi sun at ${sunrise}`;
-    sunsetTime.innerHTML = `bye sun at ${sunset}`;
     
+    temperature.innerHTML = `get dressed for ${temp}°`;
+    sunriseTime.innerHTML = `sunrise at ${sunrise}`;
+    sunsetTime.innerHTML = `sunset at ${sunset}`;
+    cityName.innerHTML = `Today's weather in ${city}`;
     filteredForecast.forEach((data) => {  
       description.innerHTML = `${data.weather[0].description}`;
     }); 
