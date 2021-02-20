@@ -64,7 +64,6 @@ body {
 }
 
 @media (min-width: 680px) {
-
     .main-section {
         display: flex;
         align-items: center;
