@@ -122,7 +122,6 @@ const weatherForecast = () => {
   .then((response) => {
     return response.json().then((json) => {
       const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
-      console.log("filtered data",filteredForecast)
       filteredForecast.map((elem) => {
         dw= dayWeekConverter(elem.dt)  
         if (dw === 0) {
