@@ -3,7 +3,7 @@ const cityName = document.getElementById('city-name');
 const temperature = document.getElementById('temperature');
 const description = document.getElementById('description');
 const container = document.getElementById('forecast-section');
-const todaysImg = document.getElementById('current-img')
+const todaysImg = document.getElementById('todays-img')
 
 fetch(WEATHER_URL)
   .then((response) => {
@@ -23,14 +23,14 @@ fetch(WEATHER_URL)
 
     filteredForecast.forEach((data) => {
       const imgID = data.weather[0].icon;
-      todaysImg.innerHTML = `<img src="http://openweathermap.org/img/wn/${imgID}@2x.png" class="weather-img">`;
+      todaysImg.innerHTML = `<img src="http://openweathermap.org/img/wn/${imgID}@2x.png" width="130px">`;
     }); 
     
     
     cityName.innerHTML = `${city}`;
     temperature.innerHTML = `${temp}°`;
-    sunriseTime.innerHTML = `say hi sun at ${sunrise}`;
-    sunsetTime.innerHTML = `say bye sun at ${sunset}`;
+    sunriseTime.innerHTML = `sunrise ${sunrise}`;
+    sunsetTime.innerHTML = `sunset ${sunset}`;
     
     filteredForecast.forEach((data) => {
       description.innerHTML = `${data.weather[0].description}`;
