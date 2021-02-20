@@ -2,44 +2,44 @@ const WEATHER_URL = 'https://api.openweathermap.org/data/2.5/forecast?q=Kiruna,S
 const cityName = document.getElementById('city-name');
 const temperature = document.getElementById('temperature');
 const description = document.getElementById('description');
-const sun = document.getElementById('sun');
-const container = document.getElementById('main');
 
-console.log('API Fetch starting')
+const container = document.getElementById('forecast-section');
 
 fetch(WEATHER_URL)
   .then((response) => {
-    console.log(`Response OK? ${response.ok}`);
-    console.log(`Response Status: ${response.status}`);
-    console.log('Response recieved');
     return response.json();
   })
 
   .then((data) => {
-    console.log(data);
-    cityName.innerHTML = ` ${data.city.name} `;
-    const filteredForecast = data.list.filter(item => item.dt_txt.includes('12:00'))
+  // todays weather:
+    const city = data.city.name;
+    const filteredForecast = data.list.filter(item => item.dt_txt.includes('12:00'));
+    const sunriseTime = document.getElementById('sunrise');
+    const sunsetTime = document.getElementById('sunset');
+    const sunrise = new Date((data.city.sunrise + data.city.timezone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+    const sunset = new Date((data.city.sunset + data.city.timezone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+    const temp = (filteredForecast[0].main.temp).toFixed(0);
     
-    filteredForecast.forEach(() => {
-        temperature.innerHTML = ` ${(filteredForecast[0].main.temp).toFixed(0)}`;
-    });
+    cityName.innerHTML = `Today's weather in ${city}`;
+    temperature.innerHTML = `get dressed for ${temp}°`;
+    sunriseTime.innerHTML = `hi sun at ${sunrise}`;
+    sunsetTime.innerHTML = `bye sun at ${sunset}`;
     
-    filteredForecast.forEach((weather) => {
-      description.innerHTML = `${weather.weather[0].description}`
-    })
+    filteredForecast.forEach((data) => {  
+      description.innerHTML = `${data.weather[0].description}`;
+    }); 
 
-    sun.innerHTML = `
-          <p>Sunrise is: ${new Date((data.city.sunrise + data.city.timezone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</p>
-          <p>Sunset is: ${new Date((data.city.sunset + data.city.timezone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</p>
-      `;
-    
+  // 5 day-forecast:
+    filteredForecast.forEach((data) => {
+    const temp = (data.main.temp).toFixed(0);
+    const imgID = data.weather[0].icon;
+    const weatherDescription = data.weather[0].description;
       
-    filteredForecast.forEach((weather) => {
       container.innerHTML += `
         <section class="forecast">         
-          <p>${(weather.main.temp).toFixed(0)}</p>
-          <img src="http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png">
-          <p>${weather.weather[0].description}</p>
+          <p>${temp}</p>
+          <img src="http://openweathermap.org/img/wn/${imgID}@2x.png">
+          <p>${weatherDescription}</p>
         </section>`;
     });
   });
