@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Change the title to your own -->
+  <title>Weather app by MM</title>
+
+  <!-- Connection to the CSS file -->
+  <link rel="stylesheet" href="./style.css">
+
+  <!-- Link to Montserrat which is used in our design. Feel free to
+  use another one or remove this if you don't want a google font. 
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">-->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body id="body" class="unknown">
+
+  <section class="today">
+    <div class="todays-description">
+      <div class="description">
+      <h2 >
+        <p id="city" class="city-button"></p>
+      </h2>
+      </div>
+    </div>
+      <div class="icon-img">
+        <img id="icon" >
+      </div>
+    <div class="todays-numbers">
+      <h3><span id="shortDescription"></span> | <span id="temperature">°C</span></h3>
+      <p id="sunrise"></p>
+      <p id="sunset"></p>
+      <p id="feels-like">°C</p>
+    </div>
+  </section>
+
+  <!-- Another id to be able to add the forecast data to our HTML. -->
+  <section id="forecast" class="forecast">
+  </section>
+
+  <div id="cities-popup" class="cities-popup">
+    <a id="close" class="close" href="#">&times;</a>
+      <ul id="cities-popup-list" class="cities-popup-list">
+        <li></li>
+      </ul>
+  </div>
+
+
+  <!-- Connection to the JavaScript file -->
+  <script type="text/javascript" src="./weather.js"></script>
+</body>
+
+</html>
