@@ -2,6 +2,7 @@ body {
     font-family: 'Lora', serif;
     margin: 0;
     height: 100vh;
+    background: #bac2ba70;    
 }
 
 /*.background-video {
@@ -23,14 +24,12 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    
-    
 }
 
 .todays-weather::after {
     content: '';
     position: absolute;
-    background: radial-gradient(#00A0B0 10%, #7fc844 100%);
+    background: linear-gradient(#653D7C 60%, #00A0B0 100%);
     border-radius: 100%;
     right: -200px;
     left: -200px;
@@ -39,8 +38,8 @@ body {
     z-index: -1;
 }
 
-.day {
-    background: linear-gradient(#653D7C 60%, #00A0B0 100%);
+.todays-weather.day::after {
+    background: radial-gradient(#00A0B0 20%, #7fc844 100%);
 }
 
 .todays-weather h4 {
@@ -67,7 +66,7 @@ body {
 }
 
 .sun-hours img {
-    width: 72px;;
+    width: 48px;;
 }
 
 .sunrise {
@@ -97,7 +96,7 @@ body {
    align-self: flex-end; 
    width: 25%;
    text-align: left;
-  padding-left: 20px;
+/*padding-left: 20px;*/
 }
 
 .forecast-temp {
@@ -108,4 +107,34 @@ body {
 .forecast div img {
     width: 48px;
     height: 48px;
+}
+
+@media (min-width: 768px) {
+    .city-name {
+        font-size: 56px;
+    }
+
+    .temperature {
+        font-size: 80px;
+    }
+
+    .todays-weather h4 {
+        font-size: 32px;
+    }
+
+    .sunset, .sunrise {
+        margin: 0 30px;
+    }
+
+    .forecast-section {
+        margin-top: 20px;
+    }
+
+    .forecast-weekday {
+        font-size: 26px;
+    }
+
+    .forecast-temp {
+
+    }
 }

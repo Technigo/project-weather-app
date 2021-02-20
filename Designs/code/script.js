@@ -4,9 +4,14 @@ const currentLocation = document.getElementById('current-location')
 const sunriseBox = document.getElementById('sunrise')
 const sunsetBox = document.getElementById('sunset')
 const forecast = document.getElementById('forecast')
+const todaysWeather = document.getElementById('todaysWeather')
 
 let icon 
 let sunHours
+
+const today = new Date()
+let currentTime = `${today.getHours()}:${today.getMinutes()}`
+
 
 const sunTime = (time) => {
     sunHours = new Date(time * 1000)
@@ -17,14 +22,7 @@ const sunTime = (time) => {
     })
 }
 
-const backgroundImage = (data) => {
-    const today = new Date()
-    const currentTime = `${today.getHours()}:${today.getMinutes()}`
-    if (currentTime >= data.sys.sunrise && currentTime <= data.sys.sunset) {
-        currentLocation.classList.add('day')
-    }
 
-}
 
 const weatherIcon = (item) => {
     
@@ -44,6 +42,7 @@ const weatherIcon = (item) => {
 }
 
 
+
 fetch(WEATHER_URL)
     .then((response) => {
         console.log(response) 
@@ -51,8 +50,9 @@ fetch(WEATHER_URL)
     }) 
     .then((data) => {
         let fixedTemperature = data.main.temp.toFixed()
-        //let sunrise = data.sys.sunrise
-        backgroundImage(data)
+        
+        let sunrise = sunTime(data.sys.sunrise)
+        let sunset = sunTime(data.sys.sunset)
     
         currentLocation.innerHTML += `
             <h2 class="city-name">${data.name}</h2>
@@ -61,14 +61,16 @@ fetch(WEATHER_URL)
         `
         sunriseBox.innerHTML += `
             <img src ="./ikons/icons8-sunrise-96.png"> 
-            <h4>${sunTime(data.sys.sunrise)}</h4>
+            <h4>${sunrise}</h4>
         `
         sunsetBox.innerHTML += `
             <img src ="./ikons/icons8-moon-and-stars-96.png">
-            <h4>${sunTime(data.sys.sunset)}</h4>
-        `
-                
-        console.log(data)
+            <h4>${sunset}</h4>
+        ` 
+        
+        if (currentTime >= sunrise && currentTime <= sunset) {
+            todaysWeather.classList.add('day')
+        }  
     })
 
 
