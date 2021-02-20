@@ -32,7 +32,7 @@ fetch(todaysWeatherUrl)
       ${json.weather[0].description}
       `;
     weatherFeelsLike.innerHTML += `
-      <h4> - Feels like: ${json.main.feels_like.toFixed(1)}ºC</h4>
+      <h4> Feels like ${json.main.feels_like.toFixed(1)}ºC</h4>
       `; 
     const sunriseValue = json.sys.sunrise; //times in UNIX
       sunrise.innerHTML = `Sunrise: ${json.sunrise}`;
@@ -85,12 +85,16 @@ fetch(fiveDayForecastStockholm)
       let temperature = 
         (item.main.temp).toFixed(1);
       let weekday = 
-        (new Date(item.dt * 1000)).toLocaleDateString("en-US", { weekday: "long" })
+        (new Date(item.dt * 1000)).toLocaleDateString("en-US", { weekday: "short" })
       let icon = `
         <img src=https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png></img>
         `;
     fiveDayForecast.innerHTML += `
-      <span> ${weekday} ${temperature}ºC ${icon}</span>
+      <div class="forecast>
+      <span>${weekday}</span> 
+      <span>${temperature}ºC</span>
+      <span>${icon}</span>
+      </div>
       `; 
     });
   });

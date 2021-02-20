@@ -40,13 +40,13 @@
   border-bottom-right-radius: 50% 20%;
 }
 .city-name {
-  justify-content: right;
+  text-size-adjust: auto ;
   padding: 20px ;
-  font-size: 50px;
+  font-size: 8vw;
   text-transform: uppercase;
 }
 .main-temperature {
-  font-size: 60px;
+  font-size: 50px;
 }
 .weather-feels-like {
   font-size: 20px;
@@ -70,17 +70,24 @@
   display: inline-block;
   position: relative; 
 }
-.five-day-forecast {
+.forecast{
+  display: flex;
+  flex-direction: column;
   padding: 20px;
- 
+}
+.five-day-forecast {
+  width: 100%;
+  /* justify-content: space-between; */
+  
+  margin: 10px;
   /* animation: pulse 2s infinite linear; */
 }
 
-@keyframes gradient {
+/* @keyframes gradient {
 	0% { background-position: 0% 50%; }
 	50% { background-position: 100% 50%; }
 	100% { background-position: 0% 50%; }
-}
+} */
 @keyframes bounce {
   0% { top: 0; }
   50% { top: -0.2em; }
@@ -96,9 +103,8 @@
 /*Media queries*/
 /*Tablet*/
 @media (min-width: 667px) and (max-width: 1024px) {
-  .five-day-forecast {
-    display: flex;
-    flex-direction: row;
+  .forecast-container {
+   
     padding: 20px;
     font-size: 18px;
   }
