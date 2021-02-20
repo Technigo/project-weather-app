@@ -23,7 +23,7 @@ fetch(WEATHER_URL)
 
     filteredForecast.forEach((data) => {
       const imgID = data.weather[0].icon;
-      todaysImg.innerHTML = `<img src="http://openweathermap.org/img/wn/${imgID}@2x.png" width="130px">`;
+      todaysImg.innerHTML = `<img src="http://openweathermap.org/img/wn/${imgID}@2x.png" class="today-img">`;
     }); 
     
     
