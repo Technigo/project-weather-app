@@ -41,11 +41,11 @@ const weatherData = () => {
     return response.json().then((json) => {
       weather = json
       city.innerHTML += weather.name
-          
+      
+      // making a background image    
       let cityName = weather.name
-      console.log("selected", cityName)
       if (cityName === "Stockholm") {
-       coverImage.style.backgroundImage = "url('./images/stockholm.jpg')"
+       coverImage.style.backgroundImage = "url('./images/stockholm.jpg')";
       } else if (cityName === "Bangkok") {
         coverImage.style.backgroundImage = "url('./images/bangkok1.jpg')"; 
       } else if (cityName === "Hanoi") {
@@ -257,4 +257,4 @@ selectCity.addEventListener("change", () => {
   myCity(selectCity.value)
 })
 
-console.log("test",cityName)
+
