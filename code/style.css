@@ -15,6 +15,12 @@ body {
     justify-content: space-around;
     flex-direction: row;
 }
+
+.weather-today {
+    font-size: 15px;
+    letter-spacing: 2px;
+}
+
 .temp-icon {
     display: flex;
     justify-content: space-around;
@@ -50,26 +56,86 @@ body {
 
 .weekday {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    
 }
 
 .weekday p {
-    font-size: 20px; 
+    font-size: 15px; 
 }
 
 .forecast-temp-feels-like {
     display: flex;
-    flex-direction: row;
+    justify-content: center;
 }
 
-/**** MEDIA QUERIES ***/
-@media (min-width: 768px) {
-    .weather-container {
-        display: flex;
-        justify-content: space-around;
-        flex-direction: row;
+.forecast-days {
+    text-decoration: grey underline;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/**** MEDIA QUERY TABLET ****/
+@media (min-width: 768px) and (max-width: 992px) {
+
+    .weather-today {
+        font-size: 28px;
     }
+
+    .temp-icon h1 {
+        font-size: 55px;
+    }
+    
+    .weather-description {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .weather-description h3, p {
+        font-size: 22px;
+    }
+
+    .sunrise-sunset {
+        justify-content: first baseline;
+    }
+
+    .sunrise-sunset p {
+        font-size: 15px;
+    }
+
+    .forecast-temp-feels-like {
+        display: flex;
+        justify-content: center;
+    }
+
+    .weekday {
+        display: flex;
+        justify-content: space-evenly;
+        justify-items: center;
+    }
+
+    .weekday p {
+        font-size: 20px;
+    }
+}
+
+/**** MEDIA QUERY DESKTOP****/
+@media (min-width: 993px) {
+
+    .weather-container {
+        height: 65vh;
+    }
+    
+    .weather-today {
+        font-size: 40px;
+        letter-spacing: 3px;
+    }
+
+    .temp-icon h1 {
+        font-size: 55px;
+    }
+    
 
     .weather-description {
         display: flex;
@@ -77,49 +143,31 @@ body {
         justify-content: space-between;
     }
 
-    .weather-description h3 {
-        font-size: 19px;
+    .weather-description h3, p {
+        font-size: 22px;
     }
 
-    .weather-description p {
-        font-size: 19px;
-    }
-    .temp-icon h1 {
-        font-size: 50px;
+    .sunrise-sunset {
+        justify-content: first baseline;
     }
 
     .sunrise-sunset p {
-        font-size: 20px;
+        font-size: 15px;
     }
-    
-    .weekday p {
-        font-size: 20px;
-    }
-}
 
-@media (min-width: 993px) {
-    h1 {
-        font-size: bold 60px;
-    }
-    .weather-description {
+    .forecast-temp-feels-like {
         display: flex;
-        flex-direction: row;
+        justify-content: center;
+    }
+
+    .weekday {
+        display: flex;
         justify-content: space-evenly;
-        align-items: center;
+        justify-items: center;
+        text-align: left;
     }
-    .weather-description h3 {
-        font-size: 20px;
-    }
-    .sunrise-sunset p {
-        font-size: 20px;
-    }
+
     .weekday p {
         font-size: 20px;
-
     }
-    .sunset-sunrise {
-        justify-content: center;
-        align-items: center;
-    }
-
 }

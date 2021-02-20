@@ -6,7 +6,7 @@ const forecastContainer = document.getElementById('forecastContainer')
 
 console.log('API fetch starting') //can take away later
 
-const weekday = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
+const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
 fetch(StockholmAPI)
   .then((response) => {
