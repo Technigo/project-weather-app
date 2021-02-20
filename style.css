@@ -1,8 +1,7 @@
 :root {
   --primary: #F2D7CC;
   --secondary: #4D3834;
-  --third: #1E292B;
-  --fourth: #96776A;
+  --third: #96776A;
 }
 
 body, html {
@@ -81,7 +80,7 @@ p {
 
 .footer {
   height: 7vh;
-  background: var(--fourth);
+  background: var(--third);
   color: var(--primary);
   padding: 30px;
   text-align: center;
