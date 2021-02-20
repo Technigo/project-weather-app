@@ -1,20 +1,21 @@
 body {
     font-family: 'Lora', serif;
     margin: 0;
-    height: 100vh;
-    background: #bac2ba70;    
+    background: #D8C7DC;    
 }
 
-/*.background-video {
-    position: relative;
-    height: 50vh;
-}*/
+/* Changes the background color on body when it's night time */
+.background-night {
+    background: #bac2ba70;
+}
 
+/* To handle overflow from the after element on todays-weather */
 .overflow-handler {
     overflow: hidden;
-    width: 100vw;
+    width: 100%;
 }
 
+/* TODAYS WEATHER */
 .todays-weather {
     display: flex;
     flex-direction: column;
@@ -52,7 +53,6 @@ body {
     margin-bottom: 0px;
 } 
 
-
 .temperature {
     font-size: 72px;
     margin-top: 0px;
@@ -66,19 +66,23 @@ body {
 }
 
 .sun-hours img {
-    width: 48px;;
+    width: 48px;
+    align-self: center;
 }
 
 .sunrise {
     display: flex;
     flex-direction: column;
+    margin: 0 10px;
 }
 
 .sunset {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px;
 }
 
+/* FORECAST SECTION */
 .forecast-section {
     display: flex;
     flex-direction: column;
@@ -91,12 +95,12 @@ body {
     flex-direction: row;
     justify-content: space-evenly;
 }
+
 .forecast-weekday {
    margin: 18px;
    align-self: flex-end; 
    width: 25%;
    text-align: left;
-/*padding-left: 20px;*/
 }
 
 .forecast-temp {
@@ -109,6 +113,18 @@ body {
     height: 48px;
 }
 
+.credit {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.credit a {
+    text-decoration: none;
+    color: black;
+    border-bottom: dotted 2px black;
+}
+/* MEDIA QUERIES FOR TABLET */
 @media (min-width: 768px) {
     .city-name {
         font-size: 56px;
@@ -126,15 +142,33 @@ body {
         margin: 0 30px;
     }
 
+    .sun-hours img {
+        width: 56px;
+    }
+
     .forecast-section {
         margin-top: 20px;
     }
 
     .forecast-weekday {
-        font-size: 26px;
+        font-size: 32px;
     }
 
     .forecast-temp {
+        
+        font-size: 32px;
+        
+    }
 
+    .forecast div img {
+        align-self: center;
+    }
+}
+
+/* MEDIA QUERIES FOR DESKTOP, INDENTATION ON SIDES */
+@media (min-width: 992px) {
+    body {
+        margin-left: 100px;
+        margin-right: 100px;
     }
 }

@@ -6,13 +6,15 @@ const sunsetBox = document.getElementById('sunset')
 const forecast = document.getElementById('forecast')
 const todaysWeather = document.getElementById('todaysWeather')
 
+//GLOBAL VARIABLES
 let icon 
 let sunHours
 
+//SET CURRENT TIME
 const today = new Date()
 let currentTime = `${today.getHours()}:${today.getMinutes()}`
 
-
+//GET SUNSET AND SUNRISE IN READABLE FORMAT FOR HUMANS 
 const sunTime = (time) => {
     sunHours = new Date(time * 1000)
         return sunHours.toLocaleTimeString("sv-SE", {
@@ -22,8 +24,7 @@ const sunTime = (time) => {
     })
 }
 
-
-
+//DISPLAY ICONS DEPENDING ON WEATHER MAIN
 const weatherIcon = (item) => {
     
     if (item.weather[0].main === 'Clouds') {
@@ -41,11 +42,9 @@ const weatherIcon = (item) => {
     }    
 }
 
-
-
+//FETCH API FOR TODAYS WEATHER
 fetch(WEATHER_URL)
     .then((response) => {
-        console.log(response) 
         return response.json() 
     }) 
     .then((data) => {
@@ -67,25 +66,24 @@ fetch(WEATHER_URL)
             <img src ="./ikons/icons8-moon-and-stars-96.png">
             <h4>${sunset}</h4>
         ` 
-        
+        //DISPLAY A THEME OF COLORS FOR DAY-TIME
         if (currentTime >= sunrise && currentTime <= sunset) {
             todaysWeather.classList.add('day')
+            document.body.classList.add('background-night')
         }  
     })
+    .catch(err => {
+        todaysWeather.innerHTML = 'There has unfortunately been an error in our weather update' + err;
+    })
 
-
-
+//FETCH API FORECAST
 fetch(FORECAST_URL)
     .then((response) => {
         return response.json()
     })
     .then((data) => {
-        console.log(data)
         const filteringByTime = data.list.filter(item => item.dt_txt.includes('12:00'))
-        const timezone = data.city.timezone
-        //const forecastDate = new Date((filteringByTime.dt + data.city.timezone) * 1000)    
-        //const weekday = {weekday:'long'}        
-        console.log(filteringByTime)
+        const timezone = data.city.timezone   
         
 
         filteringByTime.forEach((item)=> {
@@ -103,4 +101,6 @@ fetch(FORECAST_URL)
            
         })
     })
-    
+    .catch(err => {
+        todaysWeather.innerHTML = 'There has unfortunately been an error in our weather update' + err;
+    })
