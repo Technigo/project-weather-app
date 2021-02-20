@@ -1,21 +1,40 @@
 * {
- box-sizing: border-box;
- text-align: center;
+ /* box-sizing: border-box; */
+  text-align: center;
+  margin: 0;
 }
 .header + * {
   text-align: center;
 }
+.change-city{
+  border: 2px solid black;
+}
+select{
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 26px;
+  font-family: '';
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
 .container {
+  background: white;
+  display: flex;
+  flex-direction: column;
   padding: 60px 20px; 
-  margin: 20px;
-  background: linear-gradient(-45deg, #a7db9c, #d3aaba, #81c6df, #a5e5d6); 
+  /* background: linear-gradient(-45deg, #a7db9c, #d3aaba, #81c6df, #a5e5d6);  */
   background-size: 400% 400%;
-  animation: gradient 10s ease infinite; 
-  /* border-radius: 200px 0; */
+  animation: gradient 5s infinite; 
+  transition: background 1s ease ;
+  /* border-radius: 200px 0;  */
+  /* border-bottom-left-radius: 50% 20%;
+  border-bottom-right-radius: 50% 20%; */
 }
 .temperature-container {
-  display: block;
-  justify-content: center;
+ justify-content: center;
 }
 .weather-description {
   padding-top: 10px;
@@ -35,11 +54,11 @@
   display: inline-block;
   position: relative; 
 }
-/* .five-day-forecast {
-  animation: pulse 2s infinite linear;
-  display: inline-block;
-  position: relative;
-} */
+
+.five-day-forecast {
+  padding: 20px; 
+  /* animation: pulse 2s infinite linear; */
+}
 
 @keyframes gradient {
 	0% { background-position: 0% 50%; }
@@ -56,4 +75,26 @@
 	0% { opacity: 1; }
 	50% { opacity: 0.5; }
 	100% { opacity: 1; }
+}
+
+/*Media queries*/
+/*Tablet*/
+@media (min-width: 667px) and (max-width: 1024px) {
+  .five-day-forecast {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    font-size: 18px;
+  }
+  .stlm-img {
+    background-image: url(./images/stockoholm2.jpg);
+  }
+}
+
+/*Desktop*/
+@media (min-width: 1025px) {
+  .stlm-img {
+    background-image: url(./images/stockoholm.jpg);
+  }
+  
 }

@@ -8,10 +8,17 @@
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+
   <div class="container" id="container">
+    <select name="" id="select-city">
+      <option value="none" selected disabled hidden></option>
+      <option id="Stockholm"  value="input-value">Stockholm</option>
+      <option id="Buenos Aires" value="input-value">Buenos Aires</option>
+      <option id="Barcelona" value="input-value">Barcelona</option>
+      <option id="" value="input-value"></option>
+    </select>
     <div class="header" id="header"></div>
-      <h1>Todays weather in </h1>
-    <div class="city-name" id="city-name"></div>
+      <div class="city-name" id="city-name"></div>
     <div class="temperature-container" id="temperature-container">
       <div class="main-temperature" id="main-temperature"></div>
       <div class="weather-feels-like" id="weather-feels-like"></div>
@@ -23,7 +30,7 @@
       <div class="sunset" id="sunset"></div>
     </div>
   </div>
-  <div class="five-day-forecast" id="five-day-forecast"></div>
+<div class="five-day-forecast" id="five-day-forecast"></div>
 
     <script src="./app.js"></script>
 </body>
