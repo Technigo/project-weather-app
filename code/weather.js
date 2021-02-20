@@ -20,14 +20,13 @@ const userLocationInput = document.getElementById("userLocationInput")
 // Global variables
 const weekdays = ["Söndag", "Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag"]
 const API_KEY = "fd4c88b297db1abd3f5aaffe170147b6";
-let city = "";
 
 // Functions 
 
 /* This function is called when the user seatches for a city and it will render the city name on the screen. */
 const handleCityInput = (city) => {
-  let API_urlCurrent = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&lang=se&APPID=" + API_KEY;
-  let API_urlForecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=metric&lang=se&APPID=" + API_KEY;
+  const API_urlCurrent = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&lang=se&APPID=" + API_KEY;
+  const API_urlForecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=metric&lang=se&APPID=" + API_KEY;
   fetchWeatherData(API_urlCurrent);
   fetchWeatherForecast(API_urlForecast)
   currentLocationText.innerHTML = city
@@ -46,9 +45,9 @@ const getPosition = () => {
 
   /* If the the app is able to get the users location it will take the coordinates and push them into the fetch function. */
   const success = (position) => {
-    let crd = position.coords;
-    let API_urlPosCurrent = "https://api.openweathermap.org/data/2.5/weather?lat=" + crd.latitude + "&lon=" + crd.longitude + "&units=metric&lang=se&appid=" + API_KEY;
-    let API_urlPosForecast = "https://api.openweathermap.org/data/2.5/forecast?lat=" + crd.latitude + "&lon=" + crd.longitude + "&units=metric&lang=se&appid=" + API_KEY;
+    const crd = position.coords;
+    const API_urlPosCurrent = "https://api.openweathermap.org/data/2.5/weather?lat=" + crd.latitude + "&lon=" + crd.longitude + "&units=metric&lang=se&appid=" + API_KEY;
+    const API_urlPosForecast = "https://api.openweathermap.org/data/2.5/forecast?lat=" + crd.latitude + "&lon=" + crd.longitude + "&units=metric&lang=se&appid=" + API_KEY;
     fetchWeatherData(API_urlPosCurrent);
     fetchWeatherForecast(API_urlPosForecast);
   }
@@ -97,7 +96,7 @@ const fetchWeatherForecast = (API_urlForecast) => {
 
 /* This function will take the json object and filter out all the days that includes the 12:00 timestamp. We then render a 5 day forecast on the DOM for the user to see */
 const forecastTemperature = (forecastData) => {
-  let filteredData = forecastData.list.filter((item) => item.dt_txt.includes("12:00"))
+  const filteredData = forecastData.list.filter((item) => item.dt_txt.includes("12:00"))
 
   filteredData.forEach(item => forecastTemp.innerHTML += `
     <li>
@@ -106,8 +105,8 @@ const forecastTemperature = (forecastData) => {
     </li>
   `);
   filteredData.forEach((item) => {
-    let day = item.dt_txt.split(/[- :]/)
-    let date = new Date(day[0], day[1], day[2], day[3], day[4], day[5]) //day and date is rebuilt in a format that all OS should be able to understand
+    const day = item.dt_txt.split(/[- :]/)
+    const date = new Date(day[0], day[1], day[2], day[3], day[4], day[5]) //day and date is rebuilt in a format that all OS should be able to understand
     forecastDay.innerHTML += `
     <li>
       ${weekdays[date.getDay()]}
@@ -118,9 +117,9 @@ const forecastTemperature = (forecastData) => {
 
 /* These set of functions will set the temperature, sunrise and sunset for the chosen city and render the information on the screen. */
 const setCurrentWeather = (weatherData) => {
-  let sunrise = weatherData.sys.sunrise
-  let sunset = weatherData.sys.sunset
-  let conditionId = weatherData.weather[0].id
+  const sunrise = weatherData.sys.sunrise
+  const sunset = weatherData.sys.sunset
+  const conditionId = weatherData.weather[0].id
 
   currentSunriseSunset(sunrise, "rise");
   currentSunriseSunset(sunset, "set");
@@ -141,7 +140,7 @@ const currentSunriseSunset = (sun, condition) => {
 
 /* This function will convert the time to the useres local time. */
 const toLocalTime = (sun) => {
-  let unixToLocalTime = new Date(sun * 1000).toLocaleTimeString([], {
+  const unixToLocalTime = new Date(sun * 1000).toLocaleTimeString([], {
     hour: '2-digit',
     minute: '2-digit',
     hour12: false
@@ -151,7 +150,7 @@ const toLocalTime = (sun) => {
 
 /* This function will set the weather icon next to the city name depending on what the weather condition is. The icon ID is fetched from the API and rendered accordingly. */
 const currentWeatherCondition = (weatherData) => {
-  let wIcon = weatherData.weather[0].icon
+  const wIcon = weatherData.weather[0].icon
 
   shortDescription.innerHTML = weatherData.weather[0].description + " "
   weatherIcon.src = "https://openweathermap.org/img/wn/" + wIcon + "@2x.png"
