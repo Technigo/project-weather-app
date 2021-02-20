@@ -1,0 +1,123 @@
+* {
+    margin: 0; 
+}
+
+body {
+    margin: 20px; 
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+.top-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    align-items: center;
+    border-bottom: none;
+    border-radius: 20px 20px 0 0;
+    justify-content: center;
+    margin: 0 auto;
+    background: linear-gradient(to bottom left , #F4F7F8, #F47775);
+    padding-top: 20px;
+}
+
+.local-information {
+    text-align: center;
+    padding: 10px;
+    
+}
+
+.city-local {
+    font-size: 40px;
+    font-style: bold;
+    margin: 24px 0;
+}
+
+.temperature-now {
+    font-size: 60px;
+    font-style: bold;
+}
+
+.condition p {
+    color: white;
+    font-size: 30px;
+    margin: 0;
+    position: relative;
+    top: -20px;
+}
+
+.sunrise-sunset {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-bottom: 10px;
+ }
+
+.forecast-container {
+    width: 100%; 
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-top:none;
+    border-radius: 0 0 20px 20px;
+    margin: 0 auto;
+    background: linear-gradient(to bottom right , #F47775, #F4F7F8);
+    padding: 20px 0;
+}
+
+.divider {
+    background: #F4F7F8;
+    height: 1px;
+    width: 80%;
+}
+
+.day {
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    overflow: hidden;
+    margin: 0 40px;
+}
+
+.week-day-name {
+    width: 80px;
+}
+
+.day img {
+    width: 60px;
+    height: 100%;
+    object-fit: cover;
+    margin-right: 50px;
+}
+
+/* MEDIA QUERIES */
+
+@media (min-width: 768px) {
+    .top-container, .forecast-container {
+        width: 550px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .top-container {
+        width: 650px;
+        font-size: 20px;
+    }    
+    .forecast-container {
+        width: 650px;
+        font-size: 20px;
+    }
+    .week-day-name {
+        font-size: 20px;
+    }
+    .day {
+        height: 60px;
+    }
+}
+
+
