@@ -1,6 +1,8 @@
+
 body {
-    background-color: rgb(225, 225, 243);
-    color: rgb(2, 2, 139);
+   background-color: rgb(225, 225, 243);
+   color: rgb(2, 2, 139);
+   margin: 0px;
 }
 
 .weather-widget {
@@ -8,9 +10,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
+    padding:0;
     
+    height: 100%;
 }
+
 .city-title {
     color: navy;
     font-size: 24px;
@@ -38,7 +42,6 @@ body {
     display: flex;
     margin-left: 20px;
 }
-
 
 .sun {
     display: flex;
@@ -97,14 +100,12 @@ h4 {
     padding: 0px;
 }
 
-
 .forecast {
     display: flex;
     padding: 0 10px 0px 10px;
     flex-direction: column;
     align-items: center;
     margin-right: -50px;
-    
 }
 
 .chart {
@@ -125,22 +126,28 @@ h4 {
     margin-bottom: 7px;
   }
 
-/******************  MEDIA QUARIES  *********************/
+  /******************  MEDIA QUARIES  *********************/
 @media(min-width: 768px) {
+    
+    .page {
+        
+        background: "url(./images/stockholm.jpg)"; 
+        background-size: cover;
+        background-repeat: no-repeat;
+        object-fit: cover;
+        
+    }
+
     .weather-widget {
         max-width: 300px;
         border-radius: 5px;
         box-shadow: 2px 3px 2px 2px rgba(7, 74, 100, 0.4);
-
-
-
+        margin: 0px;
     }
 }
 
-
-
 @media(min-width: 1200px) {
     .weather-widget {
-        max-width: 300px;
+        max-width: 400px;
     }
 }

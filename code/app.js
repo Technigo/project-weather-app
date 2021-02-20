@@ -1,9 +1,10 @@
 const dtable = document.getElementById('dynamic');
 const selectCity = document.getElementById('selectCity');
 let colorWidget = document.getElementById("weather-widget");
+const coverImage = document.getElementById("page-body");
 
 // Global variable
-let weather, daysWeek, dWeek, value, tempPoints, 
+let weather, daysWeek, dWeek, value, tempPoints, cityImage, cityName,
 NEW_1URL = "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=1b672b9c637e28dafe516793b1e9bf96",
 NEW_5URL = "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=1b672b9c637e28dafe516793b1e9bf96"
 
@@ -40,6 +41,27 @@ const weatherData = () => {
     return response.json().then((json) => {
       weather = json
       city.innerHTML += weather.name
+          
+      let cityName = weather.name
+      console.log("selected", cityName)
+      if (cityName === "Stockholm") {
+       coverImage.style.backgroundImage = "url('./images/stockholm.jpg')"
+      } else if (cityName === "Bangkok") {
+        coverImage.style.backgroundImage = "url('./images/bangkok1.jpg')"; 
+      } else if (cityName === "Hanoi") {
+        coverImage.style.backgroundImage = "url('./images/hanoi.jpg')"; 
+      } else if (cityName === "Moscow") {
+        coverImage.style.backgroundImage = "url('./images/moscow.jpg')"; 
+      } else if (cityName === "Malé") {
+        coverImage.style.backgroundImage = "url('./images/male.jpg')"; 
+      } else if (cityName === "Oslo") {
+        coverImage.style.backgroundImage = "url('./images/oslo.jpg')"; 
+      } else if (cityName === "Paris") {
+        coverImage.style.backgroundImage = "url('./images/paris.jpg')"; 
+      } else if (cityName === "Tokyo") {
+        coverImage.style.backgroundImage = "url('./images/tokyo.jpg')"; 
+      }
+
       dayCurrent.innerHTML+= `<strong>${dayMonthConverter(weather.dt + weather.timezone)}</strong>`
       timeCurrent.innerHTML += `${hrsMinConverter(weather.dt + weather.timezone)}`
       sky.innerHTML += `
@@ -215,6 +237,7 @@ const myCity = () => {
   const value = selectCity.options[selectCity.selectedIndex].value
   NEW_1URL = `https://api.openweathermap.org/data/2.5/weather?q=${value}&units=metric&APPID=1b672b9c637e28dafe516793b1e9bf96`
   NEW_5URL = `https://api.openweathermap.org/data/2.5/forecast?q=${value}&units=metric&APPID=1b672b9c637e28dafe516793b1e9bf96`
+  
   weatherData()
   weatherForecast()
   tempGraph()
@@ -234,4 +257,4 @@ selectCity.addEventListener("change", () => {
   myCity(selectCity.value)
 })
 
-
+console.log("test",cityName)
