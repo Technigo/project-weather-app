@@ -5,16 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Signika:wght@500&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
     <section class="header-section">
+        
         <div class="content">
-            <h1><span id="city-name"></span></h1>
-            <p><span id="temperature"></span></p>
+            <div class="current-weather-img">
+                <span id="current-img"></span>
+            </div>
+            <h1><span id="temperature"></span></h1>
+            <h2><span id="city-name"></span></h2>
             <p><span id="description"></span></p>
-            <p><span id="sunrise"></span></p>
-            <p><span id="sunset"></span></p>
+            <div class="sunrise-sunset">
+                <p class="sun-child"><span id="sunrise"></span></p>
+                <p class="sun-child"><span id="sunset"></span></p>
+            </div>
         </div>
     </section>
     

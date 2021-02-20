@@ -3,6 +3,7 @@ const cityName = document.getElementById('city-name');
 const temperature = document.getElementById('temperature');
 const description = document.getElementById('description');
 const container = document.getElementById('forecast-section');
+const todaysImg = document.getElementById('current-img')
 
 fetch(WEATHER_URL)
   .then((response) => {
@@ -18,13 +19,20 @@ fetch(WEATHER_URL)
     const sunrise = new Date((data.city.sunrise + data.city.timezone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
     const sunset = new Date((data.city.sunset + data.city.timezone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
     const temp = (filteredForecast[0].main.temp).toFixed(0);
+
+
+    filteredForecast.forEach((data) => {
+      const imgID = data.weather[0].icon;
+      todaysImg.innerHTML = `<img src="http://openweathermap.org/img/wn/${imgID}@2x.png" class="weather-img">`;
+    }); 
     
     
-    temperature.innerHTML = `get dressed for ${temp}°`;
-    sunriseTime.innerHTML = `sunrise at ${sunrise}`;
-    sunsetTime.innerHTML = `sunset at ${sunset}`;
-    cityName.innerHTML = `Today's weather in ${city}`;
-    filteredForecast.forEach((data) => {  
+    cityName.innerHTML = `${city}`;
+    temperature.innerHTML = `${temp}°`;
+    sunriseTime.innerHTML = `say hi sun at ${sunrise}`;
+    sunsetTime.innerHTML = `say bye sun at ${sunset}`;
+    
+    filteredForecast.forEach((data) => {
       description.innerHTML = `${data.weather[0].description}`;
     }); 
 
@@ -36,9 +44,9 @@ fetch(WEATHER_URL)
       
       container.innerHTML += `
         <section class="forecast">         
-          <p>${temp}</p>
-          <img src="http://openweathermap.org/img/wn/${imgID}@2x.png">
-          <p>${weatherDescription}</p>
+          <p class="temperature">${temp}</p>
+          <img src="http://openweathermap.org/img/wn/${imgID}@2x.png" class="weather-img">
+          <p class="weathertype">${weatherDescription}</p>
         </section>`;
     });
   });
