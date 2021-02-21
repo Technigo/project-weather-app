@@ -75,11 +75,18 @@ fetch(weatherForcastUrl)
       let temp5Days = `${filteredForecast.main.temp}`
       let temp5DaysRounded = Math.round(temp5Days)
       let iconId = filteredForecast.weather[0].icon;
+      // forcast.innerHTML += `
+      // <div class="five-days">
+      //   <p> ${dayInWeek}:</p>
+      //   <img src="http://openweathermap.org/img/wn/${iconId}@2x.png">
+      //   <p> ${temp5DaysRounded}°C </p>
+      // </div>
+      // `
       forcast.innerHTML += `
       <div class="five-days">
-        <p> ${dayInWeek}:</p>
-        <img src="http://openweathermap.org/img/wn/${iconId}@2x.png">
-        <p> ${temp5DaysRounded}°C </p>
+        <div class="five-days-column"><p style="text-align:left;"> ${dayInWeek}:</p></div>
+        <div class="five-days-column"><img src="http://openweathermap.org/img/wn/${iconId}@2x.png"></div>
+        <div class="five-days-column"><p style="text-align:right;"> ${temp5DaysRounded}°C </p></div>
       </div>
       `
     })

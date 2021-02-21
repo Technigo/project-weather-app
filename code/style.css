@@ -79,6 +79,10 @@ h3 {
   color: white;
 }
 
+.five-days-column {
+  flex: 33%;
+}
+
 /**** MEDIA QUERIES ***/
 @media (min-width: 500px) {
   h1 {
