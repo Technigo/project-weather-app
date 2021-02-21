@@ -16,7 +16,7 @@ const Sunset = "./pics/1.webp";
 
 //Fetch function
 const SthlmTemp = (userChoice) => {
-  const OurAPI = `http://api.openweathermap.org/data/2.5/forecast/daily?q=${userChoice}&cnt=10&appid=886705b4c1182eb1c69f28eb8c520e20&units=metric`
+  const OurAPI = `http://api.openweathermap.org/data/2.5/forecast/daily?q=${userChoice}&cnt=10&appid=886705b4c1182eb1c69f28eb8c520e20&units=metric` 
   fetch(OurAPI).then((response) => {
     return response.json();
   }).then((json) => {
@@ -163,6 +163,12 @@ const SthlmTemp = (userChoice) => {
         selectCity.style.color = "#c6a9a3";
         break;
     };
+  }).catch( (error) =>{
+    console.log(error);
+    body.innerHTML ="Oops! Something went wrong";
+    body.style.backgroundColor = "#144182";
+    body.style.color = "white";
+    body.style.fontSize ="30px";
   });
 };
 
