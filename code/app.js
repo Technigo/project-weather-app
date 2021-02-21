@@ -30,8 +30,10 @@ fetch(weatherUrl)
     let iconId = json.weather[0].icon;
     let sunriseAPI = `${json.sys.sunrise}`
     let sunsetAPI = `${json.sys.sunset}`
-    let sunrise = new Date(sunriseAPI*1000).toLocaleTimeString([], {timeStyle: 'short'});
-    let sunset = new Date(sunsetAPI*1000).toLocaleTimeString([], {timeStyle: 'short'});
+    // let sunrise = new Date(sunriseAPI*1000).toLocaleTimeString([], {timeStyle: 'short'});
+    // let sunset = new Date(sunsetAPI*1000).toLocaleTimeString([], {timeStyle: 'short'});
+    let sunrise = new Date(sunriseAPI*1000).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+    let sunset = new Date(sunsetAPI*1000).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
 
     weatherSection.innerHTML = `
     <div class="today-temp">
