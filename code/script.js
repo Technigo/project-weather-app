@@ -25,15 +25,15 @@ fetch(url)
   sunset.innerHTML += `${new Date((data.sys.sunset + data.timezone) * 1000).toLocaleTimeString('en-US',{hour: '2-digit', minute:'2-digit', hour12:false,})}`
 
  
- if( data.weather[0].description.indexOf('rain') > 0 ) {
-  	document.body.className = 'rainy';
-  } else if( data.weather[0].description.indexOf('cloud') > 0 ) {
-  	document.body.className = 'cloudy';
-  } else if( data.weather[0].description.indexOf('sunny') > 0 ) {
-  	document.body.className = 'sunny';
-  } else {
-  	document.body.className = 'clear';
-  }
+  if( data.weather[0].description.indexOf('rain') > 0 ) {
+      document.body.className = 'rainy';
+    } else if( data.weather[0].description.indexOf('cloud') > 0 ) {
+      document.body.className = 'cloudy';
+    } else if( data.weather[0].description.indexOf('sunny') > 0 ) {
+      document.body.className = 'sunny';
+    } else {
+      document.body.className = 'clear';
+    }
 })
 
 .catch((error)=>{
@@ -68,8 +68,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?id=3530597&units=metric&a
 .then((response) => (response.json()))
 .then(data => {
   otherLocationsContainer.innerHTML += otherLocations(data);
-  console.log(data);
-});
+})
 
 
 //Fetching weather for Stockholm, Sweden
@@ -88,9 +87,6 @@ fetch('https://api.openweathermap.org/data/2.5/weather?id=1850147&units=metric&a
 .then(data => {
   otherLocationsContainer.innerHTML += otherLocations(data);
 })
-
-//Fetching weather for ?
-
 
 
 // Function for other cities current weather

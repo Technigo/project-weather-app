@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Assistant:wght@300&family=Indie+Flower&display=swap");
 
+/*** General styling ***/
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -110,6 +112,7 @@ body.sunny {
     #f9d423
   );
 }
+
 body.cloudy {
   background-image: linear-gradient(
     to right top,
@@ -120,6 +123,7 @@ body.cloudy {
     #9bbac5
   );
 }
+
 body.rainy {
   background-image: linear-gradient(
     to right top,
@@ -131,8 +135,7 @@ body.rainy {
   );
 }
 
-/*** Media queries ***/
-/*Tablet*/
+/*** Media queries for tablet ***/
 
 @media (min-width: 768px) {
   h4 {
@@ -167,6 +170,8 @@ body.rainy {
     display: none;
   }
 }
+
+/*** Media queries for desktop ***/
 
 @media (min-width: 1024px) {
   .main {
