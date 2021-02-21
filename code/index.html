@@ -5,21 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather forecast</title>
-  <link rel="stylesheet" href="./style.css">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">    
 </head>
 <body>
   <div class="container" id="container">
-    <!-- <img class="Stockholm" src="./images/stockholm3.jpg" alt="Stockholm"> -->
-    <!-- <select name="" id="select-city">
-      <option value="none" selected disabled hidden></option>
-      <option id="Stockholm"  value="input-value">Stockholm</option>
-      <option id="Buenos Aires" value="input-value">Buenos Aires</option>
-      <option id="Barcelona" value="input-value">Barcelona</option>
-      <option id="" value="input-value"></option>
-    </select> -->
-    <div class="header" id="header"></div>
     <div class="city-name" id="city-name"></div>
     <div class="main-temperature" id="main-temperature"></div>
     <div class="weather-feels-like" id="weather-feels-like"></div>
@@ -32,9 +23,26 @@
   </div>
  
   <div class="five-day-forecast" id="five-day-forecast"></div>
- 
-  <footer>Project 5 by Estefanía & Maria</footer>
-    
+  <div class="weather-message-container">
+    <div id="cityName" class="city-name"></div>
+    <div id="icon" class="icon"></div>
+    <div id="weatherMessage" class="weather-message"></div>
+  </div>
+
+  <section class= "other-cities-container">
+   <div class="barcelona">
+     <div class="barcelona-name" id="barcelonaName"></div>
+     <div class="barcelona-icon" id= "barcelonaIcon"></div>
+     <div class="barcelona-temperature" id="barcelonaTemperature"></div>
+    </div>
+   <div class="bs-as" id=bsAs>
+    <div class="bsas-name" id="bsAsName"></div>
+    <div class="bsas-icon" id="bsAsIcon"></div>
+    <div class="bsas-temperature" id="bsAsTemperature"></div>
+    </div>
+  </section>
+  
+  <footer class="footer">Project 5 by Estefanía & Maria</footer>
   <script src="./app.js"></script>
 </body>
 </html>

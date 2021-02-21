@@ -1,43 +1,18 @@
 * {
- /* box-sizing: border-box; */
   text-align: center;
   margin: 0;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
 }
-.header + * {
-  text-align: center;
+.weather-message-container {
+  width: 400px;
+  align-self: center;
+  font-size: 1.1em;
 }
-
-
-/* .change-city{
-  border: 2px solid black;
-} */
-/* .Stockholm {
-  display: flex;
-} */
-/* select{
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  line-height: 26px;
-  font-family: '';
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-} */
 .container {
   display: flex;
   flex-direction: column;
   padding: 60px 20px; 
-  /* background: linear-gradient(-45deg, #a7db9c, #d3aaba, #81c6df, #a5e5d6);  */
-  /* background-size: 400% 400%; */
-  /* animation: gradient 5s infinite;  */
-  /* transition: background 1s ease ; */
-  /* border-radius: 200px 0;  */
-  border-bottom-left-radius: 50% 20%;
-  border-bottom-right-radius: 50% 20%;
 }
 .city-name {
   text-size-adjust: auto ;
@@ -46,77 +21,118 @@
   text-transform: uppercase;
 }
 .main-temperature {
-  font-size: 50px;
+  font-size: 7vw;
+  text-size-adjust: auto;
 }
 .weather-feels-like {
-  font-size: 20px;
+  font-size: 3vw;
+  text-size-adjust: auto;
+}
+.weather-icon {
+  animation: bounce 1s infinite linear;
+  position: relative; 
 }
 .weather-description {
   padding-top: 10px;
   text-transform: capitalize;
-  font-size: 35px;
+  font-size: 7vw;
+  text-size-adjust: auto;
 }
 .sunrise-sunset-container {
   display: flex;
   justify-content: space-evenly;
-  padding-top: 20px;
+  padding-top: 40px;
 }
-.sunrise-sunset-container + * {
-  flex-direction: row;
-  padding-top: 20px;
+.sunrise  {
+  font-size: 4vw;
+  text-size-adjust: auto;
 }
-.weather-icon {
-  animation: bounce 1s infinite linear;
-  display: inline-block;
-  position: relative; 
+.sunset {
+  font-size: 4vw;
+  text-size-adjust: auto;
+}
+.five-day-forecast {
+  background: url("./images/stockholm3.jpg");
+  background-size: cover; 
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .forecast{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   padding: 20px;
+  justify-content: space-between;
+  border-top: 1px solid #fff;
+  align-items: center;
+  font-size: 4vw;
+  text-size-adjust: auto;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
 }
-.five-day-forecast {
-  width: 100%;
-  /* justify-content: space-between; */
-  
-  margin: 10px;
-  /* animation: pulse 2s infinite linear; */
+.other-cities-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding-bottom: 20px;
+  padding-top: 20px;
 }
-
-/* @keyframes gradient {
-	0% { background-position: 0% 50%; }
-	50% { background-position: 100% 50%; }
-	100% { background-position: 0% 50%; }
-} */
+.other-cities {
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+}
+.footer {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid #92b3c8 ;
+}
 @keyframes bounce {
   0% { top: 0; }
   50% { top: -0.2em; }
   70% { top: -0.3em; }
   100% { top: 0; }
 }
-/* @keyframes pulse {
-	0% { opacity: 1; }
-	50% { opacity: 0.5; }
-	100% { opacity: 1; }
-} */
-
 /*Media queries*/
 /*Tablet*/
 @media (min-width: 667px) and (max-width: 1024px) {
   .forecast-container {
-   
     padding: 20px;
     font-size: 18px;
   }
-  /* .stlm-img {
-    background-image: url(./images/stockoholm2.jpg);
-  } */
+  .five-day-forecast {
+    background: url("./images/stockholm.jpg");
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 }
-
 /*Desktop*/
 @media (min-width: 1025px) {
-  /* .stlm-img {
-    background-image: url(./images/stockoholm.jpg);
-  } */
-  
+  .five-day-forecast {
+    background: url("./images/stockholm2.jpg");
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .city-name {
+    padding: 20px ;
+    font-size: 8vw;
+    text-transform: uppercase;
+  }
+  .weather-description {
+    padding-top: 10px;
+    text-transform: capitalize;
+    font-size: 7vw;
+  }
+  .sunrise  {
+    font-size: 4vw;
+    padding-top: 30px;
+  }
+  .sunset {
+    font-size: 4vw;
+    padding-top: 30px;
+  }
 }
