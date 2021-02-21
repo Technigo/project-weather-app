@@ -55,7 +55,6 @@ fetch(WEATHER_URL)
     checkTemperature ();
 
 
-
   // 5 day-forecast:
     filteredForecast.forEach((data) => {
     const temp = (data.main.temp).toFixed(0);
