@@ -24,6 +24,10 @@ h3 {
   font-size: 1.6rem;
 }
 
+h4 {
+  font-size: 2.5rem;
+  margin-top: 3rem;
+}
 .main {
   overflow: scroll;
   display: flex;
@@ -73,6 +77,23 @@ footer {
   display: none;
 }
 
+/*** Styling for other Locations weather ****/
+
+.other-locations-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.city {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: aliceblue solid 1px;
+  margin: 2rem;
+  padding: 1rem;
+}
+
 /*** Backgrounds according to weather description ***/
 
 body.clear {
@@ -114,6 +135,11 @@ body.rainy {
 /*Tablet*/
 
 @media (min-width: 768px) {
+  h4 {
+    font-size: 3rem;
+    margin-bottom: 1.8rem;
+  }
+
   .forecast-container {
     margin-bottom: 5rem;
   }
@@ -126,6 +152,17 @@ body.rainy {
     width: 700px;
   }
 
+  .other-locations-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+  }
+
+  .city {
+    margin: 2rem;
+  }
+
   footer {
     display: none;
   }
@@ -136,7 +173,17 @@ body.rainy {
     overflow: hidden;
   }
 
+  .forecast-container {
+    max-width: 800px;
+  }
+
+  .other-locations-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
   footer {
+    margin-top: 4rem;
     display: block;
     background-color: aliceblue;
     color: #7f96a0;
