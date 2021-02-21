@@ -110,7 +110,7 @@ fetch (URLDAILYWEATHER)
             // loopa through the array and return weather for each day
             filteredForcast.forEach((day)=>{
                 const date = new Date (day.dt *1000)
-                let dayName = date.toLocaleDateString('se-SE', {weekday:'long'})
+                let dayName = date.toLocaleDateString('en-UK', {weekday:'long'})
                 //console.log('day name', dayName, day.weather[0].description, day.main.temp)
 
                 const iconWeeklyForecast = () => {
