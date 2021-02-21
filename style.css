@@ -63,7 +63,6 @@ h2 {
 
 .container_today p {
     font-size: 15px;
-    color:rgb(10, 39, 48);
 }
 
 .weather {
@@ -90,6 +89,7 @@ h2 {
     display: flex;
     justify-content:space-between;
     width: 100%;
+    color:rgb(38, 57, 63);
 }
 
 /* Forecast */
@@ -127,7 +127,6 @@ h2 {
 
 /***** TABLET RESPONSIVE *****/
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-
     
     h1 {
         font-size: 70px;
