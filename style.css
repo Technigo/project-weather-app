@@ -145,13 +145,13 @@ img{
 }
 
 .forcast-temp{
-    justify-self: center;
-    align-self: center;
+    justify-self: flex-end;
+    align-self: flex-end;
 }
 
 .weekday{
-    justify-self: center;
-    align-self: center;
+    justify-self: flex-start;
+    align-self: flex-start;
 }
 
 @media (min-width: 768px) and (max-width:991px){
