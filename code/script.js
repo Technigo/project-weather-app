@@ -3,7 +3,7 @@ const URLDAILYWEATHER = 'https://api.openweathermap.org/data/2.5/weather?q=Stock
 const URLWEEKLYFORECAST = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=2ecf28ca2c29fa0578cb610c6c66c223'
 
 // All the DOM selectors stored as short variables
-const containerDailyWeather = document.getElementById('containerDailyWeather')
+//const containerDailyWeather = document.getElementById('containerDailyWeather')
 const topDailyWeather = document.getElementById('topDailyWeather') 
 const mainDailyWeather = document.getElementById('mainDailyWeather')
 const weekForecast = document.getElementById('weekForecast')
@@ -15,6 +15,7 @@ fetch (URLDAILYWEATHER)
     })
     .then((data) => {
         console.log("daily URL", data)
+        
         //weather
         const fetchDailyWeather = data.weather[0].main 
         // temperature
@@ -31,45 +32,52 @@ fetch (URLDAILYWEATHER)
         </div>`
 
         // Todays weather
-        const iconDailyWeather = () => {
+        const showDailyWeather = () => {
         console.log(fetchDailyWeather)
                if (fetchDailyWeather === "Drizzle") {
+                    document.body.style.backgroundColor = "lightskyblue"
                     mainDailyWeather.innerHTML = `
                     <div class="main-wrapper">
                         <img class="weather_icon" src="./assets/004-rain.svg" alt="icon weather">
                         <h1 class="main-heading"> The weather in ${data.name} is drizzel, you might want an umbrella.</h1>
                     </div>`
                } else if (fetchDailyWeather === "Clear") {
+                    document.body.style.backgroundColor = "#ffff84"
                     mainDailyWeather.innerHTML = `
                     <div class="main-wrapper">
                         <img class="weather_icon" src="./assets/001-sun.svg" alt="icon weather">
                         <h1 class="main-heading"> The weather in ${data.name} is sunny, don't forget your sunglases.</h1>
                     </div>`
                } else if (fetchDailyWeather === "Rain") {
+                    document.body.style.backgroundColor = "darkgray"
                     mainDailyWeather.innerHTML = `
                     <div class="main-wrapper">
                         <img class="weather_icon" src="./assets/004-rain.svg" alt="icon weather">
                         <h1 class="main-heading"> The weather in ${data.name} is rainy, bring your raincoat.</h1>
                     </div>`
                } else if (fetchDailyWeather === "Thunderstorm") {
+                    document.body.style.backgroundColor = "#395c83"
                     mainDailyWeather.innerHTML = `
                     <div class="main-wrapper">
                         <img class="weather_icon" src="./assets/010-thunderstorm.svg" alt="icon weather">
                         <h1 class="main-heading"> The weather in ${data.name} is stormy, better stay inside.</h1>
                      </div>`
                } else if (fetchDailyWeather === "Snow") {
+                    document.body.style.backgroundColor = "lightblue"
                     mainDailyWeather.innerHTML = `
                     <div class="main-wrapper">
                         <img class="weather_icon" src="./assets/009-snowy.svg" alt="icon weather">
                         <h1 class="main-heading"> The weather in ${data.name} is snowy, bring out your skies.</h1>
                     </div>`
                } else if (fetchDailyWeather === "Clouds") {
+                    document.body.style.backgroundColor = "lightskyblue"
                     mainDailyWeather.innerHTML = `
                     <div class="main-wrapper">
                         <img class="weather_icon" src="./assets/002-cloud.svg" alt="icon weather">
                         <h1 class="main-heading"> The weather in ${data.name} is cloudy, a perfect day to strole around.</h1>
                     </div>`
                } else {
+                    document.body.style.backgroundColor = "#ebefef"
                     mainDailyWeather.innerHTML = `
                     <div class="main-wrapper">
                         <img class="weather_icon" src="./assets/030-haze.svg" alt="icon weather">
@@ -77,11 +85,13 @@ fetch (URLDAILYWEATHER)
                     </div>`
                }
             }
-            iconDailyWeather()
+            showDailyWeather()
     })
 
     .catch( err => {
-        containerDailyWeather.innerHTML = 'error!' + err
+    topDailyWeather.innerHTML = 'error!' + err
+    mainDailyWeather.innerHTML = 'error!' + err
+
     })    
     .finally(() => console.log('Request finished'))
 
@@ -100,7 +110,7 @@ fetch (URLDAILYWEATHER)
             // loopa through the array and return weather for each day
             filteredForcast.forEach((day)=>{
                 const date = new Date (day.dt *1000)
-                let dayName = date.toLocaleDateString('se-SE', {weekday:'short'})
+                let dayName = date.toLocaleDateString('se-SE', {weekday:'long'})
                 //console.log('day name', dayName, day.weather[0].description, day.main.temp)
 
                 const iconWeeklyForecast = () => {

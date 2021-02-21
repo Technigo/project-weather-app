@@ -1,7 +1,8 @@
-body {
+.body {
     margin: 0;
     box-sizing: border-box;
-    background: lightskyblue;
+    background: #fff;
+    width: 100%;
 }
 
 p {
@@ -13,32 +14,43 @@ p {
 }
 
 .top-text {
-    margin: 5px 0px 5px 0px;
+    margin: 2px 0px 2px 0px;
+}
+
+.weather-forcast-container {
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
 }
 
 .main-weather {
-    margin: 30px;
+    margin-bottom: 30px;
+    padding-right: 0;
 }
 
 .weather_icon {
     width: 100px;
+    margin-bottom: 30px;
 }
 
 .main-heading {
     font-size: 40px;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
 }
 
 .forecast {
     display: flex;
     flex-direction: column;
-    margin: 30px;
+    width: 100%;
+    margin-top: 0;
+
 }
 
 .forecast-wraper {
     display: flex;
-    width: 100%;
+    width: inherit;
     margin: auto;
     justify-content: space-between;
     border-bottom: 1px solid #000;
@@ -50,5 +62,31 @@ p {
 
 img {
     width: 35px;
-    margin-right: 10px;
+    margin-right: 15px;
 }
+
+@media (min-width: 768px) {
+
+.top {
+    margin: 100px;
+}
+
+.main-wraper {
+    margin-top: auto;
+}
+
+.main-weather {
+    margin-bottom: 0;
+    padding-right: 20px;
+}
+
+.weather-forcast-container {
+    flex-direction: row;
+    margin: 100px;
+}
+.forecast {
+    margin-top: auto;
+}
+}
+
+
