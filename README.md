@@ -16,5 +16,6 @@ To change backround color and icons depending on the weahter forecast we used if
 If we had more tome we would change names on classes and IDs to make it more readable. We would also change the color of the text depending on the weater and add more cities.
 
 ## View it live
+https://zealous-nightingale-04ef8c.netlify.app
 
 
