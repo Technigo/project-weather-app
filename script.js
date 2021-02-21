@@ -47,7 +47,7 @@ fetch(todaysUrl)
             case 'Clear':
                 body.classList.add('clear')
                 weatherText.innerHTML = `
-                <p>It's sunny in ${cityName}. Put your sun glasses on and get outside!</p>`
+                <p>It's clear skies in ${cityName}. Put your sun glasses on and get outside!</p>`
                 break
             case 'Snow':
                 body.classList.add('snowy')
