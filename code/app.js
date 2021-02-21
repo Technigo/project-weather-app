@@ -1,6 +1,6 @@
 const todaysWeatherUrl = "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=f463a96f9ee6b3233c3a141a391ac3cf"
 const todaysWeatherBar = "https://api.openweathermap.org/data/2.5/weather?q=Barcelona,Spain&units=metric&appid=96757b909ab14fd81c8ce5bb9ee9ad53"
-const todaysWeatherUrlBA = "http://api.openweathermap.org/data/2.5/weather?q=Buenos%20Aires,Argentina&units=metric&appid=96757b909ab14fd81c8ce5bb9ee9ad53"
+const todaysWeatherUrlBA = "https://api.openweathermap.org/data/2.5/weather?q=Buenos%20Aires,Argentina&units=metric&appid=96757b909ab14fd81c8ce5bb9ee9ad53"
 const fiveDayForecastStockholm = "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&appid=f463a96f9ee6b3233c3a141a391ac3cf"
 const mainTemperature = document.getElementById('main-temperature');
 const cityName = document.getElementById('city-name');
@@ -66,6 +66,7 @@ fetch(todaysWeatherUrl)
       }   
   })
   .catch(error => {
+    
     container.innerHTML = error;
   })
   .finally(() => console.log('Finished!'));
@@ -95,7 +96,6 @@ fetch(fiveDayForecastStockholm)
         `; 
     }); 
   });
-
  
   //Barcelona current weather
   fetch(todaysWeatherBar)
