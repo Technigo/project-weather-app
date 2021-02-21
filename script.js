@@ -4,7 +4,7 @@ const temperature = document.getElementById('temperature');
 const description = document.getElementById('description');
 const container = document.getElementById('forecast-section');
 const todaysImg = document.getElementById('todays-img');
-const headerBackground = document.getElementById('main-header');
+const temperatureToday = document.getElementById('temperature');
 
 fetch(WEATHER_URL)
   .then((response) => {
@@ -37,23 +37,23 @@ fetch(WEATHER_URL)
   //changing background color depending on temperature
     const checkTemperature = () => {
       if (filteredForecast[0].main.temp < 0) {
-        alert(`jacket and scarf might be an idea today`)
+        temperatureToday.style.color = '#1E58AA';
       }
       else if (filteredForecast[0].main.temp < 5){
-        alert(`it's about to get chilly - put on those warm socks`)
+        temperatureToday.style.color = '#4899D5';
       }
       else if (filteredForecast[0].main.temp < 15 && filteredForecast[0].main.temp > 5.01){
-        alert(`it's that kind of day, where you might need a jacket or you don't`)
+        temperatureToday.style.color = '#F2C966';
       }
       else if (filteredForecast[0].main.temp < 25 && filteredForecast[0].main.temp > 15.01){
-        alert(`this temperature screams for a nice run!`)
+        temperatureToday.style.color = '#FF7500';
       }
       else{
-        alert(`today is a day for icream, shadow, water, suncream`)
+        temperatureToday.style.color = '#E15242';
       }
     }
     checkTemperature ();
-    console.log(checkTemperature);
+
 
 
   // 5 day-forecast:
