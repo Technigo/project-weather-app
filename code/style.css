@@ -50,6 +50,7 @@ p {
 .forecast-wraper {
     display: flex;
     width: inherit;
+    height: 40px; /* height to look good in safari*/
     margin: auto;
     justify-content: space-between;
     border-bottom: 1px solid #000;
