@@ -234,9 +234,9 @@ h2 {
     .container_today {
         width: 30vw;
         height: 70vh;
-        padding-right: 25px;
-        padding-left: 25px;
+        padding: 0px 25px;
         margin-right: 25px;
+        margin-bottom: 0;
     }
     
     .container_today p {
@@ -273,7 +273,7 @@ h2 {
         justify-content: space-evenly;
         width: 30vw;
         height: 70vh;
-        padding: 10px 35px;
+        padding: 0px 35px;
     }
 
     .container_forecast p {
