@@ -10,7 +10,7 @@ const container = document.querySelector(".container");
 const body = document.querySelector(".body");
 const upcomingWeatherText = document.getElementById("upcoming-weather");
 
-// Global Variable
+// Global Variables
 const Rise = "./pics/sunrise.png";
 const Sunset = "./pics/1.webp";
 
