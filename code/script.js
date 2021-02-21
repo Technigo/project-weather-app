@@ -3,9 +3,6 @@ const StockholmForecastAPI = 'https://api.openweathermap.org/data/2.5/forecast?q
 const weatherContainer = document.getElementById('weatherContainer')
 const forecastContainer = document.getElementById('forecastContainer')
 
-
-console.log('API fetch starting') //can take away later
-
 const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
 fetch(StockholmAPI)
