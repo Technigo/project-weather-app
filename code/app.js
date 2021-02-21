@@ -30,8 +30,6 @@ fetch(weatherUrl)
     let iconId = json.weather[0].icon;
     let sunriseAPI = `${json.sys.sunrise}`
     let sunsetAPI = `${json.sys.sunset}`
-    // let sunrise = new Date(sunriseAPI*1000).toLocaleTimeString([], {timeStyle: 'short'});
-    // let sunset = new Date(sunsetAPI*1000).toLocaleTimeString([], {timeStyle: 'short'});
     let sunrise = new Date(sunriseAPI*1000).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
     let sunset = new Date(sunsetAPI*1000).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
 
@@ -75,13 +73,6 @@ fetch(weatherForcastUrl)
       let temp5Days = `${filteredForecast.main.temp}`
       let temp5DaysRounded = Math.round(temp5Days)
       let iconId = filteredForecast.weather[0].icon;
-      // forcast.innerHTML += `
-      // <div class="five-days">
-      //   <p> ${dayInWeek}:</p>
-      //   <img src="http://openweathermap.org/img/wn/${iconId}@2x.png">
-      //   <p> ${temp5DaysRounded}°C </p>
-      // </div>
-      // `
       forcast.innerHTML += `
       <div class="five-days">
         <div class="five-days-column"><p style="text-align:left;"> ${dayInWeek}:</p></div>
