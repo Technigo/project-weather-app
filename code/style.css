@@ -135,11 +135,13 @@ body.rainy {
   .main {
     overflow: hidden;
   }
-}
-footer {
-  background-color: aliceblue;
-  color: #7f96a0;
-  height: 50px;
-  text-align: center;
-  padding: 18px;
+
+  footer {
+    display: block;
+    background-color: aliceblue;
+    color: #7f96a0;
+    height: 50px;
+    text-align: center;
+    padding: 18px;
+  }
 }
