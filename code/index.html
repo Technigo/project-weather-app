@@ -12,6 +12,7 @@
 </head>
 
 <body>
+  
   <!--Logo-->
   <header class=header>
     <img class="header__img" src="sun2.png" />
@@ -27,12 +28,12 @@
   <!--Today's weather-->
   <section class="weather">
     <h3 class="weather__text" id="temperature"></h3>
-    <div class="weather__type">
-      <img class="weather__icon" src="sunrise.png" />
+    <div class="sunrise-sunset">
+      <img class="sunrise-sunset__icon" src="sunrise.png" />
       <p id="sunrise"></p>
     </div>
-    <div class="weather__type">
-      <img class="weather__icon" src="sunset.png" />
+    <div class="sunrise-sunset">
+      <img class="sunrise-sunset__icon" src="sunset.png" />
       <p id="sunset"></p>
     </div>
   </section>
@@ -42,7 +43,7 @@
   </div>
 
   <!--Search for city-->
-  <section class="input-form">
+  <section>
     <form class="form">
       <h3>Choose your city</h3>
       <input id="selected-city" type="text" value= "" placeholder="City name">

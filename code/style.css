@@ -9,17 +9,14 @@
   --okayItsCold: #2c1dff;
 }
 
-html { /*Do we need this?*/
+html { 
   background-image: var(--hot); 
-  background-repeat: no-repeat;
   height: 100%;
-  width: 100%;
 }
 
 body {
-  color: var(--first);
   font-family: 'Montserrat', sans-serif;
-  margin: 0 30px 0 30px;  /*Do we need this?*/ 
+  margin: 0 30px 0 30px;  
   letter-spacing: 1px;
   font-weight: bold;
 }
@@ -30,15 +27,12 @@ body {
   align-items: center;
   flex-direction: column;
   margin: 30px;
-  perspective: 1000px;
 }
 
 .header__img {
   width: 160px;
   animation: rotation 4s linear infinite;
-
 }
-
 
 @keyframes rotation {
   from {
@@ -50,10 +44,12 @@ body {
   margin-top: 0;
 }
 
+/*** "Current weather in" text ***/
 h3 {
   font-size: 14px;
 }
 
+/*** City name text ***/
 h1 {
   margin-top: 10px;
   font-size: 30px;
@@ -70,34 +66,28 @@ h1 {
 
 .weather__text {
   padding-top: 15px;
-  font-size: 25px;
   letter-spacing: 2px;
 }
 
-.weather__type {
+.sunrise-sunset {
   padding: 10px 20px 10px 0;
   display: inline-block;
   margin-left: 20px
 }
 
-.weather__icon {
+.sunrise-sunset__icon {
   width: 70px;
 }
 
 /*** Forecast starts here ***/
 .forecast__list {
   margin-top: 100px;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  overflow: hidden;
 }
 
 .forecast-day-wrapper { 
   border-bottom: dotted 1px;
   display: flex;  
-  justify-content: space-between; 
+  justify-content: space-between;
 }
 
 .forecast-day-wrapper:first-child {
@@ -106,14 +96,7 @@ h1 {
 
 .forecast__day {
   padding-top: 15px;
-  justify-self: flex-start; /*Do we need this?*/ 
   width: 300px;
-}
-
-.forecast__temp {
-  padding-top: 15px;
-  width: 100px;
-  text-align: right;
 }
 
 .forecast__icon {
@@ -126,13 +109,13 @@ h1 {
   width: 50px; 
 }
 
-/*** Form for selecting city ***/
-.input-form {
-  max-height: 500px;
-  bottom: 0;
-  box-sizing: border-box;
+.forecast__temp {
+  padding-top: 15px;
+  width: 100px;
+  text-align: right;
 }
 
+/*** Form for selecting city ***/
 .form {
   display: flex;
   flex-direction: column;
@@ -160,7 +143,6 @@ h1 {
 }
 
 /*** Footer ***/
-
 .footer {
   height: 120px;
   display: flex;
@@ -175,7 +157,6 @@ h1 {
 
 .footer__text {
   font-size: 10px;
-  text-align: center;
   margin: 0;
 }
 
@@ -184,10 +165,13 @@ h1 {
     margin: 0 80px 0 80px;
   }
 
-  .weather__icon {
+  .sunrise-sunset__icon {
     width: 50px;
   }
 
+  .weather__text {
+    font-size: 22px;
+  }
 
   .forecast__icon {
     width: 300px;
@@ -199,19 +183,20 @@ h1 {
     margin: 0 120px 0 120px;
   }
 
-  .weather__icon {
+  h1 {
+    font-size: 40px;
+  }
+
+  .sunrise-sunset__icon {
     width: 80px;
   }
-  .weather h3 {
+  
+  .weather__text {
     font-size: 30px;
   }
 
   .weather p {
     font-size: 20px;
-  }
-
-  h1 {
-    font-size: 40px;
   }
 
   .forecast__icon {

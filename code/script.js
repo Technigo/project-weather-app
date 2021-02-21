@@ -1,5 +1,6 @@
 
 //Global variables 
+const apiKey = '43ee05c8ec60084b95ea75a9da28cc5f'
 let APIURL_1 = ''
 let apiForecast_1 = ''
 const yourCity = document.getElementById('city')
@@ -17,13 +18,14 @@ const start = () => {
     weatherApp()
 }
 
+//Activates once Search button is pressed and assigns the city to the fetch url
 const selectCity = (city) => {
     let cityChosen = city
 
-    APIURL_1 = `https://api.openweathermap.org/data/2.5/weather?q=${cityChosen}&units=metric&APPID=43ee05c8ec60084b95ea75a9da28cc5f`
-    apiForecast_1 = `https://api.openweathermap.org/data/2.5/forecast?q=${cityChosen}&units=metric&APPID=43ee05c8ec60084b95ea75a9da28cc5f`
+    APIURL_1 = `https://api.openweathermap.org/data/2.5/weather?q=${cityChosen}&units=metric&APPID=${apiKey}`
+    apiForecast_1 = `https://api.openweathermap.org/data/2.5/forecast?q=${cityChosen}&units=metric&APPID=${apiKey}`
     weatherApp() 
- }
+}
 
  
 //Daily weather 
@@ -46,7 +48,7 @@ const weatherApp = () => {
       const sunsetTime = new Date ((weather.sys.sunset + weather.timezone + timezoneOffset) * 1000)
       sunrise.innerHTML = `
         <p> 
-            ${sunriseTime.getHours() > 9 ? sunriseTime.getHours(): '0' + sunriseTime.getHours()}.${sunriseTime.getMinutes()}
+            ${sunriseTime.getHours() > 9 ? sunriseTime.getHours(): '0' + sunriseTime.getHours()}.${sunriseTime.getMinutes() > 9 ? sunriseTime.getMinutes(): '0' + sunriseTime.getMinutes()}
         </p>`
         sunset.innerHTML = `
         <p>
@@ -59,7 +61,7 @@ const weatherApp = () => {
         document.querySelector('.current-weather-text').style.display = 'none'
     }) 
 
-    forecastWeather() //start forecast
+    forecastWeather() //starts forecast
 }
 
 //Forecast weather 
@@ -78,9 +80,15 @@ const forecastWeather = () => {
         forecastDay = new Date (day.dt_txt).toLocaleString('en-us',{ weekday:'short'})
         document.getElementById('forecast-container').innerHTML += `
         <div class="forecast-day-wrapper">
-            <div class="forecast__day">${forecastDay}</div>
-            <div class="forecast__icon"><img src="https://openweathermap.org/img/wn/${icon}@2x.png" /></div>
-            <div class="forecast__temp">${day.main.temp.toFixed(0)} &#176C</div>
+            <div class="forecast__day">
+                ${forecastDay}
+            </div>
+            <div class="forecast__icon">
+                <img src="https://openweathermap.org/img/wn/${icon}@2x.png" />
+            </div>
+            <div class="forecast__temp">
+                ${day.main.temp.toFixed(0)} &#176C
+            </div>
         </div>
         `
         document.querySelector('html').style.height = '1500px'
@@ -103,8 +111,8 @@ const getLocation = () => {
 //fetch city based on position
 const geographicUrl = (position) => {
     if (position !== undefined){
-        APIURL_1 = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&appid=43ee05c8ec60084b95ea75a9da28cc5f`
-        apiForecast_1 = `https://api.openweathermap.org/data/2.5/forecast?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&appid=43ee05c8ec60084b95ea75a9da28cc5f`
+        APIURL_1 = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&appid=${apiKey}`
+        apiForecast_1 = `https://api.openweathermap.org/data/2.5/forecast?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&appid=${apiKey}`
     }
     
     //fetches the weather, now that the fetch URL:s are geolocation-based
