@@ -45,7 +45,6 @@ body {
     padding: 0;
     color:#fff;
     font-size: 70px;
-
 }
 
 .today-img{
@@ -172,6 +171,7 @@ body {
         flex-wrap: wrap;
         align-items: center;
     }
+    
     .forecast {
         width: 90%;
         font-size: 40px;

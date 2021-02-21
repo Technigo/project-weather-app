@@ -25,7 +25,7 @@ fetch(WEATHER_URL)
     filteredForecast.forEach((data) => {
     const imgID = data.weather[0].icon;
     todaysImg.innerHTML = `<img src="http://openweathermap.org/img/wn/${imgID}@2x.png" class="today-img">`;
-    description.innerHTML = `${data.weather[0].description}`  
+    description.innerHTML = `${data.weather[0].description}`;  
     }); 
 
   
@@ -39,7 +39,7 @@ fetch(WEATHER_URL)
       if (filteredForecast[0].main.temp < 0) {
         temperatureToday.style.color = '#1E58AA';
       }
-      else if (filteredForecast[0].main.temp < 5){
+      else if (filteredForecast[0].main.temp < 5 && filteredForecast[0].main.temp > 0){
         temperatureToday.style.color = '#4899D5';
       }
       else if (filteredForecast[0].main.temp < 15 && filteredForecast[0].main.temp > 5.01){
@@ -51,7 +51,7 @@ fetch(WEATHER_URL)
       else{
         temperatureToday.style.color = '#E15242';
       }
-    }
+    };
     checkTemperature ();
 
 
@@ -62,10 +62,10 @@ fetch(WEATHER_URL)
     const weatherDescription = data.weather[0].description;
       
       container.innerHTML += `
-        <section class="forecast">         
-          <p class="temperature">${temp}</p>
-          <img src="http://openweathermap.org/img/wn/${imgID}@2x.png" class="weather-img">
-          <p class="weathertype">${weatherDescription}</p>
+        <section class='forecast'>         
+          <p class='temperature'>${temp}</p>
+          <img src='http://openweathermap.org/img/wn/${imgID}@2x.png' class='weather-img'>
+          <p class='weathertype>${weatherDescription}</p>
         </section>`;
     });
   });
