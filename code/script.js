@@ -19,29 +19,29 @@ fetch(StockholmAPI)
     const date = new Date((data.dt) * 1000);
     const sunriseDate = new Date((data.sys.sunrise) * 1000);
     const sunsetDate = new Date((data.sys.sunset) * 1000);
-    const icon = 'http://openweathermap.org/img/wn/' + data.weather[0].icon +'@4x.png'
+    const icon = 'https://openweathermap.org/img/wn/' + data.weather[0].icon +'@4x.png'
       weatherContainer.innerHTML += `<div>
         <div class="weather-today">
-        <h2>Today's weather in: ${data.name}</h2> 
+          <h2>Today's weather in: ${data.name}</h2> 
         </div>
         <div class="temp-icon">
-        <div class="temp">
-        <h1>${tempRounded}°<h1/>
-        </div>
-        <div class="icon">
-        <img src="${icon}" alt="weather icon">
-        </div>
+          <div class="temp">
+            <h1>${tempRounded}°<h1/>
+          </div>
+          <div class="icon">
+            <img src="${icon}" alt="weather icon">
+          </div>
         </div>
         <div class="weather-description">
-        <h3>${data.weather[0].description}</h3>         
-        <p>${date.toLocaleDateString('sv-SE', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})}</p>
-        <p>${date.getHours()}:${date.getMinutes()}</p>
+          <h3>${data.weather[0].description}</h3>         
+          <p>${date.toLocaleDateString('sv-SE', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})}</p>
+          <p>${date.getHours()}:${date.getMinutes()}</p>
         </div>
         <div class="sunrise-sunset">
-        <p>Sunrise: ${sunriseDate.getHours()}:${sunriseDate.getMinutes()}</p>
-        <p>Sunset: ${sunsetDate.getHours()}:${sunsetDate.getMinutes()}</p>
+          <p>Sunrise: ${sunriseDate.getHours()}:${sunriseDate.getMinutes()}</p>
+          <p>Sunset: ${sunsetDate.getHours()}:${sunsetDate.getMinutes()}</p>
         </div>
-        </div>`
+      </div>`
   }) 
   .catch(error => {
       weatherContainer.innerHTML = `${error}`
@@ -67,7 +67,7 @@ fetch(StockholmForecastAPI)
 
         let feelsLike = day.main.feels_like
         let feelsLikeRounded = Math.round(feelsLike)
-        let icon = 'http://openweathermap.org/img/wn/' + day.weather[0].icon +'.png' 
+        let icon = 'https://openweathermap.org/img/wn/' + day.weather[0].icon +'.png' 
 
         console.log(tempRounded, feelsLikeRounded)
 
@@ -77,14 +77,14 @@ fetch(StockholmForecastAPI)
         console.log(weekday[weekdayInteger])
 
         forecastContainer.innerHTML += `<div class="forecast-days">
-        <div class="weekday">
-        <p>${weekday[weekdayInteger]}<p>
-        <div class="forecast-temp-feels-like">
-        <img src="${icon}" alt="weather icon">
-        <p>Temp: ${tempRounded}° </p>           
-        <p>/ Feels like: ${feelsLikeRounded}°</p>      
-        </div>
-        </div>
+          <div class="weekday">
+            <p>${weekday[weekdayInteger]}<p>
+            <div class="forecast-temp-feels-like">
+              <img src="${icon}" alt="weather icon">
+              <p>Temp: ${tempRounded}° </p>           
+              <p>/ Feels like: ${feelsLikeRounded}°</p>      
+            </div>
+          </div>
         </div>
         `
       })
