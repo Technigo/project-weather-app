@@ -1,11 +1,11 @@
-const StockholmAPI = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=1f53b6ca8e6cbcf1c51848ca6c257778'
-const StockholmForecastAPI = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=1f53b6ca8e6cbcf1c51848ca6c257778'
+const stockholmAPI = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=1f53b6ca8e6cbcf1c51848ca6c257778'
+const stockholmForecastAPI = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=1f53b6ca8e6cbcf1c51848ca6c257778'
 const weatherContainer = document.getElementById('weatherContainer')
 const forecastContainer = document.getElementById('forecastContainer')
 
 const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
-fetch(StockholmAPI)
+fetch(stockholmAPI)
   .then((response) => {
     if (response.ok) {
       return response.json()
@@ -17,8 +17,11 @@ fetch(StockholmAPI)
     const temp = data.main.temp
     const tempRounded = Math.round(temp * 10) / 10 
     const date = new Date((data.dt) * 1000);
-    const sunriseDate = new Date((data.sys.sunrise) * 1000);
-    const sunsetDate = new Date((data.sys.sunset) * 1000);
+    const sunriseDate = new Date(data.sys.sunrise * 1000).toLocaleTimeString('sv-SE', {hour:'numeric', minute: 'numeric'}); //added everything from the .dot
+    const sunsetDate = new Date(data.sys.sunset * 1000).toLocaleTimeString('sv-SE', {hour:'numeric', minute: 'numeric'}); //added everything from the .dot
+//    console.log('sunrise:', sunriseDate)
+//    console.log('sunset', sunsetDate)
+
     const icon = 'https://openweathermap.org/img/wn/' + data.weather[0].icon +'@4x.png'
       weatherContainer.innerHTML += `<div>
         <div class="weather-today">
@@ -38,8 +41,8 @@ fetch(StockholmAPI)
           <p>${date.getHours()}:${date.getMinutes()}</p>
         </div>
         <div class="sunrise-sunset">
-          <p>Sunrise: ${sunriseDate.getHours()}:${sunriseDate.getMinutes()}</p>
-          <p>Sunset: ${sunsetDate.getHours()}:${sunsetDate.getMinutes()}</p>
+          <p>Sunrise: ${sunriseDate}</p>
+          <p>Sunset: ${sunsetDate}</p>
         </div>
       </div>`
   }) 
@@ -48,7 +51,7 @@ fetch(StockholmAPI)
     })
 
 
-fetch(StockholmForecastAPI)
+fetch(stockholmForecastAPI)
   .then((response) => {
     if (response.ok) {
       return response.json()
