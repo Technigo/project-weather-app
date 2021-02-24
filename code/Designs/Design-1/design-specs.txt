@@ -1,0 +1,19 @@
+fonts:
+https://fonts.google.com/specimen/Roboto
+
+weights: light
+
+2 sections in two different colors. 
+Top section with a slightly gradient background.  
+
+COLORS inspiration: 
+code\Designs\Design-1\iPhone XR-XS Max – 1.png
+
+Midnight blue: #242552
+Purple-ish: #5e5f9d
+
+White text
+Black text
+
+
+

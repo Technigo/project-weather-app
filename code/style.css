@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+body {
+    margin: 0; 
+    font-family: 'Roboto', 'sans-serif';
+}
+
+.weather-container {
+    height: 60vh;
+    background-image: linear-gradient(#96d8f2,#242552);
+    border-radius: 0px 0px 30px 30px; 
+    color: white; 
+    padding: 0 20 20 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.weather-today {
+    font-size: 15px;
+    letter-spacing: 2px;
+}
+
+.temp-icon {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.temp {
+    width: 50px; 
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    margin: 5px;
+}
+
+.temp-icon h1 {
+    font-size: 45px;
+}
+
+.sunrise-sunset {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.forecast-container {
+    padding: 20px 20px 0 20px;
+    display: flex; 
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.weekday {
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+.weekday p {
+    font-size: 15px; 
+}
+
+.forecast-temp-feels-like {
+    display: flex;
+    justify-content: center;
+}
+
+.forecast-days {
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/**** MEDIA QUERY TABLET ****/
+@media (min-width: 768px) and (max-width: 992px) {
+
+    .weather-today {
+        font-size: 28px;
+    }
+
+    .temp-icon h1 {
+        font-size: 55px;
+    }
+    
+    .weather-description {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .weather-description h3, p {
+        font-size: 22px;
+    }
+
+    .sunrise-sunset {
+        justify-content: first baseline;
+    }
+
+    .sunrise-sunset p {
+        font-size: 15px;
+    }
+
+    .forecast-temp-feels-like {
+        display: flex;
+        justify-content: center;
+    }
+
+    .weekday {
+        display: flex;
+        justify-content: space-evenly;
+        justify-items: center;
+    }
+
+    .weekday p {
+        font-size: 20px;
+    }
+}
+
+/**** MEDIA QUERY DESKTOP****/
+@media (min-width: 993px) {
+
+    .weather-container {
+        height: 65vh;
+    }
+    
+    .weather-today {
+        font-size: 40px;
+        letter-spacing: 3px;
+    }
+
+    .temp-icon h1 {
+        font-size: 55px;
+    }
+    
+
+    .weather-description {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .weather-description h3, p {
+        font-size: 22px;
+    }
+
+    .sunrise-sunset {
+        justify-content: first baseline;
+    }
+
+    .sunrise-sunset p {
+        font-size: 15px;
+    }
+
+    .forecast-temp-feels-like {
+        display: flex;
+        justify-content: center;
+    }
+
+    .weekday {
+        display: flex;
+        justify-content: space-evenly;
+        justify-items: center;
+        text-align: left;
+    }
+
+    .weekday p {
+        font-size: 20px;
+    }
+}
