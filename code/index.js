@@ -35,7 +35,6 @@ fetch(APIurl)
     })
     .then((weatherData) => {
         let sthlmDay = daysOfWeek(weatherData.dt)
-        console.log(dayOfWeek)
 
         /* entering data from the API into HTML*/
         cityName.innerHTML = `${weatherData.name}`
@@ -118,16 +117,13 @@ fetch(forecastAPIUrl)
         let longFcstDescriptions = fiveDayForecast.map(forecastObject => { /*a function to create a new array of the descriptions for the forecast. These will be used to enter icons fro the fcst*/
             return forecastObject.weather[0].main
         })
-        console.log(longFcstDescriptions)
 
         let shortForecastDescriptions = longFcstDescriptions.slice(0, 3)
-        console.log(shortForecastDescriptions)
 
 
         /*if-string that specifies which icon to use depending on what word is given in the weather.main*/
         let icons = (fsctDescription, iconID) => {
             let fcstIcons = document.getElementById(iconID)
-            console.log(fcstIcons)
             if (fsctDescription === "Clouds") {
                 fcstIcons.src = "/assets/clouds.png"
             } else if (fsctDescription === "Snow") {

@@ -112,7 +112,6 @@ h4 {
     main {
         align-items: center;
         width: 768px;
-        /*height: 1024px;*/
         height: 100vh;
     }
     .temperature-app {
@@ -146,7 +145,7 @@ h4 {
         max-width: 50px;
     }
     .forecast {
-        justify-content:center;
+        justify-content: center;
         max-width: 700px;
     }
 }
