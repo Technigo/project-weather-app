@@ -1,0 +1,161 @@
+body {
+  margin: 0;
+  font-family: 'Rubik', sans-serif;
+  background-color: rgb(17,3,249);
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 300;
+}
+
+h2 {
+  font-size: 55px;
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+}
+
+.weather-section{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 0 20px;
+  height: 50vh;
+  background: rgb(17,3,249);
+  background: linear-gradient(0deg, rgba(17,3,249,1) 0%, rgba(122,51,232,1) 36%, rgba(240,255,153,1) 100%);
+}
+
+.today-temp {
+  display: flex;
+  justify-content: space-evenly;
+  color: #1f1b5c
+}
+
+.today {
+  padding-top: 15px;
+  padding-left: 20px;
+}
+
+.weather-icon img {
+  width: 200px;
+  height: 200px;
+
+}
+
+.sun-hours {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.sun-hours p {
+  font-size: 18px;
+  font-weight: 300;
+  color: white;
+}
+
+.forcast {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px 0 40px;
+  background-color: rgb(17,3,249);;
+}
+
+.five-days {
+  display: flex;
+  justify-content: space-between;
+  text-align: end;
+  align-items: center;
+}
+
+.five-days img {
+   width: 60px;
+}
+
+.five-days p {
+  font-size: 18px;
+  color: white;
+}
+
+.five-days-column {
+  flex: 33%;
+}
+
+/**** MEDIA QUERIES ***/
+@media (min-width: 768px) and (max-width: 1024px){
+  h1 {
+    font-size: 40px;
+    }
+
+  h2 {
+    font-size: 50px;
+    text-align: center;
+    }
+
+  .weather-icon img {
+    width: 300px;
+    height: 300px;
+  }
+
+  .sun-hours p {
+    font-size: 25px;
+    }
+
+  .forcast {
+    display: flex;
+    flex-direction: column;
+    padding: 25px 80px 0 80px;
+    }
+
+  .five-days p {
+    font-size: 20px;
+    }
+
+  .five-days img {
+    width: 100px;
+  }
+}
+
+
+
+@media (min-width: 1025px) {
+  .weather-container {
+    margin: 0 auto;
+    width: 1025px;
+  }
+
+  .forcast {
+    display: flex;
+    flex-direction: column;
+    padding: 25px 200px 0 200px;
+    }
+
+  h1 {
+      font-size: 55px;
+    }
+
+  h2 {
+    font-size: 65px;
+    text-align: center;
+    }
+
+  h3 {
+    font-size: 30px;
+  }
+
+  .weather-icon img {
+    width: 300px;
+    height: 300px;
+  }
+
+  .sun-hours p {
+      font-size: 35px;
+   }
+
+  .five-days p {
+      font-size: 30px;
+  }
+}
