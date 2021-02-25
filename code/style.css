@@ -1,6 +1,7 @@
 body {
   margin: 0;
   font-family: 'Rubik', sans-serif;
+  background-color: rgb(17,3,249);
 }
 
 h1 {
@@ -84,7 +85,7 @@ h3 {
 }
 
 /**** MEDIA QUERIES ***/
-@media (min-width: 500px) {
+@media (min-width: 768px) and (max-width: 1024px){
   h1 {
     font-size: 40px;
     }
@@ -93,6 +94,11 @@ h3 {
     font-size: 50px;
     text-align: center;
     }
+
+  .weather-icon img {
+    width: 300px;
+    height: 300px;
+  }
 
   .sun-hours p {
     font-size: 25px;
@@ -111,15 +117,45 @@ h3 {
   .five-days img {
     width: 100px;
   }
-
 }
 
 
 
-@media (min-width: 700px) {
+@media (min-width: 1025px) {
   .weather-container {
     margin: 0 auto;
-    width: 700px;
+    width: 1025px;
   }
 
+  .forcast {
+    display: flex;
+    flex-direction: column;
+    padding: 25px 200px 0 200px;
+    }
+
+  h1 {
+      font-size: 55px;
+    }
+
+  h2 {
+    font-size: 65px;
+    text-align: center;
+    }
+
+  h3 {
+    font-size: 30px;
+  }
+
+  .weather-icon img {
+    width: 300px;
+    height: 300px;
+  }
+
+  .sun-hours p {
+      font-size: 35px;
+   }
+
+  .five-days p {
+      font-size: 30px;
+  }
 }
