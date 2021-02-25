@@ -1,7 +1,7 @@
 const dtable = document.getElementById('dynamic');
 const selectCity = document.getElementById('selectCity');
-let colorWidget = document.getElementById("weather-widget");
-const coverImage = document.getElementById("page-body");
+let colorWidget = document.getElementById("weatherWidget");
+const coverImage = document.getElementById("pageBody");
 
 // Global variable
 let weather, daysWeek, dWeek, value, tempPoints, cityImage, cityName,
@@ -205,7 +205,7 @@ const tempGraph = () => {
         return Days[day]
       })
       
-      new Chart(document.getElementById("line-chart"), {
+      new Chart(document.getElementById("lineChart"), {
         type: 'line',
         data: {
           labels: dWeek,
