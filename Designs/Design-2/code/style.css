@@ -1,0 +1,70 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+    width: 300px;
+    margin: 20px auto;
+    padding: 40px;
+    background-color: #F47775;
+    color:#F4F7F8;
+}
+
+.today-weather {
+    line-height: 5px;
+    font-weight: normal;
+}
+
+.city-name {
+    font-size: 1.5em;
+}
+
+.forecast {
+    padding-bottom: 10px;
+    /*border-bottom: 1px dotted #F4F7F8;*/
+    line-height: 10px;
+    font-weight: normal;
+}
+
+.forecast-information{
+    text-align-last: justify;
+    margin-top: 30px;
+    text-decoration-line: underline;
+    text-decoration-style: dotted;   
+}
+
+/** MEDIA QUERIES **/
+@media (min-width:667px) {
+.container {
+    width: 400px;
+}
+}
+
+@media (min-width:1024px) {
+.container {
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+}
+.current-weather-container {
+    text-align: center;
+    display: flex;
+}
+
+.today-weather {
+    padding: 40px;
+    font-size: 1.2em;
+}
+
+.forecast-information {
+    width: 400px;
+    align-self: center;
+    font-size: 1.2em;
+}
+.weather-message-container {
+    width: 400px;
+    align-self: center;
+    font-size: 1.1em;
+}
+
+}
