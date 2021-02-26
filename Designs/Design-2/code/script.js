@@ -1,16 +1,14 @@
 const CURRENT_WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather?q=Helsinki&units=metric&appid=9aeed004b4643ec679ac5d430384d994"
 const FORECAST_URL = "https://api.openweathermap.org/data/2.5/forecast?q=Helsinki&units=metric&appid=9aeed004b4643ec679ac5d430384d994"
 
-const cityName = document.getElementById("cityName")
-const currentTemperature = document.getElementById("currentTemperature")
+const cityName = document.getElementById("city-name")
+const currentTemperature = document.getElementById("current-temperature")
 const sunrise = document.getElementById("sunrise")
 const sunset = document.getElementById("sunset")
-const currentWeatherContainer = document.getElementById("currentWeatherContainer")
+const currentWeatherContainer = document.getElementById("current-weather-container")
 const icon = document.getElementById("icon")
-const weatherMessage = document.getElementById("weatherMessage")
-const weekDays = document.getElementById("weekDays")
-const temperatureForecast = document.getElementById("temperatureForecast")
-const forecastInformation = document.getElementById("forecastInformation")
+const weatherMessage = document.getElementById("weather-message")
+const forecastInformation = document.getElementById("forecast-information")
 
 //Function to get current weather information and changing inner.HTML accordingly
 const fetchCurrentWeather = () => {
