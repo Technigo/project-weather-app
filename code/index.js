@@ -56,7 +56,7 @@ fetch(APIurl)
         weatherData.main.temp = 9;
         if (weatherData.main.temp < 0) {
             backgroundImage.innerHTML += `
-            <img id="img-background" class="img-background" alt="" src="/assets/foggy.png">
+            <img id="img-background" class="img-background" alt="" src="/assets/cloudy.png">
             `
         } else if (weatherData.main.temp > 0 && weatherData.main.temp < 3) {
             backgroundImage.innerHTML += `
@@ -84,21 +84,21 @@ fetch(forecastAPIUrl)
     })
     .then((forecastData) => {
         const fiveDayForecast = forecastData.list.filter(item => item.dt_txt.includes('12:00')) /*function taken from hint-section to filter out forecasts from 12:00 PM*/
-        const threeDayForecast = fiveDayForecast.slice(0, 3) //Forecast for three days (mobile view)
+            // const threeDayForecast = fiveDayForecast.slice(0, 3) //Forecast for three days (mobile view)
 
 
-        /*a forEach that interates through the filtered array extracting the min and max temp of the comming 3 days*/
-        threeDayForecast.forEach((forecastSingle, index) => {
-            shortForecast.innerHTML += `
-                <div class="forecast">
-                <div class="forecast-elements">
-                <p class="days-of-week">${daysOfWeek(forecastSingle.dt)}</p>
-                <img class="icons" id="icons-short-${index}" src="/assets/snow.png">
-                <p class="forecast-temp">${(forecastSingle.main.temp_max).toFixed(0)}&#8451 </p>
-                </div>
-                </div>
-            `
-        })
+        // /*a forEach that interates through the filtered array extracting the min and max temp of the comming 3 days. Removed after Code Review*/
+        // threeDayForecast.forEach((forecastSingle, index) => {
+        //     shortForecast.innerHTML += `
+        //         <div class="forecast">
+        //         <div class="forecast-elements">
+        //         <p class="days-of-week">${daysOfWeek(forecastSingle.dt)}</p>
+        //         <img class="icons" id="icons-short-${index}" src="/assets/snow.png">
+        //         <p class="forecast-temp">${(forecastSingle.main.temp_max).toFixed(0)}&#8451 </p>
+        //         </div>
+        //         </div>
+        //     `
+        // })
 
         /*a forEach that interates through the filtered array extracting the min and max temp of the comming 5 days*/
         fiveDayForecast.forEach((forecastSingle, index) => {
@@ -118,7 +118,7 @@ fetch(forecastAPIUrl)
             return forecastObject.weather[0].main
         })
 
-        let shortForecastDescriptions = longFcstDescriptions.slice(0, 3)
+        // let shortForecastDescriptions = longFcstDescriptions.slice(0, 3) Removed after Code Review
 
 
         /*if-string that specifies which icon to use depending on what word is given in the weather.main*/
@@ -138,10 +138,10 @@ fetch(forecastAPIUrl)
         }
 
         longFcstDescriptions.forEach((longForecastDescription, index) => {
-            icons(longForecastDescription, `icons-long-${index}`)
-        })
-        shortForecastDescriptions.forEach((shortForecastDescription, index) => {
-            icons(shortForecastDescription, `icons-short-${index}`)
-        })
-        
+                icons(longForecastDescription, `icons-long-${index}`)
+            })
+            // shortForecastDescriptions.forEach((shortForecastDescription, index) => {
+            //     icons(shortForecastDescription, `icons-short-${index}`)
+            // }) Removed after Code Review
+
     })
