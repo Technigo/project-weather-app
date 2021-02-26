@@ -4,6 +4,7 @@ html {
     margin: 0;
     height: 100%;
     overflow: hidden;
+    background-color: #f4cdd2;
 }
 
 
@@ -92,18 +93,23 @@ h4 {
     justify-content: space-around;
 }
 
-.five-day-forecast {
-    display: none
-}
 
-@media (min-width: 414px) {
+/*Removed 3-day forecast after Code Review*/
+
+
+/* .five-day-forecast {
+    display: none
+} */
+
+
+/* @media (min-width: 414px) {
     .five-day-forecast {
         display: flex;
     }
     .three-day-forecast {
         display: none
-    }
-}
+    } 
+} */
 
 @media (min-width: 768px) {
     body {
