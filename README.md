@@ -1,13 +1,14 @@
 # Weather App
 
-Replace this readme with your own information about your project.
+This is a weather app which fetches information about current weather conditions and gives 5 days forecast. App widget background responsive to the temperature, background image is responsive to the selected city. The pair-programming project was developed together with Maria Bergman in the framework of Technigo bootcamp for front-end development.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
 
 ## The problem
+The major issue was to arrange multiple items inside of the weather app widget. Second problem was putting responsive image into the background. Was trying to put conditional media queries into select if statement, but this did not work. Alternative solution with replacing background statement with backgroundImage statement worked well.
+Techniques used: scafford: HTML, styling done with CSS, responsivity was done by Javascript. Data trend processing was done with Chart.js, Javascript library for EDA, exploratory data analysis. 
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+The project is alive on the Netlify server:
+https://elegant-davinci-7eedac.netlify.app/

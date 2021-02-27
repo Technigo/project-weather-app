@@ -1,0 +1,188 @@
+html,
+body {
+   background-color: rgb(225, 225, 243);
+   font-family: 'Roboto Slab', Serif;
+   color: rgb(2, 2, 139);
+   margin: 0px;
+   background-image: none;
+}
+
+.weather-widget {
+    background:  rgb(225, 225, 243);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding:0;
+    height: 100%;
+}
+
+.city-title {
+    color: navy;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.today {
+    display: flex;
+    padding: 10px 50px 0px 50px;
+    margin-bottom: 0;
+    flex-direction: column;
+    align-items: center;
+}
+
+.now {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 20px;
+    padding-bottom: 10px;
+    width: 100%;
+}
+
+.time-current {
+    display: flex;
+    margin-left: 20px;
+}
+
+.sun {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width:80%;
+    padding-left: 0px;
+}
+
+.sun img {
+    box-shadow: 1px 2px 1px 1px rgba(63, 20, 59, 0.4);
+    border-radius: 5px;
+}
+
+.sundata {
+    display:flex;
+    align-items: center;
+    margin-left: 5px;
+}
+
+.big-icon {
+    display: flex;
+    width: 70%;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+    margin-top: -20px;
+    margin-bottom: -20px;
+}
+
+.forecast-icon {
+    display: flex;
+    width: 50%;
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+
+h4 {
+    color: rgb(9, 9, 119);
+}
+
+.f-feels {
+    display: flex;
+    justify-content: center;
+    margin-top: 0; 
+    margin-bottom: 0;
+    padding-top: 2px;
+} 
+
+.select-box {
+    display: flex;
+    justify-content: center;
+    margin-top: 0; 
+    margin-bottom: 0;
+    padding: 0px;
+}
+
+.forecast {
+    display: flex;
+    padding: 0 10px 0px 10px;
+    flex-direction: column;
+    align-items: center;
+    margin-right: -50px;
+}
+
+.chart {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    margin: 0px 0px 0px 5px;
+    width: 90%;
+}
+
+.select-city {
+    border: 2px solid rgb(78, 77, 77);
+    font-size: 14px;
+    color: #0c7cc2;
+    background-color: rgb(226, 226, 246);
+    border-radius: 5px;
+    box-shadow: 2px 3px 2px 2px rgba(7, 74, 100, 0.4);
+    margin-bottom: 7px;
+  }
+
+  .footer {
+      display: none;
+  }
+  /******************  MEDIA QUARIES  *********************/
+@media(min-width: 768px) {
+    
+    .page {
+        display: flex;
+        /*flex-direction: row;
+        flex-wrap: wrap; */
+        justify-content: center;
+        background: "url(./images/stockholm.jpg)"; 
+        background-size: cover;
+        background-repeat: no-repeat;
+        object-fit: cover;
+    }
+
+    .weather-widget {
+        max-width: 400px;
+        border-radius: 5px;
+        box-shadow: 2px 3px 2px 2px rgba(7, 74, 100, 0.4);
+        margin: 40px;
+    }
+
+    .today {
+        display: flex;
+        justify-content: space-evenly;
+    }
+}
+
+@media(min-width: 1200px) {
+    .weather-widget {
+        max-width: 600px;
+    }
+
+    html,
+    body {
+        background-image: cover;
+        object-fit: cover;
+    }
+
+    .footer {
+        display: flex;
+        background:rgb(2, 123, 128);
+        height: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        border: 2px solid rgb(1, 30, 44);
+        box-shadow: 2px 5px 2px 2px rgba(2, 58, 80, 0.4);
+        padding-right: 20px;
+        margin-top: 0;
+        margin-bottom: 0;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 98%;
+    }
+}
