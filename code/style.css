@@ -1,8 +1,10 @@
+html,
 body {
    background-color: rgb(225, 225, 243);
    font-family: 'Roboto Slab', Serif;
    color: rgb(2, 2, 139);
    margin: 0px;
+   background-image: none;
 }
 
 .weather-widget {
@@ -125,28 +127,62 @@ h4 {
     margin-bottom: 7px;
   }
 
+  .footer {
+      display: none;
+  }
   /******************  MEDIA QUARIES  *********************/
 @media(min-width: 768px) {
     
     .page {
-        
+        display: flex;
+        /*flex-direction: row;
+        flex-wrap: wrap; */
+        justify-content: center;
         background: "url(./images/stockholm.jpg)"; 
         background-size: cover;
         background-repeat: no-repeat;
         object-fit: cover;
-        
     }
 
     .weather-widget {
-        max-width: 300px;
+        max-width: 400px;
         border-radius: 5px;
         box-shadow: 2px 3px 2px 2px rgba(7, 74, 100, 0.4);
-        margin: 0px;
+        margin: 40px;
+    }
+
+    .today {
+        display: flex;
+        justify-content: space-evenly;
     }
 }
 
 @media(min-width: 1200px) {
     .weather-widget {
-        max-width: 400px;
+        max-width: 600px;
+    }
+
+    html,
+    body {
+        background-image: cover;
+        object-fit: cover;
+    }
+
+    .footer {
+        display: flex;
+        background:rgb(2, 123, 128);
+        height: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        border: 2px solid rgb(1, 30, 44);
+        box-shadow: 2px 5px 2px 2px rgba(2, 58, 80, 0.4);
+        padding-right: 20px;
+        margin-top: 0;
+        margin-bottom: 0;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 98%;
     }
 }
