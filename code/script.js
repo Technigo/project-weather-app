@@ -20,10 +20,9 @@ const start = () => {
 
 //Activates once Search button is pressed and assigns the city to the fetch url
 const selectCity = (city) => {
-    let cityChosen = city
-
-    APIURL_1 = `https://api.openweathermap.org/data/2.5/weather?q=${cityChosen}&units=metric&APPID=${apiKey}`
-    apiForecast_1 = `https://api.openweathermap.org/data/2.5/forecast?q=${cityChosen}&units=metric&APPID=${apiKey}`
+    
+    APIURL_1 = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`
+    apiForecast_1 = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=${apiKey}`
     weatherApp() 
 }
 
@@ -40,7 +39,7 @@ const weatherApp = () => {
     .then ((weather) => {
       yourCity.innerHTML = `${weather.name}`
 
-      typeAndTemperature.innerHTML = `${weather.weather[0].main} | ${weather.main.temp.toFixed(0)}&#176C` 
+      typeAndTemperature.innerHTML = `${weather.weather[0].main} | ${weather.main.temp.toFixed(1)}&#176C` 
       changeColor(weather.main.temp)  
       const timezoneOffset = new Date ().getTimezoneOffset() * 60
       const sunriseTime = new Date ((weather.sys.sunrise + weather.timezone + timezoneOffset) * 1000)
@@ -87,7 +86,7 @@ const forecastWeather = () => {
                 <img src="https://openweathermap.org/img/wn/${icon}@2x.png" />
             </div>
             <div class="forecast__temp">
-                ${day.main.temp.toFixed(0)} &#176C
+                ${day.main.temp.toFixed(1)} &#176C
             </div>
         </div>
         `
@@ -144,7 +143,6 @@ start()
 //Event Listener
 submit.addEventListener('click', (event) => {
     event.preventDefault()
-    console.log(selectedCity)
 
     if (selectedCity.value === '') {
         alert('Please enter your city name')
