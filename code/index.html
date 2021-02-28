@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
+  <link rel ="icon" type="image/png" href="sun2.png">
+  <link rel="stylesheet" href="./style.css">
+  <title>Weather App</title>
+</head>
+
+<body>
+  
+  <!--Logo-->
+  <header class=header>
+    <img class="header__img" src="sun2.png" />
+    <h3 class="header__text">WeatherOracle</h3>
+  </header>
+
+  <!--Header with city name-->
+  <section class="current-weather-text">
+    <h3>Current weather in </h3>
+    <h1><span id="city"></span></h1>
+  </section>
+
+  <!--Today's weather-->
+  <section class="weather">
+    <h3 class="weather__text" id="temperature"></h3>
+    <div class="sunrise-sunset">
+      <img class="sunrise-sunset__icon" src="sunrise.png" />
+      <p id="sunrise"></p>
+    </div>
+    <div class="sunrise-sunset">
+      <img class="sunrise-sunset__icon" src="sunset.png" />
+      <p id="sunset"></p>
+    </div>
+  </section>
+
+  <!--Forecast weather-->
+  <div id="forecast-container" class="forecast__list">
+  </div>
+
+  <!--Search for city-->
+  <section>
+    <form class="form">
+      <h3>Choose your city</h3>
+      <input id="selected-city" type="text" value= "" placeholder="City name">
+      <button id="submit" class="button">Search</button>
+    </form>   
+  </section>
+  
+  <!--Footer-->
+  <footer class="footer">
+    <p class="footer__header">App made by:</p>
+    <p class="footer__text">Maria Pogosjan</p>
+    <p class="footer__text">Emma Bartl</p>
+    <p class="footer__text">Martin Danielsson</p>
+  </footer>
+
+  
+  <script src="./script.js"></script>
+</body>
+</html>
