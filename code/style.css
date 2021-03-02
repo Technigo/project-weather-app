@@ -51,7 +51,7 @@ body {
   background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(69, 69, 69, 1) 100%);
 }
 
-.navbar-container {
+.location-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -59,23 +59,23 @@ body {
   width: 100%;
 }
 
-.navbar-container p {
+.location-container p {
   font-size: 12;
   display: inline-block;
 }
 
-.navbar-container p:hover {
+.location-container p:hover {
   text-decoration: underline;
   cursor: pointer;
 }
 
-.navbar-inner {
+.location-inner {
   display: flex;
   align-items: center;
 }
 
-.navbar-map-icon,
-.navbar-magnifyingglass-icon {
+.location-map-icon,
+.location-magnifyingglass-icon {
   width: 40px;
   height: 40px;
   cursor: pointer;
@@ -84,16 +84,16 @@ body {
   opacity: 0.7;
 }
 
-.navbar-map-icon {
+.location-map-icon {
   padding-right: 10px;
 }
 
-.navbar-magnifyingglass-icon {
+.location-magnifyingglass-icon {
   padding-left: 10px;
 }
 
-.navbar-magnifyingglass-icon:hover,
-.navbar-map-icon:hover {
+.location-magnifyingglass-icon:hover,
+.location-map-icon:hover {
   opacity: 1;
 }
 
