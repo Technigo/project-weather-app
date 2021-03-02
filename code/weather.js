@@ -25,8 +25,8 @@ const API_KEY = "fd4c88b297db1abd3f5aaffe170147b6";
 
 /* This function is called when the user seatches for a city and it will render the city name on the screen. */
 const handleCityInput = (city) => {
-  const API_urlCurrent = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&lang=se&APPID=" + API_KEY;
-  const API_urlForecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=metric&lang=se&APPID=" + API_KEY;
+  const API_urlCurrent = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&lang=se&APPID=${API_KEY}`
+  const API_urlForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&lang=se&APPID=${API_KEY}`
   fetchWeatherData(API_urlCurrent);
   fetchWeatherForecast(API_urlForecast)
   currentLocationText.innerHTML = city
@@ -46,8 +46,8 @@ const getPosition = () => {
   /* If the the app is able to get the users location it will take the coordinates and push them into the fetch function. */
   const success = (position) => {
     const crd = position.coords;
-    const API_urlPosCurrent = "https://api.openweathermap.org/data/2.5/weather?lat=" + crd.latitude + "&lon=" + crd.longitude + "&units=metric&lang=se&appid=" + API_KEY;
-    const API_urlPosForecast = "https://api.openweathermap.org/data/2.5/forecast?lat=" + crd.latitude + "&lon=" + crd.longitude + "&units=metric&lang=se&appid=" + API_KEY;
+    const API_urlPosCurrent = `https://api.openweathermap.org/data/2.5/weather?lat=${crd.latitude}&lon=${crd.longitude}&units=metric&lang=se&appid=${API_KEY}`;
+    const API_urlPosForecast = `https://api.openweathermap.org/data/2.5/forecast?lat=${crd.latitude}&lon=${crd.longitude}&units=metric&lang=se&appid=${API_KEY}`;
     fetchWeatherData(API_urlPosCurrent);
     fetchWeatherForecast(API_urlPosForecast);
   }
@@ -97,13 +97,15 @@ const fetchWeatherForecast = (API_urlForecast) => {
 /* This function will take the json object and filter out all the days that includes the 12:00 timestamp. We then render a 5 day forecast on the DOM for the user to see */
 const forecastTemperature = (forecastData) => {
   const filteredData = forecastData.list.filter((item) => item.dt_txt.includes("12:00"))
-
-  filteredData.forEach(item => forecastTemp.innerHTML += `
+ 
+  filteredData.forEach((item) => {
+    const temp = Math.round(item.main.temp*10)/10
+    forecastTemp.innerHTML += `
     <li>
       <img class="forecast-icon" src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"/> 
-      ${item.main.temp} &deg;C
+      ${temp.toFixed(1)} &deg;C
     </li>
-  `);
+  `});
   filteredData.forEach((item) => {
     const day = item.dt_txt.split(/[- :]/)
     const date = new Date(day[0], day[1], day[2], day[3], day[4], day[5]) //day and date is rebuilt in a format that all OS should be able to understand
@@ -129,7 +131,8 @@ const setCurrentWeather = (weatherData) => {
 }
 
 const currentTemperature = (weatherData) => {
-  temperature.innerHTML = `| ${weatherData.main.temp} &deg;C`
+  const temp = Math.round(weatherData.main.temp *10)/10
+  temperature.innerHTML = `| ${temp.toFixed(1)} &deg;C`
 }
 
 const currentSunriseSunset = (sun, condition) => {
@@ -152,8 +155,8 @@ const toLocalTime = (sun) => {
 const currentWeatherCondition = (weatherData) => {
   const wIcon = weatherData.weather[0].icon
 
-  shortDescription.innerHTML = weatherData.weather[0].description + " "
-  weatherIcon.src = "https://openweathermap.org/img/wn/" + wIcon + "@2x.png"
+  shortDescription.innerHTML = `${weatherData.weather[0].description} `
+  weatherIcon.src = `https://openweathermap.org/img/wn/${wIcon}@2x.png`
 }
 
 /* This function will render a background on the screen depengin on what kind of weather it is. We have fetched the ID from the API and we check the ID range and then render an image accordingly. */
@@ -186,13 +189,13 @@ const clearAll = () => {
 
 const quoteOfTheDay = () => {
 
-  fetch("https://favqs.com/api/qotd")
+  fetch("http://quotes.rest/qod.json?category=inspire")
     .then((response) => {
       return response.json()
     })
     .then((json) => {
-      quoteText.innerHTML = json.quote.body
-      quoteAuthor.innerHTML = "- " + json.quote.author
+      quoteText.innerHTML = json.contents.quotes[0].quote
+      quoteAuthor.innerHTML = `- ${json.contents.quotes[0].author}`
     })
 }
 
