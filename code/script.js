@@ -20,7 +20,7 @@ const getWeather = (location) => {
         <div class="main-weather">
         <img class="image-weather" src="./assets/${data.weather[0].main.toLowerCase()}.png">
         <div class="info-weather">
-            <h1>${Math.round(data.main.temp)}<span>°C</span></h1>
+            <h1>${data.main.temp.toFixed(1)}<span>°C</span></h1>
             <h2>${data.name}</h2>
             <h3>${data.weather[0].description}</h3>
         </div>
@@ -87,7 +87,7 @@ const getForecast = (location) => {
                 let dailyMaxTemp = eachDay.reduce((accumulator, currentValue) => {
                     return (accumulator > currentValue ? accumulator : currentValue);
                 })
-                maxTemps.push(Math.round(dailyMaxTemp))
+                maxTemps.push(dailyMaxTemp.toFixed(1))
             }
             // this loop reduces the min temperatures of all five day's of measurement to one min temperature for each day, rounded
             let minTemps = []
@@ -95,7 +95,7 @@ const getForecast = (location) => {
                 let dailyMinTemp = eachDay.reduce((accumulator, currentValue) => {
                     return (accumulator < currentValue ? accumulator : currentValue);
                 })
-                minTemps.push(Math.round(dailyMinTemp))
+                minTemps.push(dailyMinTemp.toFixed(1))
             }
 
             //this loop captures the weekday and the main description of the weather for each day of the five-day-forecast at 9am
