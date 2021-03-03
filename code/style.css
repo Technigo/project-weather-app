@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+
+body {
+    font-family:'Roboto', sans-serif;
+    margin: 0;
+}
+
+.container {
+    position: relative;
+}
+
+.hamburger div {
+    background-color: white;
+    width: 40px;
+    height: 3px;
+    margin: 8px;
+    border-radius: 10px;
+}
+
+.menu {
+    background-color: white;
+    width: 45%;
+    position: absolute;
+    border: 1px solid black;
+}
+
+.cities {
+    padding: 5px;
+    font-family:'Roboto', sans-serif;
+    font-size: 15px;
+    width: 100%;
+    color: black;
+    border: none;
+}
+
+.hidden {
+    display: none
+}
+
+.container-weather {
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, #d8d7ff 0%, #8fa9ff 100%);
+    border-radius: 0% 0% 50% 50% / 85% 85% 15% 15%;
+    padding:30px 30px 50px;
+    color: white;
+}
+
+.inner-container-weather {
+    position: relative;
+}
+
+.image-weather {
+    position: absolute;
+    width: 150px;
+    top: -100px;
+    left: 170px;
+}
+
+h1 {
+    font-weight: 300;
+    font-size: 100px;
+    margin-bottom: 0px;
+    position: relative;
+}
+
+h1 span {
+    font-size: 30px;
+    position: absolute;
+    top: 15px
+}
+
+h2 {
+    font-weight: 300; 
+    margin: 0;
+    font-size: 30px;
+}
+
+h3 {
+    font-weight: 300;
+    margin: 0;
+}
+.sun {
+    display: flex;
+    justify-content: space-between;
+    font-size: 22px;
+    margin: 20px 0;
+}
+
+.container-forecast {
+    padding: 30px;
+}
+
+.weekdays {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    margin: 20px 0;
+}
+
+.temperature {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.temperature img {
+    width: 30px;
+    height: 30px;
+}
+
+
+@media (min-width: 768px)  {
+    body {
+        display: flex;
+        justify-content: center;
+    }
+
+    .container {
+        width: 70%;
+    }
+
+    .image-weather {
+        left: 250px;
+    }
+
+    .sun {
+        margin: 20px 50px;
+    }
+
+    .weekdays {
+        margin: 20px 50px;
+    }
+
+}
+
+@media (min-width: 992px)  {
+    body {
+        display: flex;
+        justify-content: center;
+    }
+
+    .container {
+        width: 60%;
+    }
+
+    .menu {
+        width: 25%;
+        right: 0;
+    }
+
+    .cities {
+        padding: 0 5px;
+    }
+
+    .container-weather {
+        padding: 50px 100px 50px;
+    }
+    
+    .main-weather {        
+        display: flex;
+        justify-content: center;
+    }
+
+    .image-weather {
+        width: 200px;
+        position: static;
+        order: 1;
+        margin-left: 50px;
+    }
+
+    h1 {
+        margin-top: 0;
+    }
+
+    .sun {
+        margin: 40px 50px;
+    }
+
+    .weekdays {
+        margin: 20px 50px;
+    }
+}
