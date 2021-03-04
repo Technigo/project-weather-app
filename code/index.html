@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pauras Weather App</title>
+  <link rel="stylesheet" href="./style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body id="body" class="sunny">
+
+  <section class="location-container">
+    <div class="location-inner" id="locationWrapper">
+      <div class="location-map-icon">
+        <img id="currentLocationIcon" src="./assets/currentLocation.svg" alt="" />
+      </div>
+      <p>Min Plats</p>
+    </div>
+    <div class="location-inner" id="searchWrapper">
+      <div class="location-magnifyingglass-icon">
+        <img id="magnifyingGlassIcon" src="./assets/magnifyingGlass.svg" alt="" />
+      </div>
+      <p>Sök</p>
+    </div>
+  </section>
+
+  <form class="search-location" id="searchbox">
+    <label for="userLocationInput">
+    </label>
+    <div class="search-location-inner">
+      <input class="search-bar" type="text" id="userLocationInput" name="userLocationInput" />
+      <button id="searchLocationBtn" class="search-location-btn">
+        Sök
+      </button>
+    </div>
+  </form>
+
+  <section class="today">
+    <div class="today-location-wrapper" id="currentLocationWrapper">
+      <img id="weatherIcon" src="" />
+      <h1 id="currentLocationText"></h1>
+    </div>
+    <div class="todays-numbers">
+      <p>
+        <span id="shortDescription"></span><span id="temperature"></span>
+      </p>
+      <div class="raindrop"></div>
+      <div class="raindrop"></div>
+      <div class="raindrop"></div>
+      <div class="raindrop"></div>
+      <div class="raindrop"></div>
+      <div class="snowflake"> &#10052;</div>
+      <div class="snowflake"> &#10052;</div>
+      <div class="snowflake"> &#10052;</div>
+      <div class="snowflake"> &#10052;</div>
+      <div class="snowflake"> &#10052;</div>
+      <div class="today-sunrise-sunset">
+        <p id="sunrise"></p>
+        <p id="sunset"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="forecast" class="forecast">
+    <h1>5-dagars prognos</h1>
+    <div class="forecast-container">
+      <ul id="forecastDay" class="forecast-day"></ul>
+      <ul id="forecastTemp" class="forecast-temp"></ul>
+    </div>
+  </section>
+
+  <div class="todays-description">
+    <h2>Quote of the day</h2>
+    <h4 class="quote-of-the-day" id="quoteOfTheDay"></h4>
+    <h4 class="quote-of-the-day-author" id="quoteAuthor"></h4>
+  </div>
+
+  <script type="text/javascript" src="./weather.js"></script>
+</body>
+
+</html>

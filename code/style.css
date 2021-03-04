@@ -1,0 +1,539 @@
+/* This app is styled by mobile first approach, meaning,
+we've added media queries on how it should look in tablet
+and desktop. Feel free to change the styling! */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Styling of the body. */
+body {
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Styling of the body when the classname is "sunny" */
+.sunny {
+  background: #b7e2e2;
+  color: #075e59;
+}
+
+/* Styling of the body when the classname is "cloudy" */
+.cloudy {
+  background: #e7e3de;
+  color: #0f2b3b;
+}
+
+/* Styling of the body when the classname is "rainy" */
+.rainy {
+  background: #82aabd;
+  color: #0e202b;
+}
+
+/* Styling of the body when the classname is "snowy" */
+.snowy {
+  background: #dceff8;
+  color: #394f77;
+}
+
+/* Styling of the body when the classname is "stormy" */
+.stormy {
+  background: #3d494e;
+  color: rgb(255, 255, 255);
+}
+
+/* Styling of the body when the classname is "other" */
+.other {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(69, 69, 69, 1) 100%);
+}
+
+.location-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.514);
+  width: 100%;
+}
+
+.location-container p {
+  font-size: 12;
+  display: inline-block;
+}
+
+.location-container p:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.location-inner {
+  display: flex;
+  align-items: center;
+}
+
+.location-map-icon,
+.location-magnifyingglass-icon {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  padding-right: 10px;
+  padding: 5px 0;
+  opacity: 0.7;
+}
+
+.location-map-icon {
+  padding-right: 10px;
+}
+
+.location-magnifyingglass-icon {
+  padding-left: 10px;
+}
+
+.location-magnifyingglass-icon:hover,
+.location-map-icon:hover {
+  opacity: 1;
+}
+
+.search-location {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.search-location-inner {
+  display: flex;
+  height: 30px;
+  width: 60%;
+}
+
+.search-bar {
+  margin: 0;
+  flex: 1 1 auto;
+  background: #F4F7F8;
+  height: 28px;
+  width: 200px;
+  font-size: 16px;
+  outline: none;
+  border: solid rgba(0, 0, 0, 0.596) 0.5px;
+}
+
+.sunny input,
+.sunny input::placeholder {
+  color: #0ea76c;
+}
+
+.cloudy input,
+.cloudy input::placeholder {
+  color: #182844;
+}
+
+.rainy input,
+.rainy input::placeholder {
+  color: #164A68;
+}
+
+.snowy input,
+.snowyinput::placeholder {
+  color: #4a4e47;
+}
+
+.stormy input,
+.stormy input::placeholder {
+  color: #10121a;
+}
+
+.search-location-btn {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  padding: 3px 16px;
+  border-radius: 0px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#44c6ff), to(#2a7aaf));
+  background: -moz-linear-gradient(top, #44c6ff, #2a7aaf);
+  background: linear-gradient(to bottom, #44c6ff, #2a7aaf);
+  text-shadow: #1a4c6e 1px 1px 1px;
+  font: normal normal bold 15px arial;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.search-location-btn:hover {
+  border: 1px solid #3498db;
+  background: #52eeff;
+  background: -webkit-gradient(linear, left top, left bottom, from(#52eeff), to(#3292d2));
+  background: -moz-linear-gradient(top, #52eeff, #3292d2);
+  background: linear-gradient(to bottom, #52eeff, #3292d2);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.sunny button {
+  background: -webkit-gradient(linear, left top, left bottom, from(#0bc28b), to(#064d37));
+  background: -moz-linear-gradient(top, #0bc28b, #064d37);
+  background: linear-gradient(to bottom, #0bc28b, #064d37);
+}
+
+.cloudy button {
+  background-color: #182844;
+  background: -webkit-gradient(linear, left top, left bottom, from(#9dada7), to(#384f5c));
+  background: -moz-linear-gradient(top, #9dada7, #384f5c);
+  background: linear-gradient(to bottom, #9dada7, #384f5c);
+}
+
+.rainy button {
+  background: -webkit-gradient(linear, left top, left bottom, from(#5fa8c7), to(#325166));
+  background: -moz-linear-gradient(top, #5fa8c7, #325166);
+  background: linear-gradient(to bottom, #5fa8c7, #325166);
+}
+
+.snowy button {
+  background: -webkit-gradient(linear, left top, left bottom, from(#b9d6e2), to(#779299));
+  background: -moz-linear-gradient(top, #b9d6e2, #779299);
+  background: linear-gradient(to bottom, #b9d6e2, #779299);
+}
+
+.stormy button {
+  background: -webkit-gradient(linear, left top, left bottom, from(#4d6068), to(#1b1d27));
+  background: -moz-linear-gradient(top, #4d6068, #1b1d27);
+  background: linear-gradient(to bottom, #4d6068, #1b1d27);
+}
+
+.today {
+  height: 300px;
+  border-bottom: solid black;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  font-weight: bold;
+  position: relative;
+}
+
+/* styling of the today section when the class is  "sunny" */
+.sunny .today {
+  background-image: url("./assets/sunny640px.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* styling of the today section when the class is  "cloudy" */
+.cloudy .today {
+  background-image: url("./assets/cloudy640px.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* styling of the today section when the class is  "rainy" */
+.rainy .today {
+  background-image: url("./assets/rainy640px.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* styling of the today section when the class is  "snowy" */
+.snowy .today {
+  background-image: url("./assets/snowy640px.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* styling of the today section when the class is  "stormy" */
+.stormy .today {
+  background-image: url("./assets/stormy640px.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.other .today {
+  background-image: url("./assets/other640px.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.raindrop {
+  display: none;
+}
+
+.rainy .raindrop {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 0 50% 50% 50%;
+  border: 0.5px solid rgb(3, 21, 71);
+  background-color: rgba(3, 44, 71, 0.651);
+  transform: rotate(45deg);
+  margin-top: 20px;
+  animation: drop 2s linear infinite;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  opacity: 0;
+}
+
+.rainy .raindrop:nth-of-type(2n) {
+  left: 20%;
+  top: 40%;
+  animation-duration: 2.5s;
+}
+
+.rainy .raindrop:nth-of-type(3n) {
+  left: 70%;
+  top: 30%;
+  animation-duration: 1.5s;
+}
+
+.rainy .raindrop:nth-of-type(4n) {
+  left: 5%;
+  top: 10%;
+  animation-duration: 2.2s;
+}
+
+.rainy .raindrop:nth-of-type(5n) {
+  left: 90%;
+  top: 20%;
+  animation-duration: 2.2s;
+}
+
+.snowflake {
+  display: none;
+}
+
+.snowy .snowflake {
+  display: block;
+  width: 10px;
+  height: 10px;
+  animation: drop 2s linear infinite;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  opacity: 0;
+  color: white;
+}
+
+.snowy .snowflake:nth-of-type(2n) {
+  left: 20%;
+  top: 40%;
+  animation-duration: 2.5s;
+}
+
+.snowy .snowflake:nth-of-type(3n) {
+  left: 70%;
+  top: 30%;
+  animation-duration: 1.5s;
+}
+
+.snowy .snowflake:nth-of-type(4n) {
+  left: 5%;
+  top: 10%;
+  animation-duration: 2.2s;
+}
+
+.snowy .snowflake:nth-of-type(5n) {
+  left: 90%;
+  top: 20%;
+  animation-duration: 2.2s;
+}
+
+@keyframes drop {
+  50% {
+    transform: translateY(100px) rotate(45deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(150px) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+.today-location-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+/* Styling of the div with info about temperature,
+sunrise and sunset numbers */
+.todays-numbers {
+  height: 80%;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+p {
+  font-size: 18px;
+  margin: 2px;
+  display: inline;
+}
+
+/* Styling of the icon and description */
+.todays-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.quote-of-the-day {
+  text-align: center;
+  font-weight: 500;
+  padding: 25px 10px;
+}
+
+.quote-of-the-day-author {
+  font-weight: 500;
+  font-style: italic;
+}
+
+.today-surise-sunset {
+  display: flex;
+  height: 100px;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* Styling of the forecast */
+.forecast {
+  width: 100vw;
+  max-width: 400px;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.forecast-container {
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+  padding-top: 10px;
+}
+
+.forecast-day {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 150px;
+}
+
+.forecast-day li {
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.forecast-temp {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 150px;
+}
+
+.forecast-temp li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100px;
+}
+
+.forecast-icon {
+  width: 30px;
+}
+
+/* Styling of how it should look in tablet and desktop */
+@media (min-width: 668px) {
+  .todays-numbers p {
+    font-size: 18px;
+  }
+
+  .todays-description img {
+    width: 150px;
+  }
+
+  .todays-description h2 {
+    font-size: 38px;
+    max-width: 500px;
+  }
+
+  .forecast {
+    max-width: 500px;
+  }
+
+  footer {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .search-location-inner {
+    width: 25%;
+  }
+
+  /* styling of the today section when the class is  "sunny" */
+  .sunny .today {
+    background: #c2790b;
+    background-image: url("./assets/sunny1920px.jpg");
+    background-position: center;
+    background-size: cover;
+  }
+
+  /* styling of the today section when the class is  "cloudy" */
+  .cloudy .today {
+    background: #142127;
+    background-image: url("./assets/cloudy1920px.jpg");
+    background-position: center;
+    background-size: cover;
+  }
+
+  /* styling of the today section when the class is  "rainy" */
+  .rainy .today {
+    background: #004c6d;
+    background-image: url("./assets/rainy1920px.jpg");
+    background-position: center;
+    background-size: cover;
+  }
+
+  /* styling of the today section when the class is  "snowy" */
+  .snowy .today {
+    background: #004c6d;
+    background-image: url("./assets/snowy1920px.jpg");
+    background-position: center;
+    background-size: cover;
+  }
+
+  /* styling of the today section when the class is  "stormy" */
+  .stormy .today {
+    background: #004c6d;
+    background-image: url("./assets/stormy1920px.jpg");
+    background-position: center;
+    background-size: cover;
+  }
+
+  .other .today {
+    background: #004c6d;
+    background-image: url("./assets/other1920px.jpg");
+    background-position: center;
+    background-size: cover;
+  }
+}
+
+.active {
+  display: flex;
+}
