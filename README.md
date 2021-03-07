@@ -9,3 +9,5 @@ Fetching real time data through API end points. Problem we encountered included 
 ## View it live
 
 The project can be viewed live here: https://inspiring-archimedes-330d55.netlify.app/
+
+Contributors: Sara Carlstein and Sari-Anne Peltola
