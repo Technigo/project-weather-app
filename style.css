@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+body{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    margin: 0; 
+    color: white; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-size: cover;
+}
+
+img{
+    justify-self: center;
+    width: 50px;
+    height: 50px;
+}
+
+.wrapper{
+    display: flex;
+    width: 300px;
+    height: 100%;
+    margin: 30px; 
+}
+.weather-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    align-content: center; 
+    width: 100%;
+}
+
+.day-time{
+    /* background: linear-gradient( 0deg, rgb(170, 189, 132) 0%, rgb(208, 194, 163) 72% ); */
+    background: linear-gradient(0deg,rgba(34, 128, 195, 1) 14%, rgba(117, 202, 210, 1) 94%);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.night-time{
+    background: linear-gradient( 0deg, rgba(132, 136, 189, 1) 0%, rgb(3, 7, 65) 72% );
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/***current city conditions***/
+.current-city{
+    font-size: 25px;
+    margin-bottom: 10px;
+    color: white;
+}
+.current-temp{
+    margin:0;
+    font-size: 20px;
+    color: white;
+}
+
+.feels-like {
+    font-size: 12px;
+    font-style: italic;
+}
+
+.city{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.day {
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+    background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.50), rgba(157, 147, 154, 0.9)),url("./Designs/icons/day.jpg");
+    background-size: cover;
+    background-position: center; 
+    border-radius: 10%; 
+}
+
+ .night{
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+    background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.50), rgba(157, 147, 154, 0.9)),url("./Designs/icons/night.jpg");
+    background-size: cover;
+    background-position: center; 
+    border-radius: 10%; 
+}
+.current-city{
+    display: flex; 
+    justify-content:center;
+    margin-top: 35px;
+}
+
+.current-conditions{    
+    color: white;
+    display: flex;
+    align-content: flex-end;
+    justify-content: space-between;
+}
+
+.sunrise-and-sunset{
+    display: flex;
+    margin-right: 20px;
+}
+
+.type-of-weather{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.current-weather{
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Forcast 5 days*/
+
+.head-forecast{
+    display: flex;
+    width: 200px;
+    justify-content: center;
+    border-bottom: solid 1px;
+    margin: 15px;
+}
+
+.all-days{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.icon{
+    margin-bottom: 20px;
+    justify-self: center;
+    align-self: center;
+}
+
+.forcast-temp{
+    justify-self: flex-end;
+    align-self: flex-end;
+}
+
+.weekday{
+    justify-self: flex-start;
+    align-self: flex-start;
+}
+
+@media (min-width: 768px) and (max-width:991px){
+    .wrapper{
+        width: 400px;
+    }
+    .current-city{
+        font-size: 30px;
+    }
+    .current-temp{
+        font-size: 25px;
+    }
+}
+
+@media (min-width:992px){
+    .wrapper{
+        width: 500px;
+    }
+    .current-city{
+        font-size: 45px;
+    }
+    .current-temp{
+        font-size: 30px; 
+    }
+}
