@@ -65,7 +65,7 @@ img{
     font-style: italic;
 }
 
-#city{
+.city{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -116,7 +116,7 @@ img{
     margin-bottom: 20px;
 }
 
-#currentWeather{
+.current-weather{
     display: flex;
     flex-direction: column;
 }
@@ -132,7 +132,7 @@ img{
     margin: 15px;
 }
 
-#all-days{
+.all-days{
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
