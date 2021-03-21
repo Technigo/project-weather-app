@@ -1,7 +1,6 @@
 body {
     margin: 0;
-    padding: 0;
-    font-family: 'Signika', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 /* todays weather header */
@@ -12,9 +11,28 @@ body {
     left: 0;
     width: 100%;
     height: 90%;
-    background: linear-gradient(45deg, #8AB7F8, #D6E4F9);
     border-radius: 0 0 50% 50%/0 0 50% 50%;
     transform: scalex(1.5);
+}
+
+.cold:before {
+    background: linear-gradient(45deg,  #1E58AA, white);
+}
+
+.slightly-cold:before {
+    background: linear-gradient(45deg,  #4899D5, white);
+}
+
+.slightly-warm:before {
+    background: linear-gradient(45deg, #F2C966, white);
+}
+
+.warm:before {
+    background: linear-gradient(45deg, #FF7500, white);
+}
+
+.hot:before {
+    background: linear-gradient(45deg,  #E15242, white);
 }
 
 .header-section {
@@ -27,6 +45,7 @@ body {
     position: relative;
     overflow: hidden;
     padding-left: 30px;
+    padding-right: 30px;
 }
 
 .content {
@@ -68,45 +87,42 @@ body {
 
 .sunrise-sunset {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     width: 100vw;
 }
 
-.sun-child:last-child{
-    padding-left: 30px
-}
-
-
 /*5 day forcast*/
 .main-section {
-    width: 100%;
-    height: 80vh;
-    display: flex;
-    flex-direction: column;    
+    height: 80vh;  
+    margin: 0px;
 }
 
 .forecast {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 12px;    
+    font-size: 12px;
+    justify-content: space-between;
+    align-items:center;
+    padding-left: 30px;
+    width: 100%;
 }
 
-.forecast p {
-    text-align: center;
-    width: 50%;  
+.forecast-day {
+    text-align: left;
+}
+
+.weather-type {
+    text-align: right;
 }
 
 .weather-img{
     width: 50px;
 }
 
-
 @media (min-width: 680px) {
     /* Todays weather */
     .header-section{
         padding-left: 80px;
-        height: 60vh;
+
     }
 
     .content h1 {
@@ -136,14 +152,9 @@ body {
         font-size: 24px;
         justify-content: space-evenly;
     }
-
-    .weather-img{
-        width: 70px;
-    }
 }
 
 @media (min-width: 1200px){
-
     /* Todays weather */
     .header-section{
         padding-left: 80px;
