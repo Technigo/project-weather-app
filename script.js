@@ -1,4 +1,4 @@
-const WEATHER_URL = 'https://api.openweathermap.org/data/2.5/forecast?q=Kiruna,Sweden&units=metric&appid=3500e3bacf630605ddf92aeaab386a9e';
+const TODAYS_WEATHER_URL = 'https://api.openweathermap.org/data/2.5/weather?q=Kiruna,Sweden&units=metric&appid=3500e3bacf630605ddf92aeaab386a9e'
 const WEATHERFORECAST_URL = 'https://api.openweathermap.org/data/2.5/forecast?q=Kiruna,Sweden&units=metric&appid=3500e3bacf630605ddf92aeaab386a9e';
 const cityName = document.getElementById('city-name');
 const temperature = document.getElementById('temperature');
@@ -9,24 +9,23 @@ const temperatureToday = document.getElementById('temperature');
 const weekday = document.getElementById('forecast-day');
 const header = document.getElementById('main-header');
 
-fetch(WEATHER_URL)
+fetch(TODAYS_WEATHER_URL)
   .then((response) => {
     return response.json();
   })
 
   .then((data) => {
-  // todays weather:
-    const city = data.city.name;
-    //const filteredForecast = data.list.filter(item => item.dt_txt.includes('12:00'));
+  // todays weather
+    const city = data.name;
     const sunriseTime = document.getElementById('sunrise');
     const sunsetTime = document.getElementById('sunset');
-    const sunrise = new Date((data.city.sunrise + data.city.timezone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-    const sunset = new Date((data.city.sunset + data.city.timezone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-    const temp = (filteredForecast[0].main.temp).toFixed(0);
+    const sunrise = new Date((data.sys.sunrise + data.timezone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+    const sunset = new Date((data.sys.sunset + data.timezone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+    const temp = data.main.temp;
     const imgID = data.weather[0].icon;
-  
+
     todaysImg.innerHTML = `<img src="http://openweathermap.org/img/wn/${imgID}@2x.png" class="today-img">`;
-    description.innerHTML = `${data.weather[0].description}`;
+    description.innerHTML = `${data.weather[0].description}`; 
     cityName.innerHTML = `${city}`;
     temperature.innerHTML = `${temp}°`;
     sunriseTime.innerHTML = `sunrise ${sunrise}`;
@@ -34,35 +33,34 @@ fetch(WEATHER_URL)
     
   //changing background color depending on temperature
     const checkTemperature = () => {
-      if (filteredForecast[0].main.temp < 0) {
-        temperatureToday.style.color = 'cold';
+      if (data.main.temp < 0) {
+        header.classList.add('cold');
       }
-      else if (filteredForecast[0].main.temp < 5 && filteredForecast[0].main.temp > 0){
-        temperatureToday.style.color = 'slightly-cold';
+      else if (data.main.temp < 5 && data.main.temp > 0.1){
+        header.classList.add('slightly-cold');
       }
-      else if (filteredForecast[0].main.temp < 15 && filteredForecast[0].main.temp > 5.01){
-        temperatureToday.style.color = 'lightly-warm';
+      else if (data.main.temp < 15 && data.main.temp > 5.01){
+        header.classList.add('slightly-warm');
       }
-      else if (filteredForecast[0].main.temp < 25 && filteredForecast[0].main.temp > 15.01){
-        temperatureToday.style.color = 'warm';
+      else if (data.main.temp < 25 && data.main.temp > 15.01){
+        header.classList.add('warm');
       }
       else{
-        temperatureToday.style.color = 'hot';
+        header.classList.add('hot');
       }
     };
     checkTemperature ();
   })
 
   // 5 day-forecast:
-  etch(WEATHERFORECAST_URL)
+fetch(WEATHERFORECAST_URL)
   .then((response) => {
     return response.json();
   })
 
   .then((dataForecast) => {
     const filteredForecast = dataForecast.list.filter(item => item.dt_txt.includes('12:00'));
-
-    
+ 
     filteredForecast.forEach((dataForecast => {
       const temp = (dataForecast.main.temp).toFixed(0);
       const imgID = dataForecast.weather[0].icon;
