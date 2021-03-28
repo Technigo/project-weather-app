@@ -1,6 +1,7 @@
 body {
     margin: 0;
     font-family: Montserrat;
+    color: purple;
 }
 
 .main-content {
@@ -32,7 +33,7 @@ p {
 .weekdays-container {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1.5px dotted;
+    border-bottom: 1.5px dashed;
     padding-bottom: 7px;
     padding-top: 6px;
     font-size: 18px;
@@ -45,8 +46,9 @@ p {
 
 @media (min-width: 668px) {
     .main-content {
-        width: 350px;
-        margin-top: 70px;
+        padding: 37px 25px 65px;
+        border: solid black 0.5px;
+        border-radius: 10px;
     }
 
     .weather-image {
