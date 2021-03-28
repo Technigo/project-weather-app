@@ -41,7 +41,6 @@ p {
 
 .five-day-forecast :last-child {
     border-bottom: none;
-    /* removes the border at the bottom*/
 }
 
 @media (min-width: 668px) {
