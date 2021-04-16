@@ -17,7 +17,7 @@ fetch (URLDAILYWEATHER)
         const fetchDailyWeather = data.weather[0].main 
         // temperature
         const temp = data.main.temp
-        const roundedTemp = temp.toFixed(1)
+        const roundedTemp = temp.toFixed(1) 
         // sunrise and sunset
         const sunriseHour = new Date((data.sys.sunrise)*1000).toLocaleTimeString('se-SE', {hour:'numeric', minute: 'numeric'})
         const sunsetHour = new Date(data.sys.sunset*1000).toLocaleTimeString('se-SE', {hour:'numeric', minute: 'numeric'})
@@ -111,7 +111,7 @@ fetch (URLDAILYWEATHER)
                             <p>${dayName}</p>
                             <div class="forecast-content-wraper">
                                 <img src="./assets/004-rain.svg" alt="icon weather">
-                                <p>${day.main.temp.toFixed()}°</p>
+                                <p>${day.main.temp.toFixed(1)}°</p>
                             </div>
                         </div>`
                     } else if (day.weather[0].main === "Clear") {
@@ -120,7 +120,7 @@ fetch (URLDAILYWEATHER)
                             <p>${dayName}</p>
                             <div class="forecast-content-wraper">
                                 <img src="./assets/001-sun.svg" alt="icon weather">
-                                <p>${day.main.temp.toFixed()}°</p>
+                                <p>${day.main.temp.toFixed(1)}°</p>
                             </div>
                         </div>`
                     } else if (day.weather[0].main === "Rain") {
@@ -129,7 +129,7 @@ fetch (URLDAILYWEATHER)
                             <p>${dayName}</p>
                             <div class="forecast-content-wraper">
                                 <img src="./assets/004-rain.svg" alt="icon weather">
-                                <p>${day.main.temp.toFixed()}°</p>
+                                <p>${day.main.temp.toFixed(1)}°</p>
                             </div>
                         </div>`
                     } else if (day.weather[0].main === "Thunderstorm") {
@@ -138,7 +138,7 @@ fetch (URLDAILYWEATHER)
                             <p>${dayName}</p>
                             <div class="forecast-content-wraper">
                                 <img src="./assets/010-thunderstorm.svg" alt="icon weather">
-                                <p>${day.main.temp.toFixed()}°</p>
+                                <p>${day.main.temp.toFixed(1)}°</p>
                             </div>
                         </div>`
                     } else if (day.weather[0].main === "Snow") {
@@ -147,7 +147,7 @@ fetch (URLDAILYWEATHER)
                             <p>${dayName}</p>
                             <div class="forecast-content-wraper">
                                 <img src="./assets/009-snowy.svg" alt="icon weather">
-                                <p>${day.main.temp.toFixed()}°</p>
+                                <p>${day.main.temp.toFixed(1)}°</p>
                             </div>
                         </div>`
                     } else if (day.weather[0].main === "Clouds") {
@@ -156,7 +156,7 @@ fetch (URLDAILYWEATHER)
                             <p>${dayName}</p>
                             <div class="forecast-content-wraper">
                                 <img src="./assets/002-cloud.svg" alt="icon weather">
-                                <p>${day.main.temp.toFixed()}°</p>
+                                <p>${day.main.temp.toFixed(1)}°</p>
                             </div>
                         </div>`
                     } else {
