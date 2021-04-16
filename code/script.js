@@ -13,12 +13,11 @@ fetch (URLDAILYWEATHER)
         return response.json()
     })
     .then((data) => {
-        console.log("daily URL", data)
         //weather
         const fetchDailyWeather = data.weather[0].main 
         // temperature
         const temp = data.main.temp
-        const roundedTemp = temp.toFixed() // no decimal
+        const roundedTemp = temp.toFixed(1)
         // sunrise and sunset
         const sunriseHour = new Date((data.sys.sunrise)*1000).toLocaleTimeString('se-SE', {hour:'numeric', minute: 'numeric'})
         const sunsetHour = new Date(data.sys.sunset*1000).toLocaleTimeString('se-SE', {hour:'numeric', minute: 'numeric'})
@@ -31,7 +30,6 @@ fetch (URLDAILYWEATHER)
 
         // Todays weather
         const showDailyWeather = () => {
-        console.log(fetchDailyWeather)
                if (fetchDailyWeather === "Drizzle") {
                     document.body.style.backgroundColor = "lightskyblue"
                     mainDailyWeather.innerHTML = `
@@ -91,7 +89,6 @@ fetch (URLDAILYWEATHER)
     mainDailyWeather.innerHTML = 'error!' + err
 
     })    
-    .finally(() => console.log('Request finished'))
 
     // fetch URL for weekly forecast
     fetch (URLWEEKLYFORECAST)
@@ -99,16 +96,13 @@ fetch (URLDAILYWEATHER)
             return response.json()
         })
         .then((data) => {
-            console.log("weekly URL",data)
             //filter forcast to get the weather 12:00 each day
             const filteredForcast = data.list.filter(item => item.dt_txt.includes('12:00'))
-            console.log(filteredForcast)
 
             // loopa through the array and return weather for each day
             filteredForcast.forEach((day)=>{
                 const date = new Date (day.dt *1000)
                 let dayName = date.toLocaleDateString('en-GB', {weekday:'long'})
-                //console.log('day name', dayName, day.weather[0].description, day.main.temp)
 
                 const iconWeeklyForecast = () => {
                     if (day.weather[0].main === "Drizzle") {
@@ -180,3 +174,6 @@ fetch (URLDAILYWEATHER)
               })   
         })
 
+        .catch( err => {
+            weekForecast.innerHTML = 'error!' + err
+        })
