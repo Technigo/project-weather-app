@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    height: 100vh;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -36,22 +37,22 @@ body {
 }
 
 .header-section {
-    width: 100%;
-    height: 60vh;
+    width: 100vw;
+    height: 50vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: flex-start;
     position: relative;
     overflow: hidden;
-    padding-left: 30px;
-    padding-right: 30px;
 }
+
 
 .content {
     z-index: 1;
-    margin-top: 70px;
-    max-width: 900px;
+    margin: 0 40px;
+    width: 100vw;
+    padding: 10px;
 }
 
 .header {
@@ -63,11 +64,11 @@ body {
     margin: 0;
     padding: 0;
     color:#fff;
-    font-size: 70px;
+    font-size: 50px;
 }
 
 .today-img{
-    width: 130px;
+    width: 110px;
     margin: 0px;
     padding: 0px;
 }
@@ -88,13 +89,13 @@ body {
 .sunrise-sunset {
     display: flex;
     justify-content: space-between;
-    width: 100vw;
+    width: 100%;
 }
 
 /*5 day forcast*/
 .main-section {
-    height: 80vh;  
-    margin: 0px;
+    height: 50vh;  
+    margin: 10px 40px;
 }
 
 .forecast {
@@ -102,7 +103,6 @@ body {
     font-size: 12px;
     justify-content: space-between;
     align-items:center;
-    padding-left: 30px;
     width: 100%;
 }
 
@@ -119,12 +119,9 @@ body {
 }
 
 @media (min-width: 680px) {
-    /* Todays weather */
-    .header-section{
-        padding-left: 80px;
-
+    .content{
+        padding: 80px
     }
-
     .content h1 {
         font-size: 80px;
     }
@@ -138,57 +135,51 @@ body {
     }
 
     .today-img{
-        width: 120px;
+        width: 100px;
     }
 
-    /* 5 day forecast */ 
-    .main-section {
-        flex-wrap: wrap;
-        align-items: center;
+    .main-section{
+        padding: 0 80px;
     }
-    .forecast {
-        margin-top: 0px;
-        width: 70%;
-        font-size: 24px;
-        justify-content: space-evenly;
+
+    .forecast{
+        font-size: 20px;
     }
+
 }
 
 @media (min-width: 1200px){
     /* Todays weather */
-    .header-section{
-        padding-left: 80px;
-        height: 60vh;
+    .content{
+        padding: 0 350px;
     }
 
     .content h1 {
-        font-size: 140px;
+        font-size: 60px;
     }
     
     .content h2 {
-        font-size: 80px;
+        font-size: 40px;
     }
 
     .content p {
-        font-size: 40px;
+        font-size: 20px;
     }
 
     .today-img{
-        width: 300px;
+        width: 150px;
     }
 
-    /* 5 day forecast */ 
-    .main-section {
-        flex-wrap: wrap;
-        align-items: center;
+    /* 5 day forecast */  
+    .main-section{
+        padding: 0 350px;
     }
-    
+
     .forecast {
-        width: 90%;
-        font-size: 40px;
+        font-size: 20px;
     }
 
     .weather-img{
-        width: 100px;
+        width: 60px;
     }
 }

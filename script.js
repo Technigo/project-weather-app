@@ -21,8 +21,9 @@ fetch(TODAYS_WEATHER_URL)
     const sunsetTime = document.getElementById('sunset');
     const sunrise = new Date((data.sys.sunrise + data.timezone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
     const sunset = new Date((data.sys.sunset + data.timezone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-    const temp = data.main.temp;
+    const temp = data.main.temp.toFixed(1);
     const imgID = data.weather[0].icon;
+
 
     todaysImg.innerHTML = `<img src="http://openweathermap.org/img/wn/${imgID}@2x.png" class="today-img">`;
     description.innerHTML = `${data.weather[0].description}`; 
@@ -36,13 +37,13 @@ fetch(TODAYS_WEATHER_URL)
       if (data.main.temp < 0) {
         header.classList.add('cold');
       }
-      else if (data.main.temp < 5 && data.main.temp > 0.1){
+      else if (data.main.temp < 5){
         header.classList.add('slightly-cold');
       }
-      else if (data.main.temp < 15 && data.main.temp > 5.01){
+      else if (data.main.temp < 15){
         header.classList.add('slightly-warm');
       }
-      else if (data.main.temp < 25 && data.main.temp > 15.01){
+      else if (data.main.temp < 25){
         header.classList.add('warm');
       }
       else{
@@ -62,7 +63,7 @@ fetch(WEATHERFORECAST_URL)
     const filteredForecast = dataForecast.list.filter(item => item.dt_txt.includes('12:00'));
  
     filteredForecast.forEach((dataForecast => {
-      const temp = (dataForecast.main.temp).toFixed(0);
+      const temp = (dataForecast.main.temp).toFixed(1);
       const imgID = dataForecast.weather[0].icon;
       const weatherDescription = dataForecast.weather[0].description;
       const forecastDay = (new Date(dataForecast.dt * 1000)).toLocaleDateString("en-US", {weekday: "short"});
