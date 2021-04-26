@@ -1,0 +1,185 @@
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* todays weather header */
+.header-section:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90%;
+    border-radius: 0 0 50% 50%/0 0 50% 50%;
+    transform: scalex(1.5);
+}
+
+.cold:before {
+    background: linear-gradient(45deg,  #1E58AA, white);
+}
+
+.slightly-cold:before {
+    background: linear-gradient(45deg,  #4899D5, white);
+}
+
+.slightly-warm:before {
+    background: linear-gradient(45deg, #F2C966, white);
+}
+
+.warm:before {
+    background: linear-gradient(45deg, #FF7500, white);
+}
+
+.hot:before {
+    background: linear-gradient(45deg,  #E15242, white);
+}
+
+.header-section {
+    width: 100vw;
+    height: 50vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.content {
+    z-index: 1;
+    margin: 0 40px;
+    width: 100vw;
+    padding: 10px;
+}
+
+.header {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.content h1 {
+    margin: 0;
+    padding: 0;
+    color:#fff;
+    font-size: 50px;
+}
+
+.today-img{
+    width: 110px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.content h2{
+    color: #fff;
+    font-size: 30px;
+    margin: 0px;
+}
+
+.content p {
+    color: #fff;
+    font-size: 14px;
+    margin: 0px;
+    margin-bottom: 15px;
+} 
+
+.sunrise-sunset {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/*5 day forcast*/
+.main-section {
+    height: 50vh;  
+    margin: 10px 40px;
+}
+
+.forecast {
+    display: flex;
+    font-size: 12px;
+    justify-content: space-between;
+    align-items:center;
+    width: 100%;
+}
+
+.forecast-day {
+    text-align: left;
+}
+
+.weather-type {
+    text-align: right;
+}
+
+.weather-img{
+    width: 50px;
+}
+
+@media (min-width: 680px) {
+    .content{
+        padding: 80px
+    }
+    .content h1 {
+        font-size: 80px;
+    }
+    
+    .content h2 {
+        font-size: 40px;
+    }
+
+    .content p {
+        font-size: 28px;
+    }
+
+    .today-img{
+        width: 100px;
+    }
+
+    .main-section{
+        padding: 0 80px;
+    }
+
+    .forecast{
+        font-size: 20px;
+    }
+
+}
+
+@media (min-width: 1200px){
+    /* Todays weather */
+    .content{
+        padding: 0 350px;
+    }
+
+    .content h1 {
+        font-size: 60px;
+    }
+    
+    .content h2 {
+        font-size: 40px;
+    }
+
+    .content p {
+        font-size: 20px;
+    }
+
+    .today-img{
+        width: 150px;
+    }
+
+    /* 5 day forecast */  
+    .main-section{
+        padding: 0 350px;
+    }
+
+    .forecast {
+        font-size: 20px;
+    }
+
+    .weather-img{
+        width: 60px;
+    }
+}
