@@ -105,7 +105,7 @@ const SthlmTemp = (userChoice) => {
         highlight.innerHTML += `<h2 class="weather-description"> No sunshine on the horizon!</h2>`;
         container.style.color = "#d3e0ea";
         body.style.backgroundColor = "#d3e0ea";
-        selectCity.style.color = "#276678";
+        //selectCity.style.color = "#276678";
         selectCity.style.backgroundColor = "#d3e0ea";
         break;
       }
@@ -115,7 +115,7 @@ const SthlmTemp = (userChoice) => {
         container.style.color = "#0a043c";
         body.style.backgroundColor = "#276678";
         selectCity.style.backgroundColor = "#276678";
-        selectCity.style.color = "#94b5c0";
+        //selectCity.style.color = "#94b5c0";
         break;
       }
       case 'Snow': {
@@ -124,7 +124,7 @@ const SthlmTemp = (userChoice) => {
         container.style.color = "#0a043c";
         body.style.backgroundColor = "#0a043c";
         selectCity.style.backgroundColor = "#0a043c";
-        selectCity.style.color = "#d3e0ea";
+        //selectCity.style.color = "#d3e0ea";
         break;
       }
       case 'Thunderstorm': {
@@ -133,7 +133,7 @@ const SthlmTemp = (userChoice) => {
         container.style.color = "#f6f5f5";
         body.style.backgroundColor = "#493323";
         selectCity.style.backgroundColor = "#493323";
-        selectCity.style.color = "#1687a7";
+        //selectCity.style.color = "#1687a7";
         break;
       }
       case 'Drizzle': {
@@ -142,7 +142,7 @@ const SthlmTemp = (userChoice) => {
         container.style.color = "#f6f6f6";
         body.style.backgroundColor = "#383e56";
         selectCity.style.backgroundColor = "#383e56";
-        selectCity.style.color = "#aaaaaa";
+        //selectCity.style.color = "#aaaaaa";
         break;
       }
       case 'Clear': {
@@ -151,7 +151,7 @@ const SthlmTemp = (userChoice) => {
         container.style.color = "#6b011f";
         body.style.backgroundColor = "#6b011f";
         selectCity.style.backgroundColor = "#6b011f";
-        selectCity.style.color = "#fce38a";
+        //selectCity.style.color = "#fce38a";
         break;
       }
       default:
@@ -160,7 +160,7 @@ const SthlmTemp = (userChoice) => {
         container.style.color = "#350b40";
         body.style.backgroundColor = "#350b40";
         selectCity.style.backgroundColor = "#350b40";
-        selectCity.style.color = "#c6a9a3";
+        //selectCity.style.color = "#c6a9a3";
         break;
     };
   }).catch( (error) =>{
