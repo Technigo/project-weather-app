@@ -1,0 +1,91 @@
+body {
+    text-align: center;
+    background-color: black; /*#350b40*/
+    
+}
+
+.container {
+    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+    font-weight: bold; 
+    color: white; 
+    border-radius: 25px;
+    padding: 15px;
+}
+
+.headline{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.select-city {
+    background-color: black;
+    border-radius: 5px;
+    width: 200px;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.sun-class {
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+
+.forecast-line {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.weather-description, .sunRise, .sunSet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.animated-icon {
+    position: relative;
+    animation-name: bounce;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-delay: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes bounce {
+    0%   {left:0px; top:0px;}
+    50%  {left:0px; top:10px;}
+    100% {left:0px; top:0px;}
+}
+
+@media (min-width: 658px) {
+    .body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .container {
+        width: 80%;
+        margin-top: 20px;
+
+    }
+}
+
+@media (min-width: 1028px) {
+    .body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .container {
+        width: 40%;
+        margin-top: 40px;
+
+    }
+}
+
+
+
+
