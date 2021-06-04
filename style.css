@@ -1,0 +1,96 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: beige;
+    font-family: Helvetica, sans-serif;
+}
+.summary-text {
+    margin: 4px;
+}
+
+.app-container {
+    margin: 0 auto;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+.summary-container {
+    display: flex; 
+    justify-content: space-between;
+}
+
+.summary-left-side {
+    display: flex;
+    flex-direction: column;
+}
+
+.image-container {
+    padding-top: 40px;
+}
+
+.icon {
+    width: 100px;
+}
+
+.weekday-left {
+    display: flex;
+}
+
+.temp-right {
+    display: flex;
+}
+
+/* ACCORDION */
+
+.accordion-header {
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    cursor: pointer;
+    width: 100%;
+}
+.accordion-header:hover {
+    background: rgb(219, 219, 195);
+}
+
+.accordion-content {
+    display: none;
+    width: 100%;
+}
+
+.open+.accordion-content {
+    display: block
+}
+
+.footer {
+    padding-top: 50px;
+    margin: auto 0;
+    font-size: 11px;
+    color: rgb(150, 139, 139);
+}
+
+/* MEDIA QUERIES */
+
+/* TABLET */
+@media (min-width: 768px) and (max-width: 991px){
+.app-container{
+    width: 80%;
+    max-width: 600px;
+
+}
+}
+
+/* COMPUTER */
+@media (min-width: 992px){
+.app-container {
+    max-width: 600px;
+    padding-top: 50px;
+}
+}
+
