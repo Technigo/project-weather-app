@@ -1,3 +1,5 @@
+Project week 6 of Technigo bootcamp
+
 # Weather App
 
 The project was to build a weather app from scratch, using APIs to show today's weather and a 5 day forecast.
