@@ -1,0 +1,302 @@
+body {
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    font-family: 'Comfortaa', cursive;
+    background-image: white;
+}
+
+.cloudy {
+    background-image: linear-gradient(rgba(10, 64, 78, 0.486), rgb(12, 64, 78));
+}
+
+.clear {
+    background-image: linear-gradient(rgba(253, 217, 15, 0.534), rgb(253, 217, 15));
+}
+
+.snowy {
+    background-image: linear-gradient(rgba(110, 179, 176, 0.384), rgb(107, 168, 165));
+}
+
+.rainy {
+    background-image: linear-gradient(rgba(12, 36, 73, 0.582), rgb(8, 28, 58));
+}
+
+.drizzly {
+    background-image: linear-gradient(rgba(15, 90, 80, 0.712), rgb(11, 80, 71));
+}
+
+.grey {
+    background-image: linear-gradient(rgb(37, 45, 48, 0.418), rgb(37, 45, 48));
+    
+}
+
+h1 {
+    font-size: 2.25rem;
+    margin: 0;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 15px 15px 5px 15px;
+    height: 100vh;
+}
+
+/* Today's weather */
+
+.container_today {
+    background-color: rgba(255, 255, 255, 0.637);
+    padding: 2px 10px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.container_today p {
+    font-size: 15px;
+}
+
+.weather {
+    display: flex;
+    flex-direction: column;
+}
+
+.weather img {
+    width: 100px;
+    height: 100px;
+}
+
+.temp_city_weather {
+    display: flex;
+    justify-content: space-between;
+}
+
+.temp_city_weather p {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.sunrise_sunset {
+    display: flex;
+    justify-content:space-between;
+    width: 100%;
+    color:rgb(38, 57, 63);
+}
+
+/* Forecast */
+
+.container_forecast {
+    background-color: rgba(255, 255, 255, 0.432);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 2px 10px;
+    border-radius: 15px;
+    height: 55vh;
+}
+
+.forecast {
+    display: flex;
+    justify-content: space-between;
+    height: 15%;
+}
+
+.forecast_weather_temp {
+    display: flex;
+}
+
+.forecast img {
+    width: 70px;
+    height: 70px;
+}
+
+/* Weather text */
+
+.weather_text {
+    display: none;
+}
+
+/***** TABLET RESPONSIVE *****/
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    
+    h1 {
+        font-size: 70px;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .container {
+        flex-direction: row;
+        justify-content: center;
+        padding: 40px;
+        height: 50vh;
+    }
+    
+    /* Todays weather */
+    
+    .container_today {
+        width: 40vw;
+        height: 50vh;
+        margin-right: 25px;
+    }
+
+    .weather {
+        height: 100%;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .weather img {
+        width: 150px;
+        height: 150px;
+        margin: auto;
+    }
+
+    .temp_city_weather {
+        flex-direction: column-reverse;
+        align-content: center;
+    }
+
+    .temp_city_weather p {
+        text-align: center;
+        font-size: 20px;
+    }
+    
+    /* Forecast */
+    
+    .container_forecast {
+        justify-content: space-evenly;
+        width: 40vw;
+        height: 50vh;
+    }
+
+    .container_forecast p {
+        font-size: 18px;
+    }
+
+    .forecast img {
+        height: 60px;
+    }
+
+    /* Weather text */
+
+    .weather_text {
+        display: block;
+        text-align: center;
+        width: 90vw;
+        margin: auto;
+    }
+
+    .weather_text p {
+        font-size: 30px;
+        margin-top: 50px;
+        color: rgba(255, 255, 255, 0.527);
+    }
+}
+
+
+/***** DESKTOP RESPONSIVE *****/
+@media screen and (min-width: 1025px) {
+
+
+    h1 {
+        font-size: 70px;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .container {
+        flex-direction: row;
+        justify-content: center;
+        height: 70vh;
+        padding-top: 35px;
+    }
+
+    /* Todays weather */
+
+    .container_today {
+        width: 30vw;
+        height: 70vh;
+        padding: 0px 25px;
+        margin-right: 25px;
+        margin-bottom: 0;
+    }
+    
+    .container_today p {
+        font-size: 18px;
+    }
+
+    .weather {
+        height: 100%;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .weather img {
+        width: 200px;
+        height: 200px;
+        margin: auto;
+    }
+
+    .temp_city_weather {
+        flex-direction: column-reverse;
+        align-content: center;
+    }
+
+    .temp_city_weather p {
+        font-size: 20px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    /* Forecast */
+
+    .container_forecast {
+        justify-content: space-evenly;
+        width: 30vw;
+        height: 70vh;
+        padding: 0px 35px;
+    }
+
+    .container_forecast p {
+        font-size: 22px;
+    }
+
+    .forecast img {
+        width: 90px;
+        height: 90px;
+    }
+
+    /* Weather text */
+
+    .weather_text {
+        display: block;
+        text-align: center;
+    }
+
+    .weather_text p {
+        font-size: 30px;
+        margin: 0;
+        margin-top: 60px;
+        color: rgba(255, 255, 255, 0.527);
+    }
+}
+
