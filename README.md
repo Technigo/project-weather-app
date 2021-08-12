@@ -5,7 +5,7 @@ The page is responsive and we have added an accordion to toggle a five days forc
 
 Made during Technigo Frontend Bootcamp week 6.
 
-## Project members
+## Team members
 Matilda Svensson & Ylva Landorff Lindberg
 
 ## View it live
