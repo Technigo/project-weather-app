@@ -15,7 +15,9 @@ const fetchData = () => {
       console.log("This is data.main.temp", data.main.temp);
 
       weatherContainer.innerHTML = `
+          <h2> City: ${data.name}</h2>
           <h3> Hello, the tempature is ${data.main.temp}</h3>
+          <h3> Type of weather: ${data.weather[0].description}</h3>
         `;
     })
     .catch((error) => {
@@ -27,7 +29,7 @@ const fetchData = () => {
 };
 
 fetchData();
-
+console.log(data);
 // console.log("this is the wData", wData);
 
 // weatherContainer.innerHTML = `
