@@ -1,0 +1,10 @@
+body {
+  background-color: blueviolet;
+  height: 100vh;
+}
+
+.wrapper-container {
+  background-color: white;
+  height: 80%;
+  width: 60%;
+}
