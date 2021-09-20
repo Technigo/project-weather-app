@@ -2,6 +2,115 @@
     box-sizing: border-box;
 }
 
-body {
-    background-color: aquamarine;
+/* Global css variables used for colors */
+
+:root {
+    --primary: #7f9997;
+    --secondary: #28212F;
+}
+
+html {
+    background-color: #7f9997;
+    display: grid;
+}
+
+/* Hero image and todays weather*/
+
+.weather-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.37), rgba(0, 0, 0, 0.301)), url("./assets/forest.png");
+    height: 50vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+.today {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+.weather-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    grid-gap: 7px;
+}
+
+/* Coming days weather*/
+
+.day1, .day2, .day3, .day4, .day5 {
+    background-color: #fff;
+    opacity: 20%;
+    color: black;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.day1 {
+    grid-area: 1 / 1 / 2 / 6;
+}
+
+.day2 {
+    grid-area: 2 / 1 / 3 / 6;
+}
+
+.day3 {
+    grid-area: 3 / 1 / 4 / 6;
+}
+
+.day4 {
+    grid-area: 4 / 1 / 5 / 6;
+}
+
+.day5 {
+    grid-area: 5 / 1 / 6 / 6;
+}
+
+/* Tablet view*/
+
+@media (min-width: 668px) and (max-width: 1024px) {
+    .day1 {
+        grid-area: 1 / 1 / 6 / 2;
+    }
+    .day2 {
+        grid-area: 1 / 2 / 6 / 3;
+    }
+    .day3 {
+        grid-area: 1 / 3 / 6 / 4;
+    }
+    .day4 {
+        grid-area: 1 / 4 / 6 / 5;
+    }
+    .day5 {
+        grid-area: 1 / 5 / 6 / 6;
+    }
+}
+
+/* Desktop view*/
+
+@media (min-width: 1025px) and (max-width: 1900px) {
+    .day1 {
+        grid-area: 1 / 1 / 6 / 2;
+    }
+    .day2 {
+        grid-area: 1 / 2 / 6 / 3;
+    }
+    .day3 {
+        grid-area: 1 / 3 / 6 / 4;
+    }
+    .day4 {
+        grid-area: 1 / 4 / 6 / 5;
+    }
+    .day5 {
+        grid-area: 1 / 5 / 6 / 6;
+    }
 }
