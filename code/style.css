@@ -17,14 +17,46 @@ html {
 /* Hero image and todays weather*/
 
 .background-image {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.219), rgba(0, 0, 0, 0.034)), url("./assets/forest.png");
-  height: 50vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.363), rgba(0, 0, 0, 0.226)), url("./assets/sunny-weather.jpg");
+  height: 65vh;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
   position: relative;
   border-radius: 15px;
   margin-bottom: 10px;
+}
+
+.city-choice-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 2vh;
+}
+
+select {
+  font-family: 'Comfortaa';
+  border-radius: 6px;
+  background-color: #7f9997c0;
+  color: white;
+  width: 40%;
+  margin-right: 1vh;
+}
+
+.city-button {
+  font-family: 'Comfortaa';
+  background-color: #28212f;
+  border-radius: 6px;
+  color: white;
+  transition: .8s;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  display: inline-block;
+  border: solid 2px #28212f;
+}
+
+.city-button:hover {
+  background: white;
+  color: #28212f;
+  border: solid 2px white;
 }
 
 .today {
@@ -45,12 +77,6 @@ html {
 
 h3 {
   margin-top: 0.5vh;
-}
-
-.day-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
 }
 
 img.today-weather {
@@ -111,6 +137,13 @@ footer {
 /* Tablet view*/
 
 @media (min-width: 668px) and (max-width: 1024px) {
+  .background-image {
+    background-size: cover;
+  }
+  .city-choice-container {
+    justify-content: flex-start;
+    margin-left: 1vh;
+  }
   .weather-container {
     flex-direction: row;
   }
@@ -140,6 +173,13 @@ footer {
 /* Desktop view*/
 
 @media (min-width: 1025px) {
+  .background-image {
+    background-size: cover;
+  }
+  .city-choice-container {
+    justify-content: flex-start;
+    margin-left: 1vh;
+  }
   .weather-container {
     flex-direction: row;
     justify-content: center;
@@ -147,8 +187,11 @@ footer {
   .day {
     display: flex;
     flex-direction: column;
-    height: 30vh;
+    height: 20vh;
     width: 19vh;
+  }
+  .forcast-temp {
+    margin: 0px;
   }
   footer {
     position: fixed;

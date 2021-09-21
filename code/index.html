@@ -13,22 +13,24 @@
 </head>
 
 <body>
-  <header class="background-image">
+  <header id="backgroundImg" class="background-image">
     <section id="today" class="today"></section>
-    <select id="changeCity" class="change-city">
-      <option value="" disabled selected>Select city</option>
-      <option value="Stockholm,Sweden">Stockholm, Sweden</option>
-      <option value="Gothenburg,Sweden">Gothenburg, Sweden</option>
-      <option></option>
-      <option></option>
-      <option></option>
-      <option></option>
-      <option></option>
-    </select>
+    <section class="city-choice-container">
+      <select id="changeCity" class="change-city">
+        <option value="" disabled selected>Choose city</option>
+        <option value="Stockholm,Sweden">Stockholm</option>
+        <option value="Gothenburg,Sweden">Gothenburg</option>
+        <option value="Sundsvall,Sweden">Sundsvall</option>
+        <option value="Malmo,Sweden">Malmö</option>
+        <option value="Lund,Sweden">Lund</option>
+        <option value="Uppsala,Sweden">Uppsala</option>
+        <option value="Kiruna,Sweden">Kiruna</option>
+      </select>
+      <button type="submit" id="cityBtn" class="city-button">Select city</button>
+    </section>
   </header>
 
   <section id="weather-container" class="weather-container">
-    <div class="day-container"></div>
   </section>
   <footer>
     <p class="creators">Created and developed by</p>

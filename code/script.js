@@ -3,11 +3,14 @@ const changeCity = document.getElementById("changeCity");
 const weatherContainer = document.getElementById("weather-container")
 const todaysWeather = document.getElementById("today")
 const dayContainer = document.getElementsByClassName("day-container")
+const cityBtn = document.getElementById("cityBtn")
+const backgroundImg = document.getElementById('backgroundImg')
+
 
 let WEATHER_API =
     `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=5000cd66a9090b2b62f53ce8a59ebd9e`
 
-let fiveDays = `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=5000cd66a9090b2b62f53ce8a59ebd9e`
+let FIVE_DAYS = `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=5000cd66a9090b2b62f53ce8a59ebd9e`
 
 // Global variables
 let city = '';
@@ -48,6 +51,7 @@ fetch(WEATHER_API)
             weatherImg = snowImg
         } else {
             weatherImg = sunImg
+            backgroundImg.innerHTML = `<img src=`
         };
 
         today.innerHTML += `
@@ -55,7 +59,6 @@ fetch(WEATHER_API)
         <h2>${Math.round(data.main.temp * 10) / 10} °C</h2>
         <img src=${weatherImg.src} alt=${weatherImg.alt} class= "today-weather"/>
         <h3>${data.weather.map((item) => item.description)}</h3>
-        <hr>
     `;
     })
     .catch((error) => console.error("AAAAAAH!", error))
@@ -81,7 +84,7 @@ fetch(WEATHER_API)
 
 // TUESDAY SUNNY 12C 3C
 
-fetch(fiveDays)
+fetch(FIVE_DAYS)
     .then((res) => res.json())
     .then((data) => {
         const filteredForecast = data.list.filter((item) =>
@@ -136,10 +139,14 @@ fetch(fiveDays)
     })
 
 //Eventlisteners
+// DON"T DELETE, TO USE LATER!
 // changeCity.addEventListener('change', () => {
 //     city = changeCity.value
 //     WEATHER_API = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=5000cd66a9090b2b62f53ce8a59ebd9e`;
 
-//     let fiveDays = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=5000cd66a9090b2b62f53ce8a59ebd9e`;
+//     let FIVE_DAYS = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=5000cd66a9090b2b62f53ce8a59ebd9e`;
 //     myFetch1()
 
+// cityBtn.addEventListener('click', (WEATHER_API, FIVE_DAYS) => {
+//     fetchFunction?????
+// })
