@@ -12,25 +12,30 @@ body {
     margin: 20px auto; 
 }
 
+h1, h2 {
+    color:#2A5510;
+    font-family: 'Montserrat', sans-serif;
+}
+
 h1 {
-    color:#0f5075;
     font-size: 2em;
     max-width: 80%;
     display: block;
     margin: 50px auto;
+    font-weight: bold;
 }
 
 h2 {
-    color:#0f5075;
     font-size: 1.5em;
     display: block;
     margin: auto;
     max-width: 80%;
     line-height: 2;
+    font-weight: normal;
 }
 
 p {
-    color:#0f5075;
+    color:#2A5510;
     font-size: 2em;
     font-weight: bold;
     max-width: 80%;
@@ -41,4 +46,20 @@ p {
 
 
 
-
+/* ---- ls bara in färgerna här så att vi skulle kunna se vilka färger vi har att jobba med ----*/ 
+footer {
+    color: #F47775
+    #F4F7F8
+    #164A68
+    #A3DEF7
+    #2A5510
+    #F7E9B9
+}
+/* ---- Mobil ----*/ 
+@media (min-width: 0px) { }
+/* ---- Tablet ----*/ 
+@media (min-width: 768px) {}
+/* ---- Small laptop ----*/ 
+@media (min-width: 992px) {}
+/* ---- Big Laptop----*/ 
+@media (min-width: 1200px) {}
