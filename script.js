@@ -74,10 +74,10 @@ fetch(fiveDaysForcast) //getting info from api url above
 
     //printing the weekday number with the weekday array above
       fiveDays.innerHTML += ` 
-    <div class="weekdays"> 
-    <p> ${weekdays[weekdayNumber]}</p> 
-  <p> Temprature:${item.main.temp}</p>
-  </div> 
+      <div class="daily-forecast"> 
+      <p> ${weekdays[weekdayNumber]}</p> 
+      <p> Temprature:${item.main.temp}</p>
+      </div> 
   
   `;
     });
