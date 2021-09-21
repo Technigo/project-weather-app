@@ -40,18 +40,18 @@ fetch(weatherCityToday)
         <div class="main-daily-info">
          <div class="daily-temp">
           <h1>${Math.round(data.main.temp * 10) / 10}
-           <span class="celcius">°C</span>
+           <span class="celsius">°C</span>
           </h1>
          </div>
          <h2>${data.name}</h2>
          <h3>${data.weather[0].description}</h3>
-        </div>
-        <div class="main-sunset-sunrise">
-        <h3>Sunrise:</h3>
-        <h3>${sunriseTime}</h3>
-        <h3>Sunset:</h3>
-        <h3>${sunsetTime}</h3>
-        </h2>
+      
+         <div class="main-sunset-sunrise">
+          <h3>Sunrise:</h3>
+          <h3>${sunriseTime}</h3>
+          <h3>Sunset:</h3>
+          <h3>${sunsetTime}</h3>
+         </div>
         </div>
         `;
   });

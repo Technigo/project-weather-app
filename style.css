@@ -1,14 +1,49 @@
-/* body{
-    background-color: green;
-} */
+body {
+    margin: 0;
+    padding: 0;
+    max-width: 100vw;
+    max-height: 100%;
+    font-family: 'Roboto', sans-serif;
+    /* background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 15%, rgba(34,193,195,1) 58%, rgba(1,121,195,1) 100%); */
+ 
+}
+
+.main-daily-info{
+  background: rgb(255,255,255);
+  background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(132,214,255,1) 45%, rgba(49,186,213,1) 100%);
+  height: 100%;
+  padding-bottom: 100px;
+}
 
 .day {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
+
 .main-sunset-sunrise {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+}
+
+h1{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin:0;
+  font-size:6em;
+  display: flex;
+  padding-left: 10%;
+  width: 35%;
+}
+
+.daily-temp{
+  display: flex;
+  align-items: flex-end;
+}
+
+.celsius{
+  font-size: 0.4em;
+  padding: 7%;
 }
