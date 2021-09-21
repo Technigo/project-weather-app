@@ -5,12 +5,40 @@ body {
     height: 100vh;
 }
 
-h1, h2 {
-    color:#0f5075;
+#sunglasses-img {
+    max-width: 80%;
+    display: block;
+    align-items: baseline;
+    margin: 20px auto; 
 }
 
-#weather-container {
-    
+h1 {
+    color:#0f5075;
+    font-size: 2em;
+    max-width: 80%;
+    display: block;
+    margin: 50px auto;
 }
+
+h2 {
+    color:#0f5075;
+    font-size: 1.5em;
+    display: block;
+    margin: auto;
+    max-width: 80%;
+    line-height: 2;
+}
+
+p {
+    color:#0f5075;
+    font-size: 2em;
+    font-weight: bold;
+    max-width: 80%;
+    display: block;
+    margin: 20px auto;
+    line-height: 1.5;
+}
+
+
 
 
