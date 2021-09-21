@@ -20,4 +20,6 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=00ceff8
     `
 })
 .catch((error) => console.error(error))
-    .then(() => console.log('Request finished'));
+.then(() => console.log('Request finished'));
+
+console.log ("just for checking that branch forecast is behaving the way it should be")
