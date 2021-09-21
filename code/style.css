@@ -12,13 +12,13 @@
 html {
   background-color: #7f9997;
   display: grid;
+  font-family: 'Comfortaa';
 }
 
 /* Hero image and todays weather*/
 
-.weather-image {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.37), rgba(0, 0, 0, 0.301)),
-    url("./assets/forest.png");
+.background-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.37), rgba(0, 0, 0, 0.301)), url("./assets/forest.png");
   height: 50vh;
   background-position: center;
   background-repeat: no-repeat;
@@ -43,26 +43,44 @@ html {
   flex-wrap: nowrap;
   justify-content: space-around;
 }
+
+h3 {
+  margin-top: -1vh;
+}
+
 .day-container {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
 }
 
+img.today-weather {
+  width: 50%;
+}
+
 /* Coming days weather*/
 
 .day {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   background-color: #fff;
-  opacity: 20%;
+  opacity: 50%;
   color: black;
-  padding: 30px;
+  font-size: 18px;
   border-radius: 15px;
   justify-content: space-evenly;
   text-align: center;
+  margin: 0.5vh;
+  height: 10vh;
 }
 
 .forcast-temp {
   margin: 60px;
+}
+
+img.forecast-weather {
+  width: 80%;
 }
 
 /* Tablet view*/
@@ -75,15 +93,24 @@ html {
     margin: 0px;
   }
   .day {
-    flex-direction: column;
     display: flex;
+    flex-direction: column;
+    height: 20vh;
+    width: 16vh;
   }
 }
 
 /* Desktop view*/
 
-@media (min-width: 1025px) and (max-width: 1900px) {
+@media (min-width: 1025px) {
   .weather-container {
     flex-direction: row;
+    justify-content: center;
+  }
+  .day {
+    display: flex;
+    flex-direction: column;
+    height: 30vh;
+    width: 19vh;
   }
 }
