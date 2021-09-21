@@ -126,6 +126,7 @@ body {
 }
 
 .weekday-container {
+  display: flex;
   background-color: white;
   height: 50%;
   width: 100%;
