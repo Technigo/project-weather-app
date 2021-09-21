@@ -18,6 +18,20 @@ fetch(API_URL)
 
 
     `; // toFixed(1) rounds the temp to one decimal
+
+
+	temp = 45/* data.main.temp */
+	
+		if (temp >= 25 && temp <= 65) {
+			document.body.style.background = 'var(--hot)'
+		} else if (temp >= 0 && temp <= 24) {
+			document.body.style.background = 'var(--moderate)'
+		} else {
+			document.body.style.background = 'var(--cold)'
+		}
+
+
+
 	})
 	.catch((error) => console.error("Error: ", error))
 	.finally(() => console.log("Request done"));
@@ -40,3 +54,9 @@ fetch(API_FORCAST)
 	})
 	.catch((error) => console.error("Error: ", error))
 	.finally(() => console.log("Request done"));
+
+
+	
+	
+	
+	backgroundColor()

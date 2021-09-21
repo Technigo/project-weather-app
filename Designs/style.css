@@ -1,0 +1,13 @@
+:root{
+ 
+    --hot: linear-gradient( #ff4027,#fdd39c, #faf6ed);
+    --moderate: linear-gradient( #ebb36b, #d4f17186, #ffffff);
+    --cold: linear-gradient( #61b3ff,#e0f7a27a, #ffffff);
+   
+  }
+
+  body{
+    background-image: var(--hot); 
+
+
+  }
