@@ -11,13 +11,14 @@
 
 html {
   background-color: #7f9997;
-  font-family: 'Comfortaa';
+  font-family: "Comfortaa";
 }
 
 /* Hero image and todays weather*/
 
 .background-image {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.363), rgba(0, 0, 0, 0.226)), url("./assets/sunny-weather.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.363), rgba(0, 0, 0, 0.226)),
+    url("./assets/forest.png");
   height: 65vh;
   background-position: center;
   background-repeat: no-repeat;
@@ -33,7 +34,7 @@ html {
 }
 
 select {
-  font-family: 'Comfortaa';
+  font-family: "Comfortaa";
   border-radius: 6px;
   background-color: #7f9997c0;
   color: white;
@@ -42,11 +43,11 @@ select {
 }
 
 .city-button {
-  font-family: 'Comfortaa';
+  font-family: "Comfortaa";
   background-color: #28212f;
   border-radius: 6px;
   color: white;
-  transition: .8s;
+  transition: 0.8s;
   padding: 0.3em 1em;
   text-decoration: none;
   display: inline-block;
@@ -83,7 +84,8 @@ img.today-weather {
   width: 35%;
 }
 
-.sunrisepar, .sunsetpar {
+.sunrisepar,
+.sunsetpar {
   display: flex;
   align-items: center;
   margin: 0vh;
@@ -150,7 +152,8 @@ footer {
   img.today-weather {
     width: 27%;
   }
-  .sunrisepar, .sunsetpar {
+  .sunrisepar,
+  .sunsetpar {
     justify-content: center;
   }
   .sunset {
