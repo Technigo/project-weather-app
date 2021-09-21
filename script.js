@@ -1,11 +1,13 @@
+//SELECTORS
 const weatherDisplay = document.getElementById("weather-display");
 const fiveDays = document.getElementById("five-days");
 
+//APIS ADDRESS
 const API_KEY =
   "https://api.openweathermap.org/data/2.5/weather?q=Oslo,Norway&units=metric&APPID=0783dde9496332573fca5cd853c81369";
 
 const fiveDaysForcast =
-  "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=0783dde9496332573fca5cd853c81369";
+  "https://api.openweathermap.org/data/2.5/forecast?q=Oslo,Norway&units=metric&APPID=0783dde9496332573fca5cd853c81369";
 
 fetch(API_KEY)
   .then((response) => {
@@ -18,6 +20,7 @@ fetch(API_KEY)
     const sunriseRealTime = new Date(sunriseTime * 1000); // converts the sunrise miliseconds time to normaltime
     const sunsetRealTime = new Date(sunsetTime * 1000); // converts the sunset miliseconds time to normaltime
     //calling the functions to get only hours and minutes.
+    const temperatureRounded = Math.floor(json.main.temp);
     const [sunriseHour, sunriseMinutes, sunsetHour, sunsetMinutes] = [
       sunriseRealTime.getHours(),
       sunriseRealTime.getMinutes(),
@@ -29,7 +32,7 @@ fetch(API_KEY)
     weatherDisplay.innerHTML = `
     <div>
     <p>city: ${json.name}</p>
-    <p>Temperature: ${json.main.temp}</p>
+    <p>Temperature: ${temperatureRounded} °C</p>
     <p>Type of weather: ${json.weather[0].description}</p>
     <p>Sunrise: ${sunriseHour}:${sunriseMinutes}</p>
     <p>Sunset: ${sunsetHour}:${sunsetMinutes}</p>
@@ -59,7 +62,7 @@ fetch(fiveDaysForcast) //getting info from api url above
       "thursday",
       "friday",
       "saturday",
-      "sunday"
+      "sunday",
     ];
 
     filterWeather.forEach((item) => {
@@ -68,17 +71,19 @@ fetch(fiveDaysForcast) //getting info from api url above
       const d = new Date(item.dt * 1000);
       // format the date to a weekday number
       const weekdayNumber = d.getDay();
-      console.log(`hello ${weekdays [weekdayNumber]}`);
+      console.log(`hello ${weekdays[weekdayNumber]}`);
       // use that number as the index of the array
       // innerHTML = weekdays[weekdayNumber];
+      const roundedTemperature = Math.floor(item.main.temp);
+      // roundedTemperature = Math.floor(roundedTemperature);
+      console.log(roundedTemperature);
 
-    //printing the weekday number with the weekday array above
+      //printing the weekday number with the weekday array above
       fiveDays.innerHTML += ` 
       <div class="daily-forecast"> 
       <p> ${weekdays[weekdayNumber]}</p> 
-      <p> Temprature:${item.main.temp}</p>
+      <p> Temperature:${roundedTemperature}°C </p>
       </div> 
-  
   `;
     });
   });
