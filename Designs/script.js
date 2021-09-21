@@ -20,7 +20,7 @@ fetch(API_URL)
     `; // toFixed(1) rounds the temp to one decimal
 
 
-	temp = 45/* data.main.temp */
+	temp = data.main.temp
 	
 		if (temp >= 25 && temp <= 65) {
 			document.body.style.background = 'var(--hot)'
