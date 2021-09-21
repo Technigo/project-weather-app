@@ -19,8 +19,17 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=00ceff8
     `
     test.innerHTML += `${data.weather[0].description}
     `
+    function convertTime(unixTime){
+      let date = new Date(unixTime * 1000)
+      let hours = date.getHours()
+      let minutes = "0" + date.getMinutes()
+      let time = hours + ":" + minutes.substr(-2)
+      return time
+      console.log(time)
+    };
+
     let sunrise = convertTime(data.sys.sunrise)
-    test.innerHTML += `The sun rises at (sunrise)
+    test.innerHTML += `The sun rises at ${sunrise}
     `
     let sunset = convertTime(data.sys.sunset)
     test.innerHTML += `The sun sets at ${sunset}
@@ -28,10 +37,3 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=00ceff8
 })
 
 
-function convertTime(unixTime){
-  let date = new Date(unixTime * 1000)
-  let hours = date.getHours()
-  let minutes = "0" + date.getMinutes()
-  let time = hours + ":" + minutes.substr(-2)
-  console.log(time)
-};
