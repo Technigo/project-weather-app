@@ -1,3 +1,14 @@
 /* body{
     background-color: green;
 } */
+
+.day {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.main-sunset-sunrise {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
