@@ -123,11 +123,33 @@ body {
   overflow: hidden;
   height: 50%;
   width: 100%;
+  display: flex;
 }
 
 .weekday-container {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-color: white;
   height: 50%;
   width: 100%;
+  margin-top: 10px;
+}
+
+.weekday-row {
+  border: 1px solid black;
+  width: 90%;
+  height: 60%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.forecast-content {
+  border: 1px solid black;
+  width: 33%;
+  height: 100%;
+  display: flex;
 }
