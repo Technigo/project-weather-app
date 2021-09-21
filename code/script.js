@@ -1,13 +1,18 @@
 //DOMs
+const changeCity = document.getElementById("changeCity");
+const weatherContainer = document.getElementById("weather-container")
+const todaysWeather = document.getElementById("today")
+const dayContainer = document.getElementsByClassName("day-container")
+
 let WEATHER_API =
-    `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=5000cd66a9090b2b62f53ce8a59ebd9e`;
+    `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=5000cd66a9090b2b62f53ce8a59ebd9e`
 
-let fiveDays = `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=5000cd66a9090b2b62f53ce8a59ebd9e`;
+let fiveDays = `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=5000cd66a9090b2b62f53ce8a59ebd9e`
 
-const changeCity = document.createElement("changeCity")
-let city = ''
-console.log(city)
+// Global variables
+let city = '';
 
+// The function creates an image for Javascript injection later into the HTML
 const createWeatherImg = (url, alt) => {
     let weather = document.createElement("img")
     weather.src = url
@@ -15,37 +20,18 @@ const createWeatherImg = (url, alt) => {
     return weather
 };
 
-const createSunImg = (url, alt) => {
-    let sun = document.createElement("img")
-    sun.src = url
-    sun.alt = alt
-    return sun
-};
-
-const cloudyImg = createWeatherImg("./assets/cloud-icon.png", "clouds");
-const rainImg = createWeatherImg("./assets/rain-icon.png", "rain");
+// Creating images for different weather types
+const cloudyImg = createWeatherImg("./assets/cloud-icon.png", "clouds")
+const rainImg = createWeatherImg("./assets/rain-icon.png", "rain")
 const sunImg = createWeatherImg("./assets/sun-icon.png", "sun")
 const windImg = createWeatherImg("./assets/wind-icon.png", "wind")
 const stormImg = createWeatherImg("./assets/storm-icon.png", "storm")
 const snowImg = createWeatherImg("./assets/snow-icon.png", "snow")
 const partlycloudyImg = createWeatherImg("./assets/partly-cloudy-icon.png", "partly cloudy")
 
-const sunriseImg = createSunImg("./assets/sunrise-icon.png", "sunrise")
-const sunsetImg = createSunImg("./assets/sunset-icon.png", "sunset")
-
-
-const weatherContainer = document.getElementById("weather-container");
-const todaysWeather = document.getElementById("today");
-const dayContainer = document.getElementsByClassName("day-container");
-
-// changeCity.addEventListener('change', () => {
-//     city = changeCity.value
-//     WEATHER_API = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=5000cd66a9090b2b62f53ce8a59ebd9e`;
-
-//     let fiveDays = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=5000cd66a9090b2b62f53ce8a59ebd9e`;
-//     myFetch1()
-
-
+//Creating images for sunrise and sunset
+const sunriseImg = createWeatherImg("./assets/sunrise-icon.png", "sunrise")
+const sunsetImg = createWeatherImg("./assets/sunset-icon.png", "sunset")
 
 fetch(WEATHER_API)
     .then((res) => res.json())
@@ -62,8 +48,7 @@ fetch(WEATHER_API)
             weatherImg = snowImg
         } else {
             weatherImg = sunImg
-        }
-        ;
+        };
 
         today.innerHTML += `
         <h1>${data.name}</h1>
@@ -74,23 +59,20 @@ fetch(WEATHER_API)
     `;
     })
     .catch((error) => console.error("AAAAAAH!", error))
-    .finally(() => console.log("YAY!"));
-
-
-{/* <img src=${weatherImg.src} alt=${weatherImg.alt} /> */ }
+    .finally(() => console.log("YAY!"))
 
 fetch(WEATHER_API)
     .then((res) => res.json())
     .then((data) => {
-        const timezoneOffset = new Date().getTimezoneOffset() * 60;
+        const timezoneOffset = new Date().getTimezoneOffset() * 60
         const timeOfSunrise = new Date(
             (data.sys.sunrise + data.timezone + timezoneOffset) * 1000
-        ).toLocaleTimeString("sv-US", { hour: "2-digit", minute: "2-digit" });
-        today.innerHTML += `<p class="sunrisepar"><img src=${sunriseImg.src} alt=${sunriseImg.alt} class= "sunrise"/>Sunrise: ${timeOfSunrise}</p>`;
+        ).toLocaleTimeString("sv-US", { hour: "2-digit", minute: "2-digit" })
+        today.innerHTML += `<p class="sunrisepar"><img src=${sunriseImg.src} alt=${sunriseImg.alt} class= "sunrise"/>Sunrise: ${timeOfSunrise}</p>`
         const timeOfSunset = new Date(
             (data.sys.sunset + data.timezone + timezoneOffset) * 1000
-        ).toLocaleTimeString("sv-US", { hour: "2-digit", minute: "2-digit" });
-        today.innerHTML += `<p class="sunsetpar"><img src=${sunsetImg.src} alt=${sunsetImg.alt} class= "sunset"/>Sunset: ${timeOfSunset}</p>`;
+        ).toLocaleTimeString("sv-US", { hour: "2-digit", minute: "2-digit" })
+        today.innerHTML += `<p class="sunsetpar"><img src=${sunsetImg.src} alt=${sunsetImg.alt} class= "sunset"/>Sunset: ${timeOfSunset}</p>`
     });
 
 //Variables to prevent choosing past dates.
@@ -107,7 +89,7 @@ fetch(fiveDays)
         );
         for (let i = 0; i < 5; i++) {
             // main gets the value of the 'main' weather desription inside each filteredForcast object
-            let main = filteredForecast[i].weather[0].main;
+            let main = filteredForecast[i].weather[0].main
             if (main === ('Clouds')) {
                 weatherImg = cloudyImg
             } else if (main === ('Rain')) {
@@ -122,9 +104,9 @@ fetch(fiveDays)
             );
 
             const forecastTemp = Math.round(filteredForecast[i].main.temp * 10) / 10;
-            const forecastWeather = filteredForecast[i].weather.description;
+            const forecastWeather = filteredForecast[i].weather.description
 
-            console.log(forecastWeather);
+            console.log(forecastWeather)
 
             weatherContainer.innerHTML += `
         <section class="day"> 
@@ -133,16 +115,7 @@ fetch(fiveDays)
         <span class="forcast-weather"><img src=${weatherImg.src} alt=${weatherImg.alt} class="forecast-weather"/></span>
         </section>
       
-      `;
-
-            //   const getWeatherImg = () => {
-            //     let weatherImg = ''
-            //     if (filteredForecast[i].weather.main === "Clouds") {
-            //         const weatherImg = cloudyImg
-            //     } else { const weatherImg = cloudyImg };
-            //     return weatherImg
-            // };
-            // weatherImg = getWeatherImg();
+      `
 
             //const fiveDayWeather = data.list.map((item) => item.weather);
             // console.log(fiveDayWeather);
@@ -159,8 +132,14 @@ fetch(fiveDays)
             //<h2>${Math.round(data.list.temp * 10) / 10} °C</h2>
             //`;
         }
-        console.log(filteredForecast);
-    });
+        console.log(filteredForecast)
+    })
 
 //Eventlisteners
+// changeCity.addEventListener('change', () => {
+//     city = changeCity.value
+//     WEATHER_API = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=5000cd66a9090b2b62f53ce8a59ebd9e`;
+
+//     let fiveDays = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=5000cd66a9090b2b62f53ce8a59ebd9e`;
+//     myFetch1()
 
