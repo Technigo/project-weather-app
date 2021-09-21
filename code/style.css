@@ -11,14 +11,13 @@
 
 html {
   background-color: #7f9997;
-  display: grid;
   font-family: 'Comfortaa';
 }
 
 /* Hero image and todays weather*/
 
 .background-image {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.37), rgba(0, 0, 0, 0.301)), url("./assets/forest.png");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.219), rgba(0, 0, 0, 0.034)), url("./assets/forest.png");
   height: 50vh;
   background-position: center;
   background-repeat: no-repeat;
@@ -45,7 +44,7 @@ html {
 }
 
 h3 {
-  margin-top: -1vh;
+  margin-top: 0.5vh;
 }
 
 .day-container {
@@ -55,7 +54,25 @@ h3 {
 }
 
 img.today-weather {
-  width: 50%;
+  width: 35%;
+}
+
+.sunrisepar, .sunsetpar {
+  display: flex;
+  align-items: center;
+  margin: 0vh;
+}
+
+.sunsetpar {
+  margin-left: 2vh;
+}
+
+.sunrise {
+  max-width: 32%;
+}
+
+.sunset {
+  max-width: 25%;
 }
 
 /* Coming days weather*/
@@ -83,11 +100,28 @@ img.forecast-weather {
   width: 80%;
 }
 
+footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+
 /* Tablet view*/
 
 @media (min-width: 668px) and (max-width: 1024px) {
   .weather-container {
     flex-direction: row;
+  }
+  img.today-weather {
+    width: 27%;
+  }
+  .sunrisepar, .sunsetpar {
+    justify-content: center;
+  }
+  .sunset {
+    max-width: 18%;
   }
   .forcast-temp {
     margin: 0px;
@@ -97,6 +131,9 @@ img.forecast-weather {
     flex-direction: column;
     height: 20vh;
     width: 16vh;
+  }
+  footer {
+    position: fixed;
   }
 }
 
@@ -112,5 +149,8 @@ img.forecast-weather {
     flex-direction: column;
     height: 30vh;
     width: 19vh;
+  }
+  footer {
+    position: fixed;
   }
 }
