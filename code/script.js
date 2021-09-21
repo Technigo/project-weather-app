@@ -47,7 +47,6 @@ fetch(WEATHER_API)
       document.querySelector("header").style.background =
         "url(./assets/cloudy-weather3.jpg)";
       document.querySelector("header").style.backgroundSize = "cover";
-      document.querySelector("header").style.backgroundRepeat = "repeat-y";
       document.querySelector("header").style.backgroundPosition = "center";
     } else if (main.includes("Rain")) {
       weatherImg = rainImg;
@@ -56,21 +55,18 @@ fetch(WEATHER_API)
       document.querySelector("header").style.background =
         "url(./assets/rain.gif)";
       document.querySelector("header").style.backgroundSize = "cover";
-      document.querySelector("header").style.backgroundRepeat = "repeat-y";
       document.querySelector("header").style.backgroundPosition = "center";
     } else if (main.includes("Snow")) {
       weatherImg = snowImg;
       document.querySelector("header").style.background =
         "url(./assets/snowy-weather3.jpg)";
       document.querySelector("header").style.backgroundSize = "cover";
-      document.querySelector("header").style.backgroundRepeat = "repeat-y";
       document.querySelector("header").style.backgroundPosition = "center";
     } else {
       weatherImg = sunImg;
       document.querySelector("header").style.background =
         "url(./assets/sunny-weather.jpg)";
       document.querySelector("header").style.backgroundSize = "cover";
-      document.querySelector("header").style.backgroundRepeat = "repeat-y";
       document.querySelector("header").style.backgroundPosition = "center";
     }
 
