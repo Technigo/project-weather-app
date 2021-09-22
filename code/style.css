@@ -14,10 +14,10 @@ html {
   font-family: "Comfortaa";
 }
 
-/* Hero image and todays weather*/
+/* Hero image and today's weather*/
 
 .background-image {
-  height: 65vh;
+  height: 75vh;
   opacity: 0.7;
   background-position: center;
   background-repeat: no-repeat;
@@ -34,22 +34,22 @@ html {
   left: 50%;
   transform: translate(-50%, -50%);
   color: rgb(255, 255, 255);
-  text-shadow: 2px 2px 8px #28212f;
+  text-shadow: 2px 2px 5px #28212f;
 }
 
 .city-choice-container {
   display: flex;
   justify-content: center;
-  padding-top: 2vh;
+  padding-top: 1vh;
 }
 
 .change-city {
   font-family: "Comfortaa";
   border-radius: 6px;
   background-color: #7f9997c0;
-  color: white;
+  color: black;
   width: 95%;
-  height: 5vh;
+  height: 3vh;
   margin-right: 1vh;
 }
 
@@ -66,7 +66,7 @@ html {
 }
 
 .city-button:hover {
-  background: white;
+  box-shadow: inset -3.5em 0 0 0 white, inset 3.5em 0 0 0 white;
   color: #28212f;
   border: solid 2px white;
 }
@@ -86,10 +86,14 @@ img.today-weather {
   width: 35%;
 }
 
-.sunrisepar, .sunsetpar {
+.sunrisepar, .sunsetpar, .windpar {
   display: flex;
   align-items: center;
   margin: 0vh;
+}
+
+.windpar {
+  margin-left: 7vh;
 }
 
 .sunsetpar {
@@ -102,6 +106,10 @@ img.today-weather {
 
 .sunset {
   max-width: 25%;
+}
+
+.wind-icon {
+  max-width: 19%;
 }
 
 /* Coming days weather*/
@@ -144,12 +152,16 @@ footer {
 @media (min-width: 668px) and (max-width: 1024px) {
   .background-image {
     background-size: cover;
+    height: 65vh;
   }
   .change-city {
     height: 3vh;
   }
   .today {
     letter-spacing: 1px;
+  }
+  .windpar {
+    margin-left: 6vh;
   }
   .city-choice-container {
     justify-content: flex-start;
@@ -159,7 +171,7 @@ footer {
     flex-direction: row;
   }
   img.today-weather {
-    width: 27%;
+    width: 35%;
   }
   .sunrisepar, .sunsetpar {
     justify-content: center;
@@ -177,7 +189,7 @@ footer {
     display: flex;
     flex-direction: column;
     height: 20vh;
-    width: 16vh;
+    width: 30vh;
   }
   footer {
     position: fixed;
@@ -190,12 +202,16 @@ footer {
 @media (min-width: 1025px) {
   .background-image {
     background-size: cover;
+    height: 65vh;
+  }
+  .change-city {
+    height: 3vh;
   }
   .today {
     letter-spacing: 1px;
   }
-  select {
-    width: 17%;
+  .windpar {
+    margin-left: 6vh;
   }
   .city-choice-container {
     justify-content: flex-start;
@@ -210,6 +226,10 @@ footer {
     flex-direction: column;
     height: 20vh;
     width: 50vh;
+    transition: 0.5s;
+  }
+  .day:hover {
+    transform: scale(1.04);
   }
   .forcast-temp {
     margin: 0px;

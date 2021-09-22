@@ -79,7 +79,7 @@ fetch(FIVE_DAYS)
             }
             const days = new Date(filteredForecast[i].dt_txt).toLocaleDateString(
                 "en-US",
-                { weekday: "short" }
+                { weekday: "long" }
             );
 
             const forecastTemp = Math.round(filteredForecast[i].main.temp * 10) / 10;
@@ -119,8 +119,10 @@ function changeHeaderInnerHTML(data, timeOfSunrise, timeOfSunset) {
     today.innerHTML += `
         <h1>${data.name}</h1>
         <h2>${Math.round(data.main.temp * 10) / 10} °C</h2>
+        <h5>Feels like: ${Math.round(data.main.feels_like * 10) / 10} °C</h5>
         <img src=${weatherImg.src} alt=${weatherImg.alt} class= "today-weather"/>
         <h3>${data.weather.map((item) => item.description)}</h3>
+        <h5 class="windpar"> <img src=${windImg.src} alt=${windImg.alt} class= "wind-icon"/>${Math.round(data.wind.speed * 10) / 10} m/s</h5>
         <p class="sunrisepar"><img src=${sunriseImg.src} alt=${sunriseImg.alt} class= "sunrise"/>Sunrise: ${timeOfSunrise}</p>
         <p class="sunsetpar"><img src=${sunsetImg.src} alt=${sunsetImg.alt} class= "sunset"/>Sunset: ${timeOfSunset}</p>
     `;
