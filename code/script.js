@@ -1,5 +1,7 @@
 // Global variables
 const fiveDayForecastContainer = document.getElementById("fiveDayForecast");
+const API_WEATHER =
+  "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=f9773f2491f9348664665c65e8d966c3";
 const API_FIVE_DAY_FORECAST =
   "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=f9773f2491f9348664665c65e8d966c3";
 
@@ -9,6 +11,8 @@ const currentWeatherPictureContainer = document.getElementById(
 const cityName = document.getElementById("cityName");
 const currentTemperature = document.getElementById("currentTemperature");
 const currentWeatherStatus = document.getElementById("currentWeatherStatus");
+const sunrise = document.getElementById("sunrise");
+const sunset = document.getElementById("sunset");
 
 // Object with all emoji
 // https://stackoverflow.com/questions/37103988/is-it-possible-to-set-an-image-source-on-a-javascript-object-property
@@ -47,8 +51,8 @@ const fetchWeather = () => {
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log("The data from the json:", data);
-      console.log("max tem", Math.floor(data.main.temp_max));
+      // console.log("The data from the json:", data);
+      // console.log("max temp", Math.floor(data.main.temp_max));
       // const sunrise = data.sys.sunrise;
       // const sunset = data.sys.sunset;
 
@@ -73,6 +77,37 @@ const fetchWeather = () => {
 
 fetchWeather();
 
+const fetchSunriseSunset = () => {
+  fetch(API_WEATHER)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Data from sunrise/sunset:", data);
+      const sunriseDate = new Date(
+        (data.sys.sunrise +
+          data.timezone +
+          new Date().getTimezoneOffset() * 60) *
+          1000
+      );
+      const sunriseTime =
+        sunriseDate.getHours() + ":" + sunriseDate.getMinutes();
+      const sunsetDate = new Date(
+        (data.sys.sunset +
+          data.timezone +
+          new Date().getTimezoneOffset() * 60) *
+          1000
+      );
+      const sunsetTime = sunsetDate.getHours() + ":" + sunsetDate.getMinutes();
+      sunrise.innerHTML += `
+      🌄${sunriseTime}
+      `;
+      sunset.innerHTML += `
+      🌅${sunsetTime}
+      `;
+    });
+};
+
+fetchSunriseSunset();
+
 //  sunrise
 // 1632329324 sunset
 // Date.prototype.getMilliseconds(1632285134)
@@ -82,12 +117,12 @@ const fetchForecast = () => {
   fetch(API_FIVE_DAY_FORECAST)
     .then((response) => response.json())
     .then((data) => {
-      console.log("New Forecast JSON:", data);
+      // console.log("New Forecast JSON:", data);
 
       let filteredFiveDays = data.list.filter((item) =>
         item.dt_txt.includes("12:00")
       );
-      console.log(filteredFiveDays);
+      // console.log(filteredFiveDays);
 
       filteredFiveDays.forEach((item) => {
         fiveDayForecastContainer.innerHTML += `
