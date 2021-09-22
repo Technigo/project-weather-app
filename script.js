@@ -5,6 +5,7 @@ const cityName = document.getElementById("name");
 const temp = document.getElementById("temp");
 const description = document.getElementById("description");
 const forecast = document.getElementById("forecast")
+const descritpionFor = document.getElementById("descritpionFor")
 
 fetch(API_URL)
   .then((response) => {
@@ -36,14 +37,14 @@ fetch(API_URL)
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
     console.log(`Filtered forecast:`,filteredForecast)
 
-
-
     filteredForecast.forEach((cast, index) => {
       const tempRightNow = filteredForecast[index].main.temp.toFixed(0)
+      const descriptNow = filteredForecast[index].weather[0].description
+      console.log(descriptNow)
       forecast.innerHTML += `
-      <p>${tempRightNow}°C</p>`
+      <p>${tempRightNow}°C ${descriptNow}</p>`
     })
-
+  })
     // const filterForecastDecimal = filteredForecast[0].main.temp.toFixed(0)
     // const filterForecastDecimalTwo = filteredForecast[1].main.temp.toFixed(0)
     // const filterForecastDecimalThree = filteredForecast[2].main.temp.toFixed(0)
@@ -57,4 +58,4 @@ fetch(API_URL)
     // <p>${filterForecastDecimalFour}°C</p>
     // <p>${filterForecastDecimalFive}°C</p>`
   
-  });
+  
