@@ -9,33 +9,39 @@ const API_FORCAST =
 	"https://api.openweathermap.org/data/2.5/forecast?q=stockholm,Sweden&units=metric&APPID=5caaaf25021b2d7aa4d206126b6a3351";
 
 fetch(API_URL)
-	.then((response) => response.json())
-	.then((data) => {
-		console.log(data);
-		weatherData.innerHTML = `
-	
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data)
+
+    let sunrise = data.sys.sunrise;
+    sunrise = new Date(sunrise*1000);
+    sunrise = sunrise.toLocaleTimeString([], {timeStyle: 'short'});
+    
+    let sunset = data.sys.sunset;
+    sunset = new Date(sunset*1000);
+    sunset = sunset.toLocaleTimeString([], {timeStyle: 'short'});
+
+    weatherData.innerHTML = `
       <p>City: ${data.name}</p>
       <p>Temp: ${data.main.temp.toFixed(1)}°C</p>  
       <p>Weather: ${data.weather[0].description}</p>
+      <p>Sunrise: ${sunrise}</p>
+      <p>Sunset: ${sunset}</p>
+      `; // toFixed(1) rounds the temp to one decimal
 
+    temp =  data.main.temp 
+    
+      if (temp >= 25 && temp <= 65) {
+        document.body.style.background = 'var(--hot)'
+      } else if (temp >= 0 && temp <= 24) {
+        document.body.style.background = 'var(--moderate)'
+      } else {
+        document.body.style.background = 'var(--cold)'
+      }
 
-    `; // toFixed(1) rounds the temp to one decimal
-
-	temp =  data.main.temp 
-	
-		if (temp >= 25 && temp <= 65) {
-			document.body.style.background = 'var(--hot)'
-		} else if (temp >= 0 && temp <= 24) {
-			document.body.style.background = 'var(--moderate)'
-		} else {
-			document.body.style.background = 'var(--cold)'
-		}
-
-
-
-	})
-	.catch((error) => console.error("Error: ", error))
-	.finally(() => console.log("Request done"));
+    })
+    .catch((error) => console.error("Error: ", error))
+    .finally(() => console.log("Request done"));
 
 fetch(API_FORCAST)
 	.then((res) => res.json())
@@ -57,9 +63,6 @@ fetch(API_FORCAST)
 	.finally(() => console.log("Request done"));
 
 
-	
-	
-	
 
 const getForecastForCity = (cityName, callbackFunction) => {
   fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=5caaaf25021b2d7aa4d206126b6a3351`)
@@ -88,4 +91,5 @@ const showPosition = (position) => {
   }
   console.log('lat', position.coords.latitude, 'long', position.coords.longitude)
 }
+  
 
