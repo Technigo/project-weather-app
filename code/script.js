@@ -7,6 +7,7 @@ const emojiObject = {
 };
 console.log(emojiObject.cloudy.src);
 
+// /sdfsadfsdf
 /****Grid of the Weather App ****/
 
 // Main placeholder for the whole weather app
@@ -116,6 +117,12 @@ const renderWeekdayData = (weekday, emoji, tempNight, tempDay) => {
   weekDayTemp.innerHTML = `${tempNight}°/${tempDay}°C`;
 };
 
+renderWeekdayData("monday", emojiObject.cloudy, "12", "25");
+renderWeekdayData("tue", "emoji", "12", "25");
+renderWeekdayData("mwed", "emoji", "12", "25");
+renderWeekdayData("thuers", "emoji", "12", "25");
+renderWeekdayData("friday", "emoji", "12", "25");
+
 // const renderAll = (weekday, emoji, temp) => {
 //   const weekDayRow = document.createElement("div");
 //   const weekDay = document.createElement("div");
@@ -146,12 +153,6 @@ const renderWeekdayData = (weekday, emoji, tempNight, tempDay) => {
 //   weekDayTemp.className = "forecast-content";
 //   weekDayTemp.innerHTML = `${temp}`;
 // };
-
-renderWeekdayData("monday", emojiObject.cloudy, "12", "25");
-renderWeekdayData("tue", "emoji", "12", "25");
-renderWeekdayData("mwed", "emoji", "12", "25");
-renderWeekdayData("thuers", "emoji", "12", "25");
-renderWeekdayData("friday", "emoji", "12", "25");
 
 renderCurrentWeather("20", dayWeatherPicture, "Stockholm", "Clear", "07.00", "20.30");
 
