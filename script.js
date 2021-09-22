@@ -22,9 +22,9 @@ const fetchData = () => {
       const decimal = (data.main.temp).toFixed(1) // 
 
       weatherContainer.innerHTML = `
-          <h2> City: ${data.name}</h2>
-          <h3> Hello, the tempature is ${decimal}&#176 Celsius </h3>
-          <h3> Type of weather: ${data.weather[0].description}</h3>
+          <h1> ${data.name}</h1>
+          <h2> ${decimal}&#176 Celsius </h2>
+          <h2> ${data.weather[0].description}</h2>
         `;
 
         const sunriseData = new Date(data.sys.sunrise * 1000) //Converts UNIX/EPOCH time to readable human time
@@ -65,23 +65,27 @@ const fetchForecastData = () => {
         const decimal = (object.main.temp).toFixed(0) // make the temperature integer
 
         const date = new Date(object.dt_txt); // full date with day month and year
-        const days = date.toLocaleDateString('en-SE', {
-          weekday: 'long'
-        }); // display the day with the name only Tuesday,Wednesday,Monday etc.. 
+        const days = date.toLocaleDateString('en-SE', { weekday: 'long' }); 
+        // display the day with the name only Tuesday,Wednesday,Monday etc.. 
         console.log("the next day is", days) // the next day is wednesday etc. 
 
 
         console.log("the next day is", object.weather[0].main)
-
+        const idForIcons = object.weather[0].main
         // 5 days name & temperature & description of the weather
         forecastContainer.innerHTML += ` 
-        <div>
-          <h2> ${days} </h2>
-          <h3> ${decimal}°C {icons} </h3>
-          <h3> ${object.weather[0].description} </h3> 
+        <div class= forecast-days>
+          <h2 class=htwo-day> ${days} </h2>
+          <h3 class=hthree-day> ${decimal}°C </h3>
+          <h3 class=hthree-day> ${object.weather[0].description} </h3> 
+          <img id="iconID" class="icons" alt="" src="./Designs/Design-1/icons/${idForIcons}.png">
         </div>
         `;
-        //<img id="iconID" class="icons" alt="" src="./Designs/Design-1/icons/rain.png">
+    
+
+        
+        // <img id="iconID" class="icons" alt="" src="./Designs/Design-1/icons/${idForIcons}.png">
+
 
       })
 

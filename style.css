@@ -1,3 +1,41 @@
 body {
-  background-color: yellow;
+  background-image: linear-gradient(rgb(16, 24, 250), yellow);
+  
 }
+
+h1{
+font-size: 50px;
+}
+
+.main-weather {
+  width: 60%;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+}
+
+.forecast {
+  margin-top: 50px;
+  width: 60%;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  /* display: flex; */
+  /* justify-content: space-around;
+  align-items: center; */
+}
+
+.forecast-days{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+
+.htwo-day, .hthree-day{
+  padding-top: 20px;
+}
+/* .icons{
+  width: 
+} */
