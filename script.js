@@ -32,26 +32,28 @@ fetch(API_KEY)
       sunsetRealTime.getHours(),
       sunsetRealTime.getMinutes(),
     ];
-
-    if (json.weather.main === "Clear") {
-      mainSection.classList.add = "sunny";
+    console.log(json);
+    console.log(json.weather[0].main, json.weather[0].main === "Clear" )
+    if (json.weather[0].main === "Clear") { 
+      mainSection.classList.add("sunny");
+      console.log(mainSection)
       weatherH1.innerHTML = `Get your sunnies on ${json.name} is looking rather great today!`;
-      pictureWeather.attr(
+      pictureWeather.setAttribute(
         "src",
         "./Designs/Design-2/icons/noun_Sunglasses_2055147.svg"
       );
     
-    } else if (json.weather.main === "Rain" || json.weather.main === "Drizzle" ||  json.weather.main === "Thunderstorm" ||  json.weather.main === "Snow") {
-      mainSection.classList.add = "rainy";
+    } else if (json.weather[0].main === "Rain" || json.weather.main === "Drizzle" ||  json.weather.main === "Thunderstorm" ||  json.weather.main === "Snow") {
+      mainSection.classList.add("rainy");
       weatherH1.innerHTML = `Don't forget your umbrella. It's wet in ${json.name} today!`;
-      pictureWeather.attr(
+      pictureWeather.setAttribute(
         "src",
         "/Designs/Design-2/icons/noun_Umbrella_2030530.svg"
       );
     } else { 
-      mainSection.classList.add = "cloudy";
+      mainSection.classList.add("cloudy");
       weatherH1.innerHTML = `Light a fire and get cosy. ${json.name} is looking grey today!`;
-      pictureWeather.attr(
+      pictureWeather.setAttribute(
         "src",
         "/Designs/Design-2/icons/noun_Cloud_1188486.svg"
       );
@@ -60,7 +62,7 @@ fetch(API_KEY)
     weatherDisplay.innerHTML = `
     <div>
     <p>city: ${json.name}</p>
-    <p>Temperature: ${temperatureRounded} °C</p>
+    <p> ${temperatureRounded} °C</p>
     <p>Type of weather: ${json.weather[0].description}</p>
     <p>Sunrise: ${sunriseHour}:${sunriseMinutes}</p>
     <p>Sunset: ${sunsetHour}:${sunsetMinutes}</p>
@@ -112,7 +114,7 @@ fetch(fiveDaysForcast) //getting info from api url above
       fiveDays.innerHTML += ` 
       <div class="daily-forecast"> 
       <p> ${weekdays[weekdayNumber]}</p> 
-      <p> Temperature:${roundedTemperature}°C </p>
+      <p> ${roundedTemperature}°C </p>
       </div> 
   `;
     })
