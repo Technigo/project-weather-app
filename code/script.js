@@ -2,7 +2,6 @@ const API_WEATHER = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm
 const API_URL = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=8bda651aba01a3b8831972e24ed1f675';
 const weatherContainer = document.getElementById ('weather-container');
 
-
  fetch(API_WEATHER)
  .then((response) => {
    return response.json() 
@@ -16,16 +15,17 @@ const weatherContainer = document.getElementById ('weather-container');
     json.weather.forEach((weather)=> {weatherContainer.innerHTML += 
       `<h3> The weather conditions are ${weather.description}</h3> `
     
+    const rise =new Date (json.sys.sunrise * 1000);
+    const up= rise.toLocaleTimeString ([], {
+    timeStyle: 'short'
+    })
     const set = new Date(json.sys.sunset * 1000);
     const down = set.toLocaleTimeString([], {
     timeStyle: 'short'
     }) 
-    weatherContainer.innerHTML += `
-    <h3> Sunset: ${down} 
-    </h3>
-    `
-      });
-      
+    weatherContainer.innerHTML += `<h3> Sunrise: ${up} <h3> -Sunset: ${down} 
+    </h3> `
+    }); 
 });
 
 fetch(API_URL)
