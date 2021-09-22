@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.top {
+    background: radial-gradient(circle, rgb(166, 181, 255) 0%, rgb(89, 114, 253) 50%);
+    color: white;
+    padding: 10px;
+    /* background-image: url() */
+}
+
+#temperature {
+    font-size: 80px;
+
+
+}
+
