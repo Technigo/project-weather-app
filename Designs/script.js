@@ -1,7 +1,9 @@
 const weatherData = document.getElementById("weatherdata");
 
+let userPosition
+
 const API_URL =
-	"https://api.openweathermap.org/data/2.5/weather?q=stockholm,Sweden&units=metric&APPID=5caaaf25021b2d7aa4d206126b6a3351";
+  "https://api.openweathermap.org/data/2.5/weather?q=stockholm,Sweden&units=metric&APPID=5caaaf25021b2d7aa4d206126b6a3351";
 
 const API_FORCAST =
 	"https://api.openweathermap.org/data/2.5/forecast?q=stockholm,Sweden&units=metric&APPID=5caaaf25021b2d7aa4d206126b6a3351";
@@ -60,3 +62,38 @@ fetch(API_FORCAST)
 	
 	
 	backgroundColor()
+=======
+    `// toFixed(1) rounds the temp to one decimal
+  })
+  .catch((error) => console.error('Error: ', error))
+  .finally(() => console.log('Request done'))
+
+
+const getForecastForCity = (cityName, callbackFunction) => {
+  fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=5caaaf25021b2d7aa4d206126b6a3351`)
+    .then((response) => response.json())
+    .then((data) => {
+      callbackFunction(data);
+    })
+    .catch((error) => console.error('Error: ', error))
+    .finally(() => console.log('Request done'));
+}
+
+const getLocation = () => {
+  if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition)
+  } else {
+      alert (
+          'Geolocation is not supported by this browser'
+      )
+  }
+}
+
+const showPosition = (position) => {
+  userPosition = {
+    latitude: position.coords.latitude,
+    longitude: position.coords.longitude
+  }
+  console.log('lat', position.coords.latitude, 'long', position.coords.longitude)
+}
+
