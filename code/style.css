@@ -100,7 +100,7 @@ main {
     );
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#b3e2fc',GradientType=0 ); IE6-9 */
 
-  background-color: burlywood;
+  background-color: rosybrown;
   border-bottom-right-radius: 250px 50px;
   border-bottom-left-radius: 250px 50px;
   overflow: hidden;
@@ -174,11 +174,13 @@ main {
   height: 100%;
   display: flex;
 }
-.current-temperature::after {
+
+/* not really relevant but might be who knows */
+/* .current-temperature::after {
   content: "°C";
   font-size: 0.4em;
   margin-top: 8px;
-}
+} */
 
 .current-weather-picture-container {
   border: 2px solid rgb(22, 163, 163);
