@@ -7,9 +7,19 @@ Weights: bold and regular
 
 colors:
 
-#F47775
-#F4F7F8
-#164A68
-#A3DEF7
-#2A5510
-#F7E9B9
+Cloudy weather:
+#F47775 - Text color (coral)
+#F4F7F8 - Background color (off-white)
+
+Rainy weather:
+#164A68 - Text color (dark blue)
+#A3DEF7 - Background color (light blue)
+
+Sunny weather:
+#2A5510 - Text color (dark green)
+#F7E9B9 - Background color (light yellow)
+
+Other weather:
+#862C4D - Text color (ruby)
+#BFE2E0 - Background color (light mint)
+
