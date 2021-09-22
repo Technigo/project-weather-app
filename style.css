@@ -1,0 +1,47 @@
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Montserrat, sans-serif;
+}
+
+.weather-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 30px;
+}
+
+.current-statements {
+  margin: 0px;
+  font-weight: 300;
+  font-size: 21px;
+}
+.wrapper {
+  margin-top: 30px;
+}
+
+.city {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.city img {
+  padding-bottom: 20px;
+}
+
+.city h1 {
+  margin: 0;
+  font-size: 37px;
+}
+
+.week-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 2px dotted;
+  line-height: 3px;
+}
+.week-wrap h1 {
+  font-weight: 300;
+  font-size: 21px;
+}
