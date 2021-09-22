@@ -5,7 +5,7 @@ const todaysWeather = document.getElementById("today");
 const dayContainer = document.getElementsByClassName("day-container");
 const cityBtn = document.getElementById("cityBtn");
 const backgroundImg = document.getElementById("backgroundImg");
-const cityInput = document.getElementById("cityInput")
+const cityInput = document.getElementById("cityInput");
 
 let WEATHER_API = `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=5000cd66a9090b2b62f53ce8a59ebd9e`;
 
@@ -62,28 +62,39 @@ fetch(FIVE_DAYS)
         const filteredForecast = data.list.filter((item) =>
             item.dt_txt.includes("12:00")
         );
-        for (let i = 0; i < 5; i++) {
-            // main gets the value of the 'main' weather desription inside each filteredForcast object
+        createFiveDayForecast(filteredForecast);
+    });
 
-            let main = filteredForecast[i].weather[0].main;
-            if (main === "Clouds") {
-                weatherImg = cloudyImg;
-            } else if (main === "Rain") {
-                weatherImg = rainImg;
-            } else {
-                weatherImg = sunImg;
-            }
-            const days = new Date(filteredForecast[i].dt_txt).toLocaleDateString(
-                "en-US",
-                { weekday: "long" }
-            );
 
-            const forecastTemp = Math.round(filteredForecast[i].main.temp * 10) / 10;
-            const forecastWeather = filteredForecast[i].weather.description;
+function createFiveDayForecast(filteredForecast) {
+    for (let i = 0; i < 5; i++) {
 
-            console.log(forecastWeather);
+        chooseWeatherIcon(filteredForecast, i);
+        const days = new Date(filteredForecast[i].dt_txt).toLocaleDateString(
+            "en-US",
+            { weekday: "long" }
+        );
+        const forecastTemp = Math.round(filteredForecast[i].main.temp * 10) / 10;
+        const forecastWeather = filteredForecast[i].weather.description;
+        createFiveDaysInnerHTML(days, forecastTemp);
+    }
+};
 
-            weatherContainer.innerHTML += `
+//Creates a weather icon based on the forecasted weather
+function chooseWeatherIcon(filteredForecast, i) {
+    let main = filteredForecast[i].weather[0].main;
+    if (main === "Clouds") {
+        weatherImg = cloudyImg;
+    } else if (main === "Rain") {
+        weatherImg = rainImg;
+    } else {
+        weatherImg = sunImg;
+    }
+};
+
+//Creates innerHTML for each day in the forecast
+function createFiveDaysInnerHTML(days, forecastTemp) {
+    weatherContainer.innerHTML += `
         <section class="day"> 
         <span class="forcast-day">${days}</span> 
         <span class="forcast-temp">${forecastTemp} °C </span> 
@@ -91,32 +102,16 @@ fetch(FIVE_DAYS)
         </section>
       
       `;
+};
 
-            //const fiveDayWeather = data.list.map((item) => item.weather);
-            // console.log(fiveDayWeather);
-
-            //const fiveDays = fiveDaysWeather.weather.map((item) => item.description);
-            //console.log(fiveDays);
-            //console.log(days);
-            //console.log(forecastTemp);
-            //forecastTemp.forEach((element) => {
-            // console.log(element);
-            //});
-            //const filteredForecast = data.list.map((item) => item.temp);
-            //day1.innerHTML += `
-            //<h2>${Math.round(data.list.temp * 10) / 10} °C</h2>
-            //`;
-        }
-        console.log(filteredForecast);
-    });
-
-
+//Translates seconds into a date string
 function getTimeOf(time, timezone) {
     return new Date(
         (time + timezone + timezoneOffset) * 1000
     ).toLocaleTimeString("sv-GB", { hour: "2-digit", minute: "2-digit" });
-}
+};
 
+//Creates innerHTML to display todays weather and temperatures in the header
 function changeHeaderInnerHTML(data, timeOfSunrise, timeOfSunset) {
     today.innerHTML += `
         <h1>${data.name}</h1>
@@ -128,8 +123,9 @@ function changeHeaderInnerHTML(data, timeOfSunrise, timeOfSunset) {
         <p class="sunrisepar"><img src=${sunriseImg.src} alt=${sunriseImg.alt} class= "sunrise"/>Sunrise: ${timeOfSunrise}</p>
         <p class="sunsetpar"><img src=${sunsetImg.src} alt=${sunsetImg.alt} class= "sunset"/>Sunset: ${timeOfSunset}</p>
     `;
-}
+};
 
+//Changes background image in header depending on todays weather prognosis
 function setBackgroundWeather(data) {
     let main = data.weather.map((item) => item.main);
     if (main.includes("Clouds")) {
@@ -163,13 +159,13 @@ function setBackgroundWeather(data) {
         document.querySelector("header").style.backgroundSize = "cover";
         document.querySelector("header").style.backgroundPosition = "center";
     }
-}
+};
 //Eventlisteners
 // DON"T DELETE, TO USE LATER!
 changeCity.addEventListener('change', (e) => {
     let city = e.target.value
 
-})
+});
 
 // cityBtn.addEventListener('click', (e) => {
 //     console.log("button event", e)
