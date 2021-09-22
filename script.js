@@ -24,9 +24,10 @@ fetch(API_URL)
     <p>${json.weather[0].description}</p>`;
     console.log("suntimes:", json.sys.sunset);
 
-    const rise = new Date(json.sys.sunrise * 1000);
+    const rise = new Date(json.sys.sunrise * 1000); // new Date() shows todays date. The json.sys.sunrise gets the time for the sunrise in ms x 1000 to get a whole second
     const up = rise.toLocaleTimeString([], {
-      hour: "2-digit",
+      // returns the date object as a string, using local (timezone) conventions
+      hour: "2-digit", // show the time as 00:00 hour/minute
       minute: "2-digit",
     });
     sunTime.innerHTML = `<p>Sunrise: ${up}</p>`;
