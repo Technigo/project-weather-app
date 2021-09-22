@@ -56,7 +56,14 @@ let dayWeatherPicture = document.createElement("img");
 dayWeatherPicture.src = "/Designs/Design-1/assets/Group36.png";
 
 // ********The generic rendering function for drawing current weather container information *******//
-const renderCurrentWeather = (currentTemp, weatherPic, cityname, status, sunrise, sunset) => {
+const renderCurrentWeather = (
+  currentTemp,
+  weatherPic,
+  cityname,
+  status,
+  sunrise,
+  sunset
+) => {
   // current temp div creation
   const currentTemperature = document.createElement("div");
   currentTemperature.className = "current-temperature";
@@ -90,13 +97,17 @@ const renderCurrentWeather = (currentTemp, weatherPic, cityname, status, sunrise
   sunriseContainer.className = "sunrise";
   sunsetContainer.className = "sunset";
   // adding dynamic  sunrise/sunset data
-  sunriseContainer.innerHTML = `sunrise : ${sunrise}`;
-  sunsetContainer.innerHTML = `sunset : ${sunset}`;
+  sunriseContainer.innerHTML = `sunrise : ${sunrise}°C`;
+  sunsetContainer.innerHTML = `sunset : ${sunset}°C`;
 
   sunriseAndSunsetWrapper.append(sunriseContainer, sunsetContainer);
 
   // appending city name , weather status and sunset/sunrise divs to the lower half of the weather container
-  lowerHalfWeatherContainer.append(cityName, currentWeatherStatus, sunriseAndSunsetWrapper);
+  lowerHalfWeatherContainer.append(
+    cityName,
+    currentWeatherStatus,
+    sunriseAndSunsetWrapper
+  );
 };
 
 // ********The generic rendering function for drawing the weakday container information *******//
@@ -116,47 +127,37 @@ const renderWeekdayData = (weekday, emoji, tempNight, tempDay) => {
   weekDayTemp.innerHTML = `${tempNight}°/${tempDay}°C`;
 };
 
-// const renderAll = (weekday, emoji, temp) => {
-//   const weekDayRow = document.createElement("div");
-//   const weekDay = document.createElement("div");
-//   const weatherEmoji = document.createElement("div");
-//   const weekDayTemp = document.createElement("div");
-//   weekDayRow.className = "weekday-row";
-//   weekdayContainer.append(weekDayRow);
-//   weekDayRow.append(weekDay, weatherEmoji, weekDayTemp);
-//   assignWeekDay(weekDay, weekday);
-//   assignWeatherEmoji(weatherEmoji, emoji);
-//   assignWeekDayTemp(weekDayTemp, temp);
-// };
-
-// const assignWeekDay = (weekDay, weekday) => {
-//   const weekDay = document.createElement("div");
-//   weekDay.className = "forecast-content";
-//   weekDay.innerHTML = `${weekday}`;
-// };
-
-// const assignWeatherEmoji = (weatherEmoji, emoji) => {
-//   const weatherEmoji = document.createElement("div");
-//   weatherEmoji.className = "forecast-content";
-//   weatherEmoji.innerHTML = `${emoji}`;
-// };
-
-// const assignWeekDayTemp = (weekDayTemp, temp) => {
-//   const weekDayTemp = document.createElement("div");
-//   weekDayTemp.className = "forecast-content";
-//   weekDayTemp.innerHTML = `${temp}`;
-// };
-
 renderWeekdayData("monday", emojiObject.cloudy, "12", "25");
 renderWeekdayData("tue", "emoji", "12", "25");
 renderWeekdayData("mwed", "emoji", "12", "25");
 renderWeekdayData("thuers", "emoji", "12", "25");
 renderWeekdayData("friday", "emoji", "12", "25");
 
-renderCurrentWeather("20", dayWeatherPicture, "Stockholm", "Clear", "07.00", "20.30");
+const fetchWeather = () => {
+  fetch(
+    "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=f9773f2491f9348664665c65e8d966c3"
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("The data from the json:", data);
+      // console.log("max tem", Math.floor(data.main.temp_max));
+      const sunrise = data.sys.sunrise;
+      const sunset = data.sys.sunset;
+      renderCurrentWeather(
+        Math.floor(data.main.temp),
+        dayWeatherPicture,
+        data.name,
+        data.weather[0].description,
+        Date.prototype.getTime(sunrise),
+        Date.prototype.getTime(sunset)
+      );
+    })
+    .catch((error) => console.error(error));
+};
 
-// const weatherEmojiSelector = (weatherStatus) => {
-//   if ((weatherStatus = "sunny")) {
-//     rede;
-//   }
-// };
+fetchWeather();
+
+//  sunrise
+// 1632329324 sunset
+// Date.prototype.getMilliseconds(1632285134)
+// Date.prototype.getMilliseconds(1632329324)
