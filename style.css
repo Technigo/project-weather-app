@@ -1,4 +1,9 @@
+body {
+  margin: 40px;
+}
+
 .weatherApp {
+  margin: auto;
   font-family: "Montserrat";
   font-weight: regular;
 }
@@ -14,10 +19,15 @@
   margin: 0;
 }
 
+.icon {
+  margin: 60px 0 10px 10px;
+}
+
 .description {
   font-size: 50px;
-  width: 80vw;
   padding: 10px;
+  margin: 0 0 30px 0;
+  font-weight: bold;
 }
 
 .forecast {
@@ -25,13 +35,26 @@
   flex-direction: row;
   justify-content: space-between;
   font-size: 20px;
-  text-decoration: underline;
-  text-decoration-style: dotted;
+  border-bottom: 1px dashed;
+  margin: 0 10px;
+}
+.forecast:last-child {
+  border-bottom: none;
 }
 
+.forecastDay,
+.forecastTemp {
+  margin: 4px 0 5px 0;
+}
 /* #F47775 - moln text
 #F4F7F8 - moln bakgrund
 #164A68 - regn text
 #A3DEF7 - regn bakgrund
 #2A5510 - sol text
 #F7E9B9 - sol bakgrund*/
+
+@media (min-width: 436px) {
+  .weatherApp {
+    max-width: 436px;
+  }
+}
