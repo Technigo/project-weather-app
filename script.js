@@ -43,12 +43,13 @@ fetch(FORECAST_API_URL)
     createForecast(data) //calling CreateForecast function to create forecast for next five days with minimum temperature, maximum temperature and formatted date
     console.log (typeof(fiveDayForecast)) //for test purpose
     Object.values(fiveDayForecast).forEach(item => {  // in order to iterate each value of object as forEach method does not work on object directly (https://flexiple.com/loop-through-object-javascript/)
-     const  {date, minTemp, maxTemp}= item  
+     const  {date, weatherIcon, minTemp, maxTemp}= item  
       test.innerHTML +=`
       <div class= "forecast">
         <p class= "forecast-date">
          ${date} ${minTemp}/ ${maxTemp}
-         </p>
+        </p>
+      <img src="http://openweathermap.org/img/w/${weatherIcon}.png"/>
       </div>
     `
     })
@@ -79,6 +80,7 @@ const createForecast = (data) => {
         let forecastDate = convertDate(item.dt) //calling convertDate function for formatting the date
         fiveDayForecast[currentDate] = {
           "date": forecastDate,
+          "weatherIcon":item.weather[0].icon,
           "minTemp": item.main.temp_min,
           "maxTemp": item.main.temp_max
         }
