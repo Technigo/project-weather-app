@@ -5,6 +5,7 @@ const todaysWeather = document.getElementById("today");
 const dayContainer = document.getElementsByClassName("day-container");
 const cityBtn = document.getElementById("cityBtn");
 const backgroundImg = document.getElementById("backgroundImg");
+const cityInput = document.getElementById("cityInput")
 
 let WEATHER_API = `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=5000cd66a9090b2b62f53ce8a59ebd9e`;
 
@@ -12,6 +13,7 @@ let FIVE_DAYS = `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sw
 
 // Global variables
 let city = "";
+const timezoneOffset = new Date().getTimezoneOffset() * 60;
 
 // The function creates an image for Javascript injection later into the HTML
 const createWeatherImg = (url, alt) => {
@@ -40,16 +42,10 @@ const sunsetImg = createWeatherImg("./assets/sunset-icon.png", "sunset");
 fetch(WEATHER_API)
     .then((res) => res.json())
     .then((data) => {
-        let main = data.weather.map((item) => item.main);
-        console.log(main);
-        setBackgroundWeather(main);
-        const timezoneOffset = new Date().getTimezoneOffset() * 60;
-        const timeOfSunrise = new Date(
-            (data.sys.sunrise + data.timezone + timezoneOffset) * 1000
-        ).toLocaleTimeString("sv-GB", { hour: "2-digit", minute: "2-digit" });
-        const timeOfSunset = new Date(
-            (data.sys.sunset + data.timezone + timezoneOffset) * 1000
-        ).toLocaleTimeString("sv-GB", { hour: "2-digit", minute: "2-digit" });
+        setBackgroundWeather(data);
+        let timezone = data.timezone
+        const timeOfSunrise = getTimeOf(data.sys.sunrise, timezone);
+        const timeOfSunset = getTimeOf(data.sys.sunset, timezone)
         changeHeaderInnerHTML(data, timeOfSunrise, timeOfSunset);
     })
     .catch((error) => console.error("AAAAAAH!", error))
@@ -68,7 +64,7 @@ fetch(FIVE_DAYS)
         );
         for (let i = 0; i < 5; i++) {
             // main gets the value of the 'main' weather desription inside each filteredForcast object
-            //explain please the weather (0)
+
             let main = filteredForecast[i].weather[0].main;
             if (main === "Clouds") {
                 weatherImg = cloudyImg;
@@ -115,6 +111,12 @@ fetch(FIVE_DAYS)
     });
 
 
+function getTimeOf(time, timezone) {
+    return new Date(
+        (time + timezone + timezoneOffset) * 1000
+    ).toLocaleTimeString("sv-GB", { hour: "2-digit", minute: "2-digit" });
+}
+
 function changeHeaderInnerHTML(data, timeOfSunrise, timeOfSunset) {
     today.innerHTML += `
         <h1>${data.name}</h1>
@@ -128,11 +130,12 @@ function changeHeaderInnerHTML(data, timeOfSunrise, timeOfSunset) {
     `;
 }
 
-function setBackgroundWeather(main) {
+function setBackgroundWeather(data) {
+    let main = data.weather.map((item) => item.main);
     if (main.includes("Clouds")) {
         weatherImg = cloudyImg;
         document.querySelector("header").style.background =
-            "url(./assets/cloudy-day1.jpg)";
+            "url(./assets/cloudy-day.jpg)";
         document.querySelector("header").style.backgroundSize = "cover";
         document.querySelector("header").style.backgroundPosition = "center";
     } else if (main.includes("Rain")) {
@@ -163,10 +166,16 @@ function setBackgroundWeather(main) {
 }
 //Eventlisteners
 // DON"T DELETE, TO USE LATER!
-// changeCity.addEventListener('change', () => {
-//     city = changeCity.value
-//     WEATHER_API = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=5000cd66a9090b2b62f53ce8a59ebd9e`;
+changeCity.addEventListener('change', (e) => {
+    let city = e.target.value
 
+})
+
+// cityBtn.addEventListener('click', (e) => {
+//     console.log("button event", e)
+//     console.log("bitton value", cityBtn.value)
+
+// })
 //     let FIVE_DAYS = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=5000cd66a9090b2b62f53ce8a59ebd9e`;
 //     myFetch1()
 
