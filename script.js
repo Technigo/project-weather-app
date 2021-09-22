@@ -25,4 +25,17 @@ fetch(WEATHER_API_URL)
         `        
     })
 
-    test
+    fetch(FORECAST_API_URL)
+        .then(res => res.json())
+        .then(forecastData => {
+            console.log('FORECASTDATA', forecastData);
+            forecastContainer.innerHTML += /*html*/`
+            <p>Day 1:${Math.round(forecastData.list[6].main.temp_max * 10)/10}
+            </p>
+            <p>Day 2:${Math.round(forecastData.list[14].main.temp_max * 10)/10}</p>
+            <p>Day 3:${Math.round(forecastData.list[22].main.temp_max * 10)/10}</p>
+            <p>Day 4:${Math.round(forecastData.list[30].main.temp_max * 10)/10}</p>
+            <P>Day 5: ${Math.round(forecastData.list[38].main.temp_max * 10)/10}</p>
+            `
+        })
+        
