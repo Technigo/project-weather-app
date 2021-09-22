@@ -14,11 +14,13 @@ fetch(API_URL)
     console.log("city:", json.name);
     cityName.innerHTML = `
     <p>${json.name}</p>`;
+
     console.log("temp:", json.main.temp);
     const tempDecimal = json.main.temp.toFixed(0); //Kriss&Sofia took the decimal away!
     console.log(tempDecimal);
     temp.innerHTML = `
     <p>${tempDecimal}°c</p>`;
+
     console.log("description:", json.weather[0].description);
     description.innerHTML = `
     <p>${json.weather[0].description}</p>`;
