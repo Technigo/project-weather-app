@@ -9,19 +9,17 @@ fetch(API_URL)
 	.then((res) => res.json())
 	.then((data) => {
 		const date = new Date(data.dt * 1000);
+		const sunrise = new Date(data.sys.sunrise * 1000);
+		const sunset = new Date(data.sys.sunset * 1000);
 		weatherApp.innerHTML += `
-			<p>Current date: ${date}</p>
+			<p>Current day: ${weekDays[date.getDay()]}</p>
 			<p>Current location: ${data.name}</p>
-			<p>Todays temperature: ${Math.round(data.main.temp * 10) / 10}</p>
+			<p>Todays temperature: ${Math.round(data.main.temp * 10) / 10}&#8451;</p>
 			<p>Todays weather: ${data.weather[0].description}</p>
+			<p>Sunrise: ${sunrise.getHours()}:${sunrise.getMinutes()}</p>
+			<p>Sunset: ${sunset.getHours()}:${sunset.getMinutes()}</p>
 			`;
-		console.log('data', data);
-
-		// data.daily.slice(1).forEach((day) => {
-		// 	let weekDay = new Date(day.dt * 1000);
-		// 	weekDay = weekDay.getDay();
-		// 	weatherApp.innerHTML += `<p>${weekDays[weekDay]} ${weekDay} 🌈${day.temp.day}</p>`;
-		// });
+		console.log('data current', data);
 	})
 	.catch((error) => console.log('error', error));
 
@@ -31,19 +29,12 @@ fetch(API_URL_FORECAST)
 		const date = new Date(data.dt * 1000);
 		const filteredForecast = data.list.filter((item) => item.dt_txt.includes('12:00'));
 		console.log(filteredForecast);
-		filteredForecast.forEach((day) => {
+		filteredForecast.slice(1).forEach((day) => {
 			let weekDay = new Date(day.dt * 1000);
 			weekDay = weekDay.getDay();
-			weatherApp.innerHTML += `<p>${weekDays[weekDay]} 🌈${Math.round(day.main.temp * 10) / 10}</p>`;
+			weatherApp.innerHTML += `<p>${weekDays[weekDay]} 🌈${Math.round(day.main.temp * 10) / 10}&#8451;</p>`;
 		});
 
-		// weatherApp.innerHTML += `
-		// <p>Current date: ${date}</p>
-		// <p>Current location: ${data.name}</p>
-		// <p>Todays temperature: ${Math.round(data.main.temp * 10) / 10}</p>
-		// <p>Todays weather: ${data.weather[0].description}</p>
-		// `;
-
-		console.log('data', data);
+		console.log('data forecast', data);
 	})
 	.catch((error) => console.log('error', error));
