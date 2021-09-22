@@ -1,11 +1,37 @@
+// Global variables
+const fiveDayForcastContainer = document.getElementById("fiveDayForecast");
+const API_FIVE_DAY_FORECAST =
+  "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=f9773f2491f9348664665c65e8d966c3";
+
 // Object with all emoji
 // https://stackoverflow.com/questions/37103988/is-it-possible-to-set-an-image-source-on-a-javascript-object-property
 const emojiObject = {
   cloudy: Object.assign(new Image(), {
     src: "/Designs/Design-1/assets/Group16.png",
   }),
+  partly: Object.assign(new Image(), {
+    src: "/Designs/Design-1/assets/Group34.png",
+  }),
+  sunny: Object.assign(new Image(), {
+    src: "/Designs/Design-1/assets/Group36.png",
+  }),
+  rainy: Object.assign(new Image(), {
+    src: "/Designs/Design-1/assets/Group38.png",
+  }),
+  snowy: Object.assign(new Image(), {
+    src: "/Designs/Design-1/assets/Group40.png",
+  }),
 };
 console.log(emojiObject.cloudy.src);
+
+const staticImg = {
+  day: Object.assign(new Image(), {
+    src: "/Designs/Design-1/assets/Group36.png",
+  }),
+  night: Object.assign(new Image(), {
+    src: "/Designs/Design-1/assets/Group16.png",
+  }),
+};
 
 /****Grid of the Weather App ****/
 
@@ -109,29 +135,24 @@ const renderCurrentWeather = (
     sunriseAndSunsetWrapper
   );
 };
+// const weekDay = document.createElement("div");
 
-// ********The generic rendering function for drawing the weakday container information *******//
-const renderWeekdayData = (weekday, emoji, tempNight, tempDay) => {
-  const weekDayRow = document.createElement("div");
-  const weekDay = document.createElement("div");
-  const weatherEmoji = document.createElement("div");
-  const weekDayTemp = document.createElement("div");
-  weekDayRow.className = "weekday-row";
-  weekDay.className = "forecast-content";
-  weatherEmoji.className = "forecast-content";
-  weekDayTemp.className = "forecast-content";
-  weekdayContainer.append(weekDayRow);
-  weekDayRow.append(weekDay, weatherEmoji, weekDayTemp);
-  weekDay.innerHTML = `${weekday}`;
-  weatherEmoji.append(emoji);
-  weekDayTemp.innerHTML = `${tempNight}°/${tempDay}°C`;
-};
-
-renderWeekdayData("monday", emojiObject.cloudy, "12", "25");
-renderWeekdayData("tue", "emoji", "12", "25");
-renderWeekdayData("mwed", "emoji", "12", "25");
-renderWeekdayData("thuers", "emoji", "12", "25");
-renderWeekdayData("friday", "emoji", "12", "25");
+// //********The generic rendering function for drawing the weakday container information *******//
+// // const renderWeekdayData = (weekday, emoji, tempNight, tempDay) => {
+// const weekDayRow = document.createElement("div");
+// const weekDay = document.createElement("div");
+// const weatherEmoji = document.createElement("div");
+// const weekDayTemp = document.createElement("div");
+// weekDayRow.className = "weekday-row";
+// weekDay.className = "forecast-content";
+// weatherEmoji.className = "forecast-content";
+// weekDayTemp.className = "forecast-content";
+// weekdayContainer.append(weekDayRow);
+// weekDayRow.append(weekDay, weatherEmoji, weekDayTemp);
+// // weekDay.innerHTML = `${weekday}`;
+// // weatherEmoji.append(emoji);
+// // weekDayTemp.innerHTML = `${tempNight}°/${tempDay}°C`;
+// // };
 
 const fetchWeather = () => {
   fetch(
@@ -147,9 +168,9 @@ const fetchWeather = () => {
         Math.floor(data.main.temp),
         dayWeatherPicture,
         data.name,
-        data.weather[0].description,
-        Date.prototype.getTime(sunrise),
-        Date.prototype.getTime(sunset)
+        data.weather[0].description
+        // Date.prototype.getTime(sunrise),
+        // Date.prototype.getTime(sunset)
       );
     })
     .catch((error) => console.error(error));
@@ -161,3 +182,39 @@ fetchWeather();
 // 1632329324 sunset
 // Date.prototype.getMilliseconds(1632285134)
 // Date.prototype.getMilliseconds(1632329324)
+
+const fetchForecast = () => {
+  fetch(API_FIVE_DAY_FORECAST)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("New Forecast JSON:", data);
+
+      let filteredFiveDays = data.list.filter((item) =>
+        item.dt_txt.includes("12:00")
+      );
+      console.log(filteredFiveDays);
+
+      filteredFiveDays.forEach((item) => {
+        fiveDayForcastContainer.innerHTML += `
+          <p>${new Date(item.dt_txt).toLocaleDateString("en-US", {
+            weekday: "short",
+          })}</p>
+        `;
+      });
+      // const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+      // let day = new Date(data.list[3].dt * 1000).getDay();
+
+      // console.log(`${days[day]}`);
+
+      // renderWeekdayData("monday", emojiObject.cloudy, "12", "25");
+      // renderWeekdayData(days[++day], "emoji", "12", "25");
+      // renderWeekdayData(days[++day], "emoji", "12", "25");
+      // renderWeekdayData(days[++day], "emoji", "12", "25");
+      // renderWeekdayData(days[++day], "emoji", "12", "25");
+    })
+    .catch((error) => console.error(error));
+};
+
+fetchForecast();
+
+// key: f9773f2491f9348664665c65e8d966c3
