@@ -19,9 +19,13 @@ const weatherContainer = document.getElementById ('weather-container');
     const up= rise.toLocaleTimeString ([], {
     timeStyle: 'short'
     })
-    weatherContainer.innerHTML += `<h3> Sunrise: ${up} `
-    })
-    
+    const set = new Date(json.sys.sunset * 1000);
+    const down = set.toLocaleTimeString([], {
+    timeStyle: 'short'
+    }) 
+    weatherContainer.innerHTML += `<h3> Sunrise: ${up} <h3> -Sunset: ${down} 
+    </h3> `
+    }); 
 });
 
 fetch(API_URL)
