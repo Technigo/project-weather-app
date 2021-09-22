@@ -24,3 +24,5 @@ fetch(WEATHER_API_URL)
             <p>Description: ${weatherData.weather[0].description}</p>
         `        
     })
+
+    test
