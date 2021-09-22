@@ -18,12 +18,18 @@ fetch(API_URL)
     console.log("temp:", json.main.temp);
     const tempDecimal = json.main.temp.toFixed(0); //Kriss&Sofia took the decimal away!
     console.log(tempDecimal);
-    temp.innerHTML = `
-    <p>${tempDecimal}°c</p>`;
+    // temp.innerHTML = `
+    // <p>${tempDecimal}°c</p>`;
 
     console.log("description:", json.weather[0].description);
     description.innerHTML = `
-    <p>${json.weather[0].description}</p>`;
+    <p>${json.weather[0].description} | ${tempDecimal}°C</p>`;
+
+    console.log("main:", json.weather[0].main);
+    if (json.weather[0].main === 'Clear') {
+        body.style.background = 
+    }
+
     console.log("suntimes:", json.sys.sunset);
 
     const rise = new Date(json.sys.sunrise * 1000); // new Date() shows todays date. The json.sys.sunrise gets the time for the sunrise in ms x 1000 to get a whole second
@@ -32,7 +38,7 @@ fetch(API_URL)
       hour: "2-digit", // show the time as 00:00 hour/minute
       minute: "2-digit",
     });
-    sunTime.innerHTML = `<p>Sunrise: ${up}</p>`;
+    sunTime.innerHTML = `<p>Sunrise ${up}</p>`;
 
     console.log("SUNRISE:", rise);
     const set = new Date(json.sys.sunset * 1000);
@@ -41,5 +47,5 @@ fetch(API_URL)
       minute: "2-digit",
     });
     console.log("SUNSET:", set);
-    sunTime.innerHTML += `<p>Sunset: ${down}</p>`;
+    sunTime.innerHTML += `<p>Sunset ${down}</p>`;
   });
