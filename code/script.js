@@ -14,10 +14,18 @@ const weatherContainer = document.getElementById ('weather-container');
     <h3> To day the temperatur is ${json.main.temp.toFixed(1)} </h3> 
     </div>`
     json.weather.forEach((weather)=> {weatherContainer.innerHTML += 
-      `<h3> The weather conditions are ${weather.description}`
+      `<h3> The weather conditions are ${weather.description}</h3> `
     
-    })
-    
+    const set = new Date(json.sys.sunset * 1000);
+    const down = set.toLocaleTimeString([], {
+    timeStyle: 'short'
+    }) 
+    weatherContainer.innerHTML += `
+    <h3> Sunset: ${down} 
+    </h3>
+    `
+      });
+      
 });
 
 fetch(API_URL)
