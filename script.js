@@ -1,8 +1,8 @@
 console.log("Hello world!");
-const API_KEY = 
+const API_KEY =
   "96cb0f55d34310e596ed4792c7800540"
-const FORECAST_API = 
-    "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm&units=metric&appid=96cb0f55d34310e596ed4792c7800540";
+const FORECAST_API =
+  "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm&units=metric&appid=96cb0f55d34310e596ed4792c7800540";
 const WEATHER_API =
   "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=96cb0f55d34310e596ed4792c7800540";
 const weatherContainer = document.getElementById("weather");
@@ -17,9 +17,7 @@ const fetchData = () => {
       console.log("This is data", data);
       console.log("This is data.main.temp", data.main.temp);
 
-      // const decimal = Math.round(data.main.temp * 10) / 10;
-      const decimal = num.toFixed(1); 
-    
+      const decimal = (data.main.temp).toFixed(1) // 
 
       weatherContainer.innerHTML = `
           <h2> City: ${data.name}</h2>
@@ -43,47 +41,42 @@ const fetchForecastData = () => {
       return res.json();
     })
     .then((data) => {
-      
+
+      // display the next 5 days  with filtered info (once a day at 12:00)
       const filteredForecast = data.list.filter(item => item.dt_txt.includes('12:00'))
       console.log("THIS IS THE filter", filteredForecast)
 
-      filteredForecast.forEach((object) =>{
-        console.log("This is the forecast data", filteredForecast[0].main.temp);
-        console.log("this is the date", data.list[0].dt_txt)
-  
-         const decimal = Math.round((data.list[0].main.temp * 1) / 1);
-         
-        const date = new Date(data.list[0].dt_txt)
-        const tomorrow = date.getDay();
-        const forecastDay = tomorrow - 1
-        console.log ("this is the day",tomorrow)
-        console.log("this is dayx", forecastDay)
-        console.log (date)
-        
-  
-        var weekday=new Array(7);
-          weekday[0]="Monday";
-          weekday[1]="Tuesday";
-          weekday[2]="Wednesday";
-          weekday[3]="Thursday";
-          weekday[4]="Friday";
-          weekday[5]="Saturday";
-          weekday[6]="Sunday";
-         
-       console.log(`Today is ${weekday[forecastDay]}`);
-        
-        forecastContainer.innerHTML += `
-          <h3> Today is ${weekday[forecastDay]} </h3>
-          <h3> the tempature is ${decimal}&#176 Celsius </h3>
+      // forEach 5 days info for each days in the filtered array
+      filteredForecast.forEach((object) => {
+
+        const decimal = (object.main.temp).toFixed(0) // make the temperature integer
+
+        const date = new Date(object.dt_txt); // full date with day month and year
+        const days = date.toLocaleDateString('en-SE', {
+          weekday: 'long'
+        }); // display the day with the name only Tuesday,Wednesday,Monday etc.. 
+        console.log("the next day is", days) // the next day is wednesday etc. 
+
+
+        console.log("the next day is", object.weather[0].main)
+
+        // 5 days name & temperature & description of the weather
+        forecastContainer.innerHTML += ` 
+        <div>
+          <h2> ${days} </h2>
+          <h3> ${decimal}°C {icons} </h3>
+          <h3> ${object.weather[0].description} </h3> 
+        </div>
         `;
+        //<img id="iconID" class="icons" alt="" src="./Designs/Design-1/icons/rain.png">
 
       })
-     
 
 
 
 
-       
+
+
     })
     .catch((error) => {
       console.error("caught error", error);
