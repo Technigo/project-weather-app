@@ -5,6 +5,7 @@ const API_FORECAST =
 const cityName = document.getElementById('name');
 const temp = document.getElementById('temp');
 const description = document.getElementById('description');
+const humidity = document.getElementById("humidity");
 const forecast = document.getElementById('forecast');
 const displayWeekdays = document.getElementById('displayWeekdays');
 
@@ -27,6 +28,9 @@ fetch(API_URL)
     // console.log("description:", json.weather[0].description);
     description.innerHTML = `
     <p>${json.weather[0].description}</p>`;
+
+    humidity.innerHTML =`
+    <p>${json.main.humidity}% relative humidity</p>`;
   });
 
 fetch(API_FORECAST)
@@ -45,7 +49,7 @@ fetch(API_FORECAST)
       forecast.innerHTML += `
       <p>${tempOfTheDay}°C ${descriptNow}</p>`
     })
-  })
+ 
     // const filterForecastDecimal = filteredForecast[0].main.temp.toFixed(0)
     // const filterForecastDecimalTwo = filteredForecast[1].main.temp.toFixed(0)
     // const filterForecastDecimalThree = filteredForecast[2].main.temp.toFixed(0)
@@ -106,4 +110,4 @@ fetch(API_FORECAST)
       ${weekday[day]}
       `;
     });
-  ;
+  });
