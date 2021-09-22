@@ -23,7 +23,7 @@ fetch(API_URL)
     <h2>Sunset: ${formattedHourSunset}</h2>
     `
     //If else statement med de olika ikonerna
-    weatherContainer.innerHTML += `
+    text.innerHTML += `
     
     <img src="./Designs/Design-2/icons/noun_Cloud_1188486.svg" alt="cloud icon">
     <img src="./Designs/Design-2/icons/noun_Sunglasses_2055147.svg" alt="sunglasses icon">
