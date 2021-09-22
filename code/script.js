@@ -1,6 +1,14 @@
 // Global variables
-const fiveDayForcastContainer = document.getElementById("fiveDayForecast");
-const API_FIVE_DAY_FORECAST = "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=f9773f2491f9348664665c65e8d966c3";
+const fiveDayForecastContainer = document.getElementById("fiveDayForecast");
+const API_FIVE_DAY_FORECAST =
+  "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=f9773f2491f9348664665c65e8d966c3";
+
+const currentWeatherPictureContainer = document.getElementById(
+  "currentWeatherPictureContainer"
+);
+const cityName = document.getElementById("cityName");
+const currentTemperature = document.getElementById("currentTemperature");
+const currentWeatherStatus = document.getElementById("currentWeatherStatus");
 
 // Object with all emoji
 // https://stackoverflow.com/questions/37103988/is-it-possible-to-set-an-image-source-on-a-javascript-object-property
@@ -34,21 +42,31 @@ const staticImg = {
 
 // this part wont work cause there is no generic functions anymore
 const fetchWeather = () => {
-  fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=f9773f2491f9348664665c65e8d966c3")
+  fetch(
+    "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=f9773f2491f9348664665c65e8d966c3"
+  )
     .then((response) => response.json())
     .then((data) => {
       console.log("The data from the json:", data);
-      // console.log("max tem", Math.floor(data.main.temp_max));
-      const sunrise = data.sys.sunrise;
-      const sunset = data.sys.sunset;
-      renderCurrentWeather(
-        Math.floor(data.main.temp),
-        dayWeatherPicture,
-        data.name,
-        data.weather[0].description
-        // Date.prototype.getTime(sunrise),
-        // Date.prototype.getTime(sunset)
-      );
+      console.log("max tem", Math.floor(data.main.temp_max));
+      // const sunrise = data.sys.sunrise;
+      // const sunset = data.sys.sunset;
+
+      // renderCurrentWeather(
+      //   Math.floor(data.main.temp),
+      //   dayWeatherPicture,
+      //   data.name,
+      //   data.weather[0].description
+      //   // Date.prototype.getTime(sunrise),
+      //   // Date.prototype.getTime(sunset)
+      // );
+
+      currentTemperature.innerHTML = `${Math.floor(data.main.temp_max)}°`;
+      currentWeatherPictureContainer.innerHTML = `
+      <img class="currentWeatherImg" src="${emojiObject.cloudy.src}"/>
+      `;
+      cityName.innerHTML = `${data.name}`;
+      currentWeatherStatus.innerHTML = `${data.weather[0].description}`;
     })
     .catch((error) => console.error(error));
 };
@@ -66,13 +84,17 @@ const fetchForecast = () => {
     .then((data) => {
       console.log("New Forecast JSON:", data);
 
-      let filteredFiveDays = data.list.filter((item) => item.dt_txt.includes("12:00"));
+      let filteredFiveDays = data.list.filter((item) =>
+        item.dt_txt.includes("12:00")
+      );
       console.log(filteredFiveDays);
 
       filteredFiveDays.forEach((item) => {
-        fiveDayForcastContainer.innerHTML += `
+        fiveDayForecastContainer.innerHTML += `
         <div class="weekday-row">
-        <div class="forecast-content" id="week-day">${new Date(item.dt_txt).toLocaleDateString("en-US", {
+        <div class="forecast-content" id="week-day">${new Date(
+          item.dt_txt
+        ).toLocaleDateString("en-US", {
           weekday: "short",
         })}
         </div>

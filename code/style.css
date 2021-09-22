@@ -190,6 +190,11 @@ main {
   flex-flow: right;
   align-content: center;
   justify-content: center;
+  align-items: center;
+}
+
+.currentWeatherImg {
+  height: 55px;
 }
 
 .current-weather-picture {
