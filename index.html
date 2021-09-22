@@ -11,59 +11,71 @@
     <title>Weather App</title>
 </head>
 <body>
-    <header class="header" id="header">
+    <div class="content-wrapper">
+        <header class="header" id="header">
 
-        <div class="hamburger">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
 
-    <section class="header-styling"> 
-        
-        <div class="wrapper">
-            <h1 class="temperature" id="currentTemp">
-                15°C
-            </h1>
+            <section class="header-styling"> 
+                
+                <div class="wrapper">
+                    <h1 class="temperature" id="currentTemp">
+                        15°C
+                    </h1>
 
-            <h2 class="city" id="currentCity">
-                London
-            </h2>
+                    <h2 class="city" id="currentCity">
+                        London
+                    </h2>
 
-            <h3 class="description" id="currentDescription">
-                Cloudy
-            </h3>
-            
+                    <h3 class="description" id="currentDescription">
+                        Cloudy
+                    </h3>
+                    
 
-            <section class="sun" 
-            id="sun">
-                <div class="sunrise" id="sunrise">
-                    Sunrise: 
+                    <section class="sun" 
+                    id="sun">
+                        
+                            <div class="sunrise" id="sunrise">
+                                Sunrise: 
+                            </div>
+                            <div class="sunrise-time" id="sunriseTime">05:00</div>
+                        
+                        
+                            <div class="sunset">
+                                Sunset:
+                            </div>
+                            <div class="sunset-time" id="sunsetTime">22:00</div>
+                        
+                    </section>
+                    <div class="button-image">
+                        <img src="" alt="">
+                    </div>
                 </div>
-                <div class="sunrise-time" id="sunriseTime">05:00</div>
-                <div class="sunset">
-                    Sunset:
+                
+                <div class="header-image" id="headerImage">
+                    <img src="./Designs/Design-1/assets/sun_icon.png" alt="">
+
                 </div>
-                <div class="sunset-time" id="sunsetTime">22:00</div>
             </section>
-        </div>
+
+        </header>
+        <section class="forecast-container" id="forecast">
+            <div class="html-row" id="htmlRow">
+                <span>Monday</span>
+                <span> 🌤</span>
+                <span>10°C</span>
+            </div>
         
-        <div class="header-image" id="headerImage">
-            <img src="./Designs/Design-1/assets/sun_icon.png" alt="">
-
-        </div>
-    </section>
-
-    </header>
-    <section class="forecast-container" id="forecast">
-        <div class="html-row" id="htmlRow">
-            <span>Monday</span>
-            <span> 🌤</span>
-            <span>10°C</span>
-        </div>
-
-    </section>
+        </section>
+            
         <div id="test" class="test"></div>
+
+    </div>
     <script src="script.js"></script>
+
 </body>
 </html>

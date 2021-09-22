@@ -8,6 +8,10 @@ html {
 body {
 background-color: white;
 }
+.content-wrapper{
+  max-width: 700px;
+  margin: 0 auto;
+}
 
 .header {
 height: 350px;
@@ -45,10 +49,12 @@ position: relative; */
 } */
 
 .header-image img {
-  width: 125px;
-  height: 125px;
+  width: 100%;
   max-width: 150px;
+  min-width: 75px;
+  
 }
+
 .wrapper {
    margin: 0 30px; 
    padding: 15px 0;
@@ -69,7 +75,7 @@ position: relative; */
 .forecast-container {
 
   width: 70%;
-  border: black solid 2px;
+  /*border: black solid 2px;*/
   justify-content: center;
   margin: 20px auto;
 }
@@ -78,19 +84,41 @@ position: relative; */
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
   align-items: center;
-  justify-items: center;
-  background-color: cadetblue;
+  background-color: white;
+  padding: 10px 10px;
 }
+.html-row:hover{
+  background-color: #EFF3F6;
+  border: solid 1px #EFF3F6;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
 .js-row{
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
   align-items: center;
-  justify-items: center;
   background-color: lightcoral;
+  padding: 10px 0;
 }
 
 /* Sunrise/Sunset */
 .sun {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 2fr 1fr;
 }
+
+
+.sunrise-time, .sunset-time {
+  padding: 0 5px;
+ 
+}
+
+.sunrise, .sunset {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+}
+
+
