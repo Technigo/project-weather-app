@@ -13,8 +13,8 @@ background-color: white;
 height: 350px;
 width: 100%;
 background-image: linear-gradient(#95A1E4,#A2C8E9);
-border-bottom-right-radius: 200px 200px;
-border-bottom-left-radius: 150px 200px;
+border-radius: 0 0 50% 50%/0 0 100% 100%;
+/* transform: scaleX(1.5); */
 }
 
 .hamburger {
@@ -33,7 +33,20 @@ border-bottom-left-radius: 150px 200px;
     background: white;
    
   }
+.header-styling {
+  display: flex;
+  flex-direction: row;
 
+}
+.header-image{
+  
+}
+
+.header-image img {
+  width: 125px;
+  height: 125px;
+  max-width: 150px;
+}
 .wrapper {
    margin: 0 30px; 
    padding: 15px 0;
