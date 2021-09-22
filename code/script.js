@@ -10,7 +10,7 @@ const weatherContainer = document.getElementById ('weather-container');
    console.log(json)
     weatherContainer.innerHTML = `
     <div> <h3>Weather in ${json.name}</h3> 
-    <h3> To day the temperatur is ${json.main.temp.toFixed(1)} </h3> 
+    <h3>${json.main.temp.toFixed(1)}°</h3> 
     </div>`
     json.weather.forEach((weather)=> {weatherContainer.innerHTML += 
       `<h3> The weather conditions are ${weather.description}</h3> `
@@ -23,8 +23,9 @@ const weatherContainer = document.getElementById ('weather-container');
     const down = set.toLocaleTimeString([], {
     timeStyle: 'short'
     }) 
-    weatherContainer.innerHTML += `<h3> Sunrise: ${up} <h3> -Sunset: ${down} 
-    </h3> `
+    weatherContainer.innerHTML += `<h3> Sunrise: ${up} 
+    <div>Sunset: ${down} 
+    </h3> </div>`
     }); 
 });
 
@@ -33,20 +34,34 @@ fetch(API_URL)
   return response.json() 
 } )
 .then((json) => {
- 
   const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
-  console.log(filteredForecast)
-  filteredForecast.map((item) => {
+  filteredForecast.forEach((item) => { 
   weatherContainer.innerHTML += 
   ` <div>
- <h3>In ${item.dt_txt} ${json.city.name} is the temp ${item.main.temp.toFixed(1)}</h3> 
+ <h3> ${new Date(item.dt_txt).toLocaleDateString("en-US",{weekday:'short'}) } ${item.main.temp.toFixed(1)}°</h3> 
    
     </div> 
   `
  })
 });
- 
+
 
 // .catch((error) => console.error (error)); 
 
-  
+// TEST FROM STACK OVERFLOW 
+// if(!forecastSelector(element)) {
+//   return 
+// }
+// const elementDate= new Date(element.dt*1000)
+// const dayNode = document.createElement("P") 
+// dayNode.appendChild(document.createTextNode(`${WEEKDAY_SHORT[elementDate.getDay()]}`))
+
+// const WEEKDAY_SHORT = [
+//   "Sun",
+//   "Mon",
+//   "Tue",
+//   "Wed",
+//   "Thu",
+//   "Fri",
+//   "Sat",
+// ]
