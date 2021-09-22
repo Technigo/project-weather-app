@@ -7,8 +7,71 @@
   }
 
   body{
-    background-image: var(--hot); 
-    background-size: cover;
+    font-family: 'Roboto', sans-serif;
+    background-color: white;
+    margin: 0;
+  }
+
+ .weather-today-container {
+   background-color: lightblue; 
+   background-size: cover;
+   height: 40vh;
+   border-radius: 0 0 20% 20%;
+   padding: 10px;
+ }
+
+ .weather-container-div {
+   width: 90%;
+   margin: auto;
+ }
+
+ .sunrise-sunset {                 /* This is created in js and needed for showing the data for sunrise/sunset in one line */
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+ }
 
 
+ #temp-now {
+   font-size: 45px;
+   margin-bottom: 0;
+ }
+
+ #city-now {
+   font-size: 20px;
+   margin: 0;
+ }
+
+ #weather-now {
+  margin-top: 0;
+}
+
+ .weather-forecast-container {
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr 1fr;
+ }
+
+.cities-wrapper {
+  position: relative;
+}
+
+ .hamburger div {
+  background-color: white;
+  width: 40px;
+  height: 3px;
+  margin: 8px;
+  border-radius: 10px;
+ }
+
+  .dropdown {
+  background-color: white;
+  width: 45%;
+  position: absolute;
+  border: 1px solid black;
+  display: none;
+}
+
+/* This is not working at the moment. I have tried to write it in different ways here and in the js file but I don't get it to work. Can some of you maybe have a look? */
+  .open-dropdown + .dropdown {
+  display: block;
   }

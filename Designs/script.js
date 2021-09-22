@@ -1,4 +1,7 @@
 const weatherData = document.getElementById("weatherdata");
+const weatherToday = document.getElementById("weather-today");
+const weatherForecast = document.getElementById("weather-forecast");
+const dropdownCities = document.getElementById ('dropdown-cities');
 
 let userPosition
 
@@ -7,6 +10,35 @@ const API_URL =
 
 const API_FORCAST =
 	"https://api.openweathermap.org/data/2.5/forecast?q=stockholm,Sweden&units=metric&APPID=5caaaf25021b2d7aa4d206126b6a3351";
+
+
+//Hamburger menu - Not working, maybe one of you can have a look?  
+
+//when clicking on the hamburger menu the toggle function is invoked
+const hamburger = document.getElementById('hamburger') //we could move this when it is working
+hamburger.addEventListener('click', () => {
+  toggle()
+})
+
+//opens and closes the dropdown
+const toggle = () => {
+  this.classList.toggle('open-dropdown')
+} 
+
+const handleWeatherApiResponse = (forecastForCity) => {
+  console.log(forecastForCity)
+  //copied other template so we see changes in live in chrome. we can remove this when we merge and add getForecastForCity and the API.
+  weatherToday.innerHTML = `
+  <p>City: ${forecastForCity.name}</p>
+  <p>Temp: ${forecastForCity.main.temp.toFixed(1)}°C</p>  
+  <p>Weather: ${forecastForCity.weather[0].description}</p>
+  `
+}
+
+const onCityChanged = () => {
+  getForecastForCity (dropdownCities.value, handleWeatherApiResponse);
+  }
+dropdownCities.addEventListener('change', onCityChanged);
 
 fetch(API_URL)
   .then((response) => response.json())
@@ -21,22 +53,28 @@ fetch(API_URL)
     sunset = new Date(sunset*1000);
     sunset = sunset.toLocaleTimeString([], {timeStyle: 'short'});
 
-    weatherData.innerHTML = `
-      <p>City: ${data.name}</p>
-      <p>Temp: ${data.main.temp.toFixed(1)}°C</p>  
-      <p>Weather: ${data.weather[0].description}</p>
-      <p>Sunrise: ${sunrise}</p>
-      <p>Sunset: ${sunset}</p>
+    weatherToday.innerHTML += `
+      <div class="weather-container-div">
+        <p id="temp-now">${data.main.temp.toFixed(1)}°C</p> 
+        <p id="city-now">${data.name}</p>
+        <p id="weather-now">${data.weather[0].description}</p>
+        <div class="sunrise-sunset">
+          <span>sunrise</span>
+          <span>${sunrise}</span>
+          <span>sunset</span>
+          <span>${sunset}</span>
+        </div>
+      </div>  
       `; // toFixed(1) rounds the temp to one decimal
 
     temp =  data.main.temp 
     
       if (temp >= 25 && temp <= 65) {
-        document.body.style.background = 'var(--hot)'
+        weatherToday.style.background = 'var(--hot)'
       } else if (temp >= 0 && temp <= 24) {
-        document.body.style.background = 'var(--moderate)'
+        weatherToday.style.background = 'var(--moderate)'
       } else {
-        document.body.style.background = 'var(--cold)'
+        weatherToday.style.background = 'var(--cold)'
       }
 
     })
@@ -50,11 +88,13 @@ fetch(API_FORCAST)
 			day.dt_txt.includes("12:00")
 		);
 
+
+// <h3>${day.dt_txt}</h3> This should be changed to show just the weekday (like Monday, Tuesday...)   
 		forecastDay.forEach((day) => {
-			weatherData.innerHTML += `
-      <h3>${day.dt_txt} </h3>
-      <p>Temp: ${day.main.temp.toFixed(1)}°C</p> 
-	  <p>Feels like: ${day.main.feels_like.toFixed(1)}°C</p> 
+			weatherForecast.innerHTML += `
+      <h3>${day.dt_txt}</h3>
+      <p>🌡️${day.main.temp.toFixed(1)}°C</p> 
+	    <p>Feels like: ${day.main.feels_like.toFixed(1)}°C</p> 
       <p>Weather: ${day.weather[0].description}</p>
     `;
 		});
@@ -91,21 +131,9 @@ const showPosition = (position) => {
   }
   console.log('lat', position.coords.latitude, 'long', position.coords.longitude)
 }
-  
 
 
-const dropdownCities = document.getElementById ('dropdown-cities');
-const handleWeatherApiResponse = (forecastForCity) => {
-  console.log(forecastForCity)
- //copied other template so we see changes in live in chrome. we can remove this when we merge and add getForecastForCity and the API.
-  weatherData.innerHTML = `
-  <p>City: ${forecastForCity.name}</p>
-  <p>Temp: ${forecastForCity.main.temp.toFixed(1)}°C</p>  
-  <p>Weather: ${forecastForCity.weather[0].description}</p>
-  `
-}
 
-const onCityChanged = () => {
-  getForecastForCity (dropdownCities.value, handleWeatherApiResponse);
-  }
-dropdownCities.addEventListener('change', onCityChanged);
+
+
+
