@@ -15,7 +15,7 @@
  .weather-today-container {
    background-color: lightblue; 
    background-size: cover;
-   height: 40vh;
+   height: 25vh;
    border-radius: 0 0 20% 20%;
    padding: 10px;
  }
@@ -55,14 +55,6 @@
   position: relative;
 }
 
- .hamburger div {
-  background-color: white;
-  width: 40px;
-  height: 3px;
-  margin: 8px;
-  border-radius: 10px;
- }
-
   .dropdown {
   background-color: white;
   width: 45%;
@@ -75,3 +67,101 @@
   .open-dropdown + .dropdown {
   display: block;
   }
+
+.nav {
+  background-color: transparent;
+  padding-left: 10px;
+}
+  
+.burger-menu {
+  grid-column: span 12;
+  padding: 5px;
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 3px;
+}
+
+.burger-menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+}
+
+.burger-menu li a {
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+/* nav start */
+
+.burger-menu a {
+  color: black;
+  cursor: pointer;
+}
+
+.burger-menu .menu {
+  clear: both;
+  max-height: 0;
+  transition: max-height .2s ease-out;
+}
+
+.burger-menu .menu-icon {
+  cursor: pointer;
+  margin-left: 30px;
+  padding: 28px 20px;
+  position: relative;
+  user-select: none;
+}
+
+.burger-menu .menu-icon .navicon {
+  background: #333;
+  display: block;
+  height: 2px;
+  position: relative;
+  transition: background .2s ease-out;
+  width: 18px;
+}
+
+.burger-menu .menu-icon .navicon:before, .burger-menu .menu-icon .navicon:after {
+  background: #333;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all .2s ease-out;
+  width: 100%;
+}
+
+.burger-menu .menu-icon .navicon:before {
+  top: 5px;
+}
+
+.burger-menu .menu-icon .navicon:after {
+  top: -5px;
+}
+
+.burger-menu .menu-btn {
+  display: none;
+}
+
+.burger-menu .menu-btn:checked~.menu {
+  max-height: 200px;
+}
+
+.burger-menu .menu-btn:checked~.menu-icon .navicon {
+  background: transparent;
+}
+
+.burger-menu .menu-btn:checked~.menu-icon .navicon:before {
+  transform: rotate(-45deg);
+}
+
+.burger-menu .menu-btn:checked~.menu-icon .navicon:after {
+  transform: rotate(45deg);
+}
+
+.burger-menu .menu-btn:checked~.menu-icon:not(.steps) .navicon:before, .burger-menu .menu-btn:checked~.menu-icon:not(.steps) .navicon:after {
+  top: 0;
+}
