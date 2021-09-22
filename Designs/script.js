@@ -8,7 +8,7 @@ let userPosition
 const API_URL =
   "https://api.openweathermap.org/data/2.5/weather?q=stockholm,Sweden&units=metric&APPID=5caaaf25021b2d7aa4d206126b6a3351";
 
-const API_FORCAST =
+const API_Forecast =
 	"https://api.openweathermap.org/data/2.5/forecast?q=stockholm,Sweden&units=metric&APPID=5caaaf25021b2d7aa4d206126b6a3351";
 
 
@@ -81,28 +81,50 @@ fetch(API_URL)
     .catch((error) => console.error("Error: ", error))
     .finally(() => console.log("Request done"));
 
-fetch(API_FORCAST)
-	.then((res) => res.json())
-	.then((forecast) => {
-		const forecastDay = forecast.list.filter((day) =>
-			day.dt_txt.includes("12:00")
-		);
+// fetch(API_FORCAST)
+// 	.then((res) => res.json())
+// 	.then((forecast) => {
+// 		const forecastDay = forecast.list.filter((day) =>
+// 			day.dt_txt.includes("12:00")
+// 		);
 
 
-// <h3>${day.dt_txt}</h3> This should be changed to show just the weekday (like Monday, Tuesday...)   
-		forecastDay.forEach((day) => {
-			weatherForecast.innerHTML += `
-      <h3>${day.dt_txt}</h3>
-      <p>🌡️${day.main.temp.toFixed(1)}°C</p> 
-	    <p>Feels like: ${day.main.feels_like.toFixed(1)}°C</p> 
-      <p>Weather: ${day.weather[0].description}</p>
-    `;
-		});
-	})
-	.catch((error) => console.error("Error: ", error))
-	.finally(() => console.log("Request done"));
+// // <h3>${day.dt_txt}</h3> This should be changed to show just the weekday (like Monday, Tuesday...)   
+// 		forecastDay.forEach((day) => {
+// 			weatherForecast.innerHTML += `
+//       <h3>${day.dt_txt}</h3>
+//       <p>🌡️${day.main.temp.toFixed(1)}°C</p> 
+// 	    <p>Feels like: ${day.main.feels_like.toFixed(1)}°C</p> 
+//       <p>Weather: ${day.weather[0].description}</p>
+//     `;
+// 		});
+// 	})
+// 	.catch((error) => console.error("Error: ", error))
+// 	.finally(() => console.log("Request done"));
 
 
+  fetch(API_Forecast)
+      .then((Response) => { 
+          return Response.json()
+      })
+      .then ((json) => {
+          const filteredForecast = json.list.filter(item =>
+          item.dt_txt.includes("12:00")
+          );
+          filteredForecast.forEach(day => {
+              let date = new Date(day.dt * 1000);
+              let dayName = date.toLocaleDateString("en-US", { weekday: "long" });
+              const dayTemp = day.main.temp;
+              const weekTemp = dayTemp.toFixed(0.1);
+         		
+  
+              document.getElementById('forecastDay').innerHTML += `<p>${dayName}</p>`
+              document.getElementById('forecastTemp').innerHTML += `<p>${weekTemp}°C</p>
+              <p>🌡️${day.main.temp.toFixed(1)}°C</p>`
+              document.getElementById('forecastIcon').innerHTML += `<img src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png"/>
+              <p>Weather: ${day.weather[0].description}</p>`
+      });  
+  });
 
 const getForecastForCity = (cityName, callbackFunction) => {
   fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=5caaaf25021b2d7aa4d206126b6a3351`)
