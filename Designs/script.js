@@ -21,8 +21,7 @@ fetch(API_URL)
 
     `; // toFixed(1) rounds the temp to one decimal
 
-
-	temp = data.main.temp
+	temp =  data.main.temp 
 	
 		if (temp >= 25 && temp <= 65) {
 			document.body.style.background = 'var(--hot)'
@@ -61,13 +60,6 @@ fetch(API_FORCAST)
 	
 	
 	
-	backgroundColor()
-=======
-    `// toFixed(1) rounds the temp to one decimal
-  })
-  .catch((error) => console.error('Error: ', error))
-  .finally(() => console.log('Request done'))
-
 
 const getForecastForCity = (cityName, callbackFunction) => {
   fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=5caaaf25021b2d7aa4d206126b6a3351`)
