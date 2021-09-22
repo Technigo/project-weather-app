@@ -26,31 +26,50 @@ fetch(API_KEY)
     const sunsetRealTime = new Date(sunsetTime * 1000); // converts the sunset miliseconds time to normaltime
     //calling the functions to get only hours and minutes.
     const temperatureRounded = Math.floor(json.main.temp);
-    const [sunriseHour, sunriseMinutes, sunsetHour, sunsetMinutes] = [
+    let [sunriseHour, sunriseMinutes, sunsetHour, sunsetMinutes] = [
       sunriseRealTime.getHours(),
       sunriseRealTime.getMinutes(),
       sunsetRealTime.getHours(),
       sunsetRealTime.getMinutes(),
     ];
-    console.log(json);
-    console.log(json.weather[0].main, json.weather[0].main === "Clear" )
-    if (json.weather[0].main === "Clear") { 
+
+    if (sunriseHour < 10) {
+      sunriseHour = sunriseHour.toString().padStart(2, "0");
+    }
+
+    if (sunriseMinutes < 10) {
+      sunriseMinutes = sunriseMinutes.toString().padStart(2, "0");
+    }
+
+    if (sunsetMinutes < 10) {
+      sunsetMinutes = sunsetMinutes.toString().padStart(2, "0");
+    }
+
+    if (sunsetHour < 10) {
+      sunsetHour = sunsetHour.toString().padStart(2, "0");
+    }
+
+    if (json.weather[0].main === "Clear") {
       mainSection.classList.add("sunny");
-      console.log(mainSection)
+      console.log(mainSection);
       weatherH1.innerHTML = `Get your sunnies on ${json.name} is looking rather great today!`;
       pictureWeather.setAttribute(
         "src",
         "./Designs/Design-2/icons/noun_Sunglasses_2055147.svg"
       );
-    
-    } else if (json.weather[0].main === "Rain" || json.weather.main === "Drizzle" ||  json.weather.main === "Thunderstorm" ||  json.weather.main === "Snow") {
+    } else if (
+      json.weather[0].main === "Rain" ||
+      json.weather.main === "Drizzle" ||
+      json.weather.main === "Thunderstorm" ||
+      json.weather.main === "Snow"
+    ) {
       mainSection.classList.add("rainy");
       weatherH1.innerHTML = `Don't forget your umbrella. It's wet in ${json.name} today!`;
       pictureWeather.setAttribute(
         "src",
         "/Designs/Design-2/icons/noun_Umbrella_2030530.svg"
       );
-    } else { 
+    } else {
       mainSection.classList.add("cloudy");
       weatherH1.innerHTML = `Light a fire and get cosy. ${json.name} is looking grey today!`;
       pictureWeather.setAttribute(
@@ -61,17 +80,17 @@ fetch(API_KEY)
 
     weatherDisplay.innerHTML = `
     <div>
-    <p>city: ${json.name}</p>
+    <p>City: ${json.name}</p>
     <p> ${temperatureRounded} °C</p>
     <p>Type of weather: ${json.weather[0].description}</p>
     <p>Sunrise: ${sunriseHour}:${sunriseMinutes}</p>
     <p>Sunset: ${sunsetHour}:${sunsetMinutes}</p>
     </div>
-    `
+    `;
   })
-  .catch(error => {
-    console.error('error', error)
-  })
+  .catch((error) => {
+    console.error("error", error);
+  });
 
 // SECOND FETCH
 fetch(fiveDaysForcast) //getting info from api url above
@@ -84,7 +103,6 @@ fetch(fiveDaysForcast) //getting info from api url above
     const filterWeather = fiveDaysWeather.list.filter((item) =>
       item.dt_txt.includes("12:00")
     );
-    // console.log(filterWeather);
     //create an array with our weekdays
     const weekdays = [
       "sunday",
@@ -117,8 +135,8 @@ fetch(fiveDaysForcast) //getting info from api url above
       <p> ${roundedTemperature}°C </p>
       </div> 
   `;
-    })
+    });
   })
-.catch(error => {
-  console.error('error', error)
-})
+  .catch((error) => {
+    console.error("error", error);
+  });
