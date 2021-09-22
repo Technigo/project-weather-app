@@ -7,9 +7,6 @@ const cityBtn = document.getElementById("cityBtn");
 const backgroundImg = document.getElementById("backgroundImg");
 const cityInput = document.getElementById("cityInput");
 
-let WEATHER_API = `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=5000cd66a9090b2b62f53ce8a59ebd9e`;
-
-let FIVE_DAYS = `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=5000cd66a9090b2b62f53ce8a59ebd9e`;
 
 // Global variables
 let city = "";
@@ -24,46 +21,24 @@ const createWeatherImg = (url, alt) => {
 };
 
 // Creating images for different weather types
-const cloudyImg = createWeatherImg("./assets/cloud-icon.png", "clouds");
-const rainImg = createWeatherImg("./assets/rain-icon.png", "rain");
-const sunImg = createWeatherImg("./assets/sun-icon.png", "sun");
-const windImg = createWeatherImg("./assets/wind-icon.png", "wind");
-const stormImg = createWeatherImg("./assets/storm-icon.png", "storm");
-const snowImg = createWeatherImg("./assets/snow-icon.png", "snow");
-const partlycloudyImg = createWeatherImg(
+const cloudyIcon = createWeatherImg("./assets/cloud-icon.png", "clouds");
+const rainIcon = createWeatherImg("./assets/rain-icon.png", "rain");
+const sunIcon = createWeatherImg("./assets/sun-icon.png", "sun");
+const windIcon = createWeatherImg("./assets/wind-icon.png", "wind");
+const stormIcon = createWeatherImg("./assets/storm-icon.png", "storm");
+const snowIcon = createWeatherImg("./assets/snow-icon.png", "snow");
+const partlycloudyIcon = createWeatherImg(
     "./assets/partly-cloudy-icon.png",
     "partly cloudy"
 );
+const atmosphereIcon = createWeatherImg("./assets/atmosphere-icon.png", "atmosphere")
+const fogIcon = createWeatherImg("./assets/fog-icon.png");
 
 //Creating images for sunrise and sunset
-const sunriseImg = createWeatherImg("./assets/sunrise-icon.png", "sunrise");
-const sunsetImg = createWeatherImg("./assets/sunset-icon.png", "sunset");
+const sunriseIcon = createWeatherImg("./assets/sunrise-icon.png", "sunrise");
+const sunsetIcon = createWeatherImg("./assets/sunset-icon.png", "sunset");
 
-fetch(WEATHER_API)
-    .then((res) => res.json())
-    .then((data) => {
-        setBackgroundWeather(data);
-        let timezone = data.timezone
-        const timeOfSunrise = getTimeOf(data.sys.sunrise, timezone);
-        const timeOfSunset = getTimeOf(data.sys.sunset, timezone)
-        changeHeaderInnerHTML(data, timeOfSunrise, timeOfSunset);
-    })
-    .catch((error) => console.error("AAAAAAH!", error))
-    .finally(() => console.log("YAY!"));
 
-//Variables to prevent choosing past dates.
-//const currentDate = new Date()
-//const formattedDate = currentDate.toISOString().split('T')[0]
-
-// Five day forecast
-fetch(FIVE_DAYS)
-    .then((res) => res.json())
-    .then((data) => {
-        const filteredForecast = data.list.filter((item) =>
-            item.dt_txt.includes("12:00")
-        );
-        createFiveDayForecast(filteredForecast);
-    });
 
 
 function createFiveDayForecast(filteredForecast) {
@@ -84,11 +59,19 @@ function createFiveDayForecast(filteredForecast) {
 function chooseWeatherIcon(filteredForecast, i) {
     let main = filteredForecast[i].weather[0].main;
     if (main === "Clouds") {
-        weatherImg = cloudyImg;
+        weatherImg = cloudyIcon;
     } else if (main === "Rain") {
-        weatherImg = rainImg;
+        weatherImg = rainIcon;
+    } else if (main === "Thunderstorm") {
+        weatherImg = stormIcon;
+    } else if (main === "Drizzle") {
+        weatherImg = rainIcon;
+    } else if (main === "Fog" || main === "Mist") {
+        weatherImg = fogIcon;
+    } else if (main === "Snow") {
+        weatherImg = SnowIcon;
     } else {
-        weatherImg = sunImg;
+        weatherImg = sunIcon;
     }
 };
 
@@ -113,15 +96,15 @@ function getTimeOf(time, timezone) {
 
 //Creates innerHTML to display todays weather and temperatures in the header
 function changeHeaderInnerHTML(data, timeOfSunrise, timeOfSunset) {
-    today.innerHTML += `
+    today.innerHTML = `
         <h1>${data.name}</h1>
         <h2>${Math.round(data.main.temp * 10) / 10} °C</h2>
         <h5>Feels like: ${Math.round(data.main.feels_like * 10) / 10} °C</h5>
         <img src=${weatherImg.src} alt=${weatherImg.alt} class= "today-weather"/>
         <h3>${data.weather.map((item) => item.description)}</h3>
-        <h5 class="windpar"> <img src=${windImg.src} alt=${windImg.alt} class= "wind-icon"/>${Math.round(data.wind.speed * 10) / 10} m/s</h5>
-        <p class="sunrisepar"><img src=${sunriseImg.src} alt=${sunriseImg.alt} class= "sunrise"/>Sunrise: ${timeOfSunrise}</p>
-        <p class="sunsetpar"><img src=${sunsetImg.src} alt=${sunsetImg.alt} class= "sunset"/>Sunset: ${timeOfSunset}</p>
+        <h5 class="windpar"> <img src=${windIcon.src} alt=${windIcon.alt} class= "wind-icon"/>${Math.round(data.wind.speed * 10) / 10} m/s</h5>
+        <p class="sunrisepar"><img src=${sunriseIcon.src} alt=${sunriseIcon.alt} class= "sunrise"/>Sunrise: ${timeOfSunrise}</p>
+        <p class="sunsetpar"><img src=${sunsetIcon.src} alt=${sunsetIcon.alt} class= "sunset"/>Sunset: ${timeOfSunset}</p>
     `;
 };
 
@@ -129,41 +112,59 @@ function changeHeaderInnerHTML(data, timeOfSunrise, timeOfSunset) {
 function setBackgroundWeather(data) {
     let main = data.weather.map((item) => item.main);
     if (main.includes("Clouds")) {
-        weatherImg = cloudyImg;
-        document.querySelector("header").style.background =
-            "url(./assets/cloudy-day.jpg)";
-        document.querySelector("header").style.backgroundSize = "cover";
-        document.querySelector("header").style.backgroundPosition = "center";
+        weatherImg = cloudyIcon;
+        backgroundImg.classList = "clouds";
     } else if (main.includes("Rain")) {
-        weatherImg = rainImg;
-        document.querySelector("header").style.background =
-            "url(./assets/rainy-day.jpg)";
-        document.querySelector("header").style.backgroundSize = "cover";
-        document.querySelector("header").style.backgroundPosition = "center";
+        weatherImg = rainIcon;
+        backgroundImg.classList = "rain";
     } else if (main.includes("Drizzle")) {
-        weatherImg = rainImg;
-        document.querySelector("header").style.background =
-            "url(./assets/rainy-day.jpg)";
-        document.querySelector("header").style.backgroundSize = "cover";
-        document.querySelector("header").style.backgroundPosition = "center";
+        weatherImg = rainIcon;
+        backgroundImg.classList = "drizzle";
     } else if (main.includes("Snow")) {
-        weatherImg = snowImg;
-        document.querySelector("header").style.background =
-            "url(./assets/snowy-day.jpg)";
-        document.querySelector("header").style.backgroundSize = "cover";
-        document.querySelector("header").style.backgroundPosition = "center";
+        weatherImg = snowIcon;
+        backgroundImg.classList = "snow";
+    } else if (main.includes("Fog")) {
+        weatherImg = fogIcon;
+        backgroundImg.classList = "fog";
+    } else if (main.includes("Clear")) {
+        weatherImg = sunIcon;
+        backgroundImg.classList = "clear";
     } else {
-        weatherImg = sunImg;
-        document.querySelector("header").style.background =
-            "url(./assets/sunny-weather.jpg)";
-        document.querySelector("header").style.backgroundSize = "cover";
-        document.querySelector("header").style.backgroundPosition = "center";
+        weatherImg = atmosphereIcon;
+        backgroundImg.classList = "atmosphere";
     }
 };
 //Eventlisteners
 // DON"T DELETE, TO USE LATER!
 changeCity.addEventListener('change', (e) => {
+    today.innerHTML = ""
+    weatherContainer.innerHTML = ""
     let city = e.target.value
+    console.log(city)
+    let WEATHER_API = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=5000cd66a9090b2b62f53ce8a59ebd9e`;
+
+    let FIVE_DAYS = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=5000cd66a9090b2b62f53ce8a59ebd9e`;
+
+    fetch(WEATHER_API)
+        .then((res) => res.json())
+        .then((data) => {
+            setBackgroundWeather(data);
+            let timezone = data.timezone
+            const timeOfSunrise = getTimeOf(data.sys.sunrise, timezone);
+            const timeOfSunset = getTimeOf(data.sys.sunset, timezone)
+            changeHeaderInnerHTML(data, timeOfSunrise, timeOfSunset);
+        })
+        .catch((error) => console.error("AAAAAAH!", error))
+        .finally(() => console.log("YAY!"));
+
+    fetch(FIVE_DAYS)
+        .then((res) => res.json())
+        .then((data) => {
+            const filteredForecast = data.list.filter((item) =>
+                item.dt_txt.includes("12:00")
+            );
+            createFiveDayForecast(filteredForecast);
+        });
 
 });
 
@@ -183,7 +184,7 @@ changeCity.addEventListener('change', (e) => {
 //<h2>${Math.round(data.main.temp * 10) / 10} °C</h2>
 //<img src=${weatherImg.src} alt=${weatherImg.alt} class= "today-weather"/>
 //<h3>${data.weather.map((item) => item.description)}</h3>
-//<p class="sunrisepar"><img src=${sunriseImg.src} alt=${sunriseImg.alt} class= "sunrise"/>Sunrise: ${timeOfSunrise}</p>
+//<p class="sunrisepar"><img src=${sunriseIcon.src} alt=${sunriseIcon.alt} class= "sunrise"/>Sunrise: ${timeOfSunrise}</p>
 //
 //</section>
 //`;

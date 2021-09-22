@@ -16,15 +16,44 @@ html {
 
 /* Hero image and today's weather*/
 
-.background-image {
-  height: 75vh;
+#backgroundImg {
+  height: 65vh;
   opacity: 0.7;
-  background-position: center;
   background-repeat: no-repeat;
   position: relative;
   border-radius: 15px;
   margin-bottom: 10px;
   box-shadow: 5px 10px 18px #28212f5e;
+  background-position: center;
+  background-size: cover;
+}
+
+.clear {
+  background: url(./assets/sunny-weather.jpg);
+}
+
+.fog {
+  background: url(./assets/foggy-day.jpg);
+}
+
+.snow {
+  background: url(./assets/snowy-day.jpg);
+}
+
+.drizzle {
+  background: url(./assets/rainy-day.jpg);
+}
+
+.rain {
+  background: url(./assets/rainy-day.jpg);
+}
+
+.clouds {
+  background: url(./assets/cloudy-day.jpg);
+}
+
+.atmosphere {
+  background: url(./assets/atmosphere-image.jpg);
 }
 
 .today {
@@ -150,7 +179,7 @@ footer {
 /* Tablet view*/
 
 @media (min-width: 668px) and (max-width: 1024px) {
-  .background-image {
+  #backgroundImg {
     background-size: cover;
     height: 65vh;
   }
@@ -200,7 +229,7 @@ footer {
 /* Desktop view*/
 
 @media (min-width: 1025px) {
-  .background-image {
+  #backgroundImg {
     background-size: cover;
     height: 65vh;
   }
