@@ -1,6 +1,37 @@
 .weatherApp {
-    font-family: "Montserrat";
-    font-weight: regular;
+  font-family: "Montserrat";
+  font-weight: regular;
 }
 
+.topsite {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  padding-left: 10px;
+}
 
+.toptext {
+  margin: 0;
+}
+
+.description {
+  font-size: 50px;
+  width: 80vw;
+  padding: 10px;
+}
+
+.forecast {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 20px;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+}
+
+/* #F47775 - moln text
+#F4F7F8 - moln bakgrund
+#164A68 - regn text
+#A3DEF7 - regn bakgrund
+#2A5510 - sol text
+#F7E9B9 - sol bakgrund*/
