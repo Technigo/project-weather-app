@@ -88,3 +88,9 @@ position: relative; */
   justify-items: center;
   background-color: lightcoral;
 }
+
+/* Sunrise/Sunset */
+.sun {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
