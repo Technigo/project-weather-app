@@ -8,6 +8,7 @@ const description = document.getElementById('description');
 const humidity = document.getElementById("humidity");
 const forecast = document.getElementById('forecast');
 const displayWeekdays = document.getElementById('displayWeekdays');
+const sunTime = document.getElementById("suntimes");
 
 fetch(API_URL)
   .then((response) => {
@@ -19,11 +20,11 @@ fetch(API_URL)
     cityName.innerHTML = `
     <p>${json.name}</p>`;
 
-    // console.log("temp:", json.main.temp);
-    const tempDecimal = json.main.temp.toFixed(1);
-    // console.log(tempDecimal);
-    temp.innerHTML = `
-    <p>${tempDecimal}°C</p>`;
+    console.log("temp:", json.main.temp);
+    const tempDecimal = json.main.temp.toFixed(0); //Kriss&Sofia took the decimal away!
+    console.log(tempDecimal);
+    // temp.innerHTML = `
+    // <p>${tempDecimal}°c</p>`;
 
     // console.log("description:", json.weather[0].description);
     description.innerHTML = `
@@ -49,19 +50,6 @@ fetch(API_FORECAST)
       forecast.innerHTML += `
       <p>${tempOfTheDay}°C ${descriptNow}</p>`
     })
- 
-    // const filterForecastDecimal = filteredForecast[0].main.temp.toFixed(0)
-    // const filterForecastDecimalTwo = filteredForecast[1].main.temp.toFixed(0)
-    // const filterForecastDecimalThree = filteredForecast[2].main.temp.toFixed(0)
-    // const filterForecastDecimalFour = filteredForecast[3].main.temp.toFixed(0)
-    // const filterForecastDecimalFive = filteredForecast[4].main.temp.toFixed(0)
-    // console.log(filterForecastDecimal)
-    // forecast.innerHTML = `
-    // <p>${filterForecastDecimal}°C</p>
-    // <p>${filterForecastDecimalTwo}°C</p>
-    // <p>${filterForecastDecimalThree}°C</p>
-    // <p>${filterForecastDecimalFour}°C</p>
-    // <p>${filterForecastDecimalFive}°C</p>`
 
     // display the name of the weekday for the next five days forecast
 
@@ -76,16 +64,6 @@ fetch(API_FORECAST)
       'Friday',
       'Saturday',
     ];
-
-    // // example of displaying the first name of the next day forecast
-    // const firstDay = new Date(filteredForecast[0].dt_txt);
-    // // console log the first day with date and time
-    // console.log('first day with date and time:', firstDay);
-
-    // const firstGetDay = firstDay.getDay();
-    // // console log the day/weekday. This number represent an american weekday.
-    // // 0 = sunday, 1 = monday, 2 = tuesday, 3 = wednesday, 4 = thursday, 5 = friday, 6 = saturday
-    // console.log('first day (in number):', firstGetDay);
 
     // local variable where we can store the names of the weekdays
     const weekdaysNamesArray = [];
@@ -110,4 +88,29 @@ fetch(API_FORECAST)
       ${weekday[day]}
       `;
     });
+    `<p>${json.weather[0].description} | ${tempDecimal}°C</p>`;
+
+    // console.log("main:", json.weather[0].main);
+    // if (json.weather[0].main === 'Clear') {
+    //     body.style.background = 
+    // }
+
+    console.log("suntimes:", json.sys.sunset);
+
+    const rise = new Date(json.sys.sunrise * 1000); // new Date() shows todays date. The json.sys.sunrise gets the time for the sunrise in ms x 1000 to get a whole second
+    const up = rise.toLocaleTimeString([], {
+      // returns the date object as a string, using local (timezone) conventions
+      hour: "2-digit", // show the time as 00:00 hour/minute
+      minute: "2-digit",
+    });
+    sunTime.innerHTML = `<p>Sunrise ${up}</p>`;
+
+    console.log("SUNRISE:", rise);
+    const set = new Date(json.sys.sunset * 1000);
+    const down = set.toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    console.log("SUNSET:", set);
+    sunTime.innerHTML += `<p>Sunset ${down}</p>`;
   });
