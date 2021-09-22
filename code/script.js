@@ -69,7 +69,7 @@ function chooseWeatherIcon(filteredForecast, i) {
     } else if (main === "Fog" || main === "Mist") {
         weatherImg = fogIcon;
     } else if (main === "Snow") {
-        weatherImg = SnowIcon;
+        weatherImg = snowIcon;
     } else {
         weatherImg = sunIcon;
     }
@@ -102,7 +102,7 @@ function changeHeaderInnerHTML(data, timeOfSunrise, timeOfSunset) {
         <h5>Feels like: ${Math.round(data.main.feels_like * 10) / 10} °C</h5>
         <img src=${weatherImg.src} alt=${weatherImg.alt} class= "today-weather"/>
         <h3>${data.weather.map((item) => item.description)}</h3>
-        <h5 class="windpar"> <img src=${windIcon.src} alt=${windIcon.alt} class= "wind-icon"/>${Math.round(data.wind.speed * 10) / 10} m/s</h5>
+        <h5 class="windpar"><img src=${windIcon.src} alt=${windIcon.alt} class= "wind-icon"/> ${Math.round(data.wind.speed * 10) / 10} m/s</h5>
         <p class="sunrisepar"><img src=${sunriseIcon.src} alt=${sunriseIcon.alt} class= "sunrise"/>Sunrise: ${timeOfSunrise}</p>
         <p class="sunsetpar"><img src=${sunsetIcon.src} alt=${sunsetIcon.alt} class= "sunset"/>Sunset: ${timeOfSunset}</p>
     `;
@@ -123,9 +123,9 @@ function setBackgroundWeather(data) {
     } else if (main.includes("Snow")) {
         weatherImg = snowIcon;
         backgroundImg.classList = "snow";
-    } else if (main.includes("Fog")) {
+    } else if (main.includes("Fog") || (main.includes("Mist"))) {
         weatherImg = fogIcon;
-        backgroundImg.classList = "fog";
+        backgroundImg.classList = "fog", "mist";
     } else if (main.includes("Clear")) {
         weatherImg = sunIcon;
         backgroundImg.classList = "clear";
@@ -136,10 +136,10 @@ function setBackgroundWeather(data) {
 };
 //Eventlisteners
 // DON"T DELETE, TO USE LATER!
-changeCity.addEventListener('change', (e) => {
+cityBtn.addEventListener('click', (e) => {
     today.innerHTML = ""
     weatherContainer.innerHTML = ""
-    let city = e.target.value
+    let city = cityInput.value
     console.log(city)
     let WEATHER_API = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=5000cd66a9090b2b62f53ce8a59ebd9e`;
 
