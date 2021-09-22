@@ -65,7 +65,7 @@ fetch(API_FORCAST)
 
 
 const getForecastForCity = (cityName, callbackFunction) => {
-  fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=5caaaf25021b2d7aa4d206126b6a3351`)
+  fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=5caaaf25021b2d7aa4d206126b6a3351`)
     .then((response) => response.json())
     .then((data) => {
       callbackFunction(data);
@@ -93,3 +93,19 @@ const showPosition = (position) => {
 }
   
 
+
+const dropdownCities = document.getElementById ('dropdown-cities');
+const handleWeatherApiResponse = (forecastForCity) => {
+  console.log(forecastForCity)
+ //copied other template so we see changes in live in chrome. we can remove this when we merge and add getForecastForCity and the API.
+  weatherData.innerHTML = `
+  <p>City: ${forecastForCity.name}</p>
+  <p>Temp: ${forecastForCity.main.temp.toFixed(1)}°C</p>  
+  <p>Weather: ${forecastForCity.weather[0].description}</p>
+  `
+}
+
+const onCityChanged = () => {
+  getForecastForCity (dropdownCities.value, handleWeatherApiResponse);
+  }
+dropdownCities.addEventListener('change', onCityChanged);
