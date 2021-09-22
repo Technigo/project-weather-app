@@ -6,7 +6,7 @@
 
 :root {
   --primary: #7f9997;
-  --secondary: #28212f;
+  --secondary: #273633;
 }
 
 html {
@@ -17,7 +17,6 @@ html {
 /* Hero image and todays weather*/
 
 .background-image {
-  background: linear-gradient(rgba(0, 0, 0, 0.445), rgba(0, 0, 0, 0.226));
   height: 65vh;
   opacity: 0.7;
   background-position: center;
@@ -44,12 +43,13 @@ html {
   padding-top: 2vh;
 }
 
-select {
+.change-city {
   font-family: "Comfortaa";
   border-radius: 6px;
   background-color: #7f9997c0;
   color: white;
-  width: 40%;
+  width: 95%;
+  height: 5vh;
   margin-right: 1vh;
 }
 
@@ -58,14 +58,14 @@ select {
   background-color: #28212f;
   border-radius: 6px;
   color: white;
-  transition: 0.8s;
+  transition: 0.6s;
   padding: 0.3em 1em;
   text-decoration: none;
   display: inline-block;
   border: solid 2px #28212f;
 }
 
-.city-button:hover, select:hover {
+.city-button:hover {
   background: white;
   color: #28212f;
   border: solid 2px white;
@@ -145,6 +145,9 @@ footer {
   .background-image {
     background-size: cover;
   }
+  .change-city {
+    height: 3vh;
+  }
   .today {
     letter-spacing: 1px;
   }
@@ -160,6 +163,9 @@ footer {
   }
   .sunrisepar, .sunsetpar {
     justify-content: center;
+  }
+  .sunsetpar {
+    margin-left: 0vh;
   }
   .sunset {
     max-width: 27%;
@@ -197,16 +203,19 @@ footer {
   }
   .weather-container {
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
   }
   .day {
     display: flex;
     flex-direction: column;
     height: 20vh;
-    width: 19vh;
+    width: 50vh;
   }
   .forcast-temp {
     margin: 0px;
+  }
+  .sunsetpar {
+    margin-left: 2vh;
   }
   footer {
     position: fixed;

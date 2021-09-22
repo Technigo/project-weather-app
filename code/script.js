@@ -42,69 +42,24 @@ fetch(WEATHER_API)
     .then((data) => {
         let main = data.weather.map((item) => item.main);
         console.log(main);
-        if (main.includes("Clouds")) {
-            weatherImg = cloudyImg;
-            document.querySelector("header").style.background =
-                "url(./assets/cloudy-day1.jpg)";
-            document.querySelector("header").style.backgroundSize = "cover";
-            document.querySelector("header").style.backgroundPosition = "center";
-        } else if (main.includes("Rain")) {
-            weatherImg = rainImg;
-            document.querySelector("header").style.background =
-                "url(./assets/rainy-day.jpg)";
-            document.querySelector("header").style.backgroundSize = "cover";
-            document.querySelector("header").style.backgroundPosition = "center";
-        } else if (main.includes("Drizzle")) {
-            weatherImg = rainImg;
-            document.querySelector("header").style.background =
-                "url(./assets/rainy-day.jpg)";
-            document.querySelector("header").style.backgroundSize = "cover";
-            document.querySelector("header").style.backgroundPosition = "center";
-        } else if (main.includes("Snow")) {
-            weatherImg = snowImg;
-            document.querySelector("header").style.background =
-                "url(./assets/snowy-day.jpg)";
-            document.querySelector("header").style.backgroundSize = "cover";
-            document.querySelector("header").style.backgroundPosition = "center";
-        } else {
-            weatherImg = sunImg;
-            document.querySelector("header").style.background =
-                "url(./assets/sunny-weather.jpg)";
-            document.querySelector("header").style.backgroundSize = "cover";
-            document.querySelector("header").style.backgroundPosition = "center";
-        }
-
-        today.innerHTML += `
-        <h1>${data.name}</h1>
-        <h2>${Math.round(data.main.temp * 10) / 10} °C</h2>
-        <img src=${weatherImg.src} alt=${weatherImg.alt
-            } class= "today-weather"/>
-        <h3>${data.weather.map((item) => item.description)}</h3>
-    `;
-    })
-    .catch((error) => console.error("AAAAAAH!", error))
-    .finally(() => console.log("YAY!"));
-
-fetch(WEATHER_API)
-    .then((res) => res.json())
-    .then((data) => {
+        setBackgroundWeather(main);
         const timezoneOffset = new Date().getTimezoneOffset() * 60;
         const timeOfSunrise = new Date(
             (data.sys.sunrise + data.timezone + timezoneOffset) * 1000
         ).toLocaleTimeString("sv-GB", { hour: "2-digit", minute: "2-digit" });
-        today.innerHTML += `<p class="sunrisepar"><img src=${sunriseImg.src} alt=${sunriseImg.alt} class= "sunrise"/>Sunrise: ${timeOfSunrise}</p>`;
         const timeOfSunset = new Date(
             (data.sys.sunset + data.timezone + timezoneOffset) * 1000
         ).toLocaleTimeString("sv-GB", { hour: "2-digit", minute: "2-digit" });
-        today.innerHTML += `<p class="sunsetpar"><img src=${sunsetImg.src} alt=${sunsetImg.alt} class= "sunset"/>Sunset: ${timeOfSunset}</p>`;
-    });
+        changeHeaderInnerHTML(data, timeOfSunrise, timeOfSunset);
+    })
+    .catch((error) => console.error("AAAAAAH!", error))
+    .finally(() => console.log("YAY!"));
 
 //Variables to prevent choosing past dates.
 //const currentDate = new Date()
 //const formattedDate = currentDate.toISOString().split('T')[0]
 
-// TUESDAY SUNNY 12C 3C
-
+// Five day forecast
 fetch(FIVE_DAYS)
     .then((res) => res.json())
     .then((data) => {
@@ -159,6 +114,51 @@ fetch(FIVE_DAYS)
         console.log(filteredForecast);
     });
 
+
+function changeHeaderInnerHTML(data, timeOfSunrise, timeOfSunset) {
+    today.innerHTML += `
+        <h1>${data.name}</h1>
+        <h2>${Math.round(data.main.temp * 10) / 10} °C</h2>
+        <img src=${weatherImg.src} alt=${weatherImg.alt} class= "today-weather"/>
+        <h3>${data.weather.map((item) => item.description)}</h3>
+        <p class="sunrisepar"><img src=${sunriseImg.src} alt=${sunriseImg.alt} class= "sunrise"/>Sunrise: ${timeOfSunrise}</p>
+        <p class="sunsetpar"><img src=${sunsetImg.src} alt=${sunsetImg.alt} class= "sunset"/>Sunset: ${timeOfSunset}</p>
+    `;
+}
+
+function setBackgroundWeather(main) {
+    if (main.includes("Clouds")) {
+        weatherImg = cloudyImg;
+        document.querySelector("header").style.background =
+            "url(./assets/cloudy-day1.jpg)";
+        document.querySelector("header").style.backgroundSize = "cover";
+        document.querySelector("header").style.backgroundPosition = "center";
+    } else if (main.includes("Rain")) {
+        weatherImg = rainImg;
+        document.querySelector("header").style.background =
+            "url(./assets/rainy-day.jpg)";
+        document.querySelector("header").style.backgroundSize = "cover";
+        document.querySelector("header").style.backgroundPosition = "center";
+    } else if (main.includes("Drizzle")) {
+        weatherImg = rainImg;
+        document.querySelector("header").style.background =
+            "url(./assets/rainy-day.jpg)";
+        document.querySelector("header").style.backgroundSize = "cover";
+        document.querySelector("header").style.backgroundPosition = "center";
+    } else if (main.includes("Snow")) {
+        weatherImg = snowImg;
+        document.querySelector("header").style.background =
+            "url(./assets/snowy-day.jpg)";
+        document.querySelector("header").style.backgroundSize = "cover";
+        document.querySelector("header").style.backgroundPosition = "center";
+    } else {
+        weatherImg = sunImg;
+        document.querySelector("header").style.background =
+            "url(./assets/sunny-weather.jpg)";
+        document.querySelector("header").style.backgroundSize = "cover";
+        document.querySelector("header").style.backgroundPosition = "center";
+    }
+}
 //Eventlisteners
 // DON"T DELETE, TO USE LATER!
 // changeCity.addEventListener('change', () => {

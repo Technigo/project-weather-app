@@ -16,16 +16,9 @@
   <header id="backgroundImg" class="background-image">
     <section id="today" class="today"></section>
     <section class="city-choice-container">
-      <select id="changeCity" class="change-city">
-        <option value="" disabled selected>Choose city</option>
-        <option value="Stockholm,Sweden">Stockholm</option>
-        <option value="Gothenburg,Sweden">Gothenburg</option>
-        <option value="Sundsvall,Sweden">Sundsvall</option>
-        <option value="Malmo,Sweden">Malmö</option>
-        <option value="Lund,Sweden">Lund</option>
-        <option value="Uppsala,Sweden">Uppsala</option>
-        <option value="Kiruna,Sweden">Kiruna</option>
-      </select>
+      <form id="changeCity">
+        <input class="change-city" type="text" placeholder="Search city" name="search">
+      </form>
       <button type="submit" id="cityBtn" class="city-button">Select</button>
     </section>
   </header>
