@@ -7,7 +7,9 @@ const test = document.getElementById('test')
 //global variables
 let temperature 
 let roundTemp
- 
+//for forecast 
+let fiveDayForecast = {}  
+
 //fetch function
 
 fetch('https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=00ceff8163f7cba27d66b6501ce70e06')
@@ -36,22 +38,19 @@ fetch(FORECAST_API_URL)
     return res.json()
   })
   .then((data) => {
-    console.log('Forecast DATA', data) // just for testing purpose have to delete 
-    const filteredForecast = data.list.filter(item => item.dt_txt.includes('00:00:00'))
-    console.log('filtered forecast', filteredForecast)
-    filteredForecast.forEach(item => {
-      //calling function to convert date with 
-      let forecastDate = convertDate(item.dt)
-
+    console.log('Forecast DATA', data) // just for testing purpose 
+   
+    createForecast(data) //calling CreateForecast function to create forecast for next five days with minimum temperature, maximum temperature and formatted date
+    console.log (typeof(fiveDayForecast)) //for test purpose
+    Object.values(fiveDayForecast).forEach(item => {  // in order to iterate each value of object as forEach method does not work on object directly (https://flexiple.com/loop-through-object-javascript/)
+     const  {date, minTemp, maxTemp}= item  
       test.innerHTML +=`
       <div class= "forecast">
         <p class= "forecast-date">
-         ${forecastDate}
-        </p>
-        <p class= "forecast-temp">${item.main.temp} </p>
+         ${date} ${minTemp}/ ${maxTemp}
+         </p>
       </div>
     `
-
     })
     
   })
@@ -61,24 +60,32 @@ fetch(FORECAST_API_URL)
 //----- functions for forecast-----//
 
 
-// function to find min and max temperature of the day
+// function to create object of forecast with min, max temperature and formatted date
 const createForecast = (data) => {
-  let fiveDayForecast = {}
+  console.log ("i am here")
   
-  data.list.forEach((item) => {
-    
-
-
-
-
+  data.list.forEach((item) => {  //iterating the 'list' item of data
+    const currentDate = item.dt_txt.split(" ")[0]  //creating a variable by splitting  item.dt_txt and returning the date part
+    console.log(currentDate)
+    if (fiveDayForecast[currentDate]) { //checking if an object with key as currentDate is created, if true compare the value of min and max temperature and set values accordingly
+      if (item.main.temp_min < fiveDayForecast[currentDate].minTemp) {
+        fiveDayForecast[currentDate].minTemp = item.main.temp_min
+        console.log[fiveDayForecast[currentDate].minTemp]
+      }
+      if (item.main.temp_max > fiveDayForecast[currentDate].maxTemp) {
+        fiveDayForecast[currentDate].maxTemp = item.main.temp_max
+      }
+    } else {  //else create an object with currentDate as key
+        let forecastDate = convertDate(item.dt) //calling convertDate function for formatting the date
+        fiveDayForecast[currentDate] = {
+          "date": forecastDate,
+          "minTemp": item.main.temp_min,
+          "maxTemp": item.main.temp_max
+        }
+                
+      }
+         
   })
-
-
-
-  
-
-
-
 
 }
 // converting date format
