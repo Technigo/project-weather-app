@@ -42,7 +42,7 @@ const fetchWeather = () => {
       currentWeather.innerHTML += `<h3 class="current-statements">sunset ${sunsetHours}.${sunsetMinutes}</h3>`;
 
       const changeRecomendation = () => {
-        if (data.weather[0].main === "Clouds") {
+        if (data.weather[0].main === "Clear") {
           cityName.innerHTML += `
             <img src="/Designs/Design-2/icons/noun_Sunglasses_2055147.svg" alt="Sunglasses icon">
             <h1>Get your sunnies on.</h1> 
@@ -58,7 +58,7 @@ const fetchWeather = () => {
             `;
           document.body.style.backgroundColor = "#A3DEF7";
           document.body.style.color = "#164A68";
-        } else if (data.weather[0].main === "Clear") {
+        } else if (data.weather[0].main === "Clouds") {
           cityName.innerHTML += `
             <img src="/Designs/Design-2/icons/noun_Cloud_1188486.svg" alt="Clound icon"/>
             <h1>Light a fire and get cosy. </h1>
