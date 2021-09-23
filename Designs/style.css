@@ -1,7 +1,7 @@
 :root{
  
     --hot: linear-gradient( #ff402778,#fdd39c, #ffffff);
-    --hotnight: linear-gradient( #992617,#a6c3f886, #ffffff);
+    --hotnight: linear-gradient( #992617,#adc7f786, #ffffff);
 
     --moderate: linear-gradient( #ebb36b, #d4f17186, #ffffff);
     --moderatenight: linear-gradient( #050c33, #b8cdf586, #ffffff);
