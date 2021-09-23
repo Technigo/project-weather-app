@@ -108,10 +108,10 @@ const getData = () => {
             const dayName = date.toLocaleDateString("en-US", { weekday: "long" });
             const weekTemp = day.main.temp.toFixed(0);
         
-            forecastDay.innerHTML += `<p>${dayName}</p>`
-            forecastTemp.innerHTML += `<p>🌡️${weekTemp}°C</p>
-            <p>Feels like ${day.main.feels_like.toFixed(1)}°C</p>`
-            forecastIcon.innerHTML += `<img src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png"/>`      
+            weatherForecast.innerHTML += `<p>${dayName}</p>
+             <p>🌡️${weekTemp}°C</p>
+            <p>Feels like ${day.main.feels_like.toFixed(1)}°C</p>
+           <img src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png"/>`      
     });  
   });
   
@@ -123,7 +123,7 @@ const getData = () => {
   //     );
 
 
-  //     // https://stackoverflow.com/questions/24998624/day-name-from-date-in-js/24998705 autohor iamnox  
+       // https://stackoverflow.com/questions/24998624/day-name-from-date-in-js/24998705 autohor iamnox  
   //     weatherForecast.innerHTML = ''
   //     forecastDay.forEach((day) => {
   //       weatherForecast.innerHTML += `
