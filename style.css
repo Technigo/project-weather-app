@@ -1,8 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  max-width: 1500px;
-  margin: auto;
+  /* max-width: 1500px;
+  margin: auto; */
   width: 100%;
   height: 100%;
   min-width: 325px;
@@ -113,7 +113,7 @@ h3 {
 }
 
 .weekly-content {
-  margin-top: 12%;
+  margin-top: 20%;
 }
 
 .day {
@@ -237,6 +237,7 @@ h3 {
   .weekly-content {
     display: flex;
     justify-content: space-evenly;
+    margin: 80px;
   }
 
   .day {
