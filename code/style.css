@@ -87,6 +87,7 @@ html {
   transform: translate(-50%, -50%);
   color: rgb(255, 255, 255);
   text-shadow: 2px 2px 5px #28212f;
+  height: auto;
 }
 
 h1 {
