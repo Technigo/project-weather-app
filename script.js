@@ -10,6 +10,8 @@ const bottomSection = document.getElementById('bottom-section')
 const sunrise = document.getElementById('sunrise')
 const sunset = document.getElementById('sunset')
 
+const forecastData = document.getElementById('forecast-data')
+
 
 // Main fetch to get Stockholm weather 
 const API_LINK = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=147b874875d53e0e9f84cbacd0567b99'
@@ -49,7 +51,6 @@ const API_LINK_FORECAST = 'https://api.openweathermap.org/data/2.5/forecast?q=St
     })
     .then((json) => {
         const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
-        console.log("Filter", filteredForecast)
         const weekDays = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday",];
        
         filteredForecast.forEach((day) => {

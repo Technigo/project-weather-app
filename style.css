@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 
 * {
     margin: 0;
@@ -9,17 +10,17 @@ body {
     font-family:'Roboto';
     background: url('./img/background-img.jpeg');
     background-position: center;
-    background-size: cover;
     background-repeat: no-repeat;
-    color: rgb(49, 49, 49);
+    color: rgb(29, 29, 29);
 }
+
+/*** MOBILE FIRST ***/
 
 /* MAIN CONTAINER */
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
 
 /* TOP SECTION*/
@@ -60,7 +61,7 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-top: 20px;
+
 }
 
 .forecast-title {
@@ -70,12 +71,13 @@ body {
 .forecast-data {
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
+    margin: 10px 0;
     padding: 10px;
     align-items: center;
     background-color: rgba(207, 207, 207, 0.404);
     width: 100%;
 }
+
 
 .forecast-description{
     text-transform: uppercase;
@@ -105,6 +107,10 @@ body {
         width: 300px;
     }
 
+    .bottom {
+        width: 60%;
+    }
+
     #city {
         font-size: 50px;
     }
@@ -114,16 +120,28 @@ body {
 /*desktop*/
 
 @media (min-width: 1025px) {
-    .container {
-        height: 100vh;
+    .bottom {
+        flex-direction: row;
+        /* max-width: 1700px;
+        min-width: auto; */
+        width: 80%;
+    }
+
+    .sunrise-and-sunset {
+        font-size: 20px;
+    }
+
+    .forecast-title {
+        padding: 20px;
+        font-weight: bold;
+    }
+
+    .forecast-data {
+        margin: 4px;
     }
 
     .top {
         width: 600px;
-    }
-
-    .forecast-data {
-        flex-direction: row;
     }
 
     .forecast-title {
