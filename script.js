@@ -22,7 +22,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=00ceff8
     // today's forecast 
   console.log('DATA', data)
     temperature =  (data.main.temp) - 273.15
-    roundTemp = temperature.toFixed(1)
+    roundTemp = temperature.toFixed(0)
   const weatherImage = bigWeatherIcons(data.weather[0].description)
   const description = toTitleCase(data.weather[0].description)
   let sunrise = convertTime(data.sys.sunrise)
@@ -76,7 +76,7 @@ fetch(FORECAST_API_URL)
     Object.values(fiveDayForecast).forEach(item => {  // in order to iterate each value of object as forEach method does not work on object directly (https://flexiple.com/loop-through-object-javascript/)
      const  {date, weatherIcon, minTemp, maxTemp}= item  
       forecastContainer.innerHTML +=`
-      <div class= "html-row">
+      <div class= "js-row">
         <span> 
          ${date} 
         </span>
@@ -84,7 +84,7 @@ fetch(FORECAST_API_URL)
         <img src="${weatherIcon}"/>
         </span>
         <span>
-        ${minTemp.toFixed(1)}&#8451 / ${maxTemp.toFixed(1)}&#8451
+        ${minTemp.toFixed(0)}&#8451 / ${maxTemp.toFixed(0)}&#8451
         </span>
       </div>
     `
