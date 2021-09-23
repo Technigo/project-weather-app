@@ -11,7 +11,7 @@ let roundTemp
 let fiveDayForecast = {}  
 
 //fetch function
-
+// TEST!
 fetch('https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=00ceff8163f7cba27d66b6501ce70e06')
 .then((response) => {
     return response.json()
@@ -31,6 +31,8 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=00ceff8
 })
 .catch((error) => console.error(error))
 .then(() => console.log('Request finished'));
+
+//END TEST
 
 //for weather forecast fetch function
 fetch(FORECAST_API_URL)
