@@ -32,10 +32,10 @@ fetch(API_URL)
     let formattedHourSunset = addZero(sunsetTime.getHours()) + ':' +
     addZero(sunsetTime.getMinutes()) + ':' + addZero(sunsetTime.getSeconds()) 
     sunsetSunrise.innerHTML+= `
-    <h2>Sunrise: ${formattedHourSunrise}</h2>
+    <h2>Sunrise: ${formattedHourSunrise} </h2>
     <h2>Sunset: ${formattedHourSunset}</h2>
     `
-    //If else statement med de olika ikonerna
+    // If else statement med de olika ikonerna
     text.innerHTML += `
     <img src="./Designs/Design-2/icons/noun_Cloud_1188486.svg" alt="cloud icon">
     <img src="./Designs/Design-2/icons/noun_Sunglasses_2055147.svg" alt="sunglasses icon">
