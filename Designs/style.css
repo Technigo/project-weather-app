@@ -1,13 +1,13 @@
 :root{
  
     --hot: linear-gradient( #ff402778,#fdd39c, #ffffff);
-    --hotnight: linear-gradient( #992617,#719ef186, #050c33);
+    --hotnight: linear-gradient( #992617,#adc7f786, #ffffff);
 
     --moderate: linear-gradient( #ebb36b, #d4f17186, #ffffff);
-    --moderatenight: linear-gradient( #1a130b, #719ef186, #050c33);
+    --moderatenight: linear-gradient( #050c33, #b8cdf586, #ffffff);
 
     --cold: linear-gradient( #61b3ff,#e0f7a27a, #ffffff);
-    --coldnight: linear-gradient( #61b3ff,#719ef186, #050c33);
+    --coldnight: linear-gradient( #050c33,#dee5f386, #ffffff);
 
   --dayphone: #afdbcf;
   --nightphone: #41326b;
