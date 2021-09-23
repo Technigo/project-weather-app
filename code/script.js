@@ -111,7 +111,11 @@ function changeHeaderInnerHTML(data, timeOfSunrise, timeOfSunset) {
 //Changes background image in header depending on todays weather prognosis
 function setBackgroundWeather(data) {
     let main = data.weather.map((item) => item.main);
-    if (main.includes("Clouds")) {
+    if (data.weather[0].description === "broken clouds" || data.weather[0].description === "scattered clouds" || data.weather[0].description === "few clouds") {
+        weatherImg = partlycloudyIcon;
+        backgroundImg.classList = "partly-cloudy"
+    }
+    else if (main.includes("Clouds")) {
         weatherImg = cloudyIcon;
         backgroundImg.classList = "clouds";
     } else if (main.includes("Rain")) {

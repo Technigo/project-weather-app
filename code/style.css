@@ -28,6 +28,20 @@ html {
   background-size: cover;
 }
 
+.background-image {
+  max-height: 100%;
+  height: 88vh !important;
+  opacity: 0.7;
+  background-repeat: no-repeat;
+  position: relative;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  box-shadow: 5px 10px 18px #28212f5e;
+  background-position: center;
+  background-size: cover;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./assets/forest.png");
+}
+
 .clear {
   background: url(./assets/sunny-weather.jpg);
 }
@@ -56,6 +70,10 @@ html {
   background: url(./assets/atmosphere-image.jpg);
 }
 
+.partly-cloudy {
+  background: url(./assets/cloudy-day1.jpg);
+}
+
 .today {
   text-align: center;
   position: absolute;
@@ -70,6 +88,7 @@ html {
   display: flex;
   justify-content: center;
   padding-top: 1vh;
+  height: 5vh;
 }
 
 .change-city {
@@ -78,20 +97,19 @@ html {
   background-color: #7f9997c0;
   color: black;
   width: 30%;
-  height: 3vh;
   margin-right: 1vh;
+  border: black;
 }
 
 .city-button {
   font-family: "Comfortaa";
-  background-color: #28212f;
+  background-color: #7f9997;
   border-radius: 6px;
   color: white;
   transition: 0.6s;
-  padding: 0.3em 1em;
   text-decoration: none;
   display: inline-block;
-  border: solid 2px #28212f;
+  border: solid 2px #7f9997;
 }
 
 .city-button:hover {
@@ -174,6 +192,7 @@ footer {
   color: white;
   text-align: center;
   font-size: 12px;
+  position: relative;
 }
 
 /* Tablet view*/
@@ -184,7 +203,6 @@ footer {
     height: 65vh;
   }
   .change-city {
-    height: 3vh;
     width: 20%;
   }
   .today {
@@ -235,7 +253,6 @@ footer {
     height: 65vh;
   }
   .change-city {
-    height: 3vh;
     width: 10%;
   }
   .today {
