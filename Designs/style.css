@@ -1,8 +1,15 @@
 :root{
  
-    --hot: linear-gradient( #ff4027,#fdd39c, #faf6ed);
+    --hot: linear-gradient( #ff4027,#fdd39c, #ffffff);
+    --hotnight: linear-gradient( #992617,#719ef186, #050c33);
+
     --moderate: linear-gradient( #ebb36b, #d4f17186, #ffffff);
+    --moderatenight: linear-gradient( #473319, #719ef186, #050c33);
+
     --cold: linear-gradient( #61b3ff,#e0f7a27a, #ffffff);
+    --coldnight: linear-gradient( #61b3ff,#719ef186, #050c33);
+
+  
    
   }
 
@@ -147,7 +154,7 @@
 }
 
 .burger-menu .menu-btn:checked~.menu {
-  max-height: 200px;
+  max-height: 300px;
 }
 
 .burger-menu .menu-btn:checked~.menu-icon .navicon {
