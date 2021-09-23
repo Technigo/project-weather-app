@@ -1,8 +1,15 @@
 const weatherData = document.getElementById("weatherdata");
 const weatherToday = document.getElementById("weather-today");
 const weatherForecast = document.getElementById("weather-forecast");
+const forecastDay = document.getElementById("forecastDay")
+const forecastTemp = document.getElementById("forecastTemp")
+const forecastIcon = document.getElementById('forecastIcon')
 const dropdownCities = document.getElementById("dropdown-cities");
-let userPosition;
+
+
+let userPosition
+
+
 const API_URL =
     "https://api.openweathermap.org/data/2.5/weather?q=cityname&units=metric&APPID=5caaaf25021b2d7aa4d206126b6a3351";
 const API_Forecast =
@@ -38,6 +45,7 @@ const getData = () => {
         </div>
       </div>
       `; // toFixed(1) rounds the temp to one decimal
+// time
             temp = data.main.temp;
             if (temp >= 25 && temp <= 65) {
                 if (sunrise) {
@@ -64,32 +72,76 @@ const getData = () => {
         })
         .catch((error) => console.error("Error: ", error))
         .finally(() => console.log("Request done"));
-    fetch(API_Forecast.replace("cityname", currentCity))
-        .then((Response) => {
-            return Response.json();
-        })
-        .then((json) => {
-            weatherForecast.innerHTML = '';
-            const filteredForecast = json.list.filter((item) =>
-                item.dt_txt.includes("12:00")
-            );
-            filteredForecast.forEach((day) => {
-                let date = new Date(day.dt * 1000);
-                let dayName = date.toLocaleDateString("en-US", { weekday: "long" });
-                const dayTemp = day.main.temp;
-                const weekTemp = dayTemp.toFixed(0.1);
-                weatherForecast.innerHTML +=
-                    `
-                <div class="forecastDay" id="forecastDay"><p>${dayName}</p></div>
-                <div class="forecastTemp" id="forecastTemp"><p>${weekTemp}°C</p></div>
-                <div class="forecastIcon" id="forecastIcon">
-                    <img src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png"/>
-                    <p>Weather: ${day.weather[0].description}</p>
-                    </div>
-                `;
-            });
-        });
-};
+    
+
+    
+// fetch(API_FORCAST)
+// 	.then((res) => res.json())
+// 	.then((forecast) => {
+// 		const forecastDay = forecast.list.filter((day) =>
+// 			day.dt_txt.includes("12:00")
+// 		);
+
+
+// // <h3>${day.dt_txt}</h3> This should be changed to show just the weekday (like Monday, Tuesday...)   
+// 		forecastDay.forEach((day) => {
+// 			weatherForecast.innerHTML += `
+//       <h3>${day.dt_txt}</h3>
+//       <p>🌡️${day.main.temp.toFixed(1)}°C</p> 
+// 	    <p>Feels like: ${day.main.feels_like.toFixed(1)}°C</p> 
+//       <p>Weather: ${day.weather[0].description}</p>
+//     `;
+// 		});
+// 	})
+// 	.catch((error) => console.error("Error: ", error))
+// 	.finally(() => console.log("Request done"));
+
+
+  fetch(API_Forecast.replace('cityname', currentCity))
+    .then((res) => res.json())
+    .then((forecast) => { 
+        const filteredForecast = forecast.list.filter(day =>
+        day.dt_txt.includes("12:00")
+        );
+        filteredForecast.forEach(day => {
+            const date = new Date(day.dt * 1000);
+            const dayName = date.toLocaleDateString("en-US", { weekday: "long" });
+            const weekTemp = day.main.temp.toFixed(0);
+        
+            forecastDay.innerHTML += `<p>${dayName}</p>`
+            forecastTemp.innerHTML += `<p>🌡️${weekTemp}°C</p>
+            <p>Feels like ${day.main.feels_like.toFixed(1)}°C</p>`
+            forecastIcon.innerHTML += `<img src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png"/>`      
+    });  
+  });
+  
+  // fetch(API_FORCAST.replace('cityname', currentCity))
+  //   .then((res) => res.json())
+  //   .then((forecast) => {
+  //     const forecastDay = forecast.list.filter((day) =>
+  //       day.dt_txt.includes("12:00")
+  //     );
+
+
+  //     // https://stackoverflow.com/questions/24998624/day-name-from-date-in-js/24998705 autohor iamnox  
+  //     weatherForecast.innerHTML = ''
+  //     forecastDay.forEach((day) => {
+  //       weatherForecast.innerHTML += `
+  //     <h3>${new Date(day.dt*1000).toLocaleDateString('en-us',{weekday:'long'})}</h3> 
+  //     <p>🌡️${day.main.temp.toFixed(1)}°C</p> 
+	//     <p>Feels like: ${day.main.feels_like.toFixed(1)}°C</p> 
+  //     <p>Weather: ${day.weather[0].description}</p>
+  //   `;
+  //     });
+  //   })
+  //   .catch((error) => console.error("Error: ", error))
+  //   .finally(() => console.log("Request done"));
+
+
+}
+
+
+
 const handleWeatherApiResponse = (forecastForCity) => {
     console.log(forecastForCity);
     //copied other template so we see changes in live in chrome. we can remove this when we merge and add getForecastForCity and the API.
