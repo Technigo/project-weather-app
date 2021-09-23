@@ -191,7 +191,10 @@ else{
         const filteredForecast = forecast.list.filter(day =>
         day.dt_txt.includes("12:00")
         )
+        weatherForecast.innerHTML='';
+
         filteredForecast.forEach(day => {
+
             const date = new Date(day.dt * 1000)
             const dayName = date.toLocaleDateString("en-US", { weekday: "long" })
             const weekTemp = day.main.temp.toFixed(0)
@@ -220,6 +223,7 @@ const handleWeatherApiResponse = (forecastForCity) => {
 const onCityChanged = (event) => {
     document.querySelector(".menu-btn").checked = false 
     
+    
     console.log(event.target.dataset.cityname)
     currentCity = event.target.dataset.cityname
     getData()
@@ -241,8 +245,10 @@ const initializeCitySelector = () => {
     cities.forEach((element) => {
         console.log("adding event listener")
         element.addEventListener("click", onCityChanged)
+        
     })
     console.log("finished initializeCitySelector")
+    
 }
 
 
