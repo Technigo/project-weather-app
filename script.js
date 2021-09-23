@@ -9,6 +9,7 @@ const weatherContainer = document.getElementById("weather");
 const forecastContainer = document.getElementById("forecast");
 const sunriseContainer = document.getElementById("sunrise");
 const sunsetContainer = document.getElementById("sunset");
+const mainContainer = document.getElementById('mainWeather')
 
 const fetchData = () => {
   fetch(WEATHER_API)
@@ -21,21 +22,28 @@ const fetchData = () => {
 
       const decimal = (data.main.temp).toFixed(1) // 
 
+      // a variable for main images depending on the weather comes from JSON
+      const idForMainImage = data.weather[0].main
+      // to change the bg-image depending on the data weather
+      mainContainer.style.backgroundImage = `url(./Designs/Design-1/mainImages/${idForMainImage}.png)`
+
       weatherContainer.innerHTML = `
-          <h1> ${data.name}</h1>
-          <h2> ${decimal}&#176 Celsius </h2>
-          <h2> ${data.weather[0].description}</h2>
+          <h1>${decimal}°C</h1>
+          <h2>${data.name}</h2>
+          <h3>${data.weather[0].description}</h3>          
         `;
 
         const sunriseData = new Date(data.sys.sunrise * 1000) //Converts UNIX/EPOCH time to readable human time
         const sunsetData = new Date(data.sys.sunset * 1000) //Converts UNIX/EPOCH time to readable human time
-        const sunriseString = sunriseData.toLocaleTimeString('se-SE', {hour: '2-digit', minute:'2-digit'}) //toLocaleTimeString reduces data to only show hh:mm
-        const sunsetString = sunsetData.toLocaleTimeString('se-SE', {hour: '2-digit', minute:'2-digit'}) //toLocaleTimeString reduces data to only show hh:mm
+        const sunriseString = sunriseData.toLocaleTimeString('en-SE', {hour: '2-digit', minute:'2-digit'}) //toLocaleTimeString reduces data to only show hh:mm
+        const sunsetString = sunsetData.toLocaleTimeString('en-SE', {hour: '2-digit', minute:'2-digit'}) //toLocaleTimeString reduces data to only show hh:mm
   
         console.log(sunriseData, sunsetData)
   
-        sunriseContainer.innerHTML = `Sunrise: ${sunriseString}`
-        sunsetContainer.innerHTML = `Sunset: ${sunsetString}`
+        sunriseContainer.innerHTML = `
+        <h3>Sunrise ${sunriseString}</h3>`
+        sunsetContainer.innerHTML = `
+        <h3>Sunset ${sunsetString}</h3>`
         
     })
     .catch((error) => {
@@ -65,32 +73,31 @@ const fetchForecastData = () => {
         const decimal = (object.main.temp).toFixed(0) // make the temperature integer
 
         const date = new Date(object.dt_txt); // full date with day month and year
-        const days = date.toLocaleDateString('en-SE', { weekday: 'long' }); 
-        // display the day with the name only Tuesday,Wednesday,Monday etc.. 
+        const days = date.toLocaleDateString('en-SE', {
+          weekday: 'long'
+        }); // display the day with the name only Tuesday,Wednesday,Monday etc.. 
         console.log("the next day is", days) // the next day is wednesday etc. 
 
 
         console.log("the next day is", object.weather[0].main)
-        const idForIcons = object.weather[0].main
+
         // 5 days name & temperature & description of the weather
+        const idForIcons = object.weather[0].main
         forecastContainer.innerHTML += ` 
-        <div class= forecast-days>
-          <h2 class=htwo-day> ${days} </h2>
-          <h3 class=hthree-day> ${decimal}°C </h3>
-          <h3 class=hthree-day> ${object.weather[0].description} </h3> 
+        <div class="forecast-days">
+          <div>
+          <h4 class="day"> ${days} </h4>
+          </div>
+          <div class="iconandtemp">
           <img id="iconID" class="icons" alt="" src="./Designs/Design-1/icons/${idForIcons}.png">
+          <h4 class="temp"> ${decimal}°C</h4>
+          </div>
         </div>
         `;
-    
-
-        
-        // <img id="iconID" class="icons" alt="" src="./Designs/Design-1/icons/${idForIcons}.png">
-
 
       })
 
-
-
+  
 
 
 
