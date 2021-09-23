@@ -1,8 +1,6 @@
 body {
   margin: 0;
   padding: 0;
-  /* max-width: 1500px;
-  margin: auto; */
   width: 100%;
   height: 100%;
   min-width: 325px;
@@ -14,6 +12,14 @@ body {
 *:before,
 *:after {
   box-sizing: inherit;
+}
+
+/* -------------- Hamburger bar menu ---------------- */
+
+.fa-bars {
+  font-size: 33px;
+  margin: 30px 0 0 0;
+  color: white;
 }
 
 .menu {
@@ -38,45 +44,13 @@ body {
 
 .menu-active {
   display: flex;
-  height: 90px;
+  height: 150px;
   transition: height 400ms ease-in-out;
   padding: 4px 10px;
   margin-bottom: 10px;
 }
 
-.daily-content {
-  background: rgb(114, 105, 255);
-  background: linear-gradient(
-    180deg,
-    rgba(114, 105, 255, 1) 0%,
-    rgba(227, 227, 255, 1) 100%
-  );
-  border-bottom-left-radius: 100% 75px;
-  border-bottom-right-radius: 100% 75px;
-}
-
-.main-daily-info {
-  height: 100%;
-  padding: 0 30px 20% 30px;
-}
-
-.fa-bars {
-  font-size: 33px;
-  margin: 30px 0 0 0;
-  color: white;
-}
-
-.main-sunset-sunrise {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  margin-top: 10px;
-}
-
-.headings {
-  display: flex;
-  flex-direction: column;
-  row-gap: 10px;
-}
+/* ---------------- Daily content information ---------------- */
 
 h1 {
   padding: 0;
@@ -112,76 +86,38 @@ h3 {
   opacity: 1;
 }
 
-
-
-@keyframes moveInLeft {
-  0%{
-    opacity: -5;
-    transform: translateX(-10rem);
-  }
-  50%{
-    opacity: 1;
-    transform: translate(0);
-  }
-  100%{
-    opacity: 2;
-    transform: translate(0);
-  }
+.daily-content {
+  background: rgb(114, 105, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(114, 105, 255, 1) 0%,
+    rgba(227, 227, 255, 1) 100%
+  );
+  border-bottom-left-radius: 100% 75px;
+  border-bottom-right-radius: 100% 75px;
 }
 
-@keyframes moveInLeft2 {
-  0%{
-    opacity: -5;
-    transform: translateX(-20rem);
-  }
-  50%{
-    opacity: 1;
-    transform: translate(0);
-  }
-  100%{
-    opacity: 2;
-    transform: translate(0);
-  }
+.main-daily-info {
+  height: 100%;
+  padding: 0 30px 20% 30px;
 }
 
-@keyframes moveInLeft3 {
-  0%{
-    opacity: -5;
-    transform: translateX(-20rem);
-  }
-  50%{
-    opacity: 1;
-    transform: translate(0);
-  }
-  100%{
-    opacity: 2;
-    transform: translate(0);
-  }
+.headings {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
 }
 
-.sunrise-sunset{
-  animation-name: moveInLeft4;
-  animation-duration: 5s;
-  animation-timing-function: ease-in;
-  opacity: 1;
+.daily-temp {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
 }
 
-@keyframes moveInLeft4 {
-  0%{
-    opacity: 1;
-    transform: translateX(-50rem);
-  }
-  50%{
-    opacity: 1;
-    transform: translate(0);
-  }
-  100%{
-    opacity: 2;
-    transform: translate(0);
-  }
+.celsius {
+  font-size: 0.3em;
+  padding-top: 4%;
 }
-
-
 
 .daily-icon-container {
   display: flex;
@@ -192,39 +128,101 @@ h3 {
   opacity: 1;
 }
 
-@keyframes moveInright {
-  0%{
-    opacity: 1;
-    transform: translateX(20rem);
-  }
-  50%{
-    opacity: 1;
-    transform: translate(0);
-  }
-  100%{
-    opacity: 2;
-    transform: translate(0);
-  }
-}
-
-.daily-temp {
-  display: flex;
-  align-items: flex-end;
-  width: 100%;
-}
-
 .daily-weather-icon {
   font-size: 8em;
   color: white;
 }
 
-.celsius {
-  font-size: 0.3em;
-  padding-top: 4%;
-}
-
 .yellow {
   color: #fbed9e;
+}
+
+.main-sunset-sunrise {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 10px;
+}
+
+.sunrise-sunset {
+  animation-name: moveInLeft4;
+  animation-duration: 5s;
+  animation-timing-function: ease-in;
+  opacity: 1;
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: -5;
+    transform: translateX(-10rem);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(0);
+  }
+  100% {
+    opacity: 2;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInLeft2 {
+  0% {
+    opacity: -5;
+    transform: translateX(-20rem);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(0);
+  }
+  100% {
+    opacity: 2;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInLeft3 {
+  0% {
+    opacity: -5;
+    transform: translateX(-20rem);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(0);
+  }
+  100% {
+    opacity: 2;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInLeft4 {
+  0% {
+    opacity: 1;
+    transform: translateX(-50rem);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(0);
+  }
+  100% {
+    opacity: 2;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInright {
+  0% {
+    opacity: 1;
+    transform: translateX(20rem);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(0);
+  }
+  100% {
+    opacity: 2;
+    transform: translate(0);
+  }
 }
 
 .button {
@@ -241,6 +239,8 @@ h3 {
   box-shadow: 4px 3px 8px 3px #969696;
   -webkit-box-shadow: 4px 3px 8px 1px #969696;
 }
+
+/* -------------- Weekly content information ---------------- */
 
 .weekly-content {
   margin-top: 20%;
@@ -259,7 +259,17 @@ h3 {
   height: 17px;
 }
 
+/* ------------ IPAD ADAPTIONS------------- */
+
 @media (min-width: 668px) and (max-width: 1024px) {
+  /* ---------------- Hamburger bar menu ---------------- */
+
+  .fa-bars {
+    font-size: 50px;
+  }
+
+  /* ---------------- Daily content information ---------------- */
+
   .main-daily-info {
     padding-left: 105px;
   }
@@ -274,6 +284,14 @@ h3 {
     padding: 0;
   }
 
+  h2 {
+    font-size: 2.5em;
+  }
+
+  h3 {
+    font-size: 1.7em;
+  }
+
   .daily-weather-icon {
     font-size: 12em;
     margin: 0 65px 0 0;
@@ -284,62 +302,9 @@ h3 {
     padding-top: 1.5%;
   }
 
-  h2 {
-    font-size: 2.5em;
-  }
-
-  h3 {
-    font-size: 1.7em;
-  }
-
   .main-sunset-sunrise {
     margin-top: 30px;
   }
-
-@keyframes moveInLeft {
-  0%{
-    opacity: -5;
-    transform: translateX(-10rem);
-  }
-  50%{
-    opacity: 1;
-    transform: translate(0);
-  }
-  100%{
-    opacity: 2;
-    transform: translate(0);
-  }
-}
-
-@keyframes moveInLeft2 {
-  0%{
-    opacity: -5;
-    transform: translateX(-30rem);
-  }
-  50%{
-    opacity: 1;
-    transform: translate(0);
-  }
-  100%{
-    opacity: 2;
-    transform: translate(0);
-  }
-}
-
-@keyframes moveInLeft3 {
-  0%{
-    opacity: -5;
-    transform: translateX(-30rem);
-  }
-  50%{
-    opacity: 1;
-    transform: translate(0);
-  }
-  100%{
-    opacity: 2;
-    transform: translate(0);
-  }
-}
 
   .button {
     padding: 6%;
@@ -349,13 +314,56 @@ h3 {
     margin-top: 80px;
   }
 
+  @keyframes moveInLeft {
+    0% {
+      opacity: -5;
+      transform: translateX(-10rem);
+    }
+    50% {
+      opacity: 1;
+      transform: translate(0);
+    }
+    100% {
+      opacity: 2;
+      transform: translate(0);
+    }
+  }
+
+  @keyframes moveInLeft2 {
+    0% {
+      opacity: -5;
+      transform: translateX(-30rem);
+    }
+    50% {
+      opacity: 1;
+      transform: translate(0);
+    }
+    100% {
+      opacity: 2;
+      transform: translate(0);
+    }
+  }
+
+  @keyframes moveInLeft3 {
+    0% {
+      opacity: -5;
+      transform: translateX(-30rem);
+    }
+    50% {
+      opacity: 1;
+      transform: translate(0);
+    }
+    100% {
+      opacity: 2;
+      transform: translate(0);
+    }
+  }
+
+  /* -------------- Weekly content information ---------------- */
+
   .day {
     font-size: 1.8em;
     justify-content: space-evenly;
-  }
-
-  .fa-bars {
-    font-size: 50px;
   }
 
   .weekly-content {
@@ -363,46 +371,15 @@ h3 {
   }
 }
 
-
-
-@keyframes moveInright {
-  0%{
-    opacity: 0;
-    transform: translateX(20rem);
-  }
-  50%{
-    opacity: 1;
-    transform: translate(0);
-  }
-  100%{
-    opacity: 2;
-    transform: translate(0);
-  }
-}
-
-
-
-@keyframes moveInLeft4 {
-  0%{
-    opacity: -5;
-    transform: translateX(10rem);
-  }
-  50%{
-    opacity: 1;
-    transform: translate(-5);
-  }
-  100%{
-    opacity: 2;
-    transform: translate(0);
-  }
-}
-
-
+/* ------------------ Desktop content information ---------------- */
 @media (min-width: 1025px) {
+  /* ---------------- Daily content information ---------------- */
+
   .headings {
     align-items: center;
     row-gap: 0px;
   }
+
   .main-daily-info {
     padding: 0 40px 5% 40px;
   }
@@ -413,68 +390,9 @@ h3 {
     margin: 0 0 10px 0;
   }
 
-  h1 {
-    /* margin-left: 40%; */
-    font-size: 8em;
-  }
-
   .celsius {
     font-size: 0.5em;
     padding-top: 1.5%;
-  }
-
-  h2 {
-    font-size: 3em;
-    margin: 0;
-  }
-
-  h3 {
-    font-size: 2em;
-  }
-
-  @keyframes moveInLeft {
-    0%{
-      opacity: -5;
-      transform: translateX(-10rem);
-    }
-    50%{
-      opacity: 1;
-      transform: translate(0);
-    }
-    100%{
-      opacity: 2;
-      transform: translate(0);
-    }
-  }
-
-  @keyframes moveInLeft2 {
-    0%{
-      opacity: -5;
-      transform: translateX(-10rem);
-    }
-    50%{
-      opacity: 1;
-      transform: translate(0);
-    }
-    100%{
-      opacity: 2;
-      transform: translate(0);
-    }
-  }
-
-  @keyframes moveInLeft3 {
-    0%{
-      opacity: -5;
-      transform: translateX(-10rem);
-    }
-    50%{
-      opacity: 1;
-      transform: translate(0);
-    }
-    100%{
-      opacity: 2;
-      transform: translate(0);
-    }
   }
 
   .daily-weather-icon {
@@ -492,6 +410,96 @@ h3 {
     display: none;
   }
 
+  h1 {
+    font-size: 8em;
+  }
+
+  h2 {
+    font-size: 3em;
+    margin: 0;
+  }
+
+  h3 {
+    font-size: 2em;
+  }
+
+  @keyframes moveInLeft {
+    0% {
+      opacity: -5;
+      transform: translateX(-10rem);
+    }
+    50% {
+      opacity: 1;
+      transform: translate(0);
+    }
+    100% {
+      opacity: 2;
+      transform: translate(0);
+    }
+  }
+
+  @keyframes moveInLeft2 {
+    0% {
+      opacity: -5;
+      transform: translateX(-10rem);
+    }
+    50% {
+      opacity: 1;
+      transform: translate(0);
+    }
+    100% {
+      opacity: 2;
+      transform: translate(0);
+    }
+  }
+
+  @keyframes moveInLeft3 {
+    0% {
+      opacity: -5;
+      transform: translateX(-10rem);
+    }
+    50% {
+      opacity: 1;
+      transform: translate(0);
+    }
+    100% {
+      opacity: 2;
+      transform: translate(0);
+    }
+  }
+
+  @keyframes moveInright {
+    0% {
+      opacity: 0;
+      transform: translateX(20rem);
+    }
+    50% {
+      opacity: 1;
+      transform: translate(0);
+    }
+    100% {
+      opacity: 2;
+      transform: translate(0);
+    }
+  }
+
+  @keyframes moveInLeft4 {
+    0% {
+      opacity: -5;
+      transform: translateX(10rem);
+    }
+    50% {
+      opacity: 1;
+      transform: translate(-5);
+    }
+    100% {
+      opacity: 2;
+      transform: translate(0);
+    }
+  }
+
+  /* ---------------- Weekly content information ---------------- */
+
   .weekly-content {
     display: flex;
     justify-content: space-evenly;
@@ -506,44 +514,40 @@ h3 {
     padding: 0px;
   }
 
-  h4 {
-    margin: 20px;
-  }
-
   .menu {
     text-align: center;
   }
+
+  h4 {
+    margin: 20px;
+  }
 }
 
-
-
 @keyframes moveInright {
-  0%{
+  0% {
     opacity: -5;
     transform: translateX(10rem);
   }
-  50%{
+  50% {
     opacity: 1;
     transform: translate(0);
   }
-  100%{
+  100% {
     opacity: 2;
     transform: translate(0);
   }
 }
 
-
-
 @keyframes moveInLeft4 {
-  0%{
+  0% {
     opacity: -5;
     transform: translateX(-10rem);
   }
-  50%{
+  50% {
     opacity: 1;
     transform: translate(0);
   }
-  100%{
+  100% {
     opacity: 2;
     transform: translate(0);
   }
