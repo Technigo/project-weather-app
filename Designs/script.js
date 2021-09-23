@@ -75,49 +75,47 @@ const getData = () => { //made global function so we can call from different are
 // 	.finally(() => console.log("Request done"));
 
 
-  fetch(API_Forecast)
-      .then((Response) => { 
-          return Response.json()
-      })
-      .then ((json) => {
-          const filteredForecast = json.list.filter(item =>
-          item.dt_txt.includes("12:00")
+  fetch(API_Forecast.replace('cityname', currentCity))
+      .then((res) => res.json())
+      .then((forecast) => { 
+          const filteredForecast = forecast.list.filter(day =>
+          day.dt_txt.includes("12:00")
           );
           filteredForecast.forEach(day => {
               let date = new Date(day.dt * 1000);
               let dayName = date.toLocaleDateString("en-US", { weekday: "long" });
               const dayTemp = day.main.temp;
               const weekTemp = dayTemp.toFixed(0.1);
-         		
-  
+         	
               document.getElementById('forecastDay').innerHTML += `<p>${dayName}</p>`
-              document.getElementById('forecastTemp').innerHTML += `<p>${weekTemp}°C</p>
-              <p>🌡️${day.main.temp.toFixed(1)}°C</p>`
+              document.getElementById('forecastTemp').innerHTML += `<p>🌡️${weekTemp}°C</p>
+              <p>Feels like ${day.main.feels_like.toFixed(1)}°C</p>`
               document.getElementById('forecastIcon').innerHTML += `<img src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png"/>
               <p>Weather: ${day.weather[0].description}</p>`
       });  
   });
-  fetch(API_FORCAST.replace('cityname', currentCity))
-    .then((res) => res.json())
-    .then((forecast) => {
-      const forecastDay = forecast.list.filter((day) =>
-        day.dt_txt.includes("12:00")
-      );
+  
+  // fetch(API_FORCAST.replace('cityname', currentCity))
+  //   .then((res) => res.json())
+  //   .then((forecast) => {
+  //     const forecastDay = forecast.list.filter((day) =>
+  //       day.dt_txt.includes("12:00")
+  //     );
 
 
-      // https://stackoverflow.com/questions/24998624/day-name-from-date-in-js/24998705 autohor iamnox  
-      weatherForecast.innerHTML = ''
-      forecastDay.forEach((day) => {
-        weatherForecast.innerHTML += `
-      <h3>${new Date(day.dt*1000).toLocaleDateString('en-us',{weekday:'long'})}</h3> 
-      <p>🌡️${day.main.temp.toFixed(1)}°C</p> 
-	    <p>Feels like: ${day.main.feels_like.toFixed(1)}°C</p> 
-      <p>Weather: ${day.weather[0].description}</p>
-    `;
-      });
-    })
-    .catch((error) => console.error("Error: ", error))
-    .finally(() => console.log("Request done"));
+  //     // https://stackoverflow.com/questions/24998624/day-name-from-date-in-js/24998705 autohor iamnox  
+  //     weatherForecast.innerHTML = ''
+  //     forecastDay.forEach((day) => {
+  //       weatherForecast.innerHTML += `
+  //     <h3>${new Date(day.dt*1000).toLocaleDateString('en-us',{weekday:'long'})}</h3> 
+  //     <p>🌡️${day.main.temp.toFixed(1)}°C</p> 
+	//     <p>Feels like: ${day.main.feels_like.toFixed(1)}°C</p> 
+  //     <p>Weather: ${day.weather[0].description}</p>
+  //   `;
+  //     });
+  //   })
+  //   .catch((error) => console.error("Error: ", error))
+  //   .finally(() => console.log("Request done"));
 
 
 }
