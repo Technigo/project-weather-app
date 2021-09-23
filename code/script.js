@@ -201,20 +201,11 @@ const fetchForecast = () => {
           })}</p>
         `;
       });
-      // const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
-      // let day = new Date(data.list[3].dt * 1000).getDay();
-
-      // console.log(`${days[day]}`);
-
-      // renderWeekdayData("monday", emojiObject.cloudy, "12", "25");
-      // renderWeekdayData(days[++day], "emoji", "12", "25");
-      // renderWeekdayData(days[++day], "emoji", "12", "25");
-      // renderWeekdayData(days[++day], "emoji", "12", "25");
-      // renderWeekdayData(days[++day], "emoji", "12", "25");
     })
     .catch((error) => console.error(error));
 };
 
 fetchForecast();
+//hey
 
 // key: f9773f2491f9348664665c65e8d966c3
