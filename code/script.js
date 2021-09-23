@@ -37,42 +37,32 @@ const emojiObject = {
 
 const staticImg = {
   day: "/Designs/Design-1/assets/sun.png",
-  night: "/Designs/Design-1/assets/moon.png",
+  cold: "/Designs/Design-1/assets/snow.png",
 };
 
-// this part wont work cause there is no generic functions anymore
 const fetchWeather = () => {
   fetch(
     "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=f9773f2491f9348664665c65e8d966c3"
   )
     .then((response) => response.json())
     .then((data) => {
-      // console.log("The data from the json:", data);
-      // console.log("max temp", Math.floor(data.main.temp_max));
-      // const sunrise = data.sys.sunrise;
-      // const sunset = data.sys.sunset;
-      // renderCurrentWeather(
-      //   Math.floor(data.main.temp),
-      //   dayWeatherPicture,
-      //   data.name,
-      //   data.weather[0].description
-      //   // Date.prototype.getTime(sunrise),
-      //   // Date.prototype.getTime(sunset)
-      // );
-
       const todaysTemp = data.main.temp_max.toFixed(0);
       currentTemperature.innerHTML = `${todaysTemp}`;
       console.log(todaysTemp);
-      currentWeatherPictureContainer.innerHTML = `
-      <img class="currentWeatherImg" src="${staticImg.day}"/>
-      `;
       cityName.innerHTML = `${data.name}`;
       currentWeatherStatus.innerHTML = `${data.weather[0].description}`;
 
-      switch (todaysTemp <= 10) {
+      switch (todaysTemp <= 15) {
         case true:
           todaysWeather.classList.toggle("cold");
+          currentWeatherPictureContainer.innerHTML = `
+          <img class="currentWeatherImg" src="${staticImg.cold}"/>
+          `;
           break;
+        case false:
+          currentWeatherPictureContainer.innerHTML = `
+          <img class="currentWeatherImg" src="${staticImg.day}"/>
+          `;
         default:
           console.log("problem");
       }
@@ -104,31 +94,29 @@ const fetchSunriseSunset = () => {
       );
       const sunsetTime = sunsetDate.getHours() + ":" + sunsetDate.getMinutes();
       sunrise.innerHTML += `
-      <img src="/Designs/Design-1/assets/sunrise-small.png"/>${sunriseTime}
+      <img class="sun-img"src="/Designs/Design-1/assets/sunrise32.png"/> ${sunriseTime}
       `;
       sunset.innerHTML += `
-      <img src="/Designs/Design-1/assets/sunset-small.png"/>${sunsetTime}
+      <img class="sun-img"src="/Designs/Design-1/assets/sunset32.png"/> ${sunsetTime}
       `;
     });
 };
 
 fetchSunriseSunset();
 
-//  sunrise
-// 1632329324 sunset
-// Date.prototype.getMilliseconds(1632285134)
-// Date.prototype.getMilliseconds(1632329324)
-
 const fetchForecast = () => {
   fetch(API_FIVE_DAY_FORECAST)
     .then((response) => response.json())
     .then((data) => {
-      // console.log("New Forecast JSON:", data);
+      console.log("New Forecast JSON:", data);
 
       let filteredFiveDays = data.list.filter((item) =>
         item.dt_txt.includes("12:00")
       );
-      // console.log(filteredFiveDays);
+      console.log(filteredFiveDays);
+      let filteredFiveNights = data.list.filter((item) =>
+        item.dt_txt.includes("21:00")
+      );
 
       filteredFiveDays.forEach((item) => {
         fiveDayForecastContainer.innerHTML += `
