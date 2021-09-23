@@ -173,6 +173,7 @@ img.today-weather {
 .wind-icon {
   max-width: 20%;
   margin-right: 0.5vh;
+  margin-bottom: -0.7vh;
 }
 
 /* Coming days weather*/
@@ -212,6 +213,7 @@ img.today-weather {
 img.forecast-weather {
   width: 65%;
   margin-right: 1vh;
+  margin-bottom: -1.7vh;
 }
 
 footer {
@@ -256,11 +258,11 @@ footer {
   }
   .forecast-temp {
     margin: 0px;
-    width: 45%;
+    width: 48%;
     margin-right: 0;
   }
   .forecast-wind {
-    max-width: 62%;
+    max-width: 69%;
     margin-right: 0;
   }
   img.forecast-weather {
@@ -271,6 +273,9 @@ footer {
     flex-direction: column;
     height: 20vh;
     width: 30vh;
+  }
+  .wind-icon {
+    margin-bottom: -0.3vh;
   }
   footer {
     position: fixed;
