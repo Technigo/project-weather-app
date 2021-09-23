@@ -16,6 +16,12 @@ const getDayOfWeek = (date) => {
     : ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][dayOfWeek];
 };
 
+// Function that shows or hides the menu.
+const toggleMenu = () => {
+  let menu = document.getElementById("menu");
+  menu.classList.toggle("menu-active");
+};
+
 // Function that changes city depending on the value of "town".
 const display = (town) => {
   city = town;
