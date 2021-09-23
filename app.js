@@ -3,56 +3,52 @@ const dailyContent = document.getElementById("dailyContent");
 const weeklyContent = document.getElementById("weeklyContent");
 
 // Global variables
-let dayAndTemp = []; // empty list
+let dayAndTemp = [];
 let city = "Gothenburg";
 let dailyContentIcon = ``;
 
 //Functions
-function getDayOfWeek(date) {
+// Function to get what day of the week a date is.
+const getDayOfWeek = (date) => {
   const dayOfWeek = new Date(date).getDay();
   return isNaN(dayOfWeek)
     ? null
     : ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][dayOfWeek];
-}
-
-const toggleMenu = () => {
-  let menu = document.getElementById("menu");
-  menu.classList.toggle("menu-active");
 };
 
+// Function that changes city depending on the value of "town".
 const display = (town) => {
-  console.log(`hej`, town);
   city = town;
   getWeatherPrognose();
 };
 
+// Function that contains all the data to fetch the weather prognoses we use on our site.
 const getWeatherPrognose = () => {
+  // Reset the innerHTML of weeklyContent and empties dayAndTemp.
   weeklyContent.innerHTML = ``;
   dayAndTemp = [];
+
+  // --------The api for daily temperatures----------
   const weatherCityToday = `https://api.openweathermap.org/data/2.5/weather?q=${city},Sweden&units=metric&APPID=6f4589c9a1ed485fe713e8f5159a6ff9`;
-
-  // Fetch the JSON from the API and save the variables sunrise and sunset
-
+  // Fetch the JSON from the API and save the variables sunrise and sunset, description and main and makes the adjustment for timezones.
   fetch(weatherCityToday)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data); // Important console.log
-      const sunrise = data.sys.sunrise;
-      const sunset = data.sys.sunset;
+      const timezoneOffset = new Date().getTimezoneOffset() * 60;
+      const sunrise = data.sys.sunrise + data.timezone + timezoneOffset;
+      const sunset = data.sys.sunset + data.timezone + timezoneOffset;
       let description = data.weather[0].description;
       let main = data.weather[0].main;
+
       // A function that converts epoch to ordinary time and then from milliseconds to seconds.
-      function convert(t) {
+      const convert = (t) => {
         const dt = new Date(t * 1000);
         const hr = dt.getHours();
         const m = "0" + dt.getMinutes();
         return hr + ":" + m.substr(-2);
-      }
-
+      };
       const sunriseTime = convert(sunrise);
       const sunsetTime = convert(sunset);
-
-      console.log(description);
 
       //condintional that change the dailyContentIcon depending on the weather.
       if (main === `Thunderstorm`) {
@@ -87,19 +83,20 @@ const getWeatherPrognose = () => {
         dailyContentIcon = `<i class="fa-solid fa-clouds daily-weather-icon"></i>`;
       }
 
-      // Conversion of the first letter in description to be a uppercase. (Done by doing a slice to not do the whole word.)
+      // Conversion of the first letter in description to be a uppercase.
       description = description.charAt(0).toUpperCase() + description.slice(1);
 
       // Change the innerhtml with new content and use the values we picked up from the json.
-      console.log(dailyContentIcon);
       dailyContent.innerHTML = `
       <div class="main-daily-info">
        <div class="headings">
         <div><i class="fa-thin fa-bars" onClick="toggleMenu()"></i></div>
         <div class="menu" id="menu">
           <div class="menu-option" onClick="display('Gothenburg')">Gothenburg</div>
-          <div class="menu-option" onClick="display('London')">London</div>
-          <div class="menu-option" onClick="display('Paris')">Paris</div>
+          <div class="menu-option" onClick="display('Kaktovik')">Kakotiv</div>
+          <div class="menu-option" onClick="display('Sydney')">Sydney</div>
+          <div class="menu-option" onClick="display('Brasil')">Brasil</div>
+          <div class="menu-option" onClick="display('Tokyo')">Tokyo</div>
         </div>
         <div class="daily-icon-container">${dailyContentIcon}</div>
         <div class="daily-temp">
@@ -119,7 +116,7 @@ const getWeatherPrognose = () => {
        <button class="button"><i class="far fa-chevron-right"></i></button>
       </div>`;
 
-      console.log('data', data);
+      // Function that changes the background color depending on the temperature.
       if (data.main.temp < 5) {
         dailyContent.style.background =
           "linear-gradient(180deg, #828385 0%, #c0c0c2 100%)";
@@ -132,48 +129,44 @@ const getWeatherPrognose = () => {
       }
     });
 
-    
+  // --------The api for weekly temperatures----------
   const weatherForecast5DaysCity = `https://api.openweathermap.org/data/2.5/forecast?q=${city},Sweden&units=metric&APPID=6f4589c9a1ed485fe713e8f5159a6ff9`;
 
   // Fetch the JSON from the API for the five day weather forecast
   fetch(weatherForecast5DaysCity)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data); // remove this later
-
-      // myDates and myDescriptions is at this point empty
       let myDates = [];
 
       // A function in which we forEach element in the list targets the dt_txt file and do a split between the date and the time.
-      // This will separate the 2021-09-21 from the time 09:00 and make two strings of it in an array.
-      // We do a if statement to check if the variable myDates consist of the date[at position 0 since the date is at the 0 position in the array]
-      // If myDates doesnt contain the date that is looped over it gets added to myDates.
+      // We do a if statement to check if the variable myDates consist of the date[0] (since it is the first position).
+      // If myDates doesnt contain the date that is looped and it is not todays date it gets added to the variabel myDates.
       data.list.forEach((element) => {
         let date = element.dt_txt.split(" ");
 
-        if (!myDates.includes(date[0])) {
+        if (
+          !myDates.includes(date[0]) &&
+          new Date(date[0]).toLocaleDateString() !==
+            new Date().toLocaleDateString()
+        ) {
           myDates.push(date[0]);
         }
       });
-      console.log(myDates);
 
-      // myDates ends up being an array with 6 objects in it and since we dont want todays information we use the function myDates.shift
-      // which removes the first object in an array.
-      myDates.shift();
-
-      //myDates now consists of the 5 dates. We now loop over the element which is the 5 days and forEach date we go in into the big list of 40 values and
-      //filter the list to pick up the dt_txt that includes the date. For example the first search will be 2021-09-22.
+      // ForEach date in myDates we save all elements that contains that date and the time 12:00:00.
+      // Due to slow information update in the api we also stop the code if weatherat12.lenght is equal to 0.
       myDates.forEach((element) => {
-        let weatherAt9 = data.list.filter((e) =>
-          e.dt_txt.includes(`${element} 09:00:00`)
+        let weatherAt12 = data.list.filter((e) =>
+          e.dt_txt.includes(`${element} 12:00:00`)
         );
 
-        console.log("weather at 9", weatherAt9);
+        if (weatherAt12.length === 0) {
+          return;
+        }
 
-        let description = weatherAt9[0].weather[0].main;
-        console.log(description);
+        let description = weatherAt12[0].weather[0].main;
 
-        // e is 1 of the 40 objects in the weekly json.
+        // Filter so we get all information for one day.
         let weatherDuringADay = data.list.filter((e) =>
           e.dt_txt.includes(element)
         );
@@ -182,7 +175,7 @@ const getWeatherPrognose = () => {
         let minTemp = 80;
         let maxTemp = -80;
 
-        // we do a comparison of the weather during the days to find the minTemp and MaxTemp of each day.
+        // We do a comparison of the weather during the days to find the minTemp and maxTemp of each day.
         weatherDuringADay.forEach((e) => {
           if (e.main.temp_min < minTemp) {
             minTemp = Math.round(e.main.temp_min);
@@ -191,12 +184,10 @@ const getWeatherPrognose = () => {
           }
         });
 
-        // we call for the function getDayOfWeek (to get the fri, sat, sun or whatever the day is for day) and save it into a variable called dayOfWeek
+        // we call for the function getDayOfWeek and save it into a variable called dayOfWeek.
         const dayOfWeek = getDayOfWeek(element);
 
-        // After this is done we push it up to an object were we say that day:element (the day it is looping over)
-        //dayOfWeek: dayOfWeek (got this by envoking getDayOfWeek with the element (which is the actual day it is looping over)
-        //tempMin: minTemp, tempMax:maxTemp, description: description.
+        // After this is done we push it up to an object were we say that day:element, dayOfWeek: dayOfWeek, tempMin: minTemp, tempMax:maxTemp, description: description.
         dayAndTemp.push({
           day: element,
           dayOfWeek: dayOfWeek,
@@ -206,10 +197,8 @@ const getWeatherPrognose = () => {
         });
       });
 
-      console.log(dayAndTemp); // console.log the dayAndTemp
-
       // Conditional statements to show the icons for the weekly weather depending
-      // on the weather registrered for the day in `main`.
+      // on the weather registrered for the day in `main` (which we saved into a variable called description).
       dayAndTemp.forEach((weekday) => {
         let icon = "";
 
@@ -250,6 +239,7 @@ const getWeatherPrognose = () => {
       </div>`;
       });
     });
-  };
+};
 
+// Start the website.
 getWeatherPrognose();
