@@ -1,11 +1,10 @@
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 table {
   border-collapse: collapse;
   width: 90%;
   margin: auto;
-  /* border: 1px solid red; */
 }
 td {
   text-align: left;
@@ -58,6 +57,10 @@ footer p {
   animation: spin 4s ease-in-out;
 }
 
+.citys {
+  display: none;
+}
+
 @keyframes spin {
   0% {
     transform: translateX(-200%);
@@ -68,5 +71,67 @@ footer p {
 
   100% {
     transform: translateX(0);
+  }
+}
+
+@media (min-width: 768px) {
+  .city-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  footer {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    margin: 30px 0px;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .citys {
+    display: block;
+  }
+  .cityCard {
+    /* background: pink; */
+    padding: 10px;
+    width: 300px;
+    border: 2px solid grey;
+    border-radius: 1%;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 20px;
+  }
+
+  .city-photo {
+    width: 100%;
+    height: 200px;
+  }
+
+  .other-citys {
+    text-align: center;
+  }
+
+  table {
+    width: 60%;
+    border: 2px solid;
+  }
+
+  td {
+    font-size: 24px;
+    text-align: center;
+  }
+  tr {
+    background: none;
+    background-size: none;
+  }
+
+  .container,
+  .image,
+  .name {
+    width: 60%;
+    margin: auto;
   }
 }

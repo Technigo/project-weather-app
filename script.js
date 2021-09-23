@@ -1,5 +1,8 @@
 const API_URL =
   'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=c51f401bafb99cdf6e4b149c98e89cc3';
+const API_ROME = 'https://api.openweathermap.org/data/2.5/weather?q=Rome,%20Italy&units=metric&APPID=c51f401bafb99cdf6e4b149c98e89cc3';
+const API_HURGHADA = 'https://api.openweathermap.org/data/2.5/weather?q=hurghada,%20egypt&units=metric&APPID=c51f401bafb99cdf6e4b149c98e89cc3'
+const API_ZAGREB = 'https://api.openweathermap.org/data/2.5/weather?q=Zagreb,%20Croatia&units=metric&APPID=c51f401bafb99cdf6e4b149c98e89cc3'
 const API_FORECAST =
   'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=c51f401bafb99cdf6e4b149c98e89cc3';
 const cityName = document.getElementById('name');
@@ -14,6 +17,7 @@ const dayOne = document.getElementById('dayOne');
 const dayTwo = document.getElementById('dayTwo');
 const dayThree = document.getElementById('dayThree');
 const dayFour = document.getElementById('dayFour');
+const cityContainer = document.getElementById('cityContainer')
 
 fetch(API_URL)
   .then((response) => {
@@ -42,7 +46,7 @@ fetch(API_URL)
     });
     sunTime.innerHTML += `<p>sunset ${down}</p>`;
 
-    // json.weather[0].main = 'Clouds';
+    json.weather[0].main = 'Rain';
 
     if (json.weather[0].main === 'Clear') {
       body.style.background = '#F7E9B9';
@@ -93,7 +97,7 @@ fetch(API_FORECAST)
       const tempOfTheDay = filteredForecast[index].main.temp.toFixed(0);
 
       temp.innerHTML += `
-      ${tempOfTheDay}°`;
+      ${tempOfTheDay}°C`;
     });
 
     // display the name of the weekday for the next five days forecast
@@ -141,3 +145,32 @@ fetch(API_FORECAST)
     ${weekday[weekdaysNamesArray[4]]}
     `;
   });
+  fetch(API_ROME) 
+    .then((response) => {
+      return response.json()
+    }) .then((json) => {
+      cityContainer.innerHTML += generateCity(json)
+    })
+    let generateCity = city => {
+      const cityName = city.name
+      const cityTemp = city.main.temp
+
+      let cityHTML = ''
+      cityHTML += `<div class="cityCard"><p>${cityName} ${cityTemp.toFixed()}°C</p><img class="city-photo" src='./images/${cityName}.jpg'></div>`
+      
+     
+      return cityHTML
+    }
+    fetch(API_HURGHADA) 
+    .then((response) => {
+      return response.json()
+    }) .then((json) => {
+      cityContainer.innerHTML += generateCity(json)
+    })
+    fetch(API_ZAGREB) 
+    .then((response) => {
+      return response.json()
+    }) .then((json) => {
+      cityContainer.innerHTML += generateCity(json) 
+    
+    })
