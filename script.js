@@ -45,8 +45,10 @@ const API_LINK = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sw
             sunset.innerHTML = `Sunset: ${sunsetTime}`;     
     })
 
-const otherCitiesContainer = document.getElementById('other-cities-container')
+
 // Fetch for another city 
+const otherCitiesContainer = document.getElementById('other-cities-container')
+
 const API_LINK_OTHER_CITIES = 'https://api.openweathermap.org/data/2.5/weather?q=Barcelona&units=metric&APPID=147b874875d53e0e9f84cbacd0567b99'
     fetch(API_LINK_OTHER_CITIES)
     .then((response) => {
