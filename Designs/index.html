@@ -14,28 +14,35 @@
         <title>weather app</title>
     </head>
     <body>
-        <header class="burger-menu">
-            <nav>
+        <header class="burger-menu" id="nav">
+            <nav >
                 <input class="menu-btn" type="checkbox" id="menu-btn" />
                 <label class="menu-icon" for="menu-btn"
                     ><span class="navicon"></span
                 ></label>
                 <ul class="menu" id="menu">
-                    <li><a data-cityname="Stockholm">Stockholm</a></li>
-                    <li><a data-cityname="Göteborg">Göteborg</a></li>
-                    <li><a data-cityname="Malmö">Malmö</a></li>
-                    <li><a data-cityname="Örebro">Örebro</a></li>
-                    <li><a data-cityname="Kiruna">Kiruna</a></li>
-                    <li><a data-cityname="los angeles">Los Angeles</a></li>
+                    <li><a id="drop" data-cityname="Stockholm">Stockholm</a></li>
+                    <li><a id="drop1" data-cityname="Göteborg">Göteborg</a></li>
+                    <li><a id="drop2" data-cityname="Malmö">Malmö</a></li>
+                    <li><a id="drop3" data-cityname="Örebro">Örebro</a></li>
+                    <li><a id="drop4" data-cityname="Kiruna">Kiruna</a></li>
+                    <li><a id="drop5" data-cityname="los angeles">Los Angeles</a></li>
                 </ul>
             </nav>
         </header>
+       
         <section class="weather-today-container" id="weather-today"></section>
         <section class="weather-forecast-container" id="weather-forecast">
         </section>
         <button id="locationButton" onclick="getLocation()">
             Current Location
         </button>
+  
+
+
+
+
+
     </body>
     <script src="script.js"></script>
 </html>
