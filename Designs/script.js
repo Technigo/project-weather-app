@@ -42,18 +42,26 @@ const getData = () => {
 
 			temp = data.main.temp;
 
-			if (temp >= 25 && sunrise) {
-				weatherToday.style.background = "var(--hot)";
-			} else if (temp >= 25 && sunset) {
-				weatherToday.style.background = "var(--hotnight)";
-			} else if (temp <= 24 && sunrise) {
-				weatherToday.style.background = "var(--moderate)";
-			} else if (temp <= 24 && sunset) {
-				weatherToday.style.background = "var(--moderatenight)";
-			} else if (temp > -1 && sunrise) {
-				weatherToday.style.background = "var(--coldnight)";
-			} else if (temp > -1 && sunset) {
-				weatherToday.style.background = "var(--cold)";
+			if (temp >= 25 && temp <= 65) {
+				if (sunrise) {
+					weatherToday.style.background = "var(--hot)";
+				} else  {
+					weatherToday.style.background = "var(--hotnight)";
+				}
+			}
+
+			else if ( temp >= 0 && temp <= 24) {
+				if (sunrise) {
+					weatherToday.style.background = "var(--moderate)";
+				} else  {
+					weatherToday.style.background = "var(--moderatenight)";
+				}
+			} else if (temp -40 && temp > -1) {
+				if (sunrise) {
+					weatherToday.style.background = "var(--cold)";
+				} else  {
+					weatherToday.style.background = "var(--coldnight)";
+				}
 			}
 		})
 		.catch((error) => console.error("Error: ", error))
