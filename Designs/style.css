@@ -1,19 +1,19 @@
 :root{
  
-    --hot: linear-gradient( #ff402778,#fdd39c, #ffffff);
-    --hotnight: linear-gradient( #992617,#adc7f786, #ffffff);
+  --hot: linear-gradient( #ff402778,#fdd39c, #ffffff);
+  --hotnight: linear-gradient( #992617,#adc7f786, #ffffff);
 
-    --moderate: linear-gradient( #ebb36b, #d4f17186, #ffffff);
-    --moderatenight: linear-gradient( #050c33, #b8cdf586, #ffffff);
+  --moderate: linear-gradient( #ebb36b, #d4f17186, #ffffff);
+  --moderatenight: linear-gradient( #050c33, #b8cdf586, #ffffff);
 
-    --cold: linear-gradient( #61b3ff,#e0f7a27a, #ffffff);
-    --coldnight: linear-gradient( #050c33,#dee5f386, #ffffff);
+  --cold: linear-gradient( #61b3ff,#e0f7a27a, #ffffff);
+  --coldnight: linear-gradient( #050c33,#dee5f386, #ffffff);
 
-    --dayphone: #afdbcf;
-    --nightphone: #41326b;
-    
-    --imgn: url("./Design-1/assets/night-time-tree.png"); 
-    --imgd: url("./Design-1/assets/night-day-tree.png"); 
+  --dayphone: #afdbcf;
+  --nightphone: #41326b;
+  
+  --imgn: url("./Design-1/assets/night-time-tree.png"); 
+  --imgd: url("./Design-1/assets/night-day-tree.png"); 
 
 
   }
@@ -66,10 +66,10 @@
   margin-top: 0;
 }
 
- .weather-forecast-container {
-   display: grid;
-   grid-template-columns: 1fr 1fr 1fr 1fr;
-   padding-left: 20px;
+.weather-forecast-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding-left: 20px;
  }
 
 
