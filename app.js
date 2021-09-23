@@ -63,7 +63,7 @@ fetch(weatherCityToday)
     } else if (main === `Ash`) {
       dailyContentIcon = `<i class="fa-solid fa-cloud-sun daily-weather-icon"></i>`;
     } else if (main === `Squall`) {
-      dailyContentIcon = `<i class="fa-solid fa-tornado daily-weather-icon">`;
+      dailyContentIcon = `<i class="fa-solid fa-tornado daily-weather-icon"></i>`;
     } else if (main === `Tornado`) {
       dailyContentIcon = `<i class="fa-solid fa-tornado daily-weather-icon"></i>`;
     } else if (main === `Clear`) {
@@ -81,18 +81,17 @@ fetch(weatherCityToday)
       <div class="main-daily-info">
        <div class="headings">
         <div><i class="fa-thin fa-bars"></i></div>
+        <div class="daily-icon-container">${dailyContentIcon}</div>
         <div class="daily-temp">
          <h1>${Math.round(data.main.temp * 10) / 10}
           <span class="celsius">°C</span>
          </h1>
-         <div>${dailyContentIcon}</div>
         </div>
         <h2>${data.name}</h2>
         <h3>${description}</h3>
-       
         <div class="main-sunset-sunrise">
-         <h3>Sunrise:</h3>
-         <h3>${sunriseTime}</h3>
+         <h3>Sunrise: </h3>
+         <h3> ${sunriseTime}</h3>
          <h3>Sunset:</h3>
          <h3>${sunsetTime}</h3>
         </div>

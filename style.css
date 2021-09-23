@@ -1,10 +1,19 @@
 body {
   margin: 0;
   padding: 0;
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 1500px;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  min-width: 325px;
   font-family: "Roboto", sans-serif;
   background-color: rgba(247, 247, 247, 1);
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
 .daily-content {
@@ -20,7 +29,7 @@ body {
 
 .main-daily-info {
   height: 100%;
-  padding: 0 10px 20% 40px;
+  padding: 0 30px 20% 30px;
 }
 
 .fa-bars {
@@ -63,6 +72,11 @@ h3 {
   font-weight: normal;
 }
 
+.daily-icon-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .daily-temp {
   display: flex;
   align-items: flex-end;
@@ -71,7 +85,7 @@ h3 {
 
 .daily-weather-icon {
   font-size: 8em;
-  margin: 0 30px 0 0;
+  color: white;
 }
 
 .celsius {
@@ -115,9 +129,8 @@ h3 {
   height: 17px;
 }
 
-@media (min-width: 600px) and (max-width: 991px) {
+@media (min-width: 668px) and (max-width: 1024px) {
   .main-daily-info {
-    margin-top: 3%;
     padding-left: 105px;
   }
 
@@ -127,6 +140,13 @@ h3 {
 
   h1 {
     font-size: 6.5em;
+    margin: 0;
+    padding: 0;
+  }
+
+  .daily-weather-icon {
+    font-size: 12em;
+    margin: 0 65px 0 0;
   }
 
   .celsius {
@@ -151,6 +171,7 @@ h3 {
     min-width: 8rem;
     min-height: 8rem;
     font-size: 300%;
+    margin-top: 80px;
   }
 
   .day {
@@ -167,5 +188,66 @@ h3 {
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1025px) {
+  .headings {
+    align-items: center;
+    row-gap: 0px;
+  }
+  .main-daily-info {
+    padding: 0 40px 5% 40px;
+  }
+
+  .daily-temp h1 {
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 10px 0;
+  }
+
+  h1 {
+    /* margin-left: 40%; */
+    font-size: 8em;
+  }
+
+  .celsius {
+    font-size: 0.5em;
+    padding-top: 1.5%;
+  }
+
+  h2 {
+    font-size: 3em;
+    margin: 0;
+  }
+
+  h3 {
+    font-size: 2em;
+  }
+  .daily-weather-icon {
+    font-size: 13em;
+    margin: 40px;
+  }
+
+  .main-sunset-sunrise {
+    margin-top: 40px;
+  }
+
+  .button {
+    display: none;
+  }
+
+  .weekly-content {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .day {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 40px;
+    padding: 0px;
+  }
+
+  h4 {
+    margin: 20px;
+  }
 }
