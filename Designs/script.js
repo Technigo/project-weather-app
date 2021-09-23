@@ -39,13 +39,37 @@ const getData = () => { //made global function so we can call from different are
       </div>  
       `; // toFixed(1) rounds the temp to one decimal
 
+     
       temp = data.main.temp
 
-      if (temp >= 25 && temp <= 65) {
+      if (temp >= 25 && temp <= 65 && sunrise) {
+
         weatherToday.style.background = 'var(--hot)'
-      } else if (temp >= 0 && temp <= 24) {
+
+      } else if (temp >= 25 && temp <= 65 && sunset) {
+
+        weatherToday.style.background = 'var(--hot)'
+        
+      }
+      
+      
+      
+      else if (temp >= 0 && temp <= 24 && sunrise) {
+
         weatherToday.style.background = 'var(--moderate)'
-      } else {
+
+      } else if (temp >= 0 && temp <= 24 && sunset) {
+
+        weatherToday.style.background = 'var(--moderate)'
+
+      }
+      
+      else if(temp >-1 && sunrise) {
+
+        weatherToday.style.background = 'var(--cold)'
+
+      }else {
+
         weatherToday.style.background = 'var(--cold)'
       }
 
