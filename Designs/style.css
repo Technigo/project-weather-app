@@ -9,11 +9,11 @@
     --cold: linear-gradient( #61b3ff,#e0f7a27a, #ffffff);
     --coldnight: linear-gradient( #61b3ff,#719ef186, #050c33);
 
-  --dayphone: #afdbcf;
-  --nightphone: #41326b;
-   
-  --imgn: url("./Design-1/assets/night-time-tree.png"); 
-  --imgd: url("./Design-1/assets/night-day-tree.png"); 
+    --dayphone: #afdbcf;
+    --nightphone: #41326b;
+    
+    --imgn: url("./Design-1/assets/night-time-tree.png"); 
+    --imgd: url("./Design-1/assets/night-day-tree.png"); 
 
 
   }
@@ -25,12 +25,10 @@
   }
 
   img{
-
-width: 100%;
-margin: 0;
-z-index: -15;
-
-}
+    width: 100%;
+    margin: 0;
+    z-index: -15;
+  }
 
 
  .weather-today-container {
@@ -74,23 +72,6 @@ z-index: -15;
    
  }
 
-.cities-wrapper {
-  position: relative;
-}
-
-  .dropdown {
-  background-color: white;
-  width: 45%;
-  position: absolute;
-  border: 1px solid rgb(0, 0, 0);
-  display: none;
-  
-}
-
-/* This is not working at the moment. I have tried to write it in different ways here and in the js file but I don't get it to work. Can some of you maybe have a look? */
-  .open-dropdown + .dropdown {
-  display: block;
-  }
 
 .nav {
   background-color: transparent;
