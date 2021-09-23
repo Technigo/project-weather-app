@@ -45,15 +45,21 @@ function createFiveDayForecast(filteredForecast) {
     for (let i = 0; i < 5; i++) {
 
         chooseWeatherIcon(filteredForecast, i);
-        const days = new Date(filteredForecast[i].dt_txt).toLocaleDateString(
+        const days = new Date(filteredForecast[i].dt * 1000).toLocaleDateString(
             "en-US",
             { weekday: "long" }
+
         );
+        console.log(days)
+        console.log(new Date(filteredForecast[i].dt_txt.replace(/-/g, "/")))
+
         const forecastTemp = Math.round(filteredForecast[i].main.temp * 10) / 10;
+        const forecastWind = Math.round(filteredForecast[i].wind.speed * 10) / 10;
         const forecastWeather = filteredForecast[i].weather.description;
-        createFiveDaysInnerHTML(days, forecastTemp);
+        createFiveDaysInnerHTML(days, forecastTemp, forecastWind);
     }
 };
+
 
 //Creates a weather icon based on the forecasted weather
 function chooseWeatherIcon(filteredForecast, i) {
@@ -76,11 +82,12 @@ function chooseWeatherIcon(filteredForecast, i) {
 };
 
 //Creates innerHTML for each day in the forecast
-function createFiveDaysInnerHTML(days, forecastTemp) {
+function createFiveDaysInnerHTML(days, forecastTemp, forecastWind) {
     weatherContainer.innerHTML += `
         <section class="day"> 
-        <span class="forcast-day">${days}</span> 
-        <span class="forcast-temp">${forecastTemp} °C </span> 
+        <span class="forecast-day">${days}</span> 
+        <span class="forecast-temp">${forecastTemp} °C </span> 
+        <span class="forecast-wind"><img src=${windIcon.src} alt=${windIcon.alt} class= "wind-icon"/> ${forecastWind}m/s</span>
         <span class="forcast-weather"><img src=${weatherImg.src} alt=${weatherImg.alt} class="forecast-weather"/></span>
         </section>
       
@@ -102,7 +109,7 @@ function changeHeaderInnerHTML(data, timeOfSunrise, timeOfSunset) {
         <h5>Feels like: ${Math.round(data.main.feels_like * 10) / 10} °C</h5>
         <img src=${weatherImg.src} alt=${weatherImg.alt} class= "today-weather"/>
         <h3>${data.weather.map((item) => item.description)}</h3>
-        <h5 class="windpar"><img src=${windIcon.src} alt=${windIcon.alt} class= "wind-icon"/> ${Math.round(data.wind.speed * 10) / 10} m/s</h5>
+        <h5 class="windpar">Wind: ${Math.round(data.wind.speed * 10) / 10} m/s</h5>
         <p class="sunrisepar"><img src=${sunriseIcon.src} alt=${sunriseIcon.alt} class= "sunrise"/>Sunrise: ${timeOfSunrise}</p>
         <p class="sunsetpar"><img src=${sunsetIcon.src} alt=${sunsetIcon.alt} class= "sunset"/>Sunset: ${timeOfSunset}</p>
     `;

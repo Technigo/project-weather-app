@@ -84,11 +84,24 @@ html {
   text-shadow: 2px 2px 5px #28212f;
 }
 
+h1 {
+  margin-top: 5vh;
+}
+
+h2 {
+  font-size: 20px;
+}
+
 .city-choice-container {
   display: flex;
   justify-content: center;
   padding-top: 1vh;
   height: 5vh;
+}
+
+input::placeholder {
+  color: white;
+  font-style: italic;
 }
 
 .change-city {
@@ -110,12 +123,16 @@ html {
   text-decoration: none;
   display: inline-block;
   border: solid 2px #7f9997;
+  letter-spacing: 1px;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px #28212f3d;
 }
 
 .city-button:hover {
   box-shadow: inset -3.5em 0 0 0 white, inset 3.5em 0 0 0 white;
   color: #28212f;
   border: solid 2px white;
+  text-shadow: unset;
 }
 
 .weather-container {
@@ -137,10 +154,7 @@ img.today-weather {
   display: flex;
   align-items: center;
   margin: 0vh;
-}
-
-.windpar {
-  margin-left: 7vh;
+  justify-content: center;
 }
 
 .sunsetpar {
@@ -156,7 +170,7 @@ img.today-weather {
 }
 
 .wind-icon {
-  max-width: 19%;
+  max-width: 20%;
 }
 
 /* Coming days weather*/
@@ -168,7 +182,7 @@ img.today-weather {
   background-color: #fff;
   opacity: 50%;
   color: black;
-  font-size: 18px;
+  font-size: 16px;
   border-radius: 15px;
   justify-content: space-evenly;
   text-align: center;
@@ -177,12 +191,21 @@ img.today-weather {
   box-shadow: 5px 10px 18px #28212f98;
 }
 
-.forcast-temp {
-  margin: 60px;
+.forecast-day {
+  margin-right: auto;
+  margin-left: 1vh;
+}
+
+.forecast-temp {
+  width: 17%;
+}
+
+.forecast-wind {
+  max-width: 30%;
 }
 
 img.forecast-weather {
-  width: 80%;
+  width: 70%;
 }
 
 footer {
@@ -208,9 +231,6 @@ footer {
   .today {
     letter-spacing: 1px;
   }
-  .windpar {
-    margin-left: 6vh;
-  }
   .city-choice-container {
     justify-content: flex-start;
     margin-left: 1vh;
@@ -230,8 +250,16 @@ footer {
   .sunset {
     max-width: 27%;
   }
-  .forcast-temp {
+  .forecast-day {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .forecast-temp {
     margin: 0px;
+    width: 45%;
+  }
+  .forecast-wind {
+    max-width: 62%;
   }
   .day {
     display: flex;
@@ -258,9 +286,6 @@ footer {
   .today {
     letter-spacing: 1px;
   }
-  .windpar {
-    margin-left: 6vh;
-  }
   .city-choice-container {
     justify-content: flex-start;
     margin-left: 1vh;
@@ -279,11 +304,19 @@ footer {
   .day:hover {
     transform: scale(1.04);
   }
-  .forcast-temp {
-    margin: 0px;
-  }
   .sunsetpar {
     margin-left: 2vh;
+  }
+  .forecast-day {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .forecast-temp {
+    margin: 0px;
+    width: 45%;
+  }
+  .forecast-wind {
+    max-width: 62%;
   }
   footer {
     position: fixed;
