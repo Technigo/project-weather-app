@@ -2,43 +2,69 @@ body {
     background-color: #FFFFC7;
     font-family: 'Montserrat', sans-serif;
     width: 100%;
-    height: 100vh;
+
 }
 
-#sunglasses-img {
-    max-width: 80%;
-    display: block;
-    align-items: baseline;
-    margin: 20px auto; 
+* {
+    border: 2px solid lime;
+}
+
+.weather-container {
+    margin: 50px;
+    display:flex;
+    flex-direction: row;
+    flex-flow: column wrap;
+}
+
+.text img {
+    margin: auto;
+}
+
+.forecast-container {
+    margin: auto;
+}
+
+
+
+
+h1, h2 {
+    color:#2A5510;
+    font-family: 'Montserrat', sans-serif;
 }
 
 h1 {
-    color:#0f5075;
     font-size: 2em;
-    max-width: 80%;
-    display: block;
     margin: 50px auto;
+    font-weight: bold;
 }
 
 h2 {
-    color:#0f5075;
     font-size: 1.5em;
-    display: block;
-    margin: auto;
-    max-width: 80%;
     line-height: 2;
+    font-weight: normal;
 }
 
 p {
-    color:#0f5075;
+    color:#2A5510;
     font-size: 2em;
     font-weight: bold;
-    max-width: 80%;
-    display: block;
-    margin: 20px auto;
     line-height: 1.5;
 }
 
 
-
-
+/* ---- COLORS 
+#F47775
+#F4F7F8
+#164A68
+#A3DEF7
+#2A5510
+#F7E9B9
+----*/ 
+/* ---- Mobil ----*/ 
+@media (min-width: 0px) { }
+/* ---- Tablet ----*/ 
+@media (min-width: 768px) {}
+/* ---- Small laptop ----*/ 
+@media (min-width: 992px) {}
+/* ---- Big Laptop----*/ 
+@media (min-width: 1200px) {}
