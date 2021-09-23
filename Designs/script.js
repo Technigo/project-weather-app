@@ -44,11 +44,13 @@ const getData = () => {
                     weatherToday.style.background = "var(--hot)";
                 } else {
                     weatherToday.style.background = "var(--hotnight)";
+					weatherToday.style.color = "var(--textcolornight)";
                 }
             }
             if (temp >= 0 && temp <= 24) {
                 if (sunset < now) {
                     weatherToday.style.background = "var(--moderatenight)";
+				
                 } else {
                     weatherToday.style.background = "var(--moderate)";
                 }
