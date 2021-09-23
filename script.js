@@ -11,6 +11,12 @@ const displayWeekdays = document.getElementById('displayWeekdays');
 const sunTime = document.getElementById("suntimes");
 const body = document.getElementById('body')
 const image = document.getElementById('image')
+const dayZero = document.getElementById('dayZero')
+const dayOne = document.getElementById('dayOne')
+const dayTwo = document.getElementById('dayTwo')
+const dayThree = document.getElementById('dayThree')
+const dayFour = document.getElementById('dayFour')
+const td = document.getElementsByTagName('td')
 
 fetch(API_URL)
   .then((response) => {
@@ -45,15 +51,16 @@ fetch(API_URL)
       image.innerHTML = `<img src="./Designs/Design-2/icons/noun_Sunglasses_2055147.svg"/>`
       cityName.innerHTML += `Get your sunnies on. ${json.name} is looking rather great today.`
   } else if(json.weather[0].main === 'Rain') {
-    body.style.background = '#A3DEF7'
-    body.style.color = '#164A68'
-    image.innerHTML = `<img src="./Designs/Design-2/icons/noun_Umbrella_2030530.svg"/>`
-    cityName.innerHTML += `Don´t forget your umbrella. It´s wet in ${json.name} today.`
+      body.style.background = '#A3DEF7'
+      body.style.color = '#164A68'
+      image.innerHTML = `<img src="./Designs/Design-2/icons/noun_Umbrella_2030530.svg"/>`
+      cityName.innerHTML += `Don’t forget your umbrella. It’s wet in ${json.name} today.`
+      // td.style.borderBottom += '4px dotted #164A68'
   } else {
-    body.style.background = '#F4F7F8'
-    body.style.color = '#F47775'
-    image.innerHTML = `<img src="./Designs/Design-2/icons/noun_Cloud_1188486.svg"/>`
-    cityName.innerHTML += `Light a fire and get cosy. ${json.name} is looking grey today.`
+      body.style.background = '#F4F7F8'
+      body.style.color = '#F47775'
+      image.innerHTML = `<img src="./Designs/Design-2/icons/noun_Cloud_1188486.svg"/>`
+      cityName.innerHTML += `Light a fire and get cosy. ${json.name} is looking grey today.`
   }
   });
   
@@ -64,26 +71,41 @@ fetch(API_FORECAST)
   .then((json) => {
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
 
-    filteredForecast.forEach((cast, index) => {
-      const tempOfTheDay = filteredForecast[index].main.temp.toFixed(0)
+    // filteredForecast.forEach((_, index) => {
+    //   const tempOfTheDay = filteredForecast[index].main.temp.toFixed(0)
+    //   const descriptNow = filteredForecast[index].weather[0].description
+     
+    //   forecast.innerHTML += `
+    //   <p>${tempOfTheDay}°C ${descriptNow}</p>`
+    // })
+
+    document.querySelectorAll('.forecast-description').forEach((description, index) => {
       const descriptNow = filteredForecast[index].weather[0].description
      
-      forecast.innerHTML += `
-      <p>${tempOfTheDay}°C ${descriptNow}</p>`
+      description.innerHTML += `
+      <p>${descriptNow}</p>`
     })
+
+    document.querySelectorAll('.temperature').forEach((temp, index) => {
+      const tempOfTheDay = filteredForecast[index].main.temp.toFixed(0)
+          
+      temp.innerHTML += `
+      <p>${tempOfTheDay}°C</p>`
+    })
+
 
     // display the name of the weekday for the next five days forecast
 
     // set up an array with the names of each weekday.
     // So weekday[0] = 'Sunday'; weekday[1] = 'Monday' and so on.
     const weekday = [
-      'Sunday',
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday',
+      'sun',
+      'mon',
+      'tue',
+      'wed',
+      'thu',
+      'fri',
+      'sat',
     ];
 
     // local variable where we can store the names of the weekdays
@@ -104,4 +126,24 @@ fetch(API_FORECAST)
     //   ${weekday[day]}
     //   `;
     // });
+
+    dayZero.innerHTML += `
+    Today: ${weekday[weekdaysNamesArray[0]]}
+    `
+
+    dayOne.innerHTML += `
+    Tomorrow: ${weekday[weekdaysNamesArray[1]]}
+    `
+
+    dayTwo.innerHTML += `
+    ${weekday[weekdaysNamesArray[2]]}
+    `
+
+    dayThree.innerHTML += `
+    ${weekday[weekdaysNamesArray[3]]}
+    `
+
+    dayFour.innerHTML += `
+    ${weekday[weekdaysNamesArray[4]]}
+    `
   });

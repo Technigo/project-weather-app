@@ -2,11 +2,29 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 table {
-  border-collapse: collapse;
-  width: 100%;
+  width: 80%;
 }
 td {
-  border: 1px solid #dddddd;
+  border-bottom: 1px dotted;
   text-align: left;
   padding: 8 px;
+}
+.name {
+  font-size: 36px;
+  font-weight: bold;
+  padding: 16px;
+  width: 80%;
+}
+
+.container {
+  line-height: 40%;
+  width: 80%;
+  padding: 16px;
+  font-size: 21px;
+}
+
+.image {
+  width: 80%;
+  padding: 0px 16px;
+  margin-top: 15px;
 }
