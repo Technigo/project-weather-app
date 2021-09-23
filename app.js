@@ -90,10 +90,10 @@ fetch(weatherCityToday)
         <h2>${data.name}</h2>
         <h3>${description}</h3>
         <div class="main-sunset-sunrise">
-         <h3>Sunrise: </h3>
-         <h3> ${sunriseTime}</h3>
-         <h3>Sunset:</h3>
-         <h3>${sunsetTime}</h3>
+         <h3 class="sunrise-sunset"> Sunrise: </h3>
+         <h3 class="sunrise-sunset"> ${sunriseTime}</h3>
+         <h3 class="sunrise-sunset"> Sunset:</h3>
+         <h3 class="sunrise-sunset">${sunsetTime}</h3>
         </div>
        </div>
        <button class="button"><i class="far fa-chevron-right"></i></button>

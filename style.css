@@ -58,23 +58,125 @@ h1 {
   width: 100%;
   color: white;
   font-weight: normal;
+  animation-name: moveInLeft;
+  animation-duration: 5s;
+  animation-timing-function: ease-out;
+  opacity: 1;
 }
 
 h2 {
   margin-bottom: -10px;
   color: white;
   font-weight: normal;
+  animation-name: moveInLeft2;
+  animation-duration: 5s;
+  animation-timing-function: ease-out;
+  opacity: 1;
 }
 
 h3 {
   margin: 0;
   color: white;
   font-weight: normal;
+  animation-name: moveInLeft3;
+  animation-duration: 5s;
+  animation-timing-function: ease-out;
+  opacity: 1;
 }
+
+
+
+@keyframes moveInLeft {
+  0%{
+    opacity: -5;
+    transform: translateX(-10rem);
+  }
+  50%{
+    opacity: 1;
+    transform: translate(0);
+  }
+  100%{
+    opacity: 2;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInLeft2 {
+  0%{
+    opacity: -5;
+    transform: translateX(-20rem);
+  }
+  50%{
+    opacity: 1;
+    transform: translate(0);
+  }
+  100%{
+    opacity: 2;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInLeft3 {
+  0%{
+    opacity: -5;
+    transform: translateX(-20rem);
+  }
+  50%{
+    opacity: 1;
+    transform: translate(0);
+  }
+  100%{
+    opacity: 2;
+    transform: translate(0);
+  }
+}
+
+.sunrise-sunset{
+  animation-name: moveInLeft4;
+  animation-duration: 5s;
+  animation-timing-function: ease-in;
+  opacity: 1;
+}
+
+@keyframes moveInLeft4 {
+  0%{
+    opacity: 1;
+    transform: translateX(-50rem);
+  }
+  50%{
+    opacity: 1;
+    transform: translate(0);
+  }
+  100%{
+    opacity: 2;
+    transform: translate(0);
+  }
+}
+
+
 
 .daily-icon-container {
   display: flex;
   justify-content: flex-end;
+  animation-name: moveInright;
+  animation-duration: 7s;
+  animation-timing-function: ease-out;
+  opacity: 1;
+}
+
+@keyframes moveInright {
+  0%{
+    opacity: 1;
+    transform: translateX(20rem);
+  }
+  50%{
+    opacity: 1;
+    transform: translate(0);
+  }
+  100%{
+    opacity: 2;
+    transform: translate(0);
+  }
 }
 
 .daily-temp {
@@ -166,6 +268,51 @@ h3 {
     margin-top: 30px;
   }
 
+@keyframes moveInLeft {
+  0%{
+    opacity: -5;
+    transform: translateX(-10rem);
+  }
+  50%{
+    opacity: 1;
+    transform: translate(0);
+  }
+  100%{
+    opacity: 2;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInLeft2 {
+  0%{
+    opacity: -5;
+    transform: translateX(-30rem);
+  }
+  50%{
+    opacity: 1;
+    transform: translate(0);
+  }
+  100%{
+    opacity: 2;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInLeft3 {
+  0%{
+    opacity: -5;
+    transform: translateX(-30rem);
+  }
+  50%{
+    opacity: 1;
+    transform: translate(0);
+  }
+  100%{
+    opacity: 2;
+    transform: translate(0);
+  }
+}
+
   .button {
     padding: 6%;
     min-width: 8rem;
@@ -187,6 +334,41 @@ h3 {
     padding-bottom: 35px;
   }
 }
+
+
+
+@keyframes moveInright {
+  0%{
+    opacity: 0;
+    transform: translateX(20rem);
+  }
+  50%{
+    opacity: 1;
+    transform: translate(0);
+  }
+  100%{
+    opacity: 2;
+    transform: translate(0);
+  }
+}
+
+
+
+@keyframes moveInLeft4 {
+  0%{
+    opacity: -5;
+    transform: translateX(10rem);
+  }
+  50%{
+    opacity: 1;
+    transform: translate(-5);
+  }
+  100%{
+    opacity: 2;
+    transform: translate(0);
+  }
+}
+
 
 @media (min-width: 1025px) {
   .headings {
@@ -221,6 +403,52 @@ h3 {
   h3 {
     font-size: 2em;
   }
+
+  @keyframes moveInLeft {
+    0%{
+      opacity: -5;
+      transform: translateX(-10rem);
+    }
+    50%{
+      opacity: 1;
+      transform: translate(0);
+    }
+    100%{
+      opacity: 2;
+      transform: translate(0);
+    }
+  }
+
+  @keyframes moveInLeft2 {
+    0%{
+      opacity: -5;
+      transform: translateX(-10rem);
+    }
+    50%{
+      opacity: 1;
+      transform: translate(0);
+    }
+    100%{
+      opacity: 2;
+      transform: translate(0);
+    }
+  }
+
+  @keyframes moveInLeft3 {
+    0%{
+      opacity: -5;
+      transform: translateX(-10rem);
+    }
+    50%{
+      opacity: 1;
+      transform: translate(0);
+    }
+    100%{
+      opacity: 2;
+      transform: translate(0);
+    }
+  }
+
   .daily-weather-icon {
     font-size: 13em;
     margin: 40px;
@@ -250,5 +478,39 @@ h3 {
 
   h4 {
     margin: 20px;
+  }
+}
+
+
+
+@keyframes moveInright {
+  0%{
+    opacity: -5;
+    transform: translateX(10rem);
+  }
+  50%{
+    opacity: 1;
+    transform: translate(0);
+  }
+  100%{
+    opacity: 2;
+    transform: translate(0);
+  }
+}
+
+
+
+@keyframes moveInLeft4 {
+  0%{
+    opacity: -5;
+    transform: translateX(-10rem);
+  }
+  50%{
+    opacity: 1;
+    transform: translate(0);
+  }
+  100%{
+    opacity: 2;
+    transform: translate(0);
   }
 }
