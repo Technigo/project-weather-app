@@ -26,11 +26,11 @@ border-bottom-right-radius: 60% 20%;
 
 /* linear-gradients to use
   - when hot: #FF007B, #ffb600
-  - when cold: 
-  - when rainy: 
-  - when cloudy:
+  - when cold: #ade8f4,#caf0f8
+  - when rainy: #87A1B6,#E1E7EB
+  - when cloudy: #6c757d, #adb5bd
 
-  #ade8f4,#caf0f8
+  
 
   - design: #8b8fff,#e3e4ff
 */
