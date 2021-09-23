@@ -14,6 +14,10 @@ html {
   font-family: "Comfortaa";
 }
 
+.welcome-msg {
+  line-height: 1.2em;
+}
+
 /* Hero image and today's weather*/
 
 #backgroundImg {
@@ -26,6 +30,7 @@ html {
   box-shadow: 5px 10px 18px #28212f5e;
   background-position: center;
   background-size: cover;
+  letter-spacing: 1px;
 }
 
 .background-image {
@@ -46,7 +51,7 @@ html {
   background: url(./assets/sunny-weather.jpg);
 }
 
-.fog, .mist {
+.fog {
   background: url(./assets/foggy-day.jpg);
 }
 
@@ -157,10 +162,6 @@ img.today-weather {
   justify-content: center;
 }
 
-.sunsetpar {
-  margin-left: 2vh;
-}
-
 .sunrise {
   max-width: 32%;
 }
@@ -171,6 +172,7 @@ img.today-weather {
 
 .wind-icon {
   max-width: 20%;
+  margin-right: 0.5vh;
 }
 
 /* Coming days weather*/
@@ -189,23 +191,27 @@ img.today-weather {
   margin: 0.5vh;
   height: 10vh;
   box-shadow: 5px 10px 18px #28212f98;
+  letter-spacing: 0.5px;
 }
 
 .forecast-day {
   margin-right: auto;
-  margin-left: 1vh;
+  margin-left: 2vh;
 }
 
 .forecast-temp {
   width: 17%;
+  margin-right: auto;
 }
 
 .forecast-wind {
   max-width: 30%;
+  margin-right: auto;
 }
 
 img.forecast-weather {
-  width: 70%;
+  width: 65%;
+  margin-right: 1vh;
 }
 
 footer {
@@ -241,12 +247,6 @@ footer {
   img.today-weather {
     width: 35%;
   }
-  .sunrisepar, .sunsetpar {
-    justify-content: center;
-  }
-  .sunsetpar {
-    margin-left: 0vh;
-  }
   .sunset {
     max-width: 27%;
   }
@@ -257,9 +257,14 @@ footer {
   .forecast-temp {
     margin: 0px;
     width: 45%;
+    margin-right: 0;
   }
   .forecast-wind {
     max-width: 62%;
+    margin-right: 0;
+  }
+  img.forecast-weather {
+    margin-right: 0vh;
   }
   .day {
     display: flex;
@@ -304,9 +309,6 @@ footer {
   .day:hover {
     transform: scale(1.04);
   }
-  .sunsetpar {
-    margin-left: 2vh;
-  }
   .forecast-day {
     margin-right: 0;
     margin-left: 0;
@@ -314,9 +316,15 @@ footer {
   .forecast-temp {
     margin: 0px;
     width: 45%;
+    margin-right: 0;
   }
   .forecast-wind {
     max-width: 62%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  img.forecast-weather {
+    margin-right: 0vh;
   }
   footer {
     position: fixed;
