@@ -11,6 +11,8 @@ const sunrise = document.getElementById('sunrise')
 const sunset = document.getElementById('sunset')
 
 const forecastData = document.getElementById('forecast-data')
+const otherCities = document.getElementById('other-cities')
+
 
 
 // Main fetch to get Stockholm weather 
@@ -42,6 +44,36 @@ const API_LINK = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sw
       
             sunset.innerHTML = `Sunset: ${sunsetTime}`;     
     })
+
+const otherCitiesContainer = document.getElementById('other-cities-container')
+// Fetch for another city 
+const API_LINK_OTHER_CITIES = 'https://api.openweathermap.org/data/2.5/weather?q=Barcelona&units=metric&APPID=147b874875d53e0e9f84cbacd0567b99'
+    fetch(API_LINK_OTHER_CITIES)
+    .then((response) => {
+        return response.json()
+    })
+    .then((json) => {
+        otherCitiesContainer.innerHTML = `
+            <p>${json.name}</p>
+            <img width="150" src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="" />
+            <p class="forecast-day">${json.main.temp.toFixed(1)}°C</p>
+            <p>${json.weather[0].description}</p>
+        `
+
+     
+        // console.log(vacationHTML)
+        // console.log(json)
+        // malmo.innerHTML += json.name
+        // icon.innerHTML += `<img width="150" src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="" />`
+        
+        
+        
+        
+        // json.name
+        // icon.innerHTML += `<img width="150" src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="" />`
+        // temperature.innerHTML = `${json.main.temp.toFixed(1)}°C`
+        // typeOfWeather.innerHTML = json.weather[0].description
+})
 
 // Fetch for 5 days forecast
 const API_LINK_FORECAST = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=147b874875d53e0e9f84cbacd0567b99'
