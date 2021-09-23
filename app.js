@@ -118,8 +118,21 @@ const getWeatherPrognose = () => {
        </div>
        <button class="button"><i class="far fa-chevron-right"></i></button>
       </div>`;
+
+      console.log('data', data);
+      if (data.main.temp < 5) {
+        dailyContent.style.background =
+          "linear-gradient(180deg, #828385 0%, #c0c0c2 100%)";
+      } else if (data.main.temp > 5 && data.main.temp < 20) {
+        dailyContent.style.background =
+          "linear-gradient(180deg, rgba(114, 105, 255, 1) 0%, rgba(227, 227, 255, 1) 100%)";
+      } else {
+        dailyContent.style.background =
+          "linear-gradient(180deg, #f3c673 0%, #fbd994 100%)";
+      }
     });
 
+    
   const weatherForecast5DaysCity = `https://api.openweathermap.org/data/2.5/forecast?q=${city},Sweden&units=metric&APPID=6f4589c9a1ed485fe713e8f5159a6ff9`;
 
   // Fetch the JSON from the API for the five day weather forecast
@@ -237,6 +250,6 @@ const getWeatherPrognose = () => {
       </div>`;
       });
     });
-};
+  };
 
 getWeatherPrognose();
