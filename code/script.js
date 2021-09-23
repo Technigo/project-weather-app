@@ -1,6 +1,14 @@
 const API_WEATHER = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=8bda651aba01a3b8831972e24ed1f675';
 const API_URL = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=8bda651aba01a3b8831972e24ed1f675';
 const weatherContainer = document.getElementById ('weather-container');
+const topBox = document.getElementById ('top-box');
+const middleBox = document.getElementById ('middle-box');
+const bottomBox = document.getElementById ('bottom-box');
+// const start=() => {
+//   changeForcast();
+// }
+
+// let changeForcast ();
 
  fetch(API_WEATHER)
  .then((response) => {
@@ -8,13 +16,9 @@ const weatherContainer = document.getElementById ('weather-container');
  } )
  .then((json) => {
    console.log(json)
-    weatherContainer.innerHTML = `
-    <div> <h3>Weather in ${json.name}</h3> 
-    <h3>${json.main.temp.toFixed(1)}°</h3> 
-    </div>`
-    json.weather.forEach((weather)=> {weatherContainer.innerHTML += 
-      `<h3> The weather conditions are ${weather.description}</h3> `
-    
+    json.weather.forEach((weather)=> {topBox.innerHTML += `<div>
+       ${weather.main} | ${json.main.temp.toFixed(1)}°
+      </div>`
     const rise =new Date (json.sys.sunrise * 1000);
     const up= rise.toLocaleTimeString ([], {
     timeStyle: 'short'
@@ -23,11 +27,44 @@ const weatherContainer = document.getElementById ('weather-container');
     const down = set.toLocaleTimeString([], {
     timeStyle: 'short'
     }) 
-    weatherContainer.innerHTML += `<h3> Sunrise: ${up} 
+    topBox.innerHTML += `<div> Sunrise: ${up} <div>
     <div>Sunset: ${down} 
-    </h3> </div>`
+    </div>`
     }); 
 });
+
+fetch(API_WEATHER)
+.then((response) => {
+  return response.json() 
+})
+.then((json) => {
+  console.log(json)
+}
+
+
+const changeForcast = () => {
+  const conditions 
+  if (json.weather[0].main === "Rain") { 
+  middleBox.innerHTML += ` 
+  <img src="/Designs/Design-2/icons/noun_Umbrella_2030530.svg" alt="rain-icon">
+  <h1>Weather in ${json.name} is rainy, don't forget your umbrella</h1> </div>`;
+  document.body.style.backgroundColor = "#A3DEF7"; 
+  document.body.style.color = "#164A68";
+
+} else if (json.weather[0].main === "Clouds") {
+  middleBox.innerHTML += `
+  <img src="/Designs/Design-2/icons/noun_Cloud_1188486.svg" alt="cloud-icon"> 
+  `;
+  document.body.style.backgroundColor = "#A3DEF7";
+  document.body.style.color = "#164A68";
+}else if (json.weather[0].main === "Clear") {
+  middleBox.innerHTML += `
+  <img src="/Designs/Design-2/icons/noun_Sunglasses_2055147.svg" alt="sunglasses-icon"> 
+  `;
+  document.body.style.backgroundColor = "#A3DEF7";
+  document.body.style.color = "#164A68";
+}
+ 
 
 fetch(API_URL)
 .then((response) => {
@@ -36,14 +73,16 @@ fetch(API_URL)
 .then((json) => {
   const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
   filteredForecast.forEach((item) => { 
-  weatherContainer.innerHTML += 
-  ` <div>
- <h3> ${new Date(item.dt_txt).toLocaleDateString("en-US",{weekday:'short'}) } ${item.main.temp.toFixed(1)}°</h3> 
-   
+  bottomBox.innerHTML += `
+    <div class="day-style" > 
+      <p> ${new Date(item.dt_txt).toLocaleDateString("en-US",{weekday:'short'}) } </p> 
+      <p> ${item.main.temp.toFixed(1)}°  </p> 
     </div> 
+    <hr>
   `
  })
 });
+
 
 
 // .catch((error) => console.error (error)); 
