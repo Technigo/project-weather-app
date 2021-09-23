@@ -1,7 +1,14 @@
 // Global variables
-const fiveDayForcastContainer = document.getElementById("fiveDayForecast");
+const fiveDayForecastContainer = document.getElementById("fiveDayForecast");
 const API_FIVE_DAY_FORECAST =
   "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=f9773f2491f9348664665c65e8d966c3";
+
+const currentWeatherPictureContainer = document.getElementById(
+  "currentWeatherPictureContainer"
+);
+const cityName = document.getElementById("cityName");
+const currentTemperature = document.getElementById("currentTemperature");
+const currentWeatherStatus = document.getElementById("currentWeatherStatus");
 
 // Object with all emoji
 // https://stackoverflow.com/questions/37103988/is-it-possible-to-set-an-image-source-on-a-javascript-object-property
@@ -33,127 +40,7 @@ const staticImg = {
   }),
 };
 
-/****Grid of the Weather App ****/
-
-// Main placeholder for the whole weather app
-const wrapperContainer = document.getElementById("wrapper-container");
-// https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
-// Main container for todays weather forecast
-const weatherContainer = document.createElement("section");
-// https://developer.mozilla.org/en-US/docs/Web/API/Element/prepend
-wrapperContainer.prepend(weatherContainer);
-// Assigning a class to HTLM element
-weatherContainer.className = "weather-container";
-// creating 2 divs to separate the Weather container in half
-// upper half div
-const upperHalfWeatherContainer = document.createElement("div");
-upperHalfWeatherContainer.className = "upper-half-weather-container";
-weatherContainer.prepend(upperHalfWeatherContainer);
-// lower half div
-const lowerHalfWeatherContainer = document.createElement("div");
-lowerHalfWeatherContainer.className = "lower-half-weather-container";
-weatherContainer.append(lowerHalfWeatherContainer);
-// creation of the wrapper for the hamburger and current temperature
-const iconsAndCurrentTempWrapper = document.createElement("div");
-upperHalfWeatherContainer.prepend(iconsAndCurrentTempWrapper);
-iconsAndCurrentTempWrapper.className = "icons-and-current-temp-wrapper";
-// creation of the wrapper for the current weather picture
-const weatherPictureWrapper = document.createElement("div");
-weatherPictureWrapper.className = "current-weather-picture-container";
-upperHalfWeatherContainer.append(weatherPictureWrapper);
-// creation of sunset/sunrise div
-const sunriseAndSunsetWrapper = document.createElement("div");
-sunriseAndSunsetWrapper.className = "sunrise-sunset-wrapper";
-
-//  Container for next 5 days weather forecast
-
-const weekdayContainer = document.createElement("section");
-// https://developer.mozilla.org/en-US/docs/Web/API/Element/append
-wrapperContainer.append(weekdayContainer);
-weekdayContainer.className = "weekday-container";
-
-// creation of hamburger div
-const hamburger = document.createElement("div");
-hamburger.className = "hamburger";
-iconsAndCurrentTempWrapper.append(hamburger);
-
-// TEST VARIABLES
-let dayWeatherPicture = document.createElement("img");
-dayWeatherPicture.src = "/Designs/Design-1/assets/Group36.png";
-
-// ********The generic rendering function for drawing current weather container information *******//
-const renderCurrentWeather = (
-  currentTemp,
-  weatherPic,
-  cityname,
-  status,
-  sunrise,
-  sunset
-) => {
-  // current temp div creation
-  const currentTemperature = document.createElement("div");
-  currentTemperature.className = "current-temperature";
-  iconsAndCurrentTempWrapper.append(currentTemperature);
-  // adding dynamic data to the current temperature
-  currentTemperature.innerHTML = `${currentTemp}`;
-
-  // creation of the div for the sun/mon picture
-  const currentWeatherPicture = document.createElement("div");
-  currentWeatherPicture.className = "current-weather-picture";
-  weatherPictureWrapper.append(currentWeatherPicture);
-
-  // adding dynamic weather picture
-  currentWeatherPicture.append(weatherPic);
-
-  // creation of cityname div
-  const cityName = document.createElement("div");
-  cityName.className = "city-name";
-  // adding dynamic city name data
-  cityName.innerHTML = `${cityname}`;
-
-  // creation of weather status div
-  const currentWeatherStatus = document.createElement("div");
-  currentWeatherStatus.className = "current-weather-status";
-  // adding dynamic weather status data
-  currentWeatherStatus.innerHTML = `${status}`;
-
-  // creation of inner divs to display sunset and sunrise data
-  const sunriseContainer = document.createElement("div");
-  const sunsetContainer = document.createElement("div");
-  sunriseContainer.className = "sunrise";
-  sunsetContainer.className = "sunset";
-  // adding dynamic  sunrise/sunset data
-  sunriseContainer.innerHTML = `sunrise : ${sunrise}°C`;
-  sunsetContainer.innerHTML = `sunset : ${sunset}°C`;
-
-  sunriseAndSunsetWrapper.append(sunriseContainer, sunsetContainer);
-
-  // appending city name , weather status and sunset/sunrise divs to the lower half of the weather container
-  lowerHalfWeatherContainer.append(
-    cityName,
-    currentWeatherStatus,
-    sunriseAndSunsetWrapper
-  );
-};
-// const weekDay = document.createElement("div");
-
-// //********The generic rendering function for drawing the weakday container information *******//
-// // const renderWeekdayData = (weekday, emoji, tempNight, tempDay) => {
-// const weekDayRow = document.createElement("div");
-// const weekDay = document.createElement("div");
-// const weatherEmoji = document.createElement("div");
-// const weekDayTemp = document.createElement("div");
-// weekDayRow.className = "weekday-row";
-// weekDay.className = "forecast-content";
-// weatherEmoji.className = "forecast-content";
-// weekDayTemp.className = "forecast-content";
-// weekdayContainer.append(weekDayRow);
-// weekDayRow.append(weekDay, weatherEmoji, weekDayTemp);
-// // weekDay.innerHTML = `${weekday}`;
-// // weatherEmoji.append(emoji);
-// // weekDayTemp.innerHTML = `${tempNight}°/${tempDay}°C`;
-// // };
-
+// this part wont work cause there is no generic functions anymore
 const fetchWeather = () => {
   fetch(
     "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=f9773f2491f9348664665c65e8d966c3"
@@ -161,17 +48,25 @@ const fetchWeather = () => {
     .then((response) => response.json())
     .then((data) => {
       console.log("The data from the json:", data);
-      // console.log("max tem", Math.floor(data.main.temp_max));
-      const sunrise = data.sys.sunrise;
-      const sunset = data.sys.sunset;
-      renderCurrentWeather(
-        Math.floor(data.main.temp),
-        dayWeatherPicture,
-        data.name,
-        data.weather[0].description
-        // Date.prototype.getTime(sunrise),
-        // Date.prototype.getTime(sunset)
-      );
+      console.log("max tem", Math.floor(data.main.temp_max));
+      // const sunrise = data.sys.sunrise;
+      // const sunset = data.sys.sunset;
+
+      // renderCurrentWeather(
+      //   Math.floor(data.main.temp),
+      //   dayWeatherPicture,
+      //   data.name,
+      //   data.weather[0].description
+      //   // Date.prototype.getTime(sunrise),
+      //   // Date.prototype.getTime(sunset)
+      // );
+
+      currentTemperature.innerHTML = `${Math.floor(data.main.temp_max)}°`;
+      currentWeatherPictureContainer.innerHTML = `
+      <img class="currentWeatherImg" src="${emojiObject.cloudy.src}"/>
+      `;
+      cityName.innerHTML = `${data.name}`;
+      currentWeatherStatus.innerHTML = `${data.weather[0].description}`;
     })
     .catch((error) => console.error(error));
 };
@@ -195,17 +90,22 @@ const fetchForecast = () => {
       console.log(filteredFiveDays);
 
       filteredFiveDays.forEach((item) => {
-        fiveDayForcastContainer.innerHTML += `
-          <p>${new Date(item.dt_txt).toLocaleDateString("en-US", {
-            weekday: "short",
-          })}</p>
-        `;
+        fiveDayForecastContainer.innerHTML += `
+        <div class="weekday-row">
+        <div class="forecast-content" id="week-day">${new Date(
+          item.dt_txt
+        ).toLocaleDateString("en-US", {
+          weekday: "short",
+        })}
+        </div>
+        <div class="forecast-content" id="emoji"></div>
+        <div class="forecast-content" id="temperature"></div>
+        </div>`;
       });
     })
     .catch((error) => console.error(error));
 };
 
 fetchForecast();
-//hey
 
 // key: f9773f2491f9348664665c65e8d966c3
