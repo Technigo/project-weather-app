@@ -50,13 +50,13 @@ const getData = () => {
 				}
 			}
 
-			else if ( temp >= 0 && temp <= 24) {
+			 if ( temp >= 0 && temp <= 24) {
 				if (sunrise) {
 					weatherToday.style.background = "var(--moderate)";
 				} else  {
 					weatherToday.style.background = "var(--moderatenight)";
 				}
-			} else if (temp -40 && temp > -1) {
+			}  if (temp >= -40 && temp <= -1) {
 				if (sunrise) {
 					weatherToday.style.background = "var(--cold)";
 				} else  {
