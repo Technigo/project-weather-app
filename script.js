@@ -2,6 +2,7 @@ const API_URL = 'https://api.openweathermap.org/data/2.5/weather?q=Gothenburg,Sw
 
 const sunsetSunrise = document.getElementById('sunset-sunrise')
 const weatherContainer = document.getElementById('weather-container')
+const text = document.getElementById('text')
 
 fetch(API_URL)
 .then((response) => response.json())
@@ -90,7 +91,7 @@ fetch(API_URL_5DAY)
     })
     
 
-    // forecastContainer.innerHTML += `
+    //forecastContainer.innerHTML += `
   //   <table>
   //   <th>Weekday</th>
   //   <th>Temperature</th>
