@@ -134,24 +134,59 @@ function setBackgroundWeather(data) {
         backgroundImg.classList = "atmosphere";
     }
 };
+
 //Eventlisteners
-// DON"T DELETE, TO USE LATER!
 cityBtn.addEventListener('click', (e) => {
     today.innerHTML = ""
     weatherContainer.innerHTML = ""
     let city = cityInput.value
     console.log(city)
-    let WEATHER_API = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=5000cd66a9090b2b62f53ce8a59ebd9e`;
 
-    let FIVE_DAYS = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=5000cd66a9090b2b62f53ce8a59ebd9e`;
+    doFetch(getURLsByCityName(city))
+
+});
+
+window.addEventListener('load', () => {
+    let options = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+    };
+
+    function success(pos) {
+        let crd = pos.coords;
+        longLatURLs = {
+            WEATHER_API: `http://api.openweathermap.org/data/2.5/weather?lat=${crd.latitude}&lon=${crd.longitude}&units=metric&appid=5000cd66a9090b2b62f53ce8a59ebd9e`,
+            FIVE_DAYS: `http://api.openweathermap.org/data/2.5/forecast?lat=${crd.latitude}&lon=${crd.longitude}&units=metric&appid=5000cd66a9090b2b62f53ce8a59ebd9e`
+        }
+        doFetch(longLatURLs)
+
+        console.log('Your current position is:');
+        console.log(`Latitude : ${crd.latitude}`);
+        console.log(`Longitude: ${crd.longitude}`);
+        console.log(`More or less ${crd.accuracy} meters.`);
+    }
+
+
+    function error(err) {
+        console.warn(`ERROR(${err.code}): ${err.message}`);
+    }
+    navigator.geolocation.getCurrentPosition(success, error, options)
+
+})
+
+
+function doFetch(URLs) {
+    WEATHER_API = URLs.WEATHER_API
+    FIVE_DAYS = URLs.FIVE_DAYS
 
     fetch(WEATHER_API)
         .then((res) => res.json())
         .then((data) => {
             setBackgroundWeather(data);
-            let timezone = data.timezone
+            let timezone = data.timezone;
             const timeOfSunrise = getTimeOf(data.sys.sunrise, timezone);
-            const timeOfSunset = getTimeOf(data.sys.sunset, timezone)
+            const timeOfSunset = getTimeOf(data.sys.sunset, timezone);
             changeHeaderInnerHTML(data, timeOfSunrise, timeOfSunset);
         })
         .catch((error) => console.error("AAAAAAH!", error))
@@ -160,14 +195,26 @@ cityBtn.addEventListener('click', (e) => {
     fetch(FIVE_DAYS)
         .then((res) => res.json())
         .then((data) => {
-            const filteredForecast = data.list.filter((item) =>
-                item.dt_txt.includes("12:00")
+            const filteredForecast = data.list.filter((item) => item.dt_txt.includes("12:00")
             );
             createFiveDayForecast(filteredForecast);
         });
+}
 
-});
+function getURLsByCityName(city) {
+    let WEATHER_API = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=5000cd66a9090b2b62f53ce8a59ebd9e`;
 
+    let FIVE_DAYS = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=5000cd66a9090b2b62f53ce8a59ebd9e`;
+    console.log({ WEATHER_API, FIVE_DAYS })
+    return { WEATHER_API, FIVE_DAYS };
+}
+
+cityInput.addEventListener('keyup', (e) => {
+    if (e.code === 'Enter') {
+        e.preventDefault()
+        cityBtn.click()
+    }
+})
 // cityBtn.addEventListener('click', (e) => {
 //     console.log("button event", e)
 //     console.log("bitton value", cityBtn.value)
