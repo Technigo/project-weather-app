@@ -1,22 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 * {
     margin: 0;
     padding: 0;
 }
 
 body {
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:'Roboto';
+    background: url('./img/background-img.jpeg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: rgb(49, 49, 49);
 }
 
+/* MAIN CONTAINER */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+/* TOP SECTION*/
 .top {
-    background: radial-gradient(circle, rgb(166, 181, 255) 0%, rgb(89, 114, 253) 50%);
-    color: white;
     padding: 10px;
-    /* background-image: url() */
+    width: 100%;
+}
+
+.city-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
 }
 
 #temperature {
-    font-size: 80px;
+    font-size: 70px;
+    font-weight: lighter;
+}
 
+#city {
+    font-size: 40px;
+}
+
+#typeOfWeather {
+    text-transform: uppercase;
+}
+
+.sunrise-and-sunset {
+    font-size: 16px;
+    display: flex;
+    justify-content: space-around;
+}
+
+/* BOTTOM SECTION - 5-DAYS FORECAST*/
+.bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.forecast-title {
+    display: none;
+}
+
+.forecast-data {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    padding: 10px;
+    align-items: center;
+    background-color: rgba(207, 207, 207, 0.404);
+    width: 100%;
+}
+
+.forecast-description{
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.forecast-day {
+    font-size: 30px;
+}
+
+
+
+
+/*** MEDIA QUERIES ***/
+
+/*tablet*/
+@media (min-width:667px) and (max-width:1024px) {
+    .top {
+        width: 80%;
+    }
+
+    .sunrise-and-sunset {
+        font-size: 30px;
+    }
+
+    .city-data img {
+        width: 300px;
+    }
+
+    #city {
+        font-size: 50px;
+    }
 
 }
 
+/*desktop*/
+
+@media (min-width: 1025px) {
+    .container {
+        height: 100vh;
+    }
+
+    .top {
+        width: 600px;
+    }
+
+    .forecast-data {
+        flex-direction: row;
+    }
+
+    .forecast-title {
+        display: block;
+        font-size: 40px;
+    }
+
+}

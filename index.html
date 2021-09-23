@@ -5,23 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <title>Document</title>
+    <title>Project Weather App</title>
 </head>
 <body>
     <div class="container">
         <section class="top" id="top-section">
-            <h1 id="temperature"></h1>
-            <p id="city"></p> 
-            <p id="typeOfWeather"></p>
-
-            <p id="sunrise"></p>
-            <p id="sunset"></p>
-
-
+            <div class="city-data">
+                <p id="city"></p> 
+                <p id="typeOfWeather"></p>
+                <h1 id="temperature"></h1>
+                <div id="icon"></div> <!--img generates in js-->
+            </div> 
+            <div class="sunrise-and-sunset">
+                <p id="sunrise"></p>
+                <p id="sunset"></p>
+            </div>
         </section>
 
         <section class="bottom" id="bottom-section">
-
+            <p class="forecast-title">5 Days Forecast:</p>
         </section>
     </div>
 

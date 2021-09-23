@@ -1,6 +1,7 @@
 const cityName = document.getElementById('city')
 const temperature = document.getElementById('temperature')
 const typeOfWeather = document.getElementById('typeOfWeather')
+const icon = document.getElementById('icon')
 const minTemp = document.getElementById('min-temp')
 const maxTemp = document.getElementById('max-temp') 
 const bottomSection = document.getElementById('bottom-section')
@@ -15,10 +16,8 @@ const API_LINK = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sw
     })
     .then((json) => {
         cityName.innerHTML = json.name
-        cityName.innerHTML += `<img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="" />`
-
-        console.log(json.weather[0].icon)
-        temperature.innerHTML = `${json.main.temp.toFixed(1)} °C`
+        icon.innerHTML += `<img width="150" src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="" />`
+        temperature.innerHTML = `${json.main.temp.toFixed(1)}°C`
         typeOfWeather.innerHTML = json.weather[0].description
 
         const sunriseConvert = new Date((json.sys.sunrise) * 1000);
@@ -55,12 +54,16 @@ const API_LINK_FORECAST = 'https://api.openweathermap.org/data/2.5/forecast?q=St
         filteredForecast.forEach((day) => {
             const date = new Date(day.dt * 1000) //converted numbers to right format, in this case Weekdays.
             
-            bottomSection.innerHTML += `<p>${weekDays[date.getDay()]}</p> 
-            <p>Min: ${day.main.temp_min.toFixed(1)}°C</p> 
-            <p>Max: ${day.main.temp_max.toFixed(1)}°C</p> 
-            <img src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png"/>
+            bottomSection.innerHTML += `
 
-            
+            <div class="forecast-data">     
+                <p class="forecast-day">${weekDays[date.getDay()]}</p> 
+                <p class="forecast-description">${day.weather[0].description}</p>
+                <img class="forecast-icon"src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png"/>
+
+                <p class="forecast-temp">Min: ${day.main.temp_min.toFixed(1)}°C</p> 
+                <p class="forecast-temp">Max: ${day.main.temp_max.toFixed(1)}°C</p> 
+            </div>
             `
             console.log(weekDays[date.getDay()])
  
