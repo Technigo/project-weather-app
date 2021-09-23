@@ -16,7 +16,7 @@ background-color: white;
 .header {
 height: 370px;
 width: 100%;
-background-image: linear-gradient(#ade8f4,#caf0f8);
+background-image: linear-gradient(#ade8f4,#caf0f8); 
 /* border-radius: 0 0 50% 50%/0 0 100% 100%;
 position: relative; */
 /* transform: scaleX(1.5); */
