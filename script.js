@@ -4,11 +4,14 @@ const typeOfWeather = document.getElementById('typeOfWeather')
 const icon = document.getElementById('icon')
 const minTemp = document.getElementById('min-temp')
 const maxTemp = document.getElementById('max-temp') 
+
 const bottomSection = document.getElementById('bottom-section')
+
 const sunrise = document.getElementById('sunrise')
 const sunset = document.getElementById('sunset')
 
 
+// Main fetch to get Stockholm weather 
 const API_LINK = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=147b874875d53e0e9f84cbacd0567b99'
     fetch(API_LINK)
     .then((response) => {
@@ -20,6 +23,7 @@ const API_LINK = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sw
         temperature.innerHTML = `${json.main.temp.toFixed(1)}°C`
         typeOfWeather.innerHTML = json.weather[0].description
 
+        // Sunrise and sunset data
         const sunriseConvert = new Date((json.sys.sunrise) * 1000);
         const sunriseTime = sunriseConvert.toLocaleTimeString([], {
             hour: "2-digit",
@@ -34,12 +38,10 @@ const API_LINK = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sw
               minute: "2-digit",
             });
       
-            sunset.innerHTML = `Sunset: ${sunsetTime}`;
-    
-        //   console.log(json)
-        
+            sunset.innerHTML = `Sunset: ${sunsetTime}`;     
     })
 
+// Fetch for 5 days forecast
 const API_LINK_FORECAST = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=147b874875d53e0e9f84cbacd0567b99'
     fetch(API_LINK_FORECAST)
     .then((response) => {
@@ -50,12 +52,11 @@ const API_LINK_FORECAST = 'https://api.openweathermap.org/data/2.5/forecast?q=St
         console.log("Filter", filteredForecast)
         const weekDays = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday",];
        
-
         filteredForecast.forEach((day) => {
+            // Multiply by 1000 because the data is given to us in UNIX which is in seconds, but Javascript uses milliseconds internally, this way we get the right date. 
             const date = new Date(day.dt * 1000) //converted numbers to right format, in this case Weekdays.
             
             bottomSection.innerHTML += `
-
             <div class="forecast-data">     
                 <p class="forecast-day">${weekDays[date.getDay()]}</p> 
                 <p class="forecast-description">${day.weather[0].description}</p>
@@ -65,11 +66,7 @@ const API_LINK_FORECAST = 'https://api.openweathermap.org/data/2.5/forecast?q=St
                 <p class="forecast-temp">Max: ${day.main.temp_max.toFixed(1)}°C</p> 
             </div>
             `
-            console.log(weekDays[date.getDay()])
- 
         })
-
-        console.log(json)
     })
 
     // <p>${date.toLocaleDateString('en-US', {
