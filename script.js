@@ -17,10 +17,10 @@ fetch(API_URL)
 		const sunset = new Date(data.sys.sunset * 1000);
 		const weatherTypes = data.weather[0].main;
 		weatherApp.innerHTML += `
-			<section class="topsite">
-      <p class="toptext">${weatherTypes.toLowerCase()} | ${Math.round(data.main.temp * 10) / 10}&#176;</p>
-      <p class="toptext">sunrise ${sunrise.getHours() < 10 ? '0' + sunrise.getHours() : sunrise.getHours()}.${sunrise.getMinutes()}</p>
-      <p class="toptext">sunset ${sunset.getHours()}.${sunset.getMinutes()}</p>
+			<section class="top-site">
+      <p class="top-text">${weatherTypes.toLowerCase()} | ${Math.round(data.main.temp * 10) / 10}&#176;</p>
+      <p class="top-text">sunrise ${sunrise.getHours() < 10 ? '0' + sunrise.getHours() : sunrise.getHours()}.${sunrise.getMinutes()}</p>
+      <p class="top-text">sunset ${sunset.getHours()}.${sunset.getMinutes()}</p>
 			</section>`;
 		console.log('data current', data);
 
@@ -50,8 +50,8 @@ fetch(API_URL)
 					weekDay = weekDay.getDay();
 					weatherApp.innerHTML += `
       <section class="forecast">
-        <p class="forecastDay">${weekDays[weekDay]}</p>
-        <p class="forecastTemp"> ${Math.round(day.temp.day * 1) / 1}&#176;</p>
+        <p class="forecast-day">${weekDays[weekDay]}</p>
+        <p class="forecast-temp"> ${Math.round(day.temp.day * 1) / 1}&#176;</p>
       </section>`;
 				});
 			})
