@@ -45,7 +45,7 @@ fetch(API_URL_CURRENT)
 	})
 	.then(() => {
 		// building the api url from coordinates from previous fetch
-		// needs to be in then() from previous fetch to be able to get coordinate data from that fetch
+		// needs to be in then() from previous fetch to be able to get coordinate data from that fetch in correct time
 		const API_URL_FORECAST = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=current,minutely,hourly&units=metric&appid=${API_KEY}`;
 		// run api fetch for weather forecast
 		fetch(API_URL_FORECAST)
