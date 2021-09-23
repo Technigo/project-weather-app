@@ -25,7 +25,8 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=00ceff8
     roundTemp = temperature.toFixed(1)
   const weatherImage = bigWeatherIcons(data.weather[0].description)
   const description = toTitleCase(data.weather[0].description)
-
+  let sunrise = convertTime(data.sys.sunrise)
+  let sunset = convertTime(data.sys.sunset)
   currentWeather.innerHTML += `
     <div class= "wrapper">
       <h1 class = "temperature" >
@@ -42,12 +43,13 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=00ceff8
          Sunrise:                   
         </div>
         <div class="sunrise-time" id="sunriseTime">
-
+          ${sunrise}
         </div>
         <div class="sunset">
         Sunset:    
         </div>
         <div class="sunset-time" id="sunsetTime">
+          ${sunset}
         </div>
 
       </section>
@@ -147,8 +149,7 @@ function convertDate (fetchedDate)  {
 }
 const weatherDescriptionImage = (desc) => {
   
-  if (desc === 'clear sky') {
-    return './Designs/Design-1/assets/Group38.png';
+  if (desc === 'clear sky') { return './Designs/Design-1/assets/Group38.png';
   } else if (desc === 'few clouds') {
     return './Designs/Design-1/assets/Group34.png';
   } else if (desc === 'scattered clouds') {
@@ -160,11 +161,11 @@ const weatherDescriptionImage = (desc) => {
   } else if (desc === 'rain') {
     return './Designs/Design-1/assets/rain.png';
   } else if (desc === 'thunderstorm') {
-    return './Designs/Design-1/assets/NA.png';
+    return './Designs/Design-1/assets/Group16.png';
   } else if (desc === 'snow') {
-    return './Designs/Design-1/assets/NA.png';
+    return './Designs/Design-1/assets/Group16.png';
   } else {
-    return './Designs/Design-1/assets/NA.png';
+    return './Designs/Design-1/assets/Group16.png';
   }
 }
 
@@ -209,4 +210,14 @@ const toTitleCase= (str)=> {
     }
   );
 }
+
+function convertTime(unixTime){
+  let date = new Date(unixTime * 1000)
+  let hours = date.getHours()
+  let minutes = "0" + date.getMinutes()
+  let time = hours + ":" + minutes.substr(-2)
+  return time
+  //console.log(time)
+}
+
 
