@@ -69,13 +69,12 @@
  .weather-forecast-container {
    display: grid;
    grid-template-columns: 1fr 1fr 1fr 1fr;
-   
+   padding-left: 20px;
  }
 
 
 .nav {
   background-color: transparent;
-  padding-left: 10px;
 }
   
 .burger-menu {
@@ -84,6 +83,7 @@
   text-transform: uppercase;
   font-weight: 300;
   letter-spacing: 3px;
+  padding-left: 10px;
 }
 
 .burger-menu ul {
