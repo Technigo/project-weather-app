@@ -1,61 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap"
-      rel="stylesheet"
-    />
-    <!-- favicon -->
-    <link
-      rel="icon"
-      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌤</text></svg>"
-    />
-    <title>Tiger weather</title>
-  </head>
 
-  <body>
-    <main>
-      <div class="wrapper-container">
-        <section id="weatherContainer" class="weather-container">
-          <div class="upper-half-weather-container">
-            <div class="icons-and-current-temp-wrapper">
-              <div class="hamburger"></div>
-              <div id="currentTemperature" class="current-temperature">0</div>
-            </div>
-            <div
-              id="currentWeatherPictureContainer"
-              class="current-weather-picture-container"
-            >
-              <div class="current-weather-picture">0</div>
-            </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet" />
+  <!-- favicon -->
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌤</text></svg>" />
+  <title>Tiger weather</title>
+</head>
+
+<body>
+  <main>
+    <div class="wrapper-container">
+      <section id="weatherContainer" class="weather-container">
+        <div class="upper-half-weather-container">
+          <div class="icons-and-current-temp-wrapper">
+            <div class="hamburger"><img class="ham-menu" src="/Designs/Design-1/assets/ham.png"></div>
+            <div id="currentTemperature" class="current-temperature">0</div>
           </div>
-          <div class="lower-half-weather-container">
-            <div id="cityName" class="city-name">0</div>
-            <div id="currentWeatherStatus" class="current-weather-status">
-              0
-            </div>
-            <div class="sunrise-sunset-wrapper">
-              <div id="sunrise" class="sunrise"></div>
-              <div id="sunset" class="sunset"></div>
-            </div>
+          <div id="currentWeatherPictureContainer" class="current-weather-picture-container">
+            <div class="current-weather-picture">0</div>
           </div>
-        </section>
-        <section class="weekday-container" id="fiveDayForecast">
-          <!-- thats a template that should be recreated via innerHTML in JS  to render data -->
-          <!-- <div class="weekday-row">
+        </div>
+        <div class="lower-half-weather-container">
+          <div id="cityName" class="city-name">0</div>
+          <div id="currentWeatherStatus" class="current-weather-status">
+            0
+          </div>
+          <div class="sunrise-sunset-wrapper">
+            <div id="sunrise" class="sunrise"></div>
+            <div id="sunset" class="sunset"></div>
+          </div>
+        </div>
+      </section>
+      <section class="weekday-container" id="fiveDayForecast">
+        <!-- thats a template that should be recreated via innerHTML in JS  to render data -->
+        <!-- <div class="weekday-row">
             <div class="forecast-content week-day" id="week-day"></div>
             <div class="emoji forecast-content" id="emoji"></div>
             <div class="temperature forecast-content" id="temperature"></div>
           </div> -->
-        </section>
-      </div>
-      <script src="./script.js"></script>
-    </main>
-  </body>
+      </section>
+    </div>
+    <script src="./script.js"></script>
+  </main>
+</body>
+
 </html>

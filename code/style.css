@@ -12,19 +12,22 @@ main {
   background-color: white;
   height: 600px;
   width: 300px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+/* styles for desktop */
+@media (min-width: 768px) {
+  .wrapper-container {
+    margin-top: 50px;
+  }
+}
+
 .weather-container {
   background: rgb(251, 166, 38);
-  background: linear-gradient(
-    21deg,
-    rgba(251, 166, 38, 1) 0%,
-    rgba(255, 245, 130, 1) 100%
-  );
+  background: linear-gradient(21deg, rgba(251, 166, 38, 1) 0%, rgba(255, 245, 130, 1) 100%);
   border-bottom-right-radius: 250px 50px;
   border-bottom-left-radius: 250px 50px;
   overflow: hidden;
@@ -39,12 +42,7 @@ main {
 
 .cold {
   background: rgb(110, 248, 255);
-  background: linear-gradient(
-    27deg,
-    rgba(110, 248, 255, 1) 0%,
-    rgba(90, 156, 255, 1) 58%,
-    rgba(52, 78, 255, 1) 96%
-  );
+  background: linear-gradient(27deg, rgba(110, 248, 255, 1) 0%, rgba(90, 156, 255, 1) 58%, rgba(52, 78, 255, 1) 96%);
 }
 
 .weekday-container {
@@ -179,4 +177,14 @@ main {
 
 .sun-img {
   padding-right: 5px;
+}
+
+.ham-menu {
+  object-fit: none;
+  margin-right: 100px;
+}
+
+#week-day,
+#temperature {
+  font-weight: 500;
 }
