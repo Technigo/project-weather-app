@@ -1,7 +1,11 @@
 const weatherData = document.getElementById("weatherdata");
 const weatherToday = document.getElementById("weather-today");
 const weatherForecast = document.getElementById("weather-forecast");
-const dropdownCities = document.getElementById('dropdown-cities');
+const forecastDay = document.getElementById("forecastDay")
+const forecastTemp = document.getElementById("forecastTemp")
+const forecastIcon = document.getElementById('forecastIcon')
+const dropdownCities = document.getElementById("dropdown-cities");
+
 
 let userPosition
 
@@ -76,23 +80,21 @@ const getData = () => { //made global function so we can call from different are
 
 
   fetch(API_Forecast.replace('cityname', currentCity))
-      .then((res) => res.json())
-      .then((forecast) => { 
-          const filteredForecast = forecast.list.filter(day =>
-          day.dt_txt.includes("12:00")
-          );
-          filteredForecast.forEach(day => {
-              let date = new Date(day.dt * 1000);
-              let dayName = date.toLocaleDateString("en-US", { weekday: "long" });
-              const dayTemp = day.main.temp;
-              const weekTemp = dayTemp.toFixed(0.1);
-         	
-              document.getElementById('forecastDay').innerHTML += `<p>${dayName}</p>`
-              document.getElementById('forecastTemp').innerHTML += `<p>🌡️${weekTemp}°C</p>
-              <p>Feels like ${day.main.feels_like.toFixed(1)}°C</p>`
-              document.getElementById('forecastIcon').innerHTML += `<img src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png"/>
-              <p>Weather: ${day.weather[0].description}</p>`
-      });  
+    .then((res) => res.json())
+    .then((forecast) => { 
+        const filteredForecast = forecast.list.filter(day =>
+        day.dt_txt.includes("12:00")
+        );
+        filteredForecast.forEach(day => {
+            const date = new Date(day.dt * 1000);
+            const dayName = date.toLocaleDateString("en-US", { weekday: "long" });
+            const weekTemp = day.main.temp.toFixed(0);
+        
+            forecastDay.innerHTML += `<p>${dayName}</p>`
+            forecastTemp.innerHTML += `<p>🌡️${weekTemp}°C</p>
+            <p>Feels like ${day.main.feels_like.toFixed(1)}°C</p>`
+            forecastIcon.innerHTML += `<img src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png"/>`      
+    });  
   });
   
   // fetch(API_FORCAST.replace('cityname', currentCity))
