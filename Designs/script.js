@@ -41,13 +41,12 @@ const getData = () => {
       `; // toFixed(1) rounds the temp to one decimal
 
 			temp = data.main.temp;
-			dayDate = new Date()
-			let timeDay  = dayDate.getHours()
+
+			
+			let timeDay = new Date()
+			timeDay = timeDay.getHours()
 			console.log(timeDay)
 
-
-			
-			
 
 			if (temp >= 25 && temp <= 65) {
 				if (timeDay >= 06 && timeDay <= 22) {
@@ -62,8 +61,10 @@ const getData = () => {
 					weatherToday.style.background = "var(--moderate)";
 				} else {
 					weatherToday.style.background = "var(--moderatenight)";
-				}
-			}  if (temp >= -40 && temp <= -1) {
+				}}  
+				
+				
+				if (temp >= -40 && temp <= -1) {
 				if (timeDay >= 6 && timeDay <= 22) {
 					weatherToday.style.background = "var(--cold)";
 				} else  {
