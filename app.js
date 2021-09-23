@@ -5,8 +5,7 @@ const weeklyContent = document.getElementById("weeklyContent");
 // Global variables
 let dayAndTemp = []; // empty list
 let city = "Gothenburg";
-city = "Paris";
-let dailyContentIcon = "";
+let dailyContentIcon = ``;
 
 //Functions
 function getDayOfWeek(date) {
@@ -37,67 +36,69 @@ fetch(weatherCityToday)
 
     const sunriseTime = convert(sunrise);
     const sunsetTime = convert(sunset);
+
     console.log(description);
+
+    //condintional that change the dailyContentIcon depending on the weather.
     if (main === `Thunderstorm`) {
-      dailyContentIcon = `Thunderstorm`;
+      dailyContentIcon = `<i class="fa-solid fa-cloud-bolt daily-weather-icon"></i>`;
     } else if (main === `Drizzle`) {
-      dailyContentIcon = `Drizzle`;
+      dailyContentIcon = `<i class="fa-solid fa-cloud-drizzle daily-weather-icon"></i>`;
     } else if (main === `Rain`) {
-      dailyContentIcon = `Rain`;
+      dailyContentIcon = `<i class="fa-solid fa-cloud-rain daily-weather-icon"></i>`;
     } else if (main === `Snow`) {
-      dailyContentIcon = `Snow`;
+      dailyContentIcon = `<i class="fa-solid fa-cloud-snow daily-weather-icon"></i>`;
     } else if (main === `Mist`) {
-      dailyContentIcon = `Mist`;
+      dailyContentIcon = `<i class="fa-solid fa-cloud-fog daily-weather-icon"></i>`;
     } else if (main === `Smoke`) {
-      dailyContentIcon = `Smoke`;
+      dailyContentIcon = `<i class="fa-solid fa-smoke daily-weather-icon"></i>`;
     } else if (main === `Haze`) {
-      dailyContentIcon = `Haze`;
+      dailyContentIcon = `<i class="fa-solid fa-sun-haze daily-weather-icon"></i>`;
     } else if (main === `Dust`) {
-      dailyContentIcon = `Dust`;
+      dailyContentIcon = `<i class="fa-solid fa-sun-dust daily-weather-icon"></i>`;
     } else if (main === `Fog`) {
-      dailyContentIcon = `Fog`;
+      dailyContentIcon = `<i class="fa-solid fa-cloud-fog daily-weather-icon"></i>`;
     } else if (main === `Sand`) {
-      dailyContentIcon = `Sand`;
-    } else if (main === `Dust`) {
-      dailyContentIcon = `Dust`;
+      dailyContentIcon = `<i class="fa-solid fa-sun-dust daily-weather-icon"></i>`;
     } else if (main === `Ash`) {
-      dailyContentIcon = `Ash`;
+      dailyContentIcon = `<i class="fa-solid fa-cloud-sun daily-weather-icon"></i>`;
     } else if (main === `Squall`) {
-      dailyContentIcon = `Squall`;
+      dailyContentIcon = `<i class="fa-solid fa-tornado daily-weather-icon">`;
     } else if (main === `Tornado`) {
-      dailyContentIcon = `Tornado`;
+      dailyContentIcon = `<i class="fa-solid fa-tornado daily-weather-icon"></i>`;
     } else if (main === `Clear`) {
-      dailyContentIcon = `Clear`;
+      dailyContentIcon = `<i class="fa-solid fa-sun-bright daily-weather-icon yellow"></i>`;
     } else if (main === `Clouds`) {
-      dailyContentIcon = `Clouds`;
+      dailyContentIcon = `<i class="fa-solid fa-clouds daily-weather-icon"></i>`;
     }
+
+    // Conversion of the first letter in description to be a uppercase. (Done by doing a slice to not do the whole word.)
+    description = description.charAt(0).toUpperCase() + description.slice(1);
 
     // Change the innerhtml with new content and use the values we picked up from the json.
     console.log(dailyContentIcon);
     dailyContent.innerHTML = `
-        <div class="main-daily-info">
-        <div class="headings">
-        <div><i class="fas fa-bars"></i></div>
-         <div class="daily-temp">
-          <h1>${Math.round(data.main.temp * 10) / 10}
-           <span class="celsius">°C</span>
-          </h1>
-          <div>${dailyContentIcon}</div>
-         </div>
-         <h2>${data.name}</h2>
-         <h3>${description}</h3>
-       
-      
-         <div class="main-sunset-sunrise">
-          <h3>Sunrise:</h3>
-          <h3>${sunriseTime}</h3>
-          <h3>Sunset:</h3>
-          <h3>${sunsetTime}</h3>
-         </div>
-         </div>
-         <button class="button">></button>
+      <div class="main-daily-info">
+       <div class="headings">
+        <div><i class="fa-thin fa-bars"></i></div>
+        <div class="daily-temp">
+         <h1>${Math.round(data.main.temp * 10) / 10}
+          <span class="celsius">°C</span>
+         </h1>
+         <div>${dailyContentIcon}</div>
         </div>
-        `;
+        <h2>${data.name}</h2>
+        <h3>${description}</h3>
+       
+        <div class="main-sunset-sunrise">
+         <h3>Sunrise:</h3>
+         <h3>${sunriseTime}</h3>
+         <h3>Sunset:</h3>
+         <h3>${sunsetTime}</h3>
+        </div>
+       </div>
+       <button class="button"><i class="far fa-chevron-right"></i></button>
+      </div>`;
   });
 
 const weatherForecast5DaysCity = `https://api.openweathermap.org/data/2.5/forecast?q=${city},Sweden&units=metric&APPID=6f4589c9a1ed485fe713e8f5159a6ff9`;
@@ -163,7 +164,7 @@ fetch(weatherForecast5DaysCity)
 
       // After this is done we push it up to an object were we say that day:element (the day it is looping over)
       //dayOfWeek: dayOfWeek (got this by envoking getDayOfWeek with the element (which is the actual day it is looping over)
-      //tempMin: minTemp and tempMax:maxTemp
+      //tempMin: minTemp, tempMax:maxTemp, description: description.
       dayAndTemp.push({
         day: element,
         dayOfWeek: dayOfWeek,
@@ -175,42 +176,41 @@ fetch(weatherForecast5DaysCity)
 
     console.log(dayAndTemp); // console.log the dayAndTemp
 
-    //
+    // Conditional statements to show the icons for the weekly weather depending
+    // on the weather registrered for the day in `main`.
     dayAndTemp.forEach((weekday) => {
       let icon = "";
 
       if (weekday.description === `Thunderstorm`) {
-        icon = `Thunderstorm`;
+        icon = `<i class="fa-solid fa-cloud-bolt weekly-weather-icon"></i>`;
       } else if (weekday.description === `Drizzle`) {
-        icon = `Drizzle`;
+        icon = `<i class="fa-solid fa-cloud-drizzle weekly-weather-icon"></i>`;
       } else if (weekday.description === `Rain`) {
-        icon = `Rain`;
+        icon = `<i class="fa-solid fa-cloud-rain weekly-weather-icon"></i>`;
       } else if (weekday.description === `Snow`) {
-        icon = `Snow`;
+        icon = `<i class="fa-solid fa-cloud-snow weekly-weather-icon"></i>`;
       } else if (weekday.description === `Mist`) {
-        icon = `Mist`;
+        icon = `<i class="fa-solid fa-cloud-fog weekly-weather-icon"></i>`;
       } else if (weekday.description === `Smoke`) {
-        icon = `Smoke`;
+        icon = `<i class="fa-solid fa-smoke weekly-weather-icon"></i>`;
       } else if (weekday.description === `Haze`) {
-        icon = `Haze`;
+        icon = `<i class="fa-solid fa-sun-haze weekly-weather-icon"></i>`;
       } else if (weekday.description === `Dust`) {
-        icon = `Dust`;
+        icon = `<i class="fa-solid fa-sun-dust weekly-weather-icon"></i>`;
       } else if (weekday.description === `Fog`) {
-        icon = `Fog`;
+        icon = `<i class="fa-solid fa-cloud-fog weekly-weather-icon"></i>`;
       } else if (weekday.description === `Sand`) {
-        icon = `Sand`;
-      } else if (weekday.description === `Dust`) {
-        icon = `Dust`;
+        icon = `<i class="fa-solid fa-sun-dust weekly-weather-icon">`;
       } else if (weekday.description === `Ash`) {
-        icon = `Ash`;
+        icon = `<i class="fa-solid fa-cloud-sun weekly-weather-icon"></i>`;
       } else if (weekday.description === `Squall`) {
-        icon = `Squall`;
+        icon = `<i class="fa-solid fa-tornado weekly-weather-icon">`;
       } else if (weekday.description === `Tornado`) {
-        icon = `Tornado`;
+        icon = `<i class="fa-solid fa-tornado weekly-weather-icon"></i>`;
       } else if (weekday.description === `Clear`) {
-        icon = `Clear`;
+        icon = `<i class="fa-solid fa-sun-bright weekly-weather-icon"></i>`;
       } else if (weekday.description === `Clouds`) {
-        icon = `Clouds`;
+        icon = `<i class="fa-solid fa-clouds weekly-weather-icon"></i>`;
       }
 
       weeklyContent.innerHTML += `<div class="day">
