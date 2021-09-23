@@ -47,9 +47,117 @@ const getData = () => {
       `; // toFixed(1) rounds the temp to one decimal
 // time
             temp = data.main.temp;
+            var mobil = window.matchMedia("(max-width: 700px)")
+
+            if(mobil.matches){
+
+                const nav = document.getElementById("nav");
+                const meny = document.getElementById("menu-btn")
+                const ham = document.getElementsByClassName(".menu-icon")
+                
+               const drop = document.getElementById("drop");
+               const drop1 = document.getElementById("drop1");
+               const drop2 = document.getElementById("drop2");
+               const drop3 = document.getElementById("drop3");
+               const drop4 = document.getElementById("drop4");
+               const drop5 = document.getElementById("drop5");
+
+
+
+                if (temp >= 25 && temp <= 65) {
+                    if (sunrise) {
+                        nav.style.background = "var(--dayphone)";
+                        weatherToday.style.background = "var(--imgd)";
+                        weatherToday.style.color = "black";
+                        drop.style.color = "black";
+                            drop1.style.color = "black";
+                            drop2.style.color = "black";
+                            drop3.style.color = "black";
+                            drop4.style.color = "black";
+                            drop5.style.color = "black";
+
+                            meny.style.color = "black";
+
+
+                    } else {
+                        nav.style.background = "var(--nightphone)";
+                        weatherToday.style.background = "var(--imgn)";
+                        weatherToday.style.color = "white";
+                        drop.style.color = "white";
+                        drop1.style.color = "white";
+                        drop2.style.color = "white";
+                        drop3.style.color = "white";
+                        drop4.style.color = "white";
+                        drop5.style.color = "white";
+
+                        meny.style.color = "white";
+                     
+                    }  } if (temp >= 0 && temp <= 24) {
+                        if (sunset < now) {
+                            nav.style.background = "var(--nightphone)";
+                            weatherToday.style.background = "var(--imgn)";
+                            weatherToday.style.color = "white";
+                            drop.style.color = "white";
+                            drop1.style.color = "white";
+                            drop2.style.color = "white";
+                            drop3.style.color = "white";
+                            drop4.style.color = "white";
+                            drop5.style.color = "white";
+                            
+                            meny.style.color = "white";
+
+                            
+
+                        } else {
+                            nav.style.background = "var(--dayphone)";
+                            weatherToday.style.background = "var(--imgd)";
+                            weatherToday.style.color = "black";
+                            drop.style.color = "black";
+                            drop1.style.color = "black";
+                            drop2.style.color = "black";
+                            drop3.style.color = "black";
+                            drop4.style.color = "black";
+                            drop5.style.color = "black";
+
+                            meny.style.color = "black";
+                        }
+                    } if (temp >= -40 && temp <= -1) {
+                        if (sunrise) {
+                            nav.style.background = "var(--dayphone)";
+                            weatherToday.style.background = "var(--imgd)";
+                            weatherToday.style.color = "black";
+                            drop.style.color = "black";
+                            drop1.style.color = "black";
+                            drop2.style.color = "black";
+                            drop3.style.color = "black";
+                            drop4.style.color = "black";
+                            drop5.style.color = "black";
+
+                            meny.style.color = "black";
+
+                        } else {
+                            nav.style.background = "var(--nightphone)";
+                            weatherToday.style.background = "var(--imgn)";
+                            weatherToday.style.color = "white";
+                            drop.style.color = "white";
+                            drop1.style.color = "white";
+                            drop2.style.color = "white";
+                            drop3.style.color = "white";
+                            drop4.style.color = "white";
+                            drop5.style.color = "white";
+
+                            meny.style.color = "white";
+
+                        }
+                    }  }  
+
+
+
+else{ 
             if (temp >= 25 && temp <= 65) {
                 if (sunrise) {
                     weatherToday.style.background = "var(--hot)";
+
                 } else {
                     weatherToday.style.background = "var(--hotnight)";
 					weatherToday.style.color = "var(--textcolornight)";
@@ -61,15 +169,18 @@ const getData = () => {
 				
                 } else {
                     weatherToday.style.background = "var(--moderate)";
-                }
-            } if (temp >= -40 && temp <= -1) {
+                }} 
+                
+                if (temp >= -40 && temp <= -1) {
                 if (sunrise) {
                     weatherToday.style.background = "var(--cold)";
                 } else {
                     weatherToday.style.background = "var(--coldnight)";
                 }
-            }
-        })
+            } } 
+         
+
+             } )   
         .catch((error) => console.error("Error: ", error))
         .finally(() => console.log("Request done"));
     

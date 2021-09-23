@@ -1,30 +1,45 @@
 :root{
  
-    --hot: linear-gradient( #ff4027,#fdd39c, #ffffff);
+    --hot: linear-gradient( #ff402778,#fdd39c, #ffffff);
     --hotnight: linear-gradient( #992617,#719ef186, #050c33);
 
     --moderate: linear-gradient( #ebb36b, #d4f17186, #ffffff);
-    --moderatenight: linear-gradient( #473319, #719ef186, #050c33);
+    --moderatenight: linear-gradient( #1a130b, #719ef186, #050c33);
 
     --cold: linear-gradient( #61b3ff,#e0f7a27a, #ffffff);
     --coldnight: linear-gradient( #61b3ff,#719ef186, #050c33);
 
-  
+  --dayphone: #afdbcf;
+  --nightphone: #41326b;
    
+  --imgn: url("/Design-1/assets/night-time-tree.png"); 
+  --imgd: url("/Design-1/assets/night-day-tree.png"); 
+
+
   }
 
   body{
     font-family: 'Roboto', sans-serif;
-    background-color: white;
+   
     margin: 0;
   }
 
+  img{
+
+width: 100%;
+margin: 0;
+z-index: -15;
+
+}
+
+
  .weather-today-container {
-   background-color: lightblue; 
+  
    background-size: cover;
    height: 25vh;
    border-radius: 0 0 20% 20%;
    padding: 10px;
+   
  }
 
  .weather-container-div {
@@ -56,6 +71,7 @@
  .weather-forecast-container {
    display: grid;
    grid-template-columns: 1fr 1fr 1fr 1fr;
+   
  }
 
 .cities-wrapper {
@@ -66,8 +82,9 @@
   background-color: white;
   width: 45%;
   position: absolute;
-  border: 1px solid black;
+  border: 1px solid rgb(0, 0, 0);
   display: none;
+  
 }
 
 /* This is not working at the moment. I have tried to write it in different ways here and in the js file but I don't get it to work. Can some of you maybe have a look? */
@@ -123,7 +140,7 @@
 }
 
 .burger-menu .menu-icon .navicon {
-  background: #333;
+  background: rgb(128, 127, 127);
   display: block;
   height: 2px;
   position: relative;
@@ -132,7 +149,7 @@
 }
 
 .burger-menu .menu-icon .navicon:before, .burger-menu .menu-icon .navicon:after {
-  background: #333;
+  background: rgb(128, 127, 127);
   content: '';
   display: block;
   height: 100%;
