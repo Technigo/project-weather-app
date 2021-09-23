@@ -14,13 +14,26 @@ background-color: white;
 }
 
 .header {
-height: 350px;
+height: 370px;
 width: 100%;
-background-image: linear-gradient(#95A1E4,#A2C8E9);
+background-image: linear-gradient(#ade8f4,#caf0f8);
 /* border-radius: 0 0 50% 50%/0 0 100% 100%;
 position: relative; */
 /* transform: scaleX(1.5); */
+border-bottom-left-radius: 60% 20%;
+border-bottom-right-radius: 60% 20%;
 }
+
+/* linear-gradients to use
+  - when hot: #FF007B, #ffb600
+  - when cold: 
+  - when rainy: 
+  - when cloudy:
+
+  #ade8f4,#caf0f8
+
+  #8b8fff,#e3e4ff
+*/
 
 .hamburger {
     display: flex;
@@ -51,10 +64,25 @@ position: relative; */
 .header-image img {
   width: 100%;
   max-width: 150px;
-  min-width: 75px;
+  min-width: 50px;
+  margin-right: 30px;
   
 }
 
+.button-container{
+  width: 100%;
+}
+.button-image img {
+  width: 100%;
+  max-width: 70px;
+  min-width: 50px;
+  float: right;
+  margin-right: 60px;
+  box-shadow: 0 0 15px 3px #C0C5C9;
+  border-radius: 50%;
+  background-image: white;
+
+}
 .wrapper {
    margin: 0 30px; 
    padding: 15px 0;
@@ -86,6 +114,7 @@ position: relative; */
   align-items: center;
   background-color: white;
   padding: 10px 10px;
+  margin: 10px 0;
 }
 .html-row:hover{
   background-color: #EFF3F6;
