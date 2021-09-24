@@ -21,7 +21,6 @@ fetch(CURRENT_API_URL)
   })
 .then((data) => {
     // today's forecast 
-  console.log('DATA', data)
     temperature =  (data.main.temp) - 273.15
     roundTemp = temperature.toFixed(0)
   const weatherImage = bigWeatherIcons(data.weather[0].description)
@@ -71,8 +70,7 @@ fetch(FORECAST_API_URL)
     return res.json()
   })
   .then((data) => {
-    console.log('Forecast DATA', data) // just for testing purpose 
-   
+  
     createForecast(data) //calling CreateForecast function to create forecast for next five days with minimum temperature, maximum temperature and formatted date
     
     let forecastArray = Object.values(fiveDayForecast)
@@ -189,19 +187,19 @@ const bigWeatherIcons = (desc) => {
     return './Designs/Design-1/assets/sun-icon.png'
 
   } else if (desc === 'few clouds') {
-    headerBackground.style.backgroundImage = "linear-gradient(#ade8f4,#caf0f8)"
+    headerBackground.style.backgroundImage = "linear-gradient(#D2D5D8,#B5D7FA)"
     return './Designs/Design-1/assets/sun_cloud.png'
   
   } else if (desc === 'overcast clouds') {
-    headerBackground.style.backgroundImage = "linear-gradient(#6c757d, #adb5bd)"
+    headerBackground.style.backgroundImage = "linear-gradient(#D2D5D8,#B5D7FA)"
     return './Designs/Design-1/assets/cloud.png'
 
   } else if (desc === 'scattered clouds') {
-    headerBackground.style.backgroundImage = "linear-gradient(#6c757d, #adb5bd)"
+    headerBackground.style.backgroundImage = "linear-gradient(#D2D5D8,#B5D7FA)"
     return './Designs/Design-1/assets/sun_cloud.png'
 
   } else if (desc === 'broken clouds') {
-    headerBackground.style.backgroundImage = "linear-gradient(#6c757d, #adb5bd)"
+    headerBackground.style.backgroundImage = "linear-gradient(#D2D5D8,#B5D7FA)"
     return './Designs/Design-1/assets/cloud.png'
 
   } else if (desc === 'shower rain') {
@@ -214,11 +212,11 @@ const bigWeatherIcons = (desc) => {
 
   } else if (desc === 'thunderstorm') {
     headerBackground.style.backgroundImage = "linear-gradient(#87A1B6,#E1E7EB)"
-    return './Designs/Design-1/assets/NA.png'
+    return './Designs/Design-1/assets/thunder.png'
 
   } else if (desc === 'snow') {
     headerBackground.style.backgroundImage = "linear-gradient(#ade8f4,#caf0f8)"
-    return './Designs/Design-1/assets/NA.png'
+    return './Designs/Design-1/assets/snowflake.png'
 
   } else {
     headerBackground.style.backgroundImage = "linear-gradient(#ade8f4,#caf0f8)"

@@ -15,8 +15,9 @@ body {
 
 /* everything = forecast and header */
 .content-wrapper{
-  max-width: 700px;
+  /*max-width: 700px;*/
   margin: 0 auto;
+  width: 400px;
 }
 
 /*header content */
@@ -103,7 +104,7 @@ body {
   max-width: 70px;
   min-width: 50px;
   float: right;
-  margin-right: 50px;
+  margin-right: 60px;
   box-shadow: 0 0 15px 3px #C0C5C9;
   border-radius: 50%;
   background-image: white;
@@ -112,21 +113,20 @@ body {
 
 /*Forecast*/
 .forecast-container {
-  width: 70%;
+  width: 80%;
   justify-content: center;
   margin: 35px auto;
 }
 
 .js-row {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 2fr 1.5fr 1.5fr;
   align-items: center;
   padding: 10px 0;
 }
 
 .js-row:hover {
   background-color: #EFF3F6;
-  border: solid 1px #EFF3F6;
   border-radius: 15px;
   cursor: pointer;
 }
