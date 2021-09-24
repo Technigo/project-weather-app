@@ -1,27 +1,5 @@
-// Priolista
-
-// Table till korrekt design - done
-// Sortera innehållet så att det matchar mallen - done
-// Styr färger enligt mallen kolla lektion -done
-// Förslag på Readme - done
-// Mediaquery -done
-// Ta bort alla console.log - done
-// Pull - done
-// sunrise/sunset tid - done
-// Bild för neutral weather - done
-// Kolla tabbar, indrag och kommentarer - done
-
-// Lägg in netlify-länk (Anna?) i readme och lämna in.
-
-
-
-
 const API_URL ='https://api.openweathermap.org/data/2.5/weather?q=Gothenburg,Sweden&units=metric&APPID=affe19113e10ebc0685623d229879d1f';
 
-// Here are other cities if you want to test the if conditional for the different icons and matching texts:
-// Dubai: 'https://api.openweathermap.org/data/2.5/weather?q=Dubai&units=metric&APPID=affe19113e10ebc0685623d229879d1f';
-//Tegucigalpa: 'https://api.openweathermap.org/data/2.5/weather?q=Tegucigalpa&units=metric&APPID=affe19113e10ebc0685623d229879d1f'
-// Sydney:'https://api.openweathermap.org/data/2.5/weather?q=Sydney&units=metric&APPID=affe19113e10ebc0685623d229879d1f';
 const API_URL_5DAY =
   'https://api.openweathermap.org/data/2.5/forecast?q=Gothenburg,Sweden&units=metric&APPID=affe19113e10ebc0685623d229879d1f';
 
@@ -70,26 +48,26 @@ fetch(API_URL)
     // If else statement with different weather icons and matching weather descriptions
     if (data.weather[0].main === 'Clear' && data.main.temp >= 20) {
       text.innerHTML += `<img src="./Designs/Design-2/icons/noun_Sunglasses_2055147.svg" alt="sunglasses icon">
-      <h1>Get your sunnies on, it looks rather warm in ${data.name} today</h1>`
+      <h1>Get your sunnies on, it looks rather warm in ${data.name} today.</h1>`
       body.classList.add("sunny")
     } else if (data.weather[0].main === 'Rain') {
       text.innerHTML += `
       <img src="./Designs/Design-2/icons/noun_Umbrella_2030530.svg" alt="umbrella icon">
-      <h1>Get your umbrella, it looks rather wet in ${data.name} today</h1>`
+      <h1>Get your umbrella, it looks rather wet in ${data.name} today.</h1>`
       body.classList.add("rainy")
     } else if (data.weather[0].main === 'Clouds') {
       text.innerHTML += `<img src="./Designs/Design-2/icons/noun_Cloud_1188486.svg" alt="cloud icon">
-      <h1>It looks rather cloudy in ${data.name} today</h1>`
+      <h1>It looks rather cloudy in ${data.name} today.</h1>`
       body.classList.add("cloudy")
     } else {
       text.innerHTML += `<img src="./Designs/Design-2/icons/cloudy-cloud-svgrepo-com.svg" alt="cloudy cloud icon" width="20%">
-      <h1>Neutral weather in ${data.name} today.</h1>`
+      <h1>You can chillout, it is neutral weather in ${data.name} today.</h1>`
       body.classList.add("neutral")
     
     }
   })
 
-  .catch((error) => text.innerHTML += `<h1>Sorry, API not working right now. Please wait a few minutes and try again!</h1>`);
+  .catch((data) => text.innerHTML += `<h1>Sorry, API not working right now. Please wait a few minutes and try again!</h1>`);
 
 //Function for turning a date to a string short weekday
 const getWeekDay = (data) => {
