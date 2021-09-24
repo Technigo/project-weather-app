@@ -1,13 +1,11 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The task was to create a weather app and gather data from an API. We also had to work as a group and practice mob-programming.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Our biggest problem was to find a time where everyone could sit down together. We solved it by communicating and comprising. If we had more time then we would have added a few extra features.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Netlify link: https://thebetterfoxes.netlify.app/
