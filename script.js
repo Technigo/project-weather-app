@@ -1,6 +1,5 @@
 console.log("Hello world!");
-// const API_KEY =
-//   "96cb0f55d34310e596ed4792c7800540"
+const API_KEY = "96cb0f55d34310e596ed4792c7800540"
 
 const weatherContainer = document.getElementById("weather");
 const forecastContainer = document.getElementById("forecast");
@@ -8,10 +7,11 @@ const sunriseContainer = document.getElementById("sunrise");
 const sunsetContainer = document.getElementById("sunset");
 const mainContainer = document.getElementById('mainWeather')
 const cityButton = document.getElementById('cityBtn')
+const body = document.getElementById('body')
 
 // console.log("This is the first API", API_CITY)
 const fetchStockholm = () => {
-  fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm&units=metric&APPID=96cb0f55d34310e596ed4792c7800540")
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=Stockholm&units=metric&APPID=${API_KEY}`)
     .then((res) => {
       return res.json();
     })
@@ -23,7 +23,7 @@ const fetchStockholm = () => {
 fetchStockholm();
 
 const fetchForecastStockholm = () => {
-  fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=96cb0f55d34310e596ed4792c7800540")
+  fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=${API_KEY}`)
     .then((res) => {
       return res.json();
     })
@@ -35,7 +35,7 @@ const fetchForecastStockholm = () => {
 fetchForecastStockholm();
 
 const fetchBarcelona = () => {
-  fetch("https://api.openweathermap.org/data/2.5/weather?q=Barcelona&units=metric&APPID=96cb0f55d34310e596ed4792c7800540")
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=Barcelona&units=metric&APPID=${API_KEY}`)
     .then((res) => {
       return res.json();
     })
@@ -44,10 +44,8 @@ const fetchBarcelona = () => {
     })
 };
 
-/* fetchBarcelona(); */
-
 const fetchForecastBarcelona = () => {
-  fetch("https://api.openweathermap.org/data/2.5/forecast?q=Barcelona,Spain&units=metric&APPID=96cb0f55d34310e596ed4792c7800540")
+  fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Barcelona,Spain&units=metric&APPID=${API_KEY}`)
     .then((res) => {
       return res.json();
     })
@@ -56,14 +54,25 @@ const fetchForecastBarcelona = () => {
     })
 };
 
-/* fetchForecastBarcelona(); */
+const fetchParis = () => {
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=Paris&units=metric&APPID=${API_KEY}`)
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      getWeatherData(data)   
+    })
+};
 
-cityButton.addEventListener('click', () => {
-  forecastContainer.innerHTML = ``;
-  fetchBarcelona()
-  fetchForecastBarcelona()
-  /* console.log(API_CITY) */
-})
+const fetchForecastParis = () => {
+  fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Paris,France&units=metric&APPID=${API_KEY}`)
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      getForecastData(data)     
+    })
+};
 
 const getWeatherData = (data) => {
   console.log("This is data", data);
@@ -82,6 +91,17 @@ const getWeatherData = (data) => {
       <h3>${data.weather[0].description}</h3>          
     `;
 
+    if (decimal >= 20) {
+      body.style.background = "orange"
+    }
+    else if (decimal < 20 && decimal > 10){
+      body.style.background = "blue"
+    }
+    else {
+      body.style.background = "white"
+    }
+
+
     const sunriseData = new Date(data.sys.sunrise * 1000) //Converts UNIX/EPOCH time to readable human time
     const sunsetData = new Date(data.sys.sunset * 1000) //Converts UNIX/EPOCH time to readable human time
     const sunriseString = sunriseData.toLocaleTimeString('en-SE', {hour: '2-digit', minute:'2-digit'}) //toLocaleTimeString reduces data to only show hh:mm
@@ -96,7 +116,7 @@ const getWeatherData = (data) => {
 
 }
 
-const getForecastData = (data) => {
+  const getForecastData = (data) => {
   // display the next 5 days  with filtered info (once a day at 12:00) 
   const filteredForecast = data.list.filter(item => item.dt_txt.includes('12:00'))
   console.log("THIS IS THE filter", filteredForecast)
@@ -106,7 +126,8 @@ const getForecastData = (data) => {
 
     const decimal = (object.main.temp).toFixed(0) // make the temperature integer
 
-    const date = new Date(object.dt_txt); // full date with day month and year
+    // multiplied with 1000 to make it visibale both in safari and chrome //
+    const date = new Date(object.dt * 1000); // full date with day month and year
     const days = date.toLocaleDateString('en-SE', { weekday: 'long' }); // display the day with the name only Tuesday,Wednesday,Monday etc.. 
     console.log("the next day is", days) // the next day is wednesday etc. 
 
@@ -128,3 +149,59 @@ const getForecastData = (data) => {
     `;
   })
 }
+
+let cityClick = 0;
+
+cityButton.addEventListener('click', () => {
+  forecastContainer.innerHTML = ``;
+  if (cityClick === 0){
+    fetchParis()
+    fetchForecastParis()
+    cityClick = 1;
+  }
+  else if (cityClick === 1){
+    fetchBarcelona()
+    fetchForecastBarcelona()
+    cityClick = 2;
+  }
+  else if (cityClick === 2){
+    fetchStockholm()
+    fetchForecastStockholm()
+    cityClick = 0;
+  }
+
+
+  
+  /* console.log(API_CITY) */
+})
+
+//TODO LIST ------
+/* 
+fix the button for a city loop between barca-sthlm  --- team ✅
+footer 
+add comments
+clean the console logs
+css cleaning for media queries or bg images?
+check html
+delete the branches 
+add picture for clear
+
+Fix hot/cold background for mobile/tablet.. or maybe just go 1 color
+Add 1 more city?          ---- team ✅
+More Main pictures
+the .GIF icon
+
+Icons for sunset & sunrise
+Animation on todays weather
+STYLING.
+Get the description to start with a capital letter?
+
+
+BONUS!
+Add more Data
+GeoLocation...... long shot!
+
+
+Show more citys in Desktop
+
+*/
