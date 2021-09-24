@@ -133,8 +133,14 @@ const getWeatherPrognose = () => {
         dailyContent.style.background =
           "linear-gradient(180deg, #f3c673 0%, #fbd994 100%)";
       }
+    })
+    .catch((data) => {
+      dailyContent.innerHTML = `
+        <div class="error-content-daily">
+          Sorry we cant fetch the API for the daily content for you at the moment, please try again
+          later!
+        </div>`;
     });
-
   // --------The api for weekly temperatures----------
   const weatherForecast5DaysCity = `https://api.openweathermap.org/data/2.5/forecast?q=${city},Sweden&units=metric&APPID=6f4589c9a1ed485fe713e8f5159a6ff9`;
 
@@ -244,6 +250,12 @@ const getWeatherPrognose = () => {
       <h4>${weekday.dayOfWeek}</h4><h4>${icon}</h4><h4>${weekday.tempMin}°   /   ${weekday.tempMax}°C</h4>     
       </div>`;
       });
+    })
+    .catch((data) => {
+      weeklyContent.innerHTML = `<div classname="error-content-weekly">
+      Sorry we cant fetch the API for the weekly content for you at the moment, please try again
+      later!
+    </div>`;
     });
 };
 
