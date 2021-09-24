@@ -1,13 +1,13 @@
-# Weather App
+# Weather App - Anna Dimitrakopoulos, Lovisa Carling, Madeleine Svensson, Sarah Mottram, Haru Ahn
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+It's a weather app, that fetches data from an API and displays todays weather as well as five forecasted days. You are also able to find your current location with the geolocation function or search for desired location.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We've used scetchboard to plan our features and design. We also used it to update each other on progress, and list desired ideas. 
+
+When a problem came up we used google, stackoverflow and Technigo's on-call-support to find the solution, e.g. we wanted to display our five days forecast in a grid but our forEach method stacked the grid items on top of each other in one grid item. We solved this by taking away our grid container and items and instead display them with innerHTML and flexbox.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://tiger-weather-app.netlify.app/
