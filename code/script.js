@@ -24,15 +24,15 @@ const sunset = document.getElementById("sunset");
 
 // Object with all emoji
 const emojiObject = {
-  Clouds: "/Designs/Design-1/assets/cloud.png",
+  Clouds: "./assets/cloud.png",
 
-  Wind: "/Designs/Design-1/assets/wind.png",
+  Wind: "./assets/wind.png",
 
-  Clear: "/Designs/Design-1/assets/sun.png",
+  Clear: "./assets/sun.png",
 
-  Rain: "/Designs/Design-1/assets/rain.png",
+  Rain: "./assets/rain.png",
 
-  Snow: "/Designs/Design-1/assets/snow.png",
+  Snow: "./assets/snow.png",
 };
 
 const staticImg = {
