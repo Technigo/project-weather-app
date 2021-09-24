@@ -52,7 +52,6 @@ body {
 }
 
 .button-cities {
-  background: url(/Designs/buttons_weatherapp/button_sunny.svg);
   background-repeat: no-repeat;
   border: none;
   width: 65px;
