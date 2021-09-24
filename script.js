@@ -33,8 +33,9 @@ fetch(API_URL)
 
     humidity.innerHTML = `
     <p>${json.main.humidity}% relative humidity</p>`;
-
-    const rise = new Date(json.sys.sunrise * 1000); // new Date() shows todays date. The json.sys.sunrise gets the time for the sunrise in ms x 1000 to get a whole second
+      // new Date() shows todays date. The json.sys.sunrise gets the time for the 
+      // sunrise in ms x 1000 to get a whole second
+    const rise = new Date(json.sys.sunrise * 1000);
     const up = rise.toLocaleTimeString([], {
       // returns the date object as a string, using local (timezone) conventions
       hour: '2-digit', // show the time as 00:00 hour/minute
@@ -48,9 +49,7 @@ fetch(API_URL)
       minute: '2-digit',
     });
     sunTime.innerHTML += `<p>sunset ${down}</p>`;
-
-    // json.weather[0].main = 'Rain';
-
+    // Theme changes based on weather
     if (json.weather[0].main === 'Clear') {
       body.style.background = '#F7E9B9';
       body.style.color = '#2A5510';
@@ -61,8 +60,7 @@ fetch(API_URL)
       body.style.color = '#164A68';
       image.innerHTML = `<img src="./Designs/Design-2/icons/noun_Umbrella_2030530.svg"/>`;
       cityName.innerHTML += `Don’t forget your umbrella. It’s wet in ${json.name} today.`;
-      // td.style.borderBottom += '4px dotted #164A68'
-    } else {
+     } else {
       body.style.background = '#F4F7F8';
       body.style.color = '#F47775';
       image.innerHTML = `<img src="./Designs/Design-2/icons/noun_Cloud_1188486.svg"/>`;
@@ -78,14 +76,6 @@ fetch(API_FORECAST)
     const filteredForecast = json.list.filter((item) =>
       item.dt_txt.includes('12:00')
     );
-
-    // filteredForecast.forEach((_, index) => {
-    //   const tempOfTheDay = filteredForecast[index].main.temp.toFixed(0)
-    //   const descriptNow = filteredForecast[index].weather[0].description
-
-    //   forecast.innerHTML += `
-    //   <p>${tempOfTheDay}°C ${descriptNow}</p>`
-    // })
 
     document
       .querySelectorAll('.forecast-description')
@@ -104,9 +94,6 @@ fetch(API_FORECAST)
     });
 
     // display the name of the weekday for the next five days forecast
-
-    // set up an array with the names of each weekday.
-    // So weekday[0] = 'Sunday'; weekday[1] = 'Monday' and so on.
     const weekday = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 
     // local variable where we can store the names of the weekdays
@@ -120,13 +107,6 @@ fetch(API_FORECAST)
       // store the data that define which weekday it is in an array named 'weekdaysNamesArray'
       weekdaysNamesArray[index] = dateAndTime.getDay();
     });
-
-    // to transform the data into names and display it on the webpage
-    // weekdaysNamesArray.forEach((day) => {
-    //   displayWeekdays.innerHTML += `
-    //   ${weekday[day]}
-    //   `;
-    // });
 
     dayZero.innerHTML += `
     ${weekday[weekdaysNamesArray[0]]}
@@ -148,6 +128,7 @@ fetch(API_FORECAST)
     ${weekday[weekdaysNamesArray[4]]}
     `;
   });
+  
 fetch(API_ROME)
   .then((response) => {
     return response.json();
