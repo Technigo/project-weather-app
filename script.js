@@ -5,26 +5,23 @@
 // Styr färger enligt mallen kolla lektion -done
 // Förslag på Readme - done
 // Mediaquery -done
+// Ta bort alla console.log - done
+// Pull - done
+// sunrise/sunset tid - done
+// Bild för neutral weather - done
+// Kolla tabbar, indrag och kommentarer - done
 
-// Pull
-// sunrise/sunset tid 
-// Bild för neutral weather
-// Animation med @keyframe - frivilligt
-// Sökfält för stad i footer? - frivilligt
-// Kolla tabbar, indrag och kommentarer
-// Ta bort alla console.log
 // Lägg in netlify-länk (Anna?) i readme och lämna in.
 
 
 
 
-const API_URL =
-  'https://api.openweathermap.org/data/2.5/weather?q=Gothenburg,Sweden&units=metric&APPID=affe19113e10ebc0685623d229879d1f';
+const API_URL ='https://api.openweathermap.org/data/2.5/weather?q=Gothenburg,Sweden&units=metric&APPID=affe19113e10ebc0685623d229879d1f';
 
 // Here are other cities if you want to test the if conditional for the different icons and matching texts:
 // Dubai: 'https://api.openweathermap.org/data/2.5/weather?q=Dubai&units=metric&APPID=affe19113e10ebc0685623d229879d1f';
-// Tegucigalpa: 'https://api.openweathermap.org/data/2.5/weather?q=Tegucigalpa&units=metric&APPID=affe19113e10ebc0685623d229879d1f'
-
+//Tegucigalpa: 'https://api.openweathermap.org/data/2.5/weather?q=Tegucigalpa&units=metric&APPID=affe19113e10ebc0685623d229879d1f'
+// Sydney:'https://api.openweathermap.org/data/2.5/weather?q=Sydney&units=metric&APPID=affe19113e10ebc0685623d229879d1f';
 const API_URL_5DAY =
   'https://api.openweathermap.org/data/2.5/forecast?q=Gothenburg,Sweden&units=metric&APPID=affe19113e10ebc0685623d229879d1f';
 
@@ -47,8 +44,8 @@ fetch(API_URL)
     };
 
     // Fetch data for sunrise and sunset times
-    let sunriseTime = new Date(data.sys.sunrise);
-    let sunsetTime = new Date(data.sys.sunset);
+    let sunriseTime = new Date (data.sys.sunrise * 1000)
+    let sunsetTime = new Date(data.sys.sunset * 1000)
     // Convert sunrise and sunset times from milliseconds to hh:min:sec
     let formattedHourSunrise =
       addZero(sunriseTime.getHours()) +
@@ -70,7 +67,6 @@ fetch(API_URL)
     <h2>Sunset: ${formattedHourSunset}</h2>`;
     // Display basic location and weather info
 
-
     // If else statement with different weather icons and matching weather descriptions
     if (data.weather[0].main === 'Clear' && data.main.temp >= 20) {
       text.innerHTML += `<img src="./Designs/Design-2/icons/noun_Sunglasses_2055147.svg" alt="sunglasses icon">
@@ -86,12 +82,14 @@ fetch(API_URL)
       <h1>It looks rather cloudy in ${data.name} today</h1>`
       body.classList.add("cloudy")
     } else {
-      text.innerHTML += ` 
+      text.innerHTML += `<img src="./Designs/Design-2/icons/cloudy-cloud-svgrepo-com.svg" alt="cloud and sun icon" width="20%">
       <h1>Neutral weather in ${data.name} today.</h1>`
+      body.classList.add("neutral")
+    
     }
   })
 
-  .catch((error) => console.error(error));
+  .catch((data) => text.innerHTML += `<h1>Sorry, API not working right now. Please wait a few minutes and try again!</h1>`);
 
 //Function for turning a date to a string short weekday
 const getWeekDay = (data) => {
@@ -106,12 +104,9 @@ const getWeekDay = (data) => {
 fetch(API_URL_5DAY)
   .then((response) => response.json())
   .then((data) => {
-    console.log('DATA!', data); //REMOVE
     const filteredForecast = data.list.filter((item) =>
       item.dt_txt.includes('12:00')
     );
-    console.log('FILTERED FORECAST!', filteredForecast); //REMOVE
-
     forecastContainer.innerHTML += `
       <div class="days">${getWeekDay(filteredForecast[0].dt)}</div>
       <div class="temp">${filteredForecast[0].main.temp.toFixed(0)}°</div>

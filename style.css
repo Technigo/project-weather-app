@@ -20,6 +20,11 @@ body {
     color: #2A5510;
 }
 
+.neutral {
+    background: #D4ECDD;
+    color: #345B63;
+}
+
 .weather-container {
     margin: 30px;
     display:flex;
@@ -43,7 +48,6 @@ body {
     grid-template-columns: 1fr 1fr;
 }
 
-
 .days {
     grid-column: span 1;
     font-size: 1.2em;
@@ -59,8 +63,6 @@ body {
     grid-column: span 2;
     border-bottom: 2px dotted;
     margin: 10px 0; 
-    /* display: grid;
-    grid-template-rows: 1fr 1fr; */
 }
 
 h1, h2 {
@@ -72,7 +74,6 @@ h1 {
     margin: 20px auto;
     font-weight: bold;
     text-align: left;
-
 }
 
 h2 {
@@ -87,9 +88,6 @@ p {
     font-weight: bold;
     line-height: 1.5;
 }
-
-
-
 
 /* ---- Tablet ----*/ 
 @media (min-width: 768px) {
@@ -117,6 +115,7 @@ h1 {
     display: block;
 }
 }
+
 /* ---- Small laptop ----*/ 
 @media (min-width: 992px) {
 
@@ -135,6 +134,7 @@ h1 {
     float: left;
 }
 }
+
 /* ---- Big Laptop----*/ 
 @media (min-width: 1200px) {
     .weather-container {
