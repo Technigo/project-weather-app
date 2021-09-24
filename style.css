@@ -61,6 +61,10 @@ footer p {
   display: none;
 }
 
+.burger {
+  width: 15px;
+}
+
 @keyframes spin {
   0% {
     transform: translateX(-200%);
