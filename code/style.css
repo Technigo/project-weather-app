@@ -22,7 +22,6 @@ html {
 
 #backgroundImg {
   height: 97vh;
-  opacity: 0.7;
   background-repeat: no-repeat;
   position: relative;
   border-radius: 15px;
@@ -31,6 +30,7 @@ html {
   background-position: center;
   background-size: cover;
   letter-spacing: 1px;
+  z-index: 1;
 }
 
 .background-image {
@@ -48,35 +48,33 @@ html {
 }
 
 .clear {
-  background: url(./assets/sunny-weather.jpg);
+  background-image: url(./assets/sunny-weather.jpg);
 }
 
 .fog {
-  background: url(./assets/foggy-day.jpg);
+  background-image: url(./assets/foggy-day.jpg);
 }
 
 .snow {
-  background: url(./assets/snowy-day.jpg);
-}
-
-.drizzle {
-  background: url(./assets/rainy-day.png);
+  background-image: url(./assets/snow-animation.gif), url(./assets/snowy-day.jpg);
+  background-repeat: repeat;
 }
 
 .rain {
-  background: url(./assets/rainy-day.png);
+  background-image: url(./assets/rain-animation.gif), url(./assets/rainy-day.png);
+  background-repeat: repeat;
 }
 
 .clouds {
-  background: url(./assets/cloudy-day.jpg);
+  background-image: url(./assets/cloudy-day.jpg);
 }
 
 .atmosphere {
-  background: url(./assets/atmosphere-image.jpg);
+  background-image: url(./assets/atmosphere-image.jpg);
 }
 
 .partly-cloudy {
-  background: url(./assets/cloudy-day1.jpg);
+  background-image: url(./assets/cloudy-day1.jpg);
 }
 
 .today {
@@ -145,6 +143,16 @@ input::placeholder {
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: space-around;
+  animation: daydrop 1.5s ease-in;
+}
+
+@keyframes daydrop {
+  0% {
+    transform: translateY(-200px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 h3 {
@@ -153,6 +161,12 @@ h3 {
 
 img.today-weather {
   width: 35%;
+}
+
+.creators {
+  margin-top: 10px;
+  margin-bottom: 2px;
+  padding-top: 0px;
 }
 
 .sunrisepar, .sunsetpar, .windpar {
@@ -222,12 +236,15 @@ img.forecast-weather {
 
 footer {
   left: 0;
-  bottom: 0;
+  bottom: 10px;
   width: 100%;
   color: white;
   text-align: center;
   font-size: 12px;
   position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 /* Tablet view*/

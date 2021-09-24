@@ -103,8 +103,8 @@ function changeHeaderInnerHTML(data, timeOfSunrise, timeOfSunset, weatherIcon) {
         <img src=${weatherIcon.src} alt=${weatherIcon.alt} class= "today-weather"/>
         <h3>${data.weather.map((item) => item.description)}</h3>
         <h5 class="windpar">Windspeed: ${Math.round(data.wind.speed * 10) / 10} m/s</h5>
-        <p class="sunrisepar"><img src=${sunriseIcon.src} alt=${sunriseIcon.alt} class= "sunrise"/>Sunrise: ${timeOfSunrise}</p>
-        <p class="sunsetpar"><img src=${sunsetIcon.src} alt=${sunsetIcon.alt} class= "sunset"/>Sunset: ${timeOfSunset}</p>
+        <p class="sunrisepar"><img src=${sunriseIcon.src} alt=${sunriseIcon.alt} class= "sunrise"/> ${timeOfSunrise}</p>
+        <p class="sunsetpar"><img src=${sunsetIcon.src} alt=${sunsetIcon.alt} class= "sunset"/> ${timeOfSunset}</p>
     `;
 };
 
@@ -119,7 +119,9 @@ function setBackgroundWeather(data) {
     } else if (main.includes("Rain")) {
         return "rain";
     } else if (main.includes("Drizzle")) {
-        return "drizzle";
+        return "rain";
+    } else if (main.includes("Thunderstorm")) {
+        return "rain";
     } else if (main.includes("Snow")) {
         return "snow";
     } else if (main.includes("Fog") || (main.includes("Mist"))) {
@@ -181,6 +183,11 @@ cityBtn.addEventListener('click', () => {
     weatherContainer.innerHTML = ""
     let city = cityInput.value
     doFetch(getURLsByCityName(city))
+
+    //Renews cards' animation on city search.
+    weatherContainer.classList.remove("weather-container")
+    void weatherContainer.offsetWidth
+    weatherContainer.classList.add("weather-container")
 });
 
 //Get user geolocation on page load.
@@ -198,6 +205,9 @@ window.addEventListener('load', () => {
             FIVE_DAYS: `https://api.openweathermap.org/data/2.5/forecast?lat=${crd.latitude}&lon=${crd.longitude}&units=metric&appid=5000cd66a9090b2b62f53ce8a59ebd9e`
         }
         doFetch(longLatURLs)
+        weatherContainer.classList.remove("weather-container")
+        void weatherContainer.offsetWidth
+        weatherContainer.classList.add("weather-container")
     }
     function error(err) {
         console.warn(`ERROR(${err.code}): ${err.message}`);
