@@ -259,6 +259,20 @@ h3 {
   height: 17px;
 }
 
+/* ------------ Error Handling------------- */
+
+.error-content-daily {
+  padding: 10px;
+  background-color: rgba(114, 105, 255, 1);
+  color: white;
+  text-align: center;
+}
+
+.error-content-weekly {
+  padding: 10px;
+  text-align: center;
+}
+
 /* ------------ IPAD ADAPTIONS------------- */
 
 @media (min-width: 668px) and (max-width: 1024px) {
