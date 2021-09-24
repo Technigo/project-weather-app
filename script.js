@@ -49,7 +49,7 @@ fetch(API_URL)
     });
     sunTime.innerHTML += `<p>sunset ${down}</p>`;
 
-    json.weather[0].main = 'Rain';
+    // json.weather[0].main = 'Rain';
 
     if (json.weather[0].main === 'Clear') {
       body.style.background = '#F7E9B9';
