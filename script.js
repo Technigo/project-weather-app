@@ -177,7 +177,7 @@ cityButton.addEventListener('click', () => {
 
 //TODO LIST ------
 /* 
-fix the button for a city loop between barca-sthlm  --- team ✅
+fix the button for a city loop between barca-sthlm  --- tea ✅
 footer 
 add comments
 clean the console logs
@@ -188,7 +188,7 @@ add picture for clear
 
 Fix hot/cold background for mobile/tablet.. or maybe just go 1 color
 Add 1 more city?          ---- team ✅
-More Main pictures
+More Main pictures  ----clear/clouds/drizzle/rain/snow/thunderstorm/ xx night/partly-cloudly(=not weather)xx (openweathermap.org/weather-conditions)
 the .GIF icon
 
 Icons for sunset & sunrise
