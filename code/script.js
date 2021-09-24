@@ -49,6 +49,7 @@ const sunsetIcon = createWeatherImg("./assets/sunset-icon.png", "sunset");
 
 //Creates a weather icon based on the forecasted weather.
 function chooseWeatherIcon(day) {
+
   let main = day.weather[0].main;
   if (
     day.weather[0].description === "broken clouds" ||
@@ -73,7 +74,7 @@ function chooseWeatherIcon(day) {
   } else {
     return atmosphereIcon;
   }
-}
+};
 
 //Creates forecast for each day.
 function createFiveDayForecast(filteredForecast) {

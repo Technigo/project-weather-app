@@ -143,7 +143,7 @@ input::placeholder {
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: space-around;
-  animation: daydrop 1.5s ease-in;
+  animation: daydrop 1s ease-in;
 }
 
 @keyframes daydrop {
@@ -161,12 +161,6 @@ h3 {
 
 img.today-weather {
   width: 35%;
-}
-
-.creators {
-  margin-top: 10px;
-  margin-bottom: 2px;
-  padding-top: 0px;
 }
 
 .sunrisepar, .sunsetpar, .windpar {
@@ -236,7 +230,7 @@ img.forecast-weather {
 
 footer {
   left: 0;
-  bottom: 10px;
+  bottom: 0;
   width: 100%;
   color: white;
   text-align: center;
@@ -245,6 +239,11 @@ footer {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  margin-bottom: 2px;
+}
+
+.creators1 {
+  margin-top: -10px;
 }
 
 /* Tablet view*/
@@ -303,6 +302,9 @@ footer {
     position: fixed;
     font-size: 14px;
   }
+  .creators1 {
+    margin-top: -10px;
+  }
 }
 
 /* Desktop view*/
@@ -357,5 +359,8 @@ footer {
   footer {
     position: fixed;
     font-size: 15px;
+  }
+  .creators1 {
+    margin-top: -10px;
   }
 }
