@@ -9,7 +9,7 @@
 body {
     font-family:'Roboto';
     background: url('./img/background-img.jpeg');
-    background-position: center;
+    background-size: cover;
     background-repeat: no-repeat;
     color: rgb(29, 29, 29);
 }
@@ -71,6 +71,7 @@ body {
 .forecast-data {
     display: flex;
     flex-direction: column;
+    border-radius: 25px;
     margin: 10px 0;
     padding: 10px;
     align-items: center;
@@ -94,16 +95,16 @@ body {
     font-weight: bold;
     display: block;
     font-size: 40px;
-    color: white;
+    color: rgb(29, 29, 29);
 }
 
 .other-cities {
     display: flex;
     flex-direction: column;
-    margin: 10px 0;
+    border-radius: 25px;
     padding: 10px;
     align-items: center;
-    background-color: rgba(207, 207, 207, 0.404);
+    justify-content: space-between;
     width: 100%;
 }
 
@@ -120,11 +121,29 @@ body {
     font-size: 28px;
 }
 
+
 .other-cities-box {
     display: flex;
     flex-direction: column;
+    border-radius: 25px;
     align-items: center;
+    padding: 10px;
+    width: 100%;
+    margin: 10px 0;
+    background-color: rgba(207, 207, 207, 0.404);
 }
+
+/* FOOTER STYLING */ 
+
+/* .footer {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(207, 207, 207, 0.404);
+    color: white;
+    text-align: center;
+} */
 
 
 
@@ -151,6 +170,14 @@ body {
 
     #city {
         font-size: 50px;
+    }
+
+    .other-cities {
+        flex-direction: column;
+        align-items: center;
+    }
+    .other-cities {
+        width: 60%;
     }
 
 }
@@ -182,6 +209,16 @@ body {
 
     .top {
         width: 600px;
+    }
+
+    .other-cities {
+        flex-direction: row;
+        width: 80%;
+    }
+
+    .other-cities-box {
+        margin: 10px;
+        width: 400px;
     }
 
 

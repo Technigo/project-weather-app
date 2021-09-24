@@ -75,19 +75,20 @@ fetch(API_LINK_FORECAST)
 // Fetch for Vostok
 const otherCitiesContainer = document.getElementById('other-cities-container')
 
-const API_LINK_VOSTOK = 'https://api.openweathermap.org/data/2.5/weather?q=Vostok&units=metric&APPID=147b874875d53e0e9f84cbacd0567b99'
-    fetch(API_LINK_VOSTOK)
+const API_LINK_QAANAAQ = 'https://api.openweathermap.org/data/2.5/weather?q=Qaanaaq&units=metric&APPID=147b874875d53e0e9f84cbacd0567b99'
+    fetch(API_LINK_QAANAAQ)
     .then((response) => {
         return response.json()
     })
     .then((json) => {
+        console.log(json)
         otherCitiesContainer.innerHTML = `
-        <div class="other-cities-box">
+       
             <p class="other-city">${json.name}</p>
             <p class="other-city-description">${json.weather[0].description}</p>
             <img class="other-city-img" width="150" src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="" />
             <p class="other-city-temp">${json.main.temp.toFixed(1)}°C</p>
-        </div>
+       
             `
 })
 
@@ -100,18 +101,36 @@ const API_LINK_LONDON = 'https://api.openweathermap.org/data/2.5/weather?q=Londo
     })
     .then((json) => {
         londonContainer.innerHTML = `
-        <div  class="other-cities-box">
-
+       
             <p class="other-city">${json.name}</p>
             <p class="other-city-description">${json.weather[0].description}</p>
             <img class="other-city-img" width="150" src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="" />
             <p class="other-city-temp">${json.main.temp.toFixed(1)}°C</p>
-        </div>
+       
+            `
+})
+
+// fetch for Willemstad
+const willemstadContainer = document.getElementById('willemstad-container')
+const API_LINK_WILLEMSTAD = 'https://api.openweathermap.org/data/2.5/weather?q=Willemstad&units=metric&APPID=147b874875d53e0e9f84cbacd0567b99'
+    fetch(API_LINK_WILLEMSTAD)
+    .then((response) => {
+        return response.json()
+    })
+    .then((json) => {
+        willemstadContainer.innerHTML = `
+       
+            <p class="other-city">${json.name}</p>
+            <p class="other-city-description">${json.weather[0].description}</p>
+            <img class="other-city-img" width="150" src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="" />
+            <p class="other-city-temp">${json.main.temp.toFixed(1)}°C</p>
+       
             `
 })
 
 
 
+// another way of using date object 
     // <p>${date.toLocaleDateString('en-US', {
     //     weekday: 'short'
     // })}</p>
