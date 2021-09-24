@@ -36,8 +36,7 @@
    background-size: cover;
    height: 25vh;
    border-radius: 0 0 20% 20%;
-   padding: 10px;
-   
+   padding: 10px 10px 30px 10px;   
  }
 
  .weather-container-div {
