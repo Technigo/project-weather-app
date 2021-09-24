@@ -65,29 +65,10 @@ const fetchSunriseSunset = () => {
   fetch(API_WEATHER)
     .then((response) => response.json())
     .then((data) => {
-<<<<<<< HEAD
-      console.log("Data from sunrise/sunset:", data);
       const sunriseDate = new Date((data.sys.sunrise + data.timezone + new Date().getTimezoneOffset() * 60) * 1000);
       const sunriseTime = sunriseDate.getHours() + ":" + sunriseDate.getMinutes();
 
       const sunsetDate = new Date((data.sys.sunset + data.timezone + new Date().getTimezoneOffset() * 60) * 1000);
-=======
-      const sunriseDate = new Date(
-        (data.sys.sunrise +
-          data.timezone +
-          new Date().getTimezoneOffset() * 60) *
-          1000
-      );
-      const sunriseTime =
-        sunriseDate.getHours() + ":" + sunriseDate.getMinutes();
-
-      const sunsetDate = new Date(
-        (data.sys.sunset +
-          data.timezone +
-          new Date().getTimezoneOffset() * 60) *
-          1000
-      );
->>>>>>> 5647b758802d869e68eb3bb3da2251467f34e9ff
       const sunsetTime = sunsetDate.getHours() + ":" + sunsetDate.getMinutes();
       sunrise.innerHTML += `
       <img class="sun-img"src="./assets/sunrise32.png"/> ${sunriseTime}
@@ -104,7 +85,6 @@ const fetchForecast = () => {
   fetch(API_FIVE_DAY_FORECAST)
     .then((response) => response.json())
     .then((data) => {
-<<<<<<< HEAD
       console.log("New Forecast JSON:", data);
 
       let filteredFiveDays = data.list.filter((item) => item.dt_txt.includes("09:00"));
@@ -112,11 +92,6 @@ const fetchForecast = () => {
       // let filteredFiveNights = data.list.filter((item) =>
       //   item.dt_txt.includes("21:00")
       // );
-=======
-      let filteredFiveDays = data.list.filter((item) =>
-        item.dt_txt.includes("09:00")
-      );
->>>>>>> 5647b758802d869e68eb3bb3da2251467f34e9ff
 
       filteredFiveDays.forEach((item) => {
         console.log(item.dt_txt);
