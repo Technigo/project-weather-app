@@ -1,6 +1,6 @@
 # Weather App
 
-This is a weather web app that shows today's weather and temperature in London, and a 5-day forecast for London using a weather API. This was alos a practise how to work in a dev team.
+This is a weather web app that shows today's weather and temperature in Paris, and a 5-day forecast for Paris using a weather API. This was also a practise how to work in a dev team and how to merge branches.
 
 ## The problem
 

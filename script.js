@@ -184,7 +184,7 @@ const bigWeatherIcons = (desc) => {
   
   if (desc === 'clear sky') {
     headerBackground.style.backgroundImage = "linear-gradient(#8b8fff,#e3e4ff)"
-    return './Designs/Design-1/assets/sun-icon.png'
+    return './Designs/Design-1/assets/sun_icon.png'
 
   } else if (desc === 'few clouds') {
     headerBackground.style.backgroundImage = "linear-gradient(#D2D5D8,#B5D7FA)"
