@@ -368,13 +368,13 @@ h3 {
 
   .weekly-content {
     padding-bottom: 35px;
+    padding-top: 10%;
   }
 }
 
 /* ------------------ Desktop content information ---------------- */
 @media (min-width: 1025px) {
   /* ---------------- Daily content information ---------------- */
-
   .headings {
     align-items: center;
     row-gap: 0px;
