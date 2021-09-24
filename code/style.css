@@ -1,67 +1,62 @@
-:root{
- 
-  --hot: linear-gradient( #ff402778,#fdd39c, #ffffff);
-  --hotnight: linear-gradient( #992617,#adc7f786, #ffffff);
+:root {
+  --hot: linear-gradient(#ff402778, #fdd39c, #ffffff);
+  --hotnight: linear-gradient(#992617, #adc7f786, #ffffff);
 
-  --moderate: linear-gradient( #ebb36b, #d4f17186, #ffffff);
-  --moderatenight: linear-gradient( #050c33, #b8cdf586, #ffffff);
+  --moderate: linear-gradient(#ebb36b, #d4f17186, #ffffff);
+  --moderatenight: linear-gradient(#050c33, #b8cdf586, #ffffff);
 
-  --cold: linear-gradient( #61b3ff,#e0f7a27a, #ffffff);
-  --coldnight: linear-gradient( #050c33,#dee5f386, #ffffff);
+  --cold: linear-gradient(#61b3ff, #e0f7a27a, #ffffff);
+  --coldnight: linear-gradient(#050c33, #dee5f386, #ffffff);
 
   --dayphone: #afdbcf;
   --nightphone: #41326b;
-  
-  --imgn: url("./Designs/Design-1/assets/night-time-tree.png"); 
-  --imgd: url("./Designs/Design-1/assets/night-day-tree.png"); 
 
+  --imgn: url("./Designs/Design-1/assets/night-time-tree.png");
+  --imgd: url("./Designs/Design-1/assets/night-day-tree.png");
+}
 
-  }
+body {
+  font-family: "Roboto", sans-serif;
 
-  body{
-    font-family: 'Roboto', sans-serif;
-   
-    margin: 0;
-  }
+  margin: 0;
+}
 
-  img{
-    width: 100%;
-    margin: 0;
-    z-index: -15;
-  }
+img {
+  width: 100%;
+  margin: 0;
+  z-index: -15;
+}
 
+.weather-today-container {
+  background-size: cover;
+  height: 25vh;
+  border-radius: 0 0 20% 20%;
+  padding: 10px 10px 30px 10px;
+}
 
- .weather-today-container {
-  
-   background-size: cover;
-   height: 25vh;
-   border-radius: 0 0 20% 20%;
-   padding: 10px 10px 30px 10px;   
- }
+.weather-container-div {
+  width: 90%;
+  margin: auto;
+}
 
- .weather-container-div {
-   width: 90%;
-   margin: auto;
- }
+.sunrise-sunset {
+  /* This is created in js and needed for showing the data for sunrise/sunset in one line */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
 
- .sunrise-sunset {                 /* This is created in js and needed for showing the data for sunrise/sunset in one line */
-   width: 100%;
-   display: flex;
-   justify-content: space-between;
- }
+#temp-now {
+  font-size: 45px;
+  margin-bottom: 0;
+}
 
+#city-now {
+  font-size: 20px;
+  margin: 0;
+}
 
- #temp-now {
-   font-size: 45px;
-   margin-bottom: 0;
- }
-
- #city-now {
-   font-size: 20px;
-   margin: 0;
- }
-
- #weather-now {
+#weather-now {
   margin-top: 0;
 }
 
@@ -69,13 +64,12 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   padding-left: 20px;
- }
-
+}
 
 .nav {
   background-color: transparent;
 }
-  
+
 .burger-menu {
   grid-column: span 12;
   padding: 5px;
@@ -108,7 +102,7 @@
 .burger-menu .menu {
   clear: both;
   max-height: 0;
-  transition: max-height .2s ease-out;
+  transition: max-height 0.2s ease-out;
 }
 
 .burger-menu .menu-icon {
@@ -124,17 +118,18 @@
   display: block;
   height: 2px;
   position: relative;
-  transition: background .2s ease-out;
+  transition: background 0.2s ease-out;
   width: 18px;
 }
 
-.burger-menu .menu-icon .navicon:before, .burger-menu .menu-icon .navicon:after {
+.burger-menu .menu-icon .navicon:before,
+.burger-menu .menu-icon .navicon:after {
   background: rgb(128, 127, 127);
-  content: '';
+  content: "";
   display: block;
   height: 100%;
   position: absolute;
-  transition: all .2s ease-out;
+  transition: all 0.2s ease-out;
   width: 100%;
 }
 
@@ -150,22 +145,88 @@
   display: none;
 }
 
-.burger-menu .menu-btn:checked~.menu {
+.burger-menu .menu-btn:checked ~ .menu {
   max-height: 300px;
 }
 
-.burger-menu .menu-btn:checked~.menu-icon .navicon {
+.burger-menu .menu-btn:checked ~ .menu-icon .navicon {
   background: transparent;
 }
 
-.burger-menu .menu-btn:checked~.menu-icon .navicon:before {
+.burger-menu .menu-btn:checked ~ .menu-icon .navicon:before {
   transform: rotate(-45deg);
 }
 
-.burger-menu .menu-btn:checked~.menu-icon .navicon:after {
+.burger-menu .menu-btn:checked ~ .menu-icon .navicon:after {
   transform: rotate(45deg);
 }
 
-.burger-menu .menu-btn:checked~.menu-icon:not(.steps) .navicon:before, .burger-menu .menu-btn:checked~.menu-icon:not(.steps) .navicon:after {
+.burger-menu .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.burger-menu .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
   top: 0;
+}
+
+@media (min-width: 768px) {
+  .weather-today-container {
+    height: 35vh;
+  }
+
+  #temp-now {
+    font-size: 60px;
+  }
+
+  #city-now {
+    font-size: 35px;
+  }
+
+  #weather-now {
+    font-size: 20px;
+  }
+
+  .weather-forecast-container {
+    padding: 0;
+  }
+
+  #smaller-text {
+    font-size: 20px;
+    text-align: center;
+  }
+}
+
+@media (min-width: 1200px) {
+  .weather-today-container {
+    height: 40vh;
+  }
+
+  #temp-now {
+    font-size: 75px;
+  }
+
+  #city-now {
+    font-size: 50px;
+  }
+
+  #weather-now {
+    font-size: 25px;
+  }
+
+  #smaller-text {
+    font-size: 25px;
+    text-align: center;
+    width: 20%;
+  }
+
+  #day-night-icon {
+    width: 20%;
+    object-fit: scale-down;
+    height: 100px;
+  }
+
+  .weather-forecast-container {
+    display: flex;
+    grid-template-columns: none;
+    flex-direction: column;
+    height: 375px;
+    flex-wrap: wrap;
+  }
 }
