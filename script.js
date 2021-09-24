@@ -21,20 +21,16 @@ const image = document.getElementById("imageButton");
 
 const getWeather = (data) => {
     const temperature = Math.round(data.main.temp * 10) / 10;
-     // Sunrise
+    // Sunrise
     const sunriseHours = new Date(data.sys.sunrise * 1000)
-        .getHours()
-        .toLocaleString();
+        .getHours();
     const sunriseMinutes = new Date(data.sys.sunrise * 1000)
-        .getMinutes()
-        .toLocaleString();
+        .getMinutes();
     // Sunset
     const sunsetHours = new Date(data.sys.sunset * 1000)
-        .getHours()
-        .toLocaleString();
+        .getHours();
     const sunsetMinutes = new Date(data.sys.sunset * 1000)
-        .getMinutes()
-        .toLocaleString();
+        .getMinutes();
 
     currentWeather.innerHTML += `<h3 class="current-statements">${data.weather[0].main} | ${temperature}°</h3>`;
     currentWeather.innerHTML += `<h3 class="current-statements">sunrise 0${sunriseHours}.${sunriseMinutes}</h3>`;
@@ -76,7 +72,7 @@ const getWeather = (data) => {
                 `;
             body.classList.add('unpredictable');
             buttonCity.style.background =
-            'url("/Designs/buttons_weatherapp/button_other.svg")';
+                'url("/Designs/buttons_weatherapp/button_other.svg")';
         }
     };
     changeRecomendation();
