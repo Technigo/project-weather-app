@@ -1,7 +1,7 @@
 const weatherData = document.getElementById("weatherdata");
 const weatherToday = document.getElementById("weather-today");
 const weatherForecast = document.getElementById("weather-forecast");
-const dropdownCities = document.getElementById("dropdown-cities");
+// const dropdownCities = document.getElementById("dropdown-cities");
 
 const API_URL =
   "https://api.openweathermap.org/data/2.5/weather?q=cityname&units=metric&APPID=5caaaf25021b2d7aa4d206126b6a3351";
