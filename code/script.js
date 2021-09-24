@@ -62,7 +62,7 @@ function chooseWeatherIcon(day) {
     } else if (main === "Snow") {
         return snowIcon;
     } else if (main === "Clear") {
-        return sunIcon
+        return sunIcon;
     } else {
         return atmosphereIcon;
     }
