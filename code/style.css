@@ -1,6 +1,12 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
 body {
   background-color: white;
   font-family: "Roboto", sans-serif;
+  height: 100vh;
 }
 
 main {
@@ -10,19 +16,11 @@ main {
 
 .wrapper-container {
   background-color: white;
-  height: 600px;
-  width: 300px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
+  height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-/* styles for desktop */
-@media (min-width: 768px) {
-  .wrapper-container {
-    margin-top: 50px;
-  }
 }
 
 .weather-container {
@@ -196,4 +194,11 @@ main {
 #week-day,
 #temperature {
   font-weight: 500;
+}
+
+/* styles for desktop */
+@media (min-width: 768px) {
+  /* .wrapper-container {
+    padding-top: 50px;
+  } */
 }

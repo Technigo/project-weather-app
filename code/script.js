@@ -12,15 +12,10 @@ const currentWeatherPictureContainer = document.getElementById(
 currentWeatherPictureContainer.className = "current-weather-picture-container";
 
 const cityName = document.getElementById("cityName");
-//cityName.className = "city-name";
 const currentTemperature = document.getElementById("currentTemperature");
-//currentTemperature.className = "current-temperature";
 const currentWeatherStatus = document.getElementById("currentWeatherStatus");
-//currentWeatherStatus.className = "current-weather-status";
 const sunrise = document.getElementById("sunrise");
-// sunrise.className = "sunrise";
 const sunset = document.getElementById("sunset");
-// sunset.className = "sunset";
 
 // Object with all emoji
 const emojiObject = {
@@ -48,7 +43,7 @@ const fetchWeather = () => {
     .then((data) => {
       const todaysTemp = data.main.temp_max.toFixed(0);
       currentTemperature.innerHTML = `${todaysTemp}`;
-      console.log(todaysTemp);
+
       cityName.innerHTML = `${data.name}`;
       currentWeatherStatus.innerHTML = `${data.weather[0].description}`;
 
@@ -113,10 +108,6 @@ const fetchForecast = () => {
       let filteredFiveDays = data.list.filter((item) =>
         item.dt_txt.includes("09:00")
       );
-      console.log(filteredFiveDays);
-      // let filteredFiveNights = data.list.filter((item) =>
-      //   item.dt_txt.includes("21:00")
-      // );
 
       filteredFiveDays.forEach((item) => {
         fiveDayForecastContainer.innerHTML += `
@@ -141,5 +132,3 @@ const fetchForecast = () => {
 };
 
 fetchForecast();
-
-// key: f9773f2491f9348664665c65e8d966c3
