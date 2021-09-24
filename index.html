@@ -10,44 +10,47 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/images/favicon-16x16.png"
+    />
     <title>Better weather</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body id="body">
     <div class="container">
-      <div class="description" id="description"></div>
-      <div class="humidity" id="humidity"></div>
-      <div class="suntimes" id="suntimes"></div>
+      <div id="description"></div>
+      <div id="humidity"></div>
+      <div id="suntimes"></div>
     </div>
     <div class="image" id="image"></div>
     <div class="name" id="name"></div>
 
     <table>
       <tr>
-        <td class="weekdays" id="dayZero"></td>
-        <td class="forecast-description"></td>
-        <td class="temperature"></td>
-      </tr>
-
-      <tr>
-        <td class="weekdays" id="dayOne"></td>
-        <td class="forecast-description"></td>
-        <td class="temperature"></td>
-      </tr>
-
-      <tr>
-        <td class="weekdays" id="dayTwo"></td>
+        <td id="dayZero"></td>
         <td class="forecast-description"></td>
         <td class="temperature"></td>
       </tr>
       <tr>
-        <td class="weekdays" id="dayThree"></td>
+        <td id="dayOne"></td>
         <td class="forecast-description"></td>
         <td class="temperature"></td>
       </tr>
       <tr>
-        <td class="weekdays" id="dayFour"></td>
+        <td id="dayTwo"></td>
+        <td class="forecast-description"></td>
+        <td class="temperature"></td>
+      </tr>
+      <tr>
+        <td id="dayThree"></td>
+        <td class="forecast-description"></td>
+        <td class="temperature"></td>
+      </tr>
+      <tr>
+        <td id="dayFour"></td>
         <td class="forecast-description"></td>
         <td class="temperature"></td>
       </tr>
@@ -61,7 +64,10 @@
     <footer>
       Technigo weather app project made by Aleksandra, Katie, Kriss, Patrik and
       Sofia
-      <p><img class="burger" src="BurgerLogo.png">Team Foxes 🦊</p>
+      <p>
+        <img class="burger" src="/images/BurgerLogo.png" alt="burger logo" />
+        Team Foxes 🦊
+      </p>
     </footer>
   </body>
   <script src="./script.js"></script>
