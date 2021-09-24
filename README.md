@@ -1,6 +1,6 @@
 # Weather App
 
-Through mob-programming (4 person group) this project was to build a simple weather web app that shows today's weather and temperature, and a 5-day forecast using a weather API. 
+Through mob-programming (4 person group) the project was to build a simple weather web app that shows today's weather and temperature, and a 5-day forecast using a weather API. 
 
 ## The problem
 
