@@ -72,7 +72,7 @@ fetch(API_LINK_FORECAST)
     })
 })
 
-// Fetch for Vostok
+// Fetch for Qaanaaq
 const otherCitiesContainer = document.getElementById('other-cities-container')
 
 const API_LINK_QAANAAQ = 'https://api.openweathermap.org/data/2.5/weather?q=Qaanaaq&units=metric&APPID=147b874875d53e0e9f84cbacd0567b99'

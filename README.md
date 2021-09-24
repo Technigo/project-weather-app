@@ -1,15 +1,15 @@
 # Weather App
-
-INSPIRATION: https://frosty-murdock-a67563.netlify.app/
-
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
-
+This weather app was made by Darya Lapata, Maria Thomasson, Karoline Mann, Aschwin Siaila and Christoffer Torninger.
+The project was to build a simple weather web app that shows today's weather and temperature, and a 5-day forecast using a weather API. For this project we worked as a developer team using branches. 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+- merging and git commands between branches
+- fetching and converting data into weekdays (ex: line 48 in Script.JS).
+- setting icons for all the different weather-types (ex: line 66 in Script.JS)
+- to figure out how to style using both classes and id's 
+
+These problems were solved by searching on Stackoverflow and Google, asking class mates and code coaches. And good team work.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Demo: https://weather-app-by-zebra.netlify.app/
