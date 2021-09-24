@@ -9,3 +9,4 @@ Before we started working on the project we decided it was more important for al
 The main obstacle was to understand how git branches and merges worked and all the different commandos that needed to be executed. We got plenty of help from google and Technigos Stack Overflow, where we also asked a specific question.  
 
 ## View it live
+https://cloudy-cloud.netlify.app/
