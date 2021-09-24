@@ -18,16 +18,10 @@ const getData = () => {
       now.setFullYear(2000, 1, 1);
 
       let sunrise = data.sys.sunrise;
-      sunrise = new Date(sunrise * 1000);
-      sunrise.setFullYear(2000, 1, 1);
+      sunrise = new Date((sunrise + data.timezone) * 1000);
 
       let sunset = data.sys.sunset;
-      sunset = new Date(sunset * 1000);
-      sunset.setFullYear(2000, 1, 1); //set time for specific day to compare hours and minutes
-
-      let isSunRise =
-        sunrise.getHours >= now.getUTCHours() &&
-        sunrise.getMinutes() >= now.getUTCMinutes();
+      sunset = new Date((data.sys.sunset + data.timezone) * 1000);
 
       weatherToday.innerHTML = /* html */ `
       <div class="weather-container-div">
@@ -48,101 +42,66 @@ const getData = () => {
       `; // toFixed(1) rounds the temp to one decimal
       // time
       temp = data.main.temp;
-      var mobil = window.matchMedia("(max-width: 700px)");
+      var mobil = window.matchMedia("(max-width: 769px)");
+
+      if (Date.now() + (data.timezone * 1000) > (data.sys.sunset * 1000)) {
+        document.body.classList.add('night');
+        document.body.classList.remove('day');
+
+      }
+      else {
+        document.body.classList.add('day');
+        document.body.classList.remove('night');
+      }
 
       if (mobil.matches) {
         const nav = document.getElementById("nav");
         const meny = document.getElementById("menu-btn");
         const ham = document.getElementsByClassName(".menu-icon");
 
-        // makes the fontcolor change depending on the background day or night
-        const drop = document.getElementById("drop");
-        const drop1 = document.getElementById("drop1");
-        const drop2 = document.getElementById("drop2");
-        const drop3 = document.getElementById("drop3");
-        const drop4 = document.getElementById("drop4");
-        const drop5 = document.getElementById("drop5");
-
-        // background & navbar changing color depending on day/night & temperature
         if (temp >= 25 && temp <= 65) {
           if (sunrise) {
             nav.style.background = "var(--dayphone)";
-            weatherToday.style.background = "var(--imgd)";
+            weatherToday.style.backgroundImage = "var(--imgd)";
+            weatherToday.style.backgroundSize = "cover";
             weatherToday.style.color = "black";
-            drop.style.color = "black";
-            drop1.style.color = "black";
-            drop2.style.color = "black";
-            drop3.style.color = "black";
-            drop4.style.color = "black";
-            drop5.style.color = "black";
 
-            meny.style.color = "black";
           } else {
             nav.style.background = "var(--nightphone)";
-            weatherToday.style.background = "var(--imgn)";
+            weatherToday.style.backgroundImage = "var(--imgn)";
+            weatherToday.style.backgroundSize = "cover";
             weatherToday.style.color = "white";
-            drop.style.color = "white";
-            drop1.style.color = "white";
-            drop2.style.color = "white";
-            drop3.style.color = "white";
-            drop4.style.color = "white";
-            drop5.style.color = "white";
-
-            meny.style.color = "white";
+        
           }
         }
         if (temp >= 0 && temp <= 24) {
-          if (sunset < now) {
+          if (Date.now() + (data.timezone * 1000) > (data.sys.sunset * 1000)) {
             nav.style.background = "var(--nightphone)";
-            weatherToday.style.background = "var(--imgn)";
+            weatherToday.style.backgroundImage = "var(--imgn)";
+            weatherToday.style.backgroundSize = "cover";
             weatherToday.style.color = "white";
-            drop.style.color = "white";
-            drop1.style.color = "white";
-            drop2.style.color = "white";
-            drop3.style.color = "white";
-            drop4.style.color = "white";
-            drop5.style.color = "white";
-
-            meny.style.color = "white";
+    
           } else {
             nav.style.background = "var(--dayphone)";
-            weatherToday.style.background = "var(--imgd)";
+            weatherToday.style.backgroundImage = "var(--imgd)";
+            weatherToday.style.backgroundSize = "cover";
             weatherToday.style.color = "black";
-            drop.style.color = "black";
-            drop1.style.color = "black";
-            drop2.style.color = "black";
-            drop3.style.color = "black";
-            drop4.style.color = "black";
-            drop5.style.color = "black";
-
-            meny.style.color = "black";
+        
           }
         }
         if (temp >= -40 && temp <= -1) {
           if (sunrise) {
             nav.style.background = "var(--dayphone)";
-            weatherToday.style.background = "var(--imgd)";
+            weatherToday.style.backgroundImage = "var(--imgd)";
+            weatherToday.style.backgroundSize = "cover";
             weatherToday.style.color = "black";
-            drop.style.color = "black";
-            drop1.style.color = "black";
-            drop2.style.color = "black";
-            drop3.style.color = "black";
-            drop4.style.color = "black";
-            drop5.style.color = "black";
-
-            meny.style.color = "black";
+  
           } else {
             nav.style.background = "var(--nightphone)";
-            weatherToday.style.background = "var(--imgn)";
+            weatherToday.style.backgroundImage = "var(--imgn)";
+            weatherToday.style.backgroundSize = "cover";
             weatherToday.style.color = "white";
-            drop.style.color = "white";
-            drop1.style.color = "white";
-            drop2.style.color = "white";
-            drop3.style.color = "white";
-            drop4.style.color = "white";
-            drop5.style.color = "white";
 
-            meny.style.color = "white";
           }
         }
       } else {
@@ -190,9 +149,8 @@ const getData = () => {
         weatherForecast.innerHTML += `<p id="smaller-text">${dayName}</p>
         <p id="smaller-text">🌡️${weekTemp}°C</p>
         <p id="smaller-text">Feels like ${day.main.feels_like.toFixed(1)}°C</p>
-        <img id="day-night-icon" src="https://openweathermap.org/img/wn/${
-          day.weather[0].icon
-        }@2x.png"/>`;
+        <img id="day-night-icon" src="https://openweathermap.org/img/wn/${day.weather[0].icon
+          }@2x.png"/>`;
       });
     });
 };
