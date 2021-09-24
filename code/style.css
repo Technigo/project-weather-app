@@ -14,6 +14,10 @@ html {
   font-family: "Comfortaa";
 }
 
+body {
+  height: 100vh;
+}
+
 .welcome-msg {
   line-height: 1.2em;
 }
@@ -22,7 +26,6 @@ html {
 
 #backgroundImg {
   height: 65vh;
-  min-height: 100%;
   opacity: 0.7;
   background-repeat: no-repeat;
   position: relative;
@@ -102,7 +105,7 @@ h2 {
   display: flex;
   justify-content: center;
   padding-top: 1vh;
-  height: 5vh;
+  min-height: 7vh;
 }
 
 input::placeholder {
@@ -234,6 +237,9 @@ footer {
 /* Tablet view*/
 
 @media (min-width: 668px) and (max-width: 1024px) {
+  body {
+    height: unset;
+  }
   #backgroundImg {
     background-size: cover;
     height: 65vh;
@@ -247,6 +253,7 @@ footer {
   .city-choice-container {
     justify-content: flex-start;
     margin-left: 1vh;
+    min-height: 5vh;
   }
   .weather-container {
     flex-direction: row;
