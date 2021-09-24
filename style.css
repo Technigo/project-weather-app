@@ -32,6 +32,7 @@ body {
 
 .city img {
   padding-bottom: 20px;
+  max-width: 90px;
 }
 
 .city h1 {
@@ -54,9 +55,31 @@ body {
 .button-cities {
   background-repeat: no-repeat;
   border: none;
-  width: 65px;
-  height: 65px;
+  width: 45px;
+  height: 45px;
   margin-top: 30px;
+}
+
+/* Color themes for different kinds of weather */
+
+.sunny {
+  color: #2a5510;
+  background-color: #f7e9b9;
+}
+
+.rainy {
+  color: #164A68;
+  background-color: #A3DEF7;
+}
+
+.cloudy {
+  color: #F47775;
+  background-color: #F4F7F8;
+}
+
+.unpredictable {
+  color: #862C4D;
+  background-color: #BFE2E0;
 }
 
 @media (min-width: 768px) {
