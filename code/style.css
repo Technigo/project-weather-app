@@ -160,7 +160,7 @@ h3 {
 }
 
 img.today-weather {
-  width: 35%;
+  width: 70px;
 }
 
 .sunrisepar, .sunsetpar, .windpar {
@@ -175,11 +175,11 @@ img.today-weather {
 }
 
 .sunrise {
-  max-width: 32%;
+  max-width: 60px;
 }
 
 .sunset {
-  max-width: 25%;
+  max-width: 50px;
 }
 
 .wind-icon {
@@ -269,9 +269,6 @@ footer {
   }
   img.today-weather {
     width: 35%;
-  }
-  .sunset {
-    max-width: 27%;
   }
   .forecast-day {
     margin-right: 0;
