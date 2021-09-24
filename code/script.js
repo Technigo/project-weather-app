@@ -36,8 +36,8 @@ const emojiObject = {
 };
 
 const staticImg = {
-  day: "/Designs/Design-1/assets/sunglasses.png",
-  cold: "/Designs/Design-1/assets/mitten.png",
+  day: "./assets/sunglasses.png",
+  cold: "./assets/mitten.png",
 };
 
 const fetchWeather = () => {
@@ -94,10 +94,10 @@ const fetchSunriseSunset = () => {
       );
       const sunsetTime = sunsetDate.getHours() + ":" + sunsetDate.getMinutes();
       sunrise.innerHTML += `
-      <img class="sun-img"src="/Designs/Design-1/assets/sunrise32.png"/> ${sunriseTime}
+      <img class="sun-img"src="./assets/sunrise32.png"/> ${sunriseTime}
       `;
       sunset.innerHTML += `
-      <img class="sun-img"src="/Designs/Design-1/assets/sunset32.png"/> ${sunsetTime}
+      <img class="sun-img"src="./assets/sunset32.png"/> ${sunsetTime}
       `;
     });
 };
