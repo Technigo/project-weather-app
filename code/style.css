@@ -1,58 +1,60 @@
-/* * {
-    box-sizing: border-box; 
-}    */
 body {
-    /* background-color:#A3DEF7;  */
-    font-family: 'Montserrat', sans-serif;
-    /* color: #164A68; */
+ font-family: "Montserrat", sans-serif;
 }
-.weather-container{
-    display: flex;
-    flex-direction: column;
-    width: auto;
-    
-}
-
-.top-box { 
-    display: flex;
-    padding: 20px; 
-    border: 5px solid rgb(116, 110, 110);
-    flex-direction: column;
  
-   
+.weather-container {
+ display: flex;
+ flex-direction: column;
+ width: auto;
 }
-.middle-box { 
-    display: flex;
-    text-align: left;
-    padding: 20px; 
-    border: 5px solid rgb(116, 110, 110);
-    flex-direction: column;
+ 
+.top-box {
+ display: flex;
+ padding: 20px;
+ border: 5px solid rgb(116, 110, 110);
+ flex-direction: column;
 }
-
-img { 
-    width: 73.5px;
-    height: 55.5px; 
+.middle-box {
+ display: flex;
+ text-align: left;
+ padding: 20px;
+ border: 5px solid rgb(116, 110, 110);
+ flex-direction: column;
 }
-
+ 
+/* img {
+ width: 50px;
+} */
+ 
 hr {
-border-top: 1px dotted #164A68;
-width: 100%;
+ border-top: 1px dotted #164a68;
+ width: 100%;
 }
-.bottom-box{ 
-    display: flex;
-    text-align: left;
-    padding: 20px; 
-    border: 5px solid rgb(116, 110, 110);
-    flex-direction: column;
-    
+.bottom-box {
+ display: flex;
+ text-align: left;
+ padding: 20px;
+ border: 5px solid rgb(116, 110, 110);
+ flex-direction: column;
 }
 .day-style {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;    
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
 }
-    .top-style {
-    display: flex;
-    flex-direction: row;
-    
+.top-style {
+ display: flex;
+ flex-direction: row;
+}
+.clouds {
+ background-color: #f4f7f8;
+ color: #f47775;
+}
+.rain {
+ background-color: #a3def7;
+ color: #164a68;
+}
+.clear {
+ background-color: #f7e9b9;
+ color: #2a5510;
 }
