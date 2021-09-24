@@ -27,7 +27,11 @@ main {
 
 .weather-container {
   background: rgb(251, 166, 38);
-  background: linear-gradient(21deg, rgba(251, 166, 38, 1) 0%, rgba(255, 245, 130, 1) 100%);
+  background: linear-gradient(
+    21deg,
+    rgba(251, 166, 38, 1) 0%,
+    rgba(255, 245, 130, 1) 100%
+  );
   border-bottom-right-radius: 250px 50px;
   border-bottom-left-radius: 250px 50px;
   overflow: hidden;
@@ -42,7 +46,12 @@ main {
 
 .cold {
   background: rgb(110, 248, 255);
-  background: linear-gradient(27deg, rgba(110, 248, 255, 1) 0%, rgba(90, 156, 255, 1) 58%, rgba(52, 78, 255, 1) 96%);
+  background: linear-gradient(
+    27deg,
+    rgba(110, 248, 255, 1) 0%,
+    rgba(90, 156, 255, 1) 58%,
+    rgba(52, 78, 255, 1) 96%
+  );
 }
 
 .weekday-container {
