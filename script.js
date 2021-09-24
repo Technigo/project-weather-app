@@ -73,5 +73,5 @@ fetch(WEATHER_API_URL)
     })
 
 
-
+    // https://openweathermap.org/weather-conditions
     // mains: Clouds, Clear, Snow, Rain, Drizzle, Thunderstorm
