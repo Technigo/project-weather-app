@@ -1,12 +1,12 @@
 # Weather App
+The project was to build a simple weather web app that shows today's weather and temperature, and a 5-day forecast using a weather API. We also needed to work in git branches.
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Project group: Hedvig Mejstedt, Anna Thunberg, Ida Aspen, Isabel Gonzalez, Maria Petersson
 
 ## The problem
+Before we started working on the project we decided it was more important for all of us to exercise JS, before adding a lot of extra features and design. Because of that both groups that we later split up into worked on one feature each. To be able to take on the design in the last step after the merge.
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The main obstacle was to understand how git branches and merges worked and all the different commandos that needed to be executed. We got plenty of help from google and Technigos Stack Overflow.  
 
 ## View it live
 
