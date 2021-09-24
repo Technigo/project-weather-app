@@ -51,12 +51,12 @@ const fetchWeather = () => {
         case true:
           todaysWeather.classList.toggle("cold");
           currentWeatherPictureContainer.innerHTML = `
-          <img class="currentWeatherImg" src="${staticImg.cold}"/>
+          <img class="current-weather-img" src="${staticImg.cold}"/>
           `;
           break;
         case false:
           currentWeatherPictureContainer.innerHTML = `
-          <img class="currentWeatherImg" src="${staticImg.day}"/>
+          <img class="current-weather-img" src="${staticImg.day}"/>
           `;
         default:
           console.log("problem");
@@ -71,7 +71,6 @@ const fetchSunriseSunset = () => {
   fetch(API_WEATHER)
     .then((response) => response.json())
     .then((data) => {
-      console.log("Data from sunrise/sunset:", data);
       const sunriseDate = new Date(
         (data.sys.sunrise +
           data.timezone +
@@ -103,8 +102,6 @@ const fetchForecast = () => {
   fetch(API_FIVE_DAY_FORECAST)
     .then((response) => response.json())
     .then((data) => {
-      console.log("New Forecast JSON:", data);
-
       let filteredFiveDays = data.list.filter((item) =>
         item.dt_txt.includes("09:00")
       );
