@@ -82,14 +82,14 @@ fetch(API_URL)
       <h1>It looks rather cloudy in ${data.name} today</h1>`
       body.classList.add("cloudy")
     } else {
-      text.innerHTML += `<img src="./Designs/Design-2/icons/cloudy-cloud-svgrepo-com.svg" alt="cloud and sun icon" width="20%">
+      text.innerHTML += `<img src="./Designs/Design-2/icons/cloudy-cloud-svgrepo-com.svg" alt="cloudy cloud icon" width="20%">
       <h1>Neutral weather in ${data.name} today.</h1>`
       body.classList.add("neutral")
     
     }
   })
 
-  .catch((data) => text.innerHTML += `<h1>Sorry, API not working right now. Please wait a few minutes and try again!</h1>`);
+  .catch((error) => text.innerHTML += `<h1>Sorry, API not working right now. Please wait a few minutes and try again!</h1>`);
 
 //Function for turning a date to a string short weekday
 const getWeekDay = (data) => {
