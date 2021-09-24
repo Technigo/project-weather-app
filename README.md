@@ -1,6 +1,6 @@
 # Weather App
 
-Through mob-programming (4 person group) the project was to build a simple weather web app that shows today's weather and temperature, and a 5-day forecast using a weather API. 
+Through mob-programming (4 person group, @louise-becker, @svempolin, @camekman and @mamite100) the project was to build a simple weather web app that shows today's weather and temperature, and a 5-day forecast using a weather API. 
 
 ## The problem
 
@@ -14,4 +14,4 @@ If we had more time, or if we got to do the project again we would make a plan w
 
 ## View it live
 
-Please check out our weather app online here: XXXX.netlify.com
+Please check out our weather app online here: https://great-weather.netlify.app/
