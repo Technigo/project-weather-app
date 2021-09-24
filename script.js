@@ -2,6 +2,8 @@ const API_URL_STOCKHOLM =
   "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=7678391e67f390dcfc1cc2681209fd22";
 const API_URL_BERLIN =
   "https://api.openweathermap.org/data/2.5/weather?q=Berlin,Germany&units=metric&APPID=7678391e67f390dcfc1cc2681209fd22";
+const API_URL_COPENHAGEN =
+  "https://api.openweathermap.org/data/2.5/weather?q=Copenhagen,Germany&units=metric&APPID=7678391e67f390dcfc1cc2681209fd22";
 
 const API_URL_FORECAST_STOCKHOLM =
   "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=7678391e67f390dcfc1cc2681209fd22";
@@ -9,9 +11,8 @@ const API_URL_FORECAST_BERLIN =
   "https://api.openweathermap.org/data/2.5/forecast?q=Berlin,Germany&units=metric&APPID=7678391e67f390dcfc1cc2681209fd22";
 const API_URL_FORECAST_COPENHAGEN =
   "https://api.openweathermap.org/data/2.5/forecast?q=Copenhagen,Sweden&units=metric&APPID=7678391e67f390dcfc1cc2681209fd22";
-const API_URL_COPENHAGEN =
-  "https://api.openweathermap.org/data/2.5/weather?q=Copenhagen,Germany&units=metric&APPID=7678391e67f390dcfc1cc2681209fd22";
 
+const body = document.getElementById("body");
 const weatherContainer = document.getElementById("weather-container");
 const currentWeather = document.getElementById("currentWeatherSunrise");
 const cityName = document.getElementById("cityName");
@@ -50,43 +51,39 @@ const getWeather = (data) => {
 
   const changeRecomendation = () => {
     if (data.weather[0].main === "Clear") {
-      cityName.innerHTML += `
-              <img src="/Designs/Design-2/icons/noun_Sunglasses_2055147.svg" alt="Sunglasses icon">
-              <h1>Get your sunnies on.</h1>
-              <h1>${data.name} is looking rather great today.</h1>
-              `;
-      document.body.style.backgroundColor = "#f7e9b9";
-      document.body.style.color = "#2a5510";
+      cityName.innerHTML += /*html*/ `
+        <img src="/Designs/Design-2/icons/noun_Sunglasses_2055147.svg" alt="Sunglasses icon">
+        <h1>Get your sunnies on.</h1>
+        <h1>${data.name} is looking rather great today.</h1>
+        `;
+      body.classList.add('sunny');
       buttonCity.style.background =
         'url("/Designs/buttons_weatherapp/button_sunny.svg")';
     } else if (data.weather[0].main === "Rain") {
-      cityName.innerHTML += `
-              <img src="/Designs/Design-2/icons/noun_Umbrella_2030530.svg" alt="Rain icon"/>
-              <h1>Don't forget your umbrella. </h1>
-              <h1>It's wet in ${data.name} today.</h1>
-              `;
-      document.body.style.backgroundColor = "#A3DEF7";
-      document.body.style.color = "#164A68";
+      cityName.innerHTML += /*html*/ `
+        <img src="/Designs/Design-2/icons/noun_Umbrella_2030530.svg" alt="Rain icon"/>
+        <h1>Don't forget your umbrella. </h1>
+        <h1>It's wet in ${data.name} today.</h1>
+        `;
+      body.classList.add('rainy');
       buttonCity.style.background =
         'url("/Designs/buttons_weatherapp/button_rain.svg")';
     } else if (data.weather[0].main === "Clouds") {
-      cityName.innerHTML += `
-              <img src="/Designs/Design-2/icons/noun_Cloud_1188486.svg" alt="Clound icon"/>
-              <h1>Light a fire and get cosy. </h1>
-              <h1>${data.name} is looking grey today.</h1>
-              `;
-      document.body.style.backgroundColor = "#F4F7F8";
-      document.body.style.color = "#F47775";
+      cityName.innerHTML += /*html*/ `
+        <img src="/Designs/Design-2/icons/noun_Cloud_1188486.svg" alt="Clound icon"/>
+        <h1>Light a fire and get cosy. </h1>
+        <h1>${data.name} is looking grey today.</h1>
+        `;
+      body.classList.add('cloudy');
       buttonCity.style.background =
         'url("/Designs/buttons_weatherapp/button_clouds.svg")';
     } else {
-      cityName.innerHTML += `
-              <img src="/Designs/Design-2/icons/noun_Other_862C4D.svg" alt="Unpredictable weather icon"/>
-              <h1>Prepare for everything! </h1>
-              <h1>${data.name} is unpredictable today.</h1>
-              `;
-      document.body.style.backgroundColor = "#BFE2E0";
-      document.body.style.color = "#862C4D";
+      cityName.innerHTML += /*html*/ `
+        <img src="/Designs/Design-2/icons/noun_Other_862C4D.svg" alt="Unpredictable weather icon"/>
+        <h1>Prepare for everything! </h1>
+        <h1>${data.name} is unpredictable today.</h1>
+        `;
+      body.classList.add('unpredictable');
       buttonCity.style.background =
         'url("/Designs/buttons_weatherapp/button_other.svg")';
     }
