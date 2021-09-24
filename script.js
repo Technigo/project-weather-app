@@ -81,11 +81,14 @@ const getWeather = (data) => {
         'url("/Designs/buttons_weatherapp/button_clouds.svg")';
     } else {
       cityName.innerHTML += `
+              <img src="/Designs/Design-2/icons/noun_Other_862C4D.svg" alt="Unpredictable weather icon"/>
               <h1>Prepare for everything! </h1>
               <h1>${data.name} is unpredictable today.</h1>
               `;
       document.body.style.backgroundColor = "#BFE2E0";
       document.body.style.color = "#862C4D";
+      buttonCity.style.background =
+        'url("/Designs/buttons_weatherapp/button_other.svg")';
     }
   };
   changeRecomendation();
