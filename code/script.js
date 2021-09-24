@@ -187,7 +187,7 @@ cityBtn.addEventListener('click', () => {
 window.addEventListener('load', () => {
     let options = {
         enableHighAccuracy: true,
-        timeout: 5000,
+        timeout: 1000,
         maximumAge: 0
     };
 
