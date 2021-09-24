@@ -37,19 +37,19 @@ fetch(API_WEATHER)
       if (json.weather[0].main === "Clouds") {
         icon.src = "./assets/Clouds.svg";
         middleBox.innerHTML += ` 
-        <h1>Weather in ${json.name} is Cloudy, put on a movie and have a cosy day</h1> `;
+        <h1>Weather in ${json.name} is Cloudy, watch a movie and have a cosy day.</h1> `;
         document.body.style.backgroundColor = "#F4F7F8";
         document.body.style.color = "#F47775";
       } else if (json.weather[0].main === "Rain") {
         icon.src = ".assets/Umbrella.svg";
         middleBox.innerHTML += `
-        <h1>Weather in ${json.name} is Rainy, don't forget your umbrella and have a great day</h1> `;
+        <h1>Weather in ${json.name} is Rainy, don't forget your umbrella and have a great day.</h1> `;
         document.body.style.backgroundColor = "#A3DEF7";
         document.body.style.color = "#164A68";
       } else if (json.weather[0].main === "Clear") {
         icon.src = ".assets/Sunglasses.svg";
         middleBox.innerHTML += `
-        <h1>Weather in ${json.name} is Clear, put on your cool sunglasses and have a great day</h1>`;
+        <h1>Weather in ${json.name} is Clear, put on your cool sunglasses and have a great day.</h1>`;
         document.body.style.backgroundColor = "#F7E9B9";
         document.body.style.color = "#2A5510";
       } else

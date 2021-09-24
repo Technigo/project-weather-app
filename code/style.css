@@ -11,20 +11,20 @@ body {
 .top-box {
  display: flex;
  padding: 20px;
- border: 5px solid rgb(116, 110, 110);
+ /* border: 5px solid rgb(116, 110, 110); */
  flex-direction: column;
 }
 .middle-box {
  display: flex;
  text-align: left;
  padding: 20px;
- border: 5px solid rgb(116, 110, 110);
+ /* border: 5px solid rgb(116, 110, 110); */
  flex-direction: column;
 }
  
-/* img {
+img {
  width: 50px;
-} */
+}
  
 hr {
  border-top: 1px dotted #164a68;
@@ -34,7 +34,7 @@ hr {
  display: flex;
  text-align: left;
  padding: 20px;
- border: 5px solid rgb(116, 110, 110);
+ /* border: 5px solid rgb(116, 110, 110); */
  flex-direction: column;
 }
 .day-style {
@@ -57,4 +57,29 @@ hr {
 .clear {
  background-color: #f7e9b9;
  color: #2a5510;
+}
+h1{
+font-family: "Montserrat";
+font-size: 36px;
+font-weight: bold;
+font-style: bold;
+line-height: 44px;
+}
+
+@media (min-width: 668px) {
+    .weather-container {
+        padding: 50px;
+   }
+   h1 {
+   text-align: center ;
+}
+}
+
+@media (min-width: 1024px) {
+    .weather-container {
+        padding: 100px;
+   }
+   h1 {
+   text-align: center ;
+}
 }
