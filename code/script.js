@@ -8,32 +8,27 @@ const currentWeatherPictureContainer = document.getElementById("currentWeatherPi
 currentWeatherPictureContainer.className = "current-weather-picture-container";
 
 const cityName = document.getElementById("cityName");
-//cityName.className = "city-name";
 const currentTemperature = document.getElementById("currentTemperature");
-//currentTemperature.className = "current-temperature";
 const currentWeatherStatus = document.getElementById("currentWeatherStatus");
-//currentWeatherStatus.className = "current-weather-status";
 const sunrise = document.getElementById("sunrise");
-// sunrise.className = "sunrise";
 const sunset = document.getElementById("sunset");
-// sunset.className = "sunset";
 
 // Object with all emoji
 const emojiObject = {
-  Clouds: "/Designs/Design-1/assets/cloud.png",
+  Clouds: "./assets/cloud.png",
 
-  Wind: "/Designs/Design-1/assets/wind.png",
+  Wind: "./assets/wind.png",
 
-  Clear: "/Designs/Design-1/assets/sun.png",
+  Clear: "./assets/sun.png",
 
-  Rain: "/Designs/Design-1/assets/rain.png",
+  Rain: "./assets/rain.png",
 
-  Snow: "/Designs/Design-1/assets/snow.png",
+  Snow: "./assets/snow.png",
 };
 
 const staticImg = {
-  day: "/Designs/Design-1/assets/sunglasses.png",
-  cold: "/Designs/Design-1/assets/mitten.png",
+  day: "./assets/sunglasses.png",
+  cold: "./assets/mitten.png",
 };
 
 const fetchWeather = () => {
@@ -42,7 +37,7 @@ const fetchWeather = () => {
     .then((data) => {
       const todaysTemp = data.main.temp_max.toFixed(0);
       currentTemperature.innerHTML = `${todaysTemp}`;
-      console.log(todaysTemp);
+
       cityName.innerHTML = `${data.name}`;
       currentWeatherStatus.innerHTML = `${data.weather[0].description}`;
 
@@ -50,12 +45,12 @@ const fetchWeather = () => {
         case true:
           todaysWeather.classList.toggle("cold");
           currentWeatherPictureContainer.innerHTML = `
-          <img class="currentWeatherImg" src="${staticImg.cold}"/>
+          <img class="current-weather-img" src="${staticImg.cold}"/>
           `;
           break;
         case false:
           currentWeatherPictureContainer.innerHTML = `
-          <img class="currentWeatherImg" src="${staticImg.day}"/>
+          <img class="current-weather-img" src="${staticImg.day}"/>
           `;
         default:
           console.log("problem");
@@ -70,17 +65,35 @@ const fetchSunriseSunset = () => {
   fetch(API_WEATHER)
     .then((response) => response.json())
     .then((data) => {
+<<<<<<< HEAD
       console.log("Data from sunrise/sunset:", data);
       const sunriseDate = new Date((data.sys.sunrise + data.timezone + new Date().getTimezoneOffset() * 60) * 1000);
       const sunriseTime = sunriseDate.getHours() + ":" + sunriseDate.getMinutes();
 
       const sunsetDate = new Date((data.sys.sunset + data.timezone + new Date().getTimezoneOffset() * 60) * 1000);
+=======
+      const sunriseDate = new Date(
+        (data.sys.sunrise +
+          data.timezone +
+          new Date().getTimezoneOffset() * 60) *
+          1000
+      );
+      const sunriseTime =
+        sunriseDate.getHours() + ":" + sunriseDate.getMinutes();
+
+      const sunsetDate = new Date(
+        (data.sys.sunset +
+          data.timezone +
+          new Date().getTimezoneOffset() * 60) *
+          1000
+      );
+>>>>>>> 5647b758802d869e68eb3bb3da2251467f34e9ff
       const sunsetTime = sunsetDate.getHours() + ":" + sunsetDate.getMinutes();
       sunrise.innerHTML += `
-      <img class="sun-img"src="/Designs/Design-1/assets/sunrise32.png"/> ${sunriseTime}
+      <img class="sun-img"src="./assets/sunrise32.png"/> ${sunriseTime}
       `;
       sunset.innerHTML += `
-      <img class="sun-img"src="/Designs/Design-1/assets/sunset32.png"/> ${sunsetTime}
+      <img class="sun-img"src="./assets/sunset32.png"/> ${sunsetTime}
       `;
     });
 };
@@ -91,6 +104,7 @@ const fetchForecast = () => {
   fetch(API_FIVE_DAY_FORECAST)
     .then((response) => response.json())
     .then((data) => {
+<<<<<<< HEAD
       console.log("New Forecast JSON:", data);
 
       let filteredFiveDays = data.list.filter((item) => item.dt_txt.includes("09:00"));
@@ -98,6 +112,11 @@ const fetchForecast = () => {
       // let filteredFiveNights = data.list.filter((item) =>
       //   item.dt_txt.includes("21:00")
       // );
+=======
+      let filteredFiveDays = data.list.filter((item) =>
+        item.dt_txt.includes("09:00")
+      );
+>>>>>>> 5647b758802d869e68eb3bb3da2251467f34e9ff
 
       filteredFiveDays.forEach((item) => {
         console.log(item.dt_txt);
