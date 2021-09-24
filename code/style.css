@@ -8,16 +8,15 @@
   --cold: linear-gradient(#61b3ff, #e0f7a27a, #ffffff);
   --coldnight: linear-gradient(#050c33, #dee5f386, #ffffff);
 
-  --dayphone: #afdbcf;
-  --nightphone: #41326b;
+  --dayphone: #7dceeb;
+  --nightphone: #3e2e75;
 
   --imgn: url("./Designs/Design-1/assets/night-time-tree.png");
   --imgd: url("./Designs/Design-1/assets/night-day-tree.png");
 }
 
 body {
-  font-family: "Roboto", sans-serif;
-
+  font-family: 'Quicksand', sans-serif;
   margin: 0;
 }
 
@@ -30,7 +29,7 @@ img {
 .weather-today-container {
   background-size: cover;
   height: 25vh;
-  border-radius: 0 0 20% 20%;
+  border-radius: 0 0 15% 15%;
   padding: 10px 10px 30px 10px;
 }
 
