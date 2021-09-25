@@ -12,6 +12,7 @@ const getData = () => {
   fetch(API_URL.replace("cityname", currentCity))
     .then((response) => response.json())
     .then((data) => {
+      //users local timezone offset
       let usersTimeZoneOffset = new Date().getTimezoneOffset() * 60;
 
       //create variables for localtime, sunset and sunrise in current weather city
@@ -19,19 +20,6 @@ const getData = () => {
       let localTimeNow = new Date(Date.now() + (data.timezone * 1000) + (usersTimeZoneOffset * 1000));
       let localTimeSunrise = new Date((data.sys.sunrise * 1000) + (data.timezone * 1000) + (usersTimeZoneOffset * 1000));
       let localTimeSunset = new Date((data.sys.sunset * 1000) + (data.timezone * 1000) + (usersTimeZoneOffset * 1000));
-
-      console.log('localTime: ' + localTimeNow);
-      console.log('localTimeSunrise: ' + localTimeSunrise);
-      console.log('localTimeSunset: ' + localTimeSunset);
-
-      let now = new Date();
-      now.setFullYear(2000, 1, 1);
-
-      let sunrise = data.sys.sunrise * 1000;
-      sunrise = new Date(sunrise + data.timezone);
-
-      let sunset = data.sys.sunset * 1000;
-      sunset = new Date(data.sys.sunset + data.timezone);
 
       weatherToday.innerHTML = /* html */ `
       <div class="weather-container-div">
@@ -49,7 +37,8 @@ const getData = () => {
       </span>
           </div>
       </div>
-  `; // toFixed(1) rounds the temp to one decimal
+      `;
+      // toFixed(1) rounds the temp to one decimal
       // time
       temp = data.main.temp;
       var mobil = window.matchMedia("(max-width: 769px)");
@@ -65,8 +54,6 @@ const getData = () => {
 
       if (mobil.matches) {
         const nav = document.getElementById("nav");
-        const meny = document.getElementById("menu-btn");
-        const ham = document.getElementsByClassName(".menu-icon");
 
         if (localTimeNow > localTimeSunset) {
           nav.style.background = "var(--nightphone)";
