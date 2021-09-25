@@ -40,10 +40,12 @@ const getData = () => {
       `;
       // toFixed(1) rounds the temp to one decimal
       // time
+
+      let isNight = localTimeNow > localTimeSunset || localTimeNow < localTimeSunrise;
       temp = data.main.temp;
       var mobil = window.matchMedia("(max-width: 769px)");
 
-      if (localTimeNow > localTimeSunset) {
+      if (isNight) {
         document.body.classList.add('night');
         document.body.classList.remove('day');
       }
@@ -55,7 +57,7 @@ const getData = () => {
       if (mobil.matches) {
         const nav = document.getElementById("nav");
 
-        if (localTimeNow > localTimeSunset) {
+        if (isNight) {
           nav.style.background = "var(--nightphone)";
           weatherToday.style.backgroundImage = "var(--imgn)";
           weatherToday.style.backgroundSize = "cover";
@@ -68,7 +70,7 @@ const getData = () => {
         }
       } else {
         if (temp >= 25 && temp <= 65) {
-          if (localTimeNow > localTimeSunset) {
+          if (isNight) {
             weatherToday.style.background = "var(--hotnight)";
             weatherToday.style.color = "var(--textcolornight)";
           } else {
@@ -76,7 +78,7 @@ const getData = () => {
           }
         }
         if (temp >= 0 && temp <= 24) {
-          if (localTimeNow > localTimeSunset) {
+          if (isNight) {
             weatherToday.style.background = "var(--moderatenight)";
           } else {
             weatherToday.style.background = "var(--moderate)";
@@ -84,7 +86,7 @@ const getData = () => {
         }
 
         if (temp >= -40 && temp <= -1) {
-          if (localTimeNow > localTimeSunset) {
+          if (isNight) {
             weatherToday.style.background = "var(--coldnight)";
           } else {
             weatherToday.style.background = "var(--cold)";
