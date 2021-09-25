@@ -218,12 +218,20 @@ const bigWeatherIcons = (desc) => {
     headerBackground.style.backgroundImage = "linear-gradient(#ade8f4,#caf0f8)"
     return './Designs/Design-1/assets/snowflake.png'
 
+  } else if (desc === 'fog') {
+    headerBackground.style.backgroundImage = "linear-gradient(#87A1B6,#E1E7EB)"
+    return './Designs/Design-1/assets/fog.png'
+
+  } else if (desc === 'mist') {
+    headerBackground.style.backgroundImage = "linear-gradient(#87A1B6,#E1E7EB)"
+    return './Designs/Design-1/assets/mist.png'
+    
   } else {
     headerBackground.style.backgroundImage = "linear-gradient(#ade8f4,#caf0f8)"
     return './Designs/Design-1/assets/cloud.png'
   }
-}
 
+}
 
 const toTitleCase= (str)=> {
   return str.replace(
