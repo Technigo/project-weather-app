@@ -220,7 +220,7 @@ const bigWeatherIcons = (desc) => {
 
   } else {
     headerBackground.style.backgroundImage = "linear-gradient(#ade8f4,#caf0f8)"
-    return './Designs/Design-1/assets/NA.png'
+    return './Designs/Design-1/assets/cloud.png'
   }
 }
 
