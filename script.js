@@ -43,7 +43,8 @@ const getWeather = (data) => {
                 <h1>Get your sunnies on.</h1>
                 <h1>${data.name} is looking rather great today.</h1>
                 `;
-            body.classList.add('sunny');
+            document.body.style.backgroundColor = "#f7e9b9";
+            document.body.style.color = "#2a5510";
             buttonCity.style.background =
                 'url("/Designs/buttons_weatherapp/button_sunny.svg")';
         } else if (data.weather[0].main === "Rain") {
@@ -52,7 +53,8 @@ const getWeather = (data) => {
                 <h1>Don't forget your umbrella. </h1>
                 <h1>It's wet in ${data.name} today.</h1>
                 `;
-            body.classList.add('rainy');
+            document.body.style.backgroundColor = "#A3DEF7";
+            document.body.style.color = "#164A68";
             buttonCity.style.background =
                 'url("/Designs/buttons_weatherapp/button_rain.svg")';
         } else if (data.weather[0].main === "Clouds") {
@@ -61,7 +63,8 @@ const getWeather = (data) => {
                 <h1>Light a fire and get cosy. </h1>
                 <h1>${data.name} is looking grey today.</h1>
                 `;
-            body.classList.add('cloudy');
+            document.body.style.backgroundColor = "#F4F7F8";
+            document.body.style.color = "#F47775";
             buttonCity.style.background =
                 'url("/Designs/buttons_weatherapp/button_clouds.svg")';
         } else {
@@ -70,7 +73,8 @@ const getWeather = (data) => {
                 <h1>Prepare for everything! </h1>
                 <h1>${data.name} is unpredictable today.</h1>
                 `;
-            body.classList.add('unpredictable');
+            document.body.style.backgroundColor = "#BFE2E0";
+            document.body.style.color = "#862C4D";
             buttonCity.style.background =
                 'url("/Designs/buttons_weatherapp/button_other.svg")';
         }
