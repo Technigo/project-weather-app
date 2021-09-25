@@ -12,15 +12,26 @@ const getData = () => {
   fetch(API_URL.replace("cityname", currentCity))
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      let usersTimeZoneOffset = new Date().getTimezoneOffset() * 60;
+
+      //create variables for localtime, sunset and sunrise in current weather city
+      //with users timezineoffset to handle ex CET
+      let localTimeNow = new Date(Date.now() + (data.timezone * 1000) + (usersTimeZoneOffset * 1000));
+      let localTimeSunrise = new Date((data.sys.sunrise * 1000) + (data.timezone * 1000) + (usersTimeZoneOffset * 1000));
+      let localTimeSunset = new Date((data.sys.sunset * 1000) + (data.timezone * 1000) + (usersTimeZoneOffset * 1000));
+
+      console.log('localTime: ' + localTimeNow);
+      console.log('localTimeSunrise: ' + localTimeSunrise);
+      console.log('localTimeSunset: ' + localTimeSunset);
+
       let now = new Date();
       now.setFullYear(2000, 1, 1);
 
-      let sunrise = data.sys.sunrise;
-      sunrise = new Date((sunrise + data.timezone) * 1000);
+      let sunrise = data.sys.sunrise * 1000;
+      sunrise = new Date(sunrise + data.timezone);
 
-      let sunset = data.sys.sunset;
-      sunset = new Date((data.sys.sunset + data.timezone) * 1000);
+      let sunset = data.sys.sunset * 1000;
+      sunset = new Date(data.sys.sunset + data.timezone);
 
       weatherToday.innerHTML = /* html */ `
       <div class="weather-container-div">
@@ -29,24 +40,23 @@ const getData = () => {
       <p id="weather-now">${data.weather[0].description}</p>
       <div class="sunrise-sunset">
       <span id="smaller-text">sunrise</span>
-      <span id="smaller-text">${new Date(
-        (data.sys.sunrise + data.timezone) * 1000
-      ).toLocaleTimeString([], { timeStyle: "short" })}</span>
+      <span id="smaller-text">
+        ${localTimeSunrise.toLocaleTimeString([], { timeStyle: "short" })}
+      </span>
       <span id="smaller-text">sunset</span>
-      <span id="smaller-text">${new Date(
-        (data.sys.sunset + data.timezone) * 1000
-      ).toLocaleTimeString([], { timeStyle: "short" })}</span>
+      <span id="smaller-text">
+        ${localTimeSunset.toLocaleTimeString([], { timeStyle: "short" })}
+      </span>
           </div>
       </div>
-      `; // toFixed(1) rounds the temp to one decimal
+  `; // toFixed(1) rounds the temp to one decimal
       // time
       temp = data.main.temp;
       var mobil = window.matchMedia("(max-width: 769px)");
 
-      if (Date.now() + (data.timezone * 1000) > (data.sys.sunset * 1000)) {
+      if (localTimeNow > localTimeSunset) {
         document.body.classList.add('night');
         document.body.classList.remove('day');
-
       }
       else {
         document.body.classList.add('day');
@@ -58,62 +68,28 @@ const getData = () => {
         const meny = document.getElementById("menu-btn");
         const ham = document.getElementsByClassName(".menu-icon");
 
-        if (temp >= 25 && temp <= 65) {
-          if (sunrise) {
-            nav.style.background = "var(--dayphone)";
-            weatherToday.style.backgroundImage = "var(--imgd)";
-            weatherToday.style.backgroundSize = "cover";
-            weatherToday.style.color = "black";
-
-          } else {
-            nav.style.background = "var(--nightphone)";
-            weatherToday.style.backgroundImage = "var(--imgn)";
-            weatherToday.style.backgroundSize = "cover";
-            weatherToday.style.color = "white";
-        
-          }
-        }
-        if (temp >= 0 && temp <= 24) {
-          if (Date.now() + (data.timezone * 1000) > (data.sys.sunset * 1000)) {
-            nav.style.background = "var(--nightphone)";
-            weatherToday.style.backgroundImage = "var(--imgn)";
-            weatherToday.style.backgroundSize = "cover";
-            weatherToday.style.color = "white";
-    
-          } else {
-            nav.style.background = "var(--dayphone)";
-            weatherToday.style.backgroundImage = "var(--imgd)";
-            weatherToday.style.backgroundSize = "cover";
-            weatherToday.style.color = "black";
-        
-          }
-        }
-        if (temp >= -40 && temp <= -1) {
-          if (sunrise) {
-            nav.style.background = "var(--dayphone)";
-            weatherToday.style.backgroundImage = "var(--imgd)";
-            weatherToday.style.backgroundSize = "cover";
-            weatherToday.style.color = "black";
-  
-          } else {
-            nav.style.background = "var(--nightphone)";
-            weatherToday.style.backgroundImage = "var(--imgn)";
-            weatherToday.style.backgroundSize = "cover";
-            weatherToday.style.color = "white";
-
-          }
+        if (localTimeNow > localTimeSunset) {
+          nav.style.background = "var(--nightphone)";
+          weatherToday.style.backgroundImage = "var(--imgn)";
+          weatherToday.style.backgroundSize = "cover";
+          weatherToday.style.color = "white";
+        } else {
+          nav.style.background = "var(--dayphone)";
+          weatherToday.style.backgroundImage = "var(--imgd)";
+          weatherToday.style.backgroundSize = "cover";
+          weatherToday.style.color = "black";
         }
       } else {
         if (temp >= 25 && temp <= 65) {
-          if (sunrise) {
-            weatherToday.style.background = "var(--hot)";
-          } else {
+          if (localTimeNow > localTimeSunset) {
             weatherToday.style.background = "var(--hotnight)";
             weatherToday.style.color = "var(--textcolornight)";
+          } else {
+            weatherToday.style.background = "var(--hot)";
           }
         }
         if (temp >= 0 && temp <= 24) {
-          if (sunset < now) {
+          if (localTimeNow > localTimeSunset) {
             weatherToday.style.background = "var(--moderatenight)";
           } else {
             weatherToday.style.background = "var(--moderate)";
@@ -121,10 +97,10 @@ const getData = () => {
         }
 
         if (temp >= -40 && temp <= -1) {
-          if (sunrise) {
-            weatherToday.style.background = "var(--cold)";
-          } else {
+          if (localTimeNow > localTimeSunset) {
             weatherToday.style.background = "var(--coldnight)";
+          } else {
+            weatherToday.style.background = "var(--cold)";
           }
         }
       }
@@ -145,7 +121,7 @@ const getData = () => {
         const dayName = date.toLocaleDateString("en-US", { weekday: "long" });
         const weekTemp = day.main.temp.toFixed(0);
 
-        weatherForecast.innerHTML += `<p id="smaller-text">${dayName}</p>
+        weatherForecast.innerHTML += `<p id = "smaller-text" > ${dayName}</p>
         <p id="smaller-text">🌡️${weekTemp}°C</p>
         <p id="smaller-text">Feels like ${day.main.feels_like.toFixed(1)}°C</p>
         <img id="day-night-icon" src="https://openweathermap.org/img/wn/${day.weather[0].icon
@@ -158,10 +134,10 @@ const getData = () => {
 const handleWeatherApiResponse = (forecastForCity) => {
   console.log(forecastForCity);
   weatherToday.innerHTML = `
-  <p>City: ${forecastForCity.name}</p>
+  < p > City: ${forecastForCity.name}</p >
   <p>Temp: ${forecastForCity.main.temp.toFixed(1)}°C</p>
   <p>Weather: ${forecastForCity.weather[0].description}</p>
-  `;
+`;
 };
 
 //Activating the Hamburger Menu to select another city

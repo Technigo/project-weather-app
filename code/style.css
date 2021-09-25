@@ -1,16 +1,12 @@
 :root {
   --hot: linear-gradient(#ff402778, #fdd39c, #ffffff);
   --hotnight: linear-gradient(#992617, #adc7f786, #ffffff);
-
   --moderate: linear-gradient(#ebb36b, #d4f17186, #ffffff);
   --moderatenight: linear-gradient(#050c33, #b8cdf586, #ffffff);
-
   --cold: linear-gradient(#61b3ff, #e0f7a27a, #ffffff);
   --coldnight: linear-gradient(#050c33, #dee5f386, #ffffff);
-
   --dayphone: #7dceeb;
   --nightphone: #3b2c66;
-
   --imgn: url("./Designs/Design-1/assets/night-time-tree.png");
   --imgd: url("./Designs/Design-1/assets/day-time-tree.png");
 }
@@ -27,7 +23,6 @@ body.night .menu-item {
 body.day .menu-item {
   color: black;
 }
-
 
 img {
   width: 100%;
@@ -135,8 +130,7 @@ img {
   width: 18px;
 }
 
-.burger-menu .menu-icon .navicon:before,
-.burger-menu .menu-icon .navicon:after {
+.burger-menu .menu-icon .navicon:before, .burger-menu .menu-icon .navicon:after {
   background: rgb(128, 127, 127);
   content: "";
   display: block;
@@ -158,48 +152,48 @@ img {
   display: none;
 }
 
-.burger-menu .menu-btn:checked ~ .menu {
+.burger-menu .menu-btn:checked~.menu {
   max-height: 300px;
 }
 
-.burger-menu .menu-btn:checked ~ .menu-icon .navicon {
+.burger-menu .menu-btn:checked~.menu-icon .navicon {
   background: transparent;
 }
 
-.burger-menu .menu-btn:checked ~ .menu-icon .navicon:before {
+.burger-menu .menu-btn:checked~.menu-icon .navicon:before {
   transform: rotate(-45deg);
 }
 
-.burger-menu .menu-btn:checked ~ .menu-icon .navicon:after {
+.burger-menu .menu-btn:checked~.menu-icon .navicon:after {
   transform: rotate(45deg);
 }
 
-.burger-menu .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
-.burger-menu .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+.burger-menu .menu-btn:checked~.menu-icon:not(.steps) .navicon:before, .burger-menu .menu-btn:checked~.menu-icon:not(.steps) .navicon:after {
   top: 0;
 }
 
 @media (min-width: 768px) {
+  body.night .menu-item {
+    color: black;
+  }
+  body.day .menu-item {
+    color: black;
+  }
   .weather-today-container {
     height: 35vh;
   }
-
   #temp-now {
     font-size: 60px;
   }
-
   #city-now {
     font-size: 35px;
   }
-
   #weather-now {
     font-size: 20px;
   }
-
   .weather-forecast-container {
     padding: 0;
   }
-
   #smaller-text {
     font-size: 20px;
   }
@@ -209,31 +203,25 @@ img {
   .weather-today-container {
     height: 40vh;
   }
-
   #temp-now {
     font-size: 75px;
   }
-
   #city-now {
     font-size: 50px;
   }
-
   #weather-now {
     font-size: 25px;
   }
-
   #smaller-text {
     font-size: 25px;
     text-align: center;
     width: 20%;
   }
-
   #day-night-icon {
     width: 20%;
     object-fit: scale-down;
     height: 100px;
   }
-
   .weather-forecast-container {
     display: flex;
     grid-template-columns: none;
