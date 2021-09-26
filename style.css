@@ -95,6 +95,7 @@ tbody:last-child tr {
 .city {
     padding-top: 1.4em;
     padding-bottom: 1.4em;
+    max-width: 350px;
 }
 
 label {
@@ -105,7 +106,7 @@ label {
 }
 
 .city-input {
-    width: 100%;
+    width: 98.3%;
     height: 40px;
     font: inherit;
     box-sizing: content-box;
