@@ -1,3 +1,4 @@
+// DOM selectors, API for Stockholm weather
 const API_WEATHER =
   "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=8bda651aba01a3b8831972e24ed1f675";
 const API_URL =
@@ -6,16 +7,16 @@ const weatherContainer = document.getElementById("weather-container");
 const topBox = document.getElementById("top-box");
 const middleBox = document.getElementById("middle-box");
 const bottomBox = document.getElementById("bottom-box");
-var style = document.createElement("style");
 const body = document.getElementById("body");
 const icon = document.getElementById("icon");
 
+// Fetching API for Stockholm weather
+// Function that displays todays weather + sunset/sunrise
 fetch(API_WEATHER)
   .then((response) => {
     return response.json();
   })
   .then((json) => {
-    console.log(json);
     json.weather.forEach((weather) => {
       topBox.innerHTML += `<div>
        ${weather.main} | ${json.main.temp.toFixed(1)}°
@@ -33,6 +34,7 @@ fetch(API_WEATHER)
     </div>`;
     });
 
+    // If/else statement that displays different designs depending on what weather it is.
     const change = () => {
       if (json.weather[0].main === "Clouds") {
         icon.src = "./assets/Clouds.svg";
@@ -59,6 +61,7 @@ fetch(API_WEATHER)
     change();
   });
 
+// Function that shows the day and temp for the five coming days
 fetch(API_URL)
   .then((response) => {
     return response.json();
@@ -81,4 +84,4 @@ fetch(API_URL)
     });
   });
 
-//.catch((error) => console.error ('ERROR!', error));
+//.catch((error) => console.error('ERROR!', error));

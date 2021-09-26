@@ -1,85 +1,79 @@
 body {
- font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
- 
+
 .weather-container {
- display: flex;
- flex-direction: column;
- width: auto;
+  display: flex;
+  flex-direction: column;
+  width: auto;
 }
- 
+
 .top-box {
- display: flex;
- padding: 20px;
- /* border: 5px solid rgb(116, 110, 110); */
- flex-direction: column;
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
 }
 .middle-box {
- display: flex;
- text-align: left;
- padding: 20px;
- /* border: 5px solid rgb(116, 110, 110); */
- flex-direction: column;
+  display: flex;
+  text-align: left;
+  padding: 20px;
+  flex-direction: column;
 }
- 
+
 img {
- width: 50px;
+  width: 50px;
 }
- 
+
 hr {
- border-top: 1px dotted #164a68;
- width: 100%;
+  border-top: 1px dotted;
+  width: 100%;
 }
 .bottom-box {
- display: flex;
- text-align: left;
- padding: 20px;
- /* border: 5px solid rgb(116, 110, 110); */
- flex-direction: column;
+  display: flex;
+  text-align: left;
+  padding: 20px;
+  flex-direction: column;
 }
 .day-style {
- display: flex;
- flex-direction: row;
- justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .top-style {
- display: flex;
- flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 .clouds {
- background-color: #f4f7f8;
- color: #f47775;
+  background-color: #f4f7f8;
+  color: #f47775;
 }
 .rain {
- background-color: #a3def7;
- color: #164a68;
+  background-color: #a3def7;
+  color: #164a68;
 }
 .clear {
- background-color: #f7e9b9;
- color: #2a5510;
+  background-color: #f7e9b9;
+  color: #2a5510;
 }
-h1{
-font-family: "Montserrat";
-font-size: 36px;
-font-weight: bold;
-font-style: bold;
-line-height: 44px;
+h1 {
+  font-size: 36px;
+  font-weight: bold;
 }
 
 @media (min-width: 668px) {
-    .weather-container {
-        padding: 50px;
-   }
-   h1 {
-   text-align: center;
-}
+  .weather-container {
+    padding: 50px;
+  }
+  h1 {
+    text-align: center;
+  }
 }
 
 @media (min-width: 1024px) {
-    .weather-container {
-        padding: 100px;
-   }
-   h1 {
-   text-align: center ;
-}
+  .weather-container {
+    padding: 100px;
+  }
+  h1 {
+    text-align: center;
+  }
 }
