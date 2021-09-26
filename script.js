@@ -25,32 +25,23 @@ fetch(WEATHER_API_URL)
         `        
     })
 
-    fetch(FORECAST_API_URL)
-        .then(res => res.json())
-        .then(forecastData => {
-            console.log('FORECASTDATA', forecastData);
-            forecastContainer.innerHTML += /*html*/`
-            <p>Tomorrow | ${Math.round(forecastData.list[6].main.temp_max * 10)/10}° / ${Math.round(forecastData.list[6].main.temp_min * 10)/10}°
-            </p>
-            <p>Day after tomorrow | ${Math.round(forecastData.list[14].main.temp_max * 10)/10}° / ${Math.round(forecastData.list[14].main.temp_min * 10)/10}°</p>
-            <p>Day 3 | ${Math.round(forecastData.list[22].main.temp_max * 10)/10}° / ${Math.round(forecastData.list[22].main.temp_min * 10)/10}°</p>
-            <p>Day 4 | ${Math.round(forecastData.list[30].main.temp_max * 10)/10}° / ${Math.round(forecastData.list[30].main.temp_min * 10)/10}°</p>
-            <P>Day 5 | ${Math.round(forecastData.list[38].main.temp_max * 10)/10}° / ${Math.round(forecastData.list[38].main.temp_min * 10)/10}°</p>
-            `
-        })
-
-       // let d = new Date();
-       //  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-       // let weekDay = days[d.getDay()];
-       // console.log(weekDay);
-
-
-    //let tomorrowTemp = Math.round((forecastData.list[6].main.temp_max * 10)/10);
-
-    document.getElementById("wrapper-forecast-temp-tomorrow").innerHTML = forecastData.list[14].main.temp_max  + "°C";
-    document.getElementById("wrapper-forecast-temp-dAT").innerHTML = temp + "°C";
-    document.getElementById("wrapper-forecast-temp-day-3").innerHTML = temp + "°C";
-    document.getElementById("wrapper-forecast-temp-day-4").innerHTML = temp + "°C";
-    document.getElementById("wrapper-forecast-temp-day-5").innerHTML = temp + "°C";
-    
-    
+    //Forecast data  
+      
+fetch(FORECAST_API_URL)
+.then(res => res.json())
+.then(forecastdata => {
+    console.log('FORECASTDATA!!!', forecastdata);
+    forecastContainer.innerHTML = `
+    `
+    const filteredForecast = forecastdata.list.filter(day => day.dt_txt.includes('12:00'))
+    // filteredForecast is now an array with only the data from 12:00 each day.
+    filteredForecast.forEach(day => {
+    const date = new Date(day.dt * 1000)
+    let dayName = date.toLocaleDateString("en-US", {weekday: "short"})
+    forecastContainer.innerHTML += `
+    <div>
+    <p>${dayName} ${Math.round(day.main.temp)} ºC</p>
+    </div>
+    `
+})
+})
