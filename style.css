@@ -77,9 +77,9 @@ tr {
     border-color: #164A68;
 }
 
-tr:last-child {
+tbody:last-child tr {
     border: none;
-  }
+}
 
 .weekday {
     text-align: left;

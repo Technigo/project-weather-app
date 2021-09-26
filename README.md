@@ -1,13 +1,17 @@
-# Weather App
+# Weather App Elephants Group 1
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This week's project was to build a weather web app that shows today's weather and temperature, and a 5-day forecast using a weather API. We worked in a dev team to create the app.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+This was our first time mob-programming a whole project in a larger group of 5. We learnt a lot about working in a team, creating branches, fixing conflicts and merging branches.
+
+At first we thought it would be a problem for us to find time together since everyone was on different schedules but very naturally we formed smaller teams who worked on separate branches together. We planned and made the set-up in the master branch together before we separated into smaller teams. 
+
+We didn’t stress the results and the whole team gathered on Sunday to merge the branches and work on conflicts together which the whole group found was a great learning experience.
+
+If we had more time we would try to share the process in the different branches more with each other just to go along with what the other groups were working with. But it was not a problem since we sat together on both friday and sunday and explained the code to each other. 
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://emeliecp-sofia-maria-maja-linnea-week6-weather-app.netlify.app/
