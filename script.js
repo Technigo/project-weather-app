@@ -134,5 +134,3 @@ inputCity.addEventListener('keyup', () => {
 
     // https://openweathermap.org/weather-conditions
     // mains: Clouds, Clear, Snow, Rain, Drizzle, Thunderstorm
-
-

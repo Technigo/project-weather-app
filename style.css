@@ -1,0 +1,136 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 1.3em;
+    max-width: 75vw;
+    margin: auto;
+    padding-top: 2em;
+}
+
+/* styling for different weathers */
+.sunny {
+    color: #2A5510;
+    background-color: #F7E9B9;
+}
+
+.rainy {
+    color: #164A68;
+    background-color: #A3DEF7;
+}
+
+.cloudy {
+    color: #F47775;
+    background-color: #F4F7F8;
+}
+
+/* styling of first section: "weather" */
+.weather p {
+    margin-top: 0.1em;
+    margin-bottom: 0;
+}
+
+.weather {
+    font-style: 700;
+    padding-bottom: 1.4em;
+}
+
+/* styling of second section: "message" */
+.message {
+    padding-top: 2em;
+    font-size: 1.5rem;
+}
+
+.message h1 {
+    margin-block-start: 0.2em;
+    margin-block-end: 0.2em;
+}
+
+/* styling of thrid section: "forecast" */
+.forecast {
+    padding-top: 1.4em;
+}
+
+table {
+    width: 100%;
+    border-spacing: 0;
+}
+
+tr {
+    display: flex;
+    row-gap: 1em;
+    padding-top: 3px;
+    padding-bottom: 6px;
+}
+
+.sunny tr {
+    border-bottom: 1px dotted;
+    border-color: #2A5510;
+}
+
+.cloudy tr {
+    border-bottom: 1px dotted;
+    border-color: #F47775;
+}
+
+.rainy tr {
+    border-bottom: 1px dotted;
+    border-color: #164A68;
+}
+
+tr:last-child {
+    border: none;
+  }
+
+.weekday {
+    text-align: left;
+    width: 50%;
+}
+
+.temperature {
+    text-align: right;
+    width: 50%;
+}
+
+/* styling for tablet and desktop */
+@media only screen and (min-width: 450px) {
+    table {
+        max-width: 250px;
+    }
+}
+@media only screen and (min-width: 1200px) {
+    body {
+        max-width: 768px;
+    }
+}
+
+
+/* 
+fonts:
+https://fonts.google.com/specimen/Montserrat
+
+Weights: bold and regular
+
+colors:
+#F47775 - font
+#F4F7F8 - background cloudy
+#164A68 - font
+#A3DEF7 - background rainy
+#2A5510 - font
+#F7E9B9 - background - sunny
+ */
+
+ /* code planning
+ 1. define colors and typography for styling - available in design folder
+ 2. define what code is needed for each section
+    id="weather-container" class="weather"
+        regular
+    id="message-container" class="message"
+        icon size
+        bold - bigger font
+    id="forecast-container" class="forecast"
+        regular
+        dotted underline inside table - no border on last row
+        no table border
+        left & right aligned text in table
+3. identify naming used in js for different weather conditions
+*/
