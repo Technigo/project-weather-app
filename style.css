@@ -45,7 +45,7 @@ body {
     margin-block-end: 0.2em;
 }
 
-/* styling of thrid section: "forecast" */
+/* styling of third section: "forecast" */
 .forecast {
     padding-top: 1.4em;
 }
@@ -91,46 +91,76 @@ tbody:last-child tr {
     width: 50%;
 }
 
+/* styling of forth section: "city" */
+.city {
+    padding-top: 1.4em;
+    padding-bottom: 1.4em;
+}
+
+label {
+    display: inline-block;
+    font-size: 1.4rem;
+    text-align: left;
+    padding-bottom: 6px;
+}
+
+.city-input {
+    width: 100%;
+    height: 40px;
+    font: inherit;
+    box-sizing: content-box;
+    border-radius: 4px 4px;
+    border: 1px solid;
+    background-color: #F4F7F8;
+    text-indent: 5px;   
+}
+
+.rainy .city-input::placeholder {
+    color: #164A68;
+}
+
+.rainy .city-input {
+    color: #164A68;
+}
+
+.sunny .city-input::placeholder {
+    color: #2A5510;
+}
+
+.sunny .city-input {
+    color: #2A5510;
+}
+
+.cloudy,
+.city-input::placeholder {
+    color: #F47775;
+}
+
+.cloudy .city-input {
+    color: #F47775;
+}
+
+.city-input[type=text]:focus {
+    outline: none;
+  }
+
+
 /* styling for tablet and desktop */
 @media only screen and (min-width: 450px) {
-    table {
-        max-width: 250px;
+    table,
+    .city-input {
+        max-width: 350px;
     }
 }
+
+@media only screen and (min-width: 800px) {
+    .city {
+        max-width: 350px;
+    }
+}
+
 @media only screen and (min-width: 1200px) {
     body {
         max-width: 768px;
     }
 }
-
-
-/* 
-fonts:
-https://fonts.google.com/specimen/Montserrat
-
-Weights: bold and regular
-
-colors:
-#F47775 - font
-#F4F7F8 - background cloudy
-#164A68 - font
-#A3DEF7 - background rainy
-#2A5510 - font
-#F7E9B9 - background - sunny
- */
-
- /* code planning
- 1. define colors and typography for styling - available in design folder
- 2. define what code is needed for each section
-    id="weather-container" class="weather"
-        regular
-    id="message-container" class="message"
-        icon size
-        bold - bigger font
-    id="forecast-container" class="forecast"
-        regular
-        dotted underline inside table - no border on last row
-        no table border
-        left & right aligned text in table
-3. identify naming used in js for different weather conditions
-*/

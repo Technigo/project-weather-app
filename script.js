@@ -55,7 +55,7 @@ const fetchWeather = (city) => {
                 body.classList.add('sunny')
                 messageContainer.innerHTML = /*html*/`
                     <img src="./Designs/Design-2/icons/noun_Sunglasses_2055147.svg" />
-                    <h1>Get your sunnies on. ${weatherData.name} is looking rather great today.</h1>
+                    <h1>Get your sunnies on. ${weatherData.name} is looking rather great today!</h1>
                 `
             }
             else if (weather === 'Snow'){
