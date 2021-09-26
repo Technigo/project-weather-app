@@ -68,9 +68,10 @@ fetch(API_URL)
       item.dt_txt.includes("12:00")
     );
     filteredForecast.forEach((item) => {
+      const date = new Date(item.dt * 1000);
       bottomBox.innerHTML += `
     <div class="day-style" >
-      <p> ${new Date(item.dt_txt).toLocaleDateString("en-US", {
+      <p> ${new Date(date).toLocaleDateString("en-US", {
         weekday: "short",
       })} </p>
       <p> ${item.main.temp.toFixed(1)}°  </p>
@@ -80,4 +81,4 @@ fetch(API_URL)
     });
   });
 
-//.catch((error) => console.error (error));
+//.catch((error) => console.error ('ERROR!', error));
