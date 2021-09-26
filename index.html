@@ -12,24 +12,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;500;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css" />
     <title>Weather app</title>
+    <link rel="icon" href="./Designs/Design-1/icons/clear.svg"/>
   </head>
   <body id="body">
-    <header>
-      <!-- ---choose city  -->
-    </header>
+
     <section class="main-weather" id="mainWeather">
+        <div class="weather-icon" id="weatherIcon"></div> 
         <div class="weather" id="weather"></div>
         <div class="sun-time">
           <div class="sunrise" id="sunrise"></div>
           <div class="sunset" id="sunset"></div>
+          <button class="city-button" id="cityBtn">></button>
         </div>
-        <button id = "cityBtn"> > </button>
     </section>
     
-    <section class="forecast" id="forecast">
+    <section class="forecast" id="forecast"></section>
 
-    </section>
-
+    <footer class="footer">  
+        <div class="madeBy">
+          <p class="footerFox">🦊</p>
+          <p class="footerNames">Elin - Daniel - Eddie - Pinar - Jessi</p>
+        </div>
+    </footer>
 
   <script src="./script.js"></script>
 </body>
