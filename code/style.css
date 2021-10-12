@@ -44,7 +44,8 @@ html {
   box-shadow: 5px 10px 18px #28212f5e;
   background-position: center;
   background-size: cover;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./assets/forest.png");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("./assets/forest.png");
 }
 
 .clear {
@@ -56,12 +57,14 @@ html {
 }
 
 .snow {
-  background-image: url(./assets/snow-animation.gif), url(./assets/snowy-day.jpg);
+  background-image: url(./assets/snow-animation.gif),
+    url(./assets/snowy-day.jpg);
   background-repeat: repeat;
 }
 
 .rain {
-  background-image: url(./assets/rain-animation.gif), url(./assets/rainy-day.png);
+  background-image: url(./assets/rain-animation.gif),
+    url(./assets/rainy-day.png);
   background-repeat: repeat;
 }
 
@@ -163,14 +166,17 @@ img.today-weather {
   width: 70px;
 }
 
-.sunrisepar, .sunsetpar, .windpar {
+.sunrisepar,
+.sunsetpar,
+.windpar {
   display: flex;
   align-items: center;
   margin: 0vh;
   justify-content: center;
 }
 
-.sunrisepar, .sunsetpar {
+.sunrisepar,
+.sunsetpar {
   font-size: 14px;
 }
 
