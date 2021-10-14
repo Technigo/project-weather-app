@@ -18,7 +18,7 @@ const getDayOfWeek = (date) => {
 
 // Function that shows or hides the menu.
 const toggleMenu = () => {
-  let menu = document.getElementById("menu");
+  const menu = document.getElementById("menu");
   menu.classList.toggle("menu-active");
 };
 
@@ -44,7 +44,7 @@ const getWeatherPrognose = () => {
       const sunrise = data.sys.sunrise + data.timezone + timezoneOffset;
       const sunset = data.sys.sunset + data.timezone + timezoneOffset;
       let description = data.weather[0].description;
-      let main = data.weather[0].main;
+      const main = data.weather[0].main;
 
       // A function that converts epoch to ordinary time and then from milliseconds to seconds.
       const convert = (t) => {
@@ -148,13 +148,13 @@ const getWeatherPrognose = () => {
   fetch(weatherForecast5DaysCity)
     .then((res) => res.json())
     .then((data) => {
-      let myDates = [];
+      const myDates = [];
 
       // A function in which we forEach element in the list targets the dt_txt file and do a split between the date and the time.
       // We do a if statement to check if the variable myDates consist of the date[0] (since it is the first position).
       // If myDates doesnt contain the date that is looped and it is not todays date it gets added to the variabel myDates.
       data.list.forEach((element) => {
-        let date = element.dt_txt.split(" ");
+        const date = element.dt_txt.split(" ");
 
         if (
           !myDates.includes(date[0]) &&
@@ -168,7 +168,7 @@ const getWeatherPrognose = () => {
       // ForEach date in myDates we save all elements that contains that date and the time 12:00:00.
       // Due to slow information update in the api we also stop the code if weatherat12.lenght is equal to 0.
       myDates.forEach((element) => {
-        let weatherAt12 = data.list.filter((e) =>
+        const weatherAt12 = data.list.filter((e) =>
           e.dt_txt.includes(`${element} 12:00:00`)
         );
 
@@ -176,10 +176,10 @@ const getWeatherPrognose = () => {
           return;
         }
 
-        let description = weatherAt12[0].weather[0].main;
+        const description = weatherAt12[0].weather[0].main;
 
         // Filter so we get all information for one day.
-        let weatherDuringADay = data.list.filter((e) =>
+        const weatherDuringADay = data.list.filter((e) =>
           e.dt_txt.includes(element)
         );
 
