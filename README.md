@@ -11,6 +11,14 @@ The project was to build a simple weather web app that shows today's weather and
 
 These problems were solved by searching on Stackoverflow and Google, asking class mates and code coaches. And good team work.
 
+# What we learned
+
+- how to fetch API:s and pass the data to functions
+- how to display API data on the page
+- how to work as a developer team 
+
+
+
 ## View it live
 
 https://weather-app-by-zebra.netlify.app/
