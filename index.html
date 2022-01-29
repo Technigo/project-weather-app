@@ -1,56 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <title>Project Weather App</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <title>Project Weather App</title>
 </head>
 <body>
-    <div class="container">
+  <div class="container">
+    <section class="top" id="top-section">
+      <div class="city-data">
+        <p id="city"></p> 
+        <p id="typeOfWeather"></p>
+        <h1 id="temperature"></h1>
+        <div id="icon"></div> <!--img generates in js-->
+      </div> 
+      <div class="sunrise-and-sunset">
+        <p id="sunrise"></p>
+        <p id="sunset"></p>
+      </div>
+    </section>
 
-        <section class="top" id="top-section">
-            <div class="city-data">
-                <p id="city"></p> 
-                <p id="typeOfWeather"></p>
-                <h1 id="temperature"></h1>
-                <div id="icon"></div> <!--img generates in js-->
-            </div> 
-            <div class="sunrise-and-sunset">
-                <p id="sunrise"></p>
-                <p id="sunset"></p>
-            </div>
-        </section>
-
-        <div class="forecast-title">
-            <p>5 Days Forecast:</p>
-        </div>
-
-        <section class="bottom" id="bottom-section">
-             <!-- forecast-data class creates in js, there is styling in css-->
-        </section>
-
-        <div class="other-city-title">
-            <p>More cities:</p>
-        </div>
-
-        <section class="other-cities">
-            <!-- <p id="other-cities-title">Other cities</p> -->
-            <div class="other-cities-box" id="other-cities-container"></div>
-             <!--img generates in js-->
-            <div class="other-cities-box" id="london-container"></div>
-            <div class="other-cities-box" id="willemstad-container"></div>
-        </section>
+    <div class="forecast-title">
+      <p>5 Days Forecast:</p>
     </div>
 
-    <div class="footer">
-        <div class="footer-paragraphs">
-            <p>This project was made by Darya, Karoline, Maria, Aschwin and Christoffer 🦓</p>
-            <p>for the Technigo Boot Camp 2021</p>
-        </div>
+    <section class="bottom" id="bottom-section">
+      <!-- forecast-data class creates in js, there is styling in css-->
+    </section>
+
+    <div class="other-city-title">
+      <p>More cities:</p>
     </div>
 
-    <script src="./script.js"></script>
+    <section class="other-cities">
+      <!-- <p id="other-cities-title">Other cities</p> -->
+      <div class="other-cities-box" id="other-cities-container"></div>
+        <!--img generates in js-->
+      <div class="other-cities-box" id="london-container"></div>
+      <div class="other-cities-box" id="willemstad-container"></div>
+    </section>
+  </div>
+
+  <div class="footer">
+    <div class="footer-paragraphs">
+      <p>This project was made by Darya, Karoline, Maria, Aschwin and Christoffer 🦓</p>
+      <p>for the Technigo Boot Camp 2021</p>
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
 </body>
 </html>
