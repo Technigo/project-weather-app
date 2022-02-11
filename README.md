@@ -1,4 +1,4 @@
-# Weather App
+# Week 6: weather app
 
 Replace this readme with your own information about your project.
 
