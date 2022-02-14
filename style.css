@@ -12,8 +12,11 @@ colors:
 #A3DEF7
 #2A5510
 #F7E9B9 
-
 */
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
 
 /* 3 classes for body - Cloudy, Rainy, Sunny - Added to classlist in JS */
 
