@@ -18,6 +18,3 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
             </h1>
         `;
     })
-
-
-    //var rounded = Math.round(number * 10) / 10
