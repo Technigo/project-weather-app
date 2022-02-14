@@ -1,0 +1,35 @@
+/* 
+Design Guidelines
+
+font-familiy: 'Montserrat', sans-serif;
+bold (font-weight: 700) and regular (font-weight 400)
+[MDC:] weight 300 & 600 have also been added
+
+colors:
+#F47775
+#F4F7F8
+#164A68
+#A3DEF7
+#2A5510
+#F7E9B9 
+
+*/
+
+/* 3 classes for body - Cloudy, Rainy, Sunny - Added to classlist in JS */
+
+.cloudy {
+    background-color: #F4F7F8; 
+    color: #F47775;
+}
+
+.rainy {
+    background-color: #A3DEF7;
+    color: #164A68;
+}
+
+.sunny {
+    background-color: #F7E9B9;
+    color: #2A5510;
+}
+
+/* Remember Media Queries */

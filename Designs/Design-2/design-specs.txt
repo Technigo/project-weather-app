@@ -3,7 +3,8 @@ Design guidelines
 fonts:
 https://fonts.google.com/specimen/Montserrat
 
-Weights: bold and regular
+Weights: bold (font-weight: 700) and regular (font-weight 400)
+font-familiy: 'Montserrat', sans-serif;
 
 colors:
 
