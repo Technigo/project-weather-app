@@ -5,7 +5,6 @@ const middleSection = document.getElementById('middleSection')
 // const weatherQuip = document.createElement('h1');
 const bottomSection = document.getElementById('bottomSection')
 
-// Testing Testing
 fetch('https://api.openweathermap.org/data/2.5/weather?q=Gothenburg,Sweden&units=metric&APPID=1d70a07080ab5151e3f54886ea0d8389')
   .then((res) => res.json())
   .then((data) => {
