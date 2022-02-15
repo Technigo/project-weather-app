@@ -1,22 +1,29 @@
-// fetch current and daily forecast for Stockholm, linke to documentation: https://openweathermap.org/api/one-call-api
-fetch("https://api.openweathermap.org/data/2.5/onecall?lat=59.33&lon=18.06&units=metric&exclude=minutely,hourly,alerts&appid=99271fdaf78d63e5bf35004e02e4e29d")
-    .then((result) => {
-        return result.json(); // returns a promise that something will happen
-    })
-    .then((data) => {
-        setCurrentWeather(data); // calls function with the data the promise delivers
-        setForecast(data); // calls function with the data the promise delivers
+const stockholmUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=59.33&lon=18.06&units=metric&exclude=minutely,hourly,alerts&appid=99271fdaf78d63e5bf35004e02e4e29d'
+
+// fetch current and daily forecast for Stockholm, link to documentation: https://openweathermap.org/api/one-call-api
+fetch(stockholmUrl)
+.then((result) => {
+    return result.json(); // returns a promise that something will happen
+})
+.then((data) => {
+
+    let currentWeather = formatCurrentWeather(data); // calls function with the data the promise delivers
+    updateCurrentWeatherDisplay(currentWeather); // updates display when data is ready
+
+    let forecast = formatForecast(data); // calls function with the data the promise delivers
+    updateForecastDisplay(forecast); // updates display when data is ready
+
     })
     .catch((error) => {
         console.log(error); // shows if something went wrong (ex. API key, json formatted incorrectly, etc)
     });
 
 // populate currentWeather object with data from the current weather API
-const setCurrentWeather = (data) => {
+const formatCurrentWeather = (data) => {
 
     // create a template of current weather object which updates with data fetched from the api
     let currentWeather = {
-        // this is the strucutre that the object will have once populated:
+        // this is the structure that the object will have once populated:
         condition: 'string',
         temp: '0° C',
         sunrise: '00:00',
@@ -26,20 +33,19 @@ const setCurrentWeather = (data) => {
     currentWeather.condition = data.current.weather[0].main;
     currentWeather.temp = Math.round(data.current.temp) + "° C"; // rounds to nearest integer
 
-    let sunrise = new Date(data.current.sunrise * 1000); // converts unix timestamp
-    let sunset = new Date(data.current.sunset * 1000); // converts unix timestamp
-    currentWeather.sunrise = sunrise.getHours() + ":" + sunrise.getMinutes(); // displays format 00:00
-    currentWeather.sunset = sunset.getHours() + ":" + sunset.getMinutes(); // displays format 00:00
+    let sunrise = new Date(data.current.sunrise * 1000); // converts unix timestamp to milliseconds
+    let sunset = new Date(data.current.sunset * 1000); // converts unix timestamp to milliseconds
+    currentWeather.sunrise = sunrise.toLocaleString("en-SE", {hour: "numeric", minute: "numeric", timeZone: data.timezone}) // displays HH:MM in the correct timezone
+    currentWeather.sunset = sunset.toLocaleString("en-SE", {hour: "numeric", minute: "numeric", timeZone: data.timezone}) // displays HH:MM in the correct timezone
 
-    //more values can be added here
+    // more values can be added here
 
     console.log(currentWeather); // checks to see what it looks like
-
-    updateCurrentWeatherDisplay(currentWeather); // updates display when data is ready
+    return currentWeather;
 };
 
 // populate forecast array with data from the current weather API
-const setForecast = (data) => {
+const formatForecast = (data) => {
 
     // template of forecast array of objects, will look like this for each day of the week
     // will get updated when data is fetched from api
@@ -52,7 +58,7 @@ const setForecast = (data) => {
         //}
     ];
 
-    let numberToDay = { // api data returns weekday as number starting with 0, we'll want to convert
+    let numberToDay = { // getDay() will return integer between 0-6, we'll want english names to replace with
         0: 'Sunday',
         1: 'Monday',
         2: 'Tuesday',
@@ -73,8 +79,7 @@ const setForecast = (data) => {
     });
 
     console.log(forecast); // checks to see what it looks like
-
-    updateForecastDisplay(forecast); // updates display when data is ready
+    return forecast;
 };
 
 
