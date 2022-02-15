@@ -14,7 +14,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         console.log(json)
 
         actualWeather.innerHTML = `${json.weather[0].description}`
-        actualTemperature.innerHTML = `${Math.round(json.main.temp * 10) / 10}`        
+        actualTemperature.innerHTML = `${Math.round(json.main.temp)}`        
 
         if (json.weather[0].description.includes('clear')) {
             document.body.style.backgroundColor = '#F7E9B9'
@@ -49,3 +49,23 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         }
     })
 
+    // added the forecast part from the forecast branch to check the styling for this section
+    fetch(API_FORECAST)
+    .then((response) => response.json())
+    .then((json) => {
+        // console.log(json)
+        const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
+        // console.log(filteredForecast)
+
+        filteredForecast.forEach((day) => {
+            // console.log(day.main.temp)
+            const options1 = { weekday: 'short' }
+            // console.log(new Intl.DateTimeFormat('en-GB', options1).format(day.dt * 1000))
+            // forecast is injected in HTML, we also rounded the value to show no decimal
+            // with one decimal: ${Math.round(day.main.temp * 10) / 10}
+            forecast.innerHTML +=
+                `<div class="day-container" id="firstDay">
+            <p class="forecastDay"><span>${new Intl.DateTimeFormat('en-GB', options1).format(day.dt * 1000).toLowerCase()}</span><span>${Math.round(day.main.temp)}°</span></p>
+        </div>`
+        })
+    })
