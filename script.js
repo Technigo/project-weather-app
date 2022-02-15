@@ -41,10 +41,10 @@ fetch(API_FORECAST)
             // console.log(new Intl.DateTimeFormat('en-GB', options1).format(day.dt * 1000))
             // forecast is injected in HTML, we also rounded the value to show no decimal
             // with one decimal: ${Math.round(day.main.temp * 10) / 10}
+            // changed the h3 for p tag here as well so they are not bold
             forecast.innerHTML +=
                 `<div class="day-container" id="firstDay">
-            <h3 class="day" id="">${new Intl.DateTimeFormat('en-GB', options1).format(day.dt * 1000).toLowerCase()}</h3>
-            <h3 class="temp" id="">${Math.round(day.main.temp)}°</h3>
+            <p class="forecastDay"><span>${new Intl.DateTimeFormat('en-GB', options1).format(day.dt * 1000).toLowerCase()}</span><span>${Math.round(day.main.temp)}°</span></p>
         </div>`
         })
     })
