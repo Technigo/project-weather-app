@@ -9,7 +9,28 @@
 </head>
 
 <body>
-    <!-- add content here -->
+    <!-- content for current weather section start here -->
+    <!-- NOTE WHAT TO BULID: use updateCurrentWeatherDisplay() to place right information about the weather in these 3 columns -->
+    <div id="currentWeatherWrapper">
+        <p id = "currentWeatherCondition"></p>
+        <p id = "currentWeatherSunrise">sunrise </p>
+        <p id = "currentWeatherSunset">sunset </p>
+    </div>
+
+    <!-- content for "middle section" start here -->
+    <!-- NOTE WHAT TO BULID: use updateCurrentWeatherDisplay() that, depending on weather condition, does... -->
+        <!-- updates the icon -->
+        <!-- updates the sentence -->
+        <!-- set background color -->
+    <div id = "currentWeatherHeaderWrapper">
+        <img id="currentWeatherIcon" src="" alt="">
+        <h1 id ="currentWeatherHeader"></h1>
+    </div>
+
+    <!-- section for forecast  -->
+    <!-- NOTE WHAT TO BULID: use updateCurrentWeatherDisplay() to create elements and populate data for each day-->
+    <div id="forecastWrapper"></div> 
+
     <script src="./script.js"></script>
 </body>
 </html>

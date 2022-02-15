@@ -1,3 +1,5 @@
+
+
 // this will be removed if to-do idea is implemented
 const stockholmUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=59.33&lon=18.06&units=metric&exclude=minutely,hourly,alerts&appid=99271fdaf78d63e5bf35004e02e4e29d'
 
@@ -53,7 +55,6 @@ const formatCurrentWeather = (data) => {
 
     // more values can be added here
 
-    console.log(currentWeather); // checks to see what it looks like
     return currentWeather;
 };
 
@@ -91,19 +92,20 @@ const formatForecast = (data) => {
     forecast.push(dailyForecast) // adds object for each day to the forecast array
     });
 
-    console.log(forecast); // checks to see what it looks like
     return forecast;
 };
 
 
 /* ------------------------ START FROM HERE ------------------------*/
 
-// this function is already called when the data is available 
-const updateCurrentWeatherDisplay = () => {
+// this function is called when the data is available 
+const updateCurrentWeatherDisplay = (currentWeather) => {
+    console.log(currentWeather); // checks to see what it looks like
     // TO-DO use currentWeather object to update values in the html elements
 }
 
-// this function is already called when the data is available 
-const updateForecastDisplay = () => {
-    // TO-DO loop through forecast array and update values in the html elements
+// this function is called when the data is available 
+const updateForecastDisplay = (forecast) => {
+    console.log(forecast); // checks to see what it looks like
+    // TO-DO loop through forecast array to create html elements inside forecastWrapper and populate values
 }
