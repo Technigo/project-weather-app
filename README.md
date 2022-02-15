@@ -28,16 +28,6 @@ Now it's time to split up and start working in GitHub branches. Decide beforehan
     
     Show a forecast for the next 5 days. You can choose how to display the forecast - perhaps you want to show the min and max temperature for each day, or perhaps you want to show the temperature from the middle of the day, or the humidity, what it feels like and so on.
     
-        
-    - **Hint on how to create the filtered list after getting the data from the API.**
-        
-        ```jsx
-        // fetch the data from the API. Then if you console.log the json
-        // you'll see that we only care about the array called list.
-        
-        const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
-        // filteredForecast is now an array with only the data from 12:00 each day.
-        ```
     
 - **Feature: Style it 🎨**
     
