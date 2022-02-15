@@ -8,3 +8,8 @@ html {
 .todays-advice {
     font-weight: 700;
 }
+
+.forecastDay {
+    display: flex;
+    justify-content: space-between;
+}
