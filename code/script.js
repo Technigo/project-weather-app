@@ -100,10 +100,10 @@ const formatForecast = (data) => {
 
 // this function is already called when the data is available 
 const updateCurrentWeatherDisplay = () => {
-    // use currentWeather object to update values in the html elements
+    // TO-DO use currentWeather object to update values in the html elements
 }
 
 // this function is already called when the data is available 
 const updateForecastDisplay = () => {
-    // loop through forecast array and update values in the html elements
+    // TO-DO loop through forecast array and update values in the html elements
 }
