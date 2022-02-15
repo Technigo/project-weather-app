@@ -1,4 +1,17 @@
+// this will be removed if to-do idea is implemented
 const stockholmUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=59.33&lon=18.06&units=metric&exclude=minutely,hourly,alerts&appid=99271fdaf78d63e5bf35004e02e4e29d'
+
+// TO-DO IDEA: select city to be displayed from a drop down menu
+// Create a select city options menu
+// Give each option (city) a value equal to its coordinates in the exact format the api url needs
+    // ex. for Stockholm value = "lat=59.33&lon=18.06"
+    // ex. for Seattle value = "lat=47.60&lon=-122.33"
+// Declare a function that is called with a select menu event listener (ie with "change")
+    // use the selected city's value to populate the url with its coordinates
+    // ex. let url =  `https://api.openweathermap.org/data/2.5/onecall?${value}&units=metric&exclude=minutely,hourly,alerts&appid=99271fdaf78d63e5bf35004e02e4e29d`
+    // call a function that includes fetch which takes url as an argument
+        // requires moving everything fetch is doing into a function
+        // everything else continues per usual after that
 
 // fetch current and daily forecast for Stockholm, link to documentation: https://openweathermap.org/api/one-call-api
 fetch(stockholmUrl)
