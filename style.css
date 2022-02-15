@@ -32,12 +32,11 @@ h3 {
 
 .dailyWeather {
   height: 50vh;
-  background: rgb(58, 173, 250);
+  background: white;
   background: linear-gradient(
     180deg,
-    rgb(39, 146, 132) 0%,
-    rgba(227, 227, 255, 1) 100%
+    rgb(178, 224, 245) 0%,
+    rgb(190, 190, 248) 100%
   );
-  border-bottom-left-radius: 100% 75px;
-  border-bottom-right-radius: 100% 75px;
+  border-radius: 0 0 50% 50% / 50px;
 }
