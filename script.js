@@ -26,11 +26,11 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Gothenburg,Sweden&units
       body.classList.add("rainy")
     }
     const todayTemp = Math.round(data.main.temp)
-    middleSection.innerHTML = `
-    <h1>${data.name}</h1>
-    <p>${todayTemp}°</p>
-    <p>${weatherDescription}</p>
-    `
+    // middleSection.innerHTML = `
+    // <h1>${data.name}</h1>
+    // <p>${todayTemp}°</p>
+    // <p>${weatherDescription}</p>
+    // `
   });
 
 // weather[0].main: Clear = Sunny, Clouds = Cloud, Rain = Rain

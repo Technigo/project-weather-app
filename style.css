@@ -14,12 +14,19 @@ colors:
 #F7E9B9 
 */
 
-body {
-    font-family: 'Montserrat', sans-serif;
+/* Removing Pre-defined Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    text-decoration: none;
 }
 
 /* 3 classes for body - Cloudy, Rainy, Sunny - Added to classlist in JS */
-
 .cloudy {
     background-color: #F4F7F8; 
     color: #F47775;
@@ -35,4 +42,124 @@ body {
     color: #2A5510;
 }
 
+/* Site-Wide Styling */
+.page {
+    font-family: 'Montserrat', sans-serif;
+    padding: 9vw;
+}
+
+/* Top Section - weather, sunrise/sunset */
+.top-section {
+    font-size: clamp(1.5vmax, 2.5vmax, 3.5vmax);
+    font-weight: 400;
+}
+
+/* Middle Section - icon & weather quip */
+.middle-section {
+    font-size: clamp(2vmax, 3.5vmax, 5vmax);
+    font-weight: 700;
+    padding: 9vmax 0 2.5vmax 0;
+}
+
+.weather-icon {
+    width: clamp(15vmax, 17vmax, 19vmax)
+}
+
+/* 5 Day Forecast */
+.bottom-section {
+    font-size: clamp(1.5vmax, 2.5vmax, 3.5vmax);
+    font-weight: 400;
+}
+
+.forecast-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 1vmax 0;
+}
+
+.forecast-container__right {
+    display: flex;
+}
+
+.horizontal-rule {
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+}
+
+.hr--cloudy {
+    border-top: 1px dashed #F47775;
+}
+
+.hr--rainy {
+    border-top: 1px dashed #164A68;
+}
+
+.hr--sunny {
+    border-top: 1px dashed #2A5510;
+}
+
+
+
 /* Remember Media Queries */
+
+
+/* Media Query - Tablet Landscape & Desktop */
+@media (min-width: 667px) and (orientation: landscape) {
+    .page {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2vmax;
+        padding: 15vh 5vmax 5vmax 5vmax;
+    }
+
+    .top-section {
+        grid-column: 1 / span 1;
+        grid-row: 2 / span 1;
+    }
+
+    .middle-section {
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 1;
+        padding: 0 0 2vmax 0;
+        margin-top: 0;
+        font-size: clamp(2vmax, 2.5vmax, 3vmax);
+    }
+
+    .bottom-section {
+        grid-column: 2 / span 1;
+        grid-row: 1 / span 2;
+        /* align-self: center; */
+        margin-top : auto;
+    }
+}
+
+/* Media Query - Mobile Landscape */
+@media (min-width: 668px) and (max-height: 420px) and (orientation: landscape) {
+    .page {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2vmax;
+        padding: 4vw 2.5vw 2.5vw 2.5vw;
+    }
+
+    .top-section {
+        grid-column: 1 / span 1;
+        grid-row: 2 / span 1;
+    }
+
+    .middle-section {
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 1;
+        padding: 0 0 2vmax 0;
+        margin-top: 0;
+        font-size: clamp(2vmax, 2.5vmax, 3vmax);
+    }
+
+    .bottom-section {
+        grid-column: 2 / span 1;
+        grid-row: 1 / span 2;
+        /* align-self: center; */
+        margin-top : auto;
+    }
+}
