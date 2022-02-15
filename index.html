@@ -9,21 +9,17 @@
 </head>
 <body>
 <section id="main-page">
-    <div id="todaysWeather">
-        <h3 class="actual-weather" id="actualWeather"></h3>
-        <h3 class="actual-temperature" id="actualTemperature"></h3>
-        <h3 class="sunrise" id="sunrise"></h3>
-        <h3 class="sunset" id="sunset"></h3>
+    <div class="todays-weather" id="todaysWeather">
+        <!-- the two h3 for actualWeather and actualTemperature have been converted in span inside a p tag so they are side by side -->
+        <!-- the other h3 have been changed for p tag since we don't want them to be bold (default) -->
+        <p class="actual-temperature"><span id="actualWeather"></span> | <span id="actualTemperature"></span></p>
+        <p class="sunrise" id="sunrise"></p>
+        <p class="sunset" id="sunset"></p>
     </div>
-    <div id="todaysAdvice">
-        
-    </div>
-    <div id="forecast">
-        <div class="day-container" id="firstDay">
-            <h3 class="day" id=""></h3>
-            <h3 class="temp" id=""></h3>
-        </div>  
-    </div>
+
+    <div id="todaysAdvice"></div>
+
+    <div id="forecast"></div>
 </section>
 
 </body>
