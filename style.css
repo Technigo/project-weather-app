@@ -1,3 +1,48 @@
+<<<<<<< HEAD
 body {
     
 }
+=======
+:root {
+  /* To be adjusted */
+  --primary-color: black;
+  --secondary-color: white;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  background-color: white;
+}
+
+/* dailyWeather styling */
+
+h1 {
+  color: white;
+  font-size: 4.5em;
+}
+
+h2 {
+  color: white;
+  font-size: 2em;
+}
+
+h3 {
+  margin: 0;
+  color: white;
+}
+
+.dailyWeather {
+  height: 50vh;
+  background: white;
+  background: linear-gradient(
+    180deg,
+    rgb(178, 224, 245) 0%,
+    rgb(190, 190, 248) 100%
+  );
+  border-radius: 0 0 50% 50% / 50px;
+}
+>>>>>>> 2959e374e8624f2886a5499847eac3d6806ec978
