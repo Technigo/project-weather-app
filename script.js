@@ -14,14 +14,12 @@ fetch(API_URL) //this is when we send something to BE
     weatherContainer.innerHTML = `<h1 class="temperature" id="temperature">${data.main.temp}</h1>
         <h2 class="city" id="city">${data.name}</h2>
         <p  class="weather-description" id="weatherDescription">${data.weather[0].description}</p>`;
+
     /* sunrise & sunset */
     const sunriseSec = data.sys.sunrise;
     const sunsetSec = data.sys.sunset;
     const sunrise = convertUTCToSunTime(sunriseSec);
     const sunset = convertUTCToSunTime(sunsetSec);
-    console.log(sunrise);
-    console.log(sunset);
-
     sunContainer.innerHTML = `<h1 class="sunrise" id="sunRise">${sunrise}</h1>
     <h1 class="sunset" id="sunSet"></h1>${sunset}</h1>`;
 
@@ -34,35 +32,10 @@ fetch(API_URL) //this is when we send something to BE
     //     `
     // });
   });
-/*
-const sunRiseSet = async () => {
-  const requestOptions = {
-    method: "GET",
-    redirect: "follow",
-  };
-  const response = await fetch(API_URL, requestOptions);
-  const data = await response.json();
-  const sunriseSec = data.sys.sunrise;
-  const sunsetMillie = data.sys.sunset;
-  const sunriseOrigin = new Date(sunriseSec * 1000).toString();
-  const sunriseWithSec = sunriseOrigin.split(" ")[4];
-  const sunrise = sunriseWithSec.slice(0, -3);
-};
-sunRiseSet();
-*/
+
 function convertUTCToSunTime(UTCsec) {
   const UTCstring = new Date(UTCsec * 1000).toString();
   const timeWithSec = UTCstring.split(" ")[4];
   const timeWithoutSec = timeWithSec.slice(0, -3);
   return timeWithoutSec; //07:38
 }
-
-
-
-
-
-
-
-
-
-
