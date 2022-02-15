@@ -1,4 +1,6 @@
-const weatherContainer = document.getElementById('weatherContainer')
+const weatherInfo = document.getElementById('weatherInfo')
+const weatherText = document.getElementById('weatherText')
+const weatherForecast = document.getElementById('weatherForecast')
 
 
 //Current weather
@@ -14,14 +16,25 @@ fetch(API_URL)
     .then((data) => {  
         console.log(data)
 
-        weatherContainer.innerHTML += `<h1>${data.name}</h1>`
-        weatherContainer.innerHTML += `<p>Temp: ${Math.round(data.main.temp)}</p>`
-        weatherContainer.innerHTML += `<p>Weather: ${data.weather[0].description}</p>`
+        //We created the variables here 
+        let temp = data.main.temp
+        let weather = data.weather[0].description
+        let sunrise = data.sys.sunrise
+        let sunset = data.sys.sunset
+        
+        //First section
+        weatherInfo.innerHTML += `<p>Temp: ${Math.round(temp)}</p>`
+        weatherInfo.innerHTML += `<p>Weather: ${weather}</p>`
+        weatherInfo.innerHTML += `<p>Sunrise: ${new Date(sunrise*1000).toLocaleTimeString([], {timeStyle: 'short'})}</p>`
+        weatherInfo.innerHTML += `<p>Sunset: ${new Date(sunset*1000).toLocaleTimeString([], {timeStyle: 'short'})}</p>`
 
-        data.weather.forEach((weather) => {
-            weatherContainer.innerHTML += `
-                <p>Weather: ${weather.main}</p>
-            
-            `
-        })
+        //Second section
+         weatherText.innerHTML += `<h1>${data.name}</h1>`
+
+        
 });
+
+    //Third section
+
+    //We will have to make a new fetch when working with the forecast
+    //We got help from this question https://stackoverflow.com/c/technigo/questions/2180

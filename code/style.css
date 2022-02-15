@@ -1,3 +1,15 @@
-body {
+/* Some different background colors just to see where we are */
+
+.weather-info {
+
     background-color: pink;
+}
+
+.weather-text {
+
+    background-color: purple;
+}
+
+.weather-forecast {
+    background-color: peachpuff;
 }
