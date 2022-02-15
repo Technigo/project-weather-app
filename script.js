@@ -44,7 +44,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Gothenburg,Sweden&unit
             weekdayCounter++
           }
           
-          
+
         })
         // bottomSection.style.backgroundColor = "white"
 
