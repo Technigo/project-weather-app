@@ -3,11 +3,14 @@ const weatherText = document.getElementById('weatherText')
 const weatherForecast = document.getElementById('weatherForecast')
 
 
+
 //Current weather
 const API_URL = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&appid=03f905d87366cf6f2d73c99817aed154';
 
 //Forecast
-//const API_URL = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=03f905d87366cf6f2d73c99817aed154'
+const API_FORECAST = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=03f905d87366cf6f2d73c99817aed154'
+
+
 
 fetch(API_URL)
     //Open the package
@@ -28,13 +31,42 @@ fetch(API_URL)
         weatherInfo.innerHTML += `<p>Sunrise: ${new Date(sunrise*1000).toLocaleTimeString([], {timeStyle: 'short'})}</p>`
         weatherInfo.innerHTML += `<p>Sunset: ${new Date(sunset*1000).toLocaleTimeString([], {timeStyle: 'short'})}</p>`
 
-        //Second section
+        //Second section 
          weatherText.innerHTML += `<h1>${data.name}</h1>`
 
         
 });
 
-    //Third section
+    //Third section  
+   
+
+fetch(API_FORECAST)
+    .then((res) => res.json())
+    //.then((data) => {
+        //console.log(data)
+
+        .then((json) =>{
+            
+        const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
+
+        let returnWeekDay = (date) => {
+            let daysInWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            let inputDate = new Date(date.replace (' ', 'T'));
+            return daysInWeek [inputDate.getDay()];
+        }
+       
+       
+        console.log(filteredForecast)
+        filteredForecast.forEach((forecast) => {
+            let daysInWeek = returnWeekDay(forecast.dt_txt);
+            //console.log(filteredForecast)
+            console.log(forecast.main.temp)
+            console.log(daysInWeek)
+
+            weatherForecast.innerHTML += `<p> ${daysInWeek} ${Math.round(forecast.main.temp)}</p>`
+        })
+         
+    });
 
     //We will have to make a new fetch when working with the forecast
-    //We got help from this question https://stackoverflow.com/c/technigo/questions/2180
+    //We got help from this question https://stackoverflow.com/c/technigo/questions/2180 so//
