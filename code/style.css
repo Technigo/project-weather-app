@@ -1,0 +1,110 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    background-repeat: no-repeat;
+    background-position: cover;
+    padding: 3.2em;
+    font-size: 1.8rem;   
+}
+
+/****** Background Color ******/
+.sunny {
+    background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+    color: rgb(232, 73, 15);
+}
+
+/*
+.rainy {
+    background: rgb(157, 225, 255);
+    background: linear-gradient(45deg, rgba(157, 225, 255) 30%, rgb(180, 229, 250) 100%);
+    color: #164A68;
+}
+
+
+.cloudy {
+    background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+    color: #f0605e;
+}
+*/
+
+/******* Header *******/
+.container-header {
+    margin-bottom: 3.6em;
+}
+
+.container-header p {
+    margin-bottom: 0.2em;
+}
+
+/****** Main *******/
+
+.container-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.container-text img {
+    width: 25%;
+    max-width: 200px;
+}
+
+h1 {
+    font-size: 3.6rem;
+    margin-block: 0.6em;
+}
+
+/***** Date *****/
+.container-date ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.container-date ul li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.2em;
+    border-bottom: dashed 1px ;
+}
+
+span {
+    width: 10%;
+}
+
+/***** Media Queries *****/
+
+@media (min-width: 768px) {
+
+    body {
+        padding: 3.2em 9.6em;
+        font-size: 2.4rem;
+        
+    }
+
+    .container-text {
+        align-items: center;
+    }
+
+    h1 {
+        max-width: 30ch;
+        font-size: 6.4rem;
+        text-align: center;
+    }
+    
+    span{
+        justify-self: flex-end;
+        width: 3%;
+    }
+
+
+
+}
+
