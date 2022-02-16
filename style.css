@@ -87,6 +87,8 @@ colors:
     border-bottom: none;
 }
 
+
+/* These HR classes should be added to the HR as a conditional in JS */
 .hr--cloudy {
     border-top: 1px dashed #F47775;
 }
@@ -129,7 +131,6 @@ colors:
     .bottom-section {
         grid-column: 2 / span 1;
         grid-row: 1 / span 2;
-        /* align-self: center; */
         margin-top : auto;
     }
 }
@@ -159,7 +160,6 @@ colors:
     .bottom-section {
         grid-column: 2 / span 1;
         grid-row: 1 / span 2;
-        /* align-self: center; */
         margin-top : auto;
     }
 }
