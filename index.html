@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Weather app</title>
 </head>
 <body>
-    
 <section id="weatherContainer" class="weather-container">
-    
-
+    <div id="dailyWeather" class="dailyWeather">
+        <nav class="menu">
+            <button class="burger-btn">
+                <img class="burger">
+            </button>
+        </nav>
+        <img id="mainIcon" class="main-icon" src="./images/day.svg" alt="image of a sun" />
+    </div>
 </section>
-
-</body>
-    <section id="dailyWeather" class="dailyWeather"></section>
-    <section id="weeklyWeather" class="weeklyWeather"></section>
-</section>
-
+    <div id="weeklyWeather" class="weeklyWeather"></div>
 <script src="./script.js"></script>
 </html>
