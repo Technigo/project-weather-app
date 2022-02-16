@@ -14,6 +14,9 @@ body {
     background-position: cover;
     padding: 3.2em;
     font-size: 1.8rem;   
+    background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+    color: #f0605e;
+    position: relative;
 }
 
 /****** Background Color ******/
@@ -22,7 +25,7 @@ body {
     color: rgb(232, 73, 15);
 }
 
-/*
+
 .rainy {
     background: rgb(157, 225, 255);
     background: linear-gradient(45deg, rgba(157, 225, 255) 30%, rgb(180, 229, 250) 100%);
@@ -30,11 +33,8 @@ body {
 }
 
 
-.cloudy {
-    background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
-    color: #f0605e;
-}
-*/
+
+
 
 /******* Header *******/
 .container-header {
@@ -75,9 +75,21 @@ h1 {
     border-bottom: dashed 1px ;
 }
 
-span {
-    width: 10%;
+
+/***** Animation *****/
+
+.img {
+   animation: movement 0.4s ease infinite;
+   translate: transformX(20%);
+  display: block;
 }
+
+@keyframes movement {
+   50% {
+   }
+
+}
+
 
 /***** Media Queries *****/
 
@@ -99,12 +111,7 @@ span {
         text-align: center;
     }
     
-    span{
-        justify-self: flex-end;
-        width: 3%;
-    }
-
-
+    
 
 }
 
