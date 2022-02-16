@@ -1,5 +1,5 @@
 // this is the API variable for the main weather 
-const API_WEATHER = 'https://api.openweathermap.org/data/2.5/weather?q=LasVegas,USA&units=metric&APPID=f1099e35a6194bceb628758a90cd792b'
+const API_WEATHER = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=f1099e35a6194bceb628758a90cd792b'
 // this is the API variable for the 5 days forecast
 const API_FORECAST = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=292db829ecfe6c13a596b799caf9289f'
 
