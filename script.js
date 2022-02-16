@@ -13,6 +13,70 @@ let city = "Gothenburg";
 const API_FORECAST = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=1d70a07080ab5151e3f54886ea0d8389`
 const API_WEATHER = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=1d70a07080ab5151e3f54886ea0d8389`
 
+//Geolocation (Testing)
+
+// Solution 1 - This first part works - but requires the user allows for location tracking
+// let longitude
+// let latitude
+// const locationSuccess = (position) => {
+//   const location = position.coords;
+//   console.log(`Latitude = ${location.latitude} and Longitutde = ${location.longitude}`);
+//   console.log(position.coords);
+//   longitude = location.longitude
+//   latitude = location.latitude
+// }
+
+// const locationError = () => {
+//   console.log("Unable to retrieve user's location")
+//   middleSection.innerHTML = `
+//   <h1 id="weatherQuip" class="weather-quip">Unable to access your location.</h1>
+//   `
+// }
+
+// navigator.geolocation.getCurrentPosition(locationSuccess, locationError)
+
+
+// Solution 2 - This works too - it returns city and country, but doesn't need location permission to work
+let city2
+let country2
+let sunrise
+let sunset
+
+const locationSun = async () => {
+  const ipWait = await fetch('https://ip-fast.com/api/ip/?format=json&location=True');
+  const ipJson = await ipWait.json();
+  console.log('ip address', ipJson);
+  city2 = ipJson.city;
+  country2 = ipJson.country;
+  console.log(city2)
+  console.log(country2)
+  const sunWait = await fetch(`https://api.ipgeolocation.io/astronomy?apiKey=cf20150b8ced4a14b02711e51f46b972&location=${city2},${country2}`);
+  const sunJson = await sunWait.json();
+  console.log(sunJson);
+  sunrise = sunJson.sunrise.replace(":", ".")
+  sunset = sunJson.sunset.replace(":", ".")
+  console.log(`Sunrise: ${sunrise} and ${sunset}`)
+}
+
+locationSun();
+
+// fetch('https://ip-fast.com/api/ip/?format=json&location=True')
+//   .then((res) => res.json())
+//   .then((data) => {
+//     console.log(data);
+//     city2 = data.city;
+//     country2 = data.country;
+//     console.log(city2)
+//     console.log(country2)
+//   })
+
+// fetch(`https://api.ipgeolocation.io/astronomy?apiKey=cf20150b8ced4a14b02711e51f46b972&location=${city2},${country2}`)
+//   .then((res) => res.json())
+//   .then((data) => {
+//   console.log('sunrise sunset', data)
+// });
+
+// Today's Weather, Sunset & Sunrise
 fetch(API_WEATHER)
   .then((res) => res.json())
   .then((data) => {
@@ -73,7 +137,7 @@ fetch(API_WEATHER)
     
   });
 
-
+// 5 Day Forecast
 fetch(API_FORECAST)
 .then((res) => res.json())
 .then((data) => {
