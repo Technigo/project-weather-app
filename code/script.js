@@ -97,11 +97,17 @@ const formatForecast = (data) => {
 
 
 /* ------------------------ START FROM HERE ------------------------*/
+const currentWeatherCondition = document.getElementById('currentWeatherCondition')
+const currentWeatherSunrise = document.getElementById('currentWeatherSunrise')
+const currentWeatherSunset = document.getElementById('currentWeatherSunset')
 
 // this function is called when the data is available 
 const updateCurrentWeatherDisplay = (currentWeather) => {
-    console.log(currentWeather); // checks to see what it looks like
+    console.log(currentWeather);// checks to see what it looks like
     // TO-DO use currentWeather object to update values in the html elements
+    currentWeatherCondition.innerHTML = `${currentWeather.condition} | ${currentWeather.temp}`
+    currentWeatherSunrise.innerHTML = `sunrise ${currentWeather.sunrise}`
+    currentWeatherSunset.innerHTML = `sunrise ${currentWeather.sunset}`
 }
 
 // this function is called when the data is available 
