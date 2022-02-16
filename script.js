@@ -75,6 +75,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Gothenburg,Sweden&units
       <h1 id="weatherQuip" class="weather-quip">Don't forget your umbrella. It's wet in ${data.name} today.</h1>
       `
     }
+<<<<<<< HEAD
     
     //SUNRISE_SUNSET section
     //Converting sys sunrise in API from seconds to milliseconds  - then to local SE time HH:MM
@@ -100,6 +101,14 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Gothenburg,Sweden&units
      topSection.innerHTML =`
      <p>sunrise ${sunriseTime}</p>
      <p>sunset ${sunsetTime}</p>`
+=======
+    const todayTemp = Math.round(data.main.temp)
+    // middleSection.innerHTML = `
+    // <h1>${data.name}</h1>
+    // <p>${todayTemp}°</p>
+    // <p>${weatherDescription}</p>
+    // `
+>>>>>>> styling
   });
 
 // weather[0].main: Clear = Sunny, Clouds = Cloud, Rain = Rain
