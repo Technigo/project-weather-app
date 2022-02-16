@@ -46,8 +46,6 @@ colors:
 .page {
     font-family: 'Montserrat', sans-serif;
     padding: 9vw;
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
 }
 
 /* Top Section - weather, sunrise/sunset */
@@ -120,7 +118,7 @@ colors:
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 2vmax;
-        padding: 15vh 5vmax 5vmax 5vmax;
+        padding: 10vh 5vmax 5vmax 5vmax;
     }
 
     .top-section {
@@ -150,6 +148,8 @@ colors:
         grid-template-columns: 1fr 1fr;
         gap: 2vmax;
         padding: 4vw 2.5vw 2.5vw 2.5vw;
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
     }
 
     .top-section {
