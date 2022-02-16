@@ -6,32 +6,38 @@ const middleSection = document.getElementById('middleSection')
 const bottomSection = document.getElementById('bottomSection')
 
 //Global variable
-const weekday = ["sun","mon","tue","wed","thu","fri","sat"];
-const d = new Date();
-let weekdayCounter = 1;
-let dayIndex = d.getDay()
-let weekdayIndex = dayIndex + weekdayCounter
+// const weekday = ["sun","mon","tue","wed","thu","fri","sat"];
+// const d = new Date();
+// let weekdayCounter = 1;
+// let dayIndex = d.getDay()
+// let weekdayIndex = dayIndex + weekdayCounter
 
 fetch('https://api.openweathermap.org/data/2.5/forecast?q=Gothenburg,Sweden&units=metric&APPID=1d70a07080ab5151e3f54886ea0d8389')
   .then((res) => res.json())
   .then((data) => {
         //console.log(`fetch forecast`, data)
         const filteredForecast = data.list.filter(item => item.dt_txt.includes('12:00')); //array with the next five days' forecast
-        //console.log("filteredForecast '12:00'", filteredForecast)
+        console.log("filteredForecast '12:00'", filteredForecast)
 
         filteredForecast.forEach((dayObj) => {
-          weekdayIndex++
-          if (weekdayIndex > 6) {
-            weekdayCounter = 0;
-            weekdayIndex = 0;
-          }
+          const d = new Date(dayObj.dt_txt.slice(0, 10)).toLocaleDateString("en", {
+            weekday: "short"
+          }).toLowerCase();
           
-          let day = weekday[weekdayIndex];
+          // weekdayIndex++
+          // if (weekdayIndex > 6) {
+          //   weekdayCounter = 0;
+          //   weekdayIndex = 0;
+          // }
+          
+          // let dayIndex = d.getDay()
+          // let day = weekday[dayIndex];
+          // let day = weekday[weekdayIndex];
           const temp_ = Math.round(dayObj.main.temp)
           bottomSection.innerHTML += 
           `
           <div id="forecastContainer" class="forecast-container">
-            <p class="weekday">${day}</p>
+            <p class="weekday">${d}</p>
             <div class="forecast-container__right">
               <img class="weatherIcon--small" width="50vw" src="http://openweathermap.org/img/wn/${dayObj.weather[0].icon}@2x.png"/>
               <p class="weekdayTemp">${temp_}°</p>
