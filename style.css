@@ -1,15 +1,58 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
+* {
+    font-size: 62,5%;
+    box-sizing: border-box;  
+}
+
 html {
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    
+}
+
+body{
+    margin: 0;
+}
+
+
+.todays-weather p {
+    margin: 0.25rem;
+}
+
+.todays-weather,
+.forecast-day {
+    font-size: 1.25rem
 }
 
 .todays-advice {
     font-weight: 700;
+    font-size: 1.75rem;
 }
 
-.forecastDay {
+.forecast-day {
     display: flex;
     justify-content: space-between;
+    border-bottom: 0.1rem dotted; 
+    line-height: 0.2rem;
+    padding-bottom: 01rem;
 }
+
+#forecast-day:last-child {
+    border-bottom: none;
+}
+
+
+.main-page {
+     margin: 3rem;
+     display: flex;
+     flex-direction: column;
+     height: 100vh;
+ }
+
+ .todays-weather{
+     margin-bottom: 2rem;
+ }

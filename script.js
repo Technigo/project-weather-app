@@ -33,8 +33,9 @@ fetch(API_WEATHER)
             document.body.style.backgroundColor = '#F7E9B9'
             document.body.style.color = '#2A5510'
             todaysAdvice.innerHTML = `
-            <img src="./Designs/Design-2/icons/noun_Sunglasses_2055147.svg" class="" id="weatherIconSun"> 
             <h1 class="advice" id="advice">
+                <img src="./Designs/Design-2/icons/noun_Sunglasses_2055147.svg" class="weather-icon" alt="sunglasses">
+                <br>
                 <span class="city" id="city">Get your sunnies on. ${json.name} is looking rather great today.</span>
             </h1>
         `
@@ -42,8 +43,9 @@ fetch(API_WEATHER)
             document.body.style.backgroundColor = '#F4F7F8'
             document.body.style.color = '#F47775'
             todaysAdvice.innerHTML = `
-            <img src="./Designs/Design-2/icons/noun_Cloud_1188486.svg" class="" id="weatherIconCloud">
             <h1 class="advice" id="advice">
+                <img src="./Designs/Design-2/icons/noun_Cloud_1188486.svg" class="weather-icon" alt="cloud">
+                <br>
                 <span class="city" id="city">Light a fire and get cosy. ${json.name} is looking grey today.</span>
             </h1>
         `
@@ -51,8 +53,9 @@ fetch(API_WEATHER)
             document.body.style.backgroundColor = '#A3DEF7'
             document.body.style.color = '#164A68'
             todaysAdvice.innerHTML = `
-            <img src="./Designs/Design-2/icons/noun_Umbrella_2030530.svg" class="" id="weatherIconRain">
             <h1 class="advice" id="advice">
+                <img src="./Designs/Design-2/icons/noun_Umbrella_2030530.svg" class="weather-icon" alt="umbrella">
+                <br>
                 <span class="city" id="city">Don't forget your umbrella. It's wet in ${json.name} today.</span>
             </h1>
         `
@@ -67,9 +70,8 @@ fetch(API_FORECAST)
             const options1 = { weekday: 'short' }
             // forecast is injected in HTML, we also rounded the value to show no decimal
             // with one decimal: ${Math.round(day.main.temp * 10) / 10}
-            forecast.innerHTML +=
-                `<div class="day-container" id="firstDay">
-            <p class="forecastDay"><span>${new Intl.DateTimeFormat('en-GB', options1).format(day.dt * 1000).toLowerCase()}</span><span>${Math.round(day.main.temp)}°</span></p>
-        </div>`
+            forecast.innerHTML += `
+                <p class="forecast-day" id="forecast-day"><span>${new Intl.DateTimeFormat('en-GB', options1).format(day.dt * 1000).toLowerCase()}</span><span>${Math.round(day.main.temp)}°</span></p>
+        `
         })
     })
