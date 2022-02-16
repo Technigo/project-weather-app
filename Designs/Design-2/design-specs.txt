@@ -11,5 +11,5 @@ colors:
 #F4F7F8
 #164A68
 #A3DEF7
-#2A5510
-#F7E9B9
+#2A5510 
+#F7E9B9 sunny background

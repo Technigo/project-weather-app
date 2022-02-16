@@ -20,6 +20,7 @@ const displayData = (data) => {
   const description = data.weather[0].description
   const sunrisedata = new Date(data.sys.sunrise * 1000)
   const sunsetdata = new Date(data.sys.sunset * 1000)
+  const city = data.name
 
   let sunriseHours = sunrisedata.getHours();
   let sunriseMinutes = sunrisedata.getMinutes()
@@ -44,8 +45,41 @@ const displayData = (data) => {
   }
 
   weather.innerHTML = `${description} | ${temperature}`
-  sunrise.innerHTML = `Sunrise: ${sunriseHours}.${sunriseMinutes}`
-  sunset.innerHTML = `Sunset: ${sunsetHours}.${sunsetMinutes}`
+  sunrise.innerHTML = `sunrise: ${sunriseHours}.${sunriseMinutes}`
+  sunset.innerHTML = `sunset: ${sunsetHours}.${sunsetMinutes}`
+
+  if (data.weather[0].main === "Clear") {
+      icon.src = "./Designs/Design-2/icons/noun_Sunglasses_2055147.svg"
+      message.innerHTML = `Get your sunnies on. ${city} is looking rather great today.`
+      document.body.style.backgroundColor = "#F7E9B9"
+      document.body.style.color = "#2A5510"
+
+  } else if  (data.weather[0].main === "Clouds") {
+    icon.src = "./Designs/Design-2/icons/noun_Cloud_1188486.svg"
+    message.innerHTML = `Light a fire and get cosy. ${city} is looking grey today.`
+    document.body.style.backgroundColor = "#F4F7F8"
+    document.body.style.color = "#F47775"
+
+  } else if (data.weather[0].main === "Rain"|| data.weather[0].main ==="Drizzle") {
+    icon.src = "./Designs/Design-2/icons/noun_Umbrella_2030530.svg"
+    message.innerHTML = `Don't forget your umbrella. It is wet in ${city} today.`
+    document.body.style.backgroundColor = "#A3DEF7"
+    document.body.style.color = "#164A68"
+    
+  } else if (data.weather[0].main === "Thunderstorm"|| data.weather[0].main ==="Snow") {
+    message.innerHTML = `Stay inside. It is dangerous out in ${city} today.`
+    document.body.style.backgroundColor = "#A3DEF7" //change this color
+    document.body.style.color = "#164A68" //change this color
+
+  } else {
+    message.innerHTML = `Lock your door in ${city} today.`
+    document.body.style.backgroundColor = "#A3DEF7" //change this color
+    document.body.style.color = "#164A68" //change this color
+  }
+  
+  
+  
+  // console.log(data.weather[0].main)
   console.log(data)
 }
 
