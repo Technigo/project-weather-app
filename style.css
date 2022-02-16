@@ -46,6 +46,8 @@ colors:
 .page {
     font-family: 'Montserrat', sans-serif;
     padding: 9vw;
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
 }
 
 /* Top Section - weather, sunrise/sunset */
