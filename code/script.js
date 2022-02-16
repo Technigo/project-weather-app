@@ -1,6 +1,7 @@
 const weatherInfo = document.getElementById('weatherInfo')
 const weatherText = document.getElementById('weatherText')
 const weatherForecast = document.getElementById('weatherForecast')
+const tempAndWeather = document.getElementById('tempAndWeather')
 
 
 
@@ -26,13 +27,15 @@ fetch(API_URL)
         let sunset = data.sys.sunset
 
         //First section
-        weatherInfo.innerHTML += `<p>Temp: ${Math.round(temp)}</p>`
-        weatherInfo.innerHTML += `<p>Weather: ${weather}</p>`
-        weatherInfo.innerHTML += `<p>Sunrise: ${new Date(sunrise * 1000).toLocaleTimeString([], { timeStyle: 'short' })}</p>`
-        weatherInfo.innerHTML += `<p>Sunset: ${new Date(sunset * 1000).toLocaleTimeString([], { timeStyle: 'short' })}</p>`
+        tempAndWeather.innerHTML += `<p>${weather} | </p>`
+        tempAndWeather.innerHTML += ` <p>${Math.round(temp)} °C</p>`
+
+
+        weatherInfo.innerHTML += `<p>sunrise ${new Date(sunrise * 1000).toLocaleTimeString([], { timeStyle: 'short' })}</p>`
+        weatherInfo.innerHTML += `<p>sunset ${new Date(sunset * 1000).toLocaleTimeString([], { timeStyle: 'short' })}</p>`
 
         //Second section 
-        weatherText.innerHTML += `<h1>${data.name}</h1>`
+        weatherText.innerHTML += `<img src="../icons/umbrella.svg" /> <h1>Don't forget your umbrella. It's wet in ${data.name} today.</h1>`
 
 
     });
@@ -49,14 +52,14 @@ fetch(API_FORECAST)
         const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
 
         let returnWeekDay = (date) => {
-            let daysInWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            let daysInWeek = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
             let inputDate = new Date(date.replace(' ', 'T'));
             return daysInWeek[inputDate.getDay()];
         }
 
         filteredForecast.forEach((forecast) => {
             let daysInWeek = returnWeekDay(forecast.dt_txt);
-            weatherForecast.innerHTML += `<p> ${daysInWeek} ${Math.round(forecast.main.temp)}°</p>`
+            weatherForecast.innerHTML += `<div class="border-bottom"><div class="days"> ${daysInWeek}</div><div class="temp"> ${Math.round(forecast.main.temp)}°</div></div>`
         })
 
     });
