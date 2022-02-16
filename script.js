@@ -52,7 +52,7 @@ fetch(API_WEATHER)
 
     
     
-
+    
     if (data.weather[0].main.includes("Clear")) {
       body.className = "sunny"
       middleSection.innerHTML = `
