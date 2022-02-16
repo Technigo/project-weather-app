@@ -3,7 +3,7 @@
 // this will be removed if to-do idea is implemented
 const stockholmUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=59.33&lon=18.06&units=metric&exclude=minutely,hourly,alerts&appid=99271fdaf78d63e5bf35004e02e4e29d'
 
-// TO-DO IDEA: select city to be displayed from a drop down menu
+// TO-DO IDEA: select city to be displayed from a drop down menu //Jacob comment
 // Create a select city options menu
 // Give each option (city) a value equal to its coordinates in the exact format the api url needs
     // ex. for Stockholm value = "lat=59.33&lon=18.06"
