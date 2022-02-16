@@ -7,5 +7,17 @@ fetch(url)
 .then((data)=>{
     console.log(data)
     cityName  = data.name
+    temp      = data.main.temp.toFixed(1)
+    type      = data.weather[0].description
+
+    //display todays weather
+    displayWeatherInfo.innerHTML = 
+    `<div class = "weatherInfo">
+    <p class="degree">${temp}°c</p>
+     <p class="cityName">${cityName}</p>
+     <p class="tempType">${type.charAt(0).toUpperCase()}${type.slice(1)}</p>
+     
     
+    </div>`
+
 })
