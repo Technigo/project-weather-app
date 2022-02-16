@@ -15,12 +15,12 @@ const bottomSection = document.getElementById('bottomSection')
 fetch('https://api.openweathermap.org/data/2.5/forecast?q=Gothenburg,Sweden&units=metric&APPID=1d70a07080ab5151e3f54886ea0d8389')
   .then((res) => res.json())
   .then((data) => {
-        //console.log(`fetch forecast`, data)
+        console.log(`fetch forecast`, data)
         const filteredForecast = data.list.filter(item => item.dt_txt.includes('12:00')); //array with the next five days' forecast
         console.log("filteredForecast '12:00'", filteredForecast)
 
         filteredForecast.forEach((dayObj) => {
-          const d = new Date(dayObj.dt_txt.slice(0, 10)).toLocaleDateString("en", {
+          const d = new Date(dayObj.dt * 1000).toLocaleDateString("en", {
             weekday: "short"
           }).toLowerCase();
           
