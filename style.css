@@ -32,13 +32,21 @@ body {
 .sun-container {
   padding: 5px;
   display: flex;
-  margin-right: 10rem;
-  margin-left: 10rem;
+  margin-top: 2rem;
+  align-items: center;
+  justify-content: center;
 }
-.sun-icon {
+.sunrise-icon {
   height: 70px;
   width: 70px;
-  padding: 10px;
+}
+.sunset-icon {
+  height: 70px;
+  width: 70px;
+}
+.sunrise,
+.sunset {
+  margin-left: 50px;
 }
 @media only screen and (min-width: 1024px) {
   .main-container {
@@ -51,6 +59,6 @@ body {
     padding: 5px;
     display: flex;
     justify-content: center;
-    margin: 20px;
+    margin: 1rem, 5rem;
   }
 }
