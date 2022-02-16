@@ -6,7 +6,7 @@ const middleSection = document.getElementById('middleSection')
 const bottomSection = document.getElementById('bottomSection')
 
 //Global variable
-const weekday = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+const weekday = ["sun","mon","tue","wed","thu","fri","sat"];
 const d = new Date();
 let weekdayCounter = 1;
 let dayIndex = d.getDay()
@@ -25,6 +25,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Gothenburg,Sweden&unit
             weekdayCounter = 0;
             weekdayIndex = 0;
           }
+          
           let day = weekday[weekdayIndex];
           const temp_ = Math.round(dayObj.main.temp)
           bottomSection.innerHTML += 
@@ -38,16 +39,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Gothenburg,Sweden&unit
           </div>
           <hr class="horizontal-rule">
           `
-          // if (weekdayCounter > 6) { //this doesn't work!! need to find a way to make it zero otherwise it get undefined when index position goes beyond 6
-          //   weekdayCounter = 0;
-          // } else {
-          //   weekdayCounter++
-          // }
-          
-
         })
-        // bottomSection.style.backgroundColor = "white"
-
     });
 
 
