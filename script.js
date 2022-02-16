@@ -44,10 +44,11 @@ fetch(API_WEATHER)
     
     //Adding sunriseTime + SunsetTime into correct HTML ID of topsection
     //we chose to not have one decimal for aesthetic reasons
+    //Added .replace(":", ".") to match design specs
      topSection.innerHTML =`
      <p>${weatherDescriptionObj["desc"].toLowerCase()} | ${Math.round(data.main.temp)}°</p>
-     <p>sunrise ${sunriseTime}</p>
-     <p>sunset ${sunsetTime}</p>`
+     <p>sunrise ${sunriseTime.replace(":", ".")}</p>
+     <p>sunset ${sunsetTime.replace(":", ".")}</p>`
 
     if (data.weather[0].main.includes("Clear")) {
       body.className = "sunny"
