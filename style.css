@@ -62,7 +62,8 @@ colors:
 }
 
 .weather-icon {
-    width: clamp(15vmax, 17vmax, 19vmax)
+    width: clamp(15vmax, 17vmax, 19vmax);
+    height: auto;
 }
 
 /* 5 Day Forecast */
@@ -85,6 +86,11 @@ colors:
     border-left: none;
     border-right: none;
     border-bottom: none;
+}
+
+.weatherIcon--small {
+    height: 50%;
+    width: auto;
 }
 
 
