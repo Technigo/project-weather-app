@@ -49,10 +49,6 @@ fetch(API_WEATHER)
      <p>sunrise ${sunriseTime}</p>
      <p>sunset ${sunsetTime}</p>`
 
-
-    
-    
-    
     if (data.weather[0].main.includes("Clear")) {
       body.className = "sunny"
       middleSection.innerHTML = `
