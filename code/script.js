@@ -57,9 +57,6 @@ filteredForecast.forEach((days) => {
 
     date.innerHTML +=`
     <li>${days.main.temp}</li>
-    `
-
-
-    
+    ` 
 })
 }
