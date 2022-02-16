@@ -1,0 +1,89 @@
+@import url('https://fonts.google.com/specimen/Montserrat');
+
+/* RESET CSS TO BORDER-BOX */
+* {
+    box-sizing: border-box;
+  }
+
+body {
+    display: flex;
+    justify-content: center;
+    font-family: 'Montserrat';
+    height: 100vh;
+    background: #CFC2CF;
+    margin: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    width: 85%;
+}
+
+svg {
+    width: 70px;
+    height: 70px;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.current-weather-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.current-weather-wrapper p {
+    margin: 0;
+    padding: 1px 0;
+}
+
+.forecast-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.forecast-wrapper p {
+    margin: 8px 0;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 2px dotted black;
+}
+
+p {
+    color: black;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+h1 {
+    color: black;
+    font-weight: bold;
+}
+
+.warm {
+ background-color: #F7E9B9;
+ display: none;
+ color: #2A5510;
+}
+
+.cloudy {
+    background-color: #F4F7F8;
+    display: none;
+    color: #F47775; 
+}
+
+.rainy {
+    background-color: #A3DEF7;
+    display: none;
+    color: #164A68;
+}
