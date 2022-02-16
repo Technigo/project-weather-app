@@ -1,4 +1,4 @@
-const weatherContainer = document.getElementById ('weatherContainer');
+const weatherContainer = document.getElementById ('dailyWeather');
 const typeOfWeather = document.getElementById('typeOfWeather')
 const currentTemp = document.getElementById('currentTemp')
 const city = document.getElementById('city')
@@ -16,7 +16,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
      
 
 
-    weatherContainer.innerHTML += `
+    dailyWeather.innerHTML += `
     <h1 id="currentTemp">${tempRemoveDecimals}</h1>
     <p id="city">${data.name}</p>
     <p id="typeOfWeather">${data.weather[0].description}</p>
