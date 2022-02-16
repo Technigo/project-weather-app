@@ -28,7 +28,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Gothenburg,Sweden&unit
           <div id="forecastContainer" class="forecast-container">
             <p class="weekday">${d}</p>
             <div class="forecast-container__right">
-              <img class="weatherIcon--small" width="50vw" src="http://openweathermap.org/img/wn/${dayObj.weather[0].icon}@2x.png"/>
+              <!---<img class="weatherIcon--small" width="50vw" src="http://openweathermap.org/img/wn/${dayObj.weather[0].icon}@2x.png"/>--->
               <p class="weekdayTemp">${temp_}°</p>
             </div>
           </div>
@@ -74,8 +74,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Gothenburg,Sweden&units
       <img id="weatherIcon" class="weather-icon" src="Designs/Design-2/icons/noun_Umbrella_2030530.svg" />
       <h1 id="weatherQuip" class="weather-quip">Don't forget your umbrella. It's wet in ${data.name} today.</h1>
       `
-    }
-<<<<<<< HEAD
+    };
     
     //SUNRISE_SUNSET section
     //Converting sys sunrise in API from seconds to milliseconds  - then to local SE time HH:MM
@@ -99,16 +98,9 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Gothenburg,Sweden&units
     
     //Adding sunriseTime + SunsetTime into correct HTML ID of topsection
      topSection.innerHTML =`
+     <p>${weatherDescriptionObj["desc"].toLowerCase()} | ${Math.round(data.main.temp)}°</p>
      <p>sunrise ${sunriseTime}</p>
      <p>sunset ${sunsetTime}</p>`
-=======
-    const todayTemp = Math.round(data.main.temp)
-    // middleSection.innerHTML = `
-    // <h1>${data.name}</h1>
-    // <p>${todayTemp}°</p>
-    // <p>${weatherDescription}</p>
-    // `
->>>>>>> styling
   });
 
 // weather[0].main: Clear = Sunny, Clouds = Cloud, Rain = Rain

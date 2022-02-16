@@ -56,7 +56,7 @@ colors:
 
 /* Middle Section - icon & weather quip */
 .middle-section {
-    font-size: clamp(2vmax, 3.5vmax, 5vmax);
+    font-size: clamp(1.5vmax, 3vmax, 4.5vmax);
     font-weight: 700;
     padding: 9vmax 0 2.5vmax 0;
 }
