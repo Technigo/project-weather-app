@@ -107,7 +107,7 @@ const updateCurrentWeatherDisplay = (currentWeather) => {
     // TO-DO use currentWeather object to update values in the html elements
     currentWeatherCondition.innerHTML = `${currentWeather.condition} | ${currentWeather.temp}`
     currentWeatherSunrise.innerHTML = `sunrise ${currentWeather.sunrise}`
-    currentWeatherSunset.innerHTML = `sunrise ${currentWeather.sunset}`
+    currentWeatherSunset.innerHTML = `sunset ${currentWeather.sunset}`
 }
 
 // this function is called when the data is available 
