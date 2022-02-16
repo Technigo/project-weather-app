@@ -18,6 +18,17 @@ fetch(API_WEATHER)
         actualWeather.innerHTML = `${json.weather[0].description}`
         // with one decimal: actualTemperature.innerHTML = `${Math.round(json.main.temp * 10) / 10}`        
         actualTemperature.innerHTML = `${Math.round(json.main.temp)}°`
+
+        const sunset = new Date(json.sys.sunset * 1000)
+        const sunrise = new Date(json.sys.sunrise * 1000)
+
+        todaysWeather.innerHTML += `
+            <p class="sunrise" id="sunrise">sunrise ${sunrise.getHours() < 10
+                ? "0" + sunrise.getHours() : sunrise.getHours()}.${sunrise.getMinutes()}</p>
+            <p class="sunset" id="sunset">sunset ${sunset.getHours() < 10
+                ? "0" + sunset.getHours() : sunset.getHours()}.${sunset.getMinutes()}</p>
+        `  
+
         // today's advice is injected in HTML
         // conditional is quite simply done: cloudy style if "cloud" is in description, sunny style if "clear", rainy for the rest.
         if (json.weather[0].description.includes('clear')) {
