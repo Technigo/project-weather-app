@@ -9,6 +9,8 @@ const bottomSection = document.getElementById('bottomSection')
 const weekday = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 const d = new Date();
 let weekdayCounter = 1;
+let dayIndex = d.getDay()
+let weekdayIndex = dayIndex + weekdayCounter
 
 fetch('https://api.openweathermap.org/data/2.5/forecast?q=Gothenburg,Sweden&units=metric&APPID=1d70a07080ab5151e3f54886ea0d8389')
   .then((res) => res.json())
@@ -17,15 +19,13 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Gothenburg,Sweden&unit
         const filteredForecast = data.list.filter(item => item.dt_txt.includes('12:00')); //array with the next five days' forecast
         //console.log("filteredForecast '12:00'", filteredForecast)
 
-        // const weekday = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-        // const d = new Date();
-        // console.log(d.getDay())
-        
-
         filteredForecast.forEach((dayObj) => {
-          
-
-          let day = weekday[d.getDay() + weekdayCounter];
+          weekdayIndex++
+          if (weekdayIndex > 6) {
+            weekdayCounter = 0;
+            weekdayIndex = 0;
+          }
+          let day = weekday[weekdayIndex];
           const temp_ = Math.round(dayObj.main.temp)
           bottomSection.innerHTML += 
           `
@@ -38,11 +38,11 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Gothenburg,Sweden&unit
           </div>
           <hr class="horizontal-rule">
           `
-          if (weekdayCounter > 6) { //this doesn't work!! need to find a way to make it zero otherwise it get undefined when index position goes beyond 6
-            weekdayCounter = 0;
-          } else {
-            weekdayCounter++
-          }
+          // if (weekdayCounter > 6) { //this doesn't work!! need to find a way to make it zero otherwise it get undefined when index position goes beyond 6
+          //   weekdayCounter = 0;
+          // } else {
+          //   weekdayCounter++
+          // }
           
 
         })
