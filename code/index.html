@@ -8,17 +8,32 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-    <header id="dailyWeather" class="daily-weather"></header>
+    <section class="weather-container" id="weather-container"> <!-- Added by Joanna -->
+    <header id="dailyWeather" class="daily-weather">
+        <p>cloudy | 23°</p> <!-- Added by Joanna to be able to test -->
+        <p>sunrise 08.00</p> <!-- Added by Joanna to be able to test -->
+        <p>sunset 22.30</p> <!-- Added by Joanna to be able to test -->
+    </header>
 
     <section id="greeting" class="greeting">
-     <p>Loading...</p>
+     <!-- <p>Loading...</p>  Commentated out this one-->
+     <img src="https://great-weather.netlify.app/assets/Clouds.svg" alt="Cloudy"> <!-- Added by Joanna to be able to test -->
+     <h1>Weather in Berlin is Cloudy, watch a movie and have a cosy day.</h1> <!-- Added by Joanna to be able to test -->
     </section>
 
     <section id="forecast" class="forecast">
-     <p>Loading...</p>
-    </section>
+    <!-- <p>Loading...</p>  Commentated out this one-->
+    <div class="day-style"> <!-- Added by Joanna to be able to test -->
+     <p class="day">Monday</p> <!-- Added by Joanna to be able to test -->
+     <p class="celcius">23°</p> <!-- Added by Joanna to be able to test -->
+     <hr>
+     <p>Tuesday</p> <!-- Added by Joanna to be able to test -->
+     <p>20°</p> <!-- Added by Joanna to be able to test -->
 
+     
+    </div> <!-- Added by Joanna to be able to test -->
+    </section>
+</section>
     <script src="./script.js"></script>
 </body>
 </html>

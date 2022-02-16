@@ -1,3 +1,127 @@
-body{
-    background-color: red;
+:root {
+    --sunny-background: #F7E9B9;
+    --sunny-text: #2A5510;
+    --rainy-background: #A3DEF7;
+    --rainy-text: #164A68;
+    --cloudy-background: #F4F7F8;
+    --cloudy-text: #F47775;
+  }
+
+* {
+    padding: 0;
+    border: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
+
+body{
+    font-family: "Montserrat", sans-serif;
+    background-color: var(--cloudy-background);
+    color: var(--cloudy-text);
+    margin: 0;
+}
+
+.weather-container {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+}
+
+.daily-weather {
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+}
+
+.greeting {
+    display: flex;
+    text-align: left;
+    padding: 20px;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+img {
+    width: 50px;
+}
+
+.forecast {
+    display: flex;
+    /* flex-wrap: wrap; */
+    /* border-bottom: 1px dashed; */
+    /* padding: 10px 0px; */
+    text-align: left;
+    padding: 20px;
+    flex-direction: column;
+}
+
+/* This is the class for the forecast content, days and celcius */
+.day-style {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    line-break: normal;
+}
+
+.day-style p {
+    /* border-bottom: 1px dashed; */
+}
+
+/* Tried something out, did not work */
+/* .day {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}
+
+.celcius {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+
+} */
+
+hr {
+    /* border-bottom: 1px dotted; */
+    width: 100%;
+    border-bottom: 1px dashed;
+    display: ;
+}
+
+.clear {
+    background-color: var(--sunny-background);
+    color: var(--sunny-text);
+}
+
+.rain {
+    background-color: var(--rainy-background);
+    color: var(--rainy-text);
+}
+
+.clouds {
+    background-color: var(--cloudy-background);
+    color: var(--cloudy-text);
+}
+
+
+@media (min-width: 668px) {
+    .weather-container {
+      padding: 50px;
+    }
+    h1 {
+      text-align: left;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .weather-container {
+      padding: 100px;
+    }
+    h1 {
+      text-align: left;
+    }
+  }
