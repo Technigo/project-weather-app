@@ -24,6 +24,7 @@ fetch(API_URL)
         let weather = data.weather[0].description
         let sunrise = data.sys.sunrise
         let sunset = data.sys.sunset
+        let todaysWeather = data.weather[0].main
 
         //First section
         weatherInfo.innerHTML += `<p>Temp: ${Math.round(temp)}</p>`
@@ -32,10 +33,26 @@ fetch(API_URL)
         weatherInfo.innerHTML += `<p>Sunset: ${new Date(sunset * 1000).toLocaleTimeString([], { timeStyle: 'short' })}</p>`
 
         //Second section 
-        weatherText.innerHTML += `<h1>${data.name}</h1>`
+        //weatherText.innerHTML += `<h1>${data.name}</h1>`
 
+        if (todaysWeather === "Rain" || todaysWeather === "Drizzle") {
+            //HTML.classList.add("Rain", "Drizzle");
+            weatherText.innerHTML += `<p>Don't forget your umbrella. It's wet in ${data.name} today.</p>`
+        } else if (todaysWeather === "Clear") {
+            //HTML.classList.add("clear");
+            weatherText.innerHTML += `<p> Get your sunnies on. ${data.name} is looking rather great today. </p>`
+        } else if (todaysWeather === "Clouds") {
+            //HTML.classList.add("Clouds");
+            weatherText.innerHTML += `<p> Light a fire and get cosy. ${data.name} is looking grey today. </p>`
+        } else if (todaysWeather === "Snow") {
+            //HTML.classList.add("Snow");
+            weatherText.innerHTML += `<p> Light a fire and get cosy. Stockholm is looking snowy today. </p>`
+        } else  {
+          weatherText.innerHTML += `<p> There is ${todaysWeather} in ${data.name} today. </p>`
+        }  
 
     });
+
 
 //Third section  
 
