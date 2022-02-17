@@ -3,7 +3,7 @@
 // this will be removed if to-do idea is implemented
 const stockholmUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=59.33&lon=18.06&units=metric&exclude=minutely,hourly,alerts&appid=99271fdaf78d63e5bf35004e02e4e29d'
 
-// TO-DO IDEA: select city to be displayed from a drop down menu //Jacob comment
+// TO-DO IDEA: select city to be displayed from a drop down menu
 // Create a select city options menu
 // Give each option (city) a value equal to its coordinates in the exact format the api url needs
     // ex. for Stockholm value = "lat=59.33&lon=18.06"
@@ -97,6 +97,7 @@ const formatForecast = (data) => {
 
 
 /* ------------------------ START FROM HERE ------------------------*/
+
 const currentWeatherCondition = document.getElementById('currentWeatherCondition')
 const currentWeatherSunrise = document.getElementById('currentWeatherSunrise')
 const currentWeatherSunset = document.getElementById('currentWeatherSunset')
@@ -111,7 +112,27 @@ const updateCurrentWeatherDisplay = (currentWeather) => {
 }
 
 // this function is called when the data is available 
-const updateForecastDisplay = (forecast) => {
-    console.log(forecast); // checks to see what it looks like
+
+const forecastWrapper = document.getElementById('forecastWrapper') //Jacob  
+
+const updateForecastDisplay = (forecast) => { //Jacob
+    forecast.forEach((day) => {
+        forecastWrapper.innerHTML += `
+        <div class="forecast-wrapper">
+        <div class="row">
+            <p>${day.dayOfWeek}</p>
+            <p>${day.highTemp}</p>
+            </div>
+        </div>
+    `});
+     // checks to see what it looks like
     // TO-DO loop through forecast array to create html elements inside forecastWrapper and populate values
 }
+
+
+
+
+
+
+
+
