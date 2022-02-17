@@ -1,4 +1,5 @@
 # Weather App
+ It's a group project developed by 5 student, practising branch, merge pull, push.
 
 - **STEP 1 - Get started with the weather API**
     
