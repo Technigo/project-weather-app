@@ -15,7 +15,6 @@ let timezone;
 fetch(API_URL) //this is when we send something to BE
   .then((res) => res.json()) //this is when we receive the data from BE
   .then((data) => {
-    console.log("data", data);
     weatherContainer.innerHTML = ` <h1 class="today" id="today">Today</h1> 
     <h1 class="temperature" id="temperature">${data.main.temp}°C</h1>
         <h2 class="city" id="city">${data.name} </h2>
@@ -24,21 +23,15 @@ fetch(API_URL) //this is when we send something to BE
     /* sunrise & sunset */
     const sunriseSec = data.sys.sunrise;
     const sunsetSec = data.sys.sunset;
-    const sunrise = convertUTCToSunTime(sunriseSec);
-    const sunset = convertUTCToSunTime(sunsetSec);
-    sunContainer.innerHTML = `
-   
+    timezone = data.timezone;
+    const sunrise = convertUTCToSunTime(sunriseSec, data.timezone);
+    const sunset = convertUTCToSunTime(sunsetSec, data.timezone);
+    sunContainer.innerHTML = ` 
     <h3 class="sunrise" id="sunRise" >   ${sunrise} </h3> 
     <img class="sunrise-icon" src="./images/sunrise.png">
     <h3 class="sunset" id="sunSet">  ${sunset}</h3>
     <img class="sunset-icon" src="./images/sunset.png">`;
   });
-function convertUTCToSunTime(UTCsec) {
-  const UTCstring = new Date(UTCsec * 1000).toString();
-  const timeWithSec = UTCstring.split(" ")[4];
-  const timeWithoutSec = timeWithSec.slice(0, -3);
-  return timeWithoutSec; //07:38
-}
 
 // setting bg Image based on day/night
 if (timeInHr >= 6 && timeInHr <= 17) {
@@ -96,7 +89,6 @@ fetch(API_Weather_URL)
       dayFourIcon,
       dayFiveIcon,
     ];
-    console.log(iconsArr);
     function getIcon(dataOfDay) {
       let icon;
       const currHour = new Date().getHours();
@@ -151,6 +143,7 @@ fetch(API_Weather_URL)
   `;
     }
   });
+
 function convertUTCToSunTime(UTCsec, timezone) {
   const UTCstring = new Date(
     (UTCsec + timezone + new Date().getTimezoneOffset() * 60) * 1000
