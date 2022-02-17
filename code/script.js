@@ -1,5 +1,3 @@
-console.log('hej')
-
 const dailyWeather = document.getElementById('dailyWeather')
 const greeting = document.getElementById('greeting')
 const forecast = document.getElementById('forecast')
@@ -39,26 +37,26 @@ const body = document.getElementById("body")
         const backgroundchange=()=>{
             if (json.weather[0].main === "Clear"){
              icon.src = "./icons/Sunglasses.svg"
-             greeting.innerHTML += `<p>${json.name} Blue skies and sunshine on my mind!</p>`
+             greeting.innerHTML += `<p> Blue skies and only sunshine on your mind in ${json.name} today!</p>`
              document.body.style.backgroundColor = "#F7E9B9";
              document.body.style.color = "#2A5510";
         }
             else if (json.weather[0].main === "Rain") {
               icon.src = "./icons/Umbrella.svg"
-              greeting.innerHTML += `<p>Rain is just confetti from the sky</p>`
+              greeting.innerHTML += `<p>Rain in ${json.name} is just confetti from the sky!</p>`
               document.body.style.backgroundColor = "#A3DEF7";
               document.body.style.color = "#164A68" 
             }
 
             else if (json.weather[0].main === "Clouds") {
             icon.src = "./Icons/Cloud.svg";
-            greeting.innerHTML += `<p> Life is like a cloud; fluffy, beautiful and illusionary</p>`
+            greeting.innerHTML += `<p> Life in ${json.name} is like a cloud; fluffy, beautiful and illusionary</p>`
             document.body.style.backgroundColor = "#F4F7F8";
             document.body.style.color = "#F47775";   
               }
 
             else {      
-            greeting.innerHTML = `<p>The weather is the weather, you have to deal with whatever.</p>`
+            greeting.innerHTML = `<p>In ${json.name} the weather is the weather, you have to deal with whatever.</p>`
             document.body.style.backgroundColor = "#F7E9B9";
             document.body.style.color = "#2A5510"
             }
