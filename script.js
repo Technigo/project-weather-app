@@ -37,11 +37,9 @@ const convertUnixTimeStamp = (timestamp) => {
   const date = new Date(unix_timestamp * 1000);
   const hours = "0" + date.getHours();
   const minutes = "0" + date.getMinutes();
-  const seconds = "0" + date.getSeconds();
 
   // Formats how the time presents
-  const formattedTime =
-    hours.substr(-2) + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
+  const formattedTime = hours.substr(-2) + ":" + minutes.substr(-2);
 
   return formattedTime;
 };
