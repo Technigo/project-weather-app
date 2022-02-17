@@ -28,7 +28,7 @@ const body = document.getElementById("body")
         
         //gets City, Weather+temp, Sunrise and Sunset
         dailyWeather.innerHTML= `
-        <p>${json.name} </p>
+        <p>${json.name}</p>
         <p>${json.weather[0].main} | ${celcius} °C</p> 
         <p>Sunrise ${up}</p>
         <p>Sunset ${down}</p>`  
@@ -50,7 +50,7 @@ const body = document.getElementById("body")
 
             else if (json.weather[0].main === "Clouds") {
             icon.src = "./Icons/Cloud.svg";
-            greeting.innerHTML += `<p> Life in ${json.name} is like a cloud; fluffy, beautiful and illusionary</p>`
+            greeting.innerHTML += `<p> Life in ${json.name} is like a cloud today; fluffy, beautiful and illusionary</p>`
             document.body.style.backgroundColor = "#F4F7F8";
             document.body.style.color = "#F47775";   
               }
