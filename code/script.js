@@ -66,6 +66,7 @@ const formatForecast = (data) => {
 
     return forecast;
 };
+// I commented this part out for the welcome page to run first. We can discuss if we want to display Stockholm's weather as default.
 
 // fetch(stockholmUrl)
 //     .then((result) => {
