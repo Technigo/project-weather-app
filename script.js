@@ -19,7 +19,7 @@ fetch(API_URL) //this is when we send something to BE
     weatherContainer.innerHTML = ` <h1 class="today" id="today">Today</h1> 
     <h1 class="temperature" id="temperature">${data.main.temp}°C</h1>
         <h2 class="city" id="city">${data.name} </h2>
-        <h2 class="city" id="city">${data.weather[0].icon} ${data.weather[0].description} </h2>`;
+        <h2 class="city" id="city"> ${data.weather[0].description} </h2>`;
 
     /* sunrise & sunset */
     const sunriseSec = data.sys.sunrise;
@@ -152,5 +152,3 @@ fetch(API_Weather_URL)
   `;
     }
   });
-
-/* updated */
