@@ -3,16 +3,27 @@
 const currentWeather = document.getElementById('currentWeather')
 const upcomingWeather = document.getElementById('upcomingWeather')
 
+const searchForm = document.getElementById("search-form")
+const cityInput = document.getElementById("search-input")
+
 
 //const APP_ID = '94506b4af0e0a236471b8ee0da3c2281'
 
-//local variables
+//global variables
 let today = new Date().toLocaleDateString('en', {weekday: 'short'})
 //console.log('today',today) 
-      
+let city 
+
+
+
+
+
+
+let weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=94506b4af0e0a236471b8ee0da3c2281`
+let forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=94506b4af0e0a236471b8ee0da3c2281`      
 
 //Today's temperature, city, weather type, sunrise and sunset
-fetch('https://api.openweathermap.org/data/2.5/weather?q=Rovaniemi,Finland&units=metric&APPID=94506b4af0e0a236471b8ee0da3c2281')
+fetch(weatherURL)
     .then((response) => {
         return response.json()
     })
@@ -28,7 +39,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Rovaniemi,Finland&units
 
     })
 //This is fetching the 5-day forecast
-    fetch('https://api.openweathermap.org/data/2.5/forecast?q=Rovaniemi,Finland&units=metric&APPID=94506b4af0e0a236471b8ee0da3c2281')   
+    fetch(forecastURL)   
     .then((response) => {
     return response.json()
     })
@@ -73,20 +84,32 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Rovaniemi,Finland&units
         else if (weatherType === 'Rain'){
             typeImg = 'rain.png'
         }
-        else{
+        else {
             typeImg = 'partly.png'
         }
      
 
         //to make temperatures rounded to one decimal
-        let roundedWeekMaxTemp = Math.round(filteredForecastNoon[day].main.temp_max *10) / 10
-        let roundedWeekMinTemp = Math.round(filteredForecastMidnight[day].main.temp_min *10) / 10
-        upcomingWeather.innerHTML += `<div>${shortWeekday}<img class="small-weather-icons" src="./assets/${typeImg}"> ${roundedWeekMaxTemp}<span class="celsius">&#8451;</span> / ${roundedWeekMinTemp} <span class="celsius">&#8451;</span></div>`
+        let roundedWeekMaxTemp = Math.round(filteredForecastNoon[day].main.temp_max)
+        let roundedWeekMinTemp = Math.round(filteredForecastMidnight[day].main.temp_min)
+        upcomingWeather.innerHTML += `<div class="each-day">
+        <div class="each-weekday">${shortWeekday}</div>
+        <div class="each-icon"><img class="small-weather-icons" src="./assets/${typeImg}"></div> 
+        <div class="each-temps">${roundedWeekMaxTemp}<span class="celsius">°</span> / ${roundedWeekMinTemp} <span class="celsius">&#8451;</span></div>
+        </div>`
         }    
     }
 
 })
 
+
+//here are addEventListeners
+searchForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    city = cityInput.value;
+    console.log('city:', city)
+    return city
+  })
 
 
 

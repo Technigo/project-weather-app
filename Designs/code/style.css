@@ -1,8 +1,64 @@
 body {
 
-    background-color: black;
-    color: white;
+    background-color: rgb(194, 191, 191);
+    color: rgb(65, 63, 63);
 }
+#upcomingWeather {
+
+display: flex;
+flex-direction: column;
+font-size: 3rem;
+width: 80%;
+margin: auto;
+
+
+}
+#upcomingWeather img {
+    width: 5rem;
+}
+
+/*when we know fonts, we should make different font size for desktops/tablets/mobiles*/
+.each-day {
+
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+/* margin-left: 2rem; */
+margin-top: 1rem;
+margin-bottom: 1rem;
+padding: 0.7rem;
+background-color: pink;
+border-radius: 50px;
+}
+
+/*this makes every other forecasted weather child different background*/
+.each-day:nth-child(even){
+    background-color: grey;
+}
+
+
+
+
+.each-weekday {
+    flex: 1;
+    padding-left: 2.5rem;
+}
+
+.each-icon {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 2.5rem;
+   
+}
+
+
+.each-temps {
+    flex: 2;
+}
+
+
 
 .small-weather-icons {
     width: 3rem;
