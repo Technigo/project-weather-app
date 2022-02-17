@@ -19,8 +19,12 @@ const fetchWeatherData = (url) => {
          <p class="degree">${temp}°c</p>
          <p class="cityName">${cityName}</p>
          <p class="tempType">${type.charAt(0).toUpperCase()}${type.slice(1)}</p>
-         <p class="sunRise">${convertUnixTimeStamp(sunrise)}</p>
-         <p class="sunSet">${convertUnixTimeStamp(sunset)}</p>
+            <div class='sun-container'> 
+                <p class="sunRise">sunrise</p>
+                <p class="sunSet"> ${convertUnixTimeStamp(sunset)}</p>
+                <p class="sunRise">sunset </p>
+                <p class="sunSet">${convertUnixTimeStamp(sunset)}</p>
+            </div>
        </div>`;
 
       return (displayWeatherInfo.innerHTML = weatherInfo);
