@@ -80,6 +80,13 @@ if (timeInHr >= 6 && timeInHr <= 17) {
   mainContainer.style.backgroundSize = "cover";
   mainContainer.style.color = "white";
 } else if (timeInHr <= 5) {
+}
+if (timeInHr >= 18) {
+  mainContainer.style.backgroundImage = `url(./images/night.jpg)`;
+  mainContainer.style.backgroundSize = "cover";
+  mainContainer.style.color = "white";
+}
+if (timeInHr <= 5) {
   mainContainer.style.backgroundImage = `url(./images/night.jpg)`;
   mainContainer.style.backgroundSize = "cover";
   mainContainer.style.color = "white";

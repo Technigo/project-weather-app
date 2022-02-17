@@ -1,3 +1,64 @@
-*{
-    background-color: pink;
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+body {
+  background-color: #5096e0;
+  margin: 0;
+  font-family: raleway;
+  padding-bottom: 1rem;
+}
+.weather-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+.today {
+  padding: 10px;
+}
+.temperature {
+  padding: 10px;
+}
+.city {
+  padding: 10px;
+}
+
+.weather-description {
+  padding: 10px;
+}
+.sun-container {
+  padding: 5px;
+  display: flex;
+  margin-top: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+.sunrise-icon {
+  height: 70px;
+  width: 70px;
+}
+.sunset-icon {
+  height: 70px;
+  width: 70px;
+}
+.sunrise,
+.sunset {
+  margin-left: 50px;
+}
+@media only screen and (min-width: 1024px) {
+  .main-container {
+    height: 100%;
+    width: 100%;
+    padding: 5rem;
+    border-radius: 10px;
+  }
+  .sun-container {
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    margin: 1rem, 5rem;
+  }
 }
