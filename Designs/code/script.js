@@ -29,8 +29,8 @@ const fetchWeather = (city) =>{
   .then((json) => {
     //if the user input city is not a real city, we will give an error message to try again
     if (json.message){
-      currentWeather.innerHTML = ``
-      upcomingWeather.innerHTML = 'Ups, no city with that name, try again!'
+      currentWeather.innerHTML = `<div class="errormsg">Ups, no city with that name, try again!</div>`
+      upcomingWeather.innerHTML = ''
     }
     else {
       console.log(json)
@@ -41,7 +41,7 @@ const fetchWeather = (city) =>{
         minute: "2-digit",
       });
     
-      // This is showing the local time for sunrise transformed into a 2-digit form for hours and minutes.
+      // This is showing the local time for sunsetTime transformed into a 2-digit form for hours and minutes.
       let sunsetTime = new Date((json.sys.sunset + json.timezone + new Date().getTimezoneOffset() * 60) * 1000).toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",
@@ -104,8 +104,8 @@ const fetchWeather = (city) =>{
             <h2 class="city-name">${json.name}</h2>
             <p class="weather-type">${mainWeather}</p>
             <div class="rise-set">
-              <p class="sunrise">Sunrise ${sunriseTime}</p>
-              <p class="sunset">Sunset ${sunsetTime}</p>
+              <p class="sunrise">Sunrise ${sunriseTime} <img src="./assets/sunrise.png"></p>
+              <p class="sunset">Sunset ${sunsetTime} <img src="./assets/sunset.png"></p>
             </div>
             `;
             
@@ -181,7 +181,7 @@ const fetchWeather = (city) =>{
           upcomingWeather.innerHTML += `<div class="each-day">
           <div class="each-weekday">${shortWeekday}</div>
           <div class="each-icon"><img class="small-weather-icons" src="./assets/${typeImg}"></div> 
-          <div class="each-temps">${roundedWeekMaxTemp}<span class="celsius">°</span> / ${roundedWeekMinTemp} <span class="celsius">&#8451;</span></div>
+          <div class="each-temps">${roundedWeekMaxTemp}<span class="celsius">°</span> / ${roundedWeekMinTemp}<span class="celsius">&#8451;</span></div>
           </div>`
 
         }  

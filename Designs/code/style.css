@@ -28,18 +28,16 @@ form img {
 form input {
     border: none;
     flex: 3;
-    font-size: 1.5rem;
+    font-size: 2rem;
     padding: 1rem;
     border-radius: 60px;
     background-color: rgba(255, 255, 255, 0.317);
     cursor: text;
-    
 }
 
 input[type="text"]:hover {
     border: none;
     outline: none;
-
     background-color: rgba(255, 255, 255, 0.445);
   }
 
@@ -53,10 +51,7 @@ form button {
     box-sizing: border-box;
     cursor: pointer;
     margin-left: 1.5rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    padding-top: 0.8rem;
-    padding-bottom: 0.8rem;
+    padding: 1rem 2rem;
     border-radius: 30px;
     background-color: rgba(255, 255, 255, 0.721);
     font-size: 2rem;
@@ -99,8 +94,7 @@ form button:hover {
 }
 
 .main-icon img {
-    width: 300px;
-    
+    width: 250px;
 }
 
 .main-temp, .city-name, p {
@@ -130,10 +124,10 @@ p {
     justify-content: space-between;
 }
 
-/*.sunset {
-    margin-right: 5em;
-}*/
-
+.rise-set img {
+    padding-left: 1.5rem;
+    width: 4rem;
+}
 
 #upcomingWeather {
 
@@ -199,10 +193,102 @@ border-radius: 30px;
     
 }
 
+.errormsg {
+    color: rgb(252, 252, 252);
+    font-size: 2.5rem;
+    margin:auto;
+    text-align: center;
+    
+}
+
 footer {
     font-size: 1.3rem;
     padding: 3rem;
     background-color: rgba(128, 128, 128, 0.26);
     color: rgba(0, 0, 0, 0.418);
     text-align: center;
+}
+
+@media (max-width:767px) {
+    .current-weather-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom-left-radius: 50% 10%;
+        border-bottom-right-radius: 50% 10%;
+        height: 90vh;
+    }
+    .current-weather {
+        width: 800px;
+        padding: 3rem;
+        padding-bottom: 4rem;
+    }
+    .main-icon-main-temp-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding-top: 4rem;
+    }
+    .main-temp {
+        font-size: 3rem;
+    }
+    .main-icon img {
+        width: 125px;
+    }
+    .city-name {
+        font-size: 1.5rem;
+    }
+    p {
+        font-size: 1.2rem;
+    }
+    .rise-set img {
+        display: none;
+    }
+    
+    form {
+    justify-content: space-between;
+    gap: 0.5rem;
+    /* flex-direction: column; */
+    }
+
+    form input {
+        flex: 2;
+        margin: 0;
+        font-size: 1rem;
+    }
+
+    form img {
+        display:none
+    }
+
+    form button {
+        flex: 1;
+        margin-right: 0;
+        font-size: 1rem;
+        padding: 1rem 1rem;
+    }
+
+    #upcomingWeather{
+        font-size: 1.2rem;
+        
+    }
+    .each-weekday{
+        padding-left: 0.1rem;
+    }
+    .small-weather-icons{
+        width: 40px;
+    }
+}
+
+/*media query for desktop*/
+@media (min-width:1400px) {
+
+    .current-weather {
+        width: 900px;
+        padding: 0;
+        padding-bottom: 5em;
+    }
+    .main-icon img {
+        width: 300px;
+    }
 }
