@@ -3,6 +3,28 @@ body {
     background-color: rgb(194, 191, 191);
     color: rgb(65, 63, 63);
 }
+form {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin: auto;
+    justify-content: space-between;
+}
+form img {
+    padding-right: 1rem;
+    height: 2.5rem;
+}
+form input {
+    flex: 3;
+    
+}
+form button {
+    margin-left: 1rem;
+
+    
+
+}
+
 #upcomingWeather {
 
 display: flex;

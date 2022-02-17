@@ -12,22 +12,27 @@ const cityInput = document.getElementById("search-input")
 //global variables
 let today = new Date().toLocaleDateString('en', {weekday: 'short'})
 //console.log('today',today) 
-let city 
+let city = 'Helsinki'
 
-
-
-
-
-
+const fetchWeather = (city) =>{
 let weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=94506b4af0e0a236471b8ee0da3c2281`
-let forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=94506b4af0e0a236471b8ee0da3c2281`      
+let forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=94506b4af0e0a236471b8ee0da3c2281`       
+
 
 //Today's temperature, city, weather type, sunrise and sunset
-fetch(weatherURL)
+
+    
+    fetch(weatherURL)
     .then((response) => {
         return response.json()
     })
     .then((json) => {
+        //if the user input city is not a real city, we will give an error message to try again
+        if (json.message){
+            currentWeather.innerHTML = ``
+            upcomingWeather.innerHTML = 'Ups, no city with that name, try again!'
+        }
+        else{
         console.log(json)
         const roundedTemp = Math.round(json.main.temp * 10) / 10
         currentWeather.innerHTML += `
@@ -36,7 +41,7 @@ fetch(weatherURL)
         <p class="weather-type">${json.weather[0].main}</p>
         <div class="rise-set"></div>
          `
-
+        }
     })
 //This is fetching the 5-day forecast
     fetch(forecastURL)   
@@ -101,16 +106,25 @@ fetch(weatherURL)
     }
 
 })
-
+}
+//invokes the fetchWeather function when page loaded
+fetchWeather(city)
 
 //here are addEventListeners
+/*when you search a city the evenlistener activates with submit and it will 
+refresh upcomingWeather.innerHTML and currentWeather.innerHTML to empty first and then 
+it takes the input value as a city argument to the fetchWeather function*/
 searchForm.addEventListener("submit", (e) => {
     e.preventDefault();
+    upcomingWeather.innerHTML = ``
+    currentWeather.innerHTML = ``
     city = cityInput.value;
     console.log('city:', city)
-    return city
+    fetchWeather(city)
+
+    
   })
-
-
+  
+ 
 
 
