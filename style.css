@@ -87,11 +87,12 @@ h1 span {
 
 #theWeek {
   display: flex;
+  justify-content: space-evenly;
 }
 
 #theWeek p {
   margin: 20px;
-  word-spacing: 50px;
+  word-spacing: 40px;
 }
 
 
