@@ -77,7 +77,7 @@ body {
 .weekday {
   padding: 30px;
 }
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 768px) {
   .main-container {
     height: 100%;
     width: 100%;
@@ -87,6 +87,7 @@ body {
   .sun-container {
     padding: 5px;
     display: flex;
+    font-size: 30px;
   }
   .weekly-weather {
     display: flex;
