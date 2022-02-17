@@ -1,8 +1,7 @@
 body {
-<<<<<<< HEAD
-
-    background-color: rgb(194, 191, 191);
-    color: rgb(65, 63, 63);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 form {
     display: flex;
@@ -22,7 +21,6 @@ form input {
 form button {
     margin-left: 1rem;
 
-    
 
 }
 
@@ -86,12 +84,6 @@ border-radius: 50px;
 .small-weather-icons {
     width: 3rem;
     
-=======
-    margin: 0;
-    padding: 0;
-    background-color: black;
-    color: white;
-    box-sizing: border-box;
 }
 
 .current-weather-wrapper {
@@ -140,5 +132,4 @@ p {
 
 .sunset {
     margin-right: 5em;
->>>>>>> currentWeather
 }

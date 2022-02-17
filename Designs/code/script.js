@@ -1,6 +1,6 @@
 // Decide on class and id names for elements
 // DOM selectors
-<<<<<<< HEAD
+
 const currentWeather = document.getElementById('currentWeather')
 //const upcomingWeather = document.getElementById('upcomingWeather')
 
@@ -50,15 +50,14 @@ let forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&un
         <p class="weather-type">${json.weather[0].main}</p>
         <div class="rise-set">Sunrise ${sunriseHours}:${sunriseMinutes} Sunset ${sunsetHours}:${sunsetMinutes}</div>
          `
-<<<<<<< HEAD
-=======
+
         }
     })
 //This is fetching the 5-day forecast
     fetch(forecastURL)   
     .then((response) => {
     return response.json()
->>>>>>> 30f99e4545e0fca24c5c24f014e45d359391baff
+ 
     })
     .then((forecastdata) => {
     console.log(forecastdata)
@@ -139,8 +138,6 @@ searchForm.addEventListener("submit", (e) => {
   
  
 
-
-=======
 const currentWeather = document.getElementById("currentWeather");
 const upcomingWeather = document.getElementById("upcomingWeather");
 const currentWeatherWrapper = document.getElementById('current-weather-wrapper')
@@ -234,4 +231,3 @@ fetch(
         </div>
          `;
   });
->>>>>>> currentWeather
