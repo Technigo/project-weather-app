@@ -1,29 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="./src/style.css">
+    <title>Weather App</title>
 </head>
+
 <body>
-<header>
-    <p id="weather"></p>
-    <p id="sunrise"></p>
-    <p id="sunset"></p>
-</header>
+    <form id="cityForm" class="city-form">
+        <input id="cityName" class="city-name" placeholder="Enter a city" type="text"></input>
+        <input type="submit" class="submit-btn"></input>
+    </form>
 
-<section class="weather-information">
-    <img src="" id="icon" class="icons" alt="">
-    <h1 id="message"></h1>
-</section>
+    <header>
+        <p id="weather"></p>
+        <p id="sunrise"></p>
+        <p id="sunset"></p>
+    </header>
 
-<section id="forecastWrapper"></section>
+    <section class="weather-information">
+        <img src="" id="icon" class="icons" alt="">
+        <h1 id="message"></h1>
+    </section>
+
+    <section id="forecastWrapper"></section>
 
 </body>
 <script src="./src/script.js"></script>
+
 </html>
