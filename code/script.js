@@ -34,25 +34,25 @@ fetch(API_URL)
 
         //If rain or drizzle: shows umbrella icon and blue background color
         if (todaysWeather === "Rain" || todaysWeather === "Drizzle") {
-            weatherText.innerHTML += `<img src="../icons/umbrella.svg" /> <h1>Don't forget your umbrella. It's wet in ${data.name} today.</h1>`
+            weatherText.innerHTML += `<img src="./icons/umbrella.svg" /> <h1>Don't forget your umbrella. It's wet in ${data.name} today.</h1>`
             document.body.style.color = '#164A68'
             document.body.style.backgroundColor = '#A3DEF7'
 
         //Clear sky shows icon with sunglasses and yellow background color
         } else if (todaysWeather === "Clear") {
-            weatherText.innerHTML += `<img src="../icons/sunglasses.svg" /> <h1> Get your sunnies on. ${data.name} is looking rather great today. </h1>`
+            weatherText.innerHTML += `<img src="./icons/sunglasses.svg" /> <h1> Get your sunnies on. ${data.name} is looking rather great today. </h1>`
             document.body.style.color = '#2A5510'
             document.body.style.backgroundColor = '#F7E9B9'
 
             //If cloudy, snowy and all other weather categories shows cloud icon and light pink background color
 
         } else if (todaysWeather === "Clouds") {
-            weatherText.innerHTML += `<img src="../icons/cloud.svg" /> <h1> Light a fire and get cosy. ${data.name} is looking grey today. </h1>`
+            weatherText.innerHTML += `<img src="./icons/cloud.svg" /> <h1> Light a fire and get cosy. ${data.name} is looking grey today. </h1>`
             document.body.style.color = '#F47775'
             document.body.style.backgroundColor = '#F4F7F8'
 
         } else if (todaysWeather === "Snow") {
-            weatherText.innerHTML += `<img src="../icons/cloud.svg" /> <h1> Light a fire and get cosy. Stockholm is looking snowy today. </h1>`
+            weatherText.innerHTML += `<img src="./icons/cloud.svg" /> <h1> Light a fire and get cosy. ${data.name} is looking snowy today. </h1>`
             document.body.style.color = '#F47775'
             document.body.style.backgroundColor = '#F4F7F8'
 
