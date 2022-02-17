@@ -3,15 +3,11 @@ const weatherText = document.getElementById('weatherText')
 const weatherForecast = document.getElementById('weatherForecast')
 const tempAndWeather = document.getElementById('tempAndWeather')
 
-
-
 //Current weather
 const API_URL = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&appid=03f905d87366cf6f2d73c99817aed154';
 
 //Forecast
 const API_FORECAST = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=03f905d87366cf6f2d73c99817aed154'
-
-
 
 fetch(API_URL)
     //Open the package
@@ -31,31 +27,39 @@ fetch(API_URL)
         tempAndWeather.innerHTML += `<p>${weather} | </p>`
         tempAndWeather.innerHTML += ` <p>${Math.round(temp)} °C</p>`
 
-
         weatherInfo.innerHTML += `<p>sunrise ${new Date(sunrise * 1000).toLocaleTimeString([], { timeStyle: 'short' })}</p>`
         weatherInfo.innerHTML += `<p>sunset ${new Date(sunset * 1000).toLocaleTimeString([], { timeStyle: 'short' })}</p>`
 
         //Second section 
 
-        //weatherText.innerHTML += `<img src="../icons/umbrella.svg" /> <h1>Don't forget your umbrella. It's wet in ${data.name} today.</h1>`
-
-
-        //weatherText.innerHTML += `<h1>${data.name}</h1>`
-
+        //If rain or drizzle: shows umbrella icon and blue background color
         if (todaysWeather === "Rain" || todaysWeather === "Drizzle") {
-            //HTML.classList.add("Rain", "Drizzle");
             weatherText.innerHTML += `<img src="../icons/umbrella.svg" /> <h1>Don't forget your umbrella. It's wet in ${data.name} today.</h1>`
+            document.body.style.color = '#164A68'
+            document.body.style.backgroundColor = '#A3DEF7'
+
+        //Clear sky shows icon with sunglasses and yellow background color
         } else if (todaysWeather === "Clear") {
-            //HTML.classList.add("clear");
-            weatherText.innerHTML += `<p> Get your sunnies on. ${data.name} is looking rather great today. </p>`
+            weatherText.innerHTML += `<img src="../icons/sunglasses.svg" /> <h1> Get your sunnies on. ${data.name} is looking rather great today. </h1>`
+            document.body.style.color = '#2A5510'
+            document.body.style.backgroundColor = '#F7E9B9'
+
+            //If cloudy, snowy and all other weather categories shows cloud icon and light pink background color
+
         } else if (todaysWeather === "Clouds") {
-            //HTML.classList.add("Clouds");
-            weatherText.innerHTML += `<p> Light a fire and get cosy. ${data.name} is looking grey today. </p>`
+            weatherText.innerHTML += `<img src="../icons/cloud.svg" /> <h1> Light a fire and get cosy. ${data.name} is looking grey today. </h1>`
+            document.body.style.color = '#F47775'
+            document.body.style.backgroundColor = '#F4F7F8'
+
         } else if (todaysWeather === "Snow") {
-            //HTML.classList.add("Snow");
-            weatherText.innerHTML += `<p> Light a fire and get cosy. Stockholm is looking snowy today. </p>`
+            weatherText.innerHTML += `<img src="../icons/cloud.svg" /> <h1> Light a fire and get cosy. Stockholm is looking snowy today. </h1>`
+            document.body.style.color = '#F47775'
+            document.body.style.backgroundColor = '#F4F7F8'
+
         } else  {
-          weatherText.innerHTML += `<p> There is ${todaysWeather} in ${data.name} today. </p>`
+          weatherText.innerHTML += `<h1> There is ${todaysWeather} in ${data.name} today. </h1>`
+          document.body.style.color = '#F47775'
+          document.body.style.backgroundColor = '#F4F7F8'
         }  
 
     });
@@ -84,6 +88,3 @@ fetch(API_FORECAST)
         })
 
     });
-
-
-    //We got help from this question https://stackoverflow.com/c/technigo/questions/2180 so//

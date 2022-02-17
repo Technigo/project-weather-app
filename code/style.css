@@ -1,11 +1,9 @@
-/* Some different background colors just to see where we are */
-
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: #A3DEF7;
     margin: 0;
-    color: #164A68;
     padding: 2rem;
+    display: flex;
+    justify-content: center;
 }
 
 .container {
@@ -14,7 +12,7 @@ body {
 
 h1 {
     font-weight: 700;
-    font-size: 1.7rem;
+    font-size: 2rem;
 }
 
 p {
@@ -29,22 +27,8 @@ p {
     margin: 0 0 0.2rem 0;
 }
 
-.temp-and-weather {
-}
 .temp-and-weather p {
     display: inline-block;
-}
-
-.weather-text {
-
-
-}
-
-.weather-forecast {
-   /* display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-row-gap: 1rem;*/
-
 }
 
 .days {
@@ -61,4 +45,22 @@ p {
     grid-template-columns: 1fr 1fr;
     grid-row-gap: 1rem;
     padding: 0.3rem 0;
+}
+
+/*Tablet */
+@media screen and (min-width:768px) {
+.container {
+    max-width: 35vw;
+    }
+.weather-forecast {
+    display: grid;
+    grid-row-gap: 1rem;
+    padding-top: 10vh;
+}
+.days, .temp {
+    font-size: 1.4rem;
+}
+.weather-info{
+    font-size: 1.2rem;
+}
 }
