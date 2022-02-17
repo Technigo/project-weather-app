@@ -3,63 +3,114 @@
   --primary-color: black;
   --secondary-color: white;
 }
-
 body {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
-  font-family: "Roboto", sans-serif;
+  font-family: 'poppins', sans-serif;
   background-color: white;
 }
-
 /* dailyWeather styling */
 h1 {
   color: white;
-  font-size: 4.5em;
+  font-size: 7em;
+  margin-top: -10px;
+  font-weight: 300;
+  margin-bottom: -20px;
 }
-
 h2 {
   color: white;
   font-size: 2em;
+  font-weight: 300;
+  margin: 0;
 }
 
 h3 {
   margin: 0;
   color: white;
+  font-weight: 300;
+  margin-bottom: 25px;
 }
 
-.dailyWeather {
-  display: flex;
+h1 span {
+  font-size: 30px;
+  position: fixed;
+  margin-top: 30px;
+}
+
+#sunriseAndSunset {
+  
+}
+
+.weather-container {
   height: 50vh;
   width: 100vw;
   background: rgb(58, 173, 250);
   background: linear-gradient(
     180deg,
-    rgb(178, 224, 245) 0%,
-    rgb(190, 190, 248) 100%
+    rgb(176, 156, 224) 0%,
+    rgba(227, 227, 255, 1) 100%
   );
   border-bottom-left-radius: 100% 75px;
   border-bottom-right-radius: 100% 75px;
 }
 
-.weeklyWeather {
-  z-index: 2;
+.dailyWeather {
+ display: flex;
+ flex-direction: column;
+ top: 0;
+}
+
+.weather-data {
+  margin-top: -20px;
+}
+
+.weather-data {
+  padding: 30px;
 }
 
 .main-icon {
+  position: fixed;
+  margin-left: 120px;
+  bottom: 580px;
+  width: 90%;
+}
+
+#sunriseAndSunset {
+  word-spacing: 40px;
+}
+
+.weeklyWeather {
+  font-size: 20px;
+  color: #777;
+  margin-top: 50px;
+ 
+}
+
+#theWeek {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-evenly;
+}
+
+#theWeek p {
+  margin: 20px;
+  word-spacing: 40px;
 }
 
 
-nav img {
-  filter: invert(100%) sepia(3%) saturate(143%) hue-rotate(177deg) brightness(116%) contrast(100%);
-  padding: 20px;
+#theWeek:hover {
+  background: rgb(238, 238, 238);
+  width: 100%;
+  cursor: pointer;
 }
 
-.burger-btn {
+
+
+
+ /* burger menu */
+
+ .burger-btn {
   background: none;
 	color: inherit;
 	border: none;
@@ -67,20 +118,123 @@ nav img {
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
-
 }
 
-.menu ul {
-  position: absolute;
-  background-color: red;
-  width: 100vw;
-  height: 100vh;
-  opacity: 0;
-  
+.burger {
+  padding: 20px;
 }
-
-.menu button:focus + ul {
-  opacity: 1;
-  pointer-events: auto;
+ .sideMenu {
+  position: fixed;
+  background: rgb(58, 173, 250);
+  background: linear-gradient(
+  180deg,
+  rgb(176, 156, 224) 0%,
+  rgba(227, 227, 255, 1) 100%
+);
+  top: 0;
   right: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 100px;
+  z-index: 10;
+  transition: all 1s ease;
+  display: none;
+  
+
+}
+
+li {
+  color: white;
+  font-size: 30px;
+  list-style: none;
+  padding: 10px;
+}
+
+a:visited, a:link {
+  color: white;
+  text-decoration: none;
+}
+
+.closeMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+
+
+
+
+/* TABLET LANDSCAPE */
+@media (min-width:668px) and (max-width:1024px) {
+  
+  .main-icon {
+    margin-left: 300px;
+    bottom: 650px;
+    width: 80%;
+  }
+
+  .weather-data {
+    padding: 40px;
+    margin: -40px 100px;
+  }
+
+  h1 {
+    font-size: 200px;
+    margin-bottom: -50px;
+  }
+
+  h1 span {
+    font-size: 80px;
+  }
+
+  h2 {
+    font-size: 60px;
+  }
+
+  h3 {
+    font-size: 30px;
+  }
+
+  .burger {
+    width: 100px;
+  }
+}
+
+
+/* DESKTOP LANDSCAPE */
+@media (min-width:1025px) {
+  body {
+    background: rgb(58, 173, 250);
+    background: linear-gradient(
+    180deg,
+    rgb(176, 156, 224) 0%,
+    rgba(227, 227, 255, 1) 100%
+  );
+  height: 100vh;
+
+  }
+  
+  .weather-container {
+    background: none;
+  }
+
+  .main-icon {
+    position: absolute;
+    margin-left: 200px;
+    bottom: 700px;
+    width: 80%;
+  }
+  
+  .weather-data {
+    text-align: center;
+    padding: 40px;
+    margin: -40px 100px;
+  }
 }
