@@ -11,18 +11,18 @@ const API_URL =
 const API_Weather_URL =
   "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=856500266ed2a8bc92cf454b0800d15c";
 const timeInHr = new Date().getHours();
-
+let timezone;
 fetch(API_URL) //this is when we send something to BE
   .then((res) => res.json()) //this is when we receive the data from BE
   .then((data) => {
     /* sunrise & sunset */
     const sunriseSec = data.sys.sunrise;
     const sunsetSec = data.sys.sunset;
+    timezone = data.timezone;
     const sunrise = convertUTCToSunTime(sunriseSec, data.timezone);
     const sunset = convertUTCToSunTime(sunsetSec, data.timezone);
     sunContainer.innerHTML = `
      <h3 class="sunrise" id="sunRise" >${sunrise} </h3>`;
-    console.log("data", data);
     const weatherIcon = data.weather[0].icon;
     weatherContainer.innerHTML = ` <h1 class="today" id="today">Today</h1> 
     <h1 class="temperature" id="temperature">${data.main.temp}°C</h1>
@@ -61,7 +61,7 @@ fetch(API_Weather_URL)
   .then((data) => {
     const dataOfFiveDays = data.list;
     const daysFromData = dataOfFiveDays.map((data) => {
-      return new Date(data.dt_txt).toDateString();
+      return convertUTCToDate(data.dt);
     });
     const uniqueDays = [...new Set(daysFromData)];
 
@@ -76,10 +76,9 @@ fetch(API_Weather_URL)
     const dayThree = splitDataByDay(2);
     const dayFour = splitDataByDay(3);
     const dayFive = splitDataByDay(4);
-
     function splitDataByDay(uniqueDayIndex) {
       return dataOfFiveDays.filter((data) => {
-        const date = new Date(data.dt_txt).toDateString();
+        const date = convertUTCToDate(data.dt);
         if (date === uniqueDays[uniqueDayIndex]) {
           return data;
         }
@@ -99,12 +98,12 @@ fetch(API_Weather_URL)
       dayFourIcon,
       dayFiveIcon,
     ];
-
+    console.log(iconsArr);
     function getIcon(dataOfDay) {
       let icon;
       const currHour = new Date().getHours();
       dataOfDay.forEach((data) => {
-        const dataHour = new Date(data.dt_txt).getHours();
+        const dataHour = convertUTCToHours(data.dt);
         if (dataHour <= currHour && dataHour + 3 > currHour) {
           icon = data.weather[0].icon;
         }
@@ -156,3 +155,24 @@ fetch(API_Weather_URL)
   });
 
 /* updated */
+function convertUTCToSunTime(UTCsec, timezone) {
+  const UTCstring = new Date(
+    (UTCsec + timezone + new Date().getTimezoneOffset() * 60) * 1000
+  ).toTimeString();
+  const timeWithSec = UTCstring.split(":");
+  return `${timeWithSec[0]}: ${timeWithSec[1]}`;
+}
+
+function convertUTCToDate(UTCsec) {
+  const UTCstring = new Date(
+    (UTCsec + timezone + new Date().getTimezoneOffset() * 60) * 1000
+  ).toDateString();
+  return UTCstring;
+}
+
+function convertUTCToHours(UTCsec) {
+  const UTCstring = new Date(
+    (UTCsec + timezone + new Date().getTimezoneOffset() * 60) * 1000
+  ).getHours();
+  return UTCstring;
+}
