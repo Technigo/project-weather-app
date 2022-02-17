@@ -2,27 +2,104 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: rgb(247, 247, 247);
+
 }
 form {
     display: flex;
     flex-direction: row;
+    position: absolute;
     width: 80%;
-    margin: auto;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 2rem;
     justify-content: space-between;
+    align-items: center;
 }
 form img {
     padding-right: 1rem;
-    height: 2.5rem;
+    height: 3rem;
 }
 form input {
+    border-color: rgb(158, 157, 157);
     flex: 3;
+    font-size: 1.5rem;
+    padding: 1rem;
+    border-radius: 60px;
+    
     
 }
 form button {
-    margin-left: 1rem;
-
+    all: unset;
+    cursor: pointer;
+    margin-left: 1.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    border-radius: 30px;
+    background-color: white;
+    font-size: 2rem;
 
 }
+
+
+/****** CURRENT WEATHER SECTION ******/
+
+.current-weather-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom-left-radius: 50% 25%;
+    border-bottom-right-radius: 50% 25%;
+}
+
+.current-weather {
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    padding: 4em;
+    padding-bottom: 10em;
+}
+
+.main-icon-container {
+    display: flex;
+    justify-content: flex-end;
+    
+}
+
+.main-icon img {
+    width: 300px;
+    
+}
+
+.main-temp, .city-name, p {
+    color: white;
+}
+
+.main-temp {
+    font-size: 6em;
+    margin: 1em 0 0;
+}
+
+.city-name {
+    font-size: 3em;
+}
+
+p {
+    font-size: 2.2em;
+}
+
+.rise-set {
+    display: flex;
+    justify-content: space-between;
+}
+
+/*.sunset {
+    margin-right: 5em;
+}*/
+
+
 
 #upcomingWeather {
 
@@ -33,9 +110,11 @@ width: 80%;
 margin: auto;
 
 
+
 }
 #upcomingWeather img {
     width: 5rem;
+
 }
 
 /*when we know fonts, we should make different font size for desktops/tablets/mobiles*/
@@ -49,15 +128,14 @@ align-items: center;
 margin-top: 1rem;
 margin-bottom: 1rem;
 padding: 0.7rem;
-background-color: pink;
+background-color: rgb(255, 255, 255);
 border-radius: 50px;
 }
 
 /*this makes every other forecasted weather child different background*/
 .each-day:nth-child(even){
-    background-color: grey;
+    background-color: rgba(136, 136, 136, 0.173);
 }
-
 
 
 
@@ -86,50 +164,3 @@ border-radius: 50px;
     
 }
 
-.current-weather-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-bottom-left-radius: 50% 25%;
-    border-bottom-right-radius: 50% 25%;
-}
-
-.current-weather {
-    display: flex;
-    flex-direction: column;
-    width: 700px;
-    padding: 4em;
-    padding-bottom: 10em;
-}
-
-.main-icon-container {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.main-icon img {
-    width: 300px;
-    
-}
-
-.main-temp {
-    font-size: 6em;
-    margin: 1em 0 0;
-}
-
-.city-name {
-    font-size: 3em;
-}
-
-p {
-    font-size: 2.2em;
-}
-
-.rise-set {
-    display: flex;
-    justify-content: space-between;
-}
-
-.sunset {
-    margin-right: 5em;
-}
