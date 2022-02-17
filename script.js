@@ -6,6 +6,7 @@ const weatherDescription = document.getElementById("weatherDescription");
 const weatherForecast = document.getElementById("weatherForecast");
 const sunContainer = document.getElementById("sunContainer");
 const mainContainer = document.getElementById("mainContainer");
+
 const API_URL =
   "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=856500266ed2a8bc92cf454b0800d15c";
 const API_Weather_URL =
@@ -15,10 +16,13 @@ let timezone;
 fetch(API_URL) //this is when we send something to BE
   .then((res) => res.json()) //this is when we receive the data from BE
   .then((data) => {
+    const icon = data.weather[0].icon;
+
     weatherContainer.innerHTML = ` <h1 class="today" id="today">Today</h1> 
     <h1 class="temperature" id="temperature">${data.main.temp}°C</h1>
         <h2 class="city" id="city">${data.name} </h2>
-        <h2 class="city" id="city"> ${data.weather[0].description} </h2>`;
+        <h2 class="city" id="city"><img src="http://openweathermap.org/img/wn/${icon}.png" alt="weather icon"/> ${data.weather[0].description} </h2>
+        `;
 
     /* sunrise & sunset */
     const sunriseSec = data.sys.sunrise;
