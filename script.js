@@ -49,6 +49,7 @@ const locationSun = async () => {
   console.log('ip address', ipJson);
   city2 = ipJson.city;
   country2 = ipJson.country;
+  ip = ipJson.ip
   console.log(city2)
   console.log(country2)
   // This API takes the city and country and returns sunrise and sunset in local datetime
@@ -59,8 +60,17 @@ const locationSun = async () => {
   sunset = sunJson.sunset.replace(":", ".")
   console.log(`Sunrise: ${sunrise} and ${sunset}`)
 
-  // Copy of the API_WEATHER fetch
-  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city2},${country2}&units=metric&APPID=1d70a07080ab5151e3f54886ea0d8389`)
+  // This API gets longitude and latitude from IP
+  const longLatWait = await fetch(`https://api.freegeoip.app/json/?apikey=e3c872d0-8fd1-11ec-b62f-1506f8441a2e`);
+  const longLatJson = await longLatWait.json();
+  console.log('longitude latitude IP API', longLatJson);
+  lat = longLatJson.latitude
+  lon = longLatJson.longitude
+  console.log(`lat ${lat} lon ${lon}`)
+
+  // Copy of the API_WEATHER fetch where I input lat and lon instead of cityname
+  fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=1d70a07080ab5151e3f54886ea0d8389`)
+  // fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city2},${country2}&units=metric&APPID=1d70a07080ab5151e3f54886ea0d8389`)
     .then((res) => res.json())
     .then((data) => {
       // console.log('weather data', data);
@@ -108,7 +118,7 @@ const locationSun = async () => {
         <img id="weatherIcon" class="weather-icon" src="Designs/Design-2/icons/noun_Cloud_1188486.svg" />
         <h1 id="weatherQuip" class="weather-quip">Light a fire and get cosy. ${data.name} is looking grey today.</h1>
         `
-        console.log(document.querySelectorAll(".horizontal-rule"))
+        // console.log(document.querySelectorAll(".horizontal-rule"))
       } else { // if the word == "Rain"
         body.className = "rainy"
         middleSection.innerHTML = `
@@ -120,8 +130,9 @@ const locationSun = async () => {
     
   });
 
-  // Copy of the API_FORECAST fetch
-  fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city2},${country2}&units=metric&APPID=1d70a07080ab5151e3f54886ea0d8389`)
+  // Copy of the API_FORECAST fetch where I input lat & lon instead of city and country
+  fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&APPID=1d70a07080ab5151e3f54886ea0d8389`)
+  // fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city2},${country2}&units=metric&APPID=1d70a07080ab5151e3f54886ea0d8389`)
     .then((res) => res.json())
     .then((data) => {
           console.log(`fetch forecast`, data)
