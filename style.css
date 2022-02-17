@@ -40,8 +40,6 @@ h1 span {
   margin-top: 30px;
 }
 
-
-
 .weather-container {
   height: 50vh;
   width: 100vw;
@@ -54,10 +52,15 @@ h1 span {
   border-bottom-left-radius: 100% 75px;
   border-bottom-right-radius: 100% 75px;
 }
+
 .dailyWeather {
  display: flex;
  flex-direction: column;
  top: 0;
+}
+
+.weather-data {
+  margin-top: -20px;
 }
 
 .burger-btn {
@@ -85,7 +88,75 @@ h1 span {
   width: 90%;
 }
 
+#sunriseAndSunset {
+  word-spacing: 40px;
+}
 
 
-/* Testing code*/
+/* TABLET LANDSCAPE */
+@media (min-width:668px) and (max-width:1024px) {
+  
+  .main-icon {
+    margin-left: 300px;
+    bottom: 650px;
+    width: 80%;
+  }
 
+  .weather-data {
+    padding: 40px;
+    margin: -40px 100px;
+  }
+
+  h1 {
+    font-size: 200px;
+    margin-bottom: -50px;
+  }
+
+  h1 span {
+    font-size: 80px;
+  }
+
+  h2 {
+    font-size: 60px;
+  }
+
+  h3 {
+    font-size: 30px;
+  }
+
+  .burger {
+    width: 100px;
+  }
+}
+
+
+/* DESKTOP LANDSCAPE */
+@media (min-width:1025px) {
+  body {
+    background: rgb(58, 173, 250);
+    background: linear-gradient(
+    180deg,
+    rgb(176, 156, 224) 0%,
+    rgba(227, 227, 255, 1) 100%
+  );
+  height: 100vh;
+
+  }
+  
+  .weather-container {
+    background: none;
+  }
+
+  .main-icon {
+    position: absolute;
+    margin-left: 200px;
+    bottom: 700px;
+    width: 80%;
+  }
+  
+  .weather-data {
+    text-align: center;
+    padding: 40px;
+    margin: -40px 100px;
+  }
+}
