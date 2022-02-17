@@ -114,7 +114,7 @@ h1 span {
   flex-direction: column;
   padding: 100px;
   z-index: 10;
-  transition: top 1s ease;
+  transition: all 1s ease;
   display: none;
   
 
