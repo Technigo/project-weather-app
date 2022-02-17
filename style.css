@@ -8,7 +8,7 @@ body {
   padding: 0;
   width: 100%;
   height: 100%;
-  font-family: 'poppins', sans-serif;
+  font-family: "poppins", sans-serif;
   background-color: white;
 }
 /* dailyWeather styling */
@@ -40,14 +40,9 @@ h1 span {
   margin-top: 30px;
 }
 
-#sunriseAndSunset {
-  
-}
-
 .weather-container {
   height: 50vh;
   width: 100vw;
-  background: rgb(58, 173, 250);
   background: linear-gradient(
     180deg,
     rgb(176, 156, 224) 0%,
@@ -58,9 +53,9 @@ h1 span {
 }
 
 .dailyWeather {
- display: flex;
- flex-direction: column;
- top: 0;
+  display: flex;
+  flex-direction: column;
+  top: 0;
 }
 
 .weather-data {
@@ -86,7 +81,6 @@ h1 span {
   font-size: 20px;
   color: #777;
   margin-top: 50px;
- 
 }
 
 #theWeek {
@@ -99,39 +93,35 @@ h1 span {
   word-spacing: 40px;
 }
 
-
 #theWeek:hover {
   background: rgb(238, 238, 238);
   width: 100%;
   cursor: pointer;
 }
 
+/* burger menu */
 
-
-
- /* burger menu */
-
- .burger-btn {
+.burger-btn {
   background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
 }
 
 .burger {
   padding: 20px;
 }
- .sideMenu {
+.sideMenu {
   position: fixed;
   background: rgb(58, 173, 250);
   background: linear-gradient(
-  180deg,
-  rgb(176, 156, 224) 0%,
-  rgba(227, 227, 255, 1) 100%
-);
+    180deg,
+    rgb(176, 156, 224) 0%,
+    rgba(227, 227, 255, 1) 100%
+  );
   top: 0;
   right: 0;
   left: 0;
@@ -143,8 +133,6 @@ h1 span {
   z-index: 10;
   transition: all 1s ease;
   display: none;
-  
-
 }
 
 li {
@@ -154,7 +142,8 @@ li {
   padding: 10px;
 }
 
-a:visited, a:link {
+a:visited,
+a:link {
   color: white;
   text-decoration: none;
 }
@@ -168,13 +157,8 @@ a:visited, a:link {
   cursor: pointer;
 }
 
-
-
-
-
 /* TABLET LANDSCAPE */
-@media (min-width:668px) and (max-width:1024px) {
-  
+@media (min-width: 668px) and (max-width: 1024px) {
   .main-icon {
     margin-left: 300px;
     bottom: 650px;
@@ -208,20 +192,18 @@ a:visited, a:link {
   }
 }
 
-
 /* DESKTOP LANDSCAPE */
-@media (min-width:1025px) {
+@media (min-width: 1025px) {
   body {
     background: rgb(58, 173, 250);
     background: linear-gradient(
-    180deg,
-    rgb(176, 156, 224) 0%,
-    rgba(227, 227, 255, 1) 100%
-  );
-  height: 100vh;
-
+      180deg,
+      rgb(176, 156, 224) 0%,
+      rgba(227, 227, 255, 1) 100%
+    );
+    height: 100vh;
   }
-  
+
   .weather-container {
     background: none;
   }
@@ -232,7 +214,7 @@ a:visited, a:link {
     bottom: 700px;
     width: 80%;
   }
-  
+
   .weather-data {
     text-align: center;
     padding: 40px;
