@@ -21,8 +21,8 @@ const fetchWeatherData = (url) => {
          <p class="tempType">${type.charAt(0).toUpperCase()}${type.slice(1)}</p>
             <div class='sun-container'> 
                 <p class="sunRise">sunrise</p>
-                <p class="sunSet"> ${convertUnixTimeStamp(sunset)}</p>
-                <p class="sunRise">sunset </p>
+                <p class="sunRise"> ${convertUnixTimeStamp(sunrise)}</p>
+                <p class="sunSet">sunset</p>
                 <p class="sunSet">${convertUnixTimeStamp(sunset)}</p>
             </div>
        </div>`;
