@@ -3,8 +3,12 @@ body {
     padding: 0;
     box-sizing: border-box;
     background-color: rgb(247, 247, 247);
+    /* font-family: 'Cabin', sans-serif; */
+    /* font-family: 'Cairo', sans-serif; */
+    font-family: 'Varela Round', sans-serif;
 
 }
+
 form {
     display: flex;
     flex-direction: row;
@@ -15,22 +19,38 @@ form {
     margin-top: 2rem;
     justify-content: space-between;
     align-items: center;
+    z-index: 2;
 }
 form img {
     padding-right: 1rem;
     height: 3rem;
 }
 form input {
-    border-color: rgb(158, 157, 157);
+    border: none;
     flex: 3;
     font-size: 1.5rem;
     padding: 1rem;
     border-radius: 60px;
-    
+    background-color: rgba(255, 255, 255, 0.317);
+    cursor: text;
     
 }
+
+input[type="text"]:hover {
+    border: none;
+    outline: none;
+
+    background-color: rgba(255, 255, 255, 0.445);
+  }
+
+  input:focus {
+
+    outline: none;
+    }
+  
+
 form button {
-    all: unset;
+    box-sizing: border-box;
     cursor: pointer;
     margin-left: 1.5rem;
     padding-left: 2rem;
@@ -38,11 +58,19 @@ form button {
     padding-top: 0.8rem;
     padding-bottom: 0.8rem;
     border-radius: 30px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.721);
     font-size: 2rem;
+    color: rgb(148, 148, 148);
+    border: none;
 
 }
 
+form button:hover {
+    color: rgba(79, 74, 74, 0.788);
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.863);
+    
+}
 
 /****** CURRENT WEATHER SECTION ******/
 
@@ -52,20 +80,22 @@ form button {
     justify-content: center;
     border-bottom-left-radius: 50% 25%;
     border-bottom-right-radius: 50% 25%;
+    height: 90vh;
 }
 
 .current-weather {
     display: flex;
     flex-direction: column;
-    width: 700px;
+    width: 800px;
     padding: 4em;
     padding-bottom: 10em;
 }
 
-.main-icon-container {
+.main-icon-main-temp-container {
     display: flex;
-    justify-content: flex-end;
-    
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 10em;
 }
 
 .main-icon img {
@@ -79,11 +109,16 @@ form button {
 
 .main-temp {
     font-size: 6em;
-    margin: 1em 0 0;
+    margin: 0;
+    font-family: 'Helvetica', sans-serif;
 }
 
 .city-name {
     font-size: 3em;
+}
+
+.weather-type {
+    margin: 0;
 }
 
 p {
@@ -100,7 +135,6 @@ p {
 }*/
 
 
-
 #upcomingWeather {
 
 display: flex;
@@ -108,10 +142,11 @@ flex-direction: column;
 font-size: 3rem;
 width: 80%;
 margin: auto;
-
-
+margin-bottom: 10%;
+margin-top: 3rem;
 
 }
+
 #upcomingWeather img {
     width: 5rem;
 
@@ -125,23 +160,23 @@ flex-direction: row;
 justify-content: space-between;
 align-items: center;
 /* margin-left: 2rem; */
-margin-top: 1rem;
-margin-bottom: 1rem;
+margin-top: 0.6rem;
+margin-bottom: 0.6rem;
 padding: 0.7rem;
 background-color: rgb(255, 255, 255);
-border-radius: 50px;
+border-radius: 30px;
 }
 
 /*this makes every other forecasted weather child different background*/
 .each-day:nth-child(even){
-    background-color: rgba(136, 136, 136, 0.173);
+    background-color: rgba(136, 136, 136, 0.077);
 }
 
 
 
 .each-weekday {
     flex: 1;
-    padding-left: 2.5rem;
+    padding-left: 3.5rem;
 }
 
 .each-icon {
@@ -164,3 +199,10 @@ border-radius: 50px;
     
 }
 
+footer {
+    font-size: 1.3rem;
+    padding: 3rem;
+    background-color: rgba(128, 128, 128, 0.26);
+    color: rgba(0, 0, 0, 0.418);
+    text-align: center;
+}

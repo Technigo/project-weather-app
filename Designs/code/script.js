@@ -12,93 +12,95 @@ const cityInput = document.getElementById("search-input")
 
 //global variables
 let today = new Date().toLocaleDateString('en', {weekday: 'short'})
-//console.log('today',today) 
-let city = 'Helsinki'
+let city = 'Helsinki' //default value for city, when page loaded
 let mainIcon = ""
 
 
 const fetchWeather = (city) =>{
-let weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=94506b4af0e0a236471b8ee0da3c2281`
-let forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=94506b4af0e0a236471b8ee0da3c2281`       
-
-
-//Today's temperature, city, weather type, sunrise and sunset
+  //URL variables, the city is based on the input of the user
+  let weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=94506b4af0e0a236471b8ee0da3c2281`
+  let forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=94506b4af0e0a236471b8ee0da3c2281`       
 
     
-    fetch(weatherURL)
-    .then((response) => {
-        return response.json()
-    })
-    .then((json) => {
-        //if the user input city is not a real city, we will give an error message to try again
-        if (json.message){
-            currentWeather.innerHTML = ``
-            upcomingWeather.innerHTML = 'Ups, no city with that name, try again!'
+  fetch(weatherURL)
+  .then((response) => {
+    return response.json()
+  })
+  .then((json) => {
+    //if the user input city is not a real city, we will give an error message to try again
+    if (json.message){
+      currentWeather.innerHTML = ``
+      upcomingWeather.innerHTML = 'Ups, no city with that name, try again!'
+    }
+    else {
+      console.log(json)
+      const roundedTemp = Math.round(json.main.temp * 10) / 10
+      // This is showing the local time for sunrise transformed into a 2-digit form for hours and minutes.
+      let sunriseTime = new Date((json.sys.sunrise + json.timezone + new Date().getTimezoneOffset() * 60) * 1000).toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+    
+      // This is showing the local time for sunrise transformed into a 2-digit form for hours and minutes.
+      let sunsetTime = new Date((json.sys.sunset + json.timezone + new Date().getTimezoneOffset() * 60) * 1000).toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+
+      // This variable stores the current weather
+      const mainWeather = json.weather[0].main;
+
+      // This function shows the weather icons that are changing according to the current weather
+      const showMainWeatherIcon = () => {
+        if (mainWeather === `Snow` ) {
+          mainIcon = `<img src="./assets/snow.png"/>`
+        } else if (mainWeather === `Rain` || mainWeather === `Drizzle`) {
+          mainIcon = `<img src="./assets/rain.png" />`
+        } else if (mainWeather === `Thunderstorm`) {
+          mainIcon = `<img src="./assets/thunderstorm.png" />`
+        } else if (mainWeather === `Clear`) {
+          mainIcon = `<img src="./assets/clear.png" />`
+        } else if (mainWeather === `Clouds`) {
+          mainIcon = `<img src="./assets/cloudy.png" />`
+        } else if (mainWeather === `Squall`) {
+          mainIcon = `<img src="./assets/squall.png" />`
+        } else if (mainWeather === `Tornado`) {
+          mainIcon = `<img src="./assets/tornado.png" />`
+        } else if (mainWeather === `Fog` || mainWeather === `Mist` || mainWeather === `Haze`) {
+          mainIcon = `<img src="./assets/fog.png" />`
+        } else if (mainWeather === `Dust` || mainWeather === `Sand` || mainWeather === `Smoke` || mainWeather === `Ash`) {
+          mainIcon = `<img src="./assets/dust.png" />`
         }
+      };
+
+      //invoking the showMainWeatherIcon function
+      showMainWeatherIcon();
+
+      //This function changes the background color based on the temperature of today (in displayed city)
+      const changeTempBackground = () => {
+        if (roundedTemp < 5) {
+          currentWeatherWrapper.style.background =
+          'linear-gradient(50deg, #663399 0%, #b9bfff 50%, #22277A 100%)'
+          } 
+        else if (roundedTemp > 5 && roundedTemp < 19) {
+          currentWeatherWrapper.style.background =
+          'linear-gradient(50deg, #1c9bf6e8 0%, #d8d8d8 60%, #1c9cf6e8 100%)'
+          } 
         else {
-        console.log(json)
-        const roundedTemp = 10
-        //Math.round(json.main.temp * 10) / 10
-        // This is showing the local time for sunrise transformed into a 2-digit form for hours and minutes.
-        let sunriseTime = new Date((json.sys.sunrise + json.timezone + new Date().getTimezoneOffset() * 60) * 1000).toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-        });
-    
-        // This is showing the local time for sunrise transformed into a 2-digit form for hours and minutes.
-        let sunsetTime = new Date(
-          (json.sys.sunset + json.timezone + new Date().getTimezoneOffset() * 60) * 1000).toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-        });
-
-        // This variable stores the current weather
-        const mainWeather = json.weather[0].main;
-
-        // This function shows the weather icons that are changing according to the current weather
-        const showMainWeatherIcon = () => {
-          if (mainWeather === `Snow` ) {
-            mainIcon = `<img src="./assets/snow.png"/>`
-          } else if (mainWeather === `Rain` || mainWeather === `Drizzle`) {
-            mainIcon = `<img src="./assets/rain.png" />`
-          } else if (mainWeather === `Thunderstorm`) {
-            mainIcon = `<img src="./assets/thunderstorm.png" />`
-          } else if (mainWeather === `Clear`) {
-            mainIcon = `<img src="./assets/clear.png" />`
-          } else if (mainWeather === `Clouds`) {
-            mainIcon = `<img src="./assets/cloudy.png" />`
-          } else if (mainWeather === `Squall`) {
-            mainIcon = `<img src="./assets/squall.png" />`
-          } else if (mainWeather === `Tornado`) {
-            mainIcon = `<img src="./assets/tornado.png" />`
-          } else if (mainWeather === `Fog` || mainWeather === `Mist` || mainWeather === `Haze`) {
-            mainIcon = `<img src="./assets/fog.png" />`
-          } else if (mainWeather === `Dust` || mainWeather === `Sand` || mainWeather === `Smoke` || mainWeather === `Ash`) {
-            mainIcon = `<img src="./assets/dust.png" />`
-          }
-        };
-        showMainWeatherIcon();
-
-        const changeTempBackground = () => {
-            if (roundedTemp < 5) {
-                currentWeatherWrapper.style.background =
-                'linear-gradient(50deg, #663399 0%, #b9bfff 50%, #22277A 100%)'
-            } else if (roundedTemp > 5 && roundedTemp < 19) {
-                currentWeatherWrapper.style.background =
-                'linear-gradient(50deg, #1c9bf6e8 0%, #d8d8d8 60%, #1c9cf6e8 100%)'
-            } else {
-                currentWeatherWrapper.style.background =
-                'linear-gradient(50deg, #F6412D 0%, #FFF682 60%, #FF5607 100%)'
-            } 
+          currentWeatherWrapper.style.background =
+          'linear-gradient(50deg, #F6412D 0%, #FFF682 60%, #FF5607 100%)'
+          } 
         }
+
+        //invoking the schangeTempBackground function
         changeTempBackground()
 
-        // This is showing the current weather for the location.
+        // This is showing the current weather for the city location.
         currentWeather.innerHTML += `
-            <div class="main-icon-container">
-              <div class = "main-icon"> ${mainIcon}</div>
-            </div>
+            <div class="main-icon-main-temp-container">
             <h1 class="main-temp">${roundedTemp} <span class="celsius">&#8451;</span></h1>
+              <div class="main-icon"> ${mainIcon}</div>
+            </div>
             <h2 class="city-name">${json.name}</h2>
             <p class="weather-type">${mainWeather}</p>
             <div class="rise-set">
@@ -106,8 +108,8 @@ let forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&un
               <p class="sunset">Sunset ${sunsetTime}</p>
             </div>
             `;
-            //DOR and KRI part here (inside of else)
-            //This is fetching the 5-day forecast
+            
+    //This is fetching the 5-day forecast
     fetch(forecastURL)   
     .then((response) => {
     return response.json()
@@ -117,76 +119,77 @@ let forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&un
     console.log(forecastdata)
 
    
-    //Here we declare variables for min temp at midnight and max temp at noon:
-    const filteredForecastNoon = forecastdata.list.filter(item => item.dt_txt.includes('12:00')) 
-    const filteredForecastMidnight = forecastdata.list.filter(item => item.dt_txt.includes('00:00:00')) 
-    
-        
+      /*Here we declare variables for min and max temperatures, because the data was given
+      every third hours, we decided to use for the min temperature the lowest temperature at 
+      midnight and for the max temperature the highest temperature at noon*/
 
-    //console.log to test
-    console.log('noon', filteredForecastNoon)
-    console.log('midnight', filteredForecastMidnight)
+      //here we define arrays to filter data of next days at noon and midnight
+      const filteredForecastNoon = forecastdata.list.filter(item => item.dt_txt.includes('12:00')) 
+      const filteredForecastMidnight = forecastdata.list.filter(item => item.dt_txt.includes('00:00:00'))
 
-    for(let day =0; day < filteredForecastNoon.length; day++) {
-        //getting the weekday of forecasted temperature
+      /*This is for loop to go through the filteredForecastNoon and filteredForecastMidnight arrays 
+      and print our the info we need for the 5 day forecast*/
+      for(let day =0; day < filteredForecastNoon.length; day++) {
+
+        //getting the weekday of forecasted days
         let weekDay = filteredForecastNoon[day].dt_txt
+
         //printing the short versin of the weekday (e.g Mon,Tue,Wed,Thu,Fri,Sat,Sun)
         let shortWeekday = new Date(weekDay).toLocaleDateString('en', {weekday: 'short'})
         
-        
-        //here if statement if shortWeekDay does not equels to today, then executes following:
+        /*this if statement makes sure that we only print out the weekdays that do not equal to today 
+        (this happens if the time is between 00-12, then it will forecast the same day, so with this if statement 
+        we avoid that happening*/
         if (shortWeekday !== today) {
-        //weatherType storage the value of forecast days's weather type
-        let weatherType = filteredForecastNoon[day].weather[0].main
-        console.log(weatherType)
-        //if statements what weather image we should use for forecasted days:
-        //here comes if statement 
-        
-        if (weatherType === 'Snow'){
-            typeImg = 'snow2.png'
-        }
-        else if (weatherType === 'Rain'){
-            typeImg = 'rain2.png'
-        }
-        else if (weatherType === 'Thunderstorm'){
-            typeImg = 'thunderstorm2.png'
-        }
-        else if (weatherType === 'Clear'){
-          typeImg = 'clear2.png'
-        }
-        else if (weatherType === 'Clouds'){
-          typeImg = 'cloudy2.png'
-        }
-        else if (weatherType === 'Squall'){
-          typeImg = 'squall2.png'
-        }
-        else if (weatherType === 'Tornado'){
-          typeImg = 'tornado2.png'
-        }
-        else if (weatherType === `Fog` || weatherType === `Mist` || weatherType === `Haze`){
-          typeImg = 'fog2.png'
-        }
-        else if (mainWeather === `Dust` || mainWeather === `Sand` || mainWeather === `Smoke` || mainWeather === `Ash`){
-          typeImg = 'dust2.png'
-        }
+          //weatherType storage the value of forecast days's weather type
+          let weatherType = filteredForecastNoon[day].weather[0].main
+      
+          // if and if else statements what weather icon we should use for forecasted days:
+          
+          if (weatherType === 'Snow'){
+              typeImg = 'snow2.png'
+          }
+          else if (weatherType === 'Rain'){
+              typeImg = 'rain2.png'
+          }
+          else if (weatherType === 'Thunderstorm'){
+              typeImg = 'thunderstorm2.png'
+          }
+          else if (weatherType === 'Clear'){
+            typeImg = 'clear2.png'
+          }
+          else if (weatherType === 'Clouds'){
+            typeImg = 'cloudy2.png'
+          }
+          else if (weatherType === 'Squall'){
+            typeImg = 'squall2.png'
+          }
+          else if (weatherType === 'Tornado'){
+            typeImg = 'tornado2.png'
+          }
+          else if (weatherType === `Fog` || weatherType === `Mist` || weatherType === `Haze`){
+            typeImg = 'fog2.png'
+          }
+          else if (mainWeather === `Dust` || mainWeather === `Sand` || mainWeather === `Smoke` || mainWeather === `Ash`){
+            typeImg = 'dust2.png'
+          }
 
-        //to make temperatures rounded to one decimal
-        let roundedWeekMaxTemp = Math.round(filteredForecastNoon[day].main.temp_max)
-        let roundedWeekMinTemp = Math.round(filteredForecastMidnight[day].main.temp_min)
-        upcomingWeather.innerHTML += `<div class="each-day">
-        <div class="each-weekday">${shortWeekday}</div>
-        <div class="each-icon"><img class="small-weather-icons" src="./assets/${typeImg}"></div> 
-        <div class="each-temps">${roundedWeekMaxTemp}<span class="celsius">°</span> / ${roundedWeekMinTemp} <span class="celsius">&#8451;</span></div>
-        </div>`
-        }    
-    }
+          //to make temperatures rounded without decimals
+          let roundedWeekMaxTemp = Math.round(filteredForecastNoon[day].main.temp_max)
+          let roundedWeekMinTemp = Math.round(filteredForecastMidnight[day].main.temp_min)
+          //to diplay weekday, weather icon and min/max temperature in the upcominWeather section
+          upcomingWeather.innerHTML += `<div class="each-day">
+          <div class="each-weekday">${shortWeekday}</div>
+          <div class="each-icon"><img class="small-weather-icons" src="./assets/${typeImg}"></div> 
+          <div class="each-temps">${roundedWeekMaxTemp}<span class="celsius">°</span> / ${roundedWeekMinTemp} <span class="celsius">&#8451;</span></div>
+          </div>`
 
-    })
-            
-        }//else ends here
-
-      });//this is ending then.json
-}
+        }  
+      }
+    })        
+  }
+})
+} //ending curly brackets checked
 
 
 
