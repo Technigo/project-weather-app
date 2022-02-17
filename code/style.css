@@ -67,7 +67,6 @@ svg {
     animation-duration: 4s;
     animation-iteration-count: 1;
     animation-delay: 0s;
-    animation-fill-mode:
 }
 
 @keyframes fadein {
