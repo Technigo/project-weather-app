@@ -48,8 +48,8 @@ fetch(API_FORECAST)
 
       weeklyWeather.innerHTML += `
         <tr>
-            <td id="dayName">${dayName}</td>
-            <td id="weekTemp">${weekTemp}ºC</td>
+            <td>${dayName}</td>
+            <td>${weekTemp}ºC</td>
         </tr>
         `;
     });

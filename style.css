@@ -63,7 +63,50 @@ h1 span {
   margin-top: -20px;
 }
 
-.burger-btn {
+.weather-data {
+  padding: 30px;
+}
+
+.main-icon {
+  position: fixed;
+  margin-left: 120px;
+  bottom: 580px;
+  width: 90%;
+}
+
+#sunriseAndSunset {
+  word-spacing: 40px;
+}
+
+.weeklyWeather {
+  font-size: 20px;
+  color: #777;
+  margin-top: 50px;
+ 
+}
+
+#theWeek {
+  display: flex;
+}
+
+#theWeek p {
+  margin: 20px;
+  word-spacing: 50px;
+}
+
+
+#theWeek:hover {
+  background: rgb(238, 238, 238);
+  width: 100%;
+  cursor: pointer;
+}
+
+
+
+
+ /* burger menu */
+
+ .burger-btn {
   background: none;
 	color: inherit;
 	border: none;
@@ -76,27 +119,6 @@ h1 span {
 .burger {
   padding: 20px;
 }
-
-
-
-.weather-data {
-  padding: 30px;
-}
-
-.main-icon {
-  position: absolute;
-  margin-left: 120px;
-  bottom: 580px;
-  width: 90%;
-}
-
-#sunriseAndSunset {
-  word-spacing: 40px;
-}
-
-
-
- /* burger menu */
  .sideMenu {
   position: fixed;
   background: rgb(58, 173, 250);
@@ -141,9 +163,6 @@ a:visited, a:link {
   cursor: pointer;
 }
 
-.weeklyWeather {
-  padding: 20px;
-}
 
 
 
