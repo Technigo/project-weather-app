@@ -4,6 +4,7 @@ const typeOfWeather = document.getElementById("typeOfWeather");
 const currentTemp = document.getElementById("currentTemp");
 const city = document.getElementById("city");
 const sunriseAndSunset = document.getElementById("sunriseAndSunset");
+const weatherData = document.getElementById('weatherData')
 
 const API_WEATHER =
   "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=16decfbdca757a425e796503a595bad8";
@@ -22,8 +23,8 @@ fetch(API_WEATHER)
       timeStyle: "short",
     });
 
-    dailyWeather.innerHTML += `
-    <h1 id="currentTemp">${tempRemoveDecimals}</h1>
+    weatherData.innerHTML += `
+    <h1 id="currentTemp">${tempRemoveDecimals}<span>ºC</span></h1>
     <h2 id="city">${data.name}</h2>
     <h3 id="typeOfWeather">${data.weather[0].description}</h3>
     <h3 id="sunriseAndSunset">sunrise ${sunrise} sunset ${sunset}</h3>

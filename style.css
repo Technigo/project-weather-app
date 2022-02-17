@@ -18,21 +18,31 @@ body {
 }
 h1 {
   color: white;
-  font-size: 4.5em;
+  font-size: 6em;
   margin-top: 1vh;
+  font-weight: 100;
+  margin-bottom: 10px;
 }
 h2 {
   color: white;
   font-size: 2em;
+  font-weight: 100;
+  margin: 0;
 }
+
 h3 {
   margin: 0;
   color: white;
+  font-weight: 100;
+  margin-bottom: 30px;
 }
+
+h1 span {
+  font-size: 0px;
+  
+}
+
 .weather-container {
-  /* Maybe if we need flex?*/
-}
-.dailyWeather {
   height: 50vh;
   width: 100vw;
   background: rgb(58, 173, 250);
@@ -44,13 +54,32 @@ h3 {
   border-bottom-left-radius: 100% 75px;
   border-bottom-right-radius: 100% 75px;
 }
+.dailyWeather {
+ display: flex;
+ flex-direction: column;
+ top: 0;
+}
 
 .burger-btn {
-  padding: 15px;
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
 }
+
+.burger {
+  padding: 20px;
+}
+
+.weather-data {
+  padding: 20px;
+}
+
+
+
 
 /* Testing code*/
 
-body {
-  background-color: red;
-}
