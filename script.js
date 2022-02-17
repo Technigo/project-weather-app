@@ -53,24 +53,6 @@ function convertUTCToSunTime(UTCsec) {
   return timeWithoutSec; //07:38
 }
 
-//1. display Mon/Tue/Wed/Thurs [Jin]
-//2. update style.css []
-//3. jS: icon related weather []
-
-/*fetch(API_Weather_URL) //this is when we send something to BE
-  .then((res) => res.json()) //this is when we receive the data from BE
-  .then((data1) => {
-    const filteredForecast = data1.list.filter((item) =>
-      item.dt_txt.includes("12:00", "03:00")
-    );
-    console.log("filteredForecast", filteredForecast);
-    filteredForecast.forEach((object) => {
-      const temp = object.main.temp.toFixed(0);
-      const date = new Date(object.dt * 1000);
-      const day = date.toLocaleDateString("en-GB", { weekday: "short" });
-      weatherForecast.innerHTML += `<h2 class="weather" id="weather">${day}  ${temp}°C</h2>`;
-    });
-  });*/
 // setting bg Image based on day/night
 if (timeInHr >= 6 && timeInHr <= 17) {
   mainContainer.style.backgroundImage = `url(./images/day.jpg)`;
@@ -79,13 +61,8 @@ if (timeInHr >= 6 && timeInHr <= 17) {
   mainContainer.style.backgroundImage = `url(./images/night.jpg)`;
   mainContainer.style.backgroundSize = "cover";
   mainContainer.style.color = "white";
-} else if (timeInHr <= 5) {
 }
-if (timeInHr >= 18) {
-  mainContainer.style.backgroundImage = `url(./images/night.jpg)`;
-  mainContainer.style.backgroundSize = "cover";
-  mainContainer.style.color = "white";
-}
+
 if (timeInHr <= 5) {
   mainContainer.style.backgroundImage = `url(./images/night.jpg)`;
   mainContainer.style.backgroundSize = "cover";
