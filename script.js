@@ -21,10 +21,25 @@ fetch(API_URL) //this is when we send something to BE
     const sunrise = convertUTCToSunTime(sunriseSec, data.timezone);
     const sunset = convertUTCToSunTime(sunsetSec, data.timezone);
     sunContainer.innerHTML = `
-     <h3 class="sunrise" id="sunRise" >${sunrise} </h3> 
-    <img class="sunrise-icon" src="./images/sunrise.png">
-    <h3 class="sunset" id="sunSet">  ${sunset}</h3>
-    <img class="sunset-icon" src="./images/sunset.png">`;
+     <h3 class="sunrise" id="sunRise" >${sunrise} </h3>`;
+    console.log("data", data);
+    const weatherIcon = data.weather[0].icon;
+    weatherContainer.innerHTML = ` <h1 class="today" id="today">Today</h1> 
+    <h1 class="temperature" id="temperature">${data.main.temp}°C</h1>
+        <h2 class="city" id="city">${data.name} </h2>
+        <h2  class="weather-description" id="weatherDescription"> ${data.weather[0].icon} ${data.weather[0].description}  </h2>`;
+    // weather icons
+    if (data.weather[0].main === "Clouds") {
+      weatherContainer.innerHTML += `  <h2  class="weather-description" id="weatherDescription"><img class="clouds-icon" src="./images/clouds.png">  ${data.weather[0].description}</h2>`;
+    } else if (data.weather[0].main === "Rain") {
+      weatherContainer.innerHTML += `<h2  class="weather-description" id="weatherDescription"><img class="rain-icon" src="./images/rain.png">  ${data.weather[0].description}</h2>`;
+    } else if (data.weather[0].main === "Clear") {
+      weatherContainer.innerHTML += `<h2  class="weather-description" id="weatherDescription"><img class="sun-icon" src="./images/sun.png">  ${data.weather[0].description}</h2>`;
+    } else if (data.weather[0].main === "Snow") {
+      weatherContainer.innerHTML += `<h2  class="weather-description" id="weatherDescription"><img class="snow-icon" src="./images/clouds.png">  ${data.weather[0].description}</h2>`;
+    } else {
+      weatherContainer.innerHTML += `<h2  class="weather-description" id="weatherDescription"><img class="other-icon" src="./images/clouds.png">  ${data.weather[0].description}</h2>`;
+    }
 
     // setting bg Image based on day/night
     if (timeInHr >= 6 && timeInHr <= 17) {
@@ -141,10 +156,3 @@ fetch(API_Weather_URL)
   });
 
 /* updated */
-function convertUTCToSunTime(UTCsec, timezone) {
-  const UTCstring = new Date(
-    (UTCsec + timezone + new Date().getTimezoneOffset() * 60) * 1000
-  ).toTimeString();
-  const timeWithSec = UTCstring.split(":");
-  return `${timeWithSec[0]}: ${timeWithSec[1]}`;
-}
