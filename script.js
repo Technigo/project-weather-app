@@ -18,10 +18,10 @@ fetch(API_URL) //this is when we send something to BE
     /* sunrise & sunset */
     const sunriseSec = data.sys.sunrise;
     const sunsetSec = data.sys.sunset;
-    const sunrise = convertUTCToSunTime(sunriseSec);
-    const sunset = convertUTCToSunTime(sunsetSec);
+    const sunrise = convertUTCToSunTime(sunriseSec, data.timezone);
+    const sunset = convertUTCToSunTime(sunsetSec, data.timezone);
     sunContainer.innerHTML = `
-     <h3 class="sunrise" id="sunRise" >   ${sunrise} </h3> 
+     <h3 class="sunrise" id="sunRise" >${sunrise} </h3> 
     <img class="sunrise-icon" src="./images/sunrise.png">
     <h3 class="sunset" id="sunSet">  ${sunset}</h3>
     <img class="sunset-icon" src="./images/sunset.png">`;
@@ -39,7 +39,11 @@ fetch(API_URL) //this is when we send something to BE
       mainContainer.style.backgroundSize = "cover";
       mainContainer.style.color = "white";
     }
+  });
 
+fetch(API_Weather_URL)
+  .then((res) => res.json())
+  .then((data) => {
     const dataOfFiveDays = data.list;
     const daysFromData = dataOfFiveDays.map((data) => {
       return new Date(data.dt_txt).toDateString();
@@ -126,7 +130,7 @@ fetch(API_URL) //this is when we send something to BE
     //step 5. display
     for (let i = 0; i < 5; i++) {
       const { maxTemperature, minTemperature } = minMaxArr[i];
-      weatherContainer.innerHTML += `
+      weatherForecast.innerHTML += `
   <div class="weekly-weather">
     <span class="weekday">${weekdays[i]}</span>
     <img src="http://openweathermap.org/img/wn/${iconsArr[i]}.png" alt="weather icon"/>
