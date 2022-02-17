@@ -86,6 +86,7 @@ const formatForecast = (data) => {
 //     });
 
 /* ------------------------ START FROM HERE ------------------------*/
+
 const currentWeatherCondition = document.getElementById('currentWeatherCondition')
 const currentWeatherSunrise = document.getElementById('currentWeatherSunrise')
 const currentWeatherSunset = document.getElementById('currentWeatherSunset')
@@ -219,7 +220,19 @@ cityOptions.addEventListener('change', () => {
 } ) 
 
 // this function is called when the data is available 
-const updateForecastDisplay = (forecast) => {
-    console.log(forecast); // checks to see what it looks like
+
+const forecastWrapper = document.getElementById('forecastWrapper') //Jacob  
+
+const updateForecastDisplay = (forecast) => { //Jacob
+    forecast.forEach((day) => {
+        forecastWrapper.innerHTML += `
+        <div class="forecast-wrapper">
+        <div class="row">
+            <p>${day.dayOfWeek}</p>
+            <p>${day.highTemp}</p>
+            </div>
+        </div>
+    `});
+     // checks to see what it looks like
     // TO-DO loop through forecast array to create html elements inside forecastWrapper and populate values
 }

@@ -1,0 +1,190 @@
+@import url('https://fonts.google.com/specimen/Montserrat');
+
+/* RESET CSS TO BORDER-BOX */
+* {
+    box-sizing: border-box;
+  }
+
+/* general styling */
+body {
+    display: flex;
+    justify-content: center;
+    font-family: 'Montserrat';
+    height: 100vh;
+    background: #CFC2CF;
+    margin: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    width: 85%;
+}
+
+p {
+    color: #333;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+select {
+    border: solid 2px transparent;
+    background-color: #333;
+    outline: none;
+    border-radius: 10px;
+    color: white;
+    padding: 6px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    text-align: center;
+}
+
+.current-weather-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.current-weather-wrapper p {
+    margin: 0;
+    padding: 1px 0;
+}
+
+/* styling of icons - all hidden from the begging showing up on different conditions */
+
+svg {
+    width: 70px;
+    height: 70px;
+    animation: fadein;
+    animation-duration: 4s;
+    animation-iteration-count: 1;
+    animation-delay: 0s;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+      opacity: 100;
+    }
+  }
+
+.icon-umbrella {
+    display: none;
+}
+
+.icon-sunglasses {
+    display: none;
+}
+
+.icon-cloud {
+    display: none;
+}
+
+.current-weather-header-wrapper {
+    position: relative;
+}
+
+/* styling of heading with animations */
+
+h1 {
+    color: #333;
+    font-weight: bold;
+    animation: slideLeft 2s forwards;
+    left: -400px;
+    position: relative;
+}
+
+h1 span {
+    color: #F25430;
+}
+
+@keyframes slideLeft {
+    to {
+      left: 0px;
+    }
+  }
+
+/* styling of forecast section */
+
+.forecast-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.forecast-wrapper p {
+    margin: 8px 0;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 2px dotted #333;
+}
+
+/* styling of different weather conditions */
+
+.warm {
+ background-color: #F7E9B9;
+ display: none;
+ color: #2A5510;
+}
+
+.cloudy {
+    background-color: #F4F7F8;
+    display: none;
+    color: #F47775; 
+}
+
+.rainy {
+    background-color: #A3DEF7;
+    display: none;
+    color: #164A68;
+}
+
+/* styling of sparkle animation */
+
+.sparkle {
+    width: 30px;
+    position: absolute;
+    transform: scale(1); 
+    animation: blinking 1s ease  infinite;
+    filter: invert() blur(1.5px);
+  }
+
+.sparkle-img-1 {
+    top: 2%;
+    left: 29%;
+  }
+
+  .sparkle-img-2 {
+    top: 25%;
+    left: 68%;
+  }
+
+  .sparkle-img-3 {
+    top: 20%;
+    left: 10%;
+  }
+
+  .sparkle-img-4 {
+    top: 58%;
+    left: 18%;
+  }
+  
+  @keyframes blinking {
+     50% {
+      transform: scale(0); 
+      opacity: 0;
+     }
+  }
