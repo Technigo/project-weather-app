@@ -25,6 +25,7 @@ body{
     display: flex;
     flex-direction: column;
     width: auto;
+    margin: 20px;
 }
 
 .daily-weather {
@@ -47,16 +48,12 @@ h1 {
 
 img {
     width: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .forecast {
-    display: flex;
-    /* flex-wrap: wrap; */
-    /* border-bottom: 1px dashed; */
-    /* padding: 10px 0px; */
-    text-align: left;
     padding: 20px;
-    flex-direction: column;
 }
 
 /* This is the class for the forecast content, days and celcius */
@@ -64,7 +61,8 @@ img {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    line-break: normal;
+    padding-bottom: 5px;
+    padding-top: 5px;
 }
 
 .day-style p {
@@ -88,7 +86,7 @@ img {
 hr {
     /* border-bottom: 1px dotted; */
     width: 100%;
-    border-bottom: 1px dashed;
+    border-bottom: 1px dotted;
     display: ;
 }
 
