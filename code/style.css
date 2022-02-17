@@ -22,15 +22,22 @@ main {
     width: 85%;
 }
 
-svg {
-    width: 70px;
-    height: 70px;
-}
-
 header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+select {
+    border: solid 2px transparent;
+    background-color: #333;
+    outline: none;
+    border-radius: 10px;
+    color: white;
+    padding: 6px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 .current-weather-wrapper {
@@ -43,9 +50,72 @@ header {
     padding: 1px 0;
 }
 
+/* styling of icons - all hidden from the begging showing up on different conditions */
+
+svg {
+    width: 70px;
+    height: 70px;
+    animation: fadein;
+    animation-duration: 4s;
+    animation-iteration-count: 1;
+    animation-delay: 0s;
+    animation-fill-mode:
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+      opacity: 100;
+    }
+  }
+
+.icon-umbrella {
+    display: none;
+}
+
+.icon-sunglasses {
+    display: none;
+}
+
+.icon-cloud {
+    display: none;
+}
+
+.current-weather-header-wrapper {
+    position: relative;
+}
+
+/* styling of heading with animations */
+
+h1 {
+    color: #333;
+    font-weight: bold;
+    animation: slideLeft 2s forwards;
+    left: -400px;
+    position: relative;
+}
+
+h1 span {
+    color: #F25430;
+}
+
+@keyframes slideLeft {
+    to {
+      left: 0px;
+    }
+  }
+
 .forecast-wrapper {
     display: flex;
     flex-direction: column;
+}
+
+p {
+    color: #333;
+    font-size: 18px;
+    font-weight: normal;
 }
 
 .forecast-wrapper p {
@@ -56,19 +126,10 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border-bottom: 2px dotted black;
+    border-bottom: 2px dotted #333;
 }
 
-p {
-    color: black;
-    font-size: 18px;
-    font-weight: normal;
-}
-
-h1 {
-    color: black;
-    font-weight: bold;
-}
+/* styling of different weather conditions */
 
 .warm {
  background-color: #F7E9B9;
@@ -87,3 +148,43 @@ h1 {
     display: none;
     color: #164A68;
 }
+
+.sparkle {
+    width: 30px;
+    position: absolute;
+    transform: scale(1); 
+    animation: blinking 0.6s ease  infinite;
+    filter: invert();
+  }
+
+.sparkle-img-1 {
+    top: 2%;
+    left: 29%;
+    animation: blinking 0.6s ease 0.5s infinite;
+  }
+
+  .sparkle-img-2 {
+    top: 34%;
+    left: 59%;
+    animation: blinking 0.6s ease 0.5s infinite;
+  }
+
+  .sparkle-img-3 {
+    top: 59%;
+    left: 12%;
+    animation: blinking 0.6s ease 0.5s infinite;
+  }
+
+  .sparkle-img-4 {
+    top: 58%;
+    left: 11%;
+    animation: blinking 0.6s ease 0.5s infinite;
+  }
+  
+  
+  @keyframes blinking {
+     50% {
+      transform: scale(0); 
+      opacity: 0;
+     }
+  }
