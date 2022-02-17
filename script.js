@@ -19,8 +19,9 @@ fetch(API_URL) //this is when we send something to BE
     const icon = data.weather[0].icon;
 
     weatherContainer.innerHTML = ` 
-    <h1 class="city" id="city">${data.name} </h1>
+    
     <h1 class="temperature" id="temperature">${data.main.temp}°C</h1>
+    <h1 class="city" id="city">${data.name} </h1>
         <h3 class="city" id="city"><img src="http://openweathermap.org/img/wn/${icon}.png" alt="weather icon"/> ${data.weather[0].description} </h3>
         `;
 
@@ -31,9 +32,9 @@ fetch(API_URL) //this is when we send something to BE
     const sunrise = convertUTCToSunTime(sunriseSec, data.timezone);
     const sunset = convertUTCToSunTime(sunsetSec, data.timezone);
     sunContainer.innerHTML = ` 
-    <h4 class="sunrise" id="sunRise" >   ${sunrise} </h4> 
+    <h4 class="sunrise" id="sunRise" > Sunrise  ${sunrise} </h4> 
     <img class="sunrise-icon" src="./images/sunrise.png">
-    <h4 class="sunset" id="sunSet">  ${sunset}</h4>
+    <h4 class="sunset" id="sunSet"> Sunset ${sunset}</h4>
     <img class="sunset-icon" src="./images/sunset.png">`;
   });
 
@@ -42,7 +43,7 @@ if (timeInHr >= 6 && timeInHr <= 17) {
   mainContainer.style.backgroundImage = `url(./images/day.jpg)`;
   mainContainer.style.backgroundSize = "cover";
 } else if (timeInHr >= 18) {
-  mainContainer.style.backgroundImage = `url(https://images.unsplash.com/photo-1499578124509-1611b77778c8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bW9vbmxpZ2h0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60)`;
+  mainContainer.style.backgroundImage = `url(./images/night.jpg)`;
   mainContainer.style.backgroundSize = "cover";
   mainContainer.style.color = "white";
 } else {
@@ -142,7 +143,7 @@ fetch(API_Weather_URL)
   <div class="weekly-weather">
     <span class="weekday">${weekdays[i]}</span>
     <img class="temperature-icon"src="http://openweathermap.org/img/wn/${iconsArr[i]}.png" alt="weather icon"/>
-    <span class="temperature">${maxTemperature} &#176; / ${minTemperature} &#176;C</span>
+    <span class="temperature2">${maxTemperature} &#176; / ${minTemperature} &#176;C</span>
     </div>
   `;
     }
