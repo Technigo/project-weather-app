@@ -1,3 +1,42 @@
 body {
     background-color: rgba(210, 185, 87, 0.742);
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    padding: 25px 0 0 20px;
+    
+    
+}
+
+header p {
+  font-size: 20px;
+  margin: 2px;
+}
+
+.icons {
+  margin-top: 65px;
+}
+
+h1 {
+font-size: 38px;
+margin: 20px 0 0 0;
+}
+
+/* Desktop */
+@media only screen and (min-width: 768px) {
+
+    header {
+      display: flex;
+      flex-direction: row;
+    }
+
+    header p {
+      margin: 20px;
+    }
+
+    .weather-information {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 }
