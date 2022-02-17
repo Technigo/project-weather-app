@@ -1,4 +1,5 @@
 body {
+<<<<<<< HEAD
 
     background-color: rgb(194, 191, 191);
     color: rgb(65, 63, 63);
@@ -85,4 +86,59 @@ border-radius: 50px;
 .small-weather-icons {
     width: 3rem;
     
+=======
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    box-sizing: border-box;
+}
+
+.current-weather-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom-left-radius: 50% 25%;
+    border-bottom-right-radius: 50% 25%;
+}
+
+.current-weather {
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    padding: 4em;
+    padding-bottom: 10em;
+}
+
+.main-icon-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.main-icon img {
+    width: 300px;
+    
+}
+
+.main-temp {
+    font-size: 6em;
+    margin: 1em 0 0;
+}
+
+.city-name {
+    font-size: 3em;
+}
+
+p {
+    font-size: 2.2em;
+}
+
+.rise-set {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sunset {
+    margin-right: 5em;
+>>>>>>> currentWeather
 }
