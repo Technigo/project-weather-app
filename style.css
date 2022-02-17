@@ -8,39 +8,39 @@ body {
   padding: 0;
   width: 100%;
   height: 100%;
-  font-family: "Roboto", sans-serif;
+  font-family: 'poppins', sans-serif;
   background-color: white;
 }
 /* dailyWeather styling */
-.main-icon {
-  margin-left: 70vw;
-  width: 40%;
-}
+
 h1 {
   color: white;
-  font-size: 6em;
-  margin-top: 1vh;
-  font-weight: 100;
-  margin-bottom: 10px;
+  font-size: 7em;
+  margin-top: -10px;
+  font-weight: 300;
+  margin-bottom: -20px;
 }
 h2 {
   color: white;
   font-size: 2em;
-  font-weight: 100;
+  font-weight: 400;
   margin: 0;
 }
 
 h3 {
   margin: 0;
   color: white;
-  font-weight: 100;
-  margin-bottom: 30px;
+  font-weight: 400;
+  margin-bottom: 25px;
 }
 
 h1 span {
-  font-size: 0px;
-  
+  font-size: 30px;
+  position: fixed;
+  margin-top: 30px;
 }
+
+
 
 .weather-container {
   height: 50vh;
@@ -75,9 +75,15 @@ h1 span {
 }
 
 .weather-data {
-  padding: 20px;
+  padding: 30px;
 }
 
+.main-icon {
+  position: absolute;
+  margin-left: 120px;
+  bottom: 580px;
+  width: 90%;
+}
 
 
 
