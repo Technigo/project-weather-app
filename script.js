@@ -66,11 +66,12 @@ fetch(API_FORECAST)
       const weekTemp = day.main.temp.toFixed(0);
 
       weeklyWeather.innerHTML += `
-        <tr>
-            <td id="dayName">${dayName}</td>
-            <td id="weekTemp">${weekTemp}ºC</td>
-        </tr>
-        `;
+      <div id="theWeek">
+          <p id="dayName">${dayName}</p>
+          <img class="mini-icon" src="#" ">
+          <p id="weekTemp">${weekTemp}ºC</p>
+      </p>
+      `;
     });
   });
 
