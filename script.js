@@ -14,7 +14,7 @@ const API_FORECAST =
 fetch(API_WEATHER)
   .then((res) => res.json())
   .then((data) => {
-    console.log(data);
+    console.log('data', data);
     let tempRemoveDecimals = Math.floor(data.main.temp); // To make the number "round" without decimals.
     let sunrise = new Date(data.sys.sunrise * 1000).toLocaleTimeString([], {
       timeStyle: "short",
@@ -34,7 +34,7 @@ fetch(API_WEATHER)
 fetch(API_FORECAST)
   .then((res) => res.json())
   .then((forecast) => {
-    console.log(forecast);
+    console.log('forecast', forecast);
     const filteredForecast = forecast.list.filter((day) =>
       day.dt_txt.includes("12:00")
     );
@@ -43,16 +43,23 @@ fetch(API_FORECAST)
 
     filteredForecast.forEach((day) => {
       const date = new Date(day.dt * 1000);
-      const dayName = date.toLocaleTimeString("en-US", { weekday: "short" });
+      const dayName = date.toLocaleTimeString("en-GB", { 
+      weekday: "short", 
+      hour: "2-digit", 
+      minute: "2-digit" 
+      });
+      // Just added this above to the dayName const so time only show two digits. 
+      // But HOW do we change this to show 12 o'clock (since this is Swedish time)?
+
       const weekTemp = day.main.temp.toFixed(0);
 
       weeklyWeather.innerHTML += `
         <tr>
             <td>${dayName}</td>
-            <td>${weekTemp}ºC</td>
+            <td>${weekTemp}ºC</td><br>
         </tr>
         `;
     });
   });
 
-// Justine testing
+
