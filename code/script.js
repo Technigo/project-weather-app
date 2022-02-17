@@ -98,14 +98,41 @@ const formatForecast = (data) => {
 
 /* ------------------------ START FROM HERE ------------------------*/
 
+const currentWeatherCondition = document.getElementById('currentWeatherCondition')
+const currentWeatherSunrise = document.getElementById('currentWeatherSunrise')
+const currentWeatherSunset = document.getElementById('currentWeatherSunset')
+
 // this function is called when the data is available 
 const updateCurrentWeatherDisplay = (currentWeather) => {
-    console.log(currentWeather); // checks to see what it looks like
+    console.log(currentWeather);// checks to see what it looks like
     // TO-DO use currentWeather object to update values in the html elements
+    currentWeatherCondition.innerHTML = `${currentWeather.condition} | ${currentWeather.temp}`
+    currentWeatherSunrise.innerHTML = `sunrise ${currentWeather.sunrise}`
+    currentWeatherSunset.innerHTML = `sunset ${currentWeather.sunset}`
 }
 
 // this function is called when the data is available 
-const updateForecastDisplay = (forecast) => {
-    console.log(forecast); // checks to see what it looks like
+
+const forecastWrapper = document.getElementById('forecastWrapper') //Jacob  
+
+const updateForecastDisplay = (forecast) => { //Jacob
+    forecast.forEach((day) => {
+        forecastWrapper.innerHTML += `
+        <div class="forecast-wrapper">
+        <div class="row">
+            <p>${day.dayOfWeek}</p>
+            <p>${day.highTemp}</p>
+            </div>
+        </div>
+    `});
+     // checks to see what it looks like
     // TO-DO loop through forecast array to create html elements inside forecastWrapper and populate values
 }
+
+
+
+
+
+
+
+
