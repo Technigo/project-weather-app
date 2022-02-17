@@ -19,7 +19,8 @@ fetch(
   .then((json) => {
     console.log(json);
     // This is showing the current temperature rounded to an integer.
-    const roundedTemp = Math.round(json.main.temp * 10) / 10;
+    const roundedTemp = 10
+    //Math.round(json.main.temp * 10) / 10;
     // This is showing local time for sunrise transformed into 2-digit form for hours and minutes.
     let sunriseTime = new Date(
       (json.sys.sunrise + json.timezone + new Date().getTimezoneOffset() * 60) *
@@ -70,7 +71,7 @@ fetch(
             'linear-gradient(50deg, #663399 0%, #b9bfff 50%, #22277A 100%)'
         } else if (roundedTemp > 5 && roundedTemp < 19) {
             currentWeatherWrapper.style.background =
-            'linear-gradient(50deg, #1c9bf6e8 0%, #b5cbd8 50%, #1c9cf6e8 100%)'
+            'linear-gradient(50deg, #1c9bf6e8 0%, #d8d8d8 60%, #1c9cf6e8 100%)'
         } else {
             currentWeatherWrapper.style.background =
             'linear-gradient(50deg, #F6412D 0%, #FFF682 60%, #FF5607 100%)'
