@@ -1,0 +1,99 @@
+* {
+margin: 0; 
+padding: 0;  
+box-sizing: border-box;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: content-box;
+-webkit-font-smoothing: antialiased; 
+text-rendering: optimizeLegibility;
+}
+
+body {
+font-family: 'Roboto', sans-serif
+}
+
+ /* .day-background  {
+    z-index: -1;
+    position: relative;
+    top: -20%;
+    left: -20%;
+} */
+
+.weather-container {
+    display: flex;
+}
+
+.intro {
+    /* background-color: rgb(161, 173, 241); */
+    /* z-index: -2; */
+    padding-bottom: 5em;
+    height: 50vh;
+    top: 0;
+    /* position: absolute; */
+    /* top: 40%;
+    bottom: 50%; */
+    
+}
+
+ul.sunrise-sunset {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    list-style-type: none;
+}
+
+li.sunrise-time {
+    display: block;
+    font-size: 15px;
+    padding: 1em;
+  }
+
+  li.sunset-time {
+    display: block;
+    font-size: 15px;
+    padding: 1em 2em 1em 1em;
+  }
+
+.five-day-forecast {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    /* position: absolute; */
+    padding: .5em 1.5em;
+
+}
+
+.weekdays {
+
+}
+
+.weekdaysTemperature {
+    
+}
+
+.temperature {
+font-size: 75px;
+top: 0;
+margin-top: 75px;
+}
+
+.city-name {
+font-size: 30px;    
+}
+
+ {
+font-size: 20px;    
+}
+/*
+.weather-description {
+font-size: 15px;    
+}*/
+
+
+.sun-icon img {
+    width: 175px;
+    position: absolute;
+    margin: 0;
+    top: 25px;
+    left: 200px;
+    }

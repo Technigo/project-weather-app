@@ -5,22 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nixie+One&family=Roboto:wght@300&display=swap" rel="stylesheet">
+
+    <title>Weather App</title>
 </head>
 <body>
     <section id="weather-container" class="weather-container">
-       <h1 class="city-name"></h1>
-       <p class="temperature"></p>
-       <p class="weather-description"></p>
-       <p class="sunrise-time"></p>
-       <p class="sunset-time"></p>
-       <p class="weather-forecast"></p>
-       <p class="weather-forecast2"></p>
+        <div class="intro">
+            <!-- <img class="day-background" src="Designs/Design-1/assets/backgrund.png"> -->
+            <h1 class="temperature"></h1>
+            <h3 class="city-name"></h3>
+            <p class="weather-description"></p>
+            <ul class = sunrise-sunset>
+                <li class="sunrise-time"></li>
+                <li class ="sunset-time"><li>
+             </ul>
+        </div>
+        <!-- <div class="forecast">
+            <p class="weather-forecast"></p>
+            <p class="weather-forecast2"></p>
+        </div> -->
+        <div class="sun-icon">
+            <img class="sun" src="Designs/Design-1/assets/sun.png">    
+        </div>
     </section>
-
-</section>
-<section class="weekday-container" id="fiveDayForecast"></section>
-<section class="five-days" id="five-days"></section>
+    <div class="five-days" id="five-days"></div>
+    <!-- <div class="weekday-container" id="fiveDayForecast"></div> -->
 </div>
 
 
