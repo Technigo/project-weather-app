@@ -45,20 +45,19 @@
     
     
     
-    burger.addEventListener('click',show);
-    closeMenu.addEventListener('click',close);
-    
-    
-    function show(){
+    const show = () => {
         sideMenu.style.display = 'flex';
         sideMenu.style.top = '0';
         closeMenu.style.display = 'block'
     }
-    function close(){
+    const close = () => {
         sideMenu.style.top = '-100%';
         closeMenu.style.display = 'none'
         sideMenu.style.display = 'none'
     }
+
+    burger.addEventListener('click',show);
+    closeMenu.addEventListener('click',close);
     
     </script>
 
