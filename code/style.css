@@ -5,6 +5,7 @@
     box-sizing: border-box;
   }
 
+/* general styling */
 body {
     display: flex;
     justify-content: center;
@@ -20,6 +21,12 @@ main {
     justify-content: space-around;
     height: 100%;
     width: 85%;
+}
+
+p {
+    color: #333;
+    font-size: 18px;
+    font-weight: normal;
 }
 
 header {
@@ -38,6 +45,7 @@ select {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    text-align: center;
 }
 
 .current-weather-wrapper {
@@ -107,15 +115,11 @@ h1 span {
     }
   }
 
+/* styling of forecast section */
+
 .forecast-wrapper {
     display: flex;
     flex-direction: column;
-}
-
-p {
-    color: #333;
-    font-size: 18px;
-    font-weight: normal;
 }
 
 .forecast-wrapper p {
@@ -149,38 +153,35 @@ p {
     color: #164A68;
 }
 
+/* styling of sparkle animation */
+
 .sparkle {
     width: 30px;
     position: absolute;
     transform: scale(1); 
-    animation: blinking 0.6s ease  infinite;
-    filter: invert();
+    animation: blinking 1s ease  infinite;
+    filter: invert() blur(1.5px);
   }
 
 .sparkle-img-1 {
     top: 2%;
     left: 29%;
-    animation: blinking 0.6s ease 0.5s infinite;
   }
 
   .sparkle-img-2 {
-    top: 34%;
-    left: 59%;
-    animation: blinking 0.6s ease 0.5s infinite;
+    top: 25%;
+    left: 68%;
   }
 
   .sparkle-img-3 {
-    top: 59%;
-    left: 12%;
-    animation: blinking 0.6s ease 0.5s infinite;
+    top: 20%;
+    left: 10%;
   }
 
   .sparkle-img-4 {
     top: 58%;
-    left: 11%;
-    animation: blinking 0.6s ease 0.5s infinite;
+    left: 18%;
   }
-  
   
   @keyframes blinking {
      50% {
