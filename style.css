@@ -48,7 +48,7 @@ body {
   margin-left: 20pt;
   margin-top: 20pt;
   font-size: 15pt;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .weekly-weather {

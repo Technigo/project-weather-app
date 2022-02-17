@@ -18,10 +18,10 @@ fetch(API_URL) //this is when we send something to BE
   .then((data) => {
     const icon = data.weather[0].icon;
 
-    weatherContainer.innerHTML = ` <h1 class="today" id="today">Today</h1> 
+    weatherContainer.innerHTML = ` 
+    <h1 class="city" id="city">${data.name} </h1>
     <h1 class="temperature" id="temperature">${data.main.temp}°C</h1>
-        <h2 class="city" id="city">${data.name} </h2>
-        <h2 class="city" id="city"><img src="http://openweathermap.org/img/wn/${icon}.png" alt="weather icon"/> ${data.weather[0].description} </h2>
+        <h3 class="city" id="city"><img src="http://openweathermap.org/img/wn/${icon}.png" alt="weather icon"/> ${data.weather[0].description} </h3>
         `;
 
     /* sunrise & sunset */
@@ -31,9 +31,9 @@ fetch(API_URL) //this is when we send something to BE
     const sunrise = convertUTCToSunTime(sunriseSec, data.timezone);
     const sunset = convertUTCToSunTime(sunsetSec, data.timezone);
     sunContainer.innerHTML = ` 
-    <h3 class="sunrise" id="sunRise" >   ${sunrise} </h3> 
+    <h4 class="sunrise" id="sunRise" >   ${sunrise} </h4> 
     <img class="sunrise-icon" src="./images/sunrise.png">
-    <h3 class="sunset" id="sunSet">  ${sunset}</h3>
+    <h4 class="sunset" id="sunSet">  ${sunset}</h4>
     <img class="sunset-icon" src="./images/sunset.png">`;
   });
 
