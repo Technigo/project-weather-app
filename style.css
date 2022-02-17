@@ -27,6 +27,40 @@ body {
   max-width: 600px;
 }
 
+.weather-icon {
+  -webkit-animation: rotate-scale-up 1s 1s both;
+  animation: rotate-scale-up 1s 1s both;
+}
+
+@-webkit-keyframes rotate-scale-up {
+  0% {
+    -webkit-transform: scale(1) rotateZ(0);
+    transform: scale(1) rotateZ(0);
+  }
+  50% {
+    -webkit-transform: scale(1.5) rotateZ(180deg);
+    transform: scale(1.5) rotateZ(180deg);
+  }
+  100% {
+    -webkit-transform: scale(1) rotateZ(360deg);
+    transform: scale(1) rotateZ(360deg);
+  }
+}
+@keyframes rotate-scale-up {
+  0% {
+    -webkit-transform: scale(1) rotateZ(0);
+    transform: scale(1) rotateZ(0);
+  }
+  50% {
+    -webkit-transform: scale(1.5) rotateZ(180deg);
+    transform: scale(1.5) rotateZ(180deg);
+  }
+  100% {
+    -webkit-transform: scale(1) rotateZ(360deg);
+    transform: scale(1) rotateZ(360deg);
+  }
+}
+
 .todays-weather,
 .forecast-day,
 .cities {
@@ -52,10 +86,29 @@ body {
   border-bottom: 0.1rem dotted;
   line-height: 0.2rem;
   padding-bottom: 1rem;
+  justify-content: space-between;
+}
+
+span {
+  width: 50%;
+  text-align: end;
 }
 
 #forecastDay:last-child {
   border-bottom: none;
+}
+
+.forecast-description,
+.long-day {
+  display: none;
+}
+
+.short-day {
+  display: flex;
+}
+
+.long-day {
+    display: none;
 }
 
 .cities {
@@ -65,7 +118,6 @@ body {
   padding-bottom: 1rem;
   padding-top: 2rem;
   display: none;
-  /* visibility: hidden; */
   text-align: center;
 }
 
@@ -73,17 +125,38 @@ body {
   border: solid 1px;
   border-radius: 0.4rem;
   padding: 3px 25px;
+  width: 12rem;
 }
 
 @media screen and (min-width: 800px) {
   .cities {
     display: flex;
-    /* visibility: visible; */
+  }
+
+  .long-day {
+    display: none;
   }
 }
 
-/* @media screen and (min-width: 1025px) {
+@media screen and (min-width: 1025px) {
   .main-page {
-    margin: 3rem auto;
+    max-width: 800px;
   }
-} */
+  .cities {
+    display: flex;
+  }
+
+  .forecast-description {
+    display: flex;
+    width: 33%;
+    justify-content: center;
+  }
+
+  .short-day {
+    display: none;
+  }
+  
+  .long-day {
+    display: flex;
+  }
+}

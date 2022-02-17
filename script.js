@@ -5,8 +5,6 @@ const API_FORECAST = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockho
 const API_MONTREAL = 'https://api.openweathermap.org/data/2.5/weather?q=Montreal,Canada&units=metric&lang=fr&APPID=f1099e35a6194bceb628758a90cd792b'
 const API_MEJILLONES = 'https://api.openweathermap.org/data/2.5/weather?q=Mejillones,Chile&units=metric&APPID=f1099e35a6194bceb628758a90cd792b'
 const API_BANJALUKA = 'https://api.openweathermap.org/data/2.5/weather?q=BanjaLuka,Bosnia&units=metric&APPID=f1099e35a6194bceb628758a90cd792b'
-
-
 // DOM selectors 
 const todaysWeather = document.getElementById('todaysWeather')
 const todaysAdvice = document.getElementById('todaysAdvice')
@@ -76,10 +74,11 @@ fetch(API_FORECAST)
         const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
         filteredForecast.forEach((day) => {
             const options1 = { weekday: 'short' }
+            const options2 = { weekday: 'long' }
             // forecast is injected in HTML, we also rounded the value to show no decimal
             // with one decimal: ${Math.round(day.main.temp * 10) / 10}
             forecast.innerHTML += `
-                <p class="forecast-day" id="forecastDay"><span>${new Intl.DateTimeFormat('en-GB', options1).format(day.dt * 1000).toLowerCase()}</span><span>${Math.round(day.main.temp)}°</span></p>
+                <p class="forecast-day" id="forecastDay"><span class="short-day">${new Intl.DateTimeFormat('en-GB', options1).format(day.dt * 1000).toLowerCase()}</span><span class="long-day">${new Intl.DateTimeFormat('en-GB', options2).format(day.dt * 1000).toLowerCase()}</span><span class="forecast-description">${day.weather[0].description}</span><span>${Math.round(day.main.temp)}°</span></p>
             `
         })
     })
