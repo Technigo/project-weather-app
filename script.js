@@ -24,7 +24,7 @@ fetch(API_WEATHER)
     });
 
     weatherData.innerHTML += `
-    <h1 id="currentTemp">${tempRemoveDecimals}<span>ºC</span></h1>
+    <h1 id="currentTemp">${tempRemoveDecimals}</h1>
     <h2 id="city">${data.name}</h2>
     <h3 id="typeOfWeather">${data.weather[0].description}</h3>
     <h3 id="sunriseAndSunset">sunrise ${sunrise} sunset ${sunset}</h3>

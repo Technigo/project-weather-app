@@ -18,7 +18,7 @@ body {
 }
 h1 {
   color: white;
-  font-size: 6em;
+  font-size: 8em;
   margin-top: 1vh;
   font-weight: 100;
   margin-bottom: 10px;
@@ -39,6 +39,10 @@ h3 {
 
 h1 span {
   font-size: 0px;
+  
+}
+
+#sunriseAndSunset {
   
 }
 
