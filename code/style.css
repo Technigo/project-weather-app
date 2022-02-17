@@ -27,6 +27,7 @@ p {
     color: #333;
     font-size: 18px;
     font-weight: normal;
+    text-transform: lowercase;
 }
 
 header {
