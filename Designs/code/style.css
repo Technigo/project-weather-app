@@ -73,9 +73,9 @@ form button:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom-left-radius: 50% 25%;
-    border-bottom-right-radius: 50% 25%;
-    height: 90vh;
+    border-bottom-left-radius: 50% 15%;
+    border-bottom-right-radius: 50% 15%;
+    min-height: 60vh;
 }
 
 .current-weather {
@@ -90,7 +90,7 @@ form button:hover {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    padding-top: 10em;
+    padding-top: 5em;
 }
 
 .main-icon img {
@@ -112,7 +112,7 @@ form button:hover {
 }
 
 .weather-type {
-    margin: 0;
+    padding: 0;
 }
 
 p {
@@ -122,6 +122,7 @@ p {
 .rise-set {
     display: flex;
     justify-content: space-between;
+    padding: 0;
 }
 
 .rise-set img {
