@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;300;400;500;600&family=Poppins:wght@100;200;300;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;300;400;500;600&family=Poppins:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Weather app</title>
 </head>
@@ -32,10 +32,17 @@
         <img id="mainIcon" class="main-icon" src="./images/day.svg" alt="image of a sun" />
     </div>
 </section>
-    <div id="weeklyWeather" class="weeklyWeather"></div>
+
+
+    <div id="weeklyWeather" class="weeklyWeather">
+    </div>
+
+
 <script src="./script.js"></script>
 
 <!-- For burger menu, put in script later -->
+
+
 <script>
 
     const closeMenu = document.querySelector('.closeMenu');
@@ -51,7 +58,7 @@
         closeMenu.style.display = 'block'
     }
     const close = () => {
-        sideMenu.style.top = '-110%';
+        sideMenu.style.top = '-150%';
         closeMenu.style.display = 'none'
     }
 

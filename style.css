@@ -23,14 +23,14 @@ h1 {
 h2 {
   color: white;
   font-size: 2em;
-  font-weight: 400;
+  font-weight: 300;
   margin: 0;
 }
 
 h3 {
   margin: 0;
   color: white;
-  font-weight: 400;
+  font-weight: 300;
   margin-bottom: 25px;
 }
 
@@ -139,6 +139,10 @@ a:visited, a:link {
   padding: 20px;
   transition: all 0.5s ease;
   cursor: pointer;
+}
+
+.weeklyWeather {
+  padding: 20px;
 }
 
 
