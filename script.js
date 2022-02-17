@@ -75,12 +75,23 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Perth,Australia&units=
       fiveDaysForecast.innerHTML += `
       <div class="five-day-forecast"> 
       <p class= "weekdays"> ${weekdays[weekdayNumber]}</p> 
+      <img src="Designs/Design-1/assets/Group38.png">
       <p class= "weekdaysTemperature"> ${roundedTemperature}°C </p>
       </div> 
       `
     })
   })
+  // <div class= "emojis"> ${emojis}</div>
   /*
+  
+     // const emojis = [
+     // "☀️", 
+      //"🌤️", 
+     // "🌩️",
+    //  "🌧️",
+    //  "☁️",
+    //  ];
+
   .then((data) => {
     const filteredForecast = data.list.filter((item) =>
     item.dt_txt.includes('12:00')

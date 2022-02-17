@@ -9,7 +9,9 @@ text-rendering: optimizeLegibility;
 }
 
 body {
-font-family: 'Roboto', sans-serif
+font-family: 'Roboto', sans-serif;
+font-weight: light;
+
 }
 
  /* .day-background  {
@@ -21,12 +23,13 @@ font-family: 'Roboto', sans-serif
 
 .weather-container {
     display: flex;
+    margin-left: 25px;
 }
 
 .intro {
     /* background-color: rgb(161, 173, 241); */
     /* z-index: -2; */
-    padding-bottom: 5em;
+    /* padding: 0, 2em, 5em, 2em; */
     height: 50vh;
     top: 0;
     /* position: absolute; */
@@ -38,62 +41,61 @@ font-family: 'Roboto', sans-serif
 ul.sunrise-sunset {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    /* flex-wrap: nowrap; */
+    justify-content: space-evenly;
     list-style-type: none;
+    margin-bottom: 50em;
+    padding: .5em;
+    
 }
 
 li.sunrise-time {
     display: block;
     font-size: 15px;
-    padding: 1em;
+    padding: .2em 3em 0 .2em;
   }
 
   li.sunset-time {
     display: block;
     font-size: 15px;
-    padding: 1em 2em 1em 1em;
+    padding: .2em;
   }
 
 .five-day-forecast {
     display: flex;
     justify-content: space-between;
-    font-size: 20px;
+    font-size: 18px;
     /* position: absolute; */
-    padding: .5em 1.5em;
-
+    padding: 1em 2em .5em 1.5em;
 }
 
-.weekdays {
-
-}
-
-.weekdaysTemperature {
-    
-}
+/* .weekdays {
+    padding-right: 5em;
+} */
+ 
 
 .temperature {
 font-size: 75px;
 top: 0;
-margin-top: 75px;
+margin: 75px 0 0 0;
 }
 
 .city-name {
-font-size: 30px;    
+font-size: 30px;  
+margin: .2em 0 .2em 0;
+font-weight: 400;
 }
 
- {
-font-size: 20px;    
-}
-/*
 .weather-description {
-font-size: 15px;    
-}*/
+font-size: 18px;   
+margin: 0 0 25px 0; 
+}
 
 
 .sun-icon img {
     width: 175px;
     position: absolute;
     margin: 0;
-    top: 25px;
-    left: 200px;
+    top: 80px;
+    left: 240px;
     }
