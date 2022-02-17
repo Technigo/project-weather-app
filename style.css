@@ -4,6 +4,7 @@
   box-sizing: border-box;
 }
 body {
+  background-color: blue;
   margin: 0;
   font-family: raleway;
   padding-bottom: 1rem;
