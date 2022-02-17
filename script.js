@@ -5,6 +5,9 @@ const currentTemp = document.getElementById("currentTemp");
 const city = document.getElementById("city");
 const sunriseAndSunset = document.getElementById("sunriseAndSunset");
 const weatherData = document.getElementById('weatherData')
+const closeMenu = document.querySelector('.closeMenu');
+const burger = document.querySelector('.burger');
+const sideMenu = document.querySelector('.sideMenu');
 
 const API_WEATHER =
   "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=16decfbdca757a425e796503a595bad8";
@@ -31,6 +34,16 @@ fetch(API_WEATHER)
     `;
   });
 
+  const show = () => {
+    sideMenu.style.display = 'flex';
+    sideMenu.style.top = '0';
+    closeMenu.style.display = 'block'
+}
+  const close = () => {
+    sideMenu.style.top = '-150%';
+    closeMenu.style.display = 'none'
+}
+
 fetch(API_FORECAST)
   .then((res) => res.json())
   .then((forecast) => {
@@ -54,11 +67,13 @@ fetch(API_FORECAST)
 
       weeklyWeather.innerHTML += `
         <tr>
-            <td>${dayName}</td>
-            <td>${weekTemp}ºC</td>
+            <td id="dayName">${dayName}</td>
+            <td id="weekTemp">${weekTemp}ºC</td>
         </tr>
         `;
     });
   });
 
-
+  // EventListeners
+  burger.addEventListener('click',show);
+  closeMenu.addEventListener('click',close);
