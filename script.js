@@ -42,7 +42,7 @@ if (timeInHr >= 6 && timeInHr <= 17) {
   mainContainer.style.backgroundImage = `url(./images/day.jpg)`;
   mainContainer.style.backgroundSize = "cover";
 } else if (timeInHr >= 18) {
-  mainContainer.style.backgroundImage = `url(./images/night.jpg)`;
+  mainContainer.style.backgroundImage = `url(https://images.unsplash.com/photo-1499578124509-1611b77778c8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bW9vbmxpZ2h0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60)`;
   mainContainer.style.backgroundSize = "cover";
   mainContainer.style.color = "white";
 } else {
@@ -141,8 +141,8 @@ fetch(API_Weather_URL)
       weatherForecast.innerHTML += `
   <div class="weekly-weather">
     <span class="weekday">${weekdays[i]}</span>
-    <img src="http://openweathermap.org/img/wn/${iconsArr[i]}.png" alt="weather icon"/>
-    <span class="temperature">${maxTemperature} &#176; /${minTemperature} &#176;C</span>
+    <img class="temperature-icon"src="http://openweathermap.org/img/wn/${iconsArr[i]}.png" alt="weather icon"/>
+    <span class="temperature">${maxTemperature} &#176; / ${minTemperature} &#176;C</span>
     </div>
   `;
     }
