@@ -3,3 +3,8 @@ body {
     background-color: black;
     color: white;
 }
+
+.small-weather-icons {
+    width: 3rem;
+    
+}
