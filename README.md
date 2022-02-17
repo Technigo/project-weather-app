@@ -1,13 +1,15 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The project was to build a weather app that included:
+- Fetching data from the API to present current and daily forecast
+- Presenting the data in the specified format
+- Building a responsive page
+- Working as a devlopment team in separate branches
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Coming soon.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Link to our project: https://aurora-weather-app.netlify.app/
