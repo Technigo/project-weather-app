@@ -1,13 +1,12 @@
 # Week 6: weather app
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This week's (week 6) assignment was to create a weather app in a group. The objectives we had was to fetch APIs and inject them into the HTML in order to display the correct weather data.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We started by structuring the HTML and fetching the first API (weather), as a group. We learned really soon that most of the structure we had previously built could be written directly into the JavaScript. We then splited into three branches (styling, sun data and forecast) and worked in a parallel way. We finally merged our work together and finished the styling all together.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Project deployed here: [Weather app](https://minimalist-weather-app.netlify.app/)
+By Jessica - Maurii - Nadia - Rijad - Terese. #Elephants group 2. 🐘

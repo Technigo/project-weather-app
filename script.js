@@ -77,12 +77,14 @@ fetch(API_FORECAST)
             const options2 = { weekday: 'long' }
             // forecast is injected in HTML, we also rounded the value to show no decimal
             // with one decimal: ${Math.round(day.main.temp * 10) / 10}
+            // adds the weekdays in two ways, short and long format, example mon or monday
             forecast.innerHTML += `
                 <p class="forecast-day" id="forecastDay"><span class="short-day">${new Intl.DateTimeFormat('en-GB', options1).format(day.dt * 1000).toLowerCase()}</span><span class="long-day">${new Intl.DateTimeFormat('en-GB', options2).format(day.dt * 1000).toLowerCase()}</span><span class="forecast-description">${day.weather[0].description}</span><span>${Math.round(day.main.temp)}°</span></p>
-            `
+            ` 
         })
     })
 
+// adds 3 forecast cities 
 fetch(API_MONTREAL)
     .then((response) => response.json())
     .then((json) => {

@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
 
 * {
-  /* font-size: 62, 5%; this gives a warning in the inspector, and it changes nothing if I comment it out? */
   box-sizing: border-box;
 }
 
@@ -26,11 +25,14 @@ body {
   height: auto;
   max-width: 600px;
 }
+/* ===== ICON  ===== */
 
 .weather-icon {
   -webkit-animation: rotate-scale-up 1s 1s both;
   animation: rotate-scale-up 1s 1s both;
 }
+
+/* ===== ICON ANIMATION ===== */
 
 @-webkit-keyframes rotate-scale-up {
   0% {
@@ -94,6 +96,8 @@ span {
   text-align: end;
 }
 
+/* ===== removes the last dotted line of the last child ===== */
+
 #forecastDay:last-child {
   border-bottom: none;
 }
@@ -128,6 +132,8 @@ span {
   width: 12rem;
 }
 
+/* ===== MEDIA QUERIES FOR IPAD AND DESKTOP ===== */
+
 @media screen and (min-width: 800px) {
   .cities {
     display: flex;
@@ -142,14 +148,9 @@ span {
   .main-page {
     max-width: 800px;
   }
+  
   .cities {
     display: flex;
-  }
-
-  .forecast-description {
-    display: flex;
-    width: 33%;
-    justify-content: center;
   }
 
   .short-day {
@@ -158,5 +159,11 @@ span {
   
   .long-day {
     display: flex;
+  }
+
+  .forecast-description {
+    display: flex;
+    width: 33%;
+    justify-content: center;
   }
 }
