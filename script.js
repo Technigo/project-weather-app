@@ -17,6 +17,8 @@ const SUN_API_KEY = "cf20150b8ced4a14b02711e51f46b972";
 const weatherApp = async () => {
 
   // This API gets longitude, latitude, IP, city, and country
+  // When we were testing, the IP address wasn't super accurate ;)
+  // But we didn't want to ask the users for permission to access their location data, so this is our workaround.
   const IP_API = `https://api.freegeoip.app/json/?apikey=${IP_API_KEY}`
   const userLocationWait = await fetch(IP_API);
   const userLocation = await userLocationWait.json();
@@ -25,7 +27,6 @@ const weatherApp = async () => {
   city = userLocation.city;
   country = userLocation.country_name;
   ip = userLocation.ip;
-  console.log(userLocation);
 
   // This API takes the city and country and returns sunrise and sunset in local datetime
   const SUN_API = `https://api.ipgeolocation.io/astronomy?apiKey=${SUN_API_KEY}&location=${city},${country}`
