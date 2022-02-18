@@ -16,7 +16,10 @@ body {
   color: white;
   align-items: center;
 }
-
+.main-container {
+  height: 100%;
+  width: 100%;
+}
 .today {
   padding: 10px;
   padding-top: 50px;
@@ -77,10 +80,16 @@ body {
 .weekday {
   padding: 30px;
 }
+.otherCity {
+  display: flex;
+}
+.city {
+  justify-content: center;
+  font-weight: bold;
+  font-size: 10px;
+}
 @media only screen and (min-width: 768px) {
   .main-container {
-    height: 100%;
-    width: 100%;
     padding: 5rem;
     border-radius: 10px;
   }
@@ -102,5 +111,14 @@ body {
 
   .temperature-icon {
     align-items: center;
+  }
+  .otherCity {
+    margin-top: 50px;
+    justify-content: center;
+  }
+  .city {
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
   }
 }

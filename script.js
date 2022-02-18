@@ -6,12 +6,22 @@ const weatherDescription = document.getElementById("weatherDescription");
 const weatherForecast = document.getElementById("weatherForecast");
 const sunContainer = document.getElementById("sunContainer");
 const mainContainer = document.getElementById("mainContainer");
-
+const timeInHr = new Date().getHours();
 const API_URL =
   "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=856500266ed2a8bc92cf454b0800d15c";
 const API_Weather_URL =
   "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=856500266ed2a8bc92cf454b0800d15c";
-const timeInHr = new Date().getHours();
+const london =
+  "http://api.openweathermap.org/data/2.5/weather?q=London&units=metric&APPID=856500266ed2a8bc92cf454b0800d15c";
+const dubai =
+  "http://api.openweathermap.org/data/2.5/weather?q=Dubai&units=metric&APPID=856500266ed2a8bc92cf454b0800d15c";
+const bangkok =
+  "http://api.openweathermap.org/data/2.5/weather?q=Bangkok&units=metric&APPID=856500266ed2a8bc92cf454b0800d15c";
+const sydney =
+  "http://api.openweathermap.org/data/2.5/weather?q=Sydney&units=metric&APPID=856500266ed2a8bc92cf454b0800d15c";
+
+// Fetching the stockholm weather
+
 let timezone;
 fetch(API_URL) //this is when we send something to BE
   .then((res) => res.json()) //this is when we receive the data from BE
@@ -170,3 +180,45 @@ function convertUTCToHours(UTCsec) {
   ).getHours();
   return UTCstring;
 }
+
+// Different cities
+
+fetch(london)
+  .then((response) => response.json())
+  .then((data2) => {
+    const todaysTemp = data2.main.temp_max.toFixed(0);
+    console.log("london", data2);
+    otherCity.innerHTML += `
+    <p  class="city" id="london">${data2.name}</p>
+   <p  class="city" id="london">${todaysTemp}°C</p>
+   `;
+  });
+
+fetch(dubai)
+  .then((response) => response.json())
+  .then((data3) => {
+    const todaysTemp = data3.main.temp_max.toFixed(0);
+    console.log("dubai", data3);
+    otherCity.innerHTML += `
+    <p class="city" id="dubai">${data3.name}</p>
+   <p class="city" id="dubai" >${todaysTemp}°C</p>
+`;
+  });
+fetch(bangkok)
+  .then((response) => response.json())
+  .then((data4) => {
+    const todaysTemp = data4.main.temp_max.toFixed(0);
+    console.log("bangkok", data4);
+    otherCity.innerHTML += `
+    <p class="city" id="bangkok">${data4.name}</p>
+   <p class="city" id="bangkok">${todaysTemp}°C</p`;
+  });
+fetch(sydney)
+  .then((response) => response.json())
+  .then((data5) => {
+    const todaysTemp = data5.main.temp_max.toFixed(0);
+    console.log("sydney", data5);
+    otherCity.innerHTML += `
+    <p class="city" id="sydney">${data5.name}</p>
+   <p class="city" id="sydney">${todaysTemp}°C</p`;
+  });
