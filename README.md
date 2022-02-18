@@ -19,7 +19,7 @@ This project was Technigo's Bootcamp project of week 6. The goal was to build a 
 
 ## The problem
 
-We divided our group to two smaller groups and divided the work into 2 branches (1. branch: today's weather section and 2. branch: forecast weather for the next 5 days). 
+We divided our group into two smaller groups and divided the work into 2 branches (1. branch: today's weather section and 2. branch: forecast weather for the next 5 days). 
 
 We built an input form to give the user the possibility to search weather for different cities. We created a function with conditional statements which is changing the background depending on the temperature of the searched city. We used conditional statements for also changing the weather icons for current and future weather.
 
