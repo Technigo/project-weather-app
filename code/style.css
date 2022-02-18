@@ -47,7 +47,7 @@ h1 {
 }
 
 img {
-    width: 50px;
+    width: 100px;
     padding-top: 20px;
     padding-bottom: 20px;
 }
@@ -65,15 +65,9 @@ img {
     padding-top: 5px;
 }
 
-.day-style p {
-    /* border-bottom: 1px dashed; */
-}
-
 hr {
-    /* border-bottom: 1px dotted; */
     width: 100%;
     border-bottom: 1px dotted;
-    display: ;
 }
 
 .clear {
@@ -107,5 +101,10 @@ hr {
     }
     h1 {
       text-align: left;
+    }
+    .weather-container {
+       
+        width: 50%;
+        margin: auto;
     }
   }

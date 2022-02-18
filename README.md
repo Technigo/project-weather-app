@@ -1,13 +1,18 @@
+This weeks project done by Joanna Lodell, Svante Ljunggren, Jens Bergqvist, Ida Halling, Katarina Elgerus 
+
+
 # Weather App
 
-Replace this readme with your own information about your project.
+This weeks project was to make a weather app fetching api:s. 
+We used Stockholm as the default city. 
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We followed the plan doing the first steps together. Wi split in three teams based on our working hours, did our parts separately finishing with a group session where we merge all the branches. 
+The site is responsive and changes colors and icons depending on weather.
 
 ## View it live
 
 Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://vigilant-darwin-bc66f3.netlify.app/
