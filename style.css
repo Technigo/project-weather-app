@@ -6,7 +6,7 @@
     -moz-box-sizing: content-box;
     -webkit-font-smoothing: antialiased; 
     text-rendering: optimizeLegibility;
-    }
+}
 
 body {
     font-family: 'Roboto', sans-serif;
@@ -84,13 +84,13 @@ li.sunrise-time {
     display: block;
     font-size: 17px;
     padding: .2em 2.5em 0 0;
-  }
+}
 
-  li.sunset-time {
+li.sunset-time {
     display: block;
     font-size: 17px;
     padding: .2em 0 0 3em;
-  }
+}
 
 .five-days {
     position: relative;
