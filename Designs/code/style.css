@@ -75,7 +75,8 @@ form button:hover {
     justify-content: center;
     border-bottom-left-radius: 50% 15%;
     border-bottom-right-radius: 50% 15%;
-    min-height: 60vh;
+    height: 100vh;
+    /*min-height: 60vh;*/
 }
 
 .current-weather {
@@ -83,7 +84,7 @@ form button:hover {
     flex-direction: column;
     width: 800px;
     padding: 4em;
-    padding-bottom: 10em;
+    padding-bottom: 7em;
 }
 
 .main-icon-main-temp-container {
@@ -94,7 +95,7 @@ form button:hover {
 }
 
 .main-icon img {
-    width: 250px;
+    width: 200px;
 }
 
 .main-temp, .city-name, p {
@@ -103,26 +104,37 @@ form button:hover {
 
 .main-temp {
     font-size: 6em;
-    margin: 0;
+    margin:  1rem 0;
     font-family: 'Helvetica', sans-serif;
 }
 
 .city-name {
     font-size: 3em;
+    margin: 1rem 0;
 }
 
 .weather-type {
     padding: 0;
+    margin: 1rem 0;
 }
 
 p {
     font-size: 2.2em;
+    margin: 1rem 0;
 }
 
 .rise-set {
     display: flex;
     justify-content: space-between;
     padding: 0;
+}
+
+.sunrise {
+    margin: 1rem 0;
+}
+
+.sunset {
+    margin: 1rem 0;
 }
 
 .rise-set img {
@@ -210,14 +222,15 @@ footer {
     text-align: center;
 }
 
-@media (max-width:767px) {
+@media (max-width:667px) {
     .current-weather-wrapper {
         display: flex;
         align-items: center;
         justify-content: center;
         border-bottom-left-radius: 50% 10%;
         border-bottom-right-radius: 50% 10%;
-        height: 90vh;
+        min-height: 480px;
+        max-height: 80vh;
     }
     .current-weather {
         width: 800px;
@@ -281,6 +294,26 @@ footer {
     }
 }
 
+@media (min-width:668px) and (max-width:1000px) {
+    .current-weather-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom-left-radius: 50% 10%;
+        border-bottom-right-radius: 50% 10%;
+        min-height: 700px;
+        max-height: 80vh;
+    }
+    .current-weather {
+        width: 700px;
+        padding: 0;
+        padding-bottom: 4em;
+    }
+    .main-icon img {
+        width: 200px;
+    }
+}
+
 /*media query for desktop*/
 @media (min-width:1400px) {
 
@@ -293,3 +326,31 @@ footer {
         width: 300px;
     }
 }
+
+
+
+/*Animation for the tablet and desktop size (main weather icon moving)*/
+@media (min-width:668px){
+    .main-icon img {
+        animation-name: moveInLeft;
+        animation-duration: 5s;
+        animation-timing-function: ease-out;
+    }
+    @keyframes moveInLeft {
+        0% {
+          opacity: -5;
+          transform: translateX(-20rem);
+        }
+        50% {
+          opacity: 1;
+          transform: translate(0);
+        }
+        100% {
+          opacity: 2;
+          transform: translate(0);
+        }
+      }
+
+}
+
+

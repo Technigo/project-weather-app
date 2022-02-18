@@ -8,15 +8,23 @@ const searchForm = document.getElementById("search-form")
 const cityInput = document.getElementById("search-input")
 
 
+
 //const APP_ID = '94506b4af0e0a236471b8ee0da3c2281'
+
+
 
 //global variables
 let today = new Date().toLocaleDateString('en', {weekday: 'short'})
 let city = 'Helsinki' //default value for city, when page loaded
 let mainIcon = ""
+let inputPlaceholder = cityInput.placeholder
+
+console.log('Kristiina')
+console.log('Tiina')
 
 
 const fetchWeather = (city) =>{
+  
   //URL variables, the city is based on the input of the user
   let weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=94506b4af0e0a236471b8ee0da3c2281`
   let forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=94506b4af0e0a236471b8ee0da3c2281`       
@@ -33,6 +41,7 @@ const fetchWeather = (city) =>{
       upcomingWeather.innerHTML = ''
     }
     else {
+      
       console.log(json)
       const roundedTemp = Math.round(json.main.temp * 10) / 10
       // This is showing the local time for sunrise transformed into a 2-digit form for hours and minutes.
@@ -189,6 +198,11 @@ const fetchWeather = (city) =>{
     })        
   }
 })
+/*Here we set the input field valu to empty string again
+(this makes that after the search the search input placeholder shows the text:
+'Type city here' instead of searches city name)*/
+cityInput.value = '' 
+
 } //ending curly brackets checked
 
 
