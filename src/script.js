@@ -1,6 +1,5 @@
 const weather = document.getElementById("weather");
-const sunrise = document.getElementById("sunrise");
-const sunset = document.getElementById("sunset");
+const sunriseSunsetWrapper = document.getElementById("sunriseSunsetWrapper")
 const icon = document.getElementById("icon");
 const message = document.getElementById("message");
 const forecastWrapper = document.getElementById("forecastWrapper");
@@ -9,62 +8,57 @@ const cityName = document.getElementById('cityName')
 const submitBtn = document.getElementById("submitBtn")
 
 const displayData = (data) => {
-	const temperature = Math.round(data.main.temp)
-	const description = data.weather[0].description
-	const sunrisedata = new Date(data.sys.sunrise * 1000)
-	const sunsetdata = new Date(data.sys.sunset * 1000)
+	const temperature = Math.round(data.main.temp);
+	const detailedWeatherDescription = data.weather[0].description;
+	const weatherDescription = data.weather[0].main; 
+	let sunriseOrSunset;
 	const city = data.name;
-	const lat = data.coord.lat
-	const lon = data.coord.lon
+	const lat = data.coord.lat;
+	const lon = data.coord.lon;
 
-	let sunriseHours = sunrisedata.getHours();
-	let sunriseMinutes = sunrisedata.getMinutes()
-	let sunsetHours = sunsetdata.getHours();
-	let sunsetMinutes = sunsetdata.getMinutes()
+	const sunriseSunset = [
+		new Date((data.sys.sunrise + data.timezone + new Date().getTimezoneOffset() * 60) * 1000),
+		new Date((data.sys.sunset + data.timezone + new Date().getTimezoneOffset() * 60) * 1000)
+	]
 
-	if (sunriseHours < 10) {
-		sunriseHours = `0${sunriseHours}`
-	}
+	sunriseSunset.forEach((time, index) => {
+		let timeHours = time.getHours();
+		timeHours < 10 ? timeHours = `0${timeHours}` : timeHours = timeHours;
 
-	if (sunriseMinutes < 10) {
-		sunriseMinutes = `0${sunriseMinutes} `
-	}
+		let timeMinutes = time.getMinutes()
+		timeMinutes < 10 ? timeMinutes = `0${timeMinutes}` : timeMinutes = timeMinutes;
 
-	if (sunsetHours < 10) {
-		sunsetHours = `0${sunsetHours}`
-	}
+		index === 0 ? sunriseOrSunset = "sunrise:" : sunriseOrSunset = "sunset:"
 
-	if (sunsetMinutes < 10) {
-		sunsetMinutes = `0${sunsetMinutes} `
-	}
+		weather.innerHTML = `${detailedWeatherDescription} | ${temperature}°`
+		sunriseSunsetWrapper.innerHTML += `<p>${sunriseOrSunset} ${timeHours}.${timeMinutes}</p>`
+	})
 
-	weather.innerHTML = `${description} | ${temperature}°`
-	sunrise.innerHTML = `sunrise: ${sunriseHours}.${sunriseMinutes}`
-	sunset.innerHTML = `sunset: ${sunsetHours}.${sunsetMinutes}`
-
-	if (data.weather[0].main === "Clear") {
+	switch (weatherDescription) {
+		case "Clear":
 		icon.src = "./images/noun_Sunglasses_2055147.svg"
 		message.innerHTML = `Get your sunnies on. ${city} is looking rather great today.`
 		document.body.style.backgroundColor = "#F7E9B9"
 		document.body.style.color = "#2A5510"
-	} else if (data.weather[0].main === "Clouds") {
+		break;
+		case "Clouds":
 		icon.src = "./images/noun_Cloud_1188486.svg"
 		message.innerHTML = `Light a fire and get cosy. ${city} is looking grey today.`
 		document.body.style.backgroundColor = "#F4F7F8"
 		document.body.style.color = "#F47775"
-	} else if (data.weather[0].main === "Rain" || data.weather[0].main === "Drizzle") {
+		break;
+		case "Rain":
+		case "Drizzle":
 		icon.src = "./images/noun_Umbrella_2030530.svg"
 		message.innerHTML = `Don't forget your umbrella. It is wet in ${city} today.`
 		document.body.style.backgroundColor = "#A3DEF7"
 		document.body.style.color = "#164A68"
-	} else {
+		default:
 		message.innerHTML = `Stay inside. It is unpredictable weather out in ${city} today.`
 		icon.src = "./images/weather.png"
 		icon.style.width = "80px"
-		submitBtn.style.border = "1px solid white"
-		cityName.style.border = "1px solid white"
-		submitBtn.style.color = "white"
-		cityName.style.color = "white"
+		cityName.classList.add("white-border");
+		submitBtn.classList.add("white-border")
 		document.body.style.backgroundColor = "#2c2c2c" 
 		document.body.style.color = "#ffffff"
 	} 
@@ -97,7 +91,10 @@ const displayForecast = (data) => {
 const handleCitySearch = (event) => {
 	event.preventDefault()
 	fetchData(cityName.value)
-	forecastWrapper.innerHTML = ''
+	cityName.classList.remove("white-border");
+	submitBtn.classList.remove("white-border")
+	forecastWrapper.innerHTML = "";
+	sunriseSunsetWrapper.innerHTML = "";
 }
 
 const fetchData = (city) => {
