@@ -58,6 +58,8 @@ const fetchWeather = (city) =>{
 
       // This variable stores the current weather
       const mainWeather = json.weather[0].main;
+      let weatherDescription = json.weather[0].description
+      
 
       // This function shows the weather icons that are changing according to the current weather
       const showMainWeatherIcon = () => {
@@ -111,7 +113,7 @@ const fetchWeather = (city) =>{
               <div class="main-icon"> ${mainIcon}</div>
             </div>
             <h2 class="city-name">${json.name}</h2>
-            <p class="weather-type">${mainWeather}</p>
+            <p class="weather-type">${weatherDescription}</p>
             <div class="rise-set">
               <p class="sunrise">Sunrise ${sunriseTime} <img src="./assets/sunrise.png"></p>
               <p class="sunset">Sunset ${sunsetTime} <img src="./assets/sunset.png"></p>
@@ -142,6 +144,7 @@ const fetchWeather = (city) =>{
 
         //getting the weekday of forecasted days
         let weekDay = filteredForecastNoon[day].dt_txt
+        console.log(weekDay)
 
         //printing the short versin of the weekday (e.g Mon,Tue,Wed,Thu,Fri,Sat,Sun)
         let shortWeekday = new Date(weekDay).toLocaleDateString('en', {weekday: 'short'})
