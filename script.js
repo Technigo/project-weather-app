@@ -31,8 +31,8 @@ fetch(API_URL) //this is when we send something to BE
     weatherContainer.innerHTML = ` 
     
     <h1 class="temperature" id="temperature">${data.main.temp}°C</h1>
-    <h1 class="city" id="city">${data.name} </h1>
-        <h3 class="city" id="city"><img src="http://openweathermap.org/img/wn/${icon}.png" alt="weather icon"/> ${data.weather[0].description} </h3>
+    <h1 class="cityToday" id="city">${data.name} </h1>
+        <h3 class="cityToday" id="city"><img src="http://openweathermap.org/img/wn/${icon}.png" alt="weather icon"/> ${data.weather[0].description} </h3>
         `;
 
     /* sunrise & sunset */
