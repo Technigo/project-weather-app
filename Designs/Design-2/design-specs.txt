@@ -7,9 +7,9 @@ Weights: bold and regular
 
 colors:
 
-#F47775
-#F4F7F8
-#164A68
-#A3DEF7
-#2A5510 
-#F7E9B9 sunny background
+#F47775 clouds font color
+#F4F7F8 clouds background color
+#164A68 rain font color 
+#A3DEF7 rain blue background color
+#2A5510 clear font color dark green 
+#F7E9B9 clear background

@@ -15,22 +15,22 @@
 <body>
     <form id="cityForm" class="city-form">
         <input id="cityName" class="city-name" placeholder="Enter a city" type="text"></input>
-        <input type="submit" class="submit-btn"></input>
+        <input type="submit" id="submitBtn" class="submit-btn"></input>
     </form>
-
+    
     <header>
         <p id="weather"></p>
         <p id="sunrise"></p>
         <p id="sunset"></p>
     </header>
-
+    <div class="weather-wrapper">
     <section class="weather-information">
         <img src="" id="icon" class="icons" alt="">
-        <h1 id="message"></h1>
+        <h1 class="message" id="message"></h1>
     </section>
-
-    <section id="forecastWrapper"></section>
-
+    
+    <section id="forecastWrapper" class="forecast-wrapper"></section>
+</div>
 </body>
 <script src="./src/script.js"></script>
 

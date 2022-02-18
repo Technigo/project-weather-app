@@ -7,7 +7,7 @@ body {
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
-	padding: 25px 0 0 20px;  
+	padding: 25px;  
 }	
 
 .city-form {
@@ -18,10 +18,23 @@ body {
 	border-radius: 5px;
 	border: 1px solid black; 
 	background-color: transparent;
+	padding: 5px;
 }
-	
+
+.city-name::selection {
+	background-color: transparent;
+}
+
+textarea:focus, input:focus{
+  outline: none;
+	background-color: transparent;
+}
+
 .submit-btn {
-	border-radius: 5px;  
+	border-radius: 5px; 
+	border: 1px solid black; 
+	padding: 5px;
+	background-color: transparent;
 }
 	
 header p {
@@ -60,7 +73,7 @@ h1 {
 	border-bottom:none;
 }
 
-@media only screen and (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1023px) {
 	header {
 	  display: flex;
 	  flex-direction: row;
@@ -70,10 +83,44 @@ h1 {
 	  margin-right: 20px;
 	}
 
-	.weather-information {
+	.message {
 	  display: flex;
 	  flex-direction: column;
 	  align-items: center;
 	}
+}
+
+@media (min-width: 1024px)  {
+	body{
+		max-width: 800px;
+		margin-top: 60px;
+	}
+
+	.weather-wrapper {
+		display: flex;	
+	}
+
+	.forecast-wrapper{
+		width: 50%;
+		justify-content: center;
+		margin-left: 15px;
+		margin-top: 140px;
+	}
+
+	.weather-information{
+		width: 50%;
+		justify-content: center;
+	}
+
+	header {
+		display: flex;
+		flex-direction: row;
+		margin-top: 20px;
+		margin-bottom: 45px;
+	}
+
+	header p {
+		margin-right: 20px;
+  }
 }
 

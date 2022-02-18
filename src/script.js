@@ -6,6 +6,7 @@ const message = document.getElementById("message");
 const forecastWrapper = document.getElementById("forecastWrapper");
 const cityForm = document.getElementById('cityForm')
 const cityName = document.getElementById('cityName')
+const submitBtn = document.getElementById("submitBtn")
 
 const displayData = (data) => {
 	const temperature = Math.round(data.main.temp)
@@ -46,36 +47,34 @@ const displayData = (data) => {
 		message.innerHTML = `Get your sunnies on. ${city} is looking rather great today.`
 		document.body.style.backgroundColor = "#F7E9B9"
 		document.body.style.color = "#2A5510"
-
 	} else if (data.weather[0].main === "Clouds") {
 		icon.src = "./images/noun_Cloud_1188486.svg"
 		message.innerHTML = `Light a fire and get cosy. ${city} is looking grey today.`
 		document.body.style.backgroundColor = "#F4F7F8"
 		document.body.style.color = "#F47775"
-
 	} else if (data.weather[0].main === "Rain" || data.weather[0].main === "Drizzle") {
 		icon.src = "./images/noun_Umbrella_2030530.svg"
 		message.innerHTML = `Don't forget your umbrella. It is wet in ${city} today.`
 		document.body.style.backgroundColor = "#A3DEF7"
 		document.body.style.color = "#164A68"
-
-	} else if (data.weather[0].main === "Thunderstorm" || data.weather[0].main === "Snow") {
-		message.innerHTML = `Stay inside. It is dangerous out in ${city} today.`
-		document.body.style.backgroundColor = "#2c2c2c" //change this color
-		document.body.style.color = "#ffffff" //change this color
-
 	} else {
-		message.innerHTML = `Lock your door in ${city} today.`
-		document.body.style.backgroundColor = "#A3DEF7" //change this color
-		document.body.style.color = "#164A68" //change this color
-	}
+		message.innerHTML = `Stay inside. It is unpredictable weather out in ${city} today.`
+		icon.src = "./images/weather.png"
+		icon.style.width = "80px"
+		submitBtn.style.border = "1px solid white"
+		cityName.style.border = "1px solid white"
+		submitBtn.style.color = "white"
+		cityName.style.color = "white"
+		document.body.style.backgroundColor = "#2c2c2c" 
+		document.body.style.color = "#ffffff"
+	} 
 
 	fetchDataForecast(lat, lon);
 }
 
 const displayForecast = (data) => {
-	for (i = 1; i < 8; i++) {
-		const days = new Date(data.daily[i].dt * 1000);
+	for (index = 1; index < 8; index++) {
+		const days = new Date(data.daily[index].dt * 1000);
 		const dayOfWeek = days.getDay();
 		let day = [
 			"sun",
@@ -86,9 +85,9 @@ const displayForecast = (data) => {
 			"fri",
 			"sat"
 		]
-
+	
 		const displayWeek = day[dayOfWeek]
-		const displayTemp = Math.round(data.daily[i].temp.day);
+		const displayTemp = Math.round(data.daily[index].temp.day);
 		forecastWrapper.innerHTML += `<div class="week-temp"><p>${displayWeek}</p>
 	    <p>${displayTemp}°</p></div>
 	    `
