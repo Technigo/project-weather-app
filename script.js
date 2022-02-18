@@ -12,13 +12,13 @@ const API_URL =
 const API_Weather_URL =
   "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=856500266ed2a8bc92cf454b0800d15c";
 const london =
-  "http://api.openweathermap.org/data/2.5/weather?q=London&units=metric&APPID=856500266ed2a8bc92cf454b0800d15c";
+  "https://api.openweathermap.org/data/2.5/weather?q=London&units=metric&APPID=856500266ed2a8bc92cf454b0800d15c";
 const dubai =
-  "http://api.openweathermap.org/data/2.5/weather?q=Dubai&units=metric&APPID=856500266ed2a8bc92cf454b0800d15c";
+  "https://api.openweathermap.org/data/2.5/weather?q=Dubai&units=metric&APPID=856500266ed2a8bc92cf454b0800d15c";
 const bangkok =
-  "http://api.openweathermap.org/data/2.5/weather?q=Bangkok&units=metric&APPID=856500266ed2a8bc92cf454b0800d15c";
+  "https://api.openweathermap.org/data/2.5/weather?q=Bangkok&units=metric&APPID=856500266ed2a8bc92cf454b0800d15c";
 const sydney =
-  "http://api.openweathermap.org/data/2.5/weather?q=Sydney&units=metric&APPID=856500266ed2a8bc92cf454b0800d15c";
+  "https://api.openweathermap.org/data/2.5/weather?q=Sydney&units=metric&APPID=856500266ed2a8bc92cf454b0800d15c";
 
 // Fetching the stockholm weather
 
