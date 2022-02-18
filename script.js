@@ -71,7 +71,7 @@ const weatherApp = async () => {
         body.className = "rainy";
         middleSection.innerHTML = `
           <img id="weatherIcon" class="weather-icon" src="Designs/Design-2/icons/noun_Umbrella_2030530.svg" />
-          <h1 id="weatherQuip" class="weather-quip">Don"t forget your umbrella. It"s wet in ${data.name} today.</h1>
+          <h1 id="weatherQuip" class="weather-quip">Don't forget your umbrella. It's wet in ${data.name} today.</h1>
           `;
       };
   });
