@@ -2,20 +2,18 @@ const dailyWeather = document.getElementById("dailyWeather");
 const weeklyWeather = document.getElementById("weeklyWeather");
 const typeOfWeather = document.getElementById("typeOfWeather");
 const currentTemp = document.getElementById("currentTemp");
-const city = document.getElementById("city");
 const sunriseAndSunset = document.getElementById("sunriseAndSunset");
+const currentCity = document.getElementById ("currentCity");
 const weatherData = document.getElementById("weatherData");
 const closeMenu = document.querySelector(".closeMenu");
 const burger = document.querySelector(".burger");
 const sideMenu = document.querySelector(".sideMenu");
 const weatherContainer = document.getElementById("weatherContainer");
+const inputLocation = document.getElementById('inputLocation')
 
-const API_WEATHER =
-  "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=2daa8713e80e4a10a9123c077820312c";
-const API_FORECAST =
-  "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=2daa8713e80e4a10a9123c077820312c";
+let city = 'Stockholm'
 
-//This is an object to define emojis based on the 5 day weather forecast
+//dayEmoji defines emoji based on 5 day weather forecast
 const dayEmoji = {
   Clouds: "./images/cloudy.svg",
   Clear: "./images/day.svg",
@@ -23,10 +21,16 @@ const dayEmoji = {
   Snow: "./images/snowy-6.svg",
 };
 
+
+// getWeather fetches info from current city in header
+const getWeather = (city) => {
+API_WEATHER = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=2daa8713e80e4a10a9123c077820312c`;
+
 fetch(API_WEATHER)
   .then((res) => res.json())
   .then((data) => {
     console.log("data", data);
+
     let tempRemoveDecimals = Math.floor(data.main.temp); // To make the number "round" without decimals.
     let sunrise = new Date(data.sys.sunrise * 1000).toLocaleTimeString([], {
       timeStyle: "short",
@@ -43,7 +47,7 @@ fetch(API_WEATHER)
 
     weatherData.innerHTML += `
     <h1 id="currentTemp">${tempRemoveDecimals}<span>ºC</span></h1>
-    <h2 id="city">${data.name}</h2>
+    <h2 id="currentCity">${data.name}</h2>
     <h3 id="typeOfWeather">${data.weather[0].description}</h3>
     <h3 id="sunriseAndSunset">sunrise ${sunrise} sunset ${sunset}</h3>
     `;
@@ -78,8 +82,11 @@ fetch(API_WEATHER)
       weatherData.innerHTML += `
       <img id="mainIcon" class="main-icon" src="./images/cloudy-day-1.svg" alt="image of clouds" />`;
     }
-  });
+  })
+};
 
+
+// show is added to how burger menu appears
 const show = () => {
   sideMenu.style.display = "flex";
   sideMenu.style.top = "0";
@@ -90,6 +97,10 @@ const close = () => {
   closeMenu.style.display = "none";
 };
 
+
+// getForecast fetches 5 days weather
+const getForecast = (city) => {
+  API_FORECAST = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=2daa8713e80e4a10a9123c077820312c`;
 fetch(API_FORECAST)
   .then((res) => res.json())
   .then((forecast) => {
@@ -122,7 +133,11 @@ fetch(API_FORECAST)
       `;
     });
   });
+}
 
-// EventListeners
+getWeather(city);
+getForecast(city);
+
+// eventListeners
 burger.addEventListener("click", show);
 closeMenu.addEventListener("click", close);
