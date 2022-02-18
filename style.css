@@ -13,7 +13,7 @@ body {
     font-weight: light;
 }
 
- .day-background  {
+.day-background  {
     border-bottom-left-radius: 60%;
     border-bottom-right-radius: 80%;
     z-index: -999;

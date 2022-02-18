@@ -1,4 +1,4 @@
-//Selectors
+//DOM selectors
 const cityName = document.querySelector('.city-name')
 const temperature = document.querySelector('.temperature')
 const weatherContainer = document.querySelector('.weather-container')
@@ -10,8 +10,13 @@ const sunsetTimeX = document.querySelector('.sunset-time')
 const fiveDaysForecast = document.querySelector('.five-days');
 const weatherDescription = document.querySelector('.weather-description')
 
+//variables for the API:s
+const currentWeather = 'https://api.openweathermap.org/data/2.5/weather?q=Perth,Australia&units=metric&appid=70b87f08f9e694d757b4dcb393cc1ec0'
+const fiveDays = 'https://api.openweathermap.org/data/2.5/forecast?q=Perth,Australia&units=metric&appid=70b87f08f9e694d757b4dcb393cc1ec0'
 
-fetch('https://api.openweathermap.org/data/2.5/weather?q=Perth,Australia&units=metric&appid=70b87f08f9e694d757b4dcb393cc1ec0')
+
+//function for current weather in Pearth
+fetch(currentWeather)
 .then((response) => response.json())
 .then((data) => { 
   console.log('data', data)
@@ -44,8 +49,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Perth,Australia&units=m
 
 //Show a forecast for the next 5 days
 
-// const fiveDays = 
-fetch('https://api.openweathermap.org/data/2.5/forecast?q=Perth,Australia&units=metric&appid=70b87f08f9e694d757b4dcb393cc1ec0')
+fetch(fiveDays)
 .then((res) => res.json())
 .then((fiveDaysWeather) => {
   const filterWeather = fiveDaysWeather.list.filter((item) =>
