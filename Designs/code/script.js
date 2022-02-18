@@ -19,9 +19,6 @@ let city = 'Helsinki' //default value for city, when page loaded
 let mainIcon = ""
 let inputPlaceholder = cityInput.placeholder
 
-console.log('Kristiina')
-console.log('Tiina')
-
 
 const fetchWeather = (city) =>{
   
@@ -42,7 +39,6 @@ const fetchWeather = (city) =>{
     }
     else {
       
-      console.log(json)
       const roundedTemp = Math.round(json.main.temp * 10) / 10
       // This is showing the local time for sunrise transformed into a 2-digit form for hours and minutes.
       let sunriseTime = new Date((json.sys.sunrise + json.timezone + new Date().getTimezoneOffset() * 60) * 1000).toLocaleTimeString([], {
@@ -127,8 +123,6 @@ const fetchWeather = (city) =>{
  
     })
     .then((forecastdata) => {
-    console.log(forecastdata)
-
    
       /*Here we declare variables for min and max temperatures, because the data was given
       every third hours, we decided to use for the min temperature the lowest temperature at 
@@ -144,7 +138,7 @@ const fetchWeather = (city) =>{
 
         //getting the weekday of forecasted days
         let weekDay = filteredForecastNoon[day].dt_txt
-        console.log(weekDay)
+      
 
         //printing the short versin of the weekday (e.g Mon,Tue,Wed,Thu,Fri,Sat,Sun)
         let shortWeekday = new Date(weekDay).toLocaleDateString('en', {weekday: 'short'})
@@ -223,7 +217,6 @@ searchForm.addEventListener("submit", (e) => {
     upcomingWeather.innerHTML = ``
     currentWeather.innerHTML = ``
     city = cityInput.value;
-    console.log('city:', city)
     fetchWeather(city)
   })
   
