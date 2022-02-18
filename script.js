@@ -34,6 +34,12 @@ fetch(API_WEATHER)
     let sunset = new Date(data.sys.sunset * 1000).toLocaleTimeString([], {
       timeStyle: "short",
     });
+    // Here I fetched current time, to later determine if it is day or night
+    const time = new Date().toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    });
 
     weatherData.innerHTML += `
     <h1 id="currentTemp">${tempRemoveDecimals}</h1>
@@ -41,6 +47,11 @@ fetch(API_WEATHER)
     <h3 id="typeOfWeather">${data.weather[0].main}</h3>
     <h3 id="sunriseAndSunset">sunrise ${sunrise} sunset ${sunset}</h3>
     `;
+
+    // Changing the background based on night / day
+    // if (time < sunrise && time > sunset) {
+    //   document.dailyWeather.background = "#000";
+    // }
 
     // Changes weather icon depending on actual weather
     let weatherIcon = data.weather[0].main;
