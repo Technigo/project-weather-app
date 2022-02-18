@@ -101,7 +101,8 @@ li.sunset-time {
 
 .five-day-forecast {
     font-size: 18px;
-    display: flex;
-    justify-content: space-between;
-    padding: 1em 2em .5em 1.5em;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    padding: 1em 0 .5em 0;
 }
