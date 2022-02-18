@@ -1,13 +1,19 @@
 # Weather App
 
-Replace this readme with your own information about your project.
+This was a mob programming project where we started as a group and did the foundations. Then we divded into 2 groups, one did the styling CSS and the other did the JavaScript in separate branches. After that we joined up the groups and merged the branches.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Blue requirements:
+
+You should fetch data from the API using fetch() in JavaScript
+All data in the sketch above should be present and fetched from the API
+The presentation of the data should be in the specified format.
+The page should work on mobile (mobile first!), tablet and desktop (Be responsive)
+Step 1 & 2 should be done together and step 3 should be done in branches
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We would have benefitted from making a plan in Figma. We spent a lot of time on getting the milliseconds for sunrise and sunset. We discovered that there are several different ways of fetching the API and the location to display. In the end we used geolocation and only fetched the forcast.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Link to our weather: https://hippos-weather.netlify.app

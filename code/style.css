@@ -25,15 +25,11 @@ body {
     color: rgb(232, 73, 15);
 }
 
-
 .rainy {
     background: rgb(157, 225, 255);
     background: linear-gradient(45deg, rgba(157, 225, 255) 30%, rgb(180, 229, 250) 100%);
     color: #164A68;
 }
-
-
-
 
 
 /******* Header *******/
@@ -110,8 +106,5 @@ h1 {
         font-size: 6.4rem;
         text-align: center;
     }
-    
-    
 
 }
-
