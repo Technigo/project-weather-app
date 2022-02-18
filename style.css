@@ -41,18 +41,15 @@ h1 span {
 }
 
 .weather-container {
-  height: 55vh;
-  width: 150vw;
+  height: 45vh;
+  width: 100%;
   background: linear-gradient(
     180deg,
     rgb(176, 156, 224) 0%,
     rgba(227, 227, 255, 1) 100%
   );
-  border-bottom-left-radius: 49%;
-  border-bottom-right-radius: 60%;
-  position: relative;
-  top: -20%;
-  left: -20%;
+  border-bottom-left-radius: 110% 110px;
+  border-bottom-right-radius: 110% 110px;
 }
 
 .dailyWeather {
@@ -70,10 +67,10 @@ h1 span {
 }
 
 .main-icon {
-  position: fixed;
-  margin-left: 120px;
-  bottom: 580px;
-  width: 90%;
+  position: relative;
+  width: 80%;
+  margin-left: 110px;
+  margin-top: -440px;
 }
 
 #sunriseAndSunset {
@@ -119,6 +116,7 @@ h1 span {
 }
 .sideMenu {
   position: fixed;
+  background: rgb(58, 173, 250);
   background: linear-gradient(
     180deg,
     rgb(176, 156, 224) 0%,
