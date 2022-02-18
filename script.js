@@ -27,10 +27,10 @@ fetch(API_URL) //this is when we send something to BE
   .then((res) => res.json()) //this is when we receive the data from BE
   .then((data) => {
     const icon = data.weather[0].icon;
-
+    const temp = data.main.temp.toFixed(0);
     weatherContainer.innerHTML = ` 
     
-    <h1 class="temperature" id="temperature">${data.main.temp}°C</h1>
+    <h1 class="temperature" id="temperature">${temp}°C</h1>
     <h1 class="cityToday" id="city">${data.name} </h1>
         <h3 class="cityToday" id="city"><img src="http://openweathermap.org/img/wn/${icon}.png" alt="weather icon"/> ${data.weather[0].description} </h3>
         `;
@@ -133,8 +133,8 @@ fetch(API_Weather_URL)
         minTemp.push(data.main.temp_min);
         maxTemp.push(data.main.temp_max);
       });
-      const minTemperature = Math.min(...minTemp);
-      const maxTemperature = Math.max(...maxTemp);
+      const minTemperature = Math.min(...minTemp).toFixed(0);
+      const maxTemperature = Math.max(...maxTemp).toFixed(0);
       return { maxTemperature, minTemperature };
     }
 
@@ -190,7 +190,7 @@ fetch(london)
     console.log("london", data2);
     otherCity.innerHTML += `
     <p  class="city" id="london">${data2.name}</p>
-   <p  class="city" id="london">${todaysTemp}°C</p>
+   <p  class="city" id="london">${todaysTemp}°</p>
    `;
   });
 
@@ -201,7 +201,7 @@ fetch(dubai)
     console.log("dubai", data3);
     otherCity.innerHTML += `
     <p class="city" id="dubai">${data3.name}</p>
-   <p class="city" id="dubai" >${todaysTemp}°C</p>
+   <p class="city" id="dubai" >${todaysTemp}°</p>
 `;
   });
 fetch(bangkok)
@@ -211,7 +211,7 @@ fetch(bangkok)
     console.log("bangkok", data4);
     otherCity.innerHTML += `
     <p class="city" id="bangkok">${data4.name}</p>
-   <p class="city" id="bangkok">${todaysTemp}°C</p`;
+   <p class="city" id="bangkok">${todaysTemp}°</p`;
   });
 fetch(sydney)
   .then((response) => response.json())
@@ -220,5 +220,5 @@ fetch(sydney)
     console.log("sydney", data5);
     otherCity.innerHTML += `
     <p class="city" id="sydney">${data5.name}</p>
-   <p class="city" id="sydney">${todaysTemp}°C</p`;
+   <p class="city" id="sydney">${todaysTemp}°</p`;
   });

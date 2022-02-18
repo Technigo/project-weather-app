@@ -30,7 +30,7 @@ body {
   padding-top: 15px;
 }
 
-.city {
+.cityToday {
   font-size: 2rem;
   padding: 10px;
 }
@@ -87,6 +87,7 @@ body {
   justify-content: center;
   font-weight: bold;
   font-size: 10px;
+  padding: 10px;
 }
 @media only screen and (min-width: 768px) {
   .main-container {
