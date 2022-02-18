@@ -25,6 +25,7 @@ const weatherApp = async () => {
   city = userLocation.city;
   country = userLocation.country_name;
   ip = userLocation.ip;
+  console.log(userLocation);
 
   // This API takes the city and country and returns sunrise and sunset in local datetime
   const SUN_API = `https://api.ipgeolocation.io/astronomy?apiKey=${SUN_API_KEY}&location=${city},${country}`
