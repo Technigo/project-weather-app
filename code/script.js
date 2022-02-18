@@ -5,7 +5,7 @@ const icon = document.getElementById("icon")
 const body = document.getElementById("body")
 
 
- const API_URLD = 'http://api.openweathermap.org/data/2.5/weather?q=Berlin,de&APPID=d423e9bdbd74d4fcdd3804322b8767eb'
+ const API_URLD = 'https://api.openweathermap.org/data/2.5/weather?q=Berlin,de&APPID=d423e9bdbd74d4fcdd3804322b8767eb'
  const API_URLF = 'https://api.openweathermap.org/data/2.5/forecast?q=Berlin&units=metric&APPID=947f288ad7c7a6c1279353f3ee6f09d1'
     // First API - gives us Daily weather
     fetch(API_URLD)
