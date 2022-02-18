@@ -9,3 +9,4 @@ The major challenges were :
 
 ## View it live
 
+https://weather-app-foxes-2-2022.netlify.app/
