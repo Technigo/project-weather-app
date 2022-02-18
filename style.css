@@ -1,172 +1,98 @@
-<<<<<<< HEAD
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 body {
-   color: #ffffff;
-   font-family: 'Roboto';
-}
-
-
-
-
-.weatherForecastDays {
-    color: #000000;
-    margin: 30px 20px;
-    line-height: 45px;
-}
-
-.weatherForecastRow {
-    display: flex;
-    justify-content: space-between;
-    text-align: left;
-}
-=======
-
-
-body {
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    font-family: 'roboto', 'sans-serif';
-    font-weight: lighter;
-    color: white;
+   margin: 0;
+   justify-content: center;
+   font-family: 'roboto', 'sans-serif';
+   font-weight: lighter;
+   color: white;
+   width: 100%;
 }
 
 .wrapper {
-    box-sizing: border-box;
-    
-
+   box-sizing: border-box;
 }
 
 .mainWrapper {
-    position: relative;
-    justify-content: center;
-    padding: 30px;
-    background-color: rgb(50,51,100);
-    background-image: linear-gradient(rgb(35,36,82), rgb(94,96,157));
-    border-bottom-left-radius: 50% 50px;
-    border-bottom-right-radius: 50% 50px;
-    min-width: 300px;
+   position: relative;
+   justify-content: center;
+   padding: 30px;
+   height: 350px;
+   background-color: rgb(50,51,100);
+   background-image: linear-gradient(rgb(35,36,82), rgb(94,96,157));
+   border-bottom-left-radius: 50% 50px;
+   border-bottom-right-radius: 50% 50px;
 }
 
 button {
-    float: right;
-    height: 70px;
-    width: 70px;
-    border-radius: 70px;
-    background-color: rgb(117,122,255);
-    color: white;
-    font-size: 20px;
-    border: 0;
-    padding: 5px;
-    box-shadow: 0px 6px 9px 1px #c5c5c5f0
-}
-
-/* JS Style */
-
-.degree {
-    font-size: 90px;
-    margin-bottom: 5px;
-}
-
-.cityName {
-    font-size: 30px;
-    margin-top: 10px;
-    margin-bottom: 0px;
-}
-
-.tempType {
-    font-size: 16px;
-    margin-top: 2px;
-}
-
-
-
-
-/* *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-} */
-
-/* body {
-   color: #ffffff;
-   background-color: #ffffff;
-   font-family: 'Roboto';
-   display: flex;
-   justify-content: center;
-}
-
-.mainWrapper {
    position: absolute;
-   width: 100%;
-   max-width: 320px;
-   height: 50%;
-   background-color: #2D2E5E;
-   color: #ffffff;
-   border-radius: 5px;
-   border-bottom-left-radius: 50% 30px;
-   border-bottom-right-radius: 50% 30px;
+   top: 90%;
+   left: 60%;
+   height: 70px;
+   width: 70px;
+   border-radius: 70px;
+   background-color: rgb(117,122,255);
+   color: white;
+   font-size: 20px;
+   border: 0;
+   padding: 5px;
+   box-shadow: 0px 6px 9px 1px #c5c5c5f0;
+   font-family: 'Nanum Gothic', sans-serif;
 }
 
-.weatherInfo {
-   position: relative;
-   margin-top: 30%;
-   margin-left: 20px;
-}
+/* classes from the script file */
 
 .degree {
-   font-size: 80px;
+   font-size: 90px;
+   margin-bottom: 5px;
 }
 
 .cityName {
-   font-size: 34px;
-   font-weight: lighter;
+   font-size: 30px;
+   margin-top: 10px;
+   margin-bottom: 0px;
 }
 
 .tempType {
    font-size: 16px;
-   font-weight: lighter;
+   margin-top: 2px;
 }
 
-.sunRisesunSet {
-   display:flex;
-   justify-content: space-between;
-   margin: 25px 10px;
-}
-
-button {
-   background-color: #757AFF;
-   color: #ffffff;
-   float: right;
-   margin-right: 25px;
-   height: 50px;
-   width: 50px;
-   border-radius: 50%;
-   border: none;
-   font-size: 30px;
-   margin-top: 30px;
-   margin-right: 25px;
-}
-
-section#weatherForecast {
-   border: 1px solid #000000;
-   margin: 40% 0%;
-}
-
-.weatherForecastDays {
-   color: #000000;
-   margin: 30px 20px;
-   line-height: 45px;
+.sun-container {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 140px;
+  margin-top: 20px;
 }
 
 .weatherForecastRow {
-   display: flex;
-   justify-content: space-between;
-   text-align: left;
-} */
->>>>>>> df4df4a7eb57b0d0682b3d61d64d8782df2f0e76
+  display: flex;
+  justify-content: space-between;
+  color: gray
+}
+
+p img {
+   height: 35px;
+   width: 35px;
+   margin-left: 100px;
+}
+
+.weatherForecastRow p { 
+   margin-top: 0;
+}
+
+
+/* Tablet & Desktop */
+
+@media (min-width: 426px) {
+   .sun-container {
+      display: flex;
+      justify-content: flex-start;
+   }
+   .sun-container p {
+      padding-right: 10px;
+   }
+
+   button {
+      left: 80%;
+   }
+}
