@@ -14,5 +14,5 @@ The site is responsive and changes colors and icons depending on weather.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+ Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
 https://vigilant-darwin-bc66f3.netlify.app/
