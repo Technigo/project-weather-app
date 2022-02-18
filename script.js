@@ -55,9 +55,13 @@ fetch(fiveDays)
   const filterWeather = fiveDaysWeather.list.filter((item) =>
   item.dt_txt.includes("12:00")
   );
+  
+  const filteredForecastNoon = fiveDaysWeather.list.filter(item => item.dt_txt.includes('12:00'))
+  const filteredForecastMidnight = fiveDaysWeather.list.filter(item => item.dt_txt.includes('00:00:00'))
+  //let fiveDays = Date(weekDay).toLocaleDateString('en', {weekday:'short'})
   //create an array with our weekdays
   const weekdays = [
-      "sunday",
+     "sunday",
       "monday",
       "tuesday",
       "wednesday",
@@ -85,6 +89,37 @@ fetch(fiveDays)
       `
     })
   })
+
+  const weatherIcon = (day) => {
+    let main = day.weather[0].main;
+
+    if (
+      day.weather[0].description === 'broken clouds' || 
+      day.weather[0].description === 'scattered clouds' ||
+      day.weather[0].description === 'few clouds'
+    ) {
+      return partlycloudyIcon;
+  } else if (main === "Clouds") {
+    return cloudyIcon;
+  } else if (main === "Rain") {
+    return rainIcon;
+  } else if (main === "Thunderstorm") {
+    return stormIcon;
+  } else if (main === "Drizzle") {
+    return rainIcon;
+  } else if (main === "Fog" || main === "Mist") {
+    return fogIcon;
+  } else if (main === "Snow") {
+    return snowIcon;
+  } else if (main === "Clear") {
+    return sunIcon;
+  } else {
+    return atmosphereIcon;
+  }
+    
+  }
+
+
   // <div class= "emojis"> ${emojis}</div>
   /*
   
