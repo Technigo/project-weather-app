@@ -1,3 +1,79 @@
+* {
+	font-family: 'Montserrat', sans-serif;
+}	
+
 body {
-    background-color: rgba(210, 185, 87, 0.742);
+	max-width: 660px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	padding: 25px 0 0 20px;  
+}	
+
+.city-form {
+	margin-bottom: 20px;
+}	
+
+.city-name {
+	border-radius: 5px;
+	border: 1px solid black; 
+	background-color: transparent;
 }
+	
+.submit-btn {
+	border-radius: 5px;  
+}
+	
+header p {
+	font-size: 20px;
+	margin: 2px;
+}
+	
+.icons {
+	margin-top: 65px;
+}
+	
+
+h1 {
+	font-size: 38px;
+	margin-top: 20px;
+}
+	
+.forecast-wrapper {
+	font-size: 20px;
+	display: flex;
+	flex-direction: column;
+	margin: 30px 20px 0 0;
+}	
+
+.week-temp{
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px dashed;
+}
+	
+.week-temp p {
+	margin: 8px 0;
+}	
+
+.week-temp:last-child{
+	border-bottom:none;
+}
+
+@media only screen and (min-width: 768px) {
+	header {
+	  display: flex;
+	  flex-direction: row;
+	}
+
+	header p {
+	  margin-right: 20px;
+	}
+
+	.weather-information {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	}
+}
+
