@@ -45,8 +45,8 @@ const getWeather = (data) => {
     //This displays the current temperature and the sunrise and sunset times in the header.
     header.innerHTML = `
     <p>${todayWeather} | ${Math.round(todayTemp)}°</p>
-    <p> sunrise ${getSunRise.getHours()}.${getSunRise.getMinutes()} </p>
-    <p> sunset ${getSunSet.getHours()}.${getSunSet.getMinutes()} </p>
+    <p> Sunrise ${getSunRise.getHours()}.${getSunRise.getMinutes()} </p>
+    <p> Sunset ${getSunSet.getHours()}.${getSunSet.getMinutes()} </p>
     `;
     
     //Get the current weater for the next 5 days at 12:00. 
