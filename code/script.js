@@ -1,19 +1,18 @@
+const cityOptions= document.getElementById('city')
 
 const stockholmUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=59.33&lon=18.06&units=metric&exclude=minutely,hourly,alerts&appid=99271fdaf78d63e5bf35004e02e4e29d'
 const bangkokUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=13.73&lon=100.31&units=metric&exclude=minutely,hourly,alerts&appid=99271fdaf78d63e5bf35004e02e4e29d'
 const seattleUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=47.60&lon=-122.33&units=metric&exclude=minutely,hourly,alerts&appid=99271fdaf78d63e5bf35004e02e4e29d'
 const torontoUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=43.65&lon=-79.34&units=metric&exclude=minutely,hourly,alerts&appid=99271fdaf78d63e5bf35004e02e4e29d'
 
-const cityOptions= document.getElementById('city')
 const currentWeatherCondition = document.getElementById('currentWeatherCondition')
 const currentWeatherSunrise = document.getElementById('currentWeatherSunrise')
 const currentWeatherSunset = document.getElementById('currentWeatherSunset')
+
 const iconCloud = document.getElementById('iconCloud')
 const iconUmbrella = document.getElementById('iconUmbrella')
 const iconGlasses = document.getElementById('iconSunglasses')
-const styleChange = document.getElementsByTagName('body')
-const fontColor = document.querySelectorAll('p')
-const currentWeatherHeaderWrapper = document.getElementById('currentWeatherHeaderWrapper')
+
 const headerMessage = document.getElementById('currentWeatherHeader')
 const forecastWrapper = document.getElementById('forecastWrapper')
 const welcome = document.getElementById('welcome')
@@ -118,8 +117,6 @@ const formatCurrentWeather = (data) => {
     currentWeather.sunrise = sunrise.toLocaleString("en-SE", {hour: "numeric", minute: "numeric", timeZone: data.timezone}) // displays HH:MM in the correct timezone
     currentWeather.sunset = sunset.toLocaleString("en-SE", {hour: "numeric", minute: "numeric", timeZone: data.timezone}) // displays HH:MM in the correct timezone
 
-    // more values can be added here
-
     return currentWeather;
 };
 
@@ -133,7 +130,6 @@ const formatForecast = (data) => {
             dayOfWeek: new Date(day.dt * 1000).toLocaleDateString("en-SE", {weekday: 'long'}), // converts number to english name
             lowTemp: Math.round(day.temp.min) + "°", // rounds to nearest integer
             highTemp: Math.round(day.temp.max) + "°", // rounds to nearest integer
-            // more values can be added here
         };
     forecast.push(dailyForecast) // adds object for each day to the forecast array
     });
@@ -153,9 +149,7 @@ const updateCurrentWeatherDisplay = (currentWeather) => {
         iconCloud.style.display = 'block'
 
         document.body.style.backgroundColor = "#F4F7F8"
-        currentWeatherCondition.style.color = "#F47775"
-        currentWeatherSunrise.style.color = "#F47775"
-        currentWeatherSunset.style.color = "#F47775"
+        document.body.style.color = "#F47775"
         currentWeatherHeader.style.color =  "#F47775"
 
         headerMessage.innerText = `Get cosy. ${cityOptions.value} is looking grey today.`
@@ -167,9 +161,7 @@ const updateCurrentWeatherDisplay = (currentWeather) => {
         iconUmbrella.style.display = 'block'
 
         document.body.style.backgroundColor = "#A3DEF7"
-        currentWeatherCondition.style.color = "#164A68"
-        currentWeatherSunrise.style.color = "#164A68"
-        currentWeatherSunset.style.color = "#164A68"
+        document.body.style.color = "#164A68"
         currentWeatherHeader.style.color =  "#164A68"
 
         headerMessage.innerText = `Don't forget your umbrella. It's wet in ${cityOptions.value} today.`
@@ -181,9 +173,7 @@ const updateCurrentWeatherDisplay = (currentWeather) => {
         iconGlasses.style.display = 'block'
 
         document.body.style.backgroundColor = "#F7E9B9"
-        currentWeatherCondition.style.color = "#2A5510"
-        currentWeatherSunrise.style.color = "#2A5510"
-        currentWeatherSunset.style.color = "#2A5510"
+        document.body.style.color = "#2A5510"
         currentWeatherHeader.style.color =  "#2A5510"
         
         headerMessage.innerText = `Get your sunnies on. ${cityOptions.value} is looking rather great today.`
@@ -194,9 +184,7 @@ const updateCurrentWeatherDisplay = (currentWeather) => {
         iconCloud.style.display = 'none'
 
         document.body.style.backgroundColor = "#CFC2CF"
-        currentWeatherCondition.style.color = "#000000"
-        currentWeatherSunrise.style.color = "#000000"
-        currentWeatherSunset.style.color = "#000000"
+        document.body.style.color = "#000000"
         currentWeatherHeader.style.color =  "#000000"
 
         headerMessage.innerText = `${cityOptions.value} has unpredictable weather in the forecast today!`
