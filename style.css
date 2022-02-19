@@ -65,9 +65,9 @@ h1 span {
 
 .main-icon {
   position: absolute;
-  width: 80%;
+  width: 70%;
   margin-left: 130px;
-  margin-top: -440px;
+  margin-top: -360px;
 }
 
 #sunriseAndSunset {
@@ -238,6 +238,10 @@ input:focus {
     margin-top: 20px;
   }
 
+  #sunriseAndSunset {
+    font-size: 22px;
+  }
+
   h3 {
     font-size: 25px;
   }
@@ -265,7 +269,7 @@ input:focus {
 
   .main-icon {
     position: absolute;
-    padding-top: 70px;
+    padding-top: 10px;
     width: 25%;
   }
 
