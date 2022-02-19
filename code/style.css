@@ -53,7 +53,6 @@ select {
     display: flex;
     flex-direction: column;
 }
-
 .current-weather-wrapper p {
     margin: 0;
     padding: 1px 0;
@@ -97,12 +96,24 @@ svg {
 
 /* styling of heading with animations */
 
+.welcome {
+    color: #333;
+    font-weight: bold;
+    animation: slideLeft 2s forwards;
+    left: -400px;
+    position: relative;
+    font-size: 7vw;
+    top: -75%;
+    text-align: left;
+}
+
 h1 {
     color: #333;
     font-weight: bold;
     animation: slideLeft 2s forwards;
     left: -400px;
     position: relative;
+    font-size: 38px;
 }
 
 h1 span {
@@ -110,6 +121,10 @@ h1 span {
 }
 
 @keyframes slideLeft {
+    from
+    {
+        left: -300px;
+      }
     to {
       left: 0px;
     }
@@ -189,3 +204,25 @@ h1 span {
       opacity: 0;
      }
   }
+
+  @media (min-width: 667px) {
+    .welcome {
+    top: -5%;
+    }
+
+    h1 {
+        font-size: 70px;
+        text-align: center;
+    }
+
+    svg {
+        margin: 0 auto;
+    }
+
+    .forecast-wrapper {
+        width: 100%;
+    }
+
+    main {
+    width: 75%;
+    }
