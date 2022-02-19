@@ -180,7 +180,7 @@ const updateCurrentWeatherDisplay = (currentWeather) => {
         iconUmbrella.style.display = 'none'
         iconGlasses.style.display = 'block'
 
-        document.body.style.backgroundColor = "#A3DEF7"
+        document.body.style.backgroundColor = "#F7E9B9"
         currentWeatherCondition.style.color = "#2A5510"
         currentWeatherSunrise.style.color = "#2A5510"
         currentWeatherSunset.style.color = "#2A5510"
