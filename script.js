@@ -30,9 +30,6 @@ fetch(API_URL) //this is when we send something to BE
     const temp = data.main.temp.toFixed(0);
     
     weatherContainer.innerHTML = ` 
-    <div class="hamburger">
-      <img src="/images/hamburger-icon.png" alt="hamburger-icon">
-    </div>
     <div class= "icon-day-or-night" id="iconDayOrNight"></div>
     <div class="temperature" id="temperature">${temp}°C</div>
     <div class="cityToday" id="city">${data.name} </div>
