@@ -158,8 +158,7 @@ a:link {
 }
 
 .input-location {
-  position: fixed;
-  right: 70px;
+  position: absolute;
   padding: 20px;
   border-radius: 30px;
   width: 300px;
