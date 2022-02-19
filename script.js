@@ -7,8 +7,6 @@ const weatherForecast = document.getElementById("weatherForecast");
 const sunContainer = document.getElementById("sunContainer");
 const mainContainer = document.getElementById("mainContainer");
 const timeInHr = new Date().getHours();
-const iconDayOrNight = document.getElementById("iconDayOrNight")
-
 const API_URL =
   "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=856500266ed2a8bc92cf454b0800d15c";
 const API_Weather_URL =

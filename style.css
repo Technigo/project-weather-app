@@ -21,7 +21,8 @@ body {
 }
 
 .main-container {
-  padding: 200px 38px 38px 38px;
+  position: relative;
+  padding: 200px 38px 66px 38px;
 }
 
 .icon-day-or-night>img {
@@ -47,7 +48,7 @@ body {
 .weather-description {
   font-size: 1.375rem;
 
-}
+} 
 
 .sun-container {
   display: flex;
@@ -66,8 +67,8 @@ body {
 
 .button {
   position: absolute;
-  left: 54%;
-  top: 52%
+  bottom: -51px;
+  left: 324px;
 }
 
 
