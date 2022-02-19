@@ -1,18 +1,14 @@
 const cityOptions= document.getElementById('city')
-
 const stockholmUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=59.33&lon=18.06&units=metric&exclude=minutely,hourly,alerts&appid=99271fdaf78d63e5bf35004e02e4e29d'
 const bangkokUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=13.73&lon=100.31&units=metric&exclude=minutely,hourly,alerts&appid=99271fdaf78d63e5bf35004e02e4e29d'
 const seattleUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=47.60&lon=-122.33&units=metric&exclude=minutely,hourly,alerts&appid=99271fdaf78d63e5bf35004e02e4e29d'
 const torontoUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=43.65&lon=-79.34&units=metric&exclude=minutely,hourly,alerts&appid=99271fdaf78d63e5bf35004e02e4e29d'
-
 const currentWeatherCondition = document.getElementById('currentWeatherCondition')
 const currentWeatherSunrise = document.getElementById('currentWeatherSunrise')
 const currentWeatherSunset = document.getElementById('currentWeatherSunset')
-
 const iconCloud = document.getElementById('iconCloud')
 const iconUmbrella = document.getElementById('iconUmbrella')
 const iconGlasses = document.getElementById('iconSunglasses')
-
 const headerMessage = document.getElementById('currentWeatherHeader')
 const forecastWrapper = document.getElementById('forecastWrapper')
 const welcome = document.getElementById('welcome')
@@ -56,15 +52,18 @@ const bangkok = () => {
     .then((result) => {
         return result.json()
     })
-  .then((data) => {
+    .then((data) => {
 
-    let currentWeather = formatCurrentWeather(data); // calls function with the data the promise delivers
-    updateCurrentWeatherDisplay(currentWeather); // updates display when data is ready
+        let currentWeather = formatCurrentWeather(data); // calls function with the data the promise delivers
+        updateCurrentWeatherDisplay(currentWeather); // updates display when data is ready
 
-    let forecast = formatForecast(data); // calls function with the data the promise delivers
-    updateForecastDisplay(forecast); // updates display when data is ready
+        let forecast = formatForecast(data); // calls function with the data the promise delivers
+        updateForecastDisplay(forecast); // updates display when data is ready
 
     })
+    .catch((error) => {
+        console.log(error); // shows if something went wrong (ex. API key, json formatted incorrectly, etc)
+    });
 }
 
 const seattle= () => {
@@ -72,15 +71,18 @@ const seattle= () => {
     .then((result) => {
         return result.json()
     })
-  .then((data) => {
+    .then((data) => {
 
-    let currentWeather = formatCurrentWeather(data); // calls function with the data the promise delivers
-    updateCurrentWeatherDisplay(currentWeather); // updates display when data is ready
+        let currentWeather = formatCurrentWeather(data); // calls function with the data the promise delivers
+        updateCurrentWeatherDisplay(currentWeather); // updates display when data is ready
 
-    let forecast = formatForecast(data); // calls function with the data the promise delivers
-    updateForecastDisplay(forecast); // updates display when data is ready
+        let forecast = formatForecast(data); // calls function with the data the promise delivers
+        updateForecastDisplay(forecast); // updates display when data is ready
 
     })
+    .catch((error) => {
+        console.log(error); // shows if something went wrong (ex. API key, json formatted incorrectly, etc)
+    });
 }
 
 const toronto= () => {
@@ -88,18 +90,20 @@ const toronto= () => {
     .then((result) => {
         return result.json()
     })
-  .then((data) => {
+    .then((data) => {
 
-    let currentWeather = formatCurrentWeather(data); // calls function with the data the promise delivers
-    updateCurrentWeatherDisplay(currentWeather); // updates display when data is ready
+        let currentWeather = formatCurrentWeather(data); // calls function with the data the promise delivers
+        updateCurrentWeatherDisplay(currentWeather); // updates display when data is ready
 
-    let forecast = formatForecast(data); // calls function with the data the promise delivers
-    updateForecastDisplay(forecast); // updates display when data is ready
+        let forecast = formatForecast(data); // calls function with the data the promise delivers
+        updateForecastDisplay(forecast); // updates display when data is ready
 
     })
+    .catch((error) => {
+        console.log(error); // shows if something went wrong (ex. API key, json formatted incorrectly, etc)
+    });
 }
 
-// populate currentWeather object with data from the current weather API
 const formatCurrentWeather = (data) => {
 
     let currentWeather = {
@@ -120,7 +124,6 @@ const formatCurrentWeather = (data) => {
     return currentWeather;
 };
 
-// populate forecast array with data from the current weather API
 const formatForecast = (data) => {
 
     let forecast = [];
@@ -144,51 +147,41 @@ const updateCurrentWeatherDisplay = (currentWeather) => {
     currentWeatherSunset.innerHTML = `sunset ${currentWeather.sunset}`
 
     if (currentWeather.condition === 'Clouds') {
+        welcome.style.display = 'none'
         iconGlasses.style.display = 'none'
         iconUmbrella.style.display = 'none'
         iconCloud.style.display = 'block'
-
         document.body.style.backgroundColor = "#F4F7F8"
         document.body.style.color = "#F47775"
         currentWeatherHeader.style.color =  "#F47775"
-
         headerMessage.innerText = `Get cosy. ${cityOptions.value} is looking grey today.`
-        welcome.style.display = 'none'
-
     } else if (currentWeather.condition === 'Rain') {
+        welcome.style.display = 'none'
         iconCloud.style.display = 'none'
         iconGlasses.style.display = 'none'
         iconUmbrella.style.display = 'block'
-
         document.body.style.backgroundColor = "#A3DEF7"
         document.body.style.color = "#164A68"
         currentWeatherHeader.style.color =  "#164A68"
-
         headerMessage.innerText = `Don't forget your umbrella. It's wet in ${cityOptions.value} today.`
-        welcome.style.display = 'none'
-        
     } else if (currentWeather.condition === 'Clear'){
+        welcome.style.display = 'none'
         iconCloud.style.display = 'none'
         iconUmbrella.style.display = 'none'
         iconGlasses.style.display = 'block'
-
         document.body.style.backgroundColor = "#F7E9B9"
         document.body.style.color = "#2A5510"
         currentWeatherHeader.style.color =  "#2A5510"
-        
         headerMessage.innerText = `Get your sunnies on. ${cityOptions.value} is looking rather great today.`
-        welcome.style.display = 'none'
     } else {
+        welcome.style.display = 'none'
         iconGlasses.style.display = 'none'
         iconUmbrella.style.display = 'none'
         iconCloud.style.display = 'none'
-
         document.body.style.backgroundColor = "#CFC2CF"
         document.body.style.color = "#000000"
         currentWeatherHeader.style.color =  "#000000"
-
         headerMessage.innerText = `${cityOptions.value} has unpredictable weather in the forecast today!`
-        welcome.style.display = 'none'
     }
 }
 
