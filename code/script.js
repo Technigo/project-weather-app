@@ -151,11 +151,13 @@ const updateCurrentWeatherDisplay = (currentWeather) => {
         iconGlasses.style.display = 'none'
         iconUmbrella.style.display = 'none'
         iconCloud.style.display = 'block'
+
         document.body.style.backgroundColor = "#F4F7F8"
         currentWeatherCondition.style.color = "#F47775"
         currentWeatherSunrise.style.color = "#F47775"
         currentWeatherSunset.style.color = "#F47775"
         currentWeatherHeader.style.color =  "#F47775"
+
         headerMessage.innerText = `Get cosy. ${cityOptions.value} is looking grey today.`
         welcome.style.display = 'none'
 
@@ -163,11 +165,13 @@ const updateCurrentWeatherDisplay = (currentWeather) => {
         iconCloud.style.display = 'none'
         iconGlasses.style.display = 'none'
         iconUmbrella.style.display = 'block'
+
         document.body.style.backgroundColor = "#A3DEF7"
         currentWeatherCondition.style.color = "#164A68"
         currentWeatherSunrise.style.color = "#164A68"
         currentWeatherSunset.style.color = "#164A68"
         currentWeatherHeader.style.color =  "#164A68"
+
         headerMessage.innerText = `Don't forget your umbrella. It's wet in ${cityOptions.value} today.`
         welcome.style.display = 'none'
         
@@ -175,16 +179,26 @@ const updateCurrentWeatherDisplay = (currentWeather) => {
         iconCloud.style.display = 'none'
         iconUmbrella.style.display = 'none'
         iconGlasses.style.display = 'block'
-        iconUmbrella.style.display = 'none'
+
         document.body.style.backgroundColor = "#A3DEF7"
         currentWeatherCondition.style.color = "#2A5510"
         currentWeatherSunrise.style.color = "#2A5510"
         currentWeatherSunset.style.color = "#2A5510"
         currentWeatherHeader.style.color =  "#2A5510"
-        document.body.style.backgroundColor = "#F7E9B9"
+        
         headerMessage.innerText = `Get your sunnies on. ${cityOptions.value} is looking rather great today.`
         welcome.style.display = 'none'
     } else {
+        iconGlasses.style.display = 'none'
+        iconUmbrella.style.display = 'none'
+        iconCloud.style.display = 'none'
+
+        document.body.style.backgroundColor = "#CFC2CF"
+        currentWeatherCondition.style.color = "#000000"
+        currentWeatherSunrise.style.color = "#000000"
+        currentWeatherSunset.style.color = "#000000"
+        currentWeatherHeader.style.color =  "#000000"
+
         headerMessage.innerText = `${cityOptions.value} has unpredictable weather in the forecast today!`
         welcome.style.display = 'none'
     }
@@ -192,7 +206,7 @@ const updateCurrentWeatherDisplay = (currentWeather) => {
 
 const updateForecastDisplay = (forecast) => {
     forecastWrapper.innerHTML = ''
-    forecast.forEach((day) => {
+    forecast.slice(1,8).forEach((day) => {
         forecastWrapper.innerHTML += `
         <div class="forecast-wrapper">
         <div class="row">
