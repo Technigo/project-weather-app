@@ -177,7 +177,7 @@ const updateCurrentWeatherDisplay = (currentWeather) => {
         document.body.style.backgroundColor = "#F7E9B9"
         headerMessage.innerText = `Get your sunnies on. ${cityOptions.value} is looking rather great today.`
     } else {
-        console.log("Unpredictable weather in the forecast today!")
+        headerMessage.innerText = `${cityOptions.value} has unpredictable weather in the forecast today!`
     }
 }
 
