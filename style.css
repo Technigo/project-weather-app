@@ -93,6 +93,8 @@ body {
 
 .weekday, .temperature-icon, .temperature2 {
   padding: 30px 0px;
+  font-size: 1.25rem;
+
 }
 
 .otherCity {
