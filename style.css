@@ -190,7 +190,7 @@ input:focus {
   text-transform: uppercase;
   font-weight: 400;
   text-decoration: none;
-  color: rosybrown;
+  color: #ffffff;
 }
 .technigo {
   font-size: 10px;
@@ -198,7 +198,7 @@ input:focus {
 .foxes {
   text-transform: uppercase;
   font-weight: 400;
-  color: rosybrown;
+  color: #ffffff;
 }
 .people {
   font-size: 10px;
