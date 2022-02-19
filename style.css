@@ -167,7 +167,7 @@ a:link {
 
   .weather-data {
     padding: 40px;
-    margin: -100px 100px;
+    margin: -50px 100px;
   }
 
   .main-icon {
@@ -217,8 +217,7 @@ a:link {
 
   .main-icon {
     position: absolute;
-    margin-left: 900px;
-    bottom: 760px;
+    bottom: 460px;
     width: 25%;
   }
 
