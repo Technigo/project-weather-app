@@ -59,18 +59,16 @@ h1 span {
 }
 
 .weather-data {
-  margin-top: -20px;
+  padding: 30px;
+  margin-top: -50px;
 }
 
-.weather-data {
-  padding: 30px;
-}
 
 .main-icon {
   position: relative;
   width: 80%;
   margin-left: 130px;
-  margin-top: -440px;
+  bottom: 350px;
 }
 
 #sunriseAndSunset {
