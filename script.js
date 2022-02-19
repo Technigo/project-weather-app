@@ -7,6 +7,8 @@ const weatherForecast = document.getElementById("weatherForecast");
 const sunContainer = document.getElementById("sunContainer");
 const mainContainer = document.getElementById("mainContainer");
 const timeInHr = new Date().getHours();
+const iconDayOrNight = document.getElementById("iconDayOrNight")
+
 const API_URL =
   "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=856500266ed2a8bc92cf454b0800d15c";
 const API_Weather_URL =
@@ -28,11 +30,15 @@ fetch(API_URL) //this is when we send something to BE
   .then((data) => {
     const icon = data.weather[0].icon;
     const temp = data.main.temp.toFixed(0);
-    weatherContainer.innerHTML = ` 
     
-    <h1 class="temperature" id="temperature">${temp}°C</h1>
-    <h1 class="cityToday" id="city">${data.name} </h1>
-        <h3 class="cityToday" id="city"><img src="http://openweathermap.org/img/wn/${icon}.png" alt="weather icon"/> ${data.weather[0].description} </h3>
+    weatherContainer.innerHTML = ` 
+    <div class="hamburger">
+      <img src="/images/hamburger-icon.png" alt="hamburger-icon">
+    </div>
+    <div class= "icon-day-or-night" id="iconDayOrNight"></div>
+    <div class="temperature" id="temperature">${temp}°C</div>
+    <div class="cityToday" id="city">${data.name} </div>
+    <div class= "weather-description id="weatherDescription">${data.weather[0].description} </div>
         `;
 
     /* sunrise & sunset */
@@ -42,25 +48,23 @@ fetch(API_URL) //this is when we send something to BE
     const sunrise = convertUTCToSunTime(sunriseSec, data.timezone);
     const sunset = convertUTCToSunTime(sunsetSec, data.timezone);
     sunContainer.innerHTML = ` 
-    <h4 class="sunrise" id="sunRise" > Sunrise  ${sunrise} </h4> 
-    <img class="sunrise-icon" src="./images/sunrise.png">
-    <h4 class="sunset" id="sunSet"> Sunset ${sunset}</h4>
-    <img class="sunset-icon" src="./images/sunset.png">`;
+    <div class="sunrise" id="sunRise" > Sunrise  ${sunrise} </div> 
+    <div class="sunset" id="sunSet"> Sunset ${sunset}</div>
+    `;
+    const iconDayOrNight = document.getElementById("iconDayOrNight")
+    if (timeInHr >= 6 && timeInHr <= 16) {
+      mainContainer.style.background = "linear-gradient(233deg, rgba(255,255,255,1) 16%, rgba(138,141,255,1) 100%)";
+      iconDayOrNight.innerHTML= `
+      <img src="/images/sun (1).png" alt="daytime">
+      ` 
+    } else {
+      mainContainer.style.background = "linear-gradient(180deg, #242552, #7a7dc9)";
+      iconDayOrNight.innerHTML= `
+      <img src="/images/moon.png" alt="night time">
+      ` 
+    }
   });
-
 // setting bg Image based on day/night
-if (timeInHr >= 6 && timeInHr <= 17) {
-  mainContainer.style.backgroundImage = `url(./images/day.jpg)`;
-  mainContainer.style.backgroundSize = "cover";
-} else if (timeInHr >= 18) {
-  mainContainer.style.backgroundImage = `url(./images/night.jpg)`;
-  mainContainer.style.backgroundSize = "cover";
-  mainContainer.style.color = "white";
-} else {
-  mainContainer.style.backgroundImage = `url(./images/night.jpg)`;
-  mainContainer.style.backgroundSize = "cover";
-  mainContainer.style.color = "white";
-}
 
 fetch(API_Weather_URL)
   .then((res) => res.json())
