@@ -92,6 +92,8 @@ h1 span {
 #theWeek p {
   margin: 20px;
   word-spacing: 40px;
+  padding-left: 160px;
+  margin-block-end: 5px;
 }
 
 #theWeek:hover {
@@ -224,6 +226,10 @@ input:focus {
     position: relative;
   }
 
+  #theWeek p {
+    padding-left: 230px;
+  }
+
   h1 {
     font-size: 110px;
     margin-bottom: -50px;
@@ -277,5 +283,9 @@ input:focus {
     text-align: center;
     padding: 40px;
     margin: 20px 100px;
+  }
+
+  #theWeek p {
+    padding-left: 590px;
   }
 }
