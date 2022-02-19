@@ -47,8 +47,8 @@ fetch(API_URL) //this is when we send something to BE
     <div class="sunset" id="sunSet"> Sunset ${sunset}</div>
     `;
     const iconDayOrNight = document.getElementById("iconDayOrNight")
-    if (timeInHr >= 6 && timeInHr <= 16) {
-      mainContainer.style.background = "linear-gradient(233deg, rgba(255,255,255,1) 16%, rgba(138,141,255,1) 100%)";
+    if (timeInHr >= 6 && timeInHr <= 17) {
+      mainContainer.style.background = "linear-gradient(90deg, #8a8dff, #9daaff)";
       iconDayOrNight.innerHTML= `
       <img src="/images/sun (1).png" alt="daytime">
       ` 
