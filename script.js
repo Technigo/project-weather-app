@@ -151,11 +151,17 @@ getWeather(city)
 // eventListeners
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  weatherData.innerHTML = ``
+  if (city !== inputLocation.value) {
+  weatherData.innerHTML = `This place does not exist`
   weeklyWeather.innerHTML = ``
+  } else {
+  weatherData.innerHTML += ``
+  weeklyWeather.innerHTML += ``
+}
   city = inputLocation.value;
   console.log('city:', city)
   getWeather(city)
+  
 })
 
 
