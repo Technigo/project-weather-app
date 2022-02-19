@@ -10,8 +10,22 @@ const burger = document.querySelector(".burger");
 const sideMenu = document.querySelector(".sideMenu");
 const weatherContainer = document.getElementById("weatherContainer");
 const inputLocation = document.getElementById('inputLocation')
-
+const submitBtn = document.getElementById('submitBtn')
+const searchForm = document.getElementById('searchForm')
+ 
 let city = 'Stockholm'
+
+// show is added to how burger menu appears
+const show = () => {
+  sideMenu.style.display = "flex";
+  sideMenu.style.top = "0";
+  closeMenu.style.display = "block";
+};
+const close = () => {
+  sideMenu.style.top = "-150%";
+  closeMenu.style.display = "none";
+};
+
 
 //dayEmoji defines emoji based on 5 day weather forecast
 const dayEmoji = {
@@ -25,6 +39,7 @@ const dayEmoji = {
 // getWeather fetches info from current city in header
 const getWeather = (city) => {
 API_WEATHER = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=2daa8713e80e4a10a9123c077820312c`;
+API_FORECAST = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=2daa8713e80e4a10a9123c077820312c`;
 
 fetch(API_WEATHER)
   .then((res) => res.json())
@@ -52,6 +67,18 @@ fetch(API_WEATHER)
     `;
 
     // Changing the background based on night / day
+    const dayToNight = () => {
+      if (time < sunrise && time > sunset) {
+      weatherContainer.style.background = `
+      linear-gradient(
+       180deg,
+        #323667 0%,
+        #6B6EA8 100%
+      `;
+      }}
+      dayToNight()
+
+    
     // if (time < sunrise && time > sunset) {
     //   document.dailyWeather.background = "#000";
     // }
@@ -76,30 +103,14 @@ fetch(API_WEATHER)
       <img id="mainIcon" class="main-icon" src="./images/rainy-4.svg" alt="image of drizzle" />`;
     } else if (weatherIcon === "Fog") {
       weatherData.innerHTML += `
-      <img id="mainIcon" class="main-icon" src="./images/weather-sprite.svg" alt="image of fog" />`;
+      <img id="mainIcon" class="main-icon" src="./images/weather-sprite.svg" alt="image of fog" />`; //NOT working!
     } else if (weatherIcon === "Clouds") {
       weatherData.innerHTML += `
       <img id="mainIcon" class="main-icon" src="./images/cloudy-day-1.svg" alt="image of clouds" />`;
     }
-  })
-};
-
-
-// show is added to how burger menu appears
-const show = () => {
-  sideMenu.style.display = "flex";
-  sideMenu.style.top = "0";
-  closeMenu.style.display = "block";
-};
-const close = () => {
-  sideMenu.style.top = "-150%";
-  closeMenu.style.display = "none";
-};
-
+  });
 
 // getForecast fetches 5 days weather
-const getForecast = (city) => {
-  API_FORECAST = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=2daa8713e80e4a10a9123c077820312c`;
 fetch(API_FORECAST)
   .then((res) => res.json())
   .then((forecast) => {
@@ -134,9 +145,21 @@ fetch(API_FORECAST)
   });
 }
 
-getWeather(city);
-getForecast(city);
+getWeather(city)
+
 
 // eventListeners
+searchForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  weatherData.innerHTML = ``
+  weeklyWeather.innerHTML = ``
+  city = inputLocation.value;
+  console.log('city:', city)
+  getWeather(city)
+})
+
+
 burger.addEventListener("click", show);
 closeMenu.addEventListener("click", close);
+submitBtn.addEventListener("click", close)
+
