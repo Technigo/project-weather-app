@@ -59,9 +59,6 @@ h1 span {
 
 .weather-data {
   margin-top: -20px;
-}
-
-.weather-data {
   padding: 30px;
 }
 
@@ -80,6 +77,10 @@ h1 span {
   font-size: 20px;
   color: #777;
   margin-top: 50px;
+}
+
+.weeklyWeather img {
+  position: fixed;
 }
 
 #theWeek {
@@ -156,6 +157,49 @@ a:link {
   cursor: pointer;
 }
 
+.input-location {
+  position: fixed;
+  right: 70px;
+  padding: 20px;
+  border-radius: 30px;
+  width: 300px;
+  border: none;
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.431);
+  font-size: 20px;
+}
+
+input:focus {
+  outline: none !important;
+  border-color: #a897f9;
+}
+
+.footer {
+  background: seashell;
+  font-family: "poppins", sans-serif;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.project {
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-decoration: underline;
+  color: rosybrown;
+}
+.technigo {
+  font-size: 10px;
+}
+.foxes {
+  text-transform: uppercase;
+  font-weight: 600;
+  color: rosybrown;
+}
+.people {
+  font-size: 10px;
+}
+
 /* TABLET LANDSCAPE */
 @media (min-width: 668px) and (max-width: 1024px) {
   .main-icon {
@@ -166,12 +210,12 @@ a:link {
 
   .weather-data {
     padding: 40px;
-    margin: -100px 100px;
+    margin: -50px 100px;
   }
 
   .main-icon {
     margin-left: 285px;
-    margin-bottom: 120px;
+    margin-top: -400px;
     width: 80%;
   }
 
@@ -216,8 +260,7 @@ a:link {
 
   .main-icon {
     position: absolute;
-    margin-left: 900px;
-    bottom: 760px;
+    bottom: 460px;
     width: 25%;
   }
 
