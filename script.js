@@ -67,7 +67,7 @@ fetch(currentWeather)
   
     data.list.forEach((item) => {
         const currentDate = item.dt_txt.split(" ")[0];
-  console.log(item)
+
         if (minMaxTemps[currentDate]) {
             if (item.main.temp_min < minMaxTemps[currentDate].minTemp) {
                 minMaxTemps[currentDate].minTemp = item.main.temp_min;
@@ -87,7 +87,7 @@ fetch(currentWeather)
             };
         }
     });
-                   //Nabeel
+                   //Nabeel - icon: item.weather in the function above checks weathericon from the data from API. img src below use that code to fetch the icon. Use it to change to your icon if you can.
     //Presenting 5 days forecast
     for (const date in minMaxTemps) { 
       fiveDaysForecast.innerHTML += `
