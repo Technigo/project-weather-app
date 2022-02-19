@@ -78,11 +78,10 @@ fetch(currentWeather)
         } else {
             //object list to be used to inject the forecast elements in HTML
             const date = new Date(item.dt*1000);
-            const indexOfDayOfTheWeek = date.getDay();
             minMaxTemps[currentDate] = { 
                 minTemp: item.main.temp_min, 
                 maxTemp: item.main.temp_max,
-                dayOfWeek: daysOfTheWeek[indexOfDayOfTheWeek],
+                dayOfWeek: daysOfTheWeek[date.getDay()],
                 icon: item.weather[0].icon
             };
         }
