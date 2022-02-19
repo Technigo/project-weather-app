@@ -59,16 +59,15 @@ h1 span {
 }
 
 .weather-data {
+  margin-top: -20px;
   padding: 30px;
-  margin-top: -50px;
 }
-
 
 .main-icon {
   position: relative;
   width: 80%;
   margin-left: 130px;
-  bottom: 350px;
+  margin-top: -440px;
 }
 
 #sunriseAndSunset {
@@ -79,6 +78,10 @@ h1 span {
   font-size: 20px;
   color: #777;
   margin-top: 50px;
+}
+
+.weeklyWeather img {
+  position: fixed;
 }
 
 #theWeek {
@@ -154,25 +157,6 @@ a:link {
   transition: all 0.5s ease;
   cursor: pointer;
 }
-
-
-
-.input-location {
-  position: fixed;
-  right: 70px;
-  padding: 20px;
-  border-radius: 30px;
-  width: 300px;
-  border: none;
-  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.431);
-  font-size: 20px;
-}
-
-input:focus { 
-  outline: none !important;
-  border-color: #a897f9;
-}
-
 
 /* TABLET LANDSCAPE */
 @media (min-width: 668px) and (max-width: 1024px) {

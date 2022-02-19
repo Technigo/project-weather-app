@@ -125,7 +125,7 @@ fetch(API_FORECAST)
       weeklyWeather.innerHTML += `
       <div id="theWeek">
           <p id="dayName">${dayName}</p>
-          <img src = "${dayEmoji[day.weather[0].main]}">
+          <img src ="${dayEmoji[day.weather[0].main]}">
           <p id="weekTemp">${weekTemp}ºC</p>
       </p>
       </div>
