@@ -175,7 +175,7 @@ input:focus {
 }
 
 .footer {
-  background: #d9d5f9;
+  background: #e0dffe;
   font-family: "poppins", sans-serif;
   padding: 0.75rem;
   width: 100%;
@@ -225,12 +225,12 @@ input:focus {
   }
 
   h1 {
-    font-size: 140px;
+    font-size: 110px;
     margin-bottom: -50px;
   }
 
   h1 span {
-    font-size: 80px;
+    font-size: 28px;
   }
 
   h2 {
