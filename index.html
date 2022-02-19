@@ -7,16 +7,23 @@
     <title>Document</title>
     <link rel="stylesheet" href="./style.css" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
     <section id="mainContainer" class="main-container">
-      <section id="weatherContainer" class="weather-container"></section>
-      <section id="sunContainer" class="sun-container"></section>
+      <div class="hamburger">
+        <img src="/images/hamburger-icon.png" alt="hamburger-icon">
+      </div>
+      <section id="weatherContainer" class="weather-container container"></section>
+      <section id="sunContainer" class="sun-container container"></section>
+      <div class ="button" id="button">
+        <img src="/images/weather-app-button.png" alt="weather-app-button">
+      </div>
     </section>
-    <section id="weatherForecast" class="weather-forecast"></section>
+    
+    <section id="weatherForecast" class="container weather-forecast"></section>
     <section class="otherCity" id="otherCity"></section>
     <script src="./script.js"></script>
   </body>
