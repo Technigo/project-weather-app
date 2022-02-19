@@ -129,7 +129,7 @@ h1 span {
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 100px;
+  padding: 85px;
   z-index: 10;
   transition: all 1s ease;
   display: none;
@@ -160,9 +160,9 @@ a:link {
 
 .input-location {
   position: absolute;
-  padding: 18px;
+  padding: 16px;
   border-radius: 30px;
-  width: 300px;
+  width: 240px;
   border: none;
   text-align-last: center;
   box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.431);
