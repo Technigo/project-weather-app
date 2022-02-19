@@ -168,11 +168,12 @@ h1 span {
     color: #164A68;
 }
 
-  @media (min-width: 1024px) {
-    .welcome {
+@media (min-width: 667px) {
+.welcome {
     top: -5%;
     }
-
+}
+  @media (min-width: 1024px) {
     h1 {
         font-size: 70px;
         text-align: center;
