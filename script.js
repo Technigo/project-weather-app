@@ -29,8 +29,7 @@ API_WEATHER = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=m
 fetch(API_WEATHER)
   .then((res) => res.json())
   .then((data) => {
-    console.log("data", data);
-
+    console.log('data', data);
     let tempRemoveDecimals = Math.floor(data.main.temp); // To make the number "round" without decimals.
     let sunrise = new Date(data.sys.sunrise * 1000).toLocaleTimeString([], {
       timeStyle: "short",

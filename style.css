@@ -41,15 +41,15 @@ h1 span {
 }
 
 .weather-container {
-  height: 50vh;
-  width: 100vw;
+  height: 45vh;
+  width: 100%;
   background: linear-gradient(
     180deg,
     rgb(176, 156, 224) 0%,
     rgba(227, 227, 255, 1) 100%
   );
-  border-bottom-left-radius: 100% 75px;
-  border-bottom-right-radius: 100% 75px;
+  border-bottom-left-radius: 110% 110px;
+  border-bottom-right-radius: 110% 110px;
 }
 
 .dailyWeather {
@@ -67,14 +67,14 @@ h1 span {
 }
 
 .main-icon {
-  position: fixed;
-  margin-left: 120px;
-  bottom: 580px;
-  width: 90%;
+  position: relative;
+  width: 80%;
+  margin-left: 130px;
+  margin-top: -440px;
 }
 
 #sunriseAndSunset {
-  word-spacing: 40px;
+  word-spacing: 30px;
 }
 
 .weeklyWeather {
@@ -161,17 +161,23 @@ a:link {
 @media (min-width: 668px) and (max-width: 1024px) {
   .main-icon {
     margin-left: 300px;
-    bottom: 650px;
-    width: 80%;
+    bottom: 80px;
+    width: 65%;
   }
 
   .weather-data {
     padding: 40px;
-    margin: -40px 100px;
+    margin: -100px 100px;
+  }
+
+  .main-icon {
+    margin-left: 285px;
+    margin-bottom: 120px;
+    width: 80%;
   }
 
   h1 {
-    font-size: 200px;
+    font-size: 140px;
     margin-bottom: -50px;
   }
 
@@ -180,15 +186,16 @@ a:link {
   }
 
   h2 {
-    font-size: 60px;
+    font-size: 40px;
+    margin-top: 20px;
   }
 
   h3 {
-    font-size: 30px;
+    font-size: 25px;
   }
 
   .burger {
-    width: 100px;
+    width: 60px;
   }
 }
 
@@ -210,9 +217,9 @@ a:link {
 
   .main-icon {
     position: absolute;
-    margin-left: 200px;
-    bottom: 700px;
-    width: 80%;
+    margin-left: 900px;
+    bottom: 760px;
+    width: 25%;
   }
 
   .weather-data {
