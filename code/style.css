@@ -104,6 +104,7 @@ svg {
     position: relative;
     font-size: 7vw;
     top: -75%;
+    text-align: left;
 }
 
 h1 {
@@ -112,7 +113,7 @@ h1 {
     animation: slideLeft 2s forwards;
     left: -400px;
     position: relative;
-    font-size: 4vw;
+    font-size: 38px;
 }
 
 h1 span {
@@ -209,6 +210,19 @@ h1 span {
     top: -5%;
     }
 
+    h1 {
+        font-size: 70px;
+        text-align: center;
+    }
+
+    svg {
+        margin: 0 auto;
+    }
+
     .forecast-wrapper {
-        width: 80%;
+        width: 100%;
+    }
+
+    main {
+    width: 75%;
     }

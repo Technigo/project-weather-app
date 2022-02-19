@@ -16,8 +16,12 @@ const fontColor = document.querySelectorAll('p')
 const currentWeatherHeaderWrapper = document.getElementById('currentWeatherHeaderWrapper')
 const headerMessage = document.getElementById('currentWeatherHeader')
 const forecastWrapper = document.getElementById('forecastWrapper')
+const welcome = document.getElementById('welcome')
 
 cityOptions.addEventListener('change', () => { 
+    headerMessage.style.animation = "none";
+    headerMessage.offsetHeight; /*trigger reflow*/
+    headerMessage.style.animation = null;
     if(cityOptions.value == "Bangkok") {
         bangkok()
     } else if (cityOptions.value == "Seattle") {
@@ -153,6 +157,8 @@ const updateCurrentWeatherDisplay = (currentWeather) => {
         currentWeatherSunset.style.color = "#F47775"
         currentWeatherHeader.style.color =  "#F47775"
         headerMessage.innerText = `Get cosy. ${cityOptions.value} is looking grey today.`
+        welcome.style.display = 'none'
+
     } else if (currentWeather.condition === 'Rain') {
         iconCloud.style.display = 'none'
         iconGlasses.style.display = 'none'
@@ -163,6 +169,7 @@ const updateCurrentWeatherDisplay = (currentWeather) => {
         currentWeatherSunset.style.color = "#164A68"
         currentWeatherHeader.style.color =  "#164A68"
         headerMessage.innerText = `Don't forget your umbrella. It's wet in ${cityOptions.value} today.`
+        welcome.style.display = 'none'
         
     } else if (currentWeather.condition === 'Clear'){
         iconCloud.style.display = 'none'
@@ -176,11 +183,12 @@ const updateCurrentWeatherDisplay = (currentWeather) => {
         currentWeatherHeader.style.color =  "#2A5510"
         document.body.style.backgroundColor = "#F7E9B9"
         headerMessage.innerText = `Get your sunnies on. ${cityOptions.value} is looking rather great today.`
+        welcome.style.display = 'none'
     } else {
         headerMessage.innerText = `${cityOptions.value} has unpredictable weather in the forecast today!`
+        welcome.style.display = 'none'
     }
 }
-
 
 const updateForecastDisplay = (forecast) => {
     forecastWrapper.innerHTML = ''
