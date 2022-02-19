@@ -173,6 +173,32 @@ input:focus {
   border-color: #a897f9;
 }
 
+.footer {
+  background:seashell;
+  font-family: "poppins", sans-serif;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.project {
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-decoration: underline;
+  color:rosybrown;
+}
+.technigo {
+  font-size: 10px;
+}
+.foxes {
+  text-transform: uppercase;
+  font-weight: 600;
+  color: rosybrown;
+}
+.people {
+  font-size: 10px;
+}
 
 /* TABLET LANDSCAPE */
 @media (min-width: 668px) and (max-width: 1024px) {
