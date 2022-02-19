@@ -8,11 +8,7 @@ The project was to build a weather app that included:
 
 ## The team
 
-Arianna Allahyar
-Jacob Englund
-Rawisara Saman
-Sofia Ringstedt 
-Åsa Seiurin
+Arianna Allahyar, Jacob Englund, Rawisara Saman, Sofia Ringstedt, Åsa Seiurin
 
 ## View it live
 

@@ -147,25 +147,7 @@ h1 span {
     border-bottom: 2px dotted #333;
 }
 
-/* styling of different weather conditions */
-
-.warm {
- background-color: #F7E9B9;
- display: none;
- color: #2A5510;
-}
-
-.cloudy {
-    background-color: #F4F7F8;
-    display: none;
-    color: #F47775; 
-}
-
-.rainy {
-    background-color: #A3DEF7;
-    display: none;
-    color: #164A68;
-}
+/* media queries */
 
 @media (min-width: 667px) {
 .welcome {
