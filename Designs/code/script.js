@@ -1,4 +1,3 @@
-// Decide on class and id names for elements
 // DOM selectors
 
 const currentWeather = document.getElementById('currentWeather')
@@ -8,9 +7,7 @@ const searchForm = document.getElementById("search-form")
 const cityInput = document.getElementById("search-input")
 
 
-
 //const APP_ID = '94506b4af0e0a236471b8ee0da3c2281'
-
 
 
 //global variables
@@ -22,7 +19,7 @@ let inputPlaceholder = cityInput.placeholder
 
 const fetchWeather = (city) =>{
   
-  //URL variables, the city is based on the input of the user
+  // URL variables, the city value will be based on the input of the user
   let weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=94506b4af0e0a236471b8ee0da3c2281`
   let forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=94506b4af0e0a236471b8ee0da3c2281`       
 
@@ -32,14 +29,17 @@ const fetchWeather = (city) =>{
     return response.json()
   })
   .then((json) => {
-    //if the user input city is not a real city, we will give an error message to try again
+
+    // if the city put into the input field is not a real city, the user will be given an error message to try again
     if (json.message){
       currentWeather.innerHTML = `<div class="errormsg">Ups, no city with that name, try again!</div>`
       upcomingWeather.innerHTML = ''
     }
     else {
       
+      // This variable is storing the temperature of the main weather rounded up into one decimal
       const roundedTemp = Math.round(json.main.temp * 10) / 10
+
       // This is showing the local time for sunrise transformed into a 2-digit form for hours and minutes.
       let sunriseTime = new Date((json.sys.sunrise + json.timezone + new Date().getTimezoneOffset() * 60) * 1000).toLocaleTimeString([], {
         hour: "2-digit",
@@ -52,9 +52,12 @@ const fetchWeather = (city) =>{
         minute: "2-digit",
       });
 
-      // This variable stores the current weather
+      // This variable stores the main current weather and the more spesific weather description
       const mainWeather = json.weather[0].main;
       let weatherDescription = json.weather[0].description
+
+      // Here we are changing the first letter of the weather description to be uppercase
+      weatherDescription = weatherDescription[0].toUpperCase() + weatherDescription.substring(1)
       
 
       // This function shows the weather icons that are changing according to the current weather
@@ -80,10 +83,10 @@ const fetchWeather = (city) =>{
         }
       };
 
-      //invoking the showMainWeatherIcon function
+      // Here we are invoking the showMainWeatherIcon function
       showMainWeatherIcon();
 
-      //This function changes the background color based on the temperature of today (in displayed city)
+      // This function changes the background color based on the current temperature of the searched city
       const changeTempBackground = () => {
         if (roundedTemp < 5) {
           currentWeatherWrapper.style.background =
@@ -96,13 +99,13 @@ const fetchWeather = (city) =>{
         else {
           currentWeatherWrapper.style.background =
           'linear-gradient(50deg, #F6412D 0%, #FFF682 60%, #FF5607 100%)'
-          } 
-        }
+        } 
+      }
 
-        //invoking the schangeTempBackground function
+        // Here we are invoking the changeTempBackground function
         changeTempBackground()
 
-        // This is showing the current weather for the city location.
+        // This innerHTML is printing the current weather for the searched city location.
         currentWeather.innerHTML += `
             <div class="main-icon-main-temp-container">
             <h1 class="main-temp">${roundedTemp} <span class="celsius">&#8451;</span></h1>
@@ -116,7 +119,7 @@ const fetchWeather = (city) =>{
             </div>
             `;
             
-    //This is fetching the 5-day forecast
+    // This function is fetching the 5-day forecast
     fetch(forecastURL)   
     .then((response) => {
     return response.json()
@@ -124,34 +127,34 @@ const fetchWeather = (city) =>{
     })
     .then((forecastdata) => {
    
-      /*Here we declare variables for min and max temperatures, because the data was given
-      every third hours, we decided to use for the min temperature the lowest temperature at 
-      midnight and for the max temperature the highest temperature at noon*/
+      /* Here we declare variables for min and max temperatures, because the data was given
+      every third hours, we decided to use the min temperature for the lowest temperature at 
+      midnight and for the max temperature the highest temperature at noon */
 
-      //here we define arrays to filter data of next days at noon and midnight
+      // With these variables we are defining arrays to filter the data for the next days at noon and midnight
       const filteredForecastNoon = forecastdata.list.filter(item => item.dt_txt.includes('12:00')) 
       const filteredForecastMidnight = forecastdata.list.filter(item => item.dt_txt.includes('00:00:00'))
 
-      /*This is for loop to go through the filteredForecastNoon and filteredForecastMidnight arrays 
-      and print our the info we need for the 5 day forecast*/
+      /* This for loop will go through the filteredForecastNoon and filteredForecastMidnight arrays 
+      and will print out the info we need for the 5 day forecast */
       for(let day =0; day < filteredForecastNoon.length; day++) {
 
-        //getting the weekday of forecasted days
+        // With this variable we are getting the weekday of the forecasted days
         let weekDay = filteredForecastNoon[day].dt_txt
       
 
-        //printing the short versin of the weekday (e.g Mon,Tue,Wed,Thu,Fri,Sat,Sun)
+        // This function is printing the short version of the weekday (e.g Mon,Tue,Wed,Thu,Fri,Sat,Sun)
         let shortWeekday = new Date(weekDay).toLocaleDateString('en', {weekday: 'short'})
         
-        /*this if statement makes sure that we only print out the weekdays that do not equal to today 
-        (this happens if the time is between 00-12, then it will forecast the same day, so with this if statement 
-        we avoid that happening*/
+        /* This if statement makes sure that we only print out the weekdays that do not equal to today 
+        (normally if the time would be between 00-12 the function would be showing the forecast of the same day, so with this if statement 
+        we will avoid that from happening */
         if (shortWeekday !== today) {
-          //weatherType storage the value of forecast days's weather type
+
+          // This weatherType variable stores the value of the forecast days's weather type
           let weatherType = filteredForecastNoon[day].weather[0].main
       
-          // if and if else statements what weather icon we should use for forecasted days:
-          
+          // These if and if else statements are showing the weather icons for the forecasted days:
           if (weatherType === 'Snow'){
               typeImg = 'snow2.png'
           }
@@ -189,15 +192,15 @@ const fetchWeather = (city) =>{
           <div class="each-icon"><img class="small-weather-icons" src="./assets/${typeImg}"></div> 
           <div class="each-temps">${roundedWeekMaxTemp}<span class="celsius">°</span> / ${roundedWeekMinTemp}<span class="celsius">&#8451;</span></div>
           </div>`
-
         }  
       }
     })        
   }
 })
-/*Here we set the input field valu to empty string again
-(this makes that after the search the search input placeholder shows the text:
-'Type city here' instead of searches city name)*/
+
+/* Here we set the input field value to empty string again
+  (so after the search, the search input placeholder will show the text:
+  'Type city here' instead of the name of the searched city)*/
 cityInput.value = '' 
 
 } //ending curly brackets checked
@@ -207,10 +210,10 @@ cityInput.value = ''
 //invokes the fetchWeather function when page loaded
 fetchWeather(city)
 
-//here are addEventListeners
-/*when you search a city the evenlistener activates with submit and it will 
+//Here are addEventListeners
+/* When you search for a city the evenlistener activates with submit and it will 
 refresh upcomingWeather.innerHTML and currentWeather.innerHTML to empty first and then 
-it takes the input value as a city argument to the fetchWeather function*/
+it takes the input value as a city argument to the fetchWeather function */
 
 searchForm.addEventListener("submit", (e) => {
     e.preventDefault();
