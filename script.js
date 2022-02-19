@@ -52,9 +52,9 @@ fetch(API_WEATHER)
     `;
 
     // Changing the background based on night / day
-    if (time < sunrise && time > sunset) {
-      document.dailyWeather.background = "#000";
-    }
+    // if (time < sunrise && time > sunset) {
+    //   document.dailyWeather.background = "#000";
+    // }
 
     // Changes weather icon depending on actual weather
     let weatherIcon = data.weather[0].main;
