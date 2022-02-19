@@ -190,7 +190,14 @@ li.sunset-time {
         font-size: 23px;
     }
 }
-    
+footer {
+    font-size: 1rem;
+    padding: 3rem;
+    background-color: #D8D2CB;
+    color: #1C658C;
+    text-align: center;
+    margin-top: 2rem; 
+}   
 
 
 /* desktop-size */

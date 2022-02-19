@@ -2,12 +2,10 @@
 const cityName = document.querySelector('.city-name')
 const temperature = document.querySelector('.temperature')
 const weatherContainer = document.querySelector('.weather-container')
-// const weatherForecast = document.querySelector('.weather-forecast')
-// const weatherForecast2 = document.querySelector('.weather-forecast2')
 const currentDate = document.querySelector('.currentDate')
 const sunriseTimeX = document.querySelector('.sunrise-time')
 const sunsetTimeX = document.querySelector('.sunset-time')
-const fiveDaysForecast = document.querySelector('.five-days');
+const fiveDaysForecast = document.querySelector('.five-days-weather');
 const weatherDescription = document.querySelector('.weather-description')
 
 //variables for the API:s
@@ -15,7 +13,7 @@ const currentWeather = 'https://api.openweathermap.org/data/2.5/weather?q=Perth,
 const fiveDays = 'https://api.openweathermap.org/data/2.5/forecast?q=Perth,Australia&units=metric&appid=70b87f08f9e694d757b4dcb393cc1ec0'
 
 
-//function for current weather in Pearth
+//function for current weather in Perth
 fetch(currentWeather)
 .then((response) => response.json())
 .then((data) => { 
@@ -37,8 +35,8 @@ fetch(currentWeather)
     
       
     
-    sunriseTimeX.innerHTML +=`<p>sun rise ${sunriseTime}</P>`
-    sunsetTimeX.innerHTML+=`<p>sun set ${sunsetTime}</p>`
+    sunriseTimeX.innerHTML +=`<p>sunrise ${sunriseTime}</P>`
+    sunsetTimeX.innerHTML+=`<p>sunset ${sunsetTime}</p>`
     
     data.weather.forEach((main) => {
       weatherDescription.innerHTML += `<p>${main.description}</p>`
@@ -47,50 +45,62 @@ fetch(currentWeather)
 });
 
 
-//Show a forecast for the next 5 days
-
-fetch(fiveDays)
-.then((res) => res.json())
-.then((fiveDaysWeather) => {
-  const filterWeather = fiveDaysWeather.list.filter((item) =>
-  item.dt_txt.includes("12:00")
-  );
+//create an array with our weekdays
+ 
+   const daysOfTheWeek = [
+    "Sun",
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+   ];
   
-  const filteredForecastNoon = fiveDaysWeather.list.filter(item => item.dt_txt.includes('12:00'))
-  const filteredForecastMidnight = fiveDaysWeather.list.filter(item => item.dt_txt.includes('00:00:00'))
-  //let fiveDays = Date(weekDay).toLocaleDateString('en', {weekday:'short'})
-  //create an array with our weekdays
-  const weekdays = [
-     "sunday",
-      "monday",
-      "tuesday",
-      "wednesday",
-      "thursday",
-      "friday",
-      "saturday",
-      "sunday",
-    ];
-
-    filterWeather.forEach((item) => {
-      const d = new Date(item.dt * 1000);
-      
-      const weekdayNumber = d.getDay();
-      console.log(`${weekdays[weekdayNumber]}`);
-      
-      const roundedTemperature = Math.floor(item.main.temp)
-      console.log(roundedTemperature);
-      
+//Getting the forecast and filter out min-max temp for every day.
+   fetch(fiveDays)
+   .then((response) => { return response.json(); })
+   .then((data) => { updateMinMaxTemps(data); });
+  
+   const updateMinMaxTemps = (data) => {
+    let minMaxTemps = {};
+  
+    data.list.forEach((item) => {
+        const currentDate = item.dt_txt.split(" ")[0];
+  console.log(item)
+        if (minMaxTemps[currentDate]) {
+            if (item.main.temp_min < minMaxTemps[currentDate].minTemp) {
+                minMaxTemps[currentDate].minTemp = item.main.temp_min;
+            }
+            if (item.main.temp_max > minMaxTemps[currentDate].maxTemp) {
+                minMaxTemps[currentDate].maxTemp = item.main.temp_max;
+            }
+        } else {
+            //object list to be used to inject the forecast elements in HTML
+            const date = new Date(item.dt*1000);
+            const indexOfDayOfTheWeek = date.getDay();
+            minMaxTemps[currentDate] = { 
+                minTemp: item.main.temp_min, 
+                maxTemp: item.main.temp_max,
+                dayOfWeek: daysOfTheWeek[indexOfDayOfTheWeek],
+                icon: item.weather[0].icon
+            };
+        }
+    });
+                   //Nabeel
+    //Presenting 5 days forecast
+    for (const date in minMaxTemps) { 
       fiveDaysForecast.innerHTML += `
-      <div class="five-day-forecast"> 
-      <p class= "weekdays"> ${weekdays[weekdayNumber]}</p> 
-      <img src="Designs/Design-1/assets/Group38.png">
-      <p class= "weekdaysTemperature"> ${roundedTemperature}°C </p>
-      </div> 
-      `
-    })
-  })
+      <div class="five-day-forecast">
+      <p class= "weekdays">${minMaxTemps[date].dayOfWeek}</p> 
+      <img src="http://openweathermap.org/img/wn/${minMaxTemps[date].icon}@2x.png"></img>
+      <p class= "weekdays">${minMaxTemps[date].minTemp.toFixed(0)} °C / ${minMaxTemps[date].maxTemp.toFixed(0)} °C</p>
+      </div>`
+    };
+  }
 
-  const weatherIcon = (day) => {
+
+    const weatherIcon = (day) => {
     let main = day.weather[0].main;
 
     if (
