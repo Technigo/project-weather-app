@@ -168,44 +168,7 @@ h1 span {
     color: #164A68;
 }
 
-/* styling of sparkle animation */
-
-.sparkle {
-    width: 30px;
-    position: absolute;
-    transform: scale(1); 
-    animation: blinking 1s ease  infinite;
-    filter: invert() blur(1.5px);
-  }
-
-.sparkle-img-1 {
-    top: 2%;
-    left: 29%;
-  }
-
-  .sparkle-img-2 {
-    top: 25%;
-    left: 68%;
-  }
-
-  .sparkle-img-3 {
-    top: 20%;
-    left: 10%;
-  }
-
-  .sparkle-img-4 {
-    top: 58%;
-    left: 18%;
-  }
-  
-  @keyframes blinking {
-     50% {
-      transform: scale(0); 
-      opacity: 0;
-     }
-  }
-
-  @media (min-width: 667px) {
+  @media (min-width: 1024px) {
     .welcome {
     top: -5%;
     }
