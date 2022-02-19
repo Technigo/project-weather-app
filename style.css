@@ -117,7 +117,6 @@ h1 span {
 }
 .sideMenu {
   position: fixed;
-  background: rgb(58, 173, 250);
   background: linear-gradient(
     180deg,
     rgb(176, 156, 224) 0%,
@@ -176,7 +175,7 @@ input:focus {
 }
 
 .footer {
-  background: #deddfc;
+  background: #d9d5f9;
   font-family: "poppins", sans-serif;
   padding: 0.75rem;
   width: 100%;
