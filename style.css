@@ -215,7 +215,7 @@ input:focus {
 
   .weather-data {
     padding: 40px;
-    margin: -50px 100px;
+    /* margin: -50px 100px; */
   }
 
   .main-icon {
