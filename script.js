@@ -121,6 +121,15 @@ const getWeather = (city) => {
 
       filteredForecast.forEach((day) => {
         const weekTemp = day.main.temp.toFixed(0);
+        const shortWeekDays = ["sun", "mon", "tue", "wed", "thu", "fri", "sat", "sun", "mon", "tue", "wed", "thu", "fri"];
+
+        let weekday = new Date();
+        let today = weekday.getDay();
+        let tomorrow = today + 1;
+        
+        for (let i = 0; i < 5; i++) {
+          console.log(shortWeekDays[tomorrow + i]);
+        }
 
         // In line 108 I used the object from line 19 to generate the emoji dependent on the forecasted weather ( I couldn't add the comment inside the back ticks).
         weeklyWeather.innerHTML += `
