@@ -125,47 +125,5 @@ console.log('data', data)
     return sunIcon;
   } else {
     return atmosphereIcon;
+  } 
   }
-    
-  }
-
-
-  // <div class= "emojis"> ${emojis}</div>
-  /*
-  
-     // const emojis = [
-     // "☀️", 
-      //"🌤️", 
-     // "🌩️",
-    //  "🌧️",
-    //  "☁️",
-    //  ];
-
-  .then((data) => {
-    const filteredForecast = data.list.filter((item) =>
-    item.dt_txt.includes('12:00')
-    );
-    //   createFiveDayForecast(filteredForecast); 
-    // })
-// .catch(() => {
-//     weatherContainer.innerHTML = ``;
-
-// });
-
-*/
-
-//loop and extra html for an array
-// data.Ratings.forEach(item => {
-  //     movieContainer.innerHTML+= `
-  //     <div>
-  //     <span>Source: ${item.Source}</span>
-  //     <span>Value: ${item.Value}</span>
-  //     </div>
-  //     `
-  //     }) 
-  
-  // data.base.forEach((base) => {
-    //          temperature.innerHTML = `<p>The current temperature is ${main.temp}</p>`
-
-    // weatherForecast.innerHTML += `<p>The min temperature is ${data.main.temp_min}</p>`
-    // weatherForecast2.innerHTML += `<p>The max temperature is ${data.main.temp_max}</p>`

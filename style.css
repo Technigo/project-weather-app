@@ -222,10 +222,6 @@ li.sunset-time {
 /* desktop-size */
 @media (min-width: 1025px) {
         img.night-background  {
-        /*border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-        width: 120vw;
-        height: 55vh; */
         display: none;
     } 
 
