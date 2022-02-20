@@ -17,7 +17,16 @@ let mainIcon = ""
 let inputPlaceholder = cityInput.placeholder
 
 
+const shortWeekDays = ["sun", "mon", "tue", "wed", "thu", "fri", "sat", "sun", "mon", "tue", "wed", "thu", "fri"];
+let todayIndex = new Date().getDay()
+console.log(todayIndex)
+let todayShort = shortWeekDays[todayIndex]
+console.log(todayShort)
+
+
 const fetchWeather = (city) =>{
+  //ADDED by Kristiina 20/2/2021
+  todayIndex = new Date().getDay()
   
   // URL variables, the city value will be based on the input of the user
   let weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=94506b4af0e0a236471b8ee0da3c2281`
@@ -139,17 +148,21 @@ const fetchWeather = (city) =>{
       and will print out the info we need for the 5 day forecast */
       for(let day =0; day < filteredForecastNoon.length; day++) {
 
+        //ADDED by Kristiina 20/2/2021
+        todayIndex++
+        let shortWeekday = shortWeekDays[todayIndex]
+
         // With this variable we are getting the weekday of the forecasted days
-        let weekDay = filteredForecastNoon[day].dt_txt
+        //let weekDay = filteredForecastNoon[day].dt_txt
       
 
         // This function is printing the short version of the weekday (e.g Mon,Tue,Wed,Thu,Fri,Sat,Sun)
-        let shortWeekday = new Date(weekDay).toLocaleDateString('en', {weekday: 'short'})
+        //let shortWeekday = new Date(weekDay).toLocaleDateString('en', {weekday: 'short'})
         
         /* This if statement makes sure that we only print out the weekdays that do not equal to today 
         (normally if the time would be between 00-12 the function would be showing the forecast of the same day, so with this if statement 
         we will avoid that from happening */
-        if (shortWeekday !== today) {
+        //if (shortWeekday !== today) {
 
           // This weatherType variable stores the value of the forecast days's weather type
           let weatherType = filteredForecastNoon[day].weather[0].main
@@ -192,7 +205,7 @@ const fetchWeather = (city) =>{
           <div class="each-icon"><img class="small-weather-icons" src="./assets/${typeImg}"></div> 
           <div class="each-temps">${roundedWeekMaxTemp}<span class="celsius">°</span> / ${roundedWeekMinTemp}<span class="celsius">&#8451;</span></div>
           </div>`
-        }  
+        //}  
       }
     })        
   }
