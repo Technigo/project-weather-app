@@ -1,4 +1,6 @@
-# Weather App
+# Project Weather App
+
+By Nabeel, Li, Tomoyo, Louisa and Mathilda
 
 Our assignment was to build a weather app that showed today's weather in local time (temperature, description and time for sunset/sunrise) and a forecast for the upcoming five days. We could choose from two designs and were supposed to follow the chosen design and make it change depending on time, i.e one design for night and one for day.
 
