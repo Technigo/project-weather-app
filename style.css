@@ -125,13 +125,13 @@ li.sunset-time {
 }
 
 .five-day-forecast {
-    font-size: 18px;
+    font-size: 30px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
+    place-items: center;
     padding: 1em 0 .5em 0;
 }
-
 
 /* tablet-size */
 @media screen and (min-width: 667px) and (max-width: 1025px) {
