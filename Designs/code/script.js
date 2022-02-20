@@ -16,16 +16,17 @@ let city = 'Helsinki' //default value for city, when page loaded
 let mainIcon = ""
 let inputPlaceholder = cityInput.placeholder
 
-
+//ADDED by Kristiina 20/2/2021
+//here we made shortWeekdays array
 const shortWeekDays = ["sun", "mon", "tue", "wed", "thu", "fri", "sat", "sun", "mon", "tue", "wed", "thu", "fri"];
 let todayIndex = new Date().getDay()
-console.log(todayIndex)
 let todayShort = shortWeekDays[todayIndex]
-console.log(todayShort)
+
 
 
 const fetchWeather = (city) =>{
   //ADDED by Kristiina 20/2/2021
+  //setting todayIndex always today when invoking the fetchWeather function
   todayIndex = new Date().getDay()
   
   // URL variables, the city value will be based on the input of the user
@@ -149,20 +150,13 @@ const fetchWeather = (city) =>{
       for(let day =0; day < filteredForecastNoon.length; day++) {
 
         //ADDED by Kristiina 20/2/2021
+        //Here we are increasing today with one and getting the short week day with that index
         todayIndex++
         let shortWeekday = shortWeekDays[todayIndex]
 
-        // With this variable we are getting the weekday of the forecasted days
-        //let weekDay = filteredForecastNoon[day].dt_txt
-      
+        // Here we are changing the first letter of the shorWeekday to be uppercase
+        shortWeekday = shortWeekday[0].toUpperCase() + shortWeekday.substring(1)
 
-        // This function is printing the short version of the weekday (e.g Mon,Tue,Wed,Thu,Fri,Sat,Sun)
-        //let shortWeekday = new Date(weekDay).toLocaleDateString('en', {weekday: 'short'})
-        
-        /* This if statement makes sure that we only print out the weekdays that do not equal to today 
-        (normally if the time would be between 00-12 the function would be showing the forecast of the same day, so with this if statement 
-        we will avoid that from happening */
-        //if (shortWeekday !== today) {
 
           // This weatherType variable stores the value of the forecast days's weather type
           let weatherType = filteredForecastNoon[day].weather[0].main
