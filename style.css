@@ -6,8 +6,8 @@
 body {
   margin: 0;
   padding: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   font-family: "poppins", sans-serif;
   background-color: white;
 }
@@ -64,7 +64,7 @@ h1 span {
 
 .main-icon {
   position: absolute;
-  width: 70%;
+  width: 60%;
   margin-left: 130px;
   margin-top: -360px;
 }
@@ -91,7 +91,7 @@ h1 span {
 #theWeek p {
   margin: 20px;
   word-spacing: 40px;
-  padding-left: 160px;
+  /* padding-left: 160px; */
   margin-block-end: 5px;
 }
 
@@ -178,7 +178,6 @@ input:focus {
 .footer {
   background: #e0dffe;
   font-family: "poppins", sans-serif;
-  padding: 0.75rem;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -284,7 +283,5 @@ input:focus {
     margin: 20px 100px;
   }
 
-  #theWeek p {
-    padding-left: 590px;
-  }
+ 
 }
