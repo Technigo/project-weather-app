@@ -130,7 +130,7 @@ const getWeather = (city) => {
       })} </p>
           <img src ="${dayEmoji[day.weather[0].main]}">
           <p id="weekTemp">${weekTemp}ºC</p>
-      </p>
+      
       </div>
       `;
       });
