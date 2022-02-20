@@ -185,39 +185,50 @@ function convertUTCToHours(UTCsec) {
 fetch(london)
   .then((response) => response.json())
   .then((data2) => {
-    const todaysTemp = data2.main.temp_max.toFixed(0);
-    console.log("london", data2);
+    const todaysTemp = data2.main.temp_max.toFixed(0)
+    console.log('london', data2)
     otherCity.innerHTML += `
+    <div class="city-weather">
     <p  class="city" id="london">${data2.name}</p>
-   <p  class="city" id="london">${todaysTemp}°</p>
-   `;
-  });
+   <p  class="city" id="london">${todaysTemp}°C</p>
+   <p class="city" id="london">${data2.weather[0].description}</p>
+   </div>
+   `
+  })
 
 fetch(dubai)
   .then((response) => response.json())
   .then((data3) => {
-    const todaysTemp = data3.main.temp_max.toFixed(0);
-    console.log("dubai", data3);
+    const todaysTemp = data3.main.temp_max.toFixed(0)
+    console.log('dubai', data3)
     otherCity.innerHTML += `
+    <div class="city-weather">
     <p class="city" id="dubai">${data3.name}</p>
-   <p class="city" id="dubai" >${todaysTemp}°</p>
-`;
-  });
+   <p class="city" id="dubai" >${todaysTemp}°C</p>
+   <p class="city" id="dubai">${data3.weather[0].description}</p>
+   </div>`
+  })
 fetch(bangkok)
   .then((response) => response.json())
   .then((data4) => {
-    const todaysTemp = data4.main.temp_max.toFixed(0);
-    console.log("bangkok", data4);
+    const todaysTemp = data4.main.temp_max.toFixed(0)
+    console.log('bangkok', data4)
     otherCity.innerHTML += `
+    <div class="city-weather">
     <p class="city" id="bangkok">${data4.name}</p>
-   <p class="city" id="bangkok">${todaysTemp}°</p`;
-  });
+   <p class="city" id="bangkok">${todaysTemp}°C</p>
+   <p class="city" id="bangkok">${data4.weather[0].description}</p>
+   </div>`
+  })
 fetch(sydney)
   .then((response) => response.json())
   .then((data5) => {
-    const todaysTemp = data5.main.temp_max.toFixed(0);
-    console.log("sydney", data5);
+    const todaysTemp = data5.main.temp_max.toFixed(0)
+    console.log('sydney', data5)
     otherCity.innerHTML += `
+    <div class="city-weather">
     <p class="city" id="sydney">${data5.name}</p>
-   <p class="city" id="sydney">${todaysTemp}°</p`;
-  });
+    <p class="city" id="sydney">${todaysTemp}°C</p>
+    <p class="city" id="sydney">${data5.weather[0].description}</p>
+   </div>`
+  })
