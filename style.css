@@ -40,7 +40,7 @@ h1 span {
 }
 
 .weather-container {
-  height: 50vh;
+  /* height: 50vh; */
   width: 100%;
   background: linear-gradient(
     180deg,
@@ -70,7 +70,7 @@ h1 span {
 }
 
 #sunriseAndSunset {
-  word-spacing: 30px;
+  word-spacing: 20px;
 }
 
 .weeklyWeather {
