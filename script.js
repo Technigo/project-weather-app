@@ -67,14 +67,15 @@ const getWeather = (city) => {
       // Changing the background based on night / day
       const dayToNight = () => {
         if (time < sunrise && time > sunset) {
-        weatherContainer.style.background = `
+          weatherContainer.style.background = `
         linear-gradient(
          180deg,
           #323667 0%,
           #6B6EA8 100%
         `;
-        }}
-        dayToNight()
+        }
+      };
+      dayToNight();
 
       // if (time < sunrise && time > sunset) {
       //   document.dailyWeather.background = "#000";
@@ -98,11 +99,11 @@ const getWeather = (city) => {
       } else if (weatherIcon === "Drizzle") {
         weatherData.innerHTML += `
       <img id="mainIcon" class="main-icon" src="./images/rainy-4.svg" alt="image of drizzle" />`;
-    } else if (weatherIcon === "Fog") {
-      weatherData.innerHTML += `
+      } else if (weatherIcon === "Fog") {
+        weatherData.innerHTML += `
       <img id="mainIcon" class="main-icon" src="./images/fog.svg" alt="image of fog" />`; //Added fog
-    } else if (weatherIcon === "Clouds") {
-      weatherData.innerHTML += `
+      } else if (weatherIcon === "Clouds") {
+        weatherData.innerHTML += `
       <img id="mainIcon" class="main-icon" src="./images/cloudy-day-1.svg" alt="image of clouds" />`;
       }
     });
@@ -120,12 +121,26 @@ const getWeather = (city) => {
 
       filteredForecast.forEach((day) => {
         const weekTemp = day.main.temp.toFixed(0);
-        const shortWeekDays = ["sun", "mon", "tue", "wed", "thu", "fri", "sat", "sun", "mon", "tue", "wed", "thu", "fri"];
+        const shortWeekDays = [
+          "sun",
+          "mon",
+          "tue",
+          "wed",
+          "thu",
+          "fri",
+          "sat",
+          "sun",
+          "mon",
+          "tue",
+          "wed",
+          "thu",
+          "fri",
+        ];
 
         let weekday = new Date();
         let today = weekday.getDay();
         let tomorrow = today + 1;
-        
+
         for (let i = 0; i < 5; i++) {
           console.log(shortWeekDays[tomorrow + i]);
         }
@@ -133,7 +148,7 @@ const getWeather = (city) => {
         // In line 108 I used the object from line 19 to generate the emoji dependent on the forecasted weather ( I couldn't add the comment inside the back ticks).
         weeklyWeather.innerHTML += `
       <div id="theWeek">
-      <p>${new Date(day.dt_txt).toLocaleDateString("en-US", {
+      <p>${new Date(day.dt_txt.replace(/-/g, "/")).toLocaleDateString("en-US", {
         weekday: "short",
       })} </p>
           <img src ="${dayEmoji[day.weather[0].main]}">
