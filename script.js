@@ -67,15 +67,14 @@ const getWeather = (city) => {
       // Changing the background based on night / day
       const dayToNight = () => {
         if (time < sunrise && time > sunset) {
-          weatherContainer.style.background = `
-      linear-gradient(
-       180deg,
-        #323667 0%,
-        #6B6EA8 100%
-      `;
-        }
-      };
-      dayToNight();
+        weatherContainer.style.background = `
+        linear-gradient(
+         180deg,
+          #323667 0%,
+          #6B6EA8 100%
+        `;
+        }}
+        dayToNight()
 
       // if (time < sunrise && time > sunset) {
       //   document.dailyWeather.background = "#000";
