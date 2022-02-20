@@ -1,8 +1,7 @@
 # Weather App
 
-Replace this readme with your own information about your project.
+Our assignment was to build a weather app that showed today's weather in local time (temperature, description and time for sunset/sunrise) and a forecast of five days. We could choose from two designs and were supposed to follow the chosen design and make it change depending on time, i.e on design for the night and one for the day.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
 
 ## The problem
 
@@ -10,4 +9,4 @@ Describe how you approached to problem, and what tools and techniques you used t
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://silly-hugle-40a4c8.netlify.app
