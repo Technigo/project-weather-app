@@ -94,26 +94,26 @@ body {
 }
 
 .otherCity {
+  width: 50 vh;
   text-transform: uppercase;
   padding-bottom: 20px;
   gap: 30px;
   display: flex;
   text-align: center;
-  justify-content: center;
+  padding: 30px;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
 
 .city {
-  justify-content: center;
   font-weight: bold;
   font-size: 20px;
-  padding: 10px;
 }
 .city-weather {
   padding: 30px;
   border: 1px solid black;
   border-radius: 5px;
 }
-
 @media only screen and (min-width: 768px) {
   .temperature-icon {
     align-items: center;
@@ -122,6 +122,8 @@ body {
   .otherCity {
     margin-top: 50px;
     justify-content: center;
+    flex-direction: row;
+    gap: 70px;
   }
 
   .city {
