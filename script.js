@@ -103,7 +103,7 @@ fetch(API_WEATHER)
       <img id="mainIcon" class="main-icon" src="./images/rainy-4.svg" alt="image of drizzle" />`;
     } else if (weatherIcon === "Fog") {
       weatherData.innerHTML += `
-      <img id="mainIcon" class="main-icon" src="./images/weather-sprite.svg" alt="image of fog" />`; //NOT working!
+      <img id="mainIcon" class="main-icon" src="./images/fog.svg" alt="image of fog" />`; //Added fog
     } else if (weatherIcon === "Clouds") {
       weatherData.innerHTML += `
       <img id="mainIcon" class="main-icon" src="./images/cloudy-day-1.svg" alt="image of clouds" />`;
