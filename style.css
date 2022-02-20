@@ -280,7 +280,7 @@ input:focus {
   .weather-data {
     text-align: center;
     padding: 40px;
-    margin: 20px 100px;
+    /* margin: 20px 100px; */
   }
 
  
