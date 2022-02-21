@@ -112,5 +112,3 @@ const weatherApp = async () => {
 
 // Calls the weatherApp here on load:
 weatherApp();
-
-// Documentation from openweathermap https://openweathermap.org/weather-conditions
