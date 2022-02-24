@@ -76,7 +76,7 @@ const filterWeather = (data) => {
     if (todayWeather === "Rain") {
         body.classList.toggle("rainy");
         text.innerHTML = `
-        <img class="img" src="./Designs/Design-2/icons/noun_Umbrella_2030530.svg" alt="umbrella icon">
+        <img class="img" src="./icons/noun_Umbrella_2030530.svg" alt="umbrella icon">
         <h1>Don't forget you umbrella. It's wet in ${data.city.name} today.</h1>        
         `
     }  
