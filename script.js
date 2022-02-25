@@ -24,13 +24,16 @@ fetch(API_WEATHER)
         todaysWeather.innerHTML += `
             <p>${json.weather[0].description} | ${Math.round(json.main.temp)}°</p>
         `
-        const sunset = new Date(json.sys.sunset * 1000)
         const sunrise = new Date(json.sys.sunrise * 1000)
+        const sunset = new Date(json.sys.sunset * 1000)
+        const sunriseHours = sunrise.getHours() < 10 ? "0" + sunrise.getHours() : sunrise.getHours()
+        const sunriseMinutes = sunrise.getMinutes() < 10 ? "0" + sunrise.getMinutes() : sunrise.getMinutes()
+        const sunsetHours = sunset.getHours() < 10 ? "0" + sunset.getHours() : sunset.getHours()
+        const sunsetMinutes = sunset.getMinutes() < 10 ? "0" + sunset.getMinutes() : sunset.getMinutes()
+
         todaysWeather.innerHTML += `
-            <p>sunrise ${sunrise.getHours() < 10
-                ? "0" + sunrise.getHours() : sunrise.getHours()}.${sunrise.getMinutes()}</p>
-            <p>sunset ${sunset.getHours() < 10
-                ? "0" + sunset.getHours() : sunset.getHours()}.${sunset.getMinutes()}</p>
+            <p>sunrise ${sunriseHours}.${sunriseMinutes}</p>
+            <p>sunset ${sunsetHours}.${sunsetMinutes}</p>
         `
 
         // today's advice is injected in HTML
