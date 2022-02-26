@@ -17,7 +17,6 @@ const fiveDays = 'https://api.openweathermap.org/data/2.5/forecast?q=Perth,Austr
 fetch(currentWeather)
 .then((response) => response.json())
 .then((data) => { 
-console.log('data', data)
   
 //variables for timezone, sunrise and sunset
 //function for sunset and sunrise time in the local timezone (Perth)
