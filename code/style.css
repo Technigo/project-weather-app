@@ -107,7 +107,6 @@ svg {
 }
 
 h1 {
-    color: #333;
     font-weight: bold;
     animation: slideLeft 2s forwards;
     left: -400px;
