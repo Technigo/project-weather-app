@@ -1,13 +1,19 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This week's project is to build a simple weather dashboard that tells today's weather and temperature and a 5-day forecast using a weather API.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+At first we worked together with mob programming getting the API to work. Then we pair programmed in branches for different features.
 
-## View it live
+If we had more time we would have had more cities.
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+
+This project was made by:
+Lisa Bergström
+Emma Berg
+Sofie Pellegrini
+Laura Sjölander
+Joanna Ringqvist
+
+https://serene-lewin-2b17bf.netlify.app/
