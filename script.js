@@ -42,7 +42,6 @@ const getWeather = (city) => {
   fetch(API_WEATHER)
     .then((res) => res.json())
     .then((data) => {
-      console.log("data", data);
       let tempRemoveDecimals = Math.floor(data.main.temp); // To make the number "round" without decimals.
       let sunrise = new Date(data.sys.sunrise * 1000).toLocaleTimeString([], {
         timeStyle: "short",
@@ -112,7 +111,6 @@ const getWeather = (city) => {
   fetch(API_FORECAST)
     .then((res) => res.json())
     .then((forecast) => {
-      console.log("forecast", forecast);
       let filteredForecast = forecast.list.filter((day) =>
         day.dt_txt.includes("12:00")
       );
@@ -141,9 +139,9 @@ const getWeather = (city) => {
         let today = weekday.getDay();
         let tomorrow = today + 1;
 
-        for (let i = 0; i < 5; i++) {
-          console.log(shortWeekDays[tomorrow + i]);
-        }
+        // for (let i = 0; i < 5; i++) {
+        //   console.log(shortWeekDays[tomorrow + i]);
+        // }
 
         // In line 108 I used the object from line 19 to generate the emoji dependent on the forecasted weather ( I couldn't add the comment inside the back ticks).
         weeklyWeather.innerHTML += `
@@ -168,7 +166,6 @@ searchForm.addEventListener("submit", (e) => {
   weatherData.innerHTML = ``;
   weeklyWeather.innerHTML = ``;
   city = inputLocation.value;
-  console.log("city:", city);
   getWeather(city);
 });
 
