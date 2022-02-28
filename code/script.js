@@ -14,7 +14,6 @@ fetch(API_URL)
     .then((res) => res.json())
     //Do something with the data
     .then((data) => {
-        console.log(data)
 
         //We created the variables here 
         let temp = data.main.temp
