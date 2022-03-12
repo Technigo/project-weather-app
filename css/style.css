@@ -5,7 +5,6 @@
      font-family: 'Roboto';
 }
 
-
 .wrapper{
   display: flex;
   justify-content: center;
@@ -115,7 +114,7 @@ background-position: 20% 100%;;
 .sunRisesunSet {
     display:flex;
     justify-content: space-evenly;
-    margin: 25px 10px;
+    margin: 25px -30px;
 }
 
 section#displayWeatherForecast {
@@ -149,12 +148,7 @@ section#displayWeatherForecast {
     width: 100%;
 }
 
-
-
-
-
-
-/* styles for desktop */
+/* styles for tablet */
 @media (min-width: 768px){
     .weatherInfo {
         margin: 0 auto;
@@ -180,6 +174,7 @@ section#displayWeatherForecast {
 
 }
 
+/* styles for desktop */
 @media (min-width: 1024px) {
     .mainWrapper{
         height: 535px;
@@ -188,6 +183,7 @@ section#displayWeatherForecast {
     select{
         font-size: 25px;
     }
+
     .image {
         margin-top: 35px;
     }
@@ -207,15 +203,13 @@ section#displayWeatherForecast {
     .tempType {
         font-size: 35px;
     }
+
     .sunRisesunSet p{
         font-size: 30px;
     }
-
-
 
     section#displayWeatherForecast {
         margin: 590px auto;
         font-size: 40px;
     }
-    
 }

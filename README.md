@@ -89,4 +89,4 @@ Pick the ones you fancy or come up with other ideas and features!
 
 ## View on live
 
-https://eyahya-khan.github.io/Project-Weather-App/index.html
+https://frosty-northcutt-a6eacd.netlify.app
