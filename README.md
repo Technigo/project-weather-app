@@ -1,5 +1,4 @@
 # Weather App
- It's a group project developed by 5 student, practising branch, merge pull, push.
 
 - **STEP 1 - Get started with the weather API**
     
@@ -88,6 +87,6 @@ Stretch your muscles by trying out the different features suggested in steps 4 &
 
 Pick the ones you fancy or come up with other ideas and features!
 
-## View it live
+## View on live
 
-https://frosty-northcutt-a6eacd.netlify.app
+https://eyahya-khan.github.io/Project-Weather-App/index.html

@@ -1,25 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather app</title>
-
-    <link rel="stylesheet" href="style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@800&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="shortcut icon" href="img/favicon.png" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="wrapper">
       <div class="mainWrapper">
+        <button id="geolocation"><i class="fa fa-map-marker" style="font-size:48px;color:#006400"></i></button>
+        <!--display dropdown menu-->
+        <select id="cityNameWeather">
+          <option value="stockholm">Stockholm</option>
+          <option value="dhaka">Dhaka</option>
+          <option value="New York">New York</option>
+          <option value="sydney">Sydney</option>
+          <option value="Paris">Paris</option>
+        </select>
+        <!--display todays weather-->
         <section id="displayWeatherInfo"></section>
-        <button>></button>
-        <section id="weatherForecast" class="weatherForecast"></section>
       </div>
     </div>
+      <!-- display 5 days forecast -->
+      <section id="displayWeatherForecast"></section>
 
   </body>
-  <script src="script.js"></script>
+  <script src="./js/script.js"></script>
 </html>
