@@ -1,6 +1,13 @@
+# Weekly project for Technigo's bootcamp, week 6
+Task: build a weather app
+
+Tech: HTML, CSS, JavaScript, APIs
+
+----
+
 # Week 6: weather app
 
-This week's (week 6) assignment was to create a weather app in a group. The objectives we had was to fetch APIs and inject them into the HTML in order to display the correct weather data.
+This week's (week 6) assignment was to create a weather app in a group. The objectives we had was to fetch APIs and inject them into the HTML in order to display the correct weather data. It was a mob programming project.
 
 ## The problem
 
@@ -9,4 +16,4 @@ We started by structuring the HTML and fetching the first API (weather), as a gr
 ## View it live
 
 Project deployed here: [Weather app](https://minimalist-weather-app.netlify.app/)
-By Jessica - Maurii - Nadia - Rijad - Terese. #Elephants group 2. 🐘
+By Jessica - Maurii - Nadia - Rijad - Terese.
