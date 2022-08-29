@@ -1,10 +1,3 @@
-# Weekly project for Technigo's bootcamp, week 6
-Task: build a weather app
-
-Tech: HTML, CSS, JavaScript, APIs
-
-----
-
 # Week 6: weather app
 
 This week's (week 6) assignment was to create a weather app in a group. The objectives we had was to fetch APIs and inject them into the HTML in order to display the correct weather data. It was a mob programming project.
