@@ -1,0 +1,53 @@
+:root {
+    --primary: #F47775;
+    --secondary: #F4F7F8;
+}
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;600;800&display=swap');
+
+* {
+    font-family: 'Montserrat', sans-serif;  
+    box-sizing: border-box;
+    margin: 5px;
+    padding: 5px;
+    background-color: var(--secondary);
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+h1 {
+    font-size: 2rem;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+p {
+    font-size: 1.5rem;
+    color: var(--primary);
+    font-weight: regular;
+}
+
+.icon {
+    position: relative;
+    size: 20px;
+    color: var(--primary);
+}
+
+.main-text {
+    position: relative;
+}
+
+.weekdays {
+    display: flex;
+    flex-direction: column;
+}
+
+.weekday-rows {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 2px dotted var(--primary);
+}
