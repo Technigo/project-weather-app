@@ -52,19 +52,19 @@ const apiUrlSthlm = "http://api.openweathermap.org/data/2.5/weather?q=Stockholm,
         // Seconds part from the timestamp
         var seconds = "0" + date.getSeconds();
         // Will display time in 10:30:23 format
-        var formattedTimeSunrise = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+        var formattedTimeSunrise = hours + ':' + minutes.substr(-2)
         
         let sunsetTime = json.sys.sunset
         var date = new Date(sunsetTime * 1000);
         var hours = date.getHours();
         var minutes = "0" + date.getMinutes();
         var seconds = "0" + date.getSeconds();
-        var formattedTimeSunset = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+        var formattedTimeSunset = hours + ':' + minutes.substr(-2)
 
         console.log(roundedTemp)
         skyState.innerHTML =`${json.name} | ${json.weather.map((weather) => {return weather.description})} | ${roundedTemp}°C`
-        sunrise.innerHTML = `Sunrise at: ${formattedTimeSunrise}`
-        sunset.innerHTML = `Sunset at: ${formattedTimeSunset}`
+        sunrise.innerHTML = `Sunrise at: ${formattedTimeSunrise} a.m`
+        sunset.innerHTML = `Sunset at: ${formattedTimeSunset} p.m`
     })
 
 
