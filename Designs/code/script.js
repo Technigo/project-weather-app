@@ -47,13 +47,12 @@ const fiveForescast = () => {
                 console.log(temp_max)
                 let fivedays = (new Date(json.dt * 1000)).toLocaleDateString("en-US")
                 console.log(fivedays)
-                let icon = `<img id="forecast-icon" src=https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png></img>`;
-                console.log(icon)
+                /*let icon = `<img id="forecast-icon" src=https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png></img>`;
+                console.log(icon)*/
 
                 fiveDayForecast.innerHTML += `
                 <p> 
                 <span id="fiveday">${fivedays}</span>
-                <span>${icon}</span>
                  <span id="tempMin">${temp_min}</span>
                  <span id="tempMax">${temp_max}</span>
                 </p>
