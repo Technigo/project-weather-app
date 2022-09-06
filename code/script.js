@@ -23,6 +23,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     console.log('caught error', err)
 });
 
+console.log('test')
 //Sarah
 //const forecast = () => {
     //fetch
