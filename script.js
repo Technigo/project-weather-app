@@ -44,4 +44,4 @@ const nameCity = json.name
             //xxx.innerHTML = readableResponse.xxx
             //xxx.innerHTML = readableResponse.xxx
         //})
- 
+ // test
