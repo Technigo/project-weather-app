@@ -19,14 +19,20 @@ const temperature= json.main.temp.toFixed(0)
 // new declare the API fetch for current descprition. 
 const currentDescription = json.weather[0].description
 
-const sunrise= json
+// new declare the API fetch for sunrise and sunset. 
+const sunrise = new Date(json.sys.sunrise * 1000);
+const sunset = new Date(json.sys.sunset *1000);
+
+    // declare new variable to show only hh:mm
+    const sunriseShort = sunrise.toLocaleTimeString([], {timeStyle: 'short'})
+    const sunsetShort = sunset.toLocaleTimeString([], {timeStyle: 'short'})
+
 const nameCity = json.name
 
- console.log (temperature,currentDescription,nameCity) // test for console that the function is working. 
+console.log (temperature,currentDescription,sunriseShort,sunsetShort,nameCity) // test for console that the function is working. 
 
  //print out the API fetch for header
- container.innerHTML=`<h1> ${currentDescription} | ${temperature} ${nameCity} </h1>`
-
+ container.innerHTML=`<h1> ${currentDescription} | ${temperature}<br>sunrise ${sunriseShort}<br>sunset ${sunsetShort}<br>${nameCity}</h1>`
 })
 
 
