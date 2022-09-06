@@ -1,3 +1,11 @@
-body {
-    background-color: #F47775;
+.header{
+    font-family: 'Montserrat', sans-serif;
+    width: 300px;
+    margin: 20px auto;
+    padding: 40px;
+    font-size: 12px;
+    font-weight: normal;
 }
+
+
+
