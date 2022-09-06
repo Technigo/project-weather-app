@@ -9,10 +9,13 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
 
     .then((json) => {
     console.log(json)
-    summary.innerHTML = `<h1>${json.name}</h1>
-    ${json.weather[0].description}
-    ${Math.round(json.main.temp)}°C
-    ` 
+    summary.innerHTML = `
+        <h1>${json.name}</h1>
+        ${json.weather[0].description} |
+        ${Math.round(json.main.temp)}°C 
+        <p>sunrise ${json.sys.sunrise}</p>
+        <p>sunset ${json.sys.sunset}</p>
+        ` 
     })
  
     
