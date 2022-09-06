@@ -38,18 +38,23 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
 
 })
 .then((json) => {
-    let sunriseValue = new Date(json.sys.sunrise); //This saves the sunrise data into a variable called sunriseValue and make it a Date.
-    console.log(sunriseValue.toLocaleTimeString());//This invokes the method toLocaleTimeString which converts the UCT time to local time and as astring.
+    let unixTimeSunrise = json.sys.sunrise;
+    let sunriseValue = new Date(unixTimeSunrise * 1000);
+    const sunriseConvertedTime = sunriseValue.toLocaleTimeString();
+    sunriseTime.innerHTML += `<td id="sunriseTime">${sunriseConvertedTime}</td>`;
+     //This saves the sunrise data into a variable called sunriseValue and make it a Date.
+    //console.log(sunriseValue.toLocaleTimeString());//This invokes the method toLocaleTimeString which converts the UCT time to local time and as astring.
     
     //This invokes the method toLocalTimeString which converts the unix UCT time to local time and as a string. 
     //It also puts the value inside the HTML table in a new table cell. 
-    sunriseTime.innerHTML += 
+ /*    sunriseTime.innerHTML += 
     ` <td id="sunriseTime">${sunriseValue.toLocaleTimeString()}</td>`; 
+ */
 
-
-    let sunsetValue = new Date (json.sys.sunset); //This saves the sunset sata into a variable called sunsetTime
-    console.log(sunsetValue.toLocaleDateString()); 
-    sunsetTime.innerHTML += `<td id="sunsetTime">${sunsetValue.toLocaleTimeString()}</td>`;
+    let unixTimeSunset = json.sys.sunset; //This saves the sunset sata into a variable called sunsetTime
+    let sunsetValue = new Date(unixTimeSunset * 1000);
+    const sunsetConvertedTime = sunsetValue.toLocaleTimeString();
+    sunsetTime.innerHTML += `<td id="sunsetTime">${sunsetConvertedTime}</td>`;
     })
 }
 
