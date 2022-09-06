@@ -1,0 +1,43 @@
+body {
+    background-color: rgb(255, 255, 255);
+    font-family:"Roboto";
+    font-weight: 100;
+}
+
+.info-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    align-items: flex-start;
+    background-color: #ffc0cb;
+}
+
+.forecast-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    align-items: flex-start;
+    background-color: rgb(185, 95, 181);
+}
+
+/*tablet*/
+@media (min-width: 668px) and (max-width: 1023px) {
+    .info-wrapper {
+        display: flex;
+    }
+
+    .forecast-wrapper {
+        display: flex; 
+    }
+}
+
+/*desktop*/
+@media (min-width: 1024px) {
+    .info-wrapper {
+        display: flex;
+    }
+    
+    .forecast-wrapper {
+        display: flex; 
+    }
+}
