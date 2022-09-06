@@ -63,8 +63,8 @@ const apiUrlSthlm = "http://api.openweathermap.org/data/2.5/weather?q=Stockholm,
 
         console.log(roundedTemp)
         skyState.innerHTML =`${json.name} | ${json.weather.map((weather) => {return weather.description})} | ${roundedTemp}°C`
-        sunrise.innerHTML = `Sunrise at: ${formattedTimeSunrise} a.m`
-        sunset.innerHTML = `Sunset at: ${formattedTimeSunset} p.m`
+        sunrise.innerHTML = `Sunrise at: ${formattedTimeSunrise}`
+        sunset.innerHTML = `Sunset at: ${formattedTimeSunset}`
     })
 
 
