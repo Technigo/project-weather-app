@@ -1,0 +1,71 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* - - - BLUE: MAIN - - - - - - - - */
+
+.weather-app {
+  border: 1px solid rgb(59, 59, 255);
+  width: 300px;
+  min-height: 500px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 10px auto 0 auto;
+  padding: 10px;
+  gap: 10px;
+}
+
+/* - - - PINK: HEADER WRAPPER - - - - - - - - */
+
+.header-wrapper {
+  border: 1px solid hotpink;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* - - - RED: TODAYS WEATHER - - - - - - - - */
+
+.todays-weather {
+  border: 1px solid red;
+}
+
+/* - - - PURPLE: HAMBURGER MENU - - - - - - - - */
+
+.hamburger-menu {
+  border: 1px solid rgb(108, 0, 180);
+  display: flex;
+}
+
+/* - - - YELLOW: COZY TEXT - - - - - - - - */
+
+.cozy-text {
+  border: 1px solid rgb(199, 143, 14);
+}
+
+.cozy-text--icon {
+  font-size: 30px;
+}
+
+.cozy-text--paragraph {
+  font-size: 30px;
+}
+
+/* - - - GREEN: WEATHER FORECAST - - - - - - - - */
+
+.weather-forecast {
+  border: 1px solid green;
+}
+
+.weather-forecast-entry {
+  display: flex;
+  justify-content: space-between;
+}
+
+.weather-forecast-entry-day {
+}
+
+.weather-forecast-entry-temperature {
+}

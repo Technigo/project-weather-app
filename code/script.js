@@ -1,24 +1,24 @@
-const apiNow = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=ba408ec4b2f7f251f2dd0044bd3e07f2'
-const container = document.getElementById('weather')
-
-const city = document.getElementById('city')
-const temperature = document.getElementById('temperature')
-const weatherDescript = document.getElementById('weather-description')
-
-
-// const currentCity =  // step 5 
+const apiNow =
+  "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=ba408ec4b2f7f251f2dd0044bd3e07f2";
+const currentCity = document.getElementById("city");
+const liveTemperature = document.getElementById("temperature");
+const weatherDescription = document.getElementById("description");
 
 fetch(apiNow)
-    .then((response) => {
-        return response.json()
-    })
+  .then((response) => {
+    return response.json();
+  })
+  .then((json) => {
+    currentCity.innerHTML = json.name;
+    liveTemperature.innerHTML = json.main.temp.toFixed(1);
+    weatherDescription.innerHTML = json.weather[0].description;
+  })
+  .catch((error) =>
+    console.error("There has been a problem with your fetch operation:", error)
+  );
 
-    .then((json) => {
-        city.innerHTML = `City: ${json.weather[0].description}`
-        return json()
-    });
+      // Två then funkar ej
     
-
 
     /*
 
@@ -52,4 +52,3 @@ fetch(apiNow)
         main: "Clear" */
 
     // temperature: main temp
-

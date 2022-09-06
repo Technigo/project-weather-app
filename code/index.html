@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,18 +8,72 @@
     <link rel="stylesheet" href="./style.css" />
     <title>Weather App</title>
 </head>
+
 <body>
-    <main id="weather-app-container">
-        <section class="weather-app"> </section>
-<!-------------Top Info to the left ------------->   
-        <section class="top-info"> 
-            <div class="top-weather" id="weather-description">Weather:</div>
-            <div class="top-city" id="city">City:</div>
-            <div class="top-temp" id="temperature">Temp:</div>
+
+    <main class="weather-app">
+        <header class="header-wrapper">
+            <section class="todays-weather">
+                <div>
+                    <span class="todays-weather-description" id="description">rain</span> |
+                    <span class="todays-weather-temperature" id="temperature">...</span>°
+                </div>
+                <div>
+                    sunrise
+                    <span class="todays-weather-sunrise" id="todaysWeatherSunrise">08:00</span>
+                </div>
+                <div>
+                    sunset
+                    <span class="todays-weather-sunset" id="todaysWeatherSunset">22:30</span>
+                </div>
+            </section>
+            <nav class="hamburger-menu">🍔</nav>
+        </header>
+
+        <section class="cozy-text">
+            <div class="cozy-text-icon">
+                ☂️
+            </div>
+            <div class="cozy-text-paragraph">
+                Don't forget your umbrella.
+                It's wet in <span id="city"></span> today.
+            </div>
         </section>
 
+        <section class="weather-forecast">
+            <div class="weather-forecast-entry">
+                <span id="weatherForecastEntryDay">mon</span>
+                <span id="weatherForecastEntryTemperature">23°</span>
+            </div>
+            <div class="weather-forecast-entry">
+                <span id="weatherForecastEntryDay">tues</span>
+                <span id="weatherForecastEntryTemperature">20°</span>
+            </div>
+            <div class="weather-forecast-entry">
+                <span id="weatherForecastEntryDay">wed</span>
+                <span id="weatherForecastEntryTemperature">16°</span>
+            </div>
+            <div class="weather-forecast-entry">
+                <span id="weatherForecastEntryDay">thu</span>
+                <span id="weatherForecastEntryTemperature">25°</span>
+            </div>
+            <div class="weather-forecast-entry">
+                <span id="weatherForecastEntryDay">fri</span>
+                <span id="weatherForecastEntryTemperature">27°</span>
+            </div>
+            <div class="weather-forecast-entry">
+                <span id="weatherForecastEntryDay">sat</span>
+                <span id="weatherForecastEntryTemperature">23°</span>
+            </div>
+            <div class="weather-forecast-entry">
+                <span id="weatherForecastEntryDay">sun</span>
+                <span id="weatherForecastEntryTemperature">23°</span>
+            </div>
+        </section>
 
     </main>
+
     <script src="./script.js"></script>
 </body>
-</html> 
+
+</html>
