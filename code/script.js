@@ -1,8 +1,12 @@
 const apiNow =
   "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=ba408ec4b2f7f251f2dd0044bd3e07f2";
+const apiForecast =
+  "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=ba408ec4b2f7f251f2dd0044bd3e07f2";
 const currentCity = document.getElementById("city");
 const liveTemperature = document.getElementById("temperature");
 const weatherDescription = document.getElementById("description");
+const dayForecast = document.getElementById("weatherForecast");
+const daysOfTheWeek = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 
 fetch(apiNow)
   .then((response) => {
@@ -17,10 +21,30 @@ fetch(apiNow)
     console.error("There has been a problem with your fetch operation:", error)
   );
 
-      // Två then funkar ej
-    
+fetch(apiForecast)
+  .then((response) => {
+    return response.json();
+  })
+  .then((dayForecast) => {
+    const filteredForecast = dayForecast.list.filter((item) =>
+      // @TODO maybe change to a better time here? see this for visualisation https://jsoncrack.com/editor?fbclid=IwAR2ZSGA26fdIHECi0-ISKwEsHs8BuZlb8bCS_-3O1j_0drQRkNIdzvK7fE0
+      item.dt_txt.includes("12:00")
+    );
+    filteredForecast.forEach((dayForecast) => {
+      const forecastDate = new Date(dayForecast.dt * 1000);
+      const dayOfTheWeek = forecastDate.getDay();
+      weatherForecast.innerHTML += `
+      <div class="weather-forecast-entry">
+      <span>${daysOfTheWeek[dayOfTheWeek]}</span>
+      <span>${dayForecast.main.temp.toFixed(0)}°</span>
+      </div>
+      `;
+    });
+  });
 
-    /*
+// Två then funkar ej
+
+/*
 
     .then((json) => {
         console.log(json )
@@ -28,27 +52,23 @@ fetch(apiNow)
             return weatherType.weather.main;
         }) */
 
-      //  WEATHER  {json.weather[0].description}`
-      //  TEMP   ${json.main.temp.toFixed(1)}
-
+//  WEATHER  {json.weather[0].description}`
+//  TEMP   ${json.main.temp.toFixed(1)}
 
 //      types.innerHTML = json.types.map((type) => {
 //        return typeObject.type.name;
 //      });
-    
 
-    /*    Your task is to present some data on your web app. Start with
+/*    Your task is to present some data on your web app. Start with
     - the city name   ${json.name} ?? 
     - the temperature (rounded to 1 decimal place) 
     - and what type of weather it is (the "description" in the JSON */
 
-
-
-    // weather: weather  > description
-        /*0 Object
+// weather: weather  > description
+/*0 Object
         description: "clear sky"
         icon: "01d"
         id: 800
         main: "Clear" */
 
-    // temperature: main temp
+// temperature: main temp
