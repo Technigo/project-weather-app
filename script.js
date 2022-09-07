@@ -21,8 +21,4 @@ fetch("http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
         })
     })
 
-    
-
-//- the city name OK
-// - the temperature (rounded to 1 decimal place) OK
-// - and what type of weather it is (the "description" in the JSON) OK
+//this is a test for weather-forecast feature only.    
