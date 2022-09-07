@@ -1,5 +1,5 @@
 const region = document.getElementById('region')
-
+const weekdays = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 
 fetch("http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=fb125bc213d8ee5c4a432b3a2b24aecf")
     .then((response) => {
@@ -13,11 +13,9 @@ fetch("http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
 
         region.innerHTML = `
         <h1> ${json.name} </h1>
+        <h3> Today </h3>
         <p>${weather.description}</p>
-        <p>temperature ${(json.main.temp).toFixed(1)}</p>
-        <p>feels like ${json.main.feels_like.toFixed(1)}</p>
-        <p>min temperature ${json.main.temp_min.toFixed(1)}</p>
-        <p>max temperature ${json.main.temp_max.toFixed(1)} </p>
+        <p>temperature ${(json.main.temp).toFixed(0)}°</p>
         `
         })
     })
@@ -26,6 +24,7 @@ fetch("http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
 // Show a forecast for the next 5 days. You can choose how to display the forecast 
 // - perhaps you want to show the min and max temperature for each day, or perhaps you want to show 
 //the temperature from the middle of the day, or the humidity, what it feels like and so on.
+
 
 fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=fb125bc213d8ee5c4a432b3a2b24aecf")
     .then((response) => {
@@ -43,14 +42,24 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
        filteredForecast.map((day)=>{
             console.log(day.weather[0].description)
 
-                console.log(day.main.temp)
+                let weekday = new Date(day.dt_txt).getDay();
+                console.log(weekdays[weekday]);
+
 
                 region.innerHTML += `
-                <h2> .. and the next day </h2>
-                <p>${day.weather[0].description}</p>
-                <p>temperature ${(day.main.temp).toFixed(1)}</p>
+                <div id="forecastSection" class="forecast-section">
+                    <div id="weekdaysection" class="weekday-section">
+                         <h3> ${weekdays[weekday]} </h3>
+                    </div>
+                    
+                    <div id="temperature" class="temperature">
+                    <p>${day.weather[0].description} ${(day.main.temp).toFixed(0)}°</p>
+                    </div>
+
+                </div>
                 `
+            
     })
 
-       
+    
     })
