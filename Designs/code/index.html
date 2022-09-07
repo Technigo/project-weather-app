@@ -1,39 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Name</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-<!--ADD THE THINGS HERE-->
-<table class="weather-table" id="weatherTable">
-  <tr>
-    <td id="cityName">City Name:</td>
 
-  </tr>
-  <tr>
-    <td id="temp">Temp:</td>
-  </tr>
-  <tr>
-    <td id="description">Description: </td>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Name</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+</head>
 
-  </tr>
-<!--   <tr>
-    <td>Height</td>
-    <td id="height">?</td>
-  </tr>
-  <tr>
-    <td>Types</td>
-    <td id="types">?</td>
-  </tr> -->
-</table>
-
-
-    <script src="script.js"></script>
-  </body>
+<body>
+  <!--ADD THE THINGS HERE-->
+  <table class="weather-table" id="weatherTable">
+    <tr>
+      <td id="cityName"></td>
+    </tr>
+    <tr>
+    <tr id="weatherIcon"></tr>
+    </tr>
+    <tr>
+      <td id="temp"></td>
+    </tr>
+    <tr>
+      <td id="description"></td>
+    </tr>
+    <tr class="five-day-forecast" id="fiveDayForecast">
+      <!--<td id="weatherContainer"></td> -->
+    </tr>
+    <tr>
+    <tr class="city-name" id="cityName"></tr>
+    </tr>
+    <tr>
+      <!--<td class="icon" id="icon"></td>-->
+    </tr>
+    <tr>
+      <td class="weather-message" id="weatherMessage"></td>
+    </tr>
+  </table>
+  <script src="script.js"></script>
+</body>
