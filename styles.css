@@ -1,3 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@1&family=Mukta&display=swap');
+
 body {
-    border: 1px solid blue;
+    background-size: cover;
+    background-repeat: no-repeat;
+    max-width: 100%;
+    font-family: 'Mukta', sans-serif;
+}
+
+.mainForecast {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+    padding: 20px;
+}
+
+.mainForecast #city {
+    font-size: 30px;
+}
+
+.mainForecast #temperature {
+    font-size: 100px;
+}
+
+.mainForecast #description {
+    font-size: 20px;
+}
+
+.riseSet {
+    display: flex;
+    justify-content: space-around;
+}
+
+.forecast {
+    display: grid;
+    grid-template-rows: 25% 25% 25% 25%;
+
+}
+
+.forecast #dayOne, #dayTwo, #dayThree, #dayFour {
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+    justify-content: center;
+    align-items: center;
+    /*background-color: rgba(240, 248, 255, 0.233);*/
+    border-radius: 10px;
+}
+
+.footer {
+    
+}
+
+
+
+/*** MEDIA QUERIES ***/
+
+/*desktop*/
+@media (min-width: 1025px) {
+   
+    .riseSet {
+        display: flex;
+        justify-content: space-around;
+        font-size: 20px;
+    }
+
+    .forecast{
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+        align-items: baseline;
+    }
+
+    .forecast #dayOne, #dayTwo, #dayThree, #dayFour {
+        display: flex;
+        flex-direction: column;
+        margin: 30px;
+        justify-content: center;
+        align-items: center;
+        /*background-color: rgba(240, 248, 255, 0.233);*/
+        border-radius: 10px;
+        font-size: 20px;
+    }
+
 }
