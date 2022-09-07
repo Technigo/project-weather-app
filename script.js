@@ -12,8 +12,9 @@ fetch(API_TODAY)
   .then(response => response.json())
   .then(data => {
     console.log('today data:', data);
-    console.log('weather main:', data.weather[0].main);
 
+    // Date format is in milliseconds, so have to multiply it by 1000 to get a correct date using new Date()
+    // slice() to use only hour and minutes from toLocaleTimeString()
     const sunrise = new Date(data.sys.sunrise * 1000)
       .toLocaleTimeString()
       .slice(0, 5);
@@ -23,6 +24,7 @@ fetch(API_TODAY)
 
     let imageSrc, weatherDescription;
 
+    // Sets the image source and description text based on the weather
     if (data.weather[0].main === 'Clear') {
       imageSrc = 'noun_Sunglasses_2055147.svg';
       weatherDescription = `Get your sunnies on. ${data.name} is looking rather great today.`;
@@ -34,6 +36,7 @@ fetch(API_TODAY)
       weatherDescription = `Light a fire and get cosy. ${data.name} is looking grey today.`;
     }
 
+    // Changes the today HTML section based on today's weather data
     sectionToday.innerHTML = `
     <p class="today-temp">${
       data.weather[0].description
@@ -52,15 +55,24 @@ fetch(API_FORECAST)
   .then(data => {
     console.log('forecast data:', data);
 
-    const forecastDays = data.list.filter(day => day.dt_txt.includes('12:00'));
-    console.log(forecastDays);
+    // Remove the placeholder text from HTML
     sectionForecast.innerHTML = '';
+
+    // Extracts only the data from noon each day
+    const forecastDays = data.list.filter(day => day.dt_txt.includes('12:00'));
+
+    // Loops over forecastDays and injects the data into the forecast HTML section
     forecastDays.forEach(day => {
+      // Date format in each day object is in milliseconds under "dt", so have to multiply it by 1000 to get a correct date using new Date()
       const date = new Date(day.dt * 1000);
-      day.weekday = String(date).slice(0, 3);
+
+      // Extracts only the first 3 letters in the full date string that looks for example like this:
+      // Thu Sep 08 2022 14:00:00 GMT+0200
+      const weekday = String(date).slice(0, 3);
+
       sectionForecast.innerHTML += `
       <div class="forecast-day-container">
-       <p class="forecast-day">${day.weekday}</p>
+       <p class="forecast-day">${weekday}</p>
        <p class="forecast-day-temp">${day.main.temp.toFixed(1)}°</p>
       </div>
       `;
