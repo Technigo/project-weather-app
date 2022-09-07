@@ -7,18 +7,50 @@ fetch("http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     })
 
     .then((json) => {
-        console.log(json)
 
         const weathers = json.weather
-        weathers.forEach((weather, index) => {
-            console.log(weather.description)
+        weathers.map((weather) => {
 
         region.innerHTML = `
         <h1> ${json.name} </h1>
         <p>${weather.description}</p>
-        <p>temperature ${(json.main.temp).toFixed(1)}, feels like ${json.main.feels_like.toFixed(1)}, min temperature ${json.main.temp_min.toFixed(1)}, max temperature ${json.main.temp_max.toFixed(1)} </p>
+        <p>temperature ${(json.main.temp).toFixed(1)}</p>
+        <p>feels like ${json.main.feels_like.toFixed(1)}</p>
+        <p>min temperature ${json.main.temp_min.toFixed(1)}</p>
+        <p>max temperature ${json.main.temp_max.toFixed(1)} </p>
         `
         })
     })
 
-//this is a test for weather-forecast feature only.    
+//WEATHER-FORECAST FEATURE 
+// Show a forecast for the next 5 days. You can choose how to display the forecast 
+// - perhaps you want to show the min and max temperature for each day, or perhaps you want to show 
+//the temperature from the middle of the day, or the humidity, what it feels like and so on.
+
+fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=fb125bc213d8ee5c4a432b3a2b24aecf")
+    .then((response) => {
+        return response.json()
+    })
+
+    .then((json) => {
+        console.log(json)
+        
+        //Filters the json to an array with only the data from 12:00 each day (5 days in total).
+        const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
+        console.log(filteredForecast)
+
+        //weather description of each day
+       filteredForecast.map((day)=>{
+            console.log(day.weather[0].description)
+
+                console.log(day.main.temp)
+
+                region.innerHTML += `
+                <h2> .. and the next day </h2>
+                <p>${day.weather[0].description}</p>
+                <p>temperature ${(day.main.temp).toFixed(1)}</p>
+                `
+    })
+
+       
+    })
