@@ -7,7 +7,7 @@ body {
 /* - - - BLUE: MAIN - - - - - - - - */
 .weather-app {
   border: 1px solid rgb(59, 59, 255);
-  max-width: auto;   /*Mobile first, therefore auto, set specific width at desktop*/
+  max-width:  auto;   /*Mobile first, therefore auto, set specific width at desktop*/
   min-height: 500px;
   display: flex;
   justify-content: space-between;
@@ -91,7 +91,7 @@ body {
       background: #06171e;
       width: 30px;
       height: 2px;
-      right: 20px;
+      right: 20px;  
       transition: .2s ease;
       cursor: pointer;
       z-index: 1;
