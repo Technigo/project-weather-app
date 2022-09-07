@@ -7,9 +7,11 @@ Weights: bold and regular
 
 colors:
 
-#F47775
-#F4F7F8
-#164A68
-#A3DEF7
-#2A5510
-#F7E9B9
+#F47775 (pink text)
+#F4F7F8 (white background)
+
+#164A68 (blue text)
+#A3DEF7 (blue background)
+
+#2A5510 (green text)
+#F7E9B9 (yellow background)
