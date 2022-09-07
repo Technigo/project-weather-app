@@ -39,19 +39,22 @@ const umbrella = "Designs/Design-2/icons/noun_Umbrella_2030530.svg"
 
 if (currentDescription === "clear sky") {
     icon.src = "./Designs/Design-2/icons/noun_Sunglasses_2055147.svg"
+    phrase.innerHTML = `<h1>Sunny in ${nameCity} today!</h1>`
     container.style.backgroundColor = "#F7E9B9";
-    container.style.color = "#2A5510";
+    //container.style.color = "#2A5510";
 
 
 } else if (currentDescription === "rain") {
     icon.src = "./Designs/Design-2/icons/noun_Umbrella_2030530.svg"
+    phrase.innerHTML = `<h1>Rainy in ${nameCity} today!</h1>`
     container.style.backgroundColor = "#A3DEF7";
-    container.style.color = "#164A68";
+    //container.style.color = "#164A68";
 
 } else if (currentDescription === "clouds" || "few clouds") {
     icon.src = "./Designs/Design-2/icons/noun_Cloud_1188486.svg"
+    phrase.innerHTML = `<h1>Cloudy in ${nameCity} today!</h1>`
     container.style.backgroundColor = "#F4F7F8";
-    container.style.color = "#F47775";
+    //container.style.color = "#F47775";
 }
 }
 )
