@@ -10,7 +10,7 @@ fetch("http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
         console.log(json)
 
         const weathers = json.weather
-        weathers.forEach((weather, index) => {
+        weathers.map((weather) => {
             console.log(weather.description)
 
         region.innerHTML = `
@@ -21,8 +21,4 @@ fetch("http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
         })
     })
 
-    
-
-//- the city name OK
-// - the temperature (rounded to 1 decimal place) OK
-// - and what type of weather it is (the "description" in the JSON) OK
+    //here is a test for git branch
