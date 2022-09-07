@@ -26,6 +26,8 @@ const dayOfTheWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
 for (let i = 0; i < dayOfTheWeek.length; i++) { // a for-loop function allowing me to loop through the items in the array. 
     console.log(dayOfTheWeek[i])
 }
+
+
     
 fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=98bd2fbedad0f13ae05ed8e49698fda1')
     .then((response) => {
@@ -38,14 +40,21 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
 
         // This loop prints the days of the weeks and the temperatures belonging to each day. 
        for (let i=0; i < filteredForecast.length; i++) {
+        
+      
+
         console.log(i)
         weatherWeek.innerHTML += 
             `<div class = "weekday">
-                <p>${dayOfTheWeek[i]} ${filteredForecast[i].main.temp.toFixed(0)} °C</p> 
+                <p class = "day"> ${dayOfTheWeek[i]} </p>
+                <p class = "day-temp"> ${filteredForecast[i].main.temp.toFixed(0)}°C </p> 
+                <p class = "rain-or-sun"> ${filteredForecast[i].weather[0].main}
             </div>`
-        }
-    })
-       
+        } 
+
+        
+        })
+
     .catch((err) => {
         console.log('caught error', err)
     })
