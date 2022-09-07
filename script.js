@@ -15,9 +15,10 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         
         weatherMain.innerHTML += `<h1>${json.main.temp.toFixed(1)}</h1><h4>°C</h4>`;
         // console.log(Math.round((json.main.temp * 10) / 10))                  // varför funkar inte det här?
-        weatherMain.innerHTML += `<h2>${json.name}</h2>`;
-
+       
         weatherMain.innerHTML += `<img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="" />`;
+        
+        weatherMain.innerHTML += `<h2>${json.name}</h2>`;
         
         const weathers = json.weather
             weathers.map((weatherArrary) => {

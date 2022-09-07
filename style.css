@@ -1,3 +1,74 @@
 body {
-    background-color: green;
+    width: 100%;
+    height: 100%;
+    margin: 0%;
+    padding: 0%;
+    background-color: white;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 50%;
+    padding: 5%;
+    background: rgb(154, 154, 255) center/cover;
+    clip-path: circle(200% at 50% -100%);
+}
+
+.hero .search {
+    display: block;
+} 
+
+.hero h1 {
+    display: inline-flex;
+    color: white;
+    font-weight: normal;
+    font-size: 5em;
+    margin: 0%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+  
+.hero h4 {
+    display: inline-flex;
+    color: white;
+    margin: 0%;
+    font-weight: normal;
+}
+
+.hero img {
+    display: inline-flex;
+    justify-content: flex-end;
+    margin: 0%;
+}
+
+.hero h2 {
+    display: block;
+    color: white;
+    font-size: 1.5em;
+    margin: 0%;
+    font-weight: normal;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.hero h3 {
+    display: block;
+    color: white;
+    font-size: 1.17em;
+    margin: 0%;
+    font-weight: normal;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.hero p {
+    display: inline-flex;
+    color: white;
+    margin: 0%;
+    padding-left: 2%;
+    padding-right: 2%;
 }
