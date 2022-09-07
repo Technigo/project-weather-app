@@ -62,11 +62,7 @@ const apiUrlSthlm = "http://api.openweathermap.org/data/2.5/weather?q=Stockholm,
         filteredTemp.map((item) => {
             weekdayName = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
             const date = new Date(item.dt * 1000)
-            const today = new Date();
-            const isItToday = date.getDay() === today.getDay();
             let dayName = weekdayName[date.getDay()]
-
-            if (!isItToday) {
             weekdayWrapper.innerHTML += `
             <div class="weekdays" id="weekdayWrapper"> 
               <div class="weekday-rows" id="weekdayRows">
@@ -74,7 +70,6 @@ const apiUrlSthlm = "http://api.openweathermap.org/data/2.5/weather?q=Stockholm,
                       <p>${item.main.temp.toFixed(1)} °C</p>
                   </div>
               </div>`
-            }
           })
 
         })
