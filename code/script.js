@@ -6,7 +6,7 @@ const skyInfo = document.getElementById('skyInfo')
 const sunrise = document.getElementById('sunrise')
 const sunset = document.getElementById('sunset')
 
-const apiUrlSthlm = "http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=b7874ca1c4d00ac10b0c0385176b9111"
+const apiUrlSthlm = "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=b7874ca1c4d00ac10b0c0385176b9111"
 
 
 // Current weather 
