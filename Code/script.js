@@ -6,9 +6,11 @@ const weeklyWeather = document.getElementById('weeklyForcastWrapper')
 const dailyForcast = document.getElementById('dailyForcastRow')
 const day = document.getElementById('day')
 const temp = document.getElementById('temp')
-
+const temp2 = document.getElementById('temp2') //ta bort
 
 //HEJ funkar detta
+
+
 fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=64d2a624607147029ae4574d21f5c6d9')
     .then((response) => {
         return response.json()
