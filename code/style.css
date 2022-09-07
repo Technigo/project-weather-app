@@ -1,12 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 body {
     font-family: Montserrat;
+    font-weight: 400;
+    margin-left: 50px;
+    
 }
 
-.forecast {
+#summary {
+    font-size: 18px;
 
 }
 
-.mainSection {
+#summary p {
+    margin: 0;
+    font-size: 18px;
+}
+
+#mainSection p {
+    margin: 0;
+    padding-top: 20px;
+}
+
+
+
+#mainSection {
+    font-family: Montserrat;
     font-weight: 700;
-    font-size: 34px;
+    font-size: 42px;
+    margin-top: 50px;
+}
+
+#forecast {
+    font-size: 18px;
+    display: flex;
+    
+    
+}
+#forecast section{
+    display: flex;
+    flex-direction: column;
+}
+
+#forecast div{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }

@@ -2,6 +2,9 @@ const summary = document.getElementById("summary");
 const mainSection = document.getElementById("mainSection");
 const forecast = document.getElementById("forecast");
 const week = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+const table = document.getElementById("table");
+
+
 
 // Global variables
 let weather;
@@ -43,10 +46,10 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
 
     weather = json.weather[0].main
     summary.innerHTML = `<h1>${json.name}</h1>
-    ${json.weather[0].main}
+    ${json.weather[0].main} |
     ${Math.round(json.main.temp)}°C
-    <p>sunrise ${formatTime(sunrise).hours}.${formatTime(sunrise).minutes}</p>  
-    <p>sunset ${formatTime(sunset).hours}.${formatTime(sunset).minutes}</p>
+    <p>Sunrise ${formatTime(sunrise).hours}.${formatTime(sunrise).minutes}</p>  
+    <p>Sunset ${formatTime(sunset).hours}.${formatTime(sunset).minutes}</p>
     ` 
     })
  
@@ -77,7 +80,11 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
       
         // We don't want to include this forecast if it is for today
         if(!isTodaysForecast){
-          forecast.innerHTML += `<p>${dayName}: ${Math.round(day.main.temp)} °C</p>`
+          forecast.innerHTML += `
+          <section>
+          <div>${dayName}</div>
+          <div>${Math.round(day.main.temp)} °C</div>
+          </section>`
         }
       })
 
