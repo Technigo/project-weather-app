@@ -20,8 +20,6 @@ body {
 
 .main-weather {
     margin: 0%;
-    border-style: solid;
-    border-color: red;
 }
 
 /* styling of second section: "today-summary"*/
@@ -33,5 +31,4 @@ body {
     align-items: center;
     margin: 50px 0px;
     padding: 0 10%;
-    border-style: solid;
 }
