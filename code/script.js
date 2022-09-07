@@ -3,6 +3,10 @@ const apiNow =
 const currentCity = document.getElementById("city");
 const liveTemperature = document.getElementById("temperature");
 const weatherDescription = document.getElementById("description");
+const currentSunrise = document.getElementById("todaysWeatherSunrise")
+const currentSunset = document.getElementById("todaysWeatherSunset")
+
+
 
 fetch(apiNow)
   .then((response) => {
@@ -12,14 +16,33 @@ fetch(apiNow)
     currentCity.innerHTML = json.name;
     liveTemperature.innerHTML = json.main.temp.toFixed(1);
     weatherDescription.innerHTML = json.weather[0].description;
+
+
+    const timestampSunrise = json.sys.sunrise
+    const timestampSunset = json.sys.sunset
+    
+// Sunrise and sunset 
+    let sunrise = new Date (timestampSunrise * 1000);
+    let sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' })
+    currentSunrise.innerHTML = `${sunriseTime}`  // prints in HTML
+
+    let sunset = new Date (timestampSunset * 1000);
+    let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' })
+    currentSunset.innerHTML = `${sunsetTime}`   // prints in HTML 
+
+    console.log(json)
+
+
   })
   .catch((error) =>
     console.error("There has been a problem with your fetch operation:", error)
   );
 
+
       // Två then funkar ej
     
-
+      //sunrise: 1662523067
+      //sunset: 1662572058
     /*
 
     .then((json) => {
