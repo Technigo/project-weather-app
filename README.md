@@ -1,13 +1,11 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This week we are building a weather app from an open API. We also started working with branches in github for the first time.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+This project was built with the fetch() method in javascript where we learned how to use promises and basic json, and also how to work with Date() method i js. The most difficult thing this week was how to make the weather forecast work properly by filtering an using map to get to be able to display the correct data from the API. If we had more time we would style the site even more and add extra features from the API.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://weather-app-week3.netlify.app/ 
