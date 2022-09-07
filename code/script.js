@@ -18,10 +18,11 @@ fetch(apiNow)
     weatherDescription.innerHTML = json.weather[0].description;
 
 
+    
+// Sunrise and sunset // 
     const timestampSunrise = json.sys.sunrise
     const timestampSunset = json.sys.sunset
-    
-// Sunrise and sunset 
+
     let sunrise = new Date (timestampSunrise * 1000);
     let sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' })
     currentSunrise.innerHTML = `${sunriseTime}`  // prints in HTML
@@ -39,12 +40,7 @@ fetch(apiNow)
   );
 
 
-      // Två then funkar ej
-    
-      //sunrise: 1662523067
-      //sunset: 1662572058
-    /*
-
+/*
     .then((json) => {
         console.log(json )
         weather.innerHTML = json.weather.maps((weatherType) => {
