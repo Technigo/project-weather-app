@@ -1,3 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap');
+
+
 body {
-    background-color: red;
+    background-color: #FFE9AE;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    max-width: 75vw;
+    margin: auto;
+    padding-top: 2em;
+
+}
+
+/* styling of first section: "main-weather" */
+.main-weather p {
+    margin-top: 0.1em;
+    margin-bottom: 0;
+}
+
+.main-weather {
+    margin: 0%;
+    border-style: solid;
+    border-color: red;
+}
+
+/* styling of second section: "today-summary"*/
+.today-summary {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px 0px;
+    padding: 0 10%;
+    border-style: solid;
 }
