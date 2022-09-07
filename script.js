@@ -65,7 +65,7 @@ fetch(apiUrlSthlm)
             document.body.style.color = "#A3DEF7";
          
             mainWrapper.innerHTML = `
-              <img src="https://maxst.icons8.com/vue-static/landings/animated-icons/icons/rainy-weather/rainy-weather.json" alt="umbrella"/>
+              <img src="./Designs/Design-2/icons/noun_Umbrella_2030530.svg" alt="umbrella"/>
               <h1>Don't forget your umbrella. It's wet in your city today.</h1>
             `
           }
