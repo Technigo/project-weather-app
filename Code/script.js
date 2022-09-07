@@ -7,12 +7,14 @@ const dailyForcast = document.getElementById('dailyForcastRow')
 const day = document.getElementById('day')
 const temp = document.getElementById('temp')
 
+
+//HEJ funkar detta
 fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=64d2a624607147029ae4574d21f5c6d9')
     .then((response) => {
         return response.json()
     })
     .then((data) => {
-      
+
         mainWeather.innerHTML = `<h1>Todays temperature in ${data.name} is ${data.main.temp} and it's ${data.weather[0].description} today.</h1>`
         console.log(data)    
       })
