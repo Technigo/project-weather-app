@@ -24,7 +24,6 @@ fetch(ApiWeather)
     .then((data) => {
 
 
-  
 
         mainWeather.innerHTML = `<h1>Todays temperature in ${data.name} is ${data.main.temp} and it's ${data.weather[0].description} today.</h1>`
         //console.log(data)    
@@ -32,7 +31,6 @@ fetch(ApiWeather)
     .catch((err) =>{ //ERROR function. We pass in a function as a parameter in the function, just like the then function.
       console.log(err)
     })
-
 
     fetch(ApiForcast)
     .then((response) => {
@@ -46,9 +44,9 @@ fetch(ApiWeather)
           filteredForecast.forEach((day) => {
           const options1 = { weekday: 'long' }
           const options2 = { weekday: 'short' }
-          //     // forecast is injected in HTML, we also rounded the value to show no decimal
-          //     // with one decimal: ${Math.round(day.main.temp * 10) / 10}
-          //     // adds the weekdays in two ways, short and long format, example mon or monday
+         // forecast is injected in HTML, we also rounded the value to show no decimal
+         // with one decimal: ${Math.round(day.main.temp * 10) / 10}
+         // adds the weekdays in two ways, short and long format, example mon or monday
           
           
           dailyForcast.innerHTML +=`
