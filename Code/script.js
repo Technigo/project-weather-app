@@ -41,8 +41,8 @@ fetch(ApiWeather)
         mainWeather.innerHTML += `<p>Sunset: ${sunsetTime}</p>`;
 
       })
-    .catch((err) =>{ //ERROR function. We pass in a function as a parameter in the function, just like the then function.
-      console.log(err)
+        .catch((err) =>{ //ERROR function. We pass in a function as a parameter in the function, just like the then function.
+        console.log(err)
     })
 
     fetch(ApiForcast)
@@ -50,7 +50,7 @@ fetch(ApiWeather)
         return response.json()
     })
     .then((dataforcast) => {
-     
+
           const filteredForecast = dataforcast.list.filter(item => item.dt_txt.includes('12:00'))
           //console.log(filteredForecast)
           filteredForecast.forEach((day) => {
@@ -60,7 +60,7 @@ fetch(ApiWeather)
          // with one decimal: ${Math.round(day.main.temp * 10) / 10}
          // adds the weekdays in two ways, short and long format, example mon or monday
           
-          
+
           dailyForcast.innerHTML +=`
           <p class="forecast-day" id="forecastDay">
           <span class="short-day">${new Intl.DateTimeFormat('en-GB', options1).format(day.dt * 1000).toLowerCase()}</span>
@@ -69,7 +69,7 @@ fetch(ApiWeather)
         })
       })
 
-
+    
 
     //https://api.openweathermap.org/data/2.5/weather?lat={LAT}&lon={LON}&appid={API KEY}
 
