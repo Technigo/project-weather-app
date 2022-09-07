@@ -1,6 +1,5 @@
 // API Key = b7874ca1c4d00ac10b0c0385176b9111
 const weekdayWrapper = document.getElementById('schedule-weekdays')
-const weekdayTemp = document.getElementById('temp')
 const mainWrapper = document.getElementById('main-wrapper')
 const skyState = document.getElementById('skyState')
 const skyInfo = document.getElementById('skyInfo')
