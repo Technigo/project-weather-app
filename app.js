@@ -26,15 +26,17 @@ btnSearchCity.addEventListener('click', ()=>{
     container.innerHTML = `
     <p>${time}</p>
       <h1>${data.city.name}</h1>
-       <h1>${Math.round(data.list[0].main.temp_kf.toFixed(1))} ${'&#8451;'}</h1>
+       <h1>${Math.round(data.list[0].main.temp_kf.toFixed(1) * 9 / 5 + 32)} ${'&#8451;'}</h1>
       <h3>${data.list[0].weather[0].main}</h3>
-      <p> Sunset: ${data.city.sunrise}</p>
+      <p> Sunrise: ${data.city.sunrise}</p>
+      <p> Sunset: ${data.city.sunset}</p>
      
       `
       
 
       // const sunrise = new Date(json.sys.sunrise * 1000);
 // const sunset = new Date(json.sys.sunset * 1000);
+
     // const sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' })
     // const sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' })
 
@@ -47,7 +49,7 @@ btnSearchCity.addEventListener('click', ()=>{
 
 
     // const sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' })
-    // // console.log(data.list[0].weather[0].main)
+
     // const suRise= (data.city.sunriseTime.sys)
     // console.log(sunriseTime)
 

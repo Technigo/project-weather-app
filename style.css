@@ -5,7 +5,7 @@
 }
 body{
   background-color: lightblue;
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,20 +13,32 @@ body{
   color:#fff;
 
 }
-.hero{
+.wrapper{
+    width: 80%;
+}
+
+#hero{
   height: 30vh;
-  width: 50%;
+  width: 80%;
+  /* margin-top: 2rem; */
   display:flex;
-  justify-content:space-around;
+  justify-content:center;
   align-items: center;
 }
 .allInfo{
   flex-direction:column;
 }
+
+#btn-searchCity{
+    width: 5rem;
+}
+#search{
+    width: 15rem;
+}
 #search , #btn-searchCity{
   font-size: 1rem;
-  padding: 10px 0;
-  width: 18rem;
+  padding: 10px 5px;
+  /* width: 18rem; */
   text-align: center;
   border: 0.1rem solid #56a5eb;
   margin-bottom: 1rem;
