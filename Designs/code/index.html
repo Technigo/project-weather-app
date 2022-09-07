@@ -12,38 +12,44 @@
 </head>
 
 <body>
-  <!--ADD THE THINGS HERE-->
-  <table class="weather-table" id="weatherTable">
-    <tr>
-      <td id="cityName"></td>
-    </tr>
-    <tr>
-    <tr id="weatherIcon"></tr>
-    </tr>
-    <tr>
-      <td id="temp">Current temp: </td>
-    </tr>
-    <tr>
-      <td id="description"></td>
-    </tr>
-    <tr>
-      <td id="sunriseTime">Sunrise: </td>
-    </tr>
-    <tr>
-      <td id="sunsetTime">Sunset: </td>
-    </tr> 
-    <tr class="five-day-forecast" id="fiveDayForecast">
-      <!--<td id="weatherContainer"></td> -->
-    </tr>
-    <tr>
-    <tr class="city-name" id="cityName"></tr>
-    </tr>
-    <tr>
-      <!--<td class="icon" id="icon"></td>-->
-    </tr>
-    <tr>
-      <td class="weather-message" id="weatherMessage"></td>
-    </tr>
-  </table>
+  <div class="weatherInfo" id="weatherInfo">
+    <div id="cityDiv">
+      <!-- this is where the city name goes-->
+    </div>
+    <div class="some-text" id="someText">
+      <!--this is where the fun text goes-->
+    </div>
+     <div class="currentInfo" id="currentInfo">
+    <!--This is where the current info goes-->
+    <table class="weather-table" id="weatherTable">
+      <tr>
+        <td title id="CurrentInfo"><h2>Current weather</h2></td>
+      </tr>
+      <tr>
+      <tr id="weatherIcon"></tr>
+      </tr>
+      <tr>
+        <td id="temp">Current temp: </td>
+      </tr>
+      <tr>
+        <td id="description"></td>
+      </tr>
+      <tr>
+        <td id="sunriseTime">Sunrise: </td>
+      </tr>
+      <tr>
+        <td id="sunsetTime">Sunset: </td>
+      </tr> 
+      <tr class="five-day-forecast" id="fiveDayForecast">
+        <!--<td id="weatherContainer"></td> -->
+      </tr>
+        <!--<td class="icon" id="icon"></td>-->
+      </tr>
+      <tr>
+        <td class="weather-message" id="weatherMessage"></td>
+      </tr>
+    </table>
+  </div>
+</div>
   <script src="script.js"></script>
 </body>

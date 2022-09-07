@@ -5,7 +5,10 @@ const temp = document.getElementById('temp');
 const description = document.getElementById('description');
 const sunriseTime = document.getElementById('sunriseTime');
 const sunsetTime = document.getElementById('sunsetTime');
-const fiveDayForecast = document.getElementById('fiveDayForecast')
+const fiveDayForecast = document.getElementById('fiveDayForecast');
+const weatherText = document.getElementById('weatherText');
+const someText = document.getElementById('someText');
+const cityDiv = document.getElementById('cityDiv');
 //const weatherContainer = document.getElementById('weatherContainer')
 
 
@@ -24,7 +27,8 @@ const weatherInfo = () => {
 
             const cityValue = json.name;
             console.log(cityValue);
-            cityName.innerHTML += ` <td id="cityName2">${json.name}</td>`;
+            cityDiv.innerHTML+= `<h1>${json.name}</h1>`;
+            someText.innerHTML+= `<p>In ${json.name} today there <br> are a ${json.weather[0].description}</p>`;
             weatherIcon.innerHTML += ` <img id="main-icon" src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png"  alt="${json.weather[0].description} icon" />`;
             temp.innerHTML += ` <td id="temp">${json.main.temp}</td>`;
             description.innerHTML += ` <td id="description">${json.weather[0].description}</td>`;
@@ -32,6 +36,8 @@ const weatherInfo = () => {
 };
 
 weatherInfo();
+
+
 
 const sunInfo = () =>{
 fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=7899d890f36cbd5ef29eba2a205b5409')
@@ -61,6 +67,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
 }
 
 sunInfo();
+
 // Weather in Stockholm for the next five days.
 const fiveForescast = () => {
     fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=d8e3d440b59f81f07a8c91c14c07c06e')
@@ -88,7 +95,10 @@ const fiveForescast = () => {
                 </p>
                 `;
 
+
+
             });
+            
         });
 
 };
