@@ -13,7 +13,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     })
     .then((data) => {
       
-        mainWeather.innerHTML = `<h1>Todays temperature in ${data.name} is ${data.main.temp} and it's ${data.weather[0].description} today.</h1>`
+        mainWeather.innerHTML = `<h1>Todays temperature in ${data.name} is ${data.main.temp} and it's ${data.weather[0].description} today. Sunrise ${data.sys.sunrise}</h1>`
         console.log(data)    
       })
     .catch((err) =>{ //ERROR function. We pass in a function as a parameter in the function, just like the then function.
