@@ -1,4 +1,16 @@
+/* Colors:
+#F47775
+#F4F7F8
+#164A68
+#A3DEF7
+#2A5510
+#F7E9B9 */
+
 body {
   background-color: #d0c9c0;
   color: #efead8;
+}
+sup {
+  vertical-align: text-top;
+  font-size: small;
 }
