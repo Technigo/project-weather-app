@@ -74,7 +74,7 @@ const weekdays = [
 filteredForecast.forEach((day) => {
     const date = new Date(day.dt * 1000);
     let weekdayNumber= date.getDay();
-    let roundedTemperature = day
+    let roundedTemperature = day.main.temp.toFixed(1)
     console.log(roundedTemperature);
 
     fiveDays.innerHTML += ` 
