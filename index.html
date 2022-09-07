@@ -9,22 +9,31 @@
     <title>Weather App that rulle your day</title>
 </head>
 <body>
+
+<form id="city-input" class="city-input" action=""https://httpbin.org/anything"">
+    <input type="text" placeholder="search your city">
+    <button id="search-button" class="search-button">Search</button>
+</form>
+
 <section id="geo" class="geo">
     <div id="todaysWeather" class="todaysWeather">
-        <p>sunny with 25</p>
+        <h1 class="city-name"></h1>
+        <p class = "temperature"> <!-- this will be altered with js --></p>
         <p>sunrise:</p>
         <p>Sunset:</p>
         <!--cloud coverage/temperature-->
         <!--sunrise/sunset innerHTML from JS-->
     </div>
+
     <div id="message" class="message>">
-        <H1>innerHTML saying that you need to take an umbrella or sunglasses</H1>
+        <h1>innerHTML saying that you need to take an umbrella or sunglasses</h1>
     </div>
 </section>
-<section id="longTermForecast" class="longTermForecast">
-        <!--Here will come fetch from 5 days forecast-->
-        <p>forecast</p>
-</section>
+
+<section id="weather-forecast" class="weather-forecast"></section>
+
 <script src=script.js></script>
 </body>
 </html>
+
+
