@@ -1,0 +1,33 @@
+/* Design guidelines
+
+fonts:
+https://fonts.google.com/specimen/Montserrat
+
+Weights: bold and regular
+
+colors:
+
+#F47775 red text cloudy
+#F4F7F8 light grey background cloudy
+#164A68 blue text rainy
+#A3DEF7 blue background rainy
+#2A5510 reen text sunny
+#F7E9B9 yellow background sunny
+*/
+
+/* TBC which font to be used in which section*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap');
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.weather-today {
+    display:flex;
+    width: 1200px;
+    flex-wrap: wrap;
+}
+
