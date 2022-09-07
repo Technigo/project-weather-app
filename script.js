@@ -17,9 +17,6 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
     }) 
     .then((json) => {
         console.log(json);
-        cityName.innerHTML = json.name;
-        cityTemp.innerHTML = (Math.round(json.main.temp)).toFixed(1);
-        cityWeather.innerHTML = json.weather[0].description;
         cityName.innerHTML = json.city.name;
         cityTemp.innerHTML = json.list[0].main.temp.toFixed(1);
         cityWeather.innerHTML = json.list[0].weather[0].description;
