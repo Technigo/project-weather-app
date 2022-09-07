@@ -7,6 +7,8 @@ const liveTemperature = document.getElementById("temperature");
 const weatherDescription = document.getElementById("description");
 const dayForecast = document.getElementById("weatherForecast");
 const daysOfTheWeek = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+const currentSunrise = document.getElementById("todaysWeatherSunrise");
+const currentSunset = document.getElementById("todaysWeatherSunset");
 
 fetch(apiNow)
   .then((response) => {
@@ -16,6 +18,20 @@ fetch(apiNow)
     currentCity.innerHTML = json.name;
     liveTemperature.innerHTML = json.main.temp.toFixed(1);
     weatherDescription.innerHTML = json.weather[0].description;
+
+    // Sunrise and sunset //
+    const timestampSunrise = json.sys.sunrise;
+    const timestampSunset = json.sys.sunset;
+
+    let sunrise = new Date(timestampSunrise * 1000);
+    let sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: "short" });
+    currentSunrise.innerHTML = `${sunriseTime}`; // prints in HTML
+
+    let sunset = new Date(timestampSunset * 1000);
+    let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: "short" });
+    currentSunset.innerHTML = `${sunsetTime}`; // prints in HTML
+
+    console.log(json);
   })
   .catch((error) =>
     console.error("There has been a problem with your fetch operation:", error)
@@ -46,6 +62,7 @@ fetch(apiForecast)
 
 /*
 
+/*
     .then((json) => {
         console.log(json )
         weather.innerHTML = json.weather.maps((weatherType) => {
