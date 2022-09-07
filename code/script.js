@@ -1,5 +1,6 @@
 const container = document.getElementById('main-container')
 const city = document.getElementById('city')
+const sun = document.getElementById('sun-position')
 
 
 
@@ -11,5 +12,6 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     container.innerHTML = `<p>${Math.round(json.main.temp * 10)/10}</p>`
     city.innerHTML += `<p>${json.name}<p>`
     container.innerHTML += `<p>${json.weather[0].description}</p>`
+
 })
 
