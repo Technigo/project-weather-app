@@ -5,17 +5,15 @@ body {
 }
 
 /* - - - BLUE: MAIN - - - - - - - - */
-
 .weather-app {
   border: 1px solid rgb(59, 59, 255);
-  width: 300px;
+  width: auto;   /*Mobile first, therefore auto, set specific width at desktop*/
   min-height: 500px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  margin: 10px auto 0 auto;
+  margin: 0 auto 0 auto;
   padding: 10px;
-  gap: 10px;
 }
 
 /* - - - PINK: HEADER WRAPPER - - - - - - - - */
@@ -33,11 +31,115 @@ body {
 }
 
 /* - - - PURPLE: HAMBURGER MENU - - - - - - - - */
-
+/*--Targets the position of the menu--*/
 .hamburger-menu {
   border: 1px solid rgb(108, 0, 180);
   display: flex;
 }
+
+  
+  /* ---- HAMBURGER MENU TO LINE 106------ */
+  @keyframes checked-anim {
+      50% {
+          width: 2000px;
+          height: 2000px;
+      }
+      100% {
+          width: 100%;
+          height: 100%;
+          border-radius: 0;
+      }
+  }
+  @keyframes not-checked-anim {
+      0% {
+          width: 2000px;
+          height: 2000px;
+      }
+  }
+  /*Positions the text/links when clicked*/
+  li, a {
+      margin: 75px 0 -60px -10px;
+      color: #f403a4;
+      font: 14pt "Roboto", sans-serif;
+      font-weight: 700;
+      line-height: 1.8;
+      text-align:center;
+      text-decoration: none;
+      text-transform: none;
+      list-style: none;
+      outline: 0;
+      display: none;
+  }
+  li {
+      width: 230px;
+      text-indent: 0;
+  }
+      
+  a:focus {
+      display: block;
+      color: #333;
+      background-color: #eee;
+      transition: all .3s;
+  }
+  
+  /*--Positions + targets looks of the burger---*/
+  #trigger, #burger, #burger:before, #burger:after {
+      position: absolute;
+      right: 12px;
+      margin: 0;
+      top: 25px;
+      background: #06171e;
+      width: 30px;
+      height: 2px;
+      transition: .2s ease;
+      cursor: pointer;
+      z-index: 1;
+  }
+  
+  /* ----Size of the clickable field----*/
+  #trigger {
+      height: 25px;
+      background: none;
+  }
+  #burger:before {
+      content: " ";
+      top: 10px;
+      left: 0 ;
+  }
+  #burger:after {
+      content: " ";
+      top: 20px;
+      left: 0;
+  }
+  
+  /*---------Visual effects when clicked---------*/
+  #menu-toggle:checked + #trigger + #burger {
+      top: 35px;
+      transform: rotate(90deg);
+      transition: transform .2s ease;
+  }
+  #menu {
+      position: absolute;
+      margin: 0 auto; 
+      width: auto;    /* menu comes in from the right*/
+      height: auto;  
+      top: 0px; left: 0px;
+      background-color: rgb(144, 195, 203);
+      animation: not-checked-anim .2s both;
+      transition: ease .2s;
+
+  }
+  #menu-toggle:checked + #trigger + #burger + #menu {
+      animation: checked-anim .1s ease both;
+  }
+  #menu-toggle:checked + #trigger ~ #menu > li, a {
+      display: block;
+  }
+  [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+      display: none;
+  }
+  
+  /* -----------TOP INFO --------------*/
 
 /* - - - YELLOW: COZY TEXT - - - - - - - - */
 

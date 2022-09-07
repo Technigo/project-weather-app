@@ -40,6 +40,7 @@ fetch(apiNow)
   );
 
 
+
 /*
     .then((json) => {
         console.log(json )
