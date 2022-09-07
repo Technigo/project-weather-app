@@ -7,22 +7,36 @@ const dailyForcast = document.getElementById('dailyForcastRow')
 const day = document.getElementById('day')
 const temp = document.getElementById('temp')
 
+
 fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=64d2a624607147029ae4574d21f5c6d9')
     .then((response) => {
         return response.json()
     })
     .then((data) => {
       
-        mainWeather.innerHTML = `<h1>Todays temperature in ${data.name} is ${data.main.temp} and it's ${data.weather[0].description} today. Sunrise ${data.sys.sunrise}</h1>`
+        container.innerHTML = `<h1>The weather in ${data.name}</h1>` //Changed container to be able to style - OK???
         console.log(data)    
-      })
-    .catch((err) =>{ //ERROR function. We pass in a function as a parameter in the function, just like the then function.
-      console.log(err)
-    })
 
-    //the city name
-    //the temperature (rounded to 1 decimal place)
-    //and what type of weather it is (the "description" in the JSON)
+        //weather descpription and temperature with one decimal
+        mainWeather.innerHTML += `<p>${data.weather[0].description} | ${data.main.temp.toFixed(1)} &#8451</p>` //&#8451 is the formal for celsius, changed conatiner to main
+
+        //Sunrise
+        const unixTimestampSunrise = data.sys.sunrise
+        //To get sunrise/sunset time in hours:minutes:seconds
+        let sunrise = new Date(unixTimestampSunrise * 1000)
+        //Declare new variable to show only hh:mm
+        let sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: "short"})
+        mainWeather.innerHTML += `<p>Sunrise: ${sunriseTime}</p>`;
+        //Sunset
+        const unixTimestampSunset = data.sys.sunset
+        let sunset = new Date(unixTimestampSunset * 1000)
+        let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: "short"})
+        mainWeather.innerHTML += `<p>Sunset: ${sunsetTime}</p>`;
+
+      })
+        .catch((err) =>{ //ERROR function. We pass in a function as a parameter in the function, just like the then function.
+        console.log(err)
+    })
 
 
 
