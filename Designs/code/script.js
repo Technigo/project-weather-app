@@ -45,7 +45,7 @@ const fiveForescast = () => {
                 console.log(temp_min)
                 let temp_max = (json.main.temp_max).toFixed(1);
                 console.log(temp_max)
-                let fivedays = (new Date(json.dt * 1000)).toLocaleDateString("en-US")
+                let fivedays = (new Date(json.dt * 1000)).toLocaleDateString("en-US", { weekday: "long" })
                 console.log(fivedays)
                 /*let icon = `<img id="forecast-icon" src=https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png></img>`;
                 console.log(icon)*/
