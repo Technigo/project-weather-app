@@ -118,6 +118,10 @@ const weatherCurrentCopenhagen = () => {
 
             const city2Name = `${json.name}`;
             const city2temp = `${json.main.temp.toFixed(0.5)}`;
+            
+            copenhagenIcon.innerHTML += `
+            <img id="main-icon" src='https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png' alt="${json.weather[0].description} icon" />`
+            
             city2.innerHTML += `${city2Name} ${city2temp}ºC`;
         })
 /*             copenhagenName.innerHTML += `
@@ -144,6 +148,9 @@ const weatherCurrentBuenosAires = () => {
             console.log(`this is ${json.name}`)
             const city1Name = `${json.name}`;
             const city1temp = `${json.main.temp.toFixed(0.5)}`;
+            buenosAiresIcon.innerHTML += `
+            <img id="main-icon" src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="${json.weather[0].description} icon" />
+            `
             city1.innerHTML += `${city1Name} ${city1temp}ºC`;
         })
 
