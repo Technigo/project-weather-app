@@ -1,13 +1,91 @@
 
-/* #F47775
-#F4F7F8
-#164A68
-#A3DEF7
-#2A5510
-#F7E9B9 */
-
-body {
- background-color: olivedrab;
- font-family: Montserrat, sans-serif;
+/* 
+#F47775 - pink coral
+#fad6d6 - Light pink
+#F4F7F8 - cool grey
+#164A68 - middle blue
+#A3DEF7 - Light blue
+#2A5510 - olive branch
+#F7E9B9 - warm light beige
+*/
+ /* style attribute background-color and color from js */
+* {
+    box-sizing: border-box;
 }
 
+html {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+body {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+  }
+/* main */
+#weather-body {
+    margin: 3rem;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    max-width: 600px;
+    border: 1px solid greenyellow;
+    }
+
+    /* 3st */
+section {
+    display: block;
+    border: 1px solid red;
+
+}
+
+/* put forcast font size. forcast-row,forcast-item*/
+.todays-weather, .forecast-row {
+    font-size: 1.25rem;
+    border: 1px solid blue;
+   
+}
+
+/* main advice + icon */
+.todays-weather {
+    margin-bottom: 2rem;
+
+}
+
+p {
+    display: block;
+    margin: 0.25rem;
+}
+/* icon */
+
+
+/* 5day forcast */
+
+.weather-city {
+    font-weight: 700;
+    font-size: 1.75rem;
+}
+
+h1 {
+    display: block ;
+    font-weight: bold;
+    border: 1px solid red;
+}
+
+.forecast {
+
+}
+.forcast-row {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 0.1rem dotted;
+    padding-bottom: 1rem;
+}
+
+.forcast-item {
+
+}

@@ -15,7 +15,7 @@ const fetchWeatherData = () => {
 
         weatherCity.innerHTML = weatherData.name; 
         todaysWeather.innerHTML = `${weatherData.weather[0].description} | ${weatherData.main.temp.toFixed(1)}° `;
-        //Check that it rounds corret way when the temp change - OK!!
+        //Check that it rounds corret way when the temp change - OK!
 
         });
        
