@@ -9,5 +9,5 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
         return response.json();
     })
     .then((json) => {
-        console.log("it is working",json);
+        console.log(" let make it work",json);
     })
