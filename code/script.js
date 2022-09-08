@@ -21,6 +21,8 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
         const sunsetTime = new Date(unixSunsetTime * 1000)
         
         infoWrapper.innerHTML += `
+        <img class="menu" src="https://img.icons8.com/color/48/000000/menu--v1.png"/>
+        <div class="info-row">
         <div class="info-temp" id="infoTemp">
             <h1>${json.list[0].main.temp.toFixed(0)}</h1>
         </div>
@@ -34,6 +36,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
         <div class="info-sun-position" id="infoSunPosition">
             <p class="text">sunrise ${sunriseTime.getHours()}:${sunriseTime.getMinutes()}</p>
             <p class="text">sunset ${sunsetTime.getHours()}:${sunsetTime.getMinutes()}</p>
+        </div>
         </div>
         
         `
@@ -49,7 +52,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
             <div class="forecast-row">
             <div class="for-day-temp"> ${getDayName(dayName.getDay())}</div>
             <img class="weather-icon" id="weatherIcon" src="http://openweathermap.org/img/wn/${json.list[0].weather[0].icon}.png" alt="weather-icon">
-            <div class="for-day-temp"> ${forecasteWeek.main.temp_max.toFixed(0)} / ${forecasteWeek.main.temp_min.toFixed(0)}˚c</div>
+            <div class="for-day-temp"> ${forecasteWeek.main.temp_max.toFixed(0)}˚C / ${forecasteWeek.main.temp_min.toFixed(0)}˚C</div>
             </div>
             `
         })
