@@ -3,9 +3,12 @@
 // create a variable "city" that can be declared later
 
 // listen to the change event on the cityPicker element
-// wrap the entire code inside the cityPicked event listener
-// set the city variable to the event.target.value
 
+// set the city variable to the event.target.value
+// instead of wrapping the whole script.js inside this event listener, make and call on 2 new functions for the api calls, using the city as an argument
+// the new functions also have to be called at the start when the page loads, for example at the bottom of the document
+
+// these variables should be moved into each new corresponding function
 const API_TODAY = `
 https://api.openweathermap.org/data/2.5/weather?q=${city},Sweden&units=metric&APPID=7dee0e5a05b2c9d92a37a397279281ca
 `;
