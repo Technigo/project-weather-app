@@ -1,6 +1,7 @@
 const container = document.getElementById('container');
 const today = document.getElementById('details-today');
 const forecast = document.getElementById('forecast');
+
 fetch(
   'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=7d5ebdb08a9c797cf1689d3a1ad108be'
 )
@@ -38,27 +39,51 @@ fetch(
     );
     console.log('filtered temp', filteredTemp);
 
+    const weekdayName = [
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+      'Sunday',
+    ];
+
     filteredTemp.forEach((item) => {
-      weekdayName = [
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday',
-        'Sunday',
-      ];
       const date = new Date(item.dt * 1000);
       let dayName = weekdayName[date.getDay()];
+      let icon = getIcon(item.weather[0].main);
+
+      console.log(icon);
+
       forecast.innerHTML += `
-            <div class="weekdays"> 
-              <div class="weekday-name">
-                      <p>${dayName}<p>
-                      <div class="temp-weather">
-                      <p>${item.main.temp.toFixed(1)} °C</p>
-                      <p>${item.weather[0].main}</p>
-                      </div>
-                  </div>
-              </div>`;
+        <div class="weekdays"> 
+          <div class="weekday-name">
+            <p>${dayName}<p>
+            <div class="temp-weather">
+            <img class="weather-icon" src="${icon}"/>
+            <p>${Math.floor(item.main.temp)} °C</p>
+            
+           
+            </div>
+          </div>
+        </div>
+      `;
     });
   });
+
+const getIcon = (condition) => {
+  switch (condition) {
+    case 'Clouds':
+      return 'img/cloud.png';
+    case 'Rain':
+      return 'img/rain.png';
+
+    // case 'Papayas':
+    //   console.log('Mangoes and papayas are $2.79 a pound.');
+    //   // expected output: "Mangoes and papayas are $2.79 a pound."
+    //   break;
+    default:
+      console.log(`condition not found ${condition}.`);
+  }
+};

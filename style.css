@@ -10,6 +10,7 @@ body {
 .temp-weather {
   display: flex;
   gap: 10px;
+  align-items: center;
 }
 
 .weekdays {
@@ -18,4 +19,9 @@ body {
   padding: 10px;
 
   color: white;
+}
+
+img.weather-icon {
+  max-width: 30px;
+  height: 20px;
 }
