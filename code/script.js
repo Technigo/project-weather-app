@@ -31,6 +31,7 @@ const apiNow = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=
 const apiForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=ba408ec4b2f7f251f2dd0044bd3e07f2`;
 
 const getIconForWeather = (weather) => {
+  // keep clear, clouds, rain (drizzle goes here!), thunderstorm, snow, mist
   if (weather === "Clear") {
     return "./assets/weather-icons/clear.svg";
   } else if (weather === "Clouds") {
@@ -118,7 +119,7 @@ const getWeather = (city) => {
       );
       filteredForecast.forEach(printForecastEntry)
     });
-  } 
+} 
 getWeather("Stockholm");
 
 

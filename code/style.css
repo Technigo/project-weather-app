@@ -7,14 +7,13 @@ body {
 /* - - - BLUE: MAIN - - - - - - - - */
 .weather-app {
   border: 1px solid rgb(59, 59, 255);
-  max-width: auto; /*Mobile first, therefore auto, set specific width at desktop*/
+  max-width: 330px; /*Mobile first, therefore auto, set specific width at desktop*/
   min-height: 500px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   margin: 0 auto 0 auto;
   padding: 10px;
-  background-color: grey;
 }
 
 /* - - - PINK: HEADER WRAPPER - - - - - - - - */
