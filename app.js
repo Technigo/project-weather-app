@@ -75,7 +75,7 @@ fetch(
 const getIcon = (condition) => {
   switch (condition) {
     case 'Clouds':
-      return 'img/cloud.png';
+      return 'img/cloud3.png';
     case 'Rain':
       return 'img/rain.png';
 
