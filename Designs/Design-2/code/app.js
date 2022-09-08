@@ -1,4 +1,6 @@
 //DOM elements
+const body = document.querySelector('body');
+
 const weatherDescription = document.getElementById('weather-description');
 const todaysTemp = document.getElementById('todays-temp');
 const sunriseTime = document.getElementById('sunrise-time');
@@ -8,8 +10,6 @@ const weatherMessage = document.getElementById('weather-message');
 const forecastContainer = document.getElementById('forecast-container');
 const searchBar = document.getElementById('search-bar');
 const searchBtn = document.getElementById('search-btn');
-
-const body = document.querySelector('body');
 
 //API
 //To be able to look for new cities everything is placed inside a function
