@@ -13,7 +13,7 @@ let URL_WEATHER =
 let URL_FORECAST =
   "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=8802f8b4b2d622931613aace44be57ae";
 
-// Fetch
+// Sunrise/sunset
 fetch(URL_FORECAST)
   .then((res) => {
     return res.json();
@@ -21,10 +21,10 @@ fetch(URL_FORECAST)
   .then((data) => {
     // new variable to filter the table and choose the same time everyday.
     console.log(data);
-    city.innerHTML += `City: ${data.city.name}`;
+    city.innerHTML += `${data.city.name}`;
     currentWeather.innerHTML += `${
       data.list[0].weather[0].description
-    } | ${data.list[0].main.temp.toFixed(1)}<sup>°C</sup> `;
+    } | ${data.list[0].main.temp.toFixed(0)}<sup>°C</sup> `;
 
     // currentWeather.innerHTML += `Current weather: ${data.list[0].weather[0].description}`;
     // currentTemp.innerHTML += `Temperature: ${data.list[0].main.temp.toFixed(1)}<sup>°C</sup>`;
@@ -60,11 +60,10 @@ fetch(URL_WEATHER)
     sunriseTime.innerHTML = `sunrise ${sunrise}`;
     sunsetTime.innerHTML = `sunset ${sunset}`;
 
-
     // https://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript
   });
-  //Forecast
 
+//Forecast
 const weekday = (data) => {
   const currentDate = new Date(data * 1000); // sets to millisec.
   return currentDate.toLocaleDateString("en-GB", {
@@ -93,7 +92,7 @@ fetch(URL_FORECAST)
       <div class="day">${weekday(filteredForecast[4].dt)}</div>
       <div class="temp"> ${filteredForecast[4].main.temp.toFixed(0)}</div>
       `;
-
+  });
 // All the event listeners
 
 // Stackoverflow asked question: https://stackoverflow.com/c/technigo/questions/4001
