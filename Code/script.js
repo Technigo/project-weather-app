@@ -7,7 +7,7 @@ const dailyForcast = document.getElementById('dailyForcastRow')
 const ApiWeather = 'http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=64d2a624607147029ae4574d21f5c6d9'
 // this is the API variable for the 5 days forecast
 const ApiForcast = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=4c7a468589eea9cb94d5053a081d05ba'
-
+const messageContainer = document.getElementById('message-container')
 
 
 /// An object catching the weekday and turning it into a string//
