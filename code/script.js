@@ -99,7 +99,7 @@ fetch(apiUrlSthlm)
               <div class="weekday-rows" id="weekdayRows">
                       <p>${dayName}</p>
                     <div class="tempAndIcon">
-                      <img class="icons" src="https://openweathermap.org/img/wn/${weatherIcon}@2x.png"/>
+                      <img class="icons" src="./Designs/Design-2/icons/${weatherIcon}.png"/>
                       <p>${item.main.temp.toFixed(1)} °C</p> 
                       </div> 
                   </div>
