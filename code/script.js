@@ -62,8 +62,7 @@ const printForecastEntry = (dayForecast) => {
   const forecastIcon = getIconForWeather(forecastWeatherType);
 
   console.log(forecastIcon);
-
-<<<<<<< HEAD
+}
 const getWeather = (city) => {
   console.log('fetching weather data for ', city)
   const apiNow =
@@ -94,7 +93,6 @@ const getWeather = (city) => {
       currentSunset.innerHTML = `${sunsetTime}`; // prints in HTML
 
     })
-    
     .catch((error) =>
       console.error("There has been a problem with your fetch operation:", error)
     );
@@ -124,57 +122,6 @@ const getWeather = (city) => {
 getWeather("Barcelona");
 
 
-=======
-  weatherForecast.innerHTML += `
-  <div class="weather-forecast-entry">
-  <span>${daysOfTheWeek[dayOfTheWeek]}</span>
-  <span><img src="${forecastIcon}" class="weather-forecast-icon" alt="${forecastWeatherType}"/></span>
-  <span>${dayForecast.main.temp.toFixed(0)}°</span>
-  </div>
-  `;
-  //
-};
-
-fetch(apiNow)
-  .then((response) => {
-    return response.json();
-  })
-  .then((json) => {
-    currentCity.innerHTML = json.name;
-    liveTemperature.innerHTML = json.main.temp.toFixed(1);
-    weatherDescription.innerHTML = json.weather[0].description;
-
-    // Sunrise and sunset //
-    const timestampSunrise = json.sys.sunrise;
-    const timestampSunset = json.sys.sunset;
-
-    let sunrise = new Date(timestampSunrise * 1000);
-    let sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: "short" });
-    currentSunrise.innerHTML = `${sunriseTime}`; // prints in HTML
-
-    let sunset = new Date(timestampSunset * 1000);
-    let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: "short" });
-    currentSunset.innerHTML = `${sunsetTime}`; // prints in HTML
-  })
-  .catch((error) =>
-    console.error("There has been a problem with your fetch operation:", error)
-  );
-
-fetch(apiForecast)
-  .then((response) => {
-    return response.json();
-  })
-  .then((dayForecast) => {
-    const filteredForecast = dayForecast.list.filter((item) =>
-      // @TODO maybe change to a better time here? see this for visualisation https://jsoncrack.com/editor?fbclid=IwAR2ZSGA26fdIHECi0-ISKwEsHs8BuZlb8bCS_-3O1j_0drQRkNIdzvK7fE0
-      // Fetches weather at midday for five days ahead
-      item.dt_txt.includes("12:00")
-    );
-    filteredForecast.forEach(printForecastEntry);
-  });
-
-//
->>>>>>> f09b33915dba57c93716734cb5dc47d0a0e1dae5
 
 // Event listeners 
 searchForm.addEventListener("submit", (e) => {  //when pressend enter it sends
@@ -191,10 +138,6 @@ burger.addEventListener("click", show);
 closeMenu.addEventListener("click", close);
 searchForm.addEventListener("submit", close);
 
-<<<<<<< HEAD
-
-=======
->>>>>>> f09b33915dba57c93716734cb5dc47d0a0e1dae5
 /*
 
 /*
