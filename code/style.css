@@ -13,10 +13,9 @@ body {
 .weather-app {
   border: 1px solid rgb(59, 59, 255);
   display: flex;
-  margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
-  width: 85%;
+  width: auto;
   height: 500px;
   justify-content: space-between;
   flex-direction: column;
@@ -31,6 +30,7 @@ body {
   border: 1px solid hotpink;
   display: flex;
   justify-content: space-between;
+  margin-top: 10px;
 }
 
 /* - - - RED: TODAYS WEATHER - - - - - - - - */
@@ -75,7 +75,7 @@ body {
   width: 100%; */
   display: flex;
   flex-direction: column;
-  padding: 50px;
+  padding: 40px;
   z-index: 10;
   transition: all 1s ease;
   display: none;
@@ -106,8 +106,9 @@ a:link {
 .input-location {
   position: absolute;
   padding: 10px;
-  border-radius: 0px;
-  width: 240px;
+  margin-top:30px;
+  border-radius: 0;
+  width: 170px;
   border: none;
   text-align-last: center;
   font-family: "Raleway", sans-serif;
@@ -156,6 +157,12 @@ a:link {
     margin-top: 150px;
     max-width: 325px;
   }
+
+  .input-location {
+    padding: 10px;
+    margin-top:30px;
+    border-radius: 0;
+    width: 240px;
 }
 
 /* - - - DESKTOP - - - - - - - - */
@@ -165,4 +172,12 @@ a:link {
     margin-top: 100px;
     max-width: 300px;
   }
+
+  .input-location {
+    padding: 10px;
+    margin-top:30px;
+    border-radius: 0;
+    width: 240px;
+}
+}
 }
