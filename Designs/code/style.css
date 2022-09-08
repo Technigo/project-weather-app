@@ -23,3 +23,9 @@ body {
 h2 {
     font-size: 20px;
 }
+
+.other-cities {
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+}
