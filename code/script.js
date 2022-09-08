@@ -21,6 +21,8 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
         const sunsetTime = new Date(unixSunsetTime * 1000)
         
         infoWrapper.innerHTML += `
+        <img class="menu" src="https://img.icons8.com/color/48/000000/menu--v1.png"/>
+        <div class="info-row">
         <div class="info-temp" id="infoTemp">
             <h1>${json.list[0].main.temp.toFixed(0)}</h1>
         </div>
@@ -34,6 +36,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
         <div class="info-sun-position" id="infoSunPosition">
             <p class="text">sunrise ${sunriseTime.getHours()}:${sunriseTime.getMinutes()}</p>
             <p class="text">sunset ${sunsetTime.getHours()}:${sunsetTime.getMinutes()}</p>
+        </div>
         </div>
         
         `
