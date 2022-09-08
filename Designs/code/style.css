@@ -1,3 +1,4 @@
+
 /*
 #F6E9B8 - light yellow
 #1C4F08 - dark green
@@ -6,7 +7,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 body {
-    font-family: 'Fredoka One', cursive;
+    font-family: 'Montserrat', sans-serif;
     background-color: #F6E9B8;
     color: #1C4F08;
 }
@@ -24,8 +25,3 @@ h2 {
     font-size: 20px;
 }
 
-.other-cities {
-    font-size: 30px;
-    text-align: center;
-    font-weight: bold;
-}
