@@ -34,8 +34,8 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
             ${json.city.name}
         </div> 
         <div class="info-sun-position" id="infoSunPosition">
-            <p class="text">sunrise ${sunriseTime.getHours()}:${sunriseTime.getMinutes()}</p>
-            <p class="text">sunset ${sunsetTime.getHours()}:${sunsetTime.getMinutes()}</p>
+            <p class="text">Sunrise at ${sunriseTime.getHours()}:${sunriseTime.getMinutes()}</p>
+            <p class="text">Sunset at ${sunsetTime.getHours()}:${sunsetTime.getMinutes()}</p>
         </div>
         </div>
         
@@ -49,7 +49,11 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
                 weekday: "short",
               })}</div>
             <img class="weather-icon" id="weatherIcon" src="http://openweathermap.org/img/wn/${item.weather[0].icon}.png" alt="weather-icon">
-            <div class="for-day-temp"> ${item.main.temp.toFixed(0)} / ${item.main.temp_min.toFixed(0)}˚c</div>
+            <div class="for-day-temp"> ${item.main.temp.toFixed(0)}˚C</div>
+            <div class="desktop-info"> Feels like ${item.main.feels_like.toFixed(0)}˚C</div>
+            <div class="desktop-info"> Humidity ${item.main.humidity.toFixed(0)}%</div>
+            <div class="desktop-info"> Wind speed ${item.wind.speed} m/s</div>
+            
             </div>
             `
         })
@@ -57,3 +61,6 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
 .catch((err) => {
     console.log('caught error', err)
 });
+
+
+// ${item.main.temp_min.toFixed(0)
