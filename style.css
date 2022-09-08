@@ -27,3 +27,15 @@ body {
     height: 30vh;
     width: 100%;
 }
+
+.week-days ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.week-days ul li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.2em;
+    border-bottom: dashed 1px;
+}
