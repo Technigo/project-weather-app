@@ -17,7 +17,6 @@
 
 .weekday:hover {
     background-color: darkgray;
-    cursor: crosshair;
 }
 
 .weather-icon {
