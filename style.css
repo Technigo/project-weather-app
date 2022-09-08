@@ -31,29 +31,39 @@ body{
 h1{
   font-size:35px;
   font-weight:bold;
+  padding-bottom: 30px;
 }
 
-/*weather-today-container/section*/
+.main-container {
+    display: flex;
+    border: 10px solid blue; /*to be deleted*/
+    flex-direction:column;
+    width:auto;
+}
+
 .weather-today {
   display: flex;
   flex-direction: column;
-  width: auto;
-  margin: 30px;
 }
 
 /*Adjust image size*/
 .weather-icon{
-  width:200px;
+  width: 100px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
+
+/*.today-title {
+    STYLING NEEDED?
+}*/
 
 .forecast-day-container {
   display:flex;
   flex-direction:row;
   justify-content:space-between;
-  margin:20px;
-  padding-bottom: 20px;
+  padding-bottom:5px;
+  padding-top: 5px;
   border-bottom: dotted;
-  margin: 30px;
 }
 
 .clear{
@@ -71,13 +81,25 @@ h1{
   color: #164A68
 }
 
-/*ADD Media Quiery ?*/
+/*For Tablet*/
 
-/* For Tablet
 @media (min-width:768px) and (max-width:991px) {
-
+.main-container {
+    padding: 50px;
 }
-/* For Desktop
-@media (min-width:992px) {
+h1 {
+    text-align:left;
+}
+}
 
-}*/
+/* For Desktop*/
+@media (min-width:992px) {
+.main-container{
+    padding:100px;
+    width: 50%;
+    margin: auto;
+}
+h1 {
+    text-align: left;
+}
+}
