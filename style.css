@@ -33,7 +33,7 @@ h1{
   font-weight:bold;
 }
 
-/*weather-today-container*/
+/*weather-today-container/section*/
 .weather-today {
   display: flex;
   flex-direction: column;
@@ -42,7 +42,7 @@ h1{
 }
 
 /*Adjust image size*/
-img{
+.weather-icon{
   width:200px;
 }
 
@@ -53,6 +53,7 @@ img{
   margin:20px;
   padding-bottom: 20px;
   border-bottom: dotted;
+  margin: 30px;
 }
 
 .clear{
