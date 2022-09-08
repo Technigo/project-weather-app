@@ -67,6 +67,13 @@ img {
     }
   }
 
+.icons {
+  height: 60%;
+  border-radius: 50%;
+  background-color: #9b989826;
+  margin-right: 5px;
+}
+
 .main-wrapper {
     display: block;
     padding: 2%;
@@ -88,6 +95,12 @@ img {
     border-bottom: 2px dotted;
 }
 
+.tempAndIcon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 /** Media Queries **/
 
 @media screen and (min-width: 600px) {
@@ -107,7 +120,7 @@ img {
         align-items: center
     }
 
-    img {
+    .mainImg {
         width: 9rem;
       }
 
