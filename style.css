@@ -39,6 +39,7 @@ h1{
     border: 10px solid blue; /*to be deleted*/
     flex-direction:column;
     width:auto;
+    padding-bottom: 20px;
 }
 
 .weather-today {
