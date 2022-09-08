@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css" />
-  <title>Weather App</title>
-</head>
-<body>
-  <header class = "today-summary" id = "todaySummary"></header>
-  <div class="main-weather" id ="mainWeather"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Weather App</title>
+  </head>
+  <body>
+    <header>
+      <div class="cities">
+        <select id="cities" class="select-city">
+          <option value="Stockholm">Stockholm</option>
+          <option value="Sidney">Sidney</option>
+          <option value="London">London</option>
+          <option value="Bankok">Bangkok</option>
+        </select>
+      </div>
+    </header>
+    <div class="today-summary" id="todaySummary"></div>
+    <div class="main-weather" id="mainWeather"></div>
 
-<div class="weekly-forcast-wrapper" id ="weeklyForcastWrapper">
-<div class="daily-forcast-row" id="dailyForcastRow">
-</div>
-</div>
-<script src="./script.js"></script>
-</body>
+    <div class="weekly-forcast-wrapper" id="weeklyForcastWrapper">
+      <div class="daily-forcast-row" id="dailyForcastRow"></div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
 </html>

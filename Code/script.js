@@ -1,82 +1,109 @@
+const container = document.getElementById("todaySummary");
+const mainWeather = document.getElementById("mainWeather");
+const weeklyWeather = document.getElementById("weeklyForcastWrapper");
+const dailyForcast = document.getElementById("dailyForcastRow");
+const selectCity = document.getElementById("cities");
 
+//this is the API variable for today weathers
+const stockholmWeather =
+  "http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=64d2a624607147029ae4574d21f5c6d9";
+const sidneyWeather =
+  "http://api.openweathermap.org/data/2.5/weather?q=Sidney,Australia&units=metric&APPID=dd119be9d07ede14a0d4a2a07b6dd18e";
+const londonWeather =
+  "http://api.openweathermap.org/data/2.5/weather?q=London,England&units=metric&APPID=9131d7e10e3d4c4db50d9536233dc980";
+const bangkokWeather =
+  "http://api.openweathermap.org/data/2.5/weather?q=Bangkok,Thailand&units=metric&APPID=c0ec35bd685cdcb888f10c443a6c14d5";
 
-const container = document.getElementById('todaySummary')
-const mainWeather = document.getElementById('mainWeather') 
-const weeklyWeather = document.getElementById('weeklyForcastWrapper')
-const dailyForcast = document.getElementById('dailyForcastRow')
-const ApiWeather = 'http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=64d2a624607147029ae4574d21f5c6d9'
 // this is the API variable for the 5 days forecast
-const ApiForcast = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=4c7a468589eea9cb94d5053a081d05ba'
-
-
-
+const stockholmForcast =
+  "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=4c7a468589eea9cb94d5053a081d05ba";
+const sidneyForcast =
+  "https://api.openweathermap.org/data/2.5/forecast?q=Sidney,Australia&units=metric&APPID=e36d2706d1322106e3c5ea16b89992f1";
+const londonForcast =
+  "https://api.openweathermap.org/data/2.5/forecast?q=London,England&units=metric&APPID=002b38ff95d0ef8bad1f429f9b600f39";
+const bangkokForcast =
+  "https://api.openweathermap.org/data/2.5/forecast?q=Bangkok,Thailand&units=metric&APPID=e83c1059f8d8dd4be2de6612bd0cae22";
 
 /// An object catching the weekday and turning it into a string//
 
-// const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-// const date = new Date();
-// let weekDay = days[date.getDay()];
-fetch(ApiWeather)
+// Fetching Stockholm weather and add it to fetchStockholmWeather
+
+const fetchWeather = (weatherApi) => {
+  console.log("fetching weather api", weatherApi);
+  const weaterhPromise = fetch(weatherApi)
     .then((response) => {
-        return response.json()
+      return response.json();
     })
     .then((data) => {
+      console.log("weather data", data); 
+      return data;
+    });
+    return weaterhPromise;
+};
 
-        //weather descpription and temperature with one decimal
-        container.innerHTML += `<p>${data.weather[0].description} | ${data.main.temp.toFixed(1)} &#8451</p>` //&#8451 is the formal for celsius, changed conatiner to main
+/// Fetching Stockholm forcast and add it to fetchStockholmForcast
 
-        //Sunrise
-        const unixTimestampSunrise = data.sys.sunrise
-        //To get sunrise/sunset time in hours:minutes:seconds
-        let sunrise = new Date(unixTimestampSunrise * 1000)
-        //Declare new variable to show only hh:mm
-        let sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: "short"})
-        container.innerHTML += `<p>Sunrise: ${sunriseTime}</p>`;
-        //Sunset
-        const unixTimestampSunset = data.sys.sunset
-        let sunset = new Date(unixTimestampSunset * 1000)
-        let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: "short"})
-        container.innerHTML += `<p>Sunset: ${sunsetTime}</p>`;
-
-        mainWeather.innerHTML = `<h1>The weather in ${data.name}</h1>` //Changed container to be able to style - OK???
-        console.log(data)    
-
-
-      })
-        .catch((err) =>{ //ERROR function. We pass in a function as a parameter in the function, just like the then function.
-        console.log(err)
-    })
-
-    fetch(ApiForcast)
+const fetchStockholmForcast = () => {
+  const StockholmForcastPromise = fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=4c7a468589eea9cb94d5053a081d05ba')
     .then((response) => {
-        return response.json()
+    return response.json();
     })
-    .then((dataforcast) => {
-
-          const filteredForecast = dataforcast.list.filter(item => item.dt_txt.includes('12:00'))
-          //console.log(filteredForecast)
-          filteredForecast.forEach((day) => {
-          const options1 = { weekday: 'long' }
-          const options2 = { weekday: 'short' }
-         // forecast is injected in HTML, we also rounded the value to show no decimal
-         // with one decimal: ${Math.round(day.main.temp * 10) / 10}
-         // adds the weekdays in two ways, short and long format, example mon or monday
-          
-
-          dailyForcast.innerHTML +=`
-          <p class="forecast-row" id="forecastDay">
-          <span class="short-day">${new Intl.DateTimeFormat('en-GB', options1).format(day.dt * 1000).toLowerCase()}</span>
-          <span class="long-day">${new Intl.DateTimeFormat('en-GB', options2).format(day.dt * 1000).toLowerCase()}</span>
-          <span class="tempp">${Math.round(day.main.temp)}°</span>
-          </p>`
-        })
-      })
-
+    .then((data) => {
+      //console.log(data); funkar
+    return data.results; 
+    });
+    return StockholmForcastPromise;
+    };
+    fetchStockholmForcast();
     
 
-    //https://api.openweathermap.org/data/2.5/weather?lat={LAT}&lon={LON}&appid={API KEY}
+const ShowCityWeather = (data) => {
+  console.log("weatherdata", data);
+  //weather descpription and temperature with one decimal
+  container.innerHTML = `<p>${data.weather[0].description} | ${data.main.temp.toFixed(1)} &#8451</p>`; //&#8451 is the formal for celsius, changed conatiner to main
+  //Sunrise
+  const unixTimestampSunrise = data.sys.sunrise;
+  //To get sunrise/sunset time in hours:minutes:seconds
+  let sunrise = new Date(unixTimestampSunrise * 1000);
+  //Declare new variable to show only hh:mm
+  let sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: "short" });
+  container.innerHTML += `<p>Sunrise: ${sunriseTime}</p>`;
+  //Sunset
+  const unixTimestampSunset = data.sys.sunset;
+  let sunset = new Date(unixTimestampSunset * 1000);
+  let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: "short" });
+  container.innerHTML += `<p>Sunset: ${sunsetTime}</p>`;
+  mainWeather.innerHTML = `<h1>The weather in ${data.name}</h1>`; //Changed container to be able to style - OK???
+  return;
+};
 
-    //https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=
-    //Petras API :98b6cfababcb8aa6d64ecb9698b0bc9c
-    //Charlottes API: 64d2a624607147029ae4574d21f5c6d9
-    //<span>${day.weather[0].description}</span>
+const selectedCity = (city) => {
+let apiUrl = ""
+  console.log("works"); //chatches the value of a city
+  if (city === "Stockholm") {
+    console.log("stockholm");
+    apiUrl = stockholmWeather;
+  } else if (city === "Sidney") {
+    console.log("Sidney");
+    apiUrl = sidneyWeather;
+  } else if (city === "London") {
+    console.log("London");
+    apiUrl = londonWeather;
+  } else {
+    console.log("Bangkok");
+    apiUrl = bangkokWeather;
+  }
+  fetchWeather(apiUrl)
+  .then((data) => {
+    console.log("testing", data); 
+    ShowCityWeather(data);
+  });
+};
+
+
+selectCity.addEventListener("change", (event) =>
+  selectedCity(event.target.value)
+); //Listen to what city is chosen
+
+// When the page loads
+//fetchStockholmWeather(StockholmWeather); //when the page loads we want to show sthlm  weather first as default
