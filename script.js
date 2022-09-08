@@ -24,6 +24,19 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
         sunriseTime.innerHTML = sunriseStart.toLocaleTimeString([], {hour:'2-digit', minute: '2-digit'});
         sunsetTime.innerHTML = sunsetStart.toLocaleTimeString([], {hour:'2-digit', minute: '2-digit'});
         
+        if (json.list[0].weather[0].main.includes('Clouds')) {
+            body.style.backgroundImage= `url('images/rain.jpeg')`; 
+        } else if (json.list[0].weather[0].main.includes('Rain')) {
+            body.style.backgroundImage= `url('images/rain.jpeg')`;
+        } else if (json.list[0].weather[0].main.includes('Sun')) {
+            body.style.backgroundImage= `url('images/rain.jpeg')`;
+        } else if (json.list[0].weather[0].main.includes('Snow')) {
+            body.style.backgroundImage= `url('images/rain.jpeg')`;
+        } else {
+            body.style.backgroundImage= `url('images/rain.jpeg')`;
+        }
+
+
         weeklyWeather= json.list.filter(item => item.dt_txt.includes('12:00'))        
 
          weeklyTemp = weeklyWeather.map((day) => {
