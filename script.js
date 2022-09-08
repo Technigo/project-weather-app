@@ -36,6 +36,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
         header.innerHTML +=`<p>sunrise ${sunriseTime}</p>`
         header.innerHTML +=`<p>sunset ${sunsetTime}</p>` */
 
+        document.getElementById('weatherheader').style.backgroundColor = green;
 
     })
 
