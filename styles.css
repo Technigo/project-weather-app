@@ -1,3 +1,15 @@
 body{
     background-color: aquamarine;
 }
+
+.weekly-temperature ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.weekly-temperature ul li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.2em;
+    border-bottom: dashed 1px ;
+}
