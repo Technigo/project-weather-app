@@ -92,7 +92,7 @@ const fiveForescastInStockholm = () => {
                 /*let icon = `<img id="forecast-icon" src=https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png></img>`;
                 console.log(icon)*/
                 fiveDayForecast.innerHTML += `
-                <p> 
+                <p class="forecast"> 
                 <span id="fiveday">${fivedays}</span>
                  <span id="temp">${temp}ºC</span>
                 </p>
@@ -119,10 +119,10 @@ const weatherCurrentCopenhagen = () => {
             const city2Name = `${json.name}`;
             const city2temp = `${json.main.temp.toFixed(0.5)}`;
             
-            copenhagenIcon.innerHTML += `
-            <img id="main-icon" src='https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png' alt="${json.weather[0].description} icon" />`
+           /*  copenhagenIcon.innerHTML += `
+            <img id="main-icon" src='https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png' alt="${json.weather[0].description} icon" />` */
             
-            city2.innerHTML += `${city2Name} ${city2temp}ºC`;
+            city2.innerHTML += `${city2Name} ${city2temp}ºC <br><img id="main-icon" src='https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png' alt="${json.weather[0].description} icon" />`;
         })
 /*             copenhagenName.innerHTML += `
             <td id="denmarkCityName">${json.name}</td>
@@ -148,10 +148,10 @@ const weatherCurrentBuenosAires = () => {
             console.log(`this is ${json.name}`)
             const city1Name = `${json.name}`;
             const city1temp = `${json.main.temp.toFixed(0.5)}`;
-            buenosAiresIcon.innerHTML += `
-            <img id="main-icon" src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="${json.weather[0].description} icon" />
-            `
-            city1.innerHTML += `${city1Name} ${city1temp}ºC`;
+/*             buenosAiresIcon.innerHTML += `
+             <img id="main-icon" src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="${json.weather[0].description} icon" />
+            `  */
+            city1.innerHTML += `${city1Name} ${city1temp}ºC <br> <img id="main-icon" src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="${json.weather[0].description} icon" />`;
         })
 
 };

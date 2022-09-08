@@ -21,13 +21,22 @@ body {
     color: #2A5510;
 }
 
+/* td {
+    border-bottom: black dotted;
+} */
 
+.forecast{
+    border-bottom: #2A5510 dotted 2px;
+}
 .weatherInfo{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+h1{
+    font-size: 40px;
 }
 
 h2 {
@@ -48,7 +57,13 @@ h2 {
     justify-content: center;
     align-items: center;
     gap: 80px;
+    margin-top: 50px;
 
 }
 
+.city{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
 
