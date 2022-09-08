@@ -26,6 +26,10 @@ body {
     width: 100%;
 }
 
+.weather.text h1 {
+    font-weight: bold;
+}
+
 .week-days {
     height: 30vh;
     width: 100%;
