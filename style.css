@@ -14,9 +14,47 @@ color: #F7E9B9;
 
 .weather-summary {
 border: solid rgb(251, 0, 255) 2px;
+display: flex;
+flex-direction: column;
+align-content: flex-start;
+flex-wrap: wrap;
 }
 
- .weather-guidance {
+.summary-one {
+width: 200px;
+border: solid black 2px;
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+}
+
+.summary-two {
+width: 200px;
+border: solid red 2px;
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+}
+
+.summary-three {
+width: 200px;
+border: solid yellow 2px;
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+}
+
+.todays-sunrise {
+display: flex;
+flex-direction: row;
+}
+
+.todays-sunrise {
+display: flex;
+flex-direction: row;
+}
+
+.weather-guidance {
  border: solid blue 2px;
 }
 
