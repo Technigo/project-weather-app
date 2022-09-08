@@ -13,48 +13,58 @@
 
 <body>
   <!--ADD THE THINGS HERE-->
-  <table class="weather-table" id="weatherTable">
-    <tr>
-      <td id="cityName"></td>
-    </tr>
-    <tr>
-    <tr id="weatherIcon"></tr>
-    </tr>
-    <tr>
-      <td id="temp"></td>
-    </tr>
-    <tr>
-      <td id="description"></td>
-    </tr>
-    <tr>
-      <td id="sunriseTime">Sunrise: </td>
-    </tr>
-    <tr>
-      <td id="sunsetTime">Sunset: </td>
-    </tr>
-
-    <tr class="five-day-forecast" id="fiveDayForecast">
-      <!--<td id="fiveDaysContainer"></td> -->
-    </tr>
-    <tr>
-      <td class="city-name" id="cityName"></td>
-    </tr>
-
-    <tr class="other-cities" id="otherCities">
-      <!--<td id="otherCitiesContainer"></td> -->
-    </tr>
-    <tr>
-      <td class="copenhagen-name" id="copenhagenName"></td>
-    </tr>
-    <tr>
-      <td class="copenhagen-temp" id="copenhagenTemp"></td>
-    </tr>
-    <tr>
-      <td class="buenos-aires-name" id="buenosAiresName"></td>
-    </tr>
-    <tr>
-      <td class="buenos-aires-temp" id="buenosAiresTemp"></td>
-    </tr>
-  </table>
+  <div class="weatherInfo" id="weatherInfo">
+    <div id="cityDiv">
+      <!-- this is where the city name goes-->
+    </div>
+    <div class="some-text" id="someText">
+      <!--this is where the fun text goes-->
+    </div>
+     <div class="currentInfo" id="currentInfo">
+    <!--This is where the current info goes-->
+    <table class="weather-table" id="weatherTable">
+      <tr>
+        <td title id="CurrentInfo"><h2>Current weather</h2></td>
+      </tr>
+      <tr>
+      <tr id="weatherIcon"></tr>
+      </tr>
+      <tr>
+        <td id="temp">Current temp: </td>
+      </tr>
+      <tr>
+        <td id="description"></td>
+      </tr>
+      <tr>
+        <td id="sunriseTime">Sunrise: </td>
+      </tr>
+      <tr>
+        <td id="sunsetTime">Sunset: </td>
+      </tr> 
+      <tr class="five-day-forecast" id="fiveDayForecast">
+      </tr>
+      <tr class="other-cities" id="otherCities">
+        <td title>Other Cities</td>
+      <tr>
+        <td class="copenhagen-name" id="copenhagenName"></td>
+      </tr>
+      <tr>
+        <td class="copenhagen-temp" id="copenhagenTemp"></td>
+      </tr>
+      <tr>
+        <td class="buenos-aires-name" id="buenosAiresName"></td>
+      </tr>
+      <tr>
+        <td class="buenos-aires-temp" id="buenosAiresTemp"></td>
+      </tr>
+    </table>
+  </div>
+  <div><form action="/action_page.php">
+    <label for="inputLabel">Choose another city:</label><br>
+    <input type="text" id="inputCity" name="inputCity" value="">
+    <input type="submit" value="Submit">
+  </form>
+</div>
+</div>
   <script src="script.js"></script>
 </body>
