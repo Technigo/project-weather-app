@@ -3,13 +3,12 @@
 body {
     font-family: Montserrat;
     font-weight: 400;
-    margin-left: 50px;
-    
+    margin-left: 13%;
+    margin-right: 13%;
 }
 
 #summary {
     font-size: 18px;
-
 }
 
 #summary p {
@@ -22,8 +21,6 @@ body {
     padding-top: 20px;
 }
 
-
-
 #mainSection {
     font-family: Montserrat;
     font-weight: 700;
@@ -33,17 +30,43 @@ body {
 
 #forecast {
     font-size: 18px;
-    display: flex;
-    
-    
-}
-#forecast section{
-    display: flex;
-    flex-direction: column;
+    margin-top: 35px;
 }
 
-#forecast div{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+#forecast p {
+    display: block;
+}
+
+.left {
+    width: 50%;
+    float: left;
+    border-bottom: 1.5px dashed;
+    margin-bottom: 5px;
+}
+
+.right {
+    width: 50%;
+    float: right;
+    text-align: right;
+    margin-bottom: 5px;
+    border-bottom: 1.5px dashed;
+}
+
+/* TABLET STYLING */
+@media (min-width: 668px) and (max-width:1024px) {
+    body {
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+}
+
+/* DESKTOP */
+@media (min-width: 1025px) {
+    body {
+        margin-left: 30%;
+        margin-right: 30%;
+}
+    #mainSection {
+        font-size: 38px;
+    }
 }
