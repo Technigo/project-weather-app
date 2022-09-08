@@ -44,6 +44,7 @@ h1{
 .weather-today {
   display: flex;
   flex-direction: column;
+  margin:20px;
 }
 
 /*Adjust image size*/
@@ -55,6 +56,7 @@ h1{
 
 /*.today-title {
     STYLING NEEDED?
+
 }*/
 
 .forecast-day-container {
@@ -64,6 +66,8 @@ h1{
   padding-bottom:5px;
   padding-top: 5px;
   border-bottom: dotted;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .clear{
