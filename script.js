@@ -4,7 +4,7 @@ const cityWeather = document.getElementById('weather-placeholder');
 const sunriseTime = document.getElementById('sunrise-time');
 const sunsetTime = document.getElementById('sunset-time');
 const weeklyTemp = document.getElementById('weekly-temperature-placeholder'); 
-
+const body = document.querySelector('body'); 
 
 let weeklyWeather;
 
@@ -24,7 +24,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
         sunriseTime.innerHTML = sunriseStart.toLocaleTimeString([], {hour:'2-digit', minute: '2-digit'});
         sunsetTime.innerHTML = sunsetStart.toLocaleTimeString([], {hour:'2-digit', minute: '2-digit'});
         
-        if (json.list[0].weather[0].main.includes('Clouds')) {
+if (json.list[0].weather[0].main.includes('Clouds')) {
             body.style.backgroundImage= `url('images/rain.jpeg')`; 
         } else if (json.list[0].weather[0].main.includes('Rain')) {
             body.style.backgroundImage= `url('images/rain.jpeg')`;
