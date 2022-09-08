@@ -14,7 +14,13 @@
 
 <body>
   <!--ADD THE THINGS HERE-->
-  <div class="weatherInfo" id="weatherInfo">
+
+    <div class="leftCorner">
+      <span class="leftCornerSpan" id="span1"></span>
+      <span class="leftCornerSpan" id="span2">Sunrise: </span>
+      <span class="leftCornerSpan" id="span3">Sunset: </span>
+    </div>
+      <div class="weatherInfo" id="weatherInfo">
     <div id="cityDiv">
       <!-- this is where the city name goes-->
     </div>
@@ -24,29 +30,12 @@
      <div class="currentInfo" id="currentInfo">
     <!--This is where the current info goes-->
     <table class="weather-table" id="weatherTable">
-      <tr>
-        <td title id="CurrentInfo"><h2>Current weather</h2></td>
-      </tr>
-      <tr>
       <tr id="weatherIcon"></tr>
-      </tr>
       <tr>
-        <td id="temp">Current temp: </td>
+        <td title id="CurrentInfo"><h2>Upcoming weather</h2></td>
       </tr>
-      <tr>
-        <td id="description"></td>
-      </tr>
-      <tr>
-        <td id="sunriseTime">Sunrise: </td>
-      </tr>
-      <tr>
-        <td id="sunsetTime">Sunset: </td>
-      </tr> 
       <tr class="five-day-forecast" id="fiveDayForecast">
       </tr>
-      <tr class="other-cities" id="otherCities">
-        <td title>Other Cities</td>
-      <tr>
         <td class="copenhagen-name" id="copenhagenName"></td>
       </tr>
       <tr>
@@ -60,12 +49,15 @@
       </tr>
     </table>
   </div>
-  <div><form action="/action_page.php">
-    <label for="inputLabel">Choose another city:</label>
-    <input type="text" id="inputCity" name="inputCity" value="">
-    <input type="submit" value="Submit">
-  </form>
+  <!-- <form action="/action_page.php">
+  <label for="inputLabel">Choose another city:</label>
+  <input type="text" id="inputCity" name="inputCity" value="">
+  <input type="submit" value="Submit">
+</form> -->
 </div>
+<div class ="otherCities" id="otherCities">
+<div class="city" id="city1"></div>
+<div class="city" id="city2"></div>
 </div>
   <script src="script.js"></script>
 </body>

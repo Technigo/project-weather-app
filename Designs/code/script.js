@@ -11,31 +11,14 @@ const fiveDayForecast = document.getElementById('fiveDayForecast');
 const weatherText = document.getElementById('weatherText');
 const someText = document.getElementById('someText');
 const cityDiv = document.getElementById('cityDiv');
+const span1 = document.getElementById('span1');
+const span2 = document.getElementById('span2');
+const span3 = document.getElementById('span3');
+const city1 = document.getElementById('city1');
+const city2 = document.getElementById('city2');
+
 //const weatherContainer = document.getElementById('weatherContainer')
 
-//Weather in Stockhom, today.
-/* const weatherInfo = () => {
-    fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=7899d890f36cbd5ef29eba2a205b5409')
-        .then(response => {
-            return response.json() //This always looks like this.
-
-        })
-        .then((json) => {
-            console.log(json.name);
-            console.log(json.main.temp);
-            console.log(json.weather[0].description);
-            console.log(json);
-
-            const cityValue = json.name;
-            console.log(cityValue);
-            cityName.innerHTML += ` <td id="cityName2">${json.name}</td>`;
-            weatherIcon.innerHTML += ` <img id="main-icon" src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png"  alt="${json.weather[0].description} icon" />`;
-            temp.innerHTML += ` <td id="temp">${json.main.temp}</td>`;
-            description.innerHTML += ` <td id="description">${json.weather[0].description}</td>`;
-        })
-};
-
-weatherInfo(); */
 
 const weatherInfo = () => {
     fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=7899d890f36cbd5ef29eba2a205b5409')
@@ -54,8 +37,10 @@ const weatherInfo = () => {
             cityDiv.innerHTML+= `<h1>${json.name}</h1>`;
             someText.innerHTML+= `<p>In ${json.name} today there <br> are a ${json.weather[0].description}</p>`;
             weatherIcon.innerHTML += ` <img id="main-icon" src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png"  alt="${json.weather[0].description} icon" />`;
-            temp.innerHTML += ` <td id="temp">${json.main.temp}</td>`;
-            description.innerHTML += ` <td id="description">${json.weather[0].description}</td>`;
+            const weatherDescription = json.weather[0].description;
+            const currentTemp = json.main.temp;
+
+            span1.innerHTML += `${weatherDescription} | ${currentTemp} °c`;
         })
 };
 
@@ -69,23 +54,22 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
 
 })
 .then((json) => {
+ //SINRISE
     let unixTimeSunrise = json.sys.sunrise;
     let sunriseValue = new Date(unixTimeSunrise * 1000);
-    const sunriseConvertedTime = sunriseValue.toLocaleTimeString();
-    sunriseTime.innerHTML += `<td id="sunriseTime">${sunriseConvertedTime}</td>`;
+    const sunriseConvertedTime = sunriseValue.toLocaleTimeString('eng-us', {hour: '2-digit', minute: '2-digit'}); //converts the time to AM/PM and removes the seconds.);
+    span2.innerHTML += `${sunriseConvertedTime}`;
      //This saves the sunrise data into a variable called sunriseValue and make it a Date.
     //console.log(sunriseValue.toLocaleTimeString());//This invokes the method toLocaleTimeString which converts the UCT time to local time and as astring.
     
     //This invokes the method toLocalTimeString which converts the unix UCT time to local time and as a string. 
     //It also puts the value inside the HTML table in a new table cell. 
- /*    sunriseTime.innerHTML += 
-    ` <td id="sunriseTime">${sunriseValue.toLocaleTimeString()}</td>`; 
- */
 
+//SUNSET
     let unixTimeSunset = json.sys.sunset; //This saves the sunset sata into a variable called sunsetTime
     let sunsetValue = new Date(unixTimeSunset * 1000);
-    const sunsetConvertedTime = sunsetValue.toLocaleTimeString();
-    sunsetTime.innerHTML += `<td id="sunsetTime">${sunsetConvertedTime}</td>`;
+    const sunsetConvertedTime = sunsetValue.toLocaleTimeString('eng-us', {hour: '2-digit', minute: '2-digit'}); //converts the time to AM/PM and removes the seconds.
+    span3.innerHTML += `${sunsetConvertedTime}`;
     })
 }
 
@@ -131,13 +115,20 @@ const weatherCurrentCopenhagen = () => {
         .then((json) => {
             console.log(json)
             console.log(`this is ${json.name}`)
-            copenhagenName.innerHTML += `
+
+            const city2Name = `${json.name}`;
+            const city2temp = `${json.main.temp.toFixed(0.5)}`;
+            city1.innerHTML += `${city2Name} ${city2temp}ºC`;
+        })
+/*             copenhagenName.innerHTML += `
             <td id="denmarkCityName">${json.name}</td>
             `
+            const city2Name = 
+
             copenhagenTemp.innerHTML += `
             <td id="denmarkTemp">${json.main.temp.toFixed(0.5)}ºC</td>
             `
-        })
+        }) */
 };
 
 weatherCurrentCopenhagen();
@@ -151,12 +142,9 @@ const weatherCurrentBuenosAires = () => {
         .then((json) => {
             console.log(json)
             console.log(`this is ${json.name}`)
-            buenosAiresName.innerHTML += `
-            <td id="argentinaCityName">${json.name}</td>
-            `
-            buenosAiresTemp.innerHTML += `
-            <td id="argentinaTemp">${json.main.temp.toFixed(0.5)}ºC</td>
-            `
+            const city1Name = `${json.name}`;
+            const city1temp = `${json.main.temp.toFixed(0.5)}`;
+            city1.innerHTML += `${city1Name} ${city1temp}ºC`;
         })
 
 };

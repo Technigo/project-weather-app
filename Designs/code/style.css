@@ -2,13 +2,23 @@
 #F6E9B8 - light yellow
 #1C4F08 - dark green
 
+
+#F47775
+#F4F7F8
+
+#164A68
+#A3DEF7
+
+Sunny
+#2A5510
+#F7E9B9
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: #F6E9B8;
-    color: #1C4F08;
+    background-color: #F7E9B9;
+    color: #2A5510;
 }
 
 
@@ -23,3 +33,29 @@ body {
 h2 {
     font-size: 20px;
 }
+
+.leftCorner{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+    text-align: left;
+}
+
+.otherCities{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin-top: 60px;
+}
+
+.city {
+display: flex;
+flex-direction: row;
+align-items: left;
+justify-content: left;
+gap: 100px;
+}
+
