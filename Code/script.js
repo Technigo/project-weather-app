@@ -7,8 +7,7 @@ const dailyForcast = document.getElementById('dailyForcastRow')
 const ApiWeather = 'http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=64d2a624607147029ae4574d21f5c6d9'
 // this is the API variable for the 5 days forecast
 const ApiForcast = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=4c7a468589eea9cb94d5053a081d05ba'
-const messageContainer = document.getElementById('message-container')
-
+const weatherContainer = document.getElementById('weather-container')
 
 /// An object catching the weekday and turning it into a string//
 
@@ -36,11 +35,23 @@ fetch(ApiWeather)
         let sunset = new Date(unixTimestampSunset * 1000)
         let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: "short"})
         mainWeather.innerHTML += `<p>Sunset: ${sunsetTime}</p>`;
-
-        container.innerHTML = `<h1>The weather in ${data.name}</h1>` //Changed container to be able to style - OK???
-        console.log(data)    
-
-
+        
+        if (data.weather[0].main === 'Clouds') {
+            container.innerHTML += 
+            `<h1>It looks rather cloudy in ${data.name} today</h2>`
+            container.classList.add("cloudy")
+        } else if (data.weather[0].main === 'Rain') {
+            container.innerHTML +=
+            `<h1>Get your umbrella, it looks rather wet in ${data.name} today.</h1>`
+            container.classList.add("rainy")
+        } else if (data.weather[0].main === 'Clear') {
+            container.innerHTML +=
+            `<h1>Get your sunnies on, it looks rather warm in ${data.name} today.</h1>`
+            container.classList.add("sunny")
+        } else
+            container.innerHTML +=
+            `<h1>You can chillout, it is neutral weather in ${data.name} today.</h1>`
+            container.classList.add("natural")
       })
         .catch((err) =>{ //ERROR function. We pass in a function as a parameter in the function, just like the then function.
         console.log(err)
@@ -70,7 +81,6 @@ fetch(ApiWeather)
         })
       })
 
-    
 
     //https://api.openweathermap.org/data/2.5/weather?lat={LAT}&lon={LON}&appid={API KEY}
 
