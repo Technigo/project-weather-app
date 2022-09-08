@@ -20,13 +20,51 @@ const close = () => {
   closeMenu.style.display = "none";
 };
 
+//This works! But how do we change the city!!!
+let city = "Stockholm";
+const apiNow = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=ba408ec4b2f7f251f2dd0044bd3e07f2`;
+const apiForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=ba408ec4b2f7f251f2dd0044bd3e07f2`;
 
-//This works! But how do we change the city!!! 
-let city = "Stockholm"
-const apiNow =
-`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=ba408ec4b2f7f251f2dd0044bd3e07f2`;
-const apiForecast =
-`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=ba408ec4b2f7f251f2dd0044bd3e07f2`;
+const getIconForWeather = (weather) => {
+  if (weather === "Clear") {
+    return "./assets/weather-icons/clear.svg";
+  } else if (weather === "Clouds") {
+    return "./assets/weather-icons/cloudy.svg";
+  } else if (weather === "Drizzle") {
+    return "./assets/weather-icons/drizzle.svg";
+  } else if (weather === "Rain") {
+    return "./assets/weather-icons/rain.svg";
+  } else if (weather === "Thunderstorm") {
+    return "./assets/weather-icons/thunderstorm.svg";
+  } else if (weather === "Snow") {
+    return "./assets/weather-icons/snow.svg";
+  } else if (weather === "Mist") {
+    return "./assets/weather-icons/mist.svg";
+  } else console.log("icon not found for", weather);
+
+  return "./assets/weather-icons/fallback-icon.svg";
+};
+
+const printForecastEntry = (dayForecast) => {
+  const forecastDate = new Date(dayForecast.dt * 1000);
+  const dayOfTheWeek = forecastDate.getDay();
+
+  const forecastWeatherType = dayForecast.weather[0].main;
+
+  console.log(forecastWeatherType);
+  const forecastIcon = getIconForWeather(forecastWeatherType);
+
+  console.log(forecastIcon);
+
+  weatherForecast.innerHTML += `
+  <div class="weather-forecast-entry">
+  <span>${daysOfTheWeek[dayOfTheWeek]}</span>
+  <span><img src="${forecastIcon}" class="weather-forecast-icon" alt="${forecastWeatherType}"/></span>
+  <span>${dayForecast.main.temp.toFixed(0)}°</span>
+  </div>
+  `;
+  //
+};
 
 fetch(apiNow)
   .then((response) => {
@@ -48,13 +86,10 @@ fetch(apiNow)
     let sunset = new Date(timestampSunset * 1000);
     let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: "short" });
     currentSunset.innerHTML = `${sunsetTime}`; // prints in HTML
-  
-    console.log(json);
   })
   .catch((error) =>
     console.error("There has been a problem with your fetch operation:", error)
   );
-
 
 fetch(apiForecast)
   .then((response) => {
@@ -63,28 +98,17 @@ fetch(apiForecast)
   .then((dayForecast) => {
     const filteredForecast = dayForecast.list.filter((item) =>
       // @TODO maybe change to a better time here? see this for visualisation https://jsoncrack.com/editor?fbclid=IwAR2ZSGA26fdIHECi0-ISKwEsHs8BuZlb8bCS_-3O1j_0drQRkNIdzvK7fE0
+      // Fetches weather at midday for five days ahead
       item.dt_txt.includes("12:00")
     );
-    filteredForecast.forEach((dayForecast) => {
-      const forecastDate = new Date(dayForecast.dt * 1000);
-      const dayOfTheWeek = forecastDate.getDay();
-      weatherForecast.innerHTML += `
-      <div class="weather-forecast-entry">
-      <span>${daysOfTheWeek[dayOfTheWeek]}</span>
-      <span>${dayForecast.main.temp.toFixed(0)}°</span>
-      </div>
-      `;
-    });
+    filteredForecast.forEach(printForecastEntry);
   });
 
-// 
-
+//
 
 burger.addEventListener("click", show);
 closeMenu.addEventListener("click", close);
 searchForm.addEventListener("submit", close);
-
-
 
 /*
 
