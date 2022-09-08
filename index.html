@@ -8,41 +8,14 @@
     <title>Weather App: Linnea & Kartika</title>
 </head>
 <body>
-    <!-- 
-        <section class="searched-city">
-			<label for="cityNamePicked" class="city-serch"
-				>What's the weather in your favourite city?</label
-			>
-			<input
-				type="input"
-				id="cityNamePicked"
-				name="ciyNamePicked"
-				placeholder=""
-				onkeydown="if (event.keyCode == 13) 
-            document.getElementById('btnSearch').click()"
-			/>
-
-			<input
-				class="search-btn"
-				type="button"
-				id="btnSearch"
-				value="Search"
-				onclick="citySelected();"
-			/>
-		</section>
-    -->
-
-    
     <section class="searched-city">
-			<label for="cityNamePicked" class="city-serch"
-				></label
-			>
+			<label for="cityNamePicked" class="city-search"></label>
 			<input
 				type="input"
 				id="cityNamePicked"
 				name="cityNamePicked"
 				placeholder="Choose city"
-				onkeydown="if (event.keyCode == 13) 
+				onkeydown="if (event.keyCode == 13) //onkey(13) = submit everytime user click enter key
             document.getElementById('btnSearch').click()"
 			/>
 
@@ -55,6 +28,7 @@
 			/>
 		</section>
     </section>
+
     <div class="mainForecast">
         <div id="city"><p></p></div>
         <div id="temperature"><p></p></div>
@@ -69,7 +43,6 @@
 
     <div class="forecast" id="forecast"></div>
 
-    
     <div class="footer">
         <footer >
             <h3>Weather App By Linnea & Kartika</h3>
