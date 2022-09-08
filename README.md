@@ -1,13 +1,12 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+For the 3rd week project, we created a weather app in pairs. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+One problem we haven't solve is that the sunset and sunrise time only works for cities with the same timezone as us. Hopefully in the future we can find a solution to that. 
+We had some problems with making the search city to work. There are some confusion here and there, but we managed to solve it. We Google a lot and we also try to see how other people do it. For this project especially, we are very proud that we actually make something from scratch. 
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+tika-linnea-weatherapp.netlify.app
