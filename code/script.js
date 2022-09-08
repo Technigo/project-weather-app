@@ -17,15 +17,16 @@ const currentSunset = document.getElementById("todaysWeatherSunset");
 
 // show is added to how burger menu appears
 const show = () => {
-  sideMenu.style.display = "flex";
-  sideMenu.style.top = "0";
+  sideMenu.style.display = "block";
+  // sideMenu.style.top = "0";
   closeMenu.style.display = "block";
 };
 const close = () => {
-  sideMenu.style.top = "-150%";
+  // sideMenu.style.top = "-150%";
+  sideMenu.style.display = "none";
   closeMenu.style.display = "none";
 };
-//This works! But how do we change the city!!!
+
 let city = "Stockholm";
 const apiNow = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=ba408ec4b2f7f251f2dd0044bd3e07f2`;
 const apiForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=ba408ec4b2f7f251f2dd0044bd3e07f2`;
@@ -72,23 +73,21 @@ const printForecastEntry = (dayForecast) => {
 };
 
 const getWeather = (city) => {
-  console.log('fetching weather data for ', city)
-  const apiNow =
-  `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=ba408ec4b2f7f251f2dd0044bd3e07f2`;
-  const apiForecast =
-  `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=ba408ec4b2f7f251f2dd0044bd3e07f2`;
+  console.log("fetching weather data for ", city);
+  const apiNow = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=ba408ec4b2f7f251f2dd0044bd3e07f2`;
+  const apiForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=ba408ec4b2f7f251f2dd0044bd3e07f2`;
 
-  console.log('using urls:', { apiNow, apiForecast})
+  console.log("using urls:", { apiNow, apiForecast });
 
   fetch(apiNow)
     .then((response) => response.json())
     .then((json) => {
-      console.log('got weather for now')
+      console.log("got weather for now");
 
       currentCity.innerHTML = json.name;
       liveTemperature.innerHTML = json.main.temp.toFixed(1);
       weatherDescription.innerHTML = json.weather[0].description;
-      
+
       // Sunrise and sunset //
       const timestampSunrise = json.sys.sunrise;
       const timestampSunset = json.sys.sunset;
@@ -100,40 +99,52 @@ const getWeather = (city) => {
       let sunset = new Date(timestampSunset * 1000);
       let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: "short" });
       currentSunset.innerHTML = `${sunsetTime}`; // prints in HTML
-
     })
     .catch((error) =>
-      console.error("There has been a problem with your fetch operation:", error)
+      console.error(
+        "There has been a problem with your fetch operation:",
+        error
+      )
     );
-
 
   fetch(apiForecast)
     .then((response) => {
       return response.json();
     })
     .then((dayForecast) => {
-      console.log('got weather for forecast')
+      console.log("got weather for forecast");
       const filteredForecast = dayForecast.list.filter((item) =>
         // @TODO maybe change to a better time here? see this for visualisation https://jsoncrack.com/editor?fbclid=IwAR2ZSGA26fdIHECi0-ISKwEsHs8BuZlb8bCS_-3O1j_0drQRkNIdzvK7fE0
         item.dt_txt.includes("12:00")
       );
-      filteredForecast.forEach(printForecastEntry)
+      filteredForecast.forEach(printForecastEntry);
     });
-} 
+};
 getWeather("Stockholm");
 
-
-
-// Event listeners 
-searchForm.addEventListener("submit", (e) => {  //when pressend enter it sends
-  console.log('form submitted')
+// Event listeners
+searchForm.addEventListener("submit", (e) => {
+  //when pressend enter it sends
+  console.log("form submitted");
   e.preventDefault();
-  weatherForecast.innerHTML= ``;
+  weatherForecast.innerHTML = ``;
   city = inputLocation.value;
-  console.log('change city to', city)
+  console.log("change city to", city);
   getWeather(city);
-  
 });
 burger.addEventListener("click", show);
 closeMenu.addEventListener("click", close);
 searchForm.addEventListener("submit", close);
+
+document.onkeydown = function (evt) {
+  evt = evt || window.event;
+  var isEscape = false;
+  if ("key" in evt) {
+    isEscape = evt.key === "Escape" || evt.key === "Esc";
+  } else {
+    isEscape = evt.keyCode === 27;
+  }
+  if (isEscape) {
+    close();
+  }
+};

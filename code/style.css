@@ -2,23 +2,27 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family:'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
   font-weight: 300;
-  background-color: #dfd2cb ;
-  color:#EEDCC6;
+  background-color: #dfd2cb;
+  color: #eedcc6;
 }
 
 /* - - - BLUE: MAIN - - - - - - - - */
 .weather-app {
   border: 1px solid rgb(59, 59, 255);
-  max-width: 330px; /*Mobile first, therefore auto, set specific width at desktop*/
-  min-height: 500px;
   display: flex;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 85%;
+  height: 500px;
   justify-content: space-between;
   flex-direction: column;
-  margin: 0 auto 0 auto;
-  background-color: #928279;   /*-apps color-*/
+  background-color: #928279; /*-apps color-*/
   padding: 10px;
+  position: relative;
 }
 
 /* - - - PINK: HEADER WRAPPER - - - - - - - - */
@@ -36,13 +40,14 @@ body {
 }
 
 /* - - - PURPLE: HAMBURGER MENU - - - - - - - - */
-/*--Targets the position of the menu--*/
+
 .hamburger-menu {
   border: 1px solid rgb(108, 0, 180);
   display: flex;
 }
 
 /* ---- HAMBURGER MENU TO LINE 106------ */
+
 .burger-btn {
   background: none;
   color: inherit;
@@ -54,23 +59,23 @@ body {
 }
 
 .burger {
-  padding: 20px;
+  padding: 10px;
 }
+
+/*--Targets the position of the menu--*/
+
 .sideMenu {
-  position: fixed;
-  background: linear-gradient(
-    180deg,
-    rgb(123, 119, 132) 0%,
-    rgba(227, 227, 255, 1) 100%
-  );
+  position: absolute;
+  background: linear-gradient(180deg, #928279 0%, #92827900 100%);
   top: 0;
   right: 0;
   left: 0;
-  height: 100vh;
-  width: 100%;
+  bottom: 0;
+  /* height: 100vh;
+  width: 100%; */
   display: flex;
   flex-direction: column;
-  padding: 85px;
+  padding: 50px;
   z-index: 10;
   transition: all 1s ease;
   display: none;
@@ -79,7 +84,6 @@ body {
 
 li {
   color: white;
-  font-size: 30px;
   list-style: none;
   padding: 10px;
 }
@@ -91,23 +95,23 @@ a:link {
 }
 
 .closeMenu {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  padding: 20px;
+  padding: 10px;
   transition: all 0.5s ease;
   cursor: pointer;
 }
 
 .input-location {
   position: absolute;
-  padding: 16px;
+  padding: 10px;
   border-radius: 0px;
   width: 240px;
   border: none;
   text-align-last: center;
-  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.431);
-  font-size: 18px;
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
 }
 
 /* -----------TOP INFO --------------*/
@@ -117,7 +121,6 @@ a:link {
 .cozy-text {
   border: 1px solid rgb(199, 143, 14);
   font-weight: 500;
-  
 }
 
 .cozy-text-icon {
@@ -142,4 +145,24 @@ a:link {
 .weather-forecast-icon {
   width: 20px;
   height: 20px;
+}
+
+/* - - - - - - - - - - - - - - - - - - - MEDIA QUERIES - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* - - - TABLET - - - - - - - - */
+
+@media (min-width: 668px) {
+  .weather-app {
+    margin-top: 150px;
+    max-width: 325px;
+  }
+}
+
+/* - - - DESKTOP - - - - - - - - */
+
+@media (min-width: 1025px) {
+  .weather-app {
+    margin-top: 100px;
+    max-width: 300px;
+  }
 }
