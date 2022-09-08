@@ -5,24 +5,33 @@ const API_FORECAST = "https://api.openweathermap.org/data/2.5/forecast?q=Stockho
 
 // DOM
 const weather = document.getElementById("weather");
-const city = document.getElementById("city");
+//const city = document.getElementById("city");
 const description = document.getElementById("description");
+const weatherSummary = document.getElementById("summary-1");
 const temperature = document.getElementById("temperature");
 const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
 const fiveDays = document.getElementById("fiveDays");
+const weatherGuidance = document.getElementById("weather-guidance")
+const pictureWeather = document.getElementById("weatherImage");
 
 // fetch data
 fetch (API)
 .then((response) => {
  return response.json()
+ 
 })
+
+
 // show data
 .then ((json) => {
- city.innerHTML = json.name
- //description.innerHTML = json.weather[0].description
- temperature.innerHTML = `<p>${description.innerHTML = json.weather[0].description} | ${json.main.temp.toFixed(0)}°C</p>` 
- console.log(json)
+  let city = json.name
+  let description = "rain"  
+  //let description = json.weather[0].description
+  let temperature = json.main.temp.toFixed(0)
+  weatherSummary.innerHTML = `<p>${description} | ${temperature}°C</p>` 
+  console.log(json)
+
 
 //Sunrise  --> from numbers to date
 const weatherSunrise = () => {
@@ -31,7 +40,7 @@ const weatherSunrise = () => {
       hour: '2-digit',
       minute: '2-digit',
     });
-    sunrise.innerHTML = timeSunrise;
+    sunrise.innerHTML = `<p>Sunrise ${timeSunrise}</p>`;
   };
   weatherSunrise();
 
@@ -42,17 +51,22 @@ const weatherSunrise = () => {
       hour: '2-digit',
       minute: '2-digit',
     });
-    sunset.innerHTML = timeSunset;
+    sunset.innerHTML = `<p>Sunset ${timeSunset} </p>`;
   };
   weatherSunset();
 
+// main: thunderstorm, drizzle, rain, snow, clear, clouds
+if  (description === `clear`) {
+weatherGuidance.innerHTML = `${city}`
+} else if (description === "thunderstorm" || description === "drizzle" || description === "rain") {
+  weatherGuidance.innerHTML = `hej${city}`
+} else if (description === `snow`) {
+  weatherGuidance.innerHTML = `hejdå ${city}`
+} else {
+  weatherGuidance.innerHTML = `hhallåhej ${city}`
+}
 })
 
-// main: thunderstorm, drizzle, rain, snow, clear, clouds
-if  (description === clear) {
-
-  
-}
 
 
 // Five day forecast section
