@@ -8,6 +8,8 @@ const city = document.getElementById("city");
 const weekDays = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 const weeklyWeather = document.getElementById("weeklyWeather");
 
+const body = document.getElementById("body");
+
 
 // CURRENT DATE
 fetch(currentWeatherURL)
@@ -22,22 +24,19 @@ fetch(currentWeatherURL)
     const weatherTemp = cityWeatherData.main.temp.toFixed(); // toFixed = to a whole number (no decimal)
     sunriseSunset.innerHTML += `
     <div class="description">
-    <p>${weatherDescription} | ${weatherTemp}</p>
+    <p>${weatherDescription} | ${weatherTemp}º</p>
     </div>
     `
-    const unixTimestampSunrise = cityWeatherData.sys.sunrise    //Declare variable for the time of sunrise/sunset
-    const sunriseCalc = new Date(unixTimestampSunrise * 1000)   //To get sunrise/sunset time in hours:minutes:seconds
-    const sunriseTime = sunriseCalc.toLocaleTimeString([], { timeStyle: 'short' }) //Declare new variable to show only hh:mm
-
+    //const unixTimestampSunrise = cityWeatherData.sys.sunrise    //Declare variable for the time of sunrise/sunset
+    //const sunriseCalc = new Date(unixTimestampSunrise * 1000)   //To get sunrise/sunset time in hours:minutes:seconds
+    //const sunriseTime = sunriseCalc.toLocaleTimeString([], { timeStyle: 'short' }) //Declare new variable to show only hh:mm
+    const sunriseTime = new Date(cityWeatherData.sys.sunrise * 1000).toLocaleString('se-SE', {hour:'numeric', minute: 'numeric'})
     sunriseSunset.innerHTML += `
     <div class="sunrise">
     <p>Sunrise: ${sunriseTime}</p>
     </div>
     `
-    const unixTimestampSunset = cityWeatherData.sys.sunset
-    const sunsetCalc = new Date(unixTimestampSunset * 1000)
-    const sunsetTime = sunsetCalc.toLocaleTimeString([], { timeStyle: 'short' })
-
+    const sunsetTime = new Date(cityWeatherData.sys.sunset * 1000).toLocaleString('se-SE', {hour:'numeric', minute: 'numeric'})
     sunriseSunset.innerHTML += `
     <div class="sunset">
     <p>Sunset: ${sunsetTime}</p>
@@ -45,11 +44,17 @@ fetch(currentWeatherURL)
     `
     //city.innerHTML = cityWeatherData.name;
     if (weatherDescription == "Rain") {
+      city.innerHTML += `<img src="">`;
       city.innerHTML = `Don't forget your umbrella. It's wet in ${cityWeatherData.name} today.`;
+      body.classList.add("rain");
     } else if (weatherDescription == "Cloudy") {
+      city.innerHTML += `<img src="">`;
       city.innerHTML = `Light a fire and get cosy. ${cityWeatherData.name} Is looking grey today.`;
+      body.classList.add("cloudy");
     } else {
+      city.innerHTML += `<img src="">`;
       city.innerHTML = `Get your sunnies on. ${cityWeatherData.name} is looking rather great today.`;
+      body.classList.add("clear");
     }
 
 });

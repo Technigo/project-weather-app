@@ -1,19 +1,31 @@
 body{
-    background-color: lightblue;
+   /* background-color: lightblue;*/
 }
 
 .description
 .sunrise {
-color: green;
 font-size: 30px;
 }
 
 .weatherText {
-color: pink;
 font-size: 50px;
 }
 
 .day-temp {
-color: yellow;
 font-size: 40px;
+}
+
+.clear {
+    background-color:#F7E9B9;
+    color: #2A5510
+}
+
+.rain {
+    background-color:#A3DEF7;
+    color: #164A68;
+}
+
+.rain {
+    background-color:#F4F7F8;
+    color: #F47775;
 }
