@@ -36,3 +36,16 @@ h1{
     border-bottom: 1px dashed;
 }
 
+@media (min-width: 481px) {
+    body{ 
+        margin: 60px;
+    }
+}
+
+@media (min-width: 768px) {
+    body{ 
+        margin: 170px;
+    }
+
+
+}

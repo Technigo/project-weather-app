@@ -39,19 +39,19 @@ container.innerHTML=`${currentDescription} | ${temperature}°<br>sunrise ${sunri
 
 if (currentDescription === "Clear") {
     icon.src = "./Designs/Design-2/icons/noun_Sunglasses_2055147.svg"
-    message.innerHTML = `<h1>Sunny in ${nameCity} today!</h1>`
+    message.innerHTML = `<h1>Get your sunnies on. ${nameCity} is looking rather great today.</h1>`
     document.body.style.backgroundColor = "#F7E9B9";
     document.body.style.color = "#2A5510";
 
 } else if (currentDescription === "Rain") {
     icon.src = "./Designs/Design-2/icons/noun_Umbrella_2030530.svg"
-    message.innerHTML = `<h1>Rainy in ${nameCity} today!</h1>`
+    message.innerHTML = `<h1>Don't forget your umbrella! It's wet in ${nameCity} today.</h1>`
     document.body.style.backgroundColor = "#A3DEF7";
     document.body.style.color = "#164A68";
 
 } else if (currentDescription === "Clouds") {
     icon.src = "./Designs/Design-2/icons/noun_Cloud_1188486.svg"
-    message.innerHTML = `<h1>Cloudy in ${nameCity} today!</h1>`
+    message.innerHTML = `<h1>Light a fire and get cosy. ${nameCity} is looking cloudy today.</h1>`
     document.body.style.backgroundColor = "#F4F7F8";
     document.body.style.color = "#F47775";
 }
