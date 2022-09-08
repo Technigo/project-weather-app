@@ -117,14 +117,15 @@ a:link {
 .cozy-text {
   border: 1px solid rgb(199, 143, 14);
   font-weight: 500;
+  
 }
 
-.cozy-text--icon {
-  font-size: 30px;
+.cozy-text-icon {
+  font-size: 52px;
 }
 
-.cozy-text--paragraph {
-  font-size: 30px;
+.cozy-text-paragraph {
+  font-size: 28px;
 }
 
 /* - - - GREEN: WEATHER FORECAST - - - - - - - - */
