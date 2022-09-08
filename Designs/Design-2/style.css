@@ -1,0 +1,35 @@
+/* Cloudy */
+.cloudy {
+  --bg-cloudy: #f4f7f8;
+  --text-cloudy: #f47775;
+}
+
+/* Rainy */
+.rainy {
+  --bg-rainy: #a3def7;
+  --text-cloudy: #164a68;
+}
+
+/* Sunny */
+.sunny {
+  --bg-sunny: #f7e9b9;
+  --text-sunny: #2a5510;
+}
+
+body {
+  font-family: 'Montserrat';
+}
+
+.forecast-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.forecast-day {
+  border-bottom: 2px dotted #164a68;
+}
+
+
+/* Design guidelines
+
+Weights: bold and regular
