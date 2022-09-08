@@ -26,18 +26,22 @@
                     <span class="todays-weather-sunset" id="todaysWeatherSunset">22:30</span>
                 </div>
             </section>
+
+        <!------HAMBURGER MENU WITH SEARCH BAR------>
             <nav class="hamburger-menu"> 
-         <input type="checkbox" id="menu-toggle"/>
-        <label id="trigger" for="menu-toggle"></label>
-        <label id="burger" for="menu-toggle"></label>
-        <ul id="menu">
-          <li><a href="#">current city</a></li>
-          <li><a href="#">Stockholm</a></li>
-          <li><a href="#">Berlin</a></li>
-          <li><a href="#">Paris</a></li>
-        </ul>
-        </nav>
+                <button class="burger-btn">
+                    <img class="burger" src="./assets/icons/close.png" width="50px">
+                </button>
+                <ul class="sideMenu" id="sideMenu">
+                    <form id="searchForm">
+                        <input class="input-location" id="inputLocation" placeholder="Pick a destination ">
+                    </form>
+                    <div class="closeMenu"><img src="./assets/icons/close.png"  width="50px" alt=""></div>        
+                </ul>
+            </nav>
         </header>
+
+    
         <section class="cozy-text">
             <div class="cozy-text-icon">
                 ☂️

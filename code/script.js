@@ -1,7 +1,3 @@
-const apiNow =
-  "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=ba408ec4b2f7f251f2dd0044bd3e07f2";
-const apiForecast =
-  "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=ba408ec4b2f7f251f2dd0044bd3e07f2";
 const currentCity = document.getElementById("city");
 const liveTemperature = document.getElementById("temperature");
 const weatherDescription = document.getElementById("description");
@@ -9,8 +5,28 @@ const dayForecast = document.getElementById("weatherForecast");
 const daysOfTheWeek = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 const currentSunrise = document.getElementById("todaysWeatherSunrise");
 const currentSunset = document.getElementById("todaysWeatherSunset");
+const closeMenu = document.querySelector(".closeMenu");
+const burger = document.querySelector(".burger");
+const sideMenu = document.querySelector(".sideMenu");
+
+// show is added to how burger menu appears
+const show = () => {
+  sideMenu.style.display = "flex";
+  sideMenu.style.top = "0";
+  closeMenu.style.display = "block";
+};
+const close = () => {
+  sideMenu.style.top = "-150%";
+  closeMenu.style.display = "none";
+};
 
 
+//This works! But how do we change the city!!! 
+let city = "Stockholm"
+const apiNow =
+`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=ba408ec4b2f7f251f2dd0044bd3e07f2`;
+const apiForecast =
+`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=ba408ec4b2f7f251f2dd0044bd3e07f2`;
 
 fetch(apiNow)
   .then((response) => {
@@ -32,7 +48,7 @@ fetch(apiNow)
     let sunset = new Date(timestampSunset * 1000);
     let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: "short" });
     currentSunset.innerHTML = `${sunsetTime}`; // prints in HTML
-
+  
     console.log(json);
   })
   .catch((error) =>
@@ -40,7 +56,6 @@ fetch(apiNow)
   );
 
 
-  // Five day forecast // 
 fetch(apiForecast)
   .then((response) => {
     return response.json();
@@ -62,10 +77,16 @@ fetch(apiForecast)
     });
   });
 
-// Två then funkar ej
+// 
+
+
+burger.addEventListener("click", show);
+closeMenu.addEventListener("click", close);
+searchForm.addEventListener("submit", close);
+
+
 
 /*
-
 
 /*
     .then((json) => {
