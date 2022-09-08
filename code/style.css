@@ -1,14 +1,15 @@
-/* Colors:
-#F47775
-#F4F7F8
-#164A68
-#A3DEF7
-#2A5510
-#F7E9B9 */
+/* Color:
+#F47775 - light red
+#F4F7F8 - grey/light blue
+#164A68 - dark blue
+#A3DEF7 - light blue
+#2A5510 - dark green
+#F7E9B9 - beige/yellow */
 
 body {
   background-color: #d0c9c0;
   color: #efead8;
+  font-family: "Montserrat", sans-serif;
 }
 sup {
   vertical-align: text-top;
