@@ -22,12 +22,6 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     })
 
 
-//Array displaying the days of the week
-/*const dayOfTheWeek = ['Today', 'Tomorrow', 'Day after tomorrow', 'Three days from now', 'Four days from now']
-for (let i = 0; i < dayOfTheWeek.length; i++) { // a for-loop function allowing me to loop through the items in the array. 
-    //console.log(dayOfTheWeek[i])
-    //här måste kanske flyttas in i dayOfTheWeek? så att man kan använda sig av materialet från API:n och ersätta tomorrow osv med datumet... eller nåt
-}*/
 
 //Fetching the API for the weekly forecast
 fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=98bd2fbedad0f13ae05ed8e49698fda1')
@@ -40,26 +34,23 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
         const filteredForecast = data.list.filter(item => item.dt_txt.includes('12:00')) //here we have made an array where only the weather at 12.00 will show. 
         console.log(filteredForecast)
 
-        // This loop prints the days of the weeks and the temperatures belonging to each day (not correct)
+        //This loop prints the days of the weeks and the temperatures belonging to each day 
        for (let i=0; i < filteredForecast.length; i++) {
-        console.log(i)
+        //console.log(i)
         
         const dailyTemp = filteredForecast[i].main.temp.toFixed(0)
         const currentWeather = filteredForecast[i].weather[0].main
         const feelsLike = filteredForecast[i].main.feels_like.toFixed(0)
-        const dayOfTheWeek = [`${filteredForecast[i].dt}`, `${filteredForecast[i].dt}`, `${filteredForecast[i].dt}`, `${filteredForecast[i].dt}`, `${filteredForecast[i].dt}`]
-        
-        
         let day
-        day = new Date(filteredForecast[i].dt * 1000)
-        console.log(day)
+          day = new Date(filteredForecast[i].dt * 1000).toLocaleDateString("en-US", {weekday: 'long'})
+          //console.log(day)
         
         weatherWeek.innerHTML += 
             `<div class = "weekday id="weekday">
                 <p class = "day"> ${day} </p>
                 <p class = "rain-or-sun" id="rainOrSun${i}"> ${currentWeather} </p>
                 <p class = "day-temp"> ${dailyTemp}°C </p>     
-                <p class = "feels-like"> Feels like: ${feelsLike}°C</p>
+                <p class = "feels-like"> Feels like ${feelsLike}°C</p>
             </div>`
 
              const rainOrSun = document.getElementById(`rainOrSun${i}`) // kolla upp ${i}
