@@ -44,7 +44,7 @@ fetch(currentWeatherURL)
       city.innerHTML = `Light a fire and get cosy. ${cityWeatherData.name} Is looking grey today.`;
       body.classList.add("cloudy");
     } else {
-      city.innerHTML += `<img src="">`;
+      city.innerHTML += `<img svg xmlns="http://www.w3.org/2000/svg">`;
       city.innerHTML = `Get your sunnies on. ${cityWeatherData.name} is looking rather great today.`;
       body.classList.add("clear");
     }
