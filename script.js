@@ -22,7 +22,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
         cityTemp.innerHTML = json.list[0].main.temp.toFixed(1);
         cityWeather.innerHTML = json.list[0].weather[0].description;
         const sunriseStart = new Date(json.city.sunrise);
-        const sunsetStart = new Date(json.city.sunset);
+        const sunsetStart = new Date(json.city.sunset); //här hämtas fel data
         //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString
         sunriseTime.innerHTML = sunriseStart.toLocaleTimeString([], {hour:'2-digit', minute: '2-digit'});
         sunsetTime.innerHTML = sunsetStart.toLocaleTimeString([], {hour:'2-digit', minute: '2-digit'});

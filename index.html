@@ -8,31 +8,37 @@
     <title>Document</title>
 </head>
 <body>
-    <section>
-        <div class="sunrise-sunset">
-            <p>Sunrise <span id="sunrise-time"></span></p>
-            <p>Sunset <span id="sunset-time"></span></p>
+    <main>
+        <section class="container">
+            <div class="text-container">
+                <div class="todays-container">
+                    <p class="todays" id='weather-placeholder'></p>
+                    <p class="todays"><span id='temp-placeholder'></span> °C</p>
+                    <p class="sunrise-sunset">Sunrise <span id="sunrise-time"></span></p>
+                    <p class="sunrise-sunset">Sunset <span id="sunset-time"></span></p>
+                    <p class="city-name"><span id='city-placeholder'>Random city</span></p>
+                </div>
+                <div>
+                <img class="weather-img" src="./images/clouds.png" alt="weather-image">
+                <p><span id='todays-icon'></span></p>
+                </div>
         </div>
-
-        <div class="city-name">
-            <p><span id='city-placeholder'>Random city</span></p>
-        </div>
-        <div class="city-temp">
-            <p>Temperature: <span id='temp-placeholder'></span> °C</p>
-        </div>
-        <div class="city-weather">
-            <p>Weather: <span id='weather-placeholder'></span></p>
-        </div>
-        <div class="todays-icon">
-            <p><span id='todays-icon'></span></p>
-        </div>
-        <p>Weekly forecast for the upcoming days:</p>
-        <div class="weekly-temperature"> 
-            <ul id='weekly-temperature-placeholder'></ul>
-        </div>   
-    </section>
-
-
+                <div class="weekly-temperature"> 
+                    <ul id='weekly-temperature-placeholder'></ul>
+                </div> 
+            </div>  
+        </section>
+        
+    </main>
+    <footer>
+        <p class="attribution">
+            Icons made by <a href="https://www.flaticon.com/authors/good-ware" title="Good Ware"><strong>Good Ware</strong></a>,  
+            <a href="https://www.flaticon.com/authors/payungkead" title="Payungkead"><strong>Payungkead</strong></a>, 
+            <a href="https://www.freepik.com" title="Freepik"><strong>Freepik</strong></a> and
+            <a href="https://www.flaticon.com/authors/kosonicon" title="kosonicon"><strong>kosonicon</strong></a>
+            from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+        </p>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>
