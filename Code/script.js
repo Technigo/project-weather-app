@@ -10,6 +10,7 @@ const ApiForcast = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm
 
 
 
+
 /// An object catching the weekday and turning it into a string//
 
 // const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -22,7 +23,7 @@ fetch(ApiWeather)
     .then((data) => {
 
         //weather descpription and temperature with one decimal
-        mainWeather.innerHTML += `<p>${data.weather[0].description} | ${data.main.temp.toFixed(1)} &#8451</p>` //&#8451 is the formal for celsius, changed conatiner to main
+        container.innerHTML += `<p>${data.weather[0].description} | ${data.main.temp.toFixed(1)} &#8451</p>` //&#8451 is the formal for celsius, changed conatiner to main
 
         //Sunrise
         const unixTimestampSunrise = data.sys.sunrise
@@ -30,14 +31,14 @@ fetch(ApiWeather)
         let sunrise = new Date(unixTimestampSunrise * 1000)
         //Declare new variable to show only hh:mm
         let sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: "short"})
-        mainWeather.innerHTML += `<p>Sunrise: ${sunriseTime}</p>`;
+        container.innerHTML += `<p>Sunrise: ${sunriseTime}</p>`;
         //Sunset
         const unixTimestampSunset = data.sys.sunset
         let sunset = new Date(unixTimestampSunset * 1000)
         let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: "short"})
-        mainWeather.innerHTML += `<p>Sunset: ${sunsetTime}</p>`;
+        container.innerHTML += `<p>Sunset: ${sunsetTime}</p>`;
 
-        container.innerHTML = `<h1>The weather in ${data.name}</h1>` //Changed container to be able to style - OK???
+        mainWeather.innerHTML = `<h1>The weather in ${data.name}</h1>` //Changed container to be able to style - OK???
         console.log(data)    
 
 
@@ -63,10 +64,11 @@ fetch(ApiWeather)
           
 
           dailyForcast.innerHTML +=`
-          <p class="forecast-day" id="forecastDay">
+          <p class="forecast-row" id="forecastDay">
           <span class="short-day">${new Intl.DateTimeFormat('en-GB', options1).format(day.dt * 1000).toLowerCase()}</span>
           <span class="long-day">${new Intl.DateTimeFormat('en-GB', options2).format(day.dt * 1000).toLowerCase()}</span>
-          <span>${Math.round(day.main.temp)}°</span></p>`
+          <span class="tempp">${Math.round(day.main.temp)}°</span>
+          </p>`
         })
       })
 

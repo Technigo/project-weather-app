@@ -1,6 +1,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap');
 
+* {
+    box-sizing: border-box;
+  }
 
 body {
     background-color: #FFE9AE;
@@ -17,19 +20,71 @@ body {
 .main-weather p {
     margin-top: 0.1em;
     margin-bottom: 0;
+    border:solid black ;
 }
 
 .main-weather {
     margin: 0%;
+    border:solid black ;
 }
 
 /* styling of second section: "today-summary"*/
-.today-summary {
+.main-weather{
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     margin: 50px 0px;
-    padding: 0 10%;
+    padding: 0 5%;
+    border:solid red ;
+}
+
+/* Styling of forcast*/
+
+.weekly-forcast-wrapper{
+    display: flex;
+    flex-direction: column;
+   /* justify-content: space-between;*/
+    margin: 150px 0px 0px 0px;
+    padding: 0px;
+   }
+
+
+.forecast-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 3px;
+    border-bottom: 2px dotted #333;
+    margin: 0px;
+    
+    
+    /*justify-content: space-between;*/
+    /*align-items: center;*/
+
+}
+
+.long-day {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin: 0px 0px;
+    padding: 0px;
+}
+
+.short-day {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin: 0px 0px;
+    padding: 0 px;
+}
+
+.tempp {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    padding: 0 px;
+    
 }
