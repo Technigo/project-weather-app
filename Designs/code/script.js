@@ -62,7 +62,7 @@ const sunInfo = () => {
 
 sunInfo();
 // Weather in Stockholm for the next five days.
-const fiveForescast = () => {
+const fiveForescastInStockholm = () => {
     fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=d8e3d440b59f81f07a8c91c14c07c06e')
         .then(response => {
             return response.json();
@@ -71,20 +71,16 @@ const fiveForescast = () => {
             console.log(dataForTheNextFiveDay);
             const filteredForecast = dataForTheNextFiveDay.list.filter(json => json.dt_txt.includes('12:00'))
             filteredForecast.forEach(json => {
-                let temp_min = (json.main.temp_min).toFixed(1);
-                console.log(temp_min)
-                let temp_max = (json.main.temp_max).toFixed(1);
-                console.log(temp_max)
+                let temp = (json.main.temp).toFixed(0.5);
+                console.log(temp)
                 let fivedays = (new Date(json.dt * 1000)).toLocaleDateString("en-US", { weekday: "long" })
                 console.log(fivedays)
                 /*let icon = `<img id="forecast-icon" src=https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png></img>`;
                 console.log(icon)*/
-
                 fiveDayForecast.innerHTML += `
                 <p> 
                 <span id="fiveday">${fivedays}</span>
-                 <span id="tempMin">${temp_min}</span>
-                 <span id="tempMax">${temp_max}</span>
+                 <span id="temp">${temp}ºC</span>
                 </p>
                 `;
 
@@ -92,6 +88,7 @@ const fiveForescast = () => {
         });
 
 };
+
 
 fiveForescast();
 
@@ -135,3 +132,4 @@ const weatherCurrentBuenosAires = () => {
 };
 
 weatherCurrentBuenosAires();
+
