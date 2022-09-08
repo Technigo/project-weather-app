@@ -1,3 +1,4 @@
+
 .clear {
     background-color:#F7E9B9;
     color: #2A5510
@@ -8,10 +9,11 @@
     color: #164A68;
 }
 
-.rain {
+.cloud {
     background-color:#F4F7F8;
     color: #F47775;
 }
+
 .weatherDescription {
 display: flex;
 flex-direction: column;
