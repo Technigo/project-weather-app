@@ -7,7 +7,7 @@ const city = document.getElementById("city");
 
 const weekDays = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 const weeklyWeather = document.getElementById("weeklyWeather");
-
+const test
 
 fetch(currentWeatherURL)
 .then(response => {
