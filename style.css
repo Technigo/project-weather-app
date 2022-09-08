@@ -11,11 +11,16 @@ body {
 background: #eeeeec;
 font-family: 'Montserrat';
 margin: 0;
+padding: 50px;
+border: solid 1px;
+height: fit-content;
 }
 
-main {
-box-sizing: border-box;
-}
+/* .main-section {
+padding: 30px;
+border: solid 1px;
+height: 100vh;
+} */
 
 .sunny {
 background-color: var(--sunny-background);
@@ -38,7 +43,11 @@ display: flex;
 flex-direction: column;
 align-content: flex-start;
 flex-wrap: wrap;
-margin-bottom: 60px;
+margin-bottom: 50px;
+}
+
+.weather-summary p {
+padding-bottom: 6px;
 }
 
 .summary-one {
@@ -83,12 +92,26 @@ align-content: flex-start;
 
 .weather-guidance {
  /* border: solid blue 2px; */
- margin-bottom: 40px;
+ margin-bottom: 20px;
 }
 
-.fiveDays {
- border: solid green 2px;
+.heading1 {
+font-size: 37px;
+line-height: 45px;
+font-weight: bold 700;
+margin: 15px 0;
 }
+
+.fiveDays :last-child {
+border-bottom: none;
+}
+
+.daily-forecast {
+display: flex;
+justify-content: space-between;
+border-bottom: dashed 1px;
+}
+
 
 
 @media only screen and (min-width: 599px) {
