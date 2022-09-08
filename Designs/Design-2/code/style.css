@@ -1,19 +1,19 @@
-/* Cloudy */
-.cloudy {
-  --bg-cloudy: #f4f7f8;
-  --text-cloudy: #f47775;
-}
-
 /* Rainy */
 .rainy {
   --bg-rainy: #a3def7;
-  --text-cloudy: #164a68;
+  --text-rainy: #164a68;
 }
 
 /* Sunny */
 .sunny {
   --bg-sunny: #f7e9b9;
   --text-sunny: #2a5510;
+}
+
+/* Cloudy */
+.cloudy {
+  --bg-cloudy: #f4f7f8;
+  --text-cloudy: #f47775;
 }
 
 body {
@@ -26,9 +26,8 @@ body {
 }
 
 .forecast-day {
-  border-bottom: 2px dotted #164a68;
+  border-bottom: 2px dotted;
 }
-
 
 /* Design guidelines
 

@@ -9,6 +9,8 @@ const forecastContainer = document.getElementById('forecast-container');
 const searchBar = document.getElementById('search-bar');
 const searchBtn = document.getElementById('search-btn');
 
+const body = document.querySelector('body');
+
 //API
 //To be able to look for new cities everything is placed inside a function
 //that gets invoked when the user clicks the search button
@@ -49,16 +51,22 @@ function fetchWeather(city) {
       sunriseTime.innerText = `Sunrise ${currentSunrise}`;
       sunsetTime.innerText = `Sunset ${currentSunset}`;
 
-      //CURRENT WEATHER – icon/message
+      //CURRENT WEATHER – colors/icon/message
       if (currentWeatherId >= 200 && currentWeatherId <= 531) {
+        body.style.background = '#a3def7';
+        body.style.color = '#164a68';
         weatherIcon.src = 'icons/noun_Umbrella_2030530.svg';
         weatherIcon.alt = 'Umbrella illustration';
         weatherMessage.innerText = `Don't forget your umbrella. It's wet in ${currentLocation} today.`;
       } else if (currentWeatherId == 800 || currentWeatherId == 801) {
+        body.style.background = '#f7e9b9';
+        body.style.color = '#2a5510';
         weatherIcon.src = 'icons/noun_Sunglasses_2055147.svg';
         weatherIcon.alt = 'Sunglasses illustration';
         weatherMessage.innerText = `Get your sunnies on. ${currentLocation} is looking rather great today.`;
       } else {
+        body.style.background = '#f4f7f8';
+        body.style.color = '#f47775';
         weatherIcon.src = 'icons/noun_Cloud_1188486.svg';
         weatherIcon.alt = 'Cloud illustration';
         weatherMessage.innerText = `Light a fire and get cosy. ${currentLocation} is looking grey today.`;
