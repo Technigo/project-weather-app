@@ -8,6 +8,8 @@ const city = document.getElementById("city");
 const weekDays = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 const weeklyWeather = document.getElementById("weeklyWeather");
 
+
+// CURRENT DATE
 fetch(currentWeatherURL)
 .then(response => {
     return response.json()
@@ -16,27 +18,33 @@ fetch(currentWeatherURL)
 .then(cityWeatherData => {
     console.log(cityWeatherData)
 
-    const weatherDescription = cityWeatherData.weather[0].description;
-    sunriseSunset.innerHTML += `<p>Description: ${weatherDescription}</p>`
+    const weatherDescription = cityWeatherData.weather[0].main; 
+    const weatherTemp = cityWeatherData.main.temp.toFixed(); // toFixed = to a whole number (no decimal)
+    sunriseSunset.innerHTML += `<p>${weatherDescription} | ${weatherTemp}</p>`
     
 
     const unixTimestampSunrise = cityWeatherData.sys.sunrise    //Declare variable for the time of sunrise/sunset
     const sunriseCalc = new Date(unixTimestampSunrise * 1000)   //To get sunrise/sunset time in hours:minutes:seconds
     const sunriseTime = sunriseCalc.toLocaleTimeString([], { timeStyle: 'short' }) //Declare new variable to show only hh:mm
-    sunriseSunset.innerHTML += `<p>Sunrise: ${sunriseTime}</p>`
+    sunriseSunset.innerHTML += `<p>Sunrise ${sunriseTime}</p>`
 
     const unixTimestampSunset = cityWeatherData.sys.sunset
     const sunsetCalc = new Date(unixTimestampSunset * 1000)
     const sunsetTime = sunsetCalc.toLocaleTimeString([], { timeStyle: 'short' })
-    sunriseSunset.innerHTML += `<p>Sunset: ${sunsetTime}</p>`
+    sunriseSunset.innerHTML += `<p>Sunset ${sunsetTime}</p>`
 
-    city.innerHTML = cityWeatherData.name;
+    //city.innerHTML = cityWeatherData.name;
+    if (weatherDescription == "Rain") {
+      city.innerHTML = `Don't forget your umbrella. It's wet in ${cityWeatherData.name} today.`;
+    } else if (weatherDescription == "Cloudy") {
+      city.innerHTML = `Light a fire and get cosy. ${cityWeatherData.name} Is looking grey today.`;
+    } else {
+      city.innerHTML = `Get your sunnies on. ${cityWeatherData.name} is looking rather great today.`;
+    }
 
-    const today = new Date();
-    city.innerHTML += today;
-    city.innerHTML += cityWeatherData.main.temp;
 });
 
+// FORECAST
 fetch(forecastWeatherURL)
 .then(response => {
     return response.json()
