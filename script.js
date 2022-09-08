@@ -1,8 +1,16 @@
+// declare the city picker element
+
+// create a variable "city" that can be declared later
+
+// listen to the change event on the cityPicker element
+// wrap the entire code inside the cityPicked event listener
+// set the city variable to the event.target.value
+
 const API_TODAY = `
-https://api.openweathermap.org/data/2.5/weather?q=Gothenburg,Sweden&units=metric&APPID=7dee0e5a05b2c9d92a37a397279281ca
+https://api.openweathermap.org/data/2.5/weather?q=${city},Sweden&units=metric&APPID=7dee0e5a05b2c9d92a37a397279281ca
 `;
 const API_FORECAST = `
-https://api.openweathermap.org/data/2.5/forecast?q=Gothenburg,Sweden&units=metric&APPID=dfa433e7ce60074523483f09849d33d2
+https://api.openweathermap.org/data/2.5/forecast?q=${city},Sweden&units=metric&APPID=dfa433e7ce60074523483f09849d33d2
 `;
 
 const sectionToday = document.getElementById('today');
