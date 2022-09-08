@@ -1,7 +1,9 @@
+// API Keys
 const API_KEY = "15c9c7801fe68566167373f16cf7590a"
 const API = "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=15c9c7801fe68566167373f16cf7590a";
 const API_FORECAST = "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=15c9c7801fe68566167373f16cf7590a"
 
+// DOM
 const weather = document.getElementById("weather");
 const city = document.getElementById("city");
 const description = document.getElementById("description");
@@ -10,16 +12,17 @@ const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
 const fiveDays = document.getElementById("fiveDays");
 
+// fetch data
 fetch (API)
 .then((response) => {
  return response.json()
 })
-
+// show data
 .then ((json) => {
  city.innerHTML = json.name
  description.innerHTML = json.weather[0].description
- temperature.innerHTML = json.main.temp.toFixed(1)
- //console.log(json) 
+ temperature.innerHTML = json.main.temp.toFixed(0)
+ console.log(json) 
 
 //Sunrise  --> from numbers to date
 const weatherSunrise = () => {
@@ -46,7 +49,6 @@ const weatherSunrise = () => {
 })
 
 // Five day forecast section
-
 fetch(API_FORECAST)
     .then((response) => {
     return response.json()
@@ -72,9 +74,9 @@ const weekdays = [
   ];
 
 filteredForecast.forEach((day) => {
-    const date = new Date(day.dt * 1000);
+    const date = new Date(day.dt_txt);
     let weekdayNumber= date.getDay();
-    let roundedTemperature = day.main.temp.toFixed(1)
+    let roundedTemperature = day.main.temp.toFixed(0)
     console.log(roundedTemperature);
 
     fiveDays.innerHTML += ` 

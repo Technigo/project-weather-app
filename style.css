@@ -1,7 +1,6 @@
 
 body {
 font-family: 'Montserrat';
-
 }
 
 h1 {
@@ -11,4 +10,20 @@ color: #164A68;
 color: #A3DEF7;
 color: #2A5510;
 color: #F7E9B9;
+}
+
+.weather-summary {
+border: solid red 2px;
+}
+
+ .weather-guidance {
+ border: solid blue 2px;
+}
+
+.fiveDays{
+ border: solid green 2px;
+}
+
+.summary-1 {
+background-color: yellow;
 }

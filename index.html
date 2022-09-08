@@ -12,13 +12,26 @@
 </style>
 </head>
 <body>
- <section id="weather">
-    <div class="todays-weather-description" id="description"></div>
+ <section class="weather-summary" id="weather-summary">
+    <div class="summary-1">
+        <div class="todays-weather-description" id="description"></div>
+        <p>|</p>
+        <div class="todays-weather-temperature" id="temperature"></div>
+    </div>
+    
+    <div class="summary-2">
+        <p>Sunrise</p>
+        <div class="todays-sunrise" id="sunrise"></div>
+        <p>Sunset</p>
+        <div class="todays-sunset" id="sunset"></div>
+    </div>
+ </section>
+
+<section class="weather-guidance" id="weather-guidance">
     <div class="todays-weather-location" id="city"></div>
-    <div class="todays-weather-temperature" id="temperature"></div>
-    <div class="todays-sunrise" id="sunrise"></div>
-    <div class="todays-sunset" id="sunset"></div>
-    <section class="fiveDays" id="fiveDays"></section>
+</section>
+
+<section class="fiveDays" id="fiveDays"></section>
   
 </body>
 <script src="./script.js"></script>
