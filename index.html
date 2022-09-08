@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather app</title>
-    <link rel="stylesheet" href="./style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
     <div id="main-container" class="main-container">
-        <section class="weather-today" id="today">Todays Weather</section>
-        <section id="forecast">Forecast</section>  
-        <script src="./script.js"></script>
+      <section class="city-picker" id="cityPicker">
+        <select>
+          <option value="gothenburg">Gothenburg</option>
+          <option value="stockholm">Stockholm</option>
+          <option value="malmo">Malmo</option>
+        </select>
+      </section>
+      <section class="weather-today" id="today">Todays Weather</section>
+      <section id="forecast">Forecast</section>
+      <script src="./script.js"></script>
     </div>
-</body>
+  </body>
 </html>
