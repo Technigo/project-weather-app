@@ -22,26 +22,18 @@ fetch(currentWeatherURL)
 
     const weatherDescription = cityWeatherData.weather[0].main;
     const weatherTemp = cityWeatherData.main.temp.toFixed(); // toFixed = to a whole number (no decimal)
-    sunriseSunset.innerHTML += `
-    <div class="description">
-    <p>${weatherDescription} | ${weatherTemp}º</p>
-    </div>
-    `
-    //const unixTimestampSunrise = cityWeatherData.sys.sunrise    //Declare variable for the time of sunrise/sunset
-    //const sunriseCalc = new Date(unixTimestampSunrise * 1000)   //To get sunrise/sunset time in hours:minutes:seconds
-    //const sunriseTime = sunriseCalc.toLocaleTimeString([], { timeStyle: 'short' }) //Declare new variable to show only hh:mm
+
     const sunriseTime = new Date(cityWeatherData.sys.sunrise * 1000).toLocaleString('se-SE', {hour:'numeric', minute: 'numeric'})
-    sunriseSunset.innerHTML += `
-    <div class="sunrise">
-    <p>Sunrise: ${sunriseTime}</p>
-    </div>
-    `
     const sunsetTime = new Date(cityWeatherData.sys.sunset * 1000).toLocaleString('se-SE', {hour:'numeric', minute: 'numeric'})
+
     sunriseSunset.innerHTML += `
-    <div class="sunset">
+    <div class="weatherDescription">
+    <p>${weatherDescription} | ${weatherTemp}º</p>
+    <p>Sunrise: ${sunriseTime}</p>
     <p>Sunset: ${sunsetTime}</p>
     </div>
     `
+
     //city.innerHTML = cityWeatherData.name;
     if (weatherDescription == "Rain") {
       city.innerHTML += `<img src="">`;
@@ -73,7 +65,8 @@ fetch(forecastWeatherURL)
       <div class="day-temp">
         <p>${forecastDate.toLocaleString('en-US', {weekday: 'long'})}</p>
         <p>${value.main.temp.toFixed()}º</p>
-      </div>
+        </div>
+
       `
     })
   })
