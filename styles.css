@@ -1,35 +1,41 @@
-html {
+
+* {
     margin: 0;
     padding: 0;
+}
+html {
     box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-
-body{
-   background-size: cover; 
-   background-attachment: fixed;
-   background-repeat: no-repeat;
-   opacity: 0.9;
+body {
+    background-size: cover; 
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
-
-
+h3 {
+    margin: 0;
+    font-size: 25px;
+}
 a {
     text-decoration: none;
     color: inherit;
     cursor: pointer;
 }
-
 p {
     margin: 2px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 20px;
     padding-right: 8px;
 }
-
 main {
     justify-content: center;
     align-items: center;
+    
 }
-
+.container {
+    background-color: rgba(190, 189, 189, 0.7);
+    height: auto;
+    padding-bottom: 100px;
+}
 .text-container {
     display: grid;
     grid-template-columns: 2rem 1fr 1fr 2rem;
@@ -38,146 +44,146 @@ main {
     height: 80vh;
     flex-direction: column;
 }
-
 .todays-container {
     grid-column-start: 2;
     grid-column-end: 3;
-    grid-row-start: 2;   
+    grid-row-start: 2;  
 }
-
 .todays {
     display: inline-block;
     font-size: 50px;
     margin: 1rem 0;
 }
-
 .sunrise-sunset {
     padding-top: 2px;
 }
-
 .city-name {
     margin: 8px 0;
     font-size: 40px;
     margin: 1rem 0;
 }
-
-.weather-img {
-    width: 30rem;
+.todays-icon-wrapper {
+    width: 20rem;
     align-self: center;
     grid-column-start: 3;
     grid-row-start: 2;
     grid-row-end: 4;
-    align-items: flex-end;
+    justify-self: flex-end;
+    text-align: center;
 }
-
-#weather-placeholder {
-    border: solid black;
-    border-width: 0 2px 0 0;
-}
-
+.todays-icon-wrapper img {
+    width: 15rem;
+    align-self: center;
+    margin:0;
+} 
+.todays-icon-wrapper h3 {
+    margin: 0;
+} 
 .weekly-temperature {
     grid-column-start: 2;
     grid-column-end: 3;
     margin-bottom: 3rem;
     grid-row-start: 4;
 }
-
+#weather-placeholder {
+    border: solid black;
+    border-width: 0 2px 0 0;
+}
 .weekly-temperature ul {
     list-style: none;
     padding-left: 0;
 }
-
 .weekly-temperature ul li {
     display: flex;
     justify-content: space-between;
     padding: 0.5rem;
     border-bottom: dashed 1px ;
     font-size: 25px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-
 .footer {
-    position: relative;    
+     
 }
-
 .footer a {
     font-weight:bold;
 }
-
 .attribution {
     margin: 40px 0 0 0;
     text-align: center;
     font-size: 16px;
 }
-
 @media (max-width:992px) {
     .container {
         width: 100%;
     }  
-
-    .weather-img {
-        width: 20rem;
+    .text-container {
+        display: grid;
+        grid-template-columns: 2rem 1fr 1fr 2rem;
+        grid-template-rows: 2rem 1fr 1fr 1fr 2rem;
+        padding: 1rem;
+        height: 80vh;
+        flex-direction: column;
     }
-
     .weekly-temperature {
+        grid-column-start: 2;
         grid-column-end: 4;
+        grid-row-start: -3;
         margin-bottom: 1rem;
     }
+    .todays-icon-wrapper {
+        width: 20rem;
+        display: block;
+        justify-content: center;
+    }
+    .todays-icon-wrapper img {
+        width: 60%;
+        margin: 1rem 0;
     
+    }
+    .todays-icon-wrapper p {
+        justify-self: center;
+        
+    }
 }
-
 @media (max-width:600px) {
- .container {
-     width: 100%;
- }  
-
- .text-container {
-    padding: 2rem 2rem;
-    justify-content: space-around;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.todays-container {
-    align-self: flex-start;
-}
-
-.todays {
-    display: inline-block;
-    font-size: 30px;
-    margin-bottom: 0 ;
-}
-
-.sunrise-sunset {
-    padding-top: 2px;
-}
-
-.city-name {
-
-    font-size: 20px;
-    margin: 1rem 0;
-}
-
-.weather-img {
-    width: 50%;
-    align-self: center;
-    grid-column-start: 3;
-    grid-row-start: 2;
-    grid-row-end: 4;
-    align-items: flex-end;
-}
-
-#weather-placeholder {
-    border: solid black;
-    border-width: 0 2px 0 0;
-}
-
-.weekly-temperature {
-    width: 100%;
-}
-
-
-
+    .container {
+        width: 100%;
+    }  
+    .text-container {
+        padding: 2rem 2rem;
+        justify-content: space-around;
+        height: 90vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .todays-container {
+        align-self: flex-start;
+    }
+    .todays {
+        display: inline-block;
+        font-size: 30px;
+        margin-bottom: 0 ;
+    }
+    .sunrise-sunset {
+        padding-top: 2px;
+    }
+    .city-name {
+        font-size: 20px;
+        margin: 1rem 0;
+    }
+    .todays-icon-wrapper {
+        width: 20rem;
+        display: flex;
+        justify-content: center;
+        justify-items: center;
+    }
+    .todays-icon-wrapper img {
+        width: 40%;
+    }
+    .todays-icon-wrapper p {
+        margin: auto 10px;
+    }
+    .weekly-temperature {
+        width: 100%;
+    }
 }
