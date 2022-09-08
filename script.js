@@ -31,21 +31,22 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
         /*only for development purposes
         console.log("sunrise time:" , sunrise) 
         console.log("sunset time", sunset)*/
-         
+        const dailyMessage = () => {
+            if(cloudsCoverage < 30) {
+            message.innerHTML += `
+            <h1> Get your sunnies on. Stockholm is looking rather great today! </h1>
+            `}
+            else {
+            message.innerHTML += `
+            <h2> Don't forger your umbrella! Stockholm is wet today! </h2>`
+        console.log("message", dailyMessage)}
+        
+        }
+         dailyMessage()
     })
 
 
-const dailyMessage = (message) => {
-    if(cloudsCoverage < 30) {
-    message.innerHTML = `
-    <h2> Get your sunnies on. Stockholm is looking rather great today! </h2>
-    `}
-    else {
-    message.innerHTML = `
-    <h2> Don't forger your umbrella! Stockholm is wet today! </h2>`
-console.log("message",message)}
 
-}
-dailyMessage()
+//dailyMessage()
 
  
