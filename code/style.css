@@ -36,11 +36,12 @@ p {
     flex-direction: column;
     justify-content: space-between;
     padding: 2%;
-    margin-bottom: 2%;
 }
 
-img {
-    animation: wiggle 2s linear infinite;
+.icons {
+  height: 30px;
+  margin-right: 5px;
+  animation: wiggle 2s linear infinite;
 }
 
 @keyframes wiggle {
@@ -66,11 +67,6 @@ img {
       transform: rotateZ(0);
     }
   }
-
-.icons {
-  height: 30px;
-  margin-right: 5px;
-}
 
 .main-wrapper {
     display: block;
@@ -99,51 +95,97 @@ img {
   align-items: center;
 }
 
-.input{
-  border-radius: 10px;
-  width: 20px;
-  margin: 0;
+.search-header {
+  display: flex;
+  flex-direction: row;
+  margin-top: 15px;
 }
 
-.button {
-  border-radius: 10px;
-  margin: 0;
+.nameform {
+  display: flex;
+  height: 50px;
+  width: 300px;
+  background: white;
 }
+
+input {
+  width: 100%;
+  height: 100%;
+  font-family: 'Montserrat';
+  font-size: 18px;
+  text-align: left;
+  color: #ccc;
+  padding-left: 10px;
+  cursor: pointer;
+  border: 0;
+}
+
+input:focus {
+  outline: 0;
+}
+
+.send-btn {
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  height: 50px;
+  width: 35%;
+  background: white;
+  border-radius: 0 3px 3px 0;
+}
+
+.send-btn:hover {
+  background: #fff;
+}
+
+.send-btn:focus {
+  outline: 0;
+}
+
+.searchIcon {
+  height: 60%;
+}
+
 
 /** Media Queries **/
 
 @media screen and (min-width: 600px) {
 
+  .search-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
 
-    .header {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-    }
+  .header {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
 
-    .main-wrapper {
-        display: flex;
-        flex-direction: column;
-        padding: 2%;
-        text-align: center;
-        align-items: center
-    }
+  .main-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    text-align: center;
+    align-items: center
+  }
 
-    .mainImg {
-        width: 9rem;
-      }
+  .mainImg {
+    width: 9rem;
+  }
 
-    h1 {
-        font-size: 45px;
-    }
-    
-    p {
-        font-size: 30px;
-    }
+  h1 {
+    font-size: 45px;
+  }
+ 
+  p {
+    font-size: 30px;
+  }
 
-    .schedule-weekdays {
-        padding: 0 15% 0 15%;
-    }
+  .schedule-weekdays {
+    padding: 0 15% 0 15%;
+  }
     
 }
 

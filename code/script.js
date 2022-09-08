@@ -114,7 +114,7 @@ chargeApi(apiUrlSthlm)
         const handleNameInput = (event) => {
           event.preventDefault()
           const name = cityName.value
-          apiUrlSthlm = `http://api.openweathermap.org/data/2.5/weather?q=${name}&units=metric&APPID=b7874ca1c4d00ac10b0c0385176b9111`
+          apiUrlSthlm = `https://api.openweathermap.org/data/2.5/weather?q=${name}&units=metric&APPID=b7874ca1c4d00ac10b0c0385176b9111`
           console.log(apiUrlSthlm)
           chargeApi(apiUrlSthlm)
           return apiUrlSthlm
