@@ -1,10 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@1&family=Mukta&display=swap');
 
+/**{
+    padding: 0;
+    box-sizing: border-box;
+    
+}*/
+
 body {
     background-size: cover;
     background-repeat: no-repeat;
-    max-width: 100%;
     font-family: 'Mukta', sans-serif;
+    margin: 0;
+    background-position: 30% 70%;
+    background-attachment: fixed;
 }
 
 .mainForecast {
@@ -12,58 +20,101 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    justify-content: space-around;
     margin: 30px;
-    padding: 20px;
+    /*padding: 20px;*/
 }
 
 .mainForecast #city {
     font-size: 30px;
+    font-style: italic;
 }
 
 .mainForecast #temperature {
     font-size: 100px;
+    font-weight: 600;
+    text-shadow: 6px 6px 20px #443829;
+}
+
+.mainForecast #tempFeels{
+    font-size: 25px;
 }
 
 .mainForecast #description {
-    font-size: 20px;
+    font-size: 25px;
+    margin-top: 0;
+
 }
 
 .riseSet {
     display: flex;
+    align-items: center;
     justify-content: space-around;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 50px;
 }
 
 .forecast {
-    display: grid;
-    grid-template-rows: 25% 25% 25% 25%;
+    display: flex;
+    flex-direction: column;
+    /*grid-template-columns: repeat(2, 1fr);*/
 
 }
 
 .forecast #dayOne, #dayTwo, #dayThree, #dayFour {
     display: flex;
-    flex-direction: column;
-    margin: 30px;
-    justify-content: center;
-    align-items: center;
-    /*background-color: rgba(240, 248, 255, 0.233);*/
-    border-radius: 10px;
+    flex-direction: row;
+    margin-top: 20px;
+    justify-content: space-around;
+    align-items: space-around;
+    background-color: rgba(43, 43, 43, 0.32);
+    color: antiquewhite;
+    /*background-color: rgba(240, 248, 255, 0.163);*/
 }
 
 .footer {
-    
+    text-align: center;
+    background-color: #f0f0f176;
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    font-size: 15px;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
 }
 
 
 
 /*** MEDIA QUERIES ***/
 
-/*desktop*/
+/*for tablet*/
+@media (min-width: 668px) and (max-width: 1024px){
+
+    .forecast {
+        font-size: 18px;
+    }
+}
+
+/*for desktop*/
 @media (min-width: 1025px) {
    
+    body {
+        min-height: 100;
+        background-position: center center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+
+    #city {
+        font-style: italic;
+    }
     .riseSet {
         display: flex;
         justify-content: space-around;
-        font-size: 20px;
+        font-size: 25px;
     }
 
     .forecast{
@@ -73,14 +124,30 @@ body {
     }
 
     .forecast #dayOne, #dayTwo, #dayThree, #dayFour {
-        display: flex;
+        display: grid;
         flex-direction: column;
-        margin: 30px;
+        margin: 40px 20px 40px 20px;
         justify-content: center;
         align-items: center;
-        /*background-color: rgba(240, 248, 255, 0.233);*/
+        text-align: center;
+        font-size: 25px;
+        background-color: rgba(43, 43, 43, 0.32);
+        color: antiquewhite;
+        /*background-color: rgba(240, 248, 255, 0.593);*/
         border-radius: 10px;
-        font-size: 20px;
+
     }
+
+    .footer {
+            text-align: center;
+            background-color: #f0f0f176;
+            color: white;
+            font-size: 15px;
+            bottom: 0;
+            position: absolute;
+            width: 100%;
+        }
+    
+
 
 }

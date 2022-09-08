@@ -4,6 +4,8 @@ const description = document.getElementById('description')
 const sunrise = document.getElementById('sunrise')
 const sunset = document.getElementById('sunset')
 const forecast = document.getElementById('forecast')
+const tempFeels = document.getElementById('tempFeels')
+
 
 
 //This is for the main weather forecast for today
@@ -19,6 +21,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         city.innerHTML= (`${json.name}`);
         temperature.innerHTML= (`${fixed}°C`);
         /*made the rounded decimal works*/
+        tempFeels.innerHTML = (`Feels like ${json.main.feels_like.toFixed(1)}°C`)
         description.innerHTML= (`${json.weather[0].description}`) /*made it work by targeting the weather index zero, and the description within that index zero GREAT JOB!!!*/
         const sunriseConvert = new Date((json.sys.sunrise) * 1000);
         const sunriseTime = sunriseConvert.toLocaleTimeString([], {
@@ -55,61 +58,42 @@ fetch ('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&unit
         <div class="days">${getDay(filteredForecast[1].dt)}</div>
         <div class="dayDescription">${filteredForecast[1].weather[0].description}</div>
         <div class="temp">Temp: ${filteredForecast[1].main.temp.toFixed(1)}°</div>
-        <div class="feelsLike">Feels like:${filteredForecast[1].main.feels_like.toFixed(1)}°</div>
         </div>
 
         <div id = "dayTwo">
         <div class="days">${getDay(filteredForecast[2].dt)}</div>
         <div class="dayDescription">${filteredForecast[2].weather[0].description}</div>
         <div class="temp">Temp: ${filteredForecast[2].main.temp.toFixed(1)}°</div>
-        <div class="feelsLike">Feels like:${filteredForecast[2].main.feels_like.toFixed(1)}°</div>
         </div>
 
         <div id = "dayThree">
         <div class="days">${getDay(filteredForecast[3].dt)}</div>
         <div class="dayDescription">${filteredForecast[3].weather[0].description}</div>
         <div class="temp">Temp: ${filteredForecast[3].main.temp.toFixed(1)}°</div>
-        <div class="feelsLike">Feels like:${filteredForecast[3].main.feels_like.toFixed(1)}°</div>
         </div>
 
         <div id = "dayFour">
         <div class="days">${getDay(filteredForecast[4].dt)}</div>
         <div class="dayDescription">${filteredForecast[4].weather[0].description}</div>
         <div class="temp">Temp: ${filteredForecast[4].main.temp.toFixed(1)}°</div>
-        <div class="feelsLike">Feels like:${filteredForecast[4].main.feels_like.toFixed(1)}°</div>
         </div>
         `
     })
 
     const currentTime = new Date().getHours();
     if(document.body){
-        if(7 <= currentTime && currentTime < 8){
-            document.body.background = "./images/try.jpg";
-            
+        if(6 <= currentTime && currentTime < 15){
+            document.body.background = "./Images/try.jpg";
+            document.getElementById("temperature").style.color = "white";
+            document.getElementById("temperature").style.textShadow = "0 0 30px #fcf9f9"
+            document.getElementById("forecast").style.textShadow = "0 0 30px #fcf9f9"
         }else {
-            document.body.background = 	"./images/try2.jpg";
-            document.body.style.color = "#FFFFFF";
-            document.getElementById("dayOne").style.backgroundColor = "#F0FFFF";
+            document.body.style.backgroundImage = "url('./Images/try2.jpg')";
+            document.getElementById("temperature").style.color = "white";
+            document.getElementById("temperature").style.textShadow = "0 0 30px #fcf9f9"
+            document.getElementById("forecast").style.textShadow = "0 0 30px #fcf9f9"
         }
     }
 
 
-    /*<html>
-<head>
-    <title></title>
-</head>
-<body>
-
-</body>
-<script type="text/javascript">
-var currentTime = new Date().getHours();
-if (document.body) {
-    if (7 <= currentTime && currentTime < 8) {
-        document.body.background = "http://itsnotch.com/tumblr/images/daytime_bg.jpg";
-    }
-    else {
-        document.body.background = "http://itsnotch.com/tumblr/images/nighttime_bg.jpg";
-    }
-}
-</script>
-</html> */
+    /**/
