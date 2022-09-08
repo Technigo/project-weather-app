@@ -37,19 +37,16 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
         </div>
         
         `
-        let myDate = json.list.dt_txt
-        const dayName = new Date (myDate * 1000)
-        const getDayName = (dayNumber) => {
-            const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-            return dayNames[dayNumber];
-        }
+      
         let filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
-        filteredForecast.forEach(forecasteWeek => {
+        filteredForecast.forEach(item => {
             forecastWrapper.innerHTML += `
             <div class="forecast-row">
-            <div class="for-day-temp"> ${getDayName(dayName.getDay())}</div>
-            <img class="weather-icon" id="weatherIcon" src="http://openweathermap.org/img/wn/${json.list[0].weather[0].icon}.png" alt="weather-icon">
-            <div class="for-day-temp"> ${forecasteWeek.main.temp_max.toFixed(0)} / ${forecasteWeek.main.temp_min.toFixed(0)}˚c</div>
+            <div class="for-day-temp"> ${new Date(item.dt * 1000).toLocaleDateString("en-US", {
+                weekday: "short",
+              })}</div>
+            <img class="weather-icon" id="weatherIcon" src="http://openweathermap.org/img/wn/${item.weather[0].icon}.png" alt="weather-icon">
+            <div class="for-day-temp"> ${item.main.temp.toFixed(0)} / ${item.main.temp_min.toFixed(0)}˚c</div>
             </div>
             `
         })
