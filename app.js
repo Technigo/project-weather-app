@@ -27,7 +27,7 @@ btnSearchCity.addEventListener('click', () => {
     })
     .then(function (data) {
       hour.innerHTML=time;
-      // hour.innerHTML = data.list[0].dt_txt;
+      hour.innerHTML = data.list[0].dt_txt;
 
       cityName.innerHTML= data.city.name;
       degree.innerHTML = (Math.round(data.list[0].main.temp_kf.toFixed(1) * 9 / 5) + 32);
