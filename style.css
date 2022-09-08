@@ -1,3 +1,67 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body{
   background-color: lightblue;
+  /* height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: sans-serif;
+  color:#fff;
+
 }
+.wrapper{
+    width: 80%;
+}
+
+#hero{
+  height: 30vh;
+  width: 80%;
+  margin-top: 2rem;
+ 
+
+  align-items: center;
+  /* background-color: red; */
+}
+#allInfo{
+  display: flex;
+  flex-direction:column;
+    justify-content: center;
+  padding-top:1rem; 
+}
+
+#searchBox{
+  width: 100%;
+}
+
+#btn-searchCity{
+    width: 5rem;
+}
+#search{
+    width: 15rem;
+}
+#search , #btn-searchCity{
+  font-size: 1rem;
+  padding: 10px 5px;
+  /* width: 18rem; */
+  text-align: center;
+  border: 0.1rem solid #56a5eb;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: #56a5eb;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  
+}
+#search:hover, 
+#btn-searchCity:hover{
+    /* border: 1px solid #CCC; */
+  box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.5);
+  transform: translateY(-0.1rem);
+  transition: transform 150ms;
+
+ }
