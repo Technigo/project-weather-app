@@ -9,7 +9,7 @@ const sunriseSunset = document.getElementById('sunriseSunset')
 const weatherWeek = document.getElementById('weatherWeek')
 const weekday = document.getElementById('weekday')
 
-fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=98bd2fbedad0f13ae05ed8e49698fda1')
+fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=98bd2fbedad0f13ae05ed8e49698fda1')
     .then((response) => {
         return response.json()
     })
@@ -20,3 +20,4 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     .catch((err) => {
         console.log('caught error', err)
     })
+    console.log
