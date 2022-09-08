@@ -1,0 +1,111 @@
+/* Design guidelines
+
+fonts:
+https://fonts.google.com/specimen/Montserrat
+
+Weights: bold and regular
+
+colors:
+
+#F47775 red text cloudy
+#F4F7F8 light grey background cloudy
+#164A68 blue text rainy
+#A3DEF7 blue background rainy
+#2A5510 green text sunny
+#F7E9B9 yellow background sunny
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+
+* {
+  padding:0;
+  border:0;
+  margin:0;
+  box-sizing:border-box
+}
+
+h1{
+  font-size:35px;
+  font-weight:bold;
+  padding-bottom: 30px;
+}
+
+.main-container {
+    display: flex;
+    border: 10px solid blue; /*to be deleted*/
+    flex-direction:column;
+    width:auto;
+    height: 100vh;
+    padding-bottom: 20px;
+}
+
+.weather-today {
+  display: flex;
+  flex-direction: column;
+  margin:20px;
+}
+
+/*Adjust image size*/
+.weather-icon{
+  width: 100px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/*.today-title {
+    STYLING NEEDED?
+
+}*/
+
+.forecast-day-container {
+  display:flex;
+  flex-direction:row;
+  justify-content:space-between;
+  padding-bottom:5px;
+  padding-top: 5px;
+  border-bottom: 1px dotted;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.clear{
+  background-color: #F7E9B9;
+  color: #2A5510
+}
+
+.clouds{
+  background-color: #F4F7F8;
+  color: #F47775
+}
+
+.rain {
+  background-color: #A3DEF7;
+  color: #164A68
+}
+
+/*For Tablet*/
+
+@media (min-width:768px) and (max-width:991px) {
+.main-container {
+    padding: 50px;
+}
+h1 {
+    text-align:left;
+}
+}
+
+/* For Desktop*/
+@media (min-width:992px) {
+.main-container{
+    padding:100px;
+    width: 50%;
+    margin: auto;
+}
+h1 {
+    text-align: left;
+}
+}
