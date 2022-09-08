@@ -47,15 +47,11 @@ h2 {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 50px;
-    margin-top: 60px;
+    gap: 80px;
+
 }
 
-.city {
-display: flex;
-flex-direction: row;
-align-items: left;
-justify-content: left;
-gap: 100px;
+.city{
+ 
 }
 

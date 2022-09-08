@@ -35,7 +35,7 @@ const weatherInfo = () => {
             const cityValue = json.name;
             console.log(cityValue);
             cityDiv.innerHTML+= `<h1>${json.name}</h1>`;
-            someText.innerHTML+= `<p>In ${json.name} today there <br> are a ${json.weather[0].description}</p>`;
+            someText.innerHTML+= `<p>In ${json.name} today there <br> are ${json.weather[0].description}</p>`;
             weatherIcon.innerHTML += ` <img id="main-icon" src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png"  alt="${json.weather[0].description} icon" />`;
             const weatherDescription = json.weather[0].description;
             const currentTemp = json.main.temp;
@@ -118,7 +118,7 @@ const weatherCurrentCopenhagen = () => {
 
             const city2Name = `${json.name}`;
             const city2temp = `${json.main.temp.toFixed(0.5)}`;
-            city1.innerHTML += `${city2Name} ${city2temp}ºC`;
+            city2.innerHTML += `${city2Name} ${city2temp}ºC`;
         })
 /*             copenhagenName.innerHTML += `
             <td id="denmarkCityName">${json.name}</td>
