@@ -12,8 +12,9 @@ const temperature = document.getElementById("temperature");
 const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
 const fiveDays = document.getElementById("fiveDays");
-const weatherGuidance = document.getElementById("weather-guidance")
+const weatherGuidance = document.getElementById("weather-guidance");
 const pictureWeather = document.getElementById("weatherImage");
+const weatherH1 = document.getElementById("heading1");
 
 // fetch data
 fetch (API)
@@ -26,8 +27,8 @@ fetch (API)
 // show data
 .then ((json) => {
   let city = json.name
-  let description = "rain"  
-  //let description = json.weather[0].description
+  // let description = "clouds"
+  let description = json.weather[0].description
   let temperature = json.main.temp.toFixed(0)
   weatherSummary.innerHTML = `<p>${description} | ${temperature}°C</p>` 
   console.log(json)
@@ -57,13 +58,11 @@ const weatherSunrise = () => {
 
 // main: thunderstorm, drizzle, rain, snow, clear, clouds
 if  (description === `clear`) {
-weatherGuidance.innerHTML = `${city}`
-} else if (description === "thunderstorm" || description === "drizzle" || description === "rain") {
-  weatherGuidance.innerHTML = `hej${city}`
-} else if (description === `snow`) {
-  weatherGuidance.innerHTML = `hejdå ${city}`
+weatherGuidance.innerHTML = `Get your sunnies on. ${city} is looking rather great today.`
+} else if (description === "thunderstorm" || description === "drizzle" || description === "rain" || description === "snow") {
+  weatherGuidance.innerHTML = `Don't forget your umbrella. It's wet in ${city} today.`
 } else {
-  weatherGuidance.innerHTML = `hhallåhej ${city}`
+  weatherGuidance.innerHTML = `Light a fire and get cosy. ${city} is looking grey today.`
 }
 })
 
@@ -84,14 +83,14 @@ const filteredForecast = fiveForecastjson.list.filter(item => item.dt_txt.includ
 // filteredForecast is now an array with only the data from 12:00 each day.
 
 const weekdays = [
-    "sunday",
-    "monday",
-    "tuesday",
-    "wednesday",
-    "thursday",
-    "friday",
-    "saturday",
-    "sunday",
+    "sun",
+    "mon",
+    "tue",
+    "wed",
+    "thu",
+    "fri",
+    "sat",
+    "sun",
   ];
 
 filteredForecast.forEach((day) => {
