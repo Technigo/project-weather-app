@@ -20,9 +20,6 @@ fetch(ApiWeather)
         return response.json()
     })
     .then((data) => {
-      
-        container.innerHTML = `<h1>The weather in ${data.name}</h1>` //Changed container to be able to style - OK???
-        console.log(data)    
 
         //weather descpription and temperature with one decimal
         mainWeather.innerHTML += `<p>${data.weather[0].description} | ${data.main.temp.toFixed(1)} &#8451</p>` //&#8451 is the formal for celsius, changed conatiner to main
@@ -39,6 +36,10 @@ fetch(ApiWeather)
         let sunset = new Date(unixTimestampSunset * 1000)
         let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: "short"})
         mainWeather.innerHTML += `<p>Sunset: ${sunsetTime}</p>`;
+
+        container.innerHTML = `<h1>The weather in ${data.name}</h1>` //Changed container to be able to style - OK???
+        console.log(data)    
+
 
       })
         .catch((err) =>{ //ERROR function. We pass in a function as a parameter in the function, just like the then function.
