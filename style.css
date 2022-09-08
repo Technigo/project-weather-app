@@ -39,6 +39,7 @@ h1{
     border: 10px solid blue; /*to be deleted*/
     flex-direction:column;
     width:auto;
+    height: 100vh;
     padding-bottom: 20px;
 }
 
@@ -66,7 +67,7 @@ h1{
   justify-content:space-between;
   padding-bottom:5px;
   padding-top: 5px;
-  border-bottom: dotted;
+  border-bottom: 1px dotted;
   margin-left: 20px;
   margin-right: 20px;
 }
