@@ -20,8 +20,8 @@ fetch (API)
 // show data
 .then ((json) => {
  city.innerHTML = json.name
- description.innerHTML = json.weather[0].description
- temperature.innerHTML = `<p>${json.main.temp.toFixed(0)}°C</p>`
+ //description.innerHTML = json.weather[0].description
+ temperature.innerHTML = `<p>${description.innerHTML = json.weather[0].description} | ${json.main.temp.toFixed(0)}°C</p>` 
  console.log(json)
 
 //Sunrise  --> from numbers to date
@@ -49,6 +49,10 @@ const weatherSunrise = () => {
 })
 
 // main: thunderstorm, drizzle, rain, snow, clear, clouds
+if  (description === clear) {
+
+  
+}
 
 
 // Five day forecast section
