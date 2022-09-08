@@ -1,4 +1,19 @@
 body {
-    /*background-color: aquamarine;*/
-    /*check sunrise-sunset-feature branch*/
+    background-color: bisque;
+    font-style: #164A68;
+    font-family: 'Montserrat', sans-serif;
 }
+    
+.date {
+    font-size: 18px;
+    font-weight: 100;
+    padding:0;
+}
+.sunrise, .sunset , .temperature {
+    font-size: 15px;
+    margin:0;
+
+}
+
+p {}
+    
