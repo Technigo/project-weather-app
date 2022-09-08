@@ -1,35 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="style.css" />
 
+    <title>Weather App</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- narbar  -->
+      <div class="navBar">
+        <div class="time"></div>
+      </div>
+      <!-- hero -->
+      <div class="hero">
+        <div class="city"></div>
+        <div class="degree"></div>
+      </div>
+      <!-- Container -->
+      <div id="container">
+        <div id="details-today"></div>
+        <div id="details-tomorrow"></div>
+        <div id="details-visible"></div>
+        <div id="details"></div>
+      </div>
 
-  <title>Weather App</title>
-</head>
-<body>
-  <div class="wrapper">
-    <!-- narbar  -->
-    <div class="navBar">
-      <div class="time"></div>
-    </div>
-    <!-- hero -->
-    <div class="hero">
-      <div class="city"></div>
-      <div class="degree"></div>
-    </div>
-    <!-- Container -->
-    <div id="container">
-      <div id="details-today"></div>
-      <div id="details-tomorrow"></div>
-      <div id="details-visible"></div>
-      <div id="details"></div>
-    </div>
+      <div id="forecast" ></div>
 
-  </div>
-  
-  <script src="app.js"></script>
-</body>
+    <script src="app.js"></script>
+  </body>
 </html>
