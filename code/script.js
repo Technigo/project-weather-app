@@ -41,7 +41,6 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
     console.log('caught error', err)
 });
 
-/* ${icon.src = "http://openweathermap.org/img/wn/${json.list[0].weather[0].icon}.png"  */
 
 //Sarah
 //const forecast = () => {
