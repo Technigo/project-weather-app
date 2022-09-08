@@ -7,6 +7,7 @@ https://api.openweathermap.org/data/2.5/forecast?q=Gothenburg,Sweden&units=metri
 
 const sectionToday = document.getElementById('today');
 const sectionForecast = document.getElementById('forecast');
+const mainContainer = document.getElementById('main-container');
 
 fetch(API_TODAY)
   .then(response => response.json())
@@ -28,12 +29,15 @@ fetch(API_TODAY)
     if (data.weather[0].main === 'Clear') {
       imageSrc = 'noun_Sunglasses_2055147.svg';
       weatherDescription = `Get your sunnies on. ${data.name} is looking rather great today.`;
+      mainContainer.classList.add('clear');
     } else if (data.weather[0].main === 'Rain') {
       imageSrc = 'noun_Umbrella_2030530.svg';
       weatherDescription = `Don't forget your umbrella. It's wet in ${data.name} today`;
+      mainContainer.classList.add('rain');
     } else {
       imageSrc = 'noun_Cloud_1188486.svg';
       weatherDescription = `Light a fire and get cosy. ${data.name} is looking grey today.`;
+      mainContainer.classList.add('clouds');
     }
 
     // Changes the today HTML section based on today's weather data
