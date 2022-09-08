@@ -78,11 +78,9 @@ const getIcon = (condition) => {
       return 'img/cloud3.png';
     case 'Rain':
       return 'img/rain.png';
+    case 'Clear':
+      return 'img/clear.png';
 
-    // case 'Papayas':
-    //   console.log('Mangoes and papayas are $2.79 a pound.');
-    //   // expected output: "Mangoes and papayas are $2.79 a pound."
-    //   break;
     default:
       console.log(`condition not found ${condition}.`);
   }
