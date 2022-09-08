@@ -7,7 +7,6 @@ const city = document.getElementById('city')
 const clearOrClody = document.getElementById('clearOrCloudy')
 const sunriseSunset = document.getElementById('sunriseSunset')
 const weatherWeek = document.getElementById('weatherWeek')
-const rainOrSun = document.getElementById('rainOrSun')
 const weekday = document.getElementById('weekday')
 
 fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=98bd2fbedad0f13ae05ed8e49698fda1')
@@ -24,9 +23,10 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
 
 
 //Array displaying the days of the week
-const dayOfTheWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+const dayOfTheWeek = ['Today', 'Tomorrow', 'Day after tomorrow', 'Three days from now', 'Four days from now']
 for (let i = 0; i < dayOfTheWeek.length; i++) { // a for-loop function allowing me to loop through the items in the array. 
     //console.log(dayOfTheWeek[i])
+    //här måste kanske flyttas in i dayOfTheWeek? så att man kan använda sig av materialet från API:n och ersätta tomorrow osv med datumet... eller nåt
 }
 
 //Fetching the API for the weekly forecast
@@ -48,34 +48,40 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
         const currentWeather = filteredForecast[i].weather[0].main
         const feelsLike = filteredForecast[i].main.feels_like.toFixed(0)
         
-        const showWeatherIcon = () => {
-            if (currentWeather === "Clear") {
-                weatherWeek.innerHTML += `<div☀️</div>`
-              } 
-              
-              else if (currentWeather === "Rain") {
-              weatherWeek.innerHTML += `<div>🌧</div>`
-              } 
-              
-              else {
-                weatherWeek.innerHTML += `<div>☁️</div>`
-              }
-        }
-        showWeatherIcon()
-         //varför kan jag inte lägga in detta
-        
         weatherWeek.innerHTML += 
             `<div class = "weekday id="weekday">
                 <p class = "day"> ${dayOfTheWeek[i]} </p>
-                <p class="rain-or-sun" id="rainOrSun"> ${currentWeather} </p>
+                <p class = "rain-or-sun" id="rainOrSun${i}"> ${currentWeather} </p>
                 <p class = "day-temp"> ${dailyTemp}°C </p>     
                 <p class = "feels-like"> Feels like: ${feelsLike}°C</p>
             </div>`
-             //Tanken är att Clouds/rain ska ersättas av emojin som i dagsläget ligger utanför div:en. 
-        } 
+             //Tanken är att Clouds/rain ska ersättas av ikonerna som i dagsläget visas utanför weekday-diven. Detta beror på att jag endast tycks kunna target:a weatherWeek-sektionen. 
+             const rainOrSun = document.getElementById(`rainOrSun${i}`)  
+
+
+             const showWeatherIcon = () => {
+              if (currentWeather === "Clear") {
+                  rainOrSun.innerHTML = `<img class="weather-icon" src="https://img.icons8.com/office/2x/sun.png">`
+                } 
+                
+                else if (currentWeather === "Rain") {
+                rainOrSun.innerHTML = `<img class="weather-icon" src="https://img.icons8.com/fluency/2x/rain.png">`
+                } 
+                
+                else {
+                  rainOrSun.innerHTML = `<img class="weather-icon" src="https://img.icons8.com/ultraviolet/2x/cloud.png">`
+                }
+
+          }
+         
+          showWeatherIcon()
+        
+            } 
+
     })
+
+    //never use the same id in several places! understand what daniel means
 
     .catch((err) => {
         console.log('caught error', err)
     })
-      

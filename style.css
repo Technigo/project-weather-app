@@ -7,30 +7,11 @@
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
     background-color:#fafafa;
-    margin: 5px 0px 5px 0px;
-    height: 100px;
-    border-radius: 80px;
+    margin: 8px 0px 8px 0px;
+    height: 70px;
+    border-radius: 120px;
     align-items: center;
     justify-items:  center;
-}
-
-.day {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-   
-}
-
-.rain-or-sun {
-    font-style: italic;
- 
-}
-
-.day-temp {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
-  
-}
-
-.feels-like {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
@@ -39,5 +20,34 @@
     cursor: crosshair;
 }
 
+.weather-icon {
+    height: 20px;
+}
+
+@media (min-width: 470px) {
+    .weather-icon {
+        height: 40px;
+    }
+
+    .weekday {
+        margin: 12px 0px 12px 0px;
+        height: 90px;
+        border-radius: 150px;
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 1000px) {
+    .weather-icon {
+        height: 80px;
+    }
+
+    .weekday {
+        margin: 12px 0px 12px 0px;
+        height: 110px;
+        border-radius: 150px;
+        font-size: 20px;
+    }
+}
 
 
