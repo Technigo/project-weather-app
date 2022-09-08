@@ -99,6 +99,17 @@ img {
   align-items: center;
 }
 
+.input{
+  border-radius: 10px;
+  width: 20px;
+  margin: 0;
+}
+
+.button {
+  border-radius: 10px;
+  margin: 0;
+}
+
 /** Media Queries **/
 
 @media screen and (min-width: 600px) {

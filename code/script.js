@@ -7,13 +7,16 @@ const skyState = document.getElementById('skyState')
 const skyInfo = document.getElementById('skyInfo')
 const sunrise = document.getElementById('sunrise')
 const sunset = document.getElementById('sunset')
+const cityName = document.getElementById('city-input')
+const sendBtn = document.getElementById('send-btn')
+const nameForm = document.getElementById('name-form')
 
-const apiUrlSthlm = "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=6912cf21e673e1261cfa693ed33d2aa7"
+let apiUrlSthlm = "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=6912cf21e673e1261cfa693ed33d2aa7"
 
 
 // Current weather 
-
-fetch(apiUrlSthlm)
+const chargeApi = (api) => {
+fetch(api)
     .then((response) => {
         return response.json()
     })
@@ -51,7 +54,7 @@ fetch(apiUrlSthlm)
          
             mainWrapper.innerHTML = `
               <img class="mainImg" src="./Designs/Design-2/icons/noun_Cloud_1188486.svg" alt="cloudy"/>
-              <h1>Light a fire and get cozy. Your city is looking grey today.</h1>
+              <h1>Light a fire and get cozy. ${json.name} is looking grey today.</h1>
             `
           } else if (weatherType === "Clear") {
             document.body.style.backgroundColor = "#F7E9B9";
@@ -59,7 +62,7 @@ fetch(apiUrlSthlm)
            
             mainWrapper.innerHTML = `
               <img class="mainImg" src="./Designs/Design-2/icons/noun_Sunglasses_2055147.svg" alt="sunglasses"/>
-              <h1>Get your sunnies on. Your city is looking rather great today.</h1>
+              <h1>Get your sunnies on. ${json.name} is looking rather great today.</h1>
             `
                     
           } else if (weatherType === "Rain" || "Drizzle" || "Thunderstorm") {
@@ -68,13 +71,13 @@ fetch(apiUrlSthlm)
          
             mainWrapper.innerHTML = `
               <img class="mainImg" src="./Designs/Design-2/icons/noun_Umbrella_2030530.svg" alt="umbrella"/>
-              <h1>Don't forget your umbrella. It's wet in your city today.</h1>
+              <h1>Don't forget your umbrella. It's wet in ${json.name} today.</h1>
             `
           }
          
     })
-
-
+  }
+chargeApi(apiUrlSthlm)
  // 5-day weather forecast
 
  fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Swedenn&units=metric&APPID=6912cf21e673e1261cfa693ed33d2aa7')
@@ -108,7 +111,15 @@ fetch(apiUrlSthlm)
 
         })
 
-
+        const handleNameInput = (event) => {
+          event.preventDefault()
+          const name = cityName.value
+          apiUrlSthlm = `http://api.openweathermap.org/data/2.5/weather?q=${name}&units=metric&APPID=b7874ca1c4d00ac10b0c0385176b9111`
+          console.log(apiUrlSthlm)
+          chargeApi(apiUrlSthlm)
+          return apiUrlSthlm
+      }
+      nameForm.addEventListener('submit',handleNameInput)
   
 
        
