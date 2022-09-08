@@ -100,10 +100,10 @@ let apiUrl = ""
   });
 };
 
+selectedCity("Stockholm");
 
 selectCity.addEventListener("change", (event) =>
   selectedCity(event.target.value)
 ); //Listen to what city is chosen
 
 // When the page loads
-//fetchStockholmWeather(StockholmWeather); //when the page loads we want to show sthlm  weather first as default
