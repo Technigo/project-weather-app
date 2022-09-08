@@ -1,19 +1,23 @@
-body{
-    background-color: lightblue;
-}
 
-.description
-.sunrise {
-color: green;
-font-size: 30px;
-}
-
-.weatherText {
-color: pink;
-font-size: 50px;
+.weatherDescription {
+display: flex;
+flex-direction: column;
+font-size: 20px;
+text-transform: lowercase;
+justify-content: left;
 }
 
 .day-temp {
-color: yellow;
-font-size: 40px;
+    display: flex;
+    width: 320px;
+    height: 30px;
+    margin: 30px;
+    flex-direction: row;
+    font-size: 30px;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dashed;
+    text-transform: lowercase;
 }
+
+
