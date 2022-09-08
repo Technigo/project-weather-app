@@ -1,11 +1,11 @@
 // DOM selectors stored as short variables
-const city = document.getElementById("city");
-const currentWeather = document.getElementById("currentWeather");
-const currentTemp = document.getElementById("currentTemp");
+//const currentWeather = document.getElementById("currentWeather");
+//const sunriseTime = document.getElementById("sunrise-time");
+//const sunsetTime = document.getElementById("sunset-time");
 const todaysPrompt = document.getElementById("todays-prompt");
-const sunriseTime = document.getElementById("sunrise-time");
-const sunsetTime = document.getElementById("sunset-time");
+const header = document.getElementById("header");
 const forecast = document.getElementById("forecast");
+/* const icon = document.getElementById("icon"); */
 
 // Global variables
 let URL_WEATHER =
@@ -13,40 +13,17 @@ let URL_WEATHER =
 let URL_FORECAST =
   "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=8802f8b4b2d622931613aace44be57ae";
 
-// Sunrise/sunset
-fetch(URL_FORECAST)
-  .then((res) => {
-    return res.json();
-  })
-  .then((data) => {
-    // new variable to filter the table and choose the same time everyday.
-    console.log(data);
-    city.innerHTML += `${data.city.name}`;
-    currentWeather.innerHTML += `${
-      data.list[0].weather[0].description
-    } | ${data.list[0].main.temp.toFixed(0)}<sup>°C</sup> `;
-
-    // currentWeather.innerHTML += `Current weather: ${data.list[0].weather[0].description}`;
-    // currentTemp.innerHTML += `Temperature: ${data.list[0].main.temp.toFixed(1)}<sup>°C</sup>`;
-
-    // toFixed(1) rounds temperature to one decimal
-    // Stackoverflow re: <sup> solution: https://stackoverflow.com/c/technigo/questions/750
-
-    /*   if === sunny 
-  const animator=()=>{
-    fetch(`HTMLt.jahdkjah`)
-  }
- */
-  });
+// Sunrise & Sunset
 
 fetch(URL_WEATHER)
   .then((res) => {
     return res.json();
   })
   .then((data) => {
-    //Declare variables for the time of sunset and sunrise. new Date () changes the UNIX time to day/date/year/hh:mm:ss/time zone.
-    //Convert timestamp to milliseconds with *1000. JavaScript stores Dates in milliseconds.
-    //toLocaleTimeString show only the hours and minutes: https://stackoverflow.com/c/technigo/questions/1581
+    console.log(data);
+    const todaysWeather = data.weather[0].description;
+    const todaysMainWeather = data.weather[0].main;
+    const todaysTemperature = data.main.temp.toFixed(0); // toFixed(1) rounds temperature to one decimal
     const sunrise = new Date(data.sys.sunrise * 1000).toLocaleTimeString([], {
       hour: "2-digit",
       minute: "2-digit",
@@ -56,14 +33,34 @@ fetch(URL_WEATHER)
       minute: "2-digit",
     });
 
-    //currentTemp.innerHTML = `Sunrise: | Sunset:`;
-    sunriseTime.innerHTML = `sunrise ${sunrise}`;
-    sunsetTime.innerHTML = `sunset ${sunset}`;
+    header.innerHTML += `${todaysWeather} | ${todaysTemperature}°<br>sunrise ${sunrise}<br> sunset ${sunset}`;
+    todaysPrompt.innerHTML = `${data.name}`;
 
+    //Declare variables for the time of sunset and sunrise. new Date () changes the UNIX time to day/date/year/hh:mm:ss/time zone.
+    //Convert timestamp to milliseconds with *1000. JavaScript stores Dates in milliseconds.
+    //toLocaleTimeString show only the hours and minutes: https://stackoverflow.com/c/technigo/questions/1581
     // https://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript
+    console.log(todaysWeather);
+    // Today's prompt
+    if (todaysMainWeather === "Clear") {
+      //icon.src = "./Designs/Design-2/icons/noun_Sunglasses_2055147.svg";
+      todaysPrompt.innerHTML = `<h1>Sunny in ${data.name} today!</h1>`;
+      document.body.style.backgroundColor = "#F7E9B9";
+      document.body.style.color = "#2A5510";
+    } else if (todaysMainWeather === "Rain") {
+      // icon.src = "./Designs/Design-2/icons/noun_Umbrella_2030530.svg";
+      todaysPrompt.innerHTML = `<h1>Rainy in ${data.name} today!</h1>`;
+      document.body.style.backgroundColor = "#A3DEF7";
+      document.body.style.color = "#164A68";
+    } else if (todaysMainWeather === "Clouds") {
+      //icon.src = "./Designs/Design-2/icons/noun_Cloud_1188486.svg";
+      todaysPrompt.innerHTML = `<h1>Cloudy in ${data.name} today!</h1>`;
+      document.body.style.backgroundColor = "#F4F7F8";
+      document.body.style.color = "#F47775";
+    }
   });
-
 //Forecast
+
 const weekday = (data) => {
   const currentDate = new Date(data * 1000); // sets to millisec.
   return currentDate.toLocaleDateString("en-GB", {
@@ -81,16 +78,26 @@ fetch(URL_FORECAST)
     );
     console.log(filteredForecast);
     forecast.innerHTML += `
-      <div class="day">${weekday(filteredForecast[0].dt)}</div>
-      <div class="temp"> ${filteredForecast[0].main.temp.toFixed(0)}</div>
-      <div class="day">${weekday(filteredForecast[1].dt)}</div>
-      <div class="temp"> ${filteredForecast[1].main.temp.toFixed(0)}</div>
-      <div class="day">${weekday(filteredForecast[2].dt)}</div>
-      <div class="temp"> ${filteredForecast[2].main.temp.toFixed(0)}</div>
-      <div class="day">${weekday(filteredForecast[3].dt)}</div>
-      <div class="temp"> ${filteredForecast[3].main.temp.toFixed(0)}</div>
-      <div class="day">${weekday(filteredForecast[4].dt)}</div>
-      <div class="temp"> ${filteredForecast[4].main.temp.toFixed(0)}</div>
+      <div class="d1">  
+        <div class="day">${weekday(filteredForecast[0].dt)}</div>
+        <div class="temp"> ${filteredForecast[0].main.temp.toFixed(0)}°</div>
+      </div>
+      <div class="d2">  
+        <div class="day">${weekday(filteredForecast[1].dt)}</div>
+        <div class="temp"> ${filteredForecast[1].main.temp.toFixed(0)}°</div>
+      </div>
+      <div class="d3">  
+        <div class="day">${weekday(filteredForecast[2].dt)}</div>
+        <div class="temp"> ${filteredForecast[2].main.temp.toFixed(0)}°</div>
+      </div>
+      <div class="d4">  
+        <div class="day">${weekday(filteredForecast[3].dt)}</div>
+        <div class="temp"> ${filteredForecast[3].main.temp.toFixed(0)}°</div>
+      </div>
+      <div class="d5">   
+        <div class="day">${weekday(filteredForecast[4].dt)}</div>
+        <div class="temp"> ${filteredForecast[4].main.temp.toFixed(0)}°</div>
+      </div>
       `;
   });
 // All the event listeners

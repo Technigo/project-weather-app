@@ -7,11 +7,5 @@
 #F7E9B9 - beige/yellow */
 
 body {
-  background-color: #d0c9c0;
-  color: #efead8;
   font-family: "Montserrat", sans-serif;
-}
-sup {
-  vertical-align: text-top;
-  font-size: x-small;
 }
