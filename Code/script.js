@@ -39,20 +39,20 @@ fetch(ApiWeather)
         if (data.weather[0].main === 'Clouds') {
             document.body.style.backgroundColor = "#CFD2CF"
             document.body.style.color = "#A2B5BB"
-            container.innerHTML += `<img src="./Designs/Design-2/icons/noun_Cloud_1188486.svg" alt="cloud icon">
-            <h1>It looks rather cloudy in ${data.name} today</h2>`
+            container.innerHTML += `<img src="./Designs/Design-2/icons/cloudy-icon" alt="cloud icon">
+            <h1>It looks rather cloudy in ${data.name} today &#x1F325;</h2>`
             container.classList.add("cloudy")
         } else if (data.weather[0].main === 'Rain') {
             document.body.style.backgroundColor = "#DAEAF1"
             document.body.style.color = "#C6DCE4"
-            container.innerHTML +=
-            `<h1>Get your umbrella, it looks rather wet in ${data.name} today.</h1>`
+            container.innerHTML += `<img src="./Designs/Design-2/icons/rain-icon" alt="rain icon">
+            <h1>Get your umbrella, it looks rather wet in ${data.name} today &#9748;</h1>`
             container.classList.add("rainy")
         } else if (data.weather[0].main === 'Clear') {
             document.body.style.backgroundColor = "#FFB3B3"
             document.body.style.color = "#B270A2"
-            container.innerHTML +=
-            `<h1>Get your sunnies on, it looks rather warm in ${data.name} today.</h1>`
+            container.innerHTML += `<img src="./Designs/Design-2/icons/sun-icon" alt="sun icon">
+            <h1>Get your sunnies on, ${data.name} is looking rather great today. &#128526</h1>`
             container.classList.add("sunny")
         } else
             container.innerHTML +=
