@@ -1,5 +1,8 @@
 const apiKey = '8ba8157c8f9c786166631ade41fce81c';
 const container = document.getElementById('container');
+
+const forecast = document.getElementById('forecast');
+
 const btnSearchCity = document.getElementById('btn-searchCity');
 const allInfo= document.querySelector('allInfo');
 const cityName= document.getElementById('city')
@@ -13,7 +16,6 @@ const today = new Date()
 const date = (today.getMonth() + 1) + '-' + today.getDate();
 const time = today.getHours() + ":" + today.getMinutes();
 const CurrentDateTime = date + ' ' + time;
-
 
 
 btnSearchCity.addEventListener('click', () => {
@@ -43,34 +45,77 @@ btnSearchCity.addEventListener('click', () => {
       
       console.log(data)
 
-      // const degree = Math.round(data.list[0].main.temp_kf.toFixed(1));
-      // const result= (degree-32) * (5/9) ;
-      // const result = (degree-32)/1.8;
-      // const result = degree * 9 / 5 + 32;
-      // console.log(result)
-
-      // Temp as a string with 1 decimal pointed;
-      //  const temp = data.main.temp.toFixed(1);
-      // console.log(Math.round(data.main.temp * 10) / 10);
+   
     })
 
     const animator=()=>{
       fetch('https://maxst.icons8.com/vue-static/landings/animated-ic')
     }
-
-
 })
 
-
-// container.innerHTML = 
-//     <h2>${time}</h2>
-//       <h1>${data.city.name}</h1>
-//        <h1>${Math.round(data.list[0].main.temp_kf.toFixed(1) * 9 / 5 + 32)} ${'&#8451;'}</h1>
-//       <h3>${data.list[0].weather[0].main}</h3>
-//       <p> Sunrise: ${data.city.sunrise}</p>
-//       <p> Sunset: ${data.city.sunset}</p>
-     
-      
-// http://openweathermap.org/img/wn/10d@2x.png
+//*******  5 days weather forecast *********
+fetch(
+  'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=7d5ebdb08a9c797cf1689d3a1ad108be'
+)
+  .then((response) => {
+    return response.json();
+  })
+  .then((json) => {
+    console.log(json);
 
 
+    const filteredForecast = json.list.filter((item) => item.dt);
+    console.log('filtered forecast', filteredForecast);
+
+    const filteredTemp = json.list.filter((item) =>
+      item.dt_txt.includes('12:00')
+    );
+    console.log('filtered temp', filteredTemp);
+
+    const weekdayName = [
+      'Sunday',
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+    ];
+
+    filteredTemp.forEach((item) => {
+      const date = new Date(item.dt * 1000);
+      let dayName = weekdayName[date.getDay()];
+      let icon = getIcon(item.weather[0].main);
+
+      console.log(icon);
+
+      forecast.innerHTML += `
+        <div class="weekdays"> 
+          <div class="weekday-name">
+            <p>${dayName}<p>
+            <div class="temp-weather">
+            <img class="weather-icon" src="${icon}"/>
+            <p>${Math.floor(item.main.temp)} °C</p>
+            
+           
+            </div>
+          </div>
+        </div>
+      `;
+    });
+  });
+
+
+const getIcon = (condition) => {
+  switch (condition) {
+    case 'Clouds':
+      return 'img/cloud3.png';
+    case 'Rain':
+      return 'img/rain.png';
+    case 'Clear':
+      return 'img/clear.png';
+
+    default:
+      console.log(`condition not found ${condition}.`);
+  }
+};

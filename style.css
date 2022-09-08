@@ -2,8 +2,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-body{
+  }
+  
+  body{
   background-color: lightblue;
   /* height: 100vh; */
   display: flex;
@@ -13,6 +14,34 @@ body{
   color:#fff;
 
 }
+
+.weekday-name {
+  display: flex;
+  justify-content: space-between;
+}
+
+.temp-weather {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.weekdays {
+  background-color: rgb(255 255 255 / 40%);
+  margin-bottom: 1px;
+  padding: 10px;
+
+  color: white;
+}
+
+img.weather-icon {
+  max-width: 30px;
+  height: 20px;
+}
+
+
+
+
 .wrapper{
     width: 80%;
 }
@@ -65,3 +94,4 @@ body{
   transition: transform 150ms;
 
  }
+
