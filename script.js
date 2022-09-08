@@ -77,7 +77,7 @@ filteredForecast.forEach((day) => {
     const date = new Date(day.dt_txt);
     let weekdayNumber= date.getDay();
     let roundedTemperature = day.main.temp.toFixed(0)
-    console.log(roundedTemperature);
+    //console.log(roundedTemperature);
 
     fiveDays.innerHTML += ` 
     <div class="daily-forecast"> 
