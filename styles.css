@@ -26,22 +26,22 @@ body {
 }
 
 .mainForecast #city {
-    font-size: 30px;
+    font-size: 18px;
     font-style: italic;
 }
 
 .mainForecast #temperature {
-    font-size: 100px;
+    font-size: 60px;
     font-weight: 600;
     text-shadow: 6px 6px 20px #443829;
 }
 
 .mainForecast #tempFeels{
-    font-size: 25px;
+    font-size: 18x;
 }
 
 .mainForecast #description {
-    font-size: 25px;
+    font-size: 18px;
     margin-top: 0;
 
 }
@@ -50,9 +50,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 500;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 .forecast {
@@ -65,22 +65,47 @@ body {
 .forecast #dayOne, #dayTwo, #dayThree, #dayFour {
     display: flex;
     flex-direction: row;
-    margin-top: 20px;
+    margin-top: 3px;
     justify-content: space-around;
     align-items: space-around;
     background-color: rgba(43, 43, 43, 0.32);
     color: antiquewhite;
     /*background-color: rgba(240, 248, 255, 0.163);*/
+    font-size: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#cityNamePicked {
+    margin-left: 20px;
+    margin-top: 20px;
+    border-style: none;
+    border-radius: 10px;
+    padding: 6px;
+    background-color: #fdfdfd6c;
+    font-size: 10px;
+}
+
+#btnSearch {
+    background-color: #fdfdfd6c; /* */
+  border: none;
+  color: white;
+  padding: 6px 6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  border-radius: 10px;
 }
 
 .footer {
     text-align: center;
     background-color: #f0f0f176;
     margin: 0;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 0;
+    padding-bottom: 0;
     color: white;
-    font-size: 15px;
+    font-size: 12px;
     bottom: 0;
     position: absolute;
     width: 100%;
@@ -91,15 +116,117 @@ body {
 /*** MEDIA QUERIES ***/
 
 /*for tablet*/
-@media (min-width: 668px) and (max-width: 1024px){
+@media (min-width: 668px) and (max-width: 1023px){
 
-    .forecast {
-        font-size: 18px;
+    body {
+        background-size: cover;
+        background-repeat: no-repeat;
+        font-family: 'Mukta', sans-serif;
+        margin: 0;
+        background-position: 30% 70%;
+        background-attachment: fixed;
     }
+    
+    .mainForecast {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        justify-content: space-around;
+        margin: 30px;
+        /*padding: 20px;*/
+    }
+    
+    .mainForecast #city {
+        font-size: 30px;
+        font-style: italic;
+    }
+    
+    .mainForecast #temperature {
+        font-size: 100px;
+        font-weight: 600;
+        text-shadow: 6px 6px 20px #443829;
+    }
+    
+    .mainForecast #tempFeels{
+        font-size: 25px;
+    }
+    
+    .mainForecast #description {
+        font-size: 25px;
+        margin-top: 0;
+    
+    }
+    
+    .riseSet {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 50px;
+    }
+    
+    .forecast {
+        display: flex;
+        flex-direction: column;
+        /*grid-template-columns: repeat(2, 1fr);*/
+        
+    }
+    
+    .forecast #dayOne, #dayTwo, #dayThree, #dayFour {
+        display: flex;
+        flex-direction: row;
+        margin-top: 20px;
+        justify-content: space-around;
+        align-items: space-around;
+        background-color: rgba(43, 43, 43, 0.32);
+        color: antiquewhite;
+        /*background-color: rgba(240, 248, 255, 0.163);*/
+        font-size: 18px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    
+    #cityNamePicked {
+        margin-left: 20px;
+        margin-top: 20px;
+        border-style: none;
+        border-radius: 10px;
+        padding: 6px;
+        background-color: #fdfdfd6c;
+        font-size: 16px;
+    }
+    
+    #btnSearch {
+        background-color: #fdfdfd6c; /* */
+      border: none;
+      color: white;
+      padding: 6px 6px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 10px;
+    }
+    
+    .footer {
+        text-align: center;
+        background-color: #f0f0f176;
+        margin: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        color: white;
+        font-size: 12px;
+        bottom: 0;
+        position: absolute;
+        width: 100%;
+    }
+    
 }
 
 /*for desktop*/
-@media (min-width: 1025px) {
+@media (min-width: 1024px) {
    
     body {
         min-height: 100;
@@ -141,6 +268,9 @@ body {
     .footer {
             text-align: center;
             background-color: #f0f0f176;
+            margin: 0;
+            padding-top: 0;
+            padding-bottom: 0;
             color: white;
             font-size: 15px;
             bottom: 0;
