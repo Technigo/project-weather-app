@@ -2,6 +2,10 @@ html,
 body {
   margin: 0;
   padding: 0;
+  font-family:'Raleway', sans-serif;
+  font-weight: 300;
+  background-color: #dfd2cb ;
+  color:#EEDCC6;
 }
 
 /* - - - BLUE: MAIN - - - - - - - - */
@@ -13,6 +17,7 @@ body {
   justify-content: space-between;
   flex-direction: column;
   margin: 0 auto 0 auto;
+  background-color: #928279;   /*-apps color-*/
   padding: 10px;
 }
 
@@ -111,6 +116,7 @@ a:link {
 
 .cozy-text {
   border: 1px solid rgb(199, 143, 14);
+  font-weight: 500;
 }
 
 .cozy-text--icon {

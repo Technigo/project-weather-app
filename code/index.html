@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css" />
     <script src="https://kit.fontawesome.com/409c912255.js" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;500&display=swap');
+    </style>
     <title>Weather App</title>
 </head>
 
@@ -30,14 +33,14 @@
 
         <!------HAMBURGER MENU WITH SEARCH BAR------>
             <nav class="hamburger-menu"> 
-                <button class="burger-btn">
-                    <img class="burger" src="./assets/icons/close.png" width="50px">
+                <button class="burger-btn"> 
+                    <img class="burger" src="assets/icons/morelocoations_light.svg" width="34px">
                 </button>
                 <ul class="sideMenu" id="sideMenu">
                     <form id="searchForm">
                         <input class="input-location" id="inputLocation" placeholder="Pick a destination ">
                     </form>
-                    <div class="closeMenu"><img src="./assets/icons/close.png"  width="50px" alt=""></div>        
+                    <div class="closeMenu"><img src="assets/icons/sophisticatedclose_dark.svg"  width="50px" alt=""></div>        
                 </ul>
             </nav>
         </header>
@@ -46,8 +49,7 @@
                 ☂️
             </div>
             <div class="cozy-text-paragraph">
-                Don't forget your umbrella.
-                It's wet in <span id="city"></span> today.
+                Well this is embarrasing <span id="city"></span>, can’t seem to load your weather.
             </div>
         </section>
         <section class="weather-forecast" id="weatherForecast">
