@@ -39,18 +39,41 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
 })
 .catch((err) => {
     console.log('caught error', err)
-});
+}); 
 
 
 //Sarah
-//const forecast = () => {
-    //fetch
-    forecastWrapper.innerHTML += `
+
+  fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=9fcd313d36f7f6461ce56606e7e35c9c')
+  //we can use lat & lon here if we want and have time (api.openweathermap.org/data/2.5/forecast?lat=44.34&lon=10.99&appid={API key})
+    .then((response) => {
+        return response.json()
+    })
+    .then((json) => {
+        console.log(json)
+        const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00', '00:00')); 
+            filteredForecast.forEach(forecasteWeek => {
+            forecastWrapper.innerHTML += `
+            <div class="forecast-days"> ${json.list[0].dt_txt}</div>
+            <div class="forecast-temp"> ${forecasteWeek.main.temp.toFixed(0)} ˚c</div>` 
+            //something to fix the dates,
+            // would be nice to have min and max per day
+        }); //https://stackoverflow.com/c/technigo/questions/246 - look here for tips
+    });
+
+
+    //${forecasteWeek.list[0].dt_txt}
+
+// you'll see that we only care about the array called list.
+
+//const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00')) //from notion
+
+
+    /*  `
+    Can we use forEach eller map iställer för detta?
      <div class="monday">
      <p>monday</p>
      <img src="" alt="">
      <p>temperatur</p>
-     `
- 
-//}
+     ` */
 
