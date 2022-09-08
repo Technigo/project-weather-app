@@ -1,8 +1,8 @@
-const container = document.getElementById("container");
-const today = document.getElementById("details-today");
-const forecast = document.getElementById("forecast");
+const container = document.getElementById('container');
+const today = document.getElementById('details-today');
+const forecast = document.getElementById('forecast');
 fetch(
-  "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=7d5ebdb08a9c797cf1689d3a1ad108be"
+  'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=7d5ebdb08a9c797cf1689d3a1ad108be'
 )
   .then((Response) => {
     return Response.json();
@@ -22,7 +22,7 @@ fetch(
 
 //*******  5 days weather forecast *********
 fetch(
-  "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=7d5ebdb08a9c797cf1689d3a1ad108be"
+  'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=7d5ebdb08a9c797cf1689d3a1ad108be'
 )
   .then((response) => {
     return response.json();
@@ -31,22 +31,22 @@ fetch(
     console.log(json);
 
     const filteredForecast = json.list.filter((item) => item.dt);
-    console.log("filtered forecast", filteredForecast);
+    console.log('filtered forecast', filteredForecast);
 
     const filteredTemp = json.list.filter((item) =>
-      item.dt_txt.includes("12:00")
+      item.dt_txt.includes('12:00')
     );
-    console.log("filtered temp", filteredTemp);
+    console.log('filtered temp', filteredTemp);
 
     filteredTemp.forEach((item) => {
       weekdayName = [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday",
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+        'Sunday',
       ];
       const date = new Date(item.dt * 1000);
       let dayName = weekdayName[date.getDay()];
