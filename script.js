@@ -1,123 +1,108 @@
 const weatherMain = document.getElementById('weatherMain');
 const weatherFiveDays = document.getElementById('weatherFiveDays');
-const search = document.getElementById('search');
 const searchbar = document.getElementById('searchbar');
-const searchBtn = document.getElementById('searchBtn'); 
 
-// const containerYouWantToAddImageTo 
-
+// the defult main weather-forcast 
 const startUpCity = () => {
 fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=39ac623b36ceedc5f50d07bfc1d9ced3')
+    .then((response) => {
+        console.log(response)
+        return response.json();
+    })
+    .then((json) => {
+        
+        // Default city temperature right now
+        weatherMain.innerHTML += `<h1>${json.main.temp.toFixed(1)}</h1><h4>°C</h4>`;
+       
+        // Default city icon-representation of the weather
+        weatherMain.innerHTML += `<img src='https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png' alt='' />`;
+        
+        // Default city 
+        weatherMain.innerHTML += `<h2>${json.name}</h2>`;
+        
+        // Default city weather-description
+        const weathers = json.weather
+            weathers.map((weatherArrary) => {
+                weatherMain.innerHTML += `<h3>${weatherArrary.description}</h3>`;
+            })  
+        
+        // Default city temperature max/min today
+        weatherMain.innerHTML += `<p>Min ${json.main.temp_min.toFixed(1)} °C</p>`;
+        weatherMain.innerHTML += `<p>Max ${json.main.temp_max.toFixed(1)} °C</p>`;
+
+        // Default city sunrise/sunset
+        const sunrise = new Date(json.sys.sunrise * 1000);
+        const sunriseShort = sunrise.toLocaleTimeString([], { timeStyle: 'short' });
+        const sunset = new Date(json.sys.sunset * 1000);
+        const sunsetShort = sunset.toLocaleTimeString([], { timeStyle: 'short' });
+
+        weatherMain.innerHTML += `<p>sunrise ${sunriseShort}</p>`
+        weatherMain.innerHTML += `<p>sunset ${sunsetShort}</p>`
+
+    });
+}
+
+// the weather-forcast for the next 5 days
+const weatherForecast = () => {
+fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=39ac623b36ceedc5f50d07bfc1d9ced3')
     .then((response) => {
         return response.json();
     })
     .then((json) => {
         
-        weatherMain.innerHTML += `<h1>${json.main.temp.toFixed(1)}</h1><h4>°C</h4>`;
-        // console.log(Math.round((json.main.temp * 10) / 10))                  // varför funkar inte det här?
-       
-        weatherMain.innerHTML += `<img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="" />`;
+        // The Function that filters out the days, because every new day starts with 00:00:00
+        const fiveDayForecast = json.list.filter((newDay) =>
+            newDay.dt_txt.includes('00:00:00')
+        );
+
+        // Sorts out the dates so every timeslot of a certain day is bundled together in their own array
+        const objectDate = {};
+
+        json.list.map((item) => {
+            const date = item.dt_txt.split(' ')[0];
+            if (objectDate[date]) {
+                objectDate[date].push(item);
+            } else {
+                objectDate[date] = [item];
+            }
+        });
+
+        // The function that creates the HTML elements for the temperature and finds the daily min and max temperatures 
+        fiveDayForecast.map((item) => {
+            let dailyRows = document.createElement('div');
+            
+            const date = item.dt_txt.split(' ')[0];
+            const weatherData = objectDate[date];
+
+            // For-loop that gets the icon for the dailyRow from data for 12:00
+            let icon = '02d';
+            let i;
+            for (i=0; i<weatherData.length; i++) {
+                if (weatherData[i].dt_txt.split(' ')[1] === '12:00:00') {
+                    icon = weatherData[i].weather[0].icon;
+                }
+            }
+
+            // The day
+            let day = new Date(item.dt * 1000).getDay();
+            const days = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+            
+            // Calculate the temperature for the day
+            const temps = weatherData.map((value) => value.main.temp);           
+            const minTemp = Math.min(...temps);
+            const maxTemp = Math.max(...temps);
+
+            dailyRows.innerHTML += `
+                <div>${days[day]}</div>
+                <img src='https://openweathermap.org/img/wn/${icon}@2x.png' alt='' />
+                <div>${maxTemp.toFixed(0)}° / ${minTemp.toFixed(0)} °C</div>
+            `;
         
-        weatherMain.innerHTML += `<h2>${json.name}</h2>`;
-        
-        const weathers = json.weather
-            weathers.map((weatherArrary) => {
-                weatherMain.innerHTML += `<h3>${weatherArrary.description}</h3>`;
-            })  
-
-        weatherMain.innerHTML += `<p>Min ${json.main.temp_min.toFixed(1)} °C</p>`;
-        weatherMain.innerHTML += `<p>Max ${json.main.temp_max.toFixed(1)} °C</p>`;
-        // console.log(Math.round((json.main.temp_max * 10) / 10))              // varför funkar inte det här?
-
-        const sunrise = new Date(json.sys.sunrise * 1000);
-        const sunriseShort = sunrise.toLocaleTimeString([], { timeStyle: 'short' });
-        const sunset = new Date(json.sys.sunset * 1000);
-        const sunsetShort = sunset.toLocaleTimeString([], { timeStyle: 'short' });
-
-        weatherMain.innerHTML += `<p>sunrise ${sunriseShort}</p>`
-        weatherMain.innerHTML += `<p>sunset ${sunsetShort}</p>`
-
-    });
-   }
-
-const weatherForecast= () => {
-fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=39ac623b36ceedc5f50d07bfc1d9ced3')
-    .then((response) => {
-        return response.json();
+            dailyRows.classList.add(`forecast-day`);
+            weatherFiveDays.appendChild(dailyRows);
+        });
     })
-    .then ((json) => {
-        const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
-        weatherFiveDays.innerHTML += `<h1>${json.list.temp.toFixed(1)}</h1><h4>°C</h4>`
-    });
 }
 
-
-// fetch the data from the API. Then if you console.log the json
-// you'll see that we only care about the array called list.
-
-//const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
-// filteredForecast is now an array with only the data from 12:00 each day.
-
-
-   /*const newCitySearch = (event) => {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${event.target.value}units=metric&APPID=39ac623b36ceedc5f50d07bfc1d9ced3`)
-        .then((response) => {
-            return response.json();
-        })
-        .then((json) => {
-            weatherMain.innerHTML += `<h1>${json.main.temp.toFixed(1)}</h1>`;
-            // console.log(Math.round((json.main.temp * 10) / 10))                  // varför funkar inte det här?
-            weatherMain.innerHTML = `<h2>${json.name}</h2>`;
-            const weathers = json.weather
-                weathers.map((weather) => {
-                    weatherMain.innerHTML += `<h3>${weather.description}</h3>`;
-                })    
-            weatherMain.innerHTML += `<p>Min ${json.main.temp_min.toFixed(1)}</p>`;
-            weatherMain.innerHTML += `<p>Max ${json.main.temp_max.toFixed(1)}</p>`;
-            // console.log(Math.round((json.main.temp_max * 10) / 10))              // varför funkar inte det här?
-    
-            const sunrise = new Date(json.sys.sunrise * 1000);
-            const sunriseShort = sunrise.toLocaleTimeString([], { timeStyle: 'short' });
-            const sunset = new Date(json.sys.sunset * 1000);
-            const sunsetShort = sunset.toLocaleTimeString([], { timeStyle: 'short' });
-    
-            weatherMain.innerHTML += `<p>sunrise ${sunriseShort}</p>`
-            weatherMain.innerHTML += `<p>sunset ${sunsetShort}</p>`
-    
-        });
-       }
-*/
-    startUpCity();
-
-    search.innerHTML += `<button type="button" class="search-button" id="searchBtn">Search</button>`
-    //searchBtn.addEventListener('click', newCitySearch)
-
-    searchBtn.addEventListener('click', (event) => {
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${event.searchBtn.name}units=metric&APPID=39ac623b36ceedc5f50d07bfc1d9ced3`)
-        .then((response) => {
-            return response.json();
-    })
-        .then(readableResponse => {
-        weatherMain.innerHTML += `<h1>${json.main.temp.toFixed(1)}</h1>`;
-        // console.log(Math.round((json.main.temp * 10) / 10))                  // varför funkar inte det här?
-        weatherMain.innerHTML = `<h2>${json.name}</h2>`;
-        const weathers = json.weather
-            weathers.map((weather) => {
-                weatherMain.innerHTML += `<h3>${weather.description}</h3>`;
-            })    
-        weatherMain.innerHTML += `<p>Min ${json.main.temp_min.toFixed(1)}</p>`;
-        weatherMain.innerHTML += `<p>Max ${json.main.temp_max.toFixed(1)}</p>`;
-        // console.log(Math.round((json.main.temp_max * 10) / 10))              // varför funkar inte det här?
-
-        const sunrise = new Date(json.sys.sunrise * 1000);
-        const sunriseShort = sunrise.toLocaleTimeString([], { timeStyle: 'short' });
-        const sunset = new Date(json.sys.sunset * 1000);
-        const sunsetShort = sunset.toLocaleTimeString([], { timeStyle: 'short' });
-
-        weatherMain.innerHTML += `<p>sunrise ${sunriseShort}</p>`
-        weatherMain.innerHTML += `<p>sunset ${sunsetShort}</p>`
-        })
-
-    })
-    
-    
+startUpCity();
+weatherForecast();  

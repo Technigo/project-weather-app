@@ -72,3 +72,23 @@ body {
     padding-left: 3%;
     padding-right: 3%;
 }
+
+.weather-five-days {
+    display: block;
+    padding-top: 20%;
+}
+
+.forecast-day {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 7%;
+    padding-right: 7%;
+}
+
+.forecast-day img {
+    width: 15%;
+    height: auto;
+}
+
+
