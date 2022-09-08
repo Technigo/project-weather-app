@@ -29,27 +29,35 @@ fetch(ApiWeather)
         let sunrise = new Date(unixTimestampSunrise * 1000)
         //Declare new variable to show only hh:mm
         let sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: "short"})
-        mainWeather.innerHTML += `<p>Sunrise: ${sunriseTime}</p>`;
+        mainWeather.innerHTML += `<p>Sunrise: ${sunriseTime}</p>`
         //Sunset
         const unixTimestampSunset = data.sys.sunset
         let sunset = new Date(unixTimestampSunset * 1000)
         let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: "short"})
-        mainWeather.innerHTML += `<p>Sunset: ${sunsetTime}</p>`;
+        mainWeather.innerHTML += `<p>Sunset: ${sunsetTime}</p>`
         
         if (data.weather[0].main === 'Clouds') {
-            container.innerHTML += 
-            `<h1>It looks rather cloudy in ${data.name} today</h2>`
+            document.body.style.backgroundColor = "#CFD2CF"
+            document.body.style.color = "#A2B5BB"
+            container.innerHTML += `<img src="./Designs/Design-2/icons/noun_Cloud_1188486.svg" alt="cloud icon">
+            <h1>It looks rather cloudy in ${data.name} today</h2>`
             container.classList.add("cloudy")
         } else if (data.weather[0].main === 'Rain') {
+            document.body.style.backgroundColor = "#DAEAF1"
+            document.body.style.color = "#C6DCE4"
             container.innerHTML +=
             `<h1>Get your umbrella, it looks rather wet in ${data.name} today.</h1>`
             container.classList.add("rainy")
         } else if (data.weather[0].main === 'Clear') {
+            document.body.style.backgroundColor = "#FFB3B3"
+            document.body.style.color = "#B270A2"
             container.innerHTML +=
             `<h1>Get your sunnies on, it looks rather warm in ${data.name} today.</h1>`
             container.classList.add("sunny")
         } else
             container.innerHTML +=
+            document.body.style.backgroundColor = "#E4DCCF"
+            document.body.style.color = "#7D9D9C"
             `<h1>You can chillout, it is neutral weather in ${data.name} today.</h1>`
             container.classList.add("natural")
       })
