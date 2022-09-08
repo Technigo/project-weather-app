@@ -36,10 +36,9 @@ h1{
 
 .main-container {
     display: flex;
-    border: 10px solid blue; /*to be deleted*/
     flex-direction:column;
     width:auto;
-    height: 100vh;
+    height: 100%;
     padding-bottom: 20px;
 }
 

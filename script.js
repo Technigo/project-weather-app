@@ -48,7 +48,7 @@ fetch(API_TODAY)
     <p class="sunrise">sunrise ${sunrise}</p>
     <p class="sunset">sunset ${sunset}</p>
     <img class="weather-icon"
-    src="/Designs/Design-2/icons/${imageSrc}"
+    src="./Designs/Design-2/icons/${imageSrc}"
   />
     <h1 class="today-title">${weatherDescription}</h1>
     `;
