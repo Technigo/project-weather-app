@@ -5,17 +5,20 @@ body {
     height: 100vh;
     width: 100%;
     flex-direction: column;
+    padding: 20px;
 }
 
 .weather-header {
     height: 50vh;
     width: 100%;
+    padding: 10%
 }
 
 .main {
     display: flex;
     height: 75vh;
     width: 100%;
+    padding: 10%
 }
 
 .weather-text {
@@ -26,4 +29,19 @@ body {
 .week-days {
     height: 30vh;
     width: 100%;
+    padding: 5%
 }
+
+.week-days ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.week-days ul li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.2em;
+    border-bottom: dashed 1px ;
+}
+
+

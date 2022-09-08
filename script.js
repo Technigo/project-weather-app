@@ -1,5 +1,6 @@
 const stad = document.getElementById('stad')
-
+const weekdays = document.getElementById('weekdays')
+const rainy = document.querySelector('.rain')
 fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=fed8be257d06e9a0aa60731701ed1473')
     .then ((response) => {
         return response.json()
@@ -29,6 +30,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         stad.innerHTML +=`<p>sunrise ${sunriseTime}</p>`
         stad.innerHTML +=`<p>sunset ${sunsetTime}</p>` 
 
+        document.getElementById('weatherheader').style.backgroundColor = green;
 
     })
 
