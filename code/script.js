@@ -12,7 +12,6 @@ const liveTemperature = document.getElementById("temperature");
 const weatherDescription = document.getElementById("description");
 const dayForecast = document.getElementById("weatherForecast");
 const daysOfTheWeek = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
-const weatherStats = document.getElementById("todays-weather");
 const currentSunrise = document.getElementById("todaysWeatherSunrise");
 const currentSunset = document.getElementById("todaysWeatherSunset");
 
@@ -26,7 +25,6 @@ const close = () => {
   sideMenu.style.top = "-150%";
   closeMenu.style.display = "none";
 };
-
 //This works! But how do we change the city!!!
 let city = "Stockholm";
 const apiNow = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=ba408ec4b2f7f251f2dd0044bd3e07f2`;
@@ -62,7 +60,16 @@ const printForecastEntry = (dayForecast) => {
   const forecastIcon = getIconForWeather(forecastWeatherType);
 
   console.log(forecastIcon);
-}
+
+  weatherForecast.innerHTML += `
+  <div class="weather-forecast-entry">
+  <span>${daysOfTheWeek[dayOfTheWeek]}</span>
+  <span><img src="${forecastIcon}" class="weather-forecast-icon" alt="${forecastWeatherType}"/></span>
+  <span>${dayForecast.main.temp.toFixed(0)}°</span>
+  </div>
+  `;
+};
+
 const getWeather = (city) => {
   console.log('fetching weather data for ', city)
   const apiNow =
@@ -75,6 +82,7 @@ const getWeather = (city) => {
   fetch(apiNow)
     .then((response) => response.json())
     .then((json) => {
+      console.log('got weather for now')
 
       currentCity.innerHTML = json.name;
       liveTemperature.innerHTML = json.main.temp.toFixed(1);
@@ -103,23 +111,15 @@ const getWeather = (city) => {
       return response.json();
     })
     .then((dayForecast) => {
+      console.log('got weather for forecast')
       const filteredForecast = dayForecast.list.filter((item) =>
         // @TODO maybe change to a better time here? see this for visualisation https://jsoncrack.com/editor?fbclid=IwAR2ZSGA26fdIHECi0-ISKwEsHs8BuZlb8bCS_-3O1j_0drQRkNIdzvK7fE0
         item.dt_txt.includes("12:00")
       );
-      filteredForecast.forEach((dayForecast) => {
-        const forecastDate = new Date(dayForecast.dt * 1000);
-        const dayOfTheWeek = forecastDate.getDay();
-        weatherForecast.innerHTML += `
-        <div class="weather-forecast-entry">
-        <span>${daysOfTheWeek[dayOfTheWeek]}</span>
-        <span>${dayForecast.main.temp.toFixed(0)}°</span>
-        </div>
-        `;
-      });
+      filteredForecast.forEach(printForecastEntry)
     });
-}
-getWeather("Barcelona");
+  } 
+getWeather("Stockholm");
 
 
 
@@ -127,7 +127,6 @@ getWeather("Barcelona");
 searchForm.addEventListener("submit", (e) => {  //when pressend enter it sends
   console.log('form submitted')
   e.preventDefault();
-  weatherStats.innerHTML;
   weatherForecast.innerHTML= ``;
   city = inputLocation.value;
   console.log('change city to', city)
@@ -137,33 +136,3 @@ searchForm.addEventListener("submit", (e) => {  //when pressend enter it sends
 burger.addEventListener("click", show);
 closeMenu.addEventListener("click", close);
 searchForm.addEventListener("submit", close);
-
-/*
-
-/*
-    .then((json) => {
-        console.log(json )
-        weather.innerHTML = json.weather.maps((weatherType) => {
-            return weatherType.weather.main;
-        }) */
-
-//  WEATHER  {json.weather[0].description}`
-//  TEMP   ${json.main.temp.toFixed(1)}
-
-//      types.innerHTML = json.types.map((type) => {
-//        return typeObject.type.name;
-//      });
-
-/*    Your task is to present some data on your web app. Start with
-    - the city name   ${json.name} ?? 
-    - the temperature (rounded to 1 decimal place) 
-    - and what type of weather it is (the "description" in the JSON */
-
-// weather: weather  > description
-/*0 Object
-        description: "clear sky"
-        icon: "01d"
-        id: 800
-        main: "Clear" */
-
-// temperature: main temp

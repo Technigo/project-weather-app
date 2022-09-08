@@ -14,6 +14,7 @@ body {
   flex-direction: column;
   margin: 0 auto 0 auto;
   padding: 10px;
+  background-color: grey;
 }
 
 /* - - - PINK: HEADER WRAPPER - - - - - - - - */
