@@ -21,8 +21,8 @@ fetch (API)
 .then ((json) => {
  city.innerHTML = json.name
  description.innerHTML = json.weather[0].description
- temperature.innerHTML = json.main.temp.toFixed(0)
- console.log(json) 
+ temperature.innerHTML = `<p>${json.main.temp.toFixed(0)}°C</p>`
+ console.log(json)
 
 //Sunrise  --> from numbers to date
 const weatherSunrise = () => {
@@ -47,6 +47,9 @@ const weatherSunrise = () => {
   weatherSunset();
 
 })
+
+// main: thunderstorm, drizzle, rain, snow, clear, clouds
+
 
 // Five day forecast section
 fetch(API_FORECAST)
@@ -91,3 +94,5 @@ filteredForecast.forEach((day) => {
 // .catch((error) =>
 // console.error("There has been a problem with your fetch operation:", error)
 // );
+
+
