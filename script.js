@@ -38,9 +38,9 @@ fetch(API_TODAY)
 
     // Changes the today HTML section based on today's weather data
     sectionToday.innerHTML = `
-    <p class="today-temp">${
-      data.weather[0].description
-    } | ${data.main.temp.toFixed(1)}°</p>
+    <p class="today-temp">${data.weather[0].main} | ${data.main.temp.toFixed(
+      1
+    )}°</p>
     <p class="sunrise">sunrise ${sunrise}</p>
     <p class="sunset">sunset ${sunset}</p>
     <img class="weather-icon"
@@ -68,7 +68,7 @@ fetch(API_FORECAST)
 
       // Extracts only the first 3 letters in the full date string that looks for example like this:
       // Thu Sep 08 2022 14:00:00 GMT+0200
-      const weekday = String(date).slice(0, 3);
+      const weekday = String(date).slice(0, 3).toLowerCase();
 
       sectionForecast.innerHTML += `
       <div class="forecast-day-container">
