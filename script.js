@@ -30,34 +30,34 @@ const nameCity = json.name
 console.log (temperature,currentDescription,sunriseShort,sunsetShort,nameCity) // test for console that the function is working. 
 
  //print out the API fetch for header
-container.innerHTML=`<h1> ${currentDescription} | ${temperature}<br>sunrise ${sunriseShort}<br>sunset ${sunsetShort}</h1>`
+container.innerHTML=`${currentDescription} | ${temperature}°<br>sunrise ${sunriseShort}<br>sunset ${sunsetShort}`
 
-const cloudIcon = ".Designs/Design-2/icons/noun_Cloud_1188486.svg"
-const sunglasses = "Designs/Design-2/icons/noun_Sunglasses_2055147.svg"
-const umbrella = "Designs/Design-2/icons/noun_Umbrella_2030530.svg"
+// const cloudIcon = ".Designs/Design-2/icons/noun_Cloud_1188486.svg"
+// const sunglasses = "Designs/Design-2/icons/noun_Sunglasses_2055147.svg"
+// const umbrella = "Designs/Design-2/icons/noun_Umbrella_2030530.svg"
 
 
 if (currentDescription === "clear sky") {
     icon.src = "./Designs/Design-2/icons/noun_Sunglasses_2055147.svg"
-    phrase.innerHTML = `<h1>Sunny in ${nameCity} today!</h1>`
-    container.style.backgroundColor = "#F7E9B9";
-    //container.style.color = "#2A5510";
-
+    message.innerHTML = `<h1>Sunny in ${nameCity} today!</h1>`
+    document.body.style.backgroundColor = "#F7E9B9";
+    document.body.style.color = "#2A5510";
 
 } else if (currentDescription === "rain") {
     icon.src = "./Designs/Design-2/icons/noun_Umbrella_2030530.svg"
-    phrase.innerHTML = `<h1>Rainy in ${nameCity} today!</h1>`
-    container.style.backgroundColor = "#A3DEF7";
-    //container.style.color = "#164A68";
+    message.innerHTML = `<h1>Rainy in ${nameCity} today!</h1>`
+    document.body.style.backgroundColor = "#A3DEF7";
+    document.body.style.color = "#164A68";
 
 } else if (currentDescription === "clouds" || "few clouds") {
     icon.src = "./Designs/Design-2/icons/noun_Cloud_1188486.svg"
-    phrase.innerHTML = `<h1>Cloudy in ${nameCity} today!</h1>`
-    container.style.backgroundColor = "#F4F7F8";
-    //container.style.color = "#F47775";
+    message.innerHTML = `<h1>Cloudy in ${nameCity} today!</h1>`
+    document.body.style.backgroundColor = "#F4F7F8";
+    document.body.style.color = "#F47775";
 }
 }
 )
+
 // turning the date to a string short weekday. 
 const weekDay = (data) => {
     const currentDate = new Date (data * 1000); // set to millisec. 
@@ -80,16 +80,19 @@ fetch(apiForeCast)
   // printed out forcast. filterTable [x] changes depends of which day. 
   forCast.innerHTML += `
   <div class="day">${weekDay(filterTable[0].dt)}</div>
-  <div class="temp"> ${filterTable[0].main.temp.toFixed(0)}</div>
+  <div class="temp"> ${filterTable[0].main.temp.toFixed(0)}°</div>
+  
   <div class="day">${weekDay(filterTable[1].dt)}</div>
-  <div class="temp"> ${filterTable[1].main.temp.toFixed(0)}</div>
+  <div class="temp"> ${filterTable[1].main.temp.toFixed(0)}°</div>
+  
   <div class="day">${weekDay(filterTable[2].dt)}</div>
-  <div class="temp"> ${filterTable[2].main.temp.toFixed(0)}</div>
+  <div class="temp"> ${filterTable[2].main.temp.toFixed(0)}°</div>
+
   <div class="day">${weekDay(filterTable[3].dt)}</div>
-  <div class="temp"> ${filterTable[3].main.temp.toFixed(0)}</div>
+  <div class="temp"> ${filterTable[3].main.temp.toFixed(0)}°</div>
+
   <div class="day">${weekDay(filterTable[4].dt)}</div>
-  <div class="temp"> ${filterTable[4].main.temp.toFixed(0)}</div>
- 
+  <div class="temp"> ${filterTable[4].main.temp.toFixed(0)}°</div>
   `
 })
 

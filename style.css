@@ -1,17 +1,35 @@
 .header{
     font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
     width: 300px;
-    margin: 20px auto;
-    padding: 40px;
-    font-size: 12px;
-    font-weight: normal;
+    margin: 30px;
+    font-size: 18px;
 }
 
 h1{
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
-    color: #F47775;
-
+    margin-top: 15px;
+    font-size: 30px;
 }
 
+.phrase{
+    margin: 60px 30px 30px 30px;
+}
 
+.forCast{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    width: 300px;
+    margin: 30px;
+    font-size: 18px;
+    text-transform: lowercase;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+hr {
+    width: 100%;
+    border-bottom: 1px dashed;
+}
