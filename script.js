@@ -18,7 +18,7 @@ fetch (API)
 .then ((json) => {
 const temperature= json.main.temp.toFixed(0) //declare the API fetch for current temp.
 
-const currentDescription = json.weather[0].description // new declare the API fetch for current descprition. 
+const currentDescription = json.weather[0].main // new declare the API fetch for current descprition. 
 
 const sunrise = new Date(json.sys.sunrise * 1000); // new declare the API fetch for sunrise and sunset. 
 const sunset = new Date(json.sys.sunset *1000);
@@ -37,19 +37,19 @@ container.innerHTML=`${currentDescription} | ${temperature}°<br>sunrise ${sunri
 // const umbrella = "Designs/Design-2/icons/noun_Umbrella_2030530.svg"
 
 
-if (currentDescription === "clear sky") {
+if (currentDescription === "Clear") {
     icon.src = "./Designs/Design-2/icons/noun_Sunglasses_2055147.svg"
     message.innerHTML = `<h1>Sunny in ${nameCity} today!</h1>`
     document.body.style.backgroundColor = "#F7E9B9";
     document.body.style.color = "#2A5510";
 
-} else if (currentDescription === "rain") {
+} else if (currentDescription === "Rain") {
     icon.src = "./Designs/Design-2/icons/noun_Umbrella_2030530.svg"
     message.innerHTML = `<h1>Rainy in ${nameCity} today!</h1>`
     document.body.style.backgroundColor = "#A3DEF7";
     document.body.style.color = "#164A68";
 
-} else if (currentDescription === "clouds" || "few clouds") {
+} else if (currentDescription === "Clouds") {
     icon.src = "./Designs/Design-2/icons/noun_Cloud_1188486.svg"
     message.innerHTML = `<h1>Cloudy in ${nameCity} today!</h1>`
     document.body.style.backgroundColor = "#F4F7F8";
