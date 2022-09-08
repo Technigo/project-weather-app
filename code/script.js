@@ -10,6 +10,8 @@ const daysOfTheWeek = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 const currentSunrise = document.getElementById("todaysWeatherSunrise");
 const currentSunset = document.getElementById("todaysWeatherSunset");
 
+
+
 fetch(apiNow)
   .then((response) => {
     return response.json();
@@ -37,6 +39,8 @@ fetch(apiNow)
     console.error("There has been a problem with your fetch operation:", error)
   );
 
+
+  // Five day forecast // 
 fetch(apiForecast)
   .then((response) => {
     return response.json();
