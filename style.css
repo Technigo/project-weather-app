@@ -18,19 +18,21 @@ h1{
 }
 
 .forCast{
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+}
+
+.dayAndTemp{
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
-    width: 300px;
-    margin: 30px;
     font-size: 18px;
     text-transform: lowercase;
+    padding: 3px;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-}
-
-hr {
-    width: 100%;
     border-bottom: 1px dashed;
 }
 

@@ -79,20 +79,30 @@ fetch(apiForeCast)
   
   // printed out forcast. filterTable [x] changes depends of which day. 
   forCast.innerHTML += `
-  <div class="day">${weekDay(filterTable[0].dt)}</div>
-  <div class="temp"> ${filterTable[0].main.temp.toFixed(0)}°</div>
-  
-  <div class="day">${weekDay(filterTable[1].dt)}</div>
-  <div class="temp"> ${filterTable[1].main.temp.toFixed(0)}°</div>
-  
-  <div class="day">${weekDay(filterTable[2].dt)}</div>
-  <div class="temp"> ${filterTable[2].main.temp.toFixed(0)}°</div>
+<div class="dayAndTemp">
+    <div class="day">${weekDay(filterTable[0].dt)}</div>
+    <div class="temp"> ${filterTable[0].main.temp.toFixed(0)}°</div>
+</div>
 
+<div class="dayAndTemp">
+    <div class="day">${weekDay(filterTable[1].dt)}</div>
+    <div class="temp"> ${filterTable[1].main.temp.toFixed(0)}°</div>
+</div>
+
+<div class="dayAndTemp">
+    <div class="day">${weekDay(filterTable[2].dt)}</div>
+    <div class="temp"> ${filterTable[2].main.temp.toFixed(0)}°</div>
+</div>
+
+<div class="dayAndTemp">
   <div class="day">${weekDay(filterTable[3].dt)}</div>
   <div class="temp"> ${filterTable[3].main.temp.toFixed(0)}°</div>
+</div>
 
+<div class="dayAndTemp">
   <div class="day">${weekDay(filterTable[4].dt)}</div>
   <div class="temp"> ${filterTable[4].main.temp.toFixed(0)}°</div>
+</div>
   `
 })
 
