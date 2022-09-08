@@ -8,11 +8,16 @@ const weatherIcon = document.getElementById('weather-icon');
 const weatherMessage = document.getElementById('weather-message');
 
 const forecastContainer = document.getElementById('forecast-container');
-/* const forecastDay1 = document.getElementById('forecast-day-1');
+const forecastDay1 = document.getElementById('forecast-day-1');
 const forecastDay2 = document.getElementById('forecast-day-2');
 const forecastDay3 = document.getElementById('forecast-day-3');
 const forecastDay4 = document.getElementById('forecast-day-4');
-const forecastDay5 = document.getElementById('forecast-day-5'); */
+const forecastDay5 = document.getElementById('forecast-day-5');
+const forecastTemp1 = document.getElementById('forecast-temp-1');
+const forecastTemp2 = document.getElementById('forecast-temp-2');
+const forecastTemp3 = document.getElementById('forecast-temp-3');
+const forecastTemp4 = document.getElementById('forecast-temp-4');
+const forecastTemp5 = document.getElementById('forecast-temp-5');
 
 const searchBar = document.getElementById('search-bar');
 const searchBtn = document.getElementById('search-btn');
@@ -102,7 +107,7 @@ function fetchWeather(city) {
       //formatting the dates to get the weekday names and storing them in an array
       //formatting the temperatures and storing them in another array
       const forecastDaysNames = [];
-      // const forecastDaysTemp = [];
+      const forecastDaysTemp = [];
 
       onlyNoons.forEach(point => {
         if (onlyNoons.length === 5) {
@@ -111,17 +116,19 @@ function fetchWeather(city) {
               weekday: 'short',
             })
           );
-          forecastDaysNames.push(Math.floor(point.main.temp));
+          forecastDaysTemp.push(Math.floor(point.main.temp));
         }
+        return;
       });
       console.log(forecastDaysNames);
-      // console.log(forecastDaysTemp);
+      console.log(forecastDaysTemp);
 
       // DOM rendering - Five day forecast
       forecastContainer.innerHTML = '';
       forecastDaysNames.forEach(day => {
         forecastContainer.innerHTML += `
-          <p class="forecast-day" id="forecast-day">${day}</p>
+          <p class="forecast-day">${forecastDaysNames[day]}</p>
+          <p class="forecast-temp">${forecastDaysTemp[day]}</p> 
           `;
       });
     });
