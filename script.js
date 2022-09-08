@@ -6,7 +6,6 @@ const searchbar = document.getElementById('searchbar');
 const startUpCity = () => {
 fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=39ac623b36ceedc5f50d07bfc1d9ced3')
     .then((response) => {
-        console.log(response)
         return response.json();
     })
     .then((json) => {
@@ -106,3 +105,61 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
 
 startUpCity();
 weatherForecast();  
+
+
+// Search new city
+searchbar.addEventListener('change', () => {
+    console.log(searchbar.value)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchbar.value},Sweden&units=metric&APPID=39ac623b36ceedc5f50d07bfc1d9ced3`)
+    .then((response) => {
+        console.log(response)
+        if(response.status === 200) {
+            weatherMain.innerHTML = '';
+            return response.json();
+        } else {
+            throw(new Error('bad response'))
+        }
+        
+    })
+    .then((json) => {
+            searchbar.innerHTML = ''
+    
+            weatherMain.innerHTML += `<h1>${json.main.temp.toFixed(1)}</h1><h4>°C</h4>`;
+        
+            weatherMain.innerHTML += `<img src="https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png" alt="" />`;
+            
+            weatherMain.innerHTML += `<h2>${json.name}</h2>`;
+            
+            const weathers = json.weather
+                weathers.map((weatherArrary) => {
+                    weatherMain.innerHTML += `<h3>${weatherArrary.description}</h3>`;
+                })  
+
+            weatherMain.innerHTML += `<p>Min ${json.main.temp_min.toFixed(1)} °C</p>`;
+            weatherMain.innerHTML += `<p>Max ${json.main.temp_max.toFixed(1)} °C</p>`;
+
+            const sunrise = new Date(json.sys.sunrise * 1000);
+            const sunriseShort = sunrise.toLocaleTimeString([], { timeStyle: 'short' });
+            const sunset = new Date(json.sys.sunset * 1000);
+            const sunsetShort = sunset.toLocaleTimeString([], { timeStyle: 'short' });
+
+            weatherMain.innerHTML += `<p>sunrise ${sunriseShort}</p>`
+            weatherMain.innerHTML += `<p>sunset ${sunsetShort}</p>`
+
+    });
+
+})  
+
+
+
+
+
+
+      
+
+
+
+    
+    // api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
+    
+    // http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
