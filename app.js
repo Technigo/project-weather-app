@@ -40,13 +40,13 @@ fetch(
     console.log('filtered temp', filteredTemp);
 
     const weekdayName = [
+      'Sunday',
       'Monday',
       'Tuesday',
       'Wednesday',
       'Thursday',
       'Friday',
       'Saturday',
-      'Sunday',
     ];
 
     filteredTemp.forEach((item) => {
