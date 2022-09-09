@@ -6,15 +6,10 @@ const cityName = document.getElementById("city-placeholder");
 const weeklyTemp = document.getElementById("weekly-temperature-placeholder");
 const hero = document.getElementById("hero");
 const todaysIcon = document.getElementById("todays-icon");
-//const selectedCity = document.getElementById('city-selection');
 let selectedCity = document.querySelectorAll('.city-selection');
 
 let weeklyWeather;
 let dailyIcon;
-
-//KOLLA SÅ ATT TIDSZON STÄMMER
-
-
 
 selectedCity.forEach((option) => {
   option.addEventListener('change', (event) => {
@@ -30,6 +25,7 @@ selectedCity.forEach((option) => {
       console.log(json);
       cityName.innerHTML = json.city.name;
       cityTemp.innerHTML = `${json.list[0].main.temp.toFixed(1)} °C`;
+      let theWeather = json.list[0].weather[0].description;
       cityWeather.innerHTML = json.list[0].weather[0].description;
       
       const sunriseStart = new Date(json.city.sunrise * 1000);
@@ -43,39 +39,36 @@ selectedCity.forEach((option) => {
         minute: "2-digit",
       })}`;
 
+
       //Actual weather & background picture
       //clouds
       if (json.list[0].weather[0].main.includes("Clouds")) {
         hero.style.backgroundImage = `linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('images/bg-cloud-sun.jpg')`;
         todaysIcon.innerHTML = 
-          `<img src=\'images/Clouds.png'>
-          <h3>It is rather gray today in ${json.city.name}.</h3>`;
+          `<img src=\'images/Clouds.png'>`
       //rain
       } else if (json.list[0].weather[0].main.includes("Rain")) {
         hero.style.backgroundImage = `linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('images/bg-rain.jpeg')`;
         todaysIcon.innerHTML = 
-          `<img src=\'images/Rain.png'>
-          <h3>Don't forget you umbrella. It's raining in ${json.city.name}.</h3>`;
+          `<img src=\'images/Rain.png'>`
       //clear
       } else if (json.list[0].weather[0].main.includes("Clear")) {
         hero.style.backgroundImage = `linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('images/bg-clear.png')`;
         todaysIcon.innerHTML = 
-          `<img src=\'images/Clear.png'>
-          <h3>The sky is clear in ${json.city.name} today.</h3>`;
+          `<img src=\'images/Clear.png'>`
       //snow      
       } else if (json.list[0].weather[0].main.includes("Snow")) {
         hero.style.backgroundImage = `linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('images/bg-snow.jpeg')`;
         todaysIcon.innerHTML = 
-          `<img src=\'images/Snow.png'>
-          <h3>It is snowing in ${json.city.name}.</h3>`;
+          `<img src=\'images/Snow.png'>`
       //other
       } else {
         hero.style.backgroundImage = `linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('images/rain.jpeg')`;
         todaysIcon.innerHTML = 
-          `<img src=\'images/cloud-sun-icon.png'>
-          <h3>It is a cloudy ${json.city.name} now.</h3>`;
+          `<img src=\'images/cloud-sun-icon.png'>`
       }
 
+      todaysIcon.innerHTML += `<h3>${theWeather} in ${json.city.name}</h3>`;
       weeklyWeather = json.list.filter((item) => item.dt_txt.includes("12:00"));
       console.log(weeklyWeather);
       weeklyTemp.innerHTML = '' //to reset value
