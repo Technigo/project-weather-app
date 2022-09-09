@@ -14,6 +14,8 @@
 <body>
     <!--searchbar for choosing a different city-->
     <input class= "searchCity" type="text" id="searchCity" placeholder="Search for a city" autofocus>
+    <button onclick="getLocation()" id="button"> Choose your current location</button>
+    
     <!--description, temperature, sunrise, sunset-->
     <div class="header" id="header" ></div> 
     <!--icon & phrase-->
@@ -29,9 +31,7 @@
     </div>
 </div>
     <div class="forCast" id="forCast"></div>
-    <button onclick="getLocation()" id="button"> test</button>
-    <p id="location"></p>
-
+    
     <script src="./script.js"></script>
 </body>
 </html>

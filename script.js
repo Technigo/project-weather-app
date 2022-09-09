@@ -1,5 +1,5 @@
 // Api 
-const apiForeCast = 'https://api.openweathermap.org/data/2.5/forecast?q=Amsterdam,Netherlands&units=metric&appid=26500228b15aa40fc0617041c68bf843'
+//const apiForeCast = 'https://api.openweathermap.org/data/2.5/forecast?q=Amsterdam,Netherlands&units=metric&appid=26500228b15aa40fc0617041c68bf843'
 
 // Global DOM selectors
 
@@ -11,6 +11,7 @@ const forCast = document.getElementById('forCast')
 
 // fetch the API for header section 
 searchCity.addEventListener('change', (event) => {
+    
     fetch ((`https://api.openweathermap.org/data/2.5/weather?q=${event.target.value}&units=metric&appid=26500228b15aa40fc0617041c68bf843`))
 .then ((response) => {
     return response.json ()
@@ -68,8 +69,14 @@ const weekDay = (data) => {
 };
 
 
+    
 //ForeCast table for 5 days - fetch API from new api URL 
-fetch(apiForeCast)
+//fetch('https://api.openweathermap.org/data/2.5/forecast?q=${event.target.value}=metric&appid=26500228b15aa40fc0617041c68bf843')
+searchCity.addEventListener('change', (event) => {
+function foreCastTable(){
+//fetch(apiForeCast)
+const apiForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${event.target.value}&units=metric&appid=26500228b15aa40fc0617041c68bf843`
+fetch(apiForecast)
 .then((response) => response.json())
 .then((json) => {
 
@@ -107,11 +114,14 @@ fetch(apiForeCast)
   `
 })
 
+}
+foreCastTable();
+})
 
 
 //GEOLOCATION 
 // first it will be shown the set location we have given and when you press "test button" it will change to the current location.
-var x = document.getElementById('location');
+
 
 function getLocation(){
     
