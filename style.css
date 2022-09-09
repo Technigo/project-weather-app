@@ -25,12 +25,19 @@ body {
   align-items: center;
 }
 
+#forecast {
+  background: #5cb1bc47;
+  border-radius: 16px;
+  padding: 20px;
+}
+
 .weekdays {
-  background-color: rgb(255 255 255 / 40%);
+  /* background-color: rgb(255 255 255 / 40%); */
   margin-bottom: 1px;
   padding: 10px;
-
+  font-size: 20px;
   color: white;
+  border-bottom: 1px solid;
 }
 
 img.weather-icon {
