@@ -17,9 +17,9 @@ const currentSunset = document.getElementById("todaysWeatherSunset");
 
 // show is added to how burger menu appears
 const show = () => {
-  sideMenu.style.display = "block";
+  sideMenu.style.display = "flex";
   // sideMenu.style.top = "0";
-  closeMenu.style.display = "block";
+  closeMenu.style.display = "flex";
 };
 const close = () => {
   // sideMenu.style.top = "-150%";
