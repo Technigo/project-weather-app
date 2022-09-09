@@ -10,10 +10,10 @@
 
 // these variables should be moved into each new corresponding function
 const API_TODAY = `
-https://api.openweathermap.org/data/2.5/weather?q=${city},Sweden&units=metric&APPID=7dee0e5a05b2c9d92a37a397279281ca
+https://api.openweathermap.org/data/2.5/weather?q=Gothenburg,Sweden&units=metric&APPID=7dee0e5a05b2c9d92a37a397279281ca
 `;
 const API_FORECAST = `
-https://api.openweathermap.org/data/2.5/forecast?q=${city},Sweden&units=metric&APPID=dfa433e7ce60074523483f09849d33d2
+https://api.openweathermap.org/data/2.5/forecast?q=Gothenburg,Sweden&units=metric&APPID=dfa433e7ce60074523483f09849d33d2
 `;
 
 const sectionToday = document.getElementById('today');
