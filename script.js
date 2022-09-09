@@ -107,6 +107,72 @@ fetch(apiForeCast)
 })
 
 
+
+//GEOLOCATION 
+// first it will be shown the set location we have given and when you press "test button" it will change to the current location.
+var x = document.getElementById('location');
+
+function getLocation(){
+    
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((position) =>{
+    var lat = position.coords.latitude; // set lat for api url 
+    var long = position.coords.longitude; // set long for api url 
+     const apiGeo = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=26500228b15aa40fc0617041c68bf843`
+        // add ${} to fetch the lat/long for the user geolocation in url.
+     fetch(apiGeo)
+        .then((response) => {
+        return response.json();
+        })
+        .then((json) => {
+                //const temp= json.main.temp.toFixed(0)
+                //const nameGeoCity = json.name
+                
+               // console.log(temp, nameGeoCity)
+               // x.innerHTML =`
+               // Your location is ${nameGeoCity} and its ${temp}°`
+const temperature= json.main.temp.toFixed(0) //declare the API fetch for current temp.
+
+const currentDescription = json.weather[0].main // new declare the API fetch for current descprition. 
+
+const sunrise = new Date(json.sys.sunrise * 1000); // new declare the API fetch for sunrise and sunset. 
+const sunset = new Date(json.sys.sunset *1000);
+    const sunriseShort = sunrise.toLocaleTimeString([], {timeStyle: 'short'}) // declare new variable to show only hh:mm
+    const sunsetShort = sunset.toLocaleTimeString([], {timeStyle: 'short'})
+
+const nameCity = json.name
+
+console.log (temperature,currentDescription,sunriseShort,sunsetShort,nameCity) // test for console that the function is working. 
+
+ //print out the API fetch for header
+container.innerHTML=`${currentDescription} | ${temperature}°<br>sunrise ${sunriseShort}<br>sunset ${sunsetShort}`
+if (currentDescription === "Clear") {
+    icon.src = "./Designs/Design-2/icons/noun_Sunglasses_2055147.svg"
+    message.innerHTML = `<h1>Sunny in ${nameCity} today!</h1>`
+    document.body.style.backgroundColor = "#F7E9B9";
+    document.body.style.color = "#2A5510";
+
+} else if (currentDescription === "Rain") {
+    icon.src = "./Designs/Design-2/icons/noun_Umbrella_2030530.svg"
+    message.innerHTML = `<h1>Rainy in ${nameCity} today!</h1>`
+    document.body.style.backgroundColor = "#A3DEF7";
+    document.body.style.color = "#164A68";
+
+} else if (currentDescription === "Clouds") {
+    icon.src = "./Designs/Design-2/icons/noun_Cloud_1188486.svg"
+    message.innerHTML = `<h1>Cloudy in ${nameCity} today!</h1>`
+    document.body.style.backgroundColor = "#F4F7F8";
+    document.body.style.color = "#F47775";
+}
+}
+)
+            })
+            
+            
+    };
+  } 
+
+
  //THIS IS DANIEL SEARCH BAD
  //mainSearchbar.addEventListener('change', (event) => {
     //fetch(`https://api.openweathermap.org/data/2.5/weather?q={event.target.value}&units=metric&appid=26500228b15aa40fc0617041c68bf843`)
