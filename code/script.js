@@ -35,7 +35,7 @@ fetch(URL_WEATHER)
     //toLocaleTimeString show only the hours and minutes: https://stackoverflow.com/c/technigo/questions/1581
     // https://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript
     console.log(todaysMainWeather);
-    // todaysMainWeather = "Clouds";
+    todaysMainWeather = "Rain";
 
     // Today's prompt
     if (todaysMainWeather === "Clear") {
