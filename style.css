@@ -5,6 +5,8 @@ body {
     padding: 0%;
     background-color: white;
     font-family: 'DM Sans', sans-serif;
+}
+label {
     color: white;
 }
 
