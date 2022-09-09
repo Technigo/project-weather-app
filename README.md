@@ -6,7 +6,7 @@ The assignment was a pair project to create a weather dashbord with focus on fet
 ## The problem
 
 We started with choosing a design and trying to get all the layout as close as possible. 
-The new techniqes we worked with this week was fetching API as well as working in branches to make the different features.
+The new techniques we worked with this week was fetching API as well as working in branches to make the different features.
 If we had more time we would add min- and max temperature and weather icons that would change depending on the weather.
 We also wanted to make the design a bit closer to the provided design.
 
