@@ -54,9 +54,6 @@ p {
 main {
     justify-content: center;
     align-items: center;
-    background-size: cover; 
-    background-attachment: fixed;
-    background-repeat: no-repeat;
 }
 
 .container {
@@ -81,8 +78,6 @@ main {
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 2; 
-    position: relative; 
-
 }
 
 .sunrise-sunset {
