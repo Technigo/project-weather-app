@@ -10,16 +10,17 @@
     <title>Weather App</title>
 </head>
 <body>
-    <section id="header" class="header">
+    <section id="searchHeader" class="search-header">
         <form id="name-form" class="nameform">
-            <label for="name-input" ></label>
-            <input id="city-input" type="text" placeholder="City,Country"/>
-            <button id="send-btn" class="send-btn" type="submit">Change</button>
-        <div class="Skyinfo" id="skyInfo">
-            <p id="skyState">Loading...</p>
-            <p id="sunrise">Loading...</p>
-            <p id="sunset">Loading...</p>
-        </div>
+            <input id="city-input" type="text" placeholder="search city.."/>
+            <button id="send-btn" class="send-btn" type="submit"><img class="searchIcon" src="./Designs/Design-2/icons/search.svg"/></button>
+        </section>
+        
+    <section id="header" class="header">
+            <p id="location"></p>
+            <p id="skyState"></p>
+            <p id="sunrise"></p>
+            <p id="sunset"></p>
     </section>
     
     <section id="main-wrapper" class="main-wrapper">
