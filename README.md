@@ -1,13 +1,14 @@
 # Weather App
-
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The assignment of this project was to creat a weather app in JavaScript where we should fetch external data to our websites.
 
 ## The problem
+This week we worked in pairs. We started by choosing the design we wanted to copy & established the foundation in html & JavaScript. 
+With Live Share we continued together with the basics: using JSON & fetch API to show sunrise, sunset, weekdays & 5 days forecast. When the basic foundation was done we split the work between us & worked in branches. When we were done with the assignment we merged the branches.
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We worked in different branches on GitHub that we merged together. Since it was the first time to work in branches the biggest challenge this week was to understand how to merge our changes.
+
+If we had more time we would add a input field or selector where you could search for different citys.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+
