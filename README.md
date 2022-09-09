@@ -1,13 +1,12 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+A pair project with the goal to develop a weather app. Primary focus to practice JavaScript, learn how to use API and work in branches.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Firstly, we concentrated on deciding on the design and creating the HTML, CSS and JS files and fetching our API. Secondly, we created a styling branch and then an API branch to work on the CSS and JS. Finally, we merged the branches and made the final touch using mob programming.
+If we had more time, we would love to add a geolocation feature, to change weather depending on the user's geolocation. We would also love to style the app with adding gradients.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+

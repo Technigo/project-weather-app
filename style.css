@@ -1,11 +1,11 @@
+/*Declare body as flexparent, with column as direction. 
+   font-family is Montserrat as in the design, and bold is on the weather.*/
 body {
-    /* Weights: bold and regular. bold in mainPiece class/id. And regular in rest of classes/ids */
     font-family: "Montserrat", serif;
     display: flex;
     height: 100vh;
     width: 100%;
     flex-direction: column;
-   /* padding: 20px; */
 }
 
 .weather-header {
@@ -35,11 +35,10 @@ body {
 
 .week-days {
     height: 30vh;
-    width: 100%;
     width: 85%;
     padding-left: 5%;
 }
-
+/*Here we make the unordered list none visable and only visable when its filled with the list from JavaScript.*/
 .week-days ul {
     list-style: none;
     padding-left: 0;
@@ -52,4 +51,50 @@ body {
     border-bottom: dashed 1px;
 }
 
+/*Media Queries*/
+/*Here we make the site responsive depening on where you view it, phone is standard, and it changes on tablet, 
+   and once again on desktop.*/
+
+@media (min-width: 667px) and (max-width: 1024px) {
+
+    h1 {
+        max-width: 30ch;
+        font-size: 45px
+    }
+
+    .weather-header {
+        font-size: 17px;
+    }
+
+    .weather-img {
+        height: 75px;
+    }
+    
+    .week-days {
+        font-size: 17px;
+    }
+}  
+
+@media (min-width: 1025px) {
+    
+    h1 {
+        max-width: 30ch;
+        font-size: 65px;
+    }
+
+    .weather-header {
+        font-size: 23px;
+        padding-top: 3%;
+    }
+
+   .weather-img {
+        height: 99px;
+    } 
+
+    .week-days {
+        font-size: 23px;
+        width: 75%;
+    }
+
+}
 
