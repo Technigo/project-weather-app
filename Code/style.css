@@ -13,7 +13,6 @@ body {
     max-width: 75vw;
     margin: auto;
     padding-top: 2em;
-
 }
 
 /* styling of first section: "main-weather" */
@@ -30,13 +29,6 @@ body {
     text-align:left;
     font-size: 18px;
 }
-
-.cities {
-    display: flex;
-    align-items: flex-end;
-
-}
-
 .select-city {
     background-color: #F9F5EB;
     color: #7D9D9C;
@@ -57,11 +49,8 @@ body {
     flex-direction: column;
     margin: 150px 0px 0px 0px;
     padding: 0px;
-   }
-
-.daily-forcast-row {
     font-size: 18px;
-}
+   }
 
 .forecast-row{
     display: flex;
@@ -92,6 +81,7 @@ i {
   font-size: 50px;
   padding-top: 5px;
 }
+
 .tempp {
     display: flex;
     flex-direction: row;
@@ -102,19 +92,24 @@ i {
 
 @media only screen and (min-width: 599px) {
     .today-summary h1 {
-        font-size: 48px;
+        font-size: 54px;
     }
     
     .daily-forcast-row {
-        font-size: 20px;
+        font-size: 32px;
     }
 
     .main-weather{
         text-align:left;
-        font-size: 20px;
+        font-size: 32px;
     }
 
     .weatherToday {
         align-items: center;
     }
+
+    .weekly-forcast-wrapper{
+        font-size: 32px;
+    }
+
 }
