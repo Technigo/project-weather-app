@@ -11,6 +11,7 @@ h1{
     font-weight: bold;
     margin-top: 15px;
     font-size: 30px;
+    display: flex;
 }
 
 .phrase{
@@ -50,6 +51,19 @@ input {
     border-radius: 4px;
     outline: none;
 
+}
+
+button {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    color: grey;
+    padding: 12px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px grey;
+    border-radius: 4px;
+    outline: none;
 }
 
 @media (min-width: 481px) {
