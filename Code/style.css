@@ -17,43 +17,51 @@ body {
 }
 
 /* styling of first section: "main-weather" */
-.today-summary p {
-    margin-top: 0.1em;
-    margin-bottom: 0;
-    border:solid black ;
+.today-summary h1 {
+    font-size: 32px;
 }
 
 .today-summary {
-    margin: 0%;
-    border:solid black ;
+    text-align: center;
 }
 
 /* styling of second section: "today-summary"*/
 .main-weather{
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    margin: 50px 0px;
-    padding: 0 5%;
-    border:solid red ;
+    text-align:left;
+    font-size: 18px;
 }
 
 .cities {
     display: flex;
     align-items: flex-end;
-}
-/* Styling of forcast*/
 
+}
+
+.select-city {
+    background-color: #F9F5EB;
+    color: #7D9D9C;
+    padding: 8px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+}
+
+.select-city:hover {
+    background-color: #EAE3D2;
+    color: #7D9D9C;
+}
+
+/* Styling of forcast*/
 .weekly-forcast-wrapper{
     display: flex;
     flex-direction: column;
-   /* justify-content: space-between;*/
     margin: 150px 0px 0px 0px;
     padding: 0px;
    }
 
+.daily-forcast-row {
+    font-size: 18px;
+}
 
 .forecast-row{
     display: flex;
@@ -62,11 +70,6 @@ body {
     padding: 3px;
     border-bottom: 2px dotted #333;
     margin: 0px;
-    
-    
-    /*justify-content: space-between;*/
-    /*align-items: center;*/
-
 }
 
 .long-day {
@@ -95,4 +98,23 @@ i {
     align-items: flex-end;
     padding: 0 px;
     
+}
+
+@media only screen and (min-width: 599px) {
+    .today-summary h1 {
+        font-size: 48px;
+    }
+    
+    .daily-forcast-row {
+        font-size: 20px;
+    }
+
+    .main-weather{
+        text-align:left;
+        font-size: 20px;
+    }
+
+    .weatherToday {
+        align-items: center;
+    }
 }
