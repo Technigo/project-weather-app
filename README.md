@@ -10,5 +10,5 @@ We worked in different branches on GitHub that we merged together. Since it was 
 If we had more time we would add a input field or selector where user could search for different citys.
 
 ## View it live
-
+https://illustrious-zuccutto-bdf838.netlify.app
 
