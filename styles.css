@@ -8,17 +8,26 @@ html {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+#hero {
+  background-image: url(./images/start-hero-img.jpg);  
+  background-size: cover; 
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+
 h1 {
     font-size: 40px;
-    padding-right: 8px;
     display: inline-block;
     margin: 1rem 0;
 }
 
-#weather-placeholder {
+#temp-placeholder {
     border: solid black;
-    border-width: 0 2px 0 0;
+    border-width: 0 0 0 2px;
+    padding-left: 4px;
 }
+
 
 h2 {
     margin: 8px 0;
@@ -64,10 +73,16 @@ main {
   flex-direction: column;
 }
 
+.city-selection {
+    width: 100px;
+}
+
 .todays-container {
     grid-column-start: 2;
     grid-column-end: 3;
-    grid-row-start: 2;  
+    grid-row-start: 2; 
+    position: relative; 
+
 }
 
 .sunrise-sunset {
@@ -204,7 +219,7 @@ main {
     .todays-icon-wrapper img {
         width: 40%;
     }
-    .todays-icon-wrapper p {
+    .todays-icon-wrapper h3 {
         margin: auto 10px;
     }
     .weekly-temperature {
