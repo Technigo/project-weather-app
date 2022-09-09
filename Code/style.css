@@ -81,6 +81,10 @@ body {
     padding: 0 px;
 }
 
+i {
+  font-size: 50px;
+  padding-top: 5px;
+}
 .tempp {
     display: flex;
     flex-direction: row;
