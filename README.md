@@ -1,13 +1,17 @@
 # Weather App
 
-Replace this readme with your own information about your project.
+The assignment was a pair project to create a weather dashbord with focus on fetching API to get current temperature and forecast.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We started with choosing a design and trying to get all the layout as close as possible. 
+The new techniqes we worked with this week was fetching API as well as working in branches to make the different features.
+If we had more time we would add min- and max temperature and weather icons that would change depending on the weather.
+We also wanted to make the design a bit closer to the provided design.
+
+We planned a feature freeze quite early to have enough time for debuging and finalizing the styling. If we had more time we would continue our features.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://curious-sorbet-7344d4.netlify.app
