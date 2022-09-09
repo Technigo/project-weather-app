@@ -11,8 +11,8 @@ const searchBar = document.getElementById('search-bar');
 const searchBtn = document.getElementById('search-btn');
 
 //API
-//To be able to look for new cities everything is placed inside a function
-//that gets invoked when the user clicks the search button
+// To be able to look for new cities everything is placed inside a function
+// that gets invoked when the user clicks the search button:
 function fetchWeather(city) {
   const API_KEY = '2f40e0f749f089e24a9bc1d552feee83';
   const currentWeather = fetch(
@@ -26,6 +26,9 @@ function fetchWeather(city) {
     .then(responses => {
       const arrayOfResponses = responses.map(res => res.json());
       return Promise.all(arrayOfResponses);
+    })
+    .catch(error => {
+      weatherMessage.innerHTML = `<h1 class="error">Something's wrong, try again later.</h1>`;
     })
 
     .then(json => {
@@ -46,7 +49,9 @@ function fetchWeather(city) {
       sunriseTime.innerText = `sunrise ${currentSunrise}`;
       sunsetTime.innerText = `sunset ${currentSunset}`;
 
-      //CURRENT WEATHER – colors/icon/message
+      //CURRENT WEATHER – colors/icon/message:
+      // Depending on the weather a different message
+      // is shown and the color scheme and icon changes:
       if (currentWeatherId >= 200 && currentWeatherId <= 531) {
         root.style.setProperty('--bg-color', '#a3def7');
         root.style.setProperty('--text-color', '#164a68');
@@ -69,30 +74,33 @@ function fetchWeather(city) {
 
       //WEATHER FORECAST
 
-      //Filtering to get only 12:00 info for the next five days
-      //and if not able to get 12:00 temp for day 5, take the latest available
+      // Filtering the api data to get only the temperature at 12:00
+      // for the next five days:
       const forecastData = json[1].list;
       let today = forecastData.shift();
 
       let onlyNoons = forecastData.filter(point => {
-        if (point.dt_txt.substr(0, 10) == today.dt_txt.substr(0, 10)) {
+        if (point.dt_txt.substr(0, 10) === today.dt_txt.substr(0, 10)) {
           return false;
         }
 
-        if (point.dt_txt.substr(11, 2) == '12') {
+        if (point.dt_txt.substr(11, 2) === '12') {
           return true;
         }
 
         return false;
       });
 
-      if (onlyNoons.length == 4) {
+      // If using the app before 12:00 and the weather for 12:00
+      // on day 5 is not available yet, it will take the latest
+      // available time/weather update for day 5:
+      if (onlyNoons.length === 4) {
         onlyNoons.push(forecastData.pop());
       }
 
-      //Looping through the onlyNoons array to get the dates and temperature
-      //formatting the dates to get the weekday names and putting each of
-      //the items in a <p> tag
+      // Looping through the onlyNoons array to get just the dates and temp
+      // formatting the dates to get the weekday names and putting each of
+      // the items in a <p> tag:
       forecastContainer.innerHTML = '';
       onlyNoons.forEach(point => {
         forecastContainer.innerHTML += `
@@ -108,13 +116,13 @@ function fetchWeather(city) {
     });
 }
 
-//To get weather for other cities the fetchWeather function
-//is invoked whenever the user clicks the search button
-//and the input value is being passed as a parameter
+// To get weather for other cities the fetchWeather function
+// is invoked with the input value as a parameter
+// whenever the user clicks the search button:
 searchBtn.addEventListener('click', () => {
   fetchWeather(searchBar.value);
   searchBar.value = '';
 });
 
-//Invoking the function when the app loads
-fetchWeather('Malmo');
+// Invoking the function when the app loads:
+fetchWeather('Gällivare');
