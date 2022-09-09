@@ -121,8 +121,9 @@ const getWeather = (city) => {
             }
     })
 }
+// Start program by displaying Stockholm weather, then listen for searches of other cities:
 getWeather('Stockholm');
-mainSearchbar.addEventListener('change', (event) => getWeather(event.target.value));
+mainSearchbar.addEventListener('change', (event) => getWeather(event.target.value, mainSearchbar.value=''));
 
 
     
