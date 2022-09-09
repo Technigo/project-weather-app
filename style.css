@@ -8,19 +8,16 @@
   }
 
 body {
-background: #eeeeec;
 font-family: 'Montserrat';
 margin: 0;
-padding: 50px;
-border: solid 1px;
-height: fit-content;
 }
 
-/* .main-section {
-padding: 30px;
+.main-section {
+padding: 50px;
 border: solid 1px;
 height: 100vh;
-} */
+box-sizing: border-box;
+}
 
 .sunny {
 background-color: var(--sunny-background);
@@ -47,6 +44,7 @@ margin-bottom: 50px;
 }
 
 .weather-summary p {
+margin: 0px 0px;
 padding-bottom: 6px;
 }
 
@@ -111,8 +109,6 @@ display: flex;
 justify-content: space-between;
 border-bottom: dashed 1px;
 }
-
-
 
 @media only screen and (min-width: 599px) {
     .main-section {

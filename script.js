@@ -15,6 +15,7 @@ const fiveDays = document.getElementById("fiveDays");
 const weatherGuidance = document.getElementById("weather-guidance");
 const pictureWeather = document.getElementById("weatherImage");
 const weatherH1 = document.getElementById("heading1");
+const mainSection = document.getElementById("main-section");
 
 
 // fetch data
@@ -28,7 +29,7 @@ fetch (API)
 // show data
 .then ((json) => {
   let city = json.name
-  let description = "thunderstorm"
+  let description = "cloud"
   //let description = json.weather[0].description
   let temperature = json.main.temp.toFixed(0)
   weatherSummary.innerHTML = `<p>${description} | ${temperature}°C</p>` 
@@ -59,17 +60,27 @@ const weatherSunrise = () => {
 
 // main: thunderstorm, drizzle, rain, snow, clear, clouds
 if  (description === `clear`) {
-weatherH1.innerHTML = `Get your sunnies on. ${city} is looking rather great today.`
-pictureWeather.innerHTML = `src=./Designs/Design-2/icons/noun_Sunglasses_2055147.svg`
-alt="image sunglasses"
+  mainSection.classList.add("sunny");
+  weatherH1.innerHTML = `Get your sunnies on. ${city} is looking rather great today.`
+  pictureWeather.setAttribute(
+  "src", 
+  "./Designs/Design-2/icons/noun_Sunglasses_2055147.svg"
+);
 } else if (description === "thunderstorm" || description === "drizzle" || description === "rain" || description === "snow") {
-pictureWeather.innerHTML = `src=./Designs/Design-2/icons/noun_Sunglasses_2055147.svg`
-alt="image sunglasses"
+  mainSection.classList.add("rainy");
   weatherH1.innerHTML = `Don't forget your umbrella. It's wet in ${city} today.`
+  pictureWeather.setAttribute(
+    "src", 
+    "./Designs/Design-2/icons/noun_Umbrella_2030530.svg"
+  );
 } else {
+  mainSection.classList.add("cloudy");
   weatherH1.innerHTML = `Light a fire and get cosy. ${city} is looking grey today.`
-}
-})
+  pictureWeather.setAttribute(
+    "src", 
+    "./Designs/Design-2/icons/noun_Cloud_1188486.svg"
+  );
+}})
 
 // Five day forecast section
 fetch(API_FORECAST)
