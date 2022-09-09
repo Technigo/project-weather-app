@@ -140,6 +140,7 @@ function ShowCityForcast(data) {
 const selectCityData = (city) => {
   weeklyWeather.innerHTML = "";
   mainWeather.innerHTML = "";
+  todaySummary.innerHTML = "";
   let apiUrl = "";
   let apiUrlForcast = "";
 
