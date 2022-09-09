@@ -29,8 +29,8 @@ fetch (API)
 // show data
 .then ((json) => {
   let city = json.name
-  let description = "cloud"
-  //let description = json.weather[0].description
+  //let description = "clear" - Used to check styling for each weather.
+  let description = json.weather[0].description
   let temperature = json.main.temp.toFixed(0)
   weatherSummary.innerHTML = `<p>${description} | ${temperature}°C</p>` 
   console.log(json)
@@ -65,7 +65,7 @@ if  (description === `clear`) {
   pictureWeather.setAttribute(
   "src", 
   "./Designs/Design-2/icons/noun_Sunglasses_2055147.svg"
-);
+  );
 } else if (description === "thunderstorm" || description === "drizzle" || description === "rain" || description === "snow") {
   mainSection.classList.add("rainy");
   weatherH1.innerHTML = `Don't forget your umbrella. It's wet in ${city} today.`
