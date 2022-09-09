@@ -7,6 +7,7 @@ body {
   font-weight: 300;
   background-color: #dfd2cb;
   color: #eedcc6;
+  overflow-y: hidden;
 }
 
 /* - - - BLUE: MAIN - - - - - - - - */
