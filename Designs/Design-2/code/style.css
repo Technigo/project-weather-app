@@ -1,35 +1,124 @@
-/* Cloudy */
-.cloudy {
-  --bg-cloudy: #f4f7f8;
-  --text-cloudy: #f47775;
-}
-
-/* Rainy */
-.rainy {
-  --bg-rainy: #a3def7;
-  --text-cloudy: #164a68;
-}
-
-/* Sunny */
-.sunny {
-  --bg-sunny: #f7e9b9;
-  --text-sunny: #2a5510;
+:root {
+  --bg-color: ;
+  --text-color: ;
 }
 
 body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
   font-family: 'Montserrat';
 }
 
-.forecast-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.error {
+  background: rgb(255, 0, 0);
+  color: white;
+  padding: 1.5rem 0.9rem 1.5rem 2rem;
+  max-width: 400px;
 }
 
-.forecast-day {
-  border-bottom: 2px dotted #164a68;
+.weather-app {
+  margin: 2.5rem 3rem 0 2.5rem;
 }
 
+.weather-desc-temp,
+.sun-time {
+  font-size: 0.9rem;
+  margin: 0;
+  padding-bottom: 0.3rem;
+}
 
-/* Design guidelines
+.weather-mid-container {
+  margin: 1.3rem 1.5rem 0 0;
+}
 
-Weights: bold and regular
+.weather-message {
+  font-size: 1.5rem;
+}
+
+.fc-day-container {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed;
+}
+
+.fc-day-temp {
+  font-size: 14px;
+  margin: 0;
+  padding: 0.3rem 0 0.1rem 0;
+}
+
+.search {
+  margin-top: 1.4rem;
+}
+
+.search-bar {
+  border: 1px solid var(--text-color);
+  border-radius: 3px;
+  height: 1.1rem;
+  width: 10rem;
+}
+
+.search-bar:focus,
+.search-bar:active,
+.search-bar::placeholder {
+  color: var(--text-color);
+  font-size: 0.7rem;
+  text-indent: 4px;
+  outline: none;
+}
+
+.search-btn {
+  border: none;
+  border-radius: 3px;
+  background: var(--text-color);
+  color: white;
+  font-size: 0.7rem;
+  height: 1.3rem;
+  vertical-align: middle;
+}
+
+@media (min-width: 668px) {
+  .weather-app {
+    margin: 2.5rem auto;
+    max-width: 550px;
+  }
+
+  .weather-desc-temp,
+  .sun-time {
+    font-size: 1.2rem;
+  }
+
+  .weather-mid-container {
+    margin-top: 3rem;
+  }
+
+  .weather-message {
+    font-size: 1.8rem;
+    margin: 2rem 0 1rem;
+  }
+
+  .fc-day-temp {
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+  }
+
+  .search {
+    margin-top: 2.5rem;
+  }
+
+  .search-bar {
+    height: 1.6rem;
+  }
+
+  .search-bar::placeholder {
+    font-size: 0.8rem;
+  }
+
+  .search-btn {
+    font-size: 0.7rem;
+    margin-left: 0.1rem;
+    vertical-align: middle;
+    height: 1.7rem;
+    width: 3.3rem;
+  }
+}
