@@ -12,7 +12,6 @@ body {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    width: 100%;
     height: 50%;
     padding: 5%;
     background: rgb(154, 154, 255) center/cover linear-gradient(to bottom, rgba(154, 154, 255), rgba(255, 255, 255, 0.73));
@@ -103,6 +102,26 @@ button {
     .hero{
          align-items: center;
     }
+}
 
+.weather-five-days {
+    display: block;
+    padding-top: 20%;
+}
 
+.forecast-day {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 7%;
+    padding-right: 7%;
+}
+
+.forecast-day img {
+    width: 20%;
+    height: auto;
+}
+
+.error {
+    padding-top: 10%;
 }
