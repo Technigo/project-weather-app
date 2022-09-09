@@ -4,7 +4,7 @@
 const weekdayWrapper = document.getElementById('schedule-weekdays')
 const mainWrapper = document.getElementById('main-wrapper')
 const skyState = document.getElementById('skyState')
-const skyInfo = document.getElementById('skyInfo')
+const currentLocation = document.getElementById('location')
 const sunrise = document.getElementById('sunrise')
 const sunset = document.getElementById('sunset')
 const cityName = document.getElementById('city-input')
@@ -42,7 +42,8 @@ fetch(api)
         var formattedTimeSunset = hours + ':' + minutes.substr(-2)
 
         console.log(roundedTemp)
-        skyState.innerHTML =`${json.name} | ${weatherType} | ${roundedTemp}°C`
+        currentLocation.innerHTML = `${json.name}`
+        skyState.innerHTML =`${weatherType} | ${roundedTemp}°C`
         sunrise.innerHTML = `Sunrise ${formattedTimeSunrise}`
         sunset.innerHTML = `Sunset ${formattedTimeSunset}`
 
@@ -118,6 +119,7 @@ chargeApi(apiUrlSthlm)
           console.log(apiUrlSthlm)
           chargeApi(apiUrlSthlm)
           return apiUrlSthlm
+
       }
       nameForm.addEventListener('submit',handleNameInput)
   
