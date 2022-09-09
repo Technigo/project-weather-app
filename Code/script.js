@@ -4,9 +4,9 @@ const mainWeather = document.getElementById("mainWeather");
 const weeklyWeather = document.getElementById("weeklyForcastWrapper");
 const dailyForcast = document.getElementById("dailyForcastRow");
 const selectCity = document.getElementById("cities");
+const weatherContainer = document.getElementById("weather-container");
 const ApiWeather =
   "http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=64d2a624607147029ae4574d21f5c6d9";
-const weatherContainer = document.getElementById("weather-container");
 
 /**** Weather APIs****/
 const stockholmWeather =
@@ -79,13 +79,13 @@ const ShowCityWeather = (data) => {
 const unixTimestampSunrise = data.sys.sunrise; //To get sunrise/sunset time in hours:minutes:seconds
   let sunrise = new Date(unixTimestampSunrise * 1000); //Declare new variable to show only hh:mm
   let sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: "short" });
-  mainWeather.innerHTML += `<p>Sunrise: ${sunriseTime}</p>`;
+  mainWeather.innerHTML += `<p>sunrise: ${sunriseTime}</p>`;
   
-    //Sunset
+   /*Sunset*/
 const unixTimestampSunset = data.sys.sunset;
   let sunset = new Date(unixTimestampSunset * 1000);
   let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: "short" });
-  mainWeather.innerHTML += `<p>Sunset: ${sunsetTime}</p>`;
+  mainWeather.innerHTML += `<p>sunset: ${sunsetTime}</p>`;
   
 
   /*Change apperance depending on weather*/
