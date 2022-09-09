@@ -35,17 +35,12 @@ const bangkokForcast =
   }
   
 
-
-
-
-
-
-/// Fetching Stockholm forcast and add it to fetchStockholmForcast
+/// Fetching  forcast and add it to fetchForcast
 
 const fetchForcast = (forcastApi) => {
   console.log("fetching forcast api", forcastApi);
 
-  const ForcastPromise = fetch(forcastApi)
+  const forcastPromise = fetch(forcastApi)
     .then((response) => {
     return response.json();
     })
@@ -53,31 +48,49 @@ const fetchForcast = (forcastApi) => {
       console.log("forcast data", data); 
     return data; 
     });
-    return ForcastPromise;
+    return forcastPromise;
   };
-    
-const ShowCityWeather = (data) => {
-  console.log("weatherdata", data);
-  //weather descpription and temperature with one decimal
-        container.innerHTML += `<p>${data.weather[0].description} | ${data.main.temp.toFixed(1)} &#8451</p>` //&#8451 is the formal for celsius, changed conatiner to main
+  
+/// Fetching weather and add it to fetchForcast
 
 
+  const fetchWeather = (weatherApi) => {
+    console.log("fetching weather api", weatherApi);
+  
+    const weatherPromise = fetch(weatherApi)
+      .then((response) => {
+      return response.json();
+      })
+      .then((data) => {
+        console.log("weather data", data); 
+      return data; 
+      });
+      return weatherPromise;
+    };
+
+
+// const ShowCityWeather = (data) => {
+//   console.log("weatherdata", data);
+//   //weather descpription and temperature with one decimal
+//         container.innerHTML += `<p>${data.weather[0].description} | ${data.main.temp.toFixed(1)} &#8451</p>` //&#8451 is the formal for celsius, changed conatiner to main
+
+// }
 
 /// Fetching Stockholm forcast and add it to fetchStockholmForcast
 
-const fetchForcast = (forcastApi) => {
-  console.log("fetching forcast api", forcastApi);
+// const fetchForcast = (forcastApi) => {
+//   console.log("fetching forcast api", forcastApi);
 
-  const ForcastPromise = fetch(forcastApi)
-    .then((response) => {
-    return response.json();
-    })
-    .then((data) => {
-      console.log("forcast data", data); 
-    return data; 
-    });
-    return ForcastPromise;
-  };
+//   const ForcastPromise = fetch(forcastApi)
+//     .then((response) => {
+//     return response.json();
+//     })
+//     .then((data) => {
+//       console.log("forcast data", data); 
+//     return data; 
+//     });
+//     return ForcastPromise;
+//   };
     
 const ShowCityWeather = (data) => {
   console.log("weatherdata", data);
