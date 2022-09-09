@@ -30,11 +30,16 @@ function showError(error) {
   alert("Browser doesn't support Geolocation.")
 }
 
+
+
 function getWeather(latitude, longitude){
   let apiUrl =`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`
-  console.log(apiUrl)
 
-
+  const getnewapi = (name) => {
+    let apinew = `https://api.openweathermap.org/data/2.5/forecast?q=${name}&units=metric&APPID=6912cf21e673e1261cfa693ed33d2aa7`
+    console.log("apinew",apinew)
+    chargesapi2(apinew)
+ }
 
 // Current weather 
 const chargeApi = (api) => {
@@ -44,6 +49,8 @@ fetch(api)
     })
     .then((json) => {
       const weatherType = `${json.weather[0].main}`
+      const name = json.name
+      getnewapi(name)
       if (json.main.temp > 200) {
         const currentTemp = `${json.main.temp}`
         const currentCelsiusTemp = currentTemp - 273.15
@@ -93,6 +100,7 @@ fetch(api)
         
         sunrise.innerHTML = `Sunrise ${formattedTimeSunrise}`
         sunset.innerHTML = `Sunset ${formattedTimeSunset}`
+
       }
 
 //this rounds the current temp up to 1 decimal
@@ -132,7 +140,8 @@ fetch(api)
       })
   }
 chargeApi(apiUrl)
- let apinew = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Swedenn&units=metric&APPID=6912cf21e673e1261cfa693ed33d2aa7'
+
+
  // 5-day weather forecast
 const chargesapi2 = (api) => { 
  fetch(api)
@@ -183,7 +192,7 @@ const chargesapi2 = (api) => {
           return apiUrl && apinew
       }
       nameForm.addEventListener('submit',handleNameInput)
-      chargesapi2(apinew)
+
      
     }
 
