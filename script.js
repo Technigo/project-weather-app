@@ -68,14 +68,14 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
             let sunrise = new Date(json.city.sunrise * 1000); // converts unix timestamp to milliseconds
             let sunset = new Date(json.city.sunset * 1000); // converts unix timestamp to milliseconds
             sunrise = sunrise.toLocaleString("en-SE", { hour: "numeric", minute: "numeric" }); // displays HH:MM in the correct timezone
-            sunset = sunset.toLocaleString("en-SE", { hour: "numeric", minute: "numeric"}); // displays HH:MM in the correct timezone
+            sunset = sunset.toLocaleString("en-SE", { hour: "numeric", minute: "numeric" }); // displays HH:MM in the correct timezone
             // console.log(sunrise);
             // console.log(sunset);
             sunriseUp.innerHTML = `<p> sunrise: ${sunrise} </p>`
             sunsetDown.innerHTML = `<p> sunset: ${sunset} </p>`
 
         }
-        
+
         const filteredForecast = json.list.filter(Days => Days.dt_txt.includes('12:00'))
         filteredForecast.map((Days) => {
             let d = new Date(Days.dt_txt);

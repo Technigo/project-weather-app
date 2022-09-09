@@ -2,24 +2,26 @@
 
 body {
     background-color: aliceblue;
-    /* height: 100%;
-    align-items: center;  
-    justify-content: space-between; */
     margin: 10%;
 
 }
 
 .todayForecast {
+    font-size: 25px;
     display: flex;
-margin-top: -10px;
-font-family: sans-serif, "Helvetica Neue", "Lucida Grande", Arial;
+    margin-top: -10px;
+    font-family: sans-serif, "Helvetica Neue", "Lucida Grande", Arial;
 }
+
 .current-sunrise {
+
     display: flex;
     margin-top: -30px;
     font-family: sans-serif, "Helvetica Neue", "Lucida Grande", Arial;
 }
+
 .current-sunset {
+
     display: flex;
     margin-top: -45px;
     font-family: sans-serif, "Helvetica Neue", "Lucida Grande", Arial;
@@ -27,7 +29,7 @@ font-family: sans-serif, "Helvetica Neue", "Lucida Grande", Arial;
 
 .weeky {
     display: flex;
-    
+
 }
 
 .days {
@@ -68,17 +70,86 @@ font-family: sans-serif, "Helvetica Neue", "Lucida Grande", Arial;
     font-family: sans-serif, "Helvetica Neue", "Lucida Grande", Arial;
     font-size: 30px;
     margin-top: 30px;
-    
+
 }
 
+/* //Screen */
 
-/* .search {
-    display: flex;
-    margin: 3%;
-    margin-left: 250px;
-    margin-top: 25px;
-}
+@media (min-width: 850px) {
 
-@media  (max-width:668px) {
-    
-} */
+
+    body {
+        margin: 1%;
+
+    }
+
+    .todayForecast {
+        font-size: 25px;
+        margin-left: 40px;
+        line-height: 2;
+    }
+
+    .current-sunrise {
+        font-size: 18px;
+        margin-left: 40px;
+        line-height: 1;
+    }
+
+    .current-sunset {
+        font-size: 18px;
+        margin-left: 40px;
+        line-height: 1;
+    }
+
+    .weeky {
+        display: flex;
+        margin-left: 35%;
+        margin-right: 35%;
+        margin-top: 1%;
+
+    }
+
+    .Clouds {
+        display: flex;
+        margin-left: 20%;
+        margin-right: 30%;
+
+
+    }
+
+    .Rainy {
+        display: flex;
+        margin-left: 20%;
+        margin-right: 30%;
+
+    }
+
+
+    .Clear {
+        display: flex;
+        margin-left: 20%;
+        margin-right: 30%;
+
+
+    }
+
+    .cloud {
+        display: flex;
+        margin-left: 10%;
+        margin-right: 10%;
+
+    }
+
+    .umbrella {
+        display: flex;
+        margin-left: 10%;
+        margin-right: 10%;
+
+    }
+
+    .sunny {
+        display: flex;
+        margin-left: 10%;
+        margin-right: 10%;
+
+    }
