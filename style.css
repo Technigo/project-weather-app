@@ -1,1 +1,67 @@
+.header {
+    background-color:burlywood;
+    height: 400px; 
+}
 
+.weekday {
+    display: grid;
+    grid-template-columns: 0.2fr 2fr 1fr 1fr 1fr;
+    margin: 8px 0px 8px 0px;
+    height: 70px;
+    border-radius: 120px;
+    align-items: center;
+    justify-items:  center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.day {
+    justify-self: baseline;
+    grid-column: 2 /3;
+}
+
+.feels-like {
+    grid-column: 5 / 6;
+}
+
+.rain-or-sun {
+    grid-column: 3 / 4; 
+}
+
+.day-temp {
+    grid-column: 4 / 5;
+}
+.weekday:hover {
+    background-color:#fafafa;
+}
+
+.weather-icon {
+    height: 20px;
+}
+
+/*iPad*/
+@media (min-width: 668px) and (max-width: 1024px) {
+    .weather-icon {
+        height: 40px;
+    }
+
+    .weekday {
+        margin: 12px 0px 12px 0px;
+        height: 90px;
+        border-radius: 150px;
+        font-size: 16px;
+    }
+}
+
+/*Desktop*/
+@media (min-width: 1025px) {    
+    .weather-icon {
+        height: 80px;
+    }
+
+    .weekday {
+        margin: 12px 0px 12px 0px;
+        height: 110px;
+        border-radius: 150px;
+        font-size: 20px;
+    }
+}
