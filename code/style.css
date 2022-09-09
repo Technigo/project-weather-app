@@ -132,8 +132,9 @@ a:link {
   font-weight: 500;
 }
 
-.cozy-text-icon {
-  font-size: 70px;
+.cozy-text-icon img {
+  height: 100px;
+  width: 100px;
 }
 
 .cozy-text-paragraph {
@@ -194,10 +195,6 @@ a:link {
     width: 240px;
   }
 
-  .cozy-text-icon {
-    font-size: 60px;
-  }
-
   .cozy-text-paragraph {
     font-size: 30px;
   }
@@ -236,4 +233,69 @@ a:link {
       line-height: 14px;
     }
   }
+}
+
+/* WEATHER BASED STYLING CLASSES */
+
+/* clear */
+
+.weather-condition-clear {
+  color: #597448;
+}
+.weather-condition-clear .weather-app {
+  background: #e1e2a1;
+}
+
+/* cloudy */
+
+.weather-condition-cloudy {
+  color: #f47775;
+}
+.weather-condition-cloudy .weather-app {
+  background: #f4f7f8;
+}
+
+/* rain or drizzle */
+
+.weather-condition-rain {
+  color: #164a68;
+}
+.weather-condition-rain .weather-app {
+  background: #a4cbdc;
+}
+
+/* thunderstorm */
+
+.weather-condition-thunderstorm {
+  color: #daa86d;
+}
+.weather-condition-thunderstorm .weather-app {
+  background: #164a68;
+}
+
+/* snow */
+
+.weather-condition-snow {
+  color: #5d5d5d;
+}
+.weather-condition-snow .weather-app {
+  background: #bde3ff;
+}
+
+/* mist */
+
+.weather-condition-mist {
+  color: #eedcc6;
+}
+.weather-condition-mist .weather-app {
+  background: #928279;
+}
+
+/* default aka fallback*/
+
+.weather-condition-default {
+  color: #eedcc6;
+}
+.weather-condition-default .weather-app {
+  background: #928279;
 }
