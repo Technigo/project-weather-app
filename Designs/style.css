@@ -6,20 +6,8 @@ body {
     font-family: 'Montserrat', 'sans-serif';
 }
 
-.clear {
-    background-color:#F7E9B9;
-    color: #2A5510
-}
-
-.rain {
-    background-color:#A3DEF7;
-    color: #164A68;
-}
-
-.cloud  {
-    background-color:#F4F7F8;
-    color: #F47775;
-}
+/*  weatherDescription 
+    Color changes depending on weather */
 
 .weatherDescription {
     display: flex;
@@ -36,6 +24,30 @@ body {
     line-height: 0px;
     margin: 15px;
 }
+
+
+
+/*  currentWeatherStyle 
+    Color changes depending on weather */
+
+.clear {
+    background-color:#F7E9B9;
+    color: #2A5510
+}
+
+.rain {
+    background-color:#A3DEF7;
+    color: #164A68;
+}
+
+.cloud  {
+    background-color:#F4F7F8;
+    color: #F47775;
+}
+
+
+
+
 
 .day-temp {
     display: flex;
