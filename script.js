@@ -11,7 +11,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     .then((json) => {
         
         // Default city temperature right now
-        weatherMain.innerHTML += `<h1>${json.main.temp.toFixed(1)}</h1><h4>°C</h4>`;
+        weatherMain.innerHTML = `<h1>${json.main.temp.toFixed(1)}</h1><h4>°C</h4>`;
        
         // Default city icon-representation of the weather
         weatherMain.innerHTML += `<img src='https://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png' alt='' />`;
@@ -20,23 +20,24 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         weatherMain.innerHTML += `<h2>${json.name}</h2>`;
         
         // Default city weather-description
-        const weathers = json.weather
+        const weathers = json.weather;
             weathers.map((weatherArrary) => {
                 weatherMain.innerHTML += `<h3>${weatherArrary.description}</h3>`;
-            })  
+            });  
+        // weatherMain.innerHTML += `<h3>${json.weather[0].description}</h3>`    
         
         // Default city temperature max/min today
         weatherMain.innerHTML += `<p>Min ${json.main.temp_min.toFixed(1)} °C</p>`;
         weatherMain.innerHTML += `<p>Max ${json.main.temp_max.toFixed(1)} °C</p>`;
 
         // Default city sunrise/sunset
-        const sunrise = new Date(json.sys.sunrise * 1000);
+        const sunrise = new Date(json.sys.sunrise * 1000); 
         const sunriseShort = sunrise.toLocaleTimeString([], { timeStyle: 'short' });
         const sunset = new Date(json.sys.sunset * 1000);
         const sunsetShort = sunset.toLocaleTimeString([], { timeStyle: 'short' });
 
-        weatherMain.innerHTML += `<p>sunrise ${sunriseShort}</p>`
-        weatherMain.innerHTML += `<p>sunset ${sunsetShort}</p>`
+        weatherMain.innerHTML += `<p>sunrise ${sunriseShort}</p>`;
+        weatherMain.innerHTML += `<p>sunset ${sunsetShort}</p>`;
 
     });
 }
@@ -54,7 +55,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
             newDay.dt_txt.includes('00:00:00')
         );
 
-        // Sorts out the dates so every timeslot of a certain day is bundled together in their own array
+        // Sorts out the dates so every timeslot of a certain day is bundled together in their own array 
         const objectDate = {};
 
         json.list.map((item) => {
@@ -68,7 +69,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
 
         // The function that creates the HTML elements for the temperature and finds the daily min and max temperatures 
         fiveDayForecast.map((item) => {
-            let dailyRows = document.createElement('div');
+            const dailyRows = document.createElement('div');
             
             const date = item.dt_txt.split(' ')[0];
             const weatherData = objectDate[date];
@@ -109,7 +110,7 @@ weatherForecast();
 
 // Search new city
 searchbar.addEventListener('change', () => {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchbar.value},Sweden&units=metric&APPID=39ac623b36ceedc5f50d07bfc1d9ced3`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchbar.value}&units=metric&APPID=39ac623b36ceedc5f50d07bfc1d9ced3`)
         .then((response) => {
             if(response.status === 200) {
                 weatherMain.innerHTML = '';
@@ -149,10 +150,9 @@ searchbar.addEventListener('change', () => {
         });
 
     // the weather-forcast for the next 5 days for the new city
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${searchbar.value},Sweden&units=metric&APPID=39ac623b36ceedc5f50d07bfc1d9ced3`)
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${searchbar.value}&units=metric&APPID=39ac623b36ceedc5f50d07bfc1d9ced3`)
         .then((response) => {
             if(response.status === 200) {
-                console.log('stad2-response_2', response)
                 weatherFiveDays.innerHTML = '';
                 return response.json();
             } else {
@@ -217,15 +217,3 @@ searchbar.addEventListener('change', () => {
 })  
 
 
-
-
-
-
-      
-
-
-
-    
-    // api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
-    
-    // http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
