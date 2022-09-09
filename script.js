@@ -2,22 +2,21 @@
 const container = document.getElementById('city')
 const fiveDays = document.getElementById('weeklyDays')
 const text = document.getElementById('warmCold')
-let sunriseUp = document.getElementById(`currentSunrise`)
-let sunsetDown = document.getElementById(`currentSunset`)
-const Weather = document.getElementById(`currentWeather`)
+let sunriseUp = document.getElementById('currentSunrise')
+let sunsetDown = document.getElementById('currentSunset')
+const Weather = document.getElementById('currentWeather')
 
 
 //Array of days
 const week = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
-//fetch today weather
+
 //fetch today weather
 fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=021625534abeaac2039ba88d0c89b1ce')
     .then((response) => {
         return response.json()
     })
     .then((json) => {
-        // container.innerHTML = `<h1>${json.name}</h1>`
         console.log(json)
         json.weather.map((type) => {
             container.innerHTML += `<div class="todayForecast">
@@ -69,14 +68,14 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
             let sunrise = new Date(json.city.sunrise * 1000); // converts unix timestamp to milliseconds
             let sunset = new Date(json.city.sunset * 1000); // converts unix timestamp to milliseconds
             sunrise = sunrise.toLocaleString("en-SE", { hour: "numeric", minute: "numeric" }); // displays HH:MM in the correct timezone
-            sunset = sunset.toLocaleString("en-SE", { hour: "numeric", minute: "numeric"}); // displays HH:MM in the correct timezone
+            sunset = sunset.toLocaleString("en-SE", { hour: "numeric", minute: "numeric" }); // displays HH:MM in the correct timezone
             // console.log(sunrise);
             // console.log(sunset);
-            sunriseUp.innerHTML = `<p> Sunrise: ${sunrise} </p>`
-            sunsetDown.innerHTML = `<p> Sunrise: ${sunset} </p>`
+            sunriseUp.innerHTML = `<p> sunrise: ${sunrise} </p>`
+            sunsetDown.innerHTML = `<p> sunset: ${sunset} </p>`
 
         }
-        
+
         const filteredForecast = json.list.filter(Days => Days.dt_txt.includes('12:00'))
         filteredForecast.map((Days) => {
             let d = new Date(Days.dt_txt);
@@ -97,9 +96,3 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
     })
 
 
-
-// fetch the data from the API. Then if you console.log the json
-// you'll see that we only care about the array called list.
-
-
-// filteredForecast is now an array with only the data from 12:00 each day.
