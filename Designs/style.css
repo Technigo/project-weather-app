@@ -1,3 +1,40 @@
-h1 {
-    color: red;
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #2A5510;
+    background-color: #F4F7F8;
+}
+
+@media (min-width: 667px) and (max-width: 1024px) {
+   body {
+    font-size: 25pt;
+   } 
+}
+
+@media (min-width: 1025px) {
+    body {
+        font-size: 35pt;
+    }
+}
+
+.sunflex {
+    justify-content: center;
+    display: flex;
+  
+}
+
+.suncontainer {
+    width: auto;
+    display: flex;
+    font-size: 15pt;
+}
+
+.stockholmcontainer {
+ display: flex;
+ justify-content: center;
+}
+
+.tempstat {
+    display: flex;
+    flex-direction: row;
+    
 }
