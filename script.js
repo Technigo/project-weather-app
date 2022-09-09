@@ -2,7 +2,6 @@
 const container = document.getElementById('city')
 const fiveDays = document.getElementById('weeklyDays')
 const text = document.getElementById('warmCold')
-const mainSearchbar = document.getElementById ('main-searchbar')
 let sunriseUp = document.getElementById(`currentSunrise`)
 let sunsetDown = document.getElementById(`currentSunset`)
 const Weather = document.getElementById(`currentWeather`)
@@ -41,8 +40,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
                 text.innerHTML +=
                     `<div class= "Clouds">
                 <img class= "cloud" src="./Designs/Design-2/icons/noun_Cloud_1188486.svg"/>
-                <p> Light a fire and get cozy. Stockholm is grey today.</p>
-                </div>`
+                <p> Light a fire and get cozy. Stockholm is grey today.</p></div>`
                 document.body.style.backgroundColor = "#f4f7f8";
                 document.body.style.color = "#f47775";
             } else {

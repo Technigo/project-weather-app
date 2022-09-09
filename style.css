@@ -53,9 +53,14 @@ body {
     font-size: 30px;
 }
 
-.searchCity{
+
+.search {
     display: flex;
-    padding: 5%;
+    margin: 10%;
     
 }
 
+.currentSunrise-currentSunset{
+    display: flex;
+    padding: 100px;
+}
