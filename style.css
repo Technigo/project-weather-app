@@ -5,16 +5,29 @@ body {
     /* height: 100%;
     align-items: center;  
     justify-content: space-between; */
-    margin: 15%;
+    margin: 10%;
+
 }
 
-/* .todayForecast{
+.todayForecast {
     display: flex;
-    
-} */
+margin-top: -10px;
+font-family: sans-serif, "Helvetica Neue", "Lucida Grande", Arial;
+}
+.current-sunrise {
+    display: flex;
+    margin-top: -30px;
+    font-family: sans-serif, "Helvetica Neue", "Lucida Grande", Arial;
+}
+.current-sunset {
+    display: flex;
+    margin-top: -45px;
+    font-family: sans-serif, "Helvetica Neue", "Lucida Grande", Arial;
+}
 
 .weeky {
     display: flex;
+    
 }
 
 .days {
@@ -37,6 +50,7 @@ body {
     font-weight: 800;
     font-family: sans-serif, "Helvetica Neue", "Lucida Grande", Arial;
     font-size: 30px;
+    margin-top: 30px;
 }
 
 
@@ -45,22 +59,26 @@ body {
     font-weight: 800;
     font-family: sans-serif, "Helvetica Neue", "Lucida Grande", Arial;
     font-size: 30px;
+    margin-top: 30px;
 }
+
 
 .Clear {
     font-weight: 800;
     font-family: sans-serif, "Helvetica Neue", "Lucida Grande", Arial;
     font-size: 30px;
-}
-
-
-.search {
-    display: flex;
-    margin: 10%;
+    margin-top: 30px;
     
 }
 
-.currentSunrise-currentSunset{
+
+/* .search {
     display: flex;
-    padding: 100px;
+    margin: 3%;
+    margin-left: 250px;
+    margin-top: 25px;
 }
+
+@media  (max-width:668px) {
+    
+} */
