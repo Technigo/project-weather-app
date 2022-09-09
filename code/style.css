@@ -8,4 +8,20 @@
 
 body {
   font-family: "Montserrat", sans-serif;
+  padding: 20px;
+}
+.main-container {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid black; */
+  width: 300px;
+  padding: 20px;
+  font-size: 30px;
+}
+.dayTemp {
+  display: flex;
+  width: 300px;
+  justify-content: space-between;
+  border-bottom: dotted 0.5px;
+  padding: 5px;
 }
