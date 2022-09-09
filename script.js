@@ -16,6 +16,7 @@ const weatherGuidance = document.getElementById("weather-guidance");
 const pictureWeather = document.getElementById("weatherImage");
 const weatherH1 = document.getElementById("heading1");
 
+
 // fetch data
 fetch (API)
 .then((response) => {
@@ -27,8 +28,8 @@ fetch (API)
 // show data
 .then ((json) => {
   let city = json.name
-  // let description = "clouds"
-  let description = json.weather[0].description
+  let description = "thunderstorm"
+  //let description = json.weather[0].description
   let temperature = json.main.temp.toFixed(0)
   weatherSummary.innerHTML = `<p>${description} | ${temperature}°C</p>` 
   console.log(json)
@@ -58,11 +59,15 @@ const weatherSunrise = () => {
 
 // main: thunderstorm, drizzle, rain, snow, clear, clouds
 if  (description === `clear`) {
-weatherGuidance.innerHTML = `Get your sunnies on. ${city} is looking rather great today.`
+weatherH1.innerHTML = `Get your sunnies on. ${city} is looking rather great today.`
+pictureWeather.innerHTML = `src=./Designs/Design-2/icons/noun_Sunglasses_2055147.svg`
+alt="image sunglasses"
 } else if (description === "thunderstorm" || description === "drizzle" || description === "rain" || description === "snow") {
-  weatherGuidance.innerHTML = `Don't forget your umbrella. It's wet in ${city} today.`
+pictureWeather.innerHTML = `src=./Designs/Design-2/icons/noun_Sunglasses_2055147.svg`
+alt="image sunglasses"
+  weatherH1.innerHTML = `Don't forget your umbrella. It's wet in ${city} today.`
 } else {
-  weatherGuidance.innerHTML = `Light a fire and get cosy. ${city} is looking grey today.`
+  weatherH1.innerHTML = `Light a fire and get cosy. ${city} is looking grey today.`
 }
 })
 
