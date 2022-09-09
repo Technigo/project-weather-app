@@ -1,13 +1,96 @@
-/*For mobile first*/
+/*fonts:
+https://fonts.google.com/specimen/Roboto
+*/
 
+
+/*For mobile first*/
+body {
+    margin: 0;
+    padding: 0;
+    background: url(./assets/city-image.jpeg) no-repeat center center fixed;
+    background-size: cover;
+  }
+  
+.main-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-around;
+}
+
+.weather-container {
+    color: white;
+    background: rgba(0, 0, 0, .2);
+    font-family: 'Roboto', sans-serif;
+    height: 40%;
+    flex-direction: column;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-left: 5%;
+    padding-top: 2%;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr ;
+}
+
+.weather-container h1 {
+   font-size: 60px;
+   color: black;
+   padding: 0;
+   margin: 0;
+}
+
+.weather-container h2 {
+    color: black;
+    padding: 0;
+    margin: 0;
+}
+
+#todays-temp {
+    grid-area: 1 / 1 / span 1 / span 2;
+}
+
+#city {
+    grid-area: 2 / 1 / span 1 / span 2;
+} 
+
+ #todays-weather{
+    grid-area: 3 / 1/ span 1 / span 2;
+}
+ 
+#sunrise {
+    grid-area: 4 / 1 / span 1 / span 1;
+}
+#sunset{
+    grid-area: 4 / 2 / span 1 / span 1;
+}
+
+.forecast-container {
+    font-family: 'Roboto', sans-serif;  
+    color: white;
+}
+
+.weekdays {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr;   
+    background: rgba(0, 0, 0, .2);
+    padding: 2%;
+    margin: 2% 5% 2% 5%;
+    justify-content: space-between;
+}  
 
 /*For tablets*/
 @media (min-width: 668px) and (max-width: 1024px) {
 
+ .weather-container {
+    margin-top: 20%;
+ }
 }
 
+/*For desktop screens*/
+@media (min-width: 1025px) {
 
-/*For desktop*/
-@media (min-width: 1024px) { 
-    
-}
+    .weather-container {
+       margin-top: 20%;
+    }
+   }
