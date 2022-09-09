@@ -51,6 +51,7 @@ fetch(api)
       const weatherType = `${json.weather[0].main}`
       const name = json.name
       getnewapi(name)
+      
       if (json.main.temp > 200) {
         const currentTemp = `${json.main.temp}`
         const currentCelsiusTemp = currentTemp - 273.15
@@ -186,7 +187,6 @@ const chargesapi2 = (api) => {
           apinew = `https://api.openweathermap.org/data/2.5/forecast?q=${name}n&units=metric&APPID=6912cf21e673e1261cfa693ed33d2aa7`
           console.log(apiUrl)
           chargeApi(apiUrl)
-          chargesapi2(apinew)
           weekdayWrapper.innerHTML = `<div class="weekdays" id="weekdayWrapper">  </div> `
 
           return apiUrl && apinew
