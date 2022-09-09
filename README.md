@@ -8,4 +8,4 @@ As a team we first started together with getting used to the API and how to use 
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://tourmaline-sable-678f53.netlify.app/
