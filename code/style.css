@@ -16,6 +16,10 @@ body {
   width: 300px;
 }
 
+.nameform:hover {
+  opacity: 0.7;
+}
+
 input {
   font-family: 'Montserrat';
   font-size: 18px;
