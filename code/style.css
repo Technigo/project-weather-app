@@ -8,20 +8,51 @@
 
 body {
   font-family: "Montserrat", sans-serif;
-  padding: 20px;
+  margin: 20px;
 }
+
 .main-container {
   display: flex;
   flex-direction: column;
-  /* border: 1px solid black; */
-  width: 300px;
+  width: auto;
   padding: 20px;
-  font-size: 30px;
+  font-size: 25px;
+}
+.todays-prompt img {
+  margin: 50px 0 0 0;
+  height: 80px;
+}
+
+h1 {
+  margin: 20px 0 50px 0;
+  font-size: 50px;
 }
 .dayTemp {
   display: flex;
-  width: 300px;
   justify-content: space-between;
-  border-bottom: dotted 0.5px;
   padding: 5px;
+  width: 90%;
+  border-bottom: dashed 1px;
+  text-transform: lowercase;
+}
+
+/* tablet styles */
+@media (min-width: 667px) and (max-width: 1024px) {
+  body {
+    margin: 20px;
+  }
+  .main-container {
+    width: 400px;
+  }
+  .base-container {
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* desktop styles */
+@media (min-width: 1024px) {
+  body {
+    margin: 170px;
+  }
 }
