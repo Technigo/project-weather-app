@@ -1,8 +1,8 @@
-const cityName = document.getElementById("city-placeholder");
-const cityTemp = document.getElementById("temp-placeholder");
 const cityWeather = document.getElementById("weather-placeholder");
+const cityTemp = document.getElementById("temp-placeholder");
 const sunriseTime = document.getElementById("sunrise-time");
 const sunsetTime = document.getElementById("sunset-time");
+const cityName = document.getElementById("city-placeholder");
 const weeklyTemp = document.getElementById("weekly-temperature-placeholder");
 const hero = document.getElementById("hero");
 const todaysIcon = document.getElementById("todays-icon");
@@ -20,19 +20,19 @@ fetch(
   .then((json) => {
     console.log(json);
     cityName.innerHTML = json.city.name;
-    cityTemp.innerHTML = json.list[0].main.temp.toFixed(1);
+    cityTemp.innerHTML = `${json.list[0].main.temp.toFixed(1)} °C`;
     cityWeather.innerHTML = json.list[0].weather[0].description;
+    
     const sunriseStart = new Date(json.city.sunrise * 1000);
     const sunsetStart = new Date(json.city.sunset * 1000); 
-
-    sunriseTime.innerHTML = sunriseStart.toLocaleTimeString([], {
+    sunriseTime.innerHTML = `sunrise ${sunriseStart.toLocaleTimeString([], {
       hour: "2-digit",
       minute: "2-digit",
-    });
-    sunsetTime.innerHTML = sunsetStart.toLocaleTimeString([], {
+    })}`;
+    sunsetTime.innerHTML = `sunset ${sunsetStart.toLocaleTimeString([], {
       hour: "2-digit",
       minute: "2-digit",
-    });
+    })}`;
 
     //Actual weather & background picture
     //clouds
