@@ -8,11 +8,6 @@ html {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-body {
-    background-size: cover; //flytta till rätt ställe
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-}
 
 h3 {
     margin: 0;
@@ -34,6 +29,9 @@ p {
 main {
     justify-content: center;
     align-items: center;
+    background-size: cover; 
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 .container {
     background-color: rgba(190, 189, 189, 0.7);
