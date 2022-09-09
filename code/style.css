@@ -7,7 +7,7 @@ body {
   font-weight: 300;
   background-color: #dfd2cb;
   color: #eedcc6;
-  overflow-y: hidden;
+  overflow: hidden;
 }
 
 /* - - - BLUE: MAIN - - - - - - - - */
@@ -17,11 +17,11 @@ body {
   margin-left: auto;
   margin-right: auto;
   width: auto;
-  height: 97.3vh;
+  height: 95.5vh;
   justify-content: space-between;
   flex-direction: column;
   background-color: #928279; /*-apps color-*/
-  padding: 15px;
+  padding: 20px;
   position: relative;
 }
 
@@ -37,6 +37,12 @@ body {
 
 .todays-weather {
   /* border: 1px solid red; */
+  font-size: 18px;
+}
+
+.todays-weather-row {
+  /* border: 1px solid red; */
+  padding-bottom: 7px;
 }
 
 /* - - - PURPLE: HAMBURGER MENU - - - - - - - - */
@@ -51,8 +57,13 @@ body {
 .burger-btn {
   background: none;
   border: none;
-  padding: 0 10px 0 10px;
+  padding: 10px;
   cursor: pointer;
+  align-self: flex-start;
+}
+
+.burger {
+  width: 38px;
 }
 
 /*--Targets the position of the menu--*/
@@ -136,11 +147,14 @@ a:link {
 .weather-forecast-entry {
   display: flex;
   justify-content: space-between;
+  font-size: 18px;
+  align-items: center;
+  padding-top: 5px;
 }
 
-.weather-forecast-icon {
-  width: 23px;
-  height: 23px;
+.weather-forecast-entry-icon {
+  width: 28px;
+  height: 28px;
 }
 
 /* - - - - - - - - - - - - - - - - - - - MEDIA QUERIES - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -151,8 +165,18 @@ a:link {
   .weather-app {
     margin-top: 150px;
     max-width: 325px;
-    height: 500px;
+    height: 550px;
     border-radius: 10px;
+  }
+
+  .todays-weather {
+    /* border: 1px solid red; */
+    font-size: 16px;
+  }
+
+  .todays-weather-row {
+    /* border: 1px solid red; */
+    padding-bottom: 7px;
   }
 
   .input-location {
@@ -170,18 +194,33 @@ a:link {
     font-size: 30px;
   }
 
+  .weather-forecast-entry {
+    display: flex;
+    justify-content: space-between;
+    line-height: 16px;
+    font-size: 16px;
+  }
+
+  .weather-forecast-entry-icon {
+    width: 20px;
+    height: 20px;
+  }
+
   /* - - - DESKTOP - - - - - - - - */
 
   @media (min-width: 1025px) {
     .weather-app {
-      margin-top: 100px;
+      margin-top: 70px;
       max-width: 300px;
     }
 
     .input-location {
-      padding: 10px;
       margin-top: 30px;
       width: 200px;
+    }
+
+    .weather-forecast-entry {
+      line-height: 14px;
     }
   }
 }

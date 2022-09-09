@@ -66,7 +66,7 @@ const printForecastEntry = (dayForecast) => {
   weatherForecast.innerHTML += `
   <div class="weather-forecast-entry">
   <span>${daysOfTheWeek[dayOfTheWeek]}</span>
-  <span><img src="${forecastIcon}" class="weather-forecast-icon" alt="${forecastWeatherType}"/></span>
+  <span><img src="${forecastIcon}" class="weather-forecast-entry-icon" alt="${forecastWeatherType}"/></span>
   <span>${dayForecast.main.temp.toFixed(0)}°</span>
   </div>
   `;
@@ -132,10 +132,12 @@ searchForm.addEventListener("submit", (e) => {
   console.log("change city to", city);
   getWeather(city);
 });
+
 burger.addEventListener("click", show);
 closeMenu.addEventListener("click", close);
 searchForm.addEventListener("submit", close);
 
+// Enable user to close burger menu by pressing escape button
 document.onkeydown = function (evt) {
   evt = evt || window.event;
   var isEscape = false;
