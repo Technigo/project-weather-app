@@ -4,31 +4,75 @@
   --text-rainy: #164a68;
 }
 
-/* Sunny */
 .sunny {
   --bg-sunny: #f7e9b9;
   --text-sunny: #2a5510;
 }
 
-/* Cloudy */
 .cloudy {
-  --bg-cloudy: #f4f7f8;
-  --text-cloudy: #f47775;
+  --bg-color: #f4f7f8;
+  --text-color: #f47775;
 }
 
 body {
   font-family: 'Montserrat';
 }
 
-.forecast-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.weather-app {
+  margin: 2.5rem 3.5rem 0 2.5rem;
 }
 
-.forecast-day {
-  border-bottom: 2px dotted;
+.weather-desc-temp,
+.sun-time {
+  font-size: 0.9rem;
+  margin: 0;
+  padding-bottom: 0.3rem;
 }
 
-/* Design guidelines
+.weather-mid-container {
+  margin-top: 1.2rem;
+  max-width: 345px;
+}
 
-Weights: bold and regular
+.weather-message {
+  font-size: 1.5rem;
+}
+
+.fc-day-container {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed;
+}
+
+.fc-day-temp {
+  font-size: 14px;
+  margin: 0;
+  padding: 0.3rem 0 0.1rem 0;
+}
+
+.search {
+  margin-top: 1.3rem;
+}
+
+.search-bar {
+  border: 1px solid darkolivegreen;
+  border-radius: 3px;
+  height: 1.1rem;
+  width: 10rem;
+}
+
+.search-bar::placeholder {
+  color: darkolivegreen;
+  font-size: 0.7rem;
+  text-indent: 4px;
+}
+
+.search-btn {
+  border: none;
+  border-radius: 3px;
+  background: darkolivegreen;
+  color: white;
+  font-size: 0.7rem;
+  height: 1.3rem;
+  vertical-align: middle;
+}

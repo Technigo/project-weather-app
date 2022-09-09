@@ -1,8 +1,7 @@
 //DOM elements
 const body = document.querySelector('body');
 
-const weatherDescription = document.getElementById('weather-description');
-const todaysTemp = document.getElementById('todays-temp');
+const weatherDescAndTemp = document.getElementById('weather-desc-temp');
 const sunriseTime = document.getElementById('sunrise-time');
 const sunsetTime = document.getElementById('sunset-time');
 const weatherIcon = document.getElementById('weather-icon');
@@ -25,14 +24,11 @@ function fetchWeather(city) {
 
   Promise.all([currentWeather, weatherForecast])
     .then(responses => {
-      console.log(responses);
       const arrayOfResponses = responses.map(res => res.json());
       return Promise.all(arrayOfResponses);
     })
 
     .then(json => {
-      console.log(json);
-
       //CURRENT WEATHER – variables:
       let currentLocation = json[0].name;
       let currentWeatherId = json[0].weather[0].id;
@@ -46,10 +42,9 @@ function fetchWeather(city) {
       ).toLocaleTimeString('en-GB', { timeStyle: 'short' });
 
       //CURRENT WEATHER – DOM rendering:
-      weatherDescription.innerText = currentWeatherDesc;
-      todaysTemp.innerText = `${currentTemp}º`;
-      sunriseTime.innerText = `Sunrise ${currentSunrise}`;
-      sunsetTime.innerText = `Sunset ${currentSunset}`;
+      weatherDescAndTemp.innerText = `${currentWeatherDesc} | ${currentTemp}ºC`;
+      sunriseTime.innerText = `sunrise ${currentSunrise}`;
+      sunsetTime.innerText = `sunset ${currentSunset}`;
 
       //CURRENT WEATHER – colors/icon/message
       if (currentWeatherId >= 200 && currentWeatherId <= 531) {
@@ -101,14 +96,14 @@ function fetchWeather(city) {
       forecastContainer.innerHTML = '';
       onlyNoons.forEach(point => {
         forecastContainer.innerHTML += `
-          <p class="forecast-day">${new Date(point.dt_txt).toLocaleDateString(
+        <div class="fc-day-container">
+          <p class="fc-day-temp">${new Date(point.dt_txt).toLocaleDateString(
             'en-GB',
             {
               weekday: 'short',
             }
-          )}</p>
-          <p class="forecast-temp">${Math.floor(point.main.temp)}º</p>
-          `;
+          )}</p> <p class="fc-day-temp">${Math.floor(point.main.temp)}ºC</p>
+          </div>`;
       });
     });
 }
