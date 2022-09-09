@@ -16,10 +16,10 @@ const searchBtn = document.getElementById('search-btn');
 function fetchWeather(city) {
   const API_KEY = '2f40e0f749f089e24a9bc1d552feee83';
   const currentWeather = fetch(
-    `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&lang=en&appid=${API_KEY}`
+    `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&lang=en&appid=${API_KEY}`
   );
   const weatherForecast = fetch(
-    `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&lang=en&appid=${API_KEY}`
+    `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&lang=en&appid=${API_KEY}`
   );
   
   Promise.all([currentWeather, weatherForecast])
