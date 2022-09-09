@@ -1,4 +1,4 @@
-// API Key = b7874ca1c4d00ac10b0c0385176b9111
+const key = "b7874ca1c4d00ac10b0c0385176b9111"
 // API key 2 = 6912cf21e673e1261cfa693ed33d2aa7
 
 const weekdayWrapper = document.getElementById('schedule-weekdays')
@@ -11,7 +11,28 @@ const cityName = document.getElementById('city-input')
 const sendBtn = document.getElementById('send-btn')
 const nameForm = document.getElementById('name-form')
 
-let apiUrlSthlm = "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=6912cf21e673e1261cfa693ed33d2aa7"
+if("geolocation" in navigator){
+  navigator.geolocation.getCurrentPosition(setPosition,showError);
+} else{
+alert("Browser doesn't support Geolocation.")
+}
+
+
+function setPosition(position){
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  getWeather(latitude,longitude);
+}
+
+
+
+function showError(error) {
+  alert("Browser doesn't support Geolocation.")
+}
+
+function getWeather(latitude, longitude){
+  let apiUrl =`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`
+
 
 
 // Current weather 
@@ -33,14 +54,13 @@ fetch(api)
         // Minutes part from the timestamp
         var minutes = "0" + date.getMinutes();     
         // Will display time in 10:30:23 format
-        var formattedTimeSunrise = hours + ':' + minutes.substr(-2)
-        
+        var formattedTimeSunrise = hours + ':' + minutes.substr(-2);
         let sunsetTime = json.sys.sunset
         var date = new Date(sunsetTime * 1000);
         var hours = date.getHours();
         var minutes = "0" + date.getMinutes();
-        var formattedTimeSunset = hours + ':' + minutes.substr(-2)
-
+        var formattedTimeSunset = hours + ':' + minutes.substr(-2);
+        
         console.log(roundedTemp)
         skyState.innerHTML =`${json.name} | ${weatherType} | ${roundedTemp}°C`
         sunrise.innerHTML = `Sunrise ${formattedTimeSunrise}`
@@ -75,12 +95,15 @@ fetch(api)
             `
           }
          
-    })
-  }
-chargeApi(apiUrlSthlm)
- // 5-day weather forecast
 
- fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Swedenn&units=metric&APPID=6912cf21e673e1261cfa693ed33d2aa7')
+
+      })
+  }
+chargeApi(apiUrl)
+ let apinew = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Swedenn&units=metric&APPID=6912cf21e673e1261cfa693ed33d2aa7'
+ // 5-day weather forecast
+const chargesapi2 = (api) => { 
+ fetch(api)
     .then((response) => {
         return response.json()
     })
@@ -97,6 +120,7 @@ chargeApi(apiUrlSthlm)
             const dayName = weekdayName[date.getDay()] // the getDay() method returns the day of the week for the specified date in weekdayName array to local time, 0 represents Sunday.
             const weatherIcon = item.weather[0].icon  //gets the correct icon from the forecast
             
+            
             weekdayWrapper.innerHTML += `   
             <div class="weekdays" id="weekdayWrapper">  
               <div class="weekday-rows" id="weekdayRows">
@@ -107,19 +131,26 @@ chargeApi(apiUrlSthlm)
                       </div> 
                   </div>
               </div>`
+            
+
           })  //the toFixed() method converts the temp number to a string and rounds the string to only 1 decimal
 
         })
-
+      }
+       
         const handleNameInput = (event) => {
           event.preventDefault()
           const name = cityName.value
-          apiUrlSthlm = `http://api.openweathermap.org/data/2.5/weather?q=${name}&units=metric&APPID=b7874ca1c4d00ac10b0c0385176b9111`
-          console.log(apiUrlSthlm)
-          chargeApi(apiUrlSthlm)
-          return apiUrlSthlm
+          apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${name}n&units=metric&APPID=b7874ca1c4d00ac10b0c0385176b9111`
+          apinew = `https://api.openweathermap.org/data/2.5/forecast?q=${name}n&units=metric&APPID=6912cf21e673e1261cfa693ed33d2aa7`
+          console.log(apiUrl)
+          chargeApi(apiUrl)
+          chargesapi2(apinew)
+          weekdayWrapper.innerHTML = `<div class="weekdays" id="weekdayWrapper">  </div> `
+
+          return apiUrl && apinew
       }
       nameForm.addEventListener('submit',handleNameInput)
-  
-
-       
+      chargesapi2(apinew)
+     
+    }
