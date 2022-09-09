@@ -1,7 +1,16 @@
 body {
+    display: flex;
     background-color: bisque;
     font-style: #164A68;
     font-family: 'Montserrat', sans-serif;
+  
+}
+
+.geo {
+    display: flex;
+    flex-direction: column;
+    max-width: 60%;
+    color: #2A5510; 
 }
     
 .date {
@@ -15,5 +24,7 @@ body {
 
 }
 
-p {}
+
+/*----animation color change due to weather change-----*/
+
     
