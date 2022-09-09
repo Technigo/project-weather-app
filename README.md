@@ -1,4 +1,5 @@
 # Weather App
+Viktor and Marias Weather APP :)
 
 A pair project with the goal to develop a weather app. Primary focus to practice JavaScript, learn how to use API and work in branches.
 
