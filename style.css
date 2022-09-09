@@ -10,6 +10,7 @@
 body {
     font-family: 'Montserrat';
     margin: 0;
+    height: auto;
 }
 
 .main-section {
@@ -89,12 +90,17 @@ body {
     border-bottom: none;
 }
 
-@media only screen and (min-width: 599px) {
+@media (max-width: 375px) {
+    .main-section {
+        height: auto;
+    }
+} 
+
+@media (min-width: 599px) {
     .main-section {
         display: flex;
         flex-direction: column;
         margin: 0 auto;
-        height: 812px;
         box-sizing: none;
     }
 

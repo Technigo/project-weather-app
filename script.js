@@ -105,7 +105,7 @@ fetch(API_FORECAST)
   ]
 
   filteredForecast.forEach((day) => {
-    const date = new Date(day.dt_txt)
+    const date = new Date(day.dt_txt.replace(/-/g, "/"))
     let weekdayNumber= date.getDay()
     let roundedTemperature = day.main.temp.toFixed(0)
 
