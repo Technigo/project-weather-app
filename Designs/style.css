@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Comforter+Brush&family=Dancing+Script:wght@500&family=EB+Garamond&family=Montserrat+Alternates:ital,wght@1,500&family=Open+Sans:wght@300&display=swap%27');
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Comforter+Brush&family=Dancing+Script:wght@500&family=EB+Garamond&family=Montserrat+Alternates:ital,wght@1,500&family=Montserrat:wght@400;600&family=Open+Sans:wght@300&display=swap');
 
 body {
     font-size: 28px;
     text-align: center;
-  
+    font-family: 'Montserrat', 'sans-serif';
 }
 
 .clear {
@@ -29,7 +29,7 @@ body {
 }
 
 .weatherDescription p {
-    font-family: 'Montserrat';
+    font-weight: 400;
     text-transform: lowercase;
     text-align: left;
     font-size: 25px;
@@ -48,7 +48,10 @@ body {
     align-items: center;
     border-bottom: 1px dashed;
     text-transform: lowercase;
+}
 
+.mainMessage {
+    margin-top: 40px;
 }
 
 .weeklyWeather {
