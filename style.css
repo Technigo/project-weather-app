@@ -1,3 +1,61 @@
-body{
-    background-color: rgb(106, 164, 145);
+/* Default Media */
+
+body {
+    background-color: aliceblue;
+    /* height: 100%;
+    align-items: center;  
+    justify-content: space-between; */
+    margin: 15%;
 }
+
+/* .todayForecast{
+    display: flex;
+    
+} */
+
+.weeky {
+    display: flex;
+}
+
+.days {
+    flex: 70%;
+    border-bottom: 1px dashed;
+    line-height: 0px;
+
+
+}
+
+.temperature {
+    float: right;
+    border-bottom: 1px dashed;
+    line-height: 0px;
+
+
+}
+
+.Clouds {
+    font-weight: 800;
+    font-family: sans-serif, "Helvetica Neue", "Lucida Grande", Arial;
+    font-size: 30px;
+}
+
+
+
+.Rainy {
+    font-weight: 800;
+    font-family: sans-serif, "Helvetica Neue", "Lucida Grande", Arial;
+    font-size: 30px;
+}
+
+.Clear {
+    font-weight: 800;
+    font-family: sans-serif, "Helvetica Neue", "Lucida Grande", Arial;
+    font-size: 30px;
+}
+
+.searchCity{
+    display: flex;
+    padding: 5%;
+    
+}
+
