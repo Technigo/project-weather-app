@@ -1,5 +1,4 @@
 // Api 
-const API = 'https://api.openweathermap.org/data/2.5/weather?q=Amsterdam,Netherlands&units=metric&appid=26500228b15aa40fc0617041c68bf843'
 const apiForeCast = 'https://api.openweathermap.org/data/2.5/forecast?q=Amsterdam,Netherlands&units=metric&appid=26500228b15aa40fc0617041c68bf843'
 
 // Global DOM selectors
@@ -11,7 +10,8 @@ const message = document.getElementById("message")
 const forCast = document.getElementById('forCast')
 
 // fetch the API for header section 
-fetch (API)
+searchCity.addEventListener('change', (event) => {
+    fetch ((`https://api.openweathermap.org/data/2.5/weather?q=${event.target.value}&units=metric&appid=26500228b15aa40fc0617041c68bf843`))
 .then ((response) => {
     return response.json ()
 })
@@ -57,6 +57,7 @@ if (currentDescription === "Clear") {
 }
 }
 )
+})
 
 // turning the date to a string short weekday. 
 const weekDay = (data) => {

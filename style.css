@@ -36,6 +36,22 @@ h1{
     border-bottom: 1px dashed;
 }
 
+input {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    background-color: white;
+    color: grey;
+    width: 80%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px grey;
+    border-radius: 4px;
+    outline: none;
+
+}
+
 @media (min-width: 481px) {
     body{ 
         margin: 60px;
