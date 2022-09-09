@@ -86,7 +86,7 @@ fetch(apiForecast)
   );
   
   // printed out forcast. filterTable [x] changes depends of which day. 
-  forCast.innerHTML += `
+  forCast.innerHTML = `
 <div class="dayAndTemp">
     <div class="day">${weekDay(filterTable[0].dt)}</div>
     <div class="temp"> ${filterTable[0].main.temp.toFixed(0)}°</div>
