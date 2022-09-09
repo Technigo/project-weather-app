@@ -7,7 +7,7 @@ body {
   font-weight: 300;
   background-color: #dfd2cb;
   color: #eedcc6;
-  overflow: hidden;
+  /*overflow: hidden; */
 }
 
 /* - - - BLUE: MAIN - - - - - - - - */
@@ -17,12 +17,13 @@ body {
   margin-left: auto;
   margin-right: auto;
   width: auto;
-  height: 95.5vh;
+  height: auto;  
   justify-content: space-between;
   flex-direction: column;
   background-color: #928279; /*-apps color-*/
-  padding: 20px;
+  padding: 10px;
   position: relative;
+  box-shadow: 1px 3px 27px 0px rgba(80,74,74,0.84);
 }
 
 /* - - - PINK: HEADER WRAPPER - - - - - - - - */
@@ -38,6 +39,7 @@ body {
 .todays-weather {
   /* border: 1px solid red; */
   font-size: 18px;
+
 }
 
 .todays-weather-row {
@@ -135,13 +137,17 @@ a:link {
 }
 
 .cozy-text-paragraph {
-  font-size: 35px;
+  font-size: 32px;
 }
 
 /* - - - GREEN: WEATHER FORECAST - - - - - - - - */
 
 .weather-forecast {
   /* border: 1px solid green; */
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding: 2px;
+
 }
 
 .weather-forecast-entry {
@@ -149,7 +155,7 @@ a:link {
   justify-content: space-between;
   font-size: 18px;
   align-items: center;
-  padding-top: 5px;
+  padding-top: 8px;
 }
 
 .weather-forecast-entry-icon {
@@ -164,9 +170,11 @@ a:link {
 @media (min-width: 668px) {
   .weather-app {
     margin-top: 150px;
+    margin-bottom: 150px;
     max-width: 325px;
     height: 550px;
     border-radius: 10px;
+    padding-bottom: 0px
   }
 
   .todays-weather {
@@ -176,7 +184,7 @@ a:link {
 
   .todays-weather-row {
     /* border: 1px solid red; */
-    padding-bottom: 7px;
+    padding-bottom: 5px;
   }
 
   .input-location {
@@ -192,6 +200,10 @@ a:link {
 
   .cozy-text-paragraph {
     font-size: 30px;
+  }
+
+  .weather-forecast {
+    margin-top: -28px;
   }
 
   .weather-forecast-entry {
@@ -212,6 +224,7 @@ a:link {
     .weather-app {
       margin-top: 70px;
       max-width: 300px;
+      margin-bottom: 70px;
     }
 
     .input-location {
