@@ -33,6 +33,34 @@ function fetchWeather(city) {
   const weatherForecast = fetch(
     `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&lang=en&appid=${API_KEY}`
   );
+  const findMyState = () => {
+  const status = document.querySelector('.state');
+
+  const success = (position) => {
+    const latitude = position.coords.latitude
+    const longitude = position.coords.longitude
+  
+    
+
+    const geoApiUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=5&appid=${API_KEY}`
+
+    fetch(geoApiUrl)
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      status.textContent.data
+    })
+  }
+
+  const error = () => {
+    status.textContent = 'Unable to find your location'
+  }
+
+  navigator.geolocation.getCurrentPosition(success, error)
+
+}
+
+document.querySelector('.find-state').addEventListener('click', findMyState);
 
   Promise.all([currentWeather, weatherForecast])
     .then(responses => {
