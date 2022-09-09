@@ -4,7 +4,7 @@ body {
     font-size: 28px;
     text-align: center;
     font-family: 'Montserrat', 'sans-serif';
-    height: 100%;
+    
 }
 
 /*  weatherDescription 
@@ -33,17 +33,20 @@ body {
 
 .clear {
     background-color:#F7E9B9;
-    color: #2A5510
+    color: #2A5510;
+    height: 100vh;
 }
 
 .rain {
     background-color:#A3DEF7;
     color: #164A68;
+    height: 100vh;
 }
 
 .cloud  {
     background-color:#F4F7F8;
     color: #F47775;
+    height: 100vh;
 }
 
 
