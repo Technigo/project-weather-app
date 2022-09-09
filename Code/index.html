@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css" />
-  <title>Weather App</title>
-  <script src="https://kit.fontawesome.com/d3a081d521.js" crossorigin="anonymous"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Weather App</title>
+    <script src="https://kit.fontawesome.com/d3a081d521.js" crossorigin="anonymous"></script>
 </head>
-<body id="body">
-  <header class = "main-weather" id = "mainWeather"></header>
-  <div class="today-summary" id ="todaySummary"></div>
-  <section class = "weather" id = "weather-container">
-<div class="weekly-forcast-wrapper" id ="weeklyForcastWrapper">
-<div class="daily-forcast-row" id="dailyForcastRow">
-</div>
-</div>
-<script src="./script.js"></script>
-</body>
+  <body>
+    <header>
+      <div class="cities">
+        <select id="cities" class="select-city">
+          <option value="Stockholm">Stockholm</option>
+          <option value="Sidney">Sidney</option>
+          <option value="London">London</option>
+          <option value="Bankok">Bangkok</option>
+        </select>
+      </div>
+    </header>
+    <section class = "weather" id = "weather-container"></section>
+    <div class="today-summary" id="todaySummary"></div>
+    <div class="main-weather" id="mainWeather"></div>
+    <div class="daily-forcast-row" id="dailyForcastRow"></div>
+    <div class="weekly-forcast-wrapper" id="weeklyForcastWrapper">
+    </div>
+    <script src="./script.js"></script>
+  </body>
 </html>

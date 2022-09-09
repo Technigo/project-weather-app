@@ -17,13 +17,13 @@ body {
 }
 
 /* styling of first section: "main-weather" */
-.main-weather p {
+.today-summary p {
     margin-top: 0.1em;
     margin-bottom: 0;
     border:solid black ;
 }
 
-.main-weather {
+.today-summary {
     margin: 0%;
     border:solid black ;
 }
@@ -40,6 +40,10 @@ body {
     border:solid red ;
 }
 
+.cities {
+    display: flex;
+    align-items: flex-end;
+}
 /* Styling of forcast*/
 
 .weekly-forcast-wrapper{
