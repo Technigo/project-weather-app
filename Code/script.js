@@ -1,3 +1,4 @@
+/****DOM Elements****/
 const container = document.getElementById("todaySummary");
 const mainWeather = document.getElementById("mainWeather");
 const weeklyWeather = document.getElementById("weeklyForcastWrapper");
@@ -7,7 +8,7 @@ const ApiWeather =
   "http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=64d2a624607147029ae4574d21f5c6d9";
 const weatherContainer = document.getElementById("weather-container");
 
-//this is the API variable for today weathers
+/**** Weather APIs****/
 const stockholmWeather =
   "http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=64d2a624607147029ae4574d21f5c6d9";
 const sidneyWeather =
@@ -17,7 +18,7 @@ const londonWeather =
 const bangkokWeather =
   "http://api.openweathermap.org/data/2.5/weather?q=Bangkok,Thailand&units=metric&APPID=c0ec35bd685cdcb888f10c443a6c14d5";
 
-// this is the API variable for the 5 days forecast
+/**** Forcast APIs****/
 const stockholmForcast =
   "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=4c7a468589eea9cb94d5053a081d05ba";
 const sidneyForcast =
@@ -27,6 +28,7 @@ const londonForcast =
 const bangkokForcast =
   "https://api.openweathermap.org/data/2.5/forecast?q=Bangkok,Thailand&units=metric&APPID=e83c1059f8d8dd4be2de6612bd0cae22";
 
+/**** Provide todays day****/
 let returnWeekDay = (date) => {
   let daysInWeek = [
     "Sunday",
@@ -41,56 +43,50 @@ let returnWeekDay = (date) => {
   return daysInWeek[inputDate.getDay()];
 };
 
-/// Fetching  forcast and add it to fetchForcast
-
+/**** Fetching Forcast****/
 const fetchForcast = (forcastApi) => {
-  console.log("fetching forcast api", forcastApi);
-
   const forcastPromise = fetch(forcastApi)
     .then((response) => {
       return response.json();
     })
     .then((data) => {
-      console.log("forcast data", data);
       return data;
     });
   return forcastPromise;
 };
 
-/// Fetching weather and add it to fetchForcast
+//**** Fetching Weather****/
 
 const fetchWeather = (weatherApi) => {
-  console.log("fetching weather api", weatherApi);
-
   const weatherPromise = fetch(weatherApi)
     .then((response) => {
       return response.json();
     })
     .then((data) => {
-      console.log("weather data", data);
       return data;
     });
   return weatherPromise;
 };
 
+/**** Display the weather****/
+
 const ShowCityWeather = (data) => {
-  console.log("weatherdata", data);
-  //weather descpription and temperature with one decimal
-  container.innerHTML = `<p>${
-    data.weather[0].description
-  } | ${data.main.temp.toFixed(1)} &#8451</p>`; //&#8451 is the formal for celsius, changed conatiner to main
-  //Sunrise
-  const unixTimestampSunrise = data.sys.sunrise;
-  //To get sunrise/sunset time in hours:minutes:seconds
-  let sunrise = new Date(unixTimestampSunrise * 1000);
-  //Declare new variable to show only hh:mm
+  /*Description*/
+  container.innerHTML = `<p>${data.weather[0].description} | ${data.main.temp.toFixed(1)} &#8451</p>`;//weather descpription and temperature with one decimal. &#8451 is the formal for celsius, changed conatiner to main
+
+  /*Sunrise*/
+  const unixTimestampSunrise = data.sys.sunrise; //To get sunrise/sunset time in hours:minutes:seconds
+  let sunrise = new Date(unixTimestampSunrise * 1000); //Declare new variable to show only hh:mm
   let sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: "short" });
   mainWeather.innerHTML += `<p>Sunrise: ${sunriseTime}</p>`;
-  //Sunset
+
+  /*Sunset*/
   const unixTimestampSunset = data.sys.sunset;
   let sunset = new Date(unixTimestampSunset * 1000);
   let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: "short" });
   mainWeather.innerHTML += `<p>Sunset: ${sunsetTime}</p>`;
+
+  /*Change apperance depending on weather*/
   if (data.weather[0].main === "Cloudy") {
     document.body.style.backgroundColor = "#CFD2CF";
     document.body.style.color = "#5F6F94";
@@ -118,64 +114,56 @@ const ShowCityWeather = (data) => {
   }
 };
 
+/**** Display the 5 days forcast****/
+
 function ShowCityForcast(data) {
-  console.log("dataFor", data);
   const filteredForecast = data.list.filter((item) =>
     item.dt_txt.includes("12:00")
   );
-  console.log("filteredForecast", filteredForecast);
-  filteredForecast
-    .forEach((filteredForecast) => {
-      let dayInWeek = returnWeekDay(filteredForecast.dt_txt);
-      let temp5Days = `${filteredForecast.main.temp}`;
-      let temp5DaysRounded = Math.round(temp5Days);
-      let iconID = filteredForecast.weather[0].icon;
-      weeklyWeather.innerHTML += `
+  filteredForecast.forEach((filteredForecast) => {
+    let dayInWeek = returnWeekDay(filteredForecast.dt_txt);
+    let temp5Days = `${filteredForecast.main.temp}`;
+    let temp5DaysRounded = Math.round(temp5Days);
+    weeklyWeather.innerHTML += `
       <div class="forecast-row">
         <p> ${dayInWeek}:</p>
         <p> ${temp5DaysRounded}°C </p>
       </div>
       `;
-      //Add an icon above if there is time (<img class="forecast-icon" src="./icons/${iconID}.svg">)
-    })
- 
+    //Add an icon above if there is time (<img class="forecast-icon" src="./icons/${iconID}.svg">)
+  });
 }
+/**** Select the right data from each city****/
 
-const selectedCity = (city) => {
+const selectCityData = (city) => {
   weeklyWeather.innerHTML = "";
   mainWeather.innerHTML = "";
   let apiUrl = "";
   let apiUrlForcast = "";
-  console.log("works"); //chatches the value of a city
+
   if (city === "Stockholm") {
-    console.log("stockholm");
     apiUrl = stockholmWeather;
     apiUrlForcast = stockholmForcast;
   } else if (city === "Sidney") {
-    console.log("Sidney");
     apiUrl = sidneyWeather;
     apiUrlForcast = sidneyForcast;
   } else if (city === "London") {
-    console.log("London");
     apiUrl = londonWeather;
     apiUrlForcast = londonForcast;
   } else {
-    console.log("Bangkok");
     apiUrl = bangkokWeather;
     apiUrlForcast = bangkokForcast;
   }
   fetchWeather(apiUrl).then((data) => {
-    console.log("testing", data);
     ShowCityWeather(data);
   });
   fetchForcast(apiUrlForcast).then((data) => {
-    console.log("testingForcast", data);
     ShowCityForcast(data);
   });
 };
 
-selectedCity("Stockholm"); // When the page loads, show STHLM data
+selectCityData("Stockholm"); // When the page loads, show STHLM data
 
 selectCity.addEventListener("change", (event) =>
-  selectedCity(event.target.value)
-); //Listen to what city is chosen
+  selectCityData(event.target.value)
+);
