@@ -1,17 +1,19 @@
 //GLOBAL VARIABLES
-const city = 'Stockholm, Sweden'
+let city = 'Stockholm, Sweden'
 const apiKey = 'e30ad481a3fcc72a6217c4f6edfa883d'
-const urlWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`
-const urlForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=${apiKey}`
+let urlWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`
+let urlForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=${apiKey}`
 const weatherSlogan = document.getElementById('weather-slogan')
 const img = document.getElementById('weather-img')
 const todaysWeather = document.getElementById('todays-weather')
-const windSpeed = document.getElementById('wind-speed')
-const windDirection = document.getElementById('wind-direction')
+let windSpeed = document.getElementById('wind-speed')
+let windDirection = document.getElementById('wind-direction')
+let mainSearchBar = document.getElementById('main-searchbar');
+const checkCityBtn = document.getElementById('check-city-button')
 
 
 
-const windDirectionConverter = (degrees) => {
+let windDirectionConverter = (degrees) => {
         let val = Math.floor((degrees / 22.5) + 0.5);
         let arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
         return arr[(val % 16)];
@@ -19,6 +21,7 @@ const windDirectionConverter = (degrees) => {
 
 
 // This function generates all the info we need for today's weather forecast and sunrise/sunset.
+function weatherToday() { 
 fetch(urlWeather)
         .then((res) => {
             return res.json()
@@ -72,7 +75,7 @@ fetch(urlWeather)
             root.style.setProperty('--border-color', '#90d1fa7a')
             }
         })
-
+    }
 
     //This function generates the 5-day forecast based on the urlForecast API. It fetches the midday forecast for each of the 5 days from the API.
         function addContentForWeekdays() {
@@ -111,4 +114,24 @@ fetch(urlWeather)
                 })
         }
         
+        weatherToday()
         addContentForWeekdays()
+
+
+        const updateCity = () => {
+            console.log("I work!")
+          city = mainSearchBar.value;
+          urlWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=e30ad481a3fcc72a6217c4f6edfa883d`
+          urlForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=e30ad481a3fcc72a6217c4f6edfa883d`
+          weatherToday()
+          addContentForWeekdays()
+          }
+
+    // Event listeners
+    checkCityBtn.addEventListener('click', updateCity);
+    mainSearchBar.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      checkCityBtn.click();
+    }
+  });
