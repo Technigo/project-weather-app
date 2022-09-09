@@ -1,0 +1,74 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --font-color: #2c541b;
+    --bg-color: #f7e9bd;
+    --border-color: #a8b37a;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    color: var(--font-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #aeabab;
+   
+}
+
+.weather-app {
+    max-width: 320px;
+    width: 100%;
+    border-radius: 20px;
+    background-color: var(--bg-color);
+    box-shadow: 0 10px 50px #535252;
+}
+
+.topBox {
+    width: 100%;
+    padding: 40px;
+}
+
+.midBox {
+    width: 100%;
+    padding: 0 40px;
+    font-size: 25px;
+    font-weight: 700;
+    
+}
+
+img {
+    padding: 15px 0;
+    width: 70px;
+}
+
+.bottomBox {
+    width: 100%;
+    padding: 40px;
+
+}
+.bottomBox .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px dashed var(--border-color);
+    padding: 5px 0;
+}
+
+.bottomBox .row:last-child {
+    border-bottom: 0;
+}
+
+@media screen and (max-width: 369px) {
+    .weather-app {
+     height: 100%; 
+     max-width: 100%; 
+     border-radius: 0;
+    }
+}
