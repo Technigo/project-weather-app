@@ -1,10 +1,12 @@
+
+
 const key = "b7874ca1c4d00ac10b0c0385176b9111"
 // API key 2 = 6912cf21e673e1261cfa693ed33d2aa7
 
 const weekdayWrapper = document.getElementById('schedule-weekdays')
 const mainWrapper = document.getElementById('main-wrapper')
 const skyState = document.getElementById('skyState')
-const currentLocation = document.getElementById('location')
+const skyInfo = document.getElementById('skyInfo')
 const sunrise = document.getElementById('sunrise')
 const sunset = document.getElementById('sunset')
 const cityName = document.getElementById('city-input')
@@ -62,8 +64,7 @@ fetch(api)
         var formattedTimeSunset = hours + ':' + minutes.substr(-2);
         
         console.log(roundedTemp)
-        currentLocation.innerHTML = `${json.name}`
-        skyState.innerHTML =`${weatherType} | ${roundedTemp}°C`
+        skyState.innerHTML =`${json.name} | ${weatherType} | ${roundedTemp}°C`
         sunrise.innerHTML = `Sunrise ${formattedTimeSunrise}`
         sunset.innerHTML = `Sunset ${formattedTimeSunset}`
 
@@ -142,12 +143,17 @@ const chargesapi2 = (api) => {
         const handleNameInput = (event) => {
           event.preventDefault()
           const name = cityName.value
-          apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${name}&units=metric&APPID=b7874ca1c4d00ac10b0c0385176b9111`
+          apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${name}n&units=metric&APPID=b7874ca1c4d00ac10b0c0385176b9111`
+          apinew = `https://api.openweathermap.org/data/2.5/forecast?q=${name}n&units=metric&APPID=6912cf21e673e1261cfa693ed33d2aa7`
           console.log(apiUrl)
           chargeApi(apiUrl)
-          return apiUrl
+          chargesapi2(apinew)
+          weekdayWrapper.innerHTML = `<div class="weekdays" id="weekdayWrapper">  </div> `
+
+          return apiUrl && apinew
       }
       nameForm.addEventListener('submit',handleNameInput)
       chargesapi2(apinew)
      
     }
+
