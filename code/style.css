@@ -71,6 +71,7 @@ p {
 
 #location {
   font-weight: 600;
+  text-transform: uppercase;
 }
 
 .header {
@@ -134,6 +135,11 @@ p {
   flex-direction: row;
   justify-content: space-between;
   border-bottom: 2px dotted;
+  text-transform: uppercase
+}
+
+.weekday-rows:hover {
+  background-color: #80808026;
 }
 
 .tempAndIcon {

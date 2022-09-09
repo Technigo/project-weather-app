@@ -3,6 +3,7 @@ const key = "b7874ca1c4d00ac10b0c0385176b9111"
 
 const weekdayWrapper = document.getElementById('schedule-weekdays')
 const mainWrapper = document.getElementById('main-wrapper')
+const forecastLocation = document.getElementById('location')
 const skyState = document.getElementById('skyState')
 const skyInfo = document.getElementById('skyInfo')
 const sunrise = document.getElementById('sunrise')
@@ -25,11 +26,9 @@ function setPosition(position){
 }
 
 
-
 function showError(error) {
   alert("Browser doesn't support Geolocation.")
 }
-
 
 
 function getWeather(latitude, longitude){
@@ -56,7 +55,8 @@ fetch(api)
         const currentTemp = `${json.main.temp}`
         const currentCelsiusTemp = currentTemp - 273.15
         const roundedTemp = Math.round(currentCelsiusTemp*10)/10
-        skyState.innerHTML =`${json.name} | ${weatherType} | ${roundedTemp}°C`
+        forecastLocation.innerHTML =`${json.name}`
+        skyState.innerHTML = `${weatherType} | ${roundedTemp}°C`
         let sunriseTime = json.sys.sunrise
         // Create a new JavaScript Date object based on the timestamp
         // multiplied by 1000 so that the argument is in milliseconds, not seconds.
@@ -80,7 +80,8 @@ fetch(api)
       } else {
         const currentTemp = `${json.main.temp}`
         const roundedTemp = Math.round(currentTemp*10)/10
-        skyState.innerHTML =`${json.name} | ${weatherType} | ${roundedTemp}°C`
+        forecastLocation.innerHTML =`${json.name}`
+        skyState.innerHTML = `${weatherType} | ${roundedTemp}°C`
         let sunriseTime = json.sys.sunrise
         // Create a new JavaScript Date object based on the timestamp
         // multiplied by 1000 so that the argument is in milliseconds, not seconds.
@@ -183,8 +184,8 @@ const chargesapi2 = (api) => {
         const handleNameInput = (event) => {
           event.preventDefault()
           const name = cityName.value
-          apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${name}n&units=metric&APPID=b7874ca1c4d00ac10b0c0385176b9111`
-          apinew = `https://api.openweathermap.org/data/2.5/forecast?q=${name}n&units=metric&APPID=6912cf21e673e1261cfa693ed33d2aa7`
+          apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${name}&units=metric&APPID=b7874ca1c4d00ac10b0c0385176b9111`
+          apinew = `https://api.openweathermap.org/data/2.5/forecast?q=${name}&units=metric&APPID=6912cf21e673e1261cfa693ed33d2aa7`
           console.log(apiUrl)
           chargeApi(apiUrl)
           weekdayWrapper.innerHTML = `<div class="weekdays" id="weekdayWrapper">  </div> `
