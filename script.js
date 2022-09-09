@@ -23,7 +23,7 @@ fetch (API)
 // show data
 .then ((json) => {
   let city = json.name
-  //let main = "Clear" - Used to check styling for each weather.
+  //let main = "Rain" - Used to check styling for each weather.
   let main = json.weather[0].main
   let description = json.weather[0].description
   let temperature = json.main.temp.toFixed(0)
@@ -71,7 +71,7 @@ if  (main === "Clear") {
   )
 
 } else {
-  mainSection.classList.add("Cloudy")
+  mainSection.classList.add("cloudy")
   weatherH1.innerHTML = `Light a fire and get cosy. ${city} is looking grey today.`
   pictureWeather.setAttribute(
     "src", 
