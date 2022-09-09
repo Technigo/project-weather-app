@@ -4,18 +4,19 @@
 // set the city variable to the event.target.value
 // instead of wrapping the whole script.js inside this event listener, make and call on 2 new functions for the api calls, using the city as an argument
 // the new functions also have to be called at the start when the page loads, for example at the bottom of the document
-
 // these variables should be moved into each new corresponding function
+
 const cityPicker = document.getElementById("cityPicker");
-cityPicker.addEventListener('change', getCityData);
+cityPicker.addEventListener('clange', (event) => {
+  getCityData(event.target.value);
+});
 
-/*const start = () => {
- getCityData('');
-}*/
+/*cityPicker.addEventListener('change', getCityData);*/
 
-function getCityData(event) {
-  const city = event.target.value;
-  console.log(city);
+function getCityData (city) {
+  /*console.log(city);*/
+
+  getCityData('Gothenburg')
 
   const API_TODAY = `
 https://api.openweathermap.org/data/2.5/weather?q=${city},Sweden&units=metric&APPID=7dee0e5a05b2c9d92a37a397279281ca
@@ -102,6 +103,7 @@ https://api.openweathermap.org/data/2.5/forecast?q=${city},Sweden&units=metric&A
       });
     });
   }
+ 
 
 /*
 const API_TODAY = `
