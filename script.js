@@ -66,8 +66,6 @@ weatherGuidance.innerHTML = `Get your sunnies on. ${city} is looking rather grea
 }
 })
 
-
-
 // Five day forecast section
 fetch(API_FORECAST)
     .then((response) => {
