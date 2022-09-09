@@ -23,3 +23,5 @@ const fetchWeatherData = () => {
  
   
   fetchWeatherData();
+
+// redan skriven kod fr[n grunden ovan
