@@ -12,6 +12,7 @@ body {
   align-items: center;
   font-family: sans-serif;
   color: #fff;
+  /* background-image: url('img/test1.jpg'); */
 }
 
 .weekday-name {
