@@ -3,10 +3,9 @@ const mainWeather = document.getElementById("mainWeather");
 const weeklyWeather = document.getElementById("weeklyForcastWrapper");
 const dailyForcast = document.getElementById("dailyForcastRow");
 const selectCity = document.getElementById("cities");
-const ApiWeather = 'http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=64d2a624607147029ae4574d21f5c6d9'
-const weatherContainer = document.getElementById('weather-container')
-
-
+const ApiWeather =
+  "http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=64d2a624607147029ae4574d21f5c6d9";
+const weatherContainer = document.getElementById("weather-container");
 
 //this is the API variable for today weathers
 const stockholmWeather =
@@ -28,12 +27,19 @@ const londonForcast =
 const bangkokForcast =
   "https://api.openweathermap.org/data/2.5/forecast?q=Bangkok,Thailand&units=metric&APPID=e83c1059f8d8dd4be2de6612bd0cae22";
 
-  let returnWeekDay = (date) => { 
-    let daysInWeek = ["Sunday", "Monday","Tuesday", "Wednesday","Thursday","Friday","Saturday"];
-    let inputDate = new Date(date.replace(' ', 'T'));
-    return daysInWeek[inputDate.getDay()];
-  }
-  
+let returnWeekDay = (date) => {
+  let daysInWeek = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let inputDate = new Date(date.replace(" ", "T"));
+  return daysInWeek[inputDate.getDay()];
+};
 
 /// Fetching  forcast and add it to fetchForcast
 
@@ -42,60 +48,37 @@ const fetchForcast = (forcastApi) => {
 
   const forcastPromise = fetch(forcastApi)
     .then((response) => {
-    return response.json();
+      return response.json();
     })
     .then((data) => {
-      console.log("forcast data", data); 
-    return data; 
+      console.log("forcast data", data);
+      return data;
     });
-    return forcastPromise;
-  };
-  
+  return forcastPromise;
+};
+
 /// Fetching weather and add it to fetchForcast
 
+const fetchWeather = (weatherApi) => {
+  console.log("fetching weather api", weatherApi);
 
-  const fetchWeather = (weatherApi) => {
-    console.log("fetching weather api", weatherApi);
-  
-    const weatherPromise = fetch(weatherApi)
-      .then((response) => {
+  const weatherPromise = fetch(weatherApi)
+    .then((response) => {
       return response.json();
-      })
-      .then((data) => {
-        console.log("weather data", data); 
-      return data; 
-      });
-      return weatherPromise;
-    };
+    })
+    .then((data) => {
+      console.log("weather data", data);
+      return data;
+    });
+  return weatherPromise;
+};
 
-
-// const ShowCityWeather = (data) => {
-//   console.log("weatherdata", data);
-//   //weather descpription and temperature with one decimal
-//         container.innerHTML += `<p>${data.weather[0].description} | ${data.main.temp.toFixed(1)} &#8451</p>` //&#8451 is the formal for celsius, changed conatiner to main
-
-// }
-
-/// Fetching Stockholm forcast and add it to fetchStockholmForcast
-
-// const fetchForcast = (forcastApi) => {
-//   console.log("fetching forcast api", forcastApi);
-
-//   const ForcastPromise = fetch(forcastApi)
-//     .then((response) => {
-//     return response.json();
-//     })
-//     .then((data) => {
-//       console.log("forcast data", data); 
-//     return data; 
-//     });
-//     return ForcastPromise;
-//   };
-    
 const ShowCityWeather = (data) => {
   console.log("weatherdata", data);
   //weather descpription and temperature with one decimal
-  container.innerHTML = `<p>${data.weather[0].description} | ${data.main.temp.toFixed(1)} &#8451</p>`; //&#8451 is the formal for celsius, changed conatiner to main
+  container.innerHTML = `<p>${
+    data.weather[0].description
+  } | ${data.main.temp.toFixed(1)} &#8451</p>`; //&#8451 is the formal for celsius, changed conatiner to main
   //Sunrise
   const unixTimestampSunrise = data.sys.sunrise;
   //To get sunrise/sunset time in hours:minutes:seconds
@@ -108,80 +91,61 @@ const ShowCityWeather = (data) => {
   let sunset = new Date(unixTimestampSunset * 1000);
   let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: "short" });
   mainWeather.innerHTML += `<p>Sunset: ${sunsetTime}</p>`;
-  if (data.weather[0].main === 'Cloudy') {
-    document.body.style.backgroundColor = "#CFD2CF"
-    document.body.style.color = "#5F6F94"
+  if (data.weather[0].main === "Cloudy") {
+    document.body.style.backgroundColor = "#CFD2CF";
+    document.body.style.color = "#5F6F94";
     container.innerHTML += `<i class="fa-solid fa-cloud"></i>
-    <h1>It looks rather cloudy in ${data.name} today &#x1F325;</h2>`
-    container.classList.add("cloudy")
-} else if (data.weather[0].main === 'Rain') {
-    document.body.style.backgroundColor = "#DAEAF1"
-    document.body.style.color = "#5F6F94"
+    <h1>It looks rather cloudy in ${data.name} today &#x1F325;</h2>`;
+    container.classList.add("cloudy");
+  } else if (data.weather[0].main === "Rain") {
+    document.body.style.backgroundColor = "#DAEAF1";
+    document.body.style.color = "#5F6F94";
     container.innerHTML += `<i class="fa-solid fa-cloud-rain"></i>
-    <h1>Get your umbrella, it looks rather wet in ${data.name} today &#9748;</h1>`
-    container.classList.add("rainy")
-} else if (data.weather[0].main === 'Clear') {
-    document.body.style.backgroundColor = "#FFB3B3"
-    document.body.style.color = "#B270A2"
+    <h1>Get your umbrella, it looks rather wet in ${data.name} today &#9748;</h1>`;
+    container.classList.add("rainy");
+  } else if (data.weather[0].main === "Clear") {
+    document.body.style.backgroundColor = "#FFB3B3";
+    document.body.style.color = "#B270A2";
     container.innerHTML += `<i class="fa-solid fa-sun"></i>
-    <h1>Get your sunnies on, ${data.name} is looking rather great today. &#128526</h1>`
-    container.classList.add("sunny")
-} else {
-    document.body.style.backgroundColor = "#E4DCCF"
-    document.body.style.color = "#7D9D9C"
+    <h1>Get your sunnies on, ${data.name} is looking rather great today. &#128526</h1>`;
+    container.classList.add("sunny");
+  } else {
+    document.body.style.backgroundColor = "#E4DCCF";
+    document.body.style.color = "#7D9D9C";
     container.innerHTML += `<i class="fa-solid fa-cloud"></i>
-    <h1>You can chillout, it is neutral weather in ${data.name} today.</h1>`
-    container.classList.add("natural")
-}
-  return;//ta bort?
+    <h1>You can chillout, it is neutral weather in ${data.name} today.</h1>`;
+    container.classList.add("natural");
+  }
 };
 
-const ShowCityForcast = (data) => {
-  console.log('dataFor', data)
-  const filteredForecast = data.list.filter(item => item.dt_txt.includes('12:00'))
-    console.log('filteredForecast', filteredForecast);
-    filteredForecast.forEach((filteredForecast) => {
+function ShowCityForcast(data) {
+  console.log("dataFor", data);
+  const filteredForecast = data.list.filter((item) =>
+    item.dt_txt.includes("12:00")
+  );
+  console.log("filteredForecast", filteredForecast);
+  filteredForecast
+    .forEach((filteredForecast) => {
       let dayInWeek = returnWeekDay(filteredForecast.dt_txt);
-      let temp5Days = `${filteredForecast.main.temp}`
-      let temp5DaysRounded = Math.round(temp5Days)
+      let temp5Days = `${filteredForecast.main.temp}`;
+      let temp5DaysRounded = Math.round(temp5Days);
       let iconID = filteredForecast.weather[0].icon;
-      dailyForcast.innerHTML += `
+      weeklyWeather.innerHTML += `
       <div class="forecast-row">
         <p> ${dayInWeek}:</p>
-
         <p> ${temp5DaysRounded}°C </p>
       </div>
-      `
+      `;
+      //Add an icon above if there is time (<img class="forecast-icon" src="./icons/${iconID}.svg">)
     })
-  // .catch(error => {
-  //   filteredForecast.innerHTML = `${error}`
-  // })
-};
-//<img class="forecast-icon" src="./icons/${iconID}.svg">  
-  
-  /*const filteredForecast = data.list.filter(item => item.dt_txt.includes('12:00'))
-  filteredForecast.forEach((day) => {
-  const options1 = { weekday: 'long' }
-  const options2 = { weekday: 'short' }
- // forecast is injected in HTML, we also rounded the value to show no decimal
- // with one decimal: ${Math.round(day.main.temp * 10) / 10}
- // adds the weekdays in two ways, short and long format, example mon or monday
-  
- console.log('filter', filteredForecast)
-
- dailyForcast.innerHTML =`
-  <p class="forecast-row" id="dailyForcastRow">
-  <span class="short-day">${new Intl.DateTimeFormat('en-GB', options1).format(day.dt * 1000).toLowerCase()}</span>
-  <span class="long-day">${new Intl.DateTimeFormat('en-GB', options2).format(day.dt * 1000).toLowerCase()}</span>
-  <span class="tempp">${Math.round(day.main.temp)}°</span>
-  </p>`
-})
+ 
 }
-*/
 
 const selectedCity = (city) => {
-let apiUrl = ""
-let apiUrlForcast = ""
+  weeklyWeather.innerHTML = "";
+  mainWeather.innerHTML = "";
+  let apiUrl = "";
+  let apiUrlForcast = "";
   console.log("works"); //chatches the value of a city
   if (city === "Stockholm") {
     console.log("stockholm");
@@ -200,23 +164,18 @@ let apiUrlForcast = ""
     apiUrl = bangkokWeather;
     apiUrlForcast = bangkokForcast;
   }
-  fetchWeather(apiUrl)
-  .then((data) => {
-    console.log("testing", data); 
+  fetchWeather(apiUrl).then((data) => {
+    console.log("testing", data);
     ShowCityWeather(data);
-  })
-  fetchForcast(apiUrlForcast)
-  .then((data) => {
-    console.log("testingForcast", data); 
+  });
+  fetchForcast(apiUrlForcast).then((data) => {
+    console.log("testingForcast", data);
     ShowCityForcast(data);
   });
-
 };
 
-selectedCity("Stockholm");
+selectedCity("Stockholm"); // When the page loads, show STHLM data
 
 selectCity.addEventListener("change", (event) =>
   selectedCity(event.target.value)
 ); //Listen to what city is chosen
-
-// When the page loads
