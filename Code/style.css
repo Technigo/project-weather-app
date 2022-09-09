@@ -34,7 +34,7 @@ body {
     padding: 0 10%;
 }
 
-#grad1 {
-    height: 200px;
-    background-image: linear-gradient(red, yellow);
+i {
+  font-size: 50px;
+  padding-top: 5px;
 }
