@@ -1,5 +1,5 @@
 //DOM elements
-const body = document.querySelector('body');
+const root = document.documentElement;
 
 const weatherDescAndTemp = document.getElementById('weather-desc-temp');
 const sunriseTime = document.getElementById('sunrise-time');
@@ -48,20 +48,20 @@ function fetchWeather(city) {
 
       //CURRENT WEATHER – colors/icon/message
       if (currentWeatherId >= 200 && currentWeatherId <= 531) {
-        body.style.background = '#a3def7';
-        body.style.color = '#164a68';
+        root.style.setProperty('--bg-color', '#a3def7');
+        root.style.setProperty('--text-color', '#164a68');
         weatherIcon.src = 'icons/noun_Umbrella_2030530.svg';
         weatherIcon.alt = 'Umbrella illustration';
         weatherMessage.innerText = `Don't forget your umbrella. It's wet in ${currentLocation} today.`;
       } else if (currentWeatherId == 800 || currentWeatherId == 801) {
-        body.style.background = '#f7e9b9';
-        body.style.color = '#2a5510';
+        root.style.setProperty('--bg-color', '#f7e9b9');
+        root.style.setProperty('--text-color', '#2a5510');
         weatherIcon.src = 'icons/noun_Sunglasses_2055147.svg';
         weatherIcon.alt = 'Sunglasses illustration';
         weatherMessage.innerText = `Get your sunnies on. ${currentLocation} is looking rather great today.`;
       } else {
-        body.style.background = '#f4f7f8';
-        body.style.color = '#f47775';
+        root.style.setProperty('--bg-color', '#f4f7f8');
+        root.style.setProperty('--text-color', '#f47775');
         weatherIcon.src = 'icons/noun_Cloud_1188486.svg';
         weatherIcon.alt = 'Cloud illustration';
         weatherMessage.innerText = `Light a fire and get cosy. ${currentLocation} is looking grey today.`;

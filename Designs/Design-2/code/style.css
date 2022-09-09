@@ -1,25 +1,16 @@
-/* Rainy */
-.rainy {
-  --bg-rainy: #a3def7;
-  --text-rainy: #164a68;
-}
-
-.sunny {
-  --bg-sunny: #f7e9b9;
-  --text-sunny: #2a5510;
-}
-
-.cloudy {
-  --bg-color: #f4f7f8;
-  --text-color: #f47775;
+:root {
+  --bg-color: ;
+  --text-color: ;
 }
 
 body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
   font-family: 'Montserrat';
 }
 
 .weather-app {
-  margin: 2.5rem 3.5rem 0 2.5rem;
+  margin: 2.5rem 3rem 0 2.5rem;
 }
 
 .weather-desc-temp,
@@ -30,8 +21,7 @@ body {
 }
 
 .weather-mid-container {
-  margin-top: 1.2rem;
-  max-width: 345px;
+  margin: 1.3rem 1.5rem 0 0;
 }
 
 .weather-message {
@@ -51,26 +41,28 @@ body {
 }
 
 .search {
-  margin-top: 1.3rem;
+  margin-top: 1.4rem;
 }
 
 .search-bar {
-  border: 1px solid darkolivegreen;
+  border: 1px solid var(--text-color);
   border-radius: 3px;
   height: 1.1rem;
   width: 10rem;
 }
 
+.search-bar:focus,
 .search-bar::placeholder {
-  color: darkolivegreen;
+  color: var(--text-color);
   font-size: 0.7rem;
   text-indent: 4px;
+  outline: none;
 }
 
 .search-btn {
   border: none;
   border-radius: 3px;
-  background: darkolivegreen;
+  background: var(--text-color);
   color: white;
   font-size: 0.7rem;
   height: 1.3rem;
