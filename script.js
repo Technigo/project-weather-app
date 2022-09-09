@@ -5,8 +5,8 @@ const sunriseTime = document.getElementById("sunrise-time");
 const sunsetTime = document.getElementById("sunset-time");
 const weeklyTemp = document.getElementById("weekly-temperature-placeholder");
 const hero = document.getElementById("hero");
-console.log(hero);
 const todaysIcon = document.getElementById("todays-icon");
+
 
 let weeklyWeather;
 let dailyIcon;
@@ -25,7 +25,6 @@ fetch(
     const sunriseStart = new Date(json.city.sunrise * 1000);
     const sunsetStart = new Date(json.city.sunset * 1000); //här hämtas fel data
 
-    //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString
     sunriseTime.innerHTML = sunriseStart.toLocaleTimeString([], {
       hour: "2-digit",
       minute: "2-digit",
@@ -90,3 +89,19 @@ fetch(
   .catch((error) => {
     console.log("caught error", error);
   });
+
+
+/*         weeklyTemp = weeklyWeather.map((day) => {
+            let date = new Date(day.dt * 1000);
+            let nameOfDay = date.toLocaleDateString('en-Us', {weekday: 'long'});
+            let dailyTemperature = day.main.temp.toFixed(1);
+            dailyIcon = `<img src=\'images/${day.weather[0].main}.png'>`;
+            return (
+                weeklyTemp.innerHTML +=`
+                <li>
+                    <span>${nameOfDay}</span>
+                    <span>${dailyIcon}</span>
+                    <span>${dailyTemperature}°C</span>
+                </li>
+           `)   
+        }) */
