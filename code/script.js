@@ -93,11 +93,15 @@ const getWeather = (city) => {
       const timestampSunset = json.sys.sunset;
 
       let sunrise = new Date(timestampSunrise * 1000);
-      let sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: "short" });
+      let sunriseTime = sunrise.toLocaleTimeString("sv-SE", {
+        timeStyle: "short",
+      });
       currentSunrise.innerHTML = `${sunriseTime}`; // prints in HTML
 
       let sunset = new Date(timestampSunset * 1000);
-      let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: "short" });
+      let sunsetTime = sunset.toLocaleTimeString("sv-SE", {
+        timeStyle: "short",
+      });
       currentSunset.innerHTML = `${sunsetTime}`; // prints in HTML
     })
     .catch((error) =>
