@@ -1,3 +1,109 @@
 body {
-    background-color: green;
+    width: 100%;
+    height: 100%;
+    margin: 0%;
+    padding: 0%;
+    background-color: white;
+    font-family: 'DM Sans', sans-serif;
+    color: white;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 50%;
+    padding: 5%;
+    background: rgb(154, 154, 255) center/cover linear-gradient(to bottom, rgba(154, 154, 255), rgba(255, 255, 255, 0.73));
+    clip-path: circle(200% at 50% -100%); /*funkar med clip-path: circle(200% at 50% -150%); - orginal: (200% at 50% -100%); */
+    /*linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73)),
+    url('images/background.jpg');*/
+}
+
+.hero .search {
+    display: block;
+} 
+
+.hero h1 {
+    display: inline-flex;
+    color: white;
+    font-weight: normal;
+    font-size: 5em;
+    margin: 0%;
+    padding-left: 2%;
+    padding-right: 2%;
+    
+}
+  
+.hero h4 {
+    display: inline-flex;
+    color: white;
+    margin: 0%;
+    font-weight: normal;
+}
+
+.hero img {
+    display: inline-flex;
+    justify-content: flex-end;
+    margin: 0%;
+}
+
+.hero h2 {
+    display: block;
+    color: white;
+    font-size: 1.5em;
+    margin: 0%;
+    font-weight: normal;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.hero h3 {
+    display: block;
+    color: white;
+    font-size: 1.17em;
+    margin: 0%;
+    font-weight: normal;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.hero p {
+    display: inline-flex;
+    color: white;
+    margin: 0%;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+button {
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    background-color: white;
+    border-radius: 2px;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+.searchbar {
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    margin-left: 5px;
+    border-radius: 2px;
+}
+
+/* TABLET */
+@media (min-width: 668px) and (max-width:1024px) {
+    
+}
+
+/* DESKTOP */
+@media (min-width: 1025px) {
+
+    .hero{
+         align-items: center;
+    }
+
+
 }
