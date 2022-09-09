@@ -1,4 +1,30 @@
 body {
-    /*background-color: aquamarine;*/   
-    /*checking if branch is working;*/
+    display: flex;
+    background-color: bisque;
+    font-style: #164A68;
+    font-family: 'Montserrat', sans-serif;
+  
 }
+
+.geo {
+    display: flex;
+    flex-direction: column;
+    max-width: 60%;
+    color: #2A5510; 
+}
+    
+.date {
+    font-size: 18px;
+    font-weight: 100;
+    padding:0;
+}
+.sunrise, .sunset , .temperature {
+    font-size: 15px;
+    margin:0;
+
+}
+
+
+/*----animation color change due to weather change-----*/
+
+    
