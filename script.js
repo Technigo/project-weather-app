@@ -27,8 +27,12 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         // weatherMain.innerHTML += `<h3>${json.weather[0].description}</h3>`    
         
         // Default city temperature max/min today
-        weatherMain.innerHTML += `<p>Min ${json.main.temp_min.toFixed(1)} °C</p>`;
-        weatherMain.innerHTML += `<p>Max ${json.main.temp_max.toFixed(1)} °C</p>`;
+        weatherMain.innerHTML += `
+            <div class='temp'>
+                <p>Min ${json.main.temp_min.toFixed(1)} °C</p>
+                <p>Max ${json.main.temp_max.toFixed(1)} °C</p>
+            </div>
+        `;
 
         // Default city sunrise/sunset
         const sunrise = new Date(json.sys.sunrise * 1000); 
@@ -36,8 +40,12 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         const sunset = new Date(json.sys.sunset * 1000);
         const sunsetShort = sunset.toLocaleTimeString([], { timeStyle: 'short' });
 
-        weatherMain.innerHTML += `<p>sunrise ${sunriseShort}</p>`;
-        weatherMain.innerHTML += `<p>sunset ${sunsetShort}</p>`;
+        weatherMain.innerHTML += `
+            <div class='sunmovement'>    
+                <p>sunrise ${sunriseShort}</p>
+                <p>sunset ${sunsetShort}</p>
+            </div>
+        `;
 
     });
 }
@@ -136,16 +144,24 @@ searchbar.addEventListener('change', () => {
                         weatherMain.innerHTML += `<h3>${weatherArrary.description}</h3>`;
                     })  
 
-                weatherMain.innerHTML += `<p>Min ${json.main.temp_min.toFixed(1)} °C</p>`;
-                weatherMain.innerHTML += `<p>Max ${json.main.temp_max.toFixed(1)} °C</p>`;
+                weatherMain.innerHTML += `
+                <div class='temp'>
+                    <p>Min ${json.main.temp_min.toFixed(1)} °C</p>
+                    <p>Max ${json.main.temp_max.toFixed(1)} °C</p>
+                </div>
+                `;
 
                 const sunrise = new Date(json.sys.sunrise * 1000);
                 const sunriseShort = sunrise.toLocaleTimeString([], { timeStyle: 'short' });
                 const sunset = new Date(json.sys.sunset * 1000);
                 const sunsetShort = sunset.toLocaleTimeString([], { timeStyle: 'short' });
 
-                weatherMain.innerHTML += `<p>sunrise ${sunriseShort}</p>`
-                weatherMain.innerHTML += `<p>sunset ${sunsetShort}</p>`
+                weatherMain.innerHTML += `
+                    <div class='sunmovement'>    
+                        <p>sunrise ${sunriseShort}</p>
+                        <p>sunset ${sunsetShort}</p>
+                    </div>
+                `;
 
         });
 
