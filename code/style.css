@@ -53,6 +53,10 @@ h1 {
     margin: 0;
 }
 
+.info-sky p::first-letter {
+    text-transform:capitalize;
+}
+
 .weather-icon {
     width: 50px;
     height: 50px;
@@ -87,7 +91,6 @@ h1 {
     align-items: center;
     justify-content: space-between; 
     box-shadow: 1px 2px 3px rgb(186, 182, 182);
-    
 }
 
 .for-day-temp {
@@ -208,4 +211,3 @@ h1 {
         padding-top: 5px;
     }
 }
-
