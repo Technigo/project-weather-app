@@ -64,13 +64,12 @@ const apiNow = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=
 const apiForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=ba408ec4b2f7f251f2dd0044bd3e07f2`;
 
 const getIconForWeather = (weather) => {
-  // keep clear, clouds, rain (drizzle goes here!), thunderstorm, snow, mist
   if (weather === "Clear") {
     return "./assets/weather-icons/clear.svg";
   } else if (weather === "Clouds") {
     return "./assets/weather-icons/cloudy.svg";
   } else if (weather === "Drizzle") {
-    return "./assets/weather-icons/drizzle.svg";
+    return "./assets/weather-icons/rain.svg";
   } else if (weather === "Rain") {
     return "./assets/weather-icons/rain.svg";
   } else if (weather === "Thunderstorm") {
@@ -82,6 +81,56 @@ const getIconForWeather = (weather) => {
   } else console.log("icon not found for", weather);
 
   return "./assets/weather-icons/fallback-icon.svg";
+};
+
+const weatherBasedTheme = (weather, city) => {
+  console.log("weatherBasedTheme", weather);
+  const cozyIcon = document.getElementById("cozyTextIcon");
+  const cozyText = document.getElementById("cozyTextParagraph");
+
+  let newIcon, newText;
+
+  if (weather === "Clear") {
+    document.body.className = "weather-condition-clear";
+    newIcon = `<img src="./assets/weather-icons/clear.svg">`;
+    newText = `Sun's out, buns out - you know it ${city}! `;
+  } else if (weather === "Clouds") {
+    document.body.className = "weather-condition-cloudy";
+    newIcon = `<img src="./assets/weather-icons/cloudy.svg">`;
+    newText = `Light your favorite candle, ${city} is cloudy today.`;
+  } else if (weather === "Drizzle") {
+    document.body.className = "weather-condition-rain";
+    newIcon = `<img src="./assets/weather-icons/rain.svg">`;
+    newText = `Drizzle or waterfall, in ${city} you'll know when it's too late.`;
+  } else if (weather === "Rain") {
+    document.body.className = "weather-condition-rain";
+    newIcon = `<img src="./assets/weather-icons/rain.svg">`;
+    newText = `Drizzle or waterfall, in ${city} you'll know when it's too late.`;
+  } else if (weather === "Thunderstorm") {
+    document.body.className = "weather-condition-thunderstorm";
+    newIcon = `<img src="./assets/weather-icons/thunderstorm.svg">`;
+    newText = `Quickly ${city}, get inside and listen to the thunder!`;
+  } else if (weather === "Snow") {
+    document.body.className = "weather-condition-snow";
+    newIcon = `<img src="./assets/weather-icons/snow.svg">`;
+    newText = `Brrr... ${city} is feeling cold today. `;
+  } else if (weather === "Mist") {
+    document.body.className = "weather-condition-mist";
+    newIcon = `<img src="./assets/weather-icons/mist.svg">`;
+    newText = `Is ${city} misty or is something burning?`;
+  } else {
+    console.log("theme not found for", weather);
+    document.body.className = "weather-condition-default";
+    newIcon = `<img src="./assets/weather-icons/fallback-icon.svg">`;
+    newText = `Well this is embarrasing ${city}, can't seem to load your weather.`;
+  }
+  console.log("weatherBasedTheme() - about to set ", {
+    newIcon,
+    newText,
+  });
+
+  cozyIcon.innerHTML = newIcon;
+  cozyText.innerHTML = newText;
 };
 
 const printForecastEntry = (dayForecast) => {
@@ -119,6 +168,8 @@ const getWeather = (city) => {
       currentCity.innerHTML = json.name;
       liveTemperature.innerHTML = json.main.temp.toFixed(1);
       weatherDescription.innerHTML = json.weather[0].description;
+
+      weatherBasedTheme(json.weather[0].main, json.name);
 
       // Sunrise and sunset //
       const timestampSunrise = json.sys.sunrise;
