@@ -4,7 +4,6 @@ const weeklyWeather = document.getElementById("weeklyForcastWrapper");
 const dailyForcast = document.getElementById("dailyForcastRow");
 const selectCity = document.getElementById("cities");
 const ApiWeather = 'http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=64d2a624607147029ae4574d21f5c6d9'
-const weatherContainer = document.getElementById('weather-container')
 
 
 
@@ -95,45 +94,47 @@ const fetchForcast = (forcastApi) => {
 const ShowCityWeather = (data) => {
   console.log("weatherdata", data);
   //weather descpription and temperature with one decimal
-  container.innerHTML = `<p>${data.weather[0].description} | ${data.main.temp.toFixed(1)} &#8451</p>`; //&#8451 is the formal for celsius, changed conatiner to main
+  mainWeather.innerHTML = `<p>${data.weather[0].description} | ${data.main.temp.toFixed(1)} &#8451</p>`; //&#8451 is the formal for celsius, changed conatiner to main
+
   //Sunrise
-  const unixTimestampSunrise = data.sys.sunrise;
+const unixTimestampSunrise = data.sys.sunrise;
   //To get sunrise/sunset time in hours:minutes:seconds
   let sunrise = new Date(unixTimestampSunrise * 1000);
   //Declare new variable to show only hh:mm
   let sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: "short" });
   mainWeather.innerHTML += `<p>Sunrise: ${sunriseTime}</p>`;
-  //Sunset
-  const unixTimestampSunset = data.sys.sunset;
+  
+    //Sunset
+const unixTimestampSunset = data.sys.sunset;
   let sunset = new Date(unixTimestampSunset * 1000);
   let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: "short" });
   mainWeather.innerHTML += `<p>Sunset: ${sunsetTime}</p>`;
+  
   if (data.weather[0].main === 'Cloudy') {
     document.body.style.backgroundColor = "#CFD2CF"
     document.body.style.color = "#5F6F94"
     container.innerHTML += `<i class="fa-solid fa-cloud"></i>
-    <h1>It looks rather cloudy in ${data.name} today &#x1F325;</h2>`
+    <h1>It looks rather cloudy in ${data.name} today &#x1F325;</h1>`
     container.classList.add("cloudy")
-} else if (data.weather[0].main === 'Rain') {
+    } else if (data.weather[0].main === 'Rain') {
     document.body.style.backgroundColor = "#DAEAF1"
     document.body.style.color = "#5F6F94"
     container.innerHTML += `<i class="fa-solid fa-cloud-rain"></i>
     <h1>Get your umbrella, it looks rather wet in ${data.name} today &#9748;</h1>`
     container.classList.add("rainy")
-} else if (data.weather[0].main === 'Clear') {
+    } else if (data.weather[0].main === 'Clear') {
     document.body.style.backgroundColor = "#FFB3B3"
     document.body.style.color = "#B270A2"
     container.innerHTML += `<i class="fa-solid fa-sun"></i>
     <h1>Get your sunnies on, ${data.name} is looking rather great today. &#128526</h1>`
     container.classList.add("sunny")
-} else {
+    } else {
     document.body.style.backgroundColor = "#E4DCCF"
     document.body.style.color = "#7D9D9C"
     container.innerHTML += `<i class="fa-solid fa-cloud"></i>
     <h1>You can chillout, it is neutral weather in ${data.name} today.</h1>`
     container.classList.add("natural")
-}
-  return;//ta bort?
+    }
 };
 
 const ShowCityForcast = (data) => {
