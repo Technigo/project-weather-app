@@ -1,8 +1,61 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0px;
+}
+/* styling for header*/
 .header {
-    background-color:burlywood;
-    height: 400px; 
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: 50px 100px 40px 20px 80px;
+    /*grid-gap: 10px;*/
+    border-bottom-left-radius: 80px;
+    border-bottom-right-radius: 80px;
+
+    
 }
 
+.menu {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+.temperature {
+    font-size: 55px;
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    align-self: end;
+    padding-left: 20px;
+}
+
+.city {
+    font-size: 30px;
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+    padding-left: 15px;
+}
+
+.clear-or-cloudy {
+    grid-column: 1 / 2;
+    grid-row: 4 / 5;
+    font-size: 10px;
+    padding-left: 15px;
+}
+
+.sunrise {
+    grid-column: 1 / 2;
+    grid-row: 5 / 6;
+    font-size: 10px;
+    padding-left: 15px;
+}
+
+.sunset {
+    grid-column: 2 / 3;
+    grid-row: 5 / 6;
+    font-size: 10px;
+}
+
+
+/*Styling for five day forecast*/
 .weekday {
     display: grid;
     grid-template-columns: 0.2fr 2fr 1fr 1fr 1fr;
@@ -11,7 +64,8 @@
     border-radius: 120px;
     align-items: center;
     justify-items:  center;
-    font-family: 'Roboto', sans-serif;
+    margin-right: 5px;
+    margin-left: 5px;
 }
 
 .day {
