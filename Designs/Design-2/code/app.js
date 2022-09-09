@@ -113,6 +113,7 @@ function fetchWeather(city) {
 //and the input value is being passed as a parameter
 searchBtn.addEventListener('click', () => {
   fetchWeather(searchBar.value);
+  searchBar.value = '';
 });
 
 //Invoking the function when the app loads
