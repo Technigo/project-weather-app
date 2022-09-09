@@ -12,7 +12,7 @@ const week = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
 
 //fetch today weather
-fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=021625534abeaac2039ba88d0c89b1ce')
+fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=021625534abeaac2039ba88d0c89b1ce')
     .then((response) => {
         return response.json()
     })
