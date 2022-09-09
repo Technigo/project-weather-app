@@ -1,5 +1,3 @@
-
-
 const key = "b7874ca1c4d00ac10b0c0385176b9111"
 // API key 2 = 6912cf21e673e1261cfa693ed33d2aa7
 
@@ -34,6 +32,7 @@ function showError(error) {
 
 function getWeather(latitude, longitude){
   let apiUrl =`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`
+  console.log(apiUrl)
 
 
 
@@ -44,9 +43,12 @@ fetch(api)
         return response.json()
     })
     .then((json) => {
-        const weatherType = `${json.weather[0].main}`
-        const currentTemp = `${json.main.temp}` 
-        const roundedTemp = Math.round(currentTemp*10)/10 //this rounds the current temp up to 1 decimal
+      const weatherType = `${json.weather[0].main}`
+      if (json.main.temp > 200) {
+        const currentTemp = `${json.main.temp}`
+        const currentCelsiusTemp = currentTemp - 273.15
+        const roundedTemp = Math.round(currentCelsiusTemp*10)/10
+        skyState.innerHTML =`${json.name} | ${weatherType} | ${roundedTemp}°C`
         let sunriseTime = json.sys.sunrise
         // Create a new JavaScript Date object based on the timestamp
         // multiplied by 1000 so that the argument is in milliseconds, not seconds.
@@ -64,9 +66,37 @@ fetch(api)
         var formattedTimeSunset = hours + ':' + minutes.substr(-2);
         
         console.log(roundedTemp)
-        skyState.innerHTML =`${json.name} | ${weatherType} | ${roundedTemp}°C`
+        
         sunrise.innerHTML = `Sunrise ${formattedTimeSunrise}`
         sunset.innerHTML = `Sunset ${formattedTimeSunset}`
+      } else {
+        const currentTemp = `${json.main.temp}`
+        const roundedTemp = Math.round(currentTemp*10)/10
+        skyState.innerHTML =`${json.name} | ${weatherType} | ${roundedTemp}°C`
+        let sunriseTime = json.sys.sunrise
+        // Create a new JavaScript Date object based on the timestamp
+        // multiplied by 1000 so that the argument is in milliseconds, not seconds.
+        var date = new Date(sunriseTime * 1000);
+        // Hours part from the timestamp
+        var hours = date.getHours();
+        // Minutes part from the timestamp
+        var minutes = "0" + date.getMinutes();     
+        // Will display time in 10:30:23 format
+        var formattedTimeSunrise = hours + ':' + minutes.substr(-2);
+        let sunsetTime = json.sys.sunset
+        var date = new Date(sunsetTime * 1000);
+        var hours = date.getHours();
+        var minutes = "0" + date.getMinutes();
+        var formattedTimeSunset = hours + ':' + minutes.substr(-2);
+        
+        console.log(roundedTemp)
+        
+        sunrise.innerHTML = `Sunrise ${formattedTimeSunrise}`
+        sunset.innerHTML = `Sunset ${formattedTimeSunset}`
+      }
+
+//this rounds the current temp up to 1 decimal
+
 
 // Sunny, cluody or rain? change of styling depending on weather
 
