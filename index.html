@@ -10,14 +10,14 @@
 </head>
 <body>
 
-<form id="city-input" class="city-input" action=""https://httpbin.org/anything"">
-    <input type="text" placeholder="search your city">
+<div id="search-disply" class="search-display">   
+    <input id="city-input" class="city-input" type="text" placeholder="search your city">
     <button id="search-button" class="search-button">Search</button>
-</form>
+    <h2 id = "city-name"></h2>
+</div> 
 
 <section id="geo" class="geo">
     <div id="todaysWeather" class="todaysWeather">
-        <h1 class="city-name"></h1>
         <p class = "temperature"> <!-- this will be altered with js --></p>
         <p>sunrise:</p>
         <p>Sunset:</p>
@@ -30,7 +30,7 @@
     </div>
 </section>
 
-<section id="weather-forecast" class="weather-forecast"></section>
+<section id="weather-forecast"></section>
 
 <script src=script.js></script>
 </body>
