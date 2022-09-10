@@ -12,8 +12,10 @@
   <body>
     <div class="wrapper">
       <!-- narbar  -->
-      <div class="navBar">
-        <div class="time"></div>
+      <div id="navBar">
+        <h2 id="day"> </h2>
+        <h2 id="time"> </h2>
+      
       </div>
 
       <!-- hero -->
@@ -22,21 +24,23 @@
           <input id="search" type="text" placeholder="Type the city name" />
           <button id="btn-searchCity">search</button>
         </div>
-
+       <h1 id="hour"></h1>
         <div id="allInfo">
           <div class="cityInfo">
-            <h1 id="hour"></h1>
             <h1 id="city"></h1>
             <h2 id="weather"></h2>
             <h2 id="degree"></h2>
             <p id="sunrise"></p>
             <p id="sunset"></p>
           </div>
-          <div class="animation">
-            <!-- <h1>cloud</h1> -->
-          </div>
+          <!-- <div class="iconHero">
+            <h1>hej</h1>
+          </div> -->
+          <!-- <div class="animation">
+          
+          </div> -->
         </div>
-      </div>
+      
 
       <!-- Container -->
       <div id="container">
@@ -47,7 +51,7 @@
         <div id="forecast"></div>
       </div>
     </div>
-
+</div>
     <script src="app.js"></script>
   </body>
 </html>
