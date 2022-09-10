@@ -11,12 +11,11 @@ const sunrise = document.getElementById('sunrise');
 const sunset = document.getElementById('sunset');
 const search = document.getElementById('search');
 const timeInBackground = document.getElementById('time');
-
 const day = document.getElementById('day');
 const navBar = document.getElementById('navBar');
-
 const date = new Date();
-let now = new Date().toLocaleDateString('en-us', {
+
+const now = new Date().toLocaleDateString('en-us', {
   weekday: 'long',
   month: 'long',
   day: 'numeric',
