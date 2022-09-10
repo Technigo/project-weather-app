@@ -10,7 +10,6 @@ body {
   align-items: center;
   font-family: sans-serif;
   color: #fff;
-
   background-image: url('img/img-background-wrapper.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -127,6 +126,11 @@ img.weather-icon {
   margin-bottom: 10px;
 }
 
+h6{
+  padding: 10px;
+}
+
 div#container {
   width: 60%;
 }
+
