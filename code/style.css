@@ -62,7 +62,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   width: auto;
-  height: auto;
+  height: 737px;
   justify-content: space-between;
   flex-direction: column;
   background-color: #928279; /*-apps color-*/
@@ -217,7 +217,8 @@ a:link {
   }
 
   .weather-app {
-    margin-bottom: 150px;
+    margin-bottom: 100px;
+    margin-top: 20px;
     max-width: 325px;
     height: 550px;
     border-radius: 10px;
