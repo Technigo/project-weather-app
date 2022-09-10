@@ -5,7 +5,7 @@ const sunset = document.getElementById('sunset')
 const weatherInStockholm = document.getElementById('weatherinstockholm')
 const stockholmContainer = document.getElementById('stockholmcontainer')
 const celsius = document.getElementById('celsius')
-const iconClear = document.getElementById('clear')
+const icon = document.getElementById('icon')
 const status = document.getElementById('status')
 
 fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=07e49e158145921c4197d32487c9067e')
@@ -36,11 +36,15 @@ const sunsetTime = sunsetNewDate.toLocaleTimeString([], {timeStyle: 'short'})
 
 const weatherReport = () => { //The message that will show and change depending to weather
 if (temperature === 'Clear') {
-    weatherInStockholm.innerHTML = `Get your sunnies on. ${data.name} is looking rather great today.`
+weatherInStockholm.innerHTML += `Get your sunnies on. ${data.name} is looking rather great today.`
+icon.innerHTML = `<src=./Designs/icons/clear.svg">`
+console.log(icon)
 } else if (temperature === 'Rain') {
     weatherInStockholm.innerHTML = `Don't forget your umbrella. It's wet in ${data.name} today.`
+    icon.innerHTML = `<src=./Designs/icons/rain.svg">`
 } else {
     weatherInStockholm.innerHTML = `Light a fire and get cosy. ${data.name} is looking quite cosy today.`
+    icon.innerHTML = `<src=./Designs/icons/cloud.svg">`
 }
 }
 weatherReport()
