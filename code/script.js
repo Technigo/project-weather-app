@@ -1,3 +1,8 @@
+//Splash screen
+let intro = document.querySelector('.intro');
+let logo = document.querySelector('.logo-header');
+let logoSpan = document.querySelectorAll('.logo')
+
 // burger menu
 const closeMenu = document.querySelector(".closeMenu");
 const burger = document.querySelector(".burger");
@@ -14,6 +19,33 @@ const dayForecast = document.getElementById("weatherForecast");
 const daysOfTheWeek = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 const currentSunrise = document.getElementById("todaysWeatherSunrise");
 const currentSunset = document.getElementById("todaysWeatherSunset");
+
+
+//splash screen at work
+window.addEventListener('DOMContentLoaded',()=> {
+  setTimeout(()=>{
+    logoSpan.forEach((span, idx)=>{
+      setTimeout(() => {
+        span.classList.add('active');
+      }, (idx + 1) * 400)
+    });
+
+    setTimeout(()=>{
+      logoSpan.forEach((span, idx)=> {
+        setTimeout(() => {
+          span.classlist.remove('active');
+          span.classlist.add('fade');
+        },(idx + 1) * 50);
+    })
+  }, 2000);
+
+  setTimeout(()=>{
+    intro.style.top = `-100vh`;
+  }, 2300);
+})
+})
+
+
 
 // show is added to how burger menu appears
 const show = () => {
