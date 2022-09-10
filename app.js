@@ -29,7 +29,7 @@ timeInBackground.innerHTML = time;
 
 // fetching data from the URL
 const fetchForecastByCity = (city) => {
-  const url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`;
+  const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`;
 
   // main function, fetching updating hero and forecast
   fetch(url)
