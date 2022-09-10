@@ -199,8 +199,8 @@ a:link {
 }
 
 .weather-forecast-entry-icon {
-  width: 28px;
-  height: 28px;
+  width: 35px;
+  height: 35px;
 }
 
 /* - - - - - - - - - - - - - - - - - - - MEDIA QUERIES - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -248,6 +248,7 @@ a:link {
 
   .weather-forecast {
     margin-top: -28px;
+    padding-top: 30px;
   }
 
   .weather-forecast-entry {
@@ -255,20 +256,18 @@ a:link {
     justify-content: space-between;
     line-height: 16px;
     font-size: 16px;
+
   }
 
-  .weather-forecast-entry-icon {
-    width: 20px;
-    height: 20px;
-  }
+  .weather-forecast-entry-icon{
+    width: 35px;
+    height: 35px; 
+}
 
   /* - - - DESKTOP - - - - - - - - */
 
   @media (min-width: 1025px) {
-
-  
     .weather-app {
-
       max-width: 300px;
       margin-bottom: 70px;
     }
@@ -281,7 +280,10 @@ a:link {
     .weather-forecast-entry {
       line-height: 14px;
     }
-  }
+    .weather-forecast-entry-icon{
+    width: 35px;
+    height: 35px; 
+}
 }
 
 /* WEATHER BASED STYLING CLASSES */
@@ -347,4 +349,5 @@ a:link {
 }
 .weather-condition-default .weather-app {
   background: #928279;
+}
 }
