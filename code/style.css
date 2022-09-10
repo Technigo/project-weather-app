@@ -51,7 +51,7 @@ body {
 .logo.fade {
   bottom: 150px;
   opacity: 0;
-  transition: ease-in-out 1s;
+  transition: ease-in-out 0.5s;
 }
 
 /* - - - BLUE: MAIN - - - - - - - - */
@@ -173,7 +173,6 @@ a:link {
 .cozy-text {
   /* border: 1px solid rgb(199, 143, 14); */
   font-weight: 500;
-  font-size: 60px
 }
 
 .cozy-text-icon {
@@ -182,7 +181,7 @@ a:link {
 }
 
 .cozy-text-paragraph {
-  font-size: 32px;
+  font-size: 40px;
 }
 
 /* - - - GREEN: WEATHER FORECAST - - - - - - - - */
@@ -247,7 +246,7 @@ a:link {
   }
 
   .cozy-text-paragraph {
-    font-size: 30px;
+    font-size: 36px;
   }
 
   .weather-forecast {
