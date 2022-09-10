@@ -18,6 +18,13 @@ body {
     grid-row: 1 / 2;
 }
 
+.menu-icon {
+    height: 50px;
+    padding-left: 15px;
+    padding-top: 10px;
+  
+}
+
 .temperature {
     font-size: 75px;
     grid-column: 1 / 2;

@@ -11,6 +11,10 @@ const weekday = document.getElementById('weekday');
 const sunset = document.getElementById('sunset');*/
 const containerSunrise = document.getElementById("sunrise")
 const containerSunset = document.getElementById("sunset")
+const menuBtn = document.getElementById("menuIcon")
+
+
+
 
     fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=98bd2fbedad0f13ae05ed8e49698fda1')
     .then((response) => {
@@ -107,6 +111,10 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
 
     .catch((err) => {
         console.log('caught error', err)
+    })
+
+    menuBtn.addEventListener('click', (event) => {
+        console.log("i'm clicking")
     })
 
         //never use the same id in several places! understand what daniel means
