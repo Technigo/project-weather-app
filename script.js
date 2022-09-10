@@ -1,10 +1,10 @@
-const cityPicker = document.getElementById("cityPicker");
-cityPicker.addEventListener('change', (event) => {
+const cityPicker = document.getElementById('cityPicker');
+cityPicker.addEventListener('change', event => {
   getCityData(event.target.value);
 });
 
-function getCityData (city) {
-console.log(city);
+function getCityData(city) {
+  console.log(city);
 
   const API_TODAY = `
 https://api.openweathermap.org/data/2.5/weather?q=${city},Sweden&units=metric&APPID=7dee0e5a05b2c9d92a37a397279281ca
@@ -37,9 +37,13 @@ https://api.openweathermap.org/data/2.5/forecast?q=${city},Sweden&units=metric&A
       //removes all previous styling based on rain/clouds/clear, before adding styling for selected city's current weather (rain/cluds/clear).
       mainContainer.classList.remove('rain', 'clouds', 'clear');
       //does the same as above for the Select-element.
-      citySelect.classList.remove('city-select-rain', 'city-select-clouds', 'city-select-clear');
+      citySelect.classList.remove(
+        'city-select-rain',
+        'city-select-clouds',
+        'city-select-clear'
+      );
 
-      // Sets the image source and description text based on the weather
+      // Sets the image source, description text and styling based on the weather
       if (data.weather[0].main === 'Clear') {
         imageSrc = 'noun_Sunglasses_2055147.svg';
         weatherDescription = `Get your sunnies on. ${data.name} is looking rather great today.`;
@@ -80,7 +84,9 @@ https://api.openweathermap.org/data/2.5/forecast?q=${city},Sweden&units=metric&A
       sectionForecast.innerHTML = '';
 
       // Extracts only the data from noon each day
-      const forecastDays = data.list.filter(day => day.dt_txt.includes('12:00'));
+      const forecastDays = data.list.filter(day =>
+        day.dt_txt.includes('12:00')
+      );
 
       // Loops over forecastDays and injects the data into the forecast HTML section
       forecastDays.forEach(day => {
@@ -99,5 +105,5 @@ https://api.openweathermap.org/data/2.5/forecast?q=${city},Sweden&units=metric&A
       `;
       });
     });
-  }
-  getCityData('Gothenburg')
+}
+getCityData('Gothenburg');
