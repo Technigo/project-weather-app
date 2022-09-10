@@ -27,7 +27,6 @@ timeInBackground.innerHTML = time
 btnSearchCity.addEventListener('click', () => {
   const city = document.getElementById('search').value;
   const url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`;
- 
 
   fetch(url)
     .then(function (response) {
@@ -37,30 +36,25 @@ btnSearchCity.addEventListener('click', () => {
       // hour.innerHTML=time;
       cityName.innerHTML= data.city.name;
       degree.innerHTML = `<h2>${Math.round(data.list[0].main.temp.toFixed(1))} ${'&#8451;'}</h2>`
+
       weather.innerHTML = data.list[0].weather[0].main;
       sunrise.innerHTML = new Date(data.city.sunrise * 1000).toLocaleTimeString();
       sunset.innerHTML = new Date(data.city.sunset * 1000).toLocaleTimeString();
 
-      search.value = " "; 
-      
-      console.log(data)
+      search.value = " ";
    
-  const weatherAppearance = data.list[0].weather[0].main
-  const background = document.querySelector('.wrapper')
-  const appBackgroud= () => {
-
+    const weatherAppearance = data.list[0].weather[0].main
+    const background = document.querySelector('.wrapper')
+    const appBackgroud= () => {
     background.style.backgroundSize = "cover";
     background.style.height = "700px";
     background.style.repeat = "no-repeat";
-
     if(weatherAppearance ==='Rain'){
       console.log('It is raining')
       background.style.backgroundImage = "url('https://st.depositphotos.com/1013195/1395/i/450/depositphotos_13958901-stock-photo-rainy-day.jpg') ";
-
     }
     else if(weatherAppearance === 'Clear'){
       background.style.backgroundImage = "url('https://wallpaperaccess.com/sunny-day')";
-      
     }
     else if(weatherAppearance === 'Clouds'){
       background.style.backgroundImage = "url('https://images.unsplash.com/photo-1419833173245-f59e1b93f9ee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNvbHVkeSUyMHNreXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60')"
@@ -70,11 +64,10 @@ btnSearchCity.addEventListener('click', () => {
     }
 
     }
-          appBackgroud()
+    appBackgroud()
 
     })
 })
-
 
 
 //*******  5 days weather forecast *********
@@ -86,7 +79,6 @@ fetch(
   })
   .then((json) => {
     console.log(json);
-
 
     const filteredForecast = json.list.filter((item) => item.dt);
     // console.log('filtered forecast', filteredForecast);
@@ -128,7 +120,6 @@ fetch(
       `;
     });
   });
-
 
 const getIcon = (condition) => {
   switch (condition) {
