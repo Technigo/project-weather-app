@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-// Variables that point to selected DOM elements
-=======
 // All the DOM selectors stored as short variables
->>>>>>> js-stretch-goals-test
 const infoWrapper = document.getElementById('infoWrapper');
 const forecastWrapper = document.getElementById('forecastWrapper')
 const icon = document.getElementById('data-result-icon')
@@ -15,27 +11,14 @@ const drizzelDay = document.getElementById('drizzelDay')
 const forecastROw = document.getElementById('forecastRow')
 const bodyStyle = document.getElementById('bodyStyle')
 
-<<<<<<< HEAD
-//the fetch from the API
-=======
 
 // Here starts the fetch API for Stockholm weather
->>>>>>> js-stretch-goals-test
 fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=8802f8b4b2d622931613aace44be57ae')
     .then((response) => {
         return response.json() 
     })
     .then((json) => {
         console.log(json)
-<<<<<<< HEAD
-//Sunrise and sunset
-        let unixSunriseTime = json.city.sunrise
-        let unixSunsetTime = json.city.sunset
-        const sunriseTime = new Date(unixSunriseTime * 1000)
-        const sunsetTime = new Date(unixSunsetTime * 1000)
-        
-        //
-=======
 
         const sunriseTime = new Date(json.city.sunrise * 1000)
         const sunsetTime = new Date(json.city.sunset * 1000)
@@ -48,7 +31,6 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
           };
         
         //This is for getting info from json and display it into the top section
->>>>>>> js-stretch-goals-test
         infoWrapper.innerHTML += `
         <img class="menu" src="./icons8-menu-48.png"/>
         <div class="info-row">
@@ -57,27 +39,6 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
             </div>
             <div class="info-sky" id="infoSky">
                 <p>${json.list[0].weather[0].description}</p>
-<<<<<<< HEAD
-                <img class="weather-icon" id="weatherIcon" 
-                src="http://openweathermap.org/img/wn/${json.list[0].weather[0].icon}.png" alt="weather-icon">
-            </div>
-            <div class="info-city" id="infoCity">${json.city.name}</div> 
-            <div class="info-sun-position" id="infoSunPosition">
-                <p class="text">Sunrise at ${sunriseTime.getHours()}:${sunriseTime.getMinutes()}</p>
-                <p class="text">Sunset at ${sunsetTime.getHours()}:${sunsetTime.getMinutes()}</p>
-            </div>
-        </div>
-        `;
-      // five day forecast 
-        let filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
-        filteredForecast.forEach(item => {
-            forecastWrapper.innerHTML += `
-            <div class="forecast-row">
-                <div class="for-day-temp"> ${new Date(item.dt * 1000).toLocaleDateString("en-US", {
-                weekday: "short",})}</div>
-                <img class="weather-icon" id="weatherIcon" 
-                src="http://openweathermap.org/img/wn/${item.weather[0].icon}.png" alt="weather-icon">
-=======
                 <img class="weather-icon" id="weatherIcon" src="http://openweathermap.org/img/wn/${json.list[0].weather[0].icon}.png" alt="weather-icon">
             </div>
             <div class="info-city" id="infoCity">
@@ -100,20 +61,17 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
                     weekday: "short",
                 })}</div>
                 <img class="weather-icon" id="weatherIcon" src="http://openweathermap.org/img/wn/${item.weather[0].icon}.png" alt="weather-icon">
->>>>>>> js-stretch-goals-test
                 <div class="for-day-temp"> ${item.main.temp.toFixed(0)}˚C</div>
                 <div class="desktop-info"> Feels like ${item.main.feels_like.toFixed(0)}˚C</div>
                 <div class="desktop-info"> Humidity ${item.main.humidity.toFixed(0)}%</div>
                 <div class="desktop-info"> Wind speed ${item.wind.speed} m/s</div>
             </div>
             `;
-<<<<<<< HEAD
-=======
             
             //This will change the background depending on weather main from json
 
             //You can change this⬇ to test if it works (comment out if not using)
-            item.weather[0].main = "Thunderstorm"
+            //item.weather[0].main = "Thunderstorm"
             //You can change this⬆ to test if it works
 
             if (item.weather[0].main === 'Clear') {
@@ -144,14 +102,9 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
             } else {
                 infoWrapper.style.background = 'linear-gradient(40deg, rgb(255, 255, 255) 55%,rgb(255, 255, 255))'
             };
->>>>>>> js-stretch-goals-test
         })
     })
 // if there is an error, this will catch it
 .catch((err) => {
     console.log('caught error', err)
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> js-stretch-goals-test

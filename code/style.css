@@ -94,13 +94,10 @@ h1 {
     align-items: center;
     justify-content: space-between; 
     box-shadow: 1px 2px 3px rgb(186, 182, 182);
-<<<<<<< HEAD
-=======
     background: rgb(212, 212, 212);
     margin-bottom: 20px;
     padding: 20px 0 20px 0;
     
->>>>>>> js-stretch-goals-test
 }
 
 .for-day-temp {
