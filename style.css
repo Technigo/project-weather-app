@@ -30,7 +30,6 @@ body {
 }
 
 .weekdays {
-  /* background-color: rgb(255 255 255 / 40%); */
   margin-bottom: 1px;
   padding: 10px;
   font-size: 20px;
@@ -47,7 +46,6 @@ img.weather-icon {
   width: 100vw;
   height: 100vh;
   display: flex;
-  /* background-image: url(img/img-background-wrapper.jpg); */
   background-size: cover;
   background-repeat: no-repeat;
   justify-content: center;
@@ -56,7 +54,6 @@ img.weather-icon {
 }
 #navBar {
   padding-top: 2rem;
-  /* display:block; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -100,7 +97,6 @@ img.weather-icon {
 #btn-searchCity {
   font-size: 1rem;
   padding: 10px 5px;
-  /* width: 18rem; */
   text-align: center;
   border: 0.1rem solid #56a5eb;
   margin-bottom: 1rem;
@@ -112,7 +108,6 @@ img.weather-icon {
 }
 #search:hover,
 #btn-searchCity:hover {
-  /* border: 1px solid #CCC; */
   box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.5);
   transform: translateY(-0.1rem);
   transition: transform 150ms;
