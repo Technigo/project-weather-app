@@ -115,6 +115,29 @@ h1 {
     display: none;
 }
 
+.footer {
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+    
+}
+
+a:link, a:visited {   
+    color: black;   
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 10px;
+    justify-content: center;
+  }
+  
+a:hover, a:active {
+    font-size: 105%;
+}
+
 /*tablet*/
 @media (min-width: 668px) and (max-width: 1023px) {
     .info-wrapper {
@@ -155,6 +178,10 @@ h1 {
     }
     .desktop-info {
         display: none;
+    }
+
+    a:link, a:visited {   
+        font-size: 12px;
     }
 }
 
@@ -221,5 +248,13 @@ h1 {
         font-size: 15px;
         font-weight: bold;
         padding-top: 5px;
+    }
+    a:link, a:visited {   
+        font-size: 13px;
+    }
+
+    .footer {
+        margin-top: 100px;
+        justify-content: flex-end;
     }
 }
