@@ -52,11 +52,10 @@ img.weather-icon {
 }
 
 #hero {
-  height: 30vh;
+  min-height: 240px;
   width: 80%;
   margin-top: 2rem;
-  margin-bottom: 120px;
-
+  margin-bottom: 60px;
   align-items: center;
   /* background-color: red; */
 }
