@@ -1,30 +1,72 @@
-body {
-    display: flex;
-    background-color: bisque;
-    font-style: #164A68;
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
-  
 }
 
-.geo {
+
+body {
+    background-color: bisque;
+    font-style: #164A68;  
+}
+
+.geo{
+    padding:5% 5% 0 10%;
+}
+
+.todaysWeather {
     display: flex;
     flex-direction: column;
-    max-width: 60%;
-    color: #2A5510; 
+    margin-bottom: 20px;
 }
     
 .date {
-    font-size: 18px;
+    font-size: 13px;
     font-weight: 100;
-    padding:0;
+    padding-bottom:10px;
 }
+
 .sunrise, .sunset , .temperature {
-    font-size: 15px;
-    margin:0;
-
+    font-size: 20px;
+    font-weight:100;
 }
 
+.icon{
+    width:130px;
+    padding-bottom: 20px;
+}
 
-/*----animation color change due to weather change-----*/
+h1{
+    font-size: 35px;
+    max-width: 90%;
+}
 
-    
+#weather-forecast{
+    padding:5% 5% 5% 10%;
+}
+
+.daily-display{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px dotted;
+    padding: 5px 0 5px 0;
+    max-width: 80%;
+}
+
+/* Styling based on weather change */
+.clear {
+    background-color: #f7e9b9;
+    color: #2a5510;
+  }
+  
+  .clouds {
+    background-color: #f4f7f8;
+    color: #f47775;
+  }
+  
+  .rain {
+    background-color: #a3def7;
+    color: #164a68;
+  }
