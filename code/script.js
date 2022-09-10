@@ -60,7 +60,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
                 <div class="for-day-temp"> ${new Date(item.dt * 1000).toLocaleDateString("en-US", {
                     weekday: "short",
                 })}</div>
-                <img class="weather-icon" id="weatherIcon" src="http://openweathermap.org/img/wn/${item.weather[0].icon}.png" alt="weather-icon">
+                <img class="weather-icon" id="weatherIcon" src="https://openweathermap.org/img/wn/${item.weather[0].icon}.png" alt="weather-icon">
                 <div class="for-day-temp"> ${item.main.temp.toFixed(0)}˚C</div>
                 <div class="desktop-info"> Feels like ${item.main.feels_like.toFixed(0)}˚C</div>
                 <div class="desktop-info"> Humidity ${item.main.humidity.toFixed(0)}%</div>
@@ -71,7 +71,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
             //This will change the background depending on weather main from json
 
             //You can change this⬇ to test if it works (comment out if not using)
-            //item.weather[0].main = "Thunderstorm"
+            //item.weather[0].main = "Snow"
             //You can change this⬆ to test if it works
 
             if (item.weather[0].main === 'Clear') {
