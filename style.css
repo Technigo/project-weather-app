@@ -46,6 +46,7 @@ h1 {
 
 select {
   color: unset;
+  background-color: unset;
 }
 
 .city-picker {
@@ -66,6 +67,16 @@ select {
   outline: none;
 }
 
+.city-select-clear {
+  background-color: #fff5d5;
+}
+.city-select-clouds {
+  background-color: #ffffff;
+}
+.city-select-rain {
+  background-color: #c3ebfc;
+}
+
 /*** Today section ***/
 
 .weather-today {
@@ -80,11 +91,6 @@ select {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-
-/*.today-title {
-    STYLING NEEDED?
-
-}*/
 
 /*** Forecast section ***/
 
