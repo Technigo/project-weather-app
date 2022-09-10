@@ -1,13 +1,10 @@
 body {
     font-family: 'Montserrat', sans-serif;
-}
-
-h1 {
-    color: red;
+    color: #2A5510;
+    background-color: antiquewhite;
 }
 
 .forecast {
-    background-color: antiquewhite;
     height: auto;
     font-size: 30px;
     padding: 10px;
@@ -24,5 +21,42 @@ h1 {
 
 .day-in-forecast p {
     border-bottom: 2px dotted darkgrey;
+}
 
+#weatherinstockholm {
+    font-size: 45px;
+    font-weight: bolder;
+    line-height: 150%;
+    padding: 40px;
+}
+
+
+.suncontainer {
+    width: auto;
+    display: flex;
+    font-size: 15pt;
+    margin-left: 20px;
+}
+
+.stockholmcontainer {
+    display: flex;
+    justify-content: center;
+}
+
+.tempstat {
+    display: flex;
+    flex-direction: row;
+}
+
+
+@media (min-width: 667px) and (max-width: 1024px) {
+    body {
+        font-size: 25pt;
+    }
+}
+
+@media (min-width: 1025px) {
+    body {
+        font-size: 35pt;
+    }
 }
