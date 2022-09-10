@@ -36,6 +36,7 @@ https://api.openweathermap.org/data/2.5/forecast?q=${city},Sweden&units=metric&A
 
       //removes all previous styling based on rain/clouds/clear, before adding styling for selected city's current weather (rain/cluds/clear).
       mainContainer.classList.remove('rain', 'clouds', 'clear');
+      //does the same as above for the Select-element.
       citySelect.classList.remove('city-select-rain', 'city-select-clouds', 'city-select-clear');
 
       // Sets the image source and description text based on the weather
