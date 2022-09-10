@@ -91,7 +91,6 @@ let weeklyTemp;
 
 
    //display week forecast for the chosen city, in this case Stockholm
-    //const forecast =() => {
         //here fetching forecast 
         fetch ('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=399ae731e6b36c8272a3566b6ed57e5c')
         .then((response) => {
@@ -117,18 +116,7 @@ let weeklyTemp;
                 
                });
 
-              // forecast();
-        
-    //}
-
-    
-    
-
   
-        
-
-
-
-
-//searchBtn.addEventListener("click", 
     })
+
+    //searchBtn.addEventListener("click", 
