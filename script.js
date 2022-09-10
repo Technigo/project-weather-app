@@ -104,22 +104,17 @@ let weeklyTemp;
             console.log("filtered forecast",filteredForecast);
 
             filteredForecast.forEach(day => {      
-                //let date = new Date(day.dt * 1000);
-                
-                const getDayName = (dayNumber) => {
-                    let weekInShort = ["Mon", "Tue", "Wed", "Thur", "Fri","Sat", "Sun"];
-                    return weekInShort[dayNumber];
-                    console.log("please work", weekInShort)
-                 }  
+                const date = new Date(day.dt * 1000);
+                let dayName = date.toLocaleDateString("en-US", {weekday:"short"});
                     
                 weatherForecast.innerHTML +=`
                     <div class="daily-display">
-                        <p>${weekInShort[0]}</p>
-                        <p>${day.main.temp.toFixed(1)}</p>
+                        <p>${dayName} </p>
+                        <p>${day.main.temp.toFixed(1)}°</p>
                     </div>
                 `;
                 console.log("date", filteredForecast)
-                //filteredForecast()
+                
                });
 
               // forecast();
