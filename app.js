@@ -66,60 +66,48 @@ btnSearchCity.addEventListener('click', () => {
     }
     appBackgroud()
 
+       btnSearchCity.value = "  ";
+
+      // 5 days forecast
+      const filteredForecast = data.list.filter((item) => item.dt);
+
+      const filteredTemp = data.list.filter((item) =>
+        item.dt_txt.includes('12:00')
+      );
+
+      const weekdayName = [
+        'Sunday',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+      ];
+
+      filteredTemp.forEach((item) => {
+        const date = new Date(item.dt * 1000);
+        let dayName = weekdayName[date.getDay()];
+        let icon = getIcon(item.weather[0].main);
+
+        forecast.innerHTML += `
+          <div class="weekdays"> 
+            <div class="weekday-name">
+              <p>${dayName}<p>
+              <div class="temp-weather">
+                <img class="weather-icon" src="${icon}"/>
+                <p>${Math.floor(item.main.temp)} &#8451;</p>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+    });
+
     })
 })
 
-
-//*******  5 days weather forecast *********
-fetch(
-  'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=7d5ebdb08a9c797cf1689d3a1ad108be'
-)
-  .then((response) => {
-    return response.json();
-  })
-  .then((json) => {
-    console.log(json);
-
-    const filteredForecast = json.list.filter((item) => item.dt);
-    // console.log('filtered forecast', filteredForecast);
-
-    const filteredTemp = json.list.filter((item) =>
-      item.dt_txt.includes('12:00')
-    );
-    // console.log('filtered temp', filteredTemp);
-
-    const weekdayName = [
-      'Sunday',
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday',
-    ];
-
-    filteredTemp.forEach((item) => {
-      const date = new Date(item.dt * 1000);
-      let dayName = weekdayName[date.getDay()];
-      let icon = getIcon(item.weather[0].main);
-
-      console.log(icon);
-
-      forecast.innerHTML += `
-        <div class="weekdays"> 
-          <div class="weekday-name">
-            <p>${dayName}<p>
-            <div class="temp-weather">
-            <img class="weather-icon" src="${icon}"/>
-            <p>${Math.floor(item.main.temp)} °C</p>
-            
-           
-            </div>
-          </div>
-        </div>
-      `;
-    });
-  });
+// Switch to get the icons images to the right condition
 
 const getIcon = (condition) => {
   switch (condition) {
