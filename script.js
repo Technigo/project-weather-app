@@ -7,16 +7,12 @@
 // these variables should be moved into each new corresponding function
 
 const cityPicker = document.getElementById("cityPicker");
-cityPicker.addEventListener('clange', (event) => {
+cityPicker.addEventListener('change', (event) => {
   getCityData(event.target.value);
 });
 
-/*cityPicker.addEventListener('change', getCityData);*/
-
 function getCityData (city) {
-  /*console.log(city);*/
-
-  getCityData('Gothenburg')
+console.log(city);
 
   const API_TODAY = `
 https://api.openweathermap.org/data/2.5/weather?q=${city},Sweden&units=metric&APPID=7dee0e5a05b2c9d92a37a397279281ca
@@ -103,7 +99,7 @@ https://api.openweathermap.org/data/2.5/forecast?q=${city},Sweden&units=metric&A
       });
     });
   }
- 
+  getCityData('Gothenburg') 
 
 /*
 const API_TODAY = `
