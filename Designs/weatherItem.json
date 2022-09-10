@@ -1,0 +1,36 @@
+{
+    "dt": 1662735600,
+    "main": {
+        "temp": 14.6,
+        "feels_like": 13.6,
+        "temp_min": 14.43,
+        "temp_max": 14.6,
+        "pressure": 1020,
+        "sea_level": 1020,
+        "grnd_level": 1017,
+        "humidity": 57,
+        "temp_kf": 0.17
+    },
+    "weather": [
+        {
+            "id": 802,
+            "main": "Clouds",
+            "description": "scattered clouds",
+            "icon": "03d"
+        }
+    ],
+    "clouds": {
+        "all": 32
+    },
+    "wind": {
+        "speed": 5.07,
+        "deg": 133,
+        "gust": 6.36
+    },
+    "visibility": 10000,
+    "pop": 0,
+    "sys": {
+        "pod": "d"
+    },
+    "dt_txt": "2022-09-09 15:00:00"
+}

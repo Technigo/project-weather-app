@@ -1,3 +1,28 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
 h1 {
     color: red;
+}
+
+.forecast {
+    background-color: antiquewhite;
+    height: auto;
+    font-size: 30px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.day-in-forecast {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 30px;
+    padding: 20px;
+}
+
+.day-in-forecast p {
+    border-bottom: 2px dotted darkgrey;
+
 }
