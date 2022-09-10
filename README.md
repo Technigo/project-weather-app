@@ -1,13 +1,12 @@
-# Weather App
+## Joel & Sofias Weather App 🌞☁☔
 
-TEst Joel & Sofias weather app
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This assignment was to create a weather app showing current weather and a forecast for (at least) one city, the app should fetch data from an API. The data should be presented according to provided design guidelines and be responsive.
+The project should be performed as a 2-man team using basic branching and merging in Git.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We started out by laying down the base structure for the HTML elements with ids and classes. It was challenging to predict what would be needed in terms of html, js and css for the features, but we solved it by trying to think ahead to the best of our abilities
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://helpful-pony-3b978e.netlify.app/
