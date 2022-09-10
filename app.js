@@ -52,6 +52,7 @@ btnSearchCity.addEventListener('click', () => {
       search.value = ' ';
 
       const weatherAppearance = data.list[0].weather[0].main;
+
       const background = document.querySelector('.wrapper');
       const appBackgroud = () => {
         background.style.backgroundSize = 'cover';
@@ -92,6 +93,7 @@ btnSearchCity.addEventListener('click', () => {
         'Saturday',
       ];
 
+      forecast.innerHTML = '';
       filteredTemp.forEach((item) => {
         const date = new Date(item.dt * 1000);
         let dayName = weekdayName[date.getDay()];
@@ -112,8 +114,7 @@ btnSearchCity.addEventListener('click', () => {
     });
 });
 
-// Switch to get the icons images to the right condition
-
+/**  Switch to get the icons images to the right condition */
 const getIcon = (condition) => {
   switch (condition) {
     case 'Clouds':
