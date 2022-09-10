@@ -36,11 +36,12 @@ btnSearchCity.addEventListener('click', () => {
     .then(function (data) {
       // hour.innerHTML=time;
       cityName.innerHTML= data.city.name;
-      degree.innerHTML = `<h2>${Math.round(data.list[0].main.temp.toFixed(1))} ${'&#8451;'}</h2>`
       weather.innerHTML = data.list[0].weather[0].main;
-      sunrise.innerHTML = new Date(data.city.sunrise * 1000).toLocaleTimeString();
-      sunset.innerHTML = new Date(data.city.sunset * 1000).toLocaleTimeString();
-
+      degree.innerHTML = `<h2>${Math.round(data.list[0].main.temp.toFixed(1))} ${'&#8451;'}</h2>
+      <h6>Sunset: ${new Date(data.city.sunset * 1000).toLocaleTimeString().substring(0, 4)}</h6>
+      <h6>Sunrise: ${new Date(data.city.sunrise * 1000).toLocaleTimeString().substring(0, 4)}</h6>
+      `
+   
       search.value = " "; 
       
       console.log(data)
