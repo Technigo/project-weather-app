@@ -54,7 +54,8 @@ body {
 .weather-app {
   /* border: 1px solid rgb(59, 59, 255); */
   display: flex;
-  margin: 0 auto;
+  margin-left: auto; 
+  margin-right: auto; 
   width: auto;
   height: auto;  
   justify-content: space-between;
