@@ -61,7 +61,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   width: auto;
-  height: 737px;
+  height: 797px;
   justify-content: space-between;
   flex-direction: column;
   background-color: #928279; /*-apps color-*/
@@ -219,7 +219,7 @@ a:link {
     margin-bottom: 100px;
     margin-top: 20px;
     max-width: 325px;
-    height: 550px;
+    height: 570px;
     border-radius: 10px;
     padding-bottom: 0px;
   }
@@ -242,7 +242,7 @@ a:link {
   }
 
   .cozy-text-icon {
-    font-size: 60px;
+    font-size: 50px;
   }
 
   .cozy-text-paragraph {
@@ -270,7 +270,7 @@ a:link {
 
   @media (min-width: 1025px) {
     .weather-app {
-      max-width: 300px;
+      max-width: 350px;
       margin-bottom: 70px;
     }
 
