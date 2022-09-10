@@ -6,15 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&family=Mukta:wght@300;400;700&family=Roboto&display=swap" rel="stylesheet">
-    <a target="_blank" href="https://icons8.com/icon/12371/menu"></a>
     <title>Project WeatherApp</title>
 </head>
 
-<body>
+<body id="bodyStyle">
     <header class="navigation">
         <nav class="info-menu" id="infoMenu"></nav>
     </header>
-    <section class="info-wrapper" id="infoWrapper"></section>
+    <section class="info-wrapper" id="infoWrapper">
+        <div id="clearDay" class="clear-day"></div>
+        <div id="cloudsDay" class="clouds-day"></div>
+        <div id="rainDay" class="rain-day"></div>
+        <div id="snowDay" class="snow-day"></div>
+        <div id="thunderDay" class="thunder-day"></div>
+        <div id="drizzelDay" class="drizzel-day"></div>
+    </section>
     <section class="forecast-wrapper" id="forecastWrapper"></section>
     <script src="./script.js"></script>
 </body>
