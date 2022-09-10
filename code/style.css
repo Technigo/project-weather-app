@@ -26,7 +26,7 @@ body {
 .logo-header {
   position: absolute;
   top: 40%; 
-  left: 50%; 
+  left: 25%;
   transform: translate (-50%, -50%);
   color:#ffffff; 
 }
@@ -54,8 +54,7 @@ body {
 .weather-app {
   /* border: 1px solid rgb(59, 59, 255); */
   display: flex;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   width: auto;
   height: auto;  
   justify-content: space-between;
@@ -187,7 +186,7 @@ a:link {
   /* border: 1px solid green; */
   margin-top: 10px;
   margin-bottom: 20px;
-  padding: 2px;
+  padding: 12px;
 
 }
 
@@ -209,8 +208,12 @@ a:link {
 /* - - - TABLET - - - - - - - - */
 
 @media (min-width: 668px) {
+  
+  .logo-header { 
+    left: 45%;
+  }
+
   .weather-app {
-    margin-top: 150px;
     margin-bottom: 150px;
     max-width: 325px;
     height: 550px;
@@ -251,15 +254,18 @@ a:link {
   }
 
   .weather-forecast-entry-icon {
-    width: 20px;
-    height: 20px;
+    width: 35px;
+    height: 35px;
+    margin: 0 auto;
   }
 
   /* - - - DESKTOP - - - - - - - - */
 
   @media (min-width: 1025px) {
+
+  
     .weather-app {
-      margin-top: 70px;
+
       max-width: 300px;
       margin-bottom: 70px;
     }
@@ -280,19 +286,19 @@ a:link {
 /* clear */
 
 .weather-condition-clear {
-  color: #597448;
+  color: #fdff99;
 }
 .weather-condition-clear .weather-app {
-  background: #e1e2a1;
+  background: #8aad6f;;
 }
 
 /* cloudy */
 
 .weather-condition-cloudy {
-  color: #f47775;
+  color: #c55d75;
 }
 .weather-condition-cloudy .weather-app {
-  background: #f4f7f8;
+  background: #b1b1b1;
 }
 
 /* rain or drizzle */
@@ -316,19 +322,19 @@ a:link {
 /* snow */
 
 .weather-condition-snow {
-  color: #5d5d5d;
+  color: #85e7f8;
 }
 .weather-condition-snow .weather-app {
-  background: #bde3ff;
+  background: #6396ba;
 }
 
 /* mist */
 
 .weather-condition-mist {
-  color: #eedcc6;
+  color: #4c4955;
 }
 .weather-condition-mist .weather-app {
-  background: #928279;
+  background: #bdc1c2;
 }
 
 /* default aka fallback*/

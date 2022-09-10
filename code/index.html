@@ -16,7 +16,7 @@
 <body>
     <div class="intro">
         <h1 class="logo-header">
-            <span class="logo">cloud</span>
+            <span class="logo">cloud</span><span class="logo"><img class="burger" src="assets/weather-icons/cloudy.svg"></span>
         </h1>
     </div>
 
@@ -41,7 +41,7 @@
             <!------HAMBURGER MENU WITH SEARCH BAR------>
             <nav class="hamburger-menu">
                 <button class="burger-btn">
-                    <img class="burger" src="assets/icons/morelocoations_light.svg">
+                    <img class="burger" src="assets/icons/morelocoations_dark.svg">
                 </button>
                 <ul class="sideMenu" id="sideMenu">
                     <form id="searchForm">
@@ -64,7 +64,7 @@
     </main>
 
     <!-- For testing themes -->
-    <div style="position: absolute; bottom: 10px; background: yellow;">
+    <div style="position: bottom; bottom: 10px; background: yellow;">
         <button onClick="weatherBasedTheme('Clear' , 'Göteborg')">Clear</button>
         <button onClick="weatherBasedTheme('Clouds' , 'London')">Clouds</button>
         <button onClick="weatherBasedTheme('Drizzle' , 'New York City')">Drizzle</button>
