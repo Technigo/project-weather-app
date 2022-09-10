@@ -116,7 +116,7 @@ function getLocation(){
       navigator.geolocation.getCurrentPosition((position) =>{
       var lat = position.coords.latitude; // set lat for api url 
       var long = position.coords.longitude; // set long for api url 
-       const apiGeo = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=26500228b15aa40fc0617041c68bf843`
+       const apiGeo = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=26500228b15aa40fc0617041c68bf843`
           // add ${} to fetch the lat/long for the user geolocation in url.
        fetch(apiGeo)
           .then((response) => {
