@@ -10,9 +10,6 @@ body {
   align-items: center;
   font-family: sans-serif;
   color: #fff;
-  background-image: url('img/img-background-wrapper.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 .weekday-name {
   display: flex;
@@ -48,8 +45,14 @@ img.weather-icon {
 
 .wrapper {
   width: 100vw;
-  height: auto;
-  display: block;
+  height: 100vh;
+  display: flex;
+  /* background-image: url(img/img-background-wrapper.jpg); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 #navBar {
   padding-top: 2rem;
@@ -126,11 +129,10 @@ img.weather-icon {
   margin-bottom: 10px;
 }
 
-h6{
+h6 {
   padding: 10px;
 }
 
 div#container {
   width: 60%;
 }
-
