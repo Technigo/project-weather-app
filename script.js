@@ -43,10 +43,10 @@ const containerSunset = document.getElementById("sunset")
 
       const changeBackground = (() => {
         if (currentWeather === "Clouds") {
-            header.style.backgroundImage = `url(https://images.pexels.com/photos/414659/pexels-photo-414659.jpeg?auto=compress&cs=tinysrgb&w=800)`
+            header.style.backgroundImage = `url(https://images.pexels.com/photos/209845/pexels-photo-209845.jpeg?auto=compress&cs=tinysrgb&w=1500)`
         
         } else if (currentWeather === "Rain") {
-            header.style.backgroundImage = `url(https://images.pexels.com/photos/2259232/pexels-photo-2259232.jpeg?auto=compress&cs=tinysrgb&w=800)`
+            header.style.backgroundImage = `url(https://images.pexels.com/photos/2259232/pexels-photo-2259232.jpeg?auto=compress&cs=tinysrgb&w=1500)`
         
         } else {
             header.style.backgroundImage = `url(https://images.pexels.com/photos/96622/pexels-photo-96622.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)`
@@ -76,7 +76,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
         const dailyWeather = filteredForecast[i].weather[0].main
         const feelsLike = filteredForecast[i].main.feels_like.toFixed(0)
         let day
-          day = new Date(filteredForecast[i].dt * 1000).toLocaleDateString("en-US", {weekday: 'long'})
+          day = new Date(filteredForecast[i].dt * 1000).toLocaleDateString("en-US", {weekday: 'short'})
           //console.log(day)
         
         weatherWeek.innerHTML += 
