@@ -124,7 +124,7 @@ const updateForecast = (data) => {
   filteredTemp.forEach((item) => {
     const date = new Date(item.dt * 1000);
     let dayName = weekdayName[date.getDay()];
-    let icon = getIcon(item.weather[0].main);
+    let icon = getIconByWeatherCondition(item.weather[0].main);
 
     forecast.innerHTML += `
         <div class="weekdays"> 
