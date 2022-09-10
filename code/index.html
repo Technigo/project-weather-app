@@ -10,72 +10,73 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;500&display=swap');
     </style>
-    <title>Weather App</title>
+    <title>cloud weather</title>
 </head>
 
 <body>
     <div class="intro">
         <h1 class="logo-header">
-            <span class="logo">cloud</span>
+            <span class="logo">cloud</span><span class="logo"><img class="logo-icon"
+                    src="assets/weather-icons/cloudy.svg"></span>
         </h1>
     </div>
 
-<body class="weather-condition-default">
-    <main class="weather-app">
-        <header class="header-wrapper">
-            <section id="todays-weather" class="todays-weather">
-                <div class="todays-weather-row">
-                    <span class="todays-weather-description" id="description">rain</span> |
-                    <span class="todays-weather-temperature" id="temperature">...</span>°
-                </div>
-                <div class="todays-weather-row">
-                    sunrise
-                    <span class="todays-weather-sunrise" id="todaysWeatherSunrise">08:00</span>
-                </div>
-                <div class="todays-weather-row">
-                    sunset
-                    <span class="todays-weather-sunset" id="todaysWeatherSunset">22:30</span>
+    <body class="weather-condition-default">
+        <main class="weather-app">
+            <header class="header-wrapper">
+                <section id="todays-weather" class="todays-weather">
+                    <div class="todays-weather-row">
+                        <span class="todays-weather-description" id="description">...</span> |
+                        <span class="todays-weather-temperature" id="temperature">...</span>°
+                    </div>
+                    <div class="todays-weather-row">
+                        sunrise
+                        <span class="todays-weather-sunrise" id="todaysWeatherSunrise">00:00</span>
+                    </div>
+                    <div class="todays-weather-row">
+                        sunset
+                        <span class="todays-weather-sunset" id="todaysWeatherSunset">00:00</span>
+                    </div>
+                </section>
+
+                <!------HAMBURGER MENU WITH SEARCH BAR------>
+                <nav class="hamburger-menu">
+                    <button class="burger-btn">
+                        <img class="burger" src="assets/icons/morelocoations_dark.svg">
+                    </button>
+                    <ul class="sideMenu" id="sideMenu">
+                        <form id="searchForm">
+                            <input class="input-location" id="inputLocation" placeholder="Enter city">
+                        </form>
+                        <div class="closeMenu"><img src="assets/icons/sophisticatedclose_dark.svg" width="50px" alt="">
+                        </div>
+                    </ul>
+                </nav>
+            </header>
+            <section class="cozy-text">
+                <div class="cozy-text-icon" id="cozyTextIcon"></div>
+                <div class="cozy-text-paragraph" id="cozyTextParagraph">
+                    Well this is embarrasing <span id="city"></span>, can't seem to load your weather.
                 </div>
             </section>
+            <section class="weather-forecast" id="weatherForecast">
+            </section>
 
-            <!------HAMBURGER MENU WITH SEARCH BAR------>
-            <nav class="hamburger-menu">
-                <button class="burger-btn">
-                    <img class="burger" src="assets/icons/morelocoations_dark.svg">
-                </button>
-                <ul class="sideMenu" id="sideMenu">
-                    <form id="searchForm">
-                        <input class="input-location" id="inputLocation" placeholder="Enter city">
-                    </form>
-                    <div class="closeMenu"><img src="assets/icons/sophisticatedclose_dark.svg" width="50px" alt="">
-                    </div>
-                </ul>
-            </nav>
-        </header>
-        <section class="cozy-text">
-            <div class="cozy-text-icon" id="cozyTextIcon"></div>
-            <div class="cozy-text-paragraph" id="cozyTextParagraph">
-                Well this is embarrasing <span id="city"></span>, can't seem to load your weather.
-            </div>
-        </section>
-        <section class="weather-forecast" id="weatherForecast">
-        </section>
+        </main>
 
-    </main>
+        <!-- For testing themes -->
+        <div style="position: bottom; bottom: 10px; background: yellow;">
+            <button onClick="weatherBasedTheme('Clear' , 'Göteborg')">Clear</button>
+            <button onClick="weatherBasedTheme('Clouds' , 'London')">Clouds</button>
+            <button onClick="weatherBasedTheme('Drizzle' , 'New York City')">Drizzle</button>
+            <button onClick="weatherBasedTheme('Rain' , 'Stockholm')">Rain</button>
+            <button onClick="weatherBasedTheme('Thunderstorm' , 'Tokyo')">Thunder</button>
+            <button onClick="weatherBasedTheme('Snow' , 'Barcelona')">Snow</button>
+            <button onClick="weatherBasedTheme('Mist' , 'London')">Mist</button>
+            <button onClick="weatherBasedTheme('Default' , 'New York City')">Default</button>
+        </div>
 
-    <!-- For testing themes -->
-    <div style="position: bottom; bottom: 10px; background: yellow;">
-        <button onClick="weatherBasedTheme('Clear' , 'Göteborg')">Clear</button>
-        <button onClick="weatherBasedTheme('Clouds' , 'London')">Clouds</button>
-        <button onClick="weatherBasedTheme('Drizzle' , 'New York City')">Drizzle</button>
-        <button onClick="weatherBasedTheme('Rain' , 'Stockholm')">Rain</button>
-        <button onClick="weatherBasedTheme('Thunderstorm' , 'Tokyo')">Thunder</button>
-        <button onClick="weatherBasedTheme('Snow' , 'Barcelona')">Snow</button>
-        <button onClick="weatherBasedTheme('Mist' , 'London')">Mist</button>
-        <button onClick="weatherBasedTheme('Default' , 'New York City')">Default</button>
-    </div>
-
-    <script src="./script.js"></script>
-</body>
+        <script src="./script.js"></script>
+    </body>
 
 </html>

@@ -20,31 +20,36 @@ body {
   width: 100%;
   height: 100vh;
   background-color: #6d7786;
-  transition: 1s; 
+  transition: 1s;
 }
 
 .logo-header {
   position: absolute;
-  top: 40%; 
+  top: 40%;
   left: 25%;
   transform: translate (-50%, -50%);
-  color:#ffffff; 
+  color: #ffffff;
+}
+
+.logo-icon {
+  width: 50px;
+  height: 50px;
 }
 
 .logo {
   position: relative;
-  display: inline-block; 
+  display: inline-block;
   bottom: -20px;
   opacity: 0;
 }
 
-.logo.active{
+.logo.active {
   bottom: 0;
-  opacity: 1; 
+  opacity: 1;
   transition: ease-in-out 0.5s;
 }
 
-.logo.fade{
+.logo.fade {
   bottom: 150px;
   opacity: 0;
   transition: ease-in-out 0.5s;
@@ -54,16 +59,16 @@ body {
 .weather-app {
   /* border: 1px solid rgb(59, 59, 255); */
   display: flex;
-  margin-left: auto; 
-  margin-right: auto; 
+  margin-left: auto;
+  margin-right: auto;
   width: auto;
-  height: auto;  
+  height: auto;
   justify-content: space-between;
   flex-direction: column;
   background-color: #928279; /*-apps color-*/
   padding: 10px;
   position: relative;
-  box-shadow: 1px 3px 27px 0px rgba(80,74,74,0.84);
+  box-shadow: 1px 3px 27px 0px rgba(80, 74, 74, 0.84);
 }
 
 /* - - - PINK: HEADER WRAPPER - - - - - - - - */
@@ -79,7 +84,6 @@ body {
 .todays-weather {
   /* border: 1px solid red; */
   font-size: 18px;
-
 }
 
 .todays-weather-row {
@@ -188,7 +192,6 @@ a:link {
   margin-top: 10px;
   margin-bottom: 20px;
   padding: 12px;
-
 }
 
 .weather-forecast-entry {
@@ -209,8 +212,7 @@ a:link {
 /* - - - TABLET - - - - - - - - */
 
 @media (min-width: 668px) {
-  
-  .logo-header { 
+  .logo-header {
     left: 45%;
   }
 
@@ -219,7 +221,7 @@ a:link {
     max-width: 325px;
     height: 550px;
     border-radius: 10px;
-    padding-bottom: 0px
+    padding-bottom: 0px;
   }
 
   .todays-weather {
@@ -257,13 +259,12 @@ a:link {
     justify-content: space-between;
     line-height: 16px;
     font-size: 16px;
-
   }
 
-  .weather-forecast-entry-icon{
+  .weather-forecast-entry-icon {
     width: 35px;
-    height: 35px; 
-}
+    height: 35px;
+  }
 
   /* - - - DESKTOP - - - - - - - - */
 
@@ -281,74 +282,74 @@ a:link {
     .weather-forecast-entry {
       line-height: 14px;
     }
-    .weather-forecast-entry-icon{
-    width: 35px;
-    height: 35px; 
-}
-}
+    .weather-forecast-entry-icon {
+      width: 35px;
+      height: 35px;
+    }
+  }
 
-/* WEATHER BASED STYLING CLASSES */
+  /* WEATHER BASED STYLING CLASSES */
 
-/* clear */
+  /* clear */
 
-.weather-condition-clear {
-  color: #fdff99;
-}
-.weather-condition-clear .weather-app {
-  background: #8aad6f;;
-}
+  .weather-condition-clear {
+    color: #fdff99;
+  }
+  .weather-condition-clear .weather-app {
+    background: #8aad6f;
+  }
 
-/* cloudy */
+  /* cloudy */
 
-.weather-condition-cloudy {
-  color: #c55d75;
-}
-.weather-condition-cloudy .weather-app {
-  background: #b1b1b1;
-}
+  .weather-condition-cloudy {
+    color: #c55d75;
+  }
+  .weather-condition-cloudy .weather-app {
+    background: #b1b1b1;
+  }
 
-/* rain or drizzle */
+  /* rain or drizzle */
 
-.weather-condition-rain {
-  color: #164a68;
-}
-.weather-condition-rain .weather-app {
-  background: #a4cbdc;
-}
+  .weather-condition-rain {
+    color: #164a68;
+  }
+  .weather-condition-rain .weather-app {
+    background: #a4cbdc;
+  }
 
-/* thunderstorm */
+  /* thunderstorm */
 
-.weather-condition-thunderstorm {
-  color: #daa86d;
-}
-.weather-condition-thunderstorm .weather-app {
-  background: #164a68;
-}
+  .weather-condition-thunderstorm {
+    color: #daa86d;
+  }
+  .weather-condition-thunderstorm .weather-app {
+    background: #164a68;
+  }
 
-/* snow */
+  /* snow */
 
-.weather-condition-snow {
-  color: #85e7f8;
-}
-.weather-condition-snow .weather-app {
-  background: #6396ba;
-}
+  .weather-condition-snow {
+    color: #85e7f8;
+  }
+  .weather-condition-snow .weather-app {
+    background: #6396ba;
+  }
 
-/* mist */
+  /* mist */
 
-.weather-condition-mist {
-  color: #4c4955;
-}
-.weather-condition-mist .weather-app {
-  background: #bdc1c2;
-}
+  .weather-condition-mist {
+    color: #4c4955;
+  }
+  .weather-condition-mist .weather-app {
+    background: #bdc1c2;
+  }
 
-/* default aka fallback*/
+  /* default aka fallback*/
 
-.weather-condition-default {
-  color: #eedcc6;
-}
-.weather-condition-default .weather-app {
-  background: #928279;
-}
+  .weather-condition-default {
+    color: #eedcc6;
+  }
+  .weather-condition-default .weather-app {
+    background: #928279;
+  }
 }

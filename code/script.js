@@ -1,7 +1,7 @@
 //Splash screen
-let intro = document.querySelector('.intro');
-let logo = document.querySelector('.logo-header');
-let logoSpan = document.querySelectorAll('.logo')
+let intro = document.querySelector(".intro");
+let logo = document.querySelector(".logo-header");
+let logoSpan = document.querySelectorAll(".logo");
 
 // burger menu
 const closeMenu = document.querySelector(".closeMenu");
@@ -20,32 +20,29 @@ const daysOfTheWeek = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 const currentSunrise = document.getElementById("todaysWeatherSunrise");
 const currentSunset = document.getElementById("todaysWeatherSunset");
 
-
 //splash screen at work
-window.addEventListener('DOMContentLoaded',()=> {
-  setTimeout(()=>{
-    logoSpan.forEach((span, idx)=>{
+window.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    logoSpan.forEach((span, idx) => {
       setTimeout(() => {
-        span.classList.add('active');
-      }, (idx + 1) * 400)
+        span.classList.add("active");
+      }, (idx + 1) * 400);
     });
 
-    setTimeout(()=>{
-      logoSpan.forEach((span, idx)=> {
+    setTimeout(() => {
+      logoSpan.forEach((span, idx) => {
         setTimeout(() => {
-          span.classlist.remove('active');
-          span.classlist.add('fade');
-        },(idx + 1) * 50);
-    })
-  }, 2000);
+          span.classList.remove("active");
+          span.classList.add("fade");
+        }, (idx + 1) * 50);
+      });
+    }, 2000);
 
-  setTimeout(()=>{
-    intro.style.top = `-100vh`;
-  }, 2300);
-})
-})
-
-
+    setTimeout(() => {
+      intro.style.top = `-100vh`;
+    }, 2300);
+  });
+});
 
 // show is added to how burger menu appears
 const show = () => {
@@ -164,6 +161,9 @@ const getWeather = (city) => {
     .then((response) => response.json())
     .then((json) => {
       console.log("got weather for now");
+
+      console.log(json.name);
+      console.log(currentCity);
 
       currentCity.innerHTML = json.name;
       liveTemperature.innerHTML = json.main.temp.toFixed(1);
