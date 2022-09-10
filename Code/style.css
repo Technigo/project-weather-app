@@ -10,29 +10,38 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
     font-size: 24px;
-    max-width: 75vw;
+    max-width: 60vw;
     margin: auto;
     padding-top: 2em;
 }
 
 /* styling of first section: "main-weather" */
 .today-summary h1 {
-    font-size: 32px;
+    font-size: 25px;
+
 }
 
 .today-summary {
     text-align: center;
+    margin: 40px 0px;
 }
 
 /* styling of second section: "today-summary"*/
 .main-weather{
     text-align:left;
     font-size: 18px;
+    margin: 10px 0;
+    padding: 6px 6px 6px 0px;
 }
+.main-weather p{ 
+padding: 4px 4px 4px 0px;
+margin: 0px;
+}
+
 .select-city {
     background-color: #F9F5EB;
     color: #7D9D9C;
-    padding: 8px 20px;
+    padding: 6px 11px;
     font-size: 16px;
     border: none;
     border-radius: 8px;
@@ -47,7 +56,7 @@ body {
 .weekly-forcast-wrapper{
     display: flex;
     flex-direction: column;
-    margin: 150px 0px 0px 0px;
+    margin: 30px 0px 0px 0px;
     padding: 0px;
     font-size: 18px;
    }
@@ -57,59 +66,57 @@ body {
     flex-direction: row;
     justify-content: space-between;
     padding: 3px;
-    border-bottom: 2px dotted #333;
+    border-bottom: 2px dotted rgb(183, 178, 178);
     margin: 0px;
 }
+.forecast-row p{
+    margin: 4px 0px;
+}
 
-.long-day {
+/* .long-day {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     margin: 0px 0px;
     padding: 0px;
-}
+} */
 
-.short-day {
+/* .short-day {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     margin: 0px 0px;
     padding: 0 px;
-}
+} */
 
 i {
   font-size: 50px;
   padding-top: 5px;
 }
 
-.tempp {
+/* .tempp {
     display: flex;
     flex-direction: row;
     align-items: flex-end;
     padding: 0 px;
     
-}
+} */
 
 @media only screen and (min-width: 599px) {
     .today-summary h1 {
         font-size: 54px;
     }
     
-    .daily-forcast-row {
-        font-size: 32px;
-    }
-
     .main-weather{
-        text-align:left;
-        font-size: 32px;
+        font-size: 28px;
     }
 
-    .weatherToday {
+    .weather-today {
         align-items: center;
     }
 
     .weekly-forcast-wrapper{
-        font-size: 32px;
+        font-size: 28px;
     }
 
 }

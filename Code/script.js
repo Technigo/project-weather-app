@@ -72,7 +72,7 @@ const fetchWeather = (weatherApi) => {
 
 const ShowCityWeather = (data) => {
   /*Description*/
-  mainWeather.innerHTML = `<p>${data.weather[0].description} | ${data.main.temp.toFixed(1)} &#8451</p>`;//weather descpription and temperature with one decimal. &#8451 is the formal for celsius, changed conatiner to main
+  mainWeather.innerHTML = `<p>${data.weather[0].description} | ${data.main.temp.toFixed(1)} ° C</p>`;//weather descpription and temperature with one decimal. &#8451 is the formal for celsius, changed conatiner to main
 
 
   /*Sunrise*/
