@@ -1,12 +1,15 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+weather design Nr.2 
+no search bar added. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Biggest problem was how to work in branches, merge different branches, also rememeber the terminal usage details when after editing in the branch. 
+
+Jessica had problem with pulled request on a branch which ended up in the technigo master, later she found out the upstream had some issues, so ended up sticking with terminal and terminal only. 
+
+Kaja had some problem with conditional statement, but after many fails and trails, she made it work and it works beautifully. 
 
 ## View it live
 
