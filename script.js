@@ -36,24 +36,24 @@ https://api.openweathermap.org/data/2.5/forecast?q=${city},Sweden&units=metric&A
 
       //removes all previous styling based on rain/clouds/clear, before adding styling for selected city's current weather (rain/cluds/clear).
       mainContainer.classList.remove('rain', 'clouds', 'clear');
-      citySelect.classList.remove('rain', 'clouds', 'clear');
+      citySelect.classList.remove('city-select-rain', 'city-select-clouds', 'city-select-clear');
 
       // Sets the image source and description text based on the weather
       if (data.weather[0].main === 'Clear') {
         imageSrc = 'noun_Sunglasses_2055147.svg';
         weatherDescription = `Get your sunnies on. ${data.name} is looking rather great today.`;
         mainContainer.classList.add('clear');
-        citySelect.classList.add('clear');
+        citySelect.classList.add('city-select-clear');
       } else if (data.weather[0].main === 'Rain') {
         imageSrc = 'noun_Umbrella_2030530.svg';
         weatherDescription = `Don't forget your umbrella. It's wet in ${data.name} today`;
         mainContainer.classList.add('rain');
-        citySelect.classList.add('rain');
+        citySelect.classList.add('city-select-rain');
       } else {
         imageSrc = 'noun_Cloud_1188486.svg';
         weatherDescription = `Light a fire and get cosy. ${data.name} is looking grey today.`;
         mainContainer.classList.add('clouds');
-        citySelect.classList.add('clouds');
+        citySelect.classList.add('city-select-clouds');
       }
 
       // Changes the today HTML section based on today's weather data
