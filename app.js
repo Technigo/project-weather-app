@@ -1,60 +1,74 @@
 const apiKey = '8ba8157c8f9c786166631ade41fce81c';
 const container = document.getElementById('container');
-
 const forecast = document.getElementById('forecast');
-
 const btnSearchCity = document.getElementById('btn-searchCity');
-const allInfo = document.querySelector('allInfo');
-const cityName = document.getElementById('city');
-const degree = document.getElementById('degree');
-const weather = document.getElementById('weather');
-const sunrise = document.getElementById('sunrise');
-const sunset = document.getElementById('sunset');
-// const hour = document.getElementById('hour')
+const allInfo= document.querySelector('allInfo');
+const cityName= document.getElementById('city')
+const degree= document.getElementById('degree')
+const weather= document.getElementById('weather')
+const sunrise= document.getElementById('sunrise')
+const sunset = document.getElementById('sunset')
+const search= document.getElementById('search')
+const timeInBackground = document.getElementById('time')
 
-const today = new Date();
-const date = today.getMonth() + 1 + '-' + today.getDate();
-const time = today.getHours() + ':' + today.getMinutes();
-const CurrentDateTime = date + ' ' + time;
+const day= document.getElementById('day')
+const navBar= document.getElementById('navBar');
+
+const date= new Date()
+let now = new Date().toLocaleDateString('en-us', { weekday: "long", month: "long", day: "numeric" });
+console.log(now)
+
+const time = date.getHours() + ":" + date.getMinutes();
+console.log(time)
+
+day.innerHTML = `Today is: ${now}`;
+timeInBackground.innerHTML = time
 
 btnSearchCity.addEventListener('click', () => {
   const city = document.getElementById('search').value;
-  const url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`;
+  const url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`;
 
   fetch(url)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      hour.innerHTML = time;
-      // hour.innerHTML = data.list[0].dt_txt;
+      // hour.innerHTML=time;
+      cityName.innerHTML= data.city.name;
+      degree.innerHTML = `<h2>${Math.round(data.list[0].main.temp.toFixed(1))} ${'&#8451;'}</h2>`
 
-      cityName.innerHTML = data.city.name;
-      degree.innerHTML =
-        Math.round((data.list[0].main.temp_kf.toFixed(1) * 9) / 5) + 32;
       weather.innerHTML = data.list[0].weather[0].main;
+      sunrise.innerHTML = new Date(data.city.sunrise * 1000).toLocaleTimeString();
+      sunset.innerHTML = new Date(data.city.sunset * 1000).toLocaleTimeString();
 
-      sunrise.innerHTML = new Date(data.city.sunrise * 1000)
-        .toLocaleString()
-        .split(', ')
-        .slice(1)
-        .join(', ');
+      search.value = " ";
+   
+    const weatherAppearance = data.list[0].weather[0].main
+    const background = document.querySelector('.wrapper')
+    const appBackgroud= () => {
+    background.style.backgroundSize = "cover";
+    background.style.height = "700px";
+    background.style.repeat = "no-repeat";
+    if(weatherAppearance ==='Rain'){
+      console.log('It is raining')
+      background.style.backgroundImage = "url('https://st.depositphotos.com/1013195/1395/i/450/depositphotos_13958901-stock-photo-rainy-day.jpg') ";
+    }
+    else if(weatherAppearance === 'Clear'){
+      background.style.backgroundImage = "url('https://wallpaperaccess.com/sunny-day')";
+    }
+    else if(weatherAppearance === 'Clouds'){
+      background.style.backgroundImage = "url('https://images.unsplash.com/photo-1419833173245-f59e1b93f9ee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNvbHVkeSUyMHNreXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60')"
+    }
+    else if (weatherAppearance === 'Snow'){
+      background.style.backgroundImage = "url('https://cdn.pixabay.com/photo/2014/12/02/22/05/snowflakes-554635__340.jpg')"
+    }
 
-      sunset.innerHTML = new Date(data.city.sunset * 1000)
-        .toLocaleString()
-        .split(', ')
-        .slice(1)
-        .join(', ');
+    }
+    appBackgroud()
 
-      // btnSearchCity.value = "  ";
+    })
+})
 
-      console.log(data);
-    });
-
-  const animator = () => {
-    fetch('https://maxst.icons8.com/vue-static/landings/animated-ic');
-  };
-});
 
 //*******  5 days weather forecast *********
 fetch(
@@ -67,12 +81,12 @@ fetch(
     console.log(json);
 
     const filteredForecast = json.list.filter((item) => item.dt);
-    console.log('filtered forecast', filteredForecast);
+    // console.log('filtered forecast', filteredForecast);
 
     const filteredTemp = json.list.filter((item) =>
       item.dt_txt.includes('12:00')
     );
-    console.log('filtered temp', filteredTemp);
+    // console.log('filtered temp', filteredTemp);
 
     const weekdayName = [
       'Sunday',
