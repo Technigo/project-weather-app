@@ -12,25 +12,27 @@ const cityName = document.getElementById('city-input')
 const sendBtn = document.getElementById('send-btn')
 const nameForm = document.getElementById('name-form')
 
+
+// if geolocation is possible in browser
 if("geolocation" in navigator){
   navigator.geolocation.getCurrentPosition(setPosition,showError);
 } else{
 alert("Browser doesn't support Geolocation.")
 }
 
-
+// then set position to long lat if user allows
 function setPosition(position){
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
   getWeather(latitude,longitude);
 }
 
-
+//error message if user does not allow
 function showError(error) {
   alert("Browser doesn't support Geolocation.")
 }
 
-
+//function to fetch api according to geolocation
 function getWeather(latitude, longitude){
   let apiUrl =`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`
 
@@ -54,7 +56,7 @@ fetch(api)
       if (json.main.temp > 200) {
         const currentTemp = `${json.main.temp}`
         const currentCelsiusTemp = currentTemp - 273.15
-        const roundedTemp = Math.round(currentCelsiusTemp*10)/10
+        const roundedTemp = Math.round(currentCelsiusTemp*10)/10 //this rounds the current temp up to 1 decimal
         forecastLocation.innerHTML =`${json.name}`
         skyState.innerHTML = `${weatherType} | ${roundedTemp}°C`
         let sunriseTime = json.sys.sunrise
@@ -104,8 +106,6 @@ fetch(api)
         sunset.innerHTML = `Sunset ${formattedTimeSunset}`
 
       }
-
-//this rounds the current temp up to 1 decimal
 
 
 // Sunny, cluody or rain? change of styling depending on weather
@@ -189,11 +189,10 @@ const chargesapi2 = (api) => {
           console.log(apiUrl)
           chargeApi(apiUrl)
           weekdayWrapper.innerHTML = `<div class="weekdays" id="weekdayWrapper">  </div> `
-
-          return apiUrl && apinew
+          cityName.value = '';
+          return apiUrl && apinew;
       }
       nameForm.addEventListener('submit',handleNameInput)
 
      
     }
-
