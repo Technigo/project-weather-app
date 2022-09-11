@@ -52,7 +52,7 @@ fetch("http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
                 weatherImg.innerHTML += `
                 <img src="./Designs/Design-2/icons/noun_Sunglasses_2055147.svg" alt="">`
                 weatherDescription.innerHTML += `
-                <h1>The sky is clear as korvspad in ${json.name}. </h1>
+                <h1>The sky is clear as "korvspad" in ${json.name}. </h1>
                 </div>
                 `
                 containerToggle.classList.toggle('container-clear');
