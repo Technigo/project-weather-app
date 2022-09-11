@@ -1,13 +1,14 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The assignment was to build a weather website that shows today's weather and also shows a five day forecast. To do this we had to use a weather API and fetch the information we wanted to show.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We did the first part together, creating the files we needed and added the code basics that we needed to build further on, in our branches. We split up in two branches and made one feature each. To solve different problems we used google a lot and mozilla's developer page. 
+
+We found out that we needed to add more div's and classes to the HTML file and did that seperately in our branches. So a more detailed plan about the layout of the page in the planning stage would have been beneficial for us. 
+
+If we had more time we would have liked to add more information and functions, like different temperatures for the hours during the day, wind, "feels like"-temperature etc, for the tablet and desktop views. 
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
