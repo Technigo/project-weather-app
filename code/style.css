@@ -25,7 +25,7 @@ body {
 .logo-header {
   position: absolute;
   top: 40%;
-  left: 40%;
+  left: 35%;
   transform: translate (-50%, -50%);
   color: #F47775;
 }
