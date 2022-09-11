@@ -1,16 +1,14 @@
 //DOM elements
-const currentCity = document.getElementById("currentCity"); // goes into the html
-const currentWeather = document.getElementById ("currentWeather"); // goes into the html
-const currentTemp = document.getElementById ("currentTemp"); // goes into the html
+const currentCity = document.getElementById("currentCity"); 
+const currentWeather = document.getElementById ("currentWeather"); 
+const currentTemp = document.getElementById ("currentTemp"); 
 const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
-//const sun = document.getElementById("sun");
 const weatherDescription = document.getElementById('weatherDescription')
 //const button = document.getElementById('button')
 //const searchBar = document.getElementById('searchBar');
 const weeklyForecast =document.getElementById('weeklyForecast');
-//const five = document.getElementById('five')
-const currentForecast=document.getElementById('currentForecast') //if else
+const currentForecast=document.getElementById('currentForecast'); 
 //const currentIcon= document.getElementById('currentIcon')
 
 
