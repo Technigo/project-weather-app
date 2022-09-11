@@ -78,7 +78,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
 
         const filteredForecast = json.list.filter(Days => Days.dt_txt.includes('12:00'))
         filteredForecast.map((Days) => {
-            let d = new Date(Days.dt_txt);
+            let d = new Date(Days.dt_txt.replace(/-/g, "/"))
             let dayName = week[d.getDay()];
             fiveDays.innerHTML +=
                 `<div class="weeky">
