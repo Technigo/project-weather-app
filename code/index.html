@@ -9,35 +9,24 @@
     <title>Weather App</title>
 </head>
 <body>
-
-    <form id="search-form" action="https://httpbin.org/anything" method="post">
-        <img src="./icons/search_grey.png" alt="magnifying glass">
-        <input id="search-input" type="text" placeholder="Type city here"/>
-        <button class="send-btn" type="submit">
-          Search
-        </button>
-    </form>
-    <!-- ta bort div weather-body och footer -->
     <div id="weather-body">
-        <section class="todays-weather" id="todays-weather">
-            <!-- <p class="description-and-temp"></p>
-            <p class="sunrise"></p>
-            <p class="sunset"></p> -->
-        </section> 
+        <div class="weather">
+            <section class="todays-weather" id="todays-weather">
+            </section> 
 
-        <section class="weather-city" id="weather-city">
-            <img></img>
-            <h1></h1>
-        </section>
+            <section class="weather-city" id="weather-city">
+            </section>
 
-        <section class="forecast" id="forecast">
-        </section>
+            <section class="forecast" id="forecast">
+            </section>
 
-        <div class="footer">
-            <a href="https://icons8.com">Icons from: https://icons8.com</a>
+            <div class="footer">
+                <a href="https://icons8.com">Icons from: https://icons8.com</a>
+            </div>
         </div>
    
     </div>
+  
     <script src="script.js"></script>
 
 </body>
