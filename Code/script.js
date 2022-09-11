@@ -25,21 +25,6 @@ const londonForcast =
 const bangkokForcast =
   "https://api.openweathermap.org/data/2.5/forecast?q=Bangkok,Thailand&units=metric&APPID=e83c1059f8d8dd4be2de6612bd0cae22";
 
-/**** Provide todays day****/
-let returnWeekDay = (date) => {
-  let daysInWeek = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  let inputDate = new Date(date.replace());
-  return daysInWeek[inputDate.getDay()];
-};
-
 /**** Fetching Forecast****/
 const fetchForcast = (forcastApi) => {
   const forcastPromise = fetch(forcastApi)
@@ -111,6 +96,26 @@ const ShowCityWeather = (data) => {
     <h1>You can chillout, it is neutral weather in ${data.name} today.</h1>`;
     container.classList.add("natural");
   }
+};
+
+/**** Provide todays day****/
+
+const returnWeekDay = (date) => {
+  // argument is a date as a string, e.g "2022-03-03"
+  const daysInWeek = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const formattedDate = date.replace(/-/g, "/"); // Safari only suports 2022/09/01 and not 2022-09-01
+  const inputDate = new Date(formattedDate); // Create a date object from our string
+  const dayIndex = inputDate.getDay(); // Use our new Date object to get the number of the weekday (sunday is 0, monday is 1), which we can use to get the right index from our daysInWeek array
+
+  return daysInWeek[dayIndex];
 };
 
 /**** Display the 5 days forcast****/
