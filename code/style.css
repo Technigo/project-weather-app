@@ -201,16 +201,16 @@ a:link {
 }
 
 .weather-forecast-entry-day {
-  width: 25px;
+  width: 23px;
 }
 
 .weather-forecast-entry-icon {
-  width: 35px;
-  height: 35px;
+  width: 32px;
+  height: 32px;
 }
 
 .weather-forecast-entry-temperature {
-  width: 25px;
+  width: 23px;
 }
 
 /* - - - - - - - - - - - - - - - - - - - MEDIA QUERIES - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -229,12 +229,10 @@ a:link {
   }
 
   .todays-weather {
-    /* border: 1px solid red; */
     font-size: 16px;
   }
 
   .todays-weather-row {
-    /* border: 1px solid red; */
     padding-bottom: 5px;
   }
 
@@ -246,20 +244,17 @@ a:link {
   }
 
   .cozy-text-icon {
-    font-size: 50px;
+    font-size: 45px;
   }
 
   .cozy-text-paragraph {
-    font-size: 34px;
-  }
-
-  .weather-forecast {
-    padding-top: 30px;
+    font-size: 30px;
   }
 
   .weather-forecast-entry {
     line-height: 16px;
     font-size: 16px;
+    padding-top: 0;
   }
 }
 /* - - - DESKTOP - - - - - - - - */
@@ -272,10 +267,6 @@ a:link {
   .input-location {
     margin-top: 30px;
     width: 200px;
-  }
-
-  .weather-forecast-entry {
-    line-height: 14px;
   }
 }
 
