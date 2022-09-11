@@ -13,4 +13,4 @@ Kaja had some problem with conditional statement, but after many fails and trail
 
 ## View it live
 
-weatherappjessicaandkaja.netlify.app
+http://weatherappjessicaandkaja.netlify.app
