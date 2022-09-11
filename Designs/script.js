@@ -41,6 +41,36 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
    sunset.innerHTML = `Sunset: ${down} `;
         console.log(`${up} ${down}`);
       
+
+/* switch(weatherType) {
+            case ‘Clouds’:
+              weeklyForecast.innerHTML = `
+              <div>It is dim today ${data.name} </div>
+              <img src=“/Designs/Design-2/icons/clouds.svg”>
+              `
+              break;
+            case ‘Clear’:
+              weeklyForecast.innerHTML = `
+              <div>Go for a walk at  ${data.name} </div>
+              <a href=‘https://images.pexels.com/photos/3122192/pexels-photo-3122192.jpeg?auto=compress&cs=tinysrgb&w=1600’>
+              `
+              break;
+              case ‘Rain’:
+                document.body.style.backgroundImage;url(“cloudy.png”)
+                weeklyForecast.innerHTML = `
+                <h1>Better stay home at ${data.name} </h1>
+                <img src=“/Designs/Design-2/icons/clouds.svg”>
+                `
+              break;
+              case ‘Drizzle’:
+                document.body.style.backgroundImage;url(“./cloudy.png”)
+                weeklyForecast.innerHTML = `
+                <h1>Better stay home at ${data.name} </h1>
+                <img src=“/Designs/Design-2/icons/clouds.svg”>
+                `
+                break;
+}
+*/ 
 const fiveDayForecast = () => {
 
     fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&appid=366992a63dda0e641051649e46de5fed") //forecast
