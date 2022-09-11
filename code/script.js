@@ -15,6 +15,7 @@ const fetchWeatherData = () => {
         const weatherData = json;
         console.log(weatherData);
 
+
         //Changing colours and img depending on main weather 
         if (weatherData.weather[0].main === 'Clear') {
             weatherBody.style.backgroundColor = "#F7E9B9";
@@ -43,6 +44,7 @@ const fetchWeatherData = () => {
         }
                   //Add snow? or what should else be? There are other main weather. 
 
+
         //Should we have main (like the design) or should we stick with description (like the instructions?)        
         todaysWeather.innerHTML = `
           <p>
@@ -55,7 +57,7 @@ const fetchWeatherData = () => {
             sunset ${new Date(weatherData.sys.sunset * 1000).toLocaleTimeString([],{hour: '2-digit', minute: '2-digit'})}
           </p>
         `;
-       
+
         });
 };
 
@@ -124,3 +126,4 @@ const fetchForecastData = () => {
   };
 
 fetchForecastData();
+

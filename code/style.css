@@ -1,2 +1,135 @@
 
+/* 
+#F47775 - pink coral
+#fad6d6 - Light pink
+#F4F7F8 - cool grey
+#164A68 - middle blue
+#A3DEF7 - Light blue
+#2A5510 - olive branch
+#F7E9B9 - warm light beige
+*/
+ /* style attribute background-color and color from js */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    height: 100%;
+    border: 0;
+    padding: 0;
+    margin: 0;
+   
+  }
+
+body {
+    min-height: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+/* main */
+#weather-body {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: auto;
+  max-width: 80%;
+  /* border: 2px solid black; */
+}
+
+/* Todays weather */
+
+.todays-weather, .forecast-row, .forcast-item {
+    font-size: 1.15rem;
+}
+
+
+p {
+    margin: 0.25rem;
+}
+
+
+/* icon */
+
+img {
+    margin-bottom: 0.5rem;
+}
+
+/* .icon {
+    -webkit-animation: rotate-scale-up 1s 1s both;
+    animation: rotate-scale-up 1s 1s both;
+    
+} */
+
+
+/* Weather advice */
+
+.weather-city {
+    font-weight: 600;
+    font-size: 1.5rem; 
+    /* font-weight: bold; */
+    padding: 1rem 0;
+}
+
+
+/* 5day forcast */
+
+.forecast {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 3rem;
+    /* border: 2px solid pink; */
+}
+
+.forecast-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 0.1rem dotted darkslategray;
+}
+
+.forecast-row:last-child {
+    border-bottom: none;
+}
+
+
+/* Cred for icons "footer" */
+
+.footer {
+    display: block;
+    text-align: center; 
+    margin: 0.5rem;  
+  
+}
+
+.footer a {
+    font-size: small;
+    color: black;
+    text-decoration: none;
+    
+}
+
+/* style mobile  */
+
+/* Tablet */
+@media screen and (min-width: 668px) {
+    #weather-body {
+        margin: 3rem;
+    }
+}
+
+
+/* Desktop */
+@media screen and (min-width: 1025px) {
+    .forecast, .weather-city {
+        align-self: center;
+        width: 80%;
+    }
+
+}
 
