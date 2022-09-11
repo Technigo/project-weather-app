@@ -1,9 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 body {
-    color: #164A68;
-    background-color: #F7E9B9;
-    font-size: 20px;
+    margin: 0;
 }
 
+h1 {
+    font-weight:bold;
+}
+h3 {
+    font-weight: 400;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    padding: 10%;
+    height: 91vh;
+
+}
+
+img {
+    height: 60%;
+}
+
+
+.forecast-section {
+    border-bottom: 2px dotted;
+      display: flex;
+      justify-content: space-between;
+  }
 
 
 
@@ -16,9 +44,9 @@ Weights: bold and regular
 
 colors:
 
-#F47775
-#F4F7F8
-#164A68
-#A3DEF7
-#2A5510
-#F7E9B9 */
+    #F47775 - lax (moln)
+    #F4F7F8 - vit/grå (moln)
+    #164A68 - mörkblå (regn)
+    #A3DEF7 - ljusblå (regn)
+    #2A5510 - grön (sol)
+    #F7E9B9 - ljusgul (sol) */

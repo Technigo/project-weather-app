@@ -1,4 +1,11 @@
-const region = document.getElementById('region')
+const header = document.getElementById('header')
+const weatherDescription = document.getElementById('weatherDescription')
+const fiveDaysForecast = document.getElementById('fiveDaysForecast')
+const weatherImg = document.getElementById('weatherImg')
+const container = document.getElementById('container')
+const weekdays = ["sun","mon","tue","wed","thu","fri","sat"];
+
+let containerToggle = document.querySelector('.container')
 
 fetch("http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=fb125bc213d8ee5c4a432b3a2b24aecf")
     .then((response) => {
@@ -6,7 +13,6 @@ fetch("http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     })
 
     .then((json) => {
-        console.log(json)
 
         const sunRise = new Date (json.sys.sunrise);
         let sunRiseHoursAndMinuits = sunRise.getHours() + ':' + sunRise.getMinutes();
@@ -18,39 +24,89 @@ fetch("http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
 
         const weathers = json.weather
         weathers.map((weather) => {
-            console.log(weather.description)
 
-        region.innerHTML = `
-        <h3> Temperature ${(json.main.temp).toFixed(1)}, feels like ${json.main.feels_like.toFixed(1)}, min temp ${json.main.temp_min.toFixed(1)}, max temp
-         ${json.main.temp_max.toFixed(1)} </h3>
-        <h3>${weather.description}</h3>
+        header.innerHTML = `
+        <h3>${weather.description} | ${(json.main.temp).toFixed(0)}°</h3>
         <h3> Sunrise ${sunRiseHoursAndMinuits}</h3>
         <h3> Sunset ${sunSetHoursAndMinuits}</h3>
         `
-       
 
-        //const setUTCHours1 = json.sys
-          //  ((sunrise) => {
-          //      console.log(sunrise)
-          //  })
-          
+        //different actions depending on weather
+        switch(weather.main) {
+            case 'Clouds':  // if (x === 'value1')
+                console.log('cloudy');
+                weatherImg.innerHTML += `
+                <img src="./Designs/Design-2/icons/noun_Cloud_1188486.svg" alt="">`
+                weatherDescription.innerHTML += `
+                <h1>The sky is 50 shades of grey in ${json.name}.  </h1>
+                `;
+                containerToggle.classList.toggle('container-cloudy');
+                console.log(weatherToggle)
+            break;
         
+            case 'Rain':  // if (x === 'value2')
+                console.log('rainy')
+                console.log(weather.description)
+                weatherImg.innerHTML += `
+                <img src="./Designs/Design-2/icons/noun_Umbrella_2030530.svg" alt="">`       
+                weatherDescription.innerHTML += `
+                <h1>Drip drop. It's raining in ${json.name}. Don't forget your umbrella.  </h1>
+                `
+                containerToggle.classList.toggle('container-rainy');
+                console.log(containerToggle)
+            break;
         
-        //const sunSet = new Date (json.sys.sunset * 1000)
-
-        //const setUTCHours = json.sys
-        //setUTCHours((sunset) => {
-          //  console.log(sunset)
-       // })
-
-        //let ... = sunRise.getUTCHOurs().toLocaleString()
+            default:
+                console.log('sunny')
+                weatherImg.innerHTML += `
+                <img src="./Designs/Design-2/icons/noun_Sunglasses_2055147.svg" alt="">`
+                weatherDescription.innerHTML += `
+                <h1>The sky is clear as "korvspad" in ${json.name}. </h1>
+                </div>
+                `
+                containerToggle.classList.toggle('container-clear');
+                console.log(containerToggle)
+            break;
+        }
 
     })
+ })
 
-})
+//WEATHER-FORECAST FEATURE 
 
-      
-        //setUTCHours(hoursValue, minutesValue) Hur definerar jag variablerna?
-        //An integer between 0 and 23, representing the hour. 
-        //An integer between 0 and 59, representing the minutes.
+
+fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=fb125bc213d8ee5c4a432b3a2b24aecf")
+    .then((response) => {
+        return response.json()
+    })
+
+    .then((json) => {
+        console.log(json)
         
+        //Filters the json to an array with only the data from 12:00 each day (5 days in total).
+        const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
+        console.log(filteredForecast)
+
+        //weather description of each day
+       filteredForecast.map((day)=>{
+            console.log(day.weather[0].description)
+
+                let weekday = new Date(day.dt_txt).getDay();
+                console.log(weekdays[weekday]);
+
+
+                fiveDaysForecast.innerHTML += `
+                <div id="forecastSection" class="forecast-section">
+                
+                    <div id="weekdaysection" class="weekday-section">
+                         <h3> ${weekdays[weekday]} </h3>
+                    </div>
+                    
+                    <div id="temperature" class="temperature">
+                    <h3>${(day.main.temp).toFixed(0)}°</h3>
+                    </div>
+
+                </div>
+                `   
+            })
+        })
