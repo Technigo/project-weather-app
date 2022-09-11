@@ -5,6 +5,7 @@ const forecast = document.getElementById('forecast');
 const weatherBody = document.getElementById('weather-body');
 
 
+
 const fetchWeatherData = () => {
     fetch("https://api.openweathermap.org/data/2.5/weather?q=Gothenburg,Sweden&units=metric&APPID=072c88c2b7f1a1c7fb7704f9f847b690")
       .then((response) => {
@@ -71,14 +72,16 @@ const fetchForecastData = () => {
       const filteredForecast = forecastData.list.filter(item => item.dt_txt.includes('12:00'))
       console.log(filteredForecast);
 
+      const getDay = (weekday) => {
+        const dates = new Date(weekday * 1000); 
+        return dates.toLocaleDateString('en', {weekday: 'short'});
+        }
+
       // need to do some kind of map here 
-      forecast.innerHTML = `
-        <div class="forecast-body">  
+      forecast.innerHTML = ` 
           <div class="forecast-row">
             <div class="forecast-item">
-              ${new Date(filteredForecast[0].dt).toLocaleDateString("en-US", {
-              weekday: "short",
-              })}
+              ${getDay(filteredForecast[0].dt)}
             </div>
             <div class="forecast-item">
               ${Math.round(filteredForecast[0].main.temp * 10) / 10}°
@@ -86,9 +89,7 @@ const fetchForecastData = () => {
           </div>
           <div class="forecast-row">
             <div class="forecast-item">
-              ${new Date(filteredForecast[1].dt).toLocaleDateString("en-US", {
-              weekday: "short",
-              })}
+              ${getDay(filteredForecast[1].dt)}
             </div>
             <div class="forecast-item">
               ${Math.round(filteredForecast[1].main.temp * 10) / 10}°
@@ -96,9 +97,7 @@ const fetchForecastData = () => {
           </div>
           <div class="forecast-row">
             <div class="forecast-item">
-              ${new Date(filteredForecast[2].dt).toLocaleDateString("en-US", {
-              weekday: "short",
-              })}
+              ${getDay(filteredForecast[2].dt)}
             </div>
             <div class="forecast-item">
               ${Math.round(filteredForecast[2].main.temp * 10) / 10}°
@@ -106,9 +105,7 @@ const fetchForecastData = () => {
           </div>
           <div class="forecast-row">
             <div class="forecast-item">
-              ${new Date(filteredForecast[3].dt).toLocaleDateString("en-US", {
-              weekday: "short",
-              })}
+              ${getDay(filteredForecast[3].dt)}
             </div>
             <div class="forecast-item">
               ${Math.round(filteredForecast[3].main.temp * 10) / 10}°
@@ -116,15 +113,12 @@ const fetchForecastData = () => {
           </div>
           <div class="forecast-row">
             <div class="forecast-item">
-              ${new Date(filteredForecast[4].dt).toLocaleDateString("en-US", {
-              weekday: "short",
-              })}
+              ${getDay(filteredForecast[4].dt)}
             </div>
             <div class="forecast-item">
               ${Math.round(filteredForecast[4].main.temp * 10) / 10}°
             </div>
-          </div>
-        </div> `
+          </div>`
       });
       
   };
