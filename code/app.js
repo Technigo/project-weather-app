@@ -117,7 +117,7 @@ fetch(urlWeather)
         weatherToday()
         addContentForWeekdays()
 
-
+// This function updates today's forecast and the 5-day forecast for the city entered in the search field.
         const updateCity = () => {
             console.log("I work!")
           city = mainSearchBar.value;
