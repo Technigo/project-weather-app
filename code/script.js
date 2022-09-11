@@ -47,11 +47,9 @@ window.addEventListener("DOMContentLoaded", () => {
 // show is added to how burger menu appears
 const show = () => {
   sideMenu.style.display = "flex";
-  // sideMenu.style.top = "0";
   closeMenu.style.display = "flex";
 };
 const close = () => {
-  // sideMenu.style.top = "-150%";
   sideMenu.style.display = "none";
   closeMenu.style.display = "none";
 };
@@ -143,9 +141,11 @@ const printForecastEntry = (dayForecast) => {
 
   weatherForecast.innerHTML += `
   <div class="weather-forecast-entry">
-  <span>${daysOfTheWeek[dayOfTheWeek]}</span>
-  <span><img src="${forecastIcon}" class="weather-forecast-entry-icon" alt="${forecastWeatherType}"/></span>
-  <span>${dayForecast.main.temp.toFixed(0)}°</span>
+  <span class="weather-forecast-entry-day">${daysOfTheWeek[dayOfTheWeek]}</span>
+  <span class="weather-forecast-entry-icon"><img src="${forecastIcon}" alt="${forecastWeatherType}"/></span>
+  <span class="weather-forecast-entry-temperature">${dayForecast.main.temp.toFixed(
+    0
+  )}°</span>
   </div>
   `;
 };

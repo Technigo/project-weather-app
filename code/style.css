@@ -27,7 +27,7 @@ body {
   top: 40%;
   left: 35%;
   transform: translate (-50%, -50%);
-  color: #F47775;
+  color: #f47775;
 }
 
 .logo-icon {
@@ -67,9 +67,9 @@ body {
   background-color: #928279; /*-apps color-*/
   padding: 20px;
   position: relative;
-  box-shadow: 2px 36px 40px -9px rgba(131,130,130,0.75);
-  -webkit-box-shadow: 2px 36px 40px -9px rgba(131,130,130,0.75);
-  -moz-box-shadow: 2px 36px 40px -9px rgba(131,130,130,0.75);
+  box-shadow: 2px 36px 40px -9px rgba(131, 130, 130, 0.75);
+  -webkit-box-shadow: 2px 36px 40px -9px rgba(131, 130, 130, 0.75);
+  -moz-box-shadow: 2px 36px 40px -9px rgba(131, 130, 130, 0.75);
 }
 
 /* - - - PINK: HEADER WRAPPER - - - - - - - - */
@@ -191,7 +191,6 @@ a:link {
   /* border: 1px solid green; */
   margin-top: 10px;
   margin-bottom: 20px;
-  padding: 12px;
 }
 
 .weather-forecast-entry {
@@ -202,10 +201,17 @@ a:link {
   padding-top: 8px;
 }
 
+.weather-forecast-entry-day {
+  width: 25px;
+}
+
 .weather-forecast-entry-icon {
   width: 35px;
   height: 35px;
-  
+}
+
+.weather-forecast-entry-temperature {
+  width: 25px;
 }
 
 /* - - - - - - - - - - - - - - - - - - - MEDIA QUERIES - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -262,96 +268,86 @@ a:link {
     line-height: 16px;
     font-size: 16px;
   }
+}
+/* - - - DESKTOP - - - - - - - - */
 
-  .weather-forecast-entry-icon {
-    width: 35px;
-    height: 35px;
+@media (min-width: 1025px) {
+  .weather-app {
+    max-width: 350px;
+    margin-bottom: 70px;
+  }
+
+  .input-location {
+    margin-top: 30px;
+    width: 200px;
+  }
+
+  .weather-forecast-entry {
+    line-height: 14px;
   }
 }
-  /* - - - DESKTOP - - - - - - - - */
 
-  @media (min-width: 1025px) {
-    .weather-app {
-      max-width: 350px;
-      margin-bottom: 70px;
-    }
+/* WEATHER BASED STYLING CLASSES */
 
-    .input-location {
-      margin-top: 30px;
-      width: 200px;
-    }
+/* clear */
 
-    .weather-forecast-entry {
-      line-height: 14px;
-    }
-    .weather-forecast-entry-icon {
-      width: 35px;
-      height: 35px;
-    }
-  }
+.weather-condition-clear {
+  color: #fdff99;
+}
+.weather-condition-clear .weather-app {
+  background: #8aad6f;
+}
 
-  /* WEATHER BASED STYLING CLASSES */
+/* cloudy */
 
-  /* clear */
+.weather-condition-cloudy {
+  color: #c55d75;
+}
+.weather-condition-cloudy .weather-app {
+  background: #b1b1b1;
+}
 
-  .weather-condition-clear {
-    color: #fdff99;
-  }
-  .weather-condition-clear .weather-app {
-    background: #8aad6f;
-  }
+/* rain or drizzle */
 
-  /* cloudy */
+.weather-condition-rain {
+  color: #164a68;
+}
+.weather-condition-rain .weather-app {
+  background: #a4cbdc;
+}
 
-  .weather-condition-cloudy {
-    color: #c55d75;
-  }
-  .weather-condition-cloudy .weather-app {
-    background: #b1b1b1;
-  }
+/* thunderstorm */
 
-  /* rain or drizzle */
+.weather-condition-thunderstorm {
+  color: #daa86d;
+}
+.weather-condition-thunderstorm .weather-app {
+  background: #164a68;
+}
 
-  .weather-condition-rain {
-    color: #164a68;
-  }
-  .weather-condition-rain .weather-app {
-    background: #a4cbdc;
-  }
+/* snow */
 
-  /* thunderstorm */
+.weather-condition-snow {
+  color: #85e7f8;
+}
+.weather-condition-snow .weather-app {
+  background: #6396ba;
+}
 
-  .weather-condition-thunderstorm {
-    color: #daa86d;
-  }
-  .weather-condition-thunderstorm .weather-app {
-    background: #164a68;
-  }
+/* mist */
 
-  /* snow */
+.weather-condition-mist {
+  color: #4c4955;
+}
+.weather-condition-mist .weather-app {
+  background: #bdc1c2;
+}
 
-  .weather-condition-snow {
-    color: #85e7f8;
-  }
-  .weather-condition-snow .weather-app {
-    background: #6396ba;
-  }
+/* default aka fallback*/
 
-  /* mist */
-
-  .weather-condition-mist {
-    color: #4c4955;
-  }
-  .weather-condition-mist .weather-app {
-    background: #bdc1c2;
-  }
-
-  /* default aka fallback*/
-
-  .weather-condition-default {
-    color: #eedcc6;
-  }
-  .weather-condition-default .weather-app {
-    background: #928279;
-  }
-
+.weather-condition-default {
+  color: #eedcc6;
+}
+.weather-condition-default .weather-app {
+  background: #928279;
+}
