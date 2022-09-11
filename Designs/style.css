@@ -1,0 +1,40 @@
+body {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+ .currentForecast {
+background-image: url('https://images.pexels.com/photos/3122192/pexels-photo-3122192.jpeg?auto=compress&cs=tinysrgb&w=1600');
+background-size: cover;          
+background-repeat: no-repeat;    
+height: 25vh;    
+color:white;
+opacity: 0.8; 
+text-align: end;
+margin-bottom: 3%;
+padding: 4%;
+border-top-right-radius:10px;;
+border-top-left-radius: 10px;
+border-bottom-right-radius:10px;;
+border-bottom-left-radius: 10px;
+box-shadow: #938690 0px 4px 4px, #544351 0px 4px 4px;
+}
+/*<img src='https://images.pexels.com/photos/3077882/pexels-photo-3077882.jpeg?auto=compress&cs=tinysrgb&w=1600' alt="climb-mountains">*/
+.day-design {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 4%;
+    background-color:rgb(105, 102, 102);
+    opacity: 0.8;
+    font-weight: bold;
+    color: white;
+    box-shadow: #938690 0px 4px 4px, #544351 0px 4px 4px;
+}
+ 
+  @media (min-width: 668px ) and (max-width:2000px) {
+    .currentForecast, .day-design {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+}
