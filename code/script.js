@@ -4,8 +4,6 @@ const weatherCity = document.getElementById('weather-city');
 const forecast = document.getElementById('forecast');
 const weatherBody = document.getElementById('weather-body');
 
-
-
 const fetchWeatherData = () => {
     fetch("https://api.openweathermap.org/data/2.5/weather?q=Gothenburg,Sweden&units=metric&APPID=072c88c2b7f1a1c7fb7704f9f847b690")
       .then((response) => {
@@ -15,14 +13,13 @@ const fetchWeatherData = () => {
         const weatherData = json;
         console.log(weatherData);
 
-
         //Changing colours and img depending on main weather 
         if (weatherData.weather[0].main === 'Clear') {
             weatherBody.style.backgroundColor = "#F7E9B9";
             weatherBody.style.color = "#2A5510";
             weatherCity.innerHTML = `
             <img src="./images/sun-glasses.png" alt="sun-glasses icon" class="icon"></img>
-            <p> Get your sunnies on. ${weatherData.name} is looking rather great today
+            <p> Get your sunnies on. ${weatherData.name} is looking rather great today.
             </p>`;
         } else if (weatherData.weather[0].main === 'Clouds') {
             weatherBody.style.backgroundColor = "#F4F7F8";
@@ -41,11 +38,10 @@ const fetchWeatherData = () => {
         } else {
             weatherBody.style.backgroundColor = "black";
             weatherBody.style.color = "white";
+            weatherCity.innerHTML = `
+            <p> Get inside it is shitty weather outside! </p> `
         }
-                  //Add snow? or what should else be? There are other main weather. 
-
-
-        //Should we have main (like the design) or should we stick with description (like the instructions?)        
+        
         todaysWeather.innerHTML = `
           <p>
             ${(weatherData.weather[0].description).toLowerCase()} | ${Math.round(weatherData.main.temp * 10) / 10}°
@@ -79,7 +75,7 @@ const fetchForecastData = () => {
         return dates.toLocaleDateString('en', {weekday: 'short'});
         }
 
-      // need to do some kind of map here 
+      // should do some kind of map here 
       forecast.innerHTML = ` 
           <div class="forecast-row">
             <div class="forecast-item">

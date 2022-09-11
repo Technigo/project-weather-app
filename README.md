@@ -1,13 +1,17 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+We have done a simply weather app for practis working in branches and with API. 
+The app should:
+-fetch data from the API
+-the data should be presented in the specified format, we chose design-2
+-the page should be responsive, deigned for mobile, responsive for tablet and desktop
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We tried to devide the work between us for one api branch and one styling branch. Due to different personal workin hours it was natural for the API branch to finished first. Despite diffrent working hours we were able to help each other and solve diffrent problems along the way.
+
+If we had more time we would do a map funtion for the forecast and add something cool like icons for sunrise and sunset, and make Icons to be animated.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://weatherapp-nina-linda.netlify.app/
