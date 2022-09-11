@@ -8,16 +8,22 @@
     --font-color: #2c541b;
     --bg-color: #f7e9bd;
     --border-color: #a8b37a;
+    --buttonhover-color: #fff6db;
 }
 
 button {
-    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    border-style: none;
+    border-bottom: 1px solid;
     transition-duration: 0.5s;
     padding: 5px;
+    background-color: var(--bg-color);
+    color: var(--font-color);
 }
 
 button:hover {
-    background-color: lightcoral;
+    background-color: var(--buttonhover-color);
 }
 
 body {
@@ -41,18 +47,32 @@ body {
 }
 
 .search-field {
-    padding: 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
     display: flex;
+    padding: 40px;
     flex-direction: column;
     font-size: 0.9rem;
+    
 }
 
 .search-field-and-button {
+    display: flex;
     margin-top: 5px;
+    align-items: center; 
+    justify-content: center;
 }
 
+
 #main-searchbar {
-    padding: 5px 0px;
+    display: flex;
+    padding: 5px 5px;
+    border-width: 1.5px;
+    border-style: none;
+    border-bottom: 1px solid;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--font-color);
+    background-color: var(--bg-color);
 }
 
 .topBox {

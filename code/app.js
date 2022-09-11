@@ -48,7 +48,8 @@ fetch(urlWeather)
                img.setAttribute('src', 'icons/cloud.svg')
                root.style.setProperty('--bg-color', '#f3f7f8')
                root.style.setProperty('--font-color', '#ff7476')
-               root.style.setProperty('--border-color', '#f07c7a78') 
+               root.style.setProperty('--border-color', '#f07c7a78')
+               root.style.setProperty('--buttonhover-color', '#e6e6e6') 
 
            }
            if(res.weather[0].main === 'Clear') {
@@ -57,6 +58,7 @@ fetch(urlWeather)
             root.style.setProperty('--bg-color', '#f7e9bd')
             root.style.setProperty('--font-color', '#2c541b')
             root.style.setProperty('--border-color', '#3553237a')
+            root.style.setProperty('--buttonhover-color', '#fff9e5')
            }
 
            if(res.weather[0].main === 'Rain') {
@@ -65,6 +67,7 @@ fetch(urlWeather)
            root.style.setProperty('--bg-color', '#b3e9fa')
            root.style.setProperty('--font-color', '#004b67')
            root.style.setProperty('--border-color', '#1b4b657d')
+           root.style.setProperty('--buttonhover-color', '#dff7ff')
            }
 
            if(res.weather[0].main === 'Snow') {
@@ -73,6 +76,7 @@ fetch(urlWeather)
             root.style.setProperty('--bg-color', '#ffffff')
             root.style.setProperty('--font-color', '#7fd2fe')
             root.style.setProperty('--border-color', '#90d1fa7a')
+            root.style.setProperty('--buttonhover-color', '#e2f8ff')
             }
         })
     }
