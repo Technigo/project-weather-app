@@ -1,6 +1,6 @@
 # Weather App
 
-The assignment was to build a simple weather dashboard using a weather API. It should tell today’s weather, temperature and also a 5-day forecast. It was also an exercise in working as a dev team with GitHub branches etc.
+The assignment was to build a simple weather dashboard using a weather API. It should tell today’s weather, temperature and also a 5-day forecast. It was also an exercise in working as a dev team with GitHub branches etc.
 
 ## The problem
 
