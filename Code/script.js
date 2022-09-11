@@ -7,13 +7,13 @@ const selectCity = document.getElementById("cities");
 
 /**** Weather APIs****/
 const stockholmWeather =
-  "http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=64d2a624607147029ae4574d21f5c6d9";
+  "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=64d2a624607147029ae4574d21f5c6d9";
 const sidneyWeather =
-  "http://api.openweathermap.org/data/2.5/weather?q=Sidney,Australia&units=metric&APPID=dd119be9d07ede14a0d4a2a07b6dd18e";
+  "https://api.openweathermap.org/data/2.5/weather?q=Sidney,Australia&units=metric&APPID=dd119be9d07ede14a0d4a2a07b6dd18e";
 const londonWeather =
-  "http://api.openweathermap.org/data/2.5/weather?q=London,England&units=metric&APPID=9131d7e10e3d4c4db50d9536233dc980";
+  "https://api.openweathermap.org/data/2.5/weather?q=London,England&units=metric&APPID=9131d7e10e3d4c4db50d9536233dc980";
 const bangkokWeather =
-  "http://api.openweathermap.org/data/2.5/weather?q=Bangkok,Thailand&units=metric&APPID=c0ec35bd685cdcb888f10c443a6c14d5";
+  "https://api.openweathermap.org/data/2.5/weather?q=Bangkok,Thailand&units=metric&APPID=c0ec35bd685cdcb888f10c443a6c14d5";
 
 /**** Forcast APIs****/
 const stockholmForcast =
