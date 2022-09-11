@@ -4,6 +4,46 @@ body {
     background-color: antiquewhite;
 }
 
+#weatherinstockholm {
+    font-size: 45px;
+    font-weight: bolder;
+    line-height: 150%;
+}
+
+.suncontainer {
+    width: auto;
+    display: flex;
+    font-size: 15pt;
+    margin-left: 20px;
+}
+
+.stockholmcontainer {
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+    flex-direction: column;
+}
+
+.tempstat {
+    display: flex;
+    flex-direction: row;
+}
+
+img {
+    width: 100px;
+    height: auto;
+}
+
+
+.day-in-forecast {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-size: 30px;
+    margin: 30px;
+    padding: 20px;
+}
+
 .forecast {
     height: auto;
     font-size: 30px;
@@ -19,44 +59,50 @@ body {
     padding: 20px;
 }
 
-.day-in-forecast p {
-    border-bottom: 2px dotted darkgrey;
-}
-
-#weatherinstockholm {
-    font-size: 45px;
-    font-weight: bolder;
-    line-height: 150%;
-    padding: 40px;
-}
-
-
-.suncontainer {
-    width: auto;
-    display: flex;
-    font-size: 15pt;
-    margin-left: 20px;
-}
-
-.stockholmcontainer {
-    display: flex;
-    justify-content: center;
-}
-
-.tempstat {
-    display: flex;
-    flex-direction: row;
-}
-
-
 @media (min-width: 667px) and (max-width: 1024px) {
     body {
+        background-color: lightgreen;
+    }
+
+    .day-in-forecast {
+        font-size: 40px;
+    }
+
+    #weatherinstockholm {
+        font-size: 55px;
+    }
+
+    .suncontainer {
         font-size: 25pt;
     }
+
+    img {
+        width: 150px;
+        height: auto;
+    }
+
 }
 
 @media (min-width: 1025px) {
     body {
+        background-color: darkgrey;
+    }
+
+    .day-in-forecast {
+        font-size: 50px;
+    }
+
+    #weatherinstockholm {
+        font-size: 65px;
+    }
+
+    .suncontainer {
         font-size: 35pt;
     }
+
+    img {
+        width: 200px;
+        height: auto;
+    }
+
 }
