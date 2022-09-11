@@ -18,7 +18,7 @@ h3 {
     font-size: 20px;
     font-family: 'Montserrat', sans-serif;
     padding: 10%;
-    height: 91vh;
+    height: 100vh;
 
 }
 
@@ -26,14 +26,45 @@ img {
     height: 60%;
 }
 
-
-.forecast-section {
+  .forecast-section {
+    display: flex;
+    justify-content: space-between;
     border-bottom: 2px dotted;
-      display: flex;
-      justify-content: space-between;
-  }
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-cloudy{
+    background-color: #F4F7F8;
+    color: #F47775;
+}
+.container-rainy{
+    background-color: #A3DEF7;
+    color: #164A68;
+}
+.container-clear{
+    background-color: #F7E9B9;
+    color: #2A5510;
+}
 
 
+@media (min-width: 667px) {
+
+    .container{
+        font-size: 24px;
+        padding: 15%;
+        justify-content: space-evenly;
+    }
+
+}
+@media (min-width: 1024px) {
+    
+    .container{
+    font-size: 40px;
+    justify-content: space-between;
+    }
+
+}
 
 /* Design guidelines
 

@@ -38,10 +38,10 @@ fetch("http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
                 weatherImg.innerHTML += `
                 <img src="./Designs/Design-2/icons/noun_Cloud_1188486.svg" alt="">`
                 weatherDescription.innerHTML += `
-                <h1>The sky is 50 shades of grey in ${json.name}.  </h1>
+                <h1>The sky is 50 shades of grey in ${json.name}. </h1>
                 `;
                 containerToggle.classList.toggle('container-cloudy');
-                console.log(weatherToggle)
+                console.log(containerToggle)
             break;
         
             case 'Rain':  // if (x === 'value2')
@@ -50,7 +50,7 @@ fetch("http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
                 weatherImg.innerHTML += `
                 <img src="./Designs/Design-2/icons/noun_Umbrella_2030530.svg" alt="">`       
                 weatherDescription.innerHTML += `
-                <h1>Drip drop. It's raining in ${json.name}. Don't forget your umbrella.  </h1>
+                <h1>Drip drop. It's raining in ${json.name}. It's okay to stay inside.  </h1>
                 `
                 containerToggle.classList.toggle('container-rainy');
                 console.log(containerToggle)
@@ -61,7 +61,7 @@ fetch("http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
                 weatherImg.innerHTML += `
                 <img src="./Designs/Design-2/icons/noun_Sunglasses_2055147.svg" alt="">`
                 weatherDescription.innerHTML += `
-                <h1>The sky is clear as "korvspad" in ${json.name}. </h1>
+                <h1>The sky is crispy and clear in ${json.name}. </h1>
                 </div>
                 `
                 containerToggle.classList.toggle('container-clear');
@@ -73,8 +73,6 @@ fetch("http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
  })
 
 //WEATHER-FORECAST FEATURE 
-
-
 fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=fb125bc213d8ee5c4a432b3a2b24aecf")
     .then((response) => {
         return response.json()
