@@ -1,13 +1,12 @@
 # Weather App
 
-Replace this readme with your own information about your project.
+We have produced a weather app with responsive design, using data from an open API, we followed the designscheme for Iphone XR-XS design 1. 
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+we approached the problem by using fetch requests and jsons in js file. We styled our page with mobile first in mind and used mediaqueries for larger devices.aIf we had more time we would have made the applicaion more reactive, giving the user more choices, like seeing the weather in a city of their choice.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+

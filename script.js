@@ -14,6 +14,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
     .then((response) => {
         return response.json()
     })
+
     .then ((json) => {
     console.log(json)
         
@@ -31,19 +32,17 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
     //Sunrise and sunset //*1000 because it is milliseconds
     let sunrise = json.city.sunrise;
     let sunriseDate = new Date(sunrise * 1000).toLocaleTimeString([], {
+        hour: '2-digit', minute: '2-digit' //converts time to only show hours and minutes 
+    })
+    containerSunrise.innerHTML = `<h2> sunrise ${sunriseDate} </h2>`
+    
+    let sunset = json.city.sunset;
+    let sunsetDate = new Date(sunset*1000).toLocaleTimeString([], {
         hour: '2-digit', minute: '2-digit' 
-    });
-    
+    })
+    containerSunset.innerHTML = `<h2> sunset ${sunsetDate} </h2>`
 
-        containerSunrise.innerHTML = `<h2> sunrise ${sunriseDate} </h2>`
-    
-        let sunset = json.city.sunset;
-        let sunsetDate = new Date(sunset*1000).toLocaleTimeString([], {
-            hour: '2-digit', minute: '2-digit' 
-        });
-
-        containerSunset.innerHTML = `<h2> sunset ${sunsetDate} </h2>`
-
+    //This function changes the backgorund in the header depending on the current weather
     const changeBackground = (() => {
         if (currentWeather === "Clouds") {
             header.style.backgroundImage = `url(https://images.pexels.com/photos/209845/pexels-photo-209845.jpeg?auto=compress&cs=tinysrgb&w=1700)`
@@ -74,7 +73,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
     })
 
     
-//The fetch-request for the data in the weekly forecasth
+//The fetch-request for the data in the weekly forecast
 fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=98bd2fbedad0f13ae05ed8e49698fda1')
     .then((response) => {
         return response.json()
@@ -82,16 +81,19 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
 
     .then ((data) => {
     console.log(data)
-    const filteredForecast = data.list.filter(item => item.dt_txt.includes('12:00')) //here we have made an array where only the weather at 12.00 will show. 
+    const filteredForecast = data.list.filter(item => item.dt_txt.includes('12:00')) //here we have made an array where only the weather at 12.00 GMT will be shown. 
     console.log(filteredForecast)
 
-    //This loop prints the days of the weeks and the temperatures belonging to each day 
+    //A loop for the five day forecast showing weather/temperature and "feels like" for each day 
     for (let i=0; i < filteredForecast.length; i++) {
     //console.log(i)
-        
+    
+    //Variables for the temperature, weather and "feels like", "to fixed" rounds the temperature to two digits.
     const dailyTemp = filteredForecast[i].main.temp.toFixed(0)
     const dailyWeather = filteredForecast[i].weather[0].main
     const feelsLike = filteredForecast[i].main.feels_like.toFixed(0)
+    
+    // Converted date data from the json to readable format, and en-US = language and "short" shortens the weekdays to three letters
     let day
     day = new Date(filteredForecast[i].dt * 1000).toLocaleDateString("en-US", {weekday: 'short'})
         //console.log(day)
@@ -99,13 +101,14 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
     weatherWeek.innerHTML += 
         `<div class = "weekday id="weekday">
             <p class = "day"> ${day} </p>
-            <p class = "rain-or-sun" id="rainOrSun${i}"> ${dailyWeather} </p>
+            <p class = "rain-or-sun${i}"> ${dailyWeather} </p>
             <p class = "day-temp"> ${dailyTemp}°C </p>     
              <p class = "feels-like"> Feels like ${feelsLike}°C</p>
         </div>`
 
-    const rainOrSun = document.getElementById(`rainOrSun${i}`) // kolla upp ${i}
-        const showWeatherIcon = () => { // this functions replaces the currentWeather (which from the API could be displayed as "Rain" or "Clouds") with a suitable icon. 
+    // This functions replaces the currentWeather with a suitable icon
+    const rainOrSun = document.querySelector(`.rain-or-sun${i}`)
+        const showWeatherIcon = () => { 
             if (dailyWeather === "Clear") { 
                 rainOrSun.innerHTML = `<img class="weather-icon" src="https://img.icons8.com/offices/344/sun.png">`
             } 
@@ -139,8 +142,8 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
     console.log('caught error', err)
     })
 
+// Eventlistener for the menu button. If we had more time the user could have had the choice to look at the weather in a different city
+//using the menu button.
 menuBtn.addEventListener('click', (event) => {
     console.log("i'm clicking")
 })
-
-        //never use the same id in several places! understand what daniel means

@@ -2,11 +2,11 @@ body {
     font-family: 'Roboto', sans-serif;
     margin: 0px;
 }
-/* styling for header*/
+/* Styling for header*/
 .header {
     display: grid;
     grid-template-columns: repeat(2,1fr);
-    grid-template-rows: 50px 150px 40px 40px 80px;
+    grid-template-rows: 50px 150px 40px 30px 80px;
     border-bottom-left-radius: 600px 100px;
     border-bottom-right-radius: 600px 100px;
     color: white;
@@ -45,6 +45,7 @@ body {
     grid-row: 4 / 5;
     font-size: 20px;
     padding-left: 30px;
+    align-self: center;
 }
 
 .sunrise {
@@ -95,6 +96,7 @@ body {
 .day-temp {
     grid-column: 4 / 5;
 }
+
 .weekday:hover {
     background-color:#fafafa;
 }
@@ -109,6 +111,7 @@ body {
     .header {
         border-bottom-left-radius: 700px 60px;
         border-bottom-right-radius: 700px 60px;
+        grid-template-rows: 50px 150px 40px 60px 80px;
     }
     
     .temperature {
@@ -150,15 +153,23 @@ body {
         margin: 12px 0px 12px 0px;
         height: 90px;
         border-radius: 150px;
-        font-size: 16px;
+        font-size: 20px;
+    }
+    .feels-like {
+        font-size: 20px;
+    }
+    .day-temp {
+        font-size: 20px;
     }
 }
+
 
 /*Desktop*/
 @media (min-width: 1025px) {    
     .header {
         border-bottom-left-radius: 400px 50px;
         border-bottom-right-radius: 400px 50px;
+        grid-template-rows: 50px 150px 40px 60px 80px;
     }
 
     .temperature {
@@ -200,6 +211,12 @@ body {
         margin: 12px 0px 12px 0px;
         height: 110px;
         border-radius: 150px;
-        font-size: 20px;
+        font-size: 25px;
+    }
+    .feels-like {
+        font-size: 25px;
+    }
+    .day-temp {
+        font-size: 25px;
     }
 }
