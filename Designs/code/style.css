@@ -1,22 +1,8 @@
-/*
-#F6E9B8 - light yellow
-#1C4F08 - dark green
-
-
-#F47775
-#F4F7F8
-
-#164A68
-#A3DEF7
-
-Sunny
-#2A5510
-#F7E9B9
-*/
-
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
 body {
     font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
     background-color: #F7E9B9;
     color: #2A5510;
 }
@@ -25,25 +11,27 @@ body {
     border-bottom: black dotted;
 } */
 
-.forecast{
+.forecast {
     border-bottom: #2A5510 dotted 2px;
 }
-.weatherInfo{
+
+.weatherInfo {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
 }
-h1{
-    font-size: 40px;
+
+h1 {
+    font-size: 50px;
 }
 
 h2 {
-    font-size: 20px;
+    font-size: 30px;
 }
 
-.leftCorner{
+.leftCorner {
     display: flex;
     flex-direction: column;
     align-items: left;
@@ -51,19 +39,20 @@ h2 {
     text-align: left;
 }
 
-.otherCities{
+.otherCities {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    text-align: center;
     gap: 80px;
     margin-top: 50px;
-
 }
 
-.city{
+.city {
    display: flex;
    flex-direction: column;
    align-items: center;
+   font-weight: bolder;
 }
 
