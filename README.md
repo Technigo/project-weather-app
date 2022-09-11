@@ -9,11 +9,11 @@ Working individually, in pairs and finally as a group, we created an HTML skelet
 
 The learning goals included the following:
 
-Working with branches on GitHub
-What an API is and how to use it
-Basic JSON
-How to use `fetch()` in JavaScript
-How to use promises in JavaScript
+Working with branches on GitHub //
+What an API is and how to use it //
+Basic JSON //
+How to use `fetch()` in JavaScript //
+How to use promises in JavaScript //
 How to work with the `Date()` object in JavaScript
 
 If we had had more time, we would have implemented more CSS effects that would trigger depending on the weather of the selected city (snowflakes, rain, etc.)
