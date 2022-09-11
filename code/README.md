@@ -20,4 +20,6 @@ If we had had more time, we would have implemented more CSS effects that would t
 
 ## VIEW IT LIVE
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+[Link to the live website!](https://luminous-dolphin-eea043.netlify.app)
+
+
