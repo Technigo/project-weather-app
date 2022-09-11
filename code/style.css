@@ -6,6 +6,8 @@ body {
   font-weight: 400;
   background-color: #dfd2cb;
   color: #eedcc6;
+  display: flex;
+  min-height: 100vh;
   /*overflow: hidden; */
 }
 
@@ -57,6 +59,7 @@ body {
 /* - - - BLUE: MAIN - - - - - - - - */
 .weather-app {
   /* border: 1px solid rgb(59, 59, 255); */
+  align-self: center;
   display: flex;
   margin-left: auto;
   margin-right: auto;
@@ -224,8 +227,6 @@ a:link {
   }
 
   .weather-app {
-    margin-bottom: 70px;
-    margin-top: 70px;
     max-width: 325px;
     height: 600px;
     border-radius: 10px;
@@ -274,7 +275,6 @@ a:link {
 @media (min-width: 1025px) {
   .weather-app {
     max-width: 350px;
-    margin-bottom: 70px;
   }
 
   .input-location {
