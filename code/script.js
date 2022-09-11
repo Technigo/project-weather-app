@@ -34,8 +34,9 @@ fetch(URL_WEATHER)
     //Convert timestamp to milliseconds with *1000. JavaScript stores Dates in milliseconds.
     //toLocaleTimeString show only the hours and minutes: https://stackoverflow.com/c/technigo/questions/1581
     // https://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript
+
     console.log(todaysMainWeather);
-    todaysMainWeather = "Rain";
+    // todaysMainWeather = "Rain"; // Used to test the different set ups
 
     // Today's prompt
     if (todaysMainWeather === "Clear") {
@@ -63,7 +64,6 @@ fetch(URL_WEATHER)
   });
 
 //Forecast
-
 const weekday = (data) => {
   const currentDate = new Date(data * 1000); // sets to millisec.
   return currentDate.toLocaleDateString("en-GB", {
