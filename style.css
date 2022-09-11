@@ -16,7 +16,7 @@ label {
     flex-direction: column;
     flex-wrap: wrap;
     padding: 5%;
-    background: #1882a0 center/cover linear-gradient(to bottom, #78e1fe, rgba(255, 255, 255, 0.73));
+    background:  #1882a0 center/cover linear-gradient(to bottom, #78e1fe, rgba(255, 255, 255, 0.73));
 }
 
 .hero .search {
@@ -74,15 +74,6 @@ label {
     padding-right: 3%;
 }
 
-button {
-    border: none;
-    font-family: 'DM Sans', sans-serif;
-    background-color: white;
-    border-radius: 2px;
-    opacity: 0.6;
-    transition: 0.3s;
-}
-
 .searchbar {
     border: none;
     font-family: 'DM Sans', sans-serif;
@@ -91,13 +82,12 @@ button {
 }
 
 .weather-main {
-    height: 50%;
-    width: fit-content;
+    height: 220px;
 }
 
 .weather-five-days {
     display: block;
-    padding-top: 20%;
+    padding-top: 7%;
 }
 
 .forecast-day {
@@ -117,6 +107,15 @@ button {
     padding-top: 10%;
 }
 
+footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: #bcd7df;
+    color: white;
+    font-size: 14px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
 
 /* TABLET */
 @media (min-width: 668px) and (max-width:1024px) {
@@ -126,8 +125,13 @@ button {
         margin: auto;
     }
 
+    .weather-main {
+        height: 260px;
+        width: 300px;
+    }
+
     .weather-five-days {
-        padding-top: 10%;
+        padding-top: 5%;
         font-size: 20px;
     }
 
@@ -147,25 +151,36 @@ button {
         font-size: 20px
     }
 
+    label {
+        font-size: 25px;
+    }
 }
 
 /* DESKTOP */
 @media (min-width: 1025px) {
 
     body {
-        background-color: rgb(154, 154, 255) center/cover linear-gradient(to bottom, rgba(154, 154, 255), rgba(255, 255, 255, 0.73));
+
         background-image: url("background.jpg");
         background-position: center;
-        background-size: cover;
+        background-size: cover;        
+        /* Back-up background if the image were to fail in a browser */
+        background-color: #1882a0 center/cover linear-gradient(to bottom, #78e1fe, rgba(255, 255, 255, 0.73));
     }
 
     .hero{
-         align-items: center;
-         width: 30%;
-         margin: auto;
-         margin-top: 50px;
-         border: 1px rgb(236, 236, 236) solid;
-         border-radius: 25px 25px 0px 0px;
+        align-items: center;
+        width: 30%;
+        padding-top: 2%;
+        margin: auto;
+        margin-top: 50px;
+        border: 1px rgb(236, 236, 236) solid;
+        border-radius: 25px 25px 0px 0px;
+    }
+
+    .weather-main {
+        height: 260px;
+        width: 350px;
     }
 
     label {
@@ -206,6 +221,10 @@ button {
         align-items: center;
         padding-left: 7%;
         padding-right: 7%;
+    }
+
+    footer {
+        font-size: 17px;
     }
 
 }
