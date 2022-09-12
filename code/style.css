@@ -2,7 +2,7 @@ html,
 body {
   margin: 0 auto;
   font-family: "Raleway", sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   background-color: #dfd2cb;
   color: #eedcc6;
@@ -18,7 +18,8 @@ body {
   left: 0;
   right: 0;
   width: 100%;
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
   background-color: #dfd2cb;
   transition: 1s;
 }
@@ -88,11 +89,11 @@ body {
 /* - - - TODAYS WEATHER - - - - - - - - */
 
 .todays-weather {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .todays-weather-row {
-  padding-bottom: 7px;
+  padding-bottom: 5px;
 }
 
 /* - - - HAMBURGER MENU - - - - - - - - */
@@ -212,6 +213,10 @@ a:link {
   width: 23px;
 }
 
+.weather-test {
+  display: none;
+}
+
 /* - - - - - - - - - - - - - - - - - - - MEDIA QUERIES - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /* - - - TABLET - - - - - - - - */
@@ -242,6 +247,10 @@ a:link {
     width: 240px;
   }
 
+  .sideMenu {
+    background: linear-gradient(180deg, #928279 0%, #92827900 100%);
+  }
+
   .cozy-text-icon {
     font-size: 45px;
   }
@@ -258,6 +267,10 @@ a:link {
 
   .sideMenu {
     border-radius: 10px;
+  }
+
+  .weather-test {
+    display: block;
   }
 }
 /* - - - DESKTOP - - - - - - - - */
