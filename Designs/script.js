@@ -19,30 +19,37 @@ document.addEventListener('DOMContentLoaded', () => {
             return response.json()
         })
         .then((data) => {
-            weatherStatus.innerHTML += `${data.weather[0].main.toLowerCase()} | ` //If it's cloudy, rainy or clear.
-            celsius.innerHTML += `${data.main.temp.toFixed(0)}°` //How many degrees it is
+            const weatherOfTheDay = data.weather[0].main
+            console.log(weatherOfTheDay)
+            weatherStatus.innerHTML += `${weatherOfTheDay} `
+            //    console.log(weatherStatus)//If it's cloudy, rainy or clear.
+            const degreesThisDay = data.main.temp.toFixed(0)
+            celsius.innerHTML += ` | ${degreesThisDay}°` //How many degrees it is
             const sunriseNewDate = new Date(data.sys.sunrise * 1000); //These rows converts the sunrise and sunset to hours and minutes
             const sunriseTime = sunriseNewDate.toLocaleTimeString([], { timeStyle: 'short' })
-            sunrise.innerHTML = `sunrise ${sunriseTime}` //The time the sun goes up
+            sunrise.innerHTML += `sunrise ${sunriseTime}` //The time the sun goes up
+
             const sunsetNewDate = new Date(data.sys.sunset * 1000);
             const sunsetTime = sunsetNewDate.toLocaleTimeString([], { timeStyle: 'short' })
-            sunset.innerHTML = `sunset ${sunsetTime}` //The time the sun goes down
-
-            const weatherReport = () => { //The message that will show and change depending to weather
-                if (weatherStatus === 'Clear') {
-                    icon.innerHTML += `<img src="icons/clear.svg"/>`
-                    weatherInStockholm.innerHTML += `Get your sunnies on. ${data.name} is looking rather great today.`
-                } else if (weatherStatus === 'Rain') {
-                    icon.innerHTML += `<img src="icons/rain.svg">`
-                    weatherInStockholm.innerHTML = `Don't forget your umbrella. It's wet in ${data.name} today.`
-                } else {
-                    icon.innerHTML += `<img src="icons/cloud.svg">`
-                    weatherInStockholm.innerHTML = `Light a fire and get cosy. ${data.name} is looking grey today.`
-                }
+            sunset.innerHTML += `sunset ${sunsetTime}` //The time the sun goes down
+            //const weatherReport = (weatherOfTheDay) => { //The message that will show and change depending to weather
+            if (weatherOfTheDay === 'Clear') {
+                icon.innerHTML += `<img src="icons/clear.svg"/>`
+                weatherInStockholm.innerHTML += `Get your sunnies on. ${data.name} is looking rather great today.`
+                console.log('clear')
+            } else if (weatherOfTheDay === 'Rain') {
+                icon.innerHTML += `<img src="icons/rain.svg">`
+                weatherInStockholm.innerHTML = `Don't forget your umbrella. It's wet in ${data.name} today.`
+                console.log('rain')
+            } else {
+                icon.innerHTML += `<img src="icons/cloud.svg">`
+                weatherInStockholm.innerHTML = `Light a fire and get cosy. ${data.name} is looking grey today.`
+                console.log('cloud')
             }
-            weatherReport()
+        })
+    //  weatherReport()
 
-        });
+    // });
 
     fetch(apiForecast)
         .then((response) => {

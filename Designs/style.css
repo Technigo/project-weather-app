@@ -29,6 +29,10 @@ body {
     flex-direction: row;
 }
 
+#celsius {
+    margin-left: 10px;
+}
+
 img {
     width: 100px;
     height: auto;
