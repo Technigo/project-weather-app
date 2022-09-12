@@ -138,6 +138,7 @@ a:hover, a:active {
 }
 
 /*tablet*/
+
 @media (min-width: 668px) and (max-width: 1023px) {
 	.info-wrapper {
 		display: flex;
@@ -185,6 +186,7 @@ a:hover, a:active {
 }
 
 /*desktop*/
+
 @media (min-width: 1024px) {
 	.info-row {
 		margin-left: 130px;
