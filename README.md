@@ -8,7 +8,9 @@ We did the first part together, creating the files we needed and added the code 
 
 We found out that we needed to add more div's and classes to the HTML file and did that seperately in our branches. So a more detailed plan about the layout of the page in the planning stage would have been beneficial for us. 
 
-If we had more time we would have liked to add more information and functions, like different temperatures for the hours during the day, wind, "feels like"-temperature etc, for the tablet and desktop views. 
+If we had more time we would have liked to add more information, pictures and functions, like different temperatures for the hours during the day, wind, "feels like"-temperature etc, for the tablet and desktop views. 
+
+When uploading on Netlify the site unfortunatly didn't load correctly, a lot of the layout disapeered.
 
 ## View it live
-
+https://dancing-twilight-cc62c7.netlify.app/
