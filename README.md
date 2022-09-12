@@ -1,13 +1,15 @@
 # Weather App
 
-Replace this readme with your own information about your project.
+This week's project was to build a simple weather dashboard that tells today's weather and temperature and a 5-day forecast using a weather API. We worked in pairs and started off with mob programming before we split up into branches. 
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This weather app was built by Saralie Bognandi and Julia Östedt.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We had some issues getting the icons to show properly, we searched online and discussed with our larger team to figure out the problem. Turned out to be an issue with our folders, which was solved by just creating a new folder... :) 
+
+If we had more time we would have wanted to explore using more loops and add more features, such as a search bar and more cities.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Live link: https://stockholm-weather.netlify.app/
