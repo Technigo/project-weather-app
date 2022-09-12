@@ -14,21 +14,22 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
 
     .then((json) => {
 
-        const sunRise = new Date (json.sys.sunrise);
-        let sunRiseHoursAndMinuits = sunRise.getHours() + ':' + sunRise.getMinutes();
-        console.log(sunRiseHoursAndMinuits); 
+        const sunRise = new Date (json.sys.sunrise * 1000);
+        //making the time variables into strings to display the correct time format
+        let sunRiseHoursAndMinutes = String(sunRise.getHours()).padStart(2, '0') + ':' + String(sunRise.getMinutes()).padStart(2, '0');
+        console.log(sunRise.getHours(), sunRise.getMinutes()); 
 
         const sunSet = new Date (json.sys.sunset * 1000);
-        let sunSetHoursAndMinuits = sunSet.getHours() + ':' + sunSet.getMinutes();
-        console.log(sunSetHoursAndMinuits);
+        let sunSetHoursAndMinutes = String(sunSet.getHours()).padStart(2, '0') + ':' + String(sunSet.getMinutes()).padStart(2, '0');
+        console.log(sunSetHoursAndMinutes);
 
         const weathers = json.weather
         weathers.map((weather) => {
 
         header.innerHTML = `
-        <h2>${weather.description} | ${(json.main.temp).toFixed(0)}°</h2>
-        <h2>sunrise ${sunRiseHoursAndMinuits}</h2>
-        <h2>sunset ${sunSetHoursAndMinuits}</h2>
+        <h3>${weather.description} | ${(json.main.temp).toFixed(0)}°</h3>
+        <h3>sunrise ${sunRiseHoursAndMinutes}</h3>
+        <h3>sunset ${sunSetHoursAndMinutes}</h3>
         `
 
         //different actions depending on weather
