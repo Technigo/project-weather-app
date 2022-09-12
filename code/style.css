@@ -182,7 +182,7 @@ a:link {
 }
 
 .cozy-text-paragraph {
-  font-size: 40px;
+  font-size: 43px;
 }
 
 /* - - - WEATHER FORECAST - - - - - - - - */
@@ -195,9 +195,9 @@ a:link {
 .weather-forecast-entry {
   display: flex;
   justify-content: space-between;
-  font-size: 18px;
+  font-size: 14px;
   align-items: center;
-  padding-top: 8px;
+  padding-top: 2px;
 }
 
 .weather-forecast-entry-day {
@@ -205,8 +205,8 @@ a:link {
 }
 
 .weather-forecast-entry-icon {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
 }
 
 .weather-forecast-entry-temperature {
