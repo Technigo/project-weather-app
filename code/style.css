@@ -64,7 +64,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   width: auto;
-  height: auto;
+  height: 100vh;
   justify-content: space-between;
   flex-direction: column;
   background-color: #928279; /*-apps color-*/
@@ -73,9 +73,9 @@ body {
   padding-top: 0;
   padding-bottom: 0;
   position: relative;
-  box-shadow: 2px 36px 40px -9px rgba(131, 130, 130, 0.75);
-  -webkit-box-shadow: 2px 36px 40px -9px rgba(131, 130, 130, 0.75);
-  -moz-box-shadow: 2px 36px 40px -9px rgba(131, 130, 130, 0.75);
+  box-shadow: 1px 2px 21px 2px rgba(102, 102, 102, 0.75);
+  -webkit-box-shadow: 1px 2px 21px 2px rgba(102, 102, 102, 0.75);
+  -moz-box-shadow: 1px 2px 21px 2px rgba(102, 102, 102, 0.75);
 }
 
 /* - - - HEADER WRAPPER - - - - - - - - */
