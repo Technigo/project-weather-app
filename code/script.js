@@ -54,10 +54,6 @@ const close = () => {
   closeMenu.style.display = "none";
 };
 
-let city = "Stockholm";
-const apiNow = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=ba408ec4b2f7f251f2dd0044bd3e07f2`;
-const apiForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=ba408ec4b2f7f251f2dd0044bd3e07f2`;
-
 const getIconForWeather = (weather) => {
   if (weather === "Clear") {
     return "./assets/weather-icons/clear.svg";
@@ -72,6 +68,8 @@ const getIconForWeather = (weather) => {
   } else if (weather === "Snow") {
     return "./assets/weather-icons/snow.svg";
   } else if (weather === "Mist") {
+    return "./assets/weather-icons/mist.svg";
+  } else if (weather === "Fog") {
     return "./assets/weather-icons/mist.svg";
   } else console.log("icon not found for", weather);
 
@@ -100,7 +98,7 @@ const weatherBasedTheme = (weather, city) => {
   } else if (weather === "Rain") {
     document.body.className = "weather-condition-rain";
     newIcon = `<img src="./assets/weather-icons/rain.svg">`;
-    newText = `Drizzle or waterfall, in ${city} you'll know when it's too late.`;
+    newText = `Drizzle or skyfall, in ${city} you'll know when it's too late.`;
   } else if (weather === "Thunderstorm") {
     document.body.className = "weather-condition-thunderstorm";
     newIcon = `<img src="./assets/weather-icons/thunderstorm.svg">`;
@@ -113,10 +111,14 @@ const weatherBasedTheme = (weather, city) => {
     document.body.className = "weather-condition-mist";
     newIcon = `<img src="./assets/weather-icons/mist.svg">`;
     newText = `Is ${city} misty or is something burning?`;
+  } else if (weather === "Fog") {
+    document.body.className = "weather-condition-mist";
+    newIcon = `<img src="./assets/weather-icons/mist.svg">`;
+    newText = `Is ${city} foggy or is something burning?`;
   } else {
     console.log("theme not found for", weather);
     document.body.className = "weather-condition-default";
-    newIcon = `<img src="./assets/weather-icons/fallback-icon.svg">`;
+    newIcon = `<img src="./assets/weather-icons/default.svg">`;
     newText = `Well this is embarrasing ${city}, can't seem to load your weather.`;
   }
   console.log("weatherBasedTheme() - about to set ", {
@@ -201,7 +203,6 @@ const getWeather = (city) => {
     .then((dayForecast) => {
       console.log("got weather for forecast");
       const filteredForecast = dayForecast.list.filter((item) =>
-        // @TODO maybe change to a better time here? see this for visualisation https://jsoncrack.com/editor?fbclid=IwAR2ZSGA26fdIHECi0-ISKwEsHs8BuZlb8bCS_-3O1j_0drQRkNIdzvK7fE0
         item.dt_txt.includes("12:00")
       );
       filteredForecast.forEach(printForecastEntry);
