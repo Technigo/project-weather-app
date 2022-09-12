@@ -7,7 +7,7 @@ body {
   background-color: #dfd2cb;
   color: #eedcc6;
   display: flex;
-  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   overflow: hidden;
 }
 
@@ -59,7 +59,6 @@ body {
 
 /* - - - MAIN - - - - - - - - */
 .weather-app {
-  /* border: 1px solid rgb(59, 59, 255); */
   align-self: center;
   display: flex;
   margin-left: auto;
@@ -223,6 +222,11 @@ a:link {
 /* - - - TABLET - - - - - - - - */
 
 @media (min-width: 668px) {
+  html,
+  body {
+    height: 100vh;
+  }
+
   .logo-header {
     left: 45%;
   }
