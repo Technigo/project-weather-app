@@ -73,7 +73,7 @@ const getIconForWeather = (weather) => {
     return "./assets/weather-icons/mist.svg";
   } else console.log("icon not found for", weather);
 
-  return "./assets/weather-icons/fallback-icon.svg";
+  return "./assets/weather-icons/default.svg";
 };
 
 const weatherBasedTheme = (weather, city) => {
