@@ -7,7 +7,7 @@ body {
   background-color: #dfd2cb;
   color: #eedcc6;
   display: flex;
-  height: calc(var(--vh, 1vh) * 100);
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -222,11 +222,6 @@ a:link {
 /* - - - TABLET - - - - - - - - */
 
 @media (min-width: 668px) {
-  html,
-  body {
-    height: 100vh;
-  }
-
   .logo-header {
     left: 45%;
   }
