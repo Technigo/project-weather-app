@@ -64,8 +64,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   width: auto;
-  min-height: -webkit-fill-available;
-  min-height: 100vh;
+  max-height: 100vh;
   justify-content: space-between;
   flex-direction: column;
   background-color: #928279; /*-apps color-*/
