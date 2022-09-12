@@ -26,9 +26,9 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         weathers.map((weather) => {
 
         header.innerHTML = `
-        <h3>${weather.description} | ${(json.main.temp).toFixed(0)}°</h3>
-        <h3> Sunrise ${sunRiseHoursAndMinuits}</h3>
-        <h3> Sunset ${sunSetHoursAndMinuits}</h3>
+        <h2>${weather.description} | ${(json.main.temp).toFixed(0)}°</h2>
+        <h2>sunrise ${sunRiseHoursAndMinuits}</h2>
+        <h2>sunset ${sunSetHoursAndMinuits}</h2>
         `
 
         //different actions depending on weather
