@@ -8,9 +8,8 @@ h1 {
     font-weight:bold;
     font-size: 30px;
 }
-h2 {
+.header h3 {
     font-weight: 400;
-    font-size: 15px;
     margin:0 2px;
 }
 h3 {
@@ -66,12 +65,22 @@ img {
         width: 152px;
         padding-top: 80px;
     }
+
+    h1 {
+        font-weight:bold;
+        font-size: 30px;
+    }
 }
 @media (min-width: 1024px) {
     
     .container{
     font-size: 30px;
     justify-content: space-between;
+    }
+    
+    h1 {
+        font-weight:bold;
+        font-size: 30px;
     }
 
 }
