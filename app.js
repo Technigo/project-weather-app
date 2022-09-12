@@ -4,7 +4,7 @@ const container = document.getElementById('container');
 const forecast = document.getElementById('forecast');
 const btnSearchCity = document.getElementById('btn-searchCity');
 const allInfo = document.querySelector('allInfo');
-const cityName = document.getElementById('city');
+let cityName = document.getElementById('city');
 const degree = document.getElementById('degree');
 const weather = document.getElementById('weather');
 const sunrise = document.getElementById('sunrise');
@@ -75,7 +75,7 @@ const appBackground = (weatherAppearance) => {
       "url('https://st.depositphotos.com/1013195/1395/i/450/depositphotos_13958901-stock-photo-rainy-day.jpg') ";
   } else if (weatherAppearance === 'Clear') {
     background.style.backgroundImage =
-      "url('https://wallpaperaccess.com/sunny-day')";
+      "url('https://wallpaperaccess.com/full/3265126.jpg')";
   } else if (weatherAppearance === 'Clouds') {
     background.style.backgroundImage =
       "url('https://images.unsplash.com/photo-1419833173245-f59e1b93f9ee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNvbHVkeSUyMHNreXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60')";
