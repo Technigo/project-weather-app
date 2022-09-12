@@ -65,7 +65,6 @@ body {
   margin-right: auto;
   width: auto;
   height: 100vh;
-  max-height: 100vh;
   justify-content: space-between;
   flex-direction: column;
   background-color: #928279; /*-apps color-*/
