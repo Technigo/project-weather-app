@@ -10,7 +10,6 @@ We found out that we needed to add more div's and classes to the HTML file and d
 
 If we had more time we would have liked to add more information, pictures and functions, like different temperatures for the hours during the day, wind, "feels like"-temperature etc, for the tablet and desktop views. 
 
-When uploading on Netlify the site unfortunatly didn't load correctly, a lot of the layout disapeered.
 
 ## View it live
 https://dancing-twilight-cc62c7.netlify.app/
