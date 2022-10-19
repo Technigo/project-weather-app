@@ -1,5 +1,5 @@
 # Weather App
-This a forecasting single-page application which shows 5 days of forecasting weather in different cities. 
+This a forecasting single-page application which shows 5 days of forecasting weather in different cities.In this app user can see the sunsets and sunrise and localtime. Background picture will change according to weather situation, Sunny, Cloudy, Riany and Snowing images.
 
 ## The problem
 1-	Git was the difficult part. 
