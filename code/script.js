@@ -92,7 +92,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
 					<div class="desktop-info"> Humidity ${item.main.humidity.toFixed(0)}%</div>
 					<div class="desktop-info"> Wind speed ${item.wind.speed} m/s</div>
 				</div>
-				`
+			`
 		})
 })
 // if there is an error, this will catch it
