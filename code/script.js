@@ -39,7 +39,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
 				</div>
 				<div class="info-sky" id="infoSky">
 					<p>${json.list[0].weather[0].description}</p>
-					<img class="weather-icon" id="weatherIcon" src="http://openweathermap.org/img/wn/${json.list[0].weather[0].icon}.png" alt="weather-icon">
+					<img class="weather-icon" id="weatherIcon" src="https://openweathermap.org/img/wn/${json.list[0].weather[0].icon}.png" alt="weather-icon">
 				</div>
 				<div class="info-city" id="infoCity">
 					${json.city.name}
