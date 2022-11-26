@@ -12,7 +12,6 @@ let weather;
 // Function that gets and displays all the weather info for a city:
 const getWeather = (city) => {
     // Clear the previous city's forecast:
-    forecast.innerHTML = '';
 
     // Get weather for the city that is requested by user:
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=a8803210b888f640e92f889b4be6e93f`)
@@ -21,9 +20,15 @@ const getWeather = (city) => {
     })
     .then((json) => {
 
+        if (json.message === 'city not found') {
+            window.alert('City not found, try again.')
+
+        } else {
+            forecast.innerHTML = '';
+        
         // API sunrise and sunset times are given as UNIX time: the number of seconds that have elapsed since 00:00:00 UTC on 1 January 1970
-        let sunrise = new Date(json.sys.sunrise * 1000); //multiply by 1000 to get milliseconds, as Unix timestamp in in seconds while JS Date() uses milliseconds
-        let sunset = new Date(json.sys.sunset * 1000);
+        let sunrise = new Date(json.sys.sunrise * 1000 + json.timezone * 1000); //multiply by 1000 to get milliseconds, as Unix timestamp in in seconds while JS Date() uses milliseconds
+        let sunset = new Date(json.sys.sunset * 1000 + json.timezone * 1000); // multiply and add time zone seconds, in order to get accurate times in different zones
         let currentTime;
 
         // Function to add a 0 before any single digit hour or minute
@@ -56,8 +61,8 @@ const getWeather = (city) => {
             <p>Sunrise ${formatTime(sunrise).hours}.${formatTime(sunrise).minutes}</p>  
             <p>Sunset ${formatTime(sunset).hours}.${formatTime(sunset).minutes}</p>
         `; 
-    })
- 
+    }
+})
     // Get forecast for the city that is requested by user:
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=a8803210b888f640e92f889b4be6e93f`)
     .then((response) => {
@@ -104,12 +109,6 @@ const getWeather = (city) => {
                 `;
                 }
                 
-                /*else if (weather === 'Snow') {
-                    document.body.style.backgroundColor = '#A3DEF7';
-                    document.body.style.color = '#164A68'; 
-                }
-                */ //this option could be added later on
-                
             else {
                 changeColor.classList = 'clouds';
                 Btn.classList = 'cloudsButton';
@@ -123,7 +122,10 @@ const getWeather = (city) => {
 }
 // Start program by displaying Stockholm weather, then listen for searches of other cities:
 getWeather('Stockholm');
-mainSearchbar.addEventListener('change', (event) => getWeather(event.target.value, mainSearchbar.value=''));
+mainSearchbar.addEventListener('change', (event) => {
+    
+    getWeather(event.target.value, mainSearchbar.value='')
+});
 
 
     
