@@ -17,8 +17,8 @@ Requirements
 
 ## The problem
 
-We worked to according to the instructions and used stack over flow and google to solve some of the problems we approached. 
-If there was more time, we would have made the code more efficiant and tighter. And solve the timezone problem.
+We worked according to the instructions and used stack over flow and google to solve some of the problems we approached. 
+If there was more time, we would have made the code more efficiant and solve the timezone problem.
 
 ## View it live
 

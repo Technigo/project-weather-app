@@ -29,11 +29,11 @@ body {
   text-align: left;
   font-size: 18px;
   margin: 10px 0;
-  padding: 6px 6px 6px 0px;
+  padding: 6px 6px 6px 0;
 }
 .main-weather p {
-  padding: 4px 4px 4px 0px;
-  margin: 0px;
+  padding: 4px 4px 4px 0;
+  margin: 0;
 }
 
 .select-city {
@@ -50,12 +50,12 @@ body {
   color: #7d9d9c;
 }
 
-/* Styling of forcast*/
-.weekly-forcast-wrapper {
+/* Styling of forecast*/
+.weekly-forecast-wrapper {
   display: flex;
   flex-direction: column;
-  margin: 30px 0px 0px 0px;
-  padding: 0px;
+  margin: 30px 0 0 0;
+  padding: 0;
   font-size: 18px;
 }
 
@@ -65,10 +65,10 @@ body {
   justify-content: space-between;
   padding: 3px;
   border-bottom: 2px dotted rgb(183, 178, 178);
-  margin: 0px;
+  margin: 0;
 }
 .forecast-row p {
-  margin: 4px 0px;
+  margin: 4px 0;
 }
 
 i {
@@ -89,7 +89,7 @@ i {
     align-items: center;
   }
 
-  .weekly-forcast-wrapper {
+  .weekly-forecast-wrapper {
     font-size: 28px;
   }
 }
