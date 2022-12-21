@@ -58,13 +58,13 @@ const Weather = data?.current?.weather[0]?.main;
   const unixTimestampSunrise = data?.current?.sunrise;
   let sunrise = new Date(unixTimestampSunrise * 1000); //Declare new variable to show only hh:mm
   let sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: "short" });
-  mainWeather.innerHTML += `<p>sunrise: ${sunriseTime}</p>`;
+  mainWeather.innerHTML += `<p>Sunrise: ${sunriseTime}</p>`;
 
   /*Sunset*/
   const unixTimestampSunset = data?.current?.sunset;
   let sunset = new Date(unixTimestampSunset * 1000);
   let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: "short" });
-  mainWeather.innerHTML += `<p>sunset: ${sunsetTime}</p>`;
+  mainWeather.innerHTML += `<p>Sunset: ${sunsetTime}</p>`;
 
 
   /*Change apperance depending on weather*/
