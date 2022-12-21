@@ -1,8 +1,25 @@
 /****DOM Elements****/
+const welcome = document.getElementById("welcome");
 const container = document.getElementById("todaySummary");
 const mainWeather = document.getElementById("mainWeather");
 const weeklyWeather = document.getElementById("weeklyForecastWrapper");
 const selectCity = document.getElementById("cities");
+
+const CLOUDY_BACKGROUND = "#e6e6e6"; //constants
+const CLOUDY_COLOR = "#5F6F94";
+const RAIN_BACKGROUND = "#ebeefd";
+const RAIN_COLOR = "#5F6F94";
+const CLEAR_BACKGROUND = "#f7cece";
+const CLEAR_COLOR = "#bd4882";
+const NEUTRAL_BACKGROUND = "#E4DCCF";
+const NEUTRAL_COLOR = "#507a79";
+
+const setTextColor = (color) => {
+  document.body.style.color = color;
+};
+const setBackgroundColor = (color) => {
+  document.body.style.backgroundColor = color;
+};
 
 /*API one call*/
 const url = {
@@ -16,21 +33,8 @@ const url = {
     "https://api.openweathermap.org/data/2.5/onecall?lat=51.51&lon=-0.12&units=metric&exclude=minutely,hourly,alerts&appid=204e05a6afd3596c993f849109aa03b8",
 };
 
-selectCity.addEventListener("change", () => {
-  let selectedCity = selectCity.value.toLowerCase();
-  console.log("selectedCity", selectedCity);
-  weeklyWeather.innerHTML = "";
-  mainWeather.innerHTML = "";
-  container.innerHTML = "";
-
-  fetchAPI(url[selectedCity], (data) => {
-    ShowCityWeather(data);
-    ShowCityForecast(weeklyForecast(data));
-  });
-});
-
 const fetchAPI = (url, callback) => {
-  WeatherForecastPromise = fetch(url)
+  fetch(url)
     .then((response) => {
       return response.json();
     })
@@ -45,47 +49,48 @@ const fetchAPI = (url, callback) => {
 /**** Display the weather at the top****/
 
 const ShowCityWeather = (data) => {
+const Weather = data?.current?.weather[0]?.main;
+
   /*Description*/
-  mainWeather.innerHTML = `<p>${data.current.weather[0].main} | ${
-    Math.round(data.current.temp) + "° C"
-  }</p>`;
+  mainWeather.innerHTML = `<p>${Weather} | ${Math.round(data?.current?.temp) + "° C"}</p>`;
 
   /*Sunrise*/
-  const unixTimestampSunrise = data.current.sunrise;
+  const unixTimestampSunrise = data?.current?.sunrise;
   let sunrise = new Date(unixTimestampSunrise * 1000); //Declare new variable to show only hh:mm
   let sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: "short" });
   mainWeather.innerHTML += `<p>sunrise: ${sunriseTime}</p>`;
 
   /*Sunset*/
-  const unixTimestampSunset = data.current.sunset;
+  const unixTimestampSunset = data?.current?.sunset;
   let sunset = new Date(unixTimestampSunset * 1000);
   let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: "short" });
   mainWeather.innerHTML += `<p>sunset: ${sunsetTime}</p>`;
 
+
   /*Change apperance depending on weather*/
-  if (data.current.weather[0].main === "Cloudy") {
-    document.body.style.backgroundColor = "#CFD2CF";
-    document.body.style.color = "#5F6F94";
+  if (Weather === "Clouds") {
+    setTextColor(CLOUDY_COLOR);
+    setBackgroundColor(CLOUDY_BACKGROUND);
     container.innerHTML += `<i class="fa-solid fa-cloud"></i>
-<h1>It looks rather cloudy in ${data.name} today &#x1F325;</h1>`;
+    <h1>It looks rather cloudy in ${selectCity.value} today.</h1>`;
     container.classList.add("cloudy");
-  } else if (data.current.weather[0].main === "Rain") {
-    document.body.style.backgroundColor = "#DAEAF1";
-    document.body.style.color = "#5F6F94";
+  } else if (Weather === "Rain") {
+    setTextColor(RAIN_COLOR);
+    setBackgroundColor(RAIN_BACKGROUND);
     container.innerHTML += `<i class="fa-solid fa-cloud-rain"></i>
-<h1>Get your umbrella, it looks rather wet in ${data.name} today &#9748;</h1>`;
+  <h1>Get your umbrella, it looks rather wet in ${selectCity.value} today.</h1>`;
     container.classList.add("rainy");
-  } else if (data.current.weather[0].main === "Clear") {
-    document.body.style.backgroundColor = "#FFB3B3";
-    document.body.style.color = "#B270A2";
+  } else if (Weather === "Clear") {
+    setTextColor(CLEAR_COLOR);
+    setBackgroundColor(CLEAR_BACKGROUND);
     container.innerHTML += `<i class="fa-solid fa-sun"></i>
-<h1>Get your sunnies on, ${data.name} is looking rather great today.</h1>`;
+  <h1>Get your sunnies on, ${selectCity.value} is looking rather great today.</h1>`;
     container.classList.add("sunny");
   } else {
-    document.body.style.backgroundColor = "#E4DCCF";
-    document.body.style.color = "#7D9D9C";
+    setTextColor(NEUTRAL_COLOR);
+    setBackgroundColor(NEUTRAL_BACKGROUND);
     container.innerHTML += `<i class="fa-solid fa-cloud"></i>
-<h1>You can chillout, it is neutral weather in ${data.name} today.</h1>`;
+  <h1>You can chillout, it is neutral weather in ${selectCity.value} today.</h1>`;
     container.classList.add("natural");
   }
 };
@@ -107,23 +112,26 @@ const weeklyForecast = (data) => {
 };
 
 const ShowCityForecast = (weeklyForecast) => {
-  const filteredForecast = weeklyForecast.forEach((dailyForcast) => {
-    let dayInWeek = `${dailyForcast.dayOfWeek}`;
-    let temp = `${dailyForcast.temp}`;
+  const filteredForecast = weeklyForecast.forEach((dailyforecast) => {
+    let dayInWeek = `${dailyforecast.dayOfWeek}`;
+    let temp = `${dailyforecast.temp}`;
     weeklyWeather.innerHTML += `
 <div class="forecast-row">
 <p> ${dayInWeek}:</p><p> ${temp}°C </p></div>`;
   });
 };
 
+/*** Display different information depending on selected city ****/
 
+selectCity.addEventListener("change", () => {
+  document.getElementById("welcome").style.display = "none";
+  const selectedCity = selectCity.value.toLowerCase();
+  weeklyWeather.innerHTML = "";
+  mainWeather.innerHTML = "";
+  container.innerHTML = "";
 
-// const defaultWeather = (selectedCity) => {
-//   // let selectedCity = "stockholm";
-//   fetchAPI(url[selectedCity], (data) => {
-//     console.log('dataDefault', data)
-//     ShowCityWeather(data);
-//     ShowCityForecast(weeklyForecast(data));
-//   });
-// }
-// defaultWeather("stockholm");
+  fetchAPI(url[selectedCity], (data) => {
+    ShowCityWeather(data);
+    ShowCityForecast(weeklyForecast(data));
+  });
+});
