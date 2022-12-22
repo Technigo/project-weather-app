@@ -4,12 +4,26 @@
   box-sizing: border-box;
 }
 
+:root {
+
+    --welcome-bg-color: #ffe9ae;
+    --select-bg-color: #f9f5eb;
+    --select-text-color: #7d9d9c;
+    --select-bg-color-hover:#eae3d2;
+    --select-text-color-hover: #7d9d9c;
+    --forecast-row-border: #3f3e3e71;
+    --welcome-header: #5680FF;
+    --sub-header: #5C6685;
+
+  }
+
+
 body {
-  background-color: #ffe9ae;
+  background-color: var(--welcome-bg-color);
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 200;
   font-size: 24px;
-  max-width: 40vw;
+  max-width: 50vw;
   margin: auto;
   padding-top: 2em;
 }
@@ -38,8 +52,8 @@ body {
 }
 
 .select-city {
-  background-color: #f9f5eb;
-  color: #7d9d9c;
+  background-color: var(--select-bg-color);
+  color: var(--select-text-color);
   padding: 6px 11px;
   font-size: 16px;
   border: none;
@@ -47,8 +61,8 @@ body {
 }
 
 .select-city:hover {
-  background-color: #eae3d2;
-  color: #7d9d9c;
+  background-color: var(--select-bg-color-hover);
+  color: var(--select-text-color-hover);
 }
 
 /* Styling of forecast*/
@@ -65,9 +79,10 @@ body {
   flex-direction: row;
   justify-content: space-between;
   padding: 3px;
-  border-bottom: 1px dotted #3f3e3e71;
+  border-bottom: 1px dotted var(--forecast-row-border);
   margin: 0;
 }
+
 .forecast-row p {
   margin: 4px 0;
 }
@@ -77,7 +92,24 @@ i {
   padding-top: 5px;
 }
 
-@media only screen and (min-width: 599px) {
+.welcome-header {
+  font-size: 40px;
+  color: var(--welcome-header);
+  margin: 0;
+  font-weight: 400;
+}
+
+.welcome {
+  margin-top: 80px;
+}
+
+.sub-header {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--sub-header);
+}
+
+@media (min-width: 1025px) {
   .today-summary h1 {
     font-size: 45px;
   }
@@ -94,21 +126,15 @@ i {
     font-size: 23px;
   }
 
-  .welcome {
-    margin-top: 140px;
-    /* justify-content: center; */
-  }
-
   .welcome-header {
     font-size: 80px;
-    color: rgb(86, 128, 255);
-    margin: 0;
-    font-weight: 400;
+  }
+
+  .welcome {
+    margin-top: 140px;
   }
 
   .sub-header {
     font-size: 30px;
-    font-weight: 400;
-    color: rgb(92, 102, 133);
   }
 }
