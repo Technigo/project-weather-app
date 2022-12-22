@@ -49,10 +49,12 @@ const fetchAPI = (url, callback) => {
 /**** Display the weather at the top****/
 
 const ShowCityWeather = (data) => {
-const Weather = data?.current?.weather[0]?.main;
+  const Weather = data?.current?.weather[0]?.main;
 
   /*Description*/
-  mainWeather.innerHTML = `<p>${Weather} | ${Math.round(data?.current?.temp) + "° C"}</p>`;
+  mainWeather.innerHTML = `<p>${Weather} | ${
+    Math.round(data?.current?.temp) + "° C"
+  }</p>`;
 
   /*Sunrise*/
   const unixTimestampSunrise = data?.current?.sunrise;
@@ -65,7 +67,6 @@ const Weather = data?.current?.weather[0]?.main;
   let sunset = new Date(unixTimestampSunset * 1000);
   let sunsetTime = sunset.toLocaleTimeString([], { timeStyle: "short" });
   mainWeather.innerHTML += `<p>Sunset: ${sunsetTime}</p>`;
-
 
   /*Change apperance depending on weather*/
   if (Weather === "Clouds") {

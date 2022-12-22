@@ -5,18 +5,15 @@
 }
 
 :root {
-
-    --welcome-bg-color: #ffe9ae;
-    --select-bg-color: #f9f5eb;
-    --select-text-color: #7d9d9c;
-    --select-bg-color-hover:#eae3d2;
-    --select-text-color-hover: #7d9d9c;
-    --forecast-row-border: #3f3e3e71;
-    --welcome-header: #5680FF;
-    --sub-header: #5C6685;
-
-  }
-
+  --welcome-bg-color: #ffe9ae;
+  --select-bg-color: #f9f5eb;
+  --select-text-color: #7d9d9c;
+  --select-bg-color-hover: #eae3d2;
+  --select-text-color-hover: #7d9d9c;
+  --forecast-row-border: #3f3e3e71;
+  --welcome-header: #5680ff;
+  --sub-header: #5c6685;
+}
 
 body {
   background-color: var(--welcome-bg-color);
