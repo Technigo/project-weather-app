@@ -36,19 +36,23 @@ const url = {
 const fetchAPI = (url, callback) => {
   fetch(url)
     .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
       return response.json();
     })
     .then((data) => {
       callback(data);
     })
     .catch((error) => {
+      callback(null, error)
       console.log("error", error);
     });
 };
 
 /**** Display the weather at the top****/
 
-const ShowCityWeather = (data) => {
+const ShowCityWeather = (data, error) => {
   const Weather = data?.current?.weather[0]?.main;
 
   /*Description*/
@@ -131,8 +135,8 @@ selectCity.addEventListener("change", () => {
   mainWeather.innerHTML = "";
   container.innerHTML = "";
 
-  fetchAPI(url[selectedCity], (data) => {
-    ShowCityWeather(data);
+  fetchAPI(url[selectedCity], (data, error) => {
+    ShowCityWeather(data, error);
     ShowCityForecast(weeklyForecast(data));
   });
 });

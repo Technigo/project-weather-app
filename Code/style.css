@@ -28,6 +28,7 @@ body {
 /* styling of first section: "main-weather" */
 .today-summary h1 {
   font-size: 25px;
+  font-weight: 400;
   padding: 0 60px 0 60px;
 }
 
