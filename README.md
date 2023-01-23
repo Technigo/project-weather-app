@@ -1,4 +1,5 @@
 # Weather App
+Week 3 Technigo
 
 The project was about creating a weather dashboard that tells today's weather and temperature and a 5-day forecast using a weather API.
 
