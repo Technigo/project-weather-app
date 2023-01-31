@@ -10,4 +10,4 @@ Describe how you approached to problem, and what tools and techniques you used t
 
 ## View it live
 
-https://harmonious-biscotti-4adfed.netlify.app/
+https://weatherapp.netlify.app/
