@@ -10,4 +10,4 @@ Describe how you approached to problem, and what tools and techniques you used t
 
 ## View it live
 
-https://weatherapp.netlify.app/
+https://weatherapp-mariawestling.netlify.app/
