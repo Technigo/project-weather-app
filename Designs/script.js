@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const temperaturesInForecast = document.getElementById('temperature-this-day')
     const sunrise = document.getElementById('sunrise')
     const sunset = document.getElementById('sunset')
-    const weatherInStockholm = document.getElementById('weatherinstockholm')
+    const weatherInStockholm = document.getElementById('weather-in-stockholm')
     const celsius = document.getElementById('celsius')
     const icon = document.getElementById('icon')
     const weatherStatus = document.getElementById('status')
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const weatherOfTheDay = data.weather[0].main
             console.log(weatherOfTheDay)
             weatherStatus.innerHTML += `${weatherOfTheDay} `
-            //    console.log(weatherStatus)//If it's cloudy, rainy or clear.
+            //If it's cloudy, rainy or clear.
             const degreesThisDay = data.main.temp.toFixed(0)
             celsius.innerHTML += ` | ${degreesThisDay}°` //How many degrees it is
             const sunriseNewDate = new Date(data.sys.sunrise * 1000); //These rows converts the sunrise and sunset to hours and minutes
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const sunsetNewDate = new Date(data.sys.sunset * 1000);
             const sunsetTime = sunsetNewDate.toLocaleTimeString([], { timeStyle: 'short' })
             sunset.innerHTML += `sunset ${sunsetTime}` //The time the sun goes down
-            //const weatherReport = (weatherOfTheDay) => { //The message that will show and change depending to weather
+
             if (weatherOfTheDay === 'Clear') {
                 icon.innerHTML += `<img src="icons/clear.svg"/>`
                 weatherInStockholm.innerHTML += `Get your sunnies on. ${data.name} is looking rather great today.`
@@ -47,9 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log('cloud')
             }
         })
-    //  weatherReport()
-
-    // });
 
     fetch(apiForecast)
         .then((response) => {

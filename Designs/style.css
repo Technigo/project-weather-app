@@ -1,11 +1,24 @@
 body {
     font-family: 'Montserrat', sans-serif;
-    color: #2A5510;
-    background-color: antiquewhite;
 }
 
-#weatherinstockholm {
+.outer-container {
+    background-color: antiquewhite;
+    color: #2A5510;
+    display: flex;
+    justify-content: center;
+}
+
+.inner-container {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.weather-in-stockholm {
     font-size: 45px;
+    font-family: 'Nanum Myeongjo', serif;
     font-weight: bolder;
     line-height: 150%;
 }
@@ -13,8 +26,10 @@ body {
 .suncontainer {
     width: auto;
     display: flex;
+    justify-content: space-between;
+    flex-direction: row;
     font-size: 15pt;
-    margin-left: 20px;
+    margin: 20px;
 }
 
 .stockholmcontainer {
@@ -27,6 +42,12 @@ body {
 .tempstat {
     display: flex;
     flex-direction: row;
+    font-weight: 500;
+}
+
+.sunhours {
+    font-size: 20px;
+    font-weight: 500;
 }
 
 #celsius {
@@ -34,10 +55,15 @@ body {
 }
 
 img {
-    width: 100px;
+    width: 150px;
     height: auto;
 }
 
+.five-day-forecast {
+    font-size: 35px;
+    font-weight: 700;
+    align-self: center;
+}
 
 .day-in-forecast {
     display: flex;
@@ -45,35 +71,35 @@ img {
     justify-content: space-between;
     font-size: 30px;
     margin: 30px;
-    padding: 20px;
-}
-
-.forecast {
-    height: auto;
-    font-size: 30px;
-    padding: 10px;
-    margin: 10px;
-}
-
-.day-in-forecast {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 30px;
-    padding: 20px;
+    padding: 0px 30px;
+    border: #2A5510 1px solid;
+    border-radius: 7px;
 }
 
 @media (min-width: 667px) and (max-width: 1024px) {
-    body {
-        background-color: lightgreen;
+    .outer-container {
+        background-color: cadetblue;
+        color: black;
+    }
+
+    .inner-container {
+        width: 75%;
     }
 
     .day-in-forecast {
         font-size: 40px;
     }
 
-    #weatherinstockholm {
+    .weather-in-stockholm {
         font-size: 55px;
+    }
+
+    .tempstat {
+        font-size: 26px;
+    }
+
+    .sunhours {
+        font-size: 26px;
     }
 
     .suncontainer {
@@ -81,23 +107,39 @@ img {
     }
 
     img {
-        width: 150px;
+        width: 200px;
         height: auto;
     }
 
+    .day-in-forecast {
+        border: black 2px solid;
+    }
 }
 
 @media (min-width: 1025px) {
-    body {
-        background-color: darkgrey;
+    .outer-container {
+        background-color: rosybrown;
+        color: brown;
+    }
+
+    .inner-container {
+        width: 50%;
     }
 
     .day-in-forecast {
         font-size: 50px;
     }
 
-    #weatherinstockholm {
+    #weather-in-stockholm {
         font-size: 65px;
+    }
+
+    .tempstat {
+        font-size: 34px;
+    }
+
+    .sunhours {
+        font-size: 34px;
     }
 
     .suncontainer {
@@ -105,8 +147,11 @@ img {
     }
 
     img {
-        width: 200px;
+        width: 250px;
         height: auto;
     }
 
+    .day-in-forecast {
+        border: brown 3px solid;
+    }
 }

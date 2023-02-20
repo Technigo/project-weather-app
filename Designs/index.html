@@ -8,35 +8,40 @@
     <title>Weather app</title>
     <link rel="stylesheet" href="style.css" />
     </link>
-    <link href="http://fonts.cdnfonts.com/css/montserrat" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Nanum+Myeongjo&display=swap');
+    </style>
 </head>
 
 <body>
-    <section class="sunflex">
-        <section class="suncontainer">
-            <section class="sunhours">
-                <section class="tempstat">
+    <section class="outer-container">
+        <section class="inner-container">
+            <div class="suncontainer">
+                <div class="tempstat">
                     <p id="status"></p>
                     <p id="celsius"></p>
-                </section>
-                <p id="sunrise"></p>
-                <p id="sunset"></p>
-            </section>
+                </div>
+                <div class="sunhours">
+                    <p id="sunrise"></p>
+                    <p id="sunset"></p>
+                </div>
+            </div>
+
+            <div class="stockholmcontainer">
+                <div class="icon" id="icon"></div>
+                <h4 class="weather-in-stockholm" id="weather-in-stockholm">
+                    </p>
+            </div>
+            <!-- <h3 class="five-day-forecast">Five day forecast</p> -->
+            <div class="day-in-forecast" id="day-in-forecast">
+                <p id="weekday"></p>
+                <p id="temperature-this-day"></p>
+            </div>
+
+
+            <script src="script.js"></script>
         </section>
     </section>
-
-    <section class="stockholmcontainer">
-        <div class="icon" id="icon"></div>
-        <p id="weatherinstockholm"></p>
-    </section>
-
-    <section class="day-in-forecast" id="day-in-forecast">
-        <p id="weekday"></p>
-        <p id="temperature-this-day"></p>
-    </section>
-
-
-    <script src="script.js"></script>
 </body>
 
 </html>
