@@ -9,7 +9,7 @@ const sunrise = document.getElementById('sunrise')
 const sunset = document.getElementById('sunset')
 
 
-
+// This is the API key for OpenWeatherMap.org - Stockholm (YK)
 fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=bcc357d81ce23673e3a8e92322d840f2')
     .then((response) => {
         return response.json()
