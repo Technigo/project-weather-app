@@ -1,6 +1,6 @@
-const weatherContainer = document.getElementById('weatherContainer')
-const topContainer = document.getElementById('topContainer')
-const weatherForecast = document.getElementById('weatherForecast')
+//Removed weatherContainer, didnt need it (EGA)
+//Removed topContainer, didnt need it (EGA)
+//Removed weatherForecast, didnt need it, the thing belov is what we need to show on app (EGA)
 const todaysDate = document.getElementById('todaysDate')
 const city = document.getElementById('city')
 const temperature = document.getElementById('temperature')
@@ -20,10 +20,15 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     })
     //.then = Step 3 "I'm giving you the present so now you can take a look what's inside it" (YK)
     .then((json) => {
-        weatherContainer.innerHTML = `<h1>This is the weather in ${json.name}</h1>`
-        console.log(json)
-     json.stations.forEach((stations) => {
-        weatherContainer.innerHTML += `<p>${stations.Stockholm}</p>`
-        weatherContainer.innerHTML += `<p>${stations.main}</p>`
-        })
+        city.innerHTML = `<h1>This is the weather in ${json.name}</h1>`
+        console.log(json) //Works this far, object loading on to console log. (EGA)
+
+        //Added the temperature with some help from another students code (EGA)
+        temperature.innerHTML = `<h3>The temperature is ${
+            Math.round(json.main.temp * 10) / 10
+          }°C in ${json.name}</h3>`;
+
+        condition.innerHTML = `<h2>The weather is ${json.weather[0].description}</h2>`;
+       
     })
+    
