@@ -1,0 +1,30 @@
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+header {
+    border: 2px solid red;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.about-weather {
+    border: 2px solid red;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    padding: 5px;
+}
+
+.weather-prog {
+    border: 2px solid red;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    padding: 5px;
+}
