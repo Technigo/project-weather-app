@@ -11,16 +11,32 @@
     rel="stylesheet"
   />
 </head>
-<body>
+<body class="body">
+  <container class="weather-box">
+  <h1>Weather</h1>
     <section id="mainContainer" class="main-container">
-        <!--Header-->
-        <div id="header" class="header"></div>
+         <!--Header-->
+        <div id="header" class="header">Today, it's sunny in Stockholm</div>
         <div id="baseContainer" class="base-container">
-          <!--Today's prompt-->
-          <div id="todaysPrompt" class="todays-prompt"></div>
-          <!--Forecast-->
-          <div id="forecast" class="forecast"></div>
-        </div>   
+        <!--Today's prompt-->
+        <div id="todaysPrompt" class="todays-prompt"></div>
+        <!--Forecast-->
+        <div id="forecast" class="forecast">
+
+           <div class="days">
+           <h4>Today</h4>
+           <h4>Tomorrow</h4>
+           <h4>Day 3</h4>
+           <h4>Day 4</h4>
+        </div>
+        <div class="temperature">
+
+
+        </div>
+        </div>
+        </div> 
+      
+  </container>  
 <script src="./script.js"></script>    
 </body>
 </html>
