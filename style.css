@@ -1,0 +1,30 @@
+body{
+    margin: 10px 0 0 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+justify-content: space-between;
+
+}
+
+/*Used for general styling of all divs.
+*/
+.styleAll{
+    border: 5px black solid;
+    grid-column: 1/4;
+}
+
+.weatherToday {
+    background-color: aqua;
+    
+}
+
+.dailyText{
+    background-color: pink;
+ 
+}
+
+.fiveDays{
+    background-color: tomato;
+  
+}
