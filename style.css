@@ -1,0 +1,20 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ca4747;
+    background-image: url("./images/weather.jpg");
+}
+
+.card {
+    background: #000000d0;
+    color: white;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 30px;
+    width: 100%;
+    max-width: 420px;
+  }
