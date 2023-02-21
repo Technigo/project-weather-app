@@ -96,7 +96,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Reykjavik&appid=fa2755c
 
 
 
-fetch('https://api.openweathermap.org/data/2.5/forecast?q=Reykjavik&appid=fa2755c779ce094fc80f2fa365eea704&units=metric')
+fetch('https://api.openweathermap.org/data/2.5/forecast?lat=64.1355&lon=-21.8954&appid=fa2755c779ce094fc80f2fa365eea704&units=metric')
 .then((response) => {
     return response.json()
 })
