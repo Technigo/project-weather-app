@@ -28,3 +28,8 @@ header {
     margin: 10px;
     padding: 5px;
 }
+
+/* Responsive design - tablet and desktop */
+@media (min-width: 667px) {
+
+  }
