@@ -7,9 +7,9 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     .then((json) => {
         console.log(json)
         container.innerHTML = `
-        <h1> Check the weather in ${json.name} </h1>
-        <h2> The visibility is ${json.visibility}meters</h2>
-        <h3> The temperature is ${json.main.temp}°C</h3>
-        <h3> What type of weather it is? ${json.weather[0].description}</h3>
+        <h1>${json.name} </h1>
+        <h2> Math.round(${json.main.temp})°C</h2>
+        <h3> visibility:${json.visibility}meters</h3>
+        <h4> ${json.weather[0].description}</h4>
         `
     })
