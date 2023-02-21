@@ -1,4 +1,4 @@
-const container = document.getElementById('city')
+const container = document.getElementById('weather')
 
 fetch('http://api.openweathermap.org/data/2.5/weather?q=Gothenburg,Sweden&units=metric&APPID=06edb4af2e0738583f1bc67674449140')
     .then ((response) => {
@@ -6,9 +6,10 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Gothenburg,Sweden&units=
     })
     .then((json) => {
         console.log(json)
-        container.innerHTML = `<h1>The weather in ${json.name} is ${json.weather.description} today.</h1>`
+        container.innerHTML = `<h1>The weather in ${json.name} is ${json.timezone} today.</h1>`
+        /*Change from timezone*/
 
         /*json.weather.array.forEach((city) => {
-            container.innerHTML += `<p>${city.name} is in ${city.country}</p>`
+            container.innerHTML += `<p>${} is in ${}</p>`
         });*/
     })
