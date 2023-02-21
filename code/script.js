@@ -56,10 +56,22 @@ const getCurrentWeatherData = () => {
         "div",
         "sunrise",
         "sunrise",
-        data.sys.sunrise,
+        new Date(data.sys.sunrise * 1000).toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
         sunriseSunset
       );
-      createElement("div", "sunset", "sunset", data.sys.sunset, sunriseSunset);
+      createElement(
+        "div",
+        "sunset",
+        "sunset",
+        new Date(data.sys.sunset * 1000).toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
+        sunriseSunset
+      );
     });
 };
 
@@ -75,24 +87,43 @@ const getForecastWeatherData = () => {
     })
     .then((data) => {
       console.log(data);
-      data.list.forEach((element) => {
+      const filteredList = data.list.filter((element) => {
+        return (
+          new Date(element["dt_txt"]).getHours() === 0 &&
+          new Date(element["dt_txt"]).getDay() !== new Date(Date.now()).getDay()
+        );
+      });
+      console.log(filteredList);
+
+      filteredList.forEach((element) => {
         createElement(
           "div",
           "day",
-          `day${data.list.indexOf(element)}`,
+          `day${filteredList.indexOf(element)}`,
           "",
           forecast
         );
 
         let objectElement = document.getElementById(
-          `day${data.list.indexOf(element)}`
+          `day${filteredList.indexOf(element)}`
         );
         //day of the week
-        createElement("p", "", "", element["dt_txt"], objectElement);
-        // img
-        createImage("", "assets/test.png", "test image", objectElement);
+        const date = new Date(element["dt_txt"]);
+        const getDayName = new Intl.DateTimeFormat("en-US", {
+          weekday: "short",
+        }).format(date);
+
+        createElement("p", "", "", getDayName, objectElement),
+          // img
+          createImage("", "assets/test.png", "test image", objectElement);
         //temp
-        createElement("p", "", "", element.main.temp, objectElement);
+        createElement(
+          "p",
+          "",
+          "",
+          `${element.main["temp_max"]} °C / ${element.main["temp_min"]} °C`,
+          objectElement
+        );
       });
     });
 };
