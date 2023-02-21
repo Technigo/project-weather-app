@@ -56,12 +56,30 @@ fetch(apiLisbon)
 .then( dataLis => {
     console.log(dataLis.weather[0].main);
 
-    if (dataLis.weather[0].main === 'clouds'){
+    if (dataLis.weather[0].main === 'Clouds'){
 
 dailyTextMsg.innerHTML=   `<div id="cloud" class="cloudy">
 <img src="/Designs/Design-2/icons/noun_Cloud_1188486.svg" alt="">
     <p>oh oooo Its cloudy in ${dataLis.name} right now</p>
 </div>`
+}
+else if (dataLis.weather[0].main === 'Clear'){
+    `
+    <div id="sunGlasses" class="sunglasses">
+      <img src="/Designs/Design-2/icons/noun_Sunglasses_2055147.svg" alt="">
+        
+      <p>it's sunny on ${dataLis.name} right now</p>
+    </div>
+    `
+
+}
+else  {
+    `
+<div id="umbrella" class="umbrellas">
+  <img src="/Designs/Design-2/icons/noun_Umbrella_2030530.svg" alt="">
+  <p>Raindropps on ${dataLis.name} right now</p>
+</div>
+`
 }
 
 
@@ -94,7 +112,6 @@ const weatherMessages = [
 
 
 console.log( weatherMessages[0])*/ 
-
 
 
 
