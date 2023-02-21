@@ -24,9 +24,12 @@ const fetchWeatherData = () => {
     })
     .then((json) => {
       console.log(json);
+      //Header
       conditionTemp.innerHTML = `
         ${json.main.temp}
       `;
+      //Message
+      
     });
   // catch((error) => console.error(error));
 };
