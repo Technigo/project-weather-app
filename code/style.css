@@ -1,0 +1,41 @@
+/* Global css variables used for colors */
+:root {
+  --primary: tomato;
+  --secondary: #63cdc9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+.todays-weather {
+  /* width: 50%; */
+  padding: 40px 20px;
+}
+.weather-body {
+  background-color: #f7e9b9;
+  height: 100vh;
+  width: 100%;
+}
+
+h1 {
+  color: #2a5510;
+  padding: 20px;
+}
+
+/* Media qurries  */
+/* --Tablet-- */
+@media (min-width: 667px) and (max-width: 1024px) {
+}
+
+/* --Desktop-- */
+@media (min-width: 1025px) {
+}
