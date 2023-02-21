@@ -1,4 +1,34 @@
+:root {
+    --light-color: #FBF8F3;
+    --dark-color: #232323;
+  }
+
 body {
-    background-color: bisque;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.weather-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.time {
+    display: flex;
+}
+
+.forecast {
+    display: flex;
+    justify-content: space-between;
+    gap: 80px;
+}
+
+.weekdays {
+    text-align: left;
+}
+
+.week-temp {
+    align-items: right;
 }
