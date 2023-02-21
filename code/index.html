@@ -6,42 +6,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Weather app</title>
 </head>
 
 <body>
-    <main>
-        <div id="big-icon"></div>
-        <section class="current-weather" id="current-weather">
-            <!-- This is only for helping styling: -->
-            <div class="temperature" id="temperature"></div>
-            <div class="city" id="city"></div>
-            <div class="weather-type" id="weather-type"></div>
-            <div class="sunrise-sunset" id="sunrise-sunset">
-                <div class="sunrise" id="sunrise"></div>
-                <div class="sunset" id="sunset"></div>
-            </div>
-            <!--  -->
-        </section>
+    <main id="hero">
+        <section class="container">
+            <div class="text-container">
+        
+                    <div id="big-icon"></div>
+                    <section class="current-weather" id="current-weather">
+                        
+                        <!-- This is only for helping styling: -->
+                        <div class="temperature" id="temperature"></div>
+                        <div class="city" id="city"></div>
+                        <div class="weather-type" id="weather-type"></div>
+                        <div class="sunrise-sunset" id="sunrise-sunset">
+                            <div class="sunrise" id="sunrise"></div>
+                            <div class="sunset" id="sunset"></div>
+                        </div>
+                        <!--  -->
+                    </section>
 
-        <section class="forecast" id="forecast">
-            <!-- Help for styling: -->
-            <div class="day" id="day1">
-                <p>Mon</p>
-                <img src="" alt="weather-icon" />
-                <p id="degree1">12 degrees</p>
+                    <section class="forecast" id="forecast">
+                        <!-- Help for styling: -->
+                        <div class="day" id="day1">
+                            <p>Mon</p>
+                            <img src="./images/Group38.png" alt="weather-icon" />
+                            <p id="degree1">12 degrees</p>
+                        </div>
+                        <div class="day" id="day2">
+                            <p>Tue</p>
+                            <img src="./images/Group16.png" alt="weather-icon" />
+                            <p id="degree2">12 degrees</p>
+                        </div>
+                        <div class="day" id="day3"></div>
+                        <div class="day" id="day4"></div>
+                        <div class="day" id="day5"></div>
+                        <!--  -->
+                    </section>
             </div>
-            <div class="day" id="day2">
-                <p>Tue</p>
-                <img src="" alt="weather-icon" />
-                <p id="degree2">12 degrees</p>
-            </div>
-            <div class="day" id="day3"></div>
-            <div class="day" id="day4"></div>
-            <div class="day" id="day5"></div>
-            <!--  -->
+            <footer>
+                <p>Made by Nina & Nora Technigo class</p>
+            </footer>
         </section>
-
+       
 
     </main>
     <script src="script.js"></script>
