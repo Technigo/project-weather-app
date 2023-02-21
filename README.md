@@ -1,8 +1,8 @@
 # Weather App
 
-Replace this readme with your own information about your project.
+API url:
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+https://api.openweathermap.org/data/2.5/weather?q=Malmo,Sweden&units=metric&APPID=7916e2ff30e82c8f4b79258c3235d9c2
 
 ## The problem
 
