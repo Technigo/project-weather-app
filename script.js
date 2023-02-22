@@ -23,13 +23,32 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
     const sunriseDateAndTime = new Date(data.sys.sunrise * 1000); //*1000 makes it correct date and time, but don't know why
     let hoursrise = sunriseDateAndTime.getHours();
     let minutesrise = sunriseDateAndTime.getMinutes(); 
-    console.log(sunriseDateAndTime);
-    console.log(hoursrise);
-    console.log(minutesrise);
+    // console.log(sunriseDateAndTime);
+    // console.log(hoursrise);
+    // console.log(minutesrise);
+
+    const sunsetDateAndTime = new Date(data.sys.sunset * 1000);
+    let hoursset = sunsetDateAndTime.getHours();
+    let minutesset = sunsetDateAndTime.getMinutes();
+    // console.log(sunsetDateAndTime);
+    // console.log(hoursset);
+    // console.log(minutesset);
 
     weatherWrapper.innerHTML +=
     `<p><span id='weather-description' class = 'weather-description'>${mainWeather}</span> | <span id='main-temp' class='main-temp'>${roundedTemp}°C</span>
-    <p><span id='sunrise' class = 'sunrise'>Sunrise:</span><p>
+    <p><span id='sunrise' class = 'sunrise'>Sunrise: </span><p>
     <p><span id='sunset' class = 'sunset'>Sunset:</span><p>
      `
+
+     let sunrise = document.getElementById('sunrise')
+     let sunset = document.getElementById('sunset')
+
+     sunrise.innerHTML +=
+        (hoursrise < 10 ? "0" + hoursrise + ":" : hoursrise + ":") +  
+        (minutesrise < 10 ? "0" + minutesrise : minutesrise); 
+
+    sunset.innerHTML +=
+        (hoursset < 10 ? "0" + hoursset + ":" : hoursset + ":") +
+        (minutesset <10 ? "0" + minutesset : minutesset);
+
 })
