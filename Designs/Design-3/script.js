@@ -12,12 +12,20 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
 .then((json) => {
     //this variable contains the temperature and with the math.round the decimals where removed
     let temp = json.main.temp.toFixed(1)
-    
+
+    //Variables for getting the first word in the description capitalized
+    const description = json.weather[0].description
+    const firstLetter = description.charAt(0)
+    const firstLetterCap = firstLetter.toUpperCase()
+    const remainingLetters = description.slice(1)
+    const capitalizeWord = firstLetterCap + remainingLetters //This variable is displaying the weather description
+
+    //--------------DISPLAY---------------
     //displays the city name
     cityName.innerHTML = `${json.name}`
     //displays the current temperature using the temp variable 
     currentTemp.innerHTML = `${temp}°`
-    weatherDesc.innerHTML = `${json.weather[0].description}`
+    weatherDesc.innerHTML = `${capitalizeWord}`
 
 
 
