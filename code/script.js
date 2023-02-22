@@ -63,15 +63,15 @@ const getCurrentWeatherData = (latitude, longitude) => {
       console.log(data);
 
       createElement(
-        "div",
+        "h1",
         "temperature",
         "temperature",
-        data.main.temp,
+        `${data.main.temp} °C`,
         currentWeather
       );
       createElement("div", "city", "city", data.name, currentWeather);
       createElement(
-        "div",
+        "h2",
         "weather-type",
         "weather-type",
         data.weather[0].description,
@@ -146,15 +146,16 @@ const getForecastWeatherData = (latitude, longitude) => {
 
         createElement("p", "", "", getDayName, objectElement),
           // img
-          createImage("", "assets/test.png", "test image", objectElement);
+          createImage(
+            "forecast-img",
+            `http://openweathermap.org/img/wn/${element.weather[0].icon}@2x.png`,
+            element.weather[0].main,
+            objectElement
+          );
         //temp
-        createElement(
-          "p",
-          "",
-          "",
-          `${element.main["temp_max"]} °C / ${element.main["temp_min"]} °C`,
-          objectElement
-        );
+        const averageTemp =
+          (element.main["temp_max"] + element.main["temp_min"]) / 2;
+        createElement("p", "", "", `${averageTemp} °C`, objectElement);
       });
     });
 };
