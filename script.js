@@ -5,6 +5,7 @@ const weatherIcon = document.getElementById("weather-icon");
 const weatherText = document.getElementById("weather-text");
 const weekdays = document.getElementById("weekdays");
 const temperature = document.getElementById("temperature");
+const weatherForecast = document.getElementById("weather-forecast");
 
 fetch(
   "http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=775b6d69e24fcb088a070bee66d05057"
@@ -41,3 +42,26 @@ fetch(
     <p>Sunset: ${sunsetTime}</p>
     `;
   });
+
+
+  fetch ("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=775b6d69e24fcb088a070bee66d05057")
+  .then((response) => {
+    console.log(response);
+    return response.json();
+  })
+  .then((data) => {
+    const filteredForecast = data.list.filter(item => item.dt_txt.includes('12:00'))
+    filteredForecast.forEach((value) => { 
+      const forecastDate = new Date(value.dt * 1000); 
+      console.log(value.dt)
+      
+      weatherForecast.innerHTML += ` 
+      <div class="weather-forecast">
+        <p>${forecastDate.toLocaleString('en-US', {weekdays: 'long'})}</p>
+        <p>${value.main.temp.toFixed()}°C</p>
+        </div>
+    `
+    })
+  })
+
+  

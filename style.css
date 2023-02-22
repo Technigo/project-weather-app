@@ -1,0 +1,28 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  border: 3px solid red;
+  padding: 10px;
+}
+
+.main-section {
+  display: flex;
+  justify-content: center;
+}
+
+.weather-forecast {
+  display: flex;
+  flex-direction: column;
+  border: 3px solid orange;
+  padding: 5px;
+  width: auto;
+}
+
+.weekdays {
+  background: lightblue;
+}
+
+.temperature {
+  border: 2px solid blue;
+  background: lightgreen;
+}
