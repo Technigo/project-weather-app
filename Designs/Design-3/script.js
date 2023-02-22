@@ -2,6 +2,7 @@
 const cityName = document.getElementById('city-name')
 const currentTemp = document.getElementById('current-temp')
 const weatherDesc =document.getElementById('weather-description')
+const weekDays = document.getElementById('weekdays')
 
 
 
@@ -27,13 +28,29 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     currentTemp.innerHTML = `${temp}°`
     weatherDesc.innerHTML = `${capitalizeWord}`
 
+    //hej hej
 
 
     //This is some code to get the first letter in description be Uppercase, we'll try to use it later
     /*const str = 'flexiple';
     const str2 = str.charAt(0).toUpperCase() + str.slice(1);
     console.log(str2);*/
+})
 
+fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=26c922535e2ba939d3ff0d8af53d90a2')
+.then((response) => {
+    return response.json()
+})
+.then((json) => {
     console.log(json)
+    const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00')) 
+    console.log(filteredForecast)
+    filteredForecast.forEach((day) => {
+        const date = new Date(day.dt * 1000)
+        let dayName = date.toLocaleDateString("en-US", {weekday: "short"})
+        weekDays.innerHTML += `<p>${dayName}</p>`
+        })
+        //Solution was found here: https://stackoverflowteams.com/c/technigo/questions/786 
+
 })
 
