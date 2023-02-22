@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css" />
     <title>Annikas and Pekis weather-app</title>
     
@@ -11,20 +14,20 @@
 <body>
 <container class="weather-box" id="weather-box">
         <p class ="city-name" id="city-name">Stockholm23</p>
-        <img src="./Weather-Icons/Weather-Icons-IOS7-Style-PIXEDEN/SVG/cloud-moon.svg"/>
+        <img class = "big-weather-symbol" src="./Weather-Icons/Weather-Icons-IOS7-Style-PIXEDEN/SVG/cloud-moon.svg"/>
         <h1 class = "current-temp" id="current-temp">+ 18 °</h1>
         <h4 class ="weather-description" id ="weather-description">Mostly Cloudy</h4>
         <container class="sun-and-time" id="sun-and-time">    
             <container class="sun" id="sun">
-                <img src="./Weather-Icons/Weather-Icons-IOS7-Style-PIXEDEN/SVG/sunrise.svg"/>
-                <img src="./Weather-Icons/Weather-Icons-IOS7-Style-PIXEDEN/SVG/sunset.svg"/>
+                <img class="sunrise-symbol" src="./Weather-Icons/Weather-Icons-IOS7-Style-PIXEDEN/SVG/sunrise.svg"/>
+                <img class="sunset-symbol" src="./Weather-Icons/Weather-Icons-IOS7-Style-PIXEDEN/SVG/sunset.svg"/>
             </container>
             <container class="time" id="time">
                 <p>06:00</p>
                 <p>23:15</p>
             </container>
             <container class="wind" id="wind">
-                <img src="./Weather-Icons/Weather-Icons-IOS7-Style-PIXEDEN/SVG/wind.svg"/>
+                <img class="wind-symbol"src="./Weather-Icons/Weather-Icons-IOS7-Style-PIXEDEN/SVG/wind.svg"/>
             </container>
             <container class="wind-speed" id="wind-speed">
                 <p>4 m/s</p>
@@ -33,17 +36,17 @@
 
     <container class = "forecast" id="forecast">
         <container class = "weekdays" id="weekdays">
-            <h6>Tuesday</h6>
-            <h6>Wednesday</h6>
-            <h6>Thursday</h6>
-            <h6>Friday</h6>
+            <h6>Tue</h6>
+            <h6>Wed</h6>
+            <h6>Thu</h6>
+            <h6>Fri</h6>
         </container>
 
         <container class = "week-temp" id="week-temp">
-            <h6>+ 18 ° | + 15 °</h6>
-            <h6>+ 21 ° | + 10 °</h6>
-            <h6>+ 11 ° | - 3 °</h6>
-            <h6>+ 20 ° | + 10 °</h6>
+            <h6>+18°</h6>
+            <h6>+21°</h6>
+            <h6>+11°</h6>
+            <h6>+20°</h6>
         </container>
 
     </container>

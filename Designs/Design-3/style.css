@@ -4,7 +4,108 @@
   }
 
 body {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background: var(--light-color);
+    font-family: 'Sora', sans-serif;
+}
+
+.city-name {
+  font-weight: 800;
+  font-size: 64px;
+  color: var(--dark-color);
+  text-align: center;
+}
+
+.big-weather-symbol {
+width: 400px;
+filter: invert(10%) sepia(0%) saturate(446%) hue-rotate(138deg) brightness(98%) contrast(91%);
+
+}
+
+.current-temp {
+    font-weight: 800;
+    font-size: 160px;
+    color: var(--dark-color);
+    text-align: center;
+
+}
+
+.weather-description {
+    font-weight: 800;
+    font-size: 64px;
+    color: var(--dark-color);
+    text-align: center;
+}
+
+.sun {
+display: flex;
+gap: 60px;
+}
+.sunrise-symbol {
+width: 140px;
+filter: invert(10%) sepia(0%) saturate(446%) hue-rotate(138deg) brightness(98%) contrast(91%);
+}
+
+.sunset-symbol {
+width: 140px;
+margin-bottom: -6px; 
+filter: invert(10%) sepia(0%) saturate(446%) hue-rotate(138deg) brightness(98%) contrast(91%);
+}
+
+.time {
+  
+    display: flex;
+    gap: 60px;
+    font-weight: 600;
+    font-size: 48px;
+    color: var(--dark-color);
+    text-align: center;   
+}
+
+.sun-and-time {
+    display: flex;
+    flex-direction: column;
+
+    
+
+}
+
+
+.wind {
+display: grid;
+justify-content: center;
+filter: invert(10%) sepia(0%) saturate(446%) hue-rotate(138deg) brightness(98%) contrast(91%);
+}
+
+.wind-symbol {
+    width: 140px;
+
+    }
+
+
+    .wind-speed {
+
+
+    font-weight: 600;
+    font-size: 48px;
+    color: var(--dark-color);
+    text-align: center;
+
+    
+    }
+
+.weekdays {
+    font-weight: 600;
+    font-size: 48px;
+    color: var(--dark-color);
+    text-align: left;
+}
+
+.week-temp {
+    align-items: right;
+    font-weight: 600;
+    font-size: 48px;
+    color: var(--dark-color);
+    text-align: left;
 }
 
 .weather-box {
@@ -22,13 +123,8 @@ body {
 .forecast {
     display: flex;
     justify-content: space-between;
-    gap: 80px;
+    gap: 180px;
 }
 
-.weekdays {
-    text-align: left;
-}
 
-.week-temp {
-    align-items: right;
-}
+
