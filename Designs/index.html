@@ -15,27 +15,37 @@
 </head>
 <body>
 
-    <header>
-        <div class="weather-header" id="weatherHeader">
+    <form id="main-form">
+        <input id="movie-search" title="movie-search" type="text" />
+        <button type="submit">Search</button>
+    </form>
 
+    <header>
+      
     </header>
 
     <main>
 
-        <form id="main-form">
-            <input id="movie-search" title="movie-search" type="text" />
-            <button type="submit">Search</button>
-        </form>
-
-        <div class="weather-display" id="weatherDisplay">
-            <h1> Bucaramanga is sunny today</h1>
-        </div>
-    
-    
-        <div class="week-forecast" id="weekForecast">
-            <table id="forecastTable" class="forecast-table">
-            </table>
-        </div> 
+        <table>
+            <tr>
+              <td>City name</td>
+              <td id="name">?</td>
+            </tr>
+      
+            <tr>
+              <td>Temperature max</td>
+              <td id="tempmax">?</td>
+            </tr>
+            <tr>
+              <td>Temperature min</td>
+              <td id="tempmin">?</td>
+            </tr>
+            <tr>
+              <td>Description</td>
+              <td id="description">?</td>
+            </tr>
+            
+          </table>
 
     </main>
 
@@ -54,26 +64,4 @@
 
     
 
-
-<!--// daniel class
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movies</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <form id="main-form">
-        <input id="movie-search" title="movie-search" type="text" />
-        <button type="submit">Search</button>
-    </form>
-    <div class="movie-body"></div>
-    <script src="./app.js"></script>
-</body>
-</html>
--->
 

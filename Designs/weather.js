@@ -1,64 +1,85 @@
 
+const searchBar = document.getElementById ('searchBar')
+const name = document.getElementById("name");
+const tempmaxEl = document.getElementById("tempmax");
+const tempminEl = document.getElementById("tempmin");
+const descriptionEl = document.getElementById("description");
 
+const WeatherData = () => {
+  fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=93834bb23b2a9e80836d0a5415cc4a72")
+    .then((response) => {
+      return response.json();
+    })
+    .then((json) => {
+      console.log(json);
+      name.innerHTML = json.name;
+      cityData(json.main.temp_max, json.main.temp_min, json.weather[0].description);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
+WeatherData();
+
+const cityData = (tempmax, tempmin, description) => {
+  tempmaxEl.innerHTML = tempmax;
+  tempminEl.innerHTML = tempmin;
+  descriptionEl.innerHTML = description;
+};
+
+
+/*
+
+// previous version
 
 const searchBar = document.getElementById ('searchBar')
-const weatherDisplay  = document.getElementById ('weatherDisplay')
+const container = document.getElementById ('weatherDisplay')
 const weekForecast = document.getElementById ('weekForecast')
+const weatherHeader = document.getElementById ('weatherHeader')
 
 
 
 // url with our api id / stockhoml as city in the default
 
-https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=93834bb23b2a9e80836d0a5415cc4a72
+//https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=93834bb23b2a9e80836d0a5415cc4a72
 
 //url where we can choose position 
 //https://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid=93834bb23b2a9e80836d0a5415cc4a72
 
 // global variables 
-let WEATHER_API_URL
+//let WEATHER_API_URL
 //calls current weather for our chosen position
-let FORECAST_API_URL
+//let FORECAST_API_URL
 //calls weather forecast for our chosen position
-let city = 'Bucaramanga'
+//let city = 'Stockholm'
 
 
-
-// 1.
-
-// 2. present some data on your web app:
-
-    // the city name
-
-    // the temperature (rounded to 1 decimal place)
-
-    // what type of weather it is (the "description" in the JSON)
-
-// 3. Feature: Sunrise and sunset
+//const fetchWeatherData = () => {
+fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=93834bb23b2a9e80836d0a5415cc4a72")
+  .then((present) => {
+    console.log(present);
+    return present.json();
+  })
+  .then ((json) => {
+   container.innerHTML = `<h4>${json.name} </h4>`
 
 
-
-
-
-
-// 4. Feature: Weather forecast of the next days
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+   json.
+    container.innerHTML += `<h4> ${weather.temp}</h4>`
+ 
+    //this is to create an H1 saying how many people there are in space on our page. The inside of what's gonna be in that container will be put on the inside of the strung after =.
+    //We console log it to make sure it works. 
+    //console.log(json)
+    //json.people.forEach((person) => { //this is to print the names inside of the people array
+        //We now want to add on this information to the container and to do that we do this: 
+        //We don't use = since it will overwrite the contents of every personm so we'll only see the next person. We use +=
+       // container.innerHTML += `<p> ${person.name} is on the ${person.craft} </p>`
+    }) 
+  });
+};
+  
+  fetchWeatherData();
 
 
 
