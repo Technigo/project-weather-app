@@ -16,11 +16,28 @@ fetch(
   .then((json) => {
     console.log(json);
     console.log(json.main.temp);
+    console.log(json.sys.sunrise);
+    console.log(json.sys.sunset);
     const currentTemp = json.main.temp;
     const roundedUpTemp = Math.round(currentTemp);
     const description = json.weather[0].description;
     console.log(description);
-    weatherHeader.innerHTML = `<p>City name: ${json.name}</p>
+    const sunriseNewDate = new Date(json.sys.sunrise * 1000);
+    const sunriseTime = sunriseNewDate.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    });
+    const sunsetNewDate = new Date(json.sys.sunset * 1000);
+    const sunsetTime = sunsetNewDate.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    });
+    weatherHeader.innerHTML = `<p>City: ${json.name}</p>
     <p>Temperature: ${roundedUpTemp}</p>
-    <p>Weather: ${description}</p>`;
+    <p>Weather: ${description}</p>
+    <p>Sunrise: ${sunriseTime}</p>
+    <p>Sunset: ${sunsetTime}</p>
+    `;
   });
