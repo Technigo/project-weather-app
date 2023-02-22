@@ -3,7 +3,9 @@ body{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
-justify-content: space-between;
+
+font-family: 'Montserrat', sans-serif;
+background-color: var(--primary-color);
 
 }
 
@@ -14,14 +16,17 @@ justify-content: space-between;
     grid-column: 1/4;
 }
 
-.weatherToday {
+.weatherToday { /*tighta till göra mindre space mellan texterna*/
     background-color: aqua;
-    
+    font-size: 20px;
+    color: grey;
 }
 
-.dailyText{
+.dailyText{ /* få den ännu fetare*/
     background-color: pink;
- 
+    font-size: 25px;
+    font-weight: bolder;
+    color: black;
 }
 
 .fiveDays{
