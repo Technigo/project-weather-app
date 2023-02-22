@@ -1,0 +1,21 @@
+body {
+    background-color:lightblue;
+    padding: 15px;
+}
+
+h1 {
+    font-size: 25px;
+    color: rgb(61, 61, 103);
+}
+
+p {
+    font-size: 17px;
+    color: rgb(61, 61, 103);
+}
+
+hr {
+    border: none;
+    border-top: 1px dotted rgb(61, 61, 103);
+    width: 100%;
+}
+
