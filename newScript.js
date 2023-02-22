@@ -109,17 +109,17 @@ bodyColor.style.setProperty('--primary-color', '#B5DCE9')}
 fetch(fiveDayURL)
 .then(response => response.json())
 .then(fiveDayData => {
-  ///includes  data everyday at 12.00 hours for five days 
+  ///includes  data from everyday at 12.00 hours 
 
-
+//Returns seven days
 const filteredData = fiveDayData.list.filter(data => data.dt_txt.includes('12:00:00'));
-
+//This part slices first five days
 const sliceData= filteredData.slice(0, 5);
 
 console.log(sliceData);
 
 
-
+//function to show the data in html
 sliceData.forEach(data => {
 const day = new Date (data.dt_txt).toLocaleString('en-US', {weekday: 'short'});
 const temp = Math.round(data.main.temp);
