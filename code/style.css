@@ -18,11 +18,12 @@ current.weather {
     height: 220px;
 
 }
-forecast. {
+forecast {
     display: block;
     padding-top: 7%;
 
 }
+
 footer {
     display: flex;
     justify-items: center;
