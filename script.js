@@ -1,4 +1,3 @@
-
 const city = document.getElementById("city");
 const weatherToday = document.getElementById("weatherToday");
 const temperature = document.getElementById("temperature");
@@ -58,8 +57,9 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
       });
 
       const dayTemperature = item.main.temp.toFixed(1);
+      console.log(date, dayName, dayTemperature);
 
-      forecastFiveDayAndTemp.innerHTML= `<h5>${dayName}: ${dayTemperature} °C</h5>`
+      forecastFiveDayAndTemp.innerHTML+= `<h5>${dayName}: ${dayTemperature} &deg;C</h5>`
     })
 })
 }
