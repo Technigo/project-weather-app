@@ -1,0 +1,10 @@
+.weather-forecast {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.forecast-category {
+    display: flex;
+    flex-direction: column;
+    width:125px;
+}
