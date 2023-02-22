@@ -1,6 +1,40 @@
 const currentWeather = document.getElementById("current-weather");
 const forecast = document.getElementById("forecast");
 
+//Geolocation
+const options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0,
+};
+
+function success(pos) {
+  const crd = pos.coords;
+  let latitude = crd.latitude;
+  let longitude = crd.longitude;
+  console.log("Your current position is:");
+  console.log(`Latitude : ${crd.latitude}`);
+  console.log(`Longitude: ${crd.longitude}`);
+  console.log(`More or less ${crd.accuracy} meters.`);
+  console.log(latitude, longitude);
+  return (
+    getCurrentWeatherData(latitude, longitude),
+    getForecastWeatherData(latitude, longitude)
+  );
+}
+
+function error(err) {
+  console.warn(`ERROR(${err.code}): ${err.message}`);
+  let latitude = 58.3293;
+  let longitude = 18.0686;
+  return (
+    getCurrentWeatherData(latitude, longitude),
+    getForecastWeatherData(latitude, longitude)
+  );
+}
+
+navigator.geolocation.getCurrentPosition(success, error, options);
+
 // element creators
 const createElement = (tag, className, id, textContent, appendTo) => {
   const newElement = document.createElement(tag);
@@ -19,10 +53,9 @@ const createImage = (className, src, alt, appendTo) => {
 };
 
 // current weather details
-const getCurrentWeatherData = () => {
-  fetch(
-    `http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=f60c361b4571fb70c85f29bbd856c13f`
-  )
+const getCurrentWeatherData = (latitude, longitude) => {
+  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=f60c361b4571fb70c85f29bbd856c13f`;
+  fetch(url)
     .then((response) => {
       return response.json();
     })
@@ -56,32 +89,30 @@ const getCurrentWeatherData = () => {
         "div",
         "sunrise",
         "sunrise",
-        new Date(data.sys.sunrise * 1000).toLocaleTimeString([], {
+        `sunrise: ${new Date(data.sys.sunrise * 1000).toLocaleTimeString([], {
           hour: "2-digit",
           minute: "2-digit",
-        }),
+        })}`,
         sunriseSunset
       );
       createElement(
         "div",
         "sunset",
         "sunset",
-        new Date(data.sys.sunset * 1000).toLocaleTimeString([], {
+        `sunset: ${new Date(data.sys.sunset * 1000).toLocaleTimeString([], {
           hour: "2-digit",
           minute: "2-digit",
-        }),
+        })}`,
         sunriseSunset
       );
     });
 };
-
 getCurrentWeatherData();
 
 //forecast
-const getForecastWeatherData = () => {
-  fetch(
-    `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&appid=f60c361b4571fb70c85f29bbd856c13f`
-  )
+const getForecastWeatherData = (latitude, longitude) => {
+  const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=f60c361b4571fb70c85f29bbd856c13f`;
+  fetch(url)
     .then((response) => {
       return response.json();
     })
@@ -127,5 +158,4 @@ const getForecastWeatherData = () => {
       });
     });
 };
-
 getForecastWeatherData();
