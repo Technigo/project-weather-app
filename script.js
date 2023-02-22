@@ -26,9 +26,11 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     const sunsetFormat = new Date(sunsetTimeStamp)
     const sunset = sunsetFormat.getHours() + ":" + sunsetFormat.getMinutes();
     
+    console.log(json)
+
     forcastRightNow.innerHTML = 
     `<h6>
-    ${json.main.humidity} 
+    ${json.weather[0].description} |
     ${(Math.round(json.main.temp))}°C<br>
     sunrise ${sunrise}<br>
     sunset ${sunset}
@@ -37,8 +39,8 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
 // And here is the casualWeatherBox-part
         casualWeatherBox.innerHTML = 
         `<h1>
-        In Milan there is ${json.weather[0].description} right now. 
-        Windspeed is ${json.wind.speed} m/s and the temperature is ${(Math.round(json.main.temp))}°C.
+        In ${json.name} there is ${json.weather[0].description} right now. 
+        Wind is ${(Math.round(json.wind.speed))} m/s and the temperature is ${(Math.round(json.main.temp))}°C.
         </h1>`
 
     })
@@ -62,11 +64,16 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
 // Then we start using the material we need from the weekly API and gets it with the ${materialweneed}
 // Here is the weekdays
 .then((json) => {
+
+// This part makes the json show the temperature from 12:00 each day
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
     console.log(filteredForecast)
-    const today = filteredForecast[0].dt_txt
-    console.log(today)
-
+    filteredForecast.forEach((fiveDayForecast) => {
+        weekdays.innerHTML += `
+        <h3>${fiveDayForecast.dt_txt} ${(Math.round(fiveDayForecast.main.temp))} <hr></h3`
+    })
+})
+/*
     weekdays.innerHTML =
     `<h6>${filteredForecast}
     ${(Math.round(json.main.temp))}°C<br>
@@ -80,6 +87,6 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
         Windspeed is ${json.wind.speed} m/s and the temperature is ${(Math.round(json.main.temp))}°C.
         </h1>`
 */
-    })
+
 
 // And here we start with fetching the weekly forecast

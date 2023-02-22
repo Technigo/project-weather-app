@@ -1,13 +1,14 @@
 body {
     background-color:lightblue;
-    padding: 15px;
+    padding: 20px;
 }
 
 /* THIS IS THE BIG TEXT ABOUT THE WEATHER */
 
 h1 {
-    font-size: 15px;
+    font-size: 25px;
     color: rgb(61, 61, 103);
+    margin-bottom: 50px;
 }
 
 p {
@@ -23,3 +24,14 @@ hr {
     width: 100%;
 }
 
+h6 {
+    font-size: 17px;
+    color: rgb(61, 61, 103);
+    margin-top: 10px;
+}
+
+.weekdays {
+    font-size: 17px;
+    color: rgb(61, 61, 103);
+    margin: 10px 0px 50px 0px;
+}
