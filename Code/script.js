@@ -25,9 +25,20 @@
  /* Feature: Sunrise and sunset
  Show the time for sunrise and sunset in a readable time format (Example: 13:00 or 1 PM).
  You will have to format the date from milliseconds to a readable format. */
-test 
+//  const sunInfo = () => {
+  fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=8d66acab5dd718723a370e1b64f22f8c")
+  .then((response) => {
+    return response.json();
+  })
 
-
+  .then((json) => {
+    console.log(json);
+    header.innerHTML = ` 
+     <p>sunrise ${new Date(json.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit'})} </p>
+     <p>sunset ${new Date(json.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit'})} </p>
+     `
+  })
+// }
 
 
 
