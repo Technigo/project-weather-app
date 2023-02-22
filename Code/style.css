@@ -3,30 +3,49 @@ body {
     flex-direction: column;
     margin: 0;
     padding: 0;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', serif;
+    height: 100vh;
+    width: 100%;
 }
 
 header {
-    border: 2px solid red;
+    height: 25vh;
+    width: 100%;
+}
+
+.today-summary {
+    font-size: 18px;
+    line-height: 0.4;
+    padding: 20px 0px 0px 30px;
+}
+
+main {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    padding: 5px;
+    height: 75vh;
+    width: 100%;
 }
 
 .about-weather {
-    border: 2px solid red;
-    display: flex;
-    align-items: center;
-    margin: 10px;
+    height: 40vh;
+    width: 85%;
+    font-size: 24px;
+}
+
+.weather-forecast {
+    height: 30vh;
+    width: 85%;
     padding: 5px;
 }
 
-.weather-prog {
-    border: 2px solid red;
+li {
     display: flex;
-    align-items: center;
-    margin: 10px;
-    padding: 5px;
+    justify-content: space-between;
+    border-bottom: dashed 1px;
+    list-style: none;
+    padding: 4px 4px;
+    font-size: 22px;
 }
 
 /* Responsive design - tablet and desktop */
