@@ -56,16 +56,15 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
         })
 //Solution to above was found here: https://stackoverflowteams.com/c/technigo/questions/786 
 
-
 //forEach-loop for getting the temperatures of each day. Here the array variable is a let because we want to modify it later
     let forecastTemp = filteredForecast.map((temp) => {
-        return temp.main.temp.toFixed(1)
+        return temp.main.temp.toFixed(0)
         //the above returns the temperature at 12:00 but with only one decimal
     })
     forecastTemp = forecastTemp.join('° ')
     //the above removes the commas for the forecastTemp-array and adds the Celsius sign. not for the last one though, this is added in the innerHTML below
 
-    weekTemp.innerHTML += `${forecastTemp}°`
+    weekTemp.innerHTML += `<p>${forecastTemp}°</p>`
     //This displays the temperatures, adding the Celsius sign to the last one.
         
 })
