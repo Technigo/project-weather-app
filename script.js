@@ -4,6 +4,7 @@ const tempToday = document.getElementById("temp-today");
 const sunUp = document.getElementById("sunrise");
 const sunDown = document.getElementById("sunset");
 const windGust = document.getElementById("wind");
+const feelsLike = document.getElementById("feelslike");
 
 fetch(
   "https://api.openweathermap.org/data/2.5/weather?q=Malmo,Sweden&units=metric&APPID=7916e2ff30e82c8f4b79258c3235d9c2"
@@ -14,12 +15,16 @@ fetch(
   .then((json) => {
     // Update weather in Malmo from API
     weather.innerHTML = `<h1>Today's weather in ${json.name}</h1>`;
+    //jag gör en const här för dagens väder, så att det finns något att referera till längre
+    //ner med bakgrundsbilder beroende på dagens väder
 
     descriptionToday.innerHTML = `<h2>The weather is ${json.weather[0].description}</h2>`;
 
     tempToday.innerHTML = `<h3>The temperature is ${
       Math.round(json.main.temp * 10) / 10
     }°C in ${json.name}</h3>`;
+
+    feelsLike.innerHTML = `<h3>Feels like ${Math.round(json.main.feels_like * 10) / 10}°C</h3>`
 
     const sunrise = json.sys.sunrise;
     const sunriseTimepoint = new Date(sunrise * 1000);
@@ -42,8 +47,10 @@ fetch(
     console.log(json.sys.sunset);
 
     const wind = json.wind.gust;
-    windGust.innerHTML = `<h3>The wind blows gusts up to ${wind} meters per second`;
+    windGust.innerHTML = `<h3>The wind blows gusts up to ${wind} m/s`;
   });
+
+  
 
 //ändra bakgrund beroende på väder, som JL?
 

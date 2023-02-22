@@ -1,18 +1,29 @@
 body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  /*justify-content: center;
+  /*
+  align-items: center;*/
+  font-family: "Roboto", sans-serif;
+  font-weight: light;
 }
 
-h2 {
+/*h2 {
   text-align: center;
+}*/
+
+.top-info {
+  display: flex;
+  flex-direction: column;
+  background-color: aquamarine;
+  background-image: url(./Designs/Design-1/assets/blue-sky-cloud.jpg)
 }
 
 .weather-five-days {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   background: #c7c7c7;
   text-align: center;
   margin: inherit;
