@@ -8,7 +8,7 @@ const options = {
   maximumAge: 0,
 };
 
-function success(pos) {
+const success = (pos) => {
   const crd = pos.coords;
   let latitude = crd.latitude;
   let longitude = crd.longitude;
@@ -21,17 +21,17 @@ function success(pos) {
     getCurrentWeatherData(latitude, longitude),
     getForecastWeatherData(latitude, longitude)
   );
-}
+};
 
-function error(err) {
+const error = (err) => {
   console.warn(`ERROR(${err.code}): ${err.message}`);
-  let latitude = 58.3293;
-  let longitude = 18.0686;
+  let latitude = 59.334591;
+  let longitude = 18.06324;
   return (
     getCurrentWeatherData(latitude, longitude),
     getForecastWeatherData(latitude, longitude)
   );
-}
+};
 
 navigator.geolocation.getCurrentPosition(success, error, options);
 
