@@ -1,7 +1,17 @@
-.header-weather-container {
-  display: flex;
-  flex-direction: column;
+* {
+  box-sizing: border-box;
 }
 
-p {
+body {
+  margin: 0;
+  padding: 0;
+  background: #f1b4c6;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  background-color: antiquewhite;
+  margin: 5px;
+  border: 2px solid black;
 }
