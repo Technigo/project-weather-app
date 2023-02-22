@@ -20,14 +20,25 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Milan,IT&units=metric&AP
 
 // Then we start using the material we need from the API and gets it with the ${materialweneed}
 // First of is the forcastRightNow-part
-    .then((json) => {
-        forcastRightNow.innerHTML = 
-        `<h6>
-        ${json.main.humidity} 
-        ${json.main.temp}°C<br>
-        sunrise ${json.sys.sunrise}<br>
-        sunset ${json.sys.sunset}
-        </h6>`
+.then((json) => {
+    console.log(json)
+
+    const sunriseTimeStamp = (json.sys.sunrise * 1000)
+    const sunriseFormat = new Date(sunriseTimeStamp)
+    const sunrise = sunriseFormat.getHours() + ":" + sunriseFormat.getMinutes();
+
+    const sunsetTimeStamp = (json.sys.sunset * 1000)
+    const sunsetFormat = new Date(sunsetTimeStamp)
+    const sunset = sunsetFormat.getHours() + ":" + sunsetFormat.getMinutes();
+
+    
+    forcastRightNow.innerHTML = 
+    `<h6>
+    ${json.main.humidity} 
+    ${(Math.round(json.main.temp))}°C<br>
+    sunrise ${sunrise}<br>
+    sunset ${sunset}
+    </h6>`
 
 // And here is the casualWeatherBox-part
         casualWeatherBox.innerHTML = 
