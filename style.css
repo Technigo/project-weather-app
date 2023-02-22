@@ -1,3 +1,19 @@
-p{
-    color: blue;
+colors:
+#F47775
+#F4F7F8
+#164A68
+#A3DEF7
+#2A5510
+#F7E9B9 
+
+
+p {
+    font-family: 'Montserrat', sans-serif;
+}
+
+body .clouds {
+    background-color: #F4F7F8;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: #F47775;
 }

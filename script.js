@@ -16,15 +16,20 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
     
     if (weatherDescription.main === 'Clear') {
         weatherWrapper.innerHTML = `
+        <div class="clear">
         <img src="./img/sunglasses.svg" alt="sun-glasses icon"></img>
         <p> Get your sunnies on. ${data.name} is looking rather great today.
-        </p>`;
+        </p>
+        </div>`;
+       
     } 
     else if (weatherDescription.main === 'Clouds') {
         weatherWrapper.innerHTML = `
+        <div class="clouds">
         <img src="./img/cloud.svg" alt="cloud icon"></img>
         <p> Light a fire and get cosy. ${data.name} looks grey today.
-        </p>`;
+        </p>
+        </div>`;
     } 
     else if (weatherDescription.main === 'Rain' | "Drizzle") {
         weatherWrapper.innerHTML = `
