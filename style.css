@@ -1,91 +1,94 @@
 body {
- 
- background-image: url('https://source.unsplash.com/1600x900/?landscape');
-   
+ background-image: url('https://source.unsplash.com/1600x900/?landscape');   
 }
+
 .weather-app {
 font-family: 'Roboto', sans-serif;
 background: #dadadad0;
 color: white;
-padding: 2em;
+padding: 1em;
 border-radius: 30px;
 max-width: 400px;
-max-width: 420px;
 margin-right: auto;
 margin-left: auto;
+/*max-width: 420px;*/
+
   }
   
-  h1 {
+h1 {
 font-size: 100px;
 margin: 0;
 display: flex;
 justify-content: center;
   }
   
-  h2 {
+h2 {
 margin-bottom: 0;
-margin-top: 100px;
+margin-top: 60px;
 display: flex;
 justify-content: center;
   }
   
-  h3 {  
+h3 {  
 margin-top: 10px;
 margin-bottom: 40px;
 display: flex;
 justify-content: center;
   }
   
-  h4 {
+h4 {
 margin: 5px;
 display: flex;
 justify-content: center;
   }
   
-  h5 {
+h5 {
 font-size: 20px;
 display: flex;
 justify-content: left;
 margin-left: 50px;
+
   }
   
   .forecast {
     margin-bottom: 90px;
   }
   
- /* 
+ 
   @media (min-width:668px) and (max-width: 1023px) {
   
   body {
-    background-image: url(/weatherBackgroundTablet.jpg);
+    background-image: url('https://source.unsplash.com/1600x900/?landscape');
     background-size: cover;
   }
   
   .weather-app {
-    max-width: 700px;
-    background: linear-gradient(to right, #e8cbc0, #636fa4);
+    max-width: 400px;
+    min-width: 300px;
+    background: #dadadad0;
   }
-  }
+  /*linear-gradient(to right, #e8cbc0, #636fa4);*/
+  
   
   @media (min-width:1024px) {
   
     body {
-    background-image: url(/weatherBackgroundDesktop.jpg);
+    background-image: url('https://source.unsplash.com/1600x900/?landscape');
     background-size: cover;
     font-size: x-large;
   }
   
   .weather-app {
-    max-width: 1400px;
+    max-width: 400px;
     height: 500px;
-    background: none;
+    background: #dadadad0;
     border: none;
   }
   
-  #forecastDayAndTemp {
+  #forecastFiveDayAndTemp {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-right: 50px;
   }
-  }
+}
