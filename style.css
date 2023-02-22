@@ -1,0 +1,9 @@
+.top-section {
+    color: white;
+}
+
+.sunrise-sunset {
+    display: flex;
+    justify-content: space-evenly;
+}
+

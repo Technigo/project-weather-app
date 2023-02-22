@@ -22,12 +22,12 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Reykjavik&appid=fa2755c
     const sunsetData = new Date(json.sys.sunset * 1000)
     console.log(sunsetData)
     //Here I used the option argument to customize the result of the toLocaleTimeString method
-    const sunriseTime = sunriseData.toLocaleTimeString('en-SE', {
+    const sunriseTime = sunriseData.toLocaleString('sv-SE', {
         hour: '2-digit',
         minute: '2-digit'
     })
     console.log(sunriseTime)
-    const sunsetTime = sunsetData.toLocaleTimeString('en-SE', {
+    const sunsetTime = sunsetData.toLocaleString('sv-SE', {
         hour: '2-digit',
         minute: '2-digit'
     })
@@ -38,7 +38,25 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Reykjavik&appid=fa2755c
     sunriseSunset.innerHTML += `<h3>sunset</h3>`;
     sunriseSunset.innerHTML += `<h3>${sunsetTime}</h3>`;
     console.log(json.sys)
+    console.log(currentTimeCorrectFormat)
+    //Show different background depending on what time the sunrise/sunset is
+    if (sunriseTime <= currentTimeCorrectFormat && currentTimeCorrectFormat < sunsetTime) {
+        topSection.style.backgroundImage = "url(Designs/Design-1/assets/day-small.jpg)"
+    } else {
+        topSection.style.backgroundImage = "url(Designs/Design-1/assets/night-small.jpg)"
+    }
     })
+
+    //Make the current time be in same format as sunrise/sunset time to be able to compare
+    const currentTime = new Date();
+    const currentTimeCorrectFormat = currentTime.toLocaleTimeString('sv-SE', {
+        hour: '2-digit',
+        minute: '2-digit'
+    })
+    
+
+
+
 
     
 
