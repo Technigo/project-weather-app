@@ -35,3 +35,16 @@ h6 {
     color: rgb(61, 61, 103);
     margin: 10px 0px 50px 0px;
 }
+
+.left {
+    width: 50%;
+    float: left;
+    margin-bottom: 5px;
+}
+
+.right {
+    width: 50%;
+    float: right;
+    text-align: right;
+    margin-bottom: 5px;
+}

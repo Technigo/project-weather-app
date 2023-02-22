@@ -26,14 +26,15 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     const sunsetFormat = new Date(sunsetTimeStamp)
     const sunset = sunsetFormat.getHours() + ":" + sunsetFormat.getMinutes();
     
+    
     console.log(json)
 
     forcastRightNow.innerHTML = 
     `<h6>
-    ${json.weather[0].description} |
+    ${json.weather[0].main} |
     ${(Math.round(json.main.temp))}°C<br>
-    sunrise ${sunrise}<br>
-    sunset ${sunset}
+    Sunrise ${sunrise}<br>
+    Sunset ${sunset}
     </h6>`
 
 // And here is the casualWeatherBox-part
@@ -70,7 +71,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
     console.log(filteredForecast)
     filteredForecast.forEach((fiveDayForecast) => {
         weekdays.innerHTML += `
-        <h3>${fiveDayForecast.dt_txt} ${(Math.round(fiveDayForecast.main.temp))} <hr></h3`
+        <h3><span class='left'>${fiveDayForecast.dt_txt}</span><span class='right'>${(Math.round(fiveDayForecast.main.temp))}°C</span><hr></h3>`
     })
 })
 /*
