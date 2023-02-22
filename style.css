@@ -1,0 +1,22 @@
+
+
+body{
+    display: flex;
+    background-color: darkgray;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.weatherWindow{
+
+    background-color: white;
+    width: 100%;
+    max-width: 420px;
+    border-radius: 30px;
+    padding: 20px;
+}
+.cloudReport, .sunrise, .sunset{
+    font-size: 18px;
+    color: #C85C8E
+}
