@@ -13,7 +13,7 @@ const fetchWeather = () => {
       return response.json();
     })
     .then((data) => {
-      // console.log(data);
+      console.log(data);
       let weatherDescription = data.weather[0].description;
       let cityName = data.name;
       let currentTemperature = data.main.temp;
