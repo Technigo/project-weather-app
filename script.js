@@ -53,14 +53,13 @@ fetch(
     const filteredForecast = data.list.filter(item => item.dt_txt.includes('12:00'))
     filteredForecast.forEach((value) => { 
       const forecastDate = new Date(value.dt * 1000); 
-      console.log(value.dt)
+      console.log(value.dt);
       
       weekdays.innerHTML += ` 
-      <div class="weekdays">
         <p>${forecastDate.toLocaleString('en-US', {weekday: 'long'})}</p>
-        <p>${value.main.temp.toFixed()}°C</p>
-        </div>
     `
+    temperature.innerHTML += `
+    <p>${value.main.temp.toFixed()}°C</p>`;
     })
   })
 

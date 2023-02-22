@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   border: 3px solid red;
-  padding: 10px;
+  padding: 40px;
 }
 
 .main-section {
@@ -12,17 +12,23 @@
 
 .weather-forecast {
   display: flex;
-  flex-direction: column;
   border: 3px solid orange;
   padding: 5px;
+  justify-content: space-between;
   width: auto;
 }
 
 .weekdays {
   background: lightblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .temperature {
+  display: flex;
   border: 2px solid blue;
   background: lightgreen;
+  align-items: center;
+  flex-direction: column;
 }
