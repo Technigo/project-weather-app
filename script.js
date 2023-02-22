@@ -7,21 +7,16 @@ const weekdays = document.getElementById('weekdays')
 /////////////////////// CALLING THE API /////////////////////////////
 
 // Calling the Url.
-fetch('http://api.openweathermap.org/data/2.5/weather?q=Milan,IT&units=metric&APPID=efd0845f5916e3c871d91fde63e9b949')
+fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=efd0845f5916e3c871d91fde63e9b949')
 
 // Saying we want the response in json
     .then((response) => {
         return response.json()
     })
 
-// Converting the unix timestamps to date objects
-    //const sunrise = new Date(json.sys.sunrise * 1000);
-    //const sunset = new Date(json.sys.sunset * 1000);
-
 // Then we start using the material we need from the API and gets it with the ${materialweneed}
 // First of is the forcastRightNow-part
 .then((json) => {
-    console.log(json)
 
     const sunriseTimeStamp = (json.sys.sunrise * 1000)
     const sunriseFormat = new Date(sunriseTimeStamp)
@@ -30,7 +25,6 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Milan,IT&units=metric&AP
     const sunsetTimeStamp = (json.sys.sunset * 1000)
     const sunsetFormat = new Date(sunsetTimeStamp)
     const sunset = sunsetFormat.getHours() + ":" + sunsetFormat.getMinutes();
-
     
     forcastRightNow.innerHTML = 
     `<h6>
@@ -47,6 +41,45 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Milan,IT&units=metric&AP
         Windspeed is ${json.wind.speed} m/s and the temperature is ${(Math.round(json.main.temp))}°C.
         </h1>`
 
+    })
+
+///////////////////////// WEEKDAYS //////////////////////////////////////////
+
+// fetch the data from the API. Then if you console.log the json
+// you'll see that we only care about the array called list.
+
+
+// filteredForecast is now an array with only the data from 12:00 each day.
+    // And here we start with fetching the weekly forecast
+
+fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=cc0aa000ffd02ae8117bc95ff6ed2d28')
+
+// Saying we want the weekly response in json
+    .then((response) => {
+        return response.json()
+    })
+
+// Then we start using the material we need from the weekly API and gets it with the ${materialweneed}
+// Here is the weekdays
+.then((json) => {
+    const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
+    console.log(filteredForecast)
+    const today = filteredForecast[0].dt_txt
+    console.log(today)
+
+    weekdays.innerHTML =
+    `<h6>${filteredForecast}
+    ${(Math.round(json.main.temp))}°C<br>
+    </h6>`
+
+/*
+// And here is the casualWeatherBox-part
+        casualWeatherBox.innerHTML = 
+        `<h1>
+        In Milan there is ${json.weather[0].description} right now. 
+        Windspeed is ${json.wind.speed} m/s and the temperature is ${(Math.round(json.main.temp))}°C.
+        </h1>`
+*/
     })
 
 // And here we start with fetching the weekly forecast
