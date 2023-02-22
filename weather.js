@@ -7,9 +7,17 @@ const sunriseTime = document.getElementById("sunriseTime");
 const sunsetTime = document.getElementById("sunsetTime");
 const weatherHeader = document.getElementById("weather-header")
 
+// url with our api id / stockholm as default city
+
+const API_WEATHER = `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=93834bb23b2a9e80836d0a5415cc4a72`
+
+//url where we can choose position 
+const API_FORECAST = `https://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid=93834bb23b2a9e80836d0a5415cc4a72`
+
+
 
 const WeatherData = () => {
-  fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=93834bb23b2a9e80836d0a5415cc4a72")
+  fetch(API_WEATHER)
     .then((response) => {
       return response.json();
     })
@@ -52,12 +60,12 @@ const weatherHeader = document.getElementById ('weatherHeader')
 
 
 
-// url with our api id / stockhoml as city in the default
+// url with our api id / stockholm as default city
 
-//https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=93834bb23b2a9e80836d0a5415cc4a72
+//const API_WEATHER= `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=93834bb23b2a9e80836d0a5415cc4a72`
 
 //url where we can choose position 
-//https://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid=93834bb23b2a9e80836d0a5415cc4a72
+//const API_FORECAST = `https://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid=93834bb23b2a9e80836d0a5415cc4a72`
 
 // global variables 
 //let WEATHER_API_URL
