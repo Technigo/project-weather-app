@@ -1,13 +1,44 @@
 /*Sunny weather -
 Font colour: #2A5510
-Background color: #F7E9B9   
 
 Rainy weather -
 Font color: #164A68
-Background color: #A3DEF7
 
 Cloudy weather -
-Font color: #F47775 
-Background color: #F4F7F8 */
+Font color: #F47775*/
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+/*body*/
 
 
+/***Background color***/
+
+/*Sunny background color #F7E9B9*/
+
+/*Rainy background color #A3DEF7*/
+
+/*Cloudy background color #F4F7F8*/
+
+
+
+/***Header***/
+
+
+
+
+/***Main***/
+
+
+
+
+/***Media queries***/
+
+/*@media (min-width: 667px) and (max-width: 1024px)*/
+
+
+
+/*@media (min-width: 1025px)*/

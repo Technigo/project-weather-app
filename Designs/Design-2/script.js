@@ -17,6 +17,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Gothenburg,Sweden&units=
         });*/
     })
 
+//Add a promise?    
     
 //Display weather.main, weather.description (type of weather) 
 //Display main.temp (current temperature in city XX)
@@ -27,3 +28,6 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Gothenburg,Sweden&units=
 //Display text (type depending on weather)
 
 //Five day forecast
+
+
+//Add eventlisteners
