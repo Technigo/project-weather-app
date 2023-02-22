@@ -7,9 +7,10 @@ const city = document.getElementById("city")
 const weatherDescription = document.getElementById("weather-description")
 const sunrise = document.getElementById("sunrise")
 const sunset = document.getElementById("sunset")
+const forecastWrapper = document.getElementById("forecast-wrapper")
 
 
-//Weather for Stockholm today
+//Weather for today
 fetch(API_today)
     .then((response) => {
         return response.json()
@@ -46,18 +47,18 @@ fetch(API_forecast)
             const daysOfTheWeek = ['sun', 'mon', 'tue', 'wed', 'thur', 'fri', 'sat']
             const date = new Date(day.dt * 1000) //Convert Unix timestamp to time in JavaScript
             const dayName = daysOfTheWeek[date.getDay()] //Returns day of the week for the date specified using array daysOfTheWeek
-            //const weatherIcon = `${day.weather[0].icon}`
+            const weatherIconCode = `${day.weather[0].icon}`
             const temp = `${day.main.temp.toFixed(0)}`
             
-            console.log(date, dayName, weatherIcon, temp)    
+            console.log(date, dayName, weatherIconCode, temp)    
 
 
-            forecast.innerHTML += `
-            <div class ="forecast-day" id = forecastDay>
+            forecastWrapper.innerHTML += `
+            
+            <div class ="forecast-row">
                 <span class = "day">${dayName}</span>
-                <img class = "forecast-icon" ${weatherIcon}/>
+                <img class = "forecast-icon" src="https://openweathermap.org/img/wn/${weatherIconCode}@2x.png"/> 
                 <span class = "temperature"> ${temp}</span>
-                
             </div>
             `
         })
