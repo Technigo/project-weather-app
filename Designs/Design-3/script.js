@@ -37,6 +37,8 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     console.log(str2);*/
 })
 
+
+//------------------------2ND FETCH FOR FORECAST---------------------------------------------------
 fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=26c922535e2ba939d3ff0d8af53d90a2')
 .then((response) => {
     return response.json()
@@ -44,7 +46,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
 .then((json) => {
     console.log(json)
 
-    //Filtered forcast for weekdays
+    //Filtered forcast for weekdays + foreach-loop that displays the weekdays of the dates
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00')) 
     console.log(filteredForecast)
     filteredForecast.forEach((day) => {
@@ -61,12 +63,10 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
         //the above returns the temperature at 12:00 but with only one decimal
     })
     forecastTemp = forecastTemp.join('° ')
-    //the above removes the commas for the forecastTemp-array and adds the Celsius sign. not for the last one though, this is added in the innerHTML
-
+    //the above removes the commas for the forecastTemp-array and adds the Celsius sign. not for the last one though, this is added in the innerHTML below
 
     weekTemp.innerHTML += `${forecastTemp}°`
     //This displays the temperatures, adding the Celsius sign to the last one.
-    
         
 })
 
