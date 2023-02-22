@@ -14,6 +14,45 @@ body {
     padding: 5%;
     background:  #306a7a center/cover linear-gradient(to bottom, #bfdee6, rgba(255, 255, 255, 0.73));
 }
+
+#hero h1 {
+    display: inline-flex;
+    color: white;
+    font-weight: normal;
+    font-size: 5em;
+    margin: 0%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+#hero h2 {
+    display: block;
+    color: white;
+    font-size: 1.5em;
+    margin: 0%;
+    font-weight: normal;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+#hero h3 {
+    display: block;
+    color: white;
+    font-size: 1.17em;
+    margin: 0%;
+    font-weight: normal;
+    padding-left: 3%;
+    padding-right: 2%;
+}
+
+#hero p {
+    display: inline-flex;
+    color: white;
+    margin: 0%;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
 current.weather {
     height: 220px;
 
@@ -22,6 +61,14 @@ forecast {
     display: block;
     padding-top: 7%;
 
+}
+/* the div part with five days*/
+.forecast-day {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 7%;
+    padding-right: 7%;
 }
 
 footer {
