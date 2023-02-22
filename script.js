@@ -55,9 +55,9 @@ fetch(
       const forecastDate = new Date(value.dt * 1000); 
       console.log(value.dt)
       
-      weatherForecast.innerHTML += ` 
-      <div class="weather-forecast">
-        <p>${forecastDate.toLocaleString('en-US', {weekdays: 'long'})}</p>
+      weekdays.innerHTML += ` 
+      <div class="weekdays">
+        <p>${forecastDate.toLocaleString('en-US', {weekday: 'long'})}</p>
         <p>${value.main.temp.toFixed()}°C</p>
         </div>
     `
