@@ -1,9 +1,12 @@
-
 const searchBar = document.getElementById ('searchBar')
 const name = document.getElementById("name");
-const tempmaxEl = document.getElementById("tempmax");
-const tempminEl = document.getElementById("tempmin");
-const descriptionEl = document.getElementById("description");
+const tempMax = document.getElementById("tempmax");
+const tempMin = document.getElementById("tempmin");
+const description = document.getElementById("description");
+const sunriseTime = document.getElementById("sunriseTime");
+const sunsetTime = document.getElementById("sunsetTime");
+const weatherHeader = document.getElementById("weather-header")
+
 
 const WeatherData = () => {
   fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=93834bb23b2a9e80836d0a5415cc4a72")
@@ -13,20 +16,29 @@ const WeatherData = () => {
     .then((json) => {
       console.log(json);
       name.innerHTML = json.name;
-      cityData(json.main.temp_max, json.main.temp_min, json.weather[0].description);
+      tempMax.innerHTML = json.main.temp_max;
+      tempMin.innerHTML = json.main.temp_min;
+      description.innerHTML = json.weather[0].description;
+      
+      const sunriseStart = new Date (json.sys.sunrise); 
+      const sunsetStart = new Date (json.sys.sunset); 
+      sunriseTime.innerHTML = sunriseStart.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}); 
+      sunsetTime.innerHTML = sunsetStart.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}); 
+
     })
     .catch((error) => {
       console.error(error);
     });
 };
-
 WeatherData();
 
-const cityData = (tempmax, tempmin, description) => {
-  tempmaxEl.innerHTML = tempmax;
-  tempminEl.innerHTML = tempmin;
-  descriptionEl.innerHTML = description;
-};
+
+
+
+
+
+
+
 
 
 /*
