@@ -12,11 +12,7 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         <h1> Check the weather in ${json.name} </h1>
         <h2> The visibility is ${json.visibility}meters</h2>
         <h3> The temperature is ${json.main.temp}°C</h3>
-<<<<<<< HEAD
-        <h3> What type of weather it is? ${json.weather[0].description}</h3>
-=======
         <h2> ${json.weather[0].description} </h2>
->>>>>>> weather-forecast
         `
     })
 
