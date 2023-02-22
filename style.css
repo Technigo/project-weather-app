@@ -16,7 +16,7 @@ body{
     border-radius: 30px;
     padding: 20px;
 }
-.cloudReport, .sunrise, .sunset{
+.city, .cloudReport, .sunrise, .sunset{
     font-size: 18px;
     color: #C85C8E
 }
