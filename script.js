@@ -58,7 +58,7 @@ function generateHTMLForForecast(day) {
   let fiveDayForecastHTML = "";
   fiveDayForecastHTML += `<div class="weather-five-days">`;
   fiveDayForecastHTML += `<p class="weekday-name">${weekdayName}</p>`;
-  fiveDayForecastHTML += `<p class="day-temp">${dayTemp} °C</p>`;
+  fiveDayForecastHTML += `<p class="day-temp">${dayTemp}°C</p>`;
   fiveDayForecastHTML += `</div>`;
   return fiveDayForecastHTML;
 }
