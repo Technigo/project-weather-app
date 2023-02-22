@@ -1,9 +1,10 @@
 let weatherLink =
-  "https://api.openweathermap.org/data/2.5/weather?q=Malm%C3%B6,Sweden&units=metric&APPID=d73aa5f2cfee2a35632856b10b30a458";
+  "https://api.openweathermap.org/data/2.5/weather?q=Malm%C3%B6,Sweden&units=metric&APPID=";
 
 let weatherDescriptionHtml = document.getElementById("weatherDescription");
 let cityNameHtml = document.getElementById("cityName");
 let currentTemperatureHtml = document.getElementById("currentTemperature");
+let mediumTemperature;
 
 const fetchWeather = () => {
   fetch(
