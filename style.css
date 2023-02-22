@@ -11,7 +11,32 @@ body {
 .main {
   display: flex;
   flex-direction: column;
-  background-color: antiquewhite;
   margin: 5px;
+}
+
+.todays-header-forecast {
+  background: gray;
+  margin: 5 px;
   border: 2px solid black;
+}
+
+.text-forecast {
+  font-family: Arial, Helvetica, sans-serif;
+  background: rgb(158, 146, 191);
+  border: 2px solid black;
+}
+
+.weekly-forecast {
+  /*display: flex;
+  flex-direction: column;*/
+  background: lightblue;
+  margin: 5 px;
+  border: 2px solid black;
+  padding: 10px; /* Ta bort sen */
+}
+
+.day-temp {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
