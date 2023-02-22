@@ -4,7 +4,30 @@
 }
 
 body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    /* background: #03bafc; - commented out the background by now as I couldn't fix the background picture and this still here*/
+    background-image: url('https://images.unsplash.com/photo-1558486012-817176f84c6d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1804&q=80');
+    /* background-image: url('//https://unsplash.com/photos/bR_-gllg7Bs'); - would like to have a nicer URL than the long one above - don't know how to fix it right now*/
+}
 
+.card {
+    background: #d1cdd0d0;
+    color: rgb(41, 39, 39);
+    padding: 2em;
+    border-radius: 30px;
+    width: 100%;
+    max-width: 420px;
+    margin: 1em;
+}
+
+.search {
+display: flex;
+align-items: center;
+justify-content: center;
 }
 
 .top-container {
@@ -12,7 +35,9 @@ body {
 }
 
 .weather-container {
-
+    /* display: flex;
+    flex-direction: column;
+    border: solid black 2px; */
 }
 
 .weather-forecast {
@@ -20,7 +45,9 @@ body {
 }
 
 .todays-date {
-
+    /* display: flex;
+    flex-direction: column;
+    border: solid black 2px; */
 }
 
 .city {
