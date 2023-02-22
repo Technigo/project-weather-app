@@ -13,8 +13,15 @@ const day2 = document.getElementById("day+2")
 const day3 = document.getElementById("day+3")
 const day4 = document.getElementById("day+4")
 const day5 = document.getElementById("day+5")
+const day6 = document.getElementById("day+6")
+const day7 = document.getElementById("day+7")
 
-//declare variables here 
+//functions here
+
+function roundDecimal(num) {
+    return Math.round(num*10)/10;
+}
+
 const fetchWeatherAPI = () => {
     fetch("http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=d4ab1d4e927071e157d6ad483d6d0ddb")
         .then((response) => {
@@ -56,22 +63,28 @@ const fetchWeekdaysAPI = () => {
             const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
 
             dayTime = new Date(filteredForecast[0].dt_txt)
-            day1.innerHTML = filteredForecast[0].main.temp +"-----------------" + dayTime.toLocaleString('sv-SE', options)
+            day1.innerHTML = roundDecimal(filteredForecast[0].main.temp) +"-----------------" + dayTime.toLocaleString('sv-SE', options)
 
             
             dayTime = new Date(filteredForecast[1].dt_txt)
-            day2.innerHTML = filteredForecast[1].main.temp +"-----------------" + dayTime.toLocaleString('sv-SE', options)
+            day2.innerHTML = roundDecimal(filteredForecast[1].main.temp) +"-----------------" + dayTime.toLocaleString('sv-SE', options)
 
             dayTime = new Date(filteredForecast[2].dt_txt)
-            day3.innerHTML = filteredForecast[2].main.temp +"-----------------" + dayTime.toLocaleString('sv-SE', options)
+            day3.innerHTML = roundDecimal(filteredForecast[2].main.temp) +"-----------------" + dayTime.toLocaleString('sv-SE', options)
 
             
             dayTime = new Date(filteredForecast[3].dt_txt)
-            day4.innerHTML = filteredForecast[3].main.temp +"-----------------" + dayTime.toLocaleString('sv-SE', options)
+            day4.innerHTML = roundDecimal(filteredForecast[3].main.temp) +"-----------------" + dayTime.toLocaleString('sv-SE', options)
 
             
             dayTime = new Date(filteredForecast[4].dt_txt)
-            day5.innerHTML = filteredForecast[4].main.temp +"-----------------" + dayTime.toLocaleString('sv-SE', options)
+            day5.innerHTML = roundDecimal(filteredForecast[4].main.temp) +"-----------------" + dayTime.toLocaleString('sv-SE', options)
+
+           /*  dayTime = new Date(filteredForecast[5].dt_txt)
+            day6.innerHTML = roundDecimal(filteredForecast[4].main.temp) +"-----------------" + dayTime.toLocaleString('sv-SE', options)
+
+            dayTime = new Date(filteredForecast[6].dt_txt)
+            day7.innerHTML = roundDecimal(filteredForecast[4].main.temp) +"-----------------" + dayTime.toLocaleString('sv-SE', options) */
 
             
             //const options = { weekday: 'short'};
