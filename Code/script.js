@@ -57,7 +57,7 @@ step1();
 
 // Weather in Stockholm for the next five days.
 const fiveForescastInStockholm = () => {
-  fetch(api)
+  fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=8d66acab5dd718723a370e1b64f22f8c")
   .then((response) => {
     return response.json();
   })
@@ -72,7 +72,7 @@ const fiveForescastInStockholm = () => {
     let fivedays = (new Date(json.dt * 1000)).toLocaleDateString("en-US", { weekday: "long" })
     console.log(fivedays)
     
-    weatherForecast.innerHTML = `
+    weatherForecast.innerHTML += `
     <p class="forecast">
     <span id="fiveday">${fivedays}</span>
     <span id="temp">${temp}ºC</span>
