@@ -15,6 +15,8 @@ const day = document.getElementById("day");
 
 let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
+
+
 const fetchWeatherData = () => {
   fetch(
     "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=5cdf47ce276dd7dd42146ec93c23e3a6"
@@ -24,16 +26,25 @@ const fetchWeatherData = () => {
     })
     .then((json) => {
       console.log(json);
-      //Header
+      //Header (w. description, current temp, time for sunrise/sunset)
       conditionTemp.innerHTML = `
-        ${json.main.temp}
+      ${json.weather[0].description} | ${Math.round(json.main.temp)}°c
       `;
-      //Message
-      
+      let sunriseTime = new Date(json.sys.sunrise * 1000)
+      sunrise.innerHTML = `
+      Sunrise: ${sunriseTime.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})}
+      `
+      let sunsetTime = new Date (json.sys.sunset * 1000)
+      sunset.innerHTML = `
+      Sunset: ${sunsetTime.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})}
+      `
     });
   // catch((error) => console.error(error));
 };
 fetchWeatherData();
+
+
+
 
 // const fetchPokemons = () => {
 //   fetch("https://pokeapi.co/api/v2/pokemon/")
