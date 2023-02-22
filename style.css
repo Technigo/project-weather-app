@@ -1,19 +1,29 @@
-colors:
-#F47775
-#F4F7F8
-#164A68
-#A3DEF7
-#2A5510
-#F7E9B9 
+/* colors:
+#F47775 - pink coral
+#fad6d6 - Light pink
+#F4F7F8 - cool grey
+#164A68 - middle blue
+#A3DEF7 - Light blue
+#2A5510 - olive branch
+#F7E9B9 - warm light beige
+#AEB6FF - light purple
+*/
 
+.weather-wrapper {
+    display: flex;
+    justify-content: center;
+}
 
 p {
     font-family: 'Montserrat', sans-serif;
 }
 
-body .clouds {
-    background-color: #F4F7F8;
-    font-family: 'Montserrat', sans-serif;
+.clear, .clouds, .rain, .snow, .other {
     font-weight: bold;
-    color: #F47775;
+    font-size: 2em;
 }
+
+img {
+    width: 100px;
+}
+
