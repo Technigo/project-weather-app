@@ -5,6 +5,8 @@ const city = document.getElementById('city')
 const condition = document.getElementById('condition')
 const sunriseSunset = document.getElementById('sunriseSunset')
 const button = document.getElementById('button')
+const mainImage = document.getElementById('mainImage')
+
 
 fetch('https://api.openweathermap.org/data/2.5/weather?q=Reykjavik&appid=fa2755c779ce094fc80f2fa365eea704&units=metric')
 .then((response) => {
@@ -12,7 +14,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Reykjavik&appid=fa2755c
 })
 .then((json) => {
     //started to add first details to our topsection
-    degrees.innerHTML = `${json.main.temp.toFixed(1)}°C`;
+    degrees.innerHTML = `${json.main.temp.toFixed(1)}<sup>°C</sup>`;
     city.innerHTML = json.name;
     condition.innerHTML = json.weather[0].description;
     console.log(json)
@@ -45,14 +47,40 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Reykjavik&appid=fa2755c
     } else {
         topSection.style.backgroundImage = "url(Designs/Design-1/assets/night-small.jpg)"
     }
+
+      //Variable for Todays weather main, to use when changing the picture in topSection
+    let mainWeatherToday = json.weather[0].main
+    console.log(mainWeatherToday)
+    if (mainWeatherToday === "Snow") {
+        weatherImg = 'icons8-snow-64.png'
+    } else if (mainWeatherToday === "Rain") {
+        weatherImg = 'icons8-rain-64.png'
+    } else if (mainWeatherToday === "Thunderstorm") {    
+        weatherImg = 'icons8-thunder-64.png'
+    } else if (mainWeatherToday === "Drizzle") {
+        weatherImg = 'icons8-wet-64.png'
+    } else if (mainWeatherToday === "Mist" || mainWeatherToday === "Fog" || mainWeatherToday === "Ash") {
+        weatherImg = 'icons8-mist-64.png'
+    } else if (mainWeatherToday === "Clouds") {
+        weatherImg = 'icons8-cloud-64.png'
+    } else if (mainWeatherToday === "Clear") {
+        weatherImg = 'icons8-solar-64.png'
+    }
+    mainImage.innerHTML += `<image src=${weatherImg} alt='icon of the weather Today'/>`
+
     })
+
 
     //Make the current time be in same format as sunrise/sunset time to be able to compare
     const currentTime = new Date();
     const currentTimeCorrectFormat = currentTime.toLocaleTimeString('sv-SE', {
         hour: '2-digit',
         minute: '2-digit'
-    })
+    })    
+     
+    
+
+    
     
 
 
