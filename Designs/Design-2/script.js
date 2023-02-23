@@ -2,8 +2,8 @@
 const container = document.getElementById("loading")
 const header = document.getElementById("header")
 const body = document.body
-const text = document.getElementById("#text")
-const img = document.getElementById(".img")
+const text = document.querySelector("#text")
+const img = document.querySelector(".img")
 const date = document.getElementById("date")
 
 //Global variable
@@ -20,7 +20,6 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${position.coords.la
     })
     .then(data => {
         getWeather(data)
-        //container.innerHTML = `<h1>Light a candle and get cosy. ${json.name} is looking grey today.</h1>`
         filterWeather(data)
         
     })
@@ -58,7 +57,7 @@ const getWeather = (data) => {
         date.innerHTML += `
         <li>
             <span>${weekDay}</span>
-            <span>${mainTemp}</span>
+            <span>${mainTemp}°</span>
         </li>
         `
         //Link: https://www.w3schools.com/tags/tag_span.asp
@@ -87,10 +86,16 @@ const filterWeather = (data) => {
         <img class="img" src="./icons/noun_Sunglasses_2055147.svg" alt="sun-glasses icon">
         <h1>Get your sunnies on. ${data.city.name} is looking rather great today. </h1>
         `
-    } else {
+    } else if (todayWeather === "Clouds") {
+        body.classList.toggle("cloudy")
         text.innerHTML = `
         <img class="img" src="./icons/noun_Cloud_1188486.svg" alt="cloud icon">
         <h1>Light a candle and get cosy. ${data.city.name} is looking gloomy today.</h1> 
+        `
+    } else {
+        body.classList.remove()
+        text.innerHTML = `
+        <h1>Go back to bed.</h1> 
         `
     }
 }
