@@ -54,11 +54,9 @@ nav {
     background: url(https://images.unsplash.com/photo-1516571748831-5d81767b788d?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcxNjg0NTk&ixlib=rb-4.0.3&q=80);
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    border-bottom-right-radius: 600px 60px;
-    border-bottom-left-radius: 600px 60px;
     background-size: cover;
-    position: relative;
-    overflow: hidden;
+    border-bottom-left-radius: 100% 170px;
+    border-bottom-right-radius: 100% 170px;  
 }
 
 .search {
@@ -90,7 +88,6 @@ svg {
 }
 
 .mainWrapper {
-    /*background-color: rgb(123, 123, 236);*/
     color: white;
     margin: 20px;
     padding: 15px;
@@ -182,4 +179,7 @@ footer {
 
 
 /* IF WE NEED TO ADJUST FOR DESKTOP & TABLET, otherwise remove: */
-@media (min-width: 6675px) {}
+@media (min-width: 6675px) {
+
+    
+}
