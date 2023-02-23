@@ -1,5 +1,6 @@
-const API_today = "http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=0885d110db76ae5dbaae0c2672772fdf"
-const API_forecast = "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=0885d110db76ae5dbaae0c2672772fdf"
+const myAPIKey = `0885d110db76ae5dbaae0c2672772fdf`
+const API_today = `http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${myAPIKey}`
+const API_forecast = `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=${myAPIKey}`
 //DOM Selectors
 const temperature = document.getElementById("temperature")
 const feelsLike = document.getElementById("feels-like")
@@ -8,6 +9,8 @@ const weatherDescription = document.getElementById("weather-description")
 const sunrise = document.getElementById("sunrise")
 const sunset = document.getElementById("sunset")
 const forecastWrapper = document.getElementById("forecast-wrapper")
+const weatherTodayWrapper = document.getElementById("weather-today-wrapper")
+
 
 
 //Weather for today
@@ -33,6 +36,7 @@ fetch(API_today)
 //Sunrise & Sunset
 
 
+
 //Weather forecast for Stockholm for 5 days  
 fetch(API_forecast)
     .then((response) => {
@@ -42,26 +46,54 @@ fetch(API_forecast)
         const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00')) //filters out only the forecast at 12.00 each day
         console.log(filteredForecast)
         
-        
         filteredForecast.map((day) => {
-            const daysOfTheWeek = ['sun', 'mon', 'tue', 'wed', 'thur', 'fri', 'sat']
             const date = new Date(day.dt * 1000) //Convert Unix timestamp to time in JavaScript
-            const dayName = daysOfTheWeek[date.getDay()] //Returns day of the week for the date specified using array daysOfTheWeek
+            const forecastDate = date.toLocaleDateString("en-GB", {
+                    day: "numeric"
+           })
+            const dayName = date.toLocaleDateString("en-GB", {
+                 weekday: "short"
+            })
             const weatherIconCode = `${day.weather[0].icon}`
             const temp = `${day.main.temp.toFixed(0)}`
             
             console.log(date, dayName, weatherIconCode, temp)    
 
-
             forecastWrapper.innerHTML += `
-            
             <div class ="forecast-row">
-                <span class = "day">${dayName}</span>
+                <span class = "day">${forecastDate} ${dayName}</span>
                 <img class = "forecast-icon" src="https://openweathermap.org/img/wn/${weatherIconCode}@2x.png"/> 
                 <span class = "temperature"> ${temp}</span>
             </div>
             `
+
+            //Change style based on weather conditions
+            const weatherCondition = json.list[0].weather[0].main
+           
+            console.log(weatherCondition)
+            if (weatherCondition.includes("Clouds")) {
+                const cloudsLink = ``
+                weatherTodayWrapper.style.background ='url('+cloudsLink+') center left  / cover no-repeat, no-repeat';
+
+            } else if (weatherCondition.includes("Rain" || "Drizzle")) {
+                const rainLink = ``
+                weatherTodayWrapper.style.background ='url('+rainLink+') center left  / cover no-repeat, no-repeat';
+
+            } else if (weatherCondition.includes("Thunderstorm")) {  
+                const thunderStormLink = ``
+                weatherTodayWrapper.style.background ='url('+thunderStormLink+') center left  / cover no-repeat, no-repeat';
+
+            } else if (weatherCondition.includes("Snow")) {
+                const snowLink = ""
+                weatherTodayWrapper.style.background ='url('+snowLink+') center left  / cover no-repeat, no-repeat';
+            } else if (weatherCondition.includes("Clear")) {
+
+            } else {
+                //something neutral
+            }
+           
+
+
         })
-        
-        
     })
+
