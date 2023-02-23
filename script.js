@@ -67,7 +67,7 @@ const weatherForecastData = () => {
             return forecastResponse.json();
         })
         .then((result) => {
-            const todaysDate = new Date().toString().split(' ')[0]; //Todays date ine text form
+            const todaysDate = new Date().toString().split(' ')[0]; //Today's date in text form
             console.log(todaysDate)
             
             const filterData = result.list.filter(weatherDay => weatherDay.dt_txt.includes('12:00')); //Filters out the data at 12:00 every day
