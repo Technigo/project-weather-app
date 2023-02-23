@@ -8,7 +8,7 @@ const messageImg = document.getElementById("message-img");
 const messageText = document.getElementById("message-text");
 const forecast = document.getElementById("forecast");
 const day = document.getElementById("day");
-const weekdays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+const weekdays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 const containerClass = document.querySelector(".container");
 const city = "Stockholm";
 
