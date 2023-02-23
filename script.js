@@ -5,6 +5,8 @@ const temperature = document.getElementById("temperature");
 const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
 
+const weatherIcon = document.querySelector('.icon');
+
 const weatherApi = "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=515087c7fb02c4b2d4dca12b9e40bb14";
 
 
@@ -12,7 +14,7 @@ const weatherApi = "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,
 const getCurrentWeatherData = () => {
 
 fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=515087c7fb02c4b2d4dca12b9e40bb14')
-    
+
   .then((response) => { 
   return response.json();
     })
@@ -22,6 +24,8 @@ console.log(data);
 temperature.textContent=data.main.temp
 city.textContent=data.name
 weatherToday.textContent=data.weather[0].description
+weatherIcon.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+
 
 
 
@@ -40,7 +44,6 @@ sunset.textContent=`Sunset: ${new Date(data.sys.sunset * 1000).toLocaleTimeStrin
 }
 
 getCurrentWeatherData();
-
 
 // 5 DAY WEATHER FORECAST WITH TEMPERETURE
 const forecastFiveDayAndTemp = () => {
