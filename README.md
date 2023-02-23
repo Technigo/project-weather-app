@@ -1,12 +1,10 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This project is a weather dashboard that provides current weather and temperature information, as well as a five-day forecast, using weather API.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The project involves working with branches on GitHub and practicing git commands. It also involves using fetch() and promises in JavaScript, along with Date() objects. The goal of this project is to provide a practical example of using these concepts to build a useful web application.
 
 ## View it live
 
