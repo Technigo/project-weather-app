@@ -10,9 +10,14 @@ const forecast = document.getElementById("forecast");
 const day = document.getElementById("day");
 const weekdays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
-//   let apiKey = "f74f9f2338bf06af72a7c11d8921c9c0";
-//   let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather?";
-//   let apiUrl = `${apiEndpoint}q=${searchCityInput}&appid=${apiKey}&units=${units}`;
+let units = "metric";
+let apiKey = "5cdf47ce276dd7dd42146ec93c23e3a6";
+let apiEndpointWeather =
+  "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden";
+let apiEndpointForecast =
+  "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden";
+let apiUrlWeather = `${apiEndpointWeather}&appid=${apiKey}&units=${units}`;
+let apiUrlForecast = `${apiEndpointForecast}&appid=${apiKey}&units=${units}`;
 
 const fetchWeatherData = () => {
   fetch(
@@ -30,9 +35,7 @@ const fetchWeatherData = () => {
   // catch((error) => console.error(error));
 
   //Forecast
-  fetch(
-    "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=5cdf47ce276dd7dd42146ec93c23e3a6"
-  )
+  fetch(`${apiUrlForecast}`)
     .then((response) => {
       return response.json();
     })
@@ -63,17 +66,3 @@ const fetchWeatherData = () => {
     });
 };
 fetchWeatherData();
-
-//forecast
-
-// const fetchPokemons = () => {
-//   fetch("https://pokeapi.co/api/v2/pokemon/")
-//     .then((response) => response.json())
-//     .then((json) => {
-//       name.innerHTML = `<h1>Pokemons</h1>`;
-//       json.results.forEach((pokemons) => {
-//         name.innerHTML += `<p>${pokemons.name}</p>`;
-//       });
-//     })
-//     .catch((error) => console.error(error));
-// };
