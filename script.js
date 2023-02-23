@@ -39,7 +39,7 @@ const fetchWeatherAPI = () => {
             sunset.innerHTML = "Sunset: " + timeSunset.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: false })
 
            
-            changeContentForWeekdays(json.weather[0].description,json.name);
+            changeWeatherDescription(json.weather[0].description,json.name);
             
 
 
@@ -52,7 +52,7 @@ const fetchWeatherAPI = () => {
 }
 fetchWeatherAPI();
 
-const changeContentForWeekdays = (weatherDescription,city) => {
+const changeWeatherDescription = (weatherDescription,city) => {
 
     //json.weather[0].description
     // json.name
