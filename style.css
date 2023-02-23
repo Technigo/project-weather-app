@@ -50,7 +50,7 @@ h1 {
 
 
 
-forecast-card { 
+.forecast-card { 
 
     display: flex;
     margin: 20px auto;
