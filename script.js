@@ -7,11 +7,36 @@ const forecastFeelsLike = document.getElementById('forecastFeelsLike')
 const sunriseText = document.getElementById('sunriseText');
 const sunsetText = document.getElementById('sunsetText');
 
+const cityText = document.querySelector('.cityText');
+const tempText = document.querySelector('.tempText');
+const describeText = document.querySelector('.describeText');
+
+
 
 //Variables we can use later to automate API-fethcing:
 const apiKey = 'c480de5f69ca98d1993a4dae3213642e';
 let city = 'Stockholm';
 // Use: `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`
+
+
+
+const getMainWeatherData = () => {
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`)
+    .then((response) => {
+        return response.json()
+    })
+    .then((json) => {
+        //Modifying the HTML based on our input:
+        cityText.innerHTML = `${json.name}`;
+        tempText.innerHTML = `${json.main.temp}`;
+        describeText.innerHTML = `${json.weather[0].description}`;
+    })
+    .catch((err) => {
+        console.log(`error caught:`, err)
+    })
+}
+
+getMainWeatherData();
 
 //Our testing fetch:
 fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm&units=metric&APPID=c480de5f69ca98d1993a4dae3213642e')
