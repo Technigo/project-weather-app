@@ -16,7 +16,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
 })
 .then((json) => {
     //this variable contains the temperature and with the math.round the decimals where removed
-    let temp = json.main.temp.toFixed(1) //use math-thing instead!! Andreas Axelsson Säger:${(Math.round(json.wind.speed))} 
+    let temp = json.main.temp.toFixed(1) 
 
     //Variables for getting the first word in the description capitalized
     const description = json.weather[0].description
@@ -101,29 +101,26 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
 .then((json) => {
     console.log(json)
 
-    console.log(json.list[0].wind.speed)
+//-------------------WINDSPEED----------------------------
     windspeed = json.list[0].wind.speed 
+    windSpeed.innerHTML = `<p>${windspeed} m/s</p>`
 
-    //Filtered forcast for weekdays + foreach-loop that displays the weekdays of the dates
+//-------------------------------FILTER + FOREACH----------------------
+//Filtered forcast for weekdays + foreach-loop that displays the weekdays of the dates
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00')) 
     console.log(filteredForecast)
     filteredForecast.forEach((day) => {
         const date = new Date(day.dt * 1000)
         let dayName = date.toLocaleDateString("en-US", {weekday: "short"})
         weekDays.innerHTML += `<h6>${dayName}</h6>`
+
+        //during the same loop we also get the temperature for each day and display it without decimals
+        forecastTemp = Math.round(day.main.temp) 
+        weekTemp.innerHTML += `<h6>${forecastTemp}°</h6>`
+        
         })
-//Solution to above was found here: https://stackoverflowteams.com/c/technigo/questions/786 
 
-//forEach-loop for getting the temperatures of each day. Here the array variable is a let because we want to modify it later
-    let forecastTemp = filteredForecast.map((temp) => {
-        return temp.main.temp.toFixed(0)
-        //the above returns the temperature at 12:00 but with only one decimal
-    })
-    forecastTemp = forecastTemp.join('° ')
-    //the above removes the commas for the forecastTemp-array and adds the Celsius sign. not for the last one though, this is added in the innerHTML below
-
-    weekTemp.innerHTML += `<p>${forecastTemp}°</p>`
-    windSpeed.innerHTML = `<p>${windspeed} m/s</p>`
+   
 
     //This displays the temperatures, adding the Celsius sign to the last one.
 
