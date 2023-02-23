@@ -17,7 +17,14 @@
 p {
     font-family: 'Montserrat', sans-serif;
 }
-
+.search {
+    font-family: 'Montserrat', sans-serif;
+}
+.searchbar {
+    padding: 10px;
+    border-radius: 50px;
+    width: 100%;
+}
 .clear, .clouds, .rain, .snow, .other {
     font-weight: bold;
     font-size: 2em;
