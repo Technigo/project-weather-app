@@ -28,8 +28,7 @@ const fetchWeatherAPI = () => {
 
             let timeSunrise = new Date(json.sys.sunrise * 1000)
             let timeSunset = new Date(json.sys.sunset * 1000)
-            //sunrise.innerHTML = `Sunrise : ${timeSunrise.getHours()}:${timeSunrise.getMinutes()}`
-            //sunset.innerHTML = `Sunset : ${timeSunset.getHours()}:${timeSunset.getMinutes()}`
+            
             sunrise.innerHTML = "Sunrise: " + timeSunrise.toLocaleString('sv-SE', { hour: 'numeric', minute: 'numeric', hour12: false })
             sunset.innerHTML = "Sunset: " + timeSunset.toLocaleString('sv-SE', { hour: 'numeric', minute: 'numeric', hour12: false })
 
@@ -49,6 +48,7 @@ const fetchWeekdaysAPI = () => {
             return response.json()
         })
         .then((json) => {
+
             const options = { weekday: 'short'};
             let dayTime
 
@@ -56,51 +56,39 @@ const fetchWeekdaysAPI = () => {
             const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
 
             dayTime = new Date(filteredForecast[0].dt_txt)
-            day1.innerHTML = filteredForecast[0].main.temp +"-----------------" + dayTime.toLocaleString('sv-SE', options)
-
+            day1.innerHTML = `${dayTime.toLocaleString('en-US', options)} ${filteredForecast[0].main.temp}°`;
+    
             
             dayTime = new Date(filteredForecast[1].dt_txt)
-            day2.innerHTML = filteredForecast[1].main.temp +"-----------------" + dayTime.toLocaleString('sv-SE', options)
+            day2.innerHTML =`${dayTime.toLocaleString('en-US', options)} ${filteredForecast[1].main.temp }°` 
 
             dayTime = new Date(filteredForecast[2].dt_txt)
-            day3.innerHTML = filteredForecast[2].main.temp +"-----------------" + dayTime.toLocaleString('sv-SE', options)
+            day3.innerHTML = `${dayTime.toLocaleString('en-US', options)} ${filteredForecast[2].main.temp}°`
 
             
             dayTime = new Date(filteredForecast[3].dt_txt)
-            day4.innerHTML = filteredForecast[3].main.temp +"-----------------" + dayTime.toLocaleString('sv-SE', options)
+            day4.innerHTML = `${dayTime.toLocaleString('en-US', options)} ${filteredForecast[3].main.temp }°`
 
             
             dayTime = new Date(filteredForecast[4].dt_txt)
-            day5.innerHTML = filteredForecast[4].main.temp +"-----------------" + dayTime.toLocaleString('sv-SE', options)
+            day5.innerHTML = `${dayTime.toLocaleString('en-US', options)}  ${ filteredForecast[4].main.temp}°` 
 
             
-            //const options = { weekday: 'short'};
             //let dayTime = new Date(filteredForecast[0].dt_txt)
-            console.log(dayTime.toLocaleString('sv-SE', options));
+            console.log(dayTime.toLocaleString('en-US', options));
           
             
             //console.log(filteredForecast[0].dt_txt)
             console.log(filteredForecast)
-            // console.log(filteredForecast[0].main.temp)
+            // console.log(filteredForecast[0].main.temp
 
 
         })
-
-        //day1.innerHTML = json.list.filter(item => item.dt_txt.includes('12:00'))
-
 
         .catch((err) => {
             console.log("error loading weatherdata", err)
         })
 }
 fetchWeekdaysAPI();
-
-
-
-
-for (i = 0; i < 6; i++) {
-    console.log(i)
-}
-
 
 

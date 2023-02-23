@@ -10,13 +10,18 @@ body{
 
 .weatherWindow{
 
-    background-color: white;
+    background-color: #F4F7F8;
     width: 100%;
     max-width: 420px;
+    height: 500px;
     border-radius: 30px;
     padding: 20px;
 }
 .city, .cloudReport, .sunrise, .sunset{
     font-size: 18px;
-    color: #C85C8E
+    color: #F47775
+}
+.weekday{
+    border-bottom: 1px dotted #F47775;
+
 }
