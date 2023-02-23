@@ -96,18 +96,15 @@ weatherForecastData();
 //Learn how to get a search word to show an image from unsplash
    
 const toggleSearchField = () => {
-    console.log('Matilda testar toggle')
-
+    //This just controls the toggling between opening and closing the search field
     const searchToggler = document.getElementById('search-toggler');
     searchToggler.classList.toggle('hidden');
     closeSearchMenu.classList.toggle('hidden');
     searchMenuBtn.classList.toggle('hidden');
-    //closeSearchMenu.classList.add('hidden');
-
 }
 
 const searchFunction = () => {
-    console.log('Matilda testar search')
+    //This is for storing the user input from the search and pushing it into our fetching weather function later on
     
     let searchedCity = inputField.value
     console.log(`searchedCity: ${searchedCity}`)
