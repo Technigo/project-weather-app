@@ -170,8 +170,6 @@ fetch(API_today)
                 //something neutral
             }
            
-
-
         })
     });
       
