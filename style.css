@@ -1,32 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+/*Variables*/
+:root {
+    --switch-button-color:  #757AFF;
+    --container-color:  #ffffff;    /*just to see, remove later, it should be white*/
+    --top-color:  #282c91;         /*just to see, remove later, it should be dependent on weather etc*/
+}
+
+
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+nav {
+    margin-bottom: 70px;
 }
 
 .container {
-    background-color: rgb(223, 230, 252);
+    background-color: var(--container-color);
+    box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.3);
     width: 100%;
     max-width: 400px;
     margin: 50px auto;
     display: flex;
     flex-direction: column;
+
+}
+
+.background-top {
+    background-color: var(--top-color);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 600px 60px;
+    border-bottom-left-radius: 600px 60px;
+
 }
 
 
+.search-button {
+    border: none;
+    color: white;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    opacity: 0.7;
+}
+
+.search-icon {
+    height: 35px;
+    width: 35px;
+    padding: 25px;
+}
+
+.mainWrapper {
+    /*background-color: rgb(123, 123, 236);*/
+    color: white;
+    margin: 20px;
+    padding: 15px;
+}
+
+.mainWrapper .tempText {
+    display: flex;
+    flex-direction: row;
+}
+
+.mainWrapper .tempNumber {
+    font-size: 110px;
+    margin: 0;
+}
+
+
+.tempTextCelsius {
+    display: inline;
+    font-size: 40px;
+    margin-top: 15px;
+    margin-left: 5px;
+}
+
+.mainWrapper .cityText {
+    font-size: 36px;
+    font-weight: 200;
+    margin: 0 0 5px 0;
+
+}
+
+.mainWrapper .describeText {
+    font-size: 18px;
+    font-weight: 200;
+    margin: 0 0 10px 0;
+    text-transform: capitalize;
+}
 
 .sun-position,
 #sunriseText,
 #sunsetText {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    font-size: 18px;
 }
 
+
 .sun-position .time-data {
-    margin: auto 10px;
+    margin: auto 20px;
 }
 
 #switchBtn {
-    background-color: #757AFF;
+    background-color: var(--switch-button-color);
     color: white;
     border: none;
     border-radius: 50%;
@@ -35,9 +117,12 @@ body {
     margin: 5px auto 25px 75%;
 }
 
+
+
 .weather-forecast {
     display: flex;
     justify-content: space-evenly;
+    margin-top: 50px;
 }
 
 .forecast-category {
