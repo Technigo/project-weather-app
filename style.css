@@ -4,24 +4,44 @@ body{
     background-color: darkgray;
     align-items: center;
     justify-content: center;
-
+    font-family: 'Montserrat', sans-serif;
 }
 
 .weatherWindow{
 
     background-color: #F4F7F8;
-    width: 570px;
-    /* max-width: 420px;
-    height: 500px;
-    border-radius: 30px;
-    padding: 20px;  */
+    width: 291px;
+    height: 728px;
+    padding: 42px;
+    box-shadow: 0 10px 50px #535252;
+    border-radius: 20px;
 }
-.city, .cloudReport, .sunrise, .sunset{
-    font-family: 'Montserrat', sans-serif;
-    font-size: 26px;
+
+.weekday, .city, .cloudReport, .sunrise, .sunset{
+    font-size: 20px;
     color: #F47775
 }
-/* .weekday{
-    
 
-} */
+.weatherImage {
+    margin-top: 45px;
+    margin-bottom: 12px;
+}
+
+.middleSection {
+    width: 100%;
+    color: #F47775;
+    font-size: 34px;
+    font-weight: bold;
+    margin-bottom: 32px;
+}
+
+.weekday {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px dashed;
+    border-color: #F47775;
+    padding: 5px 0;
+    width: 100%;
+    height: 24px;
+}
