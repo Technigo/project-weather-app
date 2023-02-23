@@ -10,7 +10,7 @@ body {
   min-height: 100%;
 }
 
-h1 {
+h2 {
   font-weight: bold;
   font-size: 50px;
 }
@@ -25,7 +25,8 @@ h3 {
 }
 
 .message-text h2 {
-  font-weight: 400;
+  font-weight: bold;
+  font-size: 30px;
 }
 
 .container {
@@ -38,8 +39,8 @@ h3 {
 }
 
 img {
-  width: 152px;
-  padding-top: 80px;
+  width: 72px;
+  padding-top: 40px;
 }
 
 .forecast-section {
@@ -102,7 +103,7 @@ img {
     height: 64%;
   }
 
-  h1 {
+  h2 {
     font-weight: bold;
     font-size: 60px;
     margin: 0;
@@ -113,6 +114,12 @@ img {
   }
 
   .message-text h2 {
-    font-weight: 400;
+    font-weight: bold;
+    font-size: 30px;
+  }
+
+  img {
+    width: 152px;
+    padding-top: 80px;
   }
 }
