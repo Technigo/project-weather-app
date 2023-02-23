@@ -1,8 +1,45 @@
 body {
   background-color: rgb(46, 161, 161);
-  color:antiquewhite
+  color: antiquewhite
 }
 
 p {
   color: black;
+}
+
+#city-list li {
+  display: block;
+}
+
+.sun-times p {
+  display: inline-block;
+}
+
+/*
+.sun-times > #sunrise > p {
+display: inline-block;
+}
+
+.sun-times > #sunset > p {
+  display: inline-block;
+  }
+*/
+button {
+  display: block;
+}
+
+#weekDayRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+ul li {
+  display: inline-block;
+  max-width: 100%;
+}
+
+#week-list-icon {
+  max-height: 40px;
 }

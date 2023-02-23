@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,14 +8,16 @@
     <link rel="stylesheet" href="./style.css" />
     <title>Project Weather-app</title>
 </head>
+
 <body>
     <header>
         <nav role="navigation" id="navigation"> <!--Hamburgarmeny-->
-        <ul id="city-list">
-            <li id="city-one">Stad 1</li>
-            <li id="city-two">Stad 2</li>
-        </ul>
+            <ul id="city-list">
+                <li id="city-one">Stad 1</li>
+                <li id="city-two">Stad 2</li>
+            </ul>
         </nav>
+        <div id="weather-icon-today"></div>
     </header>
     <main>
         <section class="top">
@@ -22,55 +25,18 @@
             <h2 id="current-temp"></h2>
             <h1 id="current-city"></h1>
             <p id="current-weather">Clear</p>
-    
+
             <div class="sun-times">
-                <div id="sunrise">
-                    <p>sunrise</p>
-                    <p id="sun-up-time">12:30</p>
-                </div>
-                <div id="sunset">
-                    <p>sunset</p>
-                    <p id="sun-down-time">22:30</p>
-                </div>
+                <p>sunrise</p>
+                <p id="sun-up-time">12:30</p>
+                <p>sunset</p>
+                <p id="sun-down-time">22:30</p>
             </div>
             <button id="arrow-button">
                 <img src="#">Arrow</button>
         </section>
-        <section class="week-list">
-                <ul>
-                    <li>Mon</li>
-                    <li>🌞</li>
-                    <li>26/12 C</li>
-                </ul>
 
-                <!-- id.innerHTML = `
-                <ul>
-                    <li>${openweather.obj.hej}</li>
-                    <li>🌞</li>
-                    <li>26/12 C</li>
-                </ul>
-                ` -->
-
-                <ul>
-                    <li>Tue</li>
-                    <li>🌞</li>
-                    <li>26/12 C</li>
-                </ul>
-                <ul>
-                    <li>Wed</li>
-                    <li>🌞</li>
-                    <li>26/12 C</li>
-                </ul>
-                <ul>
-                    <li>Thu</li>
-                    <li>🌞</li>
-                    <li>26/12 C</li>
-                </ul>
-                <ul>
-                    <li>Fri</li>
-                    <li>🌞</li>
-                    <li>26/12 C</li>
-                </ul>
+        <section id="week-list">
         </section>
 
 
@@ -80,5 +46,5 @@
 
     <script src="script.js"></script>
 </body>
-</html>
 
+</html>
