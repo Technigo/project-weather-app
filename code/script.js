@@ -54,7 +54,7 @@ const fetchWeatherData = () => {
 
         day.innerHTML += `
     <div id="forecastSection" class="forecast-section">
-      <div id="weekdaysection" class="weekday-section">
+      <div id="weekdaySection" class="weekday-section">
       <li>${weekdays[weekday]}</li>
       </div>
       <div id="temperature" class="temperature">
