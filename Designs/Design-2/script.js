@@ -40,7 +40,31 @@ const getWeather = (data) => {
     const getSunRise = new Date ((data.city.sunrise + data.city.timezone + new Date().getTimezoneOffset()*60) * 1000)
 
     const getSunSet = new Date ((data.city.sunset + data.city.timezone + new Date().getTimezoneOffset()*60) * 1000)
+
+    header.innerHTML = `
+    <p>${todayWeather} | ${Math.round(todayTemp , 1)}°</p>
+    <p> Sunrise ${getSunRise.getHours()}.${getSunRise.getMinutes()}</p>
+    <p> Sunset ${getSunSet.getHours()}.${getSunSet.getMinutes()}</p>
+    `
+    //Five day forecast
+    const filteredForecast = data.list.filter(item => item.dt_txt.includes('09:00'))
+    //dt is time of data calculation
+    
+    filteredForecast.forEach((day) => {
+        const weekDay = new Date(day.dt * 1000).toLocaleDateString('en', {weekday: 'short'})
+        //'en' stands for english here
+        const mainTemp = day.main.temp.toFixed(1)
+        //Number.toFixed() Link: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed
+        date.innerHTML += `
+        <li>
+            <span>${weekDay}</span>
+            <span>${mainTemp}</span>
+        </li>
+        `
+        //Link: https://www.w3schools.com/tags/tag_span.asp
+    })
 }
+
 
 /*json.weather.array.forEach((zz) => {
         container.innerHTML += `<p>${} is in ${}</p>`
@@ -67,7 +91,6 @@ const getWeather = (data) => {
       show <p> "Light a candle and get cosy. ${json.city} is looking grey today."</p>
 	show img. "noun_Cloud...*/
 
-//Five day forecast
 
 
-//Add eventlisteners
+
