@@ -1,16 +1,22 @@
-
-
-.forecast {
+.forecast-card {
     display: flex;
-    color: blueviolet;
-    justify-content: center;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #78a5ad;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(66, 63, 63, 0.718);
+    max-width: 500px;
+    
+  }
+
+.forecast-category {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    column-gap: 10px;
+    row-gap: 10px;
+    justify-content: space-around;
+    color: rgb(224, 201, 171);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
 
-.forecast-wrapper {
-    display: flex;
-    flex-direction: row;
-    border: 2px solid;
-    padding: 1rem;
-    row-gap: 1rem;
-
-}
