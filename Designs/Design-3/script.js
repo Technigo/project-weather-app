@@ -1,11 +1,12 @@
 //DOM-selectors
 const cityName = document.getElementById('city-name')
 const currentTemp = document.getElementById('current-temp')
-const weatherDesc =document.getElementById('weather-description')
 const weekDays = document.getElementById('weekdays')
 const weekTemp = document.getElementById('week-temp')
 const windSpeed = document.getElementById('wind-speed')
-
+const weatherDesc = document.getElementById('weather-description')
+const sunrise = document.getElementById('sunrise')
+const sunset = document.getElementById('sunset')
 
 fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=26c922535e2ba939d3ff0d8af53d90a2')
 .then((response) => {
@@ -21,13 +22,19 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     const firstLetterCap = firstLetter.toUpperCase()
     const remainingLetters = description.slice(1)
     const capitalizeWord = firstLetterCap + remainingLetters //This variable is displaying the weather description
-
+    const rise = new Date(json.sys.sunrise * 1000)
+    const up = rise.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    const set = new Date(json.sys.sunset * 1000)
+    const down = set.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     //--------------DISPLAY---------------
     //displays the city name
     cityName.innerHTML = `${json.name}`
 //displays the current temperature using the temp variable 
     currentTemp.innerHTML = `${temp}°`
     weatherDesc.innerHTML = `${capitalizeWord}`
+    sunrise.innerHTML = `${up}`
+    sunset.innerHTML = `${down}`
+
 
     //hej hej
 
