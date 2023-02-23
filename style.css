@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 body {
+    font-family: Montserrat;
     background-color:lightblue;
     padding: 20px;
 }
@@ -6,32 +9,37 @@ body {
 /* THIS IS THE BIG TEXT ABOUT THE WEATHER */
 
 h1 {
-    font-size: 25px;
+    font-family: Montserrat;
+    font-size: 10px;
     color: rgb(61, 61, 103);
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 p {
-    font-size: 17px;
+    font-family: Montserrat;
+    font-size: 10px;
     color: rgb(61, 61, 103);
 }
 
 /* THIS IS THE DOTTED LINE BETWEEN THE WEEKDAYS */
 
 hr {
+    font-family: Montserrat;
     border: none;
     border-top: 1px dotted rgb(61, 61, 103);
     width: 100%;
 }
 
 h6 {
-    font-size: 17px;
+    font-family: Montserrat;
+    font-size: 10px;
     color: rgb(61, 61, 103);
     margin-top: 10px;
 }
 
 .weekdays {
-    font-size: 17px;
+    font-family: Montserrat;
+    font-size: 8px;
     color: rgb(61, 61, 103);
     margin: 10px 0px 50px 0px;
 }

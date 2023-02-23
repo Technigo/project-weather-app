@@ -25,9 +25,6 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     const sunsetTimeStamp = (json.sys.sunset * 1000)
     const sunsetFormat = new Date(sunsetTimeStamp)
     const sunset = sunsetFormat.getHours() + ":" + sunsetFormat.getMinutes();
-    
-    
-    console.log(json)
 
     forcastRightNow.innerHTML = 
     `<h6>
@@ -38,11 +35,12 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     </h6>`
 
 // And here is the casualWeatherBox-part
-        casualWeatherBox.innerHTML = 
-        `<h1>
-        In ${json.name} there is ${json.weather[0].description} right now. 
-        Wind is ${(Math.round(json.wind.speed))} m/s and the temperature is ${(Math.round(json.main.temp))}°C.
-        </h1>`
+
+     casualWeatherBox.innerHTML = 
+     `<h1>
+     In ${json.name} there is ${json.weather[0].description} right now. 
+     Wind is ${(Math.round(json.wind.speed))} m/s and the temperature is ${(Math.round(json.main.temp))}°C.
+     </h1>`
 
     })
 
