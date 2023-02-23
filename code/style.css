@@ -42,7 +42,7 @@ img {
   padding-top: 80px;
 }
 
-.forecastSection {
+.forecast-section {
   display: flex;
   justify-content: space-between;
   height: 75px;
@@ -86,7 +86,7 @@ img {
     padding: 100px 20px;
   }
 
-  .forecast {
+  .forecast-section {
     display: flex;
     flex-direction: column-reverse;
     width: 30%;
