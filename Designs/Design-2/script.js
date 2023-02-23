@@ -66,30 +66,36 @@ const getWeather = (data) => {
 }
 
 
-/*json.weather.array.forEach((zz) => {
-        container.innerHTML += `<p>${} is in ${}</p>`
-    });*/
-
 
 //Display weather.main, weather.description (type of weather) 
 //Display main.temp (current temperature in city XX)
 //Display sys.sunrise (time of sunrise)
 //Display sys.sunset (time of sunset)
 
-//Display img (type depending on weather)
-//Display text (type depending on weather)
+//Conditionals for changing styling depending on todaysWeather
+//https://www.w3schools.com/js/js_if_else.asp
+const filterWeather = (data) => {
+    if (todayWeather === "Rain") {
+        body.classList.toggle("rainy")
+        text.innerHTML = `
+        <img class="img" src="./icons/noun_Umbrella_2030530.svg" alt="umbrella icon">
+        <h1>Don't forget your umbrella. It's wet in ${data.city.name} today.</h1>
+        `
+    } else if (todayWeather === "Clear") {
+        body.classList.toggle("sunny")
+        text.innerHTML = `
+        <img class="img" src="./icons/noun_Sunglasses_2055147.svg" alt="sun-glasses icon">
+        <h1>Get your sunnies on. ${data.city.name} is looking rather great today. </h1>
+        `
+    } else {
+        text.innerHTML = `
+        <img class="img" src="./icons/noun_Cloud_1188486.svg" alt="cloud icon">
+        <h1>Light a candle and get cosy. ${data.city.name} is looking gloomy today.</h1> 
+        `
+    }
+}
 
-/*If weather === "clear", "sunny" ....
-	show <p> "Get your sunnies on. ${json.city} is looking rather great today."</p>
-	show img. "noun_Sunglasses..."
 
-  else if weather === "rain",....
-	show <p> "Don't forget your umbrella. It's wet in ${json.city} today."</p>
-	show img. "noun_Umbrella..."
-
-  else weather === "cloudy",...
-      show <p> "Light a candle and get cosy. ${json.city} is looking grey today."</p>
-	show img. "noun_Cloud...*/
 
 
 
