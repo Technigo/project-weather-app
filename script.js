@@ -4,6 +4,8 @@ const tempToday = document.getElementById("temp-today");
 const sunUp = document.getElementById("sunrise");
 const sunDown = document.getElementById("sunset");
 const windGust = document.getElementById("wind");
+const feelsLike = document.getElementById("feelslike");
+const weatherIcon = document.getElementById("weather-icon");
 
 // Define weatherIcons object
 const weatherIcons = {
@@ -28,6 +30,8 @@ fetch(
     // Update weather in Malmo from API
 
     weather.innerHTML = `<h1>Today's weather in ${json.name}</h1>`;
+    //jag gör en const här för dagens väder, så att det finns något att referera till längre
+    //ner med bakgrundsbilder beroende på dagens väder
 
     // Describe weather and change weatherIcon based on weather description
     descriptionToday.innerHTML = `<h2>The weather is ${json.weather[0].description}</h2>`;
@@ -38,9 +42,16 @@ fetch(
       descriptionToday.innerHTML += `<img src="${iconFileName}" alt="Weather icon">`;
     }
 
+    descriptionToday.innerHTML = `<h2>The weather is ${json.weather[0].description} ${json.weather.icon}</h2>`;
+    stylingtryout;
+
     tempToday.innerHTML = `<h3>The temperature is ${
       Math.round(json.main.temp * 10) / 10
-    }°C in ${json.name}</h3>`;
+    }°C</h3>`;
+
+    feelsLike.innerHTML = `<h3>Feels like ${
+      Math.round(json.main.feels_like * 10) / 10
+    }°C</h3>`;
 
     const sunrise = json.sys.sunrise;
     const sunriseTimepoint = new Date(sunrise * 1000);
@@ -49,7 +60,7 @@ fetch(
       minute: "2-digit",
       hour12: false,
     });
-    sunUp.innerHTML = `<h3>The sun rises at ${sunriseHrMin}</h3>`;
+    sunUp.innerHTML = `<h4>The sun rises at ${sunriseHrMin}</h4>`;
     console.log(json.sys.sunrise);
 
     const sunset = json.sys.sunset;
@@ -59,11 +70,11 @@ fetch(
       minute: "2-digit",
       hour12: false,
     });
-    sunDown.innerHTML = `<h3>The sun sets at ${sunsetHrMin}</h3>`;
+    sunDown.innerHTML = `<h4>The sun sets at ${sunsetHrMin}</h4>`;
     console.log(json.sys.sunset);
 
     const wind = json.wind.gust;
-    windGust.innerHTML = `<h3>The wind blows gusts up to ${wind} meters per second`;
+    windGust.innerHTML = `<h5>Wind gusts blow up to ${wind} m/s</h5>`;
   });
 
 //ändra bakgrund beroende på väder, som JL?

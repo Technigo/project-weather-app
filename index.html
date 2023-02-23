@@ -4,31 +4,39 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./styling.css"
+    <link rel="stylesheet" href="./styling.css">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Explora&display=swap');
+      </style>
     <title>Weather app</title>
   </head>
   <body>
+    <header class="top-info" id="top-info"> 
+      <div class="img" id="img"> 
     <div id="weather" class="weatherToday"></div>
-    <div id="description-today" class="descriptionToday"></div>
-    <div id="temp-today" class="tempToday"></div>
-    <p>Loading...</p>
-
-    <!--Five day forecast container-->
-
-    <h2>Five day forecast</h2>
-    <div id="weather-five-days" class="weather-five-days">
-      <div class="forecast-container">
-        
-      </div>
+    <div id="description-today" class="descriptionToday">
+      <img class="icon" id="weather-icon" src="" width="70"></p>
     </div>
-
-
+    <div id="temp-today" class="tempToday">
+    </div>
+    <div id="feelslike" class="feelslike">
+    </div>
     <div id="sunrise" class="sunrise">
     </div>
     <div id="sunset" class="sunset">
     </div>
     <div id="wind" class="wind">
     </div>
+  </div>
+  </header>
+<!--Five day forecast container-->
+  <section class="weekly-weather" id="weekly-weather">
+    <!--<h2>Five day forecast</h2>-->
+    <div id="weather-five-days" class="weather-five-days">
+      <div class="forecast-container">
+      </div>
+    </div>
+  </section>
 
     <script src="script.js"></script>
   </body>
