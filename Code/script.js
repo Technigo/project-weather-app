@@ -5,8 +5,6 @@
  const firstCityWeather = document.querySelector(".first-city")
  const secondCityWeather = document.querySelector(".second-city")
 
-
-
  // Global scope
  const api = "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=8d66acab5dd718723a370e1b64f22f8c"
 
@@ -47,7 +45,7 @@ const forecastSthlm = () => {
     weatherForecast.innerHTML += `
     <li>
     <span id="fiveday">${fivedays}</span>
-    <span id="temp">${temp}ºC</span>
+    <span id="temp">${temp}º</span>
     </li>
     `
     });
@@ -62,32 +60,36 @@ const filterWeather = () => {
     return response.json();
   })
   .then((json) => {
-    if (json.list[0].weather[0].main == 'Clouds') {
+    if (json.list[0].weather[0].main == 'Clouds' || json.list[0].weather[0].main == 'Mist') {
       document.body.style.backgroundColor = "#F4F7F8";
       document.body.style.color = "#F47775";
-      aboutWeather.innerHTML = `
-      <img class="weather-img" src="./Designs/Design-2/icons/noun_Cloud_1188486.svg" alt="cloud img">
-      <h2>Light a fire and get cosy. ${json.city.name} is looking grey today.</h2>
-      `
-    } else if (json.list[0].weather[0].main == 'Rain') {
-      document.body.style.backgroundColor = "A3DEF7";
+      aboutWeather.innerHTML += `<img class="weather-img" src="../Designs/Design-2/icons/cloud.svg" alt="cloud icon">`
+      aboutWeather.innerHTML += `<h2>Light a fire and get cosy. ${json.city.name} is looking grey today.</h2>`
+
+    } else if (json.list[0].weather[0].main == 'Rain' || json.list[0].weather[0].main == 'Thunderstorm') {
+      document.body.style.backgroundColor = "#A3DEF7";
       document.body.style.color = "#164A68";
-      aboutWeather.innerHTML = `
-      <img class="weather-img" src="./Designs/Design-2/icons/noun_Umbrella_2030530.svg" alt="umbrella icon">
-      <h2>Don't forget your umbrella. It's wet in ${json.city.name} today.</h2>
-      `
+      aboutWeather.innerHTML += `<img class="weather-img" src="../Designs/Design-2/icons/umbrella.svg" alt="umbrella icon">`
+      aboutWeather.innerHTML += `<h2>Don't forget your umbrella. It's wet in ${json.city.name} today.</h2>`
+
+    } else if (json.list[0].weather[0].main == 'Snow') {
+      document.body.style.backgroundColor = "#A3DEF7";
+      document.body.style.color = "#164A68";
+      aboutWeather.innerHTML += `<img class="weather-img" src="../Designs/Design-2/icons/hat." alt="hat icon">`
+      aboutWeather.innerHTML += `<h2>Put your hat on. It's snowing in ${json.city.name} today.</h2>`
+
     } else {
-      document.body.style.backgroundColor = "F7E9B9";
+      document.body.style.backgroundColor = "#F7E9B9";
       document.body.style.color = "#2A5510";
-      aboutWeather.innerHTML = `
-      <img class="weather-img" src="./icons/noun_Sunglasses_2055147.svg" alt="sun-glasses icon">
-      <h2>Get your sunnies on. ${json.city.name} is looking rather great today.</h2>
-      `
+      aboutWeather.innerHTML += `<img class="weather-img" src="../Designs/Design-2/icons/sunglasses.svg" alt="sun-glasses icon">`
+      aboutWeather.innerHTML += `<h2>Get your sunnies on. ${json.city.name} is looking rather great today.</h2>`
     }
   })
 }
 filterWeather();
 
+//Function to show other cities
+// Paris
 const weatherFirstCity = () => {
   fetch("https://api.openweathermap.org/data/2.5/weather?q=Paris,France&units=metric&APPID=8d66acab5dd718723a370e1b64f22f8c")
   .then((response)=> {
@@ -95,14 +97,14 @@ const weatherFirstCity = () => {
   })
   .then ((data)=> {
   console.log(data)
-   firstCityWeather.innerHTML =`
-   <p>The temperature today is ${(Math.round(data.main.temp))}ºC in ${data.name}</p>
-   `
+  firstCityWeather.innerHTML += `
+  <img class="city-icon" src="../Designs/Design-2/icons/eiffel-tower.png" alt="eiffel-tower icon"><br>
+  <p>${(Math.round(data.main.temp))}º | ${data.name}</p>`
   })
 }
-
 weatherFirstCity();
 
+// Barcelona
 const weatherSecondCity = () => {
   fetch("https://api.openweathermap.org/data/2.5/weather?q=Barcelona,Spain&units=metric&APPID=8d66acab5dd718723a370e1b64f22f8c")
   .then((response)=> {
@@ -110,10 +112,10 @@ const weatherSecondCity = () => {
   })
   .then ((data)=> {
   console.log(data)
-   secondCityWeather.innerHTML =`
-   <p>The temperature today is ${(Math.round(data.main.temp))}ºC in ${data.name}</p>
-   `
+  secondCityWeather.innerHTML += `
+  <img class="city-icon" src="../Designs/Design-2/icons/sagrada-familia.png" alt="sagrada-familia icon"><br>
+  <p>${(Math.round(data.main.temp))}º | ${data.name}</p>
+  `
   })
 }
-
 weatherSecondCity();

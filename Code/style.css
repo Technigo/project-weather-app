@@ -17,6 +17,7 @@ header {
     font-size: 18px;
     line-height: 0.4;
     padding: 20px 0px 0px 20px;
+    text-transform: lowercase;
 }
 
 main {
@@ -46,9 +47,34 @@ li {
     list-style: none;
     padding: 4px 4px;
     font-size: 22px;
+    text-transform: lowercase;
+}
+
+.other-cities {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 85%;
+    margin: 5px;
+}
+
+.first-city, .second-city {
+    margin: 15px;
+    text-align: center;
+}
+
+footer {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    font-size: 12px;
 }
 
 /* Responsive design - tablet and desktop */
 @media (min-width: 667px) {
+    body {
+        width: 60%;
+        margin: 0 auto;
+    }
 
   }
