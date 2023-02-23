@@ -3,10 +3,11 @@
 const today = document.getElementById("weatherToday");
 const dailyTextMsg = document.getElementById("dailyText");
 const dayFive = document.getElementById("fiveDays");
-
-const bodyColor =document.documentElement;
-
-
+/* const sunnyBody = document.getElementsByClassName("#sunny")
+const foggyBody = document.getElementsByClassName("#foggy")
+const rainyBody = document.getElementsByClassName("#rain")
+const cloudyBody = document.getElementsByClassName("#cloudy") */
+let bodySelector = document.getElementById("bodyStyle")
 //api key
 const apiKey = "4f9ca5d3e70c95a041bc513ac8b31ff8"
 
@@ -17,6 +18,9 @@ const longitude = -9.1333
 
 const lisbonURL = `http://api.openweathermap.org/data/2.5/weather?q=Lisbon,Portugal&units=metric&APPID=${apiKey}`;
 const fiveDayURL = `http://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`
+
+
+
 
 
 //This code fetches the data, turns it into json and passes it to other functions
@@ -72,13 +76,15 @@ const checkWeather = (dataLis) => {
   console.log(dataLis.weather[0].main);
 
   if (dataLis.weather[0].main === 'Clouds'){
-    dailyTextMsg.innerHTML=   `<div id="cloud" class="cloudy">
+    bodySelector.classList.add('cloudy');
+    dailyTextMsg.innerHTML=   `<div id="cloud">
 <img src="/Designs/Design-2/icons/noun_Cloud_1188486.svg" alt="">
     <p>oh oooo Its cloudy in ${dataLis.name} right now</p>
-</div>`
-bodyColor.style.setProperty('--primary-color', '#B5DCE9')}
+</div>`;
+}
 
     else if (dataLis.weather[0].main === 'Clear'){
+      bodySelector.classList.add('sunny');
       dailyTextMsg.innerHTML=  `<div id="sunGlasses" class="sunglasses">
       <img src="/Designs/Design-2/icons/noun_Sunglasses_2055147.svg" alt="">
         
@@ -87,15 +93,16 @@ bodyColor.style.setProperty('--primary-color', '#B5DCE9')}
     `
     } 
     else if (dataLis.weather[0].main === 'Fog'){
+      bodySelector.classList.add('foggy');
      dailyTextMsg.innerHTML=    
      `<div id="fog" class="fog">
-  <img src="/Designs/Design-2/icons/noun_Umbrella_2030530.svg" alt="">
+     <img src="/Designs/Design-2/icons/noun_Cloud_1188486.svg" alt="">
   <p>Fog on ${dataLis.name} right now</p>
 </div>`
     }
     
     else {
-      
+      bodySelector.classList.add('rain');
      dailyTextMsg.innerHTML=  `<div id="umbrella" class="umbrellas">
   <img src="/Designs/Design-2/icons/noun_Umbrella_2030530.svg" alt="">
   <p>Raindropps on ${dataLis.name} right now</p>
