@@ -10,21 +10,43 @@ const date = document.getElementById("date")
 let todayWeather
 
 //Fetching data from API
-fetch('http://api.openweathermap.org/data/2.5/weather?q=Gothenburg,Sweden&units=metric&APPID=06edb4af2e0738583f1bc67674449140')
+navigator.geolocation.getCurrentPosition(position => {
+fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&APPID=06edb4af2e0738583f1bc67674449140`)
     .then ((response) => {
+        if(!response.ok) {
+            throw Error("Weather data is not available right now.")
+        }
         return response.json()
     })
-    .then((json) => {
-        console.log(json)
-        container.innerHTML = `<h1>The weather in ${json.name} is ${json.timezone} today.</h1>`
-        /*Change from timezone*/
-
-        /*json.weather.array.forEach((zz) => {
-            container.innerHTML += `<p>${} is in ${}</p>`
-        });*/
+    .then(data => {
+        getWeather(data)
+        //container.innerHTML = `<h1>Light a candle and get cosy. ${json.name} is looking grey today.</h1>`
+        filterWeather(data)
+        
     })
+.catch(err => console.error(err))
+})
 
-    
+const getWeather = (data) => {
+
+    todayWeather = data.list[0].weather[0].main 
+
+    const todayTemp = data.list[0].main.temp 
+    /*new Date() constructor:
+
+    When called as a constructor, returns a new Date object.
+    Link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+    */
+    const getSunRise = new Date ((data.city.sunrise + data.city.timezone + new Date().getTimezoneOffset()*60) * 1000)
+
+    const getSunSet = new Date ((data.city.sunset + data.city.timezone + new Date().getTimezoneOffset()*60) * 1000)
+}
+
+/*json.weather.array.forEach((zz) => {
+        container.innerHTML += `<p>${} is in ${}</p>`
+    });*/
+
+
 //Display weather.main, weather.description (type of weather) 
 //Display main.temp (current temperature in city XX)
 //Display sys.sunrise (time of sunrise)
