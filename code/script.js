@@ -15,6 +15,25 @@ const day = document.getElementById("day");
 
 let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
+const showMessage = (weather, city) => {
+  console.log(weather)
+  if (weather === "Snow") {
+    messageImg.innerHTML = `<img src="./images/snow.png" alt="snow-cloud">`
+    messageText.innerHTML = `Put on a warm coat. It's snowing in ${city} today.`
+  } else if (weather === "Clouds") {
+    messageImg.innerHTML = `<img src="./images/cloud.svg" alt="Cloud">`
+    messageText.innerHTML = `Light a fire and get cosy. ${city} is looking grey today`
+  } else if (weather === "Clear") {
+    messageImg.innerHTML = `<img src="./images/sunglasses.svg" alt="Sunglasses">`
+    messageText.innerHTML = `Get your sunnies on. ${city} is looking rather great today.`
+  } else if (weather === "Rain") {
+    messageImg.innerHTML = `<img src="./images/umbrella.svg" alt="Umbrella">`
+    messageText.innerHTML = `Don't forget your umbrella. It's wet in ${city} today.`
+  } else {
+    messageImg.innerHTML = `<img src="./images/sun-cloud.png" alt="Sun and cloud">`
+    messageText.innerHTML = `Remember, ${city}: No such thing as bad weather, only bad clothing. `
+  }
+}
 
 
 const fetchWeatherData = () => {
@@ -38,7 +57,11 @@ const fetchWeatherData = () => {
       sunset.innerHTML = `
       Sunset: ${sunsetTime.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})}
       `
+      
+      //Message: Image and personalised message, depending on the weather.
+      showMessage(`${json.weather[0].main}`, `${json.name}`)
     });
+    
   // catch((error) => console.error(error));
 };
 fetchWeatherData();
