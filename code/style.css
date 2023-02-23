@@ -1,4 +1,17 @@
 /* Global css variables used for colors */
+/* HEX:
+//Clouds
+#F47775 - dark red
+#FBF4F4 - light pink
+//Rain
+#F4F7F8 - grey/light blue
+#164A68 - dark blue
+#A3DEF7 - light blue
+//Sunny
+#2A5510 - dark green
+#F7E9B9 - beige/yellow 
+*/
+
 :root {
   --primary: tomato;
   --secondary: #63cdc9;
@@ -17,17 +30,15 @@ body {
 }
 
 .todays-weather {
-  /* width: 50%; */
+  width: 50%;
   padding: 40px 20px;
 }
 .weather-body {
-  background-color: #f7e9b9;
   height: 100vh;
   width: 100%;
 }
 
 h1 {
-  color: #2a5510;
   padding: 20px;
 }
 
