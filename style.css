@@ -16,6 +16,7 @@
 
 p {
     font-family: 'Montserrat', sans-serif;
+    margin: 20px;
 }
 .search {
     display: flex;
@@ -35,5 +36,6 @@ p {
 
 img {
     width: 100px;
+    margin: 20px;
 }
 
