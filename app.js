@@ -4,11 +4,15 @@ const californiaAPI = "http://api.openweathermap.org/data/2.5/weather?q=Crestlin
 const colomboAPI = "http://api.openweathermap.org/data/2.5/weather?q=Colombo,LK%20&units=metric&APPID=0885d110db76ae5dbaae0c2672772fdf"
 const tokyoAPI = "http://api.openweathermap.org/data/2.5/weather?q=Tokyo,JP%20&units=metric&APPID=0885d110db76ae5dbaae0c2672772fdf"
 const API_forecast = `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=${myAPIKey}`
+
+
 //DOM Selectors
 const temperature = document.getElementById("temperature")
 const feelsLike = document.getElementById("feels-like")
 const city = document.getElementById("city")
 const weatherDescription = document.getElementById("weather-description")
+const weatherTodayWrapper = document.getElementById("weather-today-wrapper")
+const forecastWrapper = document.getElementById("forecast-wrapper");
 
 const caTemperature = document.getElementById("jp-temperature")
 const caCity = document.getElementById("jp-city")
@@ -17,7 +21,7 @@ const caWeatherDescription = document.getElementById("jp-weather-description")
 const lkTemperature = document.getElementById("jp-temperature")
 const lkCity = document.getElementById("jp-city")
 const lkWeatherDescription = document.getElementById("jp-weather-description")
-const weatherTodayWrapper = document.getElementById("weather-today-wrapper")
+
 
 
 const jpTemperature = document.getElementById("jp-temperature")
@@ -61,9 +65,10 @@ fetch(API_today)
        sunrise.innerHTML = `Sunrise: ${sunriseDate.toLocaleTimeString([], options)}`;
    
        const sunset = document.getElementById("sunset")
-       sunset.innerHTML = `Sunset: ${sunsetDate.toLocaleTimeString([], options)}`; })
+       sunset.innerHTML = `Sunset: ${sunsetDate.toLocaleTimeString([], options)}`; 
+    })
    
-     fetch(californiaAPI)
+fetch(californiaAPI)
      .then((response) => {
          return response.json()
      })
@@ -80,7 +85,7 @@ fetch(API_today)
          weatherDescription.innerHTML = `<h2>${caWeatherDes}</h2>`;
    
        });
-       fetch(colomboAPI)
+fetch(colomboAPI)
      .then((response) => {
          return response.json()
      })
@@ -98,7 +103,7 @@ fetch(API_today)
    
        });
    
-       fetch(tokyoAPI)
+fetch(tokyoAPI)
      .then((response) => {
          return response.json()
      })
@@ -115,8 +120,9 @@ fetch(API_today)
          weatherDescription.innerHTML = `<h2>${jpWeatherDes}</h2>`;
    
        });
-   
-       fetch(API_forecast)
+
+//Weather forecast Stockholm 5 days
+fetch(API_forecast)
     .then((response) => {
         return response.json()
     })
