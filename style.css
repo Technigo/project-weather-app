@@ -28,3 +28,19 @@ table tr td {
   padding: 25px 0px 4px 0px;
 }
 
+.searchHeader {
+  display: flex;
+  justify-content: center;
+}
+
+.searchButton {
+  background: white;
+  border: 0;
+
+  cursor: pointer;
+  background: white;
+}
+
+.searchIcon {
+  height: 22px;
+}
