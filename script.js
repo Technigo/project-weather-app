@@ -14,14 +14,13 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
 
     .then((response) => {
         return response.json()
-    })
+ })
 
-    // Then we start using the material we need from the API and gets it with the ${materialweneed}
-    // First of is the forcastRightNow-part
+/////////////////////// THIS IS THE WEATHER AT THE TOP/////////////////////////////
 
-    /////////////////////// THIS IS THE WEATHER AT THE TOP/////////////////////////////
+     // First of is the forcastRightNow-part
 
-    .then((json) => {
+.then((json) => {
 
     const sunriseTimeStamp = (json.sys.sunrise * 1000)
     const sunriseFormat = new Date(sunriseTimeStamp)
@@ -47,7 +46,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
      Wind is ${(Math.round(json.wind.speed))} m/s and the temperature is ${(Math.round(json.main.temp))}°C.
      </h1>`
 
-    })
+})
 
 ///////////////////////// WEEKDAYS //////////////////////////////////////////
 
@@ -60,15 +59,19 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
 
     .then((response) => {
         return response.json()
-    })
+})
 
-    .then((json) => {
+.then((json) => {
 
 // This part makes the json show the temperature from 12:00 each day
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
     console.log(filteredForecast)
     filteredForecast.forEach((fiveDayForecast) => {
-        weekdays.innerHTML += `
-        <h3><span class='left'>${fiveDayForecast.dt_txt}</span><span class='right'>${(Math.round(fiveDayForecast.main.temp))}°C</span><hr></h3>`
+    weekdays.innerHTML += 
+    `<h3>
+    <span class='left'>${fiveDayForecast.dt_txt}</span>
+    <span class='right'>${(Math.round(fiveDayForecast.main.temp))}°C</span>
+    <hr>
+    </h3>`
     })
 })
