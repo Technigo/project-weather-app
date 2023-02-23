@@ -1,4 +1,10 @@
 //https://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript //Frida
+//Annika:
+// 1. kolla upp hur omvandla millisekunder (sunrise osv) till tidpunkt.
+// 2. style i css,
+//Frida:
+// styla "lila" delen
+//2. fixa contidionals
 
 let unix_timestamp = 1549312452;
 // Create a new JavaScript Date object based on the timestamp
@@ -39,3 +45,12 @@ const filteredForecast = json.list.filter((item) =>
   item.dt_txt.includes("12:00")
 );
 // filteredForecast is now an array with only the data from 12:00 each day.
+
+document.body.style.backgroundColor = "#F7E9B9";
+document.body.style.color = "#2A5510";
+
+// Use this later, after deployment
+// This will be possible after we will bundle our projets (ex webpack);
+// const myKey = process.env.MY_KEY;
+// let urlWeather = `http://api.openweathermap.org/data/2.5/weather?q=Kiruna,Sweden&units=metric&APPID=${MY_KEY}`;
+// let urlForecast = `https://api.openweathermap.org/data/2.5/forecast?q=Kiruna,Sweden&units=metric&APPID=${MY_KEY}`;

@@ -1,13 +1,12 @@
 // Annikas Key:
-"http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=d37e49016232d41da09ab7080df2faa7";
+//"http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=d37e49016232d41da09ab7080df2faa7";
 
 const main = document.getElementById("main");
 const todaysHeaderForecast = document.getElementById("todaysHeaderForecast");
-const symbolImage = document.getElementById("symbol");
 const textForecast = document.getElementById("textForecast");
 const weeklyForecast = document.getElementById("weeklyForecast");
 
-// This makes the URL easier to read in the code
+// Variables that makes the URL shorter to write in the code
 let urlWeather =
   "http://api.openweathermap.org/data/2.5/weather?q=Kiruna,Sweden&units=metric&APPID=d37e49016232d41da09ab7080df2faa7";
 let urlForecast =
@@ -20,20 +19,28 @@ fetch(urlWeather)
   })
   .then((wData) => {
     //console.log(wData.weather[0].description);
+    const sunrise = new Date(wData.sys.sunrise * 1000).toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    const sunset = new Date(wData.sys.sunset * 1000).toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
 
     // Using math.round in the template literal for temperature to make it an equal number.
-    todaysHeaderForecast.innerHTML = `<p>The weather is ${
+    todaysHeaderForecast.innerHTML = `<p>${
       wData.weather[0].description
-    } in ${wData.name}.</p> <p>
-    The current temperature is ${Math.round(
-      wData.main.temp
-    )}</p> <p> Feels like ${Math.round(wData.main.feels_like)}</p>
-    <p>Sunrise: ${wData.sys.sunrise}</p> 
-    <p>Sunset: ${wData.sys.sunset}</p> `;
+    } | ${Math.round(wData.main.temp)}°</p>
+    <p>Sunrise | ${sunrise}</p> 
+    <p>Sunset | ${sunset}</p> `;
 
-    let todaysWeatherMain = wData.weather[0].main;
-    //console.log("Today's main weather test", todaysWeatherMain);
+    //-------------------------------//
+
     // Create conditional statement that inserts symbol and weather description depending on the weather (ex: "Clouds")
+    let todaysWeatherMain = wData.weather[0].main; //This is what in the API is called "Clouds", "Snow" etc
+    //console.log("Today's main weather test", todaysWeatherMain);
+
     if (todaysWeatherMain === "Clouds") {
       textForecast.innerHTML = `
       <img src="Designs/Design-1/assets/Group16.png">
@@ -45,6 +52,7 @@ fetch(urlWeather)
       `<img src=""
       <p>Okänt väder idag</p>`;
     }
+    // ${wData.name}
     //osv
   });
 
