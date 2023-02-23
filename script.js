@@ -23,26 +23,4 @@ fetch(API_today)
     sunrise.innerHTML += `<p>Weather: ${json.weather[0].description}</p>`;
   });
 
-/*Here we are invoking our functions.*/
-
-/* - **STEP 2 - Present some data on your web app**
-    
-Your task is to present some data on your web app. Start with
-    
-- the city name
-"name": "Stockholm",
-
-- the temperature (rounded to 1 decimal place)
-"main": {
-    "temp": -2.12,
-
-- and what type of weather it is (the "description" in the JSON) 
-"weather": [
-    {
-      "description": "broken clouds",
-    }
-
-*/
-
-
 //Hannah
