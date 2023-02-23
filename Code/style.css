@@ -9,14 +9,14 @@ body {
 }
 
 header {
-    height: 25vh;
+    height: 20vh;
     width: 100%;
 }
 
 .today-summary {
     font-size: 18px;
     line-height: 0.4;
-    padding: 20px 0px 0px 30px;
+    padding: 20px 0px 0px 20px;
 }
 
 main {
