@@ -13,12 +13,26 @@
 
   <body>
     <div class="top-info" id="top-info">
+      <!--Search Location-->
+
+      <div class="the-weather-app">
+        The Weather App!
+
+        <div class="search-box">
+          <input
+            type="text"
+            class="search-box"
+            placeholder="Search your location"
+          />
+          <button>
+            <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </div>
+
       <div class="img" id="img">
         <div id="weather" class="weatherToday"></div>
-
-        <div id="description-today" class="descriptionToday">
-          <img class="weather-icon" id="iconFileName" />
-        </div>
+        <div id="description-today" class="descriptionToday"></div>
 
         <div id="temp-today" class="tempToday"></div>
         <div id="feelslike" class="feelslike"></div>
@@ -36,6 +50,10 @@
       </section>
     </div>
 
+    <script
+      src="https://kit.fontawesome.com/8e045d922d.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="script.js"></script>
   </body>
 </html>
