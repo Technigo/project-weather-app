@@ -79,18 +79,18 @@ Font color: #F47775*/
 
 /***Header(Emma)***/
 .container-header {
-    font-size: large;
+    margin-bottom: 3.8rem;
 }
-    
 
-
+.container-header p {
+    margin-bottom: 0.2em;
+}
 
 /***Main(Emma)***/
 
 .container-text {
     display: flex;
     flex-direction: column;
-    color: blue;
 }
 
 .container-text img {
@@ -98,6 +98,10 @@ Font color: #F47775*/
     max-width: 200px;
 }
 
+h1 {
+    font-size: 3rem;
+    margin-block: 0.5em;
+}
 
 /***Date(Emma)***/
 
@@ -110,13 +114,8 @@ Font color: #F47775*/
     display: flex;
     justify-content: space-between;
     border-bottom: 1px dashed;
-    padding: 0.5em;
-
+    padding: 0.6em;
 }
-
-
-
-
 
 /***Media queries***/
 
