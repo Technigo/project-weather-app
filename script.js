@@ -5,6 +5,19 @@ const sunUp = document.getElementById("sunrise");
 const sunDown = document.getElementById("sunset");
 const windGust = document.getElementById("wind");
 
+// Define weatherIcons object
+const weatherIcons = {
+  "clear sky": "./images/sun.png",
+  "few clouds": "./images/partly-cloudy.png",
+  "scattered clouds": "./images/partly-cloudy.png",
+  "overcast clouds": "./images/cloud.png",
+  "shower rain": "./images/heavy-rain.png",
+  rain: "./images/heavy-rain.png",
+  thunderstorm: "./images/storm.png",
+  snow: "./images/snow.png",
+  mist: "./images/haze.png",
+};
+
 fetch(
   "https://api.openweathermap.org/data/2.5/weather?q=Malmo,Sweden&units=metric&APPID=7916e2ff30e82c8f4b79258c3235d9c2"
 )
@@ -13,9 +26,17 @@ fetch(
   })
   .then((json) => {
     // Update weather in Malmo from API
+
     weather.innerHTML = `<h1>Today's weather in ${json.name}</h1>`;
 
+    // Describe weather and change weatherIcon based on weather description
     descriptionToday.innerHTML = `<h2>The weather is ${json.weather[0].description}</h2>`;
+    // Change weatherIcon based on weather description
+    if (json.weather[0].description) {
+      const iconFileName =
+        weatherIcons[json.weather[0].description.toLowerCase()];
+      descriptionToday.innerHTML += `<img src="${iconFileName}" alt="Weather icon">`;
+    }
 
     tempToday.innerHTML = `<h3>The temperature is ${
       Math.round(json.main.temp * 10) / 10
