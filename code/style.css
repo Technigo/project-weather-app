@@ -1,1 +1,54 @@
-/* TESTING STYLING BRANCH 
+
+
+* 
+  body {
+background-color: #f7e9b9;
+font-family: 'Montserrat', sans-serif;
+color: #2a5510;
+
+  }
+  
+  .container {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .weather-container {
+
+  }
+  
+  #todays-temp {
+    font-size: 72px;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+  
+  #city {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  #todays-weather {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+  
+  #sunrise, #sunset {
+    font-size: 18px;
+  }
+  
+  .forecast-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+  }
+  
+  
+  
+
+
+
+
+
+>>>>>>> a633ab55b844d37fd7676d35c7fc0412a70d89f8
