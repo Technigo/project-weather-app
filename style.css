@@ -8,4 +8,23 @@ body {
 
 }
 
+/*Styling based on weather change*/
+.clear {
+    background-color: #f7e9b9;
+    color: #2a5510;
+  }
+  
+  .clouds {
+    background-color: #f4f7f8;
+    color: #f47775;
+  }
+  
+  .rain {
+    background-color: #a3def7;
+    color: #164a68;
+  }
+
+
+
+
 /*Längst ner behövs beskrivningar för olika devices - desktop*/
