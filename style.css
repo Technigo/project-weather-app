@@ -18,7 +18,10 @@ p {
     font-family: 'Montserrat', sans-serif;
 }
 .search {
+    display: flex;
+    justify-content: center;
     font-family: 'Montserrat', sans-serif;
+    margin: 20px;
 }
 .searchbar {
     padding: 10px;

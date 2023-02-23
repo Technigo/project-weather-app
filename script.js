@@ -75,10 +75,11 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
     const roundedTemp = Math.round(data.main.temp * 10)/10;
     console.log(roundedTemp)
     weatherWrapper.innerHTML +=
-    `<div id='main-temp' class='main-temp'><p>${roundedTemp} Celcius</p></div>`
+    `<div id='main-temp' class='main-temp'><p>${roundedTemp}°C</p></div>`
 })
 
 
+    //Same function as above but changes depending on what you type in the searcbar
     searchbar.addEventListener('change', () => {
 
     fetch (`https://api.openweathermap.org/data/2.5/weather?q=${searchbar.value}&units=metric&APPID=d9838d8630b03a974ed368611cffd256`)
@@ -152,4 +153,8 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
     }
     })
 })
+    const roundedTemp = Math.round(data.main.temp * 10)/10;
+    console.log(roundedTemp)
+    weatherWrapper.innerHTML +=
+    `<div id='main-temp' class='main-temp'><p>${roundedTemp}°C</p></div>`
     })
