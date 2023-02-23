@@ -2,6 +2,10 @@
  const header = document.querySelector(".today-summary")
  const aboutWeather = document.querySelector(".about-weather")
  const weatherForecast = document.querySelector(".weather-forecast")
+ const firstCityWeather = document.querySelector(".first-city")
+ const secondCityWeather = document.querySelector(".second-city")
+
+
 
  // Global scope
  const api = "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=8d66acab5dd718723a370e1b64f22f8c"
@@ -83,3 +87,33 @@ const filterWeather = () => {
   })
 }
 filterWeather();
+
+const weatherFirstCity = () => {
+  fetch("https://api.openweathermap.org/data/2.5/weather?q=Paris,France&units=metric&APPID=8d66acab5dd718723a370e1b64f22f8c")
+  .then((response)=> {
+    return response.json();
+  })
+  .then ((data)=> {
+  console.log(data)
+   firstCityWeather.innerHTML =`
+   <p>The temperature today is ${(Math.round(data.main.temp))}ºC in ${data.name}</p>
+   `
+  })
+}
+
+weatherFirstCity();
+
+const weatherSecondCity = () => {
+  fetch("https://api.openweathermap.org/data/2.5/weather?q=Barcelona,Spain&units=metric&APPID=8d66acab5dd718723a370e1b64f22f8c")
+  .then((response)=> {
+    return response.json();
+  })
+  .then ((data)=> {
+  console.log(data)
+   secondCityWeather.innerHTML =`
+   <p>The temperature today is ${(Math.round(data.main.temp))}ºC in ${data.name}</p>
+   `
+  })
+}
+
+weatherSecondCity();
