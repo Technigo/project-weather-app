@@ -1,6 +1,40 @@
 const currentWeather = document.getElementById("current-weather");
 const forecast = document.getElementById("forecast");
 
+//Geolocation
+const options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0,
+};
+
+const success = (pos) => {
+  const crd = pos.coords;
+  let latitude = crd.latitude;
+  let longitude = crd.longitude;
+  console.log("Your current position is:");
+  console.log(`Latitude : ${crd.latitude}`);
+  console.log(`Longitude: ${crd.longitude}`);
+  console.log(`More or less ${crd.accuracy} meters.`);
+  console.log(latitude, longitude);
+  return (
+    getCurrentWeatherData(latitude, longitude),
+    getForecastWeatherData(latitude, longitude)
+  );
+};
+
+const error = (err) => {
+  console.warn(`ERROR(${err.code}): ${err.message}`);
+  let latitude = 59.334591;
+  let longitude = 18.06324;
+  return (
+    getCurrentWeatherData(latitude, longitude),
+    getForecastWeatherData(latitude, longitude)
+  );
+};
+
+navigator.geolocation.getCurrentPosition(success, error, options);
+
 // element creators
 const createElement = (tag, className, id, textContent, appendTo) => {
   const newElement = document.createElement(tag);
@@ -19,10 +53,9 @@ const createImage = (className, src, alt, appendTo) => {
 };
 
 // current weather details
-const getCurrentWeatherData = () => {
-  fetch(
-    `http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=f60c361b4571fb70c85f29bbd856c13f`
-  )
+const getCurrentWeatherData = (latitude, longitude) => {
+  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=f60c361b4571fb70c85f29bbd856c13f`;
+  fetch(url)
     .then((response) => {
       return response.json();
     })
@@ -30,15 +63,15 @@ const getCurrentWeatherData = () => {
       console.log(data);
 
       createElement(
-        "div",
+        "h1",
         "temperature",
         "temperature",
-        data.main.temp,
+        `${data.main.temp} °C`,
         currentWeather
       );
       createElement("div", "city", "city", data.name, currentWeather);
       createElement(
-        "div",
+        "h2",
         "weather-type",
         "weather-type",
         data.weather[0].description,
@@ -56,32 +89,30 @@ const getCurrentWeatherData = () => {
         "div",
         "sunrise",
         "sunrise",
-        new Date(data.sys.sunrise * 1000).toLocaleTimeString([], {
+        `sunrise: ${new Date(data.sys.sunrise * 1000).toLocaleTimeString([], {
           hour: "2-digit",
           minute: "2-digit",
-        }),
+        })}`,
         sunriseSunset
       );
       createElement(
         "div",
         "sunset",
         "sunset",
-        new Date(data.sys.sunset * 1000).toLocaleTimeString([], {
+        `sunset: ${new Date(data.sys.sunset * 1000).toLocaleTimeString([], {
           hour: "2-digit",
           minute: "2-digit",
-        }),
+        })}`,
         sunriseSunset
       );
     });
 };
-
 getCurrentWeatherData();
 
 //forecast
-const getForecastWeatherData = () => {
-  fetch(
-    `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&appid=f60c361b4571fb70c85f29bbd856c13f`
-  )
+const getForecastWeatherData = (latitude, longitude) => {
+  const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=f60c361b4571fb70c85f29bbd856c13f`;
+  fetch(url)
     .then((response) => {
       return response.json();
     })
@@ -89,7 +120,7 @@ const getForecastWeatherData = () => {
       console.log(data);
       const filteredList = data.list.filter((element) => {
         return (
-          new Date(element["dt_txt"]).getHours() === 0 &&
+          new Date(element["dt_txt"]).getHours() === 9 &&
           new Date(element["dt_txt"]).getDay() !== new Date(Date.now()).getDay()
         );
       });
@@ -115,17 +146,17 @@ const getForecastWeatherData = () => {
 
         createElement("p", "", "", getDayName, objectElement),
           // img
-          createImage("", "assets/test.png", "test image", objectElement);
+          createImage(
+            "forecast-img",
+            `http://openweathermap.org/img/wn/${element.weather[0].icon}@2x.png`,
+            element.weather[0].main,
+            objectElement
+          );
         //temp
-        createElement(
-          "p",
-          "",
-          "",
-          `${element.main["temp_max"]} °C / ${element.main["temp_min"]} °C`,
-          objectElement
-        );
+        const averageTemp =
+          (element.main["temp_max"] + element.main["temp_min"]) / 2;
+        createElement("p", "", "", `${averageTemp} °C`, objectElement);
       });
     });
 };
-
 getForecastWeatherData();

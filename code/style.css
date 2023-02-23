@@ -53,11 +53,11 @@ body {
     padding-right: 3%;
 }
 
-current.weather {
+.current-weather {
     height: 220px;
 
 }
-forecast {
+.forecast {
     display: block;
     padding-top: 7%;
 
@@ -137,3 +137,27 @@ footer {
         font-size: 22px;
     }
 }
+.forecast-img{
+    width:40px;
+}
+/* main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    background: var(--primary);
+    height: 100vh;
+    justify-content: space-between;
+    box-shadow: 1px 5px 30px -2px rgb(115 110 110 / 76%);
+    -webkit-box-shadow: 1px 5px 30px -2px rgb(115 110 110 / 76%);
+    -moz-box-shadow: 1px 5px 30px -2px rgba(115, 110, 110, 0.76);
+}
+
+.day {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+} */
