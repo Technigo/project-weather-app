@@ -38,7 +38,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm&units=metric&
     })
 
 
-const getSunriseSunsetData = () => {
+const getSunriseSunsetData = (city) => {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`)
         .then((response) => {
             return response.json()
@@ -46,16 +46,15 @@ const getSunriseSunsetData = () => {
         .then((json) => {
             //console.log(`json:`, json)
 
-            //const sunriseUnix = json.sys.sunrise;                   // Unix timestamp
             const sunriseTime = new Date(json.sys.sunrise * 1000);       //Gives us the time in "human" form (as a date), mult. by 1000 to get it in ms.
             const sunriseShort = sunriseTime.toLocaleTimeString([], { timeStyle: 'short' }).replace("AM", "").replace("PM", "");        //Transforms it into just the Hour/minutes and AM/PM. Select the short variant to get the time with minutes and not seconds.
             const sunsetTime = new Date(json.sys.sunset * 1000);
             const sunsetShort = sunsetTime.toLocaleTimeString([], { timeStyle: 'short' }).replace("AM", "").replace("PM", "");          //Tar bort AM och PM, kolla om det finns bättre sätt.
 
             //Modifying the HTML based on our input:
-            sunriseText.innerHTML += `<p>sunrise</p>
+            sunriseText.innerHTML = `<p>sunrise</p>
                                         <p class="time-data">${sunriseShort}</p>`;
-            sunsetText.innerHTML += `<p>sunset</p>
+            sunsetText.innerHTML = `<p>sunset</p>
                                     <p class="time-data">${sunsetShort}</p>`;
         })
         .catch((err) => {
@@ -63,11 +62,10 @@ const getSunriseSunsetData = () => {
         })
 }
 
-getSunriseSunsetData();
 
 
 const weatherForecastData = () => {
-    fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=c480de5f69ca98d1993a4dae3213642e')
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=c480de5f69ca98d1993a4dae3213642e`)
         .then((forecastResponse) => {
             return forecastResponse.json();
         })
@@ -101,6 +99,9 @@ const toggleSearchField = () => {
     searchToggler.classList.toggle('hidden');
     closeSearchMenu.classList.toggle('hidden');
     searchMenuBtn.classList.toggle('hidden');
+
+    //Goes back to default after toggling
+    getSunriseSunsetData(city);
 }
 
 const searchFunction = () => {
@@ -111,10 +112,15 @@ const searchFunction = () => {
 
         //Use the city searched and inject into ""fetchWeather""" function:
         //weather.fetchWeather(searchedCity); //Skriv om till den vi använder
+        getSunriseSunsetData(searchedCity);
+        //weatherForecastData(searchedCity);
 
         //Clears field & hides the input field:
         inputField.value = "";
 }
+
+getSunriseSunsetData(city);
+
 
 //Eventlistener to toggle search field:
 searchMenuBtn.addEventListener('click', toggleSearchField)
