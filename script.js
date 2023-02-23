@@ -54,4 +54,5 @@ const weatherForecastData = () => {
 
 weatherForecastData();
  
-
+//Learn how to get symbols from the api
+//Learn how to get a search word to show an image from unsplash
