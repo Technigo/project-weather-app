@@ -1,3 +1,30 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    background-color: rgb(223, 223, 252);
+    width: 100%;
+    max-width: 500px;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.sun-position,
+#sunriseText,
+#sunsetText {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.sun-position .time-data {
+    margin: auto 10px;
+}
+
 .weather-forecast {
     display: flex;
     justify-content: space-evenly;
@@ -7,4 +34,16 @@
     display: flex;
     flex-direction: column;
     width:125px;
+}
+
+footer {
+    text-align: center;
+    color: grey;
+}
+
+
+
+/* To use when hiding something*/
+.hidden {
+    display: none;
 }
