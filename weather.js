@@ -1,11 +1,12 @@
-const searchBar = document.getElementById ('search-bar')
+const searchBar = document.getElementById ('searchBar')
 const name = document.getElementById("name");
 const tempMax = document.getElementById("tempmax");
 const tempMin = document.getElementById("tempmin");
 const description = document.getElementById("description");
 const sunriseTime = document.getElementById("sunriseTime");
 const sunsetTime = document.getElementById("sunsetTime");
-const weatherHeader = document.getElementById("weather-header")
+const weatherHeader = document.getElementById("weatherHeader")
+
 
 // url with our api id / stockholm as default city
 const API_WEATHER = `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=93834bb23b2a9e80836d0a5415cc4a72`
@@ -29,9 +30,12 @@ const weatherData = () => {
 
       const sunriseStart = new Date (json.sys.sunrise*1000); 
       const sunsetStart = new Date (json.sys.sunset*1000); 
-      sunriseTime.innerHTML = sunriseStart.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}); 
-      sunsetTime.innerHTML = sunsetStart.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}); 
-
+      
+      weatherHeader.innerHTML = `
+      <p>${json.weather[0].description.toLowerCase()} | ${Math.round(json.main.temp)}°</p>
+      <p>sunrise ${sunriseStart.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})}</p>
+      <p>sunset ${sunsetStart.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})}</p>
+      `; 
 
 
     })
