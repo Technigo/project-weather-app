@@ -3,9 +3,17 @@
     --dark-color: #232323;
   }
 
+  html * {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
 body {
     background: var(--light-color);
     font-family: 'Sora', sans-serif;
+
+    
 }
 
 .weather-box {
@@ -18,116 +26,146 @@ body {
 
 .city-name {
   font-weight: 800;
-  font-size: 40px;
+  font-size: 1rem;
   color: var(--dark-color);
   text-align: center;
+  margin-top: 3.4rem;
 }
 
 .big-weather-symbol {
-margin-top: 6%;       
-width: 240px;
+margin-top: 10%;
+margin-bottom: 4%;       
+width: 7rem;
 filter: invert(10%) sepia(0%) saturate(446%) hue-rotate(138deg) brightness(98%) contrast(91%);
 
 }
 
 .current-temp {
+    margin-top: 3%;
+    margin-bottom: 3%; 
     font-weight: 800;
-    font-size: 96px;
+    font-size: 2.8rem;
     color: var(--dark-color);
     text-align: center;
 
 }
 
 .weather-description {
+    margin-top: 3%;
+    margin-bottom: 6%; 
     font-weight: 800;
-    font-size: 40px;
+    font-size: 1rem;
     color: var(--dark-color);
     text-align: center;
 }
 
+.sun-and-time {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.4em;
+    gap:0.4em;
+    column-gap: 1em;
+}
+
+
 .sun {
 display: flex;
-gap: 100px;
+flex-direction: row;
+justify-content: center;
+
+gap: 125%;
 }
 .sunrise-symbol {
-width: 100px;
+width: 40px;
 filter: invert(10%) sepia(0%) saturate(446%) hue-rotate(138deg) brightness(98%) contrast(91%);
 }
 
 .sunset-symbol {
-width: 100px;
-margin-bottom: -6px; 
+width: 40px;
+margin-bottom: -1%; 
 filter: invert(10%) sepia(0%) saturate(446%) hue-rotate(138deg) brightness(98%) contrast(91%);
 }
 
 .time {
   
     display: flex;
-    gap: 110px;
-    font-weight: 600;
-    font-size: 32px;
+    justify-content: space-evenly;
+    gap: 124%;
+    margin-left:-1%;
+    font-weight: 500;
+    font-size: 0.9rem;
     color: var(--dark-color);
     text-align: center;   
 }
 
-.sun-and-time {
-    display: flex;
-    flex-direction: column;
-
-    
-
-}
-
 
 .wind {
+    margin-top: 6%;
+    margin-bottom: 6%; 
 display: grid;
 justify-content: center;
 filter: invert(10%) sepia(0%) saturate(446%) hue-rotate(138deg) brightness(98%) contrast(91%);
 }
 
 .wind-symbol {
-    width: 100px;
+    width: 40px;
 
     }
 
 
     .wind-speed {
 
-
-    font-weight: 600;
-    font-size: 36px;
+    margin-top: -0.2rem;    
+    font-weight: 500;
+    font-size: 0.9rem;
     color: var(--dark-color);
     text-align: center;
 
     
     }
 
+
+    .forecast {
+        margin-top: 4%;
+    margin-bottom: 4%; 
+        display: flex;
+        justify-content: space-evenly;
+        gap: 2.4rem;
+        
+    } 
+
+
 .weekdays {
-    font-weight: 600;
-    font-size: 36px;
+  
     color: var(--dark-color);
     text-align: left;
 }
 
 .week-temp {
     align-items: right;
-    font-weight: 600;
-    font-size: 36px;
+    font-weight: 500;
+    font-size: 0.9rem;
     color: var(--dark-color);
     text-align: right;
 }
 
+h6 {
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.6rem;
+    }
 
+.firstDay .secodDay .thirdDay .fourthDay .fifthDay {
+
+    line-height: 1;
+
+
+}
 
 .time {
     display: flex;
 }
 
-.forecast {
-    display: flex;
-    justify-content: space-between;
-    gap: 480px;
-} 
 
 
 /* .city-name {
