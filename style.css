@@ -1,108 +1,30 @@
-
-*{
-    box-sizing: border-box;
-}
-
-
 body{
-    
-   
+    margin: 10px 0 0 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+justify-content: space-between;
 
-font-family: 'Montserrat', sans-serif;
-background-color: var(--primary-color);
-
-}
-
-.mainContainer{
-    margin: 40px 30px 10px 30px;
 }
 
 /*Used for general styling of all divs.
 */
 .styleAll{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
+    border: 5px black solid;
+    grid-column: 1/4;
+}
+
+.weatherToday {
+    background-color: aqua;
+    
+}
+
+.dailyText{
+    background-color: pink;
  
 }
 
-.weatherToday { /*tighta till göra mindre space mellan texterna kommer ev behöva flytta på allt detta då det ska in i ifstatements?*/
- grid-column: 1/4;
-    font-size: 16px;
+.fiveDays{
+    background-color: tomato;
   
-    font-weight: 400;
-    margin-bottom: 50px;
 }
-
-.weatherToday p {
-    margin: 4px;
-}
-
-.dailyText{ 
-  grid-column: 1/4;
-    font-size: 30px;
-    font-weight: 700;
- 
-    margin-bottom: 50px;
-}
-
-.fiveDays{  
-/* display: grid;
-grid-template-columns: 1fr; */
-font-weight: 400;
-font-size: 16px;
-
-}
-
-.border {
-    display: grid;
-  grid-template-columns: 1fr 1fr;
-    justify-content: space-between;
-    border-bottom: 2px dotted gray;
-}
-
-.day{
- display: inline;
-
-
-}
-.temp{
-
-text-align: right;
-display:inline;
-}
-
-
-
-.sunny{
-    background-color: #f7e9b9;
-
-    color:  #2a5510;
-    
-}
-.foggy{
-  background-color: #d5d9db;
-  color: black;
-    
-}
-
-.rain{
-   background-color: #BDE8FA ;
-   color: #164a68;
-    
-}
-
-.cloudy{
-background-color: #f4f7f8;
-color: #f47876;
-    
-}
-/*behöver ev böra en if statement för body?*/
-
-/*colors to put in javascript
-rain #BDE8FA
-cloud #f4f7f8
-clear #f7e9b9
-Foggy
-
-*/
