@@ -8,7 +8,129 @@ body {
     font-family: 'Sora', sans-serif;
 }
 
+.weather-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
 .city-name {
+  font-weight: 800;
+  font-size: 40px;
+  color: var(--dark-color);
+  text-align: center;
+}
+
+.big-weather-symbol {
+margin-top: 6%;       
+width: 240px;
+filter: invert(10%) sepia(0%) saturate(446%) hue-rotate(138deg) brightness(98%) contrast(91%);
+
+}
+
+.current-temp {
+    font-weight: 800;
+    font-size: 96px;
+    color: var(--dark-color);
+    text-align: center;
+
+}
+
+.weather-description {
+    font-weight: 800;
+    font-size: 40px;
+    color: var(--dark-color);
+    text-align: center;
+}
+
+.sun {
+display: flex;
+gap: 100px;
+}
+.sunrise-symbol {
+width: 100px;
+filter: invert(10%) sepia(0%) saturate(446%) hue-rotate(138deg) brightness(98%) contrast(91%);
+}
+
+.sunset-symbol {
+width: 100px;
+margin-bottom: -6px; 
+filter: invert(10%) sepia(0%) saturate(446%) hue-rotate(138deg) brightness(98%) contrast(91%);
+}
+
+.time {
+  
+    display: flex;
+    gap: 110px;
+    font-weight: 600;
+    font-size: 32px;
+    color: var(--dark-color);
+    text-align: center;   
+}
+
+.sun-and-time {
+    display: flex;
+    flex-direction: column;
+
+    
+
+}
+
+
+.wind {
+display: grid;
+justify-content: center;
+filter: invert(10%) sepia(0%) saturate(446%) hue-rotate(138deg) brightness(98%) contrast(91%);
+}
+
+.wind-symbol {
+    width: 100px;
+
+    }
+
+
+    .wind-speed {
+
+
+    font-weight: 600;
+    font-size: 36px;
+    color: var(--dark-color);
+    text-align: center;
+
+    
+    }
+
+.weekdays {
+    font-weight: 600;
+    font-size: 36px;
+    color: var(--dark-color);
+    text-align: left;
+}
+
+.week-temp {
+    align-items: right;
+    font-weight: 600;
+    font-size: 36px;
+    color: var(--dark-color);
+    text-align: right;
+}
+
+
+
+.time {
+    display: flex;
+}
+
+.forecast {
+    display: flex;
+    justify-content: space-between;
+    gap: 480px;
+} 
+
+
+/* .city-name {
   font-weight: 800;
   font-size: 64px;
   color: var(--dark-color);
@@ -124,7 +246,7 @@ filter: invert(10%) sepia(0%) saturate(446%) hue-rotate(138deg) brightness(98%) 
     display: flex;
     justify-content: space-between;
     gap: 180px;
-}
+} */
 
 
 
