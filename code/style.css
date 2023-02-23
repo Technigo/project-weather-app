@@ -15,6 +15,10 @@ h1 {
   font-size: 50px;
 }
 
+h3 {
+  font-weight: 400;
+}
+
 .header li {
   font-weight: 400;
   margin: 0 2px;
@@ -38,7 +42,7 @@ img {
   padding-top: 80px;
 }
 
-.forecast {
+.forecastSection {
   display: flex;
   justify-content: space-between;
   height: 75px;
