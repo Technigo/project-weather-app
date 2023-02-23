@@ -1,4 +1,5 @@
 .content {
+  font-family: sans-serif;
   display: flex;
   flex-direction: column;
   border: 3px solid red;
@@ -8,27 +9,22 @@
 .main-section {
   display: flex;
   justify-content: center;
-}
-
-.weather-forecast {
-  display: flex;
-  border: 3px solid orange;
-  padding: 5px;
-  justify-content: space-between;
-  width: auto;
-}
-
-.weekdays {
-  background: lightblue;
-  display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.temperature {
-  display: flex;
-  border: 2px solid blue;
-  background: lightgreen;
-  align-items: center;
-  flex-direction: column;
+table {
+  width: 50%;
+  margin: auto;
 }
+
+table tr .tempTd {
+  text-align: right;
+}
+
+table tr td {
+  border-bottom: 1px dashed #000000;
+  font-size: 20px;
+  padding: 25px 0px 4px 0px;
+}
+

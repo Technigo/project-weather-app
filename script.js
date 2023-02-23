@@ -55,11 +55,14 @@ fetch(
       const forecastDate = new Date(value.dt * 1000); 
       console.log(value.dt);
       
-      weekdays.innerHTML += ` 
-        <p>${forecastDate.toLocaleString('en-US', {weekday: 'long'})}</p>
+      weekdays.innerHTML += `
+        <tr>
+        <td>${forecastDate.toLocaleString('en-US', {weekday: 'long'})}</td>
+        <td class="tempTd">${value.main.temp.toFixed()} °C</td>
+        </tr>
     `
-    temperature.innerHTML += `
-    <p>${value.main.temp.toFixed()}°C</p>`;
+    //temperature.innerHTML += `
+   // <p>${value.main.temp.toFixed()}°C</p>`;
     })
   })
 
