@@ -2,7 +2,9 @@
 const todaysWeather = document.getElementById("todays-weather");
 const cityWeather = document.getElementById("city-weather");
 const forecast = document.getElementById("forecast-section");
-weatherBody = document.getElementById("weather-body");
+const weatherBody = document.getElementById("weather-body");
+
+let weatherResults;
 
 const fetchingWeather = () => {
   fetch(
@@ -12,7 +14,21 @@ const fetchingWeather = () => {
       return response.json();
     })
     .then((json) => {
-      console.log(json);
+      weatherResults = json;
+      console.log(weatherResults);
+      todaysWeather.innerHTML = `<p> ${
+        weatherResults.weather[0].description
+      } | ${Math.round(weatherResults.main.temp * 10) / 10}° </p>
+      <p>
+      sunrise ${new Date(weatherResults.sys.sunrise * 1000).toLocaleTimeString(
+        [],
+        { hour: "2-digit", minute: "2-digit" }
+      )}</p>
+      <p>sunset ${new Date(weatherResults.sys.sunset * 1000).toLocaleTimeString(
+        [],
+        { hour: "2-digit", minute: "2-digit" }
+      )}</p>`;
     });
 };
+
 fetchingWeather();
