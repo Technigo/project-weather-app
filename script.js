@@ -27,12 +27,12 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=cc7a2bf
  .then((json) => {
    console.log(json); 
    container.innerHTML = `
+
    <p>Sunrise: ${new Date(json.sys.sunrise * 1000)
     .toLocaleTimeString()}</p>
    <p>Sunset: ${new Date(json.sys.sunset * 1000)
     .toLocaleTimeString()}</p>
     `
-})
 
 const weather = (json.weather[0].main) //If we declare weather here we can
 //use it under at the todaysWeather-function. 
@@ -56,8 +56,9 @@ else {
     bodyContainer.classList.add('clouds')
 }
 }
+todaysWeather()
 
-
+});
 // .catch((err) =>{ //ERROR function. We pass in a function as a parameter in the function, just like the then function.
 //     console.log(err)
 //   })
