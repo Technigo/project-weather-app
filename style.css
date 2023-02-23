@@ -1,18 +1,17 @@
+@import 'https://fonts.googleapis.com/css?family=Roboto:300,400,500';
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #ca4747;
-    background-image: url("./images/weather.jpg");
-    /* background-image: url('http://source.unsplush.com/1600x900/?landscape'); */
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    background: #222;
+    /* background-image: url("./images/weather.jpg"); */
+    background-image: url('https://source.unsplash.com/1600x900/?landscape'); /*random image after every web refreash*/
   }
 
-  .card {
-    background: #000000d0;
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #000000d0; /* black see through background*/
     color: white;
     margin: 20px auto;
     padding: 20px;
@@ -21,17 +20,16 @@ body {
     max-width: 420px;
   }
 
+.weather-today {
+  text-align: center;
+}
+
+h1 {
+  font-size: 40px;
+}
+
 /* 
   .card {
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    max-width: 500px;
-  }
-
-  .forecast-card {
     margin: 20px auto;
     padding: 20px;
     background-color: #fff;
@@ -75,4 +73,23 @@ forecast-card {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
 
+
+
+
+@media (min-width: 767px) {
+
+  body {
+    display: flex;
+    justify-content: center;
+  }
+
+  .container {
+    width: 400px;
+    height: 700px;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 0 0 20px gray;
+    margin-top: 20px;  
+  }
+}
 
