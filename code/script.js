@@ -61,17 +61,22 @@ const getCurrentWeatherData = (latitude, longitude) => {
     })
     .then((data) => {
       console.log(data);
-
+      createImage(
+        "big-icon",
+        `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
+        data.weather[0].description,
+        currentWeather
+      );
       createElement(
         "h1",
         "temperature",
         "temperature",
-        `${data.main.temp} °C`,
+        `${Math.round(data.main.temp)} °C`,
         currentWeather
       );
-      createElement("div", "city", "city", data.name, currentWeather);
+      createElement("h2", "city", "city", data.name, currentWeather);
       createElement(
-        "h2",
+        "h3",
         "weather-type",
         "weather-type",
         data.weather[0].description,
@@ -84,6 +89,7 @@ const getCurrentWeatherData = (latitude, longitude) => {
         "",
         currentWeather
       );
+
       const sunriseSunset = document.getElementById("sunrise-sunset");
       createElement(
         "div",
@@ -119,6 +125,7 @@ const getForecastWeatherData = (latitude, longitude) => {
     .then((data) => {
       console.log(data);
       const filteredList = data.list.filter((element) => {
+        console.log(new Date(Date.now()).getDay());
         return (
           new Date(element["dt_txt"]).getHours() === 9 &&
           new Date(element["dt_txt"]).getDay() !== new Date(Date.now()).getDay()
@@ -135,27 +142,31 @@ const getForecastWeatherData = (latitude, longitude) => {
           forecast
         );
 
-        let objectElement = document.getElementById(
+        let dayRow = document.getElementById(
           `day${filteredList.indexOf(element)}`
         );
         //day of the week
         const date = new Date(element["dt_txt"]);
+
         const getDayName = new Intl.DateTimeFormat("en-US", {
           weekday: "short",
         }).format(date);
-
-        createElement("p", "", "", getDayName, objectElement),
+        createElement("p", "day-name", "", getDayName, dayRow),
           // img
           createImage(
             "forecast-img",
             `http://openweathermap.org/img/wn/${element.weather[0].icon}@2x.png`,
             element.weather[0].main,
-            objectElement
+            dayRow
           );
         //temp
-        const averageTemp =
-          (element.main["temp_max"] + element.main["temp_min"]) / 2;
-        createElement("p", "", "", `${averageTemp} °C`, objectElement);
+        createElement(
+          "p",
+          "day-temp",
+          "",
+          `${Math.round(element.main.temp)} °C`,
+          dayRow
+        );
       });
     });
 };
