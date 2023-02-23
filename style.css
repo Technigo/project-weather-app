@@ -5,8 +5,10 @@
 body {
   margin: 0;
   padding: 0;
-  background: #f4f7f8;
   font-family: montserrat;
+  background-image: url("/Gifs/romello-williams-P8VMwYFY-Es-unsplash.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .main {
@@ -18,21 +20,26 @@ body {
 }
 
 .todays-header-forecast {
-  background: gray;
+  margin: 20px;
+  text-transform: lowercase;
+  background-color: rgba(240, 248, 255, 0.477);
+  border-radius: 15px;
+  padding-left: 20px;
 
   /*  border: 2px solid black; */
 }
 
 .text-forecast {
-  background: rgb(158, 146, 191);
+  /* background: rgb(158, 146, 191); */
   /* border: 2px solid black; */
 }
 
 .weekly-forecast {
-  /*display: flex;
-  flex-direction: column;*/
-  background: lightblue;
-  /* border: 2px solid black; */
+  padding: 20px;
+  background-color: rgba(240, 248, 255, 0.477);
+  border-radius: 15px;
+  padding-left: 20px;
+  margin: 20px;
 }
 
 .day-temp {
@@ -40,4 +47,7 @@ body {
   flex-direction: row;
   justify-content: space-between;
   border-bottom: dashed 1px;
+  text-transform: lowercase;
+  margin: 20px;
+  padding: 10px;
 }
