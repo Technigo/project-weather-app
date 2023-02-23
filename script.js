@@ -81,7 +81,8 @@ const weatherStylingChange = () => {
       return response.json();
     })
     .then((json) => {
-      const typeOfWeather = `${json.weather[0].main}`;
+      const typeOfWeather = `${json.weather[0].main}`; //this creates a variable where the information
+      //about the weather condition is stored, so that it can be used in the else if-statements
       console.log(typeOfWeather);
       if (typeOfWeather === "Clouds") {
         //if the json description of the weather is "clouds", the following happens
