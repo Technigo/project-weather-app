@@ -27,4 +27,70 @@ justify-content: space-between;
 .fiveDays{
     background-color: tomato;
   
+    font-weight: 400;
+    margin-bottom: 50px;
+}
+
+.weatherToday p {
+    margin: 4px;
+}
+
+.dailyText{ 
+  grid-column: 1/4;
+    font-size: 30px;
+    font-weight: 700;
+ 
+    margin-bottom: 50px;
+}
+
+.fiveDays{  
+/* display: grid;
+grid-template-columns: 1fr; */
+font-weight: 400;
+font-size: 16px;
+
+}
+
+.border {
+    display: grid;
+  grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+    border-bottom: 2px dotted gray;
+}
+
+.day{
+ display: inline;
+
+
+}
+.temp{
+
+text-align: right;
+display:inline;
+}
+
+
+
+.sunny{
+    background-color: #f7e9b9;
+
+    color:  #2a5510;
+    
+}
+.foggy{
+  background-color: #d5d9db;
+  color: black;
+    
+}
+
+.rain{
+   background-color: #BDE8FA ;
+   color: #164a68;
+    
+}
+
+.cloudy{
+background-color: #f4f7f8;
+color: #f47876;
+    
 }
