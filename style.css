@@ -1,9 +1,43 @@
 .content {
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
   display: flex;
   flex-direction: column;
-  border: 3px solid red;
+  /*border: 3px solid white;*/
   padding: 40px;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+.weather-header {
+  line-height: 7px;
+}
+
+.sun-icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: -15px;
+  margin-top: -5px;
+}
+
+.sun-info {
+  display: flex;
+  flex-direction: row;
+  width: 110px;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.sunrise-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.sunset-info {
+  display: flex;
+  flex-direction: column;
 }
 
 .main-section {
@@ -11,6 +45,17 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
+}
+
+.weather-text {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.weather-icon {
+  width: 100px;
+  height: 100px;
 }
 
 table {
@@ -23,8 +68,7 @@ table tr .tempTd {
 }
 
 table tr td {
-  border-bottom: 1px dashed #000000;
+  border-bottom: 1px dashed black;
   font-size: 20px;
   padding: 25px 0px 4px 0px;
 }
-
