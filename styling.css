@@ -34,6 +34,7 @@ h2 {
   font-weight: lighter;
   line-height: 25px;
   text-align: center;
+  margin: 15px 20px;
 }
 
 h3 {
@@ -79,4 +80,13 @@ h5 {
 .day-temp {
   font-size: 20px;
   font-weight: lighter;
+}
+
+.descriptionToday img {
+  width: 50px;
+}
+
+.descriptionToday {
+  display: flex;
+  justify-content: center;
 }

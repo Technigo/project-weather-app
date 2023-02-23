@@ -5,7 +5,7 @@ const sunUp = document.getElementById("sunrise");
 const sunDown = document.getElementById("sunset");
 const windGust = document.getElementById("wind");
 const feelsLike = document.getElementById("feelslike");
-const weatherIcon = document.getElementById("weather-icon");
+const iconFileName = document.getElementById("weather-icon");
 
 // Define weatherIcons object
 const weatherIcons = {
@@ -18,6 +18,7 @@ const weatherIcons = {
   thunderstorm: "./images/storm.png",
   snow: "./images/snow.png",
   mist: "./images/haze.png",
+  "light rain": "./images/light-rain.png",
 };
 
 fetch(
@@ -35,6 +36,7 @@ fetch(
 
     // Describe weather and change weatherIcon based on weather description
     descriptionToday.innerHTML = `<h2>The weather is ${json.weather[0].description}</h2>`;
+
     // Change weatherIcon based on weather description
     if (json.weather[0].description) {
       const iconFileName =
@@ -42,8 +44,8 @@ fetch(
       descriptionToday.innerHTML += `<img src="${iconFileName}" alt="Weather icon">`;
     }
 
-    descriptionToday.innerHTML = `<h2>The weather is ${json.weather[0].description} ${json.weather.icon}</h2>`;
-    stylingtryout;
+    // descriptionToday.innerHTML = `<h2>The weather is ${json.weather[0].description} ${json.weather.icon}</h2>`;
+    // stylingtryout;
 
     tempToday.innerHTML = `<h3>The temperature is ${
       Math.round(json.main.temp * 10) / 10
