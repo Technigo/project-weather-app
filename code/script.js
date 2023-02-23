@@ -68,7 +68,6 @@ fetchWeatherData();
 
 
 
-
 // const fetchPokemons = () => {
 //   fetch("https://pokeapi.co/api/v2/pokemon/")
 //     .then((response) => response.json())
