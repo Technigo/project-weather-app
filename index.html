@@ -1,65 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 
 
-    <title>Weather App</title>
-</head>
+  <title>Weather App</title>
+  
+
 <body>
 
-    <header> 
-      <div id="weatherHeader" class="weather-header">
+ <header>
+      <div id=“weatherHeader” class=“weather-header”>
       </div>
     </header>
 
-        <table>
-            <tr>
-              <td>City name</td>
-              <td id="name">?</td>
-            </tr>
-      
-            <tr>
-              <td>Temperature max</td>
-              <td id="tempmax">?</td>
-            </tr>
-            <tr>
-              <td>Temperature min</td>
-              <td id="tempmin">?</td>
-            </tr>
-            <tr>
-              <td>Weather</td>
-              <td id="description">?</td>
-            </tr>
-          
-            
-          </table>
-          <form id="main-form">
-            <input id="searchBar" title="search-bar" type="text" />
-            <button type="submit">Search</button>
-        </form>
-    </main>
+</head>
+
+  <form id="main-form">
+    <input id="movie-search" title="movie-search" type="text" />
+    <button type="submit">Search</button>
+  </form>
+
+  <header>
+
+  </header>
+
+  <main>
+
+    <table>
+      <tr>
+        <td>City name</td>
+        <td id="name">?</td>
+      </tr>
+
+      <tr>
+        <td>Temperature max</td>
+        <td id="tempmax">?</td>
+      </tr>
+      <tr>
+        <td>Temperature min</td>
+        <td id="tempmin">?</td>
+      </tr>
+      <tr>
+        
+        <td id="description"></td>
+      </tr>
+
+    </table>
+
+    <section id="forecast-container" class="forecast">
+      <table id="forecast-table">
+      </table>
+    </section>
+
+  </main>
 
 
-<script src="./weather.js"></script>
+  <script src="./weather.js"></script>
 
 </body>
 <footer>
-    <p> Created by Frida and Carol</p>
+  <p> Created by Frida and Carol</p>
 </footer>
 
 </html>
-
-
-
-
-    
 
 
