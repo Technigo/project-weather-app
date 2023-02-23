@@ -55,10 +55,10 @@ const fetchWeatherData = () => {
         day.innerHTML += `
     <div id="forecastSection" class="forecast-section">
       <div id="weekdaySection" class="weekday-section">
-      <li>${weekdays[weekday]}</li>
+      <h3>${weekdays[weekday]}</h3>
       </div>
       <div id="temperature" class="temperature">
-           <li>${forecastDay.main.temp.toFixed(0)}°</li>
+           <h3>${forecastDay.main.temp.toFixed(0)}°</h3>
            </div>
     
     `;
