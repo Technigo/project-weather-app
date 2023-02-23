@@ -3,11 +3,8 @@
 const today = document.getElementById("weatherToday");
 const dailyTextMsg = document.getElementById("dailyText");
 const dayFive = document.getElementById("fiveDays");
-/* const sunnyBody = document.getElementsByClassName("#sunny")
-const foggyBody = document.getElementsByClassName("#foggy")
-const rainyBody = document.getElementsByClassName("#rain")
-const cloudyBody = document.getElementsByClassName("#cloudy") */
-let bodySelector = document.getElementById("bodyStyle")
+
+const bodySelector = document.getElementById("bodyStyle")
 //api key
 const apiKey = "4f9ca5d3e70c95a041bc513ac8b31ff8"
 
@@ -133,8 +130,10 @@ const temp = Math.round(data.main.temp);
 
 
 dayFive.innerHTML += `
-        <p>${day}</p>
-        <p>${temp}°C</p>
+<div class= "border"> 
+        <p class="day">${day}</p>
+        <p class="temperature">${temp}°C</p>
+        </div>
       `;
 
 
