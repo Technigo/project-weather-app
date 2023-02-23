@@ -9,18 +9,34 @@ body {
   min-height: 100%;
 }
 
-h1 {
+h2 {
   font-weight: bold;
   font-size: 50px;
 }
 
-.header li {
+h3 {
+  font-weight: 400;
+}
+
+.header {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 100px 20px;
+}
+
+.condition-temp,
+.sunrise,
+.sunset {
   font-weight: 400;
   margin: 0 2px;
+  list-style-type: none;
 }
 
 .message-text h2 {
-  font-weight: 400;
+  font-weight: bold;
+  font-size: 30px;
 }
 
 .container {
@@ -33,11 +49,11 @@ h1 {
 }
 
 img {
-  width: 152px;
-  padding-top: 80px;
+  width: 72px;
+  padding-top: 40px;
 }
 
-.forecast {
+.forecast-section {
   display: flex;
   justify-content: space-between;
   height: 75px;
@@ -81,7 +97,7 @@ img {
     padding: 100px 20px;
   }
 
-  .forecast {
+  .forecast-section {
     display: flex;
     flex-direction: column-reverse;
     width: 30%;
@@ -97,17 +113,27 @@ img {
     height: 64%;
   }
 
-  h1 {
+  h2 {
     font-weight: bold;
     font-size: 60px;
     margin: 0;
   }
 
-  .header li {
-    margin: 21px 0px;
+  .header {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 100px 20px;
   }
 
   .message-text h2 {
-    font-weight: 400;
+    font-weight: bold;
+    font-size: 30px;
+  }
+
+  img {
+    width: 152px;
+    padding-top: 80px;
   }
 }
