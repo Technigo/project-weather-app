@@ -1,8 +1,4 @@
-let currentCity = "Malmö";
-
-let currentWeatherLink = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity},Sweden&units=metric&APPID=d73aa5f2cfee2a35632856b10b30a458`;
-
-let weeklyWeatherLink = `https://api.openweathermap.org/data/2.5/forecast?q=${currentCity},Sweden&units=metric&APPID=d73aa5f2cfee2a35632856b10b30a458`;
+let currentCity = "Malmö"; // set Malmö to the default city
 
 let weatherDescriptionDiv = document.getElementById("weatherDescription");
 let cityNameDiv = document.getElementById("cityName");
@@ -10,8 +6,12 @@ let currentTemperatureDiv = document.getElementById("currentTemperature");
 let sunriseDiv = document.getElementById("sunrise");
 let sunsetDiv = document.getElementById("sunset");
 let weeklyWeatherDiv = document.getElementById("weeklyWeather");
+let changeCityMalmo = document.getElementById("cityMalmo");
+let changeCityStockholm = document.getElementById("cityStockholm");
 
-const fetchCurrentWeather = () => {
+const fetchCurrentWeather = (currentCity) => {
+  let currentWeatherLink = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity},Sweden&units=metric&APPID=d73aa5f2cfee2a35632856b10b30a458`;
+
   fetch(currentWeatherLink)
     .then((response) => {
       return response.json();
@@ -26,14 +26,16 @@ const fetchCurrentWeather = () => {
     });
 };
 
-const fetchWeeklyWeather = () => {
+const fetchWeeklyWeather = (currentCity) => {
+  let weeklyWeatherLink = `https://api.openweathermap.org/data/2.5/forecast?q=${currentCity},Sweden&units=metric&APPID=d73aa5f2cfee2a35632856b10b30a458`;
+
   fetch(weeklyWeatherLink)
     .then((response) => {
       return response.json();
     })
     .then((data) => {
       console.log(data);
-      renderForecast(data);
+      renderWeeklyWeather(data);
     })
     .catch((error) => {
       console.log(error);
@@ -73,9 +75,9 @@ const renderSunriseSunset = (data) => {
   sunsetDiv.innerHTML = `${renderedSunset}`;
 };
 
-const renderForecast = (data) => {
+const renderWeeklyWeather = (data) => {
   //code from https://stackoverflowteams.com/c/technigo/questions/786
-
+  weeklyWeatherDiv.innerHTML = "";
   const filteredForecast = data.list.filter((item) =>
     item.dt_txt.includes("12:00")
   );
@@ -102,5 +104,14 @@ const renderForecast = (data) => {
   });
 };
 
-fetchCurrentWeather();
-fetchWeeklyWeather();
+fetchCurrentWeather(currentCity);
+fetchWeeklyWeather(currentCity);
+
+changeCityMalmo.addEventListener("click", () => {
+  fetchCurrentWeather("Malmö");
+  fetchWeeklyWeather("Malmö");
+});
+changeCityStockholm.addEventListener("click", () => {
+  fetchCurrentWeather("Stockholm");
+  fetchWeeklyWeather("Stockholm");
+});
