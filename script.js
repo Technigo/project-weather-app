@@ -1,4 +1,9 @@
 const testy = document.getElementById('testy');
+const searchMenuBtn = document.getElementById('searchMenuBtn');
+const closeSearchMenu = document.getElementById('closeSearchMenu');
+const searchBtn = document.getElementById('searchBtn');
+const inputField = document.getElementById('inputField');
+
 const weatherForecast = document.getElementById('weatherForecast')
 const forecastWeekdays = document.getElementById('forecastWeekdays')
 const forecastDescription = document.getElementById('forecastDescription')
@@ -90,6 +95,39 @@ weatherForecastData();
 //Learn how to get symbols from the api
 //Learn how to get a search word to show an image from unsplash
    
+const toggleSearchField = () => {
+    console.log('Matilda testar toggle')
 
+    const searchToggler = document.getElementById('search-toggler');
+    searchToggler.classList.toggle('hidden');
+    closeSearchMenu.classList.toggle('hidden');
+    searchMenuBtn.classList.toggle('hidden');
+    //closeSearchMenu.classList.add('hidden');
 
+}
+
+const searchFunction = () => {
+    console.log('Matilda testar search')
     
+    let searchedCity = inputField.value
+    console.log(`searchedCity: ${searchedCity}`)
+
+        //Use the city searched and inject into ""fetchWeather""" function:
+        //weather.fetchWeather(searchedCity); //Skriv om till den vi använder
+
+        //Clears field & hides the input field:
+        inputField.value = "";
+}
+
+//Eventlistener to toggle search field:
+searchMenuBtn.addEventListener('click', toggleSearchField)
+closeSearchMenu.addEventListener('click', toggleSearchField)
+//Eventlistener to search through enter key also
+searchBtn.addEventListener('click', searchFunction)
+//Eventlistener to search through enter key also
+inputField.addEventListener('keyup', function (event) {
+    if (event.key == "Enter") {
+        searchFunction();
+      }
+}
+);

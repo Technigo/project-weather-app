@@ -13,7 +13,20 @@ body {
 }
 
 nav {
-    margin-bottom: 70px;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.search-bar {
+    margin: auto;
+    border: none;
+    padding: 2px 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    width: 100%;
+    max-width: 600px;
+    height: 30px;
 }
 
 .container {
@@ -27,15 +40,32 @@ nav {
 
 }
 
+/* ONLY COLORS: 
 .background-top {
     background-color: var(--top-color);
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 600px 60px;
     border-bottom-left-radius: 600px 60px;
+}
+*/
 
+.background-top {
+    background: url(https://images.unsplash.com/photo-1516571748831-5d81767b788d?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcxNjg0NTk&ixlib=rb-4.0.3&q=80);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 600px 60px;
+    border-bottom-left-radius: 600px 60px;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
 }
 
+.search {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid rgba(255, 255, 255, 0.363);
+}
 
 .search-button {
     border: none;
@@ -48,10 +78,15 @@ nav {
     opacity: 0.7;
 }
 
-.search-icon {
+.search-icon,
+.x-icon {
     height: 35px;
     width: 35px;
     padding: 25px;
+}
+
+svg {
+    color: white;
 }
 
 .mainWrapper {
@@ -141,4 +176,10 @@ footer {
 /* To use when hiding something*/
 .hidden {
     display: none;
+    transition: transform 1s ease 0s;
 }
+
+
+
+/* IF WE NEED TO ADJUST FOR DESKTOP & TABLET, otherwise remove: */
+@media (min-width: 6675px) {}
