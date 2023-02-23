@@ -13,8 +13,6 @@ const day2 = document.getElementById("day+2")
 const day3 = document.getElementById("day+3")
 const day4 = document.getElementById("day+4")
 const day5 = document.getElementById("day+5")
-const day6 = document.getElementById("day+6")
-const day7 = document.getElementById("day+7")
 
 //functions here
 
@@ -36,8 +34,8 @@ const fetchWeatherAPI = () => {
             let timeSunrise = new Date(json.sys.sunrise * 1000)
             let timeSunset = new Date(json.sys.sunset * 1000)
             
-            sunrise.innerHTML = "Sunrise: " + timeSunrise.toLocaleString('sv-SE', { hour: 'numeric', minute: 'numeric', hour12: false })
-            sunset.innerHTML = "Sunset: " + timeSunset.toLocaleString('sv-SE', { hour: 'numeric', minute: 'numeric', hour12: false })
+            sunrise.innerHTML = "Sunrise: " + timeSunrise.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: false })
+            sunset.innerHTML = "Sunset: " + timeSunset.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: false })
 
         })
         .catch((err) => {
@@ -63,22 +61,22 @@ const fetchWeekdaysAPI = () => {
             const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
 
             dayTime = new Date(filteredForecast[0].dt_txt)
-            day1.innerHTML = filteredForecast[0].main.temp +"-----------------" + dayTime.toLocaleString('en-US', options)
+            day1.innerHTML = roundDecimal(filteredForecast[0].main.temp) +"-----------------" + dayTime.toLocaleString('en-US', options)
 
             
             dayTime = new Date(filteredForecast[1].dt_txt)
-            day2.innerHTML = filteredForecast[1].main.temp +"-----------------" + dayTime.toLocaleString('en-US', options)
+            day2.innerHTML = roundDecimal(filteredForecast[1].main.temp) +"-----------------" + dayTime.toLocaleString('en-US', options)
 
             dayTime = new Date(filteredForecast[2].dt_txt)
-            day3.innerHTML = filteredForecast[2].main.temp +"-----------------" + dayTime.toLocaleString('en-US', options)
+            day3.innerHTML = roundDecimal(filteredForecast[2].main.temp) +"-----------------" + dayTime.toLocaleString('en-US', options)
 
             
             dayTime = new Date(filteredForecast[3].dt_txt)
-            day4.innerHTML = filteredForecast[3].main.temp +"-----------------" + dayTime.toLocaleString('en-US', options)
+            day4.innerHTML = roundDecimal(filteredForecast[3].main.temp) +"-----------------" + dayTime.toLocaleString('en-US', options)
 
             
             dayTime = new Date(filteredForecast[4].dt_txt)
-            day5.innerHTML = filteredForecast[4].main.temp +"-----------------" + dayTime.toLocaleString('en-US', options)
+            day5.innerHTML = roundDecimal(filteredForecast[4].main.temp) +"-----------------" + dayTime.toLocaleString('en-US', options)
 
             
             //let dayTime = new Date(filteredForecast[0].dt_txt)
@@ -88,14 +86,17 @@ const fetchWeekdaysAPI = () => {
             //console.log(filteredForecast[0].dt_txt)
             console.log(filteredForecast)
             // console.log(filteredForecast[0].main.temp
+            
 
 
         })
+
+
+       
 
         .catch((err) => {
             console.log("error loading weatherdata", err)
         })
 }
 fetchWeekdaysAPI();
-
 

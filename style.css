@@ -1,5 +1,4 @@
 
-
 body{
     display: flex;
     background-color: darkgray;
@@ -11,17 +10,18 @@ body{
 .weatherWindow{
 
     background-color: #F4F7F8;
-    width: 100%;
-    max-width: 420px;
+    width: 570px;
+    /* max-width: 420px;
     height: 500px;
     border-radius: 30px;
-    padding: 20px;
+    padding: 20px;  */
 }
 .city, .cloudReport, .sunrise, .sunset{
-    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 26px;
     color: #F47775
 }
-.weekday{
-    border-bottom: 1px dotted #F47775;
+/* .weekday{
+    
 
-}
+} */
