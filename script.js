@@ -152,9 +152,9 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
         </div>`
     }
     })
-})
-    const roundedTemp = Math.round(data.main.temp * 10)/10;
+        const roundedTemp = Math.round(data.main.temp * 10)/10;
     console.log(roundedTemp)
     weatherWrapper.innerHTML +=
     `<div id='main-temp' class='main-temp'><p>${roundedTemp}°C</p></div>`
+})
     })
