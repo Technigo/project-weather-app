@@ -120,7 +120,7 @@ const getForecastWeatherData = (latitude, longitude) => {
       console.log(data);
       const filteredList = data.list.filter((element) => {
         return (
-          new Date(element["dt_txt"]).getHours() === 0 &&
+          new Date(element["dt_txt"]).getHours() === 9 &&
           new Date(element["dt_txt"]).getDay() !== new Date(Date.now()).getDay()
         );
       });
