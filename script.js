@@ -17,7 +17,8 @@ const day5 = document.getElementById("day+5")
 const colorTheme = document.querySelector(':root');
 
 // change so that API-key is inside a variable instead straight into the functions
-
+let city = "Stockholm"
+let country = "Sweden"
 //functions here
 
 function roundDecimal(num) {
@@ -25,8 +26,9 @@ function roundDecimal(num) {
 }
 
 
-const fetchWeatherAPI = () => {
-    fetch("http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=d4ab1d4e927071e157d6ad483d6d0ddb")
+const fetchWeatherAPI = (City,Country) => {
+    let APIlink = `http://api.openweathermap.org/data/2.5/weather?q=${City},${Country}&units=metric&APPID=d4ab1d4e927071e157d6ad483d6d0ddb` 
+    fetch(APIlink)
         .then((response) => {
             return response.json()
         })
@@ -42,10 +44,11 @@ const fetchWeatherAPI = () => {
             sunrise.innerHTML = "Sunrise: " + timeSunrise.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: false })
             sunset.innerHTML = "Sunset: " + timeSunset.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: false })
 
-           
-            changeWeatherDescription(json.weather[0].description,json.name);
-            
 
+            changeWeatherDescription(json.weather[0].description, json.name);
+            changeWeatherDescription("json.weather[0].description", json.name);
+
+            //json.weather[0].description
 
         })
         .catch((err) => {
@@ -54,43 +57,51 @@ const fetchWeatherAPI = () => {
 
 
 }
-fetchWeatherAPI();
+fetchWeatherAPI(city,country);
 
-const changeWeatherDescription = (weatherDescription,city) => {
-
-    //json.weather[0].description
-    // json.name
+// create function to show the desciption the daily weather
+const changeWeatherDescription = (weatherDescription, city) => {
 
     if (weatherDescription.includes("cloud")) {
+
         description.innerHTML = `Light a fire and get cozy, ${city} is looking gray today`
-        colorTheme.style.setProperty('--basecolor', 'pink')
+        colorTheme.style.setProperty('--basecolor', getComputedStyle(colorTheme).getPropertyValue('--pink'))
+        // colorTheme.setProperty('--basecolor', colorTheme.getProperty('pink'))
         img.setAttribute('src', './Designs/Design-2/icons/noun_Cloud_1188486.svg')
+        weatherWindow.style.backgroundColor = '#F5EAEA';
 
-    }else if(weatherDescription.includes ("clear")){
+    } else if (weatherDescription.includes("clear")) {
         description.innerHTML = `Get your sunnies on, ${city} is looking mighty fine today`
-        colorTheme.style.setProperty('--basecolor', 'yellow')
+        colorTheme.style.setProperty('--basecolor', getComputedStyle(colorTheme).getPropertyValue('--yellow'))
+        //    colorTheme.style.setProperty('--basecolor', 'yellow')
         img.setAttribute('src', './Designs/Design-2/icons/sun.png')
+        weatherWindow.style.backgroundColor = '#39B5E0';
 
-    }else if(weatherDescription.includes ("rain")){
+    } else if (weatherDescription.includes("rain")) {
         description.innerHTML = `Don't forget your Umbrella, it's wet in ${city} today`
-        colorTheme.style.setProperty('--basecolor', 'grayish')
+        colorTheme.style.setProperty('--basecolor', getComputedStyle(colorTheme).getPropertyValue('--grayish'))
+        //    colorTheme.style.setProperty('--basecolor', 'grayish')
         img.setAttribute('src', './Designs/Design-2/icons/droplet.png')
+        weatherWindow.style.backgroundColor = '#E8D2A6';
 
-    }else if(weatherDescription.includes("snow")){
+    } else if (weatherDescription.includes("snow")) {
         description.innerHTML = `Wrap up warm, ${city} is looking very white today`
-        colorTheme.style.setProperty('--basecolor', 'lightblue')
+        colorTheme.style.setProperty('--basecolor', getComputedStyle(colorTheme).getPropertyValue('--lightblue'))
+        // colorTheme.style.setProperty('--basecolor', 'lightblue')
         img.setAttribute('src', './Designs/Design-2/icons/snowflake.png')
+        weatherWindow.style.backgroundColor = '#406882';
 
     }
-    
+
 
 }
 
 
 
-// create function to fetch weekday's weather api.
-const fetchWeekdaysAPI = () => {
-    fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&cnt=40&APPID=d4ab1d4e927071e157d6ad483d6d0ddb")
+// create function to fetch next five days weatherforecast.
+const fetchWeekdaysAPI = (City,Country) => {
+    let APIlink = `https://api.openweathermap.org/data/2.5/forecast?q=${City},${Country}&units=metric&cnt=80&APPID=d4ab1d4e927071e157d6ad483d6d0ddb`
+    fetch(APIlink)
         .then((response) => {
             return response.json()
         })
@@ -104,38 +115,28 @@ const fetchWeekdaysAPI = () => {
 
             dayTime = new Date(filteredForecast[0].dt_txt)
             day1.innerHTML = dayTime.toLocaleString('en-US', options) + `<span>${roundDecimal(filteredForecast[0].main.temp)}°</span>`
-            
+
             dayTime = new Date(filteredForecast[1].dt_txt)
             day2.innerHTML = dayTime.toLocaleString('en-US', options) + `<span>${roundDecimal(filteredForecast[1].main.temp)}°</span>`
 
             dayTime = new Date(filteredForecast[2].dt_txt)
             day3.innerHTML = dayTime.toLocaleString('en-US', options) + `<span>${roundDecimal(filteredForecast[2].main.temp)}°</span>`
-            
+
             dayTime = new Date(filteredForecast[3].dt_txt)
             day4.innerHTML = dayTime.toLocaleString('en-US', options) + `<span>${roundDecimal(filteredForecast[3].main.temp)}°</span>`
-            
+
             dayTime = new Date(filteredForecast[4].dt_txt)
             day5.innerHTML = dayTime.toLocaleString('en-US', options) + `<span>${roundDecimal(filteredForecast[4].main.temp)}°</span>`
 
-            
-            //let dayTime = new Date(filteredForecast[0].dt_txt)
+
             console.log(dayTime.toLocaleString('en-US', options));
-
-
-            //console.log(filteredForecast[0].dt_txt)
             console.log(filteredForecast)
-            // console.log(filteredForecast[0].main.temp
-
-
 
         })
-
-
-
 
         .catch((err) => {
             console.log("error loading weatherdata", err)
         })
 }
-fetchWeekdaysAPI();
+fetchWeekdaysAPI(city,country);
 
