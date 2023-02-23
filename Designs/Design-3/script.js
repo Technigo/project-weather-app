@@ -4,6 +4,7 @@ const currentTemp = document.getElementById('current-temp')
 const weatherDesc =document.getElementById('weather-description')
 const weekDays = document.getElementById('weekdays')
 const weekTemp = document.getElementById('week-temp')
+const windSpeed = document.getElementById('wind-speed')
 
 
 fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=26c922535e2ba939d3ff0d8af53d90a2')
@@ -12,7 +13,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
 })
 .then((json) => {
     //this variable contains the temperature and with the math.round the decimals where removed
-    let temp = json.main.temp.toFixed(1)
+    let temp = json.main.temp.toFixed(1) //use math-thing instead!!
 
     //Variables for getting the first word in the description capitalized
     const description = json.weather[0].description
@@ -24,7 +25,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     //--------------DISPLAY---------------
     //displays the city name
     cityName.innerHTML = `${json.name}`
-    //displays the current temperature using the temp variable 
+//displays the current temperature using the temp variable 
     currentTemp.innerHTML = `${temp}°`
     weatherDesc.innerHTML = `${capitalizeWord}`
 
@@ -46,6 +47,9 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
 .then((json) => {
     console.log(json)
 
+    console.log(json.list[0].wind.speed)
+    windspeed = json.list[0].wind.speed 
+
     //Filtered forcast for weekdays + foreach-loop that displays the weekdays of the dates
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00')) 
     console.log(filteredForecast)
@@ -65,7 +69,10 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
     //the above removes the commas for the forecastTemp-array and adds the Celsius sign. not for the last one though, this is added in the innerHTML below
 
     weekTemp.innerHTML += `<p>${forecastTemp}°</p>`
+    windSpeed.innerHTML = `<p>${windspeed} m/s</p>`
+
     //This displays the temperatures, adding the Celsius sign to the last one.
+
         
 })
 
