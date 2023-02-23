@@ -75,7 +75,7 @@ const fetchingWeather = () => {
 
 
 
-
+//Hello
 
 //Todays weather explanation
       let localWeatherToday = weatherResults.weather[0].main
