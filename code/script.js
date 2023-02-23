@@ -9,6 +9,8 @@ const messageText = document.getElementById("message-text");
 const forecast = document.getElementById("forecast");
 const day = document.getElementById("day");
 const weekdays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+const containerClass = document.querySelector(".container");
+const city = "Stockholm";
 
 let units = "metric";
 let apiKey = "5cdf47ce276dd7dd42146ec93c23e3a6";
@@ -20,9 +22,7 @@ let apiUrlWeather = `${apiEndpointWeather}&appid=${apiKey}&units=${units}`;
 let apiUrlForecast = `${apiEndpointForecast}&appid=${apiKey}&units=${units}`;
 
 const fetchWeatherData = () => {
-  fetch(
-    "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=5cdf47ce276dd7dd42146ec93c23e3a6"
-  )
+  fetch(`${apiUrlWeather}`)
     .then((response) => {
       return response.json();
     })
@@ -44,13 +44,13 @@ const fetchWeatherData = () => {
       const filteredForecast = json.list.filter((item) =>
         item.dt_txt.includes("12:00")
       );
-      console.log(filteredForecast);
+      // console.log(filteredForecast);
       day.innerHTML = "";
 
       filteredForecast.map((forecastDay) => {
-        console.log(forecastDay.weather[0].description);
+        // console.log(forecastDay.weather[0].description);
         let weekday = new Date(forecastDay.dt_txt).getDay();
-        console.log(weekdays[weekday]);
+        // console.log(weekdays[weekday]);
 
         day.innerHTML += `
     <div id="forecastSection" class="forecast-section">
