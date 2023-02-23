@@ -10,7 +10,6 @@ const forecast = document.getElementById("forecast");
 const day = document.getElementById("day");
 const weekdays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 const containerClass = document.querySelector(".container");
-const city = "Stockholm";
 
 let units = "metric";
 let apiKey = "5cdf47ce276dd7dd42146ec93c23e3a6";
@@ -21,20 +20,29 @@ let apiEndpointForecast =
 let apiUrlWeather = `${apiEndpointWeather}&appid=${apiKey}&units=${units}`;
 let apiUrlForecast = `${apiEndpointForecast}&appid=${apiKey}&units=${units}`;
 
+containerClass.classList.remove("container-cloudy");
+containerClass.classList.remove("container-clear");
+containerClass.classList.remove("container-rainy");
+
+//A function that shows different messages, depending on the weather
 const showMessage = (weather, city) => {
   console.log(weather);
   if (weather === "Snow") {
     messageImg.innerHTML = `<img src="./images/snow.png" alt="snow-cloud">`;
     messageText.innerHTML = `Put on a warm coat. It's snowing in ${city} today.`;
+    containerClass.classList.add("container-cloudy");
   } else if (weather === "Clouds") {
     messageImg.innerHTML = `<img src="./images/cloud.svg" alt="Cloud">`;
     messageText.innerHTML = `Light a fire and get cosy. ${city} is looking grey today`;
+    containerClass.classList.add("container-cloudy");
   } else if (weather === "Clear") {
     messageImg.innerHTML = `<img src="./images/sunglasses.svg" alt="Sunglasses">`;
     messageText.innerHTML = `Get your sunnies on. ${city} is looking rather great today.`;
+    containerClass.classList.add("container-clear");
   } else if (weather === "Rain") {
     messageImg.innerHTML = `<img src="./images/umbrella.svg" alt="Umbrella">`;
     messageText.innerHTML = `Don't forget your umbrella. It's wet in ${city} today.`;
+    containerClass.classList.add("container-rainy");
   } else {
     messageImg.innerHTML = `<img src="./images/sun-cloud.png" alt="Sun and cloud">`;
     messageText.innerHTML = `Remember, ${city}: No such thing as bad weather, only bad clothing. `;
@@ -68,7 +76,8 @@ const fetchWeatherData = () => {
         minute: "2-digit",
       })}
       `;
-
+      //Test override
+      json.weather[0].main = "Rain";
       //Message: Image and personalised message, depending on the weather.
       showMessage(`${json.weather[0].main}`, `${json.name}`);
     });
