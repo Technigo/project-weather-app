@@ -1,3 +1,4 @@
+// DOM / API
 const city = document.getElementById("city");
 const weatherToday = document.getElementById("weatherToday");
 const temperature = document.getElementById("temperature");
@@ -7,10 +8,10 @@ const sunset = document.getElementById("sunset");
 const weatherApi = "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=515087c7fb02c4b2d4dca12b9e40bb14";
 
 
-//Today's weather: city, temp, sunset and sunrise
+//TODAY'S WEATHER - CITY, TEMP
 const getCurrentWeatherData = () => {
 
-  fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=515087c7fb02c4b2d4dca12b9e40bb14')
+fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=515087c7fb02c4b2d4dca12b9e40bb14')
     
   .then((response) => { 
   return response.json();
@@ -22,6 +23,9 @@ temperature.textContent=data.main.temp
 city.textContent=data.name
 weatherToday.textContent=data.weather[0].description
 
+
+
+// SUNRISE AND SUNSET SHOWING
 sunrise.textContent=`Sunrise: ${new Date(data.sys.sunrise * 1000).toLocaleTimeString([], {
   hour: "2-digit",
   minute: "2-digit",
@@ -38,7 +42,7 @@ sunset.textContent=`Sunset: ${new Date(data.sys.sunset * 1000).toLocaleTimeStrin
 getCurrentWeatherData();
 
 
-// Weather 5 days 
+// 5 DAY WEATHER FORECAST WITH TEMPERETURE
 const forecastFiveDayAndTemp = () => {
 const forecastFiveDayAndTemp = document.getElementById("forecastFiveDayAndTemp");
 fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=515087c7fb02c4b2d4dca12b9e40bb14')
@@ -53,19 +57,14 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
     filteredForecast.forEach(item => {
       const date = new Date(item.dt * 1000);
       const dayName = date.toLocaleDateString("en-US", {
-        weekday: "short"
+        weekday: "long"
       });
 
-      const dayTemperature = item.main.temp.toFixed(1);
-      console.log(date, dayName, dayTemperature);
+    const dayTemperature = item.main.temp.toFixed(1);
+    console.log(date, dayName, dayTemperature);
 
-      forecastFiveDayAndTemp.innerHTML+= `<h5>${dayName}: ${dayTemperature} &deg;C</h5>`
+    forecastFiveDayAndTemp.innerHTML+= `<h5>${dayName}: ${dayTemperature} &deg;C</h5>`
     })
 })
 }
-
-
 forecastFiveDayAndTemp();
-
-
-//https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&appid=f60c361b4571fb70c85f29bbd856c13f

@@ -49,6 +49,16 @@ justify-content: left;
 margin-left: 50px;
 
   }
+
+footer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0;
+  margin-right: auto;
+  margin-left: auto;
+  font-weight: bold;
+  
+}
   
   .forecast {
     margin-bottom: 90px;
@@ -67,7 +77,6 @@ margin-left: 50px;
     min-width: 300px;
     background: #dadadad0;
   }
-  /*linear-gradient(to right, #e8cbc0, #636fa4);*/
   
   
   @media (min-width:1024px) {
