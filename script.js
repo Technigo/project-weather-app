@@ -6,6 +6,10 @@ const condition = document.getElementById('condition')
 const sunriseSunset = document.getElementById('sunriseSunset')
 const button = document.getElementById('button')
 const forecast = document.getElementById('forecast')
+const weekDay = document.getElementById('forecast-weekday')
+const weatherIcon = document.getElementById('forecast-icon')
+const minTemp = document.getElementById('forecast-min-temp')
+const maxTemp = document.getElementById('forecast-max-temp')
 
 fetch('https://api.openweathermap.org/data/2.5/weather?q=Reykjavik&appid=fa2755c779ce094fc80f2fa365eea704&units=metric')
 .then((response) => {
@@ -97,10 +101,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Reykjavik&appid=fa2755c
 
 
 
-const weekDay = document.getElementById('forecast-weekday')
-const weatherIcon = document.getElementById('forecast-icon')
-const minTemp = document.getElementById('forecast-min-temp')
-const maxTemp = document.getElementById('forecast-max-temp')
+
 
 
 fetch('https://api.openweathermap.org/data/2.5/forecast?lat=64.1355&lon=-21.8954&appid=fa2755c779ce094fc80f2fa365eea704&units=metric')
@@ -122,9 +123,8 @@ filteredForecastNoon.forEach((item) => {
     const date = new Date(item.dt * 1000);
     let dayName =  date.toLocaleDateString("en-US", {weekday: "long"});
 
-// Looping through the array and deciding on the icon depending on weather forecast
+    // Looping through the array and deciding on the icon depending on weather forecast
     let mainWeather = item.weather[0].main
-    // Deciding the icon depending on weather forecast
     if (mainWeather === "Snow") {
         weatherImg = 'icons8-snow-64.png'
     } else if (mainWeather === "Rain") {
@@ -156,6 +156,8 @@ minTemp.innerHTML += `
 })
 
 })
+
+
 
 
 
