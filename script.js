@@ -1,8 +1,8 @@
-//////////////////////// DOM SELECTION /////////////////////////////
+//////////////////////// DOM SELECTION //////////////////////////////////////////////////////////////////////////////////////////
 
-const forcastRightNow = document.getElementById('forcastRightNow')
-const casualWeatherbox = document.getElementById('casualWeatherbox')
-const weekdays = document.getElementById('weekdays')
+    const forcastRightNow = document.getElementById('forcastRightNow')
+    const casualWeatherbox = document.getElementById('casualWeatherbox')
+    const weekdays = document.getElementById('weekdays')
 
 /////////////////////// CALLING THE API /////////////////////////////
 
@@ -16,7 +16,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
         return response.json()
  })
 
-/////////////////////// THIS IS THE WEATHER AT THE TOP/////////////////////////////
+/////////////////////// THIS IS THE WEATHER AT THE TOP///////////////////////////////////////////////////////////////////////////
 
      // First of is the forcastRightNow-part
 
@@ -38,17 +38,17 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     Sunset ${sunset}
     </h6>`
 
-/////////////////////// WEATHERBOX (MESSAGE AND PICTURE = CASUAL WEATHER CENTENSE) /////////////////////////////
+/////////////////////// WEATHERBOX (MESSAGE AND PICTURE = CASUAL WEATHER CENTENSE) ////////////////////////////////////////////
 
      casualWeatherBox.innerHTML = 
      `<h1>
      In ${json.name} there is ${json.weather[0].description} right now. 
      Wind is ${(Math.round(json.wind.speed))} m/s and the temperature is ${(Math.round(json.main.temp))}°C.
      </h1>`
-
 })
 
-///////////////////////// WEEKDAYS //////////////////////////////////////////
+///////////////////////// WEEKDAYS ////////////////////////////////////////////////////////////////////////////////////////////
+
 
     // And here we start with fetching the weekly forecast
     // you'll see that we only care about the array called list.
@@ -63,7 +63,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
 
 .then((json) => {
 
-// This part makes the json show the temperature from 12:00 each day
+    // This part makes the json show the temperature from 12:00 each day
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
     console.log(filteredForecast)
     filteredForecast.forEach((fiveDayForecast) => {
