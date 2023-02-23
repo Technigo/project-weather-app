@@ -41,19 +41,43 @@ fetch(urlWeather)
     let todaysWeatherMain = wData.weather[0].main; //This is what in the API is called "Clouds", "Snow" etc
     //console.log("Today's main weather test", todaysWeatherMain);
 
-    if (todaysWeatherMain === "Clouds") {
+    if (todaysWeatherMain === "Clear") {
       textForecast.innerHTML = `
-      <img src="Designs/Design-1/assets/Group16.png">
-    <p>Oj det är moln idag</p>`;
+      <img class="icon" src="flaticon-dreamstale/clear-sun.png">
+    <p> It's a beautiful day in ${wData.name}. The sun is shining, get out your sunglasses!</p>`;
+    } else if (todaysWeatherMain === "Clouds") {
+      textForecast.innerHTML = `
+      <img class="icon" src="flaticon-dreamstale/clouds2.png">
+      <p>Make a cup of tea and get cosy. ${wData.name} is looking grey today.</p>`;
+      // Change colors depending on the current weather
+      document.body.style.backgroundColor = "#F4F7F8";
+      // document.body.style.color = "#F47775"; Unsure, does this change text color?
+    } else if (todaysWeatherMain === "Drizzle") {
+      textForecast.innerHTML = `
+      <img class="icon" src="flaticon-dreamstale/drizzle.png">
+      <p>There is light rain in ${wData.name} today. Maybe bring your umbrella?</p>`;
+    } else if (todaysWeatherMain === "Rain") {
+      textForecast.innerHTML = `
+      <img class="icon" src="flaticon-dreamstale/rain.png">
+      <p>It's raining in ${wData.name} today! Better bring your umbrella!</p>`;
+    } else if (todaysWeatherMain === "Mist") {
+      textForecast.innerHTML = `
+      <img class="icon" src="flaticon-dreamstale/mist.png">
+      <p>Oh, it's misty in ${wData.name} today. Better watch where you are going!</p>`;
     } else if (todaysWeatherMain === "Snow") {
-      `<img src=""
-      <p>Today it's snowing!</p>`;
+      textForecast.innerHTML = `
+      <img class="icon" src="flaticon-dreamstale/snow.png">
+      <p><It's snowing in ${wData.name} today! Put on warm clothes and go for a nice walk.</p>`;
+    } else if (todaysWeatherMain === "Thunderstorm") {
+      textForecast.innerHTML = `
+      <img class="icon" src="flaticon-dreamstale/thunderstorm.png">
+      <p>Be careful! There is a thunderstorm in ${wData.name} today.</p>`;
     } else {
-      `<img src=""
-      <p>Okänt väder idag</p>`;
+      textForecast.innerHTML = `
+      <img class="icon" src="flaticon-dreamstale/weather.png">
+      <p>Unsure how to describe the weather in ${wData.name} today. What would you say?</p>`;
     }
-    // ${wData.name}
-    //osv
+
   });
 
 // 5-day forecast

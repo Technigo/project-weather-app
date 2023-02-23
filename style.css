@@ -23,8 +23,16 @@ body {
   /*  border: 2px solid black; */
 }
 
+.icon {
+  width: 100px;
+}
+
 .text-forecast {
-  background: rgb(158, 146, 191);
+  display: flex;
+  flex-direction: column;
+  font-size: 40px;
+  font-weight: bold;
+  padding: 10px;
   /* border: 2px solid black; */
 }
 
@@ -41,3 +49,4 @@ body {
   justify-content: space-between;
   border-bottom: dashed 1px;
 }
+
