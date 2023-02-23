@@ -42,10 +42,6 @@ body {
   padding: 40px 20px;
 }
 
-h1 {
-  /* padding: 20px; */
-}
-
 /* Media qurries  */
 /* --Tablet-- */
 @media (min-width: 667px) and (max-width: 1024px) {
