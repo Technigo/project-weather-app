@@ -30,7 +30,7 @@ body {
 }
 
 .todays-weather {
-  width: 50%;
+  width: 70%;
   padding: 40px 20px;
 }
 .weather-body {
@@ -38,8 +38,12 @@ body {
   width: 100%;
 }
 
+.city-weather {
+  padding: 40px 20px;
+}
+
 h1 {
-  padding: 20px;
+  /* padding: 20px; */
 }
 
 /* Media qurries  */
