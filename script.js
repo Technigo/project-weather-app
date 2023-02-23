@@ -1,7 +1,7 @@
 //////////////////////// DOM SELECTION //////////////////////////////////////////////////////////////////////////////////////////
 
     const forcastRightNow = document.getElementById('forcastRightNow')
-    const casualWeatherbox = document.getElementById('casualWeatherbox')
+    const casualWeatherBox = document.getElementById('casualWeatherBox')
     const weekdays = document.getElementById('weekdays')
 
 /////////////////////// CALLING THE API /////////////////////////////
@@ -39,17 +39,47 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     </h6>`
 
 })
-
 /////////////////////// WEATHERBOX (MESSAGE AND PICTURE = CASUAL WEATHER CENTENSE) ////////////////////////////////////////////
 
-/*
-     casualWeatherBox.innerHTML = 
-     `<h1>
-     In ${json.name} there is ${json.weather[0].description} right now. 
-     Wind is ${(Math.round(json.wind.speed))} m/s and the temperature is ${(Math.round(json.main.temp))}°C.
-     </h1>`
+fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=efd0845f5916e3c871d91fde63e9b949')
+
+    .then((response) => {
+        return response.json()
+ })
+
+    .then((json) => {
+    
+    const todaysWeather = json.weather[0].main
+    const changeWeather = (todaysWeather) => {
+
+    if (todaysWeather === 'Clear') {
+
+        casualWeatherBox.innerHTML =
+        `<img src="./Designs/Design-2/icons/noun_Sunglasses_2.svg" width="30px" height="30px"><br>
+         <p>Bring your sunscreen. ${json.name} gives you ${(Math.round(json.main.temp))}°C and sun today.
+         </p>`;
+     }
+
+    else if (todaysWeather === 'Cloud') {
+ 
+        casualWeatherBox.innerHTML =
+ 
+        `<img src="./Designs/Design-2/icons/noun_Cloud_1188486.svg" width="30px" height="30px"><br> 
+         <p>Don't forget your umbrella. It's raining in ${json.name} today..
+         </p>`;
+    }
+
+    else {
+ 
+        casualWeatherBox.innerHTML =
+        `<img src="./Designs/Design-2/icons/noun_Umbrella_2030530.svg" width="30px" height="30px"><br>
+        <p>Open that book you got for christmas. ${json.name} is not shining today and the wind is ${(Math.round(json.wind.speed))} m/s
+        </p>`;
+
+     }
+}
+changeWeather()
 })
-*/
 
 ///////////////////////// WEEKDAYS ////////////////////////////////////////////////////////////////////////////////////////////
 
