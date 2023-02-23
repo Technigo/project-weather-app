@@ -43,39 +43,53 @@ fetch(urlWeather)
 
     if (todaysWeatherMain === "Clear") {
       textForecast.innerHTML = `
-      <img class="icon" src="flaticon-dreamstale/clear-sun.png">
-    <p> It's a beautiful day in ${wData.name}. The sun is shining, get out your sunglasses!</p>`;
+      <img class="icon" src="icons-graficon/sun.png">
+      <p class="prompt"> It's a beautiful day in ${wData.name}. The sun is shining, you better put on sunglasses!</p>`;
+      // <img class="icon" src="flaticon-dreamstale/clear-sun.png"> Black icon
+      document.body.style.backgroundColor = "#FFFAD7"; // Change colors depending on the current weather
     } else if (todaysWeatherMain === "Clouds") {
       textForecast.innerHTML = `
-      <img class="icon" src="flaticon-dreamstale/clouds2.png">
-      <p>Make a cup of tea and get cosy. ${wData.name} is looking grey today.</p>`;
-      // Change colors depending on the current weather
-      document.body.style.backgroundColor = "#F4F7F8";
-      // document.body.style.color = "#F47775"; Unsure, does this change text color?
+      <img class="icon" src="icons-graficon/cloudy.png">
+      <p class="prompt">Make a cup of tea and get cosy. ${wData.name} is looking grey today.</p>`;
+      // <img class="icon" src="flaticon-dreamstale/clouds2.png">
+      document.body.style.backgroundColor =  "#D8D8D8";
+      // document.body.style.color = "#F47775"; // This changes the text color
     } else if (todaysWeatherMain === "Drizzle") {
       textForecast.innerHTML = `
-      <img class="icon" src="flaticon-dreamstale/drizzle.png">
-      <p>There is light rain in ${wData.name} today. Maybe bring your umbrella?</p>`;
+      <img class="icon" src="icons-graficon/drizzle.png">
+      <p class="prompt">There is light rain in ${wData.name} today. Maybe bring your umbrella?</p>`;
+      //<img class="icon" src="flaticon-dreamstale/drizzle.png">
+      document.body.style.backgroundColor = "#B4CDE6";
     } else if (todaysWeatherMain === "Rain") {
       textForecast.innerHTML = `
-      <img class="icon" src="flaticon-dreamstale/rain.png">
-      <p>It's raining in ${wData.name} today! Better bring your umbrella!</p>`;
+      <img class="icon" src="icons-graficon/rain.png">
+      <p class="prompt">It's raining in ${wData.name} today! Better bring your umbrella!</p>`;
+      // <img class="icon" src="flaticon-dreamstale/rain.png">
+      document.body.style.backgroundColor = "#";
     } else if (todaysWeatherMain === "Mist") {
       textForecast.innerHTML = `
-      <img class="icon" src="flaticon-dreamstale/mist.png">
-      <p>Oh, it's misty in ${wData.name} today. Better watch where you are going!</p>`;
+      <img class="icon" src="icons-graficon/foggy.png">
+      <p class="prompt">Oh, it's misty in ${wData.name} today. Better watch where you are going!</p>`;
+      // <img class="icon" src="flaticon-dreamstale/mist.png">
+      document.body.style.backgroundColor = "#B5D5C5";
     } else if (todaysWeatherMain === "Snow") {
       textForecast.innerHTML = `
-      <img class="icon" src="flaticon-dreamstale/snow.png">
-      <p><It's snowing in ${wData.name} today! Put on warm clothes and go for a nice walk.</p>`;
+      <img class="icon" src="icons-graficon/snow.png">
+      <p class="prompt"><It's snowing in ${wData.name} today! Put on warm clothes and go for a nice walk.</p>`;
+      // <img class="icon" src="flaticon-dreamstale/snow.png">
+      document.body.style.backgroundColor = "#D3CEDF";
     } else if (todaysWeatherMain === "Thunderstorm") {
       textForecast.innerHTML = `
-      <img class="icon" src="flaticon-dreamstale/thunderstorm.png">
-      <p>Be careful! There is a thunderstorm in ${wData.name} today.</p>`;
+      <img class="icon" src="icons-graficon/thunderstorm.png">
+      <p class="prompt">Be careful! There is a thunderstorm in ${wData.name} today.</p>`;
+      // <img class="icon" src="flaticon-dreamstale/thunderstorm.png">
+      document.body.style.backgroundColor = "#9CB4CC";
     } else {
       textForecast.innerHTML = `
-      <img class="icon" src="flaticon-dreamstale/weather.png">
-      <p>Unsure how to describe the weather in ${wData.name} today. What would you say?</p>`;
+      <img class="icon" src="icons-graficon/weather.png">
+      <p class="prompt">Unsure how to describe the weather in ${wData.name} today. What would you say?</p>`;
+      // <img class="icon" src="flaticon-dreamstale/weather.png">
+      document.body.style.backgroundColor = "#F2D7D9";
     }
 
   });

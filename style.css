@@ -5,7 +5,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: #f4f7f8;
+  /*background: #f4f7f8;*/
   font-family: montserrat;
 }
 
@@ -18,28 +18,34 @@ body {
 }
 
 .todays-header-forecast {
-  background: gray;
+  
 
   /*  border: 2px solid black; */
-}
-
-.icon {
-  width: 100px;
 }
 
 .text-forecast {
   display: flex;
   flex-direction: column;
-  font-size: 40px;
+  opacity: 0.7;
+  font-size: 30px;
   font-weight: bold;
   padding: 10px;
+  width: 350px;
   /* border: 2px solid black; */
+}
+
+.icon {
+  width: 110px;
+  margin: 10px 0px 0px 20px;
+}
+
+.prompt {
+  margin: 0px 10px 10px 10px;
 }
 
 .weekly-forecast {
   /*display: flex;
   flex-direction: column;*/
-  background: lightblue;
   /* border: 2px solid black; */
 }
 
@@ -50,3 +56,36 @@ body {
   border-bottom: dashed 1px;
 }
 
+footer {
+  display: flex;
+  flex-direction: column;
+  color: black;
+  text-align: center;
+  font-size: 13px;
+  text-transform: uppercase;
+  padding: 50px 20px 20px 20px;
+  margin: 0 auto;
+}
+
+a:link, a:visited  {
+  text-transform: none;
+  color: black;
+  text-decoration: none;
+  padding: 10px;
+  font-size: 12px;
+  font-style: italic;
+  text-align: center;
+}
+
+
+/* mouse over link */
+a:hover {
+  color: hotpink;
+}
+
+#F47775 - light red
+#F4F7F8 - grey/light blue
+#164A68 - dark blue
+#A3DEF7 - light blue
+#2A5510 - dark green
+#F7E9B9 - beige/yellow */
