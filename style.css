@@ -49,3 +49,11 @@ sup {
     align-self: flex-end;
 }
 
+.forecast {
+    display: flex;
+}
+
+.forecast img {
+    display: block;
+    height: 20px;
+}
