@@ -3,9 +3,9 @@ body {
 }
 
 .container {
-    background-color: rgb(223, 223, 252);
+    background-color: rgb(223, 230, 252);
     width: 100%;
-    max-width: 500px;
+    max-width: 400px;
     margin: 50px auto;
     display: flex;
     flex-direction: column;
@@ -23,6 +23,16 @@ body {
 
 .sun-position .time-data {
     margin: auto 10px;
+}
+
+#switchBtn {
+    background-color: #757AFF;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    margin: 5px auto 25px 75%;
 }
 
 .weather-forecast {
