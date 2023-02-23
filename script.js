@@ -38,14 +38,18 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
     Sunset ${sunset}
     </h6>`
 
+})
+
 /////////////////////// WEATHERBOX (MESSAGE AND PICTURE = CASUAL WEATHER CENTENSE) ////////////////////////////////////////////
 
+/*
      casualWeatherBox.innerHTML = 
      `<h1>
      In ${json.name} there is ${json.weather[0].description} right now. 
      Wind is ${(Math.round(json.wind.speed))} m/s and the temperature is ${(Math.round(json.main.temp))}°C.
      </h1>`
 })
+*/
 
 ///////////////////////// WEEKDAYS ////////////////////////////////////////////////////////////////////////////////////////////
 
