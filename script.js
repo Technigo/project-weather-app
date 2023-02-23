@@ -67,23 +67,5 @@ todaysWeather()
 
 
 
-//Function för att få igång dagens väder? const weatherToday = () => tex? 
-//temp just nu, sunrise, sunset
-
-
-//Img/logga som ändras beroende på vilken temp det är
-//Text som ändras beroende på vilket väder det är
-//if, else. If weather === cloud -> then show this text, logo and colors
-//if else weather === sun -> then show this... 
-///Colors to use
-//#F47775 - "Font color if it's grey"
-//#F4F7F8 - "Background if it's grey"
-
-//#164A68 - "Font color if it's rainy"
-//#A3DEF7 - "Background if it's rainy"
-
-//#2A5510 - "Font color if it's sunny"
-//#F7E9B9 - "Background if it's sunny"
-
 
 //5 dagars prognos som ändras
