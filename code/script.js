@@ -53,7 +53,6 @@ const createImage = (className, src, alt, appendTo) => {
 };
 
 // Background images
-//
 const weatherTypes = [
   "Thunderstorm",
   "Rain",
@@ -144,7 +143,7 @@ const getCurrentWeatherData = (latitude, longitude) => {
 };
 getCurrentWeatherData();
 
-//forecast
+// forecast
 const getForecastWeatherData = (latitude, longitude) => {
   const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=f60c361b4571fb70c85f29bbd856c13f`;
   fetch(url)
