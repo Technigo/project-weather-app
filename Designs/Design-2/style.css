@@ -78,19 +78,41 @@ Font color: #F47775*/
 
 
 /***Header(Emma)***/
-
+.container-header {
+    font-size: large;
+}
+    
 
 
 
 /***Main(Emma)***/
 
+.container-text {
+    display: flex;
+    flex-direction: column;
+    color: blue;
+}
 
+.container-text img {
+    width: 25%;
+    max-width: 200px;
+}
 
 
 /***Date(Emma)***/
 
+.container-date ul {
+    list-style-type: none;
+    padding-left: 0;
+}
 
+.container-date ul li {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed;
+    padding: 0.5em;
 
+}
 
 
 
