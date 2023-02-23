@@ -21,7 +21,7 @@ body {
   background-image: url(./Designs/Design-1/assets/turning-torso.jpg);
   background-size: cover;
   background-position: center;
-  height: 450px;
+  height: 60vh;
   background-repeat: no-repeat;
   opacity: 80%;
 }
@@ -123,7 +123,7 @@ h5 {
   font-size: 25px;
   color: #fff4ec;
   font-weight: lighter;
-  margin: 90px 0px 0px 0px;
+  margin: 50px 0px 0px 0px;
   padding: 10px;
 }
 
@@ -164,27 +164,28 @@ h5 {
 
 @media only screen and (max-width: 767px) {
   .img {
-    height: 550px;
-  }
-
-  h5 {
-    text-align: center;
-    margin: 35px 0px 0px 0px;
-  }
-
-  h4 {
-    text-align: center;
-    margin: 15px 0px 15px 15px;
-  }
-
-  h3 {
-    text-align: center;
-    margin: 0px 0px 15px 15px;
+    height: 460px;
   }
 
   h2 {
     text-align: center;
     margin: 0;
+  }
+
+  h3 {
+    text-align: center;
+    margin: 25px;
+  }
+
+  h4 {
+    text-align: center;
+    margin: 0;
+  }
+
+  h5 {
+    text-align: center;
+    margin: 15px;
+    font-size: 18px;
   }
 
   .descriptionToday {
