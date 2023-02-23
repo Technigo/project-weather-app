@@ -19,7 +19,7 @@ const fetchWeather = () => {
       let weatherDescription = data.weather[0].description;
       let cityName = data.name;
       let currentTemperature = data.main.temp; // fix to only show one number
-
+      
       let fetchedSunrise = data.sys.sunrise;
       let sunriseTime = new Date(fetchedSunrise * 1000);
       let sunriseHours = sunriseTime.getHours();
@@ -34,7 +34,7 @@ const fetchWeather = () => {
 
       weatherDescriptionDiv.innerHTML = `${weatherDescription}`;
       cityNameDiv.innerHTML = `${cityName}`;
-      currentTemperatureDiv.innerHTML = `${currentTemperature}`;
+      currentTemperatureDiv.innerHTML = `${currentTemperature} ºC`;
       sunriseDiv.innerHTML = `${renderedSunrise}`;
       sunsetDiv.innerHTML = `${renderedSunset}`;
     })
@@ -43,4 +43,44 @@ const fetchWeather = () => {
     });
 };
 
+
 fetchWeather();
+
+// background changes depending on the weather type
+let weatherImage = data.weather[0].main;
+
+if (weatherImage === "Clear") {
+// https://openweathermap.org/weather-conditions The types should match the main types from this web?
+mainWeather.innerHTML += `
+<img id="" class="" src="assets/sun.jpg"/>`
+} else if (weatherImage === "Thunderstorm") {
+  mainWeather.innerHTML += `
+<img id="" class="" src=""/>`
+} else if (weatherImage === "Drizzle") {
+  mainWeather.innerHTML += `
+<img id="" class="" src=".assets/sun.jpg"/>`
+} else if (weatherImage === "Rain") {
+  mainWeather.innerHTML += `
+<img id="" class="" src=".assets/sun.jpg"/>`
+} else if (weatherImage === "Snow") {
+  mainWeather.innerHTML += `
+<img id="" class="" src=".assets/sun.jpg"/>`
+} else if (weatherImage === "Clouds") {
+  mainWeather.innerHTML += `
+<img id="" class="" src=".assets/sun.jpg"/>`
+}
+
+// Background change
+const dayToNight = () => {
+  if (time < sunrise && time > sunset) {
+    mainWeather.style.background = `
+    
+    `;
+  }
+};
+
+dayToNight();
+
+
+
+
