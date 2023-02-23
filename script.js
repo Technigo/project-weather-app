@@ -17,11 +17,11 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     //.then = Step 2 "I'm giving you the present but you don't know what's inside yet" (YK)
     .then((response) => {
         return response.json()
-    })
+})
     //.then = Step 3 "I'm giving you the present so now you can take a look what's inside it" (YK)
     .then((json) => {
         city.innerHTML = `<h1>This is the weather in ${json.name}</h1>`
-        console.log(json) //Works this far, object loading on to console log. (EGA)
+    console.log(json) //Works this far, object loading on to console log. (EGA)
 
         //Added the temperature with some help from another students code (EGA)
         temperature.innerHTML = `<h3>The temperature is ${

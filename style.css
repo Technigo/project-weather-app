@@ -1,9 +1,30 @@
 /* -- import font later --  */
-:root {
+/* HEX-color codes for use later:
+//Clouds
+#f46a67 - dark red
+#f1b2b2 - light pink
+//Rain
+#85aab6 - grey/light blue
+#0f4767 - dark blue
+#82cdee - light blue
+//Sunny
+#077920 - green
+#f1fe7d - yellow 
+*/
 
+:root {
+    --primary: #8d5ff0;
+    --secondary: #6b96da;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
 body {
+    font-family: "Montserrat", "sans-serif";
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,9 +46,9 @@ body {
 }
 
 .search {
-display: flex;
-align-items: center;
-justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .top-container {
@@ -38,6 +59,11 @@ justify-content: center;
     /* display: flex;
     flex-direction: column;
     border: solid black 2px; */
+}
+
+.todays-weather {
+    width: 60%;
+    padding: 40px 20 px;
 }
 
 .weather-forecast {
@@ -56,4 +82,13 @@ justify-content: center;
 
 .temperature-now {
 
+}
+
+/* Media queries  */
+/* --Tablet-- */
+@media (min-width: 667px) and (max-width: 1024px) {
+}
+
+/* --Desktop-- */
+@media (min-width: 1025px) {
 }
