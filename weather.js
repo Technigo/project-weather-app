@@ -146,9 +146,9 @@ const setWeatherMessage = (weather) => {
     description.innerHTML = `
     <h1> today we are having ${weather} .....</h1>`
 
-
   }
 
-
 }
+
+
 
