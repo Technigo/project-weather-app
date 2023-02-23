@@ -1,0 +1,37 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.forecast {
+    display: flex;
+}
+
+.forecast img {
+    display: block;
+    height: 30px;
+}

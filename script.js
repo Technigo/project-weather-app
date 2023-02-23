@@ -96,42 +96,40 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Reykjavik&appid=fa2755c
 
 
 
-const weekDay = document.getElementById('main-forecast')
-const minTemp = document.getElementById('min-temp')
-const maxTemp = document.getElementById('max-temp')
-const weatherIcon = document.getElementById('weather-icon')
+
+const weekDay = document.getElementById('forecast-weekday')
+const weatherIcon = document.getElementById('forecast-icon')
+const minTemp = document.getElementById('forecast-min-temp')
+const maxTemp = document.getElementById('forecast-max-temp')
+
+
 fetch('https://api.openweathermap.org/data/2.5/forecast?lat=64.1355&lon=-21.8954&appid=fa2755c779ce094fc80f2fa365eea704&units=metric')
 .then((response) => {
     return response.json()
 })
 .then((fiveDay) => {
-const result = fiveDay.list.filter(item => item.dt_txt.includes('12:00'));
-    list.filter(item => item.dt_txt.includes('00:00:00'))
+    //two filters, to be able to get a low and high temperature
+    const filteredForecastNoon = fiveDay.list.filter(item => item.dt_txt.includes('12:00:00'));
+    const filteredForecastMidnight = fiveDay.list.filter(item => item.dt_txt.includes('00:00:00'));
 
-    //const filteredFiveDayNoon = fiveDay.list.filter(item => item.dt_txt.includes('12:00'));
-    //const filteredFiveDayMidnight = fiveDay.list.filter(item => item.dt_txt.includes('00:00:00'));
-    
+//Getting the variables from our filtered list
+// let minTemp = filteredForecastMidnight.forEach((item) => {item.main.temp_min.toFixed(1)}) //Minimum temperature
+// let maxTemp = filteredForecastNoon.forEach((item) => {item.main.temp_max.toFixed(1)}) //Maximum temperature
+// console.log(filteredForecastMidnight);
 
-    let minTemp = filteredFiveDayMidnight.forEach((item) => {
-        item.main.temp_min.toFixed(1)
-    })
-    let maxTemp = filteredFiveDayNoon.forEach((item) => {
-            item.main.temp_min.toFixed(1)
-            
-    })
+//Getting the day name (noon)
+filteredForecastNoon.forEach((item) => {
+    const date = new Date(item.dt * 1000);
+    let dayName =  date.toLocaleDateString("en-US", {weekday: "long"});
 
-const dayName = filteredFiveDayNoon.forEach((item) => {
-let date = new Date(item.dt * 1000);
-date.toLocaleDateString("en-US", {weekday: "long"});
-    })
-   
-filteredFiveDayNoon.forEach((item) => {
+// Looping through the array and deciding on the icon depending on weather forecast
     let mainWeather = item.weather[0].main
     // Deciding the icon depending on weather forecast
     if (mainWeather === "Snow") {
         weatherImg = 'icons8-snow-64.png'
     } else if (mainWeather === "Rain") {
         weatherImg = 'icons8-rain-64.png'
+    } else if (mainWeather === "Thunderstorm") {
         weatherImg = 'icons8-thunder-64.png'
     } else if (mainWeather === "Drizzle") {
         weatherImg = 'icons8-wet-64.png'
@@ -142,14 +140,18 @@ filteredFiveDayNoon.forEach((item) => {
     } else if (mainWeather === "Clear") {
         weatherImg = 'icons8-solar-64.png'
     }
+
+weekDay.innerHTML += `
+<p>${dayName}</p>`
+weatherIcon.innerHTML += `<p>
+<img src=${weatherImg} /></p>`
+maxTemp.innerHTML += `
+<p>${item.main.temp.toFixed(1)} °C / </p>`
 })
 
-fiveDay.forEach(() => {
-forecast.innerHTML += `
-<p>${dayName}</p>
-<img src=${weatherImg} />
-<p>${maxTemp} °C</p>
-<p>${minTemp} °C</p>
+filteredForecastMidnight.forEach((item) => {
+minTemp.innerHTML += `
+<p>&nbsp;${item.main.temp.toFixed(1)} °C</p>
 `
 })
 
@@ -157,24 +159,5 @@ forecast.innerHTML += `
 
 
 
-
-
-
-
-//let date = new Date(item.dt * 1000)
-    //let dayName = date.toLocaleDateString("en-US", {weekday: "long"})
-/*
-    weatherIcon.innerHTML += weatherImg
-    weekDay.innerHTML += `<p>${dayName}</p>`
-    maxTemp.innerHTML += `${item.main.temp_max.toFixed(1)} °C</p>`
-})
-
-filteredFiveDayMidnight.forEach((item) => {
-minTemp.innerHTML += `<p>/${item.main.temp_min.toFixed(1)} °C</p>`
-})
-    console.log(new Date);
-    console.log(filteredFiveDayMidnight);
-    })
-*/
 
 
