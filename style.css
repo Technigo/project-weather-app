@@ -18,8 +18,16 @@ font-family: 'Montserrat', sans-serif;
 
 /*Used for general styling of all divs.
 */
+.inputstyle{
+    border-radius: 5px 5px;
+  border: 1px solid grey
+  ;
+}
+.button{
+   border-radius: 5px 5px; 
+   border: 1px solid grey
 
-
+}
 .weatherToday { 
 grid-column: 1/4 ;
     font-size: 16px;

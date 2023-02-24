@@ -5,6 +5,7 @@ const dailyTextMsg = document.getElementById("dailyText");
 const dayFive = document.getElementById("fiveDays");
 
 const bodySelector = document.getElementById("bodyStyle")
+
 //api key
 const apiKey = "4f9ca5d3e70c95a041bc513ac8b31ff8"
 
@@ -71,8 +72,8 @@ const checkWeather = (dataForecast) => {
   console.log(dataForecast.weather[0].main);
 
   if (dataForecast.weather[0].main === 'Clouds'){
-    bodySelector.classList.add('clouds');
-    dailyTextMsg.innerHTML=   `<div id="cloud">
+    bodySelector.classList.add('cloudy');
+    dailyTextMsg.innerHTML=   `
 <img src="/Designs/Design-2/icons/noun_Cloud_1188486.svg" alt="">
 
     <p>It's cloudy in ${dataForecast.name} right now</p>
@@ -81,7 +82,7 @@ const checkWeather = (dataForecast) => {
 
     else if (dataForecast.weather[0].main === 'Clear'){
       bodySelector.classList.add('sunny');
-      dailyTextMsg.innerHTML=  `<div id="sunGlasses" class="sunglasses">
+      dailyTextMsg.innerHTML=  `
       <img src="/Designs/Design-2/icons/noun_Sunglasses_2055147.svg" alt="">
         
       <p>It's sunny on ${dataForecast.name} right now</p>
@@ -91,7 +92,7 @@ const checkWeather = (dataForecast) => {
     else if (dataForecast.weather[0].main === 'Fog'){
       bodySelector.classList.add('foggy');
      dailyTextMsg.innerHTML=    
-     `<div id="fog" class="fog">
+     `
      <img src="/Designs/Design-2/icons/icons8-fog-64.png" alt="fog">
   <p>It's foggy in ${dataForecast.name} right now</p>
 </div>`
@@ -99,7 +100,7 @@ const checkWeather = (dataForecast) => {
     
     else {
       bodySelector.classList.add('rain');
-     dailyTextMsg.innerHTML=  `<div id="umbrella" class="umbrellas">
+     dailyTextMsg.innerHTML=  `
   <img src="/Designs/Design-2/icons/noun_Umbrella_2030530.svg" alt="">
   <p>It's raining in ${dataForecast.name} right now</p>
 </div>`
@@ -158,7 +159,7 @@ form.addEventListener("submit", (event) => {
     
       console.error(error);
     });
-    fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${userCity}&units=metric&appid=6dc9ca16706cabb0c8c9d20011825ab1`)
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${userCity}&units=metric&appid=6dc9ca16706cabb0c8c9d20011825ab1`)
     .then(response => response.json())
     .then(data => {
     fiveDayForecast(data);
