@@ -5,7 +5,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: white;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
     display:flex;
     flex-direction: column;
     justify-content:stretch;
@@ -19,27 +19,27 @@ main {
     align-items: center;
 }
 
-main h1 {
+.temperature {
     color: white;
     font-weight: normal;
-    font-size: 5em;
+    font-size: 65px;
     margin: 0%;
-    padding: 20px 0;
+    padding: 10px 0;
     align-self: center;
 }
 
-main h2 {
+.city {
     color: white;
-    font-size: 1.5em;
+    font-size: 30px;
     margin: 0%;
     font-weight: normal;
     padding: 10px 0;
     align-self: center;
 }
 
-main h3 {
+.weather-type {
     color: white;
-    font-size: 1.17em;
+    font-size: 15px;
     margin: 0%;
     font-weight: normal;
     padding: 10px 0;
@@ -54,6 +54,7 @@ main h3 {
     align-items: center;
     gap:20px;
     padding: 10px 0;
+    font-size: 10px;
 }
 
 .current-weather {
@@ -63,6 +64,7 @@ main h3 {
     justify-content: center;
     width: 100%;
     height: 50vh;
+    opacity: 80%;
 }
 
 .current-weather-img{
@@ -73,8 +75,10 @@ main h3 {
     width: 100%;
     height: 100%;
     object-fit:fill;
-    filter: blur(40px)
+    filter: blur(2px) brightness(80%);
+
 }
+
 
 .big-icon{
     width:80px;
@@ -85,16 +89,32 @@ main h3 {
 }
 
 .forecast {
-    display: block;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
     height: 40vh;
-    background: #306a7a center/cover linear-gradient(to bottom, #bfdee6, rgba(255, 255, 255, 0.73));
+}
+
+.forecast-background-img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    filter: blur(4.5rem) brightness(80%);
+    
 }
 
 .day{
     display:flex;
     flex-direction: row;
     justify-content: space-around;
+    color:rgb(255, 255, 255);
+    font-weight:400;
 }
 
 .forecast-img {
@@ -105,7 +125,8 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #bcd7df;
+    background-color: #000000;
+    opacity: 50%;
     color: white;
     font-size: 14px;
     height: 10vh;
@@ -126,11 +147,26 @@ footer {
     .forecast {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-around;
         font-size: x-large;
         }
     .forecast-img{
         width:70px;
+    }
+    
+    .temperature{
+      font-size: 100px;
+    }
+
+    .city {
+        font-size: 40px;
+    }
+
+    .weather-type {
+        font-size: 25px;
+    }
+    .sunrise-sunset{
+        font-size:20px;
     }
 }
 
@@ -154,6 +190,22 @@ footer {
         width: 500px; 
     }
 
+    .temperature {
+        font-size: 100px;
+    }
+
+    .city {
+        font-size: 40px;
+    }
+
+    .weather-type {
+        font-size: 25px;
+    }
+
+    .sunrise-sunset {
+        font-size: 20px;
+    }
+
     .current-weather {
         position: relative;
         border-radius: 20% 20% 0 0; 
@@ -161,6 +213,7 @@ footer {
             -webkit-box-shadow: 1px 5px 30px -2px rgb(115 110 110 / 76%);
             -moz-box-shadow: 1px 5px 30px -2px rgba(115, 110, 110, 0.76); 
     }
+
 
     .current-weather-img {
          border-radius: 20% 20% 0 0;
@@ -174,6 +227,10 @@ footer {
         box-shadow: 1px 5px 30px -2px rgb(115 110 110 / 76%);
             -webkit-box-shadow: 1px 5px 30px -2px rgb(115 110 110 / 76%);
             -moz-box-shadow: 1px 5px 30px -2px rgba(115, 110, 110, 0.76);
+    }
+
+    .forecast-background-img {
+        border-radius: 0 0 20% 20%;
     }
 
     footer{

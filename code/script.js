@@ -70,15 +70,23 @@ const changeBackgroundPicture = (weatherTypeJson) => {
       document.querySelector(
         "body"
       ).style.backgroundImage = `url('/project-weather-app/code/images/${weatherType}.jpg')`;
+
       createImage(
         "current-weather-img",
         `/project-weather-app/code/images/${weatherType}.jpg`,
         weatherType,
         currentWeather
       );
+      createImage(
+        "forecast-background-img",
+        `/project-weather-app/code/images/${weatherType}.jpg`,
+        weatherType,
+        forecast
+      );
     }
   });
 };
+
 // current weather details
 const getCurrentWeatherData = (latitude, longitude) => {
   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=f60c361b4571fb70c85f29bbd856c13f`;
@@ -101,7 +109,13 @@ const getCurrentWeatherData = (latitude, longitude) => {
         `${Math.round(data.main.temp)}°C`,
         currentWeather
       );
-      createElement("h2", "city", "city", data.name, currentWeather);
+      createElement(
+        "h2",
+        "city",
+        "city",
+        data.name.toUpperCase(),
+        currentWeather
+      );
       createElement(
         "h3",
         "weather-type",

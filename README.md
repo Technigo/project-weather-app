@@ -1,8 +1,13 @@
 # Weather App
+
 The project was to work in pairs and make a weather-app. We worked witch javascript, fetch api and date. We also learned about working on branches on git.
 
-backround image: <a href="https://www.freepik.com/free-photo/white-cloud-blue-sky_4201545.htm#query=clear%20sky&position=0&from_view=keyword&track=ais">Image by lifeforstock</a> on Freepik
-<a href="https://www.freepik.com/free-photo/sky-clouds-background_1284084.htm#query=scattered%20clouds&position=2&from_view=search&track=ais">Image by evening_tao</a> on Freepik
+It was a pair project where the goal was to practice fetching apis, getting the data from the fetched json and modifing the dom.
+The app loads the coordinates based on the geolocation and shows the current weather details in the top half of the page (city, current temperature, weather type and sunrise and sunset). If the location service are turned off on the user's computer it will show Stockholm by default.
+The forecast shows the average temperature for the next 5 days at 9am each day.
+The background changes based on the weather type.
+
+Background images:
 Photo by Walter Velasquez: https://www.pexels.com/photo/blue-sky-844112/
 Photo by Andrew Neel: https://www.pexels.com/photo/photo-of-water-drops-on-glass-3178798/
 Photo by Oleksandr Pidvalnyi: https://www.pexels.com/photo/women-s-gray-dress-2144326/
@@ -16,9 +21,15 @@ Photo by Gabriela Palai: https://www.pexels.com/photo/person-standing-on-brown-w
 
 ## The problem
 
+<<<<<<< HEAD
 First time working on branches on git and vscode, and learning all the different commands in the terminal.
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+# Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+
+We approached the task by discussing which design we would want to use and then together in a live share we set up the basic html structure including classes and fetched all the necessary data.
+Further things to improve: A dropdown can be added that includes the city names, so that the
+
+> > > > > > > 23edbb9 (Added some more fixes for styling)
 
 ## View it live
 
