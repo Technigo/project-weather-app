@@ -35,7 +35,6 @@
     font-size: 15px;
     font-weight: 200;
     padding-bottom: 40px;
-    color: #F47775;
 }
 
 .weather-description {
@@ -51,21 +50,34 @@
 }
 
 h1 {
-    font-size: 20px;
+    font-size: 30px;
     font-weight: 400;
-    color: #F47775;
-    padding-top: 20px;
+    padding: 20px 0;
 }
 
-.week-days{
-    width: 100%;
-    padding: 40px;
-}
-
-.week-days .row{
+.five-days-forecast {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border-bottom: 2px dashed;
-    padding: 8px 0;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-bottom: 2px dotted;
+    margin: 20px 0;
+    width: 100%;
+    list-style: none;
 }
+
+.clear {
+    background-color: #f7e9b9;
+    color: #2a5510;
+  }
+  
+.clouds {
+    background-color: #f4f7f8;
+    color: #f47775;
+  }
+  
+.rain {
+    background-color: #a3def7;
+    color: #164a68;
+  }
