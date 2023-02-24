@@ -14,8 +14,8 @@ const apiKey = "4f9ca5d3e70c95a041bc513ac8b31ff8"
 let city = "Lisbon"; //Default city
 
 
-let cityURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=6dc9ca16706cabb0c8c9d20011825ab1`;
-const fiveDayURL = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`
+let cityURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=6dc9ca16706cabb0c8c9d20011825ab1`;
+const fiveDayURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`
 
 //This code fetches the data, turns it into json and passes it to other functions
 fetch(cityURL)
@@ -147,7 +147,7 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
   userCity = cityInput.value.trim(); 
 
-  fetch(`http://api.openweathermap.org/data/2.5/weather?q=${userCity}&units=metric&appid=6dc9ca16706cabb0c8c9d20011825ab1`)
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${userCity}&units=metric&appid=6dc9ca16706cabb0c8c9d20011825ab1`)
     .then(response => response.json())
     .then(data => {
      
