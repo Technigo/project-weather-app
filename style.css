@@ -87,6 +87,10 @@ sup {
     font-size: 16px;
 }
 
+.forecast p {
+    font-size: 16px;
+}
+
 .forecast img {
     display: block;
     height: 1.2rem;
