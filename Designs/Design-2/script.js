@@ -65,7 +65,6 @@ const getWeather = (data) => {
 }
 
 
-
 //Display weather.main, weather.description (type of weather) 
 //Display main.temp (current temperature in city XX)
 //Display sys.sunrise (time of sunrise)

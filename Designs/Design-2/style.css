@@ -78,23 +78,44 @@ Font color: #F47775*/
 
 
 /***Header(Emma)***/
+.container-header {
+    margin-bottom: 3.8rem;
+}
 
-
-
+.container-header p {
+    margin-bottom: 0.2em;
+}
 
 /***Main(Emma)***/
 
+.container-text {
+    display: flex;
+    flex-direction: column;
+}
 
+.container-text img {
+    width: 25%;
+    max-width: 200px;
+}
 
+h1 {
+    font-size: 3rem;
+    margin-block: 0.5em;
+}
 
 /***Date(Emma)***/
 
+.container-date ul {
+    list-style-type: none;
+    padding-left: 0;
+}
 
-
-
-
-
-
+.container-date ul li {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed;
+    padding: 0.6em;
+}
 
 /***Media queries***/
 
