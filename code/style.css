@@ -1,6 +1,19 @@
 body {
-  background-color: rgb(46, 161, 161);
-  color: antiquewhite
+height: 100vh;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 25%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 25%;
+    }
 }
 
 p {
@@ -42,4 +55,20 @@ ul li {
 
 #week-list-icon {
   max-height: 40px;
+}
+
+/* Changes according to time of day*/
+
+.day {
+ height: 100vh;
+  background: linear-gradient(-45deg, #94dbf5, #62b7fc, #84e1f8, #e0c454);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+.night {
+  height: 100vh;
+  background: linear-gradient(-45deg, #4b114b, #0d3a5f, #84e1f8, #0b181c );
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
 }

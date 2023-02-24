@@ -9,14 +9,24 @@ const sunUpTime = document.getElementById("sun-up-time");
 const sunDownTime = document.getElementById("sun-down-time");
 const arrowButton = document.getElementById("arrow-button");
 const weekList = document.getElementById("week-list");
+const topRightLogo = document.getElementById("weather-icon-today")
+const bodyContainer = document.querySelector(".body-container")
 
 
 //Global variables
 let apiResponse;
 let nightTemp;
 
+let date = new Date();
 
-
+const stylingTimer = () => {
+  if (date.getHours() >= 7 && date.getHours() <= 18) {
+    bodyContainer.classList.add("day");
+  } else {
+  bodyContainer.classList.add("night");
+}
+}
+stylingTimer()
 
 //API Fetch()
 fetch(
@@ -55,7 +65,7 @@ const getForecastData = () => {
     .then((response) => response.json())
     .then((data) => {
       //forecastResponse = data;
-      const filteredForecast = data.list.filter(item => item.dt_txt.includes('12:00')) //Makes a 5 day array read at 12
+      const filteredForecast = data.list.filter(item => item.dt_txt.includes('09:00')) //Makes a 5 day array read at 12
       console.log(filteredForecast);
 
       const filteredForecastNight = data.list.filter(item => item.dt_txt.includes('21:00'))
@@ -64,30 +74,24 @@ const getForecastData = () => {
       filteredForecast.forEach(day => {
         const date = new Date(day.dt * 1000);
         let dayName = date.toLocaleDateString("en", { weekday: "short" });//gives the name of each day
-
+      
         filteredForecastNight.map(day => {
-          const nightTemp = day.main.temp
+           nightTemp = day.main.temp
           console.log(nightTemp)
-        }) //how get the nightTemp out of here to work in the innerHTML?
+        })
 
-
-
-        //We want this to show both day and night temp all the time, but show different logo for day or night. In progress, might only do if/else for icon and trying to get nighttemp calculation to work
-        if (date.getHours() === 6 - 17) {
-          console.log("dag")
-          weekList.innerHTML += `<div id="weekDayRow"><p>${dayName}</p>
-  <img id="week-list-icon" src="http://openweathermap.org/img/wn/${day.weather[0].icon}@4x.png">
-  <p>${Math.round(day.main.temp * 10) / 10}/night °C</p></div>`;
-        } else if (date.getHours() === 18 - 5) {
-          console.log("natt")
-          weekList.innerHTML += `<div id="weekDayRow"><p>${dayName}</p>
-  <img id="week-list-icon" src="http://openweathermap.org/img/wn/${day.weather[0].icon}@4x.png">
-  <p>${Math.round(day.main.temp * 10) / 10} / ${Math.round(nightTemp * 10) / 10} °C</p></div>`;
-        }
-
-      });
-
+      
+      weekList.innerHTML += `<div id="weekDayRow"><p>${dayName}</p>
+      <img id="week-list-icon" src="http://openweathermap.org/img/wn/${day.weather[0].icon}@4x.png">
+      <p>${Math.round(day.main.temp * 10) / 10} / ${Math.round(nightTemp * 10) / 10} °C</p></div>`;
     })
+    
+   
+  })
 }
-
-//icon and night temp <p>${day.weather.icon}</p>
+//TO DO
+//add a logo to the top right that changes depending on time and weather. 
+//Put in another city and current location in the nav menu?
+//either make the arrow button show more info about weather, or remove it
+// styling and media queries
+//fix suntime to show hh:mm and not seconds + am/pm 
