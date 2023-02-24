@@ -20,6 +20,7 @@ const fetchCurrentWeather = (currentCity) => {
       console.log(data);
       renderCurrentWeather(data);
       renderSunriseSunset(data);
+      currentTime(data);
     })
     .catch((error) => {
       console.log(error);
@@ -42,6 +43,18 @@ const fetchWeeklyWeather = (currentCity) => {
     });
 };
 
+const currentTime = (data) => {
+  let currentTime = data.dt;
+  let currentTimeDate = new Date(currentTime * 1000);
+  let currentTimeHour = currentTimeDate.getHours();
+  let currentTimeMinute = currentTimeDate.getMinutes();
+  let currentTimeRender =
+    (currentTimeHour < 10 ? "0" + currentTimeHour : currentTimeHour) +
+    "." +
+    (currentTimeMinute < 10 ? "0" + currentTimeMinute : currentTimeMinute);
+  console.log(currentTimeRender);
+};
+
 const renderCurrentWeather = (data) => {
   let weatherDescription = data.weather[0].description;
   let cityName = data.name;
@@ -60,7 +73,7 @@ const renderSunriseSunset = (data) => {
   let renderedSunrise =
     (sunriseHours < 10 ? "0" + sunriseHours : sunriseHours) +
     "." +
-    (sunriseMinutes < 10 ? "0" + sunriseMinutes : sunriseMinutes);
+    (sunriseMinutes < 10 ? "0" + sunriseMinutes : sunriseMinutes); // making sure that if we get a one digit number we add 0 before it
 
   let fetchedSunset = data.sys.sunset;
   let sunsetTime = new Date(fetchedSunset * 1000);
