@@ -108,7 +108,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?lat=64.1355&lon=-21.8954
 //Getting the day name (noon)
 filteredForecastNoon.forEach((item) => {
     const date = new Date(item.dt * 1000);
-    let dayName =  date.toLocaleDateString("en-US", {weekday: "long"});
+    let dayName =  date.toLocaleDateString("en-US", {weekday: "short"});
 
     // Looping through the array and deciding on the icon depending on weather forecast
     let mainWeather = item.weather[0].main
@@ -130,8 +130,8 @@ filteredForecastNoon.forEach((item) => {
 
 weekDay.innerHTML += `
 <p>${dayName}</p>`
-weatherIcon.innerHTML += `<p>
-<img src=${weatherImg} /></p>`
+weatherIcon.innerHTML += `
+<img src=${weatherImg} />`
 maxTemp.innerHTML += `
 <p>${item.main.temp.toFixed(1)} °C / </p>`
 })
