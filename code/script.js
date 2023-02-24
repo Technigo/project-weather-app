@@ -65,18 +65,18 @@ const changeBackgroundPicture = (weatherTypeJson) => {
 
       document.querySelector(
         "body"
-      ).style.backgroundImage = `url('/code/images/${weatherType}.jpg')`;
+      ).style.backgroundImage = `url('project-weather-app/code/images/${weatherType}.jpg')`;
 
       createImage(
         "current-weather-img",
-        `/code/images/${weatherType}.jpg`,
+        `project-weather-app/code/images/${weatherType}.jpg`,
         weatherType,
         currentWeather
       );
 
       createImage(
         "forecast-background-img",
-        `/code/images/${weatherType}.jpg`,
+        `project-weather-app/code/images/${weatherType}.jpg`,
         weatherType,
         forecast
       );
