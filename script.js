@@ -6,6 +6,7 @@ let cityNameDiv = document.getElementById("cityName");
 let currentTemperatureDiv = document.getElementById("currentTemperature");
 let sunriseDiv = document.getElementById("sunrise");
 let sunsetDiv = document.getElementById("sunset");
+let mainWeatherPicture = document.getElementById("mainWeatherPicture");
 
 const fetchWeather = () => {
   fetch(
@@ -32,6 +33,8 @@ const fetchWeather = () => {
       let sunsetMinutes = sunsetTime.getMinutes();
       let renderedSunset = sunsetHours + "." + sunsetMinutes; // add zero if minutes are only one digit
 
+      updateWeatherPicture(data);
+
       weatherDescriptionDiv.innerHTML = `${weatherDescription}`;
       cityNameDiv.innerHTML = `${cityName}`;
       currentTemperatureDiv.innerHTML = `${currentTemperature} ºC`;
@@ -44,32 +47,41 @@ const fetchWeather = () => {
 };
 
 
-fetchWeather();
+const updateWeatherPicture = (data) => {
 
-// background changes depending on the weather type
-let weatherImage = data.weather[0].main;
-
-if (weatherImage === "Clear") {
-// https://openweathermap.org/weather-conditions The types should match the main types from this web?
-mainWeather.innerHTML += `
-<img id="" class="" src="assets/sun.jpg"/>`
-} else if (weatherImage === "Thunderstorm") {
-  mainWeather.innerHTML += `
-<img id="" class="" src=""/>`
-} else if (weatherImage === "Drizzle") {
-  mainWeather.innerHTML += `
-<img id="" class="" src=".assets/sun.jpg"/>`
-} else if (weatherImage === "Rain") {
-  mainWeather.innerHTML += `
-<img id="" class="" src=".assets/sun.jpg"/>`
-} else if (weatherImage === "Snow") {
-  mainWeather.innerHTML += `
-<img id="" class="" src=".assets/sun.jpg"/>`
+  // background changes depending on the weather type
+  let weatherImage = data.weather[0].main;
+  
+  
+  if (weatherImage === "Clear") {
+    // https://openweathermap.org/weather-conditions The types should match the main types from this web?
+    mainWeatherPicture.innerHTML = `
+    <img id="" class="" src="/assets/sun.jpg">`
+  } else if (weatherImage === "Thunderstorm") {
+    mainWeatherPicture.innerHTML = `
+    <img id="" class="" src=""/>`
+  } else if (weatherImage === "Drizzle") {
+    mainWeatherPicture.innerHTML = `
+    <img id="" class="" src="./assets/sun.jpg"/>`
+  } else if (weatherImage === "Rain") {
+    mainWeatherPicture.innerHTML = `
+    <img id="" class="" src="./assets/sun.jpg"/>`
+  } else if (weatherImage === "Snow") {
+    mainWeatherPicture.innerHTML = `
+    <img id="" class="" src="/assets/cloudy.jpg">`
 } else if (weatherImage === "Clouds") {
-  mainWeather.innerHTML += `
-<img id="" class="" src=".assets/sun.jpg"/>`
+  mainWeatherPicture.innerHTML = `
+  <img id="" class="" src="./assets/sun.jpg"/>`
+} else {
+  mainWeatherPicture.innerHTML = `
+  <img id="" class="" src="./assets/sun.jpg"/>`
+}
 }
 
+
+const time = new Date().toLocaleString([], {
+  
+})
 // Background change
 const dayToNight = () => {
   if (time < sunrise && time > sunset) {
@@ -81,6 +93,8 @@ const dayToNight = () => {
 
 dayToNight();
 
+
+fetchWeather();
 
 
 
