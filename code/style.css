@@ -54,8 +54,6 @@ img {
 .forecast-section {
   display: flex;
   justify-content: space-between;
-  height: 75px;
-  margin-bottom: -7px;
 }
 
 .day > :not(:last-child) {
@@ -86,54 +84,39 @@ img {
     min-height: 100%;
   }
 
-  .today {
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 100px 20px;
-  }
-
-  .forecast-section {
-    display: flex;
-    flex-direction: column-reverse;
-    width: 30%;
-    justify-content: space-between;
-    padding: 100px 20px;
-  }
-
-  .day {
-    display: flex;
-    flex-direction: column;
-    justify-content: column;
-    justify-content: flex-end;
-    height: 64%;
-  }
-
-  h2 {
-    font-weight: bold;
-    font-size: 60px;
-    margin: 0;
-  }
-
   .header {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: auto;
     max-width: 80%;
-    padding: 100px 20px;
+  }
+
+  .header p {
+    font-size: 1.17em;
+  }
+
+  img {
+    display: flex;
+    width: 15%;
+    height: auto;
+    padding-top: 40px;
+  }
+
+  .forecast-section {
+    display: flex;
+    width: 30%;
+    justify-content: space-between;
+    padding: 20px 50px 20px 0;
+  }
+
+  h2 {
+    font-weight: bold;
+    font-size: 60px;
   }
 
   .message-text h2 {
     font-weight: bold;
     font-size: 30px;
-  }
-
-  img {
-    display: flex;
-    width: 10%;
-    height: auto;
-    padding-top: 40px;
   }
 }
