@@ -77,7 +77,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
     //get correct format for day 
     const dateFilteredForecast = new Date(fiveDayForecast.dt_txt)
     console.log(dateFilteredForecast)
-    
+
     const options = { weekday: "long" };
     const weekdayFilteredForecast = new Intl.DateTimeFormat("en-UK", options).format(dateFilteredForecast)
     console.log(weekdayFilteredForecast)
@@ -86,7 +86,9 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
     weekdays.innerHTML += 
     `<h3>
     <span class='left'>${weekdayFilteredForecast}</span>
+    <span class='center'>${(filteredForecast[0].weather)[0].description}</span> 
     <span class='right'>${(Math.round(fiveDayForecast.main.temp))}°C</span>
+
     <hr>
     </h3>`
     })
