@@ -66,23 +66,21 @@ fetch(
     let mainWeatherToday = json.weather[0].main;
     console.log(mainWeatherToday);
     if (mainWeatherToday === "Snow") {
-      weatherImg = "icons8-snow-64.png";
-    } else if (mainWeatherToday === "Rain") {
-      weatherImg = "icons8-rain-64.png";
+      weatherImg = "Designs/Design-1/assets/snow.svg";
+    } else if (mainWeatherToday === "Rain" || mainWeatherToday === "Drizzle") {
+      weatherImg = "Designs/Design-1/assets/rain.svg";
     } else if (mainWeatherToday === "Thunderstorm") {
-      weatherImg = "icons8-thunder-64.png";
-    } else if (mainWeatherToday === "Drizzle") {
-      weatherImg = "icons8-wet-64.png";
+      weatherImg = "Designs/Design-1/assets/thunder.svg";
     } else if (
       mainWeatherToday === "Mist" ||
       mainWeatherToday === "Fog" ||
       mainWeatherToday === "Ash"
     ) {
-      weatherImg = "icons8-mist-64.png";
+      weatherImg = "Designs/Design-1/assets/mist.svg";
     } else if (mainWeatherToday === "Clouds") {
-      weatherImg = "icons8-cloud-64.png";
+      weatherImg = "Designs/Design-1/assets/cloud.svg";
     } else if (mainWeatherToday === "Clear") {
-      weatherImg = "icons8-solar-64.png";
+      weatherImg = "Designs/Design-1/assets/clear.svg";
     }
     mainImage.innerHTML += `<image src=${weatherImg} alt='icon of the weather Today'/>`;
   });
@@ -140,23 +138,21 @@ fetch(
       // Looping through the array and deciding on the icon depending on weather forecast
       let mainWeather = item.weatherIcon;
       if (mainWeather === "Snow") {
-        weatherImg = "icons8-snow-64.png";
-      } else if (mainWeather === "Rain") {
-        weatherImg = "icons8-rain-64.png";
+        weatherImg = "Designs/Design-1/assets/snow.svg";
+      } else if (mainWeather === "Rain" || mainWeather === "Drizzle") {
+        weatherImg = "Designs/Design-1/assets/rain.svg";
       } else if (mainWeather === "Thunderstorm") {
-        weatherImg = "icons8-thunder-64.png";
-      } else if (mainWeather === "Drizzle") {
-        weatherImg = "icons8-wet-64.png";
+        weatherImg = "Designs/Design-1/assets/thunder.svg";
       } else if (
         mainWeather === "Mist" ||
         mainWeather === "Fog" ||
         mainWeather === "Ash"
       ) {
-        weatherImg = "icons8-mist-64.png";
+        weatherImg = "Designs/Design-1/assets/mist.svg";
       } else if (mainWeather === "Clouds") {
-        weatherImg = "icons8-cloud-64.png";
+        weatherImg = "Designs/Design-1/assets/cloud.svg";
       } else if (mainWeather === "Clear") {
-        weatherImg = "icons8-solar-64.png";
+        weatherImg = "Designs/Design-1/assets/clear.svg";
       }
 
       //Populating the HTML with the data

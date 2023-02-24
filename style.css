@@ -14,7 +14,7 @@ body {
   flex-direction: column;
   justify-content: center;
   color: white;
-  min-height: 50vh;
+  min-height: 25rem;
   border-radius: 0% 0% 30% 30%;
 }
 
@@ -33,18 +33,19 @@ body {
 
 .main-image img {
   width: 9.5rem;
-  position: absolute;
-  right: 5%;
-  top: 4%;
+  position: relative;
+  left: 50%;
 }
 
 .main {
     display: flex;
     flex-direction: column;
     width: 80%;
-    margin: auto;
+    margin: -75px auto 0 auto;
     align-content: center;
 }
+
+
 
 .sunrise-sunset {
   display: flex;
@@ -77,9 +78,10 @@ sup {
   width: 5rem;
   height: 5rem;
   border-radius: 50%;
-  position: absolute;
-  top: 43%;
-  right: 11%;
+  align-self: flex-end;
+  top: 1.5rem;
+  right: 3rem;
+  position: relative;
   background-color: #5e79fd;
   border: none;
   color: white;
@@ -155,4 +157,12 @@ html {
   .forecast-wrapper img {
     width: 1rem;
   }
+}
+
+@media (min-width: 668px) {
+.main-container {
+max-width: 660px;
+margin: 3rem auto;
+box-shadow: 5px 8px 20px rgb(0 0 0 / 30%);
+}
 }
