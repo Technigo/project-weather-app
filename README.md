@@ -1,13 +1,21 @@
-# Weather App
+Weather App:
+This weeks task was to: 
 
-Replace this readme with your own information about your project.
+✓ Get in to basic JSON
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+✓ How to use `fetch()` in JavaScript
 
-## The problem
+✓ How to use promises in JavaScript
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+✓ How to work with the `Date()` object in JavaScript
 
-## View it live
+Problems:
+From being in pairs to ending up solo due to my partner needing to change directions privately, I decided to do the project solo.
+I found it very challenging to find structure for this project. The new methods to take in when the previous week was a lot to take in about JavaScript, I felt that understanding all these terms requires a lot of more time than provided, or so I felt. 
+I did manage to create through youtube, former students and google a design I am proud of and that fits my creative mind. So that's always something.
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+The biggest challenge is not having enough time and discussion to fully grasp basic JS. Digging in to JSON and using fetch-method was not possible without help from classmates and this project wouldn't have come to a stretch-mark level without help from comrades. 
+
+Here you can view it live:
+Link to weather-app:
+https://glittery-smakager-2bd241.netlify.app
