@@ -17,9 +17,27 @@ body {
   margin: 0 auto;
 }
 
+/*.search-form {
+  padding: 10px;
+}
+
+.city-search {
+  border: none;
+  border-radius: 2px;
+  height: 20px;
+  background: #D8D8D8;
+  opacity: 0.7;
+}
+
+.submit-button {
+  border: none;
+  height: 20px;
+  background: #D8D8D8;
+  opacity: 0.7;
+}*/
+
 .todays-header-forecast {
   
-
   /*  border: 2px solid black; */
 }
 
@@ -36,7 +54,7 @@ body {
 
 .icon {
   width: 110px;
-  margin: 10px 0px 0px 20px;
+  margin: 10px 0px 10px 20px;
 }
 
 .prompt {
@@ -71,7 +89,7 @@ a:link, a:visited  {
   text-transform: none;
   color: black;
   text-decoration: none;
-  padding: 10px;
+  padding: 20px;
   font-size: 12px;
   font-style: italic;
   text-align: center;
@@ -82,10 +100,3 @@ a:link, a:visited  {
 a:hover {
   color: hotpink;
 }
-
-#F47775 - light red
-#F4F7F8 - grey/light blue
-#164A68 - dark blue
-#A3DEF7 - light blue
-#2A5510 - dark green
-#F7E9B9 - beige/yellow */

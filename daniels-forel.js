@@ -42,7 +42,7 @@ form.addEventListener("submit", (event) => {
   //       formInput.value = "";
   //     });
 
-  // V2 - extratcted everything to an outside function
+  // V2 - extracted everything to an outside function
   getMovieDetailsFromAPI2(formInput.value);
 });
 
@@ -54,7 +54,7 @@ const getMovieDetailsFromAPI2 = (movieTitle) => {
       return present.json();
     })
     .then((unwrappedPresent) => {
-      console.log(unwrappedPresent);
+      console.log(unwrappedPresent); 
       result = unwrappedPresent;
       movieDescription.innerText = unwrappedPresent.Plot;
       unwrappedPresent.Ratings.forEach((element) => {
@@ -63,6 +63,7 @@ const getMovieDetailsFromAPI2 = (movieTitle) => {
       formInput.value = "";
     });
 };
+/*
 // box of labels
 const exampleArray = ["Test", "test2", "test3"];
 // box of boxes, each of which has label inside
@@ -122,4 +123,4 @@ const fetchPokemons = () => {
       console.log(json);
     });
 };
-fetchPokemons();
+fetchPokemons(); */

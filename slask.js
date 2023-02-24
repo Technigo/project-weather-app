@@ -54,3 +54,12 @@ document.body.style.color = "#2A5510";
 // const myKey = process.env.MY_KEY;
 // let urlWeather = `http://api.openweathermap.org/data/2.5/weather?q=Kiruna,Sweden&units=metric&APPID=${MY_KEY}`;
 // let urlForecast = `https://api.openweathermap.org/data/2.5/forecast?q=Kiruna,Sweden&units=metric&APPID=${MY_KEY}`;
+
+
+const form = document.getElementById("searchForm");
+const formInput = document.getElementById("citySearch");
+
+<form id ="searchForm" class="search-form">
+        <input id="citySearch" class="city-search" title="city-search" type="text"/>
+        <button type="submit" class="submit-button">Search</button>
+      </form>
