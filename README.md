@@ -24,5 +24,6 @@ We approached the task by discussing which design we would want to use and then 
 Further things to improve: A dropdown can be added that includes the city names, so that the user can change their location.
 
 ## View it live
+https://ninas-and-noras-weatherapp.netlify.app/
 
 
