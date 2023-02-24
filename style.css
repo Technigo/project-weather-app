@@ -5,6 +5,7 @@
     --switch-button-color:  #757AFF;
     --container-color:  #ffffff;    /*just to see, remove later, it should be white*/
     --top-color:  #282c91;         /*just to see, remove later, it should be dependent on weather etc*/
+    --active-day-color: #ebe9e9;
 }
 
 
@@ -154,13 +155,22 @@ svg {
 .weather-forecast {
     display: flex;
     justify-content: space-evenly;
+    align-items: flex-start;
     margin-top: 50px;
+    padding: 20px;
+    text-align: center;
 }
 
 .forecast-category {
     display: flex;
     flex-direction: column;
     width:125px;
+}
+
+/* To use on the current day? */
+.forecast-active {
+    background-color: var(--active-day-color);
+
 }
 
 footer {
