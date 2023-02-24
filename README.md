@@ -14,8 +14,9 @@ JavaScript
 Weather API
 
 ## The problem
+To solve the problem, different resources and tools were used. Previous student projects were reviewed to understand project requirements and design. Stackoverflow, blogs, and ChatGPT were also consulted. An experienced former student assisted with implementing part of the code.
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+If there had been more time CSS animations would have been added.
 
 
 ## View it live
