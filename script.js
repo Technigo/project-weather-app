@@ -20,7 +20,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Piteå,Sweden&units=met
     })
     
     .then((json) => {
-        city.innerHTML = `<h1>${json.name}</h1>`
+        city.innerHTML = `<h2>${json.name}</h2>`
         temperature.innerHTML = `<h2>${Math.round(json.main.temp * 10) / 10}°C</h2>`;
         condition.innerHTML = `<h2>with ${json.weather[0].description}</h2>`;
 
