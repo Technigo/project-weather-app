@@ -62,7 +62,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
 
         document.body.style.backgroundColor = "LightBlue";
         casualWeatherBox.innerHTML =
-        `<img src="./Designs/Design-2/icons/wi-day-sunny.svg" width="70px" height="70px"><br>
+        `<img src="wi-day-sunny.svg" width="70px" height="70px"><br>
          <h1 style="color: Black;">Bring your shades. ${json.name} gives you ${(Math.round(json.main.temp))}°C and sun today.
          </h1>`;
      }
@@ -71,7 +71,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
 
         document.body.style.backgroundColor = "Orange";
         casualWeatherBox.innerHTML =
-        `<img src="./Designs/Design-2/icons/wi-cloud.svg" width="90px" height="90px"><br> 
+        `<img src="wi-cloud.svg" width="90px" height="90px"><br> 
         <h1 style="color: Black;">Perfect day for doing the laundry. ${json.name} is grey today.
          </p>`;
     }
@@ -80,7 +80,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
 
         document.body.style.backgroundColor = "LightGrey";
         casualWeatherBox.innerHTML =
-        `<img src="./Designs/Design-2/icons/wi-night-cloudy-high.svg" width="90px" height="90px"><br> 
+        `<img src="wi-night-cloudy-high.svg" width="90px" height="90px"><br> 
         <h1 style="color: Black;">Perfect day for doing the laundry. ${json.name} is grey today.
          </p>`;
     }
@@ -89,7 +89,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
 
         document.body.style.backgroundColor = "LightGreen";
         casualWeatherBox.innerHTML =
-        `<img src="./Designs/Design-2/icons/wi-rain.svg" width="90px" height="90px"><br> 
+        `<img src="wi-rain.svg" width="90px" height="90px"><br> 
          <h1 style="color: Black;">Don't forget your umbrella. It's raining in ${json.name} today..
          </h1>`;
     }
@@ -98,7 +98,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
 
         document.body.style.backgroundColor = "LightYellow";
         casualWeatherBox.innerHTML =
-        `<img src="./Designs/Design-2/icons/wi-snow.svg" width="90px" height="90px"><br> 
+        `<img src="wi-snow.svg" width="90px" height="90px"><br> 
          <h1 style="color: Black;">>Bring your skis. It's snowing in ${json.name} today.
          </h1>`;
     }
@@ -107,7 +107,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
 
         document.body.style.backgroundColor = "LightPink";
         casualWeatherBox.innerHTML =
-        `<img src="./Designs/Design-2/icons/wi-fog.svg" width="90px" height="90px"><br> 
+        `<img src="wi-fog.svg" width="90px" height="90px"><br> 
          <h1 style="color: Black;">>You can leave the binoculars at home. Theres mist in ${json.name} today.
          </h1>`;
     }
@@ -116,7 +116,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
 
         document.body.style.backgroundColor = "LightBrown";
         casualWeatherBox.innerHTML =
-        `<img src="./Designs/Design-2/icons/wi-night-alt-cloudy-high.svg" width="90px" height="90px"><br>
+        `<img src="wi-night-alt-cloudy-high.svg" width="90px" height="90px"><br>
         <h1 style="color: Black;">Open that book you got for christmas. ${json.name} is not shining today and the wind is ${(Math.round(json.wind.speed))} m/s
         </h1>`;
 
