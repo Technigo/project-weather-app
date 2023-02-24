@@ -74,11 +74,13 @@ const updateForeCastData = (data) => {
   weekdays.innerHTML = "";
   filteredForecast.forEach((value) => {
     const forecastDate = new Date(value.dt * 1000);
+    const weatherIcon = value.weather[0].icon;
     console.log(value.dt);
 
     weekdays.innerHTML += `
       <tr>
       <td>${forecastDate.toLocaleString("en-US", { weekday: "long" })}</td>
+      <td class="forecasticonTd"><img src="Designs/Forecast icons/${weatherIcon}.svg" class="forecast-icon"/></td>
       <td class="tempTd">${value.main.temp.toFixed()} °C</td>
       </tr>
   `;
@@ -184,8 +186,6 @@ const start = () => {
     })
     .then((json) => {
       updateForeCastData(json);
-
-      weatherStylingChange(json);
     });
 
   allowLocation();
