@@ -22,13 +22,17 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
 
 .then((json) => {
 
-    const sunriseTimeStamp = (json.sys.sunrise * 1000)
-    const sunriseFormat = new Date(sunriseTimeStamp)
-    const sunrise = sunriseFormat.getHours() + ":" + sunriseFormat.getMinutes();
+    const sunriseTimeStamp = (json.sys.sunrise * 1000);
+    const sunriseFormat = new Date(sunriseTimeStamp);
+    const sunriseHours = sunriseFormat.getHours().toString().padStart(2, '0');
+    const sunriseMinutes = sunriseFormat.getMinutes().toString().padStart(2, '0');
+    const sunrise = sunriseHours + ":" + sunriseMinutes;
 
-    const sunsetTimeStamp = (json.sys.sunset * 1000)
-    const sunsetFormat = new Date(sunsetTimeStamp)
-    const sunset = sunsetFormat.getHours() + ":" + sunsetFormat.getMinutes();
+    const sunsetTimeStamp = (json.sys.sunset * 1000);
+    const sunsetFormat = new Date(sunsetTimeStamp);
+    const sunsetHours = sunsetFormat.getHours().toString().padStart(2, '0');
+    const sunsetMinutes = sunsetFormat.getMinutes().toString().padStart(2, '0');
+    const sunset = sunsetHours + ":" + sunsetMinutes;
 
     forcastRightNow.innerHTML = 
     `<h6>
@@ -51,15 +55,15 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
 
     .then((json) => {
     
-    const todaysWeather = json.weather[0].main
+    const todaysWeather = 'Clear'
     const changeWeather = (todaysWeather) => {
 
     if (todaysWeather === 'Clear') {
 
         document.body.style.backgroundColor = "LightBlue";
         casualWeatherBox.innerHTML =
-        `<img src="./Designs/Design-2/icons/wi-day-sunny.png" width="50px" height="50px"><br>
-         <p>Bring your sunscreen. ${json.name} gives you ${(Math.round(json.main.temp))}°C and sun today.
+        `<img src="./Designs/Design-2/icons/wi-day-sunny.svg" width="50px" height="50px"><br>
+         <p style="color: Black;">Bring your shades. ${json.name} gives you ${(Math.round(json.main.temp))}°C and sun today.
          </p>`;
      }
 
@@ -68,7 +72,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
         document.body.style.backgroundColor = "Orange";
         casualWeatherBox.innerHTML =
         `<img src="./Designs/Design-2/icons/wi-cloud.svg" width="50px" height="50px"><br> 
-         <p>Perfect day for doing the landry. ${json.name} is grey today.
+         <p style="color: Black;">Perfect day for doing the laundry. ${json.name} is grey today.
          </p>`;
     }
 
@@ -77,7 +81,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
         document.body.style.backgroundColor = "LightGrey";
         casualWeatherBox.innerHTML =
         `<img src="./Designs/Design-2/icons/wi-night-cloudy-high.svg" width="50px" height="50px"><br> 
-         <p>Perfect day for doing the landry. ${json.name} is grey today.
+         <p style="color: Black;">Perfect day for doing the laundry. ${json.name} is grey today.
          </p>`;
     }
 
@@ -110,7 +114,7 @@ fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=m
 
     else {
 
-        document.body.style.backgroundColor = "Lightred";
+        document.body.style.backgroundColor = "LightBrown";
         casualWeatherBox.innerHTML =
         `<img src="./Designs/Design-2/icons/wi-night-alt-cloudy-high.svg" width="50px" height="50px"><br>
         <p>Open that book you got for christmas. ${json.name} is not shining today and the wind is ${(Math.round(json.wind.speed))} m/s
@@ -122,7 +126,6 @@ changeWeather(todaysWeather)
 })
 
 ///////////////////////// WEEKDAYS ////////////////////////////////////////////////////////////////////////////////////////////
-
 
     // And here we start with fetching the weekly forecast
     // you'll see that we only care about the array called list.
