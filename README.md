@@ -1,5 +1,6 @@
 * Weather App
 This weeks task besides working in pairs and branches (I decided to do solo due to turn of events), was to:
+
 ✓ Get in to basic JSON
 
 ✓ How to use `fetch()` in JavaScript
@@ -18,5 +19,6 @@ The biggest challenge is not having enough time and discussion to fully grasp ba
 
 
 * I do like my dynamic background which changes every time the browser updates, have a look:
+
 Link to weather-app:
 https://glittery-smakager-2bd241.netlify.app
