@@ -72,7 +72,8 @@ body{
 }
 
 .morecity {
-    margin: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     width: 100%;
     text-align: center;
 }
