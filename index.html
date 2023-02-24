@@ -14,41 +14,46 @@
     <script src="https://kit.fontawesome.com/4af0a9e375.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
+
     <div class="container">
 
-    <div class="background-top">
-        <!-- Navbar with the search button that turns into a search bar and btn-->
-        <div id="weatherFeature"></div>
-        <nav id="navSearch">
-        
-            <button type="button" class="search-button hidden" title="search" id="closeSearchMenu">     <!-- Turns into an x when we want to close the search field-->
-                <svg xmlns="http://www.w3.org/2000/svg" class="x-icon" fill="currentColor" x="0px" y="0px"
-                    width="50" height="50"
-                        viewBox="0 0 50 50">
-                    <path d="M 9.15625 6.3125 L 6.3125 9.15625 L 22.15625 25 L 6.21875 40.96875 L 9.03125 43.78125 L 25 27.84375 L 40.9375 43.78125 L 43.78125 40.9375 L 27.84375 25 L 43.6875 9.15625 L 40.84375 6.3125 L 25 22.15625 Z"></path>
-                </svg>
-            </button>
-            <button type="button" class="search-button" title="search" id="searchMenuBtn">        <!-- The one where we toggle the search field-->
-                <svg stroke="currentColor" class="search-icon" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1.5em"
-                width="1.5em" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                    d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z">
-                    </path>
-                </svg>
-            </button>
+    <!-- <div class="background-top"></div> -->
 
-            <div class="search hidden" id="search-toggler">
-                <input type="text" class="search-bar" id="inputField" placeholder="Search">
-                <button type="submit" class="search-button" title="search" id="searchBtn">     <!-- The one where we actually search-->
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1.5em"
+         <div id="weatherFeature" class="feature-image"></div>
+
+
+        <!-- Navbar with the search button that turns into a search bar and btn-->
+            <nav id="navSearch" class="nav">
+            
+                <button type="button" class="search-button hidden" title="search" id="closeSearchMenu">     <!-- Turns into an x when we want to close the search field-->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="x-icon" fill="currentColor" x="0px" y="0px"
+                        width="50" height="50"
+                            viewBox="0 0 50 50">
+                        <path d="M 9.15625 6.3125 L 6.3125 9.15625 L 22.15625 25 L 6.21875 40.96875 L 9.03125 43.78125 L 25 27.84375 L 40.9375 43.78125 L 43.78125 40.9375 L 27.84375 25 L 43.6875 9.15625 L 40.84375 6.3125 L 25 22.15625 Z"></path>
+                    </svg>
+                </button>
+                <button type="button" class="search-button" title="search" id="searchMenuBtn">        <!-- The one where we toggle the search field-->
+                    <svg stroke="currentColor" class="search-icon" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1.5em"
                     width="1.5em" xmlns="http://www.w3.org/2000/svg">
                         <path
                         d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z">
                         </path>
                     </svg>
                 </button>
-             </div>
-        </nav>
+
+                <div class="search hidden" id="search-toggler">
+                    <input type="text" class="search-bar" id="inputField" placeholder="Search">
+                    <button type="submit" class="search-button" title="search" id="searchBtn">     <!-- The one where we actually search-->
+                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1.5em"
+                        width="1.5em" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                            d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
 
    
 
@@ -73,11 +78,12 @@
         <!-- The button for switching between our favourite cities -->
 
     <!-- The button for switching between our favourite cities -->
-    <div id="switch">
+    <div id="switch" class="switch-section">
         <button id="switchBtn" type="button" title="switch"><i class="fa-solid fa-chevron-right"></i></button>
     </div>
 
     <!-- Forecast section -->
+    
     <table id="weatherForecast" class="weather-forecast">
         <tbody>
             <tr>
@@ -88,13 +94,17 @@
             </tr>
         </tbody>
     </table>
+    
 
-    <!-- Footer with our names, can change later -->
+</div>
+
+    <!-- Footer with our names and contact links, can change later -->
     <footer>
-        <p>Vera Sjunnesson & Matilda Frid</p>
+        <p>Created by: <a href="" target="_blank">Vera Sjunnesson</a> & <a href="https://se.linkedin.com/in/matilda-frid-7923bb88" target="_blank">Matilda Frid</a></p>
     </footer>
 
- </div>
+
+
     <script src="script.js"></script>
 </body>
 </html>

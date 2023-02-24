@@ -29,7 +29,7 @@ const apiKey = 'c480de5f69ca98d1993a4dae3213642e';
 let city = 'Stockholm';
 // Use: `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`
 
-
+const getMainWeather = (city) => {
 fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`)
     .then((response) => {
         return response.json()
@@ -40,29 +40,28 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
     
         console.log(json.main.temp.toFixed(0))
         cityName.innerText = `${json.name}`;
-        tempToday.innerText += `${json.main.temp.toFixed(0)}`;
-        weatherDescription.innerText += `${json.weather[0].description}`;
-        mainIcon.innerHTML += `<img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="weather icon" class="main-icon">`
+        tempToday.innerText = `${json.main.temp.toFixed(0)}`;
+        weatherDescription.innerText = `${json.weather[0].description}`;
+        mainIcon.innerHTML = `<img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="weather icon" class="main-icon">`
     })
 
     //MATILDA! HÄR SKA JAG LÄGGA MIN FUNKTION OCH EVENTLISTERNER FÖR ATT KUNDA SKIFTA MELLAN 3 OLIKA STÄDER! JAG ÄR INTE KLAR OCH VÅGAR INTE MERGA DET!
     .catch((err) => {
         console.log(`error caught:`, err)
     })
+}
 
 
 const getSunriseSunsetData = (city) => {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`)
         .then((response) => {
-            return response.json()
+            return response.json(city)
         })
         .then((json) => {
-            //console.log(`json:`, json)
-
             const sunriseTime = new Date(json.sys.sunrise * 1000);       //Gives us the time in "human" form (as a date), mult. by 1000 to get it in ms.
-            const sunriseShort = sunriseTime.toLocaleTimeString([], { timeStyle: 'short' }).replace("AM", "").replace("PM", "");        //Transforms it into just the Hour/minutes and AM/PM. Select the short variant to get the time with minutes and not seconds.
+            const sunriseShort = sunriseTime.toLocaleTimeString(['en-GB'], { timeStyle: 'short' });        //Transforms it into just the Hour/minutes. Select the short variant to get the time with minutes and not seconds.
             const sunsetTime = new Date(json.sys.sunset * 1000);
-            const sunsetShort = sunsetTime.toLocaleTimeString([], { timeStyle: 'short' }).replace("AM", "").replace("PM", "");          //Tar bort AM och PM, kolla om det finns bättre sätt.
+            const sunsetShort = sunsetTime.toLocaleTimeString(['en-GB'], { timeStyle: 'short' }); 
 
             //Modifying the HTML based on our input:
             sunriseText.innerHTML = `<p>sunrise</p>
@@ -77,7 +76,7 @@ const getSunriseSunsetData = (city) => {
 
 
 
-const weatherForecastData = () => {
+const weatherForecastData = (city) => {
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=c480de5f69ca98d1993a4dae3213642e`)
         .then((forecastResponse) => {
             return forecastResponse.json();
@@ -102,7 +101,7 @@ const weatherForecastData = () => {
         })
 }
 
-weatherForecastData();
+weatherForecastData('Stockholm');
  
 //Learn how to get symbols from the api
 //Learn how to get a search word to show an image from unsplash
@@ -127,34 +126,24 @@ const searchFunction = () => {
         //Use the city searched and inject into ""fetchWeather""" function:
         //weather.fetchWeather(searchedCity); //Skriv om till den vi använder
         getSunriseSunsetData(searchedCity);
-        //weatherForecastData(searchedCity);
+        getMainWeather(searchedCity);
+        //weatherForecastData(searchedCity);      //Uncomment när allt är fixat
+        todaysWeatherFeature(searchedCity);     //Uncomment när allt är fixat
 
         //Clears field & hides the input field:
         inputField.value = "";
 }
 
-getSunriseSunsetData(city);
 
-
-//Eventlistener to toggle search field:
-searchMenuBtn.addEventListener('click', toggleSearchField)
-closeSearchMenu.addEventListener('click', toggleSearchField)
-//Eventlistener to search through enter key also
-searchBtn.addEventListener('click', searchFunction)
-//Eventlistener to search through enter key also
-inputField.addEventListener('keyup', function (event) {
-    if (event.key == "Enter") {
-        searchFunction();
-      }
-}
-);
-
-const todaysWeatherFeature = () => {
+const todaysWeatherFeature = (city) => {
 fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`)
     .then((response) => {
         return response.json();
     })
     .then((data) => {
+
+        const featureImage = document.querySelector('.feature-image');
+
 
         const todaysWeather = data.weather[0].main
         const getTime = new Date().getHours();
@@ -167,25 +156,25 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
         if (getTime >= sunriseTime && getTime <= sunsetTime) {
             //During daytime
             if (todaysWeather === 'Clear') {
-                weatherFeature.innerHTML = `<img src='https://images.unsplash.com/photo-1617800809985-a4f937ede1b1?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNjMzNTI&ixlib=rb-4.0.3&q=80' alt='' class='feature-image'>`
+                featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1617800809985-a4f937ede1b1?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNjMzNTI&ixlib=rb-4.0.3&q=80')"
             } else if (todaysWeather === 'Snow') {
-                weatherFeature.innerHTML = `<img src='https://images.unsplash.com/photo-1548777123-e216912df7d8?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNTcyNjE&ixlib=rb-4.0.3&q=80' alt='' class='feature-image'>`
+                featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1548777123-e216912df7d8?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNTcyNjE&ixlib=rb-4.0.3&q=80')"
             } else if (todaysWeather === 'Rain') {
-                weatherFeature.innerHTML = `<img src='https://images.unsplash.com/photo-1541679842955-ff256fc8774e?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNjMxNjI&ixlib=rb-4.0.3&q=80' alt='' class='feature-image'>`
+                featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1541679842955-ff256fc8774e?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNjMxNjI&ixlib=rb-4.0.3&q=80')"
             } else {
-                weatherFeature.innerHTML = `<img src='https://images.unsplash.com/photo-1424111113808-b7be56a9f3d6?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNTczNTA&ixlib=rb-4.0.3&q=80' alt='' class='feature-image'>`
+                featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1424111113808-b7be56a9f3d6?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNTczNTA&ixlib=rb-4.0.3&q=80')"
             }
         } else {
             //During nighttime
             if (todaysWeather === 'Clear') {
-                weatherFeature.innerHTML =  `<img src='https://images.unsplash.com/photo-1516571748831-5d81767b788d?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcxNjg0NTk&ixlib=rb-4.0.3&q=80' alt='' class='feature-image'>`
+                featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1516571748831-5d81767b788d?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcxNjg0NTk&ixlib=rb-4.0.3&q=80')"
             } else if (todaysWeather === 'Snow') {
-                weatherFeature.innerHTML = `<img src='https://images.unsplash.com/photo-1514579683945-ff322fc53bb1?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNjI4MzA&ixlib=rb-4.0.3&q=80' alt='' class='feature-image'>`
+                featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1514579683945-ff322fc53bb1?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNjI4MzA&ixlib=rb-4.0.3&q=80')"
             } else if (todaysWeather === 'Rain') {
-                weatherFeature.innerHTML = `<img src='https://images.unsplash.com/photo-1511294952778-165d813e9eeb?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNTc1MDA&ixlib=rb-4.0.3&q=80' alt='' class='feature-image'>`
+                featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1511294952778-165d813e9eeb?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNTc1MDA&ixlib=rb-4.0.3&q=80')"
             } else {
-                weatherFeature.innerHTML = `<img src='https://images.unsplash.com/photo-1499578124509-1611b77778c8?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNjAxOTY&ixlib=rb-4.0.3&q=80' alt='' class="feature-image">`
-            }
+                featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1499578124509-1611b77778c8?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNjAxOTY&ixlib=rb-4.0.3&q=80')"
+            };
         }
         // ALLA OLIKA GRADIENTS ÄR INTE KLARA ÄN MEN SKA JOBBA PÅ DET IMORGON. FUNKTIONEN FUNKAR DOCK (TROR JAG)
         const gradientDayNight = () => {
@@ -205,4 +194,21 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
     })
 }
 
-todaysWeatherFeature();
+todaysWeatherFeature('Stockholm');
+getMainWeather('Stockholm');
+getSunriseSunsetData('Stockholm');
+
+
+
+//Eventlistener to toggle search field:
+searchMenuBtn.addEventListener('click', toggleSearchField)
+closeSearchMenu.addEventListener('click', toggleSearchField)
+//Eventlistener to search through enter key also
+searchBtn.addEventListener('click', searchFunction)
+//Eventlistener to search through enter key also
+inputField.addEventListener('keyup', function (event) {
+    if (event.key == "Enter") {
+        searchFunction();
+      }
+}
+);

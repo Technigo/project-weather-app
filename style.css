@@ -14,13 +14,11 @@ body {
     height: 100%;
 }
 
-nav {
-    margin-bottom: 50px;
+.nav {
+    margin-bottom: 10px;
     display: flex;
     align-items: center;
     position: relative;
-    top: -540px;
-    left: 0px;
 }
 
 .search-bar {
@@ -40,22 +38,38 @@ nav {
     width: 100%;
     max-width: 400px;
     margin: 50px auto;
+    overflow: hidden;
+    position: relative;
     display: flex;
     flex-direction: column;
     height: 875px;
 }
 
+
+/* Sparade min gamla styling ifall jag har tänkt fel:
 .background-top {
-   /*  background: url(https://images.unsplash.com/photo-1516571748831-5d81767b788d?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcxNjg0NTk&ixlib=rb-4.0.3&q=80); */
-    border-top-left-radius: 0;
+   background: url(https://images.unsplash.com/photo-1516571748831-5d81767b788d?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcxNjg0NTk&ixlib=rb-4.0.3&q=80);
+   background-size: cover;
+   height: 800px;
+   width: 800px;
+   border-radius:50%;
+   position: absolute;
+   bottom: 425px;
+   right: 50%;
+   transform: translate(50%);
+   
+   background: url(https://images.unsplash.com/photo-1516571748831-5d81767b788d?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcxNjg0NTk&ixlib=rb-4.0.3&q=80);
+   border-top-left-radius: 0;
     border-top-right-radius: 0;
     background-size: cover;
     background-position: bottom;
     border-bottom-left-radius: 100% 170px;
     border-bottom-right-radius: 100% 170px;
     height: 541px;  
-}
+    */
 
+
+/* Sparade din gamla styling ifall jag har tänkt fel:
 .feature-image {
     height: 541px;
     width: 400px;
@@ -64,6 +78,19 @@ nav {
     border-bottom-right-radius: 100% 170px;
     opacity: 0.5;
     position: relative;
+}*/
+
+.feature-image {
+    background: url('');        /*Set by JS in todaysWeatherFeature*/
+    background-size: cover;
+    background-position: 50%;
+    height: 800px;
+    width: 800px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 355px;
+    right: 50%;
+    transform: translate(50%);
 }
 
 .search {
@@ -98,8 +125,7 @@ svg {
     color: white;
     margin: 0px 20px;
     padding: 15px;
-    position: absolute;
-    top: 20%;
+    position: relative;
 }
 
 .mainWrapper .tempText {
@@ -123,7 +149,7 @@ svg {
 .mainWrapper .cityText {
     font-size: 36px;
     font-weight: 200;
-    margin: 0 0 13px 0;
+    margin: 0 0 5px 0;
 }
 
 .mainWrapper .describeText {
@@ -137,28 +163,33 @@ svg {
     object-fit: cover;
     height: 62px;
     width: 80px;
-    position: absolute;
+    position: relative;
 }
 
 .sun-position {
-    position: absolute;
-    bottom: -55%;
-}
-
-.sun-position,
-#sunriseText,
-#sunsetText {
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     font-size: 18px;
 }
 
-
-.sun-position .time-data {
-    margin: auto 46px;
+#sunriseText,
+#sunsetText {
+    display: flex;
+    flex-direction: row;
+    font-size: 18px;
 }
 
+.sun-position .time-data {
+    margin: auto auto;
+    padding: 15px;
+}
+
+
+.switch-section {
+    position: relative;
+}
 #switchBtn {
     background-color: var(--switch-button-color);
     color: white;
@@ -167,7 +198,6 @@ svg {
     width: 90px;
     height: 90px;
     margin: 5px auto 0 75%;
-    position: relative;
     right: 30px;
     top: -215px;
     cursor: pointer;
@@ -181,7 +211,10 @@ svg {
     padding: 20px;
     text-align: center;
     position: relative;
-    top: -236px;
+}
+
+.weather-forecast-section {
+    position: relative;
 }
 
 .forecast-category {
@@ -208,7 +241,16 @@ footer {
     text-align: center;
     color: grey;
     position: relative;
-    top: -253px;
+}
+
+footer a,
+footer a:visited {
+    color: grey;
+    text-decoration: none;
+}
+
+footer a:hover {
+    opacity: 0.5;
 }
 
 /* To use when hiding something*/
