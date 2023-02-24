@@ -4,22 +4,20 @@
     flex-direction: column;
     margin: 0;
     padding: 0;
-    font-family: "Montserrat", serif;
+    font-family: "Montserrat", sans-serif;
     height: 100vh;
     width: 100%;
+    box-sizing: border-box;
   }
   
   header {
-    height: 20vh;
-    width: 100%;
-}
-
-.today-summary {
+    display: inline-block;
     font-size: 18px;
     line-height: 0.4;
     padding: 20px 0px 0px 20px;
-    text-transform: lowercase;
+    text-transform: lowercase; 
 }
+
 
   .weekdays {
     display: flex;
@@ -28,18 +26,19 @@
     border-bottom: dashed 1px;
     text-transform: lowercase;
     padding-bottom: 5px;
-    padding-top: 5px;
-    
+    padding-top: 5px; 
   } 
-.weather-container {
-display: flex;
-flex-direction: column;
-justify-content: center;
-margin: 30px;
-}
-img {
-  width: 60px;
-}
+
+  .weather-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 30px;
+  }
+
+  img {
+    width: 60px;
+  }
 
 
 /* Responsive design - tablet and desktop */
