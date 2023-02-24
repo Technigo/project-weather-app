@@ -27,7 +27,7 @@ h3 {
 }
 
 p {
-  margin: 0.25rem;
+  margin: 1.15rem;
   font-weight: 400;
 }
 
@@ -45,7 +45,9 @@ p {
 }
 
 img {
-  width: 72px;
+  display: flex;
+  width: 25%;
+  height: auto;
   padding-top: 40px;
 }
 
@@ -77,6 +79,7 @@ img {
 
 @media (min-width: 1024px) {
   .container {
+    display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     font-size: 30px;
@@ -116,10 +119,11 @@ img {
   }
 
   .header {
-    width: 40%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    height: auto;
+    max-width: 80%;
     padding: 100px 20px;
   }
 
@@ -129,7 +133,9 @@ img {
   }
 
   img {
-    width: 152px;
-    padding-top: 80px;
+    display: flex;
+    width: 10%;
+    height: auto;
+    padding-top: 40px;
   }
 }
