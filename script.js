@@ -25,12 +25,14 @@ const weatherIcons = {
   "light intensity drizzle": "./images/light-rain.png",
 };
 
+// Search box function
 search.addEventListener("click", () => {
   const APIkey = "7916e2ff30e82c8f4b79258c3235d9c2";
   const city = document.querySelector(".search-box input").value;
 
   if (city === "") return;
 
+  // Fetching weather data from city of choice
   fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${APIkey}`)
     .then((response) => {
       return response.json();
@@ -39,7 +41,7 @@ search.addEventListener("click", () => {
       // Update weather in city from API
       weather.innerHTML = `<h1>Today's weather in ${json.name}</h1>`;
 
-      // Describe weather and change weatherIcon based on weather description
+      // Describe weather
       descriptionToday.innerHTML = `<h2>${json.weather[0].description}</h2>`;
 
       // Change weatherIcon based on weather description
@@ -48,10 +50,11 @@ search.addEventListener("click", () => {
         descriptionToday.innerHTML += `<img src="${iconFileName}" alt="Weather icon">`;
       }
 
+      // Temperature and "feels like..."
       tempToday.innerHTML = `<h3>${Math.round(json.main.temp * 10) / 10}°C</h3>`;
-
       feelsLike.innerHTML = `<h3 class="temp">Feels like ${Math.round(json.main.feels_like * 10) / 10}°C</h6>`;
 
+      //Sunrise and sunset
       const sunrise = json.sys.sunrise;
       const sunriseTimepoint = new Date(sunrise * 1000);
       const sunriseOffset = sunriseTimepoint.getTimezoneOffset() * 60 * 1000;
@@ -76,12 +79,13 @@ search.addEventListener("click", () => {
       sunDown.innerHTML = `<h4>and sets at ${sunsetHrMin}</h4>`;
       console.log(json.sys.sunset);
 
-      const wind = json.wind.gust;
-      windGust.innerHTML = `<h5>Wind gusts blow up to ${wind} m/s</h5>`;
+      // Wind and humidity
+      const humidity = json.main.humidity;
+      const wind = json.wind.gust ? json.wind.gust : json.wind.speed;
+      windGust.innerHTML = `<h5>Winds blow up to ${wind} m/s and humidity is at ${humidity}%</h5>`;
     });
 
   // Five day weather forecast
-
   const fiveDayApiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=7916e2ff30e82c8f4b79258c3235d9c2`;
   const weatherFiveDays = document.getElementById("weather-five-days");
 

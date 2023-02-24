@@ -17,7 +17,7 @@ body {
 }
 
 .img {
-  background-color: aquamarine;
+  background-color: #336891;
   background-image: url(./Designs/Design-1/assets/turning-torso.jpg);
   background-size: cover;
   background-position: center;
@@ -39,9 +39,6 @@ body {
 }
 
 .search-box {
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
   border: none;
   outline: none;
   padding: 10px 20px;
