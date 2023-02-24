@@ -13,4 +13,4 @@ How we could use multiple APIs in one function: https://www.notion.so/technigo/W
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://radiant-cobbler-4e855b.netlify.app/
