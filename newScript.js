@@ -73,9 +73,10 @@ const checkWeather = (dataLis) => {
   console.log(dataLis.weather[0].main);
 
   if (dataLis.weather[0].main === 'Clouds'){
-    bodySelector.classList.add('cloudy');
+    bodySelector.classList.add('clouds');
     dailyTextMsg.innerHTML=   `<div id="cloud">
 <img src="/Designs/Design-2/icons/noun_Cloud_1188486.svg" alt="">
+
     <p>oh oooo Its cloudy in ${dataLis.name} right now</p>
 </div>`;
 }
@@ -93,7 +94,7 @@ const checkWeather = (dataLis) => {
       bodySelector.classList.add('foggy');
      dailyTextMsg.innerHTML=    
      `<div id="fog" class="fog">
-     <img src="/Designs/Design-2/icons/noun_Cloud_1188486.svg" alt="">
+     <img src="/Designs/Design-2/icons/icons8-fog-64.png" alt="fog">
   <p>Fog on ${dataLis.name} right now</p>
 </div>`
     }
