@@ -1,54 +1,52 @@
-
-
-* 
+*  
   body {
-background-color: #f7e9b9;
-font-family: 'Montserrat', sans-serif;
-color: #2a5510;
-
-  }
-  
-  .container {
-    max-width: 500px;
-    margin: 0 auto;
-  }
-  
-  .weather-container {
-
-  }
-  
-  #todays-temp {
-    font-size: 72px;
-    font-weight: bold;
-    margin-bottom: 16px;
-  }
-  
-  #city {
-    font-size: 32px;
-    font-weight: bold;
-    margin-bottom: 8px;
-  }
-  
-  #todays-weather {
-    font-size: 24px;
-    margin-bottom: 24px;
-  }
-  
-  #sunrise, #sunset {
-    font-size: 18px;
-  }
-  
-  .forecast-container {
     display: flex;
-    justify-content: space-between;
-    margin-top: 24px;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", serif;
+    height: 100vh;
+    width: 100%;
   }
   
-  
-  
+  header {
+    height: 20vh;
+    width: 100%;
+}
+
+.today-summary {
+    font-size: 18px;
+    line-height: 0.4;
+    padding: 20px 0px 0px 20px;
+    text-transform: lowercase;
+}
+
+  .weekdays {
+    display: flex;
+    margin: 30px;
+    justify-content: space-between;
+    border-bottom: dashed 1px;
+    text-transform: lowercase;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    
+  } 
+.weather-container {
+display: flex;
+flex-direction: column;
+justify-content: center;
+margin: 30px;
+}
+img {
+  width: 60px;
+}
 
 
+/* Responsive design - tablet and desktop */
+@media (min-width: 667px) {
+    body {
+        width: 60%;
+        margin: 0px auto;
+    }
 
-
-
->>>>>>> a633ab55b844d37fd7676d35c7fc0412a70d89f8
+  }
