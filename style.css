@@ -5,7 +5,6 @@
     --switch-button-color:  #757AFF;
     --container-color:  #ffffff;    /*just to see, remove later, it should be white*/
     --top-color:  #282c91;         /*just to see, remove later, it should be dependent on weather etc*/
-    --active-day-color: #ebe9e9;
 }
 
 body {
@@ -45,16 +44,6 @@ nav {
     flex-direction: column;
     height: 875px;
 }
-
-/* ONLY COLORS: 
-.background-top {
-    background-color: var(--top-color);
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 600px 60px;
-    border-bottom-left-radius: 600px 60px;
-}
-*/
 
 .background-top {
    /*  background: url(https://images.unsplash.com/photo-1516571748831-5d81767b788d?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcxNjg0NTk&ixlib=rb-4.0.3&q=80); */
@@ -214,11 +203,6 @@ th, td {
     width: 56px;
 }
 
-/* To use on the current day? */
-.forecast-active {
-    background-color: var(--active-day-color);
-
-}
 
 footer {
     text-align: center;
