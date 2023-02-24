@@ -8,6 +8,7 @@ let sunsetDiv = document.getElementById("sunset");
 let weeklyWeatherDiv = document.getElementById("weeklyWeather");
 let changeCityMalmo = document.getElementById("cityMalmo");
 let changeCityStockholm = document.getElementById("cityStockholm");
+let mainWeatherPicture = document.getElementById("mainWeatherPicture");
 
 const fetchCurrentWeather = (currentCity) => {
   let currentWeatherLink = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity},Sweden&units=metric&APPID=d73aa5f2cfee2a35632856b10b30a458`;
@@ -128,3 +129,55 @@ changeCityStockholm.addEventListener("click", () => {
   fetchCurrentWeather("Stockholm");
   fetchWeeklyWeather("Stockholm");
 });
+
+const updateWeatherPicture = (data) => {
+
+  // background changes depending on the weather type
+  let weatherImage = data.weather[0].main;
+  
+  
+  if (weatherImage === "Clear") {
+    // https://openweathermap.org/weather-conditions The types should match the main types from this web?
+    mainWeatherPicture.innerHTML = `
+    <img id="" class="" src="/assets/sun.jpg">`
+  } else if (weatherImage === "Thunderstorm") {
+    mainWeatherPicture.innerHTML = `
+    <img id="" class="" src=""/>`
+  } else if (weatherImage === "Drizzle") {
+    mainWeatherPicture.innerHTML = `
+    <img id="" class="" src="./assets/sun.jpg"/>`
+  } else if (weatherImage === "Rain") {
+    mainWeatherPicture.innerHTML = `
+    <img id="" class="" src="./assets/sun.jpg"/>`
+  } else if (weatherImage === "Snow") {
+    mainWeatherPicture.innerHTML = `
+    <img id="" class="" src="/assets/cloudy.jpg">`
+} else if (weatherImage === "Clouds") {
+  mainWeatherPicture.innerHTML = `
+  <img id="" class="" src="./assets/sun.jpg"/>`
+} else {
+  mainWeatherPicture.innerHTML = `
+  <img id="" class="" src="./assets/sun.jpg"/>`
+}
+}
+
+
+const time = new Date().toLocaleString([], {
+  
+})
+// Background change
+const dayToNight = () => {
+  if (time < sunrise && time > sunset) {
+    mainWeather.style.background = `
+    
+    `;
+  }
+};
+
+dayToNight();
+
+
+fetchWeather();
+
+
+

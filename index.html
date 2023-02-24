@@ -11,18 +11,31 @@
   <body>
     <section>
       <div>
-        <nav>
-          <button></button>
-          <ul>
-            <li><a href="#" id="cityMalmo">Malmö</a></li>
-            <li><a href="#" id="cityStockholm">Stockholm </a></li>
+        <nav class="navbar">
+          <p class="nav-branding">Weather in</p>
+          <ul class="nav-menu">
+            <li class="nav-item"> 
+              <a href="#" class="nav-link">Malmö</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">Stockholm </a>
+            </li>
           </ul>
+          <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
           <!-- Alternatively, instead of list we can do a form with an input-->
         </nav>
       </div>
     </section>
-    <section>
-      <div id="currentTemperature" class="currentTemperature"></div>
+    <section id="mainWeather">
+      <div id="mainWeatherPicture"></div>
+      <div 
+      id="currentTemperature"
+      class="currentTemperature">
+    </div>
 
       <div id="cityName" class="cityName"></div>
 
