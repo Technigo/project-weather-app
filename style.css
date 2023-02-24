@@ -36,6 +36,8 @@ p {
     border-radius: 50px;
     width: 80%;
     margin: auto 0;
+    font-family: 'Montserrat', sans-serif;
+    border: 1px solid;
 }
 
 .weather-description, .main-temp, .feels-like, .sunrise, .sunset {
@@ -88,6 +90,45 @@ footer {
     width: 100%;
     text-align: center;
     color: black;
-    margin-top: auto;
-    padding: 30px;    
+    margin-top: 30px;
+    padding: 15px;    
 }
+ 
+  .contactme{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 5px;
+   }
+  
+  .contact-logo{
+    width: 30px;
+    opacity: .75;
+  }
+  
+  .contact-logo:hover{
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  
+  .aboutme {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 5px;
+    font-size: 15px;
+    color:black;
+    text-align: center;
+  }
+
+  .contactB{
+    border: 1px solid;
+    border-radius: 15px;
+  }
+
+  .contactE{
+    border: 1px solid;
+    border-radius: 15px;
+  }

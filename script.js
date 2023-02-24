@@ -26,11 +26,12 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
    
     const feelsLikeF = Math.round(feelsLikeC * 1.8 + 32)
  
-    const sunriseDateAndTime = new Date(data.sys.sunrise * 1000); //*1000 makes it correct date and time, but don't know why
-    const sunrise = sunriseDateAndTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-    
-    const sunsetDateAndTime = new Date(data.sys.sunset * 1000);
-    const sunset = sunsetDateAndTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+    let sunriseAPI = data.sys.sunrise
+    let sunsetAPI = data.sys.sunset
+    let timeZone = data.timezone
+    let sunrise = new Date((sunriseAPI + timeZone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString([], {timeStyle: 'short'});
+    let sunset = new Date((sunsetAPI + timeZone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString([], {timeStyle: 'short'});
+
 
     weatherWrapper.innerHTML +=
     `<p><span id='weather-description' class= 'weather-description'>${mainWeather}</span> | <span id='main-temp' class='main-temp'>${roundedTemp}°C | ${roundedFar}°F</span></p>
@@ -46,8 +47,9 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
     
     if (weatherDescription.main === 'Clear') {
         const gradientClear = 'linear-gradient(#F7E9B9, #FC7200)' // Sets color and direction of gradient
-        weatherWrapper.style.background = gradientClear; 
-        weatherWrapper.style.color = "#2A5510"; // Color for the text
+        body.style.background = gradientClear; 
+        body.style.color = "#2A5510"; // Color for the text
+        searchBar.style.border = "1px solid #2A5510";
         weatherWrapper.innerHTML = `
         <p><span id='weather-description' class= 'weather-description'>${mainWeather}</span> | <span id='main-temp' class='main-temp'>${roundedTemp}°C | ${roundedFar}°F</span></p>
         <p><span id='feels-like' class= 'feels-like'> Feels like: ${feelsLikeC}°C | ${feelsLikeF}°F </span></p>
@@ -64,6 +66,7 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
      const gradientClouds = 'linear-gradient(#F4F7F8, #BDC4C6)'
         body.style.background = gradientClouds;
         body.style.color = "#F47775";
+        searchBar.style.border = "1px solid #F47775";
         weatherWrapper.innerHTML = 
         `<p><span id='weather-description' class= 'weather-description'>${mainWeather}</span> | <span id='main-temp' class='main-temp'>${roundedTemp}°C | ${roundedFar}°F</span></p>
         <p><span id='feels-like' class= 'feels-like'> Feels like: ${feelsLikeC}°C | ${feelsLikeF}°F </span></p>
@@ -79,6 +82,7 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
        const gradientClouds = 'linear-gradient(#447791, #A3DEF7)'
         body.style.background = gradientClouds;
         body.style.color = "#164A68";
+        searchBar.style.border = "1px solid #164A68";
         weatherWrapper.innerHTML = `
         <p><span id='weather-description' class= 'weather-description'>${mainWeather}</span> | <span id='main-temp' class='main-temp'>${roundedTemp}°C | ${roundedFar}°F</span></p>
         <p><span id='feels-like' class= 'feels-like'> Feels like: ${feelsLikeC}°C | ${feelsLikeF}°F </span></p>
@@ -94,6 +98,7 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
         const gradientSnow = 'linear-gradient(#E9F8FF, #F4F7F8)'
         body.style.background = gradientSnow;
         body.style.color = "#AEB6FF";
+        searchBar.style.border = "1px solid #AEB6FF";
         weatherWrapper.innerHTML = `
         <p><span id='weather-description' class= 'weather-description'>${mainWeather}</span> | <span id='main-temp' class='main-temp'>${roundedTemp}°C | ${roundedFar}°F</span></p>
         <p><span id='feels-like' class= 'feels-like'> Feels like: ${feelsLikeC}°C | ${feelsLikeF}°F </span></p>
@@ -109,6 +114,7 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
         const gradientOther= 'linear-gradient(#000000, #F4F7F8)'
         body.style.background = gradientOther;
         body.style.color = "#F47775";
+        searchBar.style.border = "1px solid #F47775";
         weatherWrapper.innerHTML =
         `<p><span id='weather-description' class= 'weather-description'>${mainWeather}</span> | <span id='main-temp' class='main-temp'>${roundedTemp}°C | ${roundedFar}°F</span></p>
         <p><span id='feels-like' class= 'feels-like'> Feels like: ${feelsLikeC}°C | ${feelsLikeF}°F </span></p>
@@ -128,14 +134,15 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
     //Same function as above but changes depending on what you type in the searcbar
     searchBar.addEventListener('change', () => {
 
-    fetch (`https://api.openweathermap.org/data/2.5/weather?q=${searchbar.value}&units=metric&APPID=d9838d8630b03a974ed368611cffd256`)
+    fetch (`https://api.openweathermap.org/data/2.5/weather?q=${searchBar.value}&units=metric&APPID=d9838d8630b03a974ed368611cffd256`)
 
     .then ((response) => {
     return response.json()
 })
 
 .then ((data) => {
-     searchbar.value = '';
+    console.log(data) 
+    searchBar.value = '';
 
     //Showing different text depending on the main descritption of the weather
     //.style to apply different styling to the statements
@@ -154,11 +161,11 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
     
     const feelsLikeF = Math.round(feelsLikeC * 1.8 + 32)
     
-    const sunriseDateAndTime = new Date(data.sys.sunrise * 1000); //*1000 makes it correct date and time, but don't know why
-    const sunrise = sunriseDateAndTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-    
-    const sunsetDateAndTime = new Date(data.sys.sunset * 1000);
-    const sunset = sunsetDateAndTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+    let sunriseAPI = data.sys.sunrise
+    let sunsetAPI = data.sys.sunset
+    let timeZone = data.timezone
+    let sunrise = new Date((sunriseAPI + timeZone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString([], {timeStyle: 'short'});
+    let sunset = new Date((sunsetAPI + timeZone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString([], {timeStyle: 'short'});
 
     weatherWrapper.innerHTML +=
     `<p><span id='weather-description' class= 'weather-description'>${mainWeather}</span> | <span id='main-temp' class='main-temp'>${roundedTemp}°C | ${roundedFar}°F</span></p>
@@ -174,6 +181,7 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
         const gradientClear = 'linear-gradient(#F7E9B9, #FC7200)' // Sets color and direction of gradient
         body.style.background = gradientClear;
         body.style.color = "#2A5510"; // Color for the text
+        searchBar.style.border = "1px solid #2A5510";
         weatherWrapper.innerHTML = `
         <p><span id='weather-description' class= 'weather-description'>${mainWeather}</span> | <span id='main-temp' class='main-temp'>${roundedTemp}°C | ${roundedFar}°F</span></p>
         <p><span id='feels-like' class= 'feels-like'> Feels like: ${feelsLikeC}°C | ${feelsLikeF}°F </span></p>
@@ -190,6 +198,7 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
      const gradientClouds = 'linear-gradient(#F4F7F8, #BDC4C6)'
         body.style.background = gradientClouds;
         body.style.color = "#F47775";
+        searchBar.style.border = "1px solid #F47775";
         weatherWrapper.innerHTML = `
         <p><span id='weather-description' class= 'weather-description'>${mainWeather}</span> | <span id='main-temp' class='main-temp'>${roundedTemp}°C | ${roundedFar}°F</span></p>
         <p><span id='feels-like' class= 'feels-like'> Feels like: ${feelsLikeC}°C | ${feelsLikeF}°F </span></p>
@@ -205,6 +214,7 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
        const gradientClouds = 'linear-gradient(#447791, #A3DEF7)'
         body.style.background = gradientClouds;
         body.style.color = "#164A68";
+        searchBar.style.border = "1px solid #164A68";
         weatherWrapper.innerHTML = `
         <p><span id='weather-description' class= 'weather-description'>${mainWeather}</span> | <span id='main-temp' class='main-temp'>${roundedTemp}°C | ${roundedFar}°F</span></p>
         <p><span id='feels-like' class= 'feels-like'> Feels like: ${feelsLikeC}°C | ${feelsLikeF}°F </span></p>
@@ -220,6 +230,7 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
         const gradientSnow = 'linear-gradient(#E9F8FF, #F4F7F8)'
         body.style.background = gradientSnow;
         body.style.color = "#AEB6FF";
+        searchBar.style.border = "1px solid #AEB6FF";
         weatherWrapper.innerHTML = `
         <p><span id='weather-description' class= 'weather-description'>${mainWeather}</span> | <span id='main-temp' class='main-temp'>${roundedTemp}°C | ${roundedFar}°F</span></p>
         <p><span id='feels-like' class= 'feels-like'> Feels like: ${feelsLikeC}°C | ${feelsLikeF}°F </span></p>
@@ -235,6 +246,7 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
         const gradientOther= 'linear-gradient(#000000 10%, #F4F7F8)'
         body.style.background = gradientOther;
         body.style.color = "#F47775";
+        searchBar.style.border = "1px solid #F47775";
         weatherWrapper.innerHTML =
         `<p><span id='weather-description' class= 'weather-description'>${mainWeather}</span> | <span id='main-temp' class='main-temp'>${roundedTemp}°C | ${roundedFar}°F</span></p>
         <p><span id='feels-like' class= 'feels-like'> Feels like: ${feelsLikeC}°C | ${feelsLikeF}°F </span></p>
