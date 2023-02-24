@@ -8,8 +8,8 @@ const messageImg = document.getElementById("message-img");
 const messageText = document.getElementById("message-text");
 const forecast = document.getElementById("forecast");
 const day = document.getElementById("day");
-const weekdays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 const containerClass = document.querySelector(".container");
+const weekdays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 
 let units = "metric";
 let apiKey = "5cdf47ce276dd7dd42146ec93c23e3a6";
@@ -76,13 +76,12 @@ const fetchWeatherData = () => {
         minute: "2-digit",
       })}
       `;
-      //Test override
-      json.weather[0].main = "Rain";
+      //Test override weather condition
+      // json.weather[0].main = "Clear";
+
       //Message: Image and personalised message, depending on the weather.
       showMessage(`${json.weather[0].main}`, `${json.name}`);
     });
-
-  // catch((error) => console.error(error));
 
   //Forecast
   fetch(`${apiUrlForecast}`)
@@ -94,14 +93,10 @@ const fetchWeatherData = () => {
       const filteredForecast = json.list.filter((item) =>
         item.dt_txt.includes("12:00")
       );
-      // console.log(filteredForecast);
       day.innerHTML = "";
 
       filteredForecast.map((forecastDay) => {
-        // console.log(forecastDay.weather[0].description);
         let weekday = new Date(forecastDay.dt_txt).getDay();
-        // console.log(weekdays[weekday]);
-
         day.innerHTML += `
     <div id="forecastSection" class="forecast-section">
       <div id="weekdaySection" class="weekday-section">
