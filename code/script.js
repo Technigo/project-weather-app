@@ -9,7 +9,7 @@ const sunUpTime = document.getElementById("sun-up-time");
 const sunDownTime = document.getElementById("sun-down-time");
 const arrowButton = document.getElementById("arrow-button");
 const weekList = document.getElementById("week-list");
-const topRightLogo = document.getElementById("weather-icon-today")
+const topRightIcon = document.getElementById("weather-icon-container")
 const bodyContainer = document.querySelector(".body-container")
 
 
@@ -54,6 +54,7 @@ setTimeout(() => {
   })}`;
   sunUpTime.innerHTML = `${sunGoesUp}`;
   sunDownTime.innerHTML = `${sunGoesDown}`;
+  topRightIcon.innerHTML += `<img id="top-right-icon" src="http://openweathermap.org/img/wn/${apiResponse.weather[0].icon}@4x.png">`
 },
   1000);
 
