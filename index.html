@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather app</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="freezing.css" id="freezing-cold" media="none"/>
+    <link rel="stylesheet" type="text/css" href="cold.css" id="cold" media="none"/>
+    <link rel="stylesheet" type="text/css" href="mediumCold.css" id="medium-cold" media="none"/>
+    <link rel="stylesheet" type="text/css" href="warm.css" id="warm" media="none"/>
+    <link rel="stylesheet" type="text/css" href="hot.css" id="hot" media="none"/>
 </head>
 <body>
     <div class="container">
@@ -42,6 +47,7 @@
         <p class="cityText">Stockholm</p>
         <p class="tempText">Temp</p>
         <p class="describeText">Cloudy</p>
+        <div id="mainIcon"></div>
         <section id="sunriseSunset" class="sun-position">
             <div id="sunriseText"></div>
             <div id="sunsetText"></div>
@@ -56,7 +62,7 @@
     <!-- Forecast section -->
     <section id="weatherForecast" class="weather-forecast">
     <div id="forecastWeekdays" class="forecast-category"></div>
-    <div id="forecastDescription" class="forecast-category"></div>
+    <div id="forecastIcon" class="forecast-category icon"></div>
     <div id="forecastTemp" class="forecast-category"></div>
     <div id="forecastFeelsLike" class="forecast-category"></div>
     </section>

@@ -11,8 +11,6 @@ body {
     flex-direction: column;
 }
 
-
-
 .sun-position,
 #sunriseText,
 #sunsetText {
@@ -41,17 +39,29 @@ body {
 }
 
 .forecast-category {
+    display:none;
     display: flex;
     flex-direction: column;
+    justify-content:center;
+    align-items: center;
     width:125px;
+}
+
+.forecast-category p {
+    height:20px;
+}
+
+.weather-icons {
+    margin: 1px 0;
+    object-fit: cover;
+    height: 50px;
+    width: 61px;
 }
 
 footer {
     text-align: center;
     color: grey;
 }
-
-
 
 /* To use when hiding something*/
 .hidden {
