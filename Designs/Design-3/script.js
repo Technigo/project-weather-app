@@ -8,6 +8,7 @@ const weatherDesc = document.getElementById('weather-description')
 const sunrise = document.getElementById('sunrise')
 const sunset = document.getElementById('sunset')
 const weatherSymbolBox = document.getElementById('big-weather-symbol-container')
+const weatherSymbol = document.getElementById('big-weather-symbol')
 
 //---------------------------------------------1ST FETCH REQUEST----------------------------------------
 fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=26c922535e2ba939d3ff0d8af53d90a2')
@@ -16,7 +17,8 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
 })
 .then((json) => {
     //this variable contains the temperature and with the math.round the decimals where removed
-    let temp = json.main.temp.toFixed(1) 
+    let temp = json.main.temp
+    temp = Math.round(temp) 
 
     //Variables for getting the first word in the description capitalized
     const description = json.weather[0].description
@@ -42,8 +44,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     const changeWeatherIcon = () => {
         if (currentWeather === "Snow") {
             weatherSymbolBox.innerHTML = `<img class = "big-weather-symbol" 
-            id="big-weather-symbol" 
-            src="./Weather-Icons/Weather-Icons-IOS7-Style-PIXEDEN/SVG/snow-alt.svg"/>`
+            id="big-weather-symbol" src="./Weather-Icons/Weather-Icons-IOS7-Style-PIXEDEN/SVG/snow-alt.svg"/>`
         }
 
         else if (currentWeather === "Clear") {
@@ -102,7 +103,9 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
     console.log(json)
 
 //-------------------WINDSPEED----------------------------
-    windspeed = json.list[0].wind.speed 
+    let windspeed = json.list[0].wind.speed
+    windspeed = Math.round(windspeed) 
+
     windSpeed.innerHTML = `<p>${windspeed} m/s</p>`
 
 //-------------------------------FILTER + FOREACH----------------------
@@ -119,10 +122,6 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
         weekTemp.innerHTML += `<h6>${forecastTemp}°</h6>`
         
         })
-
-   
-
-    //This displays the temperatures, adding the Celsius sign to the last one.
 
         
 })
