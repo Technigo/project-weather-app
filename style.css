@@ -57,3 +57,7 @@ justify-content: center;
 .temperature-now {
 
 }
+
+.todays-date{
+    font-family: 'Courier New', Courier, monospace;
+}
