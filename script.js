@@ -192,6 +192,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
 todaysWeatherFeature('Stockholm');
 getMainWeather('Stockholm');
 getSunriseSunsetData('Stockholm');
+weatherForecastData('Stockholm');
 
 
 
