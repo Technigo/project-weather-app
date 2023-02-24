@@ -18,6 +18,19 @@
     
 }
 
+.hamburger {
+    align-self: flex-start;
+    margin: 0px 0px 15px 15px;
+}
+
+.hamburger .line {
+    width: 40px;
+    height: 3px;
+    margin: 8px auto;
+    background-color: white;
+    border-radius: 5px;
+}
+
 .main-image img {
     height: 150px;
     width: 150px;
@@ -50,7 +63,7 @@ sup {
     height: 60px;
     border-radius: 50%;
     position: absolute;
-    top: 39%;
+    top: 40%;
     right: 11%;
     background-color: #5E79FD;
     border: none;
