@@ -52,29 +52,19 @@ sup {
 .bottom-section {
     display: flex;
     justify-content: center;
-    width: 100vw;
-    height: 50vh;
-
 }
 
 .forecast {
     margin-top: 4rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: repeat(5, 70px);
-    width: 50vw;
-    height: 200px;
-    border: solid red 3px;
+    display: flex;
 }
 
 .forecast p {
     font-size: 16px;
 }
-/*
-.forecast-img {
+
+.forecast img {
     display: block;
-    object-fit: contain;
-    height: 20%;
+    height: 1.2rem;
     margin: 1em 1rem 1em 5rem;   
 }
-*/

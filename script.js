@@ -74,7 +74,6 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Reykjavik&appid=fa2755c
    mainImage.innerHTML += `<image src=${weatherImg} alt='icon of the weather Today'/>`
 
    })
-   .catch(error => console.log(error))
 
 
    //Make the current time be in same format as sunrise/sunset time to be able to compare
