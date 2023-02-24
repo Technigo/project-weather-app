@@ -1,9 +1,7 @@
   
   body {
-    color: var(--primary);
     font-size: 16px;
     font-family: 'Sora', sans-serif;
-    background: var(--background);
     filter: var(--filter);
     box-shadow: var(--box-shadow);
     box-sizing: border-box;
@@ -14,26 +12,21 @@
   }
 
   .day {
-    --light-background: #FBF8F3;
-    --light-primary: #232323;
-    --light-link: #FF5733;
+    background: #FBF8F3;
+    color: #232323;
     --light-filter: invert(10%) sepia(0%) saturate(446%) hue-rotate(138deg) brightness(98%) contrast(91%);
     --light-box-shadow: 5px 7px 41px 9px rgba(0,0,0,0.1),6px 6px 25px -10px rgba(0,0,0,0.1);
-    background: var(--light-background);
-    color : var(--light-primary);
+
     filter: var(--light-filter);
   }
 
 .night {
 
 
-    --dark-background: #232323;
-    --dark-primary: #FBF8F3;
-    --dark-link: #A9FE75;
+    background: #232323;
+    color: #FBF8F3;
     --dark-filter: invert(100%) sepia(60%) saturate(759%) hue-rotate(293deg) brightness(108%) contrast(97%);
     --dark-box-shadow: 5px 7px 41px 9px rgba(255,255,255,0.3),6px 6px 25px -10px rgba(255,255,255,0.3);
-    background: var(--dark-background);
-    color : var(--dark-primary);
     filter: var(--dark-filter);
 
   }
