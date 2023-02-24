@@ -110,6 +110,10 @@ img {
     padding: 20px 50px 20px 0;
   }
 
+  .forecast {
+    margin-right: 0;
+  }
+
   h2 {
     font-weight: bold;
     font-size: 60px;
