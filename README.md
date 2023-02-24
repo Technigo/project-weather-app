@@ -1,4 +1,4 @@
-# Weather App
+# Weather App - Bridget & Emilia
 
 For this project, Bridget and Emilia worked together to develop a weather forecast website using two APIs to gather the weather information for today and for the next five days.  We learned how to fetch and utilize APIs, how to create and merge branches in git, and how to create dynamic styling controlled by conditionals.
 
