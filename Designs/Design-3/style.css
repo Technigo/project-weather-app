@@ -383,7 +383,7 @@ body {
     padding-bottom: 0;
     position: relative;
     border-radius: 1rem;
-    box-shadow: var(--ligt-box-shadow);
+    box-shadow: var(--light-box-shadow);
 }
 
 
