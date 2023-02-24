@@ -1,4 +1,5 @@
 //------------------------------------------DOM-selectors-----------------------------------------------
+const weatherApp = document.getElementById('weather-app')
 const cityName = document.getElementById('city-name')
 const currentTemp = document.getElementById('current-temp')
 const weekDays = document.getElementById('weekdays')
@@ -9,6 +10,21 @@ const sunrise = document.getElementById('sunrise')
 const sunset = document.getElementById('sunset')
 const weatherSymbolBox = document.getElementById('big-weather-symbol-container')
 const weatherSymbol = document.getElementById('big-weather-symbol')
+
+
+const currentHour = new Date().getHours();
+
+// Select the element
+
+// Add or remove classes based on time of day
+if (currentHour >= 6 && currentHour < 18) {
+    weatherApp.classList.add("day");
+    weatherApp.classList.remove("night");
+} else {
+    weatherApp.classList.add("night");
+    weatherApp.classList.remove("day");
+}
+
 
 // Get the user's current location
 navigator.geolocation.getCurrentPosition((position) => {
@@ -21,18 +37,10 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${lon
 })
 .then((json) => {
     console.log(json)
-    //this variable contains the temperature and with the math.round the decimals where removed
-    let temp = json.main.temp
-    temp = Math.round(temp) 
-
-    //Variables for getting the first word in the description capitalized <----CAN WE REMOVE THIS, @PEKI?
+  
+//------------------VARIABLES FOR TEMP, DESCRIPTION, SUNRISE, SUNSET AND WINDSPEED-------------------------------------------
+    const temp = Math.round(json.main.temp)
     const description = json.weather[0].description
-    const firstLetter = description.charAt(0)
-    const firstLetterCap = firstLetter.toUpperCase()
-    const remainingLetters = description.slice(1)
-    const capitalizeWord = firstLetterCap + remainingLetters //This variable is displaying the weather description
-
-//------------------VARIABLES FOR SUNRISE, SUNSET AND WINDSPEED-------------------------------------------
     const rise = new Date(json.sys.sunrise * 1000)
     const up = rise.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     const set = new Date(json.sys.sunset * 1000)
@@ -42,7 +50,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${lon
 //--------------DISPLAYING: city, temp, weather description, sunrise, and sunset---------------
     cityName.innerHTML = `${json.name}`//displays the city name
     currentTemp.innerHTML = `${temp}°`//displays the current temperature using the temp variable 
-    weatherDesc.innerHTML = `${capitalizeWord}`
+    weatherDesc.innerHTML = `${description}`
     sunrise.innerHTML = `${up}`
     sunset.innerHTML = `${down}`
     windSpeed.innerHTML = `<p>${windspeed} m/s</p>`
