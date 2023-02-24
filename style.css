@@ -6,27 +6,33 @@ body {
   margin: 0;
   padding: 0;
   font-family: montserrat;
+  color: #394151;
 }
 
 p {
-  margin: 7px;
+  margin: 3px;
+}
+
+.todays-header-forecast {
+  text-transform: lowercase;
+  color: #394151;
+  opacity: 0.8;
+  width: 350px;
+  padding: 30px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  /*min-width: 350px;
+  width: 80%;*/
+  margin: 0 auto;
 }
 
 .main {
   display: flex;
   flex-direction: column;
-  min-width: 350px;
-  width: 80%;
-  margin: 0 auto;
-}
-
-
-.todays-header-forecast {
-  /*margin: 10px;*/
-  text-transform: lowercase;
-  border-radius: 15px;
   width: 350px;
-  padding: 20px 20px 10px 20px;
+  /*min-width: 350px;
+  /*width: 80%;*/
+  margin: 0 auto;
 }
 
 /*.search-form {
@@ -51,11 +57,11 @@ p {
   display: flex;
   flex-direction: column;
   opacity: 0.7;
+  color: #394151;
   font-size: 28px;
-  font-weight: 400;
+  font-weight: bold;
   padding: 0px 20px 0px 20px;
   width: 350px;
-  /* border: 2px solid black; */
 }
 
 .icon {
@@ -68,9 +74,9 @@ p {
 }
 
 .weekly-forecast {
+  color: #394151;
+  opacity: 0.8;
   padding: 20px;
-  border-radius: 15px;
-  padding-left: 20px;
   width: 350px;
 }
 
@@ -80,27 +86,36 @@ p {
   justify-content: space-between;
   border-bottom: dashed 1px;
   text-transform: lowercase;
-  /*margin: 20px;*/
   padding: 10px;
 }
 
 footer {
   display: flex;
   flex-direction: column;
-  color: black;
+  width: 350px;
+  color: #394151;
+  opacity: 0.7;
   text-align: center;
-  font-size: 13px;
+  font-size: 12px;
   text-transform: uppercase;
   padding: 50px 20px 20px 20px;
   margin: 0 auto;
 }
 
+.sign {
+  padding: 5px;
+}
+
+.sign2 {
+  padding: 5px;
+}
+
 a:link, a:visited  {
   text-transform: none;
-  color: black;
+  color: #394151;
   text-decoration: none;
   padding: 20px;
-  font-size: 12px;
+  font-size: 10px;
   font-style: italic;
   text-align: center;
 }
@@ -109,4 +124,95 @@ a:link, a:visited  {
 /* mouse over link */
 a:hover {
   color: hotpink;
+}
+
+/* Styling for tablet */
+@media (min-width: 667px) and (max-width: 1024px) {
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .main {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+  }
+
+  .todays-header-forecast {
+    width: 80%;
+  }
+
+  .text-forecast {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+  }
+
+  .weekly-forecast {
+    margin-top: auto;
+    align-content: end;
+  }
+
+  footer {
+    width: 80%;
+    margin-top: auto;
+    font-size: 14px;
+  }
+
+}
+
+/*Styling for desktop */
+@media (min-width: 1025px) {
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .main {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+  }
+
+  .todays-header-forecast {
+ margin-right: 50%;
+  
+  }
+
+  .text-forecast {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .weekly-forecast {
+    margin-top: auto;
+    align-content: end;
+  }
+
+  footer {
+    width: 80%;
+    margin-top: auto;
+    font-size: 14px;
+  }
+
+  a:link, a:visited  {
+    text-transform: none;
+    color: #394151;
+    text-decoration: none;
+    padding: 20px;
+    font-size: 12px;
+    font-style: italic;
+    text-align: center;
+  }
+  
+  
+  /* mouse over link */
+  a:hover {
+    color: hotpink;
+    font-size: 12px;
+  }
+
 }
