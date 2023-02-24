@@ -21,8 +21,8 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Piteå,Sweden&units=met
     
     .then((json) => {
         city.innerHTML = `<h2>${json.name}</h2>`
-        temperature.innerHTML = `<h2>${Math.round(json.main.temp * 10) / 10}°C</h2>`;
-        condition.innerHTML = `<h2>with ${json.weather[0].description}</h2>`;
+        temperature.innerHTML = `<hh3>${Math.round(json.main.temp * 10) / 10}°C</h3>`;
+        condition.innerHTML = `<h4>with ${json.weather[0].description}</h4>`;
 
     const setSunrise = json.sys.sunrise;
     const sunriseTime = new Date(setSunrise * 1000);
@@ -32,7 +32,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Piteå,Sweden&units=met
         hour12:false,
 })
 
-        sunrise.innerHTML =`<h2>The sun rises at ${sunriseHour}</h2>`
+        sunrise.innerHTML =`<p>The sun rises at ${sunriseHour}</p>`
 
     const setSunset = json.sys.sunset;
     const sunsetTime = new Date(setSunset * 1000);
@@ -42,7 +42,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Piteå,Sweden&units=met
         hour12:false,
 })
 
-        sunset.innerHTML =`<h2>and it sets at ${sunsetHour}</h2>`
+        sunset.innerHTML =`<p>and it sets at ${sunsetHour}</p>`
     })
      
     

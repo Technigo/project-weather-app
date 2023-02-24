@@ -30,6 +30,12 @@ h1 {
     align-items: center;
 }
 
+h4 {
+    margin-bottom: 20px;
+}
+
+
+
 body {
     font-family: "Montserrat", "sans-serif";
     display: flex;
@@ -48,7 +54,6 @@ body {
         border-radius: 30px;
         width: 100%;
         max-width: 420px;
-        padding: 50px;
     }
 
         .search {
@@ -69,19 +74,19 @@ body {
             }
 
             .day {
-                margin: 0;
+                margin-top: 20px;
                 display: grid;
                 grid-template-columns: 1fr 1fr;
             }
 
                 .forecast-day {
-                    margin: 10px;
+                    margin: 5px;
                     display: flex;
                     
                 }
 
                 .forecast-temp {
-                    margin: 10px;
+                    margin: 5px;
                     display: flex;
                     
                 }
@@ -95,15 +100,16 @@ body {
                 font-weight: lighter;
                 font-family: "Montserrat", "sans-serif";
                 font-size: small;
+                margin: 20px;
             }
 
             .city {
-                display: 
-
+                display: flex;
+                margin-top: 20px;
             }
 
             .temperature-now {
-
+                display: flex;
             }
 
             .search-bar {
@@ -116,7 +122,6 @@ body {
                 font-weight: bolder;
                 padding: 10px;
                 border-radius: 10px;
-                
             }
 
 
