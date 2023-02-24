@@ -38,8 +38,7 @@ fetch(
     });
     weatherHeader.innerHTML =
       // `<p>${json.name}</p> perhaps we don't need the name of the city if it's in the main text?
-      `<p>${roundedUpTemp}°C</p>
-    <p>${description}</p>
+      `<p>${description} | ${roundedUpTemp}°C</p>
     <div class="sun-info">
     <div class="sunrise-info"><img src="Designs/Animated icons/sunrise.svg" class="sun-icon"/><p>${sunriseTime}</p></div>
     <div class="sunset-info"><img src="Designs/Animated icons/sunset.svg" class="sun-icon"/><p>${sunsetTime}</p></div>
@@ -88,6 +87,7 @@ const weatherStylingChange = () => {
         //if the json description of the weather is "clouds", the following happens
         document.body.style.backgroundColor = "#dee1e2"; //adds grey bg color if it's cloudy
         document.body.style.color = "#C66966"; //adds salmon-y text color if it's cloudy
+
         weatherText.innerHTML = ` 
         <img src="Designs/Animated icons/cloudy.svg" class="weather-icon"/> 
         <h1>Light a fire and get cozy!

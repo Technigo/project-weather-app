@@ -1,8 +1,7 @@
 .content {
-  font-family: "Montserrat", sans-serif;
-  display: flex;
-  flex-direction: column;
-  /*border: 3px solid white;*/
+  font-family: "Montserrat";
+  /*display: flex;
+  flex-direction: column;border: 3px solid white;*/
   padding: 40px;
 }
 
@@ -59,7 +58,7 @@ h1 {
 }
 
 table {
-  width: 50%;
+  width: 90%;
   margin: auto;
 }
 
@@ -68,7 +67,7 @@ table tr .tempTd {
 }
 
 table tr td {
-  border-bottom: 1px dashed black;
+  border-bottom: 1px dashed;
   font-size: 20px;
   padding: 25px 0px 4px 0px;
 }
