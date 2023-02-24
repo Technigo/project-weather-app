@@ -24,7 +24,7 @@ body{
     border-radius: 20px;
 }
 
-.weekday, .city, .cloudReport, .sunrise, .sunset{
+.weekday, .city, .cloudReport, .sunrise, .sunset, .morecity, .drop-menu{
     font-size: 20px;
     color: var(--basecolor);
 }
@@ -42,7 +42,7 @@ body{
     margin-bottom: 32px;
 }
 
-.weekday {
+.weekday{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -60,4 +60,15 @@ body{
 .weatherImagebox img {
     width: 100%;
     height: auto;
+}
+.morecity {
+    margin: 15px;
+    width: 100%;
+    text-align: center;
+}
+.drop-menu{
+    width: 100%;
+    text-align: center;
+    border-style: none;
+
 }

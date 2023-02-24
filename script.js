@@ -14,7 +14,8 @@ const day2 = document.getElementById("day+2")
 const day3 = document.getElementById("day+3")
 const day4 = document.getElementById("day+4")
 const day5 = document.getElementById("day+5")
-const colorTheme = document.querySelector(':root');
+const colorTheme = document.querySelector(':root')
+const dropmenu = document.getElementById("drop-menu")
 
 // change so that API-key is inside a variable instead straight into the functions
 let city = "Stockholm"
@@ -46,7 +47,7 @@ const fetchWeatherAPI = (City,Country) => {
 
 
             changeWeatherDescription(json.weather[0].description, json.name);
-            changeWeatherDescription("json.weather[0].description", json.name);
+            // changeWeatherDescription("clear", json.name); // cloud rain snow
 
             //json.weather[0].description
 
@@ -57,7 +58,6 @@ const fetchWeatherAPI = (City,Country) => {
 
 
 }
-fetchWeatherAPI(city,country);
 
 // create function to show the desciption the daily weather
 const changeWeatherDescription = (weatherDescription, city) => {
@@ -138,5 +138,27 @@ const fetchWeekdaysAPI = (City,Country) => {
             console.log("error loading weatherdata", err)
         })
 }
-fetchWeekdaysAPI(city,country);
+
+
+
+const moreCityWeather = () =>{
+
+    const value = dropmenu.options[dropmenu.selectedIndex].value
+    const arr = value.split(",");
+    city = arr[0]
+    country = arr[1]
+    start()
+   //fetchWeatherAPI(arr[0],arr[1])
+   //fetchWeekdaysAPI(arr[0],arr[1])
+
+}
+
+const start = () => {
+    fetchWeatherAPI(city,country);
+    fetchWeekdaysAPI(city,country);
+}
+
+start()
+dropmenu.addEventListener("change",moreCityWeather)
+
 
