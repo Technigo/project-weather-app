@@ -19,19 +19,16 @@ h3 {
 }
 
 .header {
-  width: 40%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 100px 20px;
+  height: auto;
+  max-width: 80%;
 }
 
-.condition-temp,
-.sunrise,
-.sunset {
+p {
+  margin: 0.25rem;
   font-weight: 400;
-  margin: 0 2px;
-  list-style-type: none;
 }
 
 .message-text h2 {
@@ -42,9 +39,8 @@ h3 {
 .container {
   display: flex;
   flex-direction: column;
-  font-size: 24px;
   font-family: "Montserrat", sans-serif;
-  padding: 5% 15%;
+  padding: 5% 10%;
   justify-content: flex-start;
 }
 
