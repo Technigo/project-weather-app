@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 
 
@@ -13,12 +16,19 @@
   
   <!-- Today's weather -->
   <section class = "weather-today-wrapper" id = "weather-today-wrapper">
-    <h1 class = "temperature" id = "temperature"></h1>
-    <h3 class = "feels-like" id = "feels-like">Feels like </h3>
-    <h2 class = "city" id ="city"></h2>
-    <h3 class = "weather-description" id = "weather-description"> </h3>
-    <h3 class = "sunrise" id = "sunrise">Sunrise: </h3>
-    <h3 class = "sunset" id = "sunset">Sunset: </h3>
+    <div class = "weather-today-background" id = "weather-today-background">
+      <img class ="weather-today-image" id="weather-today-image" src="" />
+      <div class = "weather-today-info">
+        <p class = "temperature" id = "temperature"></p>
+        <p class = "city" id ="city"></p>
+        <p class = "weather-description" id = "weather-description"> </p>
+        <p class = "feels-like" id = "feels-like">feels like </p>
+      </div> 
+      <div class="sun-stuff">
+        <p class = "sunrise" id = "sunrise">sunrise: </p>
+        <p class = "sunset" id = "sunset">sunset: </p>
+      </div>
+    </div>
   </section>
 
   <!-- Forecast -->
@@ -28,20 +38,20 @@
   </section>
 
     <section class="additional-cities">
-      <div>
-        <h1 class = "california-temperature" id = "ca-temperature"></h1>
+      <div class ="ca" id ="ca">
+        <!-- <h1 class = "california-temperature" id = "ca-temperature"></h1>
         <h2 class = "ca-city" id ="ca-city"></h2>
-        <h3 class = "ca-weather-description" id = "ca-weather-description"></h3>
+        <h3 class = "ca-weather-description" id = "ca-weather-description"></h3> -->
       </div>
-      <div>
-        <h1 class = "colombo-temperature" id = "lk-temperature"></h1>
+      <div class = "lk" id = "lk">
+        <!-- <h1 class = "colombo-temperature" id = "lk-temperature"></h1>
         <h2 class = "lk-city" id ="lk-city"></h2>
-        <h3 class = "lk-weather-description" id = "lk-weather-description"></h3>
+        <h3 class = "lk-weather-description" id = "lk-weather-description"></h3> -->
       </div>
-      <div>
-        <h1 class = "tokyo-temperature" id = "jp-temperature"></h1>
+      <div class ="jp" id ="jp">
+        <!-- <h1 class = "tokyo-temperature" id = "jp-temperature"></h1>
         <h2 class = "jp-city" id ="jp-city"></h2>
-        <h3 class = "jp-weather-description" id = "jp-weather-description"></h3>
+        <h3 class = "jp-weather-description" id = "jp-weather-description"></h3> -->
       </div>
     </section>
 

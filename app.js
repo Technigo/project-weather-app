@@ -12,7 +12,9 @@ const feelsLike = document.getElementById("feels-like")
 const city = document.getElementById("city")
 const weatherDescription = document.getElementById("weather-description")
 const weatherTodayWrapper = document.getElementById("weather-today-wrapper")
-const forecastWrapper = document.getElementById("forecast-wrapper");
+const forecastWrapper = document.getElementById("forecast-wrapper")
+const weatherTodayBg = document.getElementById("weather-today-background")
+const weatherTodayImage = document.getElementById("weather-today-image")
 
 const caTemperature = document.getElementById("jp-temperature")
 const caCity = document.getElementById("jp-city")
@@ -35,17 +37,21 @@ fetch(API_today)
     })
     .then((json) => {
         //temperature
-        let rawTemp = json.main.temp 
-        let roundedTemp = rawTemp.toFixed(0)
-        temperature.innerHTML = `<h1>${roundedTemp}&deg;C</h1>`
+        // let rawTemp = json.main.temp 
+        // let roundedTemp = rawTemp.toFixed(0)
+        // temperature.innerHTML = `<p>${roundedTemp}&deg;C</p>`
+
+        temperature.innerHTML = `<p>${(json.main.temp).toFixed(0)}&deg;C</p>`
+
+    
         //feels like
         feelsLike.innerHTML += `<span>${json.main.feels_like.toFixed(0)}&deg;C</span>`
         //city
         let currentCity = json.name
-        city.innerHTML = `<h2>${currentCity}</h2>`
+        city.innerHTML = `<p>${currentCity}</p>`
         //weather description
         let weatherDes = json.weather.map((element) => (element.description))
-        weatherDescription.innerHTML = `<h2>${weatherDes}</h2>`
+        weatherDescription.innerHTML = `<p>${weatherDes}</p>`
 
        // access the sunrise and sunset times directly from the API response
        const sunriseTimestamp = json.sys.sunrise;
@@ -62,62 +68,102 @@ fetch(API_today)
      
        // display the sunrise and sunset times in the app
        const sunrise = document.getElementById("sunrise")
-       sunrise.innerHTML = `Sunrise: ${sunriseDate.toLocaleTimeString([], options)}`;
+       sunrise.innerHTML = `sunrise: ${sunriseDate.toLocaleTimeString([], options)}`;
    
        const sunset = document.getElementById("sunset")
-       sunset.innerHTML = `Sunset: ${sunsetDate.toLocaleTimeString([], options)}`; 
+       sunset.innerHTML = `sunset:  ${sunsetDate.toLocaleTimeString([], options)}`; 
+
+
+
+       //Change style based on weather conditions
+       let weatherCondition = json.weather.map((element) => (element.main))
+       console.log(weatherCondition)
+       let todayImageSrc = "";
+       let todayWrapperBg = "";
+
+       if (weatherCondition.includes("Clouds")) {
+            todayImageSrc = "assets/clouds.png"  
+            todayWrapperBg = "weather-today-wrapper weather-today-wrapper-clouds"        
+
+       } else if (weatherCondition.includes("Rain" || "Drizzle")) {
+            todayImageSrc = "assets/rain.png"  
+            todayWrapperBg = "weather-today-wrapper weather-today-wrapper-rain"        
+
+       } else if (weatherCondition.includes("Thunderstorm")) {  
+            todayImageSrc = "assets/thunderstorm.png"  
+            todayWrapperBg = "weather-today-wrapper weather-today-wrapper-thunderstorm" 
+
+
+       } else if (weatherCondition.includes("Snow")) {
+            todayImageSrc = "assets/snow.png"  
+            todayWrapperBg = "weather-today-wrapper weather-today-wrapper-snow" 
+
+           
+       } else if (weatherCondition.includes("Clear")) {
+            todayImageSrc = "assets/clear.png"  
+            todayWrapperBg = "weather-today-wrapper weather-today-wrapper-clear" 
+
+
+       } else {
+            todayImageSrc = ""  
+            todayWrapperBg = "weather-today-wrapper weather-today-wrapper-neutral"
+
+       }
+
+       weatherTodayWrapper.setAttribute("class", todayWrapperBg);
+       weatherTodayImage.setAttribute("src", todayImageSrc)
     })
    
-fetch(californiaAPI)
+    fetch(californiaAPI)
      .then((response) => {
          return response.json()
      })
      .then((json) => {
          //temperature
-         let caRawTemp = json.main.temp 
-         let caRoundedTemp = caRawTemp.toFixed(0)
-         caTemperature.innerHTML = `<h1>${caRoundedTemp}&deg;C</h1>`
+         const ca =document.getElementById("ca")
+         ca.innerHTML += `<p>${(json.main.temp).toFixed(0)}&deg;C</p>`
          //city
          let caCurrentCity = json.name
-         caCity.innerHTML = `<h2>${caCurrentCity}, California </h2>`
+         ca.innerHTML += `<p>${caCurrentCity}, California </p>`
          //weather description
          let caWeatherDes = json.weather.map((element) => (element.description))
-         weatherDescription.innerHTML = `<h2>${caWeatherDes}</h2>`;
+         ca.innerHTML += `<p>${caWeatherDes}</p>`;
    
        });
-fetch(colomboAPI)
+
+   
+    fetch(colomboAPI)
      .then((response) => {
          return response.json()
      })
      .then((json) => {
+
+        const lk =document.getElementById("lk")
          //temperature
-         let lkRawTemp = json.main.temp 
-         let lkRoundedTemp = lkRawTemp.toFixed(0)
-         lkTemperature.innerHTML = `<h1>${lkRoundedTemp}&deg;C</h1>`
+         lk.innerHTML += `<p>${(json.main.temp).toFixed(0)}&deg;C</p>`
          //city
          let lkCurrentCity = json.name
-         lkCity.innerHTML = `<h2>${lkCurrentCity}, Sri Lanka </h2>`
+         lk.innerHTML += `<p>${lkCurrentCity},  </br> Sri Lanka </p>`
          //weather description
          let lkWeatherDes = json.weather.map((element) => (element.description))
-         weatherDescription.innerHTML = `<h2>${lkWeatherDes}</h2>`;
+         lk.innerHTML += `<p>${lkWeatherDes}</p>`;
    
        });
    
-fetch(tokyoAPI)
+    fetch(tokyoAPI)
      .then((response) => {
          return response.json()
      })
      .then((json) => {
+        const jp =document.getElementById("jp")
          //temperature
-         let jpRawTemp = json.main.temp 
-         let jpRoundedTemp = jpRawTemp.toFixed(0)
-         jpTemperature.innerHTML = `<h1>${jpRoundedTemp}&deg;C</h1>`
+         jp.innerHTML += `<p>${(json.main.temp).toFixed(0)}&deg;C</p>`
          //city
          let jpCurrentCity = json.name
-         jpCity.innerHTML = `<h2>${jpCurrentCity}, Japan </h2>`
+         jp.innerHTML += `<p>${jpCurrentCity}, Japan </p>`
          //weather description
          let jpWeatherDes = json.weather.map((element) => (element.description))
-         weatherDescription.innerHTML = `<h2>${jpWeatherDes}</h2>`;
+         jp.innerHTML += `<p>${jpWeatherDes}</p>`;
    
        });
 
@@ -140,43 +186,27 @@ fetch(API_forecast)
             })
             const weatherIconCode = `${day.weather[0].icon}`
             const temp = `${day.main.temp.toFixed(0)}`
-            
             console.log(date, dayName, weatherIconCode, temp)    
 
             forecastWrapper.innerHTML += `
             <div class ="forecast-row">
-                <span class = "day">${forecastDate} ${dayName}</span>
+                <span class = "forecast-day">${forecastDate} ${dayName}</span>
                 <img class = "forecast-icon" src="https://openweathermap.org/img/wn/${weatherIconCode}@2x.png"/> 
-                <span class = "temperature"> ${temp}</span>
+                <span class = "forecast-temperature"> ${temp}</span>
             </div>
             `
-
-            //Change style based on weather conditions
-            const weatherCondition = json.list[0].weather[0].main
-           
-            console.log(weatherCondition)
-            if (weatherCondition.includes("Clouds")) {
-                const cloudsLink = ``
-                weatherTodayWrapper.style.background ='url('+cloudsLink+') center left  / cover no-repeat, no-repeat';
-
-            } else if (weatherCondition.includes("Rain" || "Drizzle")) {
-                const rainLink = ``
-                weatherTodayWrapper.style.background ='url('+rainLink+') center left  / cover no-repeat, no-repeat';
-
-            } else if (weatherCondition.includes("Thunderstorm")) {  
-                const thunderStormLink = ``
-                weatherTodayWrapper.style.background ='url('+thunderStormLink+') center left  / cover no-repeat, no-repeat';
-
-            } else if (weatherCondition.includes("Snow")) {
-                const snowLink = ""
-                weatherTodayWrapper.style.background ='url('+snowLink+') center left  / cover no-repeat, no-repeat';
-            } else if (weatherCondition.includes("Clear")) {
-
-            } else {
-                //something neutral
-            }
+            
+            
            
         })
     });
+
+    //const snowLink = "https://media3.giphy.com/media/ciYfVwZxBD0wPrO6nb/giphy.gif?cid=ecf05e47bdmeq3f5w8oxm7pz21kbeanhc2eos4qyx91tcg9v&rid=giphy.gif&ct=s%27"
+
+            // rain const snowLink = "https://media.giphy.com/media/d2jjHeKDynBohPtm/giphy.gif"
+
+            // const snowLink = "https://media.giphy.com/media/l0IsHVDSeZkk2WOZy/giphy.gif"
+            //     const linearStyle = 'linear-gradient(#e66465, #9198e5)';
+            //     weatherTodayWrapper.style.background = 'url('+snowLink+') center right  / contain no-repeat, '+linearStyle+' no-repeat';
       
    
