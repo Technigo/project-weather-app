@@ -44,7 +44,7 @@ fetch(urlWeather)
     if (todaysWeatherMain === "Clear") {
       textForecast.innerHTML = `
       <img class="icon" src="icons-graficon/sun.png">
-      <p class="prompt"> It's a beautiful day in ${wData.name}. The sun is shining, you better put on sunglasses!</p>`;
+      <p class="prompt"> <strong>It's a beautiful day in ${wData.name}. The sun is shining, you better put on sunglasses!</strong></p>`;
       // <img class="icon" src="flaticon-dreamstale/clear-sun.png"> Black icon
       document.body.style.backgroundColor = "#FFFAD7"; // Change colors depending on the current weather
     } else if (todaysWeatherMain === "Clouds") {

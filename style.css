@@ -8,21 +8,25 @@ body {
   font-family: montserrat;
 }
 
+p {
+  margin: 7px;
+}
+
 .main {
   display: flex;
   flex-direction: column;
-  min-width: 375px;
+  min-width: 350px;
   width: 80%;
   margin: 0 auto;
 }
 
 
 .todays-header-forecast {
-  margin: 20px;
+  /*margin: 10px;*/
   text-transform: lowercase;
-  background-color: rgba(240, 248, 255, 0.477);
   border-radius: 15px;
-  padding-left: 20px;
+  width: 350px;
+  padding: 20px 20px 10px 20px;
 }
 
 /*.search-form {
@@ -43,25 +47,20 @@ body {
   opacity: 0.7;
 }*/
 
-.todays-header-forecast {
-  
-  /*  border: 2px solid black; */
-}
-
 .text-forecast {
   display: flex;
   flex-direction: column;
   opacity: 0.7;
-  font-size: 30px;
-  font-weight: bold;
-  padding: 10px;
+  font-size: 28px;
+  font-weight: 400;
+  padding: 0px 20px 0px 20px;
   width: 350px;
   /* border: 2px solid black; */
 }
 
 .icon {
   width: 110px;
-  margin: 10px 0px 10px 20px;
+  margin: 10px 0px 15px 20px;
 }
 
 .prompt {
@@ -72,7 +71,7 @@ body {
   padding: 20px;
   border-radius: 15px;
   padding-left: 20px;
-  margin: 20px;
+  width: 350px;
 }
 
 .day-temp {
@@ -81,7 +80,7 @@ body {
   justify-content: space-between;
   border-bottom: dashed 1px;
   text-transform: lowercase;
-  margin: 20px;
+  /*margin: 20px;*/
   padding: 10px;
 }
 
