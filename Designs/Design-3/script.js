@@ -83,3 +83,34 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
         
 })
 
+
+
+// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+let vh = window.innerHeight * 0.01;
+// Then we set the value in the --vh custom property to the root of the document
+document.documentElement.style.setProperty("--vh", `${vh}px`);
+
+// We listen to the resize event
+window.addEventListener("resize", () => {
+  // We execute the same script as before
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty("--vh", `${vh}px`);
+});
+
+
+// This is Peki's code we can work tomorrow:
+
+// current time? if that is greater than x AND les than Y
+//check if the sun has set, if so it's night (mode), if not it's day(mode)
+
+const bodyCssProps = new CssPropControl(document.body)
+  
+let toggle = document.querySelector('#dark-mode-toggle')
+toggle.addEventListener('click', () => { 
+  let mode = toggle.checked ? 'dark' : 'light'
+  bodyCssProps.set('--background', bodyCssProps.get(`--${mode}-background`))
+  bodyCssProps.set('--primary', bodyCssProps.get(`--${mode}-primary`))
+  bodyCssProps.set('--link', bodyCssProps.get(`--${mode}-link`))
+  bodyCssProps.set('--filter', bodyCssProps.get(`--${mode}-filter`))
+  bodyCssProps.set('--box-shadow', bodyCssProps.get(`--${mode}-box-shadow`))
+})

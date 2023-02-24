@@ -1,7 +1,39 @@
-:root {
-    --light-color: #FBF8F3;
-    --dark-color: #232323;
+  
+  body {
+    color: var(--primary);
+    font-size: 16px;
+    font-family: 'Sora', sans-serif;
+    background: var(--background);
+    filter: var(--filter);
+    box-shadow: var(--box-shadow);
+    max-width: 1080px;
+    box-sizing: border-box;
+    transition: color 1s;
+    transition: background 1.5s;
+  
+    --dark-background: #232323;
+    --dark-primary: #FBF8F3;
+    --dark-link: #A9FE75;
+    --dark-filter: invert(100%) sepia(60%) saturate(759%) hue-rotate(293deg) brightness(108%) contrast(97%);
+    --dark-box-shadow: 5px 7px 41px 9px rgba(255,255,255,0.3),6px 6px 25px -10px rgba(255,255,255,0.3);
+
+
+    --light-background: #FBF8F3;
+    --light-primary: #232323;
+    --light-link: #FF5733;
+    --light-filter: invert(10%) sepia(0%) saturate(446%) hue-rotate(138deg) brightness(98%) contrast(91%);
+    --light-box-shadow: 5px 7px 41px 9px rgba(0,0,0,0.1),6px 6px 25px -10px rgba(0,0,0,0.1);
+    --background: var(--light-background);
+    --primary: var(--light-primary);
+    --link: var(--light-link);
+    --filter: var(--light-filter);
   }
+  
+  a {
+    color: var(--link);
+  }
+
+
 
   html * {
 	padding: 0;
@@ -10,11 +42,13 @@
 }
 
 body {
-    background: var(--light-color);
+    background: var(--light-background);
     font-family: 'Sora', sans-serif;
 
     
 }
+
+
 
 .weather-box {
     display: flex;
@@ -26,43 +60,47 @@ body {
 
 .city-name {
   font-weight: 800;
-  font-size: 1rem;
-  color: var(--dark-color);
+  font-size: 1.3rem;
+  color: var(--light-primary);
   text-align: center;
-  margin-top: 3.4rem;
+  margin-top: 2.6rem;
+  margin-bottom: 1.8rem;
+  text-transform: capitalize;
 }
 
 .big-weather-symbol {
 margin-top: 10%;
-margin-bottom: 4%;       
+margin-bottom: 8%;       
 width: 7rem;
-filter: invert(10%) sepia(0%) saturate(446%) hue-rotate(138deg) brightness(98%) contrast(91%);
+filter: var(--light-filter);
 
 }
 
 .current-temp {
-    margin-top: 3%;
-    margin-bottom: 3%; 
+    margin-top: 4%;
+    margin-bottom: 4%; 
     font-weight: 800;
     font-size: 2.8rem;
-    color: var(--dark-color);
+    color: var(--light-primary);
     text-align: center;
 
 }
 
 .weather-description {
     margin-top: 3%;
-    margin-bottom: 6%; 
+    margin-bottom: 7%; 
     font-weight: 800;
-    font-size: 1rem;
-    color: var(--dark-color);
+    font-size: 1.3rem;
+    color: var(--light-primary);
     text-align: center;
+    text-transform: capitalize;
 }
 
 .sun-and-time {
     display: flex;
     flex-direction: column;
     margin-top: 0.4em;
+    margin-bottom: 1.2em;
     gap:0.4em;
     column-gap: 1em;
 }
@@ -72,29 +110,28 @@ filter: invert(10%) sepia(0%) saturate(446%) hue-rotate(138deg) brightness(98%) 
 display: flex;
 flex-direction: row;
 justify-content: center;
-
-gap: 125%;
+gap: 100%;
 }
 .sunrise-symbol {
 width: 40px;
-filter: invert(10%) sepia(0%) saturate(446%) hue-rotate(138deg) brightness(98%) contrast(91%);
+filter: var(--light-filter);
 }
 
 .sunset-symbol {
 width: 40px;
 margin-bottom: -1%; 
-filter: invert(10%) sepia(0%) saturate(446%) hue-rotate(138deg) brightness(98%) contrast(91%);
+filter: var(--light-filter);
 }
 
 .time {
   
     display: flex;
     justify-content: space-evenly;
-    gap: 124%;
+    gap: 100%;
     margin-left:-1%;
     font-weight: 500;
     font-size: 0.9rem;
-    color: var(--dark-color);
+    color: var(--light-primary);
     text-align: center;   
 }
 
@@ -104,7 +141,7 @@ filter: invert(10%) sepia(0%) saturate(446%) hue-rotate(138deg) brightness(98%) 
     margin-bottom: 6%; 
 display: grid;
 justify-content: center;
-filter: invert(10%) sepia(0%) saturate(446%) hue-rotate(138deg) brightness(98%) contrast(91%);
+filter: var(--light-filter);
 }
 
 .wind-symbol {
@@ -118,7 +155,7 @@ filter: invert(10%) sepia(0%) saturate(446%) hue-rotate(138deg) brightness(98%) 
     margin-top: -0.2rem;    
     font-weight: 500;
     font-size: 0.9rem;
-    color: var(--dark-color);
+    color: var(--light-primary);
     text-align: center;
 
     
@@ -126,8 +163,8 @@ filter: invert(10%) sepia(0%) saturate(446%) hue-rotate(138deg) brightness(98%) 
 
 
     .forecast {
-        margin-top: 4%;
-    margin-bottom: 4%; 
+        margin-top: 1%;
+    margin-bottom: 3%; 
         display: flex;
         justify-content: space-evenly;
         gap: 2.4rem;
@@ -137,154 +174,217 @@ filter: invert(10%) sepia(0%) saturate(446%) hue-rotate(138deg) brightness(98%) 
 
 .weekdays {
   
-    color: var(--dark-color);
+    color: var(--light-primary);
     text-align: left;
-}
-
-.week-temp {
-    align-items: right;
-    font-weight: 500;
-    font-size: 0.9rem;
-    color: var(--dark-color);
-    text-align: right;
-}
-
-h6 {
-    font-size: 0.9rem;
-    font-weight: 500;
     line-height: 1.6rem;
-    }
-
-.firstDay .secodDay .thirdDay .fourthDay .fifthDay {
-
-    line-height: 1;
-
-
-}
-
-.time {
-    display: flex;
-}
-
-
-
-/* .city-name {
-  font-weight: 800;
-  font-size: 64px;
-  color: var(--dark-color);
-  text-align: center;
-}
-
-.big-weather-symbol {
-width: 400px;
-filter: invert(10%) sepia(0%) saturate(446%) hue-rotate(138deg) brightness(98%) contrast(91%);
-
-}
-
-.current-temp {
-    font-weight: 800;
-    font-size: 160px;
-    color: var(--dark-color);
-    text-align: center;
-
-}
-
-.weather-description {
-    font-weight: 800;
-    font-size: 64px;
-    color: var(--dark-color);
-    text-align: center;
-}
-
-.sun {
-display: flex;
-gap: 60px;
-}
-.sunrise-symbol {
-width: 140px;
-filter: invert(10%) sepia(0%) saturate(446%) hue-rotate(138deg) brightness(98%) contrast(91%);
-}
-
-.sunset-symbol {
-width: 140px;
-margin-bottom: -6px; 
-filter: invert(10%) sepia(0%) saturate(446%) hue-rotate(138deg) brightness(98%) contrast(91%);
-}
-
-.time {
-  
-    display: flex;
-    gap: 60px;
-    font-weight: 600;
-    font-size: 48px;
-    color: var(--dark-color);
-    text-align: center;   
-}
-
-.sun-and-time {
-    display: flex;
-    flex-direction: column;
-
-    
-
-}
-
-
-.wind {
-display: grid;
-justify-content: center;
-filter: invert(10%) sepia(0%) saturate(446%) hue-rotate(138deg) brightness(98%) contrast(91%);
-}
-
-.wind-symbol {
-    width: 140px;
-
-    }
-
-
-    .wind-speed {
-
-
-    font-weight: 600;
-    font-size: 48px;
-    color: var(--dark-color);
-    text-align: center;
-
-    
-    }
-
-.weekdays {
-    font-weight: 600;
-    font-size: 48px;
-    color: var(--dark-color);
-    text-align: left;
 }
 
 .week-temp {
     align-items: right;
-    font-weight: 600;
-    font-size: 48px;
-    color: var(--dark-color);
-    text-align: left;
-}
-
-.weather-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--light-primary);
+    text-align: right;
+    line-height: 1.6rem;
 }
 
 .time {
     display: flex;
 }
 
-.forecast {
+
+
+
+
+
+
+
+
+
+
+
+
+/* BIGGER MOBILE        BIGGER MOBILE        BIGGER MOBILE */
+ 
+
+@media (min-width: 390px) {
+
+    .city-name {
+        font-weight: 800;
+        font-size: 1.5rem;
+        color: var(--light-primary);
+        text-align: center;
+        margin-top: 5.4rem;
+        margin-bottom: 1.8rem;
+        text-transform: capitalize;
+      }
+      
+      .big-weather-symbol {
+      margin-top: 10%;
+      margin-bottom: 8%;       
+      width: 9rem;
+      filter: var(--light-filter);
+      
+      }
+      
+      .current-temp {
+          margin-top: 4%;
+          margin-bottom: 4%; 
+          font-weight: 800;
+          font-size: 3.2rem;
+          color: var(--light-primary);
+          text-align: center;
+      
+      }
+      
+      .weather-description {
+          margin-top: 3%;
+          margin-bottom: 7%; 
+          font-weight: 800;
+          font-size: 1.5rem;
+          color: var(--light-primary);
+          text-align: center;
+          text-transform: capitalize;
+      }
+      
+      .sun-and-time {
+          display: flex;
+          flex-direction: column;
+          margin-top: 0.4em;
+          margin-bottom: 1.2em;
+          gap:0.4em;
+          column-gap: 1em;
+      }
+      
+      
+      .sun {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 100%;
+      }
+      .sunrise-symbol {
+      width: 60px;
+      margin-bottom: 2%;
+      filter: var(--light-filter);
+      }
+      
+      .sunset-symbol {
+      width: 60px;
+      margin-bottom: 3%; 
+      filter: var(--light-filter);
+      }
+      
+      .time {
+        
+          display: flex;
+          justify-content: space-evenly;
+          gap: 106%;
+          margin-left:-2%;
+          font-weight: 500;
+          font-size: 0.9rem;
+          color: var(--light-primary);
+          text-align: center;   
+      }
+      
+      
+      .wind {
+          margin-top: 12%;
+          margin-bottom: 6%; 
+      display: grid;
+      justify-content: center;
+      filter: var(--light-filter);
+      }
+      
+      .wind-symbol {
+          width: 60px;
+      
+          }
+      
+      
+          .wind-speed {
+      
+          margin-top: -0.2rem;    
+          font-weight: 500;
+          font-size: 0.9rem;
+          color: var(--light-primary);
+          text-align: center;
+      
+          
+          }
+      
+      
+          .forecast {
+              margin-top: 4%;
+          margin-bottom: 3%; 
+              display: flex;
+              justify-content: space-evenly;
+              gap: 4rem;
+              
+          } 
+      
+      
+      .weekdays {
+        
+          color: var(--light-primary);
+          text-align: left;
+          line-height: 2rem;
+      }
+      
+      .week-temp {
+          align-items: right;
+          font-weight: 500;
+          font-size: 0.9rem;
+          color: var(--light-primary);
+          text-align: right;
+          line-height: 2rem;
+      }
+      
+      
+      
+      
+      
+      .time {
+          display: flex;
+      }
+
+
+
+}
+
+
+@media (min-width: 540px) {
+
+
+.weather-app {
+ max-width: 540px;
+ height: 902px;
+ border-radius: 10px;
+      }
+
+html,
+body {
+  height: 100vh;
+}
+
+.weather-app {
+    transform: scale(0.9);
+    align-self: center;
     display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    height: calc(var(--vh, 1vh) * 100);
     justify-content: space-between;
-    gap: 180px;
-} */
+    flex-direction: column;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 0;
+    padding-bottom: 0;
+    position: relative;
+    border-radius: 1rem;
+    box-shadow: var(--ligt-box-shadow);
+}
 
 
-
+}

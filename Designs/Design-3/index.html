@@ -12,9 +12,12 @@
     
 </head>
 <body>
+ <main class="weather-app">  
 <container class="weather-box" id="weather-box">
         <p class ="city-name" id="city-name">Stockholm23</p>
-        <img class = "big-weather-symbol" src="./Weather-Icons/Weather-Icons-IOS7-Style-PIXEDEN/SVG/cloud-moon.svg"/>
+        <container class = "big-weather-symbol-container" id="big-weather-symbol-container">
+            <img class = "big-weather-symbol" id="big-weather-symbol" src="./Weather-Icons/Weather-Icons-IOS7-Style-PIXEDEN/SVG/cloud-moon.svg"/>
+        </container>
         <h1 class = "current-temp" id="current-temp">+ 18 °</h1>
         <h4 class ="weather-description" id ="weather-description">Mostly Cloudy</h4>
         <container class="sun-and-time" id="sun-and-time">    
@@ -36,23 +39,25 @@
 
     <container class = "forecast" id="forecast">
         <container class = "weekdays" id="weekdays">
-            <h6 class="firstDay" id="firstDay">Tue</h6>
-            <h6 class="secondDay" id="secondDay">Wed</h6>
-            <h6 class="thirdDay" id="thirdDay">Thu</h6>
-            <h6 class="fourthDay" id="fourthDay">Fri</h6>
-            <h6 class="fifthDay" id="fifthDay">Sat</h6>
+            <!--<h6>Tue</h6>
+            <h6>Wed</h6>
+            <h6>Thu</h6>
+            <h6>Fri</h6>
+            <h6>Sat</h6>-->
         </container>
 
         <container class = "week-temp" id="week-temp">
-            <h6>+18°</h6>
+             <!--<h6>+18°</h6>
             <h6>+21°</h6>
             <h6>+11°</h6>
             <h6>+20°</h6>
-            <h6>+15°</h6>
+            <h6>+15°</h6>-->
         </container>
 
     </container>
 </container>
+</main> 
+
     <script src="./script.js"></script>
 </body>
 </html>
