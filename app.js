@@ -1,9 +1,9 @@
-const myAPIKey = `0885d110db76ae5dbaae0c2672772fdf`
-const API_today = `http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${myAPIKey}`
-const californiaAPI = "http://api.openweathermap.org/data/2.5/weather?q=Crestline,California,USA&units=metric&APPID=0885d110db76ae5dbaae0c2672772fdf"
-const colomboAPI = "http://api.openweathermap.org/data/2.5/weather?q=Colombo,LK%20&units=metric&APPID=0885d110db76ae5dbaae0c2672772fdf"
-const tokyoAPI = "http://api.openweathermap.org/data/2.5/weather?q=Tokyo,JP%20&units=metric&APPID=0885d110db76ae5dbaae0c2672772fdf"
-const API_forecast = `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=${myAPIKey}`
+
+let API_today = `http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=0885d110db76ae5dbaae0c2672772fdf`
+let californiaAPI = "http://api.openweathermap.org/data/2.5/weather?q=Crestline,California,USA&units=metric&APPID=0885d110db76ae5dbaae0c2672772fdf"
+let colomboAPI = "http://api.openweathermap.org/data/2.5/weather?q=Colombo,LK%20&units=metric&APPID=0885d110db76ae5dbaae0c2672772fdf"
+let tokyoAPI = "http://api.openweathermap.org/data/2.5/weather?q=Tokyo,JP%20&units=metric&APPID=0885d110db76ae5dbaae0c2672772fdf"
+let API_forecast = `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=0885d110db76ae5dbaae0c2672772fdf`
 
 
 //DOM Selectors
