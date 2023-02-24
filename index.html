@@ -10,40 +10,21 @@
 
   </head>
   <body>
-    <section class="card"> <!--Add Id here?-->
-        <!--This is for the search bar-->
-        <div class="search">
-        <input type="text" class="search-bar" placeholder="Select City" />
-        <button class="button">
-          Select city
-        </button>
-      </div>
-    </div>
-    <!--Might delete these weather-containers below or not? Ask EGA when meetup as we use these classes in the CSS-->
+    <section class="card"> 
     <div class="weather-container" id="weatherContainer">
-      <div class="weather-forecast" id="weatherForecast">
-        <section class="weekly-weather" id="weekly-weather">
-          <!--<h2>Five day forecast</h2>-->
-          <div id="weather-five-days" class="weather-five-days">
-            <div class="forecast-container"></div>
-          </div>
-        </section>
-        <div id="todays-date">Todays date</div>
-        <div id="city">city</div>
-        
-        <!-- Add Icon here later eventually -->
-        <div id="todaysDate" class="todays-date">Todays date</div>
+        <div id="todaysDate">Todays date</div>
         <div id="city">city</div>
         <div id="temperature" class="temperature-now">temperature</div>
         <div id="condition" class="condition">condition</div>
-        <div id="sunrise" class="sunrise">Sunrise</div>
-        <div id="sunset" class="sunset">Sunset</div>
-        <div id="wind" class="wind">Wind</div>
-        
+        <div id="sunrise">sunrise</div>
+        <div id="sunset">sunset</div>
+        <div id="weather-forecast">
+            <h3>This weeks weather</h3>
+        </div>
       </div>
-    </div>
     </section>
 
     <script src="./script.js"></script>
   </body>
 </html>
+
