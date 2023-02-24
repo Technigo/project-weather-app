@@ -35,7 +35,7 @@ navigator.geolocation.getCurrentPosition((position) => {
     .then((response) => response.json())
     .then((json) => {
       // Filter the forecast data to only show the information for 12:00 PM each day
-
+      const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
             console.log(filteredForecast)
             filteredForecast.forEach((weeklyForecast) => {
                 forecastTemp.innerHTML += `<span>${weeklyForecast.main.temp.toFixed(0)}\u00B0C</span> `
@@ -67,4 +67,5 @@ navigator.geolocation.getCurrentPosition((position) => {
                
                  
              })
+            
 
