@@ -103,7 +103,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?lat=64.1355&lon=-21.8954
     for(let i = 0; i < 5; i++){
         currentDate.setDate(today.getDate()+i);
         let currentWeatherItems = getDates.filter(day => datesAreOnSameDay(day.date, currentDate))
-
+    console.log('current', currentWeatherItems);
 
     //pushing the data in to our new array!
     forecasts.push({
