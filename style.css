@@ -7,12 +7,12 @@
 }
 
 /*
- #F47775
- #F4F7F8
- #164A68
- #A3DEF7
- #2A5510
- #F7E9B9
+#F47775 red text cloudy
+#F4F7F8 light grey background cloudy
+#164A68 blue text rainy
+#A3DEF7 blue background rainy
+#2A5510 green text sunny
+#F7E9B9 yellow background sunny
 */
 
  body {
@@ -31,7 +31,11 @@
  }
 
 .container {
-    
+    width: 100%;
+    font-size: 15px;
+    font-weight: 200;
+    padding-bottom: 40px;
+    color: #F47775;
 }
 
 .weather-description {
@@ -46,9 +50,16 @@
     height: 100px;
 }
 
+h1 {
+    font-size: 20px;
+    font-weight: 400;
+    color: #F47775;
+    padding-top: 20px;
+}
+
 .week-days{
     width: 100%;
-    padding: 35px;
+    padding: 40px;
 }
 
 .week-days .row{
