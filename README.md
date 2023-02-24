@@ -21,8 +21,6 @@ Photo by Gabriela Palai: https://www.pexels.com/photo/person-standing-on-brown-w
 
 ## The problem
 
-# Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
-
 We approached the task by discussing which design we would want to use and then together in a live share we set up the basic html structure including classes and fetched all the necessary data.
 Further things to improve: A dropdown can be added that includes the city names, so that the
 
