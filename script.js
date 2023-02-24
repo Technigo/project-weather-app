@@ -90,119 +90,74 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?lat=64.1355&lon=-21.8954
     return response.json()
 })
 .then((fiveDay) => {
+    //mapping the data, starting point is dates
     const getDates = fiveDay.list.map(day => ({...day, date: new Date(day.dt_txt)}))
-    console.log('dates', getDates);
 
+    //Empty array to be populated with our chosen data
     const forecasts = []
 
     const today = new Date();
     const currentDate = new Date();
 
+    //looping through and using helper function to filter on days (since we have several data points from each day)
     for(let i = 0; i < 5; i++){
         currentDate.setDate(today.getDate()+i);
         let currentWeatherItems = getDates.filter(day => datesAreOnSameDay(day.date, currentDate))
-    console.log('current', currentWeatherItems);
+
+
+    //pushing the data in to our new array!
     forecasts.push({
-    dayDate: currentWeatherItems[0].dt,
-    weatherIcon: currentWeatherItems[0].weather[0].main,
-    max: getMaxTemp(currentWeatherItems),
-    min: getMinTemp(currentWeatherItems),
+    dayDate: currentWeatherItems[0].dt, //the actual date from the data, we use the first time each date happens
+    weatherIcon: currentWeatherItems[0].weather[0].main, //the weather for each day represented by the first instance (we could also search for how many times a certain weather type occurs and use the most common as well, but we use this for now)
+    highTemp: getMaxTemp(currentWeatherItems), //The high temperature
+    lowTemp: getMinTemp(currentWeatherItems), //The low temperature
     })
     }
+    console.log(forecasts) //testing the array
 
-    console.log('new loop', forecasts)
-
+    //Using our new array! 
+    //Format the dayDate from the new array to a string dayName, to be populated into HTML
     forecasts.forEach((item) => {
         const date = new Date(item.dayDate * 1000);
         let dayName =  date.toLocaleDateString("en-US", {weekday: "short"});
         
-            // Looping through the array and deciding on the icon depending on weather forecast
-            let mainWeather = item.weatherIcon
-            if (mainWeather === "Snow") {
-                weatherImg = 'icons8-snow-64.png'
-            } else if (mainWeather === "Rain") {
-                weatherImg = 'icons8-rain-64.png'
-            } else if (mainWeather === "Thunderstorm") {
-                weatherImg = 'icons8-thunder-64.png'
-            } else if (mainWeather === "Drizzle") {
-                weatherImg = 'icons8-wet-64.png'
-            } else if (mainWeather === "Mist" || mainWeather === "Fog" || mainWeather === "Ash") {
-                weatherImg = 'icons8-mist-64.png'
-            } else if (mainWeather === "Clouds") {
-                weatherImg = 'icons8-cloud-64.png'
-            } else if (mainWeather === "Clear") {
-                weatherImg = 'icons8-solar-64.png'
-            }
+        // Looping through the array and deciding on the icon depending on weather forecast
+        let mainWeather = item.weatherIcon
+        if (mainWeather === "Snow") {
+            weatherImg = 'icons8-snow-64.png'
+        } else if (mainWeather === "Rain") {
+            weatherImg = 'icons8-rain-64.png'
+        } else if (mainWeather === "Thunderstorm") {
+            weatherImg = 'icons8-thunder-64.png'
+        } else if (mainWeather === "Drizzle") {
+            weatherImg = 'icons8-wet-64.png'
+        } else if (mainWeather === "Mist" || mainWeather === "Fog" || mainWeather === "Ash") {
+            weatherImg = 'icons8-mist-64.png'
+        } else if (mainWeather === "Clouds") {
+             weatherImg = 'icons8-cloud-64.png'
+        } else if (mainWeather === "Clear") {
+            weatherImg = 'icons8-solar-64.png'
+        }
 
-            weekDay.innerHTML += `
-            <p>${dayName}</p>`
-            weatherIcon.innerHTML += `
-            <img src=${weatherImg} alt="icon of the weather"/>`
-            maxTemp.innerHTML += `
-            <p>${item.max} °C / </p>`
-            minTemp.innerHTML += `
-            <p>&nbsp;${item.min} °C</p>`
+        //Populating the HTML with the data
+        weekDay.innerHTML += `
+        <p>${dayName}</p>`//using a <p> tag for accessibility here
+        weatherIcon.innerHTML += `
+        <img src=${weatherImg} alt="icon of the weather"/>`
+        maxTemp.innerHTML += `
+        <p>${item.highTemp} °C / </p>`
+        minTemp.innerHTML += `
+        <p>&nbsp;${item.lowTemp} °C</p>`
     })
 })
 .catch(error => console.log(error))
-/*
-    //two filters, to be able to get a low and high temperature
-    const filteredForecastNoon = fiveDay.list.filter(item => item.dt_txt.includes('12:00:00'));
-    const filteredForecastMidnight = fiveDay.list.filter(item => item.dt_txt.includes('00:00:00'));
-    //console.log('noon', filteredForecastNoon);
 
-//Getting the variables from our filtered list
-let minTemp = filteredForecastNoon.forEach((item) => {item.main.temp_min.toFixed(1)}) //Minimum temperature
-let maxTemp = filteredForecastNoon.forEach((item) => {item.main.temp_max.toFixed(1)}) //Maximum temperature
-// console.log(filteredForecastMidnight);
-console.log(minTemp);
-console.log(maxTemp);
-
-//Getting the day name (noon)
-filteredForecastNoon.forEach((item) => {
-    const date = new Date(item.dt * 1000);
-let dayName =  date.toLocaleDateString("en-US", {weekday: "short"});
-
-    // Looping through the array and deciding on the icon depending on weather forecast
-    let mainWeather = item.weather[0].main
-    if (mainWeather === "Snow") {
-        weatherImg = 'icons8-snow-64.png'
-    } else if (mainWeather === "Rain") {
-        weatherImg = 'icons8-rain-64.png'
-    } else if (mainWeather === "Thunderstorm") {
-        weatherImg = 'icons8-thunder-64.png'
-    } else if (mainWeather === "Drizzle") {
-        weatherImg = 'icons8-wet-64.png'
-    } else if (mainWeather === "Mist" || mainWeather === "Fog" || mainWeather === "Ash") {
-        weatherImg = 'icons8-mist-64.png'
-    } else if (mainWeather === "Clouds") {
-        weatherImg = 'icons8-cloud-64.png'
-    } else if (mainWeather === "Clear") {
-        weatherImg = 'icons8-solar-64.png'
-    }
-
-weekDay.innerHTML += `
-<p>${dayName}</p>`
-weatherIcon.innerHTML += `
-<img src=${weatherImg} alt="icon of the weather"/>`
-maxTemp.innerHTML += `
-<p>${maxTemp} °C / </p>`
-minTemp.innerHTML += `
-<p>&nbsp;${minTemp} °C</p>`
-})
-
-//filteredForecastMidnight.forEach((item) => {
-//minTemp.innerHTML += `
-//<p>&nbsp;${minTemp} °C</p>
-//`
-})
-*/
-
+//Function to get rounded high temperature for the entire day
 const getMaxTemp = (data) => {
     const temps = data.map(item => item['main']['temp'])
     return Math.round(Math.max(...temps))
 }
-
+//Function to get rounded low temperature for the entire day
 const getMinTemp = (data) => {
     const temps = data.map(item => item['main']['temp'])
     return Math.round(Math.min(...temps))
