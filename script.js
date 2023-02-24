@@ -23,8 +23,13 @@ navigator.geolocation.getCurrentPosition((position) => {
         <h1> ${json.name} </h1>
         <h2> ${(Math.round(json.main.temp))}°C</h2>
         <h3> ${json.weather[0].main}</h3>
+<<<<<<< HEAD
         <h4> 🌅 sunrise ${sunrise.toLocaleTimeString([], { hour: 'numeric', minute: 'numeric', hour12: true })}</h4>
         <h4> 🌇 sunset ${sunset.toLocaleTimeString([], { hour: 'numeric', minute: 'numeric', hour12: true })}</h4>
+=======
+        <h4> <img src="./images/sunrise.png" alt="Sunrise"> ${sunrise.toLocaleTimeString([], { hour: 'numeric', minute: 'numeric', hour12: true })}</h4>
+        <h4> <img src="./images/sunset.png" alt="Sunset"> ${sunset.toLocaleTimeString([], { hour: 'numeric', minute: 'numeric', hour12: true })}</h4>
+>>>>>>> play-with-styling
       `;
     });
 
