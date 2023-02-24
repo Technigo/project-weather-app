@@ -14,19 +14,19 @@ body {
   flex-direction: column;
   justify-content: center;
   color: white;
-  min-height: 45vh;
+  min-height: 50vh;
   border-radius: 0% 0% 30% 30%;
 }
 
 .hamburger {
   align-self: flex-start;
-  margin: 0px 0px 15px 15px;
+  margin: 1.25rem 0 1rem 1.25rem;
 }
 
 .hamburger .line {
-  width: 40px;
-  height: 3px;
-  margin: 8px auto;
+  width: 1.5rem;
+  height: 0.1rem;
+  margin: 0.3rem auto;
   background-color: white;
   border-radius: 5px;
 }
@@ -35,16 +35,20 @@ body {
   width: 9.5rem;
   position: absolute;
   right: 5%;
-  top: 0%;
+  top: 4%;
 }
 
 .main {
-  margin-left: 25px;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+    align-content: center;
 }
 
 .sunrise-sunset {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 h1 {
@@ -70,11 +74,11 @@ sup {
 }
 
 .button {
-  width: 6rem;
-  height: 6rem;
+  width: 5rem;
+  height: 5rem;
   border-radius: 50%;
   position: absolute;
-  top: 38%;
+  top: 43%;
   right: 11%;
   background-color: #5e79fd;
   border: none;
