@@ -1,4 +1,40 @@
-const container = document.getElementById('weatherMain')
+const container = document.getElementById('weatherMain');
+
+      // Conditional to show different background colors depending on temperature
+      const tempBackground = (tempFormatted, container) => {
+        if (tempFormatted >= 25) {
+                container.style.backgroundColor = "#AA0000";
+            } else if (tempFormatted >= 15 && tempFormatted < 25) {
+                container.style.backgroundColor = "#fb8500";
+            } else if (tempFormatted >= 5 && tempFormatted < 15) {
+                container.style.backgroundColor = "#ffb703";
+            } else if (tempFormatted >= -5 && tempFormatted < 5) {
+                container.style.backgroundColor = "#dad7cd";
+            } else if (tempFormatted >= -15 && tempFormatted < -4) {
+                container.style.backgroundColor = "#bde0fe";
+            } else if (tempFormatted < -15) {
+                container.style.backgroundColor = "#3a86ff";
+            }
+        }
+    
+      // Conditional to show different icons depending on weather
+    const weatherIcon = (json, container) => {
+        if (json.weather[0].description.includes('Clear')) {
+            container.innerHTML += `<p>CLEAR SKY ICON</p>`;
+            } else if (json.weather[0].main.includes('Rain')) {
+            container.innerHTML += `<p>RAIN ICON</p>`;
+            } else if (json.weather[0].main.includes('Drizzle')) {
+            container.innerHTML += `<p>DRIZZLE ICON</p>`;
+            } else if (json.weather[0].main.includes('Clouds')) {
+            container.innerHTML += `<p>CLOUDS ICON</p>`;
+            } else if (json.weather[0].main.includes('Thunderstorm')) {
+            container.innerHTML += `<p>THUNDERSTORM ICON</p>`;
+            } else if (json.weather[0].main.includes('Snow')) {
+            container.innerHTML += `<p>SNOW ICON</p>`;
+            } else {
+            container.innerHTML += `<p>ATMOSPHERE ICON</p>`;
+            }
+        }
 
 //SYDNEY
 fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&APPID=156328eec9b7853e6ecd35c030202c4c') // Fetches current weather for Sydney
@@ -12,6 +48,8 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
             container.innerHTML = `<h1>${tempFormatted}°C</h1>`
             container.innerHTML += `<h2>${json.name}</h2>` // Name of the city showing
             container.innerHTML += `<p>Current weather is ${json.weather[0].description}</p>` // Current weather description
+            tempBackground(tempFormatted, container);
+            weatherIcon(json, container);
 
         const sunrise = json.sys.sunrise; // Sunrise (in local time Sydney, Australia)
         const sunset = json.sys.sunset; // Sunrise (in local time Sydney, Australia)
@@ -58,7 +96,9 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
         container.innerHTML += `<h1>${tempFormatted}°C</h1>`
         container.innerHTML += `<h2>${json.name}</h2>`
         container.innerHTML += `<p>Current weather is ${json.weather[0].description}</p>`
-        
+        tempBackground(tempFormatted, container);
+        weatherIcon(json, container);
+
         const sunrise = json.sys.sunrise;
         const sunset = json.sys.sunset;
             let sunsetTime = new Date(sunset*1000).toLocaleTimeString('sv-SE', {hour: '2-digit', minute: '2-digit',timeZone: 'Asia/Singapore'});
@@ -103,6 +143,8 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
         container.innerHTML += `<h1>${tempFormatted}°C</h1>`
         container.innerHTML += `<h2>${json.name}</h2>`
         container.innerHTML += `<p>Current weather is ${json.weather[0].description}</p>`
+        tempBackground(tempFormatted, container);
+        weatherIcon(json, container);
 
         const sunrise = json.sys.sunrise;
         const sunset = json.sys.sunset;
@@ -148,6 +190,8 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
         container.innerHTML += `<h1>${tempFormatted}°C</h1>`
         container.innerHTML += `<h2>${json.name}</h2>`
         container.innerHTML += `<p>Current weather is ${json.weather[0].description}</p>`
+        tempBackground(tempFormatted, container);
+        weatherIcon(json, container);
 
         const sunrise = json.sys.sunrise;
         const sunset = json.sys.sunset;
@@ -178,9 +222,9 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
     })
 
 
-//MIAMI
+//VANCOUVER
 .then (() => {
-    return fetch('https://api.openweathermap.org/data/2.5/weather?q=Miami,US&units=metric&APPID=156328eec9b7853e6ecd35c030202c4c')//Current weather in Miami
+    return fetch('https://api.openweathermap.org/data/2.5/weather?q=Vancouver,CA&units=metric&APPID=156328eec9b7853e6ecd35c030202c4c')//Current weather in Miami
 })
 
 .then((response) => {
@@ -188,20 +232,22 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
     return response.json()
 })
 
-// Update container with weather data for Miami
+// Update container with weather data for Vancouver
 .then((json) => { 
     const tempFormatted = json.main.temp.toFixed(0) //Change to (0) for no decimals
     container.innerHTML += `<h1>${tempFormatted}°C</h1>`
     container.innerHTML += `<h2>${json.name}</h2>`
     container.innerHTML += `<p>Current weather is ${json.weather[0].description}</p>`
+    tempBackground(tempFormatted, container);
+    weatherIcon(json, container);
 
     const sunrise = json.sys.sunrise;
     const sunset = json.sys.sunset;
-        let sunsetTime = new Date(sunset*1000).toLocaleTimeString('sv-SE', {hour: '2-digit', minute: '2-digit',timeZone: 'America/New_York'});
-        let sunriseTime = new Date(sunrise*1000).toLocaleTimeString('sv-SE', {hour: '2-digit', minute: '2-digit', timeZone: 'America/New_York'});
+        let sunsetTime = new Date(sunset*1000).toLocaleTimeString('sv-SE', {hour: '2-digit', minute: '2-digit',timeZone: 'America/Vancouver'});
+        let sunriseTime = new Date(sunrise*1000).toLocaleTimeString('sv-SE', {hour: '2-digit', minute: '2-digit', timeZone: 'America/Vancouver'});
             container.innerHTML += `<p>Sunrise ${sunriseTime} / Sunset ${sunsetTime}</p>` 
 
-        return fetch('https://api.openweathermap.org/data/2.5/forecast?q=Miami,US&units=metric&appid=156328eec9b7853e6ecd35c030202c4c') // Forecast for Miami for the next 5 days
+        return fetch('https://api.openweathermap.org/data/2.5/forecast?q=Vancouver,CA&units=metric&appid=156328eec9b7853e6ecd35c030202c4c') // Forecast for Miami for the next 5 days
     })
 
     .then((response) => {
@@ -212,7 +258,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
     .then((json) => {
         const filteredForecast = json.list.filter((item) => item.dt_txt.includes('12:00'))
         console.log(filteredForecast)
-        container.innerHTML += '<h2>5-Day Forecast for Miami</h2>';
+        container.innerHTML += '<h2>5-Day Forecast for Vancouver</h2>';
 
         filteredForecast.forEach((dailyForecast) => {
             const forecastDay = new Date(dailyForecast.dt*1000);
@@ -224,9 +270,9 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
     })
 
 
-// LIMA
+// MINNEAPOLIS
     .then (() => {
-        return fetch('https://api.openweathermap.org/data/2.5/weather?q=Lima,Peru&units=metric&APPID=156328eec9b7853e6ecd35c030202c4c') //Current weather in Lima
+        return fetch('https://api.openweathermap.org/data/2.5/weather?q=Minneapolis,US&units=metric&APPID=156328eec9b7853e6ecd35c030202c4c') //Current weather in Lima
     })
 
     .then((response) => {
@@ -241,14 +287,16 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
         container.innerHTML += `<h1>${tempFormatted}°C</h1>`
         container.innerHTML += `<h2>${json.name}</h2>`
         container.innerHTML += `<p>Current weather is ${json.weather[0].description}</p>`
+        tempBackground(tempFormatted, container);
+        weatherIcon(json, container);
 
         const sunrise = json.sys.sunrise;
         const sunset = json.sys.sunset;
-            let sunsetTime = new Date(sunset*1000).toLocaleTimeString('sv-SE', {hour: '2-digit', minute: '2-digit',timeZone: 'America/Lima'});
-            let sunriseTime = new Date(sunrise*1000).toLocaleTimeString('sv-SE', {hour: '2-digit', minute: '2-digit', timeZone: 'America/Lima'});
+            let sunsetTime = new Date(sunset*1000).toLocaleTimeString('sv-SE', {hour: '2-digit', minute: '2-digit',timeZone: 'America/Chicago'});
+            let sunriseTime = new Date(sunrise*1000).toLocaleTimeString('sv-SE', {hour: '2-digit', minute: '2-digit', timeZone: 'America/Chicago'});
                 container.innerHTML += `<p>Sunrise ${sunriseTime} / Sunset ${sunsetTime}</p>` 
 
-        return fetch('https://api.openweathermap.org/data/2.5/forecast?q=Lima,Peru&units=metric&appid=156328eec9b7853e6ecd35c030202c4c')// Forecast for Lima for the next 5 days
+        return fetch('https://api.openweathermap.org/data/2.5/forecast?q=Minneapolis,US&units=metric&appid=156328eec9b7853e6ecd35c030202c4c')// Forecast for Lima for the next 5 days
     })
 
     .then((response) => {
@@ -259,7 +307,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
     .then((json) => {
         const filteredForecast = json.list.filter((item) => item.dt_txt.includes('12:00'))
         console.log(filteredForecast)
-        container.innerHTML += '<h2>5-Day Forecast for Lima</h2>';
+        container.innerHTML += '<h2>5-Day Forecast for Minneapolis</h2>';
 
         filteredForecast.forEach((dailyForecast) => {
             const forecastDay = new Date(dailyForecast.dt*1000);
@@ -268,58 +316,4 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
             const maxTempFormatted = dailyForecast.main.temp_max.toFixed(0);
                 container.innerHTML += `<p>${day} is ${dailyForecast.weather[0].description}, min ${minTempFormatted}°C / max ${maxTempFormatted}°C</p>`
         });
-    })
-
-
- // const backgroundChanger = (json) => {
-        //     if (json.main.temp >= 25) {
-        //         document.body.style.backgroundColor = "#AA0000";
-        
-        //     } if else (json.main.temp >= 15 && json.main.temp < 25) {
-        //         document.body.style.backgroundColor = "#fb8500";
-        
-        //     } if else (json.main.temp >= 05 && json.main.temp < 15) {
-        //         document.body.style.backgroundColor = "#ffb703";
-        
-        //     } if else (json.main.temp >= -05 && json.main.temp < 5) {
-        //         document.body.style.backgroundColor = "#dad7cd";
-        
-        //     } if else (json.main.temp >= -15 && json.main.temp < -4) {
-        //         document.body.style.backgroundColor = "#bde0fe";
-
-        //     } if else (json.main.temp < -15) {
-        //         document.body.style.backgroundColor = "#3a86ff";
-        //     }
-        // }
-
-
-    // const weatherIcons = (json) => {
-    //     if (json.list[0].weather[0].main == 'Clouds') {
-    //         container.innerHTML += `<p>Cloud icon</p>     
-    //         `
-
-    //     } else if (json.list[0].weather[0].main == 'Rain') {
-    //         container.innerHTML += `<p>Cloud icon</p>     
-    //         `
-
-    //     } else if (json.list[0].weather[0].main == 'Sun') {
-    //         container.innerHTML += `<p>Cloud icon</p>     
-    //         `
-
-    //     } else if (json.list[0].weather[0].main == 'Snow') {
-    //         container.innerHTML += `<p>Cloud icon</p>     
-    //         `
-
-    //     } else if (json.list[0].weather[0].main == 'clear') {
-    //         container.innerHTML += `<p>Cloud icon</p>     
-    //         `
-
-    //     } else if (json.list[0].weather[0].main == 'broken') {
-    //         container.innerHTML += `<p>Cloud icon</p>     
-    //         `
-
-    //     } else if (json.list[0].weather[0].main == 'Rain') {
-    //         container.innerHTML += `<p>Cloud icon</p>     
-    //         `
-    //     }
-    // }     
+    });
