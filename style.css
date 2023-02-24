@@ -50,3 +50,19 @@ img {
     text-align: end;
 }
 
+.forecast-wrapper{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
+    /* grid-template-rows: repeat(5, 100px); */
+    font-family: 'Montserrat';
+
+}
+
+.temp-of-day{
+    text-align:center;
+
+}
+
+.day-of-week{
+    text-align:start;
+}
