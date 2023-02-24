@@ -14,8 +14,17 @@ body{
     font-family: 'Montserrat', sans-serif;
 }
 
-.weatherWindow{
+.vidcontainer {
+    position: relative;
+    align-items: center;
+  }
 
+  .weathervideo{
+    width: 100%;
+    height: auto; 
+  }
+
+.weatherWindow{
     background-color: #F4F7F8;
     width: 291px;
     height: 728px;

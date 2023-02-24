@@ -7,14 +7,15 @@ const cloudReport = document.getElementById("cloudReport")
 const sunrise = document.getElementById("sunrise")
 const sunset = document.getElementById("sunset")
 const weatherImage = document.getElementById("weatherImageBox")
-const img = document.getElementById('weather-img')
+const img = document.getElementById("weather-img")
+const vid = document.getElementById("weathervideo")
 const description = document.getElementById("middleSection")
 const day1 = document.getElementById("day+1")
 const day2 = document.getElementById("day+2")
 const day3 = document.getElementById("day+3")
 const day4 = document.getElementById("day+4")
 const day5 = document.getElementById("day+5")
-const colorTheme = document.querySelector(':root')
+const colorTheme = document.querySelector(":root")
 const dropmenu = document.getElementById("drop-menu")
 
 // change so that API-key is inside a variable instead straight into the functions
@@ -66,30 +67,27 @@ const changeWeatherDescription = (weatherDescription, city) => {
 
         description.innerHTML = `Light a fire and get cozy, ${city} is looking gray today`
         colorTheme.style.setProperty('--basecolor', getComputedStyle(colorTheme).getPropertyValue('--pink'))
-        // colorTheme.setProperty('--basecolor', colorTheme.getProperty('pink'))
         img.setAttribute('src', './Designs/Design-2/icons/noun_Cloud_1188486.svg')
-        weatherWindow.style.backgroundColor = '#F5EAEA';
+        vid.setAttribute('src', './Designs/Design-2/icons/cloudvid.mp4')
 
     } else if (weatherDescription.includes("clear")) {
         description.innerHTML = `Get your sunnies on, ${city} is looking mighty fine today`
         colorTheme.style.setProperty('--basecolor', getComputedStyle(colorTheme).getPropertyValue('--yellow'))
-        //    colorTheme.style.setProperty('--basecolor', 'yellow')
         img.setAttribute('src', './Designs/Design-2/icons/sun.png')
-        weatherWindow.style.backgroundColor = '#39B5E0';
+        vid.setAttribute('src', './Designs/Design-2/icons/clearvid.mp4')
+       
 
     } else if (weatherDescription.includes("rain")) {
         description.innerHTML = `Don't forget your Umbrella, it's wet in ${city} today`
         colorTheme.style.setProperty('--basecolor', getComputedStyle(colorTheme).getPropertyValue('--grayish'))
-        //    colorTheme.style.setProperty('--basecolor', 'grayish')
         img.setAttribute('src', './Designs/Design-2/icons/droplet.png')
-        weatherWindow.style.backgroundColor = '#E8D2A6';
-
+        vid.setAttribute('src', './Designs/Design-2/icons/rainvid.mp4')
+       
     } else if (weatherDescription.includes("snow")) {
         description.innerHTML = `Wrap up warm, ${city} is looking very white today`
         colorTheme.style.setProperty('--basecolor', getComputedStyle(colorTheme).getPropertyValue('--lightblue'))
-        // colorTheme.style.setProperty('--basecolor', 'lightblue')
         img.setAttribute('src', './Designs/Design-2/icons/snowflake.png')
-        weatherWindow.style.backgroundColor = '#406882';
+        vid.setAttribute('src', './Designs/Design-2/icons/snowvid.mp4')
 
     }
 
@@ -141,6 +139,7 @@ const fetchWeekdaysAPI = (City,Country) => {
 
 
 
+
 const moreCityWeather = () =>{
 
     const value = dropmenu.options[dropmenu.selectedIndex].value
@@ -160,5 +159,7 @@ const start = () => {
 
 start()
 dropmenu.addEventListener("change",moreCityWeather)
+
+
 
 
