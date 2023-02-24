@@ -358,6 +358,7 @@ filter: var(--light-filter);
 
 .weather-app {
  max-width: 540px;
+ min-height: 902px;
  height: 902px;
  border-radius: 10px;
       }
