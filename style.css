@@ -1,9 +1,43 @@
 /* -- import font later --  */
+/* HEX-color codes for use later:
+//Clouds
+#f46a67 - dark red
+#f1b2b2 - light pink
+//Rain
+#85aab6 - grey/light blue
+#0f4767 - dark blue
+#82cdee - light blue
+//Sunny
+#077920 - green
+#f1fe7d - yellow 
+*/
+
 :root {
-background-color: black;
+    --primary: #8d5ff0;
+    --secondary: #6b96da;
 }
 
+* {
+    margin: 1px;
+    padding: 1px;
+    box-sizing: border-box;
+  }
+  
+h1 {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h4 {
+    margin-bottom: 20px;
+}
+
+
+
 body {
+    font-family: "Montserrat", "sans-serif";
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,46 +48,88 @@ body {
     /* background-image: url('//https://unsplash.com/photos/bR_-gllg7Bs'); - would like to have a nicer URL than the long one above - don't know how to fix it right now*/
 }
 
-.card {
-    background: #d1cdd0d0;
-    color: rgb(41, 39, 39);
-    padding: 2em;
-    border-radius: 30px;
-    width: 100%;
-    max-width: 420px;
-    margin: 1em;
+    .card {
+        background: #d1cdd0d0;
+        color: rgb(41, 39, 39);
+        border-radius: 30px;
+        width: 100%;
+        max-width: 420px;
+    }
+
+        .search {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .weather-container {
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        }
+
+            .todays-weather {
+                width: 60%;
+                padding: 40px 20 px;
+            }
+
+            .day {
+                margin-top: 20px;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+
+                .forecast-day {
+                    margin: 5px;
+                    display: flex;
+                    
+                }
+
+                .forecast-temp {
+                    margin: 5px;
+                    display: flex;
+                    
+                }
+
+
+
+
+            .todays-date {
+                display: flex;
+                flex-direction: column;
+                font-weight: lighter;
+                font-family: "Montserrat", "sans-serif";
+                font-size: small;
+                margin: 20px;
+            }
+
+            .city {
+                display: flex;
+                margin-top: 20px;
+            }
+
+            .temperature-now {
+                display: flex;
+            }
+
+            .search-bar {
+                height: 30px;
+                width: 200px;
+                border-radius: 10px;
+            }
+
+            .button {
+                font-weight: bolder;
+                padding: 10px;
+                border-radius: 10px;
+            }
+
+
+/* Media queries  */
+/* --Tablet-- */
+@media (min-width: 667px) and (max-width: 1024px) {
 }
 
-.search {
-display: flex;
-align-items: center;
-justify-content: center;
-}
-
-.top-container {
-
-}
-
-.weather-container {
-    /* display: flex;
-    flex-direction: column;
-    border: solid black 2px; */
-}
-
-.weather-forecast {
-
-}
-
-.todays-date {
-    /* display: flex;
-    flex-direction: column;
-    border: solid black 2px; */
-}
-
-.city {
-
-}
-
-.temperature-now {
-
+/* --Desktop-- */
+@media (min-width: 1025px) {
 }

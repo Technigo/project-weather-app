@@ -1,6 +1,4 @@
-//Removed weatherContainer, didnt need it (EGA)
-//Removed topContainer, didnt need it (EGA)
-//Removed weatherForecast, didnt need it, the thing belov is what we need to show on app (EGA)
+const weatherForecast = document.getElementById('weather-forecast')
 const todaysDate = document.getElementById('todaysDate')
 const city = document.getElementById('city')
 const temperature = document.getElementById('temperature')
@@ -8,33 +6,82 @@ const condition = document.getElementById('condition')
 const sunrise = document.getElementById('sunrise')
 const sunset = document.getElementById('sunset')
 
+const currentDate = new Date();
+todaysDate.innerHTML = currentDate.toLocaleDateString('en-US', {
+  weekday: 'long',
+  month: 'long',
+  day: 'numeric',
+});
 
-// This is the API key for OpenWeatherMap.org - Stockholm (YK)
-// From Live-session: STEP 1/fetch "I have a present for you to fetch" (YK)
-//.then = STEP 2 "I'm giving you the present but you don't know what's inside yet" (YK)
-//.then = STEP 3 "I'm giving you the present so now you can take a look what's inside it" (YK)
 fetch('https://api.openweathermap.org/data/2.5/weather?q=Piteå,Sweden&units=metric&APPID=bcc357d81ce23673e3a8e92322d840f2')
-    //.then = Step 2 "I'm giving you the present but you don't know what's inside yet" (YK)
+    
     .then((response) => {
         return response.json()
     })
-    //.then = Step 3 "I'm giving you the present so now you can take a look what's inside it" (YK)
-    .then((json) => {
-        city.innerHTML = `<h1>${json.name}</h1>`
-        console.log(json) //Works this far, object loading on to console log. (EGA)
-
-        
-        temperature.innerHTML = `<h2>The temperature is ${Math.round(json.main.temp * 10) / 10}°C</h2>`;
-        condition.innerHTML = `<h2>with ${json.weather[0].description}</h2>`;
-        
-        sunrise.textContent=`Sunrise: ${new Date(data.sys.sunrise * 1000).toLocaleTimeString([], {
-            hour: "2-digit",
-            minute: "2-digit",
-          })}`
-
-        .catch((error) => {
-            console.log(error);
-          });
-
-    })
     
+    .then((json) => {
+        city.innerHTML = `<h2>${json.name}</h2>`
+        temperature.innerHTML = `<hh3>${Math.round(json.main.temp * 10) / 10}°C</h3>`;
+        condition.innerHTML = `<h4>with ${json.weather[0].description}</h4>`;
+
+    const setSunrise = json.sys.sunrise;
+    const sunriseTime = new Date(setSunrise * 1000);
+    const sunriseHour = sunriseTime.toLocaleString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12:false,
+})
+
+        sunrise.innerHTML =`<p>The sun rises at ${sunriseHour}</p>`
+
+    const setSunset = json.sys.sunset;
+    const sunsetTime = new Date(setSunset * 1000);
+    const sunsetHour = sunsetTime.toLocaleString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12:false,
+})
+
+        sunset.innerHTML =`<p>and it sets at ${sunsetHour}</p>`
+    })
+     
+    
+// 5-day Forecast:
+
+// Creates forecast for each day
+const createFiveDayForecast = (filteredForecast) => {
+    filteredForecast.forEach((day) => {
+      const days = new Date(day.dt * 1000).toLocaleDateString("en-US", {
+        weekday: "long",
+      });
+      const forecastTemp = Math.round(day.main.temp * 10) / 10;
+      createFiveDaysInnerHTML(days, forecastTemp);
+    });
+  };
+  
+  // Creates innerHTML for each day in the forecast.
+  const createFiveDaysInnerHTML = (days, forecastTemp) => {
+    weatherForecast.innerHTML += `
+      <section class="day"> 
+        <span class="forecast-day">${days}</span> 
+        <span class="forecast-temp">${forecastTemp} °C </span> 
+      </section>
+    `;
+  };
+  
+  // Fetches the forecast data
+  fetch(
+    "https://api.openweathermap.org/data/2.5/forecast?q=Piteå,Sweden&units=metric&APPID=bcc357d81ce23673e3a8e92322d840f2"
+  )
+    .then((response) => {
+      return response.json();
+    })
+    .then((json) => {
+      const fiveDayForecast = json.list.filter((day) =>
+        day.dt_txt.includes("12:00")
+      );
+      createFiveDayForecast(fiveDayForecast);
+      console.log(json);
+    });
+
+ 
