@@ -18,7 +18,6 @@ fetch(urlWeather)
     return response.json();
   })
   .then((wData) => {
-    //console.log(wData.weather[0].description);
     const sunrise = new Date(wData.sys.sunrise * 1000).toLocaleTimeString([], {
       hour: "2-digit",
       minute: "2-digit",
@@ -40,8 +39,7 @@ fetch(urlWeather)
     //-------------------------------//
 
     // Create conditional statement that inserts symbol and weather description depending on the weather (ex: "Clouds")
-    let todaysWeatherMain = wData.weather[0].main; //This is what in the API is called "Clouds", "Snow" etc
-    //console.log("Today's main weather test", todaysWeatherMain);
+    let todaysWeatherMain = wData.weather[0].main; //This is what in the API is called "Clouds", "Snow" etc 
 
     if (todaysWeatherMain === "Clear") {
       textForecast.innerHTML = `
