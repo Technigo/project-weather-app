@@ -63,25 +63,25 @@ const filterWeather = () => {
     if (json.list[0].weather[0].main == 'Clouds' || json.list[0].weather[0].main == 'Mist') {
       document.body.style.backgroundColor = "#F4F7F8";
       document.body.style.color = "#F47775";
-      aboutWeather.innerHTML += `<img class="weather-img" src="../Designs/Design-2/icons/cloud.svg" alt="cloud icon">`
+      aboutWeather.innerHTML += `<img class="weather-img" src="../design/icons/cloud.svg" alt="cloud icon">`
       aboutWeather.innerHTML += `<h2>Light a fire and get cosy. ${json.city.name} is looking grey today.</h2>`
 
     } else if (json.list[0].weather[0].main == 'Rain' || json.list[0].weather[0].main == 'Thunderstorm') {
       document.body.style.backgroundColor = "#A3DEF7";
       document.body.style.color = "#164A68";
-      aboutWeather.innerHTML += `<img class="weather-img" src="../Designs/Design-2/icons/umbrella.svg" alt="umbrella icon">`
+      aboutWeather.innerHTML += `<img class="weather-img" src="../design/icons/umbrella.svg" alt="umbrella icon">`
       aboutWeather.innerHTML += `<h2>Don't forget your umbrella. It's wet in ${json.city.name} today.</h2>`
 
     } else if (json.list[0].weather[0].main == 'Snow') {
       document.body.style.backgroundColor = "#A3DEF7";
       document.body.style.color = "#164A68";
-      aboutWeather.innerHTML += `<img class="weather-img" src="../Designs/Design-2/icons/hat." alt="hat icon">`
+      aboutWeather.innerHTML += `<img class="weather-img" src="../design/icons/hat." alt="hat icon">`
       aboutWeather.innerHTML += `<h2>Put your hat on. It's snowing in ${json.city.name} today.</h2>`
 
     } else {
       document.body.style.backgroundColor = "#F7E9B9";
       document.body.style.color = "#2A5510";
-      aboutWeather.innerHTML += `<img class="weather-img" src="../Designs/Design-2/icons/sunglasses.svg" alt="sun-glasses icon">`
+      aboutWeather.innerHTML += `<img class="weather-img" src="../design/icons/sunglasses.svg" alt="sun-glasses icon">`
       aboutWeather.innerHTML += `<h2>Get your sunnies on. ${json.city.name} is looking rather great today.</h2>`
     }
   })
@@ -98,7 +98,7 @@ const weatherFirstCity = () => {
   .then ((data)=> {
   console.log(data)
   firstCityWeather.innerHTML += `
-  <img class="city-icon" src="../Designs/Design-2/icons/eiffel-tower.png" alt="eiffel-tower icon"><br>
+  <img class="city-icon" src="../design/icons/eiffel-tower.png" alt="eiffel-tower icon"><br>
   <p>${(Math.round(data.main.temp))}º | ${data.name}</p>`
   })
 }
@@ -113,7 +113,7 @@ const weatherSecondCity = () => {
   .then ((data)=> {
   console.log(data)
   secondCityWeather.innerHTML += `
-  <img class="city-icon" src="../Designs/Design-2/icons/sagrada-familia.png" alt="sagrada-familia icon"><br>
+  <img class="city-icon" src="../design/icons/sagrada-familia.png" alt="sagrada-familia icon"><br>
   <p>${(Math.round(data.main.temp))}º | ${data.name}</p>
   `
   })
