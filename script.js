@@ -38,24 +38,66 @@ fetch(Url_Weather)
 
           if (todaysMainWeather === "Clear") {
             todaysPrompt.innerHTML = `<div class= "Clear">
-                      <img class= "sunny" src="icons/clear.svg"/>
+                      <img class= "sunny" src=""/>
                       <h1> Get your sunnies on. ${json.name} is looking rather great today.</h1>
                       </div>`;
             document.body.style.backgroundColor = "#F7E9B9";
             document.body.style.color = "#2A5510";
           } else if (todaysMainWeather === "Rain") {
             todaysPrompt.innerHTML = `<div class= "rain">
-                      <img class= "rain" src="icons/rain.svg"/>
+                      <img class= "rain" src=""/>
                       <h1> Get your umbrella. ${json.name} is crying today.</h1>
                       </div>`;
             document.body.style.backgroundColor = "#A3DEF7";
             document.body.style.color = "#164A68";
           } else if (todaysMainWeather === "Clouds") {
             todaysPrompt.innerHTML = `<div class= "clouds">
-                      <img class= "rain" src="icons/clouds.svg"/>
+                      <img class= "clouds" src=""/> 
                       <h1> Oh no, ${json.name} is looking rather grey today.</h1>
                       </div>`;
             document.body.style.backgroundColor = "#F4F7F8";
             document.body.style.color = "#F47775";
           }
     });
+    //insert all the icons for the images in the inner.HTML 
+// Forecast section
+const weekday = (data) => {
+  const currentDate = new Date(data * 1000); // Date object are always measured in millisecond so need to multiply * 1000.
+  return currentDate.toLocaleDateString("en-GB", {
+    weekday: "short",
+    timezone: "Europe/Stockholm",
+  });
+};
+fetch(Url_Forecast)
+  .then((res) => {
+    return res.json();
+  })
+  .then((json) => {
+    // new variable to filter the table and choose the same time everyday.
+    const filteredForecast = json.list.filter((item) =>
+      item.dt_txt.includes("12:00")
+    );
+    console.log(filteredForecast);
+    forecast.innerHTML += `
+       <div class="forecast">
+         <div class="day">${weekday(filteredForecast[0].dt)}</div>
+         <div class="temp"> ${filteredForecast[0].main.temp.toFixed(0)}°</div>
+       </div>
+       <div class="forecast">
+         <div class="day">${weekday(filteredForecast[1].dt)}</div>
+         <div class="temp"> ${filteredForecast[1].main.temp.toFixed(0)}°</div>
+       </div>
+       <div class="forecast">
+         <div class="day">${weekday(filteredForecast[2].dt)}</div>
+         <div class="temp"> ${filteredForecast[2].main.temp.toFixed(0)}°</div>
+       </div>
+       <div class="forecast">
+         <div class="day">${weekday(filteredForecast[3].dt)}</div>
+         <div class="temp"> ${filteredForecast[3].main.temp.toFixed(0)}°</div>
+       </div>
+       <div class="forecast">
+         <div class="day">${weekday(filteredForecast[4].dt)}</div>
+         <div class="temp"> ${filteredForecast[4].main.temp.toFixed(0)}°</div>
+       </div>`;
+  });
+
