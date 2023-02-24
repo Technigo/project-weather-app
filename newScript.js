@@ -12,12 +12,34 @@ const apiKey = "4f9ca5d3e70c95a041bc513ac8b31ff8"
 //Lisbon coordinates
 const latitude = 38.7167
 const longitude = -9.1333
+let city = "Lisbon"; //Default city
 
-const lisbonURL = `http://api.openweathermap.org/data/2.5/weather?q=Lisbon,Portugal&units=metric&APPID=${apiKey}`;
+
+let lisbonURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=6dc9ca16706cabb0c8c9d20011825ab1`;
 const fiveDayURL = `http://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`
 
+//http://api.openweathermap.org/data/2.5/weather?q=Lisbon,Portugal&units=metric&APPID=${apiKey}
+
+// http://api.openweathermap.org/data/2.5/forecast?q=Motala,Sweden&units=metric&appid=${apiKey}
+
+//geo possition
+const successCallback = (position) => {
+  console.log(position);
+};
+
+const errorCallback = () => {
+
+  //bodySelector.innerHTML += "<p>Location not found</p>"
+};
+
+//navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+
+//this is for te search and find other cities, make it shorter
 
 
+
+
+      
 
 
 //This code fetches the data, turns it into json and passes it to other functions
@@ -34,7 +56,7 @@ fetch(lisbonURL)
 //Sunrise/sunset-function
 const currentTemp = (dataLis) => {
   //console.log(`Just nu är det ${data.main.temp} grader varmt`);
- 
+
  const sunriseTime = dataLis.sys.sunrise;
 const sunsetTime = dataLis.sys.sunset;
 
@@ -47,9 +69,11 @@ const sunriseTimeString =sunriseDate.toLocaleTimeString();
 const sunsetTimeString =sunsetDate.toLocaleTimeString();
 console.log("Sunrise: " + sunriseTimeString)
 console.log("Sunset: " + sunsetTimeString)
- 
+
+const toDay = new Date (dataLis.dt * 1000).toLocaleString('en-US', {weekday: 'long', timeZone: 'Europe/Lisbon'}); //add timezone (local?)
  
   today.innerHTML = `
+  <h3>  ${toDay}</h3>
     <p>${dataLis.weather[0].description} | ${Math.round(dataLis.main.temp)}°C</p>
    
 
@@ -69,7 +93,7 @@ console.log("Sunset: " + sunsetTimeString)
 
 //Checks weather type (cloudy, clear, rainy)
 const checkWeather = (dataLis) => {
-    console.log(dataLis)
+  
   console.log(dataLis.weather[0].main);
 
   if (dataLis.weather[0].main === 'Clouds'){
@@ -115,6 +139,7 @@ fetch(fiveDayURL)
 .then(response => response.json())
 .then(fiveDayData => {
   ///includes  data from everyday at 12.00 hours 
+  console.log(fiveDayData)
 
 //Returns seven days
 const filteredData = fiveDayData.list.filter(data => data.dt_txt.includes('12:00:00'));
@@ -142,4 +167,19 @@ dayFive.innerHTML += `
 
   }
   )
+
+  const form = document.getElementById("mainForm");
+  const cityInput = document.getElementById("citysearch");
+
+  let userCity = ""
   
+  form.addEventListener ("submit", (event) => {
+    event.preventDefault();
+    userCity = cityInput.value  //.trim();
+
+ lisbonURL = `http://api.openweathermap.org/data/2.5/weather?q=${userCity}&units=metric&appid=6dc9ca16706cabb0c8c9d20011825ab1`;
+  
+  })
+
+  
+  //console.log("This is " + userCity)
