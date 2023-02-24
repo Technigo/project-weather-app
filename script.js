@@ -1,6 +1,7 @@
 const weatherWrapper = document.getElementById ('weather-wrapper')
 const searchBar = document.getElementById ('searchbar')
 const forecastWrapper = document.getElementById ('forecast-wrapper')
+const body = document.getElementById ('body')
 
 
 fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=d9838d8630b03a974ed368611cffd256')
@@ -35,7 +36,7 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
     `<p><span id='weather-description' class= 'weather-description'>${mainWeather}</span> | <span id='main-temp' class='main-temp'>${roundedTemp}°C | ${roundedFar}°F</span></p>
     <p><span id='feels-like' class= 'feels-like'> Feels like: ${feelsLikeC}°C | ${feelsLikeF}°F </span></p>
     <p><span id='sunrise' class= 'sunrise'>Sunrise: ${sunrise}</span><p>
-    <p><span id='sunset' class= 'sunset'>Sunset:${sunset}</span><p>
+    <p><span id='sunset' class= 'sunset'>Sunset: ${sunset}</span><p>
  `  
 
     //Showing different text depending on the main descritption of the weather
@@ -44,14 +45,14 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
     data.weather.forEach((weatherDescription) => { //.weather comes from the API - it is an object name
     
     if (weatherDescription.main === 'Clear') {
-        const gradientClear = 'linear-gradient(#F7E9B9 10%, #FC7200)' // Sets color and direction of gradient
+        const gradientClear = 'linear-gradient(#F7E9B9, #FC7200)' // Sets color and direction of gradient
         weatherWrapper.style.background = gradientClear; 
         weatherWrapper.style.color = "#2A5510"; // Color for the text
         weatherWrapper.innerHTML = `
         <p><span id='weather-description' class= 'weather-description'>${mainWeather}</span> | <span id='main-temp' class='main-temp'>${roundedTemp}°C | ${roundedFar}°F</span></p>
         <p><span id='feels-like' class= 'feels-like'> Feels like: ${feelsLikeC}°C | ${feelsLikeF}°F </span></p>
-        <p><span id='sunrise' class= 'sunrise'>Sunrise: ${sunrise}</span><p>
-        <p><span id='sunset' class= 'sunset'>Sunset:${sunset}</span><p>      
+        <p><span id='sunrise' class= 'sunrise'>Sunrise: ${sunrise}</span></p>
+        <p><span id='sunset' class= 'sunset'>Sunset: ${sunset}</span></p>      
         <div class="clear">
         <img src="./img/sunglasses.svg" alt="sun-glasses icon"></img>
         <p> Get your sunnies on. ${data.name} is looking rather great today.
@@ -60,14 +61,14 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
        
     } 
      else if (weatherDescription.main === 'Clouds') {
-     const gradientClouds = 'linear-gradient(#F4F7F8 10%, #BDC4C6)'
-        weatherWrapper.style.background = gradientClouds;
-        weatherWrapper.style.color = "#F47775";
+     const gradientClouds = 'linear-gradient(#F4F7F8, #BDC4C6)'
+        body.style.background = gradientClouds;
+        body.style.color = "#F47775";
         weatherWrapper.innerHTML = 
         `<p><span id='weather-description' class= 'weather-description'>${mainWeather}</span> | <span id='main-temp' class='main-temp'>${roundedTemp}°C | ${roundedFar}°F</span></p>
         <p><span id='feels-like' class= 'feels-like'> Feels like: ${feelsLikeC}°C | ${feelsLikeF}°F </span></p>
-        <p><span id='sunrise' class= 'sunrise'>Sunrise: ${sunrise}</span><p>
-        <p><span id='sunset' class= 'sunset'>Sunset:${sunset}</span><p>        
+        <p><span id='sunrise' class= 'sunrise'>Sunrise: ${sunrise}</span></p>
+        <p><span id='sunset' class= 'sunset'>Sunset: ${sunset}</span></p>        
         <div class="clouds">
         <img src="./img/cloud.svg" alt="cloud icon"></img>
         <p> Light a fire and get cosy. ${data.name} looks grey today.
@@ -75,14 +76,14 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
         </div>`;
     }  
     else if (weatherDescription.main === 'Rain' | "Drizzle") {
-       const gradientClouds = 'linear-gradient(#164A68 10%, #A3DEF7)'
-        weatherWrapper.style.background = gradientClouds;
-        weatherWrapper.style.color = "#164A68";
+       const gradientClouds = 'linear-gradient(#447791, #A3DEF7)'
+        body.style.background = gradientClouds;
+        body.style.color = "#164A68";
         weatherWrapper.innerHTML = `
         <p><span id='weather-description' class= 'weather-description'>${mainWeather}</span> | <span id='main-temp' class='main-temp'>${roundedTemp}°C | ${roundedFar}°F</span></p>
         <p><span id='feels-like' class= 'feels-like'> Feels like: ${feelsLikeC}°C | ${feelsLikeF}°F </span></p>
-        <p><span id='sunrise' class= 'sunrise'>Sunrise: ${sunrise}</span><p>
-        <p><span id='sunset' class= 'sunset'>Sunset:${sunset}</span><p>      
+        <p><span id='sunrise' class= 'sunrise'>Sunrise: ${sunrise}</span></p>
+        <p><span id='sunset' class= 'sunset'>Sunset: ${sunset}</span></p>      
         <div class="rain">
         <img src="./img/umbrella.svg" alt="rain icon"></img>
         <p> Don’t forget your umbrella. It’s wet in ${data.name} today.
@@ -90,14 +91,14 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
         </div>`;
     } 
     else if (weatherDescription.main === 'Snow') {
-        const gradientSnow = 'linear-gradient(#A3DEF7 10%, #F4F7F8)'
-        weatherWrapper.style.background = gradientSnow;
-        weatherWrapper.style.color = "#AEB6FF";
+        const gradientSnow = 'linear-gradient(#A3DEF7, #F4F7F8)'
+        body.style.background = gradientSnow;
+        body.style.color = "#AEB6FF";
         weatherWrapper.innerHTML = `
         <p><span id='weather-description' class= 'weather-description'>${mainWeather}</span> | <span id='main-temp' class='main-temp'>${roundedTemp}°C | ${roundedFar}°F</span></p>
         <p><span id='feels-like' class= 'feels-like'> Feels like: ${feelsLikeC}°C | ${feelsLikeF}°F </span></p>
-        <p><span id='sunrise' class= 'sunrise'>Sunrise: ${sunrise}</span><p>
-        <p><span id='sunset' class= 'sunset'>Sunset:${sunset}</span><p>      
+        <p><span id='sunrise' class= 'sunrise'>Sunrise: ${sunrise}</span></p>
+        <p><span id='sunset' class= 'sunset'>Sunset: ${sunset}</span></p>      
         <div class="snow">
         <img src="./img/snow-01.svg" alt="snow icon"></img>
         <p> Light a fire and get cosy. ${data.name} looks snowy today.
@@ -105,14 +106,14 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
         </div>`;
     } 
     else {
-        const gradientOther= 'linear-gradient(#000000 10%, #F4F7F8)'
-        weatherWrapper.style.background = gradientOther;
-        weatherWrapper.style.color = "#F47775";
+        const gradientOther= 'linear-gradient(#000000, #F4F7F8)'
+        body.style.background = gradientOther;
+        body.style.color = "#F47775";
         weatherWrapper.innerHTML =
         `<p><span id='weather-description' class= 'weather-description'>${mainWeather}</span> | <span id='main-temp' class='main-temp'>${roundedTemp}°C | ${roundedFar}°F</span></p>
         <p><span id='feels-like' class= 'feels-like'> Feels like: ${feelsLikeC}°C | ${feelsLikeF}°F </span></p>
-        <p><span id='sunrise' class= 'sunrise'>Sunrise: ${sunrise}</span><p>
-        <p><span id='sunset' class= 'sunset'>Sunset:${sunset}</span><p>      
+        <p><span id='sunrise' class= 'sunrise'>Sunrise: ${sunrise}</span></p>
+        <p><span id='sunset' class= 'sunset'>Sunset: ${sunset}</span></p>      
         <div class="other">
         <p> Go to the window and find out! </p>
         </div>`
@@ -163,21 +164,21 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
     `<p><span id='weather-description' class= 'weather-description'>${mainWeather}</span> | <span id='main-temp' class='main-temp'>${roundedTemp}°C | ${roundedFar}°F</span></p>
     <p><span id='feels-like' class= 'feels-like'> Feels like: ${feelsLikeC}°C | ${feelsLikeF}°F </span></p>
     <p><span id='sunrise' class= 'sunrise'>Sunrise: ${sunrise}</span><p>
-    <p><span id='sunset' class= 'sunset'>Sunset:${sunset}</span><p>`
+    <p><span id='sunset' class= 'sunset'>Sunset: ${sunset}</span><p>`
 
 
 
     data.weather.forEach((weatherDescription) => { //.weather comes from the API - it is an object name
     
     if (weatherDescription.main === 'Clear') {
-        const gradientClear = 'linear-gradient(#F7E9B9 10%, #FC7200)' // Sets color and direction of gradient
-        weatherWrapper.style.background = gradientClear;
-        weatherWrapper.style.color = "#2A5510"; // Color for the text
+        const gradientClear = 'linear-gradient(#F7E9B9, #FC7200)' // Sets color and direction of gradient
+        body.style.background = gradientClear;
+        body.style.color = "#2A5510"; // Color for the text
         weatherWrapper.innerHTML = `
         <p><span id='weather-description' class= 'weather-description'>${mainWeather}</span> | <span id='main-temp' class='main-temp'>${roundedTemp}°C | ${roundedFar}°F</span></p>
         <p><span id='feels-like' class= 'feels-like'> Feels like: ${feelsLikeC}°C | ${feelsLikeF}°F </span></p>
-        <p><span id='sunrise' class= 'sunrise'>Sunrise: ${sunrise}</span><p>
-        <p><span id='sunset' class= 'sunset'>Sunset:${sunset}</span><p>      
+        <p><span id='sunrise' class= 'sunrise'>Sunrise: ${sunrise}</span></p>
+        <p><span id='sunset' class= 'sunset'>Sunset: ${sunset}</span></p>      
         <div class="clear">
         <img src="./img/sunglasses.svg" alt="sun-glasses icon"></img>
         <p> Get your sunnies on. ${data.name} is looking rather great today.
@@ -186,14 +187,14 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
        
     } 
      else if (weatherDescription.main === 'Clouds') {
-     const gradientClouds = 'linear-gradient(#F4F7F8 10%, #BDC4C6)'
-        weatherWrapper.style.background = gradientClouds;
-        weatherWrapper.style.color = "#F47775";
+     const gradientClouds = 'linear-gradient(#F4F7F8, #BDC4C6)'
+        body.style.background = gradientClouds;
+        body.style.color = "#F47775";
         weatherWrapper.innerHTML = `
         <p><span id='weather-description' class= 'weather-description'>${mainWeather}</span> | <span id='main-temp' class='main-temp'>${roundedTemp}°C | ${roundedFar}°F</span></p>
         <p><span id='feels-like' class= 'feels-like'> Feels like: ${feelsLikeC}°C | ${feelsLikeF}°F </span></p>
-        <p><span id='sunrise' class= 'sunrise'>Sunrise: ${sunrise}</span><p>
-        <p><span id='sunset' class= 'sunset'>Sunset:${sunset}</span><p>
+        <p><span id='sunrise' class= 'sunrise'>Sunrise: ${sunrise}</span></p>
+        <p><span id='sunset' class= 'sunset'>Sunset: ${sunset}</span></p>
         <div class="clouds">
         <img src="./img/cloud.svg" alt="cloud icon"></img>
         <p> Light a fire and get cosy. ${data.name} looks grey today.
@@ -201,14 +202,14 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
         </div>`;
     }  
     else if (weatherDescription.main === 'Rain' | "Drizzle") {
-       const gradientClouds = 'linear-gradient(#164A68 10%, #A3DEF7)'
-        weatherWrapper.style.background = gradientClouds;
-        weatherWrapper.style.color = "#164A68";
+       const gradientClouds = 'linear-gradient(#447791, #A3DEF7)'
+        body.style.background = gradientClouds;
+        body.style.color = "#164A68";
         weatherWrapper.innerHTML = `
         <p><span id='weather-description' class= 'weather-description'>${mainWeather}</span> | <span id='main-temp' class='main-temp'>${roundedTemp}°C | ${roundedFar}°F</span></p>
         <p><span id='feels-like' class= 'feels-like'> Feels like: ${feelsLikeC}°C | ${feelsLikeF}°F </span></p>
-        <p><span id='sunrise' class= 'sunrise'>Sunrise: ${sunrise}</span><p>
-        <p><span id='sunset' class= 'sunset'>Sunset:${sunset}</span><p>      
+        <p><span id='sunrise' class= 'sunrise'>Sunrise: ${sunrise}</span></p>
+        <p><span id='sunset' class= 'sunset'>Sunset: ${sunset}</span></p>      
         <div class="rain">
         <img src="./img/umbrella.svg" alt="rain icon"></img>
         <p> Don’t forget your umbrella. It’s wet in ${data.name} today.
@@ -216,14 +217,14 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
         </div>`;
     } 
     else if (weatherDescription.main === 'Snow') {
-        const gradientSnow = 'linear-gradient(#A3DEF7 10%, #F4F7F8)'
-        weatherWrapper.style.background = gradientSnow;
-        weatherWrapper.style.color = "#AEB6FF";
+        const gradientSnow = 'linear-gradient(#A3DEF7, #F4F7F8)'
+        body.style.background = gradientSnow;
+        body.style.color = "#AEB6FF";
         weatherWrapper.innerHTML = `
         <p><span id='weather-description' class= 'weather-description'>${mainWeather}</span> | <span id='main-temp' class='main-temp'>${roundedTemp}°C | ${roundedFar}°F</span></p>
         <p><span id='feels-like' class= 'feels-like'> Feels like: ${feelsLikeC}°C | ${feelsLikeF}°F </span></p>
-        <p><span id='sunrise' class= 'sunrise'>Sunrise: ${sunrise}</span><p>
-        <p><span id='sunset' class= 'sunset'>Sunset:${sunset}</span><p>      
+        <p><span id='sunrise' class= 'sunrise'>Sunrise: ${sunrise}</span></p>
+        <p><span id='sunset' class= 'sunset'>Sunset: ${sunset}</span></p>      
         <div class="snow">
         <img src="./img/snow-01.svg" alt="snow icon"></img>
         <p> Light a fire and get cosy. ${data.name} looks snowy today.
@@ -232,13 +233,13 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
     } 
     else {
         const gradientOther= 'linear-gradient(#000000 10%, #F4F7F8)'
-        weatherWrapper.style.background = gradientOther;
-        weatherWrapper.style.color = "#F47775";
+        body.style.background = gradientOther;
+        body.style.color = "#F47775";
         weatherWrapper.innerHTML =
         `<p><span id='weather-description' class= 'weather-description'>${mainWeather}</span> | <span id='main-temp' class='main-temp'>${roundedTemp}°C | ${roundedFar}°F</span></p>
         <p><span id='feels-like' class= 'feels-like'> Feels like: ${feelsLikeC}°C | ${feelsLikeF}°F </span></p>
-        <p><span id='sunrise' class= 'sunrise'>Sunrise: ${sunrise}</span><p>
-        <p><span id='sunset' class= 'sunset'>Sunset:${sunset}</span><p>      
+        <p><span id='sunrise' class= 'sunrise'>Sunrise: ${sunrise}</span></p>
+        <p><span id='sunset' class= 'sunset'>Sunset: ${sunset}</span></p>      
         <div class="other">
         <p> Go to the window and find out! </p>
         </div>`

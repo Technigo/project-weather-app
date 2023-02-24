@@ -9,15 +9,22 @@
 #AEB6FF - light purple
 */
 
-.weather-wrapper {
+* {
+    box-sizing: border-box;
+}
+
+body {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    margin: 0;
+    padding: 0;
 }
+
 
 p {
     font-family: 'Montserrat', sans-serif;
-    margin: 20px;
+    margin: 5px;
 }
 .search {
     font-family: 'Montserrat', sans-serif;
@@ -29,9 +36,18 @@ p {
     width: 80%;
     margin: auto 0;
 }
+
+.weather-description, .main-temp, .feels-like, .sunrise, .sunset {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 0px;
+    margin-left: 10px;
+}
+
 .clear, .clouds, .rain, .snow, .other {
     font-weight: bold;
     font-size: 2em;
+    margin-left: 10px;
 }
 
 img {
@@ -41,28 +57,36 @@ img {
     justify-content: flex-start;
 }
 
-.main-temp {
-    flex-direction: row;    
-    border: solid red 2px;
-}
-
-.main-temp p {
-    text-align: end;
-}
 
 .forecast-wrapper{
     display: grid;
-    grid-template-columns: repeat(2, minmax(300px, 1fr));
-    /* grid-template-rows: repeat(5, 100px); */
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
     font-family: 'Montserrat';
+
 
 }
 
 .temp-of-day{
-    text-align:center;
+    text-align: end;
+    margin-top: 10px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    border-bottom: dashed 2px;
 
 }
 
 .day-of-week{
-    text-align:start;
+    text-align: start;
+    margin-top: 10px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    border-bottom: dashed 2px;
+}
+
+footer {
+    width: 100%;
+    margin: auto 0;
+    text-align: center;
+    padding: 20px;
+    color: black;
 }
