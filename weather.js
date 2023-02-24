@@ -1,11 +1,7 @@
 const searchBar = document.getElementById('searchBar')
-const name = document.getElementById("name");
-const tempMax = document.getElementById("tempmax");
-const tempMin = document.getElementById("tempmin");
-const description = document.getElementById("description");
 const forecastTable = document.getElementById('forecast-table');
 const weatherHeader = document.getElementById("weatherHeader");
-
+const middleSection = document.getElementById ("middleSection");
 
 //const API_WEATHER = `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${cod}`
 
@@ -14,7 +10,7 @@ const weatherHeader = document.getElementById("weatherHeader");
 
 //global variables
 let defaultCity = "Stockholm";
-const maxDayDisplay = 5;
+const maxDayDisplay = 7;
 const cod = "7309e4a5829fafe809df835ad95f18ea"
 
 
@@ -25,23 +21,19 @@ const WeatherData = () => {
     })
     .then((json) => {
       // Setting basic information on the app and rounded numbers to first decimal.
-      name.innerHTML = json.name;
-      tempMax.innerHTML =  Math.round(json.main.temp_max);
-      tempMin.innerHTML =  Math.round(json.main.temp_min);
-      description.innerHTML = json.weather[0].description;
-
+      
       const sunriseStart = new Date (json.sys.sunrise*1000);
       const sunsetStart = new Date (json.sys.sunset*1000);
 
 
       console.log(weatherHeader)
       weatherHeader.innerHTML = `
-      <p>${json.weather[0].description.toLowerCase()} | ${Math.round(json.main.temp)}°</p>
-      <p>sunrise ${sunriseStart.toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"})}</p>
-      <p>sunset ${sunsetStart.toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"})}</p>
+      <h4>${json.weather[0].description.toLowerCase()} | ${Math.round(json.main.temp)}°C</h4>
+      <h4>sunrise ${sunriseStart.toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"})}</h4>
+      <h4>sunset ${sunsetStart.toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"})}</h4>
       `; 
 
-      setWeatherMessage(json.weather[0].description)
+      setWeatherMessage(json.weather[0].description, json.name) // add city name as a parameter
     })
 
   
@@ -63,7 +55,7 @@ const WeatherData = () => {
 
 const displayForecast = () => {
   //fetch(`https://api.openweathermap.org/data/2.5/onecall?q=Stockholm,Sweden&units=metric&APPID=${cod}`)
-  fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=hourly,minutely&units=metric&appid=${cod}`)
+  fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=59.334591&lon=18.063240&exclude=hourly,minutely&units=metric&appid=${cod}`)
   .then((response) => {
     return response.json();
   })
@@ -87,6 +79,7 @@ const displayForecast = () => {
       const date = new Date(day.dt * 1000)
       let dayName = date.toLocaleDateString("en-EN", {weekday: "short"})
      
+      .toLowerCase(); 
 
      // round the decimals of the temperature
       const minTemp = Math.round(day.temp.min)
@@ -96,7 +89,7 @@ const displayForecast = () => {
       forecastTable.innerHTML += `
       <tr>
           <td class="weekday">${dayName}</td>
-          <td class="temperature">${minTemp} ºC / ${maxTemp} ºC</td>
+          <td class="temperature"> ${maxTemp} ºC</td>
       </tr>
       `  
     })
@@ -111,60 +104,68 @@ const displayForecast = () => {
 WeatherData();
 
 //  phrase that change depending on the weather 
-const setWeatherMessage = (weather) => {
+const setWeatherMessage = (weather, cityName) => { // add parameter of weather & name here
   if    (weather.includes("thunderstorm")) {
-    description.innerHTML = `
-    <h1> today we are having ${weather} ..... </h1>`
-
+    body.className = "thunderstorm"
+    middleSection.innerHTML = `
+    <img id=""weatherIcon"" class=""weather-icon"" src="Designs/Design-2/icons/noun_Umbrella_2030530.svg"/>
+    <h1> A ${weather} awaits. Be safe. </h1>`
 
   }
 
   else if (weather.includes("drizzle")) {
-    description.innerHTML = `
-    <h1> today we are having ${weather} ..... </h1>`
-    
-
+    body.className = "drizzle"
+    middleSection.innerHTML = `
+    <img id=""weatherIcon"" class=""weather-icon"" src="Designs/Design-2/icons/noun_Umbrella_2030530.svg"/>
+    <h1 > Today we can expect ${weather}. Don't forget your umbrella! </h1>`
 
     
   }
 
   else if (weather.includes("rain")) {
-    description.innerHTML = `
-    <h1> today we are having ${weather} ..... </h1>`
-
-    
+    body.className = "rain"
+    middleSection.innerHTML = `
+    <img id="weatherIcon" class="weather-icon" src="Designs/Design-2/icons/noun_Umbrella_2030530.svg"/>
+    <h1> Today we can expect ${weather}. Don't forget your umbrella! </h1>`
+  
 
   }
 
   else if (weather.includes("snow")) {
-    description.innerHTML = `
-    <h1> today we are having ${weather} ..... </h1>`
+    body.className = "snow"
+    middleSection.innerHTML = `
+    <img id="weatherIcon" class="weather-icon" src="Designs/Design-2/icons/noun_Cloud_1188486.svg"/>
+    <h1> Put those winter boots on and get ready for ${weather}. </h1>`
 
 
   }
 
   else if (weather.includes("atmosphere")) {
-    description.innerHTML = `
+    body.className = "atmosphere"
+    middleSection.innerHTML = `
+    <img id="weatherIcon" class="weather-icon" src="Designs/Design-2/icons/noun_Cloud_1188486.svg"/>
     <h1>  today we are having  ${weather}.... </h1>`
 
   }
 
 
   else if (weather.includes("clear")) {
-    description.innerHTML = `
-    <h1> today we are having ${weather} ..... </h1>`
+    body.className = "clear"
+    middleSection.innerHTML = `
+    <img id="weatherIcon" class="weather-icon" src="Designs/Design-2/icons/noun_Sunglasses_2055147.svg"/>    
+    <h1> Woo-hoo! We have ${weather} today. Better enjoy it while it lasts. </h1>`
 
 
   }
 
 
   else if  (weather.includes("clouds")){
-    description.innerHTML = `
-    <h1> today we are having ${weather} .....</h1>`
+    body.className = "clouds"
+    middleSection.innerHTML = `
+    <img id="weatherIcon" class="weather-icon" src="Designs/Design-2/icons/noun_Cloud_1188486.svg"/>
+    <h1 id="headline">  It's ${weather} in ${cityName} today. Perfect weather for a good cup of tea. </h1>`
 
   }
 
 }
-
-
 

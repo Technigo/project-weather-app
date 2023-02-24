@@ -1,18 +1,126 @@
+
 body {
     font-family: 'Montserrat', sans-serif;
-
-    background: #F47775; 
+    font-size:clamp(2vmax, 4vmax, 3vmax); 
+    color: #2A5510;
+    margin: 0px 40px; 
+    padding-top: 5px;
+    box-sizing: border-box;
+    text-decoration: none; 
+    display: grid; 
+    text-rendering: optimizeLegibility;
 }
 
 h1 {
-    font-weight: bold;
-    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 700; 
+    display: block; 
 }
 
+.weatherHeader {
+    display:grid; 
+    align-items: start;
+}
+
+.middle-section {
+    margin-top: 50px; 
+    display: block;  
+}
+
+.weather-icon {
+    width: clamp (17vmax, 19vmax, 21vmax);
+    height: auto;  
+ }
+
+h4 {
+    height: 0px; 
+    font-weight: 400;
+    font-size: 0.7em;
+    
+}
+
+/* different background and font colors depending on the weather */
+
+.thunderstorm {
+    background-color: #A3DEF7;
+    color: #164A68;
+}
+
+.drizzle {
+    background-color: #A3DEF7;
+    color: #164A68;
+}
+
+
+.snow {
+    background-color: #F4F7F8;
+    color: #F47775;
+}
+
+.atmosphere {
+    background-color: #A3DEF7;
+    color: #164A68;
+}
+
+
+.clear {
+    background-color: #F7E9B9;
+    color: #2A5510;
+}
+
+
+.clouds {
+    background-color: #F4F7F8;
+    color: #F47775;
+}
+
+
+
+footer {
+    margin-top: 10px;
+   font-size:clamp(1vmax, 2vmax, 1.5vmax);  ; 
+}
+
+table {
+    margin-top: 50px;
+    width: 100%;
+    border-spacing: 0;
+}
+
+ tr {
+    display:flex;
+    border-bottom: 1px dotted;
+    row-gap:  13em;;
+}
+
+
+
+.weekday { 
+    text-align: left;
+    width: 50%;
+}
+
+.temperature {
+    text-align: right;
+    width: 50%;
+}
+
+
+
+
+/*Media queries for mobile view /*
+@media (max-width: 667px)
+*/
+/*
+
+@media (max-width: 668px) {
+    h1{
+        font-size:30px; 
+    }
+}
 /*
 
 colors:
-
 #F47775 / orange
 #F4F7F8 /white
 #164A68 / green
