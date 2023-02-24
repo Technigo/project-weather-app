@@ -9,7 +9,7 @@ const forecastWeekdays = document.getElementById('forecastWeekdays')
 const forecastIcon = document.getElementById('forecastIcon')
 const forecastDescription = document.getElementById('forecastDescription')
 const forecastTemp = document.getElementById('forecastTemp')
-const forecastFeelsLike = document.getElementById('forecastFeelsLike')
+const forecastWind = document.getElementById('forecastWind')
 const sunriseText = document.getElementById('sunriseText');
 const sunsetText = document.getElementById('sunsetText');
 const freezing = document.getElementById('freezing-cold') 
@@ -17,7 +17,12 @@ const cold = document.getElementById('cold')
 const mediumCold = document.getElementById('medium-cold')
 const warm = document.getElementById('warm')
 const hot = document.getElementById('hot')
+const tempToday = document.getElementById('tempToday')
+const cityName = document.getElementById('cityName')
+const weatherDescription = document.getElementById('weatherDescription')
 const mainIcon = document.getElementById('mainIcon')
+const weatherFeature = document.getElementById('weatherFeature')
+
 
 //Variables we can use later to automate API-fethcing:
 const apiKey = 'c480de5f69ca98d1993a4dae3213642e';
@@ -33,23 +38,19 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm&units=metric&
         console.log(`json:`, json)
         let { icon } = json.weather[0];
         // Store the rounded number in a variable called "round"
-        let round = Math.round(json.main.temp * 10 ) / 10;
-
-        testy.innerHTML = `<p>City: ${json.name}</p>`;
-        testy.innerHTML += `<p>Temperature: ${round} °C</p>`;
-        testy.innerHTML += `<p>Weather: ${json.weather[0].description}</p>`;
-        mainIcon.innerHTML += `<img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="weather icon" class="weather-icons">`
+       /*  let round = Math.round(json.main.temp * 10 ) / 10; */
+        console.log(json.main.temp.toFixed(0))
+        cityName.innerText = `${json.name}`;
+        tempToday.innerText += `${json.main.temp.toFixed(0)}`;
+        weatherDescription.innerText += `${json.weather[0].description}`;
+        mainIcon.innerHTML += `<img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="weather icon" class="main-icon">`
     })
     .catch((err) => {
         console.log(`error caught:`, err)
     })
 
-<<<<<<< HEAD
-const getSunriseSunsetData = () => {
-=======
 
 const getSunriseSunsetData = (city) => {
->>>>>>> f7b9199ebf8250fc63f55767531af1cc2748b7a9
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`)
         .then((response) => {
             return response.json()
@@ -76,11 +77,7 @@ const getSunriseSunsetData = (city) => {
 
 
 const weatherForecastData = () => {
-<<<<<<< HEAD
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=${apiKey}`)
-=======
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=c480de5f69ca98d1993a4dae3213642e`)
->>>>>>> f7b9199ebf8250fc63f55767531af1cc2748b7a9
         .then((forecastResponse) => {
             return forecastResponse.json();
         })
@@ -97,8 +94,8 @@ const weatherForecastData = () => {
                     let {icon} = date.weather[0];
                     forecastWeekdays.innerHTML += `<p>${weekDay}</p>`
                     forecastIcon.innerHTML += `<img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="weather icon" class="weather-icons">`
+                    forecastWind.innerHTML += `<p>${date.wind.speed}m/s</p>`
                     forecastTemp.innerHTML += `<p>${date.main.temp.toFixed(0)}°</p>`
-                    forecastFeelsLike.innerHTML += `<p>${date.main.feels_like.toFixed(0)}°</p>`
                 }
             }); 
         })
@@ -108,8 +105,6 @@ weatherForecastData();
  
 //Learn how to get symbols from the api
 //Learn how to get a search word to show an image from unsplash
-<<<<<<< HEAD
-=======
    
 const toggleSearchField = () => {
     //This just controls the toggling between opening and closing the search field
@@ -117,38 +112,11 @@ const toggleSearchField = () => {
     searchToggler.classList.toggle('hidden');
     closeSearchMenu.classList.toggle('hidden');
     searchMenuBtn.classList.toggle('hidden');
->>>>>>> f7b9199ebf8250fc63f55767531af1cc2748b7a9
 
     //Goes back to default after toggling
     getSunriseSunsetData(city);
 }
 
-<<<<<<< HEAD
-
-const gardientWarmCold = () => {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`)
-        .then((response) => {
-        return response.json();
-        })
-        .then((data) => {
-        console.log(data.main.temp.toFixed(0))
-            const value = (data.main.temp.toFixed(0))
-            if (value >= -20 && value <= -10 ) {
-                cold.media = '';   
-            } if (value > -10 && value <= 0) {
-                cold.media = ''; 
-            } if (value > 0.00 && value <= 10.00) {
-                cold.media = '';    
-            } if (value > 10.00 && value <= 25.00) {
-                cold.media = ''; 
-            } else {
-                cold.media = ''; 
-            }         
-})
-}
-
-gardientWarmCold()
-=======
 const searchFunction = () => {
     //This is for storing the user input from the search and pushing it into our fetching weather function later on
     
@@ -179,4 +147,114 @@ inputField.addEventListener('keyup', function (event) {
       }
 }
 );
->>>>>>> f7b9199ebf8250fc63f55767531af1cc2748b7a9
+
+const gardientWarmCold = () => {
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`)
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            console.log(data.main.temp.toFixed(0))
+            const value = (data.main.temp.toFixed(0))
+            //GET TIME 
+            if (value >= -20 && value <= -10) {
+                freezing.media = '';
+            } else if (value > -10 && value <= 0) {
+                cold.media = '';
+            } else if (value > 0.00 && value <= 10.00) {
+                mediumCold.media = '';
+            } else if (value > 10.00 && value <= 25.00) {
+                warm.media = '';
+            } else {
+                hot.media = '';
+            }
+        })
+}
+
+gardientWarmCold();
+
+const todaysWeatherStyle = () => {
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`)
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+
+        const todaysWeather = data.weather[0].main
+        const getTime = new Date().getHours();
+        let sunriseTime = new Date(data.sys.sunrise).getHours();       
+        let sunsetTime = new Date(data.sys.sunset).getHours();
+        console.log(getTime)
+        console.log(sunriseTime)
+        console.log(sunsetTime)
+        console.log(todaysWeather)
+        if (getTime >= sunriseTime && getTime <= sunsetTime) {
+            if (todaysWeather === 'Clear') {
+                weatherFeature.innerHTML = `<img src="./images/peyman-farmani-pnoCjpuc_As-unsplash.jpeg" alt="image of sunny day" class="feature-image">`
+            } else if (todaysWeather === 'Snow') {
+                weatherFeature.innerHTML = `<img src="./images/gabriel-alenius-USXfF_ONUGo-unsplash.jpeg" alt="image of snowy landscape" class="feature-image">`
+            } else if (todaysWeather === 'Rain') {
+                weatherFeature.innerHTML = `<img scr="./images/jan-willem-FobwhDUgdrk-unsplash.jpeg" alt="image of rainy street" class="feature-image">`
+            } else {
+                weatherFeature.innerHTML = `<img scr="./images/daoudi-aissa-Pe1Ol9oLc4o-unsplash.jpeg" alt="image of cloudy sky" class="feature-image">`
+            }
+        } else {
+            if (todaysWeather === 'Clear') {
+                weatherFeature.innerHTML = `<img src="./images/peyman-farmani-pnoCjpuc_As-unsplash.jpeg" alt="image of sunny day" class="feature-image">`
+            } else if (todaysWeather === 'Snow') {
+                weatherFeature.innerHTML = `<img src="./images/gabriel-alenius-USXfF_ONUGo-unsplash.jpeg" alt="image of snowy landscape" class="feature-image">`
+            } else if (todaysWeather === 'Rain') {
+                weatherFeature.innerHTML = `<img scr="./images/jan-willem-FobwhDUgdrk-unsplash.jpeg" alt="image of rainy street" class="feature-image">`
+            } else {
+                weatherFeature.innerHTML = `<img scr="./images/daoudi-aissa-Pe1Ol9oLc4o-unsplash.jpeg" alt="image of cloudy sky" class="feature-image">`
+            }
+        }  
+    })
+}
+  
+        // DURING DAYTIME
+/*         if (weatherOfTheDay === 'Clear') {
+            icon.innerHTML += `<img src="icons/clear.svg"/>`
+            weatherInStockholm.innerHTML += `Get your sunnies on. ${data.name} is looking rather great today.`
+            console.log('clear')
+        } else if (weatherOfTheDay === 'Rain') {
+            icon.innerHTML += `<img src="icons/rain.svg">`
+            weatherInStockholm.innerHTML = `Don't forget your umbrella. It's wet in ${data.name} today.`
+            console.log('rain')
+        } else {
+            icon.innerHTML += `<img src="icons/cloud.svg">`
+            weatherInStockholm.innerHTML = `Light a fire and get cosy. ${data.name} is looking grey today.`
+            console.log('cloud')
+        } */
+//DURING NIGHT TIME
+
+/* })} */
+
+/* function getTimestampInSeconds() {
+    return Math.floor(Date.now() / 1000)
+}
+
+console.log(getTimestampInSeconds)
+
+todaysWeatherStyle() */
+
+// Jag måste fråga min pojkvän om den här, vet inte hur jag ska få den att fungera
+
+
+
+
+// Image based on time of the day
+/* var d = new Date();
+var time = d.getHours();
+var div = document.getElementById('time');
+if (time < 12) {
+    div.style.backgroundImage = "url('morning image')";
+}
+if (time >= 12 && time < 3) {
+    div.style.backgroundImage = "url('afternoon image')";
+}
+if (time > 3) {
+    div.style.backgroundImage = "url('http://a1.dspncdn.com/media/692x/da/dc/4e/dadc4ed5117d4a8cc582199bb3ac9c68.jpg')";
+} */
+
+todaysWeatherStyle ()

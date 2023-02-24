@@ -11,12 +11,18 @@
 
 body {
     font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding:0;
+    height: 100%;
 }
 
 nav {
     margin-bottom: 50px;
     display: flex;
     align-items: center;
+    position:absolute;
+    top: 7%;
+    left: 27%;
 }
 
 .search-bar {
@@ -38,7 +44,7 @@ nav {
     margin: 50px auto;
     display: flex;
     flex-direction: column;
-
+    height: 875px;
 }
 
 /* ONLY COLORS: 
@@ -52,12 +58,23 @@ nav {
 */
 
 .background-top {
-    background: url(https://images.unsplash.com/photo-1516571748831-5d81767b788d?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcxNjg0NTk&ixlib=rb-4.0.3&q=80);
+   /*  background: url(https://images.unsplash.com/photo-1516571748831-5d81767b788d?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcxNjg0NTk&ixlib=rb-4.0.3&q=80); */
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     background-size: cover;
+    background-position: bottom;
     border-bottom-left-radius: 100% 170px;
-    border-bottom-right-radius: 100% 170px;  
+    border-bottom-right-radius: 100% 170px;
+    height: 541px;  
+}
+
+.feature-image {
+    height: 541px;
+    width: 400px;
+    border-bottom-left-radius: 100% 170px;
+    border-bottom-right-radius: 100% 170px;
+    opacity: 0.5;
+    position: relative;
 }
 
 .search {
@@ -90,8 +107,10 @@ svg {
 
 .mainWrapper {
     color: white;
-    margin: 20px;
+    margin: 0px 20px;
     padding: 15px;
+    position: absolute;
+    top: 20%;
 }
 
 .mainWrapper .tempText {
@@ -102,8 +121,8 @@ svg {
 .mainWrapper .tempNumber {
     font-size: 110px;
     margin: 0;
+    font-weight: 900; 
 }
-
 
 .tempTextCelsius {
     display: inline;
@@ -115,15 +134,26 @@ svg {
 .mainWrapper .cityText {
     font-size: 36px;
     font-weight: 200;
-    margin: 0 0 5px 0;
-
+    margin: 0 0 13px 0;
 }
 
 .mainWrapper .describeText {
     font-size: 18px;
     font-weight: 200;
-    margin: 0 0 10px 0;
+    margin: 0px;
     text-transform: capitalize;
+}
+
+.main-icon {
+    object-fit: cover;
+    height: 62px;
+    width: 80px;
+    position: absolute;
+}
+
+.sun-position {
+    position: absolute;
+    bottom: -55%;
 }
 
 .sun-position,
@@ -137,7 +167,7 @@ svg {
 
 
 .sun-position .time-data {
-    margin: auto 20px;
+    margin: auto 46px;
 }
 
 #switchBtn {
@@ -148,37 +178,41 @@ svg {
     width: 90px;
     height: 90px;
     margin: 5px auto 0 75%;
+    position: absolute;
+    right: 30%;
+    top: 67%;
 }
 
-
-
 .weather-forecast {
-    display: flex;
+   /*  display: flex;
     justify-content: space-evenly;
-    align-items: flex-start;
-    margin-top: 50px;
+    align-items: flex-start; */
     padding: 20px;
     text-align: center;
 }
 
 .forecast-category {
-    display:none;
+  /*   display:none;
     display: flex;
     flex-direction: column;
     justify-content:center;
-    align-items: center;
+    align-items: center; */
     width:125px;
 }
 
+th, td {
+    padding:.25em .5em;
+    text-align:center;
+}
+
 .forecast-category p {
-    height:20px;
+    height:27px;
 }
 
 .weather-icons {
-    margin: 1px 0;
     object-fit: cover;
-    height: 50px;
-    width: 61px;
+    height: 39px;
+    width: 56px;
 }
 
 /* To use on the current day? */
