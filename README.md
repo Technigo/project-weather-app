@@ -1,8 +1,6 @@
 # Weather App
+The project was to work in pairs and make a weather-app. We worked witch javascript, fetch api and date. We also learned about working on branches on git.
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
 backround image: <a href="https://www.freepik.com/free-photo/white-cloud-blue-sky_4201545.htm#query=clear%20sky&position=0&from_view=keyword&track=ais">Image by lifeforstock</a> on Freepik
 <a href="https://www.freepik.com/free-photo/sky-clouds-background_1284084.htm#query=scattered%20clouds&position=2&from_view=search&track=ais">Image by evening_tao</a> on Freepik
 Photo by Walter Velasquez: https://www.pexels.com/photo/blue-sky-844112/
@@ -17,6 +15,8 @@ Photo by Pixabay: https://www.pexels.com/photo/golden-hour-photo-163323/
 Photo by Gabriela Palai: https://www.pexels.com/photo/person-standing-on-brown-wooden-dock-395196/
 
 ## The problem
+
+First time working on branches on git and vscode, and learning all the different commands in the terminal.
 
 Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
 
