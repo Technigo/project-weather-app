@@ -29,11 +29,13 @@ fetch(urlWeather)
     });
 
     // Using math.round in the template literal for temperature to make it an equal number.
-    todaysHeaderForecast.innerHTML = `<p>${
+    todaysHeaderForecast.innerHTML = `
+    <p>${wData.name}</p>
+    <p>${
       wData.weather[0].description
     } | ${Math.round(wData.main.temp)}°</p>
-    <p>Sunrise | ${sunrise}</p> 
-    <p>Sunset | ${sunset}</p> `;
+    <p>sunrise | ${sunrise}</p> 
+    <p>sunset | ${sunset}</p> `;
 
     //-------------------------------//
 
@@ -65,7 +67,7 @@ fetch(urlWeather)
       <img class="icon" src="icons-graficon/rain.png">
       <p class="prompt">It's raining in ${wData.name} today! Better bring your umbrella!</p>`;
       // <img class="icon" src="flaticon-dreamstale/rain.png">
-      document.body.style.backgroundColor = "#";
+      document.body.style.backgroundColor = "#B4CDE6";
     } else if (todaysWeatherMain === "Mist") {
       textForecast.innerHTML = `
       <img class="icon" src="icons-graficon/foggy.png">

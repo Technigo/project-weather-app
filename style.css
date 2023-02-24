@@ -14,15 +14,12 @@ p {
 }
 
 .todays-header-forecast {
-  text-transform: lowercase;
   color: #394151;
   opacity: 0.8;
   width: 350px;
   padding: 30px 20px 20px 20px;
   display: flex;
   flex-direction: column;
-  /*min-width: 350px;
-  width: 80%;*/
   margin: 0 auto;
 }
 
@@ -30,8 +27,6 @@ p {
   display: flex;
   flex-direction: column;
   width: 350px;
-  /*min-width: 350px;
-  /*width: 80%;*/
   margin: 0 auto;
 }
 
@@ -96,7 +91,7 @@ footer {
   color: #394151;
   opacity: 0.7;
   text-align: center;
-  font-size: 12px;
+  font-size: 10px;
   text-transform: uppercase;
   padding: 50px 20px 20px 20px;
   margin: 0 auto;
@@ -106,24 +101,19 @@ footer {
   padding: 5px;
 }
 
-.sign2 {
-  padding: 5px;
-}
-
 a:link, a:visited  {
   text-transform: none;
   color: #394151;
   text-decoration: none;
   padding: 20px;
-  font-size: 10px;
+  font-size: 8px;
   font-style: italic;
   text-align: center;
 }
 
-
-/* mouse over link */
 a:hover {
   color: hotpink;
+  font-size: 8px;
 }
 
 /* Styling for tablet */
@@ -135,22 +125,26 @@ a:hover {
     flex-direction: column;
   }
   .main {
+    margin-top: 20px;
     display: flex;
     flex-direction: row;
     width: 80%;
   }
 
   .todays-header-forecast {
+    margin-top: 30px;
+    font-size: 18px;
     width: 80%;
   }
 
   .text-forecast {
+    font-size: 30px;
     display: flex;
     flex-direction: column;
-    width: 350px;
   }
 
   .weekly-forecast {
+    font-size: 18px;
     margin-top: auto;
     align-content: end;
   }
@@ -158,6 +152,24 @@ a:hover {
   footer {
     width: 80%;
     margin-top: auto;
+  }
+
+  .sign {
+    font-size: 14px;
+  }
+
+  a:link, a:visited  {
+    text-transform: none;
+    color: #394151;
+    text-decoration: none;
+    padding: 20px;
+    font-size: 14px;
+    font-style: italic;
+    text-align: center;
+  }
+  
+  a:hover {
+    color: hotpink;
     font-size: 14px;
   }
 
@@ -172,17 +184,21 @@ a:hover {
     flex-direction: column;
   }
   .main {
+    margin-top: 20px;
     display: flex;
     flex-direction: row;
     width: auto;
   }
 
   .todays-header-forecast {
- margin-right: 50%;
+    margin-top: 30px;
+    font-size: 18px;
+    margin-right: 50%;
   
   }
 
   .text-forecast {
+    font-size: 30px;
     display: flex;
     flex-direction: column;
   }
@@ -195,7 +211,7 @@ a:hover {
   footer {
     width: 80%;
     margin-top: auto;
-    font-size: 14px;
+    font-size: 16px;
   }
 
   a:link, a:visited  {
@@ -203,16 +219,14 @@ a:hover {
     color: #394151;
     text-decoration: none;
     padding: 20px;
-    font-size: 12px;
+    font-size: 14px;
     font-style: italic;
     text-align: center;
   }
   
-  
-  /* mouse over link */
   a:hover {
     color: hotpink;
-    font-size: 12px;
+    font-size: 14px;
   }
 
 }
