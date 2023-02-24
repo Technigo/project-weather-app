@@ -55,7 +55,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
 const getSunriseSunsetData = (city) => {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`)
         .then((response) => {
-            return response.json(city)
+            return response.json()
         })
         .then((json) => {
             const sunriseTime = new Date(json.sys.sunrise * 1000);       //Gives us the time in "human" form (as a date), mult. by 1000 to get it in ms.
@@ -112,9 +112,6 @@ const toggleSearchField = () => {
     searchToggler.classList.toggle('hidden');
     closeSearchMenu.classList.toggle('hidden');
     searchMenuBtn.classList.toggle('hidden');
-
-    //Goes back to default after toggling
-    getSunriseSunsetData(city);
 }
 
 const searchFunction = () => {
