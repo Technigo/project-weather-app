@@ -84,10 +84,6 @@ body {
 
 }
 
-<<<<<<< HEAD
-.todays-date{
-    font-family: 'Courier New', Courier, monospace;
-=======
 /* Media queries  */
 /* --Tablet-- */
 @media (min-width: 667px) and (max-width: 1024px) {
@@ -95,5 +91,4 @@ body {
 
 /* --Desktop-- */
 @media (min-width: 1025px) {
->>>>>>> 5161c73f4684cfdffbb43b184c7a6edf6372c9fd
 }
