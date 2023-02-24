@@ -5,7 +5,6 @@
 body {
   margin: 0;
   padding: 0;
-  /*background: #f4f7f8;*/
   font-family: montserrat;
 }
 
@@ -17,10 +16,18 @@ body {
   margin: 0 auto;
 }
 
+
+.todays-header-forecast {
+  margin: 20px;
+  text-transform: lowercase;
+  background-color: rgba(240, 248, 255, 0.477);
+  border-radius: 15px;
+  padding-left: 20px;
+}
+
 /*.search-form {
   padding: 10px;
 }
-
 .city-search {
   border: none;
   border-radius: 2px;
@@ -62,9 +69,10 @@ body {
 }
 
 .weekly-forecast {
-  /*display: flex;
-  flex-direction: column;*/
-  /* border: 2px solid black; */
+  padding: 20px;
+  border-radius: 15px;
+  padding-left: 20px;
+  margin: 20px;
 }
 
 .day-temp {
@@ -72,6 +80,9 @@ body {
   flex-direction: row;
   justify-content: space-between;
   border-bottom: dashed 1px;
+  text-transform: lowercase;
+  margin: 20px;
+  padding: 10px;
 }
 
 footer {
