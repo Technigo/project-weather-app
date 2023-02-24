@@ -48,9 +48,15 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Reykjavik&appid=fa2755c
    console.log(currentTimeCorrectFormat)
    //Show different background depending on what time the sunrise/sunset is
    if (sunriseTime <= currentTimeCorrectFormat && currentTimeCorrectFormat < sunsetTime) {
-       topSection.style.backgroundImage = "url(Designs/Design-1/assets/day-small.jpg)"
+       topSection.style.backgroundImage = `linear-gradient(50deg, #663399 0%, #b9bfff 50%, #22277A 100%)`
    } else {
+    if (window.innerWidth < 668) {
        topSection.style.backgroundImage = "url(Designs/Design-1/assets/night-small.jpg)"
+    } else if (window.innerWidth < 1023) {
+        topSection.style.backgroundImage = "url(Designs/Design-1/assets/night-medium.jpg)"
+    } else {
+        topSection.style.backgroundImage = "url(Designs/Design-1/assets/night-large.jpg)"
+    }
    }
 
      //Variable for Todays weather main, to use when changing the picture in topSection
