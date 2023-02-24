@@ -91,7 +91,7 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
         </div>`;
     } 
     else if (weatherDescription.main === 'Snow') {
-        const gradientSnow = 'linear-gradient(#A3DEF7, #F4F7F8)'
+        const gradientSnow = 'linear-gradient(#E9F8FF, #F4F7F8)'
         body.style.background = gradientSnow;
         body.style.color = "#AEB6FF";
         weatherWrapper.innerHTML = `
@@ -217,7 +217,7 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
         </div>`;
     } 
     else if (weatherDescription.main === 'Snow') {
-        const gradientSnow = 'linear-gradient(#A3DEF7, #F4F7F8)'
+        const gradientSnow = 'linear-gradient(#E9F8FF, #F4F7F8)'
         body.style.background = gradientSnow;
         body.style.color = "#AEB6FF";
         weatherWrapper.innerHTML = `
