@@ -29,10 +29,10 @@ body{
 }
 
 .weatherImagebox {
-    margin-top: 45px;
+    margin-top: 20px;
     margin-bottom: 12px;
-    width: 70px;
-    width: 70px;
+    width: 375px;
+    width: 375px;
 }
 
 .middleSection {
@@ -59,15 +59,15 @@ body{
     width: 80px;
     height: auto;
     position: absolute;
-    margin-top: 15px;
+    margin-top: 75px;
+    animation: pulse 3s infinite;
+    animation-direction: alternate;
+    margin-left: 100px;
 }
 
 .weatherImagebox video {
     width: 375px;
     height: auto;
-    box-shadow:  #535252;
-    border-radius: 10px;
-    overflow: visible;
     margin-left: -42px;
 }
 
@@ -81,4 +81,25 @@ body{
     text-align: center;
     border-style: none;
     margin-bottom: 10px;
+    box-shadow: 0 10px 45px #bdbfc0;
 }
+
+select {
+    background-color: #f4f7f8
+    }
+
+@keyframes pulse {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    50% {
+        -webkit-transform: scale(1.3);
+        transform: scale(1.3);
+        opacity: 0.5;
+    }
+    100% {
+        -webkit-transform: scale(1.8);
+        transform: scale(1.8);
+    }
+  }
