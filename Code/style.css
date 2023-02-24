@@ -78,6 +78,7 @@ footer {
     text-align: center;
     font-size: 12px;
     margin-top: 15px;
+    bottom: 0;
 }
 
 /* Responsive design - tablet and desktop */
