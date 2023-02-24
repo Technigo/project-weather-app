@@ -31,9 +31,7 @@ search.addEventListener("click", () => {
 
   if (city === "") return;
 
-  fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${APIkey}`
-  )
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${APIkey}`)
     .then((response) => {
       return response.json();
     })
@@ -46,19 +44,13 @@ search.addEventListener("click", () => {
 
       // Change weatherIcon based on weather description
       if (json.weather[0].description) {
-        const iconFileName =
-          weatherIcons[json.weather[0].description.toLowerCase()] ||
-          weatherIcons.default;
+        const iconFileName = weatherIcons[json.weather[0].description.toLowerCase()] || weatherIcons.default;
         descriptionToday.innerHTML += `<img src="${iconFileName}" alt="Weather icon">`;
       }
 
-      tempToday.innerHTML = `<h3>${
-        Math.round(json.main.temp * 10) / 10
-      }°C</h3>`;
+      tempToday.innerHTML = `<h3>${Math.round(json.main.temp * 10) / 10}°C</h3>`;
 
-      feelsLike.innerHTML = `<h3 class="temp">Feels like ${
-        Math.round(json.main.feels_like * 10) / 10
-      }°C</h6>`;
+      feelsLike.innerHTML = `<h3 class="temp">Feels like ${Math.round(json.main.feels_like * 10) / 10}°C</h6>`;
 
       const sunrise = json.sys.sunrise;
       const sunriseTimepoint = new Date(sunrise * 1000);
@@ -91,7 +83,6 @@ search.addEventListener("click", () => {
   // Five day weather forecast
 
   const fiveDayApiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=7916e2ff30e82c8f4b79258c3235d9c2`;
-
   const weatherFiveDays = document.getElementById("weather-five-days");
 
   const fiveDayForecast = () => {
@@ -101,10 +92,9 @@ search.addEventListener("click", () => {
       })
 
       .then((fiveDayArray) => {
-        const filteredForecast = fiveDayArray.list.filter((item) =>
-          item.dt_txt.includes("12:00")
-        );
+        const filteredForecast = fiveDayArray.list.filter((item) => item.dt_txt.includes("12:00"));
 
+        weatherFiveDays.innerHTML = "";
         filteredForecast.forEach((eachDay) => {
           weatherFiveDays.innerHTML += generateHTMLForForecast(eachDay);
         });
@@ -117,9 +107,7 @@ search.addEventListener("click", () => {
   function generateHTMLForForecast(day) {
     const weekdayUnix = day.dt;
     const weekdayLong = new Date(weekdayUnix * 1000);
-    const weekdayName = weekdayLong
-      .toLocaleDateString("en-US", { weekday: "long" })
-      .toLowerCase();
+    const weekdayName = weekdayLong.toLocaleDateString("en-US", { weekday: "long" }).toLowerCase();
     const dayTemp = `${Math.round(day.main.temp * 10) / 10}`;
 
     // And creates HTML code that is returned
