@@ -54,7 +54,7 @@ main {
     align-items: center;
     gap:20px;
     padding: 10px 0;
-    font-size: 10px;
+    font-size: 15px;
 }
 
 .current-weather {
@@ -115,10 +115,6 @@ main {
     font-weight:400;
 }
 
-p {
-    color: #306a7a;
-}
-
 .forecast-img {
     width: 40px;
 }
@@ -131,7 +127,7 @@ footer {
     opacity: 50%;
     color: white;
     font-size: 14px;
-    height: 8vh;
+    height: 10vh;
 }
 
 /* TABLET */
@@ -210,12 +206,9 @@ footer {
     }
 
     .sunrise-sunset {
-        font-size: 20px;
-        
-        
+        font-size: 20px; 
     }
       
-
     .current-weather {
         position: relative;
         border-radius: 20% 20% 0 0; 
@@ -238,7 +231,7 @@ footer {
             -webkit-box-shadow: 1px 5px 30px -2px rgb(115 110 110 / 76%);
             -moz-box-shadow: 1px 5px 30px -2px rgba(115, 110, 110, 0.76);
     }
-    /*added margin-top auto bc looked better?*/
+
     footer{
         align-self: stretch; 
         margin-top: auto;

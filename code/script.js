@@ -12,11 +12,6 @@ const success = (pos) => {
   const crd = pos.coords;
   let latitude = crd.latitude;
   let longitude = crd.longitude;
-  console.log("Your current position is:");
-  console.log(`Latitude : ${crd.latitude}`);
-  console.log(`Longitude: ${crd.longitude}`);
-  console.log(`More or less ${crd.accuracy} meters.`);
-  console.log(latitude, longitude);
   return (
     getCurrentWeatherData(latitude, longitude),
     getForecastWeatherData(latitude, longitude)
@@ -67,22 +62,25 @@ const weatherTypes = [
 const changeBackgroundPicture = (weatherTypeJson) => {
   weatherTypes.forEach((weatherType) => {
     if (weatherType === weatherTypeJson) {
+
       document.querySelector(
         "body"
-      ).style.backgroundImage = `url('/project-weather-app/code/images/${weatherType}.jpg')`;
+      ).style.backgroundImage = `url('/code/images/${weatherType}.jpg')`;
 
       createImage(
         "current-weather-img",
-        `/project-weather-app/code/images/${weatherType}.jpg`,
+        `/code/images/${weatherType}.jpg`,
         weatherType,
         currentWeather
       );
+
       createImage(
         "forecast-background-img",
-        `/project-weather-app/code/images/${weatherType}.jpg`,
+        `/code/images/${weatherType}.jpg`,
         weatherType,
         forecast
       );
+
     }
   });
 };
@@ -95,7 +93,6 @@ const getCurrentWeatherData = (latitude, longitude) => {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
       createImage(
         "big-icon",
         `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
@@ -165,15 +162,12 @@ const getForecastWeatherData = (latitude, longitude) => {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
       const filteredList = data.list.filter((element) => {
-        console.log(new Date(Date.now()).getDay());
         return (
           new Date(element["dt_txt"]).getHours() === 9 &&
           new Date(element["dt_txt"]).getDay() !== new Date(Date.now()).getDay()
         );
       });
-      console.log(filteredList);
 
       filteredList.forEach((element) => {
         createElement(

@@ -1,8 +1,7 @@
 # Weather App
 
-The project was to work in pairs and make a weather-app. We worked witch javascript, fetch api and date. We also learned about working on branches on git.
+The project was to work in pairs and make a weather-app. We worked witch javascript, fetching api, getting the data from the fetched json and modifing the dom. We learned about the Date function and different ways of formatting the date. We also learned about working on branches on git.
 
-It was a pair project where the goal was to practice fetching apis, getting the data from the fetched json and modifing the dom.
 The app loads the coordinates based on the geolocation and shows the current weather details in the top half of the page (city, current temperature, weather type and sunrise and sunset). If the location service are turned off on the user's computer it will show Stockholm by default.
 The forecast shows the average temperature for the next 5 days at 9am each day.
 The background changes based on the weather type.
@@ -22,8 +21,8 @@ Photo by Gabriela Palai: https://www.pexels.com/photo/person-standing-on-brown-w
 ## The problem
 
 We approached the task by discussing which design we would want to use and then together in a live share we set up the basic html structure including classes and fetched all the necessary data.
-Further things to improve: A dropdown can be added that includes the city names, so that the
+Further things to improve: A dropdown can be added that includes the city names, so that the user can change their location.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+
