@@ -100,8 +100,6 @@ const weatherForecastData = (city) => {
             }); 
         })
 }
-
-weatherForecastData('Stockholm');
  
 //Learn how to get symbols from the api
 //Learn how to get a search word to show an image from unsplash
@@ -125,7 +123,7 @@ const searchFunction = () => {
         getSunriseSunsetData(searchedCity);
         getMainWeather(searchedCity);
         //weatherForecastData(searchedCity);      //Uncomment när allt är fixat
-        todaysWeatherFeature(searchedCity);     //Uncomment när allt är fixat
+        todaysWeatherFeature(searchedCity);
 
         //Clears field & hides the input field:
         inputField.value = "";
