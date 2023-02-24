@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RainCheck</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+  
+  <!-- Today's weather -->
+  <section class = "weather-today-wrapper" id = "weather-today-wrapper">
+    <div class = "weather-today-background" id = "weather-today-background">
+      <img class ="weather-today-image" id="weather-today-image" src="" />
+      <div class = "weather-today-info">
+        <p class = "temperature" id = "temperature"></p>
+        <p class = "city" id ="city"></p>
+        <p class = "weather-description" id = "weather-description"> </p>
+        <p class = "feels-like" id = "feels-like">feels like </p>
+      </div> 
+      <div class="sun-stuff">
+        <p class = "sunrise" id = "sunrise">sunrise: </p>
+        <p class = "sunset" id = "sunset">sunset: </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Forecast -->
+  <section class = "forecast" id = "forecast">
+    <div class = "forecast-wrapper" id = forecast-wrapper>
+    </div>
+  </section>
+
+    <section class="additional-cities">
+      <div class ="ca" id ="ca">
+        <!-- <h1 class = "california-temperature" id = "ca-temperature"></h1>
+        <h2 class = "ca-city" id ="ca-city"></h2>
+        <h3 class = "ca-weather-description" id = "ca-weather-description"></h3> -->
+      </div>
+      <div class = "lk" id = "lk">
+        <!-- <h1 class = "colombo-temperature" id = "lk-temperature"></h1>
+        <h2 class = "lk-city" id ="lk-city"></h2>
+        <h3 class = "lk-weather-description" id = "lk-weather-description"></h3> -->
+      </div>
+      <div class ="jp" id ="jp">
+        <!-- <h1 class = "tokyo-temperature" id = "jp-temperature"></h1>
+        <h2 class = "jp-city" id ="jp-city"></h2>
+        <h3 class = "jp-weather-description" id = "jp-weather-description"></h3> -->
+      </div>
+    </section>
+
+    <footer> A weather app designed by Jennifer Feenstra and Joanna Philips</footer>
+  <script src="app.js"></script>
+</body>
+</html>

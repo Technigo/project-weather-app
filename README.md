@@ -1,12 +1,11 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+We made a weather app using HTML, CSS and JS. Our goal was to display the weather in stockholm using information retrieved from an API.
+Our API
+http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=0885d110db76ae5dbaae0c2672772fdf
 
 ## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We worked in groups this time. First we made our API and wrote the basic HTML document, then we did the basic Javascript for the main weather display of stockholm. The we did a feature freeze and seperately worked on sections of the weather app after which we merged the changes and finished the CSS together. 
 
 ## View it live
 
