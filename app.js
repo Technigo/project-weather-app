@@ -37,13 +37,7 @@ fetch(API_today)
     })
     .then((json) => {
         //temperature
-        // let rawTemp = json.main.temp 
-        // let roundedTemp = rawTemp.toFixed(0)
-        // temperature.innerHTML = `<p>${roundedTemp}&deg;C</p>`
-
         temperature.innerHTML = `<p>${(json.main.temp).toFixed(0)}&deg;C</p>`
-
-    
         //feels like
         feelsLike.innerHTML += `<span>${json.main.feels_like.toFixed(0)}&deg;C</span>`
         //city
@@ -77,37 +71,27 @@ fetch(API_today)
 
        //Change style based on weather conditions
        let weatherCondition = json.weather.map((element) => (element.main))
-       console.log(weatherCondition)
        let todayImageSrc = "";
        let todayWrapperBg = "";
 
        if (weatherCondition.includes("Clouds")) {
             todayImageSrc = "assets/clouds.png"  
             todayWrapperBg = "weather-today-wrapper weather-today-wrapper-clouds"        
-
        } else if (weatherCondition.includes("Rain" || "Drizzle")) {
             todayImageSrc = "assets/rain.png"  
             todayWrapperBg = "weather-today-wrapper weather-today-wrapper-rain"        
-
        } else if (weatherCondition.includes("Thunderstorm")) {  
             todayImageSrc = "assets/thunderstorm.png"  
             todayWrapperBg = "weather-today-wrapper weather-today-wrapper-thunderstorm" 
-
-
        } else if (weatherCondition.includes("Snow")) {
             todayImageSrc = "assets/snow.png"  
             todayWrapperBg = "weather-today-wrapper weather-today-wrapper-snow" 
-
-           
        } else if (weatherCondition.includes("Clear")) {
             todayImageSrc = "assets/clear.png"  
             todayWrapperBg = "weather-today-wrapper weather-today-wrapper-clear" 
-
-
        } else {
             todayImageSrc = ""  
             todayWrapperBg = "weather-today-wrapper weather-today-wrapper-neutral"
-
        }
 
        weatherTodayWrapper.setAttribute("class", todayWrapperBg);
@@ -124,7 +108,7 @@ fetch(API_today)
          ca.innerHTML += `<p>${(json.main.temp).toFixed(0)}&deg;C</p>`
          //city
          let caCurrentCity = json.name
-         ca.innerHTML += `<p>${caCurrentCity}, California </p>`
+         ca.innerHTML += `<p>${caCurrentCity}, </br> California </p>`
          //weather description
          let caWeatherDes = json.weather.map((element) => (element.description))
          ca.innerHTML += `<p>${caWeatherDes}</p>`;
@@ -143,7 +127,7 @@ fetch(API_today)
          lk.innerHTML += `<p>${(json.main.temp).toFixed(0)}&deg;C</p>`
          //city
          let lkCurrentCity = json.name
-         lk.innerHTML += `<p>${lkCurrentCity},  </br> Sri Lanka </p>`
+         lk.innerHTML += `<p>${lkCurrentCity}, </br> Sri Lanka </p>`
          //weather description
          let lkWeatherDes = json.weather.map((element) => (element.description))
          lk.innerHTML += `<p>${lkWeatherDes}</p>`;
@@ -160,7 +144,7 @@ fetch(API_today)
          jp.innerHTML += `<p>${(json.main.temp).toFixed(0)}&deg;C</p>`
          //city
          let jpCurrentCity = json.name
-         jp.innerHTML += `<p>${jpCurrentCity}, Japan </p>`
+         jp.innerHTML += `<p>${jpCurrentCity}, </br> Japan </p>`
          //weather description
          let jpWeatherDes = json.weather.map((element) => (element.description))
          jp.innerHTML += `<p>${jpWeatherDes}</p>`;
@@ -195,18 +179,8 @@ fetch(API_forecast)
                 <span class = "forecast-temperature"> ${temp}</span>
             </div>
             `
-            
-            
-           
         })
     });
 
-    //const snowLink = "https://media3.giphy.com/media/ciYfVwZxBD0wPrO6nb/giphy.gif?cid=ecf05e47bdmeq3f5w8oxm7pz21kbeanhc2eos4qyx91tcg9v&rid=giphy.gif&ct=s%27"
-
-            // rain const snowLink = "https://media.giphy.com/media/d2jjHeKDynBohPtm/giphy.gif"
-
-            // const snowLink = "https://media.giphy.com/media/l0IsHVDSeZkk2WOZy/giphy.gif"
-            //     const linearStyle = 'linear-gradient(#e66465, #9198e5)';
-            //     weatherTodayWrapper.style.background = 'url('+snowLink+') center right  / contain no-repeat, '+linearStyle+' no-repeat';
       
    
