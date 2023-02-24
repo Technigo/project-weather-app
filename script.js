@@ -1,4 +1,9 @@
 const testy = document.getElementById('testy');
+const searchMenuBtn = document.getElementById('searchMenuBtn');
+const closeSearchMenu = document.getElementById('closeSearchMenu');
+const searchBtn = document.getElementById('searchBtn');
+const inputField = document.getElementById('inputField');
+
 const weatherForecast = document.getElementById('weatherForecast')
 const forecastWeekdays = document.getElementById('forecastWeekdays')
 const forecastIcon = document.getElementById('forecastIcon')
@@ -39,7 +44,12 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm&units=metric&
         console.log(`error caught:`, err)
     })
 
+<<<<<<< HEAD
 const getSunriseSunsetData = () => {
+=======
+
+const getSunriseSunsetData = (city) => {
+>>>>>>> f7b9199ebf8250fc63f55767531af1cc2748b7a9
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`)
         .then((response) => {
             return response.json()
@@ -47,16 +57,15 @@ const getSunriseSunsetData = () => {
         .then((json) => {
             //console.log(`json:`, json)
 
-            //const sunriseUnix = json.sys.sunrise;                   // Unix timestamp
             const sunriseTime = new Date(json.sys.sunrise * 1000);       //Gives us the time in "human" form (as a date), mult. by 1000 to get it in ms.
             const sunriseShort = sunriseTime.toLocaleTimeString([], { timeStyle: 'short' }).replace("AM", "").replace("PM", "");        //Transforms it into just the Hour/minutes and AM/PM. Select the short variant to get the time with minutes and not seconds.
             const sunsetTime = new Date(json.sys.sunset * 1000);
             const sunsetShort = sunsetTime.toLocaleTimeString([], { timeStyle: 'short' }).replace("AM", "").replace("PM", "");          //Tar bort AM och PM, kolla om det finns bättre sätt.
 
             //Modifying the HTML based on our input:
-            sunriseText.innerHTML += `<p>sunrise</p>
+            sunriseText.innerHTML = `<p>sunrise</p>
                                         <p class="time-data">${sunriseShort}</p>`;
-            sunsetText.innerHTML += `<p>sunset</p>
+            sunsetText.innerHTML = `<p>sunset</p>
                                     <p class="time-data">${sunsetShort}</p>`;
         })
         .catch((err) => {
@@ -64,11 +73,14 @@ const getSunriseSunsetData = () => {
         })
 }
 
-getSunriseSunsetData();
 
 
 const weatherForecastData = () => {
+<<<<<<< HEAD
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=${apiKey}`)
+=======
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=c480de5f69ca98d1993a4dae3213642e`)
+>>>>>>> f7b9199ebf8250fc63f55767531af1cc2748b7a9
         .then((forecastResponse) => {
             return forecastResponse.json();
         })
@@ -96,8 +108,22 @@ weatherForecastData();
  
 //Learn how to get symbols from the api
 //Learn how to get a search word to show an image from unsplash
+<<<<<<< HEAD
+=======
+   
+const toggleSearchField = () => {
+    //This just controls the toggling between opening and closing the search field
+    const searchToggler = document.getElementById('search-toggler');
+    searchToggler.classList.toggle('hidden');
+    closeSearchMenu.classList.toggle('hidden');
+    searchMenuBtn.classList.toggle('hidden');
+>>>>>>> f7b9199ebf8250fc63f55767531af1cc2748b7a9
 
+    //Goes back to default after toggling
+    getSunriseSunsetData(city);
+}
 
+<<<<<<< HEAD
 
 const gardientWarmCold = () => {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`)
@@ -122,3 +148,35 @@ const gardientWarmCold = () => {
 }
 
 gardientWarmCold()
+=======
+const searchFunction = () => {
+    //This is for storing the user input from the search and pushing it into our fetching weather function later on
+    
+    let searchedCity = inputField.value
+    console.log(`searchedCity: ${searchedCity}`)
+
+        //Use the city searched and inject into ""fetchWeather""" function:
+        //weather.fetchWeather(searchedCity); //Skriv om till den vi använder
+        getSunriseSunsetData(searchedCity);
+        //weatherForecastData(searchedCity);
+
+        //Clears field & hides the input field:
+        inputField.value = "";
+}
+
+getSunriseSunsetData(city);
+
+
+//Eventlistener to toggle search field:
+searchMenuBtn.addEventListener('click', toggleSearchField)
+closeSearchMenu.addEventListener('click', toggleSearchField)
+//Eventlistener to search through enter key also
+searchBtn.addEventListener('click', searchFunction)
+//Eventlistener to search through enter key also
+inputField.addEventListener('keyup', function (event) {
+    if (event.key == "Enter") {
+        searchFunction();
+      }
+}
+);
+>>>>>>> f7b9199ebf8250fc63f55767531af1cc2748b7a9
