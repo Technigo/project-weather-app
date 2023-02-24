@@ -14,16 +14,6 @@ body{
     font-family: 'Montserrat', sans-serif;
 }
 
-.vidcontainer {
-    position: relative;
-    align-items: center;
-  }
-
-  .weathervideo{
-    width: 100%;
-    height: auto; 
-  }
-
 .weatherWindow{
     background-color: #F4F7F8;
     width: 291px;
@@ -41,12 +31,13 @@ body{
 .weatherImagebox {
     margin-top: 45px;
     margin-bottom: 12px;
+    width: 70px;
 }
 
 .middleSection {
     width: 100%;
     color: var(--basecolor);
-    font-size: 34px;
+    font-size: 24px;
     font-weight: bold;
     margin-bottom: 32px;
 }
@@ -62,14 +53,22 @@ body{
     height: 24px;
 }
 
-.weatherImagebox {
-    width: 70px
+.weatherImagebox img {
+    width: 80px;
+    height: auto;
+    position: absolute;
+    margin-top: 15px;
 }
 
-.weatherImagebox img {
-    width: 100%;
+.weatherImagebox video {
+    width: 375px;
     height: auto;
+    box-shadow:  #535252;
+    border-radius: 10px;
+    overflow: visible;
+    margin-left: -42px;
 }
+
 .morecity {
     margin: 15px;
     width: 100%;
@@ -79,5 +78,5 @@ body{
     width: 100%;
     text-align: center;
     border-style: none;
-
+    margin-bottom: 10px;
 }

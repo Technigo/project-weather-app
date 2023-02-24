@@ -94,8 +94,6 @@ const changeWeatherDescription = (weatherDescription, city) => {
 
 }
 
-
-
 // create function to fetch next five days weatherforecast.
 const fetchWeekdaysAPI = (City,Country) => {
     let APIlink = `https://api.openweathermap.org/data/2.5/forecast?q=${City},${Country}&units=metric&cnt=80&APPID=d4ab1d4e927071e157d6ad483d6d0ddb`
@@ -156,6 +154,17 @@ const start = () => {
     fetchWeatherAPI(city,country);
     fetchWeekdaysAPI(city,country);
 }
+
+
+//navigator.geolocation.getCurrentPosition(showPosition);
+// console.log(navigator.geolocation.getCurrentPosition(showPosition))
+// function showPosition(position) {
+//     console.log(position)
+//     console.log( "Latitude: " + position.coords.latitude +
+//     "<br>Longitude: " + position.coords.longitude)
+    
+    
+//   }
 
 start()
 dropmenu.addEventListener("change",moreCityWeather)
