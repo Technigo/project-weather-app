@@ -145,7 +145,7 @@ let userCity = "";
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-  userCity = cityInput.value.trim();
+  userCity = cityInput.value.trim(); 
 
   fetch(`http://api.openweathermap.org/data/2.5/weather?q=${userCity}&units=metric&appid=6dc9ca16706cabb0c8c9d20011825ab1`)
     .then(response => response.json())
