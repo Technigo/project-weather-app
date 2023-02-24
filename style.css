@@ -95,7 +95,7 @@ body{
     /* border:solid green; */
     padding:0;
     margin: 0 25px 0 25px;
-    object-fit:cover;
+   
 }
 
 .forecast-row{
@@ -108,6 +108,7 @@ body{
     margin:5px 0;
     padding: 0 10px;
     background-color: var(--neutral-color2);
+    
     border-radius:20px;
     
 }
@@ -122,6 +123,7 @@ body{
 .additional-cities{
     display:flex;
     flex-direction: row;
+    justify-content: center;
 }
 .ca{
     width:200px;
@@ -180,3 +182,38 @@ body{
     background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
 }
 
+footer {
+ color:white;
+ text-align: center; 
+}
+
+@media only screen and (min-width: 1024px) {
+    .forecast-row{
+        display:flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        
+        max-width: 600px;
+        font-size: 1.5rem;
+        margin:5px 20px;
+        padding:20px;
+        
+        border-radius:20px;
+        
+    }
+    .forecast-wrapper{
+        display:flex;
+        flex-direction: row;
+        padding:0;
+        margin: 25px;
+        justify-content: center;
+    }
+    
+    .additional-cities{
+        display:flex;
+        flex-direction: row;
+        justify-content:space-evenly;
+        padding: 25px 300px;
+    }
+}
