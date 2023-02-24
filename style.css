@@ -46,22 +46,17 @@ h5 {
 font-size: 20px;
 display: flex;
 justify-content: left;
-margin-left: 50px;
+margin: 20px;
+}
 
-  }
-
-footer {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 0;
-  margin-right: auto;
-  margin-left: auto;
-  font-weight: bold;
-  
+p {
+justify-content: center;
+display: flex;
+color: #fdfcdc;
 }
   
   .forecast {
-    margin-bottom: 90px;
+    margin-bottom: 50px;
   }
   
  
