@@ -70,31 +70,6 @@ sup {
   font-size: 35px;
   box-shadow: 0px 1px 10px 2px rgb(216 216 216);
 }
-/*
-.bottom-section {
-    display: flex;
-    justify-content: center;
-}
-
-.forecast {
-    margin-top: 4rem;
-    display: flex;
-}
-
-.forecast p {
-    font-size: 16px;
-}
-
-.forecast p {
-    font-size: 16px;
-}
-
-.forecast img {
-    display: block;
-    height: 1.2rem;
-    margin: 1em 1rem 1em 5rem;   
-}
-*/
 
 .forecast-wrapper {
   display: flex;
