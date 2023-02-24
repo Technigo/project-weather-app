@@ -82,8 +82,9 @@ main {
 .big-icon{
     width:80px;
     position: absolute;
-    top: 0px;
-    right: 0px; 
+    top: 20px;
+    right: 30px;
+    
 }
 
 .forecast {
@@ -114,6 +115,10 @@ main {
     font-weight:400;
 }
 
+p {
+    color: #306a7a;
+}
+
 .forecast-img {
     width: 40px;
 }
@@ -126,7 +131,7 @@ footer {
     opacity: 50%;
     color: white;
     font-size: 14px;
-    height: 10vh;
+    height: 8vh;
 }
 
 /* TABLET */
@@ -164,6 +169,11 @@ footer {
     .sunrise-sunset{
         font-size:20px;
     }
+
+    footer{
+        align-self: stretch; 
+        margin-top: auto;
+}
 }
 
 /* DESKTOP */
@@ -178,12 +188,13 @@ footer {
     }
 
     .big-icon {
-        width: 200px;
+        width: 150px;
     }
-
+/*added margin-top to get some space in the top*/
     main{
         height: 900px;
         width: 500px; 
+        margin-top: 30px;
     }
 
     .temperature {
@@ -200,7 +211,10 @@ footer {
 
     .sunrise-sunset {
         font-size: 20px;
+        
+        
     }
+      
 
     .current-weather {
         position: relative;
@@ -224,12 +238,11 @@ footer {
             -webkit-box-shadow: 1px 5px 30px -2px rgb(115 110 110 / 76%);
             -moz-box-shadow: 1px 5px 30px -2px rgba(115, 110, 110, 0.76);
     }
-
-    .forecast-background-img {
-        border-radius: 0 0 20% 20%;
-    }
-
+    /*added margin-top auto bc looked better?*/
     footer{
-        align-self: stretch;
+        align-self: stretch; 
+        margin-top: auto;
     }
-}
+    }
+
+
