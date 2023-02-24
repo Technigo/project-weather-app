@@ -70,10 +70,22 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
     // This part makes the json show the temperature from 12:00 each day
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
     console.log(filteredForecast)
+
+
     filteredForecast.forEach((fiveDayForecast) => {
+
+    //get correct format for day 
+    const dateFilteredForecast = new Date(fiveDayForecast.dt_txt)
+    console.log(dateFilteredForecast)
+    
+    const options = { weekday: "long" };
+    const weekdayFilteredForecast = new Intl.DateTimeFormat("en-UK", options).format(dateFilteredForecast)
+    console.log(weekdayFilteredForecast)
+
+    //print days & forecast 
     weekdays.innerHTML += 
     `<h3>
-    <span class='left'>${fiveDayForecast.dt_txt}</span>
+    <span class='left'>${weekdayFilteredForecast}</span>
     <span class='right'>${(Math.round(fiveDayForecast.main.temp))}°C</span>
     <hr>
     </h3>`
