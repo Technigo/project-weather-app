@@ -8,7 +8,6 @@
     --active-day-color: #ebe9e9;
 }
 
-
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
@@ -20,9 +19,9 @@ nav {
     margin-bottom: 50px;
     display: flex;
     align-items: center;
-    position:absolute;
-    top: 7%;
-    left: 27%;
+    position: relative;
+    top: -540px;
+    left: 0px;
 }
 
 .search-bar {
@@ -71,6 +70,7 @@ nav {
 .feature-image {
     height: 541px;
     width: 400px;
+    object-fit: cover;
     border-bottom-left-radius: 100% 170px;
     border-bottom-right-radius: 100% 170px;
     opacity: 0.5;
@@ -178,25 +178,24 @@ svg {
     width: 90px;
     height: 90px;
     margin: 5px auto 0 75%;
-    position: absolute;
-    right: 30%;
-    top: 67%;
+    position: relative;
+    right: 30px;
+    top: -215px;
+    cursor: pointer;
+}
+
+.fa-solid {
+    font-size:25px;
 }
 
 .weather-forecast {
-   /*  display: flex;
-    justify-content: space-evenly;
-    align-items: flex-start; */
     padding: 20px;
     text-align: center;
+    position: relative;
+    top: -236px;
 }
 
 .forecast-category {
-  /*   display:none;
-    display: flex;
-    flex-direction: column;
-    justify-content:center;
-    align-items: center; */
     width:125px;
 }
 
@@ -224,6 +223,8 @@ th, td {
 footer {
     text-align: center;
     color: grey;
+    position: relative;
+    top: -253px;
 }
 
 /* To use when hiding something*/

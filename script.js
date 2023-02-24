@@ -12,11 +12,11 @@ const forecastTemp = document.getElementById('forecastTemp')
 const forecastWind = document.getElementById('forecastWind')
 const sunriseText = document.getElementById('sunriseText');
 const sunsetText = document.getElementById('sunsetText');
-const freezing = document.getElementById('freezing-cold') 
-const cold = document.getElementById('cold')
-const mediumCold = document.getElementById('medium-cold')
-const warm = document.getElementById('warm')
-const hot = document.getElementById('hot')
+const night = document.getElementById('night') 
+const dusk = document.getElementById('dusk')
+const dawn = document.getElementById('dawn')
+const morning = document.getElementById('morning')
+const day = document.getElementById('day')
 const tempToday = document.getElementById('tempToday')
 const cityName = document.getElementById('cityName')
 const weatherDescription = document.getElementById('weatherDescription')
@@ -30,21 +30,22 @@ let city = 'Stockholm';
 // Use: `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`
 
 
-fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm&units=metric&APPID=c480de5f69ca98d1993a4dae3213642e')
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`)
     .then((response) => {
         return response.json()
     })
     .then((json) => {
         console.log(`json:`, json)
         let { icon } = json.weather[0];
-        // Store the rounded number in a variable called "round"
-       /*  let round = Math.round(json.main.temp * 10 ) / 10; */
+    
         console.log(json.main.temp.toFixed(0))
         cityName.innerText = `${json.name}`;
         tempToday.innerText += `${json.main.temp.toFixed(0)}`;
         weatherDescription.innerText += `${json.weather[0].description}`;
         mainIcon.innerHTML += `<img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="weather icon" class="main-icon">`
     })
+
+    //MATILDA! HÄR SKA JAG LÄGGA MIN FUNKTION OCH EVENTLISTERNER FÖR ATT KUNDA SKIFTA MELLAN 3 OLIKA STÄDER! JAG ÄR INTE KLAR OCH VÅGAR INTE MERGA DET!
     .catch((err) => {
         console.log(`error caught:`, err)
     })
@@ -148,32 +149,7 @@ inputField.addEventListener('keyup', function (event) {
 }
 );
 
-const gardientWarmCold = () => {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`)
-        .then((response) => {
-            return response.json();
-        })
-        .then((data) => {
-            console.log(data.main.temp.toFixed(0))
-            const value = (data.main.temp.toFixed(0))
-            //GET TIME 
-            if (value >= -20 && value <= -10) {
-                freezing.media = '';
-            } else if (value > -10 && value <= 0) {
-                cold.media = '';
-            } else if (value > 0.00 && value <= 10.00) {
-                mediumCold.media = '';
-            } else if (value > 10.00 && value <= 25.00) {
-                warm.media = '';
-            } else {
-                hot.media = '';
-            }
-        })
-}
-
-gardientWarmCold();
-
-const todaysWeatherStyle = () => {
+const todaysWeatherFeature = () => {
 fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`)
     .then((response) => {
         return response.json();
@@ -189,72 +165,44 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
         console.log(sunsetTime)
         console.log(todaysWeather)
         if (getTime >= sunriseTime && getTime <= sunsetTime) {
+            //During daytime
             if (todaysWeather === 'Clear') {
-                weatherFeature.innerHTML = `<img src="./images/peyman-farmani-pnoCjpuc_As-unsplash.jpeg" alt="image of sunny day" class="feature-image">`
+                weatherFeature.innerHTML = `<img src='https://images.unsplash.com/photo-1617800809985-a4f937ede1b1?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNjMzNTI&ixlib=rb-4.0.3&q=80' alt='' class='feature-image'>`
             } else if (todaysWeather === 'Snow') {
-                weatherFeature.innerHTML = `<img src="./images/gabriel-alenius-USXfF_ONUGo-unsplash.jpeg" alt="image of snowy landscape" class="feature-image">`
+                weatherFeature.innerHTML = `<img src='https://images.unsplash.com/photo-1548777123-e216912df7d8?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNTcyNjE&ixlib=rb-4.0.3&q=80' alt='' class='feature-image'>`
             } else if (todaysWeather === 'Rain') {
-                weatherFeature.innerHTML = `<img scr="./images/jan-willem-FobwhDUgdrk-unsplash.jpeg" alt="image of rainy street" class="feature-image">`
+                weatherFeature.innerHTML = `<img src='https://images.unsplash.com/photo-1541679842955-ff256fc8774e?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNjMxNjI&ixlib=rb-4.0.3&q=80' alt='' class='feature-image'>`
             } else {
-                weatherFeature.innerHTML = `<img scr="./images/daoudi-aissa-Pe1Ol9oLc4o-unsplash.jpeg" alt="image of cloudy sky" class="feature-image">`
+                weatherFeature.innerHTML = `<img src='https://images.unsplash.com/photo-1424111113808-b7be56a9f3d6?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNTczNTA&ixlib=rb-4.0.3&q=80' alt='' class='feature-image'>`
             }
         } else {
+            //During nighttime
             if (todaysWeather === 'Clear') {
-                weatherFeature.innerHTML = `<img src="./images/peyman-farmani-pnoCjpuc_As-unsplash.jpeg" alt="image of sunny day" class="feature-image">`
+                weatherFeature.innerHTML =  `<img src='https://images.unsplash.com/photo-1516571748831-5d81767b788d?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcxNjg0NTk&ixlib=rb-4.0.3&q=80' alt='' class='feature-image'>`
             } else if (todaysWeather === 'Snow') {
-                weatherFeature.innerHTML = `<img src="./images/gabriel-alenius-USXfF_ONUGo-unsplash.jpeg" alt="image of snowy landscape" class="feature-image">`
+                weatherFeature.innerHTML = `<img src='https://images.unsplash.com/photo-1514579683945-ff322fc53bb1?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNjI4MzA&ixlib=rb-4.0.3&q=80' alt='' class='feature-image'>`
             } else if (todaysWeather === 'Rain') {
-                weatherFeature.innerHTML = `<img scr="./images/jan-willem-FobwhDUgdrk-unsplash.jpeg" alt="image of rainy street" class="feature-image">`
+                weatherFeature.innerHTML = `<img src='https://images.unsplash.com/photo-1511294952778-165d813e9eeb?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNTc1MDA&ixlib=rb-4.0.3&q=80' alt='' class='feature-image'>`
             } else {
-                weatherFeature.innerHTML = `<img scr="./images/daoudi-aissa-Pe1Ol9oLc4o-unsplash.jpeg" alt="image of cloudy sky" class="feature-image">`
+                weatherFeature.innerHTML = `<img src='https://images.unsplash.com/photo-1499578124509-1611b77778c8?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNjAxOTY&ixlib=rb-4.0.3&q=80' alt='' class="feature-image">`
             }
-        }  
+        }
+        // ALLA OLIKA GRADIENTS ÄR INTE KLARA ÄN MEN SKA JOBBA PÅ DET IMORGON. FUNKTIONEN FUNKAR DOCK (TROR JAG)
+        const gradientDayNight = () => {
+            if (getTime >= 23 && getTime <= 5) {
+                night.media = '';
+            } else if (getTime > 5 && getTime <= 7) {
+                dawn.media = '';
+            } else if (getTime > 7 && getTime <= 10) {
+                morning.media = '';
+            } else if (getTime > 10 && getTime <= 18) {
+                day.media = '';
+            } else {
+                dusk.media = '';
+            }
+        }
+        gradientDayNight()
     })
 }
-  
-        // DURING DAYTIME
-/*         if (weatherOfTheDay === 'Clear') {
-            icon.innerHTML += `<img src="icons/clear.svg"/>`
-            weatherInStockholm.innerHTML += `Get your sunnies on. ${data.name} is looking rather great today.`
-            console.log('clear')
-        } else if (weatherOfTheDay === 'Rain') {
-            icon.innerHTML += `<img src="icons/rain.svg">`
-            weatherInStockholm.innerHTML = `Don't forget your umbrella. It's wet in ${data.name} today.`
-            console.log('rain')
-        } else {
-            icon.innerHTML += `<img src="icons/cloud.svg">`
-            weatherInStockholm.innerHTML = `Light a fire and get cosy. ${data.name} is looking grey today.`
-            console.log('cloud')
-        } */
-//DURING NIGHT TIME
 
-/* })} */
-
-/* function getTimestampInSeconds() {
-    return Math.floor(Date.now() / 1000)
-}
-
-console.log(getTimestampInSeconds)
-
-todaysWeatherStyle() */
-
-// Jag måste fråga min pojkvän om den här, vet inte hur jag ska få den att fungera
-
-
-
-
-// Image based on time of the day
-/* var d = new Date();
-var time = d.getHours();
-var div = document.getElementById('time');
-if (time < 12) {
-    div.style.backgroundImage = "url('morning image')";
-}
-if (time >= 12 && time < 3) {
-    div.style.backgroundImage = "url('afternoon image')";
-}
-if (time > 3) {
-    div.style.backgroundImage = "url('http://a1.dspncdn.com/media/692x/da/dc/4e/dadc4ed5117d4a8cc582199bb3ac9c68.jpg')";
-} */
-
-todaysWeatherStyle ()
+todaysWeatherFeature();
