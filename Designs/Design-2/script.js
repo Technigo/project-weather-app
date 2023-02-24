@@ -26,6 +26,7 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${position.coords.la
 .catch(err => console.error(err))
 })
 
+//Fetching weather data for today
 const getWeather = (data) => {
 
     todayWeather = data.list[0].weather[0].main 
@@ -45,7 +46,7 @@ const getWeather = (data) => {
     <p> Sunrise ${getSunRise.getHours()}.${getSunRise.getMinutes()}</p>
     <p> Sunset ${getSunSet.getHours()}.${getSunSet.getMinutes()}</p>
     `
-    //Five day forecast
+//Fetching five day forecast
     const filteredForecast = data.list.filter(item => item.dt_txt.includes('09:00'))
     //dt is time of data calculation
     
@@ -64,16 +65,11 @@ const getWeather = (data) => {
     })
 }
 
-
-//Display weather.main, weather.description (type of weather) 
-//Display main.temp (current temperature in city XX)
-//Display sys.sunrise (time of sunrise)
-//Display sys.sunset (time of sunset)
-
 //Conditionals for changing styling depending on todaysWeather
 //https://www.w3schools.com/js/js_if_else.asp
+//Weather conditions: https://openweathermap.org/weather-conditions
 const filterWeather = (data) => {
-    if (todayWeather === "Rain") {
+    if (todayWeather === "Rain" || "Thunderstorm" || "Drizzle") {
         body.classList.toggle("rainy")
         text.innerHTML = `
         <img class="img" src="./icons/noun_Umbrella_2030530.svg" alt="umbrella icon">
@@ -94,7 +90,7 @@ const filterWeather = (data) => {
     } else {
         body.classList.remove()
         text.innerHTML = `
-        <h1>Go back to bed.</h1> 
+        <h1>It's wild out there today in ${data.city.name}. Go back to bed.</h1> 
         `
     }
 }

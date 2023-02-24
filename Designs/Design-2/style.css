@@ -12,6 +12,25 @@ body {
     font-family: 'Montserrat', sans-serif;
     padding: 3.2em;
     font-size: 1.8rem;
+    background-color: darkslategrey;
+    color: lightgray;
+}
+
+/*Css animation: Loader
+Link: https://www.w3schools.com/howto/howto_css_loader.asp*/
+.loader {
+    margin-top: 5px;
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 5px;
+    height: 5px;
+    animation: spin 2s linear infinite;
+}
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .sunny {
@@ -22,82 +41,13 @@ body {
 .cloudy {
     background-color: #F4F7F8;
     color: #F47775;
-
 }
 
 .rainy {
     background-color: #A3DEF7;
     color: #164A68;
-
 }
 
-/*Sunny background color #F7E9B9*/
-/*Rainy background color #A3DEF7*/
-/*Cloudy background color #F4F7F8*/
-/*Sunny weather -
-Font colour: #2A5510
-
-Rainy weather -
-Font color: #164A68
-
-Cloudy weather -
-Font color: #F47775*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/***Header(Emma)***/
 .container-header {
     margin-bottom: 3.8rem;
 }
@@ -105,8 +55,6 @@ Font color: #F47775*/
 .container-header p {
     margin-bottom: 0.2em;
 }
-
-/***Main(Emma)***/
 
 .container-text {
     display: flex;
@@ -123,8 +71,6 @@ h1 {
     margin-block: 0.5em;
 }
 
-/***Date(Emma)***/
-
 .container-date ul {
     list-style-type: none;
     padding-left: 0;
@@ -139,8 +85,20 @@ h1 {
 
 /***Media queries***/
 
-/*@media (min-width: 667px) and (max-width: 1024px)*/
+@media (min-width: 668px){
+ 
+    body {
+        font-size: 2.6rem;
+        padding: 4rem;
+    }
 
+    h1 {
+        font-size: 5rem;
+        max-width: 30ch;
+    }
 
+    .container-date ul li {
+        max-width: 60ch;
+    }
 
-/*@media (min-width: 1025px)*/
+}
