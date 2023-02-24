@@ -145,7 +145,7 @@ window.addEventListener("resize", () => {
 
 // current time? if that is greater than x AND les than Y
 //check if the sun has set, if so it's night (mode), if not it's day(mode)
-
+/*
 const bodyCssProps = new CssPropControl(document.body)
   
 let toggle = document.querySelector('#dark-mode-toggle')
@@ -156,4 +156,4 @@ toggle.addEventListener('click', () => {
   bodyCssProps.set('--link', bodyCssProps.get(`--${mode}-link`))
   bodyCssProps.set('--filter', bodyCssProps.get(`--${mode}-filter`))
   bodyCssProps.set('--box-shadow', bodyCssProps.get(`--${mode}-box-shadow`))
-})
+})*/
