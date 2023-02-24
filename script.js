@@ -29,7 +29,7 @@ function roundDecimal(num) {
 
 
 const fetchWeatherAPI = (City,Country) => {
-    let APIlink = `http://api.openweathermap.org/data/2.5/weather?q=${City},${Country}&units=metric&APPID=d4ab1d4e927071e157d6ad483d6d0ddb` 
+    let APIlink = `https://api.openweathermap.org/data/2.5/weather?q=${City},${Country}&units=metric&APPID=d4ab1d4e927071e157d6ad483d6d0ddb` 
     fetch(APIlink)
         .then((response) => {
             return response.json()
