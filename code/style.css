@@ -76,7 +76,6 @@ main {
     height: 100%;
     object-fit:fill;
     filter: blur(2px) brightness(80%);
-
 }
 
 
@@ -84,8 +83,7 @@ main {
     width:80px;
     position: absolute;
     top: 0px;
-    right: 0px;
-    
+    right: 0px; 
 }
 
 .forecast {
@@ -106,7 +104,6 @@ main {
     height: 100%;
     object-fit: fill;
     filter: blur(4.5rem) brightness(80%);
-    
 }
 
 .day{
@@ -141,7 +138,6 @@ footer {
 
     .big-icon {
         width: 200px;
-
     }
 
     .forecast {
