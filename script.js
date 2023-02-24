@@ -16,9 +16,9 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
     data.weather.forEach((weatherDescription) => { //.weather comes from the API - it is an object name
     
     if (weatherDescription.main === 'Clear') {
-        const gradientClear = 'linear-gradient(#F7E9B9 10%, #FC7200)'
-        weatherWrapper.style.background = gradientClear;
-        weatherWrapper.style.color = "#2A5510";
+        const gradientClear = 'linear-gradient(#F7E9B9 10%, #FC7200)' // Sets color and direction of gradient
+        weatherWrapper.style.background = gradientClear; 
+        weatherWrapper.style.color = "#2A5510"; // Color for the text
         weatherWrapper.innerHTML = `
         <div class="clear">
         <img src="./img/sunglasses.svg" alt="sun-glasses icon"></img>
@@ -98,9 +98,9 @@ fetch ('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units
     data.weather.forEach((weatherDescription) => { //.weather comes from the API - it is an object name
     
     if (weatherDescription.main === 'Clear') {
-        const gradientClear = 'linear-gradient(#F7E9B9 10%, #FC7200)'
+        const gradientClear = 'linear-gradient(#F7E9B9 10%, #FC7200)' // Sets color and direction of gradient
         weatherWrapper.style.background = gradientClear;
-        weatherWrapper.style.color = "#2A5510";
+        weatherWrapper.style.color = "#2A5510"; // Color for the text
         weatherWrapper.innerHTML = `
         <div class="clear">
         <img src="./img/sunglasses.svg" alt="sun-glasses icon"></img>

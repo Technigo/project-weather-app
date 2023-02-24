@@ -12,6 +12,7 @@
 .weather-wrapper {
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 
 p {
@@ -19,15 +20,14 @@ p {
     margin: 20px;
 }
 .search {
-    display: flex;
-    justify-content: center;
     font-family: 'Montserrat', sans-serif;
     margin: 20px;
 }
 .searchbar {
     padding: 10px;
     border-radius: 50px;
-    width: 100%;
+    width: 80%;
+    margin: auto 0;
 }
 .clear, .clouds, .rain, .snow, .other {
     font-weight: bold;
@@ -37,5 +37,16 @@ p {
 img {
     width: 100px;
     margin: 20px;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.main-temp {
+    flex-direction: row;    
+    border: solid red 2px;
+}
+
+.main-temp p {
+    text-align: end;
 }
 
