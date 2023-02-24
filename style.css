@@ -30,6 +30,7 @@ h1 {
 }
 
 
+
 .forecast-card { 
 
     display: flex;
@@ -72,3 +73,7 @@ h1 {
   }
 }
 
+.gif-icon {
+  width: 100%;
+  max-width: 100px;
+}
