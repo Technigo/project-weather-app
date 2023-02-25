@@ -4,7 +4,7 @@ const textForecast = document.getElementById("textForecast");
 const weeklyForecast = document.getElementById("weeklyForecast");
 
 // Variables that makes the URL shorter to write in the code
-let urlWeather = "http://api.openweathermap.org/data/2.5/weather?q=Kiruna,Sweden&units=metric&APPID=d37e49016232d41da09ab7080df2faa7";
+let urlWeather = "https://api.openweathermap.org/data/2.5/weather?q=Kiruna,Sweden&units=metric&APPID=d37e49016232d41da09ab7080df2faa7";
 let urlForecast = "https://api.openweathermap.org/data/2.5/forecast?q=Kiruna,Sweden&units=metric&APPID=d37e49016232d41da09ab7080df2faa7";
 
 
