@@ -1,102 +1,99 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 header {
-    background-color: rgb(240, 190, 6);
+  background-color: rgb(240, 190, 6);
 }
 
 li {
-    list-style: none;
+  list-style: none;
 }
 
 a {
-    color: rgb(249, 7, 59);
-    text-decoration: none;
-    padding: 15px;
+  color: rgb(249, 7, 59);
+  text-decoration: none;
+  padding: 15px;
 }
 
 a:hover {
-    color: rgb(129, 9, 148);
-   
+  color: rgb(129, 9, 148);
 }
 
 .navbar {
-    min-height: 90px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 50px;
+  min-height: 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
 }
 
 .nav-branding {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 .nav-link {
-    transition: 0.7s ease;
+  transition: 0.7s ease;
 }
 
 .nav-link:hover {
-    color: rgb(255, 5, 159);
+  color: rgb(255, 5, 159);
 }
 
-.hamburger{
-    display: block;
+.hamburger {
+  display: block;
 }
 
 .bar {
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px auto;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    background-color: blueviolet;
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: blueviolet;
 }
 
 .hamburger.active .bar:nth-child(2) {
-    opacity: 0;
+  opacity: 0;
 }
 
 .hamburger.active .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
+  transform: translateY(8px) rotate(45deg);
 }
 
 .hamburger.active .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
+  transform: translateY(-8px) rotate(-45deg);
 }
 
 .nav-menu {
-    position: fixed; 
-    left: -100%;
-    top: 89px;
-    gap: 0;
-    flex-direction: column;
-    background-color: rgb(240, 190, 6);
-    width: 100%;
-    text-align: center;
-    transition: 0.3s;
+  position: fixed;
+  left: -100%;
+  top: 89px;
+  gap: 0;
+  flex-direction: column;
+  background-color: rgb(240, 190, 6);
+  width: 100%;
+  text-align: center;
+  transition: 0.3s;
 }
 
 .nav-item {
-    margin: 16px 0;
+  margin: 16px 0;
 }
 
 .nav-menu.active {
-    left: 0;
+  left: 0;
 }
 
 .mainWeather {
-    background-image: url();
-    background-size: 100%;
-    padding-top: 100px;
-    padding-bottom: 100px;
-    background-repeat: no-repeat;
-    max-width: 100%;
-    height: auto;
+  background-image: url();
+  background-size: 100%;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-repeat: no-repeat;
+  max-width: 100%;
+  height: auto;
 }
-

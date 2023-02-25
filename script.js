@@ -16,13 +16,14 @@ const navMenu = document.querySelector(".nav-menu");
 hamburger.addEventListener("click", () => {
   hamburger.classList.toggle("active");
   navMenu.classList.toggle("active");
-})
+});
 
-document.querySelectorAll(".nav-link").forEach(n => n.
-addEventListener("click", () => {
-  hamburger.classList.remove("active");
-  navMenu.classList.remove("active");
-}))
+document.querySelectorAll(".nav-link").forEach((n) =>
+  n.addEventListener("click", () => {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
+  })
+);
 
 /* hamburger part */
 
@@ -60,13 +61,13 @@ const fetchWeeklyWeather = (currentCity) => {
 };
 
 const renderCurrentWeather = (data) => {
-  let weatherDescription = data.weather[0].description;
-  let cityName = data.name;
-  let currentTemperature = data.main.temp.toFixed();
+  let weatherDescriptionText = data.weather[0].description;
+  let cityNameText = data.name;
+  let currentTemperatureNumber = data.main.temp.toFixed();
 
-  weatherDescription.innerHTML = `${weatherDescription}`;
-  cityName.innerHTML = `${cityName}`;
-  currentTemperature.innerHTML = `${currentTemperature}°C`;
+  weatherDescription.innerHTML = `${weatherDescriptionText}`;
+  cityName.innerHTML = `${cityNameText}`;
+  currentTemperature.innerHTML = `${currentTemperatureNumber}°C`;
 
   let fetchedSunrise = data.sys.sunrise;
   let sunriseTime = new Date(fetchedSunrise * 1000);
@@ -91,9 +92,9 @@ const renderCurrentWeather = (data) => {
 
   // we could change this to account for the timezone
   if (data.main.dt < data.sys.sunrise && data.main.dt > data.sys.sunset) {
-    weeklyWeather.style.backgroundColor = "white"; // change this
+    weeklyWeather.style.backgroundColor = "gray"; // change this
   } else {
-    weeklyWeather.style.backgroundColor = "black"; // change this
+    weeklyWeather.style.backgroundColor = "white"; // change this
   }
 };
 
@@ -129,32 +130,27 @@ const renderWeeklyWeather = (data) => {
 const updateWeatherPicture = (data) => {
   // background changes depending on the weather type
   let mainWeather = data.weather[0].main;
-  console.log(updateWeatherPicture)
+  console.log(updateWeatherPicture);
 
   if (mainWeather === "Clear") {
     mainWeatherPicture.innerHTML = `
-    <img id="" class="" src="/assets/day-sunny.jpg">`
-
+    <img id="" class="" src="/assets/day-sunny.jpg">`;
   } else if (mainWeather === "Thunderstorm") {
     mainWeatherPicture.innerHTML = `
-    <img id="" class="" src="/assets/night.jpg"/>`
-
-  } else if (mainWeather === "Drizzle" | "Rain") {
+    <img id="" class="" src="/assets/night.jpg"/>`;
+  } else if ((mainWeather === "Drizzle") | "Rain") {
     mainWeatherPicture.innerHTML = `
-    <img id="" class="" src="/assets/night.jpg"/>`
-
+    <img id="" class="" src="/assets/night.jpg"/>`;
   } else if (mainWeather === "Snow") {
     mainWeatherPicture.innerHTML = `
-    <img id="" class="" src="/assets/snow.jpg">`
-
+    <img id="" class="" src="/assets/snow.jpg">`;
   } else if (mainWeather === "Clouds") {
-  mainWeatherPicture.innerHTML = `
-  <img id="" class="" src="./assets/cloudy.jpg"/>`
-
+    mainWeatherPicture.innerHTML = `
+  <img id="" class="" src="./assets/cloudy.jpg"/>`;
   } else {
-  mainWeatherPicture.innerHTML = `
-  <img id="" class="" src="./assets/day.jpg"/>`
-}
+    mainWeatherPicture.innerHTML = `
+  <img id="" class="" src="./assets/day.jpg"/>`;
+  }
 };
 
 fetchCurrentWeather("Malmö");
@@ -168,5 +164,3 @@ changeCityStockholm.addEventListener("click", () => {
   fetchCurrentWeather("Stockholm");
   fetchWeeklyWeather("Stockholm");
 });
-
-
