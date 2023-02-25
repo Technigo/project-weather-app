@@ -10,9 +10,11 @@
 
   <body>
     <section>
-      <div>
+      <header>
+
         <nav class="navbar">
-          <p class="nav-branding">Weather in</p>
+          <p class="nav-branding">Pick a city</p>
+
           <ul class="nav-menu">
             <li class="nav-item"> 
               <a href="#" class="nav-link">Malmö</a>
@@ -21,16 +23,18 @@
               <a href="#" class="nav-link">Stockholm </a>
             </li>
           </ul>
+
           <div class="hamburger">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
           </div>
-          <!-- Alternatively, instead of list we can do a form with an input-->
+
         </nav>
-      </div>
+      </header>
     </section>
-    <section id="mainWeather">
+
+    <section id="mainWeather" class="mainWeather">
       <div id="mainWeatherPicture"></div>
       <div 
       id="currentTemperature"
@@ -42,7 +46,8 @@
       <div id="weatherDescription" class="weatherDescription"></div>
 
       <div class="sun">
-        <div id="sunrise"></div>
+        <div id="sunrise">
+        </div>
         <div id="sunset"></div>
       </div>
     </section>
