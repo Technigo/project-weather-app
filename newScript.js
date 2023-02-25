@@ -101,7 +101,7 @@ const checkWeather = (dataForecast) => {
     }
     
     else {
-      bodySelector.classList.remove(...bodySelector.classList);gi
+      bodySelector.classList.remove(...bodySelector.classList);
       bodySelector.classList.add('rain');
      dailyTextMsg.innerHTML=  `
   <img src="/Designs/Design-2/icons/noun_Umbrella_2030530.svg" alt="">
