@@ -1,16 +1,4 @@
-/* -- import font later --  */
-/* HEX-color codes for use later:
-//Clouds
-#f46a67 - dark red
-#f1b2b2 - light pink
-//Rain
-#85aab6 - grey/light blue
-#0f4767 - dark blue
-#82cdee - light blue
-//Sunny
-#077920 - green
-#f1fe7d - yellow 
-*/
+
 
 :root {
     --primary: #8d5ff0;
@@ -23,37 +11,32 @@
     box-sizing: border-box;
   }
   
-h1 {
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+
+h3 {
+    margin-top: 50px;
 }
-
-h4 {
-    margin-bottom: 20px;
-}
-
-
 
 body {
-    font-family: "Montserrat", "sans-serif";
+    font-family: Arial, Helvetica, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    /* background: #03bafc; - commented out the background by now as I couldn't fix the background picture and this still here*/
-    background-image: url('https://images.unsplash.com/photo-1558486012-817176f84c6d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1804&q=80');
-    /* background-image: url('//https://unsplash.com/photos/bR_-gllg7Bs'); - would like to have a nicer URL than the long one above - don't know how to fix it right now*/
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgb(10, 0, 100) 0%, rgb(136, 119, 176) 100%);
 }
 
     .card {
-        background: #d1cdd0d0;
-        color: rgb(41, 39, 39);
+        background-color: #8278a8;
+        color: #ffffff;
+        opacity: .4;
         border-radius: 30px;
         width: 100%;
         max-width: 420px;
+        padding: 20px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
 
         .search {
@@ -63,9 +46,9 @@ body {
         }
 
         .weather-container {
-        display:flex;
+        display: flex;
         flex-direction: column;
-        align-items: center;
+        flex-flow: column-wrap;
         }
 
             .todays-weather {
@@ -76,13 +59,14 @@ body {
             .day {
                 margin-top: 20px;
                 display: grid;
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 4fr 1fr;
+                border-bottom: 2px dotted;
             }
 
                 .forecast-day {
                     margin: 5px;
                     display: flex;
-                    
+
                 }
 
                 .forecast-temp {
@@ -128,8 +112,14 @@ body {
 /* Media queries  */
 /* --Tablet-- */
 @media (min-width: 667px) and (max-width: 1024px) {
+.card {
+    max-width: 600px;
+}
 }
 
 /* --Desktop-- */
 @media (min-width: 1025px) {
+    .card {
+        max-width: 800px;
+    }
 }
