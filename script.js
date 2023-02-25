@@ -9,6 +9,23 @@ let changeCityStockholm = document.getElementById("cityStockholm");
 let mainWeather = document.getElementById("mainWeather");
 let mainWeatherPicture = document.getElementById("mainWeatherPicture");
 
+/* hamburger part */
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
+
+hamburger.addEventListener("click", () => {
+  hamburger.classList.toggle("active");
+  navMenu.classList.toggle("active");
+})
+
+document.querySelectorAll(".nav-link").forEach(n => n.
+addEventListener("click", () => {
+  hamburger.classList.remove("active");
+  navMenu.classList.remove("active");
+}))
+
+/* hamburger part */
+
 const fetchCurrentWeather = (currentCity) => {
   let currentWeatherLink = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity},Sweden&units=metric&APPID=d73aa5f2cfee2a35632856b10b30a458`;
 
@@ -19,6 +36,7 @@ const fetchCurrentWeather = (currentCity) => {
     .then((data) => {
       console.log(data);
       renderCurrentWeather(data);
+      updateWeatherPicture(data);
     })
     .catch((error) => {
       console.log(error);
@@ -110,31 +128,33 @@ const renderWeeklyWeather = (data) => {
 
 const updateWeatherPicture = (data) => {
   // background changes depending on the weather type
-  let weatherImage = data.weather[0].main;
+  let mainWeather = data.weather[0].main;
+  console.log(updateWeatherPicture)
 
-  if (weatherImage === "Clear") {
-    // https://openweathermap.org/weather-conditions The types should match the main types from this web?
+  if (mainWeather === "Clear") {
     mainWeatherPicture.innerHTML = `
-    <img id="" class="" src="/assets/sun.jpg">`;
-  } else if (weatherImage === "Thunderstorm") {
+    <img id="" class="" src="/assets/day-sunny.jpg">`
+
+  } else if (mainWeather === "Thunderstorm") {
     mainWeatherPicture.innerHTML = `
-    <img id="" class="" src=""/>`;
-  } else if (weatherImage === "Drizzle") {
+    <img id="" class="" src="/assets/night.jpg"/>`
+
+  } else if (mainWeather === "Drizzle" | "Rain") {
     mainWeatherPicture.innerHTML = `
-    <img id="" class="" src="./assets/sun.jpg"/>`;
-  } else if (weatherImage === "Rain") {
+    <img id="" class="" src="/assets/night.jpg"/>`
+
+  } else if (mainWeather === "Snow") {
     mainWeatherPicture.innerHTML = `
-    <img id="" class="" src="./assets/sun.jpg"/>`;
-  } else if (weatherImage === "Snow") {
-    mainWeatherPicture.innerHTML = `
-    <img id="" class="" src="/assets/cloudy.jpg">`;
-  } else if (weatherImage === "Clouds") {
-    mainWeatherPicture.innerHTML = `
-    <img id="" class="" src="./assets/sun.jpg"/>`;
+    <img id="" class="" src="/assets/snow.jpg">`
+
+  } else if (mainWeather === "Clouds") {
+  mainWeatherPicture.innerHTML = `
+  <img id="" class="" src="./assets/cloudy.jpg"/>`
+
   } else {
-    mainWeatherPicture.innerHTML = `
-    <img id="" class="" src="./assets/sun.jpg"/>`;
-  }
+  mainWeatherPicture.innerHTML = `
+  <img id="" class="" src="./assets/day.jpg"/>`
+}
 };
 
 fetchCurrentWeather("Malmö");
@@ -148,3 +168,5 @@ changeCityStockholm.addEventListener("click", () => {
   fetchCurrentWeather("Stockholm");
   fetchWeeklyWeather("Stockholm");
 });
+
+
