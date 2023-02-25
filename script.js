@@ -54,7 +54,6 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
         const tempFormatted = json.main.temp.toFixed(0) // Current temperature shown in Celsius with zero decimals
             sydneyContainer.innerHTML = `<h2>${json.name}</h2>`
             sydneyContainer.innerHTML += `<h1>${tempFormatted}°C</h1>` // Name of the city showing
-            sydneyContainer.innerHTML += `<p>${json.weather[0].main}</p>` // Current weather description
             tempBackground(tempFormatted, sydneyContainer);
             weatherIcon(json, sydneyContainer);
 
@@ -77,10 +76,9 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
             console.log(filteredForecast)
             filteredForecast.forEach((dailyForecast) => {
                 const forecastDay = new Date(dailyForecast.dt*1000);
-                const day = new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(forecastDay); //This changes the index of date to the day of the week
-                const minTempFormatted = dailyForecast.main.temp_min.toFixed(0);
-                const maxTempFormatted = dailyForecast.main.temp_max.toFixed(0);
-                    sydneyContainer.innerHTML += `<p>${day} – ${dailyForecast.weather[0].main}, min ${minTempFormatted}°C / max ${maxTempFormatted}°C</p>`
+                const day = new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(forecastDay);
+                const forecastTempFormatted = dailyForecast.main.temp.toFixed(0);
+                    sydneyContainer.innerHTML += `<p>${day} – ${dailyForecast.weather[0].main}, ${forecastTempFormatted}°C</p>`
             });
         })
     
@@ -100,7 +98,6 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
         const tempFormatted = json.main.temp.toFixed(0)
         singaporeContainer.innerHTML += `<h2>${json.name}</h2>`
         singaporeContainer.innerHTML += `<h1>${tempFormatted}°C</h1>`
-        singaporeContainer.innerHTML += `<p>${json.weather[0].main}</p>`
         tempBackground(tempFormatted, singaporeContainer);
         weatherIcon(json, singaporeContainer);
 
@@ -124,9 +121,8 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
         filteredForecast.forEach((dailyForecast) => {
             const forecastDay = new Date(dailyForecast.dt*1000);
             const day = new Intl.DateTimeFormat('en-US', {weekday: 'short' }).format(forecastDay); //This changes the index of date to the day of the week
-            const minTempFormatted = dailyForecast.main.temp_min.toFixed(0);
-            const maxTempFormatted = dailyForecast.main.temp_max.toFixed(0);
-            singaporeContainer.innerHTML += `<p>${day} – ${dailyForecast.weather[0].main}, min ${minTempFormatted}°C / max ${maxTempFormatted}°C</p>`
+            const forecastTempFormatted = dailyForecast.main.temp.toFixed(0);
+                singaporeContainer.innerHTML += `<p>${day} – ${dailyForecast.weather[0].main}, ${forecastTempFormatted}°C</p>`
         });
     })
 
@@ -145,7 +141,6 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
         const tempFormatted = json.main.temp.toFixed(0) //Change to (0) for no decimals
         johannesburgContainer.innerHTML += `<h2>${json.name}</h2>`
         johannesburgContainer.innerHTML += `<h1>${tempFormatted}°C</h1>`
-        johannesburgContainer.innerHTML += `<p>${json.weather[0].main}</p>`
         tempBackground(tempFormatted, johannesburgContainer);
         weatherIcon(json, johannesburgContainer);
 
@@ -169,9 +164,8 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
         filteredForecast.forEach((dailyForecast) => {
             const forecastDay = new Date(dailyForecast.dt*1000);
             const day = new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(forecastDay); //This changes the index of date to the day of the week
-            const minTempFormatted = dailyForecast.main.temp_min.toFixed(0);
-            const maxTempFormatted = dailyForecast.main.temp_max.toFixed(0);
-            johannesburgContainer.innerHTML += `<p>${day} – ${dailyForecast.weather[0].main}, min ${minTempFormatted}°C / max ${maxTempFormatted}°C</p>`
+            const forecastTempFormatted = dailyForecast.main.temp.toFixed(0);
+                johannesburgContainer.innerHTML += `<p>${day} – ${dailyForecast.weather[0].main}, ${forecastTempFormatted}°C</p>`
         });
     })
 
@@ -190,7 +184,6 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
         const tempFormatted = json.main.temp.toFixed(0) //Change to (0) for no decimals
         londonContainer.innerHTML += `<h2>${json.name}</h2>`
         londonContainer.innerHTML += `<h1>${tempFormatted}°C</h1>`
-        londonContainer.innerHTML += `<p>${json.weather[0].main}</p>`
         tempBackground(tempFormatted, londonContainer);
         weatherIcon(json, londonContainer);
 
@@ -215,9 +208,8 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
         filteredForecast.forEach((dailyForecast) => {
             const forecastDay = new Date(dailyForecast.dt*1000);
             const day = new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(forecastDay); //This changes the index of date to the day of the week
-            const minTempFormatted = dailyForecast.main.temp_min.toFixed(0);
-            const maxTempFormatted = dailyForecast.main.temp_max.toFixed(0);
-            londonContainer.innerHTML += `<p>${day} – ${dailyForecast.weather[0].main}, min ${minTempFormatted}°C / max ${maxTempFormatted}°C</p>`
+            const forecastTempFormatted = dailyForecast.main.temp.toFixed(0);
+                londonContainer.innerHTML += `<p>${day} – ${dailyForecast.weather[0].main}, ${forecastTempFormatted}°C</p>`
         });
     })
 
@@ -237,7 +229,6 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
     const tempFormatted = json.main.temp.toFixed(0) //Change to (0) for no decimals
     vancouverContainer.innerHTML += `<h2>${json.name}</h2>`
     vancouverContainer.innerHTML += `<h1>${tempFormatted}°C</h1>`
-    vancouverContainer.innerHTML += `<p>${json.weather[0].main}</p>`
     tempBackground(tempFormatted, vancouverContainer);
     weatherIcon(json, vancouverContainer);
 
@@ -261,9 +252,8 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
         filteredForecast.forEach((dailyForecast) => {
             const forecastDay = new Date(dailyForecast.dt*1000);
             const day = new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(forecastDay); //This changes the index of date to the day of the week
-            const minTempFormatted = dailyForecast.main.temp_min.toFixed(0);
-            const maxTempFormatted = dailyForecast.main.temp_max.toFixed(0);
-            vancouverContainer.innerHTML += `<p>${day} – ${dailyForecast.weather[0].main}, min ${minTempFormatted}°C / max ${maxTempFormatted}°C</p>`
+            const forecastTempFormatted = dailyForecast.main.temp.toFixed(0);
+                vancouverContainer.innerHTML += `<p>${day} – ${dailyForecast.weather[0].main}, ${forecastTempFormatted}°C</p>`
         });
     })
 
@@ -284,7 +274,6 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
         const tempFormatted = json.main.temp.toFixed(0) //Change to (0) for no decimals
         minneapolisContainer.innerHTML += `<h2>${json.name}</h2>`
         minneapolisContainer.innerHTML += `<h1>${tempFormatted}°C</h1>`
-        minneapolisContainer.innerHTML += `<p>${json.weather[0].main}</p>`
         tempBackground(tempFormatted, minneapolisContainer);
         weatherIcon(json, minneapolisContainer);
 
@@ -308,8 +297,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
         filteredForecast.forEach((dailyForecast) => {
             const forecastDay = new Date(dailyForecast.dt*1000);
             const day = new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(forecastDay); //This changes the index of date to the day of the week
-            const minTempFormatted = dailyForecast.main.temp_min.toFixed(0);
-            const maxTempFormatted = dailyForecast.main.temp_max.toFixed(0);
-            minneapolisContainer.innerHTML += `<p>${day} – ${dailyForecast.weather[0].main}, min ${minTempFormatted}°C / max ${maxTempFormatted}°C</p>`
+            const forecastTempFormatted = dailyForecast.main.temp.toFixed(0);
+                minneapolisContainer.innerHTML += `<p>${day} – ${dailyForecast.weather[0].main}, ${forecastTempFormatted}°C</p>`
         });
     });
