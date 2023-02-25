@@ -1,6 +1,4 @@
-.weather-forecast {
-    display: flex;
-    justify-content: space-evenly;
+.background-top-gradient, #switchBtn {
     background: linear-gradient(-30deg, #FFAD72, #F76D5E, #D82632, #A50021);
 	background-size: 600% 600%;
 	animation: gradient 10s ease infinite;

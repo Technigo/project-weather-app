@@ -138,6 +138,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
     .then((data) => {
 
         const featureImage = document.querySelector('.feature-image');
+        const backgroundTopGradient = document.getElementById('backgroundTopGradient');
 
 
         const todaysWeather = data.weather[0].main

@@ -18,12 +18,12 @@
 
     <div class="container">
 
-    <!-- <div class="background-top"></div> -->
+        <!-- The top background (gradient + image) -->
+        <div id="backgroundTopGradient" class="background-top-gradient"></div>
+        <div id="weatherFeature" class="feature-image"></div>
 
-         <div id="weatherFeature" class="feature-image"></div>
 
-
-        <!-- Navbar with the search button that turns into a search bar and btn-->
+            <!-- Navbar with the search button that turns into a search bar and btn-->
             <nav id="navSearch" class="nav">
             
                 <button type="button" class="search-button hidden" title="search" id="closeSearchMenu">     <!-- Turns into an x when we want to close the search field-->
@@ -55,11 +55,6 @@
                 </div>
             </nav>
 
-   
-
-    <!-- For testing, hidden now, connected to js, remove later -->
-    <!--  <div id="testy" class="hidden">TO REMOVE LATER</div> -->
-
     <!-- Main section: city, temp, sun etc -->
     <main class="mainWrapper">
         <div class="tempText">
@@ -75,11 +70,12 @@
     </main>
 
 
-        <!-- The button for switching between our favourite cities -->
 
     <!-- The button for switching between our favourite cities -->
     <div id="switch" class="switch-section">
-        <button id="switchBtn" type="button" title="switch"><i class="fa-solid fa-chevron-right"></i></button>
+        <button id="switchBtn" type="button" title="switch">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
     </div>
 
     <!-- Forecast section -->

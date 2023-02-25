@@ -2,9 +2,16 @@
 
 /*Variables*/
 :root {
+    /*Colors:*/
     --switch-button-color:  #757AFF;
-    --container-color:  #ffffff;    /*just to see, remove later, it should be white*/
+    --container-color:  #ffffff;   
     --top-color:  #282c91;         /*just to see, remove later, it should be dependent on weather etc*/
+
+    /*Dimensions:*/
+    --top-background-bottom-position: 335px;
+
+    /*Other:*/
+    --top-background-opacity: 0.7;
 }
 
 body {
@@ -42,11 +49,11 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
-    height: 875px;
+    height: 830px;
 }
 
 
-/* Sparade min gamla styling ifall jag har tänkt fel:
+/* Sparade min gamla styling ifall jag har tänkt fel.   TA BORT SEN
 .background-top {
    background: url(https://images.unsplash.com/photo-1516571748831-5d81767b788d?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcxNjg0NTk&ixlib=rb-4.0.3&q=80);
    background-size: cover;
@@ -69,7 +76,7 @@ body {
     */
 
 
-/* Sparade din gamla styling ifall jag har tänkt fel:
+/* Sparade din gamla styling ifall jag har tänkt fel:       TA BORT SEN.
 .feature-image {
     height: 541px;
     width: 400px;
@@ -80,15 +87,27 @@ body {
     position: relative;
 }*/
 
-.feature-image {
+.feature-image {                /*Uses a background img placed over the gradient*/
     background: url('');        /*Set by JS in todaysWeatherFeature*/
     background-size: cover;
     background-position: 50%;
+    opacity: var(--top-background-opacity);
     height: 800px;
     width: 800px;
     border-radius: 50%;
     position: absolute;
-    bottom: 355px;
+    bottom: var(--top-background-bottom-position);
+    right: 50%;
+    transform: translate(50%);
+}
+
+.background-top-gradient {          /*Uses a background gradient behind the transparent image*/
+    background-color: black;
+    height: 800px;
+    width: 800px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: var(--top-background-bottom-position);
     right: 50%;
     transform: translate(50%);
 }
@@ -191,15 +210,16 @@ svg {
     position: relative;
 }
 #switchBtn {
-    background-color: var(--switch-button-color);
+    /*background-color: var(--switch-button-color);*/
+    background: linear-gradient(217deg, rgb(36, 14, 3,.8), rgb(22, 60, 82) 70.71%),
+    linear-gradient(127deg, rgb(22, 60, 82),  rgb(7, 27, 38) 70.71%),
+    linear-gradient(336deg, rgb(22, 60, 82,.8),  rgb(7, 27, 38) 70.71%);
     color: white;
     border: none;
     border-radius: 50%;
     width: 90px;
     height: 90px;
-    margin: 5px auto 0 75%;
-    right: 30px;
-    top: -215px;
+    margin: 0 auto 0 75%;
     cursor: pointer;
 }
 

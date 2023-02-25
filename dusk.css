@@ -1,4 +1,4 @@
-.background-top, #switchBtn {
+.background-top-gradient, #switchBtn {
     background: linear-gradient(217deg, rgb(36, 14, 3,.8), rgb(22, 60, 82) 70.71%),
                 linear-gradient(127deg, rgb(22, 60, 82),  rgb(7, 27, 38) 70.71%),
                 linear-gradient(336deg, rgb(22, 60, 82,.8),  rgb(7, 27, 38) 70.71%);
