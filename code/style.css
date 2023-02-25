@@ -100,6 +100,24 @@ li:focus {
 #top-right-icon {
   width: 150px;
   padding-right: 2rem;
+  animation: pulse 4s infinite;
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(0.75);
+		
+	}
+
+	50% {
+		transform: scale(1);
+		
+	}
+
+	100% {
+		transform: scale(0.75);
+		
+	}
 }
 
 #weather-icon-container {
