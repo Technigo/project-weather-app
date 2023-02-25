@@ -87,7 +87,7 @@ const weatherForecastData = (city) => {
             return forecastResponse.json();
         })
         .then((result) => {
-            if (result.cod !== '404') {
+            if (result.cod !== '404') {     //If the user searched for a city that does not exist
 
             console.log(`weatherForecastData result:`, result);         //For checking that the search has been injected
 
@@ -109,8 +109,12 @@ const weatherForecastData = (city) => {
             }); 
 
 
-        } else {
+        } else {        //Alerts user that the city cant be found. Then runs Stockholm again (we can change this).
             alert('Oops, city not found! Check your spelling please.');
+            todaysWeatherFeature('Stockholm');
+            getMainWeather('Stockholm');
+            getSunriseSunsetData('Stockholm');
+            weatherForecastData('Stockholm');
         }
 
     
