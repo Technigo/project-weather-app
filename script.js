@@ -3,7 +3,7 @@ let cityName = document.getElementById("cityName");
 let currentTemperature = document.getElementById("currentTemperature");
 let sunrise = document.getElementById("sunrise");
 let sunset = document.getElementById("sunset");
-let weeklyWeather = document.getElementById("weeklyWeather");
+let weeklyWeather = document.getElementById("weeklyWeatherContent");
 let changeCityMalmo = document.getElementById("cityMalmo");
 let changeCityStockholm = document.getElementById("cityStockholm");
 let mainWeather = document.getElementById("mainWeather");
@@ -92,9 +92,9 @@ const renderCurrentWeather = (data) => {
 
   // we could change this to account for the timezone
   if (data.main.dt < data.sys.sunrise && data.main.dt > data.sys.sunset) {
-    weeklyWeather.style.backgroundColor = "gray"; // change this
-  } else {
     weeklyWeather.style.backgroundColor = "white"; // change this
+  } else {
+    weeklyWeather.style.backgroundColor = "gray"; // change this
   }
 };
 
@@ -118,7 +118,7 @@ const renderWeeklyWeather = (data) => {
 
     // We don't want to include this forecast if it is for today
     if (!isTodaysForecast) {
-      weeklyWeather.innerHTML += `<p>${dayName} <img src="http://openweathermap.org/img/wn/${
+      weeklyWeather.innerHTML += `<p class="weeklyWeatherRow">${dayName} <img src="http://openweathermap.org/img/wn/${
         day.weather[0].icon
       }.png" alt="${
         day.weather[0].description
@@ -130,7 +130,6 @@ const renderWeeklyWeather = (data) => {
 const updateWeatherPicture = (data) => {
   // background changes depending on the weather type
   let mainWeather = data.weather[0].main;
-  console.log(updateWeatherPicture);
 
   if (mainWeather === "Clear") {
     mainWeatherPicture.innerHTML = `

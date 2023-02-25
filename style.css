@@ -97,3 +97,24 @@ a:hover {
   max-width: 100%;
   height: auto;
 }
+
+.weeklyWeatherWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.weeklyWeather {
+  width: 400px;
+}
+
+.forecast-header {
+  padding: 10px;
+}
+
+.weeklyWeatherRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
