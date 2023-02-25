@@ -17,6 +17,7 @@ body {
     max-width: 375px;
     padding: 20px;
     display: none;
+    margin-bottom: 20px;
 } 
 .main { /* +15 - 25° */
     background: #FDC830;  /* fallback for old browsers */
