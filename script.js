@@ -74,13 +74,13 @@ const updateForeCastData = (data) => {
   weekdays.innerHTML = "";
   filteredForecast.forEach((value) => {
     const forecastDate = new Date(value.dt * 1000);
-    const weatherIcon = value.weather[0].icon;
+    const weatherIcon = value.weather[0].icon; //this variable gets the weather icon code in the form of a string, and is then inserted into the img src below to show the correct icon
     console.log(value.dt);
 
     weekdays.innerHTML += `
       <tr>
       <td>${forecastDate.toLocaleString("en-US", { weekday: "long" })}</td>
-      <td class="forecasticonTd"><img src="Designs/Forecast icons/${weatherIcon}.svg" class="forecast-icon"/></td>
+      <td class="forecasticonTd"><img src="Designs/Forecast icons/${weatherIcon}.svg" class="forecast-icon"/></td> 
       <td class="tempTd">${value.main.temp.toFixed()} °C</td>
       </tr>
   `;
