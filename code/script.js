@@ -17,9 +17,7 @@ const fetchingWeather = () => {
       console.log(json);
       weatherResults = json;
 
-      //Hello
-
-      //Todays weather explanation
+      //Setting the different alternatives for the "city-weather" section
       let localWeatherToday = weatherResults.weather[0].main;
 
       if (localWeatherToday === "Clear") {
@@ -74,7 +72,10 @@ const fetchingWeather = () => {
     });
 };
 
+// Calling the fetching function for the first 2 sections, today's weather and city's weather
 fetchingWeather();
+
+//Setting the forecast section and its rows
 
 const fetchingWeatherForecast = () => {
   fetch(
@@ -141,4 +142,5 @@ const fetchingWeatherForecast = () => {
     });
 };
 
+// Calling the fetching function for forecast
 fetchingWeatherForecast();
