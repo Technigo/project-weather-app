@@ -27,7 +27,7 @@ const minneapolisContainer = document.getElementById('minneapolisContainer');
       // Conditional to show different icons depending on weather
     const weatherIcon = (json, container) => {
         if (json.weather[0].main.includes('Clear')) {
-            container.innerHTML += `<img class="weather-icon" src="./Icons/icons8-sun-250.png" alt="Clear sky icon">`;
+            container.innerHTML += `<img class="weather-clear" src="./Icons/icons8-sun-250.png" alt="Clear sky icon">`;
             } else if (json.weather[0].main.includes('Rain')) {
             container.innerHTML += `<img class="weather-icon" src="./Icons/rain.png" alt="Rain icon">`;
             } else if (json.weather[0].main.includes('Drizzle')) {
