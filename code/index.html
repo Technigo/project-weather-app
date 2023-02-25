@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    />
     <link rel="stylesheet" href="./style.css" />
     <title>Project Weather-app</title>
 </head>
@@ -12,38 +16,46 @@
 <div class="body-container">
  <!-- <div class="backgroundGradient">-->  
     <header>
-        <nav role="navigation" id="navigation"> <!--Hamburgarmeny-->
-            <ul id="city-list">
-                <li id="city-one">Stad 1</li>
-                <li id="city-two">Stad 2</li>
+        <nav role="navigation" id="navigation">
+            <!--Hamburgarmeny-->
+            <a id="toggle-nav">
+              <i class="fa fa-bars"></i>
+            </a>
+            <ul id="city-list" class="hidden">
+                <li id="my-location">My location</li>
+              <li id="city-one">Gothenburg</li>
+              <li id="city-two">Helsinki</li>
             </ul>
-        </nav>
-        <div id="weather-icon-container"></div>
+          </nav>
     </header>
     <main>
         <section class="top">
-            <img>
-            <h2 id="current-temp"></h2>
-            <h1 id="current-city"></h1>
-            <p id="current-weather">Clear</p>
-
-            <div class="sun-times">
-                <p>sunrise</p>
-                <p id="sun-up-time">12:30</p>
-                <p>sunset</p>
-                <p id="sun-down-time">22:30</p>
+            <div id="weather-icon-container"></div>
+            <div id="weather-data-container">
+                <h2 id="current-temp"></h2>
+                <h1 id="current-city"></h1>
+                <p id="current-weather">Clear</p>
+                <div class="sun-times">
+                    <p>sunrise</p>
+                    <p id="sun-up-time">12:30</p>
+                    <p>sunset</p>
+                    <p id="sun-down-time">22:30</p>
+                </div>
+                <i id="arrow-button" class="fa-solid fa-angles-right"></i>
+                <!-- <i id="arrow-button" class="fa-solid fa-angles-down"></i> -->
             </div>
-            <button id="arrow-button">
-                <img src="#">Arrow</button>
         </section>
 
         <section id="week-list">
+        
         </section>
 
 
     </main>
 
-    <footer></footer>
+    <footer>
+        An app made by Josefin Robertsson & Daniel Brobäck
+    </footer>
     </div>
 </div>
     <script src="script.js"></script>
