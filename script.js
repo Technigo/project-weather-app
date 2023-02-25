@@ -54,7 +54,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
             
             sydneyContainer.innerHTML = `<h1>${tempFormatted}°C</h1>`
             sydneyContainer.innerHTML += `<h2>${json.name}</h2>` // Name of the city showing
-            sydneyContainer.innerHTML += `<p>${json.weather[0].main}</p>` // Current weather description
+            sydneyContainer.innerHTML += `${json.weather[0].main}` // Current weather description
             tempBackground(tempFormatted, sydneyContainer);
             weatherIcon(json, sydneyContainer);
 

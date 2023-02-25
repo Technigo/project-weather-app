@@ -46,4 +46,13 @@ img.weather-icon {
         grid-gap: 10px;
     }
 }
-
+@media (min-width: 668px) and (max-width: 1023) {
+    .main {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: repeat(3, 700px);
+        max-width: 700px;
+        justify-content: space-around;
+        grid-gap: 10px;
+    }
+}
