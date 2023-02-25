@@ -70,7 +70,7 @@ const checkWeather = (dataForecast) => {
       dailyTextMsg.innerHTML=`
         <div>
           <img src="/Designs/Design-2/icons/noun_Sunglasses_2055147.svg" alt=""> 
-          <p>It's sunny on ${dataForecast.name} right now</p>
+          <p>It's sunny in ${dataForecast.name} right now</p>
         </div>
       `
     } 
