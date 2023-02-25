@@ -60,10 +60,10 @@ const weatherFetch = (lat, lon) => {
     .then((data) => {
       apiResponse = data;
       console.log(apiResponse);
-      const sunriseTime = new Date(apiResponse.sys.sunrise * 1000); 
-      sunGoesUp = sunriseTime.toLocaleTimeString([], {timeStyle: 'short'}); //why doesn't it work to just put this at the end of sunriseTime?
+      const sunriseTime = new Date(apiResponse.sys.sunrise * 1000);
+      sunGoesUp = sunriseTime.toLocaleTimeString([], { timeStyle: "short" }); //why doesn't it work to just put this at the end of sunriseTime?
       const sunSetTime = new Date(apiResponse.sys.sunset * 1000);
-      sunGoesDown = sunSetTime.toLocaleTimeString([], {timeStyle: 'short'});
+      sunGoesDown = sunSetTime.toLocaleTimeString([], { timeStyle: "short" });
       getForecastData();
     });
 };
@@ -106,7 +106,7 @@ const loadHtml = () => {
 
 let clearWeekList = () => {
   weekList.innerHTML = ``;
-}; 
+};
 
 //API Forecast fetch
 const getForecastData = () => {
@@ -169,12 +169,13 @@ cityOne.addEventListener("click", () => {
 
 cityTwo.addEventListener("click", () => {
   cityList.classList.toggle("hidden");
-  weatherFetch("60.192059", "24.945831")
+  weatherFetch("60.192059", "24.945831");
   loadHtml();
   clearWeekList();
 });
 arrowButton.addEventListener("click", () => {
   arrowButton.classList.toggle("rotate");
+  weekList.classList.toggle("hidden");
 });
 
 //Loads the weather

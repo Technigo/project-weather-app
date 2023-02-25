@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Almendra&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 
 * {
   padding: 0;
@@ -59,6 +60,9 @@ li {
   font-size: 2rem;
   padding: 2rem;
 }
+li:active {
+  text-decoration: underline;
+}
 
 li:hover,
 li:focus {
@@ -71,6 +75,9 @@ li:focus {
   z-index: 99;
   position: fixed;
   color: #0b181c;
+}
+#city-list > p {
+  display: none;
 }
 
 #toggle-nav {
@@ -141,10 +148,9 @@ li:focus {
 
 /* week list */
 #week-list {
-  
   background-color: #84e1f8;
   position: relative;
-  color:white;
+  color: white;
   max-width: 95%;
   margin: 0 auto;
   border-radius: 20px;
@@ -233,44 +239,52 @@ footer {
 }
 */
 @media screen and (min-width: 450px) {
-
   .sun-times {
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
-    #week-list-icon {
-      max-height: 40px;
-      margin-left: 7rem;
-    }
-   
+  #week-list-icon {
+    max-height: 40px;
+    margin-left: 7rem;
   }
+}
 
 @media screen and (min-width: 640px) {
   #week-list {
     max-width: 75%;
   }
 
-  nav{
-   
+  nav {
   }
-  #city-list{
+  #city-list {
     all: unset;
     display: flex;
     justify-content: end;
     align-items: center;
     flex-wrap: wrap;
     flex-direction: row;
-   }
-   #city-list p {
-    font-size: 2rem;
+  }
+  #city-list p {
+    font-size: 1.5rem;
     margin-top: 2rem;
-   }
-  #toggle-nav{
+  }
+  #city-list > p {
+    display: block;
+    font-family: "Pacifico", cursive;
+    font-size: 1.8rem;
+    margin-top: 1.5rem;
+  }
+
+  li {
+    padding: 0 2rem;
+    margin-top: 0;
+  }
+  #toggle-nav {
     display: none;
-}
-#top-right-icon {
-  width: 200px;
-}
+  }
+  #top-right-icon {
+    width: 200px;
+  }
 }
