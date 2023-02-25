@@ -1,5 +1,3 @@
-let currentCity = "Malmö"; // set Malmö to the default city
-
 let weatherDescription = document.getElementById("weatherDescription");
 let cityName = document.getElementById("cityName");
 let currentTemperature = document.getElementById("currentTemperature");
@@ -73,6 +71,7 @@ const renderCurrentWeather = (data) => {
   sunrise.innerHTML = `${renderedSunrise}`;
   sunset.innerHTML = `${renderedSunset}`;
 
+  // we could change this to account for the timezone
   if (data.main.dt < data.sys.sunrise && data.main.dt > data.sys.sunset) {
     weeklyWeather.style.backgroundColor = "white"; // change this
   } else {
@@ -138,8 +137,8 @@ const updateWeatherPicture = (data) => {
   }
 };
 
-fetchCurrentWeather(currentCity);
-fetchWeeklyWeather(currentCity);
+fetchCurrentWeather("Malmö");
+fetchWeeklyWeather("Malmö");
 
 changeCityMalmo.addEventListener("click", () => {
   fetchCurrentWeather("Malmö");
