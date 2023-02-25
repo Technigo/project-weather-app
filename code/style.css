@@ -27,12 +27,18 @@ body {
   font-family: "Montserrat", sans-serif;
   display: flex;
   justify-content: center;
+  margin: 15px 15px;
 }
 
 .todays-weather {
   width: 70%;
   padding: 40px 20px;
 }
+
+.todays-weather p {
+  padding-top: 5px;
+}
+
 .weather-body {
   height: 100vh;
   width: 100%;
@@ -42,6 +48,38 @@ body {
   padding: 40px 20px;
 }
 
+.city-weather img {
+  transition: transform 0.7s ease-in-out;
+}
+
+.city-weather img:hover {
+  transform: rotate(360deg);
+}
+
+.todays-item {
+  padding: 20px 0px;
+}
+.todays-item img {
+  padding: 20px 50px;
+}
+
+.forecast-section {
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.forecast-row {
+  font-size: 1.15rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 0.1rem dotted;
+}
+
 /* Media qurries  */
 /* --Tablet-- */
 @media (min-width: 667px) and (max-width: 1024px) {
@@ -49,4 +87,26 @@ body {
 
 /* --Desktop-- */
 @media (min-width: 1025px) {
+  body {
+    background: linear-gradient(-45deg, #ffffff, #ffe4ee, #cbecf8, wheat);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .weather-body {
+    max-width: 40%;
+  }
 }

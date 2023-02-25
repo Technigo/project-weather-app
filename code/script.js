@@ -26,6 +26,10 @@ const fetchingWeather = () => {
         cityWeather.innerHTML = `<div class= "Clear">
                   <img class= "sunny" src="images/sun-glasses.png"/>
                   <h1> Sunglass-up. ${weatherResults.name} is shining and so are you.</h1>
+                    <div class= "todays-item">
+                      <p>Recommended clothing item:</p>
+                      <img class= "item" src="images/keps.png"/>
+                    </div>
                   </div>`;
         document.body.style.backgroundColor = "#F7E9B9";
         document.body.style.color = "#2A5510";
@@ -33,6 +37,10 @@ const fetchingWeather = () => {
         cityWeather.innerHTML = `<div class= "rain">
                   <img class= "rain" src="images/umbrella.png"/>
                   <h1> Fetch that umbrella. ${weatherResults.name} is crying today.</h1>
+                    <div class= "todays-item">
+                      <p>Recommended clothing item:</p>
+                      <img class= "item" src="images/beanie.png"/>
+                    </div>
                   </div>`;
         document.body.style.backgroundColor = "#A3DEF7";
         document.body.style.color = "#164A68";
@@ -40,6 +48,10 @@ const fetchingWeather = () => {
         cityWeather.innerHTML = `<div class= "clouds">
                   <img class= "rain" src="images/clouds.png"/>
                   <h1> Cuddle up! The ${weatherResults.name} sky is grey today.</h1>
+                    <div class= "todays-item">
+                      <p>Recommended clothing item:</p>
+                      <img class= "item" src="images/gloves.png"/>
+                    </div>
                   </div>`;
         document.body.style.backgroundColor = "#FBF4F4";
         document.body.style.color = "#F47775";
@@ -64,45 +76,69 @@ const fetchingWeather = () => {
 
 fetchingWeather();
 
-//Setting the date
-// const weekday = (info) => {
-//   const currentDate = new Date(info * 1000) // sets to millisec
-//   return currentDate.toLocaleDateString("en-GB", {
-//     weekday: "short"
-//   })
-// }
+const fetchingWeatherForecast = () => {
+  fetch(
+    "https://api.openweathermap.org/data/2.5/forecast?q=Gothenburg,Sweden&units=metric&APPID=072c88c2b7f1a1c7fb7704f9f847b690"
+  )
+    .then((response) => {
+      return response.json();
+    })
+    .then((json) => {
+      const forecastData = json; //not a neccessary step but we tried to be extra clear
+      console.log(forecastData);
+      const filteredForecast = forecastData.list.filter((item) =>
+        item.dt_txt.includes("12:00")
+      );
+      console.log(filteredForecast);
 
-// fetch(
-//   "https://api.openweathermap.org/data/2.5/forecast?q=Gothenburg,Sweden&units=metric&APPID=7ff627bd38e63e85c26d65d579c38c04"
-// )
-//   .then((response) => {
-//     return response.json()
-//   })
-//   .then((json) => {
-//     const fetchingForecast = json.list.filter((item) =>
-//       item.dt_txt.includes("12:00")
-//     ) //Choose weather from the same time every day
-//     console.log(fetchingForecast)
-//     forecast.innerHTML += `
-//        <div class="forecastTemp">
-//          <div class="weekday">${weekday(fetchingForecast[0].dt)}</div>
-//          <div class="temp"> ${fetchingForecast[0].main.temp.toFixed(0)}°</div>
-//        </div>
-//        <div class="forecastTemp">
-//          <div class="weekday">${weekday(fetchingForecast[1].dt)}</div>
-//          <div class="temp"> ${fetchingForecast[1].main.temp.toFixed(0)}°</div>
-//        </div>
-//        <div class="forecastTemp">
-//          <div class="weekday">${weekday(fetchingForecast[2].dt)}</div>
-//          <div class="temp"> ${fetchingForecast[2].main.temp.toFixed(0)}°</div>
-//        </div>
-//        <div class="forecastTemp">
-//          <div class="weekday">${weekday(fetchingForecast[3].dt)}</div>
-//          <div class="temp"> ${fetchingForecast[3].main.temp.toFixed(0)}°</div>
-//        </div>
-//        <div class="forecastTemp">
-//          <div class="weekday">${weekday(fetchingForecast[4].dt)}</div>
-//          <div class="temp"> ${fetchingForecast[4].main.temp.toFixed(0)}°</div>
-//        </div>
-//        `
-//   })
+      const getDay = (weekday) => {
+        const dates = new Date(weekday * 1000);
+        return dates.toLocaleDateString("en", { weekday: "short" });
+      };
+
+      // should do some kind of map here
+      forecast.innerHTML = ` 
+          <div class="forecast-row">
+            <div class="forecast-item">
+              ${getDay(filteredForecast[0].dt)}
+            </div>
+            <div class="forecast-item">
+              ${Math.round(filteredForecast[0].main.temp * 10) / 10}°
+            </div>
+          </div>
+          <div class="forecast-row">
+            <div class="forecast-item">
+              ${getDay(filteredForecast[1].dt)}
+            </div>
+            <div class="forecast-item">
+              ${Math.round(filteredForecast[1].main.temp * 10) / 10}°
+            </div>
+          </div>
+          <div class="forecast-row">
+            <div class="forecast-item">
+              ${getDay(filteredForecast[2].dt)}
+            </div>
+            <div class="forecast-item">
+              ${Math.round(filteredForecast[2].main.temp * 10) / 10}°
+            </div>
+          </div>
+          <div class="forecast-row">
+            <div class="forecast-item">
+              ${getDay(filteredForecast[3].dt)}
+            </div>
+            <div class="forecast-item">
+              ${Math.round(filteredForecast[3].main.temp * 10) / 10}°
+            </div>
+          </div>
+          <div class="forecast-row">
+            <div class="forecast-item">
+              ${getDay(filteredForecast[4].dt)}
+            </div>
+            <div class="forecast-item">
+              ${Math.round(filteredForecast[4].main.temp * 10) / 10}°
+            </div>
+          </div>`;
+    });
+};
+
+fetchingWeatherForecast();
