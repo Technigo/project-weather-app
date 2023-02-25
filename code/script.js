@@ -62,9 +62,9 @@ const weatherFetch = (lat, lon) => {
       apiResponse = data;
       console.log(apiResponse);
       const sunriseTime = new Date(apiResponse.sys.sunrise * 1000);
-      sunGoesUp = sunriseTime.toLocaleTimeString([], { timeStyle: "short" }); //why doesn't it work to just put this at the end of sunriseTime?
+      sunGoesUp = sunriseTime.toLocaleTimeString("en-GB", {timeStyle: "short"}); //why doesn't it work to just put this at the end of sunriseTime?
       const sunSetTime = new Date(apiResponse.sys.sunset * 1000);
-      sunGoesDown = sunSetTime.toLocaleTimeString([], { timeStyle: "short" });
+      sunGoesDown = sunSetTime.toLocaleTimeString("en-GB", {timeStyle: "short"});
       getForecastData();
     });
 };

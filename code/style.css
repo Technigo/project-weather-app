@@ -78,12 +78,13 @@ li:focus {
   position: fixed;
   color: #0b181c;
 }
-#city-list > p {
+
+#city-list>p {
   display: none;
 }
 
 #city-two {
-margin-right: 66px;
+  margin-right: 66px;
 }
 
 #toggle-nav {
@@ -117,20 +118,20 @@ margin-right: 66px;
 }
 
 @keyframes pulse {
-	0% {
-		transform: scale(0.75);
-		
-	}
+  0% {
+    transform: scale(0.75);
 
-	50% {
-		transform: scale(1);
-		
-	}
+  }
 
-	100% {
-		transform: scale(0.75);
-		
-	}
+  50% {
+    transform: scale(1);
+
+  }
+
+  100% {
+    transform: scale(0.75);
+
+  }
 }
 
 #weather-icon-container {
@@ -170,6 +171,7 @@ margin-right: 66px;
 .sun-times p {
   padding-top: 1rem;
   padding-right: 1rem;
+  font-size: 1.1em;
 }
 
 .sun-times p:nth-child(3) {
@@ -279,6 +281,7 @@ footer {
     flex-direction: row;
     justify-content: space-between;
   }
+
   #week-list-icon {
     max-height: 40px;
     margin-left: 7rem;
@@ -288,36 +291,47 @@ footer {
 @media screen and (min-width: 640px) {
   #week-list {
     max-width: 75%;
+    font-size: 1.6em;
+  }
+  .weekDayRow p:last-child {
+    width: 160px;
   }
 
-  nav {
+  #week-list-icon {
+    max-height: 60px;
   }
-  #city-list {
-    all: unset;
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    flex-wrap: wrap;
-    flex-direction: row;
-  }
-  #city-list p {
-    font-size: 1.5rem;
-    margin-top: 2rem;
-  }
-  #city-list > p {
-    display: block;
-    font-family: "Lobster", cursive;
-    font-size: 1.8rem;
-    margin-top: 1.5rem;
-  }
+  
 
-  li {
-    padding: 0 2rem;
-    margin-top: 0;
-  }
-  #toggle-nav {
-    display: none;
+#city-list {
+  all: unset;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
+
+#city-list p {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+
+#city-list>p {
+  display: block;
+  font-family: "Lobster", cursive;
+  font-size: 1.8rem;
+  margin-top: 1.5rem;
+}
+
+li {
+  padding: 0 2rem;
+  margin-top: 0;
+}
+
+#toggle-nav {
+  display: none;
+}
+
 #top-right-icon {
   width: 250px;
 }
