@@ -320,7 +320,7 @@ h6 {
           margin-bottom: 3%; 
               display: flex;
               justify-content: space-evenly;
-              row-gap: 9rem;
+              gap: 9rem;
              
               
               
