@@ -1,4 +1,4 @@
-const testy = document.getElementById('testy');
+
 const searchMenuBtn = document.getElementById('searchMenuBtn');
 const closeSearchMenu = document.getElementById('closeSearchMenu');
 const searchBtn = document.getElementById('searchBtn');
@@ -43,7 +43,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
         console.log(`json:`, json)
         let { icon } = json.weather[0];
     
-        console.log(json.main.temp.toFixed(0))
+        console.log(`json main temp fixed:`, json.main.temp.toFixed(0))
         cityName.innerText = `${json.name}`;
         tempToday.innerText = `${json.main.temp.toFixed(0)}`;
         weatherDescription.innerText = `${json.weather[0].description}`;
@@ -87,11 +87,15 @@ const weatherForecastData = (city) => {
             return forecastResponse.json();
         })
         .then((result) => {
+            if (result.cod !== '404') {
+
+            console.log(`weatherForecastData result:`, result);         //For checking that the search has been injected
+
             const todaysDate = new Date().toString().split(' ')[0]; //Today's date in text form
-            console.log(todaysDate)
+            console.log(`todaysDate:`, todaysDate);
             
             const filterData = result.list.filter(weatherDay => weatherDay.dt_txt.includes('12:00')); //Filters out the data at 12:00 every day
-            console.log(filterData)
+            console.log(`filterData:`, filterData);
             
             filterData.forEach(date => { 
             const weekDay = new Date(date.dt * 1000).toString().split(' ')[0]; //All the five days dates' convertet from numbers to text
@@ -103,8 +107,21 @@ const weatherForecastData = (city) => {
                     forecastTemp.innerHTML += `<p>${date.main.temp.toFixed(0)}°</p>`
                 }
             }); 
-        })
+
+
+        } else {
+            console.log('something is fishy...')
+            weatherForecast.innerHTML = 'Oops, no such city is found. Did you check your spelling?'
+        }
+
+    
+    })
+
+
 }
+
+
+
  
 //Learn how to get symbols from the api
 //Learn how to get a search word to show an image from unsplash
@@ -127,11 +144,17 @@ const searchFunction = () => {
         //weather.fetchWeather(searchedCity); //Skriv om till den vi använder
         getSunriseSunsetData(searchedCity);
         getMainWeather(searchedCity);
-        //weatherForecastData(searchedCity);      //Uncomment när allt är fixat
+        weatherForecastData(searchedCity);      //Uncomment när allt är fixat
         todaysWeatherFeature(searchedCity);
 
         //Clears field & hides the input field:
         inputField.value = "";
+
+        //Reset the weather forecast:
+        forecastWeekdays.innerHTML = "";
+        forecastIcon.innerHTML = "";
+        forecastWind.innerHTML = "";
+        forecastTemp.innerHTML = "";
 }
 
 
@@ -141,6 +164,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
         return response.json();
     })
     .then((data) => {
+        console.log(`todaysWeatherFeature:`, data.name)         //For checking that the search has been injected
 
         const featureImage = document.querySelector('.feature-image');
         const backgroundTopGradient = document.getElementById('backgroundTopGradient');
