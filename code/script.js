@@ -166,6 +166,7 @@ cityOne.addEventListener("click", () => {
   loadHtml();
   clearWeekList();
 });
+
 cityTwo.addEventListener("click", () => {
   cityList.classList.toggle("hidden");
   weatherFetch("60.192059", "24.945831")

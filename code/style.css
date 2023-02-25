@@ -71,6 +71,7 @@ li:focus {
   background-color: rgba(202, 202, 240, 0.8);
   z-index: 99;
   position: fixed;
+  color: #0b181c;
 }
 
 #toggle-nav {
