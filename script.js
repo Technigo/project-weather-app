@@ -38,28 +38,28 @@ fetch(Url_Weather)
 
           if (todaysMainWeather === "Clear") {
             todaysPrompt.innerHTML = `<div class= "Clear">
-                      <img class= "sunny" src=""/>
+                      <img class= "sunny" src="Designs\Design-1\assets\Group36.png"/>
                       <h1> Get your sunnies on. ${json.name} is looking rather great today.</h1>
                       </div>`;
             document.body.style.backgroundColor = "#F7E9B9";
             document.body.style.color = "#2A5510";
           } else if (todaysMainWeather === "Rain") {
             todaysPrompt.innerHTML = `<div class= "rain">
-                      <img class= "rain" src=""/>
+                      <img class= "rain" src="Designs\Design-1\assets\Group16.png"/>
                       <h1> Get your umbrella. ${json.name} is crying today.</h1>
                       </div>`;
             document.body.style.backgroundColor = "#A3DEF7";
             document.body.style.color = "#164A68";
           } else if (todaysMainWeather === "Clouds") {
             todaysPrompt.innerHTML = `<div class= "clouds">
-                      <img class= "clouds" src=""/> 
+                      <img class= "clouds" src="Designs\Design-1\assets\Group34.png"/> 
                       <h1> Oh no, ${json.name} is looking rather grey today.</h1>
                       </div>`;
             document.body.style.backgroundColor = "#F4F7F8";
             document.body.style.color = "#F47775";
           }
     });
-    //insert all the icons for the images in the inner.HTML 
+    //insert all the icons for the images in the innerHTML 
 // Forecast section
 const weekday = (data) => {
   const currentDate = new Date(data * 1000); // Date object are always measured in millisecond so need to multiply * 1000.
