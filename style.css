@@ -2,12 +2,16 @@
     display: grid;
     justify-content: center;
     align-content: center;
+    color: white;
+    grid-template-columns: 1;
+    grid-template-rows: 6;
+    grid-gap: 10px 10px;
+    max-width: 667px;
 }
 .main-container {
     display: grid;
     max-width: 375px;
-    border-radius: 15px;
-    
+    border-radius: 15px;   
 }
 
 h1 {
@@ -22,16 +26,36 @@ h2 {
     margin: 10px 20px 0 0;
     font-family: 'Raleway', serif;
 }
+h3 {
+    font-weight: normal;
+    font-family: 'Raleway', serif;
+    margin: -10px 0 0 30px;
+}
 p {
-    font-size: 18px;
-    margin: 0 0 15px 30px;
+    font-size: 16px;
+    font-family: 'Raleway', serif;
+    margin: 0 20px 0 30px;
+    line-height: 0%;
 
 }
 img.weather-icon {
     max-width: 80%;
-    display: flex;
-    justify-items: center;
+    margin-left: 40px;
+    margin-bottom: 5px;
+    margin-top: -30px;
 }
+/* Tablet - 2 columns */
+@media (min-width: 668) and (max-width: 1024) {
+    .main {
+        display: grid;
+        grid-template-columns: 2;
+        grid-template-rows: 3;
+        justify-content: space-around;
+        grid-gap: 10px;
+        color: black;
+    }
+}
+/* Desktop - 3 columns */
 @media (min-width: 1024px) {
     .main {
         display: grid;
@@ -41,14 +65,8 @@ img.weather-icon {
         justify-content: space-around;
         grid-gap: 10px;
     }
-}
-@media (min-width: 668px) and (max-width: 1023) {
-    .main {
-        display: grid;
-        grid-template-columns: auto auto;
-        grid-template-rows: repeat(3, 700px);
-        max-width: 700px;
-        justify-content: space-around;
-        grid-gap: 10px;
+    .main-container {
+        max-width: 340px;
     }
 }
+
