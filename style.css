@@ -39,17 +39,16 @@ body {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
 
-        .search {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
 
+    
+        
         .weather-container {
         display: flex;
         flex-direction: column;
         flex-flow: column-wrap;
         }
+
+
 
             .todays-weather {
                 width: 60%;
@@ -96,17 +95,7 @@ body {
                 display: flex;
             }
 
-            .search-bar {
-                height: 30px;
-                width: 200px;
-                border-radius: 10px;
-            }
-
-            .button {
-                font-weight: bolder;
-                padding: 10px;
-                border-radius: 10px;
-            }
+            
 
 
 /* Media queries  */
