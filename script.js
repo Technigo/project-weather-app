@@ -112,7 +112,7 @@ const fetchForecastApi = (nameOfCity) => {
 };
 
 const weatherStylingChange = (nameOfCity) => {
-  let styleApi = `http://api.openweathermap.org/data/2.5/weather?q=${nameOfCity}&units=metric&APPID=775b6d69e24fcb088a070bee66d05057`;
+  let styleApi = `https://api.openweathermap.org/data/2.5/weather?q=${nameOfCity}&units=metric&APPID=775b6d69e24fcb088a070bee66d05057`;
 
   fetch(styleApi)
     .then((response) => {
@@ -167,7 +167,7 @@ const weatherStylingChange = (nameOfCity) => {
 
 const start = () => {
   fetch(
-    "http://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=775b6d69e24fcb088a070bee66d05057"
+    "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=775b6d69e24fcb088a070bee66d05057"
   )
     .then((response) => {
       console.log(response);
