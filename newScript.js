@@ -37,14 +37,13 @@ const currentTemp = (dataForecast) => {
 const sunsetTime = dataForecast.sys.sunset;
 
 const sunriseDate = new Date(sunriseTime * 1000);
-const hours = sunriseDate.getHours() + ":" + sunriseDate.getMinutes();
+const hoursSunrise = sunriseDate.getHours() + ":" + sunriseDate.getMinutes();
 const sunsetDate = new Date(sunsetTime * 1000);
 const hoursSunset = sunsetDate.getHours() + ":" + sunsetDate.getMinutes()
 const sunriseTimeString =sunriseDate.toLocaleTimeString();
 
 const sunsetTimeString =sunsetDate.toLocaleTimeString();
-console.log("Sunrise: " + sunriseTimeString)
-console.log("Sunset: " + sunsetTimeString)
+
 
 const toDay = new Date (dataForecast.dt * 1000).toLocaleString('en-US', {weekday: 'long', timeZone: 'Europe/Lisbon'}); 
  
@@ -55,7 +54,7 @@ const toDay = new Date (dataForecast.dt * 1000).toLocaleString('en-US', {weekday
 
     <div>
         <p class="sunrises" id="sunrise"> 
-         Sunrise ${hours} </p>
+         Sunrise ${hoursSunrise} </p>
         </div>
  
         
@@ -72,6 +71,7 @@ const checkWeather = (dataForecast) => {
   console.log(dataForecast.weather[0].main);
 
   if (dataForecast.weather[0].main === 'Clouds'){
+    bodySelector.classList.remove(...bodySelector.classList);
     bodySelector.classList.add('cloudy');
     dailyTextMsg.innerHTML=   `
 <img src="/Designs/Design-2/icons/noun_Cloud_1188486.svg" alt="">
@@ -81,6 +81,7 @@ const checkWeather = (dataForecast) => {
 }
 
     else if (dataForecast.weather[0].main === 'Clear'){
+      bodySelector.classList.remove(...bodySelector.classList);
       bodySelector.classList.add('sunny');
       dailyTextMsg.innerHTML=  `
       <img src="/Designs/Design-2/icons/noun_Sunglasses_2055147.svg" alt="">
@@ -90,6 +91,7 @@ const checkWeather = (dataForecast) => {
     `
     } 
     else if (dataForecast.weather[0].main === 'Fog'){
+      bodySelector.classList.remove(...bodySelector.classList);
       bodySelector.classList.add('foggy');
      dailyTextMsg.innerHTML=    
      `
@@ -99,6 +101,7 @@ const checkWeather = (dataForecast) => {
     }
     
     else {
+      bodySelector.classList.remove(...bodySelector.classList);gi
       bodySelector.classList.add('rain');
      dailyTextMsg.innerHTML=  `
   <img src="/Designs/Design-2/icons/noun_Umbrella_2030530.svg" alt="">
