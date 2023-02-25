@@ -11,9 +11,12 @@
 }
 
 body {
-  height: 100vh;
+  
   font-family: "Roboto", sans-serif;
   color: white;
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: #0d3a5f;
 }
 
 @keyframes gradient {
@@ -28,6 +31,10 @@ body {
   100% {
     background-position: 0% 25%;
   }
+}
+
+.main {
+  height: 100vh;
 }
 
 /* Navigation */
@@ -53,6 +60,7 @@ li {
   font-size: 2rem;
   padding: 2rem;
 }
+
 li:hover,
 li:focus {
   cursor: pointer;
@@ -81,6 +89,7 @@ li:focus {
 
 /* top */
 .top {
+  height: 50%;
   margin-bottom: 2rem;
   padding-left: 2rem;
   display: flex;
@@ -92,9 +101,11 @@ li:focus {
   width: 150px;
   padding-right: 2rem;
 }
+
 #weather-icon-container {
   width: 40%;
 }
+
 #weather-data-container {
   width: 40%;
   padding-top: 3rem;
@@ -118,31 +129,23 @@ li:focus {
   display: flex;
   justify-content: space-between;
 }
+
 .sun-times p {
   padding-top: 1rem;
   padding-right: 1rem;
 }
+
 .sun-times p:nth-child(3) {
   padding-left: 1rem;
 }
 
 /* week list */
 #week-list {
+  height: 50%; 
   background-color: #f7f6f6;
   position: relative;
   padding-top: 3rem;
   color: black;
-}
-#week-list:before {
-  content: "";
-  position: absolute;
-  top: -60px;
-  left: -3px;
-  height: 60px;
-  width: 60px;
-  border-bottom-left-radius: 50%;
-  /* background: #000; */
-  box-shadow: 0 20px 0 0 #f7f6f6;
 }
 
 #arrow-button {
@@ -152,12 +155,14 @@ li:focus {
   font-size: 3rem;
   text-align: center;
 }
+
 #arrow-button:hover,
 #arrow-button:focus {
   border-radius: 50%;
   background-color: rgba(170, 169, 169, 0.2);
   cursor: pointer;
 }
+
 .rotate {
   transform: rotate(90deg);
   animation: rotation 0.2s 1 linear;
@@ -167,19 +172,11 @@ li:focus {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(90deg);
   }
 }
-/*
-.sun-times > #sunrise > p {
-display: inline-block;
-}
-
-.sun-times > #sunset > p {
-  display: inline-block;
-  }
-*/
 
 .weekDayRow {
   display: flex;
@@ -192,9 +189,11 @@ display: inline-block;
 .weekDayRow p:first-child {
   padding-left: 2rem;
 }
+
 .weekDayRow p::nth-child(2) {
   width: 100px;
 }
+
 .weekDayRow p:last-child {
   padding-right: 1rem;
 }
@@ -212,9 +211,9 @@ ul li {
 /* Changes according to time of day*/
 
 .day {
-  height: 60vh;
+  height: 100vh;
   background: linear-gradient(-45deg, #94dbf5, #62b7fc, #84e1f8, #e0c454);
-  background-size: 100% 400%;
+  background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 }
 
@@ -225,6 +224,8 @@ ul li {
   animation: gradient 15s ease infinite;
 }
 
+/*
 footer {
   background-color: #f7f6f6;
 }
+*/
