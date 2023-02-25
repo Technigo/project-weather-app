@@ -5,7 +5,10 @@ const sunsetTime = document.getElementById('sunset-time');
 //making the API to a variable instead to make the code easier to read
 const API_today =
   "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=2ef247d63e3f61c687ac388e3ba2cd9e";
-//const API_forecast = "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=2ef247d63e3f61c687ac388e3ba2cd9e";
+
+const API_forecast = 
+  "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=2ef247d63e3f61c687ac388e3ba2cd9e";
+
 
 //Baka in API i en const
 fetch(API_today)
@@ -20,7 +23,7 @@ fetch(API_today)
 
     console.log(json.weather[0].description);
 
-    sunrise.innerHTML += `<p>City: ${json.name}</p>`;
+    
     sunrise.innerHTML += `<p>Temperature: ${round} °C</p>`;
     sunrise.innerHTML += `<p>Weather: ${json.weather[0].description}</p>`;
   });
@@ -45,10 +48,10 @@ const getSunData = () => {
           const sunsetShort = sunsetTime.toLocaleTimeString([], { timeStyle: 'short' });      
 
           //HTML modifier.
-          sunriseText.innerHTML += `<p>Sunrise</p>
-                                      <p class="time-data">${sunriseShort}</p>`;
-          sunsetText.innerHTML += `<p>Sunset</p>
-                                  <p class="time-data">${sunsetShort}</p>`;
+          sunriseText.innerHTML += `
+                                  <p class="time-data">Sunrise ${sunriseShort}</p>`;
+          sunsetText.innerHTML += `
+                                  <p class="time-data">Sunset ${sunsetShort}</p>`;
       })
       //Collecting errors.
       .catch((err) => {
@@ -57,5 +60,3 @@ const getSunData = () => {
 }
 //Invoke function.
 getSunData();
-
-
