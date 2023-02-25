@@ -9,10 +9,10 @@ const date = document.getElementById("date")
 //Global variable
 let todayWeather
 
-//Fetching data from API
+//Fetching data from API for user's current position
 navigator.geolocation.getCurrentPosition(position => {
 fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&APPID=06edb4af2e0738583f1bc67674449140`)
-    .then ((response) => {
+    .then (response => {
         if(!response.ok) {
             throw Error("Weather data is not available right now.")
         }
@@ -21,7 +21,6 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${position.coords.la
     .then(data => {
         getWeather(data)
         filterWeather(data)
-        
     })
 .catch(err => console.error(err))
 })
@@ -37,24 +36,31 @@ const getWeather = (data) => {
     When called as a constructor, returns a new Date object.
     Link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
     */
+
+    //Creating date object for time of sunrise and time of sunset.
     const getSunRise = new Date ((data.city.sunrise + data.city.timezone + new Date().getTimezoneOffset()*60) * 1000)
 
     const getSunSet = new Date ((data.city.sunset + data.city.timezone + new Date().getTimezoneOffset()*60) * 1000)
 
+    //Shows today's weather and time for sunrise and sunset in header.
     header.innerHTML = `
     <p>${todayWeather} | ${Math.round(todayTemp , 1)}°</p>
     <p> Sunrise ${getSunRise.getHours()}.${getSunRise.getMinutes()}</p>
     <p> Sunset ${getSunSet.getHours()}.${getSunSet.getMinutes()}</p>
     `
-//Fetching five day forecast
+
+    //Fetching five day forecast at 09:00.
     const filteredForecast = data.list.filter(item => item.dt_txt.includes('09:00'))
     //dt is time of data calculation
     
     filteredForecast.forEach((day) => {
         const weekDay = new Date(day.dt * 1000).toLocaleDateString('en', {weekday: 'short'})
         //'en' stands for english here
+
         const mainTemp = day.main.temp.toFixed(1)
         //Number.toFixed() Link: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed
+        //(1) will show one decimal. 
+
         date.innerHTML += `
         <li>
             <span>${weekDay}</span>
@@ -69,7 +75,7 @@ const getWeather = (data) => {
 //https://www.w3schools.com/js/js_if_else.asp
 //Weather conditions: https://openweathermap.org/weather-conditions
 const filterWeather = (data) => {
-    if (todayWeather === "Rain" || "Thunderstorm" || "Drizzle") {
+    if (todayWeather === "Rain") {
         body.classList.toggle("rainy")
         text.innerHTML = `
         <img class="img" src="./icons/noun_Umbrella_2030530.svg" alt="umbrella icon">
