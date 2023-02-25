@@ -54,17 +54,16 @@ const weatherFetch = (lat, lon) => {
   longitude = lon;
   fetch(
     // `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&units=metric&APPID=${apiKey}`
-    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
+    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`
   )
     .then((response) => response.json())
     .then((data) => {
       apiResponse = data;
       console.log(apiResponse);
-      const sunriseTime = new Date(apiResponse.sys.sunrise * 1000); // API date/time value needs to be multiplied by 1000 for .toLocaleTimeString() to return the correct value
-      //console.log(sunriseTime.toLocaleTimeString())
-      sunGoesUp = sunriseTime.toLocaleTimeString(); //why doesn't it work to just put this at the end of sunriseTime?
+      const sunriseTime = new Date(apiResponse.sys.sunrise * 1000); 
+      sunGoesUp = sunriseTime.toLocaleTimeString([], {timeStyle: 'short'}); //why doesn't it work to just put this at the end of sunriseTime?
       const sunSetTime = new Date(apiResponse.sys.sunset * 1000);
-      sunGoesDown = sunSetTime.toLocaleTimeString();
+      sunGoesDown = sunSetTime.toLocaleTimeString([], {timeStyle: 'short'});
       getForecastData();
     });
 };
@@ -129,7 +128,6 @@ const getForecastData = () => {
 
         filteredForecastNight.map((day) => {
           nightTemp = day.main.temp;
-          console.log(nightTemp);
         });
 
         weekList.innerHTML += `<div class="weekDayRow"><p>${dayName}</p>
@@ -150,12 +148,14 @@ toggleNav.addEventListener("click", () => {
 
 myLocation.addEventListener("click", () => {
   navigator.geolocation.getCurrentPosition(success, error, options);
-  latitude = crd.latitude;
-  longitude = crd.longitude;
-  cityList.classList.toggle("hidden");
-  weatherFetch(latitude, longitude);
-  loadHtml();
-});
+  setTimeout(() => {
+    weatherFetch(latitude, longitude);
+    latitude = crd.latitude;
+    longitude = crd.longitude;
+    cityList.classList.toggle("hidden");
+    loadHtml();
+  }, 3000); 
+})
 cityOne.addEventListener("click", () => {
   cityList.classList.toggle("hidden");
   weatherFetch("57.6717", "11.9810");
