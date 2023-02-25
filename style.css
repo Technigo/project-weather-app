@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;400&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/*
+#F47775 red text cloudy
+#F4F7F8 light grey background cloudy
+#164A68 blue text rainy
+#A3DEF7 blue background rainy
+#2A5510 green text sunny
+#F7E9B9 yellow background sunny
+*/
+
+ body {
+    height: 100%;
+    background-color: #fff;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13px;
+ }
+
+ .main {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    height: 100%;
+    padding: 30px;
+ }
+
+.container {
+    width: 100%;
+    font-size: 15px;
+    font-weight: 200;
+    padding-bottom: 40px;
+}
+
+.weather-description {
+    width: 100%;
+    padding: 0 35px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.img {
+    width: 80px;
+    height: 100px;
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: 400;
+    padding: 20px 0;
+}
+
+.five-days-forecast {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-bottom: 2px dotted;
+    margin: 20px 0;
+    width: 100%;
+    list-style: none;
+}
+
+.clear {
+    background-color: #f7e9b9;
+    color: #2a5510;
+  }
+  
+.clouds {
+    background-color: #f4f7f8;
+    color: #f47775;
+  }
+  
+.rain {
+    background-color: #a3def7;
+    color: #164a68;
+  }
