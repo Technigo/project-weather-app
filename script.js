@@ -6,6 +6,7 @@ const londonContainer = document.getElementById('londonContainer');
 const vancouverContainer = document.getElementById('vancouverContainer')
 const minneapolisContainer = document.getElementById('minneapolisContainer');
 
+
       // Conditional to show different background colors depending on temperature
       const tempBackground = (tempFormatted, container) => {
         if (tempFormatted >= 25) {
@@ -51,7 +52,6 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
 
     .then((json) => { 
         const tempFormatted = json.main.temp.toFixed(0) // Current temperature shown in Celsius with zero decimals
-            
             sydneyContainer.innerHTML = `<h1>${tempFormatted}°C</h1>`
             sydneyContainer.innerHTML += `<h2>${json.name}</h2>` // Name of the city showing
             sydneyContainer.innerHTML += `${json.weather[0].main}` // Current weather description
@@ -75,7 +75,6 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
         .then((json) => {
             const filteredForecast = json.list.filter((item) => item.dt_txt.includes('12:00'))
             console.log(filteredForecast)
-
             filteredForecast.forEach((dailyForecast) => {
                 const forecastDay = new Date(dailyForecast.dt*1000);
                 const day = new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(forecastDay); //This changes the index of date to the day of the week
@@ -122,7 +121,6 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
     .then(json => {
         const filteredForecast = json.list.filter((item) => item.dt_txt.includes('12:00'))
         console.log(filteredForecast)
-
         filteredForecast.forEach((dailyForecast) => {
             const forecastDay = new Date(dailyForecast.dt*1000);
             const day = new Intl.DateTimeFormat('en-US', {weekday: 'short' }).format(forecastDay); //This changes the index of date to the day of the week
@@ -168,7 +166,6 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
     .then((json) => {
         const filteredForecast = json.list.filter((item) => item.dt_txt.includes('12:00'))
         console.log(filteredForecast)
-
         filteredForecast.forEach((dailyForecast) => {
             const forecastDay = new Date(dailyForecast.dt*1000);
             const day = new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(forecastDay); //This changes the index of date to the day of the week
@@ -261,7 +258,6 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
     .then((json) => {
         const filteredForecast = json.list.filter((item) => item.dt_txt.includes('12:00'))
         console.log(filteredForecast)
-
         filteredForecast.forEach((dailyForecast) => {
             const forecastDay = new Date(dailyForecast.dt*1000);
             const day = new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(forecastDay); //This changes the index of date to the day of the week
@@ -309,7 +305,6 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
     .then((json) => {
         const filteredForecast = json.list.filter((item) => item.dt_txt.includes('12:00'))
         console.log(filteredForecast)
-
         filteredForecast.forEach((dailyForecast) => {
             const forecastDay = new Date(dailyForecast.dt*1000);
             const day = new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(forecastDay); //This changes the index of date to the day of the week

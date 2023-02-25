@@ -2,10 +2,6 @@
     display: grid;
     justify-content: center;
     align-content: center;
-    color: white;
-    grid-template-columns: 1;
-    grid-template-rows: 6;
-    grid-gap: 10px 10px;
 }
 .main-container {
     display: grid;
