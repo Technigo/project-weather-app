@@ -1,43 +1,202 @@
+@import url("https://fonts.googleapis.com/css2?family=Almendra&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.hidden {
+  display: none;
+}
+
 body {
-height: 100vh;
-margin: 0;
+  height: 100vh;
+  font-family: "Roboto", sans-serif;
+  color: white;
 }
 
 @keyframes gradient {
-    0% {
-        background-position: 0% 25%;
-    }
+  0% {
+    background-position: 0% 25%;
+  }
 
-    50% {
-        background-position: 100% 50%;
-    }
+  50% {
+    background-position: 100% 50%;
+  }
 
-    100% {
-        background-position: 0% 25%;
-    }
+  100% {
+    background-position: 0% 25%;
+  }
 }
 
-p {
-  color: black;
+/* Navigation */
+
+nav {
+  padding-top: 1.5rem;
 }
 
-#city-list li {
-  display: block;
+nav ul {
+  display: flex;
+  margin-left: 40%;
+  flex-direction: column;
+  width: 60%;
+  top: -15px;
+  height: 100vh;
+  position: static;
+  align-items: flex-end;
+}
+
+li {
+  margin-top: 2rem;
+  list-style: none;
+  font-size: 2rem;
+  padding: 2rem;
+}
+li:hover,
+li:focus {
+  cursor: pointer;
+}
+
+#city-list {
+  height: 100%;
+  background-color: rgba(202, 202, 240, 0.8);
+  z-index: 99;
+  position: fixed;
+}
+
+#toggle-nav {
+  width: 100px;
+  color: #f7f6f6;
+  margin: 2rem;
+}
+
+#toggle-nav i {
+  font-size: 3rem;
 }
 
 .sun-times p {
   display: inline-block;
 }
 
-button {
-  display: block;
+/* top */
+.top {
+  margin-bottom: 2rem;
+  padding-left: 2rem;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
 }
 
-#weekDayRow {
+#top-right-icon {
+  width: 150px;
+  padding-right: 2rem;
+}
+#weather-icon-container {
+  width: 40%;
+}
+#weather-data-container {
+  width: 40%;
+  padding-top: 3rem;
+}
+
+#current-temp {
+  font-size: 4rem;
+  width: 13rem;
+}
+
+#current-city {
+  font-size: 2rem;
+}
+
+#current-weather {
+  font-size: 1.5rem;
+}
+
+.sun-times {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.sun-times p {
+  padding-top: 1rem;
+  padding-right: 1rem;
+}
+.sun-times p:nth-child(3) {
+  padding-left: 1rem;
+}
+
+/* week list */
+#week-list {
+  background-color: #f7f6f6;
+  position: relative;
+  padding-top: 3rem;
+  color: black;
+}
+#week-list:before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  left: -3px;
+  height: 60px;
+  width: 60px;
+  border-bottom-left-radius: 50%;
+  /* background: #000; */
+  box-shadow: 0 20px 0 0 #f7f6f6;
+}
+
+#arrow-button {
+  padding-top: 1rem;
+  width: 75px;
+  height: 75px;
+  font-size: 3rem;
+  text-align: center;
+}
+#arrow-button:hover,
+#arrow-button:focus {
+  border-radius: 50%;
+  background-color: rgba(170, 169, 169, 0.2);
+  cursor: pointer;
+}
+.rotate {
+  transform: rotate(90deg);
+  animation: rotation 0.2s 1 linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(90deg);
+  }
+}
+/*
+.sun-times > #sunrise > p {
+display: inline-block;
+}
+
+.sun-times > #sunset > p {
+  display: inline-block;
+  }
+*/
+
+.weekDayRow {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
+}
+
+.weekDayRow p:first-child {
+  padding-left: 2rem;
+}
+.weekDayRow p::nth-child(2) {
+  width: 100px;
+}
+.weekDayRow p:last-child {
+  padding-right: 1rem;
 }
 
 ul li {
@@ -47,20 +206,25 @@ ul li {
 
 #week-list-icon {
   max-height: 40px;
+  margin-left: 7rem;
 }
 
 /* Changes according to time of day*/
 
 .day {
- height: 100vh;
+  height: 60vh;
   background: linear-gradient(-45deg, #94dbf5, #62b7fc, #84e1f8, #e0c454);
-  background-size: 400% 400%;
+  background-size: 100% 400%;
   animation: gradient 15s ease infinite;
 }
 
 .night {
   height: 100vh;
-  background: linear-gradient(-45deg, #4b114b, #0d3a5f, #84e1f8, #0b181c );
+  background: linear-gradient(-45deg, #4b114b, #0d3a5f, #84e1f8, #0b181c);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
+}
+
+footer {
+  background-color: #f7f6f6;
 }
