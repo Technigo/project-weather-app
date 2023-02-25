@@ -1,5 +1,6 @@
 body {
 height: 100vh;
+margin: 0;
 }
 
 @keyframes gradient {
@@ -28,15 +29,6 @@ p {
   display: inline-block;
 }
 
-/*
-.sun-times > #sunrise > p {
-display: inline-block;
-}
-
-.sun-times > #sunset > p {
-  display: inline-block;
-  }
-*/
 button {
   display: block;
 }
