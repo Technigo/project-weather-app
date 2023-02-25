@@ -9,24 +9,27 @@
     <title>Weather App</title>
 </head>
 <body>
-<!---Här behövs sections och class för. Parent and child.
--> Header
--> Dagens text "Sun in London today..."
--> Prognos -->
-<div class="body-container">
 
-        <div class="weather-today" id="weather-today">
-            
-        </div>
-    
-        <div class="weather-forecast">
-                <ul id="weather-forecast"></ul>
-            </div>
-            <image class = "icon" id="icon" />
-            <div id="message" class="message>"></div>
-            <div></div>
-        </div>
-       
+<!---Här behövs sections och class för parent and child. -->
+<!-- Dagens text "Sun in London today..." -->
+<!--Prognos -->
+
+<div class="body-container">
+<!-- Header: Here information about today is displayed, added in javascript:
+     cloudy/rainy/clear
+     sunrise
+     sunset
+    close header-->
+    <div class="weather-today" id="weather-today"> <!-- Same as "todays weather"? -->
+    </div>
+
+    <img class="icon" src=".icons/cloud.svg" id="icon"/> <!-- Lade till src=".icons/cloud.svg", behövs den här eller ligger den i scriptet? -->
+    <div id="message" class="message>">
+    </div>
+    <section id="forecast">
+    </section>
+</div>
+
 <script src="./script.js"></script>
 </body>
 </html>

@@ -1,24 +1,10 @@
 const container = document.getElementById('weather-today');
 const bodyContainer = document.querySelector(".body-container");
 const message = document.getElementById("message")
+const forecast = document.getElementById("forecast")
 
 
-// fetch ('https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=d023daa35568a6fdd2a5f549145a0497')
-//     .then((response) => {
-//         return response.json();
-//     })
-//     .then((json) => {
-//         console.log("it is working",json);
-//     })
-    
 
-//fetch ('https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=d023daa35568a6fdd2a5f549145a0497')
-//.then((response) => {
-  // response.json();
-//})
-//.then((data) => {
-  // console.log("data", data);
-  //})
 
 fetch("https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=cc7a2bf72a818c2078266faf4fe15d7b")
  .then ((response) => {

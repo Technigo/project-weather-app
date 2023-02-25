@@ -1,17 +1,103 @@
-
 body {
-    font-family: "Montserrat", serif;
-    font-weight: bold; /*And regular?*/
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat";
+  color: #f47775;
+  height: 100vh;
+  width: 100%;
+  border: solid green 0.5px;
+  font-weight: 100;
 }
 
-.main {
-
+header {
+  height: 20vh;
+  width: 100%;
+  margin-bottom: 10px;
+  line-height: 0.4;
+  border: solid orange 0.5px;
 }
+
+.weather-today {
+  font-size: 25px;
+  line-height: 0.4;
+  padding: 15px 0px 0px 15px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  height: 75vh;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: solid blue 0.5px;
+}
+
+.icon {
+  border: solid pink 6px;
+}
+
+.message {
+  display: block;
+  height: 40vh;
+  width: 75%;
+  font-size: 24px;
+  padding: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: solid black 0.5px;
+  text-align: left;
+}
+
+.forecast {
+  height: 30vh;
+  width: 85%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: dashed 1px;
+  list-style: none;
+  padding: 4px 4px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 32px;
+  border: solid yellow 6px;
+}
+
+h2 {
+  font-size: 25px;
+  font-weight: 100;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px dotted;
+  padding: 5px 0 5px 0;
+  max-width: 80%;
+  underline: dashed;
+}
+
+footer {
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  font-size: 15px;
+  margin-top: 150px;
+  bottom: 0;
+  border: solid red 0.6px;
+}
+
+.icon {
+  width: 80px;
+  padding-bottom: 20px;
+}
+
 
 /*Styling based on weather change*/
 .clear {
-    background-color: #f7e9b9;
-    color: #2a5510;
+  background-color: #f7e9b9;
+  color: #2a5510;
   }
   
 .clouds {
@@ -28,3 +114,14 @@ body {
 
 
 /*Längst ner behövs beskrivningar för olika devices - desktop*/
+@media (min-width: 667px) {
+  body {
+      width: 60%;
+      margin: 0 auto;
+  }
+
+  footer {
+      margin-top: 75px;
+  }
+
+}
