@@ -82,6 +82,10 @@ li:focus {
   display: none;
 }
 
+#city-two {
+margin-right: 66px;
+}
+
 #toggle-nav {
   width: 100px;
   color: #f7f6f6;
@@ -302,7 +306,7 @@ footer {
   }
   #city-list > p {
     display: block;
-    font-family: "Pacifico", cursive;
+    font-family: "Lobster", cursive;
     font-size: 1.8rem;
     margin-top: 1.5rem;
   }
