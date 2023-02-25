@@ -14,11 +14,11 @@ const minneapolisContainer = document.getElementById('minneapolisContainer');
             } else if (tempFormatted >= 15 && tempFormatted < 25) {
                 container.style.background = "linear-gradient(to top, #F37335, #FDC830)";
             } else if (tempFormatted >= 5 && tempFormatted < 15) {
-                container.style.background = "linear-gradient(to top, #FDC830, #fffc00)";
+                container.style.background = "linear-gradient(to top, #dce35b, #45b649)";
             } else if (tempFormatted >= -5 && tempFormatted < 5) {
-                container.style.background = "linear-gradient(to bottom, #bdc3c7, #2c3e50)";
+                container.style.background = "linear-gradient(to bottom, #2c3e50, #bdc3c7)";
             } else if (tempFormatted >= -15 && tempFormatted < -4) {
-                container.style.background = "linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9)";
+                container.style.background = "linear-gradient(to top, #E4E5E6, #6DD5FA, #2980B9)";
             } else if (tempFormatted < -15) {
                 container.style.background = "linear-gradient(to top, #E4E5E6, #00416A)";
             }
@@ -27,7 +27,7 @@ const minneapolisContainer = document.getElementById('minneapolisContainer');
       // Conditional to show different icons depending on weather
     const weatherIcon = (json, container) => {
         if (json.weather[0].main.includes('Clear')) {
-            container.innerHTML += `<img class="weather-icon" src="./Icons/clearsky.png" alt="Clear sky icon" width=250px>`;
+            container.innerHTML += `<img class="weather-icon" src="./Icons/icons8-sun-250.png" alt="Clear sky icon">`;
             } else if (json.weather[0].main.includes('Rain')) {
             container.innerHTML += `<img class="weather-icon" src="./Icons/rain.png" alt="Rain icon">`;
             } else if (json.weather[0].main.includes('Drizzle')) {
@@ -52,9 +52,9 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
 
     .then((json) => { 
         const tempFormatted = json.main.temp.toFixed(0) // Current temperature shown in Celsius with zero decimals
-            sydneyContainer.innerHTML = `<h1>${tempFormatted}°C</h1>`
-            sydneyContainer.innerHTML += `<h2>${json.name}</h2>` // Name of the city showing
-            sydneyContainer.innerHTML += `${json.weather[0].main}` // Current weather description
+            sydneyContainer.innerHTML = `<h2>${json.name}</h2>`
+            sydneyContainer.innerHTML += `<h1>${tempFormatted}°C</h1>` // Name of the city showing
+            sydneyContainer.innerHTML += `<p>${json.weather[0].main}</p>` // Current weather description
             tempBackground(tempFormatted, sydneyContainer);
             weatherIcon(json, sydneyContainer);
 
@@ -62,7 +62,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
         const sunset = json.sys.sunset; // Sunrise (in local time Sydney, Australia)
             let sunsetTime = new Date(sunset*1000).toLocaleTimeString('sv-SE', {hour: '2-digit', minute: '2-digit',timeZone: 'Australia/Sydney'});
             let sunriseTime = new Date(sunrise*1000).toLocaleTimeString('sv-SE', {hour: '2-digit', minute: '2-digit', timeZone: 'Australia/Sydney'});
-                sydneyContainer.innerHTML += `<img src="./Icons/icons8-sunset-64.png" alt="Sunrise/sunset icon" width=40px>${sunriseTime} / ${sunsetTime}` // Time the sun rises
+                sydneyContainer.innerHTML += `<h3>Sunrise ${sunriseTime} / Sunset ${sunsetTime}</h3>` // Time the sun rises
     
             return fetch('https://api.openweathermap.org/data/2.5/forecast?q=Sydney,AU&units=metric&appid=156328eec9b7853e6ecd35c030202c4c') // Forecast for Sydney for the next 5 days
         })
@@ -98,8 +98,8 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
     
     .then((json) => { // Updates HTML-container with weather data for Singapore
         const tempFormatted = json.main.temp.toFixed(0)
-        singaporeContainer.innerHTML += `<h1>${tempFormatted}°C</h1>`
         singaporeContainer.innerHTML += `<h2>${json.name}</h2>`
+        singaporeContainer.innerHTML += `<h1>${tempFormatted}°C</h1>`
         singaporeContainer.innerHTML += `<p>${json.weather[0].main}</p>`
         tempBackground(tempFormatted, singaporeContainer);
         weatherIcon(json, singaporeContainer);
@@ -108,7 +108,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
         const sunset = json.sys.sunset;
             let sunsetTime = new Date(sunset*1000).toLocaleTimeString('sv-SE', {hour: '2-digit', minute: '2-digit',timeZone: 'Asia/Singapore'});
             let sunriseTime = new Date(sunrise*1000).toLocaleTimeString('sv-SE', {hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Singapore'});
-            singaporeContainer.innerHTML += `<p>Sunrise ${sunriseTime} / Sunset ${sunsetTime}</p>` 
+            singaporeContainer.innerHTML += `<h3>Sunrise ${sunriseTime} / Sunset ${sunsetTime}</h3>` 
 
         return fetch('https://api.openweathermap.org/data/2.5/forecast?q=Singapore&units=metric&appid=156328eec9b7853e6ecd35c030202c4c')// Forecast for Singapore for the next 5 days
         })
@@ -143,8 +143,8 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
 
     .then((json) => { // Updates HTML-container with weather data for  JOhannesburg
         const tempFormatted = json.main.temp.toFixed(0) //Change to (0) for no decimals
-        johannesburgContainer.innerHTML += `<h1>${tempFormatted}°C</h1>`
         johannesburgContainer.innerHTML += `<h2>${json.name}</h2>`
+        johannesburgContainer.innerHTML += `<h1>${tempFormatted}°C</h1>`
         johannesburgContainer.innerHTML += `<p>${json.weather[0].main}</p>`
         tempBackground(tempFormatted, johannesburgContainer);
         weatherIcon(json, johannesburgContainer);
@@ -153,7 +153,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
         const sunset = json.sys.sunset;
             let sunsetTime = new Date(sunset*1000).toLocaleTimeString('sv-SE', {hour: '2-digit', minute: '2-digit',timeZone: 'Africa/Johannesburg'});
             let sunriseTime = new Date(sunrise*1000).toLocaleTimeString('sv-SE', {hour: '2-digit', minute: '2-digit', timeZone: 'Africa/Johannesburg'});
-            johannesburgContainer.innerHTML += `<p>Sunrise ${sunriseTime} / Sunset ${sunsetTime}</p>` 
+            johannesburgContainer.innerHTML += `<h3>Sunrise ${sunriseTime} / Sunset ${sunsetTime}</h3>` 
 
         return fetch('https://api.openweathermap.org/data/2.5/forecast?q=Johannesburg&units=metric&appid=156328eec9b7853e6ecd35c030202c4c') // Forecast for Johannesburg for the next 5 days
         })
@@ -188,8 +188,8 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
     // Update container with weather data for London
     .then((json) => { 
         const tempFormatted = json.main.temp.toFixed(0) //Change to (0) for no decimals
-        londonContainer.innerHTML += `<h1>${tempFormatted}°C</h1>`
         londonContainer.innerHTML += `<h2>${json.name}</h2>`
+        londonContainer.innerHTML += `<h1>${tempFormatted}°C</h1>`
         londonContainer.innerHTML += `<p>${json.weather[0].main}</p>`
         tempBackground(tempFormatted, londonContainer);
         weatherIcon(json, londonContainer);
@@ -198,7 +198,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
         const sunset = json.sys.sunset;
             let sunsetTime = new Date(sunset*1000).toLocaleTimeString('sv-SE', {hour: '2-digit', minute: '2-digit',timeZone: 'Europe/London'});
             let sunriseTime = new Date(sunrise*1000).toLocaleTimeString('sv-SE', {hour: '2-digit', minute: '2-digit', timeZone: 'Europe/London'});
-            londonContainer.innerHTML += `<p>Sunrise ${sunriseTime} / Sunset ${sunsetTime}</p>` 
+            londonContainer.innerHTML += `<h3>Sunrise ${sunriseTime} / Sunset ${sunsetTime}</h3>` 
 
             return fetch('https://api.openweathermap.org/data/2.5/forecast?q=London,UK&units=metric&appid=156328eec9b7853e6ecd35c030202c4c')// Forecast for London for the next 5 days
         })
@@ -235,8 +235,8 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
 // Update container with weather data for Vancouver
 .then((json) => { 
     const tempFormatted = json.main.temp.toFixed(0) //Change to (0) for no decimals
-    vancouverContainer.innerHTML += `<h1>${tempFormatted}°C</h1>`
     vancouverContainer.innerHTML += `<h2>${json.name}</h2>`
+    vancouverContainer.innerHTML += `<h1>${tempFormatted}°C</h1>`
     vancouverContainer.innerHTML += `<p>${json.weather[0].main}</p>`
     tempBackground(tempFormatted, vancouverContainer);
     weatherIcon(json, vancouverContainer);
@@ -245,7 +245,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
     const sunset = json.sys.sunset;
         let sunsetTime = new Date(sunset*1000).toLocaleTimeString('sv-SE', {hour: '2-digit', minute: '2-digit',timeZone: 'America/Vancouver'});
         let sunriseTime = new Date(sunrise*1000).toLocaleTimeString('sv-SE', {hour: '2-digit', minute: '2-digit', timeZone: 'America/Vancouver'});
-        vancouverContainer.innerHTML += `<p>Sunrise ${sunriseTime} / Sunset ${sunsetTime}</p>` 
+        vancouverContainer.innerHTML += `<h3>Sunrise ${sunriseTime} / Sunset ${sunsetTime}</h3>` 
 
         return fetch('https://api.openweathermap.org/data/2.5/forecast?q=Vancouver,CA&units=metric&appid=156328eec9b7853e6ecd35c030202c4c') // Forecast for Miami for the next 5 days
     })
@@ -282,8 +282,8 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
     // Update container with weather data for Minneapolis
     .then((json) => { 
         const tempFormatted = json.main.temp.toFixed(0) //Change to (0) for no decimals
-        minneapolisContainer.innerHTML += `<h1>${tempFormatted}°C</h1>`
         minneapolisContainer.innerHTML += `<h2>${json.name}</h2>`
+        minneapolisContainer.innerHTML += `<h1>${tempFormatted}°C</h1>`
         minneapolisContainer.innerHTML += `<p>${json.weather[0].main}</p>`
         tempBackground(tempFormatted, minneapolisContainer);
         weatherIcon(json, minneapolisContainer);
@@ -292,7 +292,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
         const sunset = json.sys.sunset;
             let sunsetTime = new Date(sunset*1000).toLocaleTimeString('sv-SE', {hour: '2-digit', minute: '2-digit',timeZone: 'America/Chicago'});
             let sunriseTime = new Date(sunrise*1000).toLocaleTimeString('sv-SE', {hour: '2-digit', minute: '2-digit', timeZone: 'America/Chicago'});
-            minneapolisContainer.innerHTML += `<p>Sunrise ${sunriseTime} / Sunset ${sunsetTime}</p>` 
+            minneapolisContainer.innerHTML += `<h3>Sunrise ${sunriseTime} / Sunset ${sunsetTime}</h3>` 
 
         return fetch('https://api.openweathermap.org/data/2.5/forecast?q=Minneapolis,US&units=metric&appid=156328eec9b7853e6ecd35c030202c4c')// Forecast for Lima for the next 5 days
     })
