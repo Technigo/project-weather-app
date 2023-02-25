@@ -144,10 +144,10 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
         const getTime = new Date().getHours();
         let sunriseTime = new Date(data.sys.sunrise).getHours();       
         let sunsetTime = new Date(data.sys.sunset).getHours();
-        console.log(getTime)
-        console.log(sunriseTime)
-        console.log(sunsetTime)
-        console.log(todaysWeather)
+        console.log(`getTime:`, getTime)
+        console.log(`sunriseTime:`, sunriseTime)
+        console.log(`sunsetTime:`, sunsetTime)
+        console.log(`todaysWeather:`, todaysWeather)
         if (getTime >= sunriseTime && getTime <= sunsetTime) {
             //During daytime
             if (todaysWeather === 'Clear') {
