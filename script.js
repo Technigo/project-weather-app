@@ -27,7 +27,7 @@ const minneapolisContainer = document.getElementById('minneapolisContainer');
       // Conditional to show different icons depending on weather
     const weatherIcon = (json, container) => {
         if (json.weather[0].main.includes('Clear')) {
-            container.innerHTML += `<img class="weather-icon" src="./Icons/icons8-sun-250.png" alt="Clear sky icon">`;
+            container.innerHTML += `<img class="weather-clear" src="./Icons/icons8-sun-250.png" alt="Clear sky icon">`;
             } else if (json.weather[0].main.includes('Rain')) {
             container.innerHTML += `<img class="weather-icon" src="./Icons/rain.png" alt="Rain icon">`;
             } else if (json.weather[0].main.includes('Drizzle')) {
@@ -54,7 +54,6 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
         const tempFormatted = json.main.temp.toFixed(0) // Current temperature shown in Celsius with zero decimals
             sydneyContainer.innerHTML = `<h2>${json.name}</h2>`
             sydneyContainer.innerHTML += `<h1>${tempFormatted}°C</h1>` // Name of the city showing
-            sydneyContainer.innerHTML += `<p>${json.weather[0].main}</p>` // Current weather description
             tempBackground(tempFormatted, sydneyContainer);
             weatherIcon(json, sydneyContainer);
 
@@ -100,7 +99,6 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
         const tempFormatted = json.main.temp.toFixed(0)
         singaporeContainer.innerHTML += `<h2>${json.name}</h2>`
         singaporeContainer.innerHTML += `<h1>${tempFormatted}°C</h1>`
-        singaporeContainer.innerHTML += `<p>${json.weather[0].main}</p>`
         tempBackground(tempFormatted, singaporeContainer);
         weatherIcon(json, singaporeContainer);
 
@@ -145,7 +143,6 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
         const tempFormatted = json.main.temp.toFixed(0) //Change to (0) for no decimals
         johannesburgContainer.innerHTML += `<h2>${json.name}</h2>`
         johannesburgContainer.innerHTML += `<h1>${tempFormatted}°C</h1>`
-        johannesburgContainer.innerHTML += `<p>${json.weather[0].main}</p>`
         tempBackground(tempFormatted, johannesburgContainer);
         weatherIcon(json, johannesburgContainer);
 
@@ -190,7 +187,6 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
         const tempFormatted = json.main.temp.toFixed(0) //Change to (0) for no decimals
         londonContainer.innerHTML += `<h2>${json.name}</h2>`
         londonContainer.innerHTML += `<h1>${tempFormatted}°C</h1>`
-        londonContainer.innerHTML += `<p>${json.weather[0].main}</p>`
         tempBackground(tempFormatted, londonContainer);
         weatherIcon(json, londonContainer);
 
@@ -237,7 +233,6 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
     const tempFormatted = json.main.temp.toFixed(0) //Change to (0) for no decimals
     vancouverContainer.innerHTML += `<h2>${json.name}</h2>`
     vancouverContainer.innerHTML += `<h1>${tempFormatted}°C</h1>`
-    vancouverContainer.innerHTML += `<p>${json.weather[0].main}</p>`
     tempBackground(tempFormatted, vancouverContainer);
     weatherIcon(json, vancouverContainer);
 
@@ -284,7 +279,6 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
         const tempFormatted = json.main.temp.toFixed(0) //Change to (0) for no decimals
         minneapolisContainer.innerHTML += `<h2>${json.name}</h2>`
         minneapolisContainer.innerHTML += `<h1>${tempFormatted}°C</h1>`
-        minneapolisContainer.innerHTML += `<p>${json.weather[0].main}</p>`
         tempBackground(tempFormatted, minneapolisContainer);
         weatherIcon(json, minneapolisContainer);
 
