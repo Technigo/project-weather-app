@@ -26,6 +26,7 @@ body {
     margin: 0;
     background: rgb(238,174,202);
     background: radial-gradient(circle, rgb(10, 0, 100) 0%, rgb(136, 119, 176) 100%);
+    display: grid;
 }
 
     .card {
@@ -39,16 +40,11 @@ body {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
 
-
-    
-        
         .weather-container {
         display: flex;
         flex-direction: column;
         flex-flow: column-wrap;
         }
-
-
 
             .todays-weather {
                 width: 60%;
@@ -74,14 +70,11 @@ body {
                     
                 }
 
-
-
-
             .todays-date {
                 display: flex;
                 flex-direction: column;
                 font-weight: lighter;
-                font-family: "Montserrat", "sans-serif";
+                font-family: Arial, Helvetica, sans-serif;
                 font-size: small;
                 margin: 20px;
             }
@@ -95,7 +88,53 @@ body {
                 display: flex;
             }
 
+            footer {
+                width: 100%;
+                text-align: center;
+                color: black;
+                margin-top: 30px;
+                padding: 15px;    
+            }
+             
+              .contactme{
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                gap: 5px;
+                padding: 5px;
+               }
+              
+              .contact-logo{
+                width: 30px;
+                opacity: .75;
+              }
+              
+              .contact-logo:hover{
+                transform: scale(1.2);
+                opacity: 1;
+              }
+              
+              .aboutme {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 5px;
+                padding: 5px;
+                font-size: 15px;
+                color:black;
+                text-align: center;
+              }
             
+              .contactE{
+                border: 1px solid;
+                border-radius: 15px;
+              }
+            
+              .contactY{
+                border: 1px solid;
+                border-radius: 15px;
+              }
+                        
 
 
 /* Media queries  */

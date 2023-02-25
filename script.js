@@ -6,6 +6,7 @@ const condition = document.getElementById('condition')
 const sunrise = document.getElementById('sunrise')
 const sunset = document.getElementById('sunset')
 
+//Gets the current date 
 const currentDate = new Date();
 todaysDate.innerHTML = currentDate.toLocaleDateString('en-US', {
   weekday: 'long',
@@ -13,6 +14,7 @@ todaysDate.innerHTML = currentDate.toLocaleDateString('en-US', {
   day: 'numeric',
 });
 
+//fetches city, temperature, condition sunrise and sunset.
 fetch('https://api.openweathermap.org/data/2.5/weather?q=Piteå,Sweden&units=metric&APPID=bcc357d81ce23673e3a8e92322d840f2')
     
     .then((response) => {
@@ -29,7 +31,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Piteå,Sweden&units=met
     const sunriseHour = sunriseTime.toLocaleString([], {
         hour: "2-digit",
         minute: "2-digit",
-        hour12:false,
+        hour12: false,
 })
 
         sunrise.innerHTML =`<p>sunrise: ${sunriseHour}</p>`
@@ -39,7 +41,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Piteå,Sweden&units=met
     const sunsetHour = sunsetTime.toLocaleString([], {
         hour: "2-digit",
         minute: "2-digit",
-        hour12:false,
+        hour12: false,
 })
 
         sunset.innerHTML =`<p>sunset: ${sunsetHour}</p>`
