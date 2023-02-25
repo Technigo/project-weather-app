@@ -104,6 +104,10 @@ const loadHtml = () => {
 
 //let date = new Date(time);
 
+let clearWeekList = () => {
+  weekList.innerHTML = ``;
+}; 
+
 //API Forecast fetch
 const getForecastData = () => {
   fetch(
@@ -145,7 +149,7 @@ const getForecastData = () => {
 toggleNav.addEventListener("click", () => {
   cityList.classList.toggle("hidden");
 });
-
+/*
 myLocation.addEventListener("click", () => {
   navigator.geolocation.getCurrentPosition(success, error, options);
   setTimeout(() => {
@@ -155,16 +159,18 @@ myLocation.addEventListener("click", () => {
     cityList.classList.toggle("hidden");
     loadHtml();
   }, 3000); 
-})
+})*/
 cityOne.addEventListener("click", () => {
   cityList.classList.toggle("hidden");
   weatherFetch("57.6717", "11.9810");
   loadHtml();
+  clearWeekList();
 });
 cityTwo.addEventListener("click", () => {
   cityList.classList.toggle("hidden");
   weatherFetch("57.6290", "18.3071");
   loadHtml();
+  clearWeekList();
 });
 arrowButton.addEventListener("click", () => {
   arrowButton.classList.toggle("rotate");
