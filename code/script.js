@@ -162,13 +162,13 @@ myLocation.addEventListener("click", () => {
 })*/
 cityOne.addEventListener("click", () => {
   cityList.classList.toggle("hidden");
-  weatherFetch("57.6717", "11.9810");
+  weatherFetch("57.708870", "11.974560");
   loadHtml();
   clearWeekList();
 });
 cityTwo.addEventListener("click", () => {
   cityList.classList.toggle("hidden");
-  weatherFetch("57.6290", "18.3071");
+  weatherFetch("60.192059", "24.945831")
   loadHtml();
   clearWeekList();
 });
