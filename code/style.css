@@ -58,17 +58,38 @@ body {
 
 .todays-item {
   padding: 20px 0px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .todays-item img {
   padding: 20px 50px;
 }
+
+h1 {
+  animation: pulse 3s infinite;
+}
+@keyframes pulse {
+	0% {
+		transform: scale(0.95);
+		
+	}
+	70% {
+		transform: scale(1);
+		
+	}
+	100% {
+		transform: scale(0.95);
+	}
+  }
 
 .forecast-section {
   padding: 30px 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 3rem;
+  margin-bottom: 30px;
 }
 
 .forecast-row {
@@ -109,4 +130,18 @@ body {
   .weather-body {
     max-width: 40%;
   }
+}
+
+form {
+ box-sizing: border-box;
+ display: flex;
+ justify-content: center;
+}
+
+.city-selector {
+  border: none;
+  border-radius: 8px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  padding: 3px;
 }
