@@ -58,6 +58,7 @@ li {
   list-style: none;
   font-size: 2rem;
   padding: 2rem;
+  text-shadow: 1px 1px 1px #0d3a5f;
 }
 
 li:hover,
@@ -67,10 +68,15 @@ li:focus {
 
 #city-list {
   height: 100%;
-  background-color: rgba(202, 202, 240, 0.8);
+  background-color: rgba(164, 222, 247, 0.5);
   z-index: 99;
   position: fixed;
   color: #0b181c;
+}
+
+
+#city-two {
+  margin-right: 65px;
 }
 
 #toggle-nav {
@@ -98,9 +104,9 @@ li:focus {
 }
 
 #top-right-icon {
-  width: 150px;
+  width: 200px;
   padding-right: 2rem;
-  animation: pulse 4s infinite;
+  animation: pulse 5s infinite;
 }
 
 @keyframes pulse {
@@ -211,6 +217,7 @@ li:focus {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  text-shadow: 1px 1px 1px #0d3a5f;
 }
 
 .weekDayRow p:first-child {
@@ -223,7 +230,10 @@ li:focus {
 
 .weekDayRow p:last-child {
   padding-right: 1rem;
+  width: 120px;
+  text-align: end;
 }
+
 
 ul li {
   display: inline-block;
@@ -295,6 +305,6 @@ footer {
     display: none;
 }
 #top-right-icon {
-  width: 200px;
+  width: 250px;
 }
 }
