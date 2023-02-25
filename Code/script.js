@@ -75,7 +75,7 @@ const filterWeather = () => {
     } else if (json.list[0].weather[0].main == 'Snow') {
       document.body.style.backgroundColor = "#A3DEF7";
       document.body.style.color = "#164A68";
-      aboutWeather.innerHTML += `<img class="weather-img" src="./icons/hat." alt="hat icon">`
+      aboutWeather.innerHTML += `<img class="weather-img" src="./icons/hat.png" alt="hat icon">`
       aboutWeather.innerHTML += `<h2>Put your hat on. It's snowing in ${json.city.name} today.</h2>`
 
     } else {
