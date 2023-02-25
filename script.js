@@ -27,19 +27,19 @@ const minneapolisContainer = document.getElementById('minneapolisContainer');
       // Conditional to show different icons depending on weather
     const weatherIcon = (json, container) => {
         if (json.weather[0].main.includes('Clear')) {
-            container.innerHTML += `<img class="weather-clear" src="./Icons/icons8-sun-250.png" alt="Clear sky icon">`;
+            container.innerHTML += `<div class="container"><img class="weather-sun" src="./Icons/clearsky.png" alt="Clear sky icon"></div>`;
             } else if (json.weather[0].main.includes('Rain')) {
-            container.innerHTML += `<img class="weather-icon" src="./Icons/rain.png" alt="Rain icon">`;
+            container.innerHTML += `<div class="container"><img class="weather-icon" src="./Icons/rain.png" alt="Rain icon"></div>`;
             } else if (json.weather[0].main.includes('Drizzle')) {
-            container.innerHTML += `<img class="weather-icon" src="./Icons/showerrain.png" alt="Drizzle icon">`;
+            container.innerHTML += `<div class="container"><img class="weather-icon" src="./Icons/showerrain.png" alt="Drizzle icon"></div>`;
             } else if (json.weather[0].main.includes('Clouds')) {
-            container.innerHTML += `<img class="weather-icon" src="./Icons/brokenclouds.png" alt="Clouds icon">`;
+            container.innerHTML += `<div class="container"><img class="weather-icon" src="./Icons/brokenclouds.png" alt="Clouds icon"></div>`;
             } else if (json.weather[0].main.includes('Thunderstorm')) {
-            container.innerHTML += `<img class="weather-icon" src="./Icons/thunderstorm.png" alt="Thunder icon">`;
+            container.innerHTML += `<div class="container"><img class="weather-icon" src="./Icons/thunderstorm.png" alt="Thunder icon"></div>`;
             } else if (json.weather[0].main.includes('Snow')) {
-            container.innerHTML += `<img class="weather-icon" src="./Icons/snow.png" alt="Snow icon">`;
+            container.innerHTML += `<div class="container"><img class="weather-snow" src="./Icons/snow.png" alt="Snow icon"></div>`;
             } else {
-            container.innerHTML += `<img class="weather-icon" src="./Icons/mist.png" alt="Mist icon">`;
+            container.innerHTML += `<div class="container"><img class="weather-icon" src="./Icons/mist.png" alt="Mist icon"></div>`;
             }
         }
       
@@ -78,7 +78,11 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
                 const forecastDay = new Date(dailyForecast.dt*1000);
                 const day = new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(forecastDay);
                 const forecastTempFormatted = dailyForecast.main.temp.toFixed(0);
-                    sydneyContainer.innerHTML += `<p>${day} – ${dailyForecast.weather[0].main}, ${forecastTempFormatted}°C</p>`
+                    sydneyContainer.innerHTML += `
+                    <div class="forecast">
+                    <p>${day}</p>
+                    <p>${dailyForecast.weather[0].main} | ${forecastTempFormatted}°C</p>
+                    </div>`
             });
         })
     
@@ -122,7 +126,10 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
             const forecastDay = new Date(dailyForecast.dt*1000);
             const day = new Intl.DateTimeFormat('en-US', {weekday: 'short' }).format(forecastDay); //This changes the index of date to the day of the week
             const forecastTempFormatted = dailyForecast.main.temp.toFixed(0);
-                singaporeContainer.innerHTML += `<p>${day} – ${dailyForecast.weather[0].main}, ${forecastTempFormatted}°C</p>`
+                singaporeContainer.innerHTML += `<div class="forecast">
+                <p>${day}</p>
+                <p>${dailyForecast.weather[0].main} | ${forecastTempFormatted}°C</p>
+                </div>`
         });
     })
 
@@ -165,7 +172,10 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
             const forecastDay = new Date(dailyForecast.dt*1000);
             const day = new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(forecastDay); //This changes the index of date to the day of the week
             const forecastTempFormatted = dailyForecast.main.temp.toFixed(0);
-                johannesburgContainer.innerHTML += `<p>${day} – ${dailyForecast.weather[0].main}, ${forecastTempFormatted}°C</p>`
+                johannesburgContainer.innerHTML += `<div class="forecast">
+                <p>${day}</p>
+                <p>${dailyForecast.weather[0].main} | ${forecastTempFormatted}°C</p>
+                </div>`
         });
     })
 
@@ -209,7 +219,10 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
             const forecastDay = new Date(dailyForecast.dt*1000);
             const day = new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(forecastDay); //This changes the index of date to the day of the week
             const forecastTempFormatted = dailyForecast.main.temp.toFixed(0);
-                londonContainer.innerHTML += `<p>${day} – ${dailyForecast.weather[0].main}, ${forecastTempFormatted}°C</p>`
+                londonContainer.innerHTML += `<div class="forecast">
+                <p>${day}</p>
+                <p>${dailyForecast.weather[0].main} | ${forecastTempFormatted}°C</p>
+                </div>`
         });
     })
 
@@ -253,7 +266,10 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
             const forecastDay = new Date(dailyForecast.dt*1000);
             const day = new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(forecastDay); //This changes the index of date to the day of the week
             const forecastTempFormatted = dailyForecast.main.temp.toFixed(0);
-                vancouverContainer.innerHTML += `<p>${day} – ${dailyForecast.weather[0].main}, ${forecastTempFormatted}°C</p>`
+                vancouverContainer.innerHTML += `<div class="forecast">
+                <p>${day}</p>
+                <p>${dailyForecast.weather[0].main} | ${forecastTempFormatted}°C</p>
+                </div>`
         });
     })
 
@@ -298,6 +314,9 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Sydney,AU&units=metric&
             const forecastDay = new Date(dailyForecast.dt*1000);
             const day = new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(forecastDay); //This changes the index of date to the day of the week
             const forecastTempFormatted = dailyForecast.main.temp.toFixed(0);
-                minneapolisContainer.innerHTML += `<p>${day} – ${dailyForecast.weather[0].main}, ${forecastTempFormatted}°C</p>`
+                minneapolisContainer.innerHTML += `<div class="forecast">
+                <p>${day}</p>
+                <p>${dailyForecast.weather[0].main} | ${forecastTempFormatted}°C</p>
+                </div>`
         });
     });
