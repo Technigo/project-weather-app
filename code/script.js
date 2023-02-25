@@ -87,7 +87,7 @@ fetchingWeather();
 
 const fetchingWeatherForecast = () => {
   fetch(
-    "https://api.openweathermap.org/data/2.5/forecast?q=Gothenburg,Sweden&units=metric&APPID=072c88c2b7f1a1c7fb7704f9f847b690"
+    `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=072c88c2b7f1a1c7fb7704f9f847b690`
   )
     .then((response) => {
       return response.json();
