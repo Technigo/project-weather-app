@@ -142,10 +142,9 @@ li:focus {
 /* week list */
 #week-list {
   height: 50%; 
-  background-color: #f7f6f6;
+  background-color: #62b7fc;
   position: relative;
-  padding-top: 3rem;
-  color: black;
+  color:white;
 }
 
 #arrow-button {
