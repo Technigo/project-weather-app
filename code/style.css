@@ -116,6 +116,12 @@ li:focus {
   width: 13rem;
 }
 
+#feels-like-temp {
+  font-size: 1.1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
 #current-city {
   font-size: 2rem;
 }

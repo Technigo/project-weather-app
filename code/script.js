@@ -14,6 +14,7 @@ const arrowButton = document.getElementById("arrow-button");
 const weekList = document.getElementById("week-list");
 const topRightIcon = document.getElementById("weather-icon-container");
 const bodyContainer = document.querySelector(".body-container");
+const feelsLikeTemp = document.getElementById("feels-like-temp");
 
 //Global variables
 let apiResponse, nightTemp, crd, latitude, longitude;
@@ -87,12 +88,17 @@ function error(err) {
   console.warn(`ERROR(${err.code}): ${err.message}`);
 }
 
+let clearFeelsLikeTemp = () => {
+  feelsLikeTemp.innerHTML = ``;
+}; 
+
 //Async before it was cool...this is just a timer to wait for the response
 //Since the fetch() will be async we need to fix this :)
 const loadHtml = () => {
   setTimeout(() => {
     currentCity.innerHTML = `${apiResponse.name}`;
     currentTemp.innerHTML = `${Math.round(apiResponse.main.temp * 10) / 10} °C`;
+    feelsLikeTemp.innerHTML += `feels like ${Math.round(apiResponse.main.feels_like * 10) / 10} °C`;
     currentWeather.innerHTML = `${apiResponse.weather.map((weather) => {
       return weather.description;
     })}`;
@@ -165,6 +171,7 @@ cityOne.addEventListener("click", () => {
   weatherFetch("57.708870", "11.974560");
   loadHtml();
   clearWeekList();
+  clearFeelsLikeTemp();
 });
 
 cityTwo.addEventListener("click", () => {
@@ -172,6 +179,7 @@ cityTwo.addEventListener("click", () => {
   weatherFetch("60.192059", "24.945831")
   loadHtml();
   clearWeekList();
+  clearFeelsLikeTemp();
 });
 arrowButton.addEventListener("click", () => {
   arrowButton.classList.toggle("rotate");
