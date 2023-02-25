@@ -25,8 +25,9 @@ body {
     height: 100vh;
     margin: 0;
     background: rgb(238,174,202);
-    background: radial-gradient(circle, rgb(10, 0, 100) 0%, rgb(136, 119, 176) 100%);
+    background: radial-gradient(circle, rgba(10, 0, 100, 0.699) 0%, rgba(136, 119, 176, 0.5) 100%);
     display: grid;
+    
 }
 
     .card {
@@ -35,9 +36,11 @@ body {
         opacity: .4;
         border-radius: 30px;
         width: 100%;
-        max-width: 420px;
+        
         padding: 20px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        display: grid;
+        grid-template-rows: 1fr ;
     }
 
         .weather-container {
@@ -123,18 +126,39 @@ body {
                 font-size: 15px;
                 color:black;
                 text-align: center;
+                
               }
             
+              .aboutme p {
+                color: #ffffff;
+                opacity: .4;
+              }
+
               .contactE{
-                border: 1px solid;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
                 border-radius: 15px;
+                color: #ffffff;
+                opacity: .7;
+                background-color: #8278a8;
               }
             
+              .contactE p{
+                color: #ffffff;
+                opacity: .4;
+              }
+
               .contactY{
-                border: 1px solid;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
                 border-radius: 15px;
+                color: #ffffff;
+                opacity: .7;
+                background-color: #8278a8;
               }
                         
+              .contactY p{
+                color: #ffffff;
+                opacity: .4;
+              }
 
 
 /* Media queries  */
