@@ -110,8 +110,7 @@ const weatherForecastData = (city) => {
 
 
         } else {
-            console.log('something is fishy...')
-            weatherForecast.innerHTML = 'Oops, no such city is found. Did you check your spelling?'
+            alert('Oops, city not found! Check your spelling please.');
         }
 
     
