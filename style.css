@@ -30,7 +30,11 @@ p {
   margin: 0 auto;
 }
 
-/*.search-form {
+
+/*
+We really wanted to make a search form to change cities but didn't have time, 
+will try to add it later
+.search-form {
   padding: 10px;
 }
 .city-search {
@@ -211,7 +215,7 @@ a:hover {
   footer {
     width: 80%;
     margin-top: auto;
-    font-size: 16px;
+    font-size: 15px;
   }
 
   a:link, a:visited  {
