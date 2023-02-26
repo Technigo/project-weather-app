@@ -38,14 +38,12 @@ body {
 }
 
 .main {
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    margin: -75px auto 0 auto;
-    align-content: center;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: -75px auto 0 auto;
+  align-content: center;
 }
-
-
 
 .sunrise-sunset {
   display: flex;
@@ -59,15 +57,15 @@ h1 {
 }
 
 h2 {
-margin-bottom: 0;
-margin-top: 0.5rem;
-font-weight: 100;
+  margin-bottom: 0;
+  margin-top: 0.5rem;
+  font-weight: 100;
 }
 
 h3 {
-margin-top: 0;
-margin-bottom: 0.5rem;
-font-weight: 100;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 100;
 }
 
 sup {
@@ -90,7 +88,7 @@ sup {
 .search {
   display: flex;
   justify-content: center;
-  margin-top: 1rem; 
+  margin-top: 1rem;
 }
 
 input {
@@ -125,7 +123,7 @@ input {
 
 .forecast-weekday {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   padding: 0.3rem;
   align-items: center;
   width: 90%;
@@ -174,23 +172,22 @@ input {
 }
 
 .contact img {
-height: 1.5rem;  
+  height: 1.5rem;
 }
-
 
 @media (max-width: 500px) {
   .forecast-weekday {
-    grid-template-columns: 1fr 1fr 1fr 2fr;
+    grid-template-columns: 1fr 1fr 1fr 2fr 1fr;
   }
 }
 @media (max-width: 300px) {
-html {
-    font-size: 14px;
-}
-.main-image img {
+  html {
+    font-size: 12px;
+  }
+  .main-image img {
     width: 7rem;
-    }
-.forecast-wrapper {
+  }
+  .forecast-wrapper {
     font-size: 0.8rem;
   }
   .forecast-wrapper img {
@@ -199,9 +196,9 @@ html {
 }
 
 @media (min-width: 668px) {
-.main-container {
-max-width: 660px;
-margin: 3rem auto;
-box-shadow: 5px 8px 20px rgb(0 0 0 / 30%);
-}
+  .main-container {
+    max-width: 660px;
+    margin: 3rem auto;
+    box-shadow: 5px 8px 20px rgb(0 0 0 / 30%);
+  }
 }
