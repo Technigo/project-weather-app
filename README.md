@@ -1,13 +1,18 @@
 # Weather App
 
-Replace this readme with your own information about your project.
+Group project by Jonas Jakobson and Irupé Pozo
+A weather app where you can see todays weather and also 5 days for different cities.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+
 
 ## The problem
+We started by planning the project together and deciding on styling, and what kind of content and functions we wanted it to have. We wrote different descriptions and made basic HTML and CSS before we divided the project in different branches. These branches were for the JavaScript and the styling. To build the weather app we mostly used JavaScript so that the page would be able to switch temperature, background-color days and so on. 
+We started with fetching the different URLs and from there we started building the different functions needed to make the page work. Mostly went kind of smoothly but we had a hard time figuring out how to make the page change weather, background color and city when we added the search function, this part took quite some time to figure out, and where to put all the information from JavaScript.
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Working in branches was also quite hard as we couldn’t see what was done in the other branch which made it difficult to see what the page looked like. Wen merging the branches we also noticed that we didn’t get all information to merge so this made us realize that we probably should have put even more time planning the project with clearer explanations on what we needed to do on the page. 
+![image](https://user-images.githubusercontent.com/43434947/221400284-759ebc43-a150-4808-a2c0-b4db5d621015.png)
+
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://cheery-pasca-c07ee4.netlify.app/
