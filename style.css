@@ -37,6 +37,7 @@ body {
     width: 100%;
     max-width: 600px;
     height: 30px;
+    font-size: 18px;
 }
 
 .search-bar:focus {
@@ -45,7 +46,6 @@ body {
 
 .container {
     background-color: var(--container-color);
-    /*box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.3);*/
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
@@ -320,7 +320,7 @@ footer a:hover {
 
 
 
-/* IF WE NEED TO ADJUST FOR DESKTOP & TABLET, otherwise remove: */
+/* For when we look at the app in desktop or tablet: */
 @media (min-width: 500px) {
         
 .container {
@@ -329,4 +329,9 @@ footer a:hover {
     max-width: 400px;
     margin: 50px auto;
 }
+
+.search-bar {
+    font-size: 14px;
+}
+
 }
