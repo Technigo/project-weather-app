@@ -8,6 +8,7 @@ const cityList = document.getElementById("city-list");
 const myLocation = document.getElementById("my-location");
 const cityOne = document.getElementById("city-one");
 const cityTwo = document.getElementById("city-two");
+const cityThree = document.getElementById("city-three");
 const sunUpTime = document.getElementById("sun-up-time");
 const sunDownTime = document.getElementById("sun-down-time");
 const arrowButton = document.getElementById("arrow-button");
@@ -30,24 +31,6 @@ const stylingTimer = () => {
 };
 stylingTimer();
 
-//API Fetch()
-
-// const weatherFetch = (city, countryCode) => {
-//   const apiKey = "191f229fc0a6e0f86812a75292074cb9";
-//   fetch(
-//     `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&units=metric&APPID=${apiKey}`
-//   )
-//     .then((response) => response.json())
-//     .then((data) => {
-//       apiResponse = data;
-//       console.log(apiResponse);
-//       const sunriseTime = new Date(apiResponse.sys.sunrise * 1000); // API date/time value needs to be multiplied by 1000 for .toLocaleTimeString() to return the correct value
-//       //console.log(sunriseTime.toLocaleTimeString())
-//       sunGoesUp = sunriseTime.toLocaleTimeString();
-//       const sunSetTime = new Date(apiResponse.sys.sunset * 1000);
-//       sunGoesDown = sunSetTime.toLocaleTimeString();
-//     });
-// };
 
 const weatherFetch = (lat, lon) => {
   const apiKey = "191f229fc0a6e0f86812a75292074cb9";
@@ -60,7 +43,6 @@ const weatherFetch = (lat, lon) => {
     .then((response) => response.json())
     .then((data) => {
       apiResponse = data;
-      console.log(apiResponse);
       const sunriseTime = new Date(apiResponse.sys.sunrise * 1000);
       sunGoesUp = sunriseTime.toLocaleTimeString("en-GB", {timeStyle: "short"}); //why doesn't it work to just put this at the end of sunriseTime?
       const sunSetTime = new Date(apiResponse.sys.sunset * 1000);
@@ -108,8 +90,6 @@ const loadHtml = () => {
   }, 1000);
 };
 
-//let date = new Date(time);
-
 let clearWeekList = () => {
   weekList.innerHTML = ``;
 };
@@ -151,21 +131,11 @@ const getForecastData = () => {
     });
 };
 
-//event listeners
+//Event listeners
 toggleNav.addEventListener("click", () => {
   cityList.classList.toggle("hidden");
 });
-/*
-myLocation.addEventListener("click", () => {
-  navigator.geolocation.getCurrentPosition(success, error, options);
-  setTimeout(() => {
-    weatherFetch(latitude, longitude);
-    latitude = crd.latitude;
-    longitude = crd.longitude;
-    cityList.classList.toggle("hidden");
-    loadHtml();
-  }, 3000); 
-})*/
+
 cityOne.addEventListener("click", () => {
   cityList.classList.toggle("hidden");
   weatherFetch("57.708870", "11.974560");
@@ -181,6 +151,15 @@ cityTwo.addEventListener("click", () => {
   clearWeekList();
   clearFeelsLikeTemp();
 });
+
+cityThree.addEventListener("click", () => {
+  cityList.classList.toggle("hidden");
+  weatherFetch("59.6173", "16.5422");
+  loadHtml();
+  clearWeekList();
+  clearFeelsLikeTemp();
+});
+
 arrowButton.addEventListener("click", () => {
   arrowButton.classList.toggle("rotate");
   weekList.classList.toggle("hidden");

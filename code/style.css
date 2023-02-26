@@ -83,7 +83,7 @@ li:focus {
   display: none;
 }
 
-#city-two {
+#city-three {
   margin-right: 66px;
 }
 
@@ -191,6 +191,7 @@ li:focus {
 }
 
 #arrow-button {
+  margin-top: 1rem;
   padding-top: 1rem;
   width: 75px;
   height: 75px;
@@ -231,6 +232,7 @@ li:focus {
 
 .weekDayRow p:first-child {
   padding-left: 2rem;
+    width: 85px;
 }
 
 .weekDayRow p::nth-child(2) {
@@ -301,6 +303,7 @@ footer {
   }
 }
 
+
 @media screen and (min-width: 640px) {
   #week-list {
     max-width: 75%;
@@ -311,9 +314,6 @@ footer {
     margin-left: 11.5rem;
   }
 
-  .weekDayRow p:first-child {
-    width: 85px;
-  }
 
   .weekDayRow p:last-child {
     width: 160px;
