@@ -17,7 +17,7 @@ fetch(Url_Weather)
     })
     .then((json) => {
         console.log(json)
-        const todaysWeather = json.weather[0].description
+        const todaysWeather = json.weather[0].description;
         let todaysMainWeather = json.weather[0].main;
         const todaysTemperature = json.main.temp.toFixed(0); // toFixed(1) rounds temperature to one decimal
         //Declare variables for the time of sunset and sunrise. new Date () changes the UNIX time to day/date/year/hh:mm:ss/time zone.
@@ -39,21 +39,21 @@ fetch(Url_Weather)
           if (todaysMainWeather === "Clear") {
             todaysPrompt.innerHTML = `<div class= "Clear">
                       <img class= "sunny" src="Designs\Design-1\assets\Group36.png"/>
-                      <h1> Get your sunnies on. ${json.name} is looking rather great today.</h1>
+                      <h2> Get your sunnies on. ${json.name} is looking rather great today.</h2>
                       </div>`;
             document.body.style.backgroundColor = "#F7E9B9";
             document.body.style.color = "#2A5510";
           } else if (todaysMainWeather === "Rain") {
             todaysPrompt.innerHTML = `<div class= "rain">
                       <img class= "rain" src="Designs\Design-1\assets\Group16.png"/>
-                      <h1> Get your umbrella. ${json.name} is crying today.</h1>
+                      <h2> Get your umbrella. ${json.name} is crying today.</h2>
                       </div>`;
             document.body.style.backgroundColor = "#A3DEF7";
             document.body.style.color = "#164A68";
           } else if (todaysMainWeather === "Clouds") {
             todaysPrompt.innerHTML = `<div class= "clouds">
                       <img class= "clouds" src="Designs\Design-1\assets\Group34.png"/> 
-                      <h1> Oh no, ${json.name} is looking rather grey today.</h1>
+                      <h2> Oh no, ${json.name} is looking rather grey today.</h2>
                       </div>`;
             document.body.style.backgroundColor = "#F4F7F8";
             document.body.style.color = "#F47775";
