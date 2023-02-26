@@ -1,6 +1,7 @@
 //Elements
 const navigation = document.getElementById("navigation");
 const toggleNav = document.getElementById("toggle-nav");
+const topRightIcon = document.getElementById("weather-icon-container");
 const currentCity = document.getElementById("current-city");
 const currentTemp = document.getElementById("current-temp");
 const currentWeather = document.getElementById("current-weather");
@@ -13,7 +14,6 @@ const sunUpTime = document.getElementById("sun-up-time");
 const sunDownTime = document.getElementById("sun-down-time");
 const arrowButton = document.getElementById("arrow-button");
 const weekList = document.getElementById("week-list");
-const topRightIcon = document.getElementById("weather-icon-container");
 const bodyContainer = document.querySelector(".body-container");
 const feelsLikeTemp = document.getElementById("feels-like-temp");
 
@@ -47,7 +47,7 @@ const weatherFetch = (lat, lon) => {
       sunGoesUp = sunriseTime.toLocaleTimeString("en-GB", {timeStyle: "short"}); 
       const sunSetTime = new Date(apiResponse.sys.sunset * 1000);
       sunGoesDown = sunSetTime.toLocaleTimeString("en-GB", {timeStyle: "short"});
-      getForecastData();
+      getForecastData(lat, lon);
     });
 };
 
@@ -74,11 +74,9 @@ let clearWeekList = () => {
   weekList.innerHTML = ``;
 };
 
-//API Forecast fetch
-const getForecastData = () => {
-  fetch(
-    "https://api.openweathermap.org/data/2.5/forecast?lat=57.70&lon=11.97&units=metric&limit=5&appid=191f229fc0a6e0f86812a75292074cb9"
-  )
+//API Forecast 
+const getForecastData = (lat, lon) => {
+  fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=191f229fc0a6e0f86812a75292074cb9`)
     .then((response) => response.json())
     .then((data) => {
       const filteredForecast = data.list.filter((item) =>
