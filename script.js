@@ -134,16 +134,22 @@ const updateWeatherPicture = (data) => {
 
   if (mainWeather === "Clear") {
     document.body.style.backgroundImage = "url('sun.jpg')";
+    document.body.style.backgroundColor= "red";
   } else if (mainWeather === "Thunderstorm") {
     document.body.style.backgroundImage = "url('storm.jpg')";
+    document.body.style.backgroundColor= "rgb(255, 252, 243)"
   } else if ((mainWeather === "Drizzle") | "Rain") {
     document.body.style.backgroundImage = "url('rain.jpg')";
+    document.body.style.backgroundColor= "rgb(255, 252, 243)"
   } else if (mainWeather === "Snow") {
     document.body.style.backgroundImage = "url('snow.jpg')";
+    document.body.style.backgroundColor= "rgb(255, 252, 243)"
   } else if (mainWeather === "Clouds") {
     document.body.style.backgroundImage = "url('cloudy.jpg')";
+    document.body.style.backgroundColor= "rgb(255, 252, 243)"
   } else {
-    document.body.style.backgroundImage = "url('cloudy.jpg')";;
+    document.body.style.backgroundImage = "url('cloudy.jpg')";
+    document.body.style.backgroundColor= "rgb(255, 252, 243)"
   }
 };
 
