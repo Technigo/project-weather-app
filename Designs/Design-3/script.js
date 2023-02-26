@@ -149,21 +149,3 @@ window.addEventListener("resize", () => {
   document.documentElement.style.setProperty("--vh", `${vh}px`);
 });
 
-
-
-// This is Peki's code we can work tomorrow:
-
-// current time? if that is greater than x AND les than Y
-//check if the sun has set, if so it's night (mode), if not it's day(mode)
-/*
-const bodyCssProps = new CssPropControl(document.body)
-  
-let toggle = document.querySelector('#dark-mode-toggle')
-toggle.addEventListener('click', () => { 
-  let mode = toggle.checked ? 'dark' : 'light'
-  bodyCssProps.set('--background', bodyCssProps.get(`--${mode}-background`))
-  bodyCssProps.set('--primary', bodyCssProps.get(`--${mode}-primary`))
-  bodyCssProps.set('--link', bodyCssProps.get(`--${mode}-link`))
-  bodyCssProps.set('--filter', bodyCssProps.get(`--${mode}-filter`))
-  bodyCssProps.set('--box-shadow', bodyCssProps.get(`--${mode}-box-shadow`))
-})*/
