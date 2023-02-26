@@ -2,10 +2,17 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: 'Golos Text', sans-serif;
+  background-repeat:no-repeat;
+  background-position: 50%;
 }
 
 header {
-  background-color: rgb(240, 190, 6);
+  background-color: rgb(255, 252, 243);
+}
+
+.icon-nav {
+  width: 10%;
 }
 
 li {
@@ -13,13 +20,13 @@ li {
 }
 
 a {
-  color: rgb(249, 7, 59);
+  color: rgb(0, 0, 0);
   text-decoration: none;
   padding: 15px;
 }
 
 a:hover {
-  color: rgb(129, 9, 148);
+  color: rgb(235, 123, 3);
 }
 
 .navbar {
@@ -39,7 +46,8 @@ a:hover {
 }
 
 .nav-link:hover {
-  color: rgb(255, 5, 159);
+  color: rgb(20, 5, 154);
+  font-weight: bold;
 }
 
 .hamburger {
@@ -53,7 +61,7 @@ a:hover {
   margin: 5px auto;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  background-color: blueviolet;
+  background-color: #16161d;
 }
 
 .hamburger.active .bar:nth-child(2) {
@@ -74,7 +82,7 @@ a:hover {
   top: 89px;
   gap: 0;
   flex-direction: column;
-  background-color: rgb(240, 190, 6);
+  background-color: rgb(255, 252, 243);
   width: 100%;
   text-align: center;
   transition: 0.3s;
@@ -82,6 +90,7 @@ a:hover {
 
 .nav-item {
   margin: 16px 0;
+  
 }
 
 .nav-menu.active {
@@ -89,11 +98,56 @@ a:hover {
 }
 
 .mainWeather {
-  background-image: url();
+  /*background-image: url(./assets/sun.jpg); */ 
   background-size: 100%;
   padding-top: 100px;
   padding-bottom: 100px;
   background-repeat: no-repeat;
   max-width: 100%;
   height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /*
+  background: rgb(5, 188, 63);
+  background: linear-gradient(70deg, blue, pink); */
+}
+
+/* not needed for now
+.icon-c {
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+*/ 
+
+.icon {
+  width: 50%;
+}
+
+.currentTemperature {
+  font-size: 6rem;
+  color: #16161d;
+  fon
+}
+
+.cityName {
+  color: #16161d;
+  font-size: 3rem;
+}
+
+.weatherDescription {
+  color: #16161d;
+  font-size: 1.5rem;
+}
+.sun {
+  color: #16161d;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 70px;
+  padding-top: 30px;
+
 }

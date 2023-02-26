@@ -87,8 +87,8 @@ const renderCurrentWeather = (data) => {
     "." +
     (sunsetMinutes < 10 ? "0" + sunsetMinutes : sunsetMinutes);
 
-  sunrise.innerHTML = `${renderedSunrise}`;
-  sunset.innerHTML = `${renderedSunset}`;
+  sunrise.innerHTML = `Sunrise: ${renderedSunrise}`;
+  sunset.innerHTML = `Sunset: ${renderedSunset}`;
 
   // we could change this to account for the timezone
   if (data.main.dt < data.sys.sunrise && data.main.dt > data.sys.sunset) {
@@ -127,31 +127,34 @@ const renderWeeklyWeather = (data) => {
   });
 };
 
+// background changes depending on the weather type
 const updateWeatherPicture = (data) => {
-  // background changes depending on the weather type
+
   let mainWeather = data.weather[0].main;
   console.log(updateWeatherPicture);
 
   if (mainWeather === "Clear") {
-    mainWeatherPicture.innerHTML = `
-    <img id="" class="" src="/assets/day-sunny.jpg">`;
+    mainWeatherPicture.innerHTML = 
+    document.body.style.backgroundImage = "url('sun.jpg')";
+    
   } else if (mainWeather === "Thunderstorm") {
-    mainWeatherPicture.innerHTML = `
-    <img id="" class="" src="/assets/night.jpg"/>`;
+    mainWeatherPicture.innerHTML = 
+    document.body.style.backgroundImage = "url('storm.jpg')";
   } else if ((mainWeather === "Drizzle") | "Rain") {
-    mainWeatherPicture.innerHTML = `
-    <img id="" class="" src="/assets/night.jpg"/>`;
+    mainWeatherPicture.innerHTML = 
+    document.body.style.backgroundImage = "url('rain.jpg')";
   } else if (mainWeather === "Snow") {
-    mainWeatherPicture.innerHTML = `
-    <img id="" class="" src="/assets/snow.jpg">`;
+    mainWeatherPicture.innerHTML = 
+    document.body.style.backgroundImage = "url('snow.jpg')";
   } else if (mainWeather === "Clouds") {
-    mainWeatherPicture.innerHTML = `
-  <img id="" class="" src="./assets/cloudy.jpg"/>`;
+    mainWeatherPicture.innerHTML = 
+    document.body.style.backgroundImage = "url('cloudy.jpg')";
   } else {
-    mainWeatherPicture.innerHTML = `
-  <img id="" class="" src="./assets/day.jpg"/>`;
+    mainWeatherPicture.innerHTML = 
+    document.body.style.backgroundImage = "url('cloudy.jpg')";;
   }
 };
+
 
 fetchCurrentWeather("Malmö");
 fetchWeeklyWeather("Malmö");
