@@ -22,9 +22,9 @@ fetch(API_today)
 
     console.log(json.weather[0].description);
 
-    sunrise.innerHTML += `<p>City: ${json.name}</p>`;
-    sunrise.innerHTML += `<p>Temperature: ${round} °C</p>`;
-    sunrise.innerHTML += `<p>Weather: ${json.weather[0].description}</p>`;
+   // sunrise.innerHTML += `<p>City: ${json.name}</p>`;
+    sunrise.innerHTML += `<p>Temp: ${round} °C</p>`;
+   // sunrise.innerHTML += `<p>Weather: ${json.weather[0].description}</p>`;
   });
 
 //Variable allowing Stockholm to be the city.
@@ -50,10 +50,10 @@ const getSunData = () => {
       });
 
       //HTML modifier.
-      sunriseText.innerHTML += `<p>Sunrise</p>
-                                      <p class="time-data">${sunriseShort}</p>`;
-      sunsetText.innerHTML += `<p>Sunset</p>
-                                  <p class="time-data">${sunsetShort}</p>`;
+      sunriseText.innerHTML += `
+                                <p class="time-data">Sunrise ${sunriseShort}</p>`;
+      sunsetText.innerHTML += `
+                                <p class="time-data">Sunset ${sunsetShort}</p>`;
     })
     //Collecting errors.
     .catch((err) => {
@@ -79,11 +79,13 @@ const fiveDayForecast = () => {
         const weatherTemperature = item.main.temp.toFixed(1); // 1 decimaltal
 
         fiveDaysForecast.innerHTML += `
-        <p> On ${new Date(date).toLocaleDateString("en", {
-          weekday: "short", //Short = Skriver bara ut de tre första bokstäverna i dagarna. Tex Fre för Fredag.
-        })} there will be:</p>
-
-        <p> ${weatherTemperature}° in Stockholm, Sweden </p> 
+          <div class="week-days"> 
+            <p>${new Date(date).toLocaleDateString("en", {
+              weekday: "short", //Short = Skriver bara ut de tre första bokstäverna i dagarna. Tex Fre för Fredag.
+            })}
+            </p>
+            <p>${weatherTemperature}°</p> 
+          </div>
     `;
       });
     });
