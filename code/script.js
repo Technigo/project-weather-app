@@ -19,7 +19,7 @@ const fetchingWeather = () => {
       weatherResults = json;
 
       //Setting the different alternatives for the "city-weather" section
-      weatherDescription(weatherResults.weather[0],weatherResults.name)
+      weatherDescription(weatherResults.weather[0].main,weatherResults.name)
     })
     const weatherDescription = (localWeatherToday, city) => {   
       if (localWeatherToday === "Clear") {
