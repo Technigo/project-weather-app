@@ -8,6 +8,7 @@ let changeCityMalmo = document.getElementById("cityMalmo");
 let changeCityStockholm = document.getElementById("cityStockholm");
 let mainWeather = document.getElementById("mainWeather");
 let mainWeatherPicture = document.getElementById("mainWeatherPicture");
+let weeklyWeatherWrapper = document.getElementById("weeklyWeatherWrapper");
 
 /* hamburger part */
 const hamburger = document.querySelector(".hamburger");
@@ -92,9 +93,9 @@ const renderCurrentWeather = (data) => {
 
   // we could change this to account for the timezone
   if (data.main.dt < data.sys.sunrise && data.main.dt > data.sys.sunset) {
-    weeklyWeather.style.backgroundColor = "white"; // change this
+    // weeklyWeather.style.backgroundColor = "white"; // change this
   } else {
-    weeklyWeather.style.backgroundColor = "gray"; // change this
+    // weeklyWeather.style.backgroundColor = "gray"; // change this
   }
 };
 
@@ -129,7 +130,6 @@ const renderWeeklyWeather = (data) => {
 
 // background changes depending on the weather type
 const updateWeatherPicture = (data) => {
-
   let mainWeather = data.weather[0].main;
 
   if (mainWeather === "Clear") {
@@ -143,10 +143,9 @@ const updateWeatherPicture = (data) => {
   } else if (mainWeather === "Clouds") {
     document.body.style.backgroundImage = "url('cloudy.jpg')";
   } else {
-    document.body.style.backgroundImage = "url('cloudy.jpg')";;
+    document.body.style.backgroundImage = "url('cloudy.jpg')";
   }
 };
-
 
 fetchCurrentWeather("Malmö");
 fetchWeeklyWeather("Malmö");

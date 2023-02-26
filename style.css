@@ -2,13 +2,21 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Golos Text', sans-serif;
-  background-repeat:no-repeat;
+  font-family: "Golos Text", sans-serif;
+  background-repeat: no-repeat;
   background-position: 50%;
 }
 
+body {
+  background-color: rgb(
+    233,
+    222,
+    189
+  ); /* the color at weeklyWeatherWrapper has to be the same as this */
+}
+
 header {
-  background-color: rgb(255, 252, 243);
+  background-color: rgb(227, 209, 153);
 }
 
 .icon-nav {
@@ -82,7 +90,7 @@ a:hover {
   top: 89px;
   gap: 0;
   flex-direction: column;
-  background-color: rgb(255, 252, 243);
+  background-color: rgb(227, 209, 153);
   width: 100%;
   text-align: center;
   transition: 0.3s;
@@ -90,7 +98,6 @@ a:hover {
 
 .nav-item {
   margin: 16px 0;
-  
 }
 
 .nav-menu.active {
@@ -98,7 +105,7 @@ a:hover {
 }
 
 .mainWeather {
-  /*background-image: url(./assets/sun.jpg); */ 
+  /*background-image: url(./assets/sun.jpg); */
   background-size: 100%;
   padding-top: 100px;
   padding-bottom: 100px;
@@ -120,7 +127,7 @@ a:hover {
   align-items: center;
   align-content: center;
 }
-*/ 
+*/
 
 .icon {
   width: 50%;
@@ -129,7 +136,6 @@ a:hover {
 .currentTemperature {
   font-size: 6rem;
   color: #16161d;
-  fon
 }
 
 .cityName {
@@ -141,6 +147,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: rgb(233, 222, 189);
 }
 
 .weeklyWeather {
@@ -169,7 +176,6 @@ a:hover {
   justify-content: space-between;
   gap: 70px;
   padding-top: 30px;
-
 }
 
 footer {
@@ -177,4 +183,5 @@ footer {
   padding-bottom: 10px;
   text-align: center;
   font-size: 1rem;
+  background-color: rgb(227, 209, 153);
 }
