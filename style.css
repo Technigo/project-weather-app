@@ -4,7 +4,7 @@
 :root {
     /*Colors:*/
     --switch-button-color:  #757AFF;        /*Remove later, should be set by the gradient*/
-    --container-color:  #faf9f9;   
+    --container-color:  #e0e0e0;  
 
     /*Dimensions:*/
     --top-background-bottom-position: 355px;
@@ -41,7 +41,7 @@ body {
 }
 
 .feature-image {                /*Uses a background img placed over the gradient*/
-    background: url('') 50% bottom / contain;        /*Set by JS in todaysWeatherFeature*/ 
+    background: url('') 50% bottom / contain;        /*Set by JS in todaysWeatherFeature*/
     opacity: var(--top-background-opacity);
     height: 800px;
     width: 800px;
@@ -78,7 +78,7 @@ body {
     width: 100%;
     max-width: 600px;
     height: 30px;
-    font-size: 17px;
+    font-size: 17px;        /*All font sizes under 16px create the zoom error*/
 }
 
 .search-bar:focus {
@@ -138,10 +138,21 @@ svg {
     margin: 0 0 5px 0;
 }
 
+.local-time {
+    margin: 0;
+    font-weight: 200;
+    font-size: 16px;
+}
+
+.description-icon {
+    display: flex;
+    margin-top: 0;
+}
+
 .mainWrapper .describeText {
     font-size: 16px;
     font-weight: 200;
-    margin: 0px;
+    margin: auto 0 auto 0;
     text-transform: capitalize;
 }
 
@@ -170,6 +181,7 @@ svg {
     margin: auto auto;
     padding: 15px;
 }
+
 
 .switch-section {
     position: relative;
@@ -289,6 +301,7 @@ th, td {
     width: 56px;
 }
 
+
 footer {
     text-align: center;
     color: grey;
@@ -313,13 +326,14 @@ footer a:hover {
 }
 
 
+
 /* For when we look at the app in desktop or tablet: */
 @media (min-width: 500px) {
 
     :root {
     --top-background-bottom-position: 305px;
     }
-        
+            
     .container {
         box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.3);
         width: 100%;
@@ -366,8 +380,18 @@ footer a:hover {
         font-size: 18px;
     }
 
+    .local-time {
+        font-size: 18px;
+    }
+
     #sunriseText,
     #sunsetText {
         font-size: 18px;
     }
+
+    body {
+        background-color: #faf9f9;
+    }
+
+
 }

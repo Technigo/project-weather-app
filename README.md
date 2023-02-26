@@ -8,7 +8,7 @@ We were presented with two different design option, to base our app on. We start
 
 We decided that we wanted to implement features such as a search function, background images depending on weather, color gradients depending on time, having the sunrise and sunset shown in the local timezone, a set of "favourite" cities to choose from and keep Stockholm as our default city. We divided the features between us and did many small iterations, merging to the master branch continuously to keep track of the progress and to avoid creating too many large conflicts at the end. Some work also consisted of bug fixing, since some of our features in some ways worked against each other and created errors we had to solve in a good way. 
 
-It was challenging to keep the code clean and concise, when we were working on several features individually. If we had more time, we could re-factor the code into doing the same things in less lines. We also discussed adding features such as geo-location and to have a larger and randomized selection of background images, and maybe even more conditions applied to them. Overall, we are very happy with the outcome of our app. Go ahead and check it out below:
+It was challenging to keep the code clean and concise, when we were working on several features individually. If we had more time, we could re-factor the code into doing the same things in less lines. We also discussed adding features such as geo-location, a slider effect, to have a larger and randomized selection of background images, and maybe even more conditions applied to them. Overall, we are very happy with the outcome of our app. Go ahead and check it out below:
 
 ## View it live
 

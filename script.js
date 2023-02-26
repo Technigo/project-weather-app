@@ -1,6 +1,8 @@
 //All global varibles
 const tempToday = document.getElementById('tempToday')
+const tempTextCelsius = document.querySelector('.tempTextCelsius')
 const cityName = document.getElementById('cityName')
+const localTime = document.getElementById('localTime');
 const weatherDescription = document.getElementById('weatherDescription')
 const mainIcon = document.getElementById('mainIcon')
 
@@ -45,8 +47,16 @@ const todaysWeatherFeature = (city) => {
                 let { icon } = json.weather[0];
                 cityName.innerText = `${json.name}`;
                 tempToday.innerText = `${json.main.temp.toFixed(0)}`;
+                tempTextCelsius.innerText = `°C`;
                 weatherDescription.innerText = `${json.weather[0].description}`;
                 mainIcon.innerHTML = `<img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="weather icon" class="main-icon">`
+
+                // Get current time (hours/minutes) in time zome
+                const currentLocalTime = new Date((json.dt+json.timezone) * 1000);
+                const localTimeValue = currentLocalTime.toLocaleTimeString(['en-GB'], { timeStyle: 'short', timeZone:'UTC'});
+                
+                //Modifying the HTML based on the output of current time in hours/minutes
+                localTime.innerHTML = `Time: ${localTimeValue}`;
 
                 // Get sunrise and sunset time with the city's timezone
                 const sunriseTime = new Date((json.sys.sunrise + json.timezone) * 1000);       //Gives us the time in "human" form (as a date), mult. by 1000 to get it in ms.
@@ -244,6 +254,7 @@ const getNextCity = () => {
 // Start:
 todaysWeatherFeature('Stockholm');
 weatherForecastData('Stockholm');
+
 
 //All global eventListeners
 //Eventlistener to invoke getNextCity function
