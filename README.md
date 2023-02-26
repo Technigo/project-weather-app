@@ -8,3 +8,4 @@ The weather fetches info from a free weather API. Focus was on working with API'
 
 ## View it live
 
+https://colourful-weather.netlify.app/
