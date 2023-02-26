@@ -1,3 +1,7 @@
+:root {
+  --main-bg-color: rgb(233, 222, 189);
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -8,11 +12,7 @@
 }
 
 body {
-  background-color: rgb(
-    233,
-    222,
-    189
-  ); /* the color at weeklyWeatherWrapper has to be the same as this */
+  background-color: var(--main-bg-color);
 }
 
 header {
@@ -147,7 +147,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(233, 222, 189);
+  background-color: var(--main-bg-color);
 }
 
 .weeklyWeather {
