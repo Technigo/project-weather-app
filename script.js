@@ -183,7 +183,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
             if (todaysWeather === 'Clear') {
                 featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1613931189161-1f4d2660bd1e?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Nzc0MDczNDI&ixlib=rb-4.0.3&q=80')"
             } else if (todaysWeather === 'Clouds') {
-                featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1505144992585-d281c0e2cff8?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Nzc0MDk1OTA&ixlib=rb-4.0.3&q=80')"
+                featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1424111113808-b7be56a9f3d6?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNTczNTA&ixlib=rb-4.0.3&q=80')"
             } else if (todaysWeather === 'Rain') {
                 featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1424111113808-b7be56a9f3d6?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNTczNTA&ixlib=rb-4.0.3&q=80')"
             } else if (todaysWeather === 'Snow') {

@@ -88,9 +88,9 @@ body {
 }*/
 
 .feature-image {                /*Uses a background img placed over the gradient*/
-    background: url('');        /*Set by JS in todaysWeatherFeature*/
-    background-size: cover;
-    background-position: 50%; 
+    background: url('') 50% bottom / contain;        /*Set by JS in todaysWeatherFeature*/
+/*     background-size: cover;
+    background-position: 50%; */ 
     opacity: var(--top-background-opacity);
     height: 800px;
     width: 800px;
