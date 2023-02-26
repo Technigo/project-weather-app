@@ -28,22 +28,6 @@ body {
     position: relative;
 }
 
-.search-bar {
-    margin: auto;
-    border: none;
-    padding: 2px 10px;
-    background-color: rgba(255, 255, 255, 0.3);
-    color: white;
-    width: 100%;
-    max-width: 600px;
-    height: 30px;
-    font-size: 18px;
-}
-
-.search-bar:focus {
-    outline: none;
-}
-
 .container {
     background-color: var(--container-color);
     width: 100%;
@@ -87,6 +71,22 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.363);
 }
 
+.search-bar {
+    margin: auto;
+    border: none;
+    padding: 2px 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    width: 100%;
+    max-width: 600px;
+    height: 30px;
+    font-size: 17px;
+}
+
+.search-bar:focus {
+    outline: none;
+}
+
 .search-button {
     border: none;
     color: white;
@@ -100,9 +100,9 @@ body {
 
 .search-icon,
 .x-icon {
-    height: 35px;
-    width: 35px;
-    padding: 25px;
+    height: 30px;
+    width: 30px;
+    padding: 20px;
 }
 
 svg {
@@ -332,6 +332,13 @@ footer a:hover {
 
 .search-bar {
     font-size: 14px;
+}
+
+.search-icon,
+.x-icon {
+    height: 35px;
+    width: 35px;
+    padding: 25px;
 }
 
 }
