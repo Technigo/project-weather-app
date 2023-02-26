@@ -53,9 +53,10 @@ h1 {
     font-size: 30px;
     font-weight: 400;
     padding: 20px 0;
+    max-width: 600px;
 }
 
-.five-days-forecast {
+.week-days {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -64,6 +65,7 @@ h1 {
     border-bottom: 2px dotted;
     margin: 20px 0;
     width: 100%;
+    max-width: 700px;
     list-style: none;
 }
 
