@@ -1,10 +1,11 @@
-body {
+
+  
+  body {
     color: var(--primary);
     font-size: 16px;
     font-family: 'Sora', sans-serif;
     background: var(--background);
     filter: var(--filter);
-    box-shadow: var(--box-shadow);
     box-sizing: border-box;
     transition: color 1s;
     transition: background 1.5s;
@@ -24,7 +25,6 @@ body {
     --filter: var(--light-filter);
     --box-shadow: var(--light-box-shadow);
   }
-
   
   a {
     color: var(--link);
@@ -33,9 +33,9 @@ body {
 
 
   html * {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -60,7 +60,7 @@ body {
   font-size: 1.3rem;
   color: var(--light-primary);
   text-align: center;
-  margin-top: 1.8rem;
+  margin-top: 2.6rem;
   margin-bottom: 1.8rem;
   text-transform: capitalize;
 }
@@ -96,10 +96,10 @@ filter: var(--light-filter);
 .sun-and-time {
     display: flex;
     flex-direction: column;
-    margin-top: 0.4em;
+    margin-top: -0.2em;
     margin-bottom: 1.2em;
     gap:0.4em;
-    column-gap: 1em;
+    max-width: 3.8em;
 }
 
 
@@ -134,7 +134,7 @@ filter: var(--light-filter);
 
 
 .wind {
-    margin-top: 6%;
+    margin-top: 8%;
     margin-bottom: 6%; 
 display: grid;
 justify-content: center;
@@ -208,14 +208,18 @@ h6 {
 /* BIGGER MOBILE        BIGGER MOBILE        BIGGER MOBILE */
  
 
-@media (min-width: 390px) {
+@media (min-width: 380px) {
+
+
+   
+
 
     .city-name {
         font-weight: 800;
         font-size: 1.5rem;
         color: var(--light-primary);
         text-align: center;
-        margin-top: 5.4rem;
+        margin-top: 3.4rem;
         margin-bottom: 1.8rem;
         text-transform: capitalize;
       }
@@ -317,10 +321,10 @@ h6 {
       
           .forecast {
               margin-top: 4%;
-          margin-bottom: 3%; 
+          margin-bottom: 5%; 
               display: flex;
               justify-content: space-evenly;
-              gap: 9rem;
+              column-gap: 12rem;
              
               
               
@@ -367,7 +371,9 @@ h6 {
  height: 902px;
  border-radius: 10px;
 
+
       }
+
 weather-app-container {
  display: flex;
  justify-content: center;
@@ -383,7 +389,7 @@ body {
 }
 
 .weather-app {
-    transform: scale(0.9);
+    transform: scale(0.84);
     align-self: center;
     display: flex;
     margin-left: auto;
@@ -401,7 +407,16 @@ body {
     box-shadow: var(--light-box-shadow);
 }
 
+h6 {
+    font-weight: 500;
+    font-size: 1.1rem;
+    line-height: 2rem;
+  }
+
 
 }
+
+
+
 
 
