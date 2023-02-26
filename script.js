@@ -133,16 +133,18 @@ const renderWeeklyWeather = (data) => {
 
 // background changes depending on the weather type
 const updateWeatherPicture = (data) => {
-  let mainWeather = data.weather[0].main;
+  //let mainWeather = data.weather[0].main;
+  let mainWeather = "Clouds";
+ 
 
   if (mainWeather === "Clear") {
     document.body.style.backgroundImage = "url('sun.jpg')";
     document.body.style.backgroundColor = "rgb(255, 232, 211, 1)";
-    weeklyWeatherWrapper.style.backgroundColor = "rgb(251, 203, 164, 1)";
+    weeklyWeatherWrapper.style.backgroundColor = "#fbd59f";
   } else if (mainWeather === "Thunderstorm") {
     document.body.style.backgroundImage = "url('storm.jpg')";
     document.body.style.backgroundColor = "rgb(254,247,182, 1)";
-    weeklyWeatherWrapper.style.backgroundColor = "rgb(173,163,188, 1)";
+    weeklyWeatherWrapper.style.backgroundColor = " #8374b9";
   } else if (mainWeather === "Drizzle") {
     document.body.style.backgroundImage = "url('rain.jpg')";
     document.body.style.backgroundColor = "rgb(69, 151, 202, 1)";
