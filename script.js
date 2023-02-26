@@ -139,7 +139,7 @@ const updateWeatherPicture = (data) => {
   if (mainWeather === "Clear") {
     document.body.style.backgroundImage = "url('sun.jpg')";
     document.body.style.backgroundColor = "rgb(255, 232, 211, 1)";
-    weeklyWeatherWrapper.style.backgroundColor = "rgb(251, 203, 164, 1)";
+    weeklyWeatherWrapper.style.backgroundColor = "#FBD59F";
     document.documentElement.style.setProperty(
       "--header-and-footer-color",
       "#b86f52"
@@ -151,7 +151,7 @@ const updateWeatherPicture = (data) => {
   } else if (mainWeather === "Thunderstorm") {
     document.body.style.backgroundImage = "url('storm.jpg')";
     document.body.style.backgroundColor = "rgb(254,247,182, 1)";
-    weeklyWeatherWrapper.style.backgroundColor = "rgb(173,163,188, 1)";
+    weeklyWeatherWrapper.style.backgroundColor = "#8374B9";
     document.documentElement.style.setProperty(
       "--header-and-footer-color",
       "#8F9491"
