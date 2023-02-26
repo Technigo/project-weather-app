@@ -1,3 +1,8 @@
+body {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
 .main {
     display: grid;
     justify-content: center;
@@ -10,7 +15,7 @@
 .main-container {
     display: grid;
     max-width: 375px;
-    height: 700px;
+    height: 667px;
     border-radius: 15px;   
 }
 
@@ -20,40 +25,60 @@ h1 {
     margin: 0 0 0 50px;
     font-family: 'Quicksand', serif;
     line-height: 20px;
-    padding: 20px 0 20px 0;
+    padding: 30px 0 0 0;
 }
 h2 {
-    font-size: 28px;
+    font-size: 26px;
     text-align: right;
-    padding: 20px 20px 0 0;
+    padding: 20px 30px 0 0;
     font-family: 'Raleway', serif;
     line-height: 0%;
-    margin-bottom: 0;
+    margin-bottom: 20px;
 }
 h3 {
+    font-size: 22px;
     font-weight: normal;
     font-family: 'Raleway', serif;
-    margin: -10px 0 0 30px;
+    text-align: center;
+    margin: 0 0 10px 0;
 }
 p {
     font-size: 16px;
     font-family: 'Raleway', serif;
-    margin: 0 20px 0 30px;
-    line-height: 0%;
+    text-decoration-line: underline;
+    text-decoration-style: dashed;
+    margin: 0 20px 20px 30px;
+    line-height: 0px;
+}
+.forecast {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;  
+}
+.container {
+    display: flex;
+    width: 335px;
+    height: 250px;
+    margin: auto;
+}
+.weather-icon {
+    display: block;
+    max-width: 80%;
+    margin: auto;
+}
+.weather-snow {
+    display: block;
+    max-width: 70%;
+    margin: auto;
+}
+.weather-sun {
+    display: block;
+    max-width: 60%;
+    margin: auto;
+}
 
-}
-img.weather-icon {
-    width: 80%;
-    margin-left: 40px;
-    margin-bottom: 5px;
-    margin-top: -30px;
-}
-img.weather-clear {
-    width: 45%;
-    margin-left: 80px;
-    margin-bottom: 5px;
-    margin-top: -30px;
-}
 /* Tablet - 2 columns */
 @media (min-width: 668px) and (max-width: 1023px) {
     .main {
@@ -65,7 +90,7 @@ img.weather-clear {
     }
     .main-container {
         display: grid;
-        max-width: 375px;
+        width: 375px;
         height: 700px;  
     }
 }
@@ -81,7 +106,7 @@ img.weather-clear {
     }
     .main-container {
         display: grid;
-        max-width: 375px;
+        max-width: 335px;
         height: 700px;  
     }
 }
