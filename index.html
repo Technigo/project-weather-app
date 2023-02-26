@@ -6,16 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Week3 project</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;600&display=swap" rel="stylesheet">
   </head>
 
   <body>
     <section>
       <header>
         <nav class="navbar">
-          <p class="nav-branding">Pick a city</p>
+          <p class="nav-branding"><img src="./assets/place.png"class="icon-nav"></p>
 
           <ul class="nav-menu">
-            <li class="nav-item">
+            <li class="nav-item"> 
               <a href="#" class="nav-link" id="cityMalmo">Malmö</a>
             </li>
             <li class="nav-item">
@@ -33,6 +36,8 @@
     </section>
 
     <section id="mainWeather" class="mainWeather">
+      <!-- alternative with an icon
+      <div class="icon-c"> <img src="" class="icon"></div> -->
       <div id="mainWeatherPicture"></div>
       <div id="currentTemperature" class="currentTemperature"></div>
 
@@ -60,5 +65,7 @@
     </footer>
   </body>
   <script src="./script.js"></script>
-  <footer></footer>
+  <footer>
+    <p> Edvard Ekström and Maja Zimnoch | Technigo Web Development Bootcamp 2023</p>
+  </footer>
 </html>
