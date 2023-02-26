@@ -70,7 +70,7 @@ fetch ("https://api.openweathermap.org/data/2.5/forecast?q=London&units=metric&A
     let dayName = date.toLocaleDateString("en-US", {weekday:"short"});
 
     forecast.innerHTML += `
-    <h2><span>${dayName}</span> <span>${json.main.temp.toFixed(0)} °C</span></h2>
+    <h2><span>${dayName}</span> <span>${json.main.temp.toFixed(0)} °c</span></h2>
     `;
   console.log("Date", filteredForecast[1])
   })
