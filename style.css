@@ -196,62 +196,61 @@ svg {
 
 /* Feature gradient */
 .background-top-gradient.morning, .background-top-gradient.morning ~ .switch-section #switchBtn {
-    background: linear-gradient(217deg, rgba(55, 109, 167, 0), rgba(235, 178, 177, 0) 70.71%),
-                linear-gradient(127deg, rgba(134, 39, 37, 0.8), rgba(252, 44, 2, 0.5) 70.71%),
-                linear-gradient(336deg, rgb(177, 97, 81, 1), rgba(130, 173, 219, 1) 70.71%);
-    background-size: 1000% 1000%;
-	animation: gradient 7s ease infinite;
+    background: linear-gradient(217deg, rgba(148, 197, 248, 0), rgba(166, 230, 255, 0) 70.71%),
+                linear-gradient(127deg, rgba(166, 230, 255, 0.8), rgba(177, 181, 234, 0.5) 70.71%),
+                linear-gradient(336deg, rgb(139, 144, 211), rgba(148, 197, 248, 1) 70.71%);
+    background-size: 600% 600%;
+	animation: gradient 5s ease infinite;
 }
 
 .background-top-gradient.midday, .background-top-gradient.midday ~ .switch-section #switchBtn {
-    background: linear-gradient(217deg, rgba(87, 193, 235, 0.8), rgba(87, 193, 235, 0.5) 70.71%),
-                linear-gradient(127deg,  rgba(184, 204, 226, 0.8), rgba(36, 111, 168, 0.5) 70.71%),
-                linear-gradient(336deg, rgba(184, 204, 226, 1), rgba(36, 111, 168, 1) 70.71%);
-    background-size: 1000% 1000%;
+ 
+    background: linear-gradient(217deg,   rgba(91, 131, 106, 0.5), rgba(6, 111, 168, 0.5) 70.71%),
+                linear-gradient(127deg, rgba(36, 111, 168, 0.8) ,  rgb(198, 160, 65, 0.5) 70.71%),
+                linear-gradient(336deg, rgba(36, 111, 168, 1), rgba(91, 131, 106, 1) 70.71%);
+    background-size: 600% 600%;
 	animation: gradient 5s ease infinite;
 }
 
 .background-top-gradient.afternoon, .background-top-gradient.afternoon ~ .switch-section #switchBtn {
-    background: linear-gradient(217deg, rgba(36, 115, 171, 0), rgba(91, 121, 131, 0.1) 70.71%),
-                linear-gradient(127deg, rgba(91, 121, 131, 0.8),  rgba(30, 82, 142, 0.5) 70.71%),
-                linear-gradient(336deg, rgba(30, 82, 142, 0.8), rgba(36, 115, 171, 1) 70.71%);
-    background-size: 1000% 1000%;
-	animation: gradient 7s ease infinite;
+    background: linear-gradient(217deg, rgba(30, 82, 142, 0), rgba(38, 88, 137, 0.5) 70.71%),
+                linear-gradient(127deg, rgba(157, 166, 113, 0.8),  rgba(30, 82, 142, 0.5) 70.71%),
+                linear-gradient(336deg, rgba(38, 88, 137, 1), rgba(157, 166, 113, 1) 70.71%);
+    background-size: 600% 600%;
+	animation: gradient 5s ease infinite;
 }
 
 .background-top-gradient.duskSunset, .background-top-gradient.duskSunset ~ .switch-section #switchBtn {
-    background: linear-gradient(217deg, rgba(21, 66, 119, 0.5), rgba(178, 99, 57, 0.1) 70.71%),
-                linear-gradient(127deg, rgba(87, 110, 113, 0.8), rgba(21, 66, 119, 0.5) 70.71%),
-                linear-gradient(336deg, rgba(178, 99, 57, 0.8),   rgba(225, 196, 94, 1) 70.71%);
-    background-size: 1000% 1000%;
-	animation: gradient 7s ease infinite;
+    background: linear-gradient(217deg, rgba(55, 109, 167, 0), rgba(235, 178, 177, 0) 70.71%),
+                linear-gradient(127deg, rgba(134, 39, 37, 0.8), rgba(252, 44, 2, 0.5) 70.71%),
+                linear-gradient(336deg, rgb(177, 97, 81, 1), rgba(55, 109, 167, 1) 70.71%);
+    background-size: 600% 600%;
+	animation: gradient 5s ease infinite;
 }
 
-
 .background-top-gradient.evening, .background-top-gradient.evening ~ .switch-section #switchBtn {
-    background: linear-gradient(217deg, rgba(36, 14, 3, 0.8), rgba(138, 59, 18, 0.1) 70.71%),
-                linear-gradient(127deg, rgba(138, 59, 18, 0.1),  rgba(7, 27, 38, 0.5) 70.71%),
-                linear-gradient(336deg, rgba(22, 60, 82, 0.8),  rgba(7, 27, 38, 1) 70.71%);
-    background-size: 1000% 1000%;
-	animation: gradient 7s ease infinite;
+    background: linear-gradient(217deg,   rgba(57, 22, 3, 0), rgba(9, 75, 126, 0.5) 70.71%),
+                linear-gradient(127deg, rgba(22, 60, 82, 1) ,  rgba(65, 8, 116, 0.5) 70.71%),
+                linear-gradient(336deg, rgba(6, 98, 168, 1), rgba(239, 95, 6, 1) 70.71%);
+    background-size: 600% 600%;
+	animation: gradient 5s ease infinite;
 }
 
 .background-top-gradient.midnight, .background-top-gradient.midnight ~ .switch-section #switchBtn {
     background: linear-gradient(217deg, rgba(36, 14, 3, 0.8), rgba(22, 60, 82, 0) 70.71%),
                 linear-gradient(127deg, rgba(22, 60, 82, 0.8),  rgba(7, 27, 38, 0.5) 70.71%),
                 linear-gradient(336deg, rgba(22, 60, 82, 0.8),  rgba(7, 27, 38, 1) 70.71%);
-    background-size: 1000% 1000%;
-	animation: gradient 7s ease infinite;
+    background-size: 600% 600%;
+	animation: gradient 5s ease infinite;
 }
 
 .background-top-gradient.dawnSunrise, .background-top-gradient.dawnSunrise ~ .switch-section #switchBtn {
-    background: linear-gradient(217deg, rgba(128, 185, 197, 0.1), rgba(224, 255, 255, 0) 70.71%),
-                linear-gradient(127deg, rgba(255, 255, 191, 0.8), rgba(128, 185, 197, 0.5) 70.71%),
-                linear-gradient(336deg, rgba(224, 255, 255, 1), rgba(255, 255, 191, 1) 70.71%);
-	background-size: 1000% 1000%;
-	animation: gradient 7s ease infinite;
+    background: linear-gradient(217deg, rgba(74, 73, 105, 0.1), rgba(205, 130, 160, 0) 70.71%),
+                linear-gradient(127deg, rgba(205, 130, 160, 0.8), rgba(112, 114, 171, 0.5) 70.71%),
+                linear-gradient(336deg, rgba(112, 114, 171, 1), rgba(74, 73, 105, 1) 70.71%);
+	background-size: 600% 600%;
+	animation: gradient 5s ease infinite;
 }
-
 
 @keyframes gradient {
 	0% {
