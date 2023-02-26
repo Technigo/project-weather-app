@@ -80,6 +80,7 @@ sup {
   border-radius: 50%;
   align-self: flex-end;
   text-align: center;
+  padding: 0;
   top: 1.5rem;
   right: 3rem;
   position: relative;
