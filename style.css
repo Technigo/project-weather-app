@@ -7,7 +7,7 @@
     --container-color:  #faf9f9;   
 
     /*Dimensions:*/
-    --top-background-bottom-position: 305px;
+    --top-background-bottom-position: 317px;
 
     /*Other:*/
     --top-background-opacity: 0.6;
@@ -22,7 +22,7 @@ body {
 }
 
 .nav {
-    margin-bottom: 10px;
+    margin-bottom: 0;
     display: flex;
     align-items: center;
     position: relative;
@@ -102,7 +102,7 @@ body {
 .x-icon {
     height: 30px;
     width: 30px;
-    padding: 20px;
+    padding: 20px 10px 20px 20px;
 }
 
 svg {
@@ -159,7 +159,6 @@ svg {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    font-size: 18px;
 }
 
 #sunriseText,
@@ -339,6 +338,31 @@ footer a:hover {
     height: 35px;
     width: 35px;
     padding: 25px;
+}
+
+.nav {
+    margin-bottom: 10px;
+}
+
+.mainWrapper .tempNumber {
+    font-size: 110px;
+}
+
+.tempTextCelsius {
+    font-size: 40px;
+}
+
+.mainWrapper .cityText {
+    font-size: 36px;
+}
+
+.mainWrapper .describeText {
+    font-size: 18px;
+}
+
+#sunriseText,
+#sunsetText {
+    font-size: 18px;
 }
 
 }
