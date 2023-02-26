@@ -76,6 +76,21 @@ const getNextCity = () => {
         todaysWeatherFeature('San Francisco')
         weatherForecastData('San Francisco'); 
         city = 'San Francisco'
+    } else if (city === 'San Francisco') {
+        getMainWeather('Cairo')
+        todaysWeatherFeature('Cairo')
+        weatherForecastData('Cairo');
+        city = 'Cairo'
+    } else if (city === 'Cairo') {
+        getMainWeather('Dehli')
+        todaysWeatherFeature('Dehli')
+        weatherForecastData('Dehli');
+        city = 'Dehli'
+    } else if (city === 'Dehli') {
+        getMainWeather('Bogota')
+        todaysWeatherFeature('Bogota')
+        weatherForecastData('Bogota');
+        city = 'Bogota'
     } else {
         getMainWeather('Stockholm')
         todaysWeatherFeature('Stockholm')
@@ -83,7 +98,7 @@ const getNextCity = () => {
         city = 'Stockholm'
     }
 }
-        
+
 const weatherForecastData = (city) => {
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=${apiKey}`)
         .then((forecastResponse) => {
@@ -227,7 +242,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
                 featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1602088501827-7912e1b4a7bd?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Nzc0MDc5ODI&ixlib=rb-4.0.3&q=80')"
             } else if (todaysWeather === 'Drizzle') {
                 featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1554039362-6daf559ddb63?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Nzc0MDgyNDk&ixlib=rb-4.0.3&q=80')"
-            } else if (todaysWeather === 'Atmosphere') {
+            } else if (todaysWeather === 'Atmosphere' || todaysWeather === 'Haze') {
                 featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1543226549-10d29b2cfaf0?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Nzc0MDg0MTI&ixlib=rb-4.0.3&q=80')"
             } else {
                 featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1424111113808-b7be56a9f3d6?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNTczNTA&ixlib=rb-4.0.3&q=80')"

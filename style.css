@@ -204,11 +204,11 @@ svg {
 }
 
 .background-top-gradient.midday, .background-top-gradient.midday ~ .switch-section #switchBtn {
-    background: linear-gradient(217deg,  rgba(184, 204, 226, 0.8), rgba(87, 193, 235, 0.5) 70.71%),
-                linear-gradient(127deg, rgba(87, 193, 235, 0.8) , rgba(36, 111, 168, 0.5) 70.71%),
-                linear-gradient(336deg, rgba(184, 204, 226, 0.8), rgba(36, 111, 168, 1) 70.71%);
+    background: linear-gradient(217deg, rgba(87, 193, 235, 0.8), rgba(87, 193, 235, 0.5) 70.71%),
+                linear-gradient(127deg,  rgba(184, 204, 226, 0.8), rgba(36, 111, 168, 0.5) 70.71%),
+                linear-gradient(336deg, rgba(184, 204, 226, 1), rgba(36, 111, 168, 1) 70.71%);
     background-size: 1000% 1000%;
-	animation: gradient 7s ease infinite;
+	animation: gradient 5s ease infinite;
 }
 
 .background-top-gradient.afternoon, .background-top-gradient.afternoon ~ .switch-section #switchBtn {
