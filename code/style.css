@@ -83,10 +83,6 @@ li:focus {
   display: none;
 }
 
-#city-three {
-  margin-right: 66px;
-}
-
 #toggle-nav {
   width: 100px;
   color: #f7f6f6;
@@ -338,6 +334,10 @@ footer {
   font-family: "Lobster", cursive;
   font-size: 1.8rem;
   margin-top: 1.5rem;
+}
+
+#city-three {
+  margin-right: 66px;
 }
 
 li {

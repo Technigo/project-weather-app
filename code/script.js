@@ -44,38 +44,18 @@ const weatherFetch = (lat, lon) => {
     .then((data) => {
       apiResponse = data;
       const sunriseTime = new Date(apiResponse.sys.sunrise * 1000);
-      sunGoesUp = sunriseTime.toLocaleTimeString("en-GB", {timeStyle: "short"}); //why doesn't it work to just put this at the end of sunriseTime?
+      sunGoesUp = sunriseTime.toLocaleTimeString("en-GB", {timeStyle: "short"}); 
       const sunSetTime = new Date(apiResponse.sys.sunset * 1000);
       sunGoesDown = sunSetTime.toLocaleTimeString("en-GB", {timeStyle: "short"});
       getForecastData();
     });
 };
 
-//Geolocation api
-const options = {
-  enableHighAccuracy: true,
-  timeout: 5000,
-  maximumAge: 0,
-};
-
-function success(pos) {
-  crd = pos.coords;
-  console.log("Your current position is:");
-  console.log(`Latitude : ${crd.latitude}`);
-  console.log(`Longitude: ${crd.longitude}`);
-  console.log(`More or less ${crd.accuracy} meters.`);
-}
-
-function error(err) {
-  console.warn(`ERROR(${err.code}): ${err.message}`);
-}
-
 let clearFeelsLikeTemp = () => {
   feelsLikeTemp.innerHTML = ``;
 }; 
 
-//Async before it was cool...this is just a timer to wait for the response
-//Since the fetch() will be async we need to fix this :)
+//Updates the html after 1000ms
 const loadHtml = () => {
   setTimeout(() => {
     currentCity.innerHTML = `${apiResponse.name}`;
@@ -101,16 +81,13 @@ const getForecastData = () => {
   )
     .then((response) => response.json())
     .then((data) => {
-      //forecastResponse = data;
       const filteredForecast = data.list.filter((item) =>
         item.dt_txt.includes("09:00")
-      ); //Makes a 5 day array read at 12
-      console.log(filteredForecast);
+      ); //Makes an array of days with temp read at 9
 
       const filteredForecastNight = data.list.filter((item) =>
         item.dt_txt.includes("21:00")
       );
-      console.log(filteredForecastNight);
 
       filteredForecast.forEach((day) => {
         const date = new Date(day.dt * 1000);
