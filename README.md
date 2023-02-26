@@ -10,7 +10,7 @@ We started by planning the project together and deciding on styling, and what ki
 We started with fetching the different URLs and from there we started building the different functions needed to make the page work. Mostly went kind of smoothly but we had a hard time figuring out how to make the page change weather, background color and city when we added the search function, this part took quite some time to figure out, and where to put all the information from JavaScript.
 
 Working in branches was also quite hard as we couldn’t see what was done in the other branch which made it difficult to see what the page looked like. Wen merging the branches we also noticed that we didn’t get all information to merge so this made us realize that we probably should have put even more time planning the project with clearer explanations on what we needed to do on the page. 
-![image](https://user-images.githubusercontent.com/43434947/221400284-759ebc43-a150-4808-a2c0-b4db5d621015.png)
+
 
 
 ## View it live
