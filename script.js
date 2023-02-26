@@ -19,7 +19,7 @@ const cityName = document.getElementById('cityName')
 const weatherDescription = document.getElementById('weatherDescription')
 const mainIcon = document.getElementById('mainIcon')
 const weatherFeature = document.getElementById('weatherFeature')
-
+const featureImage = document.querySelector('.feature-image');
 
 //Variables we can use later to automate API-fethcing:
 const apiKey = 'c480de5f69ca98d1993a4dae3213642e';
@@ -49,6 +49,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
     })
 }
 
+//Change default city
 const getNextCity = () => {
     if (city === 'Stockholm') {
         getMainWeather('Madrid')
@@ -69,10 +70,9 @@ const getNextCity = () => {
     }
 }
 
-
         
 const weatherForecastData = (city) => {
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=c480de5f69ca98d1993a4dae3213642e`)
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=${apiKey}`)
         .then((forecastResponse) => {
             return forecastResponse.json();
         })
@@ -95,9 +95,7 @@ const weatherForecastData = (city) => {
             }); 
         })
 }
- 
-//Learn how to get symbols from the api
-//Learn how to get a search word to show an image from unsplash
+
    
 const toggleSearchField = () => {
     //This just controls the toggling between opening and closing the search field
@@ -155,70 +153,64 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
     .then((json) => {
 
         // Get sunrise and sunset time
-        console.log(`sunrise:`, json.sys.sunrise)
-        console.log(`timezone:`, json.timezone)
-
-      /*   const getTimeZone = (json.timezone).toLocaleTimeString(['en-GB'], { timeStyle: 'short' });
-        console.log(getTimeZone) */
         const sunriseTime = new Date((json.sys.sunrise+json.timezone) * 1000);       //Gives us the time in "human" form (as a date), mult. by 1000 to get it in ms.
         sunriseTime.setMinutes(sunriseTime.getMinutes() + sunriseTime.getTimezoneOffset())
         const sunriseShort = sunriseTime.toLocaleTimeString(['en-GB'], { timeStyle: 'short' });        //Transforms it into just the Hour/minutes. Select the short variant to get the time with minutes and not seconds.
         const sunsetTime = new Date ((json.sys.sunset+json.timezone) * 1000);
         sunsetTime.setMinutes(sunsetTime.getMinutes() + sunsetTime.getTimezoneOffset())
         const sunsetShort = sunsetTime.toLocaleTimeString(['en-GB'], { timeStyle: 'short' }); 
-        console.log(sunriseTime)
-        console.log(sunsetTime)
+      
         //Modifying the HTML based on our input:
         sunriseText.innerHTML = `<p>sunrise</p>
                                         <p class="time-data">${sunriseShort}</p>`;
         sunsetText.innerHTML = `<p>sunset</p>
                                     <p class="time-data">${sunsetShort}</p>`;
 
-        const featureImage = document.querySelector('.feature-image');
-       
-
+        //Today's weather
         const todaysWeather = json.weather[0].main
         
+        //Get current time
         const getTime = new Date()
         getTime.setMinutes(getTime.getMinutes() + getTime.getTimezoneOffset())
         getTime.setSeconds(getTime.getSeconds() + json.timezone)
-        
         const currentTime = getTime.getHours();
         
         const sunriseTimeHour = sunriseTime.getHours();       
         const sunsetTimeHour = sunsetTime.getHours();
-        console.log(`currentTime:`, currentTime)
-     
-
-        console.log(sunriseTimeHour)
-        console.log(sunsetTimeHour)
+       
         if (currentTime >= sunriseTimeHour && currentTime <= sunsetTimeHour) {
             //During daytime
-            // OBS! Lägg eventuellt in fler olika typer av väder
             if (todaysWeather === 'Clear') {
-                featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1617800809985-a4f937ede1b1?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNjMzNTI&ixlib=rb-4.0.3&q=80')"
-            } else if (todaysWeather === 'Snow') {
-                featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1548777123-e216912df7d8?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNTcyNjE&ixlib=rb-4.0.3&q=80')"
+                featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1613931189161-1f4d2660bd1e?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Nzc0MDczNDI&ixlib=rb-4.0.3&q=80')"
+            } else if (todaysWeather === 'Clouds') {
+                featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1505144992585-d281c0e2cff8?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Nzc0MDk1OTA&ixlib=rb-4.0.3&q=80')"
             } else if (todaysWeather === 'Rain') {
-                featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1541679842955-ff256fc8774e?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNjMxNjI&ixlib=rb-4.0.3&q=80')"
+                featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1424111113808-b7be56a9f3d6?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNTczNTA&ixlib=rb-4.0.3&q=80')"
+            } else if (todaysWeather === 'Snow') {
+                featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1610486549369-585a0e6d8cc4?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Nzc0MDc4NDE&ixlib=rb-4.0.3&q=80')"
+            } else if (todaysWeather === 'Thunderstorm') {
+                featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1602088501827-7912e1b4a7bd?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Nzc0MDc5ODI&ixlib=rb-4.0.3&q=80')"
+            } else if (todaysWeather === 'Drizzle') {
+                featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1554039362-6daf559ddb63?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Nzc0MDgyNDk&ixlib=rb-4.0.3&q=80')"
+            } else if (todaysWeather === 'Atmosphere') {
+                featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1543226549-10d29b2cfaf0?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Nzc0MDg0MTI&ixlib=rb-4.0.3&q=80')"
             } else {
                 featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1424111113808-b7be56a9f3d6?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNTczNTA&ixlib=rb-4.0.3&q=80')"
             }
         } else {
             //During nighttime
             if (todaysWeather === 'Clear') {
-                featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1516571748831-5d81767b788d?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcxNjg0NTk&ixlib=rb-4.0.3&q=80')"
+                featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1620055374842-145f66ec4652?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Nzc0MDkxMTY&ixlib=rb-4.0.3&q=80')"
             } else if (todaysWeather === 'Snow') {
-                featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1514579683945-ff322fc53bb1?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNjI4MzA&ixlib=rb-4.0.3&q=80')"
+                featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1602857731804-80e82120ff27?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Nzc0MDkzNzQ&ixlib=rb-4.0.3&q=80')"
             } else if (todaysWeather === 'Rain') {
-                featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1511294952778-165d813e9eeb?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNTc1MDA&ixlib=rb-4.0.3&q=80')"
+                featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1505144992585-d281c0e2cff8?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Nzc0MDk1OTA&ixlib=rb-4.0.3&q=80')"
             } else {
-                featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1499578124509-1611b77778c8?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNjAxOTY&ixlib=rb-4.0.3&q=80')"
+                featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1518352724948-729151797553?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Nzc0MDk1OTA&ixlib=rb-4.0.3&q=80')"
             };
         }
-        // ALLA OLIKA GRADIENTS ÄR INTE KLARA ÄN MEN SKA JOBBA PÅ DET IMORGON. FUNKTIONEN FUNKAR DOCK (TROR JAG)
+        
         const gradientDayNight = () => {
-            console.log(`banan:`, currentTime)
                 const backgroundTopGradient = document.getElementById('backgroundTopGradient');
 
                 const gradientStyle = ['morning','midday','afternoon','duskSunset','evening','midnight','dawnSunrise']
@@ -246,10 +238,9 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
 
 todaysWeatherFeature('Stockholm');
 getMainWeather('Stockholm');
-/* getSunriseSunsetData('Stockholm'); */
 weatherForecastData('Stockholm');
 
-
+//Eventlistener to invoke getNextCity function
 switchBtn.addEventListener('click', getNextCity) 
 //Eventlistener to toggle search field:
 searchMenuBtn.addEventListener('click', toggleSearchField)
