@@ -8,7 +8,7 @@ We started with merging the branches that we had created when we followed the in
 
 We struggled a lot with being able to display different CSS depending on what time of day it was. If we would have more time we would probably have been able to make it work. 
 
-We added geolocation, windspeed and a conditional statment that changes the icons change depending on what kind of weather it is. 
+We added windspeed and a conditional statment that changes the icons change depending on what kind of weather it is. We added geolocation as and it worked for one of us but then we saw that it didn't work on every device we decided to change the location back to Stockholm.
 
 /Annika and Peki
 
