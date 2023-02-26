@@ -1,6 +1,8 @@
-.body {
-
-  background-color: #b9d2f4;
+body {
+  background-image: url(./Designs/new-img/pexels-anastasiya-vragova-6662557.jpg) ;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-size: cover;
 }
 
 h1 {
@@ -43,6 +45,7 @@ h2 {
   border: 6px solid #6060e8;
   font-family: "Montserrat";
   box-shadow: 0px 4px 4px 0px;
+  opacity: 0.8;
 }
 
 .todays-prompt {
@@ -50,6 +53,11 @@ h2 {
   padding-top: 10%;
   padding-bottom: 5%;
   color: #4d4c4c;
+}
+
+.todays-prompt img {
+  margin: 50px 0 0 0;
+  height: 80px;
 }
 
 .main-container {

@@ -38,21 +38,21 @@ fetch(Url_Weather)
 
           if (todaysMainWeather === "Clear") {
             todaysPrompt.innerHTML = `<div class= "Clear">
-                      <img class= "sunny" src="Designs\Design-1\assets\Group36.png"/>
+                      <img class= "sunny" src="./Designs/Design-1/assets/Group36.png"/>
                       <h2> Get your sunnies on. ${json.name} is looking rather great today.</h2>
                       </div>`;
             document.body.style.backgroundColor = "#F7E9B9";
             document.body.style.color = "#2A5510";
           } else if (todaysMainWeather === "Rain") {
             todaysPrompt.innerHTML = `<div class= "rain">
-                      <img class= "rain" src="Designs\Design-1\assets\Group16.png"/>
+                      <img class= "rain" src="./Designs/Design-1/assets/Group16.png"/>
                       <h2> Get your umbrella. ${json.name} is crying today.</h2>
                       </div>`;
             document.body.style.backgroundColor = "#A3DEF7";
             document.body.style.color = "#164A68";
           } else if (todaysMainWeather === "Clouds") {
             todaysPrompt.innerHTML = `<div class= "clouds">
-                      <img class= "clouds" src="Designs\Design-1\assets\Group34.png"/> 
+                      <img class= "clouds" src="./Designs/Design-1/assets/Group34.png"/> 
                       <h2> Oh no, ${json.name} is looking rather grey today.</h2>
                       </div>`;
             document.body.style.backgroundColor = "#F4F7F8";
