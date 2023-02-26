@@ -134,23 +134,16 @@ const updateWeatherPicture = (data) => {
   console.log(updateWeatherPicture);
 
   if (mainWeather === "Clear") {
-    mainWeatherPicture.innerHTML = 
     document.body.style.backgroundImage = "url('sun.jpg')";
-    
   } else if (mainWeather === "Thunderstorm") {
-    mainWeatherPicture.innerHTML = 
     document.body.style.backgroundImage = "url('storm.jpg')";
   } else if ((mainWeather === "Drizzle") | "Rain") {
-    mainWeatherPicture.innerHTML = 
     document.body.style.backgroundImage = "url('rain.jpg')";
   } else if (mainWeather === "Snow") {
-    mainWeatherPicture.innerHTML = 
     document.body.style.backgroundImage = "url('snow.jpg')";
   } else if (mainWeather === "Clouds") {
-    mainWeatherPicture.innerHTML = 
     document.body.style.backgroundImage = "url('cloudy.jpg')";
   } else {
-    mainWeatherPicture.innerHTML = 
     document.body.style.backgroundImage = "url('cloudy.jpg')";;
   }
 };
