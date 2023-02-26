@@ -148,7 +148,7 @@ searchbar.addEventListener("change", () => {
 
     .then((json) => {
       searchbar.value = "";
-      //started to add first details to our topsection
+      //started to add first details to our top section
       degrees.innerHTML = `${json.main.temp.toFixed(1)}<sup>°C</sup>`;
       city.innerHTML = json.name;
       condition.innerHTML = json.weather[0].description;
