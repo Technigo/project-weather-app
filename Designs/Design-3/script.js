@@ -11,12 +11,9 @@ const sunset = document.getElementById('sunset')
 const weatherSymbolBox = document.getElementById('big-weather-symbol-container')
 const weatherSymbol = document.getElementById('big-weather-symbol')
 
-// Get the user's current location
-navigator.geolocation.getCurrentPosition((position) => {
-    const { latitude, longitude } = position.coords;
 
 //---------------------------------------------1ST FETCH REQUEST----------------------------------------
-fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&APPID=26c922535e2ba939d3ff0d8af53d90a2`)
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=26c922535e2ba939d3ff0d8af53d90a2`)
 .then((response) => {
     return response.json()
 })
@@ -96,7 +93,7 @@ changeWeatherIcon(currentWeather); //Calling the function changeWeatherIcon with
 })
 
 //---------------------------------2ND FETCH FOR FORECAST--------------------------------------------
-fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&APPID=26c922535e2ba939d3ff0d8af53d90a2`)
+fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=26c922535e2ba939d3ff0d8af53d90a2`)
 .then((response) => {
     return response.json()
 })
@@ -119,8 +116,6 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${lo
         
         })        
 })
-
-});
 
 // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
 let vh = window.innerHeight * 0.01;
