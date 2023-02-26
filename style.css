@@ -1,23 +1,60 @@
 .body {
 
-  background-color: #deebf8;
+  background-color: #b9d2f4;
 }
 
 h1 {
-color: #4d4c4c;
-text-align: center;
+  color: #4d4c4c;
+  text-align: center;
 }
 
 .forecast {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+
 }
 
 .weather-box {
-    
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;   
+} 
+
+.main-container{
+  background-color: #b7cbf5;
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding-bottom: 16px;
+  border-radius: 30px;
+  width: 25%;
+  height: 100%;
+  border: 6px solid #6060e8;
+  font-family: "Montserrat";
+  box-shadow: 0px 4px 4px 0px;
+}
+
+.todays-prompt {
+  text-align: center;
+  padding-top: 10%;
+  padding-bottom: 5%;
+  color: #4d4c4c;
+}
+
+/* .imgsunbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #b7cbf5;
+  } */
+  
+  /* .imgsun {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,6 +94,16 @@ padding-top: 40px;
   color: #4d4c4c;
 }
 
+  
+  } */
+
+
+.header {
+  text-align: center;
+  font-size: 50px;
+  color: #4d4c4c;
+ 
+}
 .time {
   text-align: center;
   color: #4d4c4c;
@@ -69,16 +116,14 @@ padding-top: 40px;
   color: #4d4c4c;
 }
 
- @media (min-width: 768px)
-{
+@media  (max-width: 768px) {
   .report {
-    gap: 40px;
-  }
-} 
+  gap: 40px; 
+}
+}
 
-@media (min-width: 1200px)
-{
+@media (min-width: 1200px){
   .report {
-    gap: 80px
-  }
-} 
+  gap: 80px;
+}
+}
