@@ -95,7 +95,7 @@ const fetchWeatherData = () => {
       );
       day.innerHTML = "";
 
-      filteredForecast.map((forecastDay) => {
+      filteredForecast.forEach((forecastDay) => {
         let weekday = new Date(forecastDay.dt_txt).getDay();
         day.innerHTML += `
     <div id="forecastSection" class="forecast-section">
