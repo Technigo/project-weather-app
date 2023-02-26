@@ -131,7 +131,7 @@ const weatherForecastData = (city) => {
             alert('Oops, city not found! Check your spelling please.');
             todaysWeatherFeature('Stockholm');
             getMainWeather('Stockholm');
-            getSunriseSunsetData('Stockholm');
+            //getSunriseSunsetData('Stockholm');
             weatherForecastData('Stockholm');
         }
     
