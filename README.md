@@ -7,11 +7,10 @@ We started by following the instructions on the project. We decided to do our ow
 
 We started with merging the branches that we had created when we followed the initial instructions, it went pretty well. There were only a few conflicts and they were resolved quickly. Then we created new branches and continued working with the CSS and functions for displaying the icon and temperatures properly. We merged those again. The second day was messy and we both worked in the master branch at coded together over Slack huddle, this was not a good idea. We should have divided up the work and stated clearly what each of us was supposed to do. Lesson learned! 
 
-We struggled a lot with being able to display different CSS depending on what time of day it was. 
+We struggled a lot with being able to display different CSS depending on what time of day it was. If we would have more time we would probably have been able to make it work. 
 
-We added geolocation, windspeed
+We added geolocation, windspeed and a conditional statment so that the icons change depending on what kind of weather it is. 
 
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.

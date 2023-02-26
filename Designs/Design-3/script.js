@@ -11,21 +11,6 @@ const sunset = document.getElementById('sunset')
 const weatherSymbolBox = document.getElementById('big-weather-symbol-container')
 const weatherSymbol = document.getElementById('big-weather-symbol')
 
-
-const currentHour = new Date().getHours();
-
-// Select the element
-
-// Add or remove classes based on time of day
-if (currentHour >= 6 && currentHour < 18) {
-    weatherApp.classList.add("day");
-    weatherApp.classList.remove("night");
-} else {
-    weatherApp.classList.add("night");
-    weatherApp.classList.remove("day");
-}
-
-
 // Get the user's current location
 navigator.geolocation.getCurrentPosition((position) => {
     const { latitude, longitude } = position.coords;
