@@ -19,8 +19,8 @@
         The Weather App!
 
         <div class="search-box">
-          <input type="text" class="search-box" placeholder="Search your location" />
-          <button>
+          <input type="text" id="myInput" class="search-box" placeholder="Search your location" />
+          <button id="myBtn">
             <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
           </button>
         </div>
@@ -45,6 +45,16 @@
         </div>
       </section>
     </div>
+
+    <script>
+      var input = document.getElementById("myInput");
+      input.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          document.getElementById("myBtn").click();
+        }
+      });
+    </script>
 
     <script src="https://kit.fontawesome.com/8e045d922d.js" crossorigin="anonymous"></script>
     <script src="script.js"></script>

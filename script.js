@@ -52,7 +52,7 @@ search.addEventListener("click", () => {
 
       // Temperature and "feels like..."
       tempToday.innerHTML = `<h3>${Math.round(json.main.temp * 10) / 10}°C</h3>`;
-      feelsLike.innerHTML = `<h3 class="temp">Feels like ${Math.round(json.main.feels_like * 10) / 10}°C</h6>`;
+      feelsLike.innerHTML = `<h3 class="temp">Feels like ${Math.round(json.main.feels_like * 10) / 10}°C</h3>`;
 
       //Sunrise and sunset
       const sunrise = json.sys.sunrise;
