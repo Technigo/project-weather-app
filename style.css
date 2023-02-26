@@ -201,6 +201,7 @@ hr {
 
 footer {
   display: flex;
+  justify-self: center;
   justify-content: center;
   padding-top: 15px;
   padding-bottom: 10px;
@@ -209,7 +210,16 @@ footer {
   background-color: rgb(227, 209, 153);
 }
 
+@media (min-width: 668px) and (max-width: 1023px) {
+  footer {
+    width: 820px;
+  }
+}
+
 @media (min-width: 1024px) {
+  footer {
+    width: 1200px;
+  }
   .weeklyWeatherWrapper {
     justify-self: center;
     width: 1200px;
