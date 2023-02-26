@@ -22,9 +22,9 @@ fetch(API_today)
 
     console.log(json.weather[0].description);
 
-    sunrise.innerHTML += `<p>City: ${json.name}</p>`;
-    sunrise.innerHTML += `<p>Temperature: ${round} °C</p>`;
-    sunrise.innerHTML += `<p>Weather: ${json.weather[0].description}</p>`;
+   // sunrise.innerHTML += `<p>City: ${json.name}</p>`;
+    sunrise.innerHTML += `<p>Temp: ${round} °C</p>`;
+   // sunrise.innerHTML += `<p>Weather: ${json.weather[0].description}</p>`;
   });
 
 //Variable allowing Stockholm to be the city.
