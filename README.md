@@ -7,4 +7,4 @@ Working as a team with different branches was a new challenge.
 
 ## View it live
 View site live here: https://kaleidoscopic-tarsier-64d42d.netlify.app/#
-Figma sketch: <a href=“https://www.figma.com/file/Tf6OFrSObyeldoBKiFO4ue/Project-4---Weather-App-API?node-id=611%3A897&t=kOmW7krjU9XCiwNb-0”> here </a>
+Figma sketch: https://www.figma.com/file/Tf6OFrSObyeldoBKiFO4ue/Project-4---Weather-App-API?node-id=611%3A897&t=kOmW7krjU9XCiwNb-0
