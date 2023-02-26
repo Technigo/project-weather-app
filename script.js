@@ -99,83 +99,37 @@ fetch(
     return response.json();
   })
   .then((fiveDay) => {
-    //mapping the data, starting point is dates
-    const getDates = fiveDay.list.map((day) => ({
-      ...day,
-      date: new Date(day.dt_txt),
-    }));
+    const filteredForecast = fiveDay.list.filter(item => item.dt_txt.includes('12:00:00'));
+    console.log(filteredForecast);
 
-    //Empty array to be populated with our chosen data
-    const forecasts = [];
-
-    const today = new Date();
-    const currentDate = new Date();
-
-    //looping through and using helper function to filter on days (since we have several data points from each day)
-    for (let i = 0; i < 5; i++) {
-      currentDate.setDate(today.getDate() + i);
-      let currentWeatherItems = getDates.filter((day) =>
-        datesAreOnSameDay(day.date, currentDate)
-      );
-      console.log("current", currentWeatherItems);
-
-      //pushing the data in to our new array!
-      forecasts.push({
-        dayDate: currentWeatherItems[0].dt, //the actual date from the data, we use the first time each date happens
-        weatherIcon: currentWeatherItems[0].weather[0].main, //the weather for each day represented by the first instance (we could also search for how many times a certain weather type occurs and use the most common as well, but we use this for now)
-        highTemp: getMaxTemp(currentWeatherItems), //The high temperature
-        lowTemp: getMinTemp(currentWeatherItems), //The low temperature
-      });
+  filteredForecast.forEach((item) => {
+    const date = new Date(item.dt * 1000);
+    let dayName =  date.toLocaleDateString("en-US", {weekday: "short"});
+    let mainWeather = item.weather[0].main;
+    if (mainWeather === "Snow") {
+      weatherImg = "Designs/Design-1/assets/snow.svg";
+    } else if (mainWeather === "Rain" || mainWeather === "Drizzle") {
+      weatherImg = "Designs/Design-1/assets/rain.svg";
+    } else if (mainWeather === "Thunderstorm") {
+      weatherImg = "Designs/Design-1/assets/thunder.svg";
+    } else if (
+      mainWeather === "Mist" ||
+      mainWeather === "Fog" ||
+      mainWeather === "Ash"
+    ) {
+      weatherImg = "Designs/Design-1/assets/mist.svg";
+    } else if (mainWeather === "Clouds") {
+      weatherImg = "Designs/Design-1/assets/cloud.svg";
+    } else if (mainWeather === "Clear") {
+      weatherImg = "Designs/Design-1/assets/clear.svg";
     }
-    console.log(forecasts); //testing the array
 
-    //Using our new array!
-    //Format the dayDate from the new array to a string dayName, to be populated into HTML
-    forecasts.forEach((item) => {
-      const date = new Date(item.dayDate * 1000);
-      let dayName = date.toLocaleDateString("en-US", { weekday: "short" });
-
-      // Looping through the array and deciding on the icon depending on weather forecast
-      let mainWeather = item.weatherIcon;
-      if (mainWeather === "Snow") {
-        weatherImg = "Designs/Design-1/assets/snow.svg";
-      } else if (mainWeather === "Rain" || mainWeather === "Drizzle") {
-        weatherImg = "Designs/Design-1/assets/rain.svg";
-      } else if (mainWeather === "Thunderstorm") {
-        weatherImg = "Designs/Design-1/assets/thunder.svg";
-      } else if (
-        mainWeather === "Mist" ||
-        mainWeather === "Fog" ||
-        mainWeather === "Ash"
-      ) {
-        weatherImg = "Designs/Design-1/assets/mist.svg";
-      } else if (mainWeather === "Clouds") {
-        weatherImg = "Designs/Design-1/assets/cloud.svg";
-      } else if (mainWeather === "Clear") {
-        weatherImg = "Designs/Design-1/assets/clear.svg";
-      }
-
-      //Populating the HTML with the data
-      forecast.innerHTML += `<div class="forecast-weekday">
-        <div class="each-weekday">${dayName}</div>
-        <div class="forecast-img"><img src=${weatherImg}></div> 
-        <div class="forecast-temp">${item.highTemp} °C /&nbsp;${item.lowTemp} °C</div>
-        </div>`;
-    });
+    //Populating the HTML with the data
+    forecast.innerHTML += `<div class="forecast-weekday">
+      <div class="each-weekday">${dayName}</div>
+      <div class="forecast-img"><img src=${weatherImg}></div> 
+      <div class="forecast-temp">${item.main.temp.toFixed(1)} °C</div>
+      </div>`;
+        
   })
-  .catch((error) => console.log(error));
-
-//Function to get rounded high temperature for the entire day
-const getMaxTemp = (data) => {
-  const temps = data.map((item) => item["main"]["temp"]);
-  return Math.round(Math.max(...temps));
-};
-//Function to get rounded low temperature for the entire day
-const getMinTemp = (data) => {
-  const temps = data.map((item) => item["main"]["temp"]);
-  return Math.round(Math.min(...temps));
-};
-
-const datesAreOnSameDay = (first, second) =>
-  first.getMonth() === second.getMonth() &&
-  first.getDate() === second.getDate();
+});
