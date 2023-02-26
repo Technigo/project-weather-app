@@ -169,10 +169,6 @@ const searchFunction = () => {
         forecastTemp.innerHTML = "";
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 1929a58eb9cf3d9e20dd1ae8646bb1df787d0054
 
 const todaysWeatherFeature = (city) => {
 fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`)
