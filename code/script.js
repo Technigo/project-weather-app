@@ -190,9 +190,3 @@ arrowButton.addEventListener("click", () => {
 weatherFetch("59.6173", "16.5422");
 loadHtml();
 
-//TO DO
-//add a logo to the top right that changes depending on time and weather.
-//Put in another city and current location in the nav menu?
-//either make the arrow button show more info about weather, or remove it
-// styling and media queries
-//fix suntime to show hh:mm and not seconds + am/pm

@@ -76,7 +76,7 @@ li:focus {
   background-color: rgba(164, 222, 247, 0.5);
   z-index: 99;
   position: fixed;
-  color: #0b181c;
+  color: white;
 }
 
 #city-list>p {
@@ -136,6 +136,7 @@ li:focus {
 
 #weather-icon-container {
   width: 40%;
+  margin-right: 20px;
 }
 
 #weather-data-container {
@@ -144,7 +145,7 @@ li:focus {
 }
 
 #current-temp {
-  font-size: 4rem;
+  font-size: 3.6rem;
   width: 13rem;
 }
 
@@ -274,7 +275,12 @@ footer {
   background-color: #f7f6f6;
 }
 */
-@media screen and (min-width: 450px) {
+@media screen and (min-width: 330px) {
+
+  #current-temp {
+    font-size: 4rem;
+  }
+
   .sun-times {
     width: 100%;
     display: flex;
@@ -284,23 +290,34 @@ footer {
 
   #week-list-icon {
     max-height: 40px;
-    margin-left: 7rem;
+    margin-left: 4rem;
+  }
+}
+
+@media screen and (min-width: 450px) {
+  #week-list-icon {
+    max-height: 50px;
+    margin-left: 10rem;
   }
 }
 
 @media screen and (min-width: 640px) {
   #week-list {
     max-width: 75%;
-    font-size: 1.6em;
-  }
-  .weekDayRow p:last-child {
-    width: 160px;
+    font-size: 1.5em;
   }
 
   #week-list-icon {
-    max-height: 60px;
+    margin-left: 11.5rem;
   }
-  
+
+  .weekDayRow p:first-child {
+    width: 85px;
+  }
+
+  .weekDayRow p:last-child {
+    width: 160px;
+  }
 
 #city-list {
   all: unset;
