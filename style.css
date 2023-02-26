@@ -25,22 +25,26 @@
  .main {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     width: auto;
     height: 100%;
     padding: 30px;
+    max-width: 700px;
+    margin: auto;
  }
 
 .container {
     width: 100%;
     font-size: 15px;
     font-weight: 200;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
+    padding-top: 20px;
 }
 
 .weather-description {
     width: 100%;
     padding: 0 35px;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 400;
 }
 
@@ -50,10 +54,12 @@
 }
 
 h1 {
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 400;
-    padding: 20px 0;
+    padding: 10px 0;
     max-width: 600px;
+
+    line-height: 35px;
 }
 
 .week-days {
@@ -69,17 +75,22 @@ h1 {
     list-style: none;
 }
 
-.clear {
-    background-color: #f7e9b9;
-    color: #2a5510;
-  }
+/*tablet and desktop*/
+@media (min-width: 667px) {
+    .container {
+        font-size: 20px;
+        padding-bottom: 40px;
+    }
+
+    h1 {
+        font-size: 40px;
+        line-height: 40px;
+        padding-bottom: 40px;
+    }
+
+    .week-days {
+        font-size: 20px;
+    }
+}
+
   
-.clouds {
-    background-color: #f4f7f8;
-    color: #f47775;
-  }
-  
-.rain {
-    background-color: #a3def7;
-    color: #164a68;
-  }
