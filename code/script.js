@@ -51,10 +51,6 @@ const weatherFetch = (lat, lon) => {
     });
 };
 
-let clearFeelsLikeTemp = () => {
-  feelsLikeTemp.innerHTML = ``;
-}; 
-
 //Updates the html after 1000ms
 const loadHtml = () => {
   setTimeout(() => {
@@ -73,6 +69,10 @@ const loadHtml = () => {
 let clearWeekList = () => {
   weekList.innerHTML = ``;
 };
+
+let clearFeelsLikeTemp = () => {
+  feelsLikeTemp.innerHTML = ``;
+}; 
 
 //API Forecast 
 const getForecastData = (lat, lon) => {
