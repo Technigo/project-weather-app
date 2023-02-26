@@ -8,6 +8,11 @@ h1 {
   text-align: center;
 }
 
+h2 {
+  color: #4d4c4c;
+  text-align: center;
+}
+
 .forecast {
   display: flex;
   justify-content: space-between;
@@ -47,35 +52,21 @@ h1 {
   color: #4d4c4c;
 }
 
-/* .imgsunbox {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #b7cbf5;
-  } */
-  
-  /* .imgsun {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding-top: 50px;
-}*/
-
 .main-container {
 background-color: #b7cbf5;
 flex: 1;
 display: flex;
-/* justify-content: flex-start; */
+justify-content: flex-start;
 flex-direction: column;
 padding-bottom: 16px;
 border-radius: 30px;
-width: 25%;
+width: 75%;
 height: 100%;
 border: 6px solid #6060e8;
 font-family: "Montserrat";
 box-shadow: 0px 4px 4px 0px;
 padding-top: 40px;
+opacity: 0.9;
 }
 
 
@@ -88,21 +79,9 @@ padding-top: 40px;
 }
 
 .header {
-
   text-align: center;
-  font-size: 50px;
+  font-size: 30px;
   color: #4d4c4c;
-}
-
-  
-
-
-
-.header {
-  text-align: center;
-  font-size: 50px;
-  color: #4d4c4c;
- 
 }
 .time {
   text-align: center;
@@ -113,6 +92,14 @@ padding-top: 40px;
   display: flex;
   justify-content: space-between;
   gap: 8px;
+  color: #4d4c4c;
+}
+
+.day {
+  color: #4d4c4c;
+}
+
+.temp {
   color: #4d4c4c;
 }
 
