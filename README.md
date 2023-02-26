@@ -1,5 +1,4 @@
 # Weather App
-
 The task was to create a weather app that would display values from an weather-API
 
 ## The problem
@@ -9,8 +8,9 @@ We started with merging the branches that we had created when we followed the in
 
 We struggled a lot with being able to display different CSS depending on what time of day it was. If we would have more time we would probably have been able to make it work. 
 
-We added geolocation, windspeed and a conditional statment so that the icons change depending on what kind of weather it is. 
+We added geolocation, windspeed and a conditional statment that changes the icons change depending on what kind of weather it is. 
 
+/Annika and Peki
 
 ## View it live
-
+https://dashing-kataifi-1ac97f.netlify.app/ 
