@@ -171,28 +171,7 @@ const searchFunction = () => {
         forecastTemp.innerHTML = "";
 }
 
-/* const getSunriseSunsetData = (city) => {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`)
-        .then((response) => {
-            return response.json()
-        })
-        .then((json) => {
-            const sunriseTime = new Date(json.sys.sunrise * 1000);       //Gives us the time in "human" form (as a date), mult. by 1000 to get it in ms.
-            const sunriseShort = sunriseTime.toLocaleTimeString(['en-GB'], { timeStyle: 'short' });        //Transforms it into just the Hour/minutes. Select the short variant to get the time with minutes and not seconds.
-            const sunsetTime = new Date(json.sys.sunset * 1000);
-            const sunsetShort = sunsetTime.toLocaleTimeString(['en-GB'], { timeStyle: 'short' });
-            console.log(sunriseTime)
-            console.log(sunsetTime)
-            //Modifying the HTML based on our input:
-            sunriseText.innerHTML = `<p>sunrise</p>
-                                        <p class="time-data">${sunriseShort}</p>`;
-            sunsetText.innerHTML = `<p>sunset</p>
-                                    <p class="time-data">${sunsetShort}</p>`;
-        })
-        .catch((err) => {
-            console.log(`error caught:`, err)
-        })
-} */
+
 
 const todaysWeatherFeature = (city) => {
 fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`)
