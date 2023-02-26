@@ -7,7 +7,7 @@
     --container-color:  #faf9f9;   
 
     /*Dimensions:*/
-    --top-background-bottom-position: 317px;
+    --top-background-bottom-position: 355px;
 
     /*Other:*/
     --top-background-opacity: 0.6;
@@ -122,26 +122,26 @@ svg {
 }
 
 .mainWrapper .tempNumber {
-    font-size: 110px;
+    font-size: 102px;
     margin: 0;
     font-weight: 900; 
 }
 
 .tempTextCelsius {
     display: inline;
-    font-size: 40px;
+    font-size: 36px;
     margin-top: 15px;
     margin-left: 5px;
 }
 
 .mainWrapper .cityText {
-    font-size: 36px;
+    font-size: 32px;
     font-weight: 200;
     margin: 0 0 5px 0;
 }
 
 .mainWrapper .describeText {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 200;
     margin: 0px;
     text-transform: capitalize;
@@ -165,7 +165,7 @@ svg {
 #sunsetText {
     display: flex;
     flex-direction: row;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .sun-position .time-data {
@@ -186,6 +186,7 @@ svg {
     height: 90px;
     margin: 0 auto 0 75%;
     cursor: pointer;
+    box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 .fa-solid {
@@ -323,7 +324,7 @@ footer a:hover {
 @media (min-width: 500px) {
 
     :root {
-    --top-background-bottom-position: 307px;
+    --top-background-bottom-position: 305px;
     }
         
 .container {
