@@ -238,8 +238,8 @@ svg {
 
 .background-top-gradient.midnight, .background-top-gradient.midnight ~ .switch-section #switchBtn {
     background: linear-gradient(217deg, rgba(36, 14, 3, 0.8), rgba(22, 60, 82, 0) 70.71%),
-                linear-gradient(127deg, rgba(22, 60, 82, 0.8),  rgba(7, 27, 38, 0.5) 70.71%),
-                linear-gradient(336deg, rgba(22, 60, 82, 0.8),  rgba(7, 27, 38, 1) 70.71%);
+                linear-gradient(127deg, rgba(22, 60, 82, 0.8),  rgba(84, 133, 159, 0.5) 70.71%),
+                linear-gradient(336deg, rgba(36, 72, 94, 1),  rgba(7, 27, 38, 1) 70.71%);
     background-size: 600% 600%;
 	animation: gradient 5s ease infinite;
 }
