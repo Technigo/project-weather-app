@@ -25,7 +25,6 @@
  .main {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     width: auto;
     height: 100%;
     padding: 30px;
@@ -58,7 +57,6 @@ h1 {
     font-weight: 400;
     padding: 10px 0;
     max-width: 600px;
-
     line-height: 35px;
 }
 
