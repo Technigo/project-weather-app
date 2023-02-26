@@ -321,12 +321,24 @@ footer a:hover {
 
 /* For when we look at the app in desktop or tablet: */
 @media (min-width: 500px) {
+
+    :root {
+    --top-background-bottom-position: 307px;
+    }
         
 .container {
     box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.3);
     width: 100%;
     max-width: 400px;
     margin: 50px auto;
+}
+
+.feature-image {                /*Uses a background img placed over the gradient*/
+    bottom: var(--top-background-bottom-position);
+}
+
+.background-top-gradient {          /*Uses a background gradient behind the transparent image*/
+    bottom: var(--top-background-bottom-position);
 }
 
 .search-bar {
