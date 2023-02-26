@@ -133,36 +133,93 @@ const renderWeeklyWeather = (data) => {
 
 // background changes depending on the weather type
 const updateWeatherPicture = (data) => {
-  let mainWeather = data.weather[0].main;
+  //let mainWeather = data.weather[0].main;
+  let mainWeather = "Thunderstorm";
 
   if (mainWeather === "Clear") {
     document.body.style.backgroundImage = "url('sun.jpg')";
     document.body.style.backgroundColor = "rgb(255, 232, 211, 1)";
     weeklyWeatherWrapper.style.backgroundColor = "rgb(251, 203, 164, 1)";
+    document.documentElement.style.setProperty(
+      "--header-and-footer-color",
+      "#b86f52"
+    );
+    document.documentElement.style.setProperty(
+      "--header-and-footer-text-color",
+      "#000"
+    );
   } else if (mainWeather === "Thunderstorm") {
     document.body.style.backgroundImage = "url('storm.jpg')";
     document.body.style.backgroundColor = "rgb(254,247,182, 1)";
     weeklyWeatherWrapper.style.backgroundColor = "rgb(173,163,188, 1)";
+    document.documentElement.style.setProperty(
+      "--header-and-footer-color",
+      "#8F9491"
+    );
+    document.documentElement.style.setProperty(
+      "--header-and-footer-text-color",
+      "#fff"
+    );
   } else if (mainWeather === "Drizzle") {
     document.body.style.backgroundImage = "url('rain.jpg')";
     document.body.style.backgroundColor = "rgb(69, 151, 202, 1)";
     weeklyWeatherWrapper.style.backgroundColor = "rgb(82, 179, 220, 1)";
+    document.documentElement.style.setProperty(
+      "--header-and-footer-color",
+      "#8EE3EF"
+    );
+    document.documentElement.style.setProperty(
+      "--header-and-footer-text-color",
+      "#000"
+    );
   } else if (mainWeather === "Rain") {
     document.body.style.backgroundImage = "url('rain.jpg')";
     document.body.style.backgroundColor = "rgb(69, 151, 202, 1)";
     weeklyWeatherWrapper.style.backgroundColor = "rgb(82, 179, 220, 1)";
+    document.documentElement.style.setProperty(
+      "--header-and-footer-color",
+      "#8EE3EF"
+    );
+    document.documentElement.style.setProperty(
+      "--header-and-footer-text-color",
+      "#000"
+    );
   } else if (mainWeather === "Snow") {
     document.body.style.backgroundImage = "url('snow.jpg')";
     document.body.style.backgroundColor = "rgb(67,152,201, 1)";
     weeklyWeatherWrapper.style.backgroundColor = "rgb(101,172,214, 1)";
+    document.documentElement.style.setProperty(
+      "--header-and-footer-color",
+      "#8EE3EF"
+    );
+    document.documentElement.style.setProperty(
+      "--header-and-footer-text-color",
+      "#000"
+    );
   } else if (mainWeather === "Clouds") {
     document.body.style.backgroundImage = "url('cloudy.jpg')";
     document.body.style.backgroundColor = "rgb(68,152,200, 1)";
     weeklyWeatherWrapper.style.backgroundColor = "rgb(103,169,216, 1)";
+    document.documentElement.style.setProperty(
+      "--header-and-footer-color",
+      "#8EE3EF"
+    );
+    document.documentElement.style.setProperty(
+      "--header-and-footer-text-color",
+      "#000"
+    );
   } else {
     document.body.style.backgroundImage = "url('cloudy.jpg')";
     document.body.style.backgroundColor = "rgb(68,152,200, 1)";
     weeklyWeatherWrapper.style.backgroundColor = "rgb(103,169,216, 1)";
+    document.documentElement.style.setProperty(
+      "--header-and-footer-color",
+      "#8EE3EF"
+    );
+    document.documentElement.style.setProperty(
+      "--header-and-footer-text-color",
+      "#000"
+    );
   }
 };
 

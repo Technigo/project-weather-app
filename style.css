@@ -1,3 +1,11 @@
+:root {
+  /* --header-and-footer-color: rgb(227, 209, 153); */
+  /* --header-and-footer-color: #776d5a; maybe? */
+  /* --header-and-footer-color: #c99da3; maybe? */
+  --header-and-footer-color: #b86f52;
+  --header-and-footer-text-color: white;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -14,7 +22,7 @@ body {
 }
 
 header {
-  background-color: rgb(227, 209, 153);
+  background-color: var(--header-and-footer-color);
 }
 
 .icon-nav {
@@ -26,7 +34,8 @@ li {
 }
 
 a {
-  color: rgb(0, 0, 0);
+  color: var(--header-and-footer-text-color);
+
   text-decoration: none;
   padding: 15px;
 }
@@ -92,7 +101,7 @@ a:hover {
   top: 89px;
   gap: 0;
   flex-direction: column;
-  background-color: rgb(227, 209, 153);
+  background-color: var(--header-and-footer-color);
   width: 100%;
   text-align: center;
   transition: 0.3s;
@@ -152,7 +161,6 @@ a:hover {
   align-items: center;
   position: 50%;
   background-color: red;
-  
 }
 
 .weeklyWeather {
@@ -210,7 +218,9 @@ footer {
   padding-bottom: 10px;
   text-align: center;
   font-size: 1rem;
-  background-color: rgb(227, 209, 153);
+  background-color: var(--header-and-footer-color);
+  width: 375px;
+  color: var(--header-and-footer-text-color);
 }
 
 @media (min-width: 668px) and (max-width: 1023px) {
