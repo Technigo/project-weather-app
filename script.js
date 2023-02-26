@@ -22,9 +22,9 @@ fetch(API_today)
 
     console.log(json.weather[0].description);
 
-   // sunrise.innerHTML += `<p>City: ${json.name}</p>`;
+    // sunrise.innerHTML += `<p>City: ${json.name}</p>`;
     sunrise.innerHTML += `<p>Temp: ${round} °C</p>`;
-   // sunrise.innerHTML += `<p>Weather: ${json.weather[0].description}</p>`;
+    // sunrise.innerHTML += `<p>Weather: ${json.weather[0].description}</p>`;
   });
 
 //Variable allowing Stockholm to be the city.
@@ -65,13 +65,13 @@ getSunData();
 
 // Väder i Stockholm kommande fem dagar
 const fiveDayForecast = () => {
-  fetch(API_forecast) //forecast-delen av API
+  fetch(API_forecast) //forecast-part API
     .then((response) => {
       return response.json();
     })
     .then((data) => {
-      const filterForecast = data.list.filter((item) =>
-        item.dt_txt.includes("00:00:00")
+      const filterForecast = data.list.filter(
+        (item) => item.dt_txt.includes("12:00") //only the data from 12:00 each day
       );
 
       filterForecast.forEach((item) => {
@@ -81,7 +81,7 @@ const fiveDayForecast = () => {
         fiveDaysForecast.innerHTML += `
           <div class="week-days"> 
             <p>${new Date(date).toLocaleDateString("en", {
-              weekday: "short", //Short = Skriver bara ut de tre första bokstäverna i dagarna. Tex Fre för Fredag.
+              weekday: "long", //Short = prints only the first three letters of the days. Fri for Friday.
             })}
             </p>
             <p>${weatherTemperature}°</p> 
@@ -90,4 +90,4 @@ const fiveDayForecast = () => {
       });
     });
 };
-fiveDayForecast(); //Kallar på funktionen som heter fiveDayForecast
+fiveDayForecast(); //calling function fiveDayForecast
