@@ -79,16 +79,28 @@ sup {
   height: 5rem;
   border-radius: 50%;
   align-self: flex-end;
-  text-align: center;
-  padding: 0;
   top: 1.5rem;
   right: 3rem;
   position: relative;
   background-color: #5e79fd;
   border: none;
-  color: white;
-  font-size: 3rem;
   box-shadow: 0px 1px 10px 2px rgb(216 216 216);
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem; 
+}
+
+input {
+  display: none;
+  border: none;
+  width: 50%;
+  align-self: center;
+  padding: 1rem;
+  border-radius: 60px;
+  background-color: rgba(255, 255, 255, 0.317);
 }
 
 .forecast-wrapper {
@@ -140,6 +152,31 @@ sup {
   justify-self: end;
   padding-right: 0.6rem;
 }
+
+.footer-container {
+  background-color: whitesmoke;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.footer-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact img {
+height: 1.5rem;  
+}
+
 
 @media (max-width: 500px) {
   .forecast-weekday {

@@ -14,26 +14,43 @@
     <title></title>
   </head>
   <body>
-     <section class="main-container">
-    <section id="topSection" class="top-section">
-      <div class="hamburger">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-      </div>
-      <div id="mainImage" class="main-image"></div>
-      <div id="main" class="main">
-        <h1 id="degrees" class="degrees"></h1>
-        <h2 id="city" class="city"></h2>
-        <h3 id="condition" class="condition"></h3>
-        <div id="sunriseSunset" class="sunrise-sunset"></div>
-      </div>
-      <button id="button" class="button">></button>
+    <section class="main-container">
+      <section id="topSection" class="top-section">
+        <div class="hamburger">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+        <div id="mainImage" class="main-image"></div>
+        <div id="main" class="main">
+          <h1 id="degrees" class="degrees"></h1>
+          <h2 id="city" class="city"></h2>
+          <h3 id="condition" class="condition"></h3>
+          <div id="sunriseSunset" class="sunrise-sunset"></div>
+          <div id="search" class="search"></div>
+          <label for="searchbar"></label>
+          <input
+            type="text"
+            style="font-size: 1.2rem"
+            class="searchbar"
+            id="searchbar"
+            placeholder="Type a city"
+          />
+        </div>
+        <button id="button" class="button"><img src="Designs/Design-1/assets/search-13-24.png" alt="search symbol"></button>
+      </section>
+      <section id="bottomSection" class="bottom-section">
+        <div id="forecastWrapper" class="forecast-wrapper"></div>
+      </section>
+      <footer class="footer-container">
+        <p>Made by Malin Skill & Vio Szabo</p> 
+        <p>Technigo web developer bootcamp 2023</p>
+        <div class="footer-wrapper">
+        <div class="contact"><a href="https://github.com/MalinSkill"><img src="Designs/Design-1/assets/github-mark.svg" alt="github"></a>Malin</div>
+        <div class="contact"><a href="https://github.com/code-and-cats"><img src="Designs/Design-1/assets/github-mark.svg" alt="github"></a>Vio</div>
+        </div>
+      </footer>
     </section>
-    <section id="bottomSection" class="bottom-section">
-      <div id="forecastWrapper" class="forecast-wrapper"></div>
-    </section>
-  </section>
   </body>
   <script src="script.js"></script>
 </html>
