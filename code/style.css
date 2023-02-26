@@ -105,7 +105,7 @@ img {
 
   .forecast-section {
     display: flex;
-    width: 30%;
+    width: 75%;
     justify-content: space-between;
     padding: 20px 50px 20px 0;
   }
