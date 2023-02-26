@@ -110,8 +110,8 @@ const fiveDayForecast = () => {
       return response.json();
     })
     .then((data) => {
-      const filterForecast = data.list.filter((item) =>
-        item.dt_txt.includes("12:00")
+      const filterForecast = data.list.filter(
+        (item) => item.dt_txt.includes("12:00") //only the data from 12:00 each day
       );
 
       filterForecast.forEach((item) => {
@@ -121,7 +121,7 @@ const fiveDayForecast = () => {
         fiveDaysForecast.innerHTML += `
           <div class="week-days"> 
             <p>${new Date(date).toLocaleDateString("en", {
-              weekday: "short", //Short = Only prints the first three letters of the days.
+              weekday: "long", //Short = prints only the first three letters of the days. Fri for Friday.
             })}
             </p>
             <p>${weatherTemperature}°</p> 
