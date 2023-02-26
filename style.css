@@ -1,34 +1,129 @@
 .body {
 
-    background-color: #cae4fd;
+  background-color: #b9d2f4;
 }
 
 h1 {
-    color: #5969e3;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.header {
-    font-family: Arial, Helvetica, sans-serif;
+  color: #4d4c4c;
+  text-align: center;
 }
 
 .forecast {
-
-    font-family: Arial, Helvetica, sans-serif;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 
 }
 
 .weather-box {
-    
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;   
+} 
+
+.main-container{
+  background-color: #b7cbf5;
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding-bottom: 16px;
+  border-radius: 30px;
+  width: 25%;
+  height: 100%;
+  border: 6px solid #6060e8;
+  font-family: "Montserrat";
+  box-shadow: 0px 4px 4px 0px;
+}
+
+.todays-prompt {
+  text-align: center;
+  padding-top: 10%;
+  padding-bottom: 5%;
+  color: #4d4c4c;
+}
+
+/* .imgsunbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #b7cbf5;
+  } */
+  
+  /* .imgsun {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    padding-top: 50px;
+}*/
+
+.main-container {
+background-color: #b7cbf5;
+flex: 1;
+display: flex;
+/* justify-content: flex-start; */
+flex-direction: column;
+padding-bottom: 16px;
+border-radius: 30px;
+width: 25%;
+height: 100%;
+border: 6px solid #6060e8;
+font-family: "Montserrat";
+box-shadow: 0px 4px 4px 0px;
+padding-top: 40px;
 }
-/* need styling for todays-prompt 
-(I dont know if I cant see it bc u didnt merge yet or because u still have to work on that)*/
+
+
+.todays-prompt {
+
+  text-align: center;
+  padding-top: 10%;
+  padding-bottom: 5%;
+  color: #4d4c4c;
+}
+
+.header {
+
+  text-align: center;
+  font-size: 50px;
+  color: #4d4c4c;
+}
+
+  
+
+
+
+.header {
+  text-align: center;
+  font-size: 50px;
+  color: #4d4c4c;
+ 
+}
+.time {
+  text-align: center;
+  color: #4d4c4c;
+}
+
+.report {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  color: #4d4c4c;
+}
+
+@media  (max-width: 768px) {
+  .report {
+  gap: 40px; 
+}
+}
+
+@media (min-width: 1200px){
+  .report {
+  gap: 80px;
+}
+}
