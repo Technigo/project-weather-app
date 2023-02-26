@@ -41,9 +41,7 @@ body {
 }
 
 .feature-image {                /*Uses a background img placed over the gradient*/
-    background: url('') 50% bottom / contain;        /*Set by JS in todaysWeatherFeature*/
-/*     background-size: cover;
-    background-position: 50%; */ 
+    background: url('') 50% bottom / contain;        /*Set by JS in todaysWeatherFeature*/ 
     opacity: var(--top-background-opacity);
     height: 800px;
     width: 800px;
@@ -173,7 +171,6 @@ svg {
     padding: 15px;
 }
 
-
 .switch-section {
     position: relative;
 }
@@ -292,7 +289,6 @@ th, td {
     width: 56px;
 }
 
-
 footer {
     text-align: center;
     color: grey;
@@ -317,7 +313,6 @@ footer a:hover {
 }
 
 
-
 /* For when we look at the app in desktop or tablet: */
 @media (min-width: 500px) {
 
@@ -325,55 +320,54 @@ footer a:hover {
     --top-background-bottom-position: 305px;
     }
         
-.container {
-    box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.3);
-    width: 100%;
-    max-width: 400px;
-    margin: 50px auto;
-}
+    .container {
+        box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.3);
+        width: 100%;
+        max-width: 400px;
+        margin: 50px auto;
+    }
 
-.feature-image {                /*Uses a background img placed over the gradient*/
-    bottom: var(--top-background-bottom-position);
-}
+    .feature-image {                /*Uses a background img placed over the gradient*/
+        bottom: var(--top-background-bottom-position);
+    }
 
-.background-top-gradient {          /*Uses a background gradient behind the transparent image*/
-    bottom: var(--top-background-bottom-position);
-}
+    .background-top-gradient {          /*Uses a background gradient behind the transparent image*/
+        bottom: var(--top-background-bottom-position);
+    }
 
-.search-bar {
-    font-size: 14px;
-}
+    .search-bar {
+        font-size: 14px;
+    }
 
-.search-icon,
-.x-icon {
-    height: 35px;
-    width: 35px;
-    padding: 25px;
-}
+    .search-icon,
+    .x-icon {
+        height: 35px;
+        width: 35px;
+        padding: 25px;
+    }
 
-.nav {
-    margin-bottom: 10px;
-}
+    .nav {
+        margin-bottom: 10px;
+    }
 
-.mainWrapper .tempNumber {
-    font-size: 110px;
-}
+    .mainWrapper .tempNumber {
+        font-size: 110px;
+    }
 
-.tempTextCelsius {
-    font-size: 40px;
-}
+    .tempTextCelsius {
+        font-size: 40px;
+    }
 
-.mainWrapper .cityText {
-    font-size: 36px;
-}
+    .mainWrapper .cityText {
+        font-size: 36px;
+    }
 
-.mainWrapper .describeText {
-    font-size: 18px;
-}
+    .mainWrapper .describeText {
+        font-size: 18px;
+    }
 
-#sunriseText,
-#sunsetText {
-    font-size: 18px;
-}
-
+    #sunriseText,
+    #sunsetText {
+        font-size: 18px;
+    }
 }
