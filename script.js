@@ -81,11 +81,11 @@ const getNextCity = () => {
         weatherForecastData('Cairo');
         city = 'Cairo'
     } else if (city === 'Cairo') {
-        getMainWeather('Dehli')
-        todaysWeatherFeature('Dehli')
-        weatherForecastData('Dehli');
-        city = 'Dehli'
-    } else if (city === 'Dehli') {
+        getMainWeather('Sidney')
+        todaysWeatherFeature('Sidney')
+        weatherForecastData('Sidney');
+        city = 'Sidney'
+    } else if (city === 'Sidney') {
         getMainWeather('Bogota')
         todaysWeatherFeature('Bogota')
         weatherForecastData('Bogota');
