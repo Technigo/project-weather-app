@@ -7,7 +7,7 @@
     --container-color:  #faf9f9;   
 
     /*Dimensions:*/
-    --top-background-bottom-position: 305px;
+    --top-background-bottom-position: 355px;
 
     /*Other:*/
     --top-background-opacity: 0.7;
@@ -22,30 +22,14 @@ body {
 }
 
 .nav {
-    margin-bottom: 10px;
+    margin-bottom: 0;
     display: flex;
     align-items: center;
     position: relative;
 }
 
-.search-bar {
-    margin: auto;
-    border: none;
-    padding: 2px 10px;
-    background-color: rgba(255, 255, 255, 0.3);
-    color: white;
-    width: 100%;
-    max-width: 600px;
-    height: 30px;
-}
-
-.search-bar:focus {
-    outline: none;
-}
-
 .container {
     background-color: var(--container-color);
-    /*box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.3);*/
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
@@ -87,6 +71,22 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.363);
 }
 
+.search-bar {
+    margin: auto;
+    border: none;
+    padding: 2px 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    width: 100%;
+    max-width: 600px;
+    height: 30px;
+    font-size: 17px;
+}
+
+.search-bar:focus {
+    outline: none;
+}
+
 .search-button {
     border: none;
     color: white;
@@ -100,9 +100,9 @@ body {
 
 .search-icon,
 .x-icon {
-    height: 35px;
-    width: 35px;
-    padding: 25px;
+    height: 30px;
+    width: 30px;
+    padding: 20px 10px 20px 20px;
 }
 
 svg {
@@ -122,26 +122,26 @@ svg {
 }
 
 .mainWrapper .tempNumber {
-    font-size: 110px;
+    font-size: 102px;
     margin: 0;
     font-weight: 900; 
 }
 
 .tempTextCelsius {
     display: inline;
-    font-size: 40px;
+    font-size: 36px;
     margin-top: 15px;
     margin-left: 5px;
 }
 
 .mainWrapper .cityText {
-    font-size: 36px;
+    font-size: 32px;
     font-weight: 200;
     margin: 0 0 5px 0;
 }
 
 .mainWrapper .describeText {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 200;
     margin: 0px;
     text-transform: capitalize;
@@ -159,14 +159,13 @@ svg {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    font-size: 18px;
 }
 
 #sunriseText,
 #sunsetText {
     display: flex;
     flex-direction: row;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .sun-position .time-data {
@@ -319,8 +318,12 @@ footer a:hover {
 
 
 
-/* IF WE NEED TO ADJUST FOR DESKTOP & TABLET, otherwise remove: */
+/* For when we look at the app in desktop or tablet: */
 @media (min-width: 500px) {
+
+    :root {
+    --top-background-bottom-position: 305px;
+    }
         
 .container {
     box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.3);
@@ -328,4 +331,49 @@ footer a:hover {
     max-width: 400px;
     margin: 50px auto;
 }
+
+.feature-image {                /*Uses a background img placed over the gradient*/
+    bottom: var(--top-background-bottom-position);
+}
+
+.background-top-gradient {          /*Uses a background gradient behind the transparent image*/
+    bottom: var(--top-background-bottom-position);
+}
+
+.search-bar {
+    font-size: 14px;
+}
+
+.search-icon,
+.x-icon {
+    height: 35px;
+    width: 35px;
+    padding: 25px;
+}
+
+.nav {
+    margin-bottom: 10px;
+}
+
+.mainWrapper .tempNumber {
+    font-size: 110px;
+}
+
+.tempTextCelsius {
+    font-size: 40px;
+}
+
+.mainWrapper .cityText {
+    font-size: 36px;
+}
+
+.mainWrapper .describeText {
+    font-size: 18px;
+}
+
+#sunriseText,
+#sunsetText {
+    font-size: 18px;
+}
+
 }
