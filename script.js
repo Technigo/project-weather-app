@@ -21,6 +21,11 @@ const mainIcon = document.getElementById('mainIcon')
 const weatherFeature = document.getElementById('weatherFeature')
 const featureImage = document.querySelector('.feature-image');
 
+const cityText = document.querySelector('.cityText');
+const tempText = document.querySelector('.tempText');
+const describeText = document.querySelector('.describeText');
+
+
 //Variables we can use later to automate API-fethcing:
 const apiKey = 'c480de5f69ca98d1993a4dae3213642e';
 let city = 'Stockholm';
@@ -36,7 +41,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
         console.log(`json:`, json)
         let { icon } = json.weather[0];
     
-        console.log(json.main.temp.toFixed(0))
+        console.log(`json main temp fixed:`, json.main.temp.toFixed(0))
         cityName.innerText = `${json.name}`;
         tempToday.innerText = `${json.main.temp.toFixed(0)}`;
         weatherDescription.innerText = `${json.weather[0].description}`;
@@ -51,25 +56,33 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
 
 //Change default city
 const getNextCity = () => {
+    //Reset the weather forecast:
+    forecastWeekdays.innerHTML = "";
+    forecastIcon.innerHTML = "";
+    forecastWind.innerHTML = "";
+    forecastTemp.innerHTML = "";
     if (city === 'Stockholm') {
         getMainWeather('Madrid')
         todaysWeatherFeature('Madrid')
+        weatherForecastData('Madrid'); 
         city = 'Madrid'
     } else if (city === 'Madrid') {
         getMainWeather('Singapore')
         todaysWeatherFeature('Singapore')
+        weatherForecastData('Singapore'); 
         city = 'Singapore'
     } else if (city === 'Singapore') {
         getMainWeather('San Francisco')
         todaysWeatherFeature('San Francisco')
+        weatherForecastData('San Francisco'); 
         city = 'San Francisco'
     } else {
         getMainWeather('Stockholm')
         todaysWeatherFeature('Stockholm')
+        weatherForecastData('Stockholm'); 
         city = 'Stockholm'
     }
 }
-
         
 const weatherForecastData = (city) => {
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=${apiKey}`)
@@ -77,11 +90,15 @@ const weatherForecastData = (city) => {
             return forecastResponse.json();
         })
         .then((result) => {
+            if (result.cod !== '404') {     //If the user searched for a city that does not exist
+
+            console.log(`weatherForecastData result:`, result);         //For checking that the search has been injected
+
             const todaysDate = new Date().toString().split(' ')[0]; //Today's date in text form
-            console.log(todaysDate)
+            console.log(`todaysDate:`, todaysDate);
             
             const filterData = result.list.filter(weatherDay => weatherDay.dt_txt.includes('12:00')); //Filters out the data at 12:00 every day
-            console.log(filterData)
+            console.log(`filterData:`, filterData);
             
             filterData.forEach(date => { 
             const weekDay = new Date(date.dt * 1000).toString().split(' ')[0]; //All the five days dates' convertet from numbers to text
@@ -89,14 +106,26 @@ const weatherForecastData = (city) => {
                     let {icon} = date.weather[0];
                     forecastWeekdays.innerHTML += `<p>${weekDay}</p>`
                     forecastIcon.innerHTML += `<img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="weather icon" class="weather-icons">`
-                    forecastWind.innerHTML += `<p>${date.wind.speed}m/s</p>`
                     forecastTemp.innerHTML += `<p>${date.main.temp.toFixed(0)}°C</p>`
+                    forecastWind.innerHTML += `<p>${date.wind.speed}m/s</p>`
                 }
             }); 
-        })
+
+
+        } else {        //Alerts user that the city cant be found. Then runs Stockholm again (we can change this).
+            alert('Oops, city not found! Check your spelling please.');
+            todaysWeatherFeature('Stockholm');
+            getMainWeather('Stockholm');
+            getSunriseSunsetData('Stockholm');
+            weatherForecastData('Stockholm');
+        }
+
+    
+    })
+
+
 }
 
-   
 const toggleSearchField = () => {
     //This just controls the toggling between opening and closing the search field
     const searchToggler = document.getElementById('search-toggler');
@@ -115,11 +144,17 @@ const searchFunction = () => {
         //weather.fetchWeather(searchedCity); //Skriv om till den vi använder
         todaysWeatherFeature(searchedCity);
         getMainWeather(searchedCity);
-        //weatherForecastData(searchedCity);      //Uncomment när allt är fixat
+        weatherForecastData(searchedCity);      //Uncomment när allt är fixat
         todaysWeatherFeature(searchedCity);
 
         //Clears field & hides the input field:
         inputField.value = "";
+
+        //Reset the weather forecast:
+        forecastWeekdays.innerHTML = "";
+        forecastIcon.innerHTML = "";
+        forecastWind.innerHTML = "";
+        forecastTemp.innerHTML = "";
 }
 
 /* const getSunriseSunsetData = (city) => {
@@ -197,6 +232,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
             } else {
                 featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1424111113808-b7be56a9f3d6?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNTczNTA&ixlib=rb-4.0.3&q=80')"
             }
+
         } else {
             //During nighttime
             if (todaysWeather === 'Clear') {
@@ -205,8 +241,10 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
                 featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1602857731804-80e82120ff27?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Nzc0MDkzNzQ&ixlib=rb-4.0.3&q=80')"
             } else if (todaysWeather === 'Rain') {
                 featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1505144992585-d281c0e2cff8?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Nzc0MDk1OTA&ixlib=rb-4.0.3&q=80')"
+            } else if (todaysWeather === 'Clouds') {
+               featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1518352724948-729151797553?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Nzc0MDk1OTA&ixlib=rb-4.0.3&q=80')"
             } else {
-                featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1518352724948-729151797553?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Nzc0MDk1OTA&ixlib=rb-4.0.3&q=80')"
+                featureImage.style.backgroundImage = "url(' https://images.unsplash.com/photo-1604083142449-79b1babd12d4?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2Nzc0MTIwOTM&ixlib=rb-4.0.3&q=80')"
             };
         }
         

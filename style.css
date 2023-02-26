@@ -3,15 +3,14 @@
 /*Variables*/
 :root {
     /*Colors:*/
-    --switch-button-color:  #757AFF;
-    --container-color:  #ffffff;   
-    --top-color:  #282c91;         /*just to see, remove later, it should be dependent on weather etc*/
+    --switch-button-color:  #757AFF;        /*Remove later, should be set by the gradient*/
+    --container-color:  #faf9f9;   
 
     /*Dimensions:*/
-    --top-background-bottom-position: 335px;
+    --top-background-bottom-position: 305px;
 
     /*Other:*/
-    --top-background-opacity: 0.7;
+    --top-background-opacity: 0.6;
 }
 
 body {
@@ -19,6 +18,7 @@ body {
     margin: 0;
     padding:0;
     height: 100%;
+    background-color: var(--container-color);
 }
 
 .nav {
@@ -39,53 +39,22 @@ body {
     height: 30px;
 }
 
+.search-bar:focus {
+    outline: none;
+}
+
 .container {
     background-color: var(--container-color);
-    box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.3);
+    /*box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.3);*/
     width: 100%;
-    max-width: 400px;
-    margin: 50px auto;
+    max-width: 500px;
+    margin: 0 auto;
     overflow: hidden;
     position: relative;
     display: flex;
     flex-direction: column;
-    height: 830px;
+    height: 800px;
 }
-
-
-/* Sparade min gamla styling ifall jag har tänkt fel.   TA BORT SEN
-.background-top {
-   background: url(https://images.unsplash.com/photo-1516571748831-5d81767b788d?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcxNjg0NTk&ixlib=rb-4.0.3&q=80);
-   background-size: cover;
-   height: 800px;
-   width: 800px;
-   border-radius:50%;
-   position: absolute;
-   bottom: 425px;
-   right: 50%;
-   transform: translate(50%);
-   
-   background: url(https://images.unsplash.com/photo-1516571748831-5d81767b788d?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcxNjg0NTk&ixlib=rb-4.0.3&q=80);
-   border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    background-size: cover;
-    background-position: bottom;
-    border-bottom-left-radius: 100% 170px;
-    border-bottom-right-radius: 100% 170px;
-    height: 541px;  
-    */
-
-
-/* Sparade din gamla styling ifall jag har tänkt fel:       TA BORT SEN.
-.feature-image {
-    height: 541px;
-    width: 400px;
-    object-fit: cover;
-    border-bottom-left-radius: 100% 170px;
-    border-bottom-right-radius: 100% 170px;
-    opacity: 0.5;
-    position: relative;
-}*/
 
 .feature-image {                /*Uses a background img placed over the gradient*/
     background: url('') 50% bottom / contain;        /*Set by JS in todaysWeatherFeature*/
@@ -143,7 +112,7 @@ svg {
 .mainWrapper {
     color: white;
     margin: 0px 20px;
-    padding: 15px;
+    padding: 0 15px 0 15px;
     position: relative;
 }
 
@@ -340,6 +309,7 @@ footer a:visited {
 
 footer a:hover {
     opacity: 0.5;
+    transition: 0.2s ease-in-out;
 }
 
 /* To use when hiding something*/
@@ -351,7 +321,12 @@ footer a:hover {
 
 
 /* IF WE NEED TO ADJUST FOR DESKTOP & TABLET, otherwise remove: */
-@media (min-width: 6675px) {
-
-    
+@media (min-width: 500px) {
+        
+.container {
+    box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 400px;
+    margin: 50px auto;
+}
 }
