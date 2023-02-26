@@ -150,6 +150,9 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: 50%;
+  background-color: red;
+  
 }
 
 .weeklyWeather {
