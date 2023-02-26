@@ -79,6 +79,7 @@ sup {
   height: 5rem;
   border-radius: 50%;
   align-self: flex-end;
+  text-align: center;
   top: 1.5rem;
   right: 3rem;
   position: relative;
