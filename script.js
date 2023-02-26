@@ -29,7 +29,6 @@ const describeText = document.querySelector('.describeText');
 //Variables we can use later to automate API-fethcing:
 const apiKey = 'c480de5f69ca98d1993a4dae3213642e';
 let city = 'Stockholm';
-// Use: `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`
 
 
 const getMainWeather = (city) => {
@@ -105,7 +104,7 @@ const weatherForecastData = (city) => {
             return forecastResponse.json();
         })
         .then((result) => {
-            if (result.cod !== '404') {     //If the user did not search for a city that does not exist
+            if (result.cod !== '404') {     //If the user did NOT search for a city that does not exist
 
             console.log(`weatherForecastData result:`, result);         //For checking that the search has been injected
 
@@ -127,7 +126,7 @@ const weatherForecastData = (city) => {
             }); 
 
 
-        } else {        ////If the user did not search for a city that does not exist. Alerts user that the city cant be found. Then runs Stockholm again.
+        } else {        //If the user DID search for a city that does not exist. Alerts user that the city cant be found. Then runs Stockholm again.
             alert('Oops, city not found! Check your spelling please.');
             todaysWeatherFeature('Stockholm');
             getMainWeather('Stockholm');
@@ -159,7 +158,6 @@ const searchFunction = () => {
         todaysWeatherFeature(searchedCity);
         getMainWeather(searchedCity);
         weatherForecastData(searchedCity);      //Uncomment när allt är fixat
-        todaysWeatherFeature(searchedCity);
 
         //Clears field & hides the input field:
         inputField.value = "";
@@ -171,7 +169,10 @@ const searchFunction = () => {
         forecastTemp.innerHTML = "";
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1929a58eb9cf3d9e20dd1ae8646bb1df787d0054
 
 const todaysWeatherFeature = (city) => {
 fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`)
@@ -179,6 +180,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
         return response.json();
     })
     .then((json) => {
+        console.log(new Date() * 1000)
 
         // Get sunrise and sunset time
         const sunriseTime = new Date((json.sys.sunrise+json.timezone) * 1000);       //Gives us the time in "human" form (as a date), mult. by 1000 to get it in ms.
@@ -267,6 +269,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
     })
 }
 
+// Start:
 todaysWeatherFeature('Stockholm');
 getMainWeather('Stockholm');
 weatherForecastData('Stockholm');
