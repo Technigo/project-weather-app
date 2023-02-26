@@ -85,11 +85,11 @@ h1 {
   }
 
 .forecast-section {
-  padding: 30px 20px;
+  padding: 20px 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
 }
 
 .forecast-row {
@@ -145,4 +145,5 @@ form {
   font-size: 16px;
   padding: 3px;
   width:fit-content;
+  margin-bottom: 20px;
 }
