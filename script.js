@@ -3,7 +3,7 @@ let cityName = document.getElementById("cityName");
 let currentTemperature = document.getElementById("currentTemperature");
 let sunrise = document.getElementById("sunrise");
 let sunset = document.getElementById("sunset");
-let weeklyWeather = document.getElementById("weeklyWeatherContent");
+let weeklyWeatherRows = document.getElementById("weeklyWeatherRows");
 let changeCityMalmo = document.getElementById("cityMalmo");
 let changeCityStockholm = document.getElementById("cityStockholm");
 let mainWeather = document.getElementById("mainWeather");
@@ -101,7 +101,7 @@ const renderCurrentWeather = (data) => {
 
 const renderWeeklyWeather = (data) => {
   //code from https://stackoverflowteams.com/c/technigo/questions/786
-  weeklyWeather.innerHTML = "";
+  weeklyWeatherRows.innerHTML = "";
   const filteredForecast = data.list.filter((item) =>
     item.dt_txt.includes("12:00")
   );
@@ -119,11 +119,14 @@ const renderWeeklyWeather = (data) => {
 
     // We don't want to include this forecast if it is for today
     if (!isTodaysForecast) {
-      weeklyWeather.innerHTML += `<p class="weeklyWeatherRow">${dayName} <img src="http://openweathermap.org/img/wn/${
+      weeklyWeatherRows.innerHTML += `<div class="weeklyWeatherRow">
+      <div class="weeklyWeatherRowItem">${dayName}</div> <div class="weeklyWeatherRowItem">
+      <img src="http://openweathermap.org/img/wn/${
         day.weather[0].icon
       }.png" alt="${
         day.weather[0].description
-      }">  ${day.main.temp.toFixed()}°C</p>`;
+      }"></div> <div class="weeklyWeatherRowItem">${day.main.temp.toFixed()}°C</div>
+      </div><hr>`;
     }
   });
 };
@@ -134,16 +137,32 @@ const updateWeatherPicture = (data) => {
 
   if (mainWeather === "Clear") {
     document.body.style.backgroundImage = "url('sun.jpg')";
+    document.body.style.backgroundColor = "rgb(255, 232, 211, 1)";
+    weeklyWeatherWrapper.style.backgroundColor = "rgb(251, 203, 164, 1)";
   } else if (mainWeather === "Thunderstorm") {
     document.body.style.backgroundImage = "url('storm.jpg')";
-  } else if ((mainWeather === "Drizzle") | "Rain") {
+    document.body.style.backgroundColor = "rgb(254,247,182, 1)";
+    weeklyWeatherWrapper.style.backgroundColor = "rgb(173,163,188, 1)";
+  } else if (mainWeather === "Drizzle") {
     document.body.style.backgroundImage = "url('rain.jpg')";
+    document.body.style.backgroundColor = "rgb(69, 151, 202, 1)";
+    weeklyWeatherWrapper.style.backgroundColor = "rgb(82, 179, 220, 1)";
+  } else if (mainWeather === "Rain") {
+    document.body.style.backgroundImage = "url('rain.jpg')";
+    document.body.style.backgroundColor = "rgb(69, 151, 202, 1)";
+    weeklyWeatherWrapper.style.backgroundColor = "rgb(82, 179, 220, 1)";
   } else if (mainWeather === "Snow") {
     document.body.style.backgroundImage = "url('snow.jpg')";
+    document.body.style.backgroundColor = "rgb(67,152,201, 1)";
+    weeklyWeatherWrapper.style.backgroundColor = "rgb(101,172,214, 1)";
   } else if (mainWeather === "Clouds") {
     document.body.style.backgroundImage = "url('cloudy.jpg')";
+    document.body.style.backgroundColor = "rgb(68,152,200, 1)";
+    weeklyWeatherWrapper.style.backgroundColor = "rgb(103,169,216, 1)";
   } else {
     document.body.style.backgroundImage = "url('cloudy.jpg')";
+    document.body.style.backgroundColor = "rgb(68,152,200, 1)";
+    weeklyWeatherWrapper.style.backgroundColor = "rgb(103,169,216, 1)";
   }
 };
 
