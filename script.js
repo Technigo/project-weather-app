@@ -1,8 +1,9 @@
-const testy = document.getElementById('testy');
+
 const searchMenuBtn = document.getElementById('searchMenuBtn');
 const closeSearchMenu = document.getElementById('closeSearchMenu');
 const searchBtn = document.getElementById('searchBtn');
 const inputField = document.getElementById('inputField');
+const switchFavoriteCity = document.getElementById('switchBtn')
 
 const weatherForecast = document.getElementById('weatherForecast')
 const forecastWeekdays = document.getElementById('forecastWeekdays')
@@ -12,11 +13,7 @@ const forecastTemp = document.getElementById('forecastTemp')
 const forecastWind = document.getElementById('forecastWind')
 const sunriseText = document.getElementById('sunriseText');
 const sunsetText = document.getElementById('sunsetText');
-const night = document.getElementById('night') 
-const dusk = document.getElementById('dusk')
-const dawn = document.getElementById('dawn')
-const morning = document.getElementById('morning')
-const day = document.getElementById('day')
+
 const tempToday = document.getElementById('tempToday')
 const cityName = document.getElementById('cityName')
 const weatherDescription = document.getElementById('weatherDescription')
@@ -28,6 +25,7 @@ const weatherFeature = document.getElementById('weatherFeature')
 const apiKey = 'c480de5f69ca98d1993a4dae3213642e';
 let city = 'Stockholm';
 // Use: `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`
+
 
 const getMainWeather = (city) => {
 fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`)
@@ -51,31 +49,28 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
     })
 }
 
-
-const getSunriseSunsetData = (city) => {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`)
-        .then((response) => {
-            return response.json()
-        })
-        .then((json) => {
-            const sunriseTime = new Date(json.sys.sunrise * 1000);       //Gives us the time in "human" form (as a date), mult. by 1000 to get it in ms.
-            const sunriseShort = sunriseTime.toLocaleTimeString(['en-GB'], { timeStyle: 'short' });        //Transforms it into just the Hour/minutes. Select the short variant to get the time with minutes and not seconds.
-            const sunsetTime = new Date(json.sys.sunset * 1000);
-            const sunsetShort = sunsetTime.toLocaleTimeString(['en-GB'], { timeStyle: 'short' }); 
-
-            //Modifying the HTML based on our input:
-            sunriseText.innerHTML = `<p>sunrise</p>
-                                        <p class="time-data">${sunriseShort}</p>`;
-            sunsetText.innerHTML = `<p>sunset</p>
-                                    <p class="time-data">${sunsetShort}</p>`;
-        })
-        .catch((err) => {
-            console.log(`error caught:`, err)
-        })
+const getNextCity = () => {
+    if (city === 'Stockholm') {
+        getMainWeather('Madrid')
+        todaysWeatherFeature('Madrid')
+        city = 'Madrid'
+    } else if (city === 'Madrid') {
+        getMainWeather('Singapore')
+        todaysWeatherFeature('Singapore')
+        city = 'Singapore'
+    } else if (city === 'Singapore') {
+        getMainWeather('San Francisco')
+        todaysWeatherFeature('San Francisco')
+        city = 'San Francisco'
+    } else {
+        getMainWeather('Stockholm')
+        todaysWeatherFeature('Stockholm')
+        city = 'Stockholm'
+    }
 }
 
 
-
+        
 const weatherForecastData = (city) => {
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=c480de5f69ca98d1993a4dae3213642e`)
         .then((forecastResponse) => {
@@ -95,7 +90,7 @@ const weatherForecastData = (city) => {
                     forecastWeekdays.innerHTML += `<p>${weekDay}</p>`
                     forecastIcon.innerHTML += `<img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="weather icon" class="weather-icons">`
                     forecastWind.innerHTML += `<p>${date.wind.speed}m/s</p>`
-                    forecastTemp.innerHTML += `<p>${date.main.temp.toFixed(0)}°</p>`
+                    forecastTemp.innerHTML += `<p>${date.main.temp.toFixed(0)}°C</p>`
                 }
             }); 
         })
@@ -120,7 +115,7 @@ const searchFunction = () => {
 
         //Use the city searched and inject into ""fetchWeather""" function:
         //weather.fetchWeather(searchedCity); //Skriv om till den vi använder
-        getSunriseSunsetData(searchedCity);
+        todaysWeatherFeature(searchedCity);
         getMainWeather(searchedCity);
         //weatherForecastData(searchedCity);      //Uncomment när allt är fixat
         todaysWeatherFeature(searchedCity);
@@ -129,28 +124,77 @@ const searchFunction = () => {
         inputField.value = "";
 }
 
+/* const getSunriseSunsetData = (city) => {
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`)
+        .then((response) => {
+            return response.json()
+        })
+        .then((json) => {
+            const sunriseTime = new Date(json.sys.sunrise * 1000);       //Gives us the time in "human" form (as a date), mult. by 1000 to get it in ms.
+            const sunriseShort = sunriseTime.toLocaleTimeString(['en-GB'], { timeStyle: 'short' });        //Transforms it into just the Hour/minutes. Select the short variant to get the time with minutes and not seconds.
+            const sunsetTime = new Date(json.sys.sunset * 1000);
+            const sunsetShort = sunsetTime.toLocaleTimeString(['en-GB'], { timeStyle: 'short' });
+            console.log(sunriseTime)
+            console.log(sunsetTime)
+            //Modifying the HTML based on our input:
+            sunriseText.innerHTML = `<p>sunrise</p>
+                                        <p class="time-data">${sunriseShort}</p>`;
+            sunsetText.innerHTML = `<p>sunset</p>
+                                    <p class="time-data">${sunsetShort}</p>`;
+        })
+        .catch((err) => {
+            console.log(`error caught:`, err)
+        })
+} */
 
 const todaysWeatherFeature = (city) => {
 fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`)
     .then((response) => {
         return response.json();
     })
-    .then((data) => {
+    .then((json) => {
+
+        // Get sunrise and sunset time
+        console.log(`sunrise:`, json.sys.sunrise)
+        console.log(`timezone:`, json.timezone)
+
+      /*   const getTimeZone = (json.timezone).toLocaleTimeString(['en-GB'], { timeStyle: 'short' });
+        console.log(getTimeZone) */
+        const sunriseTime = new Date((json.sys.sunrise+json.timezone) * 1000);       //Gives us the time in "human" form (as a date), mult. by 1000 to get it in ms.
+        sunriseTime.setMinutes(sunriseTime.getMinutes() + sunriseTime.getTimezoneOffset())
+        const sunriseShort = sunriseTime.toLocaleTimeString(['en-GB'], { timeStyle: 'short' });        //Transforms it into just the Hour/minutes. Select the short variant to get the time with minutes and not seconds.
+        const sunsetTime = new Date ((json.sys.sunset+json.timezone) * 1000);
+        sunsetTime.setMinutes(sunsetTime.getMinutes() + sunsetTime.getTimezoneOffset())
+        const sunsetShort = sunsetTime.toLocaleTimeString(['en-GB'], { timeStyle: 'short' }); 
+        console.log(sunriseTime)
+        console.log(sunsetTime)
+        //Modifying the HTML based on our input:
+        sunriseText.innerHTML = `<p>sunrise</p>
+                                        <p class="time-data">${sunriseShort}</p>`;
+        sunsetText.innerHTML = `<p>sunset</p>
+                                    <p class="time-data">${sunsetShort}</p>`;
 
         const featureImage = document.querySelector('.feature-image');
-        const backgroundTopGradient = document.getElementById('backgroundTopGradient');
+       
 
+        const todaysWeather = json.weather[0].main
+        
+        const getTime = new Date()
+        getTime.setMinutes(getTime.getMinutes() + getTime.getTimezoneOffset())
+        getTime.setSeconds(getTime.getSeconds() + json.timezone)
+        
+        const currentTime = getTime.getHours();
+        
+        const sunriseTimeHour = sunriseTime.getHours();       
+        const sunsetTimeHour = sunsetTime.getHours();
+        console.log(`currentTime:`, currentTime)
+     
 
-        const todaysWeather = data.weather[0].main
-        const getTime = new Date().getHours();
-        let sunriseTime = new Date(data.sys.sunrise).getHours();       
-        let sunsetTime = new Date(data.sys.sunset).getHours();
-        console.log(`getTime:`, getTime)
-        console.log(`sunriseTime:`, sunriseTime)
-        console.log(`sunsetTime:`, sunsetTime)
-        console.log(`todaysWeather:`, todaysWeather)
-        if (getTime >= sunriseTime && getTime <= sunsetTime) {
+        console.log(sunriseTimeHour)
+        console.log(sunsetTimeHour)
+        if (currentTime >= sunriseTimeHour && currentTime <= sunsetTimeHour) {
             //During daytime
+            // OBS! Lägg eventuellt in fler olika typer av väder
             if (todaysWeather === 'Clear') {
                 featureImage.style.backgroundImage = "url('https://images.unsplash.com/photo-1617800809985-a4f937ede1b1?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzcyNjMzNTI&ixlib=rb-4.0.3&q=80')"
             } else if (todaysWeather === 'Snow') {
@@ -174,17 +218,27 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
         }
         // ALLA OLIKA GRADIENTS ÄR INTE KLARA ÄN MEN SKA JOBBA PÅ DET IMORGON. FUNKTIONEN FUNKAR DOCK (TROR JAG)
         const gradientDayNight = () => {
-            if (getTime >= 23 && getTime <= 5) {
-                night.media = '';
-            } else if (getTime > 5 && getTime <= 7) {
-                dawn.media = '';
-            } else if (getTime > 7 && getTime <= 10) {
-                morning.media = '';
-            } else if (getTime > 10 && getTime <= 18) {
-                day.media = '';
-            } else {
-                dusk.media = '';
-            }
+            console.log(`banan:`, currentTime)
+                const backgroundTopGradient = document.getElementById('backgroundTopGradient');
+
+                const gradientStyle = ['morning','midday','afternoon','duskSunset','evening','midnight','dawnSunrise']
+                backgroundTopGradient.classList.remove(...gradientStyle)
+
+                if (currentTime > 7 && currentTime <= 11) {
+                    backgroundTopGradient.classList.add('morning');
+                } else if (currentTime > 11 && currentTime <= 14) {
+                    backgroundTopGradient.classList.add('midday');
+                } else if (currentTime > 14 && currentTime < 17) {
+                    backgroundTopGradient.classList.add('afternoon');
+                } else if (currentTime >= 17 && currentTime <= 19) {
+                    backgroundTopGradient.classList.add('duskSunset');
+                } else if (currentTime > 19 && currentTime <= 23) {
+                    backgroundTopGradient.classList.add('evening');
+                } else if (currentTime > 23 || currentTime < 5) {
+                    backgroundTopGradient.classList.add('midnight');
+                } else {
+                    backgroundTopGradient.classList.add('dawnSunrise');
+                }
         }
         gradientDayNight()
     })
@@ -192,11 +246,11 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&AP
 
 todaysWeatherFeature('Stockholm');
 getMainWeather('Stockholm');
-getSunriseSunsetData('Stockholm');
+/* getSunriseSunsetData('Stockholm'); */
 weatherForecastData('Stockholm');
 
 
-
+switchBtn.addEventListener('click', getNextCity) 
 //Eventlistener to toggle search field:
 searchMenuBtn.addEventListener('click', toggleSearchField)
 closeSearchMenu.addEventListener('click', toggleSearchField)
