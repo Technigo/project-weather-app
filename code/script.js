@@ -62,7 +62,6 @@ const weatherTypes = [
 const changeBackgroundPicture = (weatherTypeJson) => {
   weatherTypes.forEach((weatherType) => {
     if (weatherType === weatherTypeJson) {
-
       document.querySelector(
         "body"
       ).style.backgroundImage = `url('images/${weatherType}.jpg')`;
@@ -80,13 +79,13 @@ const changeBackgroundPicture = (weatherTypeJson) => {
         weatherType,
         forecast
       );
-
     }
   });
 };
 
 // current weather details
 const getCurrentWeatherData = (latitude, longitude) => {
+  currentWeather.textContent = "";
   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=f60c361b4571fb70c85f29bbd856c13f`;
   fetch(url)
     .then((response) => {
@@ -95,7 +94,7 @@ const getCurrentWeatherData = (latitude, longitude) => {
     .then((data) => {
       createImage(
         "big-icon",
-        `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
+        `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
         data.weather[0].description,
         currentWeather
       );
@@ -156,6 +155,7 @@ getCurrentWeatherData();
 
 // forecast
 const getForecastWeatherData = (latitude, longitude) => {
+  forecast.textContent = "";
   const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=f60c361b4571fb70c85f29bbd856c13f`;
   fetch(url)
     .then((response) => {
@@ -191,7 +191,7 @@ const getForecastWeatherData = (latitude, longitude) => {
           // img
           createImage(
             "forecast-img",
-            `http://openweathermap.org/img/wn/${element.weather[0].icon}@2x.png`,
+            `https://openweathermap.org/img/wn/${element.weather[0].icon}@2x.png`,
             element.weather[0].main,
             dayRow
           );
