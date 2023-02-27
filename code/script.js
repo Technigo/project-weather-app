@@ -48,12 +48,14 @@ const weatherFetch = (lat, lon) => {
       const sunSetTime = new Date(apiResponse.sys.sunset * 1000);
       sunGoesDown = sunSetTime.toLocaleTimeString("en-GB", {timeStyle: "short"});
       getForecastData(lat, lon);
+    })
+    .then(() => {
+      loadHtml();
     });
 };
 
 //Updates the html after 1000ms
 const loadHtml = () => {
-  setTimeout(() => {
     currentCity.innerHTML = `${apiResponse.name}`;
     currentTemp.innerHTML = `${Math.round(apiResponse.main.temp * 10) / 10} °C`;
     feelsLikeTemp.innerHTML += `feels like ${Math.round(apiResponse.main.feels_like * 10) / 10} °C`;
@@ -63,8 +65,7 @@ const loadHtml = () => {
     sunUpTime.innerHTML = `${sunGoesUp}`;
     sunDownTime.innerHTML = `${sunGoesDown}`;
     topRightIcon.innerHTML = `<img id="top-right-icon" src="http://openweathermap.org/img/wn/${apiResponse.weather[0].icon}@4x.png">`;
-  }, 1000);
-};
+  }
 
 let clearWeekList = () => {
   weekList.innerHTML = ``;
