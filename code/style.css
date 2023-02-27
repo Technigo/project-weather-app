@@ -141,7 +141,7 @@ li:focus {
 }
 
 #current-temp {
-  font-size: 3.6rem;
+  font-size: 3.5rem;
   width: 13rem;
 }
 
@@ -149,6 +149,7 @@ li:focus {
   font-size: 1.1em;
   margin-top: 1em;
   margin-bottom: 1em;
+  width: 150px;
 }
 
 #current-city {
@@ -237,7 +238,7 @@ li:focus {
 
 .weekDayRow p:last-child {
   padding-right: 1rem;
-  width: 120px;
+  width: 140px;
   text-align: end;
 }
 
@@ -273,17 +274,18 @@ footer {
   background-color: #f7f6f6;
 }
 */
-@media screen and (min-width: 330px) {
-
-  #current-temp {
-    font-size: 4rem;
-  }
+@media screen and (min-width: 355px) {
 
   .sun-times {
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    font-size: 1.2em;
+  }
+
+  #feels-like-temp {
+    font-size: 1.2em;
   }
 
   #week-list-icon {
@@ -292,7 +294,11 @@ footer {
   }
 }
 
-@media screen and (min-width: 450px) {
+@media screen and (min-width: 460px) {
+  #current-temp {
+    font-size: 4rem;
+  }
+
   #week-list-icon {
     max-height: 50px;
     margin-left: 10rem;
@@ -300,19 +306,19 @@ footer {
 }
 
 
-@media screen and (min-width: 640px) {
+@media screen and (min-width: 660px) {
   #week-list {
     max-width: 75%;
-    font-size: 1.5em;
+    font-size: 1.4em;
   }
 
   #week-list-icon {
-    margin-left: 11.5rem;
+    margin-left: 11rem;
   }
 
 
   .weekDayRow p:last-child {
-    width: 160px;
+    width: 180px;
   }
 
 #city-list {
