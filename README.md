@@ -14,8 +14,8 @@ https://ajmalandantoniasweatherapp.netlify.app
 
 
 ## The weather-based designs
-<img width="290" alt="Skärmavbild 2023-02-27 kl  12 42 05" src="https://user-images.githubusercontent.com/95037306/221835405-43fcf554-24a5-4f75-8b31-2acffff82d4c.png">
-<img width="287" alt="Skärmavbild 2023-02-27 kl  12 42 28" src="https://user-images.githubusercontent.com/95037306/221835434-bc94e9e3-46b7-4dc7-8cef-19c9012bbc36.png">
-<img width="277" alt="Skärmavbild 2023-02-27 kl  12 43 36" src="https://user-images.githubusercontent.com/95037306/221835505-bdfed0e6-4202-4217-b801-48f3fbca5a35.png">
-<img width="287" alt="Skärmavbild 2023-02-27 kl  12 45 23" src="https://user-images.githubusercontent.com/95037306/221835524-d341e0c2-6c40-4767-b46a-01733a8192ae.png">
-<img width="293" alt="Skärmavbild 2023-02-27 kl  12 46 22" src="https://user-images.githubusercontent.com/95037306/221835530-4bc4d13f-48d6-4c0e-b3fc-31bdeacec07b.png">
+<img width="190" alt="Skärmavbild 2023-02-27 kl  12 42 05" src="https://user-images.githubusercontent.com/95037306/221835405-43fcf554-24a5-4f75-8b31-2acffff82d4c.png">
+<img width="187" alt="Skärmavbild 2023-02-27 kl  12 42 28" src="https://user-images.githubusercontent.com/95037306/221835434-bc94e9e3-46b7-4dc7-8cef-19c9012bbc36.png">
+<img width="177" alt="Skärmavbild 2023-02-27 kl  12 43 36" src="https://user-images.githubusercontent.com/95037306/221835505-bdfed0e6-4202-4217-b801-48f3fbca5a35.png">
+<img width="187" alt="Skärmavbild 2023-02-27 kl  12 45 23" src="https://user-images.githubusercontent.com/95037306/221835524-d341e0c2-6c40-4767-b46a-01733a8192ae.png">
+<img width="193" alt="Skärmavbild 2023-02-27 kl  12 46 22" src="https://user-images.githubusercontent.com/95037306/221835530-4bc4d13f-48d6-4c0e-b3fc-31bdeacec07b.png">
