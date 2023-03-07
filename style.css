@@ -38,6 +38,7 @@ p {
     margin: auto 0;
     font-family: 'Montserrat', sans-serif;
     border: 1px solid;
+
 }
 
 .weather-description, .main-temp, .feels-like, .sunrise, .sunset {
@@ -65,8 +66,6 @@ img {
     display: grid;
     grid-template-columns: repeat(2, minmax(100px, 1fr));
     font-family: 'Montserrat';
-
-
 }
 
 .temp-of-day{
@@ -131,4 +130,37 @@ footer {
   .contactE{
     border: 1px solid;
     border-radius: 15px;
+  }
+
+  @media only screen and (min-width: 768px){
+ 
+.weather-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding-top: 2%;
+}
+
+.weather-wrapper img {
+    margin-left: 25%;
+}
+
+.weather-wrapper p {
+    justify-items: flex-start;
+    width: 50%;
+    margin: 0 auto;
+    padding-bottom: 2%;
+}
+
+.search {
+    margin: 0 auto;
+    width: 40%;
+    padding-top: 5%;
+}
+
+.forecast-wrapper {
+    width: 40%;
+    margin: 0 auto;
+}
+
   }
