@@ -13,23 +13,29 @@
 <body>
 
     <div id="weatherWindow" class="weatherWindow">
-        <div id="city" class="city"></div>
-        <div id="cloudReport" class="cloudReport"></div>
-        <div id="sunrise" class="sunrise">sunrise</div>
-        <div id="sunset" class="sunset">sunset</div>
+        <div class="topdisplayAPI">
+            <div id="city" class="city"></div>
+            <div id="cloudReport" class="cloudReport"></div>
+            <div id="sunrise" class="sunrise">sunrise</div>
+            <div id="sunset" class="sunset">sunset</div>
+        </div>
         <div id="weatherImagebox" class="weatherImagebox">
             <img id="weather-img" src="./Designs/Design-2/icons/noun_Cloud_1188486.svg">
             <video id="weathervideo" autoplay muted loop class="weathervideo">
                 <source src="./Designs/Design-2/icons/rainvid.mp4" type="video/mp4" class="weathervideo">
             </video>
         </div>
-        <div id="middleSection" class="middleSection">Demo text here just to be able to confirm right CSS-specs</div>
-        <div id="day+1" class="weekday">day+1</div>
-        <div id="day+2" class="weekday">day+2</div>
-        <div id="day+3" class="weekday">day+3</div>
-        <div id="day+4" class="weekday">day+4</div>
-        <div id="day+5" class="weekday">day+5</div>
-        <form>
+        <div id="middleSection" class="middleSection">Demo text</div>
+        
+        <div class="weekdaycontainer">
+            <div id="day+1" class="weekday">day+1</div>
+            <div id="day+2" class="weekday">day+2</div>
+            <div id="day+3" class="weekday">day+3</div>
+            <div id="day+4" class="weekday">day+4</div>
+            <div id="day+5" class="weekday">day+5</div>
+        </div>
+        
+        <form class="cityselect">
             <div id = "morecity" class="morecity">More Cities</div>
             <select class="drop-menu" name="drop-menu" id="drop-menu">
               <option value="Oslo,Norway">Oslo</option>
