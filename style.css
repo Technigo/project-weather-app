@@ -23,11 +23,12 @@ body{
 .weatherWindow{
     background-color: #F4F7F8;
     width: 100%;
-    height: 100%;
+    height: 98vh;
     box-shadow: 0 10px 50px #535252;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
 }
 
 .topdisplayAPI {
@@ -164,10 +165,6 @@ select {
 
   @media (min-width: 768px) {
 
-    .weatherWindow {
-        height: 720px;
-    }
-
     .topdisplayAPI {
         height: 120px;
     }
@@ -187,10 +184,6 @@ select {
   }
   
   @media (min-width: 992px) {
-
-    .weatherWindow {
-        height: 900px;
-    }
 
     .weatherImagebox img {
         margin-top: 6%;
