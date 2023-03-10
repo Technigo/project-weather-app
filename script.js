@@ -48,7 +48,6 @@ const fetchWeatherAPI = (City,Country) => {
 
 
             changeWeatherDescription(json.weather[0].description, json.name);
-            // changeWeatherDescription("clear", json.name); // cloud rain snow
 
             //json.weather[0].description
 
@@ -69,12 +68,15 @@ const changeWeatherDescription = (weatherDescription, city) => {
         colorTheme.style.setProperty('--basecolor', getComputedStyle(colorTheme).getPropertyValue('--pink'))
         img.setAttribute('src', './Designs/Design-2/icons/noun_Cloud_1188486.svg')
         vid.setAttribute('src', './Designs/Design-2/icons/cloudvid.mp4')
+        weatherWindow.style.backgroundColor = "#FCE2DB";
+
 
     } else if (weatherDescription.includes("clear")) {
         description.innerHTML = `Get your sunnies on, ${city} is looking mighty fine today`
         colorTheme.style.setProperty('--basecolor', getComputedStyle(colorTheme).getPropertyValue('--yellow'))
         img.setAttribute('src', './Designs/Design-2/icons/sun.png')
         vid.setAttribute('src', './Designs/Design-2/icons/clearvid.mp4')
+        weatherWindow.style.backgroundColor = "#8AB6D6";
        
 
     } else if (weatherDescription.includes("rain")) {
@@ -82,12 +84,15 @@ const changeWeatherDescription = (weatherDescription, city) => {
         colorTheme.style.setProperty('--basecolor', getComputedStyle(colorTheme).getPropertyValue('--grayish'))
         img.setAttribute('src', './Designs/Design-2/icons/droplet.png')
         vid.setAttribute('src', './Designs/Design-2/icons/rainvid.mp4')
+        weatherWindow.style.backgroundColor = "#6096B4";
        
     } else if (weatherDescription.includes("snow")) {
         description.innerHTML = `Wrap up warm, ${city} is looking very white today`
         colorTheme.style.setProperty('--basecolor', getComputedStyle(colorTheme).getPropertyValue('--lightblue'))
         img.setAttribute('src', './Designs/Design-2/icons/snowflake.png')
         vid.setAttribute('src', './Designs/Design-2/icons/snowvid.mp4')
+        weatherWindow.style.backgroundColor = "#929AAB";
+
 
     }
 
