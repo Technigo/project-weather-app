@@ -1,8 +1,6 @@
 .content {
   font-family: "Montserrat";
-  /*display: flex;
-  flex-direction: column;border: 3px solid white;*/
-  padding: 40px;
+  padding: 20px;
 }
 
 p {
@@ -15,6 +13,7 @@ h1 {
 
 .weather-header {
   line-height: 7px;
+  padding-bottom: 30px;
 }
 
 .sun-icon {
@@ -53,6 +52,7 @@ h1 {
 .weather-text {
   display: flex;
   align-items: center;
+ text-align: center;
   flex-direction: column;
 }
 
@@ -84,7 +84,9 @@ table tr td {
 }
 .searchHeader {
   display: flex;
-  justify-content: center;
+  justify-content: right;
+  margin-top: -145px;
+  padding-bottom: 70px;
 }
 
 #cityInput {
@@ -117,4 +119,34 @@ table tr td {
 
 .searchIcon {
   height: 23px;
+}
+
+@media (min-width: 1024px) {
+  
+  .content {
+    width: 800px;
+    margin: auto;
+  }
+
+  .forecast-container {
+    height: 450px;
+    display: flex;
+    justify-content: center;
+  }
+
+  table {
+    width: 350px;
+
+  }
+
+  .main-section {
+    display: flex;
+    width: 50%;
+  }
+
+  .weather-forecast {
+    display: flex;
+    width: 50%;
+  }
+
 }
