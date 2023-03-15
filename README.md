@@ -1,5 +1,5 @@
 # Weather App
-This a forecasting single-page application which shows 5 days of forecasting weather in different cities. 
+This a forecasting single-page application which shows 5 days of forecasting weather in different cities.In this app user can see the sunsets and sunrise and localtime. Background picture will change according to weather situation, Sunny, Cloudy, Riany and Snowing images.
 
 ## The problem
 1-	Git was the difficult part. 
@@ -13,7 +13,8 @@ when the base was finished, we divided our tasks, and we followed the Agile Meth
 If we had more time, we could work on Geolocation API to make it more professional and easier for users. 
 
 ## View it live
-ornate-youtiao-2710b8.netlify.app
+https://weather-app-10ce68.netlify.app
+
 
 
 
