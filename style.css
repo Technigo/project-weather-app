@@ -90,10 +90,12 @@ img.weather-icon {
 
 #btn-searchCity {
   width: 5rem;
-}
+  }
+
 #search {
   width: 15rem;
 }
+
 #search,
 #btn-searchCity {
   font-size: 1rem;
@@ -104,14 +106,14 @@ img.weather-icon {
   text-decoration: none;
   color: #56a5eb;
   background-color: white;
-  cursor: pointer;
   border-radius: 5px;
 }
-#search:hover,
+
 #btn-searchCity:hover {
   box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.5);
   transform: translateY(-0.1rem);
   transition: transform 150ms;
+  cursor: pointer;
 }
 
 #search placeholder {

@@ -21,7 +21,7 @@ const now = new Date().toLocaleDateString('en-us', {
   day: 'numeric',
 });
 
-const time = date.toLocaleTimeString().substring(0, 4);
+const time = date.toLocaleTimeString().substring(0, 5);
 
 day.innerHTML = `${now}`;
 timeInBackground.innerHTML = time;
@@ -94,10 +94,12 @@ const updateHero = (data) => {
   )} ${'&#8451;'}</h2>
   <h6>Sunrise: ${new Date(data.city.sunrise * 1000)
     .toLocaleTimeString()
-    .substring(0, 4)} </h6>
+    .substring(0, 5) 
+  } </h6>
   <h6>Sunset: ${new Date(data.city.sunset * 1000)
     .toLocaleTimeString()
-    .substring(0, 4)} </h6>
+    .substring(0, 5)
+  } </h6>
    `;
 
   const weatherAppearance = data.list[0].weather[0].main;
