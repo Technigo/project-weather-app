@@ -1,4 +1,4 @@
-# Project ChatBot
+# Project Weather App
 
 ## View it live
 https://app-for-forecast.netlify.app/
