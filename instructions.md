@@ -110,7 +110,11 @@ Read the [endpoint documentation](https://openweathermap.org/forecast5 "endpoint
 Style it to look like one of the provided designs.
 
 ## Requirements
-- Complete Step 1-3
+- You should fetch data from the API using `fetch()` in JavaScript
+- All data in the sketch above should be present and fetched from the API
+- The presentation of the data should be in the specified format.
+- The page should work on mobile (mobile first!), tablet and desktop (Be responsive)
+- Complete Step 1-2 together, and step 3 in branches
 - Follow the guidelines on [how to write good code](https://www.notion.so/Guidelines-for-how-to-write-good-code-59abdd4307a24f5ca7914d566326f4df?pvs=4 "how to write good code")
 
 ## Stretch goals
