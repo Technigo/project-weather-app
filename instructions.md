@@ -6,10 +6,7 @@ We've asked a couple of different designers to do their take on this project. It
 ## How to get started 💪🏼
 
 1. One person forks the repo.
-2. The person forking the repo will be the owner of the repo. They now have to invite the other person as collaborators. To do that you go to the repo's Settings → Manage access → Invite a collaborator.
-    
-    ![Skärmavbild 2021-09-17 kl. 15.26.28.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/18c2b0ea-62ad-46c0-9735-035fec656c9b/Skarmavbild_2021-09-17_kl._15.26.28.png)
-    
+2. The person forking the repo will be the owner of the repo. They now have to invite the other person as collaborators. To do that you go to the repo's Settings → Manage access → Invite a collaborator.    
 3. One person clones the repo, and together in pairs you will layout the foundation (following Step 1 & 2, specified further down).
 4. Push the changes to GitHub.
 5. When it's time to split up and work in branches, it's also time for the other person to clone the repo.
@@ -100,7 +97,6 @@ Show the time for sunrise and sunset in a readable time format (Example: 13:00 o
 
 **Feature: Weather forecast 📅**
 Show a forecast for the next 5 days. You can choose how to display the forecast - perhaps you want to show the min and max temperature for each day, or perhaps you want to show the temperature from the middle of the day, or the humidity, what it feels like and so on.
-
 
 ```
 https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=YOUR_API_KEY
