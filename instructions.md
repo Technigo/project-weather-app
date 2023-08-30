@@ -92,10 +92,10 @@ Your task is to present some data on your web app. Start with:
 ### Step 3 - Features
 Now it's time to split up and start working in GitHub branches. Decide beforehand when you should have a "feature freeze" so that you make time for merging.
 
-**Feature: Sunrise and sunset 🌅**
+**Feature: Sunrise and sunset 🌅**  
 Show the time for sunrise and sunset in a readable time format (Example: 13:00 or 1 PM). You will have to format the date from milliseconds to a readable format. [Here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date "Here") is a useful resource for how to do this.
 
-**Feature: Weather forecast 📅**
+**Feature: Weather forecast 📅**  
 Show a forecast for the next 5 days. You can choose how to display the forecast - perhaps you want to show the min and max temperature for each day, or perhaps you want to show the temperature from the middle of the day, or the humidity, what it feels like and so on.
 
 ```
@@ -106,7 +106,7 @@ The API gives us the next 5 days but for every third hour. So a good idea could 
 
 Read the [endpoint documentation](https://openweathermap.org/forecast5 "endpoint documentation") for the forecast.
 
-**Feature: Style it 🎨**
+**Feature: Style it 🎨**  
 Style it to look like one of the provided designs.
 
 ## Requirements
@@ -117,20 +117,20 @@ Style it to look like one of the provided designs.
 So you’ve completed the requirements? Great job! Make sure you've committed and pushed a version of your project before starting on the stretch goals. Remember that the stretch goals are optional.
 
 ### Intermediate Stretch Goals
-**Feature: Styling warm/cold 🌞❄️**
+**Feature: Styling warm/cold 🌞❄️**  
 Change the colours of the page based on the weather. If the weather is warm – use warm colours. If the weather is colder, use cold colours. If you really want to push your CSS muscles you can even make a background gradient.
 
 Another alternative is to include visual indicators for the type of weather, cloudy/sunny/rainy/etc.
 
-**Feature: More cities 🏙️**
+**Feature: More cities 🏙️**  
 Give the user the option to choose between a couple of your favourite cities, or create a searchbar where the user can search for a specific city.
 
 ### Advanced Stretch Goals
-**Feature: Use your location 🗺️**
+**Feature: Use your location 🗺️**  
 Use the [Geolocation API](https://www.w3schools.com/html/html5_geolocation.asp "Geolocation API") that is built into your browser to fetch the city that you are located in at the moment and show the weather for your location.
 
-**Feature: Add more data 💽**
+**Feature: Add more data 💽**  
 Explore the API and use another endpoint of the Weather API to include supplementary information.
 
-**Feature: CSS Animations**
+**Feature: CSS Animations**  
 Add some CSS animations to your app, e.g. pulsating sun/raindrops.
