@@ -29,7 +29,7 @@ For this project, we suggest that you lay out the foundation of your project tog
 For example, to get the current weather in Stockholm, you can use the URL below. Remember to replace YOUR_API_KEY with the API key you copied from your dashboard.
 
 ```
-https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=YOUR_API_KEY
+https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=8fa7c461aec946fde31f330992fce9d6
 ```
 
 The response should look something like this (this has been run through jsonlint.com to add newlines and indentation):
