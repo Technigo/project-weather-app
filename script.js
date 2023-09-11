@@ -17,7 +17,16 @@ const fetchWeather = () => {
         cityName.innerHTML = `STAD: ${json.name}`
         temperature.innerHTML =`TEMPERATUREN ÄR: ${(json.main.temp).toFixed(1)}`
         weatherType.innerHTML =`BESKRIVNING: ${json.weather[0].description}`
+        //jennys del sunrise sunset
+
+
+
+        //den andra delen weather forecast
     })
+
+
+
+
 
     
 }
