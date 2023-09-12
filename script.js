@@ -6,11 +6,14 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
   })
   .then((json) => {
     const cityName = json.name;
-    container.innerHTML = `<h1>Here's the weather in ${cityName} right now</h1>`;
+    const temperature = json.main.temp;
+    const weatherDescription = json.weather[0].description;
 
-    json.weather.forEach((param) => {
-      container.innerHTML += `<p>${param.description}</p>`;
-    });
+    container.innerHTML = `
+      <h1>Here's the weather in ${cityName} right now</h1>
+      <p>Temperature: ${temperature}°C</p>
+      <p>Weather: ${weatherDescription}</p>
+    `;
   })
   .catch((error) => {
     console.error('Error fetching weather data:', error);
