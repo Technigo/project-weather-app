@@ -22,6 +22,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
 
 })
 
+//Fetch for weather in London
 // fetch ('https://api.openweathermap.org/data/2.5/weather?q=London,GB&units=metric&APPID=bc487ba1fa4b42fcfb85443237a7774e')
 // .then((response)=> {
 //     return response.json()
@@ -32,6 +33,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
 //     console.log(json.main.feels_like)
 // })
 
+//Fetch for 5 days forecast in Stockholm
 fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=bc487ba1fa4b42fcfb85443237a7774e')
 .then((response)=> {
     return response.json()
@@ -42,5 +44,18 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
     json.list.forEach((element)=> {
         console.log(element.main.temp)
     }) 
+    const weatherAt12 = json.list.map((el)=> {
+        return el.main.temp
+    })
+    console.log(weatherAt12)
+    //const newTypes = json.types.map((element)=> element.type.name)
+   // console.log(newTypes[0])
+
 
 })
+
+
+const animals = ['bear', 'rabbit', 'panda']
+console.log (animals)
+const name = "Emmy"
+console.log (name)
