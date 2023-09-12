@@ -3,9 +3,16 @@ const weatherApp = document.getElementById('weatherApp')
 const sunRiseSet = document.getElementById('sunRiseSet')
 const weatherForecast = document.getElementById('weatherForecast')
 
-const geeeting = "Hello Klaudia & Frida!"
+const appID = "d8d8bd8fc9a245def8c2bd16cb32ba83"
+const units = "metric"
+const baseURL = "https://api.openweathermap.org/data/2.5/"
 
-fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=d8d8bd8fc9a245def8c2bd16cb32ba83')
+//create a search string
+const searchString = (searchTerm, searchCity) => {
+    return (`${baseURL}${searchTerm}?q=${searchCity}&units=${units}&APPID=${appID}`)
+}
+
+fetch(searchString("weather", "Stockholm,Sweden"))
     .then((response) => {
         return response.json()})
     .then((json) => {
@@ -32,7 +39,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         
     })
 
-fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=d8d8bd8fc9a245def8c2bd16cb32ba83')
+fetch(searchString("forecast", "Stockholm,Sweden"))
     .then((response) => (response.json()))
     .then((json) => {
 
