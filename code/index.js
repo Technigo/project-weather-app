@@ -15,10 +15,9 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     console.log(data.weather[0].description)
     tempElement.innerHTML = data.main.temp;
 
-    // tempElement.appendChild(temp);
+    
 
-    // const tempElement = document.getElementById("temp");
-    // tempElement.innerHTML = data.main.temp 
+   
 })
 .catch ((err) => {
     console.log(err)
