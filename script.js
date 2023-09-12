@@ -11,7 +11,7 @@ fetch(
     console.log(json);
     const roundedTemperature = parseFloat(json.main.temp).toFixed(1);
     //const temperature = Math.round(json.main.temp);
-    container.innerHTML = `
+    container.innerHTML += `
     <h1>${roundedTemperature}°C</h1>
     <h2>${json.name}</h2>
     
