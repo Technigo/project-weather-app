@@ -35,6 +35,18 @@ const todaysWeather = (city) => {
     })
 }
 
-todaysWeather("London");
+// Function to display five-day weather forecast
+const fiveDaysForecast = (city) => {
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=${APIKEY}`)
+        .then((response) => {
+            return response.json();
+        })
+        .then((json) => {
+            console.log(json);
+        })
+}
 
+// Invoke functions for today's weather and five-day forecast with the base city as argument
+todaysWeather("London");
+fiveDaysForecast("London");
 
