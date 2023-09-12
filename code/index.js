@@ -1,6 +1,9 @@
 // Dom Section
 const tempElement = document.getElementById("temp");
-const daysForecast = document.querySelectorAll(".day")
+const daysForecast = document.querySelectorAll(".day");
+const iconsForecast = document.querySelectorAll(".icon");
+
+
 
 
 const baseUrl = "https://api.openweathermap.org/data/2.5/weather?";
@@ -50,7 +53,13 @@ const fetchForecastAsync = async () =>{
   const responseForecast = await fetch(URLForecast).catch((err)=> console.log("ERROR" , err));
   const data = await responseForecast.json();
   console.log(data)
-  console.log(data.list[0].dt_txt)
+
+  iconsForecast.forEach((icon , index)=>{
+    const iconNum = data.list[index].weather[0].icon;
+    icon.src = `https://openweathermap.org/img/wn/${iconNum}@2x.png`
+    
+  })
+  
   
  
 }
