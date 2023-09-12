@@ -1,6 +1,9 @@
 const cityName = document.getElementById('cityName')
 const temperature = document.getElementById('temperature')
 const weatherType = document.getElementById('weatherType')
+const forecastWrapper = document.getElementById('forecastWrapper')
+const forecastDay = document.getElementById('forecastDay')
+const forecastTemp = document.getElementById('forecastTemp')
 
 
 const fetchWeather = () => {
@@ -30,4 +33,37 @@ const fetchWeather = () => {
 
 
 }
+
 fetchWeather()
+
+const fetchForecast = () => {
+    fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=fd582670436692008725c351eb4985b0')
+    .then((response) => {
+        return response.json()
+    })
+    .then((json) => {
+        console.log(json)
+        console.log(json.list[0])
+        
+        //filter the forecast API to only show weather at 12 for each day
+        const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
+        console.log(filteredForecast)
+        filteredForecast.forEach((fiveForecast) => {
+            console.log(fiveForecast.main.temp.toFixed(0))
+        
+
+
+            
+        })
+        filteredForecast.forEach((day) => {
+            const date = new Date(day.dt * 1000) //variable to get "right" date, converting from seconds to milliseconds
+            let dayName = date.toLocaleDateString("en-US", {weekday: "short"})
+            console.log(`${dayName}`)
+        })
+    })
+
+    
+    
+}
+
+fetchForecast()
