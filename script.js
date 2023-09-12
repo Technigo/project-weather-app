@@ -1,6 +1,10 @@
 const city = document.getElementById('city')
 const temp = document.getElementById('temp')
 const weatherType = document.getElementById('weather-type')
+const mainWeatherSection = document.getElementById('main-weather')
+const sunSection = document.getElementById('sun')
+const forecastSection = document.getElementById('forecast')
+
 
 fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=bc487ba1fa4b42fcfb85443237a7774e')
 .then((response)=> {
@@ -13,7 +17,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     city.innerHTML = ` ${json.name}`
     temp.innerHTML = `<p>Temperature:${json.main.temp}</p>`
     json.weather.forEach((element) => {
-        weatherType.innerHTML = `${element.main}`
+        weatherType.innerHTML = `<h2> Weather: ${element.main} </h2>`
     })
 
 })
