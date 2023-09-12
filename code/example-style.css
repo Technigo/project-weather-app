@@ -1,0 +1,397 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+/*Variables*/
+:root {
+    /*Colors:*/
+    --switch-button-color:  #757AFF;        /*Remove later, should be set by the gradient*/
+    --container-color:  #e0e0e0;  
+
+    /*Dimensions:*/
+    --top-background-bottom-position: 355px;
+
+    /*Other:*/
+    --top-background-opacity: 0.7;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding:0;
+    height: 100%;
+    background-color: var(--container-color);
+}
+
+.nav {
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.container {
+    background-color: var(--container-color);
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 800px;
+}
+
+.feature-image {                /*Uses a background img placed over the gradient*/
+    background: url('') 50% bottom / contain;        /*Set by JS in todaysWeatherFeature*/
+    opacity: var(--top-background-opacity);
+    height: 800px;
+    width: 800px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: var(--top-background-bottom-position);
+    right: 50%;
+    transform: translate(50%);
+}
+
+.background-top-gradient {          /*Uses a background gradient behind the transparent image*/
+    background-color: black;
+    height: 800px;
+    width: 800px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: var(--top-background-bottom-position);
+    right: 50%;
+    transform: translate(50%);
+}
+
+.search {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid rgba(255, 255, 255, 0.363);
+}
+
+.search-bar {
+    margin: auto;
+    border: none;
+    padding: 2px 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    width: 100%;
+    max-width: 600px;
+    height: 30px;
+    font-size: 17px;        /*All font sizes under 16px create the zoom error*/
+}
+
+.search-bar:focus {
+    outline: none;
+}
+
+.search-button {
+    border: none;
+    color: white;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    opacity: 0.7;
+}
+
+.search-icon,
+.x-icon {
+    height: 30px;
+    width: 30px;
+    padding: 20px 10px 20px 20px;
+}
+
+svg {
+    color: white;
+}
+
+.mainWrapper {
+    color: white;
+    margin: 0px 20px;
+    padding: 0 15px 0 15px;
+    position: relative;
+}
+
+.mainWrapper .tempText {
+    display: flex;
+    flex-direction: row;
+}
+
+.mainWrapper .tempNumber {
+    font-size: 102px;
+    margin: 0;
+    font-weight: 900; 
+}
+
+.tempTextCelsius {
+    display: inline;
+    font-size: 36px;
+    margin-top: 15px;
+    margin-left: 5px;
+}
+
+.mainWrapper .cityText {
+    font-size: 32px;
+    font-weight: 200;
+    margin: 0 0 5px 0;
+}
+
+.local-time {
+    margin: 0;
+    font-weight: 200;
+    font-size: 16px;
+}
+
+.description-icon {
+    display: flex;
+    margin-top: 0;
+}
+
+.mainWrapper .describeText {
+    font-size: 16px;
+    font-weight: 200;
+    margin: auto 0 auto 0;
+    text-transform: capitalize;
+}
+
+.main-icon {
+    object-fit: cover;
+    height: 62px;
+    width: 80px;
+    position: relative;
+}
+
+.sun-position {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#sunriseText,
+#sunsetText {
+    display: flex;
+    flex-direction: row;
+    font-size: 16px;
+}
+
+.sun-position .time-data {
+    margin: auto auto;
+    padding: 15px;
+}
+
+
+.switch-section {
+    position: relative;
+}
+
+#switchBtn {
+    background: rgb(22, 60, 82);
+    border: none;
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 0 75%;
+    cursor: pointer;
+}
+
+.fa-solid {
+    font-size:25px;
+    color:#ffffff;
+}
+
+/* Feature gradient */
+.background-top-gradient.morning, .background-top-gradient.morning ~ .switch-section #switchBtn {
+    background: linear-gradient(217deg, rgba(148, 197, 248, 0), rgba(166, 230, 255, 0) 70.71%),
+                linear-gradient(127deg, rgba(166, 230, 255, 0.8), rgba(177, 181, 234, 0.5) 70.71%),
+                linear-gradient(336deg, rgb(139, 144, 211), rgba(148, 197, 248, 1) 70.71%);
+    background-size: 600% 600%;
+	animation: gradient 5s ease infinite;
+}
+
+.background-top-gradient.midday, .background-top-gradient.midday ~ .switch-section #switchBtn {
+ 
+    background: linear-gradient(217deg,   rgba(91, 131, 106, 0.5), rgba(6, 111, 168, 0.5) 70.71%),
+                linear-gradient(127deg, rgba(36, 111, 168, 0.8) ,  rgb(198, 160, 65, 0.5) 70.71%),
+                linear-gradient(336deg, rgba(36, 111, 168, 1), rgba(91, 131, 106, 1) 70.71%);
+    background-size: 600% 600%;
+	animation: gradient 5s ease infinite;
+}
+
+.background-top-gradient.afternoon, .background-top-gradient.afternoon ~ .switch-section #switchBtn {
+    background: linear-gradient(217deg, rgba(30, 82, 142, 0), rgba(38, 88, 137, 0.5) 70.71%),
+                linear-gradient(127deg, rgba(157, 166, 113, 0.8),  rgba(30, 82, 142, 0.5) 70.71%),
+                linear-gradient(336deg, rgba(38, 88, 137, 1), rgba(157, 166, 113, 1) 70.71%);
+    background-size: 600% 600%;
+	animation: gradient 5s ease infinite;
+}
+
+.background-top-gradient.duskSunset, .background-top-gradient.duskSunset ~ .switch-section #switchBtn {
+    background: linear-gradient(217deg, rgba(55, 109, 167, 0), rgba(235, 178, 177, 0) 70.71%),
+                linear-gradient(127deg, rgba(89, 13, 12, 0.8), rgba(96, 22, 7, 0.5) 70.71%),
+                linear-gradient(336deg, rgb(31, 6, 1), rgb(2, 14, 28) 70.71%);
+    background-size: 600% 600%;
+	animation: gradient 5s ease infinite;
+}
+
+.background-top-gradient.evening, .background-top-gradient.evening ~ .switch-section #switchBtn {
+    background: linear-gradient(217deg,   rgba(57, 22, 3, 0), rgba(9, 75, 126, 0.5) 70.71%),
+                linear-gradient(127deg, rgba(22, 60, 82, 1) ,  rgba(65, 8, 116, 0.5) 70.71%),
+                linear-gradient(336deg, rgba(6, 98, 168, 1), rgba(239, 95, 6, 1) 70.71%);
+    background-size: 600% 600%;
+	animation: gradient 5s ease infinite;
+}
+
+.background-top-gradient.midnight, .background-top-gradient.midnight ~ .switch-section #switchBtn {
+    background: linear-gradient(217deg, rgba(36, 14, 3, 0.8), rgba(22, 60, 82, 0) 70.71%),
+                linear-gradient(127deg, rgba(22, 60, 82, 0.8),  rgba(84, 133, 159, 0.5) 70.71%),
+                linear-gradient(336deg, rgba(36, 72, 94, 1),  rgba(7, 27, 38, 1) 70.71%);
+    background-size: 600% 600%;
+	animation: gradient 5s ease infinite;
+}
+
+.background-top-gradient.dawnSunrise, .background-top-gradient.dawnSunrise ~ .switch-section #switchBtn {
+    background: linear-gradient(217deg, rgba(74, 73, 105, 0.1), rgba(205, 130, 160, 0) 70.71%),
+                linear-gradient(127deg, rgba(205, 130, 160, 0.8), rgba(112, 114, 171, 0.5) 70.71%),
+                linear-gradient(336deg, rgba(112, 114, 171, 1), rgba(74, 73, 105, 1) 70.71%);
+	background-size: 600% 600%;
+	animation: gradient 5s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.weather-forecast {
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.weather-forecast-section {
+    position: relative;
+}
+
+.forecast-category {
+    width:125px;
+}
+
+th, td {
+    padding:.25em .5em;
+    text-align:center;
+}
+
+.forecast-category p {
+    height:27px;
+}
+
+.weather-icons {
+    object-fit: cover;
+    height: 39px;
+    width: 56px;
+}
+
+
+footer {
+    text-align: center;
+    color: grey;
+    position: relative;
+}
+
+footer a,
+footer a:visited {
+    color: grey;
+    text-decoration: none;
+}
+
+footer a:hover {
+    opacity: 0.5;
+    transition: 0.2s ease-in-out;
+}
+
+/* To use when hiding something*/
+.hidden {
+    display: none;
+    transition: transform 1s ease 0s;
+}
+
+
+
+/* For when we look at the app in desktop or tablet: */
+@media (min-width: 500px) {
+
+    :root {
+    --top-background-bottom-position: 305px;
+    }
+            
+    .container {
+        box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.3);
+        width: 100%;
+        max-width: 400px;
+        margin: 50px auto;
+    }
+
+    .feature-image {                /*Uses a background img placed over the gradient*/
+        bottom: var(--top-background-bottom-position);
+    }
+
+    .background-top-gradient {          /*Uses a background gradient behind the transparent image*/
+        bottom: var(--top-background-bottom-position);
+    }
+
+    .search-bar {
+        font-size: 14px;
+    }
+
+    .search-icon,
+    .x-icon {
+        height: 35px;
+        width: 35px;
+        padding: 25px;
+    }
+
+    .nav {
+        margin-bottom: 10px;
+    }
+
+    .mainWrapper .tempNumber {
+        font-size: 110px;
+    }
+
+    .tempTextCelsius {
+        font-size: 40px;
+    }
+
+    .mainWrapper .cityText {
+        font-size: 36px;
+    }
+
+    .mainWrapper .describeText {
+        font-size: 18px;
+    }
+
+    .local-time {
+        font-size: 18px;
+    }
+
+    #sunriseText,
+    #sunsetText {
+        font-size: 18px;
+    }
+
+    body {
+        background-color: #faf9f9;
+    }
+
+
+}
