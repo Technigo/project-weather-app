@@ -3,7 +3,7 @@ const weatherApp = document.getElementById('weatherApp')
 const sunRiseSet = document.getElementById('sunRiseSet')
 const weatherForecast = document.getElementById('weatherForecast')
 
-const geeeting = "Hello you!"
+const geeeting = "Hello Klaudia & Frida!"
 
 fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=d8d8bd8fc9a245def8c2bd16cb32ba83')
     .then((response) => {
