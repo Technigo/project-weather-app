@@ -1,7 +1,7 @@
 const container = document.getElementById('weather');
 
-const latitude = 59.3293; // Replace with the latitude of location
-const longitude = 18.0686; // Replace with the longitude of location
+const latitude = 59.3293; //location
+const longitude = 18.0686; // location
 const limit = 1; // You can set the limit to 1 to get the closest result
 
 const apiKey = '30497ceff63316bea65ec674ac0ba4c7';
@@ -20,7 +20,7 @@ fetch(locationUrl)
     })
     .then((response) => response.json())
     .then((forecastJson) => {
-
+        console.log(forecastJson)
 
         // Display the location name
         container.innerHTML = `<h1>${forecastJson.city.name} Weather Forecast</h1>`;
@@ -35,6 +35,7 @@ fetch(locationUrl)
             container.innerHTML += `<p>Date: ${date}</p>`;
             container.innerHTML += `<p>Weather: ${forecast.weather[0].description}</p>`;
             container.innerHTML += `<p>Temperature: ${forecast.main.temp} K</p>`;
+            container.innerHTML += `<p>Wind speed is: ${forecast.wind.speed} K</p>`;
             container.innerHTML += '<hr>'; // Add a horizontal line for separation
         }
     })
