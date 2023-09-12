@@ -15,9 +15,9 @@ const fetchWeather = () => {
         })
 };
 fetchWeather();
-setTimeout(() => console.log(weatherObject), 3000);
+setTimeout(() => console.log(weatherObject), 200);
 
 
 const weatherData = document.getElementById('weather-container');
 
-setTimeout(() => (weatherData.innerHTML =  `<p>${weatherObject}</p>`), 4000);
+setTimeout(() => (weatherData.innerHTML =  `<p>${weatherObject.base}</p>`), 500);

@@ -1,7 +1,42 @@
+<!-- link and key to openweather api -->
 openweather api: 71c1059590e3c92fe5d0130e08a97e30
 https://home.openweathermap.org/
 username: hasimausi@papierkorb.me
 password: blablabla
 
+<!-- design template -->
+https://technigo-weagther-app-design-02.netlify.app/
+
+<!-- specs for project  -->
 design: https://technigo-weagther-app-design-02.netlify.app/ 
 
+<!-- endpoint / object data description from api -->
+endpoint: https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=89d1a944a381d671e0d7eca3b8362f21
+
+
+<!-- Basic structure: -->
+----- Box -------
+<section>
+MAYBE DIVS
+few clouds | 20 °C  // container
+sunrise 07:08       // container
+sunset 20:20        // container
+</section>
+-------------
+
+----- Box --------
+Light a fire and get cosy. Stockholm is looking grey today.
+------------------
+Wed --- 13 °C
+
+Thu --- 10 °C
+
+Fri --- 13 °C
+
+Sat --- 15 °C
+
+Sun --- 15 °C
+
+Type a city... //Search//
+
+Created by: Technigo Education Team
