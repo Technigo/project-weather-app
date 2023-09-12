@@ -1,0 +1,11 @@
+@import url('https://fonts.google.com/specimen/Roboto');
+body {
+    font-family: 'Roboto', sans-serif;
+
+    .sthweather {
+        display: flex;
+        width: 1200px;
+        flex-wrap: wrap;
+
+    }
+}

@@ -15,3 +15,5 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
   .catch((error) => {
     console.error('Error fetching weather data:', error);
   });
+
+  //https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=8fa7c461aec946fde31f330992fce9d6
