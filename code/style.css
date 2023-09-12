@@ -1,0 +1,84 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Style the app container */
+.app {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Style the header */
+header {
+    background-color: #3498db;
+    color: white;
+    padding: 10px;
+}
+
+/* Style the search input and button */
+.search {
+    margin: 20px 0;
+}
+
+#location {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+#searchBtn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#searchBtn:hover {
+    background-color: #2980b9;
+}
+
+/* Style the weather display */
+.weather-display {
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
+/* Style the weather information */
+.weather-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.temperature {
+    font-size: 24px;
+}
+
+.description {
+    font-size: 18px;
+}
+
+
+body {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
