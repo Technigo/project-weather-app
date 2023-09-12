@@ -1,5 +1,6 @@
 // Dom Section
 const tempElement = document.getElementById("temp");
+const daysForecast = document.querySelectorAll(".day")
 
 
 const baseUrl = "https://api.openweathermap.org/data/2.5/weather?";
@@ -16,16 +17,47 @@ const fetchWeatherAsync = async () =>{
   const data = await response.json()
   console.log(data)
   updateHTML(data)
+  
 }
 fetchWeatherAsync()
 
-// headers
-// const URLToAnotherAPI = "http"
-// const options = { method: GET headers:{ ApiKey:"" ApiHost:""}, body: JSON.stringfy(data)}
-// fetch(URLToAnotherAPI , options)
+// forecast API
+
+const baseAPIForecast = "https://api.openweathermap.org/data/2.5/forecast?";
+const URLForecast = `${baseAPIForecast}q=${lat},${lon}&units=metric&APPID=${apiKey}`
+
+// date
+const daysName = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const today = new Date();
+
+const nextFiveDAys = [];
+
+for (let index = 1; index < 6; index++) {
+  const date = new Date(today);
+  
+  date.setDate(today.getDate() + index);
+  const dayName = daysName[date.getDay()];
+  nextFiveDAys.push(dayName)
+  
+}
+console.log(nextFiveDAys)
+daysForecast.forEach((dayForc , index)=>{
+  dayForc.innerHTML = nextFiveDAys[index]
+})
+// fetch forecast
+
+const fetchForecastAsync = async () =>{
+  const responseForecast = await fetch(URLForecast).catch((err)=> console.log("ERROR" , err));
+  const data = await responseForecast.json();
+  console.log(data)
+  console.log(data.list[0].dt_txt)
+  
+ 
+}
+fetchForecastAsync()
 
 const updateHTML = (data) =>{
-  console.log(data)
+ 
     console.log(data.name)
     console.log(data.main.temp)
     console.log(data.wind.speed)
