@@ -38,24 +38,51 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
 .then((response)=> {
     return response.json()
 })
-.then ((json) => {
+.then((json) => {
     console.log (json)
     console.log(json.city.name)
-    json.list.forEach((element)=> {
-        console.log(element.main.temp)
-    }) 
-    const weatherAt12 = json.list.map((el)=> {
-        return el.main.temp
+
+     // Filter the list for elements with a timestamp of 12:00:00
+     const elements12 = json.list.filter((el) => el.dt_txt.includes("12:00:00"));
+    //elements12 är en array med 5 objekt. Innehåller all väderinfo kl 12, 5 olika dagar
+     console.log(elements12)
+
+     const dates_text = elements12.map((el) => el.dt_txt)
+     // dates_text är en array med 5 strings: ex; '2023-09-12 12:00:00'
+     console.log(dates_text)
+
+     const DayNumber = dates_text.map((el)=>{
+        return new Date(el).getDay()
+     })
+     // dayNumber är en string: [2, 3, 4, 5, 6], representerar dagarna i nummerform
+     console.log(DayNumber)
+
+     const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+     let day1 = weekday[DayNumber[0]];
+     let day2 = weekday[DayNumber[1]];
+     let day3 = weekday[DayNumber[2]];
+     let day4 = weekday[DayNumber[3]];
+     let day5 = weekday[DayNumber[4]];
+     let day6 = weekday[DayNumber[5]];
+     let day7 = weekday[DayNumber[6]];
+     //Här skrivs day som ex Weekday[2] = Tuesday utifrån arrayn 'DayNumber'
+
+     console.log(day1, day2)
+     
+
+     // Extract temperature values for the filtered elements
+     const temperaturesAt12 = elements12.map((el) => el.main.temp);
+ 
+     console.log(`tempat12 ${temperaturesAt12}`);
+
+     forecastSection.innerHTML += `
+        ${day1}: ${temperaturesAt12[0]}°C
+     <br>${day2}: ${temperaturesAt12[1]}°C
+     <br>${day3}: ${temperaturesAt12[2]}°C
+     <br>${day4}: ${temperaturesAt12[3]}°C
+     <br>${day5}: ${temperaturesAt12[4]}°C `
+   
+     
     })
-    console.log(weatherAt12)
-    //const newTypes = json.types.map((element)=> element.type.name)
-   // console.log(newTypes[0])
-
-
-})
-
-
-const animals = ['bear', 'rabbit', 'panda']
-console.log (animals)
-const name = "Emmy"
-console.log (name)
+    
