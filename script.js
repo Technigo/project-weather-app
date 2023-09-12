@@ -11,7 +11,24 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     json.weather.forEach((param) => {
       container.innerHTML += `<p>${param.description}</p>`;
     });
-  })
+  
+
+    const sunset = sunsetNewDate(json.sys.sunset * 1000);
+    console.log(sunset.toISOString());
+
+    const sunrise = sunriseNewDate(json.sys.sunrise * 1000);
+    console.log(sunrise.toISOString());
+
+    const feelsLike = json.main.feels_like;
+    
+    container.innerHTML += `<p>Sunrise: ${sunriseNewDate}</p>`;
+    container.innerHTML += `<p>Sunset: ${sunsetNewDate}</p>`;
+    container.innerHTML += `<p>Weather feels like: ${feels_like.value} ${feels_like.unit}`
+});
+
+
+
+  
   .catch((error) => {
     console.error('Error fetching weather data:', error);
   });
