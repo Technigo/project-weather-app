@@ -20,6 +20,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     const sunrise = new Date(sunriseTimestamp);
     const currentDayOfWeek = new Date().getDay();
     
+
     //let weatherMessage = "";
     //if (weatherDescription.includes("rain")) {
      // weatherMessage = "Don't forget your umbrella!";
