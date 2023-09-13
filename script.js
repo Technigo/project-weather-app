@@ -6,8 +6,8 @@ const swipeButton = document.getElementById('swipe-button');
 const forecastTable = document.getElementById('forecast-table')
 
 const apiKey = '30497ceff63316bea65ec674ac0ba4c7';
-
-
+const cities = ['Stockholm', 'Rome', 'Bordeaux', 'Vienna'];
+let selectedCity = 0;
 //Reusable functions:
 //Convert a Unix timestamp into "hour:min" format
 const formattedTime = (timestamp) => {
@@ -23,7 +23,7 @@ const formattedTime = (timestamp) => {
 //----------------------  Part1  ------------------------------------------
 //Fetch current data for when entering the page
 getWeatherData = (city) => {
-
+    currentCity.innerHTML = '';
     const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
     fetch(currentWeatherUrl)
         .then((response) => response.json())
@@ -113,12 +113,13 @@ weeklyForecast = (city) => {
 }
 
 window.addEventListener('load', () => {
-    getWeatherData('Stockholm');
-    weeklyForecast('Stockholm');
+    getWeatherData(cities[selectedCity]);
+    weeklyForecast(cities[selectedCity]);
 });
 
 
-//event listener for the searchbutton
+//Event listeners 
+//for the searchbutton
 searchButton.addEventListener('click', () => {
     const city = cityInput.value;
 
@@ -128,9 +129,19 @@ searchButton.addEventListener('click', () => {
         return;
     }
 
-
     getWeatherData(city);
     weeklyForecast(city);
 });
 
+//for the swipebutton
 
+swipeButton.addEventListener('click', () => {
+    selectedCity++;
+    if (selectedCity < cities.length) {
+        getWeatherData(cities[selectedCity]);
+        weeklyForecast(cities[selectedCity]);
+    }
+    else {//selectedCity >= cities.length
+        selectedCity = -1;
+    }
+})
