@@ -66,18 +66,22 @@ const fetchForecastAsync = async () =>{
   const responseForecast = await fetch(URLForecast).catch((err)=> console.log("ERROR" , err));
   const data = await responseForecast.json();
 
+  const filteredForecast = data.list.filter((forecast) => {
+    return new Date(forecast.dt_txt).getHours() === 12
+  })
+  console.log(filteredForecast)
   iconsForecast.forEach((icon , index)=>{
-    const iconNum = data.list[index].weather[0].icon;
+    const iconNum = filteredForecast[index].weather[0].icon;
     icon.src = `https://openweathermap.org/img/wn/${iconNum}@2x.png`
     
   });
   tempsForecast.forEach((temp , index)=>{
-    const temperture = data.list[index].main.temp;
+    const temperture = filteredForecast[index].main.temp;
     temp.innerText =`${Math.floor(temperture)} °C` 
   });
 
   windForecast.forEach((wind , index)=>{
-    const windSpeed = data.list[index].wind.speed;
+    const windSpeed = filteredForecast[index].wind.speed;
     wind.innerText = `${Math.floor(windSpeed)} m/s`
   })
   
