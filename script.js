@@ -18,30 +18,30 @@ fetch(
     <h1>${roundedTemperature} °C</h1>
     <h2>${json.name}</h2>
     <p>${json.weather[0].description}</p>
-    
-    
+    <p>${json.weather[0].icon}<p/>
     `;
-  });
-/*
-const fetchWeatherData = () => {
-  // ... your fetch and data processing code ...
 
-  // Use the weather description to set the weather icon
-  const iconFileName = weatherIcons[currentWeatherDescription];
-  if (iconFileName) {
-    // Set the src attribute with the relative path to the image
-    weatherIcon.src = `images/${iconFileName}`;
-    weatherIcon.alt = currentWeatherDescription;
-  } else {
-    // If the weather description is not in the mapping, use a default icon
-    weatherIcon.src = "images/default.png";
-    weatherIcon.alt = "Default Icon";
-  }
-};
+    // Fetch the weather icon mappings from JSON file
+    fetch("weatherIcons.json")
+      .then((response) => response.json())
+      .then((iconMappings) => {
+        const currentWeatherDescription = json.weather[0].description;
+        const iconFileName =
+          iconMappings[currentWeatherDescription] || iconMappings["Default"];
+        const iconURL = `images/${iconFileName}`;
+        weatherIcon.src = iconURL;
+        weatherIcon.alt = currentWeatherDescription;
+      })
+      .catch((error) => {
+        console.error("Error fetching weatherIcons.json:", error);
+      });
+  })
+  .catch((error) => {
+    console.error("There was a problem with the fetch operation:", error);
+  });
 
 // Invoke the fetchWeatherData function to fetch and display weather data
-fetchWeatherData();
-*/
+
 hamburgerMenu.addEventListener("click", function () {
   console.log(`hamburger menu`);
   if (navMenu.style.display === "block") {
