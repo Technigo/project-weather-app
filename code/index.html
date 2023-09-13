@@ -4,32 +4,67 @@
     <meta charset="UTF-8">
     <meta name="author" content="Olga Lepistö, Mikael Öling, Frauke Schmidt">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <link rel="stylesheet" href="style.css">
     <title>Weather app</title>
 </head>
 
 <body>
   <div id="main-container">
     <section id="daily-forecast">
-
+    <p>
+        <span id="weather-description"></span>
+        <span id="main-temp"></span>
+    </p>
     </section>
     <section id="weather-symbol">
-
+        <img id="weather-icon" src="" alt="weather-icon">
     </section>
 
     <section id="daily-advice">
-
+        <p id="daily-tipps"></p>
     </section>
 
     <section id="weekly-forecast">
-
+        <div>
+            <div id="day-one">
+                <span>fdfsfd   </span>
+                <span>fdsfsfds</span>
+            </div>
+            <div id="day-two">
+                <span></span>
+                <span></span>
+            </div>
+            <div id="day-three">
+                <span></span>
+                <span></span>
+            </div>
+            <div id="day-four">
+                <span></span>
+                <span></span>
+            </div>
+            <div id="day-five">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
     </section>
-    
-    <div id="weather-container">
-        <p>Loading...</p>
-    </div>
-    <script src="script.js"></script>
-  </div>
 
+    <section id="city-picker">
+        <form action="#">
+            <input type="text" placeholder="Type a city...">
+            <input type="submit" value="Search">
+        </form>
+    </section>
+
+    <footer>
+        <div id="weather-container">
+            <p>Loading...</p>
+        </div>
+        <p>Coded by: Olga Lepistö, Mikael Öling, Frauke Schmid</p>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
 </body>
+
 </html>
