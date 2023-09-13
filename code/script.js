@@ -35,7 +35,8 @@ const todaysWeather = (city) => {
         
         // Display current time (hours:minutes) using the data on time and timezone (in miliseconds) as an epoch timestamp multiplied by 1000
         const currentLocalTime = new Date((json.dt+json.timezone)*1000);
-        localTime.innerText = `Time: ${currentLocalTime.getHours()}:${currentLocalTime.getMinutes()}`;
+        const localTimeValue = currentLocalTime.toLocaleTimeString("en-GB", {timeStyle: "short", timeZone: "UTC"});
+        localTime.innerText = `Time: ${localTimeValue}`;
     })
 }
 
