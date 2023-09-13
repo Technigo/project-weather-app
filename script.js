@@ -27,7 +27,8 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
       //weatherMessage = "You might want to bring an extra sweater.";
     //} else (weatherDescription.includes("sun")) {
      //weatherMessage = "Don't forget your sunglasses";
-    //}
+
+
     
     container.innerHTML = `
     <h1>Here's the weather in ${cityName}<h1/> 
