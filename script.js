@@ -1,8 +1,8 @@
 const city = document.getElementById("city");
 const weather = document.getElementById("typeOfWeather");
 const temperature = document.getElementById("temperature");
-const sunrise = document.getElementById("Sunrise");
-const sunset = document.getElementById("Sunset");
+const sunrise = document.getElementById("sunrise");
+const sunset = document.getElementById("sunset");
 const forecast = document.querySelector(".forecast");
 
 const API_KEY = "64856650e6321cbb411769554b46b8ad";
