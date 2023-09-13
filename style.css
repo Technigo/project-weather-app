@@ -8,10 +8,11 @@ body {
   margin: auto;
   max-width: 350px;
   /* overflow: hidden; */
-  position: relative; /* Dodaj position: relative; aby można było użyć position: absolute; wewnątrz */
+  position: relative; /* Weather app container - setting position to relative */
 }
 
 #currentWeather {
+  /* Background for current weather */
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(img/sergei-a--heLWtuAN3c-unsplash.jpg);
   background-size: cover;
   background-position: center;
@@ -22,30 +23,34 @@ body {
   padding-top: 2rem;
   opacity: 0.7;
   border-radius: 50%;
-  width: 500px; /* Szerokość kontenera */
-  height: 500px; /* Wysokość kontenera */
-  position: absolute; /* Ustaw position: absolute; aby wyjść poza kontener */
-  left: 80%; /* Przesuń do połowy szerokości kontenera */
-  top: 20%; /* Przesuń do połowy wysokości kontenera */
-  transform: translate(-50%, -50%); /* Wycentruj element w poziomie i pionie */
-  margin: -100px; /* Przesuń element w górę i w lewo o połowę jego szerokości i wysokości */
+  width: 500px; /* Width of the current weather container */
+  height: 500px; /* Height of the current weather container */
+  position: absolute; /* Setting position to absolute to break out of the container */
+  left: 80%; /* Moving to the right inside the container */
+  top: 20%; /* Moving up inside the container */
+  transform: translate(-50%, -50%); /* Centering horizontally and vertically */
+  margin: -100px; /* Moving up and to the left by half of the width and height */
 }
-#weatherForecast{
+
+#weatherForecast {
   padding: 20px;
   text-align: center;
   position: relative;
 }
-.currentTemp{
+
+.currentTemp {
   display: flex;
   flex-direction: row;
   border: 1px solid red;
   padding-top: 200px;
   color: aqua;
 }
-.tempNumer{
+
+.tempNumer {
   font-size: 110px;
 }
-.unit{
+
+.unit {
   display: inline;
   font-size: 36px;
   margin-top: 15px;
