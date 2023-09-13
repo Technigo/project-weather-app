@@ -6,7 +6,10 @@ const sunriseText = document.getElementById("sunrise");
 const sunsetText = document.getElementById("sunset");
 const topBackground = document.getElementById("topBackground");
 const weatherImage = document.getElementById("weatherImage");
-console.log(weatherImage);
+const nav = document.querySelector(".nav");
+const inputField = document.querySelector(".input-field");
+const searchBtn = document.querySelector(".searchBtn");
+
 // define a variable here
 let city = "Stockholm";
 const todayWeather = () => {
@@ -47,7 +50,7 @@ const todayWeather = () => {
       // future warm or cold image here
       const currentTemp = temp.toFixed(0);
       console.log(currentTemp);
-      if (currentTemp <= "15") {
+      if (currentTemp <= "10") {
         weatherImage.src = "./asserts/cold.jpg";
       } else {
         weatherImage.src = "./asserts/warm.jpg";
@@ -59,3 +62,10 @@ const todayWeather = () => {
 };
 
 todayWeather();
+// control toggling between open and close the search field
+
+// add event listner here
+searchBtn.addEventListener("click", () => {
+  nav.classList.toggle("active");
+  inputField.focus();
+});

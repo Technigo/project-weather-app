@@ -12,7 +12,7 @@ body{
     height: 800px;
     width:100%;
     max-width: 400px;
-    border: 2px solid gray;
+    border: 1px solid rgb(187, 182, 182);
     overflow: hidden;
   }
 /* navbar section, search button */
@@ -30,26 +30,19 @@ button{
 svg{
     color:white
 }
-/* x-icon close the hidden part */
-.x-icon{
-    position: absolute;
-    top:8px;
-}
-/* search button, hidden one */
-.searchBtn{
-    position: absolute;
-    left:25px;
-    top:3px;
-}
+
+
 /* input field */
 .input-field{
-    height:28px;
-    width: 160px;
-    border:1px solid rgb(196, 194, 194);
+    outline:none;
+    height:25px;
+    border:none;
+    border-radius: 100px;
     background-color:transparent;
-    margin-top: 5px;
-    position: absolute;
-    left:40px;
+    width:0px;
+    transition: width 0.3s ease;
+    padding: 5px 10px;
+    margin: 5px 10px;
 
 }
 .input-field:focus{
@@ -57,12 +50,29 @@ svg{
 }
 .input-field::placeholder{
     color:white;
+    font-size: 14px;
 }
-/* input: search button, real search button */
-.search-icon{
+.nav.active .input-field{
+    width: 220px;
+    border: 1px solid rgb(170, 167, 167);
+}
+/* search button */
+.searchBtn{
+    width: 40px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 100px;
+    border: none;
+    background:transparent;
+    display: inline;
     position: absolute;
-    top:8px;
-    right:50%;
+    top: 5px;
+    left: 5px;
+    transition: transform 0.3s ease;
+}
+
+.nav.active .searchBtn{
+    transform: translateX(210px);
 }
   /* top background image setting  */
 .weather-image {
