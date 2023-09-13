@@ -3,9 +3,10 @@ const container = document.getElementById('weather');
 const cityInput = document.getElementById('city-input');
 const searchButton = document.getElementById('search-button');
 const swipeButton = document.getElementById('swipe-button');
-const weatherTableRow = document.getElementById('forecast-tr')
+const forecastTable = document.getElementById('forecast-table')
 
 const apiKey = '30497ceff63316bea65ec674ac0ba4c7';
+
 
 //Reusable functions:
 //Convert a Unix timestamp into "hour:min" format
@@ -67,36 +68,47 @@ weeklyForecast = (city) => {
             console.log(forecastJson);
 
             // Display the 5-day weather forecast for the entered city 
-            weatherTableRow.innerHTML = ''; //clear content 
-
+            forecastTable.textContent = ''; //clear content 
+            const today = new Date();
+            const todaysDate = today.toLocaleDateString()
             const processedDates = []; //keep track of displayed dates just like with the dogs!!
-            // weatherTable.innerHTML += `<tbody>`
-            // weatherTableRow.innerHTML += `<tr>`
-            forecastJson.list.map((forecast) => {
+            processedDates.push(todaysDate);
+
+            //Create processedDates array
+            forecastJson.list.forEach((forecast) => {
+
                 const dateTime = new Date(forecast.dt * 1000); // Convert timestamp from seconds to ms adapted to Javascript
                 const date = dateTime.toLocaleDateString(); // Formated date accordingly to the user's locale
 
                 // Display date, weather description, and temperature in Celsius
                 if (!processedDates.includes(date)) {//if the date is not in the processedDates array
-                    weatherTableRow.innerHTML += `
-                    <td>${date}</td>`;
-                    weatherTableRow.innerHTML += `
-                    <td> <img src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"> </td>`;
-                    // container.innerHTML += `<p>${forecast.weather[0].description}</p>`;
-                    weatherTableRow.innerHTML += `
-                    <td>${forecast.main.temp.toFixed(1)} °C</td>`;
-                    weatherTableRow.innerHTML += `
-                    <td>${forecast.wind.speed} m/s</td>`;
+                    const row = document.createElement('tr');//create a table row
 
+                    const dateCell = document.createElement('td');
+                    dateCell.textContent = `${date}`;
+                    row.appendChild(dateCell);
+
+                    const iconCell = document.createElement('td');
+                    const icon = document.createElement('img');
+                    icon.src = `https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
+                    iconCell.appendChild(icon);
+                    row.appendChild(iconCell);
+
+                    const tempCell = document.createElement('td');
+                    tempCell.textContent = `${forecast.main.temp.toFixed(1)} °C`;
+                    row.appendChild(tempCell);
+
+                    const windSpeedCell = document.createElement('td');
+                    windSpeedCell.textContent = `${forecast.wind.speed} m/s`
+                    row.appendChild(windSpeedCell)
+
+                    forecastTable.appendChild(row)
                     processedDates.push(date); // push method to array
                 }
             });
-            // weatherTableRow.innerHTML += '</tr>';
-            // weatherTable.innerHTML += '</tbody>';
-
         })
         .catch((error) => {
-            console.error('Error', error)
+            console.error('Error message:', error)
         });
 }
 
