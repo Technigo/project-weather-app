@@ -25,12 +25,14 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     function generateWeatherMessage(description) {
       let message = "";
     
-      if (description.includes("rain")) {
+      if (description.includes("rain", "drizzle")) {
         message = "Don't forget your umbrella!";
       } else if (description.includes("cloud")) {
        message = "Here's hoping for a sunny sky later on";
-      } else if (description.includes("sun")) {
+      } else if (description.includes("clear sky")) {
        message = "Keep them sunglasses nearby";
+         } else if (description.includes("thunderstorm")) {
+       message = "Stay inside!";
       } else {
        message = "Weather conditions may vary.";
       }
