@@ -20,7 +20,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     const sunset = new Date(sunsetTimestamp);
     const sunrise = new Date(sunriseTimestamp);
     const currentDayOfWeek = new Date().getDay();
-    
+
 
     function generateWeatherMessage(description) {
       let message = "";
