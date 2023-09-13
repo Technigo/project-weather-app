@@ -2,6 +2,8 @@
 const tempElement = document.getElementById("temp");
 const daysForecast = document.querySelectorAll(".day");
 const iconsForecast = document.querySelectorAll(".icon");
+const tempsForecast = document.querySelectorAll(".temp-forecast");
+const windForecast = document.querySelectorAll(".wind-forecast")
 
 
 
@@ -58,6 +60,15 @@ const fetchForecastAsync = async () =>{
     const iconNum = data.list[index].weather[0].icon;
     icon.src = `https://openweathermap.org/img/wn/${iconNum}@2x.png`
     
+  });
+  tempsForecast.forEach((temp , index)=>{
+    const temperture = data.list[index].main.temp;
+    temp.innerHTML =`${Math.floor(temperture)} °C` 
+  });
+
+  windForecast.forEach((wind , index)=>{
+    const windSpeed = data.list[index].wind.speed;
+    wind.innerHTML = `${Math.floor(windSpeed)} m/s`
   })
   
   
