@@ -2,7 +2,23 @@
     box-sizing: border-box;
     margin: 0;
 }
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #F4F7F8;
+    color: #F47775;
+}
+ /* 
+ Colors from Technigo
+ #F47775 text pink-ish
+#F4F7F8 bakgrund white-ish
 
+#164A68 text dark blue
+#A3DEF7 bakgrund light blue
+
+#2A5510 text dark green
+#F7E9B9 bakgrund light yellow
+
+*/
 .forecast-wrapper ul {
     list-style-type: none;
     padding-left: 0;
