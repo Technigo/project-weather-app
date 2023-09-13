@@ -6,26 +6,35 @@ const sunSection = document.getElementById('sun')
 const forecastSection = document.getElementById('forecast')
 
 
-fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=bc487ba1fa4b42fcfb85443237a7774e')
+
+const BASE_URL_WEATHER = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID='
+const BASE_URL_FORECAST = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID='
+const API_KEY = 'bc487ba1fa4b42fcfb85443237a7774e'
+
+const URL_WEATHER = `${BASE_URL_WEATHER}${API_KEY}`
+const URL_FORECAST = `${BASE_URL_FORECAST}${API_KEY}`
+
+
+//------Fetching today's weather-----
+const fetchWeather = () => {
+fetch(URL_WEATHER)
 .then((response)=> {
     return response.json()
 })
 .then ((json) => {
+
+    //-----Basic weather info------
     console.log (json)
-    console.log('-----------')
-    console.log(json.name)
-    console.log('-----------')
-    console.log(json.main.feels_like)
-    console.log('-----------')
     city.innerHTML = ` ${json.name}`
     temp.innerHTML = `<p>Temperature:${json.main.temp}</p>`
     json.weather.forEach((element) => {
         weatherType.innerHTML = `<h2> Weather: ${element.main} </h2>`
     console.log(element.main)
     })
-    
-    console.log('-----------')
+    //-----------------------------
 
+
+    //-----Getting sunrise and sunrise times------
     // Convert sunrise and sunset timestamps to hours
     const sunriseTime = new Date(json.sys.sunrise * 1000); //*1000 to convert it in to milliseconds
     const sunsetTime = new Date(json.sys.sunset * 1000);
@@ -34,27 +43,18 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     console.log(`Sunrise: ${sunriseTime.getHours()}:${String(sunriseTime.getMinutes()).padStart(2, '0')}`);
 
 
+
     sunSection.innerHTML += `<p>Sunset: ${sunsetTime.getHours()}:${String(sunsetTime.getMinutes()).padStart(2, '0')}</p>`;
     console.log(`Sunset: ${sunsetTime.getHours()}:${String(sunsetTime.getMinutes()).padStart(2, '0')}`);
     
-    console.log('-----------')
-
-    
     })
-
-fetch ('https://api.openweathermap.org/data/2.5/weather?q=London,GB&units=metric&APPID=bc487ba1fa4b42fcfb85443237a7774e')
-.then((response)=> {
-    return response.json()
-})
-.then ((json) => {
-    console.log (json)
-    console.log(json.name)
-    console.log(json.main.feels_like)
-})
+}
+fetchWeather()
 
 
-//Fetch for 5 days forecast in Stockholm
-fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=bc487ba1fa4b42fcfb85443237a7774e')
+//----Fetching for 5 days forecast
+const fetchForecast = () => {
+fetch(URL_FORECAST)
 .then((response)=> {
     return response.json()
 })
@@ -82,15 +82,14 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
      // dayNumber är en string: [2, 3, 4, 5, 6], representerar dagarna i nummerform
      console.log(DayNumber)
 
-     const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+     const weekday = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 
      let day1 = weekday[DayNumber[0]];
      let day2 = weekday[DayNumber[1]];
      let day3 = weekday[DayNumber[2]];
      let day4 = weekday[DayNumber[3]];
      let day5 = weekday[DayNumber[4]];
-     let day6 = weekday[DayNumber[5]];
-     let day7 = weekday[DayNumber[6]];
+    
      //Här skrivs day som ex Weekday[2] = Tuesday utifrån arrayn 'DayNumber'
 
 
@@ -103,12 +102,32 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
      console.log(feelsLike)
 
      forecastSection.innerHTML += `
-         ${day1}: ${temperaturesAt12[0]}°C, ${feelsLike[0]}°C
-     <br>${day2}: ${temperaturesAt12[1]}°C, ${feelsLike[1]}°C
-     <br>${day3}: ${temperaturesAt12[2]}°C, ${feelsLike[2]}°C
-     <br>${day4}: ${temperaturesAt12[3]}°C, ${feelsLike[3]}°C
-     <br>${day5}: ${temperaturesAt12[4]}°C, ${feelsLike[4]}°C `
+     <div class='forecast-column'>
+     <p>Day</p>
+     <p>${day1}:</p>
+     <p>${day2}:</p>
+     <p>${day3}:</p>
+     <p>${day4}:</p>
+     <p>${day5}:</p>
+     </div>
    
-     
+     <div class='forecast-column'>
+     <p>Temp</p>
+     <p>${temperaturesAt12[0]}°C,</p>
+     <p>${temperaturesAt12[1]}°C,</p>
+     <p>${temperaturesAt12[2]}°C,</p>
+     <p>${temperaturesAt12[3]}°C,</p>
+     <p>${temperaturesAt12[4]}°C,</p>
+      </div> 
+
+    <div class='forecast-column'>
+    <p>Feels like</p>
+    <p>${feelsLike[0]}°C</p>
+    <p>${feelsLike[1]}°C</p>
+    <p>${feelsLike[2]}°C</p>
+    <p>${feelsLike[3]}°C</p>
+    <p>${feelsLike[4]}°C</p>
+    </div> `
     })
-    
+ }
+fetchForecast();

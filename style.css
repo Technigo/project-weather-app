@@ -1,5 +1,16 @@
+
+
 body {
-    background-color: orangered;
+    background-color: white;
+    font-family: 'Open Sans', sans-serif;
+}
+
+header {
+background-image:url("images/night.webp");
+background-size: cover;
+height: 400px; 
+border-bottom-left-radius: 40% 20%;
+border-bottom-right-radius: 40% 20%;
 }
 
 h1 {
@@ -7,7 +18,24 @@ h1 {
 }
 
 .forecast {
+    display: flex; 
+    justify-content: space-around;
     background-color: lightskyblue;
-    height: 200px; 
-    width: 200px; 
+    height: 250px; 
+    width: 100%; 
 }
+
+
+.forecast-label{
+    display: flex; 
+    justify-content: space-around;
+    
+}
+
+
+.days {
+    display: flex;
+    justify-content: space-around;
+}
+
+
