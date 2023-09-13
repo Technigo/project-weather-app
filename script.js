@@ -18,9 +18,12 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     // Create Date objects for sunset and sunrise times
     const sunset = new Date(sunsetTimestamp);
     const sunrise = new Date(sunriseTimestamp);
+    const currentDayOfWeek = new Date().getDay();
 
     container.innerHTML = `
-      <h1>Here's the weather in ${cityName} right now</h1>
+    <h1>Here's the weather in ${cityName}<h1/> 
+      <h3>${weekdays[currentDayOfWeek]}</h3>
+      <p>Temperature: ${temperature}°C</p>
       <p>Temperature: ${temperature}°C</p>
       <p>Weather: ${weatherDescription}</p>
       <p>Sunrise: ${sunrise.toLocaleTimeString()}</p>
@@ -46,13 +49,6 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         const weatherDescription = json.list[0].weather[0].description; // Current weather description
         const feelsLike = json.list[0].main.feels_like; // "Feels like" temperature
   
-        // Display weather information
-        container.innerHTML = `
-          <h1>Here's the weather in ${cityName} right now</h1>
-          <p>Temperature: ${temperature}°C (Feels Like: ${feelsLike}°C)</p>
-          <p>Weather: ${weatherDescription}</p>
-         
-        `;
   
         // Filter and group forecast data by date
         const groupedForecast = json.list.reduce((result, item) => {
@@ -76,6 +72,11 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
               const eveningTemperature = eveningItem.main.temp; // Temperature at 9:00 PM
               const morningFeelsLike = morningItem.main.feels_like; // "Feels like" temperature at 9:00 AM
               const eveningFeelsLike = eveningItem.main.feels_like; // "Feels like" temperature at 9:00 PM
+              const morningDescription = morningItem.weather[0].description; // Weather description at 9:00 AM
+              const eveningDescription = eveningItem.weather[0].description; // Weather description at 9:00 PM
+             const morningHumidity = morningItem.main.humidity; // Humidity at 9:00 AM
+              const eveningHumidity = eveningItem.main.humidity; // Humidity at 9:00 PM
+
         
               // Get the day of the week for the date
               const weekday = new Date(date).getDay();
@@ -84,8 +85,14 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
               day.innerHTML += `
                 <div class="forecast-day">
                   <h3>${weekdays[weekday]}</h3>
-                  <p>Morning (9 AM): ${morningTemperature}°C (Feels like: ${morningFeelsLike}°C)</p>
-                  <p>Evening (9 PM): ${eveningTemperature}°C (Feels like: ${eveningFeelsLike}°C)</p>
+                  <p>At 9 am</p>
+                  <p>Temperature: ${morningTemperature}°C (Feels like: ${morningFeelsLike}°C)</p>
+                  <p>Weather: ${morningDescription}</p>
+                  <p>Humidity: ${morningHumidity}%</p>
+                  <p>At 9 pm</p>
+                  <p>Temperature: ${eveningTemperature}°C (Feels like: ${eveningFeelsLike}°C)</p>
+                  <p>Weather: ${eveningDescription}</p>
+                  <p>Humidity: ${eveningHumidity}%</p>
                 </div>
               `;
             }
