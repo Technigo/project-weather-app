@@ -2,6 +2,8 @@ const container = document.getElementById(`weather`);
 const hamburgerMenu = document.getElementById("hamburger-menu");
 const navMenu = document.getElementById("nav-menu");
 const weatherIcon = document.getElementById("weather-icon");
+const sunrisetime = document.getElementById('sunrise-time')
+const sunsetTime = document.getElementById('sunset-time')
 
 
 
@@ -11,7 +13,6 @@ fetch(
   .then((response) => {
     return response.json();
   })
-
   .then((json) => {
     console.log(json);
     const roundedTemperature = parseFloat(json.main.temp).toFixed(1);
@@ -19,11 +20,11 @@ fetch(
     container.innerHTML += `
     <h1>${roundedTemperature} °C</h1>
     <h2>${json.name}</h2>
-    <p>Sunrise: ${json.sunriseTime}, Sunset: ${json.sunsetTime}</p>
     <p>${json.weather[0].description}</p>
-    <p>${json.weather[0].icon}<p/>
+    <p>Sunrise: ${json.sunriseTime}, Sunset: ${json.sunsetTime}</p>
+   
     `;
-
+  
     // Fetch the weather icon mappings from JSON file
     fetch("weatherIcons.json")
       .then((response) => response.json())
@@ -58,13 +59,13 @@ hamburgerMenu.addEventListener("click", function () {
 fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=168451996f01476589314aaee8750993")
   .then(response => response.json())
   .then((json) => {
-    /*if(json.sys) {
+    if(json.sys) {
       displaySunriseSunset(json.sys.sunrise, json.sys.sunset);
     } else {
       console.error('sys property not found in the response:', json);
     }
   })
-  .catch(error => console.error('Error:', error));*/
+  .catch(error => console.error('Error:', error));
 
   const displaySunriseSunset = (sunriseTimestamp, sunsetTimestamp) => {
     const sunriseDate = new Date(sunriseTimestamp * 1000);
@@ -79,15 +80,3 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     document.getElementById('sunrise-time').textContent = sunriseTime;
     document.getElementById('sunset-time').textContent = sunsetTime;
   }
-
-
-
-
-
-/*fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=168451996f01476589314aaee8750993")
-.then(response => response.json())
-.then((json) => {
-  displaySunriseSunset(json.sys.sunrise, json.sys.sunset);
-  
-})
-.catch(error => console.error('Error:', error));*/
