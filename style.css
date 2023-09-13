@@ -1,0 +1,22 @@
+body{
+  font-family: 'Roboto', sans-serif;
+}
+
+#weatherApp{
+  border: 1px solid black;
+  display: block;
+  margin: auto;
+  max-width: 350px;
+}
+#currentWeather{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(img/sergei-a--heLWtuAN3c-unsplash.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  text-align: center;
+  padding-bottom: 5rem;
+  padding-top: 2rem;
+  opacity: 0.7;
+  border-radius: 0 0 20% 20%;
+}
