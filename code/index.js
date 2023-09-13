@@ -4,8 +4,14 @@ const daysForecast = document.querySelectorAll(".day");
 const iconsForecast = document.querySelectorAll(".icon");
 const tempsForecast = document.querySelectorAll(".temp-forecast");
 const windForecast = document.querySelectorAll(".wind-forecast")
-
-
+const sunrise = document.getElementById("sunrise");
+const sunset = document.getElementById("sunset");
+const cityName = document.getElementById("city");
+const descriptionEl = document.getElementById("desc");
+const windMain = document.getElementById("wind");
+const iconMain = document.getElementById("icon-main");
+const dateNameToday = document.getElementById("date");
+const timeToday = document.getElementById("time")
 
 
 const baseUrl = "https://api.openweathermap.org/data/2.5/weather?";
@@ -17,8 +23,8 @@ const URL = `${baseUrl}q=${lat},${lon}&units=metric&APPID=${apiKey}`
 
 
 
-const fetchWeatherAsync = async () =>{
-  const response = await fetch(URL).catch((err) => console.log("my ERROR" , err));
+const fetchWeatherAsync = async () => {
+  const response = await fetch(URL).catch((err) => console.log("my ERROR", err));
   const data = await response.json()
   console.log(data)
   updateHTML(data)
@@ -31,9 +37,13 @@ fetchWeatherAsync()
 const baseAPIForecast = "https://api.openweathermap.org/data/2.5/forecast?";
 const URLForecast = `${baseAPIForecast}q=${lat},${lon}&units=metric&APPID=${apiKey}`
 
-// date
+// dates forecast and today date
 const daysName = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const today = new Date();
+
+const todayWeekDay = daysName[today.getDay()];
+
+date.innerText = todayWeekDay
 
 const nextFiveDAys = [];
 
@@ -45,16 +55,16 @@ for (let index = 1; index < 6; index++) {
   nextFiveDAys.push(dayName)
   
 }
-console.log(nextFiveDAys)
+
 daysForecast.forEach((dayForc , index)=>{
-  dayForc.innerHTML = nextFiveDAys[index]
-})
+  dayForc.innerText = (nextFiveDAys[index]).substr(0,3)
+});
+
 // fetch forecast
 
 const fetchForecastAsync = async () =>{
   const responseForecast = await fetch(URLForecast).catch((err)=> console.log("ERROR" , err));
   const data = await responseForecast.json();
-  console.log(data)
 
   iconsForecast.forEach((icon , index)=>{
     const iconNum = data.list[index].weather[0].icon;
@@ -63,12 +73,12 @@ const fetchForecastAsync = async () =>{
   });
   tempsForecast.forEach((temp , index)=>{
     const temperture = data.list[index].main.temp;
-    temp.innerHTML =`${Math.floor(temperture)} °C` 
+    temp.innerText =`${Math.floor(temperture)} °C` 
   });
 
   windForecast.forEach((wind , index)=>{
     const windSpeed = data.list[index].wind.speed;
-    wind.innerHTML = `${Math.floor(windSpeed)} m/s`
+    wind.innerText = `${Math.floor(windSpeed)} m/s`
   })
   
   
@@ -76,13 +86,37 @@ const fetchForecastAsync = async () =>{
 }
 fetchForecastAsync()
 
-const updateHTML = (data) =>{
- 
-    console.log(data.name)
-    console.log(data.main.temp)
-    console.log(data.wind.speed)
-    console.log(data.weather[0].description)
-    tempElement.innerText = data.main.temp;
+
+const updateHTML = (data) => {
+
+  console.log(data)
+  const sunriseMilli = data.sys.sunrise;
+  const sunsetMilli = data.sys.sunset;
+  const timeZone = data.timezone;
+  
+  // sunrise and sunset time
+  let newSunrise = new Date((sunriseMilli + timeZone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString([], { timeStyle: 'short' });
+
+  let newSunset = new Date((sunsetMilli + timeZone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString([], { timeStyle: 'short' });
+
+  // console.log(newSunrise);
+  // console.log(newSunset);
+
+  sunrise.innerText = `Sunrise: ${newSunrise}`
+  sunset.innerText = `Sunset: ${newSunset}`
+
+  tempElement.innerText =`${Math.floor(data.main.temp)} °C` ;
+  windMain.innerText = `${Math.floor(data.wind.speed)} m/s`;
+  cityName.innerText = data.name;
+  descriptionEl.innerText = data.weather[0].description;
+  iconMain.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+
+  // time now
+  let newTime = new Date((data.dt + timeZone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString([], { timeStyle: 'short' });
+
+timeToday.innerText = newTime
+
+
 
 
 }
