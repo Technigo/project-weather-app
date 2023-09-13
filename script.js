@@ -21,7 +21,7 @@ const apiData = () => {
       /* ******** Sunrise and Sunset ******** */
       city.innerHTML = `${data.name}`;
       weather.innerHTML = `${data.weather[0].description}`;
-      temperature.innerHTML = `${data.main.temp}`;
+      temperature.innerHTML = `${data.main.temp.toFixed(1)}`;
 
       // Convert timestamps to readable time format
       const sunriseTime = new Date(data.sys.sunrise * 1000); //Convert to milliseconds
@@ -66,7 +66,8 @@ const apiData = () => {
             let weekday = converted.toUTCString().substring(0, 3);
             let iconLink = day.weather[0].icon;
             //This makes sure that only the five upcoming days will be displayed
-            if (counter < 5 && index !== 0) {
+           // if (counter < 5 && index !== 0 ) {
+            if (counter < 5 ) {
               forecast.innerHTML += `
                       <div>
                       <p>${weekday} </p>
