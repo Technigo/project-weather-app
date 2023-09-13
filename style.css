@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.forecast-wrapper ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.forecast-wrapper ul li {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed;
+    padding: 0.6em;
+}
