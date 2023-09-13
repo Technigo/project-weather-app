@@ -2,6 +2,7 @@ const forecast = document.getElementById("forecast");
 const day = document.getElementById("day");
 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const container = document.getElementById('sthweather');
+const messageContainer = document.getElementById('message-text');
 
 fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=8fa7c461aec946fde31f330992fce9d6')
   .then((response) => {
@@ -19,7 +20,6 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     const sunset = new Date(sunsetTimestamp);
     const sunrise = new Date(sunriseTimestamp);
     const currentDayOfWeek = new Date().getDay();
- 
 
 
     function generateWeatherMessage(description) {
@@ -61,6 +61,8 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     console.error('Error fetching weather data:', error);
   });
 
+  //display message depending on kind of weather for example if rain "Don't forget your umbrella", cloudy "You might wanna bring an extra sweater and so on"
+
   function fetchWeatherData() {
     fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=8fa7c461aec946fde31f330992fce9d6')
       .then((response) => {
@@ -70,12 +72,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         return response.json();
       })
       .then((json) => {
-        const cityName = json.city.name;
-        const temperature = json.list[0].main.temp; // Current temperature
-        const weatherDescription = json.list[0].weather[0].description; // Current weather description
-        const feelsLike = json.list[0].main.feels_like; // "Feels like" temperature
-  
-  
+       
         // Filter and group forecast data by date
         const groupedForecast = json.list.reduce((result, item) => {
           const date = item.dt_txt.split(' ')[0];
@@ -132,3 +129,12 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
   }
   
   fetchWeatherData();
+
+  function doSomething(latitude, longitude) {
+    console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+  }
+  
+  // Get the user's current position and call doSomething with the coordinates
+  navigator.geolocation.getCurrentPosition((position) => {
+    doSomething(position.coords.latitude, position.coords.longitude);
+  });
