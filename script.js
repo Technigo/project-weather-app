@@ -20,14 +20,30 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     const sunrise = new Date(sunriseTimestamp);
     const currentDayOfWeek = new Date().getDay();
  
-    //let weatherMessage = "";
-    //if (weatherDescription.includes("rain")) {
-     // weatherMessage = "Don't forget your umbrella!";
-    //} else if (weatherDescription.includes("cloud")) {
-      //weatherMessage = "You might want to bring an extra sweater.";
-    //} else (weatherDescription.includes("sun")) {
-     //weatherMessage = "No sleeves today";
-    //}
+
+    function generateWeatherMessage(description) {
+      let weatherMessage = "";
+    
+      if (description.includes("rain")) {
+        weatherMessage = "Don't forget your umbrella!";
+      } else if (description.includes("cloud")) {
+        weatherMessage = "Here's hoping for a sunny sky later on";
+      } else if (description.includes("sun")) {
+        weatherMessage = "Keep them sunglasses nearby";
+      } else {
+        weatherMessage = "Weather conditions may vary.";
+      }
+    
+      return weatherMessage;
+    }
+    
+    // Generate the weather message based on the weather description
+    const weatherMessage = generateWeatherMessage(weatherDescription);
+    
+    // Display the weather message
+    messageContainer.innerHTML = `<h2>${weatherMessage}</h2>`;
+
+
     
     container.innerHTML = `
     <h1>Here's the weather in ${cityName}<h1/> 
