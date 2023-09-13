@@ -2,6 +2,7 @@ body {
     background: #bde8fa;
     margin: 40px;
     border-color: black;
+    font-family: 'Montserrat';
 }
 
 section {
@@ -11,8 +12,10 @@ section {
 
 h1 {
     color: #164a68;
+    font-size: 24px;
 }
 
 h2 {
     color: #164a68;
+    font-size: 20px;
 }

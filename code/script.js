@@ -13,6 +13,7 @@ const city = "test city";
 
 //const BASE_URL = https://api.openweathermap.org/data/2.5/weather
 //const API_KEY = 9055fb4826563eac25a47e211073a627 //Beckie's API key
+//Stenli's API key???
 
 
 //----------- Functions after this comment -----------------//
@@ -24,12 +25,16 @@ const city = "test city";
 fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=9055fb4826563eac25a47e211073a627')
     .then(response => response.json())
     .then((json) => {
-        console.group(json)
-        document.getElementById("cityName").innerText = (`City name: ${json.name}`)
-        //  document.getElementById("cityTemp").innerText
+        console.log(json)
+        updateHTML(json);
     })
     .catch((error) => console.error('Error:', error)) // Handle any errors that occurred during the API request
 
+const updateHTML = (json) => {
+    document.getElementById("cityName").innerText = (`City name: ${json.name}`)
+    document.getElementById("cityTemp").innerText = (`City Temp: ${json.main.temp.toFixed(1)}`)
+    document.getElementById("weatherDescription").innerText = (`Description: ${json.weather[0].description}`)
+}
 
 
 
