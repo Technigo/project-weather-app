@@ -4,9 +4,6 @@ const typeOfWeather = document.getElementById("typeOfWeather");
 const sunUpDown = document.getElementById("sunUpDown");
 const locationSpecifics = document.getElementById("locationSpecifics");
 
-// const sunrise = document.getElementById("sunrise");
-// const sunset = document.getElementById("sunset");
-
 const fetchApi = () => {
     fetch('https://api.openweathermap.org/data/2.5/weather?q=Varberg,Sweden&units=metric&APPID=6e3a3db02f585218db04cdc935f5290c')
         .then((response) => {
@@ -41,6 +38,7 @@ const fetchApi = () => {
             // Adds values to HTML via innerHTML with the new variable names
             typeOfWeather.innerHTML = `<p>${firstUpperLetter}${restOfWord}</p>`;
 
+            
            // Set sunrise and sunset
 
            // Converting the UNIX timestamp into a human-readable time.
@@ -62,8 +60,7 @@ const fetchApi = () => {
         .catch((error) => {
             // Shows an error message if fetch doesn't work
             console.error('Something went wrong', error);
-        });
-    
+        });  
 };
 
 fetchApi();
