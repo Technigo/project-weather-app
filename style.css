@@ -1,0 +1,22 @@
+body {
+  @import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,300&display=swap");
+}
+/* Initially hide the nav-menu */
+.nav-menu {
+  display: none;
+}
+
+/* Style the hamburger menu icon */
+.hamburger-menu {
+  cursor: pointer;
+}
+
+/* Style the list items inside the nav-menu */
+.nav-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.nav-menu li {
+  margin: 10px 0;
+}
