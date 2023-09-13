@@ -3,5 +3,18 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-   
+}
+
+img {
+    width: 50%;
+}
+
+ul {
+    display: flex;
+    padding: 0;
+    list-style: none;
+}
+
+li {
+    margin-right: 10px;
 }

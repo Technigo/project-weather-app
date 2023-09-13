@@ -38,8 +38,8 @@ const updateHTML = (data) => {
   let newSunset = new Date((sunsetMilli + timeZone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString([], { timeStyle: 'short' });
   console.log(newSunrise);
   console.log(newSunset);
-  sunrise.innerText = newSunrise
-  sunset.innerText = newSunset
+  sunrise.innerText = `Sunrise ${newSunrise}`
+  sunset.innerText = `Sunset ${newSunset}`
   // const sunsetMTime = data.sys.sunset
   // const sunsetTime = sunsetMTime.getMilliseconds();
   // console.log(sunsetTime);
