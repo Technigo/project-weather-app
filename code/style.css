@@ -48,8 +48,7 @@
 
 .five-day-prognosis {
     width: 100%;
-    text-align: center; /* Center-align the text within the containers */
-    margin: 0 auto; /* Center the containers horizontally */
+    margin: 0 38px; /* Center the containers horizontally */
 }
 
 .sunUpDown {
