@@ -1,5 +1,6 @@
 body{
   font-family: 'Roboto', sans-serif;
+  font-weight: 300;
 }
 
 #weatherApp{
@@ -19,4 +20,14 @@ body{
   padding-top: 2rem;
   opacity: 0.7;
   border-radius: 0 0 20% 20%;
+}
+
+#weatherForecast {
+  padding: 40px 40px;
+}
+
+#weatherForecast div {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
