@@ -16,10 +16,16 @@
             <div id="current-city"></div>
             <div><button id="swipe-button" class="swipe-button"> > </button></div>
         </div>
-        <div id="weather">
 
-            <table border="1"> <!-- You can add borders for visualization -->
-                <tr>
+
+        <div id="weather">
+            <table id="weather-forecast-table" border="0"> <!-- You can add borders for visualization -->
+                <thead></thead>
+                <tbody id="weather-forecast-tbody">
+                    <tr id="forecast-tr"></tr>
+                </tbody>
+                <tfoot></tfoot>
+                <!-- <tr>
                     <td>Row 1, Column 1</td>
                     <td>Row 1, Column 2</td>
                     <td>Row 1, Column 3</td>
@@ -54,8 +60,9 @@
                     <td>Row 6, Column 2</td>
                     <td>Row 6, Column 3</td>
                     <td>Row 6, Column 4</td>
-                </tr>
+                </tr> -->
             </table>
+
         </div>
         <script src="./script.js">
         </script>
