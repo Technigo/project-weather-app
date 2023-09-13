@@ -2,6 +2,7 @@ const forecast = document.getElementById("forecast");
 const day = document.getElementById("day");
 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const container = document.getElementById('sthweather');
+const messageContainer = document.getElementById('message-text');
 
 fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=8fa7c461aec946fde31f330992fce9d6')
   .then((response) => {
@@ -21,13 +22,27 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     const currentDayOfWeek = new Date().getDay();
     
 
-    //let weatherMessage = "";
-    //if (weatherDescription.includes("rain")) {
-     // weatherMessage = "Don't forget your umbrella!";
-    //} else if (weatherDescription.includes("cloud")) {
-      //weatherMessage = "You might want to bring an extra sweater.";
-    //} else (weatherDescription.includes("sun")) {
-     //weatherMessage = "Don't forget your sunglasses";
+    function generateWeatherMessage(description) {
+      let message = "";
+    
+      if (description.includes("rain")) {
+        message = "Don't forget your umbrella!";
+      } else if (description.includes("cloud")) {
+       message = "Here's hoping for a sunny sky later on";
+      } else if (description.includes("sun")) {
+       message = "Keep them sunglasses nearby";
+      } else {
+       message = "Weather conditions may vary.";
+      }
+    
+      return message;
+    }
+    
+    // Generate the weather message based on the weather description
+    const message = generateWeatherMessage(weatherDescription);
+    
+    // Display the weather message
+    messageContainer.innerHTML = `<h2>${message}</h2>`;
 
 
     
@@ -114,3 +129,12 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
   }
   
   fetchWeatherData();
+
+  function doSomething(latitude, longitude) {
+    console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+  }
+  
+  // Get the user's current position and call doSomething with the coordinates
+  navigator.geolocation.getCurrentPosition((position) => {
+    doSomething(position.coords.latitude, position.coords.longitude);
+  });
