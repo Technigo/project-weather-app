@@ -3,7 +3,7 @@ const day = document.getElementById("day");
 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const container = document.getElementById('sthweather');
 
-fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=8fa7c461aec946fde31f330992fce9d6')
+fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=8fa7c461aec946fde31f330992fce9d6')
   .then((response) => {
     return response.json();
   })
@@ -11,16 +11,21 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
     const cityName = json.name;
     const temperature = json.main.temp;
     const weatherDescription = json.weather[0].description;
-    const sunset = sunsetNewDate(json.sys.sunset * 1000);
-    const sunrise = sunriseNewDate(json.sys.sunrise * 1000);
-    const feelsLike = json.main.feels_like
+    const sunsetTimestamp = json.sys.sunset * 1000;
+    const sunriseTimestamp = json.sys.sunrise * 1000;
+    const feelsLike = json.main.feels_like;
+
+    // Create Date objects for sunset and sunrise times
+    const sunset = new Date(sunsetTimestamp);
+    const sunrise = new Date(sunriseTimestamp);
+
     container.innerHTML = `
       <h1>Here's the weather in ${cityName} right now</h1>
       <p>Temperature: ${temperature}°C</p>
       <p>Weather: ${weatherDescription}</p>
-      <p>Sunrise: ${sunriseNewDate}</p>
-      <p>Sunset: ${sunsetNewDate}</p>
-      <p>Weather feels like: ${feels_like.value} ${feels_like.unit}
+      <p>Sunrise: ${sunrise.toLocaleTimeString()}</p>
+      <p>Sunset: ${sunset.toLocaleTimeString()}</p>
+      <p>Weather feels like: ${feelsLike}°C</p>
     `;
   })
   .catch((error) => {
