@@ -1,8 +1,9 @@
 {
-  "sunny": "sun.png",
-  "clouds": "cloud.png",
+  "sunny": "sunny.png",
+  "clouds": "clouds.png",
   "rain": "rain.png",
-  "Broken": "broken-clouds.png",
+  "broken-clouds": "broken-clouds.png",
   "lightning": "lightning.png",
-  "snow": "snowflake"
+  "snow": "snow.png",
+  "default": "default.png"
 }
