@@ -35,8 +35,6 @@ https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&
 The response should look something like this (this has been run through jsonlint.com to add newlines and indentation):
 
 ```
-
-<!-- this is the retrieved object, our variable is weatherObject -->
 {
 	"coord": {
 		"lon": 18.06,

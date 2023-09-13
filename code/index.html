@@ -4,9 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Olga Lepistö, Mikael Öling, Frauke Schmidt">
+    <link rel="icon" type="image/png" sizes="32x32" href="./desing/favicon-32x32.png" />
+    <!-- we need a favicon here -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Weather app</title>
+    <title>Weather app - trial project</title>
 </head>
 
 <body>
@@ -14,7 +16,15 @@
         <section id="daily-forecast">
             <p>
                 <span id="weather-description">weather description</span>
-                <span id="main-temp"></span>
+                <span id="main-temp">current temperature</span>
+            </p>
+            <p>
+                <span>Sunrise</span>
+                <span id="sunrise">sunrisevalue</span>
+            </p>
+            <p>
+                <span>Sunset</span>
+                <span id="sunset">sunsetvalue</span>
             </p>
         </section>
 
@@ -23,30 +33,30 @@
         </section>
 
         <section id="daily-advice">
-            <p id="daily-tipps"></p>
+            <p id="daily-tipps">daily weathertipp</p>
         </section>
 
         <section id="weekly-forecast">
             <div>
                 <div id="day-one">
-                    <span>fdfsfd </span>
-                    <span>fdsfsfds</span>
+                    <span>day1 </span>
+                    <span>temperature1</span>
                 </div>
                 <div id="day-two">
-                    <span></span>
-                    <span></span>
+                    <span>day2</span>
+                    <span>temperature2</span>
                 </div>
                 <div id="day-three">
-                    <span></span>
-                    <span></span>
+                    <span>day3</span>
+                    <span>temperature3</span>
                 </div>
                 <div id="day-four">
-                    <span></span>
-                    <span></span>
+                    <span>day4</span>
+                    <span>temperature4</span>
                 </div>
                 <div id="day-five">
-                    <span></span>
-                    <span></span>
+                    <span>day5</span>
+                    <span>temperature5</span>
                 </div>
             </div>
         </section>
@@ -59,9 +69,10 @@
         </section>
 
         <footer>
-            <div id="weather-container">
+            <!-- dont need it any more 
+                <div id="weather-container">
                 <p>Loading...</p>
-            </div>
+            </div> -->
             <p>Coded by: Olga Lepistö, Mikael Öling, Frauke Schmidt</p>
     </div>
     </footer>

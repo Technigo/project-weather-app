@@ -1,10 +1,11 @@
-*{
+/*  resetting all predefined margins/paddings to 0, border-box includes padding+border if sizes are declared for containers */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 
-#test{
+#test {
     border-bottom: 3px dotted red;
 }
