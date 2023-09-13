@@ -79,13 +79,14 @@ const saveData = (forecastData) => {
         // Checks if the date is already in the dailyTemperatures object declared above
         if (!dailyTemperatures[date]) {
             dailyTemperatures[date] = {
+                // Sets all needed values
                 day,
                 minTemp: temperature.minTemp,
                 maxTemp: temperature.maxTemp,
                 icon: temperature.icon,
             };
         } else {
-            // Update min and max temperatures if needed
+            // Update min and max temperatures if they need to be updated
             dailyTemperatures[date].minTemp = Math.min(dailyTemperatures[date].minTemp, temperature.minTemp);
             dailyTemperatures[date].maxTemp = Math.max(dailyTemperatures[date].maxTemp, temperature.maxTemp);
         }
@@ -106,46 +107,6 @@ const createTable = (dailyTemperatures) => {
             forecastSection.innerHTML += `<td class="day-style">${weather.day}</td><td><img src="${iconUrl}" alt="Weather Icon"></td><td>${weather.maxTemp}° / ${weather.minTemp} °C</td>`;
         }
 };
-
-// const createTable = (forecastData) => {
-//     forecastSection.innerHTML = "";
-//     console.log(forecastData);
-//         // Create an object to store temperature data for each day
-//     const dailyTemperatures = {};
-    
-//     forecastData.list.forEach((item) => {
-//         const date = item.dt_txt.split(' ')[0]; // Extract the date part from dt_txt
-//         const day = getDayOfWeek(item.dt); // Get the day of the week
-//         const temperature = {
-//             minTemp: item.main.temp_min.toFixed(0), // Gets the minimum temperature for each day
-//             maxTemp: item.main.temp_max.toFixed(0), // Gets the maximum temperature for each day
-//             icon: item.weather[0].icon, // Get the icon from the weather array
-//         };
-//     // Check if the date is already in the dailyTemperatures object
-//     if (!dailyTemperatures[date]) {
-//         dailyTemperatures[date] = {
-//             day,
-//             minTemp: temperature.minTemp,
-//             maxTemp: temperature.maxTemp,
-//             icon: temperature.icon,
-//         };
-//     } else {
-//         // Update min and max temperatures if needed
-//         dailyTemperatures[date].minTemp = Math.min(dailyTemperatures[date].minTemp, temperature.minTemp);
-//         dailyTemperatures[date].maxTemp = Math.max(dailyTemperatures[date].maxTemp, temperature.maxTemp);
-//     }
-//     });
-
-// // Iterate through dailyTemperatures and generate HTML
-// for (const date in dailyTemperatures) {
-//     if (dailyTemperatures.hasOwnProperty(date)) {
-//         const weather = dailyTemperatures[date];
-//         const iconUrl = `https://openweathermap.org/img/wn/${weather.icon}.png`; // Construct the icon URL
-//         forecastSection.innerHTML += `<td class="day-style">${weather.day}</td><td><img src="${iconUrl}" alt="Weather Icon"></td><td>${weather.maxTemp}° / ${weather.minTemp} °C</td>`;
-//     }
-// }
-// };
-
 
 // This function takes a parameter "timestamp", which we use in the getMinMax function to set the day and append it to the forecastSection.
 function getDayOfWeek(timestamp) {
