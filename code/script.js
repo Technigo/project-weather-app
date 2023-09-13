@@ -75,7 +75,7 @@ const fiveDayForecast = () => {
                  // Check if the time is 12:00:00 (noon)
                  return item.dt_txt.includes("12:00:00")
              })
-             console.log(json)
+
              console.log(filteredData);
              // You can now use filteredData to display the weather at 12:00 PM every day
              showWeatherData(filteredData)
@@ -86,8 +86,6 @@ const fiveDayForecast = () => {
 
  const showWeatherData = (filteredData) => {
      let otherDayForecast = ''
-     let windSpeed = json.main[0].wind.speed
-     console.log(windSpeed)
 console.log(otherDayForecast)
      filteredData.forEach((day, idx) => {
          if (idx >=1 && idx <=4) {
