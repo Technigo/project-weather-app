@@ -2,6 +2,8 @@ const temp = document.getElementById("temp");
 const city = document.getElementById("city");
 const typeOfWeather = document.getElementById("typeOfWeather");
 const forecastSection = document.getElementById("fiveDayPrognosis");
+const sunUpDown = document.getElementById("sunUpDown");
+const locationSpecifics = document.getElementById("locationSpecifics");
 
 const fetchApi = () => {
     fetch('https://api.openweathermap.org/data/2.5/weather?q=Varberg,Sweden&units=metric&APPID=6e3a3db02f585218db04cdc935f5290c')
@@ -36,12 +38,32 @@ const fetchApi = () => {
 
             // Adds values to HTML via innerHTML with the new variable names
             typeOfWeather.innerHTML = `<p>${firstUpperLetter}${restOfWord}</p>`;
+
+            
+           // Set sunrise and sunset
+
+           // Converting the UNIX timestamp into a human-readable time.
+            const sunrise = new Date((json.sys.sunrise + json.timezone) * 1000); 
+
+            //Set a short timestamp to only show hour and minute.
+            const sunriseShort = sunrise.toLocaleTimeString(["en-GB"], { timeStyle: `short`}); 
+
+            const sunset = new Date((json.sys.sunset + json.timezone) * 1000);;
+            const sunsetShort = sunset.toLocaleTimeString(["en-GB"], { timeStyle: `short`});
+
+           locationSpecifics.innerHTML += `
+               <div class="sunUpDown">
+                    <p>Sunrise ${sunriseShort}</p>
+                    <p>Sunset ${sunsetShort}</p>
+                </div>
+             `;
         })
         .catch((error) => {
             // Shows an error message if fetch doesn't work
             console.error('Something went wrong', error);
-        })
-}
+        });  
+};
+
 fetchApi();
 
 // Function to fetch weather with timestamps
