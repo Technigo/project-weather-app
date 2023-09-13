@@ -14,8 +14,8 @@
 // New URL for current weather in Stockholm
 // https://api.openweathermap.org/data/2.5/weather?q=stockholm,se&appid=5660c7e2a75e2c204e4b057312e71c93
 //const BASE_URL = "https://api.openweathermap.org/data/2.5/weather?";
-//const API_KEY = "&appid=5660c7e2a75e2c204e4b057312e71c93"; // Query param
-//const word = "q=stockholm,se"; // Path param
+const API_KEY = "5660c7e2a75e2c204e4b057312e71c93"; // Query param
+let cityName = "Stockholm"; // Path param
 //const URL = ${BASE_URL}${word}${API_KEY};
 //console.log(URL);
 
@@ -68,15 +68,15 @@ fetchStockholmWeather();
 
 const fiveDayForecast = () => {
   fetch(
-    "https://api.openweathermap.org/data/2.5/forecast?q=stockholm,se&units=metric&appid=5660c7e2a75e2c204e4b057312e71c93"
+    `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=${API_KEY}`
   )
     .then((response) => {
       return response.json();
     })
     .then((json) => {
-      const filteredData = json.list.filter((item) => {
-        // Check if the time is 12:00:00 (noon)
-        return item.dt_txt.includes("12:00:00");
+      const filteredData = json.list.filter((dayWeather) => {
+        // Check if the time is 12:00 (noon)
+        return dayWeather.dt_txt.includes("12:00");
       });
 
       console.log(filteredData);
@@ -92,18 +92,21 @@ const showWeatherData = (filteredData) => {
 
   console.log(otherDayForecast);
   filteredData.forEach((day, idx) => {
-    if (idx >= 1 && idx <= 4) {
-      const { main, wind_speed, weather } = day;
+    if (idx >= 0 && idx <= 4) {
+      const { main, wind, weather } = day;
       const { temp } = main;
       const icon = weather[0].icon;
-
+      const { speed: wind_speed } = wind; // Access wind speed from the wind object
+      // Use toFixed(0) to round the temperature to a whole number
+      const roundedTemp = temp.toFixed(0);
+      
       otherDayForecast += `
  <div class="day" id="day">
       <div class="day">${new Date(day.dt * 1000).toLocaleDateString("en-US", {
         weekday: "short",
       })}</div>
       <img src="https://openweathermap.org/img/wn/${icon}@2x.png">
-      <div class="temp">${temp}&#176;C</div>
+      <div class="temp">${roundedTemp}&#176;C</div>
       <div class="wind">${wind_speed} m/s</div>
   </div>
  `;
