@@ -13,46 +13,39 @@ const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units
 
 const API_CALL = `${url}`;
 
-fetch(`${API_CALL}`)
-  .then((response) => response.json())
-  .then((data) => {
-    console.log(data);
-    city.innerHTML = `${data.name}`;
-    weather.innerHTML = `${data.weather[0].description}`;
-    temperature.innerHTML = `${data.main.temp}`;
-
-    // Convert timestamps to readable time format
-    const sunriseTime = new Date(data.sys.sunrise * 1000); //Convert to milliseconds
-    const sunsetTime = new Date(data.sys.sunset * 1000);
-
-    // Format the times as HH.MM:SS
-    const sunriseFormatted = sunriseTime.toLocaleTimeString("sv-SE", {
-      timeStyle: "short",
-      hour12: false,
-    });
-    const sunsetFormatted = sunsetTime.toLocaleTimeString("sv-SE", {
-      timeStyle: "short",
-      hour12: false,
-    });
-
-    sunrise.innerHTML = sunriseFormatted;
-    sunset.innerHTML = sunsetFormatted;
-  });
-// .throw((error) => console.log(error));
-//.toFixed(1)
-const apiForecast = () => {
+const apiData = () => {
   fetch(API_CALL)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
+      /* ******** Sunrise and Sunset ******** */
+      city.innerHTML = `${data.name}`;
+      weather.innerHTML = `${data.weather[0].description}`;
+      temperature.innerHTML = `${data.main.temp}`;
+
+      // Convert timestamps to readable time format
+      const sunriseTime = new Date(data.sys.sunrise * 1000); //Convert to milliseconds
+      const sunsetTime = new Date(data.sys.sunset * 1000);
+
+      // Format the times as HH.MM:SS
+      const sunriseFormatted = sunriseTime.toLocaleTimeString("sv-SE", {
+        timeStyle: "short",
+        hour12: false,
+      });
+      const sunsetFormatted = sunsetTime.toLocaleTimeString("sv-SE", {
+        timeStyle: "short",
+        hour12: false,
+      });
+
+      sunrise.innerHTML = sunriseFormatted;
+      sunset.innerHTML = sunsetFormatted;
+
+      /* Forecast */
       let lat = data.coord.lat;
       let lon = data.coord.lon;
       let localTime = new Date((data.dt + data.timezone) * 1000);
       let subbedTime = localTime.toUTCString().substring(17, 22);
-      city.innerHTML = `${data.name}`;
 
-      weather.innerHTML = `${data.weather[0].description}`;
-      temperature.innerHTML = `${data.main.temp.toFixed(1)}`;
       console.log(`Local Time is: ${subbedTime}`);
       console.log(localTime.toUTCString());
       const part = "current,minutely,hourly,alerts";
@@ -89,4 +82,4 @@ const apiForecast = () => {
         });
     });
 };
-apiForecast();
+apiData();
