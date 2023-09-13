@@ -1,6 +1,6 @@
-const city = document.getElementById('') //skriva in id när HTML är klar
-const weather = document.getElementById('')
-const temperature = document.getElementById('')
+const city = document.getElementById('city')
+const weather = document.getElementById('weather')
+const temperature = document.getElementById('teperature')
 
 const API_KEY = "b881032f7a405f3e6e05ebbfb98e3e49"
 
