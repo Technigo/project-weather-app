@@ -4,6 +4,10 @@ const tempToday = document.getElementById("tempToday");
 const tempTextCelsius = document.getElementById("tempTextCelsius"); // NEW
 const localTime = document.getElementById("localTime"); // NEW
 const weatherDescription = document.getElementById("weatherDescription");
+const forecastWeekdays = document.getElementById("forecastWeekdays"); // NEW
+const forecastIcon = document.getElementById("forecastIcon"); // NEW
+const forecastTemp = document.getElementById("forecastTemp"); // NEW
+const forecastWind = document.getElementById("forecastWind"); // NEW
 
 const APIKEY = "a0251d9b53172abcbe6a9263f3d13544"; // Change name to CAPITAL as it won't change throughout the file
 let city = "London"; // Initiate variable "city" in order to update it later when switching to other cities
@@ -15,7 +19,7 @@ const todaysWeather = (city) => {
         return response.json();
     })
     .then((json) => {
-        console.log(json);
+        console.log(json); // to be deleted before hand-in
         // Display city name and today's temperature
         cityName.innerText = `${json.name}`;
         tempToday.innerText = `${json.main.temp.toFixed(1)}`;
@@ -42,11 +46,27 @@ const fiveDaysForecast = (city) => {
             return response.json();
         })
         .then((json) => {
-            console.log(json);
+            console.log(json); // to be deleted before hand-in
+            // Filter the weather forecast data so it only contains data at 12:00 every day
+            const filteredForecastData = json.list.filter((dataPoint) => (dataPoint.dt_txt.includes("12:00")));
+            console.log(filteredForecastData); // to be deleted before hand-in
+            
+            filteredForecastData.forEach((dataPoint) => {
+                // Convert data in dt in the filtered weather forecast data to date and time and extract the weekday from there
+                const weekDay = new Date(dataPoint.dt * 1000).toString().split(" ")[0];
+                let { icon } = dataPoint.weather[0]; // the whole object with icon id, weather code and description is needed to be able to identify the corresponding icon
+                const temp = dataPoint.main.temp.toFixed(1);
+                const windSpeed = dataPoint.wind.speed;
+
+                forecastWeekdays.innerHTML += `<p>${weekDay}</p>`;
+                forecastTemp.innerHTML += `<p>${temp}°C</p>`;
+                forecastIcon.innerHTML += `<img src="https://openweathermap.org/img/wn/${icon}@2x.png" />` //Source for weather codes and icons: https://openweathermap.org/weather-conditions
+                forecastWind.innerHTML += `<p>${windSpeed}m/s</p>`;
+            });
+             
         })
 }
 
 // Invoke functions for today's weather and five-day forecast with the base city as argument
 todaysWeather("London");
 fiveDaysForecast("London");
-
