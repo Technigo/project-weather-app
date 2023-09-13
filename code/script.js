@@ -9,7 +9,7 @@ let weatherDescription = document.getElementById("weather-description");
 
 //const weatherURL = "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=89d1a944a381d671e0d7eca3b8362f21"; // old
 
-const BASE_URL ="https://api.openweathermap.org/data/2.5/weather"
+const BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
 const API_KEY = "89d1a944a381d671e0d7eca3b8362f21";
 const city = "Stockholm,Sweden";
 
@@ -26,14 +26,14 @@ const fetchWeather = () => {
     fetch(URL)
         // gets raw data
         .then(response => response.json())
-            // convert  Objekt to string
+        // convert  Objekt to string
         .then(data => {
             console.log(data)
             weatherObject = data
             // console.log(weatherObject)
         })
-        setTimeout(() => {insertWeatherdescription()}, 500);
-        
+    setTimeout(() => { insertWeatherdescription() }, 500);
+
 };
 
 //bla
@@ -44,8 +44,8 @@ const fetchWeather = () => {
 // retrieveWeatherdescription();
 // }
 
-const insertWeatherdescription=()=>{
-    weatherDescription.innerHTML=`${weatherObject.weather[0].description}`;
+const insertWeatherdescription = () => {
+    weatherDescription.innerHTML = `${weatherObject.weather[0].description}`;
 }
 //
 // Event listeners
