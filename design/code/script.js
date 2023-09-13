@@ -49,7 +49,8 @@ const updateHTML = (json) => {
     const sunsetMinutes = sunsetTimestamp.getUTCMinutes().toString().padStart(2, '0'); // Get minutes
     const sunsetTime = `${sunsetHours}:${sunsetMinutes}`; // Create time string
 
-    container.innerHTML = `<p>sunrise ${sunriseTime}</p>
+    container.innerHTML = `<p>${json.weather[0].description} | ${json.main.temp.toFixed(1)}°C</p>
+    <p>sunrise ${sunriseTime}</p>
     <p>sunset ${sunsetTime}</p>`;
     
     document.getElementById("cityName").innerText = (`City name: ${json.name}`)
