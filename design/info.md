@@ -40,3 +40,51 @@ Sun --- 15 °C
 Type a city... //Search//
 
 Created by: Technigo Education Team
+
+-------------------------
+Object:
+{
+
+      "coord": {
+            "lon": 18.0649,
+            "lat": 59.3326
+      },
+      "weather": [
+            {
+                  "id": 803,
+                  "main": "Clouds",
+                  "description": "broken clouds",
+                  "icon": "04d"
+            }
+      ],
+      "base": "stations",
+      "main": {
+            "temp": 14.66,
+            "feels_like": 14.56,
+            "temp_min": 13.92,
+            "temp_max": 15.7,
+            "pressure": 1011,
+            "humidity": 91
+      },
+      "visibility": 10000,
+      "wind": {
+            "speed": 3.09,
+            "deg": 60
+      },
+      "clouds": {
+            "all": 75
+      },
+      "dt": 1694613032,
+      "sys": {
+            "type": 1,
+            "id": 1788,
+            "country": "SE",
+            "sunrise": 1694578246,
+            "sunset": 1694625433
+      },
+      "timezone": 7200,
+      "id": 2673730,
+      "name": "Stockholm",
+      "cod": 200
+
+}
