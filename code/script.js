@@ -19,7 +19,7 @@ const fetchApi = () => {
             // Declaring a variable for the rounded temperature, and rounding to first decimal in place
             const tempRounded = Math.round(temperature * 10) / 10;
             // Adds values to HTML via innerHTML
-            temp.innerHTML = `<h1>${tempRounded}<span id="degree">°C</span></h1>`;
+            temp.innerHTML = `<h1>${tempRounded}</h1><span id="degree">°C</span>`;
             city.innerHTML = `<h2>${weatherData.name}</h2>`;
             // To add values to HTML we first map through the array "Weather"
             const types = weatherData.weather.map((element) => element.description)
