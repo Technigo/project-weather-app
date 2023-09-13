@@ -1,6 +1,6 @@
 //--------DOM selectors stored as short variables-------------//
 
-
+const container = document.getElementById('sun_rise_sunset');
 
 
 
@@ -36,6 +36,22 @@ fetch(apiUrl)
     .catch((error) => console.error('Error:', error)) // Handle any errors that occurred during the API request
 
 const updateHTML = (json) => {
+
+    // Convert sunrise timestamp to a Date object
+    const sunriseTimestamp = new Date(json.sys.sunrise * 1000); // Multiply by 1000 to convert from seconds to milliseconds
+    const sunriseHours = sunriseTimestamp.getUTCHours().toString().padStart(2, '0'); // Get hours in 24-hour format
+    const sunriseMinutes = sunriseTimestamp.getUTCMinutes().toString().padStart(2, '0'); // Get minutes
+    const sunriseTime = `${sunriseHours}:${sunriseMinutes}`; // Create time string
+
+    // Convert sunset timestamp to a Date object
+    const sunsetTimestamp = new Date(json.sys.sunset * 1000); // Multiply by 1000 to convert from seconds to milliseconds
+    const sunsetHours = sunsetTimestamp.getUTCHours().toString().padStart(2, '0'); // Get hours in 24-hour format
+    const sunsetMinutes = sunsetTimestamp.getUTCMinutes().toString().padStart(2, '0'); // Get minutes
+    const sunsetTime = `${sunsetHours}:${sunsetMinutes}`; // Create time string
+
+    container.innerHTML = `<p>sunrise ${sunriseTime}</p>
+    <p>sunset ${sunsetTime}</p>`;
+    
     document.getElementById("cityName").innerText = (`City name: ${json.name}`)
     document.getElementById("cityTemp").innerText = (`City Temp: ${json.main.temp.toFixed(1)}`)
     document.getElementById("weatherDescription").innerText = (`Description: ${json.weather[0].description}`)

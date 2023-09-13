@@ -10,6 +10,13 @@ section {
     margin: auto;
 }
 
+#sun_rise_sunset {
+    color: #164a68;
+    font-size: 24px;
+    font-family: 'Montserrat';
+
+}
+
 h1 {
     color: #164a68;
     font-size: 24px;
