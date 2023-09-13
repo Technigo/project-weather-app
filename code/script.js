@@ -4,6 +4,7 @@ const tempToday = document.getElementById("tempToday");
 const tempTextCelsius = document.getElementById("tempTextCelsius"); // NEW
 const localTime = document.getElementById("localTime"); // NEW
 const weatherDescription = document.getElementById("weatherDescription");
+const mainIcon = document.getElementById("mainIcon");
 
 const APIKEY = "a0251d9b53172abcbe6a9263f3d13544"; // Change name to CAPITAL as it won't change throughout the file
 let city = "London"; // Initiate variable "city" in order to update it later when switching to other cities
@@ -28,6 +29,10 @@ const todaysWeather = (city) => {
             return word[0].toUpperCase() + word.substring(1)
         }).join(" ");
         weatherDescription.innerText = `${capitalizedDescription}`; 
+
+        // Display main weather icon
+        let { icon } = json.weather[0];
+        mainIcon.innerHTML = `<img src="https://openweathermap.org/img/wn/${icon}@2x.png" />`; 
         
         // Display current time (hours:minutes) using the data on time and timezone (in miliseconds) as an epoch timestamp multiplied by 1000
         const currentLocalTime = new Date((json.dt+json.timezone)*1000);
