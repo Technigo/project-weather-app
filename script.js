@@ -14,10 +14,19 @@ getWeatherData = (city) => {
         .then((currentWeatherJson) => {
             console.log(currentWeatherJson);
 
+            //Convert a Unix timestamp into "hour:min" format
+            const formattedTime = (timestamp) => {
+                sunStatusDate = new Date(timestamp * 1000);
+                const hours = sunStatusDate.getHours();
+                const minutes = sunStatusDate.getMinutes();
+                const time = `
+                ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+                return (time)
+            }
 
             // Display current weather information for the entered city
             currentCity.innerHTML += `
-            <h1>${currentWeatherJson.main.temp.toFixed(1)} °C </h1>
+            <h1>${currentWeatherJson.main.temp.toFixed(1)}°C </h1>
             `;
             currentCity.innerHTML += `
             `
@@ -31,7 +40,7 @@ getWeatherData = (city) => {
             <img src="https://openweathermap.org/img/wn/${currentWeatherJson.weather[0].icon}@2x.png">
             `;
             currentCity.innerHTML += `
-            <p> sunrise: ${currentWeatherJson.sys.sunrise} - sunset: ${currentWeatherJson.sys.sunset}
+            <p> sunrise ${formattedTime(currentWeatherJson.sys.sunrise)} / sunset ${formattedTime(currentWeatherJson.sys.sunset)}
             `
 
         })
@@ -62,7 +71,8 @@ weeklyForecast = (city) => {
                 // Display date, weather description, and temperature in Celsius
                 if (!processedDates.includes(date)) {//if the date is not in the processedDates array
                     container.innerHTML += `<p>Date: ${date}</p>`;
-                    container.innerHTML += `<p>Weather: ${forecast.weather[0].description}</p>`;
+                    container.innerHTML += `<img src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png">`;
+                    container.innerHTML += `<p>${forecast.weather[0].description}</p>`;
                     container.innerHTML += `<p>Temperature: ${forecast.main.temp} °C</p>`;
                     container.innerHTML += `<p>Wind: ${forecast.wind.speed} m/s</p>`;
                     container.innerHTML += '<hr>'; // Add a horizontal line for separation
