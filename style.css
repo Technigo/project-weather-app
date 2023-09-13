@@ -7,66 +7,136 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
+.container {
+    position: relative;
+    height: 800px;
+    width:100%;
+    max-width: 400px;
+    border: 2px solid gray;
+    overflow: hidden;
+  }
+/* navbar section, search button */
 .nav{
-    background-color:grey;
+    background-color:transparent;
     display: flex;
     align-items: center;
     position: relative;
 }
+button{
+    background-color: transparent;
+    border: none;
+}
 
+svg{
+    color:white
+}
+/* x-icon close the hidden part */
+.x-icon{
+    position: absolute;
+    top:8px;
+}
+/* search button, hidden one */
+.searchBtn{
+    position: absolute;
+    left:25px;
+    top:3px;
+}
+/* input field */
+.input-field{
+    height:28px;
+    width: 160px;
+    border:1px solid rgb(196, 194, 194);
+    background-color:transparent;
+    margin-top: 5px;
+    position: absolute;
+    left:40px;
+
+}
+.input-field:focus{
+    outline: none;
+}
+.input-field::placeholder{
+    color:white;
+}
+/* input: search button, real search button */
+.search-icon{
+    position: absolute;
+    top:8px;
+    right:50%;
+}
+  /* top background image setting  */
 .weather-image {
     height: 800px;
     width: 800px;
-    /* background: tomato; */
     border-radius:50%;
     position: absolute;
     bottom: 50%;
     right: 50%;
     transform: translate(50%);
-    
   }
-  .container {
-    position: relative;
-    height: 800px;
-    width: 400px;
-    border: 3px solid green;
-    overflow: hidden;
-  }
-/* .weather-image{
-    height:800px;
-    width: 130%;
-    border-radius: 50%;
-    position:absolute;
-    right:50%;
-    bottom:335px;
-    transform:translate(50%);
-    opacity: 0.8;
-} */
-button{
-   
-    border:1px solid red;
-    background-color: grey;
-}
-svg{
-    color:white
-}
 
-.switch-wrapper {
-    background-color: grey;
-}
 
-.rise-set{
-    background-color: brown;
-}
-
+/* main weather session: city, temp, sunrise, sunset etc. */
 .main-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     width:100%;
-    height:500px;
+    height:300px;
     position: absolute;
     padding-left: 20px;
     color:white
+}
+/* main temp part */
+.main-temp{
+    font-size: 70px;
+    position: absolute;
+    bottom:120px;
+}
+.tempCelsius{
+    font-size:22px;
+    position: absolute;
+    left:22%;
+    bottom: 195px ;
+}
+/* city name */
+.cityName{
+    font-size: 30px;
+    position: absolute;
+    bottom:80px;
+}
+/* weather description */
+.weatherDescription{
+    font-size:22px;
+    position: absolute;
+    bottom:50px;
+    text-transform: capitalize;
+
+}
+/* sunrise and sunset section */
+.rise-set{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width:350px;
+    font-size: 20px;
+    position: absolute;
+    bottom: -40px;
+}
+/* switch button */
+.switch-wrapper {
+    background-color: rgb(232, 113, 63);
+    position: absolute;
+    right:10px;
+    bottom:380px;
+    height:80px;
+    width:80px;
+    border-radius: 50%;
+}
+
+.switch-wrapper svg{
+    position: absolute;
+    top:18px;
+    left:18px;
 }

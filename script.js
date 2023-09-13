@@ -47,7 +47,7 @@ const todayWeather = () => {
       // future warm or cold image here
       const currentTemp = temp.toFixed(0);
       console.log(currentTemp);
-      if (currentTemp <= "10") {
+      if (currentTemp <= "15") {
         weatherImage.src = "./asserts/cold.jpg";
       } else {
         weatherImage.src = "./asserts/warm.jpg";
