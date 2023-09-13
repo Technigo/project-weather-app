@@ -1,0 +1,18 @@
+body {
+    background: #bde8fa;
+    margin: 40px;
+    border-color: black;
+}
+
+section {
+    width: 400px;
+    margin: auto;
+}
+
+h1 {
+    color: #164a68;
+}
+
+h2 {
+    color: #164a68;
+}
