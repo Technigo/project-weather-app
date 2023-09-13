@@ -4,6 +4,7 @@ const weatherType = document.getElementById('weatherType')
 const forecastWrapper = document.getElementById('forecastWrapper')
 const forecastDay = document.getElementById('forecastDay')
 const forecastTemp = document.getElementById('forecastTemp')
+const forecastItems = document.getElementById('forecastItems')
 
 
 const fetchWeather = () => {
@@ -42,28 +43,25 @@ const fetchForecast = () => {
         return response.json()
     })
     .then((json) => {
-        console.log(json)
-        console.log(json.list[0])
         
         //filter the forecast API to only show weather at 12 for each day
-        const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
-        console.log(filteredForecast)
-        filteredForecast.forEach((fiveForecast) => {
-            console.log(fiveForecast.main.temp.toFixed(0))
+        const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00')) //Håll koll på denna, fungerar beroend tid
         
-
-
-            
-        })
+        //getting the forecast days (name of the day)
         filteredForecast.forEach((day) => {
-            const date = new Date(day.dt * 1000) //variable to get "right" date, converting from seconds to milliseconds
-            let dayName = date.toLocaleDateString("en-US", {weekday: "short"})
-            console.log(`${dayName}`)
-        })
-    })
+            const weekDay = new Date(day.dt * 1000).toLocaleDateString('en', {weekday: 'short'})
 
-    
-    
+            const mainTemp = day.main.temp.toFixed(1)
+
+            forecastItems.innerHTML += `
+                <li>
+                    <span>${weekDay}</span>
+                    <span>${mainTemp}°</span>
+                </li>
+                `             
+        })
+       
+    }) 
 }
 
 fetchForecast()
