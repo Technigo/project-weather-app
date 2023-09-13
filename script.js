@@ -1,17 +1,16 @@
+//Containers for the DOM
 const weatherContainer = document.getElementById('currentWeather')
 const weatherApp = document.getElementById('weatherApp')
 const sunRiseSet = document.getElementById('sunRiseSet')
 const weatherForecast = document.getElementById('weatherForecast')
 
-//create a search string
+//Create a search string
 const appID = "d8d8bd8fc9a245def8c2bd16cb32ba83"
 const units = "metric"
 const baseURL = "https://api.openweathermap.org/data/2.5/"
-
 const searchString = (searchTerm, searchCity) => {
     return (`${baseURL}${searchTerm}?q=${searchCity}&units=${units}&APPID=${appID}`)
 }
-
 
 fetch(searchString("weather", "Stockholm,Sweden"))
     .then((response) => {
@@ -29,7 +28,7 @@ fetch(searchString("weather", "Stockholm,Sweden"))
         weatherContainer.innerHTML = ""
         weatherContainer.innerHTML +=`<p>${temperature} °C</p>`
         weatherContainer.innerHTML +=`<h1>${cityName}</h1>`
-        currentTime()
+        weatherContainer.innerHTML += `<p>${currentTime()}</p>`
         weatherContainer.innerHTML +=`<p>${weatherDescription}</p>`
 
         sunRiseSet.innerHTML +=`<p>sunrise ${sunriseTime}</p>`
@@ -65,15 +64,6 @@ fetch(searchString("forecast", "Stockholm,Sweden"))
         })
 })
 
-const createIcon= (iconID) => {
-    let base_URL = `https://openweathermap.org/img/wn/`
-    let icon = iconID
-    let end_URL = `@2x.png`
-
-    return (base_URL+icon+end_URL)
-}
-
-
 //Function for current time
 const currentTime = () => {
     let date = new Date()
@@ -85,8 +75,16 @@ const currentTime = () => {
         if (minutes < 10) {
             minutes = `0${minutes}`
         }
+    return `Time: ${hours}:${minutes}`
+}
 
-        weatherContainer.innerHTML += `<p>Time: ${hours}:${minutes}</p>`
+//Creating the icon's cource URL
+const createIcon= (iconID) => {
+    let base_URL = `https://openweathermap.org/img/wn/`
+    let icon = iconID
+    let end_URL = `@2x.png`
+
+    return (base_URL+icon+end_URL)
 }
 
 /*
