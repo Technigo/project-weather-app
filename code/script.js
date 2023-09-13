@@ -86,16 +86,18 @@ const fiveDayForecast = () => {
 
  const showWeatherData = (filteredData) => {
      let otherDayForecast = ''
+     
 console.log(otherDayForecast)
      filteredData.forEach((day, idx) => {
          if (idx >=1 && idx <=4) {
-            const { main, wind_speed } = day
+            const { main, wind_speed, weather } = day
             const { temp } = main
+            const icon = weather[0].icon
 
             otherDayForecast += `
  <div class="day-${idx + 1}" id="day-${idx + 1}">
       <div class="day">${(new Date(day.dt * 1000)).toLocaleDateString('en-US', { weekday: 'short' })}</div>
-      <img src="" alt="Weather icon" class="weather-icon">
+      <img src="https://openweathermap.org/img/wn/${icon}@2x.png">
       <div class="temp">${temp}&#176;C</div>
       <div class="wind">${wind_speed} m/s</div>
   </div>
