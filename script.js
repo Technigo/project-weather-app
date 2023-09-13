@@ -53,9 +53,12 @@ const fetchForecast = () => {
 
             const mainTemp = day.main.temp.toFixed(1)
 
+            const weekWeatherType = day.weather.map((element) => element.description)
+console.log(day.weather.map((el) => el.description));
             forecastItems.innerHTML += `
                 <li>
                     <span>${weekDay}</span>
+                    <span>${weekWeatherType}</span>
                     <span>${mainTemp}°</span>
                 </li>
                 `             
