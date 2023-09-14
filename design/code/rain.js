@@ -45,6 +45,21 @@ var makeItRain = function() {
   });
   
   makeItRain();
+  // Call the playRainSound function when you want to start the sound
+    // For example, you can call it in your makeItRain function:
+    var rainAudio = document.getElementById("rainSound");
+    function playRainSound() {
+        rainAudio.play();
+    }
+    playRainSound();
+
+    // Call the pauseRainSound function when you want to stop the sound
+    // For example, you can call it when toggling the rain animation off:
+    function pauseRainSound() {
+        rainAudio.pause();
+    }
+
+  
   });
 
 
