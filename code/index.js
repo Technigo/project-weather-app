@@ -250,8 +250,8 @@ if(weatherInfo === "Clear"){
 mainSection.style.backgroundImage = `url(${backgroundImage})`;
 
 // max-min-temperture
-maxTemperture.innerText =`Max Temperture: ${Math.floor(data.main.temp_max)} °C`;
-minTemperture.innerText = `Min Temperture: ${Math.floor(data.main.temp_min)} °C`
+maxTemperture.innerText =`Maximum: ${Math.floor(data.main.temp_max)} °C`;
+minTemperture.innerText = `Minumum: ${Math.floor(data.main.temp_min)} °C`
 }
 
 
