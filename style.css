@@ -16,6 +16,8 @@ body {
     overflow: hidden;
 }
 
+
+
 /* nav bar, search button */
 .nav {
     background-color: transparent;
@@ -37,6 +39,7 @@ button {
 svg {
     color: white;
 }
+
 
 /* input field  */
 
@@ -61,6 +64,7 @@ svg {
     font-size: 14px;
 }
 
+
 .nav.active .input-field {
     width: 220px;
     border: 1px solid rgb(170, 167, 167);
@@ -84,3 +88,5 @@ searchButton {
 .nav.active .searchButton {
     transform: translateX(210px);
 }
+
+.nav.active
