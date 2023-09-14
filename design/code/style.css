@@ -22,6 +22,28 @@ section {
     margin-inline-end: 0px;
 }
 
+#clock {
+    text-align: center;
+    margin-right: 18em;
+    color: #164a68;
+    font-size: 24px;
+    font-family: 'Montserrat';
+    line-height: 1;
+}
+   
+
+#stockholmDates {
+    text-align: center;
+    margin-right: 10em;
+    color: #164a68;
+    font-size: 24px;
+    font-family: 'Montserrat';
+    line-height: 1;
+    
+}
+
+
+
 h1 {
     color: #164a68;
     font-size: 24px;
