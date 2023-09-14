@@ -7,16 +7,25 @@
     <link rel="stylesheet" href="style.css" />
     <!--add links to any fonts here-->
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-    <link rel="stylesheet" href="weather-animations.css">
+    <link rel="stylesheet" href="rain.css">
     <title>Weather APP</title>
 </head>
 
-<body>
+<body class="back-row-toggle splat-toggle">
+    <div class="rain front-row"></div>
+    <div class="rain back-row"></div>
+    <div class="toggles">
+        <div class="splat-toggle toggle active">SPLAT</div>
+        <div class="back-row-toggle toggle active">BACK<br>ROW</div>
+        <div class="single-toggle toggle">SINGLE</div>
+    </div>
     <div id="clock"></div>
     <div id="stockholmDates"></div> <!-- Add this div for Stockholm dates -->
     <h1 id="cityName">Weather app </h1>
     <section>
-        <div id="weatherIcon" class="rain-container"></div>
+        <div id="weatherIcon">
+            
+        </div>
         <div id="sun_rise_sunset">
             Loading...
         </div>
@@ -26,6 +35,8 @@
         </div>
     </section>
     
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="rain.js"></script>
     <script src="script.js"></script>
 </body>
 
