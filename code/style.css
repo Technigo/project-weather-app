@@ -38,12 +38,14 @@ h2 {
     font-size: 20px;
 }
 
-
 #forecast5Days {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
     color: #164a68;
     font-size: 20px;
-    padding: 3px;
 }
+
 
 @media (max-width: 768px) {
 

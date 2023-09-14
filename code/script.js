@@ -6,6 +6,8 @@ const container = document.getElementById('sun_rise_sunset');
 
 //example URL: https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=YOUR_API_KEY
 
+let daysArray = [];
+
 const BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
 const API_KEY = "9055fb4826563eac25a47e211073a627"; //Beckie's API key
 
@@ -28,8 +30,6 @@ fetch(apiUrl)
 
 
 // API fetch request for city forecast to display for next 5 days
-// try to remove the hourly forecast and just get daily: https://api.openweathermap.org/data/3.0/onecall?lat=33.44&lon=-94.04&exclude=daily&appid={API key}
-
 fetch(forecastAPI)
     .then(response => response.json())
     .then((json) => {
@@ -37,9 +37,6 @@ fetch(forecastAPI)
         updateHTMLforecast(json);
     })
     .catch((error) => console.error('Error:', error)) // Handle any errors that occurred during the API request
-
-
-
 
 // ----- updateHTML function - display current forecast, sunrise, sunset, icon for city ---------------   //
 
@@ -56,7 +53,7 @@ const updateHTML = (json) => {
     const sunsetMinutes = sunsetTimestamp.getUTCMinutes().toString().padStart(2, '0'); // Get minutes
     const sunsetTime = `${sunsetHours}:${sunsetMinutes} `; // Create time string
 
-    container.innerHTML = `<p> ${json.weather[0].main} | ${json.main.temp.toFixed(1)}°C</p>
+    container.innerHTML = `<p> ${json.weather[0].description} | ${json.main.temp.toFixed(1)}°C</p>
     <p>sunrise ${sunriseTime}</p>
     <p>sunset ${sunsetTime}</p>`;
 
@@ -69,38 +66,44 @@ const updateHTML = (json) => {
     } else {
         cityNameElement.innerText = `${json.name} `;
     }
-    //document.getElementById("cityTemp").innerText = (`City Temp: ${ json.main.temp.toFixed(1) } `)
-    document.getElementById("weatherDescription").innerText = (`Description: ${json.weather[0].description} `)
-
 
     //display icon for either clouds, sunglasses or rain
-    console.log(weatherStatus)
     if (weatherStatus === "Clouds") {
         document.getElementById("weatherIcon").innerHTML = (`<img src = "/design/design2/icons/noun_Cloud_1188486.svg" alt = "clouds icon" width = "100" height = "100" >`)
     } else if (weatherStatus === "Rain") {
-        document.getElementById("weatherIcon").innerHTML = (`<img src = "/design/design2/icons/noun_Umbrella_2030530.svg" alt = "umbrella icon" width = "100" height = "100" >`)
+        document.getElementById("weatherIcon").innerHTML = (`<img src = "/design/design2/icons/noun_Umbrella_2030530.svg" alt = "umbrella icon"   width = "100" height = "100" >`)
     } else if (weatherStatus === "Clear") {
         document.getElementById("weatherIcon").innerHTML = (`<img src = "/design/design2/icons/noun_Sunglasses_2055147.svg" alt = "sunglasses icon" width = "100" height = "100" >`)
     }
 }
 
+
+
+
 // ------ updateHTMLforecast function - display forecast for next 5 days ---------------   //
 
 const updateHTMLforecast = (json) => {
-    const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'))
-    console.log(`filtered forecast object: ${filteredForecast}`)
-    filteredForecast.map((item) => {
-        forecast5Days.innerHTML +=
-            `  <tr>
-            <th>${item.dt_txt}</th>
-            <th>${item.main.temp.toFixed(1)}</th>
-        </tr>
-    `
-    })
-}
-
-
-
+    const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
+    // Initialize a date for tomorrow
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    // Loop through the filtered forecast and display the day names and temperatures
+    for (let counter = 0; counter < 5; counter++) {
+        const day = filteredForecast[counter];
+        const date = new Date(tomorrow); // Copy the date for manipulation
+        date.setDate(date.getDate() + counter); // Increment the date
+        const dayName = date.toLocaleDateString("en-US", { weekday: "short" });
+        const temp = day.main.temp.toFixed(1);
+        forecast5Days.innerHTML += `
+            <div class="grid-child day">
+                ${dayName}
+            </div>
+            <div class="grid-child temp">
+                ${temp}
+            </div>
+        `;
+    }
+};
 
 //-------------------- All Event Listeners --------------------//
 //if we make a button to scroll through to other cities????
