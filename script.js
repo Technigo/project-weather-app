@@ -17,17 +17,41 @@ function fetchWeatherDataByCoordinates(latitude, longitude) {
     })
     .then((json) => {
       const cityName = json.name;
+<<<<<<< HEAD
+<<<<<<< HEAD
       const temperature = json.main.temp.toFixed(1); //removed all but one decimal
       const weatherDescription = json.weather[0].description;
       const sunsetTimestamp = json.sys.sunset * 1000;
       const sunriseTimestamp = json.sys.sunrise * 1000;
       const feelsLike = json.main.feels_like.toFixed(1); //removed all but one decimal
+=======
+      const temperature = json.main.temp;
+      const weatherDescription = json.weather[0].description;
+      const sunsetTimestamp = json.sys.sunset * 1000;
+      const sunriseTimestamp = json.sys.sunrise * 1000;
+      const feelsLike = json.main.feels_like;
+>>>>>>> 93b875aadab9a792a4020758935981b6eae7a288
+=======
+      const temperature = json.main.temp.toFixed(1); //removed all but one decimal
+      const weatherDescription = json.weather[0].description;
+      const sunsetTimestamp = json.sys.sunset * 1000;
+      const sunriseTimestamp = json.sys.sunrise * 1000;
+      const feelsLike = json.main.feels_like.toFixed(1); //removed all but one decimal
+>>>>>>> 017be4ee17f4dddb5882223d61d585cb7710a68c
 
       // Create Date objects for sunset and sunrise times
       const sunset = new Date(sunsetTimestamp);
       const sunrise = new Date(sunriseTimestamp);
+<<<<<<< HEAD
+<<<<<<< HEAD
       const sunsetTime = `${sunset.getHours()}:${sunset.getMinutes()}`; //removes seconds
       const sunriseTime = `${sunrise.getHours()}:${sunrise.getMinutes()}`; //removes seconds
+=======
+>>>>>>> 93b875aadab9a792a4020758935981b6eae7a288
+=======
+      const sunsetTime = `${sunset.getHours()}:${sunset.getMinutes()}`; //removes seconds
+      const sunriseTime = `${sunrise.getHours()}:${sunrise.getMinutes()}`; //removes seconds
+>>>>>>> 017be4ee17f4dddb5882223d61d585cb7710a68c
       const currentDayOfWeek = new Date().getDay();
 
       function generateWeatherMessage(description) {
@@ -57,8 +81,18 @@ function fetchWeatherDataByCoordinates(latitude, longitude) {
         <h3>${weekdays[currentDayOfWeek]}</h3>
         <p>Temperature: ${temperature}°C</p>
         <p>Weather: ${weatherDescription}</p>
+<<<<<<< HEAD
+<<<<<<< HEAD
         <p>Sunrise: ${sunriseTime}</p> 
         <p>Sunset: ${sunsetTime}</p> 
+=======
+        <p>Sunrise: ${sunrise.toLocaleTimeString()}</p>
+        <p>Sunset: ${sunset.toLocaleTimeString()}</p>
+>>>>>>> 93b875aadab9a792a4020758935981b6eae7a288
+=======
+        <p>Sunrise: ${sunriseTime}</p> 
+        <p>Sunset: ${sunsetTime}</p> 
+>>>>>>> 017be4ee17f4dddb5882223d61d585cb7710a68c
         <p>Weather feels like: ${feelsLike}°C</p>
       `;
     })
@@ -115,6 +149,10 @@ function fetchWeatherData() {
           const morningItem = forecastItems.find((item) => item.dt_txt.includes("09:00"));
           const eveningItem = forecastItems.find((item) => item.dt_txt.includes("21:00"));
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 017be4ee17f4dddb5882223d61d585cb7710a68c
          if (morningItem && eveningItem) {
               const morningTemperature = morningItem.main.temp.toFixed(1); // Temp at 9 am
               const eveningTemperature = eveningItem.main.temp.toFixed(1); // Temp at 9 pm
@@ -124,6 +162,20 @@ function fetchWeatherData() {
             const eveningDescription = eveningItem.weather[0].description; // Weather description at 9 pm
             const morningHumidity = morningItem.main.humidity; // Humidity at 9am
             const eveningHumidity = eveningItem.main.humidity; // Humidity at 9 pm
+<<<<<<< HEAD
+=======
+          if (morningItem && eveningItem) {
+            const morningTemperature = morningItem.main.temp; // Temperature at 9:00 AM
+            const eveningTemperature = eveningItem.main.temp; // Temperature at 9:00 PM
+            const morningFeelsLike = morningItem.main.feels_like; // "Feels like" temperature at 9:00 AM
+            const eveningFeelsLike = eveningItem.main.feels_like; // "Feels like" temperature at 9:00 PM
+            const morningDescription = morningItem.weather[0].description; // Weather description at 9:00 AM
+            const eveningDescription = eveningItem.weather[0].description; // Weather description at 9:00 PM
+            const morningHumidity = morningItem.main.humidity; // Humidity at 9:00 AM
+            const eveningHumidity = eveningItem.main.humidity; // Humidity at 9:00 PM
+>>>>>>> 93b875aadab9a792a4020758935981b6eae7a288
+=======
+>>>>>>> 017be4ee17f4dddb5882223d61d585cb7710a68c
 
             // Get the day of the week for the date
             const weekday = new Date(date).getDay();
