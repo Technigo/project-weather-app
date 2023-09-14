@@ -44,10 +44,11 @@ h2 {
     grid-gap: 20px;
     color: #164a68;
     font-size: 20px;
+    margin-top: 3em;
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 667px) {
 
     /* mobile-specific styles*/
     body {
