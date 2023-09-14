@@ -26,6 +26,8 @@ function fetchWeatherDataByCoordinates(latitude, longitude) {
       // Create Date objects for sunset and sunrise times
       const sunset = new Date(sunsetTimestamp);
       const sunrise = new Date(sunriseTimestamp);
+      const sunsetTime = `${sunset.getHours()}:${sunset.getMinutes()}`; //nytt
+      const sunriseTime = `${sunrise.getHours()}:${sunrise.getMinutes()}`; //nytt
       const currentDayOfWeek = new Date().getDay();
 
       function generateWeatherMessage(description) {
@@ -55,8 +57,8 @@ function fetchWeatherDataByCoordinates(latitude, longitude) {
         <h3>${weekdays[currentDayOfWeek]}</h3>
         <p>Temperature: ${temperature}°C</p>
         <p>Weather: ${weatherDescription}</p>
-        <p>Sunrise: ${sunrise.toLocaleTimeString()}</p>
-        <p>Sunset: ${sunset.toLocaleTimeString()}</p>
+        <p>Sunrise: ${sunriseTime}</p> //uppdaterat
+        <p>Sunset: ${sunsetTime}</p> //uppdaterat
         <p>Weather feels like: ${feelsLike}°C</p>
       `;
     })
@@ -113,15 +115,15 @@ function fetchWeatherData() {
           const morningItem = forecastItems.find((item) => item.dt_txt.includes("09:00"));
           const eveningItem = forecastItems.find((item) => item.dt_txt.includes("21:00"));
 
-          if (morningItem && eveningItem) {
-            const morningTemperature = morningItem.main.temp; // Temperature at 9:00 AM
-            const eveningTemperature = eveningItem.main.temp; // Temperature at 9:00 PM
-            const morningFeelsLike = morningItem.main.feels_like; // "Feels like" temperature at 9:00 AM
-            const eveningFeelsLike = eveningItem.main.feels_like; // "Feels like" temperature at 9:00 PM
-            const morningDescription = morningItem.weather[0].description; // Weather description at 9:00 AM
-            const eveningDescription = eveningItem.weather[0].description; // Weather description at 9:00 PM
-            const morningHumidity = morningItem.main.humidity; // Humidity at 9:00 AM
-            const eveningHumidity = eveningItem.main.humidity; // Humidity at 9:00 PM
+         f (morningItem && eveningItem) {
+              const morningTemperature = morningItem.main.temp.toFixed(1); // Temp at 9 am
+              const eveningTemperature = eveningItem.main.temp.toFixed(1); // Temp at 9 pm
+              const morningFeelsLike = morningItem.main.feels_like.toFixed(1); // Feels like at 9 am
+              const eveningFeelsLike = eveningItem.main.feels_like.toFixed(1); //Feels like at 9 pm
+            const morningDescription = morningItem.weather[0].description; // Weather description at 9 am
+            const eveningDescription = eveningItem.weather[0].description; // Weather description at 9 pm
+            const morningHumidity = morningItem.main.humidity; // Humidity at 9am
+            const eveningHumidity = eveningItem.main.humidity; // Humidity at 9 pm
 
             // Get the day of the week for the date
             const weekday = new Date(date).getDay();
