@@ -7,10 +7,9 @@ const cityName = "Visby";
 const currentWeather = `${currentWeather_URL}${cityName}&appid=${API_KEY}`
 const fiveDayWeather = `${fiveDayWeather_URL}${cityName}&appid=${API_KEY}`
 
-
-
-/* const cityName = "Visby"
-
+/*
+//-----------------------------------
+//Function that fetches the currentweather
 const fetchCurrentWeather = () => {
     fetch('currentWeather')
     .then(response => response.json())
@@ -25,8 +24,26 @@ const fetchCurrentWeather = () => {
 
 };
 
+//-----------------------------------
+//Function that fetches the five day weather
 
 
+const fetchFiveDayWeather = () => {
+    fetch('fiveDayWeather')
+    .then(response => response.json())
+    .then(data => {
+       //console.log(data) 
+    })
+    .catch(error => {
+        console.error('Error', error)
+    });
+
+    fetchFiveDayWeather() 
+
+};
+
+
+/*
 const currentWeather_URL = `https://api.openweathermap.org/data/2.5/weather?q=`;
 const fiveDayWeather_URL = `https://api.openweathermap.org/data/2.5/forecast?q=`;
 const API_KEY = `5261612a788e0fbd6e1f5336fd150afe`;
