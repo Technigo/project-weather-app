@@ -2,12 +2,13 @@
 
 body {
     background-color: white;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    margin: 0%;
 }
 
 header {
 /* background-image:url("images/sun.png"); */
-background-color: skyblue;
+/* background-color: skyblue; */
 background-image: linear-gradient(rgb(165, 181, 250), rgb(203, 221, 247));
 /* background-size: cover; */
 height: 400px; 
@@ -27,7 +28,7 @@ justify-content: flex-end
 }
 
 .temp {
-    font-size: 60px;
+    font-size: 70px;
     color: white;
     margin: 0%;
 }
@@ -35,6 +36,7 @@ justify-content: flex-end
 .city {
     color: white; 
     margin: 0%;
+    font-size: 30px;
 }
 .weather-type {
     margin: 0%;

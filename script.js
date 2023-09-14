@@ -26,7 +26,8 @@ fetch(URL_WEATHER)
     //-----Basic weather info------
     console.log (json)
     city.innerHTML = ` ${json.name}`
-    temp.innerHTML = `${json.main.temp}&deg;C`
+    temp.innerHTML = `${Math.round(json.main.temp)}&deg;C`
+    console.log(Math.round(json.main.temp))
     json.weather.forEach((element) => {
         weatherType.innerHTML = `${element.main}`
     console.log(element.main)
