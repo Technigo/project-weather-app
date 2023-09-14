@@ -1,23 +1,77 @@
-@import url('https://fonts.google.com/specimen/Roboto');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@500&family=Roboto:wght@300&display=swap');
 
-body {
-    font-weight: lighter;
-    margin: 0%;
-    padding: 0%;
-    width: 100%;
-    height: 100%;
-    background-color: grey;
+* {
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-.hero {
+.container {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    padding: 5%;
-    background-color: aquamarine;
-
+    width: 100%;
+    max-width: 400px; /* Ensure the container does not exceed the viewport width */
+    margin: 0 auto /* Places the container in the center of the screen */;
 }
 
-.prognosis {
-    background-color: green;
+.location-specifics {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100vw;
+    position: relative; /* Makes the shape of the linear background stay within the container we want it to*/
+    overflow: hidden; /* Makes the shape of the linear background stay within the container we want it to*/
+}
+
+.location-specifics:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%; /* Set the width and height to 100% on the gradient background */
+    width: 100%;
+    background: rgb(135,139,255); /* fallback for old browsers */
+    background: linear-gradient(180deg, rgba(135,139,255,1) 0%, rgba(231,232,255,1) 100%);
+    border-radius: 0 0 100% 100%; /* Shapes the background gradient */
+    transform: scaleX(1.5); /* Decides how much curve the shape will have */
+}
+
+#temp, #city, #typeOfWeather, .sunUpDown {
+    z-index: 1;
+    margin: 0 38px;
+}
+
+#city {
+    font-size: 22px;
+}
+
+.five-day-prognosis {
+    width: 100%;
+    text-align: center; /* Center-align the text within the containers */
+    margin: 0 auto; /* Center the containers horizontally */
+}
+
+.sunUpDown {
+    display: flex;
+    margin: 2rem 0 45px 38px;
+}
+
+.sunUpDown p:first-child {
+    margin-right: 1.5rem;
+}
+
+/* .five-day-prognosis tr td {
+    padding: 0 2rem 0 0;
+} */
+
+#temp {
+    font-size: 75px;
+    display: flex;
+    flex-direction: row;
+}
+
+#degree {
+    font-size: 24px;
+    margin-top: 20px; /* Positions the degree symbol correctly */
 }

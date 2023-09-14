@@ -1,6 +1,7 @@
 const temp = document.getElementById("temp");
 const city = document.getElementById("city");
 const typeOfWeather = document.getElementById("typeOfWeather");
+const forecastSection = document.getElementById("fiveDayPrognosis");
 const sunUpDown = document.getElementById("sunUpDown");
 const locationSpecifics = document.getElementById("locationSpecifics");
 
@@ -18,7 +19,7 @@ const fetchApi = () => {
             // Declaring a variable for the rounded temperature, and rounding to first decimal in place
             const tempRounded = Math.round(temperature * 10) / 10;
             // Adds values to HTML via innerHTML
-            temp.innerHTML = `<h1>${tempRounded}<span id="degree">°C</span></h1>`;
+            temp.innerHTML = `<h1>${tempRounded}</h1><span id="degree">°C</span>`;
             city.innerHTML = `<h2>${weatherData.name}</h2>`;
             // To add values to HTML we first map through the array "Weather"
             const types = weatherData.weather.map((element) => element.description)
@@ -65,3 +66,78 @@ const fetchApi = () => {
 
 fetchApi();
 
+// Function to fetch weather with timestamps
+const weatherForecast = () => {
+    fetch("https://api.openweathermap.org/data/2.5/forecast?q=Varberg,Sweden&units=metric&APPID=6e3a3db02f585218db04cdc935f5290c")
+    .then((response) => {
+        return response.json();
+    })
+    .then((json) => {
+        const forecastData = json; 
+        const dailyTemperatures = saveData(forecastData); // Save the relevant data
+            createTable(dailyTemperatures); // Create and display the HTML table
+    })
+    .catch((error) => {
+        // Shows an error message if fetch doesn't work
+        console.error('Something went wrong', error);
+    })
+}
+weatherForecast();
+
+// Function to extract and save the relevant data, takes forecastData as a parameter so that we get the data from the fetch and can use it here
+const saveData = (forecastData) => {
+    // Create an object to store temperature data for each day
+    const dailyTemperatures = {};
+
+    forecastData.list.forEach((item) => {
+        const date = item.dt_txt.split(' ')[0]; // Extract the date part from dt_txt
+        const day = getDayOfWeek(item.dt); // Get the day of the week
+        const temperature = {
+            minTemp: item.main.temp_min.toFixed(0), // Gets the minimum temperature for each day
+            maxTemp: item.main.temp_max.toFixed(0), // Gets the maximum temperature for each day
+            icon: item.weather[0].icon, // Gets the icon from the weather array
+        };
+
+        // Checks if the date is already in the dailyTemperatures object declared above
+        if (!dailyTemperatures[date]) {
+            dailyTemperatures[date] = {
+                // Sets all needed values
+                day,
+                minTemp: temperature.minTemp,
+                maxTemp: temperature.maxTemp,
+                icon: temperature.icon,
+            };
+        } else {
+            // Update min and max temperatures if they need to be updated
+            dailyTemperatures[date].minTemp = Math.min(dailyTemperatures[date].minTemp, temperature.minTemp);
+            dailyTemperatures[date].maxTemp = Math.max(dailyTemperatures[date].maxTemp, temperature.maxTemp);
+        }
+    });
+
+    // Returns the dailyTemperatures object for use in the createTable function. To be able to use it, the object first needs to be stored as a variable in the fetch above and then passed as an argument to createTable from there.
+    return dailyTemperatures;
+};
+
+// Function to create the HTML table and append it to the forecastSection
+const createTable = (dailyTemperatures) => {
+    forecastSection.innerHTML = "";
+
+    // Loop through dailyTemperatures and generate HTML
+    for (const date in dailyTemperatures) { // for each date in the objects dailyTemperatures
+            const weather = dailyTemperatures[date]; 
+            const iconUrl = `https://openweathermap.org/img/wn/${weather.icon}.png`; // Construct the icon URL
+            forecastSection.innerHTML += `<td class="day-style">${weather.day}</td><td><img src="${iconUrl}" alt="Weather Icon"></td><td>${weather.maxTemp}° / ${weather.minTemp} °C</td>`;
+        }
+};
+
+// This function takes a parameter "timestamp", which we use in the getMinMax function to set the day and append it to the forecastSection.
+function getDayOfWeek(timestamp) {
+    // Declares a variable/an array with all the days of the week in the format we want to display them
+    const daysOfWeek = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
+    // Using the Date-method by multiplying with 1000, we get the timestamp in a readable timeformat, it converts UNIX timestamp to milliseconds
+    const date = new Date(timestamp * 1000);
+    // getDay is a method on the Date object that returns the day as an integer. By setting the integer as an index we can decide what day should have what name. In the getDay method the integer 0 represents sunday, thats why the order of the weekdays above is with sunday as the first day. 
+    const dayOfWeek = daysOfWeek[date.getDay()];
+    return dayOfWeek;
+    
+};
