@@ -14,6 +14,7 @@ body {
     max-width: 400px;
     border: 1px solid rgb(187, 182, 182);
     overflow: hidden;
+    background-color: #e0e0e0;
 }
 
 /* navbar section, search button */

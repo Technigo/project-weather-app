@@ -72,22 +72,17 @@ const todayWeather = (city) => {
       const weatherMain = data.weather[0].main;
       if (weatherMain === "Clouds") {
         weatherImage.src = "./asserts/clouds.jpg";
-        container.style.backgroundColor = "rgba(74, 134, 231, 0.08)";
         switchBtn.style.backgroundColor = "rgb(117, 172, 220)";
       } else if (weatherMain === "Clear") {
-        container.style.backgroundColor = "blue";
         weatherImage.src = "./asserts/clear.jpg";
         switchBtn.style.backgroundColor = "rgb(66, 108, 245)";
       } else if (weatherMain === "Rain") {
-        container.style.backgroundColor = "blue";
         weatherImage.src = "./asserts/rain.jpg";
         switchBtn.style.backgroundColor = "rgb(26, 50, 49)";
       } else if (weatherMain === "Snow") {
-        container.style.backgroundColor = "blue";
         weatherImage.src = "./asserts/snow.jpg";
         switchBtn.style.backgroundColor = "rgb(87, 85, 85)";
       } else {
-        container.style.backgroundColor = "blue";
         weatherImage.src = "./asserts/sun.jpg";
         switchBtn.style.backgroundColor = "rgb(232, 113, 63)";
       }
