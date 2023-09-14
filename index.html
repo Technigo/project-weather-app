@@ -1,16 +1,41 @@
 <DOCTYPE html>
     <html lang="eng">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <meta http-equiv="X-UA-Compatible" content="ie=edge">
-            <title>The strawberry weather app</title>
-            <link rel="stylesheet" href=".style.css" />
-        </head>
-        <body>
-            <div id="sthweather">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>The Strawberry Weather App</title>
+        <link rel="stylesheet" href="./style.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.1/lottie.min.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,500;0,700;1,100;1,300&display=swap"
+            rel="stylesheet">
+    </head>
+    <header>
+
+    </header>
+
+    <body>
+        <section class="todays-forecast" id="todays-forecast">
+            <div class="sthweather" id="sthweather">
                 Loading...
             </div>
-            <script src="./script.js"></script>
-        </body>
+        </section>
+        <section class="message" id="message">
+            <div class="message-img" id="message-img">
+                <div class="weather-animation" id="weather-animation"></div>
+            </div>
+            <div class="message-text" id="message-text">
+                <h2></h2>
+            </div>
+        </section>
+        <section class="forecast" id="forecast">
+            <div class="day" id="day">Loading...</div>
+        </section>
+        <script src="./script.js"></script>
+    </body>
+
     </html>
