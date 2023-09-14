@@ -3,7 +3,7 @@
 * {
     margin: 0;
     padding: 0;
-    height: 100%;
+    box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -40,7 +40,7 @@
 
 #city,
 #temperature,
-#weatherType,
+#weather,
 #forecast,
 #sunset,
 .sunrise {
@@ -53,21 +53,41 @@
 }
 
 .weekly-prognose {
-    padding-top: 80px;
+    padding-top: 20px;
+    /* Adjust as needed */
     width: 100%;
     text-align: center;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    align-items: center;
+    /* Center the content horizontally */
 }
 
 .weekly-prognose tr {
-    padding: 0 2 rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 10px;
+    /* Add some vertical spacing between rows */
+    padding: 10px;
+    /* Add padding to the rows for better spacing */
+    background-color: #f0f0f0;
+    /* Light background color for rows */
+    border-radius: 8px;
+    /* Rounded corners for rows */
+}
+
+.weekly-prognose td {
+    flex: 1;
+    /* Distribute columns evenly within each row */
+    text-align: center;
+    /* Center the text within each cell */
+    font-size: 16px;
+    /* Adjust the font size as needed */
+    padding: 5px;
+    /* Add padding to the cells for better spacing */
 }
 
 .sunrise {

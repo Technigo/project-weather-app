@@ -1,7 +1,7 @@
 const city = document.getElementById('city')
 const weather = document.getElementById('weather')
-const temperature = document.getElementById('teperature')
-const forecast = document.getElementById('forcast')
+const temperature = document.getElementById('temperature')
+const forecast = document.getElementById('forecast')
 const sunrise = document.getElementById('sunrise')
 const sunset = document.getElementById('sunset')
 
