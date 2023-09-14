@@ -7,7 +7,7 @@ const sunset = document.getElementById('sunset')
 
 const API_KEY = "b881032f7a405f3e6e05ebbfb98e3e49"
 
-let cityName
+let cityName = "Stockholm"
 const url = "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=YOUR_API_KEY"
 
 const fetchWeather = () => {

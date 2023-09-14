@@ -51,7 +51,11 @@ svg {
 
 .input-field: focus {
     outline: none;
-
 }
 
-.input-field::placeholder {}
+.input-field::placeholder {
+    color: white;
+    font-size: 14px;
+}
+
+.nav.active
