@@ -72,7 +72,7 @@ const todayWeather = (city) => {
       const weatherMain = data.weather[0].main;
       if (weatherMain === "Clouds") {
         weatherImage.src = "./asserts/clouds.jpg";
-        container.style.backgroundColor = "#cceeff";
+        container.style.backgroundColor = "rgba(74, 134, 231, 0.08)";
         switchBtn.style.backgroundColor = "rgb(117, 172, 220)";
       } else if (weatherMain === "Clear") {
         container.style.backgroundColor = "blue";

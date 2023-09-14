@@ -158,7 +158,8 @@ input[type=text]{
 /* switch button */
 .switch-wrapper {
     /* background-color: rgb(232, 113, 63); */
-    background-color: rgb(26, 50, 49);
+    background-color:rgba(#7cb7d5
+    ,0.08);
     position: absolute;
     right: 10px;
     bottom: 380px;
@@ -178,7 +179,7 @@ input[type=text]{
 .weatherForecastDiv {
     padding: 30px;
     position: absolute;
-    bottom: 100px;
+    bottom: 50px;
     width: 80%;
 }
 
