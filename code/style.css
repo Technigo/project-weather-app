@@ -100,7 +100,24 @@ h2 {
     z-index: 10;
     width: 100px;
     height: 100px;
+    animation: Animation 15s infinite alternate;
+    ;
+}
 
+@keyframes Animation {
+    0% {
+        background-color: rgba(153, 172, 176);
+        /* Start with your initial color and transparency */
+    }
+
+    50% {
+        background-color: rgba(48, 99, 110);
+    }
+
+    100% {
+        background-color: rgba(162, 131, 183);
+        /* End with your target color and transparency */
+    }
 
 }
 
@@ -229,4 +246,9 @@ h2 {
     justify-content: center;
     align-items: center;
     width: 100%;
+}
+
+#forecast-table td {
+    padding: 10px;
+    margin: 5px;
 }
