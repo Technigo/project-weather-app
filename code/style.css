@@ -49,8 +49,7 @@ body {
 }
 
 .icon-search {
-    margin-top: 20px;
-    margin-right: 20px;
+    margin: 20px;
     height: 30px;
     width: 30px;
     
@@ -60,6 +59,7 @@ body {
     height: 20px;
     margin-right: 20px;
     margin-top: 4px;
+    margin-left: 20px;
     
 
 }
@@ -73,6 +73,7 @@ body {
     height: 30px;
     width: 50px;
     margin-left: 9px;
+   
 
 }
 
@@ -81,7 +82,7 @@ body {
     border-radius: 5px;
     outline: none;
     width: 200px;
-    padding: 5px;
+    padding: 5px 20px;
     font-size: 19px;
     background-color: rgb(213, 210, 210);
     margin-bottom: 30px;
@@ -200,7 +201,7 @@ img{
     .icon-close{
         width: 35px;
         height: 35px;
-        margin-left: 10px;
+        margin-left: 30px;
         margin-right: 20px;
     }
     .days{
@@ -213,7 +214,7 @@ img{
     .icon-search{
         width: 70px;
         height: 70px;
-        margin-left: 10px;
+        margin-left: 30px;
 
     }
     p{

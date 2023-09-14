@@ -12,20 +12,19 @@ const windMain = document.getElementById("wind");
 const iconMain = document.getElementById("icon-main");
 const dateNameToday = document.getElementById("date");
 const timeToday = document.getElementById("time");
-
 const mainSection = document.getElementById("main");
 const maxTemperture = document.getElementById("temp-max");
 const minTemperture = document.getElementById("temp-min");
-
 const searchBar = document.getElementById("icon-search");
-const searchDelete = document.getElementById("icon-close")
+const searchDelete = document.getElementById("icon-close");
+const searchBtn = document.getElementById("search-btn");
+const inputEl = document.getElementById("search")
 
 
 
 const baseUrl = "https://api.openweathermap.org/data/2.5/weather?";
 const apiKey = "64dc0a4bc655c3566178e4cae018559e";
 let cityQuery = "Stockholm, Sweden";
-const URL = `${baseUrl}q=${cityQuery}&units=metric&APPID=${apiKey}`
 
 
 // images
@@ -113,6 +112,7 @@ searchDelete.addEventListener("click", () => {
 
 
 const fetchWeatherAsync = async () => {
+  const URL = `${baseUrl}q=${cityQuery}&units=metric&APPID=${apiKey}`
   const response = await fetch(URL).catch((err) => console.log("my ERROR", err));
   const data = await response.json()
   console.log(data)
@@ -124,7 +124,7 @@ fetchWeatherAsync()
 // forecast API
 
 const baseAPIForecast = "https://api.openweathermap.org/data/2.5/forecast?";
-const URLForecast = `${baseAPIForecast}q=${cityQuery}&units=metric&APPID=${apiKey}`
+
 
 // dates forecast and today date
 const daysName = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -152,6 +152,7 @@ daysForecast.forEach((dayForc, index) => {
 // fetch forecast
 
 const fetchForecastAsync = async () => {
+  const URLForecast = `${baseAPIForecast}q=${cityQuery}&units=metric&APPID=${apiKey}`
   const responseForecast = await fetch(URLForecast).catch((err) => console.log("ERROR", err));
   const data = await responseForecast.json();
 
@@ -251,8 +252,18 @@ mainSection.style.backgroundImage = `url(${backgroundImage})`;
 
 // max-min-temperture
 maxTemperture.innerText =`Maximum: ${Math.floor(data.main.temp_max)} °C`;
-minTemperture.innerText = `Minumum: ${Math.floor(data.main.temp_min)} °C`
+minTemperture.innerText = `Minumum: ${Math.floor(data.main.temp_min)} °C`;
+
+// search city
+
+searchBtn.addEventListener("click" , () => {
+  cityQuery = inputEl.value;
+  fetchWeatherAsync()
+  fetchForecastAsync()
+ })
+
 }
+
 
 
 
