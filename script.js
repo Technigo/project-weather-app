@@ -72,17 +72,22 @@ const todayWeather = (city) => {
       const weatherMain = data.weather[0].main;
       if (weatherMain === "Clouds") {
         weatherImage.src = "./asserts/clouds.jpg";
+        container.style.backgroundColor = "#cceeff";
         switchBtn.style.backgroundColor = "rgb(117, 172, 220)";
       } else if (weatherMain === "Clear") {
+        container.style.backgroundColor = "blue";
         weatherImage.src = "./asserts/clear.jpg";
         switchBtn.style.backgroundColor = "rgb(66, 108, 245)";
       } else if (weatherMain === "Rain") {
+        container.style.backgroundColor = "blue";
         weatherImage.src = "./asserts/rain.jpg";
         switchBtn.style.backgroundColor = "rgb(26, 50, 49)";
       } else if (weatherMain === "Snow") {
+        container.style.backgroundColor = "blue";
         weatherImage.src = "./asserts/snow.jpg";
         switchBtn.style.backgroundColor = "rgb(87, 85, 85)";
       } else {
+        container.style.backgroundColor = "blue";
         weatherImage.src = "./asserts/sun.jpg";
         switchBtn.style.backgroundColor = "rgb(232, 113, 63)";
       }
@@ -94,37 +99,43 @@ const todayWeather = (city) => {
 
 // create a search function for storing the user input from the search bar
 const searchInputCity = () => {
+  weatherForecastDiv.innerHTML = "";
   //fetch input value from user input
   let searchCity = inputField.value;
   todayWeather(searchCity);
-
+  weatherForecast(searchCity);
+  //clear data from user input
   searchCity = "";
 };
 // create the favorite city when click the switch button
 const switchFavoriteCity = () => {
+  weatherForecastDiv.innerHTML = "";
   if (city === "Stockholm") {
     todayWeather("London");
+    weatherForecast("London");
     city = "London";
   } else if (city === "London") {
     todayWeather("Berlin");
+    weatherForecast("Berlin");
     city = "Berlin";
   } else if (city === "Berlin") {
     todayWeather("Kyoto");
+    weatherForecast("Kyoto");
     city = "Kyoto";
   } else if (city === "Kyoto") {
     todayWeather("Geneva");
+    weatherForecast("Geneva");
     city = "Geneva";
   } else if (city === "Geneve") {
     todayWeather("Beijing");
+    weatherForecast("Beijing");
     city = "Beijing";
   } else {
     todayWeather("Stockholm");
+    weatherForecast("Stockholm");
     city = "Stockholm";
   }
 };
-
-// start here
-todayWeather("Stockholm");
 
 // 5 day Forecast
 const weatherForecast = (city) => {
@@ -163,7 +174,9 @@ const forecastDay = (filteredListAtNoon) => {
 
 const updateWeatherContent = (day, weekDay) => {
   const temp = Math.round(parseInt(day.main.temp));
-  const windSpeed = (Math.round(parseFloat(day.wind.speed) * 10) / 10).toFixed(1); // makes sure it's always one decimal displaying. If toFixed is not used, if the wind speed is an integer like 5.0 m/s only 5 will be shown.
+  const windSpeed = (Math.round(parseFloat(day.wind.speed) * 10) / 10).toFixed(
+    1
+  ); // makes sure it's always one decimal displaying. If toFixed is not used, if the wind speed is an integer like 5.0 m/s only 5 will be shown.
   const weatherIcon = day.weather[0].icon;
 
   weatherForecastDiv.innerHTML += `
@@ -177,7 +190,9 @@ const updateWeatherContent = (day, weekDay) => {
   </table>
 `;
 };
-weatherForecast(city);
+// start here
+todayWeather("Stockholm");
+weatherForecast("Stockholm");
 
 // add event listner here
 // control toggling between open and close the search field
