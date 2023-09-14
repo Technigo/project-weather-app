@@ -1,0 +1,85 @@
+/* Clear up all the beige, make a root/other for the font color, regardless of what it'll be. */
+
+body {
+font-family: 'Roboto', sans-serif;
+margin: 0;
+padding: 0;
+height: 100%;
+background-color: white;
+}
+
+/* Speaks for itself */
+.cityText {
+    font-size: 46px;
+    font-weight: 200;
+    margin: 0 0 5px 0;
+    color: beige;
+}
+
+.description-icon {
+    display:flex;
+}
+
+/* Sunrise and sunset position etc */
+.sun-position {
+    position: relative;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#sunriseText {
+    display: flex;
+    flex-direction: row;
+    font-size: 16px; 
+    color: beige;
+}
+#sunsetText {
+    display: flex;
+    flex-direction: row;
+    font-size: 16px;
+    color: beige;
+}
+/* Temperature piosition etc  */
+.tempText {
+    display: flex;
+    flex-direction: row;
+    font-size: 36px;
+    color: beige;
+}
+.tempTextCelsius {
+    display: inline;
+    font-size: 36px;
+    margin-top: 15px;
+    margin-bottom: 3px;
+    margin-left: 5px;
+    color: beige;
+}
+
+
+/* UG background image this needs to be set in js an if else to toggle between cities, my brain didn't get o that until now at 9pm */
+.feature-image {
+    background: 50% bottom; 
+    height: 800px;
+    width: 800px;
+    position: ;
+
+}
+
+.local-time {
+    font-weight: 200;
+    font-size: 28px;
+    color: beige;
+}
+.container {
+    background-color: darkblue;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 10px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 1000px;
+}
