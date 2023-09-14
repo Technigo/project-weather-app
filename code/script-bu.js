@@ -20,90 +20,57 @@ const fetchApi = () => {
             // Declaring a variable for our data
             const weatherData = json;
             console.log(weatherData);
-            showMainWeatherInfo(weatherData);
-            sunsetSunrise(weatherData); // Save the relevant data
+            // Declaring a variable for temperature
+            const temperature = weatherData.main.temp;
+            // Declaring a variable for the rounded temperature, and rounding to first decimal in place
+            const tempRounded = Math.round(temperature * 10) / 10;
+            // Adds values to HTML via innerHTML
+            temp.innerHTML = `<h1>${tempRounded}</h1><span id="degree">°C</span>`;
+            city.innerHTML = `<h2>${weatherData.name}</h2>`;
+            // To add values to HTML we first map through the array "Weather"
+            const types = weatherData.weather.map((element) => element.description)
+            //console.log(types);
+
+            // Since types is an array, we first need to save the array in a variable as a string with toString-method
+            const typesAsString = types.toString();
+            //console.log(typesAsString);
+            // Takes the string and places the first character in a new variable firstLetter
+            const firstLetter = typesAsString.charAt(0);
+            //console.log(firstLetter);
+            // We make the first character uppercase
+            const firstUpperLetter = firstLetter.toUpperCase();
+            // Substring removes first letter at index 1 in the rest of the word
+            const restOfWord = typesAsString.substring(1);
+
+            // Adds values to HTML via innerHTML with the new variable names
+            typeOfWeather.innerHTML = `<p>${firstUpperLetter}${restOfWord}</p>`;
+
+            
+           // Set sunrise and sunset
+
+           // Converting the UNIX timestamp into a human-readable time.
+            const sunrise = new Date((json.sys.sunrise + json.timezone) * 1000); 
+
+            //Set a short timestamp to only show hour and minute.
+            const sunriseShort = sunrise.toLocaleTimeString(["en-GB"], { timeStyle: `short`}); 
+
+            const sunset = new Date((json.sys.sunset + json.timezone) * 1000);;
+            const sunsetShort = sunset.toLocaleTimeString(["en-GB"], { timeStyle: `short`});
+
+            locationSpecifics.innerHTML += `
+                <div class="sunUpDown">
+                    <p>Sunrise ${sunriseShort}</p>
+                    <p>Sunset ${sunsetShort}</p>
+                </div>
+                `;
         })
         .catch((error) => {
             // Shows an error message if fetch doesn't work
             console.error('Something went wrong', error);
         });  
 };
+
 fetchApi();
-
-const showMainWeatherInfo = (weatherData) => {
-    // Declaring a variable for temperature
-    const temperature = weatherData.main.temp;
-    // Declaring a variable for the rounded temperature, and rounding to first decimal in place
-    const tempRounded = Math.round(temperature * 10) / 10;
-    // Adds values to HTML via innerHTML
-    temp.innerHTML = `<h1>${tempRounded}</h1><span id="degree">°C</span>`;
-    city.innerHTML = `<h2>${weatherData.name}</h2>`;
-    // To add values to HTML we first map through the array "Weather"
-    const types = weatherData.weather.map((element) => element.description)
-
-    // Since types is an array, we first need to save the array in a variable as a string with toString-method
-    const typesAsString = types.toString();
-    // Takes the string and places the first character in a new variable firstLetter
-    const firstLetter = typesAsString.charAt(0);
-    // We make the first character uppercase
-    const firstUpperLetter = firstLetter.toUpperCase();
-    // Substring removes first letter at index 1 in the rest of the word
-    const restOfWord = typesAsString.substring(1);
-
-    // Adds values to HTML via innerHTML with the new variable names
-    typeOfWeather.innerHTML = `<p>${firstUpperLetter}${restOfWord}</p>`;
-}
-
-// Function to set sunrise and sunset times
-const sunsetSunrise = (weatherData) => {
-    // Set sunrise and sunset
-    // Converting the UNIX timestamp into a human-readable time.
-    const sunrise = new Date(weatherData.sys.sunrise * 1000);
-    //Set a short timestamp to only show hour and minute.
-    const sunriseShort = sunrise.toLocaleTimeString(["en-GB"], { timeStyle: `short`}); 
-    const sunset = new Date(weatherData.sys.sunset * 1000);
-    const sunsetShort = sunset.toLocaleTimeString(["en-GB"], { timeStyle: `short`});
-    const sunImage = document.querySelector(".day-image");
-    const moonImage = document.querySelector(".night-image");
-
-    locationSpecifics.innerHTML += `
-    <div class="sunUpDown">
-        <p>Sunrise ${sunriseShort}</p>
-        <p>Sunset ${sunsetShort}</p>
-        </div>
-    `;
-
-    var today = new Date();
-    //var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    var time = today.getHours() //+ today.getMinutes()
-    console.log(time);
-
-    var sunsetTime = parseInt(sunsetShort);
-    var sunriseTime = parseInt(sunriseShort);
-    console.log(sunriseTime, sunsetTime);
-
-    if (time >= sunriseTime && time < sunsetTime) {
-        sunImage.style.display = "flex";
-        moonImage.style.display = "none";
-    } else {
-        sunImage.style.display = "none";
-        moonImage.style.display = "flex";
-    }
-
-
-
-
-
-
-
-    // if (time >= sunsetShort) {
-    //     sunImage.style.display = "flex";
-    //     // moonImage.style.display = "none";
-    // } else {
-    //     moonImage.style.display = "flex";
-    //     // sunImage.style.display = "none";
-    // }
-}
 
 // Function to fetch weather with timestamps
 const weatherForecast = () => {
@@ -170,7 +137,7 @@ const createTable = (dailyTemperatures) => {
 };
 
 // This function takes a parameter "timestamp", which we use in the getMinMax function to set the day and append it to the forecastSection.
-const getDayOfWeek = (timestamp) => {
+function getDayOfWeek(timestamp) {
     // Declares a variable/an array with all the days of the week in the format we want to display them
     const daysOfWeek = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
     // Using the Date-method by multiplying with 1000, we get the timestamp in a readable timeformat, it converts UNIX timestamp to milliseconds
@@ -178,9 +145,5 @@ const getDayOfWeek = (timestamp) => {
     // getDay is a method on the Date object that returns the day as an integer. By setting the integer as an index we can decide what day should have what name. In the getDay method the integer 0 represents sunday, thats why the order of the weekdays above is with sunday as the first day. 
     const dayOfWeek = daysOfWeek[date.getDay()];
     return dayOfWeek;
-};
-
-const renderSunImage = () => {
     
-}
-
+};

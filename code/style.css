@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@500&family=Roboto:wght@300&display=swap');
 
 * {
-    font-family: Roboto, Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-weight: 300;
     margin: 0;
     padding: 0;
 }
@@ -10,7 +11,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 400px; /* Ensure the container does not exceed the viewport width */
+    max-width: 500px; /* Ensure the container does not exceed the viewport width */
     margin: 0 auto /* Places the container in the center of the screen */;
 }
 
@@ -18,6 +19,7 @@
     color: white;
     display: flex;
     flex-direction: column;
+    height: 550px;
     width: 100%;
     max-width: 100vw;
     position: relative; /* Makes the shape of the linear background stay within the container we want it to*/
@@ -39,23 +41,25 @@
 
 #temp, #city, #typeOfWeather, .sunUpDown {
     z-index: 1;
-    margin: 0 38px;
+    margin: 0 2rem;
+}
+
+#typeOfWeather, .sunUpDown {
+    font-size: 20px;
 }
 
 #city {
-    font-size: 22px;
+    font-size: 30px;
 }
 
 /* Positions each individual row in the table correctly according to sketch */
 .five-day-prognosis {
-    padding-top: 80px;
     width: 100%;
     text-align: center; /* Center-align the text within the containers */
-    margin: 0 auto; /* Center the containers horizontally */
+    margin-top: -3rem; /* Center the containers horizontally */
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-
 }
 
 /* Positions each individual row in the table correctly according to sketch */
@@ -65,22 +69,52 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    font-size: 18px;
 }
 
 /* Positions the sunrise and sunset times */
 .sunUpDown {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: 0 2rem;
     margin: 2rem 0;
 }
 
 #temp {
-    font-size: 75px;
+    font-size: 85px;
     display: flex;
     flex-direction: row;
 }
 
 #degree {
-    font-size: 24px;
+    font-size: 38px;
     margin-top: 20px; /* Positions the degree symbol correctly */
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+    margin-right: 1rem;
+    position: relative;
+    top: -75px;
+}
+
+#hamburger-menu {
+    z-index: 1;
+    margin: 2rem;
+}
+
+.day-image {
+    display: none;
+    justify-content: flex-end;
+    margin-right: 2rem;
+    z-index: 1;
+}
+
+.night-image {
+    display: none;
+    justify-content: flex-end;
+    margin-right: 2rem;
+    z-index: 1;
 }
