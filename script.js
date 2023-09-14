@@ -179,4 +179,4 @@ function fetchWeatherData() {
     });
 }
 
-
+fetchWeatherData();
