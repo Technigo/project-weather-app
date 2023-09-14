@@ -1,0 +1,26 @@
+.hidden {
+    display: none;
+}
+
+table {
+    position: relative;
+    padding: 20px;
+    margin: 0;
+    width: 125px;
+}
+
+td {
+    text-align: center;
+    padding: 20px;
+}
+
+td p {
+    padding: 3px;
+}
+
+.icon img {
+    object-fit: cover;
+    width: 55px;
+    height: 35px;
+}
+
