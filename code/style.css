@@ -1,4 +1,6 @@
 body {
+
+    padding: 0;
     background: #bde8fa;
     margin: 40px;
     border-color: black;
@@ -10,6 +12,22 @@ section {
     margin: auto;
 }
 
+#sun_rise_sunset p {
+
+    color: #164a68;
+    font-size: 24px;
+    font-family: 'Montserrat';
+    line-height: 1;
+    /* Adjust this value to control line height */
+    margin-block-start: 0;
+    /* Remove margin at the top of <p> */
+    margin-block-end: 0;
+    /* Remove margin at the bottom of <p> */
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+
+}
+
 h1 {
     color: #164a68;
     font-size: 24px;
@@ -18,4 +36,41 @@ h1 {
 h2 {
     color: #164a68;
     font-size: 20px;
+}
+
+
+#forecast5Days {
+    color: #164a68;
+    font-size: 20px;
+    padding: 3px;
+}
+
+@media (max-width: 768px) {
+
+    /* mobile-specific styles*/
+    body {
+        /* Mobile body styles */
+        background: #bde8fa;
+        margin: 40px;
+        border-color: black;
+        font-family: 'Montserrat';
+    }
+
+    section {
+        /* Mobile section styles */
+        width: 400px;
+        margin: auto;
+    }
+
+    h1 {
+        /* Mobile h1 styles */
+        color: #164a68;
+        font-size: 24px;
+    }
+
+    h2 {
+        /* Mobile h2 styles */
+        color: #164a68;
+        font-size: 20px;
+    }
 }
