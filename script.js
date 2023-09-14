@@ -41,7 +41,3 @@ const fetchWeather = () => {
                 .catch((error) => {
                     console.log('Error', error)
                 });
-
-
-
-
