@@ -61,7 +61,10 @@ svg {
     width: 220px;
     border: 1px solid rgb(170, 167, 167);
 }
-
+input[type=text]{
+    color:white;
+    font-size:14px;
+}
 /* search button */
 .searchBtn {
     width: 40px;
@@ -116,8 +119,8 @@ svg {
 .tempCelsius {
     font-size: 22px;
     position: absolute;
-    left: 22%;
-    bottom: 195px;
+    left:23%;
+    bottom: 195px ;
 }
 
 /* city name */
@@ -146,10 +149,16 @@ svg {
     position: absolute;
     bottom: -40px;
 }
-
+/* weather Icon- create in the javascript innerHTML */
+.weatherIcon{
+    position: absolute;
+    bottom:-25px;
+    width:80px;
+}
 /* switch button */
 .switch-wrapper {
-    background-color: rgb(232, 113, 63);
+    /* background-color: rgb(232, 113, 63); */
+    background-color: rgb(26, 50, 49);
     position: absolute;
     right: 10px;
     bottom: 380px;
@@ -212,3 +221,17 @@ svg {
     width: auto;
 
 }
+
+/* Loader */
+.loader{
+    border:16px solid #4050dc;
+    border-top: 17px solid #1313c8;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    animation:spin 3s linear infinite;
+  }
+  @keyframes spin{
+    0%{transform:rotate(0deg)}
+    100%{transform:rotate(360deg)}
+  }
