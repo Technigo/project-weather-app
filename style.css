@@ -64,10 +64,11 @@ h2 {
     position: absolute;
     right: 20px;
     top: 70%;
-    transform: translateY(-20%);
+    transform: translateY(-30%);
     z-index: 10;
     width: 100px;
     height: 100px;
+
 
 }
 
@@ -98,21 +99,6 @@ h2 {
     transform: translate(-50%, -60%);
     margin: 0px;
     padding: 0px;
-
-}
-
-.weather table {
-    border-collapse: collapse;
-}
-
-.weather table,
-.weather th,
-.weather td {
-    border: none;
-}
-
-#current-city {
-    width: 100%;
 
 }
 
@@ -202,3 +188,12 @@ h2 {
     color: white;
     transition-duration: 0.2s;
 }
+
+.weather {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.weather table {}
