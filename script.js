@@ -1,4 +1,4 @@
-const container = document.getElementById('weather');
+const container = document.getElementById('weather-container');
 const hamburgerMenu = document.getElementById('hamburger-menu');
 const navMenu = document.getElementById('nav-menu');
 const weatherIcon = document.getElementById('weather-icon');
@@ -16,37 +16,33 @@ fetch(
   .then((json) => {
     console.log(json);
     const roundedTemperature = parseFloat(json.main.temp).toFixed(1);
-    //const temperature = Math.round(json.main.temp);
+  
     container.innerHTML += `
     <h1>${roundedTemperature} °C</h1>
     <h2>${json.name}</h2>
-    <p>${json.weather[0].description}</p>
+    <p>${json.weather[0].main}</p>
      
-    <div id="sunrise-time"><p>Sunrise: ${json.sunriseTime},</p>
-    </div><div id="sunset-time"><p>Sunset: ${json.sunsetTime}</p></div> 
-
-
-
-    `;
+    <div id="sunrise-time"><p>Sunrise: ${json.sunriseTime},</p></div>
+    <div id="sunset-time"><p>Sunset: ${json.sunsetTime}</p></div> 
+  `;
   
+
+
     // Fetch the weather icon mappings from JSON file
     fetch("weatherIcons.json")
       .then((response) => response.json())
       .then((iconMappings) => {
-        const currentWeatherDescription = json.weather[0].description;
-        const iconFileName =
-          iconMappings[currentWeatherDescription] || iconMappings["Default"];
-        const iconURL = `images/${iconFileName}`;
+        const currentWeatherMain = json.weather[0].main.toLowerCase();
+        const iconFileName = iconMappings[currentWeatherMain] || iconMappings["default"];
+        const iconURL = `design/design1/images/${iconFileName}`;
         weatherIcon.src = iconURL;
-        weatherIcon.alt = currentWeatherDescription;
+        weatherIcon.alt = currentWeatherMain;
+
+        document.getElementById('weather-icon').innerHTML = `${iconURL}`
       })
-      .catch((error) => {
-        console.error("Error fetching weatherIcons.json:", error);
-      });
+      .catch(error => console.error("Error fetching weatherIcons.json:", error));
   })
-  .catch((error) => {
-    console.error("There was a problem with the fetch operation:", error);
-  });
+ 
 
 // Invoke the fetchWeatherData function to fetch and display weather data
 
