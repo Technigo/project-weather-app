@@ -1,4 +1,8 @@
 body {
+
+
+    padding: 0;
+
     background: #bde8fa;
     margin: 40px;
     border-color: black;
@@ -10,12 +14,102 @@ section {
     margin: auto;
 }
 
+
 h1 {
     color: #164a68;
     font-size: 24px;
+
+#sun_rise_sunset p {
+
+    color: #164a68;
+    font-size: 24px;
+    font-family: 'Montserrat';
+    line-height: 1;
+    /* Adjust this value to control line height */
+    margin-block-start: 0;
+    /* Remove margin at the top of <p> */
+    margin-block-end: 0;
+    /* Remove margin at the bottom of <p> */
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+
+}
+
+h1 {
+    color: #164a68;
+    font-size: 24px;
+    text-align: center;
+    list-style: none;
+
 }
 
 h2 {
     color: #164a68;
     font-size: 20px;
+
 }
+
+}
+
+#forecast5Days {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 8px;
+    color: #164a68;
+    font-size: 20px;
+    margin-top: 3em;
+    column-gap: 0;
+    max-width: 400px;
+}
+
+@media (max-width: 768px) {
+    /* Adjust styles for tablets */
+    /* mobile-specific styles*/
+    body {
+        /* Mobile body styles */
+        background: #bde8fa;
+        margin: 40px;
+        border-color: black;
+        font-family: 'Montserrat';
+    }
+
+    section {
+        /* Mobile section styles */
+        width: 100%;
+        margin: auto;
+    }
+
+    h1 {
+        /* Mobile h1 styles */
+        color: #164a68;
+        font-size: 24px;
+    }
+
+    h2 {
+        /* Mobile h2 styles */
+        color: #164a68;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Adjust styles for mobile devices */
+    body {
+        margin: 20px; /* Smaller margin for smaller screens */
+    }
+
+    section {
+        width: 100%; /* Full width on small screens */
+    }
+
+    h1 {
+        font-size: 20px; /* Smaller font size for headings */
+    }
+
+    h2 {
+        font-size: 18px; /* Smaller font size for subheadings */
+    }
+}
+
+
+
