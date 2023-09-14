@@ -11,10 +11,25 @@ const nav = document.querySelector(".nav");
 const inputField = document.querySelector(".input-field");
 const searchBtn = document.querySelector(".searchBtn");
 const switchBtn = document.getElementById("switch");
+const loader = document.getElementById("loader");
+const container = document.querySelector(".container");
 
 // define a variable here..
 let city = "Stockholm";
+// show loading()
+const loading = () => {
+  loader.hidden = false;
+  container.hidden = true;
+};
+
+// hide loading()
+const complete = () => {
+  loader.hidden = true;
+  container.hidden = false;
+};
+// create today weather function, Stockholm as the initial value
 const todayWeather = (city) => {
+  loading();
   fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=aa3656bfb4f1c6ee11a76a4ba390afe7`
   )
@@ -22,6 +37,7 @@ const todayWeather = (city) => {
       return response.json();
     })
     .then((data) => {
+      complete();
       console.log(data);
       const city = data.name; //city name
       cityName.innerText = `${city}`;
@@ -71,13 +87,10 @@ const todayWeather = (city) => {
         switchBtn.style.backgroundColor = "rgb(232, 113, 63)";
       }
     })
-
     .catch((error) => {
       console.log("caught error", error);
     });
 };
-
-todayWeather();
 
 // create a search function for storing the user input from the search bar
 const searchInputCity = () => {
@@ -87,9 +100,31 @@ const searchInputCity = () => {
 
   searchCity = "";
 };
+// create the favorite city when click the switch button
+const switchFavoriteCity = () => {
+  if (city === "Stockholm") {
+    todayWeather("London");
+    city = "London";
+  } else if (city === "London") {
+    todayWeather("Berlin");
+    city = "Berlin";
+  } else if (city === "Berlin") {
+    todayWeather("Kyoto");
+    city = "Kyoto";
+  } else if (city === "Kyoto") {
+    todayWeather("Geneva");
+    city = "Geneva";
+  } else if (city === "Geneve") {
+    todayWeather("Beijing");
+    city = "Beijing";
+  } else {
+    todayWeather("Stockholm");
+    city = "Stockholm";
+  }
+};
 
 // start here
-todayWeather(`${city}`);
+todayWeather("Stockholm");
 
 // add event listner here
 // control toggling between open and close the search field
@@ -103,3 +138,5 @@ inputField.addEventListener("keypress", function (event) {
     searchInputCity();
   }
 });
+
+switchBtn.addEventListener("click", switchFavoriteCity);

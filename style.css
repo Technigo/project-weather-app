@@ -141,12 +141,13 @@ input[type=text]{
 /* weather Icon- create in the javascript innerHTML */
 .weatherIcon{
     position: absolute;
-    bottom:-20px;
+    bottom:-25px;
     width:80px;
 }
 /* switch button */
 .switch-wrapper {
     /* background-color: rgb(232, 113, 63); */
+    background-color: rgb(26, 50, 49);
     position: absolute;
     right:10px;
     bottom:380px;
@@ -160,3 +161,17 @@ input[type=text]{
     top:18px;
     left:18px;
 }
+/* Loader */
+.loader{
+    border:16px solid #4050dc;
+    border-top: 17px solid #1313c8;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    animation:spin 3s linear infinite;
+  }
+  @keyframes spin{
+    0%{transform:rotate(0deg)}
+    100%{transform:rotate(360deg)}
+  }
+  
