@@ -21,6 +21,10 @@ const fetchWeather = () => {
             // Process the API response data
             console.log(weather)
         })
+    //.catch(error => {
+    // Handle any errors that occurred during the API request
+    //console.error('Error:', error)
+    //})
 }
 
 fetchWeather();
