@@ -9,6 +9,7 @@
 
 /* General Styles */
 
+
 header {
     padding: 20px;
 }
@@ -17,9 +18,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     text-align: left;
     margin: 0;
-    display: flex;
-    justify-content: center;
-    background-color: #ffea82;
+    background-color: white;
 }
 
 h1 {
@@ -41,6 +40,15 @@ p {
     padding: 5px 0;
 }
 
+.todays-forecast {
+}
+
+.sthweather {
+}
+
+.message {
+}
+
 .message-img {
     display: flex;
     justify-content: flex-start;
@@ -55,6 +63,9 @@ p {
 .weather-animation svg {
     height: 150px;
     width: 150px;
+}
+
+.message-text {
 }
 
 .forecast {
