@@ -1,8 +1,8 @@
-const container = document.getElementById(`weather`);
-const hamburgerMenu = document.getElementById("hamburger-menu");
-const navMenu = document.getElementById("nav-menu");
-const weatherIcon = document.getElementById("weather-icon");
-const sunrisetime = document.getElementById('sunrise-time')
+const container = document.getElementById('weather');
+const hamburgerMenu = document.getElementById('hamburger-menu');
+const navMenu = document.getElementById('nav-menu');
+const weatherIcon = document.getElementById('weather-icon');
+const sunriseTime = document.getElementById('sunrise-time')
 const sunsetTime = document.getElementById('sunset-time')
 
 
@@ -21,8 +21,12 @@ fetch(
     <h1>${roundedTemperature} °C</h1>
     <h2>${json.name}</h2>
     <p>${json.weather[0].description}</p>
-    <p>Sunrise: ${json.sunriseTime}, Sunset: ${json.sunsetTime}</p>
-   
+     
+    <div id="sunrise-time"><p>Sunrise: ${json.sunriseTime},</p>
+    </div><div id="sunset-time"><p>Sunset: ${json.sunsetTime}</p></div> 
+
+
+
     `;
   
     // Fetch the weather icon mappings from JSON file
@@ -55,6 +59,22 @@ hamburgerMenu.addEventListener("click", function () {
   }
 });
 
+const displaySunriseSunset = (sunriseTimestamp, sunsetTimestamp) => {
+  const sunriseDate = new Date(sunriseTimestamp * 1000);
+  const sunsetDate = new Date(sunsetTimestamp * 1000);
+
+  const sunriseTime = `${sunriseDate.getHours()}:${sunriseDate.getMinutes().toString().padStart(2, '0')}`;
+  const sunsetTime = `${sunsetDate.getHours()}:${sunsetDate.getMinutes().toString().padStart(2, '0')}`;
+
+  
+  console.log(`Sunrise: ${sunriseTime}, Sunset: ${sunsetTime}`);
+
+  
+  document.getElementById('sunrise-time').innerHTML = `<p>Sunrise: ${sunriseTime}</p>`;
+  document.getElementById('sunset-time').innerHTML = `<p>Sunset: ${sunsetTime}</p>`;
+
+}
+
 
 fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=168451996f01476589314aaee8750993")
   .then(response => response.json())
@@ -67,16 +87,3 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
   })
   .catch(error => console.error('Error:', error));
 
-  const displaySunriseSunset = (sunriseTimestamp, sunsetTimestamp) => {
-    const sunriseDate = new Date(sunriseTimestamp * 1000);
-    const sunsetDate = new Date(sunsetTimestamp * 1000);
-  
-    const sunriseTime = `${sunriseDate.getHours()}:${sunriseDate.getMinutes().toString().padStart(2, '0')}`;
-    const sunsetTime = `${sunsetDate.getHours()}:${sunsetDate.getMinutes().toString().padStart(2, '0')}`;
-  
-    
-    console.log(`Sunrise: ${sunriseTime}, Sunset: ${sunsetTime}`);
-
-    document.getElementById('sunrise-time').textContent = sunriseTime;
-    document.getElementById('sunset-time').textContent = sunsetTime;
-  }
