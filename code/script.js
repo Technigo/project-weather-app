@@ -4,11 +4,13 @@ const tempToday = document.getElementById("tempToday");
 const tempTextCelsius = document.getElementById("tempTextCelsius"); // NEW
 const localTime = document.getElementById("localTime"); // NEW
 const weatherDescription = document.getElementById("weatherDescription");
+
 const forecastWeekdays = document.getElementById("forecastWeekdays"); // NEW
 const forecastIcon = document.getElementById("forecastIcon"); // NEW
 const forecastTemp = document.getElementById("forecastTemp"); // NEW
 const forecastWind = document.getElementById("forecastWind"); // NEW
 const inputField = document.getElementById("inputField"); // NEW
+
 const searchBtn = document.getElementById("searchBtn"); // NEW
 const switchBtn = document.getElementById("switchBtn"); // NEW
 
@@ -51,6 +53,9 @@ const fiveDaysForecast = (city) => {
         })
         .then((json) => {
             console.log(json); // to be deleted before hand-in
+            // Find out the weekday of today
+            const today = new Date().toString().split(" ")[0];
+
             // Filter the weather forecast data so it only contains data at 12:00 every day
             const filteredForecastData = json.list.filter((dataPoint) => (dataPoint.dt_txt.includes("12:00")));
             console.log(filteredForecastData); // to be deleted before hand-in
@@ -62,10 +67,13 @@ const fiveDaysForecast = (city) => {
                 const temp = dataPoint.main.temp.toFixed(1);
                 const windSpeed = dataPoint.wind.speed;
 
-                forecastWeekdays.innerHTML += `<p>${weekDay}</p>`;
-                forecastTemp.innerHTML += `<p>${temp}°C</p>`;
-                forecastIcon.innerHTML += `<img src="https://openweathermap.org/img/wn/${icon}@2x.png" />` //Source for weather codes and icons: https://openweathermap.org/weather-conditions
-                forecastWind.innerHTML += `<p>${windSpeed}m/s</p>`;
+                // Compare the weekday of today with the days of the forecast and only display forecast from tomorrow onwards
+                if (weekDay != today) {
+                    forecastWeekdays.innerHTML += `<p>${weekDay}</p>`;
+                    forecastTemp.innerHTML += `<p>${temp}°C</p>`;
+                    forecastIcon.innerHTML += `<img src="https://openweathermap.org/img/wn/${icon}@2x.png" />` //Source for weather codes and icons: https://openweathermap.org/weather-conditions
+                    forecastWind.innerHTML += `<p>${windSpeed}m/s</p>`;
+                }
             });
              
         })
