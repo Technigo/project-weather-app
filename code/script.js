@@ -55,17 +55,6 @@ const fetchStockholmWeather = () => {
 
 fetchStockholmWeather();
 
-// const fiveDayForecast = () => {
-//     fetch("https://api.openweathermap.org/data/2.5/forecast?q=stockholm,se&units=metric&appid=5660c7e2a75e2c204e4b057312e71c93")
-//         .then((response) => {
-//             return response.json()
-//         })
-//         .then((json) => {
-//             console.log(json)
-//             })
-//         .catch((error) => console.log("Error ⛔", error))
-//         }
-
 const fiveDayForecast = () => {
   fetch(
     `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=${API_KEY}`
