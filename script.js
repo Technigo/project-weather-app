@@ -1,5 +1,4 @@
-const forecast = document.getElementById("forecast");
-const day = document.getElementById("day");
+const day = document.getElementById("forecast");
 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const container = document.getElementById('sthweather');
 const messageContainer = document.getElementById('message-text');
@@ -7,7 +6,7 @@ const apiKey = '8fa7c461aec946fde31f330992fce9d6';
 
 function fetchWeatherDataByCoordinates(latitude, longitude) {
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
-
+  
   fetch(apiUrl)
     .then((response) => {
       if (!response.ok) {
@@ -17,7 +16,6 @@ function fetchWeatherDataByCoordinates(latitude, longitude) {
     })
     .then((json) => {
       const cityName = json.name;
-
       const temperature = json.main.temp.toFixed(1);
       const weatherDescription = json.weather[0].description;
       const sunsetTimestamp = json.sys.sunset * 1000;
@@ -36,25 +34,25 @@ function fetchWeatherDataByCoordinates(latitude, longitude) {
         let iconUrl = "";
   
         if (description.includes("rain")) {
-          message = "Don't forget your umbrella!";
+          message = `Don't forget your umbrella! ${cityName} is looking kind of rainy today!`;
           iconUrl = 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/rainy-weather/rainy-weather.json';
         } else if (description.includes("cloud")) {
-          message = "Here's hoping for clear skies";
+          message = `${cityName} hoping for clear skies.`;
           iconUrl = 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/cloudy-weather/cloudy-weather.json';
         } else if (description.includes("clear sky")) {
-          message = "Clear vision ahead";
+          message = `Clear vision ahead. ${cityName} get ready for that BBQ.`;
           iconUrl = 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/sun-weather/sun-weather.json'; 
         } else if (description.includes("drizzle")) {
-          message = "Better wear a jacket";
+          message = `Better wear a jacket as ${cityName} isn't it's happiest today.`;
           iconUrl = 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/rain-cloud-weather/rain-cloud-weather.json';
         } else if (description.includes("thunderstorm")) {
-          message = "Stay inside and cosy up";
+          message = `When in ${cityName}, stay inside and cosy up. Today's a great day to watch your fav Netflix series.`;
           iconUrl = 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/stormy-weather/stormy-weather.json';
         } else if (description.includes("snow")) {
-          message = "Let's have a snowball fight!";
+          message = `Get ready for the ${cityName} snowball championship!`;
           iconUrl = 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/snow-storm-weather/snow-storm-weather.json'; 
         } else {
-          message = "Weather conditions may vary.";
+          message = `${cityName} is looking a bit unstable today. Weather conditions may vary.`;
           iconUrl = 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/temperature-weather/temperature-weather.json';
         }
   
@@ -65,16 +63,14 @@ function fetchWeatherDataByCoordinates(latitude, longitude) {
       const { message, iconUrl } = generateWeatherMessage(weatherDescription);
   
       // Display the weather message
-      messageContainer.innerHTML = `<h2>${message}</h2>`;
+      messageContainer.innerHTML = `<h1>${message}</h1>`;
   
       container.innerHTML = `
-        <h1>Here's the weather in ${cityName}<h1/> 
         <h3>${weekdays[currentDayOfWeek]}</h3>
-        <p>Temperature: ${temperature}°C</p>
-        <p>Weather: ${weatherDescription}</p>
-        <p>Sunrise: ${sunriseTime}</p> 
-        <p>Sunset: ${sunsetTime}</p> 
-        <p>Weather feels like: ${feelsLike}°C</p>
+        <p>${weatherDescription} | ${temperature}°</p>
+        <p>feels like | ${feelsLike}°</p>
+        <p>sunrise: ${sunriseTime}</p> 
+        <p>sunset: ${sunsetTime}</p> 
       `;
 
       // Load and play the Lottie animation based on the icon URL
