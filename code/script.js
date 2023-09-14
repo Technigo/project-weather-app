@@ -1,24 +1,6 @@
-// Current weather request by city name
-// https://api.openweathermap.org/data/2.5/weather?q={city name},{country code}&appid={API key}
-// BASE_URL
-// https://api.openweathermap.org/data/2.5/weather?
-// word?
-// q={city name},{country code}
-// q=stockholm,se
-// API_KEY
-// &appid={API key}
-// &appid=5660c7e2a75e2c204e4b057312e71c93
-// URL we used
-// https://api.openweathermap.org/data/2.5/weather?q=stockholm,se&units=metric&appid=5660c7e2a75e2c204e4b057312e71c93
-// https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&appid=5660c7e2a75e2c204e4b057312e71c93
-// New URL for current weather in Stockholm
-// https://api.openweathermap.org/data/2.5/weather?q=stockholm,se&appid=5660c7e2a75e2c204e4b057312e71c93
-//const BASE_URL = "https://api.openweathermap.org/data/2.5/weather?";
-const API_KEY = "5660c7e2a75e2c204e4b057312e71c93"; // Query param
-let cityName = "Stockholm"; // Path param
-//const URL = ${BASE_URL}${word}${API_KEY};
-//console.log(URL);
+// One call länk och API key som funkar :OOOO https://api.openweathermap.org/data/2.5/onecall?lat=59.334591&lon=18.063240&exclude=hourly,minutely&units=metric&appid=7309e4a5829fafe809df835ad95f18ea
 
+//DOM selectors
 const currentWeather = document.getElementById("currentWeather");
 const tempContainer = document.getElementById("temperature");
 const city = document.getElementById("city");
@@ -28,9 +10,16 @@ const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
 const weatherForecast = document.getElementById("weatherForecast");
 
+// Variables for API-fethcing
+const API_KEY = "5660c7e2a75e2c204e4b057312e71c93"; // (Query param)
+let cityName = "Stockholm"; // City on startpage (Path param)
+
+//Global variable
+
+//API for the weather data for Stockholm.
 const fetchStockholmWeather = () => {
   fetch(
-    "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&appid=5660c7e2a75e2c204e4b057312e71c93"
+    `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${API_KEY}`
   )
     .then((response) => {
       return response.json();
@@ -55,6 +44,7 @@ const fetchStockholmWeather = () => {
 
 fetchStockholmWeather();
 
+// API for weather forecast of the next 5 days.
 const fiveDayForecast = () => {
   fetch(
     `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=${API_KEY}`
@@ -76,63 +66,41 @@ const fiveDayForecast = () => {
 };
 fiveDayForecast();
 
+// Weather forecast loop for each fifth day.
 const showWeatherData = (filteredData) => {
-  let otherDayForecast = "";
+  filteredData.forEach((day) => {
+    const date = new Date(day.dt * 1000);
+    console.log(date);
+    //
+    let dayName = date.toLocaleDateString("en-US", { weekday: "short" });
+    console.log(dayName);
+    // Make a Date object for right now
+    const today = new Date();
+    console.log(today);
+    // Compare the forecast's day with the day right now
+    const isTodaysForecast = date.getDay() === today.getDay();
 
-  console.log(otherDayForecast);
-  filteredData.forEach((day, idx) => {
-    if (idx >= 0 && idx <= 4) {
-      const { main, wind, weather } = day;
-      const { temp } = main;
-      const icon = weather[0].icon;
-      const { speed: wind_speed } = wind; // Access wind speed from the wind object
-      // Use toFixed(0) to round the temperature to a whole number
-      const roundedTemp = temp.toFixed(0);
-      
-      otherDayForecast += `
- <div class="day" id="day">
-      <div class="day">${new Date(day.dt * 1000).toLocaleDateString("en-US", {
-        weekday: "short",
-      })}</div>
-      <img src="https://openweathermap.org/img/wn/${icon}@2x.png">
-      <div class="temp">${roundedTemp}&#176;C</div>
-      <div class="wind">${wind_speed} m/s</div>
-  </div>
+    const { main, wind, weather } = day;
+    const { temp } = main;
+    const icon = weather[0].icon;
+
+    // Access wind speed from the wind object
+    const { speed: wind_speed } = wind;
+    // Use toFixed(0) to round the temperature to a whole number
+    const roundedTemp = temp.toFixed(0);
+
+    if (!isTodaysForecast) {
+      // Weather forecast content for each 5 day
+      weatherForecast.innerHTML += `
+      <div class="forecast-container">
+        <div class="forecast-weekday">${dayName}</div>
+        <div class="forecast-icon">
+          <img src="https://openweathermap.org/img/wn/${icon}@2x.png">
+        </div>
+        <div class="forecast-temp">${roundedTemp}&#176;C</div>
+        <div class="forecast-wind">${wind_speed} m/s</div>
+      </div>
  `;
     }
   });
-
-  weatherForecast.innerHTML = otherDayForecast;
 };
-
-//     weatherForecast.innerHTML =
-//         `<div class="today" id="today">
-//     <div class="day">Today</div>
-//     <img src="" alt="Weather icon" class=""weather-icon>
-//     <div class="temp">${temp}&#176;C</div>
-//     <div class="wind">${wind_speed} m/s</div>
-//  </div>
-//  <div class="day-two" id="day-two">
-//      <div class="day">${(day.dt*1000).format('ddd')}</div>
-//      <img src="" alt="Weather icon" class=""weather-icon>
-//      <div class="temp">${temp}&#176;C</div>
-//      <div class="wind">${wind_speed} m/s</div>
-//  </div>
-//  <div class="day-three" id="day-three">
-//      <div class="day">Day three</div>
-//      <img src="" alt="Weather icon" class=""weather-icon>
-//      <div class="temp">${temp}&176;C</div>
-//      <div class="wind">${wind_speed} m/s</div>
-//  </div>
-//  <div class="day-four" id="day-four">
-//      <div class="day">Day f#our</div>
-//      <img src="" alt="Weather icon" class=""weather-icon>
-//      <div class="temp">${temp}&#176;C</div>
-//      <div class="wind">${wind_speed} m/s</div>
-//  </div>
-//  <div class="day-five" id="day-five">
-//      <div class="day">Day five</div>
-//      <img src="" alt="Weather icon" class=""weather-icon>
-//      <div class="temp">${temp}&#176;C</div>
-//      <div class="wind">${wind_speed} m/s</div>
-//  </div>`
