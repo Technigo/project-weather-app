@@ -1,31 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@500&family=Montserrat:wght@500&family=Raleway:wght@100&display=swap');
-
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@500&family=Montserrat:wght@500&family=Nunito&family=Raleway:wght@100&display=swap');
 
-body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: rgb(189, 189, 189);
 
-    text-align: center;
+body::before {
+    font-family: 'Montserrat', sans-serif;
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    z-index: 1;
+    pointer-events: none;
+    animation: overlayAnimation 15s infinite alternate;
+    ;
+}
+
+@keyframes overlayAnimation {
+    0% {
+        background-color: rgba(153, 172, 176, 0.3);
+        /* Start with your initial color and transparency */
+    }
+
+    50% {
+        background-color: rgba(48, 99, 110, 0.3);
+    }
+
+    100% {
+        background-color: rgba(162, 131, 183, 0.3);
+        /* End with your target color and transparency */
+    }
 }
 
 body,
 html {
     height: 100%;
+    font-family: 'Montserrat', sans-serif;
 }
 
 h1 {
-    font-size: 60px;
-    text-align: left;
+    font-size: 40px;
+
+
 }
 
 h2 {
     font-size: 20px;
-}
 
-div {
-    position: relative;
-    width: 100%;
 }
 
 .swipe-button {
@@ -41,9 +63,9 @@ div {
     border-radius: 50%;
     position: absolute;
     right: 20px;
-    top: 50%;
+    top: 70%;
     transform: translateY(-20%);
-    z-index: 2;
+    z-index: 10;
     width: 100px;
     height: 100px;
 
@@ -73,7 +95,9 @@ div {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -60%);
+    margin: 0px;
+    padding: 0px;
 
 }
 
@@ -87,20 +111,94 @@ div {
     border: none;
 }
 
-#city-input {
-    width: 50%;
-    position: relative;
-    box-sizing: border-box;
-    background: none;
-    border: 1px solid #fff;
-    border-radius: 5px;
+#current-city {
+    width: 100%;
+
 }
 
-#search-button {
-    color: #fff;
-    position: relative;
-    box-sizing: border-box;
-    background: none;
-    border: 1px solid #fff;
-    border-radius: 5px;
+
+.search-bar {
+    margin: 0;
+    padding: 0;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 10%;
+    left: 5%;
+    position: absolute;
+    transform: translate(0%, -100%);
+    border: none;
+    transition-duration: 0.2s;
+
+}
+
+.textbox {
+    width: 0px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    line-height: 40px;
+    font-size: 25px;
+    height: 45px;
+    background-color: transparent;
+    outline: none;
+    height: 100%;
+    float: left;
+    transition-duration: 0.05s;
+}
+
+.search-btn {
+    background-color: transparent;
+    padding: 0px 0px 0px 0px;
+    margin: 0;
+    height: 45px;
+    width: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    text-decoration: none;
+    height: 100%;
+    transition-duration: 0.2s;
+    border: none;
+
+}
+
+.close-button {
+    background-color: transparent;
+    height: 45px;
+    width: 45px;
+    border: none;
+}
+
+.search-btn p {
+    margin: 10px;
+    color: white;
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: 800;
+}
+
+.search-bar:hover>.textbox {
+    padding: 0px 10px 0px 10px;
+    width: 100%;
+    border: 1px white solid;
+    transition-duration: 0.2s;
+    color: white;
+}
+
+.search-bar:hover>.search-btn {
+    transition-duration: 0.2s;
+    color: white;
+}
+
+.search-btn:hover {
+    transition-duration: 0.2s;
+    color: white;
+}
+
+.search-btn:hover>p {
+    color: white;
+    transition-duration: 0.2s;
 }
