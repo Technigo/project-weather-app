@@ -46,23 +46,35 @@
     font-size: 22px;
 }
 
+/* Positions each individual row in the table correctly according to sketch */
 .five-day-prognosis {
+    padding-top: 80px;
     width: 100%;
     text-align: center; /* Center-align the text within the containers */
     margin: 0 auto; /* Center the containers horizontally */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
+/* Positions each individual row in the table correctly according to sketch */
+.five-day-prognosis tr {
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Positions the sunrise and sunset times */
 .sunUpDown {
     display: flex;
-    margin: 2rem 0 45px 38px;
+    justify-content: space-around;
+    margin: 2rem 0;
 }
 
-.sunUpDown p:first-child {
+/* .sunUpDown p:first-child {
     margin-right: 1.5rem;
-}
-
-/* .five-day-prognosis tr td {
-    padding: 0 2rem 0 0;
 } */
 
 #temp {

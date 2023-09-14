@@ -51,12 +51,12 @@ const fetchApi = () => {
             const sunset = new Date((json.sys.sunset + json.timezone) * 1000);;
             const sunsetShort = sunset.toLocaleTimeString(["en-GB"], { timeStyle: `short`});
 
-           locationSpecifics.innerHTML += `
-               <div class="sunUpDown">
+            locationSpecifics.innerHTML += `
+                <div class="sunUpDown">
                     <p>Sunrise ${sunriseShort}</p>
                     <p>Sunset ${sunsetShort}</p>
                 </div>
-             `;
+                `;
         })
         .catch((error) => {
             // Shows an error message if fetch doesn't work
