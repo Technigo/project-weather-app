@@ -26,7 +26,7 @@ fetch(searchString("weather", "Stockholm,Sweden"))
         let sunset = new Date (json.sys.sunset * 1000)
         const sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' })
 
-        // weatherContainer.innerHTML = ""
+        weatherContainer.innerHTML = ""
         weatherContainer.innerHTML +=`   <div class="currentTemp">
         <div class="tempNumber"><p>${temperature}</p></div>
         <div class="units"><p>°C</p></div>

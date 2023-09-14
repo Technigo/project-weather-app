@@ -1,58 +1,60 @@
-body {
+body{
   font-family: 'Roboto', sans-serif;
 }
 
-#weatherApp {
+#weatherApp{
   border: 1px solid black;
   display: block;
   margin: auto;
   max-width: 350px;
-  /* overflow: hidden; */
-  position: relative; /* Weather app container - setting position to relative */
+  background-color: rgb(212, 212, 215);
+   overflow: hidden; 
 }
 
 #currentWeather {
-  /* Background for current weather */
+  /* Weather style */
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(img/sergei-a--heLWtuAN3c-unsplash.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   color: white;
   text-align: center;
-  padding-bottom: 5rem;
-  padding-top: 2rem;
   opacity: 0.7;
   border-radius: 50%;
-  width: 500px; /* Width of the current weather container */
-  height: 500px; /* Height of the current weather container */
-  position: absolute; /* Setting position to absolute to break out of the container */
-  left: 80%; /* Moving to the right inside the container */
-  top: 20%; /* Moving up inside the container */
-  transform: translate(-50%, -50%); /* Centering horizontally and vertically */
-  margin: -100px; /* Moving up and to the left by half of the width and height */
+  width: 500px;
+  height: 500px;
+  right: 20%; /* Move to the right within the container */
+  bottom: 100px; /* Move up from the bottom within the container */
+  position: relative; /* Adding position: relative; */
 }
 
-#weatherForecast {
-  padding: 20px;
-  text-align: center;
-  position: relative;
-}
 
-.currentTemp {
-  display: flex;
-  flex-direction: row;
-  border: 1px solid red;
-  padding-top: 200px;
+
+
+.currentTemp{
+   display: flex;
+
+  padding-top: 120px;
+  padding-left: 100px;
+}
+.tempNumber{
+  font-size: 80px;
+  
+    font-weight: 900;
+    color: aquamarine;
+}
+.units{
+ 
+    font-size: 36px;
+}
+.cityName{
+  padding-top: 0px;
   color: aqua;
 }
 
-.tempNumer {
-  font-size: 110px;
+.weatherDescription{
+  color: aqua;
 }
-
-.unit {
-  display: inline;
-  font-size: 36px;
-  margin-top: 15px;
-  margin-left: 5px;
+.currentTime{
+  color: aqua;
 }
