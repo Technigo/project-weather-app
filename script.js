@@ -16,18 +16,18 @@ function fetchWeatherDataByCoordinates(latitude, longitude) {
       return response.json();
     })
     .then((json) => {
-    const cityName = json.name;
-    const temperature = json.main.temp.toFixed(1); //removed all but one decimal
-    const weatherDescription = json.weather[0].description;
-    const sunsetTimestamp = json.sys.sunset * 1000;
-    const sunriseTimestamp = json.sys.sunrise * 1000;
-    const feelsLike = json.main.feels_like.toFixed(1); //removed all but one decimal
+      const cityName = json.name;
+      const temperature = json.main.temp.toFixed(1); //removed all but one decimal
+      const weatherDescription = json.weather[0].description;
+      const sunsetTimestamp = json.sys.sunset * 1000;
+      const sunriseTimestamp = json.sys.sunrise * 1000;
+      const feelsLike = json.main.feels_like.toFixed(1); //removed all but one decimal
 
       // Create Date objects for sunset and sunrise times
       const sunset = new Date(sunsetTimestamp);
       const sunrise = new Date(sunriseTimestamp);
-      const sunsetTime = `${sunset.getHours()}:${sunset.getMinutes()}`; //nytt
-      const sunriseTime = `${sunrise.getHours()}:${sunrise.getMinutes()}`; //nytt
+      const sunsetTime = `${sunset.getHours()}:${sunset.getMinutes()}`; //removes seconds
+      const sunriseTime = `${sunrise.getHours()}:${sunrise.getMinutes()}`; //removes seconds
       const currentDayOfWeek = new Date().getDay();
 
       function generateWeatherMessage(description) {
@@ -57,8 +57,8 @@ function fetchWeatherDataByCoordinates(latitude, longitude) {
         <h3>${weekdays[currentDayOfWeek]}</h3>
         <p>Temperature: ${temperature}°C</p>
         <p>Weather: ${weatherDescription}</p>
-        <p>Sunrise: ${sunriseTime}</p> //uppdaterat
-        <p>Sunset: ${sunsetTime}</p> //uppdaterat
+        <p>Sunrise: ${sunriseTime}</p> 
+        <p>Sunset: ${sunsetTime}</p> 
         <p>Weather feels like: ${feelsLike}°C</p>
       `;
     })
@@ -115,7 +115,7 @@ function fetchWeatherData() {
           const morningItem = forecastItems.find((item) => item.dt_txt.includes("09:00"));
           const eveningItem = forecastItems.find((item) => item.dt_txt.includes("21:00"));
 
-         f (morningItem && eveningItem) {
+         if (morningItem && eveningItem) {
               const morningTemperature = morningItem.main.temp.toFixed(1); // Temp at 9 am
               const eveningTemperature = eveningItem.main.temp.toFixed(1); // Temp at 9 pm
               const morningFeelsLike = morningItem.main.feels_like.toFixed(1); // Feels like at 9 am
