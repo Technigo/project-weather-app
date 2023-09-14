@@ -63,8 +63,6 @@ const sunsetSunrise = (weatherData) => {
     const sunriseShort = sunrise.toLocaleTimeString(["en-GB"], { timeStyle: `short`}); 
     const sunset = new Date(weatherData.sys.sunset * 1000);
     const sunsetShort = sunset.toLocaleTimeString(["en-GB"], { timeStyle: `short`});
-    const sunImage = document.querySelector(".day-image");
-    const moonImage = document.querySelector(".night-image");
 
     locationSpecifics.innerHTML += `
     <div class="sunUpDown">
@@ -73,15 +71,19 @@ const sunsetSunrise = (weatherData) => {
         </div>
     `;
 
-    var today = new Date();
+    const today = new Date();
     //var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    var time = today.getHours() //+ today.getMinutes()
+    const time = today.getHours() + today.getMinutes()
     console.log(time);
 
-    var sunsetTime = parseInt(sunsetShort);
-    var sunriseTime = parseInt(sunriseShort);
+    const sunImage = document.querySelector(".day-image");
+    const moonImage = document.querySelector(".night-image");
+
+    const sunsetTime = parseInt(sunsetShort);
+    const sunriseTime = parseInt(sunriseShort);
     console.log(sunriseTime, sunsetTime);
 
+    // Statement to decide if the sun or moon is showing
     if (time >= sunriseTime && time < sunsetTime) {
         sunImage.style.display = "flex";
         moonImage.style.display = "none";
@@ -89,11 +91,6 @@ const sunsetSunrise = (weatherData) => {
         sunImage.style.display = "none";
         moonImage.style.display = "flex";
     }
-
-
-
-
-
 
 
     // if (time >= sunsetShort) {
