@@ -25,20 +25,42 @@ body {
     color: white;
     text-align: left;
     padding-left: 90px;
+    border-bottom-left-radius: 45%;
+    border-bottom-right-radius: 45%;
+
 }
 
-.search {
+.searchDisplay {
+    display: flex;
+    align-items: center;
+}
+
+.searchWrapper {
     margin-top: 20px;
-    display: none;
-}
-
-.search-btn {
     display: none;
 }
 
 .icon-search {
     margin-top: 20px;
+    margin-right: 20px;
+    height: 30px;
     width: 8%;
+}
+
+.icon-close {
+    height: 30px;
+    margin-right: 20px;
+}
+
+.search-btn {
+    opacity: 0.3;
+    border: 1px;
+}
+
+.search {
+    color: white;
+    border-color: white;
+    opacity: 0.6;
 }
 
 h1 {
@@ -123,5 +145,3 @@ li {
 .icon-bg {
     width: 80px;
 }
-
-.

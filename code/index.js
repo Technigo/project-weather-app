@@ -11,7 +11,9 @@ const descriptionEl = document.getElementById("desc");
 const windMain = document.getElementById("wind");
 const iconMain = document.getElementById("icon-main");
 const dateNameToday = document.getElementById("date");
-const timeToday = document.getElementById("time")
+const timeToday = document.getElementById("time");
+const searchBar = document.getElementById("icon-search");
+const searchDelete = document.getElementById("icon-close")
 
 
 const baseUrl = "https://api.openweathermap.org/data/2.5/weather?";
@@ -20,8 +22,20 @@ const lat = "Stockholm";
 const lon = "Sweden";
 const URL = `${baseUrl}q=${lat},${lon}&units=metric&APPID=${apiKey}`
 
-
-
+searchBar.addEventListener("click", () => {
+  if (searchWrapper.style.display === "none") {
+    searchBar.style.display = "none";
+    searchWrapper.style.display = "flex";
+  } else {
+    searchWrapper.style.display = "none";
+  }
+})
+searchDelete.addEventListener("click", () => {
+  if (searchWrapper.style.display === "flex") {
+    searchBar.style.display = "flex";
+    searchWrapper.style.display = "none";
+  }
+})
 
 const fetchWeatherAsync = async () => {
   const response = await fetch(URL).catch((err) => console.log("my ERROR", err));
