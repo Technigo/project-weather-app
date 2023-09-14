@@ -1,8 +1,12 @@
-//
+//Function that gets all the weather data taht we need.
 const getWeatherData = async () => {
-    const forecastResponse = await fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=966881349119fc14f6f3831c44ff9b53", { method: 'GET' });
+    // Funtion that returns an API Url for the openweather API.
+    const getApiUrl = (endpoint) => {
+        return `https://api.openweathermap.org/data/2.5/${endpoint}?q=Stockholm,Sweden&units=metric&APPID=966881349119fc14f6f3831c44ff9b53`
+    }
+    const forecastResponse = await fetch(getApiUrl("forecast"), { method: 'GET' });
 
-    const weatherResponse = await fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=966881349119fc14f6f3831c44ff9b53", { method: 'GET' });
+    const weatherResponse = await fetch(getApiUrl("weather"), { method: 'GET' });
 
     const weatherData = await weatherResponse.json();
     //console.log(weatherData)
