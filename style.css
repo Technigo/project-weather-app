@@ -52,7 +52,7 @@
     font-size: 22px;
 }
 
-.weekly-prognos {
+.weekly-prognose {
     padding-top: 80px;
     width: 100%;
     text-align: center;
@@ -60,4 +60,29 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+}
+
+.weekly-prognose tr {
+    padding: 0 2 rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sunrise {
+    display: flex;
+    justify-content: space-around;
+    margin: 2rem 0;
+}
+
+#temperature {
+    font-size: 75px;
+    display: flex;
+    flex-direction: row;
+}
+
+#degree {
+    font-size: 24px;
+    margin-top: 20px;
 }
