@@ -60,9 +60,15 @@ function fetchWeatherDataByCoordinates(latitude, longitude) {
         if (description.includes("rain")) {
           message = "Don't forget your umbrella!";
         } else if (description.includes("cloud")) {
-          message = "Here's hoping for a sunny sky later on";
+          message = "Here's hoping for clear skies";
         } else if (description.includes("clear sky")) {
-          message = "Keep them sunglasses nearby";
+          message = "Clear vision ahead";
+        } else if (description.includes("drizzle")) {
+          message = "Best wear a jacket";
+        } else if (description.includes("thunderstorm")) {
+          message = "Stay inside and cosy up";
+        } else if (description.includes("snow")) {
+          message = "Let´s have a snowball fight!";
         } else {
           message = "Weather conditions may vary.";
         }
