@@ -1,144 +1,102 @@
-const container = document.getElementById(`weather`);
-const hamburgerMenu = document.getElementById("hamburger-menu");
-const navMenu = document.getElementById("nav-menu");
-const weatherIcon = document.getElementById("weather-icon");
-const forecastContainer = document.getElementById("forecast-container");
+document.addEventListener("DOMContentLoaded", function () {
+  // Your code here, including the fetchFiveDayForecast function
 
-const apiKey = "b0bce0ead37d18acc13acd506864e75a";
-const city = "Stockholm,Sweden";
-const units = "metric";
+  const container = document.getElementById(`weather`);
+  const hamburgerMenu = document.getElementById("hamburger-menu");
+  const navMenu = document.getElementById("nav-menu");
+  const weatherIcon = document.getElementById("weather-icon");
+  const forecastContainer = document.getElementById("weather-forecast");
 
-fetch(
-  "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=b0bce0ead37d18acc13ad506864e75ac"
-)
-  .then((response) => {
-    return response.json();
-  })
+  const city = "Stockholm,Sweden";
+  const units = "metric";
 
-  .then((json) => {
-    console.log(json);
-    const roundedTemperature = parseFloat(json.main.temp).toFixed(1);
-    //const temperature = Math.round(json.main.temp);
-    container.innerHTML += `
-    <h1>${roundedTemperature} °C</h1>
-    <h2>${json.name}</h2>
-    <p>${json.weather[0].description}</p>
-    <p>${json.weather[0].icon}<p/>
-   
-    `;
-
-    // Fetch the weather icon mappings from JSON file
-    fetch("weatherIcons.json")
+  // Function to fetch and display the current weather
+  const fetchCurrentWeather = () => {
+    fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&APPID=b0bce0ead37d18acc13ad506864e75ac`
+    )
       .then((response) => response.json())
-      .then((iconMappings) => {
-        const currentWeatherDescription = json.weather[0].description;
-        const iconFileName =
-          iconMappings[currentWeatherDescription] || iconMappings["Default"];
-        const iconURL = `images/${iconFileName}`;
-        weatherIcon.src = iconURL;
-        weatherIcon.alt = currentWeatherDescription;
+      .then((json) => {
+        console.log(json);
+        const roundedTemperature = parseFloat(json.main.temp).toFixed(1);
+        container.innerHTML = `
+        <h1>${roundedTemperature} °C</h1>
+        <h2>${json.name}</h2>
+        
+        <p>${json.weather[0].description}</p>
+     
+      `;
+
+        // Fetch the weather icon mappings from JSON file
+        fetch("weatherIcons.json")
+          .then((response) => response.json())
+          .then((iconMappings) => {
+            const currentWeatherDescription = json.weather[0].description;
+            const iconFileName =
+              iconMappings[currentWeatherDescription] ||
+              iconMappings["Default"];
+            const iconURL = `images/${iconFileName}`;
+            weatherIcon.src = iconURL;
+            weatherIcon.alt = currentWeatherDescription;
+          })
+          .catch((error) => {
+            console.error("Error fetching weatherIcons.json:", error);
+          });
       })
       .catch((error) => {
-        console.error("Error fetching weatherIcons.json:", error);
+        console.error("There was a problem with the fetch operation:", error);
       });
-  })
-  .catch((error) => {
-    console.error("There was a problem with the fetch operation:", error);
-  });
+  };
+  fetchCurrentWeather();
 
-const days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+  const apiKey = "b0bce0ead37d18acc13ad506864e75ac";
+  // const city = "Stockholm,Sweden";
+  const apiUrl5Days = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`;
 
-const fiveDayForecast = () => {
-  console.log(`fetch five day forecast`);
-  fetch(
-    "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=b0bce0ead37d18acc13ad506864e75ac"
-  )
-    .then((response) => {
-      return response.json();
-    })
-    .then((json) => {
-      console.log(json);
-      const forecastList = json.list;
-
-      // Filter the forecast data to include only the next 5 days
-      const next5DaysForecast = forecastList.filter((forecast) => {
-        const forecastDate = new Date(forecast.dt * 1000); // Convert to milliseconds
-        const currentDate = new Date();
-        return (
-          forecastDate.getDate() !== currentDate.getDate() &&
-          forecastDate >= currentDate
-        );
-      });
-
-      // Create and append HTML elements to display the forecast for each day
-      next5DaysForecast.forEach((forecast, index) => {
-        const forecastDate = new Date(forecast.dt * 1000);
-        const dayOfWeek = days[forecastDate.getDay()];
-        const temperature = forecast.main.temp;
-        const description = forecast.weather[0].description;
-
-        const forecastElement = document.createElement("div");
-        forecastElement.innerHTML = `
-          <p>Day ${index + 1}: ${dayOfWeek}</p>
-          <p>Temperature: ${temperature}°C</p>
-          <p>Description: ${description}</p>
-        `;
-
-        forecastContainer.appendChild(forecastElement);
-      });
+  // Function to filter forecast data for 12:00 PM each day
+  function filterForecastData(data) {
+    const filteredData = data.list.filter((item) => {
+      // Check if the timestamp is for 12:00 PM (noon)
+      return item.dt_txt.includes("12:00:00");
     });
-};
-
-fiveDayForecast();
-
-/*
-const days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
-
-const fiveDayForecast = () => {
-  console.log(`fetch five day forecast`);
-  fetch(
-    "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=b0bce0ead37d18acc13ad506864e75ac"
-  )
-    .then((response) => {
-      return response.json();
-    })
-
-    .then((json) => {
-      console.log(json);
-      const forecastList = json.list;
-
-      // Filter the forecast data to include only the next 5 days
-      const next5DaysForecast = forecastList.filter((forecast) => {
-        const forecastDate = new Date(forecast.dt * 1000); // Convert to milliseconds
-        const currentDate = new Date();
-        return (
-          forecastDate.getDate() !== currentDate.getDate() &&
-          forecastDate >= currentDate
-        );
-      });
-      // Display the forecast for each day
-      next5DaysForecast.forEach((forecast, index) => {
-        const forecastDate = new Date(forecast.dt * 1000);
-        const dayOfWeek = days[forecastDate.getDay()];
-        const temperature = forecast.main.temp;
-        const description = forecast.weather[0].description;
-
-        console.log(
-          `Day ${
-            index + 1
-          }: ${dayOfWeek} - Temperature: ${temperature}°C, Description: ${description}`
-        );
-      });
-    });
-};
-fiveDayForecast();
-*/
-
-hamburgerMenu.addEventListener("click", function () {
-  console.log(`hamburger menu`);
-  if (navMenu.style.display === "block") {
-    navMenu.style.display = "none";
-  } else {
-    navMenu.style.display = "block";
+    return filteredData;
   }
+
+  // Function to display the weather forecast
+  function displayWeatherForecast(forecastData) {
+    forecastData.forEach((item) => {
+      const date = new Date(item.dt * 1000); // Convert timestamp to date
+      const dayOfWeek = date.toLocaleDateString("en-US", { weekday: "long" });
+      const temperature = item.main.temp;
+      const weatherDescription = item.weather[0].description;
+
+      const forecastElement = document.createElement("p");
+      forecastElement.textContent = `${dayOfWeek}: ${temperature}°C, ${weatherDescription}`;
+
+      // Append the paragraph element to the forecast container
+      forecastContainer.appendChild(forecastElement);
+      console.log(forecastData);
+      console.log(`${dayOfWeek}: ${temperature}°C, ${weatherDescription}`);
+    });
+  }
+
+  // Fetch weather data and display the forecast
+  fetch(apiUrl5Days)
+    .then((response) => response.json())
+    .then((data) => {
+      const forecastData = filterForecastData(data);
+      displayWeatherForecast(forecastData);
+    })
+    .catch((error) => {
+      console.error("Error fetching data:", error);
+    });
+
+  hamburgerMenu.addEventListener("click", function () {
+    console.log(`hamburger menu`);
+    if (navMenu.style.display === "block") {
+      navMenu.style.display = "none";
+    } else {
+      navMenu.style.display = "block";
+    }
+  });
 });
