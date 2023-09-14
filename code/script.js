@@ -4,6 +4,7 @@ const typeOfWeather = document.getElementById("typeOfWeather");
 const forecastSection = document.getElementById("fiveDayPrognosis");
 const sunUpDown = document.getElementById("sunUpDown");
 const locationSpecifics = document.getElementById("locationSpecifics");
+//const changeCity = document.getElementById("changeBtn"); //Just testing the button
 
 const cityToUrl = "Varberg,Sweden";
 const BASE_URL = "https://api.openweathermap.org/data/2.5/";
@@ -62,6 +63,7 @@ const sunsetSunrise = (weatherData) => {
     //Set a short timestamp to only show hour and minute.
     const sunriseShort = sunrise.toLocaleTimeString(["en-GB"], { timeStyle: `short`}); 
     const sunset = new Date(weatherData.sys.sunset * 1000);
+    
     const sunsetShort = sunset.toLocaleTimeString(["en-GB"], { timeStyle: `short`});
 
     locationSpecifics.innerHTML += `
