@@ -45,33 +45,92 @@ body {
   border-radius: 50%;
 }
 
+.search-container {
+  height: 100px;
+  width: 100%;
+}
+
+.search-container button {
+  width: 30px;
+  margin-top: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
 main {
   position: relative;
   height: 100%;
   z-index: 1;
+  color: white;
+  padding: 0 30px;
+}
+
+.curt {
+  display: flex;
+}
+
+h1 {
+  font-size: 7rem;
+  font-weight: 500;
+}
+
+.celsius {
+  font-size: 40px;
+  font-weight: 300;
+  vertical-align: super;
+  padding-top: 1rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 18px;
+  text-transform: capitalize;
+}
+
+.weather-description {
+  display: flex;
+  align-items: center;
+}
+
+.c-w-i {
+  width: 80px;
 }
 
 .sunrise-sunset {
   color: white;
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 300;
   display: flex;
   justify-content: center;
-  gap: 2rem;
-  border: 1px solid red;
+  gap: 2.5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+.sunrise p,
+.sunset p {
+  display: inline;
+  margin-right: 0.5rem;
 }
 
 .forecast-wrapper {
   position: absolute;
   width: 100%;
-  padding: 10px 40px 40px;
+  color: black;
+  padding: 10px 0 40px;
   bottom: 0;
 }
 
 .forecast-container {
   display: flex;
   align-items: center;
-
 }
 
 .forecast-weekday {
@@ -101,8 +160,6 @@ main {
   text-align: right;
 }
 
-
-h1,
 h2,
 h3 {
   font-weight: 300;

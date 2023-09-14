@@ -18,17 +18,40 @@
       <div id="background" class="image"></div>
       <!--Section for current weather including city name, temperature, current time, eather and time for sunrise and sunset-->
       <main>
+        <div class="search-container">
+          <button>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 64 64"
+              stroke-width="6"
+              stroke="#fff"
+              fill="none"
+              class="duration-300 transform transition-all"
+              style="width: 48px; height: 48px"
+            >
+              <circle cx="27.31" cy="25.74" r="18.1"></circle>
+              <path d="M39.58 39.04L56.14 57"></path>
+            </svg>
+          </button>
+        </div>
         <section class="current-weather" id="currentWeather">
-          <h1 id="currentTemp"></h1>
+          <div class="curt">
+            <h1 id="currentTemp"></h1>
+            <p class="celsius">&deg;C</p>
+          </div>
           <h2 id="city"></h2>
           <div class="weather-description">
             <h3 id="weather"></h3>
-            <div id="weatherIcon"></div>
+            <div id="weatherIcon" class="c-w-i"></div>
           </div>
         </section>
         <section class="sunrise-sunset">
-          <div id="sunrise"></div>
-          <div id="sunset"></div>
+          <div id="sunrise" class="sunrise">
+            <p>sunrise</p>
+          </div>
+          <div id="sunset" class="sunset">
+            <p>sunset</p>
+          </div>
         </section>
         <!-- 5 days forecast section -->
         <section id="weatherForecast" class="forecast-wrapper"></section>

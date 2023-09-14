@@ -1,13 +1,13 @@
 // One call länk och API key som funkar :OOOO https://api.openweathermap.org/data/2.5/onecall?lat=59.334591&lon=18.063240&exclude=hourly,minutely&units=metric&appid=7309e4a5829fafe809df835ad95f18ea
 
 //DOM selectors
-const currentWeather = document.getElementById("currentWeather")
+const currentWeather = document.getElementById("currentWeather");
 const currentTemp = document.getElementById("currentTemp");
-const city = document.getElementById("city")
-const weather = document.getElementById("weather")
+const city = document.getElementById("city");
+const weather = document.getElementById("weather");
 const weatherIcon = document.getElementById("weatherIcon");
-const sunrise = document.getElementById("sunrise")
-const sunset = document.getElementById("sunset")
+const sunrise = document.getElementById("sunrise");
+const sunset = document.getElementById("sunset");
 const weatherForecast = document.getElementById("weatherForecast");
 
 // Variables for API-fethcing
@@ -15,7 +15,8 @@ const API_KEY = "5660c7e2a75e2c204e4b057312e71c93"; // (Query param)
 let cityName = "Stockholm"; // City on startpage (Path param)
 
 //Global variable
-
+// Get the user's local timezone
+//let userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
 //API for the weather data for Stockholm.
 const fetchStockholmWeather = () => {
@@ -24,16 +25,15 @@ const fetchStockholmWeather = () => {
   )
     .then((response) => response.json())
     .then((json) => {
-        console.log(json)
+      console.log(json);
 
-        // Current temperature
+      // Current temperature
       const temp = json.main.temp;
       const roundedTemp = temp.toFixed(1); // This will round to one decimal place
       console.log(roundedTemp);
 
-      currentTemp.innerHTML = `${roundedTemp}°C`;
+      currentTemp.innerHTML = `${roundedTemp}`;
       console.log(`${roundedTemp}°C`);
-
       city.innerHTML = `${json.name}`;
       console.log(json.name);
 
@@ -41,39 +41,35 @@ const fetchStockholmWeather = () => {
       weather.innerHTML = `${weatherDescription}`;
       console.log(weatherDescription);
 
-        let { icon } = json.weather[0];
+      let { icon } = json.weather[0];
       weatherIcon.innerHTML = `<img src="http://openweathermap.org/img/wn/${icon}@2x.png">`;
 
       // Shows the sunrise and sunset time with the right timezone
       // The date object is handling dates and times
-      const sunriseData = new Date((json.sys.sunrise + json.timezone) * 1000); // Multiplying by 1000 to convert it into milliseconds.
+      const sunriseData = new Date(json.sys.sunrise * 1000); // Multiplying by 1000 to convert it into milliseconds.
       // Formats the sunriseData Date object into a time string using the toLocaleTimeString method.
       const sunriseTime = sunriseData.toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",
       });
 
-      const sunsetData = new Date((json.sys.sunset + json.timezone) * 1000);
+      const sunsetData = new Date(json.sys.sunset * 1000);
       const sunsetTime = sunsetData.toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",
       });
-        
-         // Sunrise and sunset innerHTML
-      sunrise.innerHTML = `
-      <p>sunrise${sunriseTime}</p>
-    `;
-    sunset.innerHTML = `
-      <p>sunset${sunsetTime}</p>
-    `;
 
-    console.log(`sunrise ${sunriseTime}`);
-    console.log(`sunset ${sunsetTime}`);
+      // Sunrise and sunset innerHTML
+      sunrise.innerHTML += `${sunriseTime}`;
+      sunset.innerHTML += `${sunsetTime}`;
+
+      console.log(`sunrise ${sunriseTime}`);
+      console.log(`sunset ${sunsetTime}`);
     })
     .catch((error) => console.log("Error ❌", error));
-}
+};
 
-fetchStockholmWeather()
+fetchStockholmWeather();
 
 // API for weather forecast of the next 5 days.
 const fiveDayForecast = () => {
