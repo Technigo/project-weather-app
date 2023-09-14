@@ -1,41 +1,64 @@
-const cityName = document.getElementById('cityName')
-const temperature = document.getElementById('temperature')
-const weatherType = document.getElementById('weatherType')
-const forecastWrapper = document.getElementById('forecastWrapper')
-const forecastDay = document.getElementById('forecastDay')
-const forecastTemp = document.getElementById('forecastTemp')
+const header = document.getElementById('header')
+const weatherDescription = document.getElementById('weatherDescription')
+const container = document.getElementById('container')
 const forecastItems = document.getElementById('forecastItems')
 
+fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=fd582670436692008725c351eb4985b0")
+    .then((response) => {
+        return response.json()
+    })
 
-const fetchWeather = () => {
+    .then((json) => {
 
-    fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=fd582670436692008725c351eb4985b0')
-        .then((response) => {
-            return response.json()
-        })
-        .then((json) => {
-            console.log(json)
-            console.log(json.name)
-            console.log((json.main.temp).toFixed(1))
-            console.log(json.weather[0].description) //här kanske vi får ändra! om det kommer fler objekt i arrayen.
-            cityName.innerHTML = `STAD: ${json.name}`
-            temperature.innerHTML = `TEMPERATUREN ÄR: ${(json.main.temp).toFixed(1)}`
-            weatherType.innerHTML = `BESKRIVNING: ${json.weather[0].description}`
-            //jennys del sunrise sunset
+        const sunRise = new Date (json.sys.sunrise * 1000);
+        //making the time variables into strings to display the correct time format
+        let sunRiseHoursAndMinutes = String(sunRise.getHours()).padStart(2, '0') + ':' + String(sunRise.getMinutes()).padStart(2, '0');
+        console.log(sunRise.getHours(), sunRise.getMinutes()); 
+
+        const sunSet = new Date (json.sys.sunset * 1000);
+        let sunSetHoursAndMinutes = String(sunSet.getHours()).padStart(2, '0') + ':' + String(sunSet.getMinutes()).padStart(2, '0');
+        console.log(sunSetHoursAndMinutes);
+
+        const weathers = json.weather
+        weathers.map((weather) => {
+
+        header.innerHTML = `
+        <h3>${weather.description} | ${(json.main.temp).toFixed(0)}°</h3>
+        <h3>sunrise ${sunRiseHoursAndMinutes}</h3>
+        <h3>sunset ${sunSetHoursAndMinutes}</h3>
+        `
+
+        //different actions depending on weather
+        console.log('hej')
+        switch(weather.main) {
+            case 'Clouds':  // if (x === 'value1')
+                console.log('cloudy');
+                weatherDescription.innerHTML += `
+                <h1>The sky is grey in ${json.name}. </h1>`;
+            break;
+        
+            case 'Rain':  // if (x === 'value2')
+                console.log('rainy')
+                console.log(weather.description)       
+                weatherDescription.innerHTML += `
+                <h1>It's raining in ${json.name}.  </h1>
+                `
+            
+            
+        }
+
+    })
+ })
 
 
 
-            //den andra delen weather forecast hej hej
-        })
 
 
 
 
 
 
-}
 
-fetchWeather()
 
 const fetchForecast = () => {
     fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=fd582670436692008725c351eb4985b0')
