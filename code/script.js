@@ -90,10 +90,10 @@ const updateHTMLforecast = (json) => {
         const dayName = date.toLocaleDateString("en-US", { weekday: "short" });
         const temp = day.main.temp.toFixed(1);
         forecast5Days.innerHTML += `
-            <div class="grid-child day">
+            <div class="grid-child day" style="box-sizing: border-box; border-bottom: 2px dotted #164a68;">
                 ${dayName}
             </div>
-            <div class="grid-child temp">
+                        <div class="grid-child temp" style="box-sizing: border-box;text-align: right; border-bottom: 2px dotted #164a68;">
                 ${temp}
             </div>
         `;

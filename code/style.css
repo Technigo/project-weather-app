@@ -31,6 +31,8 @@ section {
 h1 {
     color: #164a68;
     font-size: 24px;
+    text-align: center;
+    list-style: none;
 }
 
 h2 {
@@ -41,7 +43,7 @@ h2 {
 #forecast5Days {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
+    grid-gap: 8px;
     color: #164a68;
     font-size: 20px;
     margin-top: 3em;
