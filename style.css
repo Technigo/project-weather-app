@@ -1,3 +1,214 @@
-.weatherForecastUl {
-    list-style-type: none;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    position: relative;
+    height: 800px;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid rgb(187, 182, 182);
+    overflow: hidden;
+}
+
+/* navbar section, search button */
+.nav {
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+}
+
+svg {
+    color: white
+}
+
+
+/* input field */
+.input-field {
+    outline: none;
+    height: 25px;
+    border: none;
+    border-radius: 100px;
+    background-color: transparent;
+    width: 0px;
+    transition: width 0.3s ease;
+    padding: 5px 10px;
+    margin: 5px 10px;
+
+}
+
+.input-field:focus {
+    outline: none;
+}
+
+.input-field::placeholder {
+    color: white;
+    font-size: 14px;
+}
+
+.nav.active .input-field {
+    width: 220px;
+    border: 1px solid rgb(170, 167, 167);
+}
+
+/* search button */
+.searchBtn {
+    width: 40px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 100px;
+    border: none;
+    background: transparent;
+    display: inline;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    transition: transform 0.3s ease;
+}
+
+.nav.active .searchBtn {
+    transform: translateX(210px);
+}
+
+/* top background image setting  */
+.weather-image {
+    height: 800px;
+    width: 800px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 50%;
+    right: 50%;
+    transform: translate(50%);
+}
+
+
+/* main weather session: city, temp, sunrise, sunset etc. */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    height: 300px;
+    position: absolute;
+    padding-left: 20px;
+    color: white
+}
+
+/* main temp part */
+.main-temp {
+    font-size: 70px;
+    position: absolute;
+    bottom: 120px;
+}
+
+.tempCelsius {
+    font-size: 22px;
+    position: absolute;
+    left: 22%;
+    bottom: 195px;
+}
+
+/* city name */
+.cityName {
+    font-size: 30px;
+    position: absolute;
+    bottom: 80px;
+}
+
+/* weather description */
+.weatherDescription {
+    font-size: 22px;
+    position: absolute;
+    bottom: 50px;
+    text-transform: capitalize;
+
+}
+
+/* sunrise and sunset section */
+.rise-set {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 350px;
+    font-size: 20px;
+    position: absolute;
+    bottom: -40px;
+}
+
+/* switch button */
+.switch-wrapper {
+    background-color: rgb(232, 113, 63);
+    position: absolute;
+    right: 10px;
+    bottom: 380px;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+}
+
+.switch-wrapper svg {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+}
+
+/* table */
+
+.weatherForecastDiv {
+    padding: 30px;
+    position: absolute;
+    bottom: 100px;
+    width: 80%;
+}
+
+.forecastTable {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.forecastTable td {
+    text-align: center;
+    height: 40px;
+    /* Center the text in each cell */
+}
+
+#day {
+    width: 25%;
+    /* Set a fixed width for the day column */
+    text-align: left;
+}
+
+#icon_5days {
+    width: 20%;
+    /* Set a fixed width for the icon column */
+}
+
+.temp {
+    width: 25%;
+    /* Set a fixed width for the temp column */
+}
+
+.wind {
+    width: 25%;
+    /* Set a fixed width for the wind column */
+}
+
+
+#forecastImg {
+    object-fit: cover;
+    height: 50px;
+    width: auto;
+
 }

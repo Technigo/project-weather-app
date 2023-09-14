@@ -1,23 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather app ||</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- container -->
+    <div class="container">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Weather app ||</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
+      <!-- top background and image-->
+      <div class="top-background" id="topBackground"></div>
+      <img class="weather-image" id="weatherImage"></img>
 
-<body>
+      <!-- navbar and search button part -->
+      <div class="nav" id="search-field">
+          <!-- input field, send the user input -->
+          <input type="text" class="input-field" id="inputField" placeholder="Type a city" />
+          <!-- search button  -->
+          <button type="submit" title="search" class="searchBtn" id="searchButton" >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"  class="search-icon" fill="currentColor" height="1.5rem" width="1.5rem" stroke-width="0">
+              <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+          </button>
+    
+      </div>
 
+      <!-- main weather session: city, temp, and sunrise, sunset etc. -->
+      <main class="main-container">
+        <div class="temp">
+          <h1 class="main-temp" id="mainTemp"></h1>
+          <p class="tempCelsius">°C</p>
+        </div>
+          <h2 class="cityName" id="city-name"></h2>
+          <h3 class="weatherDescription" id="descriptionWeather"></h3>
+          <div class="main-icon" id="mainIcon">
 
-  <div class="weatherForecastDiv" id="weatherForecastDiv">
-    <ul class="weatherForecastUl" id="weatherForecastUl">
+          </div>
+       <div id="riseSet" class="rise-set">
+        <p id="sunrise"></p>
+        <p id="sunset"></p>
+       </div>
+      </main>
 
-    </ul>
+      <!-- switch button -->
+      <div id="switch" class="switch-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" fill="currentColor" height="40px" width="40px">
+          <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>
+      </div>
 
-  </div>
-  <script src="./script.js"></script>
-</body>
-
+      <div class="weatherForecastDiv" id="weatherForecastDiv"></div>
+    
+    </div>
+    
+    <script src="./script.js"></script>
+  </body>
 </html>
