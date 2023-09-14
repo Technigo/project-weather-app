@@ -116,5 +116,24 @@ updateClock();
 
 
 
+const stockholmDatesElement = document.getElementById('stockholmDates');
+
+function displayCurrentStockholmDate() {
+    const stockholmTimeZone = 'Europe/Stockholm'; // Time zone for Stockholm, Sweden
+    const stockholmTime = new Date().toLocaleString('en-US', { timeZone: stockholmTimeZone });
+    
+    const options = { weekday: 'long', month: 'long', day: 'numeric' };
+    const stockholmDate = new Date(stockholmTime).toLocaleDateString('en-US', options);
+    
+    stockholmDatesElement.textContent = stockholmDate;
+}
+
+// Call the function to display the current Stockholm date
+displayCurrentStockholmDate();
+
+
+
+
+
 //-------------------- All Event Listeners --------------------//
 //if we make a button to scroll through to other cities????
