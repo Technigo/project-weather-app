@@ -14,7 +14,7 @@ const sunset = document.getElementById("sunset");
 const weatherIcon = document.getElementById("weather-icon");
 // need to define conditions when to use which symbol. See global variables.
 
-const dailyWeathertips = document.getElementById("daily-tipps");
+const dailyWeathertips = document.getElementById("daily-tips");
 // need to define conditions when to use which sentence. See global variables.
 
 // weather forecast values
