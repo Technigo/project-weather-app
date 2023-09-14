@@ -1,21 +1,23 @@
 // All global variables
 const cityName = document.getElementById("cityName"); // Change variable name from city to cityName to differentiate with the variable "city" below
 const tempToday = document.getElementById("tempToday");
-const tempTextCelsius = document.getElementById("tempTextCelsius"); // NEW
-const localTime = document.getElementById("localTime"); // NEW
+const tempTextCelsius = document.getElementById("tempTextCelsius"); 
+const localTime = document.getElementById("localTime"); 
 const weatherDescription = document.getElementById("weatherDescription");
 const mainIcon = document.getElementById("mainIcon");
 const sunriseText = document.getElementById("sunriseText");
 const sunsetText = document.getElementById("sunsetText");
 
-const forecastWeekdays = document.getElementById("forecastWeekdays"); // NEW
-const forecastIcon = document.getElementById("forecastIcon"); // NEW
-const forecastTemp = document.getElementById("forecastTemp"); // NEW
-const forecastWind = document.getElementById("forecastWind"); // NEW
-const inputField = document.getElementById("inputField"); // NEW
+const forecastWeekdays = document.getElementById("forecastWeekdays"); 
+const forecastIcon = document.getElementById("forecastIcon"); 
+const forecastTemp = document.getElementById("forecastTemp"); 
+const forecastWind = document.getElementById("forecastWind"); 
+const inputField = document.getElementById("inputField"); 
 
-const searchBtn = document.getElementById("searchBtn"); // NEW
-const switchBtn = document.getElementById("switchBtn"); // NEW
+const searchBtn = document.getElementById("searchBtn"); 
+const switchBtn = document.getElementById("switchBtn"); 
+const closeSearchMenu = document.getElementById("closeSearchMenu");
+const searchToggler = document.getElementById("searchToggler");
 
 const APIKEY = "a0251d9b53172abcbe6a9263f3d13544"; // Change name to CAPITAL as it won't change throughout the file
 let city = "London"; // Initiate variable "city" in order to update it later when switching to other cities
@@ -98,23 +100,44 @@ const fiveDaysForecast = (city) => {
         })
 }
 
+// Function to toggle the class of the search bar: only a search icon is shown at first, when clicked on, the search icon is hidden and the input field, the smaller search icon and the X icon is displayed; when the X icon is clicked on, it returns to only a search icon 
+const toggleSearch = () => {
+    searchToggler.classList.toggle("hidden");
+    closeSearchMenu.classList.toggle("hidden");
+    searchMenuBtn.classList.toggle("hidden");
+}
+
+
 // Search function
 const searchFunction = () => {
     // Initialize a variable to store the value of the user's input
     let searchedCity = inputField.value;
 
-    // Update today's weather and five-day-forecast for the city by invoking the previous functions
-    todaysWeather(searchedCity);
-    fiveDaysForecast(searchedCity);
+    if (searchedCity != "") {
+        // Update today's weather and five-day-forecast for the city by invoking the previous functions
+        todaysWeather(searchedCity);
+        fiveDaysForecast(searchedCity);
 
-    // Empty the input field when the input has been sent
-    inputField.value = "";
+        // Empty the input field when the input has been sent
+        inputField.value = "";
 
-    // Reset the five day forecast
-    forecastWeekdays.innerHTML = "";
-    forecastTemp.innerHTML = "";
-    forecastIcon.innerHTML = "";
-    forecastWind.innerHTML = "";
+        // Reset the five day forecast
+        forecastWeekdays.innerHTML = "";
+        forecastTemp.innerHTML = "";
+        forecastIcon.innerHTML = "";
+        forecastWind.innerHTML = "";
+    } else {
+        alert("Oops, seems like you did not type in anything. Please try again!");
+        todaysWeather("London");
+        fiveDaysForecast("London");
+
+        // Reset the five day forecast
+        forecastWeekdays.innerHTML = "";
+        forecastTemp.innerHTML = "";
+        forecastIcon.innerHTML = "";
+        forecastWind.innerHTML = "";
+    }
+    
 }
 
 // Function to switch to next city
@@ -155,6 +178,12 @@ const switchCity = () => {
 // Invoke functions for today's weather and five-day forecast with the base city as argument
 todaysWeather("London");
 fiveDaysForecast("London");
+
+// Add event listener to the big search button to display the input field, smaller search button and the X button when the big search button is clicked on
+searchMenuBtn.addEventListener("click", toggleSearch);
+
+// Add event listener to the X button to display only the big search button again when the X button is clicked on
+closeSearchMenu.addEventListener("click", toggleSearch);
 
 // Add event listener to the search button (type="submit") to invoke the search function when the button is clicked on
 searchBtn.addEventListener("click", searchFunction);
