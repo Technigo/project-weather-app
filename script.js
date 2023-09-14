@@ -27,7 +27,11 @@ fetch(searchString("weather", "Stockholm,Sweden"))
         const sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' })
 
         weatherContainer.innerHTML = ""
-        weatherContainer.innerHTML +=`<p>${temperature} °C</p>`
+        weatherContainer.innerHTML +=`   <div class="currentTemp">
+        <div class="tempNumber"><p>${temperature}</p></div>
+        <div class="units"><p>°C</p></div>
+      </div>
+      `
         weatherContainer.innerHTML +=`<h1>${cityName}</h1>`
         weatherContainer.innerHTML += `<p>${currentTime()}</p>`
         weatherContainer.innerHTML +=`<p>${weatherDescription}</p>`
