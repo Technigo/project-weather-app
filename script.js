@@ -97,8 +97,13 @@ const searchInputCity = () => {
   weatherForecastDiv.innerHTML = "";
   //fetch input value from user input
   let searchCity = inputField.value;
-  todayWeather(searchCity);
-  weatherForecast(searchCity);
+  if (searchCity === "0") {
+    alert(`Please enter a correct city name.`);
+  } else {
+    todayWeather(searchCity);
+    weatherForecast(searchCity);
+  }
+
   //clear data from user input
   searchCity = "";
 };
