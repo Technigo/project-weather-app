@@ -127,7 +127,7 @@ h2 {
     line-height: 40px;
     font-size: 25px;
     height: 45px;
-    background-color: transparent;
+    background-color: rgb(254, 254, 254, 0.3);
     outline: none;
     height: 100%;
     float: left;
@@ -135,6 +135,7 @@ h2 {
 }
 
 .search-btn {
+    filter: invert(100%);
     background-color: transparent;
     padding: 0px 0px 0px 0px;
     margin: 0;
@@ -152,6 +153,7 @@ h2 {
 }
 
 .close-button {
+    filter: invert(100%);
     background-color: transparent;
     height: 45px;
     width: 45px;
@@ -195,5 +197,3 @@ h2 {
     align-items: center;
     width: 100%;
 }
-
-.weather table {}
