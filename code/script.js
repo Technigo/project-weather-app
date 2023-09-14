@@ -7,7 +7,7 @@ const cityName = "Tokyo";
 const currentWeather = `${currentWeather_URL}${cityName}&appid=${API_KEY}&units=metric`
 const fiveDayWeather = `${fiveDayWeather_URL}${cityName}&appid=${API_KEY}&units=metric`
 
-
+// Detta ör en ny branch
 
 // https://api.openweathermap.org/data/2.5/weather?lat=57&lon=-2.15&appid={API key}&units=metric
 
@@ -268,4 +268,4 @@ const forecastContainer = document.getElementById("forecastContainer")
   fetchFiveDayWeather();
 
 
-*/
+*/ 
