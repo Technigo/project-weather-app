@@ -28,7 +28,7 @@ const fetchWeatherAsync = async () => {
   const data = await response.json()
   console.log(data)
   updateHTML(data)
-  
+
 }
 fetchWeatherAsync()
 
@@ -49,40 +49,40 @@ const nextFiveDAys = [];
 
 for (let index = 1; index < 6; index++) {
   const date = new Date(today);
-  
+
   date.setDate(today.getDate() + index);
   const dayName = daysName[date.getDay()];
   nextFiveDAys.push(dayName)
-  
+
 }
 
-daysForecast.forEach((dayForc , index)=>{
-  dayForc.innerText = (nextFiveDAys[index]).substr(0,3)
+daysForecast.forEach((dayForc, index) => {
+  dayForc.innerText = (nextFiveDAys[index]).substr(0, 3)
 });
 
 // fetch forecast
 
-const fetchForecastAsync = async () =>{
-  const responseForecast = await fetch(URLForecast).catch((err)=> console.log("ERROR" , err));
+const fetchForecastAsync = async () => {
+  const responseForecast = await fetch(URLForecast).catch((err) => console.log("ERROR", err));
   const data = await responseForecast.json();
 
-  iconsForecast.forEach((icon , index)=>{
+  iconsForecast.forEach((icon, index) => {
     const iconNum = data.list[index].weather[0].icon;
     icon.src = `https://openweathermap.org/img/wn/${iconNum}@2x.png`
-    
+
   });
-  tempsForecast.forEach((temp , index)=>{
+  tempsForecast.forEach((temp, index) => {
     const temperture = data.list[index].main.temp;
-    temp.innerText =`${Math.floor(temperture)} °C` 
+    temp.innerText = `${Math.floor(temperture)} °C`
   });
 
-  windForecast.forEach((wind , index)=>{
+  windForecast.forEach((wind, index) => {
     const windSpeed = data.list[index].wind.speed;
     wind.innerText = `${Math.floor(windSpeed)} m/s`
   })
-  
-  
- 
+
+
+
 }
 fetchForecastAsync()
 
@@ -93,19 +93,18 @@ const updateHTML = (data) => {
   const sunriseMilli = data.sys.sunrise;
   const sunsetMilli = data.sys.sunset;
   const timeZone = data.timezone;
-  
+
   // sunrise and sunset time
   let newSunrise = new Date((sunriseMilli + timeZone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString([], { timeStyle: 'short' });
-
   let newSunset = new Date((sunsetMilli + timeZone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString([], { timeStyle: 'short' });
 
   // console.log(newSunrise);
   // console.log(newSunset);
 
-  sunrise.innerText = `Sunrise: ${newSunrise}`
-  sunset.innerText = `Sunset: ${newSunset}`
+  sunrise.innerText = newSunrise
+  sunset.innerText = newSunset
 
-  tempElement.innerText =`${Math.floor(data.main.temp)} °C` ;
+  tempElement.innerText = `${Math.floor(data.main.temp)}°C`;
   windMain.innerText = `${Math.floor(data.wind.speed)} m/s`;
   cityName.innerText = data.name;
   descriptionEl.innerText = data.weather[0].description;
@@ -114,10 +113,7 @@ const updateHTML = (data) => {
   // time now
   let newTime = new Date((data.dt + timeZone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString([], { timeStyle: 'short' });
 
-timeToday.innerText = newTime
-
-
-
+  timeToday.innerText = `Time: ${newTime}`
 
 }
 
