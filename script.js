@@ -16,12 +16,12 @@ function fetchWeatherDataByCoordinates(latitude, longitude) {
       return response.json();
     })
     .then((json) => {
-      const cityName = json.name;
-      const temperature = json.main.temp;
-      const weatherDescription = json.weather[0].description;
-      const sunsetTimestamp = json.sys.sunset * 1000;
-      const sunriseTimestamp = json.sys.sunrise * 1000;
-      const feelsLike = json.main.feels_like;
+    const cityName = json.name;
+    const temperature = json.main.temp.toFixed(1); //removed all but one decimal
+    const weatherDescription = json.weather[0].description;
+    const sunsetTimestamp = json.sys.sunset * 1000;
+    const sunriseTimestamp = json.sys.sunrise * 1000;
+    const feelsLike = json.main.feels_like.toFixed(1); //removed all but one decimal
 
       // Create Date objects for sunset and sunrise times
       const sunset = new Date(sunsetTimestamp);
