@@ -15,9 +15,10 @@ const forecastWind = document.getElementById("forecastWind");
 const inputField = document.getElementById("inputField"); 
 
 const searchBtn = document.getElementById("searchBtn"); 
-const switchBtn = document.getElementById("switchBtn"); 
+const searchMenuBtn = document.getElementById("searchMenuBtn");
 const closeSearchMenu = document.getElementById("closeSearchMenu");
 const searchToggler = document.getElementById("searchToggler");
+const switchBtn = document.getElementById("switchBtn"); 
 
 const APIKEY = "a0251d9b53172abcbe6a9263f3d13544"; // Change name to CAPITAL as it won't change throughout the file
 let city = "London"; // Initiate variable "city" in order to update it later when switching to other cities
@@ -180,13 +181,19 @@ todaysWeather("London");
 fiveDaysForecast("London");
 
 // Add event listener to the big search button to display the input field, smaller search button and the X button when the big search button is clicked on
-searchMenuBtn.addEventListener("click", toggleSearch);
+searchMenuBtn.addEventListener("click", () => {
+    toggleSearch();
+})
 
 // Add event listener to the X button to display only the big search button again when the X button is clicked on
-closeSearchMenu.addEventListener("click", toggleSearch);
+closeSearchMenu.addEventListener("click", () => {
+    toggleSearch();
+})
 
 // Add event listener to the search button (type="submit") to invoke the search function when the button is clicked on
-searchBtn.addEventListener("click", searchFunction);
+searchBtn.addEventListener("click", () => {
+    searchFunction();
+})
 
 // Add event listener to the input field to invoke the search function when key "Enter" is pressed
 inputField.addEventListener("keypress", (event) => {
@@ -196,4 +203,6 @@ inputField.addEventListener("keypress", (event) => {
 })
 
 // Add event listener to the switch button to invoke the switchCity function when the button is clicked on
-switchBtn.addEventListener("click", switchCity);
+switchBtn.addEventListener("click", () => {
+    switchCity();
+})

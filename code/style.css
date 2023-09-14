@@ -1,11 +1,67 @@
 /* Clear up all the beige, make a root/other for the font color, regardless of what it'll be. */
 
 body {
-font-family: 'Roboto', sans-serif;
-margin: 0;
-padding: 0;
-height: 100%;
-background-color: white;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100%;
+    background-color: white;
+}
+
+.container {
+    background-color: rgb(87, 128, 85);
+    width: 100%;
+    max-width: 375px;
+    border-radius: 20px;
+    margin: 0 auto;
+    padding: 20px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 800px;
+}
+
+/* Search bar */
+.nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+
+#searchToggler {
+    display: flex;
+    align-items: center;
+}
+
+.search-button {
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.search-icon, 
+.x-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.search-bar {
+    width: 100%;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.3);
+    border: none;
+    height: 35px;
+    font-size: 18px;
+}
+
+.hidden {
+    display: none;
 }
 
 /* Speaks for itself */
@@ -17,7 +73,14 @@ background-color: white;
 }
 
 .description-icon {
-    display:flex;
+    display: flex;
+    align-items: center;
+}
+
+#mainIcon img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
 }
 
 /* Sunrise and sunset position etc */
@@ -28,25 +91,29 @@ background-color: white;
     justify-content: space-evenly;
 }
 
-#sunriseText {
-    display: flex;
-    flex-direction: row;
-    font-size: 16px; 
-    color: beige;
-}
+#sunriseText, 
 #sunsetText {
     display: flex;
     flex-direction: row;
-    font-size: 16px;
+    font-size: 18px; 
     color: beige;
 }
+
+#sunriseText p, 
+#sunsetText p {
+    padding: 6px;
+}
+
 /* Temperature piosition etc  */
 .tempText {
     display: flex;
     flex-direction: row;
+    align-items: center;
     font-size: 36px;
     color: beige;
+    height: 150px;
 }
+
 .tempTextCelsius {
     display: inline;
     font-size: 36px;
@@ -70,32 +137,29 @@ background-color: white;
     font-weight: 200;
     font-size: 28px;
     color: beige;
-}
-.container {
-    background-color: darkblue;
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 10px;
-    overflow: hidden;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    height: 1000px;
-}.hidden {
-    display: none;
+    margin: 15px 0 15px 0;
 }
 
+#switchBtn {
+    background: rgb(22, 82, 51);
+    border: none;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 0 75%;
+    cursor: pointer;
+}
+
+/* Five-day forecast */
 table {
+    margin: 0 auto;
+    width: 100%;
     position: relative;
-    padding: 20px;
-    margin: 0;
-    width: 125px;
 }
 
 td {
     text-align: center;
-    padding: 20px;
+    padding: 15px;
 }
 
 td p {
@@ -108,3 +172,8 @@ td p {
     height: 35px;
 }
 
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
