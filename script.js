@@ -39,52 +39,59 @@ const todayWeather = (city) => {
     })
     .then((data) => {
       complete();
-      console.log(data);
-      const city = data.name; //city name
-      cityName.innerText = `${city}`;
-      const weather = data.weather[0].description;
-      // weather Icon
-      const weatherIcon = data.weather[0].icon;
-      weatherDescription.innerText = `${weather}`;
-      weatherDescription.innerHTML += `<img src="https://openweathermap.org/img/wn/${weatherIcon}@2x.png " class="weatherIcon"/>`;
-      const temp = Math.round(data.main.temp * 10) / 10; //the temperature data to one decimal point, *100)/100 two decimal point
-      mainTemp.innerText = `${temp.toFixed(0)}`;
-      //Declare variable for the time of sunrise/sunset
-      const unixSunrise = data.sys.sunrise;
-      const unixSunset = data.sys.sunset;
-      //To get sunrise/sunset time in hours:minutes:seconds
-      const sunrise = new Date(unixSunrise * 1000);
-      const sunset = new Date(unixSunset * 1000);
-
-      //Declare new variable to show only hh:mm
-      const sunriseTime = sunrise.toLocaleTimeString([], {
-        timeStyle: "short",
-      });
-      const sunsetTime = sunset.toLocaleTimeString([], {
-        timeStyle: "short",
-      });
-      // print out the result
-      console.log(sunriseTime);
-      console.log(sunsetTime);
-      sunriseText.innerText = `${sunriseTime}`;
-      sunsetText.innerText = `${sunsetTime}`;
-      // background change based on the weather
-      const weatherMain = data.weather[0].main;
-      if (weatherMain === "Clouds") {
-        weatherImage.src = "./asserts/clouds.jpg";
-        switchBtn.style.backgroundColor = "rgb(117, 172, 220)";
-      } else if (weatherMain === "Clear") {
-        weatherImage.src = "./asserts/clear.jpg";
-        switchBtn.style.backgroundColor = "rgb(66, 108, 245)";
-      } else if (weatherMain === "Rain") {
-        weatherImage.src = "./asserts/rain.jpg";
-        switchBtn.style.backgroundColor = "rgb(26, 50, 49)";
-      } else if (weatherMain === "Snow") {
-        weatherImage.src = "./asserts/snow.jpg";
-        switchBtn.style.backgroundColor = "rgb(87, 85, 85)";
+      const city = String(data.name); //city name
+      // console.log(typeof city);
+      // console.log(city);
+      if (city === "undefined") {
+        alert(`Please type the correct city name! 😁 This image will refresh`);
+        // todayWeather("Stockholm");
+        weatherForecast("Stockholm");
       } else {
-        weatherImage.src = "./asserts/sun.jpg";
-        switchBtn.style.backgroundColor = "rgb(232, 113, 63)";
+        cityName.innerText = `${city}`;
+        const weather = data.weather[0].description;
+        // weather Icon
+        const weatherIcon = data.weather[0].icon;
+        weatherDescription.innerText = `${weather}`;
+        weatherDescription.innerHTML += `<img src="https://openweathermap.org/img/wn/${weatherIcon}@2x.png " class="weatherIcon"/>`;
+        const temp = Math.round(data.main.temp * 10) / 10; //the temperature data to one decimal point, *100)/100 two decimal point
+        mainTemp.innerText = `${temp.toFixed(0)}`;
+        //Declare variable for the time of sunrise/sunset
+        const unixSunrise = data.sys.sunrise;
+        const unixSunset = data.sys.sunset;
+        //To get sunrise/sunset time in hours:minutes:seconds
+        const sunrise = new Date(unixSunrise * 1000);
+        const sunset = new Date(unixSunset * 1000);
+
+        //Declare new variable to show only hh:mm
+        const sunriseTime = sunrise.toLocaleTimeString([], {
+          timeStyle: "short",
+        });
+        const sunsetTime = sunset.toLocaleTimeString([], {
+          timeStyle: "short",
+        });
+        // print out the result
+        console.log(sunriseTime);
+        console.log(sunsetTime);
+        sunriseText.innerText = `${sunriseTime}`;
+        sunsetText.innerText = `${sunsetTime}`;
+        // background change based on the weather
+        const weatherMain = data.weather[0].main;
+        if (weatherMain === "Clouds") {
+          weatherImage.src = "./asserts/clouds.jpg";
+          switchBtn.style.backgroundColor = "rgb(117, 172, 220)";
+        } else if (weatherMain === "Clear") {
+          weatherImage.src = "./asserts/clear.jpg";
+          switchBtn.style.backgroundColor = "rgb(66, 108, 245)";
+        } else if (weatherMain === "Rain") {
+          weatherImage.src = "./asserts/rain.jpg";
+          switchBtn.style.backgroundColor = "rgb(26, 50, 49)";
+        } else if (weatherMain === "Snow") {
+          weatherImage.src = "./asserts/snow.jpg";
+          switchBtn.style.backgroundColor = "rgb(87, 85, 85)";
+        } else {
+          weatherImage.src = "./asserts/sun.jpg";
+          switchBtn.style.backgroundColor = "rgb(232, 113, 63)";
+        }
       }
     })
     .catch((error) => {
@@ -97,12 +104,9 @@ const searchInputCity = () => {
   weatherForecastDiv.innerHTML = "";
   //fetch input value from user input
   let searchCity = inputField.value;
-  if (searchCity === "0") {
-    alert(`Please enter a correct city name.`);
-  } else {
-    todayWeather(searchCity);
-    weatherForecast(searchCity);
-  }
+  console.log(searchCity);
+  todayWeather(searchCity);
+  weatherForecast(searchCity);
 
   //clear data from user input
   searchCity = "";

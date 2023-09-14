@@ -149,7 +149,7 @@ input[type=text]{
     width: 350px;
     font-size: 20px;
     position: absolute;
-    bottom: -40px;
+    bottom: 5px;
 }
 /* weather Icon- create in the javascript innerHTML */
 .weatherIcon{
@@ -160,11 +160,10 @@ input[type=text]{
 /* switch button */
 .switch-wrapper {
     /* background-color: rgb(232, 113, 63); */
-    background-color:rgba(#7cb7d5
-    ,0.08);
+ 
     position: absolute;
     right: 10px;
-    bottom: 380px;
+    top:42%;
     height: 80px;
     width: 80px;
     border-radius: 50%;
@@ -181,7 +180,7 @@ input[type=text]{
 .weatherForecastDiv {
     padding: 30px;
     position: absolute;
-    bottom: 50px;
+    bottom: 10px;
     width: 80%;
 }
 
