@@ -14,7 +14,7 @@ const sunset = document.getElementById("sunset");
 const weatherIcon = document.getElementById("weather-icon");
 // need to define conditions when to use which symbol. See global variables.
 
-const dailyWeathertipps = document.getElementById("daily-tipps");
+const dailyWeathertips = document.getElementById("daily-tipps");
 // need to define conditions when to use which sentence. See global variables.
 
 // weather forecast values
@@ -52,7 +52,7 @@ let weatherObject;
 const pickWeathersymbol = "/design/design2/icons/noun_Umbrella_2030530.svg";
 // need to define conditions when to use which symbol
 
-const pickWeathertipp = "Dont´t forget your umbrella. It´s wet in Stockholm today.";
+const pickWeathertip = "Dont´t forget your umbrella. It´s wet in Stockholm today.";
 // need to define conditions when to use which sentence.
 // Get your sunnies on. Stockholm is looking rather great today.
 // Light a fire and get cosy. Stockholm is looking grey today.
@@ -86,7 +86,7 @@ const insertWeatherdata = () => {
     sunrise.innerHTML = weatherObject.sys.sunrise;
     sunset.innerHTML = weatherObject.sys.sunset;
     weatherIcon.setAttribute("src", pickWeathersymbol);
-    dailyWeathertipps.innerHTML = pickWeathertipp;
+    dailyWeathertips.innerHTML = pickWeathertip;
     forecastDay1.innerHTML = "1a";
     forecastTem1.innerHTML = "0 degree";
     forecastDay2.innerHTML = "2a";
