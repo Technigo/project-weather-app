@@ -17,9 +17,8 @@ const mainSection = document.getElementById("main")
 
 const baseUrl = "https://api.openweathermap.org/data/2.5/weather?";
 const apiKey = "64dc0a4bc655c3566178e4cae018559e";
-const lat = "Stockholm";
-const lon = "Sweden";
-const URL = `${baseUrl}q=${lat},${lon}&units=metric&APPID=${apiKey}`
+let cityQuery = "Stockholm, Sweden";
+const URL = `${baseUrl}q=${cityQuery}&units=metric&APPID=${apiKey}`
 
 // images
 
@@ -73,12 +72,12 @@ const imagesDescriptionMain = {
     nightImage: "/code/Images/pexels-cameron-casey-2007138.jpg"
   },
   "Rain": {
-    dayImage: "/code/Images/pexels-pixabay-326015.jpg",
-    nightImage: "/code/Images/pexels-cameron-casey-2007138.jpg"
+    dayImage: "/code/Images/pexels-lumn-1410224.jpg",
+    nightImage: "/code/Images/blurred-nightlights-city.jpg"
   },
   "Drizzle": {
-    dayImage: "/code/Images/pexels-pixabay-326015.jpg",
-    nightImage: "/code/Images/pexels-cameron-casey-2007138.jpg"
+    dayImage: "/code/Images/pexels-lumn-1410224.jpg",
+    nightImage: "/code/Images/blurred-nightlights-city.jpg"
   },
   "Thunderstorm": {
     dayImage: "/code/Images/pexels-ralph-w-lambrecht-1446076.jpg",
@@ -101,7 +100,7 @@ fetchWeatherAsync()
 // forecast API
 
 const baseAPIForecast = "https://api.openweathermap.org/data/2.5/forecast?";
-const URLForecast = `${baseAPIForecast}q=${lat},${lon}&units=metric&APPID=${apiKey}`
+const URLForecast = `${baseAPIForecast}q=${cityQuery}&units=metric&APPID=${apiKey}`
 
 // dates forecast and today date
 const daysName = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -165,12 +164,12 @@ const updateHTML = (data) => {
   const timeZone = data.timezone;
   
   // sunrise and sunset time
-  let newSunrise = new Date((sunriseMilli + timeZone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString([], { timeStyle: 'short' });
+  let newSunrise = new Date((sunriseMilli + timeZone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString([], { timeStyle: 'short' ,  hour12: false });
 
-  let newSunset = new Date((sunsetMilli + timeZone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString([], { timeStyle: 'short' });
+  let newSunset = new Date((sunsetMilli + timeZone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString([], { timeStyle: 'short' ,hour12: false});
 
   // console.log(newSunrise);
-  // console.log(newSunset);
+  console.log(newSunset);
 
   sunrise.innerText = `Sunrise: ${newSunrise}`
   sunset.innerText = `Sunset: ${newSunset}`
@@ -192,7 +191,7 @@ timeToday.innerText = newTime;
 // images 
 
 const weatherInfo = data.weather[0].main;
-const isDaytime = newTime >= '06:00:00' && newTime < '18:00:00';
+const isDaytime = newTime >= newSunrise && newTime < newSunset;
 let backgroundImage;
 
 
@@ -203,7 +202,7 @@ if(weatherInfo === "Clear"){
   backgroundImage = isDaytime ? imagesDescriptionMain.Clouds.dayImage : imagesDescriptionMain.Clouds.nightImage;
 
 }else if (weatherInfo === "Tornado" || weatherInfo === "Squall" || weatherInfo === "Ash" || weatherInfo === "Dust" || weatherInfo === "Sand" || weatherInfo === "Fog" || weatherInfo === "Haze" || weatherInfo === "Smoke" || weatherInfo === "Mist") {
-  backgroundImage = isDaytime ? imagesDescriptionMain.Clear.dayImage : imagesDescriptionMain.Clear.nightImage;
+  backgroundImage = isDaytime ? imagesDescriptionMain[weatherInfo].dayImage : imagesDescriptionMain[weatherInfo].nightImage;
 
 } else if (weatherInfo === "Snow") {
   backgroundImage = isDaytime ? imagesDescriptionMain.Snow.dayImage : imagesDescriptionMain.Snow.nightImage;
