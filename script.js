@@ -7,7 +7,7 @@ const apiKey = '8fa7c461aec946fde31f330992fce9d6';
 
 function fetchWeatherDataByCoordinates(latitude, longitude) {
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
-  
+
   fetch(apiUrl)
     .then((response) => {
       if (!response.ok) {
@@ -17,6 +17,7 @@ function fetchWeatherDataByCoordinates(latitude, longitude) {
     })
     .then((json) => {
       const cityName = json.name;
+
       const temperature = json.main.temp.toFixed(1);
       const weatherDescription = json.weather[0].description;
       const sunsetTimestamp = json.sys.sunset * 1000;
@@ -178,4 +179,4 @@ function fetchWeatherData() {
     });
 }
 
-fetchWeatherData();
+

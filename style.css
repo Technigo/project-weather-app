@@ -172,12 +172,11 @@ p {
 /****** TALBLET ******/
 @media only screen and (min-width:768px) {
     /*Tablet styles here*/
-
-
 }
+
 
 /****** DESKTOP ******/
 @media only screen and (min-width:1200px) {
     /*Desktop styles here*/
-
 }
+
