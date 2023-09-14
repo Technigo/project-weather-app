@@ -11,7 +11,8 @@ const descriptionEl = document.getElementById("desc");
 const windMain = document.getElementById("wind");
 const iconMain = document.getElementById("icon-main");
 const dateNameToday = document.getElementById("date");
-const timeToday = document.getElementById("time")
+const timeToday = document.getElementById("time");
+const mainSection = document.getElementById("main")
 
 
 const baseUrl = "https://api.openweathermap.org/data/2.5/weather?";
@@ -20,6 +21,71 @@ const lat = "Stockholm";
 const lon = "Sweden";
 const URL = `${baseUrl}q=${lat},${lon}&units=metric&APPID=${apiKey}`
 
+// images
+
+const imagesDescriptionMain = {
+  "Clear": {
+    dayImage: "/code/Images/sun-rays-cloudy-sky.jpg",
+    nightImage: "/code/Images/pexels-sanat-anghan-6785277.jpg"
+  },
+  "Clouds": {
+    dayImage: "/code/Images/beautiful-mountains.jpg",
+    nightImage: "/code/Images/storm-clouds.jpg"
+  },
+  "Tornado": {
+    dayImage: "/code/Images/pexels-diana-vorobevaattyakova-9305185.jpg",
+    nightImage: "/code/Images/pexels-lucas-pezeta-3772353.jpg"
+  },
+  "Squall": {
+    dayImage: "/code/Images/pexels-diana-vorobevaattyakova-9305185.jpg",
+    nightImage: "/code/Images/pexels-lucas-pezeta-3772353.jpg"
+  },
+  "Ash": {
+    dayImage: "/code/Images/pexels-diana-vorobevaattyakova-9305185.jpg",
+    nightImage: "/code/Images/pexels-lucas-pezeta-3772353.jpg"
+  },
+  "Dust": {
+    dayImage: "/code/Images/pexels-diana-vorobevaattyakova-9305185.jpg",
+    nightImage: "/code/Images/pexels-lucas-pezeta-3772353.jpg"
+  },
+  "Sand": {
+    dayImage: "/code/Images/pexels-diana-vorobevaattyakova-9305185.jpg",
+    nightImage: "/code/Images/pexels-lucas-pezeta-3772353.jpg"
+  },
+  "Fog": {
+    dayImage: "/code/Images/pexels-diana-vorobevaattyakova-9305185.jpg",
+    nightImage: "/code/Images/pexels-lucas-pezeta-3772353.jpg"
+  },
+  "Haze": {
+    dayImage: "/code/Images/pexels-diana-vorobevaattyakova-9305185.jpg",
+    nightImage: "/code/Images/pexels-lucas-pezeta-3772353.jpg"
+  },
+  "Smoke": {
+    dayImage: "/code/Images/pexels-diana-vorobevaattyakova-9305185.jpg",
+    nightImage: "/code/Images/pexels-lucas-pezeta-3772353.jpg"
+  },
+  "Mist": {
+    dayImage: "/code/Images/pexels-diana-vorobevaattyakova-9305185.jpg",
+    nightImage: "/code/Images/pexels-lucas-pezeta-3772353.jpg"
+  },
+  "Snow": {
+    dayImage: "/code/Images/pexels-pixabay-326015.jpg",
+    nightImage: "/code/Images/pexels-cameron-casey-2007138.jpg"
+  },
+  "Rain": {
+    dayImage: "/code/Images/pexels-pixabay-326015.jpg",
+    nightImage: "/code/Images/pexels-cameron-casey-2007138.jpg"
+  },
+  "Drizzle": {
+    dayImage: "/code/Images/pexels-pixabay-326015.jpg",
+    nightImage: "/code/Images/pexels-cameron-casey-2007138.jpg"
+  },
+  "Thunderstorm": {
+    dayImage: "/code/Images/pexels-ralph-w-lambrecht-1446076.jpg",
+    nightImage: "/code/Images/pexels-greg-2418664.jpg"
+  }
+
+};
 
 
 
@@ -116,12 +182,44 @@ const updateHTML = (data) => {
   iconMain.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
 
   // time now
-  let newTime = new Date((data.dt + timeZone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString([], { timeStyle: 'short' });
-
-timeToday.innerText = newTime
-
+  let newTime = new Date((data.dt + timeZone + (new Date().getTimezoneOffset() * 60)) * 1000).toLocaleTimeString([], { timeStyle: 'short', hour12: false });
+  console.log(newTime)
 
 
+
+timeToday.innerText = newTime;
+
+// images 
+
+const weatherInfo = data.weather[0].main;
+const isDaytime = newTime >= '06:00:00' && newTime < '18:00:00';
+let backgroundImage;
+
+
+if(weatherInfo === "Clear"){
+  backgroundImage = isDaytime ? imagesDescriptionMain.Clear.dayImage : imagesDescriptionMain.Clear.nightImage;
+
+}else if(weatherInfo == "Clouds"){
+  backgroundImage = isDaytime ? imagesDescriptionMain.Clouds.dayImage : imagesDescriptionMain.Clouds.nightImage;
+
+}else if (weatherInfo === "Tornado" || weatherInfo === "Squall" || weatherInfo === "Ash" || weatherInfo === "Dust" || weatherInfo === "Sand" || weatherInfo === "Fog" || weatherInfo === "Haze" || weatherInfo === "Smoke" || weatherInfo === "Mist") {
+  backgroundImage = isDaytime ? imagesDescriptionMain.Clear.dayImage : imagesDescriptionMain.Clear.nightImage;
+
+} else if (weatherInfo === "Snow") {
+  backgroundImage = isDaytime ? imagesDescriptionMain.Snow.dayImage : imagesDescriptionMain.Snow.nightImage;
+
+} else if (weatherInfo === "Rain") {
+  backgroundImage = isDaytime ? imagesDescriptionMain.Rain.dayImage : imagesDescriptionMain.Rain.nightImage;
+
+} else if (weatherInfo === "Drizzle") {
+  backgroundImage = isDaytime ? imagesDescriptionMain.Drizzle.dayImage : imagesDescriptionMain.Drizzle.nightImage;
+
+} else if (weatherInfo === "Thunderstorm") {
+  backgroundImage = isDaytime ? imagesDescriptionMain.Thunderstorm.dayImage : imagesDescriptionMain.Thunderstorm.nightImage;
+}
+mainSection.style.backgroundImage = `url(${backgroundImage})`
 
 }
+
+
 
