@@ -38,7 +38,7 @@ getWeatherData = (city) => {
             <h2> ${currentWeatherJson.name}</h2>
             `;
             currentCity.innerHTML += `
-            <h2>${formattedTime(currentWeatherJson.dt)}</h2>
+            <p>${formattedTime(currentWeatherJson.dt)}</p>
             `
             currentCity.innerHTML += `
             <p> ${currentWeatherJson.weather[0].description}</p>

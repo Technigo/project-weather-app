@@ -37,17 +37,49 @@ body,
 html {
     height: 100%;
     font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 0px;
 }
 
 h1 {
-    font-size: 40px;
+    font-size: 70px;
+    margin-bottom: 5px;
 
 
 }
 
 h2 {
     font-size: 20px;
+    margin-bottom: 5px;
 
+}
+
+.current-city {
+    display: inline;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.current-city-weather {
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 0;
+
+}
+
+.sunset-sunrise {
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    margin-bottom: 10px;
+    padding: 0;
 }
 
 .swipe-button {
@@ -96,11 +128,12 @@ h2 {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -60%);
-    margin: 0px;
-    padding: 0px;
+    transform: translate(-70%, -80%);
+    margin: 0;
+    padding: 0;
 
 }
+
 
 
 .search-bar {
