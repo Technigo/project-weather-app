@@ -75,22 +75,47 @@ h2 {
   display: flex;
   flex-direction: column;
   padding: 1rem 0;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .futureForecast {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 1rem;
-  border: 1px solid orange;
+  /* border: 1px solid orange; */
 }
 
 .weather-icon {
-  width: 10%;
+  width: 35%;
   height: auto;
   display: flex;
-  justify-content: center;
+  /* border: 1px solid pink; */
+  /* justify-content: center;
   align-content: center;
+  margin: auto; */
+}
+
+.min-max-temps, .weekday, .forecastImg {
+  /* border: 1px solid purple */
+}
+
+.weekday {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-self: center;
+}
+.forecastImg {
+    display:flex;
+    height: 100%;
+    justify-content: flex-end;
+}
+
+.min-max-temps {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-self: center;
 }
 
 /* [class*="col-"] {

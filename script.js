@@ -6,10 +6,11 @@ const sunset = document.getElementById("sunset");
 const forecast = document.querySelector(".forecast");
 const weatherHeader = document.querySelector(".weather-header");
 
+
 const API_KEY = "64856650e6321cbb411769554b46b8ad";
 // Reserve API KEY = "421db630ea3e3aeb0cb64db6a500c27b"
 
-let cityName = "Orebro";
+let cityName = "Tokyo";
 const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${API_KEY}`;
 
 const API_CALL = `${url}`;
@@ -80,10 +81,15 @@ const apiData = () => {
             if (counter < 5 && index !== 0) {
               forecast.innerHTML += `
                       <div class="futureForecast">
-                      <p class="weekday">${weekday}</p>
+                      <div class="weekday">
+                      <p>${weekday}</p>
+                      </div>
+                      <div class ="forecastImg">
                       <img src="http://openweathermap.org/img/wn/${iconLink}@2x.png" alt="weather-icon" class="weather-icon">
-                      <p class="min-max-temps">${dayMax}°C / ${dayMin}°C </p>
-
+                     </div>
+                     <div class="min-max-temps">
+                      <p>${dayMax}°C / ${dayMin}°C </p>
+                    </div>
                       </div>`;
               counter++;
             }
