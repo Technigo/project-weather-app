@@ -26,11 +26,11 @@ fetch(URL_WEATHER)
     //-----Basic weather info------
     console.log (json)
     city.innerHTML = ` ${json.name}`
-    temp.innerHTML = `<p>Temperature:${json.main.temp}</p>`
+    temp.innerHTML = `${json.main.temp}&deg;C`
     json.weather.forEach((element) => {
-        weatherType.innerHTML = `<h2> Weather: ${element.main} </h2>`
+        weatherType.innerHTML = `${element.main}`
     console.log(element.main)
-    })
+    }) 
     //-----------------------------
 
 
@@ -39,14 +39,12 @@ fetch(URL_WEATHER)
     const sunriseTime = new Date(json.sys.sunrise * 1000); //*1000 to convert it in to milliseconds
     const sunsetTime = new Date(json.sys.sunset * 1000);
 
-    sunSection.innerHTML += `<p>Sunrise: ${sunriseTime.getHours()}:${String(sunriseTime.getMinutes()).padStart(2, '0')}</p>`;
-    console.log(`Sunrise: ${sunriseTime.getHours()}:${String(sunriseTime.getMinutes()).padStart(2, '0')}`);
-
-
-
-    sunSection.innerHTML += `<p>Sunset: ${sunsetTime.getHours()}:${String(sunsetTime.getMinutes()).padStart(2, '0')}</p>`;
-    console.log(`Sunset: ${sunsetTime.getHours()}:${String(sunsetTime.getMinutes()).padStart(2, '0')}`);
-    
+    mainWeatherSection.innerHTML += `
+    <div class ="sun">
+    <p class=sunrise>Sunrise: ${sunriseTime.getHours()}:${String(sunriseTime.getMinutes()).padStart(2, '0')}</p>
+    <p class=sunset>Sunset: ${sunsetTime.getHours()}:${String(sunsetTime.getMinutes()).padStart(2, '0')}</p>
+    </div>
+    `
     })
 }
 fetchWeather()
