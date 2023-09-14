@@ -4,6 +4,7 @@ const temperature = document.getElementById("temperature");
 const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
 const forecast = document.querySelector(".forecast");
+const weatherHeader = document.querySelector(".weather-header");
 
 const API_KEY = "64856650e6321cbb411769554b46b8ad";
 // Reserve API KEY = "421db630ea3e3aeb0cb64db6a500c27b"
@@ -65,14 +66,19 @@ const apiData = () => {
             let dailyWeather = day.weather[0].description;
             let weekday = converted.toUTCString().substring(0, 3);
             let iconLink = day.weather[0].icon;
+            //just a test
+            // if (dailyWeather === "clear sky") {
+            //   weatherHeader.style.backgroundImage = "url('https://media3.giphy.com/media/xT9GEpqOhIhNcV5etq/giphy.gif')"
+            // }
+            //-------------------
             //This makes sure that only the five upcoming days will be displayed
-           // if (counter < 5 && index !== 0 ) {
-            if (counter < 5 ) {
+            if (counter < 5 && index !== 0 ) {
               forecast.innerHTML += `
-                      <div>
-                      <p>${weekday} </p>
+                      <div class="futureForecast">
+                      <p>${weekday}</p>
                       <p>${dayMax}°C / ${dayMin}°C </p>
-                      <p>${dailyWeather} </p> <img src="http://openweathermap.org/img/wn/${iconLink}@2x.png" alt="weather-icon">
+                      <p>${dailyWeather}</p> 
+                      <img src="http://openweathermap.org/img/wn/${iconLink}@2x.png" alt="weather-icon" class="weather-icon">
                       </div>`;
               console.log(
                 `${weekday} ${dayMax}°C / ${dayMin}°C  ${dailyWeather}`
