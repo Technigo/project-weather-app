@@ -22,6 +22,7 @@ const apiData = () => {
       /* ******** Sunrise and Sunset ******** */
       city.innerHTML = `${data.name}`;
       weather.innerHTML = `${data.weather[0].description}`;
+      console.log(data.weather[0].description);
       temperature.innerHTML = `${data.main.temp.toFixed(1)}`;
 
       // Convert timestamps to readable time format
@@ -44,6 +45,14 @@ const apiData = () => {
       /* Forecast */
       let lat = data.coord.lat;
       let lon = data.coord.lon;
+
+      let mainWeather = data.weather[0].main;
+      if (mainWeather === "Clouds") {
+        weatherHeader.style.backgroundImage =
+          "url('https://media3.giphy.com/media/xT9GEpqOhIhNcV5etq/giphy.gif')";
+      }
+      console.log(mainWeather);
+      //May need to be replaced
       let localTime = new Date((data.dt + data.timezone) * 1000);
       let subbedTime = localTime.toUTCString().substring(17, 22);
 
@@ -54,35 +63,28 @@ const apiData = () => {
         `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&cnt=6&exclude=${part}&appid=${API_KEY}`
       )
         .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
+        .then((forecastData) => {
+          console.log(forecastData);
           //Counter for days received from array
           let counter = 0;
 
-          data.daily.map((day, index) => {
+          forecastData.daily.map((day, index) => {
             let converted = new Date(day.dt * 1000);
             let dayMax = day.temp.max.toFixed(0);
             let dayMin = day.temp.min.toFixed(0);
-            let dailyWeather = day.weather[0].description;
             let weekday = converted.toUTCString().substring(0, 3);
             let iconLink = day.weather[0].icon;
             //just a test
-            // if (dailyWeather === "clear sky") {
-            //   weatherHeader.style.backgroundImage = "url('https://media3.giphy.com/media/xT9GEpqOhIhNcV5etq/giphy.gif')"
-            // }
             //-------------------
             //This makes sure that only the five upcoming days will be displayed
-            if (counter < 5 && index !== 0 ) {
+            if (counter < 5 && index !== 0) {
               forecast.innerHTML += `
                       <div class="futureForecast">
-                      <p>${weekday}</p>
-                      <p>${dayMax}°C / ${dayMin}°C </p>
-                      <p>${dailyWeather}</p> 
+                      <p class="weekday">${weekday}</p>
                       <img src="http://openweathermap.org/img/wn/${iconLink}@2x.png" alt="weather-icon" class="weather-icon">
+                      <p class="min-max-temps">${dayMax}°C / ${dayMin}°C </p>
+
                       </div>`;
-              console.log(
-                `${weekday} ${dayMax}°C / ${dayMin}°C  ${dailyWeather}`
-              );
               counter++;
             }
           });
