@@ -48,7 +48,7 @@ function fetchWeatherDataByCoordinates(latitude, longitude) {
         } else if (description.includes("thunderstorm")) {
           message = "Stay inside and cosy up";
         } else if (description.includes("snow")) {
-          message = "Let´s have a snowball fight!";
+          message = "Let's have a snowball fight!";
         } else {
           message = "Weather conditions may vary.";
         }
