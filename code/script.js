@@ -14,6 +14,7 @@ const sunset = document.getElementById("sunset");
 const weatherIcon = document.getElementById("weather-icon");
 // need to define conditions when to use which symbol. See global variables.
 
+
 const dailyWeathertipps = document.getElementById("daily-tipps");
 // need to define conditions when to use which sentence. See global variables.
 
@@ -59,6 +60,8 @@ const pickWeathertipp = "Dont´t forget your umbrella. It´s wet in Stockholm to
 
 
 // Functions -------------------------------------------------
+
+const timestamp = 1620237600;// 1620237600 = 05.05.2021 12:00:00
 
 const fetchWeather = () => {
     fetch(URL)
