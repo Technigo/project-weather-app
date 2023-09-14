@@ -4,18 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Weather App</title>
 </head>
 <body>
     <div id="weatherApp">
-        <div id="currentWeather">
-          <div id="sunRiseSet"></div> 
+        <div id="searchField" class="searchField">
+            <div id="searchButton" class="searchButton"></div>
+            <div id="searchFieldRow" class="searchFieldRow"></div>
         </div>
 
-       
+        <div id="currentWeather">
+           <div class="currentTemperature"></div> 
+           <div class="cityTimeDesc"></div>
+          <div id="sunRiseSet" class="sunRiseSet"></div> 
+        </div>
+
+        <div id="changeCityButton" class="changeCityButton"></div>
 
         <div id="weatherForecast">
             <div id="forecastRow1"></div>
