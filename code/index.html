@@ -7,30 +7,33 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@1,6..12,300&family=Roboto:wght@300;400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
       rel="stylesheet"
     />
     <title>Project Weather App</title>
   </head>
   <body>
-    <!--Section for current weather including city name, temperature, current time, eather and time for sunrise and sunset-->
-    <main>
-      <section class="current-weather" id="currentWeather">
-        <h1 id="currentTemp"></h1>
-        <h2 id="city"></h2>
-        <div class="weather-description">
-          <h3 id="weather"></h3>
-          <div id="weatherIcon"></div>
-        </div>
-      </section>
-      <section class="sunrise-sunset">
-        <div id="sunrise"></div>
-        <div id="sunset"></div>
-
+    <div class="wrapper">
+      <div class="back-image"></div>
+      <div id="background" class="image"></div>
+      <!--Section for current weather including city name, temperature, current time, eather and time for sunrise and sunset-->
+      <main>
+        <section class="current-weather" id="currentWeather">
+          <h1 id="currentTemp"></h1>
+          <h2 id="city"></h2>
+          <div class="weather-description">
+            <h3 id="weather"></h3>
+            <div id="weatherIcon"></div>
+          </div>
+        </section>
+        <section class="sunrise-sunset">
+          <div id="sunrise"></div>
+          <div id="sunset"></div>
+        </section>
         <!-- 5 days forecast section -->
-        <section id="weatherForecast"></section>
-      </section>
-    </main>
+        <section id="weatherForecast" class="forecast-wrapper"></section>
+      </main>
+    </div>
 
     <script src="script.js"></script>
   </body>

@@ -61,10 +61,10 @@ const fetchStockholmWeather = () => {
         
          // Sunrise and sunset innerHTML
       sunrise.innerHTML = `
-      <p>sunrise</p>${sunriseTime}
+      <p>sunrise${sunriseTime}</p>
     `;
     sunset.innerHTML = `
-      <p>sunset</p>${sunsetTime}
+      <p>sunset${sunsetTime}</p>
     `;
 
     console.log(`sunrise ${sunriseTime}`);
@@ -126,7 +126,7 @@ const showWeatherData = (filteredData) => {
       <div class="forecast-container">
         <div class="forecast-weekday">${dayName}</div>
         <div class="forecast-icon">
-          <img src="https://openweathermap.org/img/wn/${icon}@2x.png">
+          <img class="moln" src="https://openweathermap.org/img/wn/${icon}@2x.png">
         </div>
         <div class="forecast-temp">${roundedTemp}&#176;C</div>
         <div class="forecast-wind">${wind_speed} m/s</div>

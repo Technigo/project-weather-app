@@ -1,12 +1,109 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
 body {
-  font-family: "Nunito Sans", sans-serif;
   font-family: "Roboto", sans-serif;
-  font-weight: lighter;
+  font-weight: 300;
+  height: 100%;
+}
+
+.wrapper {
+  position: relative;
+  background-color: #e0e0e0;
+  width: 100%;
+  max-width: 400px;
+  margin: 50px auto;
+  overflow: hidden;
+  height: 800px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.back-image {
+  position: absolute;
+  background: url("./images/pexels-skitterphoto-3768.jpg");
+  background-size: cover;
+  bottom: 37%;
+  background-repeat: no-repeat;
+  width: 800px;
+  height: 800px;
+  right: 50%;
+  transform: translate(50%);
+  border-radius: 50%;
+}
+
+main {
+  position: relative;
+  height: 100%;
+  z-index: 1;
+}
+
+.sunrise-sunset {
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  border: 1px solid red;
+}
+
+.forecast-wrapper {
+  position: absolute;
+  width: 100%;
+  padding: 10px 40px 40px;
+  bottom: 0;
 }
 
 .forecast-container {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 5rem;
+
+}
+
+.forecast-weekday {
+  width: 80px;
+  padding-left: 8px;
+}
+
+.forecast-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80px;
+  height: 42px;
+}
+
+.moln {
+  width: 55px;
+}
+
+.forecast-temp {
+  width: 80px;
+  text-align: center;
+}
+
+.forecast-wind {
+  width: 80px;
+  text-align: right;
+}
+
+
+h1,
+h2,
+h3 {
+  font-weight: 300;
 }
