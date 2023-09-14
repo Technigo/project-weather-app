@@ -1,110 +1,20 @@
-/*! HTML5 Boilerplate v6.1.0 | MIT License | https://html5boilerplate.com/ */
-
-/*
- * What follows is the result of much research on cross-browser styling.
- * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- */
-
-/* ==========================================================================
-   Base styles: opinionated defaults
-   ========================================================================== */
-
-   html {
-    color: #222;
-    font-size: 1em;
-    line-height: 1.4;
-  }
-  
-  /*
-   * Remove text-shadow in selection highlight:
-   * https://twitter.com/miketaylr/status/12228805301
-   *
-   * Vendor-prefixed and regular ::selection selectors cannot be combined:
-   * https://stackoverflow.com/a/16982510/7133471
-   *
-   * Customize the background color to match your design.
-   */
-  
-  ::-moz-selection {
-    background: #b3d4fc;
-    text-shadow: none;
-  }
-  
-  ::selection {
-    background: #b3d4fc;
-    text-shadow: none;
-  }
-  
-  /*
-   * A better looking default horizontal rule
-   */
-  
-  hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
-    padding: 0;
-  }
-  
-  /*
-   * Remove the gap between audio, canvas, iframes,
-   * images, videos and the bottom of their containers:
-   * https://github.com/h5bp/html5-boilerplate/issues/440
-   */
-  
-  audio,
-  canvas,
-  iframe,
-  img,
-  svg,
-  video {
-    vertical-align: middle;
-  }
-  
-  /*
-   * Remove default fieldset styles.
-   */
-  
-  fieldset {
-    border: 0;
+/* Box sizing reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-  }
-  
-  /*
-   * Allow only vertical resizing of textareas.
-   */
-  
-  textarea {
-    resize: vertical;
-  }
-  
-  /* ==========================================================================
-     Browser Upgrade Prompt
-     ========================================================================== */
-  
-  .browserupgrade {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
-  }
-  
-  /* ==========================================================================
-     Author's custom styles
-     ========================================================================== */
-  
-  /* General Styles */
+}
+
+/* General Styles */
 
 header {
     padding: 20px;
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto', sans-serif;
     text-align: left;
     margin: 0;
     display: flex;
@@ -114,69 +24,59 @@ body {
 
 h1 {
     font-size: 3em;
-    font-weight: 400;
+    font-weight: 700;
+    padding: 20px 0;
+}
+
+h2 {
+    padding: 15px 0;
+}
+
+h3 {
+    padding: 10px 0;
 }
 
 p {
     font-size: 1em;
-}
-
-.sthweather {
-    display: block;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 0;
-}
-
-.todays-forecast {
-    display: flex;
-    justify-content: center;
-    width: 90%;
-    margin: 0;
-}
-
-.message {
-
+    padding: 5px 0;
 }
 
 .message-img {
     display: flex;
-    justify-content: center;
-    align-items: left;
+    justify-content: flex-start;
+    align-items: center;
     /* Center content vertically */
-    width: 90%;
+    width: 100%;
     /* Take up the full width of the parent container */
     height: 150px;
+    margin-top: 20px;
 }
 
-.weather-animation {
-    width: 150px;
+.weather-animation svg {
     height: 150px;
-    /* Set the desired height */
-}
-
-.message-text {
-    display: flex;
-    justify-content: center;
-    align-items: left;
-    width: 90%;
+    width: 150px;
 }
 
 .forecast {
-    display: flex;
-    width: 90%;
-    justify-content: center;
-    margin-right: 0;
+    display: grid;
+    gap: 20px;
 }
 
 /****** TALBLET ******/
 @media only screen and (min-width:768px) {
-    /*Tablet styles here*/
-}
 
+    /*Tablet styles here*/
+    .forecast {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
 
 /****** DESKTOP ******/
 @media only screen and (min-width:1200px) {
-    /*Desktop styles here*/
-}
 
+    /*Desktop styles here*/
+    .forecast {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
