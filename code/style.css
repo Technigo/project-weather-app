@@ -3,45 +3,146 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
+
 }
 
-/* img {
-    width: 50%;
-} */
-.container{
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     width: 100%;
-    
+
 }
-.main{
+
+.main {
     background-image: url("/code/Images/beautiful-mountains.jpg");
     background-repeat: no-repeat;
     object-fit: cover;
     background-size: cover;
-    height: 500px;
+    height: 450px;
     width: 100%;
-    text-align: center;
-   
+    color: white;
+    text-align: left;
+    padding-left: 90px;
+    border-bottom-left-radius: 45%;
+    border-bottom-right-radius: 45%;
+
+
 }
-ul{
+
+.searchDisplay {
+    display: flex;
+    align-items: center;
+}
+
+.searchWrapper {
+    margin-top: 20px;
+    display: none;
+}
+
+.icon-search {
+    margin-top: 20px;
+    margin-right: 20px;
+    height: 30px;
+    width: 8%;
+}
+
+.icon-close {
+    height: 30px;
+    margin-right: 20px;
+}
+
+.search-btn {
+    opacity: 0.3;
+    border: 1px;
+}
+
+.search {
+    color: white;
+    border-color: white;
+    opacity: 0.6;
+}
+
+h1 {
+    color: white;
+    font-weight: 500;
+    font-size: 80px;
+    margin: 0;
+}
+
+h2 {
+    font-weight: 300;
+    font-size: 35px;
+    margin: 5px 0 5px 0;
+}
+
+.windSun {
+    display: inline-flex;
+    align-items: center;
+    font-size: 18px;
+    padding: 0;
+}
+
+.icon-wind {
+    width: 20px;
+}
+
+.wind {
+    margin-right: 10px;
+    margin: 0 0 0 10px;
+}
+
+.dateTime {
+    margin-top: 0;
+    font-size: 20px;
+}
+
+.weather {
+    display: inline-flex;
+    font-size: 20px;
+    align-items: center;
+    padding: 0;
+}
+
+.icon-bg {
+    margin-right: 10px;
+}
+
+.icon-sunrise {
+    margin: 0 10px 0 10px;
+    width: 20px;
+}
+
+.icon-sunset {
+    margin: 0 10px 0 10px;
+    width: 20px;
+}
+
+ul {
+    display: flex;
+    padding: 0;
     list-style-type: none;
 }
-.forecast{
-  display: block;
+
+li {
+    margin-right: 10px;
 }
-.days{
+
+.forecast {
+    display: block;
+}
+
+.days {
     display: flex;
     gap: 15px;
     justify-content: space-around;
 }
-.icon{
-   width: 50px;
-}
-.icon-bg{
-    width: 80px;
+
+.icon {
+    width: 50px;
 }
 
+.icon-bg {
+    width: 80px;
+}

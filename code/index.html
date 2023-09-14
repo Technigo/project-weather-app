@@ -12,84 +12,89 @@
         href="https://fonts.googleapis.com/css2?family=Borel&family=Montserrat&family=Quicksand:wght@300;400;500;600;700&family=Roboto:ital,wght@0,300;0,400;0,500;1,400&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="https://toppng.com/uploads/preview/image-setpng256x256-pxweather-icon-weather-flat-icon-115631356009rpwtrjbjj.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon"
+        href="https://toppng.com/uploads/preview/image-setpng256x256-pxweather-icon-weather-flat-icon-115631356009rpwtrjbjj.png"
+        type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-    <div class="container">
-
-    
-
-    <div id="main" class="main">
-        <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-        <input id="search" type="text" placeholder="search city"> </input>
-
-        <h1 id="temp"></h1>
-        <img src="" alt="icon-bg" class="icon-bg" id="icon-main">
-        <p id="desc"></p>
-        
-        <h2 id="city"></h2>
-
-        <p id="date"></p>
-        <p id="time"></p>
-        
-        
-         <!-- put icon here-->
-         
-        <p id="wind"></p>
-        
-        <!-- <img src="/code/Images/beautiful-mountains.jpg" alt="background" class="background-img"> -->
-
-
-        <div id="sunRiseSet">
-            <ul>
-                <li id="sunrise"></li>
-                <li id="sunset"></li>
-            </ul>
+    <div id="container" class="container">
+        <div id="main" class="main">
+            <div class="searchDisplay" id="searchDisplay">
+                <img src="/images/icons8-search-50.png" alt="search" class="icon-search" id="icon-search">
+                <div class="searchWrapper" id="searchWrapper">
+                    <img src="Images/x-mark-48.png" alt="close" class="icon-close" id="icon-close">
+                    <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <input id="search" class="search" type="text" placeholder="search city"> </input>
+                </div>
+            </div>
+            <h1 id="temp"></h1>
+            <h2 id="city"></h2>
+            <div>
+                <ul class="dateTime">
+                    <li id="date"></li>
+                    <li id="time"></li>
+                </ul>
+            </div>
+            <div id="temp-max-min">
+                <ul>
+                    <li id="temp-max"></li>
+                    <li id="temp-min"></li>
+                </ul>
+            </div>
+            <div class="weather">
+                <p id="desc"></p>
+                <img src="" alt="icon-bg" class="icon-bg" id="icon-main">
+            </div>
+            <br />
+            <div class="windSun">
+                <img src="/images/icons8-wind-50.png" class="icon-wind">
+                <p id="wind" class="wind"></p>
+                <!-- <img src="/code/Images/beautiful-mountains.jpg" alt="background" class="background-img"> -->
+                <img src="/images/icons8-sunrise-48.png" class="icon-sunrise">
+                <p id="sunrise"></p>
+                <img src="/images/icons8-sunset-48.png" class="icon-sunset">
+                <p id="sunset"></p>
+            </div>
         </div>
-        <div id="temp-max-min">
-            <ul>
-                <li id="temp-max"></li>
-                <li id="temp-min"></li>
-            </ul>
+        <div id="forecast-container" class="forecast">
+            <div id="day1" class="days">
+                <p class="day"></p>
+                <img src="" alt="" class="icon">
+                <p class="temp-forecast"></p>
+                <p class="wind-forecast"></p>
+            </div>
+            <div id="day2" class="days">
+                <p class="day"></p>
+                <img src="" alt="" class="icon">
+                <p class="temp-forecast"></p>
+                <p class="wind-forecast"></p>
+            </div>
+            <div id="day3" class="days">
+                <p class="day"></p>
+                <img src="" alt="" class="icon">
+                <p class="temp-forecast"></p>
+                <p class="wind-forecast"></p>
+            </div>
+            <div id="day4" class="days">
+                <p class="day"></p>
+                <img src="" alt="" class="icon">
+                <p class="temp-forecast"></p>
+                <p class="wind-forecast"></p>
+            </div>
+            <div id="day5" class="days">
+                <p class="day"></p>
+                <img src="" alt="" class="icon">
+                <p class="temp-forecast"></p>
+                <p class="wind-forecast"></p>
+            </div>
         </div>
-    </div>
 
-<div id="forecast-container" class="forecast">
-    <div id="day1" class="days">
-        <p class="day"></p> 
-        <img src="" alt="" class="icon"> 
-        <p class="temp-forecast"></p>
-        <p class="wind-forecast"></p>
     </div>
-    <div id="day2" class="days">
-        <p class="day"></p>
-        <img src="" alt="" class="icon">
-        <p class="temp-forecast"></p>
-        <p class="wind-forecast"></p>
-    </div>
-    <div id="day3" class="days">
-        <p class="day"></p>
-        <img src="" alt="" class="icon">
-        <p class="temp-forecast"></p>
-        <p class="wind-forecast"></p>
-    </div>
-    <div id="day4" class="days">
-        <p class="day"></p>
-        <img src="" alt="" class="icon">
-        <p class="temp-forecast"></p>
-        <p class="wind-forecast"></p>
-    </div>
-    <div id="day5" class="days">
-        <p class="day"></p>
-        <img src="" alt="" class="icon">
-        <p class="temp-forecast"></p>
-        <p class="wind-forecast"></p>
-    </div>
-</div>
-</div>
-<script src="/code/index.js" defer></script>   
+    <script src="/code/index.js" defer></script>
 
 </body>
 
