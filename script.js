@@ -125,6 +125,16 @@ const gettingDays = (weatherAt12) => {
     forecastTwo.innerHTML += `
     ${day2}°C
     `
+    forecastThree.innerHTML += `
+    ${day3}°C
+    `
+    forecastFour.innerHTML += `
+    ${day4}°C
+    `
+    forecastFive.innerHTML += `
+    ${day5}°C
+    `
+    
    
 }
 
@@ -145,6 +155,18 @@ const gettingIcon = (weatherAt12) => {
     forecastOne.innerHTML += `
     <img src =https://openweathermap.org/img/wn/${iconsAt12[0]}@2x.png>
     `
+    forecastTwo.innerHTML += `
+    <img src =https://openweathermap.org/img/wn/${iconsAt12[1]}@2x.png>
+    `
+    forecastThree.innerHTML += `
+    <img src =https://openweathermap.org/img/wn/${iconsAt12[2]}@2x.png>
+    `
+    forecastFour.innerHTML += `
+    <img src =https://openweathermap.org/img/wn/${iconsAt12[3]}@2x.png>
+    `
+    forecastFive.innerHTML += `
+    <img src =https://openweathermap.org/img/wn/${iconsAt12[4]}@2x.png>
+    `
     
 }
 
@@ -164,6 +186,18 @@ const gettingTemperatures = (weatherAt12) => {
     forecastOne.innerHTML += `
     ${temperaturesAt12[0]}°C
     `
+    forecastTwo.innerHTML += `
+    ${temperaturesAt12[1]}°C
+    `
+    forecastThree.innerHTML += `
+    ${temperaturesAt12[2]}°C
+    `
+    forecastFour.innerHTML += `
+    ${temperaturesAt12[3]}°C
+    `
+    forecastFive.innerHTML += `
+    ${temperaturesAt12[4]}°C
+    `
 }
 
 const gettingFeelsLike = (weatherAt12) => {
@@ -177,8 +211,17 @@ const gettingFeelsLike = (weatherAt12) => {
     // <p>${feelsLike[3]}°C</p>
     // <p>${feelsLike[4]}°C</p>
     // </div> `
+    
     forecastOne.innerHTML += `
     ${feelsLike[0]}°C`
+    forecastTwo.innerHTML += `
+    ${feelsLike[1]}°C`
+    forecastThree.innerHTML += `
+    ${feelsLike[2]}°C`
+    forecastFour.innerHTML += `
+    ${feelsLike[3]}°C`
+    forecastFive.innerHTML += `
+    ${feelsLike[4]}°C`
 
 }
 
