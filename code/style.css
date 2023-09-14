@@ -1,0 +1,23 @@
+@import url('https://fonts.google.com/specimen/Roboto');
+
+body {
+    font-weight: lighter;
+    margin: 0%;
+    padding: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: grey;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 5%;
+    background-color: aquamarine;
+
+}
+
+.prognosis {
+    background-color: green;
+}
