@@ -4,56 +4,79 @@ const weatherType = document.getElementById('weather-type')
 const mainWeatherSection = document.getElementById('main-weather')
 const sunSection = document.getElementById('sun')
 const forecastSection = document.getElementById('forecast')
+const sunrise = document.getElementById('sunrise')
+const sunset = document.getElementById('sunset')
 
-
-
-const BASE_URL_WEATHER = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID='
-const BASE_URL_FORECAST = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID='
+const BASE_URL= 'https://api.openweathermap.org/data/2.5/'
 const API_KEY = 'bc487ba1fa4b42fcfb85443237a7774e'
 
-const URL_WEATHER = `${BASE_URL_WEATHER}${API_KEY}`
-const URL_FORECAST = `${BASE_URL_FORECAST}${API_KEY}`
-
+const URL_WEATHER = 'weather'
+const URL_FORECAST = 'forecast'
+const cityQuery = 'Tokyo,Japan'
 
 //------Fetching today's weather-----
 const fetchWeather = () => {
-fetch(URL_WEATHER)
+fetch(`${BASE_URL}${URL_WEATHER}?q=${cityQuery}&units=metric&APPID=${API_KEY}`)
 .then((response)=> {
     return response.json()
 })
 .then ((json) => {
 
-    //-----Basic weather info------
     console.log (json)
-    city.innerHTML = ` ${json.name}`
-    temp.innerHTML = `${Math.round(json.main.temp)}&deg;C`
-    console.log(Math.round(json.main.temp))
+    getBasicWeatherInfo(json)
+    calculateSunrise(json)
+    calculateSunset(json)
+ })
+}
+
+
+
+const getBasicWeatherInfo = (json) => {
+    const cityName = ` ${json.name}`
+    city.innerHTML = cityName 
+    const mainTemperature = `${Math.round(json.main.temp)}&deg;C`
+    temp.innerHTML = mainTemperature
     json.weather.forEach((element) => {
         weatherType.innerHTML = `${element.main}`
     console.log(element.main)
     }) 
-    //-----------------------------
-
-
-    //-----Getting sunrise and sunrise times------
-    // Convert sunrise and sunset timestamps to hours
-    const sunriseTime = new Date(json.sys.sunrise * 1000); //*1000 to convert it in to milliseconds
-    const sunsetTime = new Date(json.sys.sunset * 1000);
-
-    mainWeatherSection.innerHTML += `
-    <div class ="sun">
-    <p class=sunrise>Sunrise: ${sunriseTime.getHours()}:${String(sunriseTime.getMinutes()).padStart(2, '0')}</p>
-    <p class=sunset>Sunset: ${sunsetTime.getHours()}:${String(sunsetTime.getMinutes()).padStart(2, '0')}</p>
-    </div>
-    `
-    })
 }
-fetchWeather()
+
+const calculateSunrise = (json) => {
+    const unixTimestamp = json.sys.sunrise //seconds
+    const timezone = json.timezone 
+    const offset = new Date().getTimezoneOffset() * 60 //Gets the difference between time on local computer and UCT
+    const sunriseInSeconds = unixTimestamp + timezone + offset //Represents the local time of sunrise in seconds since the Unix epoch.
+    const sunriseInMilliseconds = sunriseInSeconds * 1000 //seconds
+    const sunriseLocalDate = new Date(sunriseInMilliseconds) //gives date
+    const localtimeSunrise = `${sunriseLocalDate.getHours().toString()}:${sunriseLocalDate.getMinutes().toString()}`; //gives only time
+    insertSunrise (localtimeSunrise)
+}
+
+const calculateSunset = (json) => {
+    const unixTimestamp = json.sys.sunset //seconds
+    const timezone = json.timezone 
+    const offset = new Date().getTimezoneOffset() * 60 //Gets the difference between time on local computer and UCT
+    const sunsetInSeconds = unixTimestamp + timezone + offset //Represents the local time of sunrise in seconds since the Unix epoch.
+    const sunsetInMilliseconds = sunsetInSeconds * 1000 //seconds
+    const sunsetLocalDate = new Date(sunsetInMilliseconds) //gives date
+    const localtimeSunset = `${sunsetLocalDate.getHours().toString()}:${sunsetLocalDate.getMinutes().toString()}`; //gives only time
+    insertSunset (localtimeSunset)
+}
+
+const insertSunrise = (localtimeSunrise) => {
+    sunrise.innerHTML += `${localtimeSunrise}`
+}
+const insertSunset = (localtimeSunset) => {
+    sunset.innerHTML += `${localtimeSunset}`
+}
+
+
 
 
 //----Fetching for 5 days forecast
 const fetchForecast = () => {
-fetch(URL_FORECAST)
+fetch(`${BASE_URL}${URL_FORECAST}?q=${cityQuery}&units=metric&APPID=${API_KEY}`)
 .then((response)=> {
     return response.json()
 })
@@ -62,7 +85,7 @@ fetch(URL_FORECAST)
     console.log(json.city.name)
 
     json.list.forEach((element)=> {
-     console.log(element.main.temp)
+     //console.log(element.main.temp)
     }) 
 
 
@@ -129,4 +152,8 @@ fetch(URL_FORECAST)
     </div> `
     })
  }
+
+
+//----fetching json------
 fetchForecast();
+fetchWeather()
