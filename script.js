@@ -1,18 +1,18 @@
+//Containers for the DOM elements
 const weatherContainer = document.getElementById('currentWeather')
 const weatherApp = document.getElementById('weatherApp')
 const sunRiseSet = document.getElementById('sunRiseSet')
 const weatherForecast = document.getElementById('weatherForecast')
 
-//create a search string
+//Create a search string
 const appID = "d8d8bd8fc9a245def8c2bd16cb32ba83"
 const units = "metric"
 const baseURL = "https://api.openweathermap.org/data/2.5/"
-
 const searchString = (searchTerm, searchCity) => {
     return (`${baseURL}${searchTerm}?q=${searchCity}&units=${units}&APPID=${appID}`)
 }
 
-
+//Fetch the API from Open Weather construct the current weather
 fetch(searchString("weather", "Stockholm,Sweden"))
     .then((response) => {
         return response.json()})
@@ -33,50 +33,54 @@ fetch(searchString("weather", "Stockholm,Sweden"))
       </div>
       `
         weatherContainer.innerHTML +=`<h1>${cityName}</h1>`
-        currentTime()
+        weatherContainer.innerHTML += `<p>${currentTime()}</p>`
         weatherContainer.innerHTML +=`<p>${weatherDescription}</p>`
 
         sunRiseSet.innerHTML +=`<p>sunrise ${sunriseTime}</p>`
         sunRiseSet.innerHTML +=`<p>sunset ${sunsetTime}</p>`
     })
 
+//Fetch the API from Open Weather and construct a forecast for the coming 4-5 days
 fetch(searchString("forecast", "Stockholm,Sweden"))
     .then((response) => (response.json()))
     .then((json) => {
-
         const noonWeather = json.list.filter((item) => item.dt_txt.includes("12:00:00"))
 
-        const weekDays = ["Sunday", "Monday", "Tuesday","Wednesday", "Thursday", "Friday", "Saturday"]
         let today = new Date().toDateString()
+        let iterationNum = 1
 
         noonWeather.forEach((item) => {
             let day = new Date(item.dt_txt)
             let windSpeed = item.wind.speed
 
+            let weatherIcon = createIcon(item.weather[0].icon)
+            let weatherDescription = item.weather.description
+
+            let temperature = Math.round(item.main.temp *10)/10
+
             if (day.toDateString() === today) {}
             else {
-                let dayOfWeek = weekDays[day.getDay()]
-                weatherForecast.innerHTML += `<p>${dayOfWeek}</p>`
-                
-                weatherIcon = createIcon(item.weather[0].icon)
-                weatherForecast.innerHTML += `<img src="${weatherIcon}", alt="${item.weather.description}"></img>`
-
-                let temperature = Math.round(item.main.temp *10)/10
-                weatherForecast.innerHTML += `<p>${temperature}°C</p>`
-
-                weatherForecast.innerHTML +=`<p>${windSpeed} m/s</p>`
+                addForecastRows(iterationNum, day, weatherIcon, weatherDescription, temperature, windSpeed)
+                iterationNum ++
             }
         })
 })
 
-const createIcon= (iconID) => {
-    let base_URL = `https://openweathermap.org/img/wn/`
-    let icon = iconID
-    let end_URL = `@2x.png`
+//Adding data from the fetched forcast to a div in the HTML
+const addForecastRows = 
+(iter, date, weatherIcon, weatherDescription, temperature, windSpeed) => {
+    const forecastRow = document.getElementById(`forecastRow${iter}`)
 
-    return (base_URL+icon+end_URL)
+    const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    let dayOfWeek = weekDays[date.getDay()]
+    forecastRow.innerHTML += `<p>${dayOfWeek}</p>`
+    
+    forecastRow.innerHTML += `<img src = "${weatherIcon}", alt = "${weatherDescription}", width = "60px"></img>`
+
+    forecastRow.innerHTML += `<p>${temperature}°C</p>`
+
+    forecastRow.innerHTML +=`<p>${windSpeed} m/s</p>`
 }
-
 
 //Function for current time
 const currentTime = () => {
@@ -89,15 +93,14 @@ const currentTime = () => {
         if (minutes < 10) {
             minutes = `0${minutes}`
         }
-
-        weatherContainer.innerHTML += `<p>Time: ${hours}:${minutes}</p>`
+    return `Time: ${hours}:${minutes}`
 }
 
-/*
-const formatDay = (timestamp) => {
-    let date = new Date(timestamp * 1000);
-    let day = date.getDay();
-    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    return days[day];
+//Creating the icon's cource URL
+const createIcon= (iconID) => {
+    let base_URL = `https://openweathermap.org/img/wn/`
+    let icon = iconID
+    let end_URL = `@2x.png`
+
+    return base_URL+icon+end_URL
 }
-*/
