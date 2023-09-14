@@ -47,6 +47,8 @@ h2 {
     color: #164a68;
     font-size: 20px;
     margin-top: 3em;
+    column-gap: 0;
+    max-width: 400px;
 }
 
 
