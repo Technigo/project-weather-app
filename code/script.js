@@ -5,6 +5,8 @@ const tempTextCelsius = document.getElementById("tempTextCelsius"); // NEW
 const localTime = document.getElementById("localTime"); // NEW
 const weatherDescription = document.getElementById("weatherDescription");
 const mainIcon = document.getElementById("mainIcon");
+const sunriseText = document.getElementById("sunriseText");
+const sunsetText = document.getElementById("sunsetText");
 
 const forecastWeekdays = document.getElementById("forecastWeekdays"); // NEW
 const forecastIcon = document.getElementById("forecastIcon"); // NEW
@@ -43,10 +45,22 @@ const todaysWeather = (city) => {
         let { icon } = json.weather[0];
         mainIcon.innerHTML = `<img src="https://openweathermap.org/img/wn/${icon}@2x.png" />`; 
         
-        // Display current time (hours:minutes) using the data on time and timezone (in miliseconds) as an epoch timestamp multiplied by 1000
+        // Display current time (hours:minutes) using the data on time and timezone (in seconds) as an epoch timestamp multiplied by 1000
         const currentLocalTime = new Date((json.dt+json.timezone)*1000);
         const localTimeValue = currentLocalTime.toLocaleTimeString("en-GB", {timeStyle: "short", timeZone: "UTC"});
         localTime.innerText = `Time: ${localTimeValue}`;
+
+        // UG Below: Sunrise here we go - "Making" the sunriseTime, using "Date() and putting json.sys..sunrise which is the system-time from a certain "unix"-timestamp in the 70s(link to info in instructions. So json.sys.sunrise + json.timezone together, times 1000 so we get the milliseconds)
+        const sunriseTime = new Date((json.sys.sunrise + json.timezone)*1000);       
+        sunriseTime.setMinutes(sunriseTime.getMinutes() + sunriseTime.getTimezoneOffset())
+        // The timestyle and short makes the time in the ==:== format.
+        const sunriseShort = sunriseTime.toLocaleTimeString(['en-GB'], { timeStyle: 'short' });        
+        const sunsetTime = new Date((json.sys.sunset + json.timezone)*1000);
+        sunsetTime.setMinutes(sunsetTime.getMinutes() + sunsetTime.getTimezoneOffset())
+        const sunsetShort = sunsetTime.toLocaleTimeString(['en-GB'], { timeStyle: 'short' });
+        // And this swaps the html between sunrise and sunset 
+        sunriseText.innerHTML = `<p>Sunrise</p> <p class="time-data">${sunriseShort}</p>`;
+        sunsetText.innerHTML = `<p>Sunset</p> <p class="time-data">${sunsetShort}</p>`;
     })
 }
 
@@ -139,27 +153,6 @@ const switchCity = () => {
 }
 
 // Invoke functions for today's weather and five-day forecast with the base city as argument
-        localTime.innerText = `Time: ${currentLocalTime.getHours()}:${currentLocalTime.getMinutes()}`;
-
-        
-        // UG Below: Sunrise here we go - "Making" the sunriseTime, using "Date() and putting json.sys..sunrise which is the system-time from a certain "unix"-timestamp in the 70s(link to info in instructions. So json.sys.sunrise + json.timezone together, times 1000 so we get the milliseconds)
-        const sunriseTime = new Date((json.sys.sunrise + json.timezone)*1000);       
-            sunriseTime.setMinutes(sunriseTime.getMinutes() + sunriseTime.getTimezoneOffset())
-        // The timestyle and short makes the time in the ==:== format.
-        const sunriseShort = sunriseTime.toLocaleTimeString(['en-GB'], { timeStyle: 'short' });        
-        const sunsetTime = new Date((json.sys.sunset + json.timezone)*1000);
-        sunsetTime.setMinutes(sunsetTime.getMinutes() + sunsetTime.getTimezoneOffset())
-        const sunsetShort = sunsetTime.toLocaleTimeString(['en-GB'], { timeStyle: 'short' });
-     // And this swaps the html between sunrise and sunset 
-        sunriseText.innerHTML = `<p>Sunrise</p> <p class="time-data">${sunriseShort}</p>`;
-        sunsetText.innerHTML = `<p>Sunset</p> <p class="time-data">${sunsetShort}</p>`;
-
-    })
-    
-}
-
-
-
 todaysWeather("London");
 fiveDaysForecast("London");
 
