@@ -37,8 +37,25 @@ const todaysWeather = (city) => {
         // Display current time (hours:minutes) using the data on time and timezone (in miliseconds) as an epoch timestamp multiplied by 1000
         const currentLocalTime = new Date((json.dt+json.timezone)*1000);
         localTime.innerText = `Time: ${currentLocalTime.getHours()}:${currentLocalTime.getMinutes()}`;
+
+        
+        // UG Below: Sunrise here we go - "Making" the sunriseTime, using "Date() and putting json.sys..sunrise which is the system-time from a certain "unix"-timestamp in the 70s(link to info in instructions. So json.sys.sunrise + json.timezone together, times 1000 so we get the milliseconds)
+        const sunriseTime = new Date((json.sys.sunrise + json.timezone)*1000);       
+            sunriseTime.setMinutes(sunriseTime.getMinutes() + sunriseTime.getTimezoneOffset())
+        // The timestyle and short makes the time in the ==:== format.
+        const sunriseShort = sunriseTime.toLocaleTimeString(['en-GB'], { timeStyle: 'short' });        
+        const sunsetTime = new Date((json.sys.sunset + json.timezone)*1000);
+        sunsetTime.setMinutes(sunsetTime.getMinutes() + sunsetTime.getTimezoneOffset())
+        const sunsetShort = sunsetTime.toLocaleTimeString(['en-GB'], { timeStyle: 'short' });
+     // And this swaps the html between sunrise and sunset 
+        sunriseText.innerHTML = `<p>Sunrise</p> <p class="time-data">${sunriseShort}</p>`;
+        sunsetText.innerHTML = `<p>Sunset</p> <p class="time-data">${sunsetShort}</p>`;
+
     })
+    
 }
+
+
 
 todaysWeather("London");
 
