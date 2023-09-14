@@ -102,12 +102,10 @@ const updateHTMLforecast = (json) => {
 
 function updateClock() {
     const clockElement = document.getElementById('clock');
-    const now = new Date();
-    const hours = now.getHours().toString().padStart(2, '0');
-    const minutes = now.getMinutes().toString().padStart(2, '0');
-    const seconds = now.getSeconds().toString().padStart(2, '0');
-    const timeString = `${hours}:${minutes}:${seconds}`;
-    clockElement.textContent = timeString;
+    const stockholmTimeZone = 'Europe/Stockholm'; // Time zone for Stockholm, Sweden
+    const options = { timeZone: stockholmTimeZone, hour: '2-digit', minute: '2-digit', second: '2-digit' };
+    const stockholmTime = new Date().toLocaleTimeString('sv-SE', options);
+    clockElement.textContent = stockholmTime;
 }
 
 // Update the clock every second
@@ -115,6 +113,7 @@ setInterval(updateClock, 1000);
 
 // Initial update
 updateClock();
+
 
 
 //-------------------- All Event Listeners --------------------//
