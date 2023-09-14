@@ -51,9 +51,8 @@ h2 {
     max-width: 400px;
 }
 
-
-@media (max-width: 667px) {
-
+@media (max-width: 768px) {
+    /* Adjust styles for tablets */
     /* mobile-specific styles*/
     body {
         /* Mobile body styles */
@@ -65,7 +64,7 @@ h2 {
 
     section {
         /* Mobile section styles */
-        width: 400px;
+        width: 100%;
         margin: auto;
     }
 
@@ -81,3 +80,24 @@ h2 {
         font-size: 20px;
     }
 }
+
+@media (max-width: 480px) {
+    /* Adjust styles for mobile devices */
+    body {
+        margin: 20px; /* Smaller margin for smaller screens */
+    }
+
+    section {
+        width: 100%; /* Full width on small screens */
+    }
+
+    h1 {
+        font-size: 20px; /* Smaller font size for headings */
+    }
+
+    h2 {
+        font-size: 18px; /* Smaller font size for subheadings */
+    }
+}
+
+
