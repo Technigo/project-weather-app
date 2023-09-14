@@ -18,50 +18,55 @@ function fetchWeatherDataByCoordinates(latitude, longitude) {
     .then((json) => {
       const cityName = json.name;
 
-      const temperature = json.main.temp.toFixed(1); //removed all but one decimal
+      const temperature = json.main.temp.toFixed(1);
       const weatherDescription = json.weather[0].description;
       const sunsetTimestamp = json.sys.sunset * 1000;
       const sunriseTimestamp = json.sys.sunrise * 1000;
-      const feelsLike = json.main.feels_like.toFixed(1); //removed all but one decimal
-
-
-
-
+      const feelsLike = json.main.feels_like.toFixed(1);
+  
       // Create Date objects for sunset and sunrise times
       const sunset = new Date(sunsetTimestamp);
       const sunrise = new Date(sunriseTimestamp);
-      const sunsetTime = `${sunset.getHours()}:${sunset.getMinutes()}`; //removes seconds
-      const sunriseTime = `${sunrise.getHours()}:${sunrise.getMinutes()}`; //removes seconds
+      const sunsetTime = `${sunset.getHours()}:${sunset.getMinutes()}`;
+      const sunriseTime = `${sunrise.getHours()}:${sunrise.getMinutes()}`;
       const currentDayOfWeek = new Date().getDay();
-
+  
       function generateWeatherMessage(description) {
         let message = "";
-
+        let iconUrl = "";
+  
         if (description.includes("rain")) {
           message = "Don't forget your umbrella!";
+          iconUrl = 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/rainy-weather/rainy-weather.json';
         } else if (description.includes("cloud")) {
           message = "Here's hoping for clear skies";
+          iconUrl = 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/cloudy-weather/cloudy-weather.json';
         } else if (description.includes("clear sky")) {
           message = "Clear vision ahead";
+          iconUrl = 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/sun-weather/sun-weather.json'; 
         } else if (description.includes("drizzle")) {
-          message = "Best wear a jacket";
+          message = "Better wear a jacket";
+          iconUrl = 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/rain-cloud-weather/rain-cloud-weather.json';
         } else if (description.includes("thunderstorm")) {
           message = "Stay inside and cosy up";
+          iconUrl = 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/stormy-weather/stormy-weather.json';
         } else if (description.includes("snow")) {
           message = "Let's have a snowball fight!";
+          iconUrl = 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/snow-storm-weather/snow-storm-weather.json'; 
         } else {
           message = "Weather conditions may vary.";
+          iconUrl = 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/temperature-weather/temperature-weather.json';
         }
-
-        return message;
+  
+        return { message, iconUrl };
       }
-
-      // Generate the weather message based on the weather description
-      const message = generateWeatherMessage(weatherDescription);
-
+  
+      // Generate the weather message and get the icon URL based on the weather description
+      const { message, iconUrl } = generateWeatherMessage(weatherDescription);
+  
       // Display the weather message
       messageContainer.innerHTML = `<h2>${message}</h2>`;
-
+  
       container.innerHTML = `
         <h1>Here's the weather in ${cityName}<h1/> 
         <h3>${weekdays[currentDayOfWeek]}</h3>
@@ -71,11 +76,22 @@ function fetchWeatherDataByCoordinates(latitude, longitude) {
         <p>Sunset: ${sunsetTime}</p> 
         <p>Weather feels like: ${feelsLike}°C</p>
       `;
+
+      // Load and play the Lottie animation based on the icon URL
+      const weatherAnimation = document.getElementById("weather-animation");
+      const animation = lottie.loadAnimation({
+        container: weatherAnimation,
+        renderer: "svg",
+        loop: true,
+        autoplay: true,
+        path: iconUrl,
+      });
     })
     .catch((error) => {
       console.error('Error fetching weather data:', error);
     });
 }
+
 
 function fetchWeatherDataBasedOnLocation() {
   if ('geolocation' in navigator) {
