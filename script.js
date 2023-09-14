@@ -1,7 +1,9 @@
 //Containers for the DOM elements
 const weatherContainer = document.getElementById('currentWeather')
 const weatherApp = document.getElementById('weatherApp')
+const currentTemperature = document.getElementById('currentTemperature')
 const sunRiseSet = document.getElementById('sunRiseSet')
+const cityTimeDesc = document.getElementById('cityTimeDesc')
 const weatherForecast = document.getElementById('weatherForecast')
 
 //Create a search string
@@ -26,15 +28,10 @@ fetch(searchString("weather", "Stockholm,Sweden"))
         let sunset = new Date (json.sys.sunset * 1000)
         const sunsetTime = sunset.toLocaleTimeString([], { timeStyle: 'short' })
 
-        weatherContainer.innerHTML = ""
-        weatherContainer.innerHTML +=`   <div class="currentTemp">
-        <div class="tempNumber"><p>${temperature}</p></div>
-        <div class="units"><p>°C</p></div>
-      </div>
-      `
-        weatherContainer.innerHTML +=`<h1>${cityName}</h1>`
-        weatherContainer.innerHTML += `<p>${currentTime()}</p>`
-        weatherContainer.innerHTML +=`<p>${weatherDescription}</p>`
+        currentTemperature.innerHTML = `<p><div class ="tempNumber">${temperature}</div> <div class="degrees">°C</div></p>`
+        cityTimeDesc.innerHTML += `<h1 class="cityFont">${cityName}</h1>`
+        cityTimeDesc.innerHTML += `<p>${currentTime()}</p>`
+        cityTimeDesc.innerHTML +=`<p>${weatherDescription}</p>`
 
         sunRiseSet.innerHTML +=`<p>sunrise ${sunriseTime}</p>`
         sunRiseSet.innerHTML +=`<p>sunset ${sunsetTime}</p>`
