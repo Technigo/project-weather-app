@@ -12,7 +12,9 @@ const windMain = document.getElementById("wind");
 const iconMain = document.getElementById("icon-main");
 const dateNameToday = document.getElementById("date");
 const timeToday = document.getElementById("time");
-const mainSection = document.getElementById("main")
+const mainSection = document.getElementById("main");
+const maxTemperture = document.getElementById("temp-max");
+const minTemperture = document.getElementById("temp-min");
 
 
 const baseUrl = "https://api.openweathermap.org/data/2.5/weather?";
@@ -216,7 +218,11 @@ if(weatherInfo === "Clear"){
 } else if (weatherInfo === "Thunderstorm") {
   backgroundImage = isDaytime ? imagesDescriptionMain.Thunderstorm.dayImage : imagesDescriptionMain.Thunderstorm.nightImage;
 }
-mainSection.style.backgroundImage = `url(${backgroundImage})`
+mainSection.style.backgroundImage = `url(${backgroundImage})`;
+
+// max-min-temperture
+maxTemperture.innerText =`Max Tempurture: ${Math.floor(data.main.temp_max)} °C`;
+minTemperture.innerText = `Min Temperture: ${Math.floor(data.main.temp_min)} °C`
 
 }
 
