@@ -45,18 +45,20 @@ html {
 h1 {
     font-size: 70px;
     margin-bottom: 0px;
+    margin-top: 120px;
 
 
 }
 
 h2 {
-    font-size: 25px;
-    margin-bottom: 0px;
+    font-size: 30px;
+    margin-bottom: 0;
+    padding: 0;
 
 }
 
 p {
-    font-size: 20px;
+    font-size: 25px;
 }
 
 
@@ -67,7 +69,7 @@ p {
     width: 100%;
     margin: 0;
     padding: 0;
-    margin-bottom: 20px;
+
 }
 
 .current-city-weather {
@@ -76,7 +78,7 @@ p {
     align-items: left;
     width: 100%;
     margin-bottom: 0px;
-    padding-bottom: 0;
+    padding-bottom: 0px;
 
 }
 
@@ -88,7 +90,7 @@ p {
     /* Adjust as needed */
     align-items: center;
     /* Align items vertically if needed */
-    margin-bottom: 10px;
+
     padding: 0;
 }
 
@@ -148,6 +150,7 @@ p {
     position: relative;
     clip-path: ellipse(70% 80% at 50% 5%);
     color: white;
+    margin-bottom: 1px;
 
 }
 
@@ -162,6 +165,8 @@ p {
     padding: 0;
 
 }
+
+
 
 .weather {
     display: flex;
@@ -186,6 +191,7 @@ p {
 .sun-state {
     display: flex;
     line-height: 1;
+    word-spacing: 0.9em;
 }
 
 .sun-state p {
@@ -198,14 +204,16 @@ p {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding-left: 30px;
+
 
 
 }
 
+
 #forecast-table td {
     padding: 5px;
     margin: 5px;
+
 
 }
 

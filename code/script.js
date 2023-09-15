@@ -13,19 +13,19 @@ const apiKey = '30497ceff63316bea65ec674ac0ba4c7';
 const cities = [
     {
         name: 'Stockholm',
-        image: 'https://images.unsplash.com/photo-1620408696006-d1315bf240f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2773&q=80'
+        image: 'https://images.unsplash.com/photo-1571824637968-964d9bd10d36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80'
     },
     {
         name: 'Rome',
-        image: 'https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80'
+        image: 'https://images.unsplash.com/photo-1590273971191-2af8df641e2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1635&q=80'
     },
     {
         name: 'Bordeaux',
-        image: 'https://images.unsplash.com/photo-1526581671404-349f224db79b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80'
+        image: 'https://images.unsplash.com/photo-1576762846960-c6f1dcffade1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1635&q=80'
     },
     {
         name: 'Vienna',
-        image: 'https://images.unsplash.com/photo-1526581671404-349f224db79b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80'
+        image: 'https://images.unsplash.com/photo-1585425422110-bb85558b2293?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80'
     }
 ];
 
