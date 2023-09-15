@@ -55,9 +55,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to filter forecast data for 12:00 PM each day
   function filterForecastData(data) {
+    console.log(data);
+    const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0); // Set the time to midnight for comparison
+
     const filteredData = data.list.filter((item) => {
-      // Check if the timestamp is for 12:00 PM (noon)
-      return item.dt_txt.includes("12:00:00");
+      const itemDate = new Date(item.dt * 1000); // Convert timestamp to date
+      itemDate.setHours(0, 0, 0, 0); // Set the time of the forecast date to midnight for comparison
+
+      // Check if the forecast date is greater than the current date
+      if (itemDate > currentDate) {
+        // Check if the timestamp is for 12:00 PM (noon)
+        return item.dt_txt.includes("12:00:00");
+      }
+      return false;
     });
     return filteredData;
   }
@@ -66,8 +77,9 @@ document.addEventListener("DOMContentLoaded", function () {
   function displayWeatherForecast(forecastData) {
     forecastData.forEach((item) => {
       const date = new Date(item.dt * 1000); // Convert timestamp to date
-      const dayOfWeek = date.toLocaleDateString("en-US", { weekday: "long" });
-      const temperature = item.main.temp;
+      const dayOfWeek = date.toLocaleDateString("en-SE", { weekday: "short" });
+      const temperature = parseFloat(item.main.temp).toFixed(1);
+
       const weatherDescription = item.weather[0].description;
 
       const forecastElement = document.createElement("p");
@@ -75,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Append the paragraph element to the forecast container
       forecastContainer.appendChild(forecastElement);
-      console.log(forecastData);
+
       console.log(`${dayOfWeek}: ${temperature}°C, ${weatherDescription}`);
     });
   }
@@ -84,6 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
   fetch(apiUrl5Days)
     .then((response) => response.json())
     .then((data) => {
+      console.log(data);
       const forecastData = filterForecastData(data);
       displayWeatherForecast(forecastData);
     })
