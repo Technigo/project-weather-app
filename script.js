@@ -135,6 +135,9 @@ fetchWeatherDataBasedOnLocation();
 
 function fetchWeatherData() {
   fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=8fa7c461aec946fde31f330992fce9d6')
+    //The geolocation isn´t working for he forecast,tried to do the same logic as above without any result
+    //const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&APPID=8fa7c461aec946fde31f330992fce9d6`;
+  //fetch(apiUrl)
     .then((response) => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
