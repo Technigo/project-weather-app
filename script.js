@@ -1,6 +1,7 @@
 const city = document.getElementById('city')
 const temp = document.getElementById('temp')
 const weatherType = document.getElementById('weather-type')
+const weatherTypeText = document.getElementById('weather-type-text')
 const mainWeatherSection = document.getElementById('main-weather')
 const sunSection = document.getElementById('sun')
 const forecastSection = document.getElementById('forecast')
@@ -41,6 +42,8 @@ fetch(`${BASE_URL}${URL_WEATHER}?q=${cityQuery}&units=metric&APPID=${API_KEY}`)
 const gettingIconWeather = (json) => {
     console.log(json)
     const icon = json.weather.map ((el) => el.icon)
+    weatherType.innerHTML += `
+    <img class= "weatherIcon" src = "https://openweathermap.org/img/wn/${icon[0]}@2x.png"> `
     console.log (icon)
 }
 
@@ -50,7 +53,7 @@ const getBasicWeatherInfo = (json) => {
     const mainTemperature = `${Math.round(json.main.temp)}&deg;C`
     temp.innerHTML = mainTemperature
     json.weather.forEach((element) => {
-        weatherType.innerHTML = `${element.main}`
+        weatherTypeText.innerHTML = `${element.main}`
     console.log(element.main)
     }) 
 }

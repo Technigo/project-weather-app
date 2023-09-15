@@ -40,10 +40,21 @@ justify-content: flex-end
     margin-left: 10px;
 }
 
+.weatherIcon {
+
+height: 70px; 
+}
+
 .weather-type {
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.weather-type-text {
     margin: 0; 
     margin-left: 10px; 
-    margin-top: 10px; 
     color: white;
     font-size: 25px;
 }
