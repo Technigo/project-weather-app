@@ -1,0 +1,97 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    font-family: 'Mont serrat', sans-serif;
+    background-color: #F4F7F8;
+    color: #F47775;
+    margin: 30px 50px;
+    height: 100%;
+}
+
+/* CREATING A CSS GRID, PLACING THE ITEMS IN THE GRID*/
+.container {
+    display: grid;
+    grid-template-rows: 25%, 45%, 20%;
+    height: 100vh;
+}
+
+.header {
+    grid-row: 1 / span 2;
+}
+
+.weather-descritpion {
+    grid-row: 2 / span 3;
+}
+
+/* FONT SIZES AND WEIGHT*/
+h3 {
+    font-weight: 100;
+    font-size: 20px;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+/* PADDING AND SIZE OF IMAGE */
+img {
+    padding: 10px;
+    width: 120px;
+}
+
+/* 
+ Colors from Technigo
+ #F47775 text pink-ish
+#F4F7F8 bakgrund white-ish
+
+#164A68 text dark blue
+#A3DEF7 bakgrund light blue
+
+#2A5510 text dark green
+#F7E9B9 bakgrund light yellow
+
+*/
+
+/* STYLING FORECAST-FEATURE */
+.forecast-wrapper ul {
+    list-style-type: none;
+    padding-left: 0;
+    font-size: 20px;
+    font-weight: 100;
+}
+
+.forecast-wrapper ul li {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed;
+    padding: 0.6em;
+}
+
+/* MEDIA QUERY FOR LARGER SCREENS
+did not make specific for desktop, beacuse it looks the same */
+@media (min-width: 667px) {
+    .container {
+        width: 500px;
+    }
+
+    body {
+        display: grid;
+        justify-content: center;
+    }
+
+    h1 {
+        font-size: 45px;
+    }
+
+    h3 {
+        font-size: 22px;
+    }
+
+    .forecast-wrapper ul {
+        font-size: 22px;
+    }
+
+}
