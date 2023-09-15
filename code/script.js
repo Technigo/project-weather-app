@@ -20,7 +20,7 @@ const cities = [
     },
     {
         name: 'Bordeaux',
-        image: 'https://images.unsplash.com/photo-1526581671404-349f224db79b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80'
+        image: 'https://images.unsplash.com/photo-1509636902752-929c7497f3d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80'
     },
     {
         name: 'Vienna',
@@ -104,32 +104,35 @@ weeklyForecast = (city) => {
 
                 const dateTime = new Date(forecast.dt * 1000); // Convert timestamp from seconds to ms adapted to Javascript
                 const date = dateTime.toLocaleDateString(); // Formated date accordingly to the user's locale
+                const time = dateTime.toLocaleTimeString(); // Catch the time of data point
 
                 // Display date, weather description, and temperature in Celsius
                 if (!processedDates.includes(date)) {//if the date is not in the processedDates array
-                    const row = document.createElement('tr');//create a table row
+                    if (time === '2:00:00 PM') {//forecast displays only at 2p.m. i.e. middle of day
+                        const row = document.createElement('tr');//create a table row
 
-                    const dateCell = document.createElement('td');
-                    dateCell.textContent = `${date}`;
-                    row.appendChild(dateCell);
+                        const dateCell = document.createElement('td');
+                        dateCell.textContent = `${date}`;
+                        row.appendChild(dateCell);
 
-                    const iconCell = document.createElement('td');
-                    const icon = document.createElement('img');
-                    icon.src = `https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
-                    iconCell.appendChild(icon);
-                    row.appendChild(iconCell);
+                        const iconCell = document.createElement('td');
+                        const icon = document.createElement('img');
+                        icon.src = `https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
+                        iconCell.appendChild(icon);
+                        row.appendChild(iconCell);
 
-                    const tempCell = document.createElement('td');
-                    tempCell.textContent = `${forecast.main.temp.toFixed(1)} °C`;
-                    row.appendChild(tempCell);
+                        const tempCell = document.createElement('td');
+                        tempCell.textContent = `${forecast.main.temp.toFixed(1)} °C`;
+                        row.appendChild(tempCell);
 
-                    const windSpeedCell = document.createElement('td');
-                    windSpeedCell.textContent = `${forecast.wind.speed} m/s`
-                    row.appendChild(windSpeedCell)
+                        const windSpeedCell = document.createElement('td');
+                        windSpeedCell.textContent = `${forecast.wind.speed} m/s`
+                        row.appendChild(windSpeedCell)
 
-                    forecastTable.appendChild(row)
-                    processedDates.push(date); // push method to array
-                }
+                        forecastTable.appendChild(row)
+                        processedDates.push(date); // push method to array
+                    }
+                };
             });
         })
         .catch((error) => {
@@ -143,10 +146,13 @@ weeklyForecast = (city) => {
 //Event listeners 
 //for the searchbutton
 searchButton.addEventListener('click', () => {
-    const city = cityInput.value;
+    const cityName = cityInput.value;
+    const city = {
+        name: cityName,
+        image: './assets-isasheryll/cloud.jpg'
+    }
 
-    // Ensure the user has entered a city name
-    if (city === '') {
+    if (cityName === '') {
         alert('Please enter a city name.');
         return;
     }
