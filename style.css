@@ -21,6 +21,9 @@ h2 {
   color: aliceblue;
   font-size: 100px;
   font-weight: 80;
+  display: flex;
+  align-items: flex-start;
+  margin-left: 10px;
 }
 #city {
   color: aliceblue;
@@ -33,6 +36,12 @@ h2 {
   margin-left: 10px;
   text-transform: capitalize;
 }
+.sunriseandsunset, .sunrise, .sunset {
+  display: flex;
+  color: aliceblue;
+
+}
+
 #sunrise,
 #sunset {
   display: flex;
@@ -45,6 +54,7 @@ h2 {
 .typeOfWeatherData {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .top-temp {

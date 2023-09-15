@@ -10,7 +10,7 @@ const typeOfWeatherData = document.querySelector(".typeOfWeatherData");
 const API_KEY = "64856650e6321cbb411769554b46b8ad";
 // Reserve API KEY = "421db630ea3e3aeb0cb64db6a500c27b"
 
-let cityName = "Tokyo";
+let cityName = "New York";
 const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${API_KEY}`;
 
 const API_CALL = `${url}`;
@@ -20,6 +20,7 @@ const apiData = () => {
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
+
       /* ******** Sunrise and Sunset ******** */
       city.innerHTML = `${data.name}`;
       weather.innerHTML = `${data.weather[0].description}`;
@@ -29,24 +30,24 @@ const apiData = () => {
       typeOfWeatherData.innerHTML += `
       <img src="http://openweathermap.org/img/wn/${weatherIconTop}@2x.png" alt="weather-icon" class="weather-icon">
       `;
+    const unixTimestampSunrise = data.sys.sunrise;
+  
+    const timezone = data.timezone
+    const offset = new Date().getTimezoneOffset() * 60; //Offset in sec
+    const sunriseInSeconds = unixTimestampSunrise + timezone + offset;
+    const sunriseinMilliseconds = sunriseInSeconds * 1000;
+    const sunriseLocalDate = new Date(sunriseinMilliseconds);
+    const LocalTimeSunrise = sunriseLocalDate.toLocaleTimeString([], {timeStyle: "short", hour12: false,});
+    sunrise.innerText = LocalTimeSunrise;
+    const unixTimestampSunset = data.sys.sunset;
 
-      // Convert timestamps to readable time format
-      const sunriseTime = new Date(data.sys.sunrise * 1000); //Convert to milliseconds
-      const sunsetTime = new Date(data.sys.sunset * 1000);
+    const sunsetInSeconds = unixTimestampSunset + timezone + offset;
+    const sunsetinMilliseconds = sunsetInSeconds * 1000;
+    const sunsetLocalDate = new Date(sunsetinMilliseconds);
+    const LocalTimeSunset = sunsetLocalDate.toLocaleTimeString([], {timeStyle: "short", hour12: false,}); // Convert timestamps to readable time format
+    sunset.innerText = LocalTimeSunset;
 
-      // Format the times as HH.MM:SS
-      const sunriseFormatted = sunriseTime.toLocaleTimeString("sv-SE", {
-        timeStyle: "short",
-        hour12: false,
-      });
-      const sunsetFormatted = sunsetTime.toLocaleTimeString("sv-SE", {
-        timeStyle: "short",
-        hour12: false,
-      });
-
-      sunrise.innerHTML = sunriseFormatted;
-      sunset.innerHTML = sunsetFormatted;
-
+    console.log(LocalTimeSunrise, LocalTimeSunset)
       /* Forecast */
       let lat = data.coord.lat;
       let lon = data.coord.lon;
