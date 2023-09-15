@@ -6,6 +6,35 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+.loading-symbol {
+    border-right: 20px solid #164A68;
+    border-bottom: 20px solid #F47775;
+    border-left: 20px solid #2A5510;
+    border-top: 20px solid #F7E9B9;
+    height: 40px;
+    width: 40px;
+    border-radius: 40px;
+    animation: rotation 1.5s linear infinite;
+}
+
+.loading-wrapper {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 .sunny {
     background-color: #F7E9B9;
     color: #2A5510
@@ -25,7 +54,6 @@ body {
     max-width: 800px;
     padding: 2.5rem;
     margin: 0 auto;
-
 }
 
 p {
@@ -45,5 +73,4 @@ p {
     flex-direction: row;
     justify-content: space-between;
     border-bottom: 2px dotted;
-
 }
