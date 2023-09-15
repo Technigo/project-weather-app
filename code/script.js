@@ -147,13 +147,13 @@ const weeklyForecast = (cityName) => {
 
 
 
-///Event listeners 
+//Event listeners 
 //for the searchbutton
 searchButton.addEventListener('click', () => {
     const cityName = cityInput.value;
     const city = {
         name: cityName,
-        image: './assets-isasheryll/cloud.jpg'
+        image: 'https://unsplash.com/photos/6sf5rf8QYFE'
     }
 
     if (cityName === '') {
@@ -161,8 +161,8 @@ searchButton.addEventListener('click', () => {
         return;
     }
 
-    getWeatherData(city);
-    weeklyForecast(city);
+    getWeatherData(cityName);
+    weeklyForecast(cityName);
 });
 
 //for the swipebutton
