@@ -79,5 +79,6 @@ function updateWeatherUI(data) {
 
 //annet: dato og klokkeslett?
 
+//brances added - need to commit? Did it just in case
 
 window.addEventListener("load", fetchWeatherData);
