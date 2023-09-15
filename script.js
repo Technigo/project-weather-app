@@ -12,7 +12,7 @@ const forecastThree = document.getElementById('forecast-3')
 const forecastFour = document.getElementById('forecast-4')
 const forecastFive = document.getElementById('forecast-5')
 const forecastLabel = document.getElementById('forecast-label')
-const forecastSix = document.getElementById('forecast-6')
+const weatherIcon = document.getElementById('weather-icon')
 
 
 const BASE_URL= 'https://api.openweathermap.org/data/2.5/'
@@ -42,7 +42,6 @@ const gettingIconWeather = (json) => {
     console.log(json)
     const icon = json.weather.map ((el) => el.icon)
     console.log (icon)
-    
 }
 
 const getBasicWeatherInfo = (json) => {
