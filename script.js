@@ -19,7 +19,7 @@ const fetchWeather = () => {
             console.log(data)
             city.innerHTML = `${data.name}`;
             weather.innerHTML = `${data.weather[0].description}`;
-            temperature.innerHTML = `${data.main.temp}`;
+            temperature.innerHTML = `${data.main.temp.toFixed(1)}`;
         })
         .catch((error) => {
             console.log('Error', error)
@@ -42,3 +42,5 @@ const fetchWeather = () => {
                     console.log('Error', error)
                 });
 
+
+                // add 5 day wheather forecast - get an api

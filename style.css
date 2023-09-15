@@ -106,3 +106,17 @@
     font-size: 24px;
     margin-top: 20px;
 }
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+    margin-right: 1rem;
+    position: relative;
+    top: -75px;
+}
+
+#hamburger-menu {
+    z-index: 1;
+    margin: 2rem;
+}
