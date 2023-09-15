@@ -1,5 +1,5 @@
 "use strict";
-
+// does this work?
 // DOM selectors ------------------------------------------
 const weatherData = document.getElementById('weather-container');
 
