@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+    <title>Weather APP</title>
+    <link rel="icon" href="assets/favicon/sunbig.png" />
+  </head>
+  <body>
+    <!-- <video src="assets/videos/lightning02.mp4" autoplay loop> -->
+    <div class="card">
+      <img src="assets/icons/menu-hamburger.png" alt="icon for menu" class="menu" />
+      <div class="click-box arrow-right-box" id="click-btn-right">
+        <img class="arrow-right" src="./assets/icons/next.png" />
+      </div>
+      <div class="click-box arrow-left-box" id="click-btn-left">
+        <img class="arrow-left" src="./assets/icons/back.png" />
+      </div>
+      <div class="card-contents-wrapper"></div>
+    </div>
+    <div class="slider-dots"></div>
+
+    <!-- <p id="demo"></p> -->
+    <!-- <button onclick="getLocation()">Try It</button>
+    <p id="demo"></p> -->
+    <div class="modal-window">
+      <div class="modal-inner">
+        <img src="assets/icons/close.png" class="icon-close" />
+        <div class="search-wrapper">
+          <input type="text" placeholder="City..." id="input" />
+          <button id="search-btn"><img src="assets/icons/search.png" class="search-icon" /></button>
+        </div>
+
+        <h2 class="modal-primary-text">🌏 You can add and delete cities 🌏</h2>
+        <button id="delete-btn">Delete All</button>
+        <div class="cities-conatiner"></div>
+      </div>
+    </div>
+    <footer>
+      <p>Created by<a href="https://github.com/sansan-sakura"> Sakura Tanaka</a>🐒</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
