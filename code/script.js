@@ -2,12 +2,14 @@ const currentWeather_URL = `https://api.openweathermap.org/data/2.5/weather?q=`
 const fiveDayWeather_URL = `https://api.openweathermap.org/data/2.5/forecast?q=`
 const API_KEY = `5261612a788e0fbd6e1f5336fd150afe`
 
-const cityName = "Tokyo";
+const cityName = "Visby";
 
 const currentWeather = `${currentWeather_URL}${cityName}&appid=${API_KEY}&units=metric`
 const fiveDayWeather = `${fiveDayWeather_URL}${cityName}&appid=${API_KEY}&units=metric`
 
+console.log(fiveDayWeather)
 
+const forecastContainer = document.getElementById('forecastContainer');
 //-----------------------------------
 //Function that fetches the currentweather
 
@@ -32,11 +34,12 @@ const windSpeed = data.wind.speed;
  
 
 
-// Find the DOM element with id "temperature"
+// Find the DOM element 
 const currentTemperature = document.getElementById('temperature');
 const locationName = document.getElementById('locationName');
       const windSpeedElement = document.getElementById('windSpeed');
       const weatherDescriptionElement = document.getElementById('weatherDescription'); 
+    
      
 // Update the DOM with the current temperature
 locationName.textContent = cityName;
@@ -64,14 +67,70 @@ weatherDescriptionElement.textContent = weatherDescription; // Update the weathe
 
 
 
+
+
+
+
+
+
 // ------------
 //Function that fetches the 5 day weather
 
 
 
 const fetchFiveDayWeather = () => {
-  fetch(fiveDayWeather) // Use the variable fiveDayWeather here
-  .then((response) => {
+
+  // This prints the Api to console used for debugging
+  console.log('Fetching data from API:', fiveDayWeather);
+
+  // clear any existing forecast data in the container
+  forecastContainer.innerHTML = '';
+  fetch(fiveDayWeather)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+
+      // Extract the list of forecasts from the fetched data
+      const forecastList = data.list;
+
+      // Create variables to track the current day
+      let currentDay = '';
+      let isNoonTemperatureAdded = false;
+      let dayForecast = '';
+
+      forecastList.forEach((forecast) => {
+        // Extract the timestamp for this data point
+        const timestamp = forecast.dt * 1000; // Convert timestamp to milliseconds
+        const date = new Date(timestamp);
+        const day = date.toLocaleDateString('en', { weekday: 'short' });
+        const temperature = Math.round(forecast.main.temp);
+
+        // Check if it's a new day
+        if (day !== currentDay) {
+          // If it's a new day, add the day name and temperature on a single line
+          dayForecast += `<div class="forecast-row">${day} ${temperature}°C</div>`;
+          currentDay = day;
+        } else {
+          // If it's the same day, just append the temperature on a new line
+          dayForecast += `<br>${temperature}°C`;
+        }
+      });
+
+      forecastContainer.innerHTML = dayForecast;
+
+
+
+
+  /*
+  // clear any existing forecast data in the container
+  forecastContainer.innerHTML = '';
+  fetch(fiveDayWeather) 
+  .then((response) => { 
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
@@ -84,7 +143,7 @@ const fetchFiveDayWeather = () => {
     const forecastList = data.list.filter(item => item.dt_txt.includes('12:00'));
     
     const getDay = timestamp => {
-      const date = new date(timestamp * 1000);
+      const date = new Date(timestamp * 1000);
       return date.toLocaleDateString('en', {weekday: 'short'}); 
     } 
     
@@ -95,14 +154,14 @@ const fetchFiveDayWeather = () => {
     <div class="forecast-item">
     ${getDay(item.dt)}
     </div>
-    <div class="forecast-item">
+    <div class="forecast-item"><br>
     ${Math.round(item.main.temp)}°C
     </div>
     </div>
     `).join('');
     
-    forecastElement.innerHTML = forecastHTML;
-    
+    forecastContainer.innerHTML = forecastHTML;*/
+
     
   })
   .catch((error) => {
@@ -117,6 +176,7 @@ fetchFiveDayWeather();
 
 
 
+console.log(fetchCurrentWeather)
 
 
 
@@ -132,62 +192,3 @@ fetchFiveDayWeather();
 
 
 
-
-/*
-const fetchFiveDayWeather = () => {
-    fetch(fiveDayWeather) // Use the variable currentWeather here
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => {
-        console.log(data);
-
-const forecastList = data.list;
-//console.log(forecastList[1])
-//console.log(forecastList[15])
-//console.log(forecastList[23])
-//console.log(forecastList[31])
-//console.log(forecastList[39])
-   
-
-      // Find the DOM element to populate with forecast data
-// const forecastListElement = document.getElementById('forecastList');
-const forecastContainer = document.getElementById("forecastContainer")
-      // Clear any existing forecast data in the list
-      forecastContainer.innerHTML = `${forecastList[1]}`;
-
-      // Loop through the forecast data and find the temperature at 12:00 PM for each day
-      forecastList.forEach(forecast => {
-        // Extract the timestamp for this data point
-        const timestamp = forecast.dt * 1000; // Convert timestamp to milliseconds
-        
-        // Check if the timestamp corresponds to 12:00 PM (noon)
-        const date = new Date(timestamp);
-        if (date.getHours() === 12) {
-          // Extract relevant data for this day's forecast
-          const temperatureCelsius = (forecast.main.temp - 273.15).toFixed(1);
-          const weatherDescription = forecast.weather[0].description;
-
-          // Create a list item for the day's forecast
-          const listItem = document.createElement('li');
-          listItem.textContent = `${date.toDateString()}: ${temperatureCelsius}°C, ${weatherDescription}`;
-
-          // Append the list item to the forecast list
-          forecastListElement.appendChild(listItem);
-        }
-      });
-
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-  };
-  
-  // Call the function to initiate the fetch request
-  fetchFiveDayWeather();
-
-
-*/ 
