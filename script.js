@@ -5,7 +5,7 @@ const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
 const forecast = document.querySelector(".forecast");
 const weatherHeader = document.querySelector(".weather-header");
-
+const typeOfWeatherData = document.querySelector(".typeOfWeatherData");
 
 const API_KEY = "64856650e6321cbb411769554b46b8ad";
 // Reserve API KEY = "421db630ea3e3aeb0cb64db6a500c27b"
@@ -25,6 +25,10 @@ const apiData = () => {
       weather.innerHTML = `${data.weather[0].description}`;
       console.log(data.weather[0].description);
       temperature.innerHTML = `${data.main.temp.toFixed(1)}`;
+      const weatherIconTop = data.weather[0].icon;
+      typeOfWeatherData.innerHTML += `
+      <img src="http://openweathermap.org/img/wn/${weatherIconTop}@2x.png" alt="weather-icon" class="weather-icon">
+      `;
 
       // Convert timestamps to readable time format
       const sunriseTime = new Date(data.sys.sunrise * 1000); //Convert to milliseconds

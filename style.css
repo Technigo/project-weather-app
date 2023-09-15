@@ -42,6 +42,11 @@ h2 {
   padding-block: 5px;
 }
 
+.typeOfWeatherData {
+  display: flex;
+  align-items: center;
+}
+
 .top-temp {
   display: flex;
 }
@@ -95,7 +100,9 @@ h2 {
   margin: auto; */
 }
 
-.min-max-temps, .weekday, .forecastImg {
+.min-max-temps,
+.weekday,
+.forecastImg {
   /* border: 1px solid purple */
 }
 
@@ -106,9 +113,9 @@ h2 {
   align-self: center;
 }
 .forecastImg {
-    display:flex;
-    height: 100%;
-    justify-content: flex-end;
+  display: flex;
+  height: 100%;
+  justify-content: flex-end;
 }
 
 .min-max-temps {
