@@ -1,6 +1,7 @@
 const currentCity = document.getElementById('current-city');
 const container = document.getElementById('weather');
 const cityInput = document.getElementById('city-input');
+const currentCityWeather = document.getElementById('current-city-weather');//todays weather and symbol is going to be un this div
 const searchButton = document.getElementById('search-button');
 const swipeButton = document.getElementById('swipe-button');
 const forecastTable = document.getElementById('forecast-table')
@@ -49,7 +50,8 @@ getWeatherData = (city) => {
             <img src="https://openweathermap.org/img/wn/${currentWeatherJson.weather[0].icon}@2x.png">
             `;
             currentCity.innerHTML += `
-            <p> sunrise ${formattedTime(currentWeatherJson.sys.sunrise)} / sunset ${formattedTime(currentWeatherJson.sys.sunset)}
+            <p> sunrise ${formattedTime(currentWeatherJson.sys.sunrise)} 
+            / sunset ${formattedTime(currentWeatherJson.sys.sunset)}
             `;
 
         })
