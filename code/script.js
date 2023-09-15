@@ -1,7 +1,9 @@
 "use strict";
 
 // DOM selectors ------------------------------------------
-const weatherData = document.getElementById('weather-container');
+// const weatherData = document.getElementById('weather-container');
+// for initial test
+
 
 const weatherDescription = document.getElementById("weather-description");
 
@@ -49,6 +51,12 @@ const URL = `${BASE_URL}?q=${city}&units=metric&APPID=${API_KEY}`;
 // holding the weather data object from openweather.com
 let weatherObject;
 
+// holding other data for forecast
+let forecastURL = "";
+let longitude = "";
+let latitude = "";
+let forecastObject = "";
+
 const pickWeathersymbol = "/design/design2/icons/noun_Umbrella_2030530.svg";
 // need to define conditions when to use which symbol
 
@@ -57,6 +65,8 @@ const pickWeathertip = "Dont´t forget your umbrella. It´s wet in Stockholm tod
 // Get your sunnies on. Stockholm is looking rather great today.
 // Light a fire and get cosy. Stockholm is looking grey today.
 
+let kelvinValue = "";
+let celsiusValue = "";
 
 // Functions -------------------------------------------------
 
@@ -66,12 +76,31 @@ const fetchWeather = () => {
         .then(response => response.json())
         // convert  Objekt to string
         .then(data => {
-            console.log(data)
-            weatherObject = data
+            console.log("weather data:");
+            console.log(data);
+            weatherObject = data;
             // console.log(weatherObject)
-            setTimeout(() => { insertWeatherdata() }, 500);
+            longitude = weatherObject.coord.lon;
+            latitude = weatherObject.coord.lat;
+            forecastURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`;
+            console.log(forecastURL);
+            setTimeout(() => { fetchForecast() }, 200);
         })
+    setTimeout(() => { insertWeatherdata() }, 2000);
 };
+
+const fetchForecast = () => {
+    fetch(forecastURL)
+        // gets raw data
+        .then(response => response.json())
+        // convert  Objekt to string
+        .then(data => {
+            forecastObject = data;
+            console.log("forecast data:");
+            console.log(forecastObject);
+            // console.log(weatherObject) 
+        })
+}
 
 // 1.st try to retrieve data from api
 // const retrieveWeatherdata = ()=>{
@@ -87,17 +116,21 @@ const insertWeatherdata = () => {
     sunset.innerHTML = weatherObject.sys.sunset;
     weatherIcon.setAttribute("src", pickWeathersymbol);
     dailyWeathertips.innerHTML = pickWeathertip;
-    forecastDay1.innerHTML = "1a";
+    forecastDay1.innerHTML = forecastObject.list[0].dt_txt;
     forecastTem1.innerHTML = "0 degree";
-    forecastDay2.innerHTML = "2a";
+    forecastDay2.innerHTML = forecastObject.list[8].dt_txt;
     forecastTem2.innerHTML = "0 degree";
-    forecastDay3.innerHTML = "3a";
+    forecastDay3.innerHTML = forecastObject.list[16].dt_txt;
     forecastTem3.innerHTML = "0 degree";
-    forecastDay4.innerHTML = "4a";
+    forecastDay4.innerHTML = forecastObject.list[24].dt_txt;
     forecastTem4.innerHTML = "0 degree";
-    forecastDay5.innerHTML = "5a";
+    forecastDay5.innerHTML = forecastObject.list[32].dt_txt;
     forecastTem5.innerHTML = "0 degree";
 };
+
+const convertToCelsius = (value) => {
+    celsiusValue = kelvinValue - 273.15;
+}
 
 // Event listeners -----------------------------------------
 
