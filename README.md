@@ -1,4 +1,6 @@
-# Weather Appp
+# Weather App
+
+### Namuun Branch for example purposes
 
 Replace this readme with your own information about your project.
 
