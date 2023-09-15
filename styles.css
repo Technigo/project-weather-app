@@ -15,6 +15,7 @@ body {
     width: 40px;
     border-radius: 40px;
     animation: rotation 1.5s linear infinite;
+    margin-bottom: 2rem;
 }
 
 .loading-wrapper {
@@ -73,4 +74,8 @@ p {
     flex-direction: row;
     justify-content: space-between;
     border-bottom: 2px dotted;
+}
+
+#weather-information {
+    display: none;
 }
