@@ -31,64 +31,64 @@ let cityQuery = "Stockholm, Sweden";
 
 const imagesDescriptionMain = {
   "Clear": {
-    dayImage: "/code/Images/sun-rays-cloudy-sky.jpg",
-    nightImage: "/code/Images/pexels-sanat-anghan-6785277.jpg"
+    dayImage: "/Images/sun-rays-cloudy-sky.jpg",
+    nightImage: "/Images/pexels-sanat-anghan-6785277.jpg"
   },
   "Clouds": {
-    dayImage: "/code/Images/beautiful-mountains.jpg",
-    nightImage: "/code/Images/storm-clouds.jpg"
+    dayImage: "/Images/beautiful-mountains.jpg",
+    nightImage: "/Images/storm-clouds.jpg"
   },
   "Tornado": {
-    dayImage: "/code/Images/pexels-diana-vorobevaattyakova-9305185.jpg",
-    nightImage: "/code/Images/pexels-lucas-pezeta-3772353.jpg"
+    dayImage: "/Images/pexels-diana-vorobevaattyakova-9305185.jpg",
+    nightImage: "/Images/pexels-lucas-pezeta-3772353.jpg"
   },
   "Squall": {
-    dayImage: "/code/Images/pexels-diana-vorobevaattyakova-9305185.jpg",
-    nightImage: "/code/Images/pexels-lucas-pezeta-3772353.jpg"
+    dayImage: "/Images/pexels-diana-vorobevaattyakova-9305185.jpg",
+    nightImage: "/Images/pexels-lucas-pezeta-3772353.jpg"
   },
   "Ash": {
-    dayImage: "/code/Images/pexels-diana-vorobevaattyakova-9305185.jpg",
-    nightImage: "/code/Images/pexels-lucas-pezeta-3772353.jpg"
+    dayImage: "/Images/pexels-diana-vorobevaattyakova-9305185.jpg",
+    nightImage: "/Images/pexels-lucas-pezeta-3772353.jpg"
   },
   "Dust": {
-    dayImage: "/code/Images/pexels-diana-vorobevaattyakova-9305185.jpg",
-    nightImage: "/code/Images/pexels-lucas-pezeta-3772353.jpg"
+    dayImage: "/Images/pexels-diana-vorobevaattyakova-9305185.jpg",
+    nightImage: "/Images/pexels-lucas-pezeta-3772353.jpg"
   },
   "Sand": {
-    dayImage: "/code/Images/pexels-diana-vorobevaattyakova-9305185.jpg",
-    nightImage: "/code/Images/pexels-lucas-pezeta-3772353.jpg"
+    dayImage: "/Images/pexels-diana-vorobevaattyakova-9305185.jpg",
+    nightImage: "/Images/pexels-lucas-pezeta-3772353.jpg"
   },
   "Fog": {
-    dayImage: "/code/Images/pexels-diana-vorobevaattyakova-9305185.jpg",
-    nightImage: "/code/Images/pexels-lucas-pezeta-3772353.jpg"
+    dayImage: "/Images/pexels-diana-vorobevaattyakova-9305185.jpg",
+    nightImage: "/Images/pexels-lucas-pezeta-3772353.jpg"
   },
   "Haze": {
-    dayImage: "/code/Images/pexels-diana-vorobevaattyakova-9305185.jpg",
-    nightImage: "/code/Images/pexels-lucas-pezeta-3772353.jpg"
+    dayImage: "/Images/pexels-diana-vorobevaattyakova-9305185.jpg",
+    nightImage: "/Images/pexels-lucas-pezeta-3772353.jpg"
   },
   "Smoke": {
-    dayImage: "/code/Images/pexels-diana-vorobevaattyakova-9305185.jpg",
-    nightImage: "/code/Images/pexels-lucas-pezeta-3772353.jpg"
+    dayImage: "/Images/pexels-diana-vorobevaattyakova-9305185.jpg",
+    nightImage: "/Images/pexels-lucas-pezeta-3772353.jpg"
   },
   "Mist": {
-    dayImage: "/code/Images/pexels-diana-vorobevaattyakova-9305185.jpg",
-    nightImage: "/code/Images/pexels-lucas-pezeta-3772353.jpg"
+    dayImage: "/Images/pexels-diana-vorobevaattyakova-9305185.jpg",
+    nightImage: "/Images/pexels-lucas-pezeta-3772353.jpg"
   },
   "Snow": {
-    dayImage: "/code/Images/pexels-pixabay-326015.jpg",
-    nightImage: "/code/Images/pexels-cameron-casey-2007138.jpg"
+    dayImage: "/Images/pexels-pixabay-326015.jpg",
+    nightImage: "/Images/pexels-cameron-casey-2007138.jpg"
   },
   "Rain": {
-    dayImage: "/code/Images/pexels-lumn-1410224.jpg",
-    nightImage: "/code/Images/blurred-nightlights-city.jpg"
+    dayImage: "/Images/pexels-lumn-1410224.jpg",
+    nightImage: "/Images/blurred-nightlights-city.jpg"
   },
   "Drizzle": {
-    dayImage: "/code/Images/pexels-lumn-1410224.jpg",
-    nightImage: "/code/Images/blurred-nightlights-city.jpg"
+    dayImage: "/Images/pexels-lumn-1410224.jpg",
+    nightImage: "/Images/blurred-nightlights-city.jpg"
   },
   "Thunderstorm": {
-    dayImage: "/code/Images/pexels-ralph-w-lambrecht-1446076.jpg",
-    nightImage: "/code/Images/pexels-greg-2418664.jpg"
+    dayImage: "/Images/pexels-ralph-w-lambrecht-1446076.jpg",
+    nightImage: "/Images/pexels-greg-2418664.jpg"
   }
 
 };
