@@ -23,6 +23,18 @@ const formattedTime = (timestamp, timeshift) => {
 }
 
 
+//Convert a Unix timestamp into "hour:min" format
+/* const formattedTime = (timestamp) => {
+    sunStatusDate = new Date(timestamp * 1000);
+    const hours = sunStatusDate.getHours();
+    const minutes = sunStatusDate.getMinutes();
+    const time = `
+    ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+    return (time)
+} */
+
+
+
 //----------------------  Part1  ------------------------------------------
 //Fetch current data for when entering the page
 getWeatherData = (city) => {
