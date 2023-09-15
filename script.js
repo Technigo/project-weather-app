@@ -35,6 +35,7 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
             case 'Clouds':  
                 console.log('cloudy');
                 weatherDescription.innerHTML += `
+              <img src ="design/design2/icons/noun_Cloud_1188486.svg" alt = "cloud"/>
                 <h1>The sky is grey in ${json.name}. </h1>
                 `;   
             break;
@@ -43,14 +44,14 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
                 console.log('rainy')
                 console.log(weather.description)    
                 weatherDescription.innerHTML += `
-                <h1>It's raining in ${json.name}. It's okay to stay inside!  </h1>
+                <img src = "design/design2/icons/noun_Umbrella_2030530.svg" alt = "umbrella"/> <h1>It's raining in ${json.name}. It's okay to stay inside!  </h1>
                 `
             break;
         
             default:
                 console.log('sunny')
                 weatherDescription.innerHTML += `
-                <h1>The sky is crispy and clear in ${json.name}. </h1>
+                <img src ="design/design2/icons/noun_Sunglasses_2055147.svg" alt = "sunglasses"/><h1>The sky is crispy and clear in ${json.name}. </h1>
                 </div>
                 `
             break;

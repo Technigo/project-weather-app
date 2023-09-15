@@ -1,13 +1,14 @@
 # Weather App
 
-Replace this readme with your own information about your project.
+Week 4 of Technigo boot camp. Three of us were working in a team/with pair programming. The assignment was to  build a simple weather app that tells today's weather and temperature and a 5-day forecast using a weather API.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Clear communication, course material, stack overflow and chatGPT was used to approach problems. We set up a feature freeze which we had to change due to some bugs. 
+
+With more time we would do some styling warm/cold, add geolocation and GIFs.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+
