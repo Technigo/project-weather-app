@@ -4,34 +4,21 @@ const cityInput = document.getElementById('city-input');
 const searchButton = document.getElementById('search-button');
 const swipeButton = document.getElementById('swipe-button');
 const forecastTable = document.getElementById('forecast-table')
+const heroImage = document.getElementById('hero-image');
 
 const apiKey = '30497ceff63316bea65ec674ac0ba4c7';
 const cities = ['Stockholm', 'Rome', 'Bordeaux', 'Vienna'];
 let selectedCity = 0;
-
 //Reusable functions:
 //Convert a Unix timestamp into "hour:min" format
-
-const formattedTime = (timestamp, timeshift) => {
-    const offset = new Date().getTimezoneOffset() * 60
-    sunStatusDate = new Date((timestamp + timeshift + offset) * 1000);
-    const hours = sunStatusDate.getHours();
-    const minutes = sunStatusDate.getMinutes();
-    const time = `
-    ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
-    return (time)
-}
-
-
-//Convert a Unix timestamp into "hour:min" format
-/* const formattedTime = (timestamp) => {
+const formattedTime = (timestamp) => {
     sunStatusDate = new Date(timestamp * 1000);
     const hours = sunStatusDate.getHours();
     const minutes = sunStatusDate.getMinutes();
     const time = `
     ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
     return (time)
-} */
+}
 
 
 
@@ -53,7 +40,7 @@ getWeatherData = (city) => {
             <h2> ${currentWeatherJson.name}</h2>
             `;
             currentCity.innerHTML += `
-            <h2>${formattedTime(currentWeatherJson.dt, currentWeatherJson.timezone)}</h2>
+            <p>${formattedTime(currentWeatherJson.dt)}</p>
             `
             currentCity.innerHTML += `
             <p> ${currentWeatherJson.weather[0].description}</p>
@@ -62,8 +49,8 @@ getWeatherData = (city) => {
             <img src="https://openweathermap.org/img/wn/${currentWeatherJson.weather[0].icon}@2x.png">
             `;
             currentCity.innerHTML += `
-            <p> sunrise ${formattedTime(currentWeatherJson.sys.sunrise, currentWeatherJson.timezone)} / sunset ${formattedTime(currentWeatherJson.sys.sunset, currentWeatherJson.timezone)}
-            `
+            <p> sunrise ${formattedTime(currentWeatherJson.sys.sunrise)} / sunset ${formattedTime(currentWeatherJson.sys.sunset)}
+            `;
 
         })
         .catch((error) => {
@@ -127,10 +114,7 @@ weeklyForecast = (city) => {
         });
 }
 
-window.addEventListener('load', () => {
-    getWeatherData(cities[selectedCity]);
-    weeklyForecast(cities[selectedCity]);
-});
+
 
 
 //Event listeners 
@@ -157,7 +141,14 @@ swipeButton.addEventListener('click', () => {
         weeklyForecast(cities[selectedCity]);
     }
     else {//selectedCity >= cities.length
-        selectedCity = -1;
+        selectedCity = 0;
+        getWeatherData(cities[selectedCity]);
+        weeklyForecast(cities[selectedCity]);
     }
-})
-//bug on last city click to first city click
+});
+window.addEventListener('load', () => {
+    getWeatherData(cities[selectedCity]);
+    weeklyForecast(cities[selectedCity]);
+
+});
+
