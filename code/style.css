@@ -1,6 +1,8 @@
 body {
 
+
     padding: 0;
+
     background: #bde8fa;
     margin: 40px;
     border-color: black;
@@ -11,6 +13,11 @@ section {
     width: 400px;
     margin: auto;
 }
+
+
+h1 {
+    color: #164a68;
+    font-size: 24px;
 
 #sun_rise_sunset p {
 
@@ -33,11 +40,15 @@ h1 {
     font-size: 24px;
     text-align: center;
     list-style: none;
+
 }
 
 h2 {
     color: #164a68;
     font-size: 20px;
+
+}
+
 }
 
 #forecast5Days {
@@ -99,5 +110,6 @@ h2 {
         font-size: 18px; /* Smaller font size for subheadings */
     }
 }
+
 
 
