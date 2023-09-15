@@ -73,17 +73,14 @@ const sunsetSunrise = (weatherData) => {
         </div>
     `;
 
-    const today = new Date();
-    //var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    const time = today.getHours() + today.getMinutes()
-    console.log(time);
+    const today = new Date(); // Gets todays date
+    const time = today.getHours() * 100 + today.getMinutes(); // Converts the time to a numeric format like 1234 for 12:34
 
     const sunImage = document.querySelector(".day-image");
     const moonImage = document.querySelector(".night-image");
 
-    const sunsetTime = parseInt(sunsetShort);
-    const sunriseTime = parseInt(sunriseShort);
-    console.log(sunriseTime, sunsetTime);
+    const sunriseTime = parseInt(sunriseShort.replace(":", "")); // Converts sunrise and sunset times to the same numeric format that the overall time is in to enable comparing down below
+    const sunsetTime = parseInt(sunsetShort.replace(":", ""));
 
     // Statement to decide if the sun or moon is showing
     if (time >= sunriseTime && time < sunsetTime) {
@@ -93,15 +90,6 @@ const sunsetSunrise = (weatherData) => {
         sunImage.style.display = "none";
         moonImage.style.display = "flex";
     }
-
-
-    // if (time >= sunsetShort) {
-    //     sunImage.style.display = "flex";
-    //     // moonImage.style.display = "none";
-    // } else {
-    //     moonImage.style.display = "flex";
-    //     // sunImage.style.display = "none";
-    // }
 }
 
 // Function to fetch weather with timestamps
@@ -178,8 +166,4 @@ const getDayOfWeek = (timestamp) => {
     const dayOfWeek = daysOfWeek[date.getDay()];
     return dayOfWeek;
 };
-
-const renderSunImage = () => {
-    
-}
 
