@@ -38,16 +38,15 @@ h3 {
 p {
     font-size: 1em;
     padding: 5px 0;
+    font-weight: 400;
 }
 
 .todays-forecast {
+    display: flex;
+    justify-content: flex-start;
+    max-width: 90%;
 }
 
-.sthweather {
-}
-
-.message {
-}
 
 .message-img {
     display: flex;
@@ -65,12 +64,18 @@ p {
     width: 150px;
 }
 
-.message-text {
-}
 
 .forecast {
     display: grid;
     gap: 20px;
+}
+
+.todays-forecast,
+.message,
+.forecast {
+    padding: 0 5%; /* Add padding on both sides */
+    max-width: 90%; /* Set a maximum width of 90% */
+    margin: 0 auto; /* Center the sections horizontally if needed */
 }
 
 /****** TALBLET ******/
@@ -88,6 +93,6 @@ p {
 
     /*Desktop styles here*/
     .forecast {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(5, 1fr);
     }
 }
