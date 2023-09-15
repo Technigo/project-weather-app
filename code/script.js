@@ -67,11 +67,11 @@ const updateHTML = (json) => {
 
     //display icon for either clouds, sunglasses or rain
     if (weatherStatus === "Clouds") {
-        document.getElementById("weatherIcon").innerHTML = (`<img src = "/design/design2/icons/noun_Cloud_1188486.svg" alt = "clouds icon" width = "100" height = "100" >`)
+        document.getElementById("weatherIcon").innerHTML = (`<img src="design/design2/icons/noun_Cloud_1188486.svg" alt = "clouds icon" width = "100" height = "100" >`)
     } else if (weatherStatus === "Rain") {
-        document.getElementById("weatherIcon").innerHTML = (`<img src = "/design/design2/icons/noun_Umbrella_2030530.svg" alt = "umbrella icon"   width = "100" height = "100" >`)
+        document.getElementById("weatherIcon").innerHTML = (`<img src="design/design2/icons/noun_Umbrella_2030530.svg" alt = "umbrella icon"   width = "100" height = "100" >`)
     } else if (weatherStatus === "Clear") {
-        document.getElementById("weatherIcon").innerHTML = (`<img src = "/design/design2/icons/noun_Sunglasses_2055147.svg" alt = "sunglasses icon" width = "100" height = "100" >`)
+        document.getElementById("weatherIcon").innerHTML = (`<img src="design/design2/icons/noun_Sunglasses_2055147.svg" alt = "sunglasses icon" width = "100" height = "100" >`)
     }
 }
 
