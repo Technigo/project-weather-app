@@ -6,6 +6,12 @@ const sunRiseSet = document.getElementById('sunRiseSet')
 const cityTimeDesc = document.getElementById('cityTimeDesc')
 const weatherForecast = document.getElementById('weatherForecast')
 
+const searchMenuBtn = document.getElementById('searchMenuBtn');
+const closeSearchMenu = document.getElementById('closeSearchMenu');
+const searchBtn = document.getElementById('searchBtn');
+const inputField = document.getElementById('inputField');
+//const switchFavoriteCity = document.getElementById('switchBtn');
+
 //Create a search string
 const appID = "d8d8bd8fc9a245def8c2bd16cb32ba83"
 const units = "metric"
@@ -31,7 +37,7 @@ fetch(searchString("weather", "Stockholm,Sweden"))
         currentTemperature.innerHTML = `<p><div class ="tempNumber">${temperature}</div> <div class="degrees">°C</div></p>`
         cityTimeDesc.innerHTML += `<h1 class="cityFont">${cityName}</h1>`
         cityTimeDesc.innerHTML += `<p>${currentTime()}</p>`
-        cityTimeDesc.innerHTML +=`<p>${weatherDescription}</p>`
+        cityTimeDesc.innerHTML +=`<p class="weatherDescription">${weatherDescription}</p>`
 
         sunRiseSet.innerHTML +=`<p>sunrise ${sunriseTime}</p>`
         sunRiseSet.innerHTML +=`<p>sunset ${sunsetTime}</p>`
@@ -101,3 +107,63 @@ const createIcon= (iconID) => {
 
     return base_URL+icon+end_URL
 }
+
+//Capitalize the first letter
+// const capitalize = (text) => {
+//     let words = text.split(" ")
+
+//     let index = 0
+
+//     words.forEach((word) => {
+//         const firstLetter = word.charAt(0).toUpperCase()
+//         const restOfWord = word.slice(1).toLowerCase()
+
+//         words[index] = firstLetter + restOfWord
+//         index ++
+//     })
+
+//     let modifiedText = words.join(" ")
+//     console.log(modifiedText)
+// }
+
+const toggleSearchField = () => {
+    //This just controls the toggling between opening and closing the search field
+    const searchToggler = document.getElementById('search-toggler');
+    searchToggler.classList.toggle('hidden');
+    closeSearchMenu.classList.toggle('hidden');
+    searchMenuBtn.classList.toggle('hidden');
+};
+
+const searchFunction = () => {
+    //This is for storing the user input from the search and pushing it into our fetching weather function later on
+    
+    let searchedCity = inputField.value
+
+        //Use the city searched and inject into ""fetchWeather""" function:
+        //weather.fetchWeather(searchedCity); //Skriv om till den vi använder
+        todaysWeatherFeature(searchedCity);
+        weatherForecastData(searchedCity);
+
+        //Clears field & hides the input field:
+        inputField.value = "";
+
+        //Reset the weather forecast:
+        forecastWeekdays.innerHTML = "";
+        forecastIcon.innerHTML = "";
+        forecastWind.innerHTML = "";
+        forecastTemp.innerHTML = "";
+};
+
+//EVENT LISTENERS
+//Eventlistener to toggle search field:
+searchMenuBtn.addEventListener('click', toggleSearchField)
+closeSearchMenu.addEventListener('click', toggleSearchField)
+//Eventlistener to search through enter key also
+searchBtn.addEventListener('click', searchFunction)
+//Eventlistener to search through enter key also
+inputField.addEventListener('keyup', function (event) {
+    if (event.key == "Enter") {
+        searchFunction();
+      }
+    }
+);
