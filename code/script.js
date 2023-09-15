@@ -84,7 +84,7 @@ const fetchWeather = () => {
 const insertWeatherdata = () => {
     // weatherDescription.innerHTML = `${weatherObject.weather[0].description}`;
     weatherDescription.innerHTML = weatherObject.weather[0].description;
-    mainTemperature.innerHTML = weatherObject.main.temp;
+    mainTemperature.innerHTML = (weatherObject.main.temp + "°C"); //Degrees Celsius
     sunrise.innerHTML = formatTimestamp(weatherObject.sys.sunrise); // NB! formatTimestamp is a function
     sunset.innerHTML = formatTimestamp(weatherObject.sys.sunset); // NB! formatTimestamp is a function  
     weatherIcon.setAttribute("src", pickWeathersymbol);
