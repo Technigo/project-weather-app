@@ -1,9 +1,17 @@
 
 
 body {
-    background-color: rgb(218, 216, 211);
+    display: flex; 
+    justify-content: center;
+    background-color: white;
     font-family: 'Roboto', sans-serif;
     margin: 0%;
+}
+
+.wrapper {
+    width: 390px; 
+    height: 850px; 
+    background-color: rgb(218, 216, 211);
 }
 
 header {
@@ -96,4 +104,33 @@ height: 70px;
 
 .forecast-row img {
     height: 50px; 
+}
+
+
+
+@media(min-width: 668px) and (max-width: 1024px) {
+
+body {
+    display: flex; 
+    justify-content: center;
+}
+.wrapper {
+    width: 390px;
+    margin: 100px 0 100px 0;
+    box-shadow: 10px 10px 5px lightgrey
+}
+
+}
+
+@media (min-width: 1025px){
+
+body {
+    display: flex; 
+    justify-content: center;
+}
+.wrapper {
+     width: 390px;
+     margin: 100px 0px 100px 0px; 
+     box-shadow: 10px 10px 5px lightgrey;
+    }
 }
