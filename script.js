@@ -1,3 +1,4 @@
+
 const apiKey = '8fa7c461aec946fde31f330992fce9d6';
 const apiUrl = 'https://api.openweathermap.org/data/2.5';
 const day = document.getElementById("forecast");
@@ -117,9 +118,6 @@ fetchWeatherDataByCoordinates()
 
 function fetchWeatherData() {
   fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=8fa7c461aec946fde31f330992fce9d6')
-    //The geolocation isn´t working for he forecast,tried to do the same logic as above without any result
-    //const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&APPID=8fa7c461aec946fde31f330992fce9d6`;
-  //fetch(apiUrl)
     .then((response) => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -127,34 +125,38 @@ function fetchWeatherData() {
       return response.json();
     })
     .then((json) => {
-      // Filter and group forecast data by date
+      // Filter and group forecast data by date for the next five days
+      const today = new Date();
+      const fiveDaysFromNow = new Date(today);
+      fiveDaysFromNow.setDate(fiveDaysFromNow.getDate() + 5);
       const groupedForecast = json.list.reduce((result, item) => {
-        const date = item.dt_txt.split(' ')[0];
-        if (!result[date]) {
-          result[date] = [];
+        const date = new Date(item.dt * 1000);
+        if (date <= fiveDaysFromNow) {
+          const dateString = date.toISOString().split('T')[0];
+          if (!result[dateString]) {
+            result[dateString] = [];
+          }
+          result[dateString].push(item);
         }
-        result[date].push(item);
         return result;
       }, {});
 
-      // Calculate and display morning (9 AM) and evening (9 PM) temperatures for each day
+      // Display the forecast for each day
       for (const date in groupedForecast) {
         if (groupedForecast.hasOwnProperty(date)) {
           const forecastItems = groupedForecast[date];
           const morningItem = forecastItems.find((item) => item.dt_txt.includes("09:00"));
           const eveningItem = forecastItems.find((item) => item.dt_txt.includes("21:00"));
 
-
           if (morningItem && eveningItem) {
             const morningTemperature = morningItem.main.temp.toFixed(1); // Temp at 9 am
             const eveningTemperature = eveningItem.main.temp.toFixed(1); // Temp at 9 pm
             const morningFeelsLike = morningItem.main.feels_like.toFixed(1); // Feels like at 9 am
-            const eveningFeelsLike = eveningItem.main.feels_like.toFixed(1); //Feels like at 9 pm
+            const eveningFeelsLike = eveningItem.main.feels_like.toFixed(1); // Feels like at 9 pm
             const morningDescription = morningItem.weather[0].description; // Weather description at 9 am
             const eveningDescription = eveningItem.weather[0].description; // Weather description at 9 pm
-            const morningHumidity = morningItem.main.humidity; // Humidity at 9am
+            const morningHumidity = morningItem.main.humidity; // Humidity at 9 am
             const eveningHumidity = eveningItem.main.humidity; // Humidity at 9 pm
-
 
             // Get the day of the week for the date
             const weekday = new Date(date).getDay();
@@ -183,3 +185,4 @@ function fetchWeatherData() {
 }
 
 fetchWeatherData();
+
