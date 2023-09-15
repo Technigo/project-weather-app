@@ -4,15 +4,15 @@ const typeOfWeather = document.getElementById("typeOfWeather");
 const forecastSection = document.getElementById("fiveDayPrognosis");
 const sunUpDown = document.getElementById("sunUpDown");
 const locationSpecifics = document.getElementById("locationSpecifics");
-//const changeCity = document.getElementById("changeBtn"); //Just testing the button
+// const changeCityBtn = document.getElementById("changeBtn"); //Just testing the button
 
-const cityToUrl = "Varberg,Sweden";
+let cityToUrl = "Varberg,Sweden";
 const BASE_URL = "https://api.openweathermap.org/data/2.5/";
 const API_KEY = "6e3a3db02f585218db04cdc935f5290c";
 const weatherURL = `${BASE_URL}weather?q=${cityToUrl}&units=metric&APPID=${API_KEY}`;
 const forecastURL = `${BASE_URL}forecast?q=${cityToUrl}&units=metric&APPID=${API_KEY}`;
 
-const fetchApi = () => {
+const getWeather = () => {
     fetch(weatherURL)
         .then((response) => {
             return response.json()
@@ -26,10 +26,10 @@ const fetchApi = () => {
         })
         .catch((error) => {
             // Shows an error message if fetch doesn't work
-            console.error('Something went wrong', error);
-        });  
+            console.error("Something went wrong", error);
+        });
 };
-fetchApi();
+getWeather();
 
 const showMainWeatherInfo = (weatherData) => {
     // Declaring a variable for temperature
@@ -61,10 +61,10 @@ const sunsetSunrise = (weatherData) => {
     // Converting the UNIX timestamp into a human-readable time.
     const sunrise = new Date(weatherData.sys.sunrise * 1000);
     //Set a short timestamp to only show hour and minute.
-    const sunriseShort = sunrise.toLocaleTimeString(["en-GB"], { timeStyle: `short`}); 
+    const sunriseShort = sunrise.toLocaleTimeString(["en-GB"], { timeStyle: `short` });
     const sunset = new Date(weatherData.sys.sunset * 1000);
-    
-    const sunsetShort = sunset.toLocaleTimeString(["en-GB"], { timeStyle: `short`});
+
+    const sunsetShort = sunset.toLocaleTimeString(["en-GB"], { timeStyle: `short` });
 
     locationSpecifics.innerHTML += `
     <div class="sunUpDown">
@@ -89,26 +89,33 @@ const sunsetSunrise = (weatherData) => {
     } else {
         sunImage.style.display = "none";
         moonImage.style.display = "flex";
+        // Makes the background color change when it's night time
+        insertStyle(
+            `.location-specifics:before{
+                background: rgb(34,35,80);
+                background: linear-gradient(180deg, rgba(34,35,80,1) 0%, rgba(98,100,162,1) 100%);
+            }`
+        )
     }
 }
 
 // Function to fetch weather with timestamps
-const weatherForecast = () => {
+const getForecast = () => {
     fetch(forecastURL)
-    .then((response) => {
-        return response.json();
-    })
-    .then((json) => {
-        const forecastData = json; 
-        const dailyTemperatures = saveData(forecastData); // Save the relevant data
+        .then((response) => {
+            return response.json();
+        })
+        .then((json) => {
+            const forecastData = json;
+            const dailyTemperatures = saveData(forecastData); // Save the relevant data
             createTable(dailyTemperatures); // Create and display the HTML table
-    })
-    .catch((error) => {
-        // Shows an error message if fetch doesn't work
-        console.error('Something went wrong', error);
-    })
+        })
+        .catch((error) => {
+            // Shows an error message if fetch doesn't work
+            console.error("Something went wrong", error);
+        })
 }
-weatherForecast();
+getForecast();
 
 // Function to extract and save the relevant data, takes forecastData as a parameter so that we get the data from the fetch and can use it here
 const saveData = (forecastData) => {
@@ -150,10 +157,10 @@ const createTable = (dailyTemperatures) => {
 
     // Loop through dailyTemperatures and generate HTML
     for (const date in dailyTemperatures) { // for each date in the objects dailyTemperatures
-            const weather = dailyTemperatures[date]; 
-            const iconUrl = `https://openweathermap.org/img/wn/${weather.icon}.png`; // Construct the icon URL
-            forecastSection.innerHTML += `<td class="day-style">${weather.day}</td><td><img src="${iconUrl}" alt="Weather Icon"></td><td>${weather.maxTemp}° / ${weather.minTemp} °C</td>`;
-        }
+        const weather = dailyTemperatures[date];
+        const iconUrl = `https://openweathermap.org/img/wn/${weather.icon}.png`; // Construct the icon URL
+        forecastSection.innerHTML += `<td class="day-style">${weather.day}</td><td><img src="${iconUrl}" alt="Weather Icon"></td><td>${weather.maxTemp}° / ${weather.minTemp} °C</td>`;
+    }
 };
 
 // This function takes a parameter "timestamp", which we use in the getMinMax function to set the day and append it to the forecastSection.
@@ -167,3 +174,9 @@ const getDayOfWeek = (timestamp) => {
     return dayOfWeek;
 };
 
+// Utility function to insert styling easier
+function insertStyle(code) {
+    var style = document.createElement('style');
+    style.innerHTML = code;
+    document.getElementsByTagName("head")[0].appendChild(style);
+};
