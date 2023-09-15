@@ -81,15 +81,21 @@ function fetchWeatherDataByCoordinates(latitude, longitude) {
       function setWeatherTheme(weatherDescription) {
         const body = document.body; // Get the <body> element
 
-        if (weatherDescription.includes("cold")) {
-          body.style.backgroundColor = '#c0c0c0'; // Gray background for cold weather
-          body.style.color = '#000'; // Black text color
+        if (weatherDescription.includes("rain") || weatherDescription.includes("drizzle")) {
+          body.style.backgroundColor = '#A1B1DA'; 
+          body.style.color = '#283D74'; 
         } else if (weatherDescription.includes("clear sky")) {
-          body.style.backgroundColor = '#fff'; // White background for sunny weather
-          body.style.color = '#ff9900'; // Orange text color
+          body.style.backgroundColor = '#FFF493'; 
+          body.style.color = '#EA9619';
         } else if (weatherDescription.includes("cloud")) {
-          body.style.backgroundColor = '#e0e0e0'; // Light gray background for cloudy weather
-          body.style.color = '#333'; // Dark gray text color
+          body.style.backgroundColor = '#BDDBFF'; 
+          body.style.color = '#006CEE'; 
+        } else if (weatherDescription.includes("snow")) { 
+          body.style.backgroundColor = '#A1B1DA'; 
+          body.style.color = '#283D74'; 
+        } else if (weatherDescription.includes("thunderstorm")) { 
+          body.style.backgroundColor = '#38587D'; 
+          body.style.color = '#CBCBCB'; 
         } else {
           // Handle other weather conditions or set a default theme
           body.style.backgroundColor = '#fff'; // Default background color
