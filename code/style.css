@@ -24,13 +24,13 @@ section {
 
 #clock {
     text-align: center;
-    margin-right: 18em;
+    margin-right: 17em;
     color: #164a68;
     font-size: 24px;
     font-family: 'Montserrat';
     line-height: 1;
 }
-   
+
 
 #stockholmDates {
     text-align: center;
@@ -39,10 +39,8 @@ section {
     font-size: 24px;
     font-family: 'Montserrat';
     line-height: 1;
-    
+
 }
-
-
 
 h1 {
     color: #164a68;
@@ -68,6 +66,7 @@ h2 {
 }
 
 @media (max-width: 768px) {
+
     /* Adjust styles for tablets */
     body {
         /* Tablet body styles */
@@ -81,12 +80,15 @@ h2 {
         /* Tablet section styles */
         width: 100%;
         margin: auto;
+        margin-left: 4em;
     }
 
     h1 {
         /* Tablet h1 styles */
         color: #164a68;
         font-size: 24px;
+        margin-bottom: 8em;
+        line-height: 2;
     }
 
     h2 {
@@ -94,29 +96,55 @@ h2 {
         color: #164a68;
         font-size: 20px;
     }
+
+    #stockholmDates {
+        text-align: right;
+        margin-left: 8em;
+    }
+
+    #clock {
+        text-align: right;
+        margin-left: 8em;
+    }
 }
 
 @media (max-width: 480px) {
+
     /* Adjust styles for mobile devices */
     body {
         /* Mobile body styles */
-        margin: 20px; /* Smaller margin for smaller screens */
+        margin: 20px;
+        /* Smaller margin for smaller screens */
     }
 
     section {
         /* Mobile section styles */
-        width: 100%; /* Full width on small screens */
-        margin: auto;
+        width: 100%;
+        /* Full width on small screens */
+        margin-left: 1em;
     }
 
     h1 {
         /* Mobile h1 styles */
-        font-size: 20px; /* Smaller font size for headings */
+        font-size: 20px;
+        margin-bottom: 8em;
+        line-height: 2;
+        /* Smaller font size for headings */
     }
 
     h2 {
         /* Mobile h2 styles */
-        font-size: 18px; /* Smaller font size for subheadings */
+        font-size: 18px;
+        /* Smaller font size for subheadings */
+    }
+
+    #stockholmDates {
+        text-align: right;
+        margin-left: 8em;
+    }
+
+    #clock {
+        text-align: right;
+        margin-left: 8em;
     }
 }
-
