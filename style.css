@@ -1,0 +1,21 @@
+body {
+  display: inline-block;
+}
+
+.zurichweather {
+  width: 768px;
+  flex-wrap: wrap;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  justify-content: center;
+  justify-content: space-between;
+}
+
+.day {
+  background-image: "./pictures/day.jpg";
+  background-size: 100%;
+}
+
+.night {
+  background-image: "./pictures/night.jpg";
+  background-size: 100%;
+}
