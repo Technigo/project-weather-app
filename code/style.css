@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@500&family=Montserrat:wght@500&family=Raleway:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@500&family=Montserrat:wght@500&family=Nunito&family=Raleway:wght@100&display=swap');
+
+
+body::before {
+    font-family: 'Montserrat', sans-serif;
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    z-index: 1;
+    pointer-events: none;
+    animation: overlayAnimation 15s infinite alternate;
+    ;
+}
+
+@keyframes overlayAnimation {
+    0% {
+        background-color: rgba(153, 172, 176, 0.3);
+        /* Start with your initial color and transparency */
+    }
+
+    50% {
+        background-color: rgba(48, 99, 110, 0.3);
+    }
+
+    100% {
+        background-color: rgba(162, 131, 183, 0.3);
+        /* End with your target color and transparency */
+    }
+}
+
+body,
+html {
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 0px;
+}
+
+h1 {
+    font-size: 70px;
+    margin-bottom: 5px;
+
+
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 5px;
+
+}
+
+.current-city {
+    display: inline;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.current-city-weather {
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 0;
+
+}
+
+.sunset-sunrise {
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    margin-bottom: 10px;
+    padding: 0;
+}
+
+.swipe-button {
+    font-family: 'Nunito', sans-serif;
+    background-color: rgb(68, 94, 100);
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    float: right;
+    font-size: 40px;
+    border-radius: 50%;
+    position: absolute;
+    right: 20px;
+    top: 70%;
+    transform: translateY(-30%);
+    z-index: 10;
+    width: 100px;
+    height: 100px;
+    animation: Animation 15s infinite alternate;
+    ;
+}
+
+@keyframes Animation {
+    0% {
+        background-color: rgba(153, 172, 176);
+        /* Start with your initial color and transparency */
+    }
+
+    50% {
+        background-color: rgba(48, 99, 110);
+    }
+
+    100% {
+        background-color: rgba(162, 131, 183);
+        /* End with your target color and transparency */
+    }
+
+}
+
+/* The hero image */
+.hero-image {
+    /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url("https://images.unsplash.com/photo-1620408696006-d1315bf240f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2773&q=80");
+
+    /* Set a specific height */
+    height: 100%;
+
+    /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    clip-path: ellipse(70% 80% at 50% 5%);
+    color: white;
+
+}
+
+/* Place text in the middle of the image */
+.hero-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-70%, -80%);
+    margin: 0;
+    padding: 0;
+
+}
+
+
+
+.search-bar {
+    margin: 0;
+    padding: 0;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 10%;
+    left: 5%;
+    position: absolute;
+    transform: translate(0%, -100%);
+    border: none;
+    transition-duration: 0.2s;
+
+}
+
+.textbox {
+    width: 0px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    line-height: 40px;
+    font-size: 25px;
+    height: 45px;
+    background-color: rgb(254, 254, 254, 0.3);
+    outline: none;
+    height: 100%;
+    float: left;
+    transition-duration: 0.05s;
+}
+
+.search-btn {
+    filter: invert(100%);
+    background-color: transparent;
+    padding: 0px 0px 0px 0px;
+    margin: 0;
+    height: 45px;
+    width: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    text-decoration: none;
+    height: 100%;
+    transition-duration: 0.2s;
+    border: none;
+
+}
+
+.close-button {
+    filter: invert(100%);
+    background-color: transparent;
+    height: 45px;
+    width: 45px;
+    border: none;
+}
+
+.search-btn p {
+    margin: 10px;
+    color: white;
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: 800;
+}
+
+.search-bar:hover>.textbox {
+    padding: 0px 10px 0px 10px;
+    width: 100%;
+    border: 1px white solid;
+    transition-duration: 0.2s;
+    color: white;
+}
+
+.search-bar:hover>.search-btn {
+    transition-duration: 0.2s;
+    color: white;
+}
+
+.search-btn:hover {
+    transition-duration: 0.2s;
+    color: white;
+}
+
+.search-btn:hover>p {
+    color: white;
+    transition-duration: 0.2s;
+}
+
+.weather {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#forecast-table td {
+    padding: 10px;
+    margin: 5px;
+}
