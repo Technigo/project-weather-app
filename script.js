@@ -14,6 +14,7 @@ const switchBtn = document.getElementById("switch");
 const loader = document.getElementById("loader");
 const container = document.querySelector(".container");
 const weatherForecastDiv = document.getElementById("weatherForecastDiv");
+const currentTimeHeader = document.getElementById("currentTimeHeader");
 
 // define a variable here....
 let city = "Stockholm";
@@ -48,6 +49,7 @@ const todayWeather = (city) => {
         weatherForecast("Stockholm");
       } else {
         cityName.innerText = `${city}`;
+
         const weather = data.weather[0].description;
         // weather Icon
         const weatherIcon = data.weather[0].icon;
@@ -72,8 +74,8 @@ const todayWeather = (city) => {
         // print out the result
         console.log(sunriseTime);
         console.log(sunsetTime);
-        sunriseText.innerText = `${sunriseTime}`;
-        sunsetText.innerText = `${sunsetTime}`;
+        sunriseText.innerHTML = `<p>sunrise ${sunriseTime}</p>`;
+        sunsetText.innerHTML = `<p>sunset ${sunsetTime}</p>`;
         // background change based on the weather
         const weatherMain = data.weather[0].main;
         if (weatherMain === "Clouds") {
@@ -98,6 +100,19 @@ const todayWeather = (city) => {
       console.log("caught error", error);
     });
 };
+
+// Show current time with leading zeros for hours and minutes
+const currentHour = new Date().getHours();
+const currentMinutes = new Date().getMinutes();
+// Function to add leading zeros
+const addLeadingZero = (number) =>
+  number < 10 ? "0" + number : number.toString();
+
+const currentTime =
+  addLeadingZero(currentHour) + ":" + addLeadingZero(currentMinutes);
+
+currentTimeHeader.innerText = `Time: ${currentTime}`;
+console.log(currentTime);
 
 // create a search function for storing the user input from the search bar
 const searchInputCity = () => {
