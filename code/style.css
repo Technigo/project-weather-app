@@ -5,7 +5,94 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #a2def6;
+    color: #1b4961;
+    font-family: 'Montserrat';
+    font-size: 20px;
+    display: flex;
+}
+
+#main-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+}
+
+#daily-forecast {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 30px;
+}
+
+#weather-symbol {
+    padding: 10px 50px;
+}
+
+#daily-advice {
+    padding: 15px 30px;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+#weekly-forecast {
+    padding: 10px 30px;
+}
+
+.weekday {
+    border-bottom: dotted #184969 2px;
+    padding: 3px;
+}
+
+#city-picker {
+    padding: 10px 30px;
+}
+
+#city-input {
+    width: 180px;
+    height: 28px;
+    font-family: 'Montserrat';
+    font-size: 15px;
+    border-radius: 3px;
+    border: 1px solid #184969;
+    padding: 3px;
+}
+
+#submit-button {
+    width: 65px;
+    height: 28px;
+    font-family: 'Montserrat';
+    font-size: 15px;
+    background-color: #184969;
+    color: white;
+    border-radius: 3px;
+    border: 2px solid #184969;
+}
+
+footer {
+    padding: 10px 30px;
+    margin-top: 20px;
+}
 
 #test {
     border-bottom: 3px dotted red;
+    color: red;
+}
+
+@media screen and (min-width: 668px) and (max-width: 1024px) {
+    body {
+        justify-content: center;
+    }
+    #main-container {
+        max-width: 70%;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    body {
+        justify-content: center;
+    }
+    #main-container {
+        max-width: 50%;
+    }
 }

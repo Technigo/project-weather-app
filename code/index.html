@@ -4,10 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Olga Lepistö, Mikael Öling, Frauke Schmidt">
-    <link rel="icon" type="image/png" sizes="32x32" href="./desing/favicon-32x32.png" />
-    <!-- we need a favicon here -->
+    <link rel="icon" type="image/png" sizes="32x32" href="weatherfavi.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link 
+        href="https://fonts.googleapis.com/css2?family=Dosis&family=Montserrat:wght@300;400;700&display=swap" 
+        rel="stylesheet">
+    <link 
+        href="https://fonts.googleapis.com/css2?family=Dosis&family=Montserrat:wght@300;700&display=swap" 
+        rel="stylesheet">
     <title>Weather app - trial project</title>
 </head>
 
@@ -33,28 +38,28 @@
         </section>
 
         <section id="daily-advice">
-            <p id="daily-tipps">daily weathertipp</p>
+            <p id="daily-tips">daily weathertip</p>
         </section>
 
         <section id="weekly-forecast">
             <div>
-                <div id="day-one">
+                <div id="day-one" class="weekday">
                     <span>day1 </span>
                     <span>temperature1</span>
                 </div>
-                <div id="day-two">
+                <div id="day-two" class="weekday">
                     <span>day2</span>
                     <span>temperature2</span>
                 </div>
-                <div id="day-three">
+                <div id="day-three" class="weekday">
                     <span>day3</span>
                     <span>temperature3</span>
                 </div>
-                <div id="day-four">
+                <div id="day-four" class="weekday">
                     <span>day4</span>
                     <span>temperature4</span>
                 </div>
-                <div id="day-five">
+                <div id="day-five" class="weekday">
                     <span>day5</span>
                     <span>temperature5</span>
                 </div>
@@ -63,8 +68,8 @@
 
         <section id="city-picker">
             <form action="#">
-                <input type="text" placeholder="Type a city...">
-                <input type="submit" value="Search">
+                <input type="text" id="city-input" placeholder="Type a city...">
+                <input type="submit" id="submit-button" value="Search">
             </form>
         </section>
 
