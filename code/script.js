@@ -105,7 +105,7 @@ weatherDescriptionElement.textContent = weatherDescription; // Update the weathe
 };
 
 // Call the fetchCurrentWeather function to initiate the fetch request
-fetchCurrentWeather();
+
 
 
 
@@ -194,8 +194,8 @@ const fetchFiveDayWeather = () => {
 };
 
 // Call the function to initiate the fetch request
+fetchCurrentWeather();
 fetchFiveDayWeather();
-
 
 
 
