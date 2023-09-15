@@ -7,7 +7,7 @@ const messageContainer = document.getElementById('message-text');
 
 
 function fetchWeatherDataByCoordinates(latitude, longitude) {
-  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
+  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${apiKey}`;
 
   fetch(apiUrl)
     .then((response) => {
@@ -81,21 +81,15 @@ function fetchWeatherDataByCoordinates(latitude, longitude) {
       function setWeatherTheme(weatherDescription) {
         const body = document.body; // Get the <body> element
 
-        if (weatherDescription.includes("rain") || weatherDescription.includes("drizzle")) {
-          body.style.backgroundColor = '#A1B1DA'; 
-          body.style.color = '#283D74'; 
+        if (weatherDescription.includes("cold")) {
+          body.style.backgroundColor = '#c0c0c0'; // Gray background for cold weather
+          body.style.color = '#000'; // Black text color
         } else if (weatherDescription.includes("clear sky")) {
-          body.style.backgroundColor = '#FFF493'; 
-          body.style.color = '#EA9619';
+          body.style.backgroundColor = '#fff'; // White background for sunny weather
+          body.style.color = '#ff9900'; // Orange text color
         } else if (weatherDescription.includes("cloud")) {
-          body.style.backgroundColor = '#BDDBFF'; 
-          body.style.color = '#006CEE'; 
-        } else if (weatherDescription.includes("snow")) { 
-          body.style.backgroundColor = '#A1B1DA'; 
-          body.style.color = '#283D74'; 
-        } else if (weatherDescription.includes("thunderstorm")) { 
-          body.style.backgroundColor = '#38587D'; 
-          body.style.color = '#CBCBCB'; 
+          body.style.backgroundColor = '#e0e0e0'; // Light gray background for cloudy weather
+          body.style.color = '#333'; // Dark gray text color
         } else {
           // Handle other weather conditions or set a default theme
           body.style.backgroundColor = '#fff'; // Default background color
@@ -118,28 +112,8 @@ function fetchWeatherDataByCoordinates(latitude, longitude) {
     });
 }
 
+fetchWeatherDataByCoordinates()
 
-function fetchWeatherDataBasedOnLocation() {
-  if ('geolocation' in navigator) {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const latitude = position.coords.latitude;
-        const longitude = position.coords.longitude;
-        fetchWeatherDataByCoordinates(latitude, longitude);
-      },
-      (error) => {
-        console.error('Error getting geolocation:', error);
-        container.innerHTML = '<p>Error getting geolocation data</p>';
-      }
-    );
-  } else {
-    console.error('Geolocation is not supported by your browser');
-    container.innerHTML = '<p>Geolocation is not supported</p>';
-  }
-}
-
-// Call the function to fetch weather data based on user's location
-fetchWeatherDataBasedOnLocation();
 
 function fetchWeatherData() {
   fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=8fa7c461aec946fde31f330992fce9d6')
