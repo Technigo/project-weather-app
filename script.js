@@ -4,14 +4,24 @@ const temperature = document.getElementById("temperature");
 const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
 const forecast = document.querySelector(".forecast");
+const search = document.getElementById("search");
+
+const searchSubmit = search.addEventListener("change", (e) => searching(e.target.value));
+
 
 const API_KEY = "64856650e6321cbb411769554b46b8ad";
 // Reserve API KEY = "421db630ea3e3aeb0cb64db6a500c27b"
 
 let cityName = "Orebro";
-const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${API_KEY}`;
+let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${API_KEY}`;
+let API_CALL = `${url}`;
+const searching = (city) => {
+  cityName = city;
+  url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${API_KEY}`;
+  API_CALL = `${url}`; 
+  apiData();
+}
 
-const API_CALL = `${url}`;
 
 const apiData = () => {
   fetch(API_CALL)
