@@ -7,20 +7,42 @@
     <link rel="stylesheet" href="style.css" />
     <!--add links to any fonts here-->
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="rain.css">
     <title>Weather APP</title>
 </head>
 
-<body>
-    <h1>Weather app </h1>
+<body class="back-row-toggle splat-toggle">
+    <div class="rain front-row"></div>
+    <div class="rain back-row"></div>
+    <div class="toggles">
+        <div class="splat-toggle toggle active">SPLAT</div>
+        <div class="back-row-toggle toggle active">BACK<br>ROW</div>
+        <div class="single-toggle toggle">SINGLE</div>
+    </div>
+    <div id="clock"></div>
+    <div id="stockholmDates"></div> <!-- Add this div for Stockholm dates -->
+    <h1 id="cityName">Weather app </h1>
     <section>
+        <div id="weatherIcon">
+            
+        </div>
         <div id="sun_rise_sunset">
             Loading...
         </div>
-        <h1 id="cityName">h2 - City Name</h1>
-        <h2 id="cityTemp">h2- Temperature</h2>
-        <h2 id="weatherDescription">h2 - Weather Description</h2>
-        
     </section>
+    <section>
+        <div id="forecast5Days">
+        </div>
+    </section>
+
+    <audio id="rainSound" autoplay loop>
+        <source src="\design\design1\assets\Adele-Set-Fire-To-The-Rain.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      </body>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="rain.js"></script>
     <script src="script.js"></script>
 </body>
 
