@@ -11,8 +11,9 @@ const cities = ['Stockholm', 'Rome', 'Bordeaux', 'Vienna'];
 let selectedCity = 0;
 //Reusable functions:
 //Convert a Unix timestamp into "hour:min" format
-const formattedTime = (timestamp) => {
-    sunStatusDate = new Date(timestamp * 1000);
+const formattedTime = (timestamp, timeshift) => {
+    const offset = new Date().getTimezoneOffset() * 60;
+    sunStatusDate = new Date((timestamp + offset + timeshift) * 1000);
     const hours = sunStatusDate.getHours();
     const minutes = sunStatusDate.getMinutes();
     const time = `
@@ -40,7 +41,7 @@ getWeatherData = (city) => {
             <h2> ${currentWeatherJson.name}</h2>
             `;
             currentCity.innerHTML += `
-            <p>${formattedTime(currentWeatherJson.dt)}</p>
+            <p>${formattedTime(currentWeatherJson.dt, currentWeatherJson.timezone)}</p>
             `
             currentCity.innerHTML += `
             <p> ${currentWeatherJson.weather[0].description}</p>
@@ -49,7 +50,7 @@ getWeatherData = (city) => {
             <img src="https://openweathermap.org/img/wn/${currentWeatherJson.weather[0].icon}@2x.png">
             `;
             currentCity.innerHTML += `
-            <p> sunrise ${formattedTime(currentWeatherJson.sys.sunrise)} / sunset ${formattedTime(currentWeatherJson.sys.sunset)}
+            <p> sunrise ${formattedTime(currentWeatherJson.sys.sunrise, currentWeatherJson.timezone)} / sunset ${formattedTime(currentWeatherJson.sys.sunset, currentWeatherJson.timezone)}
             `;
 
         })
