@@ -6,7 +6,7 @@ body {
     padding: 0;
     box-sizing: border-box;
     height: 100%;
-    background-color: white;
+    background-color: beige;
 }
 
 .container {
@@ -31,37 +31,40 @@ body {
     position: relative;
 }
 
-#searchToggler {
+.search {
     display: flex;
     align-items: center;
+    width: 100%;
 }
 
 .search-button {
     width: 50px;
     height: 50px;
     background-color: transparent;
-    color: white;
+    color: beige;
     border: none;
     cursor: pointer;
 }
 
-.search-icon, 
-.x-icon {
+.search-icon {
     width: 40px;
     height: 40px;
 }
 
 .search-bar {
     width: 100%;
-    color: white;
+    color:beige;
     background-color: rgba(255, 255, 255, 0.3);
     border: none;
+    border-radius: 5px;
+    width: 100%;
+    margin: auto;
     height: 35px;
     font-size: 18px;
 }
 
-.hidden {
-    display: none;
+.search-bar:focus {
+    outline: none;
 }
 
 /* Speaks for itself */
@@ -117,8 +120,8 @@ body {
 .tempTextCelsius {
     display: inline;
     font-size: 36px;
-    margin-top: 15px;
-    margin-bottom: 3px;
+    margin-top: 0;
+    margin-bottom: 23px;
     margin-left: 5px;
     color: beige;
 }
@@ -148,6 +151,10 @@ body {
     height: 80px;
     margin: 0 auto 0 75%;
     cursor: pointer;
+}
+
+.fa-solid {
+    font-size: 25px;
 }
 
 /* Five-day forecast */

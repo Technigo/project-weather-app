@@ -15,9 +15,6 @@ const forecastWind = document.getElementById("forecastWind");
 const inputField = document.getElementById("inputField"); 
 
 const searchBtn = document.getElementById("searchBtn"); 
-const searchMenuBtn = document.getElementById("searchMenuBtn");
-const closeSearchMenu = document.getElementById("closeSearchMenu");
-const searchToggler = document.getElementById("searchToggler");
 const switchBtn = document.getElementById("switchBtn"); 
 
 const APIKEY = "a0251d9b53172abcbe6a9263f3d13544"; // Change name to CAPITAL as it won't change throughout the file
@@ -74,40 +71,39 @@ const fiveDaysForecast = (city) => {
             return response.json();
         })
         .then((json) => {
-            console.log(json); // to be deleted before hand-in
-            // Find out the weekday of today
-            const today = new Date().toString().split(" ")[0];
+            // Show the weather forecase if the user searches for a city that exists
+            if (json.cod !== "404") {
+                console.log(json); // to be deleted before hand-in
+                // Find out the weekday of today
+                const today = new Date().toString().split(" ")[0];
 
-            // Filter the weather forecast data so it only contains data at 12:00 every day
-            const filteredForecastData = json.list.filter((dataPoint) => (dataPoint.dt_txt.includes("12:00")));
-            console.log(filteredForecastData); // to be deleted before hand-in
-            
-            filteredForecastData.forEach((dataPoint) => {
-                // Convert data in dt in the filtered weather forecast data to date and time and extract the weekday from there
-                const weekDay = new Date(dataPoint.dt * 1000).toString().split(" ")[0];
-                let { icon } = dataPoint.weather[0]; // the whole object with icon id, weather code and description is needed to be able to identify the corresponding icon
-                const temp = dataPoint.main.temp.toFixed(1);
-                const windSpeed = dataPoint.wind.speed;
+                // Filter the weather forecast data so it only contains data at 12:00 every day
+                const filteredForecastData = json.list.filter((dataPoint) => (dataPoint.dt_txt.includes("12:00")));
+                console.log(filteredForecastData); // to be deleted before hand-in
+                
+                filteredForecastData.forEach((dataPoint) => {
+                    // Convert data in dt in the filtered weather forecast data to date and time and extract the weekday from there
+                    const weekDay = new Date(dataPoint.dt * 1000).toString().split(" ")[0];
+                    let { icon } = dataPoint.weather[0]; // the whole object with icon id, weather code and description is needed to be able to identify the corresponding icon
+                    const temp = dataPoint.main.temp.toFixed(1);
+                    const windSpeed = dataPoint.wind.speed;
 
-                // Compare the weekday of today with the days of the forecast and only display forecast from tomorrow onwards
-                if (weekDay != today) {
-                    forecastWeekdays.innerHTML += `<p>${weekDay}</p>`;
-                    forecastTemp.innerHTML += `<p>${temp}°C</p>`;
-                    forecastIcon.innerHTML += `<img src="https://openweathermap.org/img/wn/${icon}@2x.png" />` //Source for weather codes and icons: https://openweathermap.org/weather-conditions
-                    forecastWind.innerHTML += `<p>${windSpeed}m/s</p>`;
-                }
-            });
-             
+                    // Compare the weekday of today with the days of the forecast and only display forecast from tomorrow onwards
+                    if (weekDay != today) {
+                        forecastWeekdays.innerHTML += `<p>${weekDay}</p>`;
+                        forecastTemp.innerHTML += `<p>${temp}°C</p>`;
+                        forecastIcon.innerHTML += `<img src="https://openweathermap.org/img/wn/${icon}@2x.png" />` //Source for weather codes and icons: https://openweathermap.org/weather-conditions
+                        forecastWind.innerHTML += `<p>${windSpeed}m/s</p>`;
+                    }
+                });
+            // Show an alert and the default weather data if the user searches for a city that does not exist
+            } else {
+                alert ("City not found. Please check your spelling!");
+                todaysWeather("London");
+                fiveDaysForecast("London");
+            }
         })
 }
-
-// Function to toggle the class of the search bar: only a search icon is shown at first, when clicked on, the search icon is hidden and the input field, the smaller search icon and the X icon is displayed; when the X icon is clicked on, it returns to only a search icon 
-const toggleSearch = () => {
-    searchToggler.classList.toggle("hidden");
-    closeSearchMenu.classList.toggle("hidden");
-    searchMenuBtn.classList.toggle("hidden");
-}
-
 
 // Search function
 const searchFunction = () => {
@@ -179,16 +175,6 @@ const switchCity = () => {
 // Invoke functions for today's weather and five-day forecast with the base city as argument
 todaysWeather("London");
 fiveDaysForecast("London");
-
-// Add event listener to the big search button to display the input field, smaller search button and the X button when the big search button is clicked on
-searchMenuBtn.addEventListener("click", () => {
-    toggleSearch();
-})
-
-// Add event listener to the X button to display only the big search button again when the X button is clicked on
-closeSearchMenu.addEventListener("click", () => {
-    toggleSearch();
-})
 
 // Add event listener to the search button (type="submit") to invoke the search function when the button is clicked on
 searchBtn.addEventListener("click", () => {
