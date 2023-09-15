@@ -6,7 +6,7 @@ const sunUpDown = document.getElementById("sunUpDown");
 const locationSpecifics = document.getElementById("locationSpecifics");
 // const changeCityBtn = document.getElementById("changeBtn"); //Just testing the button
 
-let cityToUrl = "Varberg,Sweden";
+let cityToUrl = "Borås,Sweden";
 const BASE_URL = "https://api.openweathermap.org/data/2.5/";
 const API_KEY = "6e3a3db02f585218db04cdc935f5290c";
 const weatherURL = `${BASE_URL}weather?q=${cityToUrl}&units=metric&APPID=${API_KEY}`;
@@ -56,14 +56,24 @@ const showMainWeatherInfo = (weatherData) => {
 
 // Function to change sunrise and sunset visuals
 const sunsetSunrise = (weatherData) => {
-    // Set sunrise and sunset
-    // Converting the UNIX timestamp into a human-readable time.
-    const sunrise = new Date(weatherData.sys.sunrise * 1000);
-    //Set a short timestamp to only show hour and minute.
-    const sunriseShort = sunrise.toLocaleTimeString(["en-GB"], { timeStyle: `short` });
-    const sunset = new Date(weatherData.sys.sunset * 1000);
+    // Gets and saves timezone
+    const timezone = weatherData.timezone;
+    // Returns timedifference
+    const offset = new Date().getTimezoneOffset() * 60;
+    // Set sunrise and sunset timestamps in UNIX form
+    const unixTimestampSunrise = weatherData.sys.sunrise;
+    const unixTimestampSunset = weatherData.sys.sunset;
 
-    const sunsetShort = sunset.toLocaleTimeString(["en-GB"], { timeStyle: `short` });
+    const sunriseInSeconds = unixTimestampSunrise + timezone + offset; // Adds timedifference to timezone and unixTimestamp
+    const sunriseInMilli = sunriseInSeconds * 1000; // Converting the UNIX timestamp into a human-readable time.
+    const sunriseLocalDate = new Date(sunriseInMilli); // Local sunrise in actual time
+    const sunriseShort = sunriseLocalDate.toLocaleTimeString(["en-GB"], { timeStyle: `short` }); //Set a short timestamp to only show hour and minute.
+
+    // Same as above for sunset
+    const sunsetInSeconds = unixTimestampSunset + timezone + offset;
+    const sunsetInMilli = sunsetInSeconds * 1000;
+    const sunsetLocalDate = new Date(sunsetInMilli);
+    const sunsetShort = sunsetLocalDate.toLocaleTimeString(["en-GB"], { timeStyle: `short` });
 
     locationSpecifics.innerHTML += `
         <div class="sunUpDown">
