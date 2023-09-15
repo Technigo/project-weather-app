@@ -6,8 +6,6 @@ const container = document.getElementById('sun_rise_sunset');
 
 //example URL: https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=YOUR_API_KEY
 
-let daysArray = [];
-
 const BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
 const API_KEY = "9055fb4826563eac25a47e211073a627"; //Beckie's API key
 
@@ -64,7 +62,7 @@ const updateHTML = (json) => {
         cityNameElement.innerText = `Get your sunnies on.
         ${json.name} is looking rather great today.`;
     } else {
-        cityNameElement.innerText = `${json.name} `;
+        cityNameElement.innerText = `Check out the weather in ${json.name} today.`;
     }
 
     //display icon for either clouds, sunglasses or rain
@@ -76,9 +74,6 @@ const updateHTML = (json) => {
         document.getElementById("weatherIcon").innerHTML = (`<img src = "/design/design2/icons/noun_Sunglasses_2055147.svg" alt = "sunglasses icon" width = "100" height = "100" >`)
     }
 }
-
-
-
 
 // ------ updateHTMLforecast function - display forecast for next 5 days ---------------   //
 
@@ -95,10 +90,10 @@ const updateHTMLforecast = (json) => {
         const dayName = date.toLocaleDateString("en-US", { weekday: "short" });
         const temp = day.main.temp.toFixed(1);
         forecast5Days.innerHTML += `
-            <div class="grid-child day">
+            <div class="grid-child day" style="box-sizing: border-box; border-bottom: 2px dotted #164a68;">
                 ${dayName}
             </div>
-            <div class="grid-child temp">
+                        <div class="grid-child temp" style="box-sizing: border-box;text-align: right; border-bottom: 2px dotted #164a68;">
                 ${temp}
             </div>
         `;
