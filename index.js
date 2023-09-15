@@ -6,6 +6,7 @@ const city = document.getElementById(`city`)
 const temperature = document.getElementById(`Temperature`)
 const todaysAdvice = document.getElementById(`todaysAdvice`)
 const sunriseAndTime = document.getElementById(`sunriseAndTime`)
+const sunsetAndTime = document.getElementById(`sunsetAndTime`)
 const description = document.getElementById(`description`)
 
 //GLOBAL VARIABLES//
@@ -65,13 +66,22 @@ function updateWeatherUI(data) {
 
 
     //sunrise
-    const sunriseTime = new Date(data.sys.sunrise * 1000);
-    // Convert sunrise time to milliseconds
-    sunriseAndTime.textContent = `Sunrise ${sunriseTime.toLocaleTimeString()};`
+    const sunriseTime = new Date(data.sys.sunrise * 1000); //convert sunrise time to milliseconds
+    const hours = sunriseTime.getHours(); //fetching hours for sunrise
+    const minutes = sunriseTime.getMinutes(); //fetching minutes for sunrise
+
+    sunriseAndTime.textContent = `Sunrise ${hours}:${minutes}` //displaying only hours and minutes of sunrise
     //HOW TO DISPLAY DATE and TIME
+
+    //sunset
+    const sunsetTime = new Date(data.sys.sunset * 1000); //convert sunrise time to milliseconds
+    const hours2 = sunsetTime.getHours(); //fetching hours for sunrise
+    const minutes2 = sunsetTime.getMinutes(); //fetching minutes for sunrise
+
+    sunsetAndTime.textContent = `Sunset ${hours2}:${minutes2}` //displaying only hours and minutes of sunrise
 }
 
-//Elin: sunrise, sunset (time og minutt feks: 06:12), decimaler på temperaturen, make sun img come up if sunny, rain if rainy, etc.
+//Elin: sunrise, sunset (time og minutt feks: 06:12), make sun img come up if sunny, rain if rainy, etc.
 
 //Mirela: The next 5 days
 
