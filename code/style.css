@@ -1,8 +1,9 @@
 body {
     font-family: 'Quicksand', sans-serif;
     margin: 0;
-    padding: 0;
+    padding: 0 0 30px 0;
     box-sizing: border-box;
+    background-color: rgb(255, 255, 250);
 
 }
 
@@ -20,7 +21,7 @@ body {
     background-repeat: no-repeat;
     object-fit: cover;
     background-size: cover;
-    height: 450px;
+    height: 400px;
     width: 100%;
     color: white;
     text-align: left;
@@ -28,18 +29,27 @@ body {
     border-bottom-right-radius: 150px;
     padding-bottom: 60px;
     padding-top: 19px;
-    font-weight: bold;
-    box-shadow: 4px 4px 6px rgba(0 , 0 , 0 , .5);
+    /* font-weight: bold; */
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, .5);
     padding-left: 20px;
-    
 
 
+
+}
+
+.tempSize {
+    display: flex;
+}
+
+.c {
+    margin-left: 10px;
+    font-size: 30px;
 }
 
 .searchDisplay {
     display: flex;
     align-items: center;
-    
+
 }
 
 .searchWrapper {
@@ -52,7 +62,7 @@ body {
     margin: 20px;
     height: 30px;
     width: 30px;
-    
+
 }
 
 .icon-close {
@@ -60,7 +70,7 @@ body {
     margin-right: 20px;
     margin-top: 4px;
     margin-left: 20px;
-    
+
 
 }
 
@@ -73,7 +83,7 @@ body {
     height: 30px;
     width: 50px;
     margin-left: 9px;
-   
+
 
 }
 
@@ -93,14 +103,14 @@ body {
 h1 {
     color: white;
     font-weight: 500;
-    font-size: 80px;
-    margin: 0;
+    font-size: 100px;
+    margin: 0 0 0 20px;
 }
 
 h2 {
     font-weight: 300;
     font-size: 35px;
-    margin: 5px 0 5px 0;
+    margin: 5px 0 5px 20px;
 }
 
 .windSun {
@@ -120,8 +130,8 @@ h2 {
 }
 
 .dateTime {
-    margin-top: 0;
-    font-size: 20px;
+    margin: 0 0 0 20px;
+    font-size: 15px;
     gap: 10px;
 }
 
@@ -129,7 +139,7 @@ h2 {
     display: inline-flex;
     font-size: 20px;
     align-items: center;
-    padding: 0;
+    margin: 0 0 0 20px;
 }
 
 .icon-bg {
@@ -158,6 +168,8 @@ li {
 
 .forecast {
     display: block;
+    height: auto;
+    margin-top: 30px;
 }
 
 .days {
@@ -165,7 +177,7 @@ li {
     gap: 20px;
     justify-content: space-around;
     font-size: 20px;
-    
+
 }
 
 .icon {
@@ -175,67 +187,194 @@ li {
 .icon-bg {
     width: 80px;
 }
-img{
+
+img {
     margin-right: 5px;
 }
-@media screen and (min-width:800px) {
-    .main{
-        height: 600px;
+
+@media (min-width: 1281px) {
+
+    .main {
+        height: 650px;
         text-align: center;
         border-bottom-left-radius: 50%;
         border-bottom-right-radius: 50%;
         margin-bottom: 30px;
-       
+
     }
-    .search{
+
+    .search {
         width: 600px;
         align-items: center;
         justify-content: center;
         font-size: 30px;
 
     }
-    .search-btn{
+
+    .tempSize {
+        justify-content: center;
+    }
+
+    .c {
+        font-size: 50px;
+    }
+
+    h1 {
+        font-size: 150px;
+        padding: 0px;
+    }
+
+    .search-btn {
         height: 47px;
         font-size: 20px;
     }
-    .icon-close{
+
+    .icon-close {
         width: 35px;
         height: 35px;
         margin-left: 30px;
         margin-right: 20px;
     }
-    .days{
+
+    li {
+        font-size: 30px;
+    }
+
+    .days {
         font-size: 30px;
         gap: 50px;
     }
-    .icon{
+
+    .icon {
         width: 90px;
     }
-    .icon-search{
-        width: 70px;
-        height: 70px;
-        margin-left: 30px;
 
+    .icon-search {
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
     }
-    p{
+
+    .weather {
+        font-size: 40px;
+    }
+
+    .windSun {
         font-size: 30px;
     }
-    .dateTime{
+
+    .dateTime {
         font-size: 28px;
         text-align: center;
         justify-content: center;
         align-items: center;
         gap: 15px;
     }
-    h2{
+
+    h2 {
         font-size: 50px;
         font-weight: bold;
     }
-    .icon-wind , .icon-sunrise , .icon-sunset{
+
+    .icon-wind,
+    .icon-sunrise,
+    .icon-sunset {
         width: 40px;
     }
-    .windSun{
+
+    .windSun {
         gap: 19px;
     }
- 
+
+
+}
+
+@media (min-width: 768px) and (max-width: 1280px) {
+
+    .main {
+        height: 600px;
+        text-align: center;
+        border-bottom-left-radius: 50%;
+        border-bottom-right-radius: 50%;
+        margin-bottom: 30px;
+
+    }
+
+    .search {
+        width: 600px;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+
+    }
+
+    .tempSize {
+        justify-content: center;
+    }
+
+    .h1 {
+        font-size: 150px;
+    }
+
+    .search-btn {
+        height: 47px;
+        font-size: 20px;
+    }
+
+    .icon-close {
+        width: 35px;
+        height: 35px;
+        margin-left: 30px;
+        margin-right: 20px;
+    }
+
+    .days {
+        font-size: 30px;
+        gap: 50px;
+    }
+
+    .icon {
+        width: 90px;
+    }
+
+    .icon-search {
+        width: 50px;
+        height: 50px;
+        margin: 30px 0 0 30px;
+    }
+
+    .c {
+        font-size: 30px;
+    }
+
+    .dateTime {
+        font-size: 25px;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+    }
+
+    h2 {
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    .icon-wind,
+    .icon-sunrise,
+    .icon-sunset {
+        width: 40px;
+    }
+
+    .weather {
+        font-size: 35px;
+    }
+
+    .windSun {
+        font-size: 25px;
+        gap: 19px;
+    }
+
 }

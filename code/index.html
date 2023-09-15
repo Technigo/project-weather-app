@@ -25,14 +25,26 @@
         <div id="main" class="main">
             <div class="searchDisplay" id="searchDisplay">
                 <img src="/images/icons8-search-50.png" alt="search" class="icon-search" id="icon-search">
+
                 <div class="searchWrapper" id="searchWrapper" style="display: none;">
                     <img src="Images/x-mark-48.png" alt="close" class="icon-close" id="icon-close">
-                    
                     <input id="search" class="search" type="text" placeholder="search city"></input>
                     <button class="search-btn" id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
             </div>
-            <h1 id="temp"></h1>
+            <div class="tempSize">
+                <h1 id="temp"></h1>
+                <p class="c">°C</p>
+            </div>
+
+            <div id="temp-max-min">
+                <ul class="dateTime">
+                    <li id="temp-max"></li>
+
+                    <li id="temp-min"></li>
+                </ul>
+            </div>
+
             <h2 id="city"></h2>
             <div>
                 <ul class="dateTime">
@@ -45,15 +57,8 @@
                 <p id="desc"></p>
                 <img src="" alt="icon-bg" class="icon-bg" id="icon-main">
             </div>
-            
-            <div id="temp-max-min">
-                <ul class="dateTime">
-                    <li id="temp-max"></li>
-                    
-                    <li id="temp-min"></li>
-                </ul>
-            </div>
-           
+
+
             <br />
             <div class="windSun">
                 <img src="/images/icons8-wind-50.png" class="icon-wind">
