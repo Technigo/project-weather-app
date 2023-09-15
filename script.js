@@ -6,10 +6,12 @@ const getWeatherData = async () => {
         const data = await response.json();
         return data;
     }
+
     // Function that returns the time in hours and minutes.
     const getTimeOfDay = (date) => {
         return `${date.getHours()}:${date.getMinutes()}`;
     }
+
     // Variables that returns weather and forecast data.
     const weatherData = await getData("weather");
     const forecastData = await getData("forecast");
