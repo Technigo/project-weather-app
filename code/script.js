@@ -144,6 +144,15 @@ const saveData = (forecastData) => {
 
     forecastData.list.forEach((item) => {
         const date = item.dt_txt.split(' ')[0]; // Extract the date part from dt_txt
+
+        // Check if the date is today's date, in those cases we don't want to show the information in the forecast
+        const currentDate = new Date();
+        const itemDate = new Date(item.dt * 1000); // Convert the item's timestamp to a Date object
+
+        if (itemDate.getDate() === currentDate.getDate()) {
+            return; // Skip today's date
+        }
+
         const day = getDayOfWeek(item.dt); // Get the day of the week
         const temperature = {
             minTemp: item.main.temp_min.toFixed(0), // Gets the minimum temperature for each day
