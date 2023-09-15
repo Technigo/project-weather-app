@@ -143,7 +143,7 @@ const switchFavoriteCity = () => {
   } else if (city === "Kyoto") {
     todayWeather("Geneva");
     weatherForecast("Geneva");
-    city = "Geneva";
+    city = "Geneve";
   } else if (city === "Geneve") {
     todayWeather("Beijing");
     weatherForecast("Beijing");
