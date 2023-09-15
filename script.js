@@ -6,14 +6,24 @@ const sunset = document.getElementById("sunset");
 const forecast = document.querySelector(".forecast");
 const weatherHeader = document.querySelector(".weather-header");
 const typeOfWeatherData = document.querySelector(".typeOfWeatherData");
+const search = document.getElementById("search");
+
+const searchSubmit = search.addEventListener("change", (e) => searching(e.target.value));
+
 
 const API_KEY = "64856650e6321cbb411769554b46b8ad";
 // Reserve API KEY = "421db630ea3e3aeb0cb64db6a500c27b"
 
-let cityName = "New York";
-const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${API_KEY}`;
+let cityName = "Orebro";
+let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${API_KEY}`;
+let API_CALL = `${url}`;
+const searching = (city) => {
+  cityName = city;
+  url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${API_KEY}`;
+  API_CALL = `${url}`; 
+  apiData();
+}
 
-const API_CALL = `${url}`;
 
 const apiData = () => {
   fetch(API_CALL)
