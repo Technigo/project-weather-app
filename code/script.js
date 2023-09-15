@@ -5,7 +5,7 @@ const currentWeather_URL = `https://api.openweathermap.org/data/2.5/weather?q=`
 
 const API_KEY = `5261612a788e0fbd6e1f5336fd150afe`
 
-const cityName = "Nairobi";
+const cityName = "Visby";
 
 const currentWeather = `${currentWeather_URL}${cityName}&appid=${API_KEY}&units=metric`
 // const fiveDayWeather = `${fiveDayWeather_URL}${cityName}&appid=${API_KEY}&units=metric`
