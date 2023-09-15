@@ -4,10 +4,31 @@ const cityInput = document.getElementById('city-input');
 const searchButton = document.getElementById('search-button');
 const swipeButton = document.getElementById('swipe-button');
 const forecastTable = document.getElementById('forecast-table')
-const heroImage = document.getElementById('hero-image');
+const heroImage = document.querySelector('.hero-image');
+
 
 const apiKey = '30497ceff63316bea65ec674ac0ba4c7';
-const cities = ['Stockholm', 'Rome', 'Bordeaux', 'Vienna'];
+
+const cities = [
+    {
+        name: 'Stockholm',
+        image: 'https://images.unsplash.com/photo-1620408696006-d1315bf240f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2773&q=80'
+    },
+    {
+        name: 'Rome',
+        image: 'https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80'
+    },
+    {
+        name: 'Bordeaux',
+        image: 'https://images.unsplash.com/photo-1526581671404-349f224db79b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80'
+    },
+    {
+        name: 'Vienna',
+        image: 'https://images.unsplash.com/photo-1526581671404-349f224db79b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80'
+    }
+];
+
+
 let selectedCity = 0;
 //Reusable functions:
 //Convert a Unix timestamp into "hour:min" format
@@ -27,7 +48,8 @@ const formattedTime = (timestamp, timeshift) => {
 //Fetch current data for when entering the page
 getWeatherData = (city) => {
     currentCity.innerHTML = '';
-    const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+    const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city.name}&units=metric&appid=${apiKey}`;
+    heroImage.style.backgroundImage = `url(${city.image})`;
     fetch(currentWeatherUrl)
         .then((response) => response.json())
         .then((currentWeatherJson) => {
