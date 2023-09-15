@@ -118,6 +118,10 @@ fetchWeatherDataByCoordinates()
 
 function fetchWeatherData() {
   fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=8fa7c461aec946fde31f330992fce9d6')
+     //The geolocation isn´t working for he forecast,tried to do the same logic as we had above  function fetchWeatherDataByCoordinates(latitude, longitude) {
+  //const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`; without any result, I tried this
+    //const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&APPID=8fa7c461aec946fde31f330992fce9d6 so went back to only getting stockholm`;
+  //fetch(apiUrl)
     .then((response) => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
