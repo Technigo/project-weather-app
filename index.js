@@ -47,7 +47,7 @@ function fetchWeatherData() {
 //Data here shows to data feched in function fetchWeatherData()
 function updateWeatherUI(data) {
     //temperature
-    temperature.textContent = `${data.main.temp}°C`;
+    temperature.textContent = `${data.main.temp.toFixed(1)}°C`;
     //city
     city.textContent = data.name;
     //Gather weather description from API array "Weather"
