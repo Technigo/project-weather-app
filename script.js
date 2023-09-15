@@ -21,6 +21,7 @@ const searching = (city) => {
   cityName = city;
   url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${API_KEY}`;
   API_CALL = `${url}`; 
+  forecast.innerHTML = "";
   apiData();
 }
 
@@ -37,7 +38,7 @@ const apiData = () => {
       console.log(data.weather[0].description);
       temperature.innerHTML = `${data.main.temp.toFixed(1)}`;
       const weatherIconTop = data.weather[0].icon;
-      typeOfWeatherData.innerHTML += `
+      typeOfWeatherData.innerHTML = `
       <img src="http://openweathermap.org/img/wn/${weatherIconTop}@2x.png" alt="weather-icon" class="weather-icon">
       `;
     const unixTimestampSunrise = data.sys.sunrise;
