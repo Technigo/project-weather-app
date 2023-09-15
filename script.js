@@ -1,8 +1,10 @@
+const apiKey = '8fa7c461aec946fde31f330992fce9d6';
+const apiUrl = 'https://api.openweathermap.org/data/2.5';
 const day = document.getElementById("forecast");
 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const container = document.getElementById('sthweather');
 const messageContainer = document.getElementById('message-text');
-const apiKey = '8fa7c461aec946fde31f330992fce9d6';
+
 
 function fetchWeatherDataByCoordinates(latitude, longitude) {
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
