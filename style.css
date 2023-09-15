@@ -54,6 +54,7 @@ body{
 
 .degrees{
   margin-top: 10px;
+  margin-left: 15px;
 
   font-size: 30px;
   font-weight: 300;
@@ -61,15 +62,13 @@ body{
 }
 
 .tempNumber{
-  font-size: 90px;
-  font-weight: 500;
+  font-size: 120px;
+  font-weight: 400;
+  letter-spacing: -13px;
   color: var(--fontColor)
 }
 .units{
     font-size: 36px;
-}
-.cityName{
-  padding-top: 0;
 }
 
 .cityFont{
@@ -77,6 +76,12 @@ body{
   letter-spacing: 1px;
   line-height: 1;
   color: var(--fontColor);
+  margin-top: -10px;
+}
+
+.cityTimeDesc > p {
+  margin-top: -15px;
+  font-weight: 300;
 }
 
 .weatherDescription{
@@ -84,11 +89,28 @@ body{
   text-transform: capitalize;
 }
 
+.weatherDescriptionIcon{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-right: 30px;
+  margin-top: -10px;
+  gap: 1px;
+  color: var(--fontColor);
+  opacity: 0.99;
+  font-weight: 300;
+}
+
+.weatherIcon{
+  transform: translate(0px, -2px)
+}
+
 .sunRiseSet{
   display: flex;
   justify-content: center;
   margin-right: 30px;
   gap: 20px;
+  font-weight: 300;
 }
 
 .currentTime{

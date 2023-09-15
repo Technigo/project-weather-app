@@ -4,6 +4,7 @@ const weatherApp = document.getElementById('weatherApp')
 const currentTemperature = document.getElementById('currentTemperature')
 const sunRiseSet = document.getElementById('sunRiseSet')
 const cityTimeDesc = document.getElementById('cityTimeDesc')
+const weatherDescriptionIcon = document.getElementById('weatherDescriptionIcon')
 const weatherForecast = document.getElementById('weatherForecast')
 
 const searchMenuBtn = document.getElementById('searchMenuBtn');
@@ -20,13 +21,14 @@ const searchString = (searchTerm, searchCity) => {
     return (`${baseURL}${searchTerm}?q=${searchCity}&units=${units}&APPID=${appID}`)
 }
 
-//Fetch the API from Open Weather construct the current weather
-fetch(searchString("weather", "Stockholm,Sweden"))
+const todaysWeatherFeature = (city) =>{
+    //Fetch the API from Open Weather construct the current weather
+    fetch(searchString("weather", city))
     .then((response) => {
         return response.json()})
     .then((json) => {
         let cityName = json.name
-        let temperature = Math.round(json.main.temp*10)/10
+        let temperature = Math.round(json.main.temp)
         let weatherDescription = json.weather[0].description
 
         let sunrise = new Date (json.sys.sunrise * 1000)
@@ -37,14 +39,21 @@ fetch(searchString("weather", "Stockholm,Sweden"))
         currentTemperature.innerHTML = `<p><div class ="tempNumber">${temperature}</div> <div class="degrees">°C</div></p>`
         cityTimeDesc.innerHTML += `<h1 class="cityFont">${cityName}</h1>`
         cityTimeDesc.innerHTML += `<p>${currentTime()}</p>`
-        cityTimeDesc.innerHTML +=`<p class="weatherDescription">${weatherDescription}</p>`
+
+        let weatherIcon = createIcon(json.weather[0].icon)
+        cityTimeDesc.innerHTML +=`
+        <div class="weatherDescriptionIcon">  
+        <p class="weatherDescription">${weatherDescription}</p> 
+        <img class="weatherIcon" src = "${weatherIcon}", alt = "${weatherDescription}", width = "50px">
+        </img>
+        </div>`
 
         sunRiseSet.innerHTML +=`<p>sunrise ${sunriseTime}</p>`
         sunRiseSet.innerHTML +=`<p>sunset ${sunsetTime}</p>`
     })
 
 //Fetch the API from Open Weather and construct a forecast for the coming 4-5 days
-fetch(searchString("forecast", "Stockholm,Sweden"))
+fetch(searchString("forecast", city))
     .then((response) => (response.json()))
     .then((json) => {
         const noonWeather = json.list.filter((item) => item.dt_txt.includes("12:00:00"))
@@ -67,7 +76,8 @@ fetch(searchString("forecast", "Stockholm,Sweden"))
                 iterationNum ++
             }
         })
-})
+    })
+}
 
 //Adding data from the fetched forcast to a div in the HTML
 const addForecastRows = 
@@ -108,24 +118,6 @@ const createIcon= (iconID) => {
     return base_URL+icon+end_URL
 }
 
-//Capitalize the first letter
-// const capitalize = (text) => {
-//     let words = text.split(" ")
-
-//     let index = 0
-
-//     words.forEach((word) => {
-//         const firstLetter = word.charAt(0).toUpperCase()
-//         const restOfWord = word.slice(1).toLowerCase()
-
-//         words[index] = firstLetter + restOfWord
-//         index ++
-//     })
-
-//     let modifiedText = words.join(" ")
-//     console.log(modifiedText)
-// }
-
 const toggleSearchField = () => {
     //This just controls the toggling between opening and closing the search field
     const searchToggler = document.getElementById('search-toggler');
@@ -141,18 +133,23 @@ const searchFunction = () => {
 
         //Use the city searched and inject into ""fetchWeather""" function:
         //weather.fetchWeather(searchedCity); //Skriv om till den vi använder
-        todaysWeatherFeature(searchedCity);
-        weatherForecastData(searchedCity);
+        todaysWeatherFeature(searchedCity)
 
         //Clears field & hides the input field:
-        inputField.value = "";
+        inputField.value = ""
 
         //Reset the weather forecast:
-        forecastWeekdays.innerHTML = "";
-        forecastIcon.innerHTML = "";
-        forecastWind.innerHTML = "";
-        forecastTemp.innerHTML = "";
+        cityTimeDesc.innerHTML = ""
+        sunRiseSet.innerHTML = ""
+        forecastRow1.innerHTML =""
+        forecastRow2.innerHTML =""
+        forecastRow3.innerHTML =""
+        forecastRow4.innerHTML =""
+        forecastRow5.innerHTML =""
 };
+
+//START
+todaysWeatherFeature("Stockholm, Sweden")
 
 //EVENT LISTENERS
 //Eventlistener to toggle search field:
