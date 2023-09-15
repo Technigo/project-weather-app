@@ -1,14 +1,14 @@
-$(document).ready(function() {
-    // Your existing jQuery code here
-    
-var makeItRain = function() {
+$(document).ready(function () {
+  // Your existing jQuery code here
+
+  var makeItRain = function () {
     //clear out everything
     $('.rain').empty();
-  
+
     var increment = 0;
     var drops = "";
     var backDrops = "";
-  
+
     while (increment < 100) {
       //couple random numbers to use for various randomizations
       //random number between 98 and 1
@@ -21,45 +21,45 @@ var makeItRain = function() {
       drops += '<div class="drop" style="left: ' + increment + '%; bottom: ' + (randoFiver + randoFiver - 1 + 100) + '%; animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"><div class="stem" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div><div class="splat" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div></div>';
       backDrops += '<div class="drop" style="right: ' + increment + '%; bottom: ' + (randoFiver + randoFiver - 1 + 100) + '%; animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"><div class="stem" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div><div class="splat" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div></div>';
     }
-  
+
     $('.rain.front-row').append(drops);
     $('.rain.back-row').append(backDrops);
   }
-  
-  $('.splat-toggle.toggle').on('click', function() {
+
+  $('.splat-toggle.toggle').on('click', function () {
     $('body').toggleClass('splat-toggle');
     $('.splat-toggle.toggle').toggleClass('active');
     makeItRain();
   });
-  
-  $('.back-row-toggle.toggle').on('click', function() {
+
+  $('.back-row-toggle.toggle').on('click', function () {
     $('body').toggleClass('back-row-toggle');
     $('.back-row-toggle.toggle').toggleClass('active');
     makeItRain();
   });
-  
-  $('.single-toggle.toggle').on('click', function() {
+
+  $('.single-toggle.toggle').on('click', function () {
     $('body').toggleClass('single-toggle');
     $('.single-toggle.toggle').toggleClass('active');
     makeItRain();
   });
-  
+
   makeItRain();
   // Call the playRainSound function when you want to start the sound
-    // For example, you can call it in your makeItRain function:
-    var rainAudio = document.getElementById("rainSound");
-    function playRainSound() {
-        rainAudio.play();
-    }
-    playRainSound();
+  // For example, you can call it in your makeItRain function:
+  var rainAudio = document.getElementById("rainSound");
+  function playRainSound() {
+    rainAudio.play();
+  }
+  playRainSound();
 
-    // Call the pauseRainSound function when you want to stop the sound
-    // For example, you can call it when toggling the rain animation off:
-    function pauseRainSound() {
-        rainAudio.pause();
-    }
+  // Call the pauseRainSound function when you want to stop the sound
+  // For example, you can call it when toggling the rain animation off:
+  //function pauseRainSound() {
+  //rainAudio.pause();
+  //}
 
-  
-  });
+
+});
 
 
