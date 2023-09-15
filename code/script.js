@@ -79,7 +79,7 @@ const fetchStockholmWeather = () => {
       const todaysWeather = json.weather[0].main;
       console.log(todaysWeather);
 
-      // Image backgrounds feature
+      // ------------ Image backgrounds feature ------------
       // Array for weather category atmosphere
       const atmosphere = [
         "Mist",
@@ -109,7 +109,7 @@ const fetchStockholmWeather = () => {
         formattedLocalTime <= sunriseTime &&
         formattedLocalTime <= sunsetTime
       ) {
-        // Daytime background
+        // Daytime background images depending on weather.
         if (todaysWeather === "Thunderstorm") {
           background.style.backgroundImage = `url('./images/thunder.jpg')`;
         } else if (todaysWeather === "Drizzle" || todaysWeather === "Rain") {
@@ -126,7 +126,7 @@ const fetchStockholmWeather = () => {
           background.style.backgroundImage = `url('./images/else.jpg')`;
         }
       } else {
-        // Nighttime
+        // Nighttime background images depending on weather.
         if (todaysWeather === "Clear") {
           background.style.backgroundImage = `url('./images/night.jpg')`;
         } else {
