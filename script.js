@@ -38,7 +38,7 @@ fetch(
         weatherIcon.src = iconURL;
         weatherIcon.alt = currentWeatherMain;
 
-        document.getElementById('weather-icon').innerHTML = `${iconURL}`
+     
       })
       .catch(error => console.error("Error fetching weatherIcons.json:", error));
   })
@@ -56,7 +56,7 @@ hamburgerMenu.addEventListener("click", function () {
 });
 
 const displaySunriseSunset = (sunriseTimestamp, sunsetTimestamp) => {
-  const sunriseDate = new Date(sunriseTimestamp * 1000);
+  const sunriseDate = new Date(sunriseTimestamp * 1000); //shows the time in milliseconds
   const sunsetDate = new Date(sunsetTimestamp * 1000);
 
   const sunriseTime = `${sunriseDate.getHours()}:${sunriseDate.getMinutes().toString().padStart(2, '0')}`;
