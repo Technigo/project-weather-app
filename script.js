@@ -1,64 +1,63 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Your code here, including the fetchFiveDayForecast function
 
-  const container = document.getElementById('weather-container');
-  const hamburgerMenu = document.getElementById('hamburger-menu');
-  const navMenu = document.getElementById('nav-menu');
-  const weatherIcon = document.getElementById('weather-icon');
-const sunriseTime = document.getElementById('sunrise-time')
-const sunsetTime = document.getElementById('sunset-time')
-
+  const container = document.getElementById("weather-container");
+  const hamburgerMenu = document.getElementById("hamburger-menu");
+  const navMenu = document.getElementById("nav-menu");
+  //const weatherIcon = document.getElementById("weather-icon");
+  const sunriseTime = document.getElementById("sunrise-time");
+  const sunsetTime = document.getElementById("sunset-time");
 
   const forecastContainer = document.getElementById("weather-forecast");
 
   const city = "Stockholm,Sweden";
   const units = "metric";
 
-
-
   const fetchCurrentWeather = () => {
-      fetch(
-  "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=168451996f01476589314aaee8750993"
-)
-  .then((response) => {
-    return response.json();
-  })
-  .then((json) => {
-    console.log(json);
-    const roundedTemperature = parseFloat(json.main.temp).toFixed(1);
-  
-    container.innerHTML += `
+    fetch(
+      "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=168451996f01476589314aaee8750993"
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => {
+        console.log(json);
+        const roundedTemperature = parseFloat(json.main.temp).toFixed(1);
+
+        container.innerHTML += `
+        <div class="background-img">
     <h1>${roundedTemperature} °C</h1>
     <h2>${json.name}</h2>
     <p>${json.weather[0].main}</p>
-     
+    
     <div id="sunrise-time"><p>Sunrise: ${json.sunriseTime},</p></div>
     <div id="sunset-time"><p>Sunset: ${json.sunsetTime}</p></div> 
+    </div>
   `;
-  
 
+        const weatherIcon = (iconID) => {
+          let base_URL = `https://openweathermap.org/img/wn/`;
+          let icon = iconID;
+          let end_URL = `@2x.png`;
 
-        // Fetch the weather icon mappings from JSON file
-        fetch("weatherIcons.json")
-          .then((response) => response.json())
-          .then((iconMappings) => {
-            const currentWeatherDescription = json.weather[0].description;
-            const iconFileName =
-              iconMappings[currentWeatherDescription] ||
-              iconMappings["Default"];
-            const iconURL = `images/${iconFileName}`;
-            weatherIcon.src = iconURL;
-            weatherIcon.alt = currentWeatherDescription;
-          })
-          .catch((error) => {
-            console.error("Error fetching weatherIcons.json:", error);
-          });
+          return base_URL + icon + end_URL;
+        };
+        // Fetch the weather icon mappings from JSON file⁄⁄⁄⁄⁄⁄⁄⁄
       })
       .catch((error) => {
         console.error("There was a problem with the fetch operation:", error);
       });
   };
   fetchCurrentWeather();
+
+  const weatherIcon = (iconID) => {
+    let base_URL = `https://openweathermap.org/img/wn/`;
+    let icon = iconID;
+    let end_URL = `@2x.png`;
+
+    return base_URL + icon + end_URL;
+  };
+  weatherIcon();
 
   const apiKey = "b0bce0ead37d18acc13ad506864e75ac";
   // const city = "Stockholm,Sweden";
@@ -77,7 +76,7 @@ const sunsetTime = document.getElementById('sunset-time')
       // Check if the forecast date is greater than the current date
       if (itemDate > currentDate) {
         // Check if the timestamp is for 12:00 PM (noon)
-        return item.dt_txt.includes("12:00:00");
+        return item.dt_txt.includes("21:00:00");
       }
       return false;
     });
@@ -115,41 +114,48 @@ const sunsetTime = document.getElementById('sunset-time')
       console.error("Error fetching data:", error);
     });
 
-hamburgerMenu.addEventListener("click", function () {
-  console.log(`hamburger menu`);
-  if (navMenu.style.display === "block") {
-    navMenu.style.display = "none";
-  } else {
-    navMenu.style.display = "block";
-  }
-});
-
-const displaySunriseSunset = (sunriseTimestamp, sunsetTimestamp) => {
-  const sunriseDate = new Date(sunriseTimestamp * 1000); //shows the time in milliseconds
-  const sunsetDate = new Date(sunsetTimestamp * 1000);
-
-  const sunriseTime = `${sunriseDate.getHours()}:${sunriseDate.getMinutes().toString().padStart(2, '0')}`;
-  const sunsetTime = `${sunsetDate.getHours()}:${sunsetDate.getMinutes().toString().padStart(2, '0')}`;
-
-  
-  console.log(`Sunrise: ${sunriseTime}, Sunset: ${sunsetTime}`);
-
-  
-  document.getElementById('sunrise-time').innerHTML = `<p>Sunrise: ${sunriseTime}</p>`;
-  document.getElementById('sunset-time').innerHTML = `<p>Sunset: ${sunsetTime}</p>`;
-
-}
-
-
-fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=168451996f01476589314aaee8750993")
-  .then(response => response.json())
-  .then((json) => {
-    if(json.sys) {
-      displaySunriseSunset(json.sys.sunrise, json.sys.sunset);
+  hamburgerMenu.addEventListener("click", function () {
+    console.log(`hamburger menu`);
+    if (navMenu.style.display === "block") {
+      navMenu.style.display = "none";
     } else {
-      console.error('sys property not found in the response:', json);
+      navMenu.style.display = "block";
     }
-  })
-  .catch(error => console.error('Error:', error));
+  });
 
+  const displaySunriseSunset = (sunriseTimestamp, sunsetTimestamp) => {
+    const sunriseDate = new Date(sunriseTimestamp * 1000); //shows the time in milliseconds
+    const sunsetDate = new Date(sunsetTimestamp * 1000);
+
+    const sunriseTime = `${sunriseDate.getHours()}:${sunriseDate
+      .getMinutes()
+      .toString()
+      .padStart(2, "0")}`;
+    const sunsetTime = `${sunsetDate.getHours()}:${sunsetDate
+      .getMinutes()
+      .toString()
+      .padStart(2, "0")}`;
+
+    console.log(`Sunrise: ${sunriseTime}, Sunset: ${sunsetTime}`);
+
+    document.getElementById(
+      "sunrise-time"
+    ).innerHTML = `<p>Sunrise: ${sunriseTime}</p>`;
+    document.getElementById(
+      "sunset-time"
+    ).innerHTML = `<p>Sunset: ${sunsetTime}</p>`;
+  };
+
+  fetch(
+    "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=168451996f01476589314aaee8750993"
+  )
+    .then((response) => response.json())
+    .then((json) => {
+      if (json.sys) {
+        displaySunriseSunset(json.sys.sunrise, json.sys.sunset);
+      } else {
+        console.error("sys property not found in the response:", json);
+      }
+    })
+    .catch((error) => console.error("Error:", error));
 });
