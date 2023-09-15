@@ -31,10 +31,19 @@ body {
   flex-direction: column;
   justify-content: center;
 }
-
+/*
+./images/sunnyday.jpg
+./images/cloudy.jpg
+./images/thunder.jpg
+./images/rainy.jpg
+./images/night-cloudy.jpg
+./images/night.jpg
+./images/snow.jpg
+./images/ice.jpg
+*/
 .back-image {
   position: absolute;
-  background: url("./images/pexels-skitterphoto-3768.jpg");
+  background-image: url("");
   background-size: cover;
   bottom: 37%;
   background-repeat: no-repeat;
@@ -72,7 +81,7 @@ main {
 
 h1 {
   font-size: 7rem;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .celsius {
@@ -89,6 +98,10 @@ h2 {
 h3 {
   font-size: 18px;
   text-transform: capitalize;
+}
+
+.local-time-display {
+  margin-top: 5px;
 }
 
 .weather-description {

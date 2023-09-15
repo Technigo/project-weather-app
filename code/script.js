@@ -1,9 +1,9 @@
-// One call länk och API key som funkar :OOOO https://api.openweathermap.org/data/2.5/onecall?lat=59.334591&lon=18.063240&exclude=hourly,minutely&units=metric&appid=7309e4a5829fafe809df835ad95f18ea
-
 //DOM selectors
+const background = document.getElementById("background");
 const currentWeather = document.getElementById("currentWeather");
 const currentTemp = document.getElementById("currentTemp");
 const city = document.getElementById("city");
+const localTimeDisplay = document.getElementById("localTimeDisplay");
 const weather = document.getElementById("weather");
 const weatherIcon = document.getElementById("weatherIcon");
 const sunrise = document.getElementById("sunrise");
@@ -37,6 +37,16 @@ const fetchStockholmWeather = () => {
       city.innerHTML = `${json.name}`;
       console.log(json.name);
 
+      //Shows the local time
+      const utcTimestamp = json.dt * 1000; //Convert to milliseconds
+      const localTime = new Date(utcTimestamp);
+      const formattedLocalTime = localTime.toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+      console.log(`Clock is: ${formattedLocalTime}`);
+      localTimeDisplay.innerHTML = `Time: ${formattedLocalTime}`;
+
       const weatherDescription = json.weather[0].description;
       weather.innerHTML = `${weatherDescription}`;
       console.log(weatherDescription);
@@ -65,6 +75,64 @@ const fetchStockholmWeather = () => {
 
       console.log(`sunrise ${sunriseTime}`);
       console.log(`sunset ${sunsetTime}`);
+
+      const todaysWeather = json.weather[0].main;
+      console.log(todaysWeather);
+
+      // Image backgrounds feature
+      // Array for weather category atmosphere
+      const atmosphere = [
+        "Mist",
+        "Smoke",
+        "Haze",
+        "Dust",
+        "Fog",
+        "Sand",
+        "Dust",
+        "Ash",
+        "Squall",
+        "Tornado",
+      ];
+
+      console.log(formattedLocalTime);
+      console.log(sunriseTime);
+      console.log(sunsetTime);
+      console.log(
+        formattedLocalTime >= sunriseTime && formattedLocalTime >= sunsetTime
+      );
+      console.log(
+        formattedLocalTime <= sunriseTime && formattedLocalTime <= sunsetTime
+      );
+
+      // WHY DOES THIS WORK?
+      if (
+        formattedLocalTime <= sunriseTime &&
+        formattedLocalTime <= sunsetTime
+      ) {
+        // Daytime background
+        if (todaysWeather === "Thunderstorm") {
+          background.style.backgroundImage = `url('./images/thunder.jpg')`;
+        } else if (todaysWeather === "Drizzle" || todaysWeather === "Rain") {
+          background.style.backgroundImage = `url('./images/rainy.jpg')`;
+        } else if (todaysWeather === "Snow") {
+          background.style.backgroundImage = `url('./images/snow.jpg')`;
+        } else if (todaysWeather === "Clear") {
+          background.style.backgroundImage = `url('./images/sunnyday.jpg')`;
+        } else if (todaysWeather === "Clouds") {
+          background.style.backgroundImage = `url('./images/cloudy.jpg')`;
+        } else if (atmosphere.includes(todaysWeather)) {
+          background.style.backgroundImage = `url('./images/mist.jpg')`;
+        } else {
+          background.style.backgroundImage = `url('./images/else.jpg')`;
+        }
+      } else {
+        // Nighttime
+        if (todaysWeather === "Clear") {
+          background.style.backgroundImage = `url('./images/night.jpg')`;
+        } else {
+          background.style.backgroundImage = `url('./images/cloudy-night.jpg')`;
+        }
+      }
     })
     .catch((error) => console.log("Error ❌", error));
 };
