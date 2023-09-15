@@ -8,6 +8,7 @@ const todaysAdvice = document.getElementById(`todaysAdvice`)
 const sunriseAndTime = document.getElementById(`sunriseAndTime`)
 const sunsetAndTime = document.getElementById(`sunsetAndTime`)
 const description = document.getElementById(`description`)
+const img = document.getElementById(`correctImg`)
 
 //GLOBAL VARIABLES//
 const BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
@@ -55,13 +56,33 @@ function updateWeatherUI(data) {
     const weatherDescription = data.weather[0].description;
     const capitalizedDescription = weatherDescription.charAt(0).toUpperCase() + weatherDescription.slice(1);
     description.textContent = capitalizedDescription;
+
     // Todays advice - You can use a conditional statement here based on weatherDescription
     if (weatherDescription.includes('clear')) {
-        todaysAdvice.textContent = "It's a clear day. Enjoy the sunshine!";
+        todaysAdvice.textContent = "It's a sunny day. Enjoy the sunshine!";
+
+        //create img according to weather
+        const img = document.createElement("img");
+        img.src = "./design/design1/assets/Group36.png";
+        img.alt = "sunny";
+        correctImg.appendChild(img);
+
     } else if (weatherDescription.includes('rain')) {
         todaysAdvice.textContent = "It's raining. Don't forget your umbrella!";
+
+        //create img according to weather
+        const img = document.createElement("img");
+        img.src = "./design/design1/assets/Group16.png";
+        img.alt = "rain";
+        correctImg.appendChild(img);
     } else {
         todaysAdvice.textContent = "Check the weather and plan accordingly.";
+
+        //create img according to weather
+        const img = document.createElement("img");
+        img.src = "./design/design1/assets/Group34.png";
+        img.alt = "sunnyclouds";
+        correctImg.appendChild(img);
     }
 
 
@@ -81,7 +102,7 @@ function updateWeatherUI(data) {
     sunsetAndTime.textContent = `Sunset ${hours2}:${minutes2}` //displaying only hours and minutes of sunrise
 }
 
-//Elin: sunrise, sunset (time og minutt feks: 06:12), make sun img come up if sunny, rain if rainy, etc.
+//Elin: make sun img come up if sunny, rain if rainy, etc.
 
 //Mirela: The next 5 days
 
