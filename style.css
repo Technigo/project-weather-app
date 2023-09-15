@@ -1,5 +1,7 @@
-
-
+/* *{
+    margin: 0; 
+    padding: 0; 
+} */
 body {
     display: flex; 
     justify-content: center;
@@ -15,28 +17,48 @@ body {
 }
 
 header {
-/* background-image:url("images/sun.png"); */
-/* background-color: skyblue; */
-background-image: linear-gradient(rgb(165, 181, 250), rgb(203, 221, 247));
-/* background-size: cover; */
-height: 400px; 
-padding: 20px;
-border-bottom-left-radius: 40% 20%;
-border-bottom-right-radius: 40% 20%;
-display: flex;
-align-content: flex-end;
-justify-content: flex-start;
-align-items: center;
+    background-image: url("../images/rain-cropped.png");
+    /* background-image: linear-gradient(rgb(165, 181, 250), rgb(203, 221, 247)); */
+    height: 450px; 
+    padding: 20px;
+    border-bottom-left-radius: 40% 20%;
+    border-bottom-right-radius: 40% 20%;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-display {
+    width: 100px; 
+    margin-bottom: 50px;
+
+}
+
+.search-display img {
+    height: 30px; 
+    margin: 20px 0 0 20px; 
 }
 
 .main-weather {
-display: flex;
-flex-direction: column;
-justify-content: flex-end
+    display: flex;
+    flex-direction: column;
+    
+
+}
+
+.tempSize {
+    display: flex;
+    margin-left: 30px; 
+}
+
+.c {
+    font-size: 30px;
+    color: white; 
+    margin-top: 10px;
+
 }
 
 .temp {
-    font-size: 80px;
+    font-size: 100px;
     color: white;
     margin: 0%;
 }
@@ -45,19 +67,18 @@ justify-content: flex-end
     color: white; 
     margin: 0%;
     font-size: 40px;
-    margin-left: 10px;
+    margin-left: 30px;
 }
 
 .weatherIcon {
-
 height: 70px; 
 }
 
 .weather-type {
-    
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-left: 30px; 
 }
 
 .weather-type-text {
@@ -71,7 +92,7 @@ height: 70px;
     width: 350px; 
     color: white;
     font-size: 20px;
-    margin-top: 50px; 
+    margin-top: 10px; 
     padding: 0%;
     /* width: 70%; */
     display: flex;
@@ -88,7 +109,6 @@ height: 70px;
     flex-direction: column;
     justify-content: space-around;
     background-color: rgb(218, 216, 211);
-    margin-top: 20px;
     height: 300px; 
     width: 100%; 
     font-size: 20px;
@@ -112,12 +132,12 @@ height: 70px;
 
 body {
     display: flex; 
-    justify-content: center;
+    justify-content: center; 
 }
 .wrapper {
     width: 390px;
     margin: 100px 0 100px 0;
-    box-shadow: 10px 10px 5px lightgrey
+    box-shadow: 10px 10px 5px lightgrey;  
 }
 
 }

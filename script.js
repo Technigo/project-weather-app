@@ -21,7 +21,7 @@ const API_KEY = 'bc487ba1fa4b42fcfb85443237a7774e'
 
 const URL_WEATHER = 'weather'
 const URL_FORECAST = 'forecast'
-const cityQuery = 'Stockholm,Sweden'
+const cityQuery = 'Glasgow, UK'
 
 //------Fetching today's weather-----
 const fetchWeather = () => {
@@ -50,13 +50,15 @@ const gettingIconWeather = (json) => {
 const getBasicWeatherInfo = (json) => {
     const cityName = ` ${json.name}`
     city.innerHTML = cityName 
-    const mainTemperature = `${Math.round(json.main.temp)}&deg;C`
+    const mainTemperature = `${Math.round(json.main.temp)}`
     temp.innerHTML = mainTemperature
     json.weather.forEach((element) => {
         weatherTypeText.innerHTML = `${element.main}`
     console.log(element.main)
     }) 
 }
+
+//&deg;C
 
 const calculateSunrise = (json) => {
     const unixTimestamp = json.sys.sunrise //seconds
@@ -87,6 +89,7 @@ const insertSunset = (localtimeSunset) => {
     sunset.innerHTML += `${localtimeSunset}`
 }
 
+//Declaring global variables
 let iconsAt12=""
 let temperaturesAt12=""
 let feelsLike =""
