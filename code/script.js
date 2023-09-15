@@ -1,12 +1,12 @@
 const currentCity = document.getElementById('current-city');
 const container = document.getElementById('weather');
 const cityInput = document.getElementById('city-input');
-const currentCityWeather = document.getElementById('current-city-weather');//todays weather and symbol is going to be un this div
+const sunState = document.getElementById('sun-state');
+const currentCityWeather = document.getElementById('current-city-weather');
 const searchButton = document.getElementById('search-button');
 const swipeButton = document.getElementById('swipe-button');
-const forecastTable = document.getElementById('forecast-table')
+const forecastTable = document.getElementById('forecast-table');
 const heroImage = document.querySelector('.hero-image');
-
 
 const apiKey = '30497ceff63316bea65ec674ac0ba4c7';
 
@@ -35,22 +35,29 @@ let selectedCity = 0;
 //Convert a Unix timestamp into "hour:min" format
 const formattedTime = (timestamp, timeshift) => {
     const offset = new Date().getTimezoneOffset() * 60;
-    sunStatusDate = new Date((timestamp + offset + timeshift) * 1000);
+    const sunStatusDate = new Date((timestamp + offset + timeshift) * 1000);
     const hours = sunStatusDate.getHours();
     const minutes = sunStatusDate.getMinutes();
-    const time = `
-    ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
-    return (time)
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+}
+
+//array to display days
+const dayTime = (timestamp) => {
+    const dateTime = new Date(timestamp * 1000);
+    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    return daysOfWeek[dateTime.getDay()];
 }
 
 
 
 //----------------------  Part1  ------------------------------------------
 //Fetch current data for when entering the page
-getWeatherData = (city) => {
+const getWeatherData = (cityName) => {
     currentCity.innerHTML = '';
-    const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city.name}&units=metric&appid=${apiKey}`;
-    heroImage.style.backgroundImage = `url(${city.image})`;
+    currentCityWeather.innerHTML = '';
+    sunState.innerHTML = '';
+    const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${apiKey}`;
+    heroImage.style.backgroundImage = `url(${cities[selectedCity].image})`;
     fetch(currentWeatherUrl)
         .then((response) => response.json())
         .then((currentWeatherJson) => {
@@ -66,27 +73,28 @@ getWeatherData = (city) => {
             currentCity.innerHTML += `
             <p>${formattedTime(currentWeatherJson.dt, currentWeatherJson.timezone)}</p>
             `
-            currentCity.innerHTML += `
+            currentCityWeather.innerHTML += `
             <p> ${currentWeatherJson.weather[0].description}</p>
             `;
-            currentCity.innerHTML += `
+            currentCityWeather.innerHTML += `
             <img src="https://openweathermap.org/img/wn/${currentWeatherJson.weather[0].icon}@2x.png">
             `;
-            currentCity.innerHTML += `
-            <p> sunrise ${formattedTime(currentWeatherJson.sys.sunrise, currentWeatherJson.timezone)} / sunset ${formattedTime(currentWeatherJson.sys.sunset, currentWeatherJson.timezone)}</p>
+            sunState.innerHTML += `
+            <p> sunrise ${formattedTime(currentWeatherJson.sys.sunrise, currentWeatherJson.timezone)} </p>
             `;
-
+            sunState.innerHTML += `
+            <p> sunset ${formattedTime(currentWeatherJson.sys.sunset, currentWeatherJson.timezone)}</p>
+            `;
         })
         .catch((error) => {
             console.log('Error type:', error)
         });
 }
-
 //--------------------Part 2  ---------------------------------
-weeklyForecast = (city) => {
+const weeklyForecast = (cityName) => {
     // Fetch current weather data for the entered city
     // Fetch 5-day weather forecast for the entered city
-    const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city.name}&units=metric&appid=${apiKey}`;
+    const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=${apiKey}`;
     console.log(weeklyForecast)
     fetch(forecastUrl)
         .then((response) => response.json())
@@ -94,24 +102,21 @@ weeklyForecast = (city) => {
             console.log(forecastJson);
 
             // Display the 5-day weather forecast for the entered city 
-            forecastTable.textContent = ''; //clear content 
+            forecastTable.textContent = '';
             const today = new Date();
             const todaysDate = today.toLocaleDateString()
-            const processedDates = []; //keep track of displayed dates just like with the dogs!!
+            const processedDates = [];
             processedDates.push(todaysDate);
+
 
             //Create processedDates array
             forecastJson.list.forEach((forecast) => {
+                const dayDate = dayTime(forecast.dt);
 
-                const dateTime = new Date(forecast.dt * 1000); // Convert timestamp from seconds to ms adapted to Javascript
-                const date = dateTime.toLocaleDateString(); // Formated date accordingly to the user's locale
-
-                // Display date, weather description, and temperature in Celsius
-                if (!processedDates.includes(date)) {//if the date is not in the processedDates array
-                    const row = document.createElement('tr');//create a table row
-
+                if (!processedDates.includes(dayDate)) {
+                    const row = document.createElement('tr');
                     const dateCell = document.createElement('td');
-                    dateCell.textContent = `${date}`;
+                    dateCell.textContent = dayDate;
                     row.appendChild(dateCell);
 
                     const iconCell = document.createElement('td');
@@ -119,6 +124,7 @@ weeklyForecast = (city) => {
                     icon.src = `https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
                     iconCell.appendChild(icon);
                     row.appendChild(iconCell);
+
 
                     const tempCell = document.createElement('td');
                     tempCell.textContent = `${forecast.main.temp.toFixed(1)} °C`;
@@ -129,7 +135,7 @@ weeklyForecast = (city) => {
                     row.appendChild(windSpeedCell)
 
                     forecastTable.appendChild(row)
-                    processedDates.push(date); // push method to array
+                    processedDates.push(dayDate);
                 }
             });
         })
@@ -141,13 +147,16 @@ weeklyForecast = (city) => {
 
 
 
-//Event listeners 
+///Event listeners 
 //for the searchbutton
 searchButton.addEventListener('click', () => {
-    const city = cityInput.value;
+    const cityName = cityInput.value;
+    const city = {
+        name: cityName,
+        image: './assets-isasheryll/cloud.jpg'
+    }
 
-    // Ensure the user has entered a city name
-    if (city === '') {
+    if (cityName === '') {
         alert('Please enter a city name.');
         return;
     }
@@ -161,18 +170,16 @@ searchButton.addEventListener('click', () => {
 swipeButton.addEventListener('click', () => {
     selectedCity++;
     if (selectedCity < cities.length) {
-        getWeatherData(cities[selectedCity]);
-        weeklyForecast(cities[selectedCity]);
-    }
-    else {//selectedCity >= cities.length
+        getWeatherData(cities[selectedCity].name);
+        weeklyForecast(cities[selectedCity].name);
+    } else {
         selectedCity = 0;
-        getWeatherData(cities[selectedCity]);
-        weeklyForecast(cities[selectedCity]);
+        getWeatherData(cities[selectedCity].name);
+        weeklyForecast(cities[selectedCity].name);
     }
 });
 window.addEventListener('load', () => {
-    getWeatherData(cities[selectedCity]);
-    weeklyForecast(cities[selectedCity]);
-
+    getWeatherData(cities[selectedCity].name);
+    weeklyForecast(cities[selectedCity].name);
 });
 

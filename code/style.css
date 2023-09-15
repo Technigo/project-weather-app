@@ -44,16 +44,22 @@ html {
 
 h1 {
     font-size: 70px;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
 
 
 }
 
 h2 {
-    font-size: 20px;
-    margin-bottom: 5px;
+    font-size: 25px;
+    margin-bottom: 0px;
 
 }
+
+p {
+    font-size: 20px;
+}
+
+
 
 .current-city {
     display: inline;
@@ -69,18 +75,24 @@ h2 {
     justify-content: left;
     align-items: left;
     width: 100%;
-    margin-bottom: 10px;
-    padding: 0;
+    margin-bottom: 0px;
+    padding-bottom: 0;
 
 }
 
-.sunset-sunrise {
+.sun-state {
     display: flex;
-    justify-content: left;
-    align-items: left;
+    flex-direction: row;
+    /* Ensure elements appear on the same row */
+    justify-content: flex-start;
+    /* Adjust as needed */
+    align-items: center;
+    /* Align items vertically if needed */
     margin-bottom: 10px;
     padding: 0;
 }
+
+
 
 .swipe-button {
     font-family: 'Nunito', sans-serif;
@@ -143,7 +155,7 @@ h2 {
 .hero-text {
     text-align: center;
     position: absolute;
-    top: 55%;
+    top: 50%;
     left: 50%;
     transform: translate(-70%, -80%);
     margin: 0;
@@ -156,11 +168,45 @@ h2 {
     justify-content: center;
     align-items: center;
     width: 100%;
+    line-height: 1;
+}
+
+.current-city-weather {
+    display: flex;
+    align-items: center;
+    line-height: 1;
+}
+
+.current-city-weather img {
+    margin-right: 10px;
+    line-height: 1;
+}
+
+
+.sun-state {
+    display: flex;
+    line-height: 1;
+}
+
+.sun-state p {
+    margin: 0px;
+    padding: 0px;
+
+}
+
+.sun-state p {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 30px;
+
+
 }
 
 #forecast-table td {
     padding: 5px;
     margin: 5px;
+
 }
 
 .search-bar {
@@ -213,6 +259,7 @@ h2 {
     border: none;
 
 }
+
 
 .search-btn p {
     margin: 10px;
