@@ -3,6 +3,7 @@ const weatherDescription = document.getElementById('weatherDescription')
 const container = document.getElementById('container')
 const forecastItems = document.getElementById('forecastItems')
 
+//Function to make a request to the OpenWeatherMap API to fetch the weather data.
 const fetchWeather = () => { 
 fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=fd582670436692008725c351eb4985b0")
     .then((response) => {
@@ -20,10 +21,11 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         let sunSetHoursAndMinutes = String(sunSet.getHours()).padStart(2, '0') + ':' + String(sunSet.getMinutes()).padStart(2, '0');
         console.log(sunSetHoursAndMinutes);
 
-        const weathers = json.weather
-        weathers.map((weather) => {
         //This code block uses the map function to iterate over the elements in the weathers array. The weather variable represents each element (an object) in the array, containing information about the weather conditions.
         //Inside the map callback function, the code updates the content of the header element based on the weather data including description, temperature and sunset and sunrise time.
+        const weathers = json.weather
+        weathers.map((weather) => {
+        
         header.innerHTML = `
         <h3>${weather.description} | ${(json.main.temp).toFixed(0)}°</h3>
         <h3>sunrise ${sunRiseHoursAndMinutes}</h3>
@@ -60,36 +62,32 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     })
  })
 }
+//invoking function
 fetchWeather();
 
 
-
-
-
-
-
-
-
-
-
+//Function to make a request to the OpenWeatherMap API to fetch the weather forecast data.
 const fetchForecast = () => {
     fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=fd582670436692008725c351eb4985b0')
-    .then((response) => {
+    .then((response) => { //.then processes the response from the API and convert it to JSON.
         return response.json()
     })
     .then((json) => {
         
-        //filter the forecast API to only show weather at 12 for each day
-        const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00')) //Håll koll på denna, fungerar beroend tid
+        //Filters the list of forecast items, 12:00 is selected.
+        const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00')) 
         
-        //getting the forecast days (name of the day)
+        //Loops through each item in the filteredForecast array. 
         filteredForecast.forEach((day) => {
-            const weekDay = new Date(day.dt * 1000).toLocaleDateString('en', {weekday: 'short'})
+            const weekDay = new Date(day.dt * 1000).toLocaleDateString('en', {weekday: 'short'}) //Converts timestamp day.dt into a short weekday format.
 
-            const mainTemp = day.main.temp.toFixed(1)
+            const mainTemp = day.main.temp.toFixed(1) //Rounds temperature velue to one decimal
 
+            //Getting weather type using map.
             const weekWeatherType = day.weather.map((element) => element.description)
-console.log(day.weather.map((el) => el.description));
+            //Console log to use if problems occur
+            console.log(day.weather.map((el) => el.description));
+            //Putting the info into the html.
             forecastItems.innerHTML += `
                 <li>
                     <span>${weekDay}</span>
@@ -101,5 +99,5 @@ console.log(day.weather.map((el) => el.description));
        
     }) 
 }
-
+//Calling fetchForecast-function.
 fetchForecast()

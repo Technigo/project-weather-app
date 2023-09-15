@@ -11,6 +11,7 @@ body {
     height: 100%;
 }
 
+/* CREATING A CSS GRID, PLACING THE ITEMS IN THE GRID*/
 .container {
     display: grid;
     grid-template-rows: 25%, 45%, 20%;
@@ -25,7 +26,7 @@ body {
     grid-row: 2 / span 3;
 }
 
-
+/* FONT SIZES AND WEIGHT*/
 h3 {
     font-weight: 100;
     font-size: 20px;
@@ -35,6 +36,7 @@ h1 {
     font-size: 40px;
 }
 
+/* PADDING AND SIZE OF IMAGE */
 img {
     padding: 10px;
     width: 120px;
@@ -52,6 +54,8 @@ img {
 #F7E9B9 bakgrund light yellow
 
 */
+
+/* STYLING FORECAST-FEATURE */
 .forecast-wrapper ul {
     list-style-type: none;
     padding-left: 0;
@@ -66,6 +70,8 @@ img {
     padding: 0.6em;
 }
 
+/* MEDIA QUERY FOR LARGER SCREENS
+did not make specific for desktop, beacuse it looks the same */
 @media (min-width: 667px) {
     .container {
         width: 500px;
