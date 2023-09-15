@@ -12,6 +12,8 @@ const forecastThree = document.getElementById('forecast-3')
 const forecastFour = document.getElementById('forecast-4')
 const forecastFive = document.getElementById('forecast-5')
 const forecastLabel = document.getElementById('forecast-label')
+const forecastSix = document.getElementById('forecast-6')
+
 
 const BASE_URL= 'https://api.openweathermap.org/data/2.5/'
 const API_KEY = 'bc487ba1fa4b42fcfb85443237a7774e'
@@ -32,7 +34,15 @@ fetch(`${BASE_URL}${URL_WEATHER}?q=${cityQuery}&units=metric&APPID=${API_KEY}`)
     getBasicWeatherInfo(json)
     calculateSunrise(json)
     calculateSunset(json)
+    gettingIconWeather(json)
  })
+}
+
+const gettingIconWeather = (json) => {
+    console.log(json)
+    const icon = json.weather.map ((el) => el.icon)
+    console.log (icon)
+    
 }
 
 const getBasicWeatherInfo = (json) => {
@@ -75,6 +85,11 @@ const insertSunset = (localtimeSunset) => {
     sunset.innerHTML += `${localtimeSunset}`
 }
 
+let iconsAt12=""
+let temperaturesAt12=""
+let feelsLike =""
+let days =""
+
 
 //----Fetching for 5 days forecast
 const fetchForecast = () => {
@@ -89,7 +104,7 @@ fetch(`${BASE_URL}${URL_FORECAST}?q=${cityQuery}&units=metric&APPID=${API_KEY}`)
  }
 
 
- const getWeatherAt12 = (json) => {
+const getWeatherAt12 = (json) => {
     const weatherAt12 = json.list.filter((el) => el.dt_txt.includes("12:00:00")); //Filtering for timestamps
     gettingDays(weatherAt12)
     gettingTemperatures(weatherAt12)
@@ -98,132 +113,77 @@ fetch(`${BASE_URL}${URL_FORECAST}?q=${cityQuery}&units=metric&APPID=${API_KEY}`)
 }
 
 const gettingDays = (weatherAt12) => {
-    const dates_text = weatherAt12.map((el) => el.dt_txt) //getting a new array with dates and time
-    const DayNumber = dates_text.map((el)=>{ //Converting daynames to number
-       return new Date(el).getDay()
-    })
-    const weekday = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 
-    let day1 = weekday[DayNumber[0]];
-    let day2 = weekday[DayNumber[1]];
-    let day3 = weekday[DayNumber[2]];
-    let day4 = weekday[DayNumber[3]];
-    let day5 = weekday[DayNumber[4]];
-    // forecastSection.innerHTML += `
-    //  <div class='forecast-column'>
-    //  <p>Day</p>
-    //  <p>${day1}:</p>
-    //  <p>${day2}:</p>
-    //  <p>${day3}:</p>
-    //  <p>${day4}:</p>
-    //  <p>${day5}:</p>
-    //  </div>`
+    const options = { weekday: 'short' }; // Define the options for formatting the day name
 
-    forecastOne.innerHTML += `
-    ${day1}°C
-    `
-    forecastTwo.innerHTML += `
-    ${day2}°C
-    `
-    forecastThree.innerHTML += `
-    ${day3}°C
-    `
-    forecastFour.innerHTML += `
-    ${day4}°C
-    `
-    forecastFive.innerHTML += `
-    ${day5}°C
-    `
-    
-   
+    days = weatherAt12.map((el) => {
+        const date = new Date(el.dt_txt);
+        return date.toLocaleDateString('en-US', options); // Format the day name
+    });
+    insertInnerHTML (days, temperaturesAt12, iconsAt12, feelsLike)
 }
 
 const gettingIcon = (weatherAt12) => {
     console.log(weatherAt12)
-    const iconsAt12 = weatherAt12.map((el)=> el.weather.map((el)=> el.icon))
-    console.log(iconsAt12)
-    // forecastSection.innerHTML += `
-    // <div class='forecast-column'>
-    //  <p>Temp</p>
-    //  <img src =https://openweathermap.org/img/wn/${iconsAt12[0]}@2x.png></p>
-    //  <img src =https://openweathermap.org/img/wn/${iconsAt12[1]}@2x.png></p>
-    //  <img src =https://openweathermap.org/img/wn/${iconsAt12[2]}@2x.png></p>
-    //  <img src =https://openweathermap.org/img/wn/${iconsAt12[3]}@2x.png></p>
-    //  <img src =https://openweathermap.org/img/wn/${iconsAt12[4]}@2x.png></p>
-    //   </div> `
-    
-    forecastOne.innerHTML += `
-    <img src =https://openweathermap.org/img/wn/${iconsAt12[0]}@2x.png>
-    `
-    forecastTwo.innerHTML += `
-    <img src =https://openweathermap.org/img/wn/${iconsAt12[1]}@2x.png>
-    `
-    forecastThree.innerHTML += `
-    <img src =https://openweathermap.org/img/wn/${iconsAt12[2]}@2x.png>
-    `
-    forecastFour.innerHTML += `
-    <img src =https://openweathermap.org/img/wn/${iconsAt12[3]}@2x.png>
-    `
-    forecastFive.innerHTML += `
-    <img src =https://openweathermap.org/img/wn/${iconsAt12[4]}@2x.png>
-    `
+    iconsAt12 = weatherAt12.map((el)=> el.weather.map((el)=> el.icon))
+
+    insertInnerHTML (days, temperaturesAt12, iconsAt12, feelsLike)
     
 }
 
 const gettingTemperatures = (weatherAt12) => {
-    const temperaturesAt12 = weatherAt12.map((el) => Math.round(el.main.temp))
+    temperaturesAt12 = weatherAt12.map((el) => Math.round(el.main.temp))
+    insertInnerHTML (days, temperaturesAt12, iconsAt12, feelsLike)
+   
 
-    // forecastSection.innerHTML += `
-    // <div class='forecast-column'>
-    //  <p>Temp</p>
-    //  <p>${temperaturesAt12[0]}°C,</p>
-    //  <p>${temperaturesAt12[1]}°C,</p>
-    //  <p>${temperaturesAt12[2]}°C,</p>
-    //  <p>${temperaturesAt12[3]}°C,</p>
-    //  <p>${temperaturesAt12[4]}°C,</p>
-    //   </div> `
-
-    forecastOne.innerHTML += `
-    ${temperaturesAt12[0]}°C
-    `
-    forecastTwo.innerHTML += `
-    ${temperaturesAt12[1]}°C
-    `
-    forecastThree.innerHTML += `
-    ${temperaturesAt12[2]}°C
-    `
-    forecastFour.innerHTML += `
-    ${temperaturesAt12[3]}°C
-    `
-    forecastFive.innerHTML += `
-    ${temperaturesAt12[4]}°C
-    `
 }
 
 const gettingFeelsLike = (weatherAt12) => {
-    const feelsLike = weatherAt12.map((el) => Math.round(el.main.feels_like))
-    // forecastSection.innerHTML += `
-    // <div class='forecast-column'>
-    // <p>Feels like</p>
-    // <p>${feelsLike[0]}°C</p>
-    // <p>${feelsLike[1]}°C</p>
-    // <p>${feelsLike[2]}°C</p>
-    // <p>${feelsLike[3]}°C</p>
-    // <p>${feelsLike[4]}°C</p>
-    // </div> `
-    
-    forecastOne.innerHTML += `
-    ${feelsLike[0]}°C`
-    forecastTwo.innerHTML += `
-    ${feelsLike[1]}°C`
-    forecastThree.innerHTML += `
-    ${feelsLike[2]}°C`
-    forecastFour.innerHTML += `
-    ${feelsLike[3]}°C`
-    forecastFive.innerHTML += `
-    ${feelsLike[4]}°C`
+    feelsLike = weatherAt12.map((el) => Math.round(el.main.feels_like))
+    insertInnerHTML (days, temperaturesAt12, iconsAt12, feelsLike)
 
 }
+
+const insertInnerHTML = (days, temperatures, icons, feelsLikePl) => {
+
+    forecastOne.innerHTML = `
+    ${days[0]}
+    <img src =https://openweathermap.org/img/wn/${icons[0]}@2x.png>
+    ${temperatures[0]}°C
+    ${feelsLikePl[0]}°C
+    `
+
+    forecastTwo.innerHTML = `
+    ${days[1]}
+    <img src =https://openweathermap.org/img/wn/${icons[1]}@2x.png>
+    ${temperatures[1]}°C
+    ${feelsLikePl[1]}°C
+    `
+
+    forecastThree.innerHTML = `
+    ${days[2]}
+    <img src =https://openweathermap.org/img/wn/${icons[2]}@2x.png>
+    ${temperatures[2]}°C
+    ${feelsLikePl[2]}°C
+    `
+
+    forecastFour.innerHTML = `
+    ${days[3]}
+    <img src =https://openweathermap.org/img/wn/${icons[3]}@2x.png>
+    ${temperatures[3]}°C
+    ${feelsLikePl[3]}°C
+    `
+
+    forecastFive.innerHTML = `
+    ${days[4]}
+    <img src =https://openweathermap.org/img/wn/${icons[4]}@2x.png>
+    ${temperatures[4]}°C
+    ${feelsLikePl[4]}°C
+    `
+;
+   
+}
+
 
 
 
