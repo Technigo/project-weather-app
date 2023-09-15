@@ -3,16 +3,14 @@ const temp = document.getElementById('temp')
 const weatherType = document.getElementById('weather-type')
 const weatherTypeText = document.getElementById('weather-type-text')
 const mainWeatherSection = document.getElementById('main-weather')
-const sunSection = document.getElementById('sun')
 const forecastSection = document.getElementById('forecast')
-const sunrise = document.getElementById('sunrise')
-const sunset = document.getElementById('sunset')
+const sunrise = document.getElementById('sunrise-p')
+const sunset = document.getElementById('sunset-p')
 const forecastOne = document.getElementById('forecast-1')
 const forecastTwo = document.getElementById('forecast-2')
 const forecastThree = document.getElementById('forecast-3')
 const forecastFour = document.getElementById('forecast-4')
 const forecastFive = document.getElementById('forecast-5')
-const forecastLabel = document.getElementById('forecast-label')
 const weatherIcon = document.getElementById('weather-icon')
 
 
@@ -21,7 +19,7 @@ const API_KEY = 'bc487ba1fa4b42fcfb85443237a7774e'
 
 const URL_WEATHER = 'weather'
 const URL_FORECAST = 'forecast'
-const cityQuery = 'Glasgow, UK'
+const cityQuery = 'Helsingborg, Sweden'
 
 //------Fetching today's weather-----
 const fetchWeather = () => {
@@ -113,8 +111,9 @@ const getWeatherAt12 = (json) => {
     const weatherAt12 = json.list.filter((el) => el.dt_txt.includes("12:00:00")); //Filtering for timestamps
     gettingDays(weatherAt12)
     gettingTemperatures(weatherAt12)
-    gettingFeelsLike(weatherAt12)
+    // gettingFeelsLike(weatherAt12)
     gettingIcon(weatherAt12)
+    gettingWind(weatherAt12)
 }
 
 const gettingDays = (weatherAt12) => {
@@ -131,59 +130,60 @@ const gettingDays = (weatherAt12) => {
 const gettingIcon = (weatherAt12) => {
     console.log(weatherAt12)
     iconsAt12 = weatherAt12.map((el)=> el.weather.map((el)=> el.icon))
-
     insertInnerHTML (days, temperaturesAt12, iconsAt12, feelsLike)
-    
 }
 
 const gettingTemperatures = (weatherAt12) => {
     temperaturesAt12 = weatherAt12.map((el) => Math.round(el.main.temp))
     insertInnerHTML (days, temperaturesAt12, iconsAt12, feelsLike)
-   
-
 }
 
-const gettingFeelsLike = (weatherAt12) => {
-    feelsLike = weatherAt12.map((el) => Math.round(el.main.feels_like))
-    insertInnerHTML (days, temperaturesAt12, iconsAt12, feelsLike)
+// const gettingFeelsLike = (weatherAt12) => {
+//     feelsLike = weatherAt12.map((el) => Math.round(el.main.feels_like))
+//     insertInnerHTML (days, temperaturesAt12, iconsAt12, feelsLike)
+// }
 
+const gettingWind = (weatherAt12) => {
+    windAt12 = weatherAt12.map((el) => Math.round(el.wind.speed))
+    insertInnerHTML(days, temperaturesAt12, iconsAt12, windAt12)
+    console.log(windAt12)
 }
 
-const insertInnerHTML = (days, temperatures, icons, feelsLikePl) => {
+const insertInnerHTML = (days, temperatures, icons, wind) => {
 
     forecastOne.innerHTML = `
     ${days[0]}
     <img src =https://openweathermap.org/img/wn/${icons[0]}@2x.png>
-    ${temperatures[0]}°C
-    ${feelsLikePl[0]}°C
+    <p>${temperatures[0]}°C</p>
+    <p>${wind[0]}m/s</p>
     `
 
     forecastTwo.innerHTML = `
     ${days[1]}
     <img src =https://openweathermap.org/img/wn/${icons[1]}@2x.png>
-    ${temperatures[1]}°C
-    ${feelsLikePl[1]}°C
+    <p>${temperatures[1]}°C</p>
+    <p>${wind[1]}m/s</p>
     `
 
     forecastThree.innerHTML = `
     ${days[2]}
     <img src =https://openweathermap.org/img/wn/${icons[2]}@2x.png>
-    ${temperatures[2]}°C
-    ${feelsLikePl[2]}°C
+    <p>${temperatures[2]}°C</p>
+    <p>${wind[2]}m/s</p>
     `
 
     forecastFour.innerHTML = `
     ${days[3]}
     <img src =https://openweathermap.org/img/wn/${icons[3]}@2x.png>
-    ${temperatures[3]}°C
-    ${feelsLikePl[3]}°C
+    <p>${temperatures[3]}°C</p>
+    <p>${wind[3]}m/s</p>
     `
 
     forecastFive.innerHTML = `
     ${days[4]}
     <img src =https://openweathermap.org/img/wn/${icons[4]}@2x.png>
-    ${temperatures[4]}°C
-    ${feelsLikePl[4]}°C
+    <p>${temperatures[4]}°C</p>
+    <p>${wind[4]}m/s</p>
     `
 ;
    

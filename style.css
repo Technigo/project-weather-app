@@ -13,18 +13,21 @@ body {
 .wrapper {
     width: 390px; 
     height: 850px; 
-    background-color: rgb(218, 216, 211);
+    background-color: rgb(224,224,224)
 }
 
 header {
-    background-image: url("../images/rain-cropped.png");
-    /* background-image: linear-gradient(rgb(165, 181, 250), rgb(203, 221, 247)); */
+    background-image: url("../images/sunny-cropped.png");
     height: 450px; 
     padding: 20px;
     border-bottom-left-radius: 40% 20%;
     border-bottom-right-radius: 40% 20%;
     display: flex;
     flex-direction: column;
+}
+
+header:before {
+    border-radius: 100%;
 }
 
 .search-display {
@@ -41,8 +44,6 @@ header {
 .main-weather {
     display: flex;
     flex-direction: column;
-    
-
 }
 
 .tempSize {
@@ -88,7 +89,7 @@ height: 70px;
     font-size: 25px;
 }
 
-.sun {
+.sun-set-rise {
     width: 350px; 
     color: white;
     font-size: 20px;
@@ -97,27 +98,48 @@ height: 70px;
     /* width: 70%; */
     display: flex;
     flex-direction: row;
-    justify-content:center;
+    justify-content:space-evenly;
 }
 
 .sunrise {
-    margin-right: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100px; 
+}
+
+.sunset { 
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100px; 
+}
+
+.sunrise img {
+    height: 30px; 
+}
+
+.sunset img {
+    height: 30px; 
 }
 
 .forecast {
     display: flex; 
     flex-direction: column;
     justify-content: space-around;
-    background-color: rgb(218, 216, 211);
-    height: 300px; 
+    background-color: rgb(224,224,224);
+    color: rgb(72,72,74); 
+    height: 250px; 
     width: 100%; 
+    margin-top: 50px; 
     font-size: 20px;
 }
 
 .forecast-row {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     width: 100%; 
+    height: 40px; 
     align-items: center;
 }
 
