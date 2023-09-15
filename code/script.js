@@ -5,15 +5,37 @@ const currentCityWeather = document.getElementById('current-city-weather');//tod
 const searchButton = document.getElementById('search-button');
 const swipeButton = document.getElementById('swipe-button');
 const forecastTable = document.getElementById('forecast-table')
-const heroImage = document.getElementById('hero-image');
+const heroImage = document.querySelector('.hero-image');
+
 
 const apiKey = '30497ceff63316bea65ec674ac0ba4c7';
-const cities = ['Stockholm', 'Rome', 'Bordeaux', 'Vienna'];
+
+const cities = [
+    {
+        name: 'Stockholm',
+        image: 'https://images.unsplash.com/photo-1620408696006-d1315bf240f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2773&q=80'
+    },
+    {
+        name: 'Rome',
+        image: 'https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80'
+    },
+    {
+        name: 'Bordeaux',
+        image: 'https://images.unsplash.com/photo-1526581671404-349f224db79b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80'
+    },
+    {
+        name: 'Vienna',
+        image: 'https://images.unsplash.com/photo-1526581671404-349f224db79b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80'
+    }
+];
+
+
 let selectedCity = 0;
 //Reusable functions:
 //Convert a Unix timestamp into "hour:min" format
-const formattedTime = (timestamp) => {
-    sunStatusDate = new Date(timestamp * 1000);
+const formattedTime = (timestamp, timeshift) => {
+    const offset = new Date().getTimezoneOffset() * 60;
+    sunStatusDate = new Date((timestamp + offset + timeshift) * 1000);
     const hours = sunStatusDate.getHours();
     const minutes = sunStatusDate.getMinutes();
     const time = `
@@ -27,7 +49,8 @@ const formattedTime = (timestamp) => {
 //Fetch current data for when entering the page
 getWeatherData = (city) => {
     currentCity.innerHTML = '';
-    const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+    const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city.name}&units=metric&appid=${apiKey}`;
+    heroImage.style.backgroundImage = `url(${city.image})`;
     fetch(currentWeatherUrl)
         .then((response) => response.json())
         .then((currentWeatherJson) => {
@@ -41,7 +64,7 @@ getWeatherData = (city) => {
             <h2> ${currentWeatherJson.name}</h2>
             `;
             currentCity.innerHTML += `
-            <p>${formattedTime(currentWeatherJson.dt)}</p>
+            <p>${formattedTime(currentWeatherJson.dt, currentWeatherJson.timezone)}</p>
             `
             currentCity.innerHTML += `
             <p> ${currentWeatherJson.weather[0].description}</p>
@@ -50,8 +73,7 @@ getWeatherData = (city) => {
             <img src="https://openweathermap.org/img/wn/${currentWeatherJson.weather[0].icon}@2x.png">
             `;
             currentCity.innerHTML += `
-            <p> sunrise ${formattedTime(currentWeatherJson.sys.sunrise)} 
-            / sunset ${formattedTime(currentWeatherJson.sys.sunset)}
+            <p> sunrise ${formattedTime(currentWeatherJson.sys.sunrise, currentWeatherJson.timezone)} / sunset ${formattedTime(currentWeatherJson.sys.sunset, currentWeatherJson.timezone)}</p>
             `;
 
         })
@@ -64,7 +86,7 @@ getWeatherData = (city) => {
 weeklyForecast = (city) => {
     // Fetch current weather data for the entered city
     // Fetch 5-day weather forecast for the entered city
-    const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`;
+    const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city.name}&units=metric&appid=${apiKey}`;
     console.log(weeklyForecast)
     fetch(forecastUrl)
         .then((response) => response.json())
