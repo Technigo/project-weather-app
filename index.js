@@ -9,6 +9,7 @@ const sunriseAndTime = document.getElementById(`sunriseAndTime`)
 const sunsetAndTime = document.getElementById(`sunsetAndTime`)
 const description = document.getElementById(`description`)
 const img = document.getElementById(`correctImg`)
+const dateAndTime = document.getElementById(`dateAndTime`)
 
 //GLOBAL VARIABLES//
 const BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
@@ -102,7 +103,24 @@ function updateWeatherUI(data) {
     sunsetAndTime.textContent = `Sunset ${hours2}:${minutes2}` //displaying only hours and minutes of sunrise
 }
 
-//Elin: make sun img come up if sunny, rain if rainy, etc.
+//date and time
+const currentDate = new Date();
+
+const todaysDay = currentDate.getDay(); //Get day from Date (recieves day in number 0=sunday, 1=monday etc)
+const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]; //array of weekdays made to be able to set current day as "monday" instead of "1" (has to start on sunday to work correctly)
+const dayOfWeek = daysOfWeek[currentDate.getDay()]; //converts weekdays from numbers to strings
+const todaysDate = currentDate.getDate(); //get date from Date
+const todaysMonth = currentDate.getMonth(); //get month from Date
+const monthAbbreviations = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]; //Array of months made to be able to set current month to "Jan" instead of "1"
+const todaysMonthAbbreviation = monthAbbreviations[currentDate.getMonth()]; //converts months from number to strings
+const hours3 = currentDate.getHours(); //get hours from Date
+const minutes3 = currentDate.getMinutes(); //get minutes from Date
+const formattedMinutes = (minutes3 < 10) ? `0${minutes3}` : minutes3; //if minutes3 is less then 10, it adds a 0 in front of the minute. For example: the time is 15:05. Without formatted minutes it'd say 15:5.
+
+//displays time and date in the browser
+dateAndTime.textContent = `${dayOfWeek} ${todaysDate} ${todaysMonthAbbreviation}. Time is ${hours3}:${formattedMinutes} `
+
+//Elin: 
 
 //Mirela: The next 5 days
 
