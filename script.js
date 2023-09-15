@@ -45,7 +45,6 @@ const todayWeather = (city) => {
       // console.log(city);
       if (city === "undefined") {
         alert(`Please type the correct city name! 😁 This image will refresh`);
-        // todayWeather("Stockholm");
         weatherForecast("Stockholm");
       } else {
         cityName.innerText = `${city}`;
@@ -72,8 +71,8 @@ const todayWeather = (city) => {
           timeStyle: "short",
         });
         // print out the result
-        console.log(sunriseTime);
-        console.log(sunsetTime);
+        // console.log(sunriseTime);
+        //  console.log(sunsetTime);
         sunriseText.innerHTML = `<p>sunrise ${sunriseTime}</p>`;
         sunsetText.innerHTML = `<p>sunset ${sunsetTime}</p>`;
         // background change based on the weather
@@ -97,7 +96,7 @@ const todayWeather = (city) => {
       }
     })
     .catch((error) => {
-      console.log("caught error", error);
+      // console.log("caught error", error);
     });
 };
 
@@ -112,14 +111,14 @@ const currentTime =
   addLeadingZero(currentHour) + ":" + addLeadingZero(currentMinutes);
 
 currentTimeHeader.innerText = `Time: ${currentTime}`;
-console.log(currentTime);
+// console.log(currentTime);
 
 // create a search function for storing the user input from the search bar
 const searchInputCity = () => {
   weatherForecastDiv.innerHTML = "";
   //fetch input value from user input
   let searchCity = inputField.value;
-  console.log(searchCity);
+  // console.log(searchCity);
   todayWeather(searchCity);
   weatherForecast(searchCity);
 
@@ -165,14 +164,14 @@ const weatherForecast = (city) => {
       return response.json();
     })
     .then((data) => {
-      console.log("all the data: ", data);
+      // console.log("all the data: ", data);
       const filteredListAtNoon = data.list.filter((forecast) =>
         forecast.dt_txt.includes("12:00:00")
       );
       forecastDay(filteredListAtNoon);
     })
     .catch((error) => {
-      console.log("caught error", error);
+      // console.log("caught error", error);
     });
 };
 
