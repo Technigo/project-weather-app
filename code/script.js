@@ -20,7 +20,6 @@ const getWeather = () => {
         .then((json) => {
             // Declaring a variable for our data
             const weatherData = json;
-            console.log(weatherData);
             showMainWeatherInfo(weatherData);
             sunsetSunrise(weatherData); // Save the relevant data
         })
@@ -55,7 +54,7 @@ const showMainWeatherInfo = (weatherData) => {
     typeOfWeather.innerHTML = `<p>${firstUpperLetter}${restOfWord}</p>`;
 }
 
-// Function to set sunrise and sunset times
+// Function to change sunrise and sunset visuals
 const sunsetSunrise = (weatherData) => {
     // Set sunrise and sunset
     // Converting the UNIX timestamp into a human-readable time.
@@ -67,9 +66,9 @@ const sunsetSunrise = (weatherData) => {
     const sunsetShort = sunset.toLocaleTimeString(["en-GB"], { timeStyle: `short` });
 
     locationSpecifics.innerHTML += `
-    <div class="sunUpDown">
-        <p>Sunrise ${sunriseShort}</p>
-        <p>Sunset ${sunsetShort}</p>
+        <div class="sunUpDown">
+            <p>Sunrise ${sunriseShort}</p>
+            <p>Sunset ${sunsetShort}</p>
         </div>
     `;
 
@@ -99,7 +98,7 @@ const sunsetSunrise = (weatherData) => {
     }
 }
 
-// Function to fetch weather with timestamps
+// Function to fetch forecast with timestamps
 const getForecast = () => {
     fetch(forecastURL)
         .then((response) => {
@@ -116,6 +115,17 @@ const getForecast = () => {
         })
 }
 getForecast();
+
+// This function takes a parameter "timestamp", which we use in the getMinMax function to set the day and append it to the forecastSection.
+const getDayOfWeek = (timestamp) => {
+    // Declares a variable/an array with all the days of the week in the format we want to display them
+    const daysOfWeek = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
+    // Using the Date-method by multiplying with 1000, we get the timestamp in a readable timeformat, it converts UNIX timestamp to milliseconds
+    const date = new Date(timestamp * 1000);
+    // getDay is a method on the Date object that returns the day as an integer. By setting the integer as an index we can decide what day should have what name. In the getDay method the integer 0 represents sunday, thats why the order of the weekdays above is with sunday as the first day. 
+    const dayOfWeek = daysOfWeek[date.getDay()];
+    return dayOfWeek;
+};
 
 // Function to extract and save the relevant data, takes forecastData as a parameter so that we get the data from the fetch and can use it here
 const saveData = (forecastData) => {
@@ -163,20 +173,9 @@ const createTable = (dailyTemperatures) => {
     }
 };
 
-// This function takes a parameter "timestamp", which we use in the getMinMax function to set the day and append it to the forecastSection.
-const getDayOfWeek = (timestamp) => {
-    // Declares a variable/an array with all the days of the week in the format we want to display them
-    const daysOfWeek = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
-    // Using the Date-method by multiplying with 1000, we get the timestamp in a readable timeformat, it converts UNIX timestamp to milliseconds
-    const date = new Date(timestamp * 1000);
-    // getDay is a method on the Date object that returns the day as an integer. By setting the integer as an index we can decide what day should have what name. In the getDay method the integer 0 represents sunday, thats why the order of the weekdays above is with sunday as the first day. 
-    const dayOfWeek = daysOfWeek[date.getDay()];
-    return dayOfWeek;
-};
-
 // Utility function to insert styling easier
 function insertStyle(code) {
-    var style = document.createElement('style');
+    var style = document.createElement("style");
     style.innerHTML = code;
     document.getElementsByTagName("head")[0].appendChild(style);
 };
