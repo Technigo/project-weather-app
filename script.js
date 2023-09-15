@@ -1,6 +1,5 @@
 "use strict";
 
-let currentWeather;
 let dayIndex;
 let didInputWork = false;
 
@@ -26,29 +25,31 @@ const menuBtn = document.querySelector(".menu");
 const closeBtn = document.querySelector(".icon-close");
 const deleteBtn = document.getElementById("delete-btn");
 
+const API_KEY = "3a2e7d598cb1958aefb452acd4215121";
+
 // This is for calling an api for main/ upper section
+// This is for calling api for 4 more days
 function callApiCurrentWeather(city) {
-  console.log(city);
   fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=3a2e7d598cb1958aefb452acd4215121&cnt=7`
+    `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&cnt=40&APPID=${API_KEY}`
   )
     .then((response) => response.json())
     .then((data) => {
+      console.log(data);
+
+      const weatherArr = data.list.filter((obj) => obj.dt_txt.includes("03:00"));
+      const weatherOfTheDay = weatherArr.shift();
+      console.log(weatherOfTheDay);
       const {
-        main: { temp, feels_like, temp_min, temp_max },
-        name,
-        weather: [{ description: weather, icon, main }],
-        sys: { sunrise, sunset },
-        timezone,
+        city: { name, timezone, sunrise, sunset },
       } = data;
 
       // this is for correcting time
-
       const currentTimeArr = new Date(new Date().getTime() + timezone * 1000)
         .toUTCString()
         .split(" ");
 
-      const currentTime = currentTimeArr[4].split(":").splice(0, 2).join(":");
+      const timeNow = currentTimeArr[4].split(":").splice(0, 2).join(":");
 
       const currentDay = currentTimeArr[0].slice(0, -1);
       dayIndex = days.indexOf(currentDay);
@@ -70,51 +71,25 @@ function callApiCurrentWeather(city) {
         .splice(0, 2)
         .join(":");
 
-      currentWeather = {
-        city: name,
-        weather: weather,
-        time: currentTime,
-        temp: temp,
-        fllesLike: feels_like,
-        tempMax: temp_max,
-        tempMin: temp_min,
-        sunset: sunsetTime,
-        sunrise: sunriseTime,
-        day: currentDay,
-        icon: icon,
-        main: main,
-      };
-
+      // store a city name in localstorage
       storeCityLocalStorage(city);
-
-      createCardUpper(currentWeather);
-      callApiFiveDaysWeather(city);
-    })
-    .catch((error) => {
-      console.log(error);
-      handleErorr(error, city);
-    });
-}
-
-// This is for calling api for 4 more days
-function callApiFiveDaysWeather(city) {
-  fetch(
-    `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&cnt=40&APPID=3a2e7d598cb1958aefb452acd4215121`
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      const weatherArr = data.list.filter((obj) => obj.dt_txt.includes("03:00"));
-      weatherArr.shift();
+      // create an upper part of card
+      createCardUpper(weatherOfTheDay, name, sunriseTime, sunsetTime, timeNow);
+      // create an under part of card
       createCardUnder(weatherArr);
     })
     .catch((error) => {
       console.error(error);
+      handleErorr(error, city);
     });
 }
 
 // This is for creating a upper section of a card
-function createCardUpper(obj) {
-  const { city, weather, time, temp, fllesLike, tempMax, tempMin, sunset, sunrise, main } = obj;
+function createCardUpper(obj, cityName, sunrise, sunset, timeNow) {
+  const {
+    weather: [{ main, description }],
+    main: { temp, temp_max, temp_min, feels_like },
+  } = obj;
 
   const innerCard = document.createElement("div");
   innerCard.classList.add("upper--card_main");
@@ -130,20 +105,20 @@ function createCardUpper(obj) {
 
     <div>
      <img src=${iconurl} class="icon-main">
-      <p>${Math.round(tempMax)}<span class="degree">&#x2103;</span>/${Math.round(
-    tempMin
+      <p>${Math.round(temp_max)}<span class="degree">&#x2103;</span>/${Math.round(
+    temp_min
   )}<span class="degree">&#x2103;</span></p>
    </div>
    </div>
 
 <div class="currenttime-wrapper">
-  <h2 ${main === "Clouds" ? `class="dark-text"` : ""}>${city}</h2>
-  <p class="currenttime-wrapper-p">time: <span>${time}</span></p>
+  <h2 ${main === "Clouds" ? `class="dark-text"` : ""}>${cityName}</h2>
+  <p class="currenttime-wrapper-p">time: <span>${timeNow}</span></p>
 </div>
 
 <div class="main-details-box">
-  <p class="weather-des">${weather}</p>
-  <p>feels like: ${Math.round(fllesLike)}<span class="degree">&#x2103;</span></p>
+  <p class="weather-des">${description}</p>
+  <p>feels like: ${Math.round(feels_like)}<span class="degree">&#x2103;</span></p>
   <p>sunrise  ${sunrise}</p> <p>sunset  ${sunset}</p>
 </div>
 
@@ -157,7 +132,6 @@ function createCardUpper(obj) {
 
   upperCard.style.backgroundImage = `url(${backgroundImgUrl})`;
 
-  console.log(clickBtnL);
   clickBtnL.style.display = "block";
 
   clickBtnR.style.display = "block";
@@ -176,7 +150,7 @@ function createCardUnder(arr) {
 
   for (let i = 0; i < 4; i++) {
     const {
-      main: { temp, temp_min, temp_max },
+      main: { temp_min, temp_max },
       weather: [{ main }],
     } = arr[i];
     const iconurl = chooseIcons(main);
@@ -185,7 +159,6 @@ function createCardUnder(arr) {
     } else if (isToday === 6) {
       isToday = 0;
     }
-
     const html = `
       <div class="card--under_inner">
       <p ${days[isToday] === days[5] || days[isToday] === days[6] ? `class="red"` : ""}>${
@@ -200,11 +173,6 @@ function createCardUnder(arr) {
     innerCard.insertAdjacentHTML("beforeend", html);
   }
   card.insertAdjacentElement("beforeend", innerCard);
-  // clickBtnL.style.display = "block";
-  clickBtnR.style.display = "block";
-  // menuBtn.style.display = "unset";
-  // dotsBox.style.display = "block";
-  console.log(clickBtnL);
 }
 
 // This is for collecting value when a user writes a city name in an input
@@ -225,7 +193,7 @@ function storeCityLocalStorage(city) {
   !cities.includes(city) ? cities.push(city) : "";
 }
 
-// This controls thenbackground image for upper section
+//  the background image for upper section
 function chooseBackgroundImg(weather) {
   let imgUrl;
   switch (weather) {
@@ -345,6 +313,7 @@ function createDots() {
 }
 
 let activeDot;
+
 // This function add class active to an active card dot.
 function changeActiveDots(index) {
   const dots = document.querySelectorAll(".dot");
