@@ -14,7 +14,10 @@ const sunset = document.getElementById("sunset");
 const weatherIcon = document.getElementById("weather-icon");
 // need to define conditions when to use which symbol. See global variables.
 
+
+
 const dailyWeathertips = document.getElementById("daily-tips");
+
 // need to define conditions when to use which sentence. See global variables.
 
 // weather forecast values
@@ -60,6 +63,7 @@ const pickWeathertip = "Dont´t forget your umbrella. It´s wet in Stockholm tod
 
 // Functions -------------------------------------------------
 
+
 const fetchWeather = () => {
     fetch(URL)
         // gets raw data
@@ -69,7 +73,7 @@ const fetchWeather = () => {
             console.log(data)
             weatherObject = data
             // console.log(weatherObject)
-            setTimeout(() => { insertWeatherdata() }, 500);
+            setTimeout(() => { insertWeatherdata() }, 300);
         })
 };
 
@@ -82,9 +86,9 @@ const fetchWeather = () => {
 const insertWeatherdata = () => {
     // weatherDescription.innerHTML = `${weatherObject.weather[0].description}`;
     weatherDescription.innerHTML = weatherObject.weather[0].description;
-    mainTemperature.innerHTML = weatherObject.main.temp;
-    sunrise.innerHTML = weatherObject.sys.sunrise;
-    sunset.innerHTML = weatherObject.sys.sunset;
+    mainTemperature.innerHTML = (weatherObject.main.temp + "°C"); //Degrees Celsius
+    sunrise.innerHTML = formatTimestamp(weatherObject.sys.sunrise); // NB! formatTimestamp is a function
+    sunset.innerHTML = formatTimestamp(weatherObject.sys.sunset); // NB! formatTimestamp is a function  
     weatherIcon.setAttribute("src", pickWeathersymbol);
     dailyWeathertips.innerHTML = pickWeathertip;
     forecastDay1.innerHTML = "1a";
@@ -99,6 +103,8 @@ const insertWeatherdata = () => {
     forecastTem5.innerHTML = "0 degree";
 };
 
+
+
 // Event listeners -----------------------------------------
 
 
@@ -106,12 +112,63 @@ const insertWeatherdata = () => {
 // CODE STARTS HERE
 fetchWeather();
 
-// test if any data are received
-// setTimeout(() => {
-//     console.log(weatherObject);
-//     console.log(weatherObject.weather[0].description);
-// }, 1000);
+//test if any data are received
+setTimeout(() => {
+     console.log(weatherObject);
+     console.log(weatherObject.weather[0].description);
+     console.log(weatherObject.main.temp);
+     console.log(weatherObject.sys.sunrise*1000);
+      }, 1000);
 
 
+// Data formatting
 
+// Formatting timestamp from unix to readable for people
+const formatTimestamp = (timeStamp) => {
+    const date = new Date(timeStamp * 1000);
+    // Format the date using toLocaleString with options
+    const formattedDate = date.toLocaleString("en-GB", {
+        //year: 'numeric',
+        //month: '2-digit',
+        //day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+    });
+    return formattedDate;
+}
 
+// retrieving sunrise
+
+setTimeout(() => { 
+    const weatherObject = {
+        sys: {
+            sunrise: (weatherObject.sys.sunrise) 
+        }
+    }; 
+    // Retrieving the sunrise timestamp from the weatherObject
+    const sunriseTimestamp = weatherObject.sys.sunrise;
+    // Calling the function with the sunrise timestamp from the weatherObject
+    const formattedSunrise = formatTimestamp(sunriseTimestamp);
+    // testing the formatted sunrise timestamp
+    console.log(formattedSunrise);
+}, 500);
+
+// retrieving sunset
+
+setTimeout(() => {
+    const weatherObject = {
+        sys: {
+            sunset: (weatherObject.sys.sunset) 
+        }
+    };
+
+    // Retrieving the sunset timestamp from the weatherObject
+    const sunsetTimestamp = weatherObject.sys.sunset;
+
+    // Calling the function with the sunset timestamp from the weatherObject
+    const formattedSunset = formatTimestamp(sunsetTimestamp);
+
+    // testing the formatted sunset timestamp
+    console.log(formattedSunset);
+
+}, 500);
