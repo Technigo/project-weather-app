@@ -17,7 +17,7 @@ body {
 }
 
 .main {
-    background-image: url("/code/Images/beautiful-mountains.jpg");
+    background-image: url("/Images/beautiful-mountains.jpg");
     background-repeat: no-repeat;
     object-fit: cover;
     background-size: cover;
