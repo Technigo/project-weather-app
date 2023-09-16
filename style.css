@@ -31,25 +31,15 @@ body {
 .search-bar {
   display: none;
   padding: 10px;
-  font-size: 16px;
+  border-color: white;
+  font-size: 20px;
   border: 1px solid #ced4da;
   width: 200px;
-  border-radius: 4px;
   transition: width 0.4s;
 }
 
 .search-bar:focus {
   width: 240px;
-}
-
-#search-bar {
-  display: none;
-  border: none;
-  background-color: transparent;
-}
-
-#search-button {
-  border-radius: 50%;
 }
 
 .material-symbols-outlined, .search-icon.class ::before {

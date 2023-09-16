@@ -11,12 +11,15 @@
   <body>
     <header>
       <button class="search-button" id="search-button" >
-        <span class="material-symbols-outlined">search</span>
-          <i id="search-icon" class="search-icon-class"></i>
-        <span class="material-symbols-outlined">close</span>
-         <i id="close-icon" class="close-icon-class"></i>
+        <span class="material-symbols-outlined search-icon-class">search</span>
+        <span class="material-symbols-outlined close-icon-class" style="display: none;">close</span>
       </button>
-      <input type="text" class="search-bar" id="search-bar" placeholder="Search">
+    <div class="search-container">
+      <input type="text" class="search-bar" id="search-bar" placeholder="Search" />
+      <button class="search-bar-button" style="display: none;">
+        
+      </button>
+    </div>
     </header>
     
     <div id="weather-container">

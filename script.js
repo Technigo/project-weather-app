@@ -3,10 +3,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const searchButton = document.getElementById('search-button');
   const searchBar = document.getElementById('search-bar');
-  const searchIcon = document.getElementById('search-icon');
   const container = document.getElementById('weather-container');
   const weatherIcon = document.getElementById('weather-icon');
   const forecastContainer = document.getElementById("weather-forecast");
+  const searchIconElement = document.querySelector('.search-icon-class');
+  const closeIconElement = document.querySelector('.close-icon-class');
 
   const city = "Stockholm,Sweden";
   const units = "metric";
@@ -143,13 +144,13 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
 const toggleSearchBar = () => {
   
   if (searchBar.style.display === 'none' || searchBar.style.display === '') {
-    searchBar.style.display = 'block';
+    searchBar.style.display = 'none';
     
-    searchIcon.classList.replace('search-icon', 'close-icon-class');
+    searchIconElement.classList.replace('search-icon', 'close-icon');
   } else {
     searchBar.style.display = 'none';
     
-    searchIcon.classList.replace('close-icon-class', 'search-icon');
+    closeIconElement.classList.replace('close-icon', 'search-icon');
   }
 };
 
@@ -157,12 +158,14 @@ toggleSearchBar();
 
 searchButton.addEventListener('click', () => {
   
-  if (iconElement.classList.contains('search-button')) {
-    iconElement.classList.remove('search-button');
-    iconElement.classList.add('search-icon');
+  if (searchIconElement.style.display !== 'none') {
+    searchIconElement.style.display = 'none';
+    closeIconElement.style.display = 'block';
+    searchBar.style.display = 'block';
   } else {
-    iconElement.classList.remove('search-icon');
-    iconElement.classList.add('search-button');
+    searchIconElement.style.display = 'block';
+    closeIconElement.style.display = 'none';
+    searchBar.style.display = 'none';
   }
 });
 
