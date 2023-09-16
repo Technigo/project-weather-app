@@ -71,7 +71,7 @@ const calculateSunrise = (json) => {
     const sunriseInSeconds = unixTimestamp + timezone + offset //Represents the local time of sunrise in seconds since the Unix epoch.
     const sunriseInMilliseconds = sunriseInSeconds * 1000 //seconds
     const sunriseLocalDate = new Date(sunriseInMilliseconds) //gives date
-    localtimeSunrise = `${sunriseLocalDate.getHours().toString()}:${sunriseLocalDate.getMinutes().toString()}`; //gives only time
+    localtimeSunrise = `${sunriseLocalDate.getHours().toString()}:${sunriseLocalDate.getMinutes().toString().padStart(2, '0')}`; //gives only time
     insertSunrise (localtimeSunrise)
     checkIfDay(localtimeSunrise, localtimeSunset)
 }
@@ -83,7 +83,7 @@ const calculateSunset = (json) => {
     const sunsetInSeconds = unixTimestamp + timezone + offset //Represents the local time of sunrise in seconds since the Unix epoch.
     const sunsetInMilliseconds = sunsetInSeconds * 1000 //seconds
     const sunsetLocalDate = new Date(sunsetInMilliseconds) //gives date
-    localtimeSunset = `${sunsetLocalDate.getHours().toString()}:${sunsetLocalDate.getMinutes().toString()}`; //gives only time
+    localtimeSunset = `${sunsetLocalDate.getHours().toString()}:${sunsetLocalDate.getMinutes().toString().padStart(2, '0')}`; //gives only time
     insertSunset (localtimeSunset)
     checkIfDay(localtimeSunrise, localtimeSunset)
 }
