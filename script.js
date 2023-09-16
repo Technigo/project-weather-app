@@ -64,26 +64,26 @@ const getWeather = async () => {
 
         // Changing greeting, icon and background color based on current weather.
         if (data.weatherDescription.includes("Clouds")) {
-            bodyClassName = "cloudy"
-            iconSource = "/icons/cloud.svg"
-            greeting = `Light a fire and get cozy. ${data.city} is looking grey today.`
+            bodyClassName = "cloudy";
+            iconSource = "/icons/cloud.svg";
+            greeting = `Light a fire and get cozy. ${data.city} is looking grey today.`;
         } else if (data.weatherDescription.includes("Rain")) {
-            bodyClassName = "rainy"
-            iconSource = "/icons/umbrella.svg"
-            greeting = `Don´t forget your umbrella. It´s wet in ${data.city} today.`
+            bodyClassName = "rainy";
+            iconSource = "/icons/umbrella.svg";
+            greeting = `Don´t forget your umbrella. It´s wet in ${data.city} today.`;
         } else {
-            bodyClassName = "sunny"
-            iconSource = "/icons/sunglasses.svg"
-            greeting = `Get your sunnies on! ${data.city} is looking pretty awesome today.`
+            bodyClassName = "sunny";
+            iconSource = "/icons/sunglasses.svg";
+            greeting = `Get your sunnies on! ${data.city} is looking pretty awesome today.`;
         }
 
         // Updating the DOM elements based on weather data.
         document.getElementById("weather-icon").src = iconSource;
-        document.getElementById("greeting").innerText = greeting
-        document.body.className = bodyClassName
+        document.getElementById("greeting").innerText = greeting;
+        document.body.className = bodyClassName;
 
         //Fill bottom section with forecast data.
-        const forecastWrapper = document.getElementById("forecast-wrapper")
+        const forecastWrapper = document.getElementById("forecast-wrapper");
         data.forecast.forEach(element => {
             forecastWrapper.innerHTML += `
             <div class="forecast">
@@ -96,8 +96,10 @@ const getWeather = async () => {
         // Hiding loading sceen and show the weather.
         document.getElementById("loading-symbol").style.display = "none";
         document.getElementById("weather-information").style.display = "block";
-    } catch (error) {
-        console.error(error);
+    } catch {
+        // Hide the spinner and display an error message.
+        document.getElementById("loading-spinner").style.display = "none";
+        document.getElementById("loading-text").innerText = "I´m sorry, but I can´t get the weather right now ... 😭";
     }
 }
 
