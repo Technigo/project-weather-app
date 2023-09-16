@@ -1,10 +1,35 @@
+/* Colors from technigo 
+
+#F47775 - red-ish - text
+#F4F7F8 - light grey - bakground
+
+#164A68 - dark blue - text
+#A3DEF7 - light blue - background
+
+#2A5510 - green - text
+#F7E9B9 - yellow - background
+
+*/
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
 body {
+    background-color: transparent;
+    font-family: 'Montserrat', sans-serif;
+    margin: 30px 50px;
+    height: 100%;
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: 25%, 45%, 20%;
+    height: 100vh;
+    width: 400px;
 }
 
 
@@ -14,19 +39,13 @@ p {
 }
 
 
-.search {
-    font-family: 'Montserrat', sans-serif;
-    margin: 20px;
+
+.header {
+    grid-row: 1 / span 2;
 }
 
-.searchbar {
-    padding: 10px;
-    border-radius: 50px;
-    width: 60%;
-    margin: auto 0;
-    font-family: 'Montserrat', sans-serif;
-    border: 1px solid;
-
+.weather-descritpion {
+    grid-row: 2 / span 3;
 }
 
 /*Footer*/
