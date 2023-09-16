@@ -9,7 +9,7 @@ const getWeatherData = async () => {
 
     // Function that returns the time in hours and minutes.
     const getTimeOfDay = (date) => {
-        return `${date.getHours()}:${date.getMinutes()}`;
+        return `${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
     }
 
     // Variables that returns weather and forecast data.
@@ -39,7 +39,7 @@ const getWeatherData = async () => {
     // Returning an object with all the data we need.
     return {
         city: weatherData.name,
-        weatherDescription: weatherData.weather[0].description,
+        weatherDescription: weatherData.weather[0].main,
         sunrise: getTimeOfDay(new Date(forecastData.city.sunrise * 1000)),
         sunset: getTimeOfDay(new Date(forecastData.city.sunset * 1000)),
         temperature: weatherData.main.temp,
@@ -52,6 +52,13 @@ const getWeather = async () => {
     try {
         const data = await getWeatherData();
         console.log(data)
+
+        document.getElementById("current-weather").innerText = `${data.weatherDescription} | ${data.temperature}°`
+        document.getElementById("sunrise").innerText = `Sunrise ${data.sunrise}`
+        document.getElementById("sunset").innerText = `Sunset ${data.sunset}`
+
+        document.getElementById("loading-symbol").style.display = "none";
+        document.getElementById("weather-information").style.display = "block";
     } catch (error) {
         console.error(error);
     }
