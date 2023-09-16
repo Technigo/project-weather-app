@@ -10,13 +10,38 @@ h2 {
 .container {
   height: 900px;
   width: 400px;
-  background-color: lightblue;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
   font-family: "Roboto", sans-serif;
+  position: relative;
+  max-width: 400px;
+  overflow: hidden;
+  background-color: lightblue;
 }
+
+.header-background {
+  height: 900px;
+  width: 800px;
+  background: turquoise;
+  border-radius: 50%;
+  position: absolute;
+  right: 50%;
+  bottom: 40%;
+  transform: translate(50%);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.weather-header {
+  margin: 50px;
+  z-index: 4;
+}
+
+.search {
+  position: relative;
+}
+
 #temperature {
   color: aliceblue;
   font-size: 100px;
@@ -25,6 +50,7 @@ h2 {
   align-items: flex-start;
   margin-left: 10px;
 }
+
 #city {
   color: aliceblue;
   font-weight: 80;
@@ -36,7 +62,9 @@ h2 {
   margin-left: 10px;
   text-transform: capitalize;
 }
-.sunriseandsunset, .sunrise, .sunset {
+.sunriseandsunset,
+.sunrise,
+.sunset {
   display: flex;
   color: aliceblue;
 }
@@ -67,35 +95,21 @@ h2 {
   color: white;
 }
 
-.weather-header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(to bottom, #88c6ea, #4b9ac6);
-  background-size: cover;
-  background-repeat: no-repeat;
-  padding-top: 100px;
-}
-
 .forecastSection {
-  background-color: lightseagreen;
   padding: 20px;
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
 }
 
 .forecast {
   display: flex;
   flex-direction: column;
-  padding: 1rem 0;
-  /* border: 1px solid red; */
+  padding: 2rem 1rem 0 1rem;
+  margin-top: 2rem;
 }
 
 .futureForecast {
   display: flex;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 0.7rem;
   /* border: 1px solid orange; */
 }
 

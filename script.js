@@ -7,9 +7,11 @@ const forecast = document.querySelector(".forecast");
 const weatherHeader = document.querySelector(".weather-header");
 const typeOfWeatherData = document.querySelector(".typeOfWeatherData");
 const search = document.getElementById("search");
+const headerBackground = document.querySelector(".header-background");
 
-const searchSubmit = search.addEventListener("change", (e) => searching(e.target.value));
-
+const searchSubmit = search.addEventListener("change", (e) =>
+  searching(e.target.value)
+);
 
 const API_KEY = "64856650e6321cbb411769554b46b8ad";
 // Reserve API KEY = "421db630ea3e3aeb0cb64db6a500c27b"
@@ -20,11 +22,10 @@ let API_CALL = `${url}`;
 const searching = (city) => {
   cityName = city;
   url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${API_KEY}`;
-  API_CALL = `${url}`; 
+  API_CALL = `${url}`;
   forecast.innerHTML = "";
   apiData();
-}
-
+};
 
 const apiData = () => {
   fetch(API_CALL)
@@ -41,33 +42,39 @@ const apiData = () => {
       typeOfWeatherData.innerHTML = `
       <img src="http://openweathermap.org/img/wn/${weatherIconTop}@2x.png" alt="weather-icon" class="weather-icon">
       `;
-    const unixTimestampSunrise = data.sys.sunrise;
-  
-    const timezone = data.timezone
-    const offset = new Date().getTimezoneOffset() * 60; //Offset in sec
-    const sunriseInSeconds = unixTimestampSunrise + timezone + offset;
-    const sunriseinMilliseconds = sunriseInSeconds * 1000;
-    const sunriseLocalDate = new Date(sunriseinMilliseconds);
-    const LocalTimeSunrise = sunriseLocalDate.toLocaleTimeString([], {timeStyle: "short", hour12: false,});
-    sunrise.innerText = LocalTimeSunrise;
-    const unixTimestampSunset = data.sys.sunset;
+      const unixTimestampSunrise = data.sys.sunrise;
 
-    const sunsetInSeconds = unixTimestampSunset + timezone + offset;
-    const sunsetinMilliseconds = sunsetInSeconds * 1000;
-    const sunsetLocalDate = new Date(sunsetinMilliseconds);
-    const LocalTimeSunset = sunsetLocalDate.toLocaleTimeString([], {timeStyle: "short", hour12: false,}); // Convert timestamps to readable time format
-    sunset.innerText = LocalTimeSunset;
+      const timezone = data.timezone;
+      const offset = new Date().getTimezoneOffset() * 60; //Offset in sec
+      const sunriseInSeconds = unixTimestampSunrise + timezone + offset;
+      const sunriseinMilliseconds = sunriseInSeconds * 1000;
+      const sunriseLocalDate = new Date(sunriseinMilliseconds);
+      const LocalTimeSunrise = sunriseLocalDate.toLocaleTimeString([], {
+        timeStyle: "short",
+        hour12: false,
+      });
+      sunrise.innerText = LocalTimeSunrise;
+      const unixTimestampSunset = data.sys.sunset;
 
-    console.log(LocalTimeSunrise, LocalTimeSunset)
+      const sunsetInSeconds = unixTimestampSunset + timezone + offset;
+      const sunsetinMilliseconds = sunsetInSeconds * 1000;
+      const sunsetLocalDate = new Date(sunsetinMilliseconds);
+      const LocalTimeSunset = sunsetLocalDate.toLocaleTimeString([], {
+        timeStyle: "short",
+        hour12: false,
+      }); // Convert timestamps to readable time format
+      sunset.innerText = LocalTimeSunset;
+
+      console.log(LocalTimeSunrise, LocalTimeSunset);
       /* Forecast */
       let lat = data.coord.lat;
       let lon = data.coord.lon;
 
       let mainWeather = data.weather[0].main;
-      if (mainWeather === "Clouds") {
-        weatherHeader.style.backgroundImage =
-          "url('https://media3.giphy.com/media/xT9GEpqOhIhNcV5etq/giphy.gif')";
-      }
+      // if (mainWeather === "Clouds") {
+      //   headerBackground.style.backgroundImage =
+      //     "url('https://media3.giphy.com/media/xT9GEpqOhIhNcV5etq/giphy.gif')";
+      // }
       console.log(mainWeather);
       //May need to be replaced
       let localTime = new Date((data.dt + data.timezone) * 1000);
