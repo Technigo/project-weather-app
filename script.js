@@ -64,7 +64,10 @@ const todaysWeatherFeature = async (city) =>{
 
         currentTemperature.innerHTML = `<p><div class ="tempNumber">${temperature}</div> <div class="degrees">°C</div></p>`
         cityTimeDesc.innerHTML += `<h1 class="cityFont">${cityName}</h1>`
-        cityTimeDesc.innerHTML += `<p>${currentTime()}</p>`
+        let timeNow = currentTime()
+        cityTimeDesc.innerHTML += `<p>${timeNow}</p>`
+    
+        dayNightOrDusk(sunriseTime, sunsetTime)
 
         let weatherIcon = createIcon(json.weather[0].icon)
         cityTimeDesc.innerHTML +=`
@@ -98,27 +101,21 @@ fetch(searchString("forecast", city))
 
             if (day.toDateString() === today) {}
             else {
-                addForecastRows(iterationNum, day, weatherIcon, weatherDescription, temperature, windSpeed)
+                const forecastRow = document.getElementById(`forecastRow${iterationNum}`)
+
+                const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+                let dayOfWeek = weekDays[day.getDay()]
+                forecastRow.innerHTML += `<p>${dayOfWeek}</p>`
+
+                forecastRow.innerHTML += `<img src = "${weatherIcon}", alt = "${weatherDescription}", width = "60px"></img>`
+
+                forecastRow.innerHTML += `<p>${temperature}°C</p>`
+                forecastRow.innerHTML +=`<p>${windSpeed} m/s</p>`            
+
                 iterationNum ++
             }
         })
     })
-}
-
-//Adding data from the fetched forcast to a div in the HTML
-const addForecastRows = 
-(iter, date, weatherIcon, weatherDescription, temperature, windSpeed) => {
-    const forecastRow = document.getElementById(`forecastRow${iter}`)
-
-    const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-    let dayOfWeek = weekDays[date.getDay()]
-    forecastRow.innerHTML += `<p>${dayOfWeek}</p>`
-    
-    forecastRow.innerHTML += `<img src = "${weatherIcon}", alt = "${weatherDescription}", width = "60px"></img>`
-
-    forecastRow.innerHTML += `<p>${temperature}°C</p>`
-
-    forecastRow.innerHTML +=`<p>${windSpeed} m/s</p>`
 }
 
 //Function for current time
@@ -174,9 +171,19 @@ const searchFunction = () => {
         forecastRow5.innerHTML =""
 }
 
-//
 const changeBackground = (imgURL) => {
     featureImage.style.backgroundImage = 'url(img/' + imgURL + '.jpg)'
+}
+
+const dayNightOrDusk = (sunriseTime, sunsetTime) => {
+    let date = new Date()
+    let hours = date.getHours()
+    if (hours < sunriseTime.substring(0,2) || hours > sunsetTime.substring(0,2)) {
+        changeBackground('night')
+    }
+    else if (hours > (sunsetTime.substring(0,2) - 1)) {
+        changeBackground('moon') 
+    }
 }
 
 //START
