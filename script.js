@@ -214,7 +214,6 @@ const insertInnerHTML = (days, temperatures, icons, wind) => {
     <p>${temperatures[4]}°C</p>
     <p>${wind[4]}m/s</p>
     `
-;
 }
 
 

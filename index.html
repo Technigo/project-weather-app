@@ -11,50 +11,41 @@
 </head>
 <body>
 <div class ="wrapper">
-
-
-<header>
-    <div class= "header-background" id="header-background"></div>
-    <div class = "search-display">
-        <img src="./images/search-icon.png" alt = "search" class="icon-search">
-    </div>
-    <!-- <div class="background-image">
-        <img src="./images/sun.png" alt="sunny">
-    </div> -->
-    <section class ="main-weather" id="main-weather">
-        <div class="tempSize">
-        <h1 class ="temp" id="temp">Temperature</h1>
-        <p class="c">°C</p>
+    <header>
+        <div class= "header-background" id="header-background">
         </div>
-        <h2 class="city" id="city">City</h2>
-        <div class = "weather-type" id="weather-type">
-        <p class ="weather-type-text" id="weather-type-text">Weather Type</p>
+        <div class = "search-display">
+            <img src="./images/search-icon.png" alt = "search" class="icon-search">
         </div>
-        <div class ="sun-set-rise" id="sun-set-rise">
-            <div class="sunrise">
-                <img src="./images/sunrise-symbol.png">
-                <p class="sunrise-p" id="sunrise-p"></p>
+        <section class ="main-weather" id="main-weather">
+            <div class="tempSize">
+            <h1 class ="temp" id="temp">Temperature</h1>
+            <p class="c">°C</p>
             </div>
-            <div class="sunset">
-                <img src="./images/sunset-symbol.png">
-                <p class="sunset-p" id="sunset-p"></p>
+            <h2 class="city" id="city">City</h2>
+            <div class = "weather-type" id="weather-type">
+            <p class ="weather-type-text" id="weather-type-text">Weather Type</p>
             </div>
-            
-            
-        </div>
+            <div class ="sun-set-rise" id="sun-set-rise">
+                <div class="sunrise">
+                    <img src="./images/sunrise-symbol.png">
+                    <p class="sunrise-p" id="sunrise-p"></p>
+                </div>
+                <div class="sunset">
+                    <img src="./images/sunset-symbol.png">
+                    <p class="sunset-p" id="sunset-p"></p>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <section class ="forecast" id="forecast">
+        <div class = "forecast-row" id = "forecast-1"></div>
+        <div class = "forecast-row" id = "forecast-2"></div>
+        <div class = "forecast-row" id = "forecast-3"></div>
+        <div class = "forecast-row" id = "forecast-4"></div>
+        <div class = "forecast-row" id = "forecast-5"></div>
     </section>
-   
-
-</header>
-
-<section class ="forecast" id="forecast">
-<div class = "forecast-row" id = "forecast-1"></div>
-<div class = "forecast-row" id = "forecast-2"></div>
-<div class = "forecast-row" id = "forecast-3"></div>
-<div class = "forecast-row" id = "forecast-4"></div>
-<div class = "forecast-row" id = "forecast-5"></div>
-
-</section>
 </div>
 </body>
 <script src="./script.js"></script>
