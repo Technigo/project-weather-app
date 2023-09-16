@@ -63,7 +63,7 @@ const sunriseTimeStringGMT = sunriseTime.toISOString().substr(11, 5);
 const sunsetTimeStringGMT = sunsetTime.toISOString().substr(11, 5);
 
 // Update the weather description
-weatherDescriptionElement.textContent = `${cityName} is reporting a ${weatherDescription} with a wind speed of ${windSpeed} m/s.`; 
+weatherDescriptionElement.textContent = `${cityName} is reporting ${weatherDescription} with a wind speed of ${windSpeed} m/s.`; 
 
 //Sunrise sunset icons in description.
 sunRiseElement.textContent = `☀️⬆ ${sunriseTimeStringGMT}`;
@@ -197,4 +197,3 @@ searchButton.addEventListener('click', () => {
   updateWeatherByCity();
 });
 
-//fetchCurrentWeather();
