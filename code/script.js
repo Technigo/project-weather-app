@@ -98,15 +98,12 @@ const fetchStockholmWeather = () => {
       console.log(sunriseTime);
       console.log(sunsetTime);
       console.log(
-        formattedLocalTime >= sunriseTime && formattedLocalTime >= sunsetTime
-      );
-      console.log(
-        formattedLocalTime <= sunriseTime && formattedLocalTime <= sunsetTime
+        formattedLocalTime >= sunriseTime && formattedLocalTime <= sunsetTime
       );
 
       // WHY DOES THIS WORK?
       if (
-        formattedLocalTime <= sunriseTime &&
+        formattedLocalTime >= sunriseTime &&
         formattedLocalTime <= sunsetTime
       ) {
         // Daytime background images depending on weather.
@@ -130,7 +127,7 @@ const fetchStockholmWeather = () => {
         if (todaysWeather === "Clear") {
           background.style.backgroundImage = `url('./images/night.jpg')`;
         } else {
-          background.style.backgroundImage = `url('./images/cloudy-night.jpg')`;
+          background.style.backgroundImage = `url('./images/night-cloudy.jpg')`;
         }
       }
     })
