@@ -1,13 +1,16 @@
-# Weather App
+# Weather app
+ This is a project from week 4 of the Technigo Bootcamp.
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This weather app will provide 5 days weather forecast in a city of your search. It will save the search results so that they will not disappear when you reopen the page.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I have encountered many problems. One of them has not been solved yet. That is, when you click on a delete city button, it works in an unexpected way. I will have to come back and fix this in the future.
+The hardest thing was converting JS stored time to readable time, and I did a lot of experimenting with time to see what the difference was between the different build in methods.
+I also find it very challenging to implement many functions and event handlers in one function, because it often behaves differently when you change an order. When to hide things and when to show them again was also something I had to learn a lot about. I also find it difficult to think about how to break down functions into smaller functions, as it gets pretty big. I should come back to fix and refactor this project and fix some bugs.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Link to deployed site: https://sakura-world-weather-app.netlify.app/
+
+
