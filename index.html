@@ -9,24 +9,47 @@
     <!--<meta http-equiv="X-UA-Compatible" content="ie=edge"-->
     <title>Weather app</title>
     <link rel="stylesheet" href="./style.css">
+    <!--ELBA Ikon library hamb.-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-
 <body>
-    <h1>Welcome to EME's weather</h1>
-    <section>
-        <div class="weatherData">
-            <div id="Temperature"></div>
-            <div id="city"></div>
-            <div id="description"></div>
-            <div id="todaysAdvice"></div>
-            <div id="sunriseAndTime"></div>
-            <div id="sunsetAndTime"></div>
-            <img src="./design/design1/assets/Group16.png" alt="cloud">
-            <img src="./design/design1/assets/Group34.png" alt="sunnycloud">
-            <img src="./design/design1/assets/Group36.png" alt="sunny">
-        </div>
+    <!--ELBA made the section a class for styling-->
+    <section class="style-topOfPage">
+        <!--ELBA addednavbar in section-->
+        <nav>
+            <!--The logo (EmE' WEATHER)-->
+            <a href="#home" class="logo"> <span class="logo-em">EmE</span>
+                <span class="logo-weather">WEATHER</span>
+                <!--Hamburger menu when clicked (MENU NAVIGATION LINKS)-->
+                <div id="myLinks">
+                    <a href="#test1">test1</a>
+                    <a href="#test2">test2</a>
+                    <a href="#test3">test3</a>
+                </div>
+                <!--HAMBURGER MENU ICON-->
+                <a href="javascript:void(0);" class="icon" onclick="toggleNavMenu()"> <i class="fa fa-bars"></i>
+                </a>
+        </nav>
+        <!--ELBA moved class="weatherData" into header-->
+        <header>
+
+            <div class="weatherData">
+                <img src="./design/design1/assets/Group16.png" alt="cloud">
+                <img src="./design/design1/assets/Group34.png" alt="sunnycloud">
+                <img src="./design/design1/assets/Group36.png" alt="sunny">
+                <div id="Temperature"></div>
+                <div id="city"></div>
+                <div id="description"></div>
+                <div id="todaysAdvice"></div>
+                <div id="sunriseAndTime"></div>
+                <div id="sunsetAndTime"></div>
+
+            </div>
+        </header>
     </section>
+
+
 
     <section id="weeklyForecast">
         <div id="day1">

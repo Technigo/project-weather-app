@@ -81,4 +81,24 @@ function updateWeatherUI(data) {
 
 //brances added - need to commit? Did it just in case
 
+//ELBA ADDED "function toggleNavMenu" FOR NAVBAR
+function toggleNavMenu() {
+    var x = document.getElementById("myLinks");
+    var icon = document.querySelector("nav a.icon");
+    var topOfPage = document.querySelector(".style-topOfPage");
+
+    if (x.style.display === "block") {
+        x.style.display = "none";
+        icon.classList.remove("active"); // Remove the "active" class
+        topOfPage.style.height = "auto"; // Set the height to auto to expand
+        topOfPage.classList.remove("clicked"); // Remove the "clicked" class
+    } else {
+        x.style.display = "block";
+        icon.classList.add("active"); // Add the "active" class
+        topOfPage.style.height = topOfPage.scrollHeight + x.scrollHeight + "px"; // Expand to the full content height plus the menu height
+        topOfPage.classList.add("clicked"); // Add the "clicked" class
+    }
+}
+//I think I understand the if/else and remove add, but find it hard to explain. I'll try to if we have enough time. 
+
 window.addEventListener("load", fetchWeatherData);

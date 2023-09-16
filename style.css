@@ -1,1 +1,117 @@
 /* mobile first!!!*/
+/* To reset all margins, padding, and border*/
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+html {
+    background-color: hotpink;
+}
+
+body {
+    background-color: transparent;
+}
+
+/* STYLING THE WHOLE TOP OF THE PAGE SECTION STARTS HERE */
+.style-topOfPage {
+    background-color: beige;
+    /*text-align
+    background-size: cover;
+    background-attachment: fixed;bilde?
+    posision:relative;
+    owerflow:hidden;*/
+    overflow: hidden;
+    width: 100%;
+    min-height: 300px;
+    /*border-radius: 0 0 50% 50%/ 30%; Didnt like the way this looked*/
+    clip-path: ellipse(85% 85% at 50% 0%);
+
+}
+
+.style-topOfPage.clicked {
+    clip-path: ellipse(100% 85% at 50% 0%);
+    background-color: white;
+    /* Adjusts bottom of the curve when hamburg.menu is clicked*/
+    /*js: topOfPage.classList.remove("clicked"); topOfPage.classList.add("clicked");*/
+    /*Values explained in: NOTAT FORKLARING NR1 (remember to share with group)*/
+}
+
+
+/* NAVIGATION MENU STYLING STARTS HERE */
+nav {
+    overflow: hidden;
+    position: relative;
+}
+
+/* Hides links inside the nav. menu */
+#myLinks {
+    display: none;
+}
+
+/* Style nav menu links (dropped down) */
+nav a {
+    color: rgb(0, 217, 255);
+    padding: 7px;
+    text-decoration: overline;
+    font-size: 18px;
+    display: block;
+    text-align: center;
+
+}
+
+/* Style the hamburger menu */
+nav a.icon {
+    color: brown;
+    display: block;
+    position: absolute;
+    text-align: left;
+    font-size: 35px;
+    left: 0;
+    top: 0;
+}
+
+/* Style the hamburger menu when cicked */
+nav a.icon.active {
+    background-color: white;
+    color: rgb(140, 105, 255);
+
+}
+
+/*LOGOSTYLING IN NAVBAR*/
+
+.logo {
+    color: rgb(25, 25, 24);
+    text-decoration: none;
+    text-align: right;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    right: 0;
+    top: 0;
+    margin: 0;
+    position: relative;
+}
+
+.logo-em {
+    /*EmE'*/
+    font-size: 14px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.logo-weather {
+    /*WEATHER*/
+    font-size: 8px;
+    margin: 0;
+    display: block;
+}
+
+/* NAVIGATION MENU STYLING ENDS HERE */
+/* STYLING THE WHOLE TOP OF THE PAGE SECTION ENDS HERE */
