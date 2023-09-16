@@ -20,13 +20,16 @@ const API_KEY = 'bc487ba1fa4b42fcfb85443237a7774e'
 
 const URL_WEATHER = 'weather'
 const URL_FORECAST = 'forecast'
-const cityQuery = 'Helsingborg, Sweden'
+const cityQuery = 'Helsingborg,Sweden'
 
 //Global variables
 let iconsAt12=""
 let temperaturesAt12=""
-let feelsLike =""
+let windAt12=""
 let days =""
+let localtimeSunrise=""
+let localtimeSunset=""
+let weatherTypes=""
 
 //------Fetching today's weather-----
 const fetchWeather = () => {
@@ -55,9 +58,8 @@ const getBasicWeatherInfo = (json) => {
     city.innerHTML = cityName 
     const mainTemperature = `${Math.round(json.main.temp)}`
     temp.innerHTML = mainTemperature
-    json.weather.forEach((element) => {
-        weatherTypeText.innerHTML = `${element.main}`
-    }) 
+    weatherTypes = json.weather[0].main
+    weatherTypeText.innerHTML = weatherTypes
 }
 
 const calculateSunrise = (json) => {
@@ -69,8 +71,9 @@ const calculateSunrise = (json) => {
     const sunriseInSeconds = unixTimestamp + timezone + offset //Represents the local time of sunrise in seconds since the Unix epoch.
     const sunriseInMilliseconds = sunriseInSeconds * 1000 //seconds
     const sunriseLocalDate = new Date(sunriseInMilliseconds) //gives date
-    const localtimeSunrise = `${sunriseLocalDate.getHours().toString()}:${sunriseLocalDate.getMinutes().toString()}`; //gives only time
+    localtimeSunrise = `${sunriseLocalDate.getHours().toString()}:${sunriseLocalDate.getMinutes().toString()}`; //gives only time
     insertSunrise (localtimeSunrise)
+    checkIfDay(localtimeSunrise, localtimeSunset)
 }
 
 const calculateSunset = (json) => {
@@ -80,8 +83,9 @@ const calculateSunset = (json) => {
     const sunsetInSeconds = unixTimestamp + timezone + offset //Represents the local time of sunrise in seconds since the Unix epoch.
     const sunsetInMilliseconds = sunsetInSeconds * 1000 //seconds
     const sunsetLocalDate = new Date(sunsetInMilliseconds) //gives date
-    const localtimeSunset = `${sunsetLocalDate.getHours().toString()}:${sunsetLocalDate.getMinutes().toString()}`; //gives only time
+    localtimeSunset = `${sunsetLocalDate.getHours().toString()}:${sunsetLocalDate.getMinutes().toString()}`; //gives only time
     insertSunset (localtimeSunset)
+    checkIfDay(localtimeSunrise, localtimeSunset)
 }
 
 const insertSunrise = (localtimeSunrise) => {
@@ -91,46 +95,41 @@ const insertSunset = (localtimeSunset) => {
     sunset.innerHTML += `${localtimeSunset}`
 }
 
-const today = new Date(); //gets todays date
-console.log(today)
-const time = `${today.getHours()}:${today.getMinutes()}`; //Converts 'today' to hours and minutes //=1120
-console.log(time)
 
-const variabel = false
-
-if(variabel) {
-    console.log("day")
-} else {
-    headerBackground.style.backgroundImage = "url('../images/night-clear-cropped.png')"; 
-    search.style.backgroundColor = "black"
-        
+const checkIfDay = (localtimeSunrise, localtimeSunset) => {
+    const todaysDate = new Date(); //gets todays date
+    const currentTime = todaysDate.getHours()*100 + todaysDate.getMinutes();
+    const timeSunriseEdited = localtimeSunrise.replace(':',''); 
+    const timeSunsetEdited = localtimeSunset.replace(':','');
+    const isDaytime = currentTime >= timeSunriseEdited && currentTime <= timeSunsetEdited
+    showDayMode(isDaytime)
+    console.log(isDaytime)
 }
 
-// // Assuming you have retrieved sunrise and sunset times as Date objects
-// const currentTime = new Date(); // Get the current time
 
-// // Check if it's daytime (between sunrise and sunset)
-// const isDaytime = currentTime >= sunriseTime && currentTime <= sunsetTime;
+const showDayMode = (isDaytime) => {
 
-// // Get references to the background images
-// const daytimeBackground = document.getElementById('daytime-background');
-// const nighttimeBackground = document.getElementById('nighttime-background');
-
-// // Set the visibility of the background images based on whether it's daytime or nighttime
-// if (isDaytime) {
-//   daytimeBackground.style.display = 'block';
-//   nighttimeBackground.style.display = 'none';
-// } else {
-//   daytimeBackground.style.display = 'none';
-//   nighttimeBackground.style.display = 'block';
-// }
-// <div id="app">
-//   <img id="daytime-background" src="daytime.jpg" alt="Daytime Background">
-//   <img id="nighttime-background" src="nighttime.jpg" alt="Nighttime Background">
-//   <!-- Other content of your app goes here -->
-// </div>
-
-
+if(isDaytime) {
+    if (weatherTypes === "Clear"){
+    console.log("det är clear")
+    headerBackground.style.backgroundImage = "url('../images/Sunny-cropped.png')";
+    }
+    else if(weatherTypes === "Rain"){
+    headerBackground.style.backgroundImage = "url('../images/rain-cropped.png')";
+    }       
+    else { 
+    headerBackground.style.backgroundImage = "url('../images/cloudy-cropped_2.png')";
+    console.log("det är varken eller")
+    }
+    console.log("day")
+} else {
+   if (weatherTypes === "Rain")
+    headerBackground.style.backgroundImage = "url('../images/rain-dark-cropped.png')"; 
+    else {
+    headerBackground.style.backgroundImage = "url('../images/night-clear-cropped.png')";
+    }      
+}
+}
 
 //----Fetching for 5 days forecast
 const fetchForecast = () => {
@@ -148,31 +147,29 @@ const getWeatherAt12 = (json) => {
     const weatherAt12 = json.list.filter((el) => el.dt_txt.includes("12:00:00")); //Filtering for timestamps
     gettingDays(weatherAt12)
     gettingTemperatures(weatherAt12)
-    // gettingFeelsLike(weatherAt12)
     gettingIcon(weatherAt12)
     gettingWind(weatherAt12)
 }
 
 const gettingDays = (weatherAt12) => {
     const options = { weekday: 'short' }; // Define the options for formatting the day name
-
     days = weatherAt12.map((el) => {
         const date = new Date(el.dt_txt);
         return date.toLocaleDateString('en-US', options); // Format the day name
     });
 
-    insertInnerHTML (days, temperaturesAt12, iconsAt12, feelsLike)
+    insertInnerHTML (days, temperaturesAt12, iconsAt12, windAt12)
 }
 
 const gettingIcon = (weatherAt12) => {
     console.log(weatherAt12)
     iconsAt12 = weatherAt12.map((el)=> el.weather.map((el)=> el.icon))
-    insertInnerHTML (days, temperaturesAt12, iconsAt12, feelsLike)
+    insertInnerHTML (days, temperaturesAt12, iconsAt12, windAt12)
 }
 
 const gettingTemperatures = (weatherAt12) => {
     temperaturesAt12 = weatherAt12.map((el) => Math.round(el.main.temp))
-    insertInnerHTML (days, temperaturesAt12, iconsAt12, feelsLike)
+    insertInnerHTML (days, temperaturesAt12, iconsAt12, windAt12)
 }
 
 const gettingWind = (weatherAt12) => {
