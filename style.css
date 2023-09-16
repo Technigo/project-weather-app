@@ -22,8 +22,9 @@ body {
 
 /* STYLING THE WHOLE TOP OF THE PAGE SECTION STARTS HERE */
 .style-topOfPage {
-    background-color: beige;
-    /*text-align
+    background-image: linear-gradient(rgb(235, 15, 114), rgb(255, 170, 0), rgb(255, 254, 220));
+    /*background-color: beige;
+    text-align
     background-size: cover;
     background-attachment: fixed;bilde?
     posision:relative;
@@ -38,7 +39,7 @@ body {
 
 .style-topOfPage.clicked {
     clip-path: ellipse(100% 85% at 50% 0%);
-    background-color: white;
+    background-image: linear-gradient(rgb(255, 250, 119), rgb(252, 180, 38), rgb(235, 15, 114));
     /* Adjusts bottom of the curve when hamburg.menu is clicked*/
     /*js: topOfPage.classList.remove("clicked"); topOfPage.classList.add("clicked");*/
     /*Values explained in: NOTAT FORKLARING NR1 (remember to share with group)*/
@@ -58,13 +59,13 @@ nav {
 
 /* Style nav menu links (dropped down) */
 nav a {
-    color: rgb(0, 217, 255);
+    color: rgb(0, 0, 0);
     padding: 7px;
-    text-decoration: overline;
+    text-decoration: overline, ;
     font-size: 18px;
     display: block;
     text-align: center;
-
+    font-weight: 700;
 }
 
 /* Style the hamburger menu */
@@ -73,15 +74,15 @@ nav a.icon {
     display: block;
     position: absolute;
     text-align: left;
-    font-size: 35px;
+    font-size: 30px;
     left: 0;
     top: 0;
 }
 
 /* Style the hamburger menu when cicked */
 nav a.icon.active {
-    background-color: white;
-    color: rgb(140, 105, 255);
+    background-color: transparent;
+    color: brown;
 
 }
 
@@ -101,14 +102,14 @@ nav a.icon.active {
 
 .logo-em {
     /*EmE'*/
-    font-size: 14px;
+    font-size: 16px;
     margin-right: 5px;
     margin-bottom: 5px;
 }
 
 .logo-weather {
     /*WEATHER*/
-    font-size: 8px;
+    font-size: 10px;
     margin: 0;
     display: block;
 }
