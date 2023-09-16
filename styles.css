@@ -21,6 +21,7 @@ body {
 .loading-wrapper {
     height: 100vh;
     display: flex;
+    text-align: center;
     align-items: center;
     flex-direction: column;
     justify-content: center;
@@ -61,7 +62,7 @@ p {
     margin: 0;
     margin-bottom: 0.5rem;
     font-size: 1.4rem;
-    font-weight: regular;
+    font-weight: 400;
 }
 
 .wrapper {
@@ -74,6 +75,7 @@ p {
     flex-direction: row;
     justify-content: space-between;
     border-bottom: 2px dotted;
+    margin-bottom: 0.25rem;
 }
 
 #weather-information {
