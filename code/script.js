@@ -28,6 +28,10 @@ const cities = [
     }
 ];
 
+const weekDays = [
+    'Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'
+]
+
 
 let selectedCity = 0;
 //Reusable functions:
@@ -97,23 +101,25 @@ weeklyForecast = (city) => {
             const today = new Date();
             const todaysDate = today.toLocaleDateString()
             const processedDates = []; //keep track of displayed dates just like with the dogs!!
-            processedDates.push(todaysDate);
+            processedDates.push(todaysDate); //includes today's date in the array from beginning
 
             //Create processedDates array
             forecastJson.list.forEach((forecast) => {
 
                 const dateTime = new Date(forecast.dt * 1000); // Convert timestamp from seconds to ms adapted to Javascript
                 const date = dateTime.toLocaleDateString(); // Formated date accordingly to the user's locale
+                const weekDay = dateTime.getDay(); //Formatted weekday
                 const time = dateTime.toLocaleTimeString(); // Catch the time of data point
 
                 // Display date, weather description, and temperature in Celsius
-                if (!processedDates.includes(date)) {//if the date is not in the processedDates array
-                    if (time === '2:00:00 PM') {//forecast displays only at 2p.m. i.e. middle of day
+                if (!processedDates.includes(date)) {//if date is not already included in the processedDates array, go to next line code
+                    if (time === '2:00:00 PM') {//forecast table displays only if time = 2p.m. i.e. middle of day
+
                         const row = document.createElement('tr');//create a table row
 
-                        const dateCell = document.createElement('td');
-                        dateCell.textContent = `${date}`;
-                        row.appendChild(dateCell);
+                        const weekDayCell = document.createElement('td');
+                        weekDayCell.textContent = `${weekDays[weekDay]}`;
+                        row.appendChild(weekDayCell);
 
                         const iconCell = document.createElement('td');
                         const icon = document.createElement('img');
@@ -139,9 +145,6 @@ weeklyForecast = (city) => {
             console.error('Error message:', error)
         });
 }
-
-
-
 
 //Event listeners 
 //for the searchbutton
