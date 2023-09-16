@@ -10,3 +10,22 @@ body {
     margin: 30px 50px;
     height: 100%;
 }
+
+
+.container {
+    display: grid;
+    grid-template-rows: 25%, 45%, 20%;
+    height: 100vh;
+}
+
+.header {
+    grid-row: 1/ span 2;
+}
+
+.city {
+    grid-row: 1/ span 3;
+}
+
+.weather {
+    grid-row: 1/ span 4;
+}
