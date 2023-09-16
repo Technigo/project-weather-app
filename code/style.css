@@ -1,0 +1,53 @@
+body {
+    background-color: azure;
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    justify-content: center;
+    margin: 15px 15px;
+}
+
+
+/*Footer*/
+footer {
+    width: 100%;
+    text-align: center;
+    color: black;
+    margin-top: 30px;
+    padding: 15px;
+}
+
+.aboutme {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 5px;
+    font-size: 12px;
+    color: black;
+    text-align: center;
+}
+
+.contact {
+    border: 1px solid;
+    border-radius: 15px;
+    width: 150px;
+}
+
+.contactme {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 5px;
+    font-size: 12px;
+}
+
+.contact-logo {
+    width: 30px;
+    opacity: .75;
+}
+
+.contact-logo:hover {
+    transform: scale(1.2);
+    opacity: 1;
+}
