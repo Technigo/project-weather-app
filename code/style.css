@@ -40,8 +40,11 @@ body {
 }
 
 .weekday {
-    border-bottom: dotted #184969 2px;
     padding: 3px;
+}
+
+.forecast-item {
+    border-bottom: dotted #184969 2px;
 }
 
 #city-picker {
@@ -79,10 +82,18 @@ footer {
     color: red;
 }
 
+/* style for forecast container lines */
+.forecast-item {
+    display: flex;
+    justify-content: space-between;
+
+}
+
 @media screen and (min-width: 668px) and (max-width: 1024px) {
     body {
         justify-content: center;
     }
+
     #main-container {
         max-width: 70%;
     }
@@ -92,6 +103,7 @@ footer {
     body {
         justify-content: center;
     }
+
     #main-container {
         max-width: 50%;
     }
