@@ -115,3 +115,24 @@ nav a.icon.active {
 
 /* NAVIGATION MENU STYLING ENDS HERE */
 /* STYLING THE WHOLE TOP OF THE PAGE SECTION ENDS HERE */
+
+.weeklyForecast {
+    background-color: rgb(241, 210, 225);
+    padding-top: 10px;
+}
+
+/*Iwant to style "todays date different, how do I target todays date?*/
+#day1 {
+    background-color: rgb(218, 181, 199);
+    border-radius: 30px;
+    padding: 10px;
+    display: inline-block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*
+.day1 {}
+
+.temperature1 {}*/
