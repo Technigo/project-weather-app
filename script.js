@@ -12,6 +12,8 @@ const forecastThree = document.getElementById('forecast-3')
 const forecastFour = document.getElementById('forecast-4')
 const forecastFive = document.getElementById('forecast-5')
 const weatherIcon = document.getElementById('weather-icon')
+const headerBackground = document.querySelector('.header-background')
+const search = document.querySelector('.search-display')
 
 const BASE_URL= 'https://api.openweathermap.org/data/2.5/'
 const API_KEY = 'bc487ba1fa4b42fcfb85443237a7774e'
@@ -61,7 +63,9 @@ const getBasicWeatherInfo = (json) => {
 const calculateSunrise = (json) => {
     const unixTimestamp = json.sys.sunrise //seconds
     const timezone = json.timezone 
+    console.log(timezone)
     const offset = new Date().getTimezoneOffset() * 60 //Gets the difference between time on local computer and UCT
+    console.log(offset)
     const sunriseInSeconds = unixTimestamp + timezone + offset //Represents the local time of sunrise in seconds since the Unix epoch.
     const sunriseInMilliseconds = sunriseInSeconds * 1000 //seconds
     const sunriseLocalDate = new Date(sunriseInMilliseconds) //gives date
@@ -86,6 +90,47 @@ const insertSunrise = (localtimeSunrise) => {
 const insertSunset = (localtimeSunset) => {
     sunset.innerHTML += `${localtimeSunset}`
 }
+
+const today = new Date(); //gets todays date
+console.log(today)
+const time = `${today.getHours()}:${today.getMinutes()}`; //Converts 'today' to hours and minutes //=1120
+console.log(time)
+
+const variabel = false
+
+if(variabel) {
+    console.log("day")
+} else {
+    headerBackground.style.backgroundImage = "url('../images/night-clear-cropped.png')"; 
+    search.style.backgroundColor = "black"
+        
+}
+
+// // Assuming you have retrieved sunrise and sunset times as Date objects
+// const currentTime = new Date(); // Get the current time
+
+// // Check if it's daytime (between sunrise and sunset)
+// const isDaytime = currentTime >= sunriseTime && currentTime <= sunsetTime;
+
+// // Get references to the background images
+// const daytimeBackground = document.getElementById('daytime-background');
+// const nighttimeBackground = document.getElementById('nighttime-background');
+
+// // Set the visibility of the background images based on whether it's daytime or nighttime
+// if (isDaytime) {
+//   daytimeBackground.style.display = 'block';
+//   nighttimeBackground.style.display = 'none';
+// } else {
+//   daytimeBackground.style.display = 'none';
+//   nighttimeBackground.style.display = 'block';
+// }
+// <div id="app">
+//   <img id="daytime-background" src="daytime.jpg" alt="Daytime Background">
+//   <img id="nighttime-background" src="nighttime.jpg" alt="Nighttime Background">
+//   <!-- Other content of your app goes here -->
+// </div>
+
+
 
 //----Fetching for 5 days forecast
 const fetchForecast = () => {

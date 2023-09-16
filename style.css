@@ -11,26 +11,39 @@ body {
 }
 
 .wrapper {
-    width: 390px; 
+    width: 500px; 
     height: 850px; 
-    background-color: rgb(224,224,224)
+    background-color: rgb(224,224,224); 
+    overflow: hidden; 
 }
 
 header {
-    background-image: url("../images/Sunny-cropped.png");
+    color: white; 
     height: 450px; 
     padding: 20px;
-    border-bottom-left-radius: 40% 20%;
-    border-bottom-right-radius: 40% 20%;
+    /* border-bottom-left-radius: 40% 20%;
+    border-bottom-right-radius: 40% 20%; */
     display: flex;
     flex-direction: column;
+    width: 100%;
+    overflow: hidden; 
+    position: relative; 
 }
 
-header:before {
-    border-radius: 100%;
+.header-background {
+    content: ""; 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    height: 100%; 
+    width: 100%; 
+    background-image:  url("../images/Sunny-cropped.png");
+    border-radius: 0 0 100% 100%; 
+    transform: scaleX(1.5); 
 }
 
 .search-display {
+    z-index: 1; 
     width: 100px; 
     margin-bottom: 50px;
 
@@ -42,6 +55,7 @@ header:before {
 }
 
 .main-weather {
+    z-index: 1; 
     display: flex;
     flex-direction: column;
 }
@@ -55,7 +69,6 @@ header:before {
     font-size: 30px;
     color: white; 
     margin-top: 10px;
-
 }
 
 .temp {
