@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Your code here, including the fetchFiveDayForecast function
 
+  const searchButton = document.getElementsByClassName('search-button');
+  const searchBar = document.getElementById('search-bar');
   const container = document.getElementById('weather-container');
-  const hamburgerMenu = document.getElementById('hamburger-menu');
-  const navMenu = document.getElementById('nav-menu');
   const weatherIcon = document.getElementById('weather-icon');
   const sunriseTime = document.getElementById('sunrise-time')
   const sunsetTime = document.getElementById('sunset-time')
@@ -32,7 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
     <h1>${roundedTemperature} °C</h1>
     <h2>${json.name}</h2>
     <p>${json.weather[0].main}</p>
-
+    <div class="sunrise-time" id="sunrise-time"><p>Sunrise: ${json.sunriseTime},</p></div>
+    <div class="sunset-time"id="sunset-time"><p>Sunset: ${json.sunsetTime}</p></div> 
   `;
   
 //Construct the icon URL using the icon ID from the API response
@@ -41,7 +42,7 @@ const iconURL = `https://openweathermap.org/img/wn/${iconID}@2x.png`;
 
 // Set the icon URL as the src attribute of the weatherIcon element
 weatherIcon.src = iconURL;
-weatherIcon.alt = json.weather[0].description;
+weatherIcon.alt = json.weather[0].main;
 })
 .catch((error) => {
 console.error("There was a problem with the fetch operation:", error);
@@ -51,26 +52,7 @@ console.error("There was a problem with the fetch operation:", error);
 fetchCurrentWeather();
 
       // Fetch the weather icon mappings from JSON file
-     /* fetch("weatherIcons.json")
-        .then((response) => response.json())
-        .then((iconMappings) => {
-            const currentWeatherDescription = json.weather[0].description;
-            const iconFileName =
-              iconMappings[currentWeatherDescription] ||
-              iconMappings["Default"];
-            const iconURL = `images/${iconFileName}`;
-              weatherIcon.src = iconURL;
-              weatherIcon.alt = currentWeatherDescription;
-        })
-        .catch((error) => {
-            console.error("Error fetching weatherIcons.json:", error);
-        });
-      })
-      .catch((error) => {
-        console.error("There was a problem with the fetch operation:", error);
-      });
-  };*/
-    
+  
 
 
   const apiKey = "b0bce0ead37d18acc13ad506864e75ac";
@@ -128,15 +110,8 @@ fetchCurrentWeather();
       console.error("Error fetching data:", error);
     });
 
-hamburgerMenu.addEventListener("click", function () {
-  console.log(`hamburger menu`);
-  if (navMenu.style.display === "block") {
-    navMenu.style.display = "none";
-  } else {
-    navMenu.style.display = "block";
-  }
-});
-
+  
+  
 const displaySunriseSunset = (sunriseTimestamp, sunsetTimestamp) => {
   const sunriseDate = new Date(sunriseTimestamp * 1000); //shows the time in milliseconds
   const sunsetDate = new Date(sunsetTimestamp * 1000);
@@ -153,7 +128,7 @@ const displaySunriseSunset = (sunriseTimestamp, sunsetTimestamp) => {
 
 }
 
-displaySunriseSunset();
+
 
 fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=168451996f01476589314aaee8750993")
   .then(response => response.json())
@@ -165,5 +140,18 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     }
   })
   .catch(error => console.error('Error:', error));
+
+  displaySunriseSunset();
+
+const toggleSearchBar = () => {
+  
+  if (searchBar.style.display === 'none' || searchBar.style.display === '') {
+    searchBar.style.display = 'block';
+  } else {
+    searchBar.style.display = 'none';
+  }
+};
+
+toggleSearchBar();
 
 });

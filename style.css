@@ -1,24 +1,78 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,300&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,300&family=Rubik:wght@300&display=swap');
+
+
 
 body {
   font-family: "Roboto", sans-serif;
 }
-/* Initially hide the nav-menu */
-.nav-menu {
-  display: none;
-}
 
-/* Style the hamburger menu icon */
-.hamburger-menu {
+.search-button {
+  font-size: 16px;
+  padding: 10px;
+  border: none;
+  color: #2E4053;
+  background-color: transparent;
+  border-radius: 50%;
   cursor: pointer;
 }
 
-/* Style the list items inside the nav-menu */
-.nav-menu ul {
-  list-style: none;
-  padding: 0;
+.search-button:hover {
+  background-color: transparent;
 }
 
-.nav-menu li {
-  margin: 10px 0;
+.search-button:active {
+  background-color: transparent;
 }
+
+.search-icon {
+  color: transparent;
+}
+
+.search-bar {
+  display: none;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ced4da;
+  width: 200px;
+  border-radius: 4px;
+  transition: width 0.4s;
+}
+
+.search-bar:focus {
+  width: 240px;
+}
+
+#search-bar {
+  display: none;
+  border: none;
+  border-bottom: 2px solid black;
+  background-color: transparent;
+}
+
+#search-button {
+  border-radius: 50%;
+}
+
+.sunrise-time, .sunset-time{
+  width: 50%; 
+}
+
+.round-button{
+   display: inline-block;
+    width: 70px; /* Adjust the size as necessary */
+    height: 70px;
+    background-color: #7FB3D5; /* Adjust the background color as necessary */
+    border-radius: 50%; /* Makes the button round */
+    border: none; /* Removes the default border */
+    color: white; /* Adjust the text color as necessary */
+    text-align: center;
+    line-height: 50px; /* Vertically centers the text */
+    font-family: 'Rubik', sans-serif;
+    font-size: 40px; /* Adjust the font size as necessary */
+    cursor: pointer;
+}
+
+.round-button:hover {
+    background-color: #A9CCE3; /* Adjust the hover background color as necessary */
+  }
+
