@@ -1,14 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Your code here, including the fetchFiveDayForecast function
 
-  const searchButton = document.getElementsByClassName('search-button');
+  const searchButton = document.getElementById('search-button');
   const searchBar = document.getElementById('search-bar');
+  const searchIcon = document.getElementById('search-icon');
   const container = document.getElementById('weather-container');
   const weatherIcon = document.getElementById('weather-icon');
-  const sunriseTime = document.getElementById('sunrise-time')
-  const sunsetTime = document.getElementById('sunset-time')
-
-
   const forecastContainer = document.getElementById("weather-forecast");
 
   const city = "Stockholm,Sweden";
@@ -141,17 +138,32 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
   })
   .catch(error => console.error('Error:', error));
 
-  displaySunriseSunset();
+
 
 const toggleSearchBar = () => {
   
   if (searchBar.style.display === 'none' || searchBar.style.display === '') {
     searchBar.style.display = 'block';
+    
+    searchIcon.classList.replace('search-icon', 'close-icon-class');
   } else {
     searchBar.style.display = 'none';
+    
+    searchIcon.classList.replace('close-icon-class', 'search-icon');
   }
 };
 
 toggleSearchBar();
+
+searchButton.addEventListener('click', () => {
+  
+  if (iconElement.classList.contains('search-button')) {
+    iconElement.classList.remove('search-button');
+    iconElement.classList.add('search-icon');
+  } else {
+    iconElement.classList.remove('search-icon');
+    iconElement.classList.add('search-button');
+  }
+});
 
 });
