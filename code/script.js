@@ -149,6 +149,16 @@ const insertWeatherdata = () => {
 
 const convertToCelsius = (value) => {
     celsiusValue = kelvinValue - 273.15;
+    return;
+}
+
+const formatForecastDay = (unixtimeStamp) => {
+    const date = new Date(timeStamp * 1000);
+    // Format the date to weekday using toLocaleString with options
+    const formattedDate = date.toLocaleString("en-GB", {
+        let text = date.toLocaleString("en-gb", { weekday: "narrow" });
+    });
+    return formattedDate;
 }
 
 // Event listeners -----------------------------------------
