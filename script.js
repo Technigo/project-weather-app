@@ -13,13 +13,18 @@ const forecastFour = document.getElementById('forecast-4')
 const forecastFive = document.getElementById('forecast-5')
 const weatherIcon = document.getElementById('weather-icon')
 
-
 const BASE_URL= 'https://api.openweathermap.org/data/2.5/'
 const API_KEY = 'bc487ba1fa4b42fcfb85443237a7774e'
 
 const URL_WEATHER = 'weather'
 const URL_FORECAST = 'forecast'
 const cityQuery = 'Helsingborg, Sweden'
+
+//Global variables
+let iconsAt12=""
+let temperaturesAt12=""
+let feelsLike =""
+let days =""
 
 //------Fetching today's weather-----
 const fetchWeather = () => {
@@ -28,7 +33,6 @@ fetch(`${BASE_URL}${URL_WEATHER}?q=${cityQuery}&units=metric&APPID=${API_KEY}`)
     return response.json()
 })
 .then ((json) => {
-
     console.log (json)
     getBasicWeatherInfo(json)
     calculateSunrise(json)
@@ -42,7 +46,6 @@ const gettingIconWeather = (json) => {
     const icon = json.weather.map ((el) => el.icon)
     weatherType.innerHTML += `
     <img class= "weatherIcon" src = "https://openweathermap.org/img/wn/${icon[0]}@2x.png"> `
-    console.log (icon)
 }
 
 const getBasicWeatherInfo = (json) => {
@@ -52,11 +55,8 @@ const getBasicWeatherInfo = (json) => {
     temp.innerHTML = mainTemperature
     json.weather.forEach((element) => {
         weatherTypeText.innerHTML = `${element.main}`
-    console.log(element.main)
     }) 
 }
-
-//&deg;C
 
 const calculateSunrise = (json) => {
     const unixTimestamp = json.sys.sunrise //seconds
@@ -87,13 +87,6 @@ const insertSunset = (localtimeSunset) => {
     sunset.innerHTML += `${localtimeSunset}`
 }
 
-//Declaring global variables
-let iconsAt12=""
-let temperaturesAt12=""
-let feelsLike =""
-let days =""
-
-
 //----Fetching for 5 days forecast
 const fetchForecast = () => {
 fetch(`${BASE_URL}${URL_FORECAST}?q=${cityQuery}&units=metric&APPID=${API_KEY}`)
@@ -106,7 +99,6 @@ fetch(`${BASE_URL}${URL_FORECAST}?q=${cityQuery}&units=metric&APPID=${API_KEY}`)
     })
  }
 
-
 const getWeatherAt12 = (json) => {
     const weatherAt12 = json.list.filter((el) => el.dt_txt.includes("12:00:00")); //Filtering for timestamps
     gettingDays(weatherAt12)
@@ -117,13 +109,13 @@ const getWeatherAt12 = (json) => {
 }
 
 const gettingDays = (weatherAt12) => {
-
     const options = { weekday: 'short' }; // Define the options for formatting the day name
 
     days = weatherAt12.map((el) => {
         const date = new Date(el.dt_txt);
         return date.toLocaleDateString('en-US', options); // Format the day name
     });
+
     insertInnerHTML (days, temperaturesAt12, iconsAt12, feelsLike)
 }
 
@@ -137,11 +129,6 @@ const gettingTemperatures = (weatherAt12) => {
     temperaturesAt12 = weatherAt12.map((el) => Math.round(el.main.temp))
     insertInnerHTML (days, temperaturesAt12, iconsAt12, feelsLike)
 }
-
-// const gettingFeelsLike = (weatherAt12) => {
-//     feelsLike = weatherAt12.map((el) => Math.round(el.main.feels_like))
-//     insertInnerHTML (days, temperaturesAt12, iconsAt12, feelsLike)
-// }
 
 const gettingWind = (weatherAt12) => {
     windAt12 = weatherAt12.map((el) => Math.round(el.wind.speed))
@@ -186,11 +173,7 @@ const insertInnerHTML = (days, temperatures, icons, wind) => {
     <p>${wind[4]}m/s</p>
     `
 ;
-   
 }
-
-
-
 
 
 //----fetching json------
