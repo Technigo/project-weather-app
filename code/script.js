@@ -1,15 +1,12 @@
-
+//Define API URLs and location.
 const currentWeather_URL = `https://api.openweathermap.org/data/2.5/weather?q=`
 const fiveDayWeather_URL = `https://api.openweathermap.org/data/2.5/forecast?q=`
-// http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key} // Coordinates by location name
 
-let cityName = "Visby";
+let cityName = "Stockholm";// Default city is sthlm
 const API_KEY = `5261612a788e0fbd6e1f5336fd150afe`
 let currentWeather = `${currentWeather_URL}${cityName}&appid=${API_KEY}&units=metric`
 let fiveDayWeather = `${fiveDayWeather_URL}${cityName}&appid=${API_KEY}&units=metric`
-
 const forecastContainer = document.getElementById('forecastContainer');
-// https://api.openweathermap.org/data/2.5/weather?lat=57&lon=-2.15&appid={API key}&units=metric
 
 
 
@@ -17,7 +14,7 @@ const forecastContainer = document.getElementById('forecastContainer');
 //Function that fetches the currentweather
 
 const fetchCurrentWeather = () => {
-  fetch(currentWeather) // Use the variable currentWeather here
+  fetch(currentWeather) 
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -26,33 +23,17 @@ const fetchCurrentWeather = () => {
     })
     .then(data => {
 
-      console.log(data);
+      // console.log(data);
        
-
+// These variables extract specific weather-related data from the OpenWeatherMap API response.
 const cityName = data.name;
 const currentTemperatures = data.main.temp.toFixed(1);// Sets temperature with one decimal
 const weatherDescription = data.weather[0].description; // Get the weather description
 const windSpeed = data.wind.speed;
-
-
-
-//---------------------------------------------------------
-
 const weatherID = data.weather[0].id;
-
-console.log(weatherID);
-
-
-//---------------------------------------------------------
-
-
 const sunRise = data.sys.sunrise;
 const sunSet = data.sys.sunset;
 const timeZone = data.timezone;
-
-//---------------------------------------------------------
-
-
 
 // Find the DOM element 
 const currentTemperature = document.getElementById('temperature');
@@ -62,10 +43,6 @@ const weatherDescriptionElement = document.getElementById('weatherDescription');
 const sunRiseElement = document.getElementById('sunrise');
 const sunSetElement = document.getElementById('sunset');
 const weatherIDElement = document.getElementById('weather-symbol');
-
-
-
-//---------------------------------------------------------
 
 
 const sunriseTime = new Date((sunRise + timeZone) * 1000); // Multiply by 1000 to convert to milliseconds
@@ -82,24 +59,22 @@ const sunsetMinutes = sunsetTime.getMinutes();
 // Format the sunrise and sunset times as strings with hours and minutes
 const sunriseTimeString = `${sunriseHours.toString().padStart(2, '0')}:${sunriseMinutes.toString().padStart(2, '0')}`;
 const sunsetTimeString = `${sunsetHours.toString().padStart(2, '0')}:${sunsetMinutes.toString().padStart(2, '0')}`;
-
-
 const sunriseTimeStringGMT = sunriseTime.toISOString().substr(11, 5);
 const sunsetTimeStringGMT = sunsetTime.toISOString().substr(11, 5);
 
-weatherDescriptionElement.textContent = `${cityName} is reporting a ${weatherDescription} with a wind speed of ${windSpeed} m/s. Sunrise today is ${sunriseTimeStringGMT}, and the sun will set at ${sunsetTimeStringGMT}.`; // Update the weather description
-// weatherIconElement.textContent = `${weatherIcon}`;
+// Update the weather description
+weatherDescriptionElement.textContent = `${cityName} is reporting a ${weatherDescription} with a wind speed of ${windSpeed} m/s.`; 
 
-// sunRiseElement.textContent = `${sunriseTimeStringGMT}`;
-
-// sunSetElement.textContent = `${sunsetTimeStringGMT}`;
-
-
+//Sunrise sunset icons in description.
+sunRiseElement.textContent = `☀️⬆ ${sunriseTimeStringGMT}`;
+sunSetElement.textContent = `☀️⬇ ${sunsetTimeStringGMT}`;
 
 
 
 
-//---------------------------------------------------------
+
+
+//Function that displays weather icon based on weather id value fron the API.
 
 function getWeatherText(weatherID) {
   if (weatherID >= 200 && weatherID < 300) {
@@ -121,7 +96,6 @@ function getWeatherText(weatherID) {
   }
 }
 
-
 const weatherText = getWeatherText(weatherID);
 
 const weatherSymbolDiv = document.getElementById('weather-symbol');
@@ -129,53 +103,10 @@ if (weatherSymbolDiv) {
   weatherSymbolDiv.innerText = weatherText;
 }
 
-
-
-
-/*
-function changeWeatherDescription() {
-    // Get the weatherID from the span element
-    // let weatherID = document.getElementById("weatherID").textContent;
-    
-    // Get the div element where you want to change the text
-    let weatherDescription = document.getElementById("weather-symbol");
-
-
-    console.log(weatherID);
-    
-    // Check the weatherID and update the text accordingly
-    if (weatherID === "800") {
-        weatherDescription.textContent = "☀️";
-    } else if (/^2\d{2}$/.test(weatherID)) {
-        weatherDescription.textContent = "🌩️";
-    } else if (/^3\d{2}$/.test(weatherID)) {
-        weatherDescription.textContent = "🌧️";
-    } else if (/^5\d{2}$/.test(weatherID)) {
-        weatherDescription.textContent = "🌧️";
-    } else if (/^6\d{2}$/.test(weatherID)) {
-        weatherDescription.textContent = "🌨️";
-    } else if (/^8\d{2}$/.test(weatherID)) {
-        weatherDescription.textContent = "☁️";
-    } else {
-        // Set a default weather description if 'weatherID' doesn't match any pattern
-        weatherDescription.textContent = "❌";
-    }
-}
-
-changeWeatherDescription();
-
-console.log(changeWeatherDescription)
-
-*/
-
-//---------------------------------------------------------
-
 locationName.textContent = cityName;
 
 // Update the DOM with the current temperature
 currentTemperature.textContent = `${currentTemperatures}°C`;
-// windSpeedElement.textContent = `${windSpeed} m/s`;
-// weatherDescriptionElement.textContent = weatherDescription; // Update the weather description
 
 })
 
@@ -184,10 +115,8 @@ currentTemperature.textContent = `${currentTemperatures}°C`;
  });
 };
 
-// ------------
+
 //Function that fetches the 5 day weather
-
-
 const fetchFiveDayWeather = () => {
   // Clear any existing forecast data in the container
   forecastContainer.innerHTML = '';
@@ -220,18 +149,19 @@ const fetchFiveDayWeather = () => {
 
         // Add the day and temperature on the same line
         forecastContainer.innerHTML += `
-          <div class="forecast-row">
-            <div class="forecast-item">
-             <br> ${day}....................${temperature}°C
-            </div>
-          </div>`;
+        <div class="forecast-row">
+        <div class="forecast-item">
+          <span class="day-forecast">${day}</span>
+          <span class="temperature-forecast">${temperature}°C</span>
+        </div>
+      </div>`;
       });
     })
     .catch((error) => {
       console.error('Error:', error);
     });
 };
-// fetchCurrentWeather();
+fetchCurrentWeather();
   fetchFiveDayWeather();
 
 
@@ -267,3 +197,4 @@ searchButton.addEventListener('click', () => {
   updateWeatherByCity();
 });
 
+//fetchCurrentWeather();

@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+
 /* Reset some default styles */
 * {
     margin: 0;
@@ -7,16 +11,16 @@
 
 /* Style the app container */
 .app {
-    font-family: Arial, sans-serif;
+    font-family: "Poppins", Arial, sans-serif;
     text-align: center;
     padding: 20px;
 }
 
 /* Style the header */
 header {
-    background-color: #3498db;
+   /*background-color: #3498db;*/
     color: white;
-    padding: 10px;
+    padding: 0px;
 }
 
 /* Style the search input and button */
@@ -25,22 +29,34 @@ header {
 }
 
 #location {
-    width: 100%;
-    padding: 10px;
+    max-width: 75%;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: white;
     font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s, background-color 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 #searchBtn {
-    background-color: #3498db;
+
+    background-color: #215c95;
+    border-radius: 10px;
     color: white;
     border: none;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 #searchBtn:hover {
-    background-color: #2980b9;
+    background-color: #1773cd;
 }
 
 /* Style the weather display */
@@ -49,15 +65,16 @@ header {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 20px 0;
+    margin: 10px 0px;
 }
 
 .weather-symbol {
-    font-size: 92px;
+    font-size: 132px;
 }
 
 .temperature {
     font-size: 72px;
+    font-weight: bold;
 }
 
 .weather-info {
@@ -68,19 +85,70 @@ header {
 }
 
 .description {
-    font-size: 18px;
-    max-width: 60%;
+    font-size: 24px;
+    /* max-width: 60%; */
     margin-bottom: 20px;
 }
 
-h2 {
+
+.sunrise {
+    font-size: 18px;
+}
+
+.sunset {
+    font-size: 18px;
+}
+
+
+.forecast-title {
+    padding: 10px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+h2{
     font-size: 38px;
+    padding-top: 20px;
+}
+
+.forecast-container {
+
+
 }
 
 .forecast-row {
     margin-bottom: 20px;
+    font-size: 24px;
 }
 
+
+.forecast {
+    padding-top: 50px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: rgb(255, 255, 255, 0.3);
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s, background-color 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
+    
+}
+.forecast-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 30px;
+    margin: 0 auto; /* Add this line to center-align the items */
+    max-width: 200px; 
+    min-width: 100px;/* You can adjust the max-width as needed */
+}
+
+ 
 body {
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 400%;
