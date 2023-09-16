@@ -44,23 +44,35 @@ header {
 }
 
 /* Style the weather display */
-.weather-display {
-    border: 1px solid #ccc;
-    padding: 20px;
+.temperature-and-symbol {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px 0;
 }
 
-/* Style the weather information */
-.weather-info {
-    display: flex;
-    justify-content: space-between;
+.weather-symbol {
+    font-size: 72px;
 }
 
 .temperature {
-    font-size: 34px;
+    font-size: 72px;
+}
+
+.weather-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .description {
     font-size: 18px;
+}
+
+h2 {
+    font-size: 38px;
 }
 
 

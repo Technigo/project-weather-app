@@ -5,7 +5,7 @@ const fiveDayWeather_URL = `https://api.openweathermap.org/data/2.5/forecast?q=`
 
 const API_KEY = `5261612a788e0fbd6e1f5336fd150afe`
 
-let cityName = "Visby";
+let cityName = "Hanoi";
 
 const currentWeather = `${currentWeather_URL}${cityName}&appid=${API_KEY}&units=metric`
 const fiveDayWeather = `${fiveDayWeather_URL}${cityName}&appid=${API_KEY}&units=metric`
@@ -107,42 +107,33 @@ sunSetElement.textContent = `${sunsetTimeStringGMT}`;
 
 //---------------------------------------------------------
 
-
-// weatherIDElement.textContent = `${weatherID}`;
-
-
-console.log(weatherDescription);
-
-// imageElement = document.getElementById("imageElement");
-
-// imageElement.src = "./images/test.png";
-
-// Get a reference to the image element by its id
-let imageElement = document.getElementById("imageElement");
-
-// Check if 'weatherID' is exactly "800"
-if (weatherID === "800") {
-    // Set the src attribute to "test6.png" in the "images" folder
-    imageElement.src = "./images/test6.png";
-} else if (/^2\d{2}$/.test(weatherID)) {
-    // Set the src attribute to "test.png" in the "images" folder
-    imageElement.src = "./images/test.png";
-} else if (/^3\d{2}$/.test(weatherID)) {
-    // Set the src attribute to "test2.png" in the "images" folder
-    imageElement.src = "./images/test2.png";
-} else if (/^5\d{2}$/.test(weatherID)) {
-    // Set the src attribute to "test3.png" in the "images" folder
-    imageElement.src = "./images/test3.png";
-} else if (/^6\d{2}$/.test(weatherID)) {
-    // Set the src attribute to "test4.png" in the "images" folder
-    imageElement.src = "./images/test4.png";
-} else if (/^8\d{2}$/.test(weatherID)) {
-    // Set the src attribute to "test7.png" in the "images" folder
-    imageElement.src = "./images/test7.png";
-} else {
-    // Set a default image source if 'weatherID' doesn't match any pattern
-    imageElement.src = "./images/default.png"; // You can change this to your desired default image
+function changeWeatherDescription() {
+    // Get the weatherID from the span element
+    // var weatherID = document.getElementById("weatherID").textContent;
+    
+    // Get the div element where you want to change the text
+    let weatherDescription = document.getElementById("weather-symbol");
+    
+    // Check the weatherID and update the text accordingly
+    if (weatherID === "800") {
+        weatherDescription.textContent = "Clear sky";
+    } else if (/^2\d{2}$/.test(weatherID)) {
+        weatherDescription.textContent = "Thunderstorm";
+    } else if (/^3\d{2}$/.test(weatherID)) {
+        weatherDescription.textContent = "Drizzle";
+    } else if (/^5\d{2}$/.test(weatherID)) {
+        weatherDescription.textContent = "🌧️";
+    } else if (/^6\d{2}$/.test(weatherID)) {
+        weatherDescription.textContent = "Snow";
+    } else if (/^8\d{2}$/.test(weatherID)) {
+        weatherDescription.textContent = "☁️";
+    } else {
+        // Set a default weather description if 'weatherID' doesn't match any pattern
+        weatherDescription.textContent = "Unknown weather condition";
+    }
 }
+
+changeWeatherDescription();
 
 //---------------------------------------------------------
 
@@ -151,7 +142,7 @@ locationName.textContent = cityName;
 
 currentTemperature.textContent = `${currentTemperatures}°C`;
 windSpeedElement.textContent = `${windSpeed} m/s`;
-weatherDescriptionElement.textContent = weatherDescription; // Update the weather description
+// weatherDescriptionElement.textContent = weatherDescription; // Update the weather description
 
 })
 
