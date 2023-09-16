@@ -20,7 +20,7 @@ const formattedTime = (timestamp) => {
     ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
     return (time)
 }
-s
+
 const fetchWeather = () => {
     console.log(fetchWeather)
     fetch(url)
