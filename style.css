@@ -27,7 +27,7 @@ body{
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(img/clear.jpg);
   background-size: contain;
   background-position: bottom;
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   opacity: 0.8;
   height: 800px;
   width: 800px;
@@ -119,7 +119,7 @@ body{
 }
 
 #weatherForecast {
-  padding: 40px 40px;
+  padding: 80px 40px;
   color: var(--fontColorForecast);
   margin: auto 0;
   font-weight: 300;

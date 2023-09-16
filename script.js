@@ -1,5 +1,6 @@
 //Containers for the DOM elements
 const weatherContainer = document.getElementById('currentWeather')
+const featureImage = document.getElementById('featureImage')
 const weatherApp = document.getElementById('weatherApp')
 const currentTemperature = document.getElementById('currentTemperature')
 const sunRiseSet = document.getElementById('sunRiseSet')
@@ -21,15 +22,40 @@ const searchString = (searchTerm, searchCity) => {
     return (`${baseURL}${searchTerm}?q=${searchCity}&units=${units}&APPID=${appID}`)
 }
 
-const todaysWeatherFeature = (city) =>{
+const todaysWeatherFeature = async (city) =>{
     //Fetch the API from Open Weather construct the current weather
-    fetch(searchString("weather", city))
+   await fetch(searchString("weather", city))
     .then((response) => {
         return response.json()})
     .then((json) => {
         let cityName = json.name
-        let temperature = Math.round(json.main.temp)
+        let temperature = Math.round(json.main.temp)                                       
         let weatherDescription = json.weather[0].description
+
+        let weatherImg = json.weather[0].main
+        switch (weatherImg) {
+            case 'Clear':
+                changeBackground('clear')
+                break
+            case 'Clouds':
+                changeBackground('clouds')
+                break
+            case 'Drizzle':
+                changeBackground('drizzle')
+                break
+            case 'Rain':
+                changeBackground('rain')
+                break
+            case 'Snow':
+                changeBackground('snow')
+                break
+            case 'Thunderstorm':
+                changeBackground('thunderstorm')
+                break
+            default:
+                changeBackground('atmosphere')
+                break
+        }
 
         let sunrise = new Date (json.sys.sunrise * 1000)
         const sunriseTime = sunrise.toLocaleTimeString([], { timeStyle: 'short' })
@@ -120,11 +146,11 @@ const createIcon= (iconID) => {
 
 const toggleSearchField = () => {
     //This just controls the toggling between opening and closing the search field
-    const searchToggler = document.getElementById('search-toggler');
-    searchToggler.classList.toggle('hidden');
-    closeSearchMenu.classList.toggle('hidden');
-    searchMenuBtn.classList.toggle('hidden');
-};
+    const searchToggler = document.getElementById('search-toggler')
+    searchToggler.classList.toggle('hidden')
+    closeSearchMenu.classList.toggle('hidden')
+    searchMenuBtn.classList.toggle('hidden')
+}
 
 const searchFunction = () => {
     //This is for storing the user input from the search and pushing it into our fetching weather function later on
@@ -146,7 +172,12 @@ const searchFunction = () => {
         forecastRow3.innerHTML =""
         forecastRow4.innerHTML =""
         forecastRow5.innerHTML =""
-};
+}
+
+//
+const changeBackground = (imgURL) => {
+    featureImage.style.backgroundImage = 'url(img/' + imgURL + '.jpg)'
+}
 
 //START
 todaysWeatherFeature("Stockholm, Sweden")
@@ -160,7 +191,7 @@ searchBtn.addEventListener('click', searchFunction)
 //Eventlistener to search through enter key also
 inputField.addEventListener('keyup', function (event) {
     if (event.key == "Enter") {
-        searchFunction();
+        searchFunction()
       }
     }
-);
+)
