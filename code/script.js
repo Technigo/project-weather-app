@@ -3,14 +3,10 @@ const currentWeather_URL = `https://api.openweathermap.org/data/2.5/weather?q=`
 const fiveDayWeather_URL = `https://api.openweathermap.org/data/2.5/forecast?q=`
 // http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key} // Coordinates by location name
 
+let cityName = "Visby";
 const API_KEY = `5261612a788e0fbd6e1f5336fd150afe`
-
-let cityName = "dubai";
-
-const currentWeather = `${currentWeather_URL}${cityName}&appid=${API_KEY}&units=metric`
-const fiveDayWeather = `${fiveDayWeather_URL}${cityName}&appid=${API_KEY}&units=metric`
-
-
+let currentWeather = `${currentWeather_URL}${cityName}&appid=${API_KEY}&units=metric`
+let fiveDayWeather = `${fiveDayWeather_URL}${cityName}&appid=${API_KEY}&units=metric`
 
 const forecastContainer = document.getElementById('forecastContainer');
 // https://api.openweathermap.org/data/2.5/weather?lat=57&lon=-2.15&appid={API key}&units=metric
@@ -34,7 +30,7 @@ const fetchCurrentWeather = () => {
        
 
 const cityName = data.name;
-const currentTemperatures = data.main.temp.toFixed(1);
+const currentTemperatures = data.main.temp.toFixed(1);// Sets temperature with one decimal
 const weatherDescription = data.weather[0].description; // Get the weather description
 const windSpeed = data.wind.speed;
 
@@ -63,8 +59,6 @@ const currentTemperature = document.getElementById('temperature');
 const locationName = document.getElementById('locationName');
 const windSpeedElement = document.getElementById('windSpeed');
 const weatherDescriptionElement = document.getElementById('weatherDescription'); 
-//const weatherIconElement = document.getElementById("weatherIcon"); // Add this line
-
 const sunRiseElement = document.getElementById('sunrise');
 const sunSetElement = document.getElementById('sunset');
 const weatherIDElement = document.getElementById('weather-symbol');
@@ -176,9 +170,9 @@ console.log(changeWeatherDescription)
 
 //---------------------------------------------------------
 
-// Update the DOM with the current temperature
 locationName.textContent = cityName;
 
+// Update the DOM with the current temperature
 currentTemperature.textContent = `${currentTemperatures}°C`;
 // windSpeedElement.textContent = `${windSpeed} m/s`;
 // weatherDescriptionElement.textContent = weatherDescription; // Update the weather description
@@ -228,7 +222,7 @@ const fetchFiveDayWeather = () => {
         forecastContainer.innerHTML += `
           <div class="forecast-row">
             <div class="forecast-item">
-              ${day} ${temperature}°C
+             <br> ${day}....................${temperature}°C
             </div>
           </div>`;
       });
@@ -240,37 +234,36 @@ const fetchFiveDayWeather = () => {
 // fetchCurrentWeather();
   fetchFiveDayWeather();
 
-/*})
 
-.catch(error => {
-   console.error('Error:', error);
- });
-};*/
-
-
-
-// Function to update cityName based on user input and fetch weather data for the new city
-const updateCity = () => {
-  const inputField = document.getElementById('location'); // Assuming your input field has an id of 'location'
+// Function to update the weather based on city input
+const updateWeatherByCity = () => {
+  const inputField = document.getElementById('location');
   cityName = inputField.value;
 
   // Update the currentWeather and fiveDayWeather URLs with the new cityName
-  const updatedCurrentWeather = `${currentWeather_URL}${cityName}&appid=${API_KEY}&units=metric`;
-  const updatedFiveDayWeather = `${fiveDayWeather_URL}${cityName}&appid=${API_KEY}&units=metric`;
+  currentWeather = `${currentWeather_URL}${cityName}&appid=${API_KEY}&units=metric`;
+  fiveDayWeather = `${fiveDayWeather_URL}${cityName}&appid=${API_KEY}&units=metric`;
 
   // Call the fetch functions again to update weather data based on the new city
-  fetchCurrentWeather(updatedCurrentWeather);
-  fetchFiveDayWeather(updatedFiveDayWeather);
+  fetchCurrentWeather();
+  fetchFiveDayWeather();
+
+  // Clear the input field
+  inputField.value = '';
 };
 
 
-// Attach the updateCity function to the button click event
-const searchButton = document.getElementById('searchBtn'); 
-searchButton.addEventListener('click', updateCity);
+// Add an event listener for the 'Enter' key press
+const inputField = document.getElementById('location');
+inputField.addEventListener('keyup', (event) => {
+  if (event.key === 'Enter') {
+    updateWeatherByCity();
+  }
+});
 
+// Add an event listener for the search button click
+const searchButton = document.getElementById('searchBtn');
+searchButton.addEventListener('click', () => {
+  updateWeatherByCity();
+});
 
-
-  
-
-// Call the fetchCurrentWeather function to initiate the fetch request
-fetchCurrentWeather();
