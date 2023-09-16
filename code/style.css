@@ -9,20 +9,26 @@
 #2A5510 - green - text
 #F7E9B9 - yellow - background
 
-*/
+background-color: transparent;
 
+*/
 * {
     box-sizing: border-box;
-    margin: 0;
+    margin: 0;    
 }
 
-body {
-    background-color: transparent;
+button {
+   font-size: 50px;    
+}
+
+body {    
     font-family: 'Montserrat', sans-serif;
     margin: 30px 50px;
     height: 100%;
     display: flex;
     justify-content: center;
+    background-image: url('./images/pexels-miguel-á-padriñán-19670.jpg');
+    background-size: cover;
 }
 
 .container {
@@ -32,13 +38,10 @@ body {
     width: 400px;
 }
 
-
 p {
     font-family: 'Montserrat', sans-serif;
     margin: 5px;
 }
-
-
 
 .header {
     grid-row: 1 / span 2;
@@ -48,11 +51,12 @@ p {
     grid-row: 2 / span 3;
 }
 
+
 /*Footer*/
 footer {
     width: 100%;
     text-align: center;
-    color: red;
+    color: black;
     margin-top: 30px;
     padding: 15px;
 }
