@@ -7,7 +7,8 @@ const temperature = document.getElementById(`Temperature`)
 const todaysAdvice = document.getElementById(`todaysAdvice`)
 const sunriseAndTime = document.getElementById(`sunriseAndTime`)
 const description = document.getElementById(`description`)
-const weeklyForecast = document.getElementsByClassName(`weeklyForecast`)
+//const weeklyForecast = document.getElementsByClassName(`weeklyForecast`)//SEEMS LIKE WE DO NOT NEED THIS? LOOK AT ROW 135, WORKS WITHOUT THIS
+
 
 //GLOBAL VARIABLES - WEATHER//
 const BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
@@ -22,11 +23,16 @@ const BASE_URL_FOR = "https://api.openweathermap.org/data/2.5/forecast"
 const stadenMinFor = "Stockholm,Sweden"
 const API_KEY_FOR = "964a15302a76eed8fe2ddd899c2fb441"
 
+//const URLFOR = "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=YOUR_API_KEY";
+
+
 const URLFOR = `${BASE_URL_FOR}?q=${stadenMinFor}&units=metric&APPID=${API_KEY_FOR}` // erlik 3 første const?
 //FULL URL FRA OPENWEATHERMAP - FORECAST (API) "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=964a15302a76eed8fe2ddd899c2fb441"
 
 console.log(URL) //console.log the url for weather API
 console.log(URLFOR) //console.log the url for 5day forecast API
+
+let forecastHTML = "" //MIRELA LAGT TIL
 
 //FUNCTION - FETCH WEATHER DATA//
 function fetchWeatherData() {
@@ -54,6 +60,7 @@ function fetchWeatherData() {
 •	the city name - DONE
 •	the temperature (rounded to 1 decimal place) - DONE, BUT 2 dec
 •	and what type of weather it is (the "description" in the JSON) - DONE*/
+
 
 //DISPLAY DATA FETCHED IN THE fetchWeatherData FUNCTION ON THE WEBSITE//
 //Data here shows to data feched in function fetchWeatherData()
@@ -93,12 +100,10 @@ function updateWeatherUI(data) {
 
 //brances added - need to commit? Did it just in case
 
-/*Show a forecast for the next 5 days. You can choose how to display the forecast - perhaps you want to show the min and max temperature for each day, or perhaps you want to show the temperature from the middle of the day,
-The API gives us the next 5 days but for every third hour. So a good idea could be to only use the weather data from the same time every day. You can filter the forecast list array to only get the info from 12:00 each day for example.
-Read the endpoint documentation for the forecast.*/
-
+//MIRELA LAGT TIL - 5 DAY FORECAST//
 //FUNCTION FETCH 5DAY FORECAST DATA//
 function fetchForecastData() {
+    // Define the URL for fetching the 5-day forecast data (URLFOR should be updated accordingly)
     fetch(URLFOR)
         .then((response) => {
             if (!response.ok) {
@@ -107,34 +112,76 @@ function fetchForecastData() {
             return response.json();
         })
         .then((forecastData) => {
-            // Handle the data here
+            // Handle the 5-day forecast data here
             updateForecast(forecastData);
-            console.log(forecastData)
+            console.log(forecastData);
         })
         .catch((error) => {
-            console.error(`Error fetching data: ${error.message}`);
-            console.log(error)
+            console.error(`Error fetching forecast data: ${error.message}`);
+            console.log(error);
         });
-}// (forecastData)= forecast data from API
+}// (forecastData)= forecast data from API*/
 
-//UpdateForecast Function TO DISPLAY DATA FETCHED IN THE fetchForecastData FUNCTION ON THE WEBSITE//
+
+// DO WE NEED THIS?? OR IS THE EVENT LISTENER IN THE END ENOUGH?? Call the fetchWeatherData function is used to initiate the fetching of current weather data when our web page loads.
+fetchWeatherData();
+
+//DEFINE UpdateForecast Function TO DISPLAY 5 DAYS FORECAST DATA FETCHED IN THE fetchForecastData FUNCTION, ON THE WEBSITE//
 //forecastData here shows to data feched in function fetchForecastData()
 function updateForecast(forecastData) {
-    const weeklyForecast = document.getElementsByClassName(`weeklyForecast`);
-    weeklyForecast.innerHTML = ``;
-    const filteredForecast = forecastData.list.filter(item =>
-        item.dt_txt.includes('12:00')
-    );
+    // Get the HTML element where the forecast data will be displayed
+    const weeklyForecast = document.querySelector('.weeklyForecast');
+    // Empty string to store the HTML content
+    let forecastHTML = '';
+    // Object to group daily forecast data by date
+    const dailyForecast = {};
+
+    // Process the JSON data received from the API
+    forecastData.list.forEach(item => {
+        const date = new Date(item.dt * 1000);// Convert the timestamp to a date object
+        const weekday = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(date); // Get the full weekday name 
+
+        //HAD THIS IN THE CODE, but looks like it is not needed as we display weekdays, so consider removing:
+        /* Format the date as yyyy-mm-dd
+        const dateString = date.toISOString().split('T')[0];*/
+
+        // Initialize an entry in the dailyForecast object
+        if (!dailyForecast[weekday]) {
+            dailyForecast[weekday] = {
+                maxTemp: -Infinity, // Initialize with negative infinity to find max temperature
+                minTemp: Infinity,  // Initialize with positive infinity to find min temperature
+            };
+        }
+        // Update the max temperature if a higher value is found (+remove decimals)
+        if (item.main.temp_max > dailyForecast[weekday].maxTemp) {
+            dailyForecast[weekday].maxTemp = Math.round(item.main.temp_max);
+        }
+        // Update the min temperature if a lower value is found (+remove decimals)
+        if (item.main.temp_min < dailyForecast[weekday].minTemp) {
+            dailyForecast[weekday].minTemp = Math.round(item.main.temp_min);
+        }
+    });
+
+    //HTML ELEMENTS TO DISPLAY THE 5 DAY FORECAST//
+    // Create HTML elements for each day's forecast
+    for (const weekday in dailyForecast) {
+        const { maxTemp, minTemp } = dailyForecast[weekday];
+
+        // Generate HTML code for each day's forecast
+        forecastHTML += `
+        <div class="forecast-item">
+            <p>${weekday} ${maxTemp}/ ${minTemp}°C</p>
+        </div>
+        `;
+        console.log(`${weekday} ${maxTemp}/ ${minTemp}`)
+    }
+
+    // Update the HTML content of the weekly forecast element
+    weeklyForecast.innerHTML = forecastHTML;
 }
-
-
-
-
-
-
-
 
 
 //EVENT LISTENERS//
 window.addEventListener("load", fetchWeatherData); //update weather information when site loads
 window.addEventListener("load", fetchForecastData); //update 5day forecast information when site loads
+
