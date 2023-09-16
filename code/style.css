@@ -53,7 +53,7 @@ header {
 }
 
 .weather-symbol {
-    font-size: 72px;
+    font-size: 92px;
 }
 
 .temperature {
@@ -69,12 +69,17 @@ header {
 
 .description {
     font-size: 18px;
+    max-width: 60%;
+    margin-bottom: 20px;
 }
 
 h2 {
     font-size: 38px;
 }
 
+.forecast-row {
+    margin-bottom: 20px;
+}
 
 body {
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
@@ -94,3 +99,4 @@ body {
         background-position: 0% 50%;
     }
 }
+

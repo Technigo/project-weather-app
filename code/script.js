@@ -5,7 +5,7 @@ const fiveDayWeather_URL = `https://api.openweathermap.org/data/2.5/forecast?q=`
 
 const API_KEY = `5261612a788e0fbd6e1f5336fd150afe`
 
-let cityName = "Hanoi";
+let cityName = "dubai";
 
 const currentWeather = `${currentWeather_URL}${cityName}&appid=${API_KEY}&units=metric`
 const fiveDayWeather = `${fiveDayWeather_URL}${cityName}&appid=${API_KEY}&units=metric`
@@ -93,12 +93,12 @@ const sunsetTimeString = `${sunsetHours.toString().padStart(2, '0')}:${sunsetMin
 const sunriseTimeStringGMT = sunriseTime.toISOString().substr(11, 5);
 const sunsetTimeStringGMT = sunsetTime.toISOString().substr(11, 5);
 
-weatherDescriptionElement.textContent = `${weatherDescription}`; // Update the weather description
+weatherDescriptionElement.textContent = `${cityName} is reporting a ${weatherDescription} with a wind speed of ${windSpeed} m/s. Sunrise today is ${sunriseTimeStringGMT}, and the sun will set at ${sunsetTimeStringGMT}.`; // Update the weather description
 // weatherIconElement.textContent = `${weatherIcon}`;
 
-sunRiseElement.textContent = `${sunriseTimeStringGMT}`;
+// sunRiseElement.textContent = `${sunriseTimeStringGMT}`;
 
-sunSetElement.textContent = `${sunsetTimeStringGMT}`;
+// sunSetElement.textContent = `${sunsetTimeStringGMT}`;
 
 
 
@@ -107,33 +107,72 @@ sunSetElement.textContent = `${sunsetTimeStringGMT}`;
 
 //---------------------------------------------------------
 
+function getWeatherText(weatherID) {
+  if (weatherID >= 200 && weatherID < 300) {
+    return "🌩️";
+  } else if (weatherID >= 300 && weatherID < 500) {
+    return "🌧️";
+  } else if (weatherID >= 500 && weatherID < 600) {
+    return "🌧️";
+  } else if (weatherID >= 600 && weatherID < 700) {
+    return "🌨️";
+  } else if (weatherID >= 700 && weatherID < 800) {
+    return "🌫️";
+  } else if (weatherID === 800) {
+    return "☀️";
+  } else if (weatherID >= 801 && weatherID < 900) {
+    return "☁️";
+  } else {
+    return "❌";
+  }
+}
+
+
+const weatherText = getWeatherText(weatherID);
+
+const weatherSymbolDiv = document.getElementById('weather-symbol');
+if (weatherSymbolDiv) {
+  weatherSymbolDiv.innerText = weatherText;
+}
+
+
+
+
+/*
 function changeWeatherDescription() {
     // Get the weatherID from the span element
-    // var weatherID = document.getElementById("weatherID").textContent;
+    // let weatherID = document.getElementById("weatherID").textContent;
     
     // Get the div element where you want to change the text
     let weatherDescription = document.getElementById("weather-symbol");
+
+
+    console.log(weatherID);
     
     // Check the weatherID and update the text accordingly
     if (weatherID === "800") {
-        weatherDescription.textContent = "Clear sky";
+        weatherDescription.textContent = "☀️";
     } else if (/^2\d{2}$/.test(weatherID)) {
-        weatherDescription.textContent = "Thunderstorm";
+        weatherDescription.textContent = "🌩️";
     } else if (/^3\d{2}$/.test(weatherID)) {
-        weatherDescription.textContent = "Drizzle";
+        weatherDescription.textContent = "🌧️";
     } else if (/^5\d{2}$/.test(weatherID)) {
         weatherDescription.textContent = "🌧️";
     } else if (/^6\d{2}$/.test(weatherID)) {
-        weatherDescription.textContent = "Snow";
+        weatherDescription.textContent = "🌨️";
     } else if (/^8\d{2}$/.test(weatherID)) {
         weatherDescription.textContent = "☁️";
     } else {
         // Set a default weather description if 'weatherID' doesn't match any pattern
-        weatherDescription.textContent = "Unknown weather condition";
+        weatherDescription.textContent = "❌";
     }
 }
 
 changeWeatherDescription();
+
+console.log(changeWeatherDescription)
+
+*/
 
 //---------------------------------------------------------
 
@@ -141,7 +180,7 @@ changeWeatherDescription();
 locationName.textContent = cityName;
 
 currentTemperature.textContent = `${currentTemperatures}°C`;
-windSpeedElement.textContent = `${windSpeed} m/s`;
+// windSpeedElement.textContent = `${windSpeed} m/s`;
 // weatherDescriptionElement.textContent = weatherDescription; // Update the weather description
 
 })
@@ -198,7 +237,7 @@ const fetchFiveDayWeather = () => {
       console.error('Error:', error);
     });
 };
-fetchCurrentWeather();
+// fetchCurrentWeather();
   fetchFiveDayWeather();
 
 /*})
