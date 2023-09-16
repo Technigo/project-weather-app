@@ -5,7 +5,7 @@ let didInputWork = false;
 
 let citiesLocalStorage;
 let inputNoitem;
-let cities = ["Berlin", "Kalix", "Osaka", "Stockholm", "Mexico City"];
+let cities = [];
 const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 const weatherCondition = ["Clouds", "Rain", "Clear", "Thunderstorm", "Snow", "Mist"];
 let cityName = cities[0];
@@ -27,19 +27,15 @@ const deleteBtn = document.getElementById("delete-btn");
 
 const API_KEY = "3a2e7d598cb1958aefb452acd4215121";
 
-// This is for calling an api for main/ upper section
-// This is for calling api for 4 more days
 function callApiCurrentWeather(city) {
   fetch(
     `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&cnt=40&APPID=${API_KEY}`
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
-
       const weatherArr = data.list.filter((obj) => obj.dt_txt.includes("03:00"));
       const weatherOfTheDay = weatherArr.shift();
-      console.log(weatherOfTheDay);
+
       const {
         city: { name, timezone, sunrise, sunset },
       } = data;
@@ -133,7 +129,6 @@ function createCardUpper(obj, cityName, sunrise, sunset, timeNow) {
   upperCard.style.backgroundImage = `url(${backgroundImgUrl})`;
 
   clickBtnL.style.display = "block";
-
   clickBtnR.style.display = "block";
   menuBtn.style.display = "unset";
   dotsBox.style.display = "block";
@@ -153,6 +148,7 @@ function createCardUnder(arr) {
       main: { temp_min, temp_max },
       weather: [{ main }],
     } = arr[i];
+
     const iconurl = chooseIcons(main);
     if (isToday < 6) {
       isToday++;
@@ -165,7 +161,7 @@ function createCardUnder(arr) {
       days[isToday]
     }  <img  src="${iconurl}" class="icon-weather-sm"/>
     
-    <sapn class="min-max-temp-under-box">${Math.round(temp_max)}&#176;/${Math.round(
+    <span class="min-max-temp-under-box">${Math.round(temp_max)}&#176;/${Math.round(
       temp_min
     )}&#176;</span></p>
       </div>
@@ -344,7 +340,6 @@ function openModal() {
     li.textContent = el;
     icon.setAttribute("src", "assets/icons/delete.png");
     li.addEventListener("click", () => {
-      console.log(el);
       card.textContent = "";
       callApiCurrentWeather(el);
       closeModal();
@@ -372,7 +367,8 @@ function deleteCity() {
 
       localStorage.removeItem(cityText);
       const index = cities.indexOf(city);
-
+      console.log(city, cityText);
+      console.log(localStorage);
       cities = cities.splice(index, 1);
       city.style.display = "none";
       if (buttons.length === 1) {
