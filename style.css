@@ -1,53 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    margin: 0;
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-}
-
-.location {
-    color: white;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 100vw;
-    position: relative;
-    overflow: hidden;
-}
-
-.location:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
+body {
+    font-family: 'Mont serrat', sans-serif;
+    background-color: #f4f7f8;
+    color: #F47775;
+    margin: 30px 50px;
     height: 100%;
-    width: 100%;
-    background: rgb(71, 83, 222);
-    background: linear-gradient(180deg, rgba(71, 83, 222, 1)0%, rgb(231, 241, 255)100%);
-    border-radius: 0 0 100% 100%;
-    transform: scaleX(1.5);
-}
-
-#city,
-#temperature,
-#weather,
-#forecast,
-#sunset,
-.sunrise {
-    z-index: 1;
-    margin: 0 38px;
-}
-
-#city {
-    font-size: 22px;
 }
