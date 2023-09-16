@@ -26,19 +26,6 @@ const dailyWeathertips = document.getElementById("daily-tips");
 // forecastContainer for 5 days
 const forecastContainer = document.getElementById("forecast-container");
 
-// [1];
-// const forecastDay2 = document.getElementById("day-two").children[0];
-// const forecastTem2 = document.getElementById("day-two").children
-// [1];
-// const forecastDay3 = document.getElementById("day-three").children[0];
-// const forecastTem3 = document.getElementById("day-three").children
-// [1];
-// const forecastDay4 = document.getElementById("day-four").children[0];
-// const forecastTem4 = document.getElementById("day-four").children
-// [1];
-// const forecastDay5 = document.getElementById("day-five").children[0];
-// const forecastTem5 = document.getElementById("day-five").children
-// [1];
 
 // Global variables ---------------------------------------
 
@@ -71,10 +58,11 @@ const pickWeathertip = "Dont´t forget your umbrella. It´s wet in Stockholm tod
 let kelvinValue = "";
 let celsiusValue = "";
 
+let timeshiftFromUTC = "";
 // forecastvalues for weekday and temperature, can not be assigned now, because happens inside loop
 let forecastDay = "";
 let forecastTemp = "";
-
+const forecastDataCollection = [];
 
 // Functions -------------------------------------------------
 
@@ -108,12 +96,6 @@ const fetchForecast = () => {
             forecastObject = data;
             console.log("forecast data:");
             console.log(forecastObject);
-            // console.log(weatherObject) 
-            const forecastDataCollection = () => {
-                forecastObject.forEach(() => {
-
-                })
-            }
         })
 }
 
@@ -131,35 +113,72 @@ const insertWeatherdata = () => {
     sunset.innerHTML = formatTimestamp(weatherObject.sys.sunset); // NB! formatTimestamp is a function  
     weatherIcon.setAttribute("src", pickWeathersymbol);
     dailyWeathertips.innerHTML = pickWeathertip;
-    // creating forecast with 5 lines, injecting values
+    // finding only 12 o´clock values in 5-day forecast
+    filterDataForForecast();
+    // creating forecast with 5 lines, filling array forecastDataCollection, injecting values
     for (let i = 0; i < 5; i++) {
         forecastContainer.innerHTML += `
-    <div>
+    <div class="forecast-item">
     <span class="weekday">day </span>
     <span class="forecastTemp">temperature</span>
     </div>
     `
-        // forecastDay = document.getElementsByClassName("weekday")[i];
         forecastDay = document.getElementsByClassName("weekday")[i];
-        forecastDay.innerHTML = i;
+        let dayvalue = forecastDataCollection[i].dt;
+        let daydataWeekday = convertToWeekday(dayvalue);
+        forecastDay.innerHTML = daydataWeekday;
+
         forecastTemp = document.getElementsByClassName("forecastTemp")[i];
-        forecastTemp.innerHTML = i;
+        kelvinValue = forecastDataCollection[i].main.temp;
+        celsiusValue = convertToCelsius(kelvinValue);
+        forecastTemp.innerHTML = (celsiusValue + ` °C`);
     }
 };
 
-const convertToCelsius = (value) => {
-    celsiusValue = kelvinValue - 273.15;
-    return;
+// functions for weather-forecast-------------------------
+const filterDataForForecast = () => {
+    // put array with only temp objects in allTempDatasets
+    const allTempDatasets = forecastObject.list;
+    // console.log(allTempDatasets);
+    allTempDatasets.forEach((i) => {
+        let dataItem = i.dt + timeshiftFromUTC;
+        let formattedDateOfDataitem = formatForecastDay(dataItem);
+        // console.log(formattedDateOfDataitem);
+        //  -> all dates converted
+        //  now filtering for the 5 datasets around noon, its not always 12!, times shifting;
+        if (formattedDateOfDataitem.includes("11:00:00") || formattedDateOfDataitem.includes("12:00:00") || formattedDateOfDataitem.includes("13:00:00")) {
+            forecastDataCollection.push(i);
+        } else {
+
+        }
+    });
+    // console.log(forecastDataCollection);
 }
 
 const formatForecastDay = (unixtimeStamp) => {
-    const date = new Date(timeStamp * 1000);
+    timeshiftFromUTC = forecastObject.city.timezone;
+    // adds time to UTC-value for city
+    unixtimeStamp += timeshiftFromUTC;
+    const date = new Date(unixtimeStamp * 1000);
     // Format the date to weekday using toLocaleString with options
-    const formattedDate = date.toLocaleString("en-GB", {
-        let text = date.toLocaleString("en-gb", { weekday: "narrow" });
-    });
+    const formattedDate = date.toLocaleString("en-GB",);
     return formattedDate;
 }
+
+const convertToWeekday = (unixtimeStamp) => {
+    const date = new Date(unixtimeStamp * 1000);
+    // Format the date to weekday using toLocaleString with options
+    const formattedDate = date.toLocaleString("en-GB", { weekday: "short" });
+    return formattedDate;
+}
+
+const convertToCelsius = (value) => {
+    let result = value - 273.15;
+    result = parseInt(result);
+    return result;
+}
+// end of functions for weather-forecast-------------------------
+
 
 // Event listeners -----------------------------------------
 
