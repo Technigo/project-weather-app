@@ -1,11 +1,33 @@
 body {
-    background-color: azure;
-    font-family: "Montserrat", sans-serif;
     display: flex;
     justify-content: center;
-    margin: 15px 15px;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
 }
 
+
+p {
+    font-family: 'Montserrat', sans-serif;
+    margin: 5px;
+}
+
+
+.search {
+    font-family: 'Montserrat', sans-serif;
+    margin: 20px;
+}
+
+.searchbar {
+    padding: 10px;
+    border-radius: 50px;
+    width: 60%;
+    margin: auto 0;
+    font-family: 'Montserrat', sans-serif;
+    border: 1px solid;
+
+}
 
 /*Footer*/
 footer {
