@@ -22,16 +22,20 @@ const formattedTime = (timestamp) => {
 }
 
 const fetchWeather = () => {
-    console.log(fetchWeather)
+    console.log()
     fetch(url)
         .then((respons) => respons.json())
         .then((data) => {
             console.log(data)
             header.innerHTML = ` 
+           
             <h3>${data.weather[0].description} | ${data.main.temp.toFixed(1)}°C</h3>
-            <h3>Sunrise ${formattedTime(data.sys.sunrise)} | Sunset ${formattedTime(data.sys.sunset)}</h3>
-            <h3>${data.name}</h3>
-            `
+           
+            <h3>Sunrise ${formattedTime(data.sys.sunrise)} | Sunset ${formattedTime(data.sys.sunset)}</h3>`;
+
+            city.innerHTML = `
+            <h1>${data.name}</h1>`;
+
         })
 
         .catch((error) => {
@@ -41,6 +45,44 @@ const fetchWeather = () => {
 }
 
 fetchWeather();
+
+
+const forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=${API_KEY}`;
+
+const weeklyforecast = document.getElementById('weeklyforecast');
+
+const fetchForecast = () => {
+    console.log(fetchForecast)
+    fetch(forecastURL)
+        .then((respons) => respons.json())
+        .then((forecast) => {
+            console.log(forecast);
+            weeklyforecast.innerHTML = `    
+            `;
+
+            forecast.list.forEach((forecastData) => {
+                const row = document.createElement('tr');
+                const timeCell = document.createElement('td');
+                const temperatureCell = document.createElement('td');
+
+                // Customize this part based on the data you want to display.
+                timeCell.textContent = forecastData.dt_txt;
+                temperatureCell.textContent = `${forecastData.main.temp} °C`;
+
+                row.appendChild(timeCell);
+                row.appendChild(temperatureCell);
+                weeklyforecast.appendChild(row);
+            });
+        })
+        .catch((error) => {
+            console.error('Error', error);
+        });
+};
+
+// Call the fetchForecast function to make the API request.
+fetchForecast();
+
+
 
 // const calculateSunrise = (data) => {
 //     const unixTimestamp = data.sys.sunrise // seconds
