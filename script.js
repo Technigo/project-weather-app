@@ -29,7 +29,7 @@ const fetchWeather = () => {
             console.log(data)
             header.innerHTML = ` 
             <h3>${data.weather[0].description} | ${data.main.temp.toFixed(1)}°C</h3>
-            <h3></h3>
+            <h3>Sunrise ${formattedTime(data.sys.sunrise)} | Sunset ${formattedTime(data.sys.sunset)}</h3>
             <h3>${data.name}</h3>
             `
         })
