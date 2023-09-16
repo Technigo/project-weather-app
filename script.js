@@ -25,14 +25,16 @@ document.addEventListener("DOMContentLoaded", function () {
         const roundedTemperature = parseFloat(json.main.temp).toFixed(1);
 
         container.innerHTML += `
-        <div class="background-img">
+        
     <h1>${roundedTemperature} °C</h1>
+    
     <h2>${json.name}</h2>
+    
     <p>${json.weather[0].main}</p>
     
     <div id="sunrise-time"><p>Sunrise: ${json.sunriseTime},</p></div>
     <div id="sunset-time"><p>Sunset: ${json.sunsetTime}</p></div> 
-    </div>
+    
   `;
 
         const weatherIcon = (iconID) => {
