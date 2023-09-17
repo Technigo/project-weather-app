@@ -18,6 +18,22 @@ body {
   height: 100%;
 }
 
+h1 {
+  font-size: 7rem;
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+h3 {
+  font-size: 18px;
+  text-transform: capitalize;
+  font-weight: 300;
+}
+
 .wrapper {
   position: relative;
   background-color: #e0e0e0;
@@ -31,16 +47,7 @@ body {
   flex-direction: column;
   justify-content: center;
 }
-/*
-./images/sunnyday.jpg
-./images/cloudy.jpg
-./images/thunder.jpg
-./images/rainy.jpg
-./images/night-cloudy.jpg
-./images/night.jpg
-./images/snow.jpg
-./images/ice.jpg
-*/
+
 .back-image {
   position: absolute;
   background-image: url("");
@@ -60,8 +67,9 @@ body {
   margin: 20px 0 20px;
 }
 
-.toggle-open, .toggle-close {
-  width: 30px;
+.toggle-open,
+.toggle-close {
+  width: 2rem;
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -76,8 +84,8 @@ body {
   border: 0;
   outline: 0;
   background-color: rgba(255, 255, 255, 0.8);
-  padding: 10px 25px;
-  height: 40px;
+  padding: 0.5rem 1.5rem;
+  height: 2.5rem;
   border-radius: 30px;
   margin-left: 1.5rem;
 }
@@ -98,29 +106,15 @@ main {
   padding: 0 30px;
 }
 
-.curt {
+.temp-container {
   display: flex;
 }
 
-h1 {
-  font-size: 7rem;
-  font-weight: 400;
-}
-
 .celsius {
-  font-size: 40px;
+  font-size: 2rem;
   font-weight: 300;
   vertical-align: super;
   padding-top: 1rem;
-}
-
-h2 {
-  font-size: 2rem;
-}
-
-h3 {
-  font-size: 18px;
-  text-transform: capitalize;
 }
 
 .local-time-display {
@@ -132,28 +126,24 @@ h3 {
   align-items: center;
 }
 
-.c-w-i {
-  width: 80px;
+.c-w-icon {
+  width: 5rem;
 }
 
 .sunrise-sunset {
+  position: relative;
   color: white;
   font-size: 18px;
   font-weight: 300;
   display: flex;
-  justify-content: center;
-  gap: 2.5rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  justify-content: space-evenly;
   width: 100%;
 }
 
-.sunrise p,
-.sunset p {
-  display: inline;
-  margin-right: 0.5rem;
+.sunrise-sunset div {
+  display: flex;
+  gap: 1rem;
+  padding: 15px;
 }
 
 .forecast-wrapper {
@@ -170,8 +160,8 @@ h3 {
 }
 
 .forecast-weekday {
-  width: 80px;
-  padding-left: 8px;
+  width: 5rem;
+  padding-left: 0.5rem;
 }
 
 .forecast-icon {
@@ -182,26 +172,44 @@ h3 {
   height: 42px;
 }
 
-.moln {
+.w-icon {
   width: 55px;
 }
 
 .forecast-temp {
-  width: 80px;
+  width: 5rem;
   text-align: center;
 }
 
 .forecast-wind {
-  width: 80px;
+  width: 5rem;
   text-align: right;
 }
 
-h2,
-h3 {
-  font-weight: 300;
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: grey;
+  font-size: 16px;
 }
 
-/* To use when hiding something*/
+footer p {
+  display: flex;
+  align-items: center;
+}
+
+footer img {
+  width: 20px;
+}
+
+footer a,
+footer a:visited {
+  margin: 0 5px;
+  color: grey;
+}
+
+/* To use when hiding something */
 .hidden {
   display: none;
   transition: transform 1s ease 0s;

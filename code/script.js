@@ -13,7 +13,7 @@ const weatherForecast = document.getElementById("weatherForecast");
 const toggleOpen = document.getElementById("toggleOpen");
 const toggleClose = document.getElementById("toggleClose");
 const searchContainer = document.getElementById("searchContainer");
-const searchInput = document.querySelector("search-container input");
+const searchInput = document.getElementById("inputField");
 const searchBtn = document.getElementById("searchBtn");
 
 // Variables for API-fethcing ------------------
@@ -28,67 +28,77 @@ const urlForecast =
 // Get the user's local timezone
 //let userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-// API for the weather data
-const fetchStockholmWeather = () => {
+// Current weather data ------------------
+const fetchCurrentWeather = (cityName) => {
   fetch(`${urlCurrentWeather}${cityName}&appid=${API_KEY}`)
     .then((response) => response.json())
     .then((json) => {
       console.log(json);
 
-      // Current temperature
+      // Temperature
       const temp = json.main.temp;
-      const roundedTemp = temp.toFixed(1); // This will round to one decimal place
-      console.log(roundedTemp);
-
-      currentTemp.innerHTML = `${roundedTemp}`;
-      console.log(`${roundedTemp}°C`);
-      city.innerHTML = `${json.name}`;
-      console.log(json.name);
-
-      //Shows the local time
-      const utcTimestamp = json.dt * 1000; //Convert to milliseconds
-      const localTime = new Date(utcTimestamp);
-      const formattedLocalTime = localTime.toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-      });
-      console.log(`Clock is: ${formattedLocalTime}`);
-      localTimeDisplay.innerHTML = `Time: ${formattedLocalTime}`;
-
+      // toFixed(1); will round to one decimal place but we decided to not show the temperature with decimals.
+      const roundedTemp = temp.toFixed(0);
+      // City
+      cityName = json.name;
+      // Weather description
       const weatherDescription = json.weather[0].description;
-      weather.innerHTML = `${weatherDescription}`;
-      console.log(weatherDescription);
-
+      // Weather Icon
       let { icon } = json.weather[0];
+
+      // Inside the HTML for current weather
+      currentTemp.innerHTML = `${roundedTemp}`;
+      city.innerHTML = `${cityName}`;
+      weather.innerHTML = `${weatherDescription}`;
       weatherIcon.innerHTML = `<img src="http://openweathermap.org/img/wn/${icon}@2x.png">`;
 
-      // Shows the sunrise and sunset time with the right timezone
-      // The date object is handling dates and times
-      const sunriseData = new Date(json.sys.sunrise * 1000); // Multiplying by 1000 to convert it into milliseconds.
-      // Formats the sunriseData Date object into a time string using the toLocaleTimeString method.
-      const sunriseTime = sunriseData.toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
+      console.log(`${roundedTemp}°C`);
+      console.log(json.name);
+      console.log(weatherDescription);
+
+      // LOCAL TIME with hour/minute and timezone ------------
+      const localTimeData = new Date((json.dt + json.timezone) * 1000);
+      const formattedLocalTime = localTimeData.toLocaleTimeString(["en-GB"], {
+        timeStyle: "short",
+        timeZone: "UTC",
       });
 
-      const sunsetData = new Date(json.sys.sunset * 1000);
-      const sunsetTime = sunsetData.toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
+      // Inside the HTML
+      localTimeDisplay.innerHTML = `Time: ${formattedLocalTime}`;
+      console.log(`Time is ${formattedLocalTime}`);
+
+      // ------------ SUNRISE AND SUNSET ------------
+      // The date object is handling dates and times
+      const sunriseData = new Date((json.sys.sunrise + json.timezone) * 1000);
+      sunriseData.setMinutes(
+        sunriseData.getMinutes() + sunriseData.getTimezoneOffset()
+      );
+      // This transform the time to hour and minute.
+      const sunriseTime = sunriseData.toLocaleTimeString(["en-GB"], {
+        timeStyle: "short",
+      });
+
+      const sunsetData = new Date((json.sys.sunset + json.timezone) * 1000);
+      sunsetData.setMinutes(
+        sunsetData.getMinutes() + sunsetData.getTimezoneOffset()
+      );
+      const sunsetTime = sunsetData.toLocaleTimeString(["en-GB"], {
+        timeStyle: "short",
       });
 
       // Sunrise and sunset innerHTML
       sunrise.innerHTML += `${sunriseTime}`;
-      sunset.innerHTML += `${sunsetTime}`;
+      sunset.innerHTML = `${sunsetTime}`;
 
-      console.log(`sunrise ${sunriseTime}`);
-      console.log(`sunset ${sunsetTime}`);
+      console.log(`Sunrise ${sunriseTime}`);
+      console.log(`Sunset ${sunsetTime}`);
 
+      // ------------
       const todaysWeather = json.weather[0].main;
       console.log(todaysWeather);
 
       // ------------ Image backgrounds feature ------------
-      // Array for weather category atmosphere
+      // Array for weather category "atmosphere".
       const atmosphere = [
         "Mist",
         "Smoke",
@@ -102,16 +112,18 @@ const fetchStockholmWeather = () => {
         "Tornado",
       ];
 
-      console.log(formattedLocalTime);
-      console.log(sunriseTime);
-      console.log(sunsetTime);
-      console.log(localTime.getHours());
+      // Current local time in right timezone
+      const getTime = new Date();
+      getTime.setMinutes(getTime.getMinutes() + getTime.getTimezoneOffset());
+      getTime.setSeconds(getTime.getSeconds() + json.timezone);
+      console.log(`Local time and timezone ${getTime}`);
 
       // Checks what hour it is
-      const currentHour = localTime.getHours();
+      const currentHour = getTime.getHours();
+      console.log(`Current hour is ${currentHour}`);
 
       // Checks if the current hour is between 06:00 and 22:00, which is considered daytime, or else night time
-      if (currentHour >= 6 && currentHour < 22) {
+      if (currentHour >= 6 && currentHour <= 22) {
         // Daytime background images depending on weather.
         if (todaysWeather === "Thunderstorm") {
           background.style.backgroundImage = `url('./images/thunder.jpg')`;
@@ -140,68 +152,65 @@ const fetchStockholmWeather = () => {
     .catch((error) => console.log("Error ❌", error));
 };
 
-fetchStockholmWeather();
+fetchCurrentWeather();
+
+// ------------------------------------------------------------------------
+// FIVE DAYS WEATHER FORECAST
 
 // API for weather forecast of the next 5 days.
-const fiveDayForecast = () => {
-  fetch(
-    `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=${API_KEY}`
-  )
-    .then((response) => {
-      return response.json();
-    })
+const fiveDayForecast = (cityName) => {
+  fetch(`${urlForecast}${cityName}&appid=${API_KEY}`)
+    .then((response) => response.json())
     .then((json) => {
-      const filteredData = json.list.filter((dayWeather) => {
-        // Check if the time is 12:00 (noon)
-        return dayWeather.dt_txt.includes("12:00");
-      });
+      console.log(json);
 
-      console.log(filteredData);
-      // You can now use filteredData to display the weather at 12:00 PM every day
-      showWeatherData(filteredData);
+      // If user didn't search for a city
+      if (json.cod !== "404") {
+        // Check if the time is 12:00 (noon)
+        const filteredData = json.list.filter((dayWeather) =>
+          dayWeather.dt_txt.includes("12:00")
+        );
+
+        filteredData.forEach((day) => {
+          const date = new Date(day.dt * 1000);
+          let dayName = date.toLocaleDateString("en-US", { weekday: "short" });
+          // Make a Date object for right now
+          const today = new Date();
+          // Compare the forecast's day with the day right now
+          const isTodaysForecast = date.getDay() === today.getDay();
+
+          const { main, wind, weather } = day;
+          const { temp } = main;
+          const icon = weather[0].icon;
+          // Access wind speed from the wind object
+          const { speed: wind_speed } = wind;
+          // Use toFixed(0) to round the temperature to a whole number
+          const roundedTemp = temp.toFixed(0);
+
+          if (!isTodaysForecast) {
+            // Weather forecast content for each 5 day
+            weatherForecast.innerHTML += `
+            <div class="forecast-container">
+              <div class="forecast-weekday">${dayName}</div>
+              <div class="forecast-icon">
+                <img class="w-icon" src="https://openweathermap.org/img/wn/${icon}@2x.png">
+              </div>
+              <div class="forecast-temp">${roundedTemp}&#176;C</div>
+              <div class="forecast-wind">${wind_speed} m/s</div>
+            </div>
+       `;
+          }
+        });
+      } else {
+        // Alerts that the city wasn't found and runs Stockholm.
+        alert("City not found. Check your spelling and try again.");
+        fetchCurrentWeather("Stockholm");
+        fiveDayForecast("Stockholm");
+      }
     })
-    .catch((error) => console.log("Error ⛔", error));
+    .catch((error) => console.log("Error ❌", error));
 };
 fiveDayForecast();
-
-// Weather forecast loop for each fifth day.
-const showWeatherData = (filteredData) => {
-  filteredData.forEach((day) => {
-    const date = new Date(day.dt * 1000);
-    console.log(date);
-    //
-    let dayName = date.toLocaleDateString("en-US", { weekday: "short" });
-    console.log(dayName);
-    // Make a Date object for right now
-    const today = new Date();
-    console.log(today);
-    // Compare the forecast's day with the day right now
-    const isTodaysForecast = date.getDay() === today.getDay();
-
-    const { main, wind, weather } = day;
-    const { temp } = main;
-    const icon = weather[0].icon;
-
-    // Access wind speed from the wind object
-    const { speed: wind_speed } = wind;
-    // Use toFixed(0) to round the temperature to a whole number
-    const roundedTemp = temp.toFixed(0);
-
-    if (!isTodaysForecast) {
-      // Weather forecast content for each 5 day
-      weatherForecast.innerHTML += `
-      <div class="forecast-container">
-        <div class="forecast-weekday">${dayName}</div>
-        <div class="forecast-icon">
-          <img class="moln" src="https://openweathermap.org/img/wn/${icon}@2x.png">
-        </div>
-        <div class="forecast-temp">${roundedTemp}&#176;C</div>
-        <div class="forecast-wind">${wind_speed} m/s</div>
-      </div>
- `;
-    }
-  });
-};
 
 // Function that controlls the toggling between opening and closing the search field.
 const toggleSearchField = () => {
@@ -210,11 +219,37 @@ const toggleSearchField = () => {
   toggleOpen.classList.toggle("hidden");
 };
 
-toggleOpen.addEventListener("click", toggleSearchField);
-toggleClose.addEventListener("click", toggleSearchField);
+// Function that stores user input
+const searchCity = () => {
+  let searchedCity = searchInput.value;
+
+  // When user searching for a city's weather data
+  fetchCurrentWeather(searchedCity);
+  fiveDayForecast(searchedCity);
+
+  // Clears search field
+  searchInput.value = "";
+
+  // Hides search field again
+  toggleSearchField();
+
+  // Reset sunrise/sunset time and 5 days weather forecast when searching again
+  sunrise.innerHTML = "";
+  sunset.innerHTML = "";
+  weatherForecast.innerHTML = "";
+};
+
+// Startpage (when loading page)
+fetchCurrentWeather("Stockholm");
+fiveDayForecast("Stockholm");
 
 // Eventlisteners --------------------
-
-//searchBtn.addEventListener('click', () => {
-//  fetchStockholmWeather(searchInput.value);
-//})
+toggleOpen.addEventListener("click", toggleSearchField);
+toggleClose.addEventListener("click", toggleSearchField);
+searchBtn.addEventListener("click", searchCity);
+// Get it to work with Enter key
+searchInput.addEventListener("keyup", (event) => {
+  if (event.key == "Enter") {
+    searchCity();
+  }
+});
