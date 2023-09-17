@@ -50,7 +50,38 @@ let forecastObject = "";
 const pickWeathersymbol = "/design/design2/icons/noun_Umbrella_2030530.svg";
 // need to define conditions when to use which symbol
 
-const pickWeathertip = "Dont´t forget your umbrella. It´s wet in Stockholm today.";
+const pickWeathertip = (weatherTip) => {
+    if (weatherObject.weather[0].description.includes('clear sky')) {
+        let weatherTip = "Get your sunnies on. Stockholm is looking rather great today.";
+        document.querySelector('body').style.backgroundColor = "#Faedc8";
+        document.querySelector('body').style.color = "#Eeb50e";
+        return weatherTip;
+    } else if (weatherObject.weather[0].description.includes('rain')) {
+        weatherTip = "Don't forget your umbrella. It's pouring!";
+        document.querySelector('body').style.backgroundColor = "#a2def6";
+        document.querySelector('body').style.color = "#1b4961";
+        return weatherTip;
+    } else if (weatherObject.weather[0].description.includes('snow')) {
+        weatherTip = "Brr, baby it's cold outside! Grab your warmest coat.";
+        document.querySelector('body').style.backgroundColor = "white";
+        document.querySelector('body').style.color = "#1b4961";
+        return weatherTip;
+    } else if (weatherObject.weather[0].description.includes('cloud')) {
+        weatherTip = "Time for cloud-gazing! Which shapes can you find today?";
+        document.querySelector('body').style.backgroundColor = "#D6e8ee";
+        document.querySelector('body').style.color = "#28afdc";
+        return weatherTip;
+    } else if (weatherObject.weather[0].description.includes('thunderstorm')) {
+        weatherTip = "Be careful out there. There's a storm ahead!";
+        document.querySelector('body').style.backgroundColor = "grey";
+        document.querySelector('body').style.color = "black";
+        return weatherTip;
+    } else {
+        weatherTip = "Rainy, sunny, cloudy... today the weather seems unpredictable!";
+        return weatherTip;
+    }
+}
+
 // need to define conditions when to use which sentence.
 // Get your sunnies on. Stockholm is looking rather great today.
 // Light a fire and get cosy. Stockholm is looking grey today.
@@ -112,7 +143,7 @@ const insertWeatherdata = () => {
     sunrise.innerHTML = formatTimestamp(weatherObject.sys.sunrise); // NB! formatTimestamp is a function
     sunset.innerHTML = formatTimestamp(weatherObject.sys.sunset); // NB! formatTimestamp is a function  
     weatherIcon.setAttribute("src", pickWeathersymbol);
-    dailyWeathertips.innerHTML = pickWeathertip;
+    dailyWeathertips.innerHTML = pickWeathertip();
     // finding only 12 o´clock values in 5-day forecast
     filterDataForForecast();
     // creating forecast with 5 lines, filling array forecastDataCollection, injecting values
