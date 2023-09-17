@@ -28,10 +28,6 @@ const cities = [
         image: 'https://images.unsplash.com/photo-1585425422110-bb85558b2293?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80'
     }
 ];
-const weekDays = [
-    'Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'
-]
-
 
 
 let selectedCity = 0;
@@ -98,8 +94,8 @@ const getWeatherData = (cityName) => {
 const weeklyForecast = (cityName) => {
     // Fetch current weather data for the entered city
     // Fetch 5-day weather forecast for the entered city
-    const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=${apiKey} `;
-    console.log(weeklyForecast)
+    const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=${apiKey}`;
+
     fetch(forecastUrl)
         .then((response) => response.json())
         .then((forecastJson) => {
@@ -110,14 +106,15 @@ const weeklyForecast = (cityName) => {
             const today = new Date();
             const todaysDate = today.toLocaleDateString()
             const processedDates = [];
-            processedDates.push(todaysDate); //includes today's date in the array from beginning
+            processedDates.push(todaysDate);
 
+            let daysAdded = 0; // Keep track of the number of days added
 
-            //Create processedDates array
+            // Create processedDates array
             forecastJson.list.forEach((forecast) => {
                 const dayDate = dayTime(forecast.dt);
 
-                if (!processedDates.includes(dayDate)) {
+                if (!processedDates.includes(dayDate) && daysAdded < 5) {
                     const row = document.createElement('tr');
                     const dateCell = document.createElement('td');
                     dateCell.textContent = dayDate;
@@ -129,7 +126,6 @@ const weeklyForecast = (cityName) => {
                     iconCell.appendChild(icon);
                     row.appendChild(iconCell);
 
-
                     const tempCell = document.createElement('td');
                     tempCell.textContent = `${forecast.main.temp.toFixed(1)} °C`;
                     row.appendChild(tempCell);
@@ -138,8 +134,9 @@ const weeklyForecast = (cityName) => {
                     windSpeedCell.textContent = `${forecast.wind.speed} m/s`
                     row.appendChild(windSpeedCell)
 
-                    forecastTable.appendChild(row)
+                    forecastTable.appendChild(row);
                     processedDates.push(dayDate);
+                    daysAdded++; // Increment the daysAdded counter
                 }
             });
         })
@@ -147,9 +144,6 @@ const weeklyForecast = (cityName) => {
             console.error('Error message:', error)
         });
 }
-
-
-
 
 //Event listeners 
 //for the searchbutton
