@@ -1,12 +1,12 @@
 # Instructions
 Start out with signing up for a [free Open Weather Map](https://home.openweathermap.org/users/sign_up "free Open Weather Map") account, as it can take up to a few hours for the API key to be activated.
 
-We've asked a couple of different designers to do their take on this project. It's a great practice in implementing someone else's design. You will find their designs in the design folder in the repo along with some design assets. Decide together with your coding buddy, which design you want to implement - and follow the design as closely as you can.
+We've asked a couple of different designers to do their take on this project. It's a great practice in implementing someone else's design. You will find their designs in the design folder in the repo along with some design assets. Decide together with your coding buddy, which design you want to implement - and follow the design as closely as you can. // OK
 
 ## How to get started 💪🏼
 
-1. One person forks the repo.
-2. The person forking the repo will be the owner of the repo. They now have to invite the other person as collaborators. To do that you go to the repo's Settings → Manage access → Invite a collaborator.    
+1. One person forks the repo. //OK
+2. The person forking the repo will be the owner of the repo. They now have to invite the other person as collaborators. To do that you go to the repo's Settings → Manage access → Invite a collaborator. // OK
 3. One person clones the repo, and together in pairs you will layout the foundation (following Step 1 & 2, specified further down).
 4. Push the changes to GitHub.
 5. When it's time to split up and work in branches, it's also time for the other person to clone the repo.
