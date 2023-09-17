@@ -12,5 +12,5 @@ During the week we had more than one problem to solve but figured it out by usin
 As we submit our project there are still a few bugs that we would've fixed if we had more time. One bug that we noticed at the end was that when the app decides which background to show (dark if it's night and light if it's day) the function uses the time of users computer, and not the real time of the city it's showing, meaning it can show the day-background even if it's night time in the city it's showing. 
 
 ## View it live
+emmy-and-innas-weather-app.netlify.app 
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
