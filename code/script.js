@@ -25,9 +25,6 @@ let cityName = "Stockholm"; // City on startpage (Path param)
 const urlForecast =
   "https://api.openweathermap.org/data/2.5/forecast?units=metric&q=";
 
-// Get the user's local timezone
-// let userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
 // Current weather data ------------------
 const fetchCurrentWeather = (cityName) => {
   fetch(`${urlCurrentWeather}${cityName}&appid=${API_KEY}`)
