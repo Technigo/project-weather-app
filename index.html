@@ -4,39 +4,54 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
     <title>Weather App</title>
   </head>
   <body>
-
     <div class="background">
       <div class="round"></div>
-      <div class="container">
-        <header>
-          <button class="search-button" id="search-button" >
-            <span class="material-symbols-outlined search-icon-class">search</span>
-            <span class="material-symbols-outlined close-icon-class" style="display: none;">close</span>
-          </button>
+    </div>
+    <div class="container">
+      <header class="top-search-container">
+        <button class="search-button" id="search-button">
+          <span class="material-symbols-outlined search-icon-class"
+            >search</span
+          >
+          <span
+            class="material-symbols-outlined close-icon-class"
+            style="display: none"
+            >close</span
+          >
+        </button>
+
         <div class="search-container">
-          <input type="text" class="search-bar" id="search-bar" placeholder="Search" />
-          <button class="search-bar-button" id="search-bar-button" >
-            
-          </button>
+          <input
+            type="text"
+            class="search-bar"
+            id="search-bar"
+            placeholder="Search"
+          />
+          <button class="search-bar-button" id="search-bar-button"></button>
         </div>
-          
-        </header>
+      </header>
 
-        <div id="weather-container"></div>
-
-        <ul id="5-day-forecast">
-          <!-- 5-day forecast data will be displayed here -->
-        </ul>
-        <div id="weather-forecast">
-          <!-- Weather forecast will be displayed here -->
-
-
-        <script src="./script.js"></script>
- 
+      <div class="weather-container" id="weather-container"></div>
+      <div class="button-container">
+        <button class="round-button"><span>></span></button>
+      </div>
+      <ul id="5-day-forecast">
+        <!-- 5-day forecast data will be displayed here -->
+      </ul>
+      <div id="weather-forecast"></div>
+      <!-- Weather forecast will be displayed here -->
+    </div>
+    <script src="./script.js"></script>
   </body>
 </html>

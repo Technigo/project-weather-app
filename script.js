@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const searchBar = document.getElementById("search-bar");
   const searchBarButton = document.getElementById("search-bar-button");
   const container = document.getElementById("weather-container");
-  //const weatherIcon = document.getElementById('weather-icon');
   const forecastContainer = document.getElementById("weather-forecast");
   const searchIconElement = document.querySelector(".search-icon-class");
   const closeIconElement = document.querySelector(".close-icon-class");
@@ -66,14 +65,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   fetchCurrentWeather();
 
-  const weatherIcon = (iconID) => {
+  /*const weatherIcon = (iconID) => {
     let base_URL = `https://openweathermap.org/img/wn/`;
     let icon = iconID;
     let end_URL = `@2x.png`;
 
     return base_URL + icon + end_URL;
   };
-  weatherIcon();
+  weatherIcon();*/
 
   const apiKey = "b0bce0ead37d18acc13ad506864e75ac";
   // const city = "Stockholm,Sweden";
@@ -147,6 +146,18 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error fetching data:", error);
     });
 
+  fetch(
+    "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=168451996f01476589314aaee8750993"
+  )
+    .then((response) => response.json())
+    .then((json) => {
+      if (json.sys) {
+        displaySunriseSunset(json.sys.sunrise, json.sys.sunset);
+      } else {
+        navMenu.style.display = "block";
+      }
+    });
+
   const displaySunriseSunset = (sunriseTimestamp, sunsetTimestamp) => {
     const sunriseDate = new Date(sunriseTimestamp * 1000); //shows the time in milliseconds
     const sunsetDate = new Date(sunsetTimestamp * 1000);
@@ -169,41 +180,6 @@ document.addEventListener("DOMContentLoaded", function () {
       "sunset-time"
     ).innerHTML = `<p>Sunset: ${sunsetTime}</p>`;
   };
-
-  /*fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=168451996f01476589314aaee8750993")
-  .then(response => response.json())
-  .then((json) => {
-    if(json.sys) {
-      displaySunriseSunset(json.sys.sunrise, json.sys.sunset);
-
-    } else {
-      navMenu.style.display = "block";
-    }
-  });
-*/
-
-  /* const displaySunriseSunset = (sunriseTimestamp, sunsetTimestamp) => {
-    const sunriseDate = new Date(sunriseTimestamp * 1000); //shows the time in milliseconds
-    const sunsetDate = new Date(sunsetTimestamp * 1000);
-
-    const sunriseTime = `${sunriseDate.getHours()}:${sunriseDate
-      .getMinutes()
-      .toString()
-      .padStart(2, "0")}`;
-    const sunsetTime = `${sunsetDate.getHours()}:${sunsetDate
-      .getMinutes()
-      .toString()
-      .padStart(2, "0")}`;
-
-    console.log(`Sunrise: ${sunriseTime}, Sunset: ${sunsetTime}`);
-
-    document.getElementById(
-      "sunrise-time"
-    ).innerHTML = `<p>Sunrise: ${sunriseTime}</p>`;
-    document.getElementById(
-      "sunset-time"
-    ).innerHTML = `<p>Sunset: ${sunsetTime}</p>`;
-  };*/
 
   fetch(
     "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=168451996f01476589314aaee8750993"

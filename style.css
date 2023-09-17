@@ -2,26 +2,25 @@
 
 body {
   font-family: "Roboto", sans-serif;
+
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 800px;
 }
 
 .background {
   background-color: rgb(177, 177, 177);
-  position: relative;
+  position: absolute; /* Change to absolute positioning */
+
   height: 800px;
   width: 400px;
   overflow: hidden;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  max-width: 448px;
-  height: 684px;
-  background-color: rgb(181, 181, 186);
-
-  margin: auto;
   border-radius: 30px;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+  z-index: -1; /* Move it to a lower layer (behind other content) */
 }
 
 .round {
@@ -33,11 +32,30 @@ body {
   bottom: 40%;
   right: 50%;
   transform: translate(50%);
+  z-index: 0; /* Set a lower z-index so it's behind the content */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 100%;
+  position: relative;
+}
+.top-search-container {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+}
+
+.weather-container {
+  margin: 20px;
 }
 
 h1 {
   font-size: 72px;
   color: antiquewhite;
+  margin: 10px;
 }
 
 h2 {
@@ -95,7 +113,7 @@ p {
   display: flex;
   flex-direction: column; /* Stack elements vertically */
   align-items: flex-start; /* Align items to the start of each column */
-  margin-top: 30px;
+
   justify-content: center;
   align-items: center;
 }
@@ -104,7 +122,7 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center; /* Align items vertically within each row */
-  margin-bottom: 10px; /* Add spacing between rows */
+
   width: 80%;
 }
 
@@ -119,6 +137,7 @@ p {
   margin-right: 10px; /* Add spacing between icons and temperatures */
 }
 
+/*---------------------*/
 .search-container {
   display: flex;
   align-items: center;
@@ -150,12 +169,14 @@ p {
 
 .search-bar {
   display: none;
-  padding: 10px;
+  padding: 1px;
   border-color: white;
-  font-size: 20px;
+  font-size: 18px;
   border: 1px solid #ced4da;
   width: 200px;
+  height: 25px;
   transition: width 0.4s;
+  opacity: 30%;
 }
 
 .search-bar:focus {
@@ -169,7 +190,7 @@ p {
   border: none;
   color: #2e4053;
   border-color: white;
-  background-color: red;
+  /*background-color: ;*/
   cursor: pointer;
 }
 
@@ -183,26 +204,35 @@ p {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 
-.sunrise-time,
-.sunset-time {
-  width: 50%;
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 38px;
 }
 
 .round-button {
   display: inline-block;
-  width: 70px; /* Adjust the size as necessary */
-  height: 70px;
-  background-color: #7fb3d5; /* Adjust the background color as necessary */
+
+  width: 80px; /* Adjust the size as necessary */
+  height: 80px;
+  background-color: #5b7754; /* Adjust the background color as necessary */
   border-radius: 50%; /* Makes the button round */
   border: none; /* Removes the default border */
-  color: white; /* Adjust the text color as necessary */
-  text-align: center;
-  line-height: 50px; /* Vertically centers the text */
-  font-family: "Rubik", sans-serif;
-  font-size: 40px; /* Adjust the font size as necessary */
   cursor: pointer;
 }
 
+.round-button span {
+  color: white; /* Adjust the text color as necessary */
+  text-align: center;
+  line-height: 70px; /* Vertically centers the text */
+  font-family: "Rubik", sans-serif;
+  font-size: 40px; /* Adjust the font size as necessary */
+}
+
 .round-button:hover {
-  background-color: #a9cce3; /* Adjust the hover background color as necessary */
+  background-color: #7b9674; /* Adjust the hover background color as necessary */
+}
+
+.round-button span:hover {
+  background-color: #7b9674; /* Adjust the hover background color as necessary */
 }
