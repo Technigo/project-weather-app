@@ -16,12 +16,12 @@ body {
 }
 
 .round {
-  height: 500px;
+  height: 550px;
   width: 600px;
   background-image: url(design/design1/tree2.png);
   border-radius: 50%;
   position: absolute;
-  bottom: 50%;
+  bottom: 40%;
   right: 50%;
   transform: translate(50%);
 }
@@ -36,31 +36,82 @@ h1 {
   color: antiquewhite;
 }
 
-#sunrise-time,
-#sunset-time {
-  display: flex;
-  justify-content: space-between;
+h2 {
+  font-size: 30px;
   color: antiquewhite;
 }
 
-/* Initially hide the nav-menu */
-
-.nav-menu {
-  display: none;
+.current-cloud {
+  display: flex;
+  align-items: center; /* Vertically center the text and icon */
 }
 
-/* Style the hamburger menu icon */
-.hamburger-menu {
-  cursor: pointer;
-  padding: 5px;
+.current-cloud p {
+  margin: 0; /* Remove any default margin */
+  color: antiquewhite;
 }
 
-/* Style the list items inside the nav-menu */
-.nav-menu ul {
-  list-style: none;
-  padding: 0;
+#current-weather-icon {
+  /* Your CSS styles for the icon, e.g., width, height, margin-right */
+  width: 50px; /* Example width */
+  height: 50px; /* Example height */
+  margin-left: 20px; /* Example margin */
 }
 
-.nav-menu li {
-  margin: 10px 0;
+/* First weather icon */
+.weather-icon {
+  display: flex;
+  align-items: center; /* Vertically center the icon with text */
+}
+
+.weather-icon img {
+  width: 100px; /* Set the desired width */
+  height: 100px; /* Set the desired height */
+  margin-right: 10px;
+}
+
+p {
+  color: antiquewhite;
+}
+
+.sunset-sunrise {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#sunrise-time {
+  color: antiquewhite;
+}
+#sunset-time {
+  color: antiquewhite;
+}
+
+/* 5 dayforecast elements */
+#weather-forecast {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: flex-start; /* Align items to the start of each column */
+  margin-top: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.forecast-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Align items vertically within each row */
+  margin-bottom: 10px; /* Add spacing between rows */
+  width: 80%;
+}
+
+.forecast-item p {
+  margin: 0;
+  padding: 0 10px; /* Add spacing between elements */
+}
+
+.forecast-item img {
+  width: 50px; /* Adjust the width as needed */
+  height: 50px; /* Adjust the height as needed */
+  margin-right: 10px; /* Add spacing between icons and temperatures */
 }

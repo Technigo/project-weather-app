@@ -4,9 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const container = document.getElementById("weather-container");
   const hamburgerMenu = document.getElementById("hamburger-menu");
   const navMenu = document.getElementById("nav-menu");
-  //const weatherIcon = document.getElementById("weather-icon");
-  const sunriseTime = document.getElementById("sunrise-time");
-  const sunsetTime = document.getElementById("sunset-time");
 
   const forecastContainer = document.getElementById("weather-forecast");
 
@@ -17,39 +14,53 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch(
       "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=168451996f01476589314aaee8750993"
     )
-      .then((response) => {
-        return response.json();
-      })
+      .then((response) => response.json())
       .then((json) => {
         console.log(json);
         const roundedTemperature = parseFloat(json.main.temp).toFixed(1);
 
         container.innerHTML += `
-        
-    <h1>${roundedTemperature} °C</h1>
-    
-    <h2>${json.name}</h2>
-    
-    <p>${json.weather[0].main}</p>
-    
-    <div id="sunrise-time"><p>Sunrise: ${json.sunriseTime},</p></div>
-    <div id="sunset-time"><p>Sunset: ${json.sunsetTime}</p></div> 
-    
-  `;
+          <h1>${roundedTemperature} °C</h1>
 
-        const weatherIcon = (iconID) => {
-          let base_URL = `https://openweathermap.org/img/wn/`;
-          let icon = iconID;
-          let end_URL = `@2x.png`;
+          <h2>${json.name}</h2>
 
-          return base_URL + icon + end_URL;
-        };
-        // Fetch the weather icon mappings from JSON file⁄⁄⁄⁄⁄⁄⁄⁄
+          <div class="current-cloud">
+          <p>${json.weather[0].main}</p>
+
+          <div id="current-weather-icon" class="weather-icon">
+          <!-- Weather icon will be inserted here -->
+        </div>
+        </div>
+
+        <div class="sunset-sunrise">
+          <div id="sunrise-time">
+          <p>Sunrise: ${json.sunriseTime},</p>
+          </div>
+          <div id="sunset-time">
+          <p>Sunset: ${json.sunsetTime}</p>
+          </div>
+          </div>
+        `;
+
+        // Fetch the weather icon mappings from JSON file
+        const weatherIcon = json.weather[0].icon; // Get the icon code
+        const iconElement = document.createElement("img"); // Create an img element
+        iconElement.src = `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`; // Set the src attribute
+        iconElement.alt = "Weather Icon"; // Set alt text
+        iconElement.id = "weather-icon"; // Set an id for styling
+
+        // Append the icon to the current-weather-icon div
+        const currentWeatherIcon = document.getElementById(
+          "current-weather-icon"
+        );
+
+        currentWeatherIcon.appendChild(iconElement);
       })
       .catch((error) => {
         console.error("There was a problem with the fetch operation:", error);
       });
   };
+
   fetchCurrentWeather();
 
   const weatherIcon = (iconID) => {
@@ -70,15 +81,17 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(data);
     const currentDate = new Date();
     currentDate.setHours(0, 0, 0, 0); // Set the time to midnight for comparison
+    let iconText = data?.date?.[0]?.weather?.code;
 
     const filteredData = data.list.filter((item) => {
+      console.log(item);
       const itemDate = new Date(item.dt * 1000); // Convert timestamp to date
       itemDate.setHours(0, 0, 0, 0); // Set the time of the forecast date to midnight for comparison
 
       // Check if the forecast date is greater than the current date
       if (itemDate > currentDate) {
         // Check if the timestamp is for 12:00 PM (noon)
-        return item.dt_txt.includes("21:00:00");
+        return item.dt_txt.includes("12:00:00");
       }
       return false;
     });
@@ -92,15 +105,30 @@ document.addEventListener("DOMContentLoaded", function () {
       const dayOfWeek = date.toLocaleDateString("en-SE", { weekday: "short" });
       const temperature = parseFloat(item.main.temp).toFixed(1);
 
-      const weatherDescription = item.weather[0].description;
+      // Construct the icon URL using the icon code
+      const iconCode = item.weather[0].icon;
+      const iconUrl = `https://openweathermap.org/img/wn/${iconCode}.png`;
 
-      const forecastElement = document.createElement("p");
-      forecastElement.textContent = `${dayOfWeek}: ${temperature}°C, ${weatherDescription}`;
+      // Create an image element for the weather icon
+      const weatherIcon = document.createElement("img");
+      weatherIcon.src = iconUrl;
+      weatherIcon.alt = item.weather[0].description;
 
-      // Append the paragraph element to the forecast container
+      // Create a forecast element
+      const forecastElement = document.createElement("div");
+      forecastElement.classList.add("forecast-item"); // Add a class for styling
+
+      // Populate the forecast element
+      forecastElement.innerHTML = `
+        <p>${dayOfWeek}</p>
+        <img src="${iconUrl}" alt="${item.weather[0].description}" />
+        <p>${temperature}°C</p>
+      `;
+
+      // Append the forecast element to the forecast container
       forecastContainer.appendChild(forecastElement);
 
-      console.log(`${dayOfWeek}: ${temperature}°C, ${weatherDescription}`);
+      console.log(`${dayOfWeek}: ${temperature}°C, ${item.weather[0].main}`);
     });
   }
 
@@ -115,15 +143,6 @@ document.addEventListener("DOMContentLoaded", function () {
     .catch((error) => {
       console.error("Error fetching data:", error);
     });
-
-  hamburgerMenu.addEventListener("click", function () {
-    console.log(`hamburger menu`);
-    if (navMenu.style.display === "block") {
-      navMenu.style.display = "none";
-    } else {
-      navMenu.style.display = "block";
-    }
-  });
 
   const displaySunriseSunset = (sunriseTimestamp, sunsetTimestamp) => {
     const sunriseDate = new Date(sunriseTimestamp * 1000); //shows the time in milliseconds
@@ -160,4 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     })
     .catch((error) => console.error("Error:", error));
+
+  /* const currentWeatherIcon = document.getElementById("current-weather-icon");
+  currentWeatherIcon.appendChild(iconElement);*/
 });
