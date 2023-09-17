@@ -59,6 +59,7 @@ h2 {
 
 p {
     font-size: 25px;
+
 }
 
 
@@ -85,13 +86,9 @@ p {
 .sun-state {
     display: flex;
     flex-direction: row;
-    /* Ensure elements appear on the same row */
     justify-content: flex-start;
-    /* Adjust as needed */
     align-items: center;
-    /* Align items vertically if needed */
-
-    padding: 0;
+    padding: 5px;
 }
 
 
@@ -161,8 +158,7 @@ p {
     top: 50%;
     left: 50%;
     transform: translate(-70%, -80%);
-    margin: 0;
-    padding: 0;
+
 
 }
 
@@ -174,6 +170,7 @@ p {
     align-items: center;
     width: 100%;
     line-height: 1;
+
 }
 
 .current-city-weather {
@@ -192,11 +189,11 @@ p {
     display: flex;
     line-height: 1;
     word-spacing: 0.9em;
+
 }
 
 .sun-state p {
-    margin: 0px;
-    padding: 0px;
+    padding-right: 60px;
 
 }
 

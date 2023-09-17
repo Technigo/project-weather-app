@@ -94,7 +94,7 @@ const getWeatherData = (cityName) => {
 const weeklyForecast = (cityName) => {
     // Fetch current weather data for the entered city
     // Fetch 5-day weather forecast for the entered city
-    const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=${apiKey}`;
+    const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=${apiKey} `;
     console.log(weeklyForecast)
     fetch(forecastUrl)
         .then((response) => response.json())
