@@ -358,6 +358,9 @@ function openModal() {
 }
 
 // This is for a button to delete a specific city
+// this has a problem. I think async await could be a key.
+// When I clear localstorage, it should be no irem inside, but the Ideam I want to delete reminds. So I think it is stored in apiCall fucntion, just after clean up localstorage.
+// For now, I don't know how to fix it, and I will come back in the future.
 function deleteCity() {
   console.log(localStorage);
   const buttons = document.querySelectorAll(".delete-city");
@@ -365,25 +368,26 @@ function deleteCity() {
     el.addEventListener("click", (e) => {
       const city = e.target.parentNode.parentNode;
       const cityText = city.textContent;
-
-      localStorage.clear();
+      console.log(city);
+      city.removeEventListener("click", callApiCurrentWeather);
 
       console.log(localStorage);
       const index = cities.indexOf(cityText);
       cities.splice(index, 1);
       console.log(cities);
       cities.map((el) => console.log(localStorage));
+      localStorage.clear();
       console.log(localStorage);
-      // city.style.display = "none";
+      city.style.display = "none";
 
-      if (buttons.length === 1) {
+      if (localStorage.length === 0) {
         localStorage.clear();
         cities = [];
         clickIndex = 0;
         modalWindow.style.display = "none";
-        createNoitemPage();
+        return createNoitemPage();
       } else {
-        callApiCurrentWeather(cities[0]);
+        return callApiCurrentWeather(cities[0]);
       }
     })
   );
