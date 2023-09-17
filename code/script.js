@@ -182,4 +182,3 @@ window.addEventListener('load', () => {
     getWeatherData(cities[selectedCity].name);
     weeklyForecast(cities[selectedCity].name);
 });
-
