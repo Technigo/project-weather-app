@@ -56,13 +56,13 @@ function updateWeatherUI(data) {
     description.textContent = capitalizedDescription;
     // Todays advice - You can use a conditional statement here based on weatherDescription
     if (weatherDescription.includes('clear')) {
-        todaysAdvice.textContent = "It's a clear day. Enjoy the sunshine!";
+        todaysAdvice.textContent = "Det är en klar dag. Njut av solskenet!"; //"It's a clear day. Enjoy the sunshine!
     } else if (weatherDescription.includes('rain')) {
-        todaysAdvice.textContent = "It's raining. Don't forget your umbrella!";
+        todaysAdvice.textContent = "Det regnar. Glöm inte ditt paraply!"; //"It's raining. Don't forget your umbrella!"
     } else {
-        todaysAdvice.textContent = "Check the weather and plan accordingly.";
+        todaysAdvice.textContent = "'Det finns inget dåligt väder,\nbara dåliga kläder'"; //"Check the weather and plan accordingly."
     }
-
+    //OBS; BØR VI HA ANDRE BESKJEDER, FEKS EN FOR SOL?
 
     //sunrise
     const sunriseTime = new Date(data.sys.sunrise * 1000);

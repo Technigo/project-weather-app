@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="./style.css">
     <!--ELBA Ikon library hamb.-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href='https://fonts.google.com/specimen/Montserrat'>
+    <!--I didnt like the other font from design 1, so im using font from design2 -->
 </head>
 
 <body>
@@ -20,12 +22,13 @@
         <nav>
             <!--The logo (EmE' WEATHER)-->
             <a href="#home" class="logo"> <span class="logo-em">EmE</span>
-                <span class="logo-weather">WEATHER</span>
+                <span class="logo-weather">VÄDER</span>
                 <!--Hamburger menu when clicked (MENU NAVIGATION LINKS)-->
                 <div id="myLinks">
-                    <a href="#test1">test1</a>
-                    <a href="#test2">test2</a>
-                    <a href="#test3">test3</a>
+                    <a href="#test1">Hitta plats på kartan</a>
+                    <a href="#test2">Farovarningar</a>
+                    <a href="#test3">Hjälp</a>
+                    <a href="#test4">Kontakta oss</a>
                 </div>
                 <!--HAMBURGER MENU ICON-->
                 <a href="javascript:void(0);" class="icon" onclick="toggleNavMenu()"> <i class="fa fa-bars"></i>
@@ -35,10 +38,10 @@
         <header>
 
             <div class="weatherData">
+                <div id="Temperature"></div>
                 <img src="./design/design1/assets/Group16.png" alt="cloud">
                 <img src="./design/design1/assets/Group34.png" alt="sunnycloud">
                 <img src="./design/design1/assets/Group36.png" alt="sunny">
-                <div id="Temperature"></div>
                 <div id="city"></div>
                 <div id="description"></div>
                 <div id="todaysAdvice"></div>

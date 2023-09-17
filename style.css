@@ -10,10 +10,12 @@
 html,
 body {
     height: 100%;
+    font-family: 'Tenor Sans', sans-serif;
+    font-weight: 300;
 }
 
 html {
-    background-color: hotpink;
+    background-color: rgb(254, 251, 247);
 }
 
 body {
@@ -23,6 +25,7 @@ body {
 /* STYLING THE WHOLE TOP OF THE PAGE SECTION STARTS HERE */
 .style-topOfPage {
     background-image: linear-gradient(rgb(235, 15, 114), rgb(255, 170, 0), rgb(255, 254, 220));
+    font-size: 20px;
     /*background-color: beige;
     text-align
     background-size: cover;
@@ -31,20 +34,44 @@ body {
     owerflow:hidden;*/
     overflow: hidden;
     width: 100%;
-    min-height: 300px;
+    min-height: 500px;
     /*border-radius: 0 0 50% 50%/ 30%; Didnt like the way this looked*/
-    clip-path: ellipse(85% 85% at 50% 0%);
-
+    clip-path: ellipse(100% 85% at 50% 0%);
 }
 
 .style-topOfPage.clicked {
-    clip-path: ellipse(100% 85% at 50% 0%);
+    clip-path: ellipse(100% 90% at 50% 0%);
     background-image: linear-gradient(rgb(255, 250, 119), rgb(252, 180, 38), rgb(235, 15, 114));
     /* Adjusts bottom of the curve when hamburg.menu is clicked*/
     /*js: topOfPage.classList.remove("clicked"); topOfPage.classList.add("clicked");*/
     /*Values explained in: NOTAT FORKLARING NR1 (remember to share with group)*/
 }
 
+/* HEADER STYLING STARTS HERE */
+.weatherData {
+    padding-top: 30px;
+    font-size: 18px;
+}
+
+#Temperature {
+    font-size: 100px;
+    /*HOW TO MAKE CELCIUS SYMBOL SMALL*/
+}
+
+#city {
+    font-size: 30px;
+}
+
+#todaysAdvice {
+    font-size: 14px;
+    background-color: rgba(240, 228, 224, 0.176);
+    border-radius: 30px;
+    padding: 10px;
+    display: inline-block;
+    white-space: pre-line;
+}
+
+/* HEADER STYLING ENDS HERE */
 
 /* NAVIGATION MENU STYLING STARTS HERE */
 nav {
@@ -55,34 +82,37 @@ nav {
 /* Hides links inside the nav. menu */
 #myLinks {
     display: none;
+    font-size: 15px;
 }
 
 /* Style nav menu links (dropped down) */
 nav a {
     color: rgb(0, 0, 0);
     padding: 7px;
-    text-decoration: overline, ;
+    text-decoration: overline;
     font-size: 18px;
     display: block;
     text-align: center;
-    font-weight: 700;
+    font-weight: 300;
+    margin-top: 3px;
 }
 
 /* Style the hamburger menu */
 nav a.icon {
-    color: brown;
+    color: rgb(84, 11, 11);
     display: block;
     position: absolute;
     text-align: left;
     font-size: 30px;
     left: 0;
     top: 0;
+    margin-left: 20px;
 }
 
 /* Style the hamburger menu when cicked */
 nav a.icon.active {
     background-color: transparent;
-    color: brown;
+    color: rgb(84, 11, 11);
 
 }
 
@@ -98,12 +128,15 @@ nav a.icon.active {
     top: 0;
     margin: 0;
     position: relative;
+    color: rgb(84, 11, 11);
+    font-weight: 600;
+    letter-spacing: 0.2em;
 }
 
 .logo-em {
     /*EmE'*/
     font-size: 16px;
-    margin-right: 5px;
+    margin-right: 20px;
     margin-bottom: 5px;
 }
 
@@ -111,6 +144,7 @@ nav a.icon.active {
     /*WEATHER*/
     font-size: 10px;
     margin: 0;
+    margin-right: 15px;
     display: block;
 }
 
@@ -118,13 +152,14 @@ nav a.icon.active {
 /* STYLING THE WHOLE TOP OF THE PAGE SECTION ENDS HERE */
 
 .weeklyForecast {
-    background-color: rgb(241, 210, 225);
     padding-top: 10px;
+    margin-right: 7px;
+    margin-left: 7px;
 }
 
 /*Iwant to style "todays date different, how do I target todays date?*/
 #day1 {
-    background-color: rgb(218, 181, 199);
+    background-color: rgb(240, 228, 224);
     border-radius: 30px;
     padding: 10px;
     display: inline-block;
