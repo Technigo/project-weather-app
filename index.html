@@ -9,26 +9,51 @@
     <!--<meta http-equiv="X-UA-Compatible" content="ie=edge"-->
     <title>Weather app</title>
     <link rel="stylesheet" href="./style.css">
+    <!--ELBA Ikon library hamb.-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href='https://fonts.google.com/specimen/Montserrat'>
+    <!--I didnt like the other font from design 1, so im using font from design2 -->
 </head>
 
-
 <body>
-    <h1>Welcome to EME's weather</h1>
-    <section>
-        <div class="weatherData">
-            <div id="Temperature"></div>
-            <div id="city"></div>
-            <div id="description"></div>
-            <div id="todaysAdvice"></div>
-            <div id="sunriseAndTime"></div>
-            <div id="sunsetAndTime"></div>
-            <img src="./design/design1/assets/Group16.png" alt="cloud">
-            <img src="./design/design1/assets/Group34.png" alt="sunnycloud">
-            <img src="./design/design1/assets/Group36.png" alt="sunny">
-        </div>
+    <!--ELBA made the section a class for styling-->
+    <section class="style-topOfPage">
+        <!--ELBA addednavbar in section-->
+        <nav>
+            <!--The logo (EmE' WEATHER)-->
+            <a href="#home" class="logo"> <span class="logo-em">EmE</span>
+                <span class="logo-weather">VÄDER</span>
+                <!--Hamburger menu when clicked (MENU NAVIGATION LINKS)-->
+                <div id="myLinks">
+                    <a href="#test1">Hitta plats på kartan</a>
+                    <a href="#test2">Farovarningar</a>
+                    <a href="#test3">Hjälp</a>
+                    <a href="#test4">Kontakta oss</a>
+                </div>
+                <!--HAMBURGER MENU ICON-->
+                <a href="javascript:void(0);" class="icon" onclick="toggleNavMenu()"> <i class="fa fa-bars"></i>
+                </a>
+        </nav>
+        <!--ELBA moved class="weatherData" into header-->
+        <header>
+
+            <div class="weatherData">
+                <div id="Temperature"></div>
+                <img src="./design/design1/assets/Group16.png" alt="cloud">
+                <img src="./design/design1/assets/Group34.png" alt="sunnycloud">
+                <img src="./design/design1/assets/Group36.png" alt="sunny">
+                <div id="city"></div>
+                <div id="description"></div>
+                <div id="todaysAdvice"></div>
+                <div id="sunriseAndTime"></div>
+                <div id="sunsetAndTime"></div>
+
+            </div>
+        </header>
     </section>
 
-    <!--5dayforecast-->
+
+    <!--OBS: ELBA changed weekly forecast to class-->
     <section class="weeklyForecast">
         <div id="day1">
             <span>day1</span>

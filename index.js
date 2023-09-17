@@ -75,13 +75,13 @@ function updateWeatherUI(data) {
     description.textContent = capitalizedDescription;
     // Todays advice - You can use a conditional statement here based on weatherDescription
     if (weatherDescription.includes('clear')) {
-        todaysAdvice.textContent = "It's a clear day. Enjoy the sunshine!";
+        todaysAdvice.textContent = "Det är en klar dag. Njut av solskenet!"; //"It's a clear day. Enjoy the sunshine!
     } else if (weatherDescription.includes('rain')) {
-        todaysAdvice.textContent = "It's raining. Don't forget your umbrella!";
+        todaysAdvice.textContent = "Det regnar. Glöm inte ditt paraply!"; //"It's raining. Don't forget your umbrella!"
     } else {
-        todaysAdvice.textContent = "Check the weather and plan accordingly.";
+        todaysAdvice.textContent = "'Det finns inget dåligt väder,\nbara dåliga kläder'"; //"Check the weather and plan accordingly."
     }
-
+    //OBS; BØR VI HA ANDRE BESKJEDER, FEKS EN FOR SOL?
 
     //sunrise
     const sunriseTime = new Date(data.sys.sunrise * 1000);
@@ -100,6 +100,7 @@ function updateWeatherUI(data) {
 
 //brances added - need to commit? Did it just in case
 
+<<<<<<< HEAD
 //MIRELA LAGT TIL - 5 DAY FORECAST//
 //FUNCTION FETCH 5DAY FORECAST DATA//
 function fetchForecastData() {
@@ -181,7 +182,33 @@ function updateForecast(forecastData) {
 }
 
 
+
+
+=======
+//ELBA ADDED "function toggleNavMenu" FOR NAVBAR
+function toggleNavMenu() {
+    var x = document.getElementById("myLinks");
+    var icon = document.querySelector("nav a.icon");
+    var topOfPage = document.querySelector(".style-topOfPage");
+
+    if (x.style.display === "block") {
+        x.style.display = "none";
+        icon.classList.remove("active"); // Remove the "active" class
+        topOfPage.style.height = "auto"; // Set the height to auto to expand
+        topOfPage.classList.remove("clicked"); // Remove the "clicked" class
+    } else {
+        x.style.display = "block";
+        icon.classList.add("active"); // Add the "active" class
+        topOfPage.style.height = topOfPage.scrollHeight + x.scrollHeight + "px"; // Expand to the full content height plus the menu height
+        topOfPage.classList.add("clicked"); // Add the "clicked" class
+    }
+}
+//I think I understand the if/else and remove add, but find it hard to explain. I'll try to if we have enough time.
+
+window.addEventListener("load", fetchWeatherData);
+>>>>>>> styling
+
+
 //EVENT LISTENERS//
 window.addEventListener("load", fetchWeatherData); //update weather information when site loads
 window.addEventListener("load", fetchForecastData); //update 5day forecast information when site loads
-

@@ -1,1 +1,186 @@
 /* mobile first!!!*/
+/* To reset all margins, padding, and border*/
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: 'Tenor Sans', sans-serif;
+    font-weight: 300;
+}
+
+html {
+    background-color: rgb(254, 251, 247);
+}
+
+body {
+    background-color: transparent;
+}
+
+/* STYLING THE WHOLE TOP OF THE PAGE SECTION STARTS HERE */
+.style-topOfPage {
+    background-image: linear-gradient(rgb(235, 15, 114), rgb(255, 170, 0), rgb(255, 254, 220));
+    font-size: 20px;
+    /*background-color: beige;
+    text-align
+    background-size: cover;
+    background-attachment: fixed;bilde?
+    posision:relative;
+    owerflow:hidden;*/
+    overflow: hidden;
+    width: 100%;
+    min-height: 500px;
+    /*border-radius: 0 0 50% 50%/ 30%; Didnt like the way this looked*/
+    clip-path: ellipse(100% 85% at 50% 0%);
+}
+
+.style-topOfPage.clicked {
+    clip-path: ellipse(120% 90% at 50% 0%);
+    background-image: linear-gradient(rgb(255, 250, 119), rgb(252, 180, 38), rgb(235, 15, 114));
+    /* Adjusts bottom of the curve when hamburg.menu is clicked*/
+    /*js: topOfPage.classList.remove("clicked"); topOfPage.classList.add("clicked");*/
+    /*Values explained in: NOTAT FORKLARING NR1 (remember to share with group)*/
+}
+
+/* HEADER STYLING STARTS HERE */
+.weatherData {
+    padding-top: 30px;
+    font-size: 18px;
+
+}
+
+#Temperature {
+    font-size: 100px;
+    /*HOW TO MAKE CELCIUS SYMBOL SMALL*/
+    padding-left: 0;
+    padding-left: 5px;
+}
+
+#city {
+    font-size: 30px;
+    padding-left: 25px;
+}
+
+#description,
+#sunriseAndTime {
+    font-size: 15px;
+    padding-left: 25px;
+}
+
+#todaysAdvice {
+    font-size: 14px;
+    background-color: rgba(240, 228, 224, 0.176);
+    border-radius: 30px;
+    padding: 10px;
+    display: inline-block;
+    white-space: pre-line;
+    padding-left: 25px;
+    /*not working the way i want*/
+}
+
+/* HEADER STYLING ENDS HERE */
+
+/* NAVIGATION MENU STYLING STARTS HERE */
+nav {
+    overflow: hidden;
+    position: relative;
+}
+
+/* Hides links inside the nav. menu */
+#myLinks {
+    display: none;
+    font-size: 15px;
+}
+
+/* Style nav menu links (dropped down) */
+nav a {
+    color: rgb(0, 0, 0);
+    padding: 7px;
+    text-decoration: overline;
+    font-size: 18px;
+    display: block;
+    text-align: center;
+    font-weight: 300;
+    margin-top: 3px;
+}
+
+/* Style the hamburger menu */
+nav a.icon {
+    color: rgb(84, 11, 11);
+    display: block;
+    position: absolute;
+    text-align: left;
+    font-size: 30px;
+    left: 0;
+    top: 0;
+    margin-left: 20px;
+}
+
+/* Style the hamburger menu when cicked */
+nav a.icon.active {
+    background-color: transparent;
+    color: rgb(84, 11, 11);
+
+}
+
+/*LOGOSTYLING IN NAVBAR*/
+
+.logo {
+    color: rgb(25, 25, 24);
+    text-decoration: none;
+    text-align: right;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    right: 0;
+    top: 0;
+    margin: 0;
+    position: relative;
+    color: rgb(84, 11, 11);
+    font-weight: 600;
+    letter-spacing: 0.2em;
+}
+
+.logo-em {
+    /*EmE'*/
+    font-size: 16px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+}
+
+.logo-weather {
+    /*WEATHER*/
+    font-size: 10px;
+    margin: 0;
+    margin-right: 15px;
+    display: block;
+}
+
+/* NAVIGATION MENU STYLING ENDS HERE */
+/* STYLING THE WHOLE TOP OF THE PAGE SECTION ENDS HERE */
+
+.weeklyForecast {
+    padding-top: 10px;
+    margin-right: 7px;
+    margin-left: 7px;
+}
+
+/*Iwant to style "todays date different, how do I target todays date?*/
+#day1 {
+    background-color: rgb(240, 228, 224);
+    border-radius: 30px;
+    padding: 10px;
+    display: inline-block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*
+.day1 {}
+
+.temperature1 {}*/
