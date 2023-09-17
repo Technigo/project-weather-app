@@ -1,3 +1,5 @@
+//------------- separate js file for rain effect by Stenli ------------//
+
 $(document).ready(function () {
   // Your existing jQuery code here
 

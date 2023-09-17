@@ -1,10 +1,9 @@
 //--------DOM selectors stored as short variables-------------//
 
 const container = document.getElementById('sun_rise_sunset');
+const stockholmDatesElement = document.getElementById('stockholmDates');
 
 //---------------- Global Variables -------------------------//
-
-//example URL: https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=YOUR_API_KEY
 
 const BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
 const API_KEY = "9055fb4826563eac25a47e211073a627"; //Beckie's API key
@@ -13,7 +12,8 @@ const city = "Stockholm,Sweden";
 const apiUrl = `${BASE_URL}?q=${city}&units=metric&APPID=${API_KEY}`;
 const forecastAPI = `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&exclude=hourly,daily,current&units=metric&APPID=9055fb4826563eac25a47e211073a627`
 
-console.log(forecastAPI)
+console.log(forecastAPI) //for debugging purposes
+
 
 //------------------API fetch functions ----------------------//
 
@@ -36,7 +36,8 @@ fetch(forecastAPI)
     })
     .catch((error) => console.error('Error:', error)) // Handle any errors that occurred during the API request
 
-// ----- updateHTML function - display current forecast, sunrise, sunset, icon for city ---------------   //
+
+// ---------- updateHTML function - display sunrise, sunset, and weather icon for city ---------------   //
 
 const updateHTML = (json) => {
     // Convert sunrise timestamp to a Date object
@@ -75,7 +76,7 @@ const updateHTML = (json) => {
     }
 }
 
-// ------ updateHTMLforecast function - display forecast for next 5 days ---------------   //
+// ---------- updateHTMLforecast function - display forecast for next 5 days ---------------   //
 
 const updateHTMLforecast = (json) => {
     const filteredForecast = json.list.filter(item => item.dt_txt.includes('12:00'));
@@ -100,6 +101,8 @@ const updateHTMLforecast = (json) => {
     }
 };
 
+// ---------- updateClock function - display current time for city ---------------   //
+
 function updateClock() {
     const clockElement = document.getElementById('clock');
     const stockholmTimeZone = 'Europe/Stockholm'; // Time zone for Stockholm, Sweden
@@ -108,13 +111,7 @@ function updateClock() {
     clockElement.textContent = stockholmTime;
 }
 
-// Update the clock every second
-setInterval(updateClock, 1000);
-
-// Initial update
-updateClock();
-
-const stockholmDatesElement = document.getElementById('stockholmDates');
+// ---------- displayCurrentStockholmDate function - display current date for city ---------------   //
 
 function displayCurrentStockholmDate() {
     const stockholmTimeZone = 'Europe/Stockholm'; // Time zone for Stockholm, Sweden
@@ -126,12 +123,14 @@ function displayCurrentStockholmDate() {
     stockholmDatesElement.innerHTML = stockholmDate;
 }
 
+// call Update the clock every second
+setInterval(updateClock, 1000);
+
+// call Initial update
+updateClock();
+
 // Call the function to display the current Stockholm date
 displayCurrentStockholmDate();
 
-
-
-
-
 //-------------------- All Event Listeners --------------------//
-//if we make a button to scroll through to other cities????
+//Stretch goal (not reached this time) button event listener here to scroll through to other cities
