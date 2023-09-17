@@ -22,7 +22,7 @@ const formattedTime = (timestamp) => {
 }
 
 const fetchWeather = () => {
-    console.log()
+    console.log(fetchWeather)
     fetch(url)
         .then((respons) => respons.json())
         .then((data) => {
