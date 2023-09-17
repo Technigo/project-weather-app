@@ -359,18 +359,23 @@ function openModal() {
 
 // This is for a button to delete a specific city
 function deleteCity() {
+  console.log(localStorage);
   const buttons = document.querySelectorAll(".delete-city");
   buttons.forEach((el) =>
     el.addEventListener("click", (e) => {
       const city = e.target.parentNode.parentNode;
       const cityText = city.textContent;
 
-      localStorage.removeItem(cityText);
-      const index = cities.indexOf(city);
-      console.log(city, cityText);
+      localStorage.clear();
+
       console.log(localStorage);
-      cities = cities.splice(index, 1);
-      city.style.display = "none";
+      const index = cities.indexOf(cityText);
+      cities.splice(index, 1);
+      console.log(cities);
+      cities.map((el) => console.log(localStorage));
+      console.log(localStorage);
+      // city.style.display = "none";
+
       if (buttons.length === 1) {
         localStorage.clear();
         cities = [];
