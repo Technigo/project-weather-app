@@ -2,6 +2,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@500&family=Montserrat:wght@500&family=Nunito&family=Raleway:wght@100&display=swap');
 
 
+
+/* The hero image */
+.hero-image {
+    /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url("https://images.unsplash.com/photo-1620408696006-d1315bf240f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2773&q=80");
+
+    /* Set a specific height */
+    height: 100%;
+
+    /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    clip-path: ellipse(70% 80% at 50% 5%);
+    color: white;
+    margin-bottom: 0px;
+
+}
+
+/* Place text in the middle of the image */
+.hero-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-70%, -80%);
+    padding: 0;
+
+}
+
+
 body::before {
     font-family: 'Montserrat', sans-serif;
     content: "";
@@ -44,8 +76,7 @@ html {
 
 h1 {
     font-size: 70px;
-    margin-bottom: 0px;
-    margin-top: 120px;
+    margin-top: 200px;
 
 
 }
@@ -77,23 +108,47 @@ p {
     justify-content: left;
     align-items: left;
     width: 100%;
-    margin-bottom: 0px;
-    padding-bottom: 0px;
 
+}
+
+.current-city-weather img {
+    margin-right: 10px;
+    line-height: 1;
 }
 
 .sun-state {
     display: flex;
     flex-direction: row;
-    /* Ensure elements appear on the same row */
     justify-content: flex-start;
-    /* Adjust as needed */
-    align-items: center;
-    /* Align items vertically if needed */
-
     padding: 0;
 }
 
+.weather {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    line-height: 1;
+    margin-top: 0;
+}
+
+
+
+.sun-state {
+    display: flex;
+    line-height: 1;
+    word-spacing: 0.9em;
+}
+
+.sun-state p {
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-right: 30px;
+
+}
 
 
 .swipe-button {
@@ -135,74 +190,6 @@ p {
 
 }
 
-/* The hero image */
-.hero-image {
-    /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url("https://images.unsplash.com/photo-1620408696006-d1315bf240f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2773&q=80");
-
-    /* Set a specific height */
-    height: 100%;
-
-    /* Position and center the image to scale nicely on all screens */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    clip-path: ellipse(70% 80% at 50% 5%);
-    color: white;
-    margin-bottom: 1px;
-
-}
-
-/* Place text in the middle of the image */
-.hero-text {
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-70%, -80%);
-    margin: 0;
-    padding: 0;
-
-}
-
-
-
-.weather {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    line-height: 1;
-}
-
-.current-city-weather {
-    display: flex;
-    align-items: center;
-    line-height: 1;
-}
-
-.current-city-weather img {
-    margin-right: 10px;
-    line-height: 1;
-}
-
-
-.sun-state {
-    display: flex;
-    line-height: 1;
-    word-spacing: 0.9em;
-}
-
-.sun-state p {
-    margin: 0px;
-    padding: 0px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding-right: 30px;
-
-}
 
 
 #forecast-table td {
