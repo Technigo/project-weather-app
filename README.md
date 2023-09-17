@@ -41,8 +41,8 @@ This project should be done in pairs. You will practice how to work in a dev tea
 
 ### Links
 
-- Solution URL: [https://github.com/...]
-- Live Site URL: [https://...]
+- Solution URL: [https://github.com/mikaeloling/project-weather-app]
+- Live Site URL: [https://peppy-squirrel-8d0497.netlify.app/]
 
 ## Our process
 
