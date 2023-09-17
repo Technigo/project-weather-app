@@ -94,7 +94,7 @@ const updateHTMLforecast = (json) => {
                 ${dayName}
             </div>
                         <div class="grid-child temp" style="box-sizing: border-box;text-align: right; border-bottom: 2px dotted #164a68;">
-                ${temp}
+                ${temp}°c
             </div>
         `;
     }
@@ -114,18 +114,16 @@ setInterval(updateClock, 1000);
 // Initial update
 updateClock();
 
-
-
 const stockholmDatesElement = document.getElementById('stockholmDates');
 
 function displayCurrentStockholmDate() {
     const stockholmTimeZone = 'Europe/Stockholm'; // Time zone for Stockholm, Sweden
     const stockholmTime = new Date().toLocaleString('en-US', { timeZone: stockholmTimeZone });
 
-    const options = { weekday: 'long', month: 'long', day: 'numeric' };
+    const options = { weekday: 'short', day: 'numeric', month: 'short' };
     const stockholmDate = new Date(stockholmTime).toLocaleDateString('en-US', options);
 
-    stockholmDatesElement.textContent = stockholmDate;
+    stockholmDatesElement.innerHTML = stockholmDate;
 }
 
 // Call the function to display the current Stockholm date
