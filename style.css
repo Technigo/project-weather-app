@@ -30,7 +30,13 @@ h2 {
   bottom: 40%;
   transform: translate(50%);
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
+  background-position: center center;
+}
+
+.header-background img {
+  width: 50%;
+  height: 20%;
 }
 
 .weather-header {
@@ -38,8 +44,10 @@ h2 {
   z-index: 4;
 }
 
-.search {
+#search {
   position: relative;
+  z-index: 5;
+  margin-top: 20px;
 }
 
 #temperature {
@@ -67,6 +75,12 @@ h2 {
 .sunset {
   display: flex;
   color: aliceblue;
+  justify-content: center;
+  align-items: center;
+}
+.sunrise h2,
+.sunset h2 {
+  padding: 0 20px;
 }
 
 #sunrise,
@@ -121,12 +135,6 @@ h2 {
   /* justify-content: center;
   align-content: center;
   margin: auto; */
-}
-
-.min-max-temps,
-.weekday,
-.forecastImg {
-  /* border: 1px solid purple */
 }
 
 .weekday {

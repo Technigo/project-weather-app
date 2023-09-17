@@ -39,7 +39,7 @@ const apiData = () => {
       console.log(data.weather[0].description);
       temperature.innerHTML = `${data.main.temp.toFixed(1)}`;
       const weatherIconTop = data.weather[0].icon;
-      typeOfWeatherData.innerHTML = `
+      typeOfWeatherData.innerHTML += `
       <img src="http://openweathermap.org/img/wn/${weatherIconTop}@2x.png" alt="weather-icon" class="weather-icon">
       `;
       const unixTimestampSunrise = data.sys.sunrise;
@@ -71,10 +71,10 @@ const apiData = () => {
       let lon = data.coord.lon;
 
       let mainWeather = data.weather[0].main;
-      // if (mainWeather === "Clouds") {
-      //   headerBackground.style.backgroundImage =
-      //     "url('https://media3.giphy.com/media/xT9GEpqOhIhNcV5etq/giphy.gif')";
-      // }
+      if (mainWeather === "Clouds") {
+        headerBackground.style.backgroundImage =
+          "url('https://media3.giphy.com/media/xT9GEpqOhIhNcV5etq/giphy.gif')";
+      }
       console.log(mainWeather);
       //May need to be replaced
       let localTime = new Date((data.dt + data.timezone) * 1000);
