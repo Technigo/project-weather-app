@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 
-
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--<meta http-equiv="X-UA-Compatible" content="ie=edge"-->
     <title>Weather app</title>
     <link rel="stylesheet" href="./style.css">
-    <!--ELBA Ikon library hamb.-->
+    <!--Ikon library hamb.-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--I didnt like the other font from design 1, so im using font from design2 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,13 +16,15 @@
 </head>
 
 <body>
-    <!--ELBA made the section a class for styling-->
+    <img src="./images/bluesky.jpg" alt="daytime" id="background-image">
+    <!--section a class for styling-->
     <section class="style-topOfPage">
-        <!--ELBA addednavbar in section-->
+        <!--addednavbar in section-->
         <nav>
+
             <!--The logo (EmE' WEATHER)-->
             <a href="#home" class="logo"> <span class="logo-em">EmE</span>
-                <span class="logo-weather">VÄDER</span>
+                <span class="logo-weather">WEATHER</span>
                 <!--Hamburger menu when clicked (MENU NAVIGATION LINKS)-->
                 <div id="myLinks">
                     <a href="#meny1">Find location on map</a>
@@ -38,6 +38,7 @@
                 </a>
         </nav>
 
+        <!--Weather Data Header-->
         <div class="weatherData">
             <div id="dateAndTime"></div>
             <div class="temperature-container">
@@ -50,47 +51,25 @@
                 <div id="sunriseAndTime"></div>
                 <div id="sunsetAndTime"></div>
             </div>
+
         </div>
-        <div id="images" display: hidden> <!---img moved from weatherData/ ELIN-->
-            <img src="./design/design1/assets/Group16.png" alt="cloud">
-            <img src="./design/design1/assets/Group34.png" alt="sunnycloud">
-            <img src="./design/design1/assets/Group36.png" alt="sunny">
+        <div id="images" display: hidden>
+            <img src="./images/day_rainmin.png" alt="cloud">
+            <img src="./images/dayothermin.png" alt="sunnycloud">
+            <img src="./images/daymin-kopi.png" alt="sunny">
         </div>
         </div>
         </header>
-        <!--ELBA Moved changes into header-->
     </section>
-    <section>
-        <div id="todaysAdvice"></div>
-        <p>Today</p>
-    </section>
-    <!--OBS: ELBA changed weekly forecast to class-->
+    <div id="todaysAdvice"></div>
     <section class="weeklyForecast">
-        <div id="day1">
-            <span>day1</span>
-            <!--ICONS?-->
-            <span>temperature1</span>
+
+        <div id="imagesTiny" display: hidden> img moved from weatherData.
+            <img src="./images/day_rain-tiny.png" alt="cloud">
+            <img src="./images/day_partial_cloud-tiny.png" alt="sunnycloud">
+            <img src="./images/day_clear-tiny.png" alt="sunny">
         </div>
-        <div id="day2">
-            <span>day2</span>
-            <!--ICONS?-->
-            <span>temperature2</span>
-        </div>
-        <div id="day3">
-            <span>day3</span>
-            <!--ICONS?-->
-            <span>temperature3</span>
-        </div>
-        <div id="day4">
-            <span>day4</span>
-            <!--ICONS?-->
-            <span>temperature4</span>
-        </div>
-        <div id="day5">
-            <span>day5</span>
-            <!--ICONS?-->
-            <span>temperature5</span>
-        </div>
+        <!--Changed weekly forecast to class-->
     </section>
 
 

@@ -1,5 +1,3 @@
-/*STEP 1: You will need to use the fetch() function in JavaScript to load the weather data into your page, and then select the values you want to inject into the DOM from the JSON which comes from the API.*/
-
 //LINK TO HTML//
 const weatherData = document.getElementsByClassName(`weatherData`)
 const city = document.getElementById(`city`)
@@ -8,9 +6,8 @@ const todaysAdvice = document.getElementById(`todaysAdvice`)
 const sunriseAndTime = document.getElementById(`sunriseAndTime`)
 const sunsetAndTime = document.getElementById(`sunsetAndTime`)
 const description = document.getElementById(`description`)
-const img = document.getElementById(`correctImg`) //ELIN
-const dateAndTime = document.getElementById(`dateAndTime`) //ELIN
-//const weeklyForecast = document.getElementsByClassName(`weeklyForecast`)//SEEMS LIKE WE DO NOT NEED THIS? LOOK AT ROW 135, WORKS WITHOUT THIS
+const img = document.getElementById(`correctImg`)
+const dateAndTime = document.getElementById(`dateAndTime`)
 
 //GLOBAL VARIABLES - WEATHER//
 const BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
@@ -25,16 +22,14 @@ const BASE_URL_FOR = "https://api.openweathermap.org/data/2.5/forecast"
 const stadenMinFor = "Stockholm,Sweden"
 const API_KEY_FOR = "964a15302a76eed8fe2ddd899c2fb441"
 
-//const URLFOR = "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=YOUR_API_KEY";
-
-
 const URLFOR = `${BASE_URL_FOR}?q=${stadenMinFor}&units=metric&APPID=${API_KEY_FOR}` // erlik 3 første const?
 //FULL URL FRA OPENWEATHERMAP - FORECAST (API) "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=964a15302a76eed8fe2ddd899c2fb441"
 
 console.log(URL) //console.log the url for weather API
 console.log(URLFOR) //console.log the url for 5day forecast API
 
-let forecastHTML = "" //MIRELA LAGT TIL
+//used to display 5day forecast
+let forecastHTML = ""
 
 //FUNCTION - FETCH WEATHER DATA//
 function fetchWeatherData() {
@@ -55,13 +50,6 @@ function fetchWeatherData() {
             console.log(error)
         });
 }// (data)= weather data from API
-
-
-
-/*STEP 2: Your task is to present some data on your web app. Start with:
-•	the city name - DONE
-•	the temperature (rounded to 1 decimal place) - DONE, BUT 2 dec
-•	and what type of weather it is (the "description" in the JSON) - DONE*/
 
 
 //DISPLAY DATA FETCHED IN THE fetchWeatherData FUNCTION ON THE WEBSITE//
@@ -89,7 +77,7 @@ function updateWeatherUI(data) {
 
         //create img according to weather
         const img = document.createElement("img");
-        img.src = "./design/design1/assets/Group36.png";
+        img.src = "./images/daymin-kopi.png";
         img.alt = "sunny";
         img.style.width = "150px";
         img.style.height = "auto";
@@ -102,7 +90,7 @@ function updateWeatherUI(data) {
         const img = document.createElement("img");
         img.src = "./design/design1/assets/Group16.png";
         img.alt = "rain";
-        img.style.width = "100px";
+        img.style.width = "150px";
         img.style.height = "auto";
         correctImg.appendChild(img);
     } else {
@@ -110,30 +98,30 @@ function updateWeatherUI(data) {
 
         //create img according to weather
         const img = document.createElement("img");
-        img.src = "./design/design1/assets/Group34.png";
+        img.src = "./images/dayothermin.png";
         img.alt = "sunnyclouds";
-        img.style.width = "100px";
+        img.style.width = "150px";
         img.style.height = "auto";
         correctImg.appendChild(img);
     }
 
+    //SUNRISE SUNSET//
     //sunrise
     const sunriseTime = new Date(data.sys.sunrise * 1000); //convert sunrise time to milliseconds
     const hours = sunriseTime.getHours(); //fetching hours for sunrise
     const minutes = sunriseTime.getMinutes(); //fetching minutes for sunrise
-
-    sunriseAndTime.textContent = `Sunrise ${hours}:${minutes}` //displaying only hours and minutes of sunrise
-    //HOW TO DISPLAY DATE and TIME
+    const formattedMinutes = (minutes < 10) ? `0${minutes}` : minutes; //if minutes3 is less then 10, it adds a 0 in front of the minute. For example: the time is 15:05. Without formatted minutes it'd say 15:5.
+    sunriseAndTime.textContent = `Sunrise ${hours}:${formattedMinutes}` //displaying only hours and minutes of sunrise
 
     //sunset
     const sunsetTime = new Date(data.sys.sunset * 1000); //convert sunrise time to milliseconds
     const hours2 = sunsetTime.getHours(); //fetching hours for sunrise
     const minutes2 = sunsetTime.getMinutes(); //fetching minutes for sunrise
-
-    sunsetAndTime.textContent = `Sunset ${hours2}:${minutes2}` //displaying only hours and minutes of sunrise
+    const formattedMinutes2 = (minutes2 < 10) ? `0${minutes2}` : minutes2; //if minutes3 is less then 10, it adds a 0 in front of the minute. For example: the time is 15:05. Without formatted minutes it'd say 15:5.
+    sunsetAndTime.textContent = `Sunset ${hours2}:${formattedMinutes2}` //displaying only hours and minutes of sunrise
 }
 
-//date and time
+//DATE AND TIME//
 const currentDate = new Date();
 
 const todaysDay = currentDate.getDay(); //Get day from Date (recieves day in number 0=sunday, 1=monday etc)
@@ -145,22 +133,12 @@ const monthAbbreviations = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Au
 const todaysMonthAbbreviation = monthAbbreviations[currentDate.getMonth()]; //converts months from number to strings
 const hours3 = currentDate.getHours(); //get hours from Date
 const minutes3 = currentDate.getMinutes(); //get minutes from Date
-const formattedMinutes = (minutes3 < 10) ? `0${minutes3}` : minutes3; //if minutes3 is less then 10, it adds a 0 in front of the minute. For example: the time is 15:05. Without formatted minutes it'd say 15:5.
+const formattedMinutes3 = (minutes3 < 10) ? `0${minutes3}` : minutes3; //if minutes3 is less then 10, it adds a 0 in front of the minute. For example: the time is 15:05. Without formatted minutes it'd say 15:5.
 
 //displays time and date in the browser
-dateAndTime.textContent = `${dayOfWeek} ${todaysDate} ${todaysMonthAbbreviation}. ${hours3}:${formattedMinutes} `
+dateAndTime.textContent = `${dayOfWeek} ${todaysDate} ${todaysMonthAbbreviation}. ${hours3}:${formattedMinutes3} `
 
-//Elin: 
 
-//Mirela: The next 5 days
-
-//Elba: styling
-
-//annet: dato og klokkeslett?
-
-//brances added - need to commit? Did it just in case
-
-//MIRELA LAGT TIL - 5 DAY FORECAST//
 //FUNCTION FETCH 5DAY FORECAST DATA//
 function fetchForecastData() {
     // Define the URL for fetching the 5-day forecast data (URLFOR should be updated accordingly)
@@ -182,34 +160,28 @@ function fetchForecastData() {
         });
 }// (forecastData)= forecast data from API*/
 
-
-// DO WE NEED THIS?? OR IS THE EVENT LISTENER IN THE END ENOUGH?? Call the fetchWeatherData function is used to initiate the fetching of current weather data when our web page loads.
-fetchWeatherData();
-
 //DEFINE UpdateForecast Function TO DISPLAY 5 DAYS FORECAST DATA FETCHED IN THE fetchForecastData FUNCTION, ON THE WEBSITE//
 //forecastData here shows to data feched in function fetchForecastData()
 function updateForecast(forecastData) {
     // Get the HTML element where the forecast data will be displayed
     const weeklyForecast = document.querySelector('.weeklyForecast');
-    // Empty string to store the HTML content
-    let forecastHTML = '';
+    // Clear the existing content in weeklyForecast
+    weeklyForecast.innerHTML = '';
+
     // Object to group daily forecast data by date
     const dailyForecast = {};
 
     // Process the JSON data received from the API
     forecastData.list.forEach(item => {
-        const date = new Date(item.dt * 1000);// Convert the timestamp to a date object
+        const date = new Date(item.dt * 1000); // Convert the timestamp to a date object
         const weekday = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(date); // Get the full weekday name 
-
-        //HAD THIS IN THE CODE, but looks like it is not needed as we display weekdays, so consider removing:
-        /* Format the date as yyyy-mm-dd
-        const dateString = date.toISOString().split('T')[0];*/
 
         // Initialize an entry in the dailyForecast object
         if (!dailyForecast[weekday]) {
             dailyForecast[weekday] = {
                 maxTemp: -Infinity, // Initialize with negative infinity to find max temperature
-                minTemp: Infinity,  // Initialize with positive infinity to find min temperature
+                minTemp: Infinity, // Initialize with positive infinity to find min temperature
+                weatherIcon: '', // Initialize an empty string for weather icon
             };
         }
         // Update the max temperature if a higher value is found (+remove decimals)
@@ -220,31 +192,54 @@ function updateForecast(forecastData) {
         if (item.main.temp_min < dailyForecast[weekday].minTemp) {
             dailyForecast[weekday].minTemp = Math.round(item.main.temp_min);
         }
+        // Set the weather icon based on the weather description
+        if (item.weather[0].description.includes('clear')) {
+            dailyForecast[weekday].weatherIcon = './images/day_clear-tiny.png';
+        } else if (item.weather[0].description.includes('rain')) {
+            dailyForecast[weekday].weatherIcon = './images/day_rain-tiny.png';
+        } else {
+            dailyForecast[weekday].weatherIcon = './images/day_partial_cloud-tiny.png';
+        }
     });
 
-    //HTML ELEMENTS TO DISPLAY THE 5 DAY FORECAST//
-    // Create HTML elements for each day's forecast
+    // Generate HTML code for each day's forecast
     for (const weekday in dailyForecast) {
-        const { maxTemp, minTemp } = dailyForecast[weekday];
+        const { maxTemp, minTemp, weatherIcon } = dailyForecast[weekday];
 
-        // Generate HTML code for each day's forecast
-        forecastHTML += `
-        <div class="forecast-item">
-            <p>${weekday} ${maxTemp}/ ${minTemp}°C</p>
-        </div>
-        `;
-        console.log(`${weekday} ${maxTemp}/ ${minTemp}`)
+        // Create a new forecast item element
+        const forecastItem = document.createElement('div');
+        forecastItem.classList.add('forecast-item');
+
+        // Create paragraph elements for other values
+        const weekdayElement = document.createElement('p');
+        weekdayElement.textContent = weekday;
+        weekdayElement.classList.add('weekday');
+
+        // Create an img element for the weather icon
+        const weatherIconElement = document.createElement('img');
+        weatherIconElement.src = weatherIcon;
+        weatherIconElement.alt = 'Weather Icon';
+        weatherIconElement.style.width = '50px'; // Adjust the width as needed
+
+        // Create a single paragraph element for maxTemp and minTemp
+        const tempElement = document.createElement('p');
+        tempElement.textContent = `${maxTemp}°C / ${minTemp}°C`;
+        tempElement.classList.add('temperature');
+
+        // Append the paragraph elements to the forecast item
+        forecastItem.appendChild(weekdayElement);
+        forecastItem.appendChild(weatherIconElement); // Add the weather icon
+        forecastItem.appendChild(tempElement);
+
+        // Append the forecast item to the weekly forecast container
+        weeklyForecast.appendChild(forecastItem);
     }
-
-    // Update the HTML content of the weekly forecast element
-    weeklyForecast.innerHTML = forecastHTML;
 }
 
+//NOT SURE THE ICONS MATCH THE DATA FROM API. TOO TIRED NOW. 
 
 
-
-
-//ELBA ADDED "function toggleNavMenu" FOR NAVBAR
+//ADDED "function toggleNavMenu" FOR NAVBAR
 function toggleNavMenu() {
     var x = document.getElementById("myLinks");
     var icon = document.querySelector("nav a.icon");
@@ -264,10 +259,8 @@ function toggleNavMenu() {
 }
 //I think I understand the if/else and remove add, but find it hard to explain. I'll try to if we have enough time.
 
-window.addEventListener("load", fetchWeatherData);
-
-
-
 //EVENT LISTENERS//
 window.addEventListener("load", fetchWeatherData); //update weather information when site loads
-window.addEventListener("load", fetchForecastData); //update 5day forecast information when site loads
+window.addEventListener("load", fetchForecastData); //update 5day forecast information when site loads    #todaysAdvice {
+
+
