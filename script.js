@@ -19,7 +19,7 @@ const searchSubmit = search.addEventListener("change", (e) =>
 const API_KEY = "64856650e6321cbb411769554b46b8ad";
 // Reserve API KEY = "421db630ea3e3aeb0cb64db6a500c27b"
 
-let cityName = "Orebro";
+let cityName = "Tokyo";
 let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${API_KEY}`;
 let API_CALL = `${url}`;
 
@@ -33,22 +33,44 @@ const searching = (city) => {
   search.value = "";
 };
 
+//Runs the geoLocationAPI that requests the user's location
 const startUp = () => {
   geoLocationAPI();
 };
 
+//requests the user's location
 const geoLocationAPI = () => {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
+    navigator.geolocation.getCurrentPosition(showPosition, errorHandling);
   }
 };
 
+//takes the coordinates from the user's location and sends a request to the API
 function showPosition(position) {
   let startLat = position.coords.latitude;
   let startLon = position.coords.longitude;
   url = `https://api.openweathermap.org/data/2.5/weather?lat=${startLat}&lon=${startLon}&units=metric&APPID=${API_KEY}`;
   API_CALL = `${url}`;
   apiData();
+}
+
+//Handles error related to the geolocation
+function errorHandling(error) {
+  switch (error.code) {
+    case error.PERMISSION_DENIED:
+      //If user does not allow geoplocation data the program will run with Tokyo as the default city
+      apiData();
+      break;
+    case error.POSITION_UNAVAILABLE:
+      x.innerHTML = "Location information is unavailable.";
+      break;
+    case error.TIMEOUT:
+      x.innerHTML = "The request to get user location timed out.";
+      break;
+    case error.UNKNOWN_ERROR:
+      x.innerHTML = "An unknown error occurred.";
+      break;
+  }
 }
 
 const apiData = () => {
