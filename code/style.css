@@ -38,6 +38,7 @@ body {
     display: flex;
     align-items: center;
     width: 100%;
+    z-index: 1;
 }
 
 .search-button {
@@ -47,6 +48,7 @@ body {
     color: var(--text-color);    
     border: none;
     cursor: pointer;
+    z-index: 1;
 }
 
 .search-icon {
