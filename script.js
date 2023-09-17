@@ -117,9 +117,43 @@ const apiData = () => {
 
       //A function to change the background depending on weather
       let mainWeather = data.weather[0].main;
+      console.log(mainWeather);
       if (mainWeather === "Clear") {
         headerBackground.style.background =
-          "url('https://bloximages.chicago2.vip.townnews.com/tucson.com/content/tncms/assets/v3/editorial/c/21/c2108eb0-5f3b-5918-b1e1-b57ac047394d/578e9192af03b.image.jpg?resize=1200%2C879')";
+          "url('https://images.unsplash.com/photo-1523913950023-c47b5ae5b164?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80')";
+        headerBackground.style.backgroundRepeat = "no-repeat";
+        headerBackground.style.backgroundSize = "cover";
+        headerBackground.style.backgroundPosition = "center bottom";
+      } else if (mainWeather === "Clouds") {
+        headerBackground.style.background =
+          "url('https://images.unsplash.com/photo-1595661671412-e20c4a3e65cc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80')";
+        headerBackground.style.backgroundRepeat = "no-repeat";
+        headerBackground.style.backgroundSize = "cover";
+        headerBackground.style.backgroundPosition = "center bottom";
+      } else if (mainWeather === "Rain") {
+        headerBackground.style.background =
+          "url('https://images.unsplash.com/photo-1534274988757-a28bf1a57c17?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1035&q=80')";
+        headerBackground.style.backgroundRepeat = "no-repeat";
+        headerBackground.style.backgroundSize = "cover";
+        headerBackground.style.backgroundPosition = "center bottom";
+      } else if (mainWeather === "Drizzle") {
+        headerBackground.style.background =
+          "url('https://images.unsplash.com/photo-1638253910847-b98cac8387c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=988&q=80')";
+        headerBackground.style.backgroundRepeat = "no-repeat";
+        headerBackground.style.backgroundSize = "cover";
+        headerBackground.style.backgroundPosition = "center bottom";
+      } else if (mainWeather === "Thunderstorm") {
+        headerBackground.style.background =
+          "url('https://images.unsplash.com/photo-1429552077091-836152271555?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1970&q=80')";
+        headerBackground.style.backgroundRepeat = "no-repeat";
+        headerBackground.style.backgroundSize = "cover";
+        headerBackground.style.backgroundPosition = "center bottom";
+      } else if (mainWeather === "Snow") {
+        headerBackground.style.background =
+          "url('https://images.unsplash.com/photo-1516715094483-75da7dee9758?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80')";
+        headerBackground.style.backgroundRepeat = "no-repeat";
+        headerBackground.style.backgroundSize = "cover";
+        headerBackground.style.backgroundPosition = "center bottom";
       }
 
       const part = "current,minutely,hourly,alerts"; //Information to omit when calling the api for forecast data
