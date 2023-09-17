@@ -27,7 +27,6 @@ const todaysWeather = (city) => {
         return response.json();
     })
     .then((json) => {
-        console.log(json); // to be deleted before hand-in
         // Display city name and today's temperature
         cityName.innerText = `${json.name}`;
         tempToday.innerText = `${json.main.temp.toFixed(1)}`;
@@ -73,13 +72,11 @@ const fiveDaysForecast = (city) => {
         .then((json) => {
             // Show the weather forecase if the user searches for a city that exists
             if (json.cod !== "404") {
-                console.log(json); // to be deleted before hand-in
                 // Find out the weekday of today
                 const today = new Date().toString().split(" ")[0];
 
                 // Filter the weather forecast data so it only contains data at 12:00 every day
                 const filteredForecastData = json.list.filter((dataPoint) => (dataPoint.dt_txt.includes("12:00")));
-                console.log(filteredForecastData); // to be deleted before hand-in
                 
                 filteredForecastData.forEach((dataPoint) => {
                     // Convert data in dt in the filtered weather forecast data to date and time and extract the weekday from there
