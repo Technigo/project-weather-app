@@ -12,6 +12,7 @@ const searchMenuBtn = document.getElementById('searchMenuBtn');
 const closeSearchMenu = document.getElementById('closeSearchMenu');
 const searchBtn = document.getElementById('searchBtn');
 const searchToggler = document.getElementById('search-toggler')
+const currentLocBtn = document.getElementById('currentLocButton')
 const inputField = document.getElementById('inputField');
 
 //Create a search string
@@ -145,6 +146,7 @@ const toggleSearchField = () => {
     searchToggler.classList.toggle('hidden')
     closeSearchMenu.classList.toggle('hidden')
     searchMenuBtn.classList.toggle('hidden')
+    currentLocBtn.classList.toggle('hidden')
 }
 
 //When searching for a new city. Saves the input as a variable and runs todaysWeatherFeature with this input. Clears the previous weather forecast
@@ -157,6 +159,7 @@ const searchFunction = () => {
         //Clears field & hides the input field
         inputField.value = ""
         searchToggler.classList.toggle('hidden')
+        currentLocBtn.classList.toggle('hidden')
 
         //Resets the weather forecast
         cityTimeDesc.innerHTML = ""
@@ -187,12 +190,51 @@ const dayNightOrDusk = (sunriseTime, sunsetTime, timeNow) => {
     }
 }
 
+//When the current location button is clicked, it asks the user to accept geolocation, then calls the open weather API usin those long + lat to get the city name. With that, it resets todays WeatherFeature
+const getCurrentLocation = () => {
+    
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition)
+    } else {
+        console.log("Geolocation is not supported by this browser.")
+    }
+
+    //Clears field & hides the input field
+    inputField.value = ""
+    searchToggler.classList.toggle('hidden')
+    currentLocBtn.classList.toggle('hidden')
+    
+    //Resets the weather forecast
+    cityTimeDesc.innerHTML = ""
+    sunRiseSet.innerHTML = ""
+    forecastRow1.innerHTML =""
+    forecastRow2.innerHTML =""
+    forecastRow3.innerHTML =""
+    forecastRow4.innerHTML =""
+    forecastRow5.innerHTML =""
+    
+    function showPosition(position) {
+        let lat = position.coords.latitude
+        let lon = position.coords.longitude
+        let limit = 20
+
+        fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=${limit}&appid=${appID}`)
+        .then((response) => response.json())
+        .then((data) => {
+            todaysWeatherFeature(data[0].name)
+        })
+    }
+}
+
 
 //START
 todaysWeatherFeature("Stockholm, Sweden")
 
 
 //EVENT LISTENERS
+
+//Eventlistener to search by current location
+currentLocBtn.addEventListener('click', getCurrentLocation)
 
 //Eventlistener to toggle search field:
 searchMenuBtn.addEventListener('click', toggleSearchField)

@@ -4,6 +4,7 @@
   --buttonColor: green;
   --buttonColorHover: lightgreen;
   --backgroundColor: rgb(212, 212, 215);
+  --boxShadowColor: rgba(0, 0, 0, 0.3);
 }
 
 body{
@@ -20,7 +21,7 @@ body{
   position: relative;
   height: 800px;
   overflow: hidden; 
-  box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 8px 20px var(--boxShadowColor);
 }
 
 .featureImage{
@@ -38,8 +39,69 @@ body{
   transform: translate(50%);
 }
 
-#currentWeather {
+.nav {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 0px;
+}
+
+.search {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid rgba(255, 255, 255, 0.363);
+  opacity: 0.99;
+}
+
+.search-bar {
+  margin: auto;
+  border: none;
+  padding: 2px 10px;
+  background-color: rgba(255, 255, 255, 0.3);
   color: white;
+  width: 100%;
+  max-width: 600px;
+  height: 30px;
+  font-size: 17px;
+  opacity: 0.99;
+}
+
+.search-bar:focus {
+  outline: none;
+}
+
+.search-button {
+  border: none;
+  color: var(fontColor);
+  background-color: transparent;
+  cursor: pointer;
+  opacity: 0.99;
+}
+
+.search-button:hover {
+  opacity: 0.7;
+}
+
+.search-icon,
+.x-icon {
+  height: 30px;
+  width: 30px;
+  padding: 20px 10px 20px 20px;
+}
+
+svg {
+  color: var(--fontColor);
+}
+
+.current-location{
+  width: 24px;
+  height: 24px;
+  border: none;
+  padding: 10px;
+}
+
+#currentWeather {
+  color: var(--fontColor);
   opacity: 0.99;
   text-align: left;
   margin-left: 30px;
@@ -129,60 +191,6 @@ body{
   display: flex;
   align-items: center;
   justify-content: space-around;
-}
-
-.nav {
-  display: flex;
-  align-items: center;
-  position: relative;
-  margin-bottom: 0px;
-}
-
-.search {
-  display: flex;
-  flex-direction: row;
-  border: 1px solid rgba(255, 255, 255, 0.363);
-  opacity: 0.99;
-}
-
-.search-bar {
-  margin: auto;
-  border: none;
-  padding: 2px 10px;
-  background-color: rgba(255, 255, 255, 0.3);
-  color: white;
-  width: 100%;
-  max-width: 1000px;
-  height: 30px;
-  font-size: 17px;
-  opacity: 0.99;
-}
-
-.search-bar:focus {
-  outline: none;
-}
-
-.search-button {
-  border: none;
-  color: white;
-  background-color: transparent;
-  cursor: pointer;
-  opacity: 0.99;
-}
-
-.search-button:hover {
-  opacity: 0.7;
-}
-
-.search-icon,
-.x-icon {
-  height: 30px;
-  width: 30px;
-  padding: 20px 10px 20px 20px;
-}
-
-svg {
-  color: white;
 }
 
 .hidden {
