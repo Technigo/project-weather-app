@@ -33,6 +33,9 @@ function callApiCurrentWeather(city) {
   )
     .then((response) => response.json())
     .then((data) => {
+
+
+console.log(city, localStorage)
       const weatherArr = data.list.filter((obj) => obj.dt_txt.includes("03:00"));
       const weatherOfTheDay = weatherArr.shift();
 
@@ -67,8 +70,8 @@ function callApiCurrentWeather(city) {
         .splice(0, 2)
         .join(":");
 
-      // store a city name in localstorage
-      storeCityLocalStorage(city);
+        // store a city name in localstorage
+        storeCityLocalStorage(city);
       // create an upper part of card
       createCardUpper(weatherOfTheDay, name, sunriseTime, sunsetTime, timeNow);
       // create an under part of card
@@ -290,7 +293,6 @@ function createDots() {
     innerBox.insertAdjacentElement("beforeend", dotDiv);
 
     dotDiv.addEventListener("click", (e) => {
-      console.log(e.target);
       const id = e.target.id;
       changeCardByDot(id);
       card.textContent = "";
@@ -333,17 +335,20 @@ function openModal() {
   cities.forEach((el, i) => {
     const li = document.createElement("li");
     const button = document.createElement("button");
+    const span = document.createElement("span");
     const icon = document.createElement("img");
     li.classList.add(`list${i}`);
     button.classList.add("delete-city");
     icon.classList.add("delete-icon");
-    li.textContent = el;
+    span.textContent = el;
     icon.setAttribute("src", "assets/icons/delete.png");
-    li.addEventListener("click", () => {
+    span.addEventListener("click", () => {
       card.textContent = "";
       callApiCurrentWeather(el);
       closeModal();
     });
+
+    li.appendChild(span)
     button.insertAdjacentElement("beforeend", icon);
     li.insertAdjacentElement("beforeend", button);
     citiesInnerBox.insertAdjacentElement("beforeend", li);
@@ -362,36 +367,43 @@ function openModal() {
 // When I clear localstorage, it should be no irem inside, but the Ideam I want to delete reminds. So I think it is stored in apiCall fucntion, just after clean up localstorage.
 // For now, I don't know how to fix it, and I will come back in the future.
 function deleteCity() {
-  console.log(localStorage);
   const buttons = document.querySelectorAll(".delete-city");
   buttons.forEach((el) =>
     el.addEventListener("click", (e) => {
       const city = e.target.parentNode.parentNode;
       const cityText = city.textContent;
-      console.log(city);
-      city.removeEventListener("click", callApiCurrentWeather);
-
-      console.log(localStorage);
-      const index = cities.indexOf(cityText);
-      cities.splice(index, 1);
-      console.log(cities);
-      cities.map((el) => console.log(localStorage));
-      localStorage.clear();
-      console.log(localStorage);
       city.style.display = "none";
+      modalWindow.style.display = "none";
+      localStorage.removeItem(cityText)
+      card.textContent = "";
+     citiesLocalStorage = { ...localStorage };
+     console.log(citiesLocalStorage)
+     if(Object.keys(citiesLocalStorage).length !== 0){
+    
+      const index = cities.indexOf(cityText);
+       if (index > -1) { 
+     
+         cities.splice(index, 1);
+         console.log(cities);
+            clickIndex = cities.length - 1
+        callApiCurrentWeather(cities[0]);
+        }
+    
+     } else{
+    
+      createNoitemPage();
+     }
 
-      if (localStorage.length === 0) {
-        localStorage.clear();
-        cities = [];
-        clickIndex = 0;
-        modalWindow.style.display = "none";
-        return createNoitemPage();
-      } else {
-        return callApiCurrentWeather(cities[0]);
-      }
+     
+ 
+  
+    //  closeModal();
+
     })
   );
 }
+
+
 
 function closeModal() {
   modalWindow.style.display = "none";
@@ -422,6 +434,26 @@ function createNoitemPage() {
   menuBtn.style.display = "none";
 }
 
+function init(){
+  citiesLocalStorage = { ...localStorage };
+  citiesLocalStorage ? (cities = []) : "";
+
+  for (const [key, val] of Object.entries(citiesLocalStorage)) {
+    cities.push(val);
+  }
+
+  if (localStorage.length === 0) {
+    cities.map((city) => localStorage.setItem(city, city));
+    if (cities.length === 0) {
+      createNoitemPage();
+      modalWindow.style.display = "none";
+      document.querySelector(".error-page").style.display = "none";
+    }
+  }
+  console.log(cities)
+  callApiCurrentWeather(cities[0]);
+}
+
 /*************************************************************************************************************/
 //  Event Handlers   //
 /*************************************************************************************************************/
@@ -432,23 +464,7 @@ searchBtn.addEventListener("click", () => {
   getCityName();
 });
 
-window.addEventListener("load", () => {
-  citiesLocalStorage = { ...localStorage };
-  citiesLocalStorage ? (cities = []) : "";
-  for (const [key, val] of Object.entries(citiesLocalStorage)) {
-    cities.push(val);
-  }
-  if (localStorage.length === 0) {
-    cities.map((city) => localStorage.setItem(city, city));
-    if (cities.length === 0) {
-      createNoitemPage();
-      modalWindow.style.display = "none";
-      document.querySelector(".error-page").style.display = "none";
-    }
-  }
-
-  callApiCurrentWeather(cities[0]);
-});
+window.addEventListener("load", init);
 
 // Slider EventListeners
 
