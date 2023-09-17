@@ -32,15 +32,19 @@ const updateHTML = (data) => {
     sunset.innerHTML = `<h2> Sunset ${data.sys.sunset} </h2>`
 
     //invoke function for changing text snippet here
-    //textSnippet(city, weather)
+    //createTextSnippet(city, weather)
 }
 
-//create a function for displaying text snippet specific to the weather using if statement
-//const textSnippet = (city, weather) => {
-//    if (weather = "cloudy"){
-textSnippet.
+/*create a function for displaying text snippet specific to the weather using if statement
+const createTextSnippet = (city, weather) => {
+    if (weather === "cloudy"){
+textSnippet.innerHTML = `<p> Light a fire and get cozy. ${city} is looking grey today. </p>`
+} else if (weather === "rain"){
+    textSnippet.innerHTML = `<p> Don't forget your umbrella. It's wet in ${city} today. </p>`
+}else if (weather === "clear"){
+    textSnippet.innerHTML = `<p> Get your sunnies on. ${city} is looking rather great today. </p>`
+    }
 }
-//}
-
+*/
 
 fetchWeather()
