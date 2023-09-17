@@ -27,8 +27,6 @@ body {
     height: 100%;
     display: flex;
     justify-content: center;
-    background-image: url('./images/pexels-miguel-á-padriñán-19670.jpg');
-    background-size: cover;
 }
 
 .container {
