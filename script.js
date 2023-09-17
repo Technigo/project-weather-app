@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Your code here, including the fetchFiveDayForecast function
 
+<<<<<<< HEAD
   const container = document.getElementById("weather-container");
   const hamburgerMenu = document.getElementById("hamburger-menu");
   const navMenu = document.getElementById("nav-menu");
@@ -8,12 +9,22 @@ document.addEventListener("DOMContentLoaded", function () {
   const sunriseTime = document.getElementById("sunrise-time");
   const sunsetTime = document.getElementById("sunset-time");
 
+=======
+  const searchButton = document.getElementById('search-button');
+  const searchBar = document.getElementById('search-bar');
+  const searchBarButton = document.getElementById('search-bar-button')
+  const container = document.getElementById('weather-container');
+  const weatherIcon = document.getElementById('weather-icon');
+>>>>>>> stylingCaroL
   const forecastContainer = document.getElementById("weather-forecast");
+  const searchIconElement = document.querySelector('.search-icon-class');
+  const closeIconElement = document.querySelector('.close-icon-class');
 
   const city = "Stockholm,Sweden";
   const units = "metric";
 
   const fetchCurrentWeather = () => {
+<<<<<<< HEAD
     fetch(
       "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=168451996f01476589314aaee8750993"
     )
@@ -49,6 +60,45 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   };
   fetchCurrentWeather();
+=======
+  
+    fetch(
+  "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=168451996f01476589314aaee8750993"
+)
+  .then((response) => {
+    return response.json();
+  })
+  .then((json) => {
+    console.log(json);
+    const roundedTemperature = parseFloat(json.main.temp).toFixed(1);
+  
+    container.innerHTML += `
+    <h1>${roundedTemperature} °C</h1>
+    <h2>${json.name}</h2>
+    <p>${json.weather[0].main}</p>
+    <div class="sunrise-time" id="sunrise-time"><p>Sunrise: ${json.sunriseTime},</p></div>
+    <div class="sunset-time"id="sunset-time"><p>Sunset: ${json.sunsetTime}</p></div> 
+  `;
+  
+//Construct the icon URL using the icon ID from the API response
+const iconID = json.weather[0].icon;
+const iconURL = `https://openweathermap.org/img/wn/${iconID}@2x.png`;
+
+// Set the icon URL as the src attribute of the weatherIcon element
+weatherIcon.src = iconURL;
+weatherIcon.alt = json.weather[0].main;
+})
+.catch((error) => {
+console.error("There was a problem with the fetch operation:", error);
+});
+};
+
+fetchCurrentWeather();
+
+      // Fetch the weather icon mappings from JSON file
+  
+
+>>>>>>> stylingCaroL
 
   const weatherIcon = (iconID) => {
     let base_URL = `https://openweathermap.org/img/wn/`;
@@ -114,15 +164,44 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error fetching data:", error);
     });
 
+<<<<<<< HEAD
   hamburgerMenu.addEventListener("click", function () {
     console.log(`hamburger menu`);
     if (navMenu.style.display === "block") {
       navMenu.style.display = "none";
+=======
+  
+  
+const displaySunriseSunset = (sunriseTimestamp, sunsetTimestamp) => {
+  const sunriseDate = new Date(sunriseTimestamp * 1000); //shows the time in milliseconds
+  const sunsetDate = new Date(sunsetTimestamp * 1000);
+
+  const sunriseTime = `${sunriseDate.getHours()}:${sunriseDate.getMinutes().toString().padStart(2, '0')}`;
+  const sunsetTime = `${sunsetDate.getHours()}:${sunsetDate.getMinutes().toString().padStart(2, '0')}`;
+
+  
+  console.log(`Sunrise: ${sunriseTime}, Sunset: ${sunsetTime}`);
+
+  
+  document.getElementById('sunrise-time').innerHTML = `<p>Sunrise: ${sunriseTime}</p>`;
+  document.getElementById('sunset-time').innerHTML = `<p>Sunset: ${sunsetTime}</p>`;
+
+}
+
+
+
+fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=168451996f01476589314aaee8750993")
+  .then(response => response.json())
+  .then((json) => {
+    if(json.sys) {
+      displaySunriseSunset(json.sys.sunrise, json.sys.sunset);
+>>>>>>> stylingCaroL
     } else {
       navMenu.style.display = "block";
     }
   });
 
+<<<<<<< HEAD
   const displaySunriseSunset = (sunriseTimestamp, sunsetTimestamp) => {
     const sunriseDate = new Date(sunriseTimestamp * 1000); //shows the time in milliseconds
     const sunsetDate = new Date(sunsetTimestamp * 1000);
@@ -158,4 +237,36 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     })
     .catch((error) => console.error("Error:", error));
+=======
+
+
+const toggleSearchBar = () => {
+  
+  if (searchBar.style.display === 'none' || searchBar.style.display === '') {
+    searchBar.style.display = 'none';
+    
+    searchIconElement.classList.replace('search-icon', 'close-icon');
+  } else {
+    searchBar.style.display = 'none';
+    
+    closeIconElement.classList.replace('close-icon', 'search-icon');
+  }
+};
+
+toggleSearchBar();
+
+searchButton.addEventListener('click', () => {
+  
+  if (searchIconElement.style.display !== 'none') {
+    searchIconElement.style.display = 'none';
+    closeIconElement.style.display = 'block';
+    searchBar.style.display = 'block';
+  } else {
+    searchIconElement.style.display = 'block';
+    closeIconElement.style.display = 'none';
+    searchBar.style.display = 'none';
+  }
+>>>>>>> stylingCaroL
+});
+
 });
