@@ -15,6 +15,7 @@ body{
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+  padding: 0;
   width: 100%;
   max-width: 400px;
   background-color: var(--backgroundColor);
@@ -192,6 +193,36 @@ svg {
   align-items: center;
   justify-content: space-around;
 }
+
+hr{
+  width: 15px;
+  border-color: transparent;
+  border-right-color: rgba(255, 255, 255, 0.7);
+  border-right-width: 50px;
+  position: absolute;
+  opacity: 0.5;
+  bottom: 100%;
+  transform-origin: 100% 50%;
+  animation-name: rain;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.fadeOut {
+  animation: 2s fadeout
+}
+
+@keyframes rain {
+  from {
+   transform: rotate(95deg) translateX(0);
+  }
+  to {
+   transform: rotate(95deg) translateX(calc(800px));
+  }
+ }
+
+ @keyframes fadeout { to {opacity: 0;} }
 
 .hidden {
   display: none;

@@ -71,9 +71,11 @@ const todaysWeatherFeature = (city) =>{
                 break
             case 'Drizzle':
                 changeBackground('drizzle')
+                makeRain()
                 break
             case 'Rain':
                 changeBackground('rain')
+                makeRain()
                 break
             case 'Snow':
                 changeBackground('snow')
@@ -159,6 +161,8 @@ const searchFunction = () => {
         //Clears field & hides the input field
         inputField.value = ""
         searchToggler.classList.toggle('hidden')
+        closeSearchMenu.classList.toggle('hidden')
+        searchMenuBtn.classList.toggle('hidden')    
         currentLocBtn.classList.toggle('hidden')
 
         //Resets the weather forecast
@@ -169,6 +173,8 @@ const searchFunction = () => {
         forecastRow3.innerHTML =""
         forecastRow4.innerHTML =""
         forecastRow5.innerHTML =""
+
+        stopRain()
 }
 
 //Changes the backgroundimage
@@ -192,7 +198,7 @@ const dayNightOrDusk = (sunriseTime, sunsetTime, timeNow) => {
 
 //When the current location button is clicked, it asks the user to accept geolocation, then calls the open weather API usin those long + lat to get the city name. With that, it resets todays WeatherFeature
 const getCurrentLocation = () => {
-    
+
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition)
     } else {
@@ -212,6 +218,7 @@ const getCurrentLocation = () => {
     forecastRow3.innerHTML =""
     forecastRow4.innerHTML =""
     forecastRow5.innerHTML =""
+    stopRain()
     
     function showPosition(position) {
         let lat = position.coords.latitude
@@ -226,6 +233,33 @@ const getCurrentLocation = () => {
     }
 }
 
+//Makes rain in the foreground if it rains in the forecast
+const makeRain = () => {
+    let hrElement //The individual raindrops
+    let counter = 100
+
+    //Creates 100 individual raindrops
+    for (let i = 0; i < counter; i++) {
+        hrElement = document.createElement("HR")
+
+        //Randomizes the "starting position" of the raindrop starting from the left
+        hrElement.style.left = Math.floor(Math.random() * window.innerWidth) + "px"
+        //Randomizes the speed of the raindrop
+        hrElement.style.animationDuration = 0.6 + Math.random() * 0.3 + "s"
+        //Randomizes when the rain animation starts
+        hrElement.style.animationDelay = Math.random() * 5 + "s"
+        
+        document.body.appendChild(hrElement)
+      }
+}
+
+const stopRain = () => {
+    const hrElement = document.getElementsByTagName('hr')
+    
+    for (i = 0; i < hrElement.length; i++) {
+        hrElement[i].setAttribute('class', 'fadeOut')
+    }
+}
 
 //START
 todaysWeatherFeature("Stockholm, Sweden")
