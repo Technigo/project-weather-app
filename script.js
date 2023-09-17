@@ -65,12 +65,15 @@ const todaysWeatherFeature = (city) =>{
         switch (weatherImg) {
             case 'Clear':
                 changeBackground('clear')
+                stopRain()
                 break
             case 'Clouds':
                 changeBackground('clouds')
+                stopRain()
                 break
             case 'Drizzle':
                 changeBackground('drizzle')
+                stopRain()
                 makeRain()
                 break
             case 'Rain':
@@ -79,12 +82,15 @@ const todaysWeatherFeature = (city) =>{
                 break
             case 'Snow':
                 changeBackground('snow')
+                stopRain()
                 break
             case 'Thunderstorm':
                 changeBackground('thunderstorm')
+                stopRain()
                 break
             default:
                 changeBackground('atmosphere')
+                stopRain()
                 break
         }
 
@@ -160,10 +166,10 @@ const searchFunction = () => {
 
         //Clears field & hides the input field
         inputField.value = ""
-        searchToggler.classList.toggle('hidden')
-        closeSearchMenu.classList.toggle('hidden')
-        searchMenuBtn.classList.toggle('hidden')    
-        currentLocBtn.classList.toggle('hidden')
+        searchToggler.classList.add('hidden')
+        closeSearchMenu.classList.add('hidden')
+        searchMenuBtn.classList.toggle('hidden')
+        currentLocBtn.classList.add('hidden')
 
         //Resets the weather forecast
         cityTimeDesc.innerHTML = ""
@@ -173,8 +179,6 @@ const searchFunction = () => {
         forecastRow3.innerHTML =""
         forecastRow4.innerHTML =""
         forecastRow5.innerHTML =""
-
-        stopRain()
 }
 
 //Changes the backgroundimage
@@ -218,7 +222,6 @@ const getCurrentLocation = () => {
     forecastRow3.innerHTML =""
     forecastRow4.innerHTML =""
     forecastRow5.innerHTML =""
-    stopRain()
     
     function showPosition(position) {
         let lat = position.coords.latitude
