@@ -100,7 +100,6 @@ function updateWeatherUI(data) {
 
 //brances added - need to commit? Did it just in case
 
-<<<<<<< HEAD
 //MIRELA LAGT TIL - 5 DAY FORECAST//
 //FUNCTION FETCH 5DAY FORECAST DATA//
 function fetchForecastData() {
@@ -184,7 +183,7 @@ function updateForecast(forecastData) {
 
 
 
-=======
+
 //ELBA ADDED "function toggleNavMenu" FOR NAVBAR
 function toggleNavMenu() {
     var x = document.getElementById("myLinks");
@@ -206,7 +205,7 @@ function toggleNavMenu() {
 //I think I understand the if/else and remove add, but find it hard to explain. I'll try to if we have enough time.
 
 window.addEventListener("load", fetchWeatherData);
->>>>>>> styling
+
 
 
 //EVENT LISTENERS//
