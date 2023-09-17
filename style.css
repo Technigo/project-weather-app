@@ -6,6 +6,12 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+.search-container {
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
 .search-button {
   font-size: 16px;
   padding: 10px;
@@ -40,6 +46,17 @@ body {
 
 .search-bar:focus {
   width: 240px;
+}
+
+.search-bar-button {
+  display: none;
+  font-size: 16px;
+  padding: 10px;
+  border: none;
+  color: #2E4053;
+  border-color: white;
+  background-color: red;
+  cursor: pointer;
 }
 
 .material-symbols-outlined, .search-icon.class ::before {

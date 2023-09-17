@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const searchButton = document.getElementById('search-button');
   const searchBar = document.getElementById('search-bar');
+  const searchBarButton = document.getElementById('search-bar-button')
   const container = document.getElementById('weather-container');
   const weatherIcon = document.getElementById('weather-icon');
   const forecastContainer = document.getElementById("weather-forecast");
