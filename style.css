@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,300&family=Rubik:wght@300&display=swap");
 
 body {
   font-family: "Roboto", sans-serif;
@@ -10,6 +10,15 @@ body {
   height: 800px;
   width: 400px;
   overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 448px;
+  height: 684px;
+  background-color: rgb(181, 181, 186);
+
   margin: auto;
   border-radius: 30px;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
@@ -24,11 +33,6 @@ body {
   bottom: 40%;
   right: 50%;
   transform: translate(50%);
-}
-
-.container {
-  position: relative;
-  padding: 20px;
 }
 
 h1 {
@@ -52,7 +56,6 @@ h2 {
 }
 
 #current-weather-icon {
-  /* Your CSS styles for the icon, e.g., width, height, margin-right */
   width: 50px; /* Example width */
   height: 50px; /* Example height */
   margin-left: 20px; /* Example margin */
@@ -114,4 +117,92 @@ p {
   width: 50px; /* Adjust the width as needed */
   height: 50px; /* Adjust the height as needed */
   margin-right: 10px; /* Add spacing between icons and temperatures */
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-button {
+  font-size: 16px;
+  padding: 10px;
+  border: none;
+  color: #2e4053;
+  background-color: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.search-button:hover {
+  background-color: transparent;
+}
+
+.search-button:active {
+  background-color: transparent;
+}
+
+.search-icon {
+  color: transparent;
+}
+
+.search-bar {
+  display: none;
+  padding: 10px;
+  border-color: white;
+  font-size: 20px;
+  border: 1px solid #ced4da;
+  width: 200px;
+  transition: width 0.4s;
+}
+
+.search-bar:focus {
+  width: 240px;
+}
+
+.search-bar-button {
+  display: none;
+  font-size: 16px;
+  padding: 10px;
+  border: none;
+  color: #2e4053;
+  border-color: white;
+  background-color: red;
+  cursor: pointer;
+}
+
+.material-symbols-outlined,
+.search-icon.class ::before {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+.material-symbols-outlined,
+.close-icon-class::before {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+.sunrise-time,
+.sunset-time {
+  width: 50%;
+}
+
+.round-button {
+  display: inline-block;
+  width: 70px; /* Adjust the size as necessary */
+  height: 70px;
+  background-color: #7fb3d5; /* Adjust the background color as necessary */
+  border-radius: 50%; /* Makes the button round */
+  border: none; /* Removes the default border */
+  color: white; /* Adjust the text color as necessary */
+  text-align: center;
+  line-height: 50px; /* Vertically centers the text */
+  font-family: "Rubik", sans-serif;
+  font-size: 40px; /* Adjust the font size as necessary */
+  cursor: pointer;
+}
+
+.round-button:hover {
+  background-color: #a9cce3; /* Adjust the hover background color as necessary */
 }
