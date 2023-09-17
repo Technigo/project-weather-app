@@ -34,24 +34,26 @@
                 <a href="javascript:void(0);" class="icon" onclick="toggleNavMenu()"> <i class="fa fa-bars"></i>
                 </a>
         </nav>
-        <!--ELBA moved class="weatherData" into header-->
-        <header>
 
-            <div class="weatherData">
-                <div id="Temperature"></div>
-                <img src="./design/design1/assets/Group16.png" alt="cloud">
-                <img src="./design/design1/assets/Group34.png" alt="sunnycloud">
-                <img src="./design/design1/assets/Group36.png" alt="sunny">
-                <div id="city"></div>
-                <div id="description"></div>
-                <div id="todaysAdvice"></div>
-                <div id="sunriseAndTime"></div>
-                <div id="sunsetAndTime"></div>
-
-            </div>
+        <div class="weatherData">
+            <div id="Temperature"></div>
+            <div id="city"></div>
+            <div id="description"></div>
+            <div id="todaysAdvice"></div>
+            <div id="sunriseAndTime"></div>
+            <div id="sunsetAndTime"></div>
+        </div>
+        <div id="images" display: hidden> <!---img moved from weatherData/ ELIN-->
+            <img src="./design/design1/assets/Group16.png" alt="cloud">
+            <img src="./design/design1/assets/Group34.png" alt="sunnycloud">
+            <img src="./design/design1/assets/Group36.png" alt="sunny">
+        </div>
+        </div>
+        <div id="correctImg"></div>
+        <div id="dateAndTime"></div>
         </header>
+        <!--ELBA Moved changes into header-->
     </section>
-
 
     <!--OBS: ELBA changed weekly forecast to class-->
     <section class="weeklyForecast">

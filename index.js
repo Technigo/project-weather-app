@@ -6,9 +6,11 @@ const city = document.getElementById(`city`)
 const temperature = document.getElementById(`Temperature`)
 const todaysAdvice = document.getElementById(`todaysAdvice`)
 const sunriseAndTime = document.getElementById(`sunriseAndTime`)
+const sunsetAndTime = document.getElementById(`sunsetAndTime`)
 const description = document.getElementById(`description`)
+const img = document.getElementById(`correctImg`) //ELIN
+const dateAndTime = document.getElementById(`dateAndTime`) //ELIN
 //const weeklyForecast = document.getElementsByClassName(`weeklyForecast`)//SEEMS LIKE WE DO NOT NEED THIS? LOOK AT ROW 135, WORKS WITHOUT THIS
-
 
 //GLOBAL VARIABLES - WEATHER//
 const BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
@@ -66,31 +68,76 @@ function fetchWeatherData() {
 //Data here shows to data feched in function fetchWeatherData()
 function updateWeatherUI(data) {
     //temperature
-    temperature.textContent = `${data.main.temp}°C`;
+    temperature.textContent = `${data.main.temp.toFixed(1)}°C`;
     //city
     city.textContent = data.name;
     //Gather weather description from API array "Weather"
     const weatherDescription = data.weather[0].description;
     const capitalizedDescription = weatherDescription.charAt(0).toUpperCase() + weatherDescription.slice(1);
     description.textContent = capitalizedDescription;
+
     // Todays advice - You can use a conditional statement here based on weatherDescription
     if (weatherDescription.includes('clear')) {
         todaysAdvice.textContent = "Det är en klar dag. Njut av solskenet!"; //"It's a clear day. Enjoy the sunshine!
+
+        //create img according to weather
+        const img = document.createElement("img");
+        img.src = "./design/design1/assets/Group36.png";
+        img.alt = "sunny";
+        correctImg.appendChild(img);
+
     } else if (weatherDescription.includes('rain')) {
         todaysAdvice.textContent = "Det regnar. Glöm inte ditt paraply!"; //"It's raining. Don't forget your umbrella!"
+
+        //create img according to weather
+        const img = document.createElement("img");
+        img.src = "./design/design1/assets/Group16.png";
+        img.alt = "rain";
+        correctImg.appendChild(img);
     } else {
         todaysAdvice.textContent = "'Det finns inget dåligt väder,\nbara dåliga kläder'"; //"Check the weather and plan accordingly."
+
+        //create img according to weather
+        const img = document.createElement("img");
+        img.src = "./design/design1/assets/Group34.png";
+        img.alt = "sunnyclouds";
+        correctImg.appendChild(img);
     }
-    //OBS; BØR VI HA ANDRE BESKJEDER, FEKS EN FOR SOL?
 
     //sunrise
-    const sunriseTime = new Date(data.sys.sunrise * 1000);
-    // Convert sunrise time to milliseconds
-    sunriseAndTime.textContent = `Sunrise ${sunriseTime.toLocaleTimeString()};`
+    const sunriseTime = new Date(data.sys.sunrise * 1000); //convert sunrise time to milliseconds
+    const hours = sunriseTime.getHours(); //fetching hours for sunrise
+    const minutes = sunriseTime.getMinutes(); //fetching minutes for sunrise
+
+    sunriseAndTime.textContent = `Sunrise ${hours}:${minutes}` //displaying only hours and minutes of sunrise
     //HOW TO DISPLAY DATE and TIME
+
+    //sunset
+    const sunsetTime = new Date(data.sys.sunset * 1000); //convert sunrise time to milliseconds
+    const hours2 = sunsetTime.getHours(); //fetching hours for sunrise
+    const minutes2 = sunsetTime.getMinutes(); //fetching minutes for sunrise
+
+    sunsetAndTime.textContent = `Sunset ${hours2}:${minutes2}` //displaying only hours and minutes of sunrise
 }
 
-//Elin: sunrise, sunset (time og minutt feks: 06:12), decimaler på temperaturen, make sun img come up if sunny, rain if rainy, etc.
+//date and time
+const currentDate = new Date();
+
+const todaysDay = currentDate.getDay(); //Get day from Date (recieves day in number 0=sunday, 1=monday etc)
+const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]; //array of weekdays made to be able to set current day as "monday" instead of "1" (has to start on sunday to work correctly)
+const dayOfWeek = daysOfWeek[currentDate.getDay()]; //converts weekdays from numbers to strings
+const todaysDate = currentDate.getDate(); //get date from Date
+const todaysMonth = currentDate.getMonth(); //get month from Date
+const monthAbbreviations = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]; //Array of months made to be able to set current month to "Jan" instead of "1"
+const todaysMonthAbbreviation = monthAbbreviations[currentDate.getMonth()]; //converts months from number to strings
+const hours3 = currentDate.getHours(); //get hours from Date
+const minutes3 = currentDate.getMinutes(); //get minutes from Date
+const formattedMinutes = (minutes3 < 10) ? `0${minutes3}` : minutes3; //if minutes3 is less then 10, it adds a 0 in front of the minute. For example: the time is 15:05. Without formatted minutes it'd say 15:5.
+
+//displays time and date in the browser
+dateAndTime.textContent = `${dayOfWeek} ${todaysDate} ${todaysMonthAbbreviation}. Time is ${hours3}:${formattedMinutes} `
+
+//Elin: 
 
 //Mirela: The next 5 days
 
