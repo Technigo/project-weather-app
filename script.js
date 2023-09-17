@@ -226,7 +226,7 @@ const getCurrentLocation = () => {
     function showPosition(position) {
         let lat = position.coords.latitude
         let lon = position.coords.longitude
-        let limit = 20
+        let limit = 2
 
         fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=${limit}&appid=${appID}`)
         .then((response) => response.json())
