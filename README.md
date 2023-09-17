@@ -1,12 +1,19 @@
 # Weather App
 
-Replace this readme with your own information about your project.
+This week we are diving into the world of APIs and Promoises. We got assigned to create a weather app using functions like fetch and others?
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Isaac and Andrej got assigned in the same group and here is our project (nearly perfect).
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Javascript
+The main problem or more like obsticale was to fetch and convert the data so it looks more readable from the API.
+To manipulate the
+
+CSS
+What we needed is more knowledge in the world of CSS and how it works with javascript.
+
+We solved most of our problems by searching through the internet, forums like Stackoverflow and such. Our experience from this project was to identify the problem and find more than 1 solution.
 
 ## View it live
 

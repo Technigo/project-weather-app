@@ -8,7 +8,10 @@ const weatherHeader = document.querySelector(".weather-header");
 const typeOfWeatherData = document.querySelector(".typeOfWeatherData");
 const search = document.getElementById("search");
 const headerBackground = document.querySelector(".header-background");
+const weatherSection = document.getElementById("weather-section");
+const anIcon = document.getElementById("anIcon");
 
+//An event listener that calls the searching function when the value in the search bar is changed
 const searchSubmit = search.addEventListener("change", (e) =>
   searching(e.target.value)
 );
@@ -19,29 +22,28 @@ const API_KEY = "64856650e6321cbb411769554b46b8ad";
 let cityName = "Orebro";
 let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${API_KEY}`;
 let API_CALL = `${url}`;
+
+//Search function enabling users to search for weather in different places
 const searching = (city) => {
-  cityName = city;
-  url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${API_KEY}`;
+  cityName = city; //sets the cityName to the one the user searched for
+  url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${API_KEY}`; //updates the url with the new information
   API_CALL = `${url}`;
-  forecast.innerHTML = "";
-  apiData();
+  forecast.innerHTML = "";//resets the forecast so that new data can be displayed
+  apiData(); //calls the api again to request data for the place the user has entered
 };
 
 const apiData = () => {
   fetch(API_CALL)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
-
       /* ******** Sunrise and Sunset ******** */
       city.innerHTML = `${data.name}`;
       weather.innerHTML = `${data.weather[0].description}`;
-      console.log(data.weather[0].description);
       temperature.innerHTML = `${data.main.temp.toFixed(1)}`;
-      const weatherIconTop = data.weather[0].icon;
-      typeOfWeatherData.innerHTML += `
-      <img src="http://openweathermap.org/img/wn/${weatherIconTop}@2x.png" alt="weather-icon" class="weather-icon">
-      `;
+      anIcon.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+    
+
+      //A calculation to display the sunrise data in the city's local time
       const unixTimestampSunrise = data.sys.sunrise;
 
       const timezone = data.timezone;
@@ -53,7 +55,10 @@ const apiData = () => {
         timeStyle: "short",
         hour12: false,
       });
+      //Sets the data for the sunrise element
       sunrise.innerText = LocalTimeSunrise;
+
+      //A calculation to display the sunset data in the city's local time
       const unixTimestampSunset = data.sys.sunset;
 
       const sunsetInSeconds = unixTimestampSunset + timezone + offset;
@@ -62,45 +67,47 @@ const apiData = () => {
       const LocalTimeSunset = sunsetLocalDate.toLocaleTimeString([], {
         timeStyle: "short",
         hour12: false,
-      }); // Convert timestamps to readable time format
+      }); // Convert timestamps to simple and short time format
       sunset.innerText = LocalTimeSunset;
 
-      console.log(LocalTimeSunrise, LocalTimeSunset);
       /* Forecast */
+      //Takes the lat and lon data from the initial search and uses it to call the api again for the forecast
       let lat = data.coord.lat;
       let lon = data.coord.lon;
 
+      //A function to change the background depending on weather
       let mainWeather = data.weather[0].main;
-      if (mainWeather === "Clouds") {
-        headerBackground.style.backgroundImage =
-          "url('https://media3.giphy.com/media/xT9GEpqOhIhNcV5etq/giphy.gif')";
+      if (mainWeather === "Clear") {
+        headerBackground.style.background =
+          "url('https://bloximages.chicago2.vip.townnews.com/tucson.com/content/tncms/assets/v3/editorial/c/21/c2108eb0-5f3b-5918-b1e1-b57ac047394d/578e9192af03b.image.jpg?resize=1200%2C879')";
       }
-      console.log(mainWeather);
-      //May need to be replaced
-      let localTime = new Date((data.dt + data.timezone) * 1000);
-      let subbedTime = localTime.toUTCString().substring(17, 22);
-
-      console.log(`Local Time is: ${subbedTime}`);
-      console.log(localTime.toUTCString());
-      const part = "current,minutely,hourly,alerts";
+  
+      const part = "current,minutely,hourly,alerts"; //Information to omit when calling the api for forecast data
       fetch(
         `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&cnt=6&exclude=${part}&appid=${API_KEY}`
       )
         .then((response) => response.json())
         .then((forecastData) => {
-          console.log(forecastData);
           //Counter for days received from array
           let counter = 0;
-
           forecastData.daily.map((day, index) => {
-            let converted = new Date(day.dt * 1000);
+            //A calculation to display the local time 
+            let unixTimestampDailyLocal = day.dt;
+
+            const tzLocal = data.timezone;
+            const offsetLocal = new Date().getTimezoneOffset() * 60; //Offset in sec
+            const localInSeconds = unixTimestampDailyLocal + tzLocal + offsetLocal;
+            const localinMilliseconds = localInSeconds * 1000;
+            const localDate = new Date(localinMilliseconds);
+
+            //Variables that get data about min and max temp, day of the week, and icon for weather
             let dayMax = day.temp.max.toFixed(0);
             let dayMin = day.temp.min.toFixed(0);
-            let weekday = converted.toUTCString().substring(0, 3);
+            let weekday = String(localDate).substring(0, 3);
             let iconLink = day.weather[0].icon;
-            //just a test
-            //-------------------
-            //This makes sure that only the five upcoming days will be displayed
+
+            //This makes sure that only the five upcoming days will be displayed in the forecast
+            //Index 0 is the current day and doesn't need to be shown in a list of upcoming weather
             if (counter < 5 && index !== 0) {
               forecast.innerHTML += `
                       <div class="futureForecast">
@@ -120,4 +127,6 @@ const apiData = () => {
         });
     });
 };
+
+//Starts the app
 apiData();

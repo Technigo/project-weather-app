@@ -4,31 +4,42 @@
 }
 h2 {
   font-family: "Arial, Helvetica, sans-serif";
-  padding: 40px;
   justify-content: center;
+  font-size: 17px;
+}
+h3 {
+  font-family: "Arial, Helvetica, sans-serif";
+  justify-content: center;
+  font-size: 20px; 
+}
+h4 {
+  font-family: "Arial, Helvetica, sans-serif";
+  justify-content: center;
+  font-size: 40px;
 }
 .container {
   height: 900px;
   width: 400px;
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+  margin: 100px auto;
   font-family: "Roboto", sans-serif;
   position: relative;
   max-width: 400px;
   overflow: hidden;
-  background-color: lightblue;
+  background-color: lightgray;
+  box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .header-background {
   height: 900px;
   width: 800px;
-  background: turquoise;
-  border-radius: 50%;
+  border-radius: 48%;
   position: absolute;
   right: 50%;
   bottom: 40%;
   transform: translate(50%);
+  background: url("https://images.ctfassets.net/hrltx12pl8hq/5YPWx7E9hPbcm4kwqzGniH/1d6c5affe31d747a3358446340a7ff1c/rain-images.jpg?fit=fill&w=600&h=400");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -42,42 +53,81 @@ h2 {
 .weather-header {
   margin: 50px;
   z-index: 4;
+  display: flex;
 }
 
 #search {
   position: relative;
   z-index: 5;
-  margin-top: 20px;
+  width: 220px;
+  height: 40px;
+  display: flex;
+  align-self: center;
+  opacity: 30%;
+  padding: 0 15px;
+  margin-right: 60px;
+  color: black;
+}
+
+
+.searchBar {
+  margin-top: 30px;
+  display: flex;
+  z-index: 5;
+  justify-content: space-around;
+  border: 2px solid grey;
+}
+
+.searchIcon {
+  z-index:5;
+  color: aliceblue;
+  background-color: aliceblue;
+}
+.theX{
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  font-weight: bold;
+  color: white;
+  font-size: 40px;
+  margin-left: 30px;
+  cursor: pointer;
 }
 
 #temperature {
   color: aliceblue;
   font-size: 100px;
-  font-weight: 80;
+  font-weight: 800;
   display: flex;
   align-items: flex-start;
-  margin-left: 10px;
 }
 
 #city {
   color: aliceblue;
   font-weight: 80;
-  margin-left: 10px;
 }
 #typeOfWeather {
   color: aliceblue;
   font-weight: 80;
-  margin-left: 10px;
   text-transform: capitalize;
+  border-radius: 1px solid red;
 }
-.sunriseandsunset,
 .sunrise,
 .sunset {
   display: flex;
   color: aliceblue;
-  justify-content: center;
+  justify-content: bottom;
   align-items: center;
+  z-index: 3;
 }
+
+.sunriseandsunset{
+display: flex;
+justify-content: center;
+gap: 9px;
+}
+
 .sunrise h2,
 .sunset h2 {
   padding: 0 20px;
@@ -88,14 +138,13 @@ h2 {
   display: flex;
   flex-flow: row wrap;
   color: aliceblue;
-  font-weight: 80;
+  font-weight: 70;
   padding-block: 5px;
 }
 
 .typeOfWeatherData {
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 
 .top-temp {
@@ -116,25 +165,29 @@ h2 {
 .forecast {
   display: flex;
   flex-direction: column;
-  padding: 2rem 1rem 0 1rem;
-  margin-top: 2rem;
+  padding: 1rem 3rem 0 3rem;
+  margin-top: 8rem;
 }
 
 .futureForecast {
   display: flex;
   justify-content: space-between;
-  padding: 0.7rem;
-  /* border: 1px solid orange; */
+  padding: 0.3rem 0;
+}
+#top-weather-icon {
+  display: flex;
+  border-radius: 1px solid red;
+}
+.weather-icon {
+  width: 50%;
+  height: auto;
+  display: flex;
 }
 
-.weather-icon {
+.typeOfWeatherData img{
   width: 35%;
   height: auto;
   display: flex;
-  /* border: 1px solid pink; */
-  /* justify-content: center;
-  align-content: center;
-  margin: auto; */
 }
 
 .weekday {
@@ -146,7 +199,7 @@ h2 {
 .forecastImg {
   display: flex;
   height: 100%;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .min-max-temps {
@@ -156,22 +209,11 @@ h2 {
   align-self: center;
 }
 
-/* [class*="col-"] {
-  width: 100% 
+#weather-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-left: -10px;
+  height: 200px;
+  margin-top: 20px;
 }
-  
-@media only screen and (min-width: 768px) {
- 
-  .col-1 {width: 8.33%;}
-  .col-2 {width: 16.66%;}
-  .col-3 {width: 25%;}
-  .col-4 {width: 33.33%;}
-  .col-5 {width: 41.66%;}
-  .col-6 {width: 50%;}
-  .col-7 {width: 58.33%;}
-  .col-8 {width: 66.66%;}
-  .col-9 {width: 75%;}
-  .col-10 {width: 83.33%;}
-  .col-11 {width: 91.66%;}
-  .col-12 {width: 100%;}
-} */
