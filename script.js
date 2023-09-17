@@ -42,7 +42,36 @@ const fetchWeather = () => {
             console.log('Error', error)
         })
 
-}
+    switch (weather.main) {
+        case 'Clouds':
+            document.body.style.backgroundColor = '#F4F7F8';
+            container.style.color = '#F47775';
+            weatherDescription.innerHTML = `
+                    <img src="cloud.svg" alt="cloud"/>
+                    <h1>The sky is grey in ${json.name}. Maybe go for a lil walk with a podcast! </h1>
+                `;
+            break;
+
+        case 'Rain':
+            document.body.style.backgroundColor = '#A3DEF7';
+            container.style.color = '#164A68';
+            weatherDescription.innerHTML = `
+                            <img src="umbrella.svg" alt="umbrella"/>
+                            <h1>It's raining in ${json.name}. Have a cup of tea, put on Netflix and stay inside! </h1>
+                        `;
+            break;
+
+        default:
+            console.log('sunny');
+            document.body.style.backgroundColor = '#F7E9B9';
+            container.style.color = '#2A5510';
+            weatherDescription.innerHTML = `
+                            <img src="shades.svg" alt="sunglasses"/>
+                            <h1>The sky is crispy and clear in ${json.name}. Put on your best shades and don't forget SPF!</h1>
+                        `;
+            break;
+    };
+};
 
 fetchWeather();
 

@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+
+
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -16,10 +21,16 @@ body {
     display: grid;
     grid-template-rows: 25%, 45%, 20%;
     height: 100vh;
+    justify-content: center;
+    align-items: center;
 }
 
 .header {
     grid-row: 1/ span 2;
+    border-collapse: collapse;
+    padding: 10px;
+    border: 1px solid #ccc;
+
 }
 
 .city {
@@ -28,4 +39,49 @@ body {
 
 .weather {
     grid-row: 1/ span 4;
+}
+
+.weeklyforecast {
+
+    grid-row: 2 / span 3;
+}
+
+
+.forecast-wrapper ul {
+    list-style-type: none;
+    padding-left: 0;
+    font-size: 20px;
+    font-weight: 100;
+}
+
+.forecast-wrapper ul li {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed;
+    padding: 0.6em;
+}
+
+
+@media (min-width: 667px) {
+    .container {
+        width: 500px;
+    }
+
+    body {
+        display: grid;
+        justify-content: center;
+    }
+
+    h1 {
+        font-size: 45px;
+    }
+
+    h3 {
+        font-size: 22px;
+    }
+
+    .forecast-wrapper ul {
+        font-size: 22px;
+    }
+
 }
