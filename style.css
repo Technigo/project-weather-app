@@ -40,7 +40,7 @@ body {
 }
 
 .style-topOfPage.clicked {
-    clip-path: ellipse(100% 90% at 50% 0%);
+    clip-path: ellipse(120% 90% at 50% 0%);
     background-image: linear-gradient(rgb(255, 250, 119), rgb(252, 180, 38), rgb(235, 15, 114));
     /* Adjusts bottom of the curve when hamburg.menu is clicked*/
     /*js: topOfPage.classList.remove("clicked"); topOfPage.classList.add("clicked");*/
@@ -51,15 +51,25 @@ body {
 .weatherData {
     padding-top: 30px;
     font-size: 18px;
+
 }
 
 #Temperature {
     font-size: 100px;
     /*HOW TO MAKE CELCIUS SYMBOL SMALL*/
+    padding-left: 0;
+    padding-left: 5px;
 }
 
 #city {
     font-size: 30px;
+    padding-left: 25px;
+}
+
+#description,
+#sunriseAndTime {
+    font-size: 15px;
+    padding-left: 25px;
 }
 
 #todaysAdvice {
@@ -69,6 +79,8 @@ body {
     padding: 10px;
     display: inline-block;
     white-space: pre-line;
+    padding-left: 25px;
+    /*not working the way i want*/
 }
 
 /* HEADER STYLING ENDS HERE */
