@@ -7,7 +7,6 @@ const weatherDescription = document.getElementById("weatherDescription");
 const mainIcon = document.getElementById("mainIcon");
 const sunriseText = document.getElementById("sunriseText");
 const sunsetText = document.getElementById("sunsetText");
-const featureImage = document.querySelector('.feature-image');
 
 const forecastWeekdays = document.getElementById("forecastWeekdays"); 
 const forecastIcon = document.getElementById("forecastIcon"); 
@@ -172,6 +171,7 @@ const switchCity = () => {
         city = "London";
     }
 }
+
 // Invoke functions for today's weather and five-day forecast with the base city as argument
 todaysWeather("London");
 fiveDaysForecast("London");
