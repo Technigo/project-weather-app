@@ -1,72 +1,27 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   box-sizing: border-box;
 }
 
 body {
   background: white;
+  background-image: no-repeat;
 }
+
+/* .day,
+.night {
+  background-repeat: no-repeat;
+} */
 
 .zurichWeather {
   width: 100%;
   color: rgb(76, 87, 76);
   margin: 100px auto 0;
-  padding:35px;
+  padding: 35px;
   text-align: center;
 }
-
-/* .search{
-  width: 10%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-left: 20px;
-} */
-
-/* .search .input {
-  border: 0;
-  outline: 0;
-  background: rgb(176, 45, 45);
-  padding: 10px 25px;
-  height: 60px;
-  font-size: 50px;
-}
-
-.search button{
-  border: 0;
-  background: transparent;
-  border-radius: 50%;
-  width: 60;
-  height: 60px;
-  cursor: pointer;
-}
-
-.search button img {
-  width: 16px;
-} */
-/* 
-.weather-icon {
-  width: 20px;
-  margin: 30px;
-} */
-
-/* .weather h1{
-  font-size: 40px;
-  font-weight: 500;
-}
-
-.weather h2{
-  font-size: 45px;
-  font-weight: 400;
-  margin-top: -10px;
-}
-
-.weather img {
-  width: 40px;
-  margin-right: 10px;
-} */
 
 .details {
   display: flex;
@@ -82,39 +37,22 @@ body {
   text-align: left;
 }
 
-/* .column img {
-  width: 40px;
-  margin-right: 10px;
-} */
-
-.sunrise, .sunset {
+.sunrise,
+.sunset {
   font-size: 28px;
   margin-top: -6;
 }
 
 .day {
-  background-image: "./pictures/day.jpg";
+  background-image: url("./pictures/day.jpg");
   background-size: 100%;
 }
 
 .night {
-  background-image: "./pictures/night.jpg";
+  background-image: url("./pictures/night.jpg");
   background-size: 100%;
 }
 
-.forecast {
+.forecastcontainer {
   display: block;
-}
-/* 
-.forecast image {
-  width: 100px;
-} */
-
-
-/*.zurichweather {
-  width: 768px;
-  flex-wrap: wrap;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  justify-content: center;
-  justify-content: space-between;
 }
