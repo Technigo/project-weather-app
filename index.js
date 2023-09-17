@@ -67,8 +67,14 @@ function fetchWeatherData() {
 //DISPLAY DATA FETCHED IN THE fetchWeatherData FUNCTION ON THE WEBSITE//
 //Data here shows to data feched in function fetchWeatherData()
 function updateWeatherUI(data) {
+    correctImg.innerHTML = '';//ensures that only one of the icon is displayed at a time, replacing any existing icons when the this function is called.
+
     //temperature
-    temperature.textContent = `${data.main.temp.toFixed(1)}°C`;
+    temperature.textContent = `${data.main.temp.toFixed(1)}`;
+    const celsiusSymbol = document.createElement("span");
+    celsiusSymbol.textContent = "°C";
+    document.getElementById("Temperature").appendChild(celsiusSymbol);
+
     //city
     city.textContent = data.name;
     //Gather weather description from API array "Weather"

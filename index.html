@@ -11,8 +11,10 @@
     <link rel="stylesheet" href="./style.css">
     <!--ELBA Ikon library hamb.-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href='https://fonts.google.com/specimen/Montserrat'>
     <!--I didnt like the other font from design 1, so im using font from design2 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -25,10 +27,11 @@
                 <span class="logo-weather">VÄDER</span>
                 <!--Hamburger menu when clicked (MENU NAVIGATION LINKS)-->
                 <div id="myLinks">
-                    <a href="#test1">Hitta plats på kartan</a>
-                    <a href="#test2">Farovarningar</a>
-                    <a href="#test3">Hjälp</a>
-                    <a href="#test4">Kontakta oss</a>
+                    <a href="#meny1">Find location on map</a>
+                    <a href="#meny2">Weather warnings</a>
+                    <a href="#meny3">Help</a>
+                    <a href="#meny4">Contact us</a>
+                    <a href="#meny5">Change language/ Välj ditt språk</a>
                 </div>
                 <!--HAMBURGER MENU ICON-->
                 <a href="javascript:void(0);" class="icon" onclick="toggleNavMenu()"> <i class="fa fa-bars"></i>
@@ -40,8 +43,10 @@
             <div id="city"></div>
             <div id="description"></div>
             <div id="todaysAdvice"></div>
-            <div id="sunriseAndTime"></div>
-            <div id="sunsetAndTime"></div>
+            <div class="setAndRise">
+                <div id="sunriseAndTime"></div>
+                <div id="sunsetAndTime"></div>
+            </div>
         </div>
         <div id="images" display: hidden> <!---img moved from weatherData/ ELIN-->
             <img src="./design/design1/assets/Group16.png" alt="cloud">
@@ -50,11 +55,14 @@
         </div>
         </div>
         <div id="correctImg"></div>
-        <div id="dateAndTime"></div>
+
         </header>
         <!--ELBA Moved changes into header-->
     </section>
-
+    <section>
+        <p>Today</p>
+        <div id="dateAndTime"></div>
+    </section>
     <!--OBS: ELBA changed weekly forecast to class-->
     <section class="weeklyForecast">
         <div id="day1">

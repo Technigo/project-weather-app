@@ -49,16 +49,22 @@ body {
 
 /* HEADER STYLING STARTS HERE */
 .weatherData {
-    padding-top: 30px;
     font-size: 18px;
-
 }
 
 #Temperature {
+    display: flex;
     font-size: 100px;
-    /*HOW TO MAKE CELCIUS SYMBOL SMALL*/
     padding-left: 0;
     padding-left: 5px;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+#Temperature span:last-child {
+    font-size: 50%;
+    vertical-align: top;
+    margin-top: 10px;
 }
 
 #city {
@@ -66,10 +72,19 @@ body {
     padding-left: 25px;
 }
 
-#description,
-#sunriseAndTime {
+#description {
     font-size: 15px;
     padding-left: 25px;
+}
+
+.setAndRise {
+    font-size: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+    display: inline-block;
+    display: flex;
+    justify-content: space-between;
+
 }
 
 #todaysAdvice {
