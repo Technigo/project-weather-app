@@ -16,7 +16,7 @@
     <div id="weatherApp" class="weatherApp">
         <div id="featureImage" class="featureImage"></div>
         <nav id="navSearch" class="nav">
-            <button type="button" class="search-button hidden" title="search" id="closeSearchMenu">     <!-- Turns into an x when we want to close the search field-->
+            <button type="button" class="search-button hidden" title="search" id="closeSearchMenu"> <!-- Turns into an x when we close the search field-->
                 <svg xmlns="http://www.w3.org/2000/svg" class="x-icon" fill="currentColor" x="0px" y="0px"
                     width="50" height="50"
                         viewBox="0 0 50 50">
@@ -24,7 +24,7 @@
                 </svg>
             </button>
 
-            <button type="button" class="search-button" title="search" id="searchMenuBtn">        <!-- The one where we toggle the search field-->
+            <button type="button" class="search-button" title="search" id="searchMenuBtn"> <!-- The one where we toggle the search field-->
                 <svg stroke="currentColor" class="search-icon" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1.5em"
                 width="1.5em" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -35,7 +35,7 @@
     
             <div class="search hidden" id="search-toggler">
                 <input type="text" class="search-bar" id="inputField" placeholder="Search">
-                <button type="submit" class="search-button" title="search" id="searchBtn">     <!-- The one where we actually search-->
+                <button type="submit" class="search-button" title="search" id="searchBtn"> <!-- The one where we actually search-->
                     <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1.5em"
                     width="1.5em" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -44,6 +44,16 @@
                     </svg>
                 </button>
             </div>
+
+            <svg id="currentLocButton" class="current-location hidden" stroke="currentColor" fill="none" stroke-width="1.5"
+            width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="3" />
+                <circle cx="12" cy="12" r="8" />
+                <line x1="12" y1="2" x2="12" y2="4" />
+                <line x1="12" y1="20" x2="12" y2="22" />
+                <line x1="20" y1="12" x2="22" y2="12" />
+                <line x1="2" y1="12" x2="4" y2="12" />
+            </svg>
         </nav>
 
         
