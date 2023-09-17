@@ -1,13 +1,11 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This weeks project was to build an responsive weather app including current weather and a 5 day forecast.
 
 ## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+From start it was hard to see the logic and where to start, but to make it more clear what to I broke down the assignment into managable tasks. ChatGPT has been frequently used to solve issues that occured.
+If I had more time I would´ve liked to add some cool animations and changed the design a bit.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://weather-app-week4.netlify.app/
