@@ -1,13 +1,15 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Creating a weather app by fetching data from the Open Weather API. We designed the application according to given instructions. Then we added additional features like a search bar, adding current position from geolocation and rain animation.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Our most difficult parts were to copy the design with CSS. To solve this we looked for tutorials online and used CodePen to understand the underlying principles.
+There was also a struggle with making the geolocation work accordingly. We found information about the geolocation API and tried to understand how to use the data to work with the existing code.
+Our favorite tool was google. We found multiple tutorials in written form and on youtube. We have used console.log until our fingers were sore.
+
+We were given a step by step plan which we followed. During the later stages of the development we winged it and developed each feature in turn.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://klaudia-frida-weatherapp.netlify.app/

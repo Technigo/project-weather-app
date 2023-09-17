@@ -65,24 +65,32 @@ const todaysWeatherFeature = (city) =>{
         switch (weatherImg) {
             case 'Clear':
                 changeBackground('clear')
+                stopRain()
                 break
             case 'Clouds':
                 changeBackground('clouds')
+                stopRain()
                 break
             case 'Drizzle':
                 changeBackground('drizzle')
+                stopRain()
+                makeRain()
                 break
             case 'Rain':
                 changeBackground('rain')
+                makeRain()
                 break
             case 'Snow':
                 changeBackground('snow')
+                stopRain()
                 break
             case 'Thunderstorm':
                 changeBackground('thunderstorm')
+                stopRain()
                 break
             default:
                 changeBackground('atmosphere')
+                stopRain()
                 break
         }
 
@@ -158,8 +166,10 @@ const searchFunction = () => {
 
         //Clears field & hides the input field
         inputField.value = ""
-        searchToggler.classList.toggle('hidden')
-        currentLocBtn.classList.toggle('hidden')
+        searchToggler.classList.add('hidden')
+        closeSearchMenu.classList.add('hidden')
+        searchMenuBtn.classList.toggle('hidden')
+        currentLocBtn.classList.add('hidden')
 
         //Resets the weather forecast
         cityTimeDesc.innerHTML = ""
@@ -192,7 +202,7 @@ const dayNightOrDusk = (sunriseTime, sunsetTime, timeNow) => {
 
 //When the current location button is clicked, it asks the user to accept geolocation, then calls the open weather API usin those long + lat to get the city name. With that, it resets todays WeatherFeature
 const getCurrentLocation = () => {
-    
+
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition)
     } else {
@@ -216,7 +226,7 @@ const getCurrentLocation = () => {
     function showPosition(position) {
         let lat = position.coords.latitude
         let lon = position.coords.longitude
-        let limit = 20
+        let limit = 2
 
         fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=${limit}&appid=${appID}`)
         .then((response) => response.json())
@@ -226,6 +236,33 @@ const getCurrentLocation = () => {
     }
 }
 
+//Makes rain in the foreground if it rains in the forecast
+const makeRain = () => {
+    let hrElement //The individual raindrops
+    let counter = 100
+
+    //Creates 100 individual raindrops
+    for (let i = 0; i < counter; i++) {
+        hrElement = document.createElement("HR")
+
+        //Randomizes the "starting position" of the raindrop starting from the left
+        hrElement.style.left = Math.floor(Math.random() * window.innerWidth) + "px"
+        //Randomizes the speed of the raindrop
+        hrElement.style.animationDuration = 0.6 + Math.random() * 0.3 + "s"
+        //Randomizes when the rain animation starts
+        hrElement.style.animationDelay = Math.random() * 5 + "s"
+        
+        document.body.appendChild(hrElement)
+      }
+}
+
+const stopRain = () => {
+    const hrElement = document.getElementsByTagName('hr')
+    
+    for (i = 0; i < hrElement.length; i++) {
+        hrElement[i].setAttribute('class', 'fadeOut')
+    }
+}
 
 //START
 todaysWeatherFeature("Stockholm, Sweden")
