@@ -54,14 +54,37 @@ body {
   border-radius: 50%;
 }
 
-.search-container {
-  height: 100px;
-  width: 100%;
+.search-nav {
+  display: flex;
+  align-items: center;
+  margin: 20px 0 20px;
 }
 
-.search-container button {
+.toggle-open, .toggle-close {
   width: 30px;
-  margin-top: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-container input {
+  border: 0;
+  outline: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px 25px;
+  height: 40px;
+  border-radius: 30px;
+  margin-left: 1.5rem;
+}
+
+.search-btn {
+  width: 1.5rem;
+  margin-left: 1rem;
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -176,4 +199,10 @@ h3 {
 h2,
 h3 {
   font-weight: 300;
+}
+
+/* To use when hiding something*/
+.hidden {
+  display: none;
+  transition: transform 1s ease 0s;
 }

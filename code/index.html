@@ -17,8 +17,10 @@
       <div id="background" class="back-image"></div>
       <!--Section for current weather including city name, temperature, current time, eather and time for sunrise and sunset-->
       <main>
-        <div class="search-container">
-          <button>
+        <header class="search-nav">
+
+          <!-- Button to open the search field-->
+          <button type="button" class="toggle-open" id="toggleOpen">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 64 64"
@@ -32,7 +34,44 @@
               <path d="M39.58 39.04L56.14 57"></path>
             </svg>
           </button>
-        </div>
+          <!-- Button to close the search field-->
+          <button type="button" class="toggle-close hidden" id="toggleClose">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 64 64"
+              stroke-width="6"
+              stroke="#fff"
+              fill="none"
+              class="duration-300 transform transition-all"
+              style="width: 48px; height: 48px"
+            >
+              <path d="M8.06 8.06l47.35 47.88M55.94 8.06L8.59 55.94"></path>
+            </svg>
+          </button>
+          <!-- Search field -->
+          <div class="search-container hidden" id="searchContainer">
+            <input
+              type="text"
+              placeholder="enter city name"
+              spellcheck="false"
+            />
+            <!-- Button to search in the search field-->
+            <button type="submit" class="search-btn" id="searchBtn">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 64 64"
+                stroke-width="6"
+                stroke="#fff"
+                fill="none"
+                class="duration-300 transform transition-all"
+                style="width: 48px; height: 48px"
+              >
+                <circle cx="27.31" cy="25.74" r="18.1"></circle>
+                <path d="M39.58 39.04L56.14 57"></path>
+              </svg>
+            </button>
+          </div>
+        </header>
         <section class="current-weather" id="currentWeather">
           <div class="curt">
             <h1 id="currentTemp"></h1>

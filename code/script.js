@@ -1,4 +1,4 @@
-//DOM selectors
+//DOM selectors ------------------
 const background = document.getElementById("background");
 const currentWeather = document.getElementById("currentWeather");
 const currentTemp = document.getElementById("currentTemp");
@@ -10,19 +10,27 @@ const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
 const weatherForecast = document.getElementById("weatherForecast");
 
-// Variables for API-fethcing
+const toggleOpen = document.getElementById("toggleOpen");
+const toggleClose = document.getElementById("toggleClose");
+const searchContainer = document.getElementById("searchContainer");
+const searchInput = document.querySelector("search-container input");
+const searchBtn = document.getElementById("searchBtn");
+
+// Variables for API-fethcing ------------------
+const urlCurrentWeather =
+  "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 const API_KEY = "5660c7e2a75e2c204e4b057312e71c93"; // (Query param)
 let cityName = "Stockholm"; // City on startpage (Path param)
 
-//Global variable
+const urlForecast =
+  "https://api.openweathermap.org/data/2.5/forecast?units=metric&q=";
+
 // Get the user's local timezone
 //let userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-//API for the weather data for Stockholm.
+// API for the weather data
 const fetchStockholmWeather = () => {
-  fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${API_KEY}`
-  )
+  fetch(`${urlCurrentWeather}${cityName}&appid=${API_KEY}`)
     .then((response) => response.json())
     .then((json) => {
       console.log(json);
@@ -97,15 +105,13 @@ const fetchStockholmWeather = () => {
       console.log(formattedLocalTime);
       console.log(sunriseTime);
       console.log(sunsetTime);
-      console.log(
-        formattedLocalTime >= sunriseTime && formattedLocalTime <= sunsetTime
-      );
+      console.log(localTime.getHours());
 
-      // WHY DOES THIS WORK?
-      if (
-        formattedLocalTime >= sunriseTime &&
-        formattedLocalTime <= sunsetTime
-      ) {
+      // Checks what hour it is
+      const currentHour = localTime.getHours();
+
+      // Checks if the current hour is between 06:00 and 22:00, which is considered daytime, or else night time
+      if (currentHour >= 6 && currentHour < 22) {
         // Daytime background images depending on weather.
         if (todaysWeather === "Thunderstorm") {
           background.style.backgroundImage = `url('./images/thunder.jpg')`;
@@ -196,3 +202,19 @@ const showWeatherData = (filteredData) => {
     }
   });
 };
+
+// Function that controlls the toggling between opening and closing the search field.
+const toggleSearchField = () => {
+  searchContainer.classList.toggle("hidden");
+  toggleClose.classList.toggle("hidden");
+  toggleOpen.classList.toggle("hidden");
+};
+
+toggleOpen.addEventListener("click", toggleSearchField);
+toggleClose.addEventListener("click", toggleSearchField);
+
+// Eventlisteners --------------------
+
+//searchBtn.addEventListener('click', () => {
+//  fetchStockholmWeather(searchInput.value);
+//})
