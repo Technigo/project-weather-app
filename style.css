@@ -26,12 +26,6 @@ body {
 .style-topOfPage {
     background-image: linear-gradient(rgb(235, 15, 114), rgb(255, 170, 0), rgb(255, 254, 220));
     font-size: 20px;
-    /*background-color: beige;
-    text-align
-    background-size: cover;
-    background-attachment: fixed;bilde?
-    posision:relative;
-    owerflow:hidden;*/
     overflow: hidden;
     width: 100%;
     min-height: 500px;
@@ -45,20 +39,53 @@ body {
     /* Adjusts bottom of the curve when hamburg.menu is clicked*/
     /*js: topOfPage.classList.remove("clicked"); topOfPage.classList.add("clicked");*/
     /*Values explained in: NOTAT FORKLARING NR1 (remember to share with group)*/
+    ;
 }
 
 /* HEADER STYLING STARTS HERE */
 .weatherData {
+    color: white;
     font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#dateAndTime {
+    font-size: 18px;
+    padding-right: 25px;
+    margin-top: 20px;
+    text-align: right;
+    text-decoration: overline;
+    font-weight: 300;
+    align-self: flex-end;
+}
+
+.temperature-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    /* Create two columns */
+    align-items: flex-start;
+    /* Align items at the top */
+    margin-top: 50px;
+    /* Adjust as needed */
+    position: relative;
+}
+
+#correctImg {
+    position: absolute;
+    left: 60%;
+    top: 50%;
+    transform: translateY(-55%);
 }
 
 #Temperature {
-    display: flex;
-    font-size: 100px;
+    font-size: 90px;
     padding-left: 0;
     padding-left: 5px;
-    margin-top: 20px;
-    margin-left: 10px;
+    margin-right: 160px;
+    position: relative;
+    z-index: 1;
 }
 
 #Temperature span:last-child {
@@ -67,38 +94,53 @@ body {
     margin-top: 10px;
 }
 
+
 #city {
     font-size: 30px;
     padding-left: 25px;
+    align-self: flex-start;
 }
 
 #description {
-    font-size: 15px;
-    padding-left: 25px;
+    font-size: 17px;
+    padding-left: 26px;
+    margin-top: 5px;
+    align-self: flex-start;
 }
 
 .setAndRise {
-    font-size: 15px;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-top: 20px;
+    font-size: 17px;
+    padding-left: 26px;
+    margin-top: 5px;
     display: inline-block;
     display: flex;
+    align-self: flex-start;
     justify-content: space-between;
-
 }
+
+#sunriseAndTime {
+    margin-right: 155px;
+}
+
+#sunsetAndTime {}
+
+/* HEADER STYLING ENDS HERE */
 
 #todaysAdvice {
     font-size: 14px;
     background-color: rgba(240, 228, 224, 0.176);
-    border-radius: 30px;
+    border-radius: 15px;
     padding: 10px;
     display: inline-block;
-    white-space: pre-line;
     padding-left: 25px;
-    /*not working the way i want*/
+    white-space: pre-line;
+    top: 50%;
+    left: 50%;
 }
 
-/* HEADER STYLING ENDS HERE */
+
+
 
 /* NAVIGATION MENU STYLING STARTS HERE */
 nav {
@@ -146,7 +188,7 @@ nav a.icon.active {
 /*LOGOSTYLING IN NAVBAR*/
 
 .logo {
-    color: rgb(25, 25, 24);
+    color: rgb(0, 0, 0);
     text-decoration: none;
     text-align: right;
     padding-right: 5px;
@@ -155,7 +197,6 @@ nav a.icon.active {
     top: 0;
     margin: 0;
     position: relative;
-    color: rgb(84, 11, 11);
     font-weight: 600;
     letter-spacing: 0.2em;
 }
@@ -185,6 +226,7 @@ nav a.icon.active {
 }
 
 /*Iwant to style "todays date different, how do I target todays date?*/
+/*
 #day1 {
     background-color: rgb(240, 228, 224);
     border-radius: 30px;
@@ -195,7 +237,7 @@ nav a.icon.active {
     align-items: center;
 }
 
-/*
+
 .day1 {}
 
 .temperature1 {}*/

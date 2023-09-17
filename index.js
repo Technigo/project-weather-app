@@ -67,6 +67,7 @@ function fetchWeatherData() {
 //DISPLAY DATA FETCHED IN THE fetchWeatherData FUNCTION ON THE WEBSITE//
 //Data here shows to data feched in function fetchWeatherData()
 function updateWeatherUI(data) {
+
     correctImg.innerHTML = '';//ensures that only one of the icon is displayed at a time, replacing any existing icons when the this function is called.
 
     //temperature
@@ -84,29 +85,35 @@ function updateWeatherUI(data) {
 
     // Todays advice - You can use a conditional statement here based on weatherDescription
     if (weatherDescription.includes('clear')) {
-        todaysAdvice.textContent = "Det är en klar dag. Njut av solskenet!"; //"It's a clear day. Enjoy the sunshine!
+        todaysAdvice.textContent = "Put on your shades and bask in the sunshine!\nRemember to stay 'cool' with some sunscreen.";
 
         //create img according to weather
         const img = document.createElement("img");
         img.src = "./design/design1/assets/Group36.png";
         img.alt = "sunny";
+        img.style.width = "150px";
+        img.style.height = "auto";
         correctImg.appendChild(img);
 
     } else if (weatherDescription.includes('rain')) {
-        todaysAdvice.textContent = "Det regnar. Glöm inte ditt paraply!"; //"It's raining. Don't forget your umbrella!"
+        todaysAdvice.textContent = "It's raining cats and dogs out there. Don't forget your umbrella, or you might end up 'purr-fectly' soaked!";
 
         //create img according to weather
         const img = document.createElement("img");
         img.src = "./design/design1/assets/Group16.png";
         img.alt = "rain";
+        img.style.width = "100px";
+        img.style.height = "auto";
         correctImg.appendChild(img);
     } else {
-        todaysAdvice.textContent = "'Det finns inget dåligt väder,\nbara dåliga kläder'"; //"Check the weather and plan accordingly."
+        todaysAdvice.textContent = "As we scandinavians say:'There's no such thing as bad weather, only inappropriate clothing!'";
 
         //create img according to weather
         const img = document.createElement("img");
         img.src = "./design/design1/assets/Group34.png";
         img.alt = "sunnyclouds";
+        img.style.width = "100px";
+        img.style.height = "auto";
         correctImg.appendChild(img);
     }
 
@@ -141,7 +148,7 @@ const minutes3 = currentDate.getMinutes(); //get minutes from Date
 const formattedMinutes = (minutes3 < 10) ? `0${minutes3}` : minutes3; //if minutes3 is less then 10, it adds a 0 in front of the minute. For example: the time is 15:05. Without formatted minutes it'd say 15:5.
 
 //displays time and date in the browser
-dateAndTime.textContent = `${dayOfWeek} ${todaysDate} ${todaysMonthAbbreviation}. Time is ${hours3}:${formattedMinutes} `
+dateAndTime.textContent = `${dayOfWeek} ${todaysDate} ${todaysMonthAbbreviation}. ${hours3}:${formattedMinutes} `
 
 //Elin: 
 
