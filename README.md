@@ -8,7 +8,8 @@ Isaac and Andrej got assigned in the same group and here is our project (nearly 
 
 Javascript
 The main problem or more like obsticale was to fetch and convert the data so it looks more readable from the API.
-To manipulate the
+To manipulate the DOM in a uniform way was not something we did, but will try to do in the future.
+We would probably have added an error handler for if someone types incorrectly in the search function.
 
 CSS
 What we needed is more knowledge in the world of CSS and how it works with javascript.

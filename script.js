@@ -7,14 +7,41 @@ const forecast = document.querySelector(".forecast");
 const weatherHeader = document.querySelector(".weather-header");
 const typeOfWeatherData = document.querySelector(".typeOfWeatherData");
 const search = document.getElementById("search");
+const theX = document.querySelector(".theX");
+const lookingGlass = document.querySelector(".lookingGlass");
+const searchBar = document.querySelector(".searchBar");
 const headerBackground = document.querySelector(".header-background");
 const weatherSection = document.getElementById("weather-section");
-const anIcon = document.getElementById("anIcon");
+const weatherIconTop = document.getElementById("weatherIconTop");
+
+let searchDisplay = false;
+const searchToggle = (searchBoolean) => {
+  if (searchBoolean) {
+    searchBar.style.justifyContent = "center";
+    search.style.display = "none";
+    theX.style.display = "none";
+    lookingGlass.style.display = "flex";
+    searchDisplay = false;
+  } else {
+    search.style.display = "flex";
+    theX.style.display = "flex";
+    lookingGlass.style.display = "none";
+    searchDisplay = true;
+  }
+};
 
 //An event listener that calls the searching function when the value in the search bar is changed
 const searchSubmit = search.addEventListener("change", (e) =>
   searching(e.target.value)
 );
+
+//Event listeners that toggle the visibility of the search bar
+theX.addEventListener("click", () => {
+  searchToggle(searchDisplay);
+});
+lookingGlass.addEventListener("click", () => {
+  searchToggle(searchDisplay);
+});
 
 const API_KEY = "64856650e6321cbb411769554b46b8ad";
 // Reserve API KEY = "421db630ea3e3aeb0cb64db6a500c27b"
@@ -81,7 +108,7 @@ const apiData = () => {
       city.innerHTML = `${data.name}`;
       weather.innerHTML = `${data.weather[0].description}`;
       temperature.innerHTML = `${data.main.temp.toFixed(1)}`;
-      anIcon.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+      weatherIconTop.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
 
       //A calculation to display the sunrise data in the city's local time
       const unixTimestampSunrise = data.sys.sunrise;
@@ -117,7 +144,6 @@ const apiData = () => {
 
       //A function to change the background depending on weather
       let mainWeather = data.weather[0].main;
-      console.log(mainWeather);
       if (mainWeather === "Clear") {
         headerBackground.style.background =
           "url('https://images.unsplash.com/photo-1523913950023-c47b5ae5b164?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80')";

@@ -15,14 +15,14 @@
   <body>
     <div class="container">
       <div class="header-background"></div>
-      <div class="searchBar">     
-         <div class="theX">X</div>
+      <div class="searchBar">
+        <img src="./search.svg" class="lookingGlass" />
         <input type="search" id="search" placeholder="Search for a city..." />
-
+        <div class="theX">X</div>
       </div>
       <section class="weather-header" id="weather-header">
         <!-- City and weather info here -->
-        <div id="weather-section"> 
+        <div id="weather-section">
           <div class="top-temp">
             <h1 class="temperature" id="temperature">Temperature</h1>
             <p>°C</p>
@@ -30,20 +30,20 @@
           <h4 class="city" id="city">City</h4>
           <div class="typeOfWeatherData">
             <h3 class="typeOfWeather" id="typeOfWeather"></h3>
-            <img id="anIcon" src="" />
+            <img id="weatherIconTop" src="" />
           </div>
         </div>
-    </section>
-    <div class="sunriseandsunset" style="position:relative; bottom: 5px;">
-      <div class="sunrise">
-        <p style="font-size: large">sunrise</p>
-        <h2 id="sunrise">Sunrise</h2>
+      </section>
+      <div class="sunriseandsunset" style="position: relative; bottom: 5px">
+        <div class="sunrise">
+          <p style="font-size: large">sunrise</p>
+          <h2 id="sunrise">Sunrise</h2>
+        </div>
+        <div class="sunset">
+          <p style="font-size: large">sunset</p>
+          <h2 id="sunset">Sunset</h2>
+        </div>
       </div>
-      <div class="sunset">
-        <p style="font-size: large">sunset</p>
-        <h2 id="sunset">Sunset</h2>
-      </div>
-    </div>
 
       <div class="forecast"></div>
     </div>
