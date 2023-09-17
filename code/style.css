@@ -99,11 +99,13 @@ h3 {
 }
 
 main {
-  position: relative;
+  position: absolute;
+  width: 100%;
   height: 100%;
   z-index: 1;
   color: white;
   padding: 0 30px;
+  margin: 0 auto;
 }
 
 .temp-container {
@@ -126,7 +128,7 @@ main {
   align-items: center;
 }
 
-.c-w-icon {
+.current-weather-icon {
   width: 5rem;
 }
 
@@ -147,16 +149,17 @@ main {
 }
 
 .forecast-wrapper {
-  position: absolute;
+  position: relative;
   width: 100%;
   color: black;
   padding: 10px 0 40px;
-  bottom: 0;
+  margin-top: 7.5rem;
 }
 
 .forecast-container {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .forecast-weekday {
@@ -191,10 +194,11 @@ footer {
   align-items: center;
   justify-content: center;
   color: grey;
-  font-size: 16px;
+  margin-bottom: 50px;
+  gap: 0.5rem;
 }
 
-footer p {
+footer div {
   display: flex;
   align-items: center;
 }
@@ -207,6 +211,22 @@ footer a,
 footer a:visited {
   margin: 0 5px;
   color: grey;
+}
+
+/* Screens that are 500px or less */
+@media (max-width: 500px) {
+  body {
+    background-color: #faf9f9;
+  }
+
+  .wrapper {
+    max-width: 500px;
+    margin: 0 0 50px;
+  }
+
+  footer {
+    flex-direction: column;
+  }
 }
 
 /* To use when hiding something */

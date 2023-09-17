@@ -1,4 +1,4 @@
-//DOM selectors ------------------
+// DOM selectors ------------------
 const background = document.getElementById("background");
 const currentWeather = document.getElementById("currentWeather");
 const currentTemp = document.getElementById("currentTemp");
@@ -16,7 +16,7 @@ const searchContainer = document.getElementById("searchContainer");
 const searchInput = document.getElementById("inputField");
 const searchBtn = document.getElementById("searchBtn");
 
-// Variables for API-fethcing ------------------
+// Variables for API-fetching ------------------
 const urlCurrentWeather =
   "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 const API_KEY = "5660c7e2a75e2c204e4b057312e71c93"; // (Query param)
@@ -26,7 +26,7 @@ const urlForecast =
   "https://api.openweathermap.org/data/2.5/forecast?units=metric&q=";
 
 // Get the user's local timezone
-//let userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+// let userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
 // Current weather data ------------------
 const fetchCurrentWeather = (cityName) => {
@@ -67,7 +67,7 @@ const fetchCurrentWeather = (cityName) => {
       localTimeDisplay.innerHTML = `Time: ${formattedLocalTime}`;
       console.log(`Time is ${formattedLocalTime}`);
 
-      // ------------ SUNRISE AND SUNSET ------------
+      // SUNRISE AND SUNSET ------------
       // The date object is handling dates and times
       const sunriseData = new Date((json.sys.sunrise + json.timezone) * 1000);
       sunriseData.setMinutes(
@@ -89,15 +89,13 @@ const fetchCurrentWeather = (cityName) => {
       // Sunrise and sunset innerHTML
       sunrise.innerHTML += `${sunriseTime}`;
       sunset.innerHTML = `${sunsetTime}`;
-
       console.log(`Sunrise ${sunriseTime}`);
       console.log(`Sunset ${sunsetTime}`);
 
-      // ------------
       const todaysWeather = json.weather[0].main;
       console.log(todaysWeather);
 
-      // ------------ Image backgrounds feature ------------
+      // Image backgrounds feature for todays weather ------------
       // Array for weather category "atmosphere".
       const atmosphere = [
         "Mist",
@@ -122,8 +120,8 @@ const fetchCurrentWeather = (cityName) => {
       const currentHour = getTime.getHours();
       console.log(`Current hour is ${currentHour}`);
 
-      // Checks if the current hour is between 06:00 and 22:00, which is considered daytime, or else night time
-      if (currentHour >= 6 && currentHour <= 22) {
+      // Checks if the current hour is between 06:00 and 21:00, which is considered daytime, or else night time
+      if (currentHour >= 6 && currentHour < 21) {
         // Daytime background images depending on weather.
         if (todaysWeather === "Thunderstorm") {
           background.style.backgroundImage = `url('./images/thunder.jpg')`;
@@ -154,8 +152,7 @@ const fetchCurrentWeather = (cityName) => {
 
 fetchCurrentWeather();
 
-// ------------------------------------------------------------------------
-// FIVE DAYS WEATHER FORECAST
+// FIVE DAYS WEATHER FORECAST ------------
 
 // API for weather forecast of the next 5 days.
 const fiveDayForecast = (cityName) => {
@@ -212,14 +209,14 @@ const fiveDayForecast = (cityName) => {
 };
 fiveDayForecast();
 
-// Function that controlls the toggling between opening and closing the search field.
+// Function that controlls the toggling between opening and closing the search field. ------------
 const toggleSearchField = () => {
   searchContainer.classList.toggle("hidden");
   toggleClose.classList.toggle("hidden");
   toggleOpen.classList.toggle("hidden");
 };
 
-// Function that stores user input
+// Function that stores user input ------------
 const searchCity = () => {
   let searchedCity = searchInput.value;
 
@@ -239,11 +236,11 @@ const searchCity = () => {
   weatherForecast.innerHTML = "";
 };
 
-// Startpage (when loading page)
+// Startpage (when loading page) ------------
 fetchCurrentWeather("Stockholm");
 fiveDayForecast("Stockholm");
 
-// Eventlisteners --------------------
+// Eventlisteners ------------
 toggleOpen.addEventListener("click", toggleSearchField);
 toggleClose.addEventListener("click", toggleSearchField);
 searchBtn.addEventListener("click", searchCity);

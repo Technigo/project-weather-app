@@ -10,17 +10,16 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
       rel="stylesheet"
     />
-    <!--For the favicon-->
+    <!-- Favicon -->
     <link rel="icon" type="image" href="./images/weather-app.png" />
     <title>Project Weather App</title>
   </head>
   <body>
     <div class="wrapper">
       <div id="background" class="back-image"></div>
-      <!--Section for current weather including city name, temperature, current time, eather and time for sunrise and sunset-->
       <main>
         <header class="search-nav">
-          <!-- Button to open the search field-->
+          <!-- Button to open the search field -->
           <button type="button" class="toggle-open" id="toggleOpen">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +34,7 @@
               <path d="M39.58 39.04L56.14 57"></path>
             </svg>
           </button>
-          <!-- Button to close the search field-->
+          <!-- Button to close the search field -->
           <button type="button" class="toggle-close hidden" id="toggleClose">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -69,6 +68,7 @@
             </button>
           </div>
         </header>
+        <!-- Section for current weather including city, temperature, current time, weather and time for sunrise and sunset -->
         <section class="current-weather" id="currentWeather">
           <div class="temp-container">
             <h1 id="currentTemp"></h1>
@@ -78,7 +78,7 @@
           <h3 class="local-time-display" id="localTimeDisplay"></h3>
           <div class="weather-description">
             <h3 id="weather"></h3>
-            <div id="weatherIcon" class="c-w-icon"></div>
+            <div id="weatherIcon" class="current-weather-icon"></div>
           </div>
         </section>
         <section class="sunrise-sunset">
@@ -96,10 +96,11 @@
       </main>
     </div>
 
-    <!--Footer-->
+    <!-- Footer -->
     <footer>
-      <p>
-        Created by: Julia Holm
+      <p>Created by:</p>
+      <div class="github-julia">
+        <p>Julia Holm</p>
         <a
           href="https://github.com/JuliaHolm"
           target="_blank"
@@ -107,7 +108,9 @@
         >
           <img src="./images/github-mark.svg" alt="Julia's GitHub" />
         </a>
-        & Anna Robertsson
+      </div>
+      <div class="github-anna">
+        <p>Anna Robertsson</p>
         <a
           href="https://github.com/AnnaRobertsson"
           target="_blank"
@@ -115,7 +118,7 @@
         >
           <img src="./images/github-mark.svg" alt="Anna's GitHub" />
         </a>
-      </p>
+      </div>
     </footer>
 
     <script src="script.js"></script>
