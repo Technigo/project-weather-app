@@ -79,24 +79,25 @@ const forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityNa
 const weeklyforecast = document.getElementById('weeklyforecast');
 
 const fetchForecast = () => {
-    console.log(fetchForecast)
     fetch(forecastURL)
-        .then((respons) => respons.json())
+        .then((response) => response.json())
         .then((forecast) => {
-            console.log(forecast);
-            weeklyforecast.innerHTML = `    
-            `;
+            weeklyforecast.innerHTML = '';
 
             forecast.list.forEach((forecastData) => {
                 const row = document.createElement('tr');
-                const timeCell = document.createElement('td');
+                const dayCell = document.createElement('td');
                 const temperatureCell = document.createElement('td');
 
+                // Extract the day of the week from the forecast date
+                const date = new Date(forecastData.dt * 1000); // Convert Unix timestamp to milliseconds
+                const dayOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][date.getDay()];
+
                 // Customize this part based on the data you want to display.
-                timeCell.textContent = forecastData.dt_txt;
+                dayCell.textContent = dayOfWeek;
                 temperatureCell.textContent = `${forecastData.main.temp} °C`;
 
-                row.appendChild(timeCell);
+                row.appendChild(dayCell);
                 row.appendChild(temperatureCell);
                 weeklyforecast.appendChild(row);
             });
@@ -108,6 +109,38 @@ const fetchForecast = () => {
 
 // Call the fetchForecast function to make the API request.
 fetchForecast();
+
+
+// const fetchForecast = () => {
+//     console.log(fetchForecast)
+//     fetch(forecastURL)
+//         .then((respons) => respons.json())
+//         .then((forecast) => {
+//             console.log(forecast);
+//             weeklyforecast.innerHTML = `    
+//             `;
+
+//             forecast.list.forEach((forecastData) => {
+//                 const row = document.createElement('tr');
+//                 const timeCell = document.createElement('td');
+//                 const temperatureCell = document.createElement('td');
+
+//                 // Customize this part based on the data you want to display.
+//                 timeCell.textContent = forecastData.dt_txt;
+//                 temperatureCell.textContent = `${forecastData.main.temp} °C`;
+
+//                 row.appendChild(timeCell);
+//                 row.appendChild(temperatureCell);
+//                 weeklyforecast.appendChild(row);
+//             });
+//         })
+//         .catch((error) => {
+//             console.error('Error', error);
+//         });
+// };
+
+// // Call the fetchForecast function to make the API request.
+// fetchForecast();
 
 
 
