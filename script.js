@@ -84,23 +84,40 @@ const fetchForecast = () => {
         .then((forecast) => {
             weeklyforecast.innerHTML = '';
 
+            // Create an object to store the forecast data grouped by day
+            const dailyForecast = {};
+
             forecast.list.forEach((forecastData) => {
+                const date = new Date(forecastData.dt * 1000); // Convert Unix timestamp to milliseconds
+                const day = date.toLocaleDateString(undefined, { weekday: 'long' });
+
+                // Check if the day already exists in the dailyForecast object
+                if (!dailyForecast[day]) {
+                    dailyForecast[day] = {
+                        temperature: forecastData.main.temp,
+                        description: forecastData.weather[0].description,
+                    };
+                } else {
+                    // If the day already exists, update the temperature and description
+                    dailyForecast[day].temperature = forecastData.main.temp;
+                    dailyForecast[day].description = forecastData.weather[0].description;
+                }
+            });
+
+            // Iterate over the daily forecast data and display it
+            for (const day in dailyForecast) {
                 const row = document.createElement('tr');
                 const dayCell = document.createElement('td');
                 const temperatureCell = document.createElement('td');
 
-                // Extract the day of the week from the forecast date
-                const date = new Date(forecastData.dt * 1000); // Convert Unix timestamp to milliseconds
-                const dayOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][date.getDay()];
-
                 // Customize this part based on the data you want to display.
-                dayCell.textContent = dayOfWeek;
-                temperatureCell.textContent = `${forecastData.main.temp} °C`;
+                dayCell.textContent = day;
+                temperatureCell.textContent = `${dailyForecast[day].temperature} °C, ${dailyForecast[day].description}`;
 
                 row.appendChild(dayCell);
                 row.appendChild(temperatureCell);
                 weeklyforecast.appendChild(row);
-            });
+            }
         })
         .catch((error) => {
             console.error('Error', error);
@@ -110,61 +127,4 @@ const fetchForecast = () => {
 // Call the fetchForecast function to make the API request.
 fetchForecast();
 
-
-// const fetchForecast = () => {
-//     console.log(fetchForecast)
-//     fetch(forecastURL)
-//         .then((respons) => respons.json())
-//         .then((forecast) => {
-//             console.log(forecast);
-//             weeklyforecast.innerHTML = `    
-//             `;
-
-//             forecast.list.forEach((forecastData) => {
-//                 const row = document.createElement('tr');
-//                 const timeCell = document.createElement('td');
-//                 const temperatureCell = document.createElement('td');
-
-//                 // Customize this part based on the data you want to display.
-//                 timeCell.textContent = forecastData.dt_txt;
-//                 temperatureCell.textContent = `${forecastData.main.temp} °C`;
-
-//                 row.appendChild(timeCell);
-//                 row.appendChild(temperatureCell);
-//                 weeklyforecast.appendChild(row);
-//             });
-//         })
-//         .catch((error) => {
-//             console.error('Error', error);
-//         });
-// };
-
-// // Call the fetchForecast function to make the API request.
-// fetchForecast();
-
-
-
-// const calculateSunrise = (data) => {
-//     const unixTimestamp = data.sys.sunrise // seconds
-//     const sunRiseTimestamp = unixTimestamp * 1000 //milliseconds
-//     const sunriseDate = new Date(sunRiseTimestamp)
-// }
-
-// weatherData = () => {
-
-//     currentCity.innerHTML = '';
-//     const fetchWeather = () => {
-//         fetch(url)
-//             .then((respons) => respons.json())
-//             .then((data) => {
-//                 console.log(data)
-//                 //
-//                 city.innerHTML = `${data.name}`;
-//                 weather.innerHTML = `${data.weather[0].description}`;
-//                 temperature.innerHTML = `${data.main.temp}`;
-//             })
-//             .catch((error) => {
-//                 console.log('Error', error)
-//             });
-//     }
 
