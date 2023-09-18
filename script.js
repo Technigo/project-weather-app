@@ -112,7 +112,7 @@ const fetchForecast = () => {
 
                 // Customize this part based on the data you want to display.
                 dayCell.textContent = day;
-                temperatureCell.textContent = `${dailyForecast[day].temperature} °C, ${dailyForecast[day].description}`;
+                temperatureCell.textContent = `${dailyForecast[day].temperature} °C`;
 
                 row.appendChild(dayCell);
                 row.appendChild(temperatureCell);
