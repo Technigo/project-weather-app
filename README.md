@@ -1,7 +1,6 @@
 # Project Name
 Technigo-project5-project-weather-app
 
-Build an in interactive game "Guess Who".
 # Technigo web development bootcamp august 2023 - jan 2024: project 2
 
 *This week's project is to build a simple weather dashboard that tells today's weather and temperature and a 5-day forecast using a weather API.* 
@@ -73,7 +72,8 @@ Better understanding of APIs, working with unix time formats.
 stackoverflow, W3schools, youtube videos.
 
 ## Authors
-
+Olga Lepistö
+Mikael Öling
 Frauke Schmidt:
 - Linkedin - (https://www.linkedin.com/in/frauke-s-395242201/)
 - Github - (https://github.com/colognia/)
