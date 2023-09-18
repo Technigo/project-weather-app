@@ -1,13 +1,7 @@
-# Weather App
+Deployed site: https://weather-project-api.netlify.app/
+Second deployed site: https://lustrous-peony-weather-app.netlify.app/
 
-Replace this readme with your own information about your project.
+Link to Sherylls Github: https://github.com/Sheryll-Ann/project-weather-app- (for the second deployed site)
+We had problems with the compatibility on different browsers, which led us to end up with two different versions of the project. Sadly, we did not have time to solve that problem in this short amount of time.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
-
-## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
-
-## View it live
-
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+We wanted to create a navbar in order for the user to search for a city. It works fine on the phone but not on the computer. The next goal would be for it to work and for the hero images to change too.
