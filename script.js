@@ -22,50 +22,53 @@ const formattedTime = (timestamp) => {
 }
 
 const fetchWeather = () => {
-    console.log(fetchWeather)
     fetch(url)
-        .then((respons) => respons.json())
+        .then((response) => response.json())
         .then((data) => {
-            console.log(data)
-            header.innerHTML = ` 
-           
-            <h3>${data.weather[0].description} | ${data.main.temp.toFixed(1)}°C</h3>
-           
-            <h3>Sunrise ${formattedTime(data.sys.sunrise)} | Sunset ${formattedTime(data.sys.sunset)}</h3>`;
+            console.log(data);
+
+            header.innerHTML = `
+                <h3>${data.weather[0].description} | ${data.main.temp.toFixed(1)}°C</h3>
+                <h3>Sunrise ${formattedTime(data.sys.sunrise)} | Sunset ${formattedTime(data.sys.sunset)}</h3>
+            `;
 
             city.innerHTML = `
-            <h1>${data.name}</h1>
-            <h1>${data.main.temp.toFixed(1)}°C</h1>`;
+                <h1>${data.name}</h1>
+                <h1>${data.main.temp.toFixed(1)}°C</h1>
+            `;
 
+            // Perform your switch logic here based on data.weather[0].description
+            switch (data.weather[0].description) {
+                case 'Clouds':
+                    console.log('clouds');
+                    city.innerHTML = `
+                    <img src="design/design2/icons/noun_Cloud_1188486.svg" alt="cloudy"/>
+
+                    <h1>It's cloudy in ${data.name} today. Read a book and get cozy.</h1>
+                    `;
+                    break;
+
+                case 'Rain':
+                    city.innerHTML = `
+                    <img src="http://www.w3.org/2000/svg" alt="umbrella"/>
+
+                    <h1>It's raining in ${data.name} today. Put netflix on and just chill. </h1>
+                    `;
+                    break;
+
+                default:
+                    console.log('sunny');
+                    city.innerHTML = `
+                    <img src="design/design2/icons/noun_Sunglasses_2055147.svg" alt="sunglasses" />
+                    
+                    <h1>The sky is clear ${data.name} today. Grab your shades and enjoy while it last.</h1>
+                    `;
+                    break;
+            }
         })
-
         .catch((error) => {
-            console.log('Error', error)
-        })
-
-    switch (data.name) {
-        case 'Clouds':
-            city.innerHTML = `
-                    <img src="cloud.svg" alt="cloud"/>
-                    <h1>The sky is grey in ${data.name}. Maybe go for a lil walk with a podcast! </h1>
-                `;
-            break;
-
-        case 'Rain':
-            city.innerHTML = `
-                            <img src="umbrella.svg" alt="umbrella"/>
-                            <h1>It's raining in ${data.name}. Have a cup of tea, put on Netflix and stay inside! </h1>
-                        `;
-            break;
-
-        default:
-            console.log('sunny');
-            city.innerHTML = `
-                            <img src="shades.svg" alt="sunglasses"/>
-                            <h1>The sky is crispy and clear in ${data.name}. Put on your best shades and don't forget SPF!</h1>
-                        `;
-            break;
-    };
+            console.log('Error', error);
+        });
 };
 
 fetchWeather();
