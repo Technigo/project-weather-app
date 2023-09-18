@@ -73,7 +73,9 @@ stackoverflow, W3schools, youtube videos.
 
 ## Authors
 Olga Lepistö
+
 Mikael Öling
+
 Frauke Schmidt:
 - Linkedin - (https://www.linkedin.com/in/frauke-s-395242201/)
 - Github - (https://github.com/colognia/)
