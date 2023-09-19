@@ -21,6 +21,7 @@ const formattedTime = (timestamp) => {
     return (time)
 }
 
+//This function fetch the weather.
 const fetchWeather = () => {
     fetch(url)
         .then((response) => response.json())
@@ -37,7 +38,7 @@ const fetchWeather = () => {
                 <h1>${data.main.temp.toFixed(1)}°C</h1>
             `;
 
-            // Perform your switch logic here based on data.weather[0].description
+            //This is the function that changes depend on the weather.
             switch (data.weather[0].description) {
                 case 'Clouds':
                     console.log('clouds');
@@ -84,33 +85,33 @@ const fetchForecast = () => {
         .then((forecast) => {
             weeklyforecast.innerHTML = '';
 
-            // Create an object to store the forecast data grouped by day
+
             const dailyForecast = {};
 
             forecast.list.forEach((forecastData) => {
                 const date = new Date(forecastData.dt * 1000); // Convert Unix timestamp to milliseconds
                 const day = date.toLocaleDateString(undefined, { weekday: 'long' });
 
-                // Check if the day already exists in the dailyForecast object
+
                 if (!dailyForecast[day]) {
                     dailyForecast[day] = {
                         temperature: forecastData.main.temp,
                         description: forecastData.weather[0].description,
                     };
                 } else {
-                    // If the day already exists, update the temperature and description
+
                     dailyForecast[day].temperature = forecastData.main.temp;
                     dailyForecast[day].description = forecastData.weather[0].description;
                 }
             });
 
-            // Iterate over the daily forecast data and display it
+
             for (const day in dailyForecast) {
                 const row = document.createElement('tr');
                 const dayCell = document.createElement('td');
                 const temperatureCell = document.createElement('td');
 
-                // Customize this part based on the data you want to display.
+
                 dayCell.textContent = day;
                 temperatureCell.textContent = `${dailyForecast[day].temperature} °C`;
 
@@ -124,7 +125,7 @@ const fetchForecast = () => {
         });
 };
 
-// Call the fetchForecast function to make the API request.
+
 fetchForecast();
 
 
