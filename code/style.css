@@ -68,3 +68,33 @@ h1 {
     }
 
 }
+
+#searchButton {
+    width: 100px;
+    height: 30px;
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 10px;
+    border: 2px solid pink
+}
+
+#cityInput {
+    width: 300px;
+    height: 30px;
+    font-size: 14px;
+    border-radius: 10px;
+    border: 2px solid pink
+}
+
+
+.search-container {
+    display: flex;
+    align-items: center;
+
+}
+
+footer {
+
+    text-align: start;
+    padding: 20px;
+}
