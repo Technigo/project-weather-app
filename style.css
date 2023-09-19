@@ -51,9 +51,11 @@ h1 {
     width: 100%;
 }
 
+
+
 .weekly-forecast th,
 .weekly-forecast td {
-    border: 1px solid #ddd;
+    border-bottom: 2px dotted #F47775;
     padding: 8px;
     text-align: left;
 }
