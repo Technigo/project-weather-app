@@ -21,7 +21,7 @@ const formattedTime = (timestamp) => {
     return (time)
 }
 
-//This function fetch the weather.
+
 const fetchWeather = () => {
     fetch(url)
         .then((response) => response.json())
@@ -38,7 +38,6 @@ const fetchWeather = () => {
                 <h1>${data.main.temp.toFixed(1)}°C</h1>
             `;
 
-            //This is the function that changes depend on the weather.
             switch (data.weather[0].description) {
                 case 'Clouds':
                     console.log('clouds');
