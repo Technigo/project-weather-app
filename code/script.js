@@ -61,7 +61,7 @@ const fetchWeather = () => {
                     city.innerHTML = `
                     <img src="design/design2/icons/noun_Sunglasses_2055147.svg" alt="sunglasses" />
                     
-                    <h1>The sky is clear ${data.name} today. Grab your shades and enjoy while it last.</h1>
+                    <h1>The sky is clear in ${data.name} today. Grab your shades and enjoy while it last.</h1>
                     `;
                     break;
             }
