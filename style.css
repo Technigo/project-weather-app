@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Courier New", Courier, monospace;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.container {
+  padding: 50px 100px;
+  background: url(pictures/day.jpg) url(pictures/night.jpg) border-bottom-left-radius: 45%;
+  border-bottom-right-radius: 45%;
+  margin: auto;
+  text-align: center;
+}
+
+.forecast {
+  margin: 100%;
+}
+
+.forecast-items {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 40px 40px;
+}
+
+.forecast,
+.forecast-items {
+  flex-direction: row;
+  align-items: center;
+  justify-content: ;
+  margin: 0px 10px;
+}
+
+@media only screen and (max-width:730px) {
+  .forecast {
+    justify-content: start;
+    align-items: none;
+    overflow-x: scroll;
+  }
