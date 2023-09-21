@@ -79,7 +79,7 @@ console.log(city, localStorage)
     })
     .catch((error) => {
       console.error(error);
-      handleErorr(error, city);
+      handleErorr(city);
     });
 }
 
@@ -251,7 +251,7 @@ function chooseIcons(weather) {
 
 // Erorr handling
 // This will show up when the user wrote an invalid city
-function handleErorr(message, wrongCity) {
+function handleErorr(wrongCity) {
   clickBtnL.style.display = "none";
   clickBtnR.style.display = "none";
   menuBtn.style.display = "none";
@@ -261,7 +261,7 @@ function handleErorr(message, wrongCity) {
   const html = `
   <div>
     <h2> 🙀"${wrongCity}" is not recognizable 😿<h2>
-    <p>${message} </p>
+  
     <button class="back-btn"onclick="backToCard()">Back</button>
     </div>
     `;
@@ -363,9 +363,7 @@ function openModal() {
 }
 
 // This is for a button to delete a specific city
-// this has a problem. I think async await could be a key.
-// When I clear localstorage, it should be no irem inside, but the Ideam I want to delete reminds. So I think it is stored in apiCall fucntion, just after clean up localstorage.
-// For now, I don't know how to fix it, and I will come back in the future.
+
 function deleteCity() {
   const buttons = document.querySelectorAll(".delete-city");
   buttons.forEach((el) =>
