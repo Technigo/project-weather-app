@@ -35,7 +35,7 @@ function callApiCurrentWeather(city) {
     .then((data) => {
 
 
-console.log(city, localStorage)
+
       const weatherArr = data.list.filter((obj) => obj.dt_txt.includes("03:00"));
       const weatherOfTheDay = weatherArr.shift();
 
@@ -89,7 +89,7 @@ function createCardUpper(obj, cityName, sunrise, sunset, timeNow) {
     weather: [{ main, description }],
     main: { temp, temp_max, temp_min, feels_like },
   } = obj;
-
+console.log(temp_max,temp_min);
   const innerCard = document.createElement("div");
   innerCard.classList.add("upper--card_main");
 
@@ -98,15 +98,15 @@ function createCardUpper(obj, cityName, sunrise, sunset, timeNow) {
 
   let htmlElm = `
     <div class="main-degree">
-    <h1  ${main === "Clouds" ? `class="dark-text"` : ""}>${Math.round(
+    <h1  ${main === "Clouds" ? `class="dark-text"` : ""}>${(
     temp
-  )}<span class="degree-large">&#x2103;</span></h1>
+  ).toFixed(1)}<span class="degree-large">&#x2103;</span></h1>
 
     <div>
      <img src=${iconurl} class="icon-main">
-      <p>${Math.round(temp_max)}<span class="degree">&#x2103;</span>/${Math.round(
+      <p>${(temp_max).toFixed(1)}<span class="degree">&#x2103;</span>/${(
     temp_min
-  )}<span class="degree">&#x2103;</span></p>
+  ).toFixed(1)}<span class="degree">&#x2103;</span></p>
    </div>
    </div>
 
@@ -143,7 +143,7 @@ function createCardUpper(obj, cityName, sunrise, sunset, timeNow) {
 function createCardUnder(arr) {
   const innerCard = document.createElement("div");
   innerCard.classList.add("card--under");
-
+console.log(arr)
   let isToday = dayIndex;
 
   for (let i = 0; i < 4; i++) {
@@ -164,9 +164,9 @@ function createCardUnder(arr) {
       days[isToday]
     }  <img  src="${iconurl}" class="icon-weather-sm"/>
     
-    <span class="min-max-temp-under-box">${Math.round(temp_max)}&#176;/${Math.round(
+    <span class="min-max-temp-under-box">${(temp_max).toFixed(1)}&#176;/${(
       temp_min
-    )}&#176;</span></p>
+    ).toFixed(1)}&#176;</span></p>
       </div>
      `;
     innerCard.insertAdjacentHTML("beforeend", html);
