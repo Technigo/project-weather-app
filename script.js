@@ -55,7 +55,7 @@ const todayWeather = (city) => {
         weatherDescription.innerText = `${weather}`;
         weatherDescription.innerHTML += `<img src="https://openweathermap.org/img/wn/${weatherIcon}@2x.png " class="weatherIcon"/>`;
         const temp = Math.round(data.main.temp * 10) / 10; //the temperature data to one decimal point, *100)/100 two decimal point
-        mainTemp.innerText = `${temp.toFixed(0)}`;
+        mainTemp.innerText = `${temp.toFixed(1)}`;
         //Declare variable for the time of sunrise/sunset
         const unixSunrise = data.sys.sunrise;
         const unixSunset = data.sys.sunset;

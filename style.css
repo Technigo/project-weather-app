@@ -110,15 +110,15 @@ input[type="text"] {
 
 /* main temp part */
 .main-temp {
-  font-size: 80px;
+  font-size: 72px;
   position: absolute;
-  top: -40px;
+  top: -38px;
 }
 
 .tempCelsius {
   font-size: 30px;
   position: absolute;
-  left: 28%;
+  left: 38%;
   top: -10px;
 }
 
