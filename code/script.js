@@ -34,8 +34,8 @@ const fetchCurrentWeather = (cityName) => {
 
       // Temperature
       const temp = json.main.temp;
-      // toFixed(1); will round to one decimal place but we decided to not show the temperature with decimals.
-      const roundedTemp = temp.toFixed(0);
+      // The temperature with one decimal.
+      const roundedTemp = temp.toFixed(1);
       // City
       cityName = json.name;
       // Weather description
