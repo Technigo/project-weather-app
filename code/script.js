@@ -56,7 +56,7 @@ const gettingIconWeather = (json) => {
 const getBasicWeatherInfo = (json) => {
     const cityName = ` ${json.name}`
     city.innerHTML = cityName 
-    const mainTemperature = `${Math.round(json.main.temp)}`
+    const mainTemperature = `${json.main.temp.toFixed(1)}`
     temp.innerHTML = mainTemperature
     weatherTypes = json.weather[0].main
     weatherTypeText.innerHTML = weatherTypes
@@ -168,7 +168,7 @@ const gettingIcon = (weatherAt12) => {
 }
 
 const gettingTemperatures = (weatherAt12) => {
-    temperaturesAt12 = weatherAt12.map((el) => Math.round(el.main.temp))
+    temperaturesAt12 = weatherAt12.map((el) => el.main.temp.toFixed(1))
     insertInnerHTML (days, temperaturesAt12, iconsAt12, windAt12)
 }
 
