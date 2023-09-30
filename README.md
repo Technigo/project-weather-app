@@ -14,10 +14,6 @@ I also find it very challenging to implement many functions and event handlers i
 Link to deployed site: https://sakura-world-weather-app.netlify.app/
 
 
---------------------------------------------
-Things I need to change/improve
-1. Code organization
-2. i scss
-3. This about data structur
+
 
 
