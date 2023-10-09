@@ -4,6 +4,7 @@
     margin: 50px auto;
     overflow: hidden; /* Add this line to hide overflow */
     position: relative;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .main-wrapper {
