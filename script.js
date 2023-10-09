@@ -13,19 +13,33 @@ function tryFetch() {
 
 tryFetch()
   .then((data) => {
+    document.getElementById("temperature").textContent = `${Math.round(data.main.temp)} °C`;
     document.getElementById("city-name").textContent = data.name;
     document.getElementById(
-      "temperature"
-    ).textContent = `Temperature: ${data.main.temp} °C`;
-    document.getElementById(
       "description"
-    ).textContent = `Description: ${data.weather[0].description}`;
-    document.getElementById(
-      "timezone"
-    ).textContent = `Timezone: ${data.timezone}`;
+    ).textContent = `${data.weather[0].description}`;
+    function updateTime() {
+      let today = new Date();
+      let h = today.getHours();
+      let m = today.getMinutes().toString().padStart(2, "0"); // Get minutes with leading zero
+      document.getElementById("timezone").innerHTML = `Time: ${h}:${m}`;
+    }
 
-    const sunriseTime = new Date(data.sys.sunrise * 1000).toLocaleTimeString();
-    const sunsetTime = new Date(data.sys.sunset * 1000).toLocaleTimeString();
+    // Update the time initially
+    updateTime();
+
+    // Set up a timer to update the time every second (1000 milliseconds)
+    setInterval(updateTime, 1000);
+
+    const sunriseTime = new Date(data.sys.sunrise * 1000).toLocaleTimeString(
+      "en-US",
+      { hour: "numeric", minute: "numeric", hour12: false }
+    );
+    const sunsetTime = new Date(data.sys.sunset * 1000).toLocaleTimeString(
+      "en-US",
+      { hour: "numeric", minute: "numeric", hour12: false }
+    );
+
     document.getElementById("sunrise").textContent = `Sunrise: ${sunriseTime}`;
     document.getElementById("sunset").textContent = `Sunset: ${sunsetTime}`;
 
@@ -51,6 +65,9 @@ function fetchForecast() {
       // Get the current date
       const today = new Date();
 
+      // Create the table element
+      const forecastTable = document.createElement("table");
+
       // Filter forecast data for items with dt_txt containing "12:00:00"
       const filteredForecast = data.list.filter((forecastItem) =>
         forecastItem.dt_txt.includes("12:00:00")
@@ -60,36 +77,36 @@ function fetchForecast() {
       let daysDisplayed = 0;
       filteredForecast.forEach((forecastItem) => {
         const date = new Date(forecastItem.dt * 1000);
+        const dayName = date.toLocaleDateString("en-US", { weekday: "short" }); // Get the day name
 
         // Check if the date is in the future (after today)
         if (date > today) {
-          const forecastDiv = document.createElement("div");
-          forecastDiv.classList.add("forecast-item");
+          const row = forecastTable.insertRow(); // Create a new row for each forecast item
 
-          const dateElement = document.createElement("p");
-          dateElement.textContent = date.toLocaleDateString();
+          const dayCell = row.insertCell();
+          dayCell.textContent = dayName; // Display the day name
 
-          const temperatureElement = document.createElement("p");
-          temperatureElement.textContent = `Temperature: ${forecastItem.main.temp} °C`;
+          const temperatureCell = row.insertCell();
+          const roundedTemperature = Math.round(forecastItem.main.temp); // Round the temperature
+          temperatureCell.textContent = `${roundedTemperature} °C`;
 
-          const descriptionElement = document.createElement("p");
-          descriptionElement.textContent = `Description: ${forecastItem.weather[0].description}`;
+          const descriptionCell = row.insertCell();
+          descriptionCell.textContent = forecastItem.weather[0].description;
 
-          // Append elements to the forecast div
-          forecastDiv.appendChild(dateElement);
-          forecastDiv.appendChild(temperatureElement);
-          forecastDiv.appendChild(descriptionElement);
-
-          // Append the forecast div to the forecast section
-          forecastSection.appendChild(forecastDiv);
+          const windCell = row.insertCell();
+          const roundedWind = forecastItem.wind.speed.toFixed(2); // Round and format to 2 decimal places
+          windCell.textContent = `${roundedWind} m/s`;
 
           daysDisplayed++;
-          if (daysDisplayed >= 5) {
-            // Display data for the next five days
+          if (daysDisplayed >= 3) {
+            // Display data for the next four days and exit the loop
             return;
           }
         }
       });
+
+      // Append the table to the forecast section
+      forecastSection.appendChild(forecastTable);
 
       console.log(data);
       return data;

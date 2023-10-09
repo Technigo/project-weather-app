@@ -1,17 +1,63 @@
 .main-container {
-    margin: 0;
-    box-sizing: border-box;
-    padding: 0;
+    width: 100%;
+    max-width: 400px;
+    margin: 50px auto;
+    overflow: hidden; /* Add this line to hide overflow */
+    position: relative;
 }
 
-.main-container {
-    background-color: var(--container-color);
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
+.main-wrapper {
+    padding: 3.5rem;
     overflow: hidden;
     position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    text-align: left;
+}
+
+
+.forecast-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+  }
+
+  #forecast-section {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+td {
+    padding: 16px;
+}
+
+  .sunType {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0;
+  }
+
+  #temperature {
+    font-size: 42px;
+    font-weight: bold;
+  }
+
+  .imageHolder {
+    background-image: url(./images/clearSky.jpg);
+    background-size: cover; /* Set background size to cover */
+    opacity: var(--top-background-opacity);
     height: 800px;
+    width: 800px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: var(--top-background-bottom-position);
+    right: 50%;
+    bottom: 35%;
+    transform: translate(50%);
+    z-index: -1;
+    margin-bottom: 30px;
 }

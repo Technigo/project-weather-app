@@ -7,23 +7,27 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="main-container">
-      <main>
-        <nav>SEARCHFUNCTION</nav>
-        <h1 id="city-name">City Name</h1>
+      <div class="main-container">
+          <div class="imageHolder"></div>
+          <main class="main-wrapper">
         <p id="temperature">Temperature</p>
+        <h1 id="city-name">City Name</h1>
         <p id="description">Weather Description</p>
         <p id="timezone">Timezone</p>
-        <section>
+        <section class="sunType">
           <p id="sunrise">Sunrise Time</p>
           <p id="sunset">Sunset Time</p>
         </section>
       </main>
-      <div class="switch">
-        <button></button>
-      </div>
       <section id="forecast-section">
-        <!-- Forecast data will be displayed here -->
+        <table id="forecast-table">
+            <tr>
+                <td id="forecast-days"></td>
+                <td id="forecast-days"></td>
+                <td id="forecast-days"></td>
+                <td id="forecast-days"></td>
+            </tr>
+        </table>
       </section>
     </div>
 
