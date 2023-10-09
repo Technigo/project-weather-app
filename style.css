@@ -1,0 +1,17 @@
+.main-container {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.main-container {
+    background-color: var(--container-color);
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 800px;
+}
