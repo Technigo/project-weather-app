@@ -33,7 +33,7 @@ searchButton.addEventListener('click', () => {
         fetch(`${apiUrl}?q=${city}&appid=${apiKey}`)
             .then(response => response.json())
             .then(data => {
-                // ... Previous code ...
+                
 
                 // Fetch and display the weekly forecast
                 fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`)
