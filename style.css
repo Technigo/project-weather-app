@@ -78,6 +78,7 @@
   display: flex;
   flex-direction: column;
   color: white;
+  z-index: 2;
 }
 
 .main-text {
@@ -136,6 +137,9 @@
 
 .weather-icon {
   font-size: 24px;
+  color: rgb(255, 255, 255);
+  z-index: 2; /* Set a higher z-index value to bring the weather icon to the front */
+  position: relative; /* Ensure the weather-icon is a positioned element */
 }
 
 td {
@@ -148,5 +152,6 @@ td {
   position: absolute;
   width: 100%;
   height: 100%;
-  display: none; /* Initially hide the overlay */
+  display: none;
+  z-index: 1; /* Set a lower z-index value for the overlay */
 }
