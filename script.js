@@ -32,6 +32,7 @@ async function fetchWeather() {
     const res = await fetch(api_weather_URL);
     const data = await res.json();
     const temperature = Math.round(data.main.temp);
+    const feelsLike = Math.round(data.main.feels_like)
 
     // Check if the temperature is below 10 and add overlay class to main-container if true
     if (temperature <= 11) {
@@ -39,6 +40,7 @@ async function fetchWeather() {
     }
 
     document.getElementById('temperature').textContent = `${temperature} °C`;
+    document.getElementById('feelsLike').textContent = `Feels like: ${feelsLike}`
     document.getElementById('city-name').textContent = data.name;
 
     return data;
