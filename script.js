@@ -26,7 +26,7 @@ const api_weather_URL =
   'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=10f8230f6149903425e19587fdc548b8';
 const api_forecast_URL =
   'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=10f8230f6149903425e19587fdc548b8';
-
+  
 async function fetchWeather() {
   try {
     const res = await fetch(api_weather_URL);
@@ -39,7 +39,7 @@ async function fetchWeather() {
       document.querySelector('.overlay').style.display = 'block';
     }
 
-    document.getElementById('temperature').textContent = `${temperature} °C`;
+    document.getElementById('temperature').textContent = `${temperature} °`;
     document.getElementById('feelsLike').textContent = `Feels like: ${feelsLike}`
     document.getElementById('city-name').textContent = data.name;
 
@@ -161,3 +161,51 @@ async function fetchForecast() {
 }
 
 fetchForecast();
+
+const searchIcon = document.querySelector('.search-icon');
+const searchBarInput = document.querySelector('#search-input'); // Updated selector to use ID
+const searchClose = document.querySelector('.search-close');
+const searchBtn = document.querySelector('#search-button')
+
+// Initially hide the search bar and close icon
+searchIcon.style.display = 'block';
+searchBarInput.style.display = 'none'; // Hide the search input initially
+searchClose.style.display = 'none';
+searchBtn.style.display = 'none';
+
+searchIcon.addEventListener('click', () => {
+    searchIcon.style.display = 'none'; // Hide the magnifying glass icon
+    searchClose.style.display = 'block'; // Show the close icon
+    searchBarInput.style.display = 'block'; // Show the search bar
+    searchBtn.style.display = 'block';
+
+});
+
+searchClose.addEventListener('click', () => {
+    searchIcon.style.display = 'block'; // Show the magnifying glass icon
+    searchClose.style.display = 'none'; // Hide the close icon
+    searchBarInput.style.display = 'none'; // Hide the search bar
+    searchBtn.style.display = 'none';
+});
+
+
+
+const api_search_URL = ''; // Add the appropriate search endpoint here
+
+async function fetchSearchWeather(cityName) {
+    try {
+        const res = await fetch(`${api_search_URL}?q=${cityName}&units=metric&APPID=10f8230f6149903425e19587fdc548b8`);
+        const data = await res.json();
+
+        // Handle the data for the searched city here, similar to your existing fetchWeather function
+
+        // For example:
+        // const temperature = Math.round(data.main.temp);
+        // const weatherDescription = data.weather[0].description;
+        // Update the DOM elements with the new weather data
+
+    } catch (error) {
+        console.log('Fetch error:', error);
+    }
+}
+fetchSearchWeather()

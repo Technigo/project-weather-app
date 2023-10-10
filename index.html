@@ -11,11 +11,22 @@
       crossorigin="anonymous"
     />
   </head>
+
   <body>
     <div class="main-container">
       <div class="imageHolder"></div>
       <div class="overlay"></div>
       <main class="main-wrapper">
+        <div class="search-bar">
+          <div class="search-icon">
+            <i class="fas fa-search"></i>
+          </div>
+          <div class="search-close">
+            <i class="fas fa-times"></i>
+          </div>
+          <input type="text" id="search-input" placeholder="Enter city name" />
+          <button id="search-button">Search</button>
+        </div>
         <div class="main-text">
           <p id="temperature">Temperature</p>
           <p id="feelsLike"></p>
