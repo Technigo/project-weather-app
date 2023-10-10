@@ -1,0 +1,139 @@
+body {
+    margin: 0;
+    background: #e1e1f2;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #111;
+}
+
+h1 {
+    margin: 0;
+    font-size: 120px;
+    font-weight: lighter;
+}
+
+h2 {
+    margin: 0;
+    padding-top: 20px;
+    font-size: 34px;
+    font-weight: 300;
+}
+
+p {
+    margin: 0;
+    font-size: 22px;
+}
+
+/* WEATHER TODAY */
+
+.background-color {
+    background: linear-gradient(-45deg, #E8E9FF 0%, #8589FF 70%);    
+    padding: 30px;
+    color: #fff;
+    height: 47vh;
+    border-bottom-left-radius: 50% 30px;
+    border-bottom-right-radius: 50% 30px;
+}
+
+.night {
+    background: linear-gradient(-45deg, #6264A2 0%, #222350 70%);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid white;
+    padding-bottom: 15px;
+}
+
+.search-button {
+    width: 20px;
+    height: 20px;
+}
+
+.date {
+    font-size: 16px;
+}
+
+.celcius {
+    margin: 20px 0;
+    font-size: 40px;
+}
+
+.todays-weather {
+    display: flex;
+    flex-direction: column;
+}
+
+.temp-img-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.temperature-container {
+    display: flex;
+    align-items: flex-start;
+}
+
+.temp-img-container img {
+    height: 150px;
+    width: 150px;
+}
+
+.sun-container {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* FIVE DAYS FORECAST */
+
+.fiveday-forecast {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.day-container {
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid white;
+}
+
+.min-max-temp {
+    display: flex;
+}
+
+.fiveday-forecast p {
+    font-size: 18px;
+    margin: 0;
+}
+
+.fiveday-forecast img {
+    height: 50px;
+    width: 50px;
+}
+
+/* MEDIA QUERIES */
+
+@media (min-width: 540px) {
+    .todays-weather,
+    .fiveday-forecast {
+        max-width: 540px;
+        margin: auto;
+    }
+
+    header {
+        margin-bottom: 0;
+    }
+
+    .temp-img-container img {
+        height: 200px;
+        width: 200px;
+      }
+  }

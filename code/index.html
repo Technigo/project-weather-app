@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
+    <title>Wheater app</title>
+  </head>
+  <body>
+    <div class="app-container">
+      <div id="backgroundColor" class="background-color">
+        <header>
+          <img src="./img/search.png" class="search-button" alt="Search" />
+          <p id="date" class="date"></p>
+        </header>
+
+        <section class="todays-weather">
+          <div class="temp-img-container">
+            <div class="temperature-container">
+              <h1 id="temperature"></h1>
+              <p class="celcius">&deg;C</p>
+            </div>
+            <img id="weatherImage" src="" alt="forecast image" />
+          </div>
+
+          <h2 id="location"></h2>
+          <p id="weatherDescription"></p>
+
+          <div class="sun-container">
+            <p id="sunrise"></p>
+            <p id="sunset"></p>
+          </div>
+        </section>
+      </div>
+
+      <section id="fivedayForecast" class="fiveday-forecast"></section>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
