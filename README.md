@@ -1,8 +1,6 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Technigo JS/React Course project THREE: Project Weather App, by F. Cassisa & C. Öberg. 
 
 ## The problem
 
