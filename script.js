@@ -7,6 +7,16 @@ async function fetchWeather() {
   try {
     const res = await fetch(api_weather_URL);
     const data = await res.json();
+    const temperature = Math.round(data.main.temp);
+
+    // Check if the temperature is below 10 and add overlay class to main-container if true
+    if (temperature <= 11) {
+      document.querySelector('.overlay').style.display = 'block';
+    }
+
+    document.getElementById('temperature').textContent = `${temperature} °C`;
+    document.getElementById('city-name').textContent = data.name;
+
     return data;
   } catch (error) {
     console.log('Fetch error:', error);
@@ -18,6 +28,10 @@ fetchWeather()
     document.getElementById('temperature').textContent = `${Math.round(
       data.main.temp
     )} °C`;
+    // Check if the temperature is below 15 and add overlay class to main-container if true
+    if (temperature < 10) {
+      document.querySelector('.main-container').classList.add('overlay');
+    }
     document.getElementById('city-name').textContent = data.name;
     function updateTime() {
       let today = new Date();
