@@ -1,6 +1,6 @@
 * {
   margin: 0;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .main-container {
@@ -70,7 +70,6 @@
   padding-top: 60px;
   display: flex;
   justify-content: space-evenly;
-  
 }
 
 #forecast-section {
@@ -87,12 +86,10 @@
 }
 
 .weather-icon i {
-  font-size: 24px; 
+  font-size: 24px;
 }
 
 td {
   padding: 12px 24px;
   font-weight: 200;
 }
-
-
