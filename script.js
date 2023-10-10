@@ -92,45 +92,39 @@ function fetchForecast() {
             weekday: 'short',
           }).format(date);
           dayCell.textContent = dayName; // Display the accurate day name
-
+          
+          
+                    const weatherIcons = {
+                      'clear sky': 'fas fa-sun',
+                      'few clouds': 'fas fa-cloud-sun',
+                      'scattered clouds': 'fas fa-cloud',
+                      'broken clouds': 'fas fa-cloud',
+                      'overcast clouds': 'fas fa-cloud',
+                      'light rain': 'fas fa-cloud-showers-heavy',
+                      'moderate rain': 'fas fa-cloud-showers-heavy',
+                      'heavy rain': 'fas fa-cloud-showers-heavy',
+                      'light snow': 'fas fa-snowflake',
+                      'moderate snow': 'fas fa-snowflake',
+                      'heavy snow': 'fas fa-snowflake',
+                      'thunderstorm': 'fas fa-bolt',
+                      'mist': 'fas fa-smog',
+                      'fog': 'fas fa-smog',
+                      'smoke': 'fas fa-smog',
+                      'haze': 'fas fa-smog',
+                      'dust': 'fas fa-smog',
+                      'sand': 'fas fa-smog',
+                      'tornado': 'fas fa-wind',
+                      'squalls': 'fas fa-wind',
+                    };
+                    console.log(weatherIcons.haze)
+          
+                    const descriptionCell = row.insertCell();
+                    const weatherDescription = forecastItem.weather[0].description;
+                    const iconClass = weatherIcons[weatherDescription] || 'fas fa-question'; // Default icon for unknown weather
+                    descriptionCell.innerHTML = `<i class="weather-icon ${iconClass}"></i>`; // Add weather icon to the cell
           const temperatureCell = row.insertCell();
           const roundedTemperature = Math.round(forecastItem.main.temp); // Round the temperature
           temperatureCell.textContent = `${roundedTemperature} °C`;
-
-          const descriptionCell = row.insertCell();
-          descriptionCell.textContent = forecastItem.weather[0].description;
-
-          // const weatherIcons = {
-          //   'Clear sky': 'fas fa-sun',
-          //   'Few clouds': 'fas fa-cloud-sun',
-          //   'Scattered clouds': 'fas fa-cloud',
-          //   'Broken clouds': 'fas fa-cloud',
-          //   'Overcast clouds': 'fas fa-cloud',
-          //   'Light rain': 'fas fa-cloud-showers-heavy',
-          //   'Moderate rain': 'fas fa-cloud-showers-heavy',
-          //   'Heavy rain': 'fas fa-cloud-showers-heavy',
-          //   'Light snow': 'fas fa-snowflake',
-          //   'Moderate snow': 'fas fa-snowflake',
-          //   'Heavy snow': 'fas fa-snowflake',
-          //   'Thunderstorm': 'fas fa-bolt',
-          //   'Mist': 'fas fa-smog',
-          //   'Fog': 'fas fa-smog',
-          //   'Smoke': 'fas fa-smog',
-          //   'Haze': 'fas fa-smog',
-          //   'Dust': 'fas fa-smog',
-          //   'Sand': 'fas fa-smog',
-          //   'Tornado': 'fas fa-wind',
-          //   'Squalls': 'fas fa-wind',
-          // };
-
-          // // Assuming 'weatherDescription' is the variable containing the weather description fetched from the API
-          // const iconClass =
-          //   weatherIcons[forecastItem.weather[0].description] ||
-          //   'fas fa-question'; // Default icon for unknown weather
-
-          // // Update weather icon in the current row
-          // const iconElement = row.querySelector('.forecast-item i.weather-icon');
-          // iconElement.className = iconClass;
 
           const windCell = row.insertCell();
           const roundedWind = forecastItem.wind.speed.toFixed(2); // Round and format to 2 decimal places

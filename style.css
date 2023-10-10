@@ -5,7 +5,7 @@
 
 .main-container {
   z-index: 1;
-  background-color: rgb(242, 241, 241);
+  background-color: rgb(239, 228, 223);
   width: 100%;
   max-width: 400px;
   height: 800px;
@@ -16,11 +16,11 @@
 }
 
 .imageHolder {
-  background-image: url(./images/clearSky.jpg);
+  background-image: url(./images/clearSky.jpeg);
   background-size: cover;
   opacity: var(--top-background-opacity);
-  height: 800px;
-  width: 800px;
+  height: 1500px;
+  width: 1200px;
   border-radius: 50%;
   position: absolute;
   bottom: var(--top-background-bottom-position);
@@ -75,24 +75,23 @@
 
 #forecast-section {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   padding-top: 40px;
 }
 
 .forecast-item {
-  display: flex;
   flex-direction: row;
   align-items: center;
   text-align: center;
   position: relative;
 }
 
-/* .weather-icon i {
+.weather-icon i {
   font-size: 24px; 
-} */
+}
 
 td {
-  padding: 12px;
+  padding: 12px 24px;
   font-weight: 200;
 }
 
