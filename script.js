@@ -10,15 +10,15 @@ const weatherIcons = {
   'light snow': 'fas fa-snowflake',
   'moderate snow': 'fas fa-snowflake',
   'heavy snow': 'fas fa-snowflake',
-  'thunderstorm': 'fas fa-bolt',
-  'mist': 'fas fa-smog',
-  'fog': 'fas fa-smog',
-  'smoke': 'fas fa-smog',
-  'haze': 'fas fa-smog',
-  'dust': 'fas fa-smog',
-  'sand': 'fas fa-smog',
-  'tornado': 'fas fa-wind',
-  'squalls': 'fas fa-wind',
+  thunderstorm: 'fas fa-bolt',
+  mist: 'fas fa-smog',
+  fog: 'fas fa-smog',
+  smoke: 'fas fa-smog',
+  haze: 'fas fa-smog',
+  dust: 'fas fa-smog',
+  sand: 'fas fa-smog',
+  tornado: 'fas fa-wind',
+  squalls: 'fas fa-wind',
 };
 console.log(weatherIcons.haze);
 
@@ -26,13 +26,13 @@ const api_weather_URL =
   'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=10f8230f6149903425e19587fdc548b8';
 const api_forecast_URL =
   'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=10f8230f6149903425e19587fdc548b8';
-  
+
 async function fetchWeather() {
   try {
     const res = await fetch(api_weather_URL);
     const data = await res.json();
     const temperature = Math.round(data.main.temp);
-    const feelsLike = Math.round(data.main.feels_like)
+    const feelsLike = Math.round(data.main.feels_like);
 
     // Check if the temperature is below 10 and add overlay class to main-container if true
     if (temperature <= 11) {
@@ -40,7 +40,9 @@ async function fetchWeather() {
     }
 
     document.getElementById('temperature').textContent = `${temperature} °`;
-    document.getElementById('feelsLike').textContent = `Feels like: ${feelsLike}`
+    document.getElementById(
+      'feelsLike'
+    ).textContent = `( Feels like: ${feelsLike} ° )`;
     document.getElementById('city-name').textContent = data.name;
 
     return data;
@@ -66,10 +68,14 @@ fetchWeather()
       document.getElementById('timezone').innerHTML = `Time: ${h}:${m}`;
     }
     const weatherDescription = data.weather[0].description;
-    const iconClass = weatherIcons[weatherDescription] || 'fas fa-question'; // Default icon for unknown weather
+    const capitalizedDescription =
+      weatherDescription.charAt(0).toUpperCase() + weatherDescription.slice(1);
+    const iconClass = weatherIcons[weatherDescription] || 'fas fa-question'; // Use the original lowercase weatherDescription here
     const iconElement = `<i class="weather-icon ${iconClass} fa-beat"></i>`;
-    document.getElementById('description').innerHTML = `<div class="des-container"><p>${weatherDescription}</p>${iconElement}</div>`; // Add weather icon and description to the element
-    
+    document.getElementById(
+      'description'
+    ).innerHTML = `<div class="des-container"><p>${capitalizedDescription}</p>${iconElement}</div>`; // Display capitalized description, use original lowercase weatherDescription for icon selection
+
     // Update the time initially
     updateTime();
 
@@ -165,7 +171,7 @@ fetchForecast();
 const searchIcon = document.querySelector('.search-icon');
 const searchBarInput = document.querySelector('#search-input'); // Updated selector to use ID
 const searchClose = document.querySelector('.search-close');
-const searchBtn = document.querySelector('#search-button')
+const searchBtn = document.querySelector('#search-button');
 
 // Initially hide the search bar and close icon
 searchIcon.style.display = 'block';
@@ -174,38 +180,36 @@ searchClose.style.display = 'none';
 searchBtn.style.display = 'none';
 
 searchIcon.addEventListener('click', () => {
-    searchIcon.style.display = 'none'; // Hide the magnifying glass icon
-    searchClose.style.display = 'block'; // Show the close icon
-    searchBarInput.style.display = 'block'; // Show the search bar
-    searchBtn.style.display = 'block';
-
+  searchIcon.style.display = 'none'; // Hide the magnifying glass icon
+  searchClose.style.display = 'block'; // Show the close icon
+  searchBarInput.style.display = 'block'; // Show the search bar
+  searchBtn.style.display = 'block';
 });
 
 searchClose.addEventListener('click', () => {
-    searchIcon.style.display = 'block'; // Show the magnifying glass icon
-    searchClose.style.display = 'none'; // Hide the close icon
-    searchBarInput.style.display = 'none'; // Hide the search bar
-    searchBtn.style.display = 'none';
+  searchIcon.style.display = 'block'; // Show the magnifying glass icon
+  searchClose.style.display = 'none'; // Hide the close icon
+  searchBarInput.style.display = 'none'; // Hide the search bar
+  searchBtn.style.display = 'none';
 });
-
-
 
 const api_search_URL = ''; // Add the appropriate search endpoint here
 
 async function fetchSearchWeather(cityName) {
-    try {
-        const res = await fetch(`${api_search_URL}?q=${cityName}&units=metric&APPID=10f8230f6149903425e19587fdc548b8`);
-        const data = await res.json();
+  try {
+    const res = await fetch(
+      `${api_search_URL}?q=${cityName}&units=metric&APPID=10f8230f6149903425e19587fdc548b8`
+    );
+    const data = await res.json();
 
-        // Handle the data for the searched city here, similar to your existing fetchWeather function
+    // Handle the data for the searched city here, similar to your existing fetchWeather function
 
-        // For example:
-        // const temperature = Math.round(data.main.temp);
-        // const weatherDescription = data.weather[0].description;
-        // Update the DOM elements with the new weather data
-
-    } catch (error) {
-        console.log('Fetch error:', error);
-    }
+    // For example:
+    // const temperature = Math.round(data.main.temp);
+    // const weatherDescription = data.weather[0].description;
+    // Update the DOM elements with the new weather data
+  } catch (error) {
+    console.log('Fetch error:', error);
+  }
 }
-fetchSearchWeather()
+fetchSearchWeather();

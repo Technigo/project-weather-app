@@ -95,7 +95,6 @@
 #feelsLike {
   font-size: 16px;
   font-weight: 200;
-  text-decoration: underline;
 }
 
 #city-name {
@@ -116,6 +115,7 @@
   font-size: 16px;
   font-weight: 200;
   padding-right: 16px;
+  margin-top: 16px;
 }
 
 #timezone {
