@@ -5,15 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Karin & Daniel WeatherApp</title>
     <link rel="stylesheet" href="style.css" />
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-f1sTDCMkRzDkcvPln1WJg9vrOpU0jvK5h6xpDYz0q5/rxwoZ86SP6D60yPQ2OtbfdW6bsEliZ5qpc+bjeFjkIg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    /> -->
   </head>
   <body>
-      <div class="main-container">
-          <div class="imageHolder"></div>
-          <main class="main-wrapper">
-        <p id="temperature">Temperature</p>
-        <h1 id="city-name">City Name</h1>
-        <p id="description">Weather Description</p>
-        <p id="timezone">Timezone</p>
+    <div class="main-container">
+      <div class="imageHolder"></div>
+      <main class="main-wrapper">
+        <div class="main-text">
+          <p id="temperature">Temperature</p>
+          <h1 id="city-name">City Name</h1>
+          <p id="timezone">Timezone</p>
+          <p id="description">Weather Description</p>
+        </div>
         <section class="sunType">
           <p id="sunrise">Sunrise Time</p>
           <p id="sunset">Sunset Time</p>
@@ -21,12 +30,12 @@
       </main>
       <section id="forecast-section">
         <table id="forecast-table">
-            <tr>
-                <td id="forecast-days"></td>
-                <td id="forecast-days"></td>
-                <td id="forecast-days"></td>
-                <td id="forecast-days"></td>
-            </tr>
+          <tr>
+            <td class="forecast-item"></td>
+            <td class="forecast-item"></td>
+            <td class="forecast-item"><i class="weather-icon"></i></td>
+            <td class="forecast-item"></td>
+          </tr>
         </table>
       </section>
     </div>

@@ -1,64 +1,99 @@
+* {
+  margin: 0;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 .main-container {
-    width: 100%;
-    max-width: 400px;
-    margin: 50px auto;
-    overflow: hidden; /* Add this line to hide overflow */
-    position: relative;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  z-index: 1;
+  background-color: rgb(242, 241, 241);
+  width: 100%;
+  max-width: 400px;
+  height: 800px;
+  margin: 50px auto;
+  overflow: hidden;
+  position: relative;
+  box-shadow: rgba(80, 80, 80, 0.433) 2px 6px 16px;
+}
+
+.imageHolder {
+  background-image: url(./images/clearSky.jpg);
+  background-size: cover;
+  opacity: var(--top-background-opacity);
+  height: 800px;
+  width: 800px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: var(--top-background-bottom-position);
+  right: 50%;
+  bottom: 290px;
+  transform: translate(50%);
+  z-index: -1;
+  margin-bottom: 30px;
 }
 
 .main-wrapper {
-    padding: 3.5rem;
-    overflow: hidden;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: left;
+  height: 60%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  color: white;
 }
 
+.main-text {
+  margin-left: 2rem;
+}
+
+#temperature {
+  font-size: 84px;
+  font-weight: 200;
+  padding-top: 8rem;
+}
+
+#city-name {
+  padding-top: 16px;
+  font-weight: 200;
+}
+
+#description {
+  font-weight: 200;
+  padding-top: 18px;
+}
+
+#timezone {
+  padding-top: 4px;
+  font-weight: 200;
+}
+
+.sunType {
+  padding-top: 60px;
+  display: flex;
+  justify-content: space-evenly;
+  
+}
+
+#forecast-section {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 40px;
+}
 
 .forecast-item {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 20px;
-    text-align: center;
-    position: relative;
-  }
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
 
-  #forecast-section {
-    display: flex;
-    justify-content: space-evenly;
-  }
+/* .weather-icon i {
+  font-size: 24px; 
+} */
 
 td {
-    padding: 16px;
+  padding: 12px;
+  font-weight: 200;
 }
 
-  .sunType {
-    display: flex;
-    justify-content: space-evenly;
-    padding: 0;
-  }
 
-  #temperature {
-    font-size: 42px;
-    font-weight: bold;
-  }
-
-  .imageHolder {
-    background-image: url(./images/clearSky.jpg);
-    background-size: cover; /* Set background size to cover */
-    opacity: var(--top-background-opacity);
-    height: 800px;
-    width: 800px;
-    border-radius: 50%;
-    position: absolute;
-    bottom: var(--top-background-bottom-position);
-    right: 50%;
-    bottom: 35%;
-    transform: translate(50%);
-    z-index: -1;
-    margin-bottom: 30px;
-}
