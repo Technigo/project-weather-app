@@ -55,9 +55,20 @@
   font-weight: 200;
 }
 
-#description {
+.des-container {
+  display: flex;
+  align-items: center;
+}
+
+.des-container i {
+  font-size: 38px;
+}
+
+.des-container p {
+  font-size: 16px;
   font-weight: 200;
-  padding-top: 18px;
+  margin: 0; /* Reset margin for the paragraph */
+  padding-right: 16px;
 }
 
 #timezone {
@@ -84,7 +95,7 @@
   position: relative;
 }
 
-.weather-icon i {
+.weather-icon {
   font-size: 24px;
 }
 
