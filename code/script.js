@@ -1,13 +1,10 @@
-
-//API: https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=d75b73cbadec04610cd0103495fdb88c
-
 const weatherDescription = document.getElementById('weatherDescription');
 const container = document.getElementById('container');
 const header = document.getElementById('header');
 const forecastItems = document.getElementById('forecastItems');
 const getLocationButton = document.getElementById('getLocationButton');
 
-const apiKey = 'c99419c3837c41928558edb5e7e76294'; 
+const apiKey = 'c99419c3837c41928558edb5e7e76294';
 
 const fetchWeatherByLocation = (latitude, longitude) => {
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&APPID=${apiKey}`;
@@ -24,7 +21,7 @@ const fetchWeatherByLocation = (latitude, longitude) => {
             const weathers = json.weather;
             weathers.map((weather) => {
                 header.innerHTML = `
-                    <h3>${weather.description} | ${(json.main.temp).toFixed(0)}°</h3>
+                    <h3>${weather.description} | ${(json.main.temp).toFixed(1)}°</h3>
                     <h3>sunrise ${sunRiseHoursAndMinutes}</h3>
                     <h3>sunset ${sunSetHoursAndMinutes}</h3>
                 `;
@@ -56,7 +53,6 @@ const fetchWeatherByLocation = (latitude, longitude) => {
                             <img src="shades.svg" alt="sunglasses"/>
                             <h1>The sky is crispy and clear in ${json.name}. Put on your best shades and don't forget SPF!</h1>
                         `;
-                        break;
                 }
             });
         })
@@ -65,6 +61,36 @@ const fetchWeatherByLocation = (latitude, longitude) => {
         });
 };
 
+const fetchAndDisplay5DayForecast = () => {
+    const forecastApiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&cnt=5&APPID=${apiKey}`;
+
+    fetch(forecastApiUrl)
+        .then((response) => response.json())
+        .then((data) => {
+            if (data.list && data.list.length >= 5) {
+                for (let i = 0; i < 5; i++) {
+                    const forecast = data.list[i];
+                    const date = new Date(forecast.dt * 1000);
+                    const temperature = forecast.main.temp;
+                    const weatherDescription = forecast.weather[0].description;
+
+                    const forecastItem = document.createElement('div');
+                    forecastItem.classList.add('forecast-item'); // Add a class to the forecast item
+                    forecastItem.innerHTML = `
+                        <p>${date.toDateString()}</p>
+                        <p>${temperature.toFixed(1)}°</p>
+                        <p>${weatherDescription}</p>
+                    `;
+                    forecastItems.appendChild(forecastItem);
+                }
+            } else {
+                console.error('Error fetching 5-day forecast data');
+            }
+        })
+        .catch((error) => {
+            console.error('Error fetching 5-day forecast data:', error);
+        });
+};
 
 getLocationButton.addEventListener('click', () => {
     if ('geolocation' in navigator) {
@@ -74,6 +100,7 @@ getLocationButton.addEventListener('click', () => {
                 const longitude = position.coords.longitude;
 
                 fetchWeatherByLocation(latitude, longitude);
+                fetchAndDisplay5DayForecast();
             },
             (error) => {
                 console.error('Geolocation error:', error);
@@ -83,6 +110,3 @@ getLocationButton.addEventListener('click', () => {
         console.error('Geolocation is not supported in this browser.');
     }
 });
-
-
-fetchWeatherByLocation(); 
