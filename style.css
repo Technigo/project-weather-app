@@ -123,9 +123,9 @@
 }
 
 .sunType {
-  padding-top: 60px;
   display: flex;
   justify-content: space-evenly;
+  padding-top: 50px;
 }
 
 #forecast-section {
