@@ -76,6 +76,29 @@ async function updateDOM(cityName) {
 
     descriptionContainer.appendChild(desContainer);
 
+    // Handle sunrise and sunset times if available in the response
+    if (weatherData.sys && weatherData.sys.sunrise && weatherData.sys.sunset) {
+      const sunriseTime = new Date(
+        weatherData.sys.sunrise * 1000
+      ).toLocaleTimeString("en-US", {
+        hour: "numeric",
+        minute: "numeric",
+        hour12: false,
+      });
+      const sunsetTime = new Date(
+        weatherData.sys.sunset * 1000
+      ).toLocaleTimeString("en-US", {
+        hour: "numeric",
+        minute: "numeric",
+        hour12: false,
+      });
+
+      document.getElementById(
+        "sunrise"
+      ).textContent = `Sunrise: ${sunriseTime}`;
+      document.getElementById("sunset").textContent = `Sunset: ${sunsetTime}`;
+    }
+
     // Handle forecast data
     const forecastSection = document.getElementById("forecast-section");
     forecastSection.innerHTML = "";
