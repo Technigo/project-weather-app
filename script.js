@@ -40,14 +40,17 @@ async function updateDOM(cityName) {
     const temperature = Math.round(weatherData.main.temp);
     const feelsLike = Math.round(weatherData.main.feels_like);
 
-    if (temperature <= 11) {
+    if (temperature <= 18) {
       document.querySelector(".overlay").style.display = "block";
+    } else {
+      document.querySelector(".overlay").style.display = "none";
+
     }
 
     document.getElementById("temperature").textContent = `${temperature}°C`;
     document.getElementById(
       "feelsLike"
-    ).textContent = `( Feels like: ${feelsLike} °C)`;
+    ).textContent = `( Feels like: ${feelsLike} °C )`;
     document.getElementById("city-name").textContent = weatherData.name;
 
     // Handle weather description and icons for the current weather
