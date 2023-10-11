@@ -27,9 +27,16 @@ const suffix = `&units=metric&APPID=${apiKey}`;
 // Elements
 const weatherData = document.getElementById("header__weather-data");
 
-const currentTimeUTC = new Date();
-
-let secondsToAdd;
+const getUTCTime = (secondsToAdd) => {
+  let millisecondsToAdd = secondsToAdd * 1000;
+  const currentTimeUTC = new Date();
+  const adjustTime = new Date(
+    currentTimeUTC.setMilliseconds(
+      currentTimeUTC.getMilliseconds() + millisecondsToAdd
+    )
+  );
+  return adjustTime;
+};
 
 const asyncFunction = async (city) => {
   try {
@@ -40,37 +47,24 @@ const asyncFunction = async (city) => {
     const response = await fetch(apiCallUrl);
     const data = await response.json();
     console.log(data);
-
-    // TIME UPDATE
-    // TODO: Make function of this code
-    //Set the seconds to add/subtract from UTC time
-    let secondsToAdd = data.timezone;
-    let millisecondsToAdd = secondsToAdd * 1000;
-    currentTimeUTC.setMilliseconds(
-      currentTimeUTC.getMilliseconds() + millisecondsToAdd
-    );
+    // SUNSET & SUNRISE UPDATE
+    sunFunction();
 
     // ICON UPDATE
     const weatherIcon = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
 
-    // SUNSET & SUNRISE UPDATE
-    let sunrise = 1697001284;
-    let sunset = 1697039649;
-    sunrise = new Date(sunrise * 1000).getHours();
-    sunset = new Date(sunset * 1000).toLocaleString();
-
-    console.log(sunrise, sunset);
-
     //The HTML base for rendering queries
     weatherData.innerHTML = `
-    <h1>${data.main.temp}</h1>
+    <h1>${parseInt(data.main.temp)}</h1>
     <h2>${data.name}</h2>
-    <span>Time: ${currentTimeUTC.getUTCHours()}:${currentTimeUTC.getUTCMinutes()} </span>
-    <div>
+    <span>Time: ${getUTCTime(data.timezone).getUTCHours()}:${getUTCTime(
+      data.timezone
+    ).getUTCMinutes()} </span>
+    <div class="flex-left">
       <p>${data.weather[0].main}</p>
       <img src="${weatherIcon}" alt="current image icon" />
     </div>
-    <div>
+    <div class="flex-space-around">
       <p>sunrise 07:14</p>
       <p>sunset 17:54</p>
     </div>
@@ -82,6 +76,16 @@ const asyncFunction = async (city) => {
   }
 };
 
-asyncFunction("stockholm, Sweden");
+asyncFunction("bangkok,thailand");
 
 // Reformat the function to accept the name of the city as an argument
+
+const sunFunction = () => {
+  // SUNSET & SUNRISE UPDATE
+  let sunrise = 1697001284;
+  let sunset = 1697039649;
+  sunrise = new Date(sunrise * 1000).getHours();
+  sunset = new Date(sunset * 1000).toLocaleString();
+
+  console.log(sunrise, sunset);
+};
