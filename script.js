@@ -2,7 +2,7 @@ const weatherIcons = {
   'clear sky': 'fas fa-sun',
   'few clouds': 'fas fa-cloud-sun',
   'scattered clouds': 'fas fa-cloud',
-  'broken clouds': 'fas fa-cloud',
+  'broken clouds': 'fas fa-cloud fa-fade',
   'overcast clouds': 'fas fa-cloud',
   'light rain': 'fas fa-cloud-showers-heavy',
   'moderate rain': 'fas fa-cloud-showers-heavy',
@@ -10,17 +10,16 @@ const weatherIcons = {
   'light snow': 'fas fa-snowflake',
   'moderate snow': 'fas fa-snowflake',
   'heavy snow': 'fas fa-snowflake',
-  thunderstorm: 'fas fa-bolt',
-  mist: 'fas fa-smog',
-  fog: 'fas fa-smog',
-  smoke: 'fas fa-smog',
-  haze: 'fas fa-smog',
-  dust: 'fas fa-smog',
-  sand: 'fas fa-smog',
-  tornado: 'fas fa-wind',
-  squalls: 'fas fa-wind',
+  'thunderstorm': 'fas fa-bolt',
+  'mist': 'fas fa-smog',
+  'fog': 'fas fa-smog',
+  'smoke': 'fas fa-smog',
+  'haze': 'fas fa-smog fa-fade',
+  'dust': 'fas fa-smog',
+  'sand': 'fas fa-smog',
+  'tornado': 'fas fa-wind fa-beat',
+  'squalls': 'fas fa-wind',
 };
-console.log(weatherIcons.haze);
 
 const api_weather_URL =
   'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=10f8230f6149903425e19587fdc548b8';
@@ -193,23 +192,88 @@ searchClose.addEventListener('click', () => {
   searchBtn.style.display = 'none';
 });
 
-const api_search_URL = ''; // Add the appropriate search endpoint here
+const api_search_URL = 'https://api.openweathermap.org/data/2.5/weather';
 
 async function fetchSearchWeather(cityName) {
   try {
+    const encodedCityName = encodeURIComponent(cityName);
     const res = await fetch(
-      `${api_search_URL}?q=${cityName}&units=metric&APPID=10f8230f6149903425e19587fdc548b8`
+      `${api_search_URL}?q=${encodedCityName}&units=metric&APPID=10f8230f6149903425e19587fdc548b8`
     );
     const data = await res.json();
 
-    // Handle the data for the searched city here, similar to your existing fetchWeather function
+    // Check if the response contains the expected properties
+    if (data.main && data.weather && data.weather[0]) {
+      const temperature = Math.round(data.main.temp);
+      const weatherDescription = data.weather[0].description;
 
-    // For example:
-    // const temperature = Math.round(data.main.temp);
-    // const weatherDescription = data.weather[0].description;
-    // Update the DOM elements with the new weather data
+      document.getElementById('temperature').textContent = `${temperature} °C`;
+      document.getElementById('feelsLike').textContent = `( Feels like: ${temperature} °C )`;
+      document.getElementById('city-name').textContent = data.name;
+
+      const capitalizedDescription =
+        weatherDescription.charAt(0).toUpperCase() + weatherDescription.slice(1);
+      const iconClass = weatherIcons[weatherDescription] || 'fas fa-question';
+      const iconElement = `<i class="weather-icon ${iconClass} fa-beat"></i>`;
+      document.getElementById(
+        'description'
+      ).innerHTML = `<div class="des-container"><p>${capitalizedDescription}</p>${iconElement}</div>`;
+
+      // Handle sunrise and sunset times if available in the response
+      if (data.sys && data.sys.sunrise && data.sys.sunset) {
+        const sunriseTime = new Date(data.sys.sunrise * 1000).toLocaleTimeString('en-US', {
+          hour: 'numeric',
+          minute: 'numeric',
+          hour12: false,
+        });
+        const sunsetTime = new Date(data.sys.sunset * 1000).toLocaleTimeString('en-US', {
+          hour: 'numeric',
+          minute: 'numeric',
+          hour12: false,
+        });
+
+        document.getElementById('sunrise').textContent = `Sunrise: ${sunriseTime}`;
+        document.getElementById('sunset').textContent = `Sunset: ${sunsetTime}`;
+      }
+
+      console.log('search weather data', data);
+    } else {
+      console.log('Invalid API response:', data);
+    }
+  } catch (error) {
+    console.log('Fetch error:', error);
+    if (error.response) {
+      // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx
+      console.log('API Error Data:', error.response.data);
+      console.log('API Error Status:', error.response.status);
+      console.log('API Error Headers:', error.response.headers);
+    } else if (error.request) {
+      // The request was made but no response was received
+      console.log('No response received:', error.request);
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      console.log('Error during request setup:', error.message);
+    }
+  }
+}
+
+const searchInput = document.querySelector('#search-input');
+const searchButton = document.querySelector('#search-button');
+
+searchButton.addEventListener('click', async () => {
+  try {
+    const cityName = searchInput.value;
+    if (cityName) {
+      // Call the fetchSearchWeather function with the entered city name
+      fetchSearchWeather(cityName);
+    } else {
+      console.log('Please enter a city name.');
+    }
   } catch (error) {
     console.log('Fetch error:', error);
   }
-}
-fetchSearchWeather();
+});
+
+// Call the initial weather fetch function with a default city 
+fetchSearchWeather('Stockholm');
