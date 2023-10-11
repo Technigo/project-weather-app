@@ -14,7 +14,7 @@ h1 {
 
 h2 {
     margin: 0;
-    padding-top: 20px;
+    padding-top: 10px;
     font-size: 34px;
     font-weight: 300;
 }
@@ -31,6 +31,7 @@ p {
     padding: 30px;
     color: #fff;
     height: 47vh;
+    min-height: 370px;
     border-bottom-left-radius: 50% 30px;
     border-bottom-right-radius: 50% 30px;
 }
@@ -43,18 +44,38 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     border-bottom: 1px solid white;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
 }
 
 .search-button {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+}
+
+.search-field {
+    height: 25px;
+    width: 180px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    outline: none;
+    opacity: 80%;
+    padding: 1px 5px;
+    color: #222350;
+    font-size: 16px;
+    /* display: none; */
 }
 
 .date {
-    font-size: 16px;
+    font-size: 12px;
+    text-align: end;
 }
 
 .celcius {
@@ -122,6 +143,7 @@ header {
 /* MEDIA QUERIES */
 
 @media (min-width: 540px) {
+    header,
     .todays-weather,
     .fiveday-forecast {
         max-width: 540px;
