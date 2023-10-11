@@ -44,7 +44,7 @@ const fetchStockholmWeather = async () => {
 
 
       // Display image depending on weather type
-      const weatherId = json.weather[0].id;
+      let weatherId = json.weather[0].id;
       console.log(weatherId);
       if (weatherId > 800) {
         weatherImg.innerHTML = `
@@ -75,7 +75,7 @@ const fetchStockholmWeather = async () => {
         <h3>sunset ${sunsetHour}:${sunsetMinutes}</h3>
       `;
     }) 
-    .catch((err) => console.log(error));
+    .catch((err) => console.log(err));
 };
 
 fetchStockholmWeather();
