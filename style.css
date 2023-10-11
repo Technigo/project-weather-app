@@ -25,7 +25,7 @@
   position: absolute;
   bottom: var(--top-background-bottom-position);
   right: 50%;
-  bottom: 290px;
+  bottom: 260px;
   transform: translate(50%);
   margin-bottom: 30px;
 }
