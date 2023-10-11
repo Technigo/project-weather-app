@@ -4,7 +4,7 @@ const searchButton = document.getElementById("search-btn");
 const cityInput = document.getElementById("city-input");
 const forecastContainer = document.getElementById("forecast-container");
 
-const API_KEY = "a9a3b2fda4ff7afe96f32d735ea04df0";
+const API_KEY = "KEY_API";
 
 const fetchWeather = async (cityName) => {
   try {
