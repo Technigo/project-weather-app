@@ -1,13 +1,17 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This week's project was to build a weather dashboard that uses a API to tell today's weather and a 5-day forecast.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I started with fetching the weather for today. It went pretty quick and the biggest challenge in this step was following the proposed design.
+The biggest challenge and what I spent the most time on was iterating through the five day weather report and getting the min and max temperature values for each day.
+
+I implemented some extra features such as different background colors depending on whether the sun has risen or set and a search function so the user can change location.
+
+If I had more time, I would have made a page that appears when the user searches in a location that does not exist. Currently, the app keeps the last correct search and no update takes place.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+What will the weather be like tomorrow? Find out here:
+https://better-wheater.netlify.app/
