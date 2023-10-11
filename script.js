@@ -6,6 +6,7 @@ const sunset = document.getElementById("sunset");
 const weatherDescription = document.getElementById("weatherDescription");
 const weatherImg = document.getElementById("weatherImg");
 const fiveDaysForecast = document.getElementById("fiveDaysForecast");
+const weatherText = document.getElementById("weatherText");
 
 //Weather Api
 const APIKey = "496c5252f6db6014138471f722aa58d4";
@@ -49,19 +50,31 @@ const fetchStockholmWeather = async () => {
       if (weatherId > 800) {
         weatherImg.innerHTML = `
           <img src="./design/design2/icons/cloud.svg" />
-        `
+        `;
+        weatherText.innerHTML = `
+          <h2>Light a fire and get cosy. ${city} is looking grey today.</h2>
+        `;
       } else if (weatherId = 800) {
         weatherImg.innerHTML = `
           <img src="./design/design2/icons/sunnies.svg" />
-        `
+        `;
+        weatherText.innerHTML = `
+          <h2>Get your sunnies on. ${city} is looking rather great today.</h2>
+        `;
       } else if (weatherId > 700) {
         weatherImg.innerHTML = `
           <img src="./design/design2/icons/cloud.svg" />
-        `
+        `;
+        weatherText.innerHTML = `
+          <h2>Light a fire and get cosy. ${city} is looking grey today.</h2>
+        `;
       } else {
         weatherImg.innerHTML = `
           <img src="./design/design2/icons/umbrella.svg" />
-        `
+        `;
+        weatherText.innerHTML = `
+          <h2>Don't forget your umbrella. It's wet in ${city} today.</h2>
+        `;
       }
 
       // Display values in DOM
