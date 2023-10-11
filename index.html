@@ -1,15 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="icon" type="image/x-icon" href="./images/favicon.png">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" type="image/x-icon" href="./images/favicon.png" />
+    <link rel="stylesheet" href="https://fonts.google.com/specimen/Roboto">
     <title>Weather Now!</title>
   </head>
   <body>
-    <h1>This shows the weather</h1>
-    <div></div>
+    <div id="container">
+      <div class="card-top">
+        <input
+          type="text"
+          autocomplete="on"
+          class="search-box"
+          autofocus="autofocus"
+          placeholder="Search a city..."
+        />
+        <span id="temp"></span>
+        <span id="city"></span>
+        <div id="datetime-wrap">
+          <span id="time"></span>
+          <span id="date"></span>
+        </div>
+        <div id="condition"></div>
+      </div>
+      <div class="card-bottom">
+        Days
+      </div>
+    </div>
+
     <script type="text/JavaScript" src="script.js"></script>
   </body>
 </html>
