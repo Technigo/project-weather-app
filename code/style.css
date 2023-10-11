@@ -14,14 +14,14 @@ background-color: transparent;
 */
 * {
     box-sizing: border-box;
-    margin: 0;    
+    margin: 0;
 }
 
 button {
-   font-size: 50px;    
+    font-size: 50px;
 }
 
-body {    
+body {
     font-family: 'Montserrat', sans-serif;
     margin: 30px 50px;
     height: 100%;
@@ -47,6 +47,30 @@ p {
 
 .weather-descritpion {
     grid-row: 2 / span 3;
+}
+
+/* CSS for the forecast items */
+#forecastItems {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.forecast-item {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+    text-align: center;
+    width: 170px;
+    background-color: #f4f4f4;
+    color: #333;
+    font-size: 12px;
+}
+
+.forecast-item p {
+    margin: 5px 0;
 }
 
 
