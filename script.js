@@ -45,11 +45,17 @@ async function fetchWeatherAndForecast(cityName) {
   }
 }
 
+function updateTime(cityTimeZone) {
+  let today = new Date();
+  today.setTime(today.getTime() + cityTimeZone * 1000); // Adjust the time according to the city's time zone
+  let h = today.getHours();
+  let m = today.getMinutes().toString().padStart(2, "0"); // Get minutes with leading zero
+  document.getElementById("time").textContent = `Time: ${h}:${m}`;
+}
+
 async function updateDOM(cityName) {
   try {
-    const { weatherData, forecastData } = await fetchWeatherAndForecast(
-      cityName
-    );
+    const { weatherData, forecastData } = await fetchWeatherAndForecast(cityName);
 
     // Handle current weather data
     const temperature = Math.round(weatherData.main.temp);
@@ -60,9 +66,7 @@ async function updateDOM(cityName) {
     }
 
     document.getElementById("temperature").textContent = `${temperature} °`;
-    document.getElementById(
-      "feelsLike"
-    ).textContent = `( Feels like: ${feelsLike} ° )`;
+    document.getElementById("feelsLike").textContent = `( Feels like: ${feelsLike} ° )`;
     document.getElementById("city-name").textContent = weatherData.name;
 
     // Handle weather description and icons
@@ -119,6 +123,12 @@ async function updateDOM(cityName) {
         daysDisplayed++;
       }
     });
+
+    // Now, let's add the code to update the "timezone" element with the current time
+    const currentTime = new Date();
+    const hours = currentTime.getHours().toString().padStart(2, '0');
+    const minutes = currentTime.getMinutes().toString().padStart(2, '0');
+    document.getElementById("timezone").textContent = `Time: ${hours}:${minutes}`;
 
     console.log("Fetched weather data:", weatherData);
     console.log("Fetched forecast data:", forecastData);
