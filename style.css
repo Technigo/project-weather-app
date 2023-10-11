@@ -1,0 +1,168 @@
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Roboto:wght@100;300;400;500;700&display=swap");
+
+/* // RESET */
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+img {
+  /* removes the small padding */
+  display: block;
+  /* will make the images responsive */
+  max-width: 100%;
+  height: auto;
+}
+
+/* || VARIABLES */
+
+:root {
+  /* FONTS */
+  --FF: "Roboto", sans-serif;
+  --FF-HEADINGS: "Roboto", sans-serif;
+  /* Use to make fonts grow and shrink */
+  --FS-HEADINGS: clamp(3rem, 2.2vh, 1.5rem);
+  --FS: clamp(1rem, 2.2vh, 1.5rem);
+  --FW: 300;
+
+  /* COLORS */
+  --BGCOLOR-FADE: rgb(252, 220, 160);
+  --BGCOLOR: #e0e0e0;
+  --BGCOLOR-FADE: rgb(252, 220, 160);
+  /* --BGIMAGE: linear-gradient(to bottom, var(--BGCOLOR), var(--BGCOLOR-FADE)); */
+  --BODY-BGCOLOR: #d1d1d1;
+  /* --BORDER-COLOR: #610963; */
+  --FONT-COLOR: #fff;
+  --FONT-COLOR-GREY: #e0e0e0;
+  --HEADER-BGCOLOR: #000;
+  --HEADER-COLOR: #fff;
+
+  /* BUTTON */
+  --BUTTON-COLOR: #a0b0e7;
+  --BUTTON-COLOR-HOVER: #a1c7f2;
+
+  /*  SEARCH BAR */
+  --BGCOLOR-SEARCHBAR: #c9ccd5;
+
+  /* BORDERS */
+  --BORDERS: 1px solid var(--BORDER-COLOR);
+  --BORDER-RADIUS: 30px;
+
+  /* STANDARD PADDING */
+  --PADDING: 0.5em;
+  --PADDING-TB: 0.25em;
+  --PADDING-SIDE: 0 10.5%;
+
+  /* STANDARD MARGIN */
+  --MARGIN: clamp(1em, 2.5vh, 1.5em) 0;
+}
+
+/* || GENERAL STYLE */
+
+html {
+  scroll-behavior: smooth;
+  font-size: var(--FS);
+  font-family: var(--FF);
+  background-color: var(--BGCOLOR);
+
+  /* background-image: var(--BGIMAGE); */
+}
+
+body {
+  background-color: var(--BODY-BGCOLOR);
+  color: var(--FONT-COLOR);
+  min-height: 100vh;
+  /* max-width: 500px; */
+  margin: 0 auto;
+  font-weight: var(--FW);
+  /* border-left: var(--BORDERS);
+    border-right: var(--BORDERS); */
+  /* box-shadow: 0 0 10px var(--BORDER-COLOR); */
+}
+
+h1,
+h2 {
+  font-family: var(--FF);
+  letter-spacing: 0.1em;
+  font-weight: var(--FW);
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+h1::after {
+  content: " °C";
+  font-size: 1.3rem;
+}
+
+h1,
+h2 {
+  line-height: 1.5;
+}
+
+p {
+  line-height: 4;
+}
+
+nav {
+  margin-bottom: 2rem;
+}
+
+header {
+  background-color: blueviolet;
+  border-radius: 0 0 50% 50% / 50px;
+}
+
+nav img {
+  width: 10%;
+}
+
+.container {
+  position: relative;
+  padding: var(--PADDING-SIDE);
+  padding-top: 1.3rem;
+  padding-bottom: 3rem;
+}
+
+#btn-next-city {
+  position: absolute;
+  bottom: -1rem;
+  right: 1rem;
+  background-color: var(--BUTTON-COLOR);
+  width: 75px;
+  height: 75px;
+  z-index: 99;
+  border-radius: 50%;
+}
+
+/* HEADER */
+
+.flex-left {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.flex-space-around {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* Desktop (1025px-1399px)
+Tablet (768px-1024px)
+Mobile (767px and below) */
+
+/* Tablet */
+
+@media screen and (min-width: 768px) {
+  .container {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 50%;
+  }
+}
