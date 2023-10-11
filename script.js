@@ -89,3 +89,21 @@ const sunFunction = () => {
 
   console.log(sunrise, sunset);
 };
+
+
+// Get forecast for the coming 4 days (Sebastian)
+
+//Make a function that takes 4 arguments: day, icon, temperature, wind
+
+// const getForecast = async() => {
+//   try {
+//     const response = await fetch('https://pro.openweathermap.org/data/2.5/forecast/hourly?lat={lat}&lon={lon}&appid={API key}')
+    
+//   } catch (error) {
+    
+//   }
+// }
+
+// Use this API endpoint: https://pro.openweathermap.org/data/2.5/forecast/hourly?lat={lat}&lon={lon}&appid={API key}
+
+// In the function, create the html for every day with template literals
