@@ -30,8 +30,8 @@ searchButton.addEventListener("click", () => {
         } else if (["Rain", "Drizzle"].includes(weatherCondition)) {
           categorizedWeather = "Rainy";
           weatherIcon.innerHTML = `<img src="design/design2/icons/noun_Umbrella_2030530.svg" alt="Weather Icon">`;
-          cityName.textContent = `Don´t forget your umbrella. 
-          It´s wet in ${data.name} today.`;
+          cityName.textContent = `Don't forget your umbrella. 
+          It's wet in ${data.name} today.`;
         } else {
           categorizedWeather = "Other";
         }
