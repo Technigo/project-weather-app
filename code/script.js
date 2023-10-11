@@ -46,9 +46,12 @@ const fetchAPI = () => {
       return response.json();
     })
     .then((json) => {
+      console.log(json);
       temperature.innerHTML = json.main.temp.toFixed();
       city.innerHTML = json.name;
-      weatherDescription.innerHTML = json.weather[0].main;
+      const description = json.weather[0].description;
+      weatherDescription.innerHTML =
+        description.charAt(0).toUpperCase() + description.slice(1);
 
       // Get weather icon name from API
       const weatherIcon = json.weather[0].icon;

@@ -142,6 +142,16 @@ header {
 
 /* MEDIA QUERIES */
 
+@media (min-width: 400px) {
+    .date {
+        font-size: 14px;
+    }
+
+    .search-field {
+        width: 200px;
+    }
+}
+
 @media (min-width: 540px) {
     header,
     .todays-weather,
@@ -157,5 +167,44 @@ header {
     .temp-img-container img {
         height: 200px;
         width: 200px;
-      }
+    }
+
+    .search-button {
+        width: 20px;
+        height: 20px;
+        margin-right: 15px;
+    }
   }
+
+  @media (max-width: 350px) {
+    h1 {
+        font-size: 80px;
+    }
+    
+    h2 {
+        padding-top: 10px;
+        font-size: 24px;
+    }
+    
+    p {
+        font-size: 16px;
+    }
+
+    .background-color {
+        min-height: 300px;
+    }
+
+    .search-field {
+        width: 128px;
+    }
+
+    .temp-img-container img {
+        height: 100px;
+        width: 100px;
+    }
+
+    .fiveday-forecast p {
+        font-size: 14px;
+    }
+
+}
