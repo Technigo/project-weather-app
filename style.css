@@ -37,6 +37,7 @@ img {
   /* --BORDER-COLOR: #610963; */
   --FONT-COLOR: #fff;
   --FONT-COLOR-GREY: #e0e0e0;
+  --FONT-COLOR-BLACK: rgb(64, 64, 64);
   --HEADER-BGCOLOR: #000;
   --HEADER-COLOR: #fff;
 
@@ -128,18 +129,23 @@ nav img {
   padding-bottom: 3rem;
 }
 
+/* HEADER */
+
 #btn-next-city {
   position: absolute;
+  cursor: pointer;
   bottom: -1rem;
   right: 1rem;
   background-color: var(--BUTTON-COLOR);
+  background-size: 2rem;
+  background-position: 50% 50%;
+  background-image: url(./assets/chevron-right.svg);
+  background-repeat: no-repeat;
   width: 75px;
   height: 75px;
   z-index: 99;
   border-radius: 50%;
 }
-
-/* HEADER */
 
 .flex-left {
   display: flex;
@@ -150,6 +156,21 @@ nav img {
 .flex-space-around {
   display: flex;
   justify-content: space-around;
+}
+
+/* FORECAST */
+
+.forecast__single-day-flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--FONT-COLOR-BLACK);
+}
+
+.forecast__single-day-flex span {
+  flex-basis: 20%;
 }
 
 /* Desktop (1025px-1399px)
