@@ -6,7 +6,9 @@ const searchButton = document.getElementById("searchButton");
 const cityName = document.getElementById("cityName");
 const weatherIcon = document.getElementById("weatherIcon");
 const temperature = document.getElementById("temperature");
-const description = document.getElementById("description");
+//const description = document.getElementById("description");
+const citySunrise = document.getElementById("sunrise");
+const citySunset = document.getElementById("sunset");
 const weeklyForecast = document.getElementById("weeklyForecast");
 
 searchButton.addEventListener("click", () => {
@@ -16,6 +18,9 @@ searchButton.addEventListener("click", () => {
       .then((response) => response.json())
       .then((data) => {
         let weatherCondition = data.weather[0].main; // This is from the returned data of the API
+
+        //Change the colors based weather condition via CSS
+
         let categorizedWeather;
         if (weatherCondition === "Clear") {
           categorizedWeather = "Sunny";
@@ -34,10 +39,35 @@ searchButton.addEventListener("click", () => {
           It´s wet in ${data.name} today.`;
         } else {
           categorizedWeather = "Other";
+          cityName.textContent = ` ${data.name} indicates ${weatherCondition} today.`;
         }
+        document.body.setAttribute("data-weather", categorizedWeather);
+        //Calculate date of sunrise and sunset
+        function formatTime(date) {
+          const options = {
+            hour: "2-digit",
+            minute: "2-digit",
+            timeZone: "CET",
+          };
+          const formattedTime = new Intl.DateTimeFormat(
+            "default",
+            options
+          ).format(date);
+          return formattedTime.replace(":", ".");
+        }
+        const sunriseTime = new Date(data.sys.sunrise * 1000);
+        const sunsetTime = new Date(data.sys.sunset * 1000);
+        const formattedSunrise = formatTime(sunriseTime);
+        const formattedSunset = formatTime(sunsetTime);
 
-        temperature.textContent = `${(data.main.temp - 273.15).toFixed(1)}°C`;
-        description.textContent = data.weather[0].description;
+        console.log(`Sunrise: ${formattedSunrise}`);
+        console.log(`Sunset: ${formattedSunset}`);
+        citySunrise.textContent = `sunrise ${formattedSunrise}`;
+        citySunset.textContent = `sunset ${formattedSunset}`;
+        temperature.textContent = `${data.weather[0].description} | ${(
+          data.main.temp - 273.15
+        ).toFixed(1)}°C`;
+        // description.textContent = data.weather[0].description;
       })
       .catch((error) => {
         console.error("Error fetching data:", error);

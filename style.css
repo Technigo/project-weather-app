@@ -5,6 +5,26 @@ body {
   padding: 0;
 }
 
+body[data-weather="Sunny"] {
+  background-color: #f7e9b9;
+  color: #2a5510;
+}
+
+body[data-weather="Cloudy"] {
+  background-color: #f4f7f8;
+  color: #f47775;
+}
+
+body[data-weather="Rainy"] {
+  background-color: #a3def7;
+  color: #164a68;
+}
+
+body[data-weather="Other"] {
+  background-color: #e2e2e2;
+  color: #1a1a1a;
+}
+
 .container {
   max-width: 400px;
   margin: 0 auto;
@@ -13,7 +33,11 @@ body {
 
 p {
   font-size: 21px;
-  color: #2a5510;
+}
+
+h2 {
+  font-size: 37px;
+  font-weight: 700;
 }
 
 .search-box {
@@ -25,7 +49,7 @@ input[type="text"] {
   padding: 10px;
   border: 1px;
   border-radius: 5px;
-  margin-right: 10px;
+  margin-right: 20px;
 }
 
 button {
@@ -54,20 +78,15 @@ button {
   border-radius: 8px;
 }
 
-h2 {
-  font-size: 37px;
-  font-weight: 700;
-  color: #2a5510;
-}
-
 .weekly-forecast {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  align-items: center;
 }
 
 .forecast-item {
-  flex-basis: calc(33.33% - 20px);
+  max-width: 400px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   margin-left: 20px;
