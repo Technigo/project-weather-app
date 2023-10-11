@@ -140,6 +140,9 @@ const fetchAPI = () => {
       fiveDayArray.push(minTemp);
       fiveDayArray.push(weatherIcon);
 
+      // Empty previous forecast
+      forecast.innerHTML = "";
+
       // Send five day forecast as HTML
       for (let i = 0; i < 5; i++) {
         let currentDay = [];
