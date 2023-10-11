@@ -60,7 +60,7 @@
 .search-bar button {
   padding: 8px 20px;
   font-size: 16px;
-  background-color: #4caf4f32;
+  background-color: #4caf4f9a;
   color: white;
   border: none;
   border-radius: 4px;
@@ -99,7 +99,6 @@
 
 #city-name {
   padding-top: 16px;
-  font-weight: 200;
 }
 
 .des-container {
@@ -119,8 +118,8 @@
 }
 
 #timezone {
-  padding-top: 4px;
-  font-weight: 200;
+  padding-top: 12px;
+  font-size: 18px;
 }
 
 .sunType {

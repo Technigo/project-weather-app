@@ -51,7 +51,6 @@ async function updateDOM(cityName) {
     document.getElementById("city-name").textContent = weatherData.name;
 
     // Handle weather description and icons for the current weather
-    // Handle weather description and icons for the current weather
     const weatherDescription = weatherData.weather[0].description;
     const capitalizedDescription =
       weatherDescription.charAt(0).toUpperCase() + weatherDescription.slice(1);
