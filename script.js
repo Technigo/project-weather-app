@@ -54,7 +54,8 @@ const fetchStockholmWeather = async () => {
         <h3>sunset ${sunsetHour}:${sunsetMinutes}</h3>
       `;
 
-    });
+    }) 
+    .catch((err) => console.log(error));
 };
 
 fetchStockholmWeather();
