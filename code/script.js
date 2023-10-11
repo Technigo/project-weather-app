@@ -46,7 +46,6 @@ const fetchAPI = () => {
       return response.json();
     })
     .then((json) => {
-      console.log(json);
       temperature.innerHTML = json.main.temp.toFixed();
       city.innerHTML = json.name;
       const description = json.weather[0].description;
