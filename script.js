@@ -55,7 +55,9 @@ const asyncFunction = async (city) => {
 
     //The HTML base for rendering queries
     weatherData.innerHTML = `
-    <h1>${parseInt(data.main.temp)}</h1>
+    <h1>
+    ${parseInt(data.main.temp)}
+    </h1>
     <h2>${data.name}</h2>
     <span>Time: ${getUTCTime(data.timezone).getUTCHours()}:${getUTCTime(
       data.timezone

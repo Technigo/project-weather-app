@@ -92,11 +92,16 @@ h2 {
 
 h1 {
   font-size: 4rem;
+  position: relative;
 }
 
 h1::after {
-  content: " °C";
+  content: " \2103";
   font-size: 1.3rem;
+  margin-left: 5px;
+  position: relative;
+  top: -30px;
+  left: -25px;
 }
 
 h1,
