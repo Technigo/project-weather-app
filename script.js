@@ -1,26 +1,3 @@
-const weatherIcons = {
-  "clear sky": "fas fa-sun",
-  "few clouds": "fas fa-cloud-sun",
-  "scattered clouds": "fas fa-cloud",
-  "broken clouds": "fas fa-cloud fa-fade",
-  "overcast clouds": "fas fa-cloud",
-  "light rain": "fas fa-cloud-showers-heavy",
-  "moderate rain": "fas fa-cloud-showers-heavy",
-  "heavy rain": "fas fa-cloud-showers-heavy",
-  "light snow": "fas fa-snowflake",
-  "moderate snow": "fas fa-snowflake",
-  "heavy snow": "fas fa-snowflake",
-  "thunderstorm": "fas fa-bolt",
-  "mist": "fas fa-smog",
-  "fog": "fas fa-smog",
-  "smoke": "fas fa-smog",
-  "haze": "fas fa-smog fa-fade",
-  "dust": "fas fa-smog",
-  "sand": "fas fa-smog",
-  "tornado": "fas fa-wind fa-beat",
-  "squalls": "fas fa-wind",
-};
-
 const api_base_URL = "https://api.openweathermap.org/data/2.5";
 const api_key = "10f8230f6149903425e19587fdc548b8";
 
@@ -55,7 +32,9 @@ function updateTime(cityTimeZone) {
 
 async function updateDOM(cityName) {
   try {
-    const { weatherData, forecastData } = await fetchWeatherAndForecast(cityName);
+    const { weatherData, forecastData } = await fetchWeatherAndForecast(
+      cityName
+    );
 
     // Handle current weather data
     const temperature = Math.round(weatherData.main.temp);
@@ -65,20 +44,38 @@ async function updateDOM(cityName) {
       document.querySelector(".overlay").style.display = "block";
     }
 
-    document.getElementById("temperature").textContent = `${temperature} °`;
-    document.getElementById("feelsLike").textContent = `( Feels like: ${feelsLike} ° )`;
+    document.getElementById("temperature").textContent = `${temperature}°C`;
+    document.getElementById(
+      "feelsLike"
+    ).textContent = `( Feels like: ${feelsLike} °C)`;
     document.getElementById("city-name").textContent = weatherData.name;
 
-    // Handle weather description and icons
+    // Handle weather description and icons for the current weather
+    // Handle weather description and icons for the current weather
     const weatherDescription = weatherData.weather[0].description;
     const capitalizedDescription =
       weatherDescription.charAt(0).toUpperCase() + weatherDescription.slice(1);
-    const iconClass = weatherIcons[weatherDescription] || "fas fa-question";
+    const iconClass = weatherData.weather[0].icon; // Use the icon code provided by the API
 
-    const iconElement = `<i class="weather-icon ${iconClass} fa-beat"></i>`;
-    document.getElementById(
-      "description"
-    ).innerHTML = `<div class="des-container"><p>${capitalizedDescription}</p>${iconElement}</div>`;
+    // Create a flex container to display description and icon side by side
+    const descriptionContainer = document.getElementById("description");
+    descriptionContainer.innerHTML = ""; // Clear existing content
+
+    const desContainer = document.createElement("div");
+    desContainer.className = "des-container";
+
+    const descriptionElement = document.createElement("p");
+    descriptionElement.textContent = capitalizedDescription;
+
+    const iconElement = document.createElement("img");
+    iconElement.src = `https://openweathermap.org/img/wn/${iconClass}.png`;
+    iconElement.alt = capitalizedDescription;
+    iconElement.className = "main-icon";
+
+    desContainer.appendChild(descriptionElement);
+    desContainer.appendChild(iconElement);
+
+    descriptionContainer.appendChild(desContainer);
 
     // Handle forecast data
     const forecastSection = document.getElementById("forecast-section");
@@ -106,10 +103,17 @@ async function updateDOM(cityName) {
         const dayCell = row.insertCell();
         dayCell.textContent = daysToDisplay[accurateDayIndex];
 
-        const descriptionCell = row.insertCell();
+        const weatherDescriptionCell = row.insertCell();
         const weatherDescription = forecastItem.weather[0].description;
-        const iconClass = weatherIcons[weatherDescription] || "fas fa-question";
-        descriptionCell.innerHTML = `<i class="weather-icon ${iconClass}"></i>`;
+        const iconClass = forecastItem.weather[0].icon; // Use the icon code provided by the API
+
+        // Create an img element for the forecast weather icon
+        const iconElement = document.createElement("img");
+        iconElement.src = `https://openweathermap.org/img/wn/${iconClass}.png`;
+        iconElement.alt = weatherDescription;
+        iconElement.className = "weather-icon";
+
+        weatherDescriptionCell.appendChild(iconElement);
 
         const temperatureCell = row.insertCell();
         const roundedTemperature = Math.round(forecastItem.main.temp);
@@ -122,11 +126,12 @@ async function updateDOM(cityName) {
         daysDisplayed++;
       }
     });
-
     const currentTime = new Date();
-    const hours = currentTime.getHours().toString().padStart(2, '0');
-    const minutes = currentTime.getMinutes().toString().padStart(2, '0');
-    document.getElementById("timezone").textContent = `Time: ${hours}:${minutes}`;
+    const hours = currentTime.getHours().toString().padStart(2, "0");
+    const minutes = currentTime.getMinutes().toString().padStart(2, "0");
+    document.getElementById(
+      "timezone"
+    ).textContent = `Time: ${hours}:${minutes}`;
 
     console.log("Fetched weather data:", weatherData);
     console.log("Fetched forecast data:", forecastData);

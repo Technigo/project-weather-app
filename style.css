@@ -1,6 +1,6 @@
 * {
   margin: 0;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .main-container {
@@ -132,18 +132,21 @@
 #forecast-section {
   display: flex;
   justify-content: space-around;
-  padding-top: 40px;
+  flex-direction: row; /* Display forecast items horizontally */
+  align-items: center; /* Center items vertically */
+  padding-top: 30px;
 }
 
-.weather-icon {
+.main-icon {
   font-size: 24px;
-  color: rgb(255, 255, 255);
+  height: 70px;
+  width: 70px;
   z-index: 2; /* Set a higher z-index value to bring the weather icon to the front */
   position: relative; /* Ensure the weather-icon is a positioned element */
 }
 
 td {
-  padding: 12px 24px;
+  padding: 2px 18px;
   font-weight: 200;
 }
 
