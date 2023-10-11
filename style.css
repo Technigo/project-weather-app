@@ -2,6 +2,8 @@
 
 body {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 h1 {
@@ -40,17 +42,17 @@ img {
     justify-content: space-between;
 }
 
-.container-cloudy{
+.cloudy{
     background-color: #F4F7F8;
     color: #F47775;
 }
 
-.container-rainy{
+.rainy{
     background-color: #A3DEF7;
     color: #164A68;
 }
 
-.container-clear{
+.clear{
     background-color: #F7E9B9;
     color: #2A5510;
 }

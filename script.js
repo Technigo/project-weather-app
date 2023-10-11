@@ -44,7 +44,7 @@ const fetchStockholmWeather = async () => {
       console.log(sunsetMinutes);
 
 
-      // Display image depending on weather type
+      // Display image and text depending on weather type
       let weatherId = json.weather[0].id;
       console.log(weatherId);
       if (weatherId > 800) {
@@ -54,6 +54,7 @@ const fetchStockholmWeather = async () => {
         weatherText.innerHTML = `
           <h2>Light a fire and get cosy. ${city} is looking grey today.</h2>
         `;
+        container.classList.add("cloudy");
       } else if (weatherId = 800) {
         weatherImg.innerHTML = `
           <img src="./design/design2/icons/sunnies.svg" />
@@ -61,6 +62,7 @@ const fetchStockholmWeather = async () => {
         weatherText.innerHTML = `
           <h2>Get your sunnies on. ${city} is looking rather great today.</h2>
         `;
+        container.classList.add("clear");
       } else if (weatherId > 700) {
         weatherImg.innerHTML = `
           <img src="./design/design2/icons/cloud.svg" />
@@ -68,6 +70,7 @@ const fetchStockholmWeather = async () => {
         weatherText.innerHTML = `
           <h2>Light a fire and get cosy. ${city} is looking grey today.</h2>
         `;
+        container.classList.add("cloudy");
       } else {
         weatherImg.innerHTML = `
           <img src="./design/design2/icons/umbrella.svg" />
@@ -75,6 +78,7 @@ const fetchStockholmWeather = async () => {
         weatherText.innerHTML = `
           <h2>Don't forget your umbrella. It's wet in ${city} today.</h2>
         `;
+        container.classList.add("rainy");
       }
 
       // Display values in DOM
