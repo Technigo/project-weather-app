@@ -10,15 +10,15 @@ const weatherIcons = {
   "light snow": "fas fa-snowflake",
   "moderate snow": "fas fa-snowflake",
   "heavy snow": "fas fa-snowflake",
-  thunderstorm: "fas fa-bolt",
-  mist: "fas fa-smog",
-  fog: "fas fa-smog",
-  smoke: "fas fa-smog",
-  haze: "fas fa-smog fa-fade",
-  dust: "fas fa-smog",
-  sand: "fas fa-smog",
-  tornado: "fas fa-wind fa-beat",
-  squalls: "fas fa-wind",
+  "thunderstorm": "fas fa-bolt",
+  "mist": "fas fa-smog",
+  "fog": "fas fa-smog",
+  "smoke": "fas fa-smog",
+  "haze": "fas fa-smog fa-fade",
+  "dust": "fas fa-smog",
+  "sand": "fas fa-smog",
+  "tornado": "fas fa-wind fa-beat",
+  "squalls": "fas fa-wind",
 };
 
 const api_base_URL = "https://api.openweathermap.org/data/2.5";
@@ -82,7 +82,7 @@ async function updateDOM(cityName) {
 
     // Handle forecast data
     const forecastSection = document.getElementById("forecast-section");
-    forecastSection.innerHTML = ""; // Clear any existing content in the forecast section
+    forecastSection.innerHTML = "";
 
     // Create a new table for the forecast data
     const forecastTable = document.createElement("table");
@@ -90,7 +90,7 @@ async function updateDOM(cityName) {
 
     // Handle the forecast data for the next four days
     let daysDisplayed = 0;
-    const daysToDisplay = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]; // Define the day names
+    const daysToDisplay = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
     forecastData.list.forEach((forecastItem) => {
       const date = new Date(forecastItem.dt * 1000);
@@ -106,7 +106,6 @@ async function updateDOM(cityName) {
         const dayCell = row.insertCell();
         dayCell.textContent = daysToDisplay[accurateDayIndex];
 
-        // Rest of the code remains the same
         const descriptionCell = row.insertCell();
         const weatherDescription = forecastItem.weather[0].description;
         const iconClass = weatherIcons[weatherDescription] || "fas fa-question";
@@ -124,7 +123,6 @@ async function updateDOM(cityName) {
       }
     });
 
-    // Now, let's add the code to update the "timezone" element with the current time
     const currentTime = new Date();
     const hours = currentTime.getHours().toString().padStart(2, '0');
     const minutes = currentTime.getMinutes().toString().padStart(2, '0');
