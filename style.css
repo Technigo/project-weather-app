@@ -2,7 +2,27 @@
   font-family: Montserrat, Arial, Helvetica, sans-serif;
 }
 
+:root {
+  --cloudyColor: #F47775;
+  --cloudyBackground: #F4F7F8;
+  --rainColor: #164A68;
+  --rainBackground: #A3DEF7;
+  --clearColor: #2A5510;
+  --clearBackground: #F7E9B9;
+}
+
 @font-face {
   font-family: Montserrat;
   src: url(Montserrat-VariableFont_wght.ttf);
+}
+
+#forecastGrid {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  gap: 10px;
+}
+
+#forecastGrid>div {
+  text-align: center;
+  background-color: var(--clearBackground);
 }
