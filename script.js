@@ -28,14 +28,14 @@ const fetchStockholmWeather = async () => {
       const weather = json.weather[0].description;
       console.log("type:", weather);
 
-      // convert sunrise unix time to hours & minutes
+      // Convert sunrise unix time to hours & minutes
       const sunriseTime = new Date(json.sys.sunrise * 1000);
       const sunriseHour = sunriseTime.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2});
       console.log(sunriseHour);
       const sunriseMinutes = sunriseTime.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2});
       console.log(sunriseMinutes);
 
-      // convert sunset unix time to hours & minutes
+      // Convert sunset unix time to hours & minutes
       const sunsetTime = new Date(json.sys.sunset * 1000);
       const sunsetHour = sunsetTime.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2});
       console.log(sunsetHour);
@@ -43,17 +43,37 @@ const fetchStockholmWeather = async () => {
       console.log(sunsetMinutes);
 
 
+      // Display image depending on weather type
+      const weatherId = json.weather[0].id;
+      console.log(weatherId);
+      if (weatherId > 800) {
+        weatherImg.innerHTML = `
+          <img src="./design/design2/icons/cloud.svg" />
+        `
+      } else if (weatherId = 800) {
+        weatherImg.innerHTML = `
+          <img src="./design/design2/icons/sunnies.svg" />
+        `
+      } else if (weatherId > 700) {
+        weatherImg.innerHTML = `
+          <img src="./design/design2/icons/cloud.svg" />
+        `
+      } else {
+        weatherImg.innerHTML = `
+          <img src="./design/design2/icons/umbrella.svg" />
+        `
+      }
+
+      // Display values in DOM
       typeTemp.innerHTML = `
         <h3>${weather} | ${tempRounded}&deg</h3>
       `
       sunrise.innerHTML = `
         <h3>sunrise ${sunriseHour}:${sunriseMinutes}</h3>
       `;
-
       sunset.innerHTML = `
         <h3>sunset ${sunsetHour}:${sunsetMinutes}</h3>
       `;
-
     }) 
     .catch((err) => console.log(error));
 };

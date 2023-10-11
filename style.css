@@ -32,7 +32,7 @@ img {
     padding-top: 40px;
 }
 
-  .forecast-section {
+.forecast-section {
     display: flex;
     justify-content: space-between;
     border-bottom: 2px dotted;
@@ -44,18 +44,18 @@ img {
     background-color: #F4F7F8;
     color: #F47775;
 }
+
 .container-rainy{
     background-color: #A3DEF7;
     color: #164A68;
 }
+
 .container-clear{
     background-color: #F7E9B9;
     color: #2A5510;
 }
 
-
 @media (min-width: 667px) {
-    
     .container{
         font-size: 24px;
         padding: 15%;
@@ -72,8 +72,9 @@ img {
         font-size: 30px;
     }
 }
+
 @media (min-width: 1024px) {
-    
+
     .container{
     font-size: 30px;
     justify-content: space-between;
@@ -83,5 +84,4 @@ img {
         font-weight:bold;
         font-size: 30px;
     }
-
 }
