@@ -48,9 +48,9 @@ const asyncFunction = async (city) => {
     weatherData.innerHTML = `
     <h1>${parseInt(data.main.temp)}</h1>
     <h2>${data.name}</h2>
-    <span>Time: ${getUTCTime(data.timezone).getUTCHours()}:${getUTCTime(
+    <span>Time: ${getUTCTime(data.timezone).getUTCHours().toString().padStart(2, '0')}:${getUTCTime(
       data.timezone
-    ).getUTCMinutes()} </span>
+    ).getUTCMinutes().toString().padStart(2, '0')} </span>
     <div class="flex-left">
       <p>${data.weather[0].main}</p>
       <img src="${weatherIcon}" alt="current image icon" />
@@ -68,7 +68,7 @@ const asyncFunction = async (city) => {
   }
 };
 
-asyncFunction("copenhagen");
+asyncFunction("beijing");
 
 // Reformat the function to accept the name of the city as an argument
 
