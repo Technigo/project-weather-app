@@ -62,42 +62,31 @@ const fetchWeatherByLocation = (latitude, longitude) => {
 };
 
 const fetchAndDisplay5DayForecast = (latitude, longitude) => {
-    const forecastApiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&cnt=8&APPID=${apiKey}`;
+    const forecastApiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
 
     fetch(forecastApiUrl)
         .then((response) => response.json())
-        .then((data) => {
-            if (data.list && data.list.length >= 5) {
+        .then((json) => {
+            if (json.list && json.list.length > 0) {
                 forecastItems.innerHTML = ''; // Clear previous forecast items
-                const dailyForecasts = {};
 
-                data.list.forEach((forecast) => {
-                    const date = new Date(forecast.dt * 1000);
-                    const dateKey = date.toDateString();
+                // Extract daily forecasts from the 3-hour forecasts
+                const dailyForecasts = json.list.filter((forecast, index) => index % 8 === 0);
 
-                    // Group forecasts by date
-                    if (!dailyForecasts[dateKey]) {
-                        dailyForecasts[dateKey] = forecast;
-                    }
-                });
-
-                // Iterate over the daily forecasts
-                for (const dateKey in dailyForecasts) {
-                    const forecast = dailyForecasts[dateKey];
+                dailyForecasts.forEach((forecast) => {
                     const date = new Date(forecast.dt * 1000);
                     const temperature = forecast.main.temp;
                     const weatherDescription = forecast.weather[0].description;
 
                     const forecastItem = document.createElement('div');
-                    forecastItem.classList.add('forecast-item'); // Add a class to the forecast item
+                    forecastItem.classList.add('forecast-item');
                     forecastItem.innerHTML = `
                         <p>${date.toDateString()}</p>
                         <p>${temperature.toFixed(1)}°</p>
                         <p>${weatherDescription}</p>
-                        <p>${forecast.dt_txt}</p>
                     `;
                     forecastItems.appendChild(forecastItem);
-                }
+                });
             } else {
                 console.error('Error fetching 5-day forecast data');
             }
@@ -106,6 +95,27 @@ const fetchAndDisplay5DayForecast = (latitude, longitude) => {
             console.error('Error fetching 5-day forecast data:', error);
         });
 };
+
+getLocationButton.addEventListener('click', () => {
+    if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+
+                fetchWeatherByLocation(latitude, longitude);
+                fetchAndDisplay5DayForecast(latitude, longitude);
+            },
+            (error) => {
+                console.error('Geolocation error:', error);
+            }
+        );
+    } else {
+        console.error('Geolocation is not supported in this browser.');
+    }
+});
+
+
 
 
 
