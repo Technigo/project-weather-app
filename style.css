@@ -103,10 +103,16 @@
   background-color: #45a049;
 }
 
+.subtle-error-message {
+  display: flex;
+  text-align: center;
+}
+
 #geolocation-button-container {
   display: flex;
   align-items: center; /* Vertically center the items */
   justify-content: space-between;
+  padding-bottom: 10px;
 }
 
 #city-name {
