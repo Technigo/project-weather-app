@@ -69,17 +69,27 @@ const fetchWeatherData = async (city, country) => {
   }
 };
 
+
+
 const displayWeather = (weatherData) => {
   // TODO - Check if the weatherData passed is actually valid data.
+  if (!weatherData || !weatherData.current) {
+    console.error("Invalid weather data");
+    return;
+  }
   // We connect weatherContainer to the DomObject the weather container.
   const weatherContainer = document.getElementById("weather");
+  const sunriseTime = convertTimestampToTime(weatherData.current.sys.sunrise);
+  const sunsetTime = convertTimestampToTime(weatherData.current.sys.sunset);
 
   // Example data just to render something
   // TODO - sunrise and sunset are currently in unix timestamp format and needs to be formated
   weatherContainer.innerHTML = `
     <div class="overview"
-      <p>Sunrise is at ${weatherData.current.sys.sunrise}</p>
-      <p>Sunset is at ${weatherData.current.sys.sunset}</p>
+      <p>Sunrise is at ${sunriseTime}</p>
+      <p>Sunset is at ${sunsetTime}</p>
+      <p>Sunset is at ${weatherData.weather.description}</p>
+      <p> The temperature is ${weatherData.current.main.temp} °C</p>
     </div>
     <div class="header">
       <h1>Welcome to ${weatherData.city}. Here's what the weather will be like this week:</h1>
@@ -106,3 +116,8 @@ document.addEventListener("DOMContentLoaded", function () {
       displayWeather(data)
     })
 })
+
+function convertTimestampToTime(timestamp) {
+  const date = new Date(timestamp * 1000);
+  return date.toLocaleTimeString();
+}
