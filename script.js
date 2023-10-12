@@ -88,7 +88,7 @@ const displayWeather = (weatherData) => {
     <div class="overview"
       <p>Sunrise is at ${sunriseTime}</p>
       <p>Sunset is at ${sunsetTime}</p>
-      <p>Sunset is at ${weatherData.weather.description}</p>
+      <p>It is ${weatherData.weather} today!</p>
       <p> The temperature is ${weatherData.current.main.temp} °C</p>
     </div>
     <div class="header">
