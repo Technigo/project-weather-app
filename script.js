@@ -53,11 +53,13 @@ showCity("Stockholm");
 
 // Time
 function timeBuilder(time) {
-  const hours = time.getHours();
-  const minutes = time.getMinutes();
-  return `${hours}:${minutes}`;
-}
-
+    const hours = time.getHours();
+    const minutes = time.getMinutes();
+    const formattedHours = hours < 10 ? `0${hours}` : hours;
+    const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+    return `${formattedHours}:${formattedMinutes}`;
+  }
+  
 // Date
 function dateBuilder(d) {
     const months = [
