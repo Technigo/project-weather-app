@@ -24,7 +24,8 @@ async function fetchWeatherAndForecast(cityName) {
 
 function updateTime(cityTimeZoneOffset) {
   let today = new Date();
-  today.setTime(today.getTime() + cityTimeZoneOffset * 1000); // Adjust the time according to the city's time zone offset
+  let localTime = today.getTime() + today.getTimezoneOffset() * 60000; // Adjust for local time zone offset
+  today.setTime(localTime + cityTimeZoneOffset * 1000); // Adjust the time according to the city's time zone offset
   let h = today.getHours();
   let m = today.getMinutes().toString().padStart(2, "0");
   document.getElementById("time").textContent = `Time: ${h}:${m}`;
