@@ -69,8 +69,6 @@ const fetchWeatherData = async (city, country) => {
   }
 };
 
-
-
 const displayWeather = (weatherData) => {
   // Check if the weatherData passed is actually valid data.
   if (!weatherData || !weatherData.current) {
@@ -100,28 +98,50 @@ const displayWeather = (weatherData) => {
     </div>
     <div class="search">
     </div>`;
-
 }
 
-// Our initialize function that will execute once the DOMContent has been loaded
-document.addEventListener("DOMContentLoaded", function () {
-  // TODO - Error handling
-  // We try and fetch data for Stockholm, Sweden
-  fetchWeatherData("Stockholm","Sweden")
-    // TODO - Add a transform function that transforms the data to the format that we want
-    // .then(unformattedData => transformData(unformattedData))
-    // Once we have the data we display it
-    .then((data) => {
-      // We save the data into our weatherApp object so we can use it in console
-      weatherApp.data = data
-      // We trigger our display function for the code
-      displayWeather(data)
-    })
-})
-
-function convertTimestampToTime(timestamp) {
+const convertTimestampToTime = (timestamp) => {
   const date = new Date(timestamp * 1000);
   const hours = String(date.getHours()).padStart(2, '0');
   const minutes = String(date.getMinutes()).padStart(2, '0');
   return `${hours}.${minutes}`;
 }
+
+const displayforecast = (forecastData) => {
+  // Check if the forecastData passed is actually valid data.
+  if (!forecastData || !forecastData.list) {
+    console.error("Invalid forecast data");
+    return;
+  }
+  // We connect forecastContainer to the DomObject with the id "forecast".
+  const forecastContainer = document.getElementById("forecast");
+
+  // Clear any existing content in the forecast container.
+  forecastContainer.innerHTML = "";
+
+  // Iterate through the forecast data and display each forecast item.
+  forecastData.list.forEach((forecast) => {
+    const time = convertTimestampToTime(forecast.dt);
+    const temperature = Math.round(forecast.main.temp);
+    const forecastDescription = forecast.weather[0].description;
+
+    const forecastItem = document.createElement("div");
+    forecastItem.classList.add("forecast-item");
+    forecastItem.innerHTML = `
+      <p>Time: ${time}</p>
+      <p>Temperature: ${temperature} °C</p>
+      <p>Forecast: ${forecastDescription}</p>
+    `;
+
+    forecastContainer.appendChild(forecastItem);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  fetchWeatherData("Stockholm", "Sweden")
+    .then((data) => {
+      weatherApp.data = data;
+      displayWeather(data);
+      displayforecast(data.forecast); // Display the forecast data
+    });
+});
