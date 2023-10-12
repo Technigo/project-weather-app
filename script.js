@@ -82,6 +82,7 @@ const displayWeather = (weatherData) => {
   const sunriseTime = convertTimestampToTime(weatherData.current.sys.sunrise);
   const sunsetTime = convertTimestampToTime(weatherData.current.sys.sunset);
   const temperatureCelsius = Math.round(weatherData.current.main.temp);
+  const weatherStatus = weatherData.current.weather[0].main.toLowerCase();
 
   // Example data just to render something
   // TODO - sunrise and sunset are currently in unix timestamp format and needs to be formated
@@ -89,7 +90,7 @@ const displayWeather = (weatherData) => {
     <div class="overview"
       <p>Sunrise is at ${sunriseTime}</p>
       <p>Sunset is at ${sunsetTime}</p>
-      <p>It is ${weatherData.weather} today!</p>
+      <p>It is ${weatherStatus} outside today!</p>
       <p> The temperature is ${temperatureCelsius} °C</p>
     </div>
     <div class="header">
