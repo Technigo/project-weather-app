@@ -23,4 +23,9 @@ async function getWeather() {
 	}
 }
 
+//put get weatherforecast function here
+
+// search funtion here
+
+// Function calls here
 getWeather();
