@@ -1,13 +1,27 @@
 // FOUNDATION //
 // Step 1 - Get started with the weather API //
 
+// HTML variables
+// const weatherConditions = "";
+// const temperature = "";
+//
+// const sunrise = "";
+// const sunset = "";
+
+// const city = "";
+// const weather-message-container = "";
+// weatherIcon
+
+// const forcast = "";
+// const forecastDay = "";
+// const temperature = "";
 
 
 // const types = document.getElementById("types"); //
 
 let URL = "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=19e3f1df0b9dcbf3b903658b9bf5177c";
 let forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=8174b34f755933df367987fbb0eefd50";
-const container = document.getElementById("activity");  
+const container = document.getElementById("activity");
 
 const fetchWeather = async () => {
   try {
@@ -16,17 +30,17 @@ const fetchWeather = async () => {
     const resJson = await response.json();
     console.log(resJson);
 
-     // Save data in respective variables
+    // Save data in respective variables
     const timeZone = resJson.timezone;
     const temp = resJson.main.temp;
-   // Example usage: Display the values in HTML elements
-   weight.textContent = timeZone;
-   element.textContent = temp;
+    // Example usage: Display the values in HTML elements
+    weight.textContent = timeZone;
+    element.textContent = temp;
   } catch (error) {
     container.innerText = error;
   }
 };
-fetchWeather(); 
+fetchWeather();
 
 
 const fetchForecastWeather = async () => {
@@ -39,7 +53,7 @@ const fetchForecastWeather = async () => {
     container.innerText = error;
   }
 };
-fetchForecastWeather(); 
+fetchForecastWeather();
 
 
 /* const fetchPokemonsTryCatch = async () => {

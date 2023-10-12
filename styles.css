@@ -1,24 +1,78 @@
+* {
+  margin: 0 auto;
+}
+
 body {
-  font-family: sans-serif;
+  color: #333;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
-img {
-  height: 200px;
+.wrapper {
+  width: 375px;
+  padding: 40px;
 }
 
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
+
+/*--- TYPOGRAPHY -------------------------*/
+h1 {
+  font-size: 37px;
+  font-style: normal;
+  font-weight: 700;
 }
 
-td,
-th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
+
+
+/*--- COLORS -------------------------*/
+.sunshine-colorscheme,
+.weatherIcon path {
+  background-color: #F7E9B9;
+  color: #2A5510;
+  fill: #2A5510;
 }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
+.rain-colorscheme {
+  background-color: #BDE8FA;
+  color: #164A68;
+  fill: #164A68;
+}
+
+.cloudy-colorscheme {
+  background-color: #F4F7F8;
+  color: #F47775;
+  fill: #F47775;
+}
+
+.main-header {
+  padding: 0 0 40px 0;
+}
+
+#forcast {
+  margin: 30px 0;
+}
+
+.weatherForecastDay {
+  border-bottom: 1px dashed;
+  line-height: 36px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.weatherIcon {
+  padding: 0 0 10px 0;
+}
+
+
+
+
+
+
+/* ---  DEVICES 480PX OR LESS -------------------------  */
+@media screen and (max-width: 480px) {
+  .wrapper {
+    width: 100%;
+  }
 }
