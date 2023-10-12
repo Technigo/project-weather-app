@@ -94,6 +94,7 @@ const fetchAndDisplay5DayForecast = (latitude, longitude) => {
                         <p>${date.toDateString()}</p>
                         <p>${temperature.toFixed(1)}°</p>
                         <p>${weatherDescription}</p>
+                        <p>${forecast.dt_txt}</p>
                     `;
                     forecastItems.appendChild(forecastItem);
                 }
