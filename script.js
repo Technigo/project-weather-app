@@ -22,11 +22,11 @@ async function fetchWeatherAndForecast(cityName) {
   }
 }
 
-function updateTime(cityTimeZone) {
+function updateTime(cityTimeZoneOffset) {
   let today = new Date();
-  today.setTime(today.getTime() + cityTimeZone * 1000); // Adjust the time according to the city's time zone
+  today.setTime(today.getTime() + cityTimeZoneOffset * 1000); // Adjust the time according to the city's time zone offset
   let h = today.getHours();
-  let m = today.getMinutes().toString().padStart(2, "0"); // Get minutes with leading zero
+  let m = today.getMinutes().toString().padStart(2, "0");
   document.getElementById("time").textContent = `Time: ${h}:${m}`;
 }
 
@@ -105,6 +105,16 @@ async function updateDOM(cityName) {
     const forecastSection = document.getElementById("forecast-section");
     forecastSection.innerHTML = "";
 
+    // Handle forecast data
+    if (forecastData.list && forecastData.list.length > 0) {
+      // Existing code for displaying forecast data
+    } else {
+      // No forecast data available
+      const forecastSection = document.getElementById("forecast-section");
+      forecastSection.innerHTML =
+        "No forecast data available for this location.";
+    }
+
     // Create a new table for the forecast data
     const forecastTable = document.createElement("table");
     forecastSection.appendChild(forecastTable);
@@ -124,40 +134,44 @@ async function updateDOM(cityName) {
       // Check if the time is 12:00:00
       if (date.getUTCHours() === 12) {
         const weatherIcon = forecastItem.weather[0].icon;
+        const isDayIcon = weatherIcon.endsWith("d");
 
-        // Check if it's a "day icon" (ends with "d")
-        if (weatherIcon.endsWith("d")) {
-          if (daysDisplayed < 4) {
-            const row = forecastTable.insertRow();
+        if (daysDisplayed < 4) {
+          const row = forecastTable.insertRow();
 
-            const dayCell = row.insertCell();
-            dayCell.textContent = daysToDisplay[accurateDayIndex];
+          const dayCell = row.insertCell();
+          dayCell.textContent = daysToDisplay[accurateDayIndex];
 
-            const weatherDescriptionCell = row.insertCell();
-            const weatherDescription = forecastItem.weather[0].description;
-            const iconClass = forecastItem.weather[0].icon; // Use the icon code provided by the API
+          const weatherDescriptionCell = row.insertCell();
+          const weatherDescription = forecastItem.weather[0].description;
 
-            // Create an img element for the forecast weather icon
-            const iconElement = document.createElement("img");
-            iconElement.src = `https://openweathermap.org/img/wn/${iconClass}.png`;
-            iconElement.alt = weatherDescription;
-            iconElement.className = "weather-icon";
+          // Use "day icon" or "night icon" based on the time of day
+          const iconElement = document.createElement("img");
+          iconElement.src = `https://openweathermap.org/img/wn/${
+            isDayIcon ? weatherIcon : weatherIcon.replace("d", "n")
+          }.png`;
+          iconElement.alt = weatherDescription;
+          iconElement.className = "weather-icon";
 
-            weatherDescriptionCell.appendChild(iconElement);
+          weatherDescriptionCell.appendChild(iconElement);
 
-            const temperatureCell = row.insertCell();
-            const roundedTemperature = Math.round(forecastItem.main.temp);
-            temperatureCell.textContent = `${roundedTemperature} °C`;
+          const temperatureCell = row.insertCell();
+          const roundedTemperature = Math.round(forecastItem.main.temp);
+          temperatureCell.textContent = `${roundedTemperature} °C`;
 
-            const windCell = row.insertCell();
-            const roundedWind = forecastItem.wind.speed.toFixed(2);
-            windCell.textContent = `${roundedWind} m/s`;
+          const windCell = row.insertCell();
+          const roundedWind = forecastItem.wind.speed.toFixed(2);
+          windCell.textContent = `${roundedWind} m/s`;
 
-            daysDisplayed++;
-          }
+          daysDisplayed++;
         }
       }
     });
+
+    // Get the time zone offset from the weather data
+    const timeZoneOffset = weatherData.timezone;
+    // Adjust the time according to the city's time zone offset
+    updateTime(timeZoneOffset);
 
     const currentTime = new Date();
     const hours = currentTime.getHours().toString().padStart(2, "0");
