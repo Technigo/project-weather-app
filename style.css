@@ -106,6 +106,7 @@
 #geolocation-button-container {
   display: flex;
   align-items: center; /* Vertically center the items */
+  justify-content: space-between;
 }
 
 #city-name {
