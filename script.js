@@ -16,6 +16,7 @@ const suffix = `&units=metric&APPID=${apiKey}`;
 
 // Elements
 const weatherData = document.getElementById("header__weather-data");
+const headerbackground = document.querySelector('.header-background');
 
 //A function that adjusts for timezone in the API object
 const getUTCTime = (secondsToAdd) => {
@@ -47,36 +48,38 @@ const asyncFunction = async (city) => {
     const sunsetDate = new Date(data.sys.sunset * 1000);
 
     // ICON UPDATE
-    const weatherIcon = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+    const weatherIcon = `http://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`;
+
+    // Variables for current time HH:MM
+    const currentHours = getUTCTime(data.timezone).getUTCHours().toString().padStart(2, '0');
+    const currentMinutes = getUTCTime(data.timezone).getUTCMinutes().toString().padStart(2, '0')
 
     //The HTML base for rendering queries
     weatherData.innerHTML = `
+    <img id="header-weather-icon" src="${weatherIcon}" alt="current image icon" />
     <h1>
     ${parseInt(data.main.temp)}
     </h1>
     <h2>${data.name}</h2>
-    <span>Time: ${getUTCTime(data.timezone).getUTCHours().toString().padStart(2, '0')}:${getUTCTime(
-      data.timezone
-    ).getUTCMinutes().toString().padStart(2, '0')} </span>
+    <span>Time: ${currentHours}:${currentMinutes} </span>
     <div class="flex-left">
       <p>${data.weather[0].main}</p>
-      <img src="${weatherIcon}" alt="current image icon" />
     </div>
-    <div class="flex-space-around">
+    <div class="flex-space-between">
       <p>sunrise ${formatTime(sunriseDate)}</p>
       <p>sunset ${formatTime(sunsetDate)}</p>
     </div>
     `;
     // Get the forecast
     getForecast(data.coord.lat, data.coord.lon)
-    //Add icon to
+    // Update background according to time
+    changeHeaderBackground(currentHours);
   } catch (error) {
     console.log("This is the error: ", error);
   }
 };
 
-asyncFunction("vancouver");
-
+asyncFunction("stockholm");
 
 
 // Get forecast for the coming 4 days (Sebastian)
@@ -92,7 +95,7 @@ const getForecast = async(latitude, longitude) => {
   
     // Filter out only forecasts for 9 ó clock
     const filteredArray = forecastArray.filter((day) =>{
-      return day.dt_txt.toLowerCase().endsWith("09:00:00");
+      return day.dt_txt.toLowerCase().endsWith("12:00:00");
     })
     // Loop over the filteredArray get the day of the week from dt and save it as a variable called "dayOfTheWeek"
     filteredArray.forEach((day, index)=>{
@@ -104,7 +107,7 @@ const getForecast = async(latitude, longitude) => {
         document.querySelector('.forecast__container').innerHTML += `
         <div class="forecast__single-day-flex">
           <span class="forecast__day">${dayOfTheWeek}</span>
-          <span class="forecast__image"><img src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" alt="" /></span>
+          <span class="forecast__image"><img src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" alt="weather icon" /></span>
           <span class="forecast__temp">${parseInt(day.main.temp)} °C</span>
           <span class="forecast__wind">${day.wind.speed}m/s</span>
         </div>      
@@ -126,3 +129,14 @@ function formatTime(date) {
   return `${hours}:${minutes}`;
 }
 
+// Function to add day/night background to header
+
+function changeHeaderBackground(currentHours) {
+  if (currentHours >= "06" && currentHours < "20") {
+    headerbackground.classList.remove('background-mask-night');
+    headerbackground.classList.add('background-mask-day');
+  } else {
+    headerbackground.classList.add('background-mask-night');
+    headerbackground.classList.remove('background-mask-day');
+  }
+}
