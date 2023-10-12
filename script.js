@@ -121,35 +121,44 @@ async function updateDOM(cityName) {
       const nextDayIndex = (dayIndex + daysDisplayed) % 7;
       const accurateDayIndex = nextDayIndex === 0 ? 6 : nextDayIndex - 1;
 
-      if (daysDisplayed < 4) {
-        const row = forecastTable.insertRow();
+      // Check if the time is 12:00:00
+      if (date.getUTCHours() === 12) {
+        const weatherIcon = forecastItem.weather[0].icon;
 
-        const dayCell = row.insertCell();
-        dayCell.textContent = daysToDisplay[accurateDayIndex];
+        // Check if it's a "day icon" (ends with "d")
+        if (weatherIcon.endsWith("d")) {
+          if (daysDisplayed < 4) {
+            const row = forecastTable.insertRow();
 
-        const weatherDescriptionCell = row.insertCell();
-        const weatherDescription = forecastItem.weather[0].description;
-        const iconClass = forecastItem.weather[0].icon; // Use the icon code provided by the API
+            const dayCell = row.insertCell();
+            dayCell.textContent = daysToDisplay[accurateDayIndex];
 
-        // Create an img element for the forecast weather icon
-        const iconElement = document.createElement("img");
-        iconElement.src = `https://openweathermap.org/img/wn/${iconClass}.png`;
-        iconElement.alt = weatherDescription;
-        iconElement.className = "weather-icon";
+            const weatherDescriptionCell = row.insertCell();
+            const weatherDescription = forecastItem.weather[0].description;
+            const iconClass = forecastItem.weather[0].icon; // Use the icon code provided by the API
 
-        weatherDescriptionCell.appendChild(iconElement);
+            // Create an img element for the forecast weather icon
+            const iconElement = document.createElement("img");
+            iconElement.src = `https://openweathermap.org/img/wn/${iconClass}.png`;
+            iconElement.alt = weatherDescription;
+            iconElement.className = "weather-icon";
 
-        const temperatureCell = row.insertCell();
-        const roundedTemperature = Math.round(forecastItem.main.temp);
-        temperatureCell.textContent = `${roundedTemperature} °C`;
+            weatherDescriptionCell.appendChild(iconElement);
 
-        const windCell = row.insertCell();
-        const roundedWind = forecastItem.wind.speed.toFixed(2);
-        windCell.textContent = `${roundedWind} m/s`;
+            const temperatureCell = row.insertCell();
+            const roundedTemperature = Math.round(forecastItem.main.temp);
+            temperatureCell.textContent = `${roundedTemperature} °C`;
 
-        daysDisplayed++;
+            const windCell = row.insertCell();
+            const roundedWind = forecastItem.wind.speed.toFixed(2);
+            windCell.textContent = `${roundedWind} m/s`;
+
+            daysDisplayed++;
+          }
+        }
       }
     });
+
     const currentTime = new Date();
     const hours = currentTime.getHours().toString().padStart(2, "0");
     const minutes = currentTime.getMinutes().toString().padStart(2, "0");
@@ -165,7 +174,25 @@ async function updateDOM(cityName) {
 }
 
 const searchInput = document.querySelector("#search-input");
+const searchIcon = document.querySelector(".search-icon");
+const searchClose = document.querySelector(".search-close");
 const searchButton = document.querySelector("#search-button");
+
+// Event listener to show the search input and hide the icon
+searchIcon.addEventListener("click", () => {
+  searchInput.style.display = "block"; // Show the search input
+  searchButton.style.display = "block"; // Show the search button
+  searchClose.style.display = "block"; // Show the close icon
+  searchIcon.style.display = "none"; // Hide the search icon
+});
+
+// Event listener to hide the search input and show the icon
+searchClose.addEventListener("click", () => {
+  searchInput.style.display = "none"; // Hide the search input
+  searchButton.style.display = "none"; // Hide the search button
+  searchClose.style.display = "none"; // Hide the close icon
+  searchIcon.style.display = "block"; // Show the search icon
+});
 
 searchButton.addEventListener("click", handleSearch);
 searchInput.addEventListener("keyup", (event) => {
@@ -177,11 +204,11 @@ searchInput.addEventListener("keyup", (event) => {
 async function handleSearch() {
   try {
     const cityName = searchInput.value;
-    if (cityName) {
+    if (!cityName) {
+      console.log("Please enter a city name.");
+    } else {
       // Call the updateDOM function with the entered city name
       updateDOM(cityName);
-    } else {
-      console.log("Please enter a city name.");
     }
   } catch (error) {
     console.log("Fetch error:", error);

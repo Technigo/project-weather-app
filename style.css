@@ -38,6 +38,11 @@
   margin-bottom: 20px;
 }
 
+#search-input,
+#search-button {
+  display: none;
+}
+
 .search-icon {
   font-size: 32px;
 }
