@@ -29,7 +29,8 @@ For this project, we suggest that you lay out the foundation of your project tog
 For example, to get the current weather in Stockholm, you can use the URL below. Remember to replace YOUR_API_KEY with the API key you copied from your dashboard.
 
 ```
-https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=YOUR_API_KEY
+https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=f40f4543214ad55ead8d6ca12cb39ee0
+
 ```
 
 The response should look something like this (this has been run through jsonlint.com to add newlines and indentation):
@@ -99,7 +100,8 @@ Show the time for sunrise and sunset in a readable time format (Example: 13:00 o
 Show a forecast for the next 5 days. You can choose how to display the forecast - perhaps you want to show the min and max temperature for each day, or perhaps you want to show the temperature from the middle of the day, or the humidity, what it feels like and so on.
 
 ```
-https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=YOUR_API_KEY
+https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=f40f4543214ad55ead8d6ca12cb39ee0
+
 ```
 
 The API gives us the next 5 days but for every third hour. So a good idea could be to only use the weather data from the same time every day. You can filter the forecast list array to only get the info from 12:00 each day for example. 
