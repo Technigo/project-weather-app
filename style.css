@@ -1,23 +1,94 @@
-.weather-container {
-  border: 1px solid;
-  width: 20rem;
-  margin: auto;
-  padding: 1rem;
+body {
+  font-family: "Roboto", sans-serif;
 }
 
+#search-input {
+  padding: 0.5rem;
+  width: 15rem;
+}
+
+#search-exit-btn,
+#search-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+#search-exit-btn:hover,
+#search-btn:hover {
+  opacity: 0.6;
+}
+
+#cities-search-btn {
+  border: none;
+  background-color: #222350;
+  color: #fff;
+  font-size: 1.2rem;
+}
+#cities-search-btn:hover {
+  opacity: 0.6;
+}
+
+#fav-cities {
+  display: flex;
+  width: 55%;
+  justify-content: end;
+}
+#fav-cities-btn {
+  border: none;
+  font-size: 2rem;
+  width: 4rem;
+  color: #fff;
+  background-color: #757aff;
+  border-radius: 50%;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+#fav-cities-btn:hover {
+  opacity: 0.6;
+}
+
+.weather-container {
+  width: 50%;
+  margin: auto;
+}
+
+/* Sunrise and sunset styles */
 .sunrise-sunset {
   display: flex;
   width: 14rem;
   justify-content: space-between;
 }
 
+/* Search styles */
+.search {
+  display: flex;
+  justify-content: end;
+  width: 40rem;
+  margin-top: 3rem;
+}
+
+/* Error message styles */
+.error-msg {
+  background-color: beige;
+  color: red;
+}
+
+h2 {
+  font-size: 5rem;
+  font-weight: 100;
+  margin-bottom: 0;
+}
 /* styling for 5 days forecast table*/
 table {
   border-spacing: 10px;
   width: 50%;
   margin: 20px auto;
 }
-th, td {
+th,
+td {
   text-align: left;
   padding: 8px;
 }

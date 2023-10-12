@@ -2,14 +2,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--CSS File-->
     <link rel="stylesheet" href="style.css" />
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;600&family=Roboto:wght@300;500&display=swap"
+      rel="stylesheet"
+    />
+    <!--Font Awesome-->
+    <script
+      src="https://kit.fontawesome.com/e8286fde48.js"
+      crossorigin="anonymous"
+      defer
+    ></script>
     <title>Weather App</title>
   </head>
   <body>
+    <div class="search">
+      <button id="search-exit-btn" style="display: none">
+        <i class="fa-sharp fa-solid fa-xmark"></i>
+      </button>
+      <button id="search-btn">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+
+      <input id="search-input" style="visibility: hidden" />
+      <button id="cities-search-btn" style="display: none">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </div>
+
     <div class="weather-container"></div>
+    <div id="fav-cities">
+      <button id="fav-cities-btn">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
     <table id="weather-forecast">
-      <tr>
-      </tr>
+      <tr></tr>
     </table>
     <script src="script.js"></script>
   </body>
