@@ -1,1 +1,12 @@
+.weather-container {
+  border: 1px solid;
+  width: 20rem;
+  margin: auto;
+  padding: 1rem;
+}
 
+.sunrise-sunset {
+  display: flex;
+  width: 14rem;
+  justify-content: space-between;
+}
