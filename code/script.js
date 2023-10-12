@@ -61,15 +61,29 @@ const fetchWeatherByLocation = (latitude, longitude) => {
         });
 };
 
-const fetchAndDisplay5DayForecast = () => {
-    const forecastApiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&cnt=5&APPID=${apiKey}`;
+const fetchAndDisplay5DayForecast = (latitude, longitude) => {
+    const forecastApiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&cnt=8&APPID=${apiKey}`;
 
     fetch(forecastApiUrl)
         .then((response) => response.json())
         .then((data) => {
             if (data.list && data.list.length >= 5) {
-                for (let i = 0; i < 5; i++) {
-                    const forecast = data.list[i];
+                forecastItems.innerHTML = ''; // Clear previous forecast items
+                const dailyForecasts = {};
+
+                data.list.forEach((forecast) => {
+                    const date = new Date(forecast.dt * 1000);
+                    const dateKey = date.toDateString();
+
+                    // Group forecasts by date
+                    if (!dailyForecasts[dateKey]) {
+                        dailyForecasts[dateKey] = forecast;
+                    }
+                });
+
+                // Iterate over the daily forecasts
+                for (const dateKey in dailyForecasts) {
+                    const forecast = dailyForecasts[dateKey];
                     const date = new Date(forecast.dt * 1000);
                     const temperature = forecast.main.temp;
                     const weatherDescription = forecast.weather[0].description;
@@ -92,6 +106,8 @@ const fetchAndDisplay5DayForecast = () => {
         });
 };
 
+
+
 getLocationButton.addEventListener('click', () => {
     if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(
@@ -100,7 +116,7 @@ getLocationButton.addEventListener('click', () => {
                 const longitude = position.coords.longitude;
 
                 fetchWeatherByLocation(latitude, longitude);
-                fetchAndDisplay5DayForecast();
+                fetchAndDisplay5DayForecast(latitude, longitude);
             },
             (error) => {
                 console.error('Geolocation error:', error);
