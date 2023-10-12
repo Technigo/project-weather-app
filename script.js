@@ -6,12 +6,14 @@ const buildQueryString = (params) => {
 // We save our config settings in the weatherApp object
 const weatherApp = {
   apiKey: "b519b073de061051721cf997e13c4842",
-  apiUrl: "https://api.openweathermap.org/data/2.5/forecast",
-  units: "metric"
+  apiUrl: "https://api.openweathermap.org/data/2.5/",
+  units: "metric",
+  // we use this to store our weatherData globally for testing
+  data: {}
 }
-
+// We will use two different API calls ["weather", "forecast"].
 // This function takes the parameters city and country and tries to fetch the weather data.
-const fetchWeather = (city, country) => {
+const fetchWeatherReport = (reportType, city, country) => {
   // Here we set the parameters for our API request.
   const params = {
     // we are grabbing the apiKey from our weatherApp object
@@ -21,8 +23,25 @@ const fetchWeather = (city, country) => {
   }
   // We convert our parameters into a string
   const queryString = buildQueryString(params)
-  // We put together the apiurl and the queryString to form the complete fetch url
-  const url = `${weatherApp.apiUrl}?${queryString}`;
+
+  let apiCollection = ""
+  switch(reportType) {
+    case "current":
+      apiCollection = "weather"
+      break;
+
+    case "forecast":
+      apiCollection = "forecast"
+      break;
+
+    default:
+      // if we dont get a correct report type we return back just false
+      console.log("error")
+      return false
+  }
+
+  // We put together the apiUrl, the apiCollection and the queryString to form the complete fetch url
+  const url = `${weatherApp.apiUrl}${apiCollection}?${queryString}`;
   console.log(url)
   // We return the fetch call. By doing this fetchWeather will first return a promise and later the data.
   // TODO - We need to add some error handling
@@ -34,19 +53,36 @@ const fetchWeather = (city, country) => {
     })
 }
 
+const fetchWeatherData = async (city, country) => {
+  // We run both fetch calls concurrently and wait for them to both complete
+  const [weatherData, forecastData] = await Promise.all([
+    fetchWeatherReport("current", city, country),
+    fetchWeatherReport("forecast", city, country)  // Corrected to "forecast"
+  ]);
+
+  // once completed we return an object consisting of city, country, current, forecast
+  return {
+    city: city,
+    country: country,
+    current: weatherData,
+    forecast: forecastData
+  }
+};
+
 const displayWeather = (weatherData) => {
   // TODO - Check if the weatherData passed is actually valid data.
   // We connect weatherContainer to the DomObject the weather container.
   const weatherContainer = document.getElementById("weather");
 
   // Example data just to render something
+  // TODO - sunrise and sunset are currently in unix timestamp format and needs to be formated
   weatherContainer.innerHTML = `
     <div class="overview"
-      <p>Sunrise is at ${weatherData.city.sunrise}</p>
-      <p>Sunset is at ${weatherData.city.sunset}</p>
+      <p>Sunrise is at ${weatherData.current.sys.sunrise}</p>
+      <p>Sunset is at ${weatherData.current.sys.sunset}</p>
     </div>
     <div class="header">
-      <h1>Welcome to ${weatherData.city.name}. Here's what the weather will be like this week:</h1>
+      <h1>Welcome to ${weatherData.city}. Here's what the weather will be like this week:</h1>
     </div>
     <div class="week">
     </div>
@@ -59,9 +95,14 @@ const displayWeather = (weatherData) => {
 document.addEventListener("DOMContentLoaded", function () {
   // TODO - Error handling
   // We try and fetch data for Stockholm, Sweden
-  fetchWeather('Stockholm','Sweden')
+  fetchWeatherData("Stockholm","Sweden")
     // TODO - Add a transform function that transforms the data to the format that we want
     // .then(unformattedData => transformData(unformattedData))
     // Once we have the data we display it
-    .then(data => displayWeather(data))
+    .then((data) => {
+      // We save the data into our weatherApp object so we can use it in console
+      weatherApp.data = data
+      // We trigger our display function for the code
+      displayWeather(data)
+    })
 })
