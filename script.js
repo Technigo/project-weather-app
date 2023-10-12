@@ -40,11 +40,10 @@ async function updateDOM(cityName) {
     const temperature = Math.round(weatherData.main.temp);
     const feelsLike = Math.round(weatherData.main.feels_like);
 
-    if (temperature <= 18) {
+    if (temperature <= 15) {
       document.querySelector(".overlay").style.display = "block";
     } else {
       document.querySelector(".overlay").style.display = "none";
-
     }
 
     document.getElementById("temperature").textContent = `${temperature}°C`;
@@ -168,7 +167,14 @@ async function updateDOM(cityName) {
 const searchInput = document.querySelector("#search-input");
 const searchButton = document.querySelector("#search-button");
 
-searchButton.addEventListener("click", async () => {
+searchButton.addEventListener("click", handleSearch);
+searchInput.addEventListener("keyup", (event) => {
+  if (event.key === "Enter") {
+    handleSearch();
+  }
+});
+
+async function handleSearch() {
   try {
     const cityName = searchInput.value;
     if (cityName) {
@@ -180,7 +186,7 @@ searchButton.addEventListener("click", async () => {
   } catch (error) {
     console.log("Fetch error:", error);
   }
-});
+}
 
 // Call the initial updateDOM function with a default city
 updateDOM("Stockholm");
