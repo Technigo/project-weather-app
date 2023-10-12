@@ -38,15 +38,22 @@ const asyncFunction = async (city) => {
     const response = await fetch(apiCallUrl);
     const data = await response.json();
     console.log(data);
+
     // SUNSET & SUNRISE UPDATE
-    sunFunction();
+    // Replace these values with your actual timestamps
+
+    // Create Date objects from the timestamps
+    const sunriseDate = new Date(data.sys.sunrise * 1000);
+    const sunsetDate = new Date(data.sys.sunset * 1000);
 
     // ICON UPDATE
     const weatherIcon = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
 
     //The HTML base for rendering queries
     weatherData.innerHTML = `
-    <h1>${parseInt(data.main.temp)}</h1>
+    <h1>
+    ${parseInt(data.main.temp)}
+    </h1>
     <h2>${data.name}</h2>
     <span>Time: ${getUTCTime(data.timezone).getUTCHours().toString().padStart(2, '0')}:${getUTCTime(
       data.timezone
@@ -56,8 +63,8 @@ const asyncFunction = async (city) => {
       <img src="${weatherIcon}" alt="current image icon" />
     </div>
     <div class="flex-space-around">
-      <p>sunrise 07:14</p>
-      <p>sunset 17:54</p>
+      <p>sunrise ${formatTime(sunriseDate)}</p>
+      <p>sunset ${formatTime(sunsetDate)}</p>
     </div>
     `;
     // Get the forecast
@@ -70,17 +77,6 @@ const asyncFunction = async (city) => {
 
 asyncFunction("vancouver");
 
-// Reformat the function to accept the name of the city as an argument
-
-const sunFunction = () => {
-  // SUNSET & SUNRISE UPDATE
-  let sunrise = 1697001284;
-  let sunset = 1697039649;
-  sunrise = new Date(sunrise * 1000).getHours();
-  sunset = new Date(sunset * 1000).toLocaleString();
-
-  console.log(sunrise, sunset);
-};
 
 
 // Get forecast for the coming 4 days (Sebastian)
@@ -122,3 +118,11 @@ const getForecast = async(latitude, longitude) => {
 
 
 // In the function, create the html for every day with template literals
+
+// Function to format the time as HH:MM (24-hour format)
+function formatTime(date) {
+  const hours = date.getHours().toString().padStart(2, "0");
+  const minutes = date.getMinutes().toString().padStart(2, "0");
+  return `${hours}:${minutes}`;
+}
+
