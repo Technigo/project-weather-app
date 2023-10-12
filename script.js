@@ -22,6 +22,50 @@ async function fetchWeatherAndForecast(cityName) {
   }
 }
 
+// Create the geolocation button element
+const geolocationButton = document.createElement("button");
+geolocationButton.id = "geolocation-button"; // Add an ID for targeting in CSS
+
+
+// Get the container element for the button
+const geolocationButtonContainer = document.getElementById(
+  "geolocation-button-container"
+);
+
+// Append the button to the container
+geolocationButtonContainer.appendChild(geolocationButton);
+
+// Get the icon element
+const geolocationIcon = document.querySelector("#geolocation-button i");
+
+// Add an event listener to the icon to trigger geolocation
+geolocationIcon.addEventListener("click", fetchWeatherByLocation);
+
+// Using Geolocation API
+async function fetchWeatherByLocation() {
+  try {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(async (position) => {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+
+        // Fetch weather data for the user's location
+        const response = await fetch(
+          `${api_base_URL}/weather?lat=${latitude}&lon=${longitude}&units=metric&APPID=${api_key}`
+        );
+        const weatherData = await response.json();
+
+        // Call the updateDOM function with the user's location data
+        updateDOM(weatherData.name);
+      });
+    } else {
+      console.log("Geolocation is not supported in this browser.");
+    }
+  } catch (error) {
+    console.log("Fetch error:", error);
+  }
+}
+
 function updateTime(cityTimeZoneOffset) {
   let today = new Date();
   let localTime = today.getTime() + today.getTimezoneOffset() * 60000; // Adjust for local time zone offset
@@ -177,9 +221,7 @@ async function updateDOM(cityName) {
     const currentTime = new Date();
     const hours = currentTime.getHours().toString().padStart(2, "0");
     const minutes = currentTime.getMinutes().toString().padStart(2, "0");
-    document.getElementById(
-      "timezone"
-    ).textContent = `Time: ${hours}:${minutes}`;
+    document.getElementById("time").textContent = `Time: ${hours}:${minutes}`;
 
     console.log("Fetched weather data:", weatherData);
     console.log("Fetched forecast data:", forecastData);
