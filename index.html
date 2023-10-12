@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="icon" type="image/x-icon" href="./images/favicon.png">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" type="image/x-icon" href="./images/favicon.png" />
     <link rel="stylesheet" href="https://fonts.google.com/specimen/Roboto" />
     <title>Weather Now!</title>
   </head>
@@ -12,23 +12,46 @@
     <div id="container">
       <div id="top-container">
         <div id="search-container">
-          <input type="text" id="search-input" placeholder="Type a city name..." autofocus="off" autocomplete="on" />
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Type a city name..."
+            autofocus="off"
+            autocomplete="on"
+          />
           <div id="search-btn" onclick="toggleSearchBar()">
-            <img id="search-icon" src="/images/search-icon.svg" alt="Search" width="24" />
-            <img id="close-icon" src="/images/close-icon.svg" alt="Close" width="24" />
+            <img
+              id="search-icon"
+              src="/images/search-icon.svg"
+              alt="Search"
+              width="24"
+            />
+            <img
+              id="close-icon"
+              src="/images/close-icon.svg"
+              alt="Close"
+              width="24"
+            />
           </div>
         </div>
         <div id="card-display">
           <p id="temperature"></p>
           <p id="city"></p>
+          <p id="time"></p>
+          <p id="date"></p>
           <p id="weather-main">sky-status weather main and description</p>
-          <div> sunrise / time and sunset / time </div>
-        <div>
-        <div id="btn-container">
-          <button>display other cities</button> 
+          <div>sunrise / time and sunset / time</div>
+          <div>
+            <div id="btn-container">
+              <button>display other cities</button>
+            </div>
+          </div>
+
+          <div></div>
         </div>
-      </div id="bottom-container">BOTTOM CONTAINER (Display next 4 days)
-      <div>
+      </div>
+      <div id="bottom-container">
+        <ul id="forecast-list"></ul>
       </div>
     </div>
     <script type="text/JavaScript" src="script.js"></script>
