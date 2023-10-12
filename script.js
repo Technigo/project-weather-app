@@ -38,7 +38,6 @@ const showCity = async (cityName) => {
         temperature.textContent = `${temperatureValue}°C` ;
         city.textContent = cityValue;
         weatherType.textContent = weatherNow;
-        
 };
 showCity("Stockholm");
 
@@ -58,7 +57,19 @@ citySearched.addEventListener("keyup", (e) => {
     if(e.key =="Enter") {search()}
   });
 
+  //FUNCTION FOR SUNSET / SUNRISE TIMESTAMP CONVERSION
+const unixConversion = ((unixTimestamp) => {
+    //convert Unix Timestamp from seconds to milliseconds
+    const date = new Date(unixTimestamp * 1000);
 
+    const options = {
+        hour: "2-digit",
+        minute: "2-digit",
+    }
+    //Generate time string
+    console.log(date.toLocaleTimeString("default", options));
+});
+unixConversion(1697087826);
 // //convert Fahrenheit to Celcius
 // const convertToCelsius = function(fahrenheit) {
 //     const celsius = (fahrenheit - 32) * (5 / 9);
