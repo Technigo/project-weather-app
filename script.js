@@ -16,17 +16,22 @@ async function fetchWeatherData() {
     const response = await fetch(URL);
     const json = await response.json();
     data = json;
-    city.textContent = data.name;
-    
-    const nameValue = data.name;
+
+    const cityValue = data.name;
     const tempValue = data.main.temp;
     const conditionValue = data.weather[0].main;
 
-
+    let now = new Date();
     // display in html
-    name.textContent = nameValue;
-    temp.textContent = tempValue;
+    city.textContent = cityValue;
+    temp.textContent = Math.round(tempValue);
     weatherCondition.textContent = conditionValue;
+    date.textContent = dateBuilder(now);
+
+    setInterval(() => {
+      const currentTime = new Date();
+      time.textContent = timeBuilder(currentTime);
+    }, 1000); 
 
     console.log("WeatherData", data);
   } catch (err) {
@@ -35,6 +40,13 @@ async function fetchWeatherData() {
 }
 
 fetchWeatherData();
+
+
+function timeBuilder(time) {
+  const hours = time.getHours();
+  const minutes = time.getMinutes();
+  return `${hours}:${minutes}`;
+}
 
 
 function dateBuilder(d) {
@@ -67,4 +79,17 @@ function dateBuilder(d) {
   let year = d.getFullYear();
 
   return `${day} ${date} ${month} ${year}`;
+}
+
+
+function weatherConditionBuilder() {
+  
+}
+
+
+
+// search bar
+function toggleSearchBar() {
+  const searchContainer = document.getElementById('search-container');
+  searchContainer.classList.toggle('active');
 }

@@ -4,6 +4,65 @@
 }
 
 body {
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
 }
 
+#container {
+  width: 100%;
+  height: 100%;
+}
+
+#card-top {
+  display: block;
+  background-color: lightseagreen;
+}
+
+#search-container, .search-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 1rem;
+  transition: width 0.3s;
+}
+
+#search-container.active {
+  width: 150px;
+}
+
+.search-input {
+  width: 0;
+  opacity: 0;
+  border: none;
+  border-bottom: 1px solid #000;
+  background: transparent;
+  transition: width 0.3s, opacity 0.3s;
+}
+
+#search-container.active .search-input {
+  width: 100%;
+  opacity: 1;
+}
+
+.search-icon {
+  top: 0;
+  right: 0;
+  cursor: pointer;
+
+}
+
+/* Card info */
+#temp {
+  font-size: 4rem;
+}
+
+#city {
+  font-size: 2rem;
+  font-weight: 200;
+}

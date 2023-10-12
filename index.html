@@ -5,30 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
     <link rel="icon" type="image/x-icon" href="./images/favicon.png" />
-    <link rel="stylesheet" href="https://fonts.google.com/specimen/Roboto">
+    <link rel="stylesheet" href="https://fonts.google.com/specimen/Roboto" />
     <title>Weather Now!</title>
   </head>
   <body>
     <div id="container">
-      <div class="card-top">
-        <input
-          type="text"
-          autocomplete="on"
-          class="search-box"
-          autofocus="autofocus"
-          placeholder="Search a city..."
-        />
-        <span id="temp"></span>
-        <span id="city"></span>
-        <div id="datetime-wrap">
-          <span id="time"></span>
-          <span id="date"></span>
+      <div id="card-top">
+        <div id="search-container">
+          <input type="text" class="search-input" placeholder="Search..." />
+          <div class="search-icon" onclick="toggleSearchBar()">
+            <img src="/design/design1/assets/search-icon.svg" alt="Search" width="24" />
+          </div>
         </div>
+        <div id="temp"></div>
+        <div id="city"></div>
+        <div id="time"></div>
+        <div id="date"></div>
         <div id="condition"></div>
       </div>
-      <div class="card-bottom">
-        Days
-      </div>
+      <div class="card-bottom">Days</div>
     </div>
 
     <script type="text/JavaScript" src="script.js"></script>
