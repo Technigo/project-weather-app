@@ -4,16 +4,6 @@
 
 // API URL: https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=YOUR_API_KEY
 
-// const asyncFunction = async() => {
-// 	try {
-// 		const response = await fetch(URL);
-// 		const data = await response.json();
-// 		//Do something here
-// 	} catch (error) {
-// 		console.log('This is the error: ' error)
-// 	}
-// }
-
 // Get all data from Weather API using fetch and console log the object/array
 // Save key to variable
 // Save data to variable
@@ -27,6 +17,7 @@ const suffix = `&units=metric&APPID=${apiKey}`;
 // Elements
 const weatherData = document.getElementById("header__weather-data");
 
+//A function that adjusts for timezone in the API object
 const getUTCTime = (secondsToAdd) => {
   let millisecondsToAdd = secondsToAdd * 1000;
   const currentTimeUTC = new Date();
@@ -64,9 +55,9 @@ const asyncFunction = async (city) => {
     ${parseInt(data.main.temp)}
     </h1>
     <h2>${data.name}</h2>
-    <span>Time: ${getUTCTime(data.timezone).getUTCHours()}:${getUTCTime(
+    <span>Time: ${getUTCTime(data.timezone).getUTCHours().toString().padStart(2, '0')}:${getUTCTime(
       data.timezone
-    ).getUTCMinutes()} </span>
+    ).getUTCMinutes().toString().padStart(2, '0')} </span>
     <div class="flex-left">
       <p>${data.weather[0].main}</p>
       <img src="${weatherIcon}" alt="current image icon" />
@@ -76,14 +67,57 @@ const asyncFunction = async (city) => {
       <p>sunset ${formatTime(sunsetDate)}</p>
     </div>
     `;
-
+    // Get the forecast
+    getForecast(data.coord.lat, data.coord.lon)
     //Add icon to
   } catch (error) {
     console.log("This is the error: ", error);
   }
 };
 
-asyncFunction("bangkok,thailand");
+asyncFunction("vancouver");
+
+
+
+// Get forecast for the coming 4 days (Sebastian)
+
+//Make a function that takes 2 arguments, latitude and longitude
+
+const getForecast = async(latitude, longitude) => {
+  try {
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}${suffix}`);
+    const data = await response.json();
+    // Get an array of the forecasts
+    const forecastArray = [...data.list];
+  
+    // Filter out only forecasts for 9 ó clock
+    const filteredArray = forecastArray.filter((day) =>{
+      return day.dt_txt.toLowerCase().endsWith("09:00:00");
+    })
+    // Loop over the filteredArray get the day of the week from dt and save it as a variable called "dayOfTheWeek"
+    filteredArray.forEach((day, index)=>{
+      if (index < 4){
+        let timestamp = day.dt;
+        let date = new Date(timestamp * 1000);
+        let dayOfTheWeek = date.toLocaleDateString("en-US", { weekday: "short" });
+        // Render the needed data on the page
+        document.querySelector('.forecast__container').innerHTML += `
+        <div class="forecast__single-day-flex">
+          <span class="forecast__day">${dayOfTheWeek}</span>
+          <span class="forecast__image"><img src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" alt="" /></span>
+          <span class="forecast__temp">${parseInt(day.main.temp)} °C</span>
+          <span class="forecast__wind">${day.wind.speed}m/s</span>
+        </div>      
+        ` 
+      } else return;
+    })
+  }catch (error) {
+    console.log("Could not contact the weather forecast API", error);
+  }
+}
+
+
+// In the function, create the html for every day with template literals
 
 // Function to format the time as HH:MM (24-hour format)
 function formatTime(date) {
@@ -91,3 +125,4 @@ function formatTime(date) {
   const minutes = date.getMinutes().toString().padStart(2, "0");
   return `${hours}:${minutes}`;
 }
+
