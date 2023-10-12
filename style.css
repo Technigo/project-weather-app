@@ -1,0 +1,15 @@
+.forecast-li {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "day weather";
+  border-bottom: solid 2px;
+  border-color: lightgrey;
+}
+
+.forecast-li-day {
+  grid-area: day;
+}
+.forecast-li-weather {
+  grid-area: weather;
+}
