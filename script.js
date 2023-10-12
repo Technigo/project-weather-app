@@ -6,27 +6,6 @@ const citySearched = document.getElementById("search-input");
 const weatherType = document.getElementById("weather-main");
 const searchBtn = document.getElementById("search-btn");
 
-// search bar
-function toggleSearchBar() {
-    const searchContainer = document.getElementById('search-container');
-    const searchInput = document.getElementById('search-input');
-    const searchIcon = document.getElementById('search-icon');
-    const closeIcon = document.getElementById('close-icon');
-  
-    searchContainer.classList.toggle('active');
-    if (searchContainer.classList.contains('active')) {
-      searchInput.focus(); // Automatically focus on the input when the search bar is active.
-    }
-  
-    if (searchContainer.classList.contains('active')) {
-      searchIcon.style.display = 'none';
-      closeIcon.style.display = 'block';
-    } else {
-      searchIcon.style.display = 'block';
-      closeIcon.style.display = 'none';
-    }
-  }
-
 //FETCH API
 const fetchWeatherData = async (cityByName) => {
     try {
@@ -62,7 +41,7 @@ const showCity = async (cityName) => {
 };
 showCity("Stockholm");
 
-//SEARCH BAR
+//SEARCH BAR INPUT
 const search = (e) => {
     let cityName = citySearched.value;
 
@@ -78,6 +57,27 @@ citySearched.addEventListener("keyup", (e) => {
     if(e.key =="Enter") {search()}
   });
 
+  // TOGGLE SEARCH BAR
+function toggleSearchBar() {
+    const searchContainer = document.getElementById('search-container');
+    const searchInput = document.getElementById('search-input');
+    const searchIcon = document.getElementById('search-icon');
+    const closeIcon = document.getElementById('close-icon');
+  
+    searchContainer.classList.toggle('active');
+    if (searchContainer.classList.contains('active')) {
+      searchInput.focus(); // Automatically focus on the input when the search bar is active.
+    }
+  
+    if (searchContainer.classList.contains('active')) {
+      searchIcon.style.display = 'none';
+      closeIcon.style.display = 'block';
+    } else {
+      searchIcon.style.display = 'block';
+      closeIcon.style.display = 'none';
+    }
+  }
+
   //FUNCTION FOR SUNSET / SUNRISE TIMESTAMP CONVERSION
 const unixConversion = ((unixTimestamp) => {
     //convert Unix Timestamp from seconds to milliseconds
@@ -91,6 +91,8 @@ const unixConversion = ((unixTimestamp) => {
     console.log(date.toLocaleTimeString("default", options));
 });
 unixConversion(1697087826);
+
+
 // //convert Fahrenheit to Celcius
 // const convertToCelsius = function(fahrenheit) {
 //     const celsius = (fahrenheit - 32) * (5 / 9);
