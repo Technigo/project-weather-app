@@ -72,7 +72,7 @@ const fetchWeatherData = async (city, country) => {
 
 
 const displayWeather = (weatherData) => {
-  // TODO - Check if the weatherData passed is actually valid data.
+  // Check if the weatherData passed is actually valid data.
   if (!weatherData || !weatherData.current) {
     console.error("Invalid weather data");
     return;
@@ -81,6 +81,7 @@ const displayWeather = (weatherData) => {
   const weatherContainer = document.getElementById("weather");
   const sunriseTime = convertTimestampToTime(weatherData.current.sys.sunrise);
   const sunsetTime = convertTimestampToTime(weatherData.current.sys.sunset);
+  const temperatureCelsius = Math.round(weatherData.current.main.temp);
 
   // Example data just to render something
   // TODO - sunrise and sunset are currently in unix timestamp format and needs to be formated
@@ -89,7 +90,7 @@ const displayWeather = (weatherData) => {
       <p>Sunrise is at ${sunriseTime}</p>
       <p>Sunset is at ${sunsetTime}</p>
       <p>It is ${weatherData.weather} today!</p>
-      <p> The temperature is ${weatherData.current.main.temp} °C</p>
+      <p> The temperature is ${temperatureCelsius} °C</p>
     </div>
     <div class="header">
       <h1>Welcome to ${weatherData.city}. Here's what the weather will be like this week:</h1>
