@@ -16,13 +16,23 @@
   src: url(Montserrat-VariableFont_wght.ttf);
 }
 
-#forecastGrid {
-  display: grid;
-  grid-template-columns: auto auto auto auto auto;
-  gap: 10px;
+.forecastLine {
+  border: 1px var(--clearColor);
+  border-bottom: dashed;
+  height: 2em;
+  clear: both;
 }
 
-#forecastGrid>div {
-  text-align: center;
-  background-color: var(--clearBackground);
+.forecastDate {
+  float: left;
+}
+
+.forecastInfo {
+  float: right;
+}
+
+.forecastIcon {
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
 }
