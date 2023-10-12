@@ -68,7 +68,7 @@ const asyncFunction = async (city) => {
   }
 };
 
-asyncFunction("beijing");
+asyncFunction("vancouver");
 
 // Reformat the function to accept the name of the city as an argument
 
