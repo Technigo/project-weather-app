@@ -27,23 +27,19 @@ h1 {
 
 
 /*--- COLORS -------------------------*/
-.sunshine-colorscheme,
-.weatherIcon path {
+.sunshine-colorscheme {
   background-color: #F7E9B9;
   color: #2A5510;
-  fill: #2A5510;
 }
 
 .rain-colorscheme {
   background-color: #BDE8FA;
   color: #164A68;
-  fill: #164A68;
 }
 
 .cloudy-colorscheme {
   background-color: #F4F7F8;
   color: #F47775;
-  fill: #F47775;
 }
 
 .main-header {
