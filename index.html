@@ -11,9 +11,12 @@
   <body>
     <div id="container">
       <div id="top-container">
-        <div id="search">
-          <input id="citySearch" autofocus="autofocus" placeholder="Search city...">
-          <button id="search-btn">Ok</button>
+        <div id="search-container">
+          <input type="text" id="search-input" placeholder="Type a city name..." autofocus="off" autocomplete="on" />
+          <div id="search-btn" onclick="toggleSearchBar()">
+            <img id="search-icon" src="/images/search-icon.svg" alt="Search" width="24" />
+            <img id="close-icon" src="/images/close-icon.svg" alt="Close" width="24" />
+          </div>
         </div>
         <div id="card-display">
           <p id="temperature"></p>

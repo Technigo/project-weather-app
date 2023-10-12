@@ -2,9 +2,30 @@
 //const URL = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=231ff309be8ceb223aff125da6bf7bb2';
 const temperature = document.getElementById("temperature");
 const city = document.getElementById("city");
-const citySearched = document.getElementById("citySearch");
+const citySearched = document.getElementById("search-input");
 const weatherType = document.getElementById("weather-main");
 const searchBtn = document.getElementById("search-btn");
+
+// search bar
+function toggleSearchBar() {
+    const searchContainer = document.getElementById('search-container');
+    const searchInput = document.getElementById('search-input');
+    const searchIcon = document.getElementById('search-icon');
+    const closeIcon = document.getElementById('close-icon');
+  
+    searchContainer.classList.toggle('active');
+    if (searchContainer.classList.contains('active')) {
+      searchInput.focus(); // Automatically focus on the input when the search bar is active.
+    }
+  
+    if (searchContainer.classList.contains('active')) {
+      searchIcon.style.display = 'none';
+      closeIcon.style.display = 'block';
+    } else {
+      searchIcon.style.display = 'block';
+      closeIcon.style.display = 'none';
+    }
+  }
 
 //FETCH API
 const fetchWeatherData = async (cityByName) => {
