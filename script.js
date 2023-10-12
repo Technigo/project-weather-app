@@ -27,7 +27,8 @@ const fetchStockholmWeather = async () => {
       const tempRounded = Math.round(temp * 10) / 10;
       console.log("temp:", tempRounded);
       const weather = json.weather[0].description;
-      console.log("type:", weather);
+      const weatherCapitalize = weather.charAt(0).toUpperCase() + weather.slice(1);
+      console.log("type:", weatherCapitalize);
 
       // Convert sunrise unix time to hours & minutes
       const sunriseTime = new Date(json.sys.sunrise * 1000);
@@ -75,7 +76,7 @@ const fetchStockholmWeather = async () => {
 
       // Display values in DOM
       typeTemp.innerHTML = `
-        <p>${weather} | ${tempRounded}&deg</p>
+        <p>${weatherCapitalize} | ${tempRounded}&deg</p>
       `
       sunrise.innerHTML = `
         <p>sunrise ${sunriseHour}:${sunriseMinutes}</p>
