@@ -6,40 +6,36 @@ body {
 	box-sizing: border-box;
 }
 
-h1 {
-	font-weight:bold;
-	font-size: 30px;
-}
-
-.header h3 {
-	font-weight: 400;
-	margin:0 2px;
-}
-
-h3 {
-	font-weight: 400;
-}
-
 .container {
+	width: 375px;
+	height: 812px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	font-size: 15px;
+	font-size: 21px;
+	font-weight: 400;
 	font-family: 'Montserrat', sans-serif;
-	padding: 10%;
 }
 
-img {
-	width: 72px;
-	padding-top: 40px;
+/* HEADER */
+.header {
+	margin: 13%; /* 50px */
+	line-height: 8px;
 }
 
-.forecast-section {
-	display: flex;
-	justify-content: space-between;
-	border-bottom: 2px dotted;
-	display: flex;
-	justify-content: space-between;
+/* WEATHER DESCRIPTION */
+.weather-description {
+	margin: 10%; /* 40px */
+}
+
+.weather-text {
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 45px;
+}
+
+.weather-img {
+	width: 73px;
 }
 
 .cloudy {
@@ -56,6 +52,17 @@ img {
 	background-color: #F7E9B9;
 	color: #2A5510;
 }
+
+/* FORECAST */
+.forecast-section {
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 2px dotted;
+	display: flex;
+	justify-content: space-between;
+}
+
+
 
 @media (min-width: 667px) {
 	.container{

@@ -52,7 +52,7 @@ const fetchStockholmWeather = async () => {
           <img src="./design/design2/icons/sunnies.svg" />
         `;
         weatherText.innerHTML = `
-          <h2>Get your sunnies on. ${city} is looking rather great today.</h2>
+          <h1>Get your sunnies on. ${city} is looking rather great today.</h1>
         `;
         container.classList.add("clear");
       } else if (weatherId > 700) {
@@ -60,7 +60,7 @@ const fetchStockholmWeather = async () => {
           <img src="./design/design2/icons/cloud.svg" />
         `;
         weatherText.innerHTML = `
-          <h2>Light a fire and get cosy. ${city} is looking grey today.</h2>
+          <h1>Light a fire and get cosy. ${city} is looking grey today.</h1>
         `;
         container.classList.add("cloudy");
       } else {
@@ -68,20 +68,20 @@ const fetchStockholmWeather = async () => {
           <img src="./design/design2/icons/umbrella.svg" />
         `;
         weatherText.innerHTML = `
-          <h2>Don't forget your umbrella. It's wet in ${city} today.</h2>
+          <h1>Don't forget your umbrella. It's wet in ${city} today.</h1>
         `;
         container.classList.add("rainy");
       }
 
       // Display values in DOM
       typeTemp.innerHTML = `
-        <h3>${weather} | ${tempRounded}&deg</h3>
+        <p>${weather} | ${tempRounded}&deg</p>
       `
       sunrise.innerHTML = `
-        <h3>sunrise ${sunriseHour}:${sunriseMinutes}</h3>
+        <p>sunrise ${sunriseHour}:${sunriseMinutes}</p>
       `;
       sunset.innerHTML = `
-        <h3>sunset ${sunsetHour}:${sunsetMinutes}</h3>
+        <p>sunset ${sunsetHour}:${sunsetMinutes}</p>
       `;
     }) 
     .catch((err) => console.log(err));
