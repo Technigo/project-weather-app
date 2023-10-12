@@ -30,10 +30,10 @@ img {
 
   /* COLORS */
   --BGCOLOR-FADE: rgb(252, 220, 160);
-  --BGCOLOR: #e0e0e0;
+  --BGCOLOR: #FFFFF;
   --BGCOLOR-FADE: rgb(252, 220, 160);
   /* --BGIMAGE: linear-gradient(to bottom, var(--BGCOLOR), var(--BGCOLOR-FADE)); */
-  --BODY-BGCOLOR: #d1d1d1;
+  --BODY-BGCOLOR: #FFFFF;
   /* --BORDER-COLOR: #610963; */
   --FONT-COLOR: #fff;
   --FONT-COLOR-GREY: #e0e0e0;
@@ -55,7 +55,7 @@ img {
   /* STANDARD PADDING */
   --PADDING: 0.5em;
   --PADDING-TB: 0.25em;
-  --PADDING-SIDE: 0 10.5%;
+  --PADDING-SIDE: 30px;
 
   /* STANDARD MARGIN */
   --MARGIN: clamp(1em, 2.5vh, 1.5em) 0;
@@ -79,6 +79,7 @@ body {
   /* max-width: 500px; */
   margin: 0 auto;
   font-weight: var(--FW);
+  overflow-x: hidden;
   /* border-left: var(--BORDERS);
     border-right: var(--BORDERS); */
   /* box-shadow: 0 0 10px var(--BORDER-COLOR); */
@@ -92,7 +93,7 @@ h2 {
 }
 
 h1 {
-  font-size: 4rem;
+  font-size: 5rem;
   position: relative;
 }
 
@@ -111,30 +112,59 @@ h2 {
 }
 
 p {
-  line-height: 4;
+  line-height: 2;
 }
 
 nav {
-  margin-bottom: 2rem;
+  margin-bottom: 40px;
 }
 
 header {
-  background-color: blueviolet;
-  border-radius: 0 0 50% 50% / 50px;
+  position: relative;
+  /* background-color: blueviolet; */
+  border-radius: 0 0 50% 50% / 70px;
 }
 
 nav img {
   width: 10%;
+  max-width: 2rem;
 }
 
 .container {
   position: relative;
-  padding: var(--PADDING-SIDE);
-  padding-top: 1.3rem;
-  padding-bottom: 3rem;
+  padding: 40px var(--PADDING-SIDE);
+  /* padding-top: 1.3rem;
+  padding-bottom: 3rem; */
+}
+
+#header-weather-icon {
+  position: absolute;
+  right: 30px;
+  top: 30px;
 }
 
 /* HEADER */
+
+.header-background {
+  position: absolute;
+  background-color: #FFFF;
+  width: 150%;
+  height: 105%;
+  border-radius: 0 0 50% 50%;
+  left: -25%;
+}
+
+.background-mask-day {
+  background: linear-gradient(90deg, #8589FF 0%, #E8E9FF 100%);
+}
+
+.background-mask-night {
+  background: linear-gradient(270deg, #6264A2 0%, #222350 100%);
+}
+
+#header-weather-icon {
+  filter: drop-shadow(1px 1px 15px white);
+}
 
 #btn-next-city {
   position: absolute;
@@ -142,7 +172,7 @@ nav img {
   bottom: -1rem;
   right: 1rem;
   background-color: var(--BUTTON-COLOR);
-  background-size: 2rem;
+  background-size: 1.5rem;
   background-position: 50% 50%;
   background-image: url(./assets/chevron-right.svg);
   background-repeat: no-repeat;
@@ -158,9 +188,10 @@ nav img {
   align-items: center;
 }
 
-.flex-space-around {
+.flex-space-between {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  margin: var(--MARGIN);
 }
 
 /* FORECAST */
@@ -175,7 +206,7 @@ nav img {
 }
 
 .forecast__single-day-flex span {
-  flex-basis: 20%;
+  flex: 1;
 }
 
 /* Desktop (1025px-1399px)
@@ -190,5 +221,9 @@ Mobile (767px and below) */
     max-width: 1000px;
     margin: 0 auto;
     width: 50%;
+  }
+
+  #btn-next-city {
+    bottom: -2rem;
   }
 }
