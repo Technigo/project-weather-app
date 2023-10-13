@@ -1,18 +1,41 @@
-const urlForOneDay = "https://api.openweathermap.org/data/2.5/weather?q=Knivsta,Sweden&units=metric&APPID=f40f4543214ad55ead8d6ca12cb39ee0"
-const urlForMoreDays ="https://api.openweathermap.org/data/2.5/forecast?q=Knivsta,Sweden&units=metric&APPID=f40f4543214ad55ead8d6ca12cb39ee0"
-const thursday = document.getElementById("thursday")
-const city = document.getElementsByClassName("get-your-sunnies")
+const url ="https://api.openweathermap.org/data/2.5/forecast?q=Knivsta,Sweden&units=metric&APPID=f40f4543214ad55ead8d6ca12cb39ee0"
+const mon = [].slice.call(document.querySelectorAll(".mon"),2)
+const weekday = ["sun","mon","tue","wed","thu","fri","sat"];
+
+
 const fetchWeather =  async () => {
     try{
-      const response = await fetch(urlForMoreDays);
+      const response = await fetch(url);
       const data = await response.json();
-      console.log(data)
-    //   thursday.innerHTML = Math.round(data.main.temp)+"°"
-      thursday.innerHTML = Math.round(data.list[4].main.temp)+"°"
-      const howIsTheWeather = `Get your sunnies on. ${data.name} is looking rather great today.`
-      city[0].innerHTML = howIsTheWeather
+ 
+      const fiveDays = data.list.filter(d =>  {
+        const date = new Date(d.dt * 1000);
+        let time = 11;
+        let dtTime = date.getHours();
+        return time === dtTime;
+        });
+
+    setDayName(fiveDays);    
+    
+    setTemperature(fiveDays);
+
     }catch(error) {
-  console.error(error)
+        console.error(error);
+    }
+
+    function setTemperature(fiveDays) {
+        for (let index = 5; index < mon.length; index++) {
+            mon[index].innerHTML = Math.round(fiveDays[index - 5].main.temp) + "°";
+        }
+    }
+
+    function setDayName(fiveDays) {
+        for (let index = 0; index < 5; index++) {
+            const date = new Date(fiveDays[index].dt * 1000);
+            mon[index].innerHTML = weekday[date.getDay()];
+        }
     }
 };
-fetchWeather()
+fetchWeather();
+
+
