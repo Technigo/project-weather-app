@@ -28,11 +28,12 @@ const showCity = async (cityName) => {
   const weatherData = await fetchWeatherData(cityName);
 
   //Save API data in respective variables
-  const temperatureValue = Math.round(weatherData.main.temp * 10) / 10;
+  const temperatureValue = weatherData.main.temp.toFixed(1);
   const cityValue = weatherData.name;
   const weatherNow = weatherData.weather[0].description;
   const sunrise = weatherData.sys.sunrise;
   const sunset = weatherData.sys.sunset;
+  const timezoneOffSet = weatherData.timezone;
 
   //Example usage: Display the values in console.log
   console.log(temperatureValue);
@@ -44,8 +45,8 @@ const showCity = async (cityName) => {
   temperature.textContent = `${temperatureValue}°C`;
   city.textContent = cityValue;
   weatherType.textContent = weatherNow;
-  sunriseTime.textContent = `Sunrise: ${unixConversion(sunrise)}`;
-  sunsetTime.textContent = `Sunset: ${unixConversion(sunset)}`;
+  sunriseTime.textContent = `Sunrise: ${unixConversion(sunrise + timezoneOffSet)}`;
+  sunsetTime.textContent = `Sunset: ${unixConversion(sunset + timezoneOffSet)}`;
   date.textContent = dateBuilder(now);
 
   //hour now
@@ -98,7 +99,7 @@ function dateBuilder(d) {
   
     return `${day} ${date} ${month} ${year}`;
   }
-  
+
 //SEARCH BAR INPUT
 const search = (e) => {
   let cityName = citySearched.value;
@@ -137,20 +138,21 @@ function toggleSearchBar() {
     closeIcon.style.display = "none";
   }
 }
-
-//FUNCTION FOR SUNSET / SUNRISE TIMESTAMP CONVERSION
+//SUNSET / SUNRISE TIMESTAMP CONVERSION
 const unixConversion = (unixTimestamp) => {
   //convert Unix Timestamp from seconds to milliseconds
   const date = new Date(unixTimestamp * 1000);
   const options = {
+
     hour: "2-digit",
     minute: "2-digit",
+    timeZone: "UTC",
   };
   //Generate time string
   return(date.toLocaleTimeString("default", options));
 };
 
-// // Forecast weekdays
+// Forecast weekdays
 // const fetchWeeklyWeatherData = async (cityByName) => {
 //     try {
 //         const URL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityByName}&units=metric&cnt=7&APPID=231ff309be8ceb223aff125da6bf7bb2`;
@@ -170,7 +172,7 @@ const unixConversion = (unixTimestamp) => {
 
 //     data.list.forEach((dayData) => {
 //         const date = new Date(dayData.dt * 1000); // Convert timestamp to date
-//         const day = date.toLocaleString("en-us", { weekday: "long" });
+//         const day = date.toLocaleString("en-us", { weekday: "short" });
 //         const temperature = dayData.main.temp.toFixed(1);
 
 //         const listItem = document.createElement("li");
