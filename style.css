@@ -24,3 +24,22 @@ p {
   justify-content: space-between;
   border-bottom: 1px dashed;
 }
+
+.seachBar {
+  width: 100%;
+  max-width: 300px;
+}
+
+.seachBar input {
+  height: 20px;
+  max-width: 200px;
+}
+
+.seachBar button {
+  height: 30px;
+}
+
+#errorId {
+  color: red;
+  margin: 20px;
+}

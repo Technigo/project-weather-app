@@ -1,7 +1,9 @@
 const cityNameElement = document.getElementById('cityNameId')
 const weatherMainElement = document.getElementById('weatherMainId')
 const temperatureElement = document.getElementById('temperatureId')
+const cityTextboxElement = document.getElementById("cityInputId")
 const forecastElement = document.getElementById("forecastId")
+const citySearchButtonElement = document.getElementById("citySearchButtonId")
 const errorElement = document.getElementById("errorId")
 
 
@@ -75,6 +77,14 @@ const fetchForecastData = (city) => {
     })
     .catch((error) => errorElement.innerHTML = JSON.stringify(error))
 }
+
+citySearchButtonElement.addEventListener("click", () => {
+  if (cityTextboxElement.value.trim() === '') {
+    return
+  }
+
+  displayWeatherData(cityTextboxElement.value.trim())
+})
 
 displayWeatherData(DEFAULT_CITY)
 fetchForecastData(DEFAULT_CITY)
