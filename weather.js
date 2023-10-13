@@ -12,16 +12,18 @@ let city = "Stockholm"
 const pickTodaysDescription = (todaysDescription) => {
   body.classList.remove(...body.classList)
 
-  if (todaysDescription === "Clouds") {
-    body.classList.add("cloudy")
-    weatherDescription.innerHTML = `Light a fire and get cosy. ${city} is looking grey today.`
-  } else if (todaysDescription === "Clear") {
+  if
+  (todaysDescription === "Clear") {
     body.classList.add("suns-out")
     weatherDescription.innerHTML = `Get your sunnies on. ${city} is looking rather great today.`
   } 
+   else if  (todaysDescription === "Clouds") {
+    body.classList.add("cloudy")
+    weatherDescription.innerHTML = `Time to light a fire and get cosy. ${city} is looking grey today.`
+  }
   else if (todaysDescription === "Rain" || todaysDescription === "Thunderstorm" || todaysDescription === "Drizzle" || todaysDescription === "Snow") {
     body.classList.add("rainy")
-    weatherDescription.innerHTML = `Don't forget your umbrella. It's wet in ${city} today.`
+    weatherDescription.innerHTML = `It's wet in ${city} today. Don't forget your umbrella.`
   } else {
     body.classList.add("unknown")
     weatherDescription.innerHTML = `We don't know what's gonna be like, but be careful in ${city}!`
