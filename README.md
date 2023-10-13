@@ -1,4 +1,4 @@
-# Weather App - Technigo Weatherapp project - Made by Daniel and Karin
+# Weather App - Technigo school project - Made by Daniel and Karin
 
 The Problem:
 For this project, I was tasked with creating a weather app using the OpenWeather API, and we had to do it using only vanilla JavaScript. The challenge was to retrieve weather data for a specified city and display it to the user. We approached this problem by breaking it down into several key steps.
