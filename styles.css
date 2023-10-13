@@ -68,7 +68,9 @@ h1 {
 
 /* ---  DEVICES 480PX OR LESS -------------------------  */
 @media screen and (max-width: 480px) {
-  .wrapper {
+
+  .wrapper,
+  main {
     width: 100%;
   }
 }

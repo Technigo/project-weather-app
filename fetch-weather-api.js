@@ -81,13 +81,10 @@ const fetchWeather = async () => {
 
     // City
     const currentCity = resJson.name;
+    const forcastTodayMain = resJson.weather[0].main;
 
-    // Temporary test variable for description
-    // const forcastTodayTest = "clear sky";
-    switch (forcastToday) {
-      case "clear sky":
-      case "few clouds":
-      case "scattered clouds":
+    switch (forcastTodayMain) {
+      case "Clear":
         document.getElementById('mainHeading').innerText += `Get your sunnies on. ${currentCity} is looking rather great today`
         // Updates colors
         body.className = "sunshine-colorscheme";
@@ -96,9 +93,9 @@ const fetchWeather = async () => {
         document.getElementById('weatherIcon').innerHTML = `<img src="design/design2/icons/noun_Sunglasses_2055147.svg">`
         break
 
-      case "shower rain":
-      case "rain":
-      case "thunderstorm":
+      case "Rain":
+      case "Thunderstorm":
+      case "Drizzle":
         document.getElementById('mainHeading').innerText += `Don't forget your umbrella. It's wet in ${currentCity} today.`
         // Updates colors
         body.className = "rain-colorscheme";
@@ -107,9 +104,11 @@ const fetchWeather = async () => {
         document.getElementById('weatherIcon').innerHTML = `<img src="design/design2/icons/noun_Umbrella_2030530.svg">`
         break
 
-      case "broken clouds":
-      case "mist":
-      case "snow":
+      case "Clouds":
+      case "Mist":
+      case "Snow":
+      case "Haze":
+      case "Fog":
         document.getElementById('mainHeading').innerText += `Light a fire and get cosy. ${currentCity} is looking grey today.`
         // Change class to updates colors
         body.className = "cloudy-colorscheme";
@@ -128,38 +127,6 @@ const fetchWeather = async () => {
 };
 
 fetchWeather();
-
-
-const weatherMessage = "";
-
-
-
-
-
-// MIDDLE SECTION -----------------------------------
-const weatherMessageContainer = document.getElementById("weatherMessageContainer");
-
-/*switch (forcastToday) {
-  case "clear sky" || "few clouds" || "scattered clouds":
-    console.log(`The weather is nice in ${currentCity}`);
-    break
-
-  default:
-    console.log(`The weather is bad in ${currentCity}`);
-}*/
-/*
-- clear sky
-- few clouds
-- scattered clouds
-
-- shower rain
-- rain 
-- thunderstorm
-
-- broken clouds
-- mist
-- snow
-*/
 
 const forcastURL = `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=${apiKey}`
 
@@ -182,7 +149,7 @@ const fetchForcastWeather = async () => {
 
 
     console.log(resForcastJson);
-  
+
     let forecastTemp1 = Math.round(resForcastJson.list[0].main.temp) + " °C";
     let forecastTemp2 = Math.round(resForcastJson.list[1].main.temp) + " °C";
     let forecastTemp3 = Math.round(resForcastJson.list[2].main.temp) + " °C";
@@ -202,20 +169,20 @@ fetchForcastWeather()
 
 // Generate forecast day names
 function forecastDayNames() {
-  const days = [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
+  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
   const newDays = [];
   const today = new Date();
-  todayName=today.getDay();
+  todayName = today.getDay();
   console.log(todayName)
   for (let step = 0; step < 5; step++) {
-    newDays[step]= days[todayName+step+1];
+    newDays[step] = days[todayName + step + 1];
 
   }
-document.getElementById('forecastDay0').innerText += newDays[0];
-document.getElementById('forecastDay1').innerText += newDays[1];
-document.getElementById('forecastDay2').innerText += newDays[2];
-document.getElementById('forecastDay3').innerText += newDays[3];
-document.getElementById('forecastDay4').innerText += newDays[4];
+  document.getElementById('forecastDay0').innerText += newDays[0];
+  document.getElementById('forecastDay1').innerText += newDays[1];
+  document.getElementById('forecastDay2').innerText += newDays[2];
+  document.getElementById('forecastDay3').innerText += newDays[3];
+  document.getElementById('forecastDay4').innerText += newDays[4];
 }
-  forecastDayNames()
+forecastDayNames()
 
