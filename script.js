@@ -24,7 +24,7 @@ const getUTCTime = (secondsToAdd) => {
 const asyncFunction = async (city) => {
   try {
     const apiCallUrl = apiURL + city + suffix;
-    console.log(apiCallUrl);
+
     // Take the argument from the function as "city", merge the APIUrl with the "city" argument and add suffix API detail
     // Add the result of this into one string that can be used to query the API
     const response = await fetch(apiCallUrl);
@@ -38,22 +38,26 @@ const asyncFunction = async (city) => {
     // ICON UPDATE
     const weatherIcon = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
 
+    // Variables for current time HH:MM
+    const currentHours = getUTCTime(data.timezone)
+      .getUTCHours()
+      .toString()
+      .padStart(2, "0");
+    const currentMinutes = getUTCTime(data.timezone)
+      .getUTCMinutes()
+      .toString()
+      .padStart(2, "0");
+
     //The HTML base for rendering queries
     weatherData.innerHTML = `
+    <img id="header-weather-icon" src="${weatherIcon}" alt="current image icon" />
     <h1>
     ${parseInt(data.main.temp)}
     </h1>
     <h2>${data.name}</h2>
-    <span>Time: ${getUTCTime(data.timezone)
-      .getUTCHours()
-      .toString()
-      .padStart(2, "0")}:${getUTCTime(data.timezone)
-      .getUTCMinutes()
-      .toString()
-      .padStart(2, "0")} </span>
+    <span>Time: ${currentHours}:${currentMinutes} </span>
     <div class="flex-left">
       <p>${data.weather[0].main}</p>
-      <img src="${weatherIcon}" alt="current image icon" />
     </div>
     <div class="flex-space-around">
       <p>sunrise ${formateTime(sunriseUTC, data.timezone)}</p>
@@ -62,7 +66,8 @@ const asyncFunction = async (city) => {
     `;
     // Get the forecast
     getForecast(data.coord.lat, data.coord.lon);
-    //Add icon to
+    // Update background according to time
+    changeHeaderBackground(currentHours);
   } catch (error) {
     console.log("This is the error: ", error);
   }
@@ -126,3 +131,15 @@ const formateTime = (dateUTC, timezone) => {
   // Adjusting time 00:00 to this format
   return dateLocal.toTimeString().split(" ")[0].substring(0, 5);
 };
+
+// Function to add day/night background to header
+
+function changeHeaderBackground(currentHours) {
+  if (currentHours >= "06" && currentHours < "20") {
+    headerbackground.classList.remove("background-mask-night");
+    headerbackground.classList.add("background-mask-day");
+  } else {
+    headerbackground.classList.add("background-mask-night");
+    headerbackground.classList.remove("background-mask-day");
+  }
+}
