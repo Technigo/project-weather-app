@@ -5,11 +5,19 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Weather app</title>
 		<link rel="stylesheet" href="./style.css" />
+		<style>
+			@import url("https://fonts.googleapis.com/css2?family=Montserrat");
+		</style>
 	</head>
 	<body>
 		<div id="container">
 			<!-- div to present weather -->
-			<div id></div>
+			<div id="currentWeather"></div>
+			<div id="weatherInfo">
+				<img id="weatherImg" src="img/sunglasses.svg" alt="sunglasses" />
+				<p id="weatherText"></p>
+			</div>
+
 			<!-- extend with forecast for more days -->
 			<ul id="weather-container"></ul>
 			<!-- div to present search bar -->

@@ -1,0 +1,49 @@
+*,
+*:before,
+*:after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+html,
+body {
+	height: 100%;
+}
+#container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	font-family: "Montserrat", sans-serif;
+	font-size: 21px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+.clear {
+	border: 1px solid #707070;
+	background: #f7e9b9;
+	color: #2a5510;
+}
+.rain {
+	border: 1px solid #707070;
+	background: #bde8fa;
+	color: #164a68;
+}
+.cloudy {
+	border: 1px solid #707070;
+	background: #f4f7f8;
+	color: #f47775;
+}
+#currentWeather {
+	padding: 49px 32px 61px 47px;
+}
+#weatherInfo {
+	padding: 0 40px 0 40px;
+}
+#weatherText {
+	font-size: 37px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	margin-top: 17.6px;
+}
