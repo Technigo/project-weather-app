@@ -1,5 +1,6 @@
 //GLOBAL VARIABLES
 const ApiKey = "231ff309be8ceb223aff125da6bf7bb2";
+const citiesBtn = document.getElementById("cities-btn");
 const city = document.getElementById("city");
 const citySearched = document.getElementById("search-input");
 const date = document.getElementById("date");
@@ -9,6 +10,9 @@ const sunsetTime = document.getElementById("sunset");
 const temperature = document.getElementById("temperature");
 const time = document.getElementById("time");
 const weatherType = document.getElementById("skyStatus");
+//famous cities array
+const citiesArray = ["Stockholm", "London", "New York", "Tokyo", "Paris", "Seoul", "Berlin", "São Paulo"];
+let currentCityIndex = 0;
 
 //FETCH API
 const fetchWeatherData = async (cityByName) => {
@@ -28,15 +32,14 @@ const showCity = async (cityName) => {
   const weatherData = await fetchWeatherData(cityName);
 
   //Save API data in respective variables
-  const temperatureValue = weatherData.main.temp.toFixed(1);
   const cityValue = weatherData.name;
-  const weatherNow = weatherData.weather[0].description;
   const sunrise = weatherData.sys.sunrise;
   const sunset = weatherData.sys.sunset;
+  const temperatureValue = weatherData.main.temp.toFixed(1);
   const timezoneOffSet = weatherData.timezone;
+  const weatherNow = weatherData.weather[0].description;
 
   //Example usage: Display the values in console.log
-  console.log(temperatureValue);
   console.log(cityValue);
   console.log("weatherData", weatherData);
   
@@ -56,7 +59,7 @@ const showCity = async (cityName) => {
   }, 1000);
 };
 
-showCity("Stockholm");
+showCity(citiesArray[currentCityIndex]);
 
 // Display Time
 function timeBuilder(time) {
@@ -151,6 +154,16 @@ const unixConversion = (unixTimestamp) => {
   //Generate time string
   return(date.toLocaleTimeString("default", options));
 };
+//Randomize famous cities array
+
+const nextCity = () => {
+    currentCityIndex++;
+    if(currentCityIndex > citiesArray.length - 1){
+        currentCityIndex = 0;
+    }
+    showCity(citiesArray[currentCityIndex]);
+}
+citiesBtn.addEventListener('click', nextCity);
 
 // Forecast weekdays
 // const fetchWeeklyWeatherData = async (cityByName) => {
