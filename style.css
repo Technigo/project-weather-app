@@ -19,13 +19,13 @@
   background-image: url(./images/clearSky.jpeg);
   background-size: cover;
   opacity: var(--top-background-opacity);
-  height: 1500px;
+  height: 1450px;
   width: 1200px;
   border-radius: 50%;
   position: absolute;
   bottom: var(--top-background-bottom-position);
   right: 50%;
-  bottom: 260px;
+  bottom: 250px;
   transform: translate(50%);
   margin-bottom: 30px;
 }
@@ -130,6 +130,8 @@
 #geolocation-button-container {
   display: flex;
   align-items: center; 
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 #geolocation-button {
@@ -140,7 +142,6 @@
   cursor: pointer;
   display: flex; 
   align-items: center; 
-  margin-top: 8px;
 }
 
 #geolocation-button i {
@@ -183,10 +184,6 @@
   font-weight: 200;
 }
 
-#city-name {
-  padding-top: 16px;
-}
-
 .des-container {
   display: flex;
   align-items: center;
@@ -211,7 +208,8 @@
 .sunType {
   display: flex;
   justify-content: space-evenly;
-  padding-top: 50px;
+  padding-top: 20px;
+  font-size: 16px;
 }
 
 #forecast-section {
@@ -219,7 +217,7 @@
   justify-content: space-around;
   flex-direction: row; /* Display forecast items horizontally */
   align-items: center; /* Center items vertically */
-  padding-top: 30px;
+  padding-top: 50px;
 }
 
 .main-icon {
