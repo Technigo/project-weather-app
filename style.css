@@ -1,20 +1,14 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 body {
   font-family: "Montserrat", sans-serif;
-  background: #0026ff;
-  color: white;
+  background: #F7E9B9;
+  color: #2A5510;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
-  min-height: 100vh;
+  margin: 40px;
 }
 
 p {
-  font-size: 1.5em;
+  font-size: 20px;
+  margin: 2px;
 }
