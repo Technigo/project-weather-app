@@ -59,7 +59,7 @@ const asyncFunction = async (city) => {
     <div class="flex-left">
       <p>${data.weather[0].main}</p>
     </div>
-    <div class="flex-space-around">
+    <div class="flex-space-between">
       <p>sunrise ${formateTime(sunriseUTC, data.timezone)}</p>
       <p>sunset ${formateTime(sunsetUTC, data.timezone)}</p>
     </div>
