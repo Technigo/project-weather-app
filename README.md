@@ -1,13 +1,30 @@
-# Weather App
+# Weather App - Technigo Weatherapp project - Made by Daniel and Karin
 
-Replace this readme with your own information about your project.
+The Problem:
+For this project, I was tasked with creating a weather app using the OpenWeather API, and we had to do it using only vanilla JavaScript. The challenge was to retrieve weather data for a specified city and display it to the user. We approached this problem by breaking it down into several key steps.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Approach:
+We started by setting up the fundamental structure of the app. We defined the base URL for the OpenWeather API and obtained an API key. Then, we created a function fetchWeatherAndForecast(cityName) to fetch both the current weather and a 5-day forecast for the given city.
 
-## The problem
+To make the app user-friendly, we incorporated geolocation functionality. Users can click a geolocation button to retrieve weather data based on their current location. This involved using the Geolocation API, which allows the app to determine the user's latitude and longitude.
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+To ensure the app displays accurate local time, we implemented the updateTime(cityTimeZoneOffset) function, which adjusts the time based on the city's time zone offset. This enhances the user experience and makes the app more informative.
 
-## View it live
+We also handled various aspects of the user interface, such as showing weather icons and descriptions, sunrise and sunset times, and a forecast for the next four days. We designed the app to be responsive and intuitive, offering users a clear and visually appealing presentation of weather data.
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Technologies Used:
+
+Vanilla JavaScript: We used pure JavaScript to build the app, making it lightweight and efficient.
+OpenWeather API: We leveraged this API to obtain weather data and forecasts for cities around the world.
+Geolocation API: This allowed me to offer a user-friendly way to fetch weather data based on the user's current location.
+HTML and CSS: These were used to create the structure and style the app's user interface.
+Future Improvements:
+If we had more time, we would consider adding additional features, such as:
+
+User accounts and saved locations.
+Weather alerts and notifications.
+A more detailed forecast with additional weather parameters.
+Improved error handling and user feedback.
+
+
+View it Live - https://weatherapp-daniel-karin.netlify.app/
