@@ -12,3 +12,15 @@ p {
   font-size: 20px;
   margin: 2px;
 }
+
+.forecast {
+  width: 100%;
+  max-width: 500px;
+  margin: 40px;
+}
+
+.forecast div {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed;
+}

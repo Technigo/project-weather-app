@@ -1,6 +1,7 @@
 const cityNameElement = document.getElementById('cityNameId')
 const weatherMainElement = document.getElementById('weatherMainId')
 const temperatureElement = document.getElementById('temperatureId')
+const forecastElement = document.getElementById("forecastId")
 const errorElement = document.getElementById("errorId")
 
 
@@ -44,5 +45,36 @@ const displayWeatherData = async (city) => {
   temperatureElement.innerHTML = `${weatherData.temperature} °C`
 }
 
-displayWeatherData(DEFAULT_CITY)
+const dateToDay = (date) => {
+  // https://www.w3schools.com/jsref/jsref_getday.asp
+  const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const dateObj = new Date(date);
+  return weekday[dateObj.getDay()];
+}
 
+const fetchForecastData = (city) => {
+  const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=${API_KEY}`
+  // https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=29e7c1a3b2d9e92ed27e8c3d97d654cd
+  fetch(url)
+    .then((apiResponse) => apiResponse.json())
+    .then((responseData) => {
+      const forecastDataArray = responseData.list
+      if (!Array.isArray(forecastDataArray)) {
+        errorElement.innerHTML = 'Forecast data not available!'
+        return undefined
+      }
+
+      const midDayForecastDataArray = forecastDataArray.filter(forecastData => forecastData.dt_txt.includes('12:00:00'))
+      const forcastDivs = midDayForecastDataArray.map(midDayForecastData => `
+      <div>
+        <p>${dateToDay(midDayForecastData.dt_txt)}</p>
+        <p>${midDayForecastData.main.temp.toFixed()} °C</p>
+      </div>
+    `)
+      forecastElement.innerHTML = forcastDivs.join('')
+    })
+    .catch((error) => errorElement.innerHTML = JSON.stringify(error))
+}
+
+displayWeatherData(DEFAULT_CITY)
+fetchForecastData(DEFAULT_CITY)
