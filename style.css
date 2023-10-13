@@ -15,3 +15,48 @@ body {
     font-size: 30px;
     font-weight: 700;
 }
+#search-container, #search-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 1rem;
+    transition: width 0.3s;
+  }
+  
+  #search-container.active {
+    width: 150px;
+  }
+  
+  #search-input {
+    width: 0;
+    opacity: 0;
+    border: none;
+    border-bottom: 1px solid #000;
+    background: transparent;
+    transition: width 0.3s, opacity 0.3s;
+    outline: none;
+  }
+  
+  #search-container.active #search-input {
+    width: 100%;
+    opacity: 1;
+  }
+  
+  #search-btn {
+    top: 0;
+    right: 0;
+    cursor: pointer;
+  }
+  
+  #close-icon {
+    display: none;
+    cursor: pointer;
+  }
+  
