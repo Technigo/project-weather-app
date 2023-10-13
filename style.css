@@ -1,6 +1,6 @@
 * {
   margin: 0;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .main-container {
@@ -85,22 +85,17 @@
   font-weight: 200;
   border: 1px solid #ccc;
   border-radius: 4px;
-  margin-right: 10px;
   margin-left: 24px;
 }
 
 .search-bar button {
   padding: 8px 20px;
   font-size: 16px;
-  background-color: #4caf4f9a;
-  color: white;
+  color: rgba(255, 255, 255, 0.985);
   border: none;
   border-radius: 4px;
   cursor: pointer;
-}
-
-.search-bar button:hover {
-  background-color: #45a049;
+  background-color: #c9c9c9;
 }
 
 .subtle-error-message {
