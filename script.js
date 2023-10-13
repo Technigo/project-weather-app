@@ -56,13 +56,13 @@ async function getWeather() {
 
   //     const li = document.createElement("li");
   //     li.innerHTML += `
-  // 			<div>
-  // 				<h2>
-  // 					${weather.name}
-  // 				</h2>
-  // 				<p>Temperature ${weather.main.temp.toFixed(1)}</p>
-  // 				<p>Description: ${weather.weather[0].description}</p>
-  // 			</div>`;
+  //   			<div>
+  //   				<h2>
+  //   					${weather.name}
+  //   				</h2>
+  //   				<p>Temperature ${weather.main.temp.toFixed(1)}</p>
+  //   				<p>Description: ${weather.weather[0].description}</p>
+  //   			</div>`;
 
   //     weatherContainer.appendChild(li);
   //   } catch (err) {
@@ -102,11 +102,14 @@ async function getForecast() {
       obj.dt_txt.includes("12:00:00")
     );
     for (let element of noonWeather) {
+      //trim the string to remove 12:00
+      console.log("in for");
       forecastContainer.innerHTML += `
 		<li class="forecast-li">
 			<div class="forecast-li-day">${element.dt_txt}</div>
 			<div class="forecast-li-weather">${element.weather[0].description}</div>
-		</li>`;
+		</li> 
+	`;
     }
   } catch (err) {
     console.error(err);
