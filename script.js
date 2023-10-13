@@ -22,6 +22,49 @@ async function fetchWeatherAndForecast(cityName) {
   }
 }
 
+// Create the geolocation button element
+const geolocationButton = document.createElement("button");
+geolocationButton.id = "geolocation-button"; // Add an ID for targeting in CSS
+
+// Get the container element for the button
+const geolocationButtonContainer = document.getElementById(
+  "geolocation-button-container"
+);
+
+// Append the button to the container
+geolocationButtonContainer.appendChild(geolocationButton);
+
+// Get the icon element
+const geolocationIcon = document.querySelector("#geolocation-button i");
+
+// Add an event listener to the icon to trigger geolocation
+geolocationIcon.addEventListener("click", fetchWeatherByLocation);
+
+// Using Geolocation API
+async function fetchWeatherByLocation() {
+  try {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(async (position) => {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+
+        // Fetch weather data for the user's location
+        const response = await fetch(
+          `${api_base_URL}/weather?lat=${latitude}&lon=${longitude}&units=metric&APPID=${api_key}`
+        );
+        const weatherData = await response.json();
+
+        // Call the updateDOM function with the user's location data
+        updateDOM(weatherData.name);
+      });
+    } else {
+      console.log("Geolocation is not supported in this browser.");
+    }
+  } catch (error) {
+    console.log("Fetch error:", error);
+  }
+}
+
 function updateTime(cityTimeZoneOffset) {
   let today = new Date();
   let localTime = today.getTime() + today.getTimezoneOffset() * 60000; // Adjust for local time zone offset
@@ -36,6 +79,15 @@ async function updateDOM(cityName) {
     const { weatherData, forecastData } = await fetchWeatherAndForecast(
       cityName
     );
+
+    if (weatherData.cod === "404") {
+      // City not found, display an error message
+      errorMessage.textContent = "City not found. Please enter a valid city name.";
+      errorMessage.style.display = "block"; // Make the error message visible
+      errorMessage.classList.add("subtle-error-message"); // Apply subtle styling
+    } else {
+      // City found, call the updateDOM function
+      errorMessage.style.display = "none"; // Hide the error message
 
     // Handle current weather data
     const temperature = Math.round(weatherData.main.temp);
@@ -177,13 +229,11 @@ async function updateDOM(cityName) {
     const currentTime = new Date();
     const hours = currentTime.getHours().toString().padStart(2, "0");
     const minutes = currentTime.getMinutes().toString().padStart(2, "0");
-    document.getElementById(
-      "timezone"
-    ).textContent = `Time: ${hours}:${minutes}`;
+    document.getElementById("time").textContent = `Time: ${hours}:${minutes}`;
 
     console.log("Fetched weather data:", weatherData);
     console.log("Fetched forecast data:", forecastData);
-  } catch (error) {
+  }} catch (error) {
     console.log("Update DOM error:", error);
   }
 }
@@ -216,17 +266,34 @@ searchInput.addEventListener("keyup", (event) => {
   }
 });
 
+const errorMessage = document.getElementById("error-message");
+
 async function handleSearch() {
   try {
     const cityName = searchInput.value;
     if (!cityName) {
       console.log("Please enter a city name.");
     } else {
-      // Call the updateDOM function with the entered city name
-      updateDOM(cityName);
+      const { weatherData } = await fetchWeatherAndForecast(cityName);
+
+      if (weatherData.cod === "404") {
+        // City not found, display an error message
+        errorMessage.textContent =
+          "City not found. Please enter a valid city name.";
+        errorMessage.style.display = "block"; // Make the error message visible
+        errorMessage.classList.add("subtle-error-message"); // Apply subtle styling
+
+        // Clear the search input field
+        searchInput.value = "";
+      } else {
+        // City found, call the updateDOM function
+        updateDOM(cityName);
+        errorMessage.style.display = "none"; // Hide the error message
+      }
     }
   } catch (error) {
     console.log("Fetch error:", error);
+    // Handle other fetch errors here
   }
 }
 
