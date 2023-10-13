@@ -1,18 +1,20 @@
 //GLOBAL VARIABLES
 //const URL = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=231ff309be8ceb223aff125da6bf7bb2';
-const temperature = document.getElementById("temperature");
 const city = document.getElementById("city");
 const citySearched = document.getElementById("search-input");
-const weatherType = document.getElementById("weather-main");
-const searchBtn = document.getElementById("search-btn");
-const time = document.getElementById("time");
 const date = document.getElementById("date");
+const searchBtn = document.getElementById("search-btn");
+const sunriseTime = document.getElementById("sunrise");
+const sunsetTime = document.getElementById("sunset");
+const temperature = document.getElementById("temperature");
+const time = document.getElementById("time");
+const weatherType = document.getElementById("skyStatus");
 
 //FETCH API
 const fetchWeatherData = async (cityByName) => {
   try {
     const URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityByName}&units=metric&APPID=231ff309be8ceb223aff125da6bf7bb2`;
-
+    let ApiKey = "231ff309be8ceb223aff125da6bf7bb2";
     const responseFromApi = await fetch(URL);
     const weatherData = await responseFromApi.json();
 
@@ -21,16 +23,17 @@ const fetchWeatherData = async (cityByName) => {
     console.log(error);
   }
 };
-
 //MAIN FUNCTION TO DISPLAY THE PROPERTIES
 const showCity = async (cityName) => {
   //waiting response(promise to be resolved) of the function (async) fetchWeatherData with the param and store this value in weatherData
   const weatherData = await fetchWeatherData(cityName);
 
-  //Save data in respective variables
+  //Save API data in respective variables
   const temperatureValue = Math.round(weatherData.main.temp * 10) / 10;
   const cityValue = weatherData.name;
   const weatherNow = weatherData.weather[0].description;
+  const sunrise = weatherData.sys.sunrise;
+  const sunset = weatherData.sys.sunset;
 
   //Example usage: Display the values in console.log
   console.log(temperatureValue);
@@ -42,13 +45,17 @@ const showCity = async (cityName) => {
   temperature.textContent = `${temperatureValue}°C`;
   city.textContent = cityValue;
   weatherType.textContent = weatherNow;
-  date.textContent = dateBuilder(now)
+  sunriseTime.textContent = `Sunrise: ${unixConversion(sunrise)}`;
+  sunsetTime.textContent = `Sunset: ${unixConversion(sunset)}`;
+  date.textContent = dateBuilder(now);
 
+  //hour now
   setInterval(() => {
     const currentTime = new Date();
     time.textContent = timeBuilder(currentTime);
   }, 1000);
 };
+
 showCity("Stockholm");
 
 // Time
@@ -58,8 +65,8 @@ function timeBuilder(time) {
     const formattedHours = hours < 10 ? `0${hours}` : hours;
     const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
     return `${formattedHours}:${formattedMinutes}`;
+
   }
-  
 // Date
 function dateBuilder(d) {
     const months = [
@@ -92,8 +99,6 @@ function dateBuilder(d) {
   
     return `${day} ${date} ${month} ${year}`;
   }
-  
-
 //SEARCH BAR INPUT
 const search = (e) => {
   let cityName = citySearched.value;
@@ -137,15 +142,13 @@ function toggleSearchBar() {
 const unixConversion = (unixTimestamp) => {
   //convert Unix Timestamp from seconds to milliseconds
   const date = new Date(unixTimestamp * 1000);
-
   const options = {
     hour: "2-digit",
     minute: "2-digit",
   };
   //Generate time string
-  console.log(date.toLocaleTimeString("default", options));
+  return(date.toLocaleTimeString("default", options));
 };
-unixConversion(1697087826);
 
 // // Forecast weekdays
 // const fetchWeeklyWeatherData = async (cityByName) => {

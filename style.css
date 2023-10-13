@@ -59,4 +59,13 @@ body {
     display: none;
     cursor: pointer;
   }
+
+  .suntime {
+    display: flex;
+    gap: 5px;
+  }
+  #sunrise,
+  #sunset {
+
+  }
   
