@@ -1,12 +1,4 @@
-// API key name: technigo-weather-app
-
-// API key: 00cf2e54cabfd29c16426be71518c00a
-
-// API URL: https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=YOUR_API_KEY
-
 // Get all data from Weather API using fetch and console log the object/array
-// Save key to variable
-// Save data to variable
 
 //Globals
 const apiKey = "00cf2e54cabfd29c16426be71518c00a";
@@ -16,7 +8,6 @@ const suffix = `&units=metric&APPID=${apiKey}`;
 
 // Elements
 const weatherData = document.getElementById("header__weather-data");
-const headerbackground = document.querySelector('.header-background');
 
 //A function that adjusts for timezone in the API object
 const getUTCTime = (secondsToAdd) => {
@@ -41,102 +32,97 @@ const asyncFunction = async (city) => {
     console.log(data);
 
     // SUNSET & SUNRISE UPDATE
-    // Replace these values with your actual timestamps
-
-    // Create Date objects from the timestamps
-    const sunriseDate = new Date(data.sys.sunrise * 1000);
-    const sunsetDate = new Date(data.sys.sunset * 1000);
+    const sunriseUTC = new Date(data.sys.sunrise * 1000);
+    const sunsetUTC = new Date(data.sys.sunset * 1000);
 
     // ICON UPDATE
-    const weatherIcon = `http://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`;
-
-    // Variables for current time HH:MM
-    const currentHours = getUTCTime(data.timezone).getUTCHours().toString().padStart(2, '0');
-    const currentMinutes = getUTCTime(data.timezone).getUTCMinutes().toString().padStart(2, '0')
+    const weatherIcon = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
 
     //The HTML base for rendering queries
     weatherData.innerHTML = `
-    <img id="header-weather-icon" src="${weatherIcon}" alt="current image icon" />
     <h1>
     ${parseInt(data.main.temp)}
     </h1>
     <h2>${data.name}</h2>
-    <span>Time: ${currentHours}:${currentMinutes} </span>
+    <span>Time: ${getUTCTime(data.timezone)
+      .getUTCHours()
+      .toString()
+      .padStart(2, "0")}:${getUTCTime(data.timezone)
+      .getUTCMinutes()
+      .toString()
+      .padStart(2, "0")} </span>
     <div class="flex-left">
       <p>${data.weather[0].main}</p>
+      <img src="${weatherIcon}" alt="current image icon" />
     </div>
-    <div class="flex-space-between">
-      <p>sunrise ${formatTime(sunriseDate)}</p>
-      <p>sunset ${formatTime(sunsetDate)}</p>
+    <div class="flex-space-around">
+      <p>sunrise ${formateTime(sunriseUTC, data.timezone)}</p>
+      <p>sunset ${formateTime(sunsetUTC, data.timezone)}</p>
     </div>
     `;
     // Get the forecast
-    getForecast(data.coord.lat, data.coord.lon)
-    // Update background according to time
-    changeHeaderBackground(currentHours);
+    getForecast(data.coord.lat, data.coord.lon);
+    //Add icon to
   } catch (error) {
     console.log("This is the error: ", error);
   }
 };
 
-asyncFunction("stockholm");
-
+asyncFunction("sidney");
 
 // Get forecast for the coming 4 days (Sebastian)
 
 //Make a function that takes 2 arguments, latitude and longitude
 
-const getForecast = async(latitude, longitude) => {
+const getForecast = async (latitude, longitude) => {
   try {
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}${suffix}`);
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}${suffix}`
+    );
     const data = await response.json();
     // Get an array of the forecasts
     const forecastArray = [...data.list];
-  
+
     // Filter out only forecasts for 9 ó clock
-    const filteredArray = forecastArray.filter((day) =>{
-      return day.dt_txt.toLowerCase().endsWith("12:00:00");
-    })
+    const filteredArray = forecastArray.filter((day) => {
+      return day.dt_txt.toLowerCase().endsWith("09:00:00");
+    });
     // Loop over the filteredArray get the day of the week from dt and save it as a variable called "dayOfTheWeek"
-    filteredArray.forEach((day, index)=>{
-      if (index < 4){
+    filteredArray.forEach((day, index) => {
+      if (index < 4) {
         let timestamp = day.dt;
         let date = new Date(timestamp * 1000);
-        let dayOfTheWeek = date.toLocaleDateString("en-US", { weekday: "short" });
+        let dayOfTheWeek = date.toLocaleDateString("en-US", {
+          weekday: "short",
+        });
         // Render the needed data on the page
-        document.querySelector('.forecast__container').innerHTML += `
+        document.querySelector(".forecast__container").innerHTML += `
         <div class="forecast__single-day-flex">
           <span class="forecast__day">${dayOfTheWeek}</span>
-          <span class="forecast__image"><img src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" alt="weather icon" /></span>
+          <span class="forecast__image"><img src="https://openweathermap.org/img/wn/${
+            day.weather[0].icon
+          }@2x.png" alt="" /></span>
           <span class="forecast__temp">${parseInt(day.main.temp)} °C</span>
           <span class="forecast__wind">${day.wind.speed}m/s</span>
         </div>      
-        ` 
+        `;
       } else return;
-    })
-  }catch (error) {
+    });
+  } catch (error) {
     console.log("Could not contact the weather forecast API", error);
   }
-}
+};
 
+const formateTime = (dateUTC, timezone) => {
+  // Get timezone offset in minutes
+  const timezoneOffset = timezone / 60;
 
-// In the function, create the html for every day with template literals
+  // Adjust time for timezone offset and summertime if it´s necessary
+  const dateLocal = new Date(
+    dateUTC.getTime() +
+      (timezoneOffset + new Date().getTimezoneOffset()) * 60 * 1000
+  );
 
-// Function to format the time as HH:MM (24-hour format)
-function formatTime(date) {
-  const hours = date.getHours().toString().padStart(2, "0");
-  const minutes = date.getMinutes().toString().padStart(2, "0");
-  return `${hours}:${minutes}`;
-}
-
-// Function to add day/night background to header
-
-function changeHeaderBackground(currentHours) {
-  if (currentHours >= "06" && currentHours < "20") {
-    headerbackground.classList.remove('background-mask-night');
-    headerbackground.classList.add('background-mask-day');
-  } else {
-    headerbackground.classList.add('background-mask-night');
-    headerbackground.classList.remove('background-mask-day');
-  }
-}
+  // Adjusting time 00:00 to this format
+  return dateLocal.toTimeString().split(" ")[0].substring(0, 5);
+};
