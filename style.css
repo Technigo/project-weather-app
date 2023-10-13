@@ -98,6 +98,26 @@
   background-color: #c9c9c9;
 }
 
+.search-bar button:hover {
+  background-color: #2b88ebd5;
+  transform: scale(1.05); 
+  transition: transform 0.2s; 
+}
+
+.search-bar button:active {
+  transform: scale(1.2);
+}
+
+/* Styling for the close icon on hover and click */
+.search-close:hover {
+  color: #2b88ebd5; 
+  cursor: pointer;
+}
+
+.search-close:active {
+  transform: scale(1.1); 
+}
+
 .subtle-error-message {
   display: flex;
   text-align: center;
@@ -105,29 +125,32 @@
 
 #geolocation-button-container {
   display: flex;
-  align-items: center; /* Vertically center the items */
-  justify-content: space-between;
-  padding-bottom: 10px;
-}
-
-#city-name {
-  margin-right: 10px; /* Adjust the margin as needed */
+  align-items: center; 
 }
 
 #geolocation-button {
-  background-color: transparent; /* Make the background transparent */
-  border: none; /* Remove the border */
+  font-weight: 600;
+  color: white;
+  background: none; 
+  border: none; 
   cursor: pointer;
+  display: flex; 
+  align-items: center; 
+  margin-top: 8px;
 }
 
 #geolocation-button i {
-  margin-left: 5px; /* Add space between the icon and text (city name) */
-  font-size: 16px; /* Adjust the font size if needed */
-  color: #007BFF; /* Set the icon color */
+  margin-right: 5px; 
+  font-size: 16px;
+  color: #007BFF;
 }
 
 #geolocation-button:hover i {
   color: #0056b3; /* Icon color on hover */
+}
+
+#city-name {
+  margin-right: 10px;
 }
 
 .main-wrapper {
