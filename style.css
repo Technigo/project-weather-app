@@ -74,6 +74,10 @@
   font-size: 32px;
 }
 
+.search-icon:hover {
+  color: #2b88ebd5;
+}
+
 .search-close {
   display: none;
   font-size: 32px;
