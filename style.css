@@ -49,18 +49,26 @@ body {
 }
 
 #forecast-container {
-  padding: 0 40px 0 40px;
-  border: 2px dotted aqua;
+  padding: 49px 32px 61px 25px;
+  font-size: 17px;
 }
 .forecast-li {
   display: grid;
-  grid-template-columns: 150px 150px 150px;
+  grid-template-columns: 10rem 5rem 15rem;
   grid-template-rows: auto;
-  grid-template-areas: "day . weather";
+  grid-template-areas:
+    "heading . . "
+    "day . weather";
   border-bottom: solid 2px;
   border-color: lightgrey;
+  margin: 1rem;
+  width: 50%;
 }
 
+.forecast-heading {
+  margin-left: 1rem;
+  grid-area: heading;
+}
 .forecast-li-day {
   grid-area: day;
 }

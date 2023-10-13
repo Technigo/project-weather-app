@@ -101,13 +101,14 @@ async function getForecast() {
     const noonWeather = forecast.list.filter((obj) =>
       obj.dt_txt.includes("12:00:00")
     );
+
     for (let element of noonWeather) {
-      //trim the string to remove 12:00
-      console.log("in for");
       forecastContainer.innerHTML += `
 		<li class="forecast-li">
-			<div class="forecast-li-day">${element.dt_txt}</div>
-			<div class="forecast-li-weather">${element.weather[0].description}</div>
+			<div class="forecast-li-day">${element.dt_txt.substring(0, 10)} </div>
+			<div class="forecast-li-weather">${
+        element.weather[0].description
+      } | ${Math.round(element.main.temp)}&#176; </div>
 		</li> 
 	`;
     }
