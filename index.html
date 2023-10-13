@@ -11,13 +11,25 @@
   </head>
   <body>
     <main>
-      <div class="search-box">
-        <input id="city-input" type="text" placeholder="Enter your location" />
-        <button id="search-btn"><i class="fa fa-search"></i></button>
+      <div id="app">
+        <div class="img-sky bg-img"></div> <!-- Used for the bg image. TODO: Change class depending on weather description -->
+        <div id="top-container">
+          <div class="search-box">
+            <input id="city-input" type="text" placeholder="Enter your location" />
+            <button id="search-btn"><i class="fa fa-search"></i></button>
+          </div>
+          <div class="city-weather-bg"></div>
+          <div id="city-weather-container">
+            <div id ="weather-city"></div>
+            <div id="weather-description"></div>
+            <div id="sun-container" class="flex"></div>
+          </div>
+        </div>
+        <!--<div id="weather-container"></div>--> <!-- I don't think we are using this element -->
+        <div id="bottom-container">
+          <div id="forecast-container"></div>
+        </div>
       </div>
-      <div id ="weather-city"></div>
-      <div id="weather-container"></div>
-      <div id="forecast-container"></div>
     </main>
     <script src="index.js"></script>
   </body>

@@ -3,8 +3,9 @@ const cityWeatherContainer = document.getElementById("weather-city");
 const searchButton = document.getElementById("search-btn");
 const cityInput = document.getElementById("city-input");
 const forecastContainer = document.getElementById("forecast-container");
+const sunriseSunsetContainer = document.getElementById("sun-container");
 
-const API_KEY = "KEY_API";
+const API_KEY = "api-key";
 let cityName = "Gothenburg";
 const fetchWeather = async (cityName) => {
   try {
@@ -20,13 +21,16 @@ const fetchWeather = async (cityName) => {
     const formattedSunset = sunsetDate.toLocaleTimeString("en-US", format);
     // print weather info for city
     cityWeatherContainer.innerHTML = `
-        <p>City: ${currentWeather.name}</p>
-        <p>Temp: ${parseInt(currentWeather.main.temp)}<span>°C</span></p>
-        <p>Description:${currentWeather.weather[0].description}</p>
+        <h1>${parseInt(currentWeather.main.temp)}<span>°C</span></h1>
+        <h2>${currentWeather.name}</h2>
+        <p>${currentWeather.weather[0].description}</p>
         <p>Humidity:${currentWeather.main.humidity + "%"}</p>
-        <p>Sunrise: ${formattedSunrise}</p>
-        <p>Sunset: ${formattedSunset}</p>
         `;
+
+    sunriseSunsetContainer.innerHTML = `
+      <p>Sunrise: ${formattedSunrise}</p>
+      <p>Sunset: ${formattedSunset}</p>
+      `;
 
     const coordinates = currentWeather.coord;
     const weatherURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${API_KEY}`;
@@ -98,19 +102,25 @@ const fetchWeather = async (cityName) => {
 
       //get correct format for day
       const dateFilteredForecast = new Date(day.dt_txt);
-      const options = { weekday: "long" };
+      const options = { weekday: "short" };
       const weekdayFilteredForecast = new Intl.DateTimeFormat(
         "en-UK",
         options
       ).format(dateFilteredForecast);
 
+      // create container for day
+      const forecast = document.createElement("div");
+      forecast.classList.add("forecast-item");
+
       //print fivedays forecast
-      forecastContainer.innerHTML += `
+      forecast.innerHTML += `
       <p>${weekdayFilteredForecast}</p>
-      <p><img src="./design/design1/assets/${iconType}"</p>
+      <p><img src="./design/design1/assets/${iconType}" height="30" width="30"/></p>
       <p>${day.wind.speed} m/s</p>
-      <p>Temp: ${parseInt(currentWeather.main.temp)}<span>°C</span></p>
+      <p>${parseInt(currentWeather.main.temp)}<span>°C</span></p>
       `;
+
+      forecastContainer.appendChild(forecast);
     });
   } catch (error) {
     console.log(error);

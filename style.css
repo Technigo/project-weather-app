@@ -1,31 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Poppins&family=Roboto:wght@300&display=swap');
+
+/* General styling rules */ 
 body {
-    background-color: lightblue;
+    background-color: #faf9f9;
+    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-weight: light;
 }
+
+.flex {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* Styling for search box container */
 .search-box{
     display: flex;
     justify-content: center;
+    padding: 1em;
 }
-#city-input{
+
+#city-input{ /* search input bar */
     border: none;
     border-radius: 5px;
-    
 }
-button{
+
+button{ /* search button */
     height: 30px;
     width: 30px;
     border-radius: 50%;
     border: none;
     margin-left: 10px;
 }
-#forecast-container{
-    background-color: lavender
-    
+
+/* Styling for app (whole container box) */
+#app {
+    background-color: #e0e0e0;
+    width: 400px;
+    margin: 0 auto;
+    box-shadow: 5px 5px 15px rgb(150, 150, 150);
+    display: block;
 }
-.city{
-    font-size: 40px;
+
+/* Styling for top container */
+#top-container {
+    color: white;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    width: 400px;
+    margin: 0 auto;
+    position: fixed;
 }
-img{
-    height: 30px;
-    width: 30px;
-    object-fit: contain;
+
+#city-weather-container {
+    padding: 2em;
+    top: 0;
+    left: 0;
+    height: 100%;
+}
+
+
+/* Styling for text */
+p {
+    margin: 0.5em 0;
+}
+
+h1 {
+    font-size: 5em;
+    margin: 0;
+}
+
+h2 {
+    font-size: 2em;
+    margin: 0;
+}
+
+
+/* Styling for bottom container */
+#bottom-container {
+    position: absolute;
+    width: 400px;
+    top: 350px;
+}
+
+.forecast-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+#forecast-container {
+    background-color: #e0e0e0;
+    padding: 10em 3em 3em 3em;
+}
+
+
+/* Styling for background images */
+.bg-img {
+    filter        : brightness(60%);
+    -moz-filter   : brightness(60%);
+    -webkit-filter: brightness(60%);
+    -o-filter     : brightness(60%);
+    width: 400px;
+    height: 450px;
+    position: fixed;
+    z-index: 1;
+    border-radius: 0 0 50% 50%/0 0 15% 15%;
+}
+
+.img-rain {
+    background-image: url("https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80");
+}
+
+.img-sky {
+    background-image: url("https://images.unsplash.com/photo-1465080357990-d4bc259ec4a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80");
+}
+
+.img-clouds {
+    background-image: url("https://images.unsplash.com/photo-1548266652-99cf27701ced?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1035&q=80");
 }
