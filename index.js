@@ -5,13 +5,10 @@ const cityInput = document.getElementById("city-input");
 const forecastContainer = document.getElementById("forecast-container");
 
 const API_KEY = "KEY_API";
-
+let cityName = "Gothenburg";
 const fetchWeather = async (cityName) => {
   try {
-    // CHANGE TO THE FIRST LONGURL LINE 13 AND UNCOMMENT LINE 70  FOR TRYING DIFFERENT CITIES
-
-    //let longUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${API_KEY}`;
-    let longUrl = `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${API_KEY}`;
+    const longUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${API_KEY}`;
     const responseFromApi = await fetch(longUrl);
     const currentWeather = await responseFromApi.json();
 
@@ -36,44 +33,97 @@ const fetchWeather = async (cityName) => {
     const responseFromApi2 = await fetch(weatherURL);
     const weatherInfo = await responseFromApi2.json();
     const weatherList = weatherInfo.list;
+    console.log(weatherList);
 
     //filtered temperatur from 12:00 each day
     const filteredForecast = weatherList.filter((day) =>
       day.dt_txt.includes("12:00")
     );
+    console.log(filteredForecast);
+
 
     filteredForecast.forEach((day) => {
+      //get weather icons 
+      let weatherIcon = day.weather[0].main; 
+      if(weatherIcon === "Thunderstorm"){
+        iconType = "Thunderstorm.png";
+      }
+      else if (weatherIcon === "Drizzle"){
+        iconType = "Drizzle.png";
+      }
+      else if (weatherIcon === "Rain"){
+        iconType = "Rain.png";
+      }
+      else if (weatherIcon === "Snow"){
+        iconType = "Snow.png";
+      }
+      else if(weatherIcon === "Mist"){
+        iconType = "Mist.png";
+      }
+      else if(weatherIcon === "Smoke"){
+        iconType = "Smoke.png";
+      }
+      else if(weatherIcon === "Haze"){
+        iconType = "Haze.png";
+      }
+      else if(weatherIcon === "Dust"){
+        iconType = "Dust.png";
+      }
+      //Fog icon similar smoke
+      else if(weatherIcon === "Fog"){
+        iconType = "Smoke.png";
+      }
+      //Sand icon similar dust
+      else if(weatherIcon === "Sand"){
+        iconType = "Dust.png";
+      }
+      //Ash icon similar Drizzle
+      else if(weatherIcon === "Ash"){
+        iconType = "Drizzle.png";
+      }
+      else if(weatherIcon === "Squall"){
+        iconType = "Squall.png";
+      }
+      else if(weatherIcon === "Tornado"){
+        iconType = "Tornado.png";
+      }
+
+      else if (weatherIcon === "Clear"){
+        iconType = "Clear.png";
+      }
+      else if
+      (weatherIcon === "Clouds"){
+        iconType = "Cloud.png";
+      }
+
       //get correct format for day
       const dateFilteredForecast = new Date(day.dt_txt);
-      console.log(dateFilteredForecast);
-
       const options = { weekday: "long" };
       const weekdayFilteredForecast = new Intl.DateTimeFormat(
         "en-UK",
         options
       ).format(dateFilteredForecast);
-      console.log(weekdayFilteredForecast);
-      // print fivedays forecast
+
+      //print fivedays forecast
       forecastContainer.innerHTML += `
       <p>${weekdayFilteredForecast}</p>
-      <p>${day.weather[0].description}</p>
+      <p><img src="./design/design1/assets/${iconType}"</p>
+      <p>${day.wind.speed} m/s</p>
       <p>Temp: ${parseInt(currentWeather.main.temp)}<span>°C</span></p>
       `;
     });
   } catch (error) {
     console.log(error);
   }
+  cityInput.value='';
 };
-fetchWeather();
+fetchWeather(cityName);
 
 // seach weather by city input
-
-/*searchButton.addEventListener("click", () => {
-  const cityName = cityInput.value;
-  if (cityName) {
-    fetchWeather(cityName);
-  } else {
-    cityWeatherContainer.innerHTML = "Please enter a city name";
-  }
+searchButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  cityWeatherContainer.innerHTML = ``;
+  forecastContainer.innerHTML = ``;
+  cityName = cityInput.value;
+  fetchWeather(cityName);
 });
-*/

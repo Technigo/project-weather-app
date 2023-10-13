@@ -21,3 +21,11 @@ button{
     background-color: lavender
     
 }
+.city{
+    font-size: 40px;
+}
+img{
+    height: 30px;
+    width: 30px;
+    object-fit: contain;
+}
