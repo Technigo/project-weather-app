@@ -1,4 +1,4 @@
-# Weather App
+# Weather App ( (Rebecca Higson -Caner Yeniyurt)
 
 Replace this readme with your own information about your project.
 
