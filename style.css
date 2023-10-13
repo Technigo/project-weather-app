@@ -241,3 +241,81 @@ td {
   display: block;
   z-index: 1; /* Set a lower z-index value for the overlay */
 }
+
+/* GALAXY FOLD */
+@media screen and (max-width: 280px) {
+  #geolocation-button {
+    color: transparent;
+  }
+  .search-bar input[type='text'] {
+    width: 50%;
+  }
+  .search-button {
+    width: 10%;
+  }
+}
+
+
+/* IPHONE SE */
+@media screen and (max-width: 375px) {
+  .main-container {
+    height: 800px;
+    margin: auto;
+  }
+
+  .imageHolder {
+    height: 1550px;
+    width: 1290px;
+    border-radius: 50%;
+    position: absolute;
+    right: 50%;
+    bottom: 250px;
+  }
+
+  #forecast-section {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 50px;
+  }
+}
+/* IPHONE 12 PRO */
+@media screen and (max-width: 390px) {
+  .main-container {
+    height: 844px;
+    margin: auto;
+  }
+
+  .imageHolder {
+    height: 1550px;
+    width: 1265px;
+    border-radius: 50%;
+    position: absolute;
+    right: 50%;
+    bottom: 270px;
+  }
+}
+
+/* IPHONE XR // SAMSUNG S20 ULTRA */
+@media screen and (max-width: 414px) { 
+  .main-container {
+    width: 100%;
+    max-width: 414px;
+    height: 920px;
+    margin: auto;
+  }
+
+  .imageHolder {
+    height: 1550px;
+    width: 1265px;
+    border-radius: 50%;
+    position: absolute;
+    right: 50%;
+    bottom: 300px;
+  }
+}
+
+
+
+
