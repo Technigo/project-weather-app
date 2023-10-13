@@ -97,9 +97,9 @@
   font-size: 16px;
   color: rgba(255, 255, 255, 0.985);
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
-  background-color: #c9c9c9;
+  background-color: #a7a5a5a1;
 }
 
 .search-bar button:hover {
