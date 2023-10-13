@@ -1,5 +1,5 @@
 //GLOBAL VARIABLES
-//const URL = 'https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=231ff309be8ceb223aff125da6bf7bb2';
+const ApiKey = "231ff309be8ceb223aff125da6bf7bb2";
 const city = document.getElementById("city");
 const citySearched = document.getElementById("search-input");
 const date = document.getElementById("date");
@@ -13,8 +13,7 @@ const weatherType = document.getElementById("skyStatus");
 //FETCH API
 const fetchWeatherData = async (cityByName) => {
   try {
-    const URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityByName}&units=metric&APPID=231ff309be8ceb223aff125da6bf7bb2`;
-    let ApiKey = "231ff309be8ceb223aff125da6bf7bb2";
+    const URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityByName}&units=metric&APPID=${ApiKey}`;
     const responseFromApi = await fetch(URL);
     const weatherData = await responseFromApi.json();
 
@@ -58,7 +57,7 @@ const showCity = async (cityName) => {
 
 showCity("Stockholm");
 
-// Time
+// Display Time
 function timeBuilder(time) {
     const hours = time.getHours();
     const minutes = time.getMinutes();
@@ -99,6 +98,7 @@ function dateBuilder(d) {
   
     return `${day} ${date} ${month} ${year}`;
   }
+  
 //SEARCH BAR INPUT
 const search = (e) => {
   let cityName = citySearched.value;
