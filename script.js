@@ -35,7 +35,7 @@ const geolocationButtonContainer = document.getElementById(
 geolocationButtonContainer.appendChild(geolocationButton);
 
 // Get the icon element
-const geolocationIcon = document.querySelector("#geolocation-button i");
+const geolocationIcon = document.querySelector("#geolocation-button");
 
 // Add an event listener to the icon to trigger geolocation
 geolocationIcon.addEventListener("click", fetchWeatherByLocation);
@@ -71,7 +71,9 @@ function updateTime(cityTimeZoneOffset) {
 
   const currentTime = new Date();
   // Calculate the local time using the city's time zone offset
-  const localTime = new Date(currentTime.getTime() + timeZoneOffsetMinutes * 60 * 1000);
+  const localTime = new Date(
+    currentTime.getTime() + timeZoneOffsetMinutes * 60 * 1000
+  );
 
   const hours = localTime.getUTCHours().toString().padStart(2, "0");
   const minutes = localTime.getUTCMinutes().toString().padStart(2, "0");
@@ -144,20 +146,25 @@ async function updateDOM(cityName) {
         weatherData.sys.sunrise &&
         weatherData.sys.sunset
       ) {
-        const sunriseTime = new Date(
-          weatherData.sys.sunrise * 1000
-        ).toLocaleTimeString("en-US", {
+        const sunriseTimestamp = weatherData.sys.sunrise * 1000;
+        const sunsetTimestamp = weatherData.sys.sunset * 1000;
+
+        // Get the time zone offset from the API response
+        const timeZoneOffset = weatherData.timezone * 1000;
+
+        const options = {
           hour: "numeric",
           minute: "numeric",
           hour12: false,
-        });
-        const sunsetTime = new Date(
-          weatherData.sys.sunset * 1000
-        ).toLocaleTimeString("en-US", {
-          hour: "numeric",
-          minute: "numeric",
-          hour12: false,
-        });
+          timeZone: "UTC", // Ensure consistent UTC time
+        };
+
+        const sunriseTime = new Intl.DateTimeFormat("en-US", options).format(
+          new Date(sunriseTimestamp + timeZoneOffset)
+        );
+        const sunsetTime = new Intl.DateTimeFormat("en-US", options).format(
+          new Date(sunsetTimestamp + timeZoneOffset)
+        );
 
         document.getElementById(
           "sunrise"
