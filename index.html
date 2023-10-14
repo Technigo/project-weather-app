@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week 3 - Weather App</title>
+    <!-- Dependance on script tag located on head tag with defer attribute for optimal performance - Diego Z -->
+    <script src="./fetch-weather-api.js" defer></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <img
+      src="https://images.unsplash.com/photo-1580065632882-3d6d4ca954ff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYzMTAwMjM0Nw&ixlib=rb-1.2.1&q=80&w=400"
+      id="image"
+    />
+    <table>
+      <tr>
+        <td>Pokemon name</td>
+        <td id="name">?</td>
+      </tr>
+      <tr>
+        <td>Strength</td>
+        <td id="element">?</td>
+      </tr>
+      <tr>
+        <td>Weight</td>
+        <td id="weight">?</td>
+      </tr>
+      <tr>
+        <td>Height</td>
+        <td id="height">?</td>
+      </tr>
+      <tr>
+        <td>Types</td>
+        <td id="types">?</td>
+      </tr>
+    </table>
+    <button onclick="handleButtonClick()" id="myButton">
+      Looking for another pokemon ?
+    </button>
+  </body>
+</html>
