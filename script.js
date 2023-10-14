@@ -12,7 +12,16 @@ const time = document.getElementById("time");
 const weatherType = document.getElementById("skyStatus");
 const weatherIcon = document.getElementById("weather-icon");
 //famous cities array
-const citiesArray = ["Stockholm", "London", "New York", "Tokyo", "Paris", "Seoul", "Berlin", "São Paulo"];
+const citiesArray = [
+  "Stockholm",
+  "London",
+  "New York",
+  "Tokyo",
+  "Paris",
+  "Seoul",
+  "Berlin",
+  "São Paulo",
+];
 let currentCityIndex = 0;
 
 //Fetch weather API
@@ -32,6 +41,9 @@ const showCity = async (cityName) => {
   //waiting response(promise to be resolved) of the function (async) fetchWeatherData with the param and store this value in weatherData
   const weatherData = await fetchWeatherData(cityName);
 
+  // Fetch weekly weather forecast data
+  const weeklyWeatherData = await fetchWeeklyWeatherData(cityName);
+
   //Save API data in respective variables
   const cityValue = weatherData.name;
   const sunrise = weatherData.sys.sunrise;
@@ -44,19 +56,27 @@ const showCity = async (cityName) => {
   // Display the values in console.log (dev)
   console.log(cityValue);
   console.log("weatherData", weatherData);
-  
+
   // Example usage: Display in HTML
   let now = new Date();
   temperature.textContent = `${temperatureValue}°C`;
   city.textContent = cityValue;
   weatherType.textContent = weatherNow;
-  sunriseTime.textContent = `Sunrise: ${unixConversion(sunrise + timezoneOffSet)}`;
+  sunriseTime.textContent = `Sunrise: ${unixConversion(
+    sunrise + timezoneOffSet
+  )}`;
   sunsetTime.textContent = `Sunset: ${unixConversion(sunset + timezoneOffSet)}`;
   weatherIcon.src = `https://openweathermap.org/img/wn/${weatherIconImg}@2x.png`;
   date.textContent = dateBuilder(now);
 
+  // Display weekly weather forecast
+  renderWeeklyForecast(weeklyWeatherData);
+
   temperature.setAttribute("data-temp-c", temperatureValue);
-  temperature.setAttribute("data-temp-f", convertToFahrenheit(temperatureValue));
+  temperature.setAttribute(
+    "data-temp-f",
+    convertToFahrenheit(temperatureValue)
+  );
 
   // Hour now
   setInterval(() => {
@@ -66,44 +86,44 @@ const showCity = async (cityName) => {
 };
 // Display Time
 function timeBuilder(time) {
-    const hours = time.getHours();
-    const minutes = time.getMinutes();
-    const formattedHours = hours < 10 ? `0${hours}` : hours;
-    const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
-    return `${formattedHours}:${formattedMinutes}`;
-  }
+  const hours = time.getHours();
+  const minutes = time.getMinutes();
+  const formattedHours = hours < 10 ? `0${hours}` : hours;
+  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+  return `${formattedHours}:${formattedMinutes}`;
+}
 // Date
 function dateBuilder(d) {
-    const months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-    const days = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "thursday",
-      "Friday",
-      "Saturday",
-    ];
-    let day = days[d.getDay()];
-    let date = d.getDay();
-    let month = months[d.getMonth()];
-    let year = d.getFullYear();
-  
-    return `${day} ${date} ${month} ${year}`;
-  }
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[d.getDay()];
+  let date = d.getDay();
+  let month = months[d.getMonth()];
+  let year = d.getFullYear();
+
+  return `${day} ${date} ${month} ${year}`;
+}
 
 // Search bar input
 const search = (e) => {
@@ -148,77 +168,73 @@ const unixConversion = (unixTimestamp) => {
   //convert Unix Timestamp from seconds to milliseconds
   const date = new Date(unixTimestamp * 1000);
   const options = {
-
     hour: "2-digit",
     minute: "2-digit",
     timeZone: "UTC",
   };
   // Generate time string
-  return(date.toLocaleTimeString("default", options));
+  return date.toLocaleTimeString("default", options);
 };
 // Randomize famous cities array
 const nextCity = () => {
-    currentCityIndex++;
-    if(currentCityIndex > citiesArray.length - 1){
-        currentCityIndex = 0;
-    }
-    showCity(citiesArray[currentCityIndex]);
-}
-// Forecast weekdays
-// const fetchWeeklyWeatherData = async (cityByName) => {
-//     try {
-//         const URL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityByName}&units=metric&cnt=7&APPID=231ff309be8ceb223aff125da6bf7bb2`;
+  currentCityIndex++;
+  if (currentCityIndex > citiesArray.length - 1) {
+    currentCityIndex = 0;
+  }
+  showCity(citiesArray[currentCityIndex]);
+};
 
-//         const responseFromApi = await fetch(URL);
-//         const weatherData = await responseFromApi.json();
-
-//         return weatherData;
-//     } catch (error) {
-//         console.log(error);
-//     }
-// };
-
-// // Function to render the weekly weather forecast in <li> elements
-// const renderWeeklyForecast = (data) => {
-//     const forecastList = document.getElementById("forecast-list");
-
-//     data.list.forEach((dayData) => {
-//         const date = new Date(dayData.dt * 1000); // Convert timestamp to date
-//         const day = date.toLocaleString("en-us", { weekday: "short" });
-//         const temperature = dayData.main.temp.toFixed(1);
-
-//         const listItem = document.createElement("li");
-//         listItem.innerHTML = `<strong>${day}</strong>: ${temperature}°C, ${dayData.weather[0].description}`;
-//         forecastList.appendChild(listItem);
-//     });
-// };
-
-// // Usage:
-// const cityName = "Stockholm";
-// fetchWeeklyWeatherData(cityName)
-//     .then((data) => {
-//         console.log("Weekly Weather Data:", data);
-//         renderWeeklyForecast(data);
-//     })
-//     .catch((error) => {
-//         console.error("Error fetching weekly weather data:", error);
-//     });
 //Convert Celcius to Fahrenheit
-const convertToFahrenheit = function(celsius) {
-
-  const fahrenheit = (celsius * 1.8) + 32;
+const convertToFahrenheit = function (celsius) {
+  const fahrenheit = celsius * 1.8 + 32;
   return fahrenheit.toFixed(1);
 };
 
 //Toggle temperature into °C and °F on click - fixing bugs before commit(on going)
 const toggleTemp = () => {
-  if (temperature.textContent.endsWith('°C')){
-      temperature.textContent = `${temperature.getAttribute("data-temp-f")}°F`;
+  if (temperature.textContent.endsWith("°C")) {
+    temperature.textContent = `${temperature.getAttribute("data-temp-f")}°F`;
   } else {
-      temperature.textContent = `${temperature.getAttribute("data-temp-c")}°C`;
+    temperature.textContent = `${temperature.getAttribute("data-temp-c")}°C`;
   }
 };
 //event listeners / execution
 showCity(citiesArray[currentCityIndex]);
-citiesBtn.addEventListener('click', nextCity);
-temperature.addEventListener('click', toggleTemp);
+citiesBtn.addEventListener("click", nextCity);
+temperature.addEventListener("click", toggleTemp);
+
+// Function to fetch the weekly weather data
+const fetchWeeklyWeatherData = (cityName) => {
+  const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&APPID=${ApiKey}`;
+
+  return fetch(apiUrl)
+    .then((response) => response.json())
+    .catch((error) => {
+      console.error("Error:", error);
+      throw error;
+    });
+};
+
+// Function to render the weekly weather forecast
+const renderWeeklyForecast = (data) => {
+  const forecastList = data.list;
+  const forecastContainer = document.getElementById("forecast-list");
+  forecastContainer.innerHTML = ""; // Clear previous forecast data
+
+  // Adjust or remove the filter condition if needed
+  forecastList
+    .filter((item) => item.dt_txt.split(" ")[1].split(":")[0] == 12)
+    .forEach((item) => {
+      const date = new Date(item.dt * 1000);
+      const dateString = date.toDateString();
+      const temp = item.main.temp.toFixed(1);
+      const windSpeed = item.wind.speed.toFixed(1);
+
+      console.log("data", item);
+
+      const listItem = document.createElement("li");
+      listItem.innerHTML = `<span>${dateString}</span><span class="weather-condition-icon"><img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"></span><span>${temp}°C</span><span>${windSpeed} m/s</span>`;
+
+      forecastContainer.appendChild(listItem);
+    });
+};
