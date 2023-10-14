@@ -30,7 +30,7 @@ export const generateWeatherHTML = (data) => {
     <span>Time: ${currentHours}:${currentMinutes}</span>
     <div class="flex-left">
       <p>${data.weather[0].description}</p>
-      <img id="header-weather-icon" src="${weatherIcon}" alt="current image icon" />
+      <img id="header-weather-icon" src="${weatherIcon}" alt="current image icon" width="60px" height="60" />
     </div>
     <div class="flex-space-between">
         <p>sunrise ${formateTime(sunriseUTC, data.timezone)}</p>
