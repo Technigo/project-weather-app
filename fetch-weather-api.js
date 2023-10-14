@@ -6,19 +6,41 @@
 // const types = document.getElementById("types"); //
 
 let URL = "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=19e3f1df0b9dcbf3b903658b9bf5177c";
+let forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=8174b34f755933df367987fbb0eefd50";
 const container = document.getElementById("activity");  
 
 const fetchWeather = async () => {
   try {
     // Handle the response data here
     const response = await fetch(URL);
+    const resJson = await response.json();
+    console.log(resJson);
+
+     // Save data in respective variables
+    const timeZone = resJson.timezone;
+    const temp = resJson.main.temp;
+   // Example usage: Display the values in HTML elements
+   weight.textContent = timeZone;
+   element.textContent = temp;
+  } catch (error) {
+    container.innerText = error;
+  }
+};
+fetchWeather(); 
+
+
+const fetchForecastWeather = async () => {
+  try {
+    // Handle the response data here
+    const response = await fetch(forecastURL);
     const cod = await response.json();
     console.log(cod);
   } catch (error) {
     container.innerText = error;
   }
 };
-fetchWeather(); //try//
+fetchForecastWeather(); 
+
 
 /* const fetchPokemonsTryCatch = async () => {
   try {
