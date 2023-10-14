@@ -4,9 +4,12 @@ const searchButton = document.getElementById("search-btn");
 const cityInput = document.getElementById("city-input");
 const forecastContainer = document.getElementById("forecast-container");
 const sunriseSunsetContainer = document.getElementById("sun-container");
+let backgroundImage = document.getElementById("background");
 
-const API_KEY = "api-key";
+const API_KEY = "a9a3b2fda4ff7afe96f32d735ea04df0";
 let cityName = "Gothenburg";
+
+// Fetch weather from weather API given a city, and populate html
 const fetchWeather = async (cityName) => {
   try {
     const longUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${API_KEY}`;
@@ -19,19 +22,47 @@ const fetchWeather = async (cityName) => {
     const format = { hour: "2-digit", minute: "2-digit" };
     const formattedSunrise = sunriseDate.toLocaleTimeString("en-US", format);
     const formattedSunset = sunsetDate.toLocaleTimeString("en-US", format);
+    
     // print weather info for city
     cityWeatherContainer.innerHTML = `
         <h1>${parseInt(currentWeather.main.temp)}<span>°C</span></h1>
         <h2>${currentWeather.name}</h2>
         <p>${currentWeather.weather[0].description}</p>
-        <p>Humidity:${currentWeather.main.humidity + "%"}</p>
+        <p>Humidity: ${currentWeather.main.humidity + "%"}</p>
         `;
 
     sunriseSunsetContainer.innerHTML = `
-      <p>Sunrise: ${formattedSunrise}</p>
-      <p>Sunset: ${formattedSunset}</p>
+      <p>sunrise: ${formattedSunrise}</p>
+      <p>sunset: ${formattedSunset}</p>
       `;
 
+    // update background-image
+    let weatherID = currentWeather.weather[0].id
+    switch(true) {
+      case (weatherID >= 200 && weatherID < 300):
+        checkAndUpdateBackgroundImage("thunderstorm-bg");
+        break;
+      case (weatherID >= 300 && weatherID < 400):
+        checkAndUpdateBackgroundImage("drizzle-bg");
+        break;
+      case (weatherID >= 500 && weatherID < 600):
+        checkAndUpdateBackgroundImage("rain-bg");
+        break;
+      case (weatherID >= 600 && weatherID < 700):
+        checkAndUpdateBackgroundImage("snow-bg");
+        break;
+      case (weatherID >= 700 && weatherID < 800):
+        checkAndUpdateBackgroundImage("snow-bg");
+        break;
+      case (weatherID == 800):
+        checkAndUpdateBackgroundImage("clear-bg");
+        break;
+      case (weatherID > 800 && weatherID < 805):
+        checkAndUpdateBackgroundImage("clouds-bg");
+        break;
+    }
+
+    // Get 5-day forecast
     const coordinates = currentWeather.coord;
     const weatherURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${API_KEY}`;
     const responseFromApi2 = await fetch(weatherURL);
@@ -39,68 +70,68 @@ const fetchWeather = async (cityName) => {
     const weatherList = weatherInfo.list;
     console.log(weatherList);
 
-    //filtered temperatur from 12:00 each day
+    // filtered temperatur from 12:00 each day
     const filteredForecast = weatherList.filter((day) =>
       day.dt_txt.includes("12:00")
     );
-    console.log(filteredForecast);
+    console.log("filteredForecast: ", filteredForecast);
 
 
     filteredForecast.forEach((day) => {
-      //get weather icons 
+      // get weather icons 
       let weatherIcon = day.weather[0].main; 
       if(weatherIcon === "Thunderstorm"){
-        iconType = "Thunderstorm.png";
+        iconType = "./icons/Thunderstorm.png";
       }
       else if (weatherIcon === "Drizzle"){
-        iconType = "Drizzle.png";
+        iconType = "./icons/Drizzle.png";
       }
       else if (weatherIcon === "Rain"){
-        iconType = "Rain.png";
+        iconType = "./icons/Rain.png";
       }
       else if (weatherIcon === "Snow"){
-        iconType = "Snow.png";
+        iconType = "./icons/Snow.png";
       }
       else if(weatherIcon === "Mist"){
-        iconType = "Mist.png";
+        iconType = "./icons/Mist.png";
       }
       else if(weatherIcon === "Smoke"){
-        iconType = "Smoke.png";
+        iconType = "./icons/Smoke.png";
       }
       else if(weatherIcon === "Haze"){
-        iconType = "Haze.png";
+        iconType = "./icons/Haze.png";
       }
       else if(weatherIcon === "Dust"){
-        iconType = "Dust.png";
+        iconType = "./icons/Dust.png";
       }
       //Fog icon similar smoke
       else if(weatherIcon === "Fog"){
-        iconType = "Smoke.png";
+        iconType = "./icons/Smoke.png";
       }
       //Sand icon similar dust
       else if(weatherIcon === "Sand"){
-        iconType = "Dust.png";
+        iconType = "./icons/Dust.png";
       }
       //Ash icon similar Drizzle
       else if(weatherIcon === "Ash"){
-        iconType = "Drizzle.png";
+        iconType = "./icons/Drizzle.png";
       }
       else if(weatherIcon === "Squall"){
-        iconType = "Squall.png";
+        iconType = "./icons/Squall.png";
       }
       else if(weatherIcon === "Tornado"){
-        iconType = "Tornado.png";
+        iconType = "./icons/Tornado.png";
       }
 
       else if (weatherIcon === "Clear"){
-        iconType = "Clear.png";
+        iconType = "./icons/Clear.png";
       }
       else if
       (weatherIcon === "Clouds"){
-        iconType = "Cloud.png";
+        iconType = "./icons/Cloud.png";
       }
 
-      //get correct format for day
+      // get correct format for day
       const dateFilteredForecast = new Date(day.dt_txt);
       const options = { weekday: "short" };
       const weekdayFilteredForecast = new Intl.DateTimeFormat(
@@ -112,7 +143,7 @@ const fetchWeather = async (cityName) => {
       const forecast = document.createElement("div");
       forecast.classList.add("forecast-item");
 
-      //print fivedays forecast
+      // print fivedays forecast
       forecast.innerHTML += `
       <p>${weekdayFilteredForecast}</p>
       <p><img src="./design/design1/assets/${iconType}" height="30" width="30"/></p>
@@ -129,7 +160,7 @@ const fetchWeather = async (cityName) => {
 };
 fetchWeather(cityName);
 
-// seach weather by city input
+// Search weather by city input
 searchButton.addEventListener("click", (event) => {
   event.preventDefault();
   cityWeatherContainer.innerHTML = ``;
@@ -137,3 +168,11 @@ searchButton.addEventListener("click", (event) => {
   cityName = cityInput.value;
   fetchWeather(cityName);
 });
+
+const checkAndUpdateBackgroundImage = (bgImageClass) => {
+  if ( !backgroundImage.classList.contains(bgImageClass) ) {
+    backgroundImage.className = "";
+    backgroundImage.classList.add(bgImageClass);
+    backgroundImage.classList.add("img-bg");
+  };
+};

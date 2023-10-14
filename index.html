@@ -12,13 +12,12 @@
   <body>
     <main>
       <div id="app">
-        <div class="img-sky bg-img"></div> <!-- Used for the bg image. TODO: Change class depending on weather description -->
         <div id="top-container">
+          <div id="background"></div> <!-- Used for the bg image. TODO: Change class depending on weather description -->
           <div class="search-box">
             <input id="city-input" type="text" placeholder="Enter your location" />
             <button id="search-btn"><i class="fa fa-search"></i></button>
           </div>
-          <div class="city-weather-bg"></div>
           <div id="city-weather-container">
             <div id ="weather-city"></div>
             <div id="weather-description"></div>
@@ -30,6 +29,10 @@
           <div id="forecast-container"></div>
         </div>
       </div>
+      <footer>
+        <p>Created by: Hanna, Klara and Karolina for the Technigo Javascript & React upskill course</p>
+        <p>Background images from unsplash.com</p>
+      </footer>
     </main>
     <script src="index.js"></script>
   </body>

@@ -11,3 +11,11 @@ Describe how you approached to problem, and what tools and techniques you used t
 ## View it live
 
 Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+
+## Creadit for images from unsplash
+clouds-bg.jpg: Egor Yakushkin
+drizzle-bg.jpg: frame harirak
+rain-bg.jpg: Suhyeon Choi 
+snow-bg.jpg: Kelly Sikkema
+clear-bg.jpg: Henry & Co.
+thunderstorm-bg.jpg: Mélody P

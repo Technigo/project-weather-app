@@ -6,7 +6,7 @@ body {
     font-family: 'Inter', sans-serif;
     font-family: 'Poppins', sans-serif;
     font-family: 'Roboto', sans-serif;
-    font-weight: light;
+    margin: 0;
 }
 
 .flex {
@@ -19,11 +19,14 @@ body {
     display: flex;
     justify-content: center;
     padding: 1em;
+    opacity: 60%;
 }
 
 #city-input{ /* search input bar */
     border: none;
     border-radius: 5px;
+    padding: 0 1em;
+
 }
 
 button{ /* search button */
@@ -31,34 +34,30 @@ button{ /* search button */
     width: 30px;
     border-radius: 50%;
     border: none;
+    cursor: pointer;
     margin-left: 10px;
 }
 
 /* Styling for app (whole container box) */
 #app {
     background-color: #e0e0e0;
-    width: 400px;
-    margin: 0 auto;
-    box-shadow: 5px 5px 15px rgb(150, 150, 150);
     display: block;
+    width: 100%;
+    margin-bottom: -10px;
 }
 
 /* Styling for top container */
 #top-container {
     color: white;
-    left: 0;
-    right: 0;
-    z-index: 9999;
-    width: 400px;
-    margin: 0 auto;
-    position: fixed;
+    background-color: #9b9b9b;
+    padding-bottom: 6em;
+    border-radius: 0 0 50% 50%/0 0 17% 17%;
+    position: relative;
+    z-index: 0;
 }
 
 #city-weather-container {
     padding: 2em;
-    top: 0;
-    left: 0;
-    height: 100%;
 }
 
 
@@ -80,9 +79,7 @@ h2 {
 
 /* Styling for bottom container */
 #bottom-container {
-    position: absolute;
-    width: 400px;
-    top: 350px;
+    background-color: #e0e0e0;
 }
 
 .forecast-item {
@@ -92,31 +89,72 @@ h2 {
 
 #forecast-container {
     background-color: #e0e0e0;
-    padding: 10em 3em 3em 3em;
+    padding: 3em;
+}
+
+/* Styling for footer */
+footer {
+    color: #9b9b9b;
+    background-color: #e0e0e0;
+    text-align: center;
+    padding: 0 1em 2em 1em;
+    margin: 0;
 }
 
 
 /* Styling for background images */
-.bg-img {
-    filter        : brightness(60%);
-    -moz-filter   : brightness(60%);
-    -webkit-filter: brightness(60%);
-    -o-filter     : brightness(60%);
-    width: 400px;
-    height: 450px;
-    position: fixed;
-    z-index: 1;
-    border-radius: 0 0 50% 50%/0 0 15% 15%;
+.img-bg {
+    filter        : brightness(80%);
+    -webkit-filter: brightness(80%);
+    -o-filter     : brightness(80%);
+    position: absolute;
+    z-index: -1;
+    border-radius: 0 0 50% 50%/0 0 17% 17%;
+    backdrop-filter: blur(1px);
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: scale-down;
 }
 
-.img-rain {
-    background-image: url("https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80");
+.clear-bg {
+    background-image: url("./design/design1/assets/images/clear-bg.jpg");
 }
 
-.img-sky {
-    background-image: url("https://images.unsplash.com/photo-1465080357990-d4bc259ec4a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80");
+.drizzle-bg {
+    background-image: url("./design/design1/assets/images/drizzle-bg.jpg");
 }
 
-.img-clouds {
-    background-image: url("https://images.unsplash.com/photo-1548266652-99cf27701ced?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1035&q=80");
+.rain-bg {
+    background-image: url("./design/design1/assets/images/rain-bg.jpg");
+}
+
+.snow-bg {
+    background-image: url("./design/design1/assets/images/snow-bg.jpg");
+}
+
+.thunderstorm-bg {
+    background-image: url("./design/design1/assets/images/thunderstorm-bg.jpg");
+}
+
+.clouds-bg {
+    background-image: url("./design/design1/assets/images/clouds-bg.jpg");
+}
+
+@media screen and (min-width: 499px) {
+    body {
+        margin: 5em 0;
+    }
+
+    #app{
+        max-width: 400px;
+        margin: 0 auto;
+        box-shadow: 5px 5px 15px rgb(150, 150, 150);
+    }
+
+    footer {
+        background-color: #faf9f9;
+        margin-top: 3em;
+    }
 }
