@@ -1,13 +1,3 @@
-body {
-  background-color: #f7e9b9;
-  margin: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: var(--font-size-2xl);
-  color: var(--color-darkolivegreen);
-  font-family: var(--font-montserrat);
-}
 .iphone-xxs-1-child {
     position: absolute;
     top: 0;
@@ -190,4 +180,9 @@ body {
   left: 39.8px;
   width: 77.19px;
   height: 53.26px;
+}
+.inputCity{
+  position: absolute; 
+  top: 745px;
+  left: 39px;
 }
