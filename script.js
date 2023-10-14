@@ -58,7 +58,6 @@ const displayWeatherData = async (city) => {
     weatherData.temperature,
     weatherData.cityName
   );
-  // weatherSymbolElement.innerHTML = `hi`;
 };
 
 const dateToDay = (date) => {
@@ -110,9 +109,8 @@ const fetchAndDisplayForecastData = (city) => {
       const forcastDivs = midDayForecastDataArray.map(
         (midDayForecastData) => `
       <div>
-        <p>${dateToDay(
-          midDayForecastData.dt_txt
-        )}| ${midDayForecastData.main.temp.toFixed()} °C</p>
+        <p>${dateToDay(midDayForecastData.dt_txt)}</p>
+        <p>${midDayForecastData.main.temp.toFixed()} °C</p>
       </div>
     `
       );

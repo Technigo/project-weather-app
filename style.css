@@ -86,28 +86,30 @@ body {
   line-height: 36px; /* 171.429% */
 }
 
-#forecastId {
-  width: 233px;
-  height: 248px;
-  flex-shrink: 0;
-  color: #2a5510;
-  font-family: Montserrat;
-  font-size: 21px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 36px;
-}
 .forecast {
-  width: 59px;
+  width: 100%;
   height: 242px;
   flex-shrink: 0;
-  color: #2a5510;
   font-family: Montserrat;
   font-size: 21px;
   font-style: normal;
   font-weight: 400;
   line-height: 36px; /* 171.429% */
+  margin-top: 40px;
+  max-width: 300px;
 }
+
+.forecast div {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed;
+}
+
+p {
+  font-size: 20px;
+  margin: 2px;
+}
+
 .searchBar {
   width: auto;
   height: auto;
@@ -115,4 +117,19 @@ body {
   font-size: 20px;
   font-family: "Montserrat";
   font-weight: 700;
-  }
+  max-width: 300px;
+ }
+
+ .searchBar input {
+  height: 20px;
+  max-width: 200px;
+ }
+
+ .searchBar button {
+  height: 25px;
+ }
+
+#errorId {
+  color: red;
+  margin: 20px;
+}
