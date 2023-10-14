@@ -100,20 +100,27 @@ const fetchAndDisplayForecastData = (city) => {
           forecastData.dt_txt.includes("12:00:00") &&
           !forecastData.dt_txt.includes(getTodayDate())
       );
+
       if (midDayForecastDataArray.length === 4) {
         midDayForecastDataArray.push(
           forecastDataArray[forecastDataArray.length - 1]
         );
       }
 
-      const forcastDivs = midDayForecastDataArray.map(
-        (midDayForecastData) => `
-      <div>
-        <p>${dateToDay(midDayForecastData.dt_txt)}</p>
-        <p>${midDayForecastData.main.temp.toFixed()} °C</p>
-      </div>
-    `
-      );
+      let lastDay;
+      const forcastDivs = midDayForecastDataArray.map((midDayForecastData) => {
+        const day = dateToDay(midDayForecastData.dt_txt);
+        if (lastDay === day) {
+          return;
+        }
+        lastDay = day;
+        return `
+          <div>
+            <p>${day}</p>
+            <p>${midDayForecastData.main.temp.toFixed()} °C</p>
+          </div>
+        `;
+      });
       forecastElement.innerHTML = forcastDivs.join("");
     })
     .catch((error) => (errorElement.innerHTML = JSON.stringify(error)));
