@@ -54,7 +54,15 @@ const dateToDay = (date) => {
   return weekday[dateObj.getDay()];
 }
 
-const fetchForecastData = (city) => {
+const getTodayDate = () => {
+  const today = new Date();
+  const dd = String(today.getDate()).padStart(2, '0');
+  const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  const yyyy = today.getFullYear();
+  return `${yyyy}-${mm}-${dd}`
+}
+
+const fetchAndDisplayForecastData = (city) => {
   const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=${API_KEY}`
   // https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=29e7c1a3b2d9e92ed27e8c3d97d654cd
   fetch(url)
@@ -66,7 +74,11 @@ const fetchForecastData = (city) => {
         return undefined
       }
 
-      const midDayForecastDataArray = forecastDataArray.filter(forecastData => forecastData.dt_txt.includes('12:00:00'))
+      const midDayForecastDataArray = forecastDataArray.filter(forecastData => forecastData.dt_txt.includes('12:00:00') && !forecastData.dt_txt.includes(getTodayDate()))
+      if (midDayForecastDataArray.length === 4) {
+        midDayForecastDataArray.push(forecastDataArray[forecastDataArray.length - 1])
+      }
+
       const forcastDivs = midDayForecastDataArray.map(midDayForecastData => `
       <div>
         <p>${dateToDay(midDayForecastData.dt_txt)}</p>
@@ -87,4 +99,4 @@ citySearchButtonElement.addEventListener("click", () => {
 })
 
 displayWeatherData(DEFAULT_CITY)
-fetchForecastData(DEFAULT_CITY)
+fetchAndDisplayForecastData(DEFAULT_CITY)

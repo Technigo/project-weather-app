@@ -30,13 +30,13 @@ p {
   max-width: 300px;
 }
 
-.seachBar input {
+input {
   height: 20px;
   max-width: 200px;
 }
 
-.seachBar button {
-  height: 30px;
+button {
+  height: 25px;
 }
 
 #errorId {
