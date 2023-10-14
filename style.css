@@ -139,7 +139,6 @@ nav img {
 }
 
 /* HEADER */
-
 .header-background {
   position: absolute;
   background-color: #ffff;
@@ -147,14 +146,7 @@ nav img {
   height: 105%;
   border-radius: 0 0 50% 50%;
   left: -25%;
-}
-
-.background-mask-day {
-  background: linear-gradient(90deg, #8589ff 0%, #e8e9ff 100%);
-}
-
-.background-mask-night {
-  background: linear-gradient(270deg, #6264a2 0%, #222350 100%);
+  transition: background-image 0.5s ease-in-out;
 }
 
 #header-weather-icon {

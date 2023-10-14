@@ -4,6 +4,7 @@
 import { getForecast } from "./geolocation.js";
 
 const headerbackground = document.querySelector(".header-background");
+const backgroundMask = document.querySelector("#background-mask");
 
 // Function that outputs weatherData
 export const generateWeatherHTML = (data) => {
@@ -40,7 +41,7 @@ export const generateWeatherHTML = (data) => {
 
   getForecast(data.coord.lat, data.coord.lon);
   // Update background according to time
-  changeHeaderBackground(currentHours);
+  changeHeaderBackground(currentHours, data.weather[0].description);
 };
 
 // Function that adjusts for timezone in the API object
@@ -70,12 +71,32 @@ const formateTime = (dateUTC, timezone) => {
 };
 
 // Function to add day/night background to header
-function changeHeaderBackground(currentHours) {
+function changeHeaderBackground(currentHours, weatherDescription) {
+  // Statement that changes the background-mask depending on the time
+  let linearGradiant = "";
+  let backgroundImg = "";
+
   if (currentHours >= "06" && currentHours < "20") {
-    headerbackground.classList.add("background-mask-day");
-    headerbackground.classList.remove("background-mask-night");
+    linearGradiant =
+      "linear-gradient(90deg, rgba(133, 137, 255, 0.7) 0%, rgba(232, 233, 255, 0.7) 100%)";
   } else {
-    headerbackground.classList.add("background-mask-night");
-    headerbackground.classList.remove("background-mask-day");
+    linearGradiant =
+      "linear-gradient(270deg, rgba(98, 100, 162, 0.7) 0%, rgba(34, 35, 80, 0.7) 100%)";
   }
+
+  // Statement that changes the background-image depending on the weather description
+  if (weatherDescription.includes("clouds")) {
+    backgroundImg = "url('img/clouds.jpg')";
+  } else if (weatherDescription.includes("snow")) {
+    backgroundImg = "url('img/snow.jpg')";
+  } else if (weatherDescription.includes("rain")) {
+    backgroundImg = "url('img/rain.jpg')";
+  } else {
+    backgroundImg = "url('img/clear-sky.jpg')";
+  }
+
+  // Add styling to background image
+  headerbackground.style.background = `${linearGradiant}, ${backgroundImg}`;
+  headerbackground.style.backgroundSize = "cover";
+  headerbackground.style.backgroundPosition = "center";
 }
