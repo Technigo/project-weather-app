@@ -52,12 +52,16 @@ const showCity = async (cityName) => {
   const weatherNow = weatherData.weather[0].description;
   const weatherIconImg = weatherData.weather[0].icon;
 
+<<<<<<< HEAD
   // Display the values in console.log (dev)
   console.log(cityValue);
   console.log("weatherData", weatherData);
   
   // Example usage: Display in HTML
   let now = new Date();
+=======
+  // Display current weather data
+>>>>>>> dfd608780772c6123e488fcd24aa34916e21b16c
   temperature.textContent = `${temperatureValue}°C`;
   city.textContent = cityValue;
   weatherType.textContent = weatherNow;
@@ -65,11 +69,18 @@ const showCity = async (cityName) => {
     sunrise + timezoneOffSet
   )}`;
   sunsetTime.textContent = `Sunset: ${unixConversion(sunset + timezoneOffSet)}`;
+<<<<<<< HEAD
   weatherIcon.src = `https://openweathermap.org/img/wn/${weatherIconImg}@2x.png`;
   date.textContent = dateBuilder(now);
 
   temperature.setAttribute("data-temp-c", temperatureValue);
   temperature.setAttribute("data-temp-f", convertToFahrenheit(temperatureValue));
+=======
+  date.textContent = dateBuilder(new Date());
+
+  // Display weekly weather forecast
+  renderWeeklyForecast(weeklyWeatherData);
+>>>>>>> dfd608780772c6123e488fcd24aa34916e21b16c
 
   // Hour now
   setInterval(() => {
@@ -79,12 +90,21 @@ const showCity = async (cityName) => {
 };
 // Display Time
 function timeBuilder(time) {
+<<<<<<< HEAD
     const hours = time.getHours();
     const minutes = time.getMinutes();
     const formattedHours = hours < 10 ? `0${hours}` : hours;
     const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
     return `${formattedHours}:${formattedMinutes}`;
   }
+=======
+  const hours = time.getHours();
+  const minutes = time.getMinutes();
+  const formattedHours = hours < 10 ? `0${hours}` : hours;
+  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+  return `${formattedHours}:${formattedMinutes}`;
+}
+>>>>>>> dfd608780772c6123e488fcd24aa34916e21b16c
 // Date
 function dateBuilder(d) {
   const months = [
@@ -114,6 +134,12 @@ function dateBuilder(d) {
   let date = d.getDay();
   let month = months[d.getMonth()];
   let year = d.getFullYear();
+<<<<<<< HEAD
+=======
+
+  return `${day} ${date} ${month} ${year}`;
+}
+>>>>>>> dfd608780772c6123e488fcd24aa34916e21b16c
 
   return `${day} ${date} ${month} ${year}`;
 }
@@ -165,8 +191,13 @@ const unixConversion = (unixTimestamp) => {
     minute: "2-digit",
     timeZone: "UTC",
   };
+<<<<<<< HEAD
   // Generate time string
   return(date.toLocaleTimeString("default", options));
+=======
+  //Generate time string
+  return date.toLocaleTimeString("default", options);
+>>>>>>> dfd608780772c6123e488fcd24aa34916e21b16c
 };
 // Randomize famous cities array
 const nextCity = () => {
