@@ -8,7 +8,6 @@ const backgroundMask = document.querySelector("#background-mask");
 
 // Function that outputs weatherData
 export const generateWeatherHTML = (data) => {
-  console.log(data);
   // Locals
   const sunriseUTC = new Date(data.sys.sunrise * 1000);
   const sunsetUTC = new Date(data.sys.sunset * 1000);
@@ -30,7 +29,7 @@ export const generateWeatherHTML = (data) => {
     <h2>${data.name}</h2>
     <span>Time: ${currentHours}:${currentMinutes}</span>
     <div class="flex-left">
-      <p>${data.weather[0].description}</p>
+      <p class="description">${data.weather[0].description}</p>
       <img id="header-weather-icon" src="${weatherIcon}" alt="current image icon" width="60px" height="60" />
     </div>
     <div class="flex-space-between">

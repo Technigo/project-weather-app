@@ -180,6 +180,11 @@ nav img {
   display: flex;
   justify-content: space-between;
   margin: var(--MARGIN);
+  padding: 0 2rem;
+}
+
+.description {
+  text-transform: capitalize;
 }
 
 /* FORECAST */
@@ -197,12 +202,14 @@ nav img {
   flex: 1;
 }
 
-/* Desktop (1025px-1399px)
-Tablet (768px-1024px)
-Mobile (767px and below) */
+.forecast__wind,
+.forecast__temp,
+.forecast__image {
+  display: flex;
+  justify-content: end;
+}
 
 /* Tablet */
-
 @media screen and (min-width: 768px) {
   .container {
     position: relative;
