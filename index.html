@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-
-  <head>
+ <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
 
@@ -12,16 +11,17 @@
     />
     <title>Weather</title>
   </head>
-  <body>
-    <div class="iphone-xxs-1">
-      <div class="iphone-xxs-1-child">
-      <b class="get-your-sunnies">
-        Get your sunnies on. Stockholm is looking rather great today.
-      </b>
-      <div class="clear-23">Clear | 23°</div>
+<body id="body" class="suns-out">
+  <div class="iphone-xxs-1">
+    <div class="iphone-xxs-1-child">
+    <b id="weatherUpdate" class="get-your-sunnies">Get your sunnies on. Stockholm is looking rather great today.
+    </b>
+    <div class="todays-forecast">
+      <div class="clear-23"> <span id="dayDescription">Clear</span> | <span id="dayTemperature">23 °C</span></div>
       <div class="sunrise-0800-sunset-2230-container">
-        <p class="mon">sunrise 08.00</p>
-        <p class="mon">sunset 22.30</p>
+        <p class="mon">sunrise <span id="sunrise">08.00</span></p>
+        <p class="mon">sunset <span id="sunset">22.30</span> </p>
+      </div>
       </div>
       <div class="mon-tue-wed-thu-fri-sat-sun">
         <p class="mon">mon</p>
@@ -51,4 +51,3 @@
     <script src="./weather.js"></script>
   </body>
 </html>
-  

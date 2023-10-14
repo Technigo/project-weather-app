@@ -1,118 +1,180 @@
+body {
+  background-color: #f7e9b9;
+  margin: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: var(--font-size-2xl);
+  color: var(--color-darkolivegreen);
+  font-family: var(--font-montserrat);
+}
+.get-your-sunnies {
+  position: absolute;
+  top: 274px;
+  left: 40px;
+  font-size: 37px;
+  display: inline-block;
+  width: 296px;
+  height: 245px;
+}
 
-.iphone-xxs-1-child {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    background-color: #f7e9b9;
-    box-sizing: border-box;
-    width: 375px;
-    height: 823px;
-    transform: translateX(-50%);
-  }
-  .get-your-sunnies {
-    position: absolute;
-    top: 274px;
-    left: 40px;
-    font-size: 37px;
-    display: inline-block;
-    width: 296px;
-    height: 245px;
-  }
-  .clear-23,
-  .sunrise-0800-sunset-2230-container {
-    position: absolute;
-    top: 49px;
-    left: 47px;
-    display: inline-block;
-    width: 296px;
-    height: 38px;
-  }
-  .sunrise-0800-sunset-2230-container {
-    top: 76px;
-    height: 67px;
-  }
-  .mon {
-    margin: 0;
-  }
-  .mon-tue-wed-thu-fri-sat-sun {
-    position: absolute;
-    top: 532px;
-    left: 40px;
-    line-height: 36px;
-    display: inline-block;
-    width: 233px;
-    height: 248px;
-  }
-  .iphone-xxs-1-child1,
-  .iphone-xxs-1-child2,
-  .iphone-xxs-1-child3,
-  .iphone-xxs-1-inner,
-  .iphone-xxs-1-item,
-  .line-div {
-    position: absolute;
-    top: 568px;
-    left: 40px;
-    border-top: 1px dashed var(--color-dimgray);
-    box-sizing: border-box;
-    width: 297px;
-    height: 1px;
-  }
-  .iphone-xxs-1-child1,
-  .iphone-xxs-1-child2,
-  .iphone-xxs-1-child3,
-  .iphone-xxs-1-inner,
-  .line-div {
-    top: 605px;
-    left: 39px;
-  }
-  .iphone-xxs-1-child1,
-  .iphone-xxs-1-child2,
-  .iphone-xxs-1-child3,
-  .line-div {
-    top: 642px;
-  }
-  .iphone-xxs-1-child1,
-  .iphone-xxs-1-child2,
-  .iphone-xxs-1-child3 {
-    top: 679px;
-  }
-  .iphone-xxs-1-child2,
-  .iphone-xxs-1-child3 {
-    top: 711px;
-  }
-  .iphone-xxs-1-child3 {
-    top: 748px;
-  }
-  .div {
-    position: absolute;
-    top: 534px;
-    left: 299px;
-    line-height: 36px;
-    display: inline-block;
-    width: 59px;
-    height: 242px;
-  }
-  .noun-sunglasses-2055147-icon {
-    position: absolute;
-    top: 204.43px;
-    left: 41px;
-    width: 73.05px;
-    height: 51.72px;
-  }
-  .iphone-xxs-1 {
-    position: relative;
-    background-color: #f7e9b9;   ;
-    width: 100%;
-    height: 812px;
-    overflow: hidden;
-    text-align: left;
-    font-size: var(--font-size-2xl);
-    color: var(--color-darkolivegreen);
-    font-family: var(--font-montserrat);
-  }
-  
-/* RAIN */
- 
+.rainy {
+  background: #A3DEF7;
+  color: #164A68;
+}
+
+.cloudy,
+.rainy {
+  background: #DCD3C5;
+  color: #2F2F2F;
+}
+
+.unknown {
+  background: #F3733C;
+  color: #fff;
+}
+
+.clear-23,
+.sunrise-0800-sunset-2230-container {
+  position: absolute;
+  top: 49px;
+  left: 47px;
+  display: inline-block;
+  width: 296px;
+  height: 38px;
+}
+
+.sunrise-0800-sunset-2230-container {
+  top: 76px;
+  height: 67px;
+}
+
+.mon {
+  margin: 0;
+}
+
+.mon-tue-wed-thu-fri-sat-sun {
+  position: absolute;
+  top: 532px;
+  left: 40px;
+  line-height: 36px;
+  display: inline-block;
+  width: 233px;
+  height: 248px;
+}
+
+.iphone-xxs-1-child1,
+.iphone-xxs-1-child2,
+.iphone-xxs-1-child3,
+.iphone-xxs-1-inner,
+.iphone-xxs-1-item,
+.line-div {
+  position: absolute;
+  top: 568px;
+  left: 40px;
+  border-top: 1px dashed var(--color-dimgray);
+  box-sizing: border-box;
+  width: 297px;
+  height: 1px;
+}
+
+.iphone-xxs-1-child1,
+.iphone-xxs-1-child2,
+.iphone-xxs-1-child3,
+.iphone-xxs-1-inner,
+.line-div {
+  top: 605px;
+  left: 39px;
+}
+
+.iphone-xxs-1-child1,
+.iphone-xxs-1-child2,
+.iphone-xxs-1-child3,
+.line-div {
+  top: 642px;
+}
+
+.iphone-xxs-1-child1,
+.iphone-xxs-1-child2,
+.iphone-xxs-1-child3 {
+  top: 679px;
+}
+
+.iphone-xxs-1-child2,
+.iphone-xxs-1-child3 {
+  top: 711px;
+}
+
+.iphone-xxs-1-child3 {
+  top: 748px;
+}
+
+.div {
+  position: absolute;
+  top: 534px;
+  left: 299px;
+  line-height: 36px;
+  display: inline-block;
+  width: 59px;
+  height: 242px;
+}
+
+.noun-sunglasses-2055147-icon {
+  position: absolute;
+  top: 204.43px;
+  left: 41px;
+  width: 73.05px;
+  height: 51.72px;
+}
+.dont-forget-your,
+.rain-23 {
+  position: absolute;
+  display: inline-block;
+  width: 296px;
+}
+
+.dont-forget-your {
+  top: 274px;
+  left: 40px;
+  font-size: 37px;
+  height: 245px;
+}
+
+.rain-23 {
+  top: 49px;
+  left: 47px;
+  height: 38px;
+}
+.noun-umbrella-2030530-icon {
+  position: absolute;
+  top: 185px;
+  left: 40px;
+  width: 73.45px;
+  height: 73px;
+}
+
+.iphone-xxs-2 {
+  position: relative;
+  background-color: #fff;
+  width: 100%;
+  height: 812px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-2xl);
+  color: var(--color-darkslategray);
+  font-family: var(--font-montserrat);
+}
+
+.iphone-xxs-3-child {
+  position: absolute;
+  top: -5px;
+  left: 0;
+  background-color: #f4f7f8;
+  border: 1px solid #707070;
+  box-sizing: border-box;
+  width: 375px;
+  height: 823px;
+}
  .dont-forget-your,
  .rain-23 {
    position: absolute;
@@ -143,12 +205,14 @@
   display: inline-block;
   width: 296px;
 }
+
 .light-a-fire {
   top: 269px;
   left: 40px;
   font-size: 37px;
   height: 245px;
 }
+
 .cloudy-23 {
   top: 44px;
   left: 47px;
@@ -161,24 +225,26 @@
   width: 77.19px;
   height: 53.26px;
 }
-/* cloudy */
 .cloudy-23,
 .light-a-fire {
   position: absolute;
   display: inline-block;
   width: 296px;
 }
+
 .light-a-fire {
   top: 269px;
   left: 40px;
   font-size: 37px;
   height: 245px;
 }
+
 .cloudy-23 {
   top: 44px;
   left: 47px;
   height: 38px;
 }
+
 .noun-cloud-1188486-icon {
   position: absolute;
   top: 194px;
