@@ -29,7 +29,7 @@ For this project, we suggest that you lay out the foundation of your project tog
 For example, to get the current weather in Stockholm, you can use the URL below. Remember to replace YOUR_API_KEY with the API key you copied from your dashboard.
 
 ```
-https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=f40f4543214ad55ead8d6ca12cb39ee0
+https://api.openweathermap.org/data/2.5/daily?q=Stockholm,Sweden&units=metric&APPID=f40f4543214ad55ead8d6ca12cb39ee0
 
 ```
 

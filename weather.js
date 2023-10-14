@@ -1,12 +1,14 @@
 const url = "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=f40f4543214ad55ead8d6ca12cb39ee0"
+const urlForecast ="https://api.openweathermap.org/data/2.5/forecast?q=Knivsta,Sweden&units=metric&APPID=f40f4543214ad55ead8d6ca12cb39ee0"
 const body = document.getElementById("body")
-const thursday = document.getElementById("thursday")
 const sunrise = document.getElementById("sunrise")
 const sunset = document.getElementById("sunset")
 const weatherDescription = document.getElementById("weatherUpdate")
 const todaysWeather = document.getElementById("dayDescription")
 const todaysTemperature = document.getElementById("dayTemperature")
 
+const mon = [].slice.call(document.querySelectorAll(".mon"),2)
+const weekday = ["sun","mon","tue","wed","thu","fri","sat"];
 let city = "Stockholm"
 
 const pickTodaysDescription = (todaysDescription) => {
@@ -31,17 +33,41 @@ const pickTodaysDescription = (todaysDescription) => {
 }
 
 
+
 const fetchWeather =  async () => {
     try{
-      const response = await fetch(url);
+      const response = await fetch(urlForecast);
       const data = await response.json();
-      console.log(data)
-      thursday.innerHTML = data.main.temp.toFixed(1)
+      const fiveDays = data.list.filter(d =>  {
+        const date = new Date(d.dt * 1000);
+        let time = 11;
+        let dtTime = date.getHours();
+        return time === dtTime;
+        });
+
+    setDayName(fiveDays);    
+
     
+    setTemperature(fiveDays);
+
     }catch(error) {
-  console.error(error)
+        console.error(error);
+    }
+
+    function setTemperature(fiveDays) {
+        for (let index = 5; index < mon.length; index++) {
+            mon[index].innerHTML = Math.round(fiveDays[index - 5].main.temp) + "°";
+        }
+    }
+
+    function setDayName(fiveDays) {
+        for (let index = 0; index < 5; index++) {
+            const date = new Date(fiveDays[index].dt * 1000);
+            mon[index].innerHTML = weekday[date.getDay()];
+        }
     }
 };
+
 fetchWeather()
 
 const fetchTodaysWeather =  async () => {
@@ -61,4 +87,3 @@ const fetchTodaysWeather =  async () => {
   }
 };
 fetchTodaysWeather()
-

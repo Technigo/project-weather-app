@@ -8,25 +8,6 @@ body {
   color: var(--color-darkolivegreen);
   font-family: var(--font-montserrat);
 }
-
-.iphone-xxs-1 {
-  position: relative;
-  width: 100%;
-  height: 812px;
-  overflow: hidden;
-  text-align: left;
-}
-
-.iphone-xxs-1-child {
-  position: absolute;
-  top: 0;
-  left: 0;
-  border: 1px solid #2a5510;
-  box-sizing: border-box;
-  width: 375px;
-  height: 823px;
-}
-
 .get-your-sunnies {
   position: absolute;
   top: 274px;
@@ -145,21 +126,6 @@ body {
   width: 73.05px;
   height: 51.72px;
 }
-
-
-
-/* RAIN */
-.iphone-xxs-2-child {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: #bde8fa;
-  border: 1px solid #707070;
-  box-sizing: border-box;
-  width: 375px;
-  height: 823px;
-}
-
 .dont-forget-your,
 .rain-23 {
   position: absolute;
@@ -179,46 +145,12 @@ body {
   left: 47px;
   height: 38px;
 }
-
-.mon {
-  margin: 0;
-}
-
-.mon-tue-wed-thu-fri-sat-sun {
-  position: absolute;
-  top: 532px;
-  left: 40px;
-  line-height: 36px;
-  display: inline-block;
-  width: 233px;
-  height: 248px;
-}
-
-.div {
-  position: absolute;
-  top: 534px;
-  left: 299px;
-  line-height: 36px;
-  display: inline-block;
-  width: 59px;
-  height: 242px;
-}
-
 .noun-umbrella-2030530-icon {
   position: absolute;
   top: 185px;
   left: 40px;
   width: 73.45px;
   height: 73px;
-}
-
-.sunrise-0800-sunset-2230-container {
-  position: absolute;
-  top: 76px;
-  left: 48px;
-  display: inline-block;
-  width: 296px;
-  height: 67px;
 }
 
 .iphone-xxs-2 {
@@ -243,7 +175,56 @@ body {
   width: 375px;
   height: 823px;
 }
+ .dont-forget-your,
+ .rain-23 {
+   position: absolute;
+   display: inline-block;
+   width: 296px;
+ }
+ .dont-forget-your {
+   top: 274px;
+   left: 40px;
+   font-size: 37px;
+   height: 245px;
+ }
+ .rain-23 {
+   top: 49px;
+   left: 47px;
+   height: 38px;
+ }
+ .noun-umbrella-2030530-icon {
+   position: absolute;
+   top: 185px;
+   left: 40px;
+   width: 73.45px;
+   height: 73px;
+ }
+.cloudy-23,
+.light-a-fire {
+  position: absolute;
+  display: inline-block;
+  width: 296px;
+}
 
+.light-a-fire {
+  top: 269px;
+  left: 40px;
+  font-size: 37px;
+  height: 245px;
+}
+
+.cloudy-23 {
+  top: 44px;
+  left: 47px;
+  height: 38px;
+}
+.noun-cloud-1188486-icon {
+  position: absolute;
+  top: 194px;
+  left: 39.8px;
+  width: 77.19px;
+  height: 53.26px;
+}
 .cloudy-23,
 .light-a-fire {
   position: absolute;
@@ -264,142 +245,10 @@ body {
   height: 38px;
 }
 
-.mon {
-  margin: 0;
-}
-
-.mon-tue-wed-thu-fri-sat-sun {
-  position: absolute;
-  top: 527px;
-  left: 40px;
-  line-height: 36px;
-  display: inline-block;
-  width: 233px;
-  height: 248px;
-}
-
-
-.div {
-  position: absolute;
-  top: 529px;
-  left: 299px;
-  line-height: 36px;
-  display: inline-block;
-  width: 59px;
-  height: 242px;
-}
-
 .noun-cloud-1188486-icon {
   position: absolute;
   top: 194px;
   left: 39.8px;
   width: 77.19px;
   height: 53.26px;
-}
-
-.sunrise-0800-sunset-2230-container {
-  position: absolute;
-  top: 76px;
-  left: 49px;
-  display: inline-block;
-  width: 296px;
-  height: 67px;
-}
-
-.iphone-xxs-3 {
-  position: relative;
-  background-color: #fff;
-  width: 100%;
-  height: 812px;
-  overflow: hidden;
-  text-align: left;
-  font-size: var(--font-size-2xl);
-  color: var(--color-salmon);
-  font-family: var(--font-montserrat);
-}
-
-/* cloudy */
-
-.iphone-xxs-3-child {
-  position: absolute;
-  top: -5px;
-  left: 0;
-  background-color: #f4f7f8;
-  border: 1px solid #707070;
-  box-sizing: border-box;
-  width: 375px;
-  height: 823px;
-}
-
-.cloudy-23,
-.light-a-fire {
-  position: absolute;
-  display: inline-block;
-  width: 296px;
-}
-
-.light-a-fire {
-  top: 269px;
-  left: 40px;
-  font-size: 37px;
-  height: 245px;
-}
-
-.cloudy-23 {
-  top: 44px;
-  left: 47px;
-  height: 38px;
-}
-
-.mon {
-  margin: 0;
-}
-
-.mon-tue-wed-thu-fri-sat-sun {
-  position: absolute;
-  top: 527px;
-  left: 40px;
-  line-height: 36px;
-  display: inline-block;
-  width: 233px;
-  height: 248px;
-}
-
-.div {
-  position: absolute;
-  top: 529px;
-  left: 299px;
-  line-height: 36px;
-  display: inline-block;
-  width: 59px;
-  height: 242px;
-}
-
-.noun-cloud-1188486-icon {
-  position: absolute;
-  top: 194px;
-  left: 39.8px;
-  width: 77.19px;
-  height: 53.26px;
-}
-
-.sunrise-0800-sunset-2230-container {
-  position: absolute;
-  top: 76px;
-  left: 49px;
-  display: inline-block;
-  width: 296px;
-  height: 67px;
-}
-
-.iphone-xxs-3 {
-  position: relative;
-  background-color: #fff;
-  width: 100%;
-  height: 812px;
-  overflow: hidden;
-  text-align: left;
-  font-size: var(--font-size-2xl);
-  color: var(--color-salmon);
-  font-family: var(--font-montserrat);
 }

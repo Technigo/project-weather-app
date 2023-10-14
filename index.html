@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html>
+ <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="initial-scale=1, width=device-width" />
-
-  <link rel="stylesheet" href="./global.css" />
-  <link rel="stylesheet" href="./style.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" />
-</head>
-
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+    />
+    <title>Weather</title>
+  </head>
 <body id="body" class="suns-out">
   <div class="iphone-xxs-1">
-    <div class="iphone-xxs-1-child"></div>
+    <div class="iphone-xxs-1-child">
     <b id="weatherUpdate" class="get-your-sunnies">Get your sunnies on. Stockholm is looking rather great today.
     </b>
     <div class="todays-forecast">
@@ -21,36 +22,32 @@
         <p class="mon">sunrise <span id="sunrise">08.00</span></p>
         <p class="mon">sunset <span id="sunset">22.30</span> </p>
       </div>
+      </div>
+      <div class="mon-tue-wed-thu-fri-sat-sun">
+        <p class="mon">mon</p>
+        <p class="mon">tue</p>
+        <p class="mon">wed</p>
+        <p class="mon">thu</p>
+        <p class="mon">fri</p>
+      </div>
+      <div class="iphone-xxs-1-item"></div>
+      <div class="iphone-xxs-1-inner"></div>
+      <div class="line-div"></div>
+      <div class="iphone-xxs-1-child1"></div>
+      <div class="div">
+        <p name="day" id="monday" class="mon">23°</p>
+        <p name="day" id="tuesday" class="mon">20°</p>
+        <p name="day" id="wednesday" class="mon">16°</p>
+        <p name="day" id="thursday" class="mon">25°</p>
+        <p name="day" id="friday" class="mon">27°</p>
+      </div>
+      <img
+        class="noun-sunglasses-2055147-icon"
+        alt=""
+        src="./design/design2/icons/noun_Sunglasses_2055147.svg"
+      />
     </div>
-
-    <div class="mon-tue-wed-thu-fri-sat-sun">
-      <p class="mon">mon</p>
-      <p class="mon">tue</p>
-      <p class="mon">wed</p>
-      <p class="mon">thu</p>
-      <p class="mon">fri</p>
-      <p class="mon">sat</p>
-      <p class="mon">sun</p>
     </div>
-    <div class="iphone-xxs-1-item"></div>
-    <div class="iphone-xxs-1-inner"></div>
-    <div class="line-div"></div>
-    <div class="iphone-xxs-1-child1"></div>
-    <div class="iphone-xxs-1-child2"></div>
-    <div class="iphone-xxs-1-child3"></div>
-    <div class="div">
-      <p class="mon">23°</p>
-      <p class="mon">20°</p>
-      <p class="mon">16°</p>
-      <p id="thursday" class="mon">25°</p>
-      <p class="mon">27°</p>
-      <p class="mon">23°</p>
-      <p class="mon">23°</p>
-    </div>
-    <img class="noun-sunglasses-2055147-icon" alt="" src="./design/design2/icons/noun_Sunglasses_2055147.svg" />
-  </div>
-
-  <script src="./weather.js"></script>
-</body>
-
+    <script src="./weather.js"></script>
+  </body>
 </html>
