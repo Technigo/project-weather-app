@@ -57,6 +57,8 @@ const fetchWeather =  async () => {
         let dtTime = date.getHours();
         return time === dtTime;
         });
+        console.log(fiveDays[0].weather[0].main)
+        pickTodaysDescription(fiveDays[0].weather[0].main)
 
     setDayName(fiveDays); 
     console.log(fiveDays)   
