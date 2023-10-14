@@ -37,5 +37,3 @@ const fetchWeather =  async () => {
     }
 };
 fetchWeather();
-
-
