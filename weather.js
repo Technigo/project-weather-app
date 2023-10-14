@@ -6,6 +6,7 @@ console.log(newUrl)
 newUrl = newUrl.searchParams.set("q", city);
 let urlForecast ="https://api.openweathermap.org/data/2.5/forecast?q=city,Sweden&units=metric&APPID=f40f4543214ad55ead8d6ca12cb39ee0"
 const body = document.getElementById("body")
+const icon = document.getElementById("icon")
 const sunrise = document.getElementById("sunrise")
 const sunset = document.getElementById("sunset")
 const weatherDescription = document.getElementById("weatherUpdate")
@@ -23,10 +24,12 @@ const pickTodaysDescription = (todaysDescription) => {
     weatherDescription.innerHTML = `Get your sunnies on. ${city} is looking rather great today.`
   } 
    else if  (todaysDescription === "Clouds") {
+    icon.src = "./design/design2/icons/noun_Cloud_1188486.svg"
     body.classList.add("cloudy")
     weatherDescription.innerHTML = `Time to light a fire and get cosy. ${city} is looking grey today.`
   }
   else if (todaysDescription === "Rain" || todaysDescription === "Thunderstorm" || todaysDescription === "Drizzle" || todaysDescription === "Snow") {
+    icon.src = "./design/design2/icons/noun_Umbrella_2030530.svg"
     body.classList.add("rainy")
     weatherDescription.innerHTML = `It's wet in ${city} today. Don't forget your umbrella.`
   } else {

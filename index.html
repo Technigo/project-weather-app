@@ -1,27 +1,26 @@
 <!DOCTYPE html>
- <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1, width=device-width" />
 
-    <link rel="stylesheet" href="./global.css" />
-    <link rel="stylesheet" href="./style.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
-    />
-    <title>Weather</title>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+  <link rel="stylesheet" href="./global.css" />
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" />
+  <title>Weather</title>
+</head>
+
 <body id="body" class="suns-out">
   <div class="iphone-xxs-1">
     <div class="iphone-xxs-1-child">
-    <b id="weatherUpdate" class="get-your-sunnies">Get your sunnies on. Stockholm is looking rather great today.
-    </b>
-    <div class="todays-forecast">
-      <div class="clear-23"> <span id="dayDescription">Clear</span> | <span id="dayTemperature">23 °C</span></div>
-      <div class="sunrise-0800-sunset-2230-container">
-        <p class="mon">sunrise <span id="sunrise">08.00</span></p>
-        <p class="mon">sunset <span id="sunset">22.30</span> </p>
-      </div>
+      <b id="weatherUpdate" class="get-your-sunnies">Get your sunnies on. Stockholm is looking rather great today.
+      </b>
+      <div class="todays-forecast">
+        <div class="clear-23"> <span id="dayDescription">Clear</span> | <span id="dayTemperature">23 °C</span></div>
+        <div class="sunrise-0800-sunset-2230-container">
+          <p class="mon">sunrise <span id="sunrise">08.00</span></p>
+          <p class="mon">sunset <span id="sunset">22.30</span> </p>
+        </div>
       </div>
       <div class="mon-tue-wed-thu-fri-sat-sun">
         <p class="mon">mon</p>
@@ -41,19 +40,17 @@
         <p name="day" id="thursday" class="mon">25°</p>
         <p name="day" id="friday" class="mon">27°</p>
       </div>
-      <img
-        class="noun-sunglasses-2055147-icon"
-        alt=""
-        src="./design/design2/icons/noun_Sunglasses_2055147.svg"
-      />
+      <img id="icon" class="noun-sunglasses-2055147-icon" alt=""
+        src="./design/design2/icons/noun_Sunglasses_2055147.svg" />
 
       <div class="inputCity">
-       <input type="text" id="city"text="Choose a city" name="city"><br>
-       <input type="submit" value="Submit" onclick="changeCity()">
+        <input type="text" id="city" text="Choose a city" name="city"><br>
+        <input type="submit" value="Submit" onclick="changeCity()">
       </div>
     </div>
-    
-    </div>
-    <script src="./weather.js"></script>
-  </body>
+
+  </div>
+  <script src="./weather.js"></script>
+</body>
+
 </html>
