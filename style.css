@@ -1,45 +1,121 @@
 body {
   font-family: "Montserrat", sans-serif;
-  background: #F7E9B9;
-  color: #2A5510;
+  background: white;
+  color: #2a5510;
   display: flex;
-  align-items: center;
+  align-items: left;
   flex-direction: column;
   margin: 40px;
 }
-
-p {
-  font-size: 20px;
-  margin: 2px;
-}
-
-.forecast {
-  width: 100%;
-  max-width: 300px;
+.container {
+  height: 823px;
+  width: 375px;
+  border: 1px solid #707070;
+  background: #f7e9b9;
+  padding: 40px;
   margin: 40px;
 }
-
-.forecast div {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px dashed;
+.weather-info {
+  width: 296px;
+  height: 38px;
+  flex-shrink: 0;
+  color: #2a5510;
+  font-family: Montserrat;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-block-start: 47px;
 }
 
-.seachBar {
-  width: 100%;
-  max-width: 300px;
+.sunrise-sunset {
+  height: 67px;
+  flex-shrink: 0;
+  color: #2a5510;
+  font-family: Montserrat;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
-input {
-  height: 20px;
-  max-width: 200px;
+#weatherDescription {
+  width: 296px;
+  height: 245px;
+  flex-shrink: 0;
+  color: #2a5510;
+  font-family: Montserrat;
+  font-size: 37px;
+  font-style: normal;
+  font-weight: 700;
 }
 
-button {
-  height: 25px;
+.cityNameId {
+  width: 296px;
+  height: 245px;
+  top: 100px;
+  position: absolute;
+  color: #2a5510;
+  font-size: 20px;
+  font-family: "Montserrat";
+  font-weight: 700;
+  word-wrap: break-word;
 }
 
-#errorId {
-  color: red;
-  margin: 20px;
+#weatherMainId {
+  width: 233px;
+  height: 248px;
+  flex-shrink: 0;
+  color: #2a5510;
+  font-family: Montserrat;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 36px; /* 171.429% */
+}
+
+#temperatureId {
+  width: 59px;
+  height: 242px;
+  flex-shrink: 0;
+  color: #2a5510;
+  font-family: Montserrat;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 36px; /* 171.429% */
+}
+
+#forecastId {
+  width: 233px;
+  height: 248px;
+  flex-shrink: 0;
+  color: #2a5510;
+  font-family: Montserrat;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 36px;
+}
+.forecast {
+  width: 59px;
+  height: 242px;
+  flex-shrink: 0;
+  color: #2a5510;
+  font-family: Montserrat;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 36px; /* 171.429% */
+}
+.searchBar {
+  width: 296px;
+  height: 400px;
+  top: 880px;
+  position: absolute;
+  color: #2a5510;
+  font-size: 20px;
+  font-family: "Montserrat";
+  font-weight: 700;
+  word-wrap: break-word;
 }

@@ -1,32 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Project-Weather-App</title>
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="./style.css" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet" />
-</head>
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<body>
+  <body>
     <section>
-        <div>
-            <p id="cityNameId"></p>
-            <p><span id="weatherMainId"></span> | <span id="temperatureId"></span></p>
-        </div>
-    </section>
-    <section id="forecastId" class="forecast"></section>
-    <section class="searchBar">
-        <input id="cityInputId" type="text" placeholder="Type a city...">
+      <div class="container">
+      <p><span id="weatherMainId"></span> | <span id="temperatureId"></span></p>
+
+      <div class="sunrise-sunset">
+        <span id="sunriseId"></span>
+        <br />
+        <span id="sunsetId"></span>
+      </div>
+      <div> <img src="design/design1/assets/umbrella.png"> </div>
+      <div id="weatherDescription"></div>
+      
+
+      <div class="cityNameId">
+        <p id="cityNameId"></p>
+      </div>
+
+      <table>
+        <tr>
+            <td><section id="forecastId"></section></td> <td><section class="forecast"></section></td></tr></table>
+      <section class="searchBar">
+        <input id="cityInputId" type="text" placeholder="Type a city..." />
         <button id="citySearchButtonId">Search</button>
-    </section>
-    <section>
+      </section>
+      <section>
         <p id="errorId"></p>
+      </section>
     </section>
-</body>
-
+</div>
+  </body>
 </html>
