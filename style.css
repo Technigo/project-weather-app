@@ -1,3 +1,13 @@
+body {
+  background-color: #f7e9b9;
+  margin: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: var(--font-size-2xl);
+  color: var(--color-darkolivegreen);
+  font-family: var(--font-montserrat);
+}
 .iphone-xxs-1-child {
     position: absolute;
     top: 0;
@@ -139,12 +149,14 @@
   display: inline-block;
   width: 296px;
 }
+
 .light-a-fire {
   top: 269px;
   left: 40px;
   font-size: 37px;
   height: 245px;
 }
+
 .cloudy-23 {
   top: 44px;
   left: 47px;
@@ -163,17 +175,20 @@
   display: inline-block;
   width: 296px;
 }
+
 .light-a-fire {
   top: 269px;
   left: 40px;
   font-size: 37px;
   height: 245px;
 }
+
 .cloudy-23 {
   top: 44px;
   left: 47px;
   height: 38px;
 }
+
 .noun-cloud-1188486-icon {
   position: absolute;
   top: 194px;
