@@ -11,21 +11,10 @@ const fetchWeatherReport = (reportType, city, country) => {
   }
   // We convert our parameters into a string
   const queryString = buildQueryString(params)
-
-  let apiCollection = ""
-  switch(reportType) {
-    case "current":
-      apiCollection = "weather"
-      break;
-
-    case "forecast":
-      apiCollection = "forecast"
-      break;
-
-    default:
-      // if we dont get a correct report type we return back just false
-      console.log("error")
-      return false
+  const apiCollection = ["weather","forecast"].includes(reportType) ? reportType : false
+  if (!apiCollection) {
+    console.log("Incorrect report type");
+    return false
   }
 
   // We put together the apiUrl, the apiCollection and the queryString to form the complete fetch url
@@ -39,21 +28,21 @@ const fetchWeatherReport = (reportType, city, country) => {
       console.log(data)
       return data
     })
+}
+
+const fetchWeatherData = async (city, country) => {
+  // We run both fetch calls concurrently and wait for them to both complete
+  const [weatherData, forecastData] = await Promise.all([
+    fetchWeatherReport("weather", city, country),
+    fetchWeatherReport("forecast", city, country)
+  ]);
+
+  // once completed we return an object consisting of city, country, current, forecast
+  return {
+    city: city,
+    country: country,
+    timezone: weatherData.timezone,
+    current: weatherData,
+    forecast: forecastData
   }
-
-  const fetchWeatherData = async (city, country) => {
-    // We run both fetch calls concurrently and wait for them to both complete
-    const [weatherData, forecastData] = await Promise.all([
-      fetchWeatherReport("current", city, country),
-      fetchWeatherReport("forecast", city, country)  // Corrected to "forecast"
-    ]);
-
-    // once completed we return an object consisting of city, country, current, forecast
-    return {
-      city: city,
-      country: country,
-      timezone: weatherData.timezone,
-      current: weatherData,
-      forecast: forecastData
-    }
-  };
+};
