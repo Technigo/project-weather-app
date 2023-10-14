@@ -8,6 +8,17 @@ body {
   color: var(--color-darkolivegreen);
   font-family: var(--font-montserrat);
 }
+
+.iphone-xxs-1-child {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  box-sizing: border-box;
+  width: 375px;
+  height: 823px;
+  transform: translateX(-50%);
+}
+
 .get-your-sunnies {
   position: absolute;
   top: 274px;
@@ -16,22 +27,6 @@ body {
   display: inline-block;
   width: 296px;
   height: 245px;
-}
-
-.rainy {
-  background: #A3DEF7;
-  color: #164A68;
-}
-
-.cloudy,
-.rainy {
-  background: #DCD3C5;
-  color: #2F2F2F;
-}
-
-.unknown {
-  background: #F3733C;
-  color: #fff;
 }
 
 .clear-23,
@@ -126,6 +121,17 @@ body {
   width: 73.05px;
   height: 51.72px;
 }
+
+.iphone-xxs-1 {
+  position: relative;
+  width: 100%;
+  height: 812px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-2xl);
+  font-family: var(--font-montserrat);
+}
+
 .dont-forget-your,
 .rain-23 {
   position: absolute;
@@ -145,6 +151,7 @@ body {
   left: 47px;
   height: 38px;
 }
+
 .noun-umbrella-2030530-icon {
   position: absolute;
   top: 185px;
@@ -153,78 +160,6 @@ body {
   height: 73px;
 }
 
-.iphone-xxs-2 {
-  position: relative;
-  background-color: #fff;
-  width: 100%;
-  height: 812px;
-  overflow: hidden;
-  text-align: left;
-  font-size: var(--font-size-2xl);
-  color: var(--color-darkslategray);
-  font-family: var(--font-montserrat);
-}
-
-.iphone-xxs-3-child {
-  position: absolute;
-  top: -5px;
-  left: 0;
-  background-color: #f4f7f8;
-  border: 1px solid #707070;
-  box-sizing: border-box;
-  width: 375px;
-  height: 823px;
-}
- .dont-forget-your,
- .rain-23 {
-   position: absolute;
-   display: inline-block;
-   width: 296px;
- }
- .dont-forget-your {
-   top: 274px;
-   left: 40px;
-   font-size: 37px;
-   height: 245px;
- }
- .rain-23 {
-   top: 49px;
-   left: 47px;
-   height: 38px;
- }
- .noun-umbrella-2030530-icon {
-   position: absolute;
-   top: 185px;
-   left: 40px;
-   width: 73.45px;
-   height: 73px;
- }
-.cloudy-23,
-.light-a-fire {
-  position: absolute;
-  display: inline-block;
-  width: 296px;
-}
-
-.light-a-fire {
-  top: 269px;
-  left: 40px;
-  font-size: 37px;
-  height: 245px;
-}
-
-.cloudy-23 {
-  top: 44px;
-  left: 47px;
-  height: 38px;
-}
-.noun-cloud-1188486-icon {
-  position: absolute;
-  top: 194px;
-  left: 39.8px;
-  width: 77.19px;
-  height: 53.26px;
-}
 .cloudy-23,
 .light-a-fire {
   position: absolute;
@@ -251,4 +186,44 @@ body {
   left: 39.8px;
   width: 77.19px;
   height: 53.26px;
+}
+
+.cloudy-23,
+.light-a-fire {
+  position: absolute;
+  display: inline-block;
+  width: 296px;
+}
+
+.light-a-fire {
+  top: 269px;
+  left: 40px;
+  font-size: 37px;
+  height: 245px;
+}
+
+.cloudy-23 {
+  top: 44px;
+  left: 47px;
+  height: 38px;
+}
+
+.noun-cloud-1188486-icon {
+  position: absolute;
+  top: 194px;
+  left: 39.8px;
+  width: 77.19px;
+  height: 53.26px;
+}
+
+.inputCity {
+  position: absolute;
+  top: 745px;
+  left: 39px;
+}
+
+.cloudy,
+.rainy {
+  background-color: #EAE6E3;
+  color: black;
 }
