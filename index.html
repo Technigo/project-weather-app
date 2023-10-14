@@ -4,38 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
-    <script defer src="./script.js"></script>
     <title>Weather App</title>
   </head>
   <body>
     <main>
-      <!-- HEADER background-img -->
-      <!-- Lägg till navigation med sökikon och plats för en input FLEX -->
-      <!-- H1 - Temperatur -->
-      <!-- H2 - Stad -->
-      <!-- SPAN Lokal tid format 08:00 -->
-      <!-- Väderbeskrivning och ikon FLEX, justera vänster -->
-      <!-- sunrise && time :: sunset && time FLEX - space-around -->
-      <!-- button : position: absoulut -->
       <header>
         <div class="header-background background-mask-day"></div>
         <div class="container">
           <nav>
             <img src="assets/search.svg" alt="search-icon" srcset="" />
           </nav>
-          <div id="header__weather-data"></div>
-          <button id="btn-next-city">
-          </button>
+          <div id="weatherContainer"></div>
+          <button id="btn-next-city"></button>
         </div>
       </header>
-
-      <!-- SECTION -->
-      <!-- Use table to add day, weather icon, temprature, m/s -->
-      <!-- En flexcontainer -->
       <section>
-        <div class="container forecast__container">
-        </div>
+        <div class="container forecast__container"></div>
       </section>
     </main>
+    <!-- To be able to use import/export -->
+    <script type="module" src="js/main.js"></script>
   </body>
 </html>
