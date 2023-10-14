@@ -12,7 +12,16 @@ const time = document.getElementById("time");
 const weatherType = document.getElementById("skyStatus");
 const weatherIcon = document.getElementById("weather-icon");
 //famous cities array
-const citiesArray = ["Stockholm", "London", "New York", "Tokyo", "Paris", "Seoul", "Berlin", "São Paulo"];
+const citiesArray = [
+  "Stockholm",
+  "London",
+  "New York",
+  "Tokyo",
+  "Paris",
+  "Seoul",
+  "Berlin",
+  "São Paulo",
+];
 let currentCityIndex = 0;
 
 //Fetch weather API
@@ -32,9 +41,9 @@ const showCity = async (cityName) => {
   //waiting response(promise to be resolved) of the function (async) fetchWeatherData with the param and store this value in weatherData
   const weatherData = await fetchWeatherData(cityName);
 
- // Fetch weekly weather forecast data
- const weeklyWeatherData = await fetchWeeklyWeatherData(cityName);
- 
+  // Fetch weekly weather forecast data
+  const weeklyWeatherData = await fetchWeeklyWeatherData(cityName);
+
   //Save API data in respective variables
   const cityValue = weatherData.name;
   const sunrise = weatherData.sys.sunrise;
@@ -47,13 +56,15 @@ const showCity = async (cityName) => {
   // Display the values in console.log (dev)
   console.log(cityValue);
   console.log("weatherData", weatherData);
-  
+
   // Example usage: Display in HTML
   let now = new Date();
   temperature.textContent = `${temperatureValue}°C`;
   city.textContent = cityValue;
   weatherType.textContent = weatherNow;
-  sunriseTime.textContent = `Sunrise: ${unixConversion(sunrise + timezoneOffSet)}`;
+  sunriseTime.textContent = `Sunrise: ${unixConversion(
+    sunrise + timezoneOffSet
+  )}`;
   sunsetTime.textContent = `Sunset: ${unixConversion(sunset + timezoneOffSet)}`;
   weatherIcon.src = `https://openweathermap.org/img/wn/${weatherIconImg}@2x.png`;
   date.textContent = dateBuilder(now);
@@ -62,7 +73,10 @@ const showCity = async (cityName) => {
   renderWeeklyForecast(weeklyWeatherData);
 
   temperature.setAttribute("data-temp-c", temperatureValue);
-  temperature.setAttribute("data-temp-f", convertToFahrenheit(temperatureValue));
+  temperature.setAttribute(
+    "data-temp-f",
+    convertToFahrenheit(temperatureValue)
+  );
 
   // Hour now
   setInterval(() => {
@@ -72,44 +86,44 @@ const showCity = async (cityName) => {
 };
 // Display Time
 function timeBuilder(time) {
-    const hours = time.getHours();
-    const minutes = time.getMinutes();
-    const formattedHours = hours < 10 ? `0${hours}` : hours;
-    const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
-    return `${formattedHours}:${formattedMinutes}`;
-  }
+  const hours = time.getHours();
+  const minutes = time.getMinutes();
+  const formattedHours = hours < 10 ? `0${hours}` : hours;
+  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+  return `${formattedHours}:${formattedMinutes}`;
+}
 // Date
 function dateBuilder(d) {
-    const months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-    const days = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "thursday",
-      "Friday",
-      "Saturday",
-    ];
-    let day = days[d.getDay()];
-    let date = d.getDay();
-    let month = months[d.getMonth()];
-    let year = d.getFullYear();
-  
-    return `${day} ${date} ${month} ${year}`;
-  }
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[d.getDay()];
+  let date = d.getDay();
+  let month = months[d.getMonth()];
+  let year = d.getFullYear();
+
+  return `${day} ${date} ${month} ${year}`;
+}
 
 // Search bar input
 const search = (e) => {
@@ -154,44 +168,40 @@ const unixConversion = (unixTimestamp) => {
   //convert Unix Timestamp from seconds to milliseconds
   const date = new Date(unixTimestamp * 1000);
   const options = {
-
     hour: "2-digit",
     minute: "2-digit",
     timeZone: "UTC",
   };
   // Generate time string
-  return(date.toLocaleTimeString("default", options));
+  return date.toLocaleTimeString("default", options);
 };
 // Randomize famous cities array
 const nextCity = () => {
-    currentCityIndex++;
-    if(currentCityIndex > citiesArray.length - 1){
-        currentCityIndex = 0;
-    }
-    showCity(citiesArray[currentCityIndex]);
-}
-
+  currentCityIndex++;
+  if (currentCityIndex > citiesArray.length - 1) {
+    currentCityIndex = 0;
+  }
+  showCity(citiesArray[currentCityIndex]);
+};
 
 //Convert Celcius to Fahrenheit
-const convertToFahrenheit = function(celsius) {
-
-  const fahrenheit = (celsius * 1.8) + 32;
+const convertToFahrenheit = function (celsius) {
+  const fahrenheit = celsius * 1.8 + 32;
   return fahrenheit.toFixed(1);
 };
 
 //Toggle temperature into °C and °F on click - fixing bugs before commit(on going)
 const toggleTemp = () => {
-  if (temperature.textContent.endsWith('°C')){
-      temperature.textContent = `${temperature.getAttribute("data-temp-f")}°F`;
+  if (temperature.textContent.endsWith("°C")) {
+    temperature.textContent = `${temperature.getAttribute("data-temp-f")}°F`;
   } else {
-      temperature.textContent = `${temperature.getAttribute("data-temp-c")}°C`;
+    temperature.textContent = `${temperature.getAttribute("data-temp-c")}°C`;
   }
 };
 //event listeners / execution
 showCity(citiesArray[currentCityIndex]);
-citiesBtn.addEventListener('click', nextCity);
-temperature.addEventListener('click', toggleTemp);
-
+citiesBtn.addEventListener("click", nextCity);
+temperature.addEventListener("click", toggleTemp);
 
 // Function to fetch the weekly weather data
 const fetchWeeklyWeatherData = (cityName) => {
