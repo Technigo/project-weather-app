@@ -9,6 +9,7 @@ body {
 
 #temperature{
     font-size: 48px;
+    cursor: pointer;
 }
 
 #city{

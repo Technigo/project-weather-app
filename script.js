@@ -1,4 +1,4 @@
-//GLOBAL VARIABLES
+//Global variables
 const ApiKey = "231ff309be8ceb223aff125da6bf7bb2";
 const citiesBtn = document.getElementById("cities-btn");
 const city = document.getElementById("city");
@@ -10,11 +10,12 @@ const sunsetTime = document.getElementById("sunset");
 const temperature = document.getElementById("temperature");
 const time = document.getElementById("time");
 const weatherType = document.getElementById("skyStatus");
+const weatherIcon = document.getElementById("weather-icon");
 //famous cities array
 const citiesArray = ["Stockholm", "London", "New York", "Tokyo", "Paris", "Seoul", "Berlin", "São Paulo"];
 let currentCityIndex = 0;
 
-//FETCH API
+//Fetch weather API
 const fetchWeatherData = async (cityByName) => {
   try {
     const URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityByName}&units=metric&APPID=${ApiKey}`;
@@ -26,7 +27,7 @@ const fetchWeatherData = async (cityByName) => {
     console.log(error);
   }
 };
-//MAIN FUNCTION TO DISPLAY THE PROPERTIES
+// Display the properties in weather app - top container
 const showCity = async (cityName) => {
   //waiting response(promise to be resolved) of the function (async) fetchWeatherData with the param and store this value in weatherData
   const weatherData = await fetchWeatherData(cityName);
@@ -38,29 +39,31 @@ const showCity = async (cityName) => {
   const temperatureValue = weatherData.main.temp.toFixed(1);
   const timezoneOffSet = weatherData.timezone;
   const weatherNow = weatherData.weather[0].description;
+  const weatherIconImg = weatherData.weather[0].icon;
 
-  //Example usage: Display the values in console.log
+  // Display the values in console.log (dev)
   console.log(cityValue);
   console.log("weatherData", weatherData);
   
-  //Example usage: Display in HTML
+  // Example usage: Display in HTML
   let now = new Date();
   temperature.textContent = `${temperatureValue}°C`;
   city.textContent = cityValue;
   weatherType.textContent = weatherNow;
   sunriseTime.textContent = `Sunrise: ${unixConversion(sunrise + timezoneOffSet)}`;
   sunsetTime.textContent = `Sunset: ${unixConversion(sunset + timezoneOffSet)}`;
+  weatherIcon.src = `https://openweathermap.org/img/wn/${weatherIconImg}@2x.png`;
   date.textContent = dateBuilder(now);
 
-  //hour now
+  temperature.setAttribute("data-temp-c", temperatureValue);
+  temperature.setAttribute("data-temp-f", convertToFahrenheit(temperatureValue));
+
+  // Hour now
   setInterval(() => {
     const currentTime = new Date();
     time.textContent = timeBuilder(currentTime);
   }, 1000);
 };
-
-showCity(citiesArray[currentCityIndex]);
-
 // Display Time
 function timeBuilder(time) {
     const hours = time.getHours();
@@ -68,7 +71,6 @@ function timeBuilder(time) {
     const formattedHours = hours < 10 ? `0${hours}` : hours;
     const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
     return `${formattedHours}:${formattedMinutes}`;
-
   }
 // Date
 function dateBuilder(d) {
@@ -103,17 +105,17 @@ function dateBuilder(d) {
     return `${day} ${date} ${month} ${year}`;
   }
 
-//SEARCH BAR INPUT
+// Search bar input
 const search = (e) => {
   let cityName = citySearched.value;
 
   if (cityName && cityName.trim().length > 0) {
     cityName = cityName.trim().toLowerCase();
   }
-  //listener for the 'Enter' key for search bar
+  // Listener for the 'Enter' key for search bar
   showCity(cityName);
 };
-//SEARCH EVENT LISTENERS (BUTTON + ENTER KEY)
+// Search event listener (button + enter key)
 searchBtn.addEventListener("click", search);
 citySearched.addEventListener("keyup", (e) => {
   if (e.key == "Enter") {
@@ -121,7 +123,7 @@ citySearched.addEventListener("keyup", (e) => {
   }
 });
 
-// TOGGLE SEARCH BAR
+// Toggle Search bar
 function toggleSearchBar() {
   const searchContainer = document.getElementById("search-container");
   const searchInput = document.getElementById("search-input");
@@ -141,7 +143,7 @@ function toggleSearchBar() {
     closeIcon.style.display = "none";
   }
 }
-//SUNSET / SUNRISE TIMESTAMP CONVERSION
+// Sunset/Sunrise timestamp conversion
 const unixConversion = (unixTimestamp) => {
   //convert Unix Timestamp from seconds to milliseconds
   const date = new Date(unixTimestamp * 1000);
@@ -151,11 +153,10 @@ const unixConversion = (unixTimestamp) => {
     minute: "2-digit",
     timeZone: "UTC",
   };
-  //Generate time string
+  // Generate time string
   return(date.toLocaleTimeString("default", options));
 };
-//Randomize famous cities array
-
+// Randomize famous cities array
 const nextCity = () => {
     currentCityIndex++;
     if(currentCityIndex > citiesArray.length - 1){
@@ -163,8 +164,6 @@ const nextCity = () => {
     }
     showCity(citiesArray[currentCityIndex]);
 }
-citiesBtn.addEventListener('click', nextCity);
-
 // Forecast weekdays
 // const fetchWeeklyWeatherData = async (cityByName) => {
 //     try {
@@ -204,17 +203,22 @@ citiesBtn.addEventListener('click', nextCity);
 //     .catch((error) => {
 //         console.error("Error fetching weekly weather data:", error);
 //     });
+//Convert Celcius to Fahrenheit
+const convertToFahrenheit = function(celsius) {
 
-// //convert Fahrenheit to Celcius
-// const convertToCelsius = function(fahrenheit) {
-//     const celsius = (fahrenheit - 32) * (5 / 9);
-//     return Math.round(celsius * 10) / 10;
-//   };
-//   console.log (convertToCelsius(100));
-// //Convert Celcius to Fahrenheit
-// const convertToFahrenheit = function(celsius) {
+  const fahrenheit = (celsius * 1.8) + 32;
+  return fahrenheit.toFixed(1);
+};
 
-//     const fahrenheit = (celsius * 1.8) + 32;
-//     return Math.round(fahrenheit * 10) / 10;
-//   };
-//   console.log (convertToFahrenheit(32.40));
+//Toggle temperature into °C and °F on click - fixing bugs before commit(on going)
+const toggleTemp = () => {
+  if (temperature.textContent.endsWith('°C')){
+      temperature.textContent = `${temperature.getAttribute("data-temp-f")}°F`;
+  } else {
+      temperature.textContent = `${temperature.getAttribute("data-temp-c")}°C`;
+  }
+};
+//event listeners / execution
+showCity(citiesArray[currentCityIndex]);
+citiesBtn.addEventListener('click', nextCity);
+temperature.addEventListener('click', toggleTemp);
