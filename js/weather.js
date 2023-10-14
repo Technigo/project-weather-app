@@ -3,8 +3,11 @@
  */
 import { getForecast } from "./geolocation.js";
 
+const headerbackground = document.querySelector(".header-background");
+
 // Function that outputs weatherData
 export const generateWeatherHTML = (data) => {
+  console.log(data);
   // Locals
   const sunriseUTC = new Date(data.sys.sunrise * 1000);
   const sunsetUTC = new Date(data.sys.sunset * 1000);
@@ -26,7 +29,7 @@ export const generateWeatherHTML = (data) => {
     <h2>${data.name}</h2>
     <span>Time: ${currentHours}:${currentMinutes}</span>
     <div class="flex-left">
-      <p>${data.weather[0].main}</p>
+      <p>${data.weather[0].description}</p>
       <img id="header-weather-icon" src="${weatherIcon}" alt="current image icon" />
     </div>
     <div class="flex-space-between">
@@ -69,8 +72,8 @@ const formateTime = (dateUTC, timezone) => {
 // Function to add day/night background to header
 function changeHeaderBackground(currentHours) {
   if (currentHours >= "06" && currentHours < "20") {
-    headerbackground.classList.remove("background-mask-night");
-    headerbackground.classList.add("background-mask-day");
+    headerbackground.classList.add("background-mask-night");
+    headerbackground.classList.remove("background-mask-day");
   } else {
     headerbackground.classList.add("background-mask-night");
     headerbackground.classList.remove("background-mask-day");
