@@ -72,8 +72,8 @@ const formateTime = (dateUTC, timezone) => {
 // Function to add day/night background to header
 function changeHeaderBackground(currentHours) {
   if (currentHours >= "06" && currentHours < "20") {
-    headerbackground.classList.add("background-mask-night");
-    headerbackground.classList.remove("background-mask-day");
+    headerbackground.classList.add("background-mask-day");
+    headerbackground.classList.remove("background-mask-night");
   } else {
     headerbackground.classList.add("background-mask-night");
     headerbackground.classList.remove("background-mask-day");
