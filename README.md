@@ -1,13 +1,11 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This assignment was done by Carolina Cárdenas and Samrachna Adhikari, and we chose to go with the second desogn that was provided. The app displays current weather of set city, the temperature, sunrise, and sunset, here we have chosen Knivsta as our city.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Once we had the html and css files ready, we decided to split one feature each for either of us. Carolina worked on the Weather Forecast feature where the weather for the next 5 days is shown and Samrachna worked on the Sunrise and sunset feature. We had issues on displaying the time in the correct format but after reading a the mdn documentations, and reading some articles on how to do it we were able to use the newDate method. 
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+
