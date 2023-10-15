@@ -1,8 +1,6 @@
 let city = "Knivsta"
 
 let url ="https://api.openweathermap.org/data/2.5/weather?q=Knivsta,Sweden&units=metric&APPID=f40f4543214ad55ead8d6ca12cb39ee0"
-let newUrl = new URL(url)
-newUrl = newUrl.searchParams.set("q", city);
 let urlForecast ="https://api.openweathermap.org/data/2.5/forecast?q=Knivsta,Sweden&units=metric&APPID=f40f4543214ad55ead8d6ca12cb39ee0"
 const body = document.getElementById("body")
 const icon = document.getElementById("icon")
@@ -76,14 +74,18 @@ const changeCity = () => {
   city = document.getElementById("city").value;
   urlForecast = new URL(urlForecast);
   urlForecast.searchParams.set("q", city);
+  url = new URL(url);
+  url = url.searchParams.set("q", city);
   document.getElementById("city").value = "";
   fetchWeather();
+  fetchSunriseSunset();
 }
 
 const fetchSunriseSunset =  async () => {
   try{
     const todaysResponse = await fetch(url);
     const todaysData = await todaysResponse.json();
+    console.log(url)
     todaysWeather.innerHTML = todaysData.weather[0].description
     sunrise.innerHTML = new Date(todaysData.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     sunset.innerHTML = new Date(todaysData.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
