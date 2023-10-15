@@ -142,11 +142,10 @@ const getCoordsForCities = async (cityName) => {
 export const getAirPollution = async (latitude, longitude) => {
   try {
     const response = await fetch(
-      `http://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=${apiKey}`
+      `https://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=${apiKey}`
     );
 
     const data = await response.json();
-
     const pollutionContainer = document.querySelector(".pollution__container");
     let pm2_5_heading = "";
     let pm2_5_color = "";
