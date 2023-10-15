@@ -138,3 +138,29 @@ const getCoordsForCities = async (cityName) => {
     console.log("Could not contact the weather forecast API", error);
   }
 };
+
+export const getAirPollution = async (latitude, longitude) => {
+  try {
+    const response = await fetch(
+      `http://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=${apiKey}`
+    );
+
+    const data = await response.json();
+    console.log(data);
+    let pollutionContainer = document.querySelector(".pollution__container");
+
+    const pollutionArray = [...data.list];
+    console.log(pollutionArray[0].components.pm2_5);
+    const pm2_5 = pollutionArray[0].components.pm2_5;
+    // // Clear existing history
+    pollutionContainer.innerHTML = "";
+
+    // // Render the needed data on the page
+    pollutionContainer.innerHTML += `
+        <h5>Fine Particulate Matter Level</h5>
+        <p>${pm2_5}</p>
+        `;
+  } catch (error) {
+    console.log("Could not contact the weather forecast API", error);
+  }
+};
