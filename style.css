@@ -164,6 +164,15 @@ body {
   }
 
   #cities-btn img {
-    width: 7rem;
+    width: 6rem;
+  }
+
+  #search-container {
+    padding: 1rem 0;
+  }
+
+  #search-container.active #search-input {
+    width: 60%;
+    opacity: 1;
   }
 }
