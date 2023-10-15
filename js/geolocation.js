@@ -33,7 +33,6 @@ export const fetchWeatherDataByCity = async (cityOrCoords) => {
   try {
     const response = await fetch(URL);
     const weatherData = await response.json();
-    console.log(weatherData);
 
     generateWeatherHTML(weatherData);
     return;
@@ -63,6 +62,11 @@ export const getForecast = async (latitude, longitude) => {
       `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}${suffix}`
     );
     const data = await response.json();
+    let forecastContainer = document.querySelector(".forecast__container");
+
+    // Clear existing forecast
+    forecastContainer.innerHTML = "";
+
     // Get an array of the forecasts
     const forecastArray = [...data.list];
 
@@ -70,6 +74,7 @@ export const getForecast = async (latitude, longitude) => {
     const filteredArray = forecastArray.filter((day) => {
       return day.dt_txt.toLowerCase().endsWith("09:00:00");
     });
+
     // Loop over the filteredArray get the day of the week from dt and save it as a variable called "dayOfTheWeek"
     filteredArray.forEach((day, index) => {
       if (index < 4) {
@@ -78,8 +83,9 @@ export const getForecast = async (latitude, longitude) => {
         let dayOfTheWeek = date.toLocaleDateString("en-US", {
           weekday: "short",
         });
+
         // Render the needed data on the page
-        document.querySelector(".forecast__container").innerHTML += `
+        forecastContainer.innerHTML += `
         <div class="forecast__single-day-flex">
           <span class="forecast__day">${dayOfTheWeek}</span>
           <span class="forecast__image"><img src="https://openweathermap.org/img/wn/${
@@ -91,6 +97,43 @@ export const getForecast = async (latitude, longitude) => {
         `;
       } else return;
     });
+  } catch (error) {
+    console.log("Could not contact the weather forecast API", error);
+  }
+};
+
+// Function that radomly changes the weather depending on city
+export const fetchRandomWeather = async () => {
+  const URL = "https://countriesnow.space/api/v0.1/countries/flag/unicode";
+
+  try {
+    const response = await fetch(URL);
+    const cityData = await response.json();
+
+    const cityNames = [];
+
+    cityData.data.forEach((city) => {
+      cityNames.push(city.name);
+    });
+
+    let randomCity = cityNames[Math.floor(Math.random() * cityNames.length)];
+
+    fetchWeatherDataByCity(randomCity);
+    getCoordsForCities(randomCity);
+  } catch (err) {
+    container.innerText = "No cities available";
+  }
+};
+
+// Function that gets the coordinates for given city
+const getCoordsForCities = async (cityName) => {
+  const URL = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&appid=${apiKey}`;
+
+  try {
+    const response = await fetch(URL);
+    const cityData = await response.json();
+
+    getForecast(cityData[0].lat, cityData[0].lon);
   } catch (error) {
     console.log("Could not contact the weather forecast API", error);
   }
