@@ -100,24 +100,20 @@ h1 {
 
 h1::after {
   content: " \2103";
-  font-size: 1.3rem;
+  font-size: 1.7rem;
   margin-left: 5px;
   position: relative;
-  top: -30px;
-  left: -25px;
+  top: -44px;
+  left: -50px;
 }
 
 h1,
 h2 {
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 p {
   line-height: 2;
-}
-
-nav {
-  margin-bottom: 40px;
 }
 
 header {
@@ -128,12 +124,12 @@ header {
 
 nav img {
   width: 10%;
-  max-width: 2rem;
+  max-width: 1.5rem;
 }
 
 .container {
   position: relative;
-  padding: 40px var(--PADDING-SIDE);
+  padding: 30px var(--PADDING-SIDE);
   /* padding-top: 1.3rem;
   padding-bottom: 3rem; */
 }
@@ -180,7 +176,7 @@ nav img {
   display: flex;
   justify-content: space-between;
   margin: var(--MARGIN);
-  padding: 0 2rem;
+  padding: 0 1.5rem;
 }
 
 .description {
@@ -200,6 +196,7 @@ nav img {
 
 .forecast__single-day-flex span {
   flex: 1;
+  font-size: 0.9rem;
 }
 
 .forecast__wind,
