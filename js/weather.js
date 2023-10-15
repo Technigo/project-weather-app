@@ -11,7 +11,7 @@ export const generateWeatherHTML = (data) => {
   // Locals
   const sunriseUTC = new Date(data.sys.sunrise * 1000);
   const sunsetUTC = new Date(data.sys.sunset * 1000);
-  const weatherIcon = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+  const weatherIcon = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
   // Variables for current time HH:MM
   const currentHours = getUTCTime(data.timezone)
     .getUTCHours()
