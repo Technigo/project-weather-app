@@ -13,7 +13,6 @@ body {
   background-color: #f7f7f2;
 }
 
-
 #top-container {
   height: 50vh;
 }
@@ -24,22 +23,20 @@ body {
 
 #temperature{
   font-size: 4rem;
+  cursor: pointer;
 }
 
 .suntime {
-  font-size: medium;
-  padding-top: 1rem;
+  font-size: small;
 }
 
 #date-time-container {
   font-size: medium;
-  padding-top: 2rem;
 }
 
 #city{
     font-size: 30px;
     font-weight: 700;
-    padding-bottom: 3rem;
 }
 
 #search-container, #search-btn {
@@ -104,13 +101,8 @@ body {
     width: 4rem;
   }
 
-  #skyStatus{
-    font-size: 24px;
-    font-weight: 500;
-  }
-
-  #time {
-    font-size: 30px;
+  #btn-img{
+    cursor: pointer;
   }
 
 /* Mobile-specific styles */
@@ -139,13 +131,13 @@ body {
 
   #weather-icon  {
     position: absolute;
-    top: 30;
+    top: 0;
     right: 0;
   }
 
   #cities-btn img {
     position: absolute;
-    top: 2rem;
+    top: 0;
     right: 0;
     width: 5rem;
   }
@@ -176,7 +168,7 @@ body {
   }
 
   #cities-btn img {
-    width: 6rem;
+    width: 4rem;
   }
 
   #search-container {
