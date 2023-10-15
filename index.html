@@ -17,7 +17,7 @@
             id="search-input"
             placeholder="Type a city name..."
             autofocus="off"
-            autocomplete="on"
+            autocomplete="off"
           />
           <div id="search-btn" onclick="toggleSearchBar()">
             <img
@@ -35,27 +35,29 @@
           </div>
         </div>
         <div id="card-display">
+          <div id="weather-icon-container">
+            <img id="weather-icon" alt="weather-icon" />
+          </div>
           <p id="temperature" data-temp-c="" data-temp-f=""></p>
           <p id="city"></p>
-          <p id="time"></p>
-          <p id="date"></p>
           <p id="skyStatus"></p>
+          <div id="date-time-container">
+            <p id="time"></p>
+            <p id="date"></p>
+          </div>
           <div class="suntime">
             <p id="sunrise"></p>
             <p id="sunset"></p>
-            <img id="weather-icon" alt="weather-icon">
           </div>
-          <div>
-            <div id="btn-container">
-              <button id="cities-btn">display other cities</button>
-            </div>
+        </div>
+        <div id="btn-container">
+          <div id="cities-btn">
+            <img src="./images/next-icon.svg" alt="" width="36px" />
           </div>
-
-          <div></div>
         </div>
       </div>
       <div id="bottom-container">
-        <ul id="forecast-list"></ul>
+        <div id="forecast-list"></>
       </div>
     </div>
     <script type="text/JavaScript" src="script.js"></script>

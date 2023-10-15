@@ -4,18 +4,41 @@
 }
   
 body {
+    width: 100vw;
+    height: 100vh;
     font-family: "Roboto", sans-serif;
 }
 
+#container {
+  background-color: #f7f7f2;
+}
+
+
+#top-container {
+  height: 50vh;
+}
+
+#bottom-container {
+  height: 50vh;
+}
+
 #temperature{
-    font-size: 48px;
-    cursor: pointer;
+  font-size: 4rem;
+}
+
+.suntime {
+  font-size: small;
+}
+
+#date-time-container {
+  font-size: medium;
 }
 
 #city{
     font-size: 30px;
     font-weight: 700;
 }
+
 #search-container, #search-btn {
     display: flex;
     justify-content: center;
@@ -32,27 +55,27 @@ body {
   }
   
   #search-container.active {
-    width: 150px;
+    width: auto;
   }
   
   #search-input {
     width: 0;
+    height: 2rem;
     opacity: 0;
     border: none;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #fff;
     background: transparent;
     transition: width 0.3s, opacity 0.3s;
     outline: none;
+    color: white;
   }
   
   #search-container.active #search-input {
     width: 100%;
     opacity: 1;
   }
-  
-  #search-btn {
-    top: 0;
-    right: 0;
+
+  #search-icon {
     cursor: pointer;
   }
   
@@ -61,7 +84,86 @@ body {
     cursor: pointer;
   }
 
-  .suntime {
+  .suntime, #date-time-container {
     display: flex;
-    gap: 5px;
+    justify-content: space-between;
+    align-items: center;
   }
+
+  .forecast-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: medium;
+  }
+
+  .weather-condition-icon img {
+    width: 4rem;
+  }
+
+/* Mobile-specific styles */
+@media (max-width: 767px) {
+  #top-container {
+    border-radius: 0 0 0 30%;
+    padding: 2rem;
+  }
+
+  #bottom-container {
+    padding: 0 2rem 2rem 2rem;
+  }
+
+  #card-display {
+    line-height: 2rem;
+    color: white;
+  }
+
+  #temperature {
+    padding: 2rem 0;
+  }
+
+  #weather-icon-container, #btn-container {
+    position: relative;
+  }
+
+  #weather-icon  {
+    position: absolute;
+    top: 30;
+    right: 0;
+  }
+
+  #cities-btn img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 5rem;
+  }
+}
+
+/* Desktop*/
+@media (min-width: 1024px) {
+  #top-container{
+    padding: 0 10rem;
+  }
+
+  #bottom-container{
+    padding: 0 10rem;
+  }
+
+  #card-display {
+    color: white;
+  }
+
+  #weather-icon-container {
+    text-align: center;
+  }
+
+  #btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #cities-btn img {
+    width: 7rem;
+  }
+}

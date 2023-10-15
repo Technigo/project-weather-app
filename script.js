@@ -61,7 +61,7 @@ const showCity = async (cityName) => {
   let now = new Date();
   temperature.textContent = `${temperatureValue}°C`;
   city.textContent = cityValue;
-  weatherType.textContent = weatherNow;
+  weatherType.textContent = weatherNow.charAt(0).toUpperCase() + weatherNow.slice(1);
   sunriseTime.textContent = `Sunrise: ${unixConversion(
     sunrise + timezoneOffSet
   )}`;
@@ -226,15 +226,41 @@ const renderWeeklyForecast = (data) => {
     .filter((item) => item.dt_txt.split(" ")[1].split(":")[0] == 12)
     .forEach((item) => {
       const date = new Date(item.dt * 1000);
-      const dateString = date.toDateString();
+      const day = getDayName(date.getDay());
+      const dateNumber = date.getDate();
+      const dateString = `${day}, ${dateNumber}`;
       const temp = item.main.temp.toFixed(1);
       const windSpeed = item.wind.speed.toFixed(1);
 
       console.log("data", item);
 
-      const listItem = document.createElement("li");
+      const listItem = document.createElement("div");
+      listItem.className = "forecast-item";
       listItem.innerHTML = `<span>${dateString}</span><span class="weather-condition-icon"><img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"></span><span>${temp}°C</span><span>${windSpeed} m/s</span>`;
 
       forecastContainer.appendChild(listItem);
     });
 };
+
+function getDayName(dayOfWeek) {
+  const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  return daysOfWeek[dayOfWeek];
+}
+
+
+// Change bg color
+function changeBackgroundColor() {
+  const now = new Date();
+  const currentHour = now.getHours();
+
+  const topContainer = document.getElementById("top-container");
+
+  if (currentHour >= 6 && currentHour < 18) {
+    topContainer.style.backgroundImage = 'linear-gradient(pink, lightblue)';
+  } else {
+    topContainer.style.backgroundImage = 'linear-gradient(#14213d, #b8c0ff)';
+  }
+}
+
+changeBackgroundColor();
+setInterval(changeBackgroundColor, 60000);
