@@ -1,50 +1,39 @@
 body {
   font-family: "Montserrat", sans-serif;
-  background: white;
-  color: #2a5510;
   display: flex;
   align-items: left;
   flex-direction: column;
-  margin: 40px;
-}
-.container {
-  height: auto;
-  width: auto;*/
-  display: flex;
-  background: #f7e9b9;
-  border: 1px solid #707070;
-  padding: 40px;
-  margin: 1em;
-}
-.weather-info {
-  width: 296px;
-  height: 38px;
-  flex-shrink: 0;
-  color: #2a5510;
-  font-family: Montserrat;
-  font-size: 21px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  margin-block-start: 47px;
 }
 
-.sunrise-sunset {
-  height: 67px;
-  flex-shrink: 0;
+.container {
+  height: auto;
+  width: auto;
+  background: pink;
+  color: blue;
+  margin: 1em;
+  border: 1px solid #707070;
+  padding: 20px;
+}
+
+.cloudyWeather {
+  background: #f4f7f8;
+  color: #f47775;
+}
+
+.sunnyWeather {
+  background: #f7e9b9;
   color: #2a5510;
-  font-family: Montserrat;
-  font-size: 21px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+}
+
+.rainyWeather {
+  background: #a3def7;
+  color: #164a68;
 }
 
 #weatherDescription {
   width: auto;
   height: auto;
   flex-shrink: 0;
-  color: #2a5510;
   font-family: Montserrat;
   font-size: 37px;
   font-style: normal;
@@ -55,7 +44,6 @@ body {
   width: 296px;
   height: 20px;
   position: absolute;
-  color: #2a5510;
   font-size: 20px;
   font-family: "Montserrat";
   font-weight: 700;
@@ -66,24 +54,22 @@ body {
   width: 233px;
   height: 248px;
   flex-shrink: 0;
-  color: #2a5510;
   font-family: Montserrat;
   font-size: 21px;
   font-style: normal;
   font-weight: 400;
-  line-height: 36px; /* 171.429% */
+  line-height: 36px;
 }
 
 #temperatureId {
   width: 59px;
   height: 242px;
   flex-shrink: 0;
-  color: #2a5510;
   font-family: Montserrat;
   font-size: 21px;
   font-style: normal;
   font-weight: 400;
-  line-height: 36px; /* 171.429% */
+  line-height: 36px;
 }
 
 .forecast {
@@ -93,8 +79,8 @@ body {
   font-size: 21px;
   font-style: normal;
   font-weight: 400;
-  line-height: 36px; /* 171.429% */
-  margin-top: 40px;
+  line-height: 36px;
+  margin-top: 20px;
   max-width: 300px;
 }
 
@@ -112,24 +98,27 @@ p {
 .searchBar {
   width: auto;
   height: auto;
-  color: #2a5510;
   font-size: 20px;
   font-family: "Montserrat";
   font-weight: 700;
   max-width: 300px;
   margin-top: 40px;
- }
+}
 
- .searchBar input {
+.searchBar input {
   height: 20px;
   max-width: 200px;
- }
+}
 
- .searchBar button {
+.searchBar button {
   height: 25px;
- }
+}
 
 #errorId {
   color: red;
   margin: 20px;
+}
+
+#weatherSymbol {
+  margin-top: 20px;
 }

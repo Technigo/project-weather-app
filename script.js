@@ -1,3 +1,4 @@
+const containerElement = document.getElementById("containerId");
 const sunriseElement = document.getElementById("sunriseId");
 const sunsetElement = document.getElementById("sunsetId");
 const cityNameElement = document.getElementById("cityNameId");
@@ -53,12 +54,16 @@ const displayWeatherData = async (city) => {
   temperatureElement.innerHTML = `${weatherData.temperature} °C`;
   sunriseElement.innerHTML = `sunrise ` + epochToDatetime(weatherData.sunrise);
   sunsetElement.innerHTML = `sunset ` + epochToDatetime(weatherData.sunset);
-  const { dynamicdesc, iconPath } = dynamicdescription(
+  const { dynamicdesc, iconPath, styleClass } = dynamicdescription(
     weatherData.temperature,
     weatherData.cityName
   );
   weatherDescriptionElement.innerHTML = dynamicdesc;
   weatherSymbolElement.src = iconPath;
+  containerElement.classList.remove("sunnyWeather");
+  containerElement.classList.remove("rainyWeather");
+  containerElement.classList.remove("cloudyWeather");
+  containerElement.classList.add(styleClass);
 };
 
 const dateToDay = (date) => {
@@ -162,14 +167,17 @@ function dynamicdescription(temperature, city) {
   if (temperature < 5) {
     dynamicdesc = `Light a fire and get cosy. ${city} is looking grey today.`;
     iconPath = "./design/design2/icons/noun_Cloud_1188486.svg";
+    styleClass = "cloudyWeather";
   } else if (temperature > 5 && temperature < 15) {
     dynamicdesc = `Dont forget your umbrella. Its wet in ${city} today`;
     iconPath = "./design/design2/icons/noun_Cloud_1188486.svg";
+    styleClass = "rainyWeather";
   } else {
     dynamicdesc = `Get your sunnies on. ${city} is looking rather great today.`;
     iconPath = "./design/design2/icons/noun_Sunglasses_2055147.svg";
+    styleClass = "sunnyWeather";
   }
-  return { dynamicdesc, iconPath };
+  return { dynamicdesc, iconPath, styleClass };
 }
 
 const clearError = () => {
