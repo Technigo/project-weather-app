@@ -85,13 +85,13 @@ function changeHeaderBackground(currentHours, weatherDescription) {
 
   // Statement that changes the background-image depending on the weather description
   if (weatherDescription.includes("clouds")) {
-    backgroundImg = "url('img/clouds.jpg')";
+    backgroundImg = "url('assets/clouds.jpg')";
   } else if (weatherDescription.includes("snow")) {
-    backgroundImg = "url('img/snow.jpg')";
+    backgroundImg = "url('assets/snow.jpg')";
   } else if (weatherDescription.includes("rain")) {
-    backgroundImg = "url('img/rain.jpg')";
+    backgroundImg = "url('assets/rain.jpg')";
   } else {
-    backgroundImg = "url('img/clear-sky.jpg')";
+    backgroundImg = "url('assets/clear-sky.jpg')";
   }
 
   // Add styling to background image
