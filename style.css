@@ -112,11 +112,6 @@ h2 {
   line-height: 1.4;
 }
 
-h5 {
-  color: #333;
-  font-weight: lighter;
-}
-
 p {
   line-height: 2;
 }
@@ -227,14 +222,31 @@ nav input {
 .pollution__container {
   padding: 0px var(--PADDING-SIDE);
   display: flex;
-  justify-content: left;
+  justify-content: center;
   align-items: center;
+}
+.pollution__container h5 {
+  text-transform: capitalize;
+  color: #333;
+  font-weight: lighter;
 }
 
 .pollution__container p {
-  color: #ec6e4c;
-  padding-left: 1.2em;
+  padding-left: 0.5em;
   font-weight: 600;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* SECTION - Forecast */
