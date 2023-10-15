@@ -90,7 +90,7 @@ export const getForecast = async (latitude, longitude) => {
           <span class="forecast__day">${dayOfTheWeek}</span>
           <span class="forecast__image"><img src="https://openweathermap.org/img/wn/${
             day.weather[0].icon
-          }@2x.png" alt="" /></span>
+          }@2x.png" alt="" width="70" height="70" /></span>
           <span class="forecast__temp">${parseInt(day.main.temp)} °C</span>
           <span class="forecast__wind">${day.wind.speed}m/s</span>
         </div>      
