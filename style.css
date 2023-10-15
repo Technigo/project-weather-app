@@ -27,16 +27,19 @@ body {
 }
 
 .suntime {
-  font-size: small;
+  font-size: medium;
+  padding-top: 1rem;
 }
 
 #date-time-container {
   font-size: medium;
+  padding-top: 2rem;
 }
 
 #city{
     font-size: 30px;
     font-weight: 700;
+    padding-bottom: 3rem;
 }
 
 #search-container, #search-btn {
@@ -101,6 +104,15 @@ body {
     width: 4rem;
   }
 
+  #skyStatus{
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  #time {
+    font-size: 30px;
+  }
+
 /* Mobile-specific styles */
 @media (max-width: 767px) {
   #top-container {
@@ -133,14 +145,14 @@ body {
 
   #cities-btn img {
     position: absolute;
-    top: 0;
+    top: 2rem;
     right: 0;
     width: 5rem;
   }
 }
 
 /* Desktop*/
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   #top-container{
     padding: 0 10rem;
   }
