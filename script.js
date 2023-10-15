@@ -11,6 +11,7 @@ const temperature = document.getElementById("temperature");
 const time = document.getElementById("time");
 const weatherType = document.getElementById("skyStatus");
 const weatherIcon = document.getElementById("weather-icon");
+
 //famous cities array
 const citiesArray = [
   "Stockholm",
@@ -24,10 +25,18 @@ const citiesArray = [
 ];
 let currentCityIndex = 0;
 
-//Fetch weather API
-const fetchWeatherData = async (cityByName) => {
+//store time intervalID
+let timeInterval = null;
+
+//Fetch weather API by city name
+const fetchWeatherData = async (location) => {
   try {
-    const URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityByName}&units=metric&APPID=${ApiKey}`;
+    let URL = `https://api.openweathermap.org/data/2.5/weather?units=metric&APPID=${ApiKey}`;
+    if(typeof location === "string"){
+      URL = `${URL}&q=${location}`;
+    }else if(typeof location === "object" && !Array.isArray(location) && location !== null){
+      URL = `${URL}&lat=${location.latitude}&lon=${location.longitude}`;
+    }
     const responseFromApi = await fetch(URL);
     const weatherData = await responseFromApi.json();
 
@@ -36,15 +45,22 @@ const fetchWeatherData = async (cityByName) => {
     console.log(error);
   }
 };
-// Display the properties in weather app - top container
+
+// Display current status per city - top container
 const showCity = async (cityName) => {
   //waiting response(promise to be resolved) of the function (async) fetchWeatherData with the param and store this value in weatherData
-  const weatherData = await fetchWeatherData(cityName);
+  let weatherData;
 
+  if(cityName){
+    weatherData = await fetchWeatherData(cityName);
+  }else{
+    const position = await getUserLocation();
+    weatherData = await fetchWeatherData(position.coords);
+  }
   // Fetch weekly weather forecast data
-  const weeklyWeatherData = await fetchWeeklyWeatherData(cityName);
+  const weeklyWeatherData = await fetchWeeklyWeatherData(weatherData.name);
 
-  //Save API data in respective variables
+  // Save API data in respective variables
   const cityValue = weatherData.name;
   const sunrise = weatherData.sys.sunrise;
   const sunset = weatherData.sys.sunset;
@@ -52,18 +68,15 @@ const showCity = async (cityName) => {
   const timezoneOffSet = weatherData.timezone;
   const weatherNow = weatherData.weather[0].description;
   const weatherIconImg = weatherData.weather[0].icon;
+  const countryValue = weatherData.sys.country;
 
-  // Display the values in console.log (dev)
-  console.log(cityValue);
-  console.log("weatherData", weatherData);
-
-  // Example usage: Display in HTML
+  // Display info in top container
   let now = new Date();
   temperature.textContent = `${temperatureValue}°C`;
-  city.textContent = cityValue;
+  city.textContent = `${cityValue}, ${countryValue}`;
   weatherType.textContent = weatherNow.charAt(0).toUpperCase() + weatherNow.slice(1);
   sunriseTime.textContent = `Sunrise: ${unixConversion(
-    sunrise + timezoneOffSet
+  sunrise + timezoneOffSet
   )}`;
   sunsetTime.textContent = `Sunset: ${unixConversion(sunset + timezoneOffSet)}`;
   weatherIcon.src = `https://openweathermap.org/img/wn/${weatherIconImg}@2x.png`;
@@ -72,26 +85,32 @@ const showCity = async (cityName) => {
   // Display weekly weather forecast
   renderWeeklyForecast(weeklyWeatherData);
 
+  // Display toggle between °C and °F
   temperature.setAttribute("data-temp-c", temperatureValue);
-  temperature.setAttribute(
-    "data-temp-f",
+  temperature.setAttribute("data-temp-f",
     convertToFahrenheit(temperatureValue)
   );
 
   // Hour now
-  setInterval(() => {
-    const currentTime = new Date();
+  if(timeInterval){
+    clearInterval(timeInterval);
+  }
+  timeInterval = setInterval(() => {
+    const currentTimeStamp = Date.now() + (timezoneOffSet * 1000);
+    const currentTime = new Date(currentTimeStamp);
     time.textContent = timeBuilder(currentTime);
-  }, 1000);
+  }, 500);
 };
+
 // Display Time
 function timeBuilder(time) {
-  const hours = time.getHours();
-  const minutes = time.getMinutes();
+  const hours = time.getUTCHours();
+  const minutes = time.getUTCMinutes();
   const formattedHours = hours < 10 ? `0${hours}` : hours;
   const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
   return `${formattedHours}:${formattedMinutes}`;
 }
+
 // Date
 function dateBuilder(d) {
   const months = [
@@ -108,17 +127,8 @@ function dateBuilder(d) {
     "November",
     "December",
   ];
-  const days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "thursday",
-    "Friday",
-    "Saturday",
-  ];
-  let day = days[d.getDay()];
-  let date = d.getDay();
+  let day = getDayName(d.getDay());
+  let date = d.getDate();
   let month = months[d.getMonth()];
   let year = d.getFullYear();
 
@@ -163,6 +173,7 @@ function toggleSearchBar() {
     closeIcon.style.display = "none";
   }
 }
+
 // Sunset/Sunrise timestamp conversion
 const unixConversion = (unixTimestamp) => {
   //convert Unix Timestamp from seconds to milliseconds
@@ -172,9 +183,11 @@ const unixConversion = (unixTimestamp) => {
     minute: "2-digit",
     timeZone: "UTC",
   };
+
   // Generate time string
   return date.toLocaleTimeString("default", options);
 };
+
 // Randomize famous cities array
 const nextCity = () => {
   currentCityIndex++;
@@ -198,10 +211,17 @@ const toggleTemp = () => {
     temperature.textContent = `${temperature.getAttribute("data-temp-c")}°C`;
   }
 };
-//event listeners / execution
-showCity(citiesArray[currentCityIndex]);
-citiesBtn.addEventListener("click", nextCity);
-temperature.addEventListener("click", toggleTemp);
+
+//get geolocation
+function getUserLocation() {
+  return new Promise ((resolve, reject) => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(resolve, reject);
+    } else {
+      reject();
+    }
+  });
+}
 
 // Function to fetch the weekly weather data
 const fetchWeeklyWeatherData = (cityName) => {
@@ -243,10 +263,9 @@ const renderWeeklyForecast = (data) => {
 };
 
 function getDayName(dayOfWeek) {
-  const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   return daysOfWeek[dayOfWeek];
 }
-
 
 // Change bg color
 function changeBackgroundColor() {
@@ -264,3 +283,8 @@ function changeBackgroundColor() {
 
 changeBackgroundColor();
 setInterval(changeBackgroundColor, 60000);
+
+//event listeners / execution
+showCity();
+citiesBtn.addEventListener("click", nextCity);
+temperature.addEventListener("click", toggleTemp);
