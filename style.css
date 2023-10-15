@@ -112,6 +112,11 @@ h2 {
   line-height: 1.4;
 }
 
+h5 {
+  color: #333;
+  font-weight: lighter;
+}
+
 p {
   line-height: 2;
 }
@@ -218,7 +223,21 @@ nav input {
   text-transform: capitalize;
 }
 
-/* FORECAST */
+/* SECTION - Pollution */
+.pollution__container {
+  padding: 0px var(--PADDING-SIDE);
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.pollution__container p {
+  color: #ec6e4c;
+  padding-left: 1.2em;
+  font-weight: 600;
+}
+
+/* SECTION - Forecast */
 
 .forecast__single-day-flex {
   display: flex;
