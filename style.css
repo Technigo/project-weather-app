@@ -222,8 +222,33 @@ body {
   left: 39px;
 }
 
+
 .cloudy,
 .rainy {
   background-color: #EAE6E3;
   color: black;
+}
+
+input[type=text] {
+  padding: 5px;
+  border: 2px solid #cccccc;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+input[type=text]:focus {
+  border-color: #3333;
+}
+
+input[type=submit] {
+  padding: 5px 15px;
+  background: #d1e4d7;
+  border: 0 none;
+  cursor: pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.floatLeft {
+  float: left;
 }

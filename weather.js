@@ -1,10 +1,9 @@
 let city = "Knivsta"
 
-let url ="https://api.openweathermap.org/data/2.5/weather?q=city,Sweden&units=metric&APPID=f40f4543214ad55ead8d6ca12cb39ee0"
+let url ="https://api.openweathermap.org/data/2.5/weather?q=Knivsta,Sweden&units=metric&APPID=f40f4543214ad55ead8d6ca12cb39ee0"
 let newUrl = new URL(url)
-console.log(newUrl)
 newUrl = newUrl.searchParams.set("q", city);
-let urlForecast ="https://api.openweathermap.org/data/2.5/forecast?q=city,Sweden&units=metric&APPID=f40f4543214ad55ead8d6ca12cb39ee0"
+let urlForecast ="https://api.openweathermap.org/data/2.5/forecast?q=Knivsta,Sweden&units=metric&APPID=f40f4543214ad55ead8d6ca12cb39ee0"
 const body = document.getElementById("body")
 const icon = document.getElementById("icon")
 const sunrise = document.getElementById("sunrise")
@@ -22,13 +21,14 @@ const pickTodaysDescription = (todaysDescription) => {
   (todaysDescription === "Clear") {
     body.classList.add("suns-out")
     weatherDescription.innerHTML = `Get your sunnies on. ${city} is looking rather great today.`
-  } 
+  }
    else if  (todaysDescription === "Clouds") {
     icon.src = "./design/design2/icons/noun_Cloud_1188486.svg"
     body.classList.add("cloudy")
     weatherDescription.innerHTML = `Time to light a fire and get cosy. ${city} is looking grey today.`
   }
   else if (todaysDescription === "Rain" || todaysDescription === "Thunderstorm" || todaysDescription === "Drizzle" || todaysDescription === "Snow") {
+    icon.src = "./design/design2/icons/noun_Umbrella_2030530.svg"
     body.classList.add("rainy")
     weatherDescription.innerHTML = `It's wet in ${city} today. Don't forget your umbrella.`
   } else {
@@ -55,16 +55,17 @@ const fetchWeather =  async () => {
       const data = await response.json();
       const fiveDays = data.list.filter(d =>  {
         const date = new Date(d.dt * 1000);
-        let time = 11;
-        let dtTime = date.getHours();
-        return time === dtTime;
+        const time = 11;
+        const dtTime = date.getHours();
+        return dtTime === time;
         });
         console.log(fiveDays[0].weather[0].main)
         pickTodaysDescription(fiveDays[0].weather[0].main)
 
-    setDayName(fiveDays); 
-    console.log(fiveDays)   
-    setTemperature(fiveDays);
+      pickTodaysDescription(fiveDays[0].weather[0].main);
+
+      setDayName(fiveDays);
+      setTemperature(fiveDays);
 
     }catch(error) {
         console.error(error);
@@ -72,10 +73,11 @@ const fetchWeather =  async () => {
 };
 
 const changeCity = () => {
-city = document.getElementById("city").value;
-urlForecast = new URL(urlForecast);
-urlForecast.searchParams.set("q", city);
-fetchWeather()
+  city = document.getElementById("city").value;
+  urlForecast = new URL(urlForecast);
+  urlForecast.searchParams.set("q", city);
+  document.getElementById("city").value = "";
+  fetchWeather();
 }
 
 const fetchSunriseSunset =  async () => {
@@ -85,7 +87,7 @@ const fetchSunriseSunset =  async () => {
     todaysWeather.innerHTML = todaysData.weather[0].description
     sunrise.innerHTML = new Date(todaysData.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     sunset.innerHTML = new Date(todaysData.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-    
+
     pickTodaysDescription(todaysData.weather[0].main)
   }
   catch(error) {
