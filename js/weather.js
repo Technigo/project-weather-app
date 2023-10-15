@@ -1,7 +1,7 @@
 /**
  * Weather-related functions
  */
-import { getForecast } from "./geolocation.js";
+import { getForecast, getAirPollution } from "./geolocation.js";
 
 const headerbackground = document.querySelector(".header-background");
 const backgroundMask = document.querySelector("#background-mask");
@@ -36,8 +36,10 @@ export const generateWeatherHTML = (data) => {
         <p>sunrise ${formateTime(sunriseUTC, data.timezone)}</p>
         <p>sunset ${formateTime(sunsetUTC, data.timezone)}</p>
     </div>
+    
     `;
 
+  getAirPollution(data.coord.lat, data.coord.lon);
   getForecast(data.coord.lat, data.coord.lon);
   // Update background according to time
   changeHeaderBackground(currentHours, data.weather[0].description);
