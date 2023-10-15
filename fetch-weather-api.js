@@ -119,11 +119,44 @@ const fetchForcastWeather = async () => {
     }
 
     const resForcastJson = await response.json();
-    console.log(resForcastJson);
 
+
+
+    console.log(resForcastJson);
+  
+    let forecastTemp1 = Math.round(resForcastJson.list[0].main.temp) + " °C";
+    let forecastTemp2 = Math.round(resForcastJson.list[1].main.temp) + " °C";
+    let forecastTemp3 = Math.round(resForcastJson.list[2].main.temp) + " °C";
+    let forecastTemp4 = Math.round(resForcastJson.list[3].main.temp) + " °C";
+    let forecastTemp5 = Math.round(resForcastJson.list[4].main.temp) + " °C";
+    document.getElementById('forecastTemperature1').innerText += forecastTemp1;
+    document.getElementById('forecastTemperature2').innerText += forecastTemp2;
+    document.getElementById('forecastTemperature3').innerText += forecastTemp3;
+    document.getElementById('forecastTemperature4').innerText += forecastTemp4;
+    document.getElementById('forecastTemperature5').innerText += forecastTemp5;
   } catch (error) {
     weatherMessageContainer.innerText = error;
   }
 };
 
 fetchForcastWeather()
+
+// Generate forecast day names
+function forecastDayNames() {
+  const days = [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
+  const newDays = [];
+  const today = new Date();
+  todayName=today.getDay();
+  console.log(todayName)
+  for (let step = 0; step < 5; step++) {
+    newDays[step]= days[step+1];
+
+  }
+  document.getElementById('forecastDay0').innerText += newDays[0];
+document.getElementById('forecastDay1').innerText += newDays[1];
+document.getElementById('forecastDay2').innerText += newDays[2];
+document.getElementById('forecastDay3').innerText += newDays[3];
+document.getElementById('forecastDay4').innerText += newDays[4];
+}
+  forecastDayNames()
+
