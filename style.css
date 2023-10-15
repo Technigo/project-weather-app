@@ -120,8 +120,8 @@ p {
 
 header {
   position: relative;
-  /* background-color: blueviolet; */
   border-radius: 0 0 50% 50% / 70px;
+  margin-bottom: 2em;
 }
 
 .header-background {
@@ -137,8 +137,6 @@ header {
 .container {
   position: relative;
   padding: 30px var(--PADDING-SIDE);
-  /* padding-top: 1.3rem;
-  padding-bottom: 3rem; */
 }
 
 nav {
