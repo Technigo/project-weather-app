@@ -3,15 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
   <title>MANGO WEATHER APP</title>
 </head>
-<body>
+<body id="body">
+</div>
   <div id="weather">
     <section id="current">
       <div id="meta">
-        <p id="summary"><span id="status">Clear</span><span id="temperature">23.5 C</span></p>
-        <p id="sunrise">07:23</p>
-        <p id="sunset">16:20</p>
+        <p id="summary">
+          <span id="status">clear</span>
+          <span id="temperature">23.5 C</span></p>
+        <p id="sunrise">sunrise at 07:23</p>
+        <p id="sunset">sunset at 16:20</p>
       </div>
       <div id="description">
         <img id="icon" src="">
@@ -21,21 +25,25 @@
     <section id="forecast">
       <!-- Should be generated from JS-->
       <div class="forecast-row">
-        <p class="forecast-weeekday">Mon</p>
-        <p class="forecast-weather"> 23.5 C / 10.5 C(</p>
+          <span id="forecast-weeekday">Mon</span>
+          <span id="forecast-weather"> 23.5 C / 10.5 </span></p>
       </div>
+      <hr>
       <div class="forecast-row">
-        <p class="forecast-weeekday">Tis</p>
-        <p class="forecast-weather"> 23.5 C / 10.5 C(</p>
+        <span id="forecast-weeekday">Tue</span>
+        <span id="forecast-weather"> 23.5 C / 10.5 </span></p>
       </div>
+      <hr>
       <div class="forecast-row">
-        <p class="forecast-weeekday">Ons</p>
-        <p class="forecast-weather"> 23.5 C / 10.5 C(</p>
+        <span id="forecast-weeekday">Wed</span>
+        <span id="forecast-weather"> 23.5 C / 10.5 </span></p>
       </div>
+      <hr>
       <div class="forecast-row">
-        <p class="forecast-weeekday">Tor</p>
-        <p class="forecast-weather"> 23.5 C / 10.5 C(</p>
+        <span id="forecast-weeekday">Thu</span>
+        <span id="forecast-weather"> 23.5 C / 10.5 </span></p>
       </div>
+      <hr>
     </section>
     <section id="searchBox">
       <input id="searchText" name="searchText" type="text">
