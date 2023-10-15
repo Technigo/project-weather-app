@@ -8,4 +8,4 @@ We started building our webpage after doing week threes two exercises and after 
 
 ## View it live
 
-You can see our project live here:
+You can see our project live here: https://codepen.io/Kipourou-the-vuer/full/abPxGXR
