@@ -116,15 +116,22 @@ p {
   line-height: 2;
 }
 
+/* HEADER */
+
 header {
   position: relative;
   /* background-color: blueviolet; */
   border-radius: 0 0 50% 50% / 70px;
 }
 
-nav img {
-  width: 10%;
-  max-width: 1.5rem;
+.header-background {
+  position: absolute;
+  background-color: #ffff;
+  width: 150%;
+  height: 105%;
+  border-radius: 0 0 50% 50%;
+  left: -25%;
+  transition: background-image 0.5s ease-in-out;
 }
 
 .container {
@@ -134,15 +141,45 @@ nav img {
   padding-bottom: 3rem; */
 }
 
-/* HEADER */
-.header-background {
+nav {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+/* SEARCH */
+.search-icon,
+.close-icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
   position: absolute;
-  background-color: #ffff;
-  width: 150%;
-  height: 105%;
-  border-radius: 0 0 50% 50%;
-  left: -25%;
-  transition: background-image 0.5s ease-in-out;
+  left: 0;
+}
+.search-icon {
+  background: url("assets/search.svg") center/cover no-repeat;
+  display: block;
+}
+
+.close-icon {
+  background: url("assets/close.svg") center/cover no-repeat;
+  display: none;
+}
+
+nav input {
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: var(--PADDING);
+  color: #fff;
+}
+
+.search-input {
+  opacity: 0;
+}
+
+#error-message {
+  color: red;
+  font-size: 0.6rem;
+  opacity: 0;
 }
 
 #header-weather-icon {
