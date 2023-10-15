@@ -26,7 +26,7 @@ export const fetchWeatherDataByCity = async (cityOrCoords) => {
 
     URL = `${apiURL}lat=${lat}&lon=${lon}${suffix}`;
   } else {
-    constainer.innerText = "Invalid input";
+    alert("Oops, city not fount! Check your spelling please!");
     return;
   }
 
@@ -37,7 +37,8 @@ export const fetchWeatherDataByCity = async (cityOrCoords) => {
     generateWeatherHTML(weatherData);
     return;
   } catch (error) {
-    container.innerText = "Fetch error: " + error;
+    console.log("Fetch error: " + error);
+    alert("Oops, city not fount! Check your spelling please!");
   }
 };
 
@@ -51,7 +52,6 @@ const fetchUserLocation = () => {
     container.innerText = "Geolocation is not available";
   }
 };
-// TODO: Om city inte finns så ska location köras
 fetchUserLocation();
 
 // Get forecast for the coming 4 days (Sebastian)
