@@ -77,7 +77,7 @@ export const getForecast = async (latitude, longitude) => {
 
     // Loop over the filteredArray get the day of the week from dt and save it as a variable called "dayOfTheWeek"
     filteredArray.forEach((day, index) => {
-      if (index < 4) {
+      if (index <= 4) {
         let timestamp = day.dt;
         let date = new Date(timestamp * 1000);
         let dayOfTheWeek = date.toLocaleDateString("en-US", {
