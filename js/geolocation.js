@@ -146,19 +146,31 @@ export const getAirPollution = async (latitude, longitude) => {
     );
 
     const data = await response.json();
-    console.log(data);
-    let pollutionContainer = document.querySelector(".pollution__container");
+
+    const pollutionContainer = document.querySelector(".pollution__container");
+    let pm2_5_heading = "";
+    let pm2_5_color = "";
 
     const pollutionArray = [...data.list];
-    console.log(pollutionArray[0].components.pm2_5);
+
     const pm2_5 = pollutionArray[0].components.pm2_5;
-    // // Clear existing history
+    // Clear existing history
     pollutionContainer.innerHTML = "";
 
+    if (pm2_5 <= 15) {
+      // Good air quality
+      pm2_5_heading = "good air quality";
+      pm2_5_color = "#ec6e4c";
+    } else {
+      // Bad air quality
+      pm2_5_heading = "bad air quality";
+      pm2_5_color = "black";
+    }
+
     // // Render the needed data on the page
-    pollutionContainer.innerHTML += `
-        <h5>Fine Particulate Matter Level</h5>
-        <p>${pm2_5}</p>
+    pollutionContainer.innerHTML = `
+        <h5>${pm2_5_heading}</h5>
+        <p style=color:${pm2_5_color}>${pm2_5}</p>
         `;
   } catch (error) {
     console.log("Could not contact the weather forecast API", error);
