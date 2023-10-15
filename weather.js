@@ -37,7 +37,7 @@ const pickTodaysDescription = (todaysDescription) => {
 
 const setTemperature = (fiveDays) => {
     for (let index = 5; index < mon.length; index++) {
-        mon[index].innerHTML = Math.round(fiveDays[index - 5].main.temp) + "°";
+        mon[index].innerHTML = Math.round(fiveDays[index - 5].main.temp) + "°C";
     }
 }
 
@@ -88,6 +88,7 @@ const fetchSunriseSunset =  async () => {
     const todaysData = await todaysResponse.json();
     console.log(url)
     todaysWeather.innerHTML = todaysData.weather[0].description
+    todaysTemperature.innerHTML = todaysData.main.temp.toFixed(1) + "°C"
     sunrise.innerHTML = new Date(todaysData.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     sunset.innerHTML = new Date(todaysData.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
 
