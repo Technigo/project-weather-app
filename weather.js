@@ -75,7 +75,7 @@ const changeCity = () => {
   urlForecast = new URL(urlForecast);
   urlForecast.searchParams.set("q", city);
   url = new URL(url);
-  url = url.searchParams.set("q", city);
+  url.searchParams.set("q", city);
   document.getElementById("city").value = "";
   fetchWeather();
   fetchSunriseSunset();
@@ -83,6 +83,7 @@ const changeCity = () => {
 
 const fetchSunriseSunset =  async () => {
   try{
+
     const todaysResponse = await fetch(url);
     const todaysData = await todaysResponse.json();
     console.log(url)
