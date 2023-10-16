@@ -152,7 +152,7 @@ function forecastDayNames() {
     newDays[step]= days[step+1];
 
   }
-  document.getElementById('forecastDay0').innerText += newDays[0];
+document.getElementById('forecastDay0').innerText += newDays[0];
 document.getElementById('forecastDay1').innerText += newDays[1];
 document.getElementById('forecastDay2').innerText += newDays[2];
 document.getElementById('forecastDay3').innerText += newDays[3];
