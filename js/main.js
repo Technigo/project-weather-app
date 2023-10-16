@@ -12,6 +12,10 @@ weatherBtn.addEventListener("click", () => {
   fetchRandomWeather();
 });
 
+searchInput.addEventListener("submit", (e) => {
+  e.defaultPrevented();
+});
+
 searchIcon.addEventListener("click", () => {
   searchIcon.style.display = "none";
   closeIcon.style.display = "block";
