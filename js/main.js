@@ -7,6 +7,9 @@ const searchIcon = document.getElementById("search-icon");
 const closeIcon = document.getElementById("close-icon");
 const errorMessage = document.getElementById("error-message");
 
+// Initially hide the search input
+searchInput.style.opacity = 0;
+
 // Eventlisteners for weather button. Call function to fetch random weather data
 weatherBtn.addEventListener("click", () => {
   // Function that will generate different weather depending on the city;
