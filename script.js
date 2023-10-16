@@ -170,7 +170,7 @@ function dynamicdescription(temperature, city) {
     styleClass = "cloudyWeather";
   } else if (temperature > 5 && temperature < 15) {
     dynamicdesc = `Dont forget your umbrella. Its wet in ${city} today`;
-    iconPath = "./design/design2/icons/noun_Cloud_1188486.svg";
+    iconPath = "./design/design2/icons/noun_Umbrella_2030530.svg";
     styleClass = "rainyWeather";
   } else {
     dynamicdesc = `Get your sunnies on. ${city} is looking rather great today.`;
