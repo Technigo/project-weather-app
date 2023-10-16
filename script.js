@@ -3,7 +3,9 @@ const ApiKey = "231ff309be8ceb223aff125da6bf7bb2";
 const citiesBtn = document.getElementById("cities-btn");
 const city = document.getElementById("city");
 const citySearched = document.getElementById("search-input");
+const container = document.getElementById("container");
 const date = document.getElementById("date");
+const loading = document.getElementById("loading-container");
 const searchBtn = document.getElementById("search-btn");
 const sunriseTime = document.getElementById("sunrise");
 const sunsetTime = document.getElementById("sunset");
@@ -100,6 +102,8 @@ const showCity = async (cityName) => {
     const currentTime = new Date(currentTimeStamp);
     time.textContent = timeBuilder(currentTime);
   }, 500);
+  loading.classList.add("hidden");
+  container.classList.remove("hidden");
 };
 
 // Display Time

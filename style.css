@@ -180,3 +180,14 @@ body {
     opacity: 1;
   }
 }
+
+.hidden{
+  display: none;
+}
+
+#loading-container{
+  text-align: center;
+  margin-top: 100px;
+  color: lightgray;
+
+}
