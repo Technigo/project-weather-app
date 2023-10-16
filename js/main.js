@@ -1,6 +1,7 @@
 import { fetchWeatherDataByCity, fetchRandomWeather } from "./geolocation.js";
 
 const weatherBtn = document.getElementById("btn-next-city");
+const searchForm = document.getElementById("search-form");
 const searchInput = document.getElementById("search-input");
 const searchIcon = document.getElementById("search-icon");
 const closeIcon = document.getElementById("close-icon");
@@ -10,10 +11,6 @@ const errorMessage = document.getElementById("error-message");
 weatherBtn.addEventListener("click", () => {
   // Function that will generate different weather depending on the city;
   fetchRandomWeather();
-});
-
-searchInput.addEventListener("submit", (e) => {
-  e.defaultPrevented();
 });
 
 searchIcon.addEventListener("click", () => {
@@ -29,8 +26,9 @@ closeIcon.addEventListener("click", () => {
 });
 
 // Eventlistener that will get city from input and invoke and fetch weather
-searchInput.addEventListener("change", (e) => {
-  let cityName = e.target.value;
+searchForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  let cityName = searchInput.value;
 
   if (isNaN(cityName)) {
     fetchWeatherDataByCity(cityName);
