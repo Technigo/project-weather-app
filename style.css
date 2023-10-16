@@ -143,6 +143,7 @@ nav {
   display: flex;
   justify-content: center;
   position: relative;
+  padding-bottom: 1.3em;
 }
 
 /* SEARCH */
