@@ -1,10 +1,6 @@
-// FOUNDATION //
-// Step 1 - Get started with the weather API //
 
 
-// TOP SECTION -----------------------------------
-
-// const types = document.getElementById("types"); //
+// const types = document.getElementById("types");
 const apiKey = "19e3f1df0b9dcbf3b903658b9bf5177c";
 let URL = `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${apiKey}`;
 
@@ -18,50 +14,113 @@ const fetchWeather = async () => {
     }
 
     const resJson = await response.json();
-    console.log(resJson);
-
-    // Sunrise
-    const sunrise = resJson.sys.sunrise;
-    //console.log(`sunrise ${sunrise}`)
-    //document.getElementById('sunrise').innerText += `sunrise ${sunrise}`
-
-    function convertTimestamptoTime() {
-      let unixTimestamp = sunrise;
-      // Convert to milliseconds and
-      // then create a new Date object
-      let dateObj = new Date(unixTimestamp * 1000);
-      let utcString = dateObj.toUTCString();
-
-      let sunriseTime = utcString.slice(-11, -4);
-
-      document.getElementById('sunrise').innerText += `sunrise ${sunriseTime}`
-      console.log(sunriseTime);
-    }
-
-    convertTimestamptoTime();
+    //console.log(resJson);
 
 
-    // Sunset
-    const sunset = resJson.sys.sunset;
-    console.log(`sunset ${sunset}`)
-    document.getElementById('sunset').innerText += `sunset ${sunset}`
-
-    // City
-    const currentCity = resJson.name;
-    console.log(currentCity)
-    document.getElementById('mainHeading').innerText += `The weather is nice in ${currentCity}`
-
-    // Forcast today
-    const forcastToday = "test";
+    // FORCAST -----------------------------------
+    const forcastToday = resJson.weather[0].description;
 
     // Temperature rounded to one decimal
     let temperature = resJson.main.temp;
     let tempRounded = Math.round(temperature * 10) / 10 + "°";
-    console.log(tempRounded)
 
     // Combines daily forcast and temperature
     weatherConditions = `${forcastToday} | ${tempRounded}`;
     document.getElementById('weatherConditions').innerText += weatherConditions;
+
+
+
+    // SUNSET/SUNRISE -----------------------------------
+    // Sunrise
+    const unixSunrise = resJson.sys.sunrise;
+    // Sunset
+    const unixSunset = resJson.sys.sunset;
+
+
+    // Function convertring unix time to utc
+    const convertTime = (unixTimestamp) => {
+      // Convert the Unix timestamp to milliseconds
+      const timestampInMilliseconds = unixTimestamp * 1000;
+
+      // Create a new Date object from the timestamp
+      const time = new Date(timestampInMilliseconds);
+
+
+      // Check for the timezone difference
+      let timeZone = new Date();
+
+      // Time difference between UTC and local time in hours
+      let timeDiff = timeZone.getTimezoneOffset();
+      timeDiffHours = timeDiff / 60 * -1;
+
+
+      // Get the UTC hours and minutes
+      const hours = time.getUTCHours() + timeDiffHours;
+      const minutes = time.getUTCMinutes() + timeDiffHours;
+
+      // Format the result as a string
+      const utcTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+
+      return utcTime;
+    };
+
+    // UTC times converted in function
+    const utcSunrise = convertTime(unixSunrise);
+    const utcSunset = convertTime(unixSunset);
+
+    // Updating HTML elements with time
+    document.getElementById('sunrise').innerText += `sunrise ${utcSunrise}`
+    document.getElementById('sunset').innerText += `sunset ${utcSunset}`
+
+
+
+
+
+    // HEADING SECTION -----------------------------------
+    const weatherMessageContainer = document.getElementById("weatherMessageContainer");
+
+    // City
+    const currentCity = resJson.name;
+
+    // Temporary test variable for description
+    // const forcastTodayTest = "clear sky";
+    switch (forcastToday) {
+      case "clear sky":
+      case "few clouds":
+      case "scattered clouds":
+        document.getElementById('mainHeading').innerText += `Get your sunnies on. ${currentCity} is looking rather great today`
+        // Updates colors
+        body.className = "sunshine-colorscheme";
+
+        // Change class to updates colors
+        document.getElementById('weatherIcon').innerHTML = `<img src="design/design2/icons/noun_Sunglasses_2055147.svg">`
+        break
+
+      case "shower rain":
+      case "rain":
+      case "thunderstorm":
+        document.getElementById('mainHeading').innerText += `Don't forget your umbrella. It's wet in ${currentCity} today.`
+        // Updates colors
+        body.className = "rain-colorscheme";
+
+        // Change class to updates colors
+        document.getElementById('weatherIcon').innerHTML = `<img src="design/design2/icons/noun_Umbrella_2030530.svg">`
+        break
+
+      case "broken clouds":
+      case "mist":
+      case "snow":
+        document.getElementById('mainHeading').innerText += `Light a fire and get cosy. ${currentCity} is looking grey today.`
+        // Change class to updates colors
+        body.className = "cloudy-colorscheme";
+
+        // Updates weather icon
+        document.getElementById('weatherIcon').innerHTML = `<img src="design/design2/icons/noun_Cloud_1188486.svg">`
+        break
+
+      default:
+        console.log(`The weather is uncertain in ${currentCity}`);
+    };
 
   } catch (error) {
     weatherMessageContainer.innerText = error;
