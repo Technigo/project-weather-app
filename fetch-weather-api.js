@@ -208,7 +208,7 @@ function forecastDayNames() {
   todayName=today.getDay();
   console.log(todayName)
   for (let step = 0; step < 5; step++) {
-    newDays[step]= days[step+1];
+    newDays[step]= days[todayName+step+1];
 
   }
 document.getElementById('forecastDay0').innerText += newDays[0];
