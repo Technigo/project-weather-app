@@ -30,6 +30,11 @@ body {
   color: #164a68;
 }
 
+.unknownWeather {
+  background: pink;
+  color: blue;
+}
+
 #weatherDescription {
   width: auto;
   height: auto;

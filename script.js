@@ -29,11 +29,13 @@ const fetchWeatherData = async (city) => {
 
     const weatherData = {
       cityName: responseData.name,
+      weatherCondition: responseData.weather[0].main,
       description: responseData.weather[0].description,
       temperature: responseData.main.temp.toFixed(1), // round to 1 decimal place
       sunrise: responseData.sys.sunrise,
       sunset: responseData.sys.sunset,
       dynamicdesc: responseData.weather[0].description,
+      timezone: responseData.timezone,
     };
 
     return weatherData;
@@ -52,10 +54,12 @@ const displayWeatherData = async (city) => {
   cityNameElement.innerHTML = weatherData.cityName;
   weatherMainElement.innerHTML = weatherData.description;
   temperatureElement.innerHTML = `${weatherData.temperature} °C`;
-  sunriseElement.innerHTML = `sunrise ` + epochToDatetime(weatherData.sunrise);
-  sunsetElement.innerHTML = `sunset ` + epochToDatetime(weatherData.sunset);
+  sunriseElement.innerHTML =
+    `sunrise ` + epochToDatetime(weatherData.sunrise, weatherData.timezone);
+  sunsetElement.innerHTML =
+    `sunset ` + epochToDatetime(weatherData.sunset, weatherData.timezone);
   const { dynamicdesc, iconPath, styleClass } = dynamicdescription(
-    weatherData.description,
+    weatherData.weatherCondition,
     weatherData.cityName
   );
   weatherDescriptionElement.innerHTML = dynamicdesc;
@@ -63,6 +67,7 @@ const displayWeatherData = async (city) => {
   containerElement.classList.remove("sunnyWeather");
   containerElement.classList.remove("rainyWeather");
   containerElement.classList.remove("cloudyWeather");
+  containerElement.classList.remove("unknownWeather");
   containerElement.classList.add(styleClass);
 };
 
@@ -145,9 +150,9 @@ citySearchButtonElement.addEventListener("click", () => {
 });
 
 // Replace `epochTimestamp` with your actual epoch timestamp
-function epochToDatetime(epochTimestamp) {
+function epochToDatetime(epochTimestamp, timezoneOffset) {
   // Create a new Date object with the epoch timestamp (in milliseconds)
-  const date = new Date(epochTimestamp * 1000); // Multiply by 1000 to convert seconds to milliseconds
+  const date = new Date((epochTimestamp + timezoneOffset - 7200) * 1000); // Multiply by 1000 to convert seconds to milliseconds
 
   // Use toUTCString() to get the date and time in a human-readable format
 
@@ -161,28 +166,35 @@ function epochToDatetime(epochTimestamp) {
   return datetimeString;
 }
 
-function dynamicdescription(weathercondition, city) {
-  let dynamicdesc = " ";
-  let iconPath = " ";
-  if (weathercondition == "clear sky") {
-    dynamicdesc = `Light a fire and get cosy. ${city} is looking grey today.`;
-    iconPath = "./design/design2/icons/noun_Cloud_1188486.svg";
-    styleClass = "cloudyWeather";
-  } else if (
-    weathercondition == "few clouds" ||
-    weathercondition == "scattered clouds" ||
-    weathercondition == "broken clouds" ||
-    weathercondition == "shower rain" ||
-    weathercondition == "rain"
-  ) {
-    dynamicdesc = `Dont forget your umbrella. Its wet in ${city} today`;
-    iconPath = "./design/design2/icons/noun_Umbrella_2030530.svg";
-    styleClass = "rainyWeather";
-  } else {
-    dynamicdesc = `Get your sunnies on. ${city} is looking rather great today.`;
-    iconPath = "./design/design2/icons/noun_Sunglasses_2055147.svg";
-    styleClass = "sunnyWeather";
+function dynamicdescription(weatherCondition, city) {
+  let dynamicdesc = "";
+  let iconPath = "";
+  let styleClass = "";
+  switch (weatherCondition) {
+    case "Clouds":
+      dynamicdesc = `Light a fire and get cosy. ${city} is looking grey today.`;
+      iconPath = "./design/design2/icons/noun_Cloud_1188486.svg";
+      styleClass = "cloudyWeather";
+      break;
+    case "Rain":
+    case "Thunderstorm":
+    case "Drizzle":
+    case "Snow":
+      dynamicdesc = `Dont forget your umbrella. Its wet in ${city} today`;
+      iconPath = "./design/design2/icons/noun_Umbrella_2030530.svg";
+      styleClass = "rainyWeather";
+      break;
+    case "Clear":
+      dynamicdesc = `Get your sunnies on. ${city} is looking rather great today.`;
+      iconPath = "./design/design2/icons/noun_Sunglasses_2055147.svg";
+      styleClass = "sunnyWeather";
+      break;
+    default:
+      dynamicdesc = `Unknown weather in ${city} city today`;
+      styleClass = "unknownWeather";
+      break;
   }
+
   return { dynamicdesc, iconPath, styleClass };
 }
 
