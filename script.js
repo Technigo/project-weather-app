@@ -55,7 +55,7 @@ const displayWeatherData = async (city) => {
   sunriseElement.innerHTML = `sunrise ` + epochToDatetime(weatherData.sunrise);
   sunsetElement.innerHTML = `sunset ` + epochToDatetime(weatherData.sunset);
   const { dynamicdesc, iconPath, styleClass } = dynamicdescription(
-    weatherData.temperature,
+    weatherData.description,
     weatherData.cityName
   );
   weatherDescriptionElement.innerHTML = dynamicdesc;
@@ -161,14 +161,20 @@ function epochToDatetime(epochTimestamp) {
   return datetimeString;
 }
 
-function dynamicdescription(temperature, city) {
+function dynamicdescription(weathercondition, city) {
   let dynamicdesc = " ";
   let iconPath = " ";
-  if (temperature < 5) {
+  if (weathercondition == "clear sky") {
     dynamicdesc = `Light a fire and get cosy. ${city} is looking grey today.`;
     iconPath = "./design/design2/icons/noun_Cloud_1188486.svg";
     styleClass = "cloudyWeather";
-  } else if (temperature > 5 && temperature < 15) {
+  } else if (
+    weathercondition == "few clouds" ||
+    weathercondition == "scattered clouds" ||
+    weathercondition == "broken clouds" ||
+    weathercondition == "shower rain" ||
+    weathercondition == "rain"
+  ) {
     dynamicdesc = `Dont forget your umbrella. Its wet in ${city} today`;
     iconPath = "./design/design2/icons/noun_Umbrella_2030530.svg";
     styleClass = "rainyWeather";
