@@ -172,6 +172,9 @@ function dynamicdescription(weatherCondition, city) {
   let styleClass = "";
   switch (weatherCondition) {
     case "Clouds":
+    case "Smoke":
+    case "Mist":
+    case "Fog":
       dynamicdesc = `Light a fire and get cosy. ${city} is looking grey today.`;
       iconPath = "./design/design2/icons/noun_Cloud_1188486.svg";
       styleClass = "cloudyWeather";
