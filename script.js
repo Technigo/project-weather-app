@@ -20,7 +20,7 @@ async function todaysWeatherData(){
   
   // Data that we have fetched from the API stored in variables to make it easier to read and understand.
   const description = data.weather[0].main;
-  const temperature = (data.main.temp).toFixed(0);
+  const temperature = (data.main.temp).toFixed(1);
   const sunriseTime = (new Date(data.sys.sunrise * 1000)).toLocaleTimeString('sv-SE', {hour: '2-digit', minute: '2-digit'});
   const sunsetTime = (new Date(data.sys.sunset * 1000)).toLocaleTimeString('sv-SE', {hour: '2-digit', minute: '2-digit'});
   
