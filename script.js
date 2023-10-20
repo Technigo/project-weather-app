@@ -81,7 +81,7 @@ async function fetchWeeklyForecast(){
   dailyForecasts.forEach((forecast) => {
     const date = new Date(forecast.dt * 1000);
     const day = date.toLocaleDateString("en-US", {weekday: "long"}); // to convert the dates to the name of the date.
-    const temp = (forecast.main.temp).toFixed(0); // Get the temperature of the date and round it to an integer.
+    const temp = (forecast.main.temp).toFixed(1); // Get the temperature of the date and round it to an integer.
     
     // Create a row for each day and temperature of that day.
     forecastTableHTML += `
