@@ -98,8 +98,8 @@ async function updateDOM(cityName) {
       errorMessage.style.display = "none"; // Hide the error message
 
       // Handle current weather data
-      const temperature = Math.round(weatherData.main.temp);
-      const feelsLike = Math.round(weatherData.main.feels_like);
+      const temperature = Number(weatherData.main.temp.toFixed(1));
+      const feelsLike = Number(weatherData.main.feels_like.toFixed(1));
 
       if (temperature <= 15) {
         document.querySelector(".overlay").style.display = "block";
