@@ -37,7 +37,7 @@ async function todaysWeatherData(){
     body.className = "RainSnowOther"; // Will change the class of the HTML body.
     weatherIcon = `<img src="" alt="Snow"/>`;
     weatherQuote = `Bring your warmest jacket. ${nameOfCity} is looking white today!`;
-  } else if (cityName != "stockholm" && description === "Rain") {
+  } else if (cityName != "stockholm" && description === "Rain" || description === "Drizzle") {
     body.className = "RainSnowOther"; // Will change the class of the HTML body.
     weatherIcon = `<img src="https://raw.githubusercontent.com/Kipourou/project-weather-app/91df6f896f868df389728c9c370fd7b8150fd539/design/design2/icons/noun_Umbrella_2030530.svg" alt="Umbrella"/>`;
     weatherQuote = `Don't forget your umberella. It is wet in ${nameOfCity} today!`;
