@@ -50,6 +50,7 @@ const setDayName = (fiveDays) => {
 const fetchWeather =  async () => {
     try{
       const response = await fetch(urlForecast);
+      console.log(urlForecast)
       const data = await response.json();
       const fiveDays = data.list.filter(d =>  {
         const date = new Date(d.dt * 1000);
