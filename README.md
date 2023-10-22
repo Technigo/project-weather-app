@@ -23,4 +23,4 @@ We split this project into 4 parts:
 
 ## View it live
 
-https://seb-pes-weather-app.netlify.app/
+[Weather App](https://technigo-project-weather-app.netlify.app/)
