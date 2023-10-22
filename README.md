@@ -1,5 +1,9 @@
 # Weather App - Technigo school project - Made by Daniel and Karin
 
+WATCH MY AND DANIELS RESULT OF THIS ASSIGNMENT HERE: https://weatherapp-daniel-karin.netlify.app/
+<img width="361" alt="Skärmavbild 2023-10-22 kl  12 54 58" src="https://github.com/DanielBladh/project-weather-app/assets/91525357/2edc2bc4-a979-48fd-80ee-6e6c6898c421">
+
+
 The Problem:
 For this project, I was tasked with creating a weather app using the OpenWeather API, and we had to do it using only vanilla JavaScript. The challenge was to retrieve weather data for a specified city and display it to the user. We approached this problem by breaking it down into several key steps.
 
