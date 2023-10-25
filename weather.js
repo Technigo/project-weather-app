@@ -98,56 +98,11 @@ fetchWeather();
 fetchSunriseSunset();
 
 function getFiveDays(data) {
-  hours = 5;
-  let fetchedData = getDays(data, hours);
-  if (fetchedData.length < 5) {
-    hours = hours + 3;
-    fetchedData = getDays(data, hours);
-    if (fetchedData.length < 5) {
-      hours = hours + 3;
-      fetchedData = getDays(data, hours + 3);
-      if (fetchedData.length < 5) {
-        hours = hours + 3;
-        fetchedData = getDays(data, hours + 3);
-        if (fetchedData.length < 5) {
-          hours = hours + 3;
-          fetchedData = getDays(data, hours + 3);
-          if (fetchedData.length < 5) {
-            hours = hours + 3;
-            fetchedData = getDays(data, hours + 3);
-            if (fetchedData.length < 5) {
-              hours = hours + 3;
-              fetchedData = getDays(data, hours + 3);
-              if (fetchedData.length < 5) {
-                hours = hours + 3;
-                fetchedData = getDays(data, hours + 3);
-              } else {
-                return fetchedData;
-              }
-            } else {
-              return fetchedData;
-            }
-          } else {
-            return fetchedData;
-          }
-        } else {
-          return fetchedData;
-        }
-      } else {
-        return fetchedData;
-      }
-    } else {
-      return fetchedData;
-    }
-  } else {
-    return fetchedData;
-  }
-}
-function getDays(data, hour) {
   return data.list.filter((d) => {
     const date = new Date(d.dt * 1000);
-    const time = hour;
-    const dtTime = date.getHours();
+    var userTimezoneOffset = date.getTimezoneOffset() * 60000;
+    const time = 12;
+    const dtTime = date.getHours() + userTimezoneOffset / 3600000;
     return dtTime === time;
   });
 }
