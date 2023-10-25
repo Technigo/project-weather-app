@@ -1,73 +1,69 @@
-let city = "Knivsta"
+let city = "Knivsta";
 
-let url ="https://api.openweathermap.org/data/2.5/weather?q=Knivsta,Sweden&units=metric&APPID=f40f4543214ad55ead8d6ca12cb39ee0"
-let urlForecast ="https://api.openweathermap.org/data/2.5/forecast?q=Knivsta,Sweden&units=metric&APPID=f40f4543214ad55ead8d6ca12cb39ee0"
-const body = document.getElementById("body")
-const icon = document.getElementById("icon")
-const sunrise = document.getElementById("sunrise")
-const sunset = document.getElementById("sunset")
-const weatherDescription = document.getElementById("weatherUpdate")
-const todaysWeather = document.getElementById("dayDescription")
-const todaysTemperature = document.getElementById("dayTemperature")
-
-const mon = [].slice.call(document.querySelectorAll(".mon"),2)
-const weekday = ["sun","mon","tue","wed","thu","fri","sat"];
+let url =
+  "https://api.openweathermap.org/data/2.5/weather?q=Knivsta,Sweden&units=metric&APPID=f40f4543214ad55ead8d6ca12cb39ee0";
+let urlForecast =
+  "https://api.openweathermap.org/data/2.5/forecast?q=Knivsta,Sweden&units=metric&APPID=f40f4543214ad55ead8d6ca12cb39ee0";
+const body = document.getElementById("body");
+const icon = document.getElementById("icon");
+const sunrise = document.getElementById("sunrise");
+const sunset = document.getElementById("sunset");
+const weatherDescription = document.getElementById("weatherUpdate");
+const todaysWeather = document.getElementById("dayDescription");
+const todaysTemperature = document.getElementById("dayTemperature");
+let fetchedData;
+const mon = [].slice.call(document.querySelectorAll(".mon"), 2);
+const weekday = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 
 const pickTodaysDescription = (todaysDescription) => {
-  body.classList.remove(...body.classList)
-  if
-  (todaysDescription === "Clear") {
-    body.classList.add("suns-out")
-    weatherDescription.innerHTML = `Get your sunnies on. ${city} is looking rather great today.`
-  }
-   else if  (todaysDescription === "Clouds") {
-    icon.src = "./design/design2/icons/noun_Cloud_1188486.svg"
-    body.classList.add("cloudy")
-    weatherDescription.innerHTML = `Time to light a fire and get cosy. ${city} is looking grey today.`
-  }
-  else if (todaysDescription === "Rain" || todaysDescription === "Thunderstorm" || todaysDescription === "Drizzle" || todaysDescription === "Snow") {
-    icon.src = "./design/design2/icons/noun_Umbrella_2030530.svg"
-    body.classList.add("rainy")
-    weatherDescription.innerHTML = `It's wet in ${city} today. Don't forget your umbrella.`
+  body.classList.remove(...body.classList);
+  if (todaysDescription === "Clear") {
+    icon.src = "./design/design2/icons/noun_Sunglasses_2055147.svg";
+    body.classList.add("suns-out");
+    weatherDescription.innerHTML = `Get your sunnies on. ${city} is looking rather great today.`;
+  } else if (todaysDescription === "Clouds") {
+    icon.src = "./design/design2/icons/noun_Cloud_1188486.svg";
+    body.classList.add("cloudy");
+    weatherDescription.innerHTML = `Time to light a fire and get cosy. ${city} is looking grey today.`;
+  } else if (
+    todaysDescription === "Rain" ||
+    todaysDescription === "Thunderstorm" ||
+    todaysDescription === "Drizzle" ||
+    todaysDescription === "Snow"
+  ) {
+    icon.src = "./design/design2/icons/noun_Umbrella_2030530.svg";
+    body.classList.add("rainy");
+    weatherDescription.innerHTML = `It's wet in ${city} today. Don't forget your umbrella.`;
   } else {
-    body.classList.add("unknown")
-    weatherDescription.innerHTML = `We don't know what's gonna be like, but be careful in ${city}!`
+    icon.src = "./design/design2/icons/noun_Umbrella_2030530.svg";
+    body.classList.add("unknown");
+    weatherDescription.innerHTML = `We don't know what's gonna be like, but be careful in ${city}!`;
   }
-}
+};
 
 const setTemperature = (fiveDays) => {
-    for (let index = 5; index < mon.length; index++) {
-        mon[index].innerHTML = Math.round(fiveDays[index - 5].main.temp) + "°C";
-    }
-}
+  for (let index = 5; index < mon.length; index++) {
+    mon[index].innerHTML = Math.round(fiveDays[index - 5].main.temp) + "°C";
+  }
+};
 
 const setDayName = (fiveDays) => {
-    for (let index = 0; index < 5; index++) {
-        const date = new Date(fiveDays[index].dt * 1000);
-        mon[index].innerHTML = weekday[date.getDay()];
-    }
-}
-const fetchWeather =  async () => {
-    try{
-      const response = await fetch(urlForecast);
-      const data = await response.json();
-      const fiveDays = data.list.filter(d =>  {
-        const date = new Date(d.dt * 1000);
-        const time = 11;
-        const dtTime = date.getHours();
-        return dtTime === time;
-        });
-        console.log(fiveDays[0].weather[0].main)
-        pickTodaysDescription(fiveDays[0].weather[0].main)
-
-      pickTodaysDescription(fiveDays[0].weather[0].main);
-
-      setDayName(fiveDays);
-      setTemperature(fiveDays);
-
-    }catch(error) {
-        console.error(error);
-    }
+  for (let index = 0; index < fiveDays.length; index++) {
+    const date = new Date(fiveDays[index].dt * 1000);
+    mon[index].innerHTML = weekday[date.getDay()];
+  }
+};
+const fetchWeather = async () => {
+  try {
+    const response = await fetch(urlForecast);
+    const data = await response.json();
+    const fiveDays = getFiveDays(data);
+    pickTodaysDescription(fiveDays[0].weather[0].main);
+    setDayName(fiveDays);
+    setTemperature(fiveDays);
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 const changeCity = () => {
@@ -79,26 +75,81 @@ const changeCity = () => {
   document.getElementById("city").value = "";
   fetchWeather();
   fetchSunriseSunset();
-}
+};
 
-const fetchSunriseSunset =  async () => {
-  try{
-
+const fetchSunriseSunset = async () => {
+  try {
     const todaysResponse = await fetch(url);
     const todaysData = await todaysResponse.json();
-    console.log(url)
-    todaysWeather.innerHTML = todaysData.weather[0].description
-    todaysTemperature.innerHTML = todaysData.main.temp.toFixed(1) + "°C"
-    sunrise.innerHTML = new Date(todaysData.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-    sunset.innerHTML = new Date(todaysData.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    todaysWeather.innerHTML = todaysData.weather[0].description;
+    todaysTemperature.innerHTML = todaysData.main.temp.toFixed(1) + "°C";
+    sunrise.innerHTML = new Date(
+      todaysData.sys.sunrise * 1000
+    ).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+    sunset.innerHTML = new Date(
+      todaysData.sys.sunset * 1000
+    ).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 
-    pickTodaysDescription(todaysData.weather[0].main)
-  }
-  catch(error) {
-  console.log(error)
+    pickTodaysDescription(todaysData.weather[0].main);
+  } catch (error) {
+    console.error(error);
   }
 };
 
-fetchWeather()
-fetchSunriseSunset()
+fetchWeather();
+fetchSunriseSunset();
 
+function getFiveDays(data) {
+  hours = 5;
+  let fetchedData = getDays(data, hours);
+  if (fetchedData.length < 5) {
+    hours = hours + 3;
+    fetchedData = getDays(data, hours);
+    if (fetchedData.length < 5) {
+      hours = hours + 3;
+      fetchedData = getDays(data, hours + 3);
+      if (fetchedData.length < 5) {
+        hours = hours + 3;
+        fetchedData = getDays(data, hours + 3);
+        if (fetchedData.length < 5) {
+          hours = hours + 3;
+          fetchedData = getDays(data, hours + 3);
+          if (fetchedData.length < 5) {
+            hours = hours + 3;
+            fetchedData = getDays(data, hours + 3);
+            if (fetchedData.length < 5) {
+              hours = hours + 3;
+              fetchedData = getDays(data, hours + 3);
+              if (fetchedData.length < 5) {
+                hours = hours + 3;
+                fetchedData = getDays(data, hours + 3);
+              } else {
+                return fetchedData;
+              }
+            } else {
+              return fetchedData;
+            }
+          } else {
+            return fetchedData;
+          }
+        } else {
+          return fetchedData;
+        }
+      } else {
+        return fetchedData;
+      }
+    } else {
+      return fetchedData;
+    }
+  } else {
+    return fetchedData;
+  }
+}
+function getDays(data, hour) {
+  return data.list.filter((d) => {
+    const date = new Date(d.dt * 1000);
+    const time = hour;
+    const dtTime = date.getHours();
+    return dtTime === time;
+  });
+}
