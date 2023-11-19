@@ -80,7 +80,7 @@ const updateHTML = (json) => {
     cityNameElement.innerText = `Get your sunnies on.
         ${json.name} is looking rather great today.`;
   } else {
-    cityNameElement.innerText = `Check out the weather in ${json.name} today.`;
+    cityNameElement.innerText = `Light a fire and get cosy. ${json.name} is looking grey today.`;
   }
 
   //change icon (cloud) & colour scheme for clouds
