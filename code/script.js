@@ -39,24 +39,33 @@ fetch(forecastAPI)
 const updateHTML = (json) => {
   // Convert sunrise timestamp to a Date object
   const sunriseTimestamp = new Date(json.sys.sunrise * 1000); // Multiply by 1000 to convert from seconds to milliseconds
+
+  //-----Sunrise-------//
   const sunriseHours = sunriseTimestamp
     .getUTCHours()
     .toString()
-    .padStart(2, "0"); // Get hours in 24-hour format
+    .padStart(2, "0");
+
   const sunriseMinutes = sunriseTimestamp
     .getUTCMinutes()
     .toString()
-    .padStart(2, "0"); // Get minutes
-  const sunriseTime = `${sunriseHours}: ${sunriseMinutes}`; // Create time string
+    .padStart(2, "0");
+  //change into a string and add 1 for UTC + 1 Sweden time.
+  const utcPlusOneRise = parseInt(sunriseHours, 10) + 1;
+  const sunriseTime = `${utcPlusOneRise}: ${sunriseMinutes}`;
 
   // Convert sunset timestamp to a Date object
   const sunsetTimestamp = new Date(json.sys.sunset * 1000); // Multiply by 1000 to convert from seconds to milliseconds
+
+  //-----Sunset-------//
   const sunsetHours = sunsetTimestamp.getUTCHours().toString().padStart(2, "0"); // Get hours in 24-hour format
+
   const sunsetMinutes = sunsetTimestamp
     .getUTCMinutes()
     .toString()
     .padStart(2, "0"); // Get minutes
-  const sunsetTime = `${sunsetHours}:${sunsetMinutes} `; // Create time string
+  const utcPlusOneSet = parseInt(sunsetHours, 10) + 1; //change into a string and add 1 for UTC + 1 Sweden time.
+  const sunsetTime = `${utcPlusOneSet}:${sunsetMinutes} `; // Create time string
 
   container.innerHTML = `<p> ${
     json.weather[0].description
@@ -74,19 +83,27 @@ const updateHTML = (json) => {
     cityNameElement.innerText = `Check out the weather in ${json.name} today.`;
   }
 
-  //display icon for either clouds, sunglasses or rain
+  //change icon (cloud) & colour scheme for clouds
   if (weatherStatus === "Clouds") {
     document.getElementById(
       "weatherIcon"
     ).innerHTML = `<img src="/code/assets/icons/cloud_icon.svg" alt = "clouds icon" width = "100" height = "100" >`;
+    document.body.style.backgroundColor = "#f4f7f8";
+    document.body.style.color = "#F47775";
+    //change icon (umbrella) & colour scheme for rain
   } else if (weatherStatus === "Rain") {
     document.getElementById(
       "weatherIcon"
     ).innerHTML = `<img src="/code/assets/icons/umbrella_icon.svg" alt = "umbrella icon"   width = "100" height = "100" >`;
+    document.body.style.backgroundColor = "#A3DEF7";
+    document.body.style.color = "#164A68";
+    //change icon (sunglasses) & colour scheme for clear
   } else if (weatherStatus === "Clear") {
     document.getElementById(
       "weatherIcon"
     ).innerHTML = `<img src="/code/assets/icons/sunglasses_icon.svg" alt = "sunglasses icon" width = "100" height = "100" >`;
+    document.body.style.backgroundColor = "#F7E9B9";
+    document.body.style.color = "#2A5510";
   }
 };
 
