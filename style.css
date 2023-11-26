@@ -127,7 +127,6 @@ svg {
 .tempNumber{
   font-size: 120px;
   font-weight: 400;
-  letter-spacing: -13px;
   color: var(--fontColor)
 }
 .units{

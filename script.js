@@ -43,9 +43,8 @@ const todaysWeatherFeature = (city) =>{
 
         cityTimeDesc.innerHTML +=`
         <div class="weatherDescriptionIcon">  
-        <p class="weatherDescription">${weatherDescription}</p> 
-        <img class="weatherIcon" src = "${weatherIcon}", alt = "${weatherDescription}", width = "50px">
-        </img>
+            <p class="weatherDescription">${weatherDescription}</p> 
+            <img class="weatherIcon" src = "${weatherIcon}", alt = "${weatherDescription}", width = "50px" />
         </div>`
 
         const currentLocalTime = new Date((json.dt + json.timezone) * 1000)
@@ -93,7 +92,6 @@ const todaysWeatherFeature = (city) =>{
                 stopRain()
                 break
         }
-
         dayNightOrDusk(sunriseTime, sunsetTime, currentLocalTime)
     })
 
@@ -110,7 +108,6 @@ fetch(searchString("forecast", city))
         const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 
         noonWeather.forEach((item) => {
-
             let day = new Date(item.dt_txt)
 
             let weatherIcon = createIcon(item.weather[0].icon)
@@ -166,7 +163,7 @@ const searchFunction = () => {
 
         //Clears field & hides the input field
         inputField.value = ""
-        searchToggler.classList.add('hidden')
+        searchToggler.classList.toggle('hidden')
         closeSearchMenu.classList.add('hidden')
         searchMenuBtn.classList.toggle('hidden')
         currentLocBtn.classList.add('hidden')
@@ -233,6 +230,7 @@ const getCurrentLocation = () => {
         .then((data) => {
             todaysWeatherFeature(data[0].name)
         })
+        .catch((e) => (console.log("Error, could not fetch your current location", e)))
     }
 }
 
@@ -275,12 +273,12 @@ currentLocBtn.addEventListener('click', getCurrentLocation)
 
 //Eventlistener to toggle search field:
 searchMenuBtn.addEventListener('click', toggleSearchField)
-closeSearchMenu.addEventListener('click', toggleSearchField)
+closeSearchMenu.addEventListener('click', () => {toggleSearchField()})
 
-//Eventlistener to search through enter key also
+//Eventlistener to search location:
 searchBtn.addEventListener('click', searchFunction)
 
-//Eventlistener to search through enter key also
+//Eventlistener to search through enter key also:
 inputField.addEventListener('keyup', function (event) {
     if (event.key == "Enter") {
         searchFunction()
