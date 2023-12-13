@@ -6,41 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-    <link rel="stylesheet" href="rain.css">
     <title>Weather APP</title>
 </head>
 
-<body class="back-row-toggle splat-toggle">
-    <div class="rain front-row"></div>
-    <div class="rain back-row"></div>
-    <div class="toggles">
-        <div class="splat-toggle toggle active">SPLAT</div>
-        <div class="back-row-toggle toggle active">BACK<br>ROW</div>
-        <div class="single-toggle toggle">SINGLE</div>
-    </div>
-    <div id="clock"></div>
-    <div id="stockholmDates"></div> <!-- Added this div for Stockholm dates -->
-    <h1 id="cityName"></h1>
+<body>
+    <section class="time-date-header">
+        <div id="clock"></div>
+        <div id="stockholmDates"></div>
+    </section>  
+    
     <section>
-        <div id="weatherIcon">
-        </div>
         <div id="sun_rise_sunset">
             Loading...
         </div>
+    </section>  
+
+    <section>
+        <div id="weatherIcon"></div>
+        <h1 id="cityName"></h1>
     </section>
+    
     <section>
         <div id="forecast5Days">
         </div>
     </section>
 
-    <audio id="rainSound" autoplay loop>
-        <source src="\design\design1\assets\Adele-Set-Fire-To-The-Rain.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+  
 </body>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="rain.js"></script>
 <script src="script.js"></script>
 </body>
 

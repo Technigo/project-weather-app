@@ -1,0 +1,15 @@
+Design guidelines
+
+fonts:
+https://fonts.google.com/specimen/Montserrat
+
+Weights: bold and regular
+
+colors:
+
+#F47775 - text for cloudy
+#F4F7F8 - bg for cloudy
+#164A68 - text for rain/umbrella icon
+#A3DEF7 - bg for rain/umbrella icon
+#2A5510 - text for sunny 
+#F7E9B9 - bg for sunny

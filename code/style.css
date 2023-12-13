@@ -1,118 +1,81 @@
 body {
-    padding: 0;
-    background: #bde8fa;
-    margin: 40px;
-    border-color: black;
-    font-family: 'Montserrat';
+  padding: 1.5em;
+  background: #bde8fa;
+  font-family: "Montserrat";
 }
 
-section {
-    width: 400px;
-    margin: auto;
+.time-date-header {
+  margin-right: 3em;
+  margin-bottom: 2em;
 }
 
 #sun_rise_sunset p {
-    color: #8EBFD2;
-    font-size: 24px;
-    font-family: 'Montserrat';
-    line-height: 1;
-    margin-block-start: 0;
-    margin-block-end: 0;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
+  font-size: 24px;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
 }
 
-#clock {
-    text-align: center;
-    margin-right: 17em;
-    color: #8EBFD2;
-    font-size: 18px;
-    font-family: 'Montserrat';
-    line-height: 1;
+#weatherIcon {
+  padding-top: 1em;
 }
 
-#stockholmDates {
-    text-align: center;
-    margin-right: 6em;
-    color: #8EBFD2;
-    font-size: 18px;
-    font-family: 'Montserrat';
-    line-height: 1;
-}
-
-h1 {
-    color: #8EBFD2;
-    font-size: 24px;
-    text-align: center;
-    list-style: none;
+#cityName {
+  font-size: 32px;
+  font-weight: 900;
 }
 
 h2 {
-    color: #8EBFD2;
-    font-size: 20px;
+  font-size: 20px;
 }
 
 #forecast5Days {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 8px;
+  font-size: 20px;
+  margin-top: 3em;
+  column-gap: 0;
+  max-width: 300px;
+  font-size: 24px;
+}
+
+/* ------ Adjust styles for mobile devices -------- */
+@media (max-width: 480px) {
+  section {
+    width: 100%;
+  }
+
+  #cityName {
+    font-size: 46px;
+    line-height: 1.1;
+    font-weight: bold;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  #stockholmDates {
+    text-align: right;
+    margin-left: 8em;
+    font-size: 18px;
+    font-family: "Montserrat";
+    line-height: 1;
+  }
+
+  #clock {
+    text-align: right;
+  }
+
+  #forecast5Days {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 8px;
-    color: #8EBFD2;
     font-size: 20px;
     margin-top: 3em;
     column-gap: 0;
     max-width: 300px;
-}
-
-
-/* ------ Adjust styles for mobile devices -------- */
-@media (max-width: 480px) {
-
-    body {
-        margin: 20px;
-    }
-
-    #weatherIcon {
-        display: flex;
-        justify-content: right;
-        margin: 1em 3em 1em 0;
-    }
-
-    section {
-        width: 100%;
-        margin-left: 1em;
-    }
-
-    h1 {
-        font-size: 24px;
-        line-height: 1;
-        margin: 1em 1em 0 4em;
-    }
-
-    h2 {
-        font-size: 18px;
-    }
-
-    #stockholmDates {
-        text-align: right;
-        margin-left: 8em;
-        font-size: 18px;
-        font-family: 'Montserrat';
-        line-height: 1;
-    }
-
-    #clock {
-        text-align: right;
-        margin-left: 8em;
-    }
-
-    #forecast5Days {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 8px;
-        color: #8EBFD2;
-        font-size: 20px;
-        margin-top: 3em;
-        column-gap: 0;
-        max-width: 300px;
-    }
+  }
 }
