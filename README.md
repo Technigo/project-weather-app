@@ -24,3 +24,9 @@ We worked well together though in future projects we want to communicate more in
 ## View it live
 
 https://wk4-weatherapp-api-a735bf.netlify.app/
+
+### Screenshots
+
+![Screenshot of App](/code/assets//screenshot1-weather.png?raw=true "Screenshot of App") 
+
+
