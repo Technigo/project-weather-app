@@ -87,21 +87,21 @@ const updateHTML = (json) => {
   if (weatherStatus === "Clouds") {
     document.getElementById(
       "weatherIcon"
-    ).innerHTML = `<img src="/code/assets/icons/cloud_icon.svg" alt = "clouds icon" width = "100" height = "100" >`;
+    ).innerHTML = `<img src="./assets/icons/cloud_icon.svg" alt = "clouds icon" width = "100" height = "100" >`;
     document.body.style.backgroundColor = "#f4f7f8";
     document.body.style.color = "#F47775";
     //change icon (umbrella) & colour scheme for rain
   } else if (weatherStatus === "Rain") {
     document.getElementById(
       "weatherIcon"
-    ).innerHTML = `<img src="/code/assets/icons/umbrella_icon.svg" alt = "umbrella icon"   width = "100" height = "100" >`;
+    ).innerHTML = `<img src="./assets/icons/umbrella_icon.svg" alt = "umbrella icon"   width = "100" height = "100" >`;
     document.body.style.backgroundColor = "#A3DEF7";
     document.body.style.color = "#164A68";
     //change icon (sunglasses) & colour scheme for clear
   } else if (weatherStatus === "Clear") {
     document.getElementById(
       "weatherIcon"
-    ).innerHTML = `<img src="/code/assets/icons/sunglasses_icon.svg" alt = "sunglasses icon" width = "100" height = "100" >`;
+    ).innerHTML = `<img src="./assets/icons/sunglasses_icon.svg" alt = "sunglasses icon" width = "100" height = "100" >`;
     document.body.style.backgroundColor = "#F7E9B9";
     document.body.style.color = "#2A5510";
   }
