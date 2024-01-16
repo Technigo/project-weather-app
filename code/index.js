@@ -205,7 +205,7 @@ const updateHTML = (data) => {
   sunrise.innerText = newSunrise
   sunset.innerText = newSunset
 
-  tempElement.innerText = `${Math.floor(data.main.temp)}`;
+  tempElement.innerText = `${Math.floor(data.main.temp).toFixed(1)}`;
   windMain.innerText = `${Math.floor(data.wind.speed)} m/s`;
   cityName.innerText = data.name;
   descriptionEl.innerText = data.weather[0].description;
