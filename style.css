@@ -195,13 +195,15 @@ p {
     height: 1300px;
   }
   .round {
-    height: 747px;
-    width: 1149px;
+    height: 604px;
+    width: 1003px;
     bottom: 40%;
     right: 50%;
   }
   .weather-container {
-    margin: 140px;
+    margin: 107px;
+    padding-left: 121px;
+    padding-right: 116px;
   }
   h1 {
     font-size: 102px;
@@ -212,6 +214,10 @@ p {
   }
   p {
     font-size: 30px;
+  }
+
+  #weather-forecast {
+    padding-top: 0;
   }
   #weather-forecast p {
     font-size: 45px;
