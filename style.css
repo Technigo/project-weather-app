@@ -10,7 +10,7 @@
 
 body {
   font-family: "Roboto", sans-serif;
-  overflow: hidden;
+  overflow: auto;
   position: relative;
   display: flex;
   justify-content: center;
@@ -193,6 +193,7 @@ p {
   .background {
     width: 1280px;
     height: 1300px;
+    margin-top: 45px;
   }
   .round {
     height: 604px;
@@ -220,7 +221,7 @@ p {
     padding-top: 0;
   }
   #weather-forecast p {
-    font-size: 45px;
+    font-size: 35px;
   }
 }
 
