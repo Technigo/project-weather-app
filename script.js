@@ -197,29 +197,29 @@ document.addEventListener("DOMContentLoaded", function () {
   /* const currentWeatherIcon = document.getElementById("current-weather-icon");
   currentWeatherIcon.appendChild(iconElement);*/
 
-  const toggleSearchBar = () => {
-    if (searchBar.style.display === "none" || searchBar.style.display === "") {
-      searchBar.style.display = "none";
+  // const toggleSearchBar = () => {
+  //   if (searchBar.style.display === "none" || searchBar.style.display === "") {
+  //     searchBar.style.display = "none";
 
-      searchIconElement.classList.replace("search-icon", "close-icon");
-    } else {
-      searchBar.style.display = "none";
+  //     searchIconElement.classList.replace("search-icon", "close-icon");
+  //   } else {
+  //     searchBar.style.display = "none";
 
-      closeIconElement.classList.replace("close-icon", "search-icon");
-    }
-  };
+  //     closeIconElement.classList.replace("close-icon", "search-icon");
+  //   }
+  // };
 
-  toggleSearchBar();
+  // toggleSearchBar();
 
-  searchButton.addEventListener("click", () => {
-    if (searchIconElement.style.display !== "none") {
-      searchIconElement.style.display = "none";
-      closeIconElement.style.display = "block";
-      searchBar.style.display = "block";
-    } else {
-      searchIconElement.style.display = "block";
-      closeIconElement.style.display = "none";
-      searchBar.style.display = "none";
-    }
-  });
+  // searchButton.addEventListener("click", () => {
+  //   if (searchIconElement.style.display !== "none") {
+  //     searchIconElement.style.display = "none";
+  //     closeIconElement.style.display = "block";
+  //     searchBar.style.display = "block";
+  //   } else {
+  //     searchIconElement.style.display = "block";
+  //     closeIconElement.style.display = "none";
+  //     searchBar.style.display = "none";
+  //   }
+  // });
 });

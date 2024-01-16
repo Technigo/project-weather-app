@@ -1,31 +1,39 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,300&family=Rubik:wght@300&display=swap");
 
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Roboto", sans-serif;
-
   overflow: hidden;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 800px;
+  height: 100vh;
+  /* height: 667px; */
 }
 
 .background {
   background-color: rgb(177, 177, 177);
   position: absolute; /* Change to absolute positioning */
 
-  height: 800px;
-  width: 400px;
+  height: 667px;
+  width: 375px;
   overflow: hidden;
-  border-radius: 30px;
+
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
   z-index: -1; /* Move it to a lower layer (behind other content) */
 }
 
 .round {
-  height: 550px;
-  width: 600px;
+  height: 563px;
+  width: 487px;
   background-image: url(design/design1/tree2.png);
   border-radius: 50%;
   position: absolute;
@@ -38,15 +46,15 @@ body {
 .container {
   display: flex;
   flex-direction: column;
-  width: 400px;
-  height: 100%;
+  width: 375px;
+  height: auto;
   position: relative;
 }
-.top-search-container {
+/* .top-search-container {
   display: flex;
   flex-direction: row;
   padding: 20px;
-}
+} */
 
 .weather-container {
   margin: 20px;
@@ -61,6 +69,7 @@ h1 {
 h2 {
   font-size: 30px;
   color: antiquewhite;
+  margin-bottom: 20px;
 }
 
 .current-cloud {
@@ -99,6 +108,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  margin: 20px;
 }
 
 #sunrise-time {
@@ -113,16 +123,15 @@ p {
   display: flex;
   flex-direction: column; /* Stack elements vertically */
   align-items: flex-start; /* Align items to the start of each column */
-
   justify-content: center;
   align-items: center;
+  padding-top: 100px;
 }
 
 .forecast-item {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center; /* Align items vertically within each row */
-
   width: 80%;
 }
 
@@ -137,63 +146,6 @@ p {
   margin-right: 10px; /* Add spacing between icons and temperatures */
 }
 
-/*---------------------*/
-.search-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.search-button {
-  font-size: 16px;
-  padding: 10px;
-  border: none;
-  color: #2e4053;
-  background-color: transparent;
-  border-radius: 50%;
-  cursor: pointer;
-  padding: 5px;
-}
-
-.search-button:hover {
-  background-color: transparent;
-}
-
-.search-button:active {
-  background-color: transparent;
-}
-
-.search-icon {
-  color: transparent;
-}
-
-.search-bar {
-  display: none;
-  padding: 1px;
-  border-color: white;
-  font-size: 18px;
-  border: 1px solid #ced4da;
-  width: 200px;
-  height: 25px;
-  transition: width 0.4s;
-  opacity: 30%;
-}
-
-.search-bar:focus {
-  width: 240px;
-}
-
-.search-bar-button {
-  display: none;
-  font-size: 16px;
-  padding: 10px;
-  border: none;
-  color: #2e4053;
-  border-color: white;
-  /*background-color: ;*/
-  cursor: pointer;
-}
-
 .material-symbols-outlined,
 .search-icon.class ::before {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
@@ -204,35 +156,67 @@ p {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 
-.button-container {
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 38px;
+@media (min-width: 768px) {
+  .container {
+    width: 768px;
+  }
+
+  .background {
+    width: 768px;
+    height: 1024px;
+  }
+  .round {
+    height: 770px;
+    width: 974px;
+    bottom: 40%;
+    right: 50%;
+  }
+  .weather-container {
+    margin: 76px;
+  }
+  h1 {
+    font-size: 82px;
+  }
+  h2 {
+    font-size: 40px;
+  }
+  p {
+    font-size: 20px;
+  }
 }
 
-.round-button {
-  display: inline-block;
+@media (min-width: 1280px) {
+  .container {
+    width: 1280px;
+  }
 
-  width: 80px; /* Adjust the size as necessary */
-  height: 80px;
-  background-color: #5b7754; /* Adjust the background color as necessary */
-  border-radius: 50%; /* Makes the button round */
-  border: none; /* Removes the default border */
-  cursor: pointer;
+  .background {
+    width: 1280px;
+    height: 1300px;
+  }
+  .round {
+    height: 747px;
+    width: 1149px;
+    bottom: 40%;
+    right: 50%;
+  }
+  .weather-container {
+    margin: 140px;
+  }
+  h1 {
+    font-size: 102px;
+    padding-left: 30%;
+  }
+  h2 {
+    font-size: 60px;
+  }
+  p {
+    font-size: 30px;
+  }
+  #weather-forecast p {
+    font-size: 45px;
+  }
 }
 
-.round-button span {
-  color: white; /* Adjust the text color as necessary */
-  text-align: center;
-  line-height: 70px; /* Vertically centers the text */
-  font-family: "Rubik", sans-serif;
-  font-size: 40px; /* Adjust the font size as necessary */
-}
-
-.round-button:hover {
-  background-color: #7b9674; /* Adjust the hover background color as necessary */
-}
-
-.round-button span:hover {
-  background-color: #7b9674; /* Adjust the hover background color as necessary */
-}
+/* @media --------------------- .search-container { display: flex; align-items: center; justify-content: center; } .search-button { font-size: 16px; padding: 10px; border: none; color: #2e4053; background-color: transparent; border-radius: 50%; cursor: pointer; padding: 5px; } .search-button:hover { background-color: transparent; } .search-button:active { background-color: transparent; } .search-icon { color: transparent; } .search-bar { display: none; padding: 1px; border-color: white; font-size: 18px; border: 1px solid #ced4da; width: 200px; height: 25px; transition: width 0.4s; opacity: 30%; } .search-bar:focus { width: 240px; } .search-bar-button { display: none; font-size: 16px; padding: 10px; border: none; color: #2e4053; border-color: white; cursor: pointer; } .button-container { display: flex; justify-content: flex-end; padding-right: 38px; } /* .round-button { display: inline-block; width: 80px; height: 80px; background-color: #5b7754; border-radius: 50%; border: none; cursor: pointer; } .round-button span { color: white; text-align: center; line-height: 70px; font-family: "Rubik", 
+  sans-serif; font-size: 40px; } .round-button:hover { background-color: #7b9674; } .round-button span:hover { background-color: #7b9674; } */
