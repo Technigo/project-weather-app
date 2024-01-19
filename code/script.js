@@ -47,7 +47,9 @@ let longitude = "";
 let latitude = "";
 let forecastObject = "";
 
-const pickWeathersymbol = "/design/design2/icons/noun_Umbrella_2030530.svg";
+// const pickWeathersymbol = "/design/design2/icons/noun_Umbrella_2030530.svg";
+
+
 // need to define conditions when to use which symbol
 
 const pickWeathertip = (weatherTip) => {
@@ -55,6 +57,7 @@ const pickWeathertip = (weatherTip) => {
         let weatherTip = "Get your sunnies on. Stockholm is looking rather great today.";
         document.querySelector('body').style.backgroundColor = "#Faedc8";
         document.querySelector('body').style.color = "#Eeb50e";
+        
         return weatherTip;
     } else if (weatherObject.weather[0].description.includes('rain')) {
         weatherTip = "Don't forget your umbrella. It's pouring!";
@@ -79,6 +82,28 @@ const pickWeathertip = (weatherTip) => {
     } else {
         weatherTip = "Rainy, sunny, cloudy... today the weather seems unpredictable!";
         return weatherTip;
+    }
+}
+
+const pickWeathersymbol = () => {
+
+    if (weatherObject.weather[0].description.includes('clear sky')) {
+        return "assets/icons/noun_Sunglasses_2055147.svg";
+    }
+    else if (weatherObject.weather[0].description.includes('rain')) {
+        return "assets/icons/noun_Umbrella_2030530.svg";
+    }
+    else if (weatherObject.weather[0].description.includes('snow')) {
+        return "assets/icons/noun_Umbrella_2030530.svg";
+    }
+    else if (weatherObject.weather[0].description.includes('cloud')) {
+        return "assets/icons/noun_Cloud_1188486.svg";
+    }
+    else if (weatherObject.weather[0].description.includes('thunderstorm')) {
+        return "assets/icons/noun_Umbrella_2030530.svg";
+    }
+    else {
+        return "assets/icons/noun_Umbrella_2030530.svg";
     }
 }
 
@@ -142,7 +167,8 @@ const insertWeatherdata = () => {
     mainTemperature.innerHTML = (weatherObject.main.temp + "°C"); //Degrees Celsius
     sunrise.innerHTML = formatTimestamp(weatherObject.sys.sunrise); // NB! formatTimestamp is a function
     sunset.innerHTML = formatTimestamp(weatherObject.sys.sunset); // NB! formatTimestamp is a function  
-    weatherIcon.setAttribute("src", pickWeathersymbol);
+    //weatherIcon.setAttribute("src", pickWeathersymbol);
+    weatherIcon.setAttribute("src", pickWeathersymbol());
     dailyWeathertips.innerHTML = pickWeathertip();
     // finding only 12 o´clock values in 5-day forecast
     filterDataForForecast();
