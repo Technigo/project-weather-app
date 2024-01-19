@@ -1,4 +1,4 @@
-"use strict";
+gn"use strict";
 // does this work?
 // DOM selectors ------------------------------------------
 // const weatherData = document.getElementById('weather-container');
@@ -51,11 +51,11 @@ let forecastObject = "";
 const pickWeathersymbol = (condition) => {
     switch (condition.toLowerCase()) {
         case 'clear':
-            return "assets/icons/noun_Sunglasses_2055147.svg";
+            return "design/design2/icons/noun_Sunglasses_2055147.svg";
         case 'rain':
-            return "assets/icons/noun_Umbrella_2030530.svg";
+            return "design/design2/icons/noun_Umbrella_2030530.svg";
         case 'clouds':
-            return "assets/icons/noun_Cloud_1188486.svg";
+            return "design/design2/icons/noun_Cloud_1188486.svg";
         default:
             return ""; // Default icon or an empty string if no match
     }
