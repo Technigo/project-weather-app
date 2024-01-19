@@ -47,11 +47,6 @@ let longitude = "";
 let latitude = "";
 let forecastObject = "";
 
-// const pickWeathersymbol = "/design/design2/icons/noun_Umbrella_2030530.svg";
-
-
-// need to define conditions when to use which symbol
-
 const pickWeathertip = (weatherTip) => {
     if (weatherObject.weather[0].description.includes('clear sky')) {
         let weatherTip = "Get your sunnies on. Stockholm is looking rather great today.";
