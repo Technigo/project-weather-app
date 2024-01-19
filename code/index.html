@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Olga Lepistö, Mikael Öling, Frauke Schmidt">
+    <link rel="icon" type="image/png" sizes="32x32" href="weatherfavi.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dosis&family=Montserrat:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dosis&family=Montserrat:wght@300;700&display=swap"
+        rel="stylesheet">
+    <title>Weather app - trial project</title>
+</head>
+
+<body>
+    <div id="main-container">
+        <section id="daily-forecast">
+            <p>
+                <span id="weather-description">weather description</span>
+                <span id="main-temp">current temperature</span>
+            </p>
+            <p>
+                <span>Sunrise</span>
+                <span id="sunrise">sunrisevalue</span>
+            </p>
+            <p>
+                <span>Sunset</span>
+                <span id="sunset">sunsetvalue</span>
+            </p>
+        </section>
+
+        <section id="weather-symbol">
+            <img id="weather-icon" src="" alt="weather-icon">
+        </section>
+
+        <section id="daily-advice">
+            <p id="daily-tips">daily weathertip</p>
+        </section>
+
+        <section id="weekly-forecast">
+            <div id="forecast-container">
+                <!-- <div id="day-one" class="weekday">
+                    <span>day1 </span>
+                    <span>temperature1</span>
+                </div>
+                <div id="day-two" class="weekday">
+                    <span>day2</span>
+                    <span>temperature2</span>
+                </div>
+                <div id="day-three" class="weekday">
+                    <span>day3</span>
+                    <span>temperature3</span>
+                </div>
+                <div id="day-four" class="weekday">
+                    <span>day4</span>
+                    <span>temperature4</span>
+                </div>
+                <div id="day-five" class="weekday">
+                    <span>day5</span>
+                    <span>temperature5</span>
+                </div> -->
+            </div>
+        </section>
+
+        <section id="city-picker">
+            <form action="#">
+                <input type="text" id="city-input" placeholder="Type a city...">
+                <input type="submit" id="submit-button" value="Search">
+            </form>
+        </section>
+
+        <footer>
+            <!-- dont need it any more 
+                <div id="weather-container">
+                <p>Loading...</p>
+            </div> -->
+            <p>Coded by: Olga Lepistö, Mikael Öling, Frauke Schmidt</p>
+    </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
