@@ -47,8 +47,20 @@ let longitude = "";
 let latitude = "";
 let forecastObject = "";
 
-const pickWeathersymbol = "/design/design2/icons/noun_Umbrella_2030530.svg";
-// need to define conditions when to use which symbol
+//const pickWeathersymbol = "/design/design2/icons/noun_Umbrella_2030530.svg";
+const pickWeathersymbol = (condition) => {
+    switch (condition.toLowerCase()) {
+        case 'clear':
+            return "assets/icons/noun_Sunglasses_2055147.svg";
+        case 'rain':
+            return "assets/icons/noun_Umbrella_2030530.svg";
+        case 'clouds':
+            return "assets/icons/noun_Cloud_1188486.svg";
+        default:
+            return ""; // Default icon or an empty string if no match
+    }
+};
+
 
 const pickWeathertip = (weatherTip) => {
     if (weatherObject.weather[0].description.includes('clear sky')) {
