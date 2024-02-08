@@ -20,13 +20,11 @@ body {
 }
 
 .background {
-  background-color: #b3b3b3;
+  background-color: #c6cdc3;
   position: absolute; /* Change to absolute positioning */
-
   height: 667px;
   width: 375px;
   overflow: hidden;
-
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
   z-index: -1; /* Move it to a lower layer (behind other content) */
 }
@@ -61,15 +59,17 @@ body {
 }
 
 h1 {
-  font-size: 72px;
-  color: antiquewhite;
+  font-size: 70px;
+  color: #f1f1f1;
   margin: 10px;
+  font-weight: 400;
 }
 
 h2 {
-  font-size: 30px;
-  color: antiquewhite;
+  font-size: 28px;
+  color: #f1f1f1;
   margin-bottom: 20px;
+  font-weight: 300;
 }
 
 .current-cloud {
@@ -79,7 +79,7 @@ h2 {
 
 .current-cloud p {
   margin: 0; /* Remove any default margin */
-  color: antiquewhite;
+  color: #f1f1f1;
 }
 
 #current-weather-icon {
@@ -101,7 +101,7 @@ h2 {
 }
 
 p {
-  color: antiquewhite;
+  color: #f1f1f1;
 }
 
 .sunset-sunrise {
@@ -112,10 +112,10 @@ p {
 }
 
 #sunrise-time {
-  color: antiquewhite;
+  color: #f1f1f1;
 }
 #sunset-time {
-  color: antiquewhite;
+  color: #f1f1f1;
 }
 
 /* 5 dayforecast elements */
@@ -138,6 +138,7 @@ p {
 .forecast-item p {
   margin: 0;
   padding: 0 10px; /* Add spacing between elements */
+  text-shadow: 2px 2px #a5a5a5;
 }
 
 .forecast-item img {
