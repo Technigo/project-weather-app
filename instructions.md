@@ -1,27 +1,24 @@
 # Instructions
 Start out with signing up for a [free Open Weather Map](https://home.openweathermap.org/users/sign_up "free Open Weather Map") account, as it can take up to a few hours for the API key to be activated.
 
-We've asked a couple of different designers to do their take on this project. It's a great practice in implementing someone else's design. You will find their designs in the design folder in the repo along with some design assets. Decide together with your coding buddy, which design you want to implement - and follow the design as closely as you can.
+We've asked a couple of different designers to do their take on this project. It's a great practice in implementing someone else's design. You will find their designs in the design folder in the repo along with some design assets. Decide which design you want to implement - and follow the design as closely as you can.
 
 ## How to get started 💪🏼
 
-1. One person forks the repo.
-2. The person forking the repo will be the owner of the repo. They now have to invite the other person as collaborators. To do that you go to the repo's Settings → Manage access → Invite a collaborator.    
-3. One person clones the repo, and together in pairs you will layout the foundation (following Step 1 & 2, specified further down).
-4. Push the changes to GitHub.
-5. When it's time to split up and work in branches, it's also time for the other person to clone the repo.
-6. Work in branches, commit and push to your branch. Git cheat sheet can be found [here](https://www.notion.so/424c3528791e42d0a7daabe6f0b5a308?pvs=21).
+1. Fork the repo.
+2. Clone the repo, and lay out the foundation (following Step 1 & 2, specified further down).
+3. Push the changes to GitHub.
+4. Work with the features in branches. Git cheat sheet can be found [here](https://www.notion.so/424c3528791e42d0a7daabe6f0b5a308?pvs=21).
 
 ## How to hand in the code 🎯
 
 - Since you're working with branches this week, you'll have to merge the branches together before handing in. Look at the [Working in teams video](https://www.notion.so/46b2f4e4a01847a8bf575f9904739088?pvs=21) and the [cheatsheet](https://www.notion.so/424c3528791e42d0a7daabe6f0b5a308?pvs=21) for more information about how to work with branches.
-- When you’re finished with the project, only one person (owner of the repo) needs to open a Pull Request into the Technigo repo.
-- Hand in your project the usual way
+- When you’re finished with the project, open a Pull Request into the Technigo repo.
 
 ---
 
 ## Hints and tips to complete the project 🤓
-For this project, we suggest that you lay out the foundation of your project together using pair programming. After that, it's time to split up and start working in branches.
+For this project, we suggest that you lay out the foundation of your project in the main/master branch. After that, it's time to start working in branches.
 
 ### Step 1 - Get started with the weather API
 [Sign up for a free Open Weather Map account](https://home.openweathermap.org/users/sign_up). Once signed in, go to "My API keys". You find that in the menu if you click your username. Copy the API Key. You can use the API Key in the APPID parameter when making calls to the openweathermap API.
@@ -90,19 +87,19 @@ Your task is to present some data on your web app. Start with:
 - and what type of weather it is (the "description" in the JSON)
 
 ### Step 3 - Features
-Now it's time to split up and start working in GitHub branches. Decide beforehand when you should have a "feature freeze" so that you make time for merging.
+Now it's time to start working in GitHub branches. Decide beforehand when you should have a "feature freeze" so that you make time for merging.
 
 **Feature: Sunrise and sunset 🌅**  
 Show the time for sunrise and sunset in a readable time format (Example: 13:00 or 1 PM). You will have to format the date from milliseconds to a readable format. [Here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date "Here") is a useful resource for how to do this.
 
 **Feature: Weather forecast 📅**  
-Show a forecast for the next 5 days. You can choose how to display the forecast - perhaps you want to show the min and max temperature for each day, or perhaps you want to show the temperature from the middle of the day, or the humidity, what it feels like and so on.
+Show a forecast for the next 4 days. You can choose how to display the forecast - perhaps you want to show the min and max temperature for each day, or perhaps you want to show the temperature from the middle of the day, or the humidity, what it feels like and so on.
 
 ```
 https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=YOUR_API_KEY
 ```
 
-The API gives us the next 5 days but for every third hour. So a good idea could be to only use the weather data from the same time every day. You can filter the forecast list array to only get the info from 12:00 each day for example. 
+The API gives us the next 4-5 days but for every third hour. So a good idea could be to only use the weather data from the same time every day. You can filter the forecast list array to only get the info from 12:00 each day for example. 
 
 Read the [endpoint documentation](https://openweathermap.org/forecast5 "endpoint documentation") for the forecast.
 
@@ -114,7 +111,7 @@ Style it to look like one of the provided designs.
 - All data in the sketch above should be present and fetched from the API
 - The presentation of the data should be in the specified format.
 - The page should work on mobile (mobile first!), tablet and desktop (Be responsive)
-- Complete Step 1-2 together, and step 3 in branches
+- Complete Step 1-2 in the main/master branch, and step 3 in branches
 - Follow the guidelines on [how to write good code](https://www.notion.so/Guidelines-for-how-to-write-good-code-59abdd4307a24f5ca7914d566326f4df?pvs=4 "how to write good code")
 
 ## Stretch goals
