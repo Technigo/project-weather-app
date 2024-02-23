@@ -108,10 +108,11 @@ Style it to look like one of the provided designs.
 
 ## Requirements
 - You should fetch data from the API using `fetch()` in JavaScript
-- All data in the sketch above should be present and fetched from the API
-- The presentation of the data should be in the specified format.
-- The page should work on mobile (mobile first!), tablet and desktop (Be responsive)
-- Complete Step 1-2 in the main/master branch, and step 3 in branches
+- The app should have: city name, current temperature, weather description, sunrise/sunset time, 4-day forecast
+- The presentation of the data should be in the specified format
+- Make your app responsive (it should look good on devices from 320px width up to 1600px)
+- Follow one of the designs as closely as you can
+- Complete Step 1-2 in the main/master branch, and Step 3 in branches
 - Follow the guidelines on [how to write good code](https://www.notion.so/Guidelines-for-how-to-write-good-code-59abdd4307a24f5ca7914d566326f4df?pvs=4 "how to write good code")
 
 ## Stretch goals
