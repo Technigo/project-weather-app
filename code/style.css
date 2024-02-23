@@ -1,0 +1,236 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  height: 100%;
+}
+
+h1 {
+  font-size: 7rem;
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+h3 {
+  font-size: 18px;
+  text-transform: capitalize;
+  font-weight: 300;
+}
+
+.wrapper {
+  position: relative;
+  background-color: #e0e0e0;
+  width: 100%;
+  max-width: 400px;
+  margin: 50px auto;
+  overflow: hidden;
+  height: 800px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.back-image {
+  position: absolute;
+  background-image: url("");
+  background-size: cover;
+  bottom: 37%;
+  background-repeat: no-repeat;
+  width: 800px;
+  height: 800px;
+  right: 50%;
+  transform: translate(50%);
+  border-radius: 50%;
+}
+
+.search-nav {
+  display: flex;
+  align-items: center;
+  margin: 20px 0 20px;
+}
+
+.toggle-open,
+.toggle-close {
+  width: 2rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-container input {
+  border: 0;
+  outline: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 0.5rem 1.5rem;
+  height: 2.5rem;
+  border-radius: 30px;
+  margin-left: 1.5rem;
+}
+
+.search-btn {
+  width: 1.5rem;
+  margin-left: 1rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+main {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  color: white;
+  padding: 0 30px;
+  margin: 0 auto;
+}
+
+.temp-container {
+  display: flex;
+}
+
+.celsius {
+  font-size: 2rem;
+  font-weight: 300;
+  vertical-align: super;
+  padding-top: 1rem;
+}
+
+.local-time-display {
+  margin-top: 5px;
+}
+
+.weather-description {
+  display: flex;
+  align-items: center;
+}
+
+.current-weather-icon {
+  width: 5rem;
+}
+
+.sunrise-sunset {
+  position: relative;
+  color: white;
+  font-size: 18px;
+  font-weight: 300;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.sunrise-sunset div {
+  display: flex;
+  gap: 1rem;
+  padding: 15px;
+}
+
+.forecast-wrapper {
+  position: relative;
+  width: 100%;
+  color: black;
+  padding: 10px 0 40px;
+  margin-top: 7.5rem;
+}
+
+.forecast-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.forecast-weekday {
+  width: 5rem;
+  padding-left: 0.5rem;
+}
+
+.forecast-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80px;
+  height: 42px;
+}
+
+.w-icon {
+  width: 55px;
+}
+
+.forecast-temp {
+  width: 5rem;
+  text-align: center;
+}
+
+.forecast-wind {
+  width: 5rem;
+  text-align: right;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: grey;
+  margin-bottom: 50px;
+  gap: 0.5rem;
+}
+
+footer div {
+  display: flex;
+  align-items: center;
+}
+
+footer img {
+  width: 20px;
+}
+
+footer a,
+footer a:visited {
+  margin: 0 5px;
+  color: grey;
+}
+
+/* Screens that are 500px or less */
+@media (max-width: 500px) {
+  body {
+    background-color: #faf9f9;
+  }
+
+  .wrapper {
+    max-width: 500px;
+    margin: 0 0 50px;
+  }
+
+  footer {
+    flex-direction: column;
+  }
+}
+
+/* To use when hiding something */
+.hidden {
+  display: none;
+  transition: transform 1s ease 0s;
+}

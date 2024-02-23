@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Favicon -->
+    <link rel="icon" type="image" href="./images/weather-app.png" />
+    <title>Project Weather App</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div id="background" class="back-image"></div>
+      <main>
+        <header class="search-nav">
+          <!-- Button to open the search field -->
+          <button type="button" class="toggle-open" id="toggleOpen">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 64 64"
+              stroke-width="6"
+              stroke="#fff"
+              fill="none"
+              class="duration-300 transform transition-all"
+              style="width: 48px; height: 48px"
+            >
+              <circle cx="27.31" cy="25.74" r="18.1"></circle>
+              <path d="M39.58 39.04L56.14 57"></path>
+            </svg>
+          </button>
+          <!-- Button to close the search field -->
+          <button type="button" class="toggle-close hidden" id="toggleClose">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 64 64"
+              stroke-width="6"
+              stroke="#fff"
+              fill="none"
+              class="duration-300 transform transition-all"
+              style="width: 48px; height: 48px"
+            >
+              <path d="M8.06 8.06l47.35 47.88M55.94 8.06L8.59 55.94"></path>
+            </svg>
+          </button>
+          <!-- Search field -->
+          <div class="search-container hidden" id="searchContainer">
+            <input type="text" placeholder="enter city name" id="inputField" />
+            <!-- Button to search -->
+            <button type="submit" class="search-btn" id="searchBtn">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 64 64"
+                stroke-width="6"
+                stroke="#fff"
+                fill="none"
+                class="duration-300 transform transition-all"
+                style="width: 48px; height: 48px"
+              >
+                <circle cx="27.31" cy="25.74" r="18.1"></circle>
+                <path d="M39.58 39.04L56.14 57"></path>
+              </svg>
+            </button>
+          </div>
+        </header>
+        <!-- Section for current weather including city, temperature, current time, weather and time for sunrise and sunset -->
+        <section class="current-weather" id="currentWeather">
+          <div class="temp-container">
+            <h1 id="currentTemp"></h1>
+            <p class="celsius">&deg;C</p>
+          </div>
+          <h2 id="city"></h2>
+          <h3 class="local-time-display" id="localTimeDisplay"></h3>
+          <div class="weather-description">
+            <h3 id="weather"></h3>
+            <div id="weatherIcon" class="current-weather-icon"></div>
+          </div>
+        </section>
+        <section class="sunrise-sunset">
+          <div>
+            <p>sunrise</p>
+            <p id="sunrise"></p>
+          </div>
+          <div>
+            <p>sunset</p>
+            <p id="sunset"></p>
+          </div>
+        </section>
+        <!-- 5 days forecast section -->
+        <section id="weatherForecast" class="forecast-wrapper"></section>
+      </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>Created by:</p>
+      <div class="github-julia">
+        <p>Julia Holm</p>
+        <a
+          href="https://github.com/JuliaHolm"
+          target="_blank"
+          title="Julia's GitHub"
+        >
+          <img src="./images/github-mark.svg" alt="Julia's GitHub" />
+        </a>
+      </div>
+      <div class="github-anna">
+        <p>Anna Robertsson</p>
+        <a
+          href="https://github.com/AnnaRobertsson"
+          target="_blank"
+          title="Anna's GitHub"
+        >
+          <img src="./images/github-mark.svg" alt="Anna's GitHub" />
+        </a>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
