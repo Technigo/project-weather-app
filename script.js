@@ -3,13 +3,23 @@ const todaysWeather = document.getElementById("weather-today");
 
 // Convert to celcius
 
-// function to print to DOM
+// Convert millisecunds to readable time HH:MM
+const convertTime = milliseconds => {
+  const date = new Date(milliseconds);
+  const hours = date.getHours();
+  const mins = date.getMinutes();
+  return `${hours}:${mins}`;
+};
+
+// Print to DOM
 const printToDOM = json => {
   console.log(json);
   todaysWeather.innerHTML = `
   <p>${json.main.temp}</p>
   <p>${json.name}</p>
   <p>${json.weather[0].description}</p>
+  <p>Sunrise: ${convertTime(json.sys.sunrise)}</p>
+  <p>Sunset: ${convertTime(json.sys.sunset)}</p>
   `;
 };
 
