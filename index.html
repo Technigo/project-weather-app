@@ -9,14 +9,72 @@
     <link
       rel="stylesheet"
       href="./style.css" />
+    <script
+      src="https://kit.fontawesome.com/de4c4c2e83.js"
+      crossorigin="anonymous"></script>
   </head>
   <body>
-    <header>
-      <h1>Sofias Weather App</h1>
-    </header>
-    <main>
-      <section id="weather-today"></section>
-    </main>
+    <div class="weather-background">
+      <header class="">
+        <i class="fa-solid fa-bars"></i>
+        <h1>Sofias Weather App</h1>
+      </header>
+      <section
+        id="weather-today"
+        class="weather-today-wrapper">
+        <p class="temp-current">21<span>°C</span></p>
+        <img
+          src="./design/design1/assets/sun.svg"
+          alt="Sun is up!"
+          class="weather-img" />
+        <p class="city">Ulricehamn</p>
+        <p class="weather-desc">Cloudy</p>
+        <div class="sun">
+          <div id="sunrise">
+            <p class="label">sunrise</p>
+            <p class="time">08:12</p>
+          </div>
+          <div id="sunset">
+            <p class="label">sunset</p>
+            <p class="time">22:02</p>
+          </div>
+        </div>
+      </section>
+    </div>
+    <section
+      id="weather-forecast"
+      class="weather-forecast-wrapper">
+      <div class="forecast-day">
+        <p class="forecast-day-label">Mon</p>
+        <!-- <p>partially cloudy</p> -->
+        <i class="weather-icon">☀️</i>
+        <p>-1/10 °C</p>
+      </div>
+      <div class="forecast-day">
+        <p class="forecast-day-label">Mon</p>
+        <!-- <p>partially cloudy</p> -->
+        <i class="weather-icon">☀️</i>
+        <p>-1/10 °C</p>
+      </div>
+      <div class="forecast-day">
+        <p class="forecast-day-label">Mon</p>
+        <!-- <p>partially cloudy</p> -->
+        <i class="weather-icon">☀️</i>
+        <p>-1/10 °C</p>
+      </div>
+      <div class="forecast-day">
+        <p class="forecast-day-label">Mon</p>
+        <!-- <p>partially cloudy</p> -->
+        <i class="weather-icon">☀️</i>
+        <p>-1/10 °C</p>
+      </div>
+      <div class="forecast-day">
+        <p class="forecast-day-label">Mon</p>
+        <!-- <p>partially cloudy</p> -->
+        <i class="weather-icon">☀️</i>
+        <p>-1/10 °C</p>
+      </div>
+    </section>
     <footer></footer>
     <script src="./script.js"></script>
   </body>

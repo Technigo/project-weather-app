@@ -6,11 +6,11 @@ const todaysWeather = document.getElementById("weather-today");
 // function to print to DOM
 const printToDOM = json => {
   console.log(json);
-  todaysWeather.innerHTML = `
-  <p>${json.main.temp}</p>
-  <p>${json.name}</p>
-  <p>${json.weather[0].description}</p>
-  `;
+  // todaysWeather.innerHTML = `
+  // <p>${json.main.temp}</p>
+  // <p>${json.name}</p>
+  // <p>${json.weather[0].description}</p>
+  // `;
 };
 
 fetch(
