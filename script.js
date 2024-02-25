@@ -46,25 +46,25 @@ const toWeekday = date => {
   const day = new Date(date).getDay();
   switch (day) {
     case 1:
-      return "Monday";
+      return "Mon";
       break;
     case 2:
-      return "Tuesday";
+      return "Tue";
       break;
     case 3:
-      return "Wednesday";
+      return "Wed";
       break;
     case 4:
-      return "Thursday";
+      return "Thu";
       break;
     case 5:
-      return "Friday";
+      return "Fri";
       break;
     case 6:
-      return "Saturday";
+      return "Sat";
       break;
     default:
-      return "Sunday";
+      return "Sun";
       break;
   }
 };
@@ -84,15 +84,17 @@ const printForecast = json => {
   console.log(json);
   const list = fiterForecast(json);
   console.log(list);
+  weatherForecast.innerHTML = "";
   list.forEach(obj => {
     let day = toWeekday(obj.dt_txt);
     weatherForecast.innerHTML += `
-    <p>${day}</p>
-    <i>${pickIcon(obj.weather[0].icon)}</i>
-    <p>${Math.floor(obj.main.temp_max)} / ${Math.floor(
+      <div class="forecast-day">
+        <p class="forecast-day-label">${day}</p>
+        <i class="weather-icon">${pickIcon(obj.weather[0].icon)}</i>
+        <p>${Math.floor(obj.main.temp_max)} / ${Math.floor(
       obj.main.temp_min
     )} °C</p>
-    <p>${obj.weather[0].description}</p>
+      </div>
     `;
   });
 };
