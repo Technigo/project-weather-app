@@ -14,7 +14,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 body {
@@ -22,6 +22,7 @@ body {
   font-weight: lighter;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 header {
@@ -29,8 +30,8 @@ header {
   background-color: transparent;
   display: flex;
   justify-content: space-between;
-  position: sticky;
   width: 100%;
+  max-width: 1024px;
 }
 
 h1 {
@@ -39,40 +40,46 @@ h1 {
   font-weight: 100;
 }
 .weather-background {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background: var(--day-gradient);
   color: white;
   padding: calc(var(--space) * 3) var(--space);
   padding-top: 0;
   border-bottom-left-radius: var(--radus);
   border-bottom-right-radius: var(--radus);
+  width: 100%;
 }
 
 .weather-today-wrapper {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   padding-top: var(--space);
+  max-width: 900px;
 }
 
 .temp-current {
-  font-size: 84px;
+  font-size: 4.2rem;
   font-weight: 300;
   width: 50%;
   align-self: self-end;
 }
 
 .temp-current span {
-  font-size: 40px;
+  font-size: 2rem;
   font-weight: 400;
   vertical-align: text-top;
 }
 
 .weather-img {
   width: 50%;
-  transform: translateY(-30px);
+  transform: translateY(-20%);
 }
 
 .city {
-  font-size: 34px;
+  font-size: 1.5rem;
   width: 100%;
 }
 
@@ -81,7 +88,7 @@ h1 {
 }
 
 .sun {
-  width: 100%;
+  width: 80%;
   display: flex;
   justify-content: space-between;
   padding-top: 1rem;
@@ -102,12 +109,14 @@ h1 {
 .weather-forecast-wrapper {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
   background-color: white;
   color: var(--forecast-text);
   font-weight: 400;
   margin: var(--space);
   padding-top: var(--space);
+  max-width: 800px;
 }
 
 .forecast-day {
@@ -116,10 +125,13 @@ h1 {
   justify-content: space-between;
   gap: 2rem;
   align-items: center;
+  line-height: 2.5rem;
+  padding: 1rem;
+  border-radius: 2.5rem;
 }
 
 .forecast-day-label {
-  flex-grow: 1;
+  flex-grow: 2;
 }
 
 .forecast-day:nth-child(even) {
@@ -128,8 +140,48 @@ h1 {
 
 .weather-icon {
   font-size: 2rem;
+  flex-grow: 1;
 }
 
 .hidden {
   display: none;
 }
+
+@media all and (min-width: 1024px) {
+  /* Typography */
+.temp-current {
+  font-size: 6rem;
+}
+
+ .temp-current span,
+ .city {
+  font-size: 4rem;
+ }
+
+.weather-desc,
+.sun p {
+  font-size: 2rem;
+  line-height: 3rem;
+}
+
+.sun {
+  width: 60%;
+}
+
+.weather-img {
+  max-width: 25%;
+  transform: translateY(-10%);
+}
+
+.forecast-day > p {
+  font-size: 1.5rem;
+}
+}
+
+@media all and (min-width: 1200px) {
+  .temp-current 
+  {
+    font-size: 12rem;
+  }
+}
+
