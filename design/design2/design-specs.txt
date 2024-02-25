@@ -1,0 +1,15 @@
+Design guidelines
+
+fonts:
+https://fonts.google.com/specimen/Montserrat
+
+Weights: bold and regular
+
+colors:
+
+#F47775
+#F4F7F8
+#164A68
+#A3DEF7
+#2A5510
+#F7E9B9
