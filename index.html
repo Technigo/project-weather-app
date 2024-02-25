@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Caner and Rebecca team Pineapple - Weather App</title>
+
+  <!-- Montserrat font family -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body id="body" class="rain-colorscheme">
+  <div class="wrapper">
+
+    <header class="main-header">
+      <p id="weatherConditions"></p>
+      <p id="sunrise"> </p>
+      <p id="sunset"> </p>
+    </header>
+
+    <main>
+      <section id="weatherMessageContainer">
+
+        <div id="weatherIcon" class="weatherIcon">
+          <img src="">
+        </div>
+
+        <h1 id="mainHeading"></h1>
+      </section>
+
+      <section id="forcast">
+        <div class="weatherForecastDay">
+          <p id="forecastDay0"></p>
+          <p id="forecastTemperature1"></p>
+        </div>
+
+        <div class="weatherForecastDay">
+          <p id="forecastDay1"></p>
+          <p id="forecastTemperature2"></p>
+        </div>
+
+        <div class="weatherForecastDay">
+          <p id="forecastDay2"></p>
+          <p id="forecastTemperature3"></p>
+        </div>
+
+        <div class="weatherForecastDay">
+          <p id="forecastDay3"></p>
+          <p id="forecastTemperature4"></p>
+        </div>
+
+        <div class="weatherForecastDay">
+          <p id="forecastDay4"></p>
+          <p id="forecastTemperature5"></p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+  <script src="./fetch-weather-api.js" defer></script>
+</body>
+
+</html>
