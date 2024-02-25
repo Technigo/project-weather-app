@@ -60,7 +60,7 @@ const getMax = (day, json) => {
   const date = convertTime(day.dt).getDate(); // Convert milliseconds to a date
   const max = json.list
     .filter(entry => entry.dt_txt.includes(date))
-    .sort((a, b) => a.main.temp_max > b.main.temp_max)[0];
+    .sort((a, b) => b.main.temp_max - a.main.temp_max)[0];
   return Math.floor(max.main.temp_max);
 };
 
@@ -69,7 +69,7 @@ const getMin = (day, json) => {
   const date = convertTime(day.dt).getDate(); // Convert milliseconds to a date
   const min = json.list
     .filter(entry => entry.dt_txt.includes(date))
-    .sort((a, b) => b.main.temp_max > a.main.temp_max)[0];
+    .sort((a, b) => a.main.temp_min - b.main.temp_min)[0];
   return Math.floor(min.main.temp_min);
 };
 
