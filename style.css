@@ -1,0 +1,261 @@
+/* mobile first!!!*/
+/* To reset all margins, padding, and border*/
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: 'Tenor Sans', sans-serif;
+    font-weight: 300;
+}
+
+html {}
+
+
+body {
+    background-image: url('./images/bluesky.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#background-image {
+    display: none;
+    /* Hide the visible image */
+}
+
+/* STYLING THE WHOLE TOP OF THE PAGE SECTION STARTS HERE */
+.style-topOfPage {
+    background-image: linear-gradient(rgb(93, 147, 185), rgba(201, 217, 228, 0.333), rgb(255, 255, 255));
+    font-size: 20px;
+    overflow: hidden;
+    width: 100%;
+    min-height: 460px;
+    /*border-radius: 0 0 50% 50%/ 30%; Didnt like the way this looked*/
+    clip-path: ellipse(100% 85% at 50% 10%);
+}
+
+.style-topOfPage.clicked {
+    clip-path: ellipse(150% 98% at 50% -5%);
+    background-image: linear-gradient(rgb(255, 255, 255), rgba(201, 217, 228, 0.333), rgb(93, 147, 185));
+    /* Adjusts bottom of the curve when hamburg.menu is clicked*/
+    /*js: topOfPage.classList.remove("clicked"); topOfPage.classList.add("clicked");*/
+    /*Values explained in: NOTAT FORKLARING NR1 (remember to share with group)*/
+    ;
+}
+
+/* HEADER STYLING STARTS HERE */
+.weatherData {
+    color: rgb(50, 54, 67);
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#dateAndTime {
+    font-size: 18px;
+    padding-right: 25px;
+    margin-top: 40px;
+    text-align: right;
+    font-weight: 300;
+    align-self: flex-end;
+}
+
+.temperature-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: flex-start;
+    margin-top: 50px;
+    position: relative;
+}
+
+#correctImg {
+    position: absolute;
+    left: 60%;
+    top: 50%;
+    transform: translateY(-55%);
+}
+
+#Temperature {
+    font-size: 90px;
+    padding-left: 0;
+    padding-left: 5px;
+    margin-right: 160px;
+    position: relative;
+    z-index: 1;
+}
+
+#Temperature span:last-child {
+    font-size: 50%;
+    vertical-align: top;
+    margin-top: 10px;
+}
+
+
+#city {
+    font-size: 30px;
+    padding-left: 25px;
+    align-self: flex-start;
+}
+
+#description {
+    font-size: 17px;
+    padding-left: 26px;
+    margin-top: 5px;
+    align-self: flex-start;
+}
+
+.setAndRise {
+    padding-top: 20px;
+    font-size: 17px;
+    padding-left: 26px;
+    margin-top: 5px;
+    display: inline-block;
+    display: flex;
+    align-self: flex-start;
+    justify-content: space-between;
+}
+
+#sunriseAndTime {
+    margin-right: 155px;
+}
+
+/* HEADER STYLING ENDS HERE */
+
+#todaysAdvice {
+    font-size: 14px;
+    border-radius: 15px;
+    padding: 10px;
+    display: inline-block;
+    padding-left: 25px;
+    white-space: pre-line;
+}
+
+
+/* NAVIGATION MENU STYLING STARTS HERE */
+nav {
+    overflow: hidden;
+    position: relative;
+}
+
+/* Hides links inside the nav. menu */
+#myLinks {
+    display: none;
+    font-size: 13px;
+    border: 0.5px solid rgba(24, 28, 38, 0.5);
+    padding-bottom: 5px;
+}
+
+/* Style nav menu links (dropped down) */
+nav a {
+    color: rgb(50, 54, 67);
+    padding: 4px;
+    text-decoration: underline;
+    font-size: 18px;
+    display: block;
+    text-align: center;
+    font-weight: 300;
+    margin-top: 3px;
+}
+
+/* Style the hamburger menu */
+nav a.icon {
+    color: rgb(24, 28, 38);
+    display: block;
+    position: absolute;
+    text-align: left;
+    font-size: 30px;
+    left: 0;
+    top: 0;
+    margin-left: 20px;
+}
+
+/* Style the hamburger menu when cicked */
+nav a.icon.active {
+    background-color: transparent;
+    color: rgb(50, 54, 67);
+    ;
+
+}
+
+/*LOGOSTYLING IN NAVBAR*/
+
+.logo {
+    color: rgb(24, 28, 38);
+    text-decoration: none;
+    text-align: right;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    right: 0;
+    top: 0;
+    margin: 0;
+    position: relative;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+}
+
+.logo-em {
+    /*EmE'*/
+    font-size: 19px;
+    margin-right: 21px;
+    margin-bottom: 5px;
+}
+
+.logo-weather {
+    /*WEATHER*/
+    font-size: 13px;
+    margin: 0;
+    margin-right: 5px;
+    display: block;
+}
+
+/* NAVIGATION MENU STYLING ENDS HERE */
+/* STYLING THE WHOLE TOP OF THE PAGE SECTION ENDS HERE */
+
+.weeklyForecast {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.forecast-item {
+    border: 1px solid rgba(24, 28, 38, 0.5);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.forecast-item p {
+    margin: 0;
+    font-size: 16px;
+}
+
+.forecast-item .weekday {
+    flex: 1;
+    text-align: left;
+    margin-right: 10px;
+}
+
+.forecast-item .weather-icon {
+    flex: 1;
+    text-align: center;
+    margin: 0 10px;
+}
+
+.forecast-item .temperature {
+    flex: 1;
+    text-align: right;
+    margin-left: 10px;
+}

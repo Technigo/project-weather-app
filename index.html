@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather app</title>
+    <link rel="stylesheet" href="./style.css">
+    <!--Ikon library hamb.-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--I didnt like the other font from design 1, so im using font from design2 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <img src="./images/bluesky.jpg" alt="daytime" id="background-image">
+    <!--section a class for styling-->
+    <section class="style-topOfPage">
+        <!--addednavbar in section-->
+        <nav>
+
+            <!--The logo (EmE' WEATHER)-->
+            <a href="#home" class="logo"> <span class="logo-em">EmE</span>
+                <span class="logo-weather">WEATHER</span>
+                <!--Hamburger menu when clicked (MENU NAVIGATION LINKS)-->
+                <div id="myLinks">
+                    <a href="#meny1">Find location on map</a>
+                    <a href="#meny2">Weather warnings</a>
+                    <a href="#meny3">Help</a>
+                    <a href="#meny4">Contact us</a>
+                    <a href="#meny5">Change language/ Välj ditt språk</a>
+                </div>
+                <!--HAMBURGER MENU ICON-->
+                <a href="javascript:void(0);" class="icon" onclick="toggleNavMenu()"> <i class="fa fa-bars"></i>
+                </a>
+        </nav>
+
+        <!--Weather Data Header-->
+        <div class="weatherData">
+            <div id="dateAndTime"></div>
+            <div class="temperature-container">
+                <div id="Temperature"></div>
+                <div id="correctImg"></div>
+            </div>
+            <div id="city"></div>
+            <div id="description"></div>
+            <div class="setAndRise">
+                <div id="sunriseAndTime"></div>
+                <div id="sunsetAndTime"></div>
+            </div>
+
+        </div>
+        <div id="images" display: hidden>
+            <img src="./images/day_rainmin.png" alt="cloud">
+            <img src="./images/dayothermin.png" alt="sunnycloud">
+            <img src="./images/daymin-kopi.png" alt="sunny">
+        </div>
+        </div>
+        </header>
+    </section>
+    <div id="todaysAdvice"></div>
+    <section class="weeklyForecast">
+
+        <div id="imagesTiny" display: hidden> img moved from weatherData.
+            <img src="./images/day_rain-tiny.png" alt="cloud">
+            <img src="./images/day_partial_cloud-tiny.png" alt="sunnycloud">
+            <img src="./images/day_clear-tiny.png" alt="sunny">
+        </div>
+        <!--Changed weekly forecast to class-->
+    </section>
+
+
+    <script src="index.js"></script>
+</body>
+
+</html>
