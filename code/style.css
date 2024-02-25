@@ -6,3 +6,16 @@
 --clr_bg_yellow: #F7E9B9;
 --clr_text_green: #2A5510;
 }
+
+/*pink version*/
+
+body{
+    background-color: var(--clr_bg_pink);
+    color: var(--clr_text_pink);
+    font-family: 'montserrat', sans-serif ;
+}
+
+h1{
+    text-align: center;
+    font-size: 30em;
+}
