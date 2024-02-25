@@ -29,12 +29,23 @@ const convertTime = milliseconds => {
 const printWeather = json => {
   console.log(json);
   weatherToday.innerHTML = `
-  <p>${json.main.temp}</p>
-  <img src="${setBackground(json)}"/>
-  <p>${json.name}</p>
-  <p>${json.weather[0].description}</p>
-  <p>Sunrise: ${convertTime(json.sys.sunrise)}</p>
-  <p>Sunset: ${convertTime(json.sys.sunset)}</p>
+  <p class="temp-current">${json.main.temp}<span>°C</span></p>
+  <img
+    src="${setBackground(json)}"
+    alt="Sun is up!"
+    class="weather-img" />
+  <p class="city">${json.name}</p>
+  <p class="weather-desc">${json.weather[0].description}</p>
+  <div class="sun">
+    <div id="sunrise">
+      <p class="label">sunrise</p>
+      <p class="time">${convertTime(json.sys.sunrise)}</p>
+    </div>
+    <div id="sunset">
+      <p class="label">sunset</p>
+      <p class="time">${convertTime(json.sys.sunset)}</p>
+    </div>
+  </div>
   `;
 };
 
