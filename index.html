@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Karin & Daniel WeatherApp</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <div class="main-container">
+      <div class="imageHolder"></div>
+      <div class="overlay"></div>
+      <main class="main-wrapper">
+        <div class="search-bar">
+          <div class="search-icon">
+            <i class="fas fa-search"></i>
+          </div>
+          <div class="search-close">
+            <i class="fas fa-times"></i>
+          </div>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Enter city name.."
+          />
+          <button id="search-button"><i class="fas fa-search"></i></button>
+        </div>
+        <div id="error-message" class="subtle-error-message"></div>
+        <div class="main-text">
+          <p id="temperature">Temperature</p>
+          <p id="feelsLike"></p>
+          <div id="geolocation-button-container">
+            <h1 id="city-name">City Name</h1>
+            <div id="geolocation-button-container">
+              <button id="geolocation-button">
+                <i class="fas fa-location-dot"></i>Your location
+              </button>
+            </div>
+          </div>
+          <p id="time">Time:</p>
+          <p id="description">Weather Description</p>
+        </div>
+        <section class="sunType">
+          <p id="sunrise">Sunrise Time</p>
+          <p id="sunset">Sunset Time</p>
+        </section>
+      </main>
+      <section id="forecast-section">
+        <table id="forecast-table">
+          <tr>
+            <td class="forecast-item"></td>
+            <td class="forecast-item"><i class="weather-icon"></i></td>
+            <td class="forecast-item"></td>
+            <td class="forecast-item"></td>
+          </tr>
+        </table>
+      </section>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
