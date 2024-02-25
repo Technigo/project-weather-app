@@ -8,14 +8,29 @@
 }
 
 /*pink version*/
-
 body{
     background-color: var(--clr_bg_pink);
     color: var(--clr_text_pink);
     font-family: 'montserrat', sans-serif ;
 }
 
+/*blue version
+body{
+    background-color: var(--clr_bg_blue);
+    color: var(--clr_text_blue);
+    font-family: 'montserrat', sans-serif ;
+}
+*/
+
+/*yellow/green version
+body{
+    background-color: var(--clr_bg_yellow);
+    color: var(--clr_text_green);
+    font-family: 'montserrat', sans-serif ;
+}
+*/
+
 h1{
     text-align: center;
-    font-size: 30em;
+    font-size: 20em;
 }
