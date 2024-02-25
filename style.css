@@ -154,6 +154,11 @@ h1 {
 }
 
 @media all and (min-width: 667px) {
+.weather-img {
+  width: 20%;
+  transform: translateY(-10%);
+}
+
   /* Typography */
   .temp-current {
     font-size: 6rem;
