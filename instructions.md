@@ -1,8 +1,8 @@
 # Instructions
 <!-- Done -->
-Start out with signing up for a [free Open Weather Map](https://home.openweathermap.org/users/sign_up "free Open Weather Map") account, as it can take up to a few hours for the API key to be activated.
+<!-- Start out with signing up for a [free Open Weather Map](https://home.openweathermap.org/users/sign_up "free Open Weather Map") account, as it can take up to a few hours for the API key to be activated.
 
-We've asked a couple of different designers to do their take on this project. It's a great practice in implementing someone else's design. You will find their designs in the design folder in the repo along with some design assets. Decide which design you want to implement - and follow the design as closely as you can.
+We've asked a couple of different designers to do their take on this project. It's a great practice in implementing someone else's design. You will find their designs in the design folder in the repo along with some design assets. Decide which design you want to implement - and follow the design as closely as you can. -->
 
 ## How to get started 💪🏼
 
