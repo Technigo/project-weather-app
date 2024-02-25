@@ -73,9 +73,8 @@ const toWeekday = date => {
 // Change background if it's night
 const setBackground = json => {
   const currentTime = Date.now();
-  console.log(currentTime, json.sys.sunset);
-  if (currentTime < json.sys.sunset) {
-    console.log("it's night");
+  const sunset = json.sys.sunset * 1000;
+  if (currentTime > sunset) {
     body.classList.add("night");
     return "./design/design1/assets/moon.svg";
   } else {
@@ -86,7 +85,7 @@ const setBackground = json => {
 
 // Convert milliseconds to readable time HH:MM
 const convertTime = milliseconds => {
-  const date = new Date(milliseconds);
+  const date = new Date(milliseconds * 1000); //The time from the API is almost at epoch...
   const hours = date.getHours();
   const mins = date.getMinutes();
   return `${hours}:${mins}`;
