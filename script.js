@@ -3,6 +3,12 @@ const weatherToday = document.getElementById("weather-today");
 const weatherForecast = document.getElementById("weather-forecast");
 const weatherBackground = document.querySelector(".weather-background");
 
+// global var
+const appID = "22a9947f80352a8e0b470d4aaefb4388";
+const apiURL = "https://api.openweathermap.org";
+const latitude = 57.791667; // Ulricehamn
+const longitude = 13.418611; // Ulricehamn
+
 // Pick icon
 const pickIcon = iconId => {
   switch (iconId) {
@@ -110,7 +116,6 @@ const convertTime = milliseconds => {
 const printWeather = json => {
   const sunriseTime = convertTime(json.sys.sunrise);
   const sunsetTime = convertTime(json.sys.sunset);
-  console.log("Weather", json);
   weatherToday.innerHTML = `
   <p class="temp-current">${Math.floor(json.main.temp)}<span>°C</span></p>
   <img
@@ -134,9 +139,7 @@ const printWeather = json => {
 };
 // function to print Forecast to DOM
 const printForecast = json => {
-  console.log("Forecast", json);
   const list = fiterNoons(json);
-  console.log("Noons", list);
   weatherForecast.innerHTML = "";
   list.forEach(obj => {
     const maxTemp = getMax(obj, json);
@@ -152,31 +155,38 @@ const printForecast = json => {
   });
 };
 
-// API for current weather
-fetch(
-  "https://api.openweathermap.org/data/2.5/weather?lat=57.791667&lon=13.418611&units=metric&appid=22a9947f80352a8e0b470d4aaefb4388"
-)
-  .then(response => response.json())
-  .then(jsonWeather => printWeather(jsonWeather))
-  .catch(err => console.log("Error: ", err));
+// fetch API for Geocoding
+const fetchGeocode = async cityName => {
+  try {
+    const response = await fetch(
+      `${apiURL}/geo/1.0/direct?q=${cityName}&limit=1&appid=${appID}`
+    );
+    const json = await response.json();
+    return json;
+  } catch (err) {
+    console.log("Error: ", err);
+  }
+};
 
-// API for forecast
-fetch(
-  "https://api.openweathermap.org/data/2.5/forecast?lat=57.791667&lon=13.418611&units=metric&appid=22a9947f80352a8e0b470d4aaefb4388"
-)
-  .then(response => response.json())
-  .then(json => printForecast(json))
-  .catch(err => console.log("Error: ", err));
-
-// API for current weather GEO LOCATED
-const fetchLocal = async (lat, long) => {
+// fetch API for forecast
+const fetchForecast = async (lat, long) => {
   fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=22a9947f80352a8e0b470d4aaefb4388`
+    `${apiURL}/data/2.5/forecast?lat=${lat}&lon=${long}&units=metric&appid=${appID}`
   )
     .then(response => response.json())
-    .then(jsonLocal => {
-      printWeather(jsonLocal);
-      return jsonLocal;
+    .then(json => printForecast(json))
+    .catch(err => console.log("Error: ", err));
+};
+
+// fetch API for current weather
+const fetchWeather = async (lat, long) => {
+  fetch(
+    `${apiURL}/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${appID}`
+  )
+    .then(response => response.json())
+    .then(json => {
+      printWeather(json);
+      return json;
     })
     .catch(err => console.log("Error: ", err));
 };
@@ -187,7 +197,7 @@ const getLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(resolve);
     } else {
-      console.log("No geolocation avaiable");
+      console.log("No geolocation available");
       reject("REJECTED");
     }
   });
@@ -198,8 +208,23 @@ const showLocalWeather = async () => {
     const location = await getLocation();
     lat = location.coords.latitude;
     long = location.coords.longitude;
-    const localWeather = await fetchLocal(lat, long);
-  } catch {
-    console.log(reject, "Something went wrong");
+    await fetchWeather(lat, long);
+  } catch (error) {
+    console.log(error, "Something went wrong");
   }
 };
+
+// Handle search value city
+const searchCity = async city => {
+  try {
+    let result = await fetchGeocode(city);
+    console.log(result);
+    fetchWeather(result[0].lat, result[0].lon);
+    fetchForecast(result[0].lat, result[0].lon);
+  } catch (error) {
+    console.log(error, "Something went wrong");
+  }
+};
+
+fetchWeather(latitude, longitude);
+fetchForecast(latitude, longitude);
