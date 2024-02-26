@@ -167,3 +167,39 @@ fetch(
   .then(response => response.json())
   .then(json => printForecast(json))
   .catch(err => console.log("Error: ", err));
+
+// API for current weather GEO LOCATED
+const fetchLocal = async (lat, long) => {
+  fetch(
+    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=22a9947f80352a8e0b470d4aaefb4388`
+  )
+    .then(response => response.json())
+    .then(jsonLocal => {
+      printWeather(jsonLocal);
+      return jsonLocal;
+    })
+    .catch(err => console.log("Error: ", err));
+};
+
+// Geolocation API
+const getLocation = () => {
+  return new Promise((resolve, reject) => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(resolve);
+    } else {
+      console.log("No geolocation avaiable");
+      reject("REJECTED");
+    }
+  });
+};
+
+const showLocalWeather = async () => {
+  try {
+    const location = await getLocation();
+    lat = location.coords.latitude;
+    long = location.coords.longitude;
+    const localWeather = await fetchLocal(lat, long);
+  } catch {
+    console.log(reject, "Something went wrong");
+  }
+};
