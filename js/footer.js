@@ -28,4 +28,5 @@ const displayFooter = () => {
   });
 };
 
-displayFooter();
+// Call the displayFooter function when the page is loaded
+window.onload = displayFooter;
