@@ -36,10 +36,6 @@ header {
   align-items: baseline;
 }
 
-.fa-2xl {
-  line-height: normal!important;
-}
-
 h1 {
   font-size: 1.25rem;
   color: white;
@@ -47,6 +43,61 @@ h1 {
   line-height: 2rem;
 }
 
+button {
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.fa-2xl {
+  line-height: normal!important;
+}
+
+
+/* Menu and navigation */
+.nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(255, 255, 255, 0.9);
+  height: 100vh;
+  width: fit-content;
+  color: var(--forecast-text);
+  box-shadow: var(--box-shadow);
+  padding: var(--space);
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav button {
+  align-self: flex-end;
+}
+
+.nav-item {
+  line-height: 1rem;
+  padding: 0.5rem;
+  border-radius: 2.5rem;
+  cursor: pointer;
+}
+
+.nav-item:hover {
+  background-color: #00000005;
+}
+
+.close {
+  padding: 1rem;
+  align-self: flex-end;
+  color: var(--technigo-blue);
+  margin-left: auto;
+}
+
+/* Weather */
 .weather-background {
   position: relative;
   display: flex;
@@ -132,8 +183,8 @@ h1 {
   color: white;
 }
 
+/* Forecast */
 .weather-forecast-wrapper {
-  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -162,6 +213,12 @@ h1 {
 
 .forecast-day:nth-child(even) {
   background-color: #00000005;
+}
+
+.forecast-temp {
+  width: 25%;
+  min-width: max-content;
+  text-align: right;
 }
 
 .weather-icon {

@@ -2,6 +2,12 @@
 const weatherToday = document.getElementById("weather-today");
 const weatherForecast = document.getElementById("weather-forecast");
 const weatherBackground = document.querySelector(".weather-background");
+const menuBtn = document.getElementById("menu-btn");
+const menuClose = document.querySelector(".close");
+const navWrapper = document.querySelector(".nav");
+
+// Toggle class hidden
+const toggleHide = el => el.classList.toggle("hidden");
 
 // Pick icon
 const pickIcon = iconId => {
@@ -146,12 +152,17 @@ const printForecast = json => {
       <div class="forecast-day">
         <p class="forecast-day-label">${day}</p>
         <i class="weather-icon">${pickIcon(obj.weather[0].icon)}</i>
-        <p>${maxTemp} / ${minTemp} °C</p>
+        <p class="forecast-temp">${maxTemp} / ${minTemp} °C</p>
       </div>
     `;
   });
 };
 
+// Event listeners
+menuBtn.addEventListener("click", () => toggleHide(navWrapper));
+menuClose.addEventListener("click", () => toggleHide(navWrapper));
+
+// API'S
 // API for current weather
 fetch(
   "https://api.openweathermap.org/data/2.5/weather?lat=57.791667&lon=13.418611&units=metric&appid=22a9947f80352a8e0b470d4aaefb4388"
