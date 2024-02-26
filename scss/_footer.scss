@@ -1,0 +1,13 @@
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  background-color: rgb($cloudy-text-color, 0.7);
+
+  img {
+    margin-right: 20px;
+    width: 50px;
+  }
+}
