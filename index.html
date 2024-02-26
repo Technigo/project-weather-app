@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!--navbar to search city-->
+    <header class="search-bar" id="searchBar">
+      <input type="text" name="city-search" placeholder="Enter city..." />
+      <button type="button" id="searchButton">Search</button>
+    </header>
+
+    <!--section for current weather, temp, city, sunrise, sunset-->
+    <div class="wrapper" id="wrapper">
+      <div class="background-image" id="backgroundImage"></div>
+      <section class="current-weather" id="" currentWeather>
+        <h1 class="current-temp" id="currentTemp"></h1>
+        <p class="current-city" id="currentCity"></p>
+        <p class="current-weather" id="currentWeather"></p>
+        <p>
+          <span class="sunrise" id="sunrise"></span>
+          <span class="sunset" id="sunset"></span>
+        </p>
+      </section>
+
+      <!--section for 5 day forcast-->
+      <section class="five-day-forecast" id="fiveDayForecast"></section>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
