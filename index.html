@@ -4,11 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Weather App</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./style.css">
   
 </head>
 <body>
+  <header>
+    <nav id="search-button"></nav>
+  </header>
+  <!-- MAIN WEATHER DISPLAY -->
+  <section class="current-weather" id="current-weather">
+    <div id="weather-container">
+      Loading...
+      <p class="celsius">&deg;C</p>
+    </div>
+    <h1 id="current-city"></h1>
+
+  </section>
   
-  <script src="script.js"></script>
+  <!-- 4-DAY WEATHER FORECAST -->
+  <section class="weather-forecast" id="weather-forecast">
+
+  </section>
+
+  <script src="./script.js"></script>
 </body>
 </html>
