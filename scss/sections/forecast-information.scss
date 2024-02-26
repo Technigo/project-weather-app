@@ -1,0 +1,15 @@
+.section__forcast-information {
+  .forcast-temperature-icon {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    @media screen and (max-width: 667px) {
+      flex-direction: column;
+    }
+
+    .temperature,
+    img {
+      margin-bottom: 1.5em;
+    }
+  }
+}
