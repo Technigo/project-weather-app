@@ -2,12 +2,18 @@
 const weatherToday = document.getElementById("weather-today");
 const weatherForecast = document.getElementById("weather-forecast");
 const weatherBackground = document.querySelector(".weather-background");
+const menuBtn = document.getElementById("menu-btn");
+const menuClose = document.querySelector(".close");
+const navWrapper = document.querySelector(".nav");
 
 // global var
 const appID = "22a9947f80352a8e0b470d4aaefb4388";
 const apiURL = "https://api.openweathermap.org";
 const latitude = 57.791667; // Ulricehamn
 const longitude = 13.418611; // Ulricehamn
+
+// Toggle class hidden
+const toggleHide = el => el.classList.toggle("hidden");
 
 // Pick icon
 const pickIcon = iconId => {
@@ -149,25 +155,13 @@ const printForecast = json => {
       <div class="forecast-day">
         <p class="forecast-day-label">${day}</p>
         <i class="weather-icon">${pickIcon(obj.weather[0].icon)}</i>
-        <p>${maxTemp} / ${minTemp} °C</p>
+        <p class="forecast-temp">${maxTemp} / ${minTemp} °C</p>
       </div>
     `;
   });
 };
 
-// fetch API for Geocoding
-const fetchGeocode = async cityName => {
-  try {
-    const response = await fetch(
-      `${apiURL}/geo/1.0/direct?q=${cityName}&limit=1&appid=${appID}`
-    );
-    const json = await response.json();
-    return json;
-  } catch (err) {
-    console.log("Error: ", err);
-  }
-};
-
+// API'S
 // fetch API for forecast
 const fetchForecast = async (lat, long) => {
   fetch(
@@ -191,6 +185,19 @@ const fetchWeather = async (lat, long) => {
     .catch(err => console.log("Error: ", err));
 };
 
+// fetch API for Geocoding
+const fetchGeocode = async cityName => {
+  try {
+    const response = await fetch(
+      `${apiURL}/geo/1.0/direct?q=${cityName}&limit=1&appid=${appID}`
+    );
+    const json = await response.json();
+    return json;
+  } catch (err) {
+    console.log("Error: ", err);
+  }
+};
+
 // Geolocation API
 const getLocation = () => {
   return new Promise((resolve, reject) => {
@@ -203,6 +210,7 @@ const getLocation = () => {
   });
 };
 
+//
 const showLocalWeather = async () => {
   try {
     const location = await getLocation();
@@ -228,3 +236,7 @@ const searchCity = async city => {
 
 fetchWeather(latitude, longitude);
 fetchForecast(latitude, longitude);
+
+// Event listeners
+menuBtn.addEventListener("click", () => toggleHide(navWrapper));
+menuClose.addEventListener("click", () => toggleHide(navWrapper));

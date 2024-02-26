@@ -16,8 +16,22 @@
   <body>
     <div class="weather-background">
       <header>
-        <i class="fa-solid fa-bars fa-2xl"></i>
+        <button id="menu-btn">
+          <i class="fa-solid fa-bars fa-2xl"></i>
+        </button>
         <h1>Sofias Weather App</h1>
+        <nav class="nav hidden">
+          <button>
+            <i class="fa-solid fa-xmark fa-xl close"></i>
+          </button>
+          <h2 class="nav-heading">Locations</h2>
+          <ul class="nav-list">
+            <li class="nav-item">Your current location</li>
+            <li class="nav-item">Ulricehamn, SWE</li>
+            <li class="nav-item">Stockholm, SWE</li>
+            <li class="nav-item">Zürich, CH</li>
+          </ul>
+        </nav>
       </header>
       <section
         id="weather-today"
