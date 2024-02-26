@@ -1,0 +1,95 @@
+/* ========================
+   Montserrat
+   ======================== */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+/* ========================
+   COLORS
+   ======================== */
+/* ========================
+   COLORS FOR WEATHER FORCAST
+   ======================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: clamp(16px, 1.2vw, 32px);
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+  font-family: "Montserrat", sans-serif;
+  max-width: 100vw;
+  min-height: 100vh;
+}
+
+main {
+  max-width: 1600px;
+  margin: 0 auto;
+  letter-spacing: 0.01em;
+  padding: 0 3em;
+}
+
+section {
+  margin: 2em auto;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+h1 {
+  font-size: 7rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+h4 {
+  font-size: 0.875rem;
+}
+
+p {
+  margin-bottom: 1.25rem;
+  line-height: 1.5em;
+  font-weight: 300;
+}
+
+ul li {
+  list-style: none;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+/*# sourceMappingURL=styles.css.map */
