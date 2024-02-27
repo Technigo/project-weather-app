@@ -14,23 +14,26 @@ html {
 
 body {
   background: rgb(255, 255, 255);
-  background: linear-gradient(
-    355deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(165, 168, 255, 1) 78%
-  );
   background-repeat: no-repeat;
   position: relative;
   min-height: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .header {
   position: relative;
-  margin: 3rem 1.5rem;
+  padding: 3rem 1.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background: #8589ff;
+  background: linear-gradient(
+    355deg,
+    rgba(232, 233, 255, 1) 0%,
+    rgba(133, 137, 255, 1) 100%
+  );
+  border-bottom-left-radius: 60% 50px;
+  border-bottom-right-radius: 60% 50px;
 }
 
 .header > * {
@@ -48,13 +51,25 @@ body {
   padding-top: 0.8rem;
 }
 
+#city {
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+}
+
+.sun-condition {
+  display: flex;
+  margin: 10px 0px;
+  justify-content: space-between;
+}
+
 .weather-details {
-  /* position: absolute; */
-  width: 100%;
-  /* top: 50%; */
+  position: absolute;
+  /* width: 100%; */
+  top: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 1rem 0;
   /* bottom: 20%; */
 }
 
