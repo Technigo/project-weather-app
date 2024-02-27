@@ -3,6 +3,8 @@ const cityName = document.getElementById("city-name");
 const weather = document.getElementById("weather");
 const degrees = document.getElementById("degrees");
 const image = document.getElementById("image");
+const sunrise = document.getElementById("sunrise");
+const sunset = document.getElementById("sunset");
 
 /////////////////////////// Global Variables ////////////////////////////
 const BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
@@ -45,7 +47,7 @@ const getCityWeather = () => {
     .then((response) => response.json())
     .then((json) => {
       const localWeather = json.weather[0].main;
-      weather.innerText = localWeather;
+      weather.innerText = localWeather + " |";
       if (localWeather === "Clouds") {
         setCloudyDesign();
       } else if (localWeather === "Clear") {
@@ -69,6 +71,35 @@ const getCityDegrees = () => {
     });
 };
 
+const isItLessThanTen = (number) => {
+  if (number < 10) {
+    number = "0" + number;
+  }
+  return number;
+};
+
+const getSunriseSunset = () => {
+  fetch(URL)
+    .then((response) => response.json())
+    .then((json) => {
+      // Sunrise
+      const sunriseData = new Date(json.sys.sunrise * 1000);
+      let sunriseHours = sunriseData.getHours();
+      sunriseHours = isItLessThanTen(sunriseHours);
+      let sunriseMinutes = sunriseData.getMinutes();
+      sunriseMinutes = isItLessThanTen(sunriseMinutes);
+      sunrise.innerText = `${sunriseHours}:${sunriseMinutes}`;
+      // Sunset
+      const sunsetData = new Date(json.sys.sunset * 1000);
+      let sunsetHours = sunsetData.getHours();
+      sunsetHours = isItLessThanTen(sunsetHours);
+      let sunsetMinutes = sunsetData.getMinutes();
+      sunsetMinutes = isItLessThanTen(sunsetMinutes);
+      sunset.innerText = `${sunsetHours}:${sunsetMinutes}`;
+    });
+};
+
 getCityName();
 getCityWeather();
 getCityDegrees();
+getSunriseSunset();
