@@ -8,29 +8,33 @@
 /* ========================
    COLORS FOR WEATHER FORCAST
    ======================== */
-.section__forecast-info {
+.section__current-weather {
   max-width: 1200px;
 }
-.section__forecast-info .forecast-container {
+.section__current-weather .current-weather-container {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
 }
 @media screen and (max-width: 667px) {
-  .section__forecast-info .forecast-container {
+  .section__current-weather .current-weather-container {
     flex-direction: column;
   }
 }
-.section__forecast-info .forecast-container .forecast-info,
-.section__forecast-info .forecast-container img {
+.section__current-weather .current-weather-container .current-weather,
+.section__current-weather .current-weather-container img {
   margin-bottom: 1.5em;
 }
 
-.section__daily-temperature-info {
+.section__forecast {
   max-width: 1200px;
   width: 100%;
+  margin: 0 auto;
 }
-.section__daily-temperature-info .daily-temperature-container .day-wrapper {
+.section__forecast .forecast-container {
+  max-width: 500px;
+}
+.section__forecast .forecast-container .forecast-wrapper {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px dashed #000;
@@ -44,7 +48,7 @@ footer {
   align-items: center;
   width: 100%;
   height: 100px;
-  background-color: rgba(244, 119, 117, 0.7);
+  background-color: rgba(244, 119, 117, 0.3);
 }
 footer img {
   margin-right: 20px;

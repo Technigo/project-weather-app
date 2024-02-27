@@ -2,8 +2,8 @@
 @import "variables";
 
 // Sections
-@import "./sections/forecast-info.scss";
-@import "./sections/temperature.info.scss";
+@import "./sections/current-weather.scss";
+@import "./sections/forecast.scss";
 @import "footer";
 
 * {
