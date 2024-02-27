@@ -40,7 +40,7 @@ const formateTime = (dateUTC, timezone) => {
 const generateCurrentWeatherHTML = (currentWeatherType, data) => {
   const sunriseUTC = new Date(data.sys.sunrise * 1000);
   const sunsetUTC = new Date(data.sys.sunset * 1000);
-
+  console.log(data);
   // Get the obect with matching weatherType
   const weatherInfo = weatherData[currentWeatherType];
 
@@ -59,7 +59,7 @@ const generateCurrentWeatherHTML = (currentWeatherType, data) => {
         />
     </div>
     <div class="forecast-title">
-        <h1>${weatherInfo.text}</h1>
+        <h1>${weatherInfo.text.replace("Stockholm", data.name)}</h1>
     </div>
     `;
 };
