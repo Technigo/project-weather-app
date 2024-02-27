@@ -5,13 +5,16 @@ const weatherBackground = document.querySelector(".weather-background");
 const menuBtn = document.getElementById("menu-btn");
 const menuClose = document.querySelector(".close");
 const navWrapper = document.querySelector(".nav");
+const navCities = document.querySelectorAll(".nav-item .city");
+const navGeo = document.querySelector(".nav-item.geo");
 
 // global var
 const appID = "22a9947f80352a8e0b470d4aaefb4388";
 const apiURL = "https://api.openweathermap.org";
-const latitude = 57.791667; // Ulricehamn
-const longitude = 13.418611; // Ulricehamn
+const latitude = 57.791667; // reminder Ulricehamn
+const longitude = 13.418611; // reminder Ulricehamn
 
+// -- Styling
 // Toggle class hidden
 const toggleHide = el => el.classList.toggle("hidden");
 
@@ -62,29 +65,6 @@ const setNight = json => {
   }
 };
 
-// Filter forecast
-const fiterNoons = json => {
-  return json.list.filter(obj => obj.dt_txt.includes("12:00"));
-};
-
-// Get max for entire day from forecast json
-const getMax = (day, json) => {
-  const date = convertTime(day.dt).getDate(); // Convert milliseconds to a date
-  const max = json.list
-    .filter(entry => entry.dt_txt.includes(date))
-    .sort((a, b) => b.main.temp_max - a.main.temp_max)[0];
-  return Math.floor(max.main.temp_max);
-};
-
-// Get min for entire day from forecast json
-const getMin = (day, json) => {
-  const date = convertTime(day.dt).getDate(); // Convert milliseconds to a date
-  const min = json.list
-    .filter(entry => entry.dt_txt.includes(date))
-    .sort((a, b) => a.main.temp_min - b.main.temp_min)[0];
-  return Math.floor(min.main.temp_min);
-};
-
 // convert to weekday
 const toWeekday = date => {
   const day = new Date(date).getDay();
@@ -113,12 +93,36 @@ const toWeekday = date => {
   }
 };
 
+// -- Functionality
+// Filter forecast
+const fiterNoons = json => {
+  return json.list.filter(obj => obj.dt_txt.includes("12:00"));
+};
+
+// Get max temp for entire day from forecast json
+const getMax = (day, json) => {
+  const date = convertTime(day.dt).getDate(); // Convert milliseconds to a date
+  const max = json.list
+    .filter(entry => entry.dt_txt.includes(date))
+    .sort((a, b) => b.main.temp_max - a.main.temp_max)[0];
+  return Math.floor(max.main.temp_max);
+};
+
 // Convert milliseconds to readable time HH:MM
 const convertTime = milliseconds => {
   return new Date(milliseconds * 1000); //The time from the API is missing zeros and is almost at epoch...
 };
 
-// function to print current weather to DOM
+// Get min temp for entire day from forecast json
+const getMin = (day, json) => {
+  const date = convertTime(day.dt).getDate(); // Convert milliseconds to a date
+  const min = json.list
+    .filter(entry => entry.dt_txt.includes(date))
+    .sort((a, b) => a.main.temp_min - b.main.temp_min)[0];
+  return Math.floor(min.main.temp_min);
+};
+
+// Print current weather to DOM
 const printWeather = json => {
   const sunriseTime = convertTime(json.sys.sunrise);
   const sunsetTime = convertTime(json.sys.sunset);
@@ -143,7 +147,7 @@ const printWeather = json => {
   </div>
   `;
 };
-// function to print Forecast to DOM
+// Print Forecast to DOM
 const printForecast = json => {
   const list = fiterNoons(json);
   weatherForecast.innerHTML = "";
@@ -161,7 +165,7 @@ const printForecast = json => {
   });
 };
 
-// API'S
+// -- API'S
 // fetch API for forecast
 const fetchForecast = async (lat, long) => {
   fetch(
@@ -223,7 +227,7 @@ const showLocalWeather = async () => {
 };
 
 // Handle search value city
-const searchCity = async city => {
+const handleCity = async city => {
   try {
     let result = await fetchGeocode(city);
     console.log(result);
@@ -240,3 +244,13 @@ fetchForecast(latitude, longitude);
 // Event listeners
 menuBtn.addEventListener("click", () => toggleHide(navWrapper));
 menuClose.addEventListener("click", () => toggleHide(navWrapper));
+navGeo.addEventListener("click", () => {
+  toggleHide(navWrapper);
+  showLocalWeather();
+});
+navCities.forEach(city =>
+  city.addEventListener("click", event => {
+    toggleHide(navWrapper);
+    handleCity(event.target.innerText);
+  })
+);
