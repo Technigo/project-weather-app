@@ -2,6 +2,11 @@ const actualWeather = document.getElementById('actualWeather')
 const weatherDescription = document.getElementById('weatherDescription')
 const forecastList = document.getElementById('forecastList')
 
+//variables
+let currentDate
+let currentDay
+let currentTime
+
 const weatherZurich = () => {
   fetch(
     'https://api.openweathermap.org/data/2.5/weather?q=Zurich,Switzerland&units=metric&appid=1c745605f5cf52ece2c729289e47acc7'
@@ -9,13 +14,13 @@ const weatherZurich = () => {
     .then((response) => response.json())
     .then((data) => {
       console.log(data)
-      //   const weatherIcon = data.weather.map((condition) => condition.icon)
+
       const weather = data.weather.map((condition) => condition.description)
       const mainKeyValues = Object.values(data.main)
       const temperature = mainKeyValues[0]
       console.log(weather)
       console.log(temperature)
-      //   console.log(weatherIcon)
+
       actualWeather.innerHTML = `<h1>${data.name}</h1>
      <h2 class="weather-conditions">${weather} ¦ ${temperature} ° </h2><h2 class="sunset-sunrise"></h2>`
     })
@@ -30,20 +35,30 @@ const forecastZurich = () => {
     .then((response) => response.json())
     .then((data) => {
       console.log(data)
-      // filter the list for results only from 12 o clock
-      const weekDayFromTwelve = data.list.filter((item) => {
-        let weekDay = item.dt_txt
-        return weekDay.includes('12:00:00')
-      })
-      const dates = weekDayFromTwelve.map((item) => {
-        let weekDay = item.dt_txt
-        let date = new Date(weekDay)
-        let day = date.getDay()
-        console.log(day)
 
-        switch (day) {
+      const weekDayFromTwelve = data.list.filter((item) => {
+        const dateTime = item.dt_txt
+        const fullDate = new Date(dateTime)
+        console.log(fullDate)
+        const currentTime = fullDate.getUTCHours()
+        const currentDate = fullDate.getDay()
+        console.log(currentDate)
+        console.log(currentTime)
+        return currentTime === 11 // Filter for 11:00:00
+      })
+      console.log(weekDayFromTwelve)
+      const dates = weekDayFromTwelve.map((item) => {
+        const dateTime = item.dt_txt
+        const fullDate = new Date(dateTime)
+        const currentDate = fullDate.getDay()
+        let currentDay
+        switch (currentDate) {
+          case 0:
+            currentDay = `Sun`
+            break
           case 1:
             currentDay = `Mon`
+
             break
           case 2:
             currentDay = `Tue`
@@ -61,22 +76,25 @@ const forecastZurich = () => {
             currentDay = `Sat`
             break
           default:
-            currentDay = `Sun`
+            console.log('error')
             break
         }
         return currentDay
       })
-      const actualTemp = data.list.map((condition) => condition.main.temp)
-
-      forecastList.innerHTML += `<li> ${currentDay}  ${actualTemp}</li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>`
+      console.log(dates)
+      const actualTemp = weekDayFromTwelve.map(
+        (condition) => condition.main.temp
+      )
+      console.log(actualTemp)
+      // Clear existing content
+      forecastList.innerHTML = ''
+      // Loop through dates and actualTemp arrays simultaneously
+      for (let i = 0; i < Math.min(dates.length, actualTemp.length); i++) {
+        forecastList.innerHTML += `<li>${dates[i]} ${actualTemp[i]}</li>`
+      }
     })
 
     .catch((error) => console.error(error))
 }
+
 forecastZurich()
