@@ -1,0 +1,70 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    355deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(165, 168, 255, 1) 78%
+  );
+  background-repeat: no-repeat;
+  position: relative;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.header {
+  position: relative;
+  margin: 3rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header > * {
+  padding: 0.5rem;
+  color: white;
+}
+
+#temp {
+  font-size: 3rem;
+  display: flex;
+}
+
+#temp sup {
+  font-size: 2rem;
+  padding-top: 0.8rem;
+}
+
+.weather-details {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 20%;
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+  margin: 0 2rem;
+  border-spacing: 30px;
+}
+
+td {
+  text-align: left;
+}
