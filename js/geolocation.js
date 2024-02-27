@@ -1,50 +1,59 @@
-import { handleForecastData } from "./weather.js";
+// Imports
+import { handleWeatherData } from "./weather.js";
 
 // Globals
-const apiKey = "00cf2e54cabfd29c16426be71518c00a";
-const suffix = `&units=metric&APPID=${apiKey}`;
+const loading = document.getElementById("loading");
+const API_KEY = "00cf2e54cabfd29c16426be71518c00a";
+const SUFFIX = `&units=metric&APPID=${API_KEY}`;
+const BASE_URL = "https://api.openweathermap.org/data/2.5/weather?";
 
-export const fetchWeatherDataByCity = async (position) => {
-  let URL;
-
-  const apiURL = "https://api.openweathermap.org/data/2.5/weather?";
-  const lat = position.coords.latitude;
-  const lon = position.coords.longitude;
-
-  URL = `${apiURL}lat=${lat}&lon=${lon}${suffix}`;
-
-  try {
-    const response = await fetch(URL);
-    const apiData = await response.json();
-
-    handleForecastData(apiData);
-    return;
-  } catch (error) {
-    console.log("Fetch error: " + error);
-    // alert("Oops, city not fount! Check your spelling please!");
-  }
-};
-
-// Check if geolocation is available in browser
-export const getGeolocationData = () => {
+// Get the current position of the user
+const getGeolocation = () => {
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(
-      (position) => {
-        // If successful, resolve the promise with the position
-        resolve(position);
-
-        // Call fetchWeatherDataByCity with the obtained position
-        fetchWeatherDataByCity(position);
-      },
-      (error) => {
-        // If an error occurs, reject the promise with the error
-        reject(error);
-      },
-      {
-        enableHighAccuracy: true,
-        timeout: 10000,
-        maximumAge: 120000,
-      }
+      (position) => resolve(position.coords),
+      (err) => reject(err)
     );
   });
 };
+
+// Show and hide loader while waiting for promise
+const showLoader = () => {
+  loading.innerText = "Loading...";
+};
+
+const hideLoader = () => {
+  loading.innerText = "";
+};
+
+// Fetch data from Openweather Api
+const getWeatherData = async () => {
+  try {
+    // Show loader before making the asynchronous call
+    showLoader();
+
+    // Get the coords from geolocation
+    const coords = await getGeolocation();
+
+    // Save long and lat in variabel
+    const lat = coords.latitude;
+    const lon = coords.longitude;
+
+    // Buildning URL with lat & long
+    const URL = `${BASE_URL}lat=${lat}&lon=${lon}${SUFFIX}`;
+
+    const res = await fetch(URL);
+    const data = await res.json();
+
+    // Handle the weather logic
+    handleWeatherData(data);
+
+    hideLoader();
+    return data;
+  } catch (err) {
+    hideLoader();
+    console.log("Catching error", err);
+  }
+};
+
+getWeatherData();
