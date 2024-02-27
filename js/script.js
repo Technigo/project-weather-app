@@ -3,20 +3,21 @@ import { handleWeatherData } from "./weather.js";
 
 // Globals
 const loading = document.getElementById("loading");
-
 const API_KEY = "00cf2e54cabfd29c16426be71518c00a";
 const SUFFIX = `&units=metric&APPID=${API_KEY}`;
 const BASE_URL = "https://api.openweathermap.org/data/2.5/weather?";
 
+// Get the current position of the user
 const getGeolocation = () => {
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(
       (position) => resolve(position.coords),
-      (error) => reject(error)
+      (err) => reject(err)
     );
   });
 };
 
+// Show and hide loader while waiting for promise
 const showLoader = () => {
   loading.innerText = "Loading...";
 };
@@ -25,13 +26,14 @@ const hideLoader = () => {
   loading.innerText = "";
 };
 
+// Fetch data from Openweather Api
 const getWeatherData = async () => {
   try {
     // Show loader before making the asynchronous call
     showLoader();
 
+    // Get the coords from geolocation
     const coords = await getGeolocation();
-    console.log(coords);
 
     // Save long and lat in variabel
     const lat = coords.latitude;
