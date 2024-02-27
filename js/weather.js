@@ -3,22 +3,13 @@ import { weatherData } from "./data.js";
 // Globals
 const main = document.getElementById("main");
 const footer = document.getElementById("footer");
-
-// const data = {
-//   forecast: "cloudy",
-//   forecast_temp: "23",
-//   icon: "./assets/weather-icons/noun_Cloud_1188486.svg",
-//   alt: "cloudy",
-//   colorText: "#f47775",
-//   backgroundColor: "#f4f7f8",
-//   text: "Get your sunnies on. Stockholm is looking rather great today.",
-//   sunset: "22.30",
-//   sunrise: "08.00",
-// };
+const currentWeatherSection = document.getElementById(
+  "section__current-weather"
+);
 
 // Function that handles the theme colors depending on the current weather
-const handleColorTheme = (currentWeather) => {
-  const theme = weatherData[currentWeather];
+const handleColorTheme = (currentWeatherType) => {
+  const theme = weatherData[currentWeatherType];
 
   if (!theme) {
     console.log("Load default theme");
@@ -32,17 +23,54 @@ const handleColorTheme = (currentWeather) => {
   footer.style.backgroundColor = `${theme.color}33`;
 };
 
+// Function that will get the correct time for sunset and sunrise
+const formateTime = (dateUTC, timezone) => {
+  // Timezone offset in minutes
+  // UTC offset is the difference in hours and minutes between
+  const timezoneOffset = timezone / 60;
+  // Adjust local time based on the timezone and summertime if necessary
+  const dateLocal = new Date(
+    dateUTC.getTime() +
+      (timezoneOffset + new Date().getTimezoneOffset()) * 60 * 1000 // New date
+  );
+  // Adjusting time 00:00 to this format
+  return dateLocal.toTimeString().split(" ")[0].substring(0, 5);
+};
+
+const generateCurrentWeatherHTML = (currentWeatherType, data) => {
+  const sunriseUTC = new Date(data.sys.sunrise * 1000);
+  const sunsetUTC = new Date(data.sys.sunset * 1000);
+
+  // Get the obect with matching weatherType
+  const weatherInfo = weatherData[currentWeatherType];
+
+  currentWeatherSection.innerHTML += `
+  <div class="current-weather-container">
+    <div class="current-weather">
+        <p>${weatherInfo.main} | ${data.main.temp}</p>
+        <p>sunrise ${formateTime(sunriseUTC, data.timezone)}</p>
+        <p>sunset ${formateTime(sunsetUTC, data.timezone)}</p>
+        </div>
+        <img
+        src="${weatherInfo.icon}"
+        alt="${weatherInfo.alt}"
+        width="80"
+        height="80"
+        />
+    </div>
+    <div class="forecast-title">
+        <h1>${weatherInfo.text}</h1>
+    </div>
+    `;
+};
+
 // Function that handles all the logic
 export const handleWeatherData = (data) => {
-  // Make some logic in here and then pass that to innerhtml
-  console.log(weatherData);
-  console.log(data);
-
-  const currentWeather = data.weather[0].main;
+  const currentWeatherType = data.weather[0].main;
 
   // Get the right color theme depending on weather
-  handleColorTheme(currentWeather);
+  handleColorTheme(currentWeatherType);
 
-  // getCurrentWeatherData
-  // getFiveDaysForecast
+  generateCurrentWeatherHTML(currentWeatherType, data);
+  // getFiveDaysForecastHTML
 };
