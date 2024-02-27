@@ -1,0 +1,100 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    font-family: 'Mont serrat', sans-serif;
+    background-color: #f4f7f8;
+    color: #F47775;
+    margin: 30px 50px;
+    height: 100%;
+}
+
+.container {
+    display: flexbox;
+    flex-direction: column;
+    text-align: left;
+    min-height: 100vh;
+}
+
+.header {
+    padding: 20px;
+    text-align: left;
+}
+
+.city {
+    padding: 20px
+}
+
+
+.img {
+    padding: 10px;
+    width: 10px;
+}
+
+.weather {
+    padding: 10px;
+}
+
+h3 {
+    font-weight: 100;
+}
+
+h1 {
+    font-size: 45px;
+}
+
+.weekly-forecast {
+    border-collapse: collapse;
+    width: 75%;
+}
+
+.weekly-forecast th,
+.weekly-forecast td {
+    border-bottom: 2px dotted #F47775;
+    padding: 8px;
+    text-align: left;
+}
+
+@media (min-width: 667px) {
+    .container {
+        width: 500px;
+    }
+
+    body {
+        display: grid;
+        justify-content: center;
+    }
+
+}
+
+#searchButton {
+    width: 100px;
+    height: 30px;
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 10px;
+    border: 2px solid pink
+}
+
+#cityInput {
+    width: 300px;
+    height: 30px;
+    font-size: 14px;
+    border-radius: 10px;
+    border: 2px solid pink
+}
+
+
+.search-container {
+    display: flex;
+    align-items: center;
+
+}
+
+footer {
+
+    text-align: start;
+    padding: 20px;
+}
