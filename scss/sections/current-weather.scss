@@ -1,0 +1,16 @@
+.section__current-weather {
+  max-width: 1200px;
+  .current-weather-container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    @media screen and (max-width: 667px) {
+      flex-direction: column;
+    }
+
+    .current-weather,
+    img {
+      margin-bottom: 1.5em;
+    }
+  }
+}

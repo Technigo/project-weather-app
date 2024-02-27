@@ -1,0 +1,15 @@
+.section__forecast {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  .forecast-container {
+    max-width: 500px;
+    .forecast-wrapper {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dashed $black;
+      margin-top: 0.8em;
+      padding: 0.5em 0;
+    }
+  }
+}
