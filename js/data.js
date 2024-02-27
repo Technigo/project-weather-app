@@ -1,26 +1,31 @@
-export const weatherData = [
-  {
-    forecast: "clear",
+export const weatherData = {
+  Clear: {
+    main: "Clear",
     icon: "./assets/weather-icons/noun_Sunglasses_2055147.svg",
     alt: "clear",
-    "color-text": "#2a5510",
-    "background-color": "#f7e9b9",
+    color: "#2a5510",
+    bgColor: "#f7e9b9",
     text: "Get your sunnies on. Stockholm is looking rather great today.",
   },
-  {
-    forecast: "rain",
+  Rain: {
+    main: "Rain",
     icon: "./assets/weather-icons/noun_Umbrella_2030530.svg",
     alt: "rain",
-    "color-text": "#164a68",
-    "background-color": "#a3def7",
+    color: "#164a68",
+    bgColor: "#a3def7",
     text: "Don't forget your umbrella. It's wet in Stockholm today.",
   },
-  {
-    forecast: "cloudy",
+  Clouds: {
+    main: "cloudy",
     icon: "./assets/weather-icons/noun_Cloud_1188486.svg",
     alt: "cloudy",
-    "color-text": "#f47775",
-    "background-color": "#f4f7f8",
+    color: "#f47775",
+    bgColor: "#f4f7f8",
     text: "Light a fire and get cozy. Stockholm is looking grey today.",
   },
-];
+};
+
+// Thunderstorm
+// Drizzle
+// Snow
+// Atmosphere
