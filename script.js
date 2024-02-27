@@ -8,25 +8,9 @@ const URL = `${BASE_URL}${API_KEY}`;
 const city = document.getElementById("currentCity");
 const temp = document.getElementById("currentTemp");
 const weather = document.getElementById("currentWeather");
+const sunrise = document.getElementById("sunrise")
 
-//API fetch
-// fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=ea8ddf441b50c5601343ca1ba4aa982c")
-//   .then((response) => response.json())
-//   .then((json) => {
-//     console.log(json);
-//   })
-//   .then((json) => {
-//     city.innerHTML += `
-//     ${json.name}
-//     `;
-//     const roundedTemp = Math.round(json.main.temp * 10) / 10;
-//     temp.innerHTML += `
-//     ${roundedTemp} °C
-//     `;
-//     weather.innerHTML += `
-//     ${json.weather[0].main}
-//     `;
-//   });
+//Fetch API
 
 const fetchNameTempWeather = () => {
   fetch(URL)
@@ -41,9 +25,31 @@ const fetchNameTempWeather = () => {
       ${roundedTemp} °C
       `;
       weather.textContent = `
-      ${data.main.temp}
+      ${data.weather[0].main}
       `;
     });
 };
 
 fetchNameTempWeather();
+
+//Fetch time for sunrise and sunset
+
+const fetchSunrise = () => {
+  fetch(URL)
+    .then((response) => response.json())
+    .then((data) => {
+      const sunriseTime = new Date(data.sys.sunrise * 1000)
+      const hours = sunriseTime.getHours().toString().padStart(2, "0")
+      const minutes = sunriseTime.getMinutes().toString().padStart(2, "0")
+
+      const formattedSunrise = `${hours}:${minutes}`
+
+      sunrise.textContent = `
+      Sunrise ${formattedSunrise}
+      `
+    })
+}
+
+
+
+fetchSunrise()
