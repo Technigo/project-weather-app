@@ -8,13 +8,34 @@ const days = {
   4: "fri",
 };
 const iconURL = "https://openweathermap.org/img/wn/";
+const apiKey = "";
 
 //DOM objects
 const weatherForecast = document.getElementById("weather-table");
+const sunrise = document.getElementById("sunrise");
+const sunset = document.getElementById("sunset");
+
 //Functions
+// Function that formats the day or time stamp
+const formatDayOrTime = (unixTime, timeOrDay) => {
+  let formattedTime = new Date(unixTime * 1000);
+  console.log("Fomartted time:", formattedTime);
+  switch (timeOrDay) {
+    case "day":
+      const day = days[formattedTime.getDay()];
+      return day;
+    default:
+      const hours = formattedTime.getHours();
+      // add 0 to minutes in case we get minutes with single integer e.g. 8 -> 08
+      const minutes = "0" + formattedTime.getMinutes();
+      // get the last two elements in the minutes string
+      formattedTime = `${hours}:${minutes.slice(-2)}`;
+      return formattedTime;
+  }
+};
 
 fetch(
-  "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=b1ece640cf177e8a4f0764d4ae7ac9d1"
+  `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${apiKey}`
 )
   .then(response => {
     console.log(response);
@@ -25,29 +46,19 @@ fetch(
     const city = data.name;
     const sunsetTime = formatDayOrTime(data.sys.sunset);
     const sunriseTime = formatDayOrTime(data.sys.sunrise);
+    sunrise.innerText = sunriseTime;
+    sunset.innerText = sunsetTime;
     const maxTemp = data.main.temp_max.toFixed(1);
     const minTemp = data.main.temp_min.toFixed(1);
     const day = formatDayOrTime(data.dt, "day");
     const iconID = data.weather[0].icon;
+    const weatherCondition = data.weather[0].main;
     console.log(day);
     console.log(sunsetTime, sunriseTime, city);
     console.log(maxTemp, minTemp);
+    console.log(weatherCondition);
     handleWeeklyWeather(day, iconID, minTemp, maxTemp);
   });
-
-const formatDayOrTime = (unixTime, timeOrDay) => {
-  let formattedTime = new Date(unixTime * 1000);
-  console.log("Fomartted time:", formattedTime);
-  if (timeOrDay === "day") {
-    const day = days[formattedTime.getDay()];
-    return day;
-  } else {
-    const hours = formattedTime.getHours();
-    const minutes = "0" + formattedTime.getMinutes();
-    formattedTime = `${hours}:${minutes.slice(-2)}`;
-    return formattedTime;
-  }
-};
 
 const capitalizeFirstLetter = str => {
   return str.charAt(0).toUpperCase() + str.slice(1);
