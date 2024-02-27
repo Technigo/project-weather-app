@@ -1,0 +1,210 @@
+body {
+    margin: 0;
+    background: #e1e1f2;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #111;
+}
+
+h1 {
+    margin: 0;
+    font-size: 120px;
+    font-weight: lighter;
+}
+
+h2 {
+    margin: 0;
+    padding-top: 10px;
+    font-size: 34px;
+    font-weight: 300;
+}
+
+p {
+    margin: 0;
+    font-size: 22px;
+}
+
+/* WEATHER TODAY */
+
+.background-color {
+    background: linear-gradient(-45deg, #E8E9FF 0%, #8589FF 70%);    
+    padding: 30px;
+    color: #fff;
+    height: 47vh;
+    min-height: 370px;
+    border-bottom-left-radius: 50% 30px;
+    border-bottom-right-radius: 50% 30px;
+}
+
+.night {
+    background: linear-gradient(-45deg, #6264A2 0%, #222350 70%);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid white;
+    padding-bottom: 10px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-button {
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+}
+
+.search-field {
+    height: 25px;
+    width: 180px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    outline: none;
+    opacity: 80%;
+    padding: 1px 5px;
+    color: #222350;
+    font-size: 16px;
+    /* display: none; */
+}
+
+.date {
+    font-size: 12px;
+    text-align: end;
+}
+
+.celcius {
+    margin: 20px 0;
+    font-size: 40px;
+}
+
+.todays-weather {
+    display: flex;
+    flex-direction: column;
+}
+
+.temp-img-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.temperature-container {
+    display: flex;
+    align-items: flex-start;
+}
+
+.temp-img-container img {
+    height: 150px;
+    width: 150px;
+}
+
+.sun-container {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* FIVE DAYS FORECAST */
+
+.fiveday-forecast {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.day-container {
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid white;
+}
+
+.min-max-temp {
+    display: flex;
+}
+
+.fiveday-forecast p {
+    font-size: 18px;
+    margin: 0;
+}
+
+.fiveday-forecast img {
+    height: 50px;
+    width: 50px;
+}
+
+/* MEDIA QUERIES */
+
+@media (min-width: 400px) {
+    .date {
+        font-size: 14px;
+    }
+
+    .search-field {
+        width: 200px;
+    }
+}
+
+@media (min-width: 540px) {
+    header,
+    .todays-weather,
+    .fiveday-forecast {
+        max-width: 540px;
+        margin: auto;
+    }
+
+    header {
+        margin-bottom: 0;
+    }
+
+    .temp-img-container img {
+        height: 200px;
+        width: 200px;
+    }
+
+    .search-button {
+        width: 20px;
+        height: 20px;
+        margin-right: 15px;
+    }
+  }
+
+  @media (max-width: 350px) {
+    h1 {
+        font-size: 80px;
+    }
+    
+    h2 {
+        padding-top: 10px;
+        font-size: 24px;
+    }
+    
+    p {
+        font-size: 16px;
+    }
+
+    .background-color {
+        min-height: 300px;
+    }
+
+    .search-field {
+        width: 128px;
+    }
+
+    .temp-img-container img {
+        height: 100px;
+        width: 100px;
+    }
+
+    .fiveday-forecast p {
+        font-size: 14px;
+    }
+
+}
