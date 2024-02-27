@@ -117,6 +117,7 @@ button {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: baseline;
   padding-top: var(--space);
   max-width: 900px;
 }
@@ -146,11 +147,17 @@ button {
 
 .weather-desc {
   width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.local-time p {
+  font-size: 0.875rem;
 }
 
 .sun {
-  width: fit-content;
+  width: 100%;
   display: flex;
+  flex-grow: 1;
   justify-content: space-between;
   padding-top: 1rem;
   gap: var(--space);
@@ -158,11 +165,13 @@ button {
 
 .sun div {
   display: flex;
-  justify-content: space-between;
+  gap: var(--space);
+  /* justify-content: space-between; */
   width: 50%;
 }
 
-.sun p {
+.sun p,
+.time {
   display: inline;
   line-height: 1.2rem;
   padding-right: 0.5rem;
@@ -252,13 +261,10 @@ button {
   }
 
   .weather-desc,
-  .sun p {
+  .sun p,
+  .time {
     font-size: 2rem;
     line-height: 3rem;
-  }
-
-  .sun {
-    width: 60%;
   }
 
   .forecast-day > p {

@@ -5,14 +5,16 @@ const weatherBackground = document.querySelector(".weather-background");
 const menuBtn = document.getElementById("menu-btn");
 const menuClose = document.querySelector(".close");
 const navWrapper = document.querySelector(".nav");
-const navCities = document.querySelectorAll(".nav-item .city");
+const navCities = document.querySelectorAll(".nav-city");
 const navGeo = document.querySelector(".nav-item.geo");
+const scrollArrow = document.getElementById("scroll-arrow");
 
 // global var
-const appID = "22a9947f80352a8e0b470d4aaefb4388";
-const apiURL = "https://api.openweathermap.org";
-const latitude = 57.791667; // reminder Ulricehamn
-const longitude = 13.418611; // reminder Ulricehamn
+const APP_ID = "22a9947f80352a8e0b470d4aaefb4388";
+const API_URL = "https://api.openweathermap.org";
+let currentLocation = "Ulricehamn";
+const latitude = 57.791667; // default
+const longitude = 13.418611; // default
 
 // -- Styling
 // Toggle class hidden
@@ -54,7 +56,7 @@ const pickIcon = iconId => {
 
 // Change background and image if it's night
 const setNight = json => {
-  const currentTime = Date.now();
+  const currentTime = Date.now() + json.timezone;
   const sunset = convertTime(json.sys.sunset);
   if (currentTime > sunset) {
     weatherBackground.classList.add("night");
@@ -95,27 +97,28 @@ const toWeekday = date => {
 
 // -- Functionality
 // Filter forecast
-const fiterNoons = json => {
+const getNoons = json => {
   return json.list.filter(obj => obj.dt_txt.includes("12:00"));
+};
+
+// Convert milliseconds to readable time HH:MM, converted to local time
+const convertTime = (milliseconds, timezone) => {
+  const local = milliseconds + timezone;
+  return new Date(local * 1000);
 };
 
 // Get max temp for entire day from forecast json
 const getMax = (day, json) => {
-  const date = convertTime(day.dt).getDate(); // Convert milliseconds to a date
+  const date = convertTime(day.dt, json.city.timezone).getDate(); // Convert milliseconds to a date
   const max = json.list
     .filter(entry => entry.dt_txt.includes(date))
     .sort((a, b) => b.main.temp_max - a.main.temp_max)[0];
   return Math.floor(max.main.temp_max);
 };
 
-// Convert milliseconds to readable time HH:MM
-const convertTime = milliseconds => {
-  return new Date(milliseconds * 1000); //The time from the API is missing zeros and is almost at epoch...
-};
-
 // Get min temp for entire day from forecast json
 const getMin = (day, json) => {
-  const date = convertTime(day.dt).getDate(); // Convert milliseconds to a date
+  const date = convertTime(day.dt, json.city.timezone).getDate(); // Convert milliseconds to a date
   const min = json.list
     .filter(entry => entry.dt_txt.includes(date))
     .sort((a, b) => a.main.temp_min - b.main.temp_min)[0];
@@ -124,8 +127,11 @@ const getMin = (day, json) => {
 
 // Print current weather to DOM
 const printWeather = json => {
-  const sunriseTime = convertTime(json.sys.sunrise);
-  const sunsetTime = convertTime(json.sys.sunset);
+  currentLocation = json.name;
+  console.log("currentLocation", currentLocation);
+  const sunriseTime = convertTime(json.sys.sunrise, json.timezone);
+  const sunsetTime = convertTime(json.sys.sunset, json.timezone);
+  const localTime = new Date(Date.now() + json.timezone);
   weatherToday.innerHTML = `
   <p class="temp-current">${Math.floor(json.main.temp)}<span>°C</span></p>
   <img
@@ -134,22 +140,31 @@ const printWeather = json => {
     class="weather-img" />
   <p class="city">${json.name}</p>
   <p class="weather-desc">${json.weather[0].description}</p>
+  <div class="local-time">
+    <p>Local time</p>
+    <time datetime="${localTime}" class="time">
+    ${localTime.getHours()}:${localTime.getMinutes()}
+    </time>
+  </div>
   <div class="sun">
     <div id="sunrise">
       <p class="label">sunrise</p>
-      <p class="time">${sunriseTime.getHours()}:${sunriseTime.getMinutes()}</p>
+      <time datetime="${sunriseTime}" class="time">
+      ${sunriseTime.getHours()}:${sunriseTime.getMinutes()}
+      </time>
     </div>
     <div id="sunset">
       <p class="label">sunset</p>
-      <p class="time">${sunsetTime.getHours()}:${sunsetTime.getMinutes()}</p>
-      </div></p>
+      <time datetime="${sunsetTime}" class="time">
+      ${sunsetTime.getHours()}:${sunsetTime.getMinutes()}
+      </time>
     </div>
   </div>
   `;
 };
 // Print Forecast to DOM
 const printForecast = json => {
-  const list = fiterNoons(json);
+  const list = getNoons(json);
   weatherForecast.innerHTML = "";
   list.forEach(obj => {
     const maxTemp = getMax(obj, json);
@@ -169,7 +184,7 @@ const printForecast = json => {
 // fetch API for forecast
 const fetchForecast = async (lat, long) => {
   fetch(
-    `${apiURL}/data/2.5/forecast?lat=${lat}&lon=${long}&units=metric&appid=${appID}`
+    `${API_URL}/data/2.5/forecast?lat=${lat}&lon=${long}&units=metric&appid=${APP_ID}`
   )
     .then(response => response.json())
     .then(json => printForecast(json))
@@ -179,11 +194,12 @@ const fetchForecast = async (lat, long) => {
 // fetch API for current weather
 const fetchWeather = async (lat, long) => {
   fetch(
-    `${apiURL}/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${appID}`
+    `${API_URL}/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${APP_ID}`
   )
     .then(response => response.json())
     .then(json => {
       printWeather(json);
+      console.log("Weather json", json);
       return json;
     })
     .catch(err => console.log("Error: ", err));
@@ -193,7 +209,7 @@ const fetchWeather = async (lat, long) => {
 const fetchGeocode = async cityName => {
   try {
     const response = await fetch(
-      `${apiURL}/geo/1.0/direct?q=${cityName}&limit=1&appid=${appID}`
+      `${API_URL}/geo/1.0/direct?q=${cityName}&limit=1&appid=${APP_ID}`
     );
     const json = await response.json();
     return json;
@@ -214,7 +230,8 @@ const getLocation = () => {
   });
 };
 
-//
+// -- Functionality
+// Handle Geolocation
 const showLocalWeather = async () => {
   try {
     const location = await getLocation();
@@ -226,20 +243,16 @@ const showLocalWeather = async () => {
   }
 };
 
-// Handle search value city
+// Handle city
 const handleCity = async city => {
   try {
     let result = await fetchGeocode(city);
-    console.log(result);
     fetchWeather(result[0].lat, result[0].lon);
     fetchForecast(result[0].lat, result[0].lon);
   } catch (error) {
     console.log(error, "Something went wrong");
   }
 };
-
-fetchWeather(latitude, longitude);
-fetchForecast(latitude, longitude);
 
 // Event listeners
 menuBtn.addEventListener("click", () => toggleHide(navWrapper));
@@ -254,3 +267,8 @@ navCities.forEach(city =>
     handleCity(event.target.innerText);
   })
 );
+// scrollArrow.addEventListener("click", FULL SCREEN);
+
+// load site
+fetchWeather(latitude, longitude);
+fetchForecast(latitude, longitude);
