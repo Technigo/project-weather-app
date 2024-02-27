@@ -31,9 +31,6 @@
   width: 100%;
   margin: 0 auto;
 }
-.section__forecast .forecast-container {
-  max-width: 500px;
-}
 .section__forecast .forecast-container .forecast-wrapper {
   display: flex;
   justify-content: space-between;
@@ -85,6 +82,7 @@ main {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  min-height: 100vh;
 }
 
 h1,

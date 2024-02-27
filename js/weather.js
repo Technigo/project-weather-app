@@ -9,6 +9,7 @@ const currentWeatherSection = document.getElementById(
 
 // Function that handles the theme colors depending on the current weather
 const handleColorTheme = (currentWeatherType) => {
+  console.log(currentWeatherType);
   const theme = weatherData[currentWeatherType];
 
   if (!theme) {
@@ -19,8 +20,9 @@ const handleColorTheme = (currentWeatherType) => {
   // Set main theme for weather app
   main.style.backgroundColor = theme.bgColor;
   main.style.color = theme.color;
+  console.log(theme.color);
   // Set opacity to footer
-  footer.style.backgroundColor = `${theme.color}33`;
+  footer.style.backgroundColor = theme.color;
 };
 
 // Function that will get the correct time for sunset and sunrise
@@ -40,10 +42,7 @@ const formateTime = (dateUTC, timezone) => {
 const generateCurrentWeatherHTML = (currentWeatherType, data) => {
   const sunriseUTC = new Date(data.sys.sunrise * 1000);
   const sunsetUTC = new Date(data.sys.sunset * 1000);
-  console.log(data);
-  let fahrenheit = data.main.temp;
-  let celsius = ((fahrenheit - 32) * 5) / 9;
-  console.log(celsius);
+
   // Get the obect with matching weatherType
   const weatherInfo = weatherData[currentWeatherType];
 
@@ -69,7 +68,7 @@ const generateCurrentWeatherHTML = (currentWeatherType, data) => {
 
 // Function that handles all the logic
 export const handleWeatherData = (data) => {
-  const currentWeatherType = data.weather[0].main;
+  let currentWeatherType = data.weather[0].main;
 
   // Get the right color theme depending on weather
   handleColorTheme(currentWeatherType);
