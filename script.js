@@ -57,7 +57,7 @@ const pickIcon = iconId => {
 // Change background and image if it's night
 const setNight = json => {
   const currentTime = Date.now() + json.timezone;
-  const sunset = convertTime(json.sys.sunset);
+  const sunset = convertTime(json.sys.sunset, json.timezone);
   if (currentTime > sunset) {
     weatherBackground.classList.add("night");
     return "./design/design1/assets/moon.svg";
@@ -96,19 +96,26 @@ const toWeekday = date => {
 };
 
 // -- Functionality
-// Filter forecast
+// Filter forecast, one entry per day
 const getNoons = json => {
   return json.list.filter(obj => obj.dt_txt.includes("12:00"));
 };
 
 // Convert milliseconds to readable time HH:MM, converted to local time
-const convertTime = (milliseconds, timezone) => {
-  const local = milliseconds + timezone;
+const convertTime = (seconds, timezone) => {
+  const local = seconds + timezone;
   return new Date(local * 1000);
 };
 
+// Construct minutes and hours with two digits UTC
+const constructHours = time =>
+  time.getUTCHours() < 10 ? "0" + time.getUTCHours() : time.getUTCHours();
+
+const constructMinutes = time =>
+  time.getUTCMinutes() < 10 ? "0" + time.getUTCMinutes() : time.getUTCMinutes();
+
 // Get max temp for entire day from forecast json
-const getMax = (day, json) => {
+const getMaxTemp = (day, json) => {
   const date = convertTime(day.dt, json.city.timezone).getDate(); // Convert milliseconds to a date
   const max = json.list
     .filter(entry => entry.dt_txt.includes(date))
@@ -117,7 +124,7 @@ const getMax = (day, json) => {
 };
 
 // Get min temp for entire day from forecast json
-const getMin = (day, json) => {
+const getMinTemp = (day, json) => {
   const date = convertTime(day.dt, json.city.timezone).getDate(); // Convert milliseconds to a date
   const min = json.list
     .filter(entry => entry.dt_txt.includes(date))
@@ -127,11 +134,9 @@ const getMin = (day, json) => {
 
 // Print current weather to DOM
 const printWeather = json => {
-  currentLocation = json.name;
-  console.log("currentLocation", currentLocation);
   const sunriseTime = convertTime(json.sys.sunrise, json.timezone);
   const sunsetTime = convertTime(json.sys.sunset, json.timezone);
-  const localTime = new Date(Date.now() + json.timezone);
+  const localTime = convertTime(Date.now() / 1000, json.timezone);
   weatherToday.innerHTML = `
   <p class="temp-current">${Math.floor(json.main.temp)}<span>°C</span></p>
   <img
@@ -143,20 +148,20 @@ const printWeather = json => {
   <div class="local-time">
     <p>Local time</p>
     <time datetime="${localTime}" class="time">
-    ${localTime.getHours()}:${localTime.getMinutes()}
+    ${constructHours(localTime)}:${constructMinutes(localTime)}
     </time>
   </div>
   <div class="sun">
     <div id="sunrise">
       <p class="label">sunrise</p>
       <time datetime="${sunriseTime}" class="time">
-      ${sunriseTime.getHours()}:${sunriseTime.getMinutes()}
+      ${constructHours(sunriseTime)}:${constructMinutes(sunriseTime)}
       </time>
     </div>
     <div id="sunset">
       <p class="label">sunset</p>
       <time datetime="${sunsetTime}" class="time">
-      ${sunsetTime.getHours()}:${sunsetTime.getMinutes()}
+      ${constructHours(sunsetTime)}:${constructMinutes(sunsetTime)}
       </time>
     </div>
   </div>
@@ -167,8 +172,8 @@ const printForecast = json => {
   const list = getNoons(json);
   weatherForecast.innerHTML = "";
   list.forEach(obj => {
-    const maxTemp = getMax(obj, json);
-    const minTemp = getMin(obj, json);
+    const maxTemp = getMaxTemp(obj, json);
+    const minTemp = getMinTemp(obj, json);
     const day = toWeekday(obj.dt_txt);
     weatherForecast.innerHTML += `
       <div class="forecast-day">
