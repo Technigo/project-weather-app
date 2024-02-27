@@ -1,0 +1,11 @@
+* {
+    background-color: #F7E9B9;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+.container {
+    border: solid 1px #707070;
+    width: 375px;
+    height: 823px;
+}
