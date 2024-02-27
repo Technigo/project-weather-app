@@ -1,4 +1,4 @@
-export const forecastData = [
+export const weatherData = [
   {
     forecast: "clear",
     icon: "./assets/weather-icons/noun_Sunglasses_2055147.svg",

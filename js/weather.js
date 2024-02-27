@@ -1,3 +1,8 @@
+import { weatherData } from "./data.js";
+
+// Globals
+const main = document.getElementById("main");
+
 // const data = {
 //   forecast: "cloudy",
 //   forecast_temp: "23",
@@ -10,6 +15,8 @@
 //   sunrise: "08.00",
 // };
 
-export const getWeatherContainer = (data) => {
-  console.log(data);
+export const handleWeatherData = (apiData) => {
+  // Make some logic in here and then pass that to innerhtml
+
+  console.log(apiData);
 };

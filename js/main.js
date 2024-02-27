@@ -1,16 +1,18 @@
 import { getGeolocationData } from "./geolocation.js";
 
 const main = document.getElementById("main");
-const forecastSection = document.getElementById("section__forecast-info");
-
+const currentWeatherSection = document.getElementById(
+  "section__current-weather"
+);
+console.log(currentWeatherSection);
 export const loadWeatherContent = (data) => {
   // Controlling the color of main
   main.style.backgroundColor = data.backgroundColor;
   main.style.color = data.colorText;
 
-  forecastSection.innerHTML += `
-  <div class="forecast-container">
-    <div class="forecast-info">
+  currentWeatherSection.innerHTML += `
+  <div class="current-weather-container">
+    <div class="current-weather">
         <p>${data.forecast} | ${data.forecast_temp}</p>
         <p>sunrise ${data.sunrise}</p>
         <p>sunset ${data.sunset}</p>
