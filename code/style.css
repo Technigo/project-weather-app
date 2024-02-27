@@ -1,0 +1,119 @@
+/* Colors from technigo 
+
+#F47775 - red-ish - text
+#F4F7F8 - light grey - bakground
+
+#164A68 - dark blue - text
+#A3DEF7 - light blue - background
+
+#2A5510 - green - text
+#F7E9B9 - yellow - background
+
+background-color: transparent;
+
+*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+button {
+    font-size: 50px;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 30px 50px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: 25%, 45%, 20%;
+    height: 100vh;
+    width: 400px;
+}
+
+p {
+    font-family: 'Montserrat', sans-serif;
+    margin: 5px;
+}
+
+.header {
+    grid-row: 1 / span 2;
+}
+
+.weather-descritpion {
+    grid-row: 2 / span 3;
+}
+
+/* CSS for the forecast items */
+#forecastItems {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.forecast-item {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+    text-align: center;
+    width: 170px;
+    color: #333;
+    font-size: 12px;
+}
+
+.forecast-item p {
+    margin: 5px 0;
+}
+
+
+/*Footer*/
+footer {
+    width: 100%;
+    text-align: center;
+    color: black;
+    margin-top: 30px;
+    padding: 15px;
+}
+
+.aboutme {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 5px;
+    font-size: 12px;
+    color: black;
+    text-align: center;
+}
+
+.contact {
+    border: 1px solid;
+    border-radius: 15px;
+    width: 150px;
+}
+
+.contactme {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 5px;
+    font-size: 12px;
+}
+
+.contact-logo {
+    width: 30px;
+    opacity: .75;
+}
+
+.contact-logo:hover {
+    transform: scale(1.2);
+    opacity: 1;
+}
