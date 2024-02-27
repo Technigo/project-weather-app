@@ -273,7 +273,8 @@ navGeo.addEventListener("click", () => {
 navItems.forEach(city =>
   city.addEventListener("click", event => {
     toggleHide(navWrapper);
-    handleCity(event.target.firstElementChild.innerText);
+    console.log(event);
+    handleCity(event.target.firstChild.nodeValue);
   })
 );
 scrollArrow.addEventListener("click", () => {
