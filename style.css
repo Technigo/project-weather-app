@@ -1,0 +1,38 @@
+* {
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+}
+
+:root {
+  --cloudyColor: #F47775;
+  --cloudyBackground: #F4F7F8;
+  --rainColor: #164A68;
+  --rainBackground: #A3DEF7;
+  --clearColor: #2A5510;
+  --clearBackground: #F7E9B9;
+}
+
+@font-face {
+  font-family: Montserrat;
+  src: url(Montserrat-VariableFont_wght.ttf);
+}
+
+.forecastLine {
+  border: 1px var(--clearColor);
+  border-bottom: dashed;
+  height: 2em;
+  clear: both;
+}
+
+.forecastDate {
+  float: left;
+}
+
+.forecastInfo {
+  float: right;
+}
+
+.forecastIcon {
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+}
