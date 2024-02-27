@@ -1,11 +1,10 @@
 // Imports
-import { handleWeatherData } from "./weather.js";
+import { handleForecastData, handleWeatherData } from "./weather.js";
 
 // Globals
 const loading = document.getElementById("loading");
 const API_KEY = "00cf2e54cabfd29c16426be71518c00a";
 const SUFFIX = `&units=metric&APPID=${API_KEY}`;
-const BASE_URL = "https://api.openweathermap.org/data/2.5/weather?";
 
 // Get the current position of the user
 const getGeolocation = () => {
@@ -27,7 +26,7 @@ const hideLoader = () => {
 };
 
 // Fetch data from Openweather Api
-const getWeatherData = async () => {
+export const getDataFromAPI = async (BASE_URL, dataHandler) => {
   try {
     // Show loader before making the asynchronous call
     showLoader();
@@ -45,8 +44,8 @@ const getWeatherData = async () => {
     const res = await fetch(URL);
     const data = await res.json();
 
-    // Handle the weather logic
-    handleWeatherData(data);
+    // Handle the weather logic for both forecast and current weather
+    dataHandler(data);
 
     hideLoader();
     return data;
@@ -56,4 +55,9 @@ const getWeatherData = async () => {
   }
 };
 
-getWeatherData();
+// Using the fetch api function for both weather and forecast
+const WEATHER_BASE_URL = "https://api.openweathermap.org/data/2.5/weather?";
+getDataFromAPI(WEATHER_BASE_URL, handleWeatherData);
+
+const FORECAST_BASE_URL = "https://api.openweathermap.org/data/2.5/forecast?";
+getDataFromAPI(FORECAST_BASE_URL, handleForecastData);

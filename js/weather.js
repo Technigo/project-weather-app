@@ -6,10 +6,10 @@ const footer = document.getElementById("footer");
 const currentWeatherSection = document.getElementById(
   "section__current-weather"
 );
+const forecastSection = document.getElementById("section__forecast");
 
 // Function that handles the theme colors depending on the current weather
 const handleColorTheme = (currentWeatherType) => {
-  console.log(currentWeatherType);
   const theme = weatherData[currentWeatherType];
 
   if (!theme) {
@@ -20,7 +20,7 @@ const handleColorTheme = (currentWeatherType) => {
   // Set main theme for weather app
   main.style.backgroundColor = theme.bgColor;
   main.style.color = theme.color;
-  console.log(theme.color);
+
   // Set opacity to footer
   footer.style.backgroundColor = theme.color;
 };
@@ -39,17 +39,23 @@ const formateTime = (dateUTC, timezone) => {
   return dateLocal.toTimeString().split(" ")[0].substring(0, 5);
 };
 
-const generateCurrentWeatherHTML = (currentWeatherType, data) => {
+// Function that handels color theme
+export const handleWeatherData = async (data) => {
+  let currentWeatherType = data.weather[0].main;
+  handleColorTheme(currentWeatherType);
+
   const sunriseUTC = new Date(data.sys.sunrise * 1000);
   const sunsetUTC = new Date(data.sys.sunset * 1000);
 
-  // Get the obect with matching weatherType
+  // Get the object with matching weatherType
   const weatherInfo = weatherData[currentWeatherType];
 
   currentWeatherSection.innerHTML += `
   <div class="current-weather-container">
     <div class="current-weather">
-        <p>${weatherInfo.main} | ${Math.ceil(data.main.temp)}&deg;</p>
+        <p>${weatherInfo.main} | ${
+    Math.round(data.main.temp * 10) / 10
+  }&deg;</p>
         <p>sunrise ${formateTime(sunriseUTC, data.timezone)}</p>
         <p>sunset ${formateTime(sunsetUTC, data.timezone)}</p>
         </div>
@@ -66,13 +72,28 @@ const generateCurrentWeatherHTML = (currentWeatherType, data) => {
     `;
 };
 
-// Function that handles all the logic
-export const handleWeatherData = (data) => {
-  let currentWeatherType = data.weather[0].main;
+// Make function async to wait for the respons
+export const handleForecastData = async (data) => {
+  // Get forecast list
+  const forecastArray = [...data.list];
 
-  // Get the right color theme depending on weather
-  handleColorTheme(currentWeatherType);
+  // Filter forcast for 12 o'clock
+  const filteredArray = forecastArray.filter((day) => {
+    return day.dt_txt.toLowerCase().endsWith("12:00:00");
+  });
 
-  generateCurrentWeatherHTML(currentWeatherType, data);
-  // getFiveDaysForecastHTML
+  filteredArray.forEach((day) => {
+    // Get the shorter version of weekday -> mon, tue
+    const date = new Date(day.dt_txt);
+    const dayOfWeek = date.toLocaleDateString("en-US", { weekday: "short" });
+
+    forecastSection.innerHTML += `
+      <div class="forecast-container">
+        <div class="forecast-wrapper">
+          <p>${dayOfWeek}</p>
+          <span>${Math.round(day.main.temp * 10) / 10}&deg;</span>
+        </div>
+      </div>
+    `;
+  });
 };
