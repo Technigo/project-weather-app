@@ -49,22 +49,57 @@ body {
 }
 
 .weather-details {
-  position: absolute;
+  /* position: absolute; */
   width: 100%;
-  top: 50%;
+  /* top: 50%; */
   display: flex;
   justify-content: center;
   align-items: center;
-  bottom: 20%;
+  /* bottom: 20%; */
 }
 
 table {
   width: 100%;
   table-layout: fixed;
   margin: 0 2rem;
-  border-spacing: 30px;
+  border-collapse: collapse;
+  /* for desktop: border-spacing: 0px 10px; */
+}
+
+tr {
+  margin: 20px 20px;
 }
 
 td {
+  font-size: 1rem;
+  padding: 5px 8px;
+}
+
+.day {
   text-align: left;
+}
+
+.weather-range {
+  text-align: right;
+}
+
+img {
+  height: 2.5em;
+  object-fit: cover;
+}
+
+.weather-icon {
+  text-align: center;
+}
+
+tr:hover td {
+  background-color: rgb(231, 229, 229, 0.5);
+}
+
+tr:hover td:last-child {
+  border-radius: 0 15px 15px 0;
+}
+
+tr:hover td:first-child {
+  border-radius: 15px 0 0 15px;
 }
