@@ -1,3 +1,22 @@
 * {
-    background-color: red;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    /*Weights 400-regular, 700-bold*/
+    font-style: normal;
+}
+
+.blue-rainy{
+    background-color: #A3DEF7;
+    color: #164A68;
+}
+
+.red-cloudy {
+   background-color: #F4F7F8;
+   color: #F47775;
+}
+
+.green-yellow-sunny {
+    background-color: #F7E9B9;
+    color: #2A5510;
 }
