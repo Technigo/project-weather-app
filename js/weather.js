@@ -41,13 +41,16 @@ const generateCurrentWeatherHTML = (currentWeatherType, data) => {
   const sunriseUTC = new Date(data.sys.sunrise * 1000);
   const sunsetUTC = new Date(data.sys.sunset * 1000);
   console.log(data);
+  let fahrenheit = data.main.temp;
+  let celsius = ((fahrenheit - 32) * 5) / 9;
+  console.log(celsius);
   // Get the obect with matching weatherType
   const weatherInfo = weatherData[currentWeatherType];
 
   currentWeatherSection.innerHTML += `
   <div class="current-weather-container">
     <div class="current-weather">
-        <p>${weatherInfo.main} | ${data.main.temp}</p>
+        <p>${weatherInfo.main} | ${Math.ceil(data.main.temp)}&deg;</p>
         <p>sunrise ${formateTime(sunriseUTC, data.timezone)}</p>
         <p>sunset ${formateTime(sunsetUTC, data.timezone)}</p>
         </div>
