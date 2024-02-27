@@ -21,6 +21,9 @@ const longitude = 13.418611; // default
 // Toggle class hidden
 const toggleHide = el => el.classList.toggle("hidden");
 
+// Toggle class fullscreen
+const toggleFullscreen = el => el.classList.toggle("fullscreen");
+
 // Pick icon
 const pickIcon = iconId => {
   switch (iconId) {
@@ -273,7 +276,10 @@ navItems.forEach(city =>
     handleCity(event.target.firstElementChild.innerText);
   })
 );
-// scrollArrow.addEventListener("click", FULL SCREEN);
+scrollArrow.addEventListener("click", () => {
+  toggleFullscreen(weatherBackground);
+  toggleHide(weatherForecast);
+});
 
 // load site
 fetchWeather(latitude, longitude);

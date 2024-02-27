@@ -111,6 +111,7 @@ button {
   border-bottom-right-radius: var(--radus);
   width: 100%;
   overflow: visible;
+  transition: all 0.5s ease-in-out;
 }
 
 .weather-today-wrapper {
@@ -118,7 +119,7 @@ button {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: baseline;
-  padding-top: var(--space);
+  padding: var(--space);
   max-width: 900px;
 }
 
@@ -166,7 +167,6 @@ button {
 .sun div {
   display: flex;
   gap: var(--space);
-  /* justify-content: space-between; */
   width: 50%;
 }
 
@@ -190,6 +190,7 @@ button {
   border: none;
   box-shadow: var(--box-shadow);
   color: white;
+  transform: rotate(0deg);
 }
 
 /* Forecast */
@@ -244,6 +245,19 @@ button {
   display: none;
 }
 
+/* Fullscreen */
+.fullscreen {
+  height: 100vh;
+  border-radius: initial;
+}
+
+.fullscreen .scroll-arrow {
+  bottom: 10%;
+  transform: rotate(180deg);
+}
+
+
+/* Media */
 @media all and (min-width: 667px) {
   .weather-img {
     width: 20%;
@@ -274,10 +288,11 @@ button {
 
 @media all and (min-width: 1200px) {
   .temp-current {
-    font-size: 12rem;
+    font-size: 10rem;
   }
 
   .scroll-arrow {
-    right: 33%;
+    right: 20%;
+    bottom: 10%;
   }
 }
