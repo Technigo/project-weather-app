@@ -1,0 +1,12 @@
+* {
+    margin: 0;
+}
+
+.content-on-load{
+    margin: 0 auto;
+    width: 50%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
