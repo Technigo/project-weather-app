@@ -37,7 +37,7 @@ fetch(url)
       icon.innerHTML = `<img src="/icons/sunglasses.svg" />`;
       textAboutWeather.innerHTML = `Get your sunnies on. Stockholm is looking rather great today.`;
     }
-    
+
   });
 
 
