@@ -1,11 +1,11 @@
 # Instructions
-Start out with signing up for a [free Open Weather Map](https://home.openweathermap.org/users/sign_up "free Open Weather Map") account, as it can take up to a few hours for the API key to be activated.
+DONE!!! Start out with signing up for a [free Open Weather Map](https://home.openweathermap.org/users/sign_up "free Open Weather Map") account, as it can take up to a few hours for the API key to be activated.
 
 We've asked a couple of different designers to do their take on this project. It's a great practice in implementing someone else's design. You will find their designs in the design folder in the repo along with some design assets. Decide which design you want to implement - and follow the design as closely as you can.
 
 ## How to get started 💪🏼
 
-1. Fork the repo.
+1. DONE!!! Fork the repo.
 2. Clone the repo, and lay out the foundation (following Step 1 & 2, specified further down).
 3. Push the changes to GitHub.
 4. Work with the features in branches. Git cheat sheet can be found [here](https://www.notion.so/424c3528791e42d0a7daabe6f0b5a308?pvs=21).
