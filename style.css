@@ -252,7 +252,7 @@ button {
 }
 
 .fullscreen .scroll-arrow {
-  bottom: 10%;
+  bottom: 20%;
   transform: rotate(180deg);
 }
 

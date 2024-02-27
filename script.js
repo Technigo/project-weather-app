@@ -60,9 +60,10 @@ const pickIcon = iconId => {
 
 // Change background and image if it's night
 const setNight = json => {
-  const currentTime = Date.now() + json.timezone;
+  const currentTime = convertTime(Date.now() / 1000, json.timezone);
   const sunset = convertTime(json.sys.sunset, json.timezone);
-  if (currentTime > sunset) {
+  const sunrise = convertTime(json.sys.sunrise, json.timezone);
+  if (currentTime > sunset || currentTime < sunrise) {
     weatherBackground.classList.add("night");
     return "./design/design1/assets/moon.svg";
   } else {
@@ -145,7 +146,6 @@ const printWeather = json => {
   <p class="temp-current">${Math.floor(json.main.temp)}<span>°C</span></p>
   <img
     src="${setNight(json)}"
-    alt="Sun is up!"
     class="weather-img" />
   <p class="city">${json.name}</p>
   <p class="weather-desc">${json.weather[0].description}</p>
