@@ -1,0 +1,221 @@
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Roboto:wght@100;300;400;500;700&display=swap");
+
+/* // RESET */
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+img {
+  /* removes the small padding */
+  display: block;
+  /* will make the images responsive */
+  max-width: 100%;
+  height: auto;
+}
+
+/* || VARIABLES */
+
+:root {
+  /* FONTS */
+  --FF: "Roboto", sans-serif;
+  --FF-HEADINGS: "Roboto", sans-serif;
+  /* Use to make fonts grow and shrink */
+  --FS-HEADINGS: clamp(3rem, 2.2vh, 1.5rem);
+  --FS: clamp(1rem, 2.2vh, 1.5rem);
+  --FW: 300;
+
+  /* COLORS */
+  --BGCOLOR-FADE: rgb(252, 220, 160);
+  --BGCOLOR: #FFFFF;
+  --BGCOLOR-FADE: rgb(252, 220, 160);
+  /* --BGIMAGE: linear-gradient(to bottom, var(--BGCOLOR), var(--BGCOLOR-FADE)); */
+  --BODY-BGCOLOR: #FFFFF;
+  /* --BORDER-COLOR: #610963; */
+  --FONT-COLOR: #fff;
+  --FONT-COLOR-GREY: #e0e0e0;
+  --FONT-COLOR-BLACK: rgb(64, 64, 64);
+  --HEADER-BGCOLOR: #000;
+  --HEADER-COLOR: #fff;
+
+  /* BUTTON */
+  --BUTTON-COLOR: #a0b0e7;
+  --BUTTON-COLOR-HOVER: #a1c7f2;
+
+  /*  SEARCH BAR */
+  --BGCOLOR-SEARCHBAR: #c9ccd5;
+
+  /* BORDERS */
+  --BORDERS: 1px solid var(--BORDER-COLOR);
+  --BORDER-RADIUS: 30px;
+
+  /* STANDARD PADDING */
+  --PADDING: 0.5em;
+  --PADDING-TB: 0.25em;
+  --PADDING-SIDE: 30px;
+
+  /* STANDARD MARGIN */
+  --MARGIN: clamp(1em, 2.5vh, 1.5em) 0;
+  --MARGIN-SIDE: 0 clamp(0.3em, 2.5vh, 0.3em);
+}
+
+/* || GENERAL STYLE */
+
+html {
+  scroll-behavior: smooth;
+  font-size: var(--FS);
+  font-family: var(--FF);
+  background-color: var(--BGCOLOR);
+
+  /* background-image: var(--BGIMAGE); */
+}
+
+body {
+  background-color: var(--BODY-BGCOLOR);
+  color: var(--FONT-COLOR);
+  min-height: 100vh;
+  /* max-width: 500px; */
+  margin: 0 auto;
+  font-weight: var(--FW);
+  overflow-x: hidden;
+  /* border-left: var(--BORDERS);
+    border-right: var(--BORDERS); */
+  /* box-shadow: 0 0 10px var(--BORDER-COLOR); */
+}
+
+h1,
+h2 {
+  font-family: var(--FF);
+  letter-spacing: 0.1em;
+  font-weight: var(--FW);
+}
+
+h1 {
+  font-size: 5rem;
+  position: relative;
+}
+
+h1::after {
+  content: " \2103";
+  font-size: 1.7rem;
+  margin-left: 5px;
+  position: relative;
+  top: -44px;
+  left: -50px;
+}
+
+h1,
+h2 {
+  line-height: 1.4;
+}
+
+p {
+  line-height: 2;
+}
+
+header {
+  position: relative;
+  /* background-color: blueviolet; */
+  border-radius: 0 0 50% 50% / 70px;
+}
+
+nav img {
+  width: 10%;
+  max-width: 1.5rem;
+}
+
+.container {
+  position: relative;
+  padding: 30px var(--PADDING-SIDE);
+  /* padding-top: 1.3rem;
+  padding-bottom: 3rem; */
+}
+
+/* HEADER */
+.header-background {
+  position: absolute;
+  background-color: #ffff;
+  width: 150%;
+  height: 105%;
+  border-radius: 0 0 50% 50%;
+  left: -25%;
+  transition: background-image 0.5s ease-in-out;
+}
+
+#header-weather-icon {
+  filter: drop-shadow(1px 1px 15px white);
+  margin: var(--MARGIN-SIDE);
+}
+
+#btn-next-city {
+  position: absolute;
+  cursor: pointer;
+  bottom: -1rem;
+  right: 1rem;
+  background-color: var(--BUTTON-COLOR);
+  background-size: 1.5rem;
+  background-position: 50% 50%;
+  background-image: url(./assets/chevron-right.svg);
+  background-repeat: no-repeat;
+  width: 75px;
+  height: 75px;
+  z-index: 99;
+  border-radius: 50%;
+}
+
+.flex-left {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.flex-space-between {
+  display: flex;
+  justify-content: space-between;
+  margin: var(--MARGIN);
+  padding: 0 1.5rem;
+}
+
+.description {
+  text-transform: capitalize;
+}
+
+/* FORECAST */
+
+.forecast__single-day-flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--FONT-COLOR-BLACK);
+}
+
+.forecast__single-day-flex span {
+  flex: 1;
+  font-size: 0.9rem;
+}
+
+.forecast__wind,
+.forecast__temp,
+.forecast__image {
+  display: flex;
+  justify-content: end;
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+  .container {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 50%;
+  }
+
+  #btn-next-city {
+    bottom: -2rem;
+  }
+}
