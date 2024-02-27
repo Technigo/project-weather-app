@@ -5,4 +5,7 @@ fetch(url)
   .then((forecast) => {
     const weatherType = document.querySelector(".weatherType");
     weatherType.innerHTML = forecast.weather[0].main;
+    const temperature = document.querySelector(".temperature");
+    temperature.innerHTML = forecast.main.temp
   });
+
