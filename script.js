@@ -5,6 +5,7 @@ const weatherBackground = document.querySelector(".weather-background");
 const menuBtn = document.getElementById("menu-btn");
 const menuClose = document.querySelector(".close");
 const navWrapper = document.querySelector(".nav");
+const navItems = document.querySelectorAll(".nav-item");
 const navCities = document.querySelectorAll(".nav-city");
 const navGeo = document.querySelector(".nav-item.geo");
 const scrollArrow = document.getElementById("scroll-arrow");
@@ -266,10 +267,10 @@ navGeo.addEventListener("click", () => {
   toggleHide(navWrapper);
   showLocalWeather();
 });
-navCities.forEach(city =>
+navItems.forEach(city =>
   city.addEventListener("click", event => {
     toggleHide(navWrapper);
-    handleCity(event.target.innerText);
+    handleCity(event.target.firstElementChild.innerText);
   })
 );
 // scrollArrow.addEventListener("click", FULL SCREEN);
