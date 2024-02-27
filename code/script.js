@@ -25,9 +25,20 @@ fetch(url)
       .getMinutes()
       .toString()
       .padStart(2, "0")}`;
+    const textAboutWeather = document.querySelector(".textAboutWeather");
     const icon = document.querySelector(".icon");
-    if (forecast.weather[0].main == "Clouds"){
-        icon.innerHTML = `<img src="/icons/cloud.svg" />`;
+    if (forecast.weather[0].main == "Clouds") {
+      icon.innerHTML = `<img src="/icons/cloud.svg" />`;
+      textAboutWeather.innerHTML = `Light a fire and get cosy. Stockholm is looking grey today.`;
+    } else if (forecast.weather[0].main == "Rain") {
+      icon.innerHTML = `<img src="/icons/umbrella.svg" />`;
+      textAboutWeather.innerHTML = `Don't forget your umbrella. It's wet in Stockholm today.`;
+    } else {
+      icon.innerHTML = `<img src="/icons/sunglasses.svg" />`;
+      textAboutWeather.innerHTML = `Get your sunnies on. Stockholm is looking rather great today.`;
     }
     
   });
+
+
+  
