@@ -2,9 +2,10 @@
 import { handleForecastData, handleWeatherData } from "./weather.js";
 
 // Globals
-const loading = document.getElementById("loading");
 const API_KEY = "00cf2e54cabfd29c16426be71518c00a";
 const SUFFIX = `&units=metric&APPID=${API_KEY}`;
+const loader = document.getElementById("loader");
+let loaderActive = false;
 
 // Get the current position of the user
 const getGeolocation = () => {
@@ -18,11 +19,25 @@ const getGeolocation = () => {
 
 // Show and hide loader while waiting for promise
 const showLoader = () => {
-  loading.innerText = "Loading...";
+  if (loaderActive) {
+    return;
+  }
+
+  const loaderLetters = "loading";
+  const loaderArray = loaderLetters.split("");
+  loader.style.display = "block";
+
+  loaderArray.forEach((letter, i) => {
+    loader.innerHTML += `
+      <span class="let${i + 1}">${letter}</span>
+    `;
+  });
+
+  loaderActive = true;
 };
 
 const hideLoader = () => {
-  loading.innerText = "";
+  loader.style.display = "none";
 };
 
 // Fetch data from Openweather Api
