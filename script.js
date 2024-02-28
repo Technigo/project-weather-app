@@ -28,20 +28,20 @@ const fetchData = (url) => {
 
 const setCloudyDesign = () => {
   image.src = "./design/design2/icons/noun_Cloud_1188486.svg";
-  body.classList.add("cloudy");
+  body.className = "cloudy";
   console.log("It's cloudy");
   cityName.innerHTML = `Light a fire and get cosy. ${localCity} is looking grey today.`;
 };
 const setClearDesign = () => {
   image.src = "./design/design2/icons/noun_Sunglasses_2055147.svg";
-  body.classList.add("clear");
+  body.className = "clear";
   console.log("It's clear");
   cityName.innerHTML = `Get your sunnies on. ${localCity} is looking rather great today.`;
 };
 
 const setRainDesign = () => {
   image.src = "./design/design2/icons/noun_Umbrella_2030530.svg";
-  body.classList.add("rain");
+  body.className = "rain";
   console.log("It's rainy");
 };
 
