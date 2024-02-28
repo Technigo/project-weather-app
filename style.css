@@ -54,6 +54,32 @@ li {
   margin-top: 10px;
   font-weight: 700;
 }
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.nav-container label {
+  font-weight: 700;
+  padding: 10px;
+}
+select,
+input,
+button {
+  outline: none;
+  border: none;
+  color: inherit;
+  font-weight: 600;
+  background-color: inherit;
+}
+input {
+  width: 100px;
+}
+
+input::placeholder {
+  color: inherit;
+}
+
 @media (min-width: 669px) and (max-width: 1024px) {
   .forecast-list {
     align-items: center;

@@ -2,20 +2,33 @@ const actualWeather = document.getElementById('actualWeather')
 const weatherDescription = document.getElementById('weatherDescription')
 const forecastList = document.getElementById('forecastList')
 const body = document.getElementById('body')
+const navContainer = document.getElementById('navContainer')
 
 //variables
 let currentDate
 let currentDay
 let currentTime
+let API_URL = `https://api.openweathermap.org`
+let API_KEY = `1c745605f5cf52ece2c729289e47acc7`
+let nameCity = 'zurich' //default
+let country = 'CH' //default
 
-const weatherZurich = () => {
+navContainer.innerHTML = `  <label for="favoriteCities">Choose a city :</label>
+<select id="favoriteCities">
+  <option value="rome">Rome</option>
+  <option value="london">London</option>
+  <option value="new-york">New York</option>
+</select>
+<label for="searchCity">Search for a city :</label>
+<input type="text" id="searchCity" placeholder="Enter city name">
+<button id="searchBtn">Search</button>`
+
+const getWeather = (nameCity, country) => {
   fetch(
-    'https://api.openweathermap.org/data/2.5/weather?q=Zurich,Switzerland&units=metric&appid=1c745605f5cf52ece2c729289e47acc7'
+    `${API_URL}/data/2.5/weather?q=${nameCity},${country}&units=metric&appid=${API_KEY}`
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data)
-
       const weather = data.weather.map((condition) => condition.description)
       const mainKeyValues = Object.values(data.main)
 
@@ -38,12 +51,11 @@ const weatherZurich = () => {
       const sunset = `${hoursS.toString().padStart(2, '0')}:${minutesS
         .toString()
         .padStart(2, '0')} PM`
-      console.log(weather)
-      console.log(temperature)
-      console.log(sunrise)
+
       // div=actualWeather
 
-      actualWeather.innerHTML = `<h1>${data.name}</h1>
+      actualWeather.innerHTML = `
+      <h1>${data.name}</h1>
 
      <h2 class="weather-conditions">${weather} | ${temperature} ° </h2><p class="sunset-sunrise"> Sunrise ${sunrise} ⇈</p>
      <p class="sunset-sunrise"> Sunset ${sunset} ⇊</p>`
@@ -82,7 +94,7 @@ const weatherZurich = () => {
           case condition >= 701 && condition <= 781:
             document.body.style.backgroundColor = '#fbfafe'
             document.body.style.color = '#B197FC'
-            weatherDescription.innerHTML = `<i class="fa-solid fa-smog fa-xl" style="color: #B197FC;"></i><h3> Navigate through the mist. ${data.name} is draped in a mysterious haze today. </h3> `
+            weatherDescription.innerHTML = `<i class="fa-solid fa-smog fa-xl" style="color: #B197FC;"></i><h3> Navigate through the mist.<br> ${data.name} is draped in a mysterious haze today. </h3> `
             break
           // HTML for sunny days
           case condition === 800:
@@ -94,6 +106,7 @@ const weatherZurich = () => {
           case condition >= 801 && condition <= 804:
             document.body.style.backgroundColor = 'white'
             document.body.style.color = '#F47775'
+
             weatherDescription.innerHTML = `<img src="./noun_Cloud_1188486.svg"><h3> Light a fire and get cozy.
             <br>${data.name} is looking grey today.</h3> `
             break
@@ -102,31 +115,27 @@ const weatherZurich = () => {
             break
         }
       })
-      console.log(weatherConditions)
     })
     .catch((error) => console.error(error))
 }
-weatherZurich()
+// getWeatherZurich()
 
-const forecastZurich = () => {
+const getForecast = (nameCity, country) => {
   fetch(
-    'https://api.openweathermap.org/data/2.5/forecast?q=Zurich,Switzerland&units=metric&APPID=1c745605f5cf52ece2c729289e47acc7'
+    `${API_URL}/data/2.5/forecast?q=${nameCity},${country}&units=metric&APPID=${API_KEY}`
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data)
-
       const weekDayFromTwelve = data.list.filter((item) => {
         const dateTime = item.dt_txt
         const fullDate = new Date(dateTime)
-        console.log(fullDate)
+
         const currentTime = fullDate.getUTCHours()
         const currentDate = fullDate.getDay()
-        console.log(currentDate)
-        console.log(currentTime)
+
         return currentTime === 11 // Filter for 11:00:00
       })
-      console.log(weekDayFromTwelve)
+
       const dates = weekDayFromTwelve.map((item) => {
         const dateTime = item.dt_txt
         const fullDate = new Date(dateTime)
@@ -161,14 +170,12 @@ const forecastZurich = () => {
         }
         return currentDay
       })
-      console.log(dates)
 
       actualTemp = weekDayFromTwelve.map((condition) => {
         let valueTemp = Math.round(condition.main.temp)
         return valueTemp
       })
 
-      console.log(actualTemp)
       // Clear existing content
       forecastList.innerHTML = ''
       // Loop through dates and actualTemp arrays simultaneously
@@ -180,4 +187,50 @@ const forecastZurich = () => {
     .catch((error) => console.error(error))
 }
 
-forecastZurich()
+getForecast(nameCity, country)
+getWeather(nameCity, country)
+//handle select city
+const handleCity = () => {
+  const citySelect = document.getElementById('favoriteCities')
+  citySelect.addEventListener('change', (event) => {
+    const city = event.target.value
+    getWeatherCities(city)
+  })
+}
+
+handleCity()
+
+// handle city input
+const handleCityInput = (event) => {
+  event.preventDefault() // Prevent form submission
+  const cityInput = document.getElementById('searchCity')
+  const city = cityInput.value
+  if (city !== '') {
+    getWeatherCities(city)
+    cityInput.value = ''
+  } else {
+    console.log('Please enter a city name.')
+  }
+}
+
+// event listener
+const searchButton = document.querySelector('button')
+searchButton.addEventListener('click', handleCityInput)
+
+// fetched Geocoding API
+const getWeatherCities = (city) => {
+  fetch(`${API_URL}/geo/1.0/direct?q=${city}&limit=1&appid=${API_KEY}`)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log('Weather data for selected city:', data)
+      country = data[0].country
+      nameCity = data[0].name
+      console.log(country)
+      console.log(nameCity)
+      getForecast(nameCity, country)
+      getWeather(nameCity, country)
+
+      // Handle weather data here
+    })
+    .catch((error) => console.error(error))
+}
