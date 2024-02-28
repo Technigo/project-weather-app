@@ -5,7 +5,6 @@ const iconURL = "https://openweathermap.org/img/wn/";
 const apiKey = "a6996a952d949efcc9c698344f4005c6";
 const weatherEndpoint = "weather";
 const forecastEndpoint = "forecast";
-
 //DOM objects
 const currentTemp = document.getElementById("current-temp");
 const city = document.getElementById("city");
@@ -13,6 +12,10 @@ const weatherCondition = document.getElementById("weather-condition");
 const weatherForecast = document.getElementById("weather-table");
 const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
+const button = document.getElementById("button-icon");
+const forecastField = document.getElementById("forecast-field");
+const currentWeatherField = document.getElementById("current-weather-field");
+const buttonField = document.getElementById("button-area");
 
 //Functions
 // Function that formats the day or time stamp
@@ -131,6 +134,14 @@ const generateFourDaysWeather = (
   }
   return weatherData;
 };
+
+button.addEventListener("click", () => {
+  forecastField.classList.toggle("hide");
+  console.log(forecastField.classList);
+  console.log(forecastField);
+  currentWeatherField.classList.toggle("show");
+  buttonField.classList.toggle("move");
+});
 
 displayCurrentWeather();
 displayWeatherForecast();
