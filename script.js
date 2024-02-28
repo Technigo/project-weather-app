@@ -17,7 +17,11 @@ const weatherZurich = () => {
 
       const weather = data.weather.map((condition) => condition.description)
       const mainKeyValues = Object.values(data.main)
+<<<<<<< HEAD
       const temperature = mainKeyValues[0]
+=======
+      const temperature = Math.round(mainKeyValues[0])
+>>>>>>> style
       const sunriseTime = data.sys.sunrise
 
       const sunsetTime = data.sys.sunset
@@ -41,8 +45,13 @@ const weatherZurich = () => {
       // div=actualWeather
 
       actualWeather.innerHTML = `<h1>${data.name}</h1>
+<<<<<<< HEAD
      <h2 class="weather-conditions">${weather} ¦ ${temperature} ° </h2><img src="./icons8-sunrise.gif" alt="sunrise"><p class="sunset-sunrise"> Sunrise ${sunrise}</p><img src="./icons8-sunset.gif" alt="sunrise">
      <p class="sunset-sunrise"> Sunset ${sunset}</p>`
+=======
+     <h2 class="weather-conditions">${weather} | ${temperature} ° </h2><p class="sunset-sunrise"> Sunrise ${sunrise}<img src="./icons8-sunrise-50.png" alt="sunrise"></p>
+     <p class="sunset-sunrise"> Sunset ${sunset}<img src="./icons8-sunset-50.png" alt="sunset"></p>`
+>>>>>>> style
     })
     .catch((error) => console.error(error))
 }
@@ -102,15 +111,31 @@ const forecastZurich = () => {
         return currentDay
       })
       console.log(dates)
+<<<<<<< HEAD
       const actualTemp = weekDayFromTwelve.map(
         (condition) => condition.main.temp
       )
+=======
+      actualTemp = weekDayFromTwelve.map((condition) => {
+        let valueTemp = Math.round(condition.main.temp)
+        return valueTemp
+      })
+      // forecastTemperature = actualTemp.forEach((value) => {
+      //   let valueTemp = Math.round(value)
+      //   console.log(valueTemp)
+      // })
+
+>>>>>>> style
       console.log(actualTemp)
       // Clear existing content
       forecastList.innerHTML = ''
       // Loop through dates and actualTemp arrays simultaneously
       for (let i = 0; i < Math.min(dates.length, actualTemp.length); i++) {
+<<<<<<< HEAD
         forecastList.innerHTML += `<li>${dates[i]} ${actualTemp[i]}</li>`
+=======
+        forecastList.innerHTML += `<div class=forecast-container><li>${dates[i]} </li><span> ${actualTemp[i]} °C </span></div>`
+>>>>>>> style
       }
     })
 
