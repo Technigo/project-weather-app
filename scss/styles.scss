@@ -22,7 +22,7 @@ body {
   position: relative;
   font-family: "Montserrat", sans-serif;
   max-width: 100vw;
-  min-height: 100vh;
+  min-height: calc(100vh - 100px);
 }
 
 main {
@@ -87,6 +87,91 @@ a {
 img {
   // width: 100%;
   display: block;
+}
+
+.loader {
+  display: none;
+
+  &::after {
+    content: "";
+    background-image: url("../assets/white_clouds.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+  }
+
+  span {
+    position: relative;
+    top: 0.63em;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 2rem;
+    opacity: 0;
+    transform: rotateX(-90deg);
+    z-index: 100;
+  }
+
+  .let1 {
+    animation: drop 1.2s ease-in-out infinite;
+    animation-delay: 1.2s;
+  }
+
+  .let2 {
+    animation: drop 1.2s ease-in-out infinite;
+    animation-delay: 1.3s;
+  }
+
+  .let3 {
+    animation: drop 1.2s ease-in-out infinite;
+    animation-delay: 1.4s;
+  }
+
+  .let4 {
+    animation: drop 1.2s ease-in-out infinite;
+    animation-delay: 1.5s;
+  }
+
+  .let5 {
+    animation: drop 1.2s ease-in-out infinite;
+    animation-delay: 1.6s;
+  }
+
+  .let6 {
+    animation: drop 1.2s ease-in-out infinite;
+    animation-delay: 1.7s;
+  }
+
+  .let7 {
+    animation: drop 1.2s ease-in-out infinite;
+    animation-delay: 1.8s;
+  }
+
+  @keyframes drop {
+    10% {
+      opacity: 0.5;
+    }
+    20% {
+      opacity: 1;
+      top: 3.78em;
+      transform: rotateX(-360deg);
+    }
+    80% {
+      opacity: 1;
+      top: 3.78em;
+      transform: rotateX(-360deg);
+    }
+    90% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 0;
+      top: 6.94em;
+    }
+  }
 }
 
 @media screen and (max-width: 667px) {
