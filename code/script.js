@@ -55,30 +55,31 @@ function renderWeather(weather) {
 fetch(weatherUrl)
   //Then&respons turns the data from url into a object
   .then((response) => response.json())
+  //"weather" comes from the api data
   .then((weather) => {
     //Call the function to run here
     renderWeather(weather);
   });
 
+//This function renders the forecast
+function renderForecast(forecast) {
+  //for is because this is a loop that runs through the days. Before working with degree it was only one value (no array).
+  for (const day of forecast.list) {
 
-
-
-
-
-
-
-
-
-
+    const date = new Date(day.dt * 1000);
+    //13 is the time of the day when we are going to measure the temperature. 
+    if (date.getHours() == 13) {
+    days.innerHTML += `${date.toLocaleDateString("en", {
+      weekday: "short",
+    })} ${Math.round(day.main.temp)}&deg;`;
+    }
+  }
+}
 
 
 fetch(forecastUrl)
   .then((response) => response.json())
   .then((forecast) => {
-    for (const day of forecast.list) {
-      const date = new Date(day.dt * 1000);
-      days.innerHTML += `${date.toLocaleDateString("en", {
-        weekday: "short",
-      })} ${day.main.temp} `;
-    }
+    renderForecast(forecast);   
+    
   });
