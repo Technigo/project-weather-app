@@ -9,6 +9,7 @@ const navWrapper = document.querySelector(".nav");
 const navItems = document.querySelectorAll(".nav-item");
 const navCities = document.querySelectorAll(".nav-city");
 const navGeo = document.querySelector(".nav-item.geo");
+const searchInput = document.getElementById("location-search");
 const scrollArrow = document.getElementById("scroll-arrow");
 
 // global var
@@ -253,7 +254,7 @@ const showLocalWeather = async () => {
 };
 
 // Handle city
-const handleCity = async city => {
+const handleLocation = async city => {
   try {
     let result = await fetchGeocode(city);
     fetchWeather(result[0].lat, result[0].lon);
@@ -263,7 +264,15 @@ const handleCity = async city => {
   }
 };
 
-// Event listeners
+// Search
+const handleSearch = event => {
+  event.preventDefault();
+  console.log(event.target.value);
+  console.log(event);
+  handleLocation(event.target.value);
+};
+
+// -- Event listeners
 menuBtn.addEventListener("click", () => toggleHide(navWrapper));
 menuClose.addEventListener("click", () => toggleHide(navWrapper));
 navGeo.addEventListener("click", () => {
@@ -274,13 +283,15 @@ navItems.forEach(city =>
   city.addEventListener("click", event => {
     toggleHide(navWrapper);
     console.log(event);
-    handleCity(event.target.firstChild.nodeValue);
+    handleLocation(event.target.firstChild.nodeValue);
   })
 );
 scrollArrow.addEventListener("click", () => {
   toggleFullscreen(body);
   toggleHide(weatherForecast);
 });
+
+searchInput.addEventListener("change", handleSearch);
 
 // load site
 fetchWeather(latitude, longitude);

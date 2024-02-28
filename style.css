@@ -82,6 +82,16 @@ button {
   transition: all 0.5s ease-in-out;
 }
 
+.search-wrapper {
+  margin-bottom: 1rem;
+}
+
+.input {
+  padding: 0.5rem;
+  border-radius: 2.5rem;
+  cursor: help;
+}
+
 .nav-list {
   display: flex;
   flex-direction: column;
