@@ -1,3 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
 body {
-    background-color: bisque;
+  background-color: #f4f7f8;
+  font-family: "Montserrat";
+  
+}
+
+.informationTop {
+  font-weight: 400;
+  display: grid;
+  margin-top: 30px;
+  margin-left: 30px;
+  margin-bottom: 30px;
+  color: #F47775
+  
+}
+
+
+
+
+
+.weatherTypeAndTemperature {
+  display: flex;
+  flex-direction: row;
+  column-gap: 5px;
+}
+
+.icon {
+  width: 160px;
+  height: 60px;
 }

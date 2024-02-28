@@ -41,13 +41,14 @@ function renderWeather(weather) {
   sunset.innerHTML = hourAndminutes(sunsetDate);
 
   if (weather.weather[0].main == "Clouds") {
-    icon.innerHTML = `<img src="/icons/cloud.svg" />`;
+    //to style icons class needs to be added in js, not html
+    icon.innerHTML = `<img class = "icon" src="/icons/cloud.svg" />`;
     textAboutWeather.innerHTML = `Light a fire and get cosy. Stockholm is looking grey today.`;
   } else if (weather.weather[0].main == "Rain") {
-    icon.innerHTML = `<img src="/icons/umbrella.svg" />`;
+    icon.innerHTML = `<img class = "icon" src="/icons/umbrella.svg" />`;
     textAboutWeather.innerHTML = `Don't forget your umbrella. It's wet in Stockholm today.`;
   } else {
-    icon.innerHTML = `<img src="/icons/sunglasses.svg" />`;
+    icon.innerHTML = `<img class = "icon" src="/icons/sunglasses.svg" />`;
     textAboutWeather.innerHTML = `Get your sunnies on. Stockholm is looking rather great today.`;
   }
 }
