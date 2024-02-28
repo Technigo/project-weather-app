@@ -19,3 +19,37 @@ body {
 background: var(--gradient-day);
 color: #E8E9FF;
 }
+
+.current-weather {
+margin: 100px;
+padding: 50px;
+display: flex ;
+flex-direction: column;
+}
+
+#temp {
+  font-size: 120px;
+}
+
+h1 {
+  font-size: 34px;
+}
+
+.sun-time {
+  display: flex;
+  justify-content: space-around;
+}
+#sunrise{
+  display: flex;
+  margin: 10px;
+}
+
+#sunset {
+  display: flex;
+  margin: 10px;
+}
+
+p {
+  font-size: 22px;
+}
+
