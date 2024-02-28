@@ -2,6 +2,7 @@
 
 :root {
   --blue: #757aff;
+  --light-blue: #8589ff;
   --forecast-text: #707070;
   --day-gradient: linear-gradient(90deg, #8589ff 0%, #e8e9ff 100%);
   --night-gradient: linear-gradient(270deg, #6264a2 50.98%, #222350 51.14%);
@@ -50,6 +51,12 @@ h1 {
   line-height: 2rem;
 }
 
+h2 {
+  font-weight: 100;
+  line-height: 2rem;
+  margin-bottom: 0.5rem;
+}
+
 button {
   background-color: transparent;
   border: none;
@@ -63,23 +70,21 @@ button {
   position: fixed;
   left: 0;
   top: 0;
-  background: rgba(255, 255, 255, 0.9);
+  background: white;
   height: 100vh;
   width: fit-content;
   color: var(--forecast-text);
   box-shadow: var(--box-shadow);
   padding: var(--space);
+  padding-top: 1rem;
   display: flex;
   flex-direction: column;
+  transition: all 0.5s ease-in-out;
 }
 
 .nav-list {
   display: flex;
   flex-direction: column;
-}
-
-.nav button {
-  align-self: flex-end;
 }
 
 .fa-2xl {
@@ -91,21 +96,32 @@ button {
   padding: 0.5rem;
   border-radius: 2.5rem;
   cursor: pointer;
+  font-weight: 400;
+}
+
+.nav-item:nth-of-type(even) {
+  background-color: #00000005;
 }
 
 .nav-item:hover {
-  background-color: #00000005;
+  background-color: var(--light-blue);
+  color: white;
 }
 
 .nav-item:active {
   border: var(--blue) solid 1px;
 }
 
+.geo {
+  margin-bottom: 0.5rem;
+}
+
 .close {
-  padding: 1rem;
-  align-self: flex-end;
-  color: var(--technigo-blue);
-  margin-left: auto;
+  margin-left: -1rem;
+  padding: 0.5rem;
+  width: 3rem;
+  text-align: center;
+  vertical-align: middle;
 }
 
 /* Todays Weather */
@@ -193,10 +209,18 @@ button {
   aspect-ratio: 1 / 1;
   border-radius: 80px;
   background-color: var(--blue);
-  border: none;
   box-shadow: var(--box-shadow);
   color: white;
   transform: rotate(0deg);
+  transition: transform 0.2s ease-in-out;
+}
+
+.scroll-arrow:hover {
+  background-color: var(--light-blue);
+}
+
+.scroll-arrow:active {
+  box-shadow: none;
 }
 
 /* Forecast */
