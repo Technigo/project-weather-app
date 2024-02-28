@@ -1,4 +1,5 @@
 // DOM
+const body = document.querySelector("body");
 const weatherToday = document.getElementById("weather-today");
 const weatherForecast = document.getElementById("weather-forecast");
 const weatherBackground = document.querySelector(".weather-background");
@@ -150,7 +151,6 @@ const printWeather = json => {
   <p class="city">${json.name}</p>
   <p class="weather-desc">${json.weather[0].description}</p>
   <div class="local-time">
-    <p>Local time</p>
     <time datetime="${localTime}" class="time">
     ${constructHours(localTime)}:${constructMinutes(localTime)}
     </time>
@@ -278,7 +278,7 @@ navItems.forEach(city =>
   })
 );
 scrollArrow.addEventListener("click", () => {
-  toggleFullscreen(weatherBackground);
+  toggleFullscreen(body);
   toggleHide(weatherForecast);
 });
 
