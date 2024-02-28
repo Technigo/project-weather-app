@@ -1,13 +1,18 @@
 # Weather App
 
-Replace this readme with your own information about your project.
+We were asked to work in pairs and to build a weather app and using branches. 
+we learned about using fetch functions in javascript and to get data from an API.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
 
 ## The problem
+we have googled, using stack overflow and chat gpt so solve our problems. 
+we started to build  the  foundation of our app using liveshare in vs code and then split up in branches. We did one part each of the task and then merged och branches. 
+we used promises, fetch functions, json and http-methods to put the project together.
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+If we had more time we whould try to do the stretchgoals and add more cities to the app.
+We also whould make the search-button work.
+
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://dapper-crepe-8d1146.netlify.app
