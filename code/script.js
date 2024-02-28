@@ -9,10 +9,10 @@ const days = document.querySelector(".days");
 
 //Declare (global) varibles
 
-const url =
+const weatherUrl =
   "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=781cdd2e00a90d16de41361eb1c43353";
 
-const secondUrl =
+const forecastUrl =
   "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=781cdd2e00a90d16de41361eb1c43353";
 
 //Declare funtions "hourAndminutes" and "renderWeather"
@@ -52,7 +52,7 @@ function renderWeather(weather) {
   }
 }
 
-fetch(url)
+fetch(weatherUrl)
   //Then&respons turns the data from url into a object
   .then((response) => response.json())
   .then((weather) => {
@@ -70,9 +70,9 @@ fetch(url)
 
 
 
-  
 
-fetch(secondUrl)
+
+fetch(forecastUrl)
   .then((response) => response.json())
   .then((forecast) => {
     for (const day of forecast.list) {
