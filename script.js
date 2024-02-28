@@ -2,6 +2,8 @@
 const locationName = document.getElementById("location");
 const todaysTemperature = document.getElementById("todays-temperature");
 const todaysWeather = document.getElementById("todays-weather");
+const todaysSunrise = document.getElementById("sunrise");
+const todaysSunset = document.getElementById("sunset");
 
 //Weather Today API
 //https://api.openweathermap.org/data/2.5/weather?q=Gagnef,Sweden&units=metric&APPID=YOUR_API_KEY
@@ -43,6 +45,34 @@ const fetchWeatherTodayAPI = () => {
         console.log(weather.main);
         todaysWeather.innerHTML = `<h1>${weather.main}</h1>`;
       });
+
+      //   // Update DOM with today's sunrise
+      //   todaysSunrise.innerHTML = `<h1>Sunrise ${weatherTodayData.sys.sunrise}</h1>`;
+      //   console.log(weatherTodayData.sys.sunrise);
+      //   // Update DOM with today's sunset
+      //   todaysSunset.innerHTML = `<h1>Sunset ${weatherTodayData.sys.sunset}</h1>`;
+      //   console.log(weatherTodayData.sys.sunset);
+
+      // Convert Unix timestamps to milliseconds
+      const sunriseTime = new Date(weatherTodayData.sys.sunrise * 1000);
+      const sunsetTime = new Date(weatherTodayData.sys.sunset * 1000);
+
+      // Format sunrise and sunset times to 24-hour format
+      const sunriseFormatted = sunriseTime.toLocaleTimeString("en-GB", {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+      const sunsetFormatted = sunsetTime.toLocaleTimeString("en-GB", {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+
+      // Update DOM with today's sunrise and sunset in 24-hour format
+      todaysSunrise.innerHTML = `<h1>Sunrise ${sunriseFormatted}</h1>`;
+      console.log(sunriseFormatted);
+
+      todaysSunset.innerHTML = `<h1>Sunset ${sunsetFormatted}</h1>`;
+      console.log(sunsetFormatted);
 
       console.log(weatherTodayData);
     });
