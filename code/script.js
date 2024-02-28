@@ -1,5 +1,7 @@
 //https://api.openweathermap.org/data/2.5/weather?q=Zurich,Switzerland&units=metric&appid=b34ca1ebc43d2420cd2a70a7d29aa6c4
 
+//https://api.openweathermap.org/data/2.5/forecast?q=Zurich,Switzerland&units=metric&appid=b34ca1ebc43d2420cd2a70a7d29aa6c4
+
 const BASE_URL ="https://api.openweathermap.org/data/2.5/"
 const API_KEY ="b34ca1ebc43d2420cd2a70a7d29aa6c4"
 const place ="Zurich,Switzerland"
