@@ -11,12 +11,20 @@ const mainTemp = document.getElementById("mainTemp")
 const weatherDescription = document.getElementById("weatherDescription")
 const errorDiv = document.getElementById("error")
 
+const updateHTML = (data) => {
+  const temp = data.main.temp
+  const description = data.weather[0].description
+  const cityTitle = data.name
+
+  mainTemp.innerText = temp
+  weatherDescription.innerText = description
+  cityName.innerText = cityTitle
+}
+
 const fetchWeather = () => {
   fetch(URL)
     .then(response => response.json())
-    .then(data => {
-    console.log(data)
-    })
+    .then(data => updateHTML(data))
     .catch(error => {
       console.log(error)
       errorDiv.innerText = "Something went wrong"
