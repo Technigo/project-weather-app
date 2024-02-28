@@ -17,9 +17,9 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         return time.toLocaleString('en-US', {hour: 'numeric', minute: 'numeric', hour12: true})
     }
     container.innerHTML = 
-    `<h1>The weather in ${json.name}, right now.</h1>
+    `<p> ${json.name} city</p>
     <p>Temperature: ${json.main.temp} C<p>
-    <p>Its looking like ${weatherDescription}
+    <h1 class="multiline-text">We are seeing ${weatherDescription} over ${json.name} today.</h1>
     <p> Sunrise: ${formatTime(sunriseTime)}</p>
     <p> Sunset: ${formatTime(sunsetTime)}</p>`
     
@@ -36,7 +36,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         const data = await response.json()
         const forecastArray =[...data.list]
         const filteredArray = forecastArray.filter((day)=>{
-            return day. dt_txt.toLowerCase("12.00.00")
+            return day.dt_txt.toLowerCase("12.00.00")
         })
         filteredArray.forEach((day, index)=>{
             if (index <4){
@@ -45,10 +45,9 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
                 let dayOfTheWeek = date.toLocaleDateString("en-US", {weekday: "short"})
                 document.querySelector ('.forecast__container').innerHTML +=`
                 <div class= "forecast__singel-day-flex">
-                <span class="forecast__day">${dayOfTheWeek}</span>
-                <span class="forecast__image"><img src="https://openweathermap.org/img/wn/${day.weather[0].icon}.png" alt="" /></span>
-                <span class="forecast__temp">${parseInt(day.main.temp)} °C</span>
-                <span class="forecast__wind">${day.wind.speed}m/s</span> </div>`
+                <p class="forecast__day">${dayOfTheWeek} - ${parseInt(day.main.temp)}°C ${day.wind.speed} </p>
+                <p class="forecast__temp"></p>
+                <p class="forecast__speed"></p></div>`
             } else return
         })
     }catch (error){
