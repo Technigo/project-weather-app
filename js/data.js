@@ -1,7 +1,8 @@
 export const weatherData = {
   Clear: {
     main: "clear",
-    icon: "./assets/weather-icons/noun_Sunglasses_2055147.svg",
+    coldIcon: "./assets/weather-icons/noun_Sunglasses_2055147.svg",
+    warmIcon: "./assets/weather-icons/noun_Sunglasses_Warm_2055147.svg",
     alt: "clear",
     color: "#2a5510",
     bgColor: "#f7e9b9",
@@ -9,7 +10,8 @@ export const weatherData = {
   },
   Rain: {
     main: "rain",
-    icon: "./assets/weather-icons/noun_Umbrella_2030530.svg",
+    coldIcon: "./assets/weather-icons/noun_Umbrella_2030530.svg",
+    warmIcon: "./assets/weather-icons/noun_Umbrella_Warm_2030530.svg",
     alt: "rain",
     color: "#164a68",
     bgColor: "#a3def7",
@@ -17,7 +19,8 @@ export const weatherData = {
   },
   Clouds: {
     main: "cloudy",
-    icon: "./assets/weather-icons/noun_Cloud_1188486.svg",
+    coldIcon: "./assets/weather-icons/noun_Cloud_1188486.svg",
+    warmIcon: "./assets/weather-icons/noun_Cloud_Warm_1188486.svg",
     alt: "cloudy",
     color: "#f47775",
     bgColor: "#f4f7f8",

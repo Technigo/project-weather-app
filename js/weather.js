@@ -8,9 +8,10 @@ const currentWeatherSection = document.getElementById(
 );
 const forecastSection = document.getElementById("section__forecast");
 let currentTheme = [];
+let currentTemp = "";
 
 // Function that handles the theme colors depending on the current weather
-const handleColorTheme = (currentWeatherType) => {
+const handleColorTheme = (currentWeatherType, currentTemp) => {
   // Set weatherType as the key to the weatherData object to get the color theme.
   // Set default as empty object.
   currentTheme = weatherData[currentWeatherType] || {};
@@ -20,11 +21,14 @@ const handleColorTheme = (currentWeatherType) => {
     return false;
   } else {
     // Set main theme for weather app
-    main.style.backgroundColor = currentTheme.bgColor;
-    main.style.color = currentTheme.color;
+    main.style.backgroundColor =
+      currentTemp > 15 ? currentTheme.bgColor : currentTheme.color;
+    main.style.color =
+      currentTemp > 15 ? currentTheme.color : currentTheme.bgColor;
 
     // Set opacity to footer
-    footer.style.backgroundColor = currentTheme.color;
+    footer.style.backgroundColor =
+      currentTemp > 15 ? currentTheme.color : "rgb(68, 68, 68)";
   }
 };
 
@@ -51,8 +55,10 @@ const formateTime = (dateUTC, timezone) => {
 export const handleWeatherData = async (data) => {
   // Getting the weather type from api
   const currentWeatherType = data.weather[0].main;
+  currentTemp = data.main.temp;
+
   // Pass the weather type as an argument to handle the theme colors
-  handleColorTheme(currentWeatherType);
+  handleColorTheme(currentWeatherType, currentTemp);
 
   const sunriseUTC = new Date(data.sys.sunrise * 1000);
   const sunsetUTC = new Date(data.sys.sunset * 1000);
@@ -63,14 +69,12 @@ export const handleWeatherData = async (data) => {
   currentWeatherSection.innerHTML += `
   <div class="current-weather-container">
     <div class="current-weather">
-        <p>${weatherInfo.main} | ${
-    Math.round(data.main.temp * 10) / 10
-  }&deg;</p>
+        <p>${weatherInfo.main} | ${Math.round(currentTemp * 10) / 10}&deg;</p>
         <p>sunrise ${formateTime(sunriseUTC, data.timezone)}</p>
         <p>sunset ${formateTime(sunsetUTC, data.timezone)}</p>
         </div>
         <img
-        src="${weatherInfo.icon}"
+        src="${currentTemp > 15 ? weatherInfo.coldIcon : weatherInfo.warmIcon}"
         alt="${weatherInfo.alt}"
         width="80"
         height="80"
