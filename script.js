@@ -6,7 +6,7 @@ const degrees = document.getElementById("degrees");
 const image = document.getElementById("image");
 const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
-const day1 = document.getElementById("day-1");
+const forecastTable = document.getElementById("forecast-table");
 
 /////////////////////////// Global Variables ////////////////////////////
 const BASE_URL = "https://api.openweathermap.org/data/2.5/";
@@ -126,7 +126,7 @@ const whatDayIsIt = (dayNumber) => {
     case 6:
       weekday = "sat";
       break;
-    case 7:
+    case 0:
       weekday = "sun";
       break;
     default:
@@ -135,18 +135,28 @@ const whatDayIsIt = (dayNumber) => {
   }
 };
 
-const displayForecast = () => {};
-
-fetchData(forecastURL).then((json) => {
-  let dayOneDay = new Date(json.list[6].dt * 1000);
-  dayOneDay = dayOneDay.getDay();
-  console.log(dayOneDay);
-  whatDayIsIt(dayOneDay);
-  console.log(weekday);
-  day1.innerText = weekday;
-});
+const getForecast = () => {
+  fetchData(forecastURL).then((json) => {
+    const forecastArray = json.list.filter((item) =>
+      item.dt_txt.includes("12:00:00")
+    );
+    const dailyDegrees = forecastArray.map((degrees) => degrees.main.temp);
+    const timeStamps = forecastArray.map((times) => times.dt);
+    timeStamps.forEach((timeStamp, index) => {
+      dayDate = new Date(timeStamp * 1000);
+      weekday = dayDate.getDay();
+      whatDayIsIt(weekday);
+      const dayDegree = dailyDegrees[index].toFixed(0);
+      forecastTable.innerHTML += `<tr>
+        <td>${weekday}</td>
+        <td>${dayDegree}°</td>
+      </tr>`;
+    });
+  });
+};
 
 getCityName();
 getCityWeather();
 getCityDegrees();
 getSunriseSunset();
+getForecast();
