@@ -96,7 +96,43 @@ const fetchWeatherForecast = () => {
     .then((json) => {
       console.log(json)
 
-      //End of fetchWeatherForecast
+      /* 
+      
+      //Get today as a number
+      const today = new Date(json.list[0].dt_txt).getDay()
+
+      //Filter data to get next 5 days
+      const nextFiveDays = json.list.filter(
+        (forecastItem) => new Date(forecastItem.dt_txt).getDay() !== today
+      )
+
+      //Variables to store maxtemp, mintemp and icon
+      let maxTemp = -1000
+      let minTemp = 1000
+      let weatherIcon = ""
+
+      //Array to store min/maxtemp
+      const fiveDayArray = []
+
+      nextFiveDays.forEach((forecastItem) => {
+        //Get current weekday in words
+        const currentWeekDay = new Date(forecastItem.dt_txt).toLocaleDateString(
+          "en-GB",
+          {
+            weekday: "long",
+          }
+        )
+
+        //Checks if array is empty (first iteration) - if empty add the first day
+        if (fiveDayArray.length === 0) fiveDayArray.push(currentWeekDay)
+        //If current weekday is in list, compare max and min temp
+        if (!fiveDayArray.includes(currentWeekDay)) {
+          //If not in 
+        }
+
+      })
+
+      //End of fetchWeatherForecast*/
     })
 }
 fetchWeatherForecast()
