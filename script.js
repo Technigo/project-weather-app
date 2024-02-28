@@ -8,7 +8,7 @@ const menuClose = document.getElementById("close");
 const navWrapper = document.querySelector(".nav");
 const navItems = document.querySelectorAll(".nav-item");
 const navCities = document.querySelectorAll(".nav-city");
-const navGeo = document.querySelector(".nav-item.geo");
+const navGeo = document.querySelector(".geo");
 const searchInput = document.getElementById("location-search");
 const scrollArrow = document.getElementById("scroll-arrow");
 
@@ -19,91 +19,17 @@ let currentLocation = "Ulricehamn";
 const latitude = 57.791667; // default
 const longitude = 13.418611; // default
 
-// Print fetch error
-const printFetchError = error => {
+// Print error
+const printError = error => {
   const errorMessage = document.createElement("div");
-  errorMessage.innerHTML = `<p class="error">Unfortunately, something went wrong and we could not find your location.</p>`;
+  errorMessage.innerHTML = `<p class="error">Unfortunately, something went wrong and we could not find your location.<br>${error}</p>`;
   weatherBackground.insertBefore(errorMessage, weatherToday);
-};
-
-// --API'S
-// fetch API for Geocoding
-const fetchGeocode = async location => {
-  try {
-    const response = await fetch(
-      `${API_URL}/geo/1.0/direct?q=${location}&limit=1&appid=${APP_ID}`
-    );
-    const json = await response.json();
-    // console.log("geo", json);
-    const { lat, lon } = json[0];
-    return { lat, lon };
-  } catch (error) {
-    printFetchError(error);
-    console.log("Error: ", err);
-  }
-};
-
-// fetch API for current weather
-const fetchWeather = async location => {
-  // try to call on function to fetch coordinates for location name
-  try {
-    coordinates = await fetchGeocode(location);
-  } catch (error) {
-    throw ("Geo coding error", error);
-  }
-  console.log("Cord", coordinates);
-  try {
-    // Fetch current weather
-    response = await fetch(
-      `${API_URL}/data/2.5/weather?lat=${coordinates.lat}&lon=${coordinates.lon}&units=metric&appid=${APP_ID}`
-    );
-    // construct json
-    const weatherData = await response.json();
-    console.log("weatherData: ", weatherData);
-    const {
-      name: locationName,
-      main: { temp },
-      sys: { sunrise },
-      sys: { sunset },
-      timezone,
-      weather: [{ description }],
-      weather: [{ icon }],
-    } = weatherData;
-    return { locationName, temp, sunrise, sunset, timezone, description, icon };
-  } catch (error) {
-    printFetchError(error);
-    console.log("Fetch error: ", error);
-    throw error;
-  }
-};
-
-// fetch API for forecast
-const fetchForecast = async location => {
-  try {
-    coordinates = await fetchGeocode(location);
-  } catch (error) {
-    throw ("Geo coding error", error);
-  }
-  try {
-    response = await fetch(
-      `${API_URL}/data/2.5/forecast?lat=${coordinates.lat}&lon=${coordinates.lon}&units=metric&appid=${APP_ID}`
-    );
-    const forecastData = await response.json();
-    console.log("Forecast data", forecastData);
-    const {
-      city: { timezone },
-      list,
-    } = forecastData;
-    return { timezone, list };
-  } catch (error) {
-    printFetchError(error);
-    throw error;
-  }
+  setTimeout(() => weatherBackground.removeChild(errorMessage), 5000);
 };
 
 // -- Styling
 // Toggle class hidden
-const toggleHide = el => el.classList.toggle("hidden");
+const toggleHide = el => setTimeout(() => el.classList.toggle("hidden"), 500);
 
 // Toggle class fullscreen
 const toggleFullscreen = el => el.classList.toggle("fullscreen");
@@ -205,7 +131,6 @@ const constructMinutes = time =>
 
 // Get max temp for entire day from forecast json
 const getMaxTemp = (day, data) => {
-  console.log(data);
   const date = convertTime(day.dt, data.timezone).getDate(); // Convert milliseconds to a date
   const max = data.list
     .filter(entry => entry.dt_txt.includes(date))
@@ -223,8 +148,7 @@ const getMinTemp = (day, data) => {
 };
 
 // Print current weather to DOM
-const printWeather = async location => {
-  const weatherData = await fetchWeather(location);
+const printWeather = async weatherData => {
   const sunriseTime = convertTime(weatherData.sunrise, weatherData.timezone);
   const sunsetTime = convertTime(weatherData.sunset, weatherData.timezone);
   const localTime = convertTime(Date.now() / 1000, weatherData.timezone);
@@ -258,8 +182,7 @@ const printWeather = async location => {
 };
 
 // Print Forecast to DOM
-const printForecast = async location => {
-  const forecastData = await fetchForecast(location);
+const printForecast = async forecastData => {
   console.log(forecastData);
   const noons = getNoons(forecastData);
   weatherForecast.innerHTML = "";
@@ -277,71 +200,139 @@ const printForecast = async location => {
   });
 };
 
-// Geolocation API
+// --API'S and initiating functions
+// fetch API for current weather
+const fetchWeather = async (lat, lon) => {
+  try {
+    // Fetch current weather
+    response = await fetch(
+      `${API_URL}/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${APP_ID}`
+    );
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    // construct json
+    const weatherData = await response.json();
+    console.log("weatherData: ", weatherData);
+    const {
+      name: locationName,
+      main: { temp },
+      sys: { sunrise },
+      sys: { sunset },
+      timezone,
+      weather: [{ description }],
+      weather: [{ icon }],
+    } = weatherData;
+    printWeather({
+      locationName,
+      temp,
+      sunrise,
+      sunset,
+      timezone,
+      description,
+      icon,
+    });
+  } catch (error) {
+    printError(error);
+    console.log("Fetch error: ", error);
+    throw error;
+  }
+};
+
+// fetch API for forecast
+const fetchForecast = async (lat, lon) => {
+  try {
+    response = await fetch(
+      `${API_URL}/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${APP_ID}`
+    );
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const forecastData = await response.json();
+    console.log("Forecast data", forecastData);
+    const {
+      city: { timezone },
+      list,
+    } = forecastData;
+    printForecast({ timezone, list });
+  } catch (error) {
+    printError(error);
+    throw error;
+  }
+};
+
+// fetch coordinates from Geocoding API
+const fetchGeocode = async location => {
+  try {
+    const response = await fetch(
+      `${API_URL}/geo/1.0/direct?q=${location}&limit=1&appid=${APP_ID}`
+    );
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const json = await response.json();
+    const { lat, lon } = json[0];
+    fetchWeather(lat, lon);
+    fetchForecast(lat, lon);
+  } catch (error) {
+    printError(error);
+    console.log("Error: ", error);
+  }
+};
+
+// Check location with geolocation -"Your location"
 const getLocation = () => {
   return new Promise((resolve, reject) => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(resolve);
+      navigator.geolocation.getCurrentPosition(
+        resolve,
+        reject("Geolocation not available")
+      );
     } else {
-      console.log("No geolocation available");
-      reject("REJECTED");
+      throw new Error("No geolocation available");
     }
   });
 };
 
-// -- Functionality
-// Handle Geolocation
-const showLocalWeather = async () => {
+// Handle Geolocation request
+const handleLocal = async () => {
   try {
     const location = await getLocation();
+    console.log(location);
     lat = location.coords.latitude;
-    long = location.coords.longitude;
-    await fetchWeather(lat, long);
+    lon = location.coords.longitude;
+    fetchWeather(lat, lon);
+    fetchForecast(lat, lon);
   } catch (error) {
-    console.log(error, "Something went wrong");
+    printError(error);
   }
-};
-
-// Handle city
-const handleLocation = async city => {
-  try {
-    let result = await fetchGeocode(city);
-    fetchWeather(result[0].lat, result[0].lon);
-    fetchForecast(result[0].lat, result[0].lon);
-  } catch (error) {
-    console.log(error, "Something went wrong");
-  }
-};
-
-// Search
-const handleSearch = event => {
-  event.preventDefault();
-  console.log(event.target.value);
-  console.log(event);
-  handleLocation(event.target.value);
 };
 
 // -- Event listeners
 menuBtn.addEventListener("click", () => toggleHide(navWrapper));
 menuClose.addEventListener("click", () => toggleHide(navWrapper));
-navGeo.addEventListener("click", () => {
-  toggleHide(navWrapper);
-  showLocalWeather();
-});
-navItems.forEach(city =>
-  city.addEventListener("click", event => {
-    toggleHide(navWrapper);
-    console.log(event);
-    handleLocation(event.target.firstChild.nodeValue);
-  })
-);
+
 scrollArrow.addEventListener("click", () => {
   toggleFullscreen(body);
   toggleHide(weatherForecast);
 });
 
-searchInput.addEventListener("change", handleSearch);
+navGeo.addEventListener("click", () => {
+  toggleHide(navWrapper);
+  handleLocal();
+});
+
+navItems.forEach(location =>
+  location.addEventListener("click", event => {
+    toggleHide(navWrapper);
+    fetchGeocode(event.target.firstChild.nodeValue);
+  })
+);
+
+searchInput.addEventListener("change", event => {
+  toggleHide(navWrapper);
+  fetchGeocode(event.target.value);
+});
 
 // load site
-printWeather("Ulricehamn");
-printForecast("Ulricehamn");
+fetchGeocode("Ulricehamn");

@@ -101,7 +101,8 @@ button {
   line-height: normal!important;
 }
 
-.nav-item {
+.nav-item,
+.geo {
   line-height: 1rem;
   padding: 0.5rem;
   border-radius: 2.5rem;
@@ -118,12 +119,17 @@ button {
   color: white;
 }
 
-.nav-item:active {
+.nav-item:active,
+.geo:active {
   border: var(--blue) solid 1px;
 }
 
 .geo {
   margin-bottom: 0.5rem;
+}
+
+.geo:hover i {
+  color: var(--blue);
 }
 
 .close {
@@ -284,6 +290,14 @@ button {
 
 .hidden {
   display: none;
+}
+
+.error {
+  width: 100%;
+  font-size: 0.875rem;
+  color: rgb(168, 26, 26);
+  background-color: white;
+  padding: 1rem;
 }
 
 /* Fullscreen */
