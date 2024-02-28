@@ -7,22 +7,30 @@ const currentWeatherSection = document.getElementById(
   "section__current-weather"
 );
 const forecastSection = document.getElementById("section__forecast");
+let currentTheme = [];
 
 // Function that handles the theme colors depending on the current weather
 const handleColorTheme = (currentWeatherType) => {
-  const theme = weatherData[currentWeatherType];
+  // Set weatherType as the key to the weatherData object to get the color theme.
+  // Set default as empty object.
+  currentTheme = weatherData[currentWeatherType] || {};
 
-  if (!theme) {
+  if (!currentTheme) {
     console.log("Load default theme");
     return false;
+  } else {
+    // Set main theme for weather app
+    main.style.backgroundColor = currentTheme.bgColor;
+    main.style.color = currentTheme.color;
+
+    // Set opacity to footer
+    footer.style.backgroundColor = currentTheme.color;
   }
+};
 
-  // Set main theme for weather app
-  main.style.backgroundColor = theme.bgColor;
-  main.style.color = theme.color;
-
-  // Set opacity to footer
-  footer.style.backgroundColor = theme.color;
+// Function to get the current weather theme based on the weather type
+export const getCurrentTheme = () => {
+  return currentTheme;
 };
 
 // Function that will get the correct time for sunset and sunrise
@@ -41,7 +49,9 @@ const formateTime = (dateUTC, timezone) => {
 
 // Function that handels color theme
 export const handleWeatherData = async (data) => {
-  let currentWeatherType = data.weather[0].main;
+  // Getting the weather type from api
+  const currentWeatherType = data.weather[0].main;
+  // Pass the weather type as an argument to handle the theme colors
   handleColorTheme(currentWeatherType);
 
   const sunriseUTC = new Date(data.sys.sunrise * 1000);
@@ -89,7 +99,9 @@ export const handleForecastData = async (data) => {
 
     forecastSection.innerHTML += `
       <div class="forecast-container">
-        <div class="forecast-wrapper">
+        <div class="forecast-wrapper" style="border-bottom: 1px dashed ${
+          currentTheme.color
+        }">
           <p>${dayOfWeek}</p>
           <span>${Math.round(day.main.temp * 10) / 10}&deg;</span>
         </div>
