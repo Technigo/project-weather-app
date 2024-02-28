@@ -1,4 +1,4 @@
-
+//Step 1 - Get started with the weather API
 fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=bb3a8ca602b6560b4bf988de0be7f379")
     .then((response)=>{
         return response.json();
