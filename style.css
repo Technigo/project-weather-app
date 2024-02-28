@@ -1,3 +1,44 @@
-body {
-  background-color: cadetblue;
+* {
+  box-sizing: border-box;
 }
+
+body {
+  padding: 40px;
+  font-family: "Montserrat";
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 37px;
+}
+
+td {
+  padding: 0;
+  margin: 0;
+  font-size: 21px;
+}
+
+img {
+  max-width: 76px;
+  max-height: 73px;
+  margin: 50px 0 0 0;
+}
+
+.cloudy {
+  background-color: #f4f7f8;
+  color: #f47775;
+}
+
+.rain {
+  background-color: #bde8fa;
+  color: #164a68;
+}
+
+.clear {
+  background-color: #f7e9b9;
+  color: #2a5510;
+}
+
+/*.weather-today {
+  
+}*/
