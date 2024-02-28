@@ -74,7 +74,7 @@ export const handleWeatherData = async (data) => {
         <p>sunset ${formateTime(sunsetUTC, data.timezone)}</p>
         </div>
         <img
-        src="${currentTemp > 15 ? weatherInfo.coldIcon : weatherInfo.warmIcon}"
+        src="${currentTemp < 15 ? weatherInfo.coldIcon : weatherInfo.warmIcon}"
         alt="${weatherInfo.alt}"
         width="80"
         height="80"
