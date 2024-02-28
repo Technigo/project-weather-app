@@ -87,16 +87,12 @@ const BASE_FORECAST_URL = "https://api.openweathermap.org/data/2.5/forecast/";
 
 const weatherForecastURL = `${BASE_FORECAST_URL}?q=${city}&units=metric&APPID=${API_KEY}`;
 
-const fetchWeatherForecastAPI = () => {
+const fetchWeatherForecastAPI = () =>
   fetch(weatherForecastURL)
     .then((response) => {
       return response.json();
     })
     .then((weatherForecastData) => {
-      weatherForecastData.list.forEach((forecast) => {
-        console.log(forecast);
-      });
+      console.log(weatherForecastData);
     });
-};
-
 fetchWeatherForecastAPI();
