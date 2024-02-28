@@ -56,7 +56,7 @@ li {
 }
 .nav-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
 }
 .nav-container label {
@@ -86,11 +86,19 @@ input::placeholder {
     justify-content: center;
     width: calc(100% - 100px);
   }
+  .nav-container {
+    display: flex;
+    flex-direction: row;
+  }
 }
 @media (min-width: 1025px) {
   .forecast-list {
     align-items: center;
     justify-content: center;
-    width: calc(100% - 500px);
+    width: calc(100% - 700px);
+  }
+  .nav-container {
+    display: flex;
+    flex-direction: row;
   }
 }

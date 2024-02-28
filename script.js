@@ -12,6 +12,10 @@ let API_URL = `https://api.openweathermap.org`
 let API_KEY = `1c745605f5cf52ece2c729289e47acc7`
 let nameCity = 'zurich' //default
 let country = 'CH' //default
+document.addEventListener('DOMContentLoaded', () => {
+  alert('APP ready!')
+  getWeather(nameCity, country)
+})
 
 navContainer.innerHTML = `  <label for="favoriteCities">Choose a city :</label>
 <select id="favoriteCities">
@@ -22,7 +26,7 @@ navContainer.innerHTML = `  <label for="favoriteCities">Choose a city :</label>
 </select>
 <label for="searchCity">Search for a city :</label>
 <input type="text" id="searchCity" placeholder="Enter city name">
-<button id="searchBtn">Search</button>`
+<button>Search</button>`
 
 const getWeather = (nameCity, country) => {
   fetch(
@@ -83,7 +87,7 @@ const getWeather = (nameCity, country) => {
           case condition >= 500 && condition <= 531:
             document.body.style.backgroundColor = '#BDE8FA'
             document.body.style.color = '#164A68'
-            weatherDescription.innerHTML = `<img src="./noun_Umbrella_2030530.svg"><h3> Don't forget your umbrella. <br>It's wet in ${data.name} today.</h3> `
+            weatherDescription.innerHTML = `<img src="./assets/noun_Umbrella_2030530.svg"><h3> Don't forget your umbrella. <br>It's wet in ${data.name} today.</h3> `
             break
           // HTML for snowy days
           case condition >= 600 && condition <= 622:
@@ -101,14 +105,14 @@ const getWeather = (nameCity, country) => {
           case condition === 800:
             document.body.style.backgroundColor = '#F7E9B9'
             document.body.style.color = '#2A5510'
-            weatherDescription.innerHTML = `<img src="./noun_Sunglasses_2055147.svg"><h3> Get your sunnies on.<br> ${data.name} is looking rather great today. </h3> `
+            weatherDescription.innerHTML = `<img src="./assets/noun_Sunglasses_2055147.svg"><h3> Get your sunnies on.<br> ${data.name} is looking rather great today. </h3> `
             break
           // HTML for cloudy days
           case condition >= 801 && condition <= 804:
             document.body.style.backgroundColor = 'white'
             document.body.style.color = '#F47775'
 
-            weatherDescription.innerHTML = `<img src="./noun_Cloud_1188486.svg"><h3> Light a fire and get cozy.
+            weatherDescription.innerHTML = `<img src="./assets/noun_Cloud_1188486.svg"><h3> Light a fire and get cozy.
             <br>${data.name} is looking grey today.</h3> `
             break
           default:
