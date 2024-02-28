@@ -15,9 +15,11 @@ Start by briefly describing the assignment in a sentence or two. Keep it short a
     7. Handle theme colors depending on type of weather
     8. Add loader and background image
 
-## The problem
+## Reusing Main Function for API Requests
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Problem: I've used the same main function to fetch API data for both current weather and forecast. However, it seems like there are conflicts when attempting to reuse it for both purposes.
+
+Explanation: In order to make the function more reusable I passed both the API URL and the correspondling handling function as parameters to the "getDataFromApi". I used the "dataHandler" parameter to be able to invoke both functions.
 
 ## View it live
 
