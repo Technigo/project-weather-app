@@ -25,21 +25,22 @@ const remindTestCityName = (param) => {
     let dayWeather = param.weather[0].main
     let description = param.weather[0].description
     let temperature = Math.round(param.main.temp)
+    let cityName = param.name
     if (dayWeather === 'clear') {
         temSunTime.innerHTML = `
         <P> ${description} | ${temperature}</p>`
         remindImgText.innerHTML = `
-        <h3 id="remind-text">Get your sunnies on. ${param.name} is looking rather great today.</h3>`
+        <h3 id="remind-text">Get your sunnies on. ${cityName} is looking rather great today.</h3>`
     } else if (dayWeather === 'rain' || 'Drizzle') {
         temSunTime.innerHTML = `
         <P> ${description} | ${temperature}</p>`
         remindImgText.innerHTML = `
-        <h3 id="remind-text">Don't forget your umbrella. It's wet in ${param.name} today.</h3>`
+        <h3 id="remind-text">Don't forget your umbrella. It's wet in ${cityName} today.</h3>`
     } else if (dayWeather === 'cloudy') {
         temSunTime.innerHTML = `
         <P> ${description} | ${temperature}</p>`
         remindImgText.innerHTML = `
-        <h3 id="remind-text">Light a fire and get cosy. ${param.name} is looking grey today.</h3>`
+        <h3 id="remind-text">Light a fire and get cosy. ${cityName} is looking grey today.</h3>`
     } 
     
 }
