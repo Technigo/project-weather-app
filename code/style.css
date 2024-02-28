@@ -1,3 +1,4 @@
+/*General styling*/
 * {
   box-sizing: border-box;
   margin: 0;
@@ -9,25 +10,19 @@ body {
   font-weight: 300;
 }
 
-.search-bar {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 20px 0 20px;
-}
-
 .container {
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
 
-.temp-text {
-  display: flex;
-}
+/*Styling for upper section*/
 
-.celsius {
-  font-size: 40px;
-  padding-top: 10px;
+/*Styling for search bar*/
+.search-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 20px 0 20px;
 }
 
 .upper-section,
@@ -53,9 +48,18 @@ body {
   padding-top: 70px;
 }
 
+.temp-text {
+  display: flex;
+}
+
 .temperature {
   padding-left: 30px;
   font-size: 120px;
+}
+
+.celsius {
+  font-size: 40px;
+  padding-top: 10px;
 }
 
 .city {
@@ -76,6 +80,7 @@ body {
   font-size: 22px;
 }
 
+/*Styling for lower section*/
 table {
   padding-top: 70px;
   width: 100%;
@@ -95,10 +100,10 @@ tr {
 
 /*Media query for viewports larger than 1250px*/
 @media (min-width: 1000px) {
-  container {
+  /* container {
     height: 400px;
     width: 300px;
     margin-left: 33%;
     border: solid red;
-  }
+  } */
 }
