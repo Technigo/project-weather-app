@@ -104,7 +104,7 @@ export const handleForecastData = async (data) => {
     forecastSection.innerHTML += `
       <div class="forecast-container">
         <div class="forecast-wrapper" style="border-bottom: 1px dashed ${
-          currentTheme.color
+          currentTemp < 15 ? currentTheme.color : currentTheme.bgColor
         }">
           <p>${dayOfWeek}</p>
           <span>${Math.round(day.main.temp * 10) / 10}&deg;</span>
