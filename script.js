@@ -58,3 +58,4 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
 document.addEventListener('DOMContentLoaded', () => {
     getForecast();
 });
+
