@@ -4,19 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
     <title>Todays weather</title>
   </head>
   <body>
-    <section class="weather-today">
-      <div class="location" id="location">
-        <h1>Stad</h1>
-      </div>
+    <section class="weather-today-section1">
       <div class="todays-weather" id="todays-weather">
-        <h1>Väder</h1>
+        <!-- <h1>Väder</h1> -->
       </div>
       <div class="todays-temperature" id="todays-temperature">
-        <h1>Temperatur</h1>
+        <!-- <h1>Temperatur</h1> -->
       </div>
+    </section>
+    <section class="weather-today-section2">
       <div class="sunrise" id="sunrise">
         <h1>Sunrise</h1>
       </div>
@@ -27,10 +32,14 @@
 
     <section class="icon-and-text">
       <div class="icon" id="icon">
-        <img src="./design/design1/assets/Group16.png" alt="moln" />
+        <img
+          src="./design/design2/icons/noun_Cloud_1188486.svg"
+          alt="sunglasses"
+        />
       </div>
       <div class="text" id="text">
         <h2>Text om vädret idag</h2>
+        <div class="location" id="location"></div>
       </div>
     </section>
 

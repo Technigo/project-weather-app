@@ -36,7 +36,7 @@ const fetchWeatherTodayAPI = () => {
       console.log(weatherTodayData.name);
 
       // Update DOM with today's temperature
-      todaysTemperature.innerHTML = `<h1>${weatherTodayData.main.temp}</h1>`;
+      todaysTemperature.innerHTML = `<h1>| ${weatherTodayData.main.temp}</h1>`;
       console.log(weatherTodayData.main.temp);
 
       // Update DOM with today's weather
