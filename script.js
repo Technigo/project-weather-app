@@ -336,6 +336,8 @@ const displayWeeklyWeather = (weatherData) => {
   //getSingleDay[i].main.temp get arr
   //get the highest and the lowest
   //brighter color on highest
+
+  //update feature in branch
   console.log(getSingleDay);
 };
 
