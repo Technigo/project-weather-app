@@ -1,15 +1,17 @@
 export const weatherData = {
   Clear: {
-    main: "Clear",
-    icon: "./assets/weather-icons/noun_Sunglasses_2055147.svg",
+    main: "clear",
+    coldIcon: "./assets/weather-icons/noun_Sunglasses_2055147.svg",
+    warmIcon: "./assets/weather-icons/noun_Sunglasses_Warm_2055147.svg",
     alt: "clear",
     color: "#2a5510",
     bgColor: "#f7e9b9",
     text: "Get your sunnies on. Stockholm is looking rather great today.",
   },
   Rain: {
-    main: "Rain",
-    icon: "./assets/weather-icons/noun_Umbrella_2030530.svg",
+    main: "rain",
+    coldIcon: "./assets/weather-icons/noun_Umbrella_2030530.svg",
+    warmIcon: "./assets/weather-icons/noun_Umbrella_Warm_2030530.svg",
     alt: "rain",
     color: "#164a68",
     bgColor: "#a3def7",
@@ -17,15 +19,43 @@ export const weatherData = {
   },
   Clouds: {
     main: "cloudy",
-    icon: "./assets/weather-icons/noun_Cloud_1188486.svg",
+    coldIcon: "./assets/weather-icons/noun_Cloud_1188486.svg",
+    warmIcon: "./assets/weather-icons/noun_Cloud_Warm_1188486.svg",
     alt: "cloudy",
     color: "#f47775",
     bgColor: "#f4f7f8",
     text: "Light a fire and get cozy. Stockholm is looking grey today.",
   },
+  // Thunderstorm: {
+  //   main: "thunderstorm",
+  //   icon: "./assets/weather-icons/noun_Cloud_1188486.svg",
+  //   alt: "thunderstorm",
+  //   color: "#f47775",
+  //   bgColor: "#f4f7f8",
+  //   text: "Light a fire and get cozy. Stockholm is looking grey today.",
+  // },
+  // Snow: {
+  //   main: "snow",
+  //   icon: "./assets/weather-icons/noun_Snowflake_1911319.svg",
+  //   alt: "snow",
+  //   color: "#3366cc",
+  //   bgColor: "#e6f7ff",
+  //   text: "Bundle up! Stockholm is covered in snow today.",
+  // },
+  // Drizzle: {
+  //   main: "drizzle",
+  //   icon: "./assets/weather-icons/noun_Rain_1537599.svg",
+  //   alt: "drizzle",
+  //   color: "#6699cc",
+  //   bgColor: "#cce6ff",
+  //   text: "Light rain in Stockholm. Keep your umbrella handy.",
+  // },
+  // Atmosphere: {
+  //   main: "atmosphere",
+  //   icon: "./assets/weather-icons/noun_Mist_2030548.svg",
+  //   alt: "atmosphere",
+  //   color: "#b3b3b3",
+  //   bgColor: "#f2f2f2",
+  //   text: "Stockholm is a bit misty today. Take care on the roads.",
+  // },
 };
-
-// Thunderstorm
-// Drizzle
-// Snow
-// Atmosphere

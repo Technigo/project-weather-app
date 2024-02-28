@@ -21,7 +21,7 @@ const socialInfo = {
 const displayFooter = () => {
   Object.entries(socialInfo).forEach(([social, key]) => {
     footer.innerHTML += `
-    <a href="${key.link}" target="_blank">
+    <a href="${key.link}" target="_blank id=${social}">
         <img src="${key.icon}" alt="${key.alt}"/>
     </a>
     `;

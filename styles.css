@@ -34,7 +34,6 @@
 .section__forecast .forecast-container .forecast-wrapper {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px dashed #000;
   margin-top: 0.8em;
   padding: 0.5em 0;
 }

@@ -7,22 +7,34 @@ const currentWeatherSection = document.getElementById(
   "section__current-weather"
 );
 const forecastSection = document.getElementById("section__forecast");
+let currentTheme = [];
+let currentTemp = "";
 
 // Function that handles the theme colors depending on the current weather
-const handleColorTheme = (currentWeatherType) => {
-  const theme = weatherData[currentWeatherType];
+const handleColorTheme = (currentWeatherType, currentTemp) => {
+  // Set weatherType as the key to the weatherData object to get the color theme.
+  // Set default as empty object.
+  currentTheme = weatherData[currentWeatherType] || {};
 
-  if (!theme) {
+  if (!currentTheme) {
     console.log("Load default theme");
     return false;
+  } else {
+    // Set main theme for weather app
+    main.style.backgroundColor =
+      currentTemp > 15 ? currentTheme.bgColor : currentTheme.color;
+    main.style.color =
+      currentTemp > 15 ? currentTheme.color : currentTheme.bgColor;
+
+    // Set opacity to footer
+    footer.style.backgroundColor =
+      currentTemp > 15 ? currentTheme.color : "rgb(68, 68, 68)";
   }
+};
 
-  // Set main theme for weather app
-  main.style.backgroundColor = theme.bgColor;
-  main.style.color = theme.color;
-
-  // Set opacity to footer
-  footer.style.backgroundColor = theme.color;
+// Function to get the current weather theme based on the weather type
+export const getCurrentTheme = () => {
+  return currentTheme;
 };
 
 // Function that will get the correct time for sunset and sunrise
@@ -41,8 +53,12 @@ const formateTime = (dateUTC, timezone) => {
 
 // Function that handels color theme
 export const handleWeatherData = async (data) => {
-  let currentWeatherType = data.weather[0].main;
-  handleColorTheme(currentWeatherType);
+  // Getting the weather type from api
+  const currentWeatherType = data.weather[0].main;
+  currentTemp = data.main.temp;
+
+  // Pass the weather type as an argument to handle the theme colors
+  handleColorTheme(currentWeatherType, currentTemp);
 
   const sunriseUTC = new Date(data.sys.sunrise * 1000);
   const sunsetUTC = new Date(data.sys.sunset * 1000);
@@ -53,14 +69,12 @@ export const handleWeatherData = async (data) => {
   currentWeatherSection.innerHTML += `
   <div class="current-weather-container">
     <div class="current-weather">
-        <p>${weatherInfo.main} | ${
-    Math.round(data.main.temp * 10) / 10
-  }&deg;</p>
+        <p>${weatherInfo.main} | ${Math.round(currentTemp * 10) / 10}&deg;</p>
         <p>sunrise ${formateTime(sunriseUTC, data.timezone)}</p>
         <p>sunset ${formateTime(sunsetUTC, data.timezone)}</p>
         </div>
         <img
-        src="${weatherInfo.icon}"
+        src="${currentTemp > 15 ? weatherInfo.coldIcon : weatherInfo.warmIcon}"
         alt="${weatherInfo.alt}"
         width="80"
         height="80"
@@ -89,7 +103,9 @@ export const handleForecastData = async (data) => {
 
     forecastSection.innerHTML += `
       <div class="forecast-container">
-        <div class="forecast-wrapper">
+        <div class="forecast-wrapper" style="border-bottom: 1px dashed ${
+          currentTheme.color
+        }">
           <p>${dayOfWeek}</p>
           <span>${Math.round(day.main.temp * 10) / 10}&deg;</span>
         </div>
