@@ -19,10 +19,11 @@ const getGeolocation = () => {
 
 // Show and hide loader while waiting for promise
 const showLoader = () => {
+  // Make sure to run the loader only once
   if (loaderActive) {
     return;
   }
-
+  // Add letters to load and split them into an array to prepare for looping each letter
   const loaderLetters = "loading";
   const loaderArray = loaderLetters.split("");
   loader.style.display = "block";
@@ -41,7 +42,7 @@ const hideLoader = () => {
 };
 
 // Fetch data from Openweather Api
-export const getDataFromAPI = async (BASE_URL, dataHandler) => {
+export const getDataFromApi = async (BASE_URL, dataHandler) => {
   try {
     // Show loader before making the asynchronous call
     showLoader();
@@ -72,7 +73,7 @@ export const getDataFromAPI = async (BASE_URL, dataHandler) => {
 
 // Using the fetch api function for both weather and forecast
 const WEATHER_BASE_URL = "https://api.openweathermap.org/data/2.5/weather?";
-getDataFromAPI(WEATHER_BASE_URL, handleWeatherData);
+getDataFromApi(WEATHER_BASE_URL, handleWeatherData);
 
 const FORECAST_BASE_URL = "https://api.openweathermap.org/data/2.5/forecast?";
-getDataFromAPI(FORECAST_BASE_URL, handleForecastData);
+getDataFromApi(FORECAST_BASE_URL, handleForecastData);
