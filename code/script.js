@@ -35,6 +35,7 @@ function renderWeather(weather) {
 
   //"new.date" is the timestamp from the 1970's. "*1000 is the turn the time into milliseconds, because js want's it like that."
   const sunriseTime = new Date(weather.sys.sunrise * 1000);
+  
   sunrise.innerHTML = hourAndminutes(sunriseTime);
 
   const sunsetDate = new Date(weather.sys.sunset * 1000);
@@ -73,6 +74,14 @@ function renderForecast(forecast) {
       days.innerHTML += `${date.toLocaleDateString("en", {
         weekday: "short",
       })} ${Math.round(day.main.temp)}&deg;`;
+
+   days.innerHTML += `
+   <li> 
+    <span> ${date}</span>
+    <span>${main.temp}&deg</span>
+     `
+
+
     }
   }
 }
