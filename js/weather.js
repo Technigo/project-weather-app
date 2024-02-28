@@ -22,13 +22,13 @@ const handleColorTheme = (currentWeatherType, currentTemp) => {
   } else {
     // Set main theme for weather app
     main.style.backgroundColor =
-      currentTemp > 15 ? currentTheme.bgColor : currentTheme.color;
+      currentTemp < 15 ? currentTheme.bgColor : currentTheme.color;
     main.style.color =
-      currentTemp > 15 ? currentTheme.color : currentTheme.bgColor;
+      currentTemp < 15 ? currentTheme.color : currentTheme.bgColor;
 
     // Set opacity to footer
     footer.style.backgroundColor =
-      currentTemp > 15 ? currentTheme.color : "rgb(68, 68, 68)";
+      currentTemp < 15 ? currentTheme.color : "rgb(68, 68, 68)";
   }
 };
 
