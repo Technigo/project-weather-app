@@ -1,0 +1,207 @@
+:root {
+    --text-color: beige; 
+}
+
+body {
+    color: var(--text-color);
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100%;
+    background-color: beige;
+}
+
+.container {
+    background-color: rgb(87, 128, 85);
+    width: 100%;
+    max-width: 375px;
+    border-radius: 20px;
+    margin: 0 auto;
+    padding: 20px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 800px;
+}
+
+/* Search bar */
+.nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    z-index: 1;
+}
+
+.search-button {
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    color: var(--text-color);    
+    border: none;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.search-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.search-bar {
+    width: 100%;
+    color: var(--text-color);
+    background-color: rgba(255, 255, 255, 0.3);
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    margin: auto;
+    height: 35px;
+    font-size: 18px;
+}
+
+.search-bar:focus {
+    outline: none;
+}
+
+.feature-image {
+    background-image: url('https://images.rawpixel.com/image_1000/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3Vwd2s1ODgyNjIxMS13aWtpbWVkaWEtaW1hZ2Uta293YW5wcnkuanBn.jpg');    
+    position: absolute;
+    background-repeat: no-repeat;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 500px; 
+    z-index: 1; 
+    opacity: 50%;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+}
+
+/* Speaks for itself */
+.cityText {
+    font-size: 46px;
+    font-weight: 600;
+    margin: 0 0 5px 0;
+    color: var(--text-color);
+}
+
+.description-icon {
+    display: flex;
+    align-items: center;
+}
+
+#mainIcon img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+}
+
+/* Sunrise and sunset position etc */
+.sun-position {
+    position: relative;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#sunriseText, 
+#sunsetText {
+    display: flex;
+    flex-direction: row;
+    font-size: 18px; 
+    color: var(--text-color);
+}
+
+#sunriseText p, 
+#sunsetText p {
+    padding: 6px;
+}
+
+/* Temperature piosition etc  */
+.tempText {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 46px;
+    color: var(--text-color);
+    height: 150px;
+    font-weight: 200;
+}
+
+.tempTextCelsius {
+    display: inline;
+    font-size: 36px;
+    margin-top: 0;
+    margin-bottom: 23px;
+    margin-left: 5px;
+    color: var(--text-color);
+}
+
+.local-time {
+    font-weight: 200;
+    font-size: 28px;
+    color: var(--text-color);
+    margin: 15px 0 15px 0;
+}
+
+#switchBtn {
+    background: rgb(22, 82, 51);
+    border: none;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 0 75%;
+    cursor: pointer;
+}
+
+.switch-section {
+    z-index: 3;
+}
+
+.fa-solid {
+    font-size: 25px;
+}
+
+/* Five-day forecast */
+table {
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+}
+
+td {
+    text-align: center;
+    padding: 15px;
+}
+
+td p {
+    padding: 3px;
+}
+
+.icon img {
+    object-fit: cover;
+    width: 55px;
+    height: 35px;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(87, 128, 85)
+}
+
+@media (min-width: 600px) {
+.container {
+    box-shadow: 5px 5px 10px 0px rgb(121, 144, 121);
+}
+}
