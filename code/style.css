@@ -80,22 +80,20 @@ body {
   font-size: 22px;
 }
 
-/*Styling for lower section*/
-table {
-  padding-top: 70px;
-  width: 100%;
+/*Styling for lower section (forecast)*/
+.forecast-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding-top: 90px;
+}
+
+.forecast-container {
+  display: flex;
+  justify-content: space-around;
   font-size: 20px;
   color: #707070;
-}
-
-td {
-  text-align: left;
-  padding: 16px;
-}
-
-tr {
-  display: flex;
-  justify-content: space-evenly;
+  padding: 0 20px 30px 20px;
 }
 
 /*Media query for viewports larger than 1250px*/

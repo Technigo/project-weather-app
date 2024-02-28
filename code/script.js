@@ -87,3 +87,16 @@ const fetchWeatherData = () => {
 }
 
 fetchWeatherData()
+
+////////// Feature 2: Forecast 5 days//////////
+
+const fetchWeatherForecast = () => {
+  fetch(`${forecastURL}${cityName}&appid=${API_KEY}`)
+    .then((response) => response.json())
+    .then((json) => {
+      console.log(json)
+
+      //End of fetchWeatherForecast
+    })
+}
+fetchWeatherForecast()
