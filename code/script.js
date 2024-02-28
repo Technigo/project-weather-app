@@ -41,4 +41,36 @@ fetch(url)
   });
 
 
+
+  const secondUrl = "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=YOUR_API_KEY";
+  fetch(secondUrl)
+    .then((response) => response.json())
+    .then((secondForecast) => {
+      const days = document.querySelector(".days");
+    })
+
+
+  /*
+ 
+
+
+  
+  return fetch(apiUrl)
+    .then((response) => response.json())
+    .catch((error) => {
+      console.error("Error:", error);
+      throw error;
+
+
+
+    // Function to render the weekly weather forecast
+    const renderWeeklyForecast = (data) => {
+    const forecastList = data.list;
+    const forecastContainer = document.getElementById("forecast-list");
+    forecastContainer.innerHTML = ""; // Clear previous forecast data
+
+
+  });
+
+
   
