@@ -18,7 +18,7 @@ const forecastUrl =
 //Declare funtions "hourAndminutes" and "renderWeather"
 
 //Here we turn the time into a string and set it to xx.xx (four numbers)
-//"date" is an object built in in js, so you can work with time and dates. 
+//"date" is an object built in in js, so you can work with time and dates.
 function hourAndminutes(date) {
   return `${date.getHours().toString().padStart(2, "0")}.${date
     .getMinutes()
@@ -65,21 +65,19 @@ fetch(weatherUrl)
 function renderForecast(forecast) {
   //for is because this is a loop that runs through the days. Before working with degree it was only one value (no array).
   for (const day of forecast.list) {
-
     const date = new Date(day.dt * 1000);
-    //13 is the time of the day when we are going to measure the temperature. 
+    //13 is the time of the day when we are going to measure the temperature.
     if (date.getHours() == 13) {
-    days.innerHTML += `${date.toLocaleDateString("en", {
-      weekday: "short",
-    })} ${Math.round(day.main.temp)}&deg;`;
+      //"toLocalDateString" is to make days like mon, tue, wed (to three characters)
+      days.innerHTML += `${date.toLocaleDateString("en", {
+        weekday: "short",
+      })} ${Math.round(day.main.temp)}&deg;`;
     }
   }
 }
 
-
 fetch(forecastUrl)
   .then((response) => response.json())
   .then((forecast) => {
-    renderForecast(forecast);   
-    
+    renderForecast(forecast);
   });
