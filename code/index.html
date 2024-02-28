@@ -1,19 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
     <title>My Weather App</title>
-</head>
-<body>
-    <div class="container">
-        <p id="main-weather">Main Weather</p>
-        <p id="sun">Sun</p>
-        <img src="#" alt="img">
-        <h1 id="title">Title</h1>
-        <p id="dates"></p>
+  </head>
+  <body>
+    <div class="clear container">
+      <p class="clear weather-style" id="main-weather">Main Weather</p>
+      <p class="clear sun-style" id="sun">Sun</p>
+      <img
+        class="clear img-style"
+        src="/design/design2/icons/noun_Sunglasses_2055147.png"
+        alt="img"
+      />
+      <h1 class="clear title-style" id="title">Title</h1>
+      <div class="forecast-style">
+        <p class="clear dates-style" id="dates"></p>
+        <p class="clear temp-style" id="temp"></p>
+        <div class="line01"></div>
+        <div class="line02"></div>
+        <div class="line03"></div>
+        <div class="line04"></div>
+        <div class="line05"></div>
+        <div class="line06"></div>
+      </div>
     </div>
     <script src="./script.js"></script>
-</body>
+  </body>
 </html>

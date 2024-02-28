@@ -1,11 +1,97 @@
 * {
-    background-color: #F7E9B9;
-    box-sizing: border-box;
-    font-family: "Montserrat", sans-serif;
+  background-color: #f7e9b9;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  color: #2a5510;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
-    border: solid 1px #707070;
-    width: 375px;
-    height: 823px;
+  border: solid 1px #707070;
+  width: 375px;
+  height: 823px;
+  overflow: hidden;
 }
+
+.weather-style {
+  height: 38px;
+  width: 296px;
+  margin-top: 49px;
+  margin-left: 47px;
+  margin-bottom: 0;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 25.6px;
+}
+
+.sun-style {
+  height: 67px;
+  width: 296px;
+  margin-top: -11px;
+  margin-left: 47px;
+  margin-bottom: 0;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 25.6px;
+}
+
+.img-style {
+  height: 51.72px;
+  width: 73.05px;
+  margin-left: 41px;
+  margin-top: 61.3px;
+}
+
+.title-style {
+  height: 245px;
+  width: 296px;
+  margin-left: 40px;
+  margin-top: 17.85px;
+  font-weight: 700;
+  font-size: 37px;
+  line-height: 45.1px;
+}
+
+.forecast-style {
+  display: grid;
+  grid-template-columns: 2 auto;
+  grid-template-rows: 5 1fr;
+  row-gap: 1px;
+  height: 248px;
+  width: 292px;
+  margin-top: 15px;
+  position: relative;
+}
+
+.dates-style {
+  height: 248px;
+  width: 233px;
+  margin-left: 40px;
+  margin-top: 13px;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 36px;
+  grid-row: 1/5;
+  grid-column: 1;
+}
+
+.temp-style {
+  height: 242px;
+  width: 59px;
+  margin-left: 26px;
+  margin-top: 15px;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 36px;
+  grid-row: 1/5;
+  grid-column: 2;
+}
+
+/*.line01 {
+  background-color: #707070;
+  width: 296px;
+  height: 50px;
+  margin-left: 40.5px;
+  grid-row: 1;
+}*/
