@@ -31,17 +31,19 @@ const remindTestCityName = (param) => {
         <P> ${description} | ${temperature}</p>`
         remindImgText.innerHTML = `
         <h3 id="remind-text">Get your sunnies on. ${cityName} is looking rather great today.</h3>`
-    } else if (dayWeather === 'rain' || 'Drizzle') {
+    } else if (dayWeather === 'Rain' || dayWeather === 'Drizzle') {
         temSunTime.innerHTML = `
         <P> ${description} | ${temperature}</p>`
         remindImgText.innerHTML = `
         <h3 id="remind-text">Don't forget your umbrella. It's wet in ${cityName} today.</h3>`
-    } else if (dayWeather === 'cloudy') {
+    } else if (dayWeather === 'Clouds') {
         temSunTime.innerHTML = `
         <P> ${description} | ${temperature}</p>`
         remindImgText.innerHTML = `
         <h3 id="remind-text">Light a fire and get cosy. ${cityName} is looking grey today.</h3>`
-    } 
-    
+    } else {
+        remindImgText.innerHTML = `
+        <h3 id="remind-text">Oops... Something went wrong</h3>`
+    }
 }
 
