@@ -1,0 +1,32 @@
+body{
+  font-family: sans-serif, 'Gill Sans';
+  margin: 0;
+  box-sizing: border-box;
+
+}
+
+main{
+  min-height: 100vh;
+}
+
+footer{
+  position: sticky;
+  bottom: 0;
+  max-height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+footer img{
+  padding: 3px 10px;
+  max-height: 30px;
+  background-color: ;
+}
+
+footer a{
+  text-decoration: none;
+  font-size: 0.575em;
+}
