@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="./assets/weather-icon.png" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Weather App</title>
+  </head>
+  <body>
+    <div id="container" class="container">
+      <!--Div for upper part of app-->
+      <div class="upper-section">
+        <div class="search-bar">
+          <p>Search city</p>
+          <p id="date"></p>
+        </div>
+        <div class="current-weather">
+          <div class="upper-text">
+            <p class="temperature" id="temperature">15</p>
+            <p class="city" id="city">Cannes</p>
+            <p class="weather" id="weather">Clear</p>
+          </div>
+          <div class="sun-text">
+            <p>sunrise</p>
+            <p id="sunrise">00:00</p>
+            <p>sunset</p>
+            <p id="sunset">00:00</p>
+          </div>
+        </div>
+      </div>
+      <!--Div for lower part of app-->
+      <div class="lower-section">
+        <!--Table for weather the upcoming 5 days-->
+        <div id="forecast-section">
+          <table>
+            <tbody>
+              <tr>
+                <td>Day 1</td>
+                <td>
+                  <img
+                    src="./design/design1/assets/Group16.png"
+                    alt="Monday Icon" />
+                </td>
+                <td><span id="monday-temperature"></span>11°C/5°C</td>
+              </tr>
+              <tr>
+                <td>Day 2</td>
+                <td>
+                  <img
+                    src="./design/design1/assets/Group34.png"
+                    alt="Tuesday Icon" />
+                </td>
+                <td><span id="tuesday-temperature"></span>11°C/5°C</td>
+              </tr>
+              <tr>
+                <td>Day 3</td>
+                <td>
+                  <img
+                    src="./design/design1/assets/Group34.png"
+                    alt="Wednesday Icon" />
+                </td>
+                <td><span id="wednesday-temperature"></span>11°C/5°C</td>
+              </tr>
+              <tr>
+                <td>Day 4</td>
+                <td>
+                  <img
+                    src="./design/design1/assets/Group37.png"
+                    alt="Thursday Icon" />
+                </td>
+                <td>
+                  <span id="./design/design1/assets/Group16.png"></span>11°C/5°C
+                </td>
+              </tr>
+              <tr>
+                <td>Day 5</td>
+                <td>
+                  <img
+                    src="./design/design1/assets/Group38.png"
+                    alt="Friday Icon" />
+                </td>
+                <td><span id="friday-temperature"></span>11°C/5°C</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
