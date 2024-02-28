@@ -4,9 +4,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/2e83762929.js" crossorigin="anonymous"></script>
     <title>Weather app</title>
   </head>
   <body>
-    <script src="./script.js"></script>
+      <header>
+        <!-- hamburgermenu for show -->
+        <i class="fa-solid fa-bars"></i>
+      </header>
+      <main>
+      <section class="weather-today">
+        <!-- div with info about todays forecast -->
+        <div class="todays-forecast">
+          <div class="todays-temperature" id="todays-temperature">
+          </div>
+          <div class="weather-location" id="weather-location">
+          </div>
+          <div class="todays-weather" id="todays-weather">
+          </div>
+          <div class="sun-type" id="sun-type">
+            <div class="todays-sunrise" id="sunrise">
+             </div>
+             <div class="todays-sunset" id="sunset">
+             </div>
+          </div>
+        </div>
+        <!-- div with the time of day for icons -->
+        <div class="time-of-day" id="time-of-day">
+            <div class="day-time" id="day-time">
+             </div>
+             <div class="night-time" id=night-time>
+             </div>
+        </div>
+        </div>
+
+        <button class="switch-button"id="switch-button"> Switch-button</button>
+      </section>
+
+      <section class="weather-forecast">
+        <div class="forecast-list" id="forecast-list"></div>
+      </section>
+    </main>
+    <script src="./fetch-weather-api.js"></script>
   </body>
 </html>
