@@ -1,6 +1,7 @@
 const actualWeather = document.getElementById('actualWeather')
 const weatherDescription = document.getElementById('weatherDescription')
 const forecastList = document.getElementById('forecastList')
+const body = document.getElementById('body')
 
 //variables
 let currentDate
@@ -44,8 +45,64 @@ const weatherZurich = () => {
 
       actualWeather.innerHTML = `<h1>${data.name}</h1>
 
-     <h2 class="weather-conditions">${weather} | ${temperature} ° </h2><p class="sunset-sunrise"> Sunrise ${sunrise}<img src="./icons8-sunrise-50.png" alt="sunrise"></p>
-     <p class="sunset-sunrise"> Sunset ${sunset}<img src="./icons8-sunset-50.png" alt="sunset"></p>`
+     <h2 class="weather-conditions">${weather} | ${temperature} ° </h2><p class="sunset-sunrise"> Sunrise ${sunrise} ⇈</p>
+     <p class="sunset-sunrise"> Sunset ${sunset} ⇊</p>`
+
+      const weatherConditions = data.weather.map((condition) => {
+        return (weathergroup = condition.id)
+      })
+
+      weatherConditions.forEach((condition) => {
+        switch (true) {
+          // HTML for thunderstorms
+          case condition >= 200 && condition <= 232:
+            document.body.style.backgroundColor = '#212f54'
+            document.body.style.color = '#FFD43B'
+            weatherDescription.innerHTML = `<i class="fa-solid fa-bolt fa-xl" style="color: #FFD43B;"></i><h3> Hold onto your hats.<br> ${data.name} is facing some stormy weather today.</h3> `
+            break
+          // HTML for drizzle
+          case condition >= 300 && condition <= 321:
+            document.body.style.backgroundColor = '#e6638b'
+            document.body.style.color = '#63E6BE'
+            weatherDescription.innerHTML = `<i class="fa-solid fa-cloud-rain fa-xl" style="color: #63E6BE;"></i><h3> Don't forget your raincoat.<br> ${data.name} is graced with a light drizzle today.</h3> `
+            break
+          // HTML for rainy days
+          case condition >= 500 && condition <= 531:
+            document.body.style.backgroundColor = '#BDE8FA'
+            document.body.style.color = '#164A68'
+            weatherDescription.innerHTML = `<img src="./noun_Umbrella_2030530.svg"><h3> Don't forget your umbrella. <br>It's wet in ${data.name} today.</h3> `
+            break
+          // HTML for snowy days
+          case condition >= 600 && condition <= 622:
+            document.body.style.backgroundColor = '#015C92'
+            document.body.style.color = '#fcfcfc'
+            weatherDescription.innerHTML = `<i class="fa-regular fa-snowflake fa-xl" style="color: #fcfcfc;"></i><h3> Put on your mittens. <br>${data.name} is looking quite enchanting today with its snowfall. </h3> `
+            break
+          // HTML for foggy/mist days
+          case condition >= 701 && condition <= 781:
+            document.body.style.backgroundColor = '#fbfafe'
+            document.body.style.color = '#B197FC'
+            weatherDescription.innerHTML = `<i class="fa-solid fa-smog fa-xl" style="color: #B197FC;"></i><h3> Navigate through the mist. ${data.name} is draped in a mysterious haze today. </h3> `
+            break
+          // HTML for sunny days
+          case condition === 800:
+            document.body.style.backgroundColor = '#F7E9B9'
+            document.body.style.color = '#2A5510'
+            weatherDescription.innerHTML = `<img src="./noun_Sunglasses_2055147.svg"><h3> Get your sunnies on.<br> ${data.name} is looking rather great today. </h3> `
+            break
+          // HTML for cloudy days
+          case condition >= 801 && condition <= 804:
+            document.body.style.backgroundColor = 'white'
+            document.body.style.color = '#F47775'
+            weatherDescription.innerHTML = `<img src="./noun_Cloud_1188486.svg"><h3> Light a fire and get cozy.
+            <br>${data.name} is looking grey today.</h3> `
+            break
+          default:
+            console.log('error')
+            break
+        }
+      })
+      console.log(weatherConditions)
     })
     .catch((error) => console.error(error))
 }

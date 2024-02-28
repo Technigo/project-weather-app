@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script
+      src="https://kit.fontawesome.com/c38d857281.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -12,9 +16,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wheater in Zurich</title>
   </head>
-  <body>
+  <body id="body">
     <div id="actualWeather" class="actual-weather"></div>
-    <div id="weatherDescription" class="weather-description"></div>
+    <div id="weatherDescription" class="weather-description">
+      <i class="fa-regular fa-snowflake" style="color: #f4f5f5"></i>
+      <h3>
+        Get your sunnies on.<br />
+        Stockholm is looking rather great today.
+      </h3>
+    </div>
     <ul id="forecastList" class="forecast-list"></ul>
     <script src="./script.js"></script>
   </body>
