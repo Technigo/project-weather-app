@@ -1,11 +1,12 @@
 //https://api.openweathermap.org/data/2.5/weather?q=Zurich,Switzerland&units=metric&appid=b34ca1ebc43d2420cd2a70a7d29aa6c4
 
-const BASE_URL ="https://api.openweathermap.org/data/2.5/weather"
+const BASE_URL ="https://api.openweathermap.org/data/2.5/"
 const API_KEY ="b34ca1ebc43d2420cd2a70a7d29aa6c4"
 const place ="Zurich,Switzerland"
 const units ="units=metric"
+const dataType ="weather"
 
-const URL = `${BASE_URL}?q=${place}&${units}&appid=${API_KEY}`
+const URL = `${BASE_URL}${dataType}?q=${place}&${units}&appid=${API_KEY}`
 
 const mainWeather = document.getElementById("main-weather")
 const title = document.getElementById("title")
