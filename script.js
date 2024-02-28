@@ -93,7 +93,10 @@ const fetchWeatherForecastAPI = () => {
       return response.json();
     })
     .then((weatherForecastData) => {
-      console.log(weatherForecastData);
+      weatherForecastData.list.forEach((forecast) => {
+        console.log(forecast);
+      });
     });
 };
+
 fetchWeatherForecastAPI();
