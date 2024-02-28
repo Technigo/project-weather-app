@@ -9,13 +9,30 @@ const URL = `${BASE_URL}?q=${place}&${units}&appid=${API_KEY}`
 
 const mainWeather = document.getElementById("main-weather")
 const title = document.getElementById("title")
+const sun = document.getElementById("sun")
+
 
 const changeContainer = (json) => {
+    const sunriseEpoch = json.sys.sunrise
+    const sunriseHuman = new Date(sunriseEpoch * 1000)
+    const sunriseHours = sunriseHuman.getHours().toString().padStart(2, "0")
+    const sunriseMinutes = sunriseHuman.getMinutes().toString().padStart(2, "0")
+    console.log(sunriseHuman)
+
+    const sunsetEpoch = json.sys.sunset
+    const sunsetHuman = new Date(sunsetEpoch * 1000)
+    const sunsetHours = sunsetHuman.getHours().toString().padStart(2, "0")
+    const sunsetMinutes = sunsetHuman.getMinutes().toString().padStart(2, "0")
+    console.log(sunsetHuman)
+
     mainWeather.innerHTML = `${json.weather[0].main} | ${Math.round(json.main.temp)}`
     title.innerText = json.name
+    sun.innerHTML = `
+    sunrise ${sunriseHours}.${sunriseMinutes} <br>
+    sunset ${sunsetHours}.${sunsetMinutes}`
 }
 
-const fetchPlace = () => {
+const fetchData = () => {
     fetch(URL)
         .then((response) => {
             return response.json()
@@ -28,5 +45,5 @@ const fetchPlace = () => {
         })
 }
 
-fetchPlace()
+fetchData()
 
