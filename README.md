@@ -6,10 +6,13 @@ Start by briefly describing the assignment in a sentence or two. Keep it short a
 
 ## Steps
 
-    1. Get the geolocation of the user
-    2. Controlling the colors in main depending on forecast
-    3. Build main section
-    2. Get weather using the geolocation
+    1. Get the geolocation of the user ✅
+    2. Controlling the colors in main depending on forecast ✅
+    3. Build forecast section ✅
+    4. Get weather using the geolocation ✅
+    5. Display current weather, sunset/sunrise and temperature
+    6. Display five day forecast
+    7. Handle theme colors depending on type of weather
 
 ## The problem
 
