@@ -29,45 +29,32 @@ img {
   padding: 2rem 1.5rem;
   display: flex;
   flex-direction: column;
+  border-bottom-left-radius: 50% 30px;
+  border-bottom-right-radius: 50% 30px;
+  /* background: rgb(247, 205, 126);
+  background: linear-gradient(
+    70deg,
+    rgba(250, 176, 37, 1) 0%,
+    rgba(223, 224, 174, 0.9948354341736695) 100%
+  ); */
+}
+
+.night {
+  background: rgb(109, 239, 238);
+  background: linear-gradient(
+    355deg,
+    rgba(109, 239, 238, 1) 0%,
+    rgba(50, 48, 208, 1) 100%
+  );
+}
+
+.morning {
   background: rgb(247, 205, 126);
-  background: rgb(250, 176, 37);
   background: linear-gradient(
     70deg,
     rgba(250, 176, 37, 1) 0%,
     rgba(223, 224, 174, 0.9948354341736695) 100%
   );
-  /* background: linear-gradient(
-    357deg,
-    rgba(247, 205, 126, 1) 0%,
-    rgba(248, 249, 195, 0.9948354341736695) 100%
-  ); */
-  /* background: rgb(202, 245, 79);
-  background: linear-gradient(
-    355deg,
-    rgb(212, 250, 106) 0%,
-    rgb(241, 168, 41) 100%
-  ); */
-  /* background: rgb(202, 245, 79);
-  background: linear-gradient(
-    355deg,
-    rgba(202, 245, 79, 1) 0%,
-    rgba(238, 171, 68, 1) 100%
-  ); */
-  /* night mode color scheme*/
-  /* background: rgb(109, 239, 238);
-  background: linear-gradient(
-    355deg,
-    rgba(109, 239, 238, 1) 0%,
-    rgba(50, 48, 208, 1) 100%
-  ); */
-  /* background: #8589ff;
-  background: linear-gradient(
-    355deg,
-    rgba(232, 233, 255, 1) 0%,
-    rgba(133, 137, 255, 1) 100%
-  ); */
-  border-bottom-left-radius: 50% 30px;
-  border-bottom-right-radius: 50% 30px;
 }
 
 .header > * {
@@ -161,8 +148,7 @@ tr {
 td {
   font-size: 1rem;
   padding: 5px 8px;
-  /* border: 0px; */
-  /* border-spacing: 0; */
+  height: 2.5em;
 }
 
 .day {
@@ -172,9 +158,6 @@ td {
 .weather-range {
   text-align: right;
   text-wrap: nowrap;
-}
-td {
-  height: 2.5em;
 }
 
 .weather-icon {

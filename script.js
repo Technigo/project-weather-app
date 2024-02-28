@@ -5,6 +5,7 @@ const iconURL = "https://openweathermap.org/img/wn/";
 const apiKey = "a6996a952d949efcc9c698344f4005c6";
 const weatherEndpoint = "weather";
 const forecastEndpoint = "forecast";
+
 //DOM objects
 const currentTemp = document.getElementById("current-temp");
 const city = document.getElementById("city");
@@ -16,6 +17,7 @@ const button = document.getElementById("button-icon");
 const forecastField = document.getElementById("forecast-field");
 const currentWeatherField = document.getElementById("current-weather-field");
 const buttonField = document.getElementById("button-area");
+const timeIcon = document.getElementById("time-icon-container");
 
 //Functions
 // Function that formats the day or time stamp
@@ -41,11 +43,27 @@ const displayCurrentWeather = () => {
     .then(data => {
       console.log(data);
       city.innerText = data.name;
-      const sunsetTime = formatUnixTime(data.sys.sunset);
-      const sunriseTime = formatUnixTime(data.sys.sunrise);
+      let sunsetTime = data.sys.sunset;
+      let sunriseTime = data.sys.sunrise;
+      const currentTime = data.dt;
+      // compare the current time with the sunset and sunrise time so as to adjust the image and background color
+      if (currentTime > sunsetTime || currentTime < sunsetTime) {
+        timeIcon.src = "./assets/night.png";
+        button.src = "./assets/button-icon-night.png";
+        currentWeatherField.classList.remove("morning");
+        currentWeatherField.classList.add("night");
+      } else {
+        timeIcon.src = timeImgPath.day;
+        currentWeatherField.classList.remove("night");
+        currentWeatherField.classList.add("morning");
+      }
+      sunsetTime = formatUnixTime(sunsetTime);
+      sunriseTime = formatUnixTime(sunriseTime);
+      console.log(sunriseTime, sunsetTime);
       sunrise.innerText = sunriseTime;
       sunset.innerText = sunsetTime;
       currentTemp.innerText = data.main.temp;
+      console.log(currentTime);
       // const maxTemp = data.main.temp_max.toFixed(1);
       // const minTemp = data.main.temp_min.toFixed(1);
       // const iconID = data.weather[0].icon;
@@ -142,6 +160,8 @@ button.addEventListener("click", () => {
   currentWeatherField.classList.toggle("show");
   buttonField.classList.toggle("move");
 });
+
+// Execution
 
 displayCurrentWeather();
 displayWeatherForecast();
