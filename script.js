@@ -10,6 +10,7 @@ const navItems = document.querySelectorAll(".nav-item");
 const navCities = document.querySelectorAll(".nav-city");
 const navGeo = document.querySelector(".geo");
 const searchInput = document.getElementById("location-search");
+const searchBtn = document.querySelector(".search-btn");
 const scrollArrow = document.getElementById("scroll-arrow");
 
 // global var
@@ -22,7 +23,7 @@ const longitude = 13.418611; // default
 // Print error
 const printError = error => {
   const errorMessage = document.createElement("div");
-  errorMessage.innerHTML = `<p class="error">Unfortunately, something went wrong and we could not find your location.<br>${error}</p>`;
+  errorMessage.innerHTML = `<p class="error">Unfortunately, something went wrong and we could not find your location.<br><br>${error}</p>`;
   weatherBackground.insertBefore(errorMessage, weatherToday);
   setTimeout(() => weatherBackground.removeChild(errorMessage), 5000);
 };
@@ -329,6 +330,10 @@ navItems.forEach(location =>
 );
 
 searchInput.addEventListener("change", event => {
+  toggleHide(navWrapper);
+  fetchGeocode(event.target.value);
+});
+searchBtn.addEventListener("click", event => {
   toggleHide(navWrapper);
   fetchGeocode(event.target.value);
 });

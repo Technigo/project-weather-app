@@ -4,11 +4,14 @@
   --blue: #757aff;
   --light-blue: #8589ff;
   --forecast-text: #707070;
+  --light-grey: #00000005;
+  --dark-blue: #222350;
   --day-gradient: linear-gradient(90deg, #8589ff 0%, #e8e9ff 100%);
   --night-gradient: linear-gradient(270deg, #6264a2 50.98%, #222350 51.14%);
   --font-size: 20px;
   --space: 30px;
   --radus: 50vw 15vw;
+  --border-radius: 2.5rem;
   --box-shadow: 0px 4px 8px 0px #00000059;
 }
 
@@ -68,6 +71,7 @@ button {
 /* Menu and navigation */
 .nav {
   position: fixed;
+  z-index: 99;
   left: 0;
   top: 0;
   background: white;
@@ -86,10 +90,25 @@ button {
   margin-bottom: 1rem;
 }
 
-.input {
+.input,
+.search-btn {
+  font-size: 1rem;
   padding: 0.5rem;
-  border-radius: 2.5rem;
+  border-radius: var(--border-radius);
   cursor: help;
+}
+
+.input {
+  border: var(--forecast-text) 2px solid;
+}
+
+.input:focus {
+  border: var(--blue) 2px solid;
+}
+
+.input:hover,
+.search-btn:hover {
+  background-color: var(--light-grey);
 }
 
 .nav-list {
@@ -97,7 +116,8 @@ button {
   flex-direction: column;
 }
 
-.fa-2xl {
+.fa-2xl,
+.fa-xl {
   line-height: normal!important;
 }
 
@@ -105,13 +125,13 @@ button {
 .geo {
   line-height: 1rem;
   padding: 0.5rem;
-  border-radius: 2.5rem;
+  border-radius: var(--border-radius);
   cursor: pointer;
   font-weight: 400;
 }
 
 .nav-item:nth-of-type(even) {
-  background-color: #00000005;
+  background-color: var(--light-grey);
 }
 
 .nav-item:hover {
@@ -182,6 +202,7 @@ button {
 .weather-img {
   width: 33%;
   transform: translateY(-20%);
+  position: relative;
 }
 
 .city {
@@ -220,7 +241,7 @@ button {
   position: absolute;
   bottom: -30px;
   right: 20%;
-  z-index: 99;
+  z-index: 50;
   width: 80px;
   aspect-ratio: 1 / 1;
   border-radius: 80px;
@@ -260,7 +281,7 @@ button {
   align-items: center;
   line-height: 2.5rem;
   padding: 1rem;
-  border-radius: 2.5rem;
+  border-radius: var(--border-radius);
 }
 
 .forecast-day-label {
@@ -268,7 +289,7 @@ button {
 }
 
 .forecast-day:nth-child(even) {
-  background-color: #00000005;
+  background-color: var(--light-grey);
 }
 
 .forecast-temp {
@@ -294,10 +315,12 @@ button {
 
 .error {
   width: 100%;
-  font-size: 0.875rem;
-  color: rgb(168, 26, 26);
-  background-color: white;
+  font-size: 1rem;
+  color: var(--dark-blue);
+  background-color: #e8e9ff;
   padding: 1rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
 }
 
 /* Fullscreen */
