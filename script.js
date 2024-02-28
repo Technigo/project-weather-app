@@ -8,11 +8,11 @@ const URL = `${BASE_URL}${API_KEY}`;
 const city = document.getElementById("currentCity");
 const temp = document.getElementById("currentTemp");
 const weather = document.getElementById("currentWeather");
-const sunrise = document.getElementById("sunrise")
+const sunriseSunset = document.getElementById("sunriseSunset");
 
 //Fetch API
 
-const fetchNameTempWeather = () => {
+const fetchWeatherData = () => {
   fetch(URL)
     .then((response) => response.json())
     .then((data) => {
@@ -22,34 +22,34 @@ const fetchNameTempWeather = () => {
       `;
       const roundedTemp = Math.round(data.main.temp * 10) / 10;
       temp.textContent = `
-      ${roundedTemp} °C
+      ${roundedTemp}°C
       `;
       weather.textContent = `
       ${data.weather[0].main}
       `;
+      //handle sunrise time
+      const sunriseTime = new Date(data.sys.sunrise * 1000);
+      const sunriseHours = sunriseTime.getHours().toString().padStart(2, "0");
+      const sunriseminutes = sunriseTime
+        .getMinutes()
+        .toString()
+        .padStart(2, "0");
+
+      const formattedSunrise = `${sunriseHours}:${sunriseminutes}`;
+
+      //handle sunset time
+      const sunsetTime = new Date(data.sys.sunset * 1000);
+      const sunsetHours = sunsetTime.getHours().toString().padStart(2, "0");
+      const sunsetMinutes = sunsetTime.getMinutes().toString().padStart(2, "0");
+
+      const formattedSunset = `${sunsetHours}:${sunsetMinutes}`;
+
+      sunriseSunset.textContent = `
+      Sunrise ${formattedSunrise} Sunset ${formattedSunset}
+      `;
     });
 };
 
-fetchNameTempWeather();
-
-//Fetch time for sunrise and sunset
-
-const fetchSunrise = () => {
-  fetch(URL)
-    .then((response) => response.json())
-    .then((data) => {
-      const sunriseTime = new Date(data.sys.sunrise * 1000)
-      const hours = sunriseTime.getHours().toString().padStart(2, "0")
-      const minutes = sunriseTime.getMinutes().toString().padStart(2, "0")
-
-      const formattedSunrise = `${hours}:${minutes}`
-
-      sunrise.textContent = `
-      Sunrise ${formattedSunrise}
-      `
-    })
-}
+fetchWeatherData();
 
 
-
-fetchSunrise()
