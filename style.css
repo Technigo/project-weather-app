@@ -2,10 +2,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
+  font-family: "Montserrat", sans-serif;
+  /* font-family: "Roboto", sans-serif; */
+  /* font-optical-sizing: auto; */
+  font-weight: 400;
 }
 
 html {
@@ -71,6 +71,14 @@ img {
   margin: 20px 0;
 }
 
+.weather-reminder {
+  display: none;
+  padding: 1.5em 0 0 0;
+  font-size: 1.2em;
+  line-height: 2.5rem;
+  font-weight: 500;
+}
+
 .button-area {
   /* padding-top: 80px; */
   top: 90%;
@@ -109,7 +117,7 @@ img {
 
 #city {
   font-size: 1.5rem;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
 }
 
 .sun-condition {
@@ -190,4 +198,8 @@ tr:hover td:first-child {
 .move {
   top: 85%;
   right: 10%;
+}
+
+.show-quote {
+  display: block;
 }

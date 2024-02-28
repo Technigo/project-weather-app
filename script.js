@@ -5,19 +5,37 @@ const iconURL = "https://openweathermap.org/img/wn/";
 const apiKey = "a6996a952d949efcc9c698344f4005c6";
 const weatherEndpoint = "weather";
 const forecastEndpoint = "forecast";
+const weatherConditions = {
+  thunderstorm:
+    "Stay indoors and don't forget your umbrella. Keep an eye on weather updates and take shelter if necessary.",
+  drizzle:
+    "Expect drizzle today. Bring a light rain jacket or umbrella for added comfort outdoors.",
+  snow: "Snow is expected throughout the day. Exercise caution while driving and consider alternative transportation if possible.",
+  atmosphere:
+    "Drive safely! Poor atmosphere is reducing visibility on the roads.",
+  rain: "Don't forget your umbrella today! Heavy rain is expected, so stay dry and plan your commute accordingly.",
+  clear:
+    "Enjoy the clear skies today! Get your sunnies on to stay protected from the sunshine.",
+  clouds:
+    "It's a cloudy day. Grab a light jacket and enjoy the cooler temperatures and cozy atmosphere.",
+};
 
 //DOM objects
 const currentTemp = document.getElementById("current-temp");
 const city = document.getElementById("city");
-const weatherCondition = document.getElementById("weather-condition");
+const currentWeatherCondition = document.getElementById(
+  "current-weather-condition"
+);
 const weatherForecast = document.getElementById("weather-table");
 const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
-const button = document.getElementById("button-icon");
+const buttonIcon = document.getElementById("button-icon");
 const forecastField = document.getElementById("forecast-field");
 const currentWeatherField = document.getElementById("current-weather-field");
 const buttonField = document.getElementById("button-area");
 const timeIcon = document.getElementById("time-icon-container");
+const weatherReminder = document.getElementById("weather-reminder");
+const weatherQuote = document.querySelector("h2");
 
 //Functions
 // Function that formats the day or time stamp
@@ -49,7 +67,7 @@ const displayCurrentWeather = () => {
       // compare the current time with the sunset and sunrise time so as to adjust the image and background color
       if (currentTime > sunsetTime || currentTime < sunsetTime) {
         timeIcon.src = "./assets/night.png";
-        button.src = "./assets/button-icon-night.png";
+        buttonIcon.src = "./assets/button-icon-night.png";
         currentWeatherField.classList.remove("morning");
         currentWeatherField.classList.add("night");
       } else {
@@ -67,9 +85,12 @@ const displayCurrentWeather = () => {
       // const maxTemp = data.main.temp_max.toFixed(1);
       // const minTemp = data.main.temp_min.toFixed(1);
       // const iconID = data.weather[0].icon;
-      weatherCondition.innerText = data.weather[0].main;
+      currentWeatherCondition.innerText = data.weather[0].main;
+      // weatherQuote.textContent = weatherConditions.snow;
+      weatherQuote.textContent =
+        weatherConditions[currentWeatherCondition.innerText.toLowerCase()];
       console.log(sunsetTime, sunriseTime, city);
-      console.log(weatherCondition);
+      console.log(currentWeatherCondition);
     });
 };
 
@@ -153,12 +174,13 @@ const generateFourDaysWeather = (
   return weatherData;
 };
 
-button.addEventListener("click", () => {
+buttonIcon.addEventListener("click", () => {
   forecastField.classList.toggle("hide");
   console.log(forecastField.classList);
   console.log(forecastField);
   currentWeatherField.classList.toggle("show");
   buttonField.classList.toggle("move");
+  weatherReminder.classList.toggle("show-quote");
 });
 
 // Execution
