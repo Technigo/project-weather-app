@@ -1,29 +1,15 @@
 //Global variables
 const baseURL = "https://api.openweathermap.org/data/2.5/weather";
 const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-// --current day index = 3 -> "Wed"--
-// -3 -> "THU"
-// -2 -> "Fri"
-// -1 -> "Sat"
-// 0 -> "Sun"
-// --current day index = 5 -> "Fri"--
-// -1 -> "Sat"
-// 0 -> "Sun"
-// 1 -> "Mon"
-//2 -> "Tue"
-// --current day index = 0 -> "Sun"--
-// -6 -> "Mon"
-// -5
-// currentDayIndex + 1 - 7;-6
-// currentDayIndex + 2 - 7;-5
-// currentDayIndex + 3 - 7;-4
-// currentDayIndex + 4 - 7;-3
 const iconURL = "https://openweathermap.org/img/wn/";
 const apiKey = "a6996a952d949efcc9c698344f4005c6";
 const weatherEndpoint = "weather";
 const forecastEndpoint = "forecast";
 
 //DOM objects
+const currentTemp = document.getElementById("current-temp");
+const city = document.getElementById("city");
+const weatherCondition = document.getElementById("weather-condition");
 const weatherForecast = document.getElementById("weather-table");
 const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
@@ -41,35 +27,36 @@ const formatUnixTime = unixTime => {
   return formattedTime;
 };
 
-fetch(
-  `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${apiKey}`
-)
-  .then(response => {
-    console.log(response);
-    return response.json();
-  })
-  .then(data => {
-    console.log(data);
-    const city = data.name;
-    const sunsetTime = formatUnixTime(data.sys.sunset);
-    const sunriseTime = formatUnixTime(data.sys.sunrise);
-    sunrise.innerText = sunriseTime;
-    sunset.innerText = sunsetTime;
-    const maxTemp = data.main.temp_max.toFixed(1);
-    const minTemp = data.main.temp_min.toFixed(1);
-    const iconID = data.weather[0].icon;
-    const weatherCondition = data.weather[0].main;
-    console.log(sunsetTime, sunriseTime, city);
-    console.log(maxTemp, minTemp);
-    console.log(weatherCondition);
-    console.log(iconID);
-  });
+const displayCurrentWeather = () => {
+  fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${apiKey}`
+  )
+    .then(response => {
+      console.log(response);
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+      city.innerText = data.name;
+      const sunsetTime = formatUnixTime(data.sys.sunset);
+      const sunriseTime = formatUnixTime(data.sys.sunrise);
+      sunrise.innerText = sunriseTime;
+      sunset.innerText = sunsetTime;
+      currentTemp.innerText = data.main.temp;
+      // const maxTemp = data.main.temp_max.toFixed(1);
+      // const minTemp = data.main.temp_min.toFixed(1);
+      // const iconID = data.weather[0].icon;
+      weatherCondition.innerText = data.weather[0].main;
+      console.log(sunsetTime, sunriseTime, city);
+      console.log(weatherCondition);
+    });
+};
 
 const capitalizeFirstLetter = str => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
 
-const displayWeeklyWeather = weeklyWeather => {
+const manipulateWeatherTable = weeklyWeather => {
   weeklyWeather.forEach(weather => {
     weatherForecast.innerHTML += `<tr class="day">
     <td class="day">${capitalizeFirstLetter(weather.day)}</td>
@@ -100,7 +87,7 @@ const displayWeatherForecast = () => {
         currentDate
       );
       console.log(weeklyWeather);
-      displayWeeklyWeather(weeklyWeather);
+      manipulateWeatherTable(weeklyWeather);
     });
 };
 
@@ -120,22 +107,30 @@ const generateFourDaysWeather = (
     .filter(weather => {
       return !weather.dt_txt.includes(currentDate);
     })
-    .slice(0, 32);
+    .slice(0, 32); // Get the next four days weather
   console.log(fourDaysWeather);
   let weatherData = [];
   for (let i = 0; i < 4; i++) {
+    // get the daily weather of next four days weather
     let dailyWeather = fourDaysWeather.splice(0, 8);
+    // set the icon id based on the weather condition at 12:00
     const icon = dailyWeather[3].weather[0].icon;
+    // sort the daily weather in asending order based on the temp value
     dailyWeather.sort((a, b) => a.main.temp - b.main.temp);
     dailyWeather = {
+      // get the day's name
       day: dayNames.at(currentDayIndex - 6 + i),
+      // get the min temp based on the sorting - the first weather condition has the min temp value
       minTemp: dailyWeather[0].main.temp,
+      // get the max temp based on the sorting - the last weather condition has the max temp value
       maxTemp: dailyWeather.at(-1).main.temp,
       iconID: icon,
     };
+    // add each day's weather formatted conditions to the array
     weatherData.push(dailyWeather);
   }
   return weatherData;
 };
 
+displayCurrentWeather();
 displayWeatherForecast();
