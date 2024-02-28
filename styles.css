@@ -1,0 +1,26 @@
+body {
+    background: #48cae4;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 40px;
+  }
+  
+  h1, #tempCelsius {
+    color: white;
+    font-size: 50px;
+    text-align: center;
+  }
+  
+  h2 {
+    color: white;
+    text-align: center;
+    font-weight: 400;
+  }
+
+  h3 {
+    color: white;
+    text-align: center;
+  }
+  
+  #error {
+    color: red;
+  }
