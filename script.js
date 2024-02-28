@@ -10,9 +10,48 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
 
 // ### Step 2 - Present some data on your web app
 // Your task is to present some data on your web app. Start with:
-// - the city name
-// - the temperature (rounded to 1 decimal place)
+// - theame
+// - the temperature city n (rounded to 1 decimal place)
 // - and what type of weather it is (the "description" in the JSON)
+
+
+const todayWeather = document.getElementById("todayWeather");
+const allWeather = document.getElementById("allWeather");
+
+todayWeather.innerHTML +=`
+<section class="menu"></section>
+<img src="" id="logo" alt="logo">
+<section>
+    <h1 class="temp" id="temp"></h1>
+    <h3 class="location" id="location"></h3>
+    <p class="clear" id="clear"></p>
+    <section id="sunTime">
+        <p class="sunrise" id="sunrise"></p>
+        <p class="sunset" id="sunset"></p>
+    </section>
+    <section class="arrow" id="arrow"></section>
+</section>
+`
+
+const ShowTodayWeather =()=>{
+    fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=bb3a8ca602b6560b4bf988de0be7f379")
+    .then((response)=>{
+        return response.json();
+    })
+    .then((json)=>{
+        const location = document.getElementById("location")
+        const temp = document.getElementById("temp")
+        const clear = document.getElementById("clear")
+        const sunrise = document.getElementById("sunrise")
+        const sunset = document.getElementById("sunset")
+        location.innerHTML = json.name
+        temp.innerHTML = json.main.temp
+        clear.innerHTML = json.weather[0].main
+        sunrise.innerHTML =`sunrise:`+json.sys.sunrise 
+        sunset.innerHTML =`sunset:`+json.sys.sunset 
+    })
+}
+ShowTodayWeather()
 
 // ### Step 3 - Features
 // Now it's time to start working in GitHub branches. Decide beforehand when you should have a "feature freeze" so that you make time for merging.
@@ -26,6 +65,14 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
 // ```
 // https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=YOUR_API_KEY
 // ```
+
+fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=bb3a8ca602b6560b4bf988de0be7f379")
+    .then((response)=>{        
+        return response.json();
+    })
+    .then((json)=>{
+        console.log(json)
+    })
 
 // The API gives us the next 4-5 days but for every third hour. So a good idea could be to only use the weather data from the same time every day. You can filter the forecast list array to only get the info from 12:00 each day for example. 
 

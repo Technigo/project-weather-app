@@ -33,7 +33,7 @@ body{
     transform: scaleX(1.5);
 }
 
-.holderContent{
+.todayWeather{
     z-index: 1;
     width: 100%;
     color: black;
