@@ -1,0 +1,164 @@
+/*to make the page go all the way to the sides*/
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/*containes all the html*/
+.grid-container{
+    display: grid;
+    grid-template-columns:repeat(4, 1fr) ;
+    grid-template-rows: auto;
+}
+
+/*the "header"*/
+.backimg{
+    grid-column: 1/5;
+    grid-row: 1/3;
+    width: 100%;
+    height: 700px;
+    border-top-left-radius: 0; /* Mindre radie för att skapa en rundad övre del */
+    border-top-right-radius: 0; /* Mindre radie för att skapa en rundad övre del */
+    border-bottom-left-radius: 60% 60px; /* Större radie för att böja nedre delen */
+    border-bottom-right-radius: 60% 60px; /* Större radie för att böja nedre delen */
+    filter: drop-shadow(rgba(112, 112, 112, 0.5) 1rem 1rem 2px); /* drop-shadow for border-radius*/
+}
+
+/*weather img for today */
+#weather img {
+    max-width:400px;
+    padding:0;
+    position: absolute;
+    top: -3%;
+    left: 40%;
+    z-index: 5;
+    opacity: 0.8;
+}
+
+/*weather is the js container for the "header"*/
+#weather{
+    grid-row: 1/4;
+    grid-column: 1/5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 30px;
+   color: rgb(255, 255, 255);  
+   
+}
+
+/*temp*/
+#weather h1{
+font-size: 130px;
+font-family: "Roboto", sans-serif;
+font-weight: 300;
+margin: 0;
+z-index: 5;
+}
+
+/*city and description*/
+#weather p{
+font-size: 30px;
+font-family: "Roboto", sans-serif;
+font-weight: 200;
+margin: 0;
+z-index: 5;
+}
+
+/*when the r*/
+#sunrise-sunset{
+    grid-row: 2;
+    grid-column: 1/5;
+    display: flex;
+    font-size: 27px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 200;
+    color: rgb(255, 255, 255);
+    justify-content: space-evenly;
+    align-content: flex-end;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+    z-index: 5;
+}
+
+/* menu bar */
+.menu {
+    display: inline-block;
+    grid-row: 1;
+    grid-column: 1;
+    cursor: pointer;
+    padding-left: 20px ;
+    padding-top: 25px;
+    z-index: 5;
+}
+  
+/* size,color and transition for the bars*/
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 3px;
+    background-color: #ffffff;
+    margin: 8px 0;
+    transition: 0.4s;
+}
+  
+/* Rotate first bar */
+.change .bar1 {
+    transform: translate(0, 11px) rotate(-45deg);
+}
+  
+/* Fade out the second bar */
+.change .bar2 {
+    opacity: 0;
+}
+  
+/* Rotate last bar */
+.change .bar3 {
+    transform: translate(0, -11px) rotate(45deg);
+}
+
+/*innerHTML JS info for 5 days ahead*/
+.forecast-item{
+display: flex;
+justify-content: space-evenly;
+align-items: center;
+padding-top: 15px;
+transition: box-shadow 0.3s ease;
+}
+
+/*to make a hover effekt*/
+.forecast-item:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Lägg till en boxskugga när du hovrar över elementet */
+}
+
+/*div class html*/
+#forecast{
+    grid-row: 4/6;
+    grid-column: 1/5;
+    font-family: "Roboto", sans-serif;
+    font-weight: 200;
+    color: #000;
+    padding-top: 20px;
+}
+
+/*the week days*/
+#forecast h1{
+    font-size: 20px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 200;
+    width: 10%;
+    padding-left: 10%;
+}
+
+/*the description and temp*/
+#forecast p{
+    font-size: 20px;
+    width: 20%;
+}
+  
+/* weather img for the up comming days*/
+#forecast img {
+   width: 70px;
+   padding-left: 10%;
+   padding-right: 10%;
+}
