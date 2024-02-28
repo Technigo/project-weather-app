@@ -2,23 +2,30 @@
 const currentWeather = document.getElementById("weather-container");
 
 // Current weather
-const apiBaseURL = "https://api.openweathermap.org/data/2.5";
-const apiKey = "a1f68c4f65b632802ca0dd3405694457";
-let city = "Bern";
+const API_BASE_URL = "https://api.openweathermap.org/data/2.5";
+const API_KEY = "a1f68c4f65b632802ca0dd3405694457";
+let place = "bern";
+const URL = `${API_BASE_URL}/weather?q=${place}&units=metric&appid=${API_KEY}`;
 
-fetch(`${apiBaseURL}/weather?q=${city}&units=metric&appid=${apiKey}`)
-  .then((response) => {
-    return response.json();
-  })
-  .then((json) => {
-    console.log(json);
-  });
+const displayTemp = document.getElementById("temp");
+const displayLocation = document.getElementById("location");
+const displayCondition = document.getElementById("condition");
 
-// Weather forecast
-fetch(`${apiBaseURL}/forecast?q=${city}&appid=${apiKey}`)
-  .then((response) => {
-    return response.json();
-  })
-  .then((json) => {
-    console.log(json);
-  });
+async function printWeather() {
+  try {
+    const weatherNow = await fetch(URL);
+    const data = await weatherNow.json();
+    const currentTemp = data.main.temp;
+    const currentLocation = data.name;
+    const currentCondition = data.weather[0].main;
+
+    displayTemp.innerHTML = currentTemp + `°C`;
+    displayLocation.innerHTML = currentLocation;
+    displayCondition.innerHTML = currentCondition;
+
+    console.log("Data:", data); //NOT FORGET TO DELETE!!
+  } catch (error) {
+    console.error(error); //in case of an error
+  }
+}
+printWeather();

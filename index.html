@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Weather App</title>
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="style.css">
   
 </head>
 <body>
@@ -14,10 +14,11 @@
   <!-- MAIN WEATHER DISPLAY -->
   <section class="current-weather" id="current-weather">
     <div id="weather-container">
-      Loading...
-      <p class="celsius">&deg;C</p>
+      
+      <p id="temp" class="temp">&deg;C</p>
     </div>
-    <h1 id="current-city"></h1>
+    <h1 id="location">City</h1>
+    <p id="condition">Weather Condition</p>
 
   </section>
   
@@ -26,6 +27,6 @@
 
   </section>
 
-  <script src="./script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
