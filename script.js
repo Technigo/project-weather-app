@@ -15,6 +15,7 @@ let country = 'CH' //default
 
 navContainer.innerHTML = `  <label for="favoriteCities">Choose a city :</label>
 <select id="favoriteCities">
+<option  disabled selected value="city">City</option>
   <option value="rome">Rome</option>
   <option value="london">London</option>
   <option value="new-york">New York</option>
