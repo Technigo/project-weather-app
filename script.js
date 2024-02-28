@@ -285,7 +285,7 @@ const getLocation = () => {
   return new Promise((resolve, reject) => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(resolve, reject, {
-        timeout: 3000,
+        timeout: 5000,
       });
     } else {
       throw new Error("No geolocation available");
