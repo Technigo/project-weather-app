@@ -284,10 +284,9 @@ const fetchGeocode = async location => {
 const getLocation = () => {
   return new Promise((resolve, reject) => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        resolve,
-        reject("Geolocation not available")
-      );
+      navigator.geolocation.getCurrentPosition(resolve, reject, {
+        timeout: 3000,
+      });
     } else {
       throw new Error("No geolocation available");
     }
@@ -304,7 +303,7 @@ const handleLocal = async () => {
     fetchWeather(lat, lon);
     fetchForecast(lat, lon);
   } catch (error) {
-    printError(error);
+    printError(error.message);
   }
 };
 
