@@ -13,6 +13,7 @@ body {
 .container {
   display: flex;
   flex-direction: column;
+  height: 100vh;
 }
 
 /*Styling for upper section*/
@@ -26,7 +27,7 @@ body {
 
 .upper-section,
 .lower-section {
-  height: 448px;
+  height: 50%;
 }
 
 .upper-section {
@@ -92,7 +93,14 @@ body {
   align-items: center;
   font-size: 20px;
   color: #707070;
-  padding: 0 15px 0px 15px;
+  margin: 0 10px 0 10px;
+  padding: 0 5px 0 5px;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.day-container:hover {
+  background-color: #fafafa;
 }
 
 .day-container img {
@@ -107,12 +115,20 @@ body {
   width: 105px;
 }
 
-/*Media query for viewports larger than 1250px*/
-@media (min-width: 1000px) {
-  /* container {
-    height: 400px;
-    width: 300px;
-    margin-left: 33%;
-    border: solid red;
-  } */
+/*Media query for viewports larger than iPhone XR (414px)*/
+@media (min-width: 415px) {
+  .upper-section,
+  .lower-section {
+    height: 448px;
+    width: 414px;
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+  }
+
+  .app-container {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
 }
