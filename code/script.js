@@ -19,6 +19,7 @@ const title = document.getElementById("title");
 const sun = document.getElementById("sun");
 const dates = document.getElementById("dates");
 const temp = document.getElementById("temp");
+let styleMainWeather;
 
 // Everything with the Weather URL
 const changeWeather = (json) => {
@@ -32,9 +33,8 @@ const changeWeather = (json) => {
   const sunsetHours = sunsetHuman.getHours().toString().padStart(2, "0");
   const sunsetMinutes = sunsetHuman.getMinutes().toString().padStart(2, "0");
 
-  mainWeather.innerHTML = `${json.weather[0].main} | ${json.main.temp.toFixed(
-    1
-  )}°`;
+  styleMainWeather = json.weather[0].main;
+  mainWeather.innerHTML = `${styleMainWeather} | ${json.main.temp.toFixed(1)}°`;
   title.innerText = `Get your sunnies on. ${json.name} is looking rather great today.`;
   sun.innerHTML = `
     sunrise ${sunriseHours}.${sunriseMinutes} <br>
@@ -48,6 +48,7 @@ const fetchWeather = () => {
     })
     .then((json) => {
       changeWeather(json);
+      changeStyle(styleMainWeather);
     })
     .catch((error) => {
       console.log(error);
@@ -90,3 +91,21 @@ const fetchForecast = () => {
 };
 
 fetchForecast();
+
+// Change Styling depending on Weather
+
+const changeStyle = (styleMainWeather) => {
+  if (styleMainWeather === "Clear") {
+    console.log("Clear");
+  } else if (styleMainWeather === "Clouds") {
+    console.log("Clouds");
+  } else if (styleMainWeather === "Rain") {
+    console.log("Rain");
+  } else if (styleMainWeather === "Snow") {
+    console.log("Snow");
+  } else if (styleMainWeather) {
+    console.log("We don't have that weather yet");
+  }
+};
+
+changeStyle(styleMainWeather);
