@@ -1,12 +1,15 @@
 const MY_API_KEY = "31320abec19306a046f96f4c46f01157";
 const BASE_URL = "https://api.openweathermap.org/data/2.5";
 
+const currentWeather = document.getElementById("current-weather");
+
 const coordinates = {
   lat: 57.721595,
   lon: 12.0253,
 };
 
 const updateHTML = (data) => {
+  currentWeather.innerHTML = data.weather[0].main;
   console.log(data);
 };
 
@@ -21,5 +24,4 @@ const fetchWeather = () => {
       errorDiv.innerText = "Something went wrong";
     });
 };
-
 fetchWeather();
