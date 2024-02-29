@@ -3,6 +3,9 @@ const weatherDescription = document.getElementById('weatherDescription')
 const forecastList = document.getElementById('forecastList')
 const body = document.getElementById('body')
 const navContainer = document.getElementById('navContainer')
+const thunderAudio = document.getElementById('thunderAudio')
+const rainAudio = document.getElementById('rainAudio')
+const sunnyAudio = document.getElementById('sunnyAudio')
 
 //variables
 let currentDate
@@ -15,7 +18,6 @@ let lon = 8.5410422 //default
 
 // need to create another HTML with the same method below ,maybe just a nice background with loading symble
 document.addEventListener('DOMContentLoaded', () => {
-  body.style.backgroundColor = 'black'
   getLocation()
 })
 
@@ -80,13 +82,18 @@ const getWeather = (lat, lon) => {
           case condition >= 200 && condition <= 232:
             document.body.style.backgroundColor = '#212f54'
             document.body.style.color = '#FFD43B'
-            weatherDescription.innerHTML = `<i class="fa-solid fa-bolt fa-xl" style="color: #FFD43B;"></i><h3> Hold onto your hats.<br> ${data.name} is facing some stormy weather today.</h3> `
+            body.classList.remove('snow-day')
+            body.classList.remove('cloudy-day')
+            weatherDescription.innerHTML = `<i class="fa-solid fa-bolt fa-xl" style="color: #FFD43B;"></i><h3> Hold onto your hats.<br> ${data.name} is facing some stormy weather today.</h3>`
+            thunderAudio.play()
             break
 
           // HTML for drizzle
           case condition >= 300 && condition <= 321:
             document.body.style.backgroundColor = '#e6638b'
             document.body.style.color = '#63E6BE'
+            body.classList.remove('snow-day')
+            body.classList.remove('cloudy-day')
             weatherDescription.innerHTML = `<i class="fa-solid fa-cloud-rain fa-xl" style="color: #63E6BE;"></i><h3> Don't forget your raincoat.<br> ${data.name} is graced with a light drizzle today.</h3> `
             break
 
@@ -94,13 +101,19 @@ const getWeather = (lat, lon) => {
           case condition >= 500 && condition <= 531:
             document.body.style.backgroundColor = '#BDE8FA'
             document.body.style.color = '#164A68'
+            body.classList.remove('snow-day')
+            body.classList.remove('cloudy-day')
             weatherDescription.innerHTML = `<img src="./assets/noun_Umbrella_2030530.svg"><h3> Don't forget your umbrella. <br>It's wet in ${data.name} today.</h3> `
+            rainAudio.play()
+
             break
 
           // HTML for snowy days
           case condition >= 600 && condition <= 622:
             document.body.style.backgroundColor = '#015C92'
             document.body.style.color = '#fcfcfc'
+            body.classList.add('snow-day')
+            body.classList.remove('cloudy-day')
             weatherDescription.innerHTML = `<i class="fa-regular fa-snowflake fa-xl" style="color: #fcfcfc;"></i><h3> Put on your mittens. <br>${data.name} is looking quite enchanting today with its snowfall. </h3> `
             break
 
@@ -108,6 +121,8 @@ const getWeather = (lat, lon) => {
           case condition >= 701 && condition <= 781:
             document.body.style.backgroundColor = '#fbfafe'
             document.body.style.color = '#B197FC'
+            body.classList.remove('snow-day')
+            body.classList.remove('cloudy-day')
             weatherDescription.innerHTML = `<i class="fa-solid fa-smog fa-xl" style="color: #B197FC;"></i><h3> Navigate through the mist.<br> ${data.name} is draped in a mysterious haze today. </h3> `
             break
 
@@ -115,14 +130,18 @@ const getWeather = (lat, lon) => {
           case condition === 800:
             document.body.style.backgroundColor = '#F7E9B9'
             document.body.style.color = '#2A5510'
-            weatherDescription.innerHTML = `<img src="./assets/noun_Sunglasses_2055147.svg"><h3> Get your sunnies on.<br> ${data.name} is looking rather great today. </h3> `
+            body.classList.remove('snow-day')
+            body.classList.remove('cloudy-day')
+            weatherDescription.innerHTML = `<img src="./assets/noun_Sunglasses_2055147.svg"><h3> Get your sunnies on.<br> ${data.name} is looking rather great today. </h3>`
+            sunnyAudio.play()
             break
 
           // HTML for cloudy days
           case condition >= 801 && condition <= 804:
             document.body.style.backgroundColor = 'white'
             document.body.style.color = '#F47775'
-
+            body.classList.add('cloudy-day')
+            body.classList.remove('snow-day')
             weatherDescription.innerHTML = `<img src="./assets/noun_Cloud_1188486.svg"><h3> Light a fire and get cozy.
             <br>${data.name} is looking grey today.</h3> `
             break
@@ -213,6 +232,10 @@ const handleCity = () => {
 
   citySelect.addEventListener('change', (event) => {
     const city = event.target.value
+    // prevent audio to be played
+    rainAudio.pause()
+    sunnyAudio.pause()
+    thunderAudio.pause()
     getWeatherCities(city)
   })
 }
@@ -224,7 +247,12 @@ const handleCityInput = (event) => {
   event.preventDefault() // Prevent form submission
   const cityInput = document.getElementById('searchCity')
   const city = cityInput.value
-  if (city !== '') {
+  // prevent audio to be played
+  rainAudio.pause()
+  sunnyAudio.pause()
+  thunderAudio.pause()
+  // validation for cities
+  if (/^[a-zA-Z\s-]+$/.test(city)) {
     getWeatherCities(city)
     cityInput.value = ''
   } else {
@@ -243,7 +271,6 @@ const getWeatherCities = (city) => {
     .then((data) => {
       lat = data[0].lat
       lon = data[0].lon
-
       getForecast(lat, lon)
       getWeather(lat, lon)
     })
