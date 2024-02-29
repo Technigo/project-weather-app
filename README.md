@@ -15,7 +15,11 @@ I am finding it difficult to implement promises since the code seem to work with
 
 I debated whether to render all content via javascript or only the changing value. As a first solution I took this route for the sake of simplicity, knowing it might not be the best from a performance or SEO perspective.
 
+After switching to Open weather's icons, which changes for day/night, I realized forcast data (noons) doesn't account for timezone. After many attempts to correct this, I settle on icons for UTC for now. (I give up).
+
 ### Next step:
+
+- Forecast icons for local midday time, instead of UTC 12:00.
 
 - Find more use of promises and async.
 
