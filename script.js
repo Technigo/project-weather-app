@@ -94,5 +94,25 @@ const fetchWeatherForecastAPI = () =>
     })
     .then((weatherForecastData) => {
       console.log(weatherForecastData);
+      console.log(weatherForecastData.list);
+
+      // Extracting dates and weather icons from the forecast data for 12:00:00 entries
+      const filteredWeatherData = weatherForecastData.list
+        .filter((item) => item.dt_txt.includes("12:00:00"))
+        .map((item) => {
+          const timestamp = item.dt * 1000; // Convert seconds to milliseconds
+          const date = new Date(timestamp);
+          const dayOfWeek = date.toLocaleString("en-US", { weekday: "long" }); // Get day of the week
+          const weatherIcon = item.weather.find((weather) => weather.icon); // Find icon in weather array
+          const temperature = item.main.temp.toFixed(0); // Get temperature from main object
+          return {
+            dayOfWeek,
+            weatherIcon: weatherIcon ? weatherIcon.icon : null,
+            temperature,
+          };
+        });
+
+      console.log("Filtered Weather Data (12:00:00):", filteredWeatherData);
     });
+
 fetchWeatherForecastAPI();
