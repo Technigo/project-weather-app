@@ -4,6 +4,8 @@ const todaysTemperature = document.getElementById("todays-temperature");
 const todaysWeather = document.getElementById("todays-weather");
 const todaysSunrise = document.getElementById("sunrise");
 const todaysSunset = document.getElementById("sunset");
+const forecastDay = document.getElementById("forecast-day");
+const forecast = document.getElementById("forecast");
 
 //Weather Today API
 //https://api.openweathermap.org/data/2.5/weather?q=Gagnef,Sweden&units=metric&APPID=YOUR_API_KEY
@@ -97,22 +99,35 @@ const fetchWeatherForecastAPI = () =>
       console.log(weatherForecastData.list);
 
       // Extracting dates and weather icons from the forecast data for 12:00:00 entries
+      const forecastDay = document.getElementById("forecast"); // Assuming you have an element with id="forecast" to display the forecast
+
       const filteredWeatherData = weatherForecastData.list
         .filter((item) => item.dt_txt.includes("12:00:00"))
         .map((item) => {
           const timestamp = item.dt * 1000; // Convert seconds to milliseconds
           const date = new Date(timestamp);
           const dayOfWeek = date.toLocaleString("en-US", { weekday: "long" }); // Get day of the week
-          const weatherIcon = item.weather.find((weather) => weather.icon); // Find icon in weather array
+          const weatherIconCode = item.weather[0].icon; // Get the icon code from the first weather entry
+          const iconUrl = `http://openweathermap.org/img/wn/${weatherIconCode}.png`; // Construct the icon URL
           const temperature = item.main.temp.toFixed(0); // Get temperature from main object
           return {
             dayOfWeek,
-            weatherIcon: weatherIcon ? weatherIcon.icon : null,
+            iconUrl,
             temperature,
           };
         });
 
       console.log("Filtered Weather Data (12:00:00):", filteredWeatherData);
+
+      // Display the forecast data on the webpage
+      forecastDay.innerHTML = filteredWeatherData
+        .map(
+          (forecast) =>
+            `<div><h2>${forecast.dayOfWeek}</h2><img src="${forecast.iconUrl}" alt="Weather Icon"><p>${forecast.temperature}°C</p></div>`
+        )
+        .join("");
     });
 
 fetchWeatherForecastAPI();
+
+// locationName.innerHTML = `<h1>${weatherTodayData.name}</h1>`;
