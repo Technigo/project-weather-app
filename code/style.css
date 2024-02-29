@@ -1,10 +1,33 @@
+/*Setting the root colors*/
+:root {
+  --clearback: #f7e9b9;
+  --clearcolor: #2a5510;
+  --cloudyback: #f4f7f8;
+  --cloudycolor: #f47775;
+  --rainback: #bde8fa;
+  --raincolor: #164a68;
+  --snowback: #a5aeff;
+  --snowcolor: #090057;
+  --defaultback: #43766c;
+  --defaultcolor: #f8fae5;
+}
+
+/*Main styling*/
 * {
-  background-color: #f7e9b9;
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
-  color: #2a5510;
   margin: 0;
   padding: 0;
+}
+
+/*Overall Styling*/
+.boxcenter {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  background-color: black;
 }
 
 .container {
@@ -12,6 +35,7 @@
   width: 375px;
   height: 823px;
   overflow: hidden;
+  margin: 20px 0;
 }
 
 .weather-style {
@@ -82,4 +106,31 @@
 .list-style {
   border-bottom: 1px dotted #707070;
   width: auto;
+}
+
+/*Weather Depending Styling*/
+
+.clear {
+  background-color: var(--clearback);
+  color: var(--clearcolor);
+}
+
+.clouds {
+  background-color: var(--cloudyback);
+  color: var(--cloudycolor);
+}
+
+.rain {
+  background-color: var(--rainback);
+  color: var(--raincolor);
+}
+
+.snow {
+  background-color: var(--snowback);
+  color: var(--snowcolor);
+}
+
+.default {
+  background-color: var(--defaultback);
+  color: var(--defaultcolor);
 }

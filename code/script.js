@@ -14,6 +14,7 @@ const URLWeather = `${BASE_URL}${dataWeather}?q=${place}&${units}&appid=${API_KE
 const URLForecast = `${BASE_URL}${dataForecast}?q=${place}&${units}&appid=${API_KEY}`;
 
 // DOM Selectors
+const container = document.getElementById("container");
 const mainWeather = document.getElementById("main-weather");
 const title = document.getElementById("title");
 const sun = document.getElementById("sun");
@@ -96,14 +97,44 @@ fetchForecast();
 
 const changeStyle = (styleMainWeather) => {
   if (styleMainWeather === "Clear") {
+    container.classList.add("clear");
+    mainWeather.classList.add("clear");
+    title.classList.add("clear");
+    sun.classList.add("clear");
+    dates.classList.add("clear");
+    temp.classList.add("clear");
     console.log("Clear");
   } else if (styleMainWeather === "Clouds") {
+    container.classList.add("clouds");
+    mainWeather.classList.add("clouds");
+    title.classList.add("clouds");
+    sun.classList.add("clouds");
+    dates.classList.add("clouds");
+    temp.classList.add("clouds");
     console.log("Clouds");
   } else if (styleMainWeather === "Rain") {
+    container.classList.add("rain");
+    mainWeather.classList.add("rain");
+    title.classList.add("rain");
+    sun.classList.add("rain");
+    dates.classList.add("rain");
+    temp.classList.add("rain");
     console.log("Rain");
   } else if (styleMainWeather === "Snow") {
+    container.classList.add("snow");
+    mainWeather.classList.add("snow");
+    title.classList.add("snow");
+    sun.classList.add("snow");
+    dates.classList.add("snow");
+    temp.classList.add("snow");
     console.log("Snow");
   } else if (styleMainWeather) {
+    container.classList.add("default");
+    mainWeather.classList.add("default");
+    title.classList.add("default");
+    sun.classList.add("default");
+    dates.classList.add("default");
+    temp.classList.add("default");
     console.log("We don't have that weather yet");
   }
 };
