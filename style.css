@@ -3,13 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
-  /* font-family: "Roboto", sans-serif; */
-  /* font-optical-sizing: auto; */
   font-weight: 400;
-}
-
-html {
-  height: 100%;
 }
 
 /* body { */
@@ -33,7 +27,6 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: scroll;
 }
 
 .background {
@@ -43,7 +36,7 @@ body {
 
 .container {
   background-color: white;
-  height: 100%;
+  height: inherit;
   width: 100%;
 }
 
@@ -61,18 +54,6 @@ header {
   flex-direction: column;
   border-bottom-left-radius: 50% 30px;
   border-bottom-right-radius: 50% 30px;
-  /* background: rgb(247, 205, 126);
-  background: linear-gradient(
-    70deg,
-    rgba(250, 176, 37, 1) 0%,
-    rgba(223, 224, 174, 0.9948354341736695) 100%
-  ); */
-  /* background: rgb(231, 233, 237);
-  background: linear-gradient(
-    337deg,
-    rgb(214, 217, 223) 0%,
-    rgba(103, 122, 126, 1) 100%
-  ); */
 }
 
 .thunderstorm {
@@ -226,30 +207,22 @@ header > * {
 }
 
 .weather-details {
-  /* position: absolute; */
-  /* width: 100%; */
-  /* top: 50%; */
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 6rem 0;
-  /* bottom: 20%; */
 }
 
 table {
   width: 100%;
   table-layout: fixed;
   margin: 0 1.5rem;
-  /* border-collapse: collapse; */
   border-collapse: separate;
   border-spacing: 0px 1rem;
-  /* border-spacing: 1vh; */
-  /* for desktop: border-spacing: 0px 10px; */
 }
 
 tr {
   margin: 20px 20px;
-  /* width: 100%; */
 }
 
 td {
@@ -287,7 +260,8 @@ tr:hover td:first-child {
   min-height: 100%;
   border-bottom-left-radius: 0%;
   border-bottom-right-radius: 0%;
-  overflow: hidden;
+  /* overflow: hidden; */
+  /* overflow: scroll; */
 }
 
 .hide {
@@ -295,12 +269,19 @@ tr:hover td:first-child {
 }
 
 .move {
-  top: 85%;
-  right: 10%;
+  position: static;
 }
 
 .show-quote {
   display: block;
+}
+
+@media (min-height: 864px) {
+  .move {
+    position: absolute;
+    top: 85%;
+    right: 10%;
+  }
 }
 
 @media (min-width: 466px) and (min-height: 961px) {
@@ -310,7 +291,6 @@ tr:hover td:first-child {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
   }
 
   .container {

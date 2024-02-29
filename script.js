@@ -35,7 +35,7 @@ const currentWeatherField = document.getElementById("current-weather-field");
 const buttonField = document.getElementById("button-area");
 const timeIcon = document.getElementById("time-icon-container");
 const weatherReminder = document.getElementById("weather-reminder");
-const weatherQuote = document.querySelector("h2");
+const weatherAdvice = document.querySelector("h2");
 
 //Functions
 // Function that formats the day or time stamp
@@ -87,16 +87,13 @@ const displayCurrentWeather = () => {
       sunrise.innerText = sunriseTime;
       sunset.innerText = sunsetTime;
       currentTemp.innerText = data.main.temp.toFixed(1);
-      // const maxTemp = data.main.temp_max.toFixed(1);
-      // const minTemp = data.main.temp_min.toFixed(1);
-      // const iconID = data.weather[0].icon;
-      const weatherDescription = data.weather[0].main;
+      let weatherDescription = data.weather[0].main;
       currentWeatherCondition.innerText = weatherDescription;
-      // weatherQuote.textContent = weatherConditions.snow;
-      weatherQuote.textContent =
-        weatherConditions[weatherDescription.toLowerCase()];
+      weatherDescription = weatherDescription.toLowerCase();
+      weatherAdvice.textContent = weatherConditions[weatherDescription];
       currentWeatherField.className = "";
-      currentWeatherField.classList.add(weatherDescription.toLowerCase());
+      currentWeatherField.classList.add(weatherDescription);
+      timeIcon.src = `./assets/${weatherDescription}.png`;
       console.log(sunsetTime, sunriseTime, city);
       console.log(currentWeatherCondition);
     });
