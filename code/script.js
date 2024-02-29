@@ -28,3 +28,14 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         text.innerHTML = `<h2>Light a fire and get cosy. ${json.name} is looking grey today. </h2>`
         }
     })
+
+fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=725ee441189d3e16a4e4aa74b081805e")
+    .then((response) => {
+       return response.json()
+    })
+        .then ((json) => {
+        json.list.forEach((forecast) => {
+        week.innerHTML += `<p>${forecast.main.temp_min}° / ${forecast.main.temp_max} °C</p>`
+        })
+    })
+
