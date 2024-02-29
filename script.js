@@ -129,20 +129,20 @@ const constructHours = time =>
 const constructMinutes = time =>
   time.getUTCMinutes() < 10 ? "0" + time.getUTCMinutes() : time.getUTCMinutes();
 
-// Get max temp for entire day from forecast json
+// Get max temp for entire day from api data
 const getMaxTemp = (day, data) => {
-  const date = convertTime(day.dt, data.timezone).getDate(); // Convert milliseconds to a date
+  const date = convertTime(day.dt, data.timezone).getDate(); // Convert seconds to a date
   const max = data.list
-    .filter(entry => entry.dt_txt.includes(date))
+    .filter(entry => convertTime(entry.dt, data.timezone).getDate() === date)
     .sort((a, b) => b.main.temp_max - a.main.temp_max)[0];
-  return Math.floor(max.main.temp_max);
+  return Math.round(max.main.temp_max);
 };
 
-// Get min temp for entire day from forecast json
+// Get min temp for entire day from api data
 const getMinTemp = (day, data) => {
-  const date = convertTime(day.dt, data.timezone).getDate(); // Convert milliseconds to a date
+  const date = convertTime(day.dt, data.timezone).getDate(); // Convert seconds to a date
   const min = data.list
-    .filter(entry => entry.dt_txt.includes(date))
+    .filter(entry => convertTime(entry.dt, data.timezone).getDate() === date)
     .sort((a, b) => a.main.temp_min - b.main.temp_min)[0];
   return Math.floor(min.main.temp_min);
 };
