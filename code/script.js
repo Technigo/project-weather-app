@@ -36,7 +36,6 @@ const changeWeather = (json) => {
 
   styleMainWeather = json.weather[0].main;
   mainWeather.innerHTML = `${styleMainWeather} | ${json.main.temp.toFixed(1)}°`;
-  title.innerText = `Get your sunnies on. ${json.name} is looking rather great today.`;
   sun.innerHTML = `
     sunrise ${sunriseHours}.${sunriseMinutes} <br>
     sunset ${sunsetHours}.${sunsetMinutes}`;
@@ -50,6 +49,7 @@ const fetchWeather = () => {
     .then((json) => {
       changeWeather(json);
       changeStyle(styleMainWeather);
+      changeTitle(json, title);
     })
     .catch((error) => {
       console.log(error);
@@ -139,4 +139,21 @@ const changeStyle = (styleMainWeather) => {
   }
 };
 
-changeStyle(styleMainWeather);
+const changeTitle = (json, title) => {
+  if (title.classList.contains("clear")) {
+    title.innerText = `Get your sunnies on. ${json.name} is looking rather great today.`;
+    console.log("clear");
+  } else if (title.classList.contains("clouds")) {
+    title.innerHTML = `Light a fire and get cosy. ${json.name} is looking grey today.`;
+    console.log("clouds");
+  } else if (title.classList.contains("rain")) {
+    title.innerHTML = `Don't forget your umbrella. It's wet in ${json.name} today.`;
+    console.log("rain");
+  } else if (title.classList.contains("snow")) {
+    title.innerHTML = `Don't forget your hat. It's quite cold in ${json.name} today.`;
+    console.log("snow");
+  } else if (title.classList.contains("default")) {
+    title.innerHTML = `Enjoy your day with the current ${json.name} weather.`;
+    console.log("We don't have that weather yet.");
+  }
+};
