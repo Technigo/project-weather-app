@@ -1,14 +1,14 @@
 # Instructions
-Start out with signing up for a [free Open Weather Map](https://home.openweathermap.org/users/sign_up "free Open Weather Map") account, as it can take up to a few hours for the API key to be activated.
+DONE!!! Start out with signing up for a [free Open Weather Map](https://home.openweathermap.org/users/sign_up "free Open Weather Map") account, as it can take up to a few hours for the API key to be activated.
 
 We've asked a couple of different designers to do their take on this project. It's a great practice in implementing someone else's design. You will find their designs in the design folder in the repo along with some design assets. Decide which design you want to implement - and follow the design as closely as you can.
 
 ## How to get started 💪🏼
 
-1. Fork the repo.
-2. Clone the repo, and lay out the foundation (following Step 1 & 2, specified further down).
-3. Push the changes to GitHub.
-4. Work with the features in branches. Git cheat sheet can be found [here](https://www.notion.so/424c3528791e42d0a7daabe6f0b5a308?pvs=21).
+1. DONE!!! Fork the repo.
+2. DONE!!! Clone the repo, and lay out the foundation (following Step 1 & 2, specified further down).
+3. DONE!!! Push the changes to GitHub.
+4. DONE!!! Work with the features in branches. Git cheat sheet can be found [here](https://www.notion.so/424c3528791e42d0a7daabe6f0b5a308?pvs=21).
 
 ## How to hand in the code 🎯
 
@@ -18,7 +18,7 @@ We've asked a couple of different designers to do their take on this project. It
 ---
 
 ## Hints and tips to complete the project 🤓
-For this project, we suggest that you lay out the foundation of your project in the main/master branch. After that, it's time to start working in branches.
+DONE!!! For this project, we suggest that you lay out the foundation of your project in the main/master branch. After that, it's time to start working in branches.
 
 ### Step 1 - Get started with the weather API
 [Sign up for a free Open Weather Map account](https://home.openweathermap.org/users/sign_up). Once signed in, go to "My API keys". You find that in the menu if you click your username. Copy the API Key. You can use the API Key in the APPID parameter when making calls to the openweathermap API.
@@ -107,9 +107,9 @@ Read the [endpoint documentation](https://openweathermap.org/forecast5 "endpoint
 Style it to look like one of the provided designs.
 
 ## Requirements
-- You should fetch data from the API using `fetch()` in JavaScript
-- The app should have: city name, current temperature, weather description, sunrise/sunset time, 4-day forecast
-- The presentation of the data should be in the specified format
+- DONE!!! You should fetch data from the API using `fetch()` in JavaScript
+- DONE!!! The app should have: city name, current temperature, weather description, sunrise/sunset time, 4-day forecast
+- DONE!!! The presentation of the data should be in the specified format
 - Make your app responsive (it should look good on devices from 320px width up to 1600px)
 - Follow one of the designs as closely as you can
 - Complete Step 1-2 in the main/master branch, and Step 3 in branches
