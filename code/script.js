@@ -35,22 +35,25 @@ function renderWeather(weather) {
 
   //"new.date" is the timestamp from the 1970's. "*1000 is the turn the time into milliseconds, because js want's it like that."
   const sunriseTime = new Date(weather.sys.sunrise * 1000);
-  
-  sunrise.innerHTML = hourAndminutes(sunriseTime);
+
+  sunrise.innerHTML = `Sunrise ${hourAndminutes(sunriseTime)}`;
 
   const sunsetDate = new Date(weather.sys.sunset * 1000);
-  sunset.innerHTML = hourAndminutes(sunsetDate);
+  sunset.innerHTML = `Sunset ${hourAndminutes(sunsetDate)}`;
 
   if (weather.weather[0].main == "Clouds") {
     //to style icons class needs to be added in js, not html
     icon.innerHTML = `<img class = "icon" src="/icons/cloud.svg" />`;
     textAboutWeather.innerHTML = `Light a fire and get cosy. Stockholm is looking grey today.`;
+    document.body.classList.add("clouds");
   } else if (weather.weather[0].main == "Rain") {
     icon.innerHTML = `<img class = "icon" src="/icons/umbrella.svg" />`;
     textAboutWeather.innerHTML = `Don't forget your umbrella. It's wet in Stockholm today.`;
+    document.body.classList.add("rain");
   } else {
     icon.innerHTML = `<img class = "icon" src="/icons/sunglasses.svg" />`;
     textAboutWeather.innerHTML = `Get your sunnies on. Stockholm is looking rather great today.`;
+    document.body.classList.add("sunny");
   }
 }
 
@@ -70,18 +73,14 @@ function renderForecast(forecast) {
     const date = new Date(day.dt * 1000);
     //13 is the time of the day when we are going to measure the temperature.
     if (date.getHours() == 13) {
-      //"toLocalDateString" is to make days like mon, tue, wed (to three characters)
-      days.innerHTML += `${date.toLocaleDateString("en", {
-        weekday: "short",
-      })} ${Math.round(day.main.temp)}&deg;`;
-
-   days.innerHTML += `
+      days.innerHTML += `
    <li> 
-    <span> ${date}</span>
-    <span>${main.temp}&deg</span>
-     `
-
-
+    <span> ${date.toLocaleDateString("en", {
+      weekday: "short",
+    })}</span>
+    <span>${Math.round(day.main.temp)}&deg;</span>
+    </li>
+     `;
     }
   }
 }

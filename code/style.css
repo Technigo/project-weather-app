@@ -1,8 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 body {
-  background-color: #f4f7f8;
   font-family: "Montserrat";
+}
+
+body.clouds {
+  background-color: #f4f7f8;
+  color: #f47775;
+}
+
+body.rain {
+  color: #164a68;
+  background-color: #a3def7;
+}
+
+body.sunny {
+  color: #2a5510;
+  background-color: #f7e9b9;
 }
 
 .informationTop {
@@ -11,7 +25,6 @@ body {
   margin-top: 30px;
   margin-left: 30px;
   margin-bottom: 30px;
-  color: #f47775;
 }
 
 .weatherTypeAndTemperature {
@@ -28,20 +41,20 @@ body {
 .textAboutWeather {
   font-size: 35px;
   font-weight: 700;
-  color: #f47775;
   padding: 20px;
   padding-top: 20px;
 }
 
-
-.days ul {
-    list-style-type: none;
-    padding-left: 0;
+.days {
+  list-style-type: none;
+  padding-left: 0;
 }
 
-.days ul li {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px dashed;
-    padding: 0.6em;
+.days li {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed;
+  padding: 0.6em;
+  margin-left: 20px;
+  margin-right: 20px;
 }
