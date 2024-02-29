@@ -17,11 +17,9 @@ const locale = "Stockholm,Sweden";
 const units = "metric";
 const URL = `${BASE_URL}${weatherData}?q=${locale}&units=${units}&APPID=${API_KEY}`;
 const forecastURL = `${BASE_URL}${forecastData}?q=${locale}&units=${units}&APPID=${API_KEY}`;
+const currentDay = new Date(Date.now()).getDay();
 let localCity = "";
 let weekday = "";
-
-// console.log(URL);
-// console.log(forecastURL);
 
 ////////////////////////////// Functions ///////////////////////////////
 const fetchData = (url) => {
@@ -138,19 +136,21 @@ const whatDayIsIt = (dayNumber) => {
 const getForecast = () => {
   fetchData(forecastURL).then((json) => {
     const forecastArray = json.list.filter((item) =>
-      item.dt_txt.includes("12:00:00")
+      item.dt_txt.includes("12:00")
     );
-    const dailyDegrees = forecastArray.map((degrees) => degrees.main.temp);
-    const timeStamps = forecastArray.map((times) => times.dt);
-    timeStamps.forEach((timeStamp, index) => {
-      dayDate = new Date(timeStamp * 1000);
+    const dailyTemperatures = forecastArray.map((degrees) => degrees.main.temp);
+    const timestampArray = forecastArray.map((times) => times.dt);
+    timestampArray.forEach((timeStamp, index) => {
+      const dayDate = new Date(timeStamp * 1000);
       weekday = dayDate.getDay();
-      whatDayIsIt(weekday);
-      const dayDegree = dailyDegrees[index].toFixed(0);
-      forecastTable.innerHTML += `<tr>
+      if (weekday !== currentDay) {
+        whatDayIsIt(weekday);
+        const dayTemperature = dailyTemperatures[index].toFixed(1);
+        forecastTable.innerHTML += `<tr>
         <td>${weekday}</td>
-        <td>${dayDegree}°</td>
+        <td>${dayTemperature}°</td>
       </tr>`;
+      }
     });
   });
 };
