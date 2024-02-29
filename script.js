@@ -49,3 +49,31 @@ fetch(
   })
 
   .catch((error) => console.error("There was an error!", error));
+
+//Feature - weather forecast
+fetch(
+  "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=db63b41efc78e9f2c60ec93f035d8cff"
+)
+  .then((response) => response.json())
+  .then((forecastData) => {
+    //12:00のデータのみをフィルタリング
+    const noonForecasts = forecastData.list.filter((forecast) => {
+      //この式が true を返す予報アイテムのみが、フィルタリングの結果として残る → 日中の正午（12:00）の予報データのみが選択される
+      //.dt_txtは、単純にAPI設計者がこの名前を付けたから
+      return forecast.dt_txt.includes("12:00:00");
+    });
+
+    //.then()ブロックから次の.then()ブロックへデータを「渡す」ためにreturnを使用
+    return noonForecasts;
+  })
+  .then((noonForecasts) => {
+    noonForecasts.forEach((forecast) => {
+      // 新しいリストアイテム（li要素）を作成
+      const forecastElement = document.createElement("li");
+      // リストアイテムの内容を設定
+      forecastElement.textContent = `Date: ${forecast.dt_txt}, Highest Temprature: ${forecast.main.temp_max}°C, Weather: ${forecast.weather[0].description}`;
+      // li要素をHTMLのidがforecast-listの要素の中に追加
+      //.appendChild = DOM（Document Object Model）に動的に要素を追加
+      document.getElementById("forecast-list").appendChild(forecastElement);
+    });
+  });
