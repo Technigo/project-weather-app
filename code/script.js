@@ -34,10 +34,10 @@ const fetchWeather = () => {
 fetchWeather()
 
 
-//config code to capitalize first letter in weather description
+/*//config code to capitalize first letter in weather description
 const capitalizeFirstLetter = (str) => {
   return `${str[0].toUpperCase()}${str.slice(1)}`;
 }
 
 let myString = "codedamn";
-console.log(capitalizeFirstLetter(myString)); // Outputs: Codedamn
+console.log(capitalizeFirstLetter(myString)); // Outputs: Codedamn*/

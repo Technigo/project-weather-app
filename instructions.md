@@ -6,7 +6,7 @@ API-key: 1e48fdf267ccc8ee33c1c78150dcbab1
 
 We've asked a couple of different designers to do their take on this project. It's a great practice in implementing someone else's design. You will find their designs in the design folder in the repo along with some design assets. Decide which design you want to implement - and follow the design as closely as you can. -->
 
-## How to get started 💪🏼
+<!-- ## How to get started 💪🏼
 
 1. Fork the repo.
 2. Clone the repo, and lay out the foundation (following Step 1 & 2, specified further down).
@@ -87,7 +87,7 @@ Read the [endpoint documentation](https://openweathermap.org/current) for the cu
 Your task is to present some data on your web app. Start with:
 - the city name
 - the temperature (rounded to 1 decimal place)
-- and what type of weather it is (the "description" in the JSON)
+- and what type of weather it is (the "description" in the JSON) -->
 
 ### Step 3 - Features
 Now it's time to start working in GitHub branches. Decide beforehand when you should have a "feature freeze" so that you make time for merging.
