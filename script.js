@@ -42,9 +42,12 @@ const fetchWeatherData = () => {
 
       const formattedSunset = `${sunsetHours}:${sunsetMinutes}`;
 
-      sunriseSunset.textContent = `
-      Sunrise ${formattedSunrise} Sunset ${formattedSunset}
+      sunriseSunset.innerHTML = `
+      <span class="sunrise-sunset-row"> 
+      sunrise ${formattedSunrise} sunset ${formattedSunset}
+      </span>
       `;
+      
     });
 };
 
@@ -100,17 +103,13 @@ const fetchForecast = () => {
         });
 
         forecast.innerHTML += `
-            <div class="four-day-forecast">
-              <div class="weekday">
-                <span>${weekdayName}</span>
+              <div class="forecast-container">
+                <span class="forecast-day">${weekdayName}</span>
                 <span class="forecast-image"></span>
-                <span>${minTemp}° /</span>
-                <span>${maxTemp}°C</span>
+                <span>${minTemp}° / ${maxTemp}°C</span>
               </div>
-            </div>
             `;
       }
-      
     });
 };
 

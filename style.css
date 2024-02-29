@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+  font-family: var(--textFont) ;
+}
+
+:root {
+  --textFont: "Roboto"
+}
+
+.current-temp {
+  font-size: 60px;
+}
+
+.current-city {
+  font-size: 27px;
+}
+
+.current-weather {
+  font-size: 24px;
+}
+
+.sunrise-sunset {
+  font-size: 24px;
+
+}
+
+.forecast-container {
+  font-size: 20px;
+
+}
+
+.wrapper {
+  display; flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.background-image {
+  flex-grow: 1;
+  background: linear-gradient(to bottom right, #8589FF, #E8E9FF);
+}
+
+.sunrise-sunset {
+  display: block;
+}
