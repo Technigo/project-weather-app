@@ -169,7 +169,6 @@ const fetchWeatherForecast = (cityName) => {
 fetchWeatherForecast(cityName)
 
 ////////// Feature 3: Search for other cities //////////
-
 searchForm.addEventListener("submit", (event) => {
   event.preventDefault()
   const inputValue = citySearchInput.value.trim()
