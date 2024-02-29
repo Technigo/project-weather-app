@@ -179,8 +179,10 @@ const iconArr = [
   </svg>`,
   },
 ];
+let currentDt = null;
 
-const tipText = document.querySelector(".tip-text");
+//fetch today's weather
+//and trigger displayDailyWeather + getSunTime(weatherData)
 const getDailyWeather = () => {
   fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=gothenburg&units=metric&appid=${apiKey}`
@@ -197,14 +199,20 @@ const getDailyWeather = () => {
     });
 };
 
+//run the function when the page is loaded
 getDailyWeather();
 
+//display the data in HTML
+//and trigger getTip
 const displayDailyWeather = (weatherData) => {
+  //deconstruct object
   const { name } = weatherData;
   const { temp } = weatherData.main;
   const { main } = weatherData.weather[0];
+  //get currentDt ready for comparing in displayWeelyWeather
+  currentDt = weatherData.dt;
 
-  document.querySelector(".temp").innerText = temp + "°";
+  document.querySelector(".temp").innerText = Math.round(temp) + "°";
   document.querySelector(".description").innerText = main;
 
   getTip(main);
@@ -289,9 +297,11 @@ const getSunTime = (weatherData) => {
   const { sunrise } = weatherData.sys;
   const { sunset } = weatherData.sys;
 
-  const sunriseDate = new Date(sunrise * 1000);
-  const sunsetDate = new Date(sunset * 1000);
+  //convert UTC timeStamp into human-readable data
+  const sunriseData = new Date(sunrise * 1000);
+  const sunsetData = new Date(sunset * 1000);
 
+  //extract the excat time of the day
   const formatTime = (date) => {
     const hours = date.getUTCHours();
     const minutes = date.getUTCMinutes();
@@ -300,13 +310,15 @@ const getSunTime = (weatherData) => {
     return `${hours}:${formattedMinutes}`;
   };
 
-  const sunriseTime = formatTime(sunriseDate);
-  const sunsetTime = formatTime(sunsetDate);
+  const sunriseTime = formatTime(sunriseData);
+  const sunsetTime = formatTime(sunsetData);
 
   document.querySelector(".sunrise").innerText = "sunrise 0" + sunriseTime;
   document.querySelector(".sunset").innerText = "sunset " + sunsetTime;
 };
 
+//fetch the 5-day 3-hour steps weather data
+// and trigger displayWeeklyWeather
 const getWeeklyWeather = () => {
   fetch(
     `https://api.openweathermap.org/data/2.5/forecast?q=gothenburg&units=metric&appid=${apiKey}`
@@ -315,13 +327,16 @@ const getWeeklyWeather = () => {
       return response.json();
     })
     .then((weatherData) => {
-      console.log(weatherData);
       displayWeeklyWeather(weatherData);
     })
     .catch((err) => {
       console.log(err);
     });
 };
+
+const weekday = document.querySelector(".weekday");
+const weektemp = document.querySelector(".week-temp");
+let getFourDayTemp = [];
 
 const displayWeeklyWeather = (weatherData) => {
   //collect each hour's time+temp data from the weatherData
@@ -334,21 +349,40 @@ const displayWeeklyWeather = (weatherData) => {
   const getNoonTemp = getHourlyhWeather.filter(
     (hour) => hour.dtText.split(" ")[1] === "12:00:00"
   );
+  console.log(getNoonTemp);
 
-  getNoonTemp.pop();
-  const weekday = document.querySelector(".weekday");
-  const weekTemp = document.querySelector(".week-temp");
+  const dateToRemove = getNoonTemp.findIndex((item) => {
+    item.dt === currentDt;
+  });
 
-  const timpStamp = getNoonTemp.map((item) => item.dt);
+  if (dateToRemove !== -1) {
+    getFourDayTemp = getNoonTemp.filter((item, index) => {
+      index !== dateToRemove;
+    });
+  } else {
+    getNoonTemp.pop();
+    getFourDayTemp = getNoonTemp;
+  }
+
+  const timpStamp = getFourDayTemp.map((item) => item.dt);
   const converDate = timpStamp.map((item) => new Date(item * 1000));
   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const dayIndices = converDate.map((item) => item.getDay());
   const dayOfWeek = dayIndices.map((index) => daysOfWeek[index]);
-  console.log(getNoonTemp);
-  console.log(dayIndices);
+
   console.log(dayOfWeek);
 
-  //fix the first day is not the current day
+  getFourDayTemp.forEach((item) => {
+    weektemp.innerHTML += `
+    <p>${Math.round(item.temp)}°</p> 
+    `;
+  });
+
+  dayOfWeek.forEach((item) => {
+    weekday.innerHTML += `
+    <p>${item}</p>
+    `;
+  });
 };
 
 getWeeklyWeather();
