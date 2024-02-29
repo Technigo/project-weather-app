@@ -1,0 +1,66 @@
+* {
+  --clr_main_text: #fff;
+  --clr_dark_text: #707070;
+  --clr_forecast_button: #757aff;
+  --clr_day_gradient_start: #8589ff;
+  --clr_day_gradient_end: #e8e9ff;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+}
+
+body {
+  color: var(--clr_main_text);
+  background: linear-gradient(
+    0.25turn,
+    var(--clr_day_gradient_start),
+    var(--clr_day_gradient_end)
+  );
+}
+.container{
+    position: relative;
+    height: 100vh;
+}
+
+#temp-container{
+    display: flex;
+}
+#temp {
+  font-size: 3rem;
+  margin: 1rem;
+}
+
+#city {
+  font-size: 1.5rem;
+  margin: 1rem;
+}
+#description {
+  font-size: 1rem;
+  margin: 1rem;
+}
+
+#suntime {
+    font-size: 1rem;
+    margin: 2rem;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+#weather-image {
+    position: absolute;
+    right: 2rem;
+    top: 1rem;
+    width: 150px;
+}
+
+.animation-button{
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #707070;
+}
+
+
