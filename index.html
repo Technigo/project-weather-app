@@ -22,46 +22,48 @@
   </head>
   <body>
     <div class="background">
-      <header id="current-weather-field">
-        <a href="#" class="menu">
-          <i class="fa fa-bars"></i>
-        </a>
-        <div class="time-img-container">
-          <img
-            id="time-icon-container"
-            src="./assets/morning.png"
-            alt="morning icon"
-          />
-        </div>
-        <div class="current-weather">
-          <div id="temp">
-            <h1 id="current-temp"></h1>
-            <sup>°C</sup>
-          </div>
-          <div id="city"></div>
-          <div id="current-weather-condition"></div>
-        </div>
-        <div class="sun-condition">
-          <span>Sunrise</span>
-          <span id="sunrise"></span>
-          <span>Sunset</span>
-          <span id="sunset"></span>
-        </div>
-        <div class="weather-reminder" id="weather-reminder">
-          <h2></h2>
-        </div>
-        <div class="button-area" id="button-area">
-          <button class="full-view">
+      <div class="container">
+        <header id="current-weather-field">
+          <a href="#" class="menu">
+            <i class="fa fa-bars"></i>
+          </a>
+          <div class="time-img-container">
             <img
-              id="button-icon"
-              src="./assets/button-icon-day.png"
-              alt="button icon"
+              id="time-icon-container"
+              src="./assets/morning.png"
+              alt="morning icon"
             />
-          </button>
+          </div>
+          <div class="current-weather">
+            <div id="temp">
+              <h1 id="current-temp"></h1>
+              <sup>°C</sup>
+            </div>
+            <div id="city"></div>
+            <div id="current-weather-condition"></div>
+          </div>
+          <div class="sun-condition">
+            <span>Sunrise</span>
+            <span id="sunrise"></span>
+            <span>Sunset</span>
+            <span id="sunset"></span>
+          </div>
+          <div class="weather-reminder" id="weather-reminder">
+            <h2></h2>
+          </div>
+          <div class="button-area" id="button-area">
+            <button class="full-view">
+              <img
+                id="button-icon"
+                src="./assets/button-icon-day.png"
+                alt="button icon"
+              />
+            </button>
+          </div>
+        </header>
+        <div class="weather-details" id="forecast-field">
+          <table class="weather-table" id="weather-table"></table>
         </div>
-      </header>
-      <div class="weather-details" id="forecast-field">
-        <table class="weather-table" id="weather-table"></table>
       </div>
     </div>
     <script src="./script.js"></script>

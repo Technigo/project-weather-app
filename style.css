@@ -12,20 +12,20 @@ html {
   height: 100%;
 }
 
-body {
-  /* background: rgb(255, 255, 255); */
-  /* Night mode */
-  /* background: rgb(181, 181, 246);
+/* body { */
+/* background: rgb(255, 255, 255); */
+/* Night mode */
+/* background: rgb(181, 181, 246);
   background: linear-gradient(
     337deg,
     rgba(181, 181, 246, 1) 0%,
     rgba(45, 60, 203, 1) 100%
   ); */
-  /* min-height: 100%; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+/* min-height: 100%; */
+/* display: flex; */
+/* justify-content: center;
+  align-items: center; */
+/* } */
 
 html,
 body {
@@ -33,12 +33,18 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  overflow: scroll;
 }
+
 .background {
-  box-shadow: 9px 7px 40px -6px rgba(0, 0, 0, 0.25);
-  height: 896px;
-  width: 420px;
-  border-radius: 5px;
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+  background-color: white;
+  height: 100%;
+  width: 100%;
 }
 
 img {
@@ -295,4 +301,35 @@ tr:hover td:first-child {
 
 .show-quote {
   display: block;
+}
+
+@media (min-width: 466px) and (min-height: 961px) {
+  body {
+    background: #eee;
+    background: linear-gradient(0deg, rgba(0, 0, 200, 0.2), rgba(0, 0, 200, 0));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .container {
+    border-radius: 52px;
+    position: absolute;
+    left: 25.5px;
+    height: 920px;
+    width: 423px;
+    overflow: hidden;
+  }
+
+  .background {
+    background-image: url(./assets/iphone-frame.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 960px;
+    width: 465px;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
 }
