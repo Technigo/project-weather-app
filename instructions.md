@@ -22,7 +22,7 @@ We've asked a couple of different designers to do their take on this project. It
 
 For this project, we suggest that you lay out the foundation of your project in the main/master branch. After that, it's time to start working in branches.
 
-### Step 1 - Get started with the weather API
+### Step 1 - Get started with the weather API ✅
 
 [Sign up for a free Open Weather Map account](https://home.openweathermap.org/users/sign_up). Once signed in, go to "My API keys". You find that in the menu if you click your username. Copy the API Key. You can use the API Key in the APPID parameter when making calls to the openweathermap API.
 
@@ -83,7 +83,7 @@ You will need to use the `fetch()` function in JavaScript to load the weather da
 
 Read the [endpoint documentation](https://openweathermap.org/current) for the current weather.
 
-### Step 2 - Present some data on your web app
+### Step 2 - Present some data on your web app ✅
 
 Your task is to present some data on your web app. Start with:
 
@@ -95,7 +95,7 @@ Your task is to present some data on your web app. Start with:
 
 Now it's time to start working in GitHub branches. Decide beforehand when you should have a "feature freeze" so that you make time for merging.
 
-**Feature: Sunrise and sunset 🌅**  
+**Feature: Sunrise and sunset 🌅**  ✅
 Show the time for sunrise and sunset in a readable time format (Example: 13:00 or 1 PM). You will have to format the date from milliseconds to a readable format. [Here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date "Here") is a useful resource for how to do this.
 
 **Feature: Weather forecast 📅**  
@@ -114,9 +114,9 @@ Style it to look like one of the provided designs.
 
 ## Requirements
 
-- You should fetch data from the API using `fetch()` in JavaScript
-- The app should have: city name, current temperature, weather description, sunrise/sunset time, 4-day forecast
-- The presentation of the data should be in the specified format
+- You should fetch data from the API using `fetch()` in JavaScript ✅
+- The app should have: city name, current temperature, weather description, sunrise/sunset time, 4-day forecast ✅
+- The presentation of the data should be in the specified format ✅
 - Make your app responsive (it should look good on devices from 320px width up to 1600px)
 - Follow one of the designs as closely as you can
 - Complete Step 1-2 in the main/master branch, and Step 3 in branches
