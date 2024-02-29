@@ -5,7 +5,7 @@ const sunriseSunsetDOM = {
   sunset: document.getElementById("sunset-time"),
 };
 
-//DOM querySelector gör( att den kan ta en klass o ett id, class= "." id= "#" )
+//DOM querySelector make( that it can take a class and an id, class= "." id= "#" )
 const backImg = document.querySelector(".backimg");
 const container = document.getElementById("weather");
 
@@ -53,7 +53,7 @@ fetch(
       // and i put true on this one for the moon
       WeatherIcon = getWeatherIcon(json.weather[0].main, true);
       backImg.style.backgroundImage =
-        "linear-gradient(to bottom right, #161955, #444891)";
+        "linear-gradient(to bottom right, #161955, #444891";
     } else {
       // Day
       WeatherIcon = getWeatherIcon(json.weather[0].main);
@@ -134,7 +134,7 @@ function getWeatherIcon(weatherDescription, moon = false) {
     return "/Users/josode/Desktop/project-weather-app/design/decorative_7266228.png";
   } else if (weatherDescription === "Rain") {
     return "/Users/josode/Desktop/project-weather-app/design/rain-png-45881.png";
-  } else if (weatherDescription === "clear") {
+  } else if (weatherDescription === "Clear") {
     return "/Users/josode/Desktop/project-weather-app/design/sun-48190.png";
   }
 }
