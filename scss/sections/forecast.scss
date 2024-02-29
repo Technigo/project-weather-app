@@ -1,0 +1,13 @@
+.section__forecast {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  .forecast-container {
+    .forecast-wrapper {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.8em;
+      padding: 0.5em 0;
+    }
+  }
+}

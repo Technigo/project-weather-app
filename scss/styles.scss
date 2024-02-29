@@ -1,0 +1,199 @@
+@import "fonts";
+@import "variables";
+
+// Sections
+@import "./sections/current-weather.scss";
+@import "./sections/forecast.scss";
+@import "search";
+@import "footer";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: clamp(16px, 1.2vw, 32px);
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: lightgray;
+  position: relative;
+  font-family: "Montserrat", sans-serif;
+  max-width: 100vw;
+  min-height: 100vh;
+}
+
+main {
+  background-color: $cloudy-background-color;
+  max-width: 1600px;
+  margin: 0 auto;
+  letter-spacing: 0.01em;
+  padding: 3em;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(100vh - 100px);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+h1 {
+  font-size: 3rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1rem;
+}
+h4 {
+  font-size: 0.875rem;
+}
+
+p {
+  margin-bottom: 0.25rem;
+  line-height: 1em;
+  font-weight: 500;
+}
+
+ul li {
+  list-style: none;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: $white;
+  cursor: pointer;
+}
+
+img {
+  // width: 100%;
+  display: block;
+}
+
+input {
+  outline: none;
+  border: none;
+  background: #dddada;
+  border-radius: 30px;
+  padding: 0.6em 0.7em;
+  font-size: 0.8rem;
+}
+
+.loader {
+  display: none;
+
+  &::after {
+    content: "";
+    background-image: url("../assets/white_clouds.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+  }
+
+  span {
+    position: relative;
+    top: 0.63em;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 2rem;
+    opacity: 0;
+    transform: rotateX(-90deg);
+    z-index: 100;
+  }
+
+  .let1 {
+    animation: drop 1.2s ease-in-out infinite;
+    animation-delay: 1.2s;
+  }
+
+  .let2 {
+    animation: drop 1.2s ease-in-out infinite;
+    animation-delay: 1.3s;
+  }
+
+  .let3 {
+    animation: drop 1.2s ease-in-out infinite;
+    animation-delay: 1.4s;
+  }
+
+  .let4 {
+    animation: drop 1.2s ease-in-out infinite;
+    animation-delay: 1.5s;
+  }
+
+  .let5 {
+    animation: drop 1.2s ease-in-out infinite;
+    animation-delay: 1.6s;
+  }
+
+  .let6 {
+    animation: drop 1.2s ease-in-out infinite;
+    animation-delay: 1.7s;
+  }
+
+  .let7 {
+    animation: drop 1.2s ease-in-out infinite;
+    animation-delay: 1.8s;
+  }
+
+  @keyframes drop {
+    10% {
+      opacity: 0.5;
+    }
+    20% {
+      opacity: 1;
+      top: 3.78em;
+      transform: rotateX(-360deg);
+    }
+    80% {
+      opacity: 1;
+      top: 3.78em;
+      transform: rotateX(-360deg);
+    }
+    90% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 0;
+      top: 6.94em;
+    }
+  }
+}
+
+@media screen and (max-width: 667px) {
+  main {
+    padding: 2em;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  p {
+    font-size: 1em;
+  }
+}
