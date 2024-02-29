@@ -32,8 +32,8 @@ const changeWeather = (json) => {
   const sunsetHours = sunsetHuman.getHours().toString().padStart(2, "0");
   const sunsetMinutes = sunsetHuman.getMinutes().toString().padStart(2, "0");
 
-  mainWeather.innerHTML = `${json.weather[0].main} | ${Math.round(
-    json.main.temp
+  mainWeather.innerHTML = `${json.weather[0].main} | ${json.main.temp.toFixed(
+    1
   )}°`;
   title.innerText = `Get your sunnies on. ${json.name} is looking rather great today.`;
   sun.innerHTML = `
