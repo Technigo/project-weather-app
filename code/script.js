@@ -9,7 +9,7 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
        return response.json()
     })
     .then ((json) => {
-        //Added a variable to be able to round up today's temperature
+        //Variable to be able to round up today's temperature
         let temperatureRound = Math.round(json.main.temp)
         console.log(json)
         today.innerHTML = `<h4>
@@ -31,11 +31,18 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
 
 fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=725ee441189d3e16a4e4aa74b081805e")
     .then((response) => {
-       return response.json()
+        return response.json()
     })
-        .then ((json) => {
-        json.list.forEach((forecast) => {
-        week.innerHTML += `<p>${forecast.main.temp_min}° / ${forecast.main.temp_max} °C</p>`
+    .then ((json) => {
+        console.log(json)
+        json.list.forEach ((forecast) => {
+        //Variable to be able to round up today's temperature
+        let forecastMinRound = Math.round(forecast.main.temp_min)
+        let forecastMaxRound = Math.round(forecast.main.temp_max)
+        week.innerHTML += `<p>${forecastMinRound}° / ${forecastMaxRound} °C</p>`
         })
+        
     })
+
+
 
