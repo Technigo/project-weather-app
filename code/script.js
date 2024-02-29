@@ -27,7 +27,9 @@ const weatherZurich = () => {
       const sunsetTime = convertTo24Hour(data.sys.sunset);
 
       // Set the city name, description, temperature, sunrise, and sunset in HTML
-      weatherToday.innerHTML = `<h1>${data.name}</h1><p>${data.weather[0].description} | ${data.main.temp}°C</p><p>Sunrise ${sunriseTime}</p><p>Sunset ${sunsetTime}</p>`;
+      weatherToday.innerHTML = `<p>${data.weather[0].description} | ${data.main.temp}°C</p><p>sunrise ${sunriseTime}</p><p>sunset ${sunsetTime}</p>`;
+
+      weatherDescription.innerHTML = `<img src="icons/Cloud.svg"><h1>${data.name}</h1>`;
     });
 };
 weatherZurich();
@@ -41,13 +43,14 @@ const forecastZurich = () => {
     .then((data) => {
       //variable to store daily forecast
       const dailyForecasts = {};
-      //Loop through the forecast data to extract min and max temperatures for each day
+      //loops over the forecast, extracts the date, day name for each forecast and checks if the forecast belongs to one of the four days we want to display
       data.list.forEach((forecast) => {
         //Convert dt_txt string to Date object
         const date = new Date(forecast.dt_txt);
         //Get the shortened day name
         const dayName = getDayName(date);
-        //If the day is not already added to dailyForecasts and we have less than four days
+        //checks if the current day is already added to the object, if not and if there are fewer than four days, it adds the day
+        //The Object.keys() method returns an Array Iterator object with the keys of an object.
         if (
           !dailyForecasts[dayName] &&
           Object.keys(dailyForecasts).length < 4
@@ -60,23 +63,19 @@ const forecastZurich = () => {
       });
 
       //HTML for each day with min and max temperatures
-      let forecastHTML = "";
       for (const dayName in dailyForecasts) {
-        forecastHTML += `<p>${dayName} | Min: ${dailyForecasts[
+        fourdayForecast.innerHTML += `<div class="forecast-element"><div><p>${dayName}</p></div><div><p> ${dailyForecasts[
           dayName
-        ].minTemp.toFixed(1)}°C | Max: ${dailyForecasts[
-          dayName
-        ].maxTemp.toFixed(1)}°C</p>`;
+        ].minTemp.toFixed(1)}°C - ${dailyForecasts[dayName].maxTemp.toFixed(
+          1
+        )}°C</p></div>`;
       }
-
-      //Update fourdayForecast innerHTML with the constructed HTML
-      fourdayForecast.innerHTML = forecastHTML;
     });
 };
 
 //Function to get abbreviated day name
 function getDayName(date) {
-  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
   return days[date.getDay()];
 }
 
