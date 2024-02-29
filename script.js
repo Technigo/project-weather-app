@@ -5,7 +5,9 @@ const todaysWeather = document.getElementById("todays-weather");
 const todaysSunrise = document.getElementById("sunrise");
 const todaysSunset = document.getElementById("sunset");
 const forecastDay = document.getElementById("forecast-day");
-const forecast = document.getElementById("forecast");
+const forecastWeather = document.getElementById("forecast-weather");
+const forecastTemperature = document.getElementById("forecast-temperature");
+const forecastContainer = document.getElementById("forecast-container");
 
 //Weather Today API
 //https://api.openweathermap.org/data/2.5/weather?q=Gagnef,Sweden&units=metric&APPID=YOUR_API_KEY
@@ -38,8 +40,15 @@ const fetchWeatherTodayAPI = () => {
       console.log(weatherTodayData.name);
 
       // Update DOM with today's temperature
-      todaysTemperature.innerHTML = `<h1>| ${weatherTodayData.main.temp}</h1>`;
-      console.log(weatherTodayData.main.temp);
+      const temperatureWithOneDecimal = weatherTodayData.main.temp.toFixed(1);
+      todaysTemperature.innerHTML = `<h1>${temperatureWithOneDecimal}°</h1>`;
+      console.log(temperatureWithOneDecimal);
+
+      //   const dayOfWeekLowerCase = forecast.dayOfWeek.toLowerCase(); // Convert day of week to lowercase
+
+      //   // Update DOM with today's temperature
+      //   todaysTemperature.innerHTML = `<h1>| ${weatherTodayData.main.temp}°</h1>`;
+      //   console.log(weatherTodayData.main.temp);
 
       // Update DOM with today's weather
       weatherTodayData.weather.forEach((weather) => {
@@ -69,11 +78,15 @@ const fetchWeatherTodayAPI = () => {
         minute: "2-digit",
       });
 
-      // Update DOM with today's sunrise and sunset in 24-hour format
-      todaysSunrise.innerHTML = `<h1>Sunrise ${sunriseFormatted}</h1>`;
+      // Convert "Sunrise" and "Sunset" to lowercase
+      const sunriseLowerCase = "Sunrise".toLowerCase();
+      const sunsetLowerCase = "Sunset".toLowerCase();
+
+      // Update DOM with today's sunrise and sunset in lowercase and 24-hour format
+      todaysSunrise.innerHTML = `<h1>${sunriseLowerCase} ${sunriseFormatted}</h1>`;
       console.log(sunriseFormatted);
 
-      todaysSunset.innerHTML = `<h1>Sunset ${sunsetFormatted}</h1>`;
+      todaysSunset.innerHTML = `<h1>${sunsetLowerCase} ${sunsetFormatted}</h1>`;
       console.log(sunsetFormatted);
 
       console.log(weatherTodayData);
@@ -99,7 +112,7 @@ const fetchWeatherForecastAPI = () =>
       console.log(weatherForecastData.list);
 
       // Extracting dates and weather icons from the forecast data for 12:00:00 entries
-      const forecastDay = document.getElementById("forecast"); // Assuming you have an element with id="forecast" to display the forecast
+      //   const forecastDay = document.getElementById("forecast-day");
 
       const filteredWeatherData = weatherForecastData.list
         .filter((item) => item.dt_txt.includes("12:00:00"))
@@ -119,15 +132,38 @@ const fetchWeatherForecastAPI = () =>
 
       console.log("Filtered Weather Data (12:00:00):", filteredWeatherData);
 
+      // Display the forecast data on the webpage -- THIS WORKS
+      //       forecastDay.innerHTML = filteredWeatherData
+      //         .map((forecast) => `<h3>${forecast.dayOfWeek}</h3>`)
+      //         .join("");
+      //       forecastWeather.innerHTML = filteredWeatherData
+      //         .map((forecast) => `<img src="${forecast.iconUrl}" alt="Weather Icon">`)
+      //         .join("");
+      //       forecastTemperature.innerHTML = filteredWeatherData
+      //         .map((forecast) => `<p>${forecast.temperature}°C</p>`)
+      //         .join("");
+      //     });
+
+      //   fetchWeatherForecastAPI()
+
+      //----------------------
+
       // Display the forecast data on the webpage
-      forecastDay.innerHTML = filteredWeatherData
-        .map(
-          (forecast) =>
-            `<div><h2>${forecast.dayOfWeek}</h2><img src="${forecast.iconUrl}" alt="Weather Icon"><p>${forecast.temperature}°C</p></div>`
-        )
-        .join("");
+      //   forecastContainer.innerHTML = "";
+      filteredWeatherData.slice(0, 4).forEach((forecast) => {
+        const dayOfWeekLowerCase = forecast.dayOfWeek.toLowerCase(); // Convert day of week to lowercase
+        const forecastHTML = `
+    <div class="forecast-row">
+      <h3>${dayOfWeekLowerCase}</h3>
+      <img src="${forecast.iconUrl}" alt="Weather Icon">
+      <h3>${forecast.temperature}°</h3>
+    </div>
+  `;
+        forecastContainer.innerHTML += forecastHTML;
+      });
+    })
+    .catch((error) => {
+      console.error("Error fetching weather forecast:", error);
     });
 
 fetchWeatherForecastAPI();
-
-// locationName.innerHTML = `<h1>${weatherTodayData.name}</h1>`;
