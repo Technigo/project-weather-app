@@ -1,13 +1,12 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+We had to build a weather app by fetching data from an API. Design wise we should follow a fixed template.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I started with setting up a basic HTML. After that I worked on getting all the data from the API. Then there was the big styling part. It will change depending on the weather.
+If I would have more time I would add a search bar where a user can search a city because currently the city is fixed.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Here you can find the weather forecast from Zurich, Switzerland:

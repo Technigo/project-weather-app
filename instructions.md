@@ -132,7 +132,6 @@ So you’ve completed the requirements? Great job! Make sure you've committed an
 Change the colours of the page based on the weather. If the weather is warm – use warm colours. If the weather is colder, use cold colours. If you really want to push your CSS muscles you can even make a background gradient.
 
 Another alternative is to include visual indicators for the type of weather, cloudy/sunny/rainy/etc.
-Clear/Clouds/Rain/Snow
 
 **Feature: More cities 🏙️**  
 Give the user the option to choose between a couple of your favourite cities, or create a searchbar where the user can search for a specific city.
