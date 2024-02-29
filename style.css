@@ -20,25 +20,6 @@ background: var(--gradient-day);
 color: #E8E9FF;
 }
 
-.cityInput {
-  padding: 10px;
-  font-size: 1rem;
-  border: 2px solid hsla(0, 0%, 20%, 0.3);
-  border-radius: 10px;
-  margin: 10px;
-}
-button[type="submit"]{
-  padding: 10px 20px;
-  background-color: rgb(133, 137, 255);
-  font-size: 1rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-button[type="submit"]:hover{
-  background-color: rgb(133, 137, 255, 0.8);
-}
-
 .current-weather {
 margin: 20px;
 padding: 10px;
@@ -84,5 +65,20 @@ p {
 .weather-forecast {
   display: flex;
   flex-direction: column;
-  margin: 50px;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 1rem;
+  align-items: center;
+}
+
+.forecast-display {
+  display: flex;
+  margin: 10px;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+img.icon {
+  width: 50px;
+  height: 50px;
 }
