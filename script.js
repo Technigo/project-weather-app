@@ -3,7 +3,7 @@ const body = document.getElementById("body");
 const cityName = document.getElementById("city-name");
 const weather = document.getElementById("weather");
 const degrees = document.getElementById("degrees");
-const image = document.getElementById("image");
+const image = document.getElementById("weather-icon");
 const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
 const forecastTable = document.getElementById("forecast-table");
@@ -147,8 +147,8 @@ const getForecast = () => {
         whatDayIsIt(weekday);
         const dayTemperature = dailyTemperatures[index].toFixed(1);
         forecastTable.innerHTML += `<tr>
-        <td>${weekday}</td>
-        <td>${dayTemperature}°</td>
+        <td id="col-1">${weekday}</td>
+        <td id="col-2">${dayTemperature}°</td>
       </tr>`;
       }
     });

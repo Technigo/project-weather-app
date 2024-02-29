@@ -3,8 +3,11 @@
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   padding: 40px;
   font-family: "Montserrat";
+  gap: 10px;
 }
 
 h1 {
@@ -18,7 +21,7 @@ td {
   font-size: 21px;
 }
 
-img {
+#weather-icon {
   max-width: 76px;
   max-height: 73px;
   margin: 50px 0 0 0;
@@ -39,6 +42,31 @@ img {
   color: #2a5510;
 }
 
-/*.weather-today {
-  
-}*/
+#forecast-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#forecast-table tr {
+  border-bottom: dotted;
+}
+
+#forecast-table td {
+  border-right: solid transparent;
+  padding: 4.5px 0 4.5px 0;
+}
+
+#col-2 {
+  text-align: end;
+}
+
+@media (min-width: 768px) {
+  body {
+    padding: 100px;
+    max-width: 700px;
+  }
+
+  #forecast-table {
+    margin: 55px 0 50px 0;
+  }
+}
