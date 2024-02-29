@@ -13,10 +13,9 @@ body {
   h2 {
     color: white;
     text-align: center;
-    font-weight: 400;
   }
 
-  h3 {
+  h3, #forecast {
     color: white;
     text-align: center;
     text-transform: capitalize;
