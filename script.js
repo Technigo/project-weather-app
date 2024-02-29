@@ -25,6 +25,26 @@ const fetchWeatherData = () => {
       weather.textContent = `
       ${data.weather[0].description}
       `;
+
+      const sunriseTime = new Date(data.sys.sunrise * 1000);
+      const sunriseHours = sunriseTime.getHours().toString().padStart(2, "0");
+      const sunriseminutes = sunriseTime
+        .getMinutes()
+        .toString()
+        .padStart(2, "0");
+
+      const formattedSunrise = `${sunriseHours}:${sunriseminutes}`;
+
+      //handle sunset time
+      const sunsetTime = new Date(data.sys.sunset * 1000);
+      const sunsetHours = sunsetTime.getHours().toString().padStart(2, "0");
+      const sunsetMinutes = sunsetTime.getMinutes().toString().padStart(2, "0");
+
+      const formattedSunset = `${sunsetHours}:${sunsetMinutes}`;
+
+      sunriseSunset.textContent = `
+      Sunrise ${formattedSunrise} Sunset ${formattedSunset}
+      `;
     });
 };
 
@@ -90,61 +110,7 @@ const fetchForecast = () => {
             </div>
             `;
       }
-
-      // const groupedByDay = {};
-
-      // forecastList.forEach((item) => {
-      //   const day = item.dt_txt.split(" ")[0];
-      //   console.log(day)
-
-      //   if (day !== todaysDate) {
-      //     if (!groupedByDay[day]) {
-      //       groupedByDay[day] = [];
-      //     }
-
-      //     groupedByDay[day].push(item);
-      //     console.log(groupedByDay)
-      //   }
-      // });
-
-      //filter out today's forecast and assign it the weekday name
-      // const filteredForecastList = forecastList.filter(
-      //   (item) =>
-      //     item.dt_txt.includes("15:00:00") &&
-      //     !item.dt_txt.startsWith(todaysDate)
-      // );
-      // console.log("forecast exluding today's date:", filteredForecastList);
-
-      //convert milliseconds into date form
-      // filteredForecastList.forEach((day) => {
-      //   const eachDaysDate = new Date(day.dt * 1000);
-      //   console.log("forecast days in date form:", eachDaysDate);
-      //   //convert each date form into the name of weekday
-      //   const weekdayNameOption = { weekday: "short" };
-      //   weekdayName = eachDaysDate.toLocaleDateString(
-      //     "en-US",
-      //     weekdayNameOption
-      //   );
-      //   console.log("weekday name:", weekdayName);
-      // });
-
-      // let highestMaxTemp = -500;
-      // let lowestMinTemp = 500;
-
-      // forecastList.forEach((item) => {
-      //   const maxTemp = Math.round(item.main.temp_max);
-      //   const minTemp = Math.round(item.main.temp_min);
-
-      //   if (maxTemp > highestMaxTemp) {
-      //     highestMaxTemp = maxTemp;
-      //   }
-
-      //   if (minTemp < lowestMinTemp) {
-      //     lowestMinTemp = minTemp;
-      //   }
-      // });
-      // console.log(
-      //   `min/max temp: ${lowestMinTemp}, ${highestMaxTemp}`
+      
     });
 };
 
