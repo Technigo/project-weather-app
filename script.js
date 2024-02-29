@@ -16,14 +16,11 @@ const scrollArrow = document.getElementById("scroll-arrow");
 // global var
 const APP_ID = "22a9947f80352a8e0b470d4aaefb4388";
 const API_URL = "https://api.openweathermap.org";
-let currentLocation = "Ulricehamn";
-const latitude = 57.791667; // default
-const longitude = 13.418611; // default
 
 // Print error
 const printError = error => {
   const errorMessage = document.createElement("div");
-  errorMessage.innerHTML = `<p class="error">Unfortunately, something went wrong and we could not find your location.<br><br>${error}</p>`;
+  errorMessage.innerHTML = `<p class="error">Unfortunately, something went wrong and we could not find your location.</p>`;
   weatherBackground.insertBefore(errorMessage, weatherToday);
   setTimeout(() => weatherBackground.removeChild(errorMessage), 5000);
 };
@@ -35,42 +32,8 @@ const toggleHide = el => el.classList.toggle("hidden");
 // Toggle class fullscreen
 const toggleFullscreen = el => el.classList.toggle("fullscreen");
 
-// Pick icon
-const pickIcon = iconId => {
-  switch (iconId) {
-    case "02d":
-      return "🌤️";
-      break;
-    case "03d":
-      return "⛅️";
-      break;
-    case "04d":
-      return "☁️";
-      break;
-    case "09d":
-      return "🌧️";
-      break;
-    case "10d":
-      return "🌦️";
-      break;
-    case "11d":
-      return "⛈️";
-      break;
-    case "13d":
-      return "❄️";
-      break;
-    case "50d":
-      return "😶‍🌫️";
-      break;
-
-    default:
-      return "☀️";
-      break;
-  }
-};
-
 // Change background and image if it's night
-const setNight = weatherData => {
+const setStyling = weatherData => {
   const currentTime = convertTime(Date.now() / 1000, weatherData.timezone);
   const sunset = convertTime(weatherData.sunset, weatherData.timezone);
   const sunrise = convertTime(weatherData.sunrise, weatherData.timezone);
@@ -84,7 +47,7 @@ const setNight = weatherData => {
 };
 
 // convert to weekday
-const toWeekday = date => {
+const setWeekday = date => {
   const day = new Date(date).getDay();
   switch (day) {
     case 1:
@@ -131,7 +94,7 @@ const constructMinutes = time =>
 
 // Get max temp for entire day from api data
 const getMaxTemp = (day, data) => {
-  const date = convertTime(day.dt, data.timezone).getDate(); // Convert seconds to a date
+  const date = convertTime(day.dt, data.timezone).getDate();
   const max = data.list
     .filter(entry => convertTime(entry.dt, data.timezone).getDate() === date)
     .sort((a, b) => b.main.temp_max - a.main.temp_max)[0];
@@ -140,7 +103,7 @@ const getMaxTemp = (day, data) => {
 
 // Get min temp for entire day from api data
 const getMinTemp = (day, data) => {
-  const date = convertTime(day.dt, data.timezone).getDate(); // Convert seconds to a date
+  const date = convertTime(day.dt, data.timezone).getDate();
   const min = data.list
     .filter(entry => convertTime(entry.dt, data.timezone).getDate() === date)
     .sort((a, b) => a.main.temp_min - b.main.temp_min)[0];
@@ -156,7 +119,7 @@ const printWeather = async weatherData => {
   weatherToday.innerHTML = `
   <p class="temp-current">${roundedTemp}<span>°C</span></p>
   <img
-    src="${setNight(weatherData)}"
+    src="${setStyling(weatherData)}"
     class="weather-img" />
   <p class="city">${weatherData.locationName}</p>
   <p class="weather-desc">
@@ -194,7 +157,7 @@ const printForecast = async forecastData => {
   noons.forEach(obj => {
     const maxTemp = getMaxTemp(obj, forecastData);
     const minTemp = getMinTemp(obj, forecastData);
-    const day = toWeekday(obj.dt_txt);
+    const day = setWeekday(obj.dt_txt);
     weatherForecast.innerHTML += `
       <div class="forecast-day">
         <p class="forecast-day-label">${day}</p>
@@ -218,7 +181,7 @@ const fetchWeather = async (lat, lon) => {
     }
     // construct json
     const weatherData = await response.json();
-    console.log("weatherData: ", weatherData);
+    // deconstruct to filter out only relevant data
     const {
       name: locationName,
       main: { temp },
@@ -239,8 +202,7 @@ const fetchWeather = async (lat, lon) => {
     });
   } catch (error) {
     printError(error);
-    console.log("Fetch error: ", error);
-    throw error;
+    throw new Error("Fetch error: ", error);
   }
 };
 
@@ -254,7 +216,6 @@ const fetchForecast = async (lat, lon) => {
       throw new Error("Network response was not ok");
     }
     const forecastData = await response.json();
-    console.log("Forecast data", forecastData);
     const {
       city: { timezone },
       list,
@@ -262,7 +223,7 @@ const fetchForecast = async (lat, lon) => {
     printForecast({ timezone, list });
   } catch (error) {
     printError(error);
-    throw error;
+    throw new Error("Fetch error: ", error);
   }
 };
 
@@ -281,7 +242,7 @@ const fetchGeocode = async location => {
     fetchForecast(lat, lon);
   } catch (error) {
     printError(error);
-    console.log("Error: ", error);
+    throw new Error("Fetch error: ", error);
   }
 };
 
@@ -324,18 +285,28 @@ navGeo.addEventListener("click", () => {
   setTimeout(() => toggleHide(navWrapper), 500);
   handleLocal();
 });
+
 navItems.forEach(location =>
   location.addEventListener("click", event => {
     setTimeout(() => toggleHide(navWrapper), 500);
     fetchGeocode(event.target.firstChild.nodeValue);
   })
 );
+
 searchInput.addEventListener("change", event => {
-  setTimeout(() => toggleHide(navWrapper), 500);
+  setTimeout(() => {
+    toggleHide(navWrapper);
+    searchInput.value = "";
+  }, 500);
   fetchGeocode(event.target.value);
+  searchInput.value = "";
 });
+
 searchBtn.addEventListener("click", event => {
-  setTimeout(() => toggleHide(navWrapper), 500);
+  setTimeout(() => {
+    toggleHide(navWrapper);
+    searchInput.value = "";
+  }, 500);
   fetchGeocode(event.target.value);
 });
 
