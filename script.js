@@ -3,7 +3,8 @@ const body = document.getElementById("body");
 const cityName = document.getElementById("city-name");
 const weather = document.getElementById("weather");
 const degrees = document.getElementById("degrees");
-const image = document.getElementById("image");
+const smallWeatherIcon = document.getElementById("weather-icon");
+const largeWeatherIcon = document.getElementById("large-weather-icon");
 const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
 const forecastTable = document.getElementById("forecast-table");
@@ -34,26 +35,35 @@ const fetchData = (url) => {
 
 // Function that changes the design for cloudy days
 const setCloudyDesign = () => {
-  image.src = "./design/design2/icons/noun_Cloud_1188486.svg";
+  smallWeatherIcon.src = "./design/design2/icons/noun_Cloud_1188486.svg";
+  largeWeatherIcon.src = "./design/design2/icons/noun_Cloud_1188486.svg";
   body.className = "cloudy";
   cityName.innerHTML = `Light a fire and get cosy. ${localCity} is looking grey today.`;
 };
 
 // Function that changes the design for clear days
 const setClearDesign = () => {
-  image.src = "./design/design2/icons/noun_Sunglasses_2055147.svg";
+  smallWeatherIcon.src = "./design/design2/icons/noun_Sunglasses_2055147.svg";
+  largeWeatherIcon.src = "./design/design2/icons/noun_Sunglasses_2055147.svg";
   body.className = "clear";
   cityName.innerHTML = `Get your sunnies on. ${localCity} is looking rather great today.`;
 };
 
 // Function that changes the design for rainy days
 const setRainDesign = () => {
-  image.src = "./design/design2/icons/noun_Umbrella_2030530.svg";
+  smallWeatherIcon.src = "./design/design2/icons/noun_Umbrella_2030530.svg";
+  largeWeatherIcon.src = "./design/design2/icons/noun_Umbrella_2030530.svg";
   body.className = "rain";
   cityName.innerHTML = `Don't forget your umbrella. It's wet in ${localCity} today.`;
 };
 
-// Function that fetches the name of the local city
+const setHazyDesign = () => {
+  smallWeatherIcon.src = "./design/design2/icons/cloud-fog-icon.svg";
+  largeWeatherIcon.src = "./design/design2/icons/cloud-fog-icon.svg";
+  body.className = "hazy";
+  cityName.innerHTML = `Watch your step. Visibility in ${localCity} is not great today.`;
+};
+
 const getCityName = () => {
   fetchData(URL).then((json) => {
     localCity = json.name;
@@ -73,6 +83,12 @@ const getCityWeather = () => {
       setClearDesign();
     } else if (localWeather === "Rain") {
       setRainDesign();
+    } else if (
+      localWeather === "Haze" ||
+      localWeather === "Fog" ||
+      localWeather === "Mist"
+    ) {
+      setHazyDesign();
     } else {
       image.src = "./design/design2/icons/icons8-placeholder-50.png";
     }
@@ -173,8 +189,8 @@ const getForecast = () => {
         // array is and adds the value to the dayTemperature variable
         const dayTemperature = dailyTemperatures[index].toFixed(1);
         forecastTable.innerHTML += `<tr>
-        <td>${weekday}</td>
-        <td>${dayTemperature}°</td>
+        <td id="col-1">${weekday}</td>
+        <td id="col-2">${dayTemperature}°</td>
       </tr>`;
       }
     });

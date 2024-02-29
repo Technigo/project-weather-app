@@ -11,33 +11,42 @@
     <title>Weather app</title>
   </head>
   <body id="body">
-    <div>
-      <table class="weather-today">
-        <tr>
-          <td id="weather"></td>
-          <td id="degrees"></td>
-        </tr>
-        <tr>
-          <td>sunrise</td>
-          <td id="sunrise"></td>
-        </tr>
-        <tr>
-          <td>sunset</td>
-          <td id="sunset"></td>
-        </tr>
-      </table>
-    </div>
-    <img
-      src="./design/design2/icons/icons8-placeholder-50.png"
-      alt="weather icon"
-      id="image"
-    />
-    <div>
-      <h1 id="city-name"></h1>
-    </div>
-    <div>
-      <table id="forecast-table"></table>
-    </div>
+    <section id="weather-info-container">
+      <div>
+        <table class="weather-today">
+          <tr>
+            <td id="weather"></td>
+            <td id="degrees"></td>
+          </tr>
+          <tr>
+            <td>sunrise</td>
+            <td id="sunrise"></td>
+          </tr>
+          <tr>
+            <td>sunset</td>
+            <td id="sunset"></td>
+          </tr>
+        </table>
+      </div>
+      <img
+        src="./design/design2/icons/icons8-placeholder-50.png"
+        alt="weather icon"
+        id="weather-icon"
+      />
+      <div>
+        <h1 id="city-name"></h1>
+      </div>
+      <div>
+        <table id="forecast-table"></table>
+      </div>
+    </section>
+    <section id="image-container">
+      <img
+        src="./design/design2/icons/icons8-placeholder-50.png"
+        alt="weather image"
+        id="large-weather-icon"
+      />
+    </section>
     <script src="./script.js"></script>
   </body>
 </html>
