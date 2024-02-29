@@ -1,4 +1,5 @@
 import { weatherData } from "./data.js";
+import { handleSearchForm } from "./search.js";
 
 // Globals
 const main = document.getElementById("main");
@@ -7,6 +8,7 @@ const currentWeatherSection = document.getElementById(
   "section__current-weather"
 );
 const forecastSection = document.getElementById("section__forecast");
+const errorMessage = document.getElementById("err-message");
 let currentTheme = [];
 let currentTemp = "";
 
@@ -53,6 +55,9 @@ const formateTime = (dateUTC, timezone) => {
 
 // Function that handels color theme
 export const handleWeatherData = async (data) => {
+  // Clear existing forecast
+  currentWeatherSection.innerHTML = "";
+
   // Getting the weather type from api
   const currentWeatherType = data.weather[0].main;
   currentTemp = data.main.temp;
@@ -73,6 +78,10 @@ export const handleWeatherData = async (data) => {
         <p>sunrise ${formateTime(sunriseUTC, data.timezone)}</p>
         <p>sunset ${formateTime(sunsetUTC, data.timezone)}</p>
         </div>
+        <form id="search-form" class="search-form">
+          <input id="search-input" type="text"  maxlength="50" placeholder="Search for a city" name="search">
+          <p id="err-message"></p>
+        </form>
         <img
         src="${currentTemp < 15 ? weatherInfo.coldIcon : weatherInfo.warmIcon}"
         alt="${weatherInfo.alt}"
@@ -80,17 +89,23 @@ export const handleWeatherData = async (data) => {
         height="80"
         />
     </div>
+   
     <div class="forecast-title">
         <h1>${weatherInfo.text.replace("Stockholm", data.name)}</h1>
     </div>
     `;
+  // Event listner for search form
+  const searchForm = document.getElementById("search-form");
+  searchForm.addEventListener("submit", (e) => handleSearchForm(e));
 };
 
 // Make function async to wait for the respons
 export const handleForecastData = async (data) => {
+  // Clear existing forecast
+  forecastSection.innerHTML = "";
+
   // Get forecast list
   const forecastArray = [...data.list];
-
   // Filter forcast for 12 o'clock
   const filteredArray = forecastArray.filter((day) => {
     return day.dt_txt.toLowerCase().endsWith("12:00:00");
