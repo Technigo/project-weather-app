@@ -8,6 +8,8 @@ const forecastDay = document.getElementById("forecast-day");
 const forecastWeather = document.getElementById("forecast-weather");
 const forecastTemperature = document.getElementById("forecast-temperature");
 const forecastContainer = document.getElementById("forecast-container");
+const divider = document.getElementById("divider");
+const forecastRows = document.querySelectorAll("forecast-row");
 
 //Weather Today API
 //https://api.openweathermap.org/data/2.5/weather?q=Gagnef,Sweden&units=metric&APPID=YOUR_API_KEY
@@ -15,7 +17,7 @@ const forecastContainer = document.getElementById("forecast-container");
 
 const BASE_WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather";
 const API_KEY = "bf5fcdbe6629518d85ff1555a95c673f";
-const city = "Gagnef,Sweden";
+const city = "Gagnef, Sweden";
 
 const weatherTodayURL = `${BASE_WEATHER_URL}?q=${city}&units=metric&APPID=${API_KEY}`;
 
@@ -29,7 +31,7 @@ const weatherTodayURL = `${BASE_WEATHER_URL}?q=${city}&units=metric&APPID=${API_
 //     });
 // };
 
-const fetchWeatherTodayAPI = () => {
+const fetchWeatherTodayAPI = () =>
   fetch(weatherTodayURL)
     .then((response) => {
       return response.json();
@@ -55,43 +57,42 @@ const fetchWeatherTodayAPI = () => {
         console.log(weather);
         console.log(weather.main);
         todaysWeather.innerHTML = `<h1>${weather.main}</h1>`;
+
+        //   // Update DOM with today's sunrise
+        //   todaysSunrise.innerHTML = `<h1>Sunrise ${weatherTodayData.sys.sunrise}</h1>`;
+        //   console.log(weatherTodayData.sys.sunrise);
+        //   // Update DOM with today's sunset
+        //   todaysSunset.innerHTML = `<h1>Sunset ${weatherTodayData.sys.sunset}</h1>`;
+        //   console.log(weatherTodayData.sys.sunset);
+
+        // Convert Unix timestamps to milliseconds
+        const sunriseTime = new Date(weatherTodayData.sys.sunrise * 1000);
+        const sunsetTime = new Date(weatherTodayData.sys.sunset * 1000);
+
+        // Format sunrise and sunset times to 24-hour format
+        const sunriseFormatted = sunriseTime.toLocaleTimeString("en-GB", {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+        const sunsetFormatted = sunsetTime.toLocaleTimeString("en-GB", {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+
+        // Convert "Sunrise" and "Sunset" to lowercase
+        const sunriseLowerCase = "Sunrise".toLowerCase();
+        const sunsetLowerCase = "Sunset".toLowerCase();
+
+        // Update DOM with today's sunrise and sunset in lowercase and 24-hour format
+        todaysSunrise.innerHTML = `<h1>${sunriseLowerCase} ${sunriseFormatted}</h1>`;
+        console.log(sunriseFormatted);
+
+        todaysSunset.innerHTML = `<h1>${sunsetLowerCase} ${sunsetFormatted}</h1>`;
+        console.log(sunsetFormatted);
+
+        console.log(weatherTodayData);
       });
-
-      //   // Update DOM with today's sunrise
-      //   todaysSunrise.innerHTML = `<h1>Sunrise ${weatherTodayData.sys.sunrise}</h1>`;
-      //   console.log(weatherTodayData.sys.sunrise);
-      //   // Update DOM with today's sunset
-      //   todaysSunset.innerHTML = `<h1>Sunset ${weatherTodayData.sys.sunset}</h1>`;
-      //   console.log(weatherTodayData.sys.sunset);
-
-      // Convert Unix timestamps to milliseconds
-      const sunriseTime = new Date(weatherTodayData.sys.sunrise * 1000);
-      const sunsetTime = new Date(weatherTodayData.sys.sunset * 1000);
-
-      // Format sunrise and sunset times to 24-hour format
-      const sunriseFormatted = sunriseTime.toLocaleTimeString("en-GB", {
-        hour: "2-digit",
-        minute: "2-digit",
-      });
-      const sunsetFormatted = sunsetTime.toLocaleTimeString("en-GB", {
-        hour: "2-digit",
-        minute: "2-digit",
-      });
-
-      // Convert "Sunrise" and "Sunset" to lowercase
-      const sunriseLowerCase = "Sunrise".toLowerCase();
-      const sunsetLowerCase = "Sunset".toLowerCase();
-
-      // Update DOM with today's sunrise and sunset in lowercase and 24-hour format
-      todaysSunrise.innerHTML = `<h1>${sunriseLowerCase} ${sunriseFormatted}</h1>`;
-      console.log(sunriseFormatted);
-
-      todaysSunset.innerHTML = `<h1>${sunsetLowerCase} ${sunsetFormatted}</h1>`;
-      console.log(sunsetFormatted);
-
-      console.log(weatherTodayData);
     });
-};
 
 fetchWeatherTodayAPI();
 
