@@ -1,4 +1,5 @@
-const todaysWeatherBox = document.getElementById("weatherTodayBox");
+const todaysWeatherBox = document.getElementById("todaysWeather");
+const sunsetSunriseBox = document.getElementById("sunsetSunrise");
 const weatherMessageBox = document.getElementById("weatherMessageBox");
 
 const todaysWeatherBaseURL = "https://api.openweathermap.org/data/2.5/weather";
@@ -10,23 +11,32 @@ const units = "metric";
 const URL = `${todaysWeatherBaseURL}?q=${city}&units=${units}&APPID=${API_KEY}`;
 const forecastURL = `${forecastBaseURL}?q=${city}&units=${units}&APPID=${API_KEY}`;
 
-const showTodaysWeather = (weatherData) => {
+const showsTodaysWeather = (weatherData) => {
   const todaysWeather = weatherData.weather[0].description;
   const todaysTemperature = weatherData.main.temp.toFixed(1);
-  const sunrise = weatherData.sys.sunrise;
-  const sunset = weatherData.sys.sunset;
-  todaysWeatherBox.innerHTML = `${todaysWeather} ${todaysTemperature}&deg ${sunrise} ${sunset}`;
+  const sunrise = new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString("en-GB", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+  const sunset = new Date(weatherData.sys.sunset * 1000).toLocaleTimeString("en-GB", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+  todaysWeatherBox.innerHTML = `${todaysWeather} | ${todaysTemperature}&deg`;
+  sunsetSunriseBox.innerHTML = `sunrise: ${sunrise} sunset: ${sunset}`;
   weatherMessageBox.innerHTML = `${city}`;
 };
 
 fetch(URL)
   .then((response) => response.json())
   .then((weatherData) => {
-    showTodaysWeather(weatherData);
+    showsTodaysWeather(weatherData);
   });
 
-// fetch(forecastURL)
-//   .then((response) => response.json())
-//   .then((forecastData) => {
+const showForecastWeather = (forecastData) => {};
 
-//   });
+fetch(forecastURL)
+  .then((response) => response.json())
+  .then((forecastData) => {
+    showForecastWeather(forecastData);
+  });
