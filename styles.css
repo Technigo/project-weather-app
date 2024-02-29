@@ -1,0 +1,89 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #ffffff;
+  font-family: "Montserrat";
+  color: #f47775;
+}
+
+h1 {
+  font-size: 19px;
+  line-height: 28px;
+  font-weight: 300;
+}
+
+h2 {
+  font-size: 37px;
+  font-weight: 600;
+  line-height: 45px;
+}
+
+h3 {
+  font-size: 21px;
+  line-height: 50px;
+  font-weight: 300;
+}
+
+hr {
+  border: 0.1px solid #f47775;
+  margin: 0 5px 0 5px;
+}
+
+.weather-today-section1 {
+  display: flex;
+  margin-top: 40px;
+}
+
+.weather-today-section1,
+.weather-today-section2 {
+  margin-left: 40px;
+}
+
+.location {
+  margin-left: 115px;
+}
+
+.icon {
+  margin-top: 25px;
+}
+
+.icon-and-text {
+  margin-left: 40px;
+}
+
+.forecast-container {
+  /* width: 200px; */
+  height: 220px;
+  margin: 40px 40px 0 40px;
+}
+
+.forecast-row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dotted #f47775;
+  width: 290px;
+}
+
+/* .forecast-day {
+  display: flex;
+  flex-direction: column;
+
+  border: 1px solid black;
+  height: 100px;
+}
+
+.forecast-weather {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  height: auto;
+}
+
+.forecast-temperature {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+} */
