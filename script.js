@@ -174,9 +174,39 @@ const iconArr = [
   },
   {
     name: "otherIcon",
-    svg: `<svg width="73" height="73" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M4 12C4 12 5.6 7 12 7M12 7C18.4 7 20 12 20 12M12 7V4M18 5L16 7.5M6 5L8 7.5M15 13C15 14.6569 13.6569 16 12 16C10.3431 16 9 14.6569 9 13C9 11.3431 10.3431 10 12 10C13.6569 10 15 11.3431 15 13Z" stroke="#464455" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>`,
+    svg: `<svg fill="#000000" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+    width="73px" height="73px" viewBox="0 0 482.732 482.732"
+    xml:space="preserve">
+ <g>
+   <g>
+     <path d="M374.038,0.009c-4.921-0.173-8.252,2.148-10.034,5.398c-0.538,0.381-1.082,0.772-1.595,1.28
+       c-60.61,59.184-114.688,124.293-170.082,188.256c-13.348-9.105-27.31-16.966-41.787-23.176c-4.535-1.945-8.844-1.062-12.137,1.198
+       c-1.274,0.117-2.574,0.365-3.905,0.914c-25.89,10.796-46.819,28.543-62.914,51.196c-3.052,1.315-5.261,3.95-6.437,6.972
+       c-2.872,2.534-4.42,6.424-2.912,11.299c24.075,77.794,90.799,185.29,180.715,192.866c4.271,0.36,7.3-1.254,9.188-3.752
+       c1.676-0.198,3.402-0.717,5.175-2.037c25.258-18.778,44.544-42.081,55.35-71.853c0.625-1.717,0.823-3.306,0.727-4.764
+       c0.229-1.665,0.065-3.499-0.727-5.535c-5.093-13.096-11.263-26.151-18.306-38.953c58.387-60.986,113.264-125.278,173.769-184.244
+       c2.163-2.107,3.229-4.453,3.498-6.769c2.793-1.899,4.9-4.905,5.286-9.085C482.803,45.478,435.669,2.137,374.038,0.009z
+        M90.677,252.765c19.4,6.546,37.333,16.321,53.458,28.473c-3.864,19.251-4.778,41.197,7.482,57.625
+       c12.667,16.966,33.55,18.819,52.857,15.224c8.513,17.082,14.79,35.333,18.278,54.259
+       C160.811,389.51,112.604,311.939,90.677,252.765z M162.611,296.99c11.75,11.324,22.208,24.009,31.011,37.811
+       c-9.476,1-19.39-0.203-25.375-8.216C162.136,318.388,161.486,307.419,162.611,296.99z M246.832,408.568
+       c-14.097-81.085-70.376-152.705-148.896-178.729c12.682-15.056,28.417-26.507,46.834-34.438
+       c63.975,29.828,118.832,93.09,144.375,158.042C280.857,375.617,265.582,394.299,246.832,408.568z M453.112,106.652
+       c-0.646,0.432-1.285,0.919-1.899,1.519c-59.067,57.563-112.792,120.19-169.635,179.877
+       c-19.073-29.473-42.919-56.731-70.089-78.785C250.765,163.85,289.484,117.94,330.362,74l19.362,19.367
+       c10.912,10.908,27.827-6.007,16.914-16.914l-19.834-19.84c10.455-10.923,21.022-21.754,31.849-32.347
+       C424.828,27.771,456.286,59.122,453.112,106.652z" fill="#fffc9c" stroke="#fffc9c"/>
+     <path d="M19.76,340.686c12.042-4.058,23.899-8.633,35.942-12.685c14.563-4.911,8.554-28.071-6.068-23.146
+       c-12.042,4.052-23.899,8.632-35.942,12.685C-0.879,322.451,5.138,345.611,19.76,340.686z"fill="#fffc9c" stroke="#fffc9c"/>
+     <path d="M89.666,421.085l25.372-25.369c10.908-10.908-6.007-27.822-16.917-16.915l-25.37,25.369
+       C61.849,415.083,78.759,431.993,89.666,421.085z"fill="#fffc9c" stroke="#fffc9c"/>
+     <path d="M170.342,470.773c1.077-10.582,4.202-20.921,8.072-30.798c2.374-6.073-2.793-13.101-8.539-14.604
+       c-6.85-1.788-12.225,2.462-14.606,8.536c-4.674,11.938-7.556,24.12-8.846,36.865c-0.66,6.495,5.938,11.959,11.961,11.959
+       C165.392,482.732,169.688,477.248,170.342,470.773z" fill="#fffc9c" stroke="#fffc9c"/>
+     <path d="M290.394,226.949c18.098,18.098,46.148-9.963,28.061-28.056C300.356,180.8,272.301,208.862,290.394,226.949z"fill="#fffc9c" stroke="#fffc9c"/>
+   </g>
+ </g>
+ </svg>`,
   },
 ];
 let currentDt = null;
@@ -257,13 +287,13 @@ const getTip = (description) => {
 
     case "Drizzle":
       tip = "Bring your raincoat for light showers.";
-      weatherDescription = "Gothenburg may experience drizzle today.";
+      weatherDescription = "Gothenburg might feel damp today.";
       icon = iconArr[4].svg;
       break;
 
     case "Thunderstorm":
       tip = "Stay indoors and be safe.";
-      weatherDescription = "A thunderstorm is forecasted for Gothenburg today.";
+      weatherDescription = "Gothenburg is in for a dramatic show today.";
       icon = iconArr[5].svg;
 
       break;
@@ -349,7 +379,6 @@ const displayWeeklyWeather = (weatherData) => {
   const getNoonTemp = getHourlyhWeather.filter(
     (hour) => hour.dtText.split(" ")[1] === "12:00:00"
   );
-  console.log(getNoonTemp);
 
   const dateToRemove = getNoonTemp.findIndex((item) => {
     item.dt === currentDt;
@@ -370,17 +399,12 @@ const displayWeeklyWeather = (weatherData) => {
   const dayIndices = converDate.map((item) => item.getDay());
   const dayOfWeek = dayIndices.map((index) => daysOfWeek[index]);
 
-  console.log(dayOfWeek);
-
-  getFourDayTemp.forEach((item) => {
+  getFourDayTemp.forEach((item, index) => {
     weektemp.innerHTML += `
-    <p>${Math.round(item.temp)}°</p> 
-    `;
-  });
-
-  dayOfWeek.forEach((item) => {
-    weekday.innerHTML += `
-    <p>${item}</p>
+    <div class="forecast">
+    <p>${dayOfWeek[index]}</p> 
+    <p>${Math.round(item.temp)}°</p>
+    </div>
     `;
   });
 };

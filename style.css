@@ -1,12 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  --colorTheme-clear-background: #f7e9b9;
+  --colorTheme-clear-text: #2a5510;
+  --colorTheme-rain-background: #bde8fa;
+  --colorTheme-rain-text: #164a68;
+  --colorTheme-clouds-background: #f4f7f8;
+  --colorTheme-clouds-text: #f47775;
+  --colorTheme-other-background: #786060;
+  --colorTheme-other-text: #fffc9c;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.weekday-temp {
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: var(--colorTheme-other-background);
+  color: var(--colorTheme-other-text);
+}
+
+.otherTheme {
+  background-color: var(--colorTheme-other-background);
+  color: var(--colorTheme-other-text);
+}
+
+.otherThemeDash {
+  border: var(--colorTheme-other-text) 1px dashed;
+}
+
+svg {
+  /* fill: var(--colorTheme-other-text); */
+}
+
+ul {
+  list-style-type: none;
+}
+
+.daily-weather {
+  margin: 49px auto 0px 47px;
+  font-weight: 400;
+}
+
+.description-temp {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  gap: 5px;
+  font-size: 21px;
+}
+
+.sun-time {
+  font-size: 19px;
+  margin-top: 2px;
+}
+
+.tip {
+  margin: 50px 41px 0px 41px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.tip-text,
+.weather-description {
+  margin-top: 18px;
+  font-size: 37px;
+  font-weight: 700;
+  line-height: 45.1px;
+}
+
+.weekly-weather {
+  margin: 30px 40px 0px 40px;
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 36px;
+}
+
+.week-temp {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: space-between;
+}
+
+.forecast {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  /* s */
+  border-bottom: var(--colorTheme-other-text) 1px dashed;
+}
+
+.forecast:nth-child(4) {
+  border-bottom: transparent 1px dashed;
+}
+
+footer {
+  position: fixed;
+  bottom: 1rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+@media screen and (min-width: 375px) {
 }
