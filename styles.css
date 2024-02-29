@@ -5,7 +5,7 @@
 }
 *{
     padding: 0;
-    margin: 0;
+    margin: 10px;
 }
 
 body {
@@ -15,30 +15,39 @@ body {
 }
 
 
-.logo{
-    width: 225px;
+#weatherImage{
+    width: 110px;
+}
+
+#weather {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    
 }
 
 h1,p{
     font-family: 'Montserrat', sans-serif;
     color: #F47775;
-    margin: 15px;
-    text-align: center;
+    margin: 5px;
+    text-align: left;
     
 }
 
 h1{
-    text-align: left;
-    font-size: 40px;
+    font-size: 35px;
 }
 .forecast__container{
     margin: 15px;
 }
-.forecast__day
-.forecast__temp
-.forecast__speed{
-    align-items:left; }
-    
+.forecast__day{
+     align-items:left; 
+    border-bottom: 2px dotted #F47775;
+    padding: 8px;
+    text-align: left;
+}
+
 .forecast__speed{
  border-bottom: 2px dotted #F47775;
     width: 100%;
