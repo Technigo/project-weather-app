@@ -153,8 +153,9 @@ const printWeather = async weatherData => {
   const sunriseTime = convertTime(weatherData.sunrise, weatherData.timezone);
   const sunsetTime = convertTime(weatherData.sunset, weatherData.timezone);
   const localTime = convertTime(Date.now() / 1000, weatherData.timezone);
+  const roundedTemp = Math.round(weatherData.temp * 10) / 10;
   weatherToday.innerHTML = `
-  <p class="temp-current">${Math.floor(weatherData.temp)}<span>°C</span></p>
+  <p class="temp-current">${roundedTemp}<span>°C</span></p>
   <img
     src="${setNight(weatherData)}"
     class="weather-img" />
