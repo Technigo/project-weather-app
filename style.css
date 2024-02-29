@@ -113,6 +113,10 @@ header > * {
   align-self: flex-end;
 }
 
+#weather-icon {
+  display: none;
+}
+
 .sun-condition {
   margin: 20px 0;
 }
@@ -178,6 +182,8 @@ header > * {
   display: none;
   justify-content: center;
   align-items: center;
+  position: relative;
+  top: 8vh;
 }
 .loader {
   width: 250px;
@@ -308,10 +314,6 @@ tr:hover td:first-child {
     height: 80px;
   }
 
-  #weather-icon {
-    display: none;
-  }
-
   .background {
     background-image: url(./assets/iphone-frame.png);
     background-repeat: no-repeat;
@@ -367,7 +369,7 @@ tr:hover td:first-child {
   }
 
   h2 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     line-height: 3rem;
   }
   .move {

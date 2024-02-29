@@ -65,7 +65,7 @@ const getPosition = () => {
 //   `${baseURL}${weatherEndpoint}?q=Stockholm,Sweden&units=${queryUnits}&APPID=${apiKey}`
 // )
 
-const displayCurrentWeather = (lat, lon) => {
+const displayCurrentWeather = (callback, lat, lon) => {
   fetch(
     `${baseURL}${weatherEndpoint}?lat=${lat}&lon=${lon}&units=${queryUnits}&APPID=${apiKey}`
   )
@@ -116,6 +116,9 @@ const displayCurrentWeather = (lat, lon) => {
       weatherIcon.style.display = "block";
       console.log(sunsetTime, sunriseTime, city);
       console.log(currentWeatherCondition);
+    })
+    .then(() => {
+      return callback([lat, lon]);
     });
 };
 
@@ -208,18 +211,32 @@ const generateFourDaysWeather = (
 // });
 
 // Execution
+
+const asyncCurrentWeather = function (lat, lon) {
+  return new Promise(function (resolve) {
+    displayCurrentWeather(resolve, lat, lon);
+  });
+};
+
 loader.style.display = "flex";
 getPosition()
   .then(pos => {
+    console.log(pos.coords);
     const { latitude: lat, longitude: lon } = pos.coords;
-    displayCurrentWeather(lat, lon);
-    displayWeatherForecast(lat, lon);
+    return [lat, lon];
   })
-  .then(response => {
-    console.log(response);
-    loader.style.display = "none";
+  .then(data => {
+    return asyncCurrentWeather(data[0], data[1]);
+  })
+  .then(res => {
+    console.log(res);
+    displayWeatherForecast(res[0], res[1]);
   })
   .then(() => {
+    console.log("finish loading weather forecast");
+    console.log("Moved here");
+    loader.style.display = "none";
+    console.log("Moved to button control");
     buttonField.style.display = "block";
     buttonIcon.addEventListener("click", () => {
       forecastField.classList.toggle("hide");
