@@ -145,5 +145,5 @@ function myFunction(x) {
 
 function troll() {
   console.log("troll");
-  window.open("https://youtu.be/dQw4w9WgXcQ?si=UdKr4U0IJJYidTrs");
+  window.open("https://youtu.be/xvFZjo5PgG0?si=9AXihk5f-0zqF-8s");
 }
