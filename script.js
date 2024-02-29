@@ -44,11 +44,22 @@ const ShowTodayWeather =()=>{
         const clear = document.getElementById("clear")
         const sunrise = document.getElementById("sunrise")
         const sunset = document.getElementById("sunset")
+       
         location.innerHTML = json.name
         temp.innerHTML = json.main.temp
         clear.innerHTML = json.weather[0].main
-        sunrise.innerHTML =`sunrise:`+json.sys.sunrise 
-        sunset.innerHTML =`sunset:`+json.sys.sunset 
+
+        //Show the time for sunrise and sunset in a readable time format
+        let sunRiseDate = new Date(json.sys.sunrise * 1000)
+        let timezoneOffsetSeconds = json.timezone;
+        sunRiseDate.setSeconds(sunRiseDate.getSeconds() + timezoneOffsetSeconds);
+        let sunRiseTime = sunRiseDate.getHours() + ":" +sunRiseDate.getMinutes()
+        sunrise.innerHTML =`sunrise:`+ sunRiseTime
+
+        let sunSetDate = new Date(json.sys.sunset * 1000)
+        sunSetDate.setSeconds(sunSetDate.getSeconds() + timezoneOffsetSeconds);
+        let sunSetTime = sunSetDate.getHours() + ":" +sunSetDate.getMinutes()
+        sunset.innerHTML =`sunset:`+sunSetTime
     })
 }
 ShowTodayWeather()
@@ -56,15 +67,8 @@ ShowTodayWeather()
 // ### Step 3 - Features
 // Now it's time to start working in GitHub branches. Decide beforehand when you should have a "feature freeze" so that you make time for merging.
 
-// **Feature: Sunrise and sunset 🌅**  
-// Show the time for sunrise and sunset in a readable time format (Example: 13:00 or 1 PM). You will have to format the date from milliseconds to a readable format. [Here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date "Here") is a useful resource for how to do this.
-
 // **Feature: Weather forecast 📅**  
 // Show a forecast for the next 4 days. You can choose how to display the forecast - perhaps you want to show the min and max temperature for each day, or perhaps you want to show the temperature from the middle of the day, or the humidity, what it feels like and so on.
-
-// ```
-// https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=YOUR_API_KEY
-// ```
 
 fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=bb3a8ca602b6560b4bf988de0be7f379")
     .then((response)=>{        
