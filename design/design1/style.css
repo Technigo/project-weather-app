@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(#acaeff, #ffffff);
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.weather-form {
+  margin: 5px;
+}
+
+.city-input {
+  padding: 10px;
+  font-size: 2rem;
+}
+
+.current-temp {
+  font-size: 200px;
+}
+
+.current-city {
+  font-size: 100px;
+}
+
+.current-sky {
+  font-size: 45px;
+  margin-bottom: 30px;
+}
+
+.weather-detail {
+  font-size: 36px;
+  display: flex;
+}
