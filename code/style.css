@@ -16,11 +16,19 @@ body {
   height: 100vh;
 }
 
-/*Styling for search bar*/
+/*Styling for search section*/
 .search-bar {
   display: flex;
   justify-content: space-between;
   padding: 20px 20px 0 20px;
+}
+
+.city-search {
+  opacity: 0.5;
+  border-radius: 30px;
+  overflow: hidden;
+  border: none;
+  padding: 5px;
 }
 
 /*Styling for upper section*/

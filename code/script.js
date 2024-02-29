@@ -1,5 +1,4 @@
 ////////// DOM Selectors //////////
-const container = document.getElementById("container")
 const temperature = document.getElementById("temperature")
 const city = document.getElementById("city")
 const weather = document.getElementById("weather")
@@ -7,6 +6,8 @@ const sunriseElement = document.getElementById("sunrise")
 const sunsetElement = document.getElementById("sunset")
 const forecastContainer = document.getElementById("forecast-container")
 const date = document.getElementById("date")
+const citySearchInput = document.getElementById("city-search-input")
+const searchForm = document.getElementById("search-form")
 
 ////////// API URL storing //////////
 const BASE_URL =
@@ -22,24 +23,21 @@ const currentTime = new Date().toLocaleTimeString()
 date.innerHTML = `${currentDate} ${currentTime}`
 
 ////////// Function to fetch API data //////////
-const fetchWeatherData = () => {
+const fetchWeatherData = (cityName) => {
   fetch(`${BASE_URL}${cityName}&appid=${API_KEY}`)
     .then((response) => response.json())
     .then((json) => {
-      console.log(json)
-
       //One decimal as per instructions
       const temp = json.main.temp.toFixed(1)
-      //Weather description
+      //Get weather description
       const weatherDescription = json.weather[0].description
+      const weatherDescriptionCapitalized =
+        weatherDescription.charAt(0).toUpperCase() + weatherDescription.slice(1)
+
       //Display in HTML
       temperature.innerHTML = `${temp}`
-      weather.innerHTML = `${weatherDescription}`
+      weather.innerHTML = `${weatherDescriptionCapitalized}`
       city.innerHTML = cityName
-
-      console.log("temp:", temp)
-      console.log("weather:", weatherDescription)
-      console.log("city:", cityName)
 
       ////////// Feature 1: Sunrise and sunset //////////
 
@@ -84,16 +82,14 @@ const fetchWeatherData = () => {
     })
 }
 
-fetchWeatherData()
+fetchWeatherData(cityName)
 
 ////////// Feature 2: Forecast 5 days//////////
 
-const fetchWeatherForecast = () => {
+const fetchWeatherForecast = (cityName) => {
   fetch(`${forecastURL}${cityName}&appid=${API_KEY}`)
     .then((response) => response.json())
     .then((json) => {
-      console.log(json)
-
       //Extract today's index
       const todayIndex = new Date(json.list[0].dt_txt).getDay()
 
@@ -170,4 +166,19 @@ const fetchWeatherForecast = () => {
       }
     })
 }
-fetchWeatherForecast()
+fetchWeatherForecast(cityName)
+
+////////// Feature 3: Search for other cities //////////
+
+searchForm.addEventListener("submit", (event) => {
+  event.preventDefault()
+  const inputValue = citySearchInput.value.trim()
+  const cityName = inputValue.charAt(0).toUpperCase() + inputValue.slice(1)
+  if (cityName) {
+    //Fetch weather data and forecast for new city
+    fetchWeatherData(cityName)
+    fetchWeatherForecast(cityName)
+    //clear the input
+    citySearchInput.value = ""
+  }
+})
