@@ -27,3 +27,19 @@
   font-weight: 700;
   font-style: normal;
 }
+
+#overcast {
+  border: 1px solid red;
+}
+
+h1 {
+  border: 1px solid red;
+  margin: 50px 10px;
+  align-items: center;
+}
+
+h2 {
+  border: 1px solid red;
+  margin: 50px 10px;
+  align-items: center;
+}
