@@ -3,7 +3,7 @@ const selectWeatherImg = document.getElementById("weatherImg")
 
 
 //create a fench function to log the data from the API
-const fenchWeaterData = () =>{
+const fetchWeaterData = () =>{
   fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=69cc94dd08e05801b495ee1b7a9cba03")
   .then((response)=>{
     return response.json()
@@ -24,15 +24,25 @@ const fenchWeaterData = () =>{
     const selectWeatherDescription = document.getElementById("weatherDescription")
     selectWeatherDescription.innerHTML = data.weather[0].description
     
-    //set sunrise
-    const selectSunraiseSunset = document.getElementById("sunraiseSunset")
-    const sunriseTimestamp = data.sys.sunrise * 1000
-    const sunriseDate = new Date (sunriseTimestamp)
-    selectSunraiseSunset.innerHTML = sunriseDate.toLocaleTimeString()    
+    //set sunrise "the variable cascade hell-1"
+    const selectSunraise = document.getElementById("sunraise")
+    const sunriseTimeStamp = data.sys.sunrise*1000
+    const sunriseTime = new Date (sunriseTimeStamp)
+    const sunriseHours = sunriseTime.getHours()
+    const sunriseMinutes = sunriseTime.getMinutes() 
+    selectSunraise.innerHTML = `${sunriseHours}:${sunriseMinutes}`
+
+    //set sunset "the variable cascade hell-2"
+    const selectSunset = document.getElementById("sunset")
+    const sunsetTimestamp = data.sys.sunset * 1000
+    const sunsetTime = new Date (sunsetTimestamp)
+    const sunsetHours = sunsetTime.getHours()
+    const sunsetMinutes = sunsetTime.getMinutes()
+    selectSunset.innerHTML = `${sunsetHours}:${sunsetMinutes}`
   })
   .catch ((error) =>{
     console.error(`Error fetching weather data:`, error)
   })
 }
 
-fenchWeaterData()
+fetchWeaterData()
