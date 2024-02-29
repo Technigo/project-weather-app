@@ -38,9 +38,9 @@ const remindTestCityName = (param) => {
     const timeFormat = {hour: '2-digit', minute: '2-digit', hour12: false}
     const sunriseTime = param.sys.sunrise * 1000
     const sunsetTime = param.sys.sunset * 1000
-    const finlandUct = 2 * 60 * 60 * 1000 //EET = UCT + 2h
-    const finlandSunriseTime = new Date(sunriseTime + finlandUct)
-    const finlandSunsetTIme = new Date(sunsetTime + finlandUct)
+    // const finlandUct = 2 * 60 * 60 * 1000 //EET = UCT + 2h? if I fetch API q=Helsinki,Finland, do I plus 2 hours for the time? if I plus 2 hours the final time is two more hours which is incorrect. 
+    const finlandSunriseTime = new Date(sunriseTime)
+    const finlandSunsetTIme = new Date(sunsetTime)
     const hoursSunrise = finlandSunriseTime.toLocaleTimeString('en-US', timeFormat)
     const hoursSunset = finlandSunsetTIme.toLocaleTimeString('en-US', timeFormat)
 
