@@ -21,12 +21,11 @@ body {
     border-top-right-radius: 0; /* Mindre radie för att skapa en rundad övre del */
     border-bottom-left-radius: 60% 60px; /* Större radie för att böja nedre delen */
     border-bottom-right-radius: 60% 60px; /* Större radie för att böja nedre delen */
-    filter: drop-shadow(rgba(112, 112, 112, 0.5) 1rem 1rem 2px); /* drop-shadow for border-radius*/
+    box-shadow: 0 8px 6px -6px #707070;
 }
-
-/*weather img for today */
+/*weather img for today*/
 #weather img {
-    max-width:400px;
+    width:400px;
     padding:0;
     position: absolute;
     top: -3%;
@@ -163,3 +162,54 @@ transition: box-shadow 0.3s ease;
    padding-right: 10%;
 }
 
+@media screen and (min-width: 320px) and (max-width: 666px) {
+  #weather img {
+    top: 2%;
+    left: 6%;
+    width: 300px;
+  }  
+  .backimg{
+    grid-column: 1/5;
+    grid-row: 1/2;
+    width: auto;
+    height: 400px;
+  }
+  #weather{
+    padding: 0%;
+    align-items: center;
+  }
+  #weather h1{
+    font-size: 60px;
+  }
+  #weather p{
+    font-size: 20px;
+  }
+  #sunrise-sunset{
+    grid-row: 1;
+    font-size: 15px;
+    padding-bottom: 50px;
+  }
+  .bar1, .bar2, .bar3{
+    margin: 5px;
+    width: 20px;
+    height: 2px;
+  }
+  #forecast{
+    padding-top: 2px;
+  }
+  #forecast h1{
+    font-size: 15px;
+    padding-left: 20px;
+  }
+  #forecast p{
+    font-size: 10px;
+  }
+}
+
+@media screen and (min-width: 820px) {
+    #weather img {
+        top: 2%;
+        left: 30%;
+        width: 500px;
+      }    
+}
