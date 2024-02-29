@@ -6,21 +6,6 @@
   font-weight: 400;
 }
 
-/* body { */
-/* background: rgb(255, 255, 255); */
-/* Night mode */
-/* background: rgb(181, 181, 246);
-  background: linear-gradient(
-    337deg,
-    rgba(181, 181, 246, 1) 0%,
-    rgba(45, 60, 203, 1) 100%
-  ); */
-/* min-height: 100%; */
-/* display: flex; */
-/* justify-content: center;
-  align-items: center; */
-/* } */
-
 html,
 body {
   width: 100%;
@@ -48,7 +33,6 @@ img {
 
 header {
   position: relative;
-  top: 0;
   padding: 2rem 1.5rem;
   display: flex;
   flex-direction: column;
@@ -119,24 +103,6 @@ header {
   );
 }
 
-/* .night {
-  background: rgb(109, 239, 238);
-  background: linear-gradient(
-    355deg,
-    rgba(109, 239, 238, 1) 0%,
-    rgba(50, 48, 208, 1) 100%
-  );
-}
-
-.morning {
-  background: rgb(247, 205, 126);
-  background: linear-gradient(
-    70deg,
-    rgba(250, 176, 37, 1) 0%,
-    rgba(223, 224, 174, 0.9948354341736695) 100%
-  );
-} */
-
 header > * {
   color: white;
 }
@@ -160,14 +126,12 @@ header > * {
 }
 
 .button-field {
-  /* padding-top: 80px; */
   top: 90%;
   left: 70%;
   position: absolute;
-  /* margin-top: 10px; */
-  /* top: 50%; */
-  display: flex;
-  justify-content: flex-end;
+  height: fit-content;
+  width: fit-content;
+  align-self: flex-end;
 }
 
 .full-view {
@@ -276,15 +240,15 @@ tr:hover td:first-child {
   display: block;
 }
 
-@media (min-height: 864px) {
+/* @media (min-height: 864px) {
   .move {
     position: absolute;
-    top: 85%;
+    top: 70%;
     right: 10%;
   }
-}
+} */
 
-@media (min-width: 466px) and (min-height: 961px) {
+@media (min-width: 641px) and (min-height: 800px) {
   body {
     background: #eee;
     background: linear-gradient(0deg, rgba(0, 0, 200, 0.2), rgba(0, 0, 200, 0));
@@ -294,22 +258,94 @@ tr:hover td:first-child {
   }
 
   .container {
-    border-radius: 52px;
+    border-radius: 42px;
     position: absolute;
-    left: 25.5px;
-    height: 920px;
-    width: 423px;
+    left: 21px;
+    height: 735px;
+    width: 338px;
     overflow: hidden;
+  }
+
+  header {
+    padding-top: 1em;
+  }
+
+  .weather-details {
+    margin-top: 3rem;
+  }
+
+  .button-field {
+    top: 88%;
+  }
+
+  .weather-icon-container {
+    height: 80px;
+  }
+
+  #weather-icon {
+    display: none;
   }
 
   .background {
     background-image: url(./assets/iphone-frame.png);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 960px;
-    width: 465px;
+    height: 768px;
+    width: 376px;
     position: relative;
     display: flex;
     align-items: center;
+  }
+
+  .move {
+    position: static;
+  }
+}
+
+@media (min-width: 768px) and (min-height: 961px) {
+  .container {
+    border-radius: 52px;
+    left: 25.5px;
+    height: 920px;
+    width: 423px;
+  }
+
+  .background {
+    height: 960px;
+    width: 470px;
+  }
+
+  header {
+    padding-top: 3rem;
+  }
+
+  .weather-details {
+    margin-top: 5rem;
+  }
+
+  .button-field {
+    top: 90%;
+  }
+
+  .weather-icon-container {
+    height: 120px;
+  }
+
+  table {
+    border-spacing: 0 1.5rem;
+  }
+
+  .weather-advice-container {
+    padding-top: 1rem;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    line-height: 3rem;
+  }
+  .move {
+    position: absolute;
+    top: 85%;
+    right: 5%;
   }
 }

@@ -102,6 +102,7 @@ const displayCurrentWeather = () => {
       // add the weather condition class so the background reflects current weather
       currentWeatherField.classList.add(weatherDescription);
       weatherIcon.src = `./assets/${weatherDescription}.png`;
+      weatherIcon.style.display = "block";
       console.log(sunsetTime, sunriseTime, city);
       console.log(currentWeatherCondition);
     });
