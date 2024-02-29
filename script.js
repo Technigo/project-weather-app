@@ -39,6 +39,7 @@ const weatherAdviceContainer = document.getElementById(
   "weather-advice-container"
 );
 const weatherAdvice = document.querySelector("h2");
+const loader = document.getElementById("loader-container");
 
 //Functions
 // Function that formats the day or time stamp
@@ -54,9 +55,19 @@ const formatUnixTime = unixTime => {
   return formattedTime;
 };
 
-const displayCurrentWeather = () => {
+const getPosition = () => {
+  return new Promise((resolve, reject) =>
+    navigator.geolocation.getCurrentPosition(resolve, reject)
+  );
+};
+
+// fetch(
+//   `${baseURL}${weatherEndpoint}?q=Stockholm,Sweden&units=${queryUnits}&APPID=${apiKey}`
+// )
+
+const displayCurrentWeather = (lat, lon) => {
   fetch(
-    `${baseURL}${weatherEndpoint}?q=Stockholm,Sweden&units=${queryUnits}&APPID=${apiKey}`
+    `${baseURL}${weatherEndpoint}?lat=${lat}&lon=${lon}&units=${queryUnits}&APPID=${apiKey}`
   )
     .then(response => {
       return response.json();
@@ -126,9 +137,9 @@ const manipulateWeatherTable = weeklyWeather => {
   });
 };
 
-const displayWeatherForecast = () => {
+const displayWeatherForecast = (lat, lon) => {
   fetch(
-    `${baseURL}${forecastEndpoint}?q=Stockholm,Sweden&units=${queryUnits}&APPID=${apiKey}`
+    `${baseURL}${forecastEndpoint}?lat=${lat}&lon=${lon}&units=${queryUnits}&APPID=${apiKey}`
   )
     .then(response => response.json())
     .then(data => {
@@ -189,14 +200,31 @@ const generateFourDaysWeather = (
   return weatherData;
 };
 
-buttonIcon.addEventListener("click", () => {
-  forecastField.classList.toggle("hide");
-  currentWeatherField.classList.toggle("show");
-  buttonField.classList.toggle("move");
-  weatherAdviceContainer.classList.toggle("show-quote");
-});
+// buttonIcon.addEventListener("click", () => {
+//   forecastField.classList.toggle("hide");
+//   currentWeatherField.classList.toggle("show");
+//   buttonField.classList.toggle("move");
+//   weatherAdviceContainer.classList.toggle("show-quote");
+// });
 
 // Execution
-
-displayCurrentWeather();
-displayWeatherForecast();
+loader.style.display = "flex";
+getPosition()
+  .then(pos => {
+    const { latitude: lat, longitude: lon } = pos.coords;
+    displayCurrentWeather(lat, lon);
+    displayWeatherForecast(lat, lon);
+  })
+  .then(response => {
+    console.log(response);
+    loader.style.display = "none";
+  })
+  .then(() => {
+    buttonField.style.display = "block";
+    buttonIcon.addEventListener("click", () => {
+      forecastField.classList.toggle("hide");
+      currentWeatherField.classList.toggle("show");
+      buttonField.classList.toggle("move");
+      weatherAdviceContainer.classList.toggle("show-quote");
+    });
+  });

@@ -126,6 +126,7 @@ header > * {
 }
 
 .button-field {
+  display: none;
   top: 90%;
   left: 70%;
   position: absolute;
@@ -168,6 +169,30 @@ header > * {
   display: flex;
   margin: 10px 0px;
   justify-content: space-between;
+}
+
+/* Loader when fetching API*/
+
+#loader-container {
+  width: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.loader {
+  width: 250px;
+  height: 30px;
+  border-radius: 20px;
+  background: linear-gradient(orange 0 0) 0/0% no-repeat lightblue;
+  animation: l2 2s infinite steps(20);
+  text-align: center;
+  padding-top: 5px;
+}
+
+@keyframes l2 {
+  100% {
+    background-size: 110%;
+  }
 }
 
 .weather-details {
@@ -248,6 +273,7 @@ tr:hover td:first-child {
   }
 } */
 
+/* for tablet and desktop*/
 @media (min-width: 641px) and (min-height: 800px) {
   body {
     background: #eee;
@@ -302,6 +328,7 @@ tr:hover td:first-child {
   }
 }
 
+/* for larger monitor or screen */
 @media (min-width: 768px) and (min-height: 961px) {
   .container {
     border-radius: 52px;
