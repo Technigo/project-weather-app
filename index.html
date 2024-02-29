@@ -7,6 +7,29 @@
     <title>Weather App</title>
   </head>
   <body>
+    <!-- Weather condition and sunrise/sunset times will be displayed here -->
+    <div id="weather-overview">
+      <p>
+        <span id="weather-condition"></span> | <span id="temperature"></span>
+      </p>
+      <p>sunrise <span id="sunrise-time"></span></p>
+      <p>sunset <span id="sunset-time"></span></p>
+    </div>
+    
+    <!-- Weather message based on weather condition -->
+    <div id="weather-message"></div>
+
+    <!-- Week, monday - sunday -->
+    <div id="weekdays">
+      <p id="mon">mon</p>
+      <p id="tue">tue</p>
+      <p id="wed">wed</p>
+      <p id="thu">thu</p>
+      <p id="fri">fri</p>
+      <p id="sat">sat</p>
+      <p id="sun">sun</p>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>

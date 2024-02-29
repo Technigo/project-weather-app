@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
+#weather-overview {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 21px;
+  color: black;
+}
+
+#weather-message {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 37px;
+  color: black;
+}
+
+#weekdays {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 21px;
+  color: black;
+}
