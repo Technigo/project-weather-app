@@ -18,6 +18,7 @@ const temp = document.getElementById("temp");
 const description = document.getElementById("description");
 const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
+const animationButton = document.getElementById("animation-button")
 
 const fetchWeather = () => {
   fetch(URL)
@@ -42,16 +43,14 @@ const fetchForecast = () => {
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
-      // city.innerHTML = `<h2>${data.name}</h2>`;
-      // temp.innerHTML = `<h2>${data.main.temp}</h2>`;
-      // description.innerHTML = `<h2>${data.weather[0].main}</h2>`;
-      // city.innerHTML = `<h2>${data.name}</h2>`;
+      // For loop to display 4 days on weather.
+  
     })
     .catch((error) => console.log("Caught error:", error));
 };
 fetchForecast();
 
-
+// Clean up the date to the 24h numbers with just hours and minutes.
 const prettyDate2 = (time) => {
   let date = new Date(parseInt(time));
   return date.toLocaleTimeString(navigator.language, {
@@ -65,3 +64,16 @@ const prettyDate2 = (time) => {
 const chooseImage = (weather) => {
 
 }
+
+// Check to see if current time is after sunset and before sunrise. Display moon.
+const checkMoon = (sunrise, sunset) => {
+
+}
+
+// Toggle forecast
+const toggleForecast = () => {
+  
+}
+
+// Eventlisteners
+animationButton.addEventListener("click", toggelForecast())

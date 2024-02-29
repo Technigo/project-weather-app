@@ -4,25 +4,36 @@
   --clr_forecast_button: #757aff;
   --clr_day_gradient_start: #8589ff;
   --clr_day_gradient_end: #e8e9ff;
+
   font-family: "Roboto", sans-serif;
   font-weight: 300;
+  margin: 0;
 }
 
 body {
   color: var(--clr_main_text);
+  background-color: #e8e9ff;
+}
+
+#hamburger-menu {
+  display: absolute;
+  width: 30px;
+  margin: 1rem;
+}
+.container {
+  position: relative;
+  height: 50vh;
   background: linear-gradient(
     0.25turn,
     var(--clr_day_gradient_start),
     var(--clr_day_gradient_end)
   );
-}
-.container{
-    position: relative;
-    height: 100vh;
+  border-bottom-left-radius: 50% 10%;
+  border-bottom-right-radius: 50% 10%;
 }
 
-#temp-container{
-    display: flex;
+#temp-container {
+  display: flex;
 }
 #temp {
   font-size: 3rem;
@@ -31,36 +42,35 @@ body {
 
 #city {
   font-size: 1.5rem;
-  margin: 1rem;
+  margin-left: 1rem;
 }
 #description {
   font-size: 1rem;
-  margin: 1rem;
+  margin-left: 1rem;
 }
 
 #suntime {
-    font-size: 1rem;
-    margin: 2rem;
-    display: flex;
-    justify-content: space-around;
-
+  font-size: 1rem;
+  width: 85%;
+  margin: 1rem;
+  display: flex;
+  justify-content: space-between;
 }
 
 #weather-image {
-    position: absolute;
-    right: 2rem;
-    top: 1rem;
-    width: 150px;
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+  width: 150px;
 }
 
-.animation-button{
-    position: absolute;
-    top: 50%;
-    right: 10%;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background-color: #707070;
+.animation-button {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: var(--clr_forecast_button);
+  box-shadow: 0 2px 5px 0px rgb(0, 0, 0, 0.2);
 }
-
-
