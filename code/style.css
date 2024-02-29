@@ -22,12 +22,12 @@
 
 /*Overall Styling*/
 .boxcenter {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vw;
   margin: 0;
   display: flex;
   justify-content: center;
-  background-color: black;
+  background-image: url("/design/design2/icons/weather-back.jpg");
 }
 
 .container {
