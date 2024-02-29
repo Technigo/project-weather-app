@@ -44,7 +44,7 @@ body{
 }
 
 .allWeather{
-    background-color:white;
+    background-color:green;
     height: 50vh;
     width: 100%;
     bottom: 0vh;
@@ -52,6 +52,22 @@ body{
     justify-content: center;
     display: flex;
     flex-direction: column;
+    padding: 20px;
+}
+
+#dayWeather,
+#dayWeather2,
+#dayWeather3,
+#dayWeather4,
+#dayWeather5,
+#dayWeather6{
+    background-color: white;
+    margin: 10px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    height: 16%;
+    padding: 10px 20px;
 }
 
 @media(min-width:667px) and (max-width:1024px){
