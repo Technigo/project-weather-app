@@ -58,3 +58,31 @@ body.sunny {
   margin-left: 20px;
   margin-right: 20px;
 }
+
+@media (min-width: 668px) {
+  body {
+    margin: 90px;
+  }
+
+  .textAboutWeather {
+    font-size: 50px;
+  }
+
+  .informationTop {
+    font-size: 20px;
+  }
+
+  .icon {
+    height: 100px;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+
+    /* Here I tried to adjust margins with max-width instead of margin. 
+    "Margin: 0 auto" make the conten central. */
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
