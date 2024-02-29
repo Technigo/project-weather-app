@@ -4,6 +4,8 @@ import { handleForecastData, handleWeatherData } from "./weather.js";
 // Globals
 const API_KEY = "00cf2e54cabfd29c16426be71518c00a";
 const SUFFIX = `&units=metric&APPID=${API_KEY}`;
+const BASE_URL = "https://api.openweathermap.org/data/2.5/";
+
 const loader = document.getElementById("loader");
 let loaderActive = false;
 
@@ -42,22 +44,19 @@ const hideLoader = () => {
 };
 
 // Fetch data from Openweather Api
-export const getDataFromApi = async (BASE_URL, dataHandler) => {
+export const getDataFromApi = async (URL, dataHandler) => {
   try {
     // Show loader before making the asynchronous call
     showLoader();
 
-    // Get the coords from geolocation
-    const coords = await getGeolocation();
-
-    // Save long and lat in variabel
-    const lat = coords.latitude;
-    const lon = coords.longitude;
-
-    // Buildning URL with lat & long
-    const URL = `${BASE_URL}lat=${lat}&lon=${lon}${SUFFIX}`;
-
     const res = await fetch(URL);
+
+    if (!res.ok) {
+      console.log("Network response was not ok");
+      hideLoader();
+      return null;
+    }
+
     const data = await res.json();
 
     // Handle the weather logic for both forecast and current weather
@@ -71,9 +70,32 @@ export const getDataFromApi = async (BASE_URL, dataHandler) => {
   }
 };
 
-// Using the fetch api function for both weather and forecast
-const WEATHER_BASE_URL = "https://api.openweathermap.org/data/2.5/weather?";
-getDataFromApi(WEATHER_BASE_URL, handleWeatherData);
+export const handleWeatherUrl = async (city = "") => {
+  try {
+    // Show loader before making the asynchronous call
+    showLoader();
 
-const FORECAST_BASE_URL = "https://api.openweathermap.org/data/2.5/forecast?";
-getDataFromApi(FORECAST_BASE_URL, handleForecastData);
+    if (city) {
+      const WEATHER_CITY_URL = `${BASE_URL}weather?q=${city}${SUFFIX}`;
+      const FORECAST_CITY_URL = `${BASE_URL}forecast?q=${city}${SUFFIX}`;
+      await getDataFromApi(WEATHER_CITY_URL, handleWeatherData);
+      await getDataFromApi(FORECAST_CITY_URL, handleForecastData);
+    } else {
+      const coords = await getGeolocation();
+
+      // Save long and lat in variable
+      const lat = coords.latitude;
+      const lon = coords.longitude;
+
+      const WEATHER_BASE_URL = `${BASE_URL}weather?lat=${lat}&lon=${lon}${SUFFIX}`;
+      await getDataFromApi(WEATHER_BASE_URL, handleWeatherData);
+
+      const FORECAST_BASE_URL = `${BASE_URL}forecast?lat=${lat}&lon=${lon}${SUFFIX}`;
+      await getDataFromApi(FORECAST_BASE_URL, handleForecastData);
+    }
+  } catch (error) {
+    console.error("Error in handleWeatherUrl:", error);
+  }
+};
+
+handleWeatherUrl();

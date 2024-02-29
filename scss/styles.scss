@@ -4,6 +4,7 @@
 // Sections
 @import "./sections/current-weather.scss";
 @import "./sections/forecast.scss";
+@import "./search";
 @import "footer";
 
 * {
@@ -22,7 +23,7 @@ body {
   position: relative;
   font-family: "Montserrat", sans-serif;
   max-width: 100vw;
-  min-height: calc(100vh - 100px);
+  min-height: 100vh;
 }
 
 main {
@@ -35,7 +36,7 @@ main {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
+  min-height: calc(100vh - 100px);
 }
 
 h1,
@@ -87,6 +88,15 @@ a {
 img {
   // width: 100%;
   display: block;
+}
+
+input {
+  outline: none;
+  border: none;
+  background: #dddada;
+  border-radius: 30px;
+  padding: 0.6em 0.7em;
+  font-size: 0.8rem;
 }
 
 .loader {

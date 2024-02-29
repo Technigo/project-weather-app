@@ -14,6 +14,7 @@ Start by briefly describing the assignment in a sentence or two. Keep it short a
     6. Display five day forecast
     7. Handle theme colors depending on type of weather
     8. Add loader and background image
+    9. Search for cities
 
 ## Reusing Main Function for API Requests
 
