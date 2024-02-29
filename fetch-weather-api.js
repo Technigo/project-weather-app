@@ -5,8 +5,11 @@ const todaysWeather = document.getElementById("todays-weather");
 const todaysSunrise = document.getElementById("todays-sunrise");
 const todaysSunset = document.getElementById("todays-sunset");
 const todaysTimeOfDay = document.getElementById("todays-time-of-day");
+const forecastDay = document.getElementById("forecast-day");
+const forecastWeather = document.getElementById("forecast-weather");
+const forecastTemperature = document.getElementById("forecast-temperature");
 
-// Creating parts of URL
+// Creating API URL called weatherTodayURL
 const BASE_TODAY_URL = "https://api.openweathermap.org/data/2.5/weather?";
 const city = "Lundsberg,Sweden";
 const API_KEY = "ebcad7517d4d5102daa2078b4d1b8409";
@@ -115,10 +118,10 @@ const updateWeatherToday = (weatherTodayData) => {
     formattedLocalTime <= sunsetTimeFormatted
   ) {
     // Display sun image in html
-    todaysTimeOfDay.innerHTML = `<img src="design/assets/Big-sun.png" alt="Big sun image">`;
+    todaysTimeOfDay.innerHTML = `<img src="./design/assets/Big-sun.png" alt="Big sun image">`;
   } else {
     // Display moon-image in html
-    todaysTimeOfDay.innerHTML = `img scr="design/assets/Big-moon.png" alt="Big moon image"`;
+    todaysTimeOfDay.innerHTML = `<img src="./design/assets/Big-moon.png" alt="Big moon image">`;
   }
 };
 
@@ -135,5 +138,56 @@ const fetchWeatherToday = () => {
 
 fetchWeatherToday();
 
+// Creating API URL called weatherForecastURL
+const BASE_FORECAST_URL = "https://api.openweathermap.org/data/2.5/forecast?";
 
-// weather-forecast-try to look at the data that comes back. 3hr forecast. You only want to show, you don't want to show all of the entrypoints(you need to filter out all the entries the are at 12 o'clock. Mid temperature could be ) the day, what kind of weather (the icon) & the temperature. Map-function
+const weatherForecastURL = `${BASE_FORECAST_URL}q=${city}&units=metric&APPID=${API_KEY}`;
+
+console.log("weather forecast:", weatherForecastURL);
+
+// Function to update the UI with todays weather information
+const updateWeatherForecast = (weatherForecastData) => {
+  const filteredWeatherData = weatherForecastData.list
+    .filter((item) => item.dt_txt.includes("12:00:00"))
+    .map((item) => {
+      const timestamp = item.dt * 1000; // Convert milliseconds
+      const date = new Date(timestamp);
+      const dayOfWeek = date.toLocaleString("sv-SE", { weekday: "long" }); // Get day of week
+      const weatherIconCode = item.weather[0].icon; // Get icon code from weather
+      const createIconUrl = `http://openweathermap.org/img/wn/${weatherIconCode}.png`; // Construct icon URL
+      const Temperature = item.main.temp.toFixed(0); // get temperature
+      return {
+        dayOfWeek,
+        createIconUrl,
+        Temperature,
+      };
+    });
+  console.log(filteredWeatherData);
+
+  /* ............START OF INNER-HTML-additions........... */
+  forecastDay.innerHTML = filteredWeatherData
+    .map((forecast) => `<p> ${forecast.dayOfWeek} </p>`)
+    .join("");
+  forecastWeather.innerHTML = filteredWeatherData
+    .map(
+      (forecast) => `<img src="${forecast.createIconUrl}" alt="Weather Icon">`
+    )
+    .join("");
+  forecastTemperature.innerHTML = filteredWeatherData
+    .map((forecast) => `<p>${forecast.Temperature}°C</p>`)
+    .join("");
+};
+
+const fetchWeatherForecast = () => {
+  fetch(weatherForecastURL)
+    .then((response) => response.json())
+    .then((weatherForecastData) => {
+      updateWeatherForecast(weatherForecastData); // Corrected the function call
+    })
+    .catch((error) => {
+      console.error("Error fetching weather forecast:", error);
+    });
+};
+
+// Calling the function to fetch the forecast data
+fetchWeatherForecast();
