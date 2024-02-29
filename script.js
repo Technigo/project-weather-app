@@ -18,7 +18,8 @@ const temp = document.getElementById("temp");
 const description = document.getElementById("description");
 const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
-const animationButton = document.getElementById("animation-button")
+const animationButton = document.getElementById("animation-button");
+const forecast = document.getElementById("forecast");
 
 const fetchWeather = () => {
   fetch(URL)
@@ -28,52 +29,116 @@ const fetchWeather = () => {
       city.innerHTML = `<h2>${data.name}</h2>`;
       temp.innerHTML = `<h1>${Math.round(data.main.temp)}°&#x1D9C;</h1>`;
       description.innerHTML = `<h3>${data.weather[0].main}</h3>`;
-      let sunriseHoursMinutes = prettyDate2(data.sys.sunrise*1000);
-      let sunsetHoursMinutes = prettyDate2(data.sys.sunset*1000);
+      let sunriseHoursMinutes = hoursMinutes(data.sys.sunrise);
+      let sunsetHoursMinutes = hoursMinutes(data.sys.sunset);
 
       sunrise.innerHTML = `<h3>${sunriseHoursMinutes}</h3>`;
-      sunset.innerHTML = `<h3>${sunsetHoursMinutes}</h3>`
+      sunset.innerHTML = `<h3>${sunsetHoursMinutes}</h3>`;
     })
     .catch((error) => console.log("Caught error:", error));
 };
 fetchWeather();
-
+/*
 const fetchForecast = () => {
   fetch(FORECAST_URL)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
-      // For loop to display 4 days on weather.
-  
+      
+      // Filter out the noon values.
+      const array = data.list.filter((array) =>
+        array.dt_txt.includes("12:00:00")
+      );
+      console.log(array);
+
+      array.reverse((array) => array.dt_txt);
+      console.log(array);
+
+      array.forEach((element) => {
+        forecast.innerHTML += `<div class="forecastDay">
+        <p class="forecastDayWeekday">${displayDay(element.dt)}</p>
+        <img src="assets/partially.png" alt="">
+        <p class="forecastDayTemp">${Math.round(
+          element.main.temp_max
+        )}° / ${Math.round(element.main.temp_min)}°&#x1D9C</p></div>`;
+      });
     })
     .catch((error) => console.log("Caught error:", error));
-};
+};*/
+
+
+const fetchForecast = () => {
+  fetch(FORECAST_URL)
+    .then((response) => response.json())
+    .then((data) => {
+      // Grouping data within their dates.
+      const groupedData = data.list.reduce((days, row) => {
+        const date = row.dt_txt.split(" ")[0];
+        days[date] = [...(days[date] ? days[date] : []), row];
+        return days;
+      }, {});
+
+      for (let date of Object.keys(groupedData)) {
+        console.log("Date:", date);
+        // current date -> date
+        // original items array for this date -> groupedData[date]
+        console.log("MaxTemp:", getMax(groupedData[date], "temp_max"));
+        console.log("MinTemp:", getMin(groupedData[date], "temp_min"));
+
+        console.log("\n\n");
+
+        forecast.innerHTML += `<div class="forecastDay">
+        <p class="forecastDayWeekday">${displayDay(groupedData[date][0].dt)}</p>
+        <img src="assets/partially.png" alt="">
+        <p class="forecastDayTemp">${Math.round(
+          getMax(groupedData[date], "temp_max")
+        )}° / ${Math.round(
+          getMin(groupedData[date], "temp_min")
+        )}°&#x1D9C</p></div>`;
+      }
+    });
+
+  function getMax(arr, attr) {
+    return Math.max.apply(
+      Math,
+      arr.map((item) => item.main[attr])
+    );
+  }
+
+  function getMin(arr, attr) {
+    return Math.min.apply(
+      Math,
+      arr.map((item) => item.main[attr])
+    );
+  }
+}
 fetchForecast();
 
 // Clean up the date to the 24h numbers with just hours and minutes.
-const prettyDate2 = (time) => {
-  let date = new Date(parseInt(time));
+const hoursMinutes = (time) => {
+  let date = new Date(parseInt(time * 1000));
   return date.toLocaleTimeString(navigator.language, {
     hour: "2-digit",
     minute: "2-digit",
-    hour12: false
+    hour12: false,
   });
-}
+};
+// Clean up the date to only display the weekday in short format in the language of the user.
+const displayDay = (time) => {
+  let date = new Date(parseInt(time * 1000));
+  return date.toLocaleString(navigator.language, {
+    weekday: "short",
+  });
+};
 
 //Choose Image based on weather description.
-const chooseImage = (weather) => {
-
-}
+const chooseImage = (weather) => {};
 
 // Check to see if current time is after sunset and before sunrise. Display moon.
-const checkMoon = (sunrise, sunset) => {
-
-}
+const checkMoon = (sunrise, sunset) => {};
 
 // Toggle forecast
-const toggleForecast = () => {
-  
-}
+const toggleForecast = () => {};
 
 // Eventlisteners
-animationButton.addEventListener("click", toggelForecast())
+//animationButton.addEventListener("click", toggelForecast())

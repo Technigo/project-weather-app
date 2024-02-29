@@ -64,10 +64,33 @@ body {
   width: 150px;
 }
 
+#forecast {
+  display: flex;
+  flex-direction: column;
+  margin-top: 25vh;
+  color: var(--clr_dark_text);
+}
+
+.forecastDay {
+  margin-inline: 1rem;
+  margin-block: 1rem;
+  padding: 1rem;
+  border-radius: 50px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+}
+
+.forecastDay:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.forecastDay img {
+  height: 20px;
+}
+
 .animation-button {
   position: absolute;
-  top: 50%;
-  right: 10%;
+  top: 375px;
+  right: 2rem;
   width: 100px;
   height: 100px;
   border-radius: 50%;
