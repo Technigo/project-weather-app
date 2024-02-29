@@ -1,0 +1,57 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --cloudy-color: #F47775;
+  --cloudy-bg-color: #F4F7F8;
+  --rainy-color: #164A68;
+  --rainy-bg-color: #A3DEF7;
+  --sunny-color: #2A5510;
+  --sunny-bg-color: #F7E9B9;
+}
+
+.montserrat-title {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.sunny {
+  color: var(--sunny-color);
+  background-color: var(--sunny-bg-color);
+}
+
+.cloudy {
+  color: var(--cloudy-color);
+  background-color: var(--cloudy-bg-color);
+}
+
+.rainy {
+  color: var(--rainy-color);
+  background-color: var(--rainy-bg-color);
+}
+
+h1 {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+}
+
+h1.sunny::before {
+  content: url(/design/design2/icons/noun_Sunglasses_2055147.svg)
+}
+
+h1.rainy::before {
+  content: url(/design/design2/icons/noun_Umbrella_2030530.svg)
+}
+
+h1.cloudy::before {
+  content: url(/design/design2/icons/noun_Cloud_1188486.svg)
+}
