@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 :root {
-  --blue: #757aff;
-  --light-blue: #8589ff;
+  --main-color: #e96e50;
+  --light-color: #f4967f;
   --forecast-text: #707070;
-  --light-grey: #00000005;
-  --dark-blue: #222350;
+  --hover-color: #00000005;
+  --dark-color: #b64124;
   --day-gradient: linear-gradient(90deg, #8589ff 0%, #e8e9ff 100%);
   --night-gradient: linear-gradient(270deg, #6264a2 50.98%, #222350 51.14%);
   --font-size: 20px;
@@ -103,12 +103,12 @@ button {
 }
 
 .input:focus {
-  border: var(--blue) 2px solid;
+  border: var(--main-color) 2px solid;
 }
 
 .input:hover,
 .search-btn:hover {
-  background-color: var(--light-grey);
+  background-color: var(--hover-color);
 }
 
 .nav-list {
@@ -131,17 +131,17 @@ button {
 }
 
 .nav-item:nth-of-type(even) {
-  background-color: var(--light-grey);
+  background-color: var(--hover-color);
 }
 
 .nav-item:hover {
-  background-color: var(--light-blue);
+  background-color: var(--light-color);
   color: white;
 }
 
 .nav-item:active,
 .geo:active {
-  border: var(--blue) solid 1px;
+  border: var(--main-color) solid 1px;
 }
 
 .geo {
@@ -149,7 +149,7 @@ button {
 }
 
 .geo:hover i {
-  color: var(--blue);
+  color: var(--main-color);
 }
 
 .close {
@@ -211,6 +211,8 @@ button {
 }
 
 .weather-desc {
+  display: flex;
+  align-items: center;
   width: 100%;
   margin-bottom: 0.5rem;
 }
@@ -245,7 +247,7 @@ button {
   width: 80px;
   aspect-ratio: 1 / 1;
   border-radius: 80px;
-  background-color: var(--blue);
+  background-color: var(--main-color);
   box-shadow: var(--box-shadow);
   color: white;
   transform: rotate(0deg);
@@ -253,7 +255,7 @@ button {
 }
 
 .scroll-arrow:hover {
-  background-color: var(--light-blue);
+  background-color: var(--light-color);
 }
 
 .scroll-arrow:active {
@@ -289,7 +291,7 @@ button {
 }
 
 .forecast-day:nth-child(even) {
-  background-color: var(--light-grey);
+  background-color: var(--hover-color);
 }
 
 .forecast-temp {
@@ -300,7 +302,7 @@ button {
 
 .weather-icon {
   font-size: 2rem;
-  flex-grow: 1;
+  flex-grow: 0;
   font-style: normal;
 }
 
@@ -316,7 +318,7 @@ button {
 .error {
   width: 100%;
   font-size: 1rem;
-  color: var(--dark-blue);
+  color: var(--dark-color);
   background-color: #e8e9ff;
   padding: 1rem;
   border-radius: var(--border-radius);

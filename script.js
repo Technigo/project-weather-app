@@ -111,7 +111,6 @@ const toWeekday = date => {
   }
 };
 
-// -- Functionality
 // Filter forecast, one entry per day
 const getNoons = forecastData => {
   return forecastData.list.filter(obj => obj.dt_txt.includes("12:00"));
@@ -160,7 +159,12 @@ const printWeather = async weatherData => {
     src="${setNight(weatherData)}"
     class="weather-img" />
   <p class="city">${weatherData.locationName}</p>
-  <p class="weather-desc">${weatherData.description}</p>
+  <p class="weather-desc">
+    <span>${weatherData.description} </span>
+    <img src="https://openweathermap.org/img/wn/${
+      weatherData.icon
+    }.png" class="weather-icon"/>
+  </p>
   <div class="local-time">
     <time datetime="${localTime}" class="time">
     ${constructHours(localTime)}:${constructMinutes(localTime)}
@@ -185,7 +189,6 @@ const printWeather = async weatherData => {
 
 // Print Forecast to DOM
 const printForecast = async forecastData => {
-  console.log(forecastData);
   const noons = getNoons(forecastData);
   weatherForecast.innerHTML = "";
   noons.forEach(obj => {
@@ -195,7 +198,7 @@ const printForecast = async forecastData => {
     weatherForecast.innerHTML += `
       <div class="forecast-day">
         <p class="forecast-day-label">${day}</p>
-        <i class="weather-icon">${pickIcon(obj.weather[0].icon)}</i>
+        <i class="weather-icon"><img src="https://openweathermap.org/img/wn/${obj.weather[0].icon}.png"/></i>
         <p class="forecast-temp">${maxTemp} / ${minTemp} °C</p>
       </div>
     `;
@@ -299,7 +302,6 @@ const getLocation = () => {
 const handleLocal = async () => {
   try {
     const location = await getLocation();
-    console.log(location);
     lat = location.coords.latitude;
     lon = location.coords.longitude;
     fetchWeather(lat, lon);
