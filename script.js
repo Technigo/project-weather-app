@@ -30,7 +30,7 @@ const printError = error => {
 
 // -- Styling
 // Toggle class hidden
-const toggleHide = el => setTimeout(() => el.classList.toggle("hidden"), 500);
+const toggleHide = el => el.classList.toggle("hidden");
 
 // Toggle class fullscreen
 const toggleFullscreen = el => el.classList.toggle("fullscreen");
@@ -318,23 +318,21 @@ scrollArrow.addEventListener("click", () => {
 });
 
 navGeo.addEventListener("click", () => {
-  toggleHide(navWrapper);
+  setTimeout(() => toggleHide(navWrapper), 500);
   handleLocal();
 });
-
 navItems.forEach(location =>
   location.addEventListener("click", event => {
-    toggleHide(navWrapper);
+    setTimeout(() => toggleHide(navWrapper), 500);
     fetchGeocode(event.target.firstChild.nodeValue);
   })
 );
-
 searchInput.addEventListener("change", event => {
-  toggleHide(navWrapper);
+  setTimeout(() => toggleHide(navWrapper), 500);
   fetchGeocode(event.target.value);
 });
 searchBtn.addEventListener("click", event => {
-  toggleHide(navWrapper);
+  setTimeout(() => toggleHide(navWrapper), 500);
   fetchGeocode(event.target.value);
 });
 
