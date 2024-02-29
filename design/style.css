@@ -162,6 +162,7 @@ transition: box-shadow 0.3s ease;
    padding-right: 10%;
 }
 
+/*smaler screen*/
 @media screen and (min-width: 320px) and (max-width: 666px) {
   #weather img {
     top: 2%;
@@ -206,6 +207,7 @@ transition: box-shadow 0.3s ease;
   }
 }
 
+/*bigger screen*/
 @media screen and (min-width: 820px) {
     #weather img {
         top: 2%;

@@ -128,14 +128,14 @@ fetch(
 function getWeatherIcon(weatherDescription, moon = false) {
   console.log(weatherDescription);
   if (moon) {
-    return "/Users/josode/Desktop/project-weather-app/design/—Pngtree—grey moon free illustration_4452211.png";
+    return "/design/—Pngtree—grey moon free illustration_4452211.png";
   }
   if (weatherDescription === "Clouds") {
-    return "/Users/josode/Desktop/project-weather-app/design/decorative_7266228.png";
+    return "decorative_7266228.png";
   } else if (weatherDescription === "Rain") {
-    return "/Users/josode/Desktop/project-weather-app/design/rain-png-45881.png";
+    return "rain-png-45881.png";
   } else if (weatherDescription === "Clear") {
-    return "/Users/josode/Desktop/project-weather-app/design/sun-48190.png";
+    return "sun-48190.png";
   }
 }
 
