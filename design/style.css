@@ -49,7 +49,7 @@ body {
 
 /*temp*/
 #weather h1{
-font-size: 130px;
+font-size: 150px;
 font-family: "Roboto", sans-serif;
 font-weight: 300;
 margin: 0;
@@ -142,7 +142,7 @@ transition: box-shadow 0.3s ease;
 
 /*the week days*/
 #forecast h1{
-    font-size: 20px;
+    font-size: 40px;
     font-family: "Roboto", sans-serif;
     font-weight: 200;
     width: 10%;
@@ -151,14 +151,14 @@ transition: box-shadow 0.3s ease;
 
 /*the description and temp*/
 #forecast p{
-    font-size: 20px;
+    font-size: 30px;
     width: 20%;
 }
   
 /* weather img for the up comming days*/
 #forecast img {
    width: 70px;
-   padding-left: 10%;
+   padding-left: 20%;
    padding-right: 10%;
 }
 
@@ -195,12 +195,15 @@ transition: box-shadow 0.3s ease;
     width: 20px;
     height: 2px;
   }
+
+  #forecast img{
+    padding-left: 10%;
+  }
   #forecast{
     padding-top: 2px;
   }
   #forecast h1{
     font-size: 15px;
-    padding-left: 20px;
   }
   #forecast p{
     font-size: 10px;

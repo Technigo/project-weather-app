@@ -76,7 +76,7 @@ fetch(
     console.error("Error fetching weather data:", error);
   });
 
-//fetch för värderprognosdata
+//fetch value for forecast data
 fetch(
   "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=c8fa4668e358d868f3ce8d740d6137ec"
 )
@@ -100,7 +100,7 @@ fetch(
       const weatherDescription = day.weather[0].description;
       const WeatherIcon = getWeatherIcon(day.weather[0].main);
 
-      // Skapa HTML för att visa väderprognosen för varje dag
+      // Create the HTML to display the weather forecast for each day
 
       const forecastHTML = `
         <div class="forecast-item" onclick="troll()">
@@ -111,7 +111,7 @@ fetch(
         </div>
       `;
 
-      // Lägg till väderprognosen i container-elementet
+      // Add the weather forecast to the container element
       forecastContainer.insertAdjacentHTML("beforeend", forecastHTML);
     });
   })
@@ -139,10 +139,12 @@ function getWeatherIcon(weatherDescription, moon = false) {
   }
 }
 
+/*to make the X for the menu*/
 function myFunction(x) {
   x.classList.toggle("change");
 }
 
+/*something funny then you click on the up comming weathers*/
 function troll() {
   console.log("troll");
   window.open("https://youtu.be/xvFZjo5PgG0?si=9AXihk5f-0zqF-8s");
