@@ -19,6 +19,12 @@ body {
   h3 {
     color: white;
     text-align: center;
+    text-transform: capitalize;
+  }
+
+  #sunrise, #sunset {
+    color: white;
+    text-align: center;
   }
   
   #error {

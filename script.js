@@ -10,15 +10,24 @@ const cityName = document.getElementById("cityName")
 const mainTemp = document.getElementById("mainTemp")
 const weatherDescription = document.getElementById("weatherDescription")
 const errorDiv = document.getElementById("error")
+const sunrise = document.getElementById("sunrise")
+const sunset = document.getElementById("sunset")
 
 const updateHTML = (data) => {
-  const temp = data.main.temp
+  const temp = data.main.temp.toFixed(1)
   const description = data.weather[0].description
   const cityTitle = data.name
+  const sunriseUnix = new Date(data.sys.sunrise * 1000)
+  const sunsetUnix = new Date(data.sys.sunset * 1000)
+
+  const sunriseShort = sunriseUnix.toLocaleTimeString([], { timeStyle: "short" }) 
+  const sunsetShort = sunsetUnix.toLocaleTimeString([], { timeStyle: "short" })
 
   mainTemp.innerText = temp
   weatherDescription.innerText = description
   cityName.innerText = cityTitle
+  sunrise.innerText += `Sunrise: ${sunriseShort}`
+  sunset.innerText += `Sunset: ${sunsetShort}`
 }
 
 const fetchWeather = () => {
