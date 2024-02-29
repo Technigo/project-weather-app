@@ -64,31 +64,39 @@ const displayCurrentWeather = () => {
       let sunsetTime = data.sys.sunset;
       let sunriseTime = data.sys.sunrise;
       const currentTime = data.dt;
+      console.log(sunsetTime);
+      console.log(sunriseTime);
+      console.log(currentTime);
+
       // compare the current time with the sunset and sunrise time so as to adjust the image and background color
-      if (currentTime > sunsetTime || currentTime < sunsetTime) {
-        timeIcon.src = "./assets/night.png";
-        buttonIcon.src = "./assets/button-icon-night.png";
-        currentWeatherField.classList.remove("morning");
-        currentWeatherField.classList.add("night");
-      } else {
-        timeIcon.src = timeImgPath.day;
-        currentWeatherField.classList.remove("night");
-        currentWeatherField.classList.add("morning");
-      }
+      // if (currentTime > sunsetTime || currentTime < sunriseTime) {
+      //   timeIcon.src = "./assets/night.png";
+      //   buttonIcon.src = "./assets/button-icon-night.png";
+      //   console.log(currentWeatherField.classList[1]);
+      //   currentWeatherField.classList.remove("morning");
+      //   currentWeatherField.classList.add("night");
+      // } else {
+      //   currentWeatherField.classList.remove("night");
+      //   currentWeatherField.classList.add("morning");
+      //   currentWeatherField.classList.forEach(x => console.log(x));
+      // }
+
       sunsetTime = formatUnixTime(sunsetTime);
       sunriseTime = formatUnixTime(sunriseTime);
       console.log(sunriseTime, sunsetTime);
       sunrise.innerText = sunriseTime;
       sunset.innerText = sunsetTime;
-      currentTemp.innerText = data.main.temp;
-      console.log(currentTime);
+      currentTemp.innerText = data.main.temp.toFixed(1);
       // const maxTemp = data.main.temp_max.toFixed(1);
       // const minTemp = data.main.temp_min.toFixed(1);
       // const iconID = data.weather[0].icon;
-      currentWeatherCondition.innerText = data.weather[0].main;
+      const weatherDescription = data.weather[0].main;
+      currentWeatherCondition.innerText = weatherDescription;
       // weatherQuote.textContent = weatherConditions.snow;
       weatherQuote.textContent =
-        weatherConditions[currentWeatherCondition.innerText.toLowerCase()];
+        weatherConditions[weatherDescription.toLowerCase()];
+      currentWeatherField.className = "";
+      currentWeatherField.classList.add(weatherDescription.toLowerCase());
       console.log(sunsetTime, sunriseTime, city);
       console.log(currentWeatherCondition);
     });
@@ -163,9 +171,9 @@ const generateFourDaysWeather = (
       // get the day's name
       day: dayNames.at(currentDayIndex - 6 + i),
       // get the min temp based on the sorting - the first weather condition has the min temp value
-      minTemp: dailyWeather[0].main.temp,
+      minTemp: Math.round(dailyWeather[0].main.temp),
       // get the max temp based on the sorting - the last weather condition has the max temp value
-      maxTemp: dailyWeather.at(-1).main.temp,
+      maxTemp: Math.round(dailyWeather.at(-1).main.temp),
       iconID: icon,
     };
     // add each day's weather formatted conditions to the array
@@ -176,8 +184,6 @@ const generateFourDaysWeather = (
 
 buttonIcon.addEventListener("click", () => {
   forecastField.classList.toggle("hide");
-  console.log(forecastField.classList);
-  console.log(forecastField);
   currentWeatherField.classList.toggle("show");
   buttonField.classList.toggle("move");
   weatherReminder.classList.toggle("show-quote");

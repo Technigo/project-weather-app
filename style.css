@@ -13,7 +13,14 @@ html {
 }
 
 body {
-  background: rgb(255, 255, 255);
+  /* background: rgb(255, 255, 255); */
+  /* Night mode */
+  /* background: rgb(181, 181, 246);
+  background: linear-gradient(
+    337deg,
+    rgba(181, 181, 246, 1) 0%,
+    rgba(45, 60, 203, 1) 100%
+  ); */
   min-height: 100%;
 }
 
@@ -23,7 +30,7 @@ img {
   object-fit: cover;
 }
 
-.header {
+header {
   position: relative;
   top: 0;
   padding: 2rem 1.5rem;
@@ -37,9 +44,78 @@ img {
     rgba(250, 176, 37, 1) 0%,
     rgba(223, 224, 174, 0.9948354341736695) 100%
   ); */
+  /* background: rgb(231, 233, 237);
+  background: linear-gradient(
+    337deg,
+    rgb(214, 217, 223) 0%,
+    rgba(103, 122, 126, 1) 100%
+  ); */
 }
 
-.night {
+.thunderstorm {
+  background: rgb(231, 233, 237);
+  background: linear-gradient(
+    337deg,
+    rgb(214, 217, 223) 0%,
+    rgba(103, 122, 126, 1) 100%
+  );
+}
+
+.snow {
+  background: rgb(228, 236, 251);
+  background: linear-gradient(
+    337deg,
+    rgb(181, 201, 237) 0%,
+    rgb(157, 233, 251) 100%
+  );
+}
+
+.drizzle {
+  background: rgb(246, 247, 251);
+  background: linear-gradient(
+    337deg,
+    rgb(188, 217, 233) 0%,
+    rgb(104, 147, 176) 100%
+  );
+}
+
+.atmosphere {
+  background: rgb(221, 227, 239);
+  background: linear-gradient(
+    337deg,
+    rgb(225, 229, 236) 0%,
+    rgb(146, 165, 179) 100%
+  );
+}
+
+.rain {
+  background: rgb(246, 247, 251);
+  background: linear-gradient(
+    337deg,
+    rgb(161, 180, 193) 0%,
+    rgb(67, 125, 163) 100%
+  );
+}
+
+.clear {
+  background: rgb(221, 227, 239);
+  background: linear-gradient(
+    337deg,
+    rgb(183, 217, 238) 0%,
+    rgb(68, 176, 249) 100%
+  );
+}
+
+.clouds {
+  background: rgb(246, 247, 251);
+  background: linear-gradient(
+    337deg,
+    rgb(196, 222, 240) 0%,
+    rgb(146, 209, 241) 100%
+  );
+}
+
+/* .night {
   background: rgb(109, 239, 238);
   background: linear-gradient(
     355deg,
@@ -55,9 +131,9 @@ img {
     rgba(250, 176, 37, 1) 0%,
     rgba(223, 224, 174, 0.9948354341736695) 100%
   );
-}
+} */
 
-.header > * {
+header > * {
   color: white;
 }
 
