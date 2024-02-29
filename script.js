@@ -1,10 +1,11 @@
 //Global variables
-const baseURL = "https://api.openweathermap.org/data/2.5/weather";
+const baseURL = "https://api.openweathermap.org/data/2.5/";
 const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const iconURL = "https://openweathermap.org/img/wn/";
 const apiKey = "a6996a952d949efcc9c698344f4005c6";
 const weatherEndpoint = "weather";
 const forecastEndpoint = "forecast";
+const queryUnits = "metric";
 const weatherConditions = {
   thunderstorm:
     "Stay indoors and don't forget your umbrella. Keep an eye on weather updates and take shelter if necessary.",
@@ -32,30 +33,32 @@ const sunset = document.getElementById("sunset");
 const buttonIcon = document.getElementById("button-icon");
 const forecastField = document.getElementById("forecast-field");
 const currentWeatherField = document.getElementById("current-weather-field");
-const buttonField = document.getElementById("button-area");
-const timeIcon = document.getElementById("time-icon-container");
-const weatherReminder = document.getElementById("weather-reminder");
+const buttonField = document.getElementById("button-field");
+const weatherIcon = document.getElementById("weather-icon");
+const weatherAdviceContainer = document.getElementById(
+  "weather-advice-container"
+);
 const weatherAdvice = document.querySelector("h2");
 
 //Functions
 // Function that formats the day or time stamp
 const formatUnixTime = unixTime => {
+  // convert unix time to milliseconds
   let formattedTime = new Date(unixTime * 1000);
-  console.log("Fomartted time:", formattedTime);
+  // get hours from the date time
   const hours = formattedTime.getHours();
   // add 0 to minutes in case we get minutes with single integer e.g. 8 -> 08
   const minutes = "0" + formattedTime.getMinutes();
-  // get the last two elements in the minutes string
+  // get the last two elements in the minutes string, if 08 -> 08 whereas 052 -> 52
   formattedTime = `${hours}:${minutes.slice(-2)}`;
   return formattedTime;
 };
 
 const displayCurrentWeather = () => {
   fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${apiKey}`
+    `${baseURL}${weatherEndpoint}?q=Stockholm,Sweden&units=${queryUnits}&APPID=${apiKey}`
   )
     .then(response => {
-      console.log(response);
       return response.json();
     })
     .then(data => {
@@ -70,7 +73,7 @@ const displayCurrentWeather = () => {
 
       // compare the current time with the sunset and sunrise time so as to adjust the image and background color
       // if (currentTime > sunsetTime || currentTime < sunriseTime) {
-      //   timeIcon.src = "./assets/night.png";
+      //   weatherIcon.src = "./assets/night.png";
       //   buttonIcon.src = "./assets/button-icon-night.png";
       //   console.log(currentWeatherField.classList[1]);
       //   currentWeatherField.classList.remove("morning");
@@ -80,20 +83,25 @@ const displayCurrentWeather = () => {
       //   currentWeatherField.classList.add("morning");
       //   currentWeatherField.classList.forEach(x => console.log(x));
       // }
-
+      // format sunset and sunrise time from unix time to e.g. 17:52
       sunsetTime = formatUnixTime(sunsetTime);
       sunriseTime = formatUnixTime(sunriseTime);
       console.log(sunriseTime, sunsetTime);
       sunrise.innerText = sunriseTime;
       sunset.innerText = sunsetTime;
+      // round the temp to 1 decimal place
       currentTemp.innerText = data.main.temp.toFixed(1);
+      // weatherDescription is in a format where the first letter is upper
       let weatherDescription = data.weather[0].main;
       currentWeatherCondition.innerText = weatherDescription;
+      // convert the weatherDescription to lower case to align with the property name of weatherConditions
       weatherDescription = weatherDescription.toLowerCase();
       weatherAdvice.textContent = weatherConditions[weatherDescription];
+      // remove all the existing class name for current weather field
       currentWeatherField.className = "";
+      // add the weather condition class so the background reflects current weather
       currentWeatherField.classList.add(weatherDescription);
-      timeIcon.src = `./assets/${weatherDescription}.png`;
+      weatherIcon.src = `./assets/${weatherDescription}.png`;
       console.log(sunsetTime, sunriseTime, city);
       console.log(currentWeatherCondition);
     });
@@ -119,7 +127,7 @@ const manipulateWeatherTable = weeklyWeather => {
 
 const displayWeatherForecast = () => {
   fetch(
-    `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=${apiKey}`
+    `${baseURL}${forecastEndpoint}?q=Stockholm,Sweden&units=${queryUnits}&APPID=${apiKey}`
   )
     .then(response => response.json())
     .then(data => {
@@ -141,6 +149,7 @@ const displayWeatherForecast = () => {
 const getAndFormatCurrentDate = () => {
   let date = new Date();
   const dayIndex = date.getDay();
+  // format the date to e.g. 2024-02-29
   date = date.toISOString().split("T")[0];
   return [date, dayIndex];
 };
@@ -183,7 +192,7 @@ buttonIcon.addEventListener("click", () => {
   forecastField.classList.toggle("hide");
   currentWeatherField.classList.toggle("show");
   buttonField.classList.toggle("move");
-  weatherReminder.classList.toggle("show-quote");
+  weatherAdviceContainer.classList.toggle("show-quote");
 });
 
 // Execution

@@ -141,7 +141,7 @@ header > * {
   color: white;
 }
 
-.time-img-container {
+.weather-icon-container {
   height: 120px;
   width: 120px;
   align-self: flex-end;
@@ -151,7 +151,7 @@ header > * {
   margin: 20px 0;
 }
 
-.weather-reminder {
+.weather-advice-container {
   display: none;
   padding: 1.5em 0 0 0;
   font-size: 1.2em;
@@ -159,7 +159,7 @@ header > * {
   font-weight: 500;
 }
 
-.button-area {
+.button-field {
   /* padding-top: 80px; */
   top: 90%;
   left: 70%;
