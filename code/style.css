@@ -54,16 +54,7 @@
 }
 
 .forecast-style {
-  display: grid;
-  grid-template-columns: 2 auto;
-  grid-template-rows: 5 1fr;
-  row-gap: 1px;
-  column-gap: 0;
-  /*height: 248px;
-  width: 292px;
-  margin-top: 15px;
-  position: relative;*/
-  /*background-color: black;*/
+  display: flex;
 }
 
 .dates-style {
@@ -75,32 +66,20 @@
   font-weight: 400;
   font-size: 21px;
   line-height: 36px;
-  grid-row: 1/5;
-  grid-column: 1;
-  padding: 0;
 }
 
 .temp-style {
   list-style-type: none;
-  height: 242px;
+  height: 248px;
   width: 59px;
-  margin-left: 26px;
-  margin-top: 15px;
+  margin-top: 13px;
   font-weight: 400;
   font-size: 21px;
   line-height: 36px;
-  grid-row: 1/5;
-  grid-column: 2;
+  text-align: end;
 }
 
-/*.line01 {
-  background-color: #707070;
-  width: 296px;
-  height: 50px;
-  margin-left: 40.5px;
-  z-index: 1;
-}*/
-
 .list-style {
-  border: black 20px;
+  border-bottom: 1px dotted #707070;
+  width: auto;
 }
