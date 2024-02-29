@@ -1,4 +1,4 @@
-<div class="forecast-container">
+<div class="day-container">
             <p class="forecast-day">Day 1</p>
             <p class="forecast-icon">
               <img
@@ -8,7 +8,7 @@
             <p class="forecast-mintemp">11°C</p>
             <p class="forecast-maxtemp">5°C</p>
           </div>
-          <div class="forecast-container">
+          <div class="day-container">
             <p class="forecast-day">Day 2</p>
             <p class="forecast-icon">
               <img

@@ -5,7 +5,7 @@ const city = document.getElementById("city")
 const weather = document.getElementById("weather")
 const sunriseElement = document.getElementById("sunrise")
 const sunsetElement = document.getElementById("sunset")
-const forecastSection = document.getElementById("forecast-section")
+const forecastContainer = document.getElementById("forecast-container")
 const date = document.getElementById("date")
 
 ////////// Get time + date and display in app //////////
@@ -96,43 +96,82 @@ const fetchWeatherForecast = () => {
     .then((json) => {
       console.log(json)
 
-      /* 
-      
-      //Get today as a number
-      const today = new Date(json.list[0].dt_txt).getDay()
+      //Extract today's index
+      const todayIndex = new Date(json.list[0].dt_txt).getDay()
 
-      //Filter data to get next 5 days
+      //Filter out today's weather data
       const nextFiveDays = json.list.filter(
-        (forecastItem) => new Date(forecastItem.dt_txt).getDay() !== today
+        (element) => new Date(element.dt_txt).getDay() !== todayIndex
       )
 
-      //Variables to store maxtemp, mintemp and icon
+      const fiveDayArray = []
       let maxTemp = -1000
       let minTemp = 1000
       let weatherIcon = ""
 
-      //Array to store min/maxtemp
-      const fiveDayArray = []
-
-      nextFiveDays.forEach((forecastItem) => {
-        //Get current weekday in words
-        const currentWeekDay = new Date(forecastItem.dt_txt).toLocaleDateString(
+      nextFiveDays.forEach((element) => {
+        const currentWeekDay = new Date(element.dt_txt).toLocaleDateString(
           "en-GB",
           {
             weekday: "long",
           }
         )
 
-        //Checks if array is empty (first iteration) - if empty add the first day
-        if (fiveDayArray.length === 0) fiveDayArray.push(currentWeekDay)
-        //If current weekday is in list, compare max and min temp
+        //If it's a new day, add the max and min temp to array
         if (!fiveDayArray.includes(currentWeekDay)) {
-          //If not in 
+          if (fiveDayArray.length !== 0) {
+            fiveDayArray.push(maxTemp.toFixed())
+            fiveDayArray.push(minTemp.toFixed())
+            fiveDayArray.push(weatherIcon)
+          }
+          fiveDayArray.push(currentWeekDay)
+          maxTemp = -1000
+          minTemp = 1000
+          weatherIcon = ""
         }
 
+        //Update max and min temp if needed
+        if (element.main.temp_max > maxTemp) {
+          maxTemp = element.main.temp_max
+          weatherIcon = element.weather[0].icon
+        }
+        if (element.main.temp_min < minTemp) {
+          minTemp = element.main.temp_min
+        }
       })
 
-      //End of fetchWeatherForecast*/
+      //Push temperature values for the last day
+      fiveDayArray.push(maxTemp.toFixed())
+      fiveDayArray.push(minTemp.toFixed())
+      fiveDayArray.push(weatherIcon)
+
+      //Empty previous forecast
+      forecastContainer.innerHTML = ""
+
+      //Render five-day forecast
+      for (let i = 0; i < 5; i++) {
+        const currentDay = fiveDayArray.slice(i * 4, (i + 1) * 4)
+        const weekDay =
+          currentDay[0].charAt(0).toUpperCase() + currentDay[0].slice(1)
+        const maxTemp = currentDay[1]
+        const minTemp = currentDay[2]
+        const icon = currentDay[3]
+
+        forecastContainer.innerHTML += `
+        <div class="day-container">
+            <p class="forecast-day">${weekDay}</p>
+            <p class="forecast-icon">
+              <img class="forecast-image" src="https://openweathermap.org/img/wn/${icon}@2x.png"
+              alt="forecast image"/>
+            </p>
+            <div class="min-max-temp">
+            <p class="max-temp">${maxTemp}&deg;</p>
+            <p>/</p>
+            <p class="min-temp">${minTemp}&deg;C</p>
+          </div>
+          </div>
+        `
+      }
     })
 }
 fetchWeatherForecast()

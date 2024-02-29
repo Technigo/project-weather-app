@@ -81,14 +81,14 @@ body {
 }
 
 /*Styling for lower section (forecast)*/
-.forecast-section {
+.forecast-container {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   padding-top: 90px;
 }
 
-.forecast-container {
+.day-container {
   display: flex;
   justify-content: space-around;
   font-size: 20px;
