@@ -189,7 +189,6 @@ const getDailyWeather = () => {
       return response.json();
     })
     .then((weatherData) => {
-      console.log(weatherData);
       displayDailyWeather(weatherData);
       getSunTime(weatherData);
     })
@@ -306,9 +305,6 @@ const getSunTime = (weatherData) => {
 
   document.querySelector(".sunrise").innerText = "sunrise 0" + sunriseTime;
   document.querySelector(".sunset").innerText = "sunset " + sunsetTime;
-
-  console.log(`0${sunriseTime}`);
-  console.log(`${sunsetTime}`);
 };
 
 const getWeeklyWeather = () => {
@@ -328,17 +324,31 @@ const getWeeklyWeather = () => {
 };
 
 const displayWeeklyWeather = (weatherData) => {
-  const getSingleDay = weatherData.list.map((item) => ({
+  //collect each hour's time+temp data from the weatherData
+  const getHourlyhWeather = weatherData.list.map((item) => ({
+    dt: item.dt,
     dtText: item.dt_txt,
+    temp: item.main.temp,
   }));
-  //if the first part of the string are the same
-  //get the index
-  //getSingleDay[i].main.temp get arr
-  //get the highest and the lowest
-  //brighter color on highest
 
-  //update feature in branch
-  console.log(getSingleDay);
+  const getNoonTemp = getHourlyhWeather.filter(
+    (hour) => hour.dtText.split(" ")[1] === "12:00:00"
+  );
+
+  getNoonTemp.pop();
+  const weekday = document.querySelector(".weekday");
+  const weekTemp = document.querySelector(".week-temp");
+
+  const timpStamp = getNoonTemp.map((item) => item.dt);
+  const converDate = timpStamp.map((item) => new Date(item * 1000));
+  const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const dayIndices = converDate.map((item) => item.getDay());
+  const dayOfWeek = dayIndices.map((index) => daysOfWeek[index]);
+  console.log(getNoonTemp);
+  console.log(dayIndices);
+  console.log(dayOfWeek);
+
+  //fix the first day is not the current day
 };
 
 getWeeklyWeather();
