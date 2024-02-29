@@ -103,7 +103,7 @@ fetch(
       // Skapa HTML för att visa väderprognosen för varje dag
 
       const forecastHTML = `
-        <div class="forecast-item">
+        <div class="forecast-item" onclick="troll()">
           <h1>${dayOfWeek}</h1>
           <img src="${WeatherIcon}">
           <p>${weatherDescription}</p>
@@ -141,4 +141,9 @@ function getWeatherIcon(weatherDescription, moon = false) {
 
 function myFunction(x) {
   x.classList.toggle("change");
+}
+
+function troll() {
+  console.log("troll");
+  window.open("https://youtu.be/dQw4w9WgXcQ?si=UdKr4U0IJJYidTrs");
 }
