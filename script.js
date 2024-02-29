@@ -11,7 +11,7 @@ let weatherType = ""
 let temperatureNow = ""
 
 header.innerHTML = `
-<h1>Hej</h1>
+Hej
 `
 const fetchData = () => {
     fetch (URL)
