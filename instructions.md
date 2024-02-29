@@ -92,8 +92,10 @@ Your task is to present some data on your web app. Start with:
 ### Step 3 - Features
 Now it's time to start working in GitHub branches. Decide beforehand when you should have a "feature freeze" so that you make time for merging.
 
+<!-- 
 **Feature: Sunrise and sunset 🌅**  
-Show the time for sunrise and sunset in a readable time format (Example: 13:00 or 1 PM). You will have to format the date from milliseconds to a readable format. [Here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date "Here") is a useful resource for how to do this.
+Show the time for sunrise and sunset in a readable time format (Example: 13:00 or 1 PM). You will have to format the date from milliseconds to a readable format. [Here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date "Here") is a useful resource for how to do this. -->
+
 
 **Feature: Weather forecast 📅**  
 Show a forecast for the next 4 days. You can choose how to display the forecast - perhaps you want to show the min and max temperature for each day, or perhaps you want to show the temperature from the middle of the day, or the humidity, what it feels like and so on.
