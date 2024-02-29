@@ -18,6 +18,7 @@ const container = document.getElementById("container");
 const mainWeather = document.getElementById("main-weather");
 const title = document.getElementById("title");
 const sun = document.getElementById("sun");
+const img = document.getElementById("img");
 const dates = document.getElementById("dates");
 const temp = document.getElementById("temp");
 let styleMainWeather;
@@ -50,6 +51,7 @@ const fetchWeather = () => {
       changeWeather(json);
       changeStyle(styleMainWeather);
       changeTitle(json, title);
+      changeImg(img);
     })
     .catch((error) => {
       console.log(error);
@@ -96,45 +98,66 @@ fetchForecast();
 // Change Styling depending on Weather
 
 const changeStyle = (styleMainWeather) => {
+  const list = document.querySelectorAll(".list-style");
   if (styleMainWeather === "Clear") {
     container.classList.add("clear");
     mainWeather.classList.add("clear");
     title.classList.add("clear");
     sun.classList.add("clear");
+    img.classList.add("clear");
     dates.classList.add("clear");
     temp.classList.add("clear");
+    list.forEach((element) => {
+      element.classList.add("clear");
+    });
     console.log("Clear");
   } else if (styleMainWeather === "Clouds") {
     container.classList.add("clouds");
     mainWeather.classList.add("clouds");
     title.classList.add("clouds");
+    img.classList.add("clouds");
     sun.classList.add("clouds");
     dates.classList.add("clouds");
     temp.classList.add("clouds");
+    list.forEach((element) => {
+      element.classList.add("clouds");
+    });
     console.log("Clouds");
   } else if (styleMainWeather === "Rain") {
     container.classList.add("rain");
     mainWeather.classList.add("rain");
     title.classList.add("rain");
+    img.classList.add("rain");
     sun.classList.add("rain");
     dates.classList.add("rain");
     temp.classList.add("rain");
+    list.forEach((element) => {
+      element.classList.add("rain");
+    });
     console.log("Rain");
   } else if (styleMainWeather === "Snow") {
     container.classList.add("snow");
     mainWeather.classList.add("snow");
     title.classList.add("snow");
+    img.classList.add("snow");
     sun.classList.add("snow");
     dates.classList.add("snow");
     temp.classList.add("snow");
+    list.forEach((element) => {
+      element.classList.add("snow");
+    });
     console.log("Snow");
   } else if (styleMainWeather) {
     container.classList.add("default");
     mainWeather.classList.add("default");
     title.classList.add("default");
+    img.classList.add("default");
     sun.classList.add("default");
     dates.classList.add("default");
     temp.classList.add("default");
+    list.forEach((element) => {
+      element.classList.add("default");
+    });
     console.log("We don't have that weather yet");
   }
 };
@@ -144,16 +167,35 @@ const changeTitle = (json, title) => {
     title.innerText = `Get your sunnies on. ${json.name} is looking rather great today.`;
     console.log("clear");
   } else if (title.classList.contains("clouds")) {
-    title.innerHTML = `Light a fire and get cosy. ${json.name} is looking grey today.`;
+    title.innerText = `Light a fire and get cosy. ${json.name} is looking grey today.`;
     console.log("clouds");
   } else if (title.classList.contains("rain")) {
-    title.innerHTML = `Don't forget your umbrella. It's wet in ${json.name} today.`;
+    title.innerText = `Don't forget your umbrella. It's wet in ${json.name} today.`;
     console.log("rain");
   } else if (title.classList.contains("snow")) {
-    title.innerHTML = `Don't forget your hat. It's quite cold in ${json.name} today.`;
+    title.innerText = `Don't forget your hat. It's quite cold in ${json.name} today.`;
     console.log("snow");
   } else if (title.classList.contains("default")) {
-    title.innerHTML = `Enjoy your day with the current ${json.name} weather.`;
+    title.innerText = `Enjoy your day with the current ${json.name} weather.`;
     console.log("We don't have that weather yet.");
+  }
+};
+
+const changeImg = (img) => {
+  if (img.classList.contains("clear")) {
+    img.src = "/design/design2/icons/noun_Sunglasses_2055147.png";
+    console.log("imgclear");
+  } else if (img.classList.contains("clouds")) {
+    img.src = "/design/design2/icons/noun_Cloud_1188486.png";
+    console.log("imgclouds");
+  } else if (img.classList.contains("rain")) {
+    img.src = "/design/design2/icons/noun_Umbrella_2030530.png";
+    console.log("imgrain");
+  } else if (img.classList.contains("snow")) {
+    img.src = "/design/design2/icons/snow.png";
+    console.log("imgsnow");
+  } else if (img.classList.contains("default")) {
+    img.src = "/design/design2/icons/default.png";
+    console.log("XXXX");
   }
 };

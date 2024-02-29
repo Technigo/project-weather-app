@@ -104,8 +104,12 @@
 }
 
 .list-style {
-  border-bottom: 1px dotted #707070;
+  border-bottom: 1px dotted;
   width: auto;
+}
+
+.icon {
+  text-align: center;
 }
 
 /*Weather Depending Styling*/
