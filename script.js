@@ -44,7 +44,6 @@ const remindTestCityName = (param) => {
     const hoursSunrise = finlandSunriseTime.toLocaleTimeString('en-US', timeFormat)
     const hoursSunset = finlandSunsetTIme.toLocaleTimeString('en-US', timeFormat)
 
-    
     if (dayWeather === 'clear') {
         temSunTime.innerHTML = `
         <P> ${description} | ${temperature}</p>
