@@ -1,19 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
     <title>My Weather App</title>
-</head>
-<body>
-    <div class="container">
-        <p id="main-weather">Main Weather</p>
-        <p id="sun">Sun</p>
-        <img src="#" alt="img">
-        <h1 id="title">Title</h1>
-        <p id="dates"></p>
+  </head>
+  <body>
+    <div class="boxcenter">
+      <div class="container" id="container">
+        <p class="weather-style" id="main-weather"></p>
+        <p class="sun-style" id="sun"></p>
+        <img class="img-style" id="img" src="#" alt="weather-img" />
+        <h1 class="title-style" id="title">LOADING...</h1>
+        <div class="forecast-style">
+          <ul class="dates-style" id="dates"></ul>
+          <ul class="temp-style" id="temp"></ul>
+        </div>
+        <div class="icon">
+          <a
+            target="_blank"
+            href="https://icons8.com/icon/118918/partly-cloudy-day"
+          ></a>
+          icons by <a target="_blank" href="https://icons8.com">Icons8</a>
+        </div>
+      </div>
     </div>
+
     <script src="./script.js"></script>
-</body>
+  </body>
 </html>

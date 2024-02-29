@@ -1,11 +1,140 @@
+/*Setting the root colors*/
+:root {
+  --clearback: #f7e9b9;
+  --clearcolor: #2a5510;
+  --cloudyback: #f4f7f8;
+  --cloudycolor: #f47775;
+  --rainback: #bde8fa;
+  --raincolor: #164a68;
+  --snowback: #a5aeff;
+  --snowcolor: #090057;
+  --defaultback: #43766c;
+  --defaultcolor: #f8fae5;
+}
+
+/*Main styling*/
 * {
-    background-color: #F7E9B9;
-    box-sizing: border-box;
-    font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/*Overall Styling*/
+.boxcenter {
+  width: 100vw;
+  height: 100vw;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  background-image: url("/design/design2/icons/weather-back.jpg");
 }
 
 .container {
-    border: solid 1px #707070;
-    width: 375px;
-    height: 823px;
+  border: solid 1px #707070;
+  width: 375px;
+  height: 823px;
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+.weather-style {
+  height: 38px;
+  width: 296px;
+  margin-top: 49px;
+  margin-left: 47px;
+  margin-bottom: 0;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 25.6px;
+}
+
+.sun-style {
+  height: 67px;
+  width: 296px;
+  margin-top: -11px;
+  margin-left: 47px;
+  margin-bottom: 0;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 25.6px;
+}
+
+.img-style {
+  height: 51.72px;
+  width: 73.05px;
+  margin-left: 41px;
+  margin-top: 61.3px;
+}
+
+.title-style {
+  height: 245px;
+  width: 296px;
+  margin-left: 40px;
+  margin-top: 17.85px;
+  font-weight: 700;
+  font-size: 37px;
+  line-height: 45.1px;
+}
+
+.forecast-style {
+  display: flex;
+}
+
+.dates-style {
+  list-style-type: none;
+  height: 248px;
+  width: 233px;
+  margin-left: 40px;
+  margin-top: 13px;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 36px;
+}
+
+.temp-style {
+  list-style-type: none;
+  height: 248px;
+  width: 59px;
+  margin-top: 13px;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 36px;
+  text-align: end;
+}
+
+.list-style {
+  border-bottom: 1px dotted;
+  width: auto;
+}
+
+.icon {
+  text-align: center;
+}
+
+/*Weather Depending Styling*/
+
+.clear {
+  background-color: var(--clearback);
+  color: var(--clearcolor);
+}
+
+.clouds {
+  background-color: var(--cloudyback);
+  color: var(--cloudycolor);
+}
+
+.rain {
+  background-color: var(--rainback);
+  color: var(--raincolor);
+}
+
+.snow {
+  background-color: var(--snowback);
+  color: var(--snowcolor);
+}
+
+.default {
+  background-color: var(--defaultback);
+  color: var(--defaultcolor);
 }
