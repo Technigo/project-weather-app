@@ -1,31 +1,31 @@
 body {
-    background: #48cae4;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin: 40px;
+    display: flex;
+    justify-content: center;
+    background: #F4F7F8;
+    font-family: "Montserrat";
+    margin: 20px;
   }
   
-  h1, #tempCelsius {
-    color: white;
+  h1 {
+    color: #F47775;
     font-size: 50px;
-    text-align: center;
   }
   
-  h2 {
-    color: white;
-    text-align: center;
+  .weatherToday {
+    color: #F47775;
+    font-size: 20px;
   }
 
-  h3, #forecast {
-    color: white;
-    text-align: center;
-    text-transform: capitalize;
+  .forecast {
+    color: #F47775;
   }
 
-  #sunrise, #sunset {
-    color: white;
-    text-align: center;
+  #weeklyForecast {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: dotted;
   }
-  
+
   #error {
     color: red;
   }

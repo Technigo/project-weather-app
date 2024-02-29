@@ -6,30 +6,44 @@ const URL = `${BASE_URL}weather?q=${city}&units=metric&APPID=${API_KEY}`
 const URLforecast = `${BASE_URL}forecast?q=${city}&units=metric&APPID=${API_KEY}`
  
 //DOM Selectors
-const mainContainer = document.getElementById("mainContainer")
-const cityName = document.getElementById("cityName")
-const mainTemp = document.getElementById("mainTemp")
-const weatherDescription = document.getElementById("weatherDescription")
+const weatherToday = document.getElementById('weatherToday')
 const errorDiv = document.getElementById("error")
-const sunrise = document.getElementById("sunrise")
-const sunset = document.getElementById("sunset")
 const forecast = document.getElementById("forecast")
+const message = document.getElementById("message")
 
 const updateHTML = (data) => {
   const temp = data.main.temp.toFixed(1)
   const description = data.weather[0].description
-  const cityTitle = data.name
+  const cityName = data.name
   const sunriseUnix = new Date(data.sys.sunrise * 1000)
   const sunsetUnix = new Date(data.sys.sunset * 1000)
 
   const sunriseShort = sunriseUnix.toLocaleTimeString([], { timeStyle: "short" }) 
   const sunsetShort = sunsetUnix.toLocaleTimeString([], { timeStyle: "short" })
 
-  mainTemp.innerText = temp
-  weatherDescription.innerText = description
-  cityName.innerText = cityTitle
-  sunrise.innerText += `Sunrise: ${sunriseShort}`
-  sunset.innerText += `Sunset: ${sunsetShort}`
+  weatherToday.innerHTML = `
+  <p>${description} | ${temp}°C</p>
+  <p>sunrise ${sunriseShort}</p> 
+  <p>sunset ${sunsetShort}</p>
+  `
+
+  const weatherConditions = () => {
+    if (data.weather[0].main === "Clouds") {
+      message.innerHTML += `<div> 
+      <h1>Light a fire and get cozy. ${cityName} is looking grey today.</h1>
+      </div>`
+    } else if (data.weather[0].main === "Rain") {
+      message.innerHTML += `<div>
+      <h1>Don't forget your umbrella. It's wet in ${cityName} today.</h1>
+      </div>`
+    } else if (data.weather[0].main === "Clear") {
+      message.innerHTML += `<div>
+      <h1>Get your sunnies on. ${cityName} is looking rather great today.</h1>
+      </div>`
+    } 
+  }
+
+  weatherConditions()
 }
 
 const updateHTMLforecast = (json) => {
@@ -42,12 +56,18 @@ const updateHTMLforecast = (json) => {
     const day = filteredForecast[counter]
     const date = new Date(tomorrow)
     date.setDate(date.getDate() + counter)
-    const weekdayName = date.toLocaleDateString("en-GB", { weekday: "short" })
+    const weekdayName = date.toLocaleDateString(["en-GB"], { weekday: "short" })
     const weekdayTemp = day.main.temp.toFixed(0)
     const weekdayDescription = day.weather[0].description
-    forecast.innerText += `${weekdayName} ${weekdayDescription} ${weekdayTemp}°C`
+    forecast.innerHTML += `
+    <div id="weeklyForecast">
+    <p>${weekdayName}</p> 
+    <p>${weekdayDescription}</p> 
+    <p>${weekdayTemp}°C</p>
+    </div>
+    `
   }
-};
+}
 
 const fetchWeather = () => {
   fetch(URL)

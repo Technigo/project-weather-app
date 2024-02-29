@@ -4,23 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://fonts.google.com/specimen/Montserrat">
     <title>Weather App</title>
 </head>
 <body>
     <div id="error"></div>
-    <main id="mainContainer">
-      <div>
-        <h1 id="mainTemp">Temperature</h1>
-        <p id="tempCelsius">°C</p>
-        <h2 id="cityName">City name</h2>
-        <h3 id="weatherDescription">Description</h3>
+    <main id="mainContainer" class="mainContainer">
+      <div id="weatherToday" class="weatherToday">
       </div>
       <div>
-        <p id="sunrise"></p>
-        <p id="sunset"></p>
+        <p id="message"></p>
       </div>
       <div>
-        <p id="forecast"></p>
+        <p id="forecast" class="forecast"></p>
       </div>
     </main>
     <script src="./script.js"></script>
