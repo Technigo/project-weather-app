@@ -21,106 +21,48 @@
     <title>Wen's weather app</title>
   </head>
   <body>
-    <header id="current-weather-field">
-      <a href="#" class="menu">
-        <i class="fa fa-bars"></i>
-      </a>
-      <div class="time-img-container">
-        <img
-          id="time-icon-container"
-          src="./assets/morning.png"
-          alt="morning icon"
-        />
-      </div>
-      <div class="current-weather">
-        <div id="temp">
-          <h1 id="current-temp"></h1>
-          <sup>°C</sup>
-        </div>
-        <div id="city"></div>
-        <div id="current-weather-condition"></div>
-      </div>
-      <div class="sun-condition">
-        <span>Sunrise</span>
-        <span id="sunrise"></span>
-        <span>Sunset</span>
-        <span id="sunset"></span>
-      </div>
-      <div class="weather-reminder" id="weather-reminder">
-        <h2></h2>
-      </div>
-      <div class="button-area" id="button-area">
-        <button class="full-view">
+    <div class="background">
+      <header id="current-weather-field">
+        <a href="#" class="menu">
+          <i class="fa fa-bars"></i>
+        </a>
+        <div class="time-img-container">
           <img
-            id="button-icon"
-            src="./assets/button-icon-day.png"
-            alt="button icon"
+            id="time-icon-container"
+            src="./assets/morning.png"
+            alt="morning icon"
           />
-        </button>
+        </div>
+        <div class="current-weather">
+          <div id="temp">
+            <h1 id="current-temp"></h1>
+            <sup>°C</sup>
+          </div>
+          <div id="city"></div>
+          <div id="current-weather-condition"></div>
+        </div>
+        <div class="sun-condition">
+          <span>Sunrise</span>
+          <span id="sunrise"></span>
+          <span>Sunset</span>
+          <span id="sunset"></span>
+        </div>
+        <div class="weather-reminder" id="weather-reminder">
+          <h2></h2>
+        </div>
+        <div class="button-area" id="button-area">
+          <button class="full-view">
+            <img
+              id="button-icon"
+              src="./assets/button-icon-day.png"
+              alt="button icon"
+            />
+          </button>
+        </div>
+      </header>
+      <div class="weather-details" id="forecast-field">
+        <table class="weather-table" id="weather-table"></table>
       </div>
-    </header>
-    <!-- <div class="button-area">
-      <button>
-        <img
-          id="button-icon"
-          src="./assets/button-icon.png"
-          alt="button icon"
-        />
-      </button>
-    </div> -->
-    <div class="weather-details" id="forecast-field">
-      <table class="weather-table" id="weather-table">
-        <!-- <tr class="mon-weather">
-          <td id="mon">Mon</td>
-          <td>
-            <img
-              class="weather-icon"
-              src="./design/design1/assets/Group16.png"
-            />
-          </td>
-          <td class="weather-range">Germany</td>
-        </tr>
-        <tr class="tue-weather">
-          <td>Tue</td>
-          <td>
-            <img
-              class="weather-icon"
-              src="./design/design1/assets/Group36.png"
-            />
-          </td>
-          <td>Mexico</td>
-        </tr>
-        <tr class="wed-weather">
-          <td>Wed</td>
-          <td>
-            <img
-              class="weather-icon"
-              src="./design/design1/assets/Group36.png"
-            />
-          </td>
-          <td>Mexico</td>
-        </tr>
-        <tr class="thu-weather">
-          <td>Thu</td>
-          <td>
-            <img
-              class="weather-icon"
-              src="./design/design1/assets/Group36.png"
-            />
-          </td>
-          <td>Mexico</td>
-        </tr>
-        <tr class="fri-weather">
-          <td>Fri</td>
-          <td>
-            <img
-              class="weather-icon"
-              src="./design/design1/assets/Group34.png"
-            />
-          </td>
-          <td>Mexico</td>
-        </tr> -->
-      </table>
     </div>
     <script src="./script.js"></script>
   </body>

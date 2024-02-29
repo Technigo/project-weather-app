@@ -21,7 +21,24 @@ body {
     rgba(181, 181, 246, 1) 0%,
     rgba(45, 60, 203, 1) 100%
   ); */
-  min-height: 100%;
+  /* min-height: 100%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.background {
+  box-shadow: 9px 7px 40px -6px rgba(0, 0, 0, 0.25);
+  height: 896px;
+  width: 420px;
+  border-radius: 5px;
 }
 
 img {
@@ -261,7 +278,7 @@ tr:hover td:first-child {
 }
 
 .show {
-  height: 100vh;
+  min-height: 100%;
   border-bottom-left-radius: 0%;
   border-bottom-right-radius: 0%;
   overflow: hidden;
