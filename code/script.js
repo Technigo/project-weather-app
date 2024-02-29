@@ -68,8 +68,10 @@ const changeForecast = (json) => {
 
   daytimeForecast.forEach((element) => {
     const dayOfWeek = weekdays[new Date(element.dt * 1000).getDay()];
-    dates.innerHTML += `${dayOfWeek} <br>`;
-    temp.innerHTML += `${Math.round(element.main.temp)}° <br>`;
+    dates.innerHTML += `<li class="list-style">${dayOfWeek}</li>`;
+    temp.innerHTML += `<li class="list-style">${Math.round(
+      element.main.temp
+    )}°</li>`;
     dateEpoch.push(element.dt);
   });
 };
