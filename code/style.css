@@ -10,35 +10,38 @@ body {
   font-weight: 300;
 }
 
-.container {
+.app-container {
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
 
-/*Styling for upper section*/
-
-/*Styling for search bar*/
+/*Styling for search section*/
 .search-bar {
   display: flex;
   justify-content: space-between;
   padding: 20px 20px 0 20px;
 }
 
+.city-search {
+  opacity: 0.5;
+  border-radius: 30px;
+  overflow: hidden;
+  border: none;
+  padding: 5px;
+}
+
+/*Styling for upper section*/
 .upper-section,
 .lower-section {
-  flex: 1;
+  height: 50%;
 }
 
 .upper-section {
   color: white;
-  background-image: url("./assets/moon-stars.jpg");
+  background-image: url("./assets/clear-day.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  /* background-color: #222350; */
-  /* background: rgb(2,27,120);
-    background: linear-gradient(180deg, rgba(2,27,120,1) 16%, rgba(8,41,131,1) 50%, rgba(29,63,167,1) 78%); */
-  border-radius: 0 0 10px 10px;
   border-bottom-left-radius: 200px 40px;
   border-bottom-right-radius: 200px 40px;
   overflow: hidden;
@@ -80,30 +83,98 @@ body {
   font-size: 22px;
 }
 
-/*Styling for lower section*/
-table {
+/*Styling for lower section (forecast)*/
+.forecast-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   padding-top: 70px;
-  width: 100%;
+}
+
+.day-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   font-size: 20px;
   color: #707070;
+  margin: 0 10px 0 10px;
+  padding: 0 5px 0 5px;
+  border-radius: 30px;
+  overflow: hidden;
 }
 
-td {
-  text-align: left;
-  padding: 16px;
+.day-container:hover {
+  background-color: #fafafa;
 }
 
-tr {
+.day-container img {
+  width: 15%;
+}
+
+.min-max-temp {
   display: flex;
-  justify-content: space-evenly;
 }
 
-/*Media query for viewports larger than 1250px*/
-@media (min-width: 1000px) {
-  /* container {
-    height: 400px;
-    width: 300px;
-    margin-left: 33%;
-    border: solid red;
-  } */
+.forecast-day {
+  width: 105px;
+}
+
+/*Media query for viewports larger than iPhone XR (>414px)
+Keeping the same style and dimensions as iPhone XR*/
+@media (min-width: 415px) {
+  .upper-section,
+  .lower-section {
+    height: 448px;
+    width: 414px;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .app-container {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    height: 896px;
+  }
+}
+
+/*Media query for viewports smaller than iPhone XR (<414px)*/
+@media (max-width: 400px) {
+  .container {
+    display: flex;
+    align-items: center;
+  }
+  .app-container {
+    width: 100%;
+  }
+
+  .upper-text {
+    padding-top: 20px;
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+  }
+
+  .temperature {
+    font-size: 84px;
+  }
+
+  .celsius {
+    font-size: 28px;
+  }
+
+  .city {
+    font-size: 24px;
+  }
+
+  .sun-text {
+    font-size: 15px;
+  }
+
+  .forecast-container {
+    padding-top: 40px;
+  }
 }
