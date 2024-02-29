@@ -1,0 +1,7 @@
+.search-form {
+  display: flex;
+  align-items: center;
+  @media screen and (max-width: 667px) {
+    margin: 0.7em 0;
+  }
+}

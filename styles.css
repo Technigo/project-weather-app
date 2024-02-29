@@ -15,15 +15,12 @@
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
+  margin-bottom: 1.5em;
 }
 @media screen and (max-width: 667px) {
   .section__current-weather .current-weather-container {
     flex-direction: column;
   }
-}
-.section__current-weather .current-weather-container .current-weather,
-.section__current-weather .current-weather-container img {
-  margin-bottom: 1.5em;
 }
 
 .section__forecast {
@@ -36,6 +33,16 @@
   justify-content: space-between;
   margin-top: 0.8em;
   padding: 0.5em 0;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+}
+@media screen and (max-width: 667px) {
+  .search-form {
+    margin: 0.7em 0;
+  }
 }
 
 footer {
@@ -68,7 +75,7 @@ body {
   position: relative;
   font-family: "Montserrat", sans-serif;
   max-width: 100vw;
-  min-height: calc(100vh - 100px);
+  min-height: 100vh;
 }
 
 main {
@@ -81,7 +88,7 @@ main {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
+  min-height: calc(100vh - 100px);
 }
 
 h1,
@@ -143,14 +150,8 @@ input {
   border: none;
   background: #dddada;
   border-radius: 30px;
-  padding: 0.4rem;
-}
-
-button {
-  border: none;
-  padding: 0.4rem;
-  background: darkgray;
-  color: white;
+  padding: 0.6em 0.7em;
+  font-size: 0.8rem;
 }
 
 .loader {
