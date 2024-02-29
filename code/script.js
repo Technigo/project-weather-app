@@ -22,7 +22,7 @@ const fetchWeather = () => {
 
 			const nameChoice = data.name
 			const tempChoice = Math.trunc(data.main.temp)
-			const weatherDescr = data.weather[0].description
+			const weatherDescr = data.weather[0].main
 
             console.log(weatherDescr)
 
