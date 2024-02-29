@@ -8,12 +8,6 @@ const sunsetElement = document.getElementById("sunset")
 const forecastContainer = document.getElementById("forecast-container")
 const date = document.getElementById("date")
 
-////////// Get time + date and display in app //////////
-const currentDate = new Date().toLocaleDateString()
-const currentTime = new Date().toLocaleTimeString()
-
-date.innerHTML = `${currentDate} ${currentTime}`
-
 ////////// API URL storing //////////
 const BASE_URL =
   "https://api.openweathermap.org/data/2.5/weather?units=metric&q="
@@ -22,8 +16,12 @@ let cityName = "Stockholm" //path param
 const forecastURL =
   "https://api.openweathermap.org/data/2.5/forecast?units=metric&q="
 
-////////// Function to fetch API data //////////
+////////// Get time + date and display in app //////////
+const currentDate = new Date().toLocaleDateString()
+const currentTime = new Date().toLocaleTimeString()
+date.innerHTML = `${currentDate} ${currentTime}`
 
+////////// Function to fetch API data //////////
 const fetchWeatherData = () => {
   fetch(`${BASE_URL}${cityName}&appid=${API_KEY}`)
     .then((response) => response.json())
@@ -160,10 +158,8 @@ const fetchWeatherForecast = () => {
         forecastContainer.innerHTML += `
         <div class="day-container">
             <p class="forecast-day">${weekDay}</p>
-            <p class="forecast-icon">
               <img class="forecast-image" src="https://openweathermap.org/img/wn/${icon}@2x.png"
               alt="forecast image"/>
-            </p>
             <div class="min-max-temp">
             <p class="max-temp">${maxTemp}&deg;</p>
             <p>/</p>
