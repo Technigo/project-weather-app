@@ -1,10 +1,16 @@
 //DOM selectors here:
-const selectWeatherImg = document.getElementById("weatherImg")
 
 
 //create a fench function to log the data from the API
 const fetchWeaterData = () =>{
-  fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=69cc94dd08e05801b495ee1b7a9cba03")
+  //https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=69cc94dd08e05801b495ee1b7a9cba03
+  const BASE_URL = "https://api.openweathermap.org/data/2.5/"
+  const API_KEY = "69cc94dd08e05801b495ee1b7a9cba03"
+  const cityCountry = "Stockholm,Sweden"
+
+  const URL = `${BASE_URL}weather?q=${cityCountry}&units=metric&APPID=${API_KEY}`
+
+  fetch(URL)
   .then((response)=>{
     return response.json()
   })
