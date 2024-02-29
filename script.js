@@ -23,7 +23,7 @@ const fetchWeatherData = () => {
       ${roundedTemp} °C
       `;
       weather.textContent = `
-      ${data.weather[0].main}
+      ${data.weather[0].description}
       `;
     });
 };
@@ -145,8 +145,8 @@ const fetchForecast = () => {
       // });
       // console.log(
       //   `min/max temp: ${lowestMinTemp}, ${highestMaxTemp}`
-      )
-    });
-};
+      
+    })
+  }
 
 fetchForecast();
