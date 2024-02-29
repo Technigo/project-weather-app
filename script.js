@@ -38,74 +38,114 @@ const fetchForecast = () => {
     .then((response) => response.json())
     .then((data) => {
       const forecastList = data.list;
-      console.log(forecastList);
+      console.log("forecast list:", forecastList);
 
-      //filter the forecast that contain the time "15:00"
-      const filteredForecastList = forecastList.filter((item) =>
-        item.dt_txt.includes("15:00:00")
-      );
-      console.log(filteredForecastList);
+      const todaysDate = new Date().toISOString().split("T")[0];
+      console.log("todays date without time:", todaysDate);
 
-      //filter the forecast to include only 4 days
-      const todaysDate = new Date();
-      const addFourDays = new Date(todaysDate);
-      addFourDays.setDate(todaysDate.getDate() + 4);
+      const dailyTemperatures = {};
 
-      const fourDayForecast = filteredForecastList.filter((item) => {
-        const forecastDate = new Date(item.dt * 1000);
-        return forecastDate <= addFourDays;
-      });
-
-      //convert the timestamp to a date
-      fourDayForecast.forEach((day) => {
-        const eachDate = new Date(day.dt * 1000);
-        console.log(eachDate);
-        //convert each date to the name of the weekday
-        const weekdayNameOption = { weekday: "short" };
-        let weekdayName = eachDate.toLocaleDateString(
-          "en-US",
-          weekdayNameOption
-        );
-        console.log(weekdayName);
-
-        //find the highest and lowest temp from the 5 day forecast fetch
-        let highestMaxTemp = -500;
-        let lowestMinTemp = 500;
-
-        //i need to fix this so that it displays the maxTemp and minTemp for each day and not from the entire list.
-        forecastList.forEach((item) => {
+      forecastList.forEach((item) => {
+        const date = item.dt_txt.split(" ")[0];
+        console.log("date split to show YY-MM-DD:", date);
+        if (date !== todaysDate) {
           const maxTemp = Math.round(item.main.temp_max);
           const minTemp = Math.round(item.main.temp_min);
 
-          if (maxTemp > highestMaxTemp) {
-            highestMaxTemp = maxTemp;
+          if (!dailyTemperatures[date]) {
+            dailyTemperatures[date] = {
+              maxTemp: maxTemp,
+              minTemp: minTemp,
+            };
+          } else {
+            dailyTemperatures[date].maxTemp = Math.max(
+              dailyTemperatures[date].maxTemp,
+              maxTemp
+            );
+            dailyTemperatures[date].minTemp = Math.min(
+              dailyTemperatures[date].minTemp,
+              minTemp
+            );
           }
-
-          if (minTemp < lowestMinTemp) {
-            lowestMinTemp = minTemp;
-          }
-        });
-
-        console.log("highest max temp:", `${highestMaxTemp}`);
-        console.log("lowest min temp:", `${lowestMinTemp}`);
-
-        //get today's date to compare it to each day of the forecastodaysDate = new Date();
-        const todaysForecast = eachDate.getDay() === todaysDate.getDay();
-        console.log(todaysForecast);
-
-        if (!todaysForecast) {
-          forecast.innerHTML += `
-          <div class="four-day-forecast">
-            <div class="weekday">
-              <span>${weekdayName}</span>
-              <span class="forecast-image"></span>
-              <span>${highestMaxTemp}° /</span>
-              <span>${lowestMinTemp}°C</span>
-            </div>
-          </div>
-          `;
         }
       });
+      console.log("Daily Temp", dailyTemperatures);
+
+      for (const date in dailyTemperatures) {
+        const minTemp = dailyTemperatures[date].minTemp;
+        const maxTemp = dailyTemperatures[date].maxTemp;
+
+        const weekdayName = new Date(date).toLocaleDateString("en-US", {
+          weekday: "short",
+        });
+
+        forecast.innerHTML += `
+            <div class="four-day-forecast">
+              <div class="weekday">
+                <span>${weekdayName}</span>
+                <span class="forecast-image"></span>
+                <span>${minTemp}° /</span>
+                <span>${maxTemp}°C</span>
+              </div>
+            </div>
+            `;
+      }
+
+      // const groupedByDay = {};
+
+      // forecastList.forEach((item) => {
+      //   const day = item.dt_txt.split(" ")[0];
+      //   console.log(day)
+
+      //   if (day !== todaysDate) {
+      //     if (!groupedByDay[day]) {
+      //       groupedByDay[day] = [];
+      //     }
+
+      //     groupedByDay[day].push(item);
+      //     console.log(groupedByDay)
+      //   }
+      // });
+
+      //filter out today's forecast and assign it the weekday name
+      // const filteredForecastList = forecastList.filter(
+      //   (item) =>
+      //     item.dt_txt.includes("15:00:00") &&
+      //     !item.dt_txt.startsWith(todaysDate)
+      // );
+      // console.log("forecast exluding today's date:", filteredForecastList);
+
+      //convert milliseconds into date form
+      // filteredForecastList.forEach((day) => {
+      //   const eachDaysDate = new Date(day.dt * 1000);
+      //   console.log("forecast days in date form:", eachDaysDate);
+      //   //convert each date form into the name of weekday
+      //   const weekdayNameOption = { weekday: "short" };
+      //   weekdayName = eachDaysDate.toLocaleDateString(
+      //     "en-US",
+      //     weekdayNameOption
+      //   );
+      //   console.log("weekday name:", weekdayName);
+      // });
+
+      // let highestMaxTemp = -500;
+      // let lowestMinTemp = 500;
+
+      // forecastList.forEach((item) => {
+      //   const maxTemp = Math.round(item.main.temp_max);
+      //   const minTemp = Math.round(item.main.temp_min);
+
+      //   if (maxTemp > highestMaxTemp) {
+      //     highestMaxTemp = maxTemp;
+      //   }
+
+      //   if (minTemp < lowestMinTemp) {
+      //     lowestMinTemp = minTemp;
+      //   }
+      // });
+      // console.log(
+      //   `min/max temp: ${lowestMinTemp}, ${highestMaxTemp}`
+      )
     });
 };
 
