@@ -53,7 +53,7 @@ body {
   padding: 30px;
   background: #f4f7f8;
   width: 100%;
-  max-width: 1000px;
+  max-width: 600px;
   border: 1px solid #f47775;
   border-radius: 20px;
 }
@@ -72,4 +72,22 @@ body {
 
 p {
   display: flex;
+}
+
+#city-selector {
+  padding-bottom: 20px;
+}
+
+#city-selector select {
+  padding: 10px;
+  font-size: 0.7em;
+  border: 1px solid #f47775;
+  border-radius: 10px;
+  background-color: white;
+  color: #f47775;
+  width: 100%;
+}
+
+#city-selector label {
+  font-size: 0.7em;
 }
