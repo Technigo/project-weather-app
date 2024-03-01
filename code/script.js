@@ -6,7 +6,12 @@ const API_KEY = "1e48fdf267ccc8ee33c1c78150dcbab1";
 const city = "Umea, Sweden";
 */
 
-//DOM selectors
+//DOM selectors 
+const weatherContainer = document.getElementById('weather-container')
+const imgContainer = document.getElementById('img-container')
+const cityContainer = document.getElementById('city-container')
+const forecastContainer = document.getElementById('forecast-container')
+
 const handleTemp = document.getElementById('temperature')
 const handleName = document.getElementById('city-name')
 const weatherDescription = document.getElementById('weather-description')
@@ -34,10 +39,15 @@ const fetchWeather = () => {
 fetchWeather()
 
 
-/*//config code to capitalize first letter in weather description
-const capitalizeFirstLetter = (str) => {
-  return `${str[0].toUpperCase()}${str.slice(1)}`;
-}
 
-let myString = "codedamn";
-console.log(capitalizeFirstLetter(myString)); // Outputs: Codedamn*/
+const showWeather = () => {
+	weatherContainer.innerHTML = `
+<p>hello world<p>`
+	cityContainer.innerHTML = `
+<p>hello world<p>`
+	forecastContainer.innerHTML = `
+<p>mon</p>
+`
+	console.log(imgContainer)
+}
+showWeather()
