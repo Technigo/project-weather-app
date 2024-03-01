@@ -62,11 +62,23 @@ const printHeaderInfo = (json) => {
   sunriseData = json.sys.sunrise;
   const sunriseHour = new Date(sunriseData * 1000).getHours();
   const sunriseMinute = new Date(sunriseData * 1000).getMinutes();
-  const sunriseTime = `${sunriseHour}:${sunriseMinute}`;
+  let sunriseMinuteAdjusted = ""
+  if (sunriseMinute < 10) {
+    sunriseMinuteAdjusted = `0${sunriseMinute}`
+  } else {
+    sunriseMinuteAdjusted = sunriseMinute
+  }
+  const sunriseTime = `${sunriseHour}:${sunriseMinuteAdjusted}`;
   sunsetData = json.sys.sunset;
   const sunsetHour = new Date(sunsetData * 1000).getHours();
   const sunsetMinute = new Date(sunsetData * 1000).getMinutes();
-  const sunsetTime = `${sunsetHour}:${sunsetMinute}`;
+   let sunsetMinuteAdjusted = "";
+   if (sunsetMinute < 10) {
+     sunsetMinuteAdjusted = `0${sunsetMinute}`;
+   } else {
+     sunsetMinuteAdjusted = sunsetMinute;
+   }
+  const sunsetTime = `${sunsetHour}:${sunsetMinuteAdjusted}`;
   sunInfo.innerHTML = `
       <p>${weatherType} | ${temperatureNow}°</p>
       <p>sunrise ${sunriseTime}</p>
