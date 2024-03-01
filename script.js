@@ -80,7 +80,8 @@ const fetchForecast = () => {
         days[date] = [...(days[date] ? days[date] : []), row];
         return days;
       }, {});
-
+      console.log("Grouped Data:", groupedData);
+      let i = 0;
       for (let date of Object.keys(groupedData)) {
         console.log("Date:", date);
         // current date -> date
@@ -90,14 +91,17 @@ const fetchForecast = () => {
 
         console.log("\n\n");
 
-        forecast.innerHTML += `<div class="forecastDay">
+        if (i < 5) {
+          i++;
+          forecast.innerHTML += `<div class="forecastDay">
         <p class="forecastDayWeekday">${displayDay(groupedData[date][0].dt)}</p>
         <img src="assets/partially.png" alt="">
         <p class="forecastDayTemp">${Math.round(
           getMax(groupedData[date], "temp_max")
         )}° / ${Math.round(
-          getMin(groupedData[date], "temp_min")
-        )}°&#x1D9C</p></div>`;
+            getMin(groupedData[date], "temp_min")
+          )}°&#x1D9C</p></div>`;
+        }
       }
     });
 
@@ -147,7 +151,7 @@ const toggleForecast = () => {
     buttonContainer.classList.remove("transition-active");
     forecast.classList.remove("hidden");
   } else {
-    skyContainer.classList.add("animation-active");
+    skyContainer.classList.add("animation", "animation-active");
     buttonContainer.classList.add("transition-active");
     forecast.classList.add("hidden");
   }

@@ -68,7 +68,7 @@ body {
 .button-container {
   display: flex;
   justify-content: flex-end;
-  margin: 2rem;
+  margin-right: 2rem;
 }
 
 #forecast-button {
@@ -99,7 +99,7 @@ body {
   transition: 0.2s ease-in-out;
 }
 .animation {
-  transition: height 0.5s ease-out;
+  transition: all 0.5s ease-out;
 }
 
 .animation-active {
@@ -116,19 +116,21 @@ body {
 }
 
 #forecast {
-  display: static;
+  display: flex;
+  margin-top: 2rem;
+  height: 50vh;
   flex-direction: column;
+  justify-content: space-evenly;
   color: var(--clr_dark_text);
   overflow: hidden;
 }
 
 .forecastDay {
   margin-inline: 1rem;
-  margin-block: 2rem;
   padding: 1rem;
   border-radius: 50px;
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 3fr 1fr 1fr;
   z-index: 0;
 }
 
