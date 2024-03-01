@@ -18,6 +18,7 @@ const temp = document.getElementById("temp");
 const description = document.getElementById("description");
 const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
+const weatherImage = document.getElementById("weather-image");
 const buttonContainer = document.getElementById("button-container");
 const forecastButton = document.getElementById("forecast-button");
 const forecast = document.getElementById("forecast");
@@ -35,6 +36,7 @@ const fetchWeather = () => {
       description.innerHTML = `<h3>${data.weather[0].main}</h3>`;
       let sunriseHoursMinutes = hoursMinutes(data.sys.sunrise);
       let sunsetHoursMinutes = hoursMinutes(data.sys.sunset);
+      weatherImage.src = chooseImage(data.weather[0].main);
 
       sunrise.innerHTML = `<h3>${sunriseHoursMinutes}</h3>`;
       sunset.innerHTML = `<h3>${sunsetHoursMinutes}</h3>`;
@@ -83,19 +85,11 @@ const fetchForecast = () => {
       console.log("Grouped Data:", groupedData);
       let i = 0;
       for (let date of Object.keys(groupedData)) {
-        console.log("Date:", date);
-        // current date -> date
-        // original items array for this date -> groupedData[date]
-        console.log("MaxTemp:", getMax(groupedData[date], "temp_max"));
-        console.log("MinTemp:", getMin(groupedData[date], "temp_min"));
-
-        console.log("\n\n");
-
         if (i < 5) {
           i++;
           forecast.innerHTML += `<div class="forecastDay">
         <p class="forecastDayWeekday">${displayDay(groupedData[date][0].dt)}</p>
-        <img src="assets/partially.png" alt="">
+        <img src=${chooseImage(groupedData[date][0].weather[0].main)} alt="">
         <p class="forecastDayTemp">${Math.round(
           getMax(groupedData[date], "temp_max")
         )}° / ${Math.round(
@@ -139,7 +133,36 @@ const displayDay = (time) => {
 };
 
 //Choose Image based on weather description.
-const chooseImage = (weather) => {};
+const chooseImage = (weather) => {
+  console.log(weather);
+  if (
+    weather == "Mist" ||
+    weather == "Smoke" ||
+    weather == "Haze" ||
+    weather == "Dust" ||
+    weather == "Fog" ||
+    weather == "Sand" ||
+    weather == "Ash" ||
+    weather == "Squall" ||
+    weather == "Tornado"
+  ) {
+    return "assets/mist.png";
+  } else if (weather == "Thunderstorm") {
+    return "assets/thunder.png";
+  } else if (weather == "Drizzle") {
+    return "assets/drizzle.png";
+  } else if (weather == "Rain") {
+    return "assets/rain.png";
+  } else if (weather == "Snow") {
+    return "assets/snow.png";
+  } else if (weather == "Clear") {
+    return "assets/sunny.png";
+  } else if (weather == "Clouds") {
+    return "assets/cloudy.png";
+  } else {
+    return "assets/partially.png";
+  }
+};
 
 // Check to see if current time is after sunset and before sunrise. Display moon.
 const checkMoon = (sunrise, sunset) => {};
@@ -152,7 +175,7 @@ const toggleForecast = () => {
     forecast.classList.remove("hidden");
   } else {
     skyContainer.classList.add("animation", "animation-active");
-    buttonContainer.classList.add("transition-active");
+    buttonContainer.classList.add("animation", "transition-active");
     forecast.classList.add("hidden");
   }
   console.log("toggleForecast");
