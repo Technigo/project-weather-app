@@ -110,7 +110,7 @@ const fetchWeatherForecastAPI = () =>
         });
 
       // Display the forecast data in the application
-      filteredWeatherData.slice(1, 5).forEach((forecast) => {
+      filteredWeatherData.slice(0, 4).forEach((forecast) => {
         const dayOfWeekLowerCase = forecast.dayOfWeek.toLowerCase(); // Convert day of week to lowercase
         const forecastHTML = `
     <div class="forecast-row">
