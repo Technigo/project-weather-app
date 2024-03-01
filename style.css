@@ -131,20 +131,24 @@ header i {
   top: -40px;
   z-index: 0;
   background-color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 50px 10px 20px 10px;
 }
 
-.forecast-day,
-.forecast-temperature {
+.forecast-list {
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  font-size: var(--font-size-xs);
+  align-items: center;
 }
-.forecast-weather {
+
+.forecast-day {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  font-size: var(--font-size-xs);
+  align-items: center;
+  width: 100%;
+  text-align: center;
+}
+
+.forecast-day p {
+  width: 100%;
 }

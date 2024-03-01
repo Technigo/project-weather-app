@@ -6,9 +6,7 @@ const todaysWeather = document.getElementById("todays-weather");
 const todaysSunrise = document.getElementById("todays-sunrise");
 const todaysSunset = document.getElementById("todays-sunset");
 const todaysTimeOfDay = document.getElementById("todays-time-of-day");
-const forecastDay = document.getElementById("forecast-day");
-const forecastWeather = document.getElementById("forecast-weather");
-const forecastTemperature = document.getElementById("forecast-temperature");
+const forecastList = document.getElementById("forecast-list");
 
 // Creating API URL called weatherTodayURL
 const BASE_TODAY_URL = "https://api.openweathermap.org/data/2.5/weather?";
@@ -136,20 +134,12 @@ const updateWeatherForecast = (weatherForecastData) => {
     weatherData.dt_txt.includes("12:00:00")
   );
 
-  // Clear existing content
-  forecastDay.innerHTML = "";
-  forecastWeather.innerHTML = "";
-  forecastTemperature.innerHTML = "";
-
-  let forecastDayHTML = "";
-  let forecastWeatherHTML = "";
-  let forecastTemperatureHTML = "";
-
   filteredWeatherData.forEach((filteredData) => {
     // Convert to millieseconds
     const timestamp = filteredData.dt * 1000;
     // Get date
     const date = new Date(timestamp);
+
     // Get day of week
     const dayOfWeek = date.toLocaleString("en-GB", {
       weekday: "long",
@@ -161,13 +151,14 @@ const updateWeatherForecast = (weatherForecastData) => {
     // Get temperature
     const temperature = filteredData.main.temp.toFixed(0);
 
-    forecastDayHTML += `<p> ${dayOfWeek} </p>`;
-    forecastWeatherHTML += `<img src="${iconUrl}" alt="Weather Icon">`;
-    forecastTemperatureHTML += `<p> ${temperature} °C</p>`;
+    forecastList.innerHTML += `
+    <div class="forecast-day">
+    <p> ${dayOfWeek} </p>
+    <img src="${iconUrl}" alt="Weather Icon">
+    <p> ${temperature} °C</p>
+    </div>
+    `;
   });
-  forecastDay.innerHTML = forecastDayHTML;
-  forecastWeather.innerHTML = forecastWeatherHTML;
-  forecastTemperature.innerHTML = forecastTemperatureHTML;
 };
 
 const fetchWeatherForecast = () => {
