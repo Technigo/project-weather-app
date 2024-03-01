@@ -1,16 +1,21 @@
-//API - but I dont have time to break it down now
-/*
-const BASE_URL =
-  "https://api.openweathermap.org/data/2.5/weather?q=Umea,Sweden&units=metric&APPID=";
-const API_KEY = "1e48fdf267ccc8ee33c1c78150dcbab1";
-const city = "Umea, Sweden";
-*/
+//API
+const BASE_URL = 'https://api.openweathermap.org/data/2.5/'
+const API_KEY = '1e48fdf267ccc8ee33c1c78150dcbab1'
+const city = 'Umea, Sweden'
+
+const URL = `${BASE_URL}weather?q=${city}&units=metric&APPID=${API_KEY}`
 
 //DOM selectors
+const weatherContainer = document.getElementById('weather-container')
+const imgContainer = document.getElementById('img-container')
+const cityContainer = document.getElementById('city-container')
+const forecastContainer = document.getElementById('forecast-container')
+const errorDiv = document.getElementById('error')
 const handleTemp = document.getElementById('temperature')
 const handleName = document.getElementById('city-name')
 const weatherDescription = document.getElementById('weather-description')
 
+//Fetching the API
 //Fetching the API
 const fetchWeather = () => {
 	fetch(
@@ -19,25 +24,30 @@ const fetchWeather = () => {
 		.then((response) => response.json())
 		.then((data) => {
 			console.log(data)
+		const nameChoice = data.name
+		const tempChoice = Math.trunc(data.main.temp)
+		const weatherDescr = data.weather[0].main
 
-			const nameChoice = data.name
-			const tempChoice = Math.trunc(data.main.temp)
-			const weatherDescr = data.weather[0].description
-
-            console.log(weatherDescr)
-
-			handleName.innerText = nameChoice
-			handleTemp.innerText = `${tempChoice} °C`
-			weatherDescription.innerText = `${weatherDescr}`
+		handleName.innerText = nameChoice
+		handleTemp.innerText = `${tempChoice} °C`
+		weatherDescription.innerText = `${weatherDescr}`
+		console.log('hej')
+			
 		})
 }
 fetchWeather()
 
+//Function to get data to HTML
 
-/*//config code to capitalize first letter in weather description
-const capitalizeFirstLetter = (str) => {
-  return `${str[0].toUpperCase()}${str.slice(1)}`;
+
+
+//Function showing content on browser with .innerHTML
+const showWeather = () => {
+	weatherContainer.innerHTML = `
+			<p>hello world<p>`
+	cityContainer.innerHTML = `
+			<p>hello world<p>`
+	forecastContainer.innerHTML = `
+			<p>mon</p>`
 }
-
-let myString = "codedamn";
-console.log(capitalizeFirstLetter(myString)); // Outputs: Codedamn*/
+showWeather()
