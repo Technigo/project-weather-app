@@ -16,15 +16,22 @@ h1 {
 }
 
 td {
-  padding: 0;
+  padding: 0 4.5px 0 4.5px;
   margin: 0;
   font-size: 21px;
 }
-
-#weather-icon {
-  max-width: 76px;
-  max-height: 73px;
-  margin: 50px 0 0 0;
+select {
+  appearance: none;
+  border: 0;
+  outline: 0;
+  width: 130px;
+  padding: 3px;
+  text-align: end;
+  background-color: inherit;
+  color: inherit;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .cloudy {
@@ -46,6 +53,16 @@ td {
   background-color: #d1e8e2;
 }
 
+#weather-icon {
+  max-width: 76px;
+  max-height: 73px;
+  margin: 50px 0 0 0;
+}
+
+#weather {
+  border-right: solid 1px;
+}
+
 #image-container {
   display: none;
 }
@@ -64,7 +81,11 @@ td {
   padding: 4.5px 0 4.5px 0;
 }
 
-#col-2 {
+#select-city-dropdown {
+  font-family: "Montserrat";
+}
+
+.last-col {
   text-align: end;
 }
 

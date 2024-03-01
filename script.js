@@ -1,4 +1,5 @@
 ///////////////////////////// DOM selectors /////////////////////////////
+
 const body = document.getElementById("body");
 const cityName = document.getElementById("city-name");
 const weather = document.getElementById("weather");
@@ -8,16 +9,18 @@ const largeWeatherIcon = document.getElementById("large-weather-icon");
 const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
 const forecastTable = document.getElementById("forecast-table");
+const selectCityDropdown = document.getElementById("select-city-dropdown");
 
 /////////////////////////// Global Variables ////////////////////////////
+
 const BASE_URL = "https://api.openweathermap.org/data/2.5/";
 const API_KEY = "5f9b0149e7c813c77ba22f081321a0c1";
 const weatherData = "weather";
 const forecastData = "forecast";
-const locale = "Stockholm,Sweden";
+let locale = "Stockholm,Sweden";
 const units = "metric";
-const URL = `${BASE_URL}${weatherData}?q=${locale}&units=${units}&APPID=${API_KEY}`;
-const forecastURL = `${BASE_URL}${forecastData}?q=${locale}&units=${units}&APPID=${API_KEY}`;
+let URL = `${BASE_URL}${weatherData}?q=${locale}&units=${units}&APPID=${API_KEY}`;
+let forecastURL = `${BASE_URL}${forecastData}?q=${locale}&units=${units}&APPID=${API_KEY}`;
 const currentDay = new Date(Date.now()).getDay();
 let localCity = "";
 let weekday = "";
@@ -76,12 +79,12 @@ const getCityName = () => {
 const getCityWeather = () => {
   fetchData(URL).then((json) => {
     const localWeather = json.weather[0].main;
-    weather.innerText = localWeather + " |";
+    weather.innerText = localWeather;
     if (localWeather === "Clouds") {
       setCloudyDesign();
     } else if (localWeather === "Clear") {
       setClearDesign();
-    } else if (localWeather === "Rain") {
+    } else if (localWeather === "Rain" || localWeather === "Drizzle") {
       setRainDesign();
     } else if (
       localWeather === "Haze" ||
@@ -119,20 +122,21 @@ const isItLessThanTen = (number) => {
 const getSunriseSunset = () => {
   fetchData(URL).then((json) => {
     // Sunrise
-    const sunriseData = new Date(json.sys.sunrise * 1000); // Multipy by 1000 because of UNIX
+    // Add json.timezone to get local timezone and multipy by 1000 because of UNIX
+    const sunriseData = new Date((json.sys.sunrise + json.timezone) * 1000);
     let sunriseHours = sunriseData.getHours();
     sunriseHours = isItLessThanTen(sunriseHours); // Check if the hour number is less than 10
     let sunriseMinutes = sunriseData.getMinutes();
     sunriseMinutes = isItLessThanTen(sunriseMinutes); // Check if the minute number is less than 10
-    sunrise.innerText = `${sunriseHours}:${sunriseMinutes}`;
+    sunrise.innerText = `${sunriseHours}.${sunriseMinutes}`;
 
     // Sunset
-    const sunsetData = new Date(json.sys.sunset * 1000);
+    const sunsetData = new Date((json.sys.sunset + json.timezone) * 1000);
     let sunsetHours = sunsetData.getHours();
     sunsetHours = isItLessThanTen(sunsetHours);
     let sunsetMinutes = sunsetData.getMinutes();
     sunsetMinutes = isItLessThanTen(sunsetMinutes);
-    sunset.innerText = `${sunsetHours}:${sunsetMinutes}`;
+    sunset.innerText = `${sunsetHours}.${sunsetMinutes}`;
   });
 };
 
@@ -189,16 +193,48 @@ const getForecast = () => {
         // array is and adds the value to the dayTemperature variable
         const dayTemperature = dailyTemperatures[index].toFixed(1);
         forecastTable.innerHTML += `<tr>
-        <td id="col-1">${weekday}</td>
-        <td id="col-2">${dayTemperature}°</td>
+        <td>${weekday}</td>
+        <td class="last-col">${dayTemperature}°</td>
       </tr>`;
       }
     });
   });
 };
 
-getCityName();
-getCityWeather();
-getCityDegrees();
-getSunriseSunset();
-getForecast();
+// Functions that runs all the other functions
+const displayInfo = () => {
+  getCityName();
+  getCityWeather();
+  getCityDegrees();
+  getSunriseSunset();
+  getForecast();
+};
+
+//////////////////////////// Eventlisters //////////////////////////////
+
+// Run all functions when page is loaded
+window.onload = (event) => {
+  displayInfo();
+};
+
+// Change the locale variable based on the selected option in the dropdown
+selectCityDropdown.addEventListener("change", () => {
+  let selectedCity =
+    selectCityDropdown.options[selectCityDropdown.selectedIndex].text;
+  if (selectedCity === "Karlstad") {
+    locale = "Karlstad,Sweden";
+  } else if (selectedCity === "Taipei") {
+    locale = "Taipei,Taiwan";
+  } else if (selectedCity === "London") {
+    locale = "London,UK";
+  } else if (selectedCity === "Stockholm") {
+    locale = "Stockholm,Sweden";
+  }
+  // Empty the forcast table so it won't stack
+  forecastTable.innerHTML = "";
+
+  // Update the urls and reload the info
+  URL = `${BASE_URL}${weatherData}?q=${locale}&units=${units}&APPID=${API_KEY}`;
+  forecastURL = `${BASE_URL}${forecastData}?q=${locale}&units=${units}&APPID=${API_KEY}`;
+  displayInfo();
+});
