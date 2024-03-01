@@ -1,10 +1,11 @@
 const weatherContainer = document.getElementById('weather-container')
 const imgContainer = document.getElementById('img-container')
+const cityContainer = document.getElementById('city-container')
 
 const showWeather = () => {
-weatherContainer.innerHTML = `<h3>hello world<h3>`
-imgContainer.innerHTML = `<h3>hello world<h3>`
-console.log(weatherContainer.innerHTML)
+weatherContainer.innerHTML = `<p>hello world<p>`
+cityContainer.innerHTML = `<p>hello world<p>`
+console.log(imgContainer)
 
 }
 showWeather()

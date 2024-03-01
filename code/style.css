@@ -5,7 +5,7 @@
 --clr_text_blue: #164A68;
 --clr_bg_yellow: #F7E9B9;
 --clr_text_green: #2A5510;
-font-family: 'montserrat', sans-serif;
+font-family: 'Montserrat', sans-serif;
 }
 /*pink version - cloudy*/
 body{
@@ -38,13 +38,34 @@ h1{
 
 .weather-container{
     width: 100%;
+    margin-top: 1rem ;
+    margin-left: 1rem;
+    margin-bottom: 2rem;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    font-size: 15px;
 }
 
 .img-container{
     width: 50%;
+    margin-left: 1rem;
     display: flex;
     justify-content: flex-start;
+    
 
+}
+
+.city-container{
+    width: 100%;
+    margin-left: 1rem;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.sunglasses{
+    display: none;
+}
+
+.umbrella{
+    display: none;
 }
