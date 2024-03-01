@@ -4,10 +4,10 @@ const temSunTime = document.getElementById('temperature-sun-time')
 // const sunrise = document.getElementById('sunrise-time')
 // const sunset = document.getElementById('sunset-time')
 const remindImgText = document.getElementById('remind-img-text')
-const sevenDaysTemperature = document.getElementById('even-days-temperature')
+const fiveDaysTemperature = document.getElementById('five-days-temperature')
 
 //DOM create in JS
-// 1- left corner 
+// const dayOfTheWeek = document.createElement('li')
 
 
 
@@ -19,9 +19,7 @@ const weatherInfo = () => {
     .then(response => response.json())
     .then(data => {
         remindTestCityName(data)
-        
-        
-        
+        console.log(data)     
     })
 }
 weatherInfo()
@@ -90,27 +88,32 @@ const forecast = () => {
         return day.dt_txt.endsWith('12:00:00')
         }) 
         console.log(filteredTime)
+        console.log(filteredTime[0].dt)
         
+        // console.log(new Date(filteredTime[0].dt*1000).toLocaleDateString('en-US', {weekday:'short'})) --> Fri 
 
-        //new array: filteredTime
-        // filteredTime.forEach((day,index) => {
-        //     if (index<=4) {
-        //         let time = day.dt
-        //         let date = new Date(dayTime * 1000)
-        //         
-        //         console.log(dayOfTheWeek)
-        //     }
-            
-        // })
-         
-        //let date = new Date (dt*1000) -->date
-        //let dayOfTheWeek = date.toLocaleDateString('en-US', {weekday:'short'}) --> short writing for days
-        //if statement or switch for days and temp. 
+         //convert each day to a short name. print weather for next 4 days
+        filteredTime.forEach((day) => {
+            let fromSecond = day.dt * 1000
+            let currentDate = new Date(fromSecond)
+            let currentDay
+            currentDay = currentDate.toLocaleDateString('en-US', {weekday:'short'})    
+            console.log (currentDay) 
 
+            let fiveDaysWeather = Math.round(day.main.temp)
 
-
-    } )
-    .catch(error => console.log (error))
-}
+            fiveDaysTemperature.innerHTML += `
+            <li>${currentDay} ${fiveDaysWeather}</li>`
+            }) 
+        } 
+    // .catch(error => console.log (error))
+    )}
 forecast()
 
+// const weekDayForecast = (param) =>{
+//     let filteredTime = []
+//     filteredTime = [...param.list].filter(day=> {
+//         day.dt_txt.endsWith('12:00:00')
+//     })
+    
+// }
