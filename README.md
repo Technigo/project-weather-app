@@ -1,13 +1,12 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Wanted to build a simple and nice looking weather app for showing the local weather of my home town. Wanted it to be able to show todays weather and a 4-day forecast.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The weather data is fetched using an open weather API getting todays weather, time for sunrise and sunset, and a four day forecast for a specific city. The application is built using Javasqript and styled with CSS.
+Next step would be to add if/else-statements to be able to change the styling (colours etc.) depending on the fetched weather (sun, snow, rain etc.). Would also like to do a dropdown menu with a copuple of different cities to choose from or more advanced a search bar.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://gagnef-weather-app.netlify.app/
