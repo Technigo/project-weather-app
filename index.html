@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <link rel="stylesheet" href="./style.css" />
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-<div class="content-on-load" id="content-on-load">
-    loading weather..
-</div>
-<script src="./script.js" type="text/javascript"></script>
-</body>
+  <head>
+    <link rel="stylesheet" href="./style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="main" id="main">
+    <div class="search-container"><input class="search" id="searchbar" placeholder="Search for a city" type="text"><button id="search-btn" type="submit"><img src="./design3/search-icon.svg" id="search-icon" ref="search icon"></button>
+      </div>
+    <div class="main-container">
+      <div class="weather-now" id="weather-now">loading weather..</div>
+    <div class="forecast-container" id="forecast-container">
+    </div>
+    </div>
+    <script src="./script.js" type="text/javascript"></script>
+  </body>
 </html>
