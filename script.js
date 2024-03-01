@@ -19,13 +19,12 @@ const weatherInfo = () => {
     .then(response => response.json())
     .then(data => {
         remindTestCityName(data)
-        console.log (data)
+        
         
         
     })
 }
 weatherInfo()
-
 
 
 const remindTestCityName = (param) => {
@@ -70,4 +69,48 @@ const remindTestCityName = (param) => {
         <h3 id="remind-text">Oops... Something went wrong</h3>`
     }  
 }
+
+// weather-forecast-feature
+
+// const BASE_URL = 'http://api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key}'
+// const API_KEY = '0a3f5beba05e6db2d5da18ddf3283c92'
+// const city = 'Helsinki,Finland'
+// const units = 'metric'
+
+// const URL = `${BASE_URL}?${city}${units}${API_KEY}`
+
+const forecast = () => {
+    fetch ('http://api.openweathermap.org/data/2.5/forecast?q=Helsinki,Finland&units=metric&appid=0a3f5beba05e6db2d5da18ddf3283c92')
+    .then(response => response.json())
+    .then(data => {
+        //weather update from 12.00 every day
+        //[...data.list] print all the array of list (40 arrays) from the data was fetched
+        let filteredTime=[]
+        filteredTime = [...data.list].filter(day => {
+        return day.dt_txt.endsWith('12:00:00')
+        }) 
+        console.log(filteredTime)
+        
+
+        //new array: filteredTime
+        // filteredTime.forEach((day,index) => {
+        //     if (index<=4) {
+        //         let time = day.dt
+        //         let date = new Date(dayTime * 1000)
+        //         
+        //         console.log(dayOfTheWeek)
+        //     }
+            
+        // })
+         
+        //let date = new Date (dt*1000) -->date
+        //let dayOfTheWeek = date.toLocaleDateString('en-US', {weekday:'short'}) --> short writing for days
+        //if statement or switch for days and temp. 
+
+
+
+    } )
+    .catch(error => console.log (error))
+}
+forecast()
 
