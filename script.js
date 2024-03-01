@@ -6,7 +6,6 @@ const navContainer = document.getElementById('navContainer')
 const thunderAudio = document.getElementById('thunderAudio')
 const rainAudio = document.getElementById('rainAudio')
 const sunnyAudio = document.getElementById('sunnyAudio')
-
 //variables
 let currentDate
 let currentDay
@@ -16,18 +15,14 @@ let API_KEY = `1c745605f5cf52ece2c729289e47acc7`
 let lat = 47.3744489 //default
 let lon = 8.5410422 //default
 
-// need to create another HTML with the same method below ,maybe just a nice background with loading symble
-document.addEventListener('DOMContentLoaded', () => {
-  getLocation()
-})
-
 // added in HTML select and search bar
 navContainer.innerHTML = `  <label for="favoriteCities">Choose a city :</label>
 <select id="favoriteCities">
-<option  disabled selected value="city">City</option>
+  <option  disabled selected value="city">City</option>
   <option value="rome">Rome</option>
   <option value="london">London</option>
   <option value="new-york">New York</option>
+  <option value="cold-lake">Cold Lake</option>
 </select>
 <label for="searchCity">Search for a city :</label>
 <input type="text" id="searchCity" placeholder="Enter city name">
@@ -82,6 +77,10 @@ const getWeather = (lat, lon) => {
           case condition >= 200 && condition <= 232:
             document.body.style.backgroundColor = '#212f54'
             document.body.style.color = '#FFD43B'
+            controls.style.display = 'none'
+            document.getElementById('thunderAudio').controls = true
+            document.getElementById('rainAudio').controls = false
+            document.getElementById('sunnyAudio').controls = false
             body.classList.remove('snow-day')
             body.classList.remove('cloudy-day')
             weatherDescription.innerHTML = `<i class="fa-solid fa-bolt fa-xl" style="color: #FFD43B;"></i><h3> Hold onto your hats.<br> ${data.name} is facing some stormy weather today.</h3>`
@@ -92,6 +91,9 @@ const getWeather = (lat, lon) => {
           case condition >= 300 && condition <= 321:
             document.body.style.backgroundColor = '#e6638b'
             document.body.style.color = '#63E6BE'
+            document.getElementById('rainAudio').controls = false
+            document.getElementById('thunderAudio').controls = false
+            document.getElementById('sunnyAudio').controls = false
             body.classList.remove('snow-day')
             body.classList.remove('cloudy-day')
             weatherDescription.innerHTML = `<i class="fa-solid fa-cloud-rain fa-xl" style="color: #63E6BE;"></i><h3> Don't forget your raincoat.<br> ${data.name} is graced with a light drizzle today.</h3> `
@@ -101,6 +103,9 @@ const getWeather = (lat, lon) => {
           case condition >= 500 && condition <= 531:
             document.body.style.backgroundColor = '#BDE8FA'
             document.body.style.color = '#164A68'
+            document.getElementById('rainAudio').controls = true
+            document.getElementById('thunderAudio').controls = false
+            document.getElementById('sunnyAudio').controls = false
             body.classList.remove('snow-day')
             body.classList.remove('cloudy-day')
             weatherDescription.innerHTML = `<img src="./assets/noun_Umbrella_2030530.svg"><h3> Don't forget your umbrella. <br>It's wet in ${data.name} today.</h3> `
@@ -112,6 +117,9 @@ const getWeather = (lat, lon) => {
           case condition >= 600 && condition <= 622:
             document.body.style.backgroundColor = '#015C92'
             document.body.style.color = '#fcfcfc'
+            document.getElementById('rainAudio').controls = false
+            document.getElementById('thunderAudio').controls = false
+            document.getElementById('sunnyAudio').controls = false
             body.classList.add('snow-day')
             body.classList.remove('cloudy-day')
             weatherDescription.innerHTML = `<i class="fa-regular fa-snowflake fa-xl" style="color: #fcfcfc;"></i><h3> Put on your mittens. <br>${data.name} is looking quite enchanting today with its snowfall. </h3> `
@@ -121,6 +129,9 @@ const getWeather = (lat, lon) => {
           case condition >= 701 && condition <= 781:
             document.body.style.backgroundColor = '#fbfafe'
             document.body.style.color = '#B197FC'
+            document.getElementById('rainAudio').controls = false
+            document.getElementById('thunderAudio').controls = false
+            document.getElementById('sunnyAudio').controls = false
             body.classList.remove('snow-day')
             body.classList.remove('cloudy-day')
             weatherDescription.innerHTML = `<i class="fa-solid fa-smog fa-xl" style="color: #B197FC;"></i><h3> Navigate through the mist.<br> ${data.name} is draped in a mysterious haze today. </h3> `
@@ -132,6 +143,9 @@ const getWeather = (lat, lon) => {
             document.body.style.color = '#2A5510'
             body.classList.remove('snow-day')
             body.classList.remove('cloudy-day')
+            document.getElementById('sunnyAudio').controls = true
+            document.getElementById('rainAudio').controls = false
+            document.getElementById('thunderAudio').controls = false
             weatherDescription.innerHTML = `<img src="./assets/noun_Sunglasses_2055147.svg"><h3> Get your sunnies on.<br> ${data.name} is looking rather great today. </h3>`
             sunnyAudio.play()
             break
@@ -140,6 +154,9 @@ const getWeather = (lat, lon) => {
           case condition >= 801 && condition <= 804:
             document.body.style.backgroundColor = 'white'
             document.body.style.color = '#F47775'
+            document.getElementById('rainAudio').controls = false
+            document.getElementById('thunderAudio').controls = false
+            document.getElementById('sunnyAudio').controls = false
             body.classList.add('cloudy-day')
             body.classList.remove('snow-day')
             weatherDescription.innerHTML = `<img src="./assets/noun_Cloud_1188486.svg"><h3> Light a fire and get cozy.

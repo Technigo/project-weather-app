@@ -79,6 +79,10 @@ input {
 input::placeholder {
   color: inherit;
 }
+audio {
+  margin-top: 10px;
+  width: 300px;
+}
 
 @media (min-width: 669px) and (max-width: 1024px) {
   .forecast-list {
@@ -86,9 +90,13 @@ input::placeholder {
     justify-content: center;
     width: calc(100% - 100px);
   }
+
   .nav-container {
     display: flex;
     flex-direction: row;
+  }
+  audio {
+    width: 500px;
   }
 }
 @media (min-width: 1025px) {
@@ -100,6 +108,9 @@ input::placeholder {
   .nav-container {
     display: flex;
     flex-direction: row;
+  }
+  audio {
+    width: 600px;
   }
 }
 

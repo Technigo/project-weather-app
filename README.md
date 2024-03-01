@@ -1,6 +1,6 @@
 # Weather App
 
-I've created a meteo app which display actual weather conditions and forecast for the following 4 days. My app use geolocation and different styling based on weather.
+I've created a meteo app which display actual weather conditions and forecast for the following 4 days. My app use geolocation and different styling/audio effects based on weather.
 
 ## The problem
 
