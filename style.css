@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Montserrat;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+#temperature-sun-time {
+    display: flex;
+    flex-direction: column;
+    font-weight: 400;
+    font-size: 21px;
+
+
+}

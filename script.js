@@ -7,11 +7,10 @@ const remindImgText = document.getElementById('remind-img-text')
 const fiveDaysTemperature = document.getElementById('five-days-temperature')
 
 //DOM create in JS
-// const dayOfTheWeek = document.createElement('li')
 
-
-
-
+//style.css
+const styleElement = document.createElement('style')
+document.head.appendChild(styleElement)
 
 //fetch API, weather in Helsinki
 const weatherInfo = () => {
@@ -48,6 +47,8 @@ const remindTestCityName = (param) => {
         <p> Sunset ${hoursSunset}</p>`
         remindImgText.innerHTML = `
         <h3 id="remind-text">Get your sunnies on. ${cityName} is looking rather great today.</h3>`
+        styleElement.sheet.insertRule('body {background-color: #F7E9B9; color: #2A5510 }')
+        
     } else if (dayWeather === 'Rain' || dayWeather === 'Drizzle') {
         temSunTime.innerHTML = `
         <P> ${description} | ${temperature}</p>
@@ -55,6 +56,7 @@ const remindTestCityName = (param) => {
         <p> Sunset ${hoursSunset}</p>`
         remindImgText.innerHTML = `
         <h3 id="remind-text">Don't forget your umbrella. It's wet in ${cityName} today.</h3>`
+        styleElement.sheet.insertRule('body {background-color: #BDE8FA; color: #164A68}')
     } else if (dayWeather === 'Clouds') {
         temSunTime.innerHTML = `
         <P> ${description} | ${temperature}</p>
@@ -62,6 +64,7 @@ const remindTestCityName = (param) => {
         <p> Sunset ${hoursSunset}</p>`
         remindImgText.innerHTML = `
         <h3 id="remind-text">Light a fire and get cosy. ${cityName} is looking grey today.</h3>`
+        styleElement.sheet.insertRule('body {background-color: #F4F7F8; color: #F47775}')
     } else {
         remindImgText.innerHTML = `
         <h3 id="remind-text">Oops... Something went wrong</h3>`
@@ -69,6 +72,9 @@ const remindTestCityName = (param) => {
 }
 
 // weather-forecast-feature
+
+
+
 
 // const BASE_URL = 'http://api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key}'
 // const API_KEY = '0a3f5beba05e6db2d5da18ddf3283c92'
@@ -104,6 +110,7 @@ const forecast = () => {
 
             fiveDaysTemperature.innerHTML += `
             <li>${currentDay} ${fiveDaysWeather}</li>`
+            styleElement.sheet.insertRule('li {list-style-type: none}')
             }) 
         } 
     // .catch(error => console.log (error))
