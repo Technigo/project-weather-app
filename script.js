@@ -100,7 +100,7 @@ const fetchWeatherForecastAPI = () =>
           const date = new Date(timestamp);
           const dayOfWeek = date.toLocaleString("en-US", { weekday: "long" }); // Get day of the week
           const weatherIconCode = item.weather[0].icon; // Get the icon code
-          const iconUrl = `http://openweathermap.org/img/wn/${weatherIconCode}.png`; // Construct the icon URL
+          const iconUrl = `https://openweathermap.org/img/wn/${weatherIconCode}.png`; // Construct the icon URL
           const temperature = item.main.temp.toFixed(0); // Get temperature from main object
           return {
             dayOfWeek,
