@@ -1,3 +1,4 @@
+
 //API
 const BASE_URL = 'https://api.openweathermap.org/data/2.5/'
 const API_KEY = '1e48fdf267ccc8ee33c1c78150dcbab1'
@@ -10,12 +11,12 @@ const weatherContainer = document.getElementById('weather-container')
 const imgContainer = document.getElementById('img-container')
 const cityContainer = document.getElementById('city-container')
 const forecastContainer = document.getElementById('forecast-container')
+
 const errorDiv = document.getElementById('error')
 const handleTemp = document.getElementById('temperature')
 const handleName = document.getElementById('city-name')
 const weatherDescription = document.getElementById('weather-description')
 
-//Fetching the API
 //Fetching the API
 const fetchWeather = () => {
 	fetch(
