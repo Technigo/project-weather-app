@@ -38,6 +38,11 @@ hr {
   margin: 0 5px 0 5px;
 }
 
+.error-container {
+  margin-top: 30px;
+  margin-left: 40px;
+}
+
 .weather-today-section1 {
   display: flex;
 }
@@ -75,10 +80,16 @@ hr {
 }
 
 /* Media Queries */
-/* Tablet (601-1023px */
+/* Tablet (601-1023px) */
 @media screen and (min-width: 601px) {
   h2 {
     text-align: center;
+  }
+
+  .error-container {
+    text-align: center;
+    margin-top: 30px;
+    margin-left: 0px;
   }
 
   .weather-today-section1 {
