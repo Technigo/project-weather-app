@@ -1,11 +1,7 @@
-//https://api.openweathermap.org/data/2.5/weather?q=Zurich,Switzerland&units=metric&appid=b34ca1ebc43d2420cd2a70a7d29aa6c4
-
-//https://api.openweathermap.org/data/2.5/forecast?q=Zurich,Switzerland&units=metric&appid=b34ca1ebc43d2420cd2a70a7d29aa6c4
-
 // Building the URL
 const BASE_URL = "https://api.openweathermap.org/data/2.5/";
 const API_KEY = "b34ca1ebc43d2420cd2a70a7d29aa6c4";
-const place = "Zurich,Switzerland";
+const place = "Zurich";
 const units = "units=metric";
 const dataWeather = "weather";
 const dataForecast = "forecast";
@@ -21,27 +17,36 @@ const sun = document.getElementById("sun");
 const img = document.getElementById("img");
 const dates = document.getElementById("dates");
 const temp = document.getElementById("temp");
+
+// Global Variable
 let styleMainWeather;
 
-// Everything with the Weather URL
+////////// Everything with the Weather URL/////////
+// Changing the HTML with the data of the API
 const changeWeather = (json) => {
   const sunriseEpoch = json.sys.sunrise;
   const sunriseHuman = new Date(sunriseEpoch * 1000);
-  const sunriseHours = sunriseHuman.getHours().toString().padStart(2, "0");
-  const sunriseMinutes = sunriseHuman.getMinutes().toString().padStart(2, "0");
+  const sunriseLocal = sunriseHuman.toLocaleTimeString(undefined, {
+    timeZone: "Europe/Zurich",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 
   const sunsetEpoch = json.sys.sunset;
   const sunsetHuman = new Date(sunsetEpoch * 1000);
-  const sunsetHours = sunsetHuman.getHours().toString().padStart(2, "0");
-  const sunsetMinutes = sunsetHuman.getMinutes().toString().padStart(2, "0");
-
+  const sunsetLocal = sunsetHuman.toLocaleTimeString(undefined, {
+    timeZone: "Europe/Zurich",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
   styleMainWeather = json.weather[0].main;
   mainWeather.innerHTML = `${styleMainWeather} | ${json.main.temp.toFixed(1)}°`;
   sun.innerHTML = `
-    sunrise ${sunriseHours}.${sunriseMinutes} <br>
-    sunset ${sunsetHours}.${sunsetMinutes}`;
+    sunrise ${sunriseLocal} <br>
+    sunset ${sunsetLocal}`;
 };
 
+// Fetching the Data from the Weather Endpoint
 const fetchWeather = () => {
   fetch(URLWeather)
     .then((response) => {
@@ -61,7 +66,8 @@ const fetchWeather = () => {
 
 fetchWeather();
 
-// Everything with the Forecast URL
+////////// Everything with the Forecast URL //////////
+// Changing the HTML with the data of the API
 const changeForecast = (json) => {
   const dateEpoch = [];
   const weekdays = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
@@ -85,6 +91,7 @@ const changeForecast = (json) => {
   });
 };
 
+// Fetching the Data from the Forecast Endpoint
 const fetchForecast = () => {
   fetch(URLForecast)
     .then((response) => {
@@ -101,8 +108,8 @@ const fetchForecast = () => {
 
 fetchForecast();
 
-// Change Styling depending on Weather
-
+////////Change Styling depending on Weather/////////
+// Add different Class
 const changeStyle = (styleMainWeather) => {
   const list = document.querySelectorAll(".list-style");
   if (styleMainWeather === "Clear") {
@@ -163,6 +170,7 @@ const changeStyle = (styleMainWeather) => {
   }
 };
 
+// Change the text depending on the class
 const changeTitle = (json, title) => {
   if (title.classList.contains("clear")) {
     title.innerText = `Get your sunnies on. ${json.name} is looking rather great today.`;
@@ -177,6 +185,7 @@ const changeTitle = (json, title) => {
   }
 };
 
+// Change the Img depending on the class
 const changeImg = (img) => {
   if (img.classList.contains("clear")) {
     img.src = "/design/design2/icons/noun_Sunglasses_2055147.png";
