@@ -19,16 +19,23 @@ body {
 /*Styling for search section*/
 .search-bar {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   padding: 20px 20px 0 20px;
 }
 
+::placeholder {
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+}
+
 .city-search {
-  opacity: 0.5;
+  opacity: 0.25;
   border-radius: 30px;
   overflow: hidden;
   border: none;
-  padding: 5px;
+  padding: 10px;
 }
 
 /*Styling for upper section*/

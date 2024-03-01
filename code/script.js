@@ -5,7 +5,6 @@ const weather = document.getElementById("weather")
 const sunriseElement = document.getElementById("sunrise")
 const sunsetElement = document.getElementById("sunset")
 const forecastContainer = document.getElementById("forecast-container")
-const date = document.getElementById("date")
 const citySearchInput = document.getElementById("city-search-input")
 const searchForm = document.getElementById("search-form")
 
@@ -16,11 +15,6 @@ const API_KEY = "206e380881feb4fbbb5f8d99cb75f06d" //query param
 let cityName = "Stockholm" //path param
 const forecastURL =
   "https://api.openweathermap.org/data/2.5/forecast?units=metric&q="
-
-////////// Get time + date and display in app //////////
-const currentDate = new Date().toLocaleDateString()
-const currentTime = new Date().toLocaleTimeString()
-date.innerHTML = `${currentDate} ${currentTime}`
 
 ////////// Function to fetch API data //////////
 const fetchWeatherData = (cityName) => {
