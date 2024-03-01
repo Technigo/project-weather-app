@@ -133,7 +133,7 @@ body {
   padding: 1rem;
   border-radius: 50px;
   display: grid;
-  grid-template-columns: 3fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr;
   z-index: 0;
 }
 
