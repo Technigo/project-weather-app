@@ -24,11 +24,9 @@ header>p {
 }
 
 main {
-    margin-left: 40px;
-    display: flex;
-    flex-direction: column;
+    margin: 0 40px;
     width: 80%;
-    height: 360px;
+    min-height: 360px;  
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -40,8 +38,9 @@ main>img {
 
 h1 {
     font-weight: 700;
-    font-size: 37px;
-    margin: 23px 0px;
+    font-size: 1.5rem;
+    margin-top: 23px;
+    text-align: left;
 }
 
 #container {
@@ -57,8 +56,8 @@ h1 {
 }
 
 #container p{
-    margin: 0px;
-    padding: 2px 0px; 
+    margin: 0;
+    padding: 2px 0; 
 }
 
 .blue-rainy{
@@ -86,11 +85,14 @@ h1 {
     header {
         grid-column: span 2;
     }
+    main {
+        grid-row-start: 2;
+    }
     #container{
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
-        height: 360px;
-        padding-bottom: 30px;
+        min-height: 360px;
+        padding-bottom: 25px;
     }
 }
