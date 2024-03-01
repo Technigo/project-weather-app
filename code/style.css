@@ -7,15 +7,12 @@
 --clr_text_green: #2A5510;
 font-family: 'montserrat', sans-serif;
 }
-
-/*pink version*/
+/*pink version - cloudy*/
 body{
     background-color: var(--clr_bg_pink);
-    color: var(--clr_text_pink);
-    
+    color: var(--clr_text_pink); 
 }
-
-/*blue version
+/*blue version - rain
 body{
     background-color: var(--clr_bg_blue);
     color: var(--clr_text_blue);
@@ -23,7 +20,7 @@ body{
 }
 */
 
-/*yellow/green version
+/*yellow/green version - sunny
 body{
     background-color: var(--clr_bg_yellow);
     color: var(--clr_text_green);
@@ -37,4 +34,10 @@ h1{
     flex-flow: row wrap;
     text-align: center;
     font-size: 20em;
+}
+
+.weather-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
