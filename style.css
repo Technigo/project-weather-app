@@ -1,10 +1,10 @@
-* {
-  box-sizing: border-box;
-}
-
-body {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+
 }
 
 :root {
@@ -41,7 +41,7 @@ body {
 h1 {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 900;
+  font-weight: 600;
 }
 
 h1.sunny::before {
