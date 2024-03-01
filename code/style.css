@@ -41,7 +41,7 @@ body {
 /*Styling for upper section*/
 .upper-section {
   color: white;
-  background-image: url("./assets/clear-day.jpg");
+  background-image: url("./assets/day-cloud.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   border-bottom-left-radius: 200px 40px;
@@ -91,7 +91,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  padding-top: 55px;
+  padding-top: 70px;
 }
 
 .day-container {
