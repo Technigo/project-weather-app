@@ -147,7 +147,7 @@ Keeping the same style and dimensions as iPhone XR*/
 }
 
 /*Media query for viewports smaller than iPhone XR (<414px)*/
-@media (max-width: 400px) {
+@media (max-width: 413px) {
   .container {
     display: flex;
     align-items: center;
@@ -157,7 +157,51 @@ Keeping the same style and dimensions as iPhone XR*/
   }
 
   .upper-text {
-    padding-top: 20px;
+    padding-top: 65px;
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+  }
+
+  .temperature {
+    font-size: 97px;
+  }
+
+  .celsius {
+    font-size: 26px;
+  }
+
+  .city {
+    font-size: 28px;
+  }
+
+  .weather {
+    font-size: 18px;
+  }
+
+  .sun-text {
+    font-size: 18px;
+  }
+
+  .forecast-container {
+    padding-top: 40px;
+  }
+}
+
+/*Media query for viewports smaller than iPhone 13 (<390)*/
+@media (max-width: 389px) {
+  .container {
+    display: flex;
+    align-items: center;
+  }
+  .app-container {
+    width: 100%;
+  }
+
+  .upper-text {
+    padding-top: 30px;
   }
 
   .container {
@@ -175,6 +219,10 @@ Keeping the same style and dimensions as iPhone XR*/
 
   .city {
     font-size: 24px;
+  }
+
+  .weather {
+    font-size: 15px;
   }
 
   .sun-text {

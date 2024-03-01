@@ -172,7 +172,7 @@ searchForm.addEventListener("submit", (event) => {
     //Fetch weather data and forecast for new city
     fetchWeatherData(cityName)
     fetchWeatherForecast(cityName)
-    //clear the input
+    //Clear the input after user presses enter
     citySearchInput.value = ""
   }
 })
