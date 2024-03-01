@@ -51,7 +51,7 @@ const ShowTodayWeather =()=>{
 
         //Show the time for sunrise and sunset in a readable time format
         let sunRiseDate = new Date(json.sys.sunrise * 1000)
-        let sunRiseTime = sunRiseDate.getHours() + ":" +sunRiseDate.getMinutes() + ":" + sunRiseDate.getDay()
+        let sunRiseTime = sunRiseDate.getHours() + ":" +sunRiseDate.getMinutes() 
         sunrise.innerHTML =`sunrise: `+ sunRiseTime
 
         let sunSetDate = new Date(json.sys.sunset * 1000)
@@ -76,32 +76,94 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
     })
     .then((json)=>{
         console.log(json)
+        //weather forecast function
         const predictWeather=()=>{
-            allWeather.innerHTML = '';
+            allWeather.innerHTML = ``
             let array = json.list
-
+            console.log(array)
+            // Initial value from first item of the array
             let previousDay = -1
+            let minTempPerDay = 1000
+            let maxTempPerDay = -1000
+            // Result
+            // An example: 
+            // type MyTempArray = [
+            // {
+            //    day: 0,
+            //    min_temp: 3.6,
+            //    max_temp: 8.2,
+            //    weather: 'cloud'
+            // },
+            // {
+            //    day: 1,
+            //    min_temp: 2.6,
+            //    max_temp: 9.9,
+            //    weather: 'sun'
+            // }
+            // ]
+            let myTempArray = []
+
+            
             array.forEach(el => {
-                let myDate = new Date(el.dt * 1000)
-                let myDay = myDate.getDay()
-                let myDayName = dayNames[myDay]
+                const myDate = new Date(el.dt * 1000)
+                const myDay = myDate.getDay()
+                const minTemp = el.main.temp_min
+                const maxTemp = el.main.temp_max
+                if(myDay!==previousDay){
+                    minTempPerDay = minTemp
+                    maxTempPerDay = maxTemp
+                    const item = {
+                        day: myDay,
+                        min_temp: minTemp,
+                        max_temp: maxTemp
+                    }
+                    myTempArray.push(item)
+                    previousDay = myDay              
+                } else {
+                    // Compare the new minTemp with the minTempPerDay
+                    if (minTemp < minTempPerDay){
+                        minTempPerDay = minTemp
+
+                        const foundItem = myTempArray.find(i => i.day === myDay)
+                        foundItem.min_temp = minTemp
+                    } 
+                    if(maxTemp > maxTempPerDay){
+                        maxTempPerDay = maxTemp
+
+                        const foundItem = myTempArray.find(i => i.day === myDay)
+                        foundItem.max_temp = maxTemp
+
+                    }
+                    
+                } 
+            })
+
+            console.log(myTempArray)
+
+            myTempArray.forEach(row => {
+                allWeather.innerHTML+=`
+                <div id="dayWeather">
+                    <div id="myDay">${dayNames[row.day]}</div>
+                    <div id="mySymbol">${row.weather}</div>   
+                    <div id="myTemp">${row.min_temp} °C / ${row.max_temp} °C </div>   
+                </div>                  
+            `  
+
+            }
+
+            )
+
                 
-                if(myDay !==previousDay){
-                    console.log(myDate)                    
-                    allWeather.innerHTML+=`
-                        <div id="dayWeather">${myDayName}</div>                    
-                    `
-                previousDay = myDay   
-                }
-            });
+            
+
+            
+
+        }
+        predictWeather();
+    })
             
         
-        
-        }    
-        predictWeather();
-        
-        
-    })
+
 
 
 

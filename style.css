@@ -49,25 +49,29 @@ body{
     width: 100%;
     bottom: 0vh;
     align-items: center;
-    justify-content: center;
+    justify-content: space-betweewn;
     display: flex;
     flex-direction: column;
     padding: 20px;
 }
 
-#dayWeather,
-#dayWeather2,
-#dayWeather3,
-#dayWeather4,
-#dayWeather5,
-#dayWeather6{
+#dayWeather{
     background-color: white;
     margin: 10px;
     width: 100%;
     align-items: center;
-    justify-content: center;
-    height: 16%;
-    padding: 10px 20px;
+    justify-content: space-between;
+    height: 29%;
+    padding: 2px 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+#myDay,
+#mySymbol,
+#myTemp{
+    height: 10px;
+    padding: 2px 20px;
 }
 
 @media(min-width:667px) and (max-width:1024px){
