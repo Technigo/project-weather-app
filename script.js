@@ -28,37 +28,54 @@ const updateHTML = (data) => {
   `
 
   const weatherConditions = () => {
-    if (data.weather[0].main === "Clouds") {
-      message.innerHTML += `<div> 
-      <h1>Light a fire and get cozy. ${cityName} is looking grey today.</h1>
-      </div>`
-    } else if (data.weather[0].main === "Rain") {
+    if (data.weather[0].main === "Clear") {
       message.innerHTML += `<div>
-      <h1>Don't forget your umbrella. It's wet in ${cityName} today.</h1>
-      </div>`
-    } else if (data.weather[0].main === "Clear") {
-      message.innerHTML += `<div>
+      <img src ="design/design2/icons/noun_Sunglasses_2055147.svg"/>
       <h1>Get your sunnies on. ${cityName} is looking rather great today.</h1>
       </div>`
-    } 
+      document.body.style.backgroundColor = "#F7E9B9"
+      document.body.style.color = "#2A5510"
+    } else if (data.weather[0].main === "Rain") {
+      message.innerHTML += `<div>
+      <img src ="design/design2/icons/noun_Umbrella_2030530.svg"/>
+      <h1>Don't forget your umbrella. It's wet in ${cityName} today.</h1>
+      </div>` 
+      document.body.style.backgroundColor = "#A3DEF7"
+      document.body.style.color = "#164A68"
+    } else if (data.weather[0].main === "Clouds") {
+      message.innerHTML += `<div> 
+      <img src ="design/design2/icons/noun_Cloud_1188486.svg"/>
+      <h1>Light a fire and get cozy. ${cityName} is looking grey today.</h1>
+      </div>`
+      document.body.style.backgroundColor = "#F4F7F8"
+      document.body.style.color = "#F47775"
+    } else {
+      message.innerHTML += `<div>
+      <img src ="design/design2/icons/noun_Cloud_1188486.svg"/>
+      <h1>The weather in ${cityName} is unknown to me today. Need to add some more code.</h1>
+      </div>`
+      document.body.style.backgroundColor = "#F4F7F8"
+      document.body.style.color = "#164A68"
+    }
   }
 
   weatherConditions()
 }
 
-const updateHTMLforecast = (json) => {
-  const filteredForecast = json.list.filter((item) =>
+const updateHTMLforecast = (data) => {
+  const filterForecast = data.list.filter((item) =>
     item.dt_txt.includes("12:00")
   )
-  const tomorrow = new Date()
-  tomorrow.setDate(tomorrow.getDate() + 1)
-  for (let counter = 0; counter < 4; counter++) {
-    const day = filteredForecast[counter]
+  const today = new Date()
+  const tomorrow = new Date(today)
+  tomorrow.setDate(today.getDate() + 1)
+  for (let addDay = 0; addDay < 4; addDay++) {
+    const day = filterForecast[addDay]
     const date = new Date(tomorrow)
-    date.setDate(date.getDate() + counter)
+    date.setDate(date.getDate() + addDay)
     const weekdayName = date.toLocaleDateString(["en-GB"], { weekday: "short" })
-    const weekdayTemp = day.main.temp.toFixed(0)
     const weekdayDescription = day.weather[0].description
+    const weekdayTemp = day.main.temp.toFixed(0)
     forecast.innerHTML += `
     <div id="weeklyForecast">
     <p>${weekdayName}</p> 

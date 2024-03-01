@@ -1,23 +1,15 @@
 body {
     display: flex;
-    justify-content: center;
-    background: #F4F7F8;
     font-family: "Montserrat";
     margin: 20px;
   }
-  
-  h1 {
-    color: #F47775;
-    font-size: 50px;
-  }
-  
+
   .weatherToday {
-    color: #F47775;
     font-size: 20px;
   }
 
-  .forecast {
-    color: #F47775;
+  h1 {
+    font-size: 40px;
   }
 
   #weeklyForecast {
