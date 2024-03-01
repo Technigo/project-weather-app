@@ -12,21 +12,19 @@ body{
     background-color: var(--clr_bg_pink);
     color: var(--clr_text_pink); 
 }
-/*blue version - rain
+/* blue version - rain
 body{
     background-color: var(--clr_bg_blue);
     color: var(--clr_text_blue);
     
 }
-*/
 
-/*yellow/green version - sunny
-body{
+/* yellow/green version - sunny */
+/* body{
     background-color: var(--clr_bg_yellow);
     color: var(--clr_text_green);
 
-}
-*/
+} */ 
 
 h1{
     display: flex;
@@ -62,10 +60,25 @@ h1{
     justify-content: flex-start;
 }
 
+.forecast-container{
+    width: 100%;
+    margin-top: 1rem ;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 10%;
+    font-size: 15px; 
+}
+
 .sunglasses{
     display: none;
 }
 
 .umbrella{
     display: none;
+}
+
+.cloud{
+    display: flex
 }
