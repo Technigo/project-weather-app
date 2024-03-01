@@ -38,7 +38,7 @@ const fetchWeatherTodayAPI = () =>
     })
     .then((weatherTodayData) => {
       // Update DOM with city name
-      locationName.innerHTML = `<h1>${weatherTodayData.name}</h1>`;
+      locationName.innerHTML = `<h4>${weatherTodayData.name}</h4>`;
       console.log(weatherTodayData.name);
 
       // Update DOM with today's temperature
