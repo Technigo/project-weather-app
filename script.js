@@ -7,7 +7,6 @@ const menuBtn = document.getElementById("menu-btn");
 const menuClose = document.getElementById("close");
 const navWrapper = document.querySelector(".nav");
 const navItems = document.querySelectorAll(".nav-item");
-const navCities = document.querySelectorAll(".nav-city");
 const navGeo = document.querySelector(".geo");
 const searchInput = document.getElementById("location-search");
 const searchBtn = document.querySelector(".search-btn");
@@ -48,36 +47,13 @@ const setStyling = weatherData => {
 
 // convert to weekday
 const setWeekday = date => {
-  const day = new Date(date).getDay();
-  switch (day) {
-    case 1:
-      return "Mon";
-      break;
-    case 2:
-      return "Tue";
-      break;
-    case 3:
-      return "Wed";
-      break;
-    case 4:
-      return "Thu";
-      break;
-    case 5:
-      return "Fri";
-      break;
-    case 6:
-      return "Sat";
-      break;
-    default:
-      return "Sun";
-      break;
-  }
+  dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return dayNames[new Date(date).getDay()];
 };
 
 // Filter forecast, one entry per day
-const getNoons = forecastData => {
-  return forecastData.list.filter(obj => obj.dt_txt.includes("12:00"));
-};
+const getNoons = forecastData =>
+  forecastData.list.filter(obj => obj.dt_txt.includes("12:00"));
 
 // Convert milliseconds to readable time HH:MM, converted to local time
 const convertTime = (seconds, timezone) => {
@@ -111,7 +87,7 @@ const getMinTemp = (day, data) => {
 };
 
 // Print current weather to DOM
-const printWeather = async weatherData => {
+const printWeather = weatherData => {
   const sunriseTime = convertTime(weatherData.sunrise, weatherData.timezone);
   const sunsetTime = convertTime(weatherData.sunset, weatherData.timezone);
   const localTime = convertTime(Date.now() / 1000, weatherData.timezone);
@@ -151,7 +127,7 @@ const printWeather = async weatherData => {
 };
 
 // Print Forecast to DOM
-const printForecast = async forecastData => {
+const printForecast = forecastData => {
   const noons = getNoons(forecastData);
   weatherForecast.innerHTML = "";
   noons.forEach(obj => {
@@ -230,7 +206,7 @@ const fetchForecast = async (lat, lon) => {
 // fetch coordinates from Geocoding API
 const fetchGeocode = async location => {
   try {
-    const response = await fetch(
+    response = await fetch(
       `${API_URL}/geo/1.0/direct?q=${location}&limit=1&appid=${APP_ID}`
     );
     if (!response.ok) {

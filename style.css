@@ -76,7 +76,7 @@ button {
   left: 0;
   top: 0;
   background: white;
-  height: 100vh;
+  min-height: 100vh;
   width: fit-content;
   color: var(--forecast-text);
   box-shadow: var(--box-shadow);
