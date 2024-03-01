@@ -27,7 +27,7 @@
   margin: 0;
   display: flex;
   justify-content: center;
-  background-image: url("/design/design2/icons/weather-back.jpg");
+  background-image: url("./design/weather-back.jpg");
 }
 
 .container {

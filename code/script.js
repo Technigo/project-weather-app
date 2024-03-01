@@ -188,14 +188,14 @@ const changeTitle = (json, title) => {
 // Change the Img depending on the class
 const changeImg = (img) => {
   if (img.classList.contains("clear")) {
-    img.src = "/design/design2/icons/noun_Sunglasses_2055147.png";
+    img.src = "./design/noun_Sunglasses_2055147.png";
   } else if (img.classList.contains("clouds")) {
-    img.src = "/design/design2/icons/noun_Cloud_1188486.png";
+    img.src = "./design/noun_Cloud_1188486.png";
   } else if (img.classList.contains("rain")) {
-    img.src = "/design/design2/icons/noun_Umbrella_2030530.png";
+    img.src = "./design/noun_Umbrella_2030530.png";
   } else if (img.classList.contains("snow")) {
-    img.src = "/design/design2/icons/snow.png";
+    img.src = "./design/snow.png";
   } else if (img.classList.contains("default")) {
-    img.src = "/design/design2/icons/default.png";
+    img.src = "./design/default.png";
   }
 };
