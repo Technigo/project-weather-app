@@ -34,6 +34,7 @@
   flex-direction: column;
   min-height: 100vh;
 }
+
 .background-image {
   flex-grow: 1;
   background: linear-gradient(to bottom right, #8589FF, #E8E9FF);

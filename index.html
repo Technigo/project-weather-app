@@ -15,18 +15,22 @@
   <body>   
     <!--section for current weather, temp, city, sunrise, sunset-->
     <div class="wrapper" id="wrapper">
-      <div class="background-image" id="backgroundImage"></div>
-      <section class="current-weather" id="" currentWeather>
-        <h1 class="current-temp" id="currentTemp"></span></h1>
-        <p class="current-city" id="currentCity"></p>
-        <p class="current-weather" id="currentWeather"></p>
-        <p>
-          <span class="sunrise-sunset" id="sunriseSunset"></span>
-        </p>
+
+      <section class="current-weather" id="currentWeather">
+        
+        <h1 class="temp-weather" id="tempWeather"></h1>
+        <h1 class="sunrise" id="sunrise"></h1>
+        <h1 class="sunset" id="sunset"></h1>
+      </section>
+
+      <section class="image-container id="imageContainer">
+        <div class="svg-div" id="svgDiv"></div>
+        <div class="current-city" id="currentCity"></div>
       </section>
 
       <!--section for 4 day forcast-->
       <section class="four-day-forecast" id="fourDayForecast"></section>
+      
     </div>
     
     <script src="./script.js"></script>
