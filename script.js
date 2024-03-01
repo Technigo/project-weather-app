@@ -59,15 +59,17 @@ const updateHtml = (data) => {
 //Function that styles the background and colors to fit weather
 const styleAfterWeather = (weather, temp) => {
   if (weather === 'Clear' && temp >= 25) {
+    backgroundDiv.style.backgroundImage =
+    'url(./assets/hot.desktop.16.9.jpg)'
   } else if (weather === 'Clouds') {
     backgroundDiv.style.backgroundImage =
-      'url(./design3/cloudy.desktop.16.9.jpg)'
+      'url(./assets/cloudy.desktop.16.9.jpg)'
   } else if (weather === 'Rain') {
     backgroundDiv.style.backgroundImage =
-      'url(./design3/rainy.desktop.16.9.jpg)'
+      'url(./assets/rainy.desktop.16.9.jpg)'
   } else if (weather === 'Clear') {
     backgroundDiv.style.backgroundImage =
-      'url(./design3/sunny.desktop.16.9.jpg)'
+      'url(./assets/sunny.desktop.16.9.jpg)'
   }
 }
 
