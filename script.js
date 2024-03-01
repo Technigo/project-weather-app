@@ -61,69 +61,59 @@ const getPosition = () => {
   );
 };
 
-// fetch(
-//   `${baseURL}${weatherEndpoint}?q=Stockholm,Sweden&units=${queryUnits}&APPID=${apiKey}`
-// )
-
-const displayCurrentWeather = (callback, lat, lon) => {
+const displayCurrentWeather = (lat, lon) => {
   fetch(
     `${baseURL}${weatherEndpoint}?lat=${lat}&lon=${lon}&units=${queryUnits}&APPID=${apiKey}`
   )
-    .then(response => {
-      return response.json();
-    })
+    .then(response => response.json())
     .then(data => {
-      console.log(data);
-      city.innerText = data.name;
-      let sunsetTime = data.sys.sunset;
-      let sunriseTime = data.sys.sunrise;
-      const currentTime = data.dt;
-      console.log(sunsetTime);
-      console.log(sunriseTime);
-      console.log(currentTime);
-
-      // compare the current time with the sunset and sunrise time so as to adjust the image and background color
-      // if (currentTime > sunsetTime || currentTime < sunriseTime) {
-      //   weatherIcon.src = "./assets/night.png";
-      //   buttonIcon.src = "./assets/button-icon-night.png";
-      //   console.log(currentWeatherField.classList[1]);
-      //   currentWeatherField.classList.remove("morning");
-      //   currentWeatherField.classList.add("night");
-      // } else {
-      //   currentWeatherField.classList.remove("night");
-      //   currentWeatherField.classList.add("morning");
-      //   currentWeatherField.classList.forEach(x => console.log(x));
-      // }
-      // format sunset and sunrise time from unix time to e.g. 17:52
-      sunsetTime = formatUnixTime(sunsetTime);
-      sunriseTime = formatUnixTime(sunriseTime);
-      console.log(sunriseTime, sunsetTime);
-      sunrise.innerText = sunriseTime;
-      sunset.innerText = sunsetTime;
-      // round the temp to 1 decimal place
-      currentTemp.innerText = data.main.temp.toFixed(1);
-      // weatherDescription is in a format where the first letter is upper
-      let weatherDescription = data.weather[0].main;
-      currentWeatherCondition.innerText = weatherDescription;
-      // convert the weatherDescription to lower case to align with the property name of weatherConditions
-      weatherDescription = weatherDescription.toLowerCase();
-      weatherAdvice.textContent = weatherConditions[weatherDescription];
-      // remove all the existing class name for current weather field
-      currentWeatherField.className = "";
-      // add the weather condition class so the background reflects current weather
-      currentWeatherField.classList.add(weatherDescription);
-      weatherIcon.src = `./assets/${weatherDescription}.png`;
-      weatherIcon.style.display = "block";
-      console.log(sunsetTime, sunriseTime, city);
-      console.log(currentWeatherCondition);
+      return handleCurrentWeather(data);
     })
-    .then(() => {
-      return callback([lat, lon]);
+    .catch(err => {
+      console.log(err);
+    })
+    .finally(() => {
+      console.log("Finished loading current weather.");
     });
 };
 
 const capitalizeFirstLetter = str => {
   return str.charAt(0).toUpperCase() + str.slice(1);
+};
+
+const handleCurrentWeather = data => {
+  console.log(data);
+  city.innerText = data.name;
+  let sunsetTime = data.sys.sunset;
+  let sunriseTime = data.sys.sunrise;
+  console.log(sunsetTime);
+  console.log(sunriseTime);
+  sunsetTime = formatUnixTime(sunsetTime);
+  sunriseTime = formatUnixTime(sunriseTime);
+  console.log(sunriseTime, sunsetTime);
+  sunrise.innerText = sunriseTime;
+  sunset.innerText = sunsetTime;
+  // round the temp to 1 decimal place
+  currentTemp.innerText = data.main.temp.toFixed(1);
+  // weatherDescription is in a format where the first letter is upper
+  let weatherDescription = data.weather[0].main;
+  currentWeatherCondition.innerText = weatherDescription;
+  // convert the weatherDescription to lower case to align with the property name of weatherConditions
+  weatherDescription = weatherDescription.toLowerCase();
+  // atmosphere has multiple weather descriptions
+  if (!(weatherDescription in weatherConditions)) {
+    weatherDescription = "atmosphere";
+  }
+
+  weatherAdvice.textContent = weatherConditions[weatherDescription];
+  // remove all the existing class name for current weather field
+  currentWeatherField.className = "";
+  // add the weather condition class so the background reflects current weather
+  currentWeatherField.classList.add(weatherDescription);
+  weatherIcon.src = `./assets/${weatherDescription}.png`;
+  weatherIcon.style.display = "block";
+  console.log(sunsetTime, sunriseTime, city);
+  console.log(currentWeatherCondition);
 };
 
 const manipulateWeatherTable = weeklyWeather => {
@@ -212,25 +202,28 @@ const generateFourDaysWeather = (
 
 // Execution
 
-const asyncCurrentWeather = function (lat, lon) {
-  return new Promise(function (resolve) {
-    displayCurrentWeather(resolve, lat, lon);
-  });
-};
+let lat, lon;
+
+// const asyncCurrentWeather = function (lat, lon) {
+//   return new Promise(function (resolve) {
+//     displayCurrentWeather(resolve, lat, lon);
+//   });
+// };
 
 loader.style.display = "flex";
 getPosition()
   .then(pos => {
     console.log(pos.coords);
-    const { latitude: lat, longitude: lon } = pos.coords;
-    return [lat, lon];
+    ({ latitude: lat, longitude: lon } = pos.coords);
   })
-  .then(data => {
-    return asyncCurrentWeather(data[0], data[1]);
+  .then(() => {
+    console.log("Start processing the current weather");
+    return displayCurrentWeather(lat, lon);
   })
   .then(res => {
     console.log(res);
-    displayWeatherForecast(res[0], res[1]);
+    console.log("Start processing the forcast");
+    return displayWeatherForecast(lat, lon);
   })
   .then(() => {
     console.log("finish loading weather forecast");
@@ -245,3 +238,21 @@ getPosition()
       weatherAdviceContainer.classList.toggle("show-quote");
     });
   });
+
+// const currentTime = data.dt;
+
+// console.log(currentTime);
+
+// compare the current time with the sunset and sunrise time so as to adjust the image and background color
+// if (currentTime > sunsetTime || currentTime < sunriseTime) {
+//   weatherIcon.src = "./assets/night.png";
+//   buttonIcon.src = "./assets/button-icon-night.png";
+//   console.log(currentWeatherField.classList[1]);
+//   currentWeatherField.classList.remove("morning");
+//   currentWeatherField.classList.add("night");
+// } else {
+//   currentWeatherField.classList.remove("night");
+//   currentWeatherField.classList.add("morning");
+//   currentWeatherField.classList.forEach(x => console.log(x));
+// }
+// format sunset and sunrise time from unix time to e.g. 17:52
