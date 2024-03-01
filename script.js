@@ -28,7 +28,7 @@ const getData = (city) => {
 }
 
 //default city when loading website
-getData('stockholm')
+getData('dakar')
 
 //Function to update HTML with forecast
 const updateHtml = (data) => {
