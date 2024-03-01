@@ -7,6 +7,8 @@ const sunsetElement = document.getElementById("sunset")
 const forecastContainer = document.getElementById("forecast-container")
 const citySearchInput = document.getElementById("city-search-input")
 const searchForm = document.getElementById("search-form")
+const sunText = document.getElementById("sun-text")
+const celsius = document.getElementById("celsius")
 
 ////////// API URL storing //////////
 const BASE_URL =
@@ -19,7 +21,12 @@ const forecastURL =
 ////////// Function to fetch API data //////////
 const fetchWeatherData = (cityName) => {
   fetch(`${BASE_URL}${cityName}&appid=${API_KEY}`)
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Failed to fetch weather data")
+      }
+      return response.json()
+    })
     .then((json) => {
       //One decimal as per instructions
       const temp = json.main.temp.toFixed(1)
@@ -74,6 +81,18 @@ const fetchWeatherData = (cityName) => {
 
       //End of fetchWeatherData function
     })
+  /*.catch((error) => {
+      console.error("Error fetching weather data:", error)
+      weather.innerHTML =
+        "<p>Error fetching weather data. Please try again later.</p>"
+      temperature.innerHTML = ""
+      city.innerHTML = ""
+      sunriseElement.innerHTML = ""
+      sunsetElement.innerHTML = ""
+      celsius.innerHTML = ""
+      sunText.innerHTML = ""
+      searchForm.innerHTML = ""
+    })*/
 }
 
 fetchWeatherData(cityName)
@@ -82,7 +101,12 @@ fetchWeatherData(cityName)
 
 const fetchWeatherForecast = (cityName) => {
   fetch(`${forecastURL}${cityName}&appid=${API_KEY}`)
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Failed to fetch weather forecast")
+      }
+      return response.json()
+    })
     .then((json) => {
       //Extract today's index
       const todayIndex = new Date(json.list[0].dt_txt).getDay()
@@ -159,6 +183,11 @@ const fetchWeatherForecast = (cityName) => {
         `
       }
     })
+  /* .catch((error) => {
+      console.error("Error fetching weather forecast:", error)
+      forecastContainer.innerHTML =
+        "<p>Error fetching weather forecast. Please try again later.</p>"
+    })*/
 }
 fetchWeatherForecast(cityName)
 
