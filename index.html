@@ -11,7 +11,7 @@
     <title>Weather Smeather app</title>
   </head>
   <body>
-    <div class="container">
+    <div class="container animation" id="sky-container">
       <img id="hamburger-menu" src="assets/hamburger.png" alt="" />
       <img id="weather-image" src="assets/partially.png" alt="" />
 
@@ -24,13 +24,14 @@
         <div class="current"><h3>sunset:</h3></div>
         <div class="current" id="sunset"></div>
       </div>
-      <div class="button-container">
-        <div class="animation-button">
+      <div class="button-container animation" id="button-container">
+        <a id="forecast-button">
           <div id="arrow"></div>
-        </div>
+        </a>
       </div>
-      <div id="forecast"></div>
     </div>
+    <div id="forecast" class="animate hidden"></div>
+
     <script src="script.js"></script>
   </body>
 </html>

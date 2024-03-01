@@ -18,8 +18,12 @@ const temp = document.getElementById("temp");
 const description = document.getElementById("description");
 const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
-const animationButton = document.getElementById("animation-button");
+const buttonContainer = document.getElementById("button-container");
+const forecastButton = document.getElementById("forecast-button");
 const forecast = document.getElementById("forecast");
+const skyContainer = document.getElementById("sky-container");
+
+skyContainer.classList.remove("animation-active");
 
 const fetchWeather = () => {
   fetch(URL)
@@ -66,7 +70,6 @@ const fetchForecast = () => {
     .catch((error) => console.log("Caught error:", error));
 };*/
 
-
 const fetchForecast = () => {
   fetch(FORECAST_URL)
     .then((response) => response.json())
@@ -111,7 +114,7 @@ const fetchForecast = () => {
       arr.map((item) => item.main[attr])
     );
   }
-}
+};
 fetchForecast();
 
 // Clean up the date to the 24h numbers with just hours and minutes.
@@ -138,7 +141,20 @@ const chooseImage = (weather) => {};
 const checkMoon = (sunrise, sunset) => {};
 
 // Toggle forecast
-const toggleForecast = () => {};
+const toggleForecast = () => {
+  if (skyContainer.classList.contains("animation-active")) {
+    skyContainer.classList.remove("animation-active");
+    buttonContainer.classList.remove("transition-active");
+    forecast.classList.remove("hidden");
+  } else {
+    skyContainer.classList.add("animation-active");
+    buttonContainer.classList.add("transition-active");
+    forecast.classList.add("hidden");
+  }
+  console.log("toggleForecast");
+};
 
 // Eventlisteners
-//animationButton.addEventListener("click", toggelForecast())
+forecastButton.addEventListener("click", (e) => {
+  toggleForecast();
+});
