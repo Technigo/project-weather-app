@@ -59,7 +59,7 @@ const iconArr = [
   },
   {
     name: "snowIcon",
-    svg: `<svg fill="#000000" height="73" width="73" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+    svg: `<svg fill="#fff" height="73" width="73" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
   viewBox="0 0 512 512" xml:space="preserve">
   <g transform="translate(0 1)">
   <g>
@@ -105,7 +105,7 @@ const iconArr = [
   },
   {
     name: "drizzleIcon",
-    svg: `<svg fill="#000000" height="73" width="73" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+    svg: `<svg fill="#004f22" height="73" width="73" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
     viewBox="0 0 512 512" xml:space="preserve">
     <g>
     <g>
@@ -174,7 +174,7 @@ const iconArr = [
   },
   {
     name: "otherIcon",
-    svg: `<svg fill="#000000" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+    svg: `<svg fill="#fffc9c" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
     width="73px" height="73px" viewBox="0 0 482.732 482.732"
     xml:space="preserve">
  <g>
@@ -210,6 +210,8 @@ const iconArr = [
   },
 ];
 let currentDt = null;
+let currentWeather = null;
+const body = document.body;
 
 //fetch today's weather
 //and trigger displayDailyWeather + getSunTime(weatherData)
@@ -252,62 +254,62 @@ const getTip = (description) => {
   let tip = null;
   let weatherDescription = null;
   let icon = null;
-  // let icon1;
-  // let icon2;
-  // let icon3;
-  // let icon4;
-  // let icon5;
-  // let icon6;
 
   switch (description) {
     case "Clear":
       tip = "Get your sunnies on.";
       weatherDescription = "Gothenburg is looking rather great today.";
       icon = iconArr[0].svg;
-
+      currentWeather = "Clear";
+      body.classList.add("clearTheme");
       break;
 
     case "Clouds":
       tip = "Light a fire and get cosy.";
       weatherDescription = "Gothenburg might look grey today.";
       icon = iconArr[1].svg;
+      currentWeather = "Clouds";
+      body.classList.add("cloudsTheme");
       break;
 
     case "Rain":
       tip = "Don't forget your umbrella.";
       weatherDescription = "It can get wet in Gothenburg today.";
       icon = iconArr[2].svg;
+      currentWeather = "Rain";
+      body.classList.add("rainTheme");
       break;
 
     case "Snow":
       tip = "Bundle up and stay warm.";
-      weatherDescription = "Expect snowfall in Gothenburg today.";
+      weatherDescription = "Snow falls in Gothenburg today.";
       icon = iconArr[3].svg;
+      currentWeather = "Snow";
+      body.classList.add("snowTheme");
       break;
 
     case "Drizzle":
-      tip = "Bring your raincoat for light showers.";
+      tip = "Bring your raincoat.";
       weatherDescription = "Gothenburg might feel damp today.";
       icon = iconArr[4].svg;
+      currentWeather = "Drizzle";
+      body.classList.add("drizzleTheme");
       break;
 
     case "Thunderstorm":
       tip = "Stay indoors and be safe.";
-      weatherDescription = "Gothenburg is in for a dramatic show today.";
+      weatherDescription = "A dramatic show in Gothenburg today.";
       icon = iconArr[5].svg;
-
+      currentWeather = "Thunderstorm";
+      body.classList.add("thunderstormTheme");
       break;
 
     default:
       tip = "Slow down, use fog lights.";
-      weatherDescription = "Visibility dial turned down in Gothenburg";
+      weatherDescription = "Visibility dial turned down in Gothenburg.";
       icon = iconArr[6].svg;
-    // icon1 = clearIcon;
-    // icon2 = cloudsIcon;
-    // icon3 = drizzleIcon;
-    // icon4 = snowIcon;
-    // icon5 = rainIcon;
-    // icon6 = thunderstormIcon;
+      currentWeather = "Other";
+      body.classList.add("otherTheme");
   }
 
   document.querySelector(".tip-text").innerText = `${tip}`;
@@ -315,15 +317,10 @@ const getTip = (description) => {
     ".weather-description"
   ).innerText = `${weatherDescription}`;
   document.querySelector(".tip-icon").innerHTML += icon;
-  // document.querySelector(".tip-icon").innerHTML += icon1;
-  // document.querySelector(".tip-icon").innerHTML += icon2;
-  // document.querySelector(".tip-icon").innerHTML += icon3;
-  // document.querySelector(".tip-icon").innerHTML += icon4;
-  // document.querySelector(".tip-icon").innerHTML += icon5;
-  // document.querySelector(".tip-icon").innerHTML += icon6;
 };
 
 const getSunTime = (weatherData) => {
+  //deconstruct the sunrise/set data from weatherData
   const { sunrise } = weatherData.sys;
   const { sunset } = weatherData.sys;
 
@@ -331,19 +328,16 @@ const getSunTime = (weatherData) => {
   const sunriseData = new Date(sunrise * 1000);
   const sunsetData = new Date(sunset * 1000);
 
-  //extract the excat time of the day
+  //extract the exact time of the day by converting to local time
+  //to prevent winter/summer time problem
   const formatTime = (date) => {
-    const hours = date.getUTCHours();
-    const minutes = date.getUTCMinutes();
-    const formattedMinutes = String(minutes).padStart(2, "0");
-
-    return `${hours}:${formattedMinutes}`;
+    return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
   };
 
   const sunriseTime = formatTime(sunriseData);
   const sunsetTime = formatTime(sunsetData);
 
-  document.querySelector(".sunrise").innerText = "sunrise 0" + sunriseTime;
+  document.querySelector(".sunrise").innerText = "sunrise " + sunriseTime;
   document.querySelector(".sunset").innerText = "sunset " + sunsetTime;
 };
 
@@ -406,7 +400,43 @@ const displayWeeklyWeather = (weatherData) => {
     <p>${Math.round(item.temp)}°</p>
     </div>
     `;
+
+    // forecast.classList.add("cloudsThemeDash");
+  });
+
+  forecast = weektemp.querySelectorAll(".forecast");
+  console.log(forecast);
+
+  forecast.forEach((item) => {
+    switch (currentWeather) {
+      case "Clear":
+        item.classList.add("clearThemeDash");
+        break;
+
+      case "Clouds":
+        item.classList.add("cloudsThemeDash");
+        break;
+
+      case "Rain":
+        item.classList.add("rainThemeDash");
+        break;
+
+      case "Snow":
+        item.classList.add("snowThemeDash");
+        break;
+
+      case "Drizzle":
+        item.classList.add("drizzleThemeDash");
+        break;
+
+      case "Thunderstorm":
+        item.classList.add("thunderstormThemeDash");
+        break;
+
+      default:
+        item.classList.add("otherThemeDash");
+    }
   });
 };
-
+let forecast = null;
 getWeeklyWeather();
