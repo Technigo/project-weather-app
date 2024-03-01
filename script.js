@@ -16,7 +16,7 @@ const URL = `${API_BASE_URL}/weather?q=${place}&units=metric&appid=${API_KEY}`;
 const FORECAST = `${API_BASE_URL}/forecast?q=${place}&units=metric&appid=${API_KEY}`;
 
 //UNIX TIMESTAMP CONVERTER
-const convertDateTime = (unixTimestamp) => {
+const convertDateTime = unixTimestamp => {
   const date = new Date(unixTimestamp * 1000);
   const hours = String(date.getHours()).padStart(2, "0"); // 2 is length of digits and "0" to lead with 0
   const minutes = String(date.getMinutes()).padStart(2, "0");
@@ -24,7 +24,7 @@ const convertDateTime = (unixTimestamp) => {
 };
 
 //WEEKDAY DISPLAY FUNCTION
-const getWeekdays = (date) => {
+const getWeekdays = date => {
   const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   return weekdays[date.getDay()];
 };
@@ -44,11 +44,11 @@ const printWeather = async () => {
 
     currentWeather.innerHTML = `
     <section id="current-weather">
-    <p id="temp">${currentTemp}&deg;C</p>
-    <h1 id="location">${currentLocation}</h1>
-    <p id="condition">${currentCondition} <img class="icon" src="${ICON_URL}"></p>
-    <p id="sunrise">Sunrise ${todaySunrise}</p>
-    <p id="sunset">Sunset ${todaySunset}</p>
+    <p class="temp">${currentTemp}<span>&deg;C</span></p>
+    <h1 class="location">${currentLocation}</h1>
+    <p class="condition">${currentCondition} <img class="icon" src="${ICON_URL}"></p>
+    <p class="sunrise">Sunrise ${todaySunrise}</p>
+    <p class="sunset">Sunset ${todaySunset}</p>
     </section>`;
 
     console.log("Data:", data); //NOT FORGET TO DELETE!!
@@ -63,28 +63,32 @@ const printForecast = async () => {
   try {
     const fourDayWeather = await fetch(FORECAST);
     const json = await fourDayWeather.json();
-    const forecastData = json.list.filter((item, index) => index % 8 === 0); // Filter for every 8th item, which represents once every day
 
-    console.log("FORECAST JSON DATA", json);
+    //data of 12:00 PM
+    const forecastData = [...json.list];
+    const filteredData = [...forecastData].filter(day => {
+      return day.dt_txt.toLowerCase().endsWith("12:00:00");
+    });
 
-    // LOWEST & HIGHEST TEMPERATURES
-    const temperatures = forecastData.map((forecast) =>
-      forecast.main.temp.toFixed(0),
-    );
-    const lowestTemp = Math.min(...temperatures); //to get lowest temperature
-    const highestTemp = Math.max(...temperatures); //to get highest temperature
+    console.log("FORECAST JSON DATA", json); //TBDeleted
 
-    forecastData.forEach((forecast, index) => {
+    filteredData.slice(0, 4).forEach((forecast, index) => {
       const forecastDate = new Date(forecast.dt * 1000);
       const weekday = getWeekdays(forecastDate);
       const icon = forecast.weather[0].icon;
+
+      // LOWEST & HIGHEST TEMPERATURES
+      const dailyForecast = filteredData.slice(index * 8, (index + 1) * 8);
+      const dailyTemps = dailyForecast.map(item => item.main.temp.toFixed(0));
+      const dailyLowestTemp = Math.min(...dailyTemps);
+      const dailyHighestTemp = Math.max(...dailyTemps);
 
       const forecastElement = document.createElement("div");
       forecastElement.innerHTML = `
       <div class="forecast-display">
       <p>${weekday}</p>
       <img class="icon" src="https://openweathermap.org/img/wn/${icon}@2x.png">
-      <p>${lowestTemp}&deg; / ${highestTemp}&deg;C</p>
+      <p>${dailyLowestTemp}&deg; / ${dailyHighestTemp}&deg;C</p>
       </div>`;
       displayForecast.appendChild(forecastElement);
     });

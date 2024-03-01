@@ -27,8 +27,14 @@ display: flex ;
 flex-direction: column;
 }
 
-#temp {
+
+.temp {
   font-size: 120px;
+}
+
+.temp span {
+  font-size: 4rem;
+  vertical-align: text-top;
 }
 
 h1 {
@@ -42,24 +48,25 @@ h2 {
   margin: 20px;
 }
 
+.condition {
+  font-size: 22px;
+  text-align: justify;
+}
+
 .sun-time {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
   width: 100%;
 }
-#sunrise{
-  display: flex;
+.sunrise,
+.sunset{
   margin-top: 10px;
+  font-size: 18px;
 }
 
-#sunset {
-  display: flex;
-}
-
-p {
+.forecast-display p {
   font-size: 22px;
-  margin-bottom: 30px;
+  vertical-align: text-bottom;
 }
 
 .weather-forecast {
@@ -81,4 +88,8 @@ p {
 img.icon {
   width: 50px;
   height: 50px;
+}
+
+footer {
+  margin-top: 30px;
 }
