@@ -4,43 +4,51 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <script src="https://kit.fontawesome.com/2e83762929.js" crossorigin="anonymous"></script>
-    <title>Weather app</title>
+    <script
+      src="https://kit.fontawesome.com/2e83762929.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Handlee&family=Nunito+Sans:opsz,wght@6..12,200;6..12,300&family=Nunito:wght@200&family=Roboto:ital,wght@0,300;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <title>Ericas weather app</title>
   </head>
   <body>
-      <header>
-        <!-- hamburgermenu for show -->
-        <i class="fa-solid fa-bars"></i>
-      </header>
-      <main>
-      <section class="weather-today">
+    <div class="weather-background" id="weather-background">
+    <header>
+      <!-- hamburgermenu for show -->
+      <i class="fa-solid fa-bars"></i>
+      <!-- search-bar for show -->
+      <div class="search">
+        <input type="search" id="search" placeholder="Search for city ... " />
+      </div>
+    </header>
+    <main>
+      <section class="weather-today" id="weather-today">
         <!-- div with info about todays forecast -->
         <div class="todays-forecast">
-          <div class="todays-temperature" id="todays-temperature">
-          </div>
-          <div class="weather-location" id="weather-location">
-          </div>
-          <div class="todays-weather" id="todays-weather">
-          </div>
+          <div class="todays-temperature" id="todays-temperature"></div>
+          <div class="weather-location" id="weather-location"></div>
+          <div class="todays-weather" id="todays-weather"></div>
           <div class="sun-type" id="sun-type">
-            <div class="todays-sunrise" id="sunrise">
-             </div>
-             <div class="todays-sunset" id="sunset">
-             </div>
+            <div class="todays-sunrise" id="sunrise"></div>
+            <div class="todays-sunset" id="sunset"></div>
           </div>
         </div>
         <!-- div with the time of day for icons -->
         <div class="todays-time-of-day" id="todays-time-of-day">
         </div>
-        </div>
-
-        <button class="switch-button"id="switch-button"> > </button>
+        <button class="switch-button" id="switch-button">⬇</button>
+    </div>
       </section>
 
       <section class="weather-forecast">
         <div class="forecast-day" id="forecast-day"></div>
         <div class="forecast-weather" id="forecast-weather"></div>
-      <div class="forecast-temperature" id="forecast-temperature"></div>
+        <div class="forecast-temperature" id="forecast-temperature"></div>
       </section>
     </main>
     <script src="./fetch-weather-api.js"></script>

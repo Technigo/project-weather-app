@@ -1,4 +1,5 @@
 // DOM-Selectors
+const weatherBackground = document.getElementById("weather-background");
 const todaysTemperature = document.getElementById("todays-temperature");
 const weatherLocation = document.getElementById("weather-location");
 const todaysWeather = document.getElementById("todays-weather");
@@ -11,12 +12,12 @@ const forecastTemperature = document.getElementById("forecast-temperature");
 
 // Creating API URL called weatherTodayURL
 const BASE_TODAY_URL = "https://api.openweathermap.org/data/2.5/weather?";
-const city = "Lundsberg,Sweden";
+const city = "Lundsberg";
 const API_KEY = "ebcad7517d4d5102daa2078b4d1b8409";
 const weatherTodayURL = `${BASE_TODAY_URL}q=${city}&units=metric&APPID=${API_KEY}`;
 
 // Function to update the UI with todays weather information
-const updateWeatherToday = (weatherTodayData) => {
+const updateWeatherToday = (weatherTodayData, city) => {
   /* ............START OF created variables........... */
   // A varieble temperatureTodayRounded (todays temperature, 1 decimal)
   const temperatureTodayRounded = weatherTodayData.main.temp.toFixed(1);
@@ -84,8 +85,8 @@ const updateWeatherToday = (weatherTodayData) => {
   /* ............START OF INNER-HTML-additions........... */
   // Todays temperature
   todaysTemperature.innerHTML = `
-   <p> ${temperatureTodayRounded} </p>
-   <p> °C </p> `;
+   <p class=temperature> ${temperatureTodayRounded} </p>
+   <p class=degrees> °C </p> `;
 
   // testing todaysTemperature
   console.log(`"todays temperature:", ${temperatureTodayRounded}`);
@@ -118,10 +119,14 @@ const updateWeatherToday = (weatherTodayData) => {
     formattedLocalTime <= sunsetTimeFormatted
   ) {
     // Display sun image in html
-    todaysTimeOfDay.innerHTML = `<img src="./design/assets/Big-sun.png" alt="Big sun image">`;
+    todaysTimeOfDay.innerHTML += `<img src="./design/assets/Big-sun.png" alt="Big sun image">`;
+    // Add a class for day mode to the weatherBackground
+    weatherBackground.classList.add("day-mode");
   } else {
     // Display moon-image in html
-    todaysTimeOfDay.innerHTML = `<img src="./design/assets/Big-moon.png" alt="Big moon image">`;
+    todaysTimeOfDay.innerHTML += `<img src="./design/assets/Big-moon.png" alt="Big moon image">`;
+    // Add a class for night mode to the weatherBackground
+    weatherBackground.classList.add("night-mode");
   }
 };
 
@@ -152,7 +157,7 @@ const updateWeatherForecast = (weatherForecastData) => {
     .map((item) => {
       const timestamp = item.dt * 1000; // Convert milliseconds
       const date = new Date(timestamp);
-      const dayOfWeek = date.toLocaleString("sv-SE", { weekday: "long" }); // Get day of week
+      const dayOfWeek = date.toLocaleString("en-GB", { weekday: "long" }); // Get day of week
       const weatherIconCode = item.weather[0].icon; // Get icon code from weather
       const createIconUrl = `http://openweathermap.org/img/wn/${weatherIconCode}.png`; // Construct icon URL
       const Temperature = item.main.temp.toFixed(0); // get temperature
