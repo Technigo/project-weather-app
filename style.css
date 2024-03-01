@@ -10,13 +10,57 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+    height: 100vh;
+    margin: 0; 
 }
+
 #temperature-sun-time {
-    display: flex;
-    flex-direction: column;
+    position: absolute;
+    top: 15%;
+    left:15%;
     font-weight: 400;
     font-size: 21px;
+    line-height: 36px;
+}
+#remind-text {
+    font-weight: 700;
+    font-size: 37px;
+    line-height: 45px;
+}
+ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 70%;
+    margin-top: 50px;
+}
+li {
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 36px; 
+    display: flex;
+    justify-content: space-between;
+}
 
-
+@media only screen and (max-width:500px) {
+    #temperature-sun-time {
+        position: absolute;
+        top: 49px;
+        left: 47px;
+    }
+    #remind-img-text {
+        width: 300px;
+        height: 245px;
+    }
+    #remind-text {
+        font-size: 30px;
+        line-height: 40px;
+    }
+    #ul {
+        width: 310px;
+    }
+    #weather-icon{
+        width:73px;
+        height:52px;
+    }
 }

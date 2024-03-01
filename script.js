@@ -5,6 +5,7 @@ const temSunTime = document.getElementById('temperature-sun-time')
 // const sunset = document.getElementById('sunset-time')
 const remindImgText = document.getElementById('remind-img-text')
 const fiveDaysTemperature = document.getElementById('five-days-temperature')
+const errorText = document.getElementById('error')
 
 //DOM create in JS
 
@@ -13,22 +14,34 @@ const styleElement = document.createElement('style')
 document.head.appendChild(styleElement)
 
 //fetch API, weather in Helsinki
+const BASE_URL1= 'https://api.openweathermap.org/data/2.5/weather'
+const BASE_URL2 = 'http://api.openweathermap.org/data/2.5/forecast'
+const API_KEY = '0a3f5beba05e6db2d5da18ddf3283c92'
+const city = 'Helsinki, Finland'
+const URL1 = `${BASE_URL1}?q=${city}&units=metric&appid=${API_KEY}`
+const URL2 = `${BASE_URL2}?q=${city}&units=metric&appid=${API_KEY}`
+
+ // fetch('https://api.openweathermap.org/data/2.5/weather?q=Helsinki,Finland&units=metric&appid=0a3f5beba05e6db2d5da18ddf3283c92')
 const weatherInfo = () => {
-    fetch('https://api.openweathermap.org/data/2.5/weather?q=Helsinki,Finland&units=metric&appid=0a3f5beba05e6db2d5da18ddf3283c92')
+    fetch(URL1)
     .then(response => response.json())
     .then(data => {
         remindTestCityName(data)
         console.log(data)     
     })
+    .catch(error=>{
+        errorText.innerHTML = 'Oops, something went wrong🫢'
+        return error
+    })
 }
 weatherInfo()
 
-
 const remindTestCityName = (param) => {
-    let dayWeather = param.weather[0].main
-    let description = param.weather[0].description
-    let temperature = Math.round(param.main.temp)
-    let cityName = param.name
+    const dayWeather = param.weather[0].main
+    const descriptionLower = param.weather[0].description
+    const description = descriptionLower[0].toUpperCase()+descriptionLower.slice(1).toLowerCase()
+    const temperature = param.main.temp.toFixed(1) //rounded to 1 decimal place
+    const cityName = param.name
 
     //sunset and sunrise
     const timeFormat = {hour: '2-digit', minute: '2-digit', hour12: false}
@@ -42,29 +55,35 @@ const remindTestCityName = (param) => {
 
     if (dayWeather === 'clear') {
         temSunTime.innerHTML = `
-        <P> ${description} | ${temperature}</p>
+        <P> ${description} | ${temperature}°</p>
         <p> Sunrise ${hoursSunrise}</p>
         <p> Sunset ${hoursSunset}</p>`
         remindImgText.innerHTML = `
-        <h3 id="remind-text">Get your sunnies on. ${cityName} is looking rather great today.</h3>`
-        styleElement.sheet.insertRule('body {background-color: #F7E9B9; color: #2A5510 }')
+        <img src="./design/design2/icons/noun_Sunglasses_2055147.svg">
+        <h3 id="remind-text">Get your sunnies on. <br>${cityName} is looking rather great today.</h3>`
+        styleElement.sheet.insertRule('body {background-color: #F7E9B9; color: #2A5510}')
+        styleElement.sheet.insertRule('hr {border-button: 1px; color: #707070}')
         
     } else if (dayWeather === 'Rain' || dayWeather === 'Drizzle') {
         temSunTime.innerHTML = `
-        <P> ${description} | ${temperature}</p>
+        <P> ${description} | ${temperature}°</p>
         <p> Sunrise ${hoursSunrise}</p>
         <p> Sunset ${hoursSunset}</p>`
         remindImgText.innerHTML = `
-        <h3 id="remind-text">Don't forget your umbrella. It's wet in ${cityName} today.</h3>`
+        <img src="./design/design2/icons/noun_Umbrella_2030530.svg">
+        <h3 id="remind-text">Don't forget your umbrella <br>It's wet in ${cityName} today.</h3>`
         styleElement.sheet.insertRule('body {background-color: #BDE8FA; color: #164A68}')
+        styleElement.sheet.insertRule('hr {border-button: 1px; color: #164A68}')
     } else if (dayWeather === 'Clouds') {
         temSunTime.innerHTML = `
-        <P> ${description} | ${temperature}</p>
+        <P> ${description} | ${temperature}°</p>
         <p> Sunrise ${hoursSunrise}</p>
         <p> Sunset ${hoursSunset}</p>`
         remindImgText.innerHTML = `
-        <h3 id="remind-text">Light a fire and get cosy. ${cityName} is looking grey today.</h3>`
+        <img src="./design/design2/icons/noun_Cloud_1188486.svg">
+        <h3 id="remind-text">Light a fire and get cosy. <br>${cityName} is looking grey today.</h3>`
         styleElement.sheet.insertRule('body {background-color: #F4F7F8; color: #F47775}')
+        styleElement.sheet.insertRule('hr {border-button: 1px; color: #F47775}')
     } else {
         remindImgText.innerHTML = `
         <h3 id="remind-text">Oops... Something went wrong</h3>`
@@ -72,19 +91,10 @@ const remindTestCityName = (param) => {
 }
 
 // weather-forecast-feature
+// fetch ('http://api.openweathermap.org/data/2.5/forecast?q=Helsinki,Finland&units=metric&appid=0a3f5beba05e6db2d5da18ddf3283c92')
 
-
-
-
-// const BASE_URL = 'http://api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key}'
-// const API_KEY = '0a3f5beba05e6db2d5da18ddf3283c92'
-// const city = 'Helsinki,Finland'
-// const units = 'metric'
-
-// const URL = `${BASE_URL}?${city}${units}${API_KEY}`
-
-const forecast = () => {
-    fetch ('http://api.openweathermap.org/data/2.5/forecast?q=Helsinki,Finland&units=metric&appid=0a3f5beba05e6db2d5da18ddf3283c92')
+const forecast = () => { 
+    fetch(URL2)
     .then(response => response.json())
     .then(data => {
         //weather update from 12.00 every day
@@ -100,27 +110,29 @@ const forecast = () => {
 
          //convert each day to a short name. print weather for next 4 days
         filteredTime.forEach((day) => {
-            let fromSecond = day.dt * 1000
-            let currentDate = new Date(fromSecond)
+            const fromSecond = day.dt * 1000
+            const currentDate = new Date(fromSecond)
             let currentDay
             currentDay = currentDate.toLocaleDateString('en-US', {weekday:'short'})    
             console.log (currentDay) 
 
-            let fiveDaysWeather = Math.round(day.main.temp)
+            const fiveDaysWeather = Math.round(day.main.temp)
 
             fiveDaysTemperature.innerHTML += `
-            <li>${currentDay} ${fiveDaysWeather}</li>`
+            <li>
+            <span>${currentDay}</span> 
+            <span>${fiveDaysWeather}°</span>
+            </li><hr>`
             styleElement.sheet.insertRule('li {list-style-type: none}')
             }) 
         } 
     // .catch(error => console.log (error))
-    )}
+    )
+    .catch(error=>{
+        errorText.innerHTML = 'Oops, something went wrong🫢'
+        return error
+    })
+}
 forecast()
 
-// const weekDayForecast = (param) =>{
-//     let filteredTime = []
-//     filteredTime = [...param.list].filter(day=> {
-//         day.dt_txt.endsWith('12:00:00')
-//     })
-    
-// }
+
