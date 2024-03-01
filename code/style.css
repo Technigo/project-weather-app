@@ -1,0 +1,48 @@
+html {
+    font-family: "Montserrat";
+}
+
+body {
+    padding-top: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+/* Media query for screens bigger than 700px*/
+@media screen and (min-width: 700px) {
+body {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 600px;
+}
+}
+
+h4 {
+    font-size: 23px;
+    font-weight: 400;
+    padding-bottom: 30px;
+    
+}
+
+#text {
+    display: flex;
+    font-size: 26px;
+    max-width: 600px;
+    padding-right: 50px;
+    
+}
+
+
+#forecastRow {
+    display: flex;
+    justify-content: space-between;
+    font-size: 25px;
+    border-bottom: 1px dotted;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: -25px;
+    margin-top: 10px;
+    max-height: 60px;
+}
