@@ -62,7 +62,7 @@ main>img {
 }
 
 main p {
-    font-size: 75px;
+    font-size: 50px;
     padding-top: 0;
     margin-bottom: 23px;
 }
@@ -118,6 +118,10 @@ h1 {
 .blue-drizzle {
     background-color: #FAE6C7;
     color: #8ED5F6;
+}
+.grey-neutral {
+    background-color: white;
+    color: #404040;
 }
 
 @media (min-width:667px){

@@ -15,7 +15,7 @@ const QUERY_TYPE_FORECAST = "forecast?q=";
 const APP_KEY = ",Sweden&units=metric&APPID=8be7a87323d320c7bae11d84fa0a7c61";
 
 //Variables
-//let urlCity = "";
+let urlCity = "Kalmar";
 let city = "";
 let weatherType = "";
 let temperatureNow = "";
@@ -51,6 +51,7 @@ const fetchForecast = (urlCity) => {
     })
     .then((json) => {
       console.log (json)
+      container.innerHTML = ""
       json.list.forEach((update) => {
         printForecast(update);
       });
@@ -121,6 +122,7 @@ const printMainInfo = (json) => {
             `;
       break;
     default:
+      body.setAttribute("class", "grey-neutral");
       main.innerHTML = `
             <p><i class="fa-solid fa-volcano fa-2xl" style="color: #404040;"></i></p>
             <h1>There is definately some kind of weather in ${city} today. Look out the window and you might find out what it is.</h1>
@@ -170,17 +172,34 @@ const printForecast = (update) => {
   }
 };
 
-const fetchAndShowData = (city) => {
-  fetchWeatherData(city);
-  fetchForecast(city);
+const fetchAndShowData = (chosenCity) => {
+  fetchWeatherData(chosenCity);
+  fetchForecast(chosenCity);
+  console.log (chosenCity)
+}
+
+const handleCitySelectStockholm = () => {
+  fetchAndShowData ("Stockholm")
+}
+const handleCitySelectGothenburg = () => {
+  fetchAndShowData("Gothenburg");
+};
+const handleCitySelectMalmoe = () => {
+  fetchAndShowData("Malmoe");
+};
+const handleCitySelectKalmar = () => {
+  fetchAndShowData("Kalmar");
+};
+
+const loadPage = () => {
+  fetchAndShowData("Kalmar");
 }
 
 //Event-listeners
-/*
-selectStockholm.addEventListener("click", fetchAndShowData("Stockholm"));
-selectGothenburg.addEventListener("click", fetchAndShowData("Gothenburg"));
-selectMalmoe.addEventListener("click", fetchAndShowData("Malmoe"));
-selectKalmar.addEventListener("click", fetchAndShowData("Kalmar"));*/
+selectStockholm.addEventListener("click", handleCitySelectStockholm);
+selectGothenburg.addEventListener("click", handleCitySelectGothenburg);
+selectMalmoe.addEventListener("click", handleCitySelectMalmoe);
+selectKalmar.addEventListener("click", handleCitySelectKalmar);
 
 
-fetchAndShowData ("Kalmar")
+loadPage()
