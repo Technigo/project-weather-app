@@ -41,3 +41,10 @@ h1{
     display: flex;
     justify-content: center;
 }
+
+.img-container{
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+
+}
