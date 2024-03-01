@@ -1,16 +1,21 @@
 //DOM selectors
 const body = document.getElementById("body");
-const header = document.getElementById("header");
+const sunInfo = document.getElementById("sun-info");
 const main = document.getElementById("main");
 const container = document.getElementById("container");
+const selectStockholm = document.getElementById("select-stockholm");
+const selectGothenburg = document.getElementById("select-gothenburg");
+const selectMalmoe = document.getElementById("select-malmoe");
+const selectKalmar = document.getElementById("select-kalmar");
 
 //URLs
-const URL_BASE =
-  "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=";
-const APP_KEY = "8be7a87323d320c7bae11d84fa0a7c61";
-const URL = URL_BASE + APP_KEY;
+const URL_BASE = "https://api.openweathermap.org/data/2.5/";
+const QUERY_TYPE_WEATHER = "weather?q=";
+const QUERY_TYPE_FORECAST = "forecast?q=";
+const APP_KEY = ",Sweden&units=metric&APPID=8be7a87323d320c7bae11d84fa0a7c61";
 
 //Variables
+//let urlCity = "";
 let city = "";
 let weatherType = "";
 let temperatureNow = "";
@@ -22,8 +27,8 @@ let timeForecast = "";
 let temperatureForecast = "";
 
 //Fetches current weather data
-const fetchData = () => {
-  fetch(URL)
+const fetchWeatherData = (urlCity) => {
+  fetch(`${URL_BASE}${QUERY_TYPE_WEATHER}${urlCity}${APP_KEY}`)
     .then((response) => {
       return response.json();
     })
@@ -39,14 +44,13 @@ const fetchData = () => {
     });
 };
 //Fetches forecast data
-const fetchForecast = () => {
-  fetch(
-    `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=${APP_KEY}`
-  )
+const fetchForecast = (urlCity) => {
+  fetch(`${URL_BASE}${QUERY_TYPE_FORECAST}${urlCity}${APP_KEY}`)
     .then((response) => {
       return response.json();
     })
     .then((json) => {
+      console.log (json)
       json.list.forEach((update) => {
         printForecast(update);
       });
@@ -62,10 +66,10 @@ const printHeaderInfo = (json) => {
   const sunsetHour = new Date(sunsetData * 1000).getHours();
   const sunsetMinute = new Date(sunsetData * 1000).getMinutes();
   const sunsetTime = `${sunsetHour}:${sunsetMinute}`;
-  header.innerHTML = `
-    <p>${weatherType} | ${temperatureNow}°</p>
-    <p>sunrise ${sunriseTime}</p>
-    <p>sunset ${sunsetTime}</p>
+  sunInfo.innerHTML = `
+      <p>${weatherType} | ${temperatureNow}°</p>
+      <p>sunrise ${sunriseTime}</p>
+      <p>sunset ${sunsetTime}</p>
     `;
 };
 //Changes the main info box depending on weather type
@@ -166,5 +170,17 @@ const printForecast = (update) => {
   }
 };
 
-fetchData();
-fetchForecast();
+const fetchAndShowData = (city) => {
+  fetchWeatherData(city);
+  fetchForecast(city);
+}
+
+//Event-listeners
+/*
+selectStockholm.addEventListener("click", fetchAndShowData("Stockholm"));
+selectGothenburg.addEventListener("click", fetchAndShowData("Gothenburg"));
+selectMalmoe.addEventListener("click", fetchAndShowData("Malmoe"));
+selectKalmar.addEventListener("click", fetchAndShowData("Kalmar"));*/
+
+
+fetchAndShowData ("Kalmar")
