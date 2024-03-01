@@ -6,7 +6,7 @@ const API_KEY = "1e48fdf267ccc8ee33c1c78150dcbab1";
 const city = "Umea, Sweden";
 */
 
-//DOM selectors 
+//DOM selectors
 const weatherContainer = document.getElementById('weather-container')
 const imgContainer = document.getElementById('img-container')
 const cityContainer = document.getElementById('city-container')
@@ -29,25 +29,26 @@ const fetchWeather = () => {
 			const tempChoice = Math.trunc(data.main.temp)
 			const weatherDescr = data.weather[0].main
 
-            console.log(weatherDescr)
+			console.log(weatherDescr)
 
 			handleName.innerText = nameChoice
 			handleTemp.innerText = `${tempChoice} °C`
 			weatherDescription.innerText = `${weatherDescr}`
 		})
+
+	
 }
 fetchWeather()
 
 
-
-const showWeather = () => {
-	weatherContainer.innerHTML = `
-<p>hello world<p>`
-	cityContainer.innerHTML = `
-<p>hello world<p>`
-	forecastContainer.innerHTML = `
-<p>mon</p>
-`
-	console.log(imgContainer)
-}
-showWeather()
+//Function showing content on browser with .innerHTML
+	const showWeather = () => {
+		weatherContainer.innerHTML = `
+			<p>hello world<p>`
+		cityContainer.innerHTML = `
+			<p>hello world<p>`
+		forecastContainer.innerHTML = `
+			<p>mon</p>`
+		console.log('hello')
+	}
+	showWeather()
