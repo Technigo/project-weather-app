@@ -54,6 +54,7 @@ const fetchWeather = () => {
       changeImg(img);
     })
     .catch((error) => {
+      container.innerHTML = `There has been an error. Please reload the page and try again.`;
       console.log(error);
     });
 };
@@ -65,9 +66,13 @@ const changeForecast = (json) => {
   const dateEpoch = [];
   const weekdays = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 
+  const now = new Date();
+  const currentDayOfWeek = weekdays[now.getDay()];
+
   const daytimeForecast = json.list.filter((element) => {
     const time = element.dt_txt.split(" ")[1];
-    return time === "12:00:00";
+    const dayOfWeek = weekdays[new Date(element.dt * 1000).getDay()];
+    return time === "12:00:00" && dayOfWeek !== currentDayOfWeek;
   });
 
   daytimeForecast.forEach((element) => {
@@ -89,6 +94,7 @@ const fetchForecast = () => {
       changeForecast(json);
     })
     .catch((error) => {
+      container.innerHTML = `There has been an error. Please reload the page and try again.`;
       console.log(error);
     });
 };
@@ -110,7 +116,6 @@ const changeStyle = (styleMainWeather) => {
     list.forEach((element) => {
       element.classList.add("clear");
     });
-    console.log("Clear");
   } else if (styleMainWeather === "Clouds") {
     container.classList.add("clouds");
     mainWeather.classList.add("clouds");
@@ -122,7 +127,6 @@ const changeStyle = (styleMainWeather) => {
     list.forEach((element) => {
       element.classList.add("clouds");
     });
-    console.log("Clouds");
   } else if (styleMainWeather === "Rain") {
     container.classList.add("rain");
     mainWeather.classList.add("rain");
@@ -134,7 +138,6 @@ const changeStyle = (styleMainWeather) => {
     list.forEach((element) => {
       element.classList.add("rain");
     });
-    console.log("Rain");
   } else if (styleMainWeather === "Snow") {
     container.classList.add("snow");
     mainWeather.classList.add("snow");
@@ -146,7 +149,6 @@ const changeStyle = (styleMainWeather) => {
     list.forEach((element) => {
       element.classList.add("snow");
     });
-    console.log("Snow");
   } else if (styleMainWeather) {
     container.classList.add("default");
     mainWeather.classList.add("default");
@@ -158,44 +160,33 @@ const changeStyle = (styleMainWeather) => {
     list.forEach((element) => {
       element.classList.add("default");
     });
-    console.log("We don't have that weather yet");
   }
 };
 
 const changeTitle = (json, title) => {
   if (title.classList.contains("clear")) {
     title.innerText = `Get your sunnies on. ${json.name} is looking rather great today.`;
-    console.log("clear");
   } else if (title.classList.contains("clouds")) {
     title.innerText = `Light a fire and get cosy. ${json.name} is looking grey today.`;
-    console.log("clouds");
   } else if (title.classList.contains("rain")) {
     title.innerText = `Don't forget your umbrella. It's wet in ${json.name} today.`;
-    console.log("rain");
   } else if (title.classList.contains("snow")) {
     title.innerText = `Don't forget your hat. It's quite cold in ${json.name} today.`;
-    console.log("snow");
   } else if (title.classList.contains("default")) {
     title.innerText = `Enjoy your day with the current ${json.name} weather.`;
-    console.log("We don't have that weather yet.");
   }
 };
 
 const changeImg = (img) => {
   if (img.classList.contains("clear")) {
     img.src = "/design/design2/icons/noun_Sunglasses_2055147.png";
-    console.log("imgclear");
   } else if (img.classList.contains("clouds")) {
     img.src = "/design/design2/icons/noun_Cloud_1188486.png";
-    console.log("imgclouds");
   } else if (img.classList.contains("rain")) {
     img.src = "/design/design2/icons/noun_Umbrella_2030530.png";
-    console.log("imgrain");
   } else if (img.classList.contains("snow")) {
     img.src = "/design/design2/icons/snow.png";
-    console.log("imgsnow");
   } else if (img.classList.contains("default")) {
     img.src = "/design/design2/icons/default.png";
-    console.log("XXXX");
   }
 };
