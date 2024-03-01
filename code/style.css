@@ -39,11 +39,6 @@ body {
 }
 
 /*Styling for upper section*/
-.upper-section,
-.lower-section {
-  height: 50%;
-}
-
 .upper-section {
   color: white;
   background-image: url("./assets/clear-day.jpg");
@@ -52,6 +47,7 @@ body {
   border-bottom-left-radius: 200px 40px;
   border-bottom-right-radius: 200px 40px;
   overflow: hidden;
+  min-height: 440px;
 }
 
 .upper-text {
@@ -95,7 +91,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  padding-top: 70px;
+  padding-top: 55px;
 }
 
 .day-container {
@@ -156,15 +152,19 @@ Keeping the same style and dimensions as iPhone XR*/
     width: 100%;
   }
 
+  .upper-section {
+    min-height: 400px;
+  }
+
   .upper-text {
-    padding-top: 65px;
+    padding-top: 70px;
   }
 
-  .container {
-    display: flex;
-    align-items: center;
+  .forecast-container {
+    padding-top: 40px;
   }
 
+  /*Font size adjustments*/
   .temperature {
     font-size: 97px;
   }
@@ -177,38 +177,23 @@ Keeping the same style and dimensions as iPhone XR*/
     font-size: 28px;
   }
 
-  .weather {
-    font-size: 18px;
-  }
-
+  .weather,
   .sun-text {
     font-size: 18px;
-  }
-
-  .forecast-container {
-    padding-top: 40px;
   }
 }
 
 /*Media query for viewports smaller than iPhone 13 (<390)*/
 @media (max-width: 389px) {
-  .container {
-    display: flex;
-    align-items: center;
-  }
-  .app-container {
-    width: 100%;
+  .upper-section {
+    min-height: 350px;
   }
 
   .upper-text {
-    padding-top: 30px;
+    padding-top: 50px;
   }
 
-  .container {
-    display: flex;
-    align-items: center;
-  }
-
+  /*Font size adjustments*/
   .temperature {
     font-size: 84px;
   }
@@ -221,15 +206,12 @@ Keeping the same style and dimensions as iPhone XR*/
     font-size: 24px;
   }
 
-  .weather {
-    font-size: 15px;
-  }
-
+  .weather,
   .sun-text {
     font-size: 15px;
   }
 
-  .forecast-container {
-    padding-top: 40px;
+  .day-container {
+    font-size: 18px;
   }
 }
