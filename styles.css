@@ -27,6 +27,12 @@ h3 {
   font-weight: 300;
 }
 
+h4 {
+  font-size: 19px;
+  font-weight: 500;
+  padding-bottom: 5px;
+}
+
 hr {
   border: 0.1px solid #f47775;
   margin: 0 5px 0 5px;
@@ -34,7 +40,6 @@ hr {
 
 .weather-today-section1 {
   display: flex;
-  margin-top: 40px;
 }
 
 .weather-today-section1,
@@ -43,21 +48,23 @@ hr {
 }
 
 .location {
-  margin-left: 115px;
+  width: 290px;
+  margin: 30px 0 10px 40px;
+  border-bottom: 1px dotted #f47775;
 }
 
 .icon {
-  margin-top: 25px;
+  margin-top: 15px;
 }
 
 .icon-and-text {
   margin-left: 40px;
+  width: 290px;
 }
 
 .forecast-container {
-  /* width: 200px; */
   height: 220px;
-  margin: 40px 40px 0 40px;
+  margin: 10px 40px 0 40px;
 }
 
 .forecast-row {
@@ -67,23 +74,67 @@ hr {
   width: 290px;
 }
 
-/* .forecast-day {
-  display: flex;
-  flex-direction: column;
+/* Media Queries */
+/* Tablet (601-1023px */
+@media screen and (min-width: 601px) {
+  h2 {
+    text-align: center;
+  }
 
-  border: 1px solid black;
-  height: 100px;
+  .weather-today-section1 {
+    display: flex;
+    justify-content: center;
+    margin-left: 0;
+  }
+
+  .weather-today-section2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0;
+  }
+
+  .location {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 30px 0 10px 0;
+    border-bottom: 0;
+  }
+  .icon-and-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+  }
+
+  .icon {
+    margin-bottom: 20px;
+  }
+
+  .forecast-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 220px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
-.forecast-weather {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid black;
-  height: auto;
+/* Desktop (>1024px) */
+@media screen and (min-width: 1024px) {
+  .location {
+    margin: 60px 0 10px 0;
+  }
+  .forecast-container {
+    margin-top: 40px;
+  }
+  .icon-and-text {
+    width: 40%;
+  }
 }
-
-.forecast-temperature {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid black;
-} */
