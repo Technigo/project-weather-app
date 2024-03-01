@@ -86,10 +86,7 @@ const printHeaderInfo = (json) => {
     `;
 };
 //Changes the main info box depending on weather type
-const printMainInfo = (json) => {
-  city = json.name;
-  weatherType = json.weather[0].main;
-  temperatureNow = Math.round(json.main.temp);
+const printMainInfo = () => {
   switch (weatherType) {
     case "Clouds":
       body.setAttribute("class", "red-cloudy");
@@ -131,6 +128,13 @@ const printMainInfo = (json) => {
       main.innerHTML = `
             <p><i class="fa-solid fa-cloud-sun-rain fa-2xl" style="color: #8ed5f6;"></i></p>
             <h1>Raincheck? Relax, it's just some drizzle in ${city}.</h1>
+            `;
+      break;
+    case "Fog":
+      body.setAttribute("class", "grey-foggy");
+      main.innerHTML = `
+            <p><i class="fa-regular fa-compass fa-2xl" style="color: #5f6063;"></i></p>
+            <h1>Better not get lost. The fog is gathering in ${city}.</h1>
             `;
       break;
     default:

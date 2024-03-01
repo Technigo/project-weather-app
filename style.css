@@ -119,6 +119,12 @@ h1 {
     background-color: #FAE6C7;
     color: #8ED5F6;
 }
+
+.grey-foggy {
+    background-color: rgb(202, 202, 202);
+    color: #5f6063;
+}
+
 .grey-neutral {
     background-color: white;
     color: #404040;
