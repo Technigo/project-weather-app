@@ -66,24 +66,3 @@ hr {
   border-bottom: 1px dotted #f47775;
   width: 290px;
 }
-
-/* .forecast-day {
-  display: flex;
-  flex-direction: column;
-
-  border: 1px solid black;
-  height: 100px;
-}
-
-.forecast-weather {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid black;
-  height: auto;
-}
-
-.forecast-temperature {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid black;
-} */
