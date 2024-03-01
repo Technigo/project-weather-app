@@ -5,31 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
-
+    <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div class="daily-weather">
-        <p class="desciption-temp">Clear | </p>
+        <ul class="description-temp">
+            <li class="description"></li>
+            <li> | </li>
+            <li class="temp"></li>
+        </ul>
         <ul class="sun-time">
-            <li>sunrise</li>
-            <li>sunset</li>
+            <li class="sunrise">sunrise</li>
+            <li class="sunset">sunset</li>
         </ul>
     </div>
 
     <div class="tip">
-        <div class="tip-icon">icon</div>
-        <p class="tip-text">Get your sunnies on.</p>
+        <div class="tip-icon"></div>
+        <p class="tip-text"></p>
+        <p class="weather-description"></p>
     </div>
 
-    <ul class="weekly-weather">
-        <li>
-            <p class="weekday">mon</p>
-            <p class="temperature">23°</p>
-        </li>
-    </ul>
+    <div class="forecast-section">
+        <ul class="weekly-weather">
+            <li class="each-day">
+                <div class="week-temp">
+            </li>
+        </ul>
+    </div>
 </body>
-<script src="script.js" defer></script>
+
+<footer>&copy; Weather Report</footer>
 
 </html>
