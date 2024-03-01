@@ -60,6 +60,7 @@ const setRainDesign = () => {
   cityName.innerHTML = `Don't forget your umbrella. It's wet in ${localCity} today.`;
 };
 
+// Function that changes teh design for hazy/misty/foggy days
 const setHazyDesign = () => {
   smallWeatherIcon.src = "./design/design2/icons/cloud-fog-icon.svg";
   largeWeatherIcon.src = "./design/design2/icons/cloud-fog-icon.svg";
@@ -67,6 +68,7 @@ const setHazyDesign = () => {
   cityName.innerHTML = `Watch your step. Visibility in ${localCity} is not great today.`;
 };
 
+// Function that fetches the name of the city
 const getCityName = () => {
   fetchData(URL).then((json) => {
     localCity = json.name;
