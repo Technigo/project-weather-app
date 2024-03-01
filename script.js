@@ -51,13 +51,13 @@ const getWeather = (lat, lon) => {
       // concatenate the hours and minutes for sunrire and sunset, transformed them into strings and padded with 2 decimals number , covered empty spaces with 0
       const sunrise = `${hours.toString().padStart(2, '0')}: ${minutes
         .toString()
-        .padStart(2, '0')} AM `
+        .padStart(2, '0')} `
       const sunS = new Date(sunsetTime * 1000)
       const hoursS = sunS.getHours()
       const minutesS = sunS.getMinutes()
       const sunset = `${hoursS.toString().padStart(2, '0')}:${minutesS
         .toString()
-        .padStart(2, '0')} PM`
+        .padStart(2, '0')}`
 
       // populate div=actualWeather
       actualWeather.innerHTML = `
