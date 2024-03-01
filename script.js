@@ -5,6 +5,7 @@ const backgroundDiv = document.getElementById('main')
 const mainContainer = document.getElementById('main-container')
 const searchButton = document.getElementById('search-btn')
 const searchInput = document.getElementById('searchbar')
+const iconContainer = document.getElementById('weather-icon')
 
 //Global scope
 const BASE_URL = 'https://api.openweathermap.org/data/2.5/forecast?q='
@@ -13,7 +14,7 @@ const units = '&units=metric'
 const URL = (city) => {
 return `${BASE_URL}${city}${units}&appid=${API_KEY}`
 }
-
+const iconURL = "https://openweathermap.org/img/wn/"
 const dayNames = [
   'sunday',
   'monday',
@@ -33,7 +34,6 @@ const getData = (city) => {
     .then((data) => {
       updateHtml(data)
       console.log(data)
-      filterByTime(data)
     })
     .catch((error) => console.log(error))
   }
@@ -47,6 +47,7 @@ const updateHtml = (data) => {
   const weather = data.list[0].weather[0].main
   const city = data.city.name
   const temp = Math.round(data.list[0].main.temp)
+  
   //sunrise and sunset
   const rise = new Date(data.city.sunrise * 1000).toLocaleTimeString([], {
     hour: '2-digit',
@@ -60,17 +61,17 @@ const updateHtml = (data) => {
   weatherNowContainer.innerHTML = `<div class="title"><h2>${city}</h2></div>
   <div class="current-weather"><h1>${temp}<span> °C</span></h1>
   <h3>${weather}</h3></div>
-  <div class="sunrise-sunset"><div class="up-n-down"><h4>Sunrise</h4><h4>Sunset</h4></div>
-  <div class="time"><h4>${rise}</h4><h4>${set}</h4></div></div>`
-
-  console.log(weather)
+  <div class="sunrise-sunset"><div class="up-n-down"><h4>Sunrise</h4>
+  <h4>Sunset</h4></div><div class="time"><h4>${rise}</h4><h4>${set}</h4>
+  </div></div>`
   styleAfterWeather(weather, temp)
+  filterByTime(data)
 }
 
 //Function that styles the background and colors to fit weather
 const styleAfterWeather = (weather, temp) => {
-  if (weather === 'Clear' && temp >= 25) {
-    backgroundDiv.style.backgroundImage = 'url(./design3/hot.desktop.16.9.jpg)'
+    if (weather === 'Clear' && temp >= 25) {
+    iconContainer.appendChild(weatherIcon)
   } else if (weather === 'Clouds') {
     backgroundDiv.style.backgroundImage = 'url(./design3/cloudy.desktop.16.9.jpg)'
   } else if (weather === 'Rain') {
@@ -80,19 +81,14 @@ const styleAfterWeather = (weather, temp) => {
   }
 }
 
-//mainContainer.style.backgroundColor = "rgba(197, 195, 191, 0.438)"
-//   mainContainer.style.backgroundColor = "rgba(255, 223, 163, 0.438)"
-//  mainContainer.style.backgroundColor = "rgba(0, 0, 0, 0.534)"
-//mainContainer.style.backgroundColor = "rgba(255, 228, 174, 0.616)"
-
 //Function to filter the arrays of daily forecast and only include each forecast at 12:00
 const filterByTime = (data) => {
   const filteredForecast = data.list.filter((item) =>
     item.dt_txt.includes('12:00')
   )
-  console.log(filteredForecast)
   forecastContainer.innerHTML = ''
   displayForecast(filteredForecast)
+  console.log(filteredForecast)
 }
 
 const displayForecast = (filteredForecast) => {
@@ -101,18 +97,17 @@ const displayForecast = (filteredForecast) => {
     const dayIndex = forecastDate.getDay()
     const weekday = dayNames[dayIndex]
     const forecastTemp = Math.round(day.main.temp)
-    console.log(weekday)
-    forecastContainer.innerHTML += `<div class="weekday-temp"><div>${weekday}</div><div>${forecastTemp} °C</div></div>`
+    const weatherIcon = day.weather[0].icon
+    forecastContainer.innerHTML += `<div class="weekday-temp"><div>${weekday}</div>
+    <div>${forecastTemp} °C<img id="weather-icon" src="${iconURL}${weatherIcon}@2x.png"/></div></div>`
   })
 }
 
 const filterSearch = () => {
  const chosenCity = searchInput.value
- console.log(chosenCity)
   getData(chosenCity)
 }
 
-console.log(searchButton.addeventListener)
 //Eventlisteners
 searchButton.addEventListener('click', filterSearch())
 searchInput.addEventListener('keyup', function (event) {
@@ -121,3 +116,14 @@ searchInput.addEventListener('keyup', function (event) {
     }
   }
 )
+
+//const weatherIcon = document.createElement('img')
+//  backgroundDiv.style.backgroundImage = 'url(./design3/hot.desktop.16.9.jpg)'
+//weatherIcon.src = 'url(./design3/sunrise_icon.svg'
+
+
+//<img src="./design3/${icon}.png">
+// const icon = data.weather[0].main
+
+//const iconURL = "https://openweathermap.org/img/wn/"
+//<img src="${iconURL}${weather.iconID}@2x.png"/>

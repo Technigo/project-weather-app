@@ -130,3 +130,9 @@ h1 span {
   justify-content: space-between;
   border-bottom: 1px dotted;
 }
+
+#weather-icon{
+    width: 20px;
+    padding-left: 0.5em;
+
+}
