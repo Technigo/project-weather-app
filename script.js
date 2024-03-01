@@ -2,52 +2,40 @@
 const weatherNowContainer = document.getElementById('weather-now')
 const forecastContainer = document.getElementById('forecast-container')
 const backgroundDiv = document.getElementById('main')
-const mainContainer = document.getElementById('main-container')
 const searchButton = document.getElementById('search-btn')
 const searchInput = document.getElementById('searchbar')
-const iconContainer = document.getElementById('weather-icon')
 
 //Global scope
 const BASE_URL = 'https://api.openweathermap.org/data/2.5/forecast?q='
 const API_KEY = '9fd58fe4bdef8641db37b66e72207fcb'
 const units = '&units=metric'
 const URL = (city) => {
-return `${BASE_URL}${city}${units}&appid=${API_KEY}`
+  return `${BASE_URL}${city}${units}&appid=${API_KEY}`
 }
-const iconURL = "https://openweathermap.org/img/wn/"
-const dayNames = [
-  'sunday',
-  'monday',
-  'tuesday',
-  'wednesday',
-  'thursday',
-  'friday',
-  'saturday',
-]
+const iconURL = 'https://openweathermap.org/img/wn/'
+const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
 //Fetching the API and converting to Json
 const getData = (city) => {
-  fetch(URL (city))
+  fetch(URL(city))
     .then((response) => {
       return response.json()
     })
     .then((data) => {
       updateHtml(data)
-      console.log(data)
     })
     .catch((error) => console.log(error))
-  }
+}
 
 //default city when loading website
-  getData('stockholm')
-
+getData('stockholm')
 
 //Function to update HTML with forecast
 const updateHtml = (data) => {
   const weather = data.list[0].weather[0].main
   const city = data.city.name
   const temp = Math.round(data.list[0].main.temp)
-  
+
   //sunrise and sunset
   const rise = new Date(data.city.sunrise * 1000).toLocaleTimeString([], {
     hour: '2-digit',
@@ -57,7 +45,7 @@ const updateHtml = (data) => {
     hour: '2-digit',
     minute: '2-digit',
   })
-
+  //Adding content of todays weather
   weatherNowContainer.innerHTML = `<div class="title"><h2>${city}</h2></div>
   <div class="current-weather"><h1>${temp}<span> °C</span></h1>
   <h3>${weather}</h3></div>
@@ -70,60 +58,51 @@ const updateHtml = (data) => {
 
 //Function that styles the background and colors to fit weather
 const styleAfterWeather = (weather, temp) => {
-    if (weather === 'Clear' && temp >= 25) {
-    iconContainer.appendChild(weatherIcon)
+  if (weather === 'Clear' && temp >= 25) {
   } else if (weather === 'Clouds') {
-    backgroundDiv.style.backgroundImage = 'url(./design3/cloudy.desktop.16.9.jpg)'
+    backgroundDiv.style.backgroundImage =
+      'url(./design3/cloudy.desktop.16.9.jpg)'
   } else if (weather === 'Rain') {
-    backgroundDiv.style.backgroundImage = 'url(./design3/rainy.desktop.16.9.jpg)'
+    backgroundDiv.style.backgroundImage =
+      'url(./design3/rainy.desktop.16.9.jpg)'
   } else if (weather === 'Clear') {
-    backgroundDiv.style.backgroundImage = 'url(./design3/sunny.desktop.16.9.jpg)'
+    backgroundDiv.style.backgroundImage =
+      'url(./design3/sunny.desktop.16.9.jpg)'
   }
 }
 
 //Function to filter the arrays of daily forecast and only include each forecast at 12:00
 const filterByTime = (data) => {
-  const filteredForecast = data.list.filter((item) =>
-    item.dt_txt.includes('12:00')
-  )
+  const filteredForecast = data.list.filter((item) => 
+  item.dt_txt.includes('12:00'))
+  const fourDaysFilter = filteredForecast.slice(1)
   forecastContainer.innerHTML = ''
-  displayForecast(filteredForecast)
-  console.log(filteredForecast)
+  displayForecast(fourDaysFilter)
 }
 
-const displayForecast = (filteredForecast) => {
-  filteredForecast.forEach((day) => {
+//function to display all weather data for the upcoming days
+const displayForecast = (fourDaysFilter) => {
+  fourDaysFilter.forEach((day) => {
     const forecastDate = new Date(day.dt * 1000)
     const dayIndex = forecastDate.getDay()
     const weekday = dayNames[dayIndex]
     const forecastTemp = Math.round(day.main.temp)
     const weatherIcon = day.weather[0].icon
-    forecastContainer.innerHTML += `<div class="weekday-temp"><div>${weekday}</div>
-    <div>${forecastTemp} °C<img id="weather-icon" src="${iconURL}${weatherIcon}@2x.png"/></div></div>`
+    forecastContainer.innerHTML += `<div class="weekday-temp"><div class="weekday"><h4>${weekday}</h4></div>
+    <div class="temp"><img id="weather-icon" src="${iconURL}${weatherIcon}@2x.png"/><h4>${forecastTemp} °C</h4></div></div>`
   })
 }
 
+//Function to take in the city one search for
 const filterSearch = () => {
- const chosenCity = searchInput.value
+  const chosenCity = searchInput.value
   getData(chosenCity)
 }
 
 //Eventlisteners
-searchButton.addEventListener('click', filterSearch())
+searchButton.addEventListener('click', filterSearch)
 searchInput.addEventListener('keyup', function (event) {
-  if (event.key == "Enter") {
-      filterSearch()
-    }
+  if (event.key == 'Enter') {
+    filterSearch()
   }
-)
-
-//const weatherIcon = document.createElement('img')
-//  backgroundDiv.style.backgroundImage = 'url(./design3/hot.desktop.16.9.jpg)'
-//weatherIcon.src = 'url(./design3/sunrise_icon.svg'
-
-
-//<img src="./design3/${icon}.png">
-// const icon = data.weather[0].main
-
-//const iconURL = "https://openweathermap.org/img/wn/"
-//<img src="${iconURL}${weather.iconID}@2x.png"/>
+})
