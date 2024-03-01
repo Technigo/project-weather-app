@@ -1,10 +1,9 @@
-//API - but I dont have time to break it down now
-/*
-const BASE_URL =
-  "https://api.openweathermap.org/data/2.5/weather?q=Umea,Sweden&units=metric&APPID=";
-const API_KEY = "1e48fdf267ccc8ee33c1c78150dcbab1";
-const city = "Umea, Sweden";
-*/
+//API 
+const BASE_URL = "https://api.openweathermap.org/data/2.5/"
+const API_KEY = "1e48fdf267ccc8ee33c1c78150dcbab1"
+const city = "Umea, Sweden"
+
+const URL = `${BASE_URL}weather?q=${city}&units=metric&APPID=${API_KEY}`
 
 //DOM selectors
 const weatherContainer = document.getElementById('weather-container')
