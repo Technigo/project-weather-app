@@ -3,11 +3,11 @@
   padding: 0;
 }
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: Roboto;
   background-color: white;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(#acaeff, #ffffff);
+  background: linear-gradient(#8589ff, #e8e9ff);
   height: 100%;
   margin: 0;
   background-repeat: no-repeat;
@@ -22,20 +22,35 @@ body {
   font-size: 2rem;
 }
 
+button {
+}
+
 .current-temp {
-  font-size: 200px;
+  font-size: 300px;
+  font-weight: 300;
+  color: white;
 }
 
 .current-city {
-  font-size: 100px;
+  font-size: 180px;
+  color: white;
+  font-weight: 300;
 }
 
 .current-sky {
-  font-size: 45px;
+  font-size: 80px;
   margin-bottom: 30px;
+  font-weight: 200;
+  color: white;
 }
 
 .weather-detail {
-  font-size: 36px;
-  display: flex;
+  font-size: 60px;
+  font-weight: 200;
+  color: white;
+}
+
+.week-days {
+  background-color: whitesmoke;
+  color: #707070;
 }
