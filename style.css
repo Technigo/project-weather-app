@@ -27,7 +27,7 @@ main {
     margin-left: 40px;
     display: flex;
     flex-direction: column;
-    width: 296px;
+    width: 80%;
     height: 360px;
     display: flex;
     flex-direction: column;
@@ -46,11 +46,11 @@ h1 {
 
 #container {
     margin-left: 40px;
-    width: 296px;   
+    width: 80%;   
 }
 
 .forecast {
-    width: 296px;
+    width: 100%;
     border-bottom: 2px dotted;
     display: flex;
     justify-content: space-between;
@@ -74,4 +74,23 @@ h1 {
 .green-yellow-sunny {
     background-color: #F7E9B9;
     color: #2A5510;
+}
+
+@media (min-width:667px){
+    body {
+        display: grid;
+        grid-template-rows: 1fr 4fr;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+    header {
+        grid-column: span 2;
+    }
+    #container{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 360px;
+        padding-bottom: 30px;
+    }
 }
