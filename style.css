@@ -11,6 +11,7 @@ body {
     display: flex;
     flex-direction: column;
     margin: 0px;
+    color: #404040;
 }
 
 header {
@@ -34,6 +35,13 @@ main {
 
 main>img {
     width: 75px;
+    margin-top: 20px;
+}
+
+main p {
+    font-size: 75px;
+    padding-top: 0;
+    margin-bottom: 23px;
 }
 
 h1 {
@@ -73,6 +81,20 @@ h1 {
 .green-yellow-sunny {
     background-color: #F7E9B9;
     color: #2A5510;
+}
+
+.red-yellow-lightning {
+    background-color: #F5E3A3;
+    color: #C03321;
+}
+
+.blue-snowy {
+    background-color: #FFFBFC;
+    color: #43BBEF;
+}
+.blue-drizzle {
+    background-color: #FAE6C7;
+    color: #8ED5F6;
 }
 
 @media (min-width:667px){
