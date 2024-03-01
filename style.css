@@ -9,6 +9,13 @@
   font-weight: 300;
   margin: 0;
 }
+html {
+  overflow: hidden;
+}
+
+.hidden {
+  display: none;
+}
 
 body {
   color: var(--clr_main_text);
@@ -22,7 +29,7 @@ body {
 }
 .container {
   position: relative;
-  height: 50vh;
+  height: 25rem;
   background: linear-gradient(
     0.25turn,
     var(--clr_day_gradient_start),
@@ -32,9 +39,6 @@ body {
   border-bottom-right-radius: 50% 10%;
 }
 
-#temp-container {
-  display: flex;
-}
 #temp {
   font-size: 3rem;
   margin: 1rem;
@@ -64,36 +68,79 @@ body {
   width: 150px;
 }
 
-#forecast {
+.button-container {
   display: flex;
-  flex-direction: column;
-  margin-top: 25vh;
-  color: var(--clr_dark_text);
+  justify-content: flex-end;
+  margin-right: 2rem;
 }
 
-.forecastDay {
-  margin-inline: 1rem;
-  margin-block: 1rem;
-  padding: 1rem;
-  border-radius: 50px;
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-}
-
-.forecastDay:hover {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-.forecastDay img {
-  height: 20px;
-}
-
-.animation-button {
-  position: absolute;
-  top: 375px;
-  right: 2rem;
+#forecast-button {
   width: 100px;
   height: 100px;
   border-radius: 50%;
   background-color: var(--clr_forecast_button);
   box-shadow: 0 2px 5px 0px rgb(0, 0, 0, 0.2);
+  display: flex;
+  position: relative;
+  transition: 0.2s;
+}
+
+#arrow {
+  position: relative;
+  right: 5px;
+  margin: auto;
+  height: 20px;
+  width: 20px;
+  rotate: 45deg;
+  border-top: 5px solid var(--clr_main_text);
+  border-right: 5px solid var(--clr_main_text);
+}
+
+#forecast-button:hover {
+  rotate: 90deg;
+  box-shadow: 2px 0px 5px 0px rgb(0, 0, 0, 0.2);
+  transition: 0.2s ease-in-out;
+}
+.animation {
+  transition: all 0.5s ease-out;
+}
+
+.animation-active {
+  height: 100vh;
+  border-radius: 0;
+}
+
+.transition-active {
+  bottom: 1rem;
+  right: 1rem;
+  margin: 2rem;
+  translate: 0 45vh;
+  transition: 0.5s ease-out;
+}
+
+#forecast {
+  display: flex;
+  margin-top: 2rem;
+  height: 50vh;
+  flex-direction: column;
+  justify-content: space-evenly;
+  color: var(--clr_dark_text);
+  overflow: hidden;
+}
+
+.forecastDay {
+  margin-inline: 1rem;
+  padding: 1rem;
+  border-radius: 50px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  z-index: 0;
+}
+
+.forecastDay:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.forecastDay img {
+  height: 20px;
 }

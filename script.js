@@ -18,8 +18,13 @@ const temp = document.getElementById("temp");
 const description = document.getElementById("description");
 const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
-const animationButton = document.getElementById("animation-button");
+const weatherImage = document.getElementById("weather-image");
+const buttonContainer = document.getElementById("button-container");
+const forecastButton = document.getElementById("forecast-button");
 const forecast = document.getElementById("forecast");
+const skyContainer = document.getElementById("sky-container");
+
+skyContainer.classList.remove("animation-active");
 
 const fetchWeather = () => {
   fetch(URL)
@@ -31,6 +36,7 @@ const fetchWeather = () => {
       description.innerHTML = `<h3>${data.weather[0].main}</h3>`;
       let sunriseHoursMinutes = hoursMinutes(data.sys.sunrise);
       let sunsetHoursMinutes = hoursMinutes(data.sys.sunset);
+      weatherImage.src = chooseImage(data.weather[0].main);
 
       sunrise.innerHTML = `<h3>${sunriseHoursMinutes}</h3>`;
       sunset.innerHTML = `<h3>${sunsetHoursMinutes}</h3>`;
@@ -66,7 +72,6 @@ const fetchForecast = () => {
     .catch((error) => console.log("Caught error:", error));
 };*/
 
-
 const fetchForecast = () => {
   fetch(FORECAST_URL)
     .then((response) => response.json())
@@ -77,24 +82,20 @@ const fetchForecast = () => {
         days[date] = [...(days[date] ? days[date] : []), row];
         return days;
       }, {});
-
+      console.log("Grouped Data:", groupedData);
+      let i = 0;
       for (let date of Object.keys(groupedData)) {
-        console.log("Date:", date);
-        // current date -> date
-        // original items array for this date -> groupedData[date]
-        console.log("MaxTemp:", getMax(groupedData[date], "temp_max"));
-        console.log("MinTemp:", getMin(groupedData[date], "temp_min"));
-
-        console.log("\n\n");
-
-        forecast.innerHTML += `<div class="forecastDay">
+        if (i < 5) {
+          i++;
+          forecast.innerHTML += `<div class="forecastDay">
         <p class="forecastDayWeekday">${displayDay(groupedData[date][0].dt)}</p>
-        <img src="assets/partially.png" alt="">
+        <img src=${chooseImage(groupedData[date][0].weather[0].main)} alt="">
         <p class="forecastDayTemp">${Math.round(
           getMax(groupedData[date], "temp_max")
         )}° / ${Math.round(
-          getMin(groupedData[date], "temp_min")
-        )}°&#x1D9C</p></div>`;
+            getMin(groupedData[date], "temp_min")
+          )}°&#x1D9C</p></div>`;
+        }
       }
     });
 
@@ -111,7 +112,7 @@ const fetchForecast = () => {
       arr.map((item) => item.main[attr])
     );
   }
-}
+};
 fetchForecast();
 
 // Clean up the date to the 24h numbers with just hours and minutes.
@@ -132,13 +133,55 @@ const displayDay = (time) => {
 };
 
 //Choose Image based on weather description.
-const chooseImage = (weather) => {};
+const chooseImage = (weather) => {
+  console.log(weather);
+  if (
+    weather == "Mist" ||
+    weather == "Smoke" ||
+    weather == "Haze" ||
+    weather == "Dust" ||
+    weather == "Fog" ||
+    weather == "Sand" ||
+    weather == "Ash" ||
+    weather == "Squall" ||
+    weather == "Tornado"
+  ) {
+    return "assets/mist.png";
+  } else if (weather == "Thunderstorm") {
+    return "assets/thunder.png";
+  } else if (weather == "Drizzle") {
+    return "assets/drizzle.png";
+  } else if (weather == "Rain") {
+    return "assets/rain.png";
+  } else if (weather == "Snow") {
+    return "assets/snow.png";
+  } else if (weather == "Clear") {
+    return "assets/sunny.png";
+  } else if (weather == "Clouds") {
+    return "assets/cloudy.png";
+  } else {
+    return "assets/partially.png";
+  }
+};
 
 // Check to see if current time is after sunset and before sunrise. Display moon.
 const checkMoon = (sunrise, sunset) => {};
 
 // Toggle forecast
-const toggleForecast = () => {};
+const toggleForecast = () => {
+  if (skyContainer.classList.contains("animation-active")) {
+    skyContainer.classList.remove("animation-active");
+    buttonContainer.classList.remove("transition-active");
+    forecast.classList.remove("hidden");
+  } else {
+    skyContainer.classList.add("animation", "animation-active");
+    buttonContainer.classList.add("animation", "transition-active");
+    forecast.classList.add("hidden");
+  }
+  console.log("toggleForecast");
+};
 
 // Eventlisteners
-//animationButton.addEventListener("click", toggelForecast())
+forecastButton.addEventListener("click", (e) => {
+  toggleForecast();
+});
