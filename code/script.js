@@ -24,27 +24,24 @@ const fetchWeather = () => {
 		.then((response) => response.json())
 		.then((data) => {
 			console.log(data)
-		const nameChoice = data.name
-		const tempChoice = Math.trunc(data.main.temp)
-		const weatherDescr = data.weather[0].main
-
-		handleName.innerText = nameChoice
-		handleTemp.innerText = `${tempChoice} °C`
-		weatherDescription.innerText = `${weatherDescr}`
-		console.log('hej')
-			
+			const nameChoice = data.name
+			const tempChoice = Math.trunc(data.main.temp)
+			const weatherDescr = data.weather[0].main
+			handleName.innerText = nameChoice
+			handleTemp.innerText = `${tempChoice} °C`
+			weatherDescription.innerText = `${weatherDescr}`
+			console.log('hej')
 		})
 }
 fetchWeather()
 
 //Function to get data to HTML
 
-
-
 //Function showing content on browser with .innerHTML
+//weather-container = temp, descr, sunset and sunrise
 const showWeather = () => {
 	weatherContainer.innerHTML = `
-			<p>hello world<p>`
+			<p>${tempChoice} °C<p>`
 	cityContainer.innerHTML = `
 			<p>hello world<p>`
 	forecastContainer.innerHTML = `
