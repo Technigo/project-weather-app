@@ -10,3 +10,4 @@ If I would have more time I would add a search bar where a user can search a cit
 ## View it live
 
 Here you can find the weather forecast from Zurich, Switzerland:
+https://linda-f-project-weather-app.netlify.app/
