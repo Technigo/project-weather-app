@@ -1,0 +1,182 @@
+body {
+    display: flex; 
+    justify-content: center;
+    background-color: white;
+    font-family: 'Roboto', sans-serif;
+    margin: 0%;
+}
+
+.wrapper {
+    width: 390px; 
+    height: 850px; 
+    background-color: rgb(224,224,224); 
+    overflow: hidden; 
+}
+
+header {
+    color: white; 
+    height: 450px; 
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden; 
+    position: relative; 
+}
+
+.header-background {
+    content: ""; 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    height: 100%; 
+    width: 100%; 
+    background-image:  url("../images/Sunny-cropped.png");
+    border-radius: 0 0 100% 100%; 
+    transform: scaleX(1.5); 
+}
+
+.search-display {
+    z-index: 1; 
+    width: 100px; 
+    margin-bottom: 50px;
+
+}
+
+.search-display img {
+    height: 30px; 
+    margin: 20px 0 0 20px; 
+}
+
+.main-weather {
+    z-index: 1; 
+    display: flex;
+    flex-direction: column;
+}
+
+.tempSize {
+    display: flex;
+    margin-left: 30px; 
+}
+
+.c {
+    font-size: 30px;
+    color: white; 
+    margin-top: 10px;
+}
+
+.temp {
+    font-size: 100px;
+    color: white;
+    margin: 0%;
+}
+
+.city {
+    color: white; 
+    margin: 0%;
+    font-size: 40px;
+    margin-left: 30px;
+}
+
+.weatherIcon {
+height: 70px; 
+}
+
+.weather-type {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 30px; 
+}
+
+.weather-type-text {
+    margin: 0; 
+    margin-right: 10px; 
+    color: white;
+    font-size: 25px;
+}
+
+.sun-set-rise {
+    width: 350px; 
+    color: white;
+    font-size: 20px;
+    margin-top: 10px; 
+    padding: 0%;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+}
+
+.sunrise {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100px; 
+}
+
+.sunset { 
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100px; 
+}
+
+.sunrise img {
+    height: 30px; 
+}
+
+.sunset img {
+    height: 30px; 
+}
+
+.forecast {
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: rgb(224,224,224);
+    color: rgb(72,72,74); 
+    height: 250px; 
+    width: 100%; 
+    margin-top: 50px; 
+    font-size: 20px;
+}
+
+.forecast-row {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%; 
+    height: 40px; 
+    align-items: center;
+}
+
+
+.forecast-row img {
+    height: 50px; 
+}
+
+
+@media(min-width: 668px) and (max-width: 1024px) {
+
+body {
+    display: flex; 
+    justify-content: center; 
+}
+.wrapper {
+    width: 390px;
+    margin: 100px 0 100px 0;
+    box-shadow: 10px 10px 5px lightgrey;  
+}
+}
+
+@media (min-width: 1025px){
+
+body {
+    display: flex; 
+    justify-content: center;
+}
+.wrapper {
+     width: 390px;
+     margin: 100px 0px 100px 0px; 
+     box-shadow: 10px 10px 5px lightgrey;
+    }
+}
