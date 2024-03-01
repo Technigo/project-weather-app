@@ -66,10 +66,6 @@ header,
   padding: 10px 10px 20px 10px;
 }
 
-.weather-forecast {
-  padding: 10px 10px 20px 10px;
-}
-
 header i {
   font-size: var(--font-size-l);
 }
@@ -121,7 +117,7 @@ header i {
 
 .switch-button {
   align-self: flex-end;
-  font-size: var(--font-size-m);
+  font-size: var(--font-size-s);
   background-color: #757aff;
   padding: 15px;
   color: white;

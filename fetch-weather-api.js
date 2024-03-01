@@ -16,12 +16,10 @@ const city = "Lundsberg";
 const API_KEY = "ebcad7517d4d5102daa2078b4d1b8409";
 const weatherTodayURL = `${BASE_TODAY_URL}q=${city}&units=metric&APPID=${API_KEY}`;
 
-// Function to update the UI with todays weather information
-const updateWeatherToday = (weatherTodayData, city) => {
+// Function to update UI with todays weather
+const updateWeatherToday = (weatherTodayData) => {
   /* ............START OF created variables........... */
-  // A varieble temperatureTodayRounded (todays temperature, 1 decimal)
   const temperatureTodayRounded = weatherTodayData.main.temp.toFixed(1);
-  // Creating a weatherTodayLocation variable
   const weatherTodayLocation = weatherTodayData.name;
   // Creating a weatherTodayDescription with capital starting-letter
   const weatherTodayDescription = weatherTodayData.weather
@@ -35,11 +33,9 @@ const updateWeatherToday = (weatherTodayData, city) => {
 
   // Converting sunrise date from unix timestamps to milliseconds
   const sunriseTimeMilliseconds = new Date(weatherTodayData.sys.sunrise * 1000);
-  console.log(sunriseTimeMilliseconds);
 
   // Converting sunrise date from unix timestamps to milliseconds
   const sunsetTimeMilliseconds = new Date(weatherTodayData.sys.sunset * 1000);
-  console.log(sunsetTimeMilliseconds);
 
   // Formating sunrisetime to a readable format in Swedish
   const sunriseTimeFormatted = sunriseTimeMilliseconds.toLocaleTimeString(
@@ -49,8 +45,6 @@ const updateWeatherToday = (weatherTodayData, city) => {
       minute: "2-digit",
     }
   );
-  // Testing formatted sunrise-time
-  console.log("Formatted sunrise time:", sunriseTimeFormatted);
 
   // Formating sunsettime to a readable format in Swedish
   const sunsetTimeFormatted = sunsetTimeMilliseconds.toLocaleTimeString(
@@ -60,7 +54,6 @@ const updateWeatherToday = (weatherTodayData, city) => {
       minute: "2-digit",
     }
   );
-  console.log("Formatted sunset time:", sunsetTimeFormatted);
 
   // Convert the data timestamp to milliseconds and adjust for the timezone shift
   const dataTimestampMilliseconds =
@@ -80,7 +73,6 @@ const updateWeatherToday = (weatherTodayData, city) => {
     hour: "2-digit",
     minute: "2-digit",
   });
-  console.log("Local time at specified location", formattedLocalTime);
 
   /* ............START OF INNER-HTML-additions........... */
   // Todays temperature
@@ -88,24 +80,13 @@ const updateWeatherToday = (weatherTodayData, city) => {
    <p class=temperature> ${temperatureTodayRounded} </p>
    <p class=degrees> °C </p> `;
 
-  // testing todaysTemperature
-  console.log(`"todays temperature:", ${temperatureTodayRounded}`);
-
   // Todays weather-location
   weatherLocation.innerHTML = `
    <p> ${weatherTodayLocation} </p>`;
 
-  // testing the weatherLocation-name
-  console.log(`"name:", ${weatherTodayLocation}`);
-
   // Todays weather with description
   todaysWeather.innerHTML = `
     <p> ${weatherTodayDescription} </p>`;
-
-  // testing the todaysWeather
-  console.log(`"weather description:", ${weatherTodayDescription}`);
-
-  console.log("Weatherdata:", weatherTodayData);
 
   sunrise.innerHTML = `
    <p> sunrise ${sunriseTimeFormatted} </p>`;
@@ -148,49 +129,52 @@ const BASE_FORECAST_URL = "https://api.openweathermap.org/data/2.5/forecast?";
 
 const weatherForecastURL = `${BASE_FORECAST_URL}q=${city}&units=metric&APPID=${API_KEY}`;
 
-console.log("weather forecast:", weatherForecastURL);
+// Function to update UI with weather-forecast
 
-// Function to update the UI with todays weather information
 const updateWeatherForecast = (weatherForecastData) => {
-  const filteredWeatherData = weatherForecastData.list
-    .filter((item) => item.dt_txt.includes("12:00:00"))
-    .map((item) => {
-      const timestamp = item.dt * 1000; // Convert milliseconds
-      const date = new Date(timestamp);
-      const dayOfWeek = date.toLocaleString("en-GB", { weekday: "long" }); // Get day of week
-      const weatherIconCode = item.weather[0].icon; // Get icon code from weather
-      const createIconUrl = `http://openweathermap.org/img/wn/${weatherIconCode}.png`; // Construct icon URL
-      const Temperature = item.main.temp.toFixed(0); // get temperature
-      return {
-        dayOfWeek,
-        createIconUrl,
-        Temperature,
-      };
-    });
-  console.log(filteredWeatherData);
+  const filteredWeatherData = weatherForecastData.list.filter((weatherData) =>
+    weatherData.dt_txt.includes("12:00:00")
+  );
 
-  /* ............START OF INNER-HTML-additions........... */
-  forecastDay.innerHTML = filteredWeatherData
-    .map((forecast) => `<p> ${forecast.dayOfWeek} </p>`)
-    .join("");
-  forecastWeather.innerHTML = filteredWeatherData
-    .map(
-      (forecast) => `<img src="${forecast.createIconUrl}" alt="Weather Icon">`
-    )
-    .join("");
-  forecastTemperature.innerHTML = filteredWeatherData
-    .map((forecast) => `<p>${forecast.Temperature}°C</p>`)
-    .join("");
+  // Clear existing content
+  forecastDay.innerHTML = "";
+  forecastWeather.innerHTML = "";
+  forecastTemperature.innerHTML = "";
+
+  let forecastDayHTML = "";
+  let forecastWeatherHTML = "";
+  let forecastTemperatureHTML = "";
+
+  filteredWeatherData.forEach((filteredData) => {
+    // Convert to millieseconds
+    const timestamp = filteredData.dt * 1000;
+    // Get date
+    const date = new Date(timestamp);
+    // Get day of week
+    const dayOfWeek = date.toLocaleString("en-GB", {
+      weekday: "long",
+    });
+    // Get icon-code for weather
+    const weatherIconCode = filteredData.weather[0].icon;
+    // Construct icon URL
+    const iconUrl = `http://openweathermap.org/img/wn/${weatherIconCode}.png`;
+    // Get temperature
+    const temperature = filteredData.main.temp.toFixed(0);
+
+    forecastDayHTML += `<p> ${dayOfWeek} </p>`;
+    forecastWeatherHTML += `<img src="${iconUrl}" alt="Weather Icon">`;
+    forecastTemperatureHTML += `<p> ${temperature} °C</p>`;
+  });
+  forecastDay.innerHTML = forecastDayHTML;
+  forecastWeather.innerHTML = forecastWeatherHTML;
+  forecastTemperature.innerHTML = forecastTemperatureHTML;
 };
 
 const fetchWeatherForecast = () => {
   fetch(weatherForecastURL)
     .then((response) => response.json())
     .then((weatherForecastData) => {
-      updateWeatherForecast(weatherForecastData); // Corrected the function call
-    })
-    .catch((error) => {
-      console.error("Error fetching weather forecast:", error);
+      updateWeatherForecast(weatherForecastData);
     });
 };
 

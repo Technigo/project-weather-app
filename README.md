@@ -11,4 +11,4 @@ Then I worked in branches, first the sunrise & sunset and after that the weather
 
 ## View it live
 
-Here is my netlify-link:
+Here is my netlify-link: https://ericas-weather-app.netlify.app/
