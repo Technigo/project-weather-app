@@ -1,17 +1,39 @@
 const BASE_WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather?q=";
 const API_KEY = "ea8ddf441b50c5601343ca1ba4aa982c";
 const city = "Stockholm";
-
 const weatherURL = `${BASE_WEATHER_URL}${city}&units=metric&APPID=${API_KEY}`;
+const BASE_FORECAST_URL = "https://api.openweathermap.org/data/2.5/forecast?q=";
+const forecastURL = `${BASE_FORECAST_URL}${city}&units=metric&APPID=${API_KEY}`;
 
 //DOM Selectors
-
 const tempWeather = document.getElementById("tempWeather");
 const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
 const image = document.getElementById("image");
+const imageContainer = document.getElementById("imageContainer");
 const currentCity = document.getElementById("currentCity");
 const forecast = document.getElementById("fourDayForecast");
+const body = document.getElementById("body");
+
+//functions to update the image and text depending on weather description
+const clouds = () => {
+  image.src = "./design/design2/icons/noun_Cloud_1188486.svg";
+  body.classList.add("clouds");
+  imageContainer.innerHTML = `Light a fire and get cozy. ${city} is looking grey today.
+  `;
+};
+
+const clearSky = () => {
+  image.src = "./design/design2/icons/noun_Sunglasses_2055147.svg";
+  body.classList.add("clear");
+  imageContainer.innerHTML = `Get your sunnies on. ${city} is looking rather great today.`;
+};
+
+const rain = () => {
+  image.src = "./design/design2/icons/noun_Umbrella_2030530.svg";
+  body.classList.add("rain");
+  imageContainer.innerHTML = `Don't foreget your umbrella. It's wet in ${city} today.`;
+};
 
 //fetch weather data
 const fetchWeatherData = () => {
@@ -25,36 +47,31 @@ const fetchWeatherData = () => {
     .then((data) => {
       console.log("weather:", data);
 
-      cityName = data.name;
-      currentCity.textContent = `
-      ${cityName}
-      `;
+      //get weather description and temp at city
+      const getWeatherDescription = () => {
+        const weatherDescription = data.weather[0].description;
 
-      const roundedTemp = Math.round(data.main.temp * 10) / 10;
+        const roundedTemp = Math.round(data.main.temp * 10) / 10;
 
-      const weatherDescription = data.weather[0].description;
-      tempWeather.textContent = `
-      ${weatherDescription} | ${roundedTemp}°c
-      `;
+        tempWeather.textContent = `
+        ${weatherDescription} | ${roundedTemp}°c
+        `;
 
-      //insert weather image depending on the weather description
-      if (
-        weatherDescription === "few clouds" ||
-        "scattered clouds" ||
-        "broken clouds"
-      ) {
-        image.innerHTML = `
-        img.src = "./design/design2/icons/noun_Sunglasses_2055147.svg"
-        `;
-      } else if (weatherDescription === "clear sky") {
-        image.innerHTML = `
-        img.src = "./design/design2/icons/noun_Cloud_1188486.svg"
-        `;
-      } else {
-        image.innerHTML = `
-        img.src = "./design/design2/icons/noun_Umbrella_2030530.svg"
-        `;
-      }
+        if (
+          weatherDescription === "few clouds" ||
+          weatherDescription === "scattered clouds" ||
+          weatherDescription === "broken clouds" ||
+          weatherDescription === "fog"
+        ) {
+          clouds();
+        } else if (weatherDescription === "clear sky") {
+          clearSky();
+        } else {
+          //showwer rain, rain, thunderstorm, snow, must
+          rain();
+        }
+      };
+      getWeatherDescription();
 
       //handle sunrise and sunset time
       const sunriseTime = new Date(data.sys.sunrise * 1000);
@@ -80,6 +97,11 @@ const fetchWeatherData = () => {
       sunset.innerHTML = `
       sunset ${formattedSunset}
       `;
+
+      const cityName = data.name;
+      currentCity.textContent = `
+      ${cityName}
+      `;
     })
     .catch((error) => {
       console.log("Fetch error:", error);
@@ -89,9 +111,6 @@ const fetchWeatherData = () => {
 fetchWeatherData();
 
 //fetch five day forecast
-const BASE_FORECAST_URL = "https://api.openweathermap.org/data/2.5/forecast?q=";
-
-const forecastURL = `${BASE_FORECAST_URL}${city}&units=metric&APPID=${API_KEY}`;
 
 const fetchForecast = () => {
   fetch(forecastURL)
