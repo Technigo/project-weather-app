@@ -1,12 +1,10 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This week was a solo project of creating a weather app fetching API. We were to use branches for different features in the project. I chose to create my own design, inspired by the base of the 2 design available, since I really enjoy playing around with ideas. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I started off by working on the fetch and solving the output of the data from the API. I worked on the design last, since I found that the javascript is the most challenging. I was stuggling with the change of the forecast into 4 days where the first array was removed, since it often was the same day (before 12) and didn't belong in the forecast. But after 12, you would then jump one day too far and skip tomorrows forecast. I haven't found a way to solve this.
 
 ## View it live
 
