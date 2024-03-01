@@ -14,9 +14,20 @@
   color: black;
 }
 
-#weekdays {
+/* Styling for weekdays */
+.weekdays {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.forecast-row {
+  width: calc(100% / 7); /* Make each forecast item take up equal space */
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.forecast-row h3 {
   font-family: "Montserrat", sans-serif;
-  font-weight: 400;
-  font-size: 21px;
-  color: black;
+  font-size: 16px;
+  color: #333;
 }
