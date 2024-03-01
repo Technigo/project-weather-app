@@ -116,14 +116,25 @@ ul {
   line-height: 45.1px;
 }
 
+.forecast-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .weekly-weather {
-  margin: 30px 40px 0px 40px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 30px 40px 0px;
   font-size: 21px;
   font-weight: 400;
   line-height: 36px;
 }
 
 .week-temp {
+  min-width: 285px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -141,19 +152,22 @@ ul {
 }
 
 footer {
-  margin-top: 4rem;
-  text-align: center;
+  margin: 4rem 0 10px 40px;
   font-size: 1rem;
 }
 
-@media screen and (min-width: 760px) and (max-width: 1920px) {
-  .description-temp {
-    margin-top: 8rem;
+@media screen and (min-width: 760px) and (max-width: 2130px) {
+  .daily-weather {
+    margin: 80px 47px 0;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
-    font-size: 30px;
-    font-weight: 700;
+  }
+
+  .sun-time {
+    font-size: 19px;
+    margin-top: 2px;
   }
 
   .sun-time {
@@ -175,12 +189,21 @@ footer {
     margin-top: 6rem;
   }
 
+  .tip-text,
+  .weather-description {
+    margin-top: 18px;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 45.1px;
+  }
+
   .weekly-weather {
-    margin: 50px 500px 0px 500px;
+    margin-top: 50px;
+    justify-content: center;
   }
 
   footer {
-    margin-top: 10rem;
+    margin: 7rem 0 0 0;
     text-align: center;
     font-size: 1rem;
   }
