@@ -75,10 +75,34 @@ const fetchWeatherData = (cityName) => {
         //If statements changing background based on weather condition
         if (weatherToday === "Clear") {
           upperBackground.style.backgroundImage = `url("./assets/day-clear.jpg")`
+        } else if (weatherToday === "Clouds") {
+          upperBackground.style.backgroundImage = `url("./assets/day-cloud.jpg")`
+        } else if (weatherToday === "Thunderstorm") {
+          upperBackground.style.backgroundImage = `url("./assets/thunder.jpg")`
+        } else if (weatherToday === "Snow") {
+          upperBackground.style.backgroundImage = `url("./assets/day-snow.jpg")`
+        } else if (weatherToday === "Rain" || weatherToday === "Drizzle") {
+          upperBackground.style.backgroundImage = `url("./assets/day-rain.jpg")`
+        } else if (atmosphere.includes(weatherToday)) {
+          upperBackground.style.backgroundImage = `url("./assets/day-atmosphere.jpg")`
+        } else {
+          upperBackground.style.backgroundImage = `url("./assets/day-cloud.jpg")`
         }
       } else {
         //If it's not daytime, so 20-06
-        //Show clear/snow/cloudy/thunder
+        if (weatherToday === "Clear") {
+          upperBackground.style.backgroundImage = `url("./assets/night-clear.jpg")`
+        } else if (weatherToday === "Clouds") {
+          upperBackground.style.backgroundImage = `url("./assets/night-cloud.jpg")`
+        } else if (weatherToday === "Thunderstorm") {
+          upperBackground.style.backgroundImage = `url("./assets/thunder.jpg")`
+        } else if (weatherToday === "Snow") {
+          upperBackground.style.backgroundImage = `url("./assets/night-snow.jpg")`
+        } else if (weatherToday === "Rain") {
+          upperBackground.style.backgroundImage = `url("./assets/night-rain.jpg")`
+        } else {
+          upperBackground.style.backgroundImage = `url("./assets/night-cloud.jpg")`
+        }
       }
 
       //Display in HTML
