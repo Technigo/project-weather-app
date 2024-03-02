@@ -5,6 +5,7 @@ const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
 const icon = document.getElementById("icon");
 const promptText = document.getElementById("prompt-text");
+const forecastTable = document.getElementById("forecast-table");
 
 //////////////// GLOBAL VARIABLES ///////////////
 const MY_API_KEY = "31320abec19306a046f96f4c46f01157";
@@ -78,19 +79,34 @@ const updatePrompt = (currentWeatherData) => {
   }
 };
 
-//////// Function to update current weather, sunrise and sunset ////////
+//////// Functions to update HTML ////////
 
 const updateCurrentWeather = (currentWeatherData) => {
   // format current weather:
   const weatherDescription = currentWeatherData.weather[0].main.toLowerCase();
   const currentTemp = Math.round(currentWeatherData.main.temp * 10) / 10;
   currentWeather.innerHTML = `${weatherDescription} | ${currentTemp}°`;
-  // format sunrise time
+  // format sunrise time:
   const sunriseTime = formatTime(currentWeatherData.sys.sunrise);
   sunrise.innerHTML = `sunrise ${sunriseTime}`;
-  // format sunset time
+  // format sunset time:
   const sunsetTime = formatTime(currentWeatherData.sys.sunset);
   sunset.innerHTML = `sunset ${sunsetTime}`;
+};
+
+const updateForecast = (filteredForecastList) => {
+  forecastTable.innerHTML = "";
+  filteredForecastList.forEach((listItem) => {
+    const date = new Date(listItem.dt * 1000);
+    const weekday = getWeekday(date);
+    const temp = Math.round(listItem.main.temp * 10) / 10;
+    forecastTable.innerHTML += `
+    <tr>
+    <td>${weekday}</td>
+    <td>icon</td>
+    <td>${temp}°</td>
+  </tr>`;
+  });
 };
 
 ///////////// Function to update HTML //////////////
@@ -102,7 +118,7 @@ const handleCurrentWeatherData = (currentWeatherData) => {
 };
 
 const handleForecastData = (forecastData) => {
-  console.log(forecastData.list);
+  console.log("forecast data", forecastData);
   const filteredForecast = forecastData.list.filter((listItem) => {
     //filter list items
     const date = new Date(listItem.dt * 1000); //convert to milliseconds and create date object
@@ -117,6 +133,7 @@ const handleForecastData = (forecastData) => {
     }
   });
   console.log(filteredForecast);
+  updateForecast(filteredForecast);
 };
 
 // functions to recieve days for forecast
@@ -137,7 +154,7 @@ const getLastDateOfForecast = () => {
 getLastDateOfForecast();
 
 const getWeekday = (date) => {
-  const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const weekdayArr = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const index = date.getDay();
-  return weekdays[index];
+  return weekdayArr[index];
 };
