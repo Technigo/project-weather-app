@@ -43,6 +43,7 @@ li {
 }
 
 @media only screen and (max-width:500px) {
+
     #temperature-sun-time {
         position: absolute;
         top: 49px;
@@ -63,4 +64,6 @@ li {
         width:73px;
         height:52px;
     }
+
 }
+

@@ -118,10 +118,10 @@ const forecast = () => {
             console.log (currentDay) 
 
             const fiveDaysWeather = Math.round(day.main.temp)
-
+        
             fiveDaysTemperature.innerHTML += `
             <li>
-            <span>${currentDay}</span> 
+            <span>${currentDay}</span>
             <span>${fiveDaysWeather}°</span>
             </li><hr>`
             styleElement.sheet.insertRule('li {list-style-type: none}')
@@ -135,5 +135,8 @@ const forecast = () => {
     })
 }
 forecast()
+
+
+
 
 
