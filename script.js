@@ -1,11 +1,11 @@
 //OpenWeatherMap API
-const BASE_URL = "http://api.openweathermap.org/data/2.5/weather?q=";
+const BASE_URL = "https://api.openweathermap.org/data/2.5/weather?q=";
 const API_KEY = "86cc8fe4b24936e5560b67f7b96b6c03";
 let urlCity = "Stockholm";
 const URL = `${BASE_URL}${urlCity}&units=metric&APPID=${API_KEY}`;
 
 // Forecast API
-const FORECAST_BASE_URL = "http://api.openweathermap.org/data/2.5/forecast?";
+const FORECAST_BASE_URL = "https://api.openweathermap.org/data/2.5/forecast?";
 let lat = "59.3326";
 let lon = "18.0649";
 const FORECAST_URL = `${FORECAST_BASE_URL}lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`;
