@@ -1,10 +1,17 @@
-* {
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  overflow: hidden;
 }
 
 body {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
@@ -14,6 +21,16 @@ body {
   --rainy-bg-color: #A3DEF7;
   --sunny-color: #2A5510;
   --sunny-bg-color: #F7E9B9;
+}
+
+main {
+  padding: 20px;
+  box-sizing: border-box;
+  margin: 0;
+  height: 100%;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1;
 }
 
 .montserrat-title {
@@ -38,20 +55,68 @@ body {
   background-color: var(--rainy-bg-color);
 }
 
+.overview {
+  padding-bottom: 20px;
+  font-size: 0.8rem;
+  font-weight: 300;
+  font-family: 'montserrat-title';
+}
+
 h1 {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 900;
+  font-weight: 600;
+  margin-left: 10px;
 }
 
-h1.sunny::before {
+#suggestion {
+  display: flex;
+  flex: row wrap;
+  align-items: flex-start;
+  max-width: 280px;
+  line-height: 1.5;
+  padding-bottom: 2rem;
+}
+
+#icon {
+  padding: 2rem 0 0.5rem 0;
+}
+
+#icon.sunny {
   content: url(/design/design2/icons/noun_Sunglasses_2055147.svg)
 }
 
-h1.rainy::before {
+#icon.rainy {
   content: url(/design/design2/icons/noun_Umbrella_2030530.svg)
 }
 
-h1.cloudy::before {
+#icon.cloudy {
   content: url(/design/design2/icons/noun_Cloud_1188486.svg)
+}
+
+.forcast {
+  display: grid;
+
+}
+
+.temp {
+  grid-area: temp;
+  text-align: right;
+  width: 40vw;
+  overflow: none;
+}
+
+.day {
+  text-align: left;
+  grid-area: day;
+  width: 40vw;
+}
+
+.lines {
+  display: grid;
+  grid-template-columns: 2 1fr;
+  grid-template-areas:
+    "day temp";
+  border: 0;
+  border-bottom: 1px dashed black;
 }
