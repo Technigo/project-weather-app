@@ -82,7 +82,7 @@ const fetchWeatherData = (cityName) => {
         } else if (weatherToday === "Snow") {
           upperBackground.style.backgroundImage = `url("./assets/day-snow.jpg")`
         } else if (weatherToday === "Rain" || weatherToday === "Drizzle") {
-          upperBackground.style.backgroundImage = `url("./assets/day-rain2.jpg")`
+          upperBackground.style.backgroundImage = `url("./assets/day-rain.jpg")`
         } else if (atmosphere.includes(weatherToday)) {
           upperBackground.style.backgroundImage = `url("./assets/day-atmosphere.jpg")`
         } else {
