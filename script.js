@@ -357,10 +357,11 @@ const getSunTime = (weatherData) => {
   //deconstruct the sunrise/set data from weatherData
   const { sunrise } = weatherData.sys;
   const { sunset } = weatherData.sys;
+  const { timezone } = weatherData;
 
   //convert UTC timeStamp into human-readable data
-  const sunriseData = new Date(sunrise * 1000);
-  const sunsetData = new Date(sunset * 1000);
+  const sunriseData = new Date((sunrise + timezone) * 1000);
+  const sunsetData = new Date((sunset + timezone) * 1000);
 
   //extract the exact time of the day by converting to local time
   //to prevent winter/summer time problem
@@ -375,22 +376,11 @@ const getSunTime = (weatherData) => {
   document.querySelector(".sunset").innerText = "sunset " + sunsetTime;
 };
 
-const searchWeather = () => {
-  getDailyWeather(document.querySelector(".search-bar").value);
-};
-document.querySelector(".searchBtn").addEventListener("click", searchWeather);
-document.querySelector(".search-bar").addEventListener("keyup", (event) => {
-  if (event.key === "Enter") {
-    searchWeather();
-    console.log(document.querySelector(".search-bar").value);
-  }
-});
-
 //fetch the 5-day 3-hour steps weather data
 // and trigger displayWeeklyWeather
-const getWeeklyWeather = () => {
+const getWeeklyWeather = (city) => {
   fetch(
-    `https://api.openweathermap.org/data/2.5/forecast?q=gothenburg&units=metric&appid=${apiKey}`
+    `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`
   )
     .then((response) => {
       return response.json();
@@ -404,10 +394,12 @@ const getWeeklyWeather = () => {
 };
 
 const weekday = document.querySelector(".weekday");
-const weektemp = document.querySelector(".week-temp");
+const forecastSection = document.querySelector(".forecast-section");
 let getFourDayTemp = [];
+let forecast = [];
 
 const displayWeeklyWeather = (weatherData) => {
+  forecastSection.innerHTML = "";
   //collect each hour's time+temp data from the weatherData
   const getHourlyhWeather = weatherData.list.map((item) => ({
     dt: item.dt,
@@ -439,17 +431,15 @@ const displayWeeklyWeather = (weatherData) => {
   const dayOfWeek = dayIndices.map((index) => daysOfWeek[index]);
 
   getFourDayTemp.forEach((item, index) => {
-    weektemp.innerHTML += `
-    <div class="forecast">
-    <p>${dayOfWeek[index]}</p> 
-    <p>${Math.round(item.temp)}°</p>
-    </div>
+    forecastSection.innerHTML += `
+    <ul class="forecast">
+    <li>${dayOfWeek[index]}</li> 
+    <li>${Math.round(item.temp)}°</li>
+    </ul>
     `;
-
-    // forecast.classList.add("cloudsThemeDash");
   });
 
-  forecast = weektemp.querySelectorAll(".forecast");
+  forecast = forecastSection.querySelectorAll(".forecast");
   console.log(forecast);
 
   forecast.forEach((item) => {
@@ -483,5 +473,19 @@ const displayWeeklyWeather = (weatherData) => {
     }
   });
 };
-let forecast = null;
-getWeeklyWeather();
+
+getWeeklyWeather("gothenburg");
+
+let userSearch = null;
+const searchWeather = () => {
+  userSearch = document.querySelector(".search-bar").value;
+  getDailyWeather(userSearch);
+  getWeeklyWeather(userSearch);
+};
+document.querySelector(".searchBtn").addEventListener("click", searchWeather);
+document.querySelector(".search-bar").addEventListener("keyup", (event) => {
+  if (event.key === "Enter") {
+    searchWeather();
+    console.log(userSearch);
+  }
+});

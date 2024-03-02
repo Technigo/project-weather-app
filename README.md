@@ -15,5 +15,4 @@ Additionaly, I tried to add in more icons and UI color theme to fit different we
     - responsice background image
 
 ## View it live
-
 https://yifan-weather-app.netlify.app/
