@@ -3,6 +3,7 @@
 const todaysWeatherBox = document.getElementById("todaysWeather");
 const sunsetSunriseBox = document.getElementById("sunsetSunrise");
 const messageBox = document.getElementById("weatherMessageBox");
+const weatherForecastBox = document.getElementById("weatherForecastBox");
 
 /////////////////////////-----Global variables----////////////////////////////
 
@@ -19,11 +20,11 @@ const forecastURL = `${forecastBaseURL}?q=${city}&units=${units}&APPID=${API_KEY
 
 //--------------functions that fetches the data needed---------------//
 
-// fetches the data from the API and converts it to json
+// fetches todays weather data from the API and converts it to json
 const fetchWeatherData = (url) => {
   return fetch(url)
     .then((response) => response.json())
-    .catch((error) => (messageBox.innerHTML = "oops .. something went wrong"));
+    .catch((error) => (messageBox.innerHTML = "<p>oops .. something went wrong</p>"));
 };
 
 // fetches todays weathercondition and temperature
@@ -32,6 +33,7 @@ const fetchTodaysWeather = () => {
     const weatherCondition = weatherData.weather[0].description;
     const todaysTemperature = weatherData.main.temp.toFixed(1);
     showsTodaysWeather(weatherCondition, todaysTemperature);
+    console.log(weatherData);
   });
 };
 
@@ -47,6 +49,27 @@ const fetchSunriseSunset = () => {
       minute: "2-digit",
     });
     showSunsetSunrise(sunriseData, sunsetData);
+  });
+};
+
+// fetches the forecast (4-5 days) weather data from the API and converts it to json
+const fetchForecast = (url) => {
+  return fetch(url)
+    .then((response) => response.json())
+    .catch((error) => (weatherForecastBox.innerHTML = "<p>oops .. something went wrong</p>"));
+};
+
+// fetches the forecast dates at 12:00
+const fetchForecastData = () => {
+  fetchForecast(forecastURL).then((forecastData) => {
+    const filteredForecastData = forecastData.list.filter((infoForTheDay) => infoForTheDay.dt_txt.includes("12:00:00"));
+    forecastWeather = filteredForecastData.map((item) => {
+      const day = item.dt_txt.split(" ")[0];
+      const temp = item.main.temp;
+      return { day, temp };
+    });
+
+    console.log(forecastWeather);
   });
 };
 
@@ -68,16 +91,7 @@ const showSunsetSunrise = (sunriseData, sunsetData) => {
 
 fetchTodaysWeather();
 fetchSunriseSunset();
-
-// // const fetchForecastWeather = () => {
-// //   fetch(forecastURL)
-// //     .then((response) => response.json())
-// //     .then((forecastData) => {
-// //       showForecastWeather(forecastData);
-// //     });
-// // };
-
-// // fetchForecastWeather();
+fetchForecastData();
 
 // // const showForecastWeather = (forecastData) => {
 // //   console.log(forecastData);
