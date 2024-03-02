@@ -9,8 +9,6 @@ const FORECAST_BASE_URL = "http://api.openweathermap.org/data/2.5/forecast?";
 let lat = "59.3326";
 let lon = "18.0649";
 const FORECAST_URL = `${FORECAST_BASE_URL}lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`;
-//const FORECAST_URL =
-//("http://api.openweathermap.org/data/2.5/forecast?lat=18&lon=10&appid=86cc8fe4b24936e5560b67f7b96b6c03");
 
 // DOM selectors
 const city = document.getElementById("city");
@@ -21,8 +19,10 @@ const sunset = document.getElementById("sunset");
 const weatherImage = document.getElementById("weather-image");
 const buttonContainer = document.getElementById("button-container");
 const forecastButton = document.getElementById("forecast-button");
+const forecastDay = document.getElementsByClassName("forecast-day");
 const forecast = document.getElementById("forecast");
 const skyContainer = document.getElementById("sky-container");
+const inner = document.getElementById("inner");
 const search = document.getElementById("search");
 
 skyContainer.classList.remove("animation-active");
@@ -31,7 +31,6 @@ const fetchWeather = (url) => {
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       city.innerHTML = `<h2>${data.name}</h2>`;
       temp.innerHTML = `<h1>${Math.round(data.main.temp)}°&#x1D9C;</h1>`;
       description.innerHTML = `<h3>${data.weather[0].description}</h3>`;
@@ -45,8 +44,6 @@ const fetchWeather = (url) => {
 
       sunrise.innerHTML = `<h3>${sunriseHoursMinutes}</h3>`;
       sunset.innerHTML = `<h3>${sunsetHoursMinutes}</h3>`;
-
-      fetchForecast();
     })
     .catch((error) => console.log("Caught error:", error));
 };
@@ -64,12 +61,15 @@ const fetchForecast = () => {
         days[date] = [...(days[date] ? days[date] : []), row];
         return days;
       }, {});
+
       let i = 0;
       for (let date of Object.keys(groupedData)) {
-        console.log(groupedData[date].length);
+        // Only show data from the objects with an array lenght of 8. This removes the current day and any partial final day.
         if (groupedData[date].length === 8) {
           i++;
-          console.log("i:", i);
+          if (i > 4) {
+            break;
+          }
           forecast.innerHTML += `<div class="forecastDay">
           <p class="forecastDayWeekday">${displayDay(
             groupedData[date][i].dt
@@ -150,16 +150,28 @@ const chooseImage = (weather) => {
 
 // Toggle forecast
 const toggleForecast = () => {
-  if (skyContainer.classList.contains("animation-active")) {
-    skyContainer.classList.remove("animation-active");
-    buttonContainer.classList.remove("transition-active");
-    forecast.classList.remove("hidden");
-    search.classList.add("hidden");
-  } else {
-    skyContainer.classList.add("animation", "animation-active");
-    buttonContainer.classList.add("animation", "transition-active");
+  if (skyContainer.classList.contains("top-container")) {
+    skyContainer.classList.remove("top-container");
+    skyContainer.classList.add("bottom-container");
+
+    inner.classList.add("bottom-inner");
+    inner.classList.remove("top-inner");
+
+    forecastButton.classList.remove("forecast-button-top");
+    forecastButton.classList.add("forecast-button-bottom");
     forecast.classList.add("hidden");
     search.classList.remove("hidden");
+  } else {
+    skyContainer.classList.remove("bottom-container");
+    skyContainer.classList.add("top-container");
+
+    inner.classList.remove("bottom-inner");
+    inner.classList.add("top-inner");
+
+    forecastButton.classList.remove("forecast-button-bottom");
+    forecastButton.classList.add("forecast-button-top");
+    forecast.classList.remove("hidden");
+    search.classList.add("hidden");
   }
 };
 

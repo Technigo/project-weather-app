@@ -4,32 +4,46 @@
   --clr_forecast_button: #757aff;
   --clr_day_gradient_start: #8589ff;
   --clr_day_gradient_end: #e8e9ff;
+  --clr_body_background: #eeeeee;
 
   font-family: "Roboto", sans-serif;
   font-weight: 300;
   margin: 0;
 }
-html {
-  overflow: hidden;
+
+body {
+  background-color: var(--clr_main_text);
 }
 
 .hidden {
   display: none;
 }
 
-body {
+.inner {
+  position: relative;
+
   color: var(--clr_main_text);
-  background-color: #e8e9ff;
 }
 
 #hamburger-menu {
-  display: absolute;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
   width: 30px;
-  margin: 1rem;
 }
-.container {
+
+#sky-container {
   position: relative;
-  height: 25rem;
+  display: flex;
+    height: 100vh;
+  flex-direction: column;
+}
+
+.top-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 400px;
   background: linear-gradient(
     0.25turn,
     var(--clr_day_gradient_start),
@@ -37,11 +51,26 @@ body {
   );
   border-bottom-left-radius: 50% 10%;
   border-bottom-right-radius: 50% 10%;
+  transition: 1s;
+}
+
+.bottom-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  background: linear-gradient(
+    0.25turn,
+    var(--clr_day_gradient_start),
+    var(--clr_day_gradient_end)
+  );
+  transition: 1s;
 }
 
 #temp {
   font-size: 3rem;
   margin: 1rem;
+  margin-top: 3rem;
 }
 
 #city {
@@ -68,21 +97,31 @@ body {
   width: 150px;
 }
 
-.button-container {
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 2rem;
-}
-
 #forecast-button {
   width: 100px;
   height: 100px;
   border-radius: 50%;
   background-color: var(--clr_forecast_button);
-  box-shadow: 0 2px 5px 0px rgb(0, 0, 0, 0.2);
+  z-index: 1;
   display: flex;
-  position: relative;
-  transition: 0.2s;
+}
+
+#forecast {
+  color: var(--clr_dark_text);
+  margin-top: 2rem;
+  overflow: hidden;
+}
+
+.forecast-button-top {
+  position: absolute;
+  right: 1rem;
+  bottom: -2rem;
+}
+
+.forecast-button-bottom {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
 }
 
 #arrow {
@@ -96,36 +135,14 @@ body {
   border-right: 5px solid var(--clr_main_text);
 }
 
-#forecast-button:hover {
+.forecast-button-top:hover {
   rotate: 90deg;
-  box-shadow: 2px 0px 5px 0px rgb(0, 0, 0, 0.2);
   transition: 0.2s ease-in-out;
 }
-.animation {
-  transition: all 0.5s ease-out;
-}
 
-.animation-active {
-  height: 100vh;
-  border-radius: 0;
-}
-
-.transition-active {
-  bottom: 1rem;
-  right: 1rem;
-  margin: 2rem;
-  translate: 0 45vh;
-  transition: 0.5s ease-out;
-}
-
-#forecast {
-  display: flex;
-  margin-top: 2rem;
-  height: 50vh;
-  flex-direction: column;
-  justify-content: space-evenly;
-  color: var(--clr_dark_text);
-  overflow: hidden;
+.forecast-button-bottom:hover {
+  rotate: -90deg;
+  transition: 0.2s ease-in-out;
 }
 
 .forecastDay {
@@ -146,9 +163,7 @@ body {
 
 #search {
   position: absolute;
-  bottom: 50px;
-  opacity: 1;
-  margin: auto 1rem;
+  margin: 1rem;
   border: 1px solid rgba(0, 0, 0, 0.1);
   background: rgba(0, 0, 0, 0.1);
   color: var(--clr_main_text);
@@ -157,7 +172,12 @@ body {
   z-index: 1;
 }
 
-#no-opacity {
-    opacity: 0;
-    transition: 0.5s;
+@media screen and (min-width: 450px) {
+  #sky-container {
+    background-color: var(--clr_body_background);
+    box-shadow: 0 0 15px 2px rgb(0, 0, 0, 0.2);
+    margin: 1rem auto;
+    max-width: 450px;
+    max-height: 700px;
+  }
 }

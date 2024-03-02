@@ -11,28 +11,36 @@
     <title>Weather Smeather app</title>
   </head>
   <body>
-    <div class="container" id="sky-container">
-      <img id="hamburger-menu" src="assets/hamburger.png" alt="" />
-      <img id="weather-image" src="" alt="" />
-      <div class="current" id="temp"></div>
-      <div class="current" id="city"></div>
-      <div class="current" id="description"></div>
-      <div id="suntime">
-        <div class="current"><h3>sunrise:</h3></div>
-        <div class="current" id="sunrise"></div>
-        <div class="current"><h3>sunset:</h3></div>
-        <div class="current" id="sunset"></div>
-      </div>
-      <div class="searchbar">
-      <input type="search" placeholder="Find City..." id="search" class="no-opacity">
-    </div>
-      <div class="button-container" id="button-container">
-        <a id="forecast-button">
+    <div id="sky-container" class="top-container">
+      <div id="inner" class="inner top-inner">
+        <img id="hamburger-menu" src="assets/hamburger.png" alt="" />
+        <img id="weather-image" src="" alt="" />
+        <div id="temp"></div>
+        <div id="city"></div>
+        <div id="description"></div>
+        <div id="suntime">
+          <div><h3>sunrise:</h3></div>
+          <div id="sunrise"></div>
+          <div><h3>sunset:</h3></div>
+          <div id="sunset"></div>
+        </div>
+        <div class="searchbar">
+          <input
+            type="search"
+            placeholder="Find City..."
+            id="search"
+            class="hidden"
+          />
+        </div>
+
+        <a class="forecast-button-top" id="forecast-button">
           <div id="arrow"></div>
         </a>
       </div>
+
+      <div id="forecast"></div>
     </div>
-    <div id="forecast" class="animate hidden"></div>
+
     <script src="script.js"></script>
   </body>
 </html>
