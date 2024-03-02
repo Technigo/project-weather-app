@@ -12,9 +12,13 @@ const MY_API_KEY = "31320abec19306a046f96f4c46f01157";
 const BASE_URL = "https://api.openweathermap.org/data/2.5";
 
 const coordinates = {
-  lat: 57.721595,
-  lon: 12.0253,
+  lat: 60.39299,
+  lon: 5.32415,
 };
+// const coordinates = {
+//   lat: 57.721595,
+//   lon: 12.0253,
+// };
 
 const city = "Göteborg";
 
@@ -61,16 +65,19 @@ const updatePrompt = (currentWeatherData) => {
       icon.setAttribute("src", "./icons/noun_Sunglasses_2055147.svg");
       icon.setAttribute("alt", "Sunglasses");
       promptText.innerHTML = `Get your sunnies on. ${city} is looking rather great today.`;
+      document.body.className = "clear";
       break;
     case "Clouds":
       icon.setAttribute("src", "./icons/noun_Cloud_1188486.svg");
       icon.setAttribute("alt", "Cloud");
       promptText.innerHTML = `Light a fire and get cosy. ${city} is looking grey today.`;
+      document.body.className = "clouds";
       break;
     case "Rain":
       icon.setAttribute("src", "./icons/noun_Umbrella_2030530.svg");
       icon.setAttribute("alt", "Umbrella");
       promptText.innerHTML = `Don't forget your umbrella. It's wet in ${city} today.`;
+      document.body.className = "rain";
       break;
     default:
       icon.removeAttribute("src");
@@ -103,11 +110,11 @@ const updateForecast = (filteredForecastList) => {
     const iconURL = getWeatherIconURL(listItem.weather[0].main);
     const temp = Math.round(listItem.main.temp * 10) / 10;
     forecastTable.innerHTML += `
-    <tr>
-    <td>${weekday}</td>
-    <td><img src="${iconURL}"></td>
-    <td>${temp}°</td>
-  </tr>`;
+      <tr>
+        <td>${weekday}</td>
+        <td><img id="forecast-icon" src="${iconURL}"></td>
+        <td>${temp}°</td>
+      </tr>`;
   });
 };
 
