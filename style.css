@@ -37,16 +37,15 @@ header p {
 }
 
 .dropdown-content {
-  display: none;
-  position: absolute;
-  z-index: 1;
+    display: none;
+    position: absolute;
+    z-index: 1;
 }
 
-.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 
-/* Change the background color of the dropdown button when the dropdown content is shown 
-.dropdown:hover .dropbtn {} .dropdown-content a:hover {}
-*/
 main {
     margin: 0 40px;
     width: 80%;
@@ -115,6 +114,7 @@ h1 {
     background-color: #FFFBFC;
     color: #43BBEF;
 }
+
 .blue-drizzle {
     background-color: #FAE6C7;
     color: #2c6c8a;
@@ -139,7 +139,7 @@ h1 {
     font-size: 1.2rem;
 }
 
-@media (min-width:667px){
+@media (min-width:667px) {
     body {
         display: grid;
         grid-template-rows: 1fr 4fr;

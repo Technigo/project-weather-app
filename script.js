@@ -130,9 +130,9 @@ const printMainInfo = () => {
     case "Drizzle":
       body.setAttribute("class", "blue-drizzle")
       main.innerHTML = `
-            <p><i class="fa-solid fa-cloud-sun-rain fa-2xl" style="color: #8ed5f6;"></i></p>
-            <h1>Raincheck? Relax, in ${city} it's just drizzle...</h1>
-            `
+            <p><i class="fa-solid fa-cloud-sun-rain fa-2xl" style="color: #2c6c8a;"></i></p>
+            <h1>Raincheck? Relax, in ${city}, it's just drizzle...</h1>
+            `;
       break
     case "Fog":
       body.setAttribute("class", "grey-foggy")
