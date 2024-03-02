@@ -121,7 +121,7 @@ const printMainInfo = () => {
             `
       break
     case "Snow":
-      body.setAttribute("class", "blue-snowy");
+      body.setAttribute("class", "blue-snowy")
       main.innerHTML = `
             <p><i class="fa-regular fa-snowflake fa-2xl" style="color: #43bbef;"></i></p>
             <h1>Get your mittens on. ${city} is getting some snow today.</h1>
@@ -131,7 +131,7 @@ const printMainInfo = () => {
       body.setAttribute("class", "blue-drizzle")
       main.innerHTML = `
             <p><i class="fa-solid fa-cloud-sun-rain fa-2xl" style="color: #8ed5f6;"></i></p>
-            <h1>Raincheck? Relax, it's just some drizzle in ${city}.</h1>
+            <h1>Raincheck? Relax, in ${city} it's just drizzle...</h1>
             `
       break
     case "Fog":
@@ -141,12 +141,20 @@ const printMainInfo = () => {
             <h1>Better not get lost. The fog is gathering in ${city}.</h1>
             `
       break
+    case "Mist":
+      body.setAttribute("class", "blue-mist")
+      main.innerHTML = `
+      <p><i class="fa-solid fa-spray-can-sparkles fa-2xl" style="color: #166568;"></i></p>
+            <h1>Todays weather in ${city}. Mist!</h1>
+            `
+      break
     default:
       body.setAttribute("class", "grey-neutral")
       main.innerHTML = `
             <p><i class="fa-solid fa-volcano fa-2xl" style="color: #404040;"></i></p>
-            <h1>There is definately some kind of weather in ${city} today. Look out the window and you might find out what it is.</h1>
+            <h1>There is definitely some kind of weather in ${city} today. Look out the window and you might find out what it is.</h1>
             `
+      document.querySelector("h1").setAttribute("class", "smaller-font")
   }
 }
 
@@ -188,7 +196,7 @@ const handleCitySelectKalmar = () => {
 
 //Start by showing Kalmar's weather
 const loadPage = () => {
-  fetchAllData("Kalmar")
+  fetchAllData("Gothenburg")
 }
 
 //Event-listeners

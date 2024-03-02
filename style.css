@@ -117,7 +117,7 @@ h1 {
 }
 .blue-drizzle {
     background-color: #FAE6C7;
-    color: #8ED5F6;
+    color: #2c6c8a;
 }
 
 .grey-foggy {
@@ -125,9 +125,18 @@ h1 {
     color: #5f6063;
 }
 
+.blue-mist {
+    background-color: #c6fdf8;
+    color: #166568;
+}
+
 .grey-neutral {
     background-color: white;
     color: #404040;
+}
+
+.smaller-font {
+    font-size: 1.2rem;
 }
 
 @media (min-width:667px){
