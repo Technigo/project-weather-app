@@ -44,17 +44,20 @@ const fetchWeather = (url) => {
 
       sunrise.innerHTML = `<h3>${sunriseHoursMinutes}</h3>`;
       sunset.innerHTML = `<h3>${sunsetHoursMinutes}</h3>`;
+
+      fetchForecast(lat, lon);
     })
     .catch((error) => console.log("Caught error:", error));
 };
 fetchWeather(URL);
 
-const fetchForecast = () => {
+const fetchForecast = (lat, lon) => {
   fetch(
     `${FORECAST_BASE_URL}lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`
   )
     .then((response) => response.json())
     .then((data) => {
+      forecast.innerHTML = ``;
       // Grouping data within their dates.
       const groupedData = data.list.reduce((days, row) => {
         const date = row.dt_txt.split(" ")[0];
@@ -98,7 +101,6 @@ const fetchForecast = () => {
     );
   }
 };
-fetchForecast();
 
 // Clean up the date to the 24h numbers with just hours and minutes.
 const hoursMinutes = (time) => {
@@ -188,4 +190,5 @@ search.addEventListener("input", (e) => {
   console.log(urlCity);
   console.log(URL);
   fetchWeather(`${BASE_URL}${urlCity}&units=metric&APPID=${API_KEY}`);
+  fetchForecast();
 });
