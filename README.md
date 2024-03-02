@@ -11,7 +11,7 @@ The main problem i encountered in the process was converting Unix time string in
 Additionaly, I tried to add in more icons and UI color theme to fit different weather conditions. 
 
 ## Next Step
-    - add in city search bar
+ 
     - responsice background image
 
 ## View it live
