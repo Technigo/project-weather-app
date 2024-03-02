@@ -53,7 +53,7 @@ fetch(URL)
 // Fill the content in the HTML elements
 weatherContainer.textContent = `${degrees}°C ${cityName} ${weatherDescription}`;
 
-  // Fill in the sunset and sunrise in the HTML element. 
+// Fill in the sunset and sunrise in the HTML element. 
 
 sunContainer.textContent = `Sunrise ${sunriseTime} Sunset ${sunsetTime}`;
 
@@ -88,11 +88,6 @@ const fetchForecast = (city) => {
     nameOfDay = date.toLocaleDateString("en-US", {weekday: "short"});
     const tempMin = Math.round(day.main.temp_min);
     const tempMax = Math.round(day.main.temp_max);
-
-    /*
-    const today = new Date();
-    const todaysForecast = date.getDay() === today.getDay();
-    */
 
     console.log(nameOfDay, tempMin, tempMax);
 
