@@ -27,25 +27,45 @@ const getWeather = (city) => {
         document.getElementsByTagName("body")[0].classList = ["warm"];
       }
 
-      //conditional based on weather main category
+      //logo based on weather (main category) and temperature
       let weatherIcon = "default.png";
       const weatherCondition = data.weather[0].main;
+      const temperature = data.main.temp;
 
-      if (weatherCondition === "Clouds") {
-        weatherIcon = "clouds.png";
-      } else if (weatherCondition === "Clear") {
-        weatherIcon = "sun.png";
-      } else if (weatherCondition === "Snow") {
-        weatherIcon = "snow.png";
-      } else if (
-        weatherCondition === "Rain" ||
-        weatherCondition === "Drizzle"
-      ) {
-        weatherIcon = "rain.png";
-      } else if (weatherCondition === "Thunderstorm") {
-        weatherIcon = "thunder.png";
+      if (temperature <= 10) {
+        if (weatherCondition === "Clouds") {
+          weatherIcon = "clouds_cold.png";
+        } else if (weatherCondition === "Clear") {
+          weatherIcon = "sun_cold.png";
+        } else if (weatherCondition === "Snow") {
+          weatherIcon = "snow_cold.png";
+        } else if (
+          weatherCondition === "Rain" ||
+          weatherCondition === "Drizzle"
+        ) {
+          weatherIcon = "rain_cold.png";
+        } else if (weatherCondition === "Thunderstorm") {
+          weatherIcon = "thunder_cold.png";
+        } else {
+          weatherIcon = "default_cold.png";
+        }
       } else {
-        weatherIcon = "default.png";
+        if (weatherCondition === "Clouds") {
+          weatherIcon = "clouds.png";
+        } else if (weatherCondition === "Clear") {
+          weatherIcon = "sun.png";
+        } else if (weatherCondition === "Snow") {
+          weatherIcon = "snow.png";
+        } else if (
+          weatherCondition === "Rain" ||
+          weatherCondition === "Drizzle"
+        ) {
+          weatherIcon = "rain.png";
+        } else if (weatherCondition === "Thunderstorm") {
+          weatherIcon = "thunder.png";
+        } else {
+          weatherIcon = "default.png";
+        }
       }
 
       weatherDescription.innerHTML = `<img src="icons/${weatherIcon}"><h1>${data.name}</h1>`;
