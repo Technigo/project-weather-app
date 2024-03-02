@@ -17,20 +17,31 @@ const coordinates = {
 
 const city = "Göteborg";
 
-const URL = `${BASE_URL}/weather?lat=${coordinates.lat}&lon=${coordinates.lon}&units=metric&appid=${MY_API_KEY}`;
+///////////// Functions to fetch weather //////////////
 
-///////////// Function to fetch weather //////////////
-
-const fetchWeather = () => {
+const fetchCurrentWeather = () => {
+  const URL = `${BASE_URL}/weather?lat=${coordinates.lat}&lon=${coordinates.lon}&units=metric&appid=${MY_API_KEY}`;
   fetch(URL)
     .then((response) => response.json())
-    .then((data) => updateHTML(data))
+    .then((currentWeatherData) => handleCurrentWeatherData(currentWeatherData))
     .catch((error) => {
       console.log(error);
       errorDiv.innerHTML = "Something went wrong";
     });
 };
-fetchWeather();
+fetchCurrentWeather();
+
+const fetchForecast = () => {
+  const URL = `${BASE_URL}/forecast?lat=${coordinates.lat}&lon=${coordinates.lon}&units=metric&appid=${MY_API_KEY}`;
+  fetch(URL)
+    .then((response) => response.json())
+    .then((forecastData) => handleForecastData(forecastData))
+    .catch((error) => {
+      console.log(error);
+      errorDiv.innerHTML = "Something went wrong";
+    });
+};
+fetchForecast();
 
 ///////////// Function to format time //////////////
 
@@ -41,10 +52,10 @@ const formatTime = (seconds) => {
   });
 };
 
-///////// Function to update prompt section /////////
+///////// Functions to update prompt section /////////
 
-const updatePrompt = (data) => {
-  switch (data.weather[0].main) {
+const updatePrompt = (currentWeatherData) => {
+  switch (currentWeatherData.weather[0].main) {
     case "Clear":
       icon.setAttribute("src", "./icons/noun_Sunglasses_2055147.svg");
       icon.setAttribute("alt", "Sunglasses");
@@ -69,23 +80,53 @@ const updatePrompt = (data) => {
 
 //////// Function to update current weather, sunrise and sunset ////////
 
-const updateCurrentWeather = (data) => {
+const updateCurrentWeather = (currentWeatherData) => {
   // format current weather:
-  const weatherDescription = data.weather[0].main.toLowerCase();
-  const currentTemp = Math.round(data.main.temp * 10) / 10;
+  const weatherDescription = currentWeatherData.weather[0].main.toLowerCase();
+  const currentTemp = Math.round(currentWeatherData.main.temp * 10) / 10;
   currentWeather.innerHTML = `${weatherDescription} | ${currentTemp}°`;
   // format sunrise time
-  const sunriseTime = formatTime(data.sys.sunrise);
+  const sunriseTime = formatTime(currentWeatherData.sys.sunrise);
   sunrise.innerHTML = `sunrise ${sunriseTime}`;
   // format sunset time
-  const sunsetTime = formatTime(data.sys.sunset);
+  const sunsetTime = formatTime(currentWeatherData.sys.sunset);
   sunset.innerHTML = `sunset ${sunsetTime}`;
 };
 
 ///////////// Function to update HTML //////////////
 
-const updateHTML = (data) => {
-  updateCurrentWeather(data);
-  updatePrompt(data);
-  console.log(data);
+const handleCurrentWeatherData = (currentWeatherData) => {
+  updateCurrentWeather(currentWeatherData);
+  updatePrompt(currentWeatherData);
+  console.log(currentWeatherData);
 };
+
+const handleForecastData = (forecastData) => {
+  console.log(forecastData.list);
+  const filteredForecast = forecastData.list.filter((listItem) => {
+    //filter list items
+    const date = new Date(listItem.dt * 1000); //convert to milliseconds and create date object
+    console.log(date.getUTCHours());
+    if (date.getUTCHours() === 12) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+  console.log(filteredForecast);
+};
+
+// functions to recieve days for forecast
+const getFirstDateOfForecast = () => {
+  let tomorrow = new Date();
+  tomorrow.setUTCDate(tomorrow.getUTCDate() + 1);
+  console.log(tomorrow);
+};
+getFirstDateOfForecast();
+
+const getLastDateOfForecast = () => {
+  let tomorrow = new Date();
+  tomorrow.setUTCDate(tomorrow.getUTCDate() + 4);
+  console.log(tomorrow);
+};
+getLastDateOfForecast();
