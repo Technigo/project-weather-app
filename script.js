@@ -1,4 +1,4 @@
-////////////////////README: Global variables////////////////
+////////////////////Global variables////////////////
 const baseURL = "https://api.openweathermap.org/data/2.5/";
 const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const iconURL = "https://openweathermap.org/img/wn/";
@@ -21,7 +21,7 @@ const weatherConditions = {
     "It's a cloudy day. Grab a light jacket and enjoy the cooler temperatures and cozy atmosphere.",
 };
 
-///////////////////README: DOM objects/////////////////
+///////////////////DOM objects/////////////////
 const currentTemp = document.getElementById("current-temp");
 const city = document.getElementById("city");
 const currentWeatherCondition = document.getElementById(
@@ -208,8 +208,8 @@ searchBar.addEventListener("submit", event => {
     searchInput.value = "";
   }
 });
-/////////Execution//////////
 
+/////////Execution//////////
 getPosition()
   .then(pos => {
     const { latitude: lat, longitude: lon } = pos.coords;
