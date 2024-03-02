@@ -74,7 +74,6 @@ h2 {
 
 .sun-time {
   display: flex;
-  flex-grow: 1;
   justify-content: space-between;
   width: 100%;
   gap: 10px;
