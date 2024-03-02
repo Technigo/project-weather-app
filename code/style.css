@@ -4,8 +4,6 @@
   font-family: "Montserrat", sans-serif;
   font-size: 1.25em;
   font-weight: 400;
-  color: #f47775;
-  background: white;
 }
 
 * {
@@ -14,15 +12,37 @@
   margin: 0;
 }
 
+body.warm .app-container {
+  color: #f47775;
+  background: #f4f7f8;
+  border: 1px solid #f47775;
+}
+
+body.cold .app-container {
+  color: #164a68;
+  background: #bde8fa;
+  border: 1px solid #164a68;
+}
+
+.app-container {
+  margin: 50px;
+  padding: 30px;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 20px;
+}
+
+body.warm header {
+  color: #f47775;
+}
+
+body.cold header {
+  color: #164a68;
+}
+
 header {
   text-align: center;
   padding-top: 20px;
-  font-size: 16px;
-}
-
-footer {
-  text-align: center;
-  padding-bottom: 20px;
   font-size: 16px;
 }
 
@@ -48,26 +68,24 @@ body {
   padding: 20px;
 }
 
-.app-container {
-  margin: 50px;
-  padding: 30px;
-  background: #f4f7f8;
-  width: 100%;
-  max-width: 600px;
-  border: 1px solid #f47775;
-  border-radius: 20px;
-}
-
-.flex {
+/* .flex {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+} */
+
+body.warm .forecast-element {
+  border-bottom: 1px dashed #f47775;
+}
+
+body.cold .forecast-element {
+  border-bottom: 1px dashed #164a68;
 }
 
 .forecast-element {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px dashed #f47775;
+  /* border-bottom: 1px dashed #f47775; */
 }
 
 p {
@@ -78,16 +96,25 @@ p {
   padding-bottom: 20px;
 }
 
-#city-selector select {
+body.warm select {
+  border: 1px solid #f47775;
+  background-color: #f9fafb;
+  color: #f47775;
+}
+
+body.cold select {
+  border: 1px solid #164a68;
+  background-color: #e3f5fd;
+  color: #164a68;
+}
+
+select {
   padding: 10px;
   font-size: 0.7em;
-  border: 1px solid #f47775;
   border-radius: 10px;
-  background-color: white;
-  color: #f47775;
   width: 100%;
 }
 
-#city-selector label {
+label {
   font-size: 0.7em;
 }
