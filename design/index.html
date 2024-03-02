@@ -12,13 +12,18 @@
   </head>
   <body>
     <div class="grid-container">
-      <div class="menu" onclick="myFunction(this)">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-      </div>
+      <nav class="menu">
+        <div id="hamburger">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+        <ul id="dropdown">
+          <li><a href="#" id="stockholm">stockholm</a></li>
+          <li><a href="#" id="din-plats">din plats</a></li>
+        </ul>
+      </nav>
 
-      <div id="loading-spinner"></div>
       <div id="weather">Loading...</div>
       <div class="backimg"></div>
 
