@@ -2,6 +2,7 @@
 const weatherContainer = document.getElementById("weather-container");
 const cityContainer = document.getElementById("city-container");
 const weatherForecastWeek = document.getElementById("weather-week-container");
+const changeBackroundColor = document.getElementById("backround")
 
 
 //Function using API to fetch selected weather data.
@@ -17,7 +18,7 @@ const fetchTodaysWeather = () => {
       const timeForSunrise = sunrise.toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",
-      });
+      })
 
       const sunset = new Date(json.sys.sunset * 1000);
       const timeForSunset = sunset.toLocaleTimeString([], {
@@ -29,11 +30,39 @@ const fetchTodaysWeather = () => {
     ${json.weather[0].description} | ${json.main.temp.toFixed(1)}° 
     <p>Sunrise ${timeForSunrise}</p><p>Sunset ${timeForSunset}</p>
     `;
-      cityContainer.innerHTML = `
-    ${json.name}
-    `;
-    });
+    
+    //Function to change backround color and icon depending on the weather.
+    const warmColdBackround = () => {
+      if (json.weather[0].main === "Clouds") {
+        cityContainer.innerHTML += `
+        <img src="./assets/icons/noun_Cloud_1188486.svg" alt="Cloud">
+        <h1>Light a fire and get cosy. ${json.name} is looking grey today</h1>`;
+        changeBackroundColor.style.backgroundColor = "#F4F7F8";
+        changeBackroundColor.style.color = "#F47775";
+      } else if (json.weather[0].main === "Rain") {
+        cityContainer.innerHTML += `
+        <img src="./assets/icons/noun_Umbrella_2030530.svg" alt="Umbrella">
+        <h1>Don't forget your umbrella. It's wet in ${json.name} today</h1>`;
+        changeBackroundColor.style.backgroundColor = "#BDE8FA";
+        changeBackroundColor.style.color = "#164A68";
+      } else if (json.weather[0].main === "Clear") {
+        cityContainer.innerHTML += `
+        <img src="./assets/icons/noun_Sunglasses_2055147.svg" alt="Sunglasses">
+        <h1>Get your sunnies on. ${json.name} is looking rather great today.</h1>`;
+        changeBackroundColor.style.backgroundColor = "#F7E9B9";
+        changeBackroundColor.style.color = "#2A5510";
+      } else {
+        cityContainer.innerHTML += `
+        <img src="./assets/icons/noun_Umbrella_white.svg" alt="Umbrella">
+        <h1>Get your warm coat on. It's snowing in ${json.name} today.</h1>`;
+        changeBackroundColor.style.backgroundColor = "#58537B";
+        changeBackroundColor.style.color = "#FFFFFF";
+      }
+    };
+    warmColdBackround();
+  });
 };
+
 fetchTodaysWeather(); //Invoke todays weather and which city.
 
 //Function using API to fetch a 5-days weather forecast. Using filter in the list to only get data from 12.00 each day.
@@ -59,7 +88,3 @@ const fetchWeatherForecast = () => {
     });
 };
 fetchWeatherForecast(); //Invoke the 5-day weather forecast.
-
-//clear | 23grader
-//sunrise 08.00
-//sunset 22.30
