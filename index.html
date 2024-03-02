@@ -24,7 +24,7 @@
     <div class="background">
       <div class="container">
         <header id="current-weather-field">
-          <a href="#" class="menu">
+          <a class="menu">
             <i class="fa fa-bars"></i>
           </a>
           <div class="weather-icon-container">
@@ -60,6 +60,16 @@
         <div id="loader-container">
           <div class="loader">Loading</div>
         </div>
+        <form class="search">
+          <input
+            type="text"
+            class="searchTerm"
+            placeholder="Type a city or country name"
+          />
+          <button type="submit" class="searchButton">
+            <i class="fa fa-search"></i>
+          </button>
+        </form>
         <div class="weather-details" id="forecast-field">
           <table class="weather-table" id="weather-table"></table>
         </div>
