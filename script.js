@@ -8,13 +8,13 @@ const forecastEndpoint = "forecast";
 const queryUnits = "metric";
 const weatherConditions = {
   thunderstorm:
-    "Stay indoors and don't forget your umbrella. Keep an eye on weather updates and take shelter if necessary.",
+    "Stay indoors and keep an eye on weather updates and take shelter if necessary.",
   drizzle:
     "Expect drizzle today. Bring a light rain jacket or umbrella for added comfort outdoors.",
-  snow: "Snow is expected throughout the day. Exercise caution while driving and consider alternative transportation if possible.",
+  snow: "Snow is expected today. Exercise caution while driving and wear your ice shoes",
   atmosphere:
     "Drive safely! Poor atmosphere is reducing visibility on the roads.",
-  rain: "Don't forget your umbrella today! Heavy rain is expected, so stay dry and plan your commute accordingly.",
+  rain: "Bring your umbrella today! Stay dry and plan your commute accordingly.",
   clear:
     "Enjoy the clear skies today! Get your sunnies on to stay protected from the sunshine.",
   clouds:
@@ -45,8 +45,8 @@ const searchInput = document.querySelector(".searchTerm");
 const searchBar = document.querySelector(".search");
 
 ///////////////////Functions//////////////////
-//README:         Formating functions      ///
-// Function that formats the day or time stamp
+//       Formating functions      ///
+// Function that formats the unix time
 const formatUnixTime = unixTime => {
   // convert unix time to milliseconds
   let formattedTime = new Date(unixTime * 1000);
@@ -59,10 +59,12 @@ const formatUnixTime = unixTime => {
   return formattedTime;
 };
 
+// Function that capitalizes the first letter
 const capitalizeFirstLetter = str => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
 
+// Function that gets the current date and returns date in year-month-day format and the day index
 const getAndFormatCurrentDate = () => {
   let date = new Date();
   const dayIndex = date.getDay();
@@ -71,6 +73,7 @@ const getAndFormatCurrentDate = () => {
   return [date, dayIndex];
 };
 
+// Function that returns an array of the weather details for next four days.
 const generateFourDaysWeather = (
   forecastData,
   currentDayIndex,
@@ -80,8 +83,7 @@ const generateFourDaysWeather = (
     .filter(weather => {
       return !weather.dt_txt.includes(currentDate);
     })
-    .slice(0, 32); // Get the next four days weather
-  console.log(fourDaysWeather);
+    .slice(0, 32); // Cut off the weather details of today and the day in 5 days since they are not the full data
   let weatherData = [];
   for (let i = 0; i < 4; i++) {
     // get the daily weather of next four days weather
@@ -105,10 +107,9 @@ const generateFourDaysWeather = (
   return weatherData;
 };
 
-//README:       DOM Manipulation Functions    ///
-
+//     DOM Manipulation Functions    ///
+// Function that manipulates the DOM objects of the current weather
 const handleCurrentWeather = data => {
-  console.log(data);
   city.innerText = data.name;
   sunrise.innerText = formatUnixTime(data.sys.sunrise);
   sunset.innerText = formatUnixTime(data.sys.sunset);
@@ -123,89 +124,91 @@ const handleCurrentWeather = data => {
   if (!(weatherDescription in weatherConditions)) {
     weatherDescription = "atmosphere";
   }
-
   weatherAdvice.textContent = weatherConditions[weatherDescription];
   // remove all the existing class name for current weather field
   currentWeatherField.className = "";
   // add the weather condition class so the background reflects current weather
   currentWeatherField.classList.add(weatherDescription);
   weatherIcon.src = `./assets/${weatherDescription}.png`;
+  // display the weather icon and button
   weatherIcon.style.display = "block";
-  console.log(currentWeatherCondition);
-  console.log(buttonField.style.display);
   buttonField.style.display = "block";
-  console.log(buttonField.style.display);
-  buttonIcon.addEventListener("click", () => {
-    forecastField.classList.toggle("hide");
-    currentWeatherField.classList.toggle("show");
-    buttonField.classList.toggle("move");
-    weatherAdviceContainer.classList.toggle("show-quote");
-  });
 };
 
 const manipulateWeatherTable = weeklyWeather => {
+  forecastField.className = "";
+  weatherForecast.innerHTML = "";
   weeklyWeather.forEach(weather => {
-    weatherForecast.innerHTML += `<tr class="day">
-    <td class="day">${capitalizeFirstLetter(weather.day)}</td>
-    <td class="weather-icon">
+    weatherForecast.innerHTML += `<tr>
+    <td class="forecast-day">${capitalizeFirstLetter(weather.day)}</td>
+    <td class="forecast-icon">
       <img
         src="${iconURL}${weather.iconID}@2x.png"
       />
     </td>
-    <td class="weather-range">${weather.maxTemp}° / ${weather.minTemp}°C</td>
+    <td class="forecast-range">${weather.maxTemp}° / ${weather.minTemp}°C</td>
   </tr>`;
   });
 };
 
-//README:        Promise-based functions, i.e. API call    /////////
-
+//        Promise-based functions      //
+// Function that fetches geolocation API and returns a promise object
 const getPosition = () => {
   return new Promise((resolve, reject) =>
     navigator.geolocation.getCurrentPosition(resolve, reject)
   );
 };
 
-// lat=${lat}&lon=${lon}
-//q=${city}
-const displayCurrentWeather = queryParam => {
-  fetch(
+// Function that fetches two APIs i.e. current weather API & weather forecast API at once and formats the data for both current weather and weather forecast, then manipulates DOM objects to display the formatted data.
+const processWeatherAPIs = queryParam => {
+  const fetchWeatherAPI = fetch(
     `${baseURL}${weatherEndpoint}?${queryParam}&units=${queryUnits}&APPID=${apiKey}`
-  )
-    .then(response => response.json())
-    .then(data => {
-      loader.style.display = "none";
-      handleCurrentWeather(data);
-    })
-    .catch(err => {
-      console.log(err);
-    });
-};
-
-const displayWeatherForecast = queryParam => {
-  fetch(
+  );
+  const fetchForecastAPI = fetch(
     `${baseURL}${forecastEndpoint}?${queryParam}&units=${queryUnits}&APPID=${apiKey}`
-  )
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-      console.log(data.list);
-      loader.style.display = "none";
-      const [currentDate, currentDayIndex] = getAndFormatCurrentDate();
-      console.log(currentDate);
-      console.log(currentDayIndex);
-      const weeklyWeather = generateFourDaysWeather(
-        data,
-        currentDayIndex,
-        currentDate
-      );
-      console.log(weeklyWeather);
-      manipulateWeatherTable(weeklyWeather);
-    });
+  );
+  const fetchResponses = Promise.all([fetchWeatherAPI, fetchForecastAPI]);
+  fetchResponses.then(responses => {
+    const weatherRes = responses[0];
+    const forecastRes = responses[1];
+    if (!(weatherRes.ok || forecastRes.ok)) {
+      alert("Location not found, try to search a place accurately.");
+    } else {
+      weatherRes.json().then(data => handleCurrentWeather(data));
+      forecastRes.json().then(data => {
+        const [currentDate, currentDayIndex] = getAndFormatCurrentDate();
+        const weeklyWeather = generateFourDaysWeather(
+          data,
+          currentDayIndex,
+          currentDate
+        );
+        // turn off the loader before displaying data
+        manipulateWeatherTable(weeklyWeather);
+      });
+    }
+  });
 };
 
-//README: Execution
+////////Event Listener////////
+buttonIcon.addEventListener("click", () => {
+  forecastField.classList.toggle("hide");
+  currentWeatherField.classList.toggle("show");
+  buttonField.classList.toggle("move");
+  weatherAdviceContainer.classList.toggle("show-quote");
+});
 
-loader.style.display = "flex";
+searchBar.addEventListener("submit", event => {
+  event.preventDefault();
+  if (searchInput.value) {
+    // reset the button position and the status of weather advice section
+    buttonField.classList.remove("move");
+    weatherAdviceContainer.classList.remove("show-quote");
+    processWeatherAPIs(`q=${searchInput.value}`);
+    // reset the search bar
+    searchInput.value = "";
+  }
+});
+/////////Execution//////////
 
 getPosition()
   .then(pos => {
@@ -213,60 +216,14 @@ getPosition()
     return [lat, lon];
   })
   .then(res => {
-    console.log(res);
-    displayCurrentWeather(`lat=${res[0]}&lon=${res[1]}`);
-    displayWeatherForecast(`lat=${res[0]}&lon=${res[1]}`);
+    processWeatherAPIs(`lat=${res[0]}&lon=${res[1]}`);
   })
   .catch(err => {
-    console.log(err);
+    alert(
+      `${err.message}. Please use the search bar to search for a city/country to start off.`
+    );
+  })
+  .finally(() => {
     loader.style.display = "none";
     searchBar.style.display = "flex";
-    searchBar.addEventListener("submit", event => {
-      const city = searchInput.value;
-      console.log(city);
-      event.preventDefault();
-      searchBar.style.display = "none";
-      loader.style.display = "flex";
-      displayCurrentWeather(`q=${city}`);
-      displayWeatherForecast(`q=${city}`);
-      console.log("Read to toggle off the loader");
-    });
   });
-
-// .then(res => console.log(res));
-
-// getPosition()
-//   .then(pos => {
-//     const { latitude: lat, longitude: lon } = pos.coords;
-//     return [lat, lon];
-//   })
-//   .then(res => {
-//     console.log("Start loading weather");
-//     displayCurrentWeather(res[0], res[1]);
-//     displayWeatherForecast(res[0], res[1]);
-//   })
-//   .then(() => {
-//     loader.style.display = "none";
-//     console.log("finish loading weather forecast");
-//   })
-//   .catch(err => console.error(err));
-
-///////// Notes: change background and icon based on the time ////////
-
-// const currentTime = data.dt;
-
-// console.log(currentTime);
-
-// compare the current time with the sunset and sunrise time so as to adjust the image and background color
-// if (currentTime > sunsetTime || currentTime < sunriseTime) {
-//   weatherIcon.src = "./assets/night.png";
-//   buttonIcon.src = "./assets/button-icon-night.png";
-//   console.log(currentWeatherField.classList[1]);
-//   currentWeatherField.classList.remove("morning");
-//   currentWeatherField.classList.add("night");
-// } else {
-//   currentWeatherField.classList.remove("night");
-//   currentWeatherField.classList.add("morning");
-//   currentWeatherField.classList.forEach(x => console.log(x));
-// }
-// format sunset and sunrise time from unix time to e.g. 17:52

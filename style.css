@@ -1,3 +1,4 @@
+/* General settings */
 * {
   margin: 0;
   padding: 0;
@@ -10,13 +11,25 @@ html,
 body {
   width: 100%;
   height: 100%;
-  margin: 0;
-  padding: 0;
 }
 
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  height: inherit;
+  width: inherit;
+  object-fit: contain;
+}
+
+/* Background and container settings */
 .background {
   height: 100%;
   width: 100%;
+  max-width: 641px;
 }
 
 .container {
@@ -25,21 +38,19 @@ body {
   width: 100%;
 }
 
-img {
-  height: inherit;
-  width: inherit;
-  object-fit: cover;
-}
-
 header {
   position: relative;
-  padding: 2rem 1.5rem;
+  padding: 1.5rem 1.5rem 2rem 1.5rem;
   display: flex;
   flex-direction: column;
   border-bottom-left-radius: 50% 30px;
   border-bottom-right-radius: 50% 30px;
 }
 
+header > * {
+  color: white;
+}
+/* Weather condition classes - to be toggled from JS */
 .thunderstorm {
   background: rgb(231, 233, 237);
   background: linear-gradient(
@@ -103,10 +114,6 @@ header {
   );
 }
 
-header > * {
-  color: white;
-}
-
 .weather-icon-container {
   height: 120px;
   width: 120px;
@@ -134,8 +141,8 @@ header > * {
   top: 90%;
   left: 70%;
   position: absolute;
-  height: fit-content;
-  width: fit-content;
+  height: 100px;
+  width: 100px;
   align-self: flex-end;
 }
 
@@ -144,8 +151,8 @@ header > * {
   cursor: pointer;
   appearance: none;
   background-color: inherit;
-  height: 100px;
-  width: 100px;
+  width: inherit;
+  height: inherit;
 }
 
 .full-view img {
@@ -175,16 +182,17 @@ header > * {
   justify-content: space-between;
 }
 
-/* Loader when fetching API*/
+/* Loader that shows when processing API call */
 
 #loader-container {
   width: 100%;
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   top: 8vh;
 }
+
 .loader {
   width: 250px;
   height: 30px;
@@ -201,31 +209,24 @@ header > * {
   }
 }
 
+/* Search bar that appears when user blocking location sharing */
 .search {
-  /* width: 100%; */
-  position: relative;
   display: none;
-  align-items: center;
-  justify-content: center;
   height: 36px;
-  margin: 10px;
-  top: 5%;
+  width: 100%;
+  margin-bottom: 15px;
 }
 
 .searchTerm {
-  width: 60%;
   border: 3px solid #00b4cc;
   border-right: none;
+  width: inherit;
   padding: 5px;
   height: 36px;
   border-radius: 5px 0 0 5px;
   outline: none;
   color: #9dbfaf;
 }
-/* 
-  .searchTerm:focus{
-    color: #00B4CC;
-  } */
 
 .searchButton {
   width: 40px;
@@ -239,20 +240,12 @@ header > * {
   font-size: 20px;
 }
 
-/*Resize the wrap to see the search bar change!*/
-/* .wrap {
-  width: 30%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-} */
-
-.weather-details {
+/* Forecast section */
+#forecast-field {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 6rem 0;
+  margin: 4rem 0;
 }
 
 table {
@@ -273,19 +266,20 @@ td {
   height: 2.5em;
 }
 
-.day {
+.forecast-day {
   text-align: left;
 }
 
-.weather-range {
+.forecast-range {
   text-align: right;
   text-wrap: nowrap;
 }
 
-.weather-icon {
+.forecast-icon {
   text-align: center;
 }
 
+/* Hover effect on forecast table */
 tr:hover td {
   background-color: rgb(231, 229, 229, 0.5);
 }
@@ -302,8 +296,6 @@ tr:hover td:first-child {
   min-height: 100%;
   border-bottom-left-radius: 0%;
   border-bottom-right-radius: 0%;
-  /* overflow: hidden; */
-  /* overflow: scroll; */
 }
 
 .hide {
@@ -318,22 +310,18 @@ tr:hover td:first-child {
   display: block;
 }
 
-/* @media (min-height: 864px) {
-  .move {
-    position: absolute;
-    top: 70%;
-    right: 10%;
-  }
-} */
-
 /* for tablet and desktop*/
-@media (min-width: 641px) and (min-height: 800px) {
+@media (min-width: 641px) and (min-height: 770px) {
   body {
     background: #eee;
     background: linear-gradient(0deg, rgba(0, 0, 200, 0.2), rgba(0, 0, 200, 0));
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  h1 {
+    font-size: 4rem;
   }
 
   .container {
@@ -346,19 +334,21 @@ tr:hover td:first-child {
   }
 
   header {
-    padding-top: 1em;
+    padding-top: 1rem;
   }
 
-  .weather-details {
+  #forecast-field {
     margin-top: 3rem;
   }
 
   .button-field {
-    top: 88%;
+    height: 90px;
+    width: 90px;
   }
 
   .weather-icon-container {
-    height: 80px;
+    height: 100px;
+    width: 100px;
   }
 
   .background {
@@ -392,19 +382,15 @@ tr:hover td:first-child {
   }
 
   header {
-    padding-top: 3rem;
+    padding-top: 2rem;
   }
 
-  .weather-details {
-    margin-top: 5rem;
+  h1 {
+    font-size: 6rem;
   }
 
-  .button-field {
-    top: 90%;
-  }
-
-  .weather-icon-container {
-    height: 120px;
+  #forecast-field {
+    margin-top: 6rem;
   }
 
   table {

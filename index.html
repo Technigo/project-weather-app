@@ -24,9 +24,19 @@
     <div class="background">
       <div class="container">
         <header id="current-weather-field">
-          <a class="menu">
+          <!-- <a class="menu">
             <i class="fa fa-bars"></i>
-          </a>
+          </a> -->
+          <form class="search">
+            <input
+              type="text"
+              class="searchTerm"
+              placeholder="Type a city or country name"
+            />
+            <button type="submit" class="searchButton">
+              <i class="fa fa-search"></i>
+            </button>
+          </form>
           <div class="weather-icon-container">
             <img id="weather-icon" />
           </div>
@@ -51,7 +61,7 @@
             <button class="full-view">
               <img
                 id="button-icon"
-                src="./assets/button-icon-day.png"
+                src="./assets/button-icon.png"
                 alt="button icon"
               />
             </button>
@@ -60,17 +70,7 @@
         <div id="loader-container">
           <div class="loader">Loading</div>
         </div>
-        <form class="search">
-          <input
-            type="text"
-            class="searchTerm"
-            placeholder="Type a city or country name"
-          />
-          <button type="submit" class="searchButton">
-            <i class="fa fa-search"></i>
-          </button>
-        </form>
-        <div class="weather-details" id="forecast-field">
+        <div id="forecast-field">
           <table class="weather-table" id="weather-table"></table>
         </div>
       </div>
