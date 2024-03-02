@@ -1,6 +1,6 @@
 # Weather App
 
-This is the weather app will show 5 days weather. 
+This is the weather app will show 5 days weather in Helsinki.
 
 ## The problem
 
