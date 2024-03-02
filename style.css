@@ -15,6 +15,10 @@
   --colorTheme-thunderstorm-text: #000000;
   --colorTheme-other-background: #786060;
   --colorTheme-other-text: #fffc9c;
+
+  --search--background: #dbdbdb36;
+  --search--prompt: #ffffff9a;
+  --search--hover: #ffffffe6;
 }
 
 * {
@@ -25,6 +29,9 @@
 
 body {
   font-family: "Montserrat", sans-serif;
+  background-color: #000000;
+  color: #fff;
+  transition: background-color 0.2s color 0.2s;
 }
 
 .clearTheme {
@@ -77,6 +84,59 @@ body {
 }
 .otherThemeDash {
   border-bottom: var(--colorTheme-other-text) 1px dashed;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+
+.search-section {
+  max-width: 300px;
+  margin: 2rem 40px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  background-color: var(--search--background);
+  border-radius: 23px;
+}
+
+button {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  color: var(--search--prompt);
+  border-radius: 50%;
+  height: 46px;
+  width: 46px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+button:hover {
+  color: var(--search--hover);
+}
+
+input.search-bar {
+  border: none;
+  outline: none;
+  border-radius: 24px;
+  padding: 0.5em 1em;
+  background-color: transparent;
+  color: white;
+  font-family: inherit;
+  font-size: 120%;
+  width: 100%;
+}
+
+input::placeholder {
+  color: var(--search--prompt);
 }
 
 ul {
@@ -152,11 +212,17 @@ ul {
 }
 
 footer {
-  margin: 4rem 0 10px 40px;
+  margin: 2.5rem 0 10px 40px;
+  padding-bottom: 3px;
   font-size: 1rem;
 }
 
 @media screen and (min-width: 760px) and (max-width: 2130px) {
+  .search-section {
+    margin: 2rem auto;
+    justify-content: center;
+  }
+
   .daily-weather {
     margin: 80px 47px 0;
     display: flex;

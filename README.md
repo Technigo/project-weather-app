@@ -8,7 +8,7 @@ For building the app, I started with using fetch() function to fetch the weather
 
 The main problem i encountered in the process was converting Unix time string into the local time. It was consuding in the beginnign since I wasn't familiar with this kind of time formate. In the end, after researching, I found the correct solution. 
 
-Additionaly, I tried to add in more UI color theme to fit different weather conditions. 
+Additionaly, I tried to add in more icons and UI color theme to fit different weather conditions. 
 
 ## Next Step
     - add in city search bar
