@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
 }
+
 body {
   font-family: "Roboto", sans-serif;
   background-color: white;
@@ -12,13 +13,16 @@ body {
   margin: 0;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  display: block;
 }
 
 .weather-form {
   display: flex;
   width: 100%;
-  align-content: center;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 90px;
+  margin-top: 40px;
 }
 
 .weather-form input {
@@ -41,9 +45,10 @@ body {
   outline: 0;
   background: white;
   border-radius: 50%;
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   cursor: pointer;
+  margin-right: 40px;
 }
 
 .weather-form button img {
@@ -51,20 +56,55 @@ body {
 }
 
 .current-temp {
-  font-size: 280px;
+  font-size: 200px;
   font-weight: 300;
   color: white;
+  display: inline-block; /* Add this line */
+  vertical-align: top; /* Add this line */
+}
+
+.celsius {
+  font-size: 80px;
+  vertical-align: top;
+  margin-top: 0;
+  color: white;
+  display: inline;
+  margin-top: 50px;
+}
+
+.current-icon {
+  width: 350px;
+  margin-top: 30px;
+  display: flex;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+
+/* .curve {
+  background: linear-gradient(#8589ff, #e8e9ff);
+  border-bottom-left-radius: 20% 38%;
+  border-bottom-right-radius: 20% 38%;
+  overflow: hidden;
+} */
+
+.card {
+  margin-top: 200px;
+  margin-left: 100px;
+  margin-right: auto;
+  width: 100%;
+  max-width: 800px;
+  color: whitesmoke;
 }
 
 .current-city {
-  font-size: 180px;
+  font-size: 100px;
   color: white;
   font-weight: 300;
-  display: block;
 }
 
 .current-sky {
-  font-size: 80px;
+  font-size: 70px;
   margin-bottom: 30px;
   font-weight: 200;
   color: white;
@@ -74,10 +114,146 @@ body {
   font-size: 60px;
   font-weight: 200;
   color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sun-times {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.week-days-container {
+  background-color: white;
+  padding: 20px;
 }
 
 .week-days {
-  background-color: whitesmoke;
+  background-color: white;
   color: #707070;
-  font-size: 30px;
+  font-size: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center; /* Center the items horizontally */
+  font-weight: 300;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto; /* Center the section horizontally */
+  padding: 20px; /* Add padding for spacing */
+  margin-top: 20px; /* Add top margin */
+  margin-bottom: 20px; /* Add bottom margin */
+}
+
+.day-container {
+  display: flex;
+  flex-direction: column;
+  padding: 5rem;
+  gap: 3rem;
+  background-color: whitesmoke;
+}
+
+.day-container > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.weather-emoji {
+  width: 120px;
+  margin-right: 50px;
+}
+
+.day {
+  margin-right: 190px;
+}
+
+.error {
+  color: red;
+  font-size: 40px;
+}
+
+/* Media query for desktop screens */
+@media (min-width: 1025px) {
+  .card {
+    margin-top: 120px;
+    margin-left: 400px;
+    margin-right: auto;
+  }
+
+  .weather-form {
+    margin-top: 60px; /* Adjust top margin */
+    margin-bottom: 60px; /* Adjust bottom margin */
+  }
+
+  .weather-form button {
+    width: 90px;
+    height: 90px;
+  }
+
+  .current-temp {
+    font-size: 160px;
+    font-weight: 300;
+  }
+
+  .celsius {
+    font-size: 50px;
+  }
+
+  .current-city {
+    font-size: 60px;
+    font-size: 200;
+  }
+
+  .current-icon {
+    width: 190px;
+    margin-top: 40px;
+    /* top: 150px; */
+    margin-right: 390px;
+    margin-top: 10px;
+  }
+
+  .current-sky {
+    font-size: 40px;
+    margin-bottom: 10px;
+  }
+
+  .weather-detail {
+    font-size: 40px;
+    justify-content: space-between;
+  }
+
+  .day-container {
+    padding: 2rem; /* Adjust padding */
+  }
+
+  .weather-emoji {
+    width: 100px; /* Adjust icon size */
+    margin-right: 20px; /* Adjust margin */
+  }
+
+  .week-days {
+    font-size: 30px;
+  }
+
+  .weather-emoji {
+    margin-left: 150px;
+  }
+
+  .weather-form input {
+    width: 50%; /* Adjust the width to your preference */
+    height: 2em;
+    margin-right: 50px;
+    display: inline-block;
+  }
+
+  .weather-form button {
+    margin-right: 200px; /* Adjust the margin to your preference */
+  }
+
+  .day-container {
+    padding: 1rem;
+  }
 }

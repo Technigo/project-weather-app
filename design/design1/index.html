@@ -18,14 +18,17 @@
     />
   </head>
   <body>
+    <div class="curve">
+    <img src="" class="current-icon" id="current-icon">
     <div id="card" class="card">
-      <h1 id="current-temp" class="current-temp">10°C</h1>
-      <img src="" class="current-icon" id="current-icon">
+      <h1 id="current-temp" class="current-temp">10<span class="celsius">°C</span></h1>
       <h2 id="current-city" class="current-city">Malmö</h2>
       <p id="current-sky" class="current-sky">Clear</p>
       <p id="weather-detail" class="weather-detail">
+        <div class="sun-times">
         <span>Sunrise 22:30</span>
         <span>Sunset 00:00</span>
+        </div>
       </p>
     </div>
 
@@ -38,38 +41,19 @@
       />
       <button id="search-btn"><img src="assets/search.png"></i></button>
     </form>
+    </div>
 
-    <section id="week-days" class="week-days">
-      <div>
-        <div id="day1">Mon</div>
-        <div id="weather-emoji"></div>
-        <div id="week-temp1">--°C / --°C</div>
-      </div>
 
-      <div>
-        <div id="day2">Tue</div>
-        <div id="weather-emoji"></div>
-        <div id="week-temp2">--°C / --°C</div>
-      </div>
 
-      <div>
-        <div id="day3">Wed</div>
-        <div id="weather-emoji"></div>
-        <div id="week-temp3">--°C / --°C</div>
-      </div>
-
-      <div>
-        <div id="day4">Thu</div>
-        <div id="weather-emoji"></div>
-        <div id="week-temp4">--°C / --°C</div>
-      </div>
-
-      <div>
-        <div id="day5">Fri</div>
-        <div id="weather-emoji"></div>
-        <div id="week-temp5">--°C / --°C</div>
-      </div>
-    </section>
+<div class="week-days-container">
+  <div id="week-days" class="week-days">
+   <ul class="day-container">
+    <li id="day">Mon</li>
+    <li id="weather-emoji"></li>
+    <li id="week-temp">--°C / --°C</li>
+   </ul>
+  </div>
+</div>>
 
     <script src="index.js"></script>
   </body>
