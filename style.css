@@ -1,12 +1,152 @@
+/* font family "kode mono" */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:wght@100;400&family=Roboto:wght@300&display=swap');
+
+:root{
+  --00: #8fe0ff;
+  --01: #8275e3;
+  --02: #41476d;
+  --03: #31255a;
+}
+
+*{
+  font-family: "Roboto";
+  font-weight: 00;
+  font-style: normal;
+}
+
 body{
-  font-family: sans-serif, 'Gill Sans';
+  color: rgb(118, 115, 115);
   margin: 0;
   box-sizing: border-box;
-
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: rgb(211, 219, 225);
 }
+/* -------------------------------------HEADER----------------------------------------------- */
+header{
+  padding:20px 30px;
+  color: white;
+  background-color: var(--02);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+header img{
+  width: 150px;
+  top: 0;
+  right: 0;
+  align-self: end;
+}
+
+header h2, header h4{
+  margin: 5px 0;
+}
+
+.temperature{
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items:start;
+  font-size: 50px;
+}
+
+.temperature h1{
+  font-weight: 100;
+  margin: 0;
+  font-size: 80px;
+}
+
+.sunrise-sunset{
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sunrise-sunset div{
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  align-items: center;
+}
+
+
+/* -------------------------------------WEATHER FORECAST----------------------------------------------- */
 
 main{
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding:30px;
+  padding-bottom: 80px;
+  height: 50%;
+}
+
+/* -------------------------------------WEATHER FORECAST----------------------------------------------- */
+
+.container-btn {
+  background-color: var(--01);
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin: 0 30px 50px 0;
+  align-self: end;
+  cursor: pointer;
+  box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.2);
+  transition: 0,4s ease;
+}
+
+.container-btn:hover{
+  box-shadow: 0px 0px 20px 20px rgba(0, 0, 0, 0.2)
+}
+
+.arrow div {
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  border-width: 0 4px 4px 0 solid rgb(255, 255, 255);
+  border-radius: 2px;
+ 
+}
+
+.btn:after {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  transform: rotate(-45deg);
+}
+
+button::after{
+  color: #31255a;
+  height: 50px;
+  width: 50px;
+  z-index: 5;
+  position: absolute;
+  top:0;
+  bottom: 0;
+}
+
+.forecast-day{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.forecast-day-right{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.forecast-day i{
+  width: 120px;
+  text-align: end;
 }
 
 footer{
@@ -18,15 +158,17 @@ footer{
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
+  background-color: var(--02);
 }
 
 footer img{
   padding: 3px 10px;
   max-height: 30px;
-  background-color: ;
 }
 
 footer a{
   text-decoration: none;
   font-size: 0.575em;
+  color: white;
+  padding: 10px;
 }

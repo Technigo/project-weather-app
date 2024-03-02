@@ -23,21 +23,30 @@ const URL2 =  `${BASE_URL}forecast?q=${cityCountry}&units=metric&APPID=${API_KEY
 
 //HERE TODAYS WEATHER INFORMATION FUNCTION -----------------------------------------------------------------------------------------------------------------//
 const updateHTML1 = (data) =>{
-  //set main temperature
-  const selectNowsTemperature = document.getElementById("nowsTemperature")
-  const roundOneDecimal = Math.round(data.main.temp * 10)/10 //this to round to one decimal
-  selectNowsTemperature.innerText = roundOneDecimal
+  
+   //set main temperature
+   const selectNowsTemperature = document.getElementById("nowsTemperature")
+   const roundOneDecimal = Math.round(data.main.temp * 10)/10 //this to round to one decimal
+   selectNowsTemperature.innerText = roundOneDecimal
 
+  //set weather icon
+  const todaysIcon = document.getElementById("todays-icon")
+  iconCode = data.weather[0].icon
+  const iconUrl = `http://openweathermap.org/img/wn/${iconCode}.png`;
+  todaysIcon.src = iconUrl
+  
   //set location
   const selectLocation = document.getElementById("location")
   selectLocation.innerText = data.name
 
   //set description
   const selectWeatherDescription = document.getElementById("weatherDescription")
-  selectWeatherDescription.innerText = data.weather[0].description
+  const descrip = data.weather[0].description
+  selectWeatherDescription.innerText = descrip.charAt(0).toUpperCase() + descrip.slice(1)
+
   
   //set sunrise "the variable cascade hell-1"
-  const selectSunraise = document.getElementById("sunraise")
+  const selectSunraise = document.getElementById("sunrise")
   const sunriseTimeStamp = data.sys.sunrise*1000
   const sunriseTime = new Date (sunriseTimeStamp)
   const sunriseHours = sunriseTime.getHours()
@@ -51,6 +60,7 @@ const updateHTML1 = (data) =>{
   const sunsetHours = sunsetTime.getHours()
   const sunsetMinutes = sunsetTime.getMinutes()
   selectSunset.innerText = `${sunsetHours}:${sunsetMinutes}`
+  console.log(data)
 } 
 
 //HERE TODAYS WEATHER FORECAST FUNCTION -----------------------------------------------------------------------------------------------------------------//
@@ -75,56 +85,50 @@ fetchWeaterData()
 const fetchWeatherForecast = () =>{
   fetch(URL2)
     .then(response=>response.json())
-    /* .then((data)=>{
-      const selectForecast = document.getElementById("forecast")
-      console.log (data.list) 
-      console.log (data.list[1])
-      const filterMiddayArray = data.list.filter(item=>item.dt_txt.includes("12:00"))
-      console.log(data.list[0])
-      const filterDateStamp = 
-       array.forEach(element => filterMiddayArray{
-        forecast.innerHTML =+`
-        <div>
-          <label>${}</label> //here we need the day of the week
-          <img src=${}></img> //
-          <h3>${}/${}°C</h3> //Here we need the max temperature and the min temperature 
-        </div>`
-      }); */
     .then((data) => {
-      const selectForecast = document.getElementById("forecast"); // forecast is an HTML id
-      const filterMiddayArray = data.list.filter(item => item.dt_txt.includes("12:00"));
+    const selectForecast = document.getElementById("forecast"); // forecast is an HTML id
+    const filterMiddayArray = data.list.filter(item => item.dt_txt.includes("12:00"));
+      console.log(filterMiddayArray)
+    filterMiddayArray.forEach((item) => {
+      // Get the day of the week
+      const timestamp = item.dt;
+      const date = new Date(timestamp * 1000); // Convert seconds to milliseconds
+      const dayOfWeek = date.getDay();
+      // console.log(item.dt)
+      // console.log(date)
+      const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+      const dayOfWeekString = daysOfWeek[dayOfWeek];
 
-      filterMiddayArray.forEach((item) => {
-        // Get the day of the week
-        const timestamp = item.dt;
-        const date = new Date(timestamp * 1000); // Convert seconds to milliseconds
-        const dayOfWeek = date.getDay();
-        const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-        const dayOfWeekString = daysOfWeek[dayOfWeek];
+      // Get the weather icon
+      const weatherIcon = item.weather[0].icon;
 
-        // Get the weather icon
-        const weatherIcon = item.weather[0].icon;
+      // Get the max and min temperature
+      const maxTemp = item.main.temp_max;
+      // console.log(maxTemp)
+      const roundMaxTemp = Math.round(maxTemp * 10)/10 //this to round to one decimal
+      const minTemp = item.main.temp_min;
+      // console.log(minTemp)
+      const roundMinTemp = Math.round(minTemp * 10)/10 //this to round to one decimal
 
-        // Get the max and min temperature
-        const maxTemp = item.main.temp_max;
-        const minTemp = item.main.temp_min;
-
-        // Construct the HTML content for each forecast item
-        const forecastHTML = `
-          <div>
-            <label>${dayOfWeekString}</label>
+      // Construct the HTML content for each forecast item
+      const forecastHTML = `
+        <div class="forecast-day">
+          <label>${dayOfWeekString}</label>
+          <div class="forecast-day-right">
             <img src="https://openweathermap.org/img/wn/${weatherIcon}.png"></img>
-            <h3>${maxTemp}/${minTemp}°C</h3>
-          </div>`;
-        
-        // Append the HTML content to the forecast element
-        selectForecast.innerHTML += forecastHTML;
-      });
+            <i>${roundMaxTemp} / ${roundMinTemp} °C</i>
+          </div>
+        </div>`;
+      
+      // Append the HTML content to the forecast element
+      selectForecast.innerHTML += forecastHTML;
+    });
 
-    })
-    .catch((error) => {
-      console.error(`Error fetching weather forecast data:`, error);
-    });}
+  })
+  .catch((error) => {
+    console.error(`Error fetching weather forecast data:`, error);
+  })
+;}
 
 fetchWeatherForecast()
 

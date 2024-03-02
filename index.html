@@ -11,22 +11,34 @@
     <nav>
 
     </nav>
-    <img id=weatherImg src="" alt="">
-    <h1 id="nowsTemperature">Temperature</h1>
-    <label >°C</label>
+    <img class="todays-icon" id="todays-icon"></img>
+    <div class = "temperature">
+      <h1 id="nowsTemperature">T</h1>
+      <label >°C</label>
+    </div>
     <h2 id="location">city</h2>
-    <h3 id="weatherDescription">Description</h3>
-    <label >sunrise</label>
-    <h3 id="sunraise">Sunraise</h3>
-    <label >sunset</label>
-    <h3 id="sunset">Sunset</h3>
+    <h4 id="weatherDescription">Description</h4>
+    <div class="sunrise-sunset">
+      <div>
+        <label >sunrise</label>
+        <h3 id="sunrise">Sunrise</h3>
+      </div>
+      <div>
+        <label >sunset</label>
+        <h3 id="sunset">Sunset</h3>
+      </div>
+    </div>
   </header>
+  <div class="container-btn">
+    <div class="arrow up"><div></div></div>
+    <div class="arrow down"><div></div></div>
+  </div>
   <main id="forecast">
 
   </main>
   <footer>
-    <img src="./assets/technigo-logo.svg" alt="logo">
     <a href="https://github.com/vidalhuix">By Arnau Vidal Huix</a>
+    <img src="./assets/technigo-logo.svg" alt="logo">
   </footer>
   <script src="./script.js"></script>
 </body>
