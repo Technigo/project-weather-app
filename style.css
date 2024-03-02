@@ -177,15 +177,10 @@ ul {
 }
 
 .forecast-section {
+  max-width: 400px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
-}
-
-.weekly-weather {
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
   align-items: center;
   margin: 30px 40px 0px;
   font-size: 21px;
@@ -193,15 +188,8 @@ ul {
   line-height: 36px;
 }
 
-.week-temp {
-  min-width: 285px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: space-between;
-}
-
 .forecast {
+  min-width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -263,13 +251,13 @@ footer {
     line-height: 45.1px;
   }
 
-  .weekly-weather {
-    margin-top: 50px;
-    justify-content: center;
+  .forecast-section {
+    align-items: center;
+    margin: 30px auto;
   }
 
   footer {
-    margin: 7rem 0 0 0;
+    margin: 2rem auto;
     text-align: center;
     font-size: 1rem;
   }
