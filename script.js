@@ -8,8 +8,9 @@ const API_BASE_URL = "https://api.openweathermap.org/data/2.5";
 const API_KEY = "a1f68c4f65b632802ca0dd3405694457";
 
 // UNIX TIMESTAMP CONVERTER
-const convertDateTime = unixTimestamp => {
-  const date = new Date(unixTimestamp * 1000);
+const convertDateTime = (unixTimestamp, timezoneOffset) => {
+  const adjustedTimestamp = unixTimestamp + timezoneOffset;
+  const date = new Date(adjustedTimestamp * 1000);
   const hours = String(date.getHours()).padStart(2, "0");
   const minutes = String(date.getMinutes()).padStart(2, "0");
   return `${hours}:${minutes}`;
@@ -48,7 +49,11 @@ const printWeather = async weatherURL => {
     }
 
     const currentWeather = document.getElementById("current-weather");
+    const currentHeader = document.querySelector(".header");
+    const currentDropdown = document.getElementById("city-dropdown");
     currentWeather.className = backgroundClass;
+    currentHeader.className = `header ${backgroundClass}`;
+    currentDropdown.className = backgroundClass;
 
     currentWeather.innerHTML = `
     <div id="today-weather-backgroundr">
