@@ -29,7 +29,7 @@
 
 body {
   font-family: "Montserrat", sans-serif;
-  background-color: #000000;
+  background-color: #0b3338;
   color: #fff;
   transition: background-color 0.2s color 0.2s;
 }
@@ -95,11 +95,10 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .search-section {
   max-width: 300px;
-  margin: 2rem 40px;
+  margin: 2rem 41px 0 41px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 100%;
   background-color: var(--search--background);
   border-radius: 23px;
 }
@@ -136,6 +135,23 @@ input.search-bar {
 }
 
 input::placeholder {
+  color: var(--search--prompt);
+}
+
+.my-location {
+  margin: 0.5rem auto 0px 47px;
+  text-align: center;
+  width: 150px;
+  height: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.my-location-btn {
+  cursor: pointer;
+  padding: 0.5em 1em;
+  border-radius: 24px;
+  background-color: var(--search--background);
   color: var(--search--prompt);
 }
 
@@ -199,16 +215,14 @@ ul {
   border-bottom: transparent 1px dashed;
 }
 
-footer {
-  margin: 2.5rem 0 10px 40px;
-  padding-bottom: 3px;
-  font-size: 1rem;
-}
-
 @media screen and (min-width: 760px) and (max-width: 2130px) {
   .search-section {
     margin: 2rem auto;
     justify-content: center;
+  }
+
+  .my-location {
+    margin: 0.5rem auto;
   }
 
   .daily-weather {
@@ -254,11 +268,5 @@ footer {
   .forecast-section {
     align-items: center;
     margin: 30px auto;
-  }
-
-  footer {
-    margin: 2rem auto;
-    text-align: center;
-    font-size: 1rem;
   }
 }
