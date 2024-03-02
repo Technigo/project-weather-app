@@ -106,8 +106,11 @@ const handleForecastData = (forecastData) => {
   const filteredForecast = forecastData.list.filter((listItem) => {
     //filter list items
     const date = new Date(listItem.dt * 1000); //convert to milliseconds and create date object
-    console.log(date.getUTCHours());
-    if (date.getUTCHours() === 12) {
+    if (
+      date.getUTCHours() === 12 &&
+      date > getFirstDateOfForecast() &&
+      date < getLastDateOfForecast()
+    ) {
       return true;
     } else {
       return false;
@@ -118,15 +121,23 @@ const handleForecastData = (forecastData) => {
 
 // functions to recieve days for forecast
 const getFirstDateOfForecast = () => {
-  let tomorrow = new Date();
-  tomorrow.setUTCDate(tomorrow.getUTCDate() + 1);
-  console.log(tomorrow);
+  let date = new Date();
+  date.setUTCDate(date.getUTCDate() + 1);
+  date.setUTCHours(0, 0, 0, 0);
+  return date;
 };
 getFirstDateOfForecast();
 
 const getLastDateOfForecast = () => {
-  let tomorrow = new Date();
-  tomorrow.setUTCDate(tomorrow.getUTCDate() + 4);
-  console.log(tomorrow);
+  let date = new Date();
+  date.setUTCDate(date.getUTCDate() + 5);
+  date.setUTCHours(0, 0, 0, 0);
+  return date;
 };
 getLastDateOfForecast();
+
+const getWeekday = (date) => {
+  const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const index = date.getDay();
+  return weekdays[index];
+};
