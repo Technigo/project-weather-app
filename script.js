@@ -1,13 +1,8 @@
 //DOM get element from HTML
 const temSunTime = document.getElementById('temperature-sun-time')
-// const temperature = document.getElementById('temperature')
-// const sunrise = document.getElementById('sunrise-time')
-// const sunset = document.getElementById('sunset-time')
 const remindImgText = document.getElementById('remind-img-text')
 const fiveDaysTemperature = document.getElementById('five-days-temperature')
-// const errorText = document.getElementById('error')
-
-//DOM create in JS
+const errorText = document.getElementById('error')
 
 //style.css
 const styleElement = document.createElement('style')
@@ -17,7 +12,7 @@ document.head.appendChild(styleElement)
 const BASE_URL1= 'https://api.openweathermap.org/data/2.5/weather'
 const BASE_URL2 = 'https://api.openweathermap.org/data/2.5/forecast'
 const API_KEY = '0a3f5beba05e6db2d5da18ddf3283c92'
-const city = 'Perth,Australia'
+const city = 'Helsinki,Finland'
 const URL1 = `${BASE_URL1}?q=${city}&units=metric&appid=${API_KEY}`
 const URL2 = `${BASE_URL2}?q=${city}&units=metric&appid=${API_KEY}`
 
@@ -31,7 +26,7 @@ const weatherInfo = () => {
     })
     .catch(error=>{
         errorText.innerHTML = 'Oops, something went wrong🫢'
-        console.error('error:', error)
+        console.log('error:', error)
     })
 }
 weatherInfo()
@@ -63,7 +58,6 @@ const remindTestCityName = (param) => {
         <h3 id="remind-text">Get your sunnies on. <br>${cityName} is looking rather great today.</h3>`
         styleElement.sheet.insertRule('body {background-color: #F7E9B9; color: #2A5510}')
         styleElement.sheet.insertRule('hr {border-button: 1px; color: #707070}')
-        
     } else if (dayWeather === 'Rain' || dayWeather === 'Drizzle' || dayWeather=== 'Thunderstorm') {
         temSunTime.innerHTML = `
         <P> ${description} | ${temperature}°</p>
@@ -84,9 +78,16 @@ const remindTestCityName = (param) => {
         <h3 id="remind-text">Light a fire and get cosy. <br>${cityName} is looking grey today.</h3>`
         styleElement.sheet.insertRule('body {background-color: #F4F7F8; color: #F47775}')
         styleElement.sheet.insertRule('hr {border-button: 1px; color: #F47775}')
-    } else {
+    } else { //if none of the weather description is match, the city name will be instead of description.
+        temSunTime.innerHTML = `
+        <P> ${cityName} | ${temperature}°</p>
+        <p> Sunrise ${hoursSunrise}</p>
+        <p> Sunset ${hoursSunset}</p>`
         remindImgText.innerHTML = `
-        <h3 id="remind-text">Oops... Something went wrong</h3>`
+        <img src="./design/design2/icons/noun_Sunglasses_2055147.svg">
+        <h3 id="remind-text">How are you today?</h3>`
+        styleElement.sheet.insertRule('body {background-color: #F7E9B9; color: #2A5510}')
+        styleElement.sheet.insertRule('hr {border-button: 1px; color: #707070}')
     }  
 }
 
@@ -130,7 +131,7 @@ const forecast = () => {
     )
     .catch(error=>{
         errorText.innerHTML = 'Oops, something went wrong🫢'
-        console.error('error:', error)
+        console.log('error:', error)
     })
 }
 forecast()
