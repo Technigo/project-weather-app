@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400;1,500&display=swap');
 
 :root {
   --gradient-day: linear-gradient(90deg, #8589FF 0%, #E8E9FF 100%);
@@ -14,9 +14,50 @@
   overflow-x: hidden;
   font-family: "Roboto", sans-serif;
 }
+/*------------ Dropdown styling ------------------*/
+select {
+  background-color: var(--button);
+  margin: 10px;
+}
 
+#city-dropdown {
+  padding: 10px;
+  font-size: 16px;
+  color: #E8E9FF;
+  border: 1px solid #9681ff;
+  border-radius: 4px;
+}
+
+#city-dropdown:hover {
+  border-color: #aaa;
+}
+
+#city-dropdown option {
+  padding: 10px;
+  font-size: 30px;
+  font-weight: 100;
+}
+
+#city-dropdown option:nth-child(even) {
+  background-color: var(--button);
+}
+
+#city-dropdown option:nth-child(odd) {
+  background-color: var(--button);
+}
+
+#city-dropdown::before {
+  content: "\25BC";
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  color: #666;
+}
+
+/*-------------------- today's weather ----------------------*/
 .today-weather-background {
-  background: var(--gradient-day);
+  background: transparent;
   color: #E8E9FF;
   border-bottom-left-radius: 50vw 10vw;
   border-bottom-right-radius: 50vw 10vw;
@@ -27,7 +68,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  font-weight: 300;
 }
 
 .day-background {
@@ -58,6 +99,7 @@
 
 h1 {
   font-size: 34px;
+  font-weight: 300;
   margin-top: 20px;
   margin-bottom: 10px;
 }
@@ -65,10 +107,12 @@ h1 {
 h2 {
   font-size: 30px;
   margin: 20px;
+  font-weight: 100;
 }
 
 .condition {
   font-size: 22px;
+  font-weight: 200;
   text-align: justify;
 }
 
@@ -83,6 +127,7 @@ h2 {
   margin-top: 10px;
   margin-bottom: 2rem;
   font-size: 18px;
+  font-weight: 100;
 }
 
 .forecast-display p {
@@ -114,4 +159,15 @@ img.icon {
 
 footer {
   margin-top: 30px;
+  position: sticky;
+}
+
+@media screen and (min-width: 1023px) {
+  .header ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+    background-color: #fff;
+  }
 }
