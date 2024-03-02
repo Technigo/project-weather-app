@@ -23,7 +23,13 @@ const fetchWeatherData = (cityName) => {
   fetch(`${BASE_URL}${cityName}&appid=${API_KEY}`)
     .then((response) => {
       if (!response.ok) {
-        throw new Error("Failed to fetch weather data")
+        if (response.status === 404) {
+          // City not found
+          throw new Error("City not found")
+        } else {
+          //Other errors
+          throw new Error("Failed to fetch weather data")
+        }
       }
       return response.json()
     })
@@ -78,21 +84,27 @@ const fetchWeatherData = (cityName) => {
         "sv-SE",
         sunsetOptions
       )
-
-      //End of fetchWeatherData function
     })
-  /*.catch((error) => {
+    //Handle errors
+    .catch((error) => {
+      if (error.message === "City not found") {
+        //City not found, only change placeholder text
+        citySearchInput.placeholder = "Try another city"
+      } else {
+        //Other error - display in browser that we're unable to fetch data
+        weather.innerHTML =
+          "<p>Error fetching weather data. Please try again later.</p>"
+        temperature.innerHTML = ""
+        city.innerHTML = ""
+        sunriseElement.innerHTML = ""
+        sunsetElement.innerHTML = ""
+        celsius.innerHTML = ""
+        sunText.innerHTML = ""
+        searchForm.innerHTML = ""
+      }
       console.error("Error fetching weather data:", error)
-      weather.innerHTML =
-        "<p>Error fetching weather data. Please try again later.</p>"
-      temperature.innerHTML = ""
-      city.innerHTML = ""
-      sunriseElement.innerHTML = ""
-      sunsetElement.innerHTML = ""
-      celsius.innerHTML = ""
-      sunText.innerHTML = ""
-      searchForm.innerHTML = ""
-    })*/
+    })
+  //End of fetchWeatherData function
 }
 
 fetchWeatherData(cityName)
@@ -103,7 +115,12 @@ const fetchWeatherForecast = (cityName) => {
   fetch(`${forecastURL}${cityName}&appid=${API_KEY}`)
     .then((response) => {
       if (!response.ok) {
-        throw new Error("Failed to fetch weather forecast")
+        if (response.status === 404) {
+          //City not found
+          throw new Error("City not found")
+        } else {
+          throw new Error("Failed to fetch weather data")
+        }
       }
       return response.json()
     })
@@ -183,11 +200,17 @@ const fetchWeatherForecast = (cityName) => {
         `
       }
     })
-  /* .catch((error) => {
+    .catch((error) => {
+      if (error.message === "City not found") {
+        //City not found, only change placeholder text
+        citySearchInput.placeholder = "Try another city"
+      } else {
+        //Other error - display in browser that we're unable to fetch data
+        forecastContainer.innerHTML =
+          "<p>Error fetching weather forecast. Please try again later.</p>"
+      }
       console.error("Error fetching weather forecast:", error)
-      forecastContainer.innerHTML =
-        "<p>Error fetching weather forecast. Please try again later.</p>"
-    })*/
+    })
 }
 fetchWeatherForecast(cityName)
 
@@ -203,5 +226,7 @@ searchForm.addEventListener("submit", (event) => {
     fetchWeatherForecast(cityName)
     //Clear the input after user presses enter
     citySearchInput.value = ""
+  } else {
+    citySearchInput.placeholder = "Try another city"
   }
 })
