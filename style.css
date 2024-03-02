@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  font-family: "Montserrat"
+  font-family: "Montserrat";
 }
 
 .wrapper {
@@ -40,7 +40,6 @@ h1 {
   width: 100%;
   height: 100%;
   /* border: solid black; */
-
 }
 
 .forecast-container {
@@ -51,21 +50,13 @@ h1 {
   border-bottom: dotted 2px;
   padding-bottom: 5px;
   padding-top: 5px;
-  
 }
 
 .forecast-temp {
   display: flex;
   align-items: center;
-
-  
 }
 
-.min-temp, .max-temp{
-  /* align-items: flex-end; */
-
-
-}
 .clouds {
   background-color: #f4f7f8;
   color: #f47775;
@@ -79,4 +70,52 @@ h1 {
 .rain {
   background-color: #bde8fa;
   color: #164a68;
+}
+
+@media only screen and (min-width: 668px) and (max-width: 1024px) {
+  .wrapper {
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  #image {
+    height: 120px;
+  }
+
+  .text-container {
+    font-size: 3rem;
+  }
+  .clouds,
+  .clear,
+  .rain {
+    text-align: center;
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .wrapper {
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  #image {
+    height: 150px;
+  }
+
+  .text-container {
+    font-size: 3.5rem;
+  }
+  .clouds,
+  .clear,
+  .rain {
+    text-align: center;
+    font-size: 2.5rem;
+  }
 }

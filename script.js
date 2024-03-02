@@ -45,12 +45,9 @@ const fetchWeatherData = () => {
       return response.json();
     })
     .then((data) => {
-      console.log("weather:", data);
-
-      //get weather description and temp at city
+      //get weather description and temp at local city
       const getWeatherDescription = () => {
         const weatherDescription = data.weather[0].description;
-
         const roundedTemp = Math.round(data.main.temp * 10) / 10;
 
         tempWeather.textContent = `
@@ -67,7 +64,6 @@ const fetchWeatherData = () => {
         } else if (weatherDescription === "clear sky") {
           clearSky();
         } else {
-          //showwer rain, rain, thunderstorm, snow, must
           rain();
         }
       };
@@ -102,7 +98,6 @@ const fetchWeatherData = () => {
       `;
 
       const cityName = data.name;
-      
     })
     .catch((error) => {
       console.log("Fetch error:", error);
@@ -112,7 +107,6 @@ const fetchWeatherData = () => {
 fetchWeatherData();
 
 //fetch five day forecast
-
 const fetchForecast = () => {
   fetch(forecastURL)
     .then((response) => {
@@ -123,21 +117,14 @@ const fetchForecast = () => {
     })
     .then((data) => {
       const forecastList = data.list;
-      console.log("forecast list:", forecastList);
-
       //put today's date in var and convert it to yyy-mm-dd format
       const todaysDate = new Date().toISOString().split("T")[0];
-      console.log("Now:", todaysDate);
-      console.log("todays date without time:", todaysDate);
-
       //create empty object
       const dailyTemperatures = {};
 
       forecastList.forEach((item) => {
         const date = item.dt_txt.split(" ")[0];
-
         //exclude today's date and fetcgh the min/max temp of each item and put in var
-        console.log("date split to show YY-MM-DD:", date);
         if (date !== todaysDate) {
           const maxTemp = Math.round(item.main.temp_max);
           const minTemp = Math.round(item.main.temp_min);
@@ -160,7 +147,6 @@ const fetchForecast = () => {
           }
         }
       });
-      console.log("Daily Temp", dailyTemperatures);
 
       for (const date in dailyTemperatures) {
         const minTemp = dailyTemperatures[date].minTemp;
@@ -174,7 +160,7 @@ const fetchForecast = () => {
           <div class="forecast-container">
             <span class="forecast-day">${weekdayName}</span>
             <span class="forecast-temp">
-            <span class="min-temp">${minTemp}°</span>/<span class="max-temp">${maxTemp}°C</span>
+            <span class="min-temp">${minTemp}°</span>/<span class="max-temp">${maxTemp}°c</span>
             </span>
           </div>
           `;
