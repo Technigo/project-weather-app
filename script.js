@@ -1,11 +1,8 @@
 // DOM selectors
 const currentWeather = document.getElementById("weather-container");
-// const weatherForm = document.querySelector(".weatherForm");
 // const displayTemp = document.getElementById("temp");
 // const displayLocation = document.getElementById("location");
 // const displayCondition = document.getElementById("condition");
-// const displaySunrise = document.getElementById("sunrise-time");
-// const displaySunset = document.getElementById("sunset-time");
 const displayForecast = document.getElementById("weather-forecast");
 
 // API
@@ -38,8 +35,8 @@ const printWeather = async () => {
     const currentLocation = data.name;
     const currentCondition = data.weather[0].description;
     const icon = data.weather[0].icon;
-    const todaySunrise = convertDateTime(data.sys.sunrise);
-    const todaySunset = convertDateTime(data.sys.sunset);
+    const todaySunrise = convertDateTime(data.sys.sunrise, data.timezone);
+    const todaySunset = convertDateTime(data.sys.sunset, data.timezone);
     const ICON_URL = `https://openweathermap.org/img/wn/${icon}@2x.png`;
 
     currentWeather.innerHTML = `
@@ -63,32 +60,36 @@ const printForecast = async () => {
   try {
     const fourDayWeather = await fetch(FORECAST);
     const json = await fourDayWeather.json();
+    const forecastData = json.list
+      .filter((item, index) => (index - 1) % 8 === 0)
+      .slice(0, 4); // Filter for every 8th item, which represents once every day
 
-    //data of 12:00 PM
-    const forecastData = [...json.list];
-    const filteredData = [...forecastData].filter(day => {
-      return day.dt_txt.toLowerCase().endsWith("12:00:00");
-    });
+    console.log("FORECAST JSON DATA", json); //NOT TO FORGET TO DELETE
 
-    console.log("FORECAST JSON DATA", json); //TBDeleted
+    //To get the correct temperature for each of the day in the forecast
+    forecastData.forEach((forecast, index) => {
+      const startIdx = index * 8; // Starting index of the forecast day
+      const endIdx = startIdx + 8; // Ending index of the forecast day
 
-    filteredData.slice(0, 4).forEach((forecast, index) => {
+      // Extract temperatures for the current forecast day
+      const temperatures = json.list
+        .slice(startIdx, endIdx)
+        .map(item => item.main.temp);
+
+      // Calculate lowest and highest temperatures for the current forecast day
+      const lowestTemp = Math.min(...temperatures).toFixed(0);
+      const highestTemp = Math.max(...temperatures).toFixed(0);
+
       const forecastDate = new Date(forecast.dt * 1000);
       const weekday = getWeekdays(forecastDate);
       const icon = forecast.weather[0].icon;
-
-      // LOWEST & HIGHEST TEMPERATURES
-      const dailyForecast = filteredData.slice(index * 8, (index + 1) * 8);
-      const dailyTemps = dailyForecast.map(item => item.main.temp.toFixed(0));
-      const dailyLowestTemp = Math.min(...dailyTemps);
-      const dailyHighestTemp = Math.max(...dailyTemps);
 
       const forecastElement = document.createElement("div");
       forecastElement.innerHTML = `
       <div class="forecast-display">
       <p>${weekday}</p>
       <img class="icon" src="https://openweathermap.org/img/wn/${icon}@2x.png">
-      <p>${dailyLowestTemp}&deg; / ${dailyHighestTemp}&deg;C</p>
+      <p>${lowestTemp}&deg; / ${highestTemp}&deg;C</p>
       </div>`;
       displayForecast.appendChild(forecastElement);
     });
