@@ -84,6 +84,7 @@ const updatePrompt = (currentWeatherData) => {
 const updateCurrentWeather = (currentWeatherData) => {
   // format current weather:
   const weatherDescription = currentWeatherData.weather[0].main.toLowerCase();
+  console.log(weatherDescription);
   const currentTemp = Math.round(currentWeatherData.main.temp * 10) / 10;
   currentWeather.innerHTML = `${weatherDescription} | ${currentTemp}°`;
   // format sunrise time:
@@ -99,11 +100,12 @@ const updateForecast = (filteredForecastList) => {
   filteredForecastList.forEach((listItem) => {
     const date = new Date(listItem.dt * 1000);
     const weekday = getWeekday(date);
+    const iconURL = getWeatherIconURL(listItem.weather[0].main);
     const temp = Math.round(listItem.main.temp * 10) / 10;
     forecastTable.innerHTML += `
     <tr>
     <td>${weekday}</td>
-    <td>icon</td>
+    <td><img src="${iconURL}"></td>
     <td>${temp}°</td>
   </tr>`;
   });
@@ -157,4 +159,17 @@ const getWeekday = (date) => {
   const weekdayArr = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const index = date.getDay();
   return weekdayArr[index];
+};
+
+const getWeatherIconURL = (weather) => {
+  switch (weather) {
+    case "Clear":
+      return "./icons/noun_Sunglasses_2055147.svg";
+    case "Clouds":
+      return "./icons/noun_Cloud_1188486.svg";
+    case "Rain":
+      return "./icons/noun_Umbrella_2030530.svg";
+    default:
+      return "";
+  }
 };
