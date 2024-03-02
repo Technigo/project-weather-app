@@ -1,7 +1,7 @@
 //OpenWeatherMap API
 const BASE_URL = "http://api.openweathermap.org/data/2.5/weather?q=";
 const API_KEY = "86cc8fe4b24936e5560b67f7b96b6c03";
-const urlCity = "Stockholm";
+let urlCity = "Stockholm";
 const URL = `${BASE_URL}${urlCity}&units=metric&APPID=${API_KEY}`;
 
 // Forecast API
@@ -10,7 +10,7 @@ let lat = "59.3326";
 let lon = "18.0649";
 const FORECAST_URL = `${FORECAST_BASE_URL}lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`;
 //const FORECAST_URL =
-("http://api.openweathermap.org/data/2.5/forecast?lat=18&lon=10&appid=86cc8fe4b24936e5560b67f7b96b6c03");
+//("http://api.openweathermap.org/data/2.5/forecast?lat=18&lon=10&appid=86cc8fe4b24936e5560b67f7b96b6c03");
 
 // DOM selectors
 const city = document.getElementById("city");
@@ -23,57 +23,39 @@ const buttonContainer = document.getElementById("button-container");
 const forecastButton = document.getElementById("forecast-button");
 const forecast = document.getElementById("forecast");
 const skyContainer = document.getElementById("sky-container");
+const search = document.getElementById("search");
 
 skyContainer.classList.remove("animation-active");
 
-const fetchWeather = () => {
-  fetch(URL)
+const fetchWeather = (url) => {
+  fetch(url)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
       city.innerHTML = `<h2>${data.name}</h2>`;
       temp.innerHTML = `<h1>${Math.round(data.main.temp)}°&#x1D9C;</h1>`;
-      description.innerHTML = `<h3>${data.weather[0].main}</h3>`;
+      description.innerHTML = `<h3>${data.weather[0].description}</h3>`;
+
       let sunriseHoursMinutes = hoursMinutes(data.sys.sunrise);
       let sunsetHoursMinutes = hoursMinutes(data.sys.sunset);
       weatherImage.src = chooseImage(data.weather[0].main);
+      lat = data.coord.lat;
+      lon = data.coord.lon;
+      console.log("Description:", description.innerHTML);
 
       sunrise.innerHTML = `<h3>${sunriseHoursMinutes}</h3>`;
       sunset.innerHTML = `<h3>${sunsetHoursMinutes}</h3>`;
+
+      fetchForecast();
     })
     .catch((error) => console.log("Caught error:", error));
 };
-fetchWeather();
-/*
-const fetchForecast = () => {
-  fetch(FORECAST_URL)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      
-      // Filter out the noon values.
-      const array = data.list.filter((array) =>
-        array.dt_txt.includes("12:00:00")
-      );
-      console.log(array);
-
-      array.reverse((array) => array.dt_txt);
-      console.log(array);
-
-      array.forEach((element) => {
-        forecast.innerHTML += `<div class="forecastDay">
-        <p class="forecastDayWeekday">${displayDay(element.dt)}</p>
-        <img src="assets/partially.png" alt="">
-        <p class="forecastDayTemp">${Math.round(
-          element.main.temp_max
-        )}° / ${Math.round(element.main.temp_min)}°&#x1D9C</p></div>`;
-      });
-    })
-    .catch((error) => console.log("Caught error:", error));
-};*/
+fetchWeather(URL);
 
 const fetchForecast = () => {
-  fetch(FORECAST_URL)
+  fetch(
+    `${FORECAST_BASE_URL}lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`
+  )
     .then((response) => response.json())
     .then((data) => {
       // Grouping data within their dates.
@@ -82,17 +64,20 @@ const fetchForecast = () => {
         days[date] = [...(days[date] ? days[date] : []), row];
         return days;
       }, {});
-      console.log("Grouped Data:", groupedData);
       let i = 0;
       for (let date of Object.keys(groupedData)) {
-        if (i < 5) {
+        console.log(groupedData[date].length);
+        if (groupedData[date].length === 8) {
           i++;
+          console.log("i:", i);
           forecast.innerHTML += `<div class="forecastDay">
-        <p class="forecastDayWeekday">${displayDay(groupedData[date][0].dt)}</p>
-        <img src=${chooseImage(groupedData[date][0].weather[0].main)} alt="">
-        <p class="forecastDayTemp">${Math.round(
-          getMax(groupedData[date], "temp_max")
-        )}° / ${Math.round(
+          <p class="forecastDayWeekday">${displayDay(
+            groupedData[date][i].dt
+          )}</p>
+          <img src=${chooseImage(groupedData[date][i].weather[0].main)} alt="">
+          <p class="forecastDayTemp">${Math.round(
+            getMax(groupedData[date], "temp_max")
+          )}° / ${Math.round(
             getMin(groupedData[date], "temp_min")
           )}°&#x1D9C</p></div>`;
         }
@@ -134,7 +119,6 @@ const displayDay = (time) => {
 
 //Choose Image based on weather description.
 const chooseImage = (weather) => {
-  console.log(weather);
   if (
     weather == "Mist" ||
     weather == "Smoke" ||
@@ -164,24 +148,32 @@ const chooseImage = (weather) => {
   }
 };
 
-// Check to see if current time is after sunset and before sunrise. Display moon.
-const checkMoon = (sunrise, sunset) => {};
-
 // Toggle forecast
 const toggleForecast = () => {
   if (skyContainer.classList.contains("animation-active")) {
     skyContainer.classList.remove("animation-active");
     buttonContainer.classList.remove("transition-active");
     forecast.classList.remove("hidden");
+    search.classList.add("hidden");
   } else {
     skyContainer.classList.add("animation", "animation-active");
     buttonContainer.classList.add("animation", "transition-active");
     forecast.classList.add("hidden");
+    search.classList.remove("hidden");
   }
-  console.log("toggleForecast");
 };
 
 // Eventlisteners
 forecastButton.addEventListener("click", (e) => {
   toggleForecast();
+});
+
+search.addEventListener("input", (e) => {
+  console.log("Searched");
+  let newCity = e.target.value;
+  console.log(newCity);
+  urlCity = newCity;
+  console.log(urlCity);
+  console.log(URL);
+  fetchWeather(`${BASE_URL}${urlCity}&units=metric&APPID=${API_KEY}`);
 });

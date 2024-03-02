@@ -134,7 +134,6 @@ body {
   border-radius: 50px;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
-  z-index: 0;
 }
 
 .forecastDay:hover {
@@ -143,4 +142,22 @@ body {
 
 .forecastDay img {
   height: 20px;
+}
+
+#search {
+  position: absolute;
+  bottom: 50px;
+  opacity: 1;
+  margin: auto 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.1);
+  color: var(--clr_main_text);
+  padding: 1rem;
+  font-size: 1rem;
+  z-index: 1;
+}
+
+#no-opacity {
+    opacity: 0;
+    transition: 0.5s;
 }
