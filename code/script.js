@@ -1,4 +1,5 @@
 ////////// DOM Selectors //////////
+const upperBackground = document.getElementById("upper-background")
 const temperature = document.getElementById("temperature")
 const city = document.getElementById("city")
 const weather = document.getElementById("weather")
@@ -40,6 +41,45 @@ const fetchWeatherData = (cityName) => {
       const weatherDescription = json.weather[0].description
       const weatherDescriptionCapitalized =
         weatherDescription.charAt(0).toUpperCase() + weatherDescription.slice(1)
+
+      //Check time to know whether to display day or night image
+      const localTime = new Date(json.dt * 1000) //milliseconds
+      const timeZoneOffset = json.timezone / 3600 //convert to hours
+      localTime.setHours(localTime.getHours() + timeZoneOffset) //adjust time by adding offset
+      const formattedLocalTime = localTime.toLocaleTimeString("en-GB", {
+        timeStyle: "short",
+        timeZone: "UTC",
+      })
+
+      const formattedLocalTimeInHours = parseInt(
+        formattedLocalTime.split(":")[0]
+      )
+
+      //Change background depending on weather condition
+      const weatherToday = json.weather[0].main
+      const atmosphere = [
+        "Mist",
+        "Smoke",
+        "Haze",
+        "Dust",
+        "Fog",
+        "Sand",
+        "Dust",
+        "Ash",
+        "Squall",
+        "Tornado",
+      ]
+
+      //Background for daytime 06-20
+      if (formattedLocalTimeInHours >= 6 && formattedLocalTimeInHours < 20) {
+        //If statements changing background based on weather condition
+        if (weatherToday === "Clear") {
+          upperBackground.style.backgroundImage = `url("./assets/day-clear.jpg")`
+        }
+      } else {
+        //If it's not daytime, so 20-06
+        //Show clear/snow/cloudy/thunder
+      }
 
       //Display in HTML
       temperature.innerHTML = `${temp}`
