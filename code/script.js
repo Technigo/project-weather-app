@@ -21,100 +21,88 @@ const handleName = document.getElementById('city-name')
 const handleForecast = document.getElementById('forecast-list')
 const weatherDescription = document.getElementById('weather-description')
 
+//global scope
+
+
 //Fetching the API
 const fetchWeather = () => {
 	fetch(
 		'https://api.openweathermap.org/data/2.5/weather?q=Umea,Sweden&units=metric&APPID=1e48fdf267ccc8ee33c1c78150dcbab1'
 	)
-		.then((response) => response.json())
-		.then((data) => {
-			console.log(data)
-			const nameChoice = data.name
-			const tempChoice = Math.trunc(data.main.temp)
-			const weatherDescr = data.weather[0].main
-			handleName.innerText = nameChoice
-			handleTemp.innerText = `${tempChoice} °C`
-			weatherDescription.innerText = `${weatherDescr}`
-
-						const sunriseSeconds = data.sys.sunrise
-						const sunsetSeconds = data.sys.sunset
-						console.log('seconds', data.sys.sunrise)
-						console.log('seconds', data.sys.sunset)
-
-						const rise = new Date(data.sys.sunrise * 1000).toLocaleTimeString(
-							[],
-							{
-								hour: '2-digit',
-								minute: '2-digit',
-							}
-						)
-
-						const set = new Date(data.sys.sunset * 1000).toLocaleTimeString(
-							[],
-							{
-								hour: '2-digit',
-								minute: '2-digit',
-							}
-						)
-
-						sunrise.innerText = `${rise}`
-						sunset.innerText = `${set}`
-		})
+	.then((response) => response.json())
+	.then((data) => {
+		console.log(data)
+		updateHtml(data)	
+	})
+	.catch((error) => console.log(error))
 }
 fetchWeather()
-
-console.log('hej')
-
-//Function to get data to HTML
-//Function showing content on browser with .innerHTML
-//weather-container = temp, descr, sunset and sunrise
-const showWeather = () => {
-	weatherContainer.innerHTML = `
-			<p>${tempChoice} °C<p>`
-	cityContainer.innerHTML = `
-			<p>hello world<p>`
-	forecastContainer.innerHTML = `
-			<p>mon</p>`
-}
-showWeather()
-
 
 //Fetching the API FORECAST
 const fetchForecast = () => {
 	fetch(
 		'https://api.openweathermap.org/data/2.5/forecast?q=Umea,Sweden&units=metric&APPID=1e48fdf267ccc8ee33c1c78150dcbab1'
 	)
-		.then((response) => response.json())
-		.then((forecast) => {
-			let filteredForecast = forecast.list.filter((day) =>
-				day.dt_txt.includes('12:00')
-			)
+	.then((response) => response.json())
+	.then((forecast) => {
+		let filteredForecast = forecast.list.filter((day) =>
+			day.dt_txt.includes('12:00')
+	)})
+	.catch((error) => console.log(error))
+}
+fetchForecast()
 
-			handleForecast.innerHTML = ''
 
-			filteredForecast.forEach((day) => {
-				const weekTemp = day.main.temp.toFixed(0)
-				const shortWeekDays = [
-					'sun',
-					'mon',
-					'tue',
-					'wed',
-					'thu',
-					'fri',
-					'sat',
-					'sun',
-					'mon',
-					'tue',
-					'wed',
-					'thu',
-					'fri',
-				]
+//Function to get data to HTML
+const updateHtml = (data) => {
+	const weather = data.weather[0].main
+	const city = data.name
+  	const temp = Math.trunc(data.main.temp)
+	const rise = new Date(data.sys.sunrise * 1000).toLocaleTimeString([], {
+    	hour: '2-digit',
+    	minute: '2-digit',
+  	})
+  	const set = new Date(data.city.sunset * 1000).toLocaleTimeString([], {
+    	hour: '2-digit',
+    	minute: '2-digit',
+  	})
+  
+  	weatherContainer.innerHTML = `<p>${weather} |</p><p>${temp}</p>
+  	<p>${rise}</p>
+  	<p>${set}</p>
+  	`
+}
+const dateNames = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat',]
+//Function to display forecast
+const displayForecast = (filteredForecast) => {
+  filteredForecast.forEach((day) => {
+    const weekDay = new Date(day.dt * 1000)
+    const dayIndex = weekDay.getDay()
+    const date = dateNames[dayIndex]
+    const weekTemp = Math.round(day.main.temp)
+    forecastContainer.innerHTML += `<h4>${weekDay}</h4></div>
+    <h4>${weekTemp} °C</h4>`
+  })
+}
 
-				let weekday = new Date()
-				let today = weekday.getDay()
-				let tomorrow = today + 1
+
+
+
+
+
+//const weatherIcon = day.weather[0].icon
+			//handleForecast.innerHTML = ''
+
+			//filteredForecast.forEach((day) => {
+			//const weekTemp = day.main.temp.toFixed(0)
+				
+
+				//let weekday = new Date()
+				//let today = weekday.getDay()
+				//let tomorrow = today + 1
 
                 //insert picture for cloud/sun/rain?
+				/*
 				handleForecast.innerHTML += `
                 <div id="forecast-list">
                 <p>${new Date(day.dt_txt.replace(/-/g, '/')).toLocaleDateString(
@@ -128,11 +116,28 @@ const fetchForecast = () => {
                 ${[day.weather[0].main]}
                 </div>
                 `
+				*/
 
-				console.log(filteredForecast)
+		
 				//skapa lista över fyra dagar fram. temp kl 12.00
 				//skapa funktion som filtrerar ut värden från object i array
-			})
-		})
-}
-fetchForecast()
+
+//const nameChoice = data.name
+//const tempChoice = Math.trunc(data.main.temp)
+//const weatherDescr = data.weather[0].main
+//handleName.innerText = city
+//handleTemp.innerText = `${temp} °C`
+//weatherDescription.innerText = `${weather}`
+
+/*
+const rise = new Date(data.sys.sunrise * 1000).toLocaleTimeString([],{
+	hour: '2-digit',
+	minute: '2-digit',
+})
+
+
+const set = new Date(data.sys.sunset * 1000).toLocaleTimeString([],{
+	hour: '2-digit',
+	minute: '2-digit',
+})
+*/
