@@ -58,7 +58,7 @@ const getWeather = (city) => {
       } else {
         if (weatherCondition === "Clouds") {
           weatherIcon = "clouds.png";
-          weatherDescription.innerHTML += `<img src="icons/${weatherIcon}"> <h1>${data.name}: Look up into the sky and find the sun on a cloudy day</h1>`;
+          weatherDescription.innerHTML += `<img src="icons/${weatherIcon}"> <h1>Look up into the ${data.name} sky and find the sun on a cloudy day</h1>`;
           console.log(weatherDescription);
         } else if (weatherCondition === "Clear") {
           weatherIcon = "sun.png";
