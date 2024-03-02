@@ -151,12 +151,12 @@ h1 {
     }
     main {
         grid-row-start: 2;
+        height: 300px;
     }
     #container{
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
-        min-height: 360px;
-        padding-bottom: 25px;
+        height: 350px;
     }
 }

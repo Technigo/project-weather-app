@@ -196,7 +196,7 @@ const handleCitySelectKalmar = () => {
 
 //Start by showing Kalmar's weather
 const loadPage = () => {
-  fetchAllData("Gothenburg")
+  fetchAllData("Kalmar")
 }
 
 //Event-listeners
