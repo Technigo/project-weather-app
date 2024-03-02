@@ -15,13 +15,13 @@ const fetchTodaysWeather = () => {
       const sunrise = new Date(json.sys.sunrise * 1000);
       const timeForSunrise = sunrise.toLocaleTimeString([], {
         hour: "2-digit",
-        minute: "2-digit"
+        minute: "2-digit",
       });
 
       const sunset = new Date(json.sys.sunset * 1000);
       const timeForSunset = sunset.toLocaleTimeString([], {
         hour: "2-digit",
-        minute: "2-digit"
+        minute: "2-digit",
       });
 
       weatherContainer.innerHTML = `
