@@ -549,3 +549,8 @@ const getWeeklyWeatherByLocation = (latitude, longitude) => {
 document
   .querySelector(".my-location-btn")
   .addEventListener("click", getBroswerLocation);
+
+document.addEventListener("DOMContentLoaded", function () {
+  const targetElement = document.querySelector(".forecast-section");
+  targetElement.scrollIntoView();
+});
