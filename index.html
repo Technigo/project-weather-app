@@ -9,19 +9,19 @@
 </head>
 <body>
   <div class="today-weather-background">
-    <header>
-      <nav id="ham-menu">
-      <button class="menu-button" id="menu-toggle">
-      <label class='menu-button-container' for="menu-toggle">
-        </label>
-        <ul class="topnav" hidden>
-          <li class="nav-item">Bern</li>
-          <li class="nav-item">Copenhagen</li>
-          <li class="nav-item">Seoul</li>
-          <li class="nav-item">New York</li>
-       </ul>
-      </nav>
+    <header class="header">
+      <select id="city-dropdown">
+        <option value="">Select a city</option>
+        <option value="bern">Bern</option>
+        <option value="copenhagen">Copenhagen</option>
+        <option value="tokyo">Tokyo</option>
+        <option value="seoul">Seoul</option>
+        <option value="new york">New York</option>
+        <option value="san francisco">San Francisco</option>
+        <option value="auckland">Auckland</option>
+      </select>
     </header>
+    
 
   <!-- MAIN WEATHER DISPLAY -->
     <section class="current-weather" id="current-weather">
@@ -32,7 +32,7 @@
   <!-- 4-DAY WEATHER FORECAST -->
   <section class="weather-forecast" id="weather-forecast">
   </section>
-  <footer>Created by Nathalie</footer>
+  <footer></footer>
 
   <script src="script.js"></script>
   </body>
