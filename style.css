@@ -1,122 +1,141 @@
 *,
 *::before,
 *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
-  overflow: hidden;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Montserrat", sans-serif;
+	overflow: hidden;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 :root {
-  --cloudy-color: #F47775;
-  --cloudy-bg-color: #F4F7F8;
-  --rainy-color: #164A68;
-  --rainy-bg-color: #A3DEF7;
-  --sunny-color: #2A5510;
-  --sunny-bg-color: #F7E9B9;
+	--cloudy-color: #F47775;
+	--cloudy-bg-color: #F4F7F8;
+	--rainy-color: #164A68;
+	--rainy-bg-color: #A3DEF7;
+	--sunny-color: #2A5510;
+	--sunny-bg-color: #F7E9B9;
 }
 
 main {
-  padding: 20px;
-  box-sizing: border-box;
-  margin: 0;
-  height: 100%;
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1;
+	padding: 2rem 2rem 2rem 2rem;
+	box-sizing: border-box;
+	margin: 0;
+	height: 100%;
+	min-height: 100vh;
+
 }
 
 .montserrat-title {
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
+	font-family: "Montserrat", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
 }
 
 .sunny {
-  color: var(--sunny-color);
-  background-color: var(--sunny-bg-color);
+	color: var(--sunny-color);
+	background-color: var(--sunny-bg-color);
 }
 
 .cloudy {
-  color: var(--cloudy-color);
-  background-color: var(--cloudy-bg-color);
+	color: var(--cloudy-color);
+	background-color: var(--cloudy-bg-color);
 }
 
 .rainy {
-  color: var(--rainy-color);
-  background-color: var(--rainy-bg-color);
+	color: var(--rainy-color);
+	background-color: var(--rainy-bg-color);
 }
 
 .overview {
-  padding-bottom: 20px;
-  font-size: 0.8rem;
-  font-weight: 300;
-  font-family: 'montserrat-title';
+	padding-bottom: 4.5rem;
+	font-size: 1rem;
+	font-weight: 300;
+	font-family: 'montserrat-title';
+
 }
 
 h1 {
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  margin-left: 10px;
+	font-family: "Montserrat", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 600;
+	font-size: 2.5rem;
+
 }
 
 #suggestion {
-  display: flex;
-  flex: row wrap;
-  align-items: flex-start;
-  max-width: 280px;
-  line-height: 1.5;
-  padding-bottom: 2rem;
+	max-width: 70vw;
+	line-height: 1.5;
+	padding: 1rem 0 5rem 1rem;
 }
 
 #icon {
-  padding: 2rem 0 0.5rem 0;
+	padding: 2rem 0 0.5rem 0;
 }
 
 #icon.sunny {
-  content: url(/design/design2/icons/noun_Sunglasses_2055147.svg)
+	content: url(/design/design2/icons/noun_Sunglasses_2055147.svg)
 }
 
 #icon.rainy {
-  content: url(/design/design2/icons/noun_Umbrella_2030530.svg)
+	content: url(/design/design2/icons/noun_Umbrella_2030530.svg)
 }
 
 #icon.cloudy {
-  content: url(/design/design2/icons/noun_Cloud_1188486.svg)
+	content: url(/design/design2/icons/noun_Cloud_1188486.svg)
 }
 
 .forcast {
-  display: grid;
-
+	font-size: 1.2rem;
 }
 
 .temp {
-  grid-area: temp;
-  text-align: right;
-  width: 40vw;
-  overflow: none;
+	grid-area: temp;
+	text-align: end;
+	overflow: none;
+	height: 1.7rem;
+	justify-self: end;
 }
 
 .day {
-  text-align: left;
-  grid-area: day;
-  width: 40vw;
+	text-align: left;
+	grid-area: day;
+	height: 1.7rem;
 }
 
 .lines {
-  display: grid;
-  grid-template-columns: 2 1fr;
-  grid-template-areas:
-    "day temp";
-  border: 0;
-  border-bottom: 1px dashed black;
+	display: grid;
+	grid-template-columns: 2 1fr;
+	grid-template-rows: auto;
+	box-sizing: border-box;
+	grid-template-areas:
+		"day  temp";
+	border-bottom: 0.1rem dotted black;
+	padding: 0.7rem;
+}
+
+.lines.sunny {
+	border-bottom: 0.2rem dashed var(--sunny-color);
+}
+
+.lines.cloudy {
+	border-bottom: 0.2rem dashed var(--cloudy-color);
+}
+
+.lines.rainy {
+	border-bottom: 0.2rem dashed var(--rainy-color);
+}
+
+#weather,
+#sunrise,
+#temp,
+#sunset:first-letter {
+	text-transform: capitalize;
 }
