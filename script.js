@@ -241,7 +241,6 @@ const getDailyWeather = (city) => {
     });
 };
 
-//run the function when the page is loaded
 getDailyWeather("gothenburg");
 
 //display the data in HTML
@@ -254,8 +253,8 @@ const displayDailyWeather = (weatherData) => {
   //get currentDt ready for comparing in displayWeelyWeather
   currentDt = weatherData.dt;
 
-  document.querySelector(".temp").innerText = Math.round(temp) + "°";
-  document.querySelector(".description").innerText = main;
+  document.querySelector(".temp").innerText = " " + Math.round(temp) + "°";
+  document.querySelector(".description").innerText = main + " |";
   currentLocation = name;
 
   getTip(main);
@@ -401,29 +400,36 @@ let forecast = [];
 const displayWeeklyWeather = (weatherData) => {
   forecastSection.innerHTML = "";
   //collect each hour's time+temp data from the weatherData
+  //as the project requirements asked for : display 4 days forecast
   const getHourlyhWeather = weatherData.list.map((item) => ({
     dt: item.dt,
     dtText: item.dt_txt,
     temp: item.main.temp,
   }));
 
+  //collect everyday's weather before 12:00
   const getNoonTemp = getHourlyhWeather.filter(
     (hour) => hour.dtText.split(" ")[1] === "12:00:00"
   );
+
+  //check if the first day is the current day
 
   const dateToRemove = getNoonTemp.findIndex((item) => {
     item.dt === currentDt;
   });
 
+  //if it is, then remove the first day
   if (dateToRemove !== -1) {
     getFourDayTemp = getNoonTemp.filter((item, index) => {
       index !== dateToRemove;
     });
   } else {
+    //if it isn't, then remove the last day
     getNoonTemp.pop();
     getFourDayTemp = getNoonTemp;
   }
 
+  //convert time data to week day
   const timpStamp = getFourDayTemp.map((item) => item.dt);
   const converDate = timpStamp.map((item) => new Date(item * 1000));
   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -439,8 +445,8 @@ const displayWeeklyWeather = (weatherData) => {
     `;
   });
 
+  //update forecast's style accrodingly
   forecast = forecastSection.querySelectorAll(".forecast");
-  console.log(forecast);
 
   forecast.forEach((item) => {
     switch (currentWeather) {
@@ -474,10 +480,13 @@ const displayWeeklyWeather = (weatherData) => {
   });
 };
 
+//display gothenburg's weather when the page is loaded.
 getWeeklyWeather("gothenburg");
 
+//Search bar
 let userSearch = null;
 const searchWeather = () => {
+  //assign what the users wrote in the search bar to userSearch
   userSearch = document.querySelector(".search-bar").value;
   getDailyWeather(userSearch);
   getWeeklyWeather(userSearch);
@@ -489,3 +498,54 @@ document.querySelector(".search-bar").addEventListener("keyup", (event) => {
     console.log(userSearch);
   }
 });
+
+//Get weather data based on location when the page is loaded
+const getBroswerLocation = () => {
+  // Check if geolocation is supported by the browser
+  if (navigator.geolocation) {
+    // built-in getCurrentPosition method
+    navigator.geolocation.getCurrentPosition((position) => {
+      const { latitude, longitude } = position.coords;
+      getDailyWeatherByLocation(latitude, longitude);
+      getWeeklyWeatherByLocation(latitude, longitude);
+    });
+  } else {
+    console.error("Geolocation is not supported by this browser.");
+  }
+};
+
+const getDailyWeatherByLocation = (latitude, longitude) => {
+  fetch(
+    `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`
+  )
+    .then((response) => {
+      return response.json();
+    })
+    .then((weatherData) => {
+      displayDailyWeather(weatherData);
+      getSunTime(weatherData);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+const getWeeklyWeatherByLocation = (latitude, longitude) => {
+  fetch(
+    `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`
+  )
+    .then((response) => {
+      return response.json();
+    })
+    .then((weatherData) => {
+      console.log(weatherData);
+      displayWeeklyWeather(weatherData);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+document
+  .querySelector(".my-location-btn")
+  .addEventListener("click", getBroswerLocation);
