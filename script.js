@@ -35,27 +35,31 @@ const getWeather = (lat, lon) => {
   )
     .then((response) => response.json())
     .then((data) => {
+      const timezone = data.timezone // Get timezone data
+
       const weather = data.weather.map((condition) => condition.description)
       const mainKeyValues = Object.values(data.main)
-
       const temperature = Math.round(mainKeyValues[0])
+      const sunriseTime = new Date(data.sys.sunrise * 1000)
+      const sunsetTime = new Date(data.sys.sunset * 1000)
 
-      const sunriseTime = data.sys.sunrise
+      // get time based on timezone to display as local time
+      sunriseTime.setUTCSeconds(sunriseTime.getUTCSeconds() + timezone)
+      sunsetTime.setUTCSeconds(sunsetTime.getUTCSeconds() + timezone)
 
-      const sunsetTime = data.sys.sunset
-      const sun = new Date(sunriseTime * 1000)
-
-      const hours = sun.getHours()
-      const minutes = sun.getMinutes()
-
-      // concatenate the hours and minutes for sunrire and sunset, transformed them into strings and padded with 2 decimals number , covered empty spaces with 0
-      const sunrise = `${hours.toString().padStart(2, '0')}: ${minutes
+      // fixed numbers
+      const sunrise = `${sunriseTime
+        .getHours()
         .toString()
-        .padStart(2, '0')} `
-      const sunS = new Date(sunsetTime * 1000)
-      const hoursS = sunS.getHours()
-      const minutesS = sunS.getMinutes()
-      const sunset = `${hoursS.toString().padStart(2, '0')}:${minutesS
+        .padStart(2, '0')}:${sunriseTime
+        .getMinutes()
+        .toString()
+        .padStart(2, '0')}`
+      const sunset = `${sunsetTime
+        .getHours()
+        .toString()
+        .padStart(2, '0')}:${sunsetTime
+        .getMinutes()
         .toString()
         .padStart(2, '0')}`
 
@@ -191,6 +195,7 @@ const getForecast = (lat, lon) => {
         const dateTime = item.dt_txt
         const fullDate = new Date(dateTime)
         const currentDate = fullDate.getDay()
+        console.log(currentDate)
         let currentDay
         switch (currentDate) {
           case 0:
