@@ -33,16 +33,16 @@ const fetchTodaysWeather = () => {
     
     //Function to change backround color and icon depending on the weather.
     const warmColdBackround = () => {
-      if (json.weather[0].main === "Clouds") {
+      if (json.weather[0].main === "Clouds", "Atmosphere") {
         cityContainer.innerHTML += `
         <img src="./assets/icons/noun_Cloud_1188486.svg" alt="Cloud">
-        <h1>Light a fire and get cosy. ${json.name} is looking grey today</h1>`;
+        <h1>Light a fire and get cosy. ${json.name} is looking grey today.</h1>`;
         changeBackroundColor.style.backgroundColor = "#F4F7F8";
         changeBackroundColor.style.color = "#F47775";
-      } else if (json.weather[0].main === "Rain") {
+      } else if (json.weather[0].main === "Rain", "Drizzle") {
         cityContainer.innerHTML += `
         <img src="./assets/icons/noun_Umbrella_2030530.svg" alt="Umbrella">
-        <h1>Don't forget your umbrella. It's wet in ${json.name} today</h1>`;
+        <h1>Don't forget your umbrella. It's wet in ${json.name} today.</h1>`;
         changeBackroundColor.style.backgroundColor = "#BDE8FA";
         changeBackroundColor.style.color = "#164A68";
       } else if (json.weather[0].main === "Clear") {
@@ -51,19 +51,19 @@ const fetchTodaysWeather = () => {
         <h1>Get your sunnies on. ${json.name} is looking rather great today.</h1>`;
         changeBackroundColor.style.backgroundColor = "#F7E9B9";
         changeBackroundColor.style.color = "#2A5510";
-      } else {
-        cityContainer.innerHTML += `
+      } else { 
+        cityContainer.innerHTML += ` 
         <img src="./assets/icons/noun_Umbrella_white.svg" alt="Umbrella">
         <h1>Get your warm coat on. It's snowing in ${json.name} today.</h1>`;
         changeBackroundColor.style.backgroundColor = "#58537B";
         changeBackroundColor.style.color = "#FFFFFF";
-      }
+      } 
     };
-    warmColdBackround();
+      warmColdBackround(); //Invoke function to show different colors
   });
 };
 
-fetchTodaysWeather(); //Invoke todays weather and which city.
+fetchTodaysWeather(); //Invoke function to show todays weather city.
 
 //Function using API to fetch a 5-days weather forecast. Using filter in the list to only get data from 12.00 each day.
 const fetchWeatherForecast = () => {
@@ -82,9 +82,9 @@ const fetchWeatherForecast = () => {
         const weatherTemp = day.main.temp.toFixed();
 
         weatherForecastWeek.innerHTML += `
-          ${new Date(dayOfWeek).toLocaleDateString("en", { weekday: "short" })}
-          ${weatherTemp}°`;
+          <div class="days">${new Date(dayOfWeek).toLocaleDateString("en", {weekday: "short"})}</div>
+          <div class="temp">${weatherTemp}°</div>`;
       });
     });
 };
-fetchWeatherForecast(); //Invoke the 5-day weather forecast.
+fetchWeatherForecast(); //Invoke function to show the 5-day weather forecast.

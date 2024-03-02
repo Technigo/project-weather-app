@@ -1,3 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
 * {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
 }
+
+#weather-container {
+  font-size: 21px;
+  line-height: 6px;
+  margin: 49px;
+  padding-bottom: 20px;
+}
+
+
+#city-container {
+  margin: 40px;
+  max-width: 600px;
+}
+
+#weather-week-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1px;
+  font-size: 21px;
+  margin: 40px;
+  padding-bottom: 20px;
+  max-width: 600px;
+}
+
+.days {
+  border-bottom: dashed 1px;
+  margin-top: 10px;
+  padding-bottom: 6px;
+}
+
+.temp {
+text-align: right;
+border-bottom: dashed 1px;
+margin-top: 10px;
+padding-bottom: 6px;
+}
+
