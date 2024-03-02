@@ -1,12 +1,10 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This is the weather app will show 5 days weather. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Fetch API itself seems not hard. Maybe because now we only work with "get". Overall, the time zone was the hardest part. It was a good practice when filtered the data. I guess in real life project we will work with more and more complicated arrays. I've played around as much as I can. Unfortunately I am not able to work on the stretch goals. But the background color and text will be changed by the weather and temperature which is my favorate part. If I have enough time, I would like to make the 'next a few days' weather more details. I wanted to make a dropdown information and hover, but I couldn't make it in a nice way so I deleted. Furthermore, I don't know why. Seems responsive design was the most difficult part to me. I've tried differen ways but didn't work. I have asked on stack over, hopefully I will get an answer next week then I will make a change. 
 
 ## View it live
 
