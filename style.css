@@ -5,7 +5,7 @@
     font-family: Montserrat;
 }
 
-main {
+#main {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -30,7 +30,7 @@ main {
 ul {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     width: 70%;
     margin-top: 50px;
 }
@@ -42,27 +42,24 @@ li {
     justify-content: space-between;
 }
 
-@media only screen and (max-width:500px) {
-
-    #temperature-sun-time {
+@media screen and (max-width: 500px) {
+    #temperature-sun-time{
         position: absolute;
-        top: 49px;
-        left: 47px;
+        margin-top:1rem;
+        margin-left: 1rem;
+        font-size: o.5rem;
+        line-height: 0.5rem;
     }
-    #remind-img-text {
-        width: 300px;
-        height: 245px;
-    }
+
     #remind-text {
-        font-size: 30px;
-        line-height: 40px;
+        font-weight: 700;
+        font-size: 0.5rem;
+        line-height: 0.5rem;
     }
-    #ul {
-        width: 310px;
-    }
-    #weather-icon{
-        width:73px;
-        height:52px;
+
+    li{
+        font-size: 0.5rem;
+        line-height: 0.5rem;
     }
 
 }
