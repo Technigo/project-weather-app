@@ -88,7 +88,12 @@ const getForecast = (city) => {
   fetch(
     `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=bac28b010cea73460ead078a7d8aa965`
   )
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network is not responding");
+      }
+      return response.json();
+    })
     .then((data) => {
       const dailyForecasts = {};
 
@@ -115,6 +120,10 @@ const getForecast = (city) => {
           dayName
         ].temp.toFixed(1)}°C</p></div>`;
       }
+    })
+    .catch((error) => {
+      console.error("There was a problem. Please try again later:", error);
+      fourdayForecast.innerHTML = `<p>There was a problem. Please try again later.`;
     });
 };
 
