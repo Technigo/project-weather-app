@@ -68,11 +68,11 @@ body {
   padding: 20px;
 }
 
-.flex {
+/* .flex {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
+} */
 
 body.warm .forecast-element {
   border-bottom: 1px dashed #f47775;
