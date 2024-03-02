@@ -27,7 +27,7 @@ const updateHTML1 = (data) =>{
    //set main temperature
    const selectNowsTemperature = document.getElementById("nowsTemperature")
    const roundOneDecimal = Math.round(data.main.temp * 10)/10 //this to round to one decimal
-   selectNowsTemperature.innerText = roundOneDecimal
+   selectNowsTemperature.innerHTML = roundOneDecimal
 
   //set weather icon
   const todaysIcon = document.getElementById("todays-icon")
