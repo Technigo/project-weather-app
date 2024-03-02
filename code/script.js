@@ -35,40 +35,51 @@ const getWeather = (city) => {
       if (temperature <= 10) {
         if (weatherCondition === "Clouds") {
           weatherIcon = "clouds_cold.png";
+          weatherDescription.innerHTML += `<img src="icons/${weatherIcon}"> <h1>Light a fire and get cosy. ${data.name} is looking grey today.</h1>`;
         } else if (weatherCondition === "Clear") {
           weatherIcon = "sun_cold.png";
+          weatherDescription.innerHTML += `<img src="icons/${weatherIcon}"> <h1>Get your sunnies on. ${data.name} is looking rather great today.</h1>`;
         } else if (weatherCondition === "Snow") {
           weatherIcon = "snow_cold.png";
+          weatherDescription.innerHTML += `<img src="icons/${weatherIcon}"> <h1>It's snowing in ${data.name}. You should go and build a snowman.</h1>`;
         } else if (
           weatherCondition === "Rain" ||
           weatherCondition === "Drizzle"
         ) {
           weatherIcon = "rain_cold.png";
+          weatherDescription.innerHTML += `<img src="icons/${weatherIcon}"> <h1>Don't forget your umbrella. It's wet in ${data.name} today.</h1>`;
         } else if (weatherCondition === "Thunderstorm") {
           weatherIcon = "thunder_cold.png";
+          weatherDescription.innerHTML += `<img src="icons/${weatherIcon}"> <h1>There's a storm hitting ${data.name}. Stay at home and drink coffee.</h1>`;
         } else {
           weatherIcon = "default_cold.png";
+          weatherDescription.innerHTML += `<img src="icons/${weatherIcon}"> <h1>Hmmm... mysterious weather in ${data.name} today. Grab a magic wand and make a wish.</h1>`;
         }
       } else {
         if (weatherCondition === "Clouds") {
           weatherIcon = "clouds.png";
+          weatherDescription.innerHTML += `<img src="icons/${weatherIcon}"> <h1>${data.name}: Look up into the sky and find the sun on a cloudy day</h1>`;
+          console.log(weatherDescription);
         } else if (weatherCondition === "Clear") {
           weatherIcon = "sun.png";
+          weatherDescription.innerHTML += `<img src="icons/${weatherIcon}"> <h1>Get your sunnies on. ${data.name} is looking rather great today.</h1>`;
         } else if (weatherCondition === "Snow") {
           weatherIcon = "snow.png";
+          weatherDescription.innerHTML += `<img src="icons/${weatherIcon}"> <h1>Snow in ${data.name} while the temperature is over 10°C? Congratuliations, you experienced a miracle!</h1>`;
         } else if (
           weatherCondition === "Rain" ||
           weatherCondition === "Drizzle"
         ) {
           weatherIcon = "rain.png";
+          weatherDescription.innerHTML += `<img src="icons/${weatherIcon}"> <h1>Don't forget your umbrella. It's wet in ${data.name} today.</h1>`;
         } else if (weatherCondition === "Thunderstorm") {
           weatherIcon = "thunder.png";
+          weatherDescription.innerHTML += `<img src="icons/${weatherIcon}"> <h1>There's a storm hitting ${data.name}. Stay safe and hide from falling trees.</h1>`;
         } else {
           weatherIcon = "default.png";
+          weatherDescription.innerHTML += `<img src="icons/${weatherIcon}"> <h1>Hmmm... mysterious weather in ${data.name} today. Grab a magic wand and make a wish.</h1>`;
         }
       }
-
-      weatherDescription.innerHTML = `<img src="icons/${weatherIcon}"><h1>${data.name}</h1>`;
     });
 };
 
