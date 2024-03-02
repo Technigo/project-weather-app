@@ -19,20 +19,20 @@ const body = document.getElementById("body");
 const clouds = () => {
   image.src = "./design/design2/icons/noun_Cloud_1188486.svg";
   body.classList.add("clouds");
-  imageContainer.innerHTML = `Light a fire and get cozy. ${city} is looking grey today.
+  textContainer.innerHTML = `Light a fire and get cozy. ${city} is looking grey today.
   `;
 };
 
 const clearSky = () => {
   image.src = "./design/design2/icons/noun_Sunglasses_2055147.svg";
   body.classList.add("clear");
-  imageContainer.innerHTML = `Get your sunnies on. ${city} is looking rather great today.`;
+  textContainer.innerHTML = `Get your sunnies on. ${city} is looking rather great today.`;
 };
 
 const rain = () => {
   image.src = "./design/design2/icons/noun_Umbrella_2030530.svg";
   body.classList.add("rain");
-  imageContainer.innerHTML = `Don't foreget your umbrella. It's wet in ${city} today.`;
+  textContainer.innerHTML = `Don't foreget your umbrella. It's wet in ${city} today.`;
 };
 
 //fetch weather data
@@ -85,10 +85,13 @@ const fetchWeatherData = () => {
       const sunsetHours = sunsetTime.getHours().toString().padStart(2, "0");
       const sunsetMinutes = sunsetTime.getMinutes().toString().padStart(2, "0");
 
-      const formattedSunset = `${sunsetHours}.${sunsetMinutes}`;
+      const formattedSunset = `
+      ${sunsetHours}.${sunsetMinutes}
+      `;
 
       const formattedSunrise = `
-      ${sunriseHours}.${sunriseMinutes}`;
+      ${sunriseHours}.${sunriseMinutes}
+      `;
 
       sunrise.innerHTML = `
       sunrise ${formattedSunrise} 
@@ -99,9 +102,7 @@ const fetchWeatherData = () => {
       `;
 
       const cityName = data.name;
-      currentCity.textContent = `
-      ${cityName}
-      `;
+      
     })
     .catch((error) => {
       console.log("Fetch error:", error);
@@ -170,12 +171,13 @@ const fetchForecast = () => {
         });
 
         forecast.innerHTML += `
-              <div class="forecast-container">
-                <span class="forecast-day">${weekdayName}</span>
-                <span class="forecast-image"></span>
-                <span>${minTemp}° / ${maxTemp}°C</span>
-              </div>
-            `;
+          <div class="forecast-container">
+            <span class="forecast-day">${weekdayName}</span>
+            <span class="forecast-temp">
+            <span class="min-temp">${minTemp}°</span>/<span class="max-temp">${maxTemp}°C</span>
+            </span>
+          </div>
+          `;
       }
     })
     .catch((error) => {

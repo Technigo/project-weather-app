@@ -1,27 +1,82 @@
 * {
   box-sizing: border-box;
-  font-family: var(--textFont);
+  font-family: "Montserrat"
 }
 
-:root {
-  --textFont: "Montserrat";
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px 25px;
 }
 
 h1 {
   font-weight: 300;
   font-size: 21px;
   margin: 0;
-  /* padding-left: 15px; */
-  
+  padding-bottom: 3px;
 }
 
-.wrapper {
-  display: flex;
-  flex-direction: column;
- padding-left: 15px;
-  
+.current-weather {
+  /* border: solid black; */
+  margin-bottom: 2rem;
 }
 
 .temp-weather {
   padding-top: 15px;
+}
+
+#image {
+  height: auto;
+}
+
+.text-container {
+  margin: 20px 0;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.four-day-forecast {
+  width: 100%;
+  height: 100%;
+  /* border: solid black; */
+
+}
+
+.forecast-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: dotted 2px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  
+}
+
+.forecast-temp {
+  display: flex;
+  align-items: center;
+
+  
+}
+
+.min-temp, .max-temp{
+  /* align-items: flex-end; */
+
+
+}
+.clouds {
+  background-color: #f4f7f8;
+  color: #f47775;
+}
+
+.clear {
+  background-color: #f7e9b9;
+  color: #2a5510;
+}
+
+.rain {
+  background-color: #bde8fa;
+  color: #164a68;
 }
