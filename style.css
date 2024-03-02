@@ -2,7 +2,7 @@
 
 :root {
   --gradient-day: linear-gradient(90deg, #8589FF 0%, #E8E9FF 100%);
-  --gradient-night: linear-gradient(270deg, #6264A2 50.98%, #222350 51.14%);
+  --gradient-night: linear-gradient(240deg, #6264A2 0%, #222350 100%);
   --button: rgba(117, 122, 255, 1);
 
 }
@@ -15,16 +15,35 @@
   font-family: "Roboto", sans-serif;
 }
 
-body {
-background: var(--gradient-day);
-color: #E8E9FF;
+.today-weather-background {
+  background: var(--gradient-day);
+  color: #E8E9FF;
+  border-bottom-left-radius: 50vw 10vw;
+  border-bottom-right-radius: 50vw 10vw;
 }
 
 .current-weather {
-margin: 20px;
-padding: 10px;
-display: flex ;
-flex-direction: column;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.day-background {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--gradient-day);
+  color: #E8E9FF;
+}
+.night-background {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--gradient-night);
 }
 
 
@@ -57,10 +76,12 @@ h2 {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  gap: 10px;
 }
 .sunrise,
 .sunset{
   margin-top: 10px;
+  margin-bottom: 2rem;
   font-size: 18px;
 }
 
@@ -70,6 +91,7 @@ h2 {
 }
 
 .weather-forecast {
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;

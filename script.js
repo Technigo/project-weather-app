@@ -8,7 +8,7 @@ const displayForecast = document.getElementById("weather-forecast");
 // API
 const API_BASE_URL = "https://api.openweathermap.org/data/2.5";
 const API_KEY = "a1f68c4f65b632802ca0dd3405694457";
-let place = "bern";
+let place = "tokyo";
 const URL = `${API_BASE_URL}/weather?q=${place}&units=metric&appid=${API_KEY}`;
 const FORECAST = `${API_BASE_URL}/forecast?q=${place}&units=metric&appid=${API_KEY}`;
 
@@ -38,15 +38,33 @@ const printWeather = async () => {
     const todaySunrise = convertDateTime(data.sys.sunrise, data.timezone);
     const todaySunset = convertDateTime(data.sys.sunset, data.timezone);
     const ICON_URL = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+    const currentTimezoneOffset = data.timezone;
+
+    const currentTime = new Date(
+      new Date().getTime() + currentTimezoneOffset * 1000
+    );
+    const hours = currentTime.getHours();
+    let backgroundClass;
+
+    if (hours >= 18 || hours < 6) {
+      backgroundClass = "night-background";
+    } else {
+      backgroundClass = "day-background";
+    }
+
+    const currentWeather = document.getElementById("current-weather");
+    currentWeather.className = backgroundClass;
 
     currentWeather.innerHTML = `
-    <section id="current-weather">
+    <div id="weather-container">
     <p class="temp">${currentTemp}<span>&deg;C</span></p>
     <h1 class="location">${currentLocation}</h1>
     <p class="condition">${currentCondition} <img class="icon" src="${ICON_URL}"></p>
+    <div class="sun-time">
     <p class="sunrise">Sunrise ${todaySunrise}</p>
     <p class="sunset">Sunset ${todaySunset}</p>
-    </section>`;
+    </div>
+    </div>`;
 
     console.log("Data:", data); //NOT FORGET TO DELETE!!
   } catch (error) {
