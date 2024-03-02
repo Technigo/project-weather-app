@@ -209,15 +209,25 @@ const iconArr = [
  </svg>`,
   },
 ];
+let currentLocation = null;
 let currentDt = null;
 let currentWeather = null;
 const body = document.body;
+const themeArr = [
+  "clearTheme",
+  "cloudsTheme",
+  "rainTheme",
+  "snowTheme",
+  "drizzleTheme",
+  "thunderstormTheme",
+  "otherTheme",
+];
 
 //fetch today's weather
 //and trigger displayDailyWeather + getSunTime(weatherData)
-const getDailyWeather = () => {
+const getDailyWeather = (city) => {
   fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=gothenburg&units=metric&appid=${apiKey}`
+    `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
   )
     .then((response) => {
       return response.json();
@@ -232,7 +242,7 @@ const getDailyWeather = () => {
 };
 
 //run the function when the page is loaded
-getDailyWeather();
+getDailyWeather("gothenburg");
 
 //display the data in HTML
 //and trigger getTip
@@ -246,6 +256,7 @@ const displayDailyWeather = (weatherData) => {
 
   document.querySelector(".temp").innerText = Math.round(temp) + "°";
   document.querySelector(".description").innerText = main;
+  currentLocation = name;
 
   getTip(main);
 };
@@ -255,60 +266,83 @@ const getTip = (description) => {
   let weatherDescription = null;
   let icon = null;
 
+  const removePreviousTheme = () => {
+    themeArr.forEach((theme) => {
+      body.classList.remove(theme);
+    });
+  };
+
   switch (description) {
     case "Clear":
       tip = "Get your sunnies on.";
-      weatherDescription = "Gothenburg is looking rather great today.";
+      weatherDescription = `${currentLocation} is looking rather great today.`;
       icon = iconArr[0].svg;
       currentWeather = "Clear";
+      removePreviousTheme();
       body.classList.add("clearTheme");
       break;
 
     case "Clouds":
       tip = "Light a fire and get cosy.";
-      weatherDescription = "Gothenburg might look grey today.";
+      weatherDescription = `${currentLocation} might look grey today.`;
       icon = iconArr[1].svg;
       currentWeather = "Clouds";
+      removePreviousTheme();
       body.classList.add("cloudsTheme");
       break;
 
     case "Rain":
       tip = "Don't forget your umbrella.";
-      weatherDescription = "It can get wet in Gothenburg today.";
+      weatherDescription = `It can get wet in ${currentLocation} today.`;
       icon = iconArr[2].svg;
       currentWeather = "Rain";
+      themeArr.forEach((theme) => {
+        body.classList.remove(theme);
+      });
       body.classList.add("rainTheme");
       break;
 
     case "Snow":
       tip = "Bundle up and stay warm.";
-      weatherDescription = "Snow falls in Gothenburg today.";
+      weatherDescription = `Snow falls in ${currentLocation} today.`;
       icon = iconArr[3].svg;
       currentWeather = "Snow";
+      themeArr.forEach((theme) => {
+        body.classList.remove(theme);
+      });
       body.classList.add("snowTheme");
       break;
 
     case "Drizzle":
       tip = "Bring your raincoat.";
-      weatherDescription = "Gothenburg might feel damp today.";
+      weatherDescription = `${currentLocation} might feel damp today.`;
       icon = iconArr[4].svg;
       currentWeather = "Drizzle";
+      themeArr.forEach((theme) => {
+        body.classList.remove(theme);
+      });
       body.classList.add("drizzleTheme");
       break;
 
     case "Thunderstorm":
       tip = "Stay indoors and be safe.";
-      weatherDescription = "A dramatic show in Gothenburg today.";
+      weatherDescription = `A dramatic show in ${currentLocation} today.`;
       icon = iconArr[5].svg;
       currentWeather = "Thunderstorm";
+      themeArr.forEach((theme) => {
+        body.classList.remove(theme);
+      });
       body.classList.add("thunderstormTheme");
       break;
 
     default:
       tip = "Slow down, use fog lights.";
-      weatherDescription = "Visibility dial turned down in Gothenburg.";
+      weatherDescription = `Visibility dial turned down in ${currentLocation}.`;
       icon = iconArr[6].svg;
       currentWeather = "Other";
+      themeArr.forEach((theme) => {
+        body.classList.remove(theme);
+      });
       body.classList.add("otherTheme");
   }
 
@@ -316,7 +350,7 @@ const getTip = (description) => {
   document.querySelector(
     ".weather-description"
   ).innerText = `${weatherDescription}`;
-  document.querySelector(".tip-icon").innerHTML += icon;
+  document.querySelector(".tip-icon").innerHTML = icon;
 };
 
 const getSunTime = (weatherData) => {
@@ -340,6 +374,17 @@ const getSunTime = (weatherData) => {
   document.querySelector(".sunrise").innerText = "sunrise " + sunriseTime;
   document.querySelector(".sunset").innerText = "sunset " + sunsetTime;
 };
+
+const searchWeather = () => {
+  getDailyWeather(document.querySelector(".search-bar").value);
+};
+document.querySelector(".searchBtn").addEventListener("click", searchWeather);
+document.querySelector(".search-bar").addEventListener("keyup", (event) => {
+  if (event.key === "Enter") {
+    searchWeather();
+    console.log(document.querySelector(".search-bar").value);
+  }
+});
 
 //fetch the 5-day 3-hour steps weather data
 // and trigger displayWeeklyWeather
