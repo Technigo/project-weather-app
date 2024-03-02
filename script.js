@@ -21,8 +21,7 @@ const weatherInfo = () => {
     fetch(URL1)
     .then(response => response.json())
     .then(data => {
-        remindTestCityName(data)
-        console.log(data)     
+        remindTestCityName(data)  
     })
     .catch(error=>{
         errorText.innerHTML = 'Oops, something went wrong🫢'
@@ -104,12 +103,9 @@ const forecast = () => {
         filteredTime = [...data.list].filter(day => {
         return day.dt_txt.endsWith('12:00:00')
         }) 
-        console.log(filteredTime)
-        console.log(filteredTime[0].dt)
         
         // console.log(new Date(filteredTime[0].dt*1000).toLocaleDateString('en-US', {weekday:'short'})) --> Fri 
-
-         //convert each day to a short name. print weather for next 4 days
+        //convert each day to a short name. print weather for next 4 days
         filteredTime.forEach((day) => {
             const fromSecond = day.dt * 1000
             const currentDate = new Date(fromSecond)
