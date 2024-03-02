@@ -5,7 +5,7 @@
     <meta name="viewpoint" content="width=device-width, initial-scale=1.0" />
     <title>Yia's Weather App</title>
     <link rel="stylesheet" href="style.css" />
-    <!-- <script src="https://openweathermap.org/"></script> -->
+
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
     </style>
@@ -20,6 +20,7 @@
   <body>
     <div id="card" class="card">
       <h1 id="current-temp" class="current-temp">10°C</h1>
+      <img src="" class="current-icon" id="current-icon">
       <h2 id="current-city" class="current-city">Malmö</h2>
       <p id="current-sky" class="current-sky">Clear</p>
       <p id="weather-detail" class="weather-detail">
@@ -32,44 +33,43 @@
       <input
         type="text"
         id="city-input"
-        class="city-input"
-        placeholder="enter a city"
+        class="city-input"  
+        placeholder="Enter a city"
       />
-      <button><i class="fa-solid fa-magnifying-glass"></i></button>
+      <button id="search-btn"><img src="assets/search.png"></i></button>
     </form>
 
-<section id="week-days" class="week-days">
-  <div>
-    <div id="day1">Mon</div>
-    <div id="weather-emoji1"></div>
-    <div id="week-temp1">--°C / --°C</div>
-  </div>
+    <section id="week-days" class="week-days">
+      <div>
+        <div id="day1">Mon</div>
+        <div id="weather-emoji"></div>
+        <div id="week-temp1">--°C / --°C</div>
+      </div>
 
-  <div>
-    <div id="day2">Tue</div>
-    <div id="weather-emoji2"></div>
-    <div id="week-temp2">--°C / --°C</div>
-  </div>
+      <div>
+        <div id="day2">Tue</div>
+        <div id="weather-emoji"></div>
+        <div id="week-temp2">--°C / --°C</div>
+      </div>
 
-  <div>
-    <div id="day3">Wed</div>
-    <div id="weather-emoji3"></div>
-    <div id="week-temp3">--°C / --°C</div>
-  </div>
+      <div>
+        <div id="day3">Wed</div>
+        <div id="weather-emoji"></div>
+        <div id="week-temp3">--°C / --°C</div>
+      </div>
 
-  <div>
-    <div id="day4">Thu</div>
-    <div id="weather-emoji4"></div>
-    <div id="week-temp4">--°C / --°C</div>
-  </div>
+      <div>
+        <div id="day4">Thu</div>
+        <div id="weather-emoji"></div>
+        <div id="week-temp4">--°C / --°C</div>
+      </div>
 
-  <div>
-    <div id="day5">Fri</div>
-    <div id="weather-emoji5"></div>
-    <div id="week-temp5">--°C / --°C</div>
-  </div>
-</section>
-
+      <div>
+        <div id="day5">Fri</div>
+        <div id="weather-emoji"></div>
+        <div id="week-temp5">--°C / --°C</div>
+      </div>
+    </section>
 
     <script src="index.js"></script>
   </body>

@@ -3,7 +3,7 @@
   padding: 0;
 }
 body {
-  font-family: Roboto;
+  font-family: "Roboto", sans-serif;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -13,20 +13,45 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+
 .weather-form {
-  margin: 5px;
+  display: flex;
+  width: 100%;
+  align-content: center;
+  justify-content: space-between;
 }
 
-.city-input {
+.weather-form input {
+  display: none;
+  width: 70%;
+  height: 4em;
   padding: 10px;
   font-size: 2rem;
+  font-weight: 400;
+  border: 0;
+  outline: 0;
+  background-color: white;
+  color: black;
+  border-radius: 50px;
+  margin: 0 auto;
 }
 
-button {
+.weather-form button {
+  border: 0;
+  outline: 0;
+  background: white;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  cursor: pointer;
+}
+
+.weather-form button img {
+  width: 40%;
 }
 
 .current-temp {
-  font-size: 300px;
+  font-size: 280px;
   font-weight: 300;
   color: white;
 }
@@ -35,6 +60,7 @@ button {
   font-size: 180px;
   color: white;
   font-weight: 300;
+  display: block;
 }
 
 .current-sky {
@@ -53,4 +79,5 @@ button {
 .week-days {
   background-color: whitesmoke;
   color: #707070;
+  font-size: 30px;
 }

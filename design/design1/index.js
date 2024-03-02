@@ -2,9 +2,11 @@
 const weatherForm = document.getElementById("weather-form");
 const cityInput = document.getElementById("city-input");
 const weatherBackground = document.getElementById("card");
+const searchButton = document.getElementById("search-btn");
 
 // API
 const apiKey = "69822732ac1661b79f6670b175a16816";
+const defaultCity = "Malmö";
 
 // Event listener for weather form submission
 weatherForm.addEventListener("submit", async (event) => {
@@ -24,6 +26,31 @@ weatherForm.addEventListener("submit", async (event) => {
     }
   } else {
     displayError("Please enter a city");
+  }
+});
+
+window.addEventListener("load", async () => {
+  try {
+    const { currentWeather, forecast } = await getWeather(defaultCity);
+    displayWeatherInfo(currentWeather);
+    displayWeatherForecast(forecast);
+  } catch (error) {
+    console.error(error);
+    displayError("Failed to fetch weather data. Please try again later.");
+  }
+});
+
+searchButton.addEventListener("click", function () {
+  // If the input field is empty and currently visible, hide it
+  if (cityInput.value.trim() === "" && cityInput.style.display !== "none") {
+    cityInput.style.display = "none";
+  } else {
+    // Otherwise, toggle input visibility
+    if (cityInput.style.display === "none") {
+      cityInput.style.display = "inline-block"; // Or any other display value you want
+    } else {
+      cityInput.style.display = "none";
+    }
   }
 });
 
@@ -49,7 +76,7 @@ function displayWeatherInfo(data) {
   const {
     name: city,
     main: { temp },
-    weather: [{ main: description }],
+    weather: [{ main: description, id }],
     sys: { sunrise, sunset },
   } = data;
 
@@ -59,6 +86,7 @@ function displayWeatherInfo(data) {
   const cityDisplay = document.createElement("h2");
   const desDisplay = document.createElement("p");
   const sunDisplay = document.createElement("p");
+  const iconDisplay = document.createElement("img");
 
   tempDisplay.textContent = `${(temp - 273.15).toFixed(0)}°C`;
   tempDisplay.classList.add("current-temp");
@@ -69,9 +97,24 @@ function displayWeatherInfo(data) {
   desDisplay.textContent = description;
   desDisplay.classList.add("current-sky");
 
+  // Set the src attribute of the iconDisplay based on the weather condition ID
+  switch (true) {
+    case id === 800:
+      iconDisplay.src = "assets/clear.png";
+      break;
+    case id <= 804:
+      iconDisplay.src = "assets/clouds.png";
+      break;
+    case id <= 504:
+      iconDisplay.src = "assets/rain.png";
+      break;
+    default:
+      iconDisplay.src = "assets/clear.png";
+  }
+
   const sunriseTime = new Date(sunrise * 1000);
   const sunsetTime = new Date(sunset * 1000);
-  const options = { hour: "2-digit", minute: "2-digit" };
+  const options = { hour: "2-digit", minute: "2-digit", hour12: false };
   const sunriseFormatted = sunriseTime.toLocaleTimeString(undefined, options);
   const sunsetFormatted = sunsetTime.toLocaleTimeString(undefined, options);
 
@@ -79,6 +122,7 @@ function displayWeatherInfo(data) {
   sunDisplay.classList.add("weather-detail");
 
   weatherBackground.appendChild(tempDisplay);
+  weatherBackground.appendChild(iconDisplay);
   weatherBackground.appendChild(cityDisplay);
   weatherBackground.appendChild(desDisplay);
   weatherBackground.appendChild(sunDisplay);
@@ -107,19 +151,37 @@ async function displayWeatherForecast(forecast) {
         if (!displayedDays.has(dayIndex)) {
           const tempMin = (dayForecast.main.temp_min - 273.15).toFixed(0);
           const tempMax = (dayForecast.main.temp_max - 273.15).toFixed(0);
+          const weatherId = dayForecast.weather[0].id; // Get weather ID
 
-          // Create elements for the day forecast
+          // Create a div element for the day forecast
           const dayElement = document.createElement("div");
           dayElement.classList.add("week-day");
 
+          // Create elements for the day name, temperature, and weather icon
           const dayName = document.createElement("div");
           dayName.textContent = weekDays[dayIndex];
           const tempElement = document.createElement("div");
           tempElement.textContent = `${tempMin}°C / ${tempMax}°C`;
+          const iconElement = document.createElement("img");
 
-          // Append the day name and temperature elements to the day element
+          // Set the appropriate weather icon based on weather ID
+          switch (true) {
+            case weatherId === 800:
+              iconElement.src = "assets/clear.png";
+              break;
+            case weatherId <= 804:
+              iconElement.src = "assets/clouds.png";
+              break;
+            case weatherId <= 504:
+              iconElement.src = "assets/rain.png";
+              break;
+            default:
+              iconElement.src = "assets/clear.png";
+          }
+
           dayElement.appendChild(dayName);
           dayElement.appendChild(tempElement);
+          dayElement.appendChild(iconElement);
 
           // Append the day element to the week-days container
           weekDaysContainer.appendChild(dayElement);
@@ -140,4 +202,13 @@ function displayError(message) {
   errorDisplay.textContent = message;
   errorDisplay.classList.add("error");
   weatherBackground.appendChild(errorDisplay);
+
+  setTimeout(() => {
+    errorDisplay.remove();
+  }, 5000);
+}
+
+function hideErrorMessage() {
+  errorDisplay.textContent = ""; // Clear the error message
+  errorDisplay.classList.remove("error");
 }
