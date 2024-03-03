@@ -39,20 +39,9 @@ const coordinates = {
 // };
 
 const city = "Göteborg";
+let currentWeatherMain = "";
 
 ///////////// Functions to fetch weather //////////////
-
-const fetchCurrentWeather = () => {
-  const URL = `${BASE_URL}/weather?lat=${coordinates.lat}&lon=${coordinates.lon}&units=metric&appid=${MY_API_KEY}`;
-  fetch(URL)
-    .then((response) => response.json())
-    .then((currentWeatherData) => handleCurrentWeatherData(currentWeatherData))
-    .catch((error) => {
-      console.log(error);
-      errorDiv.innerHTML = "Something went wrong";
-    });
-};
-fetchCurrentWeather();
 
 const fetchForecast = () => {
   const URL = `${BASE_URL}/forecast?lat=${coordinates.lat}&lon=${coordinates.lon}&units=metric&appid=${MY_API_KEY}`;
@@ -64,7 +53,19 @@ const fetchForecast = () => {
       errorDiv.innerHTML = "Something went wrong";
     });
 };
-fetchForecast();
+
+const fetchCurrentWeather = () => {
+  const URL = `${BASE_URL}/weather?lat=${coordinates.lat}&lon=${coordinates.lon}&units=metric&appid=${MY_API_KEY}`;
+  fetch(URL)
+    .then((response) => response.json())
+    .then((currentWeatherData) => handleCurrentWeatherData(currentWeatherData))
+    .then(fetchForecast) // fetch forecast after fetching current weather data
+    .catch((error) => {
+      console.log(error);
+      errorDiv.innerHTML = "Something went wrong";
+    });
+};
+fetchCurrentWeather();
 
 ///////////// Function to format time //////////////
 
@@ -75,33 +76,40 @@ const formatTime = (seconds) => {
   });
 };
 
-///////// Function to update prompt section /////////
+//////// Functions to update HTML ////////
 
 const updatePrompt = (currentWeatherData) => {
-  switch (currentWeatherData.weather[0].main) {
+  switch (currentWeatherMain) {
     case "Clear":
       icon.setAttribute("src", "./icons/noun_Sunglasses_2055147.svg");
       icon.setAttribute("alt", "Sunglasses");
+      icon.className = "clear-icon";
       promptText.innerHTML = `Get your sunnies on. ${city} is looking rather great today.`;
       document.body.className = "clear";
       break;
-    case ("Clouds", "Atmosphere"):
+    case "Clouds":
+    case "Atmosphere":
       icon.setAttribute("src", "./icons/noun_Cloud_1188486.svg");
       icon.setAttribute("alt", "Cloud");
+      icon.className = "clouds-icon";
       promptText.innerHTML = `Light a fire and get cosy. ${city} is looking grey today.`;
       document.body.className = "clouds";
       break;
-    case ("Rain", "Drizzle"):
+    case "Rain":
+    case "Drizzle":
       icon.setAttribute("src", "./icons/noun_Umbrella_2030530.svg");
       icon.setAttribute("alt", "Umbrella");
+      icon.className = "rain-icon";
       promptText.innerHTML = `Don't forget your umbrella. It's wet in ${city} today.`;
       document.body.className = "rain";
       break;
     case "Snow":
+      icon.className = "snow-icon";
       promptText.innerHTML = `Slide right into your slippers. It's snowing in ${city} today.`;
       document.body.className = "snow";
       break;
     case "Thunderstorm":
+      icon.className = "thunderstorm-icon";
       promptText.innerHTML = `Light your candles. A thunderstorm is rolling in over ${city} today.`;
       document.body.className = "thunderstorm";
       break;
@@ -111,8 +119,6 @@ const updatePrompt = (currentWeatherData) => {
       promptText.innerHTML = city;
   }
 };
-
-//////// Functions to update HTML ////////
 
 const updateCurrentWeather = (currentWeatherData) => {
   // format current weather:
@@ -135,10 +141,11 @@ const updateForecast = (filteredForecastList) => {
     const weekday = getWeekday(date);
     const iconURL = getWeatherIconURL(listItem.weather[0].main);
     const temp = Math.round(listItem.main.temp * 10) / 10;
+    const weather = currentWeatherMain.toLowerCase();
     forecastTable.innerHTML += `
       <tr>
         <td>${weekday}</td>
-        <td><img id="forecast-icon" src="${iconURL}"></td>
+        <td><img id="forecast-icon" class="${weather}-icon" src="${iconURL}"></td>
         <td id="forecast-temp">${temp}°</td>
       </tr>`;
   });
@@ -147,6 +154,8 @@ const updateForecast = (filteredForecastList) => {
 ///////////// Function to update HTML //////////////
 
 const handleCurrentWeatherData = (currentWeatherData) => {
+  currentWeatherMain = currentWeatherData.weather[0].main;
+  // currentWeatherMain = "Snow";
   updateCurrentWeather(currentWeatherData);
   updatePrompt(currentWeatherData);
   console.log(currentWeatherData);
