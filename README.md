@@ -1,13 +1,12 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The assignment was to create a weather dashboard, using a weather API to fetch data like today's weather and a 4-day forecast.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I tried to make this project with as little code as possible. At first I had a much longer html and also a long list of DOM selectors. I learned a lot on Stack overflow on how to shorten things. Working with branches for the first time was quite challenging but great to learn about too.
+If I had more time I'd like to add more icons for different types of weather, instead of just cloudy, clear and rainy. I'd also like to add more cities to choose from.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://rococo-sunburst-79526b.netlify.app/

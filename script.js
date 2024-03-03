@@ -1,6 +1,6 @@
 const BASE_URL = "https://api.openweathermap.org/data/2.5/"
 const API_KEY = "5170e7466e6e4805797bdd1908cdd84d"
-const city = "Copenhagen,Denmark"
+const city = "Stockholm,Sweden"
 
 const URL = `${BASE_URL}weather?q=${city}&units=metric&APPID=${API_KEY}`
 const URLforecast = `${BASE_URL}forecast?q=${city}&units=metric&APPID=${API_KEY}`
@@ -52,7 +52,7 @@ const updateHTML = (data) => {
     } else {
       message.innerHTML += `<div>
       <img src ="design/design2/icons/noun_Cloud_1188486.svg"/>
-      <h1>The weather in ${cityName} is unknown to me today. Need to add some more code.</h1>
+      <h1>The weather in ${cityName} is difficult to tell today.</h1>
       </div>`
       document.body.style.backgroundColor = "#F4F7F8"
       document.body.style.color = "#164A68"
@@ -75,11 +75,15 @@ const updateHTMLforecast = (data) => {
     date.setDate(date.getDate() + addDay)
     const weekdayName = date.toLocaleDateString(["en-GB"], { weekday: "short" })
     const weekdayTemp = day.main.temp.toFixed(0)
-    const weekdayDescription = day.weather[0].description
+    const weatherPic = {
+      Clouds: "design/design2/icons/noun_Cloud_1188486.svg",
+      Clear: "design/design2/icons/noun_Sunglasses_2055147.svg",
+      Rain: "design/design2/icons/noun_Sunglasses_2055147.svg",
+    }
     forecast.innerHTML += `
     <div id="weeklyForecast">
     <p>${weekdayName}</p> 
-    <p>${weekdayDescription}</p> 
+    <img src ="${weatherPic[day.weather[0].main]}">
     <p>${weekdayTemp}°C</p>
     </div>
     `

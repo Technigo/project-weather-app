@@ -27,6 +27,10 @@ h1 {
     border-bottom: dotted;
 }
 
+#weeklyForecast img {
+    height: 20px;
+}
+
 #error {
     color: red;
 }
@@ -46,5 +50,15 @@ h1 {
     
     #weeklyForecast {
         padding: 30px;
+    }
+
+    #weeklyForecast img {
+        height: 40px;
+    }
+}
+
+@media (min-width: 1025px) {
+    #weeklyForecast img {
+        height: 40px;
     }
 }
