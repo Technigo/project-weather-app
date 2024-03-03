@@ -42,6 +42,11 @@ const fetchWeatherData = (cityName) => {
       const weatherDescriptionCapitalized =
         weatherDescription.charAt(0).toUpperCase() + weatherDescription.slice(1)
 
+      //Display in HTML
+      temperature.innerHTML = `${temp}`
+      weather.innerHTML = `${weatherDescriptionCapitalized}`
+      city.innerHTML = cityName
+
       //Check time to know whether to display day or night image
       const localTime = new Date(json.dt * 1000) //milliseconds
       const timeZoneOffset = json.timezone / 3600 //convert to hours
@@ -105,49 +110,30 @@ const fetchWeatherData = (cityName) => {
         }
       }
 
-      //Display in HTML
-      temperature.innerHTML = `${temp}`
-      weather.innerHTML = `${weatherDescriptionCapitalized}`
-      city.innerHTML = cityName
-
       ////////// Feature 1: Sunrise and sunset //////////
+      //Sunrise data
+      const sunriseData = new Date((json.sys.sunrise + json.timezone) * 1000)
+      sunriseData.setMinutes(
+        sunriseData.getMinutes() + sunriseData.getTimezoneOffset()
+      )
+      //Transform to format HH:MM
+      const sunriseTime = sunriseData.toLocaleTimeString(["sv-SE"], {
+        timeStyle: "short",
+      })
 
-      //Convert to milliseconds to use JS date constructor and create new date object
-      const sunriseTime = new Date(json.sys.sunrise * 1000)
-      const sunsetTime = new Date(json.sys.sunset * 1000)
-
-      //Timezone offset local time in minutes relative to UTC time
-      const timezoneOffsetMinutes = json.timezone / 60
-
-      //Calculate sunrise and sunset time for the city's timezone
-      const sunriseOptions = {
-        hour: "2-digit",
-        minute: "2-digit",
-        //If time in minutes > 0: city is behind UTC, subtracting time
-        //If time in minutes < 0: city is before UTC, adding time
-        timeZone: `Etc/GMT${timezoneOffsetMinutes >= 0 ? "-" : "+"}${Math.abs(
-          //calculates abs value of the offset in hrs and includes it the timezone identifier
-          timezoneOffsetMinutes / 60
-        )}`,
-      }
-
-      const sunsetOptions = {
-        hour: "2-digit",
-        minute: "2-digit",
-        timeZone: `Etc/GMT${timezoneOffsetMinutes >= 0 ? "-" : "+"}${Math.abs(
-          timezoneOffsetMinutes / 60
-        )}`,
-      }
+      //Sunset data
+      const sunsetData = new Date((json.sys.sunset + json.timezone) * 1000)
+      sunsetData.setMinutes(
+        sunsetData.getMinutes() + sunsetData.getTimezoneOffset()
+      )
+      //Transform to format HH:MM
+      const sunsetTime = sunsetData.toLocaleTimeString(["sv-SE"], {
+        timeStyle: "short",
+      })
 
       //Display in HTML adding the formatting created in sunriseOptions
-      sunriseElement.innerHTML = sunriseTime.toLocaleTimeString(
-        "sv-SE",
-        sunriseOptions
-      )
-      sunsetElement.innerHTML = sunsetTime.toLocaleTimeString(
-        "sv-SE",
-        sunsetOptions
-      )
+      sunriseElement.innerHTML = `${sunriseTime}`
+      sunsetElement.innerHTML = `${sunsetTime}`
     })
     //Handle errors
     .catch((error) => {
