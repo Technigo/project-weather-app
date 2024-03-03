@@ -16,7 +16,7 @@ const units = "metric";
 const todayURL = `${todaysWeatherBaseURL}?q=${city}&units=${units}&APPID=${API_KEY}`;
 const forecastURL = `${forecastBaseURL}?q=${city}&units=${units}&APPID=${API_KEY}`;
 
-/////////////////////////-----Functions----////////////////////////////
+////////////////////////////-----Functions----///////////////////////////////
 
 //--------------functions that fetches the data needed---------------//
 
@@ -52,33 +52,62 @@ const fetchSunriseSunset = () => {
   });
 };
 
-// fetches the forecast (4-5 days) weather data from the API and converts it to json
+// fetches the forecast (5 days) weather data from the API and converts it to json
 const fetchForecast = (url) => {
   return fetch(url)
     .then((response) => response.json())
     .catch((error) => (weatherForecastBox.innerHTML = "<p>oops .. something went wrong</p>"));
 };
 
-// fetches the forecast day and temperature at 12:00
+// fetches the forecast day and temperature with specfied filters
 const fetchForecastData = () => {
   fetchForecast(forecastURL).then((forecastData) => {
-    const filteredForecastData = forecastData.list.filter((infoForTheDay) => infoForTheDay.dt_txt.includes("12:00:00"));
+    const filteredForecastData = filterOutTodaysData(forecastData);
     forecastWeather = filteredForecastData.map((item) => {
       const date = item.dt_txt;
       const day = getWeekdayName(date);
-      const temp = item.main.temp;
+      const temp = Math.round(item.main.temp);
+      console.log(forecastData);
+      console.log(day, temp);
       return { day, temp };
     });
     showForecastWeather(forecastWeather);
   });
 };
 
-//----------functions that change the presentation of the data----------//
+//----------functions that change the presentation or filters the data----------//
 
 // converts the dates to the name of the weekday in abbreviation
 const getWeekdayName = (dates) => {
   const day = new Date(dates);
   return day.toLocaleDateString("en-US", { weekday: "short" });
+};
+
+// gets todays date
+const getToday = () => {
+  const today = new Date();
+  return today;
+};
+
+// compares two dates
+const compareDates = (date1, date2) => {
+  return (
+    date1.getFullYear() === date2.getFullYear() &&
+    date1.getMonth() === date2.getMonth() &&
+    date1.getDate() === date2.getDate()
+  );
+};
+
+// filters out objects at a specific time
+const getTime12 = (dt_txt) => dt_txt.includes("12:00:00");
+
+// filter out todays date to not be shown
+const filterOutTodaysData = (forecastData) => {
+  const today = getToday();
+  return forecastData.list.filter((infoForTheDay) => {
+    const forecastDate = new Date(infoForTheDay.dt_txt);
+    return !compareDates(today, forecastDate) && getTime12(infoForTheDay.dt_txt);
+  });
 };
 
 //--------------functions that presents the fetched data---------------//
@@ -97,7 +126,7 @@ const showSunsetSunrise = (sunriseData, sunsetData) => {
 
 const showForecastWeather = (forecastWeather) => {
   forecastWeather.forEach((forecast) => {
-    weatherForecastBox.innerHTML += `${forecast.day} ${forecast.temp}`;
+    weatherForecastBox.innerHTML += `${forecast.day} ${forecast.temp}&deg`;
   });
 };
 
@@ -106,14 +135,3 @@ const showForecastWeather = (forecastWeather) => {
 fetchTodaysWeather();
 fetchSunriseSunset();
 fetchForecastData();
-
-// // const showForecastWeather = (forecastData) => {
-// //   console.log(forecastData);
-// //   const getDates = forecastData
-// //     .filter((item) => item.dt_txt.endsWidth("12:00:00"))
-// //     .map((item) => {
-// //       const date = new Date(item.dt * 1000).toISOString().split("T")[0];
-// //       const temperature = item.main.temp;
-// //       console.log(getDates);
-//     });
-// };
