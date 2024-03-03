@@ -183,7 +183,10 @@ const showSunsetSunrise = (sunriseData, sunsetData) => {
 
 const showForecastWeather = (forecastWeather) => {
   forecastWeather.forEach((forecast) => {
-    weatherForecastBox.innerHTML += `${forecast.day} ${forecast.temp}&deg`;
+    const forecastElement = document.createElement("div");
+    forecastElement.classList.add("forecast-weather");
+    forecastElement.innerHTML = `<p>${forecast.day}</p> <p> ${forecast.temp}&deg</p>`;
+    weatherForecastBox.appendChild(forecastElement);
   });
 };
 
