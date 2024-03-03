@@ -1,3 +1,165 @@
+body {
+  color: white;
+  font-family: "Roboto";
+  margin: 0;
+}
+
+ul {
+  color: #354a6e;
+}
+
+#searchForm {
+  display: flex;
+  align-content: center;
+}
+
+h1 {
+  margin: 40px 10px 10px 0;
+  align-items: center;
+  font-size: 70px;
+}
+
+h2 {
+  margin: 40px 10px 10px 01;
+  align-items: center;
+  font-size: 34px;
+}
+
+#mainContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+#eclipse {
+  background: linear-gradient(to bottom right, #9abbf5, #7455ad);
+  padding-bottom: 50px;
+  border-bottom-left-radius: 50% 20%;
+  border-bottom-right-radius: 50% 20%;
+}
+
+#description {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  img {
+    width: 100px;
+    height: auto;
+  }
+}
+
+#forecast-container {
+  list-style: none;
+  padding-left: 17px;
+  img {
+    height: 30px;
+    width: auto;
+  }
+  li {
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+}
+
+#sunrise-sunset {
+  display: flex;
+  justify-content: space-evenly;
+}
+#searchForm {
+  display: flex;
+  margin: 10px 17px;
+}
+
+#sunrise-sunset {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#sunrise,
+#sunset {
+  margin: 10px;
+  font-size: 22px;
+}
+
+#overcast {
+  p {
+    margin-top: 5px;
+    margin-left: 17px;
+    font-size: 22px;
+  }
+
+  h1 {
+    font-size: 70px;
+    margin: 40px 17px 0 17px;
+  }
+
+  h2 {
+    font-size: 34px;
+    margin: 20px 17px 0;
+  }
+}
+
+button a:hover {
+  background-color: #ddd;
+  color: black;
+}
+button a.active {
+  background-color: #2196f3;
+  color: white;
+}
+
+@media only screen and (min-width: 414px) and (max-width: 670px) {
+  #searchForm {
+    display: flex;
+    margin: 10px 17px;
+  }
+
+  #sunrise-sunset {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  #sunrise,
+  #sunset {
+    margin: 10px;
+    font-size: 22px;
+  }
+
+  #overcast {
+    p {
+      margin-top: 5px;
+      margin-left: 17px;
+      font-size: 22px;
+    }
+
+    h1 {
+      font-size: 70px;
+      margin: 40px 17px 0 17px;
+    }
+
+    h2 {
+      font-size: 34px;
+      margin: 20px 17px 0;
+    }
+  }
+
+  #hidding-button {
+    margin: 0px 17px 0 17px;
+  }
+
+  #searchInput {
+    margin-right: 3px;
+  }
+}
+
+#menu {
+  width: 40px;
+  height: auto;
+  margin: 40px 17px 0 17px;
+}
+
 .roboto-thin {
   font-family: "Roboto", sans-serif;
   font-weight: 100;
@@ -26,20 +188,4 @@
   font-family: "Roboto", sans-serif;
   font-weight: 700;
   font-style: normal;
-}
-
-#overcast {
-  border: 1px solid red;
-}
-
-h1 {
-  border: 1px solid red;
-  margin: 50px 10px;
-  align-items: center;
-}
-
-h2 {
-  border: 1px solid red;
-  margin: 50px 10px;
-  align-items: center;
 }

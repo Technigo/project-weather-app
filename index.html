@@ -10,14 +10,23 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./style.css" />
+    <style media="all and (min-width: 414px)"></style>
     <title>Updated Weather App</title>
   </head>
   <body>
-    <div>
-      <div id="overcast">Loading...</div>
-      <div id="sunrise-sunset">
-        <div id="sunrise"></div>
-        <div id="sunset"></div>
+    <div id="mainContainer">
+      <div id="eclipse">
+        <img id="menu" src="assets/hamburger-menu-icon.svg"/>
+        <div id="overcast">Loading...</div>
+        <div id="description"></div>
+        <form id="searchForm">
+          <input id="searchInput" type="search" placeholder="Search for city"></input>
+          <button type="submit"> 🔍 </button>
+        </form>
+        <div id="sunrise-sunset">
+          <div id="sunrise"></div>
+          <div id="sunset"></div>
+        </div>
       </div>
       <div id="hidding-button">▶️</div>
       <div>
