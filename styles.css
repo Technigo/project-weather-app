@@ -1,23 +1,50 @@
 body {
-    display: flex;
     font-family: "Montserrat";
     margin: 20px;
   }
 
-  .weatherToday {
+.weatherToday {
     font-size: 20px;
-  }
+}
 
-  h1 {
+p {
+    margin: 0;
+}
+
+h1 {
     font-size: 40px;
-  }
+}
 
-  #weeklyForecast {
+#message {
+    padding-top: 50px;
+    padding-bottom: 30px;
+}
+
+#weeklyForecast {
+    padding: 10px;
     display: flex;
     justify-content: space-between;
     border-bottom: dotted;
-  }
+}
 
-  #error {
+#error {
     color: red;
-  }
+}
+
+@media (min-width: 667px) and (max-width: 1024px) {
+    body {
+        margin: 40px;
+    }
+
+    h1 {
+        font-size: 50px;
+    }
+
+    p {
+        font-size: 30px;
+    }
+    
+    #weeklyForecast {
+        padding: 30px;
+    }
+}

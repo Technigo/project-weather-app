@@ -74,8 +74,8 @@ const updateHTMLforecast = (data) => {
     const date = new Date(tomorrow)
     date.setDate(date.getDate() + addDay)
     const weekdayName = date.toLocaleDateString(["en-GB"], { weekday: "short" })
-    const weekdayDescription = day.weather[0].description
     const weekdayTemp = day.main.temp.toFixed(0)
+    const weekdayDescription = day.weather[0].description
     forecast.innerHTML += `
     <div id="weeklyForecast">
     <p>${weekdayName}</p> 
