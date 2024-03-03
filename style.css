@@ -13,7 +13,7 @@ html {
   margin: 0;
   padding: 0;
   font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
+  /*font-optical-sizing: auto;*/
 }
 
 :root {
@@ -40,10 +40,8 @@ main {
   padding: var(--pad-2);
   height: 100vh;
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  align-content: start;
 }
-
-
 
 
 .sunny {
@@ -64,17 +62,18 @@ main {
 .overview {
   font-size: var(--fs-1);
   font-weight: 300;
+  padding: 2em;
 }
 
 .weathertip {
-  padding: 4em 0 2em 2em;
+  padding: 4em 0 5em 2em;
 }
 
 h1 {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
-  font-size: var(--fs-3)
+  font-size: var(--fs-3);
 }
 
 #suggestion {
@@ -83,21 +82,20 @@ h1 {
 }
 
 
-
 #icon.sunny {
-  content: url(/design/design2/icons/noun_Sunglasses_2055147.svg)
+  content: url(/design/design2/icons/noun_Sunglasses_2055147.svg);
 }
 
 #icon.rainy {
-  content: url(/design/design2/icons/noun_Umbrella_2030530.svg)
+  content: url(/design/design2/icons/noun_Umbrella_2030530.svg);
 }
 
 #icon.cloudy {
-  content: url(/design/design2/icons/noun_Cloud_1188486.svg)
+  content: url(/design/design2/icons/noun_Cloud_1188486.svg);
 }
 
 .forcast {
-  font-size: var(--fs-2)
+  font-size: var(--fs-2);
 }
 
 .temp {
@@ -144,21 +142,17 @@ h1 {
 }
 
 
-
-
-@media (min-width:220px)and (max-width: 780px) {
-
+@media(min-width:320px)and(max-width: 768px) {
 
   :root {
-    --fs-1: clamp(1.7rem, 2vw, 2.5rem);
-    --fs-2: clamp(2rem, 2.5vw, 3.5rem);
+    --fs-1: clamp(2em, 2vw, 3rem);
+    --fs-2: clamp(2.2rem, 2.5vw, 3.5rem);
     --fs-3: clamp(3.5rem, 4vw, 4.5rem);
     --pad-1051: 1em 0em 1em 1em;
     --pad-200_50: 2em 0em 0.5em 1em;
     --pad-2: 1em;
     --height: 0.7em;
   }
-
 
   main {
     padding: var(--pad-2);
@@ -169,7 +163,7 @@ h1 {
   }
 
   .overview {
-    font-size: var(--fs-1)
+    font-size: var(--fs-1);
   }
 
   h1 {
@@ -178,6 +172,7 @@ h1 {
 
   #suggestion {
     max-width: 90vw;
+    max-height: 40vh;
   }
 
   #icon {
