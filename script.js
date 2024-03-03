@@ -23,7 +23,7 @@ let riseMinutes
 let setHours
 let setMinutes
 let currentStyle
-let updateStyle
+let updateStyle = "cloudy"
 let suggestionTxt
 let timestamp
 let weekday
@@ -63,7 +63,7 @@ const getStyles = (currentStyle) => {
 		default:
 	}
 }
-
+/*
 const fetchFiveDayForcast = () => {
 	fetch(fiveDayForcast)
 		.then(response => {
@@ -73,7 +73,7 @@ const fetchFiveDayForcast = () => {
 			return response.json();
 		})
 		.then(weekData => {
-			const firstFilter = weekData.list.filter((time) => time.dt_txt.includes("12:00"));
+			const filterDays = weekData.list.filter((time) => time.dt_txt.includes("12:00"));
 			const today = new Date().getDay(); // Get the current day of the week
 			const filterOutToday = firstFilter.filter((time) => {
 				const date = new Date(time.dt * 1000);
@@ -96,7 +96,38 @@ const fetchFiveDayForcast = () => {
 			console.error('Error: ', error.message);
 		})
 }
-fetchFiveDayForcast();
+*/
+
+const fetchFiveDayForcast = () => {
+	fetch(fiveDayForcast)
+		.then(response => {
+			if (!response.ok) {
+				throw new Error('HTTP error! Status:${response.status}');
+			}
+			return response.json();
+		})
+		.then(weekData => {
+			const filterDays = weekData.list.filter((time) => time.dt_txt.includes("12:00"));
+			const today = new Date().getDay();
+			let dayCounter = 0;
+			filterDays.forEach(d => {
+				const date = new Date(d.dt * 1000);
+				if (date.getDay() !== today && dayCounter < 5) {
+					const forcast = document.querySelector(".forcast");
+					forcast.innerHTML += `
+						<div class ="lines ${updateStyle}">
+							<div class="day">${convertDay(date.getDay())}</div>
+							<div class="temp">${d.weather[0].description} | ${parseInt(d.main.temp).toFixed(1)}° | Feels like: ${parseInt(d.main.feels_like).toFixed(1)}°</div>
+						</div>`;
+					dayCounter++;
+				}
+			});
+		})
+		.catch(error => {
+			console.error('Error: ', error.message);
+		});
+};
+
 
 const fetchForcast = () => {
 	fetch(dailyForcast).then(response => {
@@ -154,5 +185,5 @@ const convertDay = (weekday) => {
 }
 
 
-
+fetchFiveDayForcast();
 fetchForcast();

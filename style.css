@@ -64,7 +64,6 @@ main {
 .overview {
   font-size: var(--fs-1);
   font-weight: 300;
-
 }
 
 .weathertip {
@@ -81,7 +80,6 @@ h1 {
 #suggestion {
   max-width: 70vw;
   line-height: 1.5;
-
 }
 
 
@@ -162,8 +160,6 @@ h1 {
   }
 
 
-
-
   main {
     padding: var(--pad-2);
   }
@@ -182,18 +178,14 @@ h1 {
 
   #suggestion {
     max-width: 90vw;
-
   }
 
   #icon {
     padding: var(--pad-1051);
-
-
   }
 
   .forcast {
     font-size: var(--fs-2);
-
   }
 
   day,
