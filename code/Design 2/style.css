@@ -81,7 +81,8 @@ body {
   right: 30px;
 }
 
-.curve {
+/* I don't know how to make a curve that is not covering my night mode */
+/* .curve { 
   overflow: hidden;
   position: relative;
   z-index: 1; 
@@ -99,7 +100,7 @@ body {
   border-bottom-right-radius: 20% 20%;
   border-bottom-left-radius: 20% 20%;
   z-index: -1; 
-}
+} */
 
 .card {
   margin-top: 200px;
