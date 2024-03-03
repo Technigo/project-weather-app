@@ -79,9 +79,9 @@ const formatTime = (seconds) => {
 //////// Functions to update HTML ////////
 
 const updatePrompt = (currentWeatherData) => {
+  icon.setAttribute("src", getWeatherIconURL(currentWeatherMain));
   switch (currentWeatherMain) {
     case "Clear":
-      icon.setAttribute("src", "./icons/noun_Sunglasses_2055147.svg");
       icon.setAttribute("alt", "Sunglasses");
       icon.className = "clear-icon";
       promptText.innerHTML = `Get your sunnies on. ${city} is looking rather great today.`;
@@ -89,7 +89,6 @@ const updatePrompt = (currentWeatherData) => {
       break;
     case "Clouds":
     case "Atmosphere":
-      icon.setAttribute("src", "./icons/noun_Cloud_1188486.svg");
       icon.setAttribute("alt", "Cloud");
       icon.className = "clouds-icon";
       promptText.innerHTML = `Light a fire and get cosy. ${city} is looking grey today.`;
@@ -97,7 +96,6 @@ const updatePrompt = (currentWeatherData) => {
       break;
     case "Rain":
     case "Drizzle":
-      icon.setAttribute("src", "./icons/noun_Umbrella_2030530.svg");
       icon.setAttribute("alt", "Umbrella");
       icon.className = "rain-icon";
       promptText.innerHTML = `Don't forget your umbrella. It's wet in ${city} today.`;
@@ -139,7 +137,7 @@ const updateForecast = (filteredForecastList) => {
   filteredForecastList.forEach((listItem) => {
     const date = new Date(listItem.dt * 1000);
     const weekday = getWeekday(date);
-    const iconURL = getWeatherIconURL(listItem.weather[0].main);
+    const iconURL = getForecastIconURL(listItem.weather[0].main);
     const temp = Math.round(listItem.main.temp * 10) / 10;
     const weather = currentWeatherMain.toLowerCase();
     forecastTable.innerHTML += `
@@ -154,8 +152,8 @@ const updateForecast = (filteredForecastList) => {
 ///////////// Function to update HTML //////////////
 
 const handleCurrentWeatherData = (currentWeatherData) => {
-  currentWeatherMain = currentWeatherData.weather[0].main;
-  // currentWeatherMain = "Snow";
+  // currentWeatherMain = currentWeatherData.weather[0].main;
+  currentWeatherMain = "Snow";
   updateCurrentWeather(currentWeatherData);
   updatePrompt(currentWeatherData);
   console.log(currentWeatherData);
@@ -209,9 +207,34 @@ const getWeatherIconURL = (weather) => {
     case "Clear":
       return "./icons/noun_Sunglasses_2055147.svg";
     case "Clouds":
+    case "Atmosphere":
       return "./icons/noun_Cloud_1188486.svg";
     case "Rain":
+    case "Drizzle":
       return "./icons/noun_Umbrella_2030530.svg";
+    case "Snow":
+      return "./icons/snowman.png";
+    case "Thunderstorm":
+      return "./icons/thunderbolt.png";
+    default:
+      return "";
+  }
+};
+
+const getForecastIconURL = (weather) => {
+  switch (weather) {
+    case "Clear":
+      return "./icons/sun.png";
+    case "Clouds":
+    case "Atmosphere":
+      return "./icons/noun_Cloud_1188486.svg";
+    case "Rain":
+    case "Drizzle":
+      return "./icons/rainy.png";
+    case "Snow":
+      return "./icons/snowflake.png";
+    case "Thunderstorm":
+      return "./icons/storm.png";
     default:
       return "";
   }

@@ -37,6 +37,10 @@ body {
   padding-top: 15px;
 }
 
+.prompt img {
+  width: 77px;
+}
+
 table {
   width: 100%;
 }
@@ -71,12 +75,32 @@ td {
     hue-rotate(158deg) brightness(92%) contrast(93%);
 }
 
+.drizzle {
+  background-color: #bde8fa;
+  color: #164a68;
+}
+
+.drizzle-icon {
+  filter: brightness(0) saturate(100%) invert(25%) sepia(20%) saturate(1765%)
+    hue-rotate(158deg) brightness(92%) contrast(93%);
+}
+
 .clouds {
   background-color: #f4f7f8;
   color: #f47775;
 }
 
 .clouds-icon {
+  filter: brightness(0) saturate(100%) invert(66%) sepia(68%) saturate(1099%)
+    hue-rotate(309deg) brightness(96%) contrast(99%);
+}
+
+.atmosphere {
+  background-color: #f4f7f8;
+  color: #f47775;
+}
+
+.atmosphere-icon {
   filter: brightness(0) saturate(100%) invert(66%) sepia(68%) saturate(1099%)
     hue-rotate(309deg) brightness(96%) contrast(99%);
 }
