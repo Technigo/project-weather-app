@@ -5,7 +5,7 @@ We've asked a couple of different designers to do their take on this project. It
 
 ## How to get started 💪🏼
 
-1. Fork the repo.
+✅1. Fork the repo.
 2. Clone the repo, and lay out the foundation (following Step 1 & 2, specified further down).
 3. Push the changes to GitHub.
 4. Work with the features in branches. Git cheat sheet can be found [here](https://www.notion.so/424c3528791e42d0a7daabe6f0b5a308?pvs=21).
@@ -26,7 +26,9 @@ For this project, we suggest that you lay out the foundation of your project in 
 For example, to get the current weather in Stockholm, you can use the URL below. Remember to replace YOUR_API_KEY with the API key you copied from your dashboard.
 
 ```
-https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=YOUR_API_KEY
+https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=c157c979c9d473e3ecf909df24e129f1
+
+
 ```
 
 The response should look something like this (this has been run through jsonlint.com to add newlines and indentation):

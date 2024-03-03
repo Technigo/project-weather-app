@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0; 
+}
+
+body{
+    font-family: Montserrat;  
+    color:  #F47775;
+    display: flex;
+    justify-content: center;
+
+}
+
+
+#card {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 250px;
+    padding:25px;
+    margin:20px;
+    border-radius:20px;
+    box-shadow: 0 8px 16px 0 rgba(244, 169, 169, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.weather-icon {
+    width:60px;
+    height:40px;
+    margin-top:50px;
+    margin-bottom:10px;
+}
+
+.p {
+    margin-bottom:30px;
+}
+
+h1 {
+    margin-bottom:10px;
+    font-weight:600;
+}
+
+h2 {
+    margin-bottom:3px;
+    font-weight: 300;
+}
+
+h4 {
+    font-weight: 200;
+}
