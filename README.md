@@ -1,12 +1,11 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Create a weather app with API
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+First I missed all the lectures bc stomach flu.
+Second, don't understand functions, so this was very difficult for me. I did the misstake to look at other peoples code instead of going back to the weeks video material.
 
 ## View it live
 
