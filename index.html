@@ -7,20 +7,26 @@
     <title>Weather App</title>
   </head>
   <body>
-    <!-- Weather condition and sunrise/sunset times will be displayed here -->
-    <div id="weather-overview">
-      <p>
-        <span id="weather-condition"></span> | <span id="temperature"></span>
-      </p>
-      <p>sunrise <span id="sunrise-time"></span></p>
-      <p>sunset <span id="sunset-time"></span></p>
-    </div>
-    
-    <!-- Weather message based on weather condition -->
-    <div id="weather-message"></div>
+    <!-- Parent container -->
+    <div id="container">
+      <!-- Weather condition and sunrise/sunset times will be displayed here -->
+      <div id="weather-overview">
+        <p>
+          <span id="weather-condition"></span> | <span id="temperature"></span>
+        </p>
+        <p>sunrise <span id="sunrise-time"></span></p>
+        <p>sunset <span id="sunset-time"></span></p>
+      </div>
 
-    <!-- Week, monday - sunday -->
-    <div id="weekdays"></div>
+      <!-- Weather message based on weather condition -->
+      <div id="weather-container">
+        <img id="weather-image" src="" alt="Weather Image">
+        <div id="weather-message"></div>
+    </div>
+
+      <!-- Week, monday - sunday -->
+      <div id="weekdays"></div>
+    </div>
 
     <script src="script.js"></script>
   </body>

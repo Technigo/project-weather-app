@@ -1,33 +1,120 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
 
+#container {
+  max-width: 550px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Styling for weather overview */
 #weather-overview {
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
   font-size: 21px;
-  color: black;
+  line-height: 0.3;
+  padding-bottom: 50px;
+}
+
+/* Styling for weather container, image + message */
+#weather-container {
+  margin: 0 auto;
+  width: fit-content;
+}
+
+#weather-image {
+  float: left;
+  padding-bottom: 20px;
 }
 
 #weather-message {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
-  font-size: 37px;
-  color: black;
+  font-size: 38px;
+  text-align: left;
+  padding-bottom: 50px;
+  width: 100%;
+  overflow: hidden;
 }
 
 /* Styling for weekdays */
-.weekdays {
+#weekdays {
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
 }
 
 .forecast-row {
-  width: calc(100% / 7); /* Make each forecast item take up equal space */
-  text-align: center;
+  width: 100%;
   margin-bottom: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .forecast-row h3 {
   font-family: "Montserrat", sans-serif;
-  font-size: 16px;
-  color: #333;
+  font-weight: 400;
+  font-size: 21px;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.forecast-row h3:last-child {
+  margin-right: 0;
+}
+
+/* Adds a dotted underline to weekdays */
+.forecast-row::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 2px;
+  background-image: linear-gradient(
+    to right,
+    var(--underline-color) 33%,
+    rgba(255, 255, 255, 0) 0%
+  );
+  background-position: bottom;
+  background-size: 2px 1px;
+  background-repeat: repeat-x;
+}
+
+/* Hide underline for the last weekday */
+.forecast-row:last-child::after {
+  display: none;
+}
+
+/* Styling based on weather condition */
+body.clear {
+  background-color: #f7e9b9;
+  color: #2a5510;
+  --underline-color: #2a5510;
+}
+
+body.cloud {
+  background-color: #f4f7f8;
+  color: #f47775;
+  --underline-color: #f47775;
+}
+
+body.rain {
+  background-color: #bde8fa;
+  color: #164a68;
+  --underline-color: #164a68;
+}
+
+body.snow {
+  background-color: #ffffff;
+  color: #6a92c1;
+  --underline-color: #6a92c1;
+}
+
+body.default {
+  background-color: #f8deff;
+  color: #402b4a;
+  --underline-color: #402b4a;
 }
