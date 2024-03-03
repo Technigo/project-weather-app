@@ -1,6 +1,6 @@
 # Weather App
 
-Build an app for a weather forcast by API.
+https://weather-app-lr.netlify.app/
 
 ## The problem
 
