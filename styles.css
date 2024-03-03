@@ -1,0 +1,64 @@
+body {
+    font-family: "Montserrat";
+    margin: 20px;
+  }
+
+#weatherToday {
+    font-size: 20px;
+}
+
+p {
+    margin: 0;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+#message {
+    padding-top: 50px;
+    padding-bottom: 30px;
+}
+
+#weeklyForecast {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: dotted;
+}
+
+#weeklyForecast img {
+    height: 20px;
+}
+
+#error {
+    color: red;
+}
+
+@media (min-width: 667px) and (max-width: 1024px) {
+    body {
+        margin: 40px;
+    }
+
+    h1 {
+        font-size: 50px;
+    }
+
+    p {
+        font-size: 30px;
+    }
+    
+    #weeklyForecast {
+        padding: 30px;
+    }
+
+    #weeklyForecast img {
+        height: 40px;
+    }
+}
+
+@media (min-width: 1025px) {
+    #weeklyForecast img {
+        height: 40px;
+    }
+}
