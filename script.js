@@ -4,13 +4,14 @@
  const searchForCityText = document.getElementById("searchForCityText");
  const weatherContainer = document.getElementById("weatherContainer");
  const weatherForecastContainer = document.getElementById("weatherForecastContainer");
+ const fullContainer = document.getElementById("fullContainer");
  const textContainer = document.getElementById("textContainer");
  const icon = document.getElementById("icon");
- const sunContainer = document.getElementById("sunContainer");
- const fullContainer = document.getElementById("fullContainer");
- 
+ const sunrise = document.getElementById("sunrise");
+ const sunset = document.getElementById("sunset");
 
-const city = "Palma";
+
+const city = "Kristiansand";
 const base_URL = "https://api.openweathermap.org/data/2.5/weather?";
 const API_Key = "a27f07476fdacc3ee7dc03fc0b7264ed";
 const units = "metric";
@@ -25,21 +26,21 @@ const sunnyWeather = () => {
 // Update text and image depending on weather
 const sunny = () => {
   icon.src = "./design/design2/icons/noun_Sunglasses_2055147.svg";
-  fullContainer.style.backgroundColor = "#F7E9B9";
+  document.documentElement.style.backgroundColor = "#F7E9B9";
   textContainer.innerHTML = `Get your sunnies on. ${city} is looking rather great today.`;
   fullContainer.style.color = "#2A5510";
 }
 
 const rainy = () => {
   icon.src = "./design/design2/icons/noun_Umbrella_2030530.svg";
-  fullContainer.style.backgroundColor = "#BDE8FA";
+  document.documentElement.style.backgroundColor = "#BDE8FA";
   textContainer.innerHTML = `Don't forget your umbrella. It's wet in ${city} today.`
   fullContainer.style.color = "#164A68";
 }
 
 const cloudy = () => {
   icon.src = "./design/design2/icons/noun_Cloud_1188486.svg";
-  fullContainer.style.backgroundColor = "#F4F7F8";
+  document.documentElement.style.backgroundColor = "#F4F7F8";
   textContainer.innerHTML = `Light a fire and get cozy. ${city} is looking grey today.`
   fullContainer.style.color = "#F47775";
 }
@@ -82,11 +83,12 @@ fetch(URL)
 
 
 // Fill the content in the HTML elements
-weatherContainer.textContent = `${degrees}°C ${weatherDescription}`;
+weatherContainer.textContent = `${weatherDescription} | ${degrees}°C`;
 
 // Fill in the sunset and sunrise in the HTML element. 
 
-sunContainer.textContent = `Sunrise ${sunriseTime} Sunset ${sunsetTime}`;
+sunrise.textContent = `Sunrise ${sunriseTime}`;
+sunset.textContent =`Sunset ${sunsetTime}`;
 
 // Choose function for display looks based on description
 
@@ -95,7 +97,7 @@ if (weatherDescription.includes("clear sky")) {
   } else if (weatherDescription.includes("broken clouds") || weatherDescription.includes("scattered clouds") || weatherDescription.includes("few clouds") || weatherDescription.includes("mist")) {
   cloudy();
   } else {
-  rainy;
+  rainy();
   }
 
   })
@@ -121,7 +123,7 @@ const fetchForecast = (city) => {
   daytimeWeather.dt_txt.includes("12:00")
   );
 
-  let forecastHTML = " ";
+  let number = 1
 
   filteredTime.forEach((day) => {
     const date = new Date(day.dt * 1000);
@@ -131,13 +133,15 @@ const fetchForecast = (city) => {
 
     console.log(nameOfDay, tempMin, tempMax);
 
-    forecastHTML += `${nameOfDay} ${tempMin}°C / ${tempMax}°C<br>`;
+    document.getElementById(`day${number}`).innerHTML = `${nameOfDay}`;
+    document.getElementById(`dayTemp${number}`).innerHTML = `${tempMin}°C / ${tempMax}°C\n`;
+    number++;
+    console.log(`day${number}`)
 
   });
-
-  weatherForecastContainer.innerHTML = forecastHTML;
-
+ 
   })
+
   .catch((error) => {
     console.error("Error fetching forecast: ", error);
   });

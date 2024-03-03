@@ -5,24 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather-app</title>
     <link rel="stylesheet" href="/styles.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&display=swap" rel="stylesheet">
 </head>
 <body>
-<section class="full-container" id="fullContainer">
+    <section id="fullContainer">
+        <section class="top-info">
+            <div class="weather-container" id="weatherContainer"></div>
+            <div class="sun-container">
+            <div class="sunrise" id="sunrise"></div>
+            <div class="sunset" id="sunset"></div>
+            </div>
+        </section>
 
-    <section class="top-info">
-        <div class="weather-container" id="weatherContainer"></div>
-        <div class="sun-container" id="sunContainer"></div>
+        <section class="middle-text">
+            <img src="" class="icon" id="icon">
+            <div class="text-container" id="textContainer"></div>
+        </section>
+
+        <section class="forecast">
+            <div class="firstDay" id="firstDayId">
+                <p class="day-1" id="day1"></p>
+                <p class="dayTemp-1" id="dayTemp1"></p>
+            </div>
+            <div class="secondDay" id="secondDayId">
+                <p class="day-2" id="day2"></p>
+                <p class="dayTemp-2" id="dayTemp2"></p>
+            </div>
+            <div class="thirdDay" id="thirdDayId">
+                <p class="day-3" id="day3"></p>
+                <p class="dayTemp-3" id="dayTemp3"></p>
+            </div>
+            <div class="fourthDay" id="fourthDayId">
+                <p class="day-4" id="day4"></p>
+                <p class="dayTemp-4" id="dayTemp4"></p>
+            </div>
+            <div class="fifthDay" id="fifthDayId">
+                <p class="day-5" id="day5"></p>
+                <p class="dayTemp-5" id="dayTemp5"></p>
+            </div>
     </section>
-
-    <section class="middle-text">
-        <img src="" class="icon" id="icon">
-        <div class="text-container" id="textContainer"></div>
-    </section>
-
-    <section class="forecast">
-        <div class="weather-forecast-container" id="weatherForecastContainer" ></div>
-    </section>
-
     <script src="/script.js"></script>
 
 </section>

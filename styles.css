@@ -1,4 +1,78 @@
 
-body {
+* {
+    font-family: "Montserrat";
+    margin: 0;
+}
+
+.weather-container {
+    
+    font-size: 21px;
+    padding-top: 50px;
+    margin: 0px 0 0 20px;
+}
+
+.sun-container {
+    font-size: 21px;
+    margin: 15px 0 50px 20px;
+}
+
+img {
+    margin-left: 20px;
+}
+
+.text-container {
+    font-size: 37px;
+    font-weight: 700;
+    margin: 10px 40px 30px 20px;
 
 }
+
+body {
+    margin: 0;
+}
+
+.forecast {
+    display: flex;
+    flex-direction: column;
+}
+
+.firstDay,
+.secondDay,
+.thirdDay,
+.fourthDay,
+.fifthDay {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 40px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px dotted grey;
+}
+
+.weather-forecast-container {
+    font-size: 21px;
+    margin-left: 20px;
+}
+
+@media (min-width: 650px) {
+    body {
+        margin: 0 50px;
+    }
+}
+
+@media (min-width: 900px) {
+    body {
+        margin: 0 100px;
+    }
+}
+
+@media (min-width: 1300px) {
+    body {
+        margin: 0 200px;
+    }
+}
+
+
+
+      
+
+
