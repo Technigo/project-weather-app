@@ -9,7 +9,7 @@
 
 
 
-//HERE THE URL PUZZLE using template literals--------------------------------------------------------------------------------------------------------------------//
+//HERE THE URL PUZZLE using template literals-------------------------------------------------------------------------------------------------------------------//
 const BASE_URL = "https://api.openweathermap.org/data/2.5/"
 const API_KEY = "69cc94dd08e05801b495ee1b7a9cba03"
 const cityCountry = "Stockholm,Sweden"
@@ -21,7 +21,7 @@ const URL1 = `${BASE_URL}weather?q=${cityCountry}&units=metric&APPID=${API_KEY}`
 const URL2 =  `${BASE_URL}forecast?q=${cityCountry}&units=metric&APPID=${API_KEY}`
 
 
-//HERE TODAYS WEATHER INFORMATION FUNCTION -----------------------------------------------------------------------------------------------------------------//
+//HERE TODAYS WEATHER INFORMATION FUNCTION ---------------------------------------------------------------------------------------------------------------------//
 const updateHTML1 = (data) =>{
   
    //set main temperature
@@ -63,12 +63,12 @@ const updateHTML1 = (data) =>{
   console.log(data)
 } 
 
-//HERE TODAYS WEATHER FORECAST FUNCTION -----------------------------------------------------------------------------------------------------------------//
+//HERE TODAYS WEATHER FORECAST FUNCTION ----------------------------------------------------------------------------------------------------------------------//
 // const updateHTML2 =()=>{
 
 // }
 
-//HERE FEATURE TODAYS WEATHER, MOTHER FETCH 1 ----------------------------------------------------------------------------------------------------//
+//HERE FEATURE TODAYS WEATHER, MOTHER FETCH 1 ----------------------------------------------------------------------------------------------------------------//
 const fetchWeaterData = () =>{
   fetch(URL1)
     .then(response=>response.json())
@@ -84,11 +84,11 @@ fetchWeaterData()
 //HERE FEATURE WEATHER FORECAST, MOTHER FETCH 2 --------------------------------------------------------------------------------------------------------------//
 const fetchWeatherForecast = () =>{
   fetch(URL2)
-    .then(response=>response.json())
+  .then(response=>response.json())
     .then((data) => {
     const selectForecast = document.getElementById("forecast"); // forecast is an HTML id
     const filterMiddayArray = data.list.filter(item => item.dt_txt.includes("12:00"));
-      console.log(filterMiddayArray)
+    console.log(filterMiddayArray)
     filterMiddayArray.forEach((item) => {
       // Get the day of the week
       const timestamp = item.dt;
@@ -98,10 +98,10 @@ const fetchWeatherForecast = () =>{
       // console.log(date)
       const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
       const dayOfWeekString = daysOfWeek[dayOfWeek];
-
+      
       // Get the weather icon
       const weatherIcon = item.weather[0].icon;
-
+      
       // Get the max and min temperature
       const maxTemp = item.main.temp_max;
       // console.log(maxTemp)
@@ -109,28 +109,52 @@ const fetchWeatherForecast = () =>{
       const minTemp = item.main.temp_min;
       // console.log(minTemp)
       const roundMinTemp = Math.round(minTemp * 10)/10 //this to round to one decimal
-
+      
       // Construct the HTML content for each forecast item
       const forecastHTML = `
-        <div class="forecast-day">
-          <label>${dayOfWeekString}</label>
-          <div class="forecast-day-right">
-            <img src="https://openweathermap.org/img/wn/${weatherIcon}.png"></img>
-            <i>${roundMaxTemp} / ${roundMinTemp} °C</i>
-          </div>
-        </div>`;
+      <div class="forecast-day">
+      <label>${dayOfWeekString}</label>
+      <div class="forecast-day-right">
+      <img src="https://openweathermap.org/img/wn/${weatherIcon}.png"></img>
+      <i>${roundMaxTemp} / ${roundMinTemp} °C</i>
+      </div>
+      </div>`;
       
       // Append the HTML content to the forecast element
       selectForecast.innerHTML += forecastHTML;
     });
-
+    
   })
   .catch((error) => {
     console.error(`Error fetching weather forecast data:`, error);
   })
-;}
+  ;}
+  
+  fetchWeatherForecast()
+  
 
-fetchWeatherForecast()
+//DOM selectors-------------------------------------------------------------------------------------------------------------------------------------------------//
+const selectButton = document.getElementById("containerBtn")
+const selectArrow = document.getElementById("arrow")
+const selectBackgroundCircle = document.getElementById("backgroundCircle")
 
+//HERE BUTTON AND FALLING DOWN HEADER BACKGROUND ------------------------------------------------------------------------------------------------------------//
+let isOpen = false //initial state
+
+const dropdownForecast =()=>{
+  isOpen = !isOpen
+
+  if (isOpen){
+    selectArrow.style.borderWidth = "0 6px 6px 0"
+    selectBackgroundCircle.style.transform = "translate(-50%, -99%)"
+    selectButton.style.top = "43%"
+  } else {
+    selectArrow.style.borderWidth = "6px 0 0 6px"
+    selectBackgroundCircle.style.transform = "translate(-50%, -50%)"
+    selectButton.style.top = "80%"
+  }
+}
+
+selectButton.addEventListener("click", dropdownForecast)
 
 //https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20
