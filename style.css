@@ -1,0 +1,57 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Montserrat;
+}
+
+body {
+  border: 1px solid #707070;
+  margin: 5px;
+  padding: 20px;
+}
+
+p {
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 25.6px;
+}
+
+.todays-weather {
+  margin-bottom: 5px;
+}
+
+.weather-message-box {
+  margin-top: 40px;
+}
+
+.clear {
+  background-color: #f7e9b9;
+  color: #2a5510;
+}
+
+.clouds {
+  background-color: #f4f7f8;
+  color: #546263;
+}
+
+.rain {
+  background-color: #bde8fa;
+  color: #164a68;
+}
+
+.snow {
+  background-color: #fff;
+  color: #164a68;
+}
+
+.thunder {
+  background-color: #4b5758;
+  color: #ead40b;
+}
+
+.weather-icon {
+  height: 90px;
+  width: 90px;
+  margin-bottom: 10px;
+}

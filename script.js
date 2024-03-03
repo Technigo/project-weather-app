@@ -2,8 +2,9 @@
 
 const todaysWeatherBox = document.getElementById("todaysWeather");
 const sunsetSunriseBox = document.getElementById("sunsetSunrise");
-const messageBox = document.getElementById("weatherMessageBox");
+const weatherMessageBox = document.getElementById("weatherMessageBox");
 const weatherForecastBox = document.getElementById("weatherForecastBox");
+const weatherDesign = document.getElementById("weatherDesign");
 
 /////////////////////////-----Global variables----////////////////////////////
 
@@ -33,6 +34,7 @@ const fetchTodaysWeather = () => {
     const weatherCondition = weatherData.weather[0].description;
     const todaysTemperature = weatherData.main.temp.toFixed(1);
     showsTodaysWeather(weatherCondition, todaysTemperature);
+    weatherMessage(weatherData);
     console.log(weatherData);
   });
 };
@@ -75,7 +77,7 @@ const fetchForecastData = () => {
   });
 };
 
-//----------functions that change the presentation or filters the data----------//
+//----------functions that filters or change the format of the data----------//
 
 // converts the dates to the name of the weekday in abbreviation
 const getWeekdayName = (dates) => {
@@ -114,7 +116,62 @@ const filterOutTodaysData = (forecastData) => {
 
 // presents todays weather description and temperature
 const showsTodaysWeather = (weatherCondition, todaysTemperature) => {
-  todaysWeatherBox.innerHTML += `${weatherCondition} | ${todaysTemperature}&deg`;
+  todaysWeatherBox.innerHTML += `<p>${weatherCondition} | ${todaysTemperature}&deg</p>`;
+};
+
+// calls a function to run the appropiate weather design
+const weatherMessage = (weatherData) => {
+  const weatherType = weatherData.weather[0].main;
+
+  if (weatherType === "Clear") {
+    setClearDesign();
+  } else if (weatherType === "Clouds") {
+    setCloudyDesign();
+  } else if (weatherType === "Rain" || weatherType === "Drizzle") {
+    setRainyDesign();
+  } else if (weatherType === "Snow") {
+    setSnowyDesign();
+  } else if (weatherType === "Thunderstorm") {
+    setThunderDesign();
+  } else {
+    setFogDesign();
+  }
+};
+
+// calls this design and message when clear weather
+const setClearDesign = () => {
+  weatherDesign.className = "clear";
+  weatherMessageBox.innerHTML = `<img class="weather-icon" src="assets/sun.png" alt="sunny weather icon"> <h2>${city} <br> is shining today.</h2>`;
+};
+
+// calls this design and message when cloudy weather
+const setCloudyDesign = () => {
+  weatherDesign.className = "clouds";
+  weatherMessageBox.innerHTML = `<img class="weather-icon" src="assets/cloud.png" alt="cloud weather icon" /> <h2>${city} <br> is looking grey today.</h2>`;
+};
+
+// calls this design and message when rainy weather
+const setRainyDesign = () => {
+  weatherDesign.className = "rain";
+  weatherMessageBox.innerHTML = `<img class="weather-icon" src="assets/rain.png" alt="rain weather icon" /> <h2>${city} <br> is wet today.</h2>`;
+};
+
+//calls this design and message when snowy weather
+const setSnowyDesign = () => {
+  weatherDesign.className = "snow";
+  weatherMessageBox.innerHTML = `<img class="weather-icon" src="assets/snow.png" alt="snow weather icon" /> <h2>${city} <br> is turning into a winter wonderland.</h2>`;
+};
+
+// calls this design an message when thunderstorm
+const setThunderDesign = () => {
+  weatherDesign.className = "thunder";
+  weatherMessageBox.innerHTML = `<img class="weather-icon" src="assets/thunder.png" alt="lightning weather icon" /> <h2>${city}<br> is electric today.</h2>`;
+};
+
+// calls this design and message when the weather is none of above
+const setFogDesign = () => {
+  weatherDesign.className = "clouds";
+  weatherMessageBox.innerHTML = `<img class="weather-icon" src="assets/fog.png" alt="fog weather icon" /><h2>${city} <br> has limited vision today, stay safe!</h2>`;
 };
 
 // presents the sunrise and sunset time
