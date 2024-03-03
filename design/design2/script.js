@@ -78,7 +78,7 @@ const formatTime = (seconds) => {
 ///////// Function to update prompt section /////////
 
 const updatePrompt = (currentWeatherData) => {
-  switch ("Snow") {
+  switch (currentWeatherData.weather[0].main) {
     case "Clear":
       icon.setAttribute("src", "./icons/noun_Sunglasses_2055147.svg");
       icon.setAttribute("alt", "Sunglasses");
