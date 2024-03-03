@@ -76,6 +76,16 @@ td {
   color: #2a5510;
 }
 
+.snow {
+  background-color: #edf6fd;
+  color: #149bcc;
+}
+
+.thunderstorm {
+  background-color: #d9c8e4;
+  color: #4b2f60;
+}
+
 .error {
   position: absolute;
 }

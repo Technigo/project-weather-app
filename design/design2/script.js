@@ -11,20 +11,31 @@ const forecastTable = document.getElementById("forecast-table");
 const MY_API_KEY = "31320abec19306a046f96f4c46f01157";
 const BASE_URL = "https://api.openweathermap.org/data/2.5";
 
-// // bergen
+// // Bergen rain
 // const coordinates = {
 //   lat: 60.39299,
 //   lon: 5.32415,
 // };
 // Tripoli
-const coordinates = {
-  lat: 32.885353,
-  lon: 13.180161,
-};
-// Göteborg
 // const coordinates = {
-//   lat: 57.721595,
-//   lon: 12.0253,
+//   lat: 32.885353,
+//   lon: 13.180161,
+// };
+// Göteborg
+const coordinates = {
+  lat: 57.721595,
+  lon: 12.0253,
+};
+// Usseglio snow
+// const coordinates = {
+//   lat: 45.23274,
+//   lon: 7.21993,
+// };
+
+// // Ciampino thunderstorm
+// const coordinates = {
+//   lat: 32.563,
+//   lon: -98.802,
 // };
 
 const city = "Göteborg";
@@ -74,17 +85,25 @@ const updatePrompt = (currentWeatherData) => {
       promptText.innerHTML = `Get your sunnies on. ${city} is looking rather great today.`;
       document.body.className = "clear";
       break;
-    case "Clouds":
+    case "Clouds" || "Atmosphere":
       icon.setAttribute("src", "./icons/noun_Cloud_1188486.svg");
       icon.setAttribute("alt", "Cloud");
       promptText.innerHTML = `Light a fire and get cosy. ${city} is looking grey today.`;
       document.body.className = "clouds";
       break;
-    case "Rain":
+    case "Rain" || "Drizzle":
       icon.setAttribute("src", "./icons/noun_Umbrella_2030530.svg");
       icon.setAttribute("alt", "Umbrella");
       promptText.innerHTML = `Don't forget your umbrella. It's wet in ${city} today.`;
       document.body.className = "rain";
+      break;
+    case "Snow":
+      promptText.innerHTML = `Slide right into your slippers. It's snowing in ${city} today.`;
+      document.body.className = "snow";
+      break;
+    case "Thunderstorm":
+      promptText.innerHTML = `Light your candles. A thunderstorm is rolling in over ${city} today.`;
+      document.body.className = "thunderstorm";
       break;
     default:
       icon.removeAttribute("src");
