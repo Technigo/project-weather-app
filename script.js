@@ -12,7 +12,7 @@ document.head.appendChild(styleElement)
 const BASE_URL1= 'https://api.openweathermap.org/data/2.5/weather'
 const BASE_URL2 = 'https://api.openweathermap.org/data/2.5/forecast'
 const API_KEY = '0a3f5beba05e6db2d5da18ddf3283c92'
-const city = 'Helsinki,Finland'
+const city = 'Shanghai,China'
 const URL1 = `${BASE_URL1}?q=${city}&units=metric&appid=${API_KEY}`
 const URL2 = `${BASE_URL2}?q=${city}&units=metric&appid=${API_KEY}`
 
@@ -90,6 +90,8 @@ const remindTestCityName = (param) => {
     }  
 }
 
+
+
 // weather-forecast-feature
 // fetch ('https://api.openweathermap.org/data/2.5/forecast?q=Helsinki,Finland&units=metric&appid=0a3f5beba05e6db2d5da18ddf3283c92')
 
@@ -103,6 +105,7 @@ const forecast = () => {
         filteredTime = [...data.list].filter(day => {
         return day.dt_txt.endsWith('12:00:00')
         }) 
+        console.log(filteredTime)
         
         // console.log(new Date(filteredTime[0].dt*1000).toLocaleDateString('en-US', {weekday:'short'})) --> Fri 
         //convert each day to a short name. print weather for next 4 days
@@ -113,12 +116,14 @@ const forecast = () => {
             currentDay = currentDate.toLocaleDateString('en-US', {weekday:'short'})    
             console.log (currentDay) 
 
-            const fiveDaysWeather = Math.round(day.main.temp)
+            // const fiveDaysWeather = Math.round(day.main.temp)
+            const lowestTemp = Math.round(day.main.temp_min)
+            const hightestTemp = Math.round(day.main.temp_max)
         
             fiveDaysTemperature.innerHTML += `
             <li>
             <span>${currentDay}</span>
-            <span>${fiveDaysWeather}°</span>
+            <span>${lowestTemp}° / ${hightestTemp}°</span>
             </li><hr>`
             styleElement.sheet.insertRule('li {list-style-type: none}')
             }) 
