@@ -59,18 +59,26 @@ const fetchForecast = (url) => {
     .catch((error) => (weatherForecastBox.innerHTML = "<p>oops .. something went wrong</p>"));
 };
 
-// fetches the forecast dates at 12:00
+// fetches the forecast day and temperature at 12:00
 const fetchForecastData = () => {
   fetchForecast(forecastURL).then((forecastData) => {
     const filteredForecastData = forecastData.list.filter((infoForTheDay) => infoForTheDay.dt_txt.includes("12:00:00"));
     forecastWeather = filteredForecastData.map((item) => {
-      const day = item.dt_txt.split(" ")[0];
+      const date = item.dt_txt;
+      const day = getWeekdayName(date);
       const temp = item.main.temp;
       return { day, temp };
     });
-
-    console.log(forecastWeather);
+    showForecastWeather(forecastWeather);
   });
+};
+
+//----------functions that change the presentation of the data----------//
+
+// converts the dates to the name of the weekday in abbreviation
+const getWeekdayName = (dates) => {
+  const day = new Date(dates);
+  return day.toLocaleDateString("en-US", { weekday: "short" });
 };
 
 //--------------functions that presents the fetched data---------------//
