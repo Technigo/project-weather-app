@@ -43,16 +43,16 @@ window.addEventListener("load", async () => {
 
 searchButton.addEventListener("click", function () {
   if (firstClick) {
-    firstClick = false; // Update flag to indicate the first click has occurred
-    return; // Exit the function without displaying the error message
+    firstClick = false; 
+    return; /
   }
-  // If the input field is empty and currently visible, hide it
+ 
   if (cityInput.value.trim() === "" && cityInput.style.display !== "none") {
     cityInput.style.display = "none";
   } else {
-    // Otherwise, toggle input visibility
+  
     if (cityInput.style.display === "none") {
-      cityInput.style.display = "inline-block"; // Or any other display value you want
+      cityInput.style.display = "inline-block"; 
     } else {
       cityInput.style.display = "none";
     }
