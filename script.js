@@ -151,5 +151,6 @@ const convertDay = (weekday) => {
 }
 
 
-fetchFiveDayForcast();
+
 fetchForcast();
+fetchFiveDayForcast();
