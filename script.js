@@ -6,12 +6,21 @@
  const weatherForecastContainer = document.getElementById("weatherForecastContainer");
  const sunContainer = document.getElementById("sunContainer");
 
-const city = "Palma de Mallorca, Spain";
+const city = "Palma";
 const base_URL = "https://api.openweathermap.org/data/2.5/weather?";
 const API_Key = "a27f07476fdacc3ee7dc03fc0b7264ed";
 const units = "metric";
 const baseForecast_URL = "https://api.openweathermap.org/data/2.5/forecast?"
 const forecast_URL = `${baseForecast_URL}q=${city}&units=${units}&APPID=${API_Key}`;
+
+// Create different styling for different weathers
+const sunnyWeather = () => {
+
+}
+
+
+
+
 
 // Fetch the API
 const fetchWeatherData = (city) => {
@@ -51,7 +60,7 @@ fetch(URL)
 
 
 // Fill the content in the HTML elements
-weatherContainer.textContent = `${degrees}°C ${cityName} ${weatherDescription}`;
+weatherContainer.textContent = `${degrees}°C ${weatherDescription}`;
 
 // Fill in the sunset and sunrise in the HTML element. 
 
