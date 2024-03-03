@@ -2,21 +2,39 @@
   margin: 0;
   padding: 0;
 }
+html {
+  height: 100%;
+}
 
 body {
   font-family: "Montserrat", sans-serif;
   padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 
 .today,
 .forecast {
   font-size: 21px;
   font-weight: 400;
+  border: #164a68 solid 1px;
+}
+
+.prompt {
+  border: #164a68 solid 1px;
+  padding-top: 20%;
 }
 
 #prompt-text {
   font-size: 37px;
   font-weight: 700;
+  padding-top: 15px;
 }
 
 table {
@@ -34,6 +52,13 @@ td {
 #forecast-icon {
   height: 30px;
   width: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#forecast-temp {
+  text-align: end;
 }
 
 .rain {
@@ -49,4 +74,8 @@ td {
 .clear {
   background-color: #f7e9b9;
   color: #2a5510;
+}
+
+.error {
+  position: absolute;
 }

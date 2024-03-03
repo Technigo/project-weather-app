@@ -11,10 +11,17 @@ const forecastTable = document.getElementById("forecast-table");
 const MY_API_KEY = "31320abec19306a046f96f4c46f01157";
 const BASE_URL = "https://api.openweathermap.org/data/2.5";
 
+// // bergen
+// const coordinates = {
+//   lat: 60.39299,
+//   lon: 5.32415,
+// };
+// Tripoli
 const coordinates = {
-  lat: 60.39299,
-  lon: 5.32415,
+  lat: 32.885353,
+  lon: 13.180161,
 };
+// Göteborg
 // const coordinates = {
 //   lat: 57.721595,
 //   lon: 12.0253,
@@ -113,7 +120,7 @@ const updateForecast = (filteredForecastList) => {
       <tr>
         <td>${weekday}</td>
         <td><img id="forecast-icon" src="${iconURL}"></td>
-        <td>${temp}°</td>
+        <td id="forecast-temp">${temp}°</td>
       </tr>`;
   });
 };
@@ -163,7 +170,7 @@ const getLastDateOfForecast = () => {
 getLastDateOfForecast();
 
 const getWeekday = (date) => {
-  const weekdayArr = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const weekdayArr = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
   const index = date.getDay();
   return weekdayArr[index];
 };
