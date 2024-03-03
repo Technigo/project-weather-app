@@ -182,7 +182,6 @@ const processWeatherAPIs = queryParam => {
           currentDayIndex,
           currentDate
         );
-        // turn off the loader before displaying data
         manipulateWeatherTable(weeklyWeather);
       });
     }
