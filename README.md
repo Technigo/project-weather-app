@@ -2,12 +2,12 @@
 
 Replace this readme with your own information about your project.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The task was to build a weather app fetching data from an API to show today's weather and temperature. I has a 5-day forecast, following specific design guidelines and ensuring responsiveness.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Fetching weather data from an API was a bit challenging, and I struggled with displaying only one decimal point and working with SVG images. Additionally, I faced difficulty in making my design work without using two separate links for weather and forecast data. If I had more time, I'd add more cities and enhancing the overall user experience.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://65e4a10bb5d5f1a6a7b807cb--fantastic-piroshki-f776a2.netlify.app/
