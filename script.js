@@ -1,6 +1,7 @@
 // API link and api-key
 const BASE_URL = "https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=44824c3e427da3f4fd991b8131d46347"
 const KEY = "44824c3e427da3f4fd991b8131d46347"
+const FORECAST_URL = "https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=44824c3e427da3f4fd991b8131d46347"
 
 //DOM-selectors
 const weatherInfo = document.getElementById("weatherInfo")
@@ -31,3 +32,28 @@ const fetchTodaysForecast = () => {
 
 }
 fetchTodaysForecast()
+
+//Function to get five days weater forecast
+
+const fetchFiveDayForecast = () => {
+    fetch(FORECAST_URL)
+        .then((response) => {
+            return response.json()
+        })
+        .then((data) => {
+            const longForecast = data.list.filter((day) =>
+                day.dt_txt.includes("13:00")
+            )
+            longForecast.forEach((day) => {
+                const weekdayName = new Date(day.dt * 1000)
+                const weatherTemperature = day.main.temp.toFixed()
+
+                weatherForecast.innerHTML += `
+            <div class="days">${new Date(weekdayName).toLocaleDateString("en", {
+                    weekday: "short",
+                })}</div>
+            <div class="temp">${weatherTemperature}°</div>`
+            })
+        })
+}
+fetchFiveDayForecast()
