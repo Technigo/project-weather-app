@@ -241,7 +241,7 @@ header > * {
 }
 
 /* Forecast section */
-#forecast-field {
+.forecast-field {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -337,7 +337,7 @@ tr:hover td:first-child {
     padding-top: 1rem;
   }
 
-  #forecast-field {
+  .forecast-field {
     margin-top: 3rem;
   }
 
@@ -389,7 +389,7 @@ tr:hover td:first-child {
     font-size: 6rem;
   }
 
-  #forecast-field {
+  .forecast-field {
     margin-top: 6rem;
   }
 

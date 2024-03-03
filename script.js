@@ -136,7 +136,7 @@ const handleCurrentWeather = data => {
 };
 
 const manipulateWeatherTable = weeklyWeather => {
-  forecastField.className = "";
+  forecastField.classList.remove("hide");
   weatherForecast.innerHTML = "";
   weeklyWeather.forEach(weather => {
     weatherForecast.innerHTML += `<tr>
