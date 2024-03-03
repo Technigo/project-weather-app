@@ -9,19 +9,19 @@
 font-family: 'Montserrat', sans-serif;
 }
 /*pink version - cloudy*/
-body{
+.background-color .pink{
     background-color: var(--clr_bg_pink);
     color: var(--clr_text_pink); 
 }
 /* blue version - rain
-body{
+.background-color .blue{
     background-color: var(--clr_bg_blue);
     color: var(--clr_text_blue);
     
 }
 
 /* yellow/green version - sunny */
-/* body{
+/*.background-color .yellow{
     background-color: var(--clr_bg_yellow);
     color: var(--clr_text_green);
 
