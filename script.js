@@ -19,9 +19,8 @@ const todayWeather = document.getElementById("todayWeather");
 const allWeather = document.getElementById("allWeather");
 
 todayWeather.innerHTML +=`
-<section class="menu"></section>
 <img src="" id="logo" alt="logo">
-<section>
+<section class="text">
     <h1 class="temp" id="temp"></h1>
     <h3 class="location" id="location"></h3>
     <p class="clear" id="clear"></p>
@@ -32,6 +31,14 @@ todayWeather.innerHTML +=`
     <section class="arrow" id="arrow"></section>
 </section>
 `
+
+const weatherData={
+    sunny:'design/design1/assets/sun.svg',
+    moon:'design/design1/assets/moon.svg',
+    clear:'design/design1/assets/Group36.png',
+    cloudSun:'design/design1/assets/Group34.png',
+    cloud:'design/design1/assets/Group16.png'
+}
 
 const ShowTodayWeather =()=>{
     fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=bb3a8ca602b6560b4bf988de0be7f379")
@@ -47,8 +54,9 @@ const ShowTodayWeather =()=>{
        
         location.innerHTML = json.name
         temp.innerHTML = parseInt(json.main.temp)+"°C";
-        clear.innerHTML = json.weather[0].main
-
+        const description = json.weather[0].description;
+        clear.innerHTML = description[0].toUpperCase() + description.substring(1)
+        
         //Show the time for sunrise and sunset in a readable time format
         let sunRiseDate = new Date(json.sys.sunrise * 1000)
         let sunRiseTime = sunRiseDate.getHours() + ":" +sunRiseDate.getMinutes() 
@@ -57,6 +65,18 @@ const ShowTodayWeather =()=>{
         let sunSetDate = new Date(json.sys.sunset * 1000)
         let sunSetTime = sunSetDate.getHours() + ":" +sunSetDate.getMinutes()
         sunset.innerHTML =`sunset: `+sunSetTime
+
+        //show image of the weather condition
+        function showSunMoon(){
+            const imgElement=document.getElementById("logo");
+            const timeNow=Date.now();
+            if(timeNow<sunSetDate&&timeNow>=sunRiseDate){
+                imgElement.src=weatherData.sunny
+            } else{
+                imgElement.src=weatherData.moon
+            }    
+        }
+        showSunMoon()
     })
 }
 ShowTodayWeather()
@@ -85,57 +105,46 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
             let previousDay = -1
             let minTempPerDay = 1000
             let maxTempPerDay = -1000
-            // Result
-            // An example: 
-            // type MyTempArray = [
-            // {
-            //    day: 0,
-            //    min_temp: 3.6,
-            //    max_temp: 8.2,
-            //    weather: 'cloud'
-            // },
-            // {
-            //    day: 1,
-            //    min_temp: 2.6,
-            //    max_temp: 9.9,
-            //    weather: 'sun'
-            // }
-            // ]
             let myTempArray = []
+            const timeNow=new Date()
+            let timeCondition =timeNow.getHours()
+            console.log(timeCondition)
 
-            
             array.forEach(el => {
                 const myDate = new Date(el.dt * 1000)
                 const myDay = myDate.getDay()
+                const myHour = myDate.getHours()
                 const minTemp = el.main.temp_min
                 const maxTemp = el.main.temp_max
+                const myWeather = ''
+                
                 if(myDay!==previousDay){
                     minTempPerDay = minTemp
                     maxTempPerDay = maxTemp
                     const item = {
                         day: myDay,
+                        description: myWeather,  
                         min_temp: minTemp,
                         max_temp: maxTemp
                     }
                     myTempArray.push(item)
-                    previousDay = myDay              
+                    previousDay = myDay 
+                  
+                                 
                 } else {
                     // Compare the new minTemp with the minTempPerDay
                     if (minTemp < minTempPerDay){
                         minTempPerDay = minTemp
-
                         const foundItem = myTempArray.find(i => i.day === myDay)
                         foundItem.min_temp = minTemp
                     } 
                     if(maxTemp > maxTempPerDay){
                         maxTempPerDay = maxTemp
-
                         const foundItem = myTempArray.find(i => i.day === myDay)
                         foundItem.max_temp = maxTemp
-
                     }
-                    
-                } 
+                }
+             
             })
 
             console.log(myTempArray)
@@ -144,27 +153,28 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
                 allWeather.innerHTML+=`
                 <div id="dayWeather">
                     <div id="myDay">${dayNames[row.day]}</div>
-                    <div id="mySymbol">${row.weather}</div>   
+                    <img src="" id="mySymbol" alt="weather condition">  
                     <div id="myTemp">${row.min_temp} °C / ${row.max_temp} °C </div>   
                 </div>                  
             `  
-
-            }
-
-            )
-
-                
-            
-
-            
-
+            })
         }
         predictWeather();
     })
             
         
 
-
+    /*if(json.clouds.all<10){
+        const imgUrl2 = weatherData.sunny
+        imgElement.src = imgUrl2
+    } else if(json.clouds.all>=10&&json.clouds<50){
+        const imgUrl3 = weatherData.cloudSun
+        imgElement.src = imgUrl3
+        console.log(imgUrl3)
+    } else{
+        const imgUrl4 = weatherData.cloud
+        imgElement.src = imgUrl4
+    }*/
 
 
 
@@ -175,20 +185,15 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
 
 // Read the [endpoint documentation](https://openweathermap.org/forecast5 "endpoint documentation") for the forecast.
 
-// **Feature: Style it 🎨**  
-// Style it to look like one of the provided designs.
 
-// ## Requirements
-// - You should fetch data from the API using `fetch()` in JavaScript
-// - The app should have: city name, current temperature, weather description, sunrise/sunset time, 4-day forecast
-// - The presentation of the data should be in the specified format
+
+
+
 // - Make your app responsive (it should look good on devices from 320px width up to 1600px)
 // - Follow one of the designs as closely as you can
 // - Complete Step 1-2 in the main/master branch, and Step 3 in branches
-// - Follow the guidelines on [how to write good code](https://www.notion.so/Guidelines-for-how-to-write-good-code-59abdd4307a24f5ca7914d566326f4df?pvs=4 "how to write good code")
 
-// ## Stretch goals
-// So you’ve completed the requirements? Great job! Make sure you've committed and pushed a version of your project before starting on the stretch goals. Remember that the stretch goals are optional.
+
 
 // ### Intermediate Stretch Goals
 // **Feature: Styling warm/cold 🌞❄️**  
