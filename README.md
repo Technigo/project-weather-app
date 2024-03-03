@@ -1,7 +1,5 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
 The task was to build a weather app fetching data from an API to show today's weather and temperature. I has a 5-day forecast, following specific design guidelines and ensuring responsiveness.
 
 ## The problem
