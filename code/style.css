@@ -7,6 +7,7 @@ body {
     padding-left: 30px;
     padding-right: 30px;
 }
+
 /* Media query for screens bigger than 700px*/
 @media screen and (min-width: 700px) {
 body {
@@ -23,17 +24,14 @@ h4 {
     font-size: 23px;
     font-weight: 400;
     padding-bottom: 30px;
-    
 }
 
 #text {
     display: flex;
     font-size: 26px;
     max-width: 600px;
-    padding-right: 50px;
-    
+    padding-right: 50px;   
 }
-
 
 #forecastRow {
     display: flex;
