@@ -95,6 +95,12 @@ const showSunsetSunrise = (sunriseData, sunsetData) => {
     <p>sunset ${sunsetData}</p>`;
 };
 
+const showForecastWeather = (forecastWeather) => {
+  forecastWeather.forEach((forecast) => {
+    weatherForecastBox.innerHTML += `${forecast.day} ${forecast.temp}`;
+  });
+};
+
 //---------------------------function calls----------------------------//
 
 fetchTodaysWeather();
