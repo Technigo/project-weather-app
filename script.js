@@ -65,33 +65,36 @@ const getStyles = (currentStyle) => {
 }
 
 const fetchFiveDayForcast = () => {
-	fetch(fiveDayForcast).then(response => {
-		if (!response.ok) {
-			throw new Error('HTTP error! Status:${response.status}');
-		}
-		return response.json();
-	}
-	).then(weekData => {
-		const firstFilter = weekData.list.filter((time) => time.dt_txt.includes("12:00"));
-		let now = new Date()
-		now = now.toString()
-		now = now.slice(0, 3)
-		const filterOutToday = firstFilter.filter((time) => !time.dt_txt.includes(now));
+	fetch(fiveDayForcast)
+		.then(response => {
+			if (!response.ok) {
+				throw new Error('HTTP error! Status:${response.status}');
+			}
+			return response.json();
+		})
+		.then(weekData => {
+			const firstFilter = weekData.list.filter((time) => time.dt_txt.includes("12:00"));
+			const today = new Date().getDay(); // Get the current day of the week
+			const filterOutToday = firstFilter.filter((time) => {
+				const date = new Date(time.dt * 1000);
+				return date.getDay() !== today; // Filter out the current day's weather data
+			});
 
-		filterOutToday.forEach(d => {
-			const timestamp = d.dt
-			const forcast = document.querySelector(".forcast")
-			forcast.innerHTML += `
+			filterOutToday.forEach(d => {
+				const timestamp = d.dt
+				const forcast = document.querySelector(".forcast")
+				forcast.innerHTML += `
 			<div class ="lines ${updateStyle}">
 			<div class="day">${convertDay(weekday)}</div>
 			<div class="temp">${d.weather[0].description} | ${parseInt(d.main.temp).toFixed(1)}° | Feels like: ${parseInt(d.main.feels_like).toFixed(1)}°</div>
 			</div>`
-			convertTime(timestamp)
-		});
-	}
-	).catch(error => {
-		console.error('Error: ', error.message);
-	})
+				convertTime(timestamp)
+
+			});
+		}
+		).catch(error => {
+			console.error('Error: ', error.message);
+		})
 }
 fetchFiveDayForcast();
 

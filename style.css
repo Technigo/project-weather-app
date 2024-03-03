@@ -4,14 +4,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
-  overflow: hidden;
+
 }
 
-body {
+body,
+html {
+  height: 100%;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
 }
 
 :root {
@@ -22,33 +24,27 @@ body {
   --sunny-color: #2A5510;
   --sunny-bg-color: #F7E9B9;
 
-  --fs-1: clamp(1rem, 2.5vw, 2rem);
-  --fs-2: clamp(1.2rem, 2.5vw, 4rem);
-  --fs-3: clamp(2.5rem, 10vw, 2rem);
+  --fs-1: clamp(1rem, 0.2vw, 2rem);
+  --fs-2: clamp(1.2rem, 0.5vw, 4rem);
+  --fs-3: clamp(2.5rem, 4vw, 2rem);
 
   --pad-2: 2em;
-  --pad-1051: 1em 0em 5em 1em;
-  --pad-200_50: 2em 0em 0.5em 0em;
+  --pad-1051: 0.5em 0em 0em 1em;
+  --pad-200_50: 2em 0em 0.5em 2em;
   --pad-b-: 4.5em;
-  --height: 1.7em;
+  --height: 1em;
   --border-b: 0.2em;
 }
 
 main {
   padding: var(--pad-2);
-  box-sizing: border-box;
-  margin: 0;
-  height: 100%;
-  min-height: 100vh;
-
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
-.montserrat-title {
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
+
+
 
 .sunny {
   color: var(--sunny-color);
@@ -66,11 +62,13 @@ main {
 }
 
 .overview {
-  padding-bottom: var(--pad-b-);
   font-size: var(--fs-1);
   font-weight: 300;
-  font-family: 'montserrat-title';
 
+}
+
+.weathertip {
+  padding: 4em 0 2em 2em;
 }
 
 h1 {
@@ -83,12 +81,10 @@ h1 {
 #suggestion {
   max-width: 70vw;
   line-height: 1.5;
-  padding: var(--pad-1051);
+
 }
 
-#icon {
-  padding: var(--pad-200_50);
-}
+
 
 #icon.sunny {
   content: url(/design/design2/icons/noun_Sunglasses_2055147.svg)
@@ -108,7 +104,6 @@ h1 {
 
 .temp {
   grid-area: temp;
-  text-align: end;
   overflow: none;
   height: var(--height);
   justify-self: end;
@@ -148,4 +143,61 @@ h1 {
 #temp,
 #sunset:first-letter {
   text-transform: capitalize;
+}
+
+
+
+
+@media (min-width:220px)and (max-width: 780px) {
+
+
+  :root {
+    --fs-1: clamp(1.7rem, 2vw, 2.5rem);
+    --fs-2: clamp(2rem, 2.5vw, 3.5rem);
+    --fs-3: clamp(3.5rem, 4vw, 4.5rem);
+    --pad-1051: 1em 0em 1em 1em;
+    --pad-200_50: 2em 0em 0.5em 1em;
+    --pad-2: 1em;
+    --height: 0.7em;
+  }
+
+
+
+
+  main {
+    padding: var(--pad-2);
+  }
+
+  .weathertip {
+    padding-top: 2em;
+  }
+
+  .overview {
+    font-size: var(--fs-1)
+  }
+
+  h1 {
+    font-size: var(--fs-3);
+  }
+
+  #suggestion {
+    max-width: 90vw;
+
+  }
+
+  #icon {
+    padding: var(--pad-1051);
+
+
+  }
+
+  .forcast {
+    font-size: var(--fs-2);
+
+  }
+
+  day,
+  temp {
+    height: auto;
+  }
 }
