@@ -176,11 +176,13 @@ const fetchWeatherForecast = (cityName) => {
     })
     .then((json) => {
       //Extract today's index
-      const todayIndex = new Date(json.list[0].dt_txt).getDay()
+      //BUG FIX const todayIndex = new Date(json.list[0].dt_txt).getDay()
+      const currentDate = new Date()
+      const currentDayIndex = currentDate.getDay()
 
       //Filter out today's weather data
       const nextFiveDays = json.list.filter(
-        (element) => new Date(element.dt_txt).getDay() !== todayIndex
+        (element) => new Date(element.dt_txt).getDay() !== currentDayIndex
       )
 
       const fiveDayArray = []
@@ -228,17 +230,18 @@ const fetchWeatherForecast = (cityName) => {
 
       //Empty previous forecast
       forecastContainer.innerHTML = ""
-
+      console.log(fiveDayArray)
       //Render five-day forecast
       for (let i = 0; i < 5; i++) {
         const currentDay = fiveDayArray.slice(i * 4, (i + 1) * 4)
-        const weekDay =
-          currentDay[0].charAt(0).toUpperCase() + currentDay[0].slice(1)
-        const maxTemp = currentDay[1]
-        const minTemp = currentDay[2]
-        const icon = currentDay[3]
+        if (currentDay.length > 0) {
+          const weekDay =
+            currentDay[0].charAt(0).toUpperCase() + currentDay[0].slice(1)
+          const maxTemp = currentDay[1]
+          const minTemp = currentDay[2]
+          const icon = currentDay[3]
 
-        forecastContainer.innerHTML += `
+          forecastContainer.innerHTML += `
         <div class="day-container">
             <p class="forecast-day">${weekDay}</p>
               <img class="forecast-image" src="https://openweathermap.org/img/wn/${icon}@2x.png"
@@ -250,6 +253,7 @@ const fetchWeatherForecast = (cityName) => {
           </div>
           </div>
         `
+        }
       }
     })
     .catch((error) => {
