@@ -11,11 +11,11 @@ The main problem i encountered in the process was converting Unix time string in
 Additionaly, I tried to add in more icons and UI color theme to fit different weather conditions. 
 
 ## A tryout
-    - I used Javascript modules to load iconArr.js and script.js separately. So the js files are cleaner.
+* I used Javascript modules to load iconArr.js and script.js separately. So the js files are cleaner.
 
 ## Next Step
  
-    - responsice background image
+* responsice background image
 
 ## View it live
 https://yifan-weather-app.netlify.app/
