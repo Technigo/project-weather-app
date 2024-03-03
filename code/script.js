@@ -1,17 +1,17 @@
-
+// DOM connectors
 const today = document.getElementById ("today")
 const icon = document.getElementById ("icon")
 const sun = document.getElementById ("sun")
 const text = document.getElementById ("text")
 const week = document.getElementById ("week")
 
+// Function to fetch today's weather and sun data from an API
 const fetchToday = () => {
 fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=725ee441189d3e16a4e4aa74b081805e")
     .then((response) => {
        return response.json()
     })
     .then ((json) => {
-        console.log(json)
         // Variables for rounded temperature + sunrise and sunset calculations
         let temperatureRound = Math.round(json.main.temp)
         const sunrise = json.sys.sunrise
@@ -40,6 +40,7 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         </h4>`
         }
         
+        // If/else function to make sure the text, icon, background color and text color changes according to weather
         if (json.weather[0].main == "Clear"){
         icon.innerHTML = `<img src="assets/noun_Sunglasses_2055147.svg"/>`
         text.innerHTML = `<h2>Get your sunnies on. ${json.name} is looking rather great today. </h2>`
@@ -57,23 +58,24 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         text.innerHTML = `<h2>Light a fire and get cosy. ${json.name} is looking grey today. </h2>`
         document.body.style.backgroundColor = "#F4F7F8";
         document.body.style.color = "#F47775";
-    }})
+        }
+    })
 }
     
-
+// Function to fetch forecast from an API
 const fetchForecast = () => {
 fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=725ee441189d3e16a4e4aa74b081805e")
     .then((response) => {
         return response.json()
     })
     .then ((jsonForecast) => {
-        console.log(jsonForecast)
         jsonForecast.list.forEach ((forecast) => {
         displayForecast(forecast)
         })
     })
 }
 
+// Function to decide which number of the week represents what day
 const weekdayForecast = (dayNumber) => {
     switch (dayNumber){
         case 0:
@@ -104,20 +106,20 @@ const weekdayForecast = (dayNumber) => {
         weekday = "sat"
         break
     }
-    }
+}
 
-    
-    const displayForecast = (forecast) => {  
-        thisDay = new Date(forecast.dt*1000).getDay();
-        weekdayForecast(thisDay)
-        let forecastMaxRound = Math.round(forecast.main.temp_max)
-        const today = new Date().getDay()
-        midDayForecast = new Date(forecast.dt_txt)
-        if (today !== thisDay && midDayForecast.getHours() === 12){
-        week.innerHTML += `<div id=forecastRow><p>${weekday}</p><p>${forecastMaxRound} °C</p>`
-        } 
-   
-    }
+// Function to make sure the forecast shows the weather at noon, and always starts with tomorrow
+const displayForecast = (forecast) => {  
+    thisDay = new Date(forecast.dt*1000).getDay();
+    weekdayForecast(thisDay)
+    let forecastMaxRound = Math.round(forecast.main.temp_max)
+    const today = new Date().getDay()
+    midDayForecast = new Date(forecast.dt_txt)
+    if (today !== thisDay && midDayForecast.getHours() === 12){
+    week.innerHTML += `<div id=forecastRow><p>${weekday}</p><p>${forecastMaxRound} °C</p>`
+    } 
+}
 
+// Function loaders
 fetchToday()
 fetchForecast()
