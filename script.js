@@ -43,17 +43,31 @@ function displayWeatherInformation(data) {
   document.body.className = "";
   document.body.classList.add(condition.class);
 
+  // Apply the same class to specific elements for unified styling
+  const elementsToStyle = [
+    cityNameElement,
+    tempElement,
+    weatherDescriptionAndTempElement,
+    sunriseElement,
+    sunsetElement,
+    weatherMessageElement,
+  ];
+  elementsToStyle.forEach((el) => {
+    el.className = ""; // Reset existing classes
+    el.classList.add(condition.class); // Apply weather condition class
+  });
+
   // Texts on the webpage
   tempElement.textContent = `${condition.message} | ${data.main.temp.toFixed(
     0
-  )}°C`;
-  sunriseElement.textContent = `Sunrise ${formatTime(data.sys.sunrise)}`;
-  sunsetElement.textContent = `Sunset ${formatTime(data.sys.sunset)}`;
+  )}°`;
+  sunriseElement.textContent = `sunrise ${formatTime(data.sys.sunrise)}`;
+  sunsetElement.textContent = `sunset ${formatTime(data.sys.sunset)}`;
   // Display customized weather message
   displayWeatherMessage(condition, data.name);
 }
 
-// 3 common weather types
+// 3 common weather conditions
 const weatherConditions = {
   sunny: {
     id: 800,
@@ -117,19 +131,34 @@ function formatTime(unixTimestamp) {
 // Weather message
 function displayWeatherMessage(condition, cityName) {
   let detailedMessage;
+  let weatherIcon;
 
   switch (condition.message) {
     case "Sunny":
-      detailedMessage = `Get your sunnies on. ${cityName} is looking rather great today. `;
+      detailedMessage = `Get your sunnies on. ${cityName} is looking rather great today.`;
+      messageClass = "sunny";
+      weatherIcon = "./design/icons/icon-sunny.svg";
       break;
     case "Cloudy":
-      detailedMessage = `Light a fire and get cosy. ${cityName} is looking grey today. `;
+      detailedMessage = `Light a fire and get cosy. ${cityName} is looking grey today.`;
+      messageClass = "cloudy";
+      weatherIcon = "./design/icons/icon-cloudy.svg";
       break;
     case "Rainy":
-      detailedMessage = `Don’t forget your umbrella. It’s wet in ${cityName} today. `;
+      detailedMessage = `Don’t forget your umbrella. It’s wet in ${cityName} today.`;
+      messageClass = "rainy";
+      weatherIcon = "./design/icons/icon-rainy.svg";
       break;
     default:
       detailedMessage = `Weather in ${cityName} is unpredictable. Always be prepared!`;
+      weatherIcon = "./design/icons/icon-cloudy.svg";
+  }
+
+  const weatherIconElement = document.getElementById("weather-icon");
+  if (weatherIconElement) {
+    weatherIconElement.src = weatherIcon;
+  } else {
+    console.log("Weather icon element not found.");
   }
 
   const weatherMessageElement = document.getElementById("weather-message");
@@ -140,7 +169,7 @@ function displayWeatherMessage(condition, cityName) {
   }
 }
 
-// Search
+// Forecast
 // Fetch weather and forecast data for a specified city
 function fetchWeatherAndForecast(city) {
   getWeatherByCity(city);
@@ -157,25 +186,38 @@ function displayForecast(forecastData) {
 
   noonForecasts.forEach((forecast) => {
     const date = new Date(forecast.dt_txt);
-    const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
     const dayOfWeek = days[date.getDay()];
     const temp = forecast.main.temp_max.toFixed(0);
     const forecastElement = document.createElement("li");
-    forecastElement.textContent = `${dayOfWeek} ${temp}°C`;
+    forecastElement.classList.add("forecast-item");
+    const dayElement = document.createElement("span");
+    dayElement.classList.add("day");
+    dayElement.textContent = dayOfWeek;
+    forecastElement.appendChild(dayElement);
+
+    const tempElement = document.createElement("span");
+    tempElement.classList.add("temp");
+    tempElement.textContent = `${temp}°`;
+    forecastElement.appendChild(tempElement);
+
     forecastListElement.appendChild(forecastElement);
   });
 }
 
-// Event listener for the weather search button
-document.getElementById("getWeather").addEventListener("click", function () {
-  const city = document.getElementById("cityName").value.trim();
-  if (city) {
-    getWeatherByCity(city);
-  } else {
-    //Show alert if nothing was typed
-    alert("Please enter a city name.");
-  }
-});
+// Search
+document
+  .getElementById("search-form")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
+    const city = document.getElementById("cityName").value.trim();
+    if (city) {
+      getWeatherByCity(city);
+    } else {
+      // Show alert if nothing was typed
+      alert("Please enter a city name.");
+    }
+  });
 
 // Fetch weather data for the default city on load (refresh)
 fetchWeatherAndForecast(DEFAULT_CITY);

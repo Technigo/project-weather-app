@@ -13,16 +13,28 @@
     <title>Mai's Weather App</title>
   </head>
   <body>
-    <div id="weather">
-      <div id="weather-description-and-temp"></div>
-      <h2 id="city-name"></h2>
-      <p id="temp"></p>
-      <p id="sunrise"></p>
-      <p id="sunset"></p>
-      <p id="weather-message"></p>
-      <ul id="forecast-list"></ul>
-      <input type="text" id="cityName" placeholder="Enter city name">
-      <button id="getWeather">Search</button>
+    <div class="container">
+      <div id="weather">
+        <div id="weather-description-and-temp"></div>
+        <h2 id="city-name"></h2>
+        <p id="temp"></p>
+        <p id="sunrise"></p>
+        <p id="sunset"></p>
+        <img id="weather-icon" />
+        <p id="weather-message"></p>
+        <ul id="forecast-list"></ul>
+        <div class="search-container">
+          <form id="search-form">
+            <input
+              type="text"
+              id="cityName"
+              placeholder="Enter city name"
+              class="search-box"
+            />
+            <button id="getWeather" class="search-btn">Search</button>
+          </form>
+        </div>
+      </div>
     </div>
     <script src="script.js"></script>
   </body>

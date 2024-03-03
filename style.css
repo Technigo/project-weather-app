@@ -1,7 +1,148 @@
+:root {
+  --defaultbg: #fcfffc;
+  --defaultcolor: #3f7a3f;
+  --sunnybg: #f7e9b9;
+  --sunnycolor: #2a5510;
+  --cloudybg: #f4f7f8;
+  --cloudycolor: #f47775;
+  --rainybg: #bde8fa;
+  --rainycolor: #164a68;
+}
+
+* {
+  font-family: "Montserrat", sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
 body {
-  background: green;
+  background-color: var(--defaultbg);
+  color: var(--defaultcolor);
+  margin: 2.5rem;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+p {
+  margin: 0px;
+}
+
+#temp,
+#sunrise,
+#sunset {
+  font-size: 21px;
+  line-height: 26px;
+}
+
+#weather-icon {
+  margin-top: 50px;
+}
+
+#weather-message {
+  font-size: 37px;
+  font-weight: 700;
+  line-height: 45px;
+  margin: 20px 0;
+}
+
+#forecast-list {
+  list-style: none;
+  margin-bottom: 24px;
+  padding: 5px 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 100%;
+}
+
+.forecast-item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dotted var(--defaultcolor);
+  padding: 5px 10px;
+  font-size: 21px;
+}
+
+.forecast-item:last-child {
+  border-bottom: none;
+}
+
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 10px;
+}
+
+.search-box {
+  flex-grow: 1 1 auto;
+  padding: 10px;
+  border: 2px solid var(--defaultcolor);
+  margin-right: 10px;
+}
+
+.search-box:focus {
+  outline: none;
+}
+
+.search-btn {
+  background-color: var(--defaultcolor);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* 3 common weather conditions */
+.sunny {
+  --bg-color: var(--sunnybg);
+  --text-color: var(--sunnycolor);
 }
 
 .cloudy {
-  background: gray;
+  --bg-color: var(--cloudybg);
+  --text-color: var(--cloudycolor);
+}
+
+.rainy {
+  --bg-color: var(--rainybg);
+  --text-color: var(--rainycolor);
+}
+
+body.sunny,
+body.cloudy,
+body.rainy {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.forecast-item {
+  border-color: var(--text-color);
+}
+
+.search-box,
+.search-btn {
+  border-color: var(--text-color);
+}
+
+.search-btn {
+  background-color: var(--text-color);
+  color: #fff;
+}
+
+/* Tablet and Desktop */
+@media (min-width: 768px) {
+  .container {
+    max-width: 400px;
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    max-width: 600px;
+  }
 }
