@@ -71,7 +71,7 @@ function displayWeatherInformation(data) {
     timezoneOffset
   )}`;
   // Display customized weather message
-  displayWeatherMessage(condition, data.name);
+  displayWeatherMessage(condition, data.name, weather);
 }
 
 // 3 common weather conditions
@@ -138,10 +138,13 @@ function formatTime(unixTimestamp, timezoneOffsetInSeconds) {
 }
 
 // Weather message
-function displayWeatherMessage(condition, cityName) {
+function displayWeatherMessage(condition, cityName, weather) {
   let detailedMessage;
   let weatherIcon;
-
+  let weatherDescription = weather.description;
+  console.log(
+    condition
+  )
   switch (condition.message) {
     case "Sunny":
       detailedMessage = `Get your sunnies on. ${cityName} is looking rather great today.`;
@@ -159,8 +162,8 @@ function displayWeatherMessage(condition, cityName) {
       weatherIcon = "./design/icons/icon-rainy.svg";
       break;
     default:
-      detailedMessage = `Weather in ${cityName} is unpredictable. Always be prepared!`;
-      weatherIcon = "./design/icons/icon-default.svg";
+      detailedMessage = `Weather in ${cityName} is ${weatherDescription}. `;
+      weatherIcon = "./design/icons/icon-defalut.svg";
   }
 
   const weatherIconElement = document.getElementById("weather-icon");

@@ -37,6 +37,7 @@ p {
 }
 
 #weather-icon {
+  color: var(--defaultcolor);
   margin-top: 50px;
 }
 
@@ -88,7 +89,6 @@ p {
 
 .search-btn {
   background-color: var(--defaultcolor);
-  color: #fff;
   padding: 10px 20px;
   border: none;
   cursor: pointer;
@@ -129,7 +129,6 @@ body.rainy {
 
 .search-btn {
   background-color: var(--text-color);
-  color: #fff;
 }
 
 /* Tablet and Desktop */
