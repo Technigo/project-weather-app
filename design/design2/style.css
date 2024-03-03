@@ -17,17 +17,17 @@ body {
   bottom: 0;
   right: 0;
   left: 0;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .today,
 .forecast {
   font-size: 21px;
   font-weight: 400;
-  border: #164a68 solid 1px;
 }
 
 .prompt {
-  border: #164a68 solid 1px;
   padding-top: 20%;
 }
 
@@ -78,4 +78,44 @@ td {
 
 .error {
   position: absolute;
+}
+
+/* --- MEDIA QUERIES -------------------------------------- */
+
+/* --- TABLET --- */
+
+@media (min-width: 600px) {
+  .prompt {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding-top: 0;
+  }
+
+  #prompt-text {
+    display: inline-block;
+    grid-column-start: 1;
+    justify-self: end;
+    padding: 0;
+  }
+
+  .prompt img {
+    grid-column-start: 2;
+    grid-row-start: 1;
+    width: 80%;
+    padding: 10%;
+    max-width: 400px;
+  }
+}
+
+/* --- DESKTOP --- */
+
+@media (min-width: 900px) {
+  #prompt-text {
+    font-size: 45px;
+    margin: auto;
+  }
+
+  td {
+    padding: 10px;
+  }
 }
