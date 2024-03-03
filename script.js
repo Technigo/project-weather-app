@@ -7,8 +7,10 @@
  const textContainer = document.getElementById("textContainer");
  const icon = document.getElementById("icon");
  const sunContainer = document.getElementById("sunContainer");
+ const fullContainer = document.getElementById("fullContainer");
  
-const city = "Palma de Mallorca";
+
+const city = "Palma";
 const base_URL = "https://api.openweathermap.org/data/2.5/weather?";
 const API_Key = "a27f07476fdacc3ee7dc03fc0b7264ed";
 const units = "metric";
@@ -22,22 +24,25 @@ const sunnyWeather = () => {
 
 // Update text and image depending on weather
 const sunny = () => {
+  icon.src = "./design/design2/icons/noun_Sunglasses_2055147.svg";
+  fullContainer.style.backgroundColor = "#F7E9B9";
   textContainer.innerHTML = `Get your sunnies on. ${city} is looking rather great today.`;
+  fullContainer.style.color = "#2A5510";
 }
 
-sunny();
-
 const rainy = () => {
-  
+  icon.src = "./design/design2/icons/noun_Umbrella_2030530.svg";
+  fullContainer.style.backgroundColor = "#BDE8FA";
   textContainer.innerHTML = `Don't forget your umbrella. It's wet in ${city} today.`
+  fullContainer.style.color = "#164A68";
 }
 
 const cloudy = () => {
-
+  icon.src = "./design/design2/icons/noun_Cloud_1188486.svg";
+  fullContainer.style.backgroundColor = "#F4F7F8";
   textContainer.innerHTML = `Light a fire and get cozy. ${city} is looking grey today.`
+  fullContainer.style.color = "#F47775";
 }
-
-
 
 // Fetch the API
 const fetchWeatherData = (city) => {
@@ -83,11 +88,20 @@ weatherContainer.textContent = `${degrees}°C ${weatherDescription}`;
 
 sunContainer.textContent = `Sunrise ${sunriseTime} Sunset ${sunsetTime}`;
 
-   })
+// Choose function for display looks based on description
 
+if (weatherDescription.includes("clear sky")) {
+  sunny();
+  } else if (weatherDescription.includes("broken clouds") || weatherDescription.includes("scattered clouds") || weatherDescription.includes("few clouds") || weatherDescription.includes("mist")) {
+  cloudy();
+  } else {
+  rainy;
+  }
+
+  })
    .catch((error) => {
     console.error("Error fetching data:", error);
-   })
+   });
   };
 
 // Example of city
