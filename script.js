@@ -31,12 +31,11 @@ const getWeatherData = () => {
     const sunsetMinutes = new Date(sunsetData*1000).getMinutes()
     const sunsetTime = (`${sunsetHour}:${sunsetMinutes}`)
 
-    //template literals for showing temperature and time
     typeOfWeather.innerHTML = `${data.weather[0].main}`
     cityName.innerHTML = `${data.name}`
     temperature.innerHTML = `${data.main.temp.toFixed(1)}°`
-    sunrise.innerHTML = `Sunrise at ${sunriseTime}`
-    sunset.innerHTML = `Sunset at ${sunsetTime}`
+    sunrise.innerHTML = `sunrise ${sunriseTime}`
+    sunset.innerHTML = `sunset ${sunsetTime}`
     })  
     } 
 getWeatherData()
@@ -60,31 +59,17 @@ weekday.forEach((data) => {
 
 
         fiveDays.innerHTML += `
+        <li>
+        <span>
         ${fiveDaysList}
         ${temperatureFiveDays}°
+        </span>
+        </li>
         `
-        console.log(fiveDaysList)
-        console.log(data.main.temp.toFixed(0))
     })
-
-    
-
-   
-    console.log(weekday)
-
-
 })
 }
 
 getWeatherForecast()
 
-
-//const temperature = new Date(temperatureByDay*1000).getDate()
-//
-//`Tomorrow ${dataparam.list[8].dt_txt} ${dataparam.list[8].main.temp.toFixed(1)}`
-//const showDay = 0//new Date(fourDaysData*1000).getDay()
-//["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-    //const fourDaysData = data.list.dt
-    //const currentDate = new Date()
-    //const dayIndex = currentDate.toLocaleDateString()
     
