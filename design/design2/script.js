@@ -75,23 +75,23 @@ const formatTime = (seconds) => {
   });
 };
 
-///////// Functions to update prompt section /////////
+///////// Function to update prompt section /////////
 
 const updatePrompt = (currentWeatherData) => {
-  switch (currentWeatherData.weather[0].main) {
+  switch ("Snow") {
     case "Clear":
       icon.setAttribute("src", "./icons/noun_Sunglasses_2055147.svg");
       icon.setAttribute("alt", "Sunglasses");
       promptText.innerHTML = `Get your sunnies on. ${city} is looking rather great today.`;
       document.body.className = "clear";
       break;
-    case "Clouds" || "Atmosphere":
+    case ("Clouds", "Atmosphere"):
       icon.setAttribute("src", "./icons/noun_Cloud_1188486.svg");
       icon.setAttribute("alt", "Cloud");
       promptText.innerHTML = `Light a fire and get cosy. ${city} is looking grey today.`;
       document.body.className = "clouds";
       break;
-    case "Rain" || "Drizzle":
+    case ("Rain", "Drizzle"):
       icon.setAttribute("src", "./icons/noun_Umbrella_2030530.svg");
       icon.setAttribute("alt", "Umbrella");
       promptText.innerHTML = `Don't forget your umbrella. It's wet in ${city} today.`;
@@ -171,7 +171,8 @@ const handleForecastData = (forecastData) => {
   updateForecast(filteredForecast);
 };
 
-// functions to recieve days for forecast
+////// Functions to recieve days for forecast //////
+
 const getFirstDateOfForecast = () => {
   let date = new Date();
   date.setUTCDate(date.getUTCDate() + 1);
