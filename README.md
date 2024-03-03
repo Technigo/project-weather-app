@@ -1,12 +1,10 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Creating a weather app using an API. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+There has been a lot of problems on the way but most code problems I have managed to solve after a while. My biggest problem was getting it to work with the branches. I used Figma for planning but would do an even more specific and better plan next time. If I had time I would make it available to search for different cities and display the weather for the user.
 
 ## View it live
 

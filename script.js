@@ -11,7 +11,7 @@
  const sunset = document.getElementById("sunset");
 
 
-const city = "Kristiansand";
+const city = "Palma";
 const base_URL = "https://api.openweathermap.org/data/2.5/weather?";
 const API_Key = "a27f07476fdacc3ee7dc03fc0b7264ed";
 const units = "metric";
