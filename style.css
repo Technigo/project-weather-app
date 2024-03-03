@@ -12,7 +12,22 @@ body{
 }
 
 
-#card {
+
+    
+#cloud { 
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        max-width: 250px;
+        padding:25px;
+        margin:20px;
+        border-radius:20px;
+        box-shadow: 0 8px 16px 0 rgba(244, 169, 169, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19);color:  #F47775;
+        background-color: white;
+
+}
+
+#rain {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -21,7 +36,24 @@ body{
     margin:20px;
     border-radius:20px;
     box-shadow: 0 8px 16px 0 rgba(244, 169, 169, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    background-color:  #BDE8FA;
+    color: #164A68;
 }
+
+#clear {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 250px;
+    padding:25px;
+    margin:20px;
+    border-radius:20px;
+    box-shadow: 0 8px 16px 0 rgba(244, 169, 169, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    background-color:   #F7E9B9;
+    color:  #2A5510;    ;
+}
+
+
 
 .weather-icon {
     width:60px;
@@ -41,7 +73,7 @@ h1 {
 
 h2 {
     margin-bottom:3px;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 h4 {
