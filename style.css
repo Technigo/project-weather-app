@@ -82,7 +82,7 @@ body{
     left: 80px;
     width: 167px;
     height: 156px;
-    top: 20px;
+    top: 28px;
 }
 
 .text{
@@ -155,20 +155,25 @@ h3{
     background-color:#707070 transparent;
 }
 
-#myDay,
-#mySymbol{
+#myDay{
     width: 25%;
     height: 20px;
     padding: 2px 24px 2px 2px;
-    margin-right: 20px;
+    margin-right: 50px;
+}
+
+#mySymbol{
+    width: 15%;
+    padding: 2px 24px 2px 2px;
+    margin-right: 30px;
 }
 
 #myTemp{
     width: 50%;
     height: 20px;
     padding: 2px;
-    justify-content: end;
-    
+    margin-right: 16px;
+    text-align: end;
 }
 
 @media(min-width:667px) and (max-width:1024px){        
@@ -185,9 +190,9 @@ h3{
     #logo{
         position: relative;
         left: 80px;
-        width: 260px;
-        height: 260px;
-        top: 10px;
+        width: 220px;
+        height: 220px;
+        top: 20px;
     }
     
     .text{
@@ -218,20 +223,24 @@ h3{
     }
     
     #dayWeather{ 
-        height: 45px;
+        margin: 2px 10px;
+        padding: 2px 4px 2px 20px;
+        justify-content: center;
     }
     
-    #myDay,
-    #mySymbol{
+    #myDay{
         width: 30%;
-        height: 45px;
         margin-right: 30px;
+    }
+
+    #mySymbol{
+        width: 60px;
+        margin-right: 50px;
     }
     
     #myTemp{
         width: 40%;
-        height: 45px;
-        text-align: center;
+        text-align: end;
     }
 
 }
@@ -301,19 +310,21 @@ h3{
     }
     
     #dayWeather{ 
-        height: 45px;
+        width: 100%;
     }
     
-    #myDay,
-    #mySymbol{
+    #myDay{
         width: 30%;
-        height: 45px;
+        margin-right: 30px;
+    }
+
+    #mySymbol{
+        width: 60px;
         margin-right: 30px;
     }
     
     #myTemp{
         width: 40%;
-        height: 45px;
         text-align: end;
     }
    
