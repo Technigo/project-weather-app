@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Design for all devices */
+body {
+  font-family: "Roboto Condensed", "Roboto", sans-serif;
+  background-color: #f7e9b9;
+  margin: 30px;
+  padding: 0;
+}
+
+.Clear {
+  background-color: #f7e9b9;
+  color: #2a5510;
+}
+
+.Clouds {
+    background-color: #f4f7f8;
+    color: #f47775;
+  }
+  
+  .RainSnowOther {
+    background-color: #a3def7;
+    color: #164a68;
+  }
+  
+  .quote {
+    font-size: 37px;
+    font-weight: 700;
+  }
+  
+  img {
+    height: 200px;
+  }
+  
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td {
+    text-align: right;
+    padding: 8px;
+    border-bottom: 3px dotted #999;
+  }
+  
+  td:first-child {
+    text-align: left;
+  }
+  
+  
+  /* Adaptations for phones */
+  @media (max-width: 768px) {
+    img {
+      height: 150px;
+    }
+  
+    table {
+      font-size: 14px;
+    }
+  
+    td {
+      padding: 6px;
+    }
+  }
