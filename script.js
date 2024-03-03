@@ -78,8 +78,8 @@ const showOvercast = (city, temperature, description) => {
 const showSunriseAndSunset = (sunrise, sunset) => {
   const sunriseDate = new Date(sunrise * 1000);
   const sunsetDate = new Date(sunset * 1000);
-  sunriseContainer.innerHTML = `<span class="roboto-regular"> Sunrise: ${sunriseDate.getHours()}:${sunriseDate.getMinutes()}</span>`;
-  sunsetContainer.innerHTML = `<span class="roboto-regular"> Sunset: ${sunsetDate.getHours()}:${sunsetDate.getMinutes()}</span>`;
+  sunriseContainer.innerHTML = `<span class="roboto-light"> Sunrise: ${sunriseDate.getHours()}:${sunriseDate.getMinutes()}</span>`;
+  sunsetContainer.innerHTML = `<span class="roboto-light"> Sunset: ${sunsetDate.getHours()}:${sunsetDate.getMinutes()}</span>`;
 };
 
 // Button function

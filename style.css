@@ -33,7 +33,7 @@ h2 {
 
 #eclipse {
   background: linear-gradient(to bottom right, #9abbf5, #7455ad);
-  padding-bottom: 50px;
+  padding-bottom: 70px;
   border-bottom-left-radius: 50% 20%;
   border-bottom-right-radius: 50% 20%;
 }
@@ -43,7 +43,7 @@ h2 {
   top: 20px;
   right: 20px;
   img {
-    width: 100px;
+    width: 130px;
     height: auto;
   }
 }
@@ -51,10 +51,13 @@ h2 {
 #forecast-container {
   list-style: none;
   padding-left: 17px;
+  margin-top: 40px;
+
   img {
     height: 30px;
     width: auto;
   }
+
   li {
     margin: 5px 0;
     display: flex;
@@ -80,7 +83,7 @@ h2 {
 #sunrise,
 #sunset {
   margin: 10px;
-  font-size: 22px;
+  font-size: 18px;
 }
 
 #overcast {
@@ -101,56 +104,59 @@ h2 {
   }
 }
 
-button a:hover {
-  background-color: #ddd;
-  color: black;
+#searchForm {
+  display: flex;
+  margin: 10px 17px;
+
+  button {
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(236, 240, 241, 1);
+  }
+
+  button:hover {
+    background-color: rgba(236, 240, 241, 0.8);
+    cursor: pointer;
+  }
 }
-button a.active {
-  background-color: #2196f3;
-  color: white;
+
+#searchInput {
+  margin-right: 7px;
+  width: 200px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+#hidding-button {
+  margin: 0px 17px 0 17px;
+  border-radius: 50%;
+  width: 85px;
+  height: 85px;
+  border: none;
+  background-color: #757aff;
+  align-self: end;
+  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2);
+  margin-top: -43px;
+
+  img {
+    width: 35px;
+    height: auto;
+  }
+}
+
+#hidding-button:hover {
+  background-color: rgba(117, 122, 255, 0.8);
+  cursor: pointer;
 }
 
 @media only screen and (min-width: 414px) and (max-width: 670px) {
-  #searchForm {
-    display: flex;
-    margin: 10px 17px;
-  }
-
   #sunrise-sunset {
     display: flex;
     justify-content: space-evenly;
-  }
-
-  #sunrise,
-  #sunset {
-    margin: 10px;
-    font-size: 22px;
-  }
-
-  #overcast {
-    p {
-      margin-top: 5px;
-      margin-left: 17px;
-      font-size: 22px;
-    }
-
-    h1 {
-      font-size: 70px;
-      margin: 40px 17px 0 17px;
-    }
-
-    h2 {
-      font-size: 34px;
-      margin: 20px 17px 0;
-    }
-  }
-
-  #hidding-button {
-    margin: 0px 17px 0 17px;
-  }
-
-  #searchInput {
-    margin-right: 3px;
   }
 }
 
