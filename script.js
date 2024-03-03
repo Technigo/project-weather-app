@@ -12,7 +12,7 @@ document.head.appendChild(styleElement)
 const BASE_URL1= 'https://api.openweathermap.org/data/2.5/weather'
 const BASE_URL2 = 'https://api.openweathermap.org/data/2.5/forecast'
 const API_KEY = '0a3f5beba05e6db2d5da18ddf3283c92'
-const city = 'Shanghai,China'
+const city = 'Helsinki,Finland'
 const URL1 = `${BASE_URL1}?q=${city}&units=metric&appid=${API_KEY}`
 const URL2 = `${BASE_URL2}?q=${city}&units=metric&appid=${API_KEY}`
 
