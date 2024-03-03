@@ -1,13 +1,11 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This weeks project was to create a weather app with data fetched from an API. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+This week I mainly struggled with my own expectations rather than anything code related. I had a busier week than usual, which meant I had less time to focus on this week's project, so instead of aiming for reaching all the stretch goals and advanced stretch goals, I decided to do the requirements really well instead, and then only do one stretch goal when I felt like I had the basics down. I am usually someone who always aims or perfection, so this week I had to dial back a bit and "only" do what was necessary. Which was harder than I initially thought, but definitely necessary.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://fridasweather.netlify.app
