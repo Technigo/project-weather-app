@@ -3,7 +3,7 @@ body {
     margin: 20px;
   }
 
-.weatherToday {
+#weatherToday {
     font-size: 20px;
 }
 
