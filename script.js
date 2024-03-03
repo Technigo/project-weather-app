@@ -39,6 +39,7 @@ function getWeatherForecast(city) {
 function displayWeatherInformation(data) {
   const weather = data.weather[0];
   const condition = getWeatherCondition(weather);
+  const timezoneOffset = data.timezone;
   // Reset and apply new body class for background styling
   document.body.className = "";
   document.body.classList.add(condition.class);
@@ -61,8 +62,14 @@ function displayWeatherInformation(data) {
   tempElement.textContent = `${condition.message} | ${data.main.temp.toFixed(
     0
   )}°`;
-  sunriseElement.textContent = `sunrise ${formatTime(data.sys.sunrise)}`;
-  sunsetElement.textContent = `sunset ${formatTime(data.sys.sunset)}`;
+  sunriseElement.textContent = `sunrise ${formatTime(
+    data.sys.sunrise,
+    timezoneOffset
+  )}`;
+  sunsetElement.textContent = `sunset ${formatTime(
+    data.sys.sunset,
+    timezoneOffset
+  )}`;
   // Display customized weather message
   displayWeatherMessage(condition, data.name);
 }
@@ -118,12 +125,14 @@ function getWeatherCondition(weather) {
 }
 
 // Sunrise and sunset
-function formatTime(unixTimestamp) {
-  const date = new Date(unixTimestamp * 1000);
+function formatTime(unixTimestamp, timezoneOffsetInSeconds) {
+  const localTimestamp = (unixTimestamp + timezoneOffsetInSeconds) * 1000;
+  const date = new Date(localTimestamp);
   return date
     .toLocaleTimeString([], {
       hour: "2-digit",
       minute: "2-digit",
+      timeZone: "UTC",
     })
     .replace(":", ".");
 }
@@ -151,7 +160,7 @@ function displayWeatherMessage(condition, cityName) {
       break;
     default:
       detailedMessage = `Weather in ${cityName} is unpredictable. Always be prepared!`;
-      weatherIcon = "./design/icons/icon-cloudy.svg";
+      weatherIcon = "./design/icons/icon-default.svg";
   }
 
   const weatherIconElement = document.getElementById("weather-icon");

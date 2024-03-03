@@ -72,17 +72,14 @@ p {
 
 .search-container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 0 10px;
+  justify-content: center;
 }
 
 .search-box {
-  flex-grow: 1 1 auto;
   padding: 10px;
   border: 2px solid var(--defaultcolor);
-  margin-right: 10px;
+  box-sizing: border-box;
+  margin-right: 1rem;
 }
 
 .search-box:focus {
