@@ -1,0 +1,195 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.weather-container {
+    width: 375px;
+    height: 812px;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    background-color: #fff; /* Standard bakgrundsfärg */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sunny-weather {
+    background-color: #F7E9B9;
+    color: #2A5510;
+    padding: 20px;
+}
+
+.rainy-weather {
+    background-color: #BDE8FA;
+    color: rgb(22, 74, 104);
+    padding: 20px;
+}
+
+.cloudy-weather {
+    background-color: #F4F7F8FF;
+    color: #F47775;
+    padding: 20px;
+}
+
+/* Stil för textelementen */
+.city-name {
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px; /* Lägg till lite marginal under stadens namn */
+}
+
+.temperature {
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px; /* Lägg till lite marginal under temperaturen */
+}
+
+.weather-description {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 10px; /* Lägg till lite marginal under väderbeskrivningen */
+}
+
+.sunrise-sunset {
+    font-size: 10px;
+    text-align: center;
+    margin: 2em 0; /* Lägg till mer marginal runt soluppgång och solnedgång */
+}
+
+.forecast {
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 10px; /* Lägg till lite marginal under prognosen */
+}
+
+.forecast-day {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Använd hela bredden */
+    margin: 10px 0; /* Lägg till lite marginal runt varje prognosdag */
+}
+
+.day-name, .day-temp {
+    text-align: center; /* Centrerad text för dagens namn och temperatur */
+    padding: 0 10px; /* Lägg till lite utfyllnad på sidorna */
+}
+
+/* Responsiv design för olika enheter */
+@media (max-width: 320px) {
+    .weather-container {
+        width: 320px; /* Anpassa bredden till skärmens bredd */
+        padding: 10px; /* Mindre utfyllnad på mindre skärmar */
+    }
+    .city-name, .temperature, .weather-description, .sunrise-sunset {
+        font-size: smaller; /* Mindre textstorlek för små skärmar */
+    }
+}
+
+/* Du kan lägga till fler anpassningar för andra skärmstorlekar här */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.weather-container {
+    width: 375px;
+    max-width: 812px;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    background-color: #fff; /* Standard bakgrundsfärg */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sunny-weather {
+    background-color: #F7E9B9;
+    color: #2A5510;
+}
+
+.rainy-weather {
+    background-color: #BDE8FA;
+    color: rgb(22, 74, 104);
+}
+
+.cloudy-weather {
+    background-color: #F4F7F8FF;
+    color: #F47775;
+}
+
+/* Stil för textelementen */
+.city-name {
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px; /* Lägg till lite marginal under stadens namn */
+}
+
+.temperature {
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px; /* Lägg till lite marginal under temperaturen */
+}
+
+.weather-description {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 10px; /* Lägg till lite marginal under väderbeskrivningen */
+}
+
+.sunrise-sunset {
+    font-size: 10px;
+    text-align: center;
+    margin: 2em 0; /* Lägg till mer marginal runt soluppgång och solnedgång */
+}
+
+.forecast {
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 10px; /* Lägg till lite marginal under prognosen */
+}
+
+.forecast-day {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Använd hela bredden */
+    margin: 10px 0; /* Lägg till lite marginal runt varje prognosdag */
+}
+
+.day-name, .day-temp {
+    text-align: center; /* Centrerad text för dagens namn och temperatur */
+    padding: 0 10px; /* Lägg till lite utfyllnad på sidorna */
+}
+
+/* Responsiv design för olika enheter */
+@media (max-width: 320px) {
+    .weather-container {
+        width: 320px; /* Anpassa bredden till skärmens bredd */
+        padding: 10px; /* Mindre utfyllnad på mindre skärmar */
+    }
+    .city-name, .temperature, .weather-description, .sunrise-sunset {
+        font-size: smaller; /* Mindre textstorlek för små skärmar */
+    }
+}
+
+/* Du kan lägga till fler anpassningar för andra skärmstorlekar här */
