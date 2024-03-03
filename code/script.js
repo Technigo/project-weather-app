@@ -209,6 +209,8 @@ const fetchWeatherForecast = (cityName) => {
             weekday: "long",
           }
         )
+        //
+        if (fiveDayArray.length === 0) fiveDayArray.push(currentWeekDay)
 
         //If it's a new day, add the max and min temp to array
         if (!fiveDayArray.includes(currentWeekDay)) {
