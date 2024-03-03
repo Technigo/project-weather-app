@@ -1,4 +1,16 @@
+* {
+    background-color: rgba(163, 222, 247);
+}
+
+.page-top {
+    font-family: "Montserrat", sans-serif;
+
+}
 
 .fivedays {
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: "Montserrat", sans-serif;
     list-style-type: none;
+    
 }
