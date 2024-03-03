@@ -1,0 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  height: 100%;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.today,
+.forecast {
+  font-size: 21px;
+  font-weight: 400;
+}
+
+.prompt {
+  padding-top: 20%;
+}
+
+#prompt-text {
+  font-size: 37px;
+  font-weight: 700;
+  padding-top: 15px;
+}
+
+table {
+  width: 100%;
+}
+
+td {
+  border-style: dotted;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  padding: 2px;
+}
+
+#forecast-icon {
+  height: 30px;
+  width: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#forecast-temp {
+  text-align: end;
+}
+
+.rain {
+  background-color: #bde8fa;
+  color: #164a68;
+}
+
+.clouds {
+  background-color: #f4f7f8;
+  color: #f47775;
+}
+
+.clear {
+  background-color: #f7e9b9;
+  color: #2a5510;
+}
+
+.snow {
+  background-color: #edf6fd;
+  color: #149bcc;
+}
+
+.thunderstorm {
+  background-color: #d9c8e4;
+  color: #4b2f60;
+}
+
+.error {
+  position: absolute;
+}
+
+/* --- MEDIA QUERIES -------------------------------------- */
+
+/* --- TABLET --- */
+
+@media (min-width: 600px) {
+  .prompt {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding-top: 0;
+  }
+
+  #prompt-text {
+    display: inline-block;
+    grid-column-start: 1;
+    justify-self: end;
+    padding: 0;
+  }
+
+  .prompt img {
+    grid-column-start: 2;
+    grid-row-start: 1;
+    width: 80%;
+    padding: 10%;
+    max-width: 400px;
+  }
+}
+
+/* --- DESKTOP --- */
+
+@media (min-width: 900px) {
+  #prompt-text {
+    font-size: 45px;
+    margin: auto;
+  }
+
+  td {
+    padding: 10px;
+  }
+}

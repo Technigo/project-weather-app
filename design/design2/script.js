@@ -11,10 +11,32 @@ const forecastTable = document.getElementById("forecast-table");
 const MY_API_KEY = "31320abec19306a046f96f4c46f01157";
 const BASE_URL = "https://api.openweathermap.org/data/2.5";
 
+// // Bergen rain
+// const coordinates = {
+//   lat: 60.39299,
+//   lon: 5.32415,
+// };
+// Tripoli
+// const coordinates = {
+//   lat: 32.885353,
+//   lon: 13.180161,
+// };
+// Göteborg
 const coordinates = {
   lat: 57.721595,
   lon: 12.0253,
 };
+// Usseglio snow
+// const coordinates = {
+//   lat: 45.23274,
+//   lon: 7.21993,
+// };
+
+// // Ciampino thunderstorm
+// const coordinates = {
+//   lat: 32.563,
+//   lon: -98.802,
+// };
 
 const city = "Göteborg";
 
@@ -53,24 +75,35 @@ const formatTime = (seconds) => {
   });
 };
 
-///////// Functions to update prompt section /////////
+///////// Function to update prompt section /////////
 
 const updatePrompt = (currentWeatherData) => {
-  switch (currentWeatherData.weather[0].main) {
+  switch ("Snow") {
     case "Clear":
       icon.setAttribute("src", "./icons/noun_Sunglasses_2055147.svg");
       icon.setAttribute("alt", "Sunglasses");
       promptText.innerHTML = `Get your sunnies on. ${city} is looking rather great today.`;
+      document.body.className = "clear";
       break;
-    case "Clouds":
+    case ("Clouds", "Atmosphere"):
       icon.setAttribute("src", "./icons/noun_Cloud_1188486.svg");
       icon.setAttribute("alt", "Cloud");
       promptText.innerHTML = `Light a fire and get cosy. ${city} is looking grey today.`;
+      document.body.className = "clouds";
       break;
-    case "Rain":
+    case ("Rain", "Drizzle"):
       icon.setAttribute("src", "./icons/noun_Umbrella_2030530.svg");
       icon.setAttribute("alt", "Umbrella");
       promptText.innerHTML = `Don't forget your umbrella. It's wet in ${city} today.`;
+      document.body.className = "rain";
+      break;
+    case "Snow":
+      promptText.innerHTML = `Slide right into your slippers. It's snowing in ${city} today.`;
+      document.body.className = "snow";
+      break;
+    case "Thunderstorm":
+      promptText.innerHTML = `Light your candles. A thunderstorm is rolling in over ${city} today.`;
+      document.body.className = "thunderstorm";
       break;
     default:
       icon.removeAttribute("src");
@@ -103,11 +136,11 @@ const updateForecast = (filteredForecastList) => {
     const iconURL = getWeatherIconURL(listItem.weather[0].main);
     const temp = Math.round(listItem.main.temp * 10) / 10;
     forecastTable.innerHTML += `
-    <tr>
-    <td>${weekday}</td>
-    <td><img src="${iconURL}"></td>
-    <td>${temp}°</td>
-  </tr>`;
+      <tr>
+        <td>${weekday}</td>
+        <td><img id="forecast-icon" src="${iconURL}"></td>
+        <td id="forecast-temp">${temp}°</td>
+      </tr>`;
   });
 };
 
@@ -138,7 +171,8 @@ const handleForecastData = (forecastData) => {
   updateForecast(filteredForecast);
 };
 
-// functions to recieve days for forecast
+////// Functions to recieve days for forecast //////
+
 const getFirstDateOfForecast = () => {
   let date = new Date();
   date.setUTCDate(date.getUTCDate() + 1);
@@ -156,7 +190,7 @@ const getLastDateOfForecast = () => {
 getLastDateOfForecast();
 
 const getWeekday = (date) => {
-  const weekdayArr = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const weekdayArr = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
   const index = date.getDay();
   return weekdayArr[index];
 };
