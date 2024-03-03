@@ -4,9 +4,11 @@
  const searchForCityText = document.getElementById("searchForCityText");
  const weatherContainer = document.getElementById("weatherContainer");
  const weatherForecastContainer = document.getElementById("weatherForecastContainer");
+ const textContainer = document.getElementById("textContainer");
+ const icon = document.getElementById("icon");
  const sunContainer = document.getElementById("sunContainer");
-
-const city = "Palma";
+ 
+const city = "Palma de Mallorca";
 const base_URL = "https://api.openweathermap.org/data/2.5/weather?";
 const API_Key = "a27f07476fdacc3ee7dc03fc0b7264ed";
 const units = "metric";
@@ -18,7 +20,22 @@ const sunnyWeather = () => {
 
 }
 
+// Update text and image depending on weather
+const sunny = () => {
+  textContainer.innerHTML = `Get your sunnies on. ${city} is looking rather great today.`;
+}
 
+sunny();
+
+const rainy = () => {
+  
+  textContainer.innerHTML = `Don't forget your umbrella. It's wet in ${city} today.`
+}
+
+const cloudy = () => {
+
+  textContainer.innerHTML = `Light a fire and get cozy. ${city} is looking grey today.`
+}
 
 
 
@@ -36,9 +53,9 @@ fetch(URL)
    })
    .then((json) => {
     const cityName = json.name;
-    const degrees = Math.round(json.main.temp); 
+    const degrees = Math.round(json.main.temp);
     const weatherDescription = json.weather[0].description;
-
+    
     // Turn sunset and sunrise to a readable format like 13:00
 
    function convertTime(timestamp) {
@@ -74,7 +91,7 @@ sunContainer.textContent = `Sunrise ${sunriseTime} Sunset ${sunsetTime}`;
   };
 
 // Example of city
-
+  
   fetchWeatherData(city);
 
 // Fetch for the forecast data
@@ -129,7 +146,7 @@ const fetchForecast = (city) => {
  
 
 
-
+ 
 
 
  
