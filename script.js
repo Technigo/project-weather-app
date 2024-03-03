@@ -17,11 +17,16 @@ const fetchTodaysForecast = () => {
             const sunriseInfo = data.sys.sunrise
             const sunriseHour = new Date(sunriseInfo * 1000).getHours()
             const sunriseMin = new Date(sunriseInfo * 1000).getMinutes()
-            const sunsetTime = (`${sunriseHour}:${sunriseMin}`)
+            const sunriseTime = (`${sunriseHour}:${sunriseMin}`)
+
+            const sunsetInfo = data.sys.sunset
+            const sunsetHour = new Date(sunsetInfo * 1000).getHours()
+            const sunsetMin = new Date(sunsetInfo * 1000).getMinutes()
+            const sunsetTime = (`${sunsetHour}:${sunsetMin}`)
 
             weatherInfo.innerHTML = `
     ${data.weather[0].description} | ${data.main.temp.toFixed(1)}° 
-    <p>Sunrise ${sunriseInfo}</p><p>Sunset ${sunsetTime}</p>`
+    <p>Sunrise ${sunriseTime}</p><p>Sunset ${sunsetTime}</p>`
         })
 
 }
