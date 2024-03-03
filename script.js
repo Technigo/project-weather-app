@@ -12,7 +12,7 @@
 //HERE THE URL PUZZLE using template literals-------------------------------------------------------------------------------------------------------------------//
 const BASE_URL = "https://api.openweathermap.org/data/2.5/"
 const API_KEY = "69cc94dd08e05801b495ee1b7a9cba03"
-const cityCountry = "Stockholm,Sweden"
+const cityCountry = "Barcelona,Catalonia"
 
 //https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=69cc94dd08e05801b495ee1b7a9cba03
 const URL1 = `${BASE_URL}weather?q=${cityCountry}&units=metric&APPID=${API_KEY}`
@@ -151,7 +151,7 @@ const dropdownForecast =()=>{
   } else {
     selectArrow.style.borderWidth = "6px 0 0 6px"
     selectBackgroundCircle.style.transform = "translate(-50%, -50%)"
-    selectButton.style.top = "80%"
+    selectButton.style.top = "75%"
   }
 }
 
