@@ -85,3 +85,9 @@ h1 {
 	background-color: var(--clr_bg_blue);
 	color: var(--clr_text_blue);
 }
+
+@media screen and (max-width: 400px){
+    h1{
+        font-size: 30px;
+    }
+}
