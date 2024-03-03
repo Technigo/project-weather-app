@@ -3,9 +3,10 @@
 
 :root{
   --00: #8fe0ff;
-  --01: #8275e3;
+  --01: #8070f9;
   --02: #41476d;
   --03: #31255a;
+  --04: #000000;
 }
 
 *{
@@ -15,14 +16,13 @@
 }
 
 body{
-  color: rgb(118, 115, 115);
+  color: rgb(66, 64, 64);
   margin: 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-between;
-  background-color: rgb(211, 219, 225);
   width: 100%;
 }
 
@@ -88,13 +88,14 @@ header img{
   z-index: -10;
   position: fixed;
   background-color: var(--01);
-  width: 400vw;
+  width: 300vw;
   height: 200vh;
   border-radius: 50%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   transition: transform 1s ease; /* Smooth transition for transform property */
+  background-image: linear-gradient(to bottom, var(--04), var(--01));
 }
 
 
@@ -155,6 +156,11 @@ main{
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  background-color: rgba(226, 226, 226, 0.9);
+  border-radius: 50px;
+  margin: 5px;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 .forecast-day-right{
@@ -202,11 +208,20 @@ footer a{
 }
 
 /* -------------------------------------MEDIA QUERIES----------------------------------------------- */
-
-
-
-
-/* -------------------------------------MEDIA QUERIES----------------------------------------------- */
-
-
+/* -----------------------------------TABLET SCREENS 671px to 1024xp ------------------------------- */
+@media (min-width:671px) and (max-width:1024px){
+  header > *, main > *{
+    max-width: 500px;  
+  }
+}
+/* -----------------------------------PC SCREENS >1024px  ------------------------------------- */
+@media (min-width: 1024px) {
+  
+  header, main {
+    max-width: 800px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+}
 

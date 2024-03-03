@@ -1,13 +1,10 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This is an easy-looking web page that has pretty elaborated code behind the scenes. It fetches weather information from an open API that updates every 4 hours. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The main problem was to sort and show the forecast information from the API. The styling wasn't easy either; if I had more time, I would like to change the icons and improve the responsiveness for tablets and PC screens. 
 
 ## View it live
-
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Click [here](https://app.netlify.com/sites/this-is-my-weather-app/configuration/general) to explore and experience it.
