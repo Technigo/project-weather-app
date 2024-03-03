@@ -10,14 +10,19 @@
 
 h1 {
 	display: flex;
-	text-align: center;
+	text-align: left;
 	flex-flow: row wrap;
-	text-align: center;
-	font-size: 20em;
+	font-size: 40px;
 }
 
+/* Background color */
+.background-color {
+  background-color: red;
+}
+
+/* Weather container */
 .weather-container {
-	width: 100%;
+  	width: 100%;
 	margin-top: 1rem;
 	margin-left: 1rem;
 	margin-bottom: 2rem;
@@ -26,20 +31,29 @@ h1 {
 	font-size: 15px;
 }
 
-.img-container {
-	width: 50%;
-	margin-left: 1rem;
-	display: flex;
-	justify-content: flex-start;
+/* Sun */
+.sun {
+  margin-left: 1rem;
 }
 
+/* Image container */
+.img-container {
+  	width: 50%;
+	margin-left: 1rem;
+	display: flex;
+	justify-content: flex-end;
+}
+
+/* City container */
 .city-container {
 	width: 100%;
 	margin-left: 1rem;
 	display: flex;
-	justify-content: flex-start;
+	justify-content: flex-end;
+    flex-direction: row;
 }
 
+/* Forecast container */
 .forecast-container {
 	width: 100%;
 	margin-top: 1rem;
@@ -51,28 +65,23 @@ h1 {
 	font-size: 15px;
 }
 
-.cloud {
-	display: flex;
-	background-color: var(--clr_bg_pink);
-	color: var(--clr_text_pink);
-}
-
-.rain {
-	display: flex;
-	background-color: var(--clr_bg_blue);
-	color: var(--clr_text_blue);
-}
-
+/* Sunny */
 .sunny {
-	display: flex;
+  	display: flex;
 	background-color: var(--clr_bg_yellow);
 	color: var(--clr_text_green);
 }
 
-.weekday-list {
-	display: flex;
+/* Cloud */
+.cloud {
+  	display: flex;
+	background-color: var(--clr_bg_pink);
+	color: var(--clr_text_pink);
 }
 
-.temp-list {
-	display: flex;
+/* Rain */
+.rain {
+  	display: flex;
+	background-color: var(--clr_bg_blue);
+	color: var(--clr_text_blue);
 }
