@@ -184,8 +184,8 @@ body {
   }
 
   .weather-form {
-    margin-top: 60px; /* Adjust top margin */
-    margin-bottom: 60px; /* Adjust bottom margin */
+    margin-top: 60px; 
+    margin-bottom: 60px; 
   }
 
   .weather-form button {
@@ -226,12 +226,12 @@ body {
   }
 
   .day-container {
-    padding: 2rem; /* Adjust padding */
+    padding: 2rem; 
   }
 
   .weather-emoji {
-    width: 100px; /* Adjust icon size */
-    margin-right: 20px; /* Adjust margin */
+    width: 100px; 
+    margin-right: 20px; 
   }
 
   .week-days {
@@ -243,17 +243,21 @@ body {
   }
 
   .weather-form input {
-    width: 50%; /* Adjust the width to your preference */
+    width: 50%; 
     height: 2em;
     margin-right: 50px;
     display: inline-block;
   }
 
   .weather-form button {
-    margin-right: 200px; /* Adjust the margin to your preference */
+    margin-right: 200px; 
   }
 
   .day-container {
     padding: 1rem;
   }
+}
+  /* tablet, landscape iPad, lo-res laptops ands desktops */ 
+@media (min-width:961px)  { 
+  
 }
