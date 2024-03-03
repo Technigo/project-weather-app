@@ -4,11 +4,31 @@
  const searchForCityText = document.getElementById("searchForCityText");
  const weatherContainer = document.getElementById("weatherContainer");
  const weatherForecastContainer = document.getElementById("weatherForecastDocument");
-
-
+ const textContainer = document.getElementById("textContainer");
+ const icon = document.getElementById("icon");
+ 
 const base_URL = "https://api.openweathermap.org/data/2.5/weather?";
 const API_Key = "a27f07476fdacc3ee7dc03fc0b7264ed";
 const units = "metric";
+
+// Update text and image depending on weather
+const sunny = () => {
+  textContainer.innerHTML = `Get your sunnies on. ${city} is looking rather great today.`;
+}
+
+sunny();
+
+const rainy = () => {
+  
+  textContainer.innerHTML = `Don't forget your umbrella. It's wet in ${city} today.`
+}
+
+const cloudy = () => {
+
+  textContainer.innerHTML = `Light a fire and get cozy. ${city} is looking grey today.`
+}
+
+
 
 // Fetch the API
 const fetchWeatherData = (city) => {
