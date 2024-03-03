@@ -3,26 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="./style.css"
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./style.css">
     <title>Weather app</title>
 </head>
 <body>
-    <div class="weather-app">
-        <header class="weather-header">
-            <div class="weather-condition">
-                <span class="weather-description"></span>
-                <span class="weather-temp"></span>    
-            </div>
-            <div class="sun-times">
-                <span class="sunrise">Sunrise</span>
-                <span class="sunset">Sunset</span>
-            </div>
-        </header>
-        <div class="current-weather">
-            <p class="weather-condition"><span></span></p>
-
-        </div>
+    <div id="weather-container" class="weather-container">
+        <img id="weather-icon" src="design/design2/icons/noun_Sunglasses_2055147.svg" alt="Weather Icon"> <!-- Weather icon -->
+        <h1 id="city-name" class="city-name"></h1>
+        <p id="temperature" class="temperature"></p>
+        <p id="weather-description" class="weather-description"></p>
+        <p id="sunrise-sunset" class="sunrise-sunset"></p> <!-- Element sunset/rise -->
+        <div id="forecast" class="forecast"></div> <!-- 4-days forecast element -->
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
+
