@@ -4,16 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat" />
     <title>Weather app</title>
   </head>
 
-  <body>
-    <section class="weather-today-box" id="weatherTodayBox">
-      <div class="todays-weather" id="todaysWeather"></div>
-      <div class="sunset-sunrise" id="sunsetSunrise"></div>
-    </section>
-    <section class="weather-message-box" id="weatherMessageBox"></section>
-    <section class="weather-forecast-box" id="weatherForecastBox"></section>
-    <script src="script.js"></script>
+  <body id="weatherDesign">
+    <div class="container">
+      <div class="desktop-layout">
+        <section class="weather-today-box" id="weatherTodayBox">
+          <div class="todays-weather" id="todaysWeather"></div>
+          <div class="sunset-sunrise" id="sunsetSunrise"></div>
+        </section>
+        <section class="weather-image-box" id="weatherImageBox"></section>
+        <section class="weather-message-box" id="weatherMessageBox"></section>
+      </div>
+      <section class="weather-forecast-box" id="weatherForecastBox"></section>
+      <script src="script.js"></script>
+    </div>
   </body>
 </html>

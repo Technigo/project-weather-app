@@ -1,0 +1,152 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Montserrat;
+}
+
+p {
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 25.6px;
+}
+
+h2 {
+  font-size: 37px;
+  font-weight: 700;
+  line-height: 45.1px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 40px;
+}
+
+/* todays weather at the top of the page */
+.todays-weather {
+  margin-bottom: 5px;
+}
+
+/* layout for the forecast */
+.weather-forecast-box {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+}
+
+/* layout for each day and temp in the forecast */
+.forecast-weather {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px dotted;
+  margin-top: 3px;
+  padding: 5px;
+}
+
+.forecast-weather:last-child {
+  border-bottom: none;
+}
+
+/* weather icons in message box */
+.weather-image-box img {
+  height: 90px;
+  width: 90px;
+  margin-top: 40px;
+}
+
+/*---------------- styling for different weather types ------------------*/
+
+/* clear weather design */
+.clear {
+  background-color: #f7e9b9;
+  color: #2a5510;
+}
+
+/* cloudy and foggy weather design */
+.clouds {
+  background-color: #f4f7f8;
+  color: #546263;
+}
+
+/* rainy weather design */
+.rain {
+  background-color: #bde8fa;
+  color: #164a68;
+}
+
+/* snowy weather design */
+.snow {
+  background-color: #fff;
+  color: #164a68;
+}
+
+/* thunderstorm weather design */
+.thunder {
+  background-color: #4b5758;
+  color: #ead40b;
+}
+
+/*----------------------- responsive styling -------------------------*/
+
+@media (min-width: 768px) {
+  .container {
+    margin: 80px;
+  }
+
+  .weather-image-box img {
+    height: 120px;
+    width: 120px;
+  }
+
+  .weather-forecast-box {
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 2px dotted;
+    border-top: 2px dotted;
+    margin-top: 60px;
+  }
+
+  .forecast-weather {
+    flex-direction: column;
+    align-items: center;
+    border-bottom: none;
+    padding: 20px 50px;
+    margin: 10px 0;
+  }
+
+  .forecast-weather p {
+    margin-bottom: 10px;
+  }
+}
+
+@media (min-width: 992px) {
+  p {
+    font-size: 25px;
+  }
+
+  h2 {
+    font-size: 50px;
+  }
+
+  .desktop-layout {
+    display: grid;
+    grid-template-rows: 0.5fr 0.5fr;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    grid-template-areas:
+      "todays-weather weather-icon"
+      "weather-message weather-icon";
+  }
+
+  .weather-image-box {
+    grid-area: weather-icon;
+  }
+
+  .weather-image-box img {
+    height: 300px;
+    width: 300px;
+    margin: 0;
+    margin-left: 200px;
+  }
+}
