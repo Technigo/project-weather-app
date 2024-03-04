@@ -57,31 +57,26 @@ h2 {
 
 /*---------------- styling for different weather types ------------------*/
 
-/* clear weather design */
 .clear {
   background-color: #f7e9b9;
   color: #2a5510;
 }
 
-/* cloudy and foggy weather design */
 .clouds {
   background-color: #f4f7f8;
   color: #546263;
 }
 
-/* rainy weather design */
 .rain {
   background-color: #bde8fa;
   color: #164a68;
 }
 
-/* snowy weather design */
 .snow {
   background-color: #fff;
   color: #164a68;
 }
 
-/* thunderstorm weather design */
 .thunder {
   background-color: #4b5758;
   color: #ead40b;
@@ -89,6 +84,7 @@ h2 {
 
 /*----------------------- responsive styling -------------------------*/
 
+/* tablet styling */
 @media (min-width: 768px) {
   .container {
     margin: 80px;
@@ -120,6 +116,7 @@ h2 {
   }
 }
 
+/* desktop styling */
 @media (min-width: 992px) {
   p {
     font-size: 25px;

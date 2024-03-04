@@ -29,7 +29,7 @@ const fetchWeatherData = (url) => {
     .catch((error) => (messageBox.innerHTML = "<p>oops .. something went wrong</p>"));
 };
 
-// fetches todays weathercondition and temperature
+// fetches todays weather condition and temperature
 const fetchTodaysWeather = () => {
   fetchWeatherData(todayURL).then((weatherData) => {
     const weatherCondition = weatherData.weather[0].description;
@@ -139,46 +139,46 @@ const weatherMessage = (weatherData) => {
   }
 };
 
-// calls this design and message when clear weather
+// runs this design and message when clear weather
 const setClearDesign = () => {
   weatherDesign.className = "clear";
   weatherImageBox.innerHTML = `<img class="weather-icon" src="assets/sun.png" alt="cloud weather icon" /> `;
   weatherMessageBox.innerHTML = `<h2>${city} <br> is shining today.</h2>`;
 };
 
-// calls this design and message when cloudy weather
+// runs this design and message when cloudy weather
 const setCloudyDesign = () => {
   weatherDesign.className = "clouds";
   weatherImageBox.innerHTML = `<img class="weather-icon" src="assets/cloud.png" alt="cloud weather icon" /> `;
   weatherMessageBox.innerHTML = `<h2>${city} <br> is looking grey.</h2>`;
 };
 
-// calls this design and message when rainy weather
+// runs this design and message when rainy weather
 const setRainyDesign = () => {
   weatherDesign.className = "rain";
   weatherImageBox.innerHTML = `<img class="weather-icon" src="assets/rain.png" alt="cloud weather icon" /> `;
   weatherMessageBox.innerHTML = `<h2>${city} <br> is wet today.</h2>`;
 };
 
-//calls this design and message when snowy weather
+// runs this design and message when snowy weather
 const setSnowyDesign = () => {
   weatherDesign.className = "snow";
   weatherImageBox.innerHTML = `<img class="weather-icon" src="assets/snow.png" alt="cloud weather icon" /> `;
   weatherMessageBox.innerHTML = `<h2>${city} <br> is turning into a winter wonderland.</h2>`;
 };
 
-// calls this design an message when thunderstorm
+// runs this design an message when thunderstorm
 const setThunderDesign = () => {
   weatherDesign.className = "thunder";
   weatherImageBox.innerHTML = `<img class="weather-icon" src="assets/thunder.png" alt="cloud weather icon" /> `;
   weatherMessageBox.innerHTML = `<h2>${city}<br> is electric.</h2>`;
 };
 
-// calls this design and message when the weather is none of above
+// runs this design and message when the weather is none of above
 const setFogDesign = () => {
   weatherDesign.className = "clouds";
   weatherImageBox.innerHTML = `<img class="weather-icon" src="assets/fog.png" alt="cloud weather icon" /> `;
-  weatherMessageBox.innerHTML = `<h2>${city} <br> has limited vision, stay safe!</h2>`;
+  weatherMessageBox.innerHTML = `<h2>${city} <br> has limited vision today</h2>`;
 };
 
 // presents the sunrise and sunset time
@@ -188,6 +188,7 @@ const showSunsetSunrise = (sunriseData, sunsetData) => {
     <p>sunset ${sunsetData}</p>`;
 };
 
+// presents the forecast
 const showForecastWeather = (forecastWeather) => {
   forecastWeather.forEach((forecast) => {
     const forecastElement = document.createElement("div");
