@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+    <title>Weather app</title>
+  </head>
+  <body class="clear">
+    <div class="error" id="current-weather-error"></div>
+    <section class="today">
+      <p id="current-weather"></p>
+      <p id="sunrise"></p>
+      <p id="sunset"></p>
+    </section>
+    <section class="prompt">
+      <img
+        id="icon"
+      />
+      <h1 id="prompt-text"></h1>
+    </section>
+    <section class="forecast">
+      <div class="error" id="forecast-error"></div>
+      <table>
+        <tbody id="forecast-table"></tbody>
+        </tbody>
+      </table>
+    </section>
+    <script src="./script.js"></script>
+  </body>
+</html>
