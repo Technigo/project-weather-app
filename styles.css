@@ -40,7 +40,7 @@ hr {
 
 .error-container {
   margin-top: 30px;
-  margin-left: 40px;
+  margin-left: 30px;
 }
 
 .weather-today-section1 {
@@ -49,12 +49,12 @@ hr {
 
 .weather-today-section1,
 .weather-today-section2 {
-  margin-left: 40px;
+  margin-left: 30px;
 }
 
 .location {
-  width: 290px;
-  margin: 30px 0 10px 40px;
+  width: 250px;
+  margin: 30px 0 10px 30px;
   border-bottom: 1px dotted #f47775;
 }
 
@@ -63,20 +63,20 @@ hr {
 }
 
 .icon-and-text {
-  margin-left: 40px;
-  width: 290px;
+  margin-left: 30px;
+  width: 260px;
 }
 
 .forecast-container {
   height: 220px;
-  margin: 10px 40px 0 40px;
+  margin: 10px 30px 0 30px;
 }
 
 .forecast-row {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px dotted #f47775;
-  width: 290px;
+  width: 240px;
 }
 
 /* Media Queries */
