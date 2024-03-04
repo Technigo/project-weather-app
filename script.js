@@ -102,6 +102,7 @@ const displayForecast = (array) => {
     forecastContainer.innerHTML += `<div class="weekday-temp"><div class="weekday"><h4>${weekday}</h4></div>
     <div class="temp"><img id="weather-icon" src="${iconURL}${weatherIcon}@2x.png"/><h4>${forecastTemp} °C</h4></div></div>`
   })
+  searchInput.value = ''
 }
 
 //Function to handle the user's searched city 
