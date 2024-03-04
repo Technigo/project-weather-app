@@ -4,7 +4,7 @@ This week was a solo project of creating a weather app fetching API. We were to 
 
 ## The problem
 
-I started off by working on the fetch and solving the output of the data from the API. I worked on the design last, since I found that the javascript is the most challenging. I was stuggling with the change of the forecast into 4 days where the first array was removed, since it often was the same day (before 12) and didn't belong in the forecast. But after 12, you would then jump one day too far and skip tomorrows forecast. I haven't found a way to solve this.
+I started off by working on the fetch and solving the output of the data from the API. I worked on the design last, since I found that the javascript is the most challenging. I was stuggling with the change of the forecast into 4 days where the first array was removed, since it often was the same day (before 12) and didn't belong in the forecast. But after 12, you would then jump one day too far and skip tomorrows forecast. I was short in time because of VAB and didn't manage to finish the stretchgoals I was hoping to. I will look into adding this when I have the time.
 
 ## View it live
 

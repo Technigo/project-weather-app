@@ -14,6 +14,10 @@ const URL = (city) => {
 }
 const iconURL = 'https://openweathermap.org/img/wn/'
 const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+const today = new Date()
+const currentTime = today.getHours()
+
+console.log(currentTime)
 
 //Fetching the API and converting to Json
 const getData = (city) => {
@@ -24,7 +28,7 @@ const getData = (city) => {
     .then((data) => {
       updateHtml(data)
     })
-    .catch((error) => console.log(error))
+    .catch((error) => console.log('error fetching data', error))
 }
 
 //default city when loading website
@@ -79,12 +83,16 @@ const filterByTime = (data) => {
   item.dt_txt.includes('12:00'))
   const fourDaysFilter = filteredForecast.slice(1)
   forecastContainer.innerHTML = ''
+  if (currentTime >= 12) {
   displayForecast(fourDaysFilter)
+  } else {
+  displayForecast(filteredForecast)
+  }
 }
 
 //function to display all weather data for the upcoming days
-const displayForecast = (fourDaysFilter) => {
-  fourDaysFilter.forEach((day) => {
+const displayForecast = (filteredArray) => {
+  filteredArray.forEach((day) => {
     const forecastDate = new Date(day.dt * 1000)
     const dayIndex = forecastDate.getDay()
     const weekday = dayNames[dayIndex]
