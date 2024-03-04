@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Todays weather</title>
+  </head>
+  <body>
+    <div class="error-container" id="error-container"></div>
+    <div class="location" id="location"></div>
+    <section class="weather-today-section1">
+      <div class="todays-weather" id="todays-weather"></div>
+      <hr id="divider" />
+      <div class="todays-temperature" id="todays-temperature"></div>
+    </section>
+
+    <section class="weather-today-section2">
+      <div class="sunrise" id="sunrise">
+        <h1>Sunrise</h1>
+      </div>
+      <div class="sunset" id="sunset">
+        <h1>Sunset</h1>
+      </div>
+    </section>
+
+    <section class="icon-and-text">
+      <div class="icon" id="icon">
+        <img
+          src="./design/design2/icons/noun_Cloud_1188486.svg"
+          alt="sunglasses"
+        />
+      </div>
+      <div class="text" id="text">
+        <h2>Light a fire and get cosy. It's looking grey today.</h2>
+      </div>
+    </section>
+
+    <section class="forecast-container" id="forecast-container"></section>
+    <script src="./script.js"></script>
+  </body>
+</html>
