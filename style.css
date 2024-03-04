@@ -113,11 +113,17 @@ h1 span {
 }
 
 .weekday-temp {
-  width: 100%;
+  width: 95%;
   display: flex;
   justify-content: space-between;
   border-bottom: 1px dotted;
-  padding-top: 1em;
+  padding: 1em 2.5% 0 2.5%;
+}
+
+.weekday-temp:hover {
+  background-color: rgba(235, 223, 207, 0.719);
+  border-radius: 20px;
+  border-bottom: none;
 }
 
 .weekday {
