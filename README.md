@@ -11,4 +11,4 @@ With more time I would add a search bar, more weather information overall like m
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://master--boisterous-boba-5a48da.netlify.app/
