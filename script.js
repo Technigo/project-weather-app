@@ -78,6 +78,7 @@ const styleAfterWeather = (weather, temp) => {
 }
 
 //Function to filter the arrays of daily forecast and only include each forecast at 12:00
+//if the current time is before 12:00 the forecast will not show the first array, since it would still show todays weather.
 const filterByTime = (data) => {
   const filteredForecast = data.list.filter((item) => 
   item.dt_txt.includes('12:00'))
@@ -103,16 +104,16 @@ const displayForecast = (array) => {
   })
 }
 
-//Function to take in the city one search for
-const filterSearch = () => {
+//Function to handle the user's searched city 
+const handleSearch = () => {
   const chosenCity = searchInput.value
   getData(chosenCity)
 }
 
 //Eventlisteners
-searchButton.addEventListener('click', filterSearch)
+searchButton.addEventListener('click', handleSearch)
 searchInput.addEventListener('keyup', function (event) {
   if (event.key == 'Enter') {
-    filterSearch()
+    handleSearch()
   }
 })
