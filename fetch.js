@@ -83,7 +83,10 @@ fetch(forecastURL)
             const forecastIconURL = `http://openweathermap.org/img/w/${weatherIcon}.png`;
             const middayTemp = item.main.temp;
 
+            // Round off todayTemp to one decimal
+            const middayTempRounded = middayTemp.toFixed(1);
+
             // Call function to update the HTML
-            updateForecastData(container, weekdayString, forecastIconURL, middayTemp);
+            updateForecastData(container, weekdayString, forecastIconURL, middayTempRounded);
         });
     });
