@@ -13,6 +13,7 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Handlee&family=Nunito+Sans:opsz,wght@6..12,200;6..12,300&family=Nunito:wght@200&family=Roboto:ital,wght@0,300;1,300&display=swap"
       rel="stylesheet"
+      
     />
     <title>Ericas weather app</title>
   </head>
@@ -26,7 +27,6 @@
         <input type="search" id="search" placeholder="Search for city ... " />
       </div>
     </header>
-    <main>
       <section class="weather-today" id="weather-today">
         <!-- div with info about todays forecast -->
         <div class="todays-forecast">
@@ -41,10 +41,12 @@
         <!-- div with the time of day for icons -->
         <div class="todays-time-of-day" id="todays-time-of-day">
         </div>
-        <button class="switch-button" id="switch-button">⬇</button>
     </div>
+    <button class="switch-button" id="switch-button">
+        <img src="./design/assets/arrow-up-3100.png">
+    </button>
       </section>
-
+      <main>
       <section class="weather-forecast">
         <div class="forecast-list" id="forecast-list"></div>
       </section>
