@@ -37,7 +37,7 @@ getData('dakar')
 //Function to update HTML with forecast
 const updateHtml = (data) => {
   const weather = data.list[0].weather[0].main
-  const city = data.city.name
+  const city = data.city.name.toUpperCase()
   const temp = Math.round(data.list[0].main.temp)
 
   //sunrise and sunset
