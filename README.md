@@ -4,7 +4,7 @@ This week was a solo project of creating a weather app fetching API. We were to 
 
 ## The problem
 
-I started off by working on the fetch and solving the output of the data from the API. I worked on the design last, since I found that the javascript is the most challenging. I was stuggling with the change of the forecast into 4 days where the first array was removed, since it often was the same day (before 12) and didn't belong in the forecast. But after 12, you would then jump one day too far and skip tomorrows forecast. I was short in time because of VAB and didn't manage to finish the stretchgoals I was hoping to. I will look into adding this when I have the time.
+I started off by working on the fetch and solving the output of the data from the API. I worked on the design last, since I found that the javascript is the most challenging. I managed to add a searchbar to find any city that is registered in the API. I was stuggling a bit with the change of the forecast into the correct days, since the first array often was the same day (before 12) and didn't belong in the forecast. The main issue was that I didn't even notice, for days. It taught me to scan through the results a bit more thorougly. I was short in time because of VAB and didn't manage to finish the stretchgoal of users location. I will look into adding this when I have the time.
 
 ## View it live
 https://funkyweatherforecast.netlify.app
