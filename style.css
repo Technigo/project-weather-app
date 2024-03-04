@@ -118,6 +118,13 @@ button {
   transition: color 0.2s ease-in-out;
 }
 
+svg {
+  height: 1.5rem;
+  width: 1.5rem;
+  fill: var(--search--prompt);
+  stroke: var(--search--prompt);
+}
+
 button:hover {
   color: var(--search--hover);
 }
