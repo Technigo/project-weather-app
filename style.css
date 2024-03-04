@@ -7,6 +7,14 @@ body {
   font-family: Montserrat;
   display: flex;
   justify-content: center;
+  background-color:lightpink;
+}
+
+
+/*this is a test for text!*/
+
+#text { 
+    color:black;
 }
 
 
@@ -14,7 +22,7 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 25px;
+  padding: 30px;
   max-width: 250px;
   margin: 20px;
   border-radius: 20px;
@@ -37,6 +45,18 @@ body {
   background-color: #f7e9b9;
   color: #2a5510;
 } */
+
+#forecast-list{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 300;
+    border-bottom: dotted;
+    font-size: 15;
+    margin: 4px;
+    border-width: 1px;
+
+       
+}
 
 .weather-icon {
   width: 60px;

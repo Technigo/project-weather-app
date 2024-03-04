@@ -1,4 +1,4 @@
-const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=bogo,&units=metric&APPID=764dd5634dc2ea4c9de71e7b62436c65
+const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=764dd5634dc2ea4c9de71e7b62436c65
 
 `;
 const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=764dd5634dc2ea4c9de71e7b62436c65
@@ -9,6 +9,7 @@ const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=Stockhol
 // const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=764dd5634dc2ea4c9de71e7b62436c65`;
 // const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=764dd5634dc2ea4c9de71e7b62436c65`;
 
+//const text = document.getElementById("text") TEST
 const container = document.getElementById("container");
 const weather = document.getElementById("weather");
 const forecast = document.getElementById("forecast");
@@ -50,6 +51,7 @@ const weatherData = () => {
           container.style.background = "#f7e9b9";
           container.style.color = "#2a5510";
           weatherIcon = "sunglassestest";
+          //text.innerHtml += `<h1>Get your sunnies on. ${city} is looking rather great today.</h1>`;// DOESNT WORK
         } else if (mainDescription === "Rain") {
           container.style.background = "#bde8fa" 
           container.style.color = "#164a68";
@@ -73,7 +75,7 @@ const weatherData = () => {
         </div>
         `;
 
-      
+    
        
         //function to display todays weather from description value
         //  if (mainDescription === "Clear") {
@@ -112,6 +114,7 @@ const weatherData = () => {
 //call on function weatherData
 weatherData();
 
+text.innerHtml =+ `<p>hello</p>`
 //function to display 5-day forecast
 
 const forecastData = () => {
@@ -130,8 +133,9 @@ const forecastData = () => {
         const date = new Date(day.dt_txt);
         const days = date.toLocaleDateString("en-US", { weekday: "short" });
         forecast.innerHTML += `
+        <div id="forecast-list">
         <p>${days}</p>
-        <p>${day.main.temp.toFixed(1)}</p>`;
+        <p>${day.main.temp.toFixed(1)}°</p></div>`;
         //console.log(days)
       });
 
