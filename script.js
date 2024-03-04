@@ -17,8 +17,6 @@ const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 const today = new Date()
 const currentTime = today.getHours()
 
-console.log(currentTime)
-
 //Fetching the API and converting to Json
 const getData = (city) => {
   fetch(URL(city))
@@ -84,12 +82,15 @@ const filterByTime = (data) => {
   item.dt_txt.includes('12:00'))
   const fourDaysFilter = filteredForecast.slice(1)
   forecastContainer.innerHTML = ''
-  if (currentTime >= 12) {
+  if (currentTime >= 13) {
   displayForecast(filteredForecast)
   } else {
   displayForecast(fourDaysFilter)
   }
+  console.log(fourDaysFilter)
+console.log(filteredForecast)
 }
+
 
 //function to display all weather data for the upcoming days
 const displayForecast = (array) => {
