@@ -50,3 +50,19 @@ h3 {
     margin-left: 180px;
     width: 146px;
 }
+
+.forecast-container {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 40px;
+}
+
+.day-container {
+    padding-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (min-width:671px) and (max-width:1024px) {}
+
+@media (min-width: 1024px) {}
