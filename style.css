@@ -62,12 +62,12 @@ body {
 }
 
 .weather h1 {
-  font-size: 70px;
+  font-size: 170px;
   font-weight: 500;
 }
 
 .weather h2 {
-  font-size: 30px; 
+  font-size: 70px; 
   font-weight: 400;
   margin-top: -5px;
   margin-bottom: 5px;
@@ -99,7 +99,21 @@ li {
   ;
 }
 
-.sunrise-sunset{
+.sunrise-sunset {
   display: flex;
-  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+
+.sunrise-sunset div {
+  text-align: center;
+}
+
+.sunrise-sunset label {
+  font-size: 14px;
+}
+
+.sunrise-sunset h3 {
+  font-size: 15px;
+  font-weight: bold;
 }
