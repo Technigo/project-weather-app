@@ -84,15 +84,15 @@ const filterByTime = (data) => {
   const fourDaysFilter = filteredForecast.slice(1)
   forecastContainer.innerHTML = ''
   if (currentTime >= 12) {
-  displayForecast(fourDaysFilter)
-  } else {
   displayForecast(filteredForecast)
+  } else {
+  displayForecast(fourDaysFilter)
   }
 }
 
 //function to display all weather data for the upcoming days
-const displayForecast = (filteredArray) => {
-  filteredArray.forEach((day) => {
+const displayForecast = (array) => {
+  array.forEach((day) => {
     const forecastDate = new Date(day.dt * 1000)
     const dayIndex = forecastDate.getDay()
     const weekday = dayNames[dayIndex]
