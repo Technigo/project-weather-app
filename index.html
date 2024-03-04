@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <title>Weather App</title>
+</head>
+<body>
+  <div class="card">
+      <div class="search">
+        <input type="text" placeholder="enter city name" spellcheck="false">
+        <button> <img src="design/design2/icons/search-icon.svg" alt=""></button>
+      </div>
+      <div class="Weather">
+        <img class="Weather-icon" src="http://openweathermap.org/img/wn/${iconCode}.png" alt="Weather-icon">
+        <h1 class="temp">22°</h1>
+        <h2 class="city">Stockholm</h2>
+        <h2 class="description">wheather</2>
+          <div class="sunrise-sunset">
+            <div>
+              <label >sunrise</label>
+              <h3 id="sunrise">Sunrise</h3>
+            </div>
+            <div>
+              <label >sunset</label>
+              <h3 id="sunset">Sunset</h3>
+            </div>
+        <div class="forecast">
+          <ul>
+            <li>Monday<span>20°</span></li>
+            <li>Tuesday<span>23°</span></li>
+            <li>Wednesday<span>23°</span></li>
+            <li>Friday<span>23°</span></li>
+            <li>Saturday<span>23°</span></li>
+          </ul>
+        </div>
+      </div>
+  </div>
+  <script src="fetch.js"></script>
+</body>
+</html>
