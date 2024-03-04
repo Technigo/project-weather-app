@@ -9,4 +9,6 @@ Second, don't understand functions, so this was very difficult for me. I did the
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+It is far from done. Nothing is in place.
+
+(https://deluxe-smakager-88132e.netlify.app/)
