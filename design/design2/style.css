@@ -155,6 +155,7 @@ td {
     grid-column-start: 1;
     justify-self: end;
     padding: 0;
+    margin: auto;
   }
 
   .prompt img {
@@ -162,16 +163,18 @@ td {
     grid-row-start: 1;
     width: 80%;
     padding: 10%;
-    max-width: 400px;
+    max-width: 300px;
   }
 }
 
 /* --- DESKTOP --- */
 
 @media (min-width: 900px) {
+  body {
+    padding: 40px 60px 40px 60px;
+  }
   #prompt-text {
     font-size: 45px;
-    margin: auto;
   }
 
   td {

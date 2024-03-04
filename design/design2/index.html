@@ -8,7 +8,7 @@
     <title>Weather app</title>
   </head>
   <body class="clear">
-    <div class="error" id="error"></div>
+    <div class="error" id="current-weather-error"></div>
     <section class="today">
       <p id="current-weather"></p>
       <p id="sunrise"></p>
@@ -17,12 +17,11 @@
     <section class="prompt">
       <img
         id="icon"
-        src="./icons/noun_Sunglasses_2055147.svg"
-        alt="Sunglasses"
       />
-      <h1 id="prompt-text">Hello! It's nice outside!</h1>
+      <h1 id="prompt-text"></h1>
     </section>
     <section class="forecast">
+      <div class="error" id="forecast-error"></div>
       <table>
         <tbody id="forecast-table"></tbody>
         </tbody>

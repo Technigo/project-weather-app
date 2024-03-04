@@ -1,5 +1,6 @@
 //////////////// DOM SELECTORS //////////////////
-const errorDiv = document.getElementById("error");
+const currentWeatherError = document.getElementById("current-weather-error");
+const forecastError = document.getElementById("forecast-error");
 const currentWeather = document.getElementById("current-weather");
 const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
@@ -10,36 +11,15 @@ const forecastTable = document.getElementById("forecast-table");
 //////////////// GLOBAL VARIABLES ///////////////
 const MY_API_KEY = "31320abec19306a046f96f4c46f01157";
 const BASE_URL = "https://api.openweathermap.org/data/2.5";
+let currentWeatherMain = "";
 
-// // Bergen rain
-// const coordinates = {
-//   lat: 60.39299,
-//   lon: 5.32415,
-// };
-// Tripoli
-// const coordinates = {
-//   lat: 32.885353,
-//   lon: 13.180161,
-// };
-// Göteborg
+// Set coordinates to Göteborg, Sweden
 const coordinates = {
-  lat: 57.721595,
-  lon: 12.0253,
+  lat: 57.72156,
+  lon: 12.02542,
 };
-// Usseglio snow
-// const coordinates = {
-//   lat: 45.23274,
-//   lon: 7.21993,
-// };
-
-// // Ciampino thunderstorm
-// const coordinates = {
-//   lat: 32.563,
-//   lon: -98.802,
-// };
 
 const city = "Göteborg";
-let currentWeatherMain = "";
 
 ///////////// Functions to fetch weather //////////////
 
@@ -50,7 +30,7 @@ const fetchForecast = () => {
     .then((forecastData) => handleForecastData(forecastData))
     .catch((error) => {
       console.log(error);
-      errorDiv.innerHTML = "Something went wrong";
+      forecastError.innerHTML = "Couldn't fetch forecast";
     });
 };
 
@@ -59,15 +39,16 @@ const fetchCurrentWeather = () => {
   fetch(URL)
     .then((response) => response.json())
     .then((currentWeatherData) => handleCurrentWeatherData(currentWeatherData))
-    .then(fetchForecast) // fetch forecast after fetching current weather data
+    // fetch forecast after fetching current weather data:
+    .then(fetchForecast)
     .catch((error) => {
       console.log(error);
-      errorDiv.innerHTML = "Something went wrong";
+      currentWeatherError.innerHTML = "Couldn't fetch current weather";
     });
 };
 fetchCurrentWeather();
 
-///////////// Function to format time //////////////
+////// Function to format time //////
 
 const formatTime = (seconds) => {
   return new Date(seconds * 1000).toLocaleTimeString([], {
@@ -76,7 +57,7 @@ const formatTime = (seconds) => {
   });
 };
 
-//////// Functions to update HTML ////////
+////// Functions to update HTML //////
 
 const updatePrompt = (currentWeatherData) => {
   icon.setAttribute("src", getWeatherIconURL(currentWeatherMain));
@@ -102,11 +83,13 @@ const updatePrompt = (currentWeatherData) => {
       document.body.className = "rain";
       break;
     case "Snow":
+      icon.setAttribute("alt", "Snowflake");
       icon.className = "snow-icon";
       promptText.innerHTML = `Slide right into your slippers. It's snowing in ${city} today.`;
       document.body.className = "snow";
       break;
     case "Thunderstorm":
+      icon.setAttribute("alt", "Thunderstorm");
       icon.className = "thunderstorm-icon";
       promptText.innerHTML = `Light your candles. A thunderstorm is rolling in over ${city} today.`;
       document.body.className = "thunderstorm";
@@ -149,21 +132,21 @@ const updateForecast = (filteredForecastList) => {
   });
 };
 
-///////////// Function to update HTML //////////////
+////// Functions to handle weather data //////
 
 const handleCurrentWeatherData = (currentWeatherData) => {
-  // currentWeatherMain = currentWeatherData.weather[0].main;
-  currentWeatherMain = "Snow";
+  currentWeatherMain = currentWeatherData.weather[0].main;
+  // Activate to set a certain type of weather condition, e.g. "Clear":
+  //currentWeatherMain = "Clear";
   updateCurrentWeather(currentWeatherData);
   updatePrompt(currentWeatherData);
   console.log(currentWeatherData);
 };
 
 const handleForecastData = (forecastData) => {
-  console.log("forecast data", forecastData);
   const filteredForecast = forecastData.list.filter((listItem) => {
-    //filter list items
-    const date = new Date(listItem.dt * 1000); //convert to milliseconds and create date object
+    // filter list items:
+    const date = new Date(listItem.dt * 1000); // convert to milliseconds and create date object
     if (
       date.getUTCHours() === 12 &&
       date > getFirstDateOfForecast() &&
@@ -174,11 +157,10 @@ const handleForecastData = (forecastData) => {
       return false;
     }
   });
-  console.log(filteredForecast);
   updateForecast(filteredForecast);
 };
 
-////// Functions to recieve days for forecast //////
+////// Functions to recieve dates and weekdays for forecast //////
 
 const getFirstDateOfForecast = () => {
   let date = new Date();
@@ -201,6 +183,8 @@ const getWeekday = (date) => {
   const index = date.getDay();
   return weekdayArr[index];
 };
+
+////// Functions to get icons //////
 
 const getWeatherIconURL = (weather) => {
   switch (weather) {
