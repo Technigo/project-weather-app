@@ -71,7 +71,7 @@ header i {
   font-size: var(--font-size-l);
 }
 
-#search {
+.search input {
   padding: 5px;
   line-height: 1.5rem;
   border: none;

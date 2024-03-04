@@ -1,5 +1,6 @@
 // DOM-Selectors
 const weatherBackground = document.getElementById("weather-background");
+const searchInput = document.getElementById("search");
 const todaysTemperature = document.getElementById("todays-temperature");
 const weatherLocation = document.getElementById("weather-location");
 const todaysWeather = document.getElementById("todays-weather");
@@ -10,13 +11,19 @@ const forecastList = document.getElementById("forecast-list");
 
 // Creating API URL called weatherTodayURL
 const BASE_TODAY_URL = "https://api.openweathermap.org/data/2.5/weather?";
-const city = "Lundsberg";
+let city = "Lundsberg";
 const API_KEY = "ebcad7517d4d5102daa2078b4d1b8409";
-const weatherTodayURL = `${BASE_TODAY_URL}q=${city}&units=metric&APPID=${API_KEY}`;
+let weatherTodayURL = `${BASE_TODAY_URL}q=${city}&units=metric&APPID=${API_KEY}`;
 
 // Function to update UI with todays weather
 const updateWeatherToday = (weatherTodayData) => {
   /* ............START OF created variables........... */
+  if (weatherTodayData.cod === "404") {
+    // If city is not found, display an alert
+    alert("Sorry, the city was not found. Please try again.");
+    return; // Exit the function to prevent further execution
+  }
+  // If city is found, continue with UI
   const temperatureTodayRounded = weatherTodayData.main.temp.toFixed(1);
   const weatherTodayLocation = weatherTodayData.name;
   // Creating a weatherTodayDescription with capital starting-letter
@@ -93,6 +100,8 @@ const updateWeatherToday = (weatherTodayData) => {
    <p> sunset ${sunsetTimeFormatted} </p>`;
 
   // Applying different images/icons based on time of day
+  // Clear the innerHTML before adding new images
+  todaysTimeOfDay.innerHTML = "";
   if (
     formattedLocalTime >= sunriseTimeFormatted &&
     formattedLocalTime <= sunsetTimeFormatted
@@ -110,29 +119,34 @@ const updateWeatherToday = (weatherTodayData) => {
 };
 
 // The fetching-function
-const fetchWeatherToday = () => {
-  fetch(weatherTodayURL)
+const fetchWeatherToday = (url) => {
+  fetch(url)
     .then((response) => {
       return response.json();
     })
     .then((weatherTodayData) => {
       return updateWeatherToday(weatherTodayData);
+    })
+    .catch((error) => {
+      console.error("Error fetching today's weather", error);
     });
 };
-
-fetchWeatherToday();
 
 // Creating API URL called weatherForecastURL
 const BASE_FORECAST_URL = "https://api.openweathermap.org/data/2.5/forecast?";
 
-const weatherForecastURL = `${BASE_FORECAST_URL}q=${city}&units=metric&APPID=${API_KEY}`;
+let weatherForecastURL = `${BASE_FORECAST_URL}q=${city}&units=metric&APPID=${API_KEY}`;
 
 // Function to update UI with weather-forecast
 
 const updateWeatherForecast = (weatherForecastData) => {
+  // If city is found, continue with updating UI
   const filteredWeatherData = weatherForecastData.list.filter((weatherData) =>
     weatherData.dt_txt.includes("12:00:00")
   );
+
+  //Clear previous forecast data
+  forecastList.innerHTML = "";
 
   filteredWeatherData.forEach((filteredData) => {
     // Convert to millieseconds
@@ -147,7 +161,7 @@ const updateWeatherForecast = (weatherForecastData) => {
     // Get icon-code for weather
     const weatherIconCode = filteredData.weather[0].icon;
     // Construct icon URL
-    const iconUrl = `http://openweathermap.org/img/wn/${weatherIconCode}.png`;
+    const iconUrl = `https://openweathermap.org/img/wn/${weatherIconCode}.png`;
     // Get temperature
     const temperature = filteredData.main.temp.toFixed(0);
 
@@ -161,13 +175,43 @@ const updateWeatherForecast = (weatherForecastData) => {
   });
 };
 
-const fetchWeatherForecast = () => {
-  fetch(weatherForecastURL)
+const fetchWeatherForecast = (url) => {
+  fetch(url)
     .then((response) => response.json())
     .then((weatherForecastData) => {
       updateWeatherForecast(weatherForecastData);
+    })
+    .catch((error) => {
+      console.error("Error fetching weather forecast:", error);
     });
 };
 
-// Calling the function to fetch the forecast data
-fetchWeatherForecast();
+// Trying function for the search-bar
+const loadSearchResults = (event) => {
+  if (event.key === "Enter") {
+    const searchValue = searchInput.value.trim().toLowerCase();
+
+    if (searchValue) {
+      // Updating city with users input
+      city = searchValue;
+
+      // Update API URLs with the new city
+      weatherTodayURL = `${BASE_TODAY_URL}q=${city}&units=metric&APPID=${API_KEY}`;
+      weatherForecastURL = `${BASE_FORECAST_URL}q=${city}&units=metric&APPID=${API_KEY}`;
+
+      fetchWeatherToday(weatherTodayURL);
+      fetchWeatherForecast(weatherForecastURL);
+      // Clear search input
+      searchInput.value = "";
+    } else {
+      alert("Please enter a city name.");
+    }
+  }
+};
+
+// Event listener searchinput
+searchInput.addEventListener("keypress", loadSearchResults);
+
+// Calling the function to fetch the todaysweather & forecast data
+fetchWeatherToday(weatherTodayURL);
+fetchWeatherForecast(weatherForecastURL);
