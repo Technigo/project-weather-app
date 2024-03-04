@@ -12,41 +12,54 @@ const forecastTable = document.getElementById("forecast-table");
 const MY_API_KEY = "31320abec19306a046f96f4c46f01157";
 const BASE_URL = "https://api.openweathermap.org/data/2.5";
 let currentWeatherMain = "";
+let city = "";
 
-// Set coordinates to Göteborg, Sweden
-const coordinates = {
-  lat: 57.72156,
-  lon: 12.02542,
+////// Function to get user's coordinates //////
+
+const getCoordinates = () => {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+      fetch(
+        `http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=5&appid=${MY_API_KEY}`
+      )
+        .then((response) => response.json())
+        .then((json) => {
+          city = json[0].name;
+          fetchCurrentWeather(latitude, longitude);
+        });
+    });
+  } else {
+    currentWeatherError.innerHTML =
+      "Geolocation is not supported by this browser.";
+  }
 };
-
-const city = "Göteborg";
+getCoordinates();
 
 ///////////// Functions to fetch weather //////////////
 
-const fetchForecast = () => {
-  const URL = `${BASE_URL}/forecast?lat=${coordinates.lat}&lon=${coordinates.lon}&units=metric&appid=${MY_API_KEY}`;
+const fetchForecast = (latitude, longitude) => {
+  const URL = `${BASE_URL}/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${MY_API_KEY}`;
   fetch(URL)
     .then((response) => response.json())
     .then((forecastData) => handleForecastData(forecastData))
     .catch((error) => {
-      console.log(error);
       forecastError.innerHTML = "Couldn't fetch forecast";
     });
 };
 
-const fetchCurrentWeather = () => {
-  const URL = `${BASE_URL}/weather?lat=${coordinates.lat}&lon=${coordinates.lon}&units=metric&appid=${MY_API_KEY}`;
+const fetchCurrentWeather = (latitude, longitude) => {
+  const URL = `${BASE_URL}/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${MY_API_KEY}`;
   fetch(URL)
     .then((response) => response.json())
     .then((currentWeatherData) => handleCurrentWeatherData(currentWeatherData))
     // fetch forecast after fetching current weather data:
-    .then(fetchForecast)
+    .then(() => fetchForecast(latitude, longitude))
     .catch((error) => {
-      console.log(error);
       currentWeatherError.innerHTML = "Couldn't fetch current weather";
     });
 };
-fetchCurrentWeather();
 
 ////// Function to format time //////
 
@@ -70,6 +83,16 @@ const updatePrompt = (currentWeatherData) => {
       break;
     case "Clouds":
     case "Atmosphere":
+    case "Mist":
+    case "Smoke":
+    case "Haze":
+    case "Dust":
+    case "Fog":
+    case "Sand":
+    case "Dust":
+    case "Ash":
+    case "Squall":
+    case "Tornado":
       icon.setAttribute("alt", "Cloud");
       icon.className = "clouds-icon";
       promptText.innerHTML = `Light a fire and get cosy. ${city} is looking grey today.`;
@@ -104,7 +127,6 @@ const updatePrompt = (currentWeatherData) => {
 const updateCurrentWeather = (currentWeatherData) => {
   // format current weather:
   const weatherDescription = currentWeatherData.weather[0].main.toLowerCase();
-  console.log(weatherDescription);
   const currentTemp = Math.round(currentWeatherData.main.temp * 10) / 10;
   currentWeather.innerHTML = `${weatherDescription} | ${currentTemp}°`;
   // format sunrise time:
@@ -140,7 +162,6 @@ const handleCurrentWeatherData = (currentWeatherData) => {
   //currentWeatherMain = "Clear";
   updateCurrentWeather(currentWeatherData);
   updatePrompt(currentWeatherData);
-  console.log(currentWeatherData);
 };
 
 const handleForecastData = (forecastData) => {
@@ -191,7 +212,16 @@ const getWeatherIconURL = (weather) => {
     case "Clear":
       return "./icons/noun_Sunglasses_2055147.svg";
     case "Clouds":
-    case "Atmosphere":
+    case "Mist":
+    case "Smoke":
+    case "Haze":
+    case "Dust":
+    case "Fog":
+    case "Sand":
+    case "Dust":
+    case "Ash":
+    case "Squall":
+    case "Tornado":
       return "./icons/noun_Cloud_1188486.svg";
     case "Rain":
     case "Drizzle":
@@ -210,7 +240,16 @@ const getForecastIconURL = (weather) => {
     case "Clear":
       return "./icons/sun.png";
     case "Clouds":
-    case "Atmosphere":
+    case "Mist":
+    case "Smoke":
+    case "Haze":
+    case "Dust":
+    case "Fog":
+    case "Sand":
+    case "Dust":
+    case "Ash":
+    case "Squall":
+    case "Tornado":
       return "./icons/noun_Cloud_1188486.svg";
     case "Rain":
     case "Drizzle":
