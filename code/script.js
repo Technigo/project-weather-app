@@ -22,7 +22,7 @@ const getCoordinates = () => {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
       fetch(
-        `http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=5&appid=${MY_API_KEY}`
+        `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=5&appid=${MY_API_KEY}`
       )
         .then((response) => response.json())
         .then((json) => {
