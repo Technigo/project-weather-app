@@ -1,81 +1,65 @@
 * {
-    margin: 0;
-    padding: 0; 
+  margin: 0;
+  padding: 0;
 }
 
-body{
-    font-family: Montserrat;  
-    color:  #F47775;
-    display: flex;
-    justify-content: center;
-
+body {
+  font-family: Montserrat;
+  display: flex;
+  justify-content: center;
 }
 
 
+#container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 25px;
+  max-width: 250px;
+  margin: 20px;
+  border-radius: 20px;
+  box-shadow: 0 8px 16px 0 rgba(244, 169, 169, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 
-    
-#cloud { 
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        max-width: 250px;
-        padding:25px;
-        margin:20px;
-        border-radius:20px;
-        box-shadow: 0 8px 16px 0 rgba(244, 169, 169, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19);color:  #F47775;
-        background-color: white;
-
+/* #clouds {
+  color: #f47775;
+  background-color: white;
+  
 }
 
 #rain {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    max-width: 250px;
-    padding:25px;
-    margin:20px;
-    border-radius:20px;
-    box-shadow: 0 8px 16px 0 rgba(244, 169, 169, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    background-color:  #BDE8FA;
-    color: #164A68;
+  background-color: #bde8fa;
+  color: #164a68;
 }
 
 #clear {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    max-width: 250px;
-    padding:25px;
-    margin:20px;
-    border-radius:20px;
-    box-shadow: 0 8px 16px 0 rgba(244, 169, 169, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    background-color:   #F7E9B9;
-    color:  #2A5510;    ;
-}
-
-
+  background-color: #f7e9b9;
+  color: #2a5510;
+} */
 
 .weather-icon {
-    width:60px;
-    height:40px;
-    margin-top:50px;
-    margin-bottom:10px;
+  width: 60px;
+  height: 40px;
+  margin-top: 50px;
+  margin-bottom: 10px;
 }
 
 .p {
-    margin-bottom:30px;
+  margin-bottom: 30px;
 }
 
 h1 {
-    margin-bottom:10px;
-    font-weight:600;
+  margin-bottom: 10px;
+  font-weight: 600;
 }
 
 h2 {
-    margin-bottom:3px;
-    font-weight: 400;
+  margin-bottom: 3px;
+  font-weight: 400;
 }
 
 h4 {
-    font-weight: 200;
+  font-weight: 200;
 }
+
