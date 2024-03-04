@@ -108,6 +108,8 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
                     maxTempPerDay = maxTemp
                     const item = {
                         day: myDay,
+                        weather_icon: weatherIcon,
+                        weather_description: weatherDescription,
                         min_temp: minTemp,
                         max_temp: maxTemp
                     }
@@ -131,7 +133,6 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
                 if (currentHour === myHour || currentHour === myHour + 1 || currentHour === myHour - 1) {
                     const foundItem = myTempArray.find(i => i.day === myDay)
                     foundItem.weather_description = weatherDescription
-                    //foundItem.cloud = cloud
                     foundItem.weather_icon = weatherIcon
                     
                 }
