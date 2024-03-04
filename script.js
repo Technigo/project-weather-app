@@ -1,14 +1,4 @@
-//Step 1 - Get started with the weather API
-fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=bb3a8ca602b6560b4bf988de0be7f379")
-    .then((response)=>{
-        return response.json();
-    })
-    .then((json)=>{
-        console.log(json)
-    })
-
-
-// ### Step 2 - Present some data on your web app
+// Present some data on the web app
 const todayWeather = document.getElementById("todayWeather");
 const allWeather = document.getElementById("allWeather");
 
@@ -28,10 +18,7 @@ todayWeather.innerHTML +=`
 
 const weatherData={
     sunny:'design/design1/assets/sun.svg',
-    moon:'design/design1/assets/moon.svg',
-    clear:'design/design1/assets/Group36.png',
-    cloudSun:'design/design1/assets/Group34.png',
-    cloud:'design/design1/assets/Group16.png'
+    moon:'design/design1/assets/moon.svg'
 }
 
 const ShowTodayWeather =()=>{
@@ -111,6 +98,8 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
                 const maxTemp = Math.round(el.main.temp_max)
                 const weatherDescription = el.weather[0]?.description
                 const weatherIcon = el.weather[0]?.icon
+
+                console.log(myHour)
                 
                 // Set the min and max temp for each day
                 if(myDay!==previousDay){
@@ -142,8 +131,10 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
                     const foundItem = myTempArray.find(i => i.day === myDay)
                     foundItem.weather_description = weatherDescription
                     foundItem.weather_icon = weatherIcon
+                    
                 }
             })
+            console.log(myTempArray)
 
             myTempArray.forEach(row => {
                 allWeather.innerHTML+=`
