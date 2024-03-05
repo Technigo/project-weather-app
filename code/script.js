@@ -42,7 +42,6 @@ const weatherData = () => {
         document.getElementById(
           "text"
         ).innerHTML = `<h1>Get your sunnies on. ${city} is looking rather great today.</h1>`;
-
         weatherIcon = "sunglassestest";
       } else if (mainDescription === "Rain") {
         container.style.background = "#bde8fa";
