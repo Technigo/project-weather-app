@@ -1,8 +1,9 @@
 const apiKey = '3575626ed7c8ddf8baca764025081251';
-const baseUrl = 'https://api.openweathermap.org/data/2.5';
+const baseUrl1 = 'https://api.openweathermap.org/data/2.5';
+const baseUrl2 = 'https://api.openweathermap.org/data/2.5';
 
 function fetchWeather(city) {
-  const apiUrl = `${baseUrl}/weather?q=${city}&units=metric&APPID=${apiKey}`;
+  const apiUrl = `${baseUrl1}/weather?q=${city}&units=metric&APPID=${apiKey}`;
 
   fetch(apiUrl)
     .then(response => {
@@ -29,6 +30,9 @@ function fetchWeather(city) {
       // Update sunrise and sunset elements
       document.getElementById('sunrise').textContent = `Sunrise: ${sunriseTime}`;
       document.getElementById('sunset').textContent = `Sunset: ${sunsetTime}`;
+
+      // Fetch weather forecast after current weather data is fetched
+      fetchWeatherForecast(city);
     })
     .catch(error => {
       console.error('There was a problem with the fetch operation:', error);
@@ -50,3 +54,67 @@ document.querySelector('.search input').addEventListener('keypress', function(ev
 
 // Initial fetch for default city (Stockholm)
 fetchWeather('Stockholm');
+
+function fetchWeatherForecast(city) {
+  const apiUrl = `${baseUrl2}/forecast?q=${city}&units=metric&appid=${apiKey}`;
+
+  fetch(apiUrl)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Process the forecast data here
+      const forecastList = data.list;
+
+      // Filter forecast data to get weather for the next seven days
+      const today = new Date();
+      const sevenDaysFromNow = new Date(today);
+      sevenDaysFromNow.setDate(sevenDaysFromNow.getDate() + 7);
+      const filteredForecast = forecastList.filter(item => {
+        const itemDate = new Date(item.dt * 1000);
+        return itemDate <= sevenDaysFromNow;
+      });
+      
+      // Display the forecast
+      displayForecast(filteredForecast);
+    })
+    .catch(error => {
+      console.error('There was a problem with the fetch operation:', error);
+    });
+}
+
+function displayForecast(forecastList) {
+  const dayList = document.querySelector('.day-list');
+  const temperatureList = document.querySelector('.temperature-list');
+  
+  // Clear previous forecast data
+  dayList.innerHTML = '';
+  temperatureList.innerHTML = '';
+
+  let currentDay = null; // Variable to track the current day
+
+  forecastList.forEach(item => {
+    const date = new Date(item.dt * 1000);
+    const day = date.toLocaleDateString('en-US', { weekday: 'short' });
+    const temperature = Math.round(item.main.temp);
+    
+    // Check if it's a new day
+    if (day !== currentDay) {
+      // Create list item for day of the week
+      const dayListItem = document.createElement('li');
+      dayListItem.textContent = day;
+      dayList.appendChild(dayListItem);
+
+      // Create list item for temperature
+      const temperatureListItem = document.createElement('li');
+      temperatureListItem.textContent = temperature + '°';
+      temperatureList.appendChild(temperatureListItem);
+
+      // Update current day
+      currentDay = day;
+    }
+  });
+}

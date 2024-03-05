@@ -7,7 +7,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
   <title>Weather App</title>
 </head>
 <body>
@@ -17,7 +16,7 @@
       <button> <img src="design/design2/icons/search-icon.svg" alt=""></button>
     </div>
     <div class="Weather">
-      <img class="Weather-icon" src="http://openweathermap.org/img/wn/${iconCode}.png" alt="Weather-icon">
+      <img class="Weather-icon" src="" alt="Weather-icon">
       <h1 class="temp">22°</h1>
       <h2 class="city">Stockholm</h2>
       <h2 class="description">weather</h2>
@@ -32,15 +31,17 @@
         </div>
       </div>
       <div class="forecast">
-        <ul>
-          <li>Monday<span>20°</span></li>
-          <li>Tuesday<span>23°</span></li>
-          <li>Wednesday<span>23°</span></li>
-          <li>Friday<span>23°</span></li>
-          <li>Saturday<span>23°</span></li>
-        </ul>
+        <div class="forecast-left">
+          <ul class="day-list">
+          </ul>
+        </div>
+        <div class="forecast-right">
+          <ul class="temperature-list">
+
+          </ul>
+        </div>
       </div>
-    </div>
+      
   </div>
   <script src="fetch.js"></script>
 </body>

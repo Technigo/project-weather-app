@@ -117,3 +117,19 @@ li {
   font-size: 15px;
   font-weight: bold;
 }
+.forecast {
+  display: flex;
+}
+
+.forecast-left {
+  flex: 1;
+}
+
+.day-list, .temperature-list {
+  list-style: none;
+  padding: 0;
+}
+
+.forecast-item {
+  margin-bottom: 10px;
+}
