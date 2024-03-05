@@ -18,10 +18,6 @@ const units = "metric";
 const baseForecast_URL = "https://api.openweathermap.org/data/2.5/forecast?"
 const forecast_URL = `${baseForecast_URL}q=${city}&units=${units}&APPID=${API_Key}`;
 
-// Create different styling for different weathers
-const sunnyWeather = () => {
-
-}
 
 // Update text and image depending on weather
 const sunny = () => {
