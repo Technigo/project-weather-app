@@ -176,7 +176,6 @@ const fetchWeatherForecast = (cityName) => {
     })
     .then((json) => {
       //Extract today's index
-      //BUG FIX const todayIndex = new Date(json.list[0].dt_txt).getDay()
       const currentDate = new Date()
       const currentDayIndex = currentDate.getDay()
 
@@ -230,7 +229,6 @@ const fetchWeatherForecast = (cityName) => {
 
       //Empty previous forecast
       forecastContainer.innerHTML = ""
-      console.log(fiveDayArray)
       //Render five-day forecast
       for (let i = 0; i < 5; i++) {
         const currentDay = fiveDayArray.slice(i * 4, (i + 1) * 4)
