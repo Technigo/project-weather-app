@@ -26,7 +26,7 @@ let timeForecast = ""
 let temperatureForecast = ""
 
 //Array to help show the day of the week correctly
-const daysOfTheWeek = ["sun", "mon", "tue", "wed", "thu", "fri", "sat,"]
+const daysOfTheWeek = ["sun", "mon", "tue", "wed", "thu", "fri", "sat",]
 
 //Fetches current weather data
 const fetchWeatherData = (urlCity) => {
