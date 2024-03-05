@@ -7,55 +7,33 @@ body {
   font-family: Montserrat;
   display: flex;
   justify-content: center;
-  background-color:lightpink;
+  background-color: lightpink;
 }
-
-
-/*this is a test for text!*/
-
-#text { 
-    color:black;
-}
-
 
 #container {
   display: flex;
   justify-content: center;
   flex-direction: column;
   padding: 30px;
-  max-width: 250px;
-  margin: 20px;
+  max-width: 400px;
+  margin: 40px;
   border-radius: 20px;
   box-shadow: 0 8px 16px 0 rgba(244, 169, 169, 0.2),
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-/* #clouds {
-  color: #f47775;
-  background-color: white;
-  
+#text {
+  font-weight: 900;
 }
 
-#rain {
-  background-color: #bde8fa;
-  color: #164a68;
-}
-
-#clear {
-  background-color: #f7e9b9;
-  color: #2a5510;
-} */
-
-#forecast-list{
-    display: flex;
-    justify-content: space-between;
-    font-weight: 300;
-    border-bottom: dotted;
-    font-size: 15;
-    margin: 4px;
-    border-width: 1px;
-
-       
+#forecast-list {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 300;
+  border-bottom: dotted;
+  font-size: 15;
+  margin: 4px;
+  border-width: 1px;
 }
 
 .weather-icon {
@@ -63,10 +41,6 @@ body {
   height: 40px;
   margin-top: 50px;
   margin-bottom: 10px;
-}
-
-.p {
-  margin-bottom: 30px;
 }
 
 h1 {
@@ -82,4 +56,3 @@ h2 {
 h4 {
   font-weight: 200;
 }
-
