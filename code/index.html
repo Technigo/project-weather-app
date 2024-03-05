@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="./assets/weather-icon.png" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Weather App</title>
+  </head>
+  <body>
+    <div id="container" class="container">
+      <!--Div for upper part of app-->
+      <div class="app-container">
+      <div class="upper-section" id="upper-background">
+        <div class="search-bar">
+          <form class="search-form" id="search-form">
+            <input class="city-search" id="city-search-input" type="text" placeholder="Search city" />
+          </form>
+        </div>
+        <div class="current-weather">
+          <div class="upper-text">
+            <div class="temp-text">
+              <p class="temperature" id="temperature"></p>
+              <p class="celsius" id="celsius">°C</p>
+            </div>
+            <p class="city" id="city"></p>
+            <p class="weather" id="weather"></p>
+          </div>
+          <div class="sun-text" id="sun-text">
+            <p class="sunrise-text">sunrise</p>
+            <p id="sunrise"></p>
+            <p class="sunset-text">sunset</p>
+            <p id="sunset"></p>
+          </div>
+        </div>
+      </div>
+      <!--Div for lower part of app-->
+      <div class="lower-section">
+        <!--Section for weather the upcoming 5 days-->
+        <div class="forecast-container" id="forecast-container"></div>
+    </div>
+    </div>
+  
+
+    <script src="./script.js"></script>
+  </body>
+</html>
