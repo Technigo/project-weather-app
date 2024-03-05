@@ -110,12 +110,14 @@ body {
   background-color: #fafafa;
 }
 
-.day-container img {
-  width: 15%;
+.forecast-image {
+  width: 60px;
 }
 
 .min-max-temp {
   display: flex;
+  justify-content: flex-end;
+  width: 85px;
 }
 
 .forecast-day {
