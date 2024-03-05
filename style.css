@@ -114,8 +114,7 @@ button {
 }
 
 .nav-list {
-  display: flex;
-  flex-direction: column;
+  max-height: 70vh;
 }
 
 .fa-2xl {
@@ -172,7 +171,7 @@ button {
   align-items: center;
   background: var(--day-gradient);
   color: white;
-  padding: calc(var(--space) * 2);
+  padding: var(--space);
   padding-top: 0;
   border-bottom-left-radius: var(--radus);
   border-bottom-right-radius: var(--radus);
@@ -226,13 +225,13 @@ button {
   display: flex;
   flex-grow: 1;
   justify-content: space-between;
-  padding: 1rem 1rem 0 0;
-  gap: var(--space);
+  padding: 1rem 0;
+  gap: 1rem;
 }
 
 .sun div {
   display: flex;
-  gap: var(--space);
+  flex-wrap: wrap;
   width: 50%;
 }
 
@@ -351,6 +350,10 @@ button {
 
 /* Media */
 @media all and (min-width: 667px) {
+.weather-background {
+  padding: calc(var(--space) * 2);
+}
+
   .weather-img {
     width: 20%;
     transform: translateY(-10%);
