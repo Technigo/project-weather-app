@@ -1,0 +1,96 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.weather-container {
+    width: 375px;
+    height: 812px;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sunny-weather {
+    background-color: #F7E9B9;
+    color: #2A5510;
+    padding: 20px;
+}
+
+.rainy-weather {
+    background-color: #BDE8FA;
+    color: rgb(22, 74, 104);
+    padding: 20px;
+}
+
+.cloudy-weather {
+    background-color: #F4F7F8FF;
+    color: #F47775;
+    padding: 20px;
+}
+
+.city-name {
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px; 
+}
+
+.temperature {
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.weather-description {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.sunrise-sunset {
+    font-size: 10px;
+    text-align: center;
+    margin: 2em 0;
+}
+
+.forecast {
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.forecast-day {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.day-name, .day-temp {
+    text-align: center;
+    padding: 0 10px;
+}
+
+/* Responsiv design  */
+@media (max-width: 320px) {
+    .weather-container {
+        width: 320px;
+        padding: 10px;
+    }
+    .city-name, .temperature, .weather-description, .sunrise-sunset {
+        font-size: smaller;
+    }
+}
