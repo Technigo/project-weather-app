@@ -12,7 +12,7 @@ const backImg = document.querySelector(".backimg");
 const container = document.getElementById("weather");
 const hamburger = document.getElementById("hamburger");
 const dropdown = document.getElementById("dropdown");
-const dinPlats = document.getElementById("din-plats");
+const yourLocation = document.getElementById("your location");
 const stockholm = document.getElementById("stockholm");
 
 ///------------------------ first weather fetch for today in stockholm ------------------------///
@@ -52,22 +52,22 @@ fetch(
     //make the "header" go
     // söka runt på new date o gettime
     const currentTime = new Date().getTime();
-    let WeatherIcon;
+    let weatherIcon;
     if (currentTime > sunsetTimeInSec || currentTime < sunriseTimeInSec) {
       // Night
       // and i put true on this one for the moon
-      WeatherIcon = getWeatherIcon(json.weather[0].main, true);
+      weatherIcon = getWeatherIcon(json.weather[0].main, true);
       backImg.style.backgroundImage =
         "linear-gradient(to bottom right, #161955, #444891";
     } else {
       // Day
-      WeatherIcon = getWeatherIcon(json.weather[0].main);
+      weatherIcon = getWeatherIcon(json.weather[0].main);
       backImg.style.backgroundImage =
         "linear-gradient(to bottom right, #8589FF, #E8E9FF)";
     }
 
     container.innerHTML = `
-    <img src="${WeatherIcon}"
+    <img src="${weatherIcon}"
     <div class="text">
     <h1>${json.main.temp.toFixed(1)}°C</h1>
     <p>${json.name}</p>
@@ -208,7 +208,7 @@ function fetchWeatherForecastForLocation(latitude, longitude) {
     });
 }
 
-dinPlats.addEventListener("click", function (event) {
+yourLocation.addEventListener("click", function (event) {
   event.preventDefault();
 
   fetchWeatherDataBasedOnLocation();
