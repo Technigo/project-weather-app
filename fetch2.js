@@ -118,3 +118,52 @@ function displayForecast(forecastList) {
     }
   });
 }
+function fetchWeather(city) {
+  const apiUrl = `${baseUrl1}/weather?q=${city}&units=metric&APPID=${apiKey}`;
+
+  fetch(apiUrl)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Update UI elements with the fetched data
+      document.querySelector('.temp').textContent = `${Math.round(data.main.temp)}°`;
+      document.querySelector('.city').textContent = data.name;
+
+      // Customize the description based on weather conditions
+      let description = '';
+      const weatherCode = data.weather[0].id;
+      if (weatherCode >= 200 && weatherCode < 300) {
+        description = "Get your sunnies on. It's looking rather great today.";
+      } else if (weatherCode >= 300 && weatherCode < 600) {
+        description = "Don’t forget your umbrella. It’s wet today.";
+      } else if (weatherCode >= 600 && weatherCode < 700) {
+        description = "Light a fire and get cosy. It’s looking grey today.";
+      } else {
+        description = "Weather conditions are moderate. Enjoy your day!";
+      }
+      document.querySelector('.description').textContent = description;
+
+      // Update weather icon
+      const iconCode = data.weather[0].icon;
+      const iconUrl = `http://openweathermap.org/img/wn/${iconCode}.png`;
+      document.querySelector('.Weather-icon').src = iconUrl;
+
+      // Convert sunrise and sunset times from milliseconds to a readable format
+      const sunriseTime = new Date(data.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      const sunsetTime = new Date(data.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+      // Update sunrise and sunset elements
+      document.getElementById('sunrise').textContent = `Sunrise: ${sunriseTime}`;
+      document.getElementById('sunset').textContent = `Sunset: ${sunsetTime}`;
+
+      // Fetch weather forecast after current weather data is fetched
+      fetchWeatherForecast(city);
+    })
+    .catch(error => {
+      console.error('There was a problem with the fetch operation:', error);
+    });
+}
