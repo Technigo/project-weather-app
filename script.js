@@ -255,6 +255,10 @@ menuClose.addEventListener("click", () => toggleHide(navWrapper));
 scrollArrow.addEventListener("click", () => {
   toggleFullscreen(body);
   toggleHide(weatherForecast);
+  window.scrollTo({
+    top: window.innerHeight,
+    behavior: "smooth",
+  });
 });
 
 navGeo.addEventListener("click", () => {
