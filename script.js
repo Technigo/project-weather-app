@@ -283,6 +283,13 @@ const handleCityInput = (event) => {
 }
 
 // event listener
+const input = document.getElementById('searchCity')
+input.addEventListener('keypress', function (event) {
+  if (event.key === 'Enter') {
+    event.preventDefault
+    searchButton.click()
+  }
+})
 const searchButton = document.querySelector('button')
 searchButton.addEventListener('click', handleCityInput)
 
@@ -312,3 +319,5 @@ const showPosition = (position) => {
   lat = position.coords.latitude
   lon = position.coords.longitude
 }
+
+getLocation()
