@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>Wen's weather app</title>
+  </head>
+  <body>
+    <div class="background">
+      <div class="container">
+        <header id="current-weather-field">
+          <form class="search">
+            <input
+              type="text"
+              class="searchTerm"
+              placeholder="Type a city or country name"
+            />
+            <button type="submit" class="searchButton">
+              <i class="fa fa-search"></i>
+            </button>
+          </form>
+          <div class="weather-icon-container">
+            <img id="weather-icon" />
+          </div>
+          <div class="current-weather">
+            <div id="temp">
+              <h1 id="current-temp"></h1>
+              <sup>°C</sup>
+            </div>
+            <div id="city"></div>
+            <div id="current-weather-condition"></div>
+          </div>
+          <div class="sun-condition">
+            <span>Sunrise</span>
+            <span id="sunrise"></span>
+            <span>Sunset</span>
+            <span id="sunset"></span>
+          </div>
+          <div class="weather-advice-container" id="weather-advice-container">
+            <h2></h2>
+          </div>
+          <div class="button-field" id="button-field">
+            <button class="full-view">
+              <img
+                id="button-icon"
+                src="./assets/button-icon.png"
+                alt="button icon"
+              />
+            </button>
+          </div>
+        </header>
+        <div id="loader-container">
+          <div class="loader">Loading</div>
+        </div>
+        <div class="forecast-field" id="forecast-field">
+          <table class="weather-table" id="weather-table"></table>
+        </div>
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>

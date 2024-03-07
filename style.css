@@ -1,0 +1,413 @@
+/* General settings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  height: inherit;
+  width: inherit;
+  object-fit: contain;
+}
+
+/* Background and container settings */
+.background {
+  height: 100%;
+  width: 100%;
+  max-width: 641px;
+}
+
+.container {
+  background-color: white;
+  height: inherit;
+  width: 100%;
+}
+
+header {
+  position: relative;
+  padding: 1.5rem 1.5rem 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  border-bottom-left-radius: 50% 30px;
+  border-bottom-right-radius: 50% 30px;
+}
+
+header > * {
+  color: white;
+}
+/* Weather condition classes - to be toggled from JS */
+.thunderstorm {
+  background: rgb(231, 233, 237);
+  background: linear-gradient(
+    337deg,
+    rgb(214, 217, 223) 0%,
+    rgba(103, 122, 126, 1) 100%
+  );
+}
+
+.snow {
+  background: rgb(228, 236, 251);
+  background: linear-gradient(
+    337deg,
+    rgb(181, 201, 237) 0%,
+    rgb(157, 233, 251) 100%
+  );
+}
+
+.drizzle {
+  background: rgb(246, 247, 251);
+  background: linear-gradient(
+    337deg,
+    rgb(188, 217, 233) 0%,
+    rgb(104, 147, 176) 100%
+  );
+}
+
+.atmosphere {
+  background: rgb(221, 227, 239);
+  background: linear-gradient(
+    337deg,
+    rgb(225, 229, 236) 0%,
+    rgb(146, 165, 179) 100%
+  );
+}
+
+.rain {
+  background: rgb(246, 247, 251);
+  background: linear-gradient(
+    337deg,
+    rgb(161, 180, 193) 0%,
+    rgb(67, 125, 163) 100%
+  );
+}
+
+.clear {
+  background: rgb(221, 227, 239);
+  background: linear-gradient(
+    337deg,
+    rgb(183, 217, 238) 0%,
+    rgb(68, 176, 249) 100%
+  );
+}
+
+.clouds {
+  background: rgb(246, 247, 251);
+  background: linear-gradient(
+    337deg,
+    rgb(196, 222, 240) 0%,
+    rgb(146, 209, 241) 100%
+  );
+}
+
+.weather-icon-container {
+  height: 120px;
+  width: 120px;
+  align-self: flex-end;
+}
+
+#weather-icon {
+  display: none;
+}
+
+.sun-condition {
+  margin: 20px 0;
+}
+
+.weather-advice-container {
+  display: none;
+  padding: 1.5em 0 0 0;
+  font-size: 1.2em;
+  line-height: 2.5rem;
+  font-weight: 500;
+}
+
+.button-field {
+  display: none;
+  top: 90%;
+  left: 70%;
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  align-self: flex-end;
+}
+
+.full-view {
+  border: none;
+  cursor: pointer;
+  appearance: none;
+  background-color: inherit;
+  width: inherit;
+  height: inherit;
+}
+
+.full-view img {
+  object-fit: cover;
+  height: inherit;
+  width: inherit;
+}
+
+#temp {
+  font-size: 3rem;
+  display: flex;
+}
+
+#temp sup {
+  font-size: 2rem;
+  padding-top: 0.8rem;
+}
+
+#city {
+  font-size: 1.5rem;
+  letter-spacing: 1.5px;
+}
+
+.sun-condition {
+  display: flex;
+  margin: 10px 0px;
+  justify-content: space-between;
+}
+
+/* Loader that shows when processing API call */
+
+#loader-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 8vh;
+}
+
+.loader {
+  width: 250px;
+  height: 30px;
+  border-radius: 20px;
+  background: linear-gradient(orange 0 0) 0/0% no-repeat lightblue;
+  animation: l2 2s infinite steps(20);
+  text-align: center;
+  padding-top: 5px;
+}
+
+@keyframes l2 {
+  100% {
+    background-size: 110%;
+  }
+}
+
+/* Search bar that appears when user blocking location sharing */
+.search {
+  display: none;
+  height: 36px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.searchTerm {
+  border: 3px solid #00b4cc;
+  border-right: none;
+  width: inherit;
+  padding: 5px;
+  height: 36px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9dbfaf;
+}
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #00b4cc;
+  background: #00b4cc;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* Forecast section */
+.forecast-field {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4rem 0;
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+  margin: 0 1.5rem;
+  border-collapse: separate;
+  border-spacing: 0px 1rem;
+}
+
+tr {
+  margin: 20px 20px;
+}
+
+td {
+  font-size: 1rem;
+  padding: 5px 8px;
+  height: 2.5em;
+}
+
+.forecast-day {
+  text-align: left;
+}
+
+.forecast-range {
+  text-align: right;
+  text-wrap: nowrap;
+}
+
+.forecast-icon {
+  text-align: center;
+}
+
+/* Hover effect on forecast table */
+tr:hover td {
+  background-color: rgb(231, 229, 229, 0.5);
+}
+
+tr:hover td:last-child {
+  border-radius: 0 15px 15px 0;
+}
+
+tr:hover td:first-child {
+  border-radius: 15px 0 0 15px;
+}
+
+.show {
+  min-height: 100%;
+  border-bottom-left-radius: 0%;
+  border-bottom-right-radius: 0%;
+}
+
+.hide {
+  display: none;
+}
+
+.move {
+  position: static;
+}
+
+.show-quote {
+  display: block;
+}
+
+/* for tablet and desktop*/
+@media (min-width: 641px) and (min-height: 770px) {
+  body {
+    background: #eee;
+    background: linear-gradient(0deg, rgba(0, 0, 200, 0.2), rgba(0, 0, 200, 0));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  .container {
+    border-radius: 42px;
+    position: absolute;
+    left: 21px;
+    height: 735px;
+    width: 338px;
+    overflow: hidden;
+  }
+
+  header {
+    padding-top: 1rem;
+  }
+
+  .forecast-field {
+    margin-top: 3rem;
+  }
+
+  .button-field {
+    height: 90px;
+    width: 90px;
+  }
+
+  .weather-icon-container {
+    height: 100px;
+    width: 100px;
+  }
+
+  .background {
+    background-image: url(./assets/iphone-frame.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 768px;
+    width: 376px;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .move {
+    position: static;
+  }
+}
+
+/* for larger monitor or screen */
+@media (min-width: 768px) and (min-height: 961px) {
+  .container {
+    border-radius: 52px;
+    left: 25.5px;
+    height: 920px;
+    width: 423px;
+  }
+
+  .background {
+    height: 960px;
+    width: 470px;
+  }
+
+  header {
+    padding-top: 2rem;
+  }
+
+  h1 {
+    font-size: 6rem;
+  }
+
+  .forecast-field {
+    margin-top: 6rem;
+  }
+
+  table {
+    border-spacing: 0 1.5rem;
+  }
+
+  .weather-advice-container {
+    padding-top: 1rem;
+  }
+
+  h2 {
+    font-size: 2.2rem;
+    line-height: 3rem;
+  }
+  .move {
+    position: absolute;
+    top: 85%;
+    right: 5%;
+  }
+}
