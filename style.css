@@ -5,7 +5,7 @@
 body {
   display: flex;
   flex-direction: column;
-  padding: 40px;
+  padding: 3%;
   font-family: "Montserrat";
   gap: 10px;
 }
@@ -24,7 +24,7 @@ select {
   appearance: none;
   border: 0;
   outline: 0;
-  width: 130px;
+  width: fit-content;
   padding: 3px;
   text-align: end;
   background-color: inherit;
@@ -51,6 +51,10 @@ select {
 
 .hazy {
   background-color: #d1e8e2;
+}
+
+.weather-today {
+  width: 100%;
 }
 
 #weather-icon {
