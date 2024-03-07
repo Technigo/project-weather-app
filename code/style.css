@@ -23,7 +23,7 @@
 /*Overall Styling*/
 .boxcenter {
   width: 100vw;
-  height: 100vw;
+  height: 150vh;
   margin: 0;
   display: flex;
   justify-content: center;
@@ -137,4 +137,34 @@
 .default {
   background-color: var(--defaultback);
   color: var(--defaultcolor);
+}
+
+/*Styling for small phones*/
+
+@media (max-width: 375px) {
+  .container {
+    width: 320px;
+  }
+  .weather-style {
+    width: 290px;
+    margin-top: 49px;
+    margin-left: 27px;
+  }
+
+  .sun-style {
+    width: 290px;
+    margin-left: 27px;
+  }
+
+  .img-style {
+    margin-left: 21px;
+  }
+  .title-style {
+    width: 290px;
+    margin-left: 20px;
+  }
+  .dates-style {
+    width: 200px;
+    margin-left: 20px;
+  }
 }
