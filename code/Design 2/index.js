@@ -191,20 +191,31 @@ async function displayWeatherForecast(forecast, isSearchedCity) {
     weekDaysContainer.innerHTML = "";
 
     const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    const displayedDays = new Set();
     const timezoneOffset = forecast.city.timezone; // Get the timezone offset of the city
 
+    const displayedDays = new Set();
+    let processedDays = 0;
+
     forecast.list.forEach((dayForecast) => {
+      if (processedDays >= 4) {
+        return; // Stop processing further days once we have processed 4 days
+      }
+
       const date = new Date((dayForecast.dt + timezoneOffset) * 1000);
       const dayIndex = date.getDay();
+
+      console.log("Processing day index:", dayIndex);
 
       if (
         dayIndex >= 0 &&
         dayIndex < weekDays.length &&
         !displayedDays.has(dayIndex)
       ) {
-        const tempMin = (dayForecast.main.temp_min - 273.15).toFixed(0);
-        const tempMax = (dayForecast.main.temp_max - 273.15).toFixed(0);
+        console.log("Adding day:", weekDays[dayIndex]);
+
+        const tempMin = (dayForecast.main.temp_min - 273.15).toFixed(1);
+        const tempMax = (dayForecast.main.temp_max - 273.15).toFixed(1);
+
         const weatherId = dayForecast.weather[0].id;
 
         const dayElement = document.createElement("div");
@@ -220,20 +231,6 @@ async function displayWeatherForecast(forecast, isSearchedCity) {
 
         const iconElement = document.createElement("img");
         iconElement.classList.add("weather-emoji");
-
-        // Apply CSS styling for the search result
-        if (isSearchedCity) {
-          iconElement.innerHTML = `<div class="week-days-container">
-  <div id="week-days" class="week-days">
-   <ul class="day-container">
-    <li id="day">Mon</li>
-    <li id="weather-emoji"></li>
-    <li id="week-temp">--°C / --°C</li>
-   </ul>
-  </div>
-</div>>`;
-          iconElement.classList.add("weather-emoji");
-        }
 
         switch (true) {
           case weatherId === 800:
@@ -264,6 +261,8 @@ async function displayWeatherForecast(forecast, isSearchedCity) {
 
         weekDaysContainer.appendChild(dayElement);
         displayedDays.add(dayIndex);
+        processedDays++;
+        console.log("Number of displayed days:", processedDays);
       }
     });
   } catch (error) {
