@@ -151,14 +151,14 @@ body {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center; /* Center the items horizontally */
+  justify-content: center;
   font-weight: 300;
   width: 100%;
   max-width: 800px;
-  margin: 0 auto; /* Center the section horizontally */
-  padding: 20px; /* Add padding for spacing */
-  margin-top: 20px; /* Add top margin */
-  margin-bottom: 20px; /* Add bottom margin */
+  margin: 0 auto;
+  padding: 45px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .day-container {
