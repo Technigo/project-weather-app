@@ -48,14 +48,13 @@ const displayWeatherMessage = (weather) => {
       document.body.className = "default";
   }
 };
-
 // Function to fetch weather data asynchronously from the API //
 const fetchWeather = async () => {
   try {
     const response = await fetch(url);
     const data = await response.json();
     const weather = data.weather[0].main;
-    const temp = data.main.temp.toFixed(0);
+    const temp = data.main.temp.toFixed(1);
     const sunrise = new Date(data.sys.sunrise * 1000).toLocaleTimeString([], {
       hour: "2-digit",
       minute: "2-digit",
@@ -86,20 +85,29 @@ const fetchWeatherForecastAPI = async () => {
     const weatherForecastData = await response.json();
 
     // Collecting forecast data for each day of the week //
-    const filteredWeatherData = weatherForecastData.list
-      .filter((item) => item.dt_txt.includes("12:00:00")) // Filter on 12:00:00 entries only
-      .map((item) => {
+    const filteredWeatherData = [];
+    let daysCount = 0;
+    for (const item of weatherForecastData.list) {
+      if (item.dt_txt.includes("12:00:00")) {
         const timestamp = item.dt * 1000; // Convert seconds to milliseconds
         const date = new Date(timestamp);
         const dayOfWeek = date
           .toLocaleString("en-US", { weekday: "short" })
           .toLowerCase(); // Get day of the week, short, converted to lower case
-        const temperature = item.main.temp.toFixed(0); // Get temperature
-        return {
+        const temperature = item.main.temp.toFixed(1); // Get temperature
+
+        filteredWeatherData.push({
           dayOfWeek,
           temperature,
-        };
-      });
+        });
+
+        // If four days are processed, break the loop
+        daysCount++;
+        if (daysCount === 4) {
+          break;
+        }
+      }
+    }
 
     // Display the forecast data in the app //
     weekdaysContainer.innerHTML = "";
