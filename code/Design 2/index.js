@@ -193,78 +193,63 @@ async function displayWeatherForecast(forecast, isSearchedCity) {
     const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const timezoneOffset = forecast.city.timezone; // Get the timezone offset of the city
 
-    const displayedDays = new Set();
-    let processedDays = 0;
-
-    forecast.list.forEach((dayForecast) => {
-      if (processedDays >= 4) {
-        return; // Stop processing further days once we have processed 4 days
-      }
-
+    // Iterate over the forecast data with a traditional for loop
+    for (let i = 0; i < forecast.list.length && i < 4; i++) {
+      const dayForecast = forecast.list[i];
       const date = new Date((dayForecast.dt + timezoneOffset) * 1000);
       const dayIndex = date.getDay();
 
       console.log("Processing day index:", dayIndex);
 
-      if (
-        dayIndex >= 0 &&
-        dayIndex < weekDays.length &&
-        !displayedDays.has(dayIndex)
-      ) {
-        console.log("Adding day:", weekDays[dayIndex]);
+      const tempMin = (dayForecast.main.temp_min - 273.15).toFixed(1);
+      const tempMax = (dayForecast.main.temp_max - 273.15).toFixed(1);
+      const weatherId = dayForecast.weather[0].id;
 
-        const tempMin = (dayForecast.main.temp_min - 273.15).toFixed(1);
-        const tempMax = (dayForecast.main.temp_max - 273.15).toFixed(1);
+      const dayElement = document.createElement("div");
+      dayElement.classList.add("week-days");
 
-        const weatherId = dayForecast.weather[0].id;
+      const dayName = document.createElement("div");
+      dayName.textContent = weekDays[dayIndex];
+      dayName.classList.add("day");
 
-        const dayElement = document.createElement("div");
-        dayElement.classList.add("week-days");
+      const tempElement = document.createElement("div");
+      tempElement.textContent = `${tempMin}°C / ${tempMax}°C`;
+      tempElement.classList.add("week-temp");
 
-        const dayName = document.createElement("div");
-        dayName.textContent = weekDays[dayIndex];
-        dayName.classList.add("day");
+      const iconElement = document.createElement("img");
+      iconElement.classList.add("weather-emoji");
 
-        const tempElement = document.createElement("div");
-        tempElement.textContent = `${tempMin}°C / ${tempMax}°C`;
-        tempElement.classList.add("week-temp");
-
-        const iconElement = document.createElement("img");
-        iconElement.classList.add("weather-emoji");
-
-        switch (true) {
-          case weatherId === 800:
-            iconElement.src = "assets/clear.png";
-            break;
-          case weatherId <= 804:
-            iconElement.src = "assets/clouds.png";
-            break;
-          case weatherId <= 504:
-            iconElement.src = "assets/rain.png";
-            break;
-          case weatherId >= 300 && weatherId < 400:
-            iconElement.src = "assets/drizzle.png";
-            break;
-          case weatherId >= 500 && weatherId < 600:
-            iconElement.src = "assets/rain.png";
-            break;
-          case weatherId >= 600 && weatherId < 700:
-            iconElement.src = "assets/snow.png";
-            break;
-          default:
-            iconElement.src = "assets/clear.png";
-        }
-
-        dayElement.appendChild(dayName);
-        dayElement.appendChild(iconElement);
-        dayElement.appendChild(tempElement);
-
-        weekDaysContainer.appendChild(dayElement);
-        displayedDays.add(dayIndex);
-        processedDays++;
-        console.log("Number of displayed days:", processedDays);
+      switch (true) {
+        case weatherId === 800:
+          iconElement.src = "assets/clear.png";
+          break;
+        case weatherId <= 804:
+          iconElement.src = "assets/clouds.png";
+          break;
+        case weatherId <= 504:
+          iconElement.src = "assets/rain.png";
+          break;
+        case weatherId >= 300 && weatherId < 400:
+          iconElement.src = "assets/drizzle.png";
+          break;
+        case weatherId >= 500 && weatherId < 600:
+          iconElement.src = "assets/rain.png";
+          break;
+        case weatherId >= 600 && weatherId < 700:
+          iconElement.src = "assets/snow.png";
+          break;
+        default:
+          iconElement.src = "assets/clear.png";
       }
-    });
+
+      dayElement.appendChild(dayName);
+      dayElement.appendChild(iconElement);
+      dayElement.appendChild(tempElement);
+
+      weekDaysContainer.appendChild(dayElement);
+
+      console.log("Number of displayed days:", i + 1);
+    }
   } catch (error) {
     console.error(error);
     displayError("Failed to fetch weather forecast. Please try again later.");
