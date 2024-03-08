@@ -32,11 +32,14 @@ const fetchWeather = (url) => {
     .then((response) => response.json())
     .then((data) => {
       city.innerHTML = `<h2>${data.name}</h2>`;
-      temp.innerHTML = `<h1>${Math.round(data.main.temp)}°&#x1D9C;</h1>`;
+      temp.innerHTML = `<h1>${
+        Math.round(data.main.temp * 10) / 10
+      }°&#x1D9C;</h1>`;
       description.innerHTML = `<h3>${data.weather[0].description}</h3>`;
-
-      let sunriseHoursMinutes = hoursMinutes(data.sys.sunrise);
-      let sunsetHoursMinutes = hoursMinutes(data.sys.sunset);
+      console.log(data)
+      let timezone = data.timezone;
+      let sunriseHoursMinutes = hoursMinutes(data.sys.sunrise + timezone);
+      let sunsetHoursMinutes = hoursMinutes(data.sys.sunset + timezone);
       weatherImage.src = chooseImage(data.weather[0].main);
       lat = data.coord.lat;
       lon = data.coord.lon;
@@ -78,11 +81,11 @@ const fetchForecast = (lat, lon) => {
             groupedData[date][i].dt
           )}</p>
           <img src=${chooseImage(groupedData[date][i].weather[0].main)} alt="">
-          <p class="forecastDayTemp">${Math.round(
-            getMax(groupedData[date], "temp_max")
-          )}° / ${Math.round(
-            getMin(groupedData[date], "temp_min")
-          )}°&#x1D9C</p></div>`;
+          <p class="forecastDayTemp">${
+            Math.round(getMax(groupedData[date], "temp_max") * 10) / 10
+          }° / ${
+            Math.round(getMin(groupedData[date], "temp_min") * 10) / 10
+          }°&#x1D9C</p></div>`;
         }
       }
     });
@@ -122,28 +125,28 @@ const displayDay = (time) => {
 //Choose Image based on weather description.
 const chooseImage = (weather) => {
   if (
-    weather == "Mist" ||
-    weather == "Smoke" ||
-    weather == "Haze" ||
-    weather == "Dust" ||
-    weather == "Fog" ||
-    weather == "Sand" ||
-    weather == "Ash" ||
-    weather == "Squall" ||
-    weather == "Tornado"
+    weather === "Mist" ||
+    weather === "Smoke" ||
+    weather === "Haze" ||
+    weather === "Dust" ||
+    weather === "Fog" ||
+    weather === "Sand" ||
+    weather === "Ash" ||
+    weather === "Squall" ||
+    weather === "Tornado"
   ) {
     return "assets/mist.png";
-  } else if (weather == "Thunderstorm") {
+  } else if (weather === "Thunderstorm") {
     return "assets/thunder.png";
-  } else if (weather == "Drizzle") {
+  } else if (weather === "Drizzle") {
     return "assets/drizzle.png";
-  } else if (weather == "Rain") {
+  } else if (weather === "Rain") {
     return "assets/rain.png";
-  } else if (weather == "Snow") {
+  } else if (weather === "Snow") {
     return "assets/snow.png";
-  } else if (weather == "Clear") {
+  } else if (weather === "Clear") {
     return "assets/sunny.png";
-  } else if (weather == "Clouds") {
+  } else if (weather === "Clouds") {
     return "assets/cloudy.png";
   } else {
     return "assets/partially.png";
