@@ -1,13 +1,12 @@
 # Weather App
 
-Replace this readme with your own information about your project.
+A weather app that has a few cities to choose from and shows a 4 day forecast. The logos and text output change based on the weather type, the color of the app turns blue when temperature is under 10°C, otherwise it stays pink. 
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The most difficult part is handling time input and converting it into the right format. Also timezones where very challenging. 
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://elianes-weather-app.netlify.app/

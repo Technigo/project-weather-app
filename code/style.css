@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.25em;
+  font-weight: 400;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body.warm .app-container {
+  color: #f47775;
+  background: #f4f7f8;
+  border: 1px solid #f47775;
+}
+
+body.cold .app-container {
+  color: #164a68;
+  background: #bde8fa;
+  border: 1px solid #164a68;
+}
+
+.app-container {
+  margin: 50px;
+  padding: 30px;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 20px;
+}
+
+body.warm header {
+  color: #f47775;
+}
+
+body.cold header {
+  color: #164a68;
+}
+
+header {
+  text-align: center;
+  padding-top: 20px;
+  font-size: 16px;
+}
+
+#weather-today p {
+  padding: 5px 0;
+}
+
+#weather-description {
+  padding: 20px 0;
+}
+
+#fourday-forecast p {
+  display: flex;
+  width: 100%;
+  padding: 5px 0;
+  margin: 5px 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+body.warm .forecast-element {
+  border-bottom: 1px dashed #f47775;
+}
+
+body.cold .forecast-element {
+  border-bottom: 1px dashed #164a68;
+}
+
+.forecast-element {
+  display: flex;
+  justify-content: space-between;
+}
+
+p {
+  display: flex;
+}
+
+#city-selector {
+  padding-bottom: 20px;
+}
+
+body.warm select {
+  border: 1px solid #f47775;
+  background-color: #f9fafb;
+  color: #f47775;
+}
+
+body.cold select {
+  border: 1px solid #164a68;
+  background-color: #e3f5fd;
+  color: #164a68;
+}
+
+select {
+  padding: 10px;
+  font-size: 0.7em;
+  border-radius: 10px;
+  width: 100%;
+}
+
+label {
+  font-size: 0.7em;
+}
