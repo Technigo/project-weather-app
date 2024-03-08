@@ -191,19 +191,23 @@ async function displayWeatherForecast(forecast, isSearchedCity) {
     weekDaysContainer.innerHTML = "";
 
     const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    const timezoneOffset = forecast.city.timezone; 
+    const displayedDays = new Set();
+    const timezoneOffset = forecast.city.timezone; // Get the timezone offset of the city
 
-    // Iterate over the forecast data with a traditional for loop
-    for (let i = 0; i < forecast.list.length && i < 4; i++) {
-      const dayForecast = forecast.list[i];
+    forecast.list.forEach((dayForecast) => {
       const date = new Date((dayForecast.dt + timezoneOffset) * 1000);
       const dayIndex = date.getDay();
 
       console.log("Processing day index:", dayIndex);
 
-      const tempMin = (dayForecast.main.temp_min - 273.15).toFixed(1);
-      const tempMax = (dayForecast.main.temp_max - 273.15).toFixed(1);
-      const weatherId = dayForecast.weather[0].id;
+      if (
+        dayIndex >= 0 &&
+        dayIndex < weekDays.length &&
+        !displayedDays.has(dayIndex)
+      ) {
+        const tempMin = (dayForecast.main.temp_min - 273.15).toFixed(0);
+        const tempMax = (dayForecast.main.temp_max - 273.15).toFixed(0);
+        const weatherId = dayForecast.weather[0].id;
 
       const dayElement = document.createElement("div");
       dayElement.classList.add("week-days");
@@ -216,8 +220,22 @@ async function displayWeatherForecast(forecast, isSearchedCity) {
       tempElement.textContent = `${tempMin}°C / ${tempMax}°C`;
       tempElement.classList.add("week-temp");
 
-      const iconElement = document.createElement("img");
-      iconElement.classList.add("weather-emoji");
+        const iconElement = document.createElement("img");
+        iconElement.classList.add("weather-emoji");
+
+        // Apply CSS styling for the search result
+        if (isSearchedCity) {
+          iconElement.innerHTML = `<div class="week-days-container">
+  <div id="week-days" class="week-days">
+   <ul class="day-container">
+    <li id="day">Mon</li>
+    <li id="weather-emoji"></li>
+    <li id="week-temp">--°C / --°C</li>
+   </ul>
+  </div>
+</div>>`;
+          iconElement.classList.add("weather-emoji");
+        }
 
       switch (true) {
         case weatherId === 800:
@@ -246,10 +264,10 @@ async function displayWeatherForecast(forecast, isSearchedCity) {
       dayElement.appendChild(iconElement);
       dayElement.appendChild(tempElement);
 
-      weekDaysContainer.appendChild(dayElement);
-
-      console.log("Number of displayed days:", i + 1);
-    }
+        weekDaysContainer.appendChild(dayElement);
+        displayedDays.add(dayIndex);
+      }
+    });
   } catch (error) {
     console.error(error);
     displayError("Failed to fetch weather forecast. Please try again later.");
