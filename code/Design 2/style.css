@@ -165,7 +165,7 @@ body {
   display: flex;
   flex-direction: column;
   padding: 5rem;
-  gap: 3rem;
+  padding-right: 20px;
   background-color: whitesmoke;
 }
 
@@ -178,11 +178,11 @@ body {
 
 .weather-emoji {
   width: 120px;
-  margin-right: 50px;
+  margin-right: 60px;
 }
 
 .day {
-  margin-right: 190px;
+  margin-right: 80px;
 }
 
 .error {

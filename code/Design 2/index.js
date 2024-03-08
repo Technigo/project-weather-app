@@ -193,62 +193,74 @@ async function displayWeatherForecast(forecast, isSearchedCity) {
     const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const timezoneOffset = forecast.city.timezone; // Get the timezone offset of the city
 
-    // Iterate over the forecast data with a traditional for loop
-    for (let i = 0; i < forecast.list.length && i < 4; i++) {
-      const dayForecast = forecast.list[i];
+    const displayedDays = new Set(); // Keep track of displayed days
+    let displayedCount = 0; // Keep track of the number of days displayed
+
+    // Iterate over the forecast data
+    for (const dayForecast of forecast.list) {
       const date = new Date((dayForecast.dt + timezoneOffset) * 1000);
       const dayIndex = date.getDay();
+      const formattedDate = date.toDateString();
 
-      console.log("Processing day index:", dayIndex);
+      // Check if the day has already been displayed and the displayed count is less than four
+      if (!displayedDays.has(formattedDate) && displayedCount < 4) {
+        console.log("Processing day index:", dayIndex);
 
-      const tempMin = (dayForecast.main.temp_min - 273.15).toFixed(1);
-      const tempMax = (dayForecast.main.temp_max - 273.15).toFixed(1);
-      const weatherId = dayForecast.weather[0].id;
+        const tempMin = (dayForecast.main.temp_min - 273.15).toFixed(1);
+        const tempMax = (dayForecast.main.temp_max - 273.15).toFixed(1);
+        const weatherId = dayForecast.weather[0].id;
 
-      const dayElement = document.createElement("div");
-      dayElement.classList.add("week-days");
+        const dayElement = document.createElement("div");
+        dayElement.classList.add("week-days");
 
-      const dayName = document.createElement("div");
-      dayName.textContent = weekDays[dayIndex];
-      dayName.classList.add("day");
+        const dayName = document.createElement("div");
+        dayName.textContent = weekDays[dayIndex];
+        dayName.classList.add("day");
 
-      const tempElement = document.createElement("div");
-      tempElement.textContent = `${tempMin}°C / ${tempMax}°C`;
-      tempElement.classList.add("week-temp");
+        const tempElement = document.createElement("div");
+        tempElement.textContent = `${tempMin}°C / ${tempMax}°C`;
+        tempElement.classList.add("week-temp");
 
-      const iconElement = document.createElement("img");
-      iconElement.classList.add("weather-emoji");
+        const iconElement = document.createElement("img");
+        iconElement.classList.add("weather-emoji");
 
-      switch (true) {
-        case weatherId === 800:
-          iconElement.src = "assets/clear.png";
-          break;
-        case weatherId <= 804:
-          iconElement.src = "assets/clouds.png";
-          break;
-        case weatherId <= 504:
-          iconElement.src = "assets/rain.png";
-          break;
-        case weatherId >= 300 && weatherId < 400:
-          iconElement.src = "assets/drizzle.png";
-          break;
-        case weatherId >= 500 && weatherId < 600:
-          iconElement.src = "assets/rain.png";
-          break;
-        case weatherId >= 600 && weatherId < 700:
-          iconElement.src = "assets/snow.png";
-          break;
-        default:
-          iconElement.src = "assets/clear.png";
+        switch (true) {
+          case weatherId === 800:
+            iconElement.src = "assets/clear.png";
+            break;
+          case weatherId <= 804:
+            iconElement.src = "assets/clouds.png";
+            break;
+          case weatherId <= 504:
+            iconElement.src = "assets/rain.png";
+            break;
+          case weatherId >= 300 && weatherId < 400:
+            iconElement.src = "assets/drizzle.png";
+            break;
+          case weatherId >= 500 && weatherId < 600:
+            iconElement.src = "assets/rain.png";
+            break;
+          case weatherId >= 600 && weatherId < 700:
+            iconElement.src = "assets/snow.png";
+            break;
+          default:
+            iconElement.src = "assets/clear.png";
+        }
+
+        dayElement.appendChild(dayName);
+        dayElement.appendChild(iconElement);
+        dayElement.appendChild(tempElement);
+
+        weekDaysContainer.appendChild(dayElement);
+
+        displayedDays.add(formattedDate); // Add the displayed day to the set
+        displayedCount++; // Increment the displayed count
       }
 
-      dayElement.appendChild(dayName);
-      dayElement.appendChild(iconElement);
-      dayElement.appendChild(tempElement);
-
-      weekDaysContainer.appendChild(dayElement);
-
-      console.log("Number of displayed days:", i + 1);
+      // Exit the loop once four days have been displayed
+      if (displayedCount >= 4) {
+        break;
+      }
     }
   } catch (error) {
     console.error(error);
