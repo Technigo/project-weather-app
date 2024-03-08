@@ -8,4 +8,4 @@ Fetching weather data from an API was a bit challenging, and I struggled with di
 
 ## View it live
 
-https://65e4a10bb5d5f1a6a7b807cb--fantastic-piroshki-f776a2.netlify.app/
+https://fanciful-melomakarona-4e6d38.netlify.app/
