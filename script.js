@@ -2,18 +2,32 @@
 const todayWeather = document.getElementById("todayWeather");
 const allWeather = document.getElementById("allWeather");
 
+userSearch.innerHTML  +=`
+    <input type="text" id="userInput" placeholder="
+    Search your city">
+    <button id="userButton">GO</button>
+`
+/* const cityUrl = {
+
+}
+
+const searchCity=()=>{
+
+} */
+
+
 todayWeather.innerHTML +=`
-<img src="" id="logo" alt="logo">
-<section class="text">
-    <h1 class="temp" id="temp"></h1>
-    <h3 class="location" id="location"></h3>
-    <p class="clear" id="clear"></p>
-    <section id="sunTime">
-        <p class="sunrise" id="sunrise"></p>
-        <p class="sunset" id="sunset"></p>
+    <img src="" id="logo" alt="logo">
+    <section class="text">
+        <h1 class="temp" id="temp"></h1>
+        <h3 class="location" id="location"></h3>
+        <p class="clear" id="clear"></p>
+        <section id="sunTime">
+            <p class="sunrise" id="sunrise"></p>
+            <p class="sunset" id="sunset"></p>
+        </section>
+        <section class="arrow" id="arrow"></section>
     </section>
-    <section class="arrow" id="arrow"></section>
-</section>
 `
 
 const weatherData={
@@ -32,9 +46,11 @@ const ShowTodayWeather =()=>{
         const clear = document.getElementById("clear")
         const sunrise = document.getElementById("sunrise")
         const sunset = document.getElementById("sunset")
+        console.log(json)
        
         location.innerHTML = json.name
-        temp.innerHTML = Math.round(json.main.temp)+"°C";
+        const tempRound = json.main.temp;
+        temp.innerHTML =Math.round(tempRound*10)/10+"°C";
         const description = json.weather[0].description;
         clear.innerHTML = description[0].toUpperCase() + description.substring(1)
         
@@ -63,8 +79,6 @@ const ShowTodayWeather =()=>{
 ShowTodayWeather()
 
 // ### Step 3 - Features
-// Now it's time to start working in GitHub branches. Decide beforehand when you should have a "feature freeze" so that you make time for merging.
-
 //I commited before starting with the branches so only the step of weather-icon which was worked in branch.
 
 // **Feature: Weather forecast 📅**  
@@ -134,12 +148,16 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
                     const foundItem = myTempArray.find(i => i.day === myDay)
                     foundItem.weather_description = weatherDescription
                     foundItem.weather_icon = weatherIcon
-                    
+                    if(foundItem.weather_icon === '01n'||foundItem.weather_icon=== '02n' ||foundItem.weather_icon=== '01d' || foundItem.weather_icon=== '02d' ){
+                        foundItem.weather_icon = foundItem.weather_icon
+                    } else {
+                        foundItem.weather_icon = '03n'
+                    }
                 }
             })
             console.log(myTempArray)
 
-            myTempArray.forEach(row => {
+            myTempArray.slice(1,-1).forEach(row => {
                 allWeather.innerHTML+=`
                 <div id="dayWeather">
                     <div id="myDay">${dayNames[row.day]}</div>
@@ -147,7 +165,8 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
                     <div id="myTemp">${row.min_temp} °C / ${row.max_temp} °C </div>   
                 </div>                  
             `  
-            })
+            }) 
+
         }
         predictWeather();
     })
@@ -162,6 +181,7 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
 
 // **Feature: More cities 🏙️**  
 // Give the user the option to choose between a couple of your favourite cities, or create a searchbar where the user can search for a specific city.
+//http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid=bb3a8ca602b6560b4bf988de0be7f379
 
 // ### Advanced Stretch Goals
 // **Feature: Use your location 🗺️**  
