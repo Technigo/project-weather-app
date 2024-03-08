@@ -104,8 +104,6 @@ const getForecast = (city) => {
       return response.json();
     })
     .then((data) => {
-      //get current time
-      const currentTime = new Date().getHours();
       //call filterByTime to filter forecast data based on time
       const filteredData = filterByTime(data);
 
