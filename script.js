@@ -24,6 +24,7 @@ const forecast = document.getElementById("forecast");
 const skyContainer = document.getElementById("sky-container");
 const inner = document.getElementById("inner");
 const search = document.getElementById("search");
+const searchField = document.getElementById("search-field");
 
 skyContainer.classList.remove("animation-active");
 
@@ -36,17 +37,33 @@ const fetchWeather = (url) => {
         Math.round(data.main.temp * 10) / 10
       }°&#x1D9C;</h1>`;
       description.innerHTML = `<h3>${data.weather[0].description}</h3>`;
-      console.log(data)
-      let timezone = data.timezone;
-      let sunriseHoursMinutes = hoursMinutes(data.sys.sunrise + timezone);
-      let sunsetHoursMinutes = hoursMinutes(data.sys.sunset + timezone);
+      console.log(data);
+
+      const sunriseData = new Date((data.sys.sunrise + data.timezone) * 1000);
+      sunriseData.setMinutes(
+        sunriseData.getMinutes() + sunriseData.getTimezoneOffset()
+      );
+
+      const sunriseTime = sunriseData.toLocaleTimeString(["sv-SE"], {
+        timeStyle: "short",
+      });
+
+      const sunsetData = new Date((data.sys.sunset + data.timezone) * 1000);
+      sunsetData.setMinutes(
+        sunsetData.getMinutes() + sunsetData.getTimezoneOffset()
+      );
+
+      const sunsetTime = sunsetData.toLocaleTimeString(["sv-SE"], {
+        timeStyle: "short",
+      });
+
       weatherImage.src = chooseImage(data.weather[0].main);
       lat = data.coord.lat;
       lon = data.coord.lon;
       console.log("Description:", description.innerHTML);
 
-      sunrise.innerHTML = `<h3>${sunriseHoursMinutes}</h3>`;
-      sunset.innerHTML = `<h3>${sunsetHoursMinutes}</h3>`;
+      sunrise.innerHTML = `<h3>${sunriseTime}</h3>`;
+      sunset.innerHTML = `<h3>${sunsetTime}</h3>`;
 
       fetchForecast(lat, lon);
     })
@@ -105,15 +122,6 @@ const fetchForecast = (lat, lon) => {
   }
 };
 
-// Clean up the date to the 24h numbers with just hours and minutes.
-const hoursMinutes = (time) => {
-  let date = new Date(parseInt(time * 1000));
-  return date.toLocaleTimeString(navigator.language, {
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-  });
-};
 // Clean up the date to only display the weekday in short format in the language of the user.
 const displayDay = (time) => {
   let date = new Date(parseInt(time * 1000));
@@ -165,7 +173,7 @@ const toggleForecast = () => {
     forecastButton.classList.remove("forecast-button-top");
     forecastButton.classList.add("forecast-button-bottom");
     forecast.classList.add("hidden");
-    search.classList.remove("hidden");
+    searchField.classList.remove("hidden");
   } else {
     skyContainer.classList.remove("bottom-container");
     skyContainer.classList.add("top-container");
@@ -176,7 +184,7 @@ const toggleForecast = () => {
     forecastButton.classList.remove("forecast-button-bottom");
     forecastButton.classList.add("forecast-button-top");
     forecast.classList.remove("hidden");
-    search.classList.add("hidden");
+    searchField.classList.add("hidden");
   }
 };
 
@@ -185,13 +193,16 @@ forecastButton.addEventListener("click", (e) => {
   toggleForecast();
 });
 
-search.addEventListener("input", (e) => {
-  console.log("Searched");
-  let newCity = e.target.value;
-  console.log(newCity);
-  urlCity = newCity;
-  console.log(urlCity);
-  console.log(URL);
-  fetchWeather(`${BASE_URL}${urlCity}&units=metric&APPID=${API_KEY}`);
-  fetchForecast();
+search.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const inputValue = searchField.value.trim();
+  const cityName = inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
+  if (cityName) {
+    //Fetch weather data and forecast for new city
+    fetchWeather(`${BASE_URL}${cityName}&units=metric&APPID=${API_KEY}`);
+    //Clear the input after user presses enter
+    searchField.value = "";
+  } else {
+    searchField.placeholder = "Try another city";
+  }
 });
