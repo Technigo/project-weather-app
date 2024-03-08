@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -8,7 +9,6 @@ body {
   background-color: white;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(#8589ff, #e8e9ff);
   height: 100%;
   margin: 0;
   background-repeat: no-repeat;
@@ -59,8 +59,8 @@ body {
   font-size: 200px;
   font-weight: 300;
   color: white;
-  display: inline-block; /* Add this line */
-  vertical-align: top; /* Add this line */
+  display: inline-block;
+  vertical-align: top;
 }
 
 .celsius {
@@ -81,12 +81,12 @@ body {
   right: 30px;
 }
 
-/* I don't know how to make a curve that is not covering my night mode */
-/* .curve { 
+.curve {
   overflow: hidden;
   position: relative;
-  z-index: 1; 
+  z-index: 1;
   background-color: white;
+  width: 100%;
 }
 
 .curve::before {
@@ -96,18 +96,27 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: -1;
+}
+
+/* Day mode */
+body.day-mode .curve::before {
   background: linear-gradient(#8589ff, #e8e9ff);
   border-bottom-right-radius: 20% 20%;
   border-bottom-left-radius: 20% 20%;
-  z-index: -1; 
-} */
+}
+
+/* Night mode */
+body.night-mode .curve::before {
+  background: linear-gradient(#333333, #000000);
+  border-bottom-right-radius: 20% 20%;
+  border-bottom-left-radius: 20% 20%;
+}
 
 .card {
   margin-top: 200px;
   margin-left: 100px;
-  margin-right: auto;
   width: 100%;
-  max-width: 800px;
   color: white;
 }
 
@@ -182,7 +191,7 @@ body {
 }
 
 .day {
-  margin-right: 80px;
+  margin-right: 50px;
 }
 
 .error {
@@ -273,13 +282,68 @@ body {
   }
 }
 /* tablet, landscape iPad, lo-res laptops ands desktops */
-@media (min-width: 961px) {
-  .week-days-container {
-    width: 100%;
+/* Media query for tablet screens */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .weather-form {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .weather-form input {
+    width: 50%;
+    height: 3em;
+    font-size: 1.5rem;
+    margin-right: 30px;
+  }
+
+  .weather-form button {
+    width: 120px;
+    height: 120px;
+    margin-right: 50px;
+  }
+
+  .current-temp {
+    font-size: 120px;
+  }
+
+  .celsius {
+    font-size: 60px;
+    margin-top: 30px;
+  }
+
+  .current-icon {
+    width: 250px;
+    margin-right: 20px;
+    top: 20px;
+    right: 20px;
+  }
+
+  .current-city {
+    font-size: 80px;
+  }
+
+  .current-sky {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+
+  .weather-detail {
+    font-size: 40px;
   }
 
   .week-days {
-    max-width: 900px;
-    width: 100%;
+    font-size: 40px;
+    padding: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .day {
+    margin-right: 20px;
+  }
+
+  .weather-emoji {
+    width: 80px;
+    margin-right: 20px;
   }
 }

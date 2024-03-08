@@ -123,14 +123,13 @@ function displayWeatherInfo(data) {
   const iconElement = document.getElementById("current-icon");
   iconElement.src = "";
 
-  // Apply different background based on whether it's night or day
+  // // Apply different background based on whether it's night or day
   if (isNight) {
-    body.style.background = "linear-gradient(to right, #333333, #000000)";
-    body.style.color = "#ffffff";
-    iconElement.src = `assets/moon.png`;
+    body.classList.add("night-mode");
+    body.classList.remove("day-mode");
   } else {
-    body.style.background = "linear-gradient(#8589ff, #e8e9ff)";
-    body.style.color = "#ffffff";
+    body.classList.add("day-mode");
+    body.classList.remove("night-mode");
   }
 
   weatherBackground.innerHTML = "";
@@ -292,3 +291,35 @@ function hideErrorMessage() {
   errorDisplay.textContent = "";
   errorDisplay.classList.remove("error");
 }
+
+// Function to toggle between day and night modes
+function toggleDayNightMode(isNight) {
+  const body = document.body;
+  if (isNight) {
+    body.classList.add("night-mode");
+    body.classList.remove("day-mode");
+  } else {
+    body.classList.add("day-mode");
+    body.classList.remove("night-mode");
+  }
+}
+
+
+// Example: Determine if it's night based on current time (assuming night starts at 6 PM and ends at 6 AM)
+function isNightNow() {
+  const currentHour = new Date().getHours();
+  return currentHour < 6 || currentHour >= 18;
+}
+
+// Check if it's night when the page loads and toggle mode accordingly
+window.addEventListener("load", () => {
+  const isNight = isNightNow();
+  toggleDayNightMode(isNight);
+});
+
+// Example: Set up a timer to check for day/night mode every minute
+setInterval(() => {
+  const isNight = isNightNow();
+  toggleDayNightMode(isNight);
+}, 60000);
+
