@@ -68,12 +68,6 @@ body {
   padding: 20px;
 }
 
-/* .flex {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-} */
-
 body.warm .forecast-element {
   border-bottom: 1px dashed #f47775;
 }
@@ -85,7 +79,6 @@ body.cold .forecast-element {
 .forecast-element {
   display: flex;
   justify-content: space-between;
-  /* border-bottom: 1px dashed #f47775; */
 }
 
 p {

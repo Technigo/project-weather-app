@@ -83,6 +83,15 @@ const getWeather = (city) => {
     });
 };
 
+//funtion to filter by time
+const filterByTime = (data, currentTime) => {
+  const filteredForecast = data.list.filter((item) =>
+    item.dt_txt.includes("12:00")
+  );
+  const fourDaysFilter = filteredForecast.slice(1);
+  return currentTime >= 13 ? filteredForecast : fourDaysFilter;
+};
+
 //get forecast data based on selected city
 const getForecast = (city) => {
   fetch(
@@ -95,22 +104,24 @@ const getForecast = (city) => {
       return response.json();
     })
     .then((data) => {
+      //get current time
+      const currentTime = new Date().getHours();
+      //call filterByTime to filter forecast data based on time
+      const filteredData = filterByTime(data);
+
       const dailyForecasts = {};
 
-      data.list.forEach((forecast) => {
+      filteredData.forEach((forecast) => {
         const date = new Date(forecast.dt_txt);
-        //filtering for 12:00 forecast
-        if (date.getHours() === 12) {
-          const dayName = getDayName(date);
-          //If the day name doesn't already exist in the dailyForecasts object and the number of keys (representing the number of days) is less than 4, it stores the temperature for that day in the dailyForecasts object. This ensures that only forecasts for the next four days are stored.
-          if (
-            !dailyForecasts[dayName] &&
-            Object.keys(dailyForecasts).length < 4
-          ) {
-            dailyForecasts[dayName] = {
-              temp: forecast.main.temp,
-            };
-          }
+        const dayName = getDayName(date);
+
+        if (
+          !dailyForecasts[dayName] &&
+          Object.keys(dailyForecasts).length < 4
+        ) {
+          dailyForecasts[dayName] = {
+            temp: forecast.main.temp,
+          };
         }
       });
 
