@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto+Slab|Roboto:300,400,500,700"
+      rel="stylesheet"
+    />
+    <title>Weather Smeather app</title>
+  </head>
+  <body>
+    <div id="sky-container" class="top-container">
+      <div id="inner" class="inner top-inner">
+        <img id="hamburger-menu" src="assets/hamburger.png" alt="" />
+        <img id="weather-image" src="" alt="" />
+        <div id="temp"></div>
+        <div id="city"></div>
+        <div id="description"></div>
+        <div id="suntime">
+          <div><h3>sunrise:</h3></div>
+          <div id="sunrise"></div>
+          <div><h3>sunset:</h3></div>
+          <div id="sunset"></div>
+        </div>
+        <div class="searchbar">
+            <form id="search">
+              <input type="text"
+              placeholder="Find City..."
+              id="search-field"
+              class="hidden"
+            />
+            </form>
+        
+        </div>
+
+        <a class="forecast-button-top" id="forecast-button">
+          <div id="arrow"></div>
+        </a>
+      </div>
+
+      <div id="forecast"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
