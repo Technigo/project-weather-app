@@ -7,6 +7,8 @@ const cityContainer = document.getElementById('city-container')
 const forecastContainer = document.getElementById('forecast-container')
 const errorDiv = document.getElementById('error')
 
+const dayNames = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
+
 //Fetching the API
 const fetchWeather = () => {
 	fetch(
@@ -14,12 +16,12 @@ const fetchWeather = () => {
 	)
 		.then((response) => response.json())
 		.then((data) => {
-			console.log(data)
 			updateHtml(data)
 		})
 		.catch((error) => console.log(error))
 }
 fetchWeather()
+
 //Function to get data to HTML
 const updateHtml = (data) => {
 	const weather = data.weather[0].main
@@ -36,10 +38,10 @@ const updateHtml = (data) => {
 	weatherContainer.innerHTML = `${weather} | ${temp}°C <p>Sunrise ${rise}</p><p>Sunset ${set}</p>`
 
 	weatherStyle(weather, cityName)
-	filterTheTime(updateForecast)
 }
 
-//Function that changes background/text-color depending on weather. ${city} not working.
+//Function that changes background/text-color depending on weather.
+//ev lägga till färger för vinter?
 const weatherStyle = (weather, cityName) => {
 	if (weather === 'Clear') {
 		cityContainer.innerHTML += `<img src="/images/noun_Sunglasses_2055147.svg" alt="sunglasses"/><h1>Get your sunnies on! ${cityName} is looking rather great today!</h1>`
@@ -55,3 +57,36 @@ const weatherStyle = (weather, cityName) => {
 		document.body.style.color = '#164a68'
 	}
 }
+
+//--------------------------------
+
+//Fetching the API FORECAST
+const fetchForecast = () => {
+	fetch(
+		'https://api.openweathermap.org/data/2.5/forecast?q=Umea,Sweden&units=metric&APPID=1e48fdf267ccc8ee33c1c78150dcbab1'
+	)
+		.then((response) => response.json())
+		.then((data) => {
+			updateForecast(data)
+		})
+	}
+fetchForecast()
+
+const updateForecast = ( weekDay, weekTemp) => {
+	forecastContainer.innerHTML += `<div class ="weekday-list"><p>${weekDay}</p></div> <div class ="temp-list"><p>${weekTemp} °C</p></div>`
+	console.log(forecastContainer.innerHTML)
+
+	filterForecast(weekDay, weekTemp)
+}
+updateForecast(data)
+
+
+const filterForecast = () => {
+filterForecast.forEach((day) => {
+	const weekDay = new Date(day.dt * 1000)
+	const weekTemp = day.main.temp.toFixed()
+})
+}
+filterForecast()
+
+
