@@ -1,14 +1,6 @@
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body,
 html {
-  height: 100%;
+
   margin: 0;
   padding: 0;
   font-family: "Montserrat", sans-serif;
@@ -22,25 +14,25 @@ html {
   --sunny-color: #2A5510;
   --sunny-bg-color: #F7E9B9;
 
-  --fs-1: clamp(1rem, 0.2vw, 2rem);
-  --fs-2: clamp(1.2rem, 0.5vw, 4rem);
-  --fs-3: clamp(2.5rem, 4vw, 2rem);
+  --fs-1: clamp(14px, 16px, 18px);
+  --fs-2: clamp(18px, 20px, 25px);
+  --fs-3: clamp(38px, 48px, 58px);
+
 
   --pad-2: 2em;
   --pad-1051: 0.5em 0em 0em 1em;
   --pad-200_50: 2em 0em 0.5em 2em;
   --pad-b-: 4.5em;
-  --height: 1em;
-  --border-b: 0.2em;
+  --height: 0.6em 0;
+  --border-b: 1px;
 }
 
 main {
   padding: var(--pad-2);
-  height: 100vh;
   display: grid;
+  grid-template: auto, 1fr;
   align-content: start;
 }
-
 
 .sunny {
   color: var(--sunny-color);
@@ -60,11 +52,13 @@ main {
 .overview {
   font-size: var(--fs-1);
   font-weight: 300;
-  padding: 2em;
+  padding-bottom: 30px;
 }
 
 .weathertip {
-  padding: 4em 0 5em 2em;
+  padding-top: 20px;
+  max-width: 900px;
+
 }
 
 h1 {
@@ -72,13 +66,8 @@ h1 {
   font-optical-sizing: auto;
   font-weight: 600;
   font-size: var(--fs-3);
+  margin-top: 0;
 }
-
-#suggestion {
-  max-width: 70vw;
-  line-height: 1.5;
-}
-
 
 #icon.sunny {
   content: url(/design/design2/icons/noun_Sunglasses_2055147.svg);
@@ -140,49 +129,77 @@ h1 {
 }
 
 
-@media(min-width:320px)and(max-width: 768px) {
-
+@media only screen and (max-width: 480px) {
   :root {
-    --fs-1: clamp(2em, 2vw, 3rem);
-    --fs-2: clamp(2.2rem, 2.5vw, 3.5rem);
-    --fs-3: clamp(3.5rem, 4vw, 4.5rem);
-    --pad-1051: 1em 0em 1em 1em;
-    --pad-200_50: 2em 0em 0.5em 1em;
-    --pad-2: 1em;
-    --height: 0.7em;
-  }
-
-  main {
-    padding: var(--pad-2);
+    --fs-1: 14px;
+    --fs-2: 16px;
+    --fs-3: 35px;
+    --border-b: 0.1em;
   }
 
   .weathertip {
-    padding-top: 2em;
+    max-width: 1000px;
+    padding-left: 0;
+    padding-bottom: 20px;
+  }
+
+  .overview p {
+    padding: 0.1em;
+    margin: 0;
   }
 
   .overview {
-    font-size: var(--fs-1);
+    padding: 0;
   }
 
-  h1 {
-    font-size: var(--fs-3);
+  main {
+    padding: 12px;
+  }
+}
+
+@media(min-width: 667px) {
+  :root {
+    --fs-1: 16px;
+    --fs-2: 18px;
+    --fs-3: 38px;
+    --border-b: 0.1em;
   }
 
-  #suggestion {
-    max-width: 90vw;
-    max-height: 40vh;
+  .weathertip {
+    max-width: 560px;
+    padding-left: 0;
   }
 
-  #icon {
-    padding: var(--pad-1051);
+  .main {
+    --fs-1: 16px;
+    --fs-2: 18px;
+    --fs-3: 68px;
   }
 
-  .forcast {
-    font-size: var(--fs-2);
+  .overview p {
+    padding: 0.1em;
+    margin: 0;
   }
 
-  day,
-  temp {
-    height: auto;
+  .overview {
+    padding-left: 0;
+  }
+}
+
+@media(min-width: 1025px) {
+  :root {
+    --fs-1: 16px;
+    --fs-2: 18px;
+    --fs-3: 68px;
+    --border-b: 0.1em;
+  }
+
+  .weathertip {
+    max-width: 1000px;
+  }
+
+  .overview p {
+    padding: 0.1em;
+    margin: 0;
   }
 }
