@@ -100,7 +100,7 @@ h1 {
 
 .lines {
   display: grid;
-  grid-template-columns: 2 1fr;
+  grid-template-columns:1fr;
   grid-template-rows: auto;
   box-sizing: border-box;
   grid-template-areas:
