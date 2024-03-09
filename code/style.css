@@ -1,11 +1,12 @@
 * {
-	--clr_bg_pink: #f4f7f8;
-	--clr_text_pink: #f47775;
-	--clr_bg_blue: #a3def7;
-	--clr_text_blue: #164a68;
-	--clr_bg_yellow: #f7e9b9;
-	--clr_text_green: #2a5510;
 	font-family: 'Montserrat', sans-serif;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	border: 1px black;
+	width: 50%;
 }
 
 h1 {
@@ -15,42 +16,17 @@ h1 {
 	font-size: 40px;
 }
 
-/* Background color */
-.background-color {
-  background-color: red;
-}
-
 /* Weather container */
 .weather-container {
-  	width: 100%;
+	margin-left: 1rem;
 	margin-top: 1rem;
-	margin-left: 1rem;
-	margin-bottom: 2rem;
-	display: flex;
-	justify-content: flex-start;
+	margin-bottom: 5rem;
 	font-size: 15px;
-}
-
-/* Sun */
-.sun {
-  margin-left: 1rem;
-}
-
-/* Image container */
-.img-container {
-  	width: 50%;
-	margin-left: 1rem;
-	display: flex;
-	justify-content: flex-end;
 }
 
 /* City container */
 .city-container {
-	width: 100%;
 	margin-left: 1rem;
-	display: flex;
-	justify-content: flex-end;
-    flex-direction: row;
 }
 
 /* Forecast container */
@@ -63,31 +39,4 @@ h1 {
 	display: grid;
 	grid-template-columns: 1fr 1fr 10%;
 	font-size: 15px;
-}
-
-/* Sunny */
-.sunny {
-  	display: flex;
-	background-color: var(--clr_bg_yellow);
-	color: var(--clr_text_green);
-}
-
-/* Cloud */
-.cloud {
-  	display: flex;
-	background-color: var(--clr_bg_pink);
-	color: var(--clr_text_pink);
-}
-
-/* Rain */
-.rain {
-  	display: flex;
-	background-color: var(--clr_bg_blue);
-	color: var(--clr_text_blue);
-}
-
-@media screen and (max-width: 400px){
-    h1{
-        font-size: 30px;
-    }
 }

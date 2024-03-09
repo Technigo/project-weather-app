@@ -33,11 +33,7 @@ const updateHtml = (data) => {
 		hour: '2-digit',
 		minute: '2-digit',
 	})
-	weatherContainer.innerHTML = `<p>${weather} |</p><p> ${temp}°C</p>`
-	sun.innerHTML = `
-    <p>sunrise ${rise}</p>
-    <p>sunset ${set}</p>`
-	console.log(sun)
+	weatherContainer.innerHTML = `${weather} | ${temp}°C <p>Sunrise ${rise}</p><p>Sunset ${set}</p>`
 
 	weatherStyle(weather, cityName)
 	filterTheTime(updateForecast)
