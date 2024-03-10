@@ -4,6 +4,8 @@
 body {
   font-family: "Roboto Condensed", "Roboto", sans-serif;
   background-color: #f7e9b9;
+  color: #2a5510;
+  font-weight: regular;
   margin: 30px;
   padding: 0;
 }
@@ -25,7 +27,7 @@ body {
   
   .quote {
     font-size: 37px;
-    font-weight: 700;
+    font-weight: bold;
   }
   
   img {
