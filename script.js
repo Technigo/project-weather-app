@@ -2,20 +2,6 @@
 const todayWeather = document.getElementById("todayWeather");
 const allWeather = document.getElementById("allWeather");
 
-userSearch.innerHTML  +=`
-    <input type="text" id="userInput" placeholder="
-    Search your city">
-    <button id="userButton">GO</button>
-`
-/* const cityUrl = {
-
-}
-
-const searchCity=()=>{
-
-} */
-
-
 todayWeather.innerHTML +=`
     <img src="" id="logo" alt="logo">
     <section class="text">
@@ -35,8 +21,8 @@ const weatherData={
     moon:'design/design1/assets/moon.svg'
 }
 
-const ShowTodayWeather =()=>{
-    fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=bb3a8ca602b6560b4bf988de0be7f379")
+const ShowTodayWeather =(city)=>{
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=bb3a8ca602b6560b4bf988de0be7f379`)
     .then((response)=>{
         return response.json();
     })
@@ -47,36 +33,60 @@ const ShowTodayWeather =()=>{
         const sunrise = document.getElementById("sunrise")
         const sunset = document.getElementById("sunset")
         console.log(json)
-       
-        location.innerHTML = json.name
-        const tempRound = json.main.temp;
-        temp.innerHTML =Math.round(tempRound*10)/10+"°C";
-        const description = json.weather[0].description;
-        clear.innerHTML = description[0].toUpperCase() + description.substring(1)
         
-        //Show the time for sunrise and sunset in a readable time format
-        let sunRiseDate = new Date(json.sys.sunrise * 1000)
-        let sunRiseTime = sunRiseDate.getHours() + ":" +sunRiseDate.getMinutes() 
-        sunrise.innerHTML =`sunrise: `+ sunRiseTime
+        if(json.cod!=='404'){
+            location.innerHTML = json.name
+            const tempRound = json.main.temp;
+            temp.innerHTML =Math.round(tempRound*10)/10+"°C";
+            const description = json.weather[0].description;
+            clear.innerHTML = description[0].toUpperCase() + description.substring(1)
+            
+            //Show the time for sunrise and sunset in a readable time format
+            const timezoneSeconds = json.timezone
+            let sunRiseCetDate = new Date(json.sys.sunrise * 1000)
+            let sunSetCetDate = new Date(json.sys.sunset * 1000)
 
-        let sunSetDate = new Date(json.sys.sunset * 1000)
-        let sunSetTime = sunSetDate.getHours() + ":" +sunSetDate.getMinutes()
-        sunset.innerHTML =`sunset: `+sunSetTime
+            // Get the difference in ms btw CET and GMT to get the utc date
+            const sunRiseCetOffset = sunRiseCetDate.getTimezoneOffset() * 60000
+            const sunSetCetOffset= sunSetCetDate.getTimezoneOffset() * 60000
+            // Get the utc date
+            sunRiseDate = new Date(json.sys.sunrise * 1000 + sunRiseCetOffset)
+            sunSetDate = new Date(json.sys.sunset * 1000 + sunSetCetOffset)
 
-        //show image of the weather condition
-        function showSunMoon(){
+            // Get the target city's date based on utc date + timezone differences in seconds
+            sunRiseDate.setSeconds(sunRiseDate.getSeconds()+timezoneSeconds)
+            let sunRiseTime = sunRiseDate.getHours() + ":" +sunRiseDate.getMinutes()
+            sunrise.innerHTML =`sunrise: `+ sunRiseTime
+
+            
+            sunSetDate.setSeconds(sunSetDate.getSeconds()+timezoneSeconds)
+            let sunSetTime = sunSetDate.getHours() + ":" +sunSetDate.getMinutes()
+            sunset.innerHTML =`sunset: `+sunSetTime
+
+            //show image of the weather condition
+            function showSunMoon(){
+                const imgElement=document.getElementById("logo");
+                const timeNow=Date.now();
+                if(timeNow<sunSetDate&&timeNow>=sunRiseDate){
+                    imgElement.src=weatherData.sunny
+                } else{
+                    imgElement.src=weatherData.moon
+                }    
+            }
+            showSunMoon()
+        } else {
+            location.innerHTML = json.message + "<br>Please enter a valid city name"
+            temp.innerHTML=" "
+            clear.innerHTML=' '
+            sunset.innerHTML =' '
+            sunrise.innerHTML =' '
             const imgElement=document.getElementById("logo");
-            const timeNow=Date.now();
-            if(timeNow<sunSetDate&&timeNow>=sunRiseDate){
-                imgElement.src=weatherData.sunny
-            } else{
-                imgElement.src=weatherData.moon
-            }    
+            imgElement.style.display = "none"
+        
         }
-        showSunMoon()
     })
 }
-ShowTodayWeather()
+ShowTodayWeather('Stockholm')
 
 // ### Step 3 - Features
 //I commited before starting with the branches so only the step of weather-icon which was worked in branch.
@@ -84,14 +94,16 @@ ShowTodayWeather()
 // **Feature: Weather forecast 📅**  
 const dayNames=['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat']
 
-fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=bb3a8ca602b6560b4bf988de0be7f379")
+//weather forecast function
+const predictWeather=(city)=>{
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=bb3a8ca602b6560b4bf988de0be7f379`)
     .then((response)=>{        
         return response.json();
     })
     .then((json)=>{
         console.log(json)
-        //weather forecast function
-        const predictWeather=()=>{
+
+        
             allWeather.innerHTML = ``
             let array = json.list
 
@@ -112,8 +124,7 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
                 const maxTemp = Math.round(el.main.temp_max)
                 const weatherDescription = el.weather[0]?.description
                 const weatherIcon = el.weather[0]?.icon
-                //const cloud = el.clouds.all
-
+            
                 console.log(myHour)
                 
                 // Set the min and max temp for each day
@@ -142,7 +153,8 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
                         foundItem.max_temp = maxTemp
                     }
                 }
-
+              
+    
                 // If the data hour matches current hour, set the weather icon for each day
                 if (currentHour === myHour || currentHour === myHour + 1 || currentHour === myHour - 1) {
                     const foundItem = myTempArray.find(i => i.day === myDay)
@@ -155,23 +167,37 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
                     }
                 }
             })
+            
             console.log(myTempArray)
+            myTempArray.splice(0,1)
+            if (myTempArray.length ===4){
+                myTempArray.forEach(row => {
+                    allWeather.innerHTML+=`
+                    <div id="dayWeather">
+                        <div id="myDay">${dayNames[row.day]}</div>
+                        <img src="design/design1/assets/${row.weather_icon}.png" id="mySymbol" alt="weather condition">  
+                        <div id="myTemp">${row.min_temp} °C / ${row.max_temp} °C </div>   
+                    </div>                  
+                ` 
+                }) 
+            } else if(myTempArray.length ===5){
+                myTempArray.slice(0,-1).forEach(row => {
+                    allWeather.innerHTML+=`
+                    <div id="dayWeather">
+                        <div id="myDay">${dayNames[row.day]}</div>
+                        <img src="design/design1/assets/${row.weather_icon}.png" id="mySymbol" alt="weather condition">  
+                        <div id="myTemp">${row.min_temp} °C / ${row.max_temp} °C </div>   
+                    </div>                  
+                ` 
+                })
+            }
 
-            myTempArray.slice(1,-1).forEach(row => {
-                allWeather.innerHTML+=`
-                <div id="dayWeather">
-                    <div id="myDay">${dayNames[row.day]}</div>
-                    <img src="design/design1/assets/${row.weather_icon}.png" id="mySymbol" alt="weather condition">  
-                    <div id="myTemp">${row.min_temp} °C / ${row.max_temp} °C </div>   
-                </div>                  
-            `  
-            }) 
-
-        }
-        predictWeather();
     })
+}
 
-
+predictWeather('Stockholm');
+            
+        
 //TODO
 // ### Intermediate Stretch Goals
 // **Feature: Styling warm/cold 🌞❄️**  
@@ -182,6 +208,33 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units
 // **Feature: More cities 🏙️**  
 // Give the user the option to choose between a couple of your favourite cities, or create a searchbar where the user can search for a specific city.
 //http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid=bb3a8ca602b6560b4bf988de0be7f379
+
+ userSearch.innerHTML  +=`
+    <input type="text" id="userInput" placeholder="
+    Search your city">
+    <button id="userButton">GO</button>
+`
+
+const searchCity=()=>{
+    let userInput = document.getElementById("userInput");
+    document.getElementById("userButton").addEventListener("click",(event)=>{
+        const cityInput = userInput.value.trim().toUpperCase();
+
+        if (/^[a-zA-Z\s-]+$/.test(cityInput)){
+            ShowTodayWeather(cityInput)
+            predictWeather(cityInput)
+            console.log(cityInput)
+        } else {
+            console.log("Please enter a valid city name.")
+        }
+    })
+} 
+searchCity()
+
+
+
+
+
 
 // ### Advanced Stretch Goals
 // **Feature: Use your location 🗺️**  
