@@ -170,21 +170,28 @@ const predictWeather=(city)=>{
             
             console.log(myTempArray)
             myTempArray.splice(0,1)
-            myTempArray.forEach(row => {
-                allWeather.innerHTML+=`
-                <div id="dayWeather">
-                    <div id="myDay">${dayNames[row.day]}</div>
-                    <img src="design/design1/assets/${row.weather_icon}.png" id="mySymbol" alt="weather condition">  
-                    <div id="myTemp">${row.min_temp} °C / ${row.max_temp} °C </div>   
-                </div>                  
-            `  
-            }) 
+            if (myTempArray.length ===4){
+                myTempArray.forEach(row => {
+                    allWeather.innerHTML+=`
+                    <div id="dayWeather">
+                        <div id="myDay">${dayNames[row.day]}</div>
+                        <img src="design/design1/assets/${row.weather_icon}.png" id="mySymbol" alt="weather condition">  
+                        <div id="myTemp">${row.min_temp} °C / ${row.max_temp} °C </div>   
+                    </div>                  
+                ` 
+                }) 
+            } else if(myTempArray.length ===5){
+                myTempArray.slice(0,-1).forEach(row => {
+                    allWeather.innerHTML+=`
+                    <div id="dayWeather">
+                        <div id="myDay">${dayNames[row.day]}</div>
+                        <img src="design/design1/assets/${row.weather_icon}.png" id="mySymbol" alt="weather condition">  
+                        <div id="myTemp">${row.min_temp} °C / ${row.max_temp} °C </div>   
+                    </div>                  
+                ` 
+                })
+            }
 
-        
-        
-
-        
-        
     })
 }
 
