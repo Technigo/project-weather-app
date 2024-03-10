@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400;1,500&display=swap');
+
+:root {
+  --gradient-day: linear-gradient(90deg, #8589FF 0%, #E8E9FF 100%);
+  --gradient-night: linear-gradient(270deg, #6264A2 0%, #222350 100%);
+  --button: rgba(117, 122, 255, 1);
+
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  font-family: "Roboto", sans-serif;
+}
+/*------------ Dropdown styling ------------------*/
+
+
+#city-dropdown {
+  background-color: var(--button);
+  margin: 15px;
+  padding: 10px;
+  font-size: 16px;
+  color: #E8E9FF;
+  border: 1px solid;
+  border-radius: 4px;
+}
+
+#city-dropdown:hover {
+  border-color: #aaa;
+}
+
+#city-dropdown option {
+  padding: 10px;
+  font-size: 30px;
+  font-weight: 100;
+}
+
+/*-------------------- today's weather ----------------------*/
+.today-weather-background {
+  background: transparent;
+  color: #E8E9FF;
+  border-bottom-left-radius: 50vw 10vw;
+  border-bottom-right-radius: 50vw 10vw;
+}
+
+.current-weather {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 300;
+}
+#current-weather, .header {
+  transition: background-color 0.5s ease;
+}
+
+.day-background {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--gradient-day);
+  color: #E8E9FF;
+}
+.night-background {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--gradient-night);
+}
+
+
+.temp {
+  font-size: 120px;
+}
+
+.temp span {
+  font-size: 4rem;
+  vertical-align: text-top;
+}
+
+h1 {
+  font-size: 34px;
+  font-weight: 300;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 30px;
+  margin: 20px;
+  font-weight: 100;
+}
+
+.condition {
+  font-size: 22px;
+  font-weight: 200;
+  text-align: justify;
+}
+
+.sun-time {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 10px;
+}
+.sunrise,
+.sunset{
+  margin-top: 10px;
+  margin-bottom: 2rem;
+  font-size: 18px;
+  font-weight: 100;
+}
+
+.weather-forecast {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 1rem;
+  align-items: center;
+  font-size: 22px;
+}
+
+.forecast-display {
+  display: flex;
+  margin: 10px;
+  justify-content: space-between;
+  gap: 3rem;
+  align-items: center;
+}
+
+img.icon {
+  width: 50px;
+  height: 50px;
+}
+
+footer {
+  margin-top: 30px;
+  position: sticky;
+}
