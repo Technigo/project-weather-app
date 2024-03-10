@@ -42,11 +42,24 @@ const ShowTodayWeather =(city)=>{
             clear.innerHTML = description[0].toUpperCase() + description.substring(1)
             
             //Show the time for sunrise and sunset in a readable time format
-            let sunRiseDate = new Date(json.sys.sunrise * 1000)
-            let sunRiseTime = sunRiseDate.getHours() + ":" +sunRiseDate.getMinutes() 
+            const timezoneSeconds = json.timezone
+            let sunRiseCetDate = new Date(json.sys.sunrise * 1000)
+            let sunSetCetDate = new Date(json.sys.sunset * 1000)
+
+            // Get the difference in ms btw CET and GMT to get the utc date
+            const sunRiseCetOffset = sunRiseCetDate.getTimezoneOffset() * 60000
+            const sunSetCetOffset= sunSetCetDate.getTimezoneOffset() * 60000
+            // Get the utc date
+            sunRiseDate = new Date(json.sys.sunrise * 1000 + sunRiseCetOffset)
+            sunSetDate = new Date(json.sys.sunset * 1000 + sunSetCetOffset)
+
+            // Get the target city's date based on utc date + timezone differences in seconds
+            sunRiseDate.setSeconds(sunRiseDate.getSeconds()+timezoneSeconds)
+            let sunRiseTime = sunRiseDate.getHours() + ":" +sunRiseDate.getMinutes()
             sunrise.innerHTML =`sunrise: `+ sunRiseTime
 
-            let sunSetDate = new Date(json.sys.sunset * 1000)
+            
+            sunSetDate.setSeconds(sunSetDate.getSeconds()+timezoneSeconds)
             let sunSetTime = sunSetDate.getHours() + ":" +sunSetDate.getMinutes()
             sunset.innerHTML =`sunset: `+sunSetTime
 
