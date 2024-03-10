@@ -91,13 +91,15 @@ const printForecast = async forecastURL => {
       const highestTemp = Math.max(...temperatures).toFixed(0);
 
       const forecastDate = new Date(forecast.dt * 1000);
-      const weekday = getWeekdays(forecastDate);
+      const tomorrowDate = new Date(forecastDate.getTime() + (1000 * 60 * 60 * 24));
+      const weekday = getWeekdays(tomorrowDate);
+      const tomorrowWeekday = (weekday === 6) ? 0 : weekday;
       const icon = forecast.weather[0].icon;
 
       const forecastElement = document.createElement("div");
       forecastElement.innerHTML = `
       <div class="forecast-display">
-      <p>${weekday}</p>
+      <p>${tomorrowWeekday}</p>
       <img class="icon" src="https://openweathermap.org/img/wn/${icon}@2x.png">
       <p>${lowestTemp}&deg; / ${highestTemp}&deg;C</p>
       </div>`;
