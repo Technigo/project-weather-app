@@ -62,7 +62,7 @@ const weatherData = () => {
           <h4>${description} | ${temperature}°c</h4>
           <h4>sunrise: ${sunrise}</h4> 
           <h4>sunset: ${sunset}</h4>
-          <img class="weather-icon" src="./design/icons/${weatherIcon}.png"/>
+          <img class="weather-icon" src="./icons/${weatherIcon}.png"/>
         </div>
         `;
     });
