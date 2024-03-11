@@ -69,24 +69,29 @@ const fetchForecast = () => {
 		.then((data) => {
 			updateForecast(data)
 		})
-	}
+}
 fetchForecast()
 
-const updateForecast = ( weekDay, weekTemp) => {
+const updateForecast = (weekDay, weekTemp) => {
 	forecastContainer.innerHTML += `<div class ="weekday-list"><p>${weekDay}</p></div> <div class ="temp-list"><p>${weekTemp} °C</p></div>`
 	console.log(forecastContainer.innerHTML)
 
-	filterForecast(weekDay, weekTemp)
+	filterForecast()
 }
-updateForecast(data)
+updateForecast()
 
-
-const filterForecast = () => {
-filterForecast.forEach((day) => {
-	const weekDay = new Date(day.dt * 1000)
-	const weekTemp = day.main.temp.toFixed()
-})
+const filterForecast = (data) => {
+	filterForecast.forEach((day) => {
+		const weekDay = new Date(day.dt * 1000)
+		const weekTemp = day.main.temp.toFixed()
+		data.forEach((day) => {
+			const showDay = new Date(day.dt * 1000)
+			const dayIndex = showDay.getDay()
+			const weekDay = dayNames[dayIndex]
+			const weekTemp = Math.round(day.main.temp)
+			const dayNames = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
+			forecastHTML += `<div class ="weekday-list"><p>${weekDay}</p></div> <div class ="temp-list"><p>${weekTemp} °C</p></div>`
+		})
+	})
 }
 filterForecast()
-
-
