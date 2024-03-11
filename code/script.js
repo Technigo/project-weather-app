@@ -5,6 +5,7 @@ const sun = document.getElementById('sun')
 const icons = document.getElementById('image-container')
 const cityContainer = document.getElementById('city-container')
 const forecastContainer = document.getElementById('forecast-container')
+const forecastItems = document.getElementById("forecast-items")
 const errorDiv = document.getElementById('error')
 
 const dayNames = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
@@ -58,7 +59,8 @@ const weatherStyle = (weather, cityName) => {
 	}
 }
 
-//--------------------------------
+//FRAM TILL HIT FUNKAR ALLT
+//----------------------------------------
 
 //Fetching the API FORECAST
 const fetchForecast = () => {
@@ -67,31 +69,55 @@ const fetchForecast = () => {
 	)
 		.then((response) => response.json())
 		.then((data) => {
-			updateForecast(data)
+			console.log(data)
+			//From the array of 40 objects, filtering out only the forecasts at 12:00: 
+			const filteredForecast = data.list.filter((item) =>
+				item.dt_txt.includes('12:00')
+			)
+			console.log(filteredForecast)
+			//removing the last element in the array so we only display four days.
+			const fourDayForecast = filteredForecast.slice(0, filteredForecast.length-1)
+			console.log(fourDayForecast)
+			
+			//Now we have an array with four days (fourdayforecast) we want to display. This array we need to loop over using the "forEach-method":
+			fourDayForecast.forEach((day) => {
+				console.log(day)
+				//we want the weekday and temp from each of the four days
+				//starting with the weekday, converting timestamp to short weekday format
+				const weekDay = new Date (day.dt*1000).toLocaleDateString("en", {weekday:"short"})
+				console.log(weekDay)
+				//now we want to get the temp
+				const dayTemp = day.main.temp.toFixed(1) //ToFixed rounds temp value to one decimal
+				console.log(dayTemp)
+				forecastItems.innerHTML += `<li><span>${weekDay}</span><span>${dayTemp}</span></li>`
+			})
 		})
+
+	
+	
 }
 fetchForecast()
 
-const updateForecast = (weekDay, weekTemp) => {
-	forecastContainer.innerHTML += `<div class ="weekday-list"><p>${weekDay}</p></div> <div class ="temp-list"><p>${weekTemp} °C</p></div>`
-	console.log(forecastContainer.innerHTML)
+// const updateForecast = (weekDay, weekTemp) => {
+// 	forecastContainer.innerHTML += `<div class ="weekday-list"><p>${weekDay}</p></div> <div class ="temp-list"><p>${weekTemp} °C</p></div>`
+// 	console.log(forecastContainer.innerHTML)
 
-	filterForecast()
-}
-updateForecast()
+// 	filterForecast()
+// }
+// updateForecast()
 
-const filterForecast = (data) => {
-	filterForecast.forEach((day) => {
-		const weekDay = new Date(day.dt * 1000)
-		const weekTemp = day.main.temp.toFixed()
-		data.forEach((day) => {
-			const showDay = new Date(day.dt * 1000)
-			const dayIndex = showDay.getDay()
-			const weekDay = dayNames[dayIndex]
-			const weekTemp = Math.round(day.main.temp)
-			const dayNames = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
-			forecastHTML += `<div class ="weekday-list"><p>${weekDay}</p></div> <div class ="temp-list"><p>${weekTemp} °C</p></div>`
-		})
-	})
-}
-filterForecast()
+// const filterForecast = (data) => {
+// 	filterForecast.forEach((day) => {
+// 		const weekDay = new Date(day.dt * 1000)
+// 		const weekTemp = day.main.temp.toFixed()
+// 		data.forEach((day) => {
+// 			const showDay = new Date(day.dt * 1000)
+// 			const dayIndex = showDay.getDay()
+// 			const weekDay = dayNames[dayIndex]
+// 			const weekTemp = Math.round(day.main.temp)
+// 			const dayNames = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
+// 			forecastHTML += `<div class ="weekday-list"><p>${weekDay}</p></div> <div class ="temp-list"><p>${weekTemp} °C</p></div>`
+// 		})
+// 	})
+// }
+// filterForecast()
