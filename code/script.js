@@ -8,7 +8,6 @@ const forecastContainer = document.getElementById('forecast-container')
 const forecastItems = document.getElementById("forecast-items")
 const errorDiv = document.getElementById('error')
 
-const dayNames = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
 
 //Fetching the API
 const fetchWeather = () => {
@@ -92,9 +91,6 @@ const fetchForecast = () => {
 				forecastItems.innerHTML += `<li><span>${weekDay}</span><span>${dayTemp}</span></li>`
 			})
 		})
-
-	
-	
 }
 fetchForecast()
 

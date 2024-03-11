@@ -28,3 +28,14 @@ h1 {
 .city-container {
 	margin-left: 1rem;
 }
+
+/*Forecast container*/
+.forecast-container ul {
+	list-style-type: none;
+}
+
+.forecast-container ul li {
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px dashed;
+}
