@@ -32,6 +32,7 @@ header{
   color: white;
   position: relative;
   display: flex;
+  justify-content: center;
   flex-direction: column;
 }
 
@@ -98,7 +99,7 @@ header img{
   width: 300vw;
   height: 200vh;
   border-radius: 50%;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   transition: transform 1s ease; /* Smooth transition for transform property */
@@ -153,8 +154,11 @@ main{
 }
 
 .forecast > *{
-  z-index: -15;
+  z-index: 1000;
   position: relative;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
 }
 
 .forecast-day{
@@ -224,7 +228,6 @@ footer a{
 /* -----------------------------------PC SCREENS >1024px  ------------------------------------- */
 @media (min-width: 1024px) {
   body{
-    
     align-items: center;
   }
 
@@ -234,6 +237,7 @@ footer a{
 
   header, main {
     width: 700px;
+    margin: auto;
   }
   
   .forecast-day{

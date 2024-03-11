@@ -87,7 +87,7 @@ const fetchWeatherForecast = () =>{
   .then(response=>response.json())
     .then((data) => {
     const selectForecast = document.getElementById("forecast"); // forecast is an HTML id
-    const filterMiddayArray = data.list.filter(item => item.dt_txt.includes("12:00"));
+    const filterMiddayArray = data.list.filter(item => item.dt_txt.includes("12:00")).slice(0, 4);
     console.log(filterMiddayArray)
     filterMiddayArray.forEach((item) => {
       // Get the day of the week
