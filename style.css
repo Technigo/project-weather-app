@@ -155,6 +155,10 @@ h1 {
   main {
     padding: 12px;
   }
+
+  .description_hidden {
+    display: none;
+  }
 }
 
 @media(min-width: 667px) {
