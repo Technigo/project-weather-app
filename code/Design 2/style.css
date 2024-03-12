@@ -1,0 +1,299 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.weather-form {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 90px;
+  margin-top: 40px;
+}
+
+.weather-form input {
+  display: none;
+  width: 70%;
+  height: 4em;
+  padding: 10px;
+  font-size: 2rem;
+  font-weight: 400;
+  border: 0;
+  outline: 0;
+  background-color: white;
+  color: black;
+  border-radius: 50px;
+  margin: 0 auto;
+}
+
+.weather-form button {
+  border: 0;
+  outline: 0;
+  background: white;
+  border-radius: 50%;
+  width: 180px;
+  height: 180px;
+  cursor: pointer;
+  margin-right: 40px;
+}
+
+.weather-form button img {
+  width: 40%;
+}
+
+.current-temp {
+  font-size: 200px;
+  font-weight: 300;
+  color: white;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.celsius {
+  font-size: 80px;
+  vertical-align: top;
+  margin-top: 0;
+  color: white;
+  display: inline;
+  margin-top: 50px;
+}
+
+.current-icon {
+  width: 350px;
+  margin-top: 30px;
+  display: flex;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+
+.curve {
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  background-color: white;
+  width: 100%;
+}
+
+.curve::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* Day mode */
+body.day-mode .curve::before {
+  background: linear-gradient(#8589ff, #e8e9ff);
+  border-bottom-right-radius: 20% 20%;
+  border-bottom-left-radius: 20% 20%;
+}
+
+/* Night mode */
+body.night-mode .curve::before {
+  background: linear-gradient(#333333, #000000);
+  border-bottom-right-radius: 20% 20%;
+  border-bottom-left-radius: 20% 20%;
+}
+
+.card {
+  margin-top: 200px;
+  margin-left: 100px;
+  width: 100%;
+  color: white;
+}
+
+.current-city {
+  font-size: 100px;
+  color: white;
+  font-weight: 300;
+}
+
+.current-sky {
+  font-size: 70px;
+  margin-bottom: 30px;
+  font-weight: 200;
+  color: white;
+}
+
+.weather-detail {
+  font-size: 60px;
+  font-weight: 200;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sun-times {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.week-days-container {
+  background-color: white;
+  padding: 20px;
+  width: 100%;
+  max-width: 100%; 
+  display: flex;
+  justify-content: center; 
+}
+
+.week-days {
+  background-color: white;
+  color: #707070;
+  font-size: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  font-weight: 300;
+  max-width: 100%; 
+  padding: 45px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.day-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  padding: 5rem;
+  padding-right: 20px;
+  background-color: whitesmoke;
+  max-width: 100%; 
+}
+
+
+.day-container > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.weather-emoji {
+  width: 120px;
+  margin-right: 60px;
+}
+
+.day {
+  margin-right: 50px;
+}
+
+.error {
+  color: red;
+  font-size: 40px;
+}
+/* Media query for tablet screens */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .weather-form {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .weather-form input {
+    width: 50%;
+    height: 3em;
+    font-size: 1.5rem;
+    margin-right: 40px;
+  }
+
+  .weather-form button {
+    width: 120
+    height: 120px;
+    margin-right: 70px;
+  }
+
+  .current-temp {
+    font-size: 120px;
+  }
+
+  .celsius {
+    font-size
+  }
+
+/* Media query for desktop screens */
+@media (min-width: 1025px) {
+  .card {
+    margin-top: 120px;
+    margin-left: auto; 
+    margin-right: auto;
+    max-width: 800px; 
+  }
+
+  .weather-form {
+    margin-top: 60px;
+    margin-bottom: 0px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center
+  }
+
+  .current-temp {
+    font-size: 160px;
+    font-weight: 300;
+    text-align: center; 
+  }
+
+  .current-icon {
+    width: 190px;
+    margin-top: 40px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .current-sky {
+    font-size: 40px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .weather-detail {
+    font-size: 40px;
+    justify-content: center;
+  }
+
+  .week-days {
+    font-size: 30px;
+    padding: 0;
+    margin-top: 20px;
+    margin-bottom:20px;
+    max-width: 800px; 
+  }
+
+  .day-container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    max-width: 800px; 
+    margin: 0 auto;
+  }
+
+  .day {
+    margin-bottom: 20px; 
+    display: block;
+    padding-left: 20px;
+  }
+
+  .weather-emoji {
+    width: 100px;
+    margin-right: 20px;
+  }
+}
