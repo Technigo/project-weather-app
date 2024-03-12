@@ -84,7 +84,7 @@ const fetchFiveDayForcast = () => {
 					forcast.innerHTML += `
 						<div class ="lines ${updateStyle}">
 							<div class="day">${convertDay(date.getDay())}</div>
-							<div class="temp">${d.weather[0].description}</span> | ${parseInt(d.main.temp).toFixed(1)}° <span class="description_hidden">| Feels like: ${parseInt(d.main.feels_like).toFixed(1)}°</span> </div>
+							<div class="temp">${d.weather[0].description} | ${parseInt(d.main.temp).toFixed(1)}° <span class="description_hidden">| Feels like: ${parseInt(d.main.feels_like).toFixed(1)}°</span> </div>
 						</div>`;
 					dayCounter++;
 				}
