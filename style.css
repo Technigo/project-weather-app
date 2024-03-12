@@ -100,7 +100,7 @@ li {
 }
 
 .sunrise-sunset {
-  display: flex;
+  display: none;
   justify-content: space-between;
   padding-bottom: 20px;
 }

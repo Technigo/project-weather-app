@@ -142,6 +142,14 @@ function fetchWeather(city) {
         description = "Don’t forget your umbrella. It’s wet today.";
       } else if (weatherCode >= 600 && weatherCode < 700) {
         description = "Light a fire and get cosy. It’s looking grey today.";
+      } else if (weatherCode >= 700 && weatherCode < 800) {
+        description = "The air is a bit hazy. Take it easy!";
+      } else if (weatherCode === 800) {
+        description = "Clear skies ahead. Enjoy the sunshine!";
+      } else if (weatherCode === 801) {
+        description = "Partly cloudy today. It's a good day for outdoor activities.";
+      } else if (weatherCode >= 802 && weatherCode <= 804) {
+        description = "Cloudy skies. Perfect weather for a cozy indoor day.";
       } else {
         description = "Weather conditions are moderate. Enjoy your day!";
       }
