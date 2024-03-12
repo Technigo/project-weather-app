@@ -212,13 +212,13 @@ body.night-mode .curve::before {
     width: 50%;
     height: 3em;
     font-size: 1.5rem;
-    margin-right: 30px;
+    margin-right: 40px;
   }
 
   .weather-form button {
-    width: 120px;
+    width: 120
     height: 120px;
-    margin-right: 50px;
+    margin-right: 70px;
   }
 
   .current-temp {
@@ -279,11 +279,11 @@ body.night-mode .curve::before {
   }
 
   .day-container {
-    display: flex; /* Ensure it's a flex container */
-    flex-direction: column; /* Display days in a column */
-    align-items: center; /* Center days horizontally */
-    max-width: 800px; /* Limit width */
-    margin: 0 auto; /* Center the container */
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    max-width: 800px; 
+    margin: 0 auto;
   }
 
   .day {
