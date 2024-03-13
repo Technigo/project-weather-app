@@ -12,54 +12,53 @@ const fetchWeather = (city) => {
       }
       return response.json();
     })
-    .then(data => {
-      // Update UI elements with the fetched data
-      document.querySelector('.temp').textContent = `${Math.round(data.main.temp)}°`;
-      document.querySelector('.city').textContent = data.name;
+.then(data => {
+  // Update UI elements with the fetched data
+  document.querySelector('.temp').textContent = `${Math.round(data.main.temp)}°`;
+  document.querySelector('.city').textContent = data.name;
 
-      // Customize the description based on weather conditions
-      let description = '';
-      const weatherCode = data.weather[0].id;
-      if (weatherCode >= 200 && weatherCode < 300) {
-        description = "Get your sunnies on. It's looking rather great today.";
-      } else if (weatherCode >= 300 && weatherCode < 600) {
-        description = "Don’t forget your umbrella. It’s wet today.";
-      } else if (weatherCode >= 600 && weatherCode < 700) {
-        description = "Light a fire and get cosy. It’s looking grey today.";
-      } else if (weatherCode >= 700 && weatherCode < 800) {
-        description = "The air is a bit hazy. Take it easy!";
-      } else if (weatherCode === 800) {
-        description = "Clear skies ahead. Enjoy the sunshine!";
-      } else if (weatherCode === 801) {
-        description = "Partly cloudy today. It's a good day for outdoor activities.";
-      } else if (weatherCode >= 802 && weatherCode <= 804) {
-        description = "Cloudy skies. Perfect weather for a cozy indoor day.";
-      } else {
-        description = "Weather conditions are moderate. Enjoy your day!";
-      }
-      document.querySelector('.description').textContent = description;
+  let description = '';
+  const cityName = data.name; 
+  const weatherCode = data.weather[0].id;
+  if (weatherCode >= 200 && weatherCode < 300) {
+    description = `Get your sunnies on in ${cityName}. It's looking rather great today.`;
+  } else if (weatherCode >= 300 && weatherCode < 600) {
+    description = `Don’t forget your umbrella in ${cityName}. It’s wet today.`;
+  } else if (weatherCode >= 600 && weatherCode < 700) {
+    description = `Light a fire and get cosy in ${cityName}. It’s looking grey today.`;
+  } else if (weatherCode >= 700 && weatherCode < 800) {
+    description = `The air is a bit hazy in ${cityName}. Take it easy!`;
+  } else if (weatherCode === 800) {
+    description = `Clear skies ahead in ${cityName}. Enjoy the sunshine!`;
+  } else if (weatherCode === 801) {
+    description = `Partly cloudy today in ${cityName}. It's a good day for outdoor activities.`;
+  } else if (weatherCode >= 802 && weatherCode <= 804) {
+    description = `Cloudy skies in ${cityName}. Perfect weather for a cozy indoor day.`;
+  } else {
+    description = `Weather conditions are moderate in ${cityName}. Enjoy your day!`;
+  }
+  document.querySelector('.description').textContent = description;
 
-      // Update weather icon
-      const iconCode = data.weather[0].icon;
-      const iconUrl = `http://openweathermap.org/img/wn/${iconCode}.png`;
-      document.querySelector('.Weather-icon').src = iconUrl;
+  // Update weather icon
+  const iconCode = data.weather[0].icon;
+  const iconUrl = `http://openweathermap.org/img/wn/${iconCode}.png`;
+  document.querySelector('.Weather-icon').src = iconUrl;
 
-      // Convert sunrise and sunset times from milliseconds to a readable format
-      const sunriseTime = new Date(data.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-      const sunsetTime = new Date(data.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-      // Update sunrise and sunset elements
-      document.getElementById('sunrise').textContent = `Sunrise: ${sunriseTime}`;
-      document.getElementById('sunset').textContent = `Sunset: ${sunsetTime}`;
+  const sunriseTime = new Date(data.sys.sunrise * 1000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
+  const sunsetTime = new Date(data.sys.sunset * 1000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
 
-      // Fetch weather forecast after current weather data is fetched
-      fetchWeatherForecast(city);
-    })
-    .catch(error => {
-      console.error('There was a problem with the fetch operation:', error);
-    });
+  // sunrise and sunset elements
+  document.getElementById('sunrise').textContent = `Sunrise: ${sunriseTime}`;
+  document.getElementById('sunset').textContent = `Sunset: ${sunsetTime}`;
+
+  // Fetch weather forecast after current weather data is fetched
+  fetchWeatherForecast(cityName); // Pass cityName to the forecast function
+})
+.catch(error => {
+  console.error('There was a problem with the fetch operation:', error);
+});
 }
-
 document.querySelector('.search button').addEventListener('click', () => {
   const input = document.querySelector('.search input').value;
   fetchWeather(input);
@@ -93,7 +92,7 @@ const fetchWeatherForecast = (city) => {
       // Filter forecast data to get weather for the next four days
       const today = new Date();
       const fourDaysFromNow = new Date(today);
-      fourDaysFromNow.setDate(fourDaysFromNow.getDate() + 4);
+      fourDaysFromNow.setDate(fourDaysFromNow.getDate() + 3);
       const filteredForecast = forecastList.filter(item => {
         const itemDate = new Date(item.dt * 1000);
         return itemDate <= fourDaysFromNow;
