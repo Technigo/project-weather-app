@@ -9,28 +9,28 @@ const styleElement = document.createElement('style')
 document.head.appendChild(styleElement)
 
 //fetch API, weather in Helsinki
-const BASE_URL1= 'https://api.openweathermap.org/data/2.5/weather'
-const BASE_URL2 = 'https://api.openweathermap.org/data/2.5/forecast'
+const BASE_URL='https://api.openweathermap.org/data/2.5/'
+const BASE_URL1 ='weather'
+const BASE_URL2 ='forecast'
 const API_KEY = '0a3f5beba05e6db2d5da18ddf3283c92'
 const city = 'Helsinki,Finland'
-const URL1 = `${BASE_URL1}?q=${city}&units=metric&appid=${API_KEY}`
-const URL2 = `${BASE_URL2}?q=${city}&units=metric&appid=${API_KEY}`
+const URL1 = `${BASE_URL}${BASE_URL1}?q=${city}&units=metric&appid=${API_KEY}`
+const URL2 = `${BASE_URL}${BASE_URL2}?q=${city}&units=metric&appid=${API_KEY}`
 
- // fetch('https://api.openweathermap.org/data/2.5/weather?q=Helsinki,Finland&units=metric&appid=0a3f5beba05e6db2d5da18ddf3283c92')
-const weatherInfo = () => {
+const fetchWeatherInfo = () => {
     fetch(URL1)
     .then(response => response.json())
     .then(data => {
-        remindTestCityName(data)  
+        middleTestCityName(data)  
     })
     .catch(error=>{
         errorText.innerHTML = 'Oops, something went wrong🫢'
         console.log('error:', error)
     })
 }
-weatherInfo()
+fetchWeatherInfo ()
 
-const remindTestCityName = (param) => {
+const middleTestCityName = (param) => {
     const dayWeather = param.weather[0].main
     const descriptionLower = param.weather[0].description
     const description = descriptionLower[0].toUpperCase()+descriptionLower.slice(1).toLowerCase()
@@ -90,12 +90,8 @@ const remindTestCityName = (param) => {
     }  
 }
 
-
-
 // weather-forecast-feature
-// fetch ('https://api.openweathermap.org/data/2.5/forecast?q=Helsinki,Finland&units=metric&appid=0a3f5beba05e6db2d5da18ddf3283c92')
-
-const forecast = () => { 
+const fetchForecast = () => { 
     fetch(URL2)
     .then(response => response.json())
     .then(data => {
@@ -105,8 +101,6 @@ const forecast = () => {
         filteredTime = [...data.list].filter(day => {
         return day.dt_txt.endsWith('12:00:00')
         }) 
-        console.log(filteredTime)
-        
         // console.log(new Date(filteredTime[0].dt*1000).toLocaleDateString('en-US', {weekday:'short'})) --> Fri 
         //convert each day to a short name. print weather for next 4 days
         filteredTime.forEach((day) => {
@@ -114,16 +108,13 @@ const forecast = () => {
             const currentDate = new Date(fromSecond)
             let currentDay
             currentDay = currentDate.toLocaleDateString('en-US', {weekday:'short'})    
-            console.log (currentDay) 
-
-            // const fiveDaysWeather = Math.round(day.main.temp)
-            const lowestTemp = Math.round(day.main.temp_min)
-            const hightestTemp = Math.round(day.main.temp_max)
-        
+            const fiveDaysWeather = Math.round(day.main.temp)
+            // const lowestTemp = Math.round(day.main.temp_min)
+            // const hightestTemp = Math.round(day.main.temp_max)
             fiveDaysTemperature.innerHTML += `
             <li>
             <span>${currentDay}</span>
-            <span>${lowestTemp}° / ${hightestTemp}°</span>
+            <span>${fiveDaysWeather}°</span>
             </li><hr>`
             styleElement.sheet.insertRule('li {list-style-type: none}')
             }) 
@@ -135,9 +126,4 @@ const forecast = () => {
         console.log('error:', error)
     })
 }
-forecast()
-
-
-
-
-
+fetchForecast()
