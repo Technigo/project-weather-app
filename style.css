@@ -1,0 +1,84 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Montserrat;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0; 
+}
+
+#temperature-sun-time {
+    position: absolute;
+    top: 15%;
+    left:15%;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 36px;
+}
+#remind-text {
+    font-weight: 700;
+    font-size: 37px;
+    line-height: 45px;
+}
+ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 70%;
+    margin-top: 50px;
+}
+li {
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 36px; 
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 500px) {
+    #temperature-sun-time{
+        position: absolute;
+        margin-top:1rem;
+        margin-left: 1rem;
+        font-size: 10px;
+        line-height: 18px;
+    }
+
+    #remind-text {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 25px;
+    }
+
+    li{
+        font-size: 10px;
+        line-height: 18px;
+    }
+
+}
+@media (min-width: 501px) and (max-width: 1200px) {
+    #temperature-sun-time{
+        position: absolute;
+        margin-top:1rem;
+        margin-left: 1rem;
+        font-size: 15px;
+        line-height: 25px;
+    }
+    #remind-text {
+        font-weight: 700;
+        font-size: 28px;
+        line-height: 32px;
+    }
+    li{
+        font-size: 15px;
+        line-height: 18px;
+    }
+}
+
