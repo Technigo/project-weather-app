@@ -5,9 +5,8 @@ const sun = document.getElementById('sun')
 const icons = document.getElementById('image-container')
 const cityContainer = document.getElementById('city-container')
 const forecastContainer = document.getElementById('forecast-container')
-const forecastItems = document.getElementById("forecast-items")
+const forecastItems = document.getElementById('forecast-items')
 const errorDiv = document.getElementById('error')
-
 
 //Fetching the API
 const fetchWeather = () => {
@@ -44,11 +43,11 @@ const updateHtml = (data) => {
 //ev lägga till färger för vinter?
 const weatherStyle = (weather, cityName) => {
 	if (weather === 'Clear') {
-		cityContainer.innerHTML += `<img src="code/noun_Sunglasses_2055147.svg" alt="sunglasses"/><h1>Get your sunnies on! ${cityName} is looking rather great today!</h1>`
+		cityContainer.innerHTML += `<img src="/code/noun_Sunglasses_2055147.svg" alt="sunglasses"/><h1>Get your sunnies on! ${cityName} is looking rather great today!</h1>`
 		document.body.style.backgroundColor = '#f7e9b9'
 		document.body.style.color = '#2a5510'
 	} else if (weather === 'Clouds' || weather === 'Mist') {
-		cityContainer.innerHTML = `<img src="code/noun_Cloud_1188486.svg" alt="cloud"/><h1>Light a fire and get cozy. ${cityName} is looking grey today.</h1>`
+		cityContainer.innerHTML = `<img src="code/noun_Sunglasses_2055147.svg" alt="cloud"/><h1>Light a fire and get cozy. ${cityName} is looking grey today.</h1>`
 		document.body.style.backgroundColor = '#f4f7f8'
 		document.body.style.color = '#f47775'
 	} else if (weather === 'Rain') {
@@ -69,21 +68,26 @@ const fetchForecast = () => {
 		.then((response) => response.json())
 		.then((data) => {
 			console.log(data)
-			//From the array of 40 objects, filtering out only the forecasts at 12:00: 
+			//From the array of 40 objects, filtering out only the forecasts at 12:00:
 			const filteredForecast = data.list.filter((item) =>
 				item.dt_txt.includes('12:00')
 			)
 			console.log(filteredForecast)
 			//removing the last element in the array so we only display four days.
-			const fourDayForecast = filteredForecast.slice(0, filteredForecast.length-1)
+			const fourDayForecast = filteredForecast.slice(
+				0,
+				filteredForecast.length - 1
+			)
 			console.log(fourDayForecast)
-			
+
 			//Now we have an array with four days (fourdayforecast) we want to display. This array we need to loop over using the "forEach-method":
 			fourDayForecast.forEach((day) => {
 				console.log(day)
 				//we want the weekday and temp from each of the four days
 				//starting with the weekday, converting timestamp to short weekday format
-				const weekDay = new Date (day.dt*1000).toLocaleDateString("en", {weekday:"short"})
+				const weekDay = new Date(day.dt * 1000).toLocaleDateString('en', {
+					weekday: 'short',
+				})
 				console.log(weekDay)
 				//now we want to get the temp
 				const dayTemp = day.main.temp.toFixed(1) //ToFixed rounds temp value to one decimal
