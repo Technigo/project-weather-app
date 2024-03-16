@@ -47,6 +47,7 @@
 	margin-top: 50px;
 }
 
+/*For tablet and desktop*/
 @media (min-width: 768px) {
 	.wrapper {
 		display: flex;
