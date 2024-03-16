@@ -5,28 +5,25 @@
 .wrapper {
 	display: flex;
 	flex-direction: column;
-	border: 1px black;
-	width: 50%;
-}
-
-h1 {
-	display: flex;
-	text-align: left;
-	flex-flow: row wrap;
-	font-size: 40px;
+	justify-content: center;
+	width: 90%;
+	height: auto;
+	margin: 0 auto;
 }
 
 /* Weather container */
 .weather-container {
-	margin-left: 1rem;
-	margin-top: 1rem;
+	margin-left: 2rem;
+	margin-top: 2rem;
 	margin-bottom: 5rem;
-	font-size: 15px;
+	font-size: 20px;
 }
 
-/* City container */
+/* City container*/
 .city-container {
+	display: block;
 	margin-left: 1rem;
+	font-size: 20px;
 }
 
 /*Forecast container*/
@@ -38,4 +35,47 @@ h1 {
 	display: flex;
 	justify-content: space-between;
 	border-bottom: 1px dashed;
+	margin-right: 2rem;
+	margin-bottom: 1.5rem;
+	font-size: 20px;
+}
+
+.footer {
+	text-align: center;
+	font-size: 10px;
+	padding: 5px;
+	margin-top: 50px;
+}
+
+@media (min-width: 768px) {
+	.wrapper {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		height: auto;
+		margin: 0 auto;
+		width: 50%;
+	}
+
+	.weather-container {
+		margin-left: 2rem;
+		margin-top: 2rem;
+		margin-bottom: 5rem;
+		font-size: 20px;
+	}
+
+	.city-container {
+		display: block;
+		margin-left: 1rem;
+		font-size: 20px;
+		margin-bottom: 20px;
+	}
+
+	.forecast-container ul li {
+		display: flex;
+		justify-content: space-between;
+		border-bottom: 1px dashed;
+		margin-bottom: 1.5rem;
+		font-size: 20px;
+	}
 }
