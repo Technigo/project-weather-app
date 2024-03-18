@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <title>Weather App</title>
+</head>
+<body>
+  <div class="card">
+    <div class="search">
+      <input type="text" placeholder="enter city name" spellcheck="false">
+      <button> <img src="design/design2/icons/search-icon.svg" alt=""></button>
+    </div>
+    <div class="Weather">
+      <h1 class="temp">22°</h1>
+      <div class="sunrise-sunset">
+        <div>
+          <label for="sunrise"></label>
+          <h3 id="sunrise"></h3>
+        </div>
+        <div>
+          <label for="sunset"></label>
+          <h3 id="sunset"></h3>
+        </div>
+      </div>
+      <img class="Weather-icon" src="" alt="Weather-icon">      
+      <h2 class="city"></h2>
+      <h2 class="description">weather</h2>
+      <div class="forecast">
+        <div class="forecast-left">
+          <ul class="day-list">
+          </ul>
+        </div>
+        <div class="forecast-right">
+          <ul class="temperature-list">
+
+          </ul>
+        </div>
+      </div>
+      
+  </div>
+  <script src="fetch2.js"></script>
+</body>
+</html>
