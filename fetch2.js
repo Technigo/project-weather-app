@@ -88,7 +88,7 @@ const fetchWeatherForecast = (city) => {
       // Filter forecast data to get weather for the next four days
       const today = new Date();
       const fourDaysFromNow = new Date(today);
-      fourDaysFromNow.setDate(fourDaysFromNow.getDate() + 3);
+      fourDaysFromNow.setDate(fourDaysFromNow.getDate() + 4);
       const filteredForecast = forecastList.filter(item => {
         const itemDate = new Date(item.dt * 1000);
         return itemDate <= fourDaysFromNow;
@@ -102,7 +102,7 @@ const fetchWeatherForecast = (city) => {
     });
 }
 
-const displayForecast = (forecastList) => {
+const displayForecast= (forecastList) => {
   const dayList = document.querySelector('.day-list');
   const temperatureList = document.querySelector('.temperature-list');
   
@@ -110,27 +110,33 @@ const displayForecast = (forecastList) => {
   dayList.innerHTML = '';
   temperatureList.innerHTML = '';
 
-  let currentDay = null; // Variable to track the current day
+  let currentDate = new Date();
+  currentDate.setDate(currentDate.getDate() + 1); // Start from the day after today
+  let displayedDays = 0;
 
   forecastList.forEach(item => {
     const date = new Date(item.dt * 1000);
-    const day = date.toLocaleDateString('en-US', { weekday: 'short' });
-    const temperature = item.main.temp.toFixed(1); // Round temperature to 1 decimal place
     
-    // Check if it's a new day
-    if (day !== currentDay) {
-      // Create list item for day of the week
-      const dayListItem = document.createElement('li');
-      dayListItem.textContent = day;
-      dayList.appendChild(dayListItem);
+    // Check if it's one of the next 4 days
+    if (displayedDays < 4) {
+      // Display only if it's a day after the current day
+      if (date.getDate() === currentDate.getDate()) {
+        const day = date.toLocaleDateString('en-US', { weekday: 'short' });
+        const temperature = item.main.temp.toFixed(1); // Format temperature with one decimal place
+        
+        // Create list item for day of the week
+        const dayListItem = document.createElement('li');
+        dayListItem.textContent = day;
+        dayList.appendChild(dayListItem);
 
-      // Create list item for temperature
-      const temperatureListItem = document.createElement('li');
-      temperatureListItem.textContent = temperature + '°';
-      temperatureList.appendChild(temperatureListItem);
+        // Create list item for temperature
+        const temperatureListItem = document.createElement('li');
+        temperatureListItem.textContent = temperature + '°'; // Append ° symbol
+        temperatureList.appendChild(temperatureListItem);
 
-      // Update current day
-      currentDay = day;
+        displayedDays++;
+        currentDate.setDate(currentDate.getDate() + 1); // Move to the next day
+      }
     }
   });
 }
