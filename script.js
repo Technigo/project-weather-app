@@ -49,28 +49,28 @@ const getWeatherData = () => {
         body.style.background = "#F7E9B9";
         body.style.color = "#2A5510";
         container.innerHTML = `
-        <img src="http://127.0.0.1:5500/icons-images-new/noun_Sunglasses_2055147.svg">
+        <img src="./icons-images-new/noun_Sunglasses_2055147.svg">
         <h1>Get your sunnies on.<br> 
         ${data.name} is looking rather great today.</h1>`;
       } else if (todaysWeather === "Rain") {
         body.style.background = "#A3DEF7";
         body.style.color = "#164A68";
         container.innerHTML = `
-        <img src="http://127.0.0.1:5500/icons-images-new/noun_Umbrella_2030530.svg">
+        <img src="./icons-images-new/noun_Umbrella_2030530.svg">
         <h1>Don't forget your umbrella.<br> 
         It's wet in ${data.name} today.</h1>`;
       } else if (todaysWeather === "Clouds") {
         body.style.background = "##F4F7F8";
         fiveDays.style.color = "#F47775";
         container.innerHTML = `
-        <img src="http://127.0.0.1:5500/icons-images-new/noun_Cloud_1188486.svg">
+        <img src="./icons-images-new/noun_Cloud_1188486.svg">
         <h1>Light a fire and get cosy. ${data.name} is looking grey today.</h1>
         `;
       } else if (todaysWeather === "Snow") {
         body.style.background = "##F4F7F8";
         fiveDays.style.color = "#F47775";
         container.innerHTML = `
-        <img src="http://127.0.0.1:5500/icons-images-new/noun_Cloud_1188486.svg">
+        <img src="./icons-images-new/noun_Cloud_1188486.svg">
         <h1>Light a fire and get cosy.<br> 
         ${data.name} is looking grey today.</h1>
         `;
@@ -109,4 +109,3 @@ const getWeatherForecast = () => {
     });
 };
 getWeatherForecast();
-
