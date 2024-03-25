@@ -27,15 +27,6 @@ let weekday = "";
 
 ////////////////////////////// Functions ///////////////////////////////
 
-// Function that fetches data from a url
-const fetchData = (url) => {
-  return fetch(url)
-    .then((response) => response.json())
-    .catch((error) => {
-      cityName.innerText = "Something went wrong";
-    });
-};
-
 // Function that changes the design for cloudy days
 const setCloudyDesign = () => {
   smallWeatherIcon.src = "./design/design2/icons/noun_Cloud_1188486.svg";
@@ -68,48 +59,6 @@ const setHazyDesign = () => {
   cityName.innerHTML = `Watch your step. Visibility in ${localCity} is not great today.`;
 };
 
-// Function that fetches the name of the city
-const getCityName = () => {
-  fetchData(URL).then((json) => {
-    localCity = json.name;
-  });
-};
-
-// Function that fetches the weather condition at the local city
-// Depending on the weather, a function corresponding to the
-// specific weather condition is called
-const getCityWeather = () => {
-  fetchData(URL).then((json) => {
-    const localWeather = json.weather[0].main;
-    weather.innerText = localWeather;
-    if (localWeather === "Clouds") {
-      setCloudyDesign();
-    } else if (localWeather === "Clear") {
-      setClearDesign();
-    } else if (localWeather === "Rain" || localWeather === "Drizzle") {
-      setRainDesign();
-    } else if (
-      localWeather === "Haze" ||
-      localWeather === "Fog" ||
-      localWeather === "Mist"
-    ) {
-      setHazyDesign();
-    } else {
-      image.src = "./design/design2/icons/icons8-placeholder-50.png";
-    }
-  });
-};
-
-// Function that fetches the temperature at the local city
-const getCityDegrees = () => {
-  fetchData(URL).then((json) => {
-    const localDegrees = json.main.temp;
-    // The temperatue is rounded to 1 decimal
-    const roundedLocalDegrees = localDegrees.toFixed(1);
-    degrees.innerText = `${roundedLocalDegrees}°`;
-  });
-};
-
 // Function that checks if a number is less than 10
 // If so, it adds a 0 in front of the number
 // This is for formatting reasons when displaying time
@@ -120,26 +69,62 @@ const isItLessThanTen = (number) => {
   return number;
 };
 
-// Function that fetches the time for sunrise and sunset at the local city
-const getSunriseSunset = () => {
-  fetchData(URL).then((json) => {
-    // Sunrise
-    // Add json.timezone to get local timezone and multipy by 1000 because of UNIX
-    const sunriseData = new Date((json.sys.sunrise + json.timezone) * 1000);
-    let sunriseHours = sunriseData.getHours();
-    sunriseHours = isItLessThanTen(sunriseHours); // Check if the hour number is less than 10
-    let sunriseMinutes = sunriseData.getMinutes();
-    sunriseMinutes = isItLessThanTen(sunriseMinutes); // Check if the minute number is less than 10
-    sunrise.innerText = `${sunriseHours}.${sunriseMinutes}`;
+// Function that fetches data from the weather url
+const fetchData = () => {
+  fetch(URL)
+    .then((response) => response.json())
+    .then((json) => {
+      // Fetch the name of the city
+      localCity = json.name;
 
-    // Sunset
-    const sunsetData = new Date((json.sys.sunset + json.timezone) * 1000);
-    let sunsetHours = sunsetData.getHours();
-    sunsetHours = isItLessThanTen(sunsetHours);
-    let sunsetMinutes = sunsetData.getMinutes();
-    sunsetMinutes = isItLessThanTen(sunsetMinutes);
-    sunset.innerText = `${sunsetHours}.${sunsetMinutes}`;
-  });
+      // Fetch the weather condition at the local city.
+      // Depending on the weather, a function corresponding to the
+      // specific weather condition is called
+      const localWeather = json.weather[0].main;
+      weather.innerText = localWeather;
+      if (localWeather === "Clouds") {
+        setCloudyDesign();
+      } else if (localWeather === "Clear") {
+        setClearDesign();
+      } else if (localWeather === "Rain" || localWeather === "Drizzle") {
+        setRainDesign();
+      } else if (
+        localWeather === "Haze" ||
+        localWeather === "Fog" ||
+        localWeather === "Mist"
+      ) {
+        setHazyDesign();
+      } else {
+        image.src = "./design/design2/icons/icons8-placeholder-50.png";
+      }
+
+      // Fetch the temperature of the local city
+      const localDegrees = json.main.temp;
+      // The temperatue is rounded to 1 decimal
+      const roundedLocalDegrees = localDegrees.toFixed(1);
+      degrees.innerText = `${roundedLocalDegrees}°`;
+
+      // Sunrise
+      // Add json.timezone to get local timezone and multipy by 1000 because of UNIX
+      const sunriseData = new Date((json.sys.sunrise + json.timezone) * 1000);
+      let sunriseHours = sunriseData.getHours();
+      sunriseHours = isItLessThanTen(sunriseHours); // Check if the hour number is less than 10
+      let sunriseMinutes = sunriseData.getMinutes();
+      sunriseMinutes = isItLessThanTen(sunriseMinutes); // Check if the minute number is less than 10
+      sunrise.innerText = `${sunriseHours}.${sunriseMinutes}`;
+
+      // Sunset
+      const sunsetData = new Date((json.sys.sunset + json.timezone) * 1000);
+      let sunsetHours = sunsetData.getHours();
+      sunsetHours = isItLessThanTen(sunsetHours);
+      let sunsetMinutes = sunsetData.getMinutes();
+      sunsetMinutes = isItLessThanTen(sunsetMinutes);
+      sunset.innerText = `${sunsetHours}.${sunsetMinutes}`;
+    })
+    .catch((error) => {
+      cityName.innerText = "Something went wrong";
+      console.error(error);
+    });
 };
 
 // Function that checks the get.Day() number and assigns the corresponding
@@ -175,40 +160,41 @@ const whatDayIsIt = (dayNumber) => {
 
 // Function that fetches the forecast for the next 4-5 days
 const getForecast = () => {
-  fetchData(forecastURL).then((json) => {
-    // Filters the array to get the objects with the timestamp 12:00
-    const forecastArray = json.list.filter((item) =>
-      item.dt_txt.includes("12:00")
-    );
-    // Create an array with the temperatures of the filtered objects
-    const dailyTemperatures = forecastArray.map((degrees) => degrees.main.temp);
-    // Create an array with the timestamps of the filtered objects
-    const timestampArray = forecastArray.map((times) => times.dt);
-    timestampArray.forEach((timestamp, index) => {
-      const dayDate = new Date(timestamp * 1000);
-      weekday = dayDate.getDay();
-      // Check so that the forecast for the current day is not included
-      if (weekday !== currentDay) {
-        whatDayIsIt(weekday);
-        // Takes the current index of the element (timestamp), checks what
-        // the value at the corresponding index in the dailyTemperatures
-        // array is and adds the value to the dayTemperature variable
-        const dayTemperature = dailyTemperatures[index].toFixed(1);
-        forecastTable.innerHTML += `<tr>
+  fetch(forecastURL)
+    .then((response) => response.json())
+    .then((json) => {
+      // Filters the array to get the objects with the timestamp 12:00
+      const forecastArray = json.list.filter((item) =>
+        item.dt_txt.includes("12:00")
+      );
+      // Create an array with the temperatures of the filtered objects
+      const dailyTemperatures = forecastArray.map(
+        (degrees) => degrees.main.temp
+      );
+      // Create an array with the timestamps of the filtered objects
+      const timestampArray = forecastArray.map((times) => times.dt);
+      timestampArray.forEach((timestamp, index) => {
+        const dayDate = new Date(timestamp * 1000);
+        weekday = dayDate.getDay();
+        // Check so that the forecast for the current day is not included
+        if (weekday !== currentDay) {
+          whatDayIsIt(weekday);
+          // Takes the current index of the element (timestamp), checks what
+          // the value at the corresponding index in the dailyTemperatures
+          // array is and adds the value to the dayTemperature variable
+          const dayTemperature = dailyTemperatures[index].toFixed(1);
+          forecastTable.innerHTML += `<tr>
         <td>${weekday}</td>
         <td class="last-col">${dayTemperature}°</td>
       </tr>`;
-      }
+        }
+      });
     });
-  });
 };
 
 // Functions that runs all the other functions
 const displayInfo = () => {
-  getCityName();
-  getCityWeather();
-  getCityDegrees();
-  getSunriseSunset();
+  fetchData();
   getForecast();
 };
 
