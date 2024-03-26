@@ -42,7 +42,7 @@ const fetchFiveDayForecast = () => {
         })
         .then((data) => {
             const longForecast = data.list.filter((day) =>
-                day.dt_txt.includes("13:00")
+                day.dt_txt.includes("12:00")
             )
             longForecast.forEach((day) => {
                 const weekdayName = new Date(day.dt * 1000)
