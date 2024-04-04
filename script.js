@@ -1,9 +1,7 @@
-const weatherContainer = document.getElementById("weatherContainer");
 const weatherForecastContainer = document.getElementById(
   "weatherForecastContainer"
 );
-const fullContainer = document.getElementById("fullContainer");
-const textContainer = document.getElementById("textContainer");
+
 const icon = document.getElementById("icon");
 const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
@@ -116,14 +114,30 @@ const fetchForecast = (city) => {
         daytimeWeather.dt_txt.includes("12:00")
       );
 
+      // Get todays date
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      // Filter our forecast for today
+      const filteredForecastForTomorrow = filteredTime.filter(
+        (dayTimeWeather) => {
+          const forecastDate = new Date(dayTimeWeather.dt * 1000);
+          forecastDate.setHours(0, 0, 0, 0);
+          return forecastDate > today;
+        }
+      );
+
       let number = 1;
 
       for (let i = 0; i < 4; i++) {
-        const day = filteredTime[i];
+        const day = filteredForecastForTomorrow[i];
+        if (!day) break;
+
         const date = new Date(day.dt * 1000);
         const nameOfDay = date.toLocaleDateString("en-US", {
           weekday: "short",
         });
+
         const tempMin = Math.round(day.main.temp_min);
         const tempMax = Math.round(day.main.temp_min);
 
