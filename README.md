@@ -11,3 +11,5 @@ I found a lot of difficulty in completing this project, especially regarding the
 Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
 [https://lorenzoweatherapp.netlify.app/
 ](https://lorenzoweatherapp.netlify.app/)
+
+image_url: <a href="https://www.freepik.com/free-photo/woman-near-road-using-smartphone_7843858.htm#query=weather%20app&position=10&from_view=keyword&track=ais&uuid=8007c591-dc31-481d-ab69-3b9ed7a1ef6c">Image by drobotdean</a> on Freepik
