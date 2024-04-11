@@ -1,7 +1,26 @@
+const body = document.getElementById('body')
 const header = document.getElementById('header')
 const weatherDescription = document.getElementById('weatherDescription')
 const container = document.getElementById('container')
 const forecastItems = document.getElementById('forecastItems')
+
+// //Function to change colors based on the weather condition
+// const changeColors = (weather) => {
+//     switch (weather) {
+//         case 'Clouds':
+//             body.style.backgroundColor = 'var(--bgCloudy)';
+//             container.style.color = 'var(--txtCloudy)';
+//             break;
+//         case 'Rain':
+//             body.style.backgroundColor = 'var(--bgRainy)';
+//             container.style.color = 'var(--txtRainy)';
+//             break;
+//         default:
+//             body.style.backgroundColor = 'var(--bgSunny)';
+//             container.style.color = 'var(--txtSunny)';
+//             break;
+//     }
+// };
 
 //Function to make a request to the OpenWeatherMap API to fetch the weather data.
 const fetchWeather = () => { 
@@ -11,7 +30,7 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
     })
 
     .then((json) => {
-
+    
         const sunRise = new Date (json.sys.sunrise * 1000);
         //making the time variables into strings to display the sunrise and sunset times into a string with hours and minutes in a "HH:MM" format
         let sunRiseHoursAndMinutes = String(sunRise.getHours()).padStart(2, '0') + ':' + String(sunRise.getMinutes()).padStart(2, '0');
@@ -36,6 +55,8 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         switch(weather.main) {
             case 'Clouds':  
                 console.log('cloudy');
+                body.style.backgroundColor = 'var(--bgCloudy)';
+                container.style.color = 'var(--txtCloudy)';
                 weatherDescription.innerHTML += `
               <img src ="design/design2/icons/noun_Cloud_1188486.svg" alt = "cloud"/>
                 <h1>The sky is grey in ${json.name}. </h1>
@@ -44,7 +65,9 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         
             case 'Rain':  
                 console.log('rainy')
-                console.log(weather.description)    
+                console.log(weather.description)  
+                body.style.backgroundColor = 'var(--bgRainy)';
+                container.style.color = 'var(--txtRainy)';  
                 weatherDescription.innerHTML += `
                 <img src = "design/design2/icons/noun_Umbrella_2030530.svg" alt = "umbrella"/> <h1>It's raining in ${json.name}. It's okay to stay inside!  </h1>
                 `
@@ -52,6 +75,8 @@ fetch("https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         
             default:
                 console.log('sunny')
+                body.style.backgroundColor = 'var(--bgSunny)';
+                container.style.color = 'var(--txtSunny)';
                 weatherDescription.innerHTML += `
                 <img src ="design/design2/icons/noun_Sunglasses_2055147.svg" alt = "sunglasses"/><h1>The sky is crispy and clear in ${json.name}. </h1>
                 </div>
