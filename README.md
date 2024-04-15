@@ -14,3 +14,4 @@ Didn't have enough time to complete this assigment during given time. Will conti
 
 Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
 
+https://fancy-dolphin-0b71ae.netlify.app/
