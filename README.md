@@ -4,11 +4,11 @@ This assignment is a vanilla JavaScript weather application project where weathe
 
 ## The problem
 
-For building the app, I started with using fetch() function to fetch the weather data from daily weather and 5-day forecast accordingly, and then deconstruct the data and display them along the UI/UX design provided in Figma.
+To construct the app, I initially utilized the fetch() function to retrieve weather data for both daily forecasts and 5-day predictions. Subsequently, I parsed and displayed this data in accordance with the UI/UX design outlined in Figma.
 
-The main problem i encountered in the process was converting Unix time string into the local time. It was consuding in the beginnign since I wasn't familiar with this kind of time formate. In the end, after researching, I found the correct solution. 
+A significant challenge arose when I had to convert Unix time strings into local time. Initially, I found this process confusing due to my lack of familiarity with this time format. However, after conducting thorough research, I successfully identified and implemented the correct solution.
 
-Additionaly, I tried to add in more icons and UI color theme to fit different weather conditions. 
+Moreover, I endeavored to enhance the user experience by incorporating additional icons and adjusting the UI color theme to correspond with various weather conditions.
 
 ## A tryout
 * I used Javascript modules to load iconArr.js and script.js separately. So the js files are cleaner.
