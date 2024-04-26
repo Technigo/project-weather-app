@@ -9,6 +9,7 @@ body {
   font-family: "Courier New", Courier, monospace;
   overflow: hidden;
   height: 100vh;
+  background-color: rgb(133, 150, 129);
 }
 
 #background-container {
@@ -19,7 +20,8 @@ body {
 }
 
 .virestadWeather {
-  padding-top: 35%;
+  position: relative;
+  padding-top: 30%;
   width: 60%;
   padding-left: 8%;
   padding-bottom: 5%;
@@ -27,24 +29,30 @@ body {
 }
 
 h1 {
-  font-size: 40px;
+  font-size: 45px;
 }
 
 .city {
-  font-size: 25px;
+  font-size: 30px;
+  font-weight: bold;
 }
 p {
   padding: 1.5%;
   font-size: 15px;
+  font-weight: bold;
 }
 
-img {
-  height: 90%;
-  width: 90%;
+#virestadWeather img {
+  position: absolute;
+  top: 5px;
+  margin-left: 80%;
+  height: 60%;
+  width: 60%;
+  z-index: 3;
 }
 
 .sunriseSunset {
-  padding-left: 10%;
+  padding-left: 15%;
   display: flex;
   justify-content: space-between;
   margin-right: 15%;
@@ -52,29 +60,86 @@ img {
   color: white;
 }
 
-.forecast {
-  background-color: antiquewhite;
-}
-
-/* 
-
-.forecast-items {
+.forecastContainer {
   display: flex;
-  justify-content: space-evenly;
-  margin: 40px 40px;
+  flex-direction: column;
+  padding-top: 5%;
 }
 
-.forecast,
-.forecast-items {
+.forecast {
+  display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  justify-content: ;
-  margin: 0px 10px;
-/* } */
+  margin-left: 15%;
+  margin-right: 15%;
+  color: rgb(5, 65, 32);
+}
 
-/* @media only screen and (max-width:730px) {
+.forecast p {
+  font-size: 20px;
+}
+
+.forecast img {
+  width: 50px;
+  height: 50px;
+}
+
+@media screen and (min-width: 900px) {
+  #background-container {
+    height: 53%;
+    overflow: hidden;
+    border-radius: 0% 0% 25% 25%;
+  }
+
+  .virestadWeather {
+    position: relative;
+    padding-top: 5%;
+    width: 60%;
+    padding-left: 8%;
+    color: white;
+  }
+
+  #virestadWeather img {
+    position: absolute;
+    top: 15px;
+    margin-left: 80%;
+    height: 60%;
+    width: 60%;
+    z-index: 3;
+  }
+
+  .sunriseSunset {
+    padding-left: 15%;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 15%;
+    padding-bottom: 5%;
+    color: white;
+  }
+
+  p {
+    padding: 1.5%;
+    font-size: 30px;
+    font-weight: bold;
+  }
+
   .forecast {
-    justify-content: start;
-    align-items: none;
-    overflow-x: scroll;
-  } */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 15%;
+    margin-right: 15%;
+    color: rgb(5, 65, 32);
+  }
+
+  .forecast p {
+    font-size: 30px;
+  }
+
+  .forecast img {
+    width: 50px;
+    height: 50px;
+  }
+}
