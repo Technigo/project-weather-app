@@ -32,12 +32,11 @@ fetch(searchString("weather", "Virestad, Sweden"))
 
     // Change background based on day or night
     if (isDaytime) {
-      document.body.style.backgroundImage = "url('pictures/day.jpg')"; // Daytime background
+      document.getElementById("background-container").style.backgroundImage =
+        "url('pictures/day.jpg')"; // Daytime background
     } else {
-      document.body.style.backgroundImage = "url('pictures/night.jpg')"; // Nighttime background
-      // Set text color to white for nighttime
-      weatherContainer.style.color = "white";
-      sunriseSunset.style.color = "white";
+      document.getElementById("background-container").style.backgroundImage =
+        "url('pictures/night.jpg')"; // Nighttime background
     }
 
     console.log(`city` + cityName);
@@ -49,7 +48,7 @@ fetch(searchString("weather", "Virestad, Sweden"))
 
     weatherContainer.innerHTML = `
       <h1>${temperature} °C</h1>
-      <p)>${cityName}</p>
+      <p class="city">${cityName}</p>
       <p>${weatherCondition}</p>
       <p>Feels like: ${feelsLike} °C</p>
     `;

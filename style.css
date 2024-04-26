@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  border: red solid 1px;
+  /* border: red solid 1px; */
 }
 
 body {
@@ -11,12 +11,31 @@ body {
   height: 100vh;
 }
 
+#background-container {
+  background-size: cover;
+  background-position: top;
+  overflow: hidden;
+  border-radius: 0% 0% 50% 50%;
+}
+
 .virestadWeather {
-  padding: 50px 100px;
-  border-bottom-left-radius: 45%;
-  border-bottom-right-radius: 45%;
-  margin: auto;
-  text-align: center;
+  padding-top: 35%;
+  width: 60%;
+  padding-left: 8%;
+  padding-bottom: 5%;
+  color: white;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+.city {
+  font-size: 25px;
+}
+p {
+  padding: 1.5%;
+  font-size: 15px;
 }
 
 img {
@@ -24,12 +43,17 @@ img {
   width: 90%;
 }
 
-h1 {
-  font-size: 35px;
+.sunriseSunset {
+  padding-left: 10%;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 15%;
+  padding-bottom: 20%;
+  color: white;
 }
 
 .forecast {
-  margin: 100%;
+  background-color: antiquewhite;
 }
 
 /* 
