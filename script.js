@@ -28,12 +28,13 @@ const fetchTodaysForecast = () => {
             weatherInfo.innerHTML = `
     ${data.weather[0].description} | ${data.main.temp.toFixed(1)}° 
     <p>Sunrise ${sunriseTime}</p><p>Sunset ${sunsetTime}</p>`
+            changeBackground(data)
         })
 
 }
 fetchTodaysForecast()
 
-//Function to get five days weater forecast
+//Function to get five days weather forecast
 
 const fetchFiveDayForecast = () => {
     fetch(FORECAST_URL)
@@ -57,3 +58,32 @@ const fetchFiveDayForecast = () => {
         })
 }
 fetchFiveDayForecast()
+
+function changeBackground(data) {
+
+    if (data.weather[0].main === "Cloud") {
+        cityName.innerHTML += `
+<img src="./design/design2/icons/noun_cloud_1188486.svg">
+<h1>Light a fire and get cosy. ${data.name} is looking grey today.</h1>`;
+        document.body.style.backgroundColor = "#F4F7F8";
+        document.body.style.color = "#F47775";
+    } else if (data.weather[0].main === "Rain") {
+        cityName.innerHTML += `
+<img src="./design/design2/icons/noun_Umbrella_2030530.svg" alt="Umbrella">
+<h1>Don't forget your umbrella. It's wet in ${data.name} today.</h1>`;
+        document.body.style.backgroundColor = "#BDE8FA";
+        document.body.style.color = "#164A68";
+    } else if (data.weather[0].main === "Clear") {
+        cityName.innerHTML += `
+<img src="./design/design2/icons/noun_Sunglasses_2055147.svg" alt="Sunglasses">
+<h1>Get your sunnies on. ${data.name} is looking rather great today.</h1>`;
+        document.body.style.backgroundColor = "#F7E9B9";
+        document.body.style.color = "#2A5510";
+    } else {
+        cityName.innerHTML += ` 
+<img src="./design/design2/icons/noun_Umbrella_white.svg" alt="Umbrella">
+<h1>Get your warm coat on. It's cold in ${data.name} today.</h1>`;
+        document.body.style.backgroundColor = "#58537B";
+        document.body.style.color = "#FFFFFF";
+    }
+}
