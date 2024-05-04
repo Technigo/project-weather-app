@@ -142,13 +142,14 @@ h3{
 
 #dayWeather{
   background-color: white;
-  margin: 2px 10px;
+  margin: 2px 8px;
   width: 100%;
   align-items: center;   
   height: 45px;
   padding: 2px 4px 2px 20px;
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
 }
 
 #dayWeather:hover{
@@ -158,21 +159,21 @@ h3{
 #myDay{
   width: 25%;
   height: 20px;
-  padding: 2px 24px 2px 2px;
-  margin-right: 50px;
+  padding: 2px 14px 2px 2px;
+  margin-right: 20px;
 }
 
 #mySymbol{
-  width: 15%;
-  padding: 2px 24px 2px 2px;
-  margin-right: 30px;
+  width: 16%;
+  padding: 2px 4px 2px 2px;
+  margin-right: 12px;
 }
 
 #myTemp{
   width: 50%;
   height: 20px;
   padding: 2px;
-  margin-right: 16px;
+  margin-right: 0;
   text-align: end;
 }
 

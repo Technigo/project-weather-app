@@ -86,9 +86,6 @@ const ShowTodayWeather =(city)=>{
 }
 ShowTodayWeather('Stockholm')
 
-// ### Step 3 - Features
-//I commited before starting with the branches so only the step of weather-icon which was worked in branch.
-
 // **Feature: Weather forecast 📅**  
 const dayNames=['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat']
 
@@ -162,7 +159,6 @@ const predictWeather=(city)=>{
       }
     })
             
-    console.log(myTempArray)
     myTempArray.splice(0,1)
     if (myTempArray.length ===4){
       myTempArray.forEach(row => {
@@ -189,21 +185,11 @@ const predictWeather=(city)=>{
 }
 predictWeather('Stockholm');
             
-        
-//TODO
-// ### Intermediate Stretch Goals
-// **Feature: Styling warm/cold 🌞❄️**  
-// Change the colours of the page based on the weather. If the weather is warm – use warm colours. If the weather is colder, use cold colours. If you really want to push your CSS muscles you can even make a background gradient.
-
-// Another alternative is to include visual indicators for the type of weather, cloudy/sunny/rainy/etc.
-
-// **Feature: More cities 🏙️**  
  userSearch.innerHTML  +=`
   <input type="text" id="userInput" placeholder="
   Search your city">
   <button id="userButton">GO</button>
 `
-
 const searchCity=()=>{
   let userInput = document.getElementById("userInput");
   document.getElementById("userButton").addEventListener("click",(event)=>{
@@ -219,13 +205,3 @@ const searchCity=()=>{
   })
 } 
 searchCity()
-
-// ### Advanced Stretch Goals
-// **Feature: Use your location 🗺️**  
-// Use the [Geolocation API](https://www.w3schools.com/html/html5_geolocation.asp "Geolocation API") that is built into your browser to fetch the city that you are located in at the moment and show the weather for your location.
-
-// **Feature: Add more data 💽**  
-// Explore the API and use another endpoint of the Weather API to include supplementary information.
-
-// **Feature: CSS Animations**  
-// Add some CSS animations to your app, e.g. pulsating sun/raindrops.
