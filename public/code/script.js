@@ -43,15 +43,15 @@ const updateHtml = (data) => {
 //ev lägga till färger för vinter?
 const weatherStyle = (weather, cityName) => {
 	if (weather === 'Clear') {
-		cityContainer.innerHTML += `<img src="../public/noun_Sunglasses_2055147.svg" alt="sunglasses"/><h1>Get your sunnies on! ${cityName} is looking rather great today!</h1>`
+		cityContainer.innerHTML += `<img src="./assets/sun.svg" alt="sunglasses"/><h1>Get your sunnies on! ${cityName} is looking rather great today!</h1>`
 		document.body.style.backgroundColor = '#f7e9b9'
 		document.body.style.color = '#2a5510'
 	} else if (weather === 'Clouds' || weather === 'Mist') {
-		cityContainer.innerHTML = `<img src="../public/noun_Cloud_1188486.svg" alt="cloud"/><h1>Light a fire and get cozy. ${cityName} is looking grey today.</h1>`
+		cityContainer.innerHTML = `<img src="./assets/cloud.svg" alt="cloud"/><h1>Light a fire and get cozy. ${cityName} is looking grey today.</h1>`
 		document.body.style.backgroundColor = '#f4f7f8'
 		document.body.style.color = '#f47775'
 	} else if (weather === 'Rain') {
-		cityContainer.innerHTML = `<img src="../public/noun_Umbrella_2030530.svg" alt="umbrella"/><h1>Don't forget your umbrella. It's wet in ${cityName} today.</h1>`
+		cityContainer.innerHTML = `<img src="./assets/rain.svg" alt="umbrella"/><h1>Don't forget your umbrella. It's wet in ${cityName} today.</h1>`
 		document.body.style.backgroundColor = '#a3def7'
 		document.body.style.color = '#164a68'
 	}
