@@ -4,13 +4,8 @@ Create a weather app with API
 
 ## The problem
 
-First I missed all the lectures bc stomach flu.
-Second, don't understand functions, so this was very difficult for me. I did the misstake to look at other peoples code instead of going back to the weeks video material.
-
-i'm keeping the instructions for later
+I had a very hard time deploying this project because I hade a very complicated folder-structure. I got help to solve this. I'm SO happy it finally worked! :D 
 
 ## View it live
 
-It is far from done. Nothing is in place.
-
-(https://deluxe-smakager-88132e.netlify.app/)
+https://jazzyweather.netlify.app/
