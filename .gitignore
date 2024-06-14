@@ -3,3 +3,7 @@
 .vscode
 settings.json
 launch.json
+.vscodeignore
+- .gitignore
+node_modules
+.ds_store
