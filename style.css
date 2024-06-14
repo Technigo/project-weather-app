@@ -22,7 +22,7 @@ html {
   --pad-2: 2em;
   --pad-1051: 0.5em 0em 0em 1em;
   --pad-200_50: 2em 0em 0.5em 2em;
-  --pad-b-: 4.5em;
+  --pad-b: 4.5em;
   --height: 0.6em 0;
   --border-b: 1px;
 }
@@ -33,6 +33,7 @@ main {
   grid-template: auto, 1fr;
   align-content: start;
 }
+
 
 .sunny {
   color: var(--sunny-color);
@@ -52,11 +53,10 @@ main {
 .overview {
   font-size: var(--fs-1);
   font-weight: 300;
-  padding-bottom: 30px;
-}
+	margin:49px 0 68px 0;
+ }
 
 .weathertip {
-  padding-top: 20px;
   max-width: 900px;
 
 }
@@ -66,7 +66,8 @@ h1 {
   font-optical-sizing: auto;
   font-weight: 600;
   font-size: var(--fs-3);
-  margin-top: 0;
+  margin: 31px 0 39px 0;
+
 }
 
 #icon.sunny {
@@ -140,20 +141,17 @@ h1 {
   .weathertip {
     max-width: 1000px;
     padding-left: 0;
-    padding-bottom: 20px;
   }
 
   .overview p {
-    padding: 0.1em;
+  padding: 0.1em;
     margin: 0;
   }
 
-  .overview {
-    padding: 0;
-  }
+
 
   main {
-    padding: 12px;
+    padding:0 12px 0 12px;
   }
 
   .description_hidden {
@@ -172,6 +170,7 @@ h1 {
   .weathertip {
     max-width: 560px;
     padding-left: 0;
+
   }
 
   .main {
