@@ -4,6 +4,6 @@
 settings.json
 launch.json
 .vscodeignore
-- .gitignore
+.env
 node_modules
 .ds_store
