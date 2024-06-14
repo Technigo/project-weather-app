@@ -15,7 +15,7 @@
 	<body>
 		<main>
 			<section class="overview">
-				<p id="weather">Clear | 26°</h3>
+				<p id="weather">Clear | 26°</p>
 				<p id="sunrise">sunrise 07.00</p>
 				<p id="sunset">sunset 19.30</p>
 			</section>
@@ -25,6 +25,16 @@
 			</section>
 			<section class="forcast">
 			</section>
+			<section  id="form-container" class="input-container">
+				<form id="searchForm">
+					<input type="text" id="city" placeholder="Enter city">
+					<input type="text" id="country" placeholder="Enter country">
+					<button id="button" type="submit">Search</button>
+					<button id="localButton" onclick="location.reload()">Local weather</button>
+				</form>
+
+			</section>
+
 		</main>
 		<script src="/script.js"></script>
 	</body>
