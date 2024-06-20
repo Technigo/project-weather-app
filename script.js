@@ -142,9 +142,6 @@ function displayWeatherMessage(condition, cityName, weather) {
   let detailedMessage;
   let weatherIcon;
   let weatherDescription = weather.description;
-  console.log(
-    condition
-  )
   switch (condition.message) {
     case "Sunny":
       detailedMessage = `Get your sunnies on. ${cityName} is looking rather great today.`;
@@ -196,7 +193,7 @@ function displayForecast(forecastData) {
     forecast.dt_txt.includes("12:00:00")
   );
 
-  noonForecasts.forEach((forecast) => {
+  noonForecasts.slice(0, 4).forEach((forecast) => {
     const date = new Date(forecast.dt_txt);
     const days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
     const dayOfWeek = days[date.getDay()];
@@ -217,19 +214,26 @@ function displayForecast(forecastData) {
   });
 }
 
+function search() {
+  const cityInput = document.getElementById("cityName");
+  if (cityInput && cityInput.value.trim()) {
+    fetchWeatherAndForecast(cityInput.value.trim());
+  } else {
+    alert("Please enter a city name.");
+  }
+}
+
 // Search
 document
   .getElementById("search-form")
   .addEventListener("submit", function (event) {
     event.preventDefault();
-    const city = document.getElementById("cityName").value.trim();
-    if (city) {
-      getWeatherByCity(city);
-    } else {
-      // Show alert if nothing was typed
-      alert("Please enter a city name.");
-    }
+    search();
   });
+
+document.getElementById("getWeather").addEventListener("mouseup", function () {
+  search();
+});
 
 // Fetch weather data for the default city on load (refresh)
 fetchWeatherAndForecast(DEFAULT_CITY);
