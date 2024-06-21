@@ -144,14 +144,19 @@ h1 {
   align-items: center;
 }
 
-.input-container input,
-.input-container button {
-  margin: 0 10px;
+.input-container input {
+  margin: 5px 10px;
+  width: 93vw;
 }
+
+.input-container button {
+  margin: 7px auto;
+  align-items: center;
+  width: 93vw;
+  }
 
 button {
   padding: 12px 20px;
-  margin: 8px 0;
   box-sizing: border-box;
   border: 2px solid #ccc;
   border-radius: 20px;
@@ -306,6 +311,22 @@ main {
   .overview {
     padding-left: 0;
   }
+
+
+}
+
+@media(min-width: 768px) {
+  .input-container input {
+    margin: 7px 10px 0 0;
+    width: 27vw;
+  }
+
+  .input-container button {
+    margin: 7px 5px 0 0;
+    align-items: center;
+    width: 17vw;
+    }
+
 }
 
 @media(min-width: 1025px) {
@@ -324,4 +345,18 @@ main {
     padding: 0.1em;
     margin: 0;
   }
+
+  @media(min-width: 768px) {
+    .input-container input {
+      margin: 7px 10px 0 0;
+      max-width: 250px;
+    }
+
+    .input-container button {
+      margin: 7px 5px 0 0;
+      align-items: center;
+      max-width: 150px;
+      }
+
+}
 }
