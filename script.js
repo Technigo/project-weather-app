@@ -60,7 +60,7 @@ function displayWeatherInformation(data) {
 
   // Texts on the webpage
   tempElement.textContent = `${condition.message} | ${data.main.temp.toFixed(
-    0
+    1
   )}°`;
   sunriseElement.textContent = `sunrise ${formatTime(
     data.sys.sunrise,
@@ -197,7 +197,7 @@ function displayForecast(forecastData) {
     const date = new Date(forecast.dt_txt);
     const days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
     const dayOfWeek = days[date.getDay()];
-    const temp = forecast.main.temp_max.toFixed(0);
+    const temp = forecast.main.temp_max.toFixed(1);
     const forecastElement = document.createElement("li");
     forecastElement.classList.add("forecast-item");
     const dayElement = document.createElement("span");
