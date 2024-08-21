@@ -166,6 +166,9 @@ const printForecast = (update) => {
   weekday = daysOfTheWeek[dayForecast]
   const today = new Date().getDay()
   temperatureForecast = update.main.temp.toFixed(1)
+  if (temperatureForecast.endsWith(0)) {
+    temperatureForecast = Math.round(update.main.temp)
+  }
   timeForecast = new Date(update.dt * 1000).getHours()
   if (today !== dayForecast && timeForecast === 14 || timeForecast === 13) {
     forcastContainer.innerHTML += `
