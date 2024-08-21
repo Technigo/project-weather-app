@@ -3,6 +3,7 @@ const body = document.getElementById("body")
 const sunInfo = document.getElementById("sun-info")
 const main = document.getElementById("main")
 const forcastContainer = document.getElementById("container")
+const footer = document.getElementById("footer")
 const selectStockholm = document.getElementById("select-stockholm")
 const selectGothenburg = document.getElementById("select-gothenburg")
 const selectMalmoe = document.getElementById("select-malmoe")
@@ -168,10 +169,21 @@ const printForecast = (update) => {
   timeForecast = new Date(update.dt * 1000).getHours()
   if (today !== dayForecast && timeForecast === 14 || timeForecast === 13) {
     forcastContainer.innerHTML += `
-        <p>${weekday} ${temperatureForecast}°</p>
-        `
+      <p>${weekday} ${temperatureForecast}°</p>
+      `
   } else {
   }
+}
+
+//These lines helps my boyfriend do his work
+const printDayCalculator = () => {
+  const today = new Date().toLocaleDateString()
+  const todayNumeric = Date.now()
+  const todayPlusNineteenDays = todayNumeric+(1000*60*60*24*19)
+  const dateInNineteenDays = new Date(todayPlusNineteenDays).toLocaleDateString()
+  footer.innerHTML += `
+    <p>Today: ${today} <br/> In 19 days: ${dateInNineteenDays}</p>
+    `
 }
 
 //Fetches both todays weather and the forecast for the correct city
@@ -183,6 +195,7 @@ const fetchAllData = (chosenCity) => {
 //Start by showing Kalmar's weather
 const loadPage = () => {
   fetchAllData("Kalmar")
+  printDayCalculator()
 }
 
 //Event-listeners
