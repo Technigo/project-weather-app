@@ -180,30 +180,16 @@ const fetchAllData = (chosenCity) => {
   fetchForecast(chosenCity)
 }
 
-//Functions to handle choice of city
-const handleCitySelectStockholm = () => {
-  fetchAllData ("Stockholm")
-}
-const handleCitySelectGothenburg = () => {
-  fetchAllData("Gothenburg")
-}
-const handleCitySelectMalmoe = () => {
-  fetchAllData("Malmoe")
-}
-const handleCitySelectKalmar = () => {
-  fetchAllData("Kalmar")
-}
-
 //Start by showing Kalmar's weather
 const loadPage = () => {
   fetchAllData("Kalmar")
 }
 
 //Event-listeners
-selectStockholm.addEventListener("click", handleCitySelectStockholm)
-selectGothenburg.addEventListener("click", handleCitySelectGothenburg)
-selectMalmoe.addEventListener("click", handleCitySelectMalmoe)
-selectKalmar.addEventListener("click", handleCitySelectKalmar)
+selectStockholm.addEventListener("click", () => fetchAllData("Stockholm"))
+selectGothenburg.addEventListener("click", () => fetchAllData("Gothenburg"))
+selectMalmoe.addEventListener("click", () => fetchAllData("Malmoe"))
+selectKalmar.addEventListener("click", () => fetchAllData("Kalmar"))
 
 
 loadPage()
