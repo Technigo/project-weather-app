@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="weather-card" id="abuDhabi">
+        <img src="assets/design-1/sun.png" alt="Sun" class="sun-image">
+        
+        <div class="weather-info">
+            <div class="temp-info">
+                <h1>14°C</h1>
+                <p class="city-name">Abu Dhabi</p>
+                <p>Clear</p>
+                <p>Sunrise: 22:30 | Sunset: 00:00</p>
+            </div>
+            <button class="toggle-button" onclick="toggleWeek('abuDhabi')">
+                <div class="arrow">&#9654;</div>
+            </button>
+        </div>
+        <div class="week-forecast">
+            <ul>
+                <li><span class="day">Mon</span> <span class="icon">☀️</span> 26°C / 12°C</li>
+                <li><span class="day">Tue</span> <span class="icon">🌙</span> 27°C / 11°C</li>
+                <li><span class="day">Wed</span> <span class="icon">🌤</span> 26°C / 14°C</li>
+                <li><span class="day">Thu</span> <span class="icon">☀️</span> 23°C / 12°C</li>
+                <li><span class="day">Fri</span> <span class="icon">☁️</span> 15°C / 9°C</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
