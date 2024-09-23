@@ -1,0 +1,215 @@
+/* General reset and body styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  font-family: "Arial", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+}
+
+/* Main container styling */
+.container {
+  width: 350px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  position: relative;
+}
+
+/* Top background styling */
+.background-top-gradient {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(to bottom, #4a90e2, #50b3e6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+/* Weather feature background */
+.feature-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background: url("https://source.unsplash.com/350x200/?weather") no-repeat
+    center center/cover;
+  opacity: 0.3;
+  z-index: 1;
+}
+
+/* Main content wrapper */
+.mainWrapper {
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Temperature styling */
+.tempNumber {
+  font-size: 64px;
+  margin: 10px 0;
+  color: #333333;
+  font-weight: bold;
+}
+
+/* City name styling */
+.cityText {
+  font-size: 28px;
+  margin: 5px 0;
+  color: #333333;
+  font-weight: bold;
+}
+
+/* Local time styling */
+.local-time {
+  font-size: 18px;
+  margin: 5px 0;
+  color: #555555;
+}
+
+/* Weather description styling */
+.describeText {
+  font-size: 18px;
+  margin: 5px 0;
+  color: #777777;
+  text-transform: capitalize;
+}
+
+/* Weather icon styling */
+#mainIcon img {
+  width: 60px;
+  height: 60px;
+  margin: 10px 0;
+}
+
+/* Sunrise and sunset styling */
+.sun-position {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  color: #555555;
+  font-size: 14px;
+}
+
+.sun-position div {
+  width: 50%;
+  text-align: center;
+}
+
+/* Search bar styling */
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  margin-top: 10px;
+}
+
+.search-bar {
+  width: 70%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 20px 0 0 20px;
+  outline: none;
+}
+
+.search-button {
+  width: 30%;
+  padding: 8px;
+  background-color: #4a90e2;
+  color: #ffffff;
+  border: none;
+  border-radius: 0 20px 20px 0;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #357ab7;
+}
+
+/* Forecast section */
+.weather-forecast {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.weather-forecast td {
+  padding: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 16px;
+  color: #333333;
+}
+
+.weather-forecast .forecast-category.icon img {
+  width: 40px;
+  height: 40px;
+}
+
+.weather-forecast tr:last-child td {
+  border-bottom: none;
+}
+
+/* Navbar with search and close icons */
+.nav {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 95%;
+}
+
+/* Search and close button styling */
+.search-button,
+.x-icon {
+  cursor: pointer;
+}
+
+.search-icon {
+  fill: #ffffff;
+  width: 24px;
+  height: 24px;
+}
+
+/* Hidden elements */
+.hidden {
+  display: none;
+}
+
+/* Search bar toggle functionality */
+#search-toggler {
+  display: flex;
+  /* padding: 10px; */
+  /* position: absolute; */
+  top: 50px;
+  width: 80%;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 3; /* Ensure it stays above other elements */
+}
+
+#search-toggler.active {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
