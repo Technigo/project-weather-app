@@ -4,31 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="weather-card" id="abuDhabi">
-        <img src="assets/design-1/sun.png" alt="Sun" class="sun-image">
-        
-        <div class="weather-info">
-            <div class="temp-info">
-                <h1>14°C</h1>
-                <p class="city-name">Abu Dhabi</p>
-                <p>Clear</p>
-                <p>Sunrise: 22:30 | Sunset: 00:00</p>
+    <div class="toggle-container">
+        <input type="checkbox" id="theme-toggle" class="toggle-checkbox">
+        <label for="theme-toggle" class="toggle-label">
+            <div class="icon sun-icon"></div>
+            <div class="icon moon-icon"></div>
+        </label>
+    </div>
+
+    <div class="app">
+        <div class="weather-card">
+            <div class="location">
+                <h1>Dubai</h1>
             </div>
-            <button class="toggle-button" onclick="toggleWeek('abuDhabi')">
-                <div class="arrow">&#9654;</div>
-            </button>
+            <div class="current-temp">
+                <h2>16°C</h2>
+            </div>
+            <div class="details">
+                <p>Sunset: 17°C / 10°C</p>
+                <p>Sunrise: 17°C / 10°C</p>
+            </div>
         </div>
-        <div class="week-forecast">
-            <ul>
-                <li><span class="day">Mon</span> <span class="icon">☀️</span> 26°C / 12°C</li>
-                <li><span class="day">Tue</span> <span class="icon">🌙</span> 27°C / 11°C</li>
-                <li><span class="day">Wed</span> <span class="icon">🌤</span> 26°C / 14°C</li>
-                <li><span class="day">Thu</span> <span class="icon">☀️</span> 23°C / 12°C</li>
-                <li><span class="day">Fri</span> <span class="icon">☁️</span> 15°C / 9°C</li>
-            </ul>
+
+        <div class="weekly-forecast">
+            <h3>Weekly Forecast</h3>
+            <div class="forecast-items">
+                <div class="forecast-item">
+                    <div class="forecast-icon">
+                        <img src="assets/design-1/cloudy.png" alt="cloudy">
+                    </div>
+                    <p>Monday</p>
+                    <p>23°C</p>
+                </div>
+                <div class="forecast-item">
+                    <div class="forecast-icon">
+                        <img src="assets/design-1/sunny.png" alt="sunny">
+                    </div>
+                    <p>Tuesday</p>
+                    <p>20°C</p>
+                </div>
+                <div class="forecast-item">
+                    <div class="forecast-icon">
+                        <img src="assets/design-1/cloudySun.png" alt="cloudy with sun">
+                    </div>
+                    <p>Wednesday</p>
+                    <p>17°C</p>
+                </div>
+                <div class="forecast-item">
+                    <div class="forecast-icon">
+                        <img src="assets/design-1/storm.png" alt="storm">
+                    </div>
+                    <p>Thursday</p>
+                    <p>16°C</p>
+                </div>
+                <div class="forecast-item">
+                    <div class="forecast-icon">
+                        <img src="assets/design-1/rain.png" alt="rainy">
+                    </div>
+                    <p>Friday</p>
+                    <p>16°C</p>
+                </div>
+            </div>
         </div>
     </div>
 

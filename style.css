@@ -5,198 +5,229 @@
     font-family: 'Roboto', sans-serif;
 }
 
-body, html {
-    width: 100vw;
+body {
+    background: url('assets/design-1/night-sky.jpg') no-repeat center center/cover;
     height: 100vh;
-    background-color: #f0f0f0;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: background 0.5s ease; /* Transition for body background */
 }
 
-.weather-card {
-    background: linear-gradient(90deg, #1b1947 50%, #4f5ea6 50%);
-    border-radius: 0;
-    width: 100vw;
-    height: 100vh;
-    box-shadow: none;
+.app {
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
     position: relative;
-    transition: all 0.5s ease;
-    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    padding-bottom: 10px; /* Reduce bottom padding */
 }
 
-.weather-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    height: 80vh;
-}
-
-.temp-info h1 {
-    font-size: 64px;
-    color: white;
-    margin-bottom: 20px;
-}
-
-.city-name {
-    font-size: 24px;
-    color: white;
-    margin-bottom: 10px;
-}
-
-.temp-info p {
-    font-size: 16px;
-    color: white;
-}
-
-/* Sun image style */
-.sun-image {
+/* Toggle switch styling */
+.toggle-container {
     position: absolute;
     top: 20px;
-    right: 20px;
-    width: 100px;
-    height: 100px;
-    z-index: 900; /* Behind the button but on top of most elements */
-}
-
-/* Updated button to move with the week forecast */
-.toggle-button {
-    background: #6c63ff;
-    border: none;
-    border-radius: 50%;
-    padding: 20px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1100; /* Highest z-index to stay clickable */
-    transition: bottom 0.5s ease; /* Smooth transition */
-}
-
-.toggle-button .arrow {
-    color: white;
-    font-size: 24px;
-    transform: rotate(0);
-    transition: transform 0.3s ease;
-}
-
-.weather-card.open .arrow {
-    transform: rotate(90deg);
-}
-
-/* When the forecast opens, move the button up */
-.weather-card.open .toggle-button {
-    bottom: 40vh; /* Move the button up with the forecast */
-}
-
-.week-forecast {
-    background-color: white;
-    border-radius: 20px 20px 0 0;
-    padding: 20px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease;
-    z-index: 500; /* Lower than the button */
-}
-
-.weather-card.open .week-forecast {
-    max-height: 40vh;
-}
-
-.week-forecast ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.week-forecast li {
-    font-size: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 30px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
+    justify-content: center;
+    z-index: 10;
 }
 
-.week-forecast li:last-child {
-    border-bottom: none;
+.toggle-checkbox {
+    display: none;
 }
 
-.day {
-    font-weight: bold;
+.toggle-label {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
 }
 
 .icon {
-    font-size: 20px;
-    margin-right: 10px;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
-/* Media query for screens between 1210px and 550px */
-@media (max-width: 1200px) and (min-width: 550px) {
-    .weather-info {
-        padding-left: 10px;    /* Reduce left padding */
-        padding-top: 5px;     /* Reduce top padding */
-        width: 60%;            /* Make weather info take up more width */
+.sun-icon {
+    left: 5px;
+    background-image: url('assets/design-1/sun-icon.png'); /* Replace with the sun icon */
+}
+
+.moon-icon {
+    right: 5px;
+    opacity: 0;
+    background-image: url('assets/design-1/moon-icon.png'); /* Replace with the moon icon */
+}
+
+/* When checked, show moon icon and hide sun icon */
+.toggle-checkbox:checked + .toggle-label .sun-icon {
+    opacity: 0;
+    transform: translateX(25px);
+}
+
+.toggle-checkbox:checked + .toggle-label .moon-icon {
+    opacity: 1;
+    transform: translateX(-25px);
+}
+
+/* Default weather card (night mode) */
+.weather-card {
+    background: url('assets/design-1/night-weather-card.jpeg') no-repeat center center/cover; 
+    background-size: cover;
+    border-radius: 20px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    margin-top: 80px;
+    transition: background 0.5s ease; /* Smooth transition for card background */
+    color: rgb(241, 213, 254);
+}
+
+/* Day mode weather card */
+.weather-card.day-mode {
+    background: url('assets/design-1/day-weather-card.jpg') no-repeat center center/cover; /* Day weather card background */
+    background-size: cover;
+    color: #D0A481;
+}
+
+.weather-card.day-mode .weather-description {
+    color: #D0A481;
+}
+
+.weather-card.day-mode h1,
+.weather-card.day-mode h2 {
+    color:#f1dfce;
+}
+
+.location h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.current-temp h2 {
+    font-size: 3.5rem;
+    margin: 10px 0;
+}
+
+.details p {
+    font-size: 1rem;
+    padding: 10px;
+}
+
+.other-info {
+    display: flex;
+    justify-content: de-around;
+    margin-top: 20px;
+}
+
+.info-item p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+.weather-description {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #c0a2cd; 
+}
+
+/* Layout and styling for the weekly forecast */
+.weekly-forecast {
+    text-align: center;
+    margin-top: 30px;
+    color: #ffffff;
+    margin-top: 10px; /* Reduce the top margin */
+}
+
+.weekly-forecast h3 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+/* Flexbox layout for forecast items */
+.forecast-items {
+    display: flex;
+    justify-content: space-around; /* Spread items evenly */
+    margin: 0 auto;
+    max-width: 800px; /* Constrain the width */
+    padding-bottom: 10px; /* Reduce padding between items */
+}
+
+/* Styling for each forecast item */
+.forecast-item {
+    text-align: center;
+    font-size: 1rem;
+    flex: 1;
+    padding: 10px;
+}
+
+/* Circular icon for each forecast with an image inside */
+.forecast-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2); /* Light background for icon */
+    margin: 0 auto 10px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Soft shadow for icons */
+}
+
+/* Make the icons fit inside the circular container */
+.forecast-icon img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+/* Text styles */
+.forecast-item p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+
+/* Media query for small screen sizes (below 470px) */
+@media (max-width: 470px) {
+    .forecast-items {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Three items on the first row */
+        grid-template-rows: auto auto; /* Two rows */
+        grid-gap: 5px; /* Reduce the gap between items */
+        justify-items: center; /* Center items */
+    }
+    
+    /* Positioning for the last two forecast items (centered) */
+    .forecast-item:nth-child(4) {
+        grid-column-start: 2; /* Center item in the second row */
+    }
+
+    .forecast-item:nth-child(5) {
+        grid-column-start: 3; /* Center item in the second row */
     }
 }
 
-/* RESPONSIVE DESIGN BELOW 550px */
-@media (max-width: 550px) {
-    .weather-card {
-        flex-direction: column; /* Stack content vertically */
-    }
-
-    .weather-info {
-        width: 100%;
-        padding-left: 20px;
-        padding-top: 20px;
-    }
-
-    .temp-info h1 {
-        font-size: 64px;
-        margin-bottom: 5px;
-    }
-
-    .city-name {
-        font-size: 24px;
-        margin-bottom: 10px;
-    }
-
-    .temp-info p {
-        font-size: 14px;
-        margin-bottom: 8px;
-    }
-
-    .sun-image {
-        top: 20px;
-        right: 20px;
-        width: 80px;
-        height: 80px;
-    }
-
-    .toggle-button {
-        padding: 15px;
-        bottom: 15px;
-        right: 15px;
-    }
-
-    .toggle-button .arrow {
-        font-size: 18px;
-    }
-
-    .week-forecast li {
-        font-size: 16px;
-        padding: 8px 0;
-    }
-
-    .icon {
-        font-size: 18px;
-    }
+/* Prevent horizontal scroll */
+html, body {
+    overflow-x: hidden; /* Disable horizontal scroll */
 }
