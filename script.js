@@ -6,7 +6,6 @@ const weatherDescription = document.getElementById("weatherDescription");
 const mainIcon = document.getElementById("mainIcon");
 const sunriseText = document.getElementById("sunriseText");
 const sunsetText = document.getElementById("sunsetText");
-
 const inputField = document.getElementById("inputField");
 const searchBtn = document.getElementById("searchBtn");
 const searchMenuBtn = document.getElementById("searchMenuBtn");
@@ -15,12 +14,12 @@ const searchToggler = document.getElementById("search-toggler");
 
 const forecastContainer = document.getElementById("weatherForecast");
 
-// Function to fetch current weather data based on city name
+// Function to fetch current weather data
 const fetchWeatherData = (city) => {
-  const apiKey = "0c5116ff347d8ce8d78e8d3c18029dd7"; // Replace with your actual API key
-  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${apiKey}`;
+  const API_KEY = "0c5116ff347d8ce8d78e8d3c18029dd7"; // my API key
+  const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${API_KEY}`;
 
-  fetch(apiUrl)
+  fetch(API_URL)
     .then((response) => {
       if (!response.ok) {
         throw new Error(`City ${city} not found`);
@@ -35,12 +34,12 @@ const fetchWeatherData = (city) => {
     });
 };
 
-// Function to fetch weather forecast data based on city name
+// Function to fetch weather forecast data
 const fetchWeatherForecast = (city) => {
-  const apiKey = "0c5116ff347d8ce8d78e8d3c18029dd7"; // Replace with your actual API key
-  const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=${apiKey}`;
+  const API_KEY = "0c5116ff347d8ce8d78e8d3c18029dd7"; // Replace with your actual API key
+  const API_URL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=${API_KEY}`;
 
-  fetch(apiUrl)
+  fetch(API_URL)
     .then((response) => {
       if (!response.ok) {
         throw new Error(`City ${city} not found`);
@@ -55,6 +54,38 @@ const fetchWeatherForecast = (city) => {
     });
 };
 
+// Function to update the background image based on the weather condition
+
+// Ensure this is placed outside any function to make it globally accessible
+const mainWrapper = document.querySelector(".mainWrapper");
+
+// Function to update the background image based on the weather condition
+const updateBackgroundImage = (weatherDescription) => {
+  // Convert weather description to lowercase to make comparison easier
+  const weather = weatherDescription.toLowerCase();
+
+  // Choose the background image based on the weather condition
+  if (weather.includes("light rain")) {
+    console.log("Setting background to light rain image");
+    mainWrapper.style.backgroundImage = 'url("./images/lightRain.png")'; // Updated path for light rain
+  } else if (weather.includes("rain")) {
+    console.log("Setting background to rain image");
+    mainWrapper.style.backgroundImage = 'url("./images/rain.png")'; // Updated path for rain
+  } else if (weather.includes("cloud")) {
+    console.log("Setting background to cloudy image");
+    mainWrapper.style.backgroundImage = 'url("./images/cloudy.png")'; // Updated path for cloudy
+  } else if (weather.includes("sun") || weather.includes("clear")) {
+    console.log("Setting background to sunny image");
+    mainWrapper.style.backgroundImage = 'url("./images/sunny.png")'; // Updated path for sunny
+  } else if (weather.includes("snow")) {
+    console.log("Setting background to snowy image");
+    mainWrapper.style.backgroundImage = 'url("./images/snowy.png")'; // Updated path for snowy
+  } else {
+    console.log("Setting background to default image");
+    mainWrapper.style.backgroundImage = 'url("./images/default.png")'; // Default background image
+  }
+};
+
 // Function to display fetched current weather data
 const displayWeatherData = (data) => {
   tempToday.textContent = `${Math.round(data.main.temp)}°C`;
@@ -62,6 +93,9 @@ const displayWeatherData = (data) => {
   weatherDescription.textContent = capitalizeFirstLetter(
     data.weather[0].description
   );
+
+  // Call updateBackgroundImage with the weather description
+  updateBackgroundImage(data.weather[0].description);
 
   // Correct calculation for local time using UTC and timezone offset
   const timezoneOffset = data.timezone; // Timezone offset in seconds
@@ -159,3 +193,18 @@ closeSearchMenu.addEventListener("click", () => {
 // Default weather data and forecast for a sample city
 fetchWeatherData("Stockholm"); // Replace with a default city of your choice
 fetchWeatherForecast("Stockholm"); // Replace with a default city of your choice
+
+// Event listener for the search button to fetch both current weather and forecast data
+searchBtn.addEventListener("click", () => {
+  const city = inputField.value.trim();
+  if (city) {
+    fetchWeatherData(city);
+    fetchWeatherForecast(city);
+    toggleSearchBar(); // Hide search bar after search
+
+    // Clear the input field after search
+    inputField.value = "";
+  } else {
+    alert("Please enter a city name.");
+  }
+});
