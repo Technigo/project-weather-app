@@ -66,22 +66,16 @@ const updateBackgroundImage = (weatherDescription) => {
 
   // Choose the background image based on the weather condition
   if (weather.includes("light rain")) {
-    console.log("Setting background to light rain image");
     mainWrapper.style.backgroundImage = 'url("./images/lightRain.png")'; // Updated path for light rain
   } else if (weather.includes("rain")) {
-    console.log("Setting background to rain image");
     mainWrapper.style.backgroundImage = 'url("./images/rain.png")'; // Updated path for rain
   } else if (weather.includes("cloud")) {
-    console.log("Setting background to cloudy image");
     mainWrapper.style.backgroundImage = 'url("./images/cloudy.png")'; // Updated path for cloudy
   } else if (weather.includes("sun") || weather.includes("clear")) {
-    console.log("Setting background to sunny image");
     mainWrapper.style.backgroundImage = 'url("./images/sunny.png")'; // Updated path for sunny
   } else if (weather.includes("snow")) {
-    console.log("Setting background to snowy image");
     mainWrapper.style.backgroundImage = 'url("./images/snowy.png")'; // Updated path for snowy
   } else {
-    console.log("Setting background to default image");
     mainWrapper.style.backgroundImage = 'url("./images/default.png")'; // Default background image
   }
 };
