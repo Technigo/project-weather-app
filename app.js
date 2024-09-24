@@ -1,8 +1,8 @@
 // Your OpenWeatherMap API key (just the key, not the entire URL)
-const apiKey = 'fb560f0e3d208f655263c202ebe8452d';
+const apiKey = '';
 
 // Correct URL for fetching weather data for a city (Stockholm example)
-const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${apiKey}`;
+const weatherUrl = `${apiKey}`;
 
 // Function to fetch weather data
 async function getWeather() {
