@@ -3,3 +3,21 @@ body {
   color: indigo;
   margin: 0;
 }
+
+.the-weather {
+  background: peachpuff;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.city-weather {
+  background: paleturquoise;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.sun-rise-set {
+  background: cornsilk;
+  width: 80%;
+  margin: 0 auto;
+}
