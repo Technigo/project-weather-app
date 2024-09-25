@@ -1,4 +1,30 @@
-forcast {
+.weather-right-now {
+    border: 3px solid black;
+    /* Samma sak här */
+}
+
+
+#forecast {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    /* Om du vill att raderna ska brytas om det blir för många på samma rad */
+    gap: 20px;
+    /* Lägger till ett mellanrum mellan varje dag */
+}
+
+.forecast-day {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    width: 150px;
+    /* Ställer in bredden för varje väderprognos */
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+h1 {
+    font-family: "Roboto", sans-serif;
+    font-size: 46px;
+    font-weight: 400;
+    font-style: normal;
 }
