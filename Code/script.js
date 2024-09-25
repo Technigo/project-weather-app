@@ -10,3 +10,13 @@ let city = "Stockholm";
 
 const URL = `${BASE_URL}?q=${city}&units=metric&APPID=${API_KEY}`;
 console.log(URL)
+
+fetch(URL)
+  .then(response => response.json())
+  .then(data => {
+    console.log(data.weather)
+  })
+
+
+
+
