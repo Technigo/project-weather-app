@@ -1,0 +1,46 @@
+/* for iPhone XR */
+
+body {
+    padding: 0;
+    max-width: 100%;
+    margin: 0;
+}
+
+header {
+    background: linear-gradient(to bottom right, #8589FF, #E8E9FF);
+    height: 458px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu {
+    width: 33px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    justify-content: space-around;
+    padding-left: 30px;
+    padding-top: 39.5px;
+
+}
+
+.hamburger-layer {
+    width: 100%;
+    border: 3px;
+    height: 3px;
+    border-top: solid #FFFFFF;
+}
+
+.temperature-big {
+    width: 211px;
+    height: 203px;
+    border: solid white;
+    margin-top: 71.5px;
+    margin-left: 30px;
+    text-align: left;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+}
