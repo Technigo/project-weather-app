@@ -8,7 +8,6 @@ const myCity = document.getElementById('cityWeather')
 const theSun = document.getElementById('sunRiseSet')
 const futureWeatherContainer = document.getElementById('futureWeather');
 
-
 fetch('https://api.openweathermap.org/data/2.5/weather?q=Malmo,Sweden&units=metric&APPID=f6ea1936f0499b177ea24494f76ba447')
   .then((response) => {
     return response.json()
@@ -27,22 +26,37 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Malmo,Sweden&units=metr
       { timeStyle: 'short', hour12: false });
     const sunsetTime = sunsetDate.toLocaleTimeString('en-US', { timeStyle: 'short', hour12: false });
 
+    const weatherIcons = {
+      '01d': 'https://openweathermap.org/img/wn/01d@2x.png', // clear sky, day
+      '01n': 'https://openweathermap.org/img/wn/01n@2x.png', // clear sky, night
+      '02d': 'https://openweathermap.org/img/wn/02d@2x.png', // few clouds, day
+      '02n': 'https://openweathermap.org/img/wn/02n@2x.png', // few clouds, night
+      '03d': 'https://openweathermap.org/img/wn/03d@2x.png', // scattered clouds, day
+      '03n': 'https://openweathermap.org/img/wn/03n@2x.png', // scattered clouds, night
+      '04d': 'https://openweathermap.org/img/wn/04d@2x.png', // broken clouds, day
+      '04n': 'https://openweathermap.org/img/wn/04n@2x.png', // broken clouds, night
+      '09d': 'https://openweathermap.org/img/wn/09d@2x.png', // shower rain, day
+      '09n': 'https://openweathermap.org/img/wn/09n@2x.png', // shower rain, night
+      '10d': 'https://openweathermap.org/img/wn/10d@2x.png', // rain, day
+      '10n': 'https://openweathermap.org/img/wn/10n@2x.png', // rain, night
+      '11d': 'https://openweathermap.org/img/wn/11d@2x.png', // thunderstorm, day
+      '11n': 'https://openweathermap.org/img/wn/11n@2x.png', // thunderstorm, night
+      '13d': 'https://openweathermap.org/img/wn/13d@2x.png', // snow, day
+      '13n': 'https://openweathermap.org/img/wn/13n@2x.png', // snow, night
+      '50d': 'https://openweathermap.org/img/wn/50d@2x.png', // mist, day
+      '50n': 'https://openweathermap.org/img/wn/50n@2x.png', // mist, night
+    };
 
-    cityWeather.innerHTML = `<p>The temperature in ${cityName}, Sweden is ${temperature.toFixed(1)}°C.🌡️
-    <br>
-     The weather is giving: ${weatherDescription}. ✨ </p>`;
+    const weatherIconCode = json.weather[0].icon;
+    const iconUrl = weatherIcons[weatherIconCode] || 'https://openweathermap.org/img/wn/unknown.png'; // Default icon for unknown code
 
+    cityWeather.innerHTML = `<p>The temperature in ${cityName}, Sweden is ${temperature.toFixed(1)}°C.️
+      <br>
+       The weather is giving: ${weatherDescription}. <img src="${iconUrl}" alt="${weatherDescription}"></p>`;
 
     // Update the sunrise/sunset element
     theSun.innerHTML = `<p>Sunrise: ${sunriseTime} | Sunset: ${sunsetTime}</p>`;
-
-    console.log(sunriseTime)
-    console.log(sunsetTime)
-    console.log(temperature.toFixed(1))
-
   })
-
-
 
 fetch('https://api.openweathermap.org/data/2.5/forecast?q=Malmo,Sweden&units=metric&APPID=f6ea1936f0499b177ea24494f76ba447')
   .then((response) => {
