@@ -17,12 +17,12 @@
   <main>
 
     <section id="header">
-      <img src="./assets/design-1/search.png" alt="Search Here" id="searchIcon" onclick="toggleSearch()">
+      <img src="./assets/design-1/search-white.png" alt="Search Here" id="searchIcon" onclick="toggleSearch()">
       <div id="hidden">
-        <div id="closeButton" onclick="toggleSearch()">&#10006;</div>
-        <input type="text" id="searchBar" placeholder="Search...">
-        <button id="clickButton">&#128269;</button>
-        <!-- Search icon inside button -->
+        <div id="closeButton" onclick="closeSearch()">&#10006;</div>
+        <input type="text" id="searchBar" placeholder="Search city/country">
+        <img src="./assets/design-1/searchicon-white.png" alt="Search Here" id="searchButton" onclick="startSearch()">
+        <!-- Search button inside searchBar -->
       </div>
     </section>
 

@@ -37,6 +37,9 @@ main {
   background-color: var(--background-grey);
 }
 
+/* *********************************
+Start of style for the header
+********************************* */
 #header {
   position: relative;
   display: flex;
@@ -44,61 +47,60 @@ main {
 }
 
 #searchIcon {
-  height: 2rem;
+  height: 2.7rem;
   cursor: pointer;
   z-index: 1;
-  position: absolute;
-  top: 0;
-  left: 0;
+  margin-top: 5px;
+  transition: 0.3s ease;
 }
 
 /* Hidden part of the search bar */
 #hidden {
-    display: none; /* Hidden by default */
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 10px;
-    width: 300px;
-    height: 50px;
-    display: flex;
-    align-items: center;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  width: 300px;
+  height: 50px;
+  display: flex;
+  align-items: center;
 }
 
-/* Close button (X) */
 #closeButton {
-    font-size: 24px;
-    color: white;
-    cursor: pointer;
-    margin-right: 10px;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  margin-right: 30px;
+  transition: 0.3s ease;
 }
 
-/* Search bar styling */
 #searchBar {
-    flex-grow: 1;
-    height: 30px;
-    padding: 0 10px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
+  flex-grow: 1;
+  height: 2rem;
+  padding-left: 16px;
+  border: solid 1px var(--white);
+  background-color: var(--background-grey);
+  color: var(--white);
 }
 
-/* Search button styling */
-#clickButton {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
-    margin-left: 10px;
-    color: #666;
+#searchButton {
+  height: 2rem;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s ease;
 }
 
-/* Additional styling for layout */
-.hidden input[type="text"] {
-    flex-grow: 1;
-    padding-left: 10px;
-    font-size: 16px;
+/* Hover effect for icon|button */
+#searchIcon:hover, #closeButton:hover, #searchButton:hover {
+  filter: brightness(0.8);
 }
-
+/* *********************************
+End of style for the header
+********************************* */
+/* *********************************
+Start of style for the main content
+********************************* */
 
 #weatherApp {
   display: flex;
@@ -139,10 +141,12 @@ footer {
   text-align: center;
 }
 
-
+/* *********************************
+Start of style for the main content
+********************************* */
 
 /* *********************************
-Start of style the breathingButton
+Start of style for Buttons
 ********************************* */
 /*
 #background {
@@ -188,5 +192,5 @@ Start of style the breathingButton
 }
 
 /* *********************************
-End of style the breathingButton
+End of style for Buttons
 ********************************* */

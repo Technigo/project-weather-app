@@ -7,7 +7,7 @@ const BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
 const URL = `${BASE_URL}?q=Stockholm,Sweden&units=metric&appid=${API_KEY}`
 
 console.log(URL)
-alert("Oops, city not found! Check your spelling please.")
+// alert("Oops, city not found! Check your spelling please.")
 
 // DOM selectors
 
