@@ -66,15 +66,31 @@ const updateBackgroundImage = (weatherDescription) => {
 
   // Choose the background image based on the weather condition
   if (weather.includes("light rain")) {
-    mainWrapper.style.backgroundImage = 'url("./images/lightRain.png")'; // Updated path for light rain
+    mainWrapper.style.backgroundImage = 'url("./images/lightRain.png")';
   } else if (weather.includes("rain")) {
-    mainWrapper.style.backgroundImage = 'url("./images/rain.png")'; // Updated path for rain
+    mainWrapper.style.backgroundImage = 'url("./images/rain.png")';
+  } else if (weather.includes("thunderstorm")) {
+    mainWrapper.style.backgroundImage = 'url("./images/thunderstorm.png")';
+  } else if (weather.includes("drizzle")) {
+    mainWrapper.style.backgroundImage = 'url("./images/drizzle.png")';
   } else if (weather.includes("cloud")) {
-    mainWrapper.style.backgroundImage = 'url("./images/cloudy.png")'; // Updated path for cloudy
+    mainWrapper.style.backgroundImage = 'url("./images/cloudy.png")';
   } else if (weather.includes("sun") || weather.includes("clear")) {
-    mainWrapper.style.backgroundImage = 'url("./images/sunny.png")'; // Updated path for sunny
+    mainWrapper.style.backgroundImage = 'url("./images/sunny.png")';
   } else if (weather.includes("snow")) {
-    mainWrapper.style.backgroundImage = 'url("./images/snowy.png")'; // Updated path for snowy
+    mainWrapper.style.backgroundImage = 'url("./images/snowy.png")';
+  } else if (weather.includes("mist") || weather.includes("haze")) {
+    mainWrapper.style.backgroundImage = 'url("./images/mist.png")';
+  } else if (weather.includes("fog")) {
+    mainWrapper.style.backgroundImage = 'url("./images/fog.png")';
+  } else if (weather.includes("dust") || weather.includes("sand")) {
+    mainWrapper.style.backgroundImage = 'url("./images/dust.png")';
+  } else if (weather.includes("smoke")) {
+    mainWrapper.style.backgroundImage = 'url("./images/smoke.png")';
+  } else if (weather.includes("squall")) {
+    mainWrapper.style.backgroundImage = 'url("./images/squall.png")';
+  } else if (weather.includes("tornado")) {
+    mainWrapper.style.backgroundImage = 'url("./images/tornado.png")';
   } else {
     mainWrapper.style.backgroundImage = 'url("./images/default.png")'; // Default background image
   }

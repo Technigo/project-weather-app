@@ -5,24 +5,24 @@
   box-sizing: border-box;
 }
 
-body,
-html {
+body {
   font-family: "Arial", sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  /* background-color: #f0f0f0; */
+  background-color: #f0f0f0; /* Background color for the body */
 }
 
 /* Main container styling */
 .container {
   width: 500px; /* Adjusted width to make the container wider */
   max-width: 90%; /* Max width to ensure responsiveness */
-  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-  /* background-color: #ffffff; */
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.1);
+  /* background-color: rgba(255, 255, 255, 0.3);  */
+  backdrop-filter: blur(5px); /* Adds a slight blur effect */
+  border-radius: 10px;
   position: relative;
   margin: 0 auto; /* Center the container */
   padding: 0; /* Remove any extra padding */
@@ -35,7 +35,6 @@ html {
 }
 
 /* Container for the curved area */
-
 .feature-image {
   position: absolute;
   top: 0;
@@ -43,7 +42,6 @@ html {
   width: 100%;
   height: 100px; /* Match height to the .background-top-gradient */
   background: no-repeat center center/cover; /* Use adjusted path and !important */
-  /* opacity: 0.3; */
   z-index: 0; /* Ensure it stays behind the gradient */
   transition: background-image 0.5s ease-in-out;
 }
@@ -56,7 +54,7 @@ html {
   text-align: center;
   position: relative;
   z-index: 2;
-  border-radius: 0 0 10px 10px;
+  /* border-radius: 0 0 10px 10px; */
   border: 1px solid rgba(200, 200, 200, 0.5);
   background-repeat: no-repeat;
   background-size: cover; /* Ensures the background image covers the entire element */
@@ -80,7 +78,7 @@ html {
   font-size: 28px;
   margin: 5px 0;
   color: white;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 /* Local time styling */
@@ -111,7 +109,7 @@ html {
   justify-content: space-between;
   margin: 10px 0;
   color: white;
-  font-size: 14px;
+  font-size: 17px;
 }
 
 .sun-position div {
@@ -124,10 +122,8 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* padding: 10px; */
   background-color: transparent;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  /* border-radius: 20px; */
   margin-top: 10px;
 }
 
@@ -169,10 +165,6 @@ html {
   opacity: 1; /* Ensures full opacity for the placeholder text */
 }
 
-/* .search-button:hover {
-  background-color: #3c3d3d;
-} */
-
 /* Forecast section */
 .weather-forecast {
   width: 100%;
@@ -184,8 +176,7 @@ html {
 
 .weather-forecast td {
   padding: 10px;
-  font-size: 16px;
-  /* color: white; */
+  font-size: 18px;
   padding-left: 0; /* Remove left padding to center the text */
   border: none; /* Remove the border from table cells */
 }
@@ -215,8 +206,8 @@ html {
 .search-button {
   cursor: pointer;
 }
-*/ .search-icon {
-  /* fill: #ffffff; */
+
+.search-icon {
   width: 24px;
   height: 24px;
 }
@@ -233,10 +224,10 @@ html {
   justify-content: center; /* Horizontally center */
   width: 100%; /* Adjust width of the container */
   margin: 0 auto; /* Center the container horizontally */
-  padding: 10px; /* Adds padding inside the container * /
-  background-color: transparent; /* Transparent background */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: none; /* Remove box shadow */
+  padding: 10px;
+  /* background-color: transparent; */
+  border-radius: 10px;
+  box-shadow: none;
   z-index: 3; /* Ensure it stays above other elements */
 }
 
