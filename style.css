@@ -1,41 +1,157 @@
-
 body {
-    font-family: Montserrat;
+  font-family: Montserrat;
+  background: #F7E9B9;
 }
 
-header {
-    margin-left: 15px;
+.weather-container {
+display: flex;
+flex-direction: column; /* Stack items vertically */
+justify-content: flex-start; 
+padding-top: 50px;
+align-items: center;
+height: 100vh; /* Ensure it takes up the full height of the viewport */
 }
 
 /* Container for condition and temperature */
 .temperature-info {
-    display: flex;
-    justify-content: left; 
-    align-items: center;
+  display: flex;  
+  justify-content: center;  
+  align-items: center;
+  font-size: 24px; 
+  font-weight: 400;
+  margin-left: 45px; 
+  color: #2A5510;
+  line-height: 25.6px; 
+}
+
+ .temperature-info p {
+  margin: 0 5px; 
+} 
+
+/* Container for sunrise and sunset */
+.sun-times {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center-align sunrise and sunset */
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 20px; /* Space before other weather details */
+  color: #2A5510;
+  line-height: 25.6px;
+}
+
+.sun-times p {
+  margin: 0 5px; /* Adjust spacing between sunrise and sunset */
+}
+
+.weather-img {
+margin-top: 30px; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+body {
+    font-family: Montserrat;
+    background: #F7E9B9;
+}
+
+.weather-container {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+}
+
+
+/* Container for condition and temperature */
+/* .temperature-info {
+    display: flex;  
+    /* justify-content: center;  */
+    /* align-items: center;
     font-size: 21px; 
     font-weight: 400;
     margin-bottom: 10px; 
-    margin-left: 15px;
-}
-  
+    margin-left: 40px;
+    margin-top: 50px;
+    color: #2A5510;
+    line-height: 25.6px;
+
+} */
+/*    
   .temperature-info p {
     margin: 0 5px; 
-}
+} */
   
   /* Container for sunrise and sunset */
-  .sun-times {
+  /* .sun-times {
     align-items: center; /* Center-align sunrise and sunset */
-    justify-content: left;
-    font-size: 21px;
+    /* justify-content: center;  */
+    /* font-size: 21px;
     font-weight: 400;
     margin-bottom: 20px; /* Space before other weather details */
-    margin-left: 20px;
-}
-  
+    /* margin-left: 47px;
+    color: #2A5510;
+    line-height: 25.6px;
+}  */
+/*   
   .sun-times p {
     margin: 5px 0; /* Adjust spacing between sunrise and sunset */
-}
-  
+/* } 
+
+/* .weather-img {
+  display: flex;
+  /* justify-content: center;  */
+  /* align-items: center;
+  margin-top: 150px; 
+  margin-left: 47px;
+}   */
+   
 
 
  
