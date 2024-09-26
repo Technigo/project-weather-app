@@ -42,48 +42,35 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Malmo,Sweden&units=metr
 
   })
 
-// Fetch forecast data using the same API key
+
+
 fetch('https://api.openweathermap.org/data/2.5/forecast?q=Malmo,Sweden&units=metric&APPID=f6ea1936f0499b177ea24494f76ba447')
   .then((response) => {
     return response.json();
   })
   .then((data) => {
-    // Group data by day
-    const forecastDataByDay = data.list.reduce((acc, forecast) => {
-      const day = new Date(forecast.dt * 1000).toLocaleDateString();
-      if (!acc[day]) {
-        acc[day] = [];
+    const noonForecasts = data.list.filter(forecast => {
+      const forecastTime = new Date(forecast.dt_txt);
+      return forecastTime.getHours() === 12 && forecastTime.getMinutes() === 0;
+    });
+
+    if (noonForecasts.length >= 4) {
+      const futureWeatherDiv = document.getElementById('futureWeather');
+      let htmlContent = '';
+
+      for (let i = 0; i < 4; i++) {
+        const forecast = noonForecasts[i];
+        const forecastDate = new Date(forecast.dt_txt);
+        const formattedDate = forecastDate.toLocaleDateString('sv-SE', { day: '2-digit', month: 'short' });
+
+        htmlContent += `<p>${formattedDate} - ${forecast.main.temp.toFixed(1)}°C</p>`;
       }
-      acc[day].push(forecast);
-      return acc;
-    }, {});
 
-    // Calculate daily averages/ranges
-    const dailyForecast = Object.entries(forecastDataByDay).map(([day, forecasts]) => {
-      const averageTemp = forecasts.reduce((sum, forecast) => sum + forecast.main.temp, 0) / forecasts.length;
-      const minTemp = forecasts.reduce((min, forecast) => Math.min(min, forecast.main.temp), Infinity);
-      const maxTemp = forecasts.reduce((max, forecast) => Math.max(max, forecast.main.temp), -Infinity);
-
-      // Add other calculations as needed (e.g., humidity, feels like)
-
-      return {
-        day,
-        averageTemp,
-        minTemp,
-        maxTemp,
-      };
-    });
-
-    // Create HTML elements and populate
-    dailyForecast.forEach((forecast) => {
-      const forecastElement = document.createElement('div');
-      forecastElement.classList.add('forecast-item');
-      forecastElement.innerHTML = `
-        <h2>${forecast.day}</h2>   
-
-        <p>Average Temperature: ${forecast.averageTemp.toFixed(1)}°C</p>
-        <p>Temperature Range: ${forecast.minTemp.toFixed(1)}°C - ${forecast.maxTemp.toFixed(1)}°C</p>
-      `;
-      futureWeatherContainer.appendChild(forecastElement);
-    });
+      futureWeatherDiv.innerHTML = htmlContent;
+    } else {
+      console.log("Not enough forecasts found for 12:00");
+    }
+  })
+  .catch((error) => {
+    console.error("Error fetching weather data:", error);
   });
