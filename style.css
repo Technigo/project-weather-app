@@ -1,0 +1,41 @@
+
+body {
+    font-family: Montserrat;
+}
+
+header {
+    margin-left: 15px;
+}
+
+/* Container for condition and temperature */
+.temperature-info {
+    display: flex;
+    justify-content: left; 
+    align-items: center;
+    font-size: 21px; 
+    font-weight: 400;
+    margin-bottom: 10px; 
+    margin-left: 15px;
+}
+  
+  .temperature-info p {
+    margin: 0 5px; 
+}
+  
+  /* Container for sunrise and sunset */
+  .sun-times {
+    align-items: center; /* Center-align sunrise and sunset */
+    justify-content: left;
+    font-size: 21px;
+    font-weight: 400;
+    margin-bottom: 20px; /* Space before other weather details */
+    margin-left: 20px;
+}
+  
+  .sun-times p {
+    margin: 5px 0; /* Adjust spacing between sunrise and sunset */
+}
+  
+
+
+ 
