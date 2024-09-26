@@ -28,21 +28,21 @@ const fetchWeatherData = async (URL) => {
     }
 }
 
-// Funktion zum Runden der Temperatur
+// FFunctions to round the temperature
 const roundTemperature = (temp, method = 'round') => {
     if (method === 'round') {
-        return Math.round(temp);  // Mathematisch korrektes Runden
+        return Math.round(temp)
     } else if (method === 'floor') {
-        return Math.floor(temp);  // Abrunden
+        return Math.floor(temp)
     } else if (method === 'ceil') {
-        return Math.ceil(temp);   // Aufrunden
+        return Math.ceil(temp)
     }
-    return temp;  // Wenn keine bekannte Methode angegeben ist, gib die originale Temperatur zurück
-};
+    return temp
+}
 
 // Load weather data of Stockholm when opening the page
 window.addEventListener('load', async () => {
-    const defaultCity = 'Stockholm'
+    const defaultCity = 'kairo'
     const URL = `${BASE_URL}q=${defaultCity}&units=metric&APPID=${API_KEY}`
 
     const data = await fetchWeatherData(URL)
