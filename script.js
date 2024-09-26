@@ -38,6 +38,7 @@ const fetchWeatherData = (city) => {
 const fetchWeatherForecast = (city) => {
   const API_KEY = "0c5116ff347d8ce8d78e8d3c18029dd7"; // Replace with your actual API key
   const API_URL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=${API_KEY}`;
+  console.log(API_URL);
 
   fetch(API_URL)
     .then((response) => {
@@ -65,32 +66,46 @@ const updateBackgroundImage = (weatherDescription) => {
   const weather = weatherDescription.toLowerCase();
 
   // Choose the background image based on the weather condition
-  if (weather.includes("light rain")) {
-    mainWrapper.style.backgroundImage = 'url("./images/lightRain.png")';
-  } else if (weather.includes("rain")) {
-    mainWrapper.style.backgroundImage = 'url("./images/rain.png")';
-  } else if (weather.includes("thunderstorm")) {
+  if (weather.includes("thunderstorm")) {
     mainWrapper.style.backgroundImage = 'url("./images/thunderstorm.png")';
   } else if (weather.includes("drizzle")) {
-    mainWrapper.style.backgroundImage = 'url("./images/drizzle.png")';
-  } else if (weather.includes("cloud")) {
-    mainWrapper.style.backgroundImage = 'url("./images/cloudy.png")';
-  } else if (weather.includes("sun") || weather.includes("clear")) {
-    mainWrapper.style.backgroundImage = 'url("./images/sunny.png")';
+    mainWrapper.style.backgroundImage = 'url("./images/rain.png")';
+  } else if (weather.includes("light rain")) {
+    mainWrapper.style.backgroundImage = 'url("./images/rain.png")';
+  } else if (weather.includes("rain")) {
+    mainWrapper.style.backgroundImage = 'url("./images/rain.png")';
+  } else if (weather.includes("freezing rain")) {
+    mainWrapper.style.backgroundImage = 'url("./images/rain.png")';
+  } else if (weather.includes("sleet") || weather.includes("shower sleet")) {
+    mainWrapper.style.backgroundImage = 'url("./images/snowy.png")';
   } else if (weather.includes("snow")) {
     mainWrapper.style.backgroundImage = 'url("./images/snowy.png")';
   } else if (weather.includes("mist") || weather.includes("haze")) {
     mainWrapper.style.backgroundImage = 'url("./images/mist.png")';
   } else if (weather.includes("fog")) {
     mainWrapper.style.backgroundImage = 'url("./images/fog.png")';
-  } else if (weather.includes("dust") || weather.includes("sand")) {
-    mainWrapper.style.backgroundImage = 'url("./images/dust.png")';
   } else if (weather.includes("smoke")) {
     mainWrapper.style.backgroundImage = 'url("./images/smoke.png")';
+  } else if (weather.includes("dust") || weather.includes("sand")) {
+    mainWrapper.style.backgroundImage = 'url("./images/dust.png")';
+  } else if (weather.includes("ash")) {
+    mainWrapper.style.backgroundImage = 'url("./images/dust.png")';
   } else if (weather.includes("squall")) {
-    mainWrapper.style.backgroundImage = 'url("./images/squall.png")';
+    mainWrapper.style.backgroundImage = 'url("./images/cloudy.png")';
   } else if (weather.includes("tornado")) {
-    mainWrapper.style.backgroundImage = 'url("./images/tornado.png")';
+    mainWrapper.style.backgroundImage = 'url("./images/thunderstorm.png")';
+  } else if (weather.includes("clear")) {
+    mainWrapper.style.backgroundImage = 'url("./images/sunny.png")';
+  } else if (
+    weather.includes("few clouds") ||
+    weather.includes("scattered clouds")
+  ) {
+    mainWrapper.style.backgroundImage = 'url("./images/cloudy.png")';
+  } else if (
+    weather.includes("broken clouds") ||
+    weather.includes("overcast clouds")
+  ) {
+    mainWrapper.style.backgroundImage = 'url("./images/cloudy.png")';
   } else {
     mainWrapper.style.backgroundImage = 'url("./images/default.png")'; // Default background image
   }
