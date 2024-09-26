@@ -1,0 +1,32 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f0cf;
+    color: #3c3c3b;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #2e523a;
+    /* Dark green */
+}
+
+p {
+    font-size: 18px;
+    margin: 4px 0;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #2e523a;
+    /* Dark green */
+}
+
+#forecast-list {
+    font-size: 20px;
+    color: #2e523a;
+    margin-bottom: 15px;
+}
