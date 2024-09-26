@@ -7,6 +7,7 @@ const BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
 const URL = `${BASE_URL}?q=Stockholm,Sweden&units=metric&appid=${API_KEY}`
 
 console.log(URL)
+alert("Oops, city not found! Check your spelling please.")
 
 // DOM selectors
 
@@ -53,6 +54,7 @@ function updateButtonColor(condition) {
 // Example: Change button and background based on weather condition
 // You can call this function based on real-time weather data or events
 updateButtonColor('clear-sky');  // Call this dynamically, e.g., from an API
+*/
 
 
-alert("Oops, city not found! Check your spelling please.")
+

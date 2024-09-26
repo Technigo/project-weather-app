@@ -12,54 +12,68 @@
   <title>2024 XingS Weather APP</title>
 </head>
 
-<body class="weather-app">
+<body>
 
-  <main id="weatherApp">
-    <div id="header">
-      <div id="searchToggle"><img src="./assets/design-1/search.png" alt="Search Here" class="searchIcon"></div>
-      <input type="text" id="searchBar" placeholder="Search...">
-    </div>
+  <main>
 
-    <div id="weatherInfo">
-      <div id="temperature">14°C</div>
-      <div id="location">Stockholm</div>
-      <div id="time">Time: 11:00</div>
-      <div id="weatherCondition">Clear Sky</div>
-      <div id="sunTimes">Sunrise: 06:41 | Sunset: 18:36</div>
-    </div>
+    <section id="header">
+      <img src="./assets/design-1/search.png" alt="Search Here" id="searchIcon" onclick="toggleSearch()">
+      <div id="hidden">
+        <div id="closeButton" onclick="toggleSearch()">&#10006;</div>
+        <input type="text" id="searchBar" placeholder="Search...">
+        <button id="clickButton">&#128269;</button>
+        <!-- Search icon inside button -->
+      </div>
+    </section>
 
-    <div id="forecast">
-      <div class="forecast-day" id="day1">
-        <div class="day-name">Fri</div>
-        <div class="day-temp">14°C</div>
-        <div class="day-wind">5.82m/s</div>
+    <section id="weatherApp">
+      <div id="weatherInfo">
+        <div id="temperature">14<span class="unit">°C</span></div>
+        <div id="location">Stockholm</div>
+        <div id="time">Time: 11:00</div>
+        <div id="weatherCondition">Clear Sky</div>
+        <div id="sunTimes">Sunrise: 06:41 | Sunset: 18:36</div>
       </div>
-      <div class="forecast-day" id="day2">
-        <div class="day-name">Sat</div>
-        <div class="day-temp">11°C</div>
-        <div class="day-wind">1.5m/s</div>
-      </div>
-      <div class="forecast-day" id="day3">
-        <div class="day-name">Sun</div>
-        <div class="day-temp">12°C</div>
-        <div class="day-wind">3.59m/s</div>
-      </div>
-      <div class="forecast-day" id="day4">
-        <div class="day-name">Mon</div>
-        <div class="day-temp">14°C</div>
-        <div class="day-wind">3.81m/s</div>
-      </div>
-    </div>
 
-    <div id="background" class="clear-sky">
-      <button id="breathingButton">></button>
-    </div>
+      <div id="backgroundImage" class="clear-sky">
+        <button class="breathingButton" id="breathingButton">></button>
+      </div>
+
+      <div id="forecast">
+        <div class="forecast-day" id="day1">
+          <div class="day-name">Fri</div>
+          <div class="day-temp">14°C</div>
+          <div class="day-wind">5.82m/s</div>
+        </div>
+        <div class="forecast-day" id="day2">
+          <div class="day-name">Sat</div>
+          <div class="day-temp">11°C</div>
+          <div class="day-wind">1.5m/s</div>
+        </div>
+        <div class="forecast-day" id="day3">
+          <div class="day-name">Sun</div>
+          <div class="day-temp">12°C</div>
+          <div class="day-wind">3.59m/s</div>
+        </div>
+        <div class="forecast-day" id="day4">
+          <div class="day-name">Mon</div>
+          <div class="day-temp">14°C</div>
+          <div class="day-wind">3.81m/s</div>
+        </div>
+        <div class="forecast-day" id="day5">
+          <div class="day-name">Tue</div>
+          <div class="day-temp">14°C</div>
+          <div class="day-wind">3.81m/s</div>
+        </div>
+      </div>
+    </section>
 
   </main>
 
   <footer>
     <p>&copy; 2024 XingS Weather APP. All rights reserved.</p>
   </footer>
+
   <script src="./script.js"></script>
 </body>
 
