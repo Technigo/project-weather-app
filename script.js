@@ -22,7 +22,7 @@ const weatherMsg = document.getElementById ("weatherMessage")
 
 
 // Fetch weather data
-fetch(URL)
+fetch(URL)  
     .then(response => response.json())
     .then(data => {
         const stockholmTemp = data.main.temp 
@@ -51,15 +51,43 @@ fetch(URL)
         sunriseDisplay.innerText = `${sunriseTime}`;
         sunsetDisplay.innerText = `${sunsetTime}`;
 
+        // Call the updateUI function to change background color and message
+        updateUI(roundedTemp, weatherCondition);
+
+
         // Log the temperature and data for debugging
         console.log(data); // Log inside the promise chain
     })
 
     .catch(error => console.error('Error fetching weather data:', error)); // Handle errors
 
+ // Function to update UI based on weather condition
+function updateUI(temperature, weatherDescription) {
+    let weatherMessage; // Declare a variable for the weather message
 
+    // Update background and image based on the weather description
+    if (weatherDescription.includes("rain")) {
+        document.body.style.backgroundColor = "#BDE8FA"; // blue for rain
+        weatherImg.src = "assets/umbrella.png"; // Update image for rain
+        weatherMessage = "Don’t forget your umbrella. It’s wet in Stockholm today."; // Custom message for rain
+    } else if (weatherDescription.includes("clear")) {
+        document.body.style.backgroundColor = "#ffd700"; // yellow for sun
+        weatherImg.src = "assets/sunglasses.png"; // Update image for sunny weather
+        weatherMessage = `Get your sunnies on. Stockholm is looking rather great today.`; // Default message for clear
+    } else if (weatherDescription.includes("clouds")) {
+        document.body.style.backgroundColor = "#c0c0c0"; // gray for cloudy
+        weatherImg.src = "assets/cloud.png"; // Update image for cloudy weather
+        weatherMessage = "Light a fire and get cosy. Stockholm is looking grey today."; // Custom message for clouds
+    } else {
+        document.body.style.backgroundColor = "#ff4500"; // fallback color
+        weatherImg.src = "assets/fallback_image_url.jpg"; // Fallback image
+        weatherMessage = `Put your sunnies on - the weather in Stockholm looks ${weatherDescription} today.`; // Default message
+    }
 
+    weatherMsg.textContent = weatherMessage; // Update the weather message display
+}
 
+console.log (backgroundColor)
     
 
 
