@@ -14,27 +14,39 @@
         rel="stylesheet">
 </head>
 
-<body>
+<body id="body">
     <header>
-        <div class="menu">
+        <div class="menu" id="hamburgerMenu">
             <div class="hamburger-layer"></div>
             <div class="hamburger-layer"></div>
             <div class="hamburger-layer"></div>
         </div>
+
+        <!-- Window to search for town -->
+
+        <div id="searchLocationWindow" class="search-location-window">
+            <div class="searchLocationContainer">
+                <span class="close-window-button" id="closeWindow">X</span>
+                <h2>Search town</h2>
+                <input type="text" id="searchCity" class="search-city" placeholder="enter a town"></input>
+                <button id="searchLocationButton">Search</button>
+            </div>
+        </div>
+
+
         <div class="weather-container">
             <div class="temperature-container">
-                <div class="temperature">
-                    <h1>20
-                        <h1 class="celsius">°C</h1>
+                <div>
+                    <h1 class="temperature" id="temp">
                     </h1>
                 </div>
-
-                <h2>New York</h2>
-                <h3>sunny</h3>
+                <h2 id="city"></h2>
+                <h3 id="weather"></h3>
             </div>
             <div class="image-header">
             </div>
         </div>
+
         <div class="sunrise-sunset">
             <p>sunrise</p>
             <p>22.30</p>
