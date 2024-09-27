@@ -16,15 +16,16 @@
 
   <main>
 
-    <section class="weather-container" id="weatherContainer">
+    <section class="weather-container">
       <img src="./assets/design-1/search-white.png" id="searchIcon" onclick="showSearch()">
       <div class="side-menu" id="sideMenu">
         <div id="closeButton" onclick="closeSearch()">&#10006;</div>
-        <input type="text" class="search-bar" id="inputLocation" placeholder="Search city/country">
+        <input type="text" class="search-bar" id="inputLocation" placeholder="Search city name">
         <img src="./assets/design-1/searchicon-white.png" id="searchButton" onclick="startSearch()">
       </div>
 
       <img id="mainIcon" src="./assets/design-1/sun.png" alt="image of a sun">
+      <button id="favButton">></button>
 
       <div id="weatherData">
         <h1 id="currentTemp">14<span>°C</span></h1>

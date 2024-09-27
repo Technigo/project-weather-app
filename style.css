@@ -42,11 +42,11 @@ main {
   height: 500px; 
   background: linear-gradient(
     180deg,
-    rgb(176, 156, 224) 0%,
+    rgb(108, 110, 228) 0%,
     rgba(227, 227, 255, 1) 100%
   );
-  border-bottom-left-radius: 90% 120px;
-  border-bottom-right-radius: 90% 120px;
+  border-bottom-left-radius: 150% 300px;
+  border-bottom-right-radius: 150% 300px;
 }
 
 #searchIcon {
@@ -89,14 +89,10 @@ main {
 
 #searchButton {
   height: 2rem;
+  margin-left: 0.5rem;
   cursor: pointer;
   border: none;
   transition: 0.3s ease;
-}
-
-/* Hover effect for icon|button */
-#searchIcon:hover, #closeButton:hover, #searchButton:hover {
-  filter: brightness(0.8);
 }
 
 #weatherData {
@@ -110,6 +106,49 @@ main {
   height: 9rem;
   top: 100px;
   right: 30px;
+}
+
+#favButton {
+  font-size: 5rem;
+  border: none;
+  border-radius: 50% 50%;
+  cursor: pointer;
+  animation: breathe 6s infinite ease-in-out;
+  color: white;
+  font-weight: 600;
+  align-items: center;
+  justify-content: center;
+  background-color: #226694; /* initial color */
+  position: absolute;
+  height: 6rem;
+  width: 6rem;
+  top: 430px;
+  right: 30px;
+  transition: 0.3s ease;
+}
+
+/* Hover effect for icon|button */
+#searchIcon:hover, #closeButton:hover, #searchButton:hover {
+  filter: brightness(0.8);
+}
+
+#favButton:hover {
+  box-shadow:  
+  9.1px 7.4px 10px rgba(0, 0, 0, 0.102),
+  37px 30px 80px rgba(0, 0, 0, 0.15);
+}
+
+/* Keyframes for breathing effect */
+@keyframes breathe {
+  0% {
+    background-color: #226694; /* initial color */
+  }
+  50% {
+    background-color: #207744; /* faded/alternate color */
+  }
+  100% {
+    background-color: #226694; /* back to initial color */
+  }
 }
 
 h1 {
@@ -136,7 +175,7 @@ h3 {
 }
 
 h4, h5 {
-  font-size: 1.375rem;
+  font-size: 1.175rem;
   font-weight: 300;
   margin-bottom:5px;
 }
