@@ -3,13 +3,11 @@ const tempToday = document.getElementById("tempToday");
 const cityName = document.getElementById("cityName");
 const localTime = document.getElementById("localTime");
 const weatherDescription = document.getElementById("weatherDescription");
-//const mainIcon = document.getElementById("mainIcon"); // Uncomment if needed
 const sunriseText = document.getElementById("sunriseText");
 const sunsetText = document.getElementById("sunsetText");
 const inputField = document.getElementById("inputField");
 const searchBtn = document.getElementById("searchBtn");
 const searchMenuBtn = document.getElementById("searchMenuBtn");
-//const closeSearchMenu = document.getElementById("closeSearchMenu"); // Uncomment if needed
 
 const forecastContainer = document.getElementById("weatherForecast");
 
@@ -196,12 +194,14 @@ const toggleSearchBar = () => {
 };
 
 // Event listener for the search button to fetch both current weather and forecast data
+// Event listener for the search button to fetch both current weather and forecast data
 if (searchBtn) {
   searchBtn.addEventListener("click", () => {
     const city = inputField.value.trim();
     if (city) {
       fetchWeatherData(city);
       fetchWeatherForecast(city);
+      inputField.value = ""; // Clear the input field after fetching data
       toggleSearchBar(); // Hide search bar after search
     } else {
       alert("Please enter a city name.");

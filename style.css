@@ -84,6 +84,7 @@ body {
   margin: 10px;
   color: white;
   font-weight: bold;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 /* City name styling */
@@ -91,7 +92,7 @@ body {
   font-size: 28px;
   margin: 5px 0;
   color: white;
-  /* font-weight: bold; */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 /* Local time styling */
@@ -99,6 +100,7 @@ body {
   font-size: 18px;
   margin: 5px 0;
   color: white;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); /* Add text shadow */
 }
 
 /* Weather description styling */
@@ -107,6 +109,7 @@ body {
   margin: 5px 0;
   color: white;
   text-transform: capitalize;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); /* Add text shadow */
 }
 
 /* Weather icon styling */
@@ -160,7 +163,7 @@ body {
     0.1
   ); /* Slightly transparent background */
   color: #ffffff; /* White text color */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); */
 
   backdrop-filter: blur(10px); /* Apply blur effect */
   -webkit-backdrop-filter: blur(10px); /* Safari support */
