@@ -6,69 +6,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
   <title>2024 XingS Weather APP</title>
 </head>
 
 <body>
-
   <main>
+    <section class="weather-container" id="weatherContainer">
+      <!-- Search Icon -->
+      <img src="./assets/design-1/search-white.png" id="searchIcon" alt="Search Icon">
 
-    <section class="weather-container">
-      <img src="./assets/design-1/search-white.png" id="searchIcon" onclick="showSearch()">
+      <!-- Side Menu -->
       <div class="side-menu" id="sideMenu">
-        <div id="closeButton" onclick="closeSearch()">&#10006;</div>
-        <input type="text" class="search-bar" id="inputLocation" placeholder="Search city name">
-        <img src="./assets/design-1/searchicon-white.png" id="searchButton" onclick="startSearch()">
+        <div id="closeButton" class="close-button">&#10006;</div>
+        <input type="text" class="search-bar" id="inputLocation" placeholder="Search city name"
+          aria-label="City Search">
+        <img src="./assets/design-1/searchicon-white.png" id="searchButton" alt="Search Button">
       </div>
 
-      <img id="mainIcon" src="./assets/design-1/sun.png" alt="image of a sun">
-      <button id="favButton">></button>
+      <!-- Favorite City Button -->
+      <button id="favButton" class="fav-button">></button>
 
-      <div id="weatherData">
-        <h1 id="currentTemp">14<span>°C</span></h1>
-        <h2 id="currentCity">Stockholm</h2>
-        <h3 id="typeOfWeather">Clear Sky </h3>
-        <h4 id="time">Time: 11:00</h4>
-        <h5 id="sunTimes">Sunrise 06:41 | Sunset 18:36</h5>
-      </div>
+      <!-- Current Weather Data -->
+      <div id="weatherData" class="weather-data"></div>
     </section>
 
-    <section class="weather-forecast">
-      <div class="forecast-day" id="forecast">
-        <p>Sat</p>
-        <img id="weekIcon" src="./assets/design-1/sun.png">
-        <p id="weekTemp">14°C</p>
-        <p id="weekWindSpeed">3.33m/s</p>
-      </div>
-      <div class="forecast-day" id="forecast">
-        <p>Sat</p>
-        <img id="weekIcon" src="./assets/design-1/sun.png">
-        <p id="weekTemp">14°C</p>
-        <p id="weekWindSpeed">3.33m/s</p>
-      </div>
-      <div class="forecast-day" id="forecast">
-        <p>Sat</p>
-        <img id="weekIcon" src="./assets/design-1/sun.png">
-        <p id="weekTemp">14°C</p>
-        <p id="weekWindSpeed">3.33m/s</p>
-      </div>
-      <div class="forecast-day" id="forecast">
-        <p>Sat</p>
-        <img id="weekIcon" src="./assets/design-1/sun.png">
-        <p id="weekTemp">14°C</p>
-        <p id="weekWindSpeed">3.33m/s</p>
-      </div>
-      <div class="forecast-day" id="forecast">
-        <p>Sat</p>
-        <img id="weekIcon" src="./assets/design-1/sun.png">
-        <p id="weekTemp">14°C</p>
-        <p id="weekWindSpeed">3.33m/s</p>
-      </div>
-    </section>
-
+    <!-- Weekly Forecast -->
+    <section class="weather-forecast"></section>
   </main>
 
   <footer>
