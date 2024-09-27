@@ -32,6 +32,7 @@ body {
   background-repeat: no-repeat; /* Do not repeat the image */
   background-clip: border-box; /* Ensure the background respects the border radius */
   background-attachment: fixed; /* Optional: Makes the background fixed */
+  background-color: rgba(255, 255, 255, 1);
 }
 
 /* Container for the curved area */
@@ -206,7 +207,7 @@ body {
 
 .weather-forecast .forecast-category.icon img {
   width: 40px;
-  height: 40px;
+  background-color: rgba(255, 255, 255, 1);
 }
 
 .weather-forecast tr:last-child td {
