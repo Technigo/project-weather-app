@@ -201,7 +201,10 @@ forecast weather style
 }
 
 .forecast-day p {
-  margin: 0 20px;
+  margin: 0 15px 0 0;
+  flex: 1;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .forecast-day:hover {
