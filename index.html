@@ -16,55 +16,55 @@
 
   <main>
 
-    <section id="header">
-      <img src="./assets/design-1/search-white.png" alt="Search Here" id="searchIcon" onclick="toggleSearch()">
-      <div id="hidden">
+    <section class="weather-container" id="weatherContainer">
+      <img src="./assets/design-1/search-white.png" id="searchIcon" onclick="showSearch()">
+      <div class="side-menu" id="sideMenu">
         <div id="closeButton" onclick="closeSearch()">&#10006;</div>
-        <input type="text" id="searchBar" placeholder="Search city/country">
-        <img src="./assets/design-1/searchicon-white.png" alt="Search Here" id="searchButton" onclick="startSearch()">
-        <!-- Search button inside searchBar -->
+        <input type="text" class="search-bar" id="inputLocation" placeholder="Search city/country">
+        <img src="./assets/design-1/searchicon-white.png" id="searchButton" onclick="startSearch()">
+      </div>
+
+      <img id="mainIcon" src="./assets/design-1/sun.png" alt="image of a sun">
+
+      <div id="weatherData">
+        <h1 id="currentTemp">14<span>°C</span></h1>
+        <h2 id="currentCity">Stockholm</h2>
+        <h3 id="typeOfWeather">Clear Sky </h3>
+        <h4 id="time">Time: 11:00</h4>
+        <h5 id="sunTimes">Sunrise 06:41 | Sunset 18:36</h5>
       </div>
     </section>
 
-    <section id="weatherApp">
-      <div id="weatherInfo">
-        <div id="temperature">14<span class="unit">°C</span></div>
-        <div id="location">Stockholm</div>
-        <div id="time">Time: 11:00</div>
-        <div id="weatherCondition">Clear Sky</div>
-        <div id="sunTimes">Sunrise: 06:41 | Sunset: 18:36</div>
+    <section class="weather-forecast">
+      <div class="forecast-day" id="forecast">
+        <p>Sat</p>
+        <img id="weekIcon" src="./assets/design-1/sun.png">
+        <p id="weekTemp">14°C</p>
+        <p id="weekWindSpeed">3.33m/s</p>
       </div>
-
-      <div id="backgroundImage" class="clear-sky">
-        <button class="breathingButton" id="breathingButton">></button>
+      <div class="forecast-day" id="forecast">
+        <p>Sat</p>
+        <img id="weekIcon" src="./assets/design-1/sun.png">
+        <p id="weekTemp">14°C</p>
+        <p id="weekWindSpeed">3.33m/s</p>
       </div>
-
-      <div id="forecast">
-        <div class="forecast-day" id="day1">
-          <div class="day-name">Fri</div>
-          <div class="day-temp">14°C</div>
-          <div class="day-wind">5.82m/s</div>
-        </div>
-        <div class="forecast-day" id="day2">
-          <div class="day-name">Sat</div>
-          <div class="day-temp">11°C</div>
-          <div class="day-wind">1.5m/s</div>
-        </div>
-        <div class="forecast-day" id="day3">
-          <div class="day-name">Sun</div>
-          <div class="day-temp">12°C</div>
-          <div class="day-wind">3.59m/s</div>
-        </div>
-        <div class="forecast-day" id="day4">
-          <div class="day-name">Mon</div>
-          <div class="day-temp">14°C</div>
-          <div class="day-wind">3.81m/s</div>
-        </div>
-        <div class="forecast-day" id="day5">
-          <div class="day-name">Tue</div>
-          <div class="day-temp">14°C</div>
-          <div class="day-wind">3.81m/s</div>
-        </div>
+      <div class="forecast-day" id="forecast">
+        <p>Sat</p>
+        <img id="weekIcon" src="./assets/design-1/sun.png">
+        <p id="weekTemp">14°C</p>
+        <p id="weekWindSpeed">3.33m/s</p>
+      </div>
+      <div class="forecast-day" id="forecast">
+        <p>Sat</p>
+        <img id="weekIcon" src="./assets/design-1/sun.png">
+        <p id="weekTemp">14°C</p>
+        <p id="weekWindSpeed">3.33m/s</p>
+      </div>
+      <div class="forecast-day" id="forecast">
+        <p>Sat</p>
+        <img id="weekIcon" src="./assets/design-1/sun.png">
+        <p id="weekTemp">14°C</p>
+        <p id="weekWindSpeed">3.33m/s</p>
       </div>
     </section>
 
