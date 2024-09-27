@@ -13,28 +13,31 @@
 
 <body>
   <div class="layout">
-    <header>
-      <div class="top-container">
-        <div class="content">
-          <div class="temperature">
-            <span class="temp-number" id="current-temperature"></span><span class="temp-unit">°C</span>
-          </div>
-          <p class="city" id="city-name">A city</p>
-          <div class="weather">
-            <p class="description" id="current-weather">Clear</p>
-            <img id="main-icon" alt="Weather icon">
-          </div>
-        </div>
-        <div class="sunrise-sunset" id="sunrise-sunset-times">
-          <span class="label">sunrise</span>
-          <span class="time" id="sunrise-time"></span>
-          <span class="label">sunset</span>
-          <span class="time" id="sunset-time"></span>
-        </div>
+    <!-- <header> -->
+    <div class="top-container">
+      <!-- <div class="content"> -->
+      <div class="temperature">
+        <span class="temp-number" id="current-temperature"></span><span class="temp-unit">°C</span>
       </div>
-    </header>
+      <p class="city" id="city-name">A city</p>
+      <div class="weather">
+        <p class="description" id="current-weather">Clear</p>
+        <img id="main-icon" alt="Weather icon">
+      </div>
+      <!-- </div> -->
+      <div class="sunrise-sunset" id="sunrise-sunset-times">
+        <span class="label">sunrise</span>
+        <span class="time" id="sunrise-time"></span>
+        <span class="label">sunset</span>
+        <span class="time" id="sunset-time"></span>
+      </div>
+    </div>
+    <!-- </header> -->
     <div class="forecast-container" id="forecast">
-
+      <div class="forecast-row"></div>
+      <div class="forecast-day"></div>
+      <div class="forecast-icon"></div>
+      <div class="forecast-temp"></div>
 
     </div>
   </div>

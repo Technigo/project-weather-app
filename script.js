@@ -1,7 +1,7 @@
 const API_KEY = "248332e11aac477643699fc267736540"
 const BASE_URL = "https://api.openweathermap.org/data/2.5/weather?"
 const FORECAST_BASE_URL = "https://api.openweathermap.org/data/2.5/forecast?"
-const city = "San Francisco"
+const city = "Stockholm"
 const URL = `${BASE_URL}q=${city}&units=metric&APPID=${API_KEY}`
 const FORECAST_URL = `${FORECAST_BASE_URL}q=${city}&units=metric&APPID=${API_KEY}`
 
@@ -81,11 +81,13 @@ const updateForecastHTML = (data) => {
     })
 
     const forecastRow = document.createElement('div')
-    forecastRow.classList.add('forecast-day')
+    forecastRow.classList.add('forecast-row')
     forecastRow.innerHTML = `
-          <div>${day}</div>
-          <img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt=${forecasts[0].weather[0].description} class="forecast-icon">
-          <div class="forecast-temp">${Math.round(tempHigh)}°C / ${Math.round(tempLow)}°C</div>
+          <div class="forecast-day">${day}</div>
+          <div class="forecast-icon">
+          <img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt=${forecasts[0].weather[0].description}>
+          </div>
+          <div class="forecast-temp">${Math.round(tempHigh)} / ${Math.round(tempLow)}°C</div>
           `
     forecastContainer.appendChild(forecastRow)
   })

@@ -17,14 +17,14 @@
 .top-container {
   position: relative;
   background-color: lightblue;
-  height: 70vh;
+  height: 65vh;
   padding: 8%;
   clip-path: ellipse(120% 80% at 50% 0%);
   display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: space-around;
-  padding-bottom: 50%;
+  padding-bottom: 40%;
 }
 
 .content {
@@ -68,7 +68,7 @@
 .sunrise-sunset {
   display: flex;
   justify-content: space-between;
-  font-size: 1.2em;
+  font-size: 1.4em;
   position: relative;
 }
 
@@ -78,22 +78,36 @@
 }
 
 .forecast-container {
-  padding: 0 15%;
+  margin: -5% 10%;
+}
+
+.forecast-row {
   display: flex;
-  flex-direction: column;
-  justify-items: stretch;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.4em;
+  margin-bottom: 8%;
 }
 
 .forecast-day {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10%;
+  flex: 1;
+  text-align: left;
 }
 
 .forecast-icon {
-  width: 20%;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.forecast-icon img {
+
+  width: 40%;
+}
+
+.forecast-temp {
+  flex: 1;
+  text-align: right;
 }
 
 @media (min-width: 667px) {
