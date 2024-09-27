@@ -237,3 +237,52 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+/* ------------------------------------------------ */
+@media only screen and (max-width: 425px) {
+  .container {
+    width: 100vw; /* Take full viewport width */
+    height: 100vh; /* Take full viewport height */
+    max-width: 100%; /* Remove any max-width limitations */
+    margin: 0; /* Remove any margins */
+    border-radius: 0; /* Remove border radius */
+    box-shadow: none; /* Remove shadow */
+    overflow: auto; /* Allow scrolling if content overflows */
+    display: flex; /* Use flexbox for proper alignment */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+  }
+
+  #search-toggler {
+    margin-bottom: 50px; /* Add space below the search toggler */
+  }
+
+  .mainWrapper {
+    padding: 10px;
+    height: auto; /* Let the content determine the height */
+    flex: 1; /* Let it grow to fill available space */
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center; /* Center content */
+    margin: 0;
+  }
+
+  .search {
+    margin-top: 10px;
+
+    width: 90%; /* Take most of the available width */
+  }
+
+  .tempNumber {
+    font-size: 48px; /* Adjust font size * /
+    padding-top: 20px; /* Reduce top padding */
+  }
+
+  .cityText {
+    font-size: 24px; /* Adjust font size */
+  }
+
+  .sun-position {
+    font-size: 16px; /* Adjust font size */
+  }
+}
