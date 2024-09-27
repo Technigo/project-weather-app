@@ -51,7 +51,7 @@ body {
 .mainWrapper {
   padding: 10px;
   padding-bottom: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   text-align: center;
   position: relative;
   z-index: 2;
@@ -212,7 +212,7 @@ body {
 
 .weather-forecast tr:last-child td {
   border-bottom: none;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
 }
 
 /* Navbar with search and close icons */
