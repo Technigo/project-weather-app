@@ -11,6 +11,11 @@ const weather = document.getElementById('weather')
 const cityName = document.getElementById('cityName')
 const sunrise = document.getElementById('sunrise')
 const sunset = document.getElementById('sunset')
+const minMaxTemp0 = document.getElementById('minMaxTemp0')
+const minMaxTemp1 = document.getElementById('minMaxTemp1')
+const minMaxTemp2 = document.getElementById('minMaxTemp2')
+const minMaxTemp3 = document.getElementById('minMaxTemp3')
+const minMaxTemp4 = document.getElementById('minMaxTemp4')
 
 
 // function to create new URL for forecast based on the users input
@@ -23,7 +28,6 @@ const createURL = (cityName) => {
     return `${BASE_URL}weather?q=${cityName}&units=metric&APPID=${API_KEY}`
 }
 
-
 // function to convert Unix-time into hours:minutes
 const convertUnixToTime = (unixTime, timeZone) => {
     const time = unixTime * 1000
@@ -34,8 +38,6 @@ const convertUnixToTime = (unixTime, timeZone) => {
     const minutes = "0" + localTime.getUTCMinutes()
     return `${hours}:${minutes.substr(-2)}`
 }
-
-// function to convert the
 
 // update HTML
 const updateHTML = (data) => {
@@ -65,7 +67,7 @@ const fetchWeatherData = async (cityName) => {
             throw new Error('Failed to fetch weather data')
         }
         const data = await response.json()
-        console.log(data)
+        // console.log(data)
         updateHTML(data)
 
     } catch (error) {
@@ -73,12 +75,51 @@ const fetchWeatherData = async (cityName) => {
     }
 }
 
-// Update forecast HTML
+// update HTML for forecast weather
 const updateForecastHTML = (dataForecast) => {
+    console.log(dataForecast)
 
+    const forecasts = dataForecast.list
 
+    // filters the forecast for 3 PM each day
+    const filteredMinForecasts = forecasts.filter(minForecast => {
+        const dateTime = new Date(minForecast.dt_txt)
+        return dateTime.getHours() === 3
+    })
 
+    // filters the forecast for 12AM each day
+    const filteredMaxForecasts = forecasts.filter(maxForecast => {
+        const dateTime = new Date(maxForecast.dt_txt)
+        return dateTime.getHours() === 12
+    })
+
+    const minTemp0 = Math.round(filteredMinForecasts[0].main.temp)
+    const maxTemp0 = Math.round(filteredMaxForecasts[0].main.temp)
+
+    minMaxTemp0.innerText = `${minTemp0}° / ${maxTemp0}°C`
+
+    const minTemp1 = Math.round(filteredMinForecasts[1].main.temp)
+    const maxTemp1 = Math.round(filteredMaxForecasts[1].main.temp)
+
+    minMaxTemp1.innerText = `${minTemp1}° / ${maxTemp1}°C`
+
+    const minTemp2 = Math.round(filteredMinForecasts[2].main.temp)
+    const maxTemp2 = Math.round(filteredMaxForecasts[2].main.temp)
+
+    minMaxTemp2.innerText = `${minTemp2}° / ${maxTemp2}°C`
+
+    const minTemp3 = Math.round(filteredMinForecasts[3].main.temp)
+    const maxTemp3 = Math.round(filteredMaxForecasts[3].main.temp)
+
+    minMaxTemp3.innerText = `${minTemp3}° / ${maxTemp3}°C`
+
+    const minTemp4 = Math.round(filteredMinForecasts[4].main.temp)
+    const maxTemp4 = Math.round(filteredMaxForecasts[4].main.temp)
+
+    minMaxTemp4.innerText = `${minTemp4}° / ${maxTemp4}°C`
 }
+
+
 
 // to get the forecast weather data
 const fetchForecastData = async (cityName) => {
@@ -90,6 +131,7 @@ const fetchForecastData = async (cityName) => {
         }
         const dataForecast = await response.json()
         console.log(dataForecast)
+        updateForecastHTML(dataForecast)
 
     } catch (error) {
         console.log(error)
