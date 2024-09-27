@@ -8,7 +8,7 @@ Start out with signing up for a [free Open Weather Map](https://home.openweather
 For example, to get the current weather in Stockholm, you can use the URL below. Remember to replace YOUR_API_KEY with the API key you copied from your dashboard.
 
 ```
-https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=YOUR_API_KEY
+https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=617b18d1663716ef276314bb0808d62b
 ```
 
 The response should look something like this (this has been run through jsonlint.com to add newlines and indentation):
