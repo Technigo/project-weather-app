@@ -5,15 +5,46 @@
     box-sizing: border-box;
 }
 body {
-    background-color: #222;
+    background: #222;
 }
-.weather-card {
+.weather-card-clear,
+.weather-card-rain,
+.weather-card-cloudy {
+    display: none;
     width: 90%;
     max-width: 470px;
-    color: #fff;
-    background: linear-gradient(135deg, #00feba, #5b548a);
     margin: 100px auto 0;
     border-radius: 20px;
     padding: 40px 35px;
-    text-align: center;
+}
+.weather-card-clear {
+    color: rgba(42, 85, 16, 1);
+    background: rgba(247, 233, 185, 1);
+}
+.weather-card-rain {
+    background: rgba(189, 232, 250, 1);
+    color: rgba(22, 74, 104, 1);
+}
+.weather-card-cloudy  {
+    background: rgba(249, 253, 254, 1);
+    color: rgba(244, 119, 117, 1);
+}
+.weather-card-clear>div,
+.weather-card-rain>div,
+.weather-card-cloudy>div {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+}
+.icon-h1 {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+.days-temp>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: #222 1px dotted;
+    padding: 2px 0 2px;
 }

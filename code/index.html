@@ -6,60 +6,175 @@
     <link rel="stylesheet" href="style.css">
     <title>WEATHER APP</title>
 </head>
-<body>
+<body class="body-rain body-clear body-cloudy">
     
     <!-- Weather Card Clear -->
-    <div class="weather-card-clear" id="weather-card">
+    <div class="weather-card-clear" id="weather-card-clear">
         <!-- Width content -->
         <div>
 
             <!-- Upper info -->
             <div class="weather-card-upper-info">
-                <p class="upper-info-weather">Clear | 23°</p>
-                <p class="upper-info-sunrise">sunrise 08:00</p>
-                <p class="upper-info-sunset">sunset 23:00</p>
+                <p class="upper-info-weather"><span id="upper-info-weather-type">Clear</span> | <span id="upper-info-weather-temp">23°</span></p>
+                <p class="upper-info-sunrise">sunrise | <span id="upper-info-sunrise-time">23°</span></p>
+                <p class="upper-info-sunset">sunset | <span id="upper-info-sunset-time">23°</span></p>
             </div>
             <!-- Icon & H2 -->
-            <div class="">
-                <img src="../assets/design-2/noun_Sunglasses_2055147.svg" alt="">
-                <h1>Get your sunnies on. Stockholm is looking rather great today. </h1>
+            <div class="icon-h1">
+                <img src="../assets/design-2/noun_Sunglasses_2055147.svg" alt="" width="70">
+                <h1 id="title-weather">Get your sunnies on. Stockholm is looking rather great today. </h1>
             </div>
             <!-- Days & temperature -->
              <div class="days-temp">
                 <!-- monday -->
                  <div class="monday-temp">
                     <div class="day">Mon</div>
-                    <div class="temp">23</div>
+                    <div class="temp" id="temp-mon">23</div>
                  </div>
                  <!-- tuesday -->
                  <div class="tuesday-temp">
                     <div class="day">Tues</div>
-                    <div class="temp">23</div>
+                    <div class="temp" id="temp-tues">23</div>
                  </div>
                  <!-- wednsday -->
                  <div class="wednsday-temp">
                     <div class="day">Wed</div>
-                    <div class="temp">23</div>
+                    <div class="temp" id="temp-wed">23</div>
                  </div>
                  <!-- thursday -->
                  <div class="thursday-temp">
                     <div class="day">Thu</div>
-                    <div class="temp">23</div>
+                    <div class="temp" id="temp-thu">23</div>
                  </div>
                  <!-- friday -->
                  <div class="friday-temp">
                     <div class="day">Fri</div>
-                    <div class="temp">23</div>
+                    <div class="temp" id="temp-fri">23</div>
                  </div>
                  <!-- sat -->
                  <div class="saturday-temp">
                     <div class="day">Sat</div>
-                    <div class="temp">23</div>
+                    <div class="temp" id="temp-sat">23</div>
                  </div>
                  <!-- sun -->
                  <div class="sunday-temp">
                     <div class="day">Sun</div>
-                    <div class="temp">23</div>
+                    <div class="temp" id="temp-sun">23</div>
+                 </div>
+             </div>
+        </div>
+    </div>
+
+
+    <!-- Weather Card Rain-->
+    <div class="weather-card-rain" id="weather-card-rain">
+        <!-- Width content -->
+        <div>
+
+            <!-- Upper info -->
+            <div class="weather-card-upper-info">
+                <p class="upper-info-weather"><span id="upper-info-weather-type">Clear</span> | <span id="upper-info-weather-temp">23°</span></p>
+                <p class="upper-info-sunrise">sunrise | <span id="upper-info-sunrise-time">23°</span></p>
+                <p class="upper-info-sunset">sunset | <span id="upper-info-sunset-time">23°</span></p>
+            </div>
+            <!-- Icon & H2 -->
+            <div class="icon-h1">
+                <img src="../assets/design-2/noun_Umbrella_2030530.svg" alt="" width="70">
+                <h1 id="title-weather">Get your sunnies on. Stockholm is looking rather great today. </h1>
+            </div>
+            <!-- Days & temperature -->
+            <div class="days-temp">
+                <!-- monday -->
+                 <div class="monday-temp">
+                    <div class="day">Mon</div>
+                    <div class="temp" id="temp-mon">23</div>
+                 </div>
+                 <!-- tuesday -->
+                 <div class="tuesday-temp">
+                    <div class="day">Tues</div>
+                    <div class="temp" id="temp-tues">23</div>
+                 </div>
+                 <!-- wednsday -->
+                 <div class="wednsday-temp">
+                    <div class="day">Wed</div>
+                    <div class="temp" id="temp-wed">23</div>
+                 </div>
+                 <!-- thursday -->
+                 <div class="thursday-temp">
+                    <div class="day">Thu</div>
+                    <div class="temp" id="temp-thu">23</div>
+                 </div>
+                 <!-- friday -->
+                 <div class="friday-temp">
+                    <div class="day">Fri</div>
+                    <div class="temp" id="temp-fri">23</div>
+                 </div>
+                 <!-- sat -->
+                 <div class="saturday-temp">
+                    <div class="day">Sat</div>
+                    <div class="temp" id="temp-sat">23</div>
+                 </div>
+                 <!-- sun -->
+                 <div class="sunday-temp">
+                    <div class="day">Sun</div>
+                    <div class="temp" id="temp-sun">23</div>
+                 </div>
+             </div>
+        </div>
+    </div>
+
+    <!-- Weather Card Rain-->
+    <div class="weather-card-cloudy" id="weather-card-cloudy">
+        <!-- Width content -->
+        <div>
+
+            <!-- Upper info -->
+            <div class="weather-card-upper-info">
+                <p class="upper-info-weather"><span id="upper-info-weather-type">Clear</span> | <span id="upper-info-weather-temp">23°</span></p>
+                <p class="upper-info-sunrise">sunrise | <span id="upper-info-sunrise-time">23°</span></p>
+                <p class="upper-info-sunset">sunset | <span id="upper-info-sunset-time">23°</span></p>
+            </div>
+            <!-- Icon & H2 -->
+            <div class="icon-h1">
+                <img src="../assets/design-2/noun_Cloud_1188486.svg" alt="" width="70">
+                <h1 id="title-weather">Get your sunnies on. Stockholm is looking rather great today. </h1>
+            </div>
+            <!-- Days & temperature -->
+            <div class="days-temp">
+                <!-- monday -->
+                 <div class="monday-temp">
+                    <div class="day">Mon</div>
+                    <div class="temp" id="temp-mon">23</div>
+                 </div>
+                 <!-- tuesday -->
+                 <div class="tuesday-temp">
+                    <div class="day">Tues</div>
+                    <div class="temp" id="temp-tues">23</div>
+                 </div>
+                 <!-- wednsday -->
+                 <div class="wednsday-temp">
+                    <div class="day">Wed</div>
+                    <div class="temp" id="temp-wed">23</div>
+                 </div>
+                 <!-- thursday -->
+                 <div class="thursday-temp">
+                    <div class="day">Thu</div>
+                    <div class="temp" id="temp-thu">23</div>
+                 </div>
+                 <!-- friday -->
+                 <div class="friday-temp">
+                    <div class="day">Fri</div>
+                    <div class="temp" id="temp-fri">23</div>
+                 </div>
+                 <!-- sat -->
+                 <div class="saturday-temp">
+                    <div class="day">Sat</div>
+                    <div class="temp" id="temp-sat">23</div>
+                 </div>
+                 <!-- sun -->
+                 <div class="sunday-temp">
+                    <div class="day">Sun</div>
+                    <div class="temp" id="temp-sun">23</div>
                  </div>
              </div>
         </div>
