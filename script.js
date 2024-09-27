@@ -32,7 +32,7 @@ const updateHTML = (data) => {
 
   const currentCity = data.name
   const currentWeather = capitalizeFirstLetter(data.weather[0].description)
-  const currentTemp = data.main.temp.toFixed(1)
+  const currentTemp = Math.round(data.main.temp)
   const timezoneOffset = data.timezone
   const sunriseTimestamp = formatTime(data.sys.sunrise, timezoneOffset)
   const sunsetTimestamp = formatTime(data.sys.sunset, timezoneOffset)
@@ -40,7 +40,7 @@ const updateHTML = (data) => {
 
   cityName.innerText = currentCity
   weather.innerText = currentWeather
-  temperature.innerText = `${currentTemp}°C`
+  temperature.innerHTML = `${currentTemp}`
   sunriseElement.innerText = sunriseTimestamp
   sunsetElement.innerText = sunsetTimestamp
   weatherIcon.src = `http://openweathermap.org/img/wn/${currentIcon}@2x.png`
@@ -85,7 +85,7 @@ const updateForecastHTML = (data) => {
     forecastRow.innerHTML = `
           <div>${day}</div>
           <img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt=${forecasts[0].weather[0].description} class="forecast-icon">
-          <div class="forecast-temp">${tempHigh.toFixed(1)}°C / ${tempLow.toFixed(1)}°C</div>
+          <div class="forecast-temp">${Math.round(tempHigh)}°C / ${Math.round(tempLow)}°C</div>
           `
     forecastContainer.appendChild(forecastRow)
   })

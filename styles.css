@@ -1,13 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.layout {
+  width: 100%;
+  max-width: 500px;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  background-color: blue;
+}
+
+.top-container {
+  position: relative;
+  background-color: lightblue;
+  height: 70vh;
+  padding: 8%;
+  clip-path: ellipse(120% 80% at 50% 0%);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-around;
+  padding-bottom: 50%;
+}
+
+.content {
+  flex: 1;
+}
+
+.temperature {
+  margin-top: 20%;
+  display: inline-flex;
+  align-items: flex-start;
+}
+
+.temp-number {
+  font-size: 7em;
+  font-weight: 300;
+  transform-origin: bottom;
+  transform: scaleY(1.1);
+  line-height: 1;
+}
+
+.temp-unit {
+  font-size: 4vh;
+  line-height: 1;
+  margin-left: 5px;
+}
+
+.city {
+  font-size: 2em;
+}
+
+.weather {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.description {
+  font-size: 1.5em;
+}
+
 .sunrise-sunset {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  background-color: aqua;
+  font-size: 1.2em;
+  position: relative;
+}
+
+#main-icon {
+  width: 15%;
+  height: auto;
+}
+
+.forecast-container {
+  padding: 0 15%;
+  display: flex;
+  flex-direction: column;
+  justify-items: stretch;
 }
 
 .forecast-day {
   display: flex;
   flex-direction: row;
-  background-color: aquamarine;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10%;
+}
+
+.forecast-icon {
+  width: 20%;
+}
+
+@media (min-width: 667px) {
+  .layout {
+    max-width: 444px;
+    box-shadow: 10px 15px 20px rgba(0, 0, 0, 0.3);
+    justify-self: center;
+    margin-top: 50px;
+  }
+
+  .temperature {
+    margin-top: 100px;
+    display: inline-flex;
+    align-items: flex-start;
+    height: 130px;
+  }
+
+  .temp-number {
+    font-size: 120px;
+    font-weight: 300;
+    transform-origin: bottom;
+    transform: scaleY(1.1);
+    line-height: 1;
+  }
+
+  .temp-unit {
+    font-size: 40px;
+    line-height: 1;
+    margin-left: 5px;
+  }
+
+  .city {
+    font-size: 34px;
+    font-weight: 300;
+  }
+
+  .description {
+    font-size: 22px;
+    font-weight: 300;
+  }
+
+  .sunrise-sunset {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    font-size: 22px;
+    position: relative;
+  }
+
 }
