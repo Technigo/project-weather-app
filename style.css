@@ -1,6 +1,5 @@
 body {
   font-family: Montserrat;
-  background: #F7E9B9;
 }
 
 .weather-container {
@@ -12,6 +11,7 @@ align-items: center;
 height: 100vh; /* Ensure it takes up the full height of the viewport */
 }
 
+
 /* Container for condition and temperature */
 .temperature-info {
   display: flex;  
@@ -20,7 +20,6 @@ height: 100vh; /* Ensure it takes up the full height of the viewport */
   font-size: 24px; 
   font-weight: 400;
   margin-left: 45px; 
-  color: #2A5510;
   line-height: 25.6px; 
 }
 
@@ -36,7 +35,6 @@ height: 100vh; /* Ensure it takes up the full height of the viewport */
   font-size: 24px;
   font-weight: 400;
   margin-bottom: 20px; /* Space before other weather details */
-  color: #2A5510;
   line-height: 25.6px;
 }
 
@@ -48,7 +46,14 @@ height: 100vh; /* Ensure it takes up the full height of the viewport */
 margin-top: 30px; 
 }
 
-
+.weather-message {
+  font-family: Montserrat;
+  font-size: 37px;
+  font-weight: 700;
+  line-height: 45.1px;
+  text-align: left;
+} 
+  
 
 
 

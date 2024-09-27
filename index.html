@@ -5,13 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather or Not</title>
     <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <title>Weather or Not</title>
 </head>
 <body>
 <main><!-- Temperature and Condition Info -->
-    <section class="weather-container">
+    <section class="weather-container" id="weatherContainer">
     <div class="temperature-info">
-      <p id="condition"</p><p>|</p><p id="temperature"</p>
+      <p id="condition"></p>
+      <p>|</p>
+      <p id="temperature"></p>
     </div>
     <!-- Sunset and Sunrise Info -->
     <div class="sun-times">
@@ -19,13 +24,18 @@
       <p>sunset <span id="sunsetTime"></span></p>
     </div>
     <img id="weatherImage" class="weather-img" src="" alt="Weather Image">
-    <p id="weatherMessage"></p> <!-- Placeholder for dynamic weather message -->
-    <div class="forecast-container"><!-- Individual day forecasts will be populated here -->
-  </div>
-  <ul id="forecast-container"></ul>
+    <p id="weatherMessage" class="weather-message"></p> <!-- Placeholder for dynamic weather message -->
+    </section>
+    <section class="forecast-wrapper" id="forecastWrapper">
+      <table>
+          <tr>
+            <td id="forecastDay"></td>
+            <td id="forecastTemp"></td>
+          </tr>
+      </table>
 </section>
-  </main>
-  <script src="./script.js"></script>
+</main>
+<script src="./script.js"></script>
 <body>
 </html>
 
