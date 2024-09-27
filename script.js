@@ -106,8 +106,8 @@ const getWeatherForecast = () => {
         const middayForecast = dayForecast.find(item => item.dt_txt.includes('12:00:00'));
         const weatherIcon = middayForecast ? middayForecast.weather[0].icon : dayForecast[0].weather[0].icon;
 
-        // Get the weekday (three letters in uppercase)
-        const dayOfWeek = new Date(date).toLocaleDateString('en-GB', { weekday: 'short' }).toUpperCase();
+        // Get the weekday (three letters)
+        const dayOfWeek = new Date(date).toLocaleDateString('en-GB', { weekday: 'short' });
 
         // Build HTML for every days forecast
         forecastContainer.innerHTML += `
