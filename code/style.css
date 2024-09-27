@@ -1,29 +1,79 @@
 body {
-  background: rgb(247, 200, 29);
-  color: indigo;
+  font-family: "Slackside One", cursive;
+  line-height: 1.15;
+  /* 1.5 times the font size */
   margin: 0;
+  color: rgb(26, 84, 87);
+}
+
+.hero-image {
+  background-image: url(https://images.unsplash.com/photo-1548350896-fafc317d3ceb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .the-weather {
-  background: peachpuff;
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
 }
 
 .city-weather {
-  background: paleturquoise;
-  width: 80%;
+  background: rgba(243, 185, 140, 0.251);
+  width: 60%;
   margin: 0 auto;
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .sun-rise-set {
-  background: cornsilk;
-  width: 80%;
+  background: rgba(239, 129, 201, 0.329);
+  width: 60%;
   margin: 0 auto;
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .future-weather {
-  background: coral;
-  width: 80%;
+  background: rgba(234, 149, 119, 0.32);
   margin: 0 auto;
+  width: 60%;
+  padding: 20px 40px;
+}
+
+h1 {
+  font-size: 30px;
+  margin: 0 auto;
+}
+
+p {
+  font-size: 24px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+ul {
+  font-size: 32px;
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.s-icon {
+  max-width: 30%;
+  max-height: 30%;
+}
+
+.l-icon {
+  width: 40%;
+  height: 40%;
+  margin: 0 auto;
+  padding-top: 8px;
 }
