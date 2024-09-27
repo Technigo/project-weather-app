@@ -12,10 +12,9 @@
 }
 
 body {
-  font-family: "Rubik", monospace;
+  font-family: "Rubik", sans-serif;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
   min-height: 100vh;
   background-size: cover;
@@ -25,16 +24,19 @@ body {
 
 main {
   max-width: 414px;
-  height: 896px;
   width: 100%;
-  overflow: hidden;
+  height: 896px;
   margin-top: 3rem;
+  overflow: hidden;
   box-shadow:  
   3px 5px 7px 6px rgba(0, 0, 0, 0.071),
   9.4px 11.4px 17.9px rgba(0, 0, 0, 0.093),
   27px 33px 80px rgba(0, 0, 0, 0.15);
 }
 
+/* 
+  Weather Container 
+*/
 .weather-container {
   position: relative;
   display: flex;
@@ -50,14 +52,15 @@ main {
 }
 
 /* 
-search bar style
+  search bar style
 */
+#searchIcon, #searchButton, #favButton {
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
 #searchIcon {
   height: 3rem;
-  cursor: pointer;
-  z-index: 1;
-  /* margin-top: 5px; */
-  transition: 0.3s ease;
   position: absolute;
   top: 1rem;
   left: 1.5rem;
@@ -76,42 +79,21 @@ search bar style
 
 #closeButton {
   font-size: 2rem;
-  color: white;
-  cursor: pointer;
+  color: var(--white);
   margin-right: 30px;
-  transition: 0.3s ease;
 }
 
 .search-bar {
   flex-grow: 1;
   height: 2rem;
   padding-left: 16px;
-  border: solid 1px var(--white);
+  border: 1px solid var(--white);
   color: var(--dark-grey);
 }
 
 #searchButton {
   height: 2rem;
   margin-left: 0.5rem;
-  cursor: pointer;
-  border: none;
-  transition: 0.3s ease;
-}
-
-/* 
-current weather style
-*/
-#weatherData {
-  padding-left: 30px;
-  margin-top: 80px;
-  color: var(--white);
-}
-
-#mainIcon {
-  position: absolute;
-  height: 9rem;
-  top: 100px;
-  right: 30px;
 }
 
 #favButton {
@@ -128,7 +110,7 @@ current weather style
   position: absolute;
   height: 6rem;
   width: 6rem;
-  top: 430px;
+  top: 420px;
   right: 30px;
   transition: 0.3s ease;
 }
@@ -140,21 +122,27 @@ current weather style
 
 #favButton:hover {
   box-shadow:  
-  9.1px 7.4px 10px rgba(0, 0, 0, 0.102),
+  9.1px 7.4px 10px rgba(0, 0, 0, 0.3),
   37px 30px 80px rgba(0, 0, 0, 0.15);
 }
 
 /* Keyframes for breathing effect */
 @keyframes breathe {
-  0% {
+  0%, 100% {
     background-color: #226694; /* initial color */
   }
   50% {
     background-color: #207744; /* faded/alternate color */
   }
-  100% {
-    background-color: #226694; /* back to initial color */
-  }
+}
+
+/* 
+current weather style
+*/
+#weatherData {
+  padding-left: 30px;
+  margin-top: 60px;
+  color: var(--white);
 }
 
 h1 {
@@ -179,14 +167,19 @@ h3 {
   font-weight: 300;
   /* margin-bottom:30px; */
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
+}
+
+.current-weather-icon {
+  height: 6rem;
+  flex-shrink: 0;
 }
 
 h4, h5 {
   font-size: 1.175rem;
   font-weight: 300;
-  margin-bottom:5px;
+  margin:15px 0;
 }
 
 /* 
@@ -194,11 +187,6 @@ forecast weather style
 */
 .weather-forecast {
   padding: 10px;
-}
-
-.current-weather-icon {
-  height: 6rem;
-  flex-shrink: 0;
 }
 
 .forecast-day {
@@ -210,7 +198,6 @@ forecast weather style
   font-weight: 300;
   color: var(--dark-grey);
   transition: 0.3s ease;
-  height: 3.5rem;
 }
 
 .forecast-day p {
@@ -220,8 +207,6 @@ forecast weather style
 .forecast-day:hover {
   border-radius: 4.75rem;
   background: rgba(0, 0, 0, 0.1);
-  width: 100%;
-  height: 3.5rem;
   cursor: pointer;
 }
 
