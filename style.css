@@ -132,9 +132,10 @@ main {
 }
 
 .weather-forecast-container {
-    width: 394px;
-    height: 290.01px;
-    margin-top: 103.4px;
+    min-width: 350px;
+    max-width: 800px;
+    min-height: 250px;
+    margin-top: 80px;
     border: 1px solid #707070;
     display: flex;
     flex-direction: column;
@@ -143,11 +144,13 @@ main {
 
 .weather-day {
     width: 100%;
-    height: 56px;
+    height: 50px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    border-radius: 30px;
+    border: solid black;
 }
 
 .weekday,
