@@ -6,24 +6,22 @@
     <title>The Weatherington</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
-  <body>
-    <main id="app" class="app">
-      <section id="weather-today" class="weather-today">
-        <div id="weather-today__greeting" class="weather-today__greeting">
-          <img
-            alt="Sungglasses"
-            src="./assets/design-2/noun_Sunglasses_2055147.svg"
-          />
-          <h1>Get your sunnies on. Stockholm is looking rather great today.</h1>
+  <body id="app">
+    <main id="main">
+      <form id="city-search" class="city-search">
+        <div class="form-container">
+          <label>
+            <span>City</span>
+            <input type="text" id="city-input" placeholder="Enter city name" />
+          </label>
+          <button type="submit" id="search-button">Search</button>
         </div>
+      </form>
+      <section id="weather-today" class="weather-today">
+        <h1>Loading...</h1>
       </section>
       <section id="weather-forecast" class="weather-forecast">
-        <ul id="weather-forecast__list" class="weather-forecast__list">
-          <li class="weather-forecast__item">
-            <h2 class="weekday">mon</h2>
-            <p class="temperature">23°</p>
-          </li>
-        </ul>
+        <ul id="weather-forecast__list" class="weather-forecast__list"></ul>
       </section>
     </main>
     <script src="./script.js"></script>
