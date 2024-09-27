@@ -52,31 +52,23 @@
       <!-- Main section: city, temp, sun etc -->
       <main class="mainWrapper">
         <div class="tempText">
-          <h1 class="tempNumber" id="tempToday">21°C</h1>
+          <h1 class="tempNumber" id="tempToday"></h1>
           <!-- Removed unnecessary empty <p> tag -->
         </div>
-        <h2 class="cityText" id="cityName">Kilkis</h2>
-        <h3 class="local-time" id="localTime">08:59 PM</h3>
+        <h2 class="cityText" id="cityName"></h2>
+        <h3 class="local-time" id="localTime"></h3>
         <div class="description-icon">
-          <h3 class="describeText" id="weatherDescription">Broken Clouds</h3>
+          <h3 class="describeText" id="weatherDescription"></h3>
           <div id="mainIcon"></div>
         </div>
         <section id="sunriseSunset" class="sun-position">
-          <div id="sunriseText">Sunrise: 09:18 AM</div>
-          <div id="sunsetText">Sunset: 09:22 PM</div>
+          <div id="sunriseText"></div>
+          <div id="sunsetText"></div>
         </section>
       </main>
 
       <!-- Forecast section -->
-      <table id="weatherForecast" class="weather-forecast">
-        <tr>
-          <td id="forecastWeekdays" class="forecast-category">Tue</td>
-          <td id="forecastIcon" class="forecast-category icon"></td>
-          <td id="forecastTemp" class="forecast-category">18°C</td>
-          <td id="forecastWind" class="forecast-category">4.3 m/s</td>
-        </tr>
-        <!-- Repeat for other days as needed -->
-      </table>
+      <table id="weatherForecast" class="weather-forecast"></table>
     </div>
 
     <!-- Footer (commented out) -->
@@ -86,7 +78,5 @@
     </footer>
 
     <script src="script.js"></script>
-    <!-- Optional: Remove if not needed -->
-    <!-- <script src="script-refactored.js"></script> -->
   </body>
 </html>

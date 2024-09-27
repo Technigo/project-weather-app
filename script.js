@@ -3,13 +3,13 @@ const tempToday = document.getElementById("tempToday");
 const cityName = document.getElementById("cityName");
 const localTime = document.getElementById("localTime");
 const weatherDescription = document.getElementById("weatherDescription");
-const mainIcon = document.getElementById("mainIcon"); // Uncomment if needed
+//const mainIcon = document.getElementById("mainIcon"); // Uncomment if needed
 const sunriseText = document.getElementById("sunriseText");
 const sunsetText = document.getElementById("sunsetText");
 const inputField = document.getElementById("inputField");
 const searchBtn = document.getElementById("searchBtn");
 const searchMenuBtn = document.getElementById("searchMenuBtn");
-const closeSearchMenu = document.getElementById("closeSearchMenu"); // Uncomment if needed
+//const closeSearchMenu = document.getElementById("closeSearchMenu"); // Uncomment if needed
 
 const forecastContainer = document.getElementById("weatherForecast");
 
