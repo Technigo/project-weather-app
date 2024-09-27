@@ -133,8 +133,9 @@ const startSearch = () => {
 
 // Fetch weather for next favorite city
 const fetchFavCityWeather = () => {
-  fetchWeather(favCities[currentFavIndex])
+  // Increment the index first, so the first click moves to the next city
   currentFavIndex = (currentFavIndex + 1) % favCities.length
+  fetchWeather(favCities[currentFavIndex])
 }
 
 // Debounce function
