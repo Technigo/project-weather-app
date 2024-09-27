@@ -5,12 +5,9 @@
     box-sizing: border-box;
 }
 body {
-    background: #222;
+    background: #fff;
 }
-.weather-card-clear,
-.weather-card-rain,
-.weather-card-cloudy {
-    display: none;
+.weather-card {
     width: 90%;
     max-width: 470px;
     margin: 100px auto 0;
@@ -29,9 +26,7 @@ body {
     background: rgba(249, 253, 254, 1);
     color: rgba(244, 119, 117, 1);
 }
-.weather-card-clear>div,
-.weather-card-rain>div,
-.weather-card-cloudy>div {
+.weather-card>div {
     display: flex;
     flex-direction: column;
     row-gap: 30px;
