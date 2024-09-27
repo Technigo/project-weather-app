@@ -4,19 +4,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
   <title>Joyce's Weather App</title>
 </head>
 
 <body>
   <header>
     <div class="top-container">
-      <img src="./assets/design-1/Group37.png" alt="A sun icon">
+      <img id="main-icon" alt="Weather icon">
       <p class="temp" id="current-temperature">20C</p>
       <p class="city" id="city-name">A city</p>
       <p class="description" id="current-weather">Clear</p>
-      <p class="sunrise-sunset" id="sunrise-sunset-times">Sunrise 06:30 Sunset 18:30</p>
+
+      <div class="sunrise-sunset" id="sunrise-sunset-times">
+        <span class="label">sunrise</span>
+        <span class="time" id="sunrise-time"></span>
+        <span class="label">sunset</span>
+        <span class="time" id="sunset-time"></span>
+      </div>
     </div>
   </header>
+  <div class="forecast-container" id="forecast">
+
+
+  </div>
 
 </body>
 

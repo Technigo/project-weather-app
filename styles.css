@@ -1,0 +1,13 @@
+.sunrise-sunset {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: aqua;
+}
+
+.forecast-day {
+  display: flex;
+  flex-direction: row;
+  background-color: aquamarine;
+}
