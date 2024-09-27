@@ -1,0 +1,157 @@
+body {
+  background-color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  margin: 0;
+}
+
+h1 {
+  font-size: 120px;
+  margin: 0;
+}
+
+h2 {
+  font-size: 40px;
+  font-weight: 400;
+  margin-top: 15px;
+}
+
+h3 {
+  font-size: 34px;
+  margin: 0;
+}
+
+h4 {
+  font-size: 22px;
+  margin: 0;
+}
+
+p {
+  color: #707070;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.weather-container {
+  color: white;
+  margin: 0 30px;
+  position: relative;
+}
+
+/* Day background styling (lightblue) */
+.daytime {
+  background: linear-gradient(to bottom right, #8589FF, #E8E9FF);
+  clip-path: ellipse(130% 100% at 50% 0%);
+}
+
+/* Night background styling (darkblue) */
+.nighttime {
+  background: linear-gradient(to bottom right, #6264A2, #222350);
+  clip-path: ellipse(130% 100% at 50% 0%);
+}
+
+/* Position of big weather icon */
+.view-current-weather-icon {
+  position: absolute;
+  right: 70px;
+}
+
+/* Icon size */
+.view-current-weather-icon img {
+  width: 200%;
+}
+
+.view-current-temp {
+  padding-top: 131px;
+  display: flex;
+  flex-direction: row;
+}
+
+/* View weather text with capitals */
+.view-current-weather-text {
+  text-transform: capitalize;
+}
+
+.view-sunrise-sunset {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10% 0 15% 0;
+}
+
+.forecast-container {
+  margin: 0 30px;
+  margin-top: 20%;
+  margin-bottom: 10%;
+}
+
+.forecast {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* Styling for icon and temperature to be to the right */
+.forecast-icon-temp {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 50%;
+}
+
+/* Make icon not streach */
+.forecast-icon-temp img {
+  object-fit: contain;
+}
+
+/* For tablets */
+@media (min-width: 668px) and (max-width: 1024px) {
+
+  .weather-container {
+    margin: 0 100px;
+  }
+
+  .view-current-weather-icon {
+    right: 100px;
+  }
+
+  .view-current-weather-icon img {
+    width: 300%;
+
+  }
+
+  .forecast-container {
+    margin: 100px 100px;
+  }
+
+  .forecast {
+    margin: 3% 0;
+  }
+}
+
+/* For screens */
+@media (min-width: 1025px) {
+
+  body {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .weather-container {
+    margin: 0 100px;
+  }
+
+  .daytime,
+  .nighttime {
+    width: 50%;
+    clip-path: none;
+    height: 100vh;
+  }
+
+  .forecast-container {
+    width: 50%;
+    margin: 131px 100px;
+  }
+
+}
