@@ -3,27 +3,27 @@ body {
   line-height: 1.15;
   /* 1.5 times the font size */
   margin: 0;
-  color: rgb(26, 84, 87);
+  color: rgb(5, 72, 75);
+  background: linear-gradient(to right, #8582b8, #de9f8d);
 }
 
 .hero-image {
-  background-image: url(https://images.unsplash.com/photo-1548350896-fafc317d3ceb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  background-image: url(https://images.unsplash.com/photo-1637150899351-0ce1779710c7?q=80&w=1842&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
   background-size: cover;
   background-position: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 10px;
+  border-radius: 30px;
 }
 
 .the-weather {
   width: 100%;
-  margin: 0 auto;
 }
 
 .city-weather {
-  background: rgba(243, 185, 140, 0.251);
-  width: 60%;
-  margin: 0 auto;
+  width: 80%;
   padding: 20px 40px;
   display: flex;
   flex-direction: column;
@@ -31,17 +31,18 @@ body {
 }
 
 .sun-rise-set {
-  background: rgba(239, 129, 201, 0.329);
-  width: 60%;
-  margin: 0 auto;
-  padding: 20px 40px;
+  background: rgba(245, 178, 84, 0.329);
+  border-radius: 30px 0 30px 0;
+  max-width: 100%;
+  margin-top: 20px;
+  padding: 10px 38px;
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  flex-direction: column;
+  line-height: 1.5;
+  align-items: center;
 }
 
 .future-weather {
-  background: rgba(234, 149, 119, 0.32);
   margin: 0 auto;
   width: 60%;
   padding: 20px 40px;
@@ -50,30 +51,87 @@ body {
 h1 {
   font-size: 30px;
   margin: 0 auto;
+  padding-bottom: 8px;
 }
 
 p {
-  font-size: 24px;
+  font-size: 20px;
   margin: 0 auto;
   text-align: center;
 }
 
 ul {
-  font-size: 32px;
+  font-size: 28px;
   padding: 0px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  align-items: center;
 }
 
 .s-icon {
-  max-width: 30%;
-  max-height: 30%;
+  max-width: 25%;
+  max-height: 25%;
 }
 
 .l-icon {
-  width: 40%;
-  height: 40%;
+  max-width: 40%;
+  max-height: 40%;
   margin: 0 auto;
-  padding-top: 8px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  background: #8582b84d;
+  border-radius: 40px;
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+  h1 {
+    font-size: 42px;
+    width: 70%;
+  }
+
+  p {
+    font-size: 30px;
+  }
+
+  ul {
+    font-size: 36px;
+  }
+
+  .s-icon {
+    max-width: 35%;
+    max-height: 35%;
+  }
+
+  .sun-rise-set {
+    width: 55%;
+    margin-top: 20px;
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 1200px) {
+  h1 {
+    font-size: 50px;
+    width: 70%;
+  }
+
+  p {
+    font-size: 38px;
+  }
+
+  ul {
+    font-size: 44px;
+  }
+
+  .sun-rise-set {
+    width: 45%;
+    margin-top: 20px;
+    flex-direction: row;
+  }
+
+  .s-icon {
+    max-width: 35%;
+    max-height: 35%;
+  }
 }
