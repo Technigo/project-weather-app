@@ -226,3 +226,64 @@ if (closeSearchMenu) {
 // Default weather data and forecast for a sample city
 fetchWeatherData("Stockholm"); // Replace with a default city of your choice
 fetchWeatherForecast("Stockholm"); // Replace with a default city of your choice
+
+// Function to get the user's location and fetch weather data
+const getWeatherForCurrentLocation = () => {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+  } else {
+    alert("Geolocation is not supported by this browser.");
+  }
+};
+
+// Success callback function for geolocation
+const successCallback = async (position) => {
+  const { latitude, longitude } = position.coords;
+
+  try {
+    // Use OpenWeatherMap's reverse geocoding API to get city name
+    const reverseGeocodeUrl = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=0c5116ff347d8ce8d78e8d3c18029dd7`; // Replace with your API key
+    const response = await fetch(reverseGeocodeUrl);
+
+    if (!response.ok) {
+      throw new Error("Unable to fetch location data.");
+    }
+
+    const data = await response.json();
+    if (data.length > 0) {
+      const city = data[0].name;
+      // Fetch and display weather data for the current city
+      fetchWeatherData(city);
+      fetchWeatherForecast(city);
+    } else {
+      alert("City not found for your location.");
+    }
+  } catch (error) {
+    alert(`Error: ${error.message}`);
+  }
+};
+
+// Error callback function for geolocation
+const errorCallback = (error) => {
+  switch (error.code) {
+    case error.PERMISSION_DENIED:
+      alert("User denied the request for Geolocation.");
+      break;
+    case error.POSITION_UNAVAILABLE:
+      alert("Location information is unavailable.");
+      break;
+    case error.TIMEOUT:
+      alert("The request to get user location timed out.");
+      break;
+    case error.UNKNOWN_ERROR:
+      alert("An unknown error occurred.");
+      break;
+  }
+};
+
+// Call the function to get weather for current location on page load
+getWeatherForCurrentLocation();
+
+// Default weather data and forecast for a sample city if location is not available
+// fetchWeatherData("Stockholm"); // Replace with a default city of your choice
+// fetchWeatherForecast("Stockholm"); // Replace with a default city of your choice
