@@ -37,7 +37,7 @@ header {
 
 /* Search town window */
 .search-location-window {
-    display: none;
+    /* display: none; */
     z-index: 1;
     width: 100%;
     height: 100%;

@@ -1,18 +1,37 @@
 const BASE_URL = "https://api.openweathermap.org/data/2.5/weather?"
 const API_KEY = "72e635da2875c352d9f726550253e2db"
+// const city = "q=city name"
+// const URL = `${BASE_URL}${city}&units=metric&APPID=${API_KEY}`
 
 const menu = document.getElementById('hamburgerMenu')
 const searchWindow = document.getElementById('searchLocationWindow')
 const closeWindow = document.getElementById('closeWindow')
 const searchButton = document.getElementById('searchLocationButton')
 const cityInput = document.getElementById('searchCity')
-const city = document.getElementById('city')
 const temperature = document.getElementById('temp')
 const weather = document.getElementById('weather')
+const cityName = document.getElementById('cityName')
 
+// function to create new URL based on the users input
+const createURL = (cityName) => {
+    return `${BASE_URL}q=${cityName}&units=metric&APPID=${API_KEY}`
+}
+
+// update HTML
+const updateHTML = (data) => {
+    console.log(data)
+
+    // method to round the temperatures
+    const roundedTemp = Math.round(data.main.temp)
+
+    temperature.innerText = `${roundedTemp}°C`
+    weather.innerText = data.weather[0].description
+    cityName.innerText = data.name
+}
 
 // to get the weather data for the current weather
-const fetchWeatherData = async (URL) => {
+const fetchWeatherData = async (cityName) => {
+    const URL = createURL(cityName)
     try {
         const response = await fetch(URL)
         if (!response.ok) {
@@ -20,71 +39,19 @@ const fetchWeatherData = async (URL) => {
         }
         const data = await response.json()
         console.log(data)
-
-        return data
+        updateHTML(data)
 
     } catch (error) {
-        console.log("error", error)
+        console.log(error)
     }
 }
-
-// FFunctions to round the temperature
-const roundTemperature = (temp, method = 'round') => {
-    if (method === 'round') {
-        return Math.round(temp)
-    } else if (method === 'floor') {
-        return Math.floor(temp)
-    } else if (method === 'ceil') {
-        return Math.ceil(temp)
-    }
-    return temp
-}
-
-// Load weather data of Stockholm when opening the page
-window.addEventListener('load', async () => {
-    const defaultCity = 'kairo'
-    const URL = `${BASE_URL}q=${defaultCity}&units=metric&APPID=${API_KEY}`
-
-    const data = await fetchWeatherData(URL)
-    if (data) {
-        // shows the name of the city from the data
-        city.textContent = data.name
-        // gets the temperature
-        const temp = data.main.temp
-        // rounds temperature
-        const roundedTemp = roundTemperature(temp, "round")
-        // shows the rounded temperature
-        temperature.textContent = `${roundedTemp}°`
-        weather.textContent = data.weather[0].main
-    }
-})
-
-
-
-// Event-Listener to be able to search for other cities
-searchButton.addEventListener("click", async () => {
-    // gets the name of the city from the input field
-    const newCityName = cityInput.value
-    // the new URL is set together
-    const URL = `${BASE_URL}q=${newCityName}&units=metric&APPID=${API_KEY}`;
-
-    // get's the new data
-    const data = await fetchWeatherData(URL);
-
-    // updates the city name in the HTML
-    if (data) {
-        city.textContent = data.name
-    }
-})
-
-
 
 // Event Listener to open the search window
 menu.addEventListener("click", () => {
     searchWindow.style.display = "block"
 })
 
-// To close the search window users can either click on the X or somewhere else on the window
+// To close the search window users can either click on the X or somewhere else on the window 
 
 closeWindow.addEventListener("click", () => {
     console.log("hi")
@@ -97,4 +64,16 @@ searchWindow.addEventListener("click", (event) => {
     }
 })
 
+// Event-Listener to be able to search a cities
 
+searchButton.addEventListener("click", () => {
+    // gets the name of the city from the input field
+    const city = cityInput.value
+    console.log(city)
+    if (city) {
+        fetchWeatherData(city)
+        searchWindow.style.display = "none"
+    } else (
+        console.log("please enter a city name")
+    )
+})
