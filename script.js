@@ -11,12 +11,7 @@ const weather = document.getElementById('weather')
 const cityName = document.getElementById('cityName')
 const sunrise = document.getElementById('sunrise')
 const sunset = document.getElementById('sunset')
-// const minMaxTemp0 = document.getElementById('minMaxTemp0')
-// const minMaxTemp1 = document.getElementById('minMaxTemp1')
-// const minMaxTemp2 = document.getElementById('minMaxTemp2')
-// const minMaxTemp3 = document.getElementById('minMaxTemp3')
-// const minMaxTemp4 = document.getElementById('minMaxTemp4')
-// const weekday0 = document.getElementById('weekday0')
+const iconCurrent = document.getElementById('currentWeatherImage')
 
 
 // function to create new URL for forecast based on the users input
@@ -44,18 +39,26 @@ const convertUnixToTime = (unixTime, timeZone) => {
 const updateHTML = (data) => {
     console.log(data)
 
+    cityName.innerText = data.name
+    weather.innerText = data.weather[0].description
+
     // method to round the temperatures
     const roundedTemp = Math.round(data.main.temp)
+    temperature.innerText = `${roundedTemp}°C`
 
     // the local time for the specific city
     const sunriseTime = convertUnixToTime(data.sys.sunrise, data.timezone)
     const sunsetTime = convertUnixToTime(data.sys.sunset, data.timezone)
 
-    temperature.innerText = `${roundedTemp}°C`
-    weather.innerText = data.weather[0].description
-    cityName.innerText = data.name
     sunrise.innerText = sunriseTime
     sunset.innerText = sunsetTime
+
+    // Icon
+    const iconCode = data.weather[0].icon
+    const iconUrl = `http://openweathermap.org/img/wn/${iconCode}@2x.png`
+
+    iconCurrent.innerHTML = `<img class="icon-big" src="${iconUrl}" alt="Weather Icon">`
+
 }
 
 // to get the weather data for the current weather
@@ -86,7 +89,7 @@ const updateForecastHTML = (dataForecast) => {
 
     const forecasts = dataForecast.list
 
-    // filters the forecast for 3 PM each day
+    // filters the forecast for 12 AM (midnight) each day
     const filteredMinForecasts = forecasts.filter(minForecast => {
         const dateTime = new Date(minForecast.dt_txt)
         return dateTime.getHours() === 0
@@ -100,10 +103,14 @@ const updateForecastHTML = (dataForecast) => {
 
     let forecastHTML = ''
 
-    // Loop to get the weekdays 
-    for (let i = 0; i < 5; i++) {
+    // Loops
+    for (let i = 0; i < 4; i++) {
         const minTemp = Math.round(filteredMinForecasts[i].main.temp)
         const maxTemp = Math.round(filteredMaxForecasts[i].main.temp)
+
+        // Get the icon for the forecast
+        const iconCode = filteredMinForecasts[i].weather[0].icon
+        const iconUrl = `http://openweathermap.org/img/wn/${iconCode}@2x.png`;
 
         // get weekdays
         const dateTime = new Date(filteredMinForecasts[i].dt_txt)
@@ -112,7 +119,9 @@ const updateForecastHTML = (dataForecast) => {
         forecastHTML += `
         <div class="weather-day">
                 <p class="weekday">${dayOfWeek}</p>
-                <div class="forecast-image">S</div>
+                <div class="forecast-image">
+                <img class="forecast-icon "src="${iconUrl}" alt="Weather Icon">
+                </div>
                 <p class="forecast-temperature">${minTemp}° / ${maxTemp}°C</p>
             </div>
         `
@@ -120,34 +129,6 @@ const updateForecastHTML = (dataForecast) => {
 
     forecastContainer.innerHTML = forecastHTML
 }
-//     
-
-//     minMaxTemp0.innerText = `${minTemp0}° / ${maxTemp0}°C`
-
-//     const minTemp1 = Math.round(filteredMinForecasts[1].main.temp)
-//     const maxTemp1 = Math.round(filteredMaxForecasts[1].main.temp)
-
-//     minMaxTemp1.innerText = `${minTemp1}° / ${maxTemp1}°C`
-
-//     const minTemp2 = Math.round(filteredMinForecasts[2].main.temp)
-//     const maxTemp2 = Math.round(filteredMaxForecasts[2].main.temp)
-
-//     minMaxTemp2.innerText = `${minTemp2}° / ${maxTemp2}°C`
-
-//     const minTemp3 = Math.round(filteredMinForecasts[3].main.temp)
-//     const maxTemp3 = Math.round(filteredMaxForecasts[3].main.temp)
-
-//     minMaxTemp3.innerText = `${minTemp3}° / ${maxTemp3}°C`
-
-//     const minTemp4 = Math.round(filteredMinForecasts[4].main.temp)
-//     const maxTemp4 = Math.round(filteredMaxForecasts[4].main.temp)
-
-//     minMaxTemp4.innerText = `${minTemp4}° / ${maxTemp4}°C`
-
-
-//     const dayOfWeek = new Date(date).toLocaleDateString('en-GB', { weekday: 'short' })
-// }
-
 
 
 // to get the forecast weather data

@@ -102,13 +102,16 @@ h3 {
     line-height: 25.78px;
 }
 
-.image-header {
+.current-weather-image {
     width: 161.15px;
     height: 152.03px;
-    border: solid white;
     margin-top: 4.99px;
     margin-left: 226.92px;
     position: relative;
+}
+
+.icon-big {
+    width: 100%;
 }
 
 .sunrise-sunset {
@@ -136,7 +139,6 @@ main {
     max-width: 800px;
     min-height: 250px;
     margin-top: 80px;
-    border: 1px solid #707070;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -150,7 +152,18 @@ main {
     justify-content: space-around;
     align-items: center;
     border-radius: 30px;
-    border: solid black;
+}
+
+.weather-day:hover {
+    background-color: #a39e9e;
+}
+
+.forecast-image {
+    width: 50px;
+}
+
+.forecast-icon {
+    width: 100%;
 }
 
 .weekday,
