@@ -19,7 +19,7 @@ const preloadImages = () => {
 
 // Show or hide elements based on loading state
 const showLoading = () => {
-  document.getElementById("loadingMessage").style.display = "block";
+  document.getElementById("loadingMessage").style.display = "flex"; // Use flex to center the message and spinner
   document.getElementById("appContent").style.display = "none";
 };
 
@@ -33,6 +33,8 @@ preloadImages();
 
 // Show loading message initially
 showLoading();
+
+// Rest of your JavaScript code remains the same...
 
 // Select DOM elements
 const tempToday = document.getElementById("tempToday");
