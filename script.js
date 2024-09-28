@@ -11,11 +11,12 @@ const weather = document.getElementById('weather')
 const cityName = document.getElementById('cityName')
 const sunrise = document.getElementById('sunrise')
 const sunset = document.getElementById('sunset')
-const minMaxTemp0 = document.getElementById('minMaxTemp0')
-const minMaxTemp1 = document.getElementById('minMaxTemp1')
-const minMaxTemp2 = document.getElementById('minMaxTemp2')
-const minMaxTemp3 = document.getElementById('minMaxTemp3')
-const minMaxTemp4 = document.getElementById('minMaxTemp4')
+// const minMaxTemp0 = document.getElementById('minMaxTemp0')
+// const minMaxTemp1 = document.getElementById('minMaxTemp1')
+// const minMaxTemp2 = document.getElementById('minMaxTemp2')
+// const minMaxTemp3 = document.getElementById('minMaxTemp3')
+// const minMaxTemp4 = document.getElementById('minMaxTemp4')
+// const weekday0 = document.getElementById('weekday0')
 
 
 // function to create new URL for forecast based on the users input
@@ -47,7 +48,6 @@ const updateHTML = (data) => {
     const roundedTemp = Math.round(data.main.temp)
 
     // the local time for the specific city
-    // const localOffset = getLocalOffset(data.coord.lat, data.coord.lon)
     const sunriseTime = convertUnixToTime(data.sys.sunrise, data.timezone)
     const sunsetTime = convertUnixToTime(data.sys.sunset, data.timezone)
 
@@ -76,6 +76,11 @@ const fetchWeatherData = async (cityName) => {
 }
 
 // update HTML for forecast weather
+
+// Array with weekdays
+const weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fr', 'Sat', 'Sun']
+
+// Function for HTML inputs
 const updateForecastHTML = (dataForecast) => {
     console.log(dataForecast)
 
@@ -84,7 +89,7 @@ const updateForecastHTML = (dataForecast) => {
     // filters the forecast for 3 PM each day
     const filteredMinForecasts = forecasts.filter(minForecast => {
         const dateTime = new Date(minForecast.dt_txt)
-        return dateTime.getHours() === 3
+        return dateTime.getHours() === 0
     })
 
     // filters the forecast for 12AM each day
@@ -93,31 +98,55 @@ const updateForecastHTML = (dataForecast) => {
         return dateTime.getHours() === 12
     })
 
-    const minTemp0 = Math.round(filteredMinForecasts[0].main.temp)
-    const maxTemp0 = Math.round(filteredMaxForecasts[0].main.temp)
+    let forecastHTML = ''
 
-    minMaxTemp0.innerText = `${minTemp0}° / ${maxTemp0}°C`
+    // Loop to get the weekdays 
+    for (let i = 0; i < 5; i++) {
+        const minTemp = Math.round(filteredMinForecasts[i].main.temp)
+        const maxTemp = Math.round(filteredMaxForecasts[i].main.temp)
 
-    const minTemp1 = Math.round(filteredMinForecasts[1].main.temp)
-    const maxTemp1 = Math.round(filteredMaxForecasts[1].main.temp)
+        // get weekdays
+        const dateTime = new Date(filteredMinForecasts[i].dt_txt)
+        const dayOfWeek = weekdays[dateTime.getDay()]
 
-    minMaxTemp1.innerText = `${minTemp1}° / ${maxTemp1}°C`
+        forecastHTML += `
+        <div class="weather-day">
+                <p class="weekday">${dayOfWeek}</p>
+                <div class="forecast-image">S</div>
+                <p class="forecast-temperature">${minTemp}° / ${maxTemp}°C</p>
+            </div>
+        `
+    }
 
-    const minTemp2 = Math.round(filteredMinForecasts[2].main.temp)
-    const maxTemp2 = Math.round(filteredMaxForecasts[2].main.temp)
-
-    minMaxTemp2.innerText = `${minTemp2}° / ${maxTemp2}°C`
-
-    const minTemp3 = Math.round(filteredMinForecasts[3].main.temp)
-    const maxTemp3 = Math.round(filteredMaxForecasts[3].main.temp)
-
-    minMaxTemp3.innerText = `${minTemp3}° / ${maxTemp3}°C`
-
-    const minTemp4 = Math.round(filteredMinForecasts[4].main.temp)
-    const maxTemp4 = Math.round(filteredMaxForecasts[4].main.temp)
-
-    minMaxTemp4.innerText = `${minTemp4}° / ${maxTemp4}°C`
+    forecastContainer.innerHTML = forecastHTML
 }
+//     
+
+//     minMaxTemp0.innerText = `${minTemp0}° / ${maxTemp0}°C`
+
+//     const minTemp1 = Math.round(filteredMinForecasts[1].main.temp)
+//     const maxTemp1 = Math.round(filteredMaxForecasts[1].main.temp)
+
+//     minMaxTemp1.innerText = `${minTemp1}° / ${maxTemp1}°C`
+
+//     const minTemp2 = Math.round(filteredMinForecasts[2].main.temp)
+//     const maxTemp2 = Math.round(filteredMaxForecasts[2].main.temp)
+
+//     minMaxTemp2.innerText = `${minTemp2}° / ${maxTemp2}°C`
+
+//     const minTemp3 = Math.round(filteredMinForecasts[3].main.temp)
+//     const maxTemp3 = Math.round(filteredMaxForecasts[3].main.temp)
+
+//     minMaxTemp3.innerText = `${minTemp3}° / ${maxTemp3}°C`
+
+//     const minTemp4 = Math.round(filteredMinForecasts[4].main.temp)
+//     const maxTemp4 = Math.round(filteredMaxForecasts[4].main.temp)
+
+//     minMaxTemp4.innerText = `${minTemp4}° / ${maxTemp4}°C`
+
+
+//     const dayOfWeek = new Date(date).toLocaleDateString('en-GB', { weekday: 'short' })
+// }
 
 
 
