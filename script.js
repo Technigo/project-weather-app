@@ -19,13 +19,27 @@ const preloadImages = () => {
 
 // Show or hide elements based on loading state
 const showLoading = () => {
-  document.getElementById("loadingMessage").style.display = "flex"; // Use flex to center the message and spinner
+  console.log("Showing loading message...");
+  document.getElementById("loadingMessage").style.display = "flex";
   document.getElementById("appContent").style.display = "none";
 };
 
 const hideLoading = () => {
+  console.log("Hiding loading message...");
   document.getElementById("loadingMessage").style.display = "none";
   document.getElementById("appContent").style.display = "block";
+};
+
+// Show error message as an alert
+const showError = (message) => {
+  console.log("Showing error message:", message);
+  alert(message); // Display the error message in an alert dialog
+  hideLoading(); // Hide loading message and show content
+};
+
+// Hide error message (no longer needed with alert)
+const hideError = () => {
+  // No action needed since alerts will be used
 };
 
 // Call the preloadImages function to start preloading images
@@ -33,8 +47,6 @@ preloadImages();
 
 // Show loading message initially
 showLoading();
-
-// Rest of your JavaScript code remains the same...
 
 // Select DOM elements
 const tempToday = document.getElementById("tempToday");
@@ -51,37 +63,51 @@ const mainWrapper = document.querySelector(".mainWrapper");
 
 // Function to fetch current weather data
 const fetchWeatherData = async (city) => {
+  hideError(); // Hide any previous error message
   try {
+    console.log(`Fetching weather data for: ${city}`);
     const API_KEY = "0c5116ff347d8ce8d78e8d3c18029dd7";
     const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${API_KEY}`;
     const response = await fetch(API_URL);
 
     if (!response.ok) {
-      throw new Error(`City ${city} not found`);
+      throw new Error(
+        `City "${city}" not found. Click OK to refresh the page.`
+      );
     }
 
     const data = await response.json();
+    console.log("Weather data fetched:", data);
     displayWeatherData(data);
+    return true; // Return true to indicate successful fetch
   } catch (error) {
-    alert(error.message);
+    // Show error message and ask to refresh
+    console.error("Error fetching weather data:", error.message);
+    showError(error.message); // Show the error as an alert
+    return false; // Return false to indicate fetch failure
+  } finally {
+    hideLoading(); // Ensure loading is hidden
   }
 };
 
 // Function to fetch weather forecast data
 const fetchWeatherForecast = async (city) => {
   try {
+    console.log(`Fetching weather forecast for: ${city}`);
     const API_KEY = "0c5116ff347d8ce8d78e8d3c18029dd7";
     const API_URL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=${API_KEY}`;
     const response = await fetch(API_URL);
 
     if (!response.ok) {
-      throw new Error(`City ${city} not found`);
+      throw new Error(`Forecast not available for city "${city}".`);
     }
 
     const data = await response.json();
+    console.log("Weather forecast fetched:", data);
     displayWeatherForecast(data);
   } catch (error) {
-    alert(error.message);
+    // Only log error, no need to display another message
+    console.error("Error fetching weather forecast:", error.message);
   }
 };
 
@@ -127,6 +153,7 @@ const updateBackgroundImage = (weatherDescription) => {
 
 // Function to display fetched current weather data
 const displayWeatherData = (data) => {
+  console.log("Displaying weather data...");
   if (tempToday) tempToday.textContent = `${Math.round(data.main.temp)}°C`;
   if (cityName) cityName.textContent = data.name;
   if (weatherDescription) {
@@ -172,6 +199,7 @@ const displayWeatherData = (data) => {
 
 // Function to display fetched weather forecast data
 const displayWeatherForecast = (data) => {
+  console.log("Displaying weather forecast...");
   if (!forecastContainer) return;
 
   forecastContainer.innerHTML = "";
@@ -208,15 +236,17 @@ const capitalizeFirstLetter = (string) => {
 
 // Event listener for the search button to fetch both current weather and forecast data
 if (searchBtn) {
-  searchBtn.addEventListener("click", () => {
+  searchBtn.addEventListener("click", async () => {
     const city = inputField.value.trim();
     if (city) {
       showLoading();
-      fetchWeatherData(city);
-      fetchWeatherForecast(city);
+      const weatherDataFetched = await fetchWeatherData(city);
+      if (weatherDataFetched) {
+        await fetchWeatherForecast(city); // Fetch forecast only if weather data was fetched successfully
+      }
       inputField.value = "";
     } else {
-      alert("Please enter a city name.");
+      showError("Please enter a city name."); // Show error if input is empty
     }
   });
 }
@@ -241,7 +271,7 @@ const getWeatherForCurrentLocation = () => {
     showLoading();
     navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
   } else {
-    alert("Geolocation is not supported by this browser.");
+    showError("Geolocation is not supported by this browser.");
   }
 };
 
@@ -250,6 +280,7 @@ const successCallback = async (position) => {
   const { latitude, longitude } = position.coords;
 
   try {
+    console.log("Fetching location data...");
     const reverseGeocodeUrl = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=0c5116ff347d8ce8d78e8d3c18029dd7`;
     const response = await fetch(reverseGeocodeUrl);
 
@@ -260,32 +291,36 @@ const successCallback = async (position) => {
     const data = await response.json();
     if (data.length > 0) {
       const city = data[0].name;
-      fetchWeatherData(city);
-      fetchWeatherForecast(city);
+      console.log(`City found: ${city}`);
+      const weatherDataFetched = await fetchWeatherData(city);
+      if (weatherDataFetched) {
+        await fetchWeatherForecast(city); // Fetch forecast only if weather data was fetched successfully
+      }
     } else {
-      alert(
+      showError(
         "City not found for your location. Please enable location access in your browser settings and refresh the page."
       );
     }
   } catch (error) {
-    alert(`Error: ${error.message}`);
+    showError(`Error: ${error.message}`);
   }
 };
 
 // Error callback function for geolocation
 const errorCallback = (error) => {
+  console.error("Geolocation error:", error);
   switch (error.code) {
     case error.PERMISSION_DENIED:
-      alert("User denied the request for Geolocation.");
+      showError("User denied the request for Geolocation.");
       break;
     case error.POSITION_UNAVAILABLE:
-      alert("Location information is unavailable.");
+      showError("Location information is unavailable.");
       break;
     case error.TIMEOUT:
-      alert("The request to get user location timed out.");
+      showError("The request to get user location timed out.");
       break;
     case error.UNKNOWN_ERROR:
-      alert("An unknown error occurred.");
+      showError("An unknown error occurred.");
       break;
   }
   hideLoading(); // Hide loading if geolocation fails
