@@ -7,15 +7,18 @@
 }
 
 .layout {
+  position: relative;
   width: 100wh;
   height: 100vh;
   font-family: 'Roboto', sans-serif;
   background-color: rgb(231, 231, 232);
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .top-container {
   position: relative;
-  background-color: lightblue;
+  background-image: linear-gradient(to bottom right, rgba(133, 137, 255, 1), rgba(232, 233, 255, 1));
   color: white;
   height: 65vh;
   padding: 8%;
@@ -132,7 +135,6 @@
 }
 
 .forecast-icon img {
-
   width: 40%;
 }
 
@@ -144,13 +146,14 @@
 .arrow-container {
   position: absolute;
   top: 45%;
-  right: 10%;
+  right: 5%;
 }
 
 footer {
   display: none;
 }
 
+/* Smaller phones */
 @media (max-width: 380px) {
   .temp-number {
     font-size: 50px;
@@ -161,6 +164,7 @@ footer {
   }
 }
 
+/* Tablets and larger screens */
 @media (min-width: 667px) {
 
   body,
@@ -226,6 +230,7 @@ footer {
     font-size: 22px;
     position: relative;
   }
+
 
   footer {
     display: block;
