@@ -1,0 +1,192 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(235, 233, 233);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Weather Container */
+#currentWeather {
+    color: white;
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    /* Ensure this is relative so the search-container is positioned inside it */
+}
+
+/* Search Bar Styling - Position in Upper Left Corner of currentWeather */
+.search-container {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    /* Adjust this value to control vertical positioning inside #currentWeather */
+    left: 10px;
+    /* Adjust this value to control horizontal positioning inside #currentWeather */
+    padding: 8px;
+    border-radius: 5px;
+    z-index: 10;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 40px;
+    /* Start with a small width for just the icon */
+    overflow: hidden;
+    /* Hide input until expanded */
+    margin-left: 535px;
+    margin-top: 15px;
+}
+
+#cityInput {
+    width: 0;
+    /* Initially hidden */
+    padding: 0;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    opacity: 0;
+    /* Hide input field initially */
+    transition: width 0.3s ease, opacity 0.3s ease;
+    /* Smooth transition for showing input */
+}
+
+#searchIcon {
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* When the search-container is clicked, expand the input field */
+.search-container.active {
+    width: 200px;
+    /* Expand container width */
+    background-color: whitesmoke;
+    /* Full opacity when active */
+}
+
+.search-container.active #cityInput {
+    width: 150px;
+    /* Expand the input width */
+    opacity: 1;
+    /* Make the input visible */
+    padding: 8px;
+}
+
+.search-container.active #searchIcon {
+    transform: rotate(90deg);
+    /* Optional: rotate the icon for a visual cue */
+}
+
+/* Temperature Styling */
+#currentWeather .temperature {
+    font-size: 7rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-shadow:
+        -1px -1px 0px grey,
+        /* Top left */
+        1px -1px 0px grey,
+        /* Top right */
+        -1px 1px 0px grey,
+        /* Bottom left */
+        1px 1px 0px grey;
+    /* Bottom right */
+}
+
+/* City Name Styling */
+#currentWeather .location {
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+/* Time Styling */
+#currentWeather .time {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+/* Weather Description */
+#currentWeather .description {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 40px;
+}
+
+/* Sunrise and Sunset Section */
+#currentWeather .sun-info {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.2rem;
+    color: white;
+    margin-bottom: 20px;
+}
+
+/* Forecast Section */
+#forecast {
+    background-color: #ffffff;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    text-align: left;
+}
+
+/* Individual Forecast Items */
+#forecast div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+#forecast div:last-child {
+    border-bottom: none;
+    margin-bottom: 40px;
+}
+
+/* Day and Weather Description Styling */
+#forecast .day {
+    font-weight: bold;
+    font-size: 1.1rem;
+    width: 100px;
+}
+
+#forecast .temp {
+    font-size: 1.1rem;
+}
+
+#forecast .wind {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+
+    #currentWeather,
+    #forecast {
+        max-width: 100%;
+    }
+
+    #currentWeather .temperature {
+        font-size: 5rem;
+    }
+
+    #currentWeather .location {
+        font-size: 2rem;
+    }
+}

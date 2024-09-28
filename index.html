@@ -4,24 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for search icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Weather App</title>
 </head>
 
 <body>
-    <h1>Weather Information</h1>
-    <div id="weather">
-        <p><strong>Location:</strong> <span id="location"></span></p>
-        <p><strong>Temperature:</strong> <span id="temperature"></span> °C</p>
-        <p><strong>Description:</strong> <span id="description"></span></p>
-        <p><strong>Humidity:</strong> <span id="humidity"></span> %</p>
-        <p><strong>Wind Speed:</strong> <span id="wind"></span> m/s</p>
-        <p><strong>Sunrise:</strong> <span id="sunrise"></span></p>
-        <p><strong>Sunset:</strong> <span id="sunset"></span></p>
 
-    </div>
+    <!-- Weather Display -->
+    <div id="currentWeather"></div>
+    <div id="forecast"></div>
 
-    <h2>4-Day Weather Forecast</h2>
-    <div id="forecast">
+    <!-- Search Bar for Cities -->
+    <div class="search-container">
+        <i class="fa fa-search" id="searchIcon"></i>
+        <input type="text" id="cityInput" placeholder="Enter city name" />
     </div>
 
     <script src="app.js"></script>
