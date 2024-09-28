@@ -1,3 +1,14 @@
+#preload {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  background: url("./images/thunderstorm.png"), url("./images/rain.png"),
+    url("./images/snowy.png"), url("./images/mist.png"),
+    url("./images/dust.png"), url("./images/cloudy.png"),
+    url("./images/sunny.png"), url("./images/default.png");
+}
+
 /* General reset and body styling */
 * {
   margin: 0;

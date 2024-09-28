@@ -4,9 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
+    <!-- Preload -->
+    <link rel="preload" href="./images/thunderstorm.png" as="image" />
+    <link rel="preload" href="./images/rain.png" as="image" />
+    <link rel="preload" href="./images/snowy.png" as="image" />
+    <link rel="preload" href="./images/mist.png" as="image" />
+    <link rel="preload" href="./images/dust.png" as="image" />
+    <link rel="preload" href="./images/cloudy.png" as="image" />
+    <link rel="preload" href="./images/sunny.png" as="image" />
+    <link rel="preload" href="./images/default.png" as="image" />
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body>
+    <!-- Hidden div to preload background images -->
+    <div id="preload"></div>
     <!-- Main container to hold all the content -->
     <div class="container">
       <!-- Navbar with the search button that turns into a search bar and btn-->
@@ -55,7 +66,6 @@
           <div id="sunsetText"></div>
         </section>
       </main>
-
       <!-- Forecast section -->
       <table id="weatherForecast" class="weather-forecast"></table>
     </div>

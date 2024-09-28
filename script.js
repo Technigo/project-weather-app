@@ -1,3 +1,24 @@
+const preloadImages = () => {
+  const imagePaths = [
+    "./images/thunderstorm.png",
+    "./images/rain.png",
+    "./images/snowy.png",
+    "./images/mist.png",
+    "./images/dust.png",
+    "./images/cloudy.png",
+    "./images/sunny.png",
+    "./images/default.png",
+  ];
+
+  imagePaths.forEach((path) => {
+    const img = new Image();
+    img.src = path;
+  });
+};
+
+// Call the preloadImages function to start preloading images
+preloadImages();
+
 // Select DOM elements
 const tempToday = document.getElementById("tempToday");
 const cityName = document.getElementById("cityName");
@@ -214,10 +235,6 @@ if (searchMenu) {
   });
 }
 
-// Default weather data and forecast for a sample city
-// fetchWeatherData("Stockholm"); // Replace with a default city of your choice
-// fetchWeatherForecast("Stockholm"); // Replace with a default city of your choice
-
 // Function to get the user's location and fetch weather data
 const getWeatherForCurrentLocation = () => {
   if (navigator.geolocation) {
@@ -276,7 +293,3 @@ const errorCallback = (error) => {
 
 // Call the function to get weather for current location on page load
 getWeatherForCurrentLocation();
-
-// Default weather data and forecast for a sample city if location is not available
-// fetchWeatherData("Stockholm"); // Replace with a default city of your choice
-// fetchWeatherForecast("Stockholm"); // Replace with a default city of your choice
