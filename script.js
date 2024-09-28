@@ -13,6 +13,27 @@ toggle.addEventListener('change', () => {
     }
 });
 
+
+// The search functionality
+
+// Selecting the search button and search bar
+const searchButton = document.getElementById('search-btn');
+const searchBarContainer = document.querySelector('.search-bar-container');
+
+// Add event listener to the search button
+searchButton.addEventListener('click', () => {
+    // Toggle the active class to open/close the search bar
+    searchBarContainer.classList.toggle('active');
+});
+
+//Automatically focus on the search input when the search bar opens
+searchButton.addEventListener('click', () => {
+    if (searchBarContainer.classList.contains('active')) {
+        document.getElementById('search-bar').focus();
+    }
+});
+
+
 // Here's the start of the API fetching
 const apiKey = "6f10170466235746161a1b24e2d289bd"; // API key
 const lat = "25.276987"; // Dubai Latitude
