@@ -1,3 +1,4 @@
+// Preload images
 const preloadImages = () => {
   const imagePaths = [
     "./images/thunderstorm.png",
@@ -16,8 +17,22 @@ const preloadImages = () => {
   });
 };
 
+// Show or hide elements based on loading state
+const showLoading = () => {
+  document.getElementById("loadingMessage").style.display = "block";
+  document.getElementById("appContent").style.display = "none";
+};
+
+const hideLoading = () => {
+  document.getElementById("loadingMessage").style.display = "none";
+  document.getElementById("appContent").style.display = "block";
+};
+
 // Call the preloadImages function to start preloading images
 preloadImages();
+
+// Show loading message initially
+showLoading();
 
 // Select DOM elements
 const tempToday = document.getElementById("tempToday");
@@ -30,11 +45,12 @@ const inputField = document.getElementById("inputField");
 const searchBtn = document.getElementById("searchBtn");
 const searchMenuBtn = document.getElementById("searchMenuBtn");
 const forecastContainer = document.getElementById("weatherForecast");
+const mainWrapper = document.querySelector(".mainWrapper");
 
 // Function to fetch current weather data
 const fetchWeatherData = async (city) => {
   try {
-    const API_KEY = "0c5116ff347d8ce8d78e8d3c18029dd7"; // My API key
+    const API_KEY = "0c5116ff347d8ce8d78e8d3c18029dd7";
     const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${API_KEY}`;
     const response = await fetch(API_URL);
 
@@ -52,7 +68,7 @@ const fetchWeatherData = async (city) => {
 // Function to fetch weather forecast data
 const fetchWeatherForecast = async (city) => {
   try {
-    const API_KEY = "0c5116ff347d8ce8d78e8d3c18029dd7"; // Your API key
+    const API_KEY = "0c5116ff347d8ce8d78e8d3c18029dd7";
     const API_URL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=${API_KEY}`;
     const response = await fetch(API_URL);
 
@@ -67,59 +83,43 @@ const fetchWeatherForecast = async (city) => {
   }
 };
 
-// Globally accessible
-const mainWrapper = document.querySelector(".mainWrapper");
-
 // Function to update the background image based on the weather condition
 const updateBackgroundImage = (weatherDescription) => {
-  if (!mainWrapper) return; // Check if mainWrapper exists
+  if (!mainWrapper) return;
 
-  // Convert weather description to lowercase to make comparison easier
   const weather = weatherDescription.toLowerCase();
 
-  // Choose the background image based on the weather condition
   if (weather.includes("thunderstorm")) {
     mainWrapper.style.backgroundImage = 'url("./images/thunderstorm.png")';
-  } else if (weather.includes("drizzle")) {
+  } else if (
+    weather.includes("drizzle") ||
+    weather.includes("rain") ||
+    weather.includes("freezing rain")
+  ) {
     mainWrapper.style.backgroundImage = 'url("./images/rain.png")';
-  } else if (weather.includes("light rain")) {
-    mainWrapper.style.backgroundImage = 'url("./images/rain.png")';
-  } else if (weather.includes("rain")) {
-    mainWrapper.style.backgroundImage = 'url("./images/rain.png")';
-  } else if (weather.includes("freezing rain")) {
-    mainWrapper.style.backgroundImage = 'url("./images/rain.png")';
-  } else if (weather.includes("sleet") || weather.includes("shower sleet")) {
+  } else if (weather.includes("sleet") || weather.includes("snow")) {
     mainWrapper.style.backgroundImage = 'url("./images/snowy.png")';
-  } else if (weather.includes("snow")) {
-    mainWrapper.style.backgroundImage = 'url("./images/snowy.png")';
-  } else if (weather.includes("mist") || weather.includes("haze")) {
+  } else if (
+    weather.includes("mist") ||
+    weather.includes("haze") ||
+    weather.includes("fog") ||
+    weather.includes("smoke")
+  ) {
     mainWrapper.style.backgroundImage = 'url("./images/mist.png")';
-  } else if (weather.includes("fog")) {
-    mainWrapper.style.backgroundImage = 'url("./images/mist.png")';
-  } else if (weather.includes("smoke")) {
-    mainWrapper.style.backgroundImage = 'url("./images/mist.png")';
-  } else if (weather.includes("dust") || weather.includes("sand")) {
+  } else if (
+    weather.includes("dust") ||
+    weather.includes("sand") ||
+    weather.includes("ash")
+  ) {
     mainWrapper.style.backgroundImage = 'url("./images/dust.png")';
-  } else if (weather.includes("ash")) {
-    mainWrapper.style.backgroundImage = 'url("./images/dust.png")';
-  } else if (weather.includes("squall")) {
+  } else if (weather.includes("squall") || weather.includes("clouds")) {
     mainWrapper.style.backgroundImage = 'url("./images/cloudy.png")';
   } else if (weather.includes("tornado")) {
     mainWrapper.style.backgroundImage = 'url("./images/thunderstorm.png")';
   } else if (weather.includes("clear")) {
     mainWrapper.style.backgroundImage = 'url("./images/sunny.png")';
-  } else if (
-    weather.includes("few clouds") ||
-    weather.includes("scattered clouds")
-  ) {
-    mainWrapper.style.backgroundImage = 'url("./images/cloudy.png")';
-  } else if (
-    weather.includes("broken clouds") ||
-    weather.includes("overcast clouds")
-  ) {
-    mainWrapper.style.backgroundImage = 'url("./images/cloudy.png")';
   } else {
-    mainWrapper.style.backgroundImage = 'url("./images/default.png")'; // Default background image
+    mainWrapper.style.backgroundImage = 'url("./images/default.png")';
   }
 };
 
@@ -127,58 +127,57 @@ const updateBackgroundImage = (weatherDescription) => {
 const displayWeatherData = (data) => {
   if (tempToday) tempToday.textContent = `${Math.round(data.main.temp)}°C`;
   if (cityName) cityName.textContent = data.name;
-  if (weatherDescription)
+  if (weatherDescription) {
     weatherDescription.textContent = capitalizeFirstLetter(
       data.weather[0].description
     );
+  }
 
-  // Call updateBackgroundImage with the weather description
   updateBackgroundImage(data.weather[0].description);
 
-  // Correct calculation for local time using UTC and timezone offset
-  const timezoneOffset = data.timezone; // Timezone offset in seconds
-  const utcTime = new Date().getTime() + new Date().getTimezoneOffset() * 60000; // Current UTC time in milliseconds
-  const localTimeDate = new Date(utcTime + timezoneOffset * 1000); // Local time of the city in milliseconds
-  if (localTime)
+  const timezoneOffset = data.timezone;
+  const utcTime = new Date().getTime() + new Date().getTimezoneOffset() * 60000;
+  const localTimeDate = new Date(utcTime + timezoneOffset * 1000);
+  if (localTime) {
     localTime.textContent = localTimeDate.toLocaleTimeString([], {
       hour: "2-digit",
       minute: "2-digit",
-    }); // Display local time in HH:MM format
+    });
+  }
 
-  // Set weather icon
   if (mainIcon) {
     const iconCode = data.weather[0].icon;
     mainIcon.innerHTML = `<img src="https://openweathermap.org/img/wn/${iconCode}@2x.png" alt="${data.weather[0].description}" />`;
   }
 
-  // Set sunrise and sunset time without seconds
   const sunriseTime = new Date((data.sys.sunrise + data.timezone) * 1000);
   const sunsetTime = new Date((data.sys.sunset + data.timezone) * 1000);
-  if (sunriseText)
+  if (sunriseText) {
     sunriseText.textContent = `Sunrise: ${sunriseTime.toLocaleTimeString([], {
       hour: "2-digit",
       minute: "2-digit",
     })}`;
-  if (sunsetText)
+  }
+  if (sunsetText) {
     sunsetText.textContent = `Sunset: ${sunsetTime.toLocaleTimeString([], {
       hour: "2-digit",
       minute: "2-digit",
     })}`;
+  }
+
+  hideLoading(); // Hide loading message and show content
 };
 
 // Function to display fetched weather forecast data
 const displayWeatherForecast = (data) => {
-  if (!forecastContainer) return; // Check if forecastContainer exists
+  if (!forecastContainer) return;
 
-  // Clear previous forecast data
   forecastContainer.innerHTML = "";
 
-  // Filter forecast data to show only the forecast for 12:00 PM each day
   const forecastList = data.list.filter((forecast) =>
     forecast.dt_txt.includes("12:00:00")
   );
 
-  // Display the forecast for the next 4 days
   forecastList.slice(0, 5).forEach((forecast) => {
     const date = new Date(forecast.dt_txt).toLocaleDateString(undefined, {
       weekday: "short",
@@ -187,7 +186,6 @@ const displayWeatherForecast = (data) => {
     const windSpeed = `${forecast.wind.speed.toFixed(1)} m/s`;
     const iconCode = forecast.weather[0].icon;
 
-    // Create a table row for each day's forecast
     const forecastRow = document.createElement("tr");
     forecastRow.innerHTML = `
       <td class="forecast-category">${date}</td>
@@ -211,10 +209,10 @@ if (searchBtn) {
   searchBtn.addEventListener("click", () => {
     const city = inputField.value.trim();
     if (city) {
+      showLoading();
       fetchWeatherData(city);
       fetchWeatherForecast(city);
-      inputField.value = ""; // Clear the input field after fetching data
-      toggleSearchBar(); // Hide search bar after search
+      inputField.value = "";
     } else {
       alert("Please enter a city name.");
     }
@@ -238,6 +236,7 @@ if (searchMenu) {
 // Function to get the user's location and fetch weather data
 const getWeatherForCurrentLocation = () => {
   if (navigator.geolocation) {
+    showLoading();
     navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
   } else {
     alert("Geolocation is not supported by this browser.");
@@ -249,8 +248,7 @@ const successCallback = async (position) => {
   const { latitude, longitude } = position.coords;
 
   try {
-    // Use OpenWeatherMap's reverse geocoding API to get city name
-    const reverseGeocodeUrl = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=0c5116ff347d8ce8d78e8d3c18029dd7`; // Replace with your API key
+    const reverseGeocodeUrl = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=0c5116ff347d8ce8d78e8d3c18029dd7`;
     const response = await fetch(reverseGeocodeUrl);
 
     if (!response.ok) {
@@ -260,7 +258,6 @@ const successCallback = async (position) => {
     const data = await response.json();
     if (data.length > 0) {
       const city = data[0].name;
-      // Fetch and display weather data for the current city
       fetchWeatherData(city);
       fetchWeatherForecast(city);
     } else {
@@ -289,6 +286,7 @@ const errorCallback = (error) => {
       alert("An unknown error occurred.");
       break;
   }
+  hideLoading(); // Hide loading if geolocation fails
 };
 
 // Call the function to get weather for current location on page load

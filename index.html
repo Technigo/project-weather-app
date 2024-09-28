@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <!-- Preload -->
     <link rel="preload" href="./images/thunderstorm.png" as="image" />
     <link rel="preload" href="./images/rain.png" as="image" />
@@ -13,9 +14,13 @@
     <link rel="preload" href="./images/cloudy.png" as="image" />
     <link rel="preload" href="./images/sunny.png" as="image" />
     <link rel="preload" href="./images/default.png" as="image" />
-    <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body>
+    <!-- Loading message displayed while data is being fetched -->
+  <div id="loadingMessage">Fetching weather data...</div>
+
+  <!-- Main app content, initially hidden until data is loaded -->
+  <div id="appContent" style="display:none;">
     <!-- Hidden div to preload background images -->
     <div id="preload"></div>
     <!-- Main container to hold all the content -->

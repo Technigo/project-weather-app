@@ -9,6 +9,12 @@
     url("./images/sunny.png"), url("./images/default.png");
 }
 
+#loadingMessage {
+  font-size: 20px;
+  text-align: center;
+  margin-top: 50px;
+}
+
 /* General reset and body styling */
 * {
   margin: 0;
