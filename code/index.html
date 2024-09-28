@@ -17,7 +17,7 @@
             <div class="weather-card-upper-info">
                 <p class="upper-info-weather">
                     <span id="upper-info-weather-type"></span> | 
-                    <span id="upper-info-weather-temp"></span>
+                    <span id="upper-info-weather-temp"></span> °C
                 </p>
                 <p class="upper-info-sunrise">sunrise | 
                     <span id="upper-info-sunrise-time"></span>
@@ -70,8 +70,13 @@
                  </div>
              </div>
         </div>
+
+        <!-- Search bar and button -->
+    <input type="text" id="city-input" placeholder="Enter city name">
+    <button onclick="cityName()">Search</button>
     </div>
 
+    
 
     <!-- Javascript -->
     <script src="script.js"></script>
