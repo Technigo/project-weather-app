@@ -1,19 +1,164 @@
+
 body {
+  font-family: Montserrat;
+  height: 100%; 
+}
+
+.weather-container {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  justify-content: flex-start; 
+  align-items: flex-start; /* Align items to the left */
+  padding-top: 50px;
+  min-height: 100vh; /* Ensure it takes up the full height of the viewport */
+  padding-left: 20px; /* Optional: padding to the left for overall container */
+}
+
+/* Container for condition and temperature */
+.temperature-info {
+  display: flex;  
+  justify-content: flex-start; /* Align temperature info to the left */
+  align-items: center;
+  font-size: 24px; 
+  font-weight: 400;
+  line-height: 25.6px; 
+  margin-bottom: 10px; /* Optional spacing */
+}
+
+.temperature-info p {
+  margin: 0 5px; 
+} 
+
+/* Container for sunrise and sunset */
+.sun-times {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align sunrise/sunset to the left */
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 20px; /* Space before other weather details */
+  line-height: 25.6px;
+}
+
+.sun-times p {
+  margin: 0 5px; /* Adjust spacing between sunrise and sunset */
+}
+
+.weather-img {
+  margin-top: 30px; 
+  max-width: 100%; /* Ensure image doesn't exceed container width */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.weather-message {
+  font-family: Montserrat;
+  font-size: 37px;
+  font-weight: 700;
+  line-height: 45.1px;
+  text-align: left;
+  padding-right: 20px;
+} 
+
+.forecast-wrapper {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  justify-content: flex-start; 
+  align-items: flex-start; /* Align items to the left */
+  padding: 10px; /* Optional: Add some padding */
+  min-height: 200px; /* Optional: Set a minimum height */
+  position: relative; /* Optional: Positioning context for child elements */
+}
+  
+#forecastList {
+  list-style-type: none; /* Remove default list styling */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+  font-size: 21px;
+  line-height: 36px;
+}
+
+
+/* Media Queries */
+
+/* Apply centering only on desktop screens */
+@media (min-width: 768px) {
+  .weather-container {
+    align-items: center; /* Center horizontally */
+  }
+  
+  .temperature-info, .sun-times, .weather-message,.forecast-wrapper {
+    text-align: left; /* Keep content left-aligned */
+    width: 100%;
+    max-width: 600px; /* Limit width on large screens */
+  }
+}
+
+@media (min-width: 768px) {
+  .weather-img {
+    max-width: 300px; /* Limit max width for desktop */
+    height: auto; /* Maintain aspect ratio */
+    margin-top: 30px;
+    margin-left: 0; /* Center alignment in container */
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* body {
   font-family: Montserrat;
 }
 
 .weather-container {
 display: flex;
 flex-direction: column; /* Stack items vertically */
-justify-content: flex-start; 
+/* justify-content: flex-start; 
 padding-top: 50px;
 align-items: center;
 height: 100vh; /* Ensure it takes up the full height of the viewport */
-}
+/* } 
 
 
 /* Container for condition and temperature */
-.temperature-info {
+/* .temperature-info {
   display: flex;  
   justify-content: center;  
   align-items: center;
@@ -28,19 +173,19 @@ height: 100vh; /* Ensure it takes up the full height of the viewport */
 } 
 
 /* Container for sunrise and sunset */
-.sun-times {
+/* .sun-times {
   display: flex;
   flex-direction: column;
   align-items: center; /* Center-align sunrise and sunset */
-  font-size: 24px;
+  /* font-size: 24px;
   font-weight: 400;
   margin-bottom: 20px; /* Space before other weather details */
-  line-height: 25.6px;
-}
+  /* line-height: 25.6px;
+}   */
 
-.sun-times p {
+/* .sun-times p {
   margin: 0 5px; /* Adjust spacing between sunrise and sunset */
-}
+/* }
 
 .weather-img {
 margin-top: 30px; 
@@ -52,22 +197,10 @@ margin-top: 30px;
   font-weight: 700;
   line-height: 45.1px;
   text-align: left;
-} 
+  padding-left: 20px;
+  padding-right: 20px;
+}   */
   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
