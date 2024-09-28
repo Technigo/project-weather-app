@@ -12,9 +12,9 @@ let city = "Stockholm";
 const URL = `${BASE_URL}?q=${city}&units=metric&APPID=${API_KEY}`;
 console.log(URL)
 
-// DOM selectors
-// const place = document.getElementById("temperature"); REMOVE THIS
+// DOM selectors, take away this later
 
+//Fetch current weather data
 fetch(URL)
   .then(response => response.json())
   .then(data => {
@@ -22,6 +22,9 @@ fetch(URL)
     cityName = data.name;
     const temp = data.main.temp.toFixed(1);
     const typeOfWeather = data.weather[0].description;
+    //Convert first letter of weather description to uppercase
+    const capitalizedWeather = typeOfWeather.charAt(0).toUpperCase() + typeOfWeather.slice(1);
+
     const sunriseTime = new Date(data.sys.sunrise * 1000).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
     const sunsetTime = new Date(data.sys.sunset * 1000).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 
@@ -29,8 +32,8 @@ fetch(URL)
     console.log(cityName, temp, typeOfWeather, sunriseTime, sunsetTime);
 
     document.getElementById("location").innerText = `${cityName}`;
-    document.getElementById("temperature").innerText = `${temp}°C`;
-    document.getElementById("weather").innerText = `${typeOfWeather}`;
+    document.getElementById("temperature").innerText = `${temp}°`;
+    document.getElementById("weather").innerText = `${capitalizedWeather}`; // Use capitalized description
     document.getElementById("sunrise").innerText = `${sunriseTime}`;
     document.getElementById("sunset").innerText = `${sunsetTime}`;
   })
@@ -49,7 +52,7 @@ fetch(forecastURL)
 
     data.list.forEach(forecast => {
       const dateObj = new Date(forecast.dt_txt);  // Create Date object
-      const dayOfWeek = dateObj.toLocaleDateString('en-US', { weekday: 'long' }); // Get long full name of the day
+      const dayOfWeek = dateObj.toLocaleDateString('en-US', { weekday: 'long' }); // Get long, full name of the day
       const temp = forecast.main.temp;
 
       if (!dailyTemps[dayOfWeek]) {
@@ -63,17 +66,23 @@ fetch(forecastURL)
       }
     })
 
-    // clear any existing forecast data
+    // Clear any existing forecast data
     forecastList.innerText = "";
 
-    // Calculate the average and only take the first 4 days of forecast data
+    // Calculate the average temp and only take the first 4 days of forecast data
     Object.keys(dailyTemps).slice(0, 4).forEach(dayOfWeek => {
       const averageTemp = (dailyTemps[dayOfWeek].totalTemp / dailyTemps[dayOfWeek].count).toFixed(1);
 
       const forecastItem = document.createElement("p");
-      forecastItem.innerHTML = `${dayOfWeek} ${averageTemp}°C`;
+      forecastItem.innerHTML = `${dayOfWeek} ${averageTemp}°`;
 
       // Append the forecast item to the UL
       forecastList.appendChild(forecastItem);
     });
+  })
+
+  // Error message applied to both fetch functions
+  .catch(error => {
+    console.log("Error fetching forecast data:", error);
+    // Add innertext with id in html for error message shown on site
   });

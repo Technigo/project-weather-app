@@ -1,16 +1,20 @@
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f7f0cf;
-    color: #3c3c3b;
+    color: #2e523a;
     margin: 0;
-    padding: 20px;
+    padding: 40px;
+}
+
+.current-weather {
+    padding-left: 10px;
+    font-size: 18px;
 }
 
 h1 {
     font-size: 24px;
     margin-bottom: 10px;
     color: #2e523a;
-    /* Dark green */
 }
 
 p {
@@ -18,15 +22,33 @@ p {
     margin: 4px 0;
 }
 
-h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #2e523a;
-    /* Dark green */
+#image {
+    padding-left: 10px;
 }
 
-#forecast-list {
-    font-size: 20px;
+h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
     color: #2e523a;
-    margin-bottom: 15px;
+    padding-left: 10px;
+
 }
+
+.forecast-container p {
+    display: flex;
+    justify-content: space-between;
+    /* This makes the day and temperature sit at opposite ends */
+    padding: 10px;
+    border-bottom: 1px dotted #2e523a;
+    /* Dotted line bottom */
+    font-size: 18px;
+    color: #2e523a;
+}
+
+/* Add media queries here */
+
+/* Smartphone
+
+/* Tablet */
+
+/* Desktop */

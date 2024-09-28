@@ -12,11 +12,21 @@
 
 <body>
   <div class="weather-container"></div>
-  <h1>Current Weather</h1>
-  <!-- Weather information will be displayed here -->
+  <!-- Current weather information displayed here -->
+  <div class="current-weather">
+    <p id="location"></p>
+    <p id="temperature"></p>
+    <p id="weather"></p>
+    <p>Sunrise <span id="sunrise"></span></p>
+    <p>Sunset <span id="sunset"></span></p>
+  </div>
 
-  <!-- Image here using the code instead of img src -->
-  <svg xmlns="http://www.w3.org/2000/svg" width="73.05" height="51.716" viewBox="0 0 73.05 51.716">
+  <br>
+  <br>
+  <br>
+
+  <!-- Sunglasses image  -->
+  <svg id="image" xmlns="http://www.w3.org/2000/svg" width="73.05" height="51.716" viewBox="0 0 73.05 51.716">
     <g id="noun_Sunglasses_2055147" transform="translate(0 -2.998)">
       <g id="Group_7" data-name="Group 7" transform="translate(0 2.998)">
         <g id="Group_6" data-name="Group 6">
@@ -49,17 +59,14 @@
       </g>
     </g>
   </svg>
+  </div>
 
-  <p id="location"></p>
-  <p id="temperature"></p>
-  <p id="weather"></p>
-  <p>Sunrise <span id="sunrise"></span></p>
-  <p>Sunset <span id="sunset"></span></p>
+  <h2>Get your sunnies on.
+    <br>It's a beautiful day in Stockholm today.
+  </h2>
 
-  <!-- 4-day forecast weather here -->
-  <h2>4-Day Forecast Weather</h2>
+  <!-- 4-day forecast weather -->
   <div id="forecast-list" class="forecast-container"></div>
-
 
   <script src="script.js"></script>
 </body>
