@@ -19,35 +19,30 @@ const preloadImages = () => {
 
 // Show or hide elements based on loading state
 const showLoading = () => {
-  console.log("Showing loading message...");
-  document.getElementById("loadingMessage").style.display = "flex";
+  document.getElementById("loadingMessage").style.display = "flex"; // Use flex to center the message and spinner
   document.getElementById("appContent").style.display = "none";
 };
 
 const hideLoading = () => {
-  console.log("Hiding loading message...");
   document.getElementById("loadingMessage").style.display = "none";
   document.getElementById("appContent").style.display = "block";
 };
 
-// Show error message as an alert
-const showError = (message) => {
-  console.log("Showing error message:", message);
-  alert(message); // Display the error message in an alert dialog
-  hideLoading(); // Hide loading message and show content
+// Show or hide elements based on location permission loading state
+const showLocationLoading = () => {
+  document.getElementById("loadingMessage").style.display = "flex"; // Show loading only for location permission
+  document.getElementById("appContent").style.display = "none";
 };
 
-// Hide error message (no longer needed with alert)
-const hideError = () => {
-  // No action needed since alerts will be used
+const hideLocationLoading = () => {
+  document.getElementById("loadingMessage").style.display = "none"; // Hide loading after location permission is granted
+  document.getElementById("appContent").style.display = "block";
 };
 
 // Call the preloadImages function to start preloading images
 preloadImages();
 
-// Show loading message initially
-showLoading();
-
+// No initial loading message
 // Select DOM elements
 const tempToday = document.getElementById("tempToday");
 const cityName = document.getElementById("cityName");
@@ -61,39 +56,35 @@ const searchMenuBtn = document.getElementById("searchMenuBtn");
 const forecastContainer = document.getElementById("weatherForecast");
 const mainWrapper = document.querySelector(".mainWrapper");
 
+// Centralized error handling function to show a single error message and reload the page
+const handleError = (message) => {
+  alert(message); // Display a simple alert message
+  window.location.reload(); // Refresh the page after the alert
+};
+
 // Function to fetch current weather data
 const fetchWeatherData = async (city) => {
-  hideError(); // Hide any previous error message
   try {
-    console.log(`Fetching weather data for: ${city}`);
     const API_KEY = "0c5116ff347d8ce8d78e8d3c18029dd7";
     const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${API_KEY}`;
     const response = await fetch(API_URL);
 
     if (!response.ok) {
-      throw new Error(
-        `City "${city}" not found. Click OK to refresh the page.`
-      );
+      throw new Error(`City "${city}" not found.`);
     }
 
     const data = await response.json();
-    console.log("Weather data fetched:", data);
     displayWeatherData(data);
     return true; // Return true to indicate successful fetch
   } catch (error) {
-    // Show error message and ask to refresh
-    console.error("Error fetching weather data:", error.message);
-    showError(error.message); // Show the error as an alert
+    handleError(error.message); // Call centralized error handler
     return false; // Return false to indicate fetch failure
-  } finally {
-    hideLoading(); // Ensure loading is hidden
   }
 };
 
 // Function to fetch weather forecast data
 const fetchWeatherForecast = async (city) => {
   try {
-    console.log(`Fetching weather forecast for: ${city}`);
     const API_KEY = "0c5116ff347d8ce8d78e8d3c18029dd7";
     const API_URL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=${API_KEY}`;
     const response = await fetch(API_URL);
@@ -103,10 +94,9 @@ const fetchWeatherForecast = async (city) => {
     }
 
     const data = await response.json();
-    console.log("Weather forecast fetched:", data);
     displayWeatherForecast(data);
   } catch (error) {
-    // Only log error, no need to display another message
+    // Log the error but do not show another alert to avoid duplicate messages
     console.error("Error fetching weather forecast:", error.message);
   }
 };
@@ -153,7 +143,6 @@ const updateBackgroundImage = (weatherDescription) => {
 
 // Function to display fetched current weather data
 const displayWeatherData = (data) => {
-  console.log("Displaying weather data...");
   if (tempToday) tempToday.textContent = `${Math.round(data.main.temp)}°C`;
   if (cityName) cityName.textContent = data.name;
   if (weatherDescription) {
@@ -199,7 +188,6 @@ const displayWeatherData = (data) => {
 
 // Function to display fetched weather forecast data
 const displayWeatherForecast = (data) => {
-  console.log("Displaying weather forecast...");
   if (!forecastContainer) return;
 
   forecastContainer.innerHTML = "";
@@ -239,14 +227,14 @@ if (searchBtn) {
   searchBtn.addEventListener("click", async () => {
     const city = inputField.value.trim();
     if (city) {
-      showLoading();
+      // No loading message here, only for initial location loading
       const weatherDataFetched = await fetchWeatherData(city);
       if (weatherDataFetched) {
         await fetchWeatherForecast(city); // Fetch forecast only if weather data was fetched successfully
       }
       inputField.value = "";
     } else {
-      showError("Please enter a city name."); // Show error if input is empty
+      alert("Please enter a city name.");
     }
   });
 }
@@ -268,10 +256,10 @@ if (searchMenu) {
 // Function to get the user's location and fetch weather data
 const getWeatherForCurrentLocation = () => {
   if (navigator.geolocation) {
-    showLoading();
+    showLocationLoading(); // Show loading only for location permission
     navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
   } else {
-    showError("Geolocation is not supported by this browser.");
+    handleError("Geolocation is not supported by this browser.");
   }
 };
 
@@ -280,7 +268,6 @@ const successCallback = async (position) => {
   const { latitude, longitude } = position.coords;
 
   try {
-    console.log("Fetching location data...");
     const reverseGeocodeUrl = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=0c5116ff347d8ce8d78e8d3c18029dd7`;
     const response = await fetch(reverseGeocodeUrl);
 
@@ -291,39 +278,38 @@ const successCallback = async (position) => {
     const data = await response.json();
     if (data.length > 0) {
       const city = data[0].name;
-      console.log(`City found: ${city}`);
       const weatherDataFetched = await fetchWeatherData(city);
       if (weatherDataFetched) {
         await fetchWeatherForecast(city); // Fetch forecast only if weather data was fetched successfully
       }
     } else {
-      showError(
+      handleError(
         "City not found for your location. Please enable location access in your browser settings and refresh the page."
       );
     }
   } catch (error) {
-    showError(`Error: ${error.message}`);
+    handleError(`Error: ${error.message}`);
+  } finally {
+    hideLocationLoading(); // Hide loading message after location permission is handled
   }
 };
 
 // Error callback function for geolocation
 const errorCallback = (error) => {
-  console.error("Geolocation error:", error);
+  let errorMessage = "An unknown error occurred.";
   switch (error.code) {
     case error.PERMISSION_DENIED:
-      showError("User denied the request for Geolocation.");
+      errorMessage = "User denied the request for Geolocation.";
       break;
     case error.POSITION_UNAVAILABLE:
-      showError("Location information is unavailable.");
+      errorMessage = "Location information is unavailable.";
       break;
     case error.TIMEOUT:
-      showError("The request to get user location timed out.");
-      break;
-    case error.UNKNOWN_ERROR:
-      showError("An unknown error occurred.");
+      errorMessage = "The request to get user location timed out.";
       break;
   }
-  hideLoading(); // Hide loading if geolocation fails
+  handleError(errorMessage);
+  hideLocationLoading(); // Hide loading message after location permission is handled
 };
 
 // Call the function to get weather for current location on page load
