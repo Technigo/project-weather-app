@@ -8,7 +8,6 @@ const sunsetText = document.getElementById("sunsetText");
 const inputField = document.getElementById("inputField");
 const searchBtn = document.getElementById("searchBtn");
 const searchMenuBtn = document.getElementById("searchMenuBtn");
-
 const forecastContainer = document.getElementById("weatherForecast");
 
 // Function to fetch current weather data
@@ -186,14 +185,6 @@ const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
-// Function to toggle the search bar visibility
-const toggleSearchBar = () => {
-  if (searchToggler) searchToggler.classList.toggle("hidden");
-  if (searchMenuBtn) searchMenuBtn.classList.toggle("hidden");
-  if (closeSearchMenu) closeSearchMenu.classList.toggle("hidden");
-};
-
-// Event listener for the search button to fetch both current weather and forecast data
 // Event listener for the search button to fetch both current weather and forecast data
 if (searchBtn) {
   searchBtn.addEventListener("click", () => {
@@ -217,15 +208,15 @@ if (searchMenuBtn) {
 }
 
 // Event listener to close the search bar
-if (closeSearchMenu) {
-  closeSearchMenu.addEventListener("click", () => {
+if (searchMenu) {
+  searchMenu.addEventListener("click", () => {
     toggleSearchBar();
   });
 }
 
 // Default weather data and forecast for a sample city
-fetchWeatherData("Stockholm"); // Replace with a default city of your choice
-fetchWeatherForecast("Stockholm"); // Replace with a default city of your choice
+// fetchWeatherData("Stockholm"); // Replace with a default city of your choice
+// fetchWeatherForecast("Stockholm"); // Replace with a default city of your choice
 
 // Function to get the user's location and fetch weather data
 const getWeatherForCurrentLocation = () => {
@@ -256,7 +247,9 @@ const successCallback = async (position) => {
       fetchWeatherData(city);
       fetchWeatherForecast(city);
     } else {
-      alert("City not found for your location.");
+      alert(
+        "City not found for your location. Please enable location access in your browser settings and refresh the page."
+      );
     }
   } catch (error) {
     alert(`Error: ${error.message}`);

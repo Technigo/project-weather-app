@@ -182,7 +182,6 @@ body {
   border: none;
   border-radius: 20px; /* Rounded corners */
   cursor: pointer; /* Pointer cursor */
-  outline: none; /* Remove outline */
 }
 .search-bar::placeholder {
   color: white; /* Sets the placeholder text color to white */
@@ -242,7 +241,7 @@ body {
 }
 
 /* Search bar toggle functionality */
-#search-toggler {
+#search-box {
   display: flex;
   align-items: center; /* Vertically center */
   justify-content: center; /* Horizontally center */
@@ -255,7 +254,7 @@ body {
   z-index: 3; /* Ensure it stays above other elements */
 }
 
-#search-toggler.active {
+#search-box.active {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -276,7 +275,7 @@ body {
     align-items: center; /* Center content horizontally */
   }
 
-  #search-toggler {
+  #search-box {
     margin-bottom: 50px; /* Add space below the search toggler */
   }
 
