@@ -8,36 +8,45 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <title>Joyce's Weather App</title>
 </head>
 
 <body>
   <div class="layout">
-    <!-- <header> -->
+
     <div class="top-container">
-      <!-- <div class="content"> -->
-      <div class="temperature">
-        <span class="temp-number" id="current-temperature"></span><span class="temp-unit">°C</span>
+      <div class="search-container">
+        <i id="toggle-icon" class="fas fa-search" onclick="toggleSearch()"></i>
+        <div id="search-box" class="hidden">
+          <input type="text" id="search-input" placeholder="Enter city name" />
+          <i class="fas fa-search" id="input-search-icon"></i>
+        </div>
       </div>
-      <p class="city" id="city-name">A city</p>
-      <div class="weather">
-        <p class="description" id="current-weather">Clear</p>
-        <img id="main-icon" alt="Weather icon">
+      <div class="main-info">
+        <div class="temperature">
+          <span class="temp-number" id="current-temperature"></span><span class="temp-unit">°C</span>
+        </div>
+        <p class="city" id="city-name">A city</p>
+        <div class="weather">
+          <p class="description" id="current-weather">Clear</p>
+          <img class="icon" id="main-icon" alt="Weather icon">
+        </div>
       </div>
-      <!-- </div> -->
       <div class="sunrise-sunset" id="sunrise-sunset-times">
-        <span class="label">sunrise</span>
-        <span class="time" id="sunrise-time"></span>
-        <span class="label">sunset</span>
-        <span class="time" id="sunset-time"></span>
+        <span>sunrise</span>
+        <span id="sunrise-time"></span>
+        <span>sunset</span>
+        <span id="sunset-time"></span>
       </div>
     </div>
-    <!-- </header> -->
+
     <div class="forecast-container" id="forecast">
-      <div class="forecast-row"></div>
-      <div class="forecast-day"></div>
-      <div class="forecast-icon"></div>
-      <div class="forecast-temp"></div>
+      <div class="forecast-row">
+        <div class="forecast-day"></div>
+        <div class="forecast-icon"></div>
+        <div class="forecast-temp"></div>
+      </div>
 
     </div>
   </div>

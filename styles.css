@@ -7,28 +7,58 @@
 }
 
 .layout {
-  width: 100%;
-  max-width: 500px;
+  width: 100wh;
+  height: 100vh;
   font-family: 'Roboto', sans-serif;
-  color: white;
-  background-color: blue;
+  background-color: rgb(231, 231, 232);
 }
 
 .top-container {
   position: relative;
   background-color: lightblue;
+  color: white;
   height: 65vh;
   padding: 8%;
   clip-path: ellipse(120% 80% at 50% 0%);
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: space-around;
-  padding-bottom: 40%;
+  padding-bottom: 30%;
+  box-sizing: border-box;
 }
 
-.content {
-  flex: 1;
+/* Container for the search bar and icon */
+.search-container {
+  position: absolute;
+  display: flex;
+  width: 80%;
+  align-items: center;
+}
+
+#search-box {
+  position: absolute;
+  border: 1px solid whitesmoke;
+  right: 5px;
+  padding: 5px;
+}
+
+#search-input {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  width: 200px;
+  font-size: 16px;
+  background-color: transparent;
+  outline: none;
+}
+
+#toggle-icon {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: flex;
 }
 
 .temperature {
@@ -72,13 +102,14 @@
   position: relative;
 }
 
-#main-icon {
+.icon {
   width: 15%;
   height: auto;
 }
 
 .forecast-container {
-  margin: -5% 10%;
+  margin: 0 10%;
+
 }
 
 .forecast-row {
@@ -86,7 +117,7 @@
   justify-content: space-between;
   align-items: center;
   font-size: 1.4em;
-  margin-bottom: 8%;
+  bottom: 5%;
 }
 
 .forecast-day {
@@ -111,11 +142,29 @@
 }
 
 @media (min-width: 667px) {
+
+  body,
+  html {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
   .layout {
-    max-width: 444px;
+    max-width: 550px;
+    max-height: 70%;
     box-shadow: 10px 15px 20px rgba(0, 0, 0, 0.3);
     justify-self: center;
+    align-self: center;
     margin-top: 50px;
+  }
+
+  .main-info {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
   }
 
   .temperature {

@@ -13,6 +13,9 @@ const sunriseElement = document.getElementById("sunrise-time")
 const sunsetElement = document.getElementById("sunset-time")
 const weatherIcon = document.getElementById("main-icon")
 const forecastContainer = document.getElementById('forecast')
+const searchBox = document.getElementById('search-box')
+const searchInput = document.getElementById('search-input')
+const searchIcon = document.getElementById('input-search-icon')
 
 // Function to capitalize first letter of each word
 const capitalizeFirstLetter = (str) => {
@@ -93,6 +96,58 @@ const updateForecastHTML = (data) => {
   })
 }
 
+// Toggle search icon to reveal search bar
+const toggleSearch = () => {
+  const toggleIcon = document.getElementById('toggle-icon')
+  const searchBox = document.getElementById('search-box')
+
+  // Toggle search box visiblity
+  if (searchBox.classList.contains('hidden')) {
+    searchBox.classList.remove('hidden')
+    searchBox.classList.add('show')
+  } else {
+    searchBox.classList.remove('show')
+    searchBox.classList.add('hidden')
+  }
+  // Switch between search and close icon
+  if (toggleIcon.classList.contains('fa-search')) {
+    toggleIcon.classList.remove('fa-search')
+    toggleIcon.classList.add('fa-times')
+  } else {
+    toggleIcon.classList.remove('fa-times')
+    toggleIcon.classList.add('fa-search')
+  }
+}
+
+// Fetch and display weather data for a searched city
+const fetchWeatherData = (city) => {
+  const SEARCH_URL = `${BASE_URL}q=${city}&units=metric&APPID=${API_KEY}`
+  fetch(SEARCH_URL)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      updateHTML(data)
+    })
+    .catch(error => console.error('Error;', error))
+}
+
+// Event listener for search input
+const addSearchEventListener = (element, eventType) => {
+  element.addEventListener(eventType, () => {
+    const searchCity = searchInput.value;
+    fetchWeatherData(searchCity);
+  });
+};
+
+addSearchEventListener(searchIcon, 'click');
+
+searchInput.addEventListener('keypress', (event) => {
+  if (event.key === 'Enter') {
+    fetchWeatherData(searchInput.value);
+  }
+});
+
+
 fetch(URL)
   .then(response => response.json())
   .then(data => {
@@ -108,3 +163,4 @@ fetch(FORECAST_URL)
     updateForecastHTML(data)
   })
   .catch(error => console.error('Error:', error))
+
