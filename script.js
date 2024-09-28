@@ -37,7 +37,42 @@ const convertUnixToTime = (unixTime, timeZone) => {
 }
 
 
-// update HTML
+// to get the weather data for the current weather
+const fetchWeatherData = async (cityName) => {
+    const URL = createURL(cityName)
+    try {
+        const response = await fetch(URL)
+        if (!response.ok) {
+            throw new Error('Failed to fetch weather data')
+        }
+        const data = await response.json()
+        // console.log(data)
+        updateHTML(data)
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+// to get the forecast weather data
+const fetchForecastData = async (cityName) => {
+    const URLForecast = createForecastURL(cityName)
+    try {
+        const response = await fetch(URLForecast)
+        if (!response.ok) {
+            throw new Error('Failed to fetch forecast weather data')
+        }
+        const dataForecast = await response.json()
+        console.log(dataForecast)
+        updateForecastHTML(dataForecast)
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+// update HTML current weather
+
 const updateHTML = (data) => {
     console.log(data)
 
@@ -61,23 +96,6 @@ const updateHTML = (data) => {
 
     iconCurrent.innerHTML = `<img class="icon-big" src="${iconUrl}" alt="Weather Icon">`
 
-}
-
-// to get the weather data for the current weather
-const fetchWeatherData = async (cityName) => {
-    const URL = createURL(cityName)
-    try {
-        const response = await fetch(URL)
-        if (!response.ok) {
-            throw new Error('Failed to fetch weather data')
-        }
-        const data = await response.json()
-        // console.log(data)
-        updateHTML(data)
-
-    } catch (error) {
-        console.log(error)
-    }
 }
 
 // update HTML for forecast weather
@@ -130,25 +148,6 @@ const updateForecastHTML = (dataForecast) => {
     }
     forecastContainer.innerHTML = forecastHTML
 }
-
-
-// to get the forecast weather data
-const fetchForecastData = async (cityName) => {
-    const URLForecast = createForecastURL(cityName)
-    try {
-        const response = await fetch(URLForecast)
-        if (!response.ok) {
-            throw new Error('Failed to fetch forecast weather data')
-        }
-        const dataForecast = await response.json()
-        console.log(dataForecast)
-        updateForecastHTML(dataForecast)
-
-    } catch (error) {
-        console.log(error)
-    }
-}
-
 
 // Event Listener to open the search window
 menu.addEventListener("click", () => {

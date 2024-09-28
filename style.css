@@ -17,10 +17,6 @@ header {
     border-bottom-right-radius: 50% 10%;
 }
 
-/* header.night-theme {
-    background: linear-gradient(to bottom right, rgb(54, 54, 83), #E8E9FF)
-} */
-
 .menu {
     width: 35px;
     height: 30px;
