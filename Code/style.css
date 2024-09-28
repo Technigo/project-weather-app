@@ -3,7 +3,7 @@ body {
     background-color: #f7f0cf;
     color: #2e523a;
     margin: 0;
-    padding: 40px;
+    padding: 60px;
 }
 
 .current-weather {
@@ -31,7 +31,6 @@ h2 {
     margin-bottom: 10px;
     color: #2e523a;
     padding-left: 10px;
-
 }
 
 .forecast-container p {
@@ -45,10 +44,66 @@ h2 {
     color: #2e523a;
 }
 
-/* Add media queries here */
+/* Media queries */
+/* LOOK THROUGH THIS TOMORROW AND CHANGE IT*/
+/* Smartphone*/
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    body {
+        padding: 40px;
+    }
 
-/* Smartphone
+    .current-weather {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    .forecast-container p {
+        font-size: 14px;
+    }
+}
 
 /* Tablet */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    body {
+        padding: 50px;
+    }
+
+    .current-weather {
+        font-size: 17px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+}
 
 /* Desktop */
+@media only screen and (min-width: 1024px) and (max-width: 1600px) {
+    body {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .current-weather {
+        font-size: 18px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 32px;
+    }
+}
