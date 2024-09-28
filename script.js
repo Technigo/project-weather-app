@@ -13,21 +13,14 @@ toggle.addEventListener('change', () => {
     }
 });
 
-
 // The search functionality
 
-// Selecting the search button and search bar
 const searchButton = document.getElementById('search-btn');
 const searchBarContainer = document.querySelector('.search-bar-container');
 
 // Add event listener to the search button
 searchButton.addEventListener('click', () => {
-    // Toggle the active class to open/close the search bar
     searchBarContainer.classList.toggle('active');
-});
-
-//Automatically focus on the search input when the search bar opens
-searchButton.addEventListener('click', () => {
     if (searchBarContainer.classList.contains('active')) {
         document.getElementById('search-bar').focus();
     }
@@ -82,7 +75,9 @@ const formatTime = (timestamp) => {
 const updateHtml = (data) => {
     const location = document.querySelector(".location h1");
     const currentTemp = document.querySelector(".current-temp h2");
-    const details = document.querySelector(".details");
+    const sunsetTime = document.getElementById("sunset-time");
+    const sunriseTime = document.getElementById("sunrise-time");
+    const weatherDescription = document.getElementById("weather-description");
 
     // Update the location, temperature, and details in the weather card
     location.textContent = data.city.name;
@@ -91,29 +86,24 @@ const updateHtml = (data) => {
     const sunset = formatTime(data.city.sunset);
     const sunrise = formatTime(data.city.sunrise);
 
-    details.innerHTML = `
-        <p>Sunset: ${sunset}</p>
-        <p>Sunrise: ${sunrise}</p>
-    `;
+    sunsetTime.textContent = `Sunset: ${sunset}`;
+    sunriseTime.textContent = `Sunrise: ${sunrise}`;
 
-    const description = document.createElement("p");
     const weatherCondition = data.list[0].weather[0].main;
     switch (weatherCondition) {
         case "Clear":
-            description.textContent = "A clear and sunny day ahead.";
+            weatherDescription.textContent = "A clear and sunny day ahead.";
             break;
         case "Clouds":
-            description.textContent = "Clouds are covering the sky.";
+            weatherDescription.textContent = "Clouds are covering the sky.";
             break;
         case "Rain":
-            description.textContent = "Expect some rain showers.";
+            weatherDescription.textContent = "Expect some rain showers.";
             break;
         case "Thunderstorm":
-            description.textContent = "Thunderstorms expected, stay indoors!";
+            weatherDescription.textContent = "Thunderstorms expected, stay indoors!";
+            break;
     }
-
-    description.classList.add("weather-description");
-    details.appendChild(description);
 
     updateWeeklyForecast(data.list);
 };
@@ -151,5 +141,3 @@ const updateWeeklyForecast = (forecastList) => {
         }
     });
 };
-
-
