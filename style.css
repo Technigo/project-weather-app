@@ -9,13 +9,17 @@ body {
 
 header {
     background: linear-gradient(to bottom right, #8589FF, #E8E9FF);
-    height: 460px;
+    height: 60%;
     width: 100%;
     display: flex;
     flex-direction: column;
     border-bottom-left-radius: 50% 10%;
     border-bottom-right-radius: 50% 10%;
 }
+
+/* header.night-theme {
+    background: linear-gradient(to bottom right, rgb(54, 54, 83), #E8E9FF)
+} */
 
 .menu {
     width: 35px;
@@ -24,7 +28,7 @@ header {
     flex-direction: column;
     justify-content: space-around;
     margin-left: 30px;
-    margin-top: 40px;
+    margin-top: 20px;
     cursor: pointer;
 }
 
@@ -37,7 +41,6 @@ header {
 
 /* Search town window */
 .search-location-window {
-    /* display: none; */
     z-index: 1;
     width: 100%;
     height: 60%;
@@ -76,7 +79,7 @@ header {
 .temperature-container {
     width: 211px;
     height: 203px;
-    margin-top: 71.5px;
+    margin-top: 40px;
     margin-left: 30px;
     text-align: left;
     color: #FFFFFF;
@@ -130,8 +133,8 @@ h3 {
 
 .sunrise-sunset {
     display: flex;
-    width: 342px;
-    margin-top: 130px;
+    width: 80%;
+    margin-top: 100px;
     margin-left: 30px;
     justify-content: space-between;
 }
@@ -144,6 +147,7 @@ p {
 }
 
 main {
+    height: 40%;
     display: flex;
     justify-content: center;
 }
@@ -152,7 +156,7 @@ main {
     min-width: 350px;
     max-width: 800px;
     min-height: 250px;
-    margin-top: 80px;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;

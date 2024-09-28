@@ -12,6 +12,7 @@ const cityName = document.getElementById('cityName')
 const sunrise = document.getElementById('sunrise')
 const sunset = document.getElementById('sunset')
 const iconCurrent = document.getElementById('currentWeatherImage')
+const header = document.getElementById('header')
 
 
 // function to create new URL for forecast based on the users input
@@ -34,6 +35,7 @@ const convertUnixToTime = (unixTime, timeZone) => {
     const minutes = "0" + localTime.getUTCMinutes()
     return `${hours}:${minutes.substr(-2)}`
 }
+
 
 // update HTML
 const updateHTML = (data) => {
@@ -81,7 +83,7 @@ const fetchWeatherData = async (cityName) => {
 // update HTML for forecast weather
 
 // Array with weekdays
-const weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fr', 'Sat', 'Sun']
+const weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 
 // Function for HTML inputs
 const updateForecastHTML = (dataForecast) => {
@@ -126,7 +128,6 @@ const updateForecastHTML = (dataForecast) => {
             </div>
         `
     }
-
     forecastContainer.innerHTML = forecastHTML
 }
 
