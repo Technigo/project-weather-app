@@ -1,0 +1,85 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f5b4b4, #b7c4f3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.weather-card {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 20px;
+    max-width: 320px;
+    text-align: center;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    color: #fff;
+}
+
+.weather-card h1 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.weather-icon {
+    width: 80px;
+    height: 80px;
+}
+
+.weather-card p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.sun-times {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    padding: 10px;
+    margin: 10px 0;
+    color: #333;
+}
+
+.sun-times p {
+    margin: 5px 0;
+}
+
+.forecast {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.forecast-day {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 10px;
+    border-radius: 12px;
+    width: 80px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.forecast-day img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 5px;
+}
+
+.forecast-day span {
+    display: block;
+    font-size: 14px;
+    color: #333;
+}
+
+.forecast-day .temp {
+    font-weight: bold;
+    font-size: 18px;
+    color: #333;
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Report</title>
+</head>
+
+<body>
+    <h1>This is your meteo report</h1>
+
+    <!-- Display Weather Info -->
+    <div>
+        <p>City: <span id="city">Loading...</span></p>
+        <p>Temperature: <span id="temp">Loading...</span></p>
+        <p>Meteo: <span id="weather-desc">Loading...</span></p>
+    </div>
+
+    <!-- Weather Form -->
+    <form class="weatherForm">
+        <input type="text" class="cityInput" placeholder="Enter city" />
+        <button type="submit">Get weather</button>
+    </form>
+
+    <div class="card" style="display:none"></div>
+
+    <!-- Lien vers votre fichier JavaScript -->
+    <script src="app.js"></script>
+</body>
+
+</html>
