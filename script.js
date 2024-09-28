@@ -1,3 +1,6 @@
+const cities = ['San Jose', 'New York', 'Los Angeles', 'Taipei', 'Gothenburg']
+let currentIndex = 0
+
 const API_KEY = "248332e11aac477643699fc267736540"
 const BASE_URL = "https://api.openweathermap.org/data/2.5/weather?"
 const FORECAST_BASE_URL = "https://api.openweathermap.org/data/2.5/forecast?"
@@ -13,9 +16,9 @@ const sunriseElement = document.getElementById("sunrise-time")
 const sunsetElement = document.getElementById("sunset-time")
 const weatherIcon = document.getElementById("main-icon")
 const forecastContainer = document.getElementById('forecast')
-const searchBox = document.getElementById('search-box')
 const searchInput = document.getElementById('search-input')
 const searchIcon = document.getElementById('input-search-icon')
+const arrowIcon = document.getElementById('arrow')
 
 // Function to capitalize first letter of each word
 const capitalizeFirstLetter = (str) => {
@@ -122,13 +125,24 @@ const toggleSearch = () => {
 // Fetch and display weather data for a searched city
 const fetchWeatherData = (city) => {
   const SEARCH_URL = `${BASE_URL}q=${city}&units=metric&APPID=${API_KEY}`
+  const SEARCH_FORECAST_URL = `${FORECAST_BASE_URL}q=${city}&units=metric&APPID=${API_KEY}`
+
   fetch(SEARCH_URL)
     .then(response => response.json())
     .then(data => {
       console.log(data)
       updateHTML(data)
     })
-    .catch(error => console.error('Error;', error))
+    .catch(error => console.error('Error:', error))
+
+
+  fetch(SEARCH_FORECAST_URL)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      updateForecastHTML(data)
+    })
+    .catch(error => console.error('Error:', error))
 }
 
 // Event listener for search input
@@ -136,6 +150,7 @@ const addSearchEventListener = (element, eventType) => {
   element.addEventListener(eventType, () => {
     const searchCity = searchInput.value;
     fetchWeatherData(searchCity);
+    searchInput.value = ''
   });
 };
 
@@ -144,9 +159,17 @@ addSearchEventListener(searchIcon, 'click');
 searchInput.addEventListener('keypress', (event) => {
   if (event.key === 'Enter') {
     fetchWeatherData(searchInput.value);
+    searchInput.value = ''
   }
 });
 
+// Cycle through city array
+const cycleCities = () => {
+  fetchWeatherData(cities[currentIndex])
+  currentIndex = (currentIndex + 1) % cities.length
+}
+
+arrowIcon.addEventListener('click', cycleCities)
 
 fetch(URL)
   .then(response => response.json())
