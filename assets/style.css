@@ -1,53 +1,53 @@
-/* Import de Google Fonts pour styliser la police */
+/* Import Google Fonts to style the font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-/* Général */
+/* General */
 body {
-    font-family: 'Poppins', sans-serif; /* Utilisation de la police 'Poppins' */
-    background-color: #FFF3E6; /* Crème douce */
+    font-family: 'Poppins', sans-serif; /* Using the 'Poppins' font */
+    background-color: #FFF3E6; /* Soft cream color */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    text-align: center; /* Centrage du texte pour tout le corps */
+    text-align: center; /* Center the text for the entire body */
 }
 
-/* Conteneur principal de la carte météo */
+/* Main container for the weather card */
 .weather-container {
     background-color: #FFFFFF;
     padding: 20px;
     max-width: 320px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    border: 1px solid #D7CCC8; /* Bordure beige */
-    text-align: center; /* Centrer le contenu dans la carte */
+    border: 1px solid #D7CCC8; /* Beige border */
+    text-align: center; /* Center the content in the card */
 }
 
-/* Style de la météo actuelle */
+/* Styling for current weather */
 .current-weather p {
     font-size: 16px;
-    color: #757575; /* Texte secondaire (gris) */
+    color: #757575; /* Secondary text (gray) */
     margin: 5px 0;
-    font-weight: 300; /* Police plus fine pour les détails */
+    font-weight: 300; /* Lighter font weight for details */
 }
 
 .current-weather h2 {
     font-size: 24px;
-    font-weight: 600; /* Plus de poids pour le texte principal */
-    color: #FF7043; /* Orange doux pour la description principale */
+    font-weight: 600; /* Heavier font weight for the main text */
+    color: #FF7043; /* Soft orange for the main description */
     line-height: 1.4;
     margin: 15px 0;
 }
 
-/* Icône météo centrale */
+/* Central weather icon */
 .weather-icon {
     width: 60px;
     height: 60px;
     margin: 15px 0;
 }
 
-/* Prévisions des jours suivants */
+/* Forecast for the upcoming days */
 .forecast {
     margin-top: 20px;
 }
@@ -56,26 +56,26 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 5px 0;
-    border-bottom: 1px dotted #D7CCC8; /* Bordure en pointillé beige */
+    border-bottom: 1px dotted #D7CCC8; /* Beige dotted border */
     font-size: 16px;
-    color: #5D4037; /* Brun foncé pour le texte des jours */
+    color: #5D4037; /* Dark brown for the day text */
 }
 
 .forecast-day p {
     margin: 0;
     flex: 1;
-    text-align: left; /* Aligner les jours à gauche */
+    text-align: left; /* Align the days to the left */
     font-weight: 400;
 }
 
 .forecast-day span {
     font-size: 18px;
-    font-weight: 600; /* Plus de poids pour les températures */
-    color: #FF7043; /* Orange doux pour la température */
-    text-align: right; /* Aligner les températures à droite */
+    font-weight: 600; /* Heavier font weight for temperatures */
+    color: #FF7043; /* Soft orange for the temperature */
+    text-align: right; /* Align temperatures to the right */
 }
 
-
+/* Responsiveness for smaller screens */
 @media (max-width: 768px) {
     .weather-container {
         padding: 15px;
@@ -83,6 +83,7 @@ body {
     }
 }
 
+/* Responsiveness for larger screens */
 @media (min-width: 1024px) {
     .weather-container {
         max-width: 600px;
