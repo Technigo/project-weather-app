@@ -13,6 +13,12 @@ const fiveDayForecast = document.getElementById('five-day-forecast')
 
 //Array with weekdays 
 const weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+
+const weatherIcons = {
+    "scattered clouds": "/assets/design-1/Group16.png", // Cloudy
+    "few clouds": "/assets/design-1/Group34.png", // Few clouds
+    "clear sky": "/assets/design-1/Group37.png", // Sunny
+  }
         
 //Fetch todays weather
 const fetchTodaysWeatherAsync = async (city) => {
@@ -30,14 +36,21 @@ const fetchTodaysWeatherAsync = async (city) => {
         cityName.innerHTML = data.name
         temperature.innerHTML = `${Math.round(data.main.temp)} °C`
         description.innerHTML = data.weather[0].description
+        
+        const weatherDescription = data.weather[0].description
+
+        //Weather icon
+        const weatherIconURL = weatherIcons[weatherDescription] || "/assets/design-1/Group16.png"; // Default icon
+        document.getElementById("weather-icon").src = weatherIconURL
+
+
         //Convert Sunset/Sunrise from seconds to milliseconds by multiplying by 1000, which the date object requires 
         const sunrise = new Date(data.sys.sunrise * 1000).toLocaleTimeString()
         const sunset = new Date(data.sys.sunset * 1000).toLocaleTimeString()
          
-        sunriseTime.innerHTML = `Sunrise: ${sunrise}`;
+        sunriseTime.innerHTML = `Sunrise: ${sunrise}`
         sunsetTime.innerHTML = `Sunset: ${sunset}`
-        //sunriseTime.innerHTML = data.sys.sunrise
-        //sunsetTime.innerHTML = data.sys.sunset
+
     } catch (error) {
      //Handle any errors 
     console.error("Error when fetching Today's weather", error)
@@ -66,12 +79,14 @@ const fetchForecastWeatherAsync = async (city) => {
             filteredForecast.forEach(forecast => {
                 let forecastDate = new Date(forecast.dt_txt)//Convert date to Date const
                 let dayName = weekdays[forecastDate.getDay()] // Get weekday
-                
-                //Update HTML with weekday and temperture
-                fiveDayForecast.innerHTML += `<p>${dayName}: ${Math.round(forecast.main.temp)} °C</p>`
 
+                //Get weather icon
+                const weatherDescription = forecast.weather[0].description
                 
-                console.log(`Day: ${dayName}, Temp: ${forecast.main.temp} °C`)
+                //Update HTML with weekday, temperture and icon
+                const forecastIconURL = weatherIcons[weatherDescription] || "/assets/design-1/Group16.png"; // Default icon
+                fiveDayForecast.innerHTML += `<p>${dayName}: <img src="${forecastIconURL}" alt="weather icon"> ${Math.round(forecast.main.temp)} °C</p>`
+                
         })
     } catch (error) {
      //Handle any errors 
