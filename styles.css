@@ -8,7 +8,7 @@
 
 .layout {
   position: relative;
-  width: 100wh;
+  width: 100vw;
   height: 100vh;
   font-family: 'Roboto', sans-serif;
   margin: 0;
@@ -47,7 +47,7 @@
 
 @keyframes coldAnimation {
   0% {
-    background-color: rgba(64, 183, 222, 0.2)
+    background-color: rgba(64, 183, 222, 0.3)
   }
 
   50% {
@@ -55,7 +55,7 @@
   }
 
   100% {
-    background-color: rgba(54, 183, 222, 0.2)
+    background-color: rgba(54, 183, 222, 0.3)
   }
 }
 
@@ -207,7 +207,7 @@ footer {
 }
 
 /* Smaller screen widths */
-@media (max-width: 380px) {
+@media (max-width: 540px) {
 
   .main-info {
     margin-bottom: 5%;
@@ -223,7 +223,7 @@ footer {
 
 }
 
-/* Tablets and larger screens */
+/* Larger screens */
 @media (min-width: 540px) {
 
   body,
@@ -250,7 +250,7 @@ footer {
     display: flex;
     flex-direction: column;
     align-content: space-between;
-    margin-bottom: 5%;
+    margin-bottom: 0;
   }
 
   .temperature {
@@ -285,12 +285,7 @@ footer {
   }
 
   .sunrise-sunset {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 80%;
     font-size: 22px;
-    position: relative;
   }
 
   footer {
