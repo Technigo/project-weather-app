@@ -2,10 +2,45 @@
 /* JSON file - Weather API */
 const API_KEY = "3cc790b1653416aade4ba256c95e0c67"
 const BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
-let cityWeather = "katrineholm";
+let cityWeather = "Stockholm";
 
+/* URL for API */
 const URL = `${BASE_URL}?q=${cityWeather}&units=metric&APPID=${API_KEY}`
 console.log(URL)
+
+
+/* Function to fetch weather data based on the city name */
+
+/* Get references to the input field and button */
+ const searchInput = document.getElementById("city-input");
+ const searchButton = document.getElementById("btn-city-input");
+
+
+/* Add event listener for the button click */
+ searchButton.addEventListener("click", function() {
+    cityWeather = searchInput.value;
+
+    console.log('Search query:', cityWeather);
+
+});
+
+
+ // Trigger the search when the Enter key is pressed
+ searchInput.addEventListener('keypress', function(event) {
+     if (event.key === 'Enter') {
+         // Prevent the default action of the Enter key (form submission, etc.)
+         event.preventDefault();
+
+         // Get the value from the search input field
+         cityWeather = searchInput.value;
+
+         // Log the search query
+         console.log('Search query (Enter pressed):', cityWeather);
+     }
+ });
+
+
+
 
 /* DOM selectors */
 const weatherTitle = document.getElementById("title-weather")
@@ -14,18 +49,12 @@ const weatherType = document.getElementById("upper-info-weather-type")
 const weatherTemp = document.getElementById("upper-info-weather-temp")
 const timeSunrise = document.getElementById("upper-info-sunrise-time")
 const timeSunset = document.getElementById("upper-info-sunset-time")/* 
-const cityWeather = document.getElementById("city-input").value */
-
-
-// Function to fetch weather data based on the city name
-
-
 
 
 /* Sparad data från JSON-fil */
 const showNewHTML = (data) => {
 
-    /* onst cityName = data.name;
+    /* const cityName = data.name;
     cityWeather.innerText = cityName */
 
     const description = data.weather[0].description
@@ -35,12 +64,13 @@ const showNewHTML = (data) => {
     const roundedTemp = temp.toFixed(1);
     weatherTemp.innerText = roundedTemp
 
+    /* Sunrise and sunset */
     const sunrise = data.sys.sunrise;
     const sunset = data.sys.sunset;
     // Convert UNIX time to a readable format
     const sunriseDate = new Date(sunrise * 1000);
     const sunsetDate = new Date(sunset * 1000);
-    // Format the time (HH:MM:SS)
+    // Format the time (HH:MM)
     const sunriseFormatted = sunriseDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     const sunsetFormatted = sunsetDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
