@@ -217,5 +217,21 @@ ul {
 }
 
 .button {
-  left: 50%;
+  left: 70%;
+}
+
+@media (max-height: 670px) {
+  .button {
+    top: 40%;
+  }
+  .menu-icon {
+    display: none;
+  }
+  .current-weather {
+    top: -90px;
+  }
+
+  .weather-image {
+    bottom: -20%;
+  }
 }
