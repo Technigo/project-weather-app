@@ -15,50 +15,6 @@
   box-sizing: border-box;
 }
 
-.overlay-container {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 1000;
-  pointer-events: none;
-}
-
-.warm {
-  animation: warmAnimation 5s infinite;
-}
-
-@keyframes warmAnimation {
-  0% {
-    background-color: rgba(255, 223, 0, 0.2)
-  }
-
-  50% {
-    background-color: rgba(255, 165, 0, 0.2);
-  }
-
-  100% {
-    background-color: rgba(255, 223, 0, 0.2)
-  }
-}
-
-.cold {
-  animation: coldAnimation 5s infinite;
-}
-
-@keyframes coldAnimation {
-  0% {
-    background-color: rgba(64, 183, 222, 0.3)
-  }
-
-  50% {
-    background-color: rgba(214, 232, 247, 0.2);
-  }
-
-  100% {
-    background-color: rgba(54, 183, 222, 0.3)
-  }
-}
-
 .top-container {
   position: relative;
   background-image: linear-gradient(to bottom right, rgba(133, 137, 255, 1), rgba(232, 233, 255, 1));
@@ -164,7 +120,6 @@
 
 .forecast-container {
   margin: 0 10%;
-
 }
 
 .forecast-row {
@@ -201,6 +156,52 @@
   right: 5%;
   width: 30%;
 }
+
+.overlay-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+/* Animations for cold and warm colors */
+.warm {
+  animation: warmAnimation 5s infinite;
+}
+
+@keyframes warmAnimation {
+  0% {
+    background-color: rgba(255, 223, 0, 0.2)
+  }
+
+  50% {
+    background-color: rgba(255, 165, 0, 0.2);
+  }
+
+  100% {
+    background-color: rgba(255, 223, 0, 0.2)
+  }
+}
+
+.cold {
+  animation: coldAnimation 5s infinite;
+}
+
+@keyframes coldAnimation {
+  0% {
+    background-color: rgba(64, 183, 222, 0.3)
+  }
+
+  50% {
+    background-color: rgba(183, 218, 246, 0.2);
+  }
+
+  100% {
+    background-color: rgba(54, 183, 222, 0.3)
+  }
+}
+
 
 footer {
   display: none;
@@ -286,6 +287,7 @@ footer {
 
   .sunrise-sunset {
     font-size: 22px;
+    margin-top: 5px;
   }
 
   footer {

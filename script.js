@@ -153,7 +153,6 @@ const fetchWeatherData = (city) => {
     })
     .catch(error => console.error('Error:', error))
 
-
   fetch(SEARCH_FORECAST_URL)
     .then(response => response.json())
     .then(data => {
@@ -178,7 +177,7 @@ searchInput.addEventListener('keypress', (event) => {
     fetchWeatherData(searchInput.value);
     searchInput.value = ''
   }
-});
+})
 
 // Cycle through city array
 const cycleCities = () => {
@@ -218,9 +217,6 @@ const setBackgroundBasedOnWeatherId = (weatherId, timezoneOffset) => {
   const timeOfDay = getTimeOfDay(timezoneOffset)
   const firstDigit = weatherId.toString()[0]
 
-  console.log(firstDigit)
-  console.log(weatherId)
-  console.log(timeOfDay)
   let backgroundImage = ""
 
   switch (true) {
