@@ -352,9 +352,6 @@ const createCityInput = (parentElement, inputValue = displayedCityName) => {
   // Append the input to the parentElement before measuring width
   parentElement.appendChild(cityInput);
 
-  // Adjust the width based on the new value
-  updateInputWidth(cityInput);
-
   // Event listener for 'input' to adjust the width dynamically
   cityInput.addEventListener("input", () => {
     updateInputWidth(cityInput);
@@ -376,6 +373,18 @@ const createCityInput = (parentElement, inputValue = displayedCityName) => {
   cityInput.addEventListener("blur", (event) => {
     handleSearch(event); // Update the city when input loses focus
   });
+
+  // Wait for fonts to be loaded before adjusting the width
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => {
+      updateInputWidth(cityInput);
+    });
+  } else {
+    // Fallback for browsers that do not support document.fonts
+    window.addEventListener("load", () => {
+      updateInputWidth(cityInput);
+    });
+  }
 };
 
 /**
