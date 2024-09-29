@@ -15,10 +15,10 @@ const fiveDayForecast = document.getElementById('five-day-forecast')
 const weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 
 const weatherIcons = {
-    "scattered clouds": "/code/assets/design-1/Group16.png", // Cloudy
-    "few clouds": "/code/assets/design-1/Group34.png", // Few clouds
-    "clear sky": "/code/assets/design-1/Group37.png", // Sunny
-  }
+    "scattered clouds": "./assets/design-1/Group16.png", // Cloudy
+    "few clouds": "./assets/design-1/Group34.png", // Few clouds
+    "clear sky": "./assets/design-1/Group37.png", // Sunny
+}
         
 //Fetch todays weather
 const fetchTodaysWeatherAsync = async (city) => {
@@ -40,7 +40,8 @@ const fetchTodaysWeatherAsync = async (city) => {
         const weatherDescription = data.weather[0].description
 
         //Weather icon
-        const weatherIconURL = weatherIcons[weatherDescription] || "/assets/design-1/Group16.png"; // Default icon
+        const weatherIconURL = weatherIcons[weatherDescription] || "./assets/design-1/Group16.png"; // Default icon
+        console.log("Weather icon path:", weatherIconURL)
         document.getElementById("weather-icon").src = weatherIconURL
 
 
@@ -84,7 +85,7 @@ const fetchForecastWeatherAsync = async (city) => {
                 const weatherDescription = forecast.weather[0].description
                 
                 //Update HTML with weekday, temperture and icon
-                const forecastIconURL = weatherIcons[weatherDescription] || "/assets/design-1/Group16.png"; // Default icon
+                const forecastIconURL = weatherIcons[weatherDescription] || "./assets/design-1/Group16.png"; // Default icon
                 fiveDayForecast.innerHTML += `<p>${dayName}: <img src="${forecastIconURL}" alt="weather icon"> ${Math.round(forecast.main.temp)} °C</p>`
                 
         })
