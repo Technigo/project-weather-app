@@ -1,0 +1,111 @@
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'poppins', sans-serif;
+}
+
+body {
+  background: url('assets/design-1/clouds.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.main-weather-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  padding: 5px 35px 15px;
+  width: 90%;
+  max-width: 470px;
+  margin: 10px auto 10px;
+}
+
+/* Search Icon */
+.search-icon {
+  position: relative;
+  top: 20px;
+  left: 20px;
+  padding: 5px;
+}
+
+.search-icon img {
+  width: 24px;
+  cursor: pointer;
+}
+
+/* Current Weather Section */
+.current-weather {
+  text-align: center;
+  color: #f1f1f1;
+}
+
+.temp {
+  font-size: 96px;
+  font-weight: bold;
+}
+
+.city {
+  font-size: 36px;
+  margin: 10px 0;
+}
+
+.time {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.weather-condition {
+  font-size: 24px;
+}
+
+.weather-icon img {
+  width: 50px;
+  margin-top: 10px;
+}
+
+.sun-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.sunrise, .sunset {
+  text-align: center;
+}
+
+/* Forecast Section */
+.forecast-container {
+  background-color: rgba(107, 107, 107, 0.3);
+  color: rgb(255, 255, 255);
+  padding: 50px 50px 50px 50px;
+  border-radius: 20px;
+  margin-top: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.forecast-day {
+  display: 1;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.forecast-day img {
+  width: 40px;
+}
+
+.forecast-day .day {
+  flex: 1;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.forecast-day .temp {
+  font-size: 18px;
+  font-weight: bold;
+}
+

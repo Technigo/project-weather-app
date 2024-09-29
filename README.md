@@ -1,13 +1,12 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+to build a simple weather dashboard that uses a weather API to tell today's weather and temperature and a 4-day forecast. We also had to make the design as similar as possible to the ones that were provided
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I followed the steps from the past live sessions and from youtube, I had problems with the styling trying to make it as similar as possible, and displaying the sunset/sunrise in a correct format.
 
+If I had more time I would like to make the live-time work correctly, and add the option to see other cities weather, also improve more the design
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://shiny-sopapillas-ecb62f.netlify.app

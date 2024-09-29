@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <div class="main-weather-container">
+    <!-- Search Icon -->
+    <div class="search-icon">
+      <img src="assets/design-1/search.png" alt="Search-icon">
+    </div>
+    
+    <!-- Current Weather Information -->
+    <div class="current-weather">
+      <div id="temp" class="temp">8°C</div>
+      <div id="city" class="city">Stockholm</div>
+      <div id="time" class="time">Time: 17:40</div>
+      <div id="weather-condition" class="weather-condition">Heavy Intensity Rain</div>
+      <div id="weather-icon" class="weather-icon">
+        <img src="assets/design-1/Group16.png" alt="Cloudy">
+      </div>
+      <div id="sun-info" class="sun-info">
+        <div id="sunrise" class="sunrise">Sunrise: 06:46</div>
+        <div id="sunset" class="sunset">Sunset: 18:30</div>
+      </div>
+    </div>
+
+    <!-- Forecast Section -->
+    <div class="forecast-container">
+      <div id="forecast"></div>
+    </div>
+  </div>
+  
+  <script src="./script.js"></script>
+</body>
+</html>
