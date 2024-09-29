@@ -154,6 +154,7 @@ h1 {
 #city-input {
   background: transparent;
   border: none;
+  border-radius: 0;
   border-bottom: 1px dashed;
   font-family: "Montserrat";
   font-size: 2.25rem;
