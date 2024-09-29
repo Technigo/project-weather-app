@@ -158,7 +158,6 @@ function updateUI(temperature, weatherDescription) {
         weatherMessage = `Light a fire and get cosy.<br>${CITY} is looking grey today.`;
     
     } else if (weatherDescription.toLowerCase().includes("snow")) {
-        // Daytime clear sky
         weatherContainer.style.backgroundColor = "#BDE8FA"; // Blue for cold weather
         weatherContainer.style.color = "#164A68"; // Blue font color
         searchButton.style.backgroundColor ="#164A68" //Blue font color
@@ -166,7 +165,6 @@ function updateUI(temperature, weatherDescription) {
         weatherMessage = `It is snowing today in ${CITY}.<br> Put on your winter clothes and get ready to play in the snow!`;
 
     } else if (weatherDescription.toLowerCase().includes("thunderstorm")) {
-        // Daytime clear sky
         weatherContainer.style.backgroundColor = "#BDE8FA"; // Blue for storm
         weatherContainer.style.color = "#164A68"; // Blue font color
         searchButton.style.backgroundColor ="#164A68" //Blue font color
