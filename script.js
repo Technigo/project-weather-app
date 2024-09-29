@@ -10,11 +10,12 @@ async function checkWeather() {
     console.log(data);
 
     document.getElementById("city").innerHTML = data.name;
-    document.getElementById("temp").innerHTML = `${data.main.temp}°C`;
+    document.getElementById("temp").innerHTML = `${data.main.temp.toFixed(1)}°C`;
     
     // Convert UNIX timestamp to readable time
-    document.getElementById("sunrise").innerHTML = new Date(data.sys.sunrise * 1000).toLocaleTimeString();
-    document.getElementById("sunset").innerHTML = new Date(data.sys.sunset * 1000).toLocaleTimeString();
+    document.getElementById("sunrise").innerHTML = new Date(data.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    document.getElementById("sunset").innerHTML = new Date(data.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
   } catch (error) {
     console.error("Error fetching weather data:", error);
   }

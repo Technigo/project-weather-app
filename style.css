@@ -1,263 +1,124 @@
 /* General Styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  body {
-    background: url('assets/design-1/clouds.jpg') no-repeat center center fixed;
-    background-size: cover;
-  }
-  
-  .main-weather-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100vh;
-    padding: 20px;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'poppins', sans-serif;
+}
+
+body {
+  background: url('assets/design-1/clouds.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.main-weather-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  padding: 5px 35px 15px;
+  width: 90%;
+  max-width: 470px;
+  margin: 10px auto 10px;
+}
+
 /* Search Icon */
 .search-icon {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    padding: 5px;
+  position: relative;
+  top: 20px;
+  left: 20px;
+  padding: 5px;
 }
 
 .search-icon img {
-    width: 24px; /* Adjust the size of the image */
-    height: auto; /* Maintain aspect ratio */
-    cursor: pointer; /* Change cursor to pointer when hovering over the icon */
+  width: 24px;
+  cursor: pointer;
 }
 
-  /* Current Weather Section */
-  .current-weather {
-    text-align: center;
-  }
-  
-  .current-temp {
-    font-size: 96px;
-    font-weight: bold;
-  }
-  
-  .city {
-    font-size: 36px;
-    margin: 10px 0;
-  }
-  
-  .time {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .weather-condition {
-    font-size: 24px;
-  }
-  
-  .weather-icon img {
-    width: 50px;
-    margin-top: 10px;
-  }
-  
-  .sun-info {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-    font-size: 18px;
-  }
-  
-  .sun-info .sunrise, .sun-info .sunset {
-    flex: 1;
-    text-align: center;
-  }
-  
-  /* Navigation Button */
-  .navigation-button {
-    position: absolute;
-    bottom: 80px;
-    right: 20px;
-    background-color: #A52A2A; /* Dark red */
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 24px;
-  }
-  
-  /* Forecast Section */
-  .forecast-container {
-    background-color: #f1f1f1;
-    color: black;
-    padding: 20px;
-    border-radius: 20px;
-    margin-top: 20px;
-  }
-  
-  .forecast-day {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .forecast-day img {
-    width: 40px;
-  }
-  
-  .forecast-day .day {
-    flex: 1;
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .forecast-day .temp {
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .forecast-day .wind-speed {
-    font-size: 16px;
-    color: gray;
-  }
-  
-  /* Responsive Styles */
-  
-  /* For screens from 320px up to 600px (mobile devices) */
-  @media (max-width: 600px) {
-    .current-temp {
-      font-size: 48px;
-    }
-  
-    .location {
-      font-size: 24px;
-    }
-  
-    .time {
-      font-size: 16px;
-    }
-  
-    .weather-condition {
-      font-size: 18px;
-    }
-  
-    .weather-icon img {
-      width: 40px;
-    }
-  
-    .sun-info {
-      font-size: 14px;
-    }
-  
-    .forecast-day .day, .forecast-day .temp {
-      font-size: 16px;
-    }
-  
-    .forecast-day img {
-      width: 20px;
-    }
-  
-    .navigation-button {
-      width: 40px;
-      height: 40px;
-      font-size: 18px;
-    }
-  
-    /* Reduce padding for small devices */
-    .main-weather-container {
-      padding: 10px;
-    }
-  
-    .forecast-container {
-      padding: 10px;
-    }
-  }
-  
-  /* For screens from 601px up to 1200px (tablets and small desktops) */
-  @media (min-width: 601px) and (max-width: 1200px) {
-    .current-temp {
-      font-size: 72px;
-    }
-  
-    .location {
-      font-size: 32px;
-    }
-  
-    .time {
-      font-size: 18px;
-    }
-  
-    .weather-condition {
-      font-size: 20px;
-    }
-  
-    .weather-icon img {
-      width: 45px;
-    }
-  
-    .sun-info {
-      font-size: 16px;
-    }
-  
-    .forecast-day .day, .forecast-day .temp {
-      font-size: 18px;
-    }
-  
-    .forecast-day img {
-      width: 25px;
-    }
-  
-    .navigation-button {
-      width: 45px;
-      height: 45px;
-      font-size: 22px;
-    }
-  }
-  
-  /* For screens from 1201px to 1600px (large desktops) */
-  @media (min-width: 1201px) {
-    .current-temp {
-      font-size: 96px;
-    }
-  
-    .location {
-      font-size: 36px;
-    }
-  
-    .time {
-      font-size: 20px;
-    }
-  
-    .weather-condition {
-      font-size: 24px;
-    }
-  
-    .weather-icon img {
-      width: 50px;
-    }
-  
-    .sun-info {
-      font-size: 18px;
-    }
-  
-    .forecast-day .day, .forecast-day .temp {
-      font-size: 20px;
-    }
-  
-    .forecast-day img {
-      width: 30px;
-    }
-  
-    .navigation-button {
-      width: 50px;
-      height: 50px;
-      font-size: 24px;
-    }
-  }
-  
+/* Current Weather Section */
+.current-weather {
+  text-align: center;
+  color: #f1f1f1;
+}
+
+.temp {
+  font-size: 96px;
+  font-weight: bold;
+}
+
+.city {
+  font-size: 36px;
+  margin: 10px 0;
+}
+
+.time {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.weather-condition {
+  font-size: 24px;
+}
+
+.weather-icon img {
+  width: 50px;
+  margin-top: 10px;
+}
+
+.sun-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.sunrise, .sunset {
+  text-align: center;
+}
+
+/* Forecast Section */
+.forecast-container {
+  background-color: rgba(107, 107, 107, 0.3);
+  color: rgb(255, 255, 255);
+  padding: 50px 50px 50px 50px;
+  border-radius: 20px;
+  margin-top: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.forecast-day {
+  display: 1;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.forecast-day img {
+  width: 40px;
+}
+
+.forecast-day .day {
+  flex: 1;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.forecast-day .temp {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Responsive Styles */
+
+/* For screens from 320px up to 600px (mobile devices) */
+@media (max-width: 600px) 
+
+
+/* For screens from 601px up to 1200px (tablets and small desktops) */
+@media (min-width: 601px) and (max-width: 1200px) 
+
+
+/* For screens from 1201px to 1600px (large desktops) */
+@media (min-width: 1201px) 
+
