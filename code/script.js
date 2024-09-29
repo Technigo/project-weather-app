@@ -1,14 +1,7 @@
 //API URL and Endpoints
 const BASE_URL = "https://api.openweathermap.org/data/2.5/weather?"
-const api_key = "617b18d1663716ef276314bb0808d62b"
-const LAT = "59.3326"
-const LON = "18.0649"
-const timestamps = 2
-
-//const todayURL = `${BASE_URL}q=${city}&units=metric&APPID=${api_key}`
 const forecastBaseURL = "https://api.openweathermap.org/data/2.5/forecast?"
-const forecastURL = `${forecastBaseURL}lat=${LAT}&lon=${LON}&cnt=${timestamps}&units=metric&appid=${api_key}`
-// units=metric to get temperatures in Celcius
+const api_key = "617b18d1663716ef276314bb0808d62b"
 
 // DOM Selectors
 const cityName = document.getElementById("city")
@@ -16,16 +9,15 @@ const description = document.getElementById("description")
 const temperature = document.getElementById("temperature")
 const sunriseTime = document.getElementById("sunrise")
 const sunsetTime = document.getElementById("sunset")
-const weekday = document.getElementById("weekday")
+const fiveDayForecast = document.getElementById('five-day-forecast')
 
-//Other variables
-const date = new Date()
-//const lat = data.coord.lat
-//const lon = data.coord.lon
+//Array with weekdays 
+const weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
         
 //Fetch todays weather
 const fetchTodaysWeatherAsync = async (city) => {
     const todayURL = `${BASE_URL}q=${city}&units=metric&APPID=${api_key}`
+    // units=metric to get temperatures in Celcius
     try {
         const response = await fetch(`${todayURL}`)
         if (!response.ok) {
@@ -33,8 +25,8 @@ const fetchTodaysWeatherAsync = async (city) => {
         }
         //convert response to JSON
         const data = await response.json()
-        //console.log("Data is shown in JSON format: ", data)
-        
+
+        //Update DOM with today's weather data
         cityName.innerHTML = data.name
         temperature.innerHTML = `${data.main.temp} °C`
         description.innerHTML = data.weather[0].description
@@ -49,6 +41,8 @@ fetchTodaysWeatherAsync("Las Vegas")
 
 //Fetch forecast weather
 const fetchForecastWeatherAsync = async (city) => {
+    const forecastURL = `${forecastBaseURL}q=${city}&units=metric&appid=${api_key}`
+     // units=metric to get temperatures in Celcius
     try {
         const response = await fetch(`${forecastURL}`)
         if (!response.ok) {
@@ -56,11 +50,26 @@ const fetchForecastWeatherAsync = async (city) => {
         }
         //convert response to JSON
         const data = await response.json()
-        console.log("Forecast data is shown in JSON format: ", data)
-        
+
+        //Filter forecast on 12:00
+        const filteredForecast = data.list.filter(forecast => {
+            const forecastDate = new Date(forecast.dt_txt)
+            return forecastDate.getHours() === 12
+        })
+
+            filteredForecast.forEach(forecast => {
+                let forecastDate = new Date(forecast.dt_txt)//Convert date to Date const
+                let dayName = weekdays[forecastDate.getDay()] // Get weekday
+                
+                //Update HTML with weekday and temperture
+                fiveDayForecast.innerHTML += `<p>${dayName}: ${forecast.main.temp} °C</p>`
+
+                
+                console.log(`Day: ${dayName}, Temp: ${forecast.main.temp} °C`)
+        })
     } catch (error) {
      //Handle any errors 
     console.error("Error when fetching the forecast", error)
      }
 }
-fetchForecastWeatherAsync()
+fetchForecastWeatherAsync("Las Vegas")
