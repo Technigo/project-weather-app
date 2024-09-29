@@ -1,24 +1,20 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f7f0cf;
-    color: #2e523a;
+    background-color: #F7E9B9;
+    color: #2A5510;
     margin: 0;
-    padding: 60px;
+    padding: 40px;
 }
 
 .current-weather {
+    font-weight: 400;
     padding-left: 10px;
-    font-size: 18px;
-}
-
-h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #2e523a;
+    font-size: 21px;
+    line-height: 25.6px;
 }
 
 p {
-    font-size: 18px;
+    font-size: 21px;
     margin: 4px 0;
 }
 
@@ -26,84 +22,42 @@ p {
     padding-left: 10px;
 }
 
-h2 {
-    font-size: 32px;
+h1,
+#location {
+    font-size: 37px;
     margin-bottom: 10px;
-    color: #2e523a;
+    color: #2A5510;
     padding-left: 10px;
+    line-height: 45.1px;
+    font-weight: 700;
+}
+
+h1 {
+    padding-bottom: 15px;
 }
 
 .forecast-container p {
     display: flex;
-    justify-content: space-between;
-    /* This makes the day and temperature sit at opposite ends */
+    font-size: 21px;
     padding: 10px;
     border-bottom: 1px dotted #2e523a;
     /* Dotted line bottom */
-    font-size: 18px;
-    color: #2e523a;
+    color: #2A5510;
+    line-height: 36px;
 }
 
 /* Media queries */
-/* LOOK THROUGH THIS TOMORROW AND CHANGE IT*/
-/* Smartphone*/
-@media only screen and (min-width: 320px) and (max-width: 767px) {
-    body {
-        padding: 40px;
-    }
-
-    .current-weather {
-        font-size: 14px;
-    }
-
-    h1 {
-        font-size: 20px;
-    }
-
-    h2 {
-        font-size: 24px;
-    }
-
-    .forecast-container p {
-        font-size: 14px;
-    }
-}
-
 /* Tablet */
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
     body {
         padding: 50px;
-    }
-
-    .current-weather {
-        font-size: 17px;
-    }
-
-    h1 {
-        font-size: 26px;
-    }
-
-    h2 {
-        font-size: 30px;
     }
 }
 
 /* Desktop */
 @media only screen and (min-width: 1024px) and (max-width: 1600px) {
     body {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .current-weather {
-        font-size: 18px;
-    }
-
-    h1 {
-        font-size: 28px;
-    }
-
-    h2 {
-        font-size: 32px;
+        /* margin: 0 auto; */
+        padding: 60px;
     }
 }

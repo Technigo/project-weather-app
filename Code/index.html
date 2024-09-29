@@ -11,10 +11,11 @@
 </head>
 
 <body>
-  <div class="weather-container"></div>
+  <div id="error"></div>
+
+  <div id="weather-container"></div>
   <!-- Current weather information displayed here -->
   <div class="current-weather">
-    <p id="location"></p>
     <p id="temperature"></p>
     <p id="weather"></p>
     <p>Sunrise <span id="sunrise"></span></p>
@@ -61,9 +62,10 @@
   </svg>
   </div>
 
-  <h2>Get your sunnies on.
-    <br>It's a beautiful day in Stockholm today.
-  </h2>
+  <h1>Get your sunnies on.
+    <br>
+    It's a beautiful day in<span id="location"></span> today.
+  </h1>
 
   <!-- 4-day forecast weather -->
   <div id="forecast-list" class="forecast-container"></div>
