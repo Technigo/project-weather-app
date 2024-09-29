@@ -63,18 +63,23 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Malmo,Sweden&units=metr
 fetch('https://api.openweathermap.org/data/2.5/forecast?q=Malmo,Sweden&units=metric&APPID=f6ea1936f0499b177ea24494f76ba447')
   .then((response) => {
     return response.json();
+
   })
   .then((data) => {
+    const today = new Date();
+
+    // Find the closest noon forecast after the current time
     const noonForecasts = data.list.filter(forecast => {
       const forecastTime = new Date(forecast.dt_txt);
-      return forecastTime.getHours() === 12 && forecastTime.getMinutes() === 0;
+      return forecastTime.getHours() === 12 && forecastTime.getMinutes() === 0 && forecastTime > today;
     });
 
-    if (noonForecasts.length >= 4) {
+    if (noonForecasts.length > 0) {
       const futureWeatherDiv = document.getElementById('futureWeather');
       let htmlContent = '';
 
-      for (let i = 0; i < 4; i++) {
+      // Show the next 4 noon forecasts
+      for (let i = 0; i < Math.min(noonForecasts.length, 4); i++) {
         const forecast = noonForecasts[i];
         const forecastDate = new Date(forecast.dt_txt);
         const formattedDate = forecastDate.toLocaleDateString('en-US', { weekday: 'short' });
@@ -86,12 +91,12 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=Malmo,Sweden&units=met
         const iconUrl = weatherIcons[weatherIconCode] || 'https://openweathermap.org/img/wn/unknown.png';
 
         htmlContent += `<ul>${formattedDate} <img class="s-icon" src="${iconUrl}" alt="${forecast.weather[0].description}">
-        ${forecast.main.temp.toFixed(1)}°C</ul>`;
+          ${forecast.main.temp.toFixed(1)}°C</ul>`;
       }
 
       futureWeatherDiv.innerHTML = htmlContent;
     } else {
-      console.log('No noon forecasts found');
+      console.log('No noon forecasts found for the next days');
     }
   })
   .catch((error) => {
