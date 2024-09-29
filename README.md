@@ -1,12 +1,6 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
-
-## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The project was to build a simple weather dashboard that uses a weather API to tell today's weather and temperature and a 4-day forecast. A couple of different designers had a take on this project and it was a chance to practice to implement someone else's design. 
 
 ## View it live
 
