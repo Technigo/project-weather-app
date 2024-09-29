@@ -21,6 +21,12 @@ const temperature = document.getElementById("temp");
 const weatherCondition = document.getElementById("condition");
 const sunriseDisplay = document.getElementById("sunriseID");
 const sunsetDisplay = document.getElementById("sunsetID");
+const forecast = document.getElementById("forecastID")
+//DOM Selectors - Images 
+const sunImg = document.getElementById("sun");
+const cloudsImg = document.getElementById("cloudsImg");
+const rainImg = document.getElementById("rainImg");
+const brokenCloudsImg = document.getElementById("brokenCloudsImg");
 
 //FUNCTIONS
 // Function to convert UNIX timestamp to readable time format
@@ -35,6 +41,23 @@ const makeElementSunny = (element) => {
   element.classList.remove("weather-card")
   element.classList.add("weather-card-sunny")
 }
+
+// Function to format timestamp to date string (YYYY-MM-DD)
+const formatDate = (timestamp) => {
+  const date = new Date(timestamp * 1000);
+  return date.toISOString().split('T')[0]; // Get only the date part
+};
+
+// Function to get day of the week from date string
+const getDayOfWeek = (dateString) => {
+  const date = new Date(dateString);
+  const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  return daysOfWeek[date.getDay()]; // Returns the day of the week
+};
+
+// Initialize an object to hold daily min and max temps
+const dailyTemps = {};
+
 //Fetching data from the IPA for current weather
 fetch(URL)
   .then(response => response.json())
@@ -44,7 +67,7 @@ fetch(URL)
     const stockholm = data.name;
     const stockholmTemp = data.main.temp;
     const roundedTemp = Math.round(stockholmTemp);
-    const displayCondition = data.weather[0].description;;
+    const displayCondition = data.weather[0].description;
 
     //changing the innerHTML for city, temp and condition. 
     weatherLocation.innerText = `${stockholm}`;
@@ -56,42 +79,48 @@ fetch(URL)
     const sunriseTime = convertUnixToTime(data.sys.sunrise);
     const sunsetTime = convertUnixToTime(data.sys.sunset);
 
-    // Display sunrise and sunset times
+    // Display sunrise and sunset times in innerText
     sunriseDisplay.innerText = `Sunrise ${sunriseTime}`;
-    sunsetDisplay.innerText = `Sunset ${sunsetTime}`;
+    sunsetDisplay.innerText = `Sunset  ${sunsetTime}`;
 
-    // switch(displayCondition) {
-    //   case "Clear":
-    //     makeElementSunny(document.getElementById("--"))
-    //     break
-    //   case "Cloudy":
-    //     ...
-    //     break
-    // }
+    // Hide all images 
+    sunImg.classList.add("hidden");
+    cloudsImg.classList.add("hidden");
+    rainImg.classList.add("hidden");
+    brokenCloudsImg.classList.add("hidden");
 
-    // if (displayCondition == "Clear") {
-    //   makeElementSunny(document.getElementById("--"))
-    // } else if()
+    //Change image if weahtercondition is sunny/cloudy etc
+    switch (true) {
+      case displayCondition.includes("clear"):
+        sunImg.classList.remove("hidden");
+        sunImg.classList.add("visible");
+        break;
+      case displayCondition.includes("cloudy"):
+        cloudsImg.classList.remove("hidden");
+        cloudsImg.classList.add("visible");
+        break;
+      case displayCondition.includes("rain"):
+        rainImg.classList.remove("hidden");
+        rainImg.classList.add("visible");
+        break;
+      case displayCondition.includes("broken clouds"):
+        brokenCloudsImg.classList.remove("hidden");
+        brokenCloudsImg.classList.add("visible");
+        break;
+    }
 
   })
-  .catch(error => console.error('Error fetching data:', error));
+  .catch(error => {
+    console.error('Error fetching weather data:', error);
+    forecast.innerHTML = "Unable to retrieve weather data.";
+  });
 
 
-//Fetching data from the forecastURL
+// Fetching data from the forecastURL
 fetch(forecastURL)
   .then(response => response.json())
   .then(data => {
-    console.log(data)
-
-
-    // Helper function to format timestamp to date string (YYYY-MM-DD)
-    const formatDate = (timestamp) => {
-      const date = new Date(timestamp * 1000);
-      return date.toISOString().split('T')[0]; // Get only the date part
-    };
-
-    // Initialize an object to hold daily min and max temps
-    const dailyTemps = {};
+    console.log(data);
 
     // Iterate through the weather forecast
     data.list.forEach((forecast) => {
@@ -109,18 +138,40 @@ fetch(forecastURL)
       }
     });
 
-    // Extract the next four days' temperatures
-    const nextFourDays = Object.entries(dailyTemps).slice(0, 4).map(([date, temps]) => ({
-      date,
-      min: temps.min,
-      max: temps.max,
-    }));
+    // Extract the next four days' temperatures and convert date to day name
+    const nextFourDays = Object.entries(dailyTemps)
+      .slice(0, 5) // Get the first four days
+      .map(([date, temps]) => ({
+        date: getDayOfWeek(date), // Convert date to day name
+        min: temps.min,
+        max: temps.max,
+      }));
 
-    console.log(nextFourDays); // Output the result
+    // Render the forecast data in the browser
+    renderForecast(nextFourDays);
   })
   .catch(error => {
-    console.error('Error fetching weather data:', error); // Handle errors
+    console.error('Error fetching forecast data:', error);
+    forecast.innerHTML = "Unable to retrieve forecast data.";
   });
+
+// Function to render forecast data in the browser
+const renderForecast = (forecastData) => {
+  // Clear the existing forecast content
+  forecast.innerHTML = "";
+  let forecastContent = "";
+
+  forecastData.forEach(day => {
+    forecastContent +=
+      `<li class="forecast-item">
+        <span class="day-date">${day.date}</span>
+        <span class="temp-info">${Math.round(day.min)}° / ${Math.round(day.max)}°C</span>
+      </li>`;
+  });
+
+  // Set the forecast data to the innerHTML of the forecast container
+  forecast.innerHTML = forecastContent;
+};
 
 
 

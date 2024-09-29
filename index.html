@@ -18,15 +18,24 @@
     <main>
         <section class="weather-card">
             <div class="location-card">
-                <p class="temp" id="temp">Temp</p>
-                <p id="location">location</p>
-                <p id="condition">condition</p>
-                <p class="sunrise-sunset" id="sunriseID">sunrise</p>
-                <p class="sunrise-sunset" id="sunsetID">sunset</p>
+                <div class="temp-container">
+                    <img src="assets/design-2/sun.png" alt="sun" id="sun">
+                    <img id="cloudsImg" alt="clouds-img">
+                    <img id="brokenCloudsImg" alt="broken-clouds-img">
+                    <img id="rainImg" alt="rain-img">
+                    <p class="temp" id="temp">Temp</p>
+                    <p class="location" id="location">location</p>
+                    <p class="condition" id="condition">condition</p>
+                </div>
+                <div class="suntime-container">
+                    <p class="sunrise" id="sunriseID">sunrise</p>
+                    <p class="sunset" id="sunsetID">sunset</p>
+                </div>
+            </div>
+
             </div>
             <div class="forecast-card">
-                <p>forecast for the following 4 days</p>
-                <ul>forecast</ul>
+                <ul class="forecast" id="forecastID">forecast</ul>
             </div>
         </section>
 
