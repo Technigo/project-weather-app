@@ -1,10 +1,10 @@
-const cities = ['San Jose', 'New York', 'Los Angeles', 'Taipei', 'Gothenburg']
+const cities = ['Juneau', 'New York', 'Bermuda', 'Brisbane', 'London']
 let currentIndex = 0
 
 const API_KEY = "248332e11aac477643699fc267736540"
 const BASE_URL = "https://api.openweathermap.org/data/2.5/weather?"
 const FORECAST_BASE_URL = "https://api.openweathermap.org/data/2.5/forecast?"
-const city = "Stockholm"
+const city = "San Jose"
 const URL = `${BASE_URL}q=${city}&units=metric&APPID=${API_KEY}`
 const FORECAST_URL = `${FORECAST_BASE_URL}q=${city}&units=metric&APPID=${API_KEY}`
 
