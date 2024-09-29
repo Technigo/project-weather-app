@@ -109,16 +109,3 @@ body {
   font-weight: bold;
 }
 
-/* Responsive Styles */
-
-/* For screens from 320px up to 600px (mobile devices) */
-@media (max-width: 600px) 
-
-
-/* For screens from 601px up to 1200px (tablets and small desktops) */
-@media (min-width: 601px) and (max-width: 1200px) 
-
-
-/* For screens from 1201px to 1600px (large desktops) */
-@media (min-width: 1201px) 
-
