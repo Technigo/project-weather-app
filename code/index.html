@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Add this line to import Roboto font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="container" class="container">
+      <!-- svg's put in assets folder -->
+      <img src="../assets/design-1/sun.svg" alt="logo" class="logo" />
+      <img
+        src="../assets/design-1/menu-icon.svg"
+        alt="menu-icon"
+        class="menu-icon"
+      />
+      <img src="../assets/design-1/button.svg" alt="button" class="button" id="changeCity" />
+
+      <div class="current-weather">
+        <div class="weather-image"></div>
+        <div id="temperature"></div>
+        <span id="city"></span>
+        <span id="weather-condition"></span>
+        <div class="sun-info">
+          <span id="sunrise"></span>
+          <span id="sunset"></span>
+        </div>
+      </div>
+      <div class="forecast">
+        <ul id="list"></ul>
+      </div>
+
+      <span id="time"></span>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

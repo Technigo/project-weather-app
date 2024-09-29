@@ -1,0 +1,203 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: "Roboto", Arial, sans-serif;
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #b7b4b4;
+  padding: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 20px;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 414px;
+  height: 800px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  color: white;
+  background-color: #ffffff;
+}
+
+.menu-icon {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+  cursor: pointer;
+  margin: 20px 0 0 10px;
+}
+
+.current-weather {
+  flex: 1;
+  display: flex;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  background-color: #ffffff;
+  text-align: center;
+  position: relative;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.weather-image {
+  height: 800px;
+  width: 800px;
+  background: linear-gradient(90deg, #8589ff 0%, #e8e9ff 100%);
+  border-radius: 50%;
+  bottom: -0%;
+  position: absolute;
+  right: 50%;
+  transform: translate(50%);
+}
+
+#temperature {
+  position: relative;
+  z-index: 1;
+  justify-self: start;
+  font-size: 120px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  top: 10px;
+  margin-left: 30px;
+}
+
+#temperature sup {
+  font-size: 0.5em;
+  vertical-align: super;
+}
+
+#city {
+  z-index: 1;
+  margin-left: 30px;
+  font-family: Roboto;
+  color: #fff;
+  font-family: Roboto;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
+
+#time,
+#weather-condition,
+#sun-info {
+  margin: 20px 0;
+  z-index: 1;
+  margin: 0px 30px;
+  color: #fff;
+  font-family: Roboto;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
+
+.sun-info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  z-index: 1;
+  font-family: Roboto;
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 25.78px;
+  text-align: left;
+  padding: 0 30px;
+  margin-top: 20px;
+}
+
+.forecast,
+#time {
+  background-color: rgb(255, 253, 253);
+  color: #707070;
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 23.44px;
+  width: 394px;
+  flex-shrink: 0;
+}
+
+#time {
+  margin-bottom: 20px;
+}
+
+#list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 30px;
+}
+
+#list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.menu-icon {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.forecast ul li img {
+  width: 30px;
+  height: 30px;
+}
+
+.forecast ul li span:nth-child(3) {
+  font-size: 18px;
+}
+
+.forecast ul li span:nth-child(3) sup {
+  font-size: 0.7em;
+  vertical-align: super;
+}
+
+.logo {
+  position: absolute;
+  top: 64px;
+  left: 227px;
+  width: 160px;
+  height: auto;
+  z-index: 10;
+}
+
+.button {
+  width: 101.136px;
+  height: 101.136px;
+  flex-shrink: 0;
+  width: 101px;
+  height: 101px;
+  top: 391px;
+  left: 282px;
+  gap: 0px;
+  opacity: 0px;
+  z-index: 10;
+  position: relative;
+}
