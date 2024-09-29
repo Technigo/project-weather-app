@@ -1,13 +1,11 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+My first API project. It shows the weather in Malmö, sunrise+sunset and a 4 day forecast.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I'm using two different API:s, one for the weather and one for the forecast. I'm filtering the data and using innerHTML to display the information. I would like to add a search bar so that you could get the weather for other cities as well. But I spent my time making it look cute and colorful instead! :D
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://grayslay.netlify.app/ - my colorful weather app!
