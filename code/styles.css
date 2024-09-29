@@ -127,8 +127,7 @@ ul {
   margin-top: 20px;
 }
 
-.forecast,
-#time {
+.forecast {
   background-color: rgb(255, 253, 253);
   color: #707070;
   font-family: Roboto;
@@ -136,12 +135,9 @@ ul {
   font-style: normal;
   font-weight: 400;
   line-height: 23.44px;
-  width: 394px;
+  max-width: 394px;
   flex-shrink: 0;
-}
-
-#time {
-  margin-bottom: 20px;
+  margin: 30px 0px;
 }
 
 #list {
@@ -200,4 +196,18 @@ ul {
   opacity: 0px;
   z-index: 10;
   position: relative;
+}
+
+@media (max-width: 434px) {
+  .logo {
+    display: none;
+  }
+
+  .current-weather {
+    align-items: center;
+  }
+}
+
+.button {
+  left: 50%;
 }

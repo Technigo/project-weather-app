@@ -19,11 +19,6 @@ const cities = [
 
 let currentCityIndex = 0;
 
-function updateTime() {
-  const now = new Date();
-  time.innerHTML = `Time: ${now.getHours()}:${now.getMinutes().toString().padStart(2, "0")}`;
-}
-
 function formatTime(timestamp) {
   const date = new Date(timestamp * 1000);
   return `${date.getHours()}:${date.getMinutes().toString().padStart(2, "0")}`;
@@ -46,10 +41,7 @@ function fetchWeatherData(lat, lon) {
       sunset.innerHTML = `sunset ${formatTime(data.sys.sunset)}`;
 
       document.querySelector(".weather-image").innerHTML =
-        `<img src="${getWeatherIconUrl(data.weather[0].icon)}" alt="${data.weather[0].description}">`;
-
-      updateTime();
-      setInterval(updateTime, 60000); // Update time every minute
+        `<img src="${getWeatherIconUrl(data.weather[0].icon)}" alt="${data.weather[0].description}">`; // Update time every minute
     });
 
   fetch(
@@ -82,7 +74,7 @@ function fetchWeatherData(lat, lon) {
 // Initial weather fetch
 fetchWeatherData(cities[currentCityIndex].lat, cities[currentCityIndex].lon);
 
-// Add click event listener to the button
+// Event listeners on button
 changeCityButton.addEventListener("click", () => {
   currentCityIndex = (currentCityIndex + 1) % cities.length;
   fetchWeatherData(cities[currentCityIndex].lat, cities[currentCityIndex].lon);
