@@ -21,7 +21,7 @@ const fetchTodaysWeatherAsync = async (city) => {
     try {
         const response = await fetch(`${todayURL}`)
         if (!response.ok) {
-            throw new Error("Failed to fetch today's weather data");
+            throw new Error("Failed to fetch today's weather data")
         }
         //convert response to JSON
         const data = await response.json()
@@ -30,8 +30,14 @@ const fetchTodaysWeatherAsync = async (city) => {
         cityName.innerHTML = data.name
         temperature.innerHTML = `${Math.round(data.main.temp)} °C`
         description.innerHTML = data.weather[0].description
-        sunriseTime.innerHTML = data.sys.sunrise
-        sunsetTime.innerHTML = data.sys.sunset
+        //Convert Sunset/Sunrise from seconds to milliseconds by multiplying by 1000, which the date object requires 
+        const sunrise = new Date(data.sys.sunrise * 1000).toLocaleTimeString()
+        const sunset = new Date(data.sys.sunset * 1000).toLocaleTimeString()
+         
+        sunriseTime.innerHTML = `Sunrise: ${sunrise}`;
+        sunsetTime.innerHTML = `Sunset: ${sunset}`
+        //sunriseTime.innerHTML = data.sys.sunrise
+        //sunsetTime.innerHTML = data.sys.sunset
     } catch (error) {
      //Handle any errors 
     console.error("Error when fetching Today's weather", error)
@@ -46,7 +52,7 @@ const fetchForecastWeatherAsync = async (city) => {
     try {
         const response = await fetch(`${forecastURL}`)
         if (!response.ok) {
-            throw new Error("Failed to fetch forecast weather data");
+            throw new Error("Failed to fetch forecast weather data")
         }
         //convert response to JSON
         const data = await response.json()
