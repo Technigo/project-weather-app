@@ -157,15 +157,16 @@ function updateUI(temperature, weatherDescription) {
     } else if (weatherDescription.toLowerCase().includes("snow")) {
         // Daytime clear sky
         weatherContainer.style.backgroundColor = "#BDE8FA"; // Blue for cold weather
-        weatherContainer.style.color = "#FFFFFF"; // White font color
+        weatherContainer.style.color = "#164A68"; // Blue font color
         searchButton.style.backgroundColor ="#164A68" //Blue font color
         weatherImg.src = "assets/design-2/snow.png";
-        weatherMessage = `It is snowing today in ${CITY}!<br> Put on your winter clothes and get ready to play in the snow.`;
+        weatherMessage = `It is snowing today in ${CITY}.<br> Put on your winter clothes and get ready to play in the snow!`;
 
     } else if (weatherDescription.toLowerCase().includes("thunderstorm")) {
         // Daytime clear sky
         weatherContainer.style.backgroundColor = "#BDE8FA"; // Blue for storm
         weatherContainer.style.color = "#164A68"; // Blue font color
+        searchButton.style.backgroundColor ="#164A68" //Blue font color
         weatherImg.src = "assets/design-2/thunderstorm.png";
         weatherMessage = `Stormy weather ahead in ${CITY} today!<br> Seek shelter and avoid outdoor activities.`;
     } else {
