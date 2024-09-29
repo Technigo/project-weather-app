@@ -1,6 +1,8 @@
 // Current weather API
 // ea9a90c62aeaaa3811505087d195520e
 // Base URL + API key
+//https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=ea9a90c62aeaaa3811505087d195520e
+//https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=ea9a90c62aeaaa3811505087d195520e
 
 // True constants (SNAKECASE)
 const API_KEY = "ea9a90c62aeaaa3811505087d195520e";
@@ -25,7 +27,7 @@ function fetchWeatherData() {
     const URL = `${BASE_URL}${CITY}&units=metric&APPID=${API_KEY}`;
     const FORECAST_URL = `${FORECAST_BASE_URL}${CITY}&units=metric&APPID=${API_KEY}`;
 
-    // Fetch weather data
+    // Fetch current weather data
     fetch(URL)
         .then(response => response.json())
         .then(data => {
@@ -40,14 +42,15 @@ function fetchWeatherData() {
 
             temperatureDisplay.innerText = `${roundedTemp}°C`;
             conditionDisplay.innerText = `${weatherCondition}`;
-
+        
+    // Function to convert UNIX timestamp to readable time format (24-hour clock)
             const convertUnixToTime = (unixTimestamp) => {
                 const date = new Date(unixTimestamp * 1000);
                 const hours = date.getHours();
                 const minutes = String(date.getMinutes()).padStart(2, '0');
                 return `${hours}:${minutes}`;
             }
-
+    // Convert and display sunrise and sunset times
             const sunriseTime = convertUnixToTime(sunrise);
             const sunsetTime = convertUnixToTime(sunset);
             sunriseDisplay.innerText = `${sunriseTime}`;
