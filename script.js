@@ -490,7 +490,7 @@ const currentWeather = async (mockType = null) => {
       </div>
 
       <div id="weather-today__greeting" class="weather-today__greeting">
-        <img alt="${imgAlt}" src="${imgSrc}" />
+        <img width="192" height="192" alt="${imgAlt}" src="${imgSrc}" />
         <h1></h1>
       </div>
     `;
