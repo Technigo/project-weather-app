@@ -16,11 +16,20 @@
   box-sizing: border-box;
 }
 
+/* .overlay-container {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 100;
+} */
+
 .top-container {
   position: relative;
   background-image: linear-gradient(to bottom right, rgba(133, 137, 255, 1), rgba(232, 233, 255, 1));
   color: white;
-  height: 65vh;
+  height: 65%;
   padding: 8%;
   clip-path: ellipse(120% 80% at 50% 0%);
   padding-bottom: 30%;
@@ -36,19 +45,25 @@
 }
 
 #search-box {
+  /* background-color: rgba(255, 255, 255, 0.5); */
   position: absolute;
   border: 1px solid whitesmoke;
+  margin: 0;
+  outline: none;
   right: 5px;
-  padding: 5px;
 }
 
 #search-input {
   border: 1px solid transparent;
+  background-color: rgba(255, 255, 255, 0.5);
   border-radius: 4px;
   width: 200px;
-  font-size: 16px;
-  background-color: transparent;
+  font-size: 22px;
   outline: none;
+}
+
+#input-search-icon {
+  padding: 5px;
 }
 
 #toggle-icon {
@@ -64,6 +79,10 @@
   display: flex;
 }
 
+.main-info {
+  margin-bottom: 10%;
+}
+
 .temperature {
   margin-top: 20%;
   display: inline-flex;
@@ -71,8 +90,8 @@
 }
 
 .temp-number {
-  font-size: 7em;
-  font-weight: 300;
+  font-size: 8em;
+  font-weight: 500;
   transform-origin: bottom;
   transform: scaleY(1.1);
   line-height: 1;
@@ -85,7 +104,7 @@
 }
 
 .city {
-  font-size: 2em;
+  font-size: 2.2em;
 }
 
 .weather {
@@ -143,11 +162,13 @@
   text-align: right;
 }
 
-.arrow-container {
+.arrow-icon {
   position: absolute;
   top: 45%;
   right: 5%;
+  width: 30%;
 }
+
 
 footer {
   display: none;
@@ -155,40 +176,46 @@ footer {
 
 /* Smaller phones */
 @media (max-width: 380px) {
+
+  .main-info {
+    margin-bottom: 5%;
+  }
+
   .temp-number {
     font-size: 50px;
   }
 
-  .arrow-icon {
-    width: 75px;
-  }
 }
 
 /* Tablets and larger screens */
-@media (min-width: 667px) {
+@media (min-width: 540px) {
 
   body,
   html {
-    width: 100%;
+    width: 100vw;
+    /* height: 100vh; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
   }
 
   .layout {
-    width: 550px;
+    width: 450px;
+    height: 900px;
+    min-height: 900px;
     box-shadow: 10px 15px 20px rgba(0, 0, 0, 0.3);
     justify-self: center;
     align-self: center;
     margin: 50px;
+    margin-top: 10%;
   }
 
   .main-info {
     display: flex;
     flex-direction: column;
     align-content: space-between;
+    margin-bottom: 5%;
   }
 
   .temperature {

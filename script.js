@@ -19,6 +19,7 @@ const forecastContainer = document.getElementById('forecast')
 const searchInput = document.getElementById('search-input')
 const searchIcon = document.getElementById('input-search-icon')
 const arrowIcon = document.getElementById('arrow')
+const containerBackground = document.getElementById('background-container')
 
 // Function to capitalize first letter of each word
 const capitalizeFirstLetter = (str) => {
@@ -130,7 +131,9 @@ const fetchWeatherData = (city) => {
   fetch(SEARCH_URL)
     .then(response => response.json())
     .then(data => {
-      console.log(data)
+      const weatherId = data.weather[0].id
+      const timezoneOffset = data.timezone // timezone offset in seconds
+      setBackgroundBasedOnWeatherId(weatherId, timezoneOffset)
       updateHTML(data)
     })
     .catch(error => console.error('Error:', error))
@@ -139,7 +142,6 @@ const fetchWeatherData = (city) => {
   fetch(SEARCH_FORECAST_URL)
     .then(response => response.json())
     .then(data => {
-      console.log(data)
       updateForecastHTML(data)
     })
     .catch(error => console.error('Error:', error))
@@ -174,7 +176,9 @@ arrowIcon.addEventListener('click', cycleCities)
 fetch(URL)
   .then(response => response.json())
   .then(data => {
-    console.log(data)
+    const weatherId = data.weather[0].id
+    const timezoneOffset = data.timezone
+    setBackgroundBasedOnWeatherId(weatherId, timezoneOffset)
     updateHTML(data) //Call updateHTML with the fetched data
   })
   .catch(error => console.error('Error:', error))
@@ -182,8 +186,46 @@ fetch(URL)
 fetch(FORECAST_URL)
   .then(response => response.json())
   .then(data => {
-    console.log(data)
     updateForecastHTML(data)
   })
   .catch(error => console.error('Error:', error))
 
+
+const getTimeOfDay = (timezoneOffset) => {
+  const localTime = new Date().getTime() + timezoneOffset * 1000
+  const cityTime = new Date(localTime)
+  const currentHour = cityTime.getUTCHours() // Get the hour in the city's local time
+  return (currentHour > 6 && currentHour < 18 ? 'day' : 'night')
+}
+
+const setBackgroundBasedOnWeatherId = (weatherId, timezoneOffset) => {
+  const timeOfDay = getTimeOfDay(timezoneOffset)
+  const firstDigit = weatherId.toString()[0]
+
+  console.log(firstDigit)
+  let backgroundImage = ""
+
+  switch (true) {
+    case weatherId === 800: // Clear Sky (800)
+      backgroundImage = timeOfDay === 'day' ? "url('./assets/design-1/day-clear.jpg')" : "url('./assets/design-1/night-clear.jpg')"
+    case firstDigit === '2': // Thunderstorm (2xx)
+    case firstDigit === '3': // Drizzle (3xx)
+    case firstDigit === '5': // Rain (5xx)
+      backgroundImage = timeOfDay === 'day' ? "url('./assets/design-1/day-rain.jpg')" : "url('./assets/design-1/night-rain.jpg')"
+      break
+    case firstDigit === '6': // Snow (6xx)
+      backgroundImage = timeOfDay === 'day' ? "url('./assets/design-1/day-snow.jpg')" : "url('./assets/design-1/night-snow.jpg')"
+      break
+    case firstDigit === '7': // Atmosphere (Mist, Smoke, Fog) 
+      backgroundImage = timeOfDay === 'day' ? "url('./assets/design-1/day-fog.jpg')" : "url('./assets/design-1/night-fog.jpg')"
+      break
+    case firstDigit === '8': //  Clouds (80x)
+      backgroundImage = timeOfDay === 'day' ? "url('./assets/design-1/day-clouds.jpg')" : "url('./assets/design-1/night-clouds.jpg')"
+      break
+    default:
+      backgroundImage = ""
+      break
+  }
+
+  containerBackground.style.backgroundImage = backgroundImage
+}

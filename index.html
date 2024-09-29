@@ -15,7 +15,9 @@
 <body>
   <div class="layout">
 
-    <div class="top-container">
+    <div id="weather-overlay" class="overlay-container"></div>
+
+    <div class="top-container" id="background-container">
       <div class="search-container">
         <i id="toggle-icon" class="fas fa-search" onclick="toggleSearch()"></i>
         <div id="search-box" class="hidden">
@@ -41,7 +43,7 @@
       </div>
     </div>
 
-    <div class="arrow-container">
+    <div>
       <img src="./assets/design-1/Group40.png" alt="Clickable icon to load next city" class="arrow-icon" id="arrow">
     </div>
 
@@ -54,6 +56,7 @@
 
     </div>
   </div>
+
   <footer>Created by: Joyce Kuo</footer>
 
 </body>
