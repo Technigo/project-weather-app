@@ -1,13 +1,7 @@
 # Weather App
-
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This weeks assignment was to create a weather app using external data from an API. We could chose between two different designs and I chose the second design option. I based my weather app on data of the current weather in Stockholm and a 4-day forecast. During this project we used the fetch functions to implement the data from the API.
 
 ## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+This week was better than the two previous ones for me. I tried to be extra attentive during the live sessions this week and took notes. I used different helpful tools such as google, chatgbt and the inspector. If I had more time I would look into how I could show the 4-day forecast data with the degrees on the right side and the days on the left. I tried this out but I didn't manage to make it work. When I tried it out something else in the code changed and I ended up having the days and the degrees next to each other instead. 
 
 ## View it live
-
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
