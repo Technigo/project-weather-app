@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.layout {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.top-container {
+  position: relative;
+  background-image: linear-gradient(to bottom right, rgba(133, 137, 255, 1), rgba(232, 233, 255, 1));
+  background-size: cover;
+  color: white;
+  height: 65%;
+  padding: 8%;
+  clip-path: ellipse(120% 80% at 50% 0%);
+  padding-bottom: 30%;
+  box-sizing: border-box;
+}
+
+/* Container for the search bar and icon */
+.search-container {
+  position: absolute;
+  display: flex;
+  width: 80%;
+  align-items: center;
+}
+
+#search-box {
+  position: absolute;
+  border: 1px solid whitesmoke;
+  margin: 0;
+  outline: none;
+  right: 5px;
+}
+
+#search-input {
+  border: 1px solid transparent;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 200px;
+  font-size: 22px;
+  outline: none;
+}
+
+#input-search-icon {
+  padding: 5px;
+}
+
+#toggle-icon {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: flex;
+}
+
+.main-info {
+  margin-bottom: 10%;
+}
+
+.temperature {
+  margin-top: 20%;
+  display: inline-flex;
+  align-items: flex-start;
+}
+
+.temp-number {
+  font-size: 8em;
+  font-weight: 500;
+  transform-origin: bottom;
+  transform: scaleY(1.1);
+  line-height: 1;
+}
+
+.temp-unit {
+  font-size: 4vh;
+  line-height: 1;
+  margin-left: 5px;
+}
+
+.city {
+  font-size: 2.2em;
+}
+
+.weather {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.description {
+  font-size: 1.5em;
+}
+
+.sunrise-sunset {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.4em;
+  position: relative;
+}
+
+.icon {
+  width: 15%;
+  height: auto;
+}
+
+.forecast-container {
+  margin: 0 10%;
+}
+
+.forecast-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.4em;
+  bottom: 5%;
+}
+
+.forecast-day {
+  flex: 1;
+  text-align: left;
+}
+
+.forecast-icon {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.forecast-icon img {
+  width: 40%;
+}
+
+.forecast-temp {
+  flex: 1;
+  text-align: right;
+}
+
+.arrow-icon {
+  position: absolute;
+  top: 45%;
+  right: 5%;
+  width: 30%;
+}
+
+.overlay-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+/* Animations for cold and warm colors */
+.warm {
+  animation: warmAnimation 5s infinite;
+}
+
+@keyframes warmAnimation {
+  0% {
+    background-color: rgba(255, 223, 0, 0.2)
+  }
+
+  50% {
+    background-color: rgba(255, 165, 0, 0.2);
+  }
+
+  100% {
+    background-color: rgba(255, 223, 0, 0.2)
+  }
+}
+
+.cold {
+  animation: coldAnimation 5s infinite;
+}
+
+@keyframes coldAnimation {
+  0% {
+    background-color: rgba(64, 183, 222, 0.3)
+  }
+
+  50% {
+    background-color: rgba(183, 218, 246, 0.2);
+  }
+
+  100% {
+    background-color: rgba(54, 183, 222, 0.3)
+  }
+}
+
+
+footer {
+  display: none;
+}
+
+/* Smaller screen widths */
+@media (max-width: 540px) {
+
+  .main-info {
+    margin-bottom: 5%;
+  }
+
+  .temp-number {
+    font-size: 50px;
+  }
+
+  .forecast-row {
+    font-size: 1.2em;
+  }
+
+}
+
+/* Larger screens */
+@media (min-width: 540px) {
+
+  body,
+  html {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .layout {
+    width: 450px;
+    height: 900px;
+    min-height: 900px;
+    box-shadow: 10px 15px 20px rgba(0, 0, 0, 0.3);
+    justify-self: center;
+    align-self: center;
+    margin: 50px;
+    margin-top: 10%;
+  }
+
+  .main-info {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    margin-bottom: 0;
+  }
+
+  .temperature {
+    margin-top: 100px;
+    display: inline-flex;
+    align-items: flex-start;
+    height: 130px;
+  }
+
+  .temp-number {
+    font-size: 120px;
+    font-weight: 300;
+    transform-origin: bottom;
+    transform: scaleY(1.1);
+    line-height: 1;
+  }
+
+  .temp-unit {
+    font-size: 40px;
+    line-height: 1;
+    margin-left: 5px;
+  }
+
+  .city {
+    font-size: 34px;
+    font-weight: 300;
+  }
+
+  .description {
+    font-size: 22px;
+    font-weight: 300;
+  }
+
+  .sunrise-sunset {
+    font-size: 22px;
+    margin-top: 5px;
+  }
+
+  footer {
+    display: block;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: darkgray;
+    margin: 20px;
+  }
+}
