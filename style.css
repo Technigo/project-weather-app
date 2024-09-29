@@ -8,58 +8,57 @@
 /* Body Styling */
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(235, 233, 233);
     padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    background-color: whitesmoke;
 }
 
 /* Weather Container */
-#currentWeather {
+.currentWeather {
     color: white;
     padding: 30px;
     width: 100%;
     max-width: 400px;
     position: relative;
-    /* Ensure this is relative so the search-container is positioned inside it */
+    overflow: hidden;
+    background-color: lightblue;
+    /* Background color for weather box */
+    border-bottom-left-radius: 180% 200px;
+    border-bottom-right-radius: 180% 200px;
+    margin-bottom: -65px;
+    /* Overlap with forecast section */
+    z-index: 1;
+    /* Ensure it stays on top of the forecast */
 }
 
-/* Search Bar Styling - Position in Upper Left Corner of currentWeather */
+/* Search Bar Styling */
 .search-container {
     display: flex;
     align-items: center;
     position: absolute;
+    margin-left: 530px;
+    margin-top: 20px;
     top: 10px;
-    /* Adjust this value to control vertical positioning inside #currentWeather */
     left: 10px;
-    /* Adjust this value to control horizontal positioning inside #currentWeather */
-    padding: 8px;
     border-radius: 5px;
     z-index: 10;
     cursor: pointer;
     transition: all 0.3s ease;
     width: 40px;
-    /* Start with a small width for just the icon */
     overflow: hidden;
-    /* Hide input until expanded */
-    margin-left: 535px;
-    margin-top: 15px;
 }
 
 #cityInput {
     width: 0;
-    /* Initially hidden */
     padding: 0;
     font-size: 14px;
-    border: none;
     outline: none;
     opacity: 0;
-    /* Hide input field initially */
     transition: width 0.3s ease, opacity 0.3s ease;
-    /* Smooth transition for showing input */
 }
 
 #searchIcon {
@@ -69,79 +68,75 @@ body {
     transition: transform 0.3s ease;
 }
 
-/* When the search-container is clicked, expand the input field */
+/* Expand search input on click */
 .search-container.active {
     width: 200px;
-    /* Expand container width */
-    background-color: whitesmoke;
-    /* Full opacity when active */
 }
 
 .search-container.active #cityInput {
     width: 150px;
-    /* Expand the input width */
     opacity: 1;
-    /* Make the input visible */
     padding: 8px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid gray;
+    /* Optional border */
 }
 
 .search-container.active #searchIcon {
     transform: rotate(90deg);
-    /* Optional: rotate the icon for a visual cue */
 }
 
 /* Temperature Styling */
-#currentWeather .temperature {
+.currentWeather .temperature {
     font-size: 7rem;
     font-weight: bold;
     margin-bottom: 10px;
-    text-shadow:
-        -1px -1px 0px grey,
-        /* Top left */
-        1px -1px 0px grey,
-        /* Top right */
-        -1px 1px 0px grey,
-        /* Bottom left */
-        1px 1px 0px grey;
-    /* Bottom right */
+    margin-top: 15px;
+    text-shadow: -1px -1px 0px grey, 1px -1px 0px grey, -1px 1px 0px grey, 1px 1px 0px grey;
 }
 
 /* City Name Styling */
-#currentWeather .location {
+.currentWeather .location {
     font-size: 2.5rem;
-    font-weight: 400;
+    font-weight: 200;
     margin-bottom: 10px;
+    text-shadow: -1px -1px 0px grey, 1px -1px 0px grey, -1px 1px 0px grey, 1px 1px 0px grey;
 }
 
 /* Time Styling */
-#currentWeather .time {
+.currentWeather .time {
     font-size: 1.2rem;
     margin-bottom: 20px;
+    text-shadow: -1px -1px 0px grey, 1px -1px 0px grey, -1px 1px 0px grey, 1px 1px 0px grey;
 }
 
 /* Weather Description */
-#currentWeather .description {
+.currentWeather .description {
     font-size: 1.2rem;
-    font-weight: 400;
+    font-weight: 200;
     margin-bottom: 40px;
+    text-shadow: -1px -1px 0px grey, 1px -1px 0px grey, -1px 1px 0px grey, 1px 1px 0px grey;
 }
 
 /* Sunrise and Sunset Section */
-#currentWeather .sun-info {
+.currentWeather .sun-info {
     display: flex;
     justify-content: space-around;
     font-size: 1.2rem;
     color: white;
     margin-bottom: 20px;
+    text-shadow: -1px -1px 0px grey, 1px -1px 0px grey, -1px 1px 0px grey, 1px 1px 0px grey;
 }
 
 /* Forecast Section */
 #forecast {
-    background-color: #ffffff;
+    background-color: rgb(244, 235, 235);
     padding: 20px;
     width: 100%;
     max-width: 400px;
     text-align: left;
+    z-index: 0;
+    position: relative;
 }
 
 /* Individual Forecast Items */
@@ -156,6 +151,10 @@ body {
 #forecast div:last-child {
     border-bottom: none;
     margin-bottom: 40px;
+}
+
+#forecast div:first-child {
+    margin-top: 70px;
 }
 
 /* Day and Weather Description Styling */
@@ -174,19 +173,66 @@ body {
     color: #666;
 }
 
-/* Responsive Styling */
-@media (max-width: 768px) {
 
-    #currentWeather,
-    #forecast {
+
+/* Responsive Design for Smartphones */
+@media screen and (max-width: 480px) {
+    body {
+        padding: 5px;
+    }
+
+    .currentWeather {
+        padding: 15px;
         max-width: 100%;
     }
 
-    #currentWeather .temperature {
+    #forecast {
+        padding: 10px;
+        max-width: 100%;
+    }
+
+    .search-container {
+        margin-left: 10px;
+        margin-top: 5px;
+    }
+
+    .currentWeather .temperature {
         font-size: 5rem;
     }
 
-    #currentWeather .location {
-        font-size: 2rem;
+    .currentWeather .location {
+        font-size: 1.5rem;
     }
+
+    .currentWeather .description,
+    .currentWeather .time,
+    .currentWeather .sun-info {
+        font-size: 1rem;
+    }
+
+    #forecast .day {
+        font-size: 1rem;
+    }
+
+    #forecast .temp {
+        font-size: 1rem;
+    }
+
+    #forecast .wind {
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 1118px) {
+
+    /* Styles specifically for ipad air */
+    .search-container {
+        margin-left: 210px;
+        margin-top: 230px;
+        margin-bottom: 20px;
+        width: 40px;
+        /* Adjust tablet-specific width */
+    }
+
+    /* Other tablet-specific styles */
 }
