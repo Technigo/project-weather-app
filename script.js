@@ -163,6 +163,7 @@ const displayWeatherData = (data) => {
       hour: "2-digit",
       minute: "2-digit",
     });
+    hideLocationLoading(); // Hide loading message and show content
   }
 
   if (mainIcon) {
