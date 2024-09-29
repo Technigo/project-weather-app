@@ -3,6 +3,15 @@ img {
     display: block;
     max-width: 100%;
 }
+
+/*Mobile*/
+@media screen and (max-width: 600px) {
+.container {
+    padding: 10px;
+    max-width: 100%;
+    max-height: 100%;
+    }
+}
 /* Tablet */ 
 
 @media screen and (min-width: 501px) and (max-width: 1024px) {
@@ -52,6 +61,11 @@ body {
     text-align: center;
   }
   
+  #weather-icon {
+    display: block;
+    margin: 0 auto;  
+    width: 100px;  
+}
   .temperature h1 {
     font-size: 72px;
     font-weight: bold;
@@ -67,6 +81,16 @@ body {
   .forecast {
     margin-top: 20px;
   }
+
+  #five-day-forecast {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+  .forecast #five-day-forecast {
+    text-align: center;
+}
   
   .forecast #five-day-forecast p {
     font-size: 14px;
@@ -78,14 +102,13 @@ body {
   
   .forecast-day {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    align-items: center; 
+    justify-content: center;  
     padding: 10px 0;
     border-bottom: 1px solid #ddd;
-  }
+}
   
-  .forecast img {
-    width: 24px;
-    height: 24px;
-  }
+.forecast-day img {
+    margin-right: 10px; 
+}
   
