@@ -10,4 +10,4 @@ Another challenge was styling the app, as it had been a while since I last worke
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://jonas-weather-app.netlify.app/
