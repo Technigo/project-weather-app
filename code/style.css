@@ -1,0 +1,86 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family:Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+body {
+    background: #fff;
+}
+.weather-card {
+    width: 90%;
+    max-width: 470px;
+    margin: 100px auto 0;
+    border-radius: 20px;
+    padding: 40px 35px;
+}
+/* clear */
+.weather-card-clear {
+    color: rgba(42, 85, 16, 1);
+    background: rgba(247, 233, 185, 1);
+}
+.btn-city-input-clear {
+    background-color: rgba(42, 85, 16, 1);
+    color: rgba(247, 233, 185, 1);
+}
+.city-input-clear {
+    border: 1px solid rgba(42, 85, 16, 1);
+    color: rgba(244, 119, 117, 1);
+}
+/* rain */
+.weather-card-rain {
+    background: rgba(189, 232, 250, 1);
+    color: rgba(22, 74, 104, 1);
+}
+.btn-city-input-rain {
+    color: rgba(189, 232, 250, 1);
+    background-color: rgba(22, 74, 104, 1);
+}
+.city-input-rain {
+    color: rgba(189, 232, 250, 1);
+    border: 1px solid rgba(22, 74, 104, 1);
+}
+/* cloudy */
+.weather-card-cloudy  {
+    background: rgba(249, 253, 254, 1);
+    color: rgba(244, 119, 117, 1);
+}
+.btn-city-input-cloudy {
+    color: rgba(249, 253, 254, 1);
+    background-color: rgba(244, 119, 117, 1);
+}
+.city-input-cloudy {
+    border: 1px solid rgba(244, 119, 117, 1);
+    color: rgba(244, 119, 117, 1);
+}
+.weather-card>div {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+}
+.icon-h1 {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+.days-temp {
+    margin: 0 0 20px;
+}
+.days-temp>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: #222 1px dotted;
+    padding: 2px 0 2px;
+}
+.btn-city-input{
+    padding: 8px 20px;
+    border: none;
+    border-radius: 3px;
+}
+.city-input {
+    padding: 8px 5px;
+    border-radius: 3px;
+}
+
+
