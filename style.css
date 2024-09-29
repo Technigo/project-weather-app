@@ -40,7 +40,8 @@ body.is-thunderstorm {
 }
 
 body.is-cloudy,
-body.is-atmosphere {
+body.is-atmosphere,
+body.is-misty {
   color: var(--brown-dark);
   background-color: var(--brown-light);
 }
@@ -53,7 +54,6 @@ main {
   min-height: 100vh;
   align-items: stretch;
   justify-content: space-between;
-  margin-bottom: 54px;
 
   @media (min-width: 375px) {
     padding: 2.5rem;
@@ -78,7 +78,7 @@ h1 {
   display: flex;
   flex-flow: column;
   gap: 0.25rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1rem;
 
   p {
     font-size: 1rem;
@@ -87,6 +87,18 @@ h1 {
     @media (min-width: 375px) {
       font-size: 1.25rem;
     }
+  }
+
+  span {
+    margin: 0 0.25rem;
+  }
+}
+
+.weather-today__greeting {
+  img {
+    max-width: 12rem;
+    position: relative;
+    left: -1.5rem;
   }
 }
 
@@ -138,63 +150,24 @@ h1 {
   }
 }
 
-.city-search {
-  position: fixed;
-  z-index: 5;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+#city-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px dashed;
+  font-family: "Montserrat";
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: currentColor;
+  padding: 0;
 
-  background-color: currentColor;
-  padding: 1rem;
-
-  @media (min-width: 678px) {
-    padding: 2rem;
-  }
-
-  .form-container {
-    display: flex;
-    gap: 1rem;
-
-    @media (min-width: 678px) {
-      gap: 2rem;
-    }
-  }
-
-  label {
-    flex-grow: 2;
-    span {
-      position: absolute;
-      opacity: 0;
-    }
-  }
-
-  input {
-    font-size: 1rem;
-    border: none;
-    border-radius: 0.25rem;
-    padding: 0.5rem 0.75rem;
-    width: 100%;
-
-    @media (min-width: 678px) {
-      font-size: 1.125rem;
-      padding: 1rem 1.5rem;
-    }
-  }
-
-  button {
+  &::selection {
     background-color: #fff;
-    color: currentColor;
-    font-size: 1rem;
-    font-weight: 700;
-    border: none;
-    border-radius: 2rem;
-    box-shadow: none;
-    padding: 0.5rem 1.25rem;
+  }
 
-    @media (min-width: 678px) {
-      font-size: 1.125rem;
-      padding: 1rem 1.75rem;
-    }
+  &:focus {
+    outline: none;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    border-bottom-color: transparent;
   }
 }
