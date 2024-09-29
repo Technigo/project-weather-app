@@ -28,7 +28,7 @@ const fetchTodaysWeatherAsync = async (city) => {
 
         //Update DOM with today's weather data
         cityName.innerHTML = data.name
-        temperature.innerHTML = `${data.main.temp} °C`
+        temperature.innerHTML = `${Math.round(data.main.temp)} °C`
         description.innerHTML = data.weather[0].description
         sunriseTime.innerHTML = data.sys.sunrise
         sunsetTime.innerHTML = data.sys.sunset
@@ -62,7 +62,7 @@ const fetchForecastWeatherAsync = async (city) => {
                 let dayName = weekdays[forecastDate.getDay()] // Get weekday
                 
                 //Update HTML with weekday and temperture
-                fiveDayForecast.innerHTML += `<p>${dayName}: ${forecast.main.temp} °C</p>`
+                fiveDayForecast.innerHTML += `<p>${dayName}: ${Math.round(forecast.main.temp)} °C</p>`
 
                 
                 console.log(`Day: ${dayName}, Temp: ${forecast.main.temp} °C`)
