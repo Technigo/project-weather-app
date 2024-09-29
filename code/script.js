@@ -12,7 +12,7 @@ const sunsetTime = document.getElementById("sunset")
 const fiveDayForecast = document.getElementById('five-day-forecast')
 
 //Array with weekdays 
-const weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
 const weatherIcons = {
     "scattered clouds": "./assets/design-1/Group16.png", // Cloudy
