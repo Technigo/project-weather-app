@@ -169,7 +169,6 @@ menu.addEventListener("click", () => {
 // To close the search window users can either click on the X or somewhere else on the window 
 
 closeWindow.addEventListener("click", () => {
-    console.log("hi")
     searchWindow.style.display = "none"
 })
 

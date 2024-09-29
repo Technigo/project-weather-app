@@ -39,7 +39,7 @@ header {
 .search-location-window {
     z-index: 1;
     width: 100%;
-    height: 60%;
+    height: 80%;
     background-color: #707070;
     position: fixed;
     left: 0;
