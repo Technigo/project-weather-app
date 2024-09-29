@@ -43,7 +43,7 @@
     font-weight: bold;
   }
   
-  .location {
+  .city {
     font-size: 36px;
     margin: 10px 0;
   }
@@ -95,7 +95,8 @@
     background-color: #f1f1f1;
     color: black;
     padding: 20px;
-    border-radius: 20px 20px 0 0;
+    border-radius: 20px;
+    margin-top: 20px;
   }
   
   .forecast-day {
@@ -103,15 +104,17 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 0;
+    border-bottom: 1px solid #ddd;
   }
   
   .forecast-day img {
-    width: 30px;
+    width: 40px;
   }
   
   .forecast-day .day {
     flex: 1;
     font-size: 18px;
+    font-weight: bold;
   }
   
   .forecast-day .temp {
