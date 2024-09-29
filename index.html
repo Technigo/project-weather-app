@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <!-- Preload -->
+    <!-- Preload: Ensures that weather-images load faster by preloading them before they are needed-->
     <link rel="preload" href="./images/thunderstorm.png" as="image" />
     <link rel="preload" href="./images/rain.png" as="image" />
     <link rel="preload" href="./images/snowy.png" as="image" />
@@ -16,11 +16,12 @@
     <link rel="preload" href="./images/default.png" as="image" />
   </head>
   <body>
-    <!-- Loading message displayed while data is being fetched -->
+    <!-- Loading message that appears while the app is fetching weather data -->
     <div id="loadingMessage">
-      <div class="spinner"></div>
+      <div class="spinner"></div><!-- A spinner graphic indicating loading -->
       <p>Fetching weather data...</p>
     </div>
+     <!-- An error message container to show errors if needed, initially hidden -->
     <div id="errorMessage" style="display:none;"></div>
   <!-- Main app content, initially hidden until data is loaded -->
   <div id="appContent" style="display:none;">
@@ -28,12 +29,11 @@
     <div id="preload"></div>
     <!-- Main container to hold all the content -->
     <div class="container">
-      <!-- Navbar with the search button that turns into a search bar and btn-->
+      <!-- Navigation with the search box and button -->
       <nav id="navSearch" class="nav">
-        <button type="button" class="search-button" id="searchMenu"></button>
-        <button type="button" class="search-button" id="searchMenuBtn"></button>
-
+        <!-- <button type="button" class="search-button" id="searchMenu"></button> -->
         <div class="search box" id="search-box">
+           <!-- Input field where the user can type the city name to search for weather information -->
           <input
             type="text"
             class="search-bar"
@@ -41,7 +41,7 @@
             placeholder="Search"
           />
           <button type="submit" class="search-button" id="searchBtn">
-            <!-- Search button icon-->
+            <!-- Search button icon (SVG format) -->
             <svg
               stroke="currentColor"
               fill="currentColor"
@@ -58,23 +58,27 @@
         </div>
       </nav>
 
-      <!-- Main section: city, temp, sun etc -->
+    <!-- Main section to display the current weather data -->
       <main class="mainWrapper">
         <div class="tempText">
           <h1 class="tempNumber" id="tempToday"></h1>
         </div>
+          <!-- Display the city name -->
         <h2 class="cityText" id="cityName"></h2>
+         <!-- Display the local time in the selected city -->
         <h3 class="local-time" id="localTime"></h3>
+        <!-- Display the weather description (e.g., "sunny", "rainy") and weather icon -->
         <div class="description-icon">
           <h3 class="describeText" id="weatherDescription"></h3>
           <div id="mainIcon"></div>
         </div>
+        <!-- Section to show sunrise and sunset times -->
         <section id="sunriseSunset" class="sun-position">
           <div id="sunriseText"></div>
           <div id="sunsetText"></div>
         </section>
       </main>
-      <!-- Forecast section -->
+      <!-- A table to display the upcoming weather forecast (e.g., for 5 days) -->
       <table id="weatherForecast" class="weather-forecast"></table>
     </div>
     <script src="script.js"></script>

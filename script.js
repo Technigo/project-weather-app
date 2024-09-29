@@ -1,4 +1,5 @@
-// Preload images
+// Function to preload weather images into the browser's cache
+// This helps in displaying images quickly.
 const preloadImages = () => {
   const imagePaths = [
     "./images/thunderstorm.png",
@@ -11,38 +12,38 @@ const preloadImages = () => {
     "./images/default.png",
   ];
 
+  // Loop through each image path and load it into the browser's memory
   imagePaths.forEach((path) => {
     const img = new Image();
     img.src = path;
   });
 };
 
-// Show or hide elements based on loading state
+// Show a loading message while data is being fetched
 const showLoading = () => {
-  document.getElementById("loadingMessage").style.display = "flex"; // Use flex to center the message and spinner
-  document.getElementById("appContent").style.display = "none";
+  document.getElementById("loadingMessage").style.display = "flex"; // Show the loading message
+  document.getElementById("appContent").style.display = "none"; // Hide the main content
 };
-
+// Hide the loading message when data is fetched
 const hideLoading = () => {
-  document.getElementById("loadingMessage").style.display = "none";
-  document.getElementById("appContent").style.display = "block";
+  document.getElementById("loadingMessage").style.display = "none"; // Hide the loading message
+  document.getElementById("appContent").style.display = "block"; // Show the main content
 };
 
-// Show or hide elements based on location permission loading state
+// Show a loading message specifically for location permission (geolocation)
 const showLocationLoading = () => {
-  document.getElementById("loadingMessage").style.display = "flex"; // Show loading only for location permission
-  document.getElementById("appContent").style.display = "none";
+  document.getElementById("loadingMessage").style.display = "flex"; // Show loading message for location
+  document.getElementById("appContent").style.display = "none"; // Hide the main content
 };
-
+// Hide the loading message after location is fetched
 const hideLocationLoading = () => {
-  document.getElementById("loadingMessage").style.display = "none"; // Hide loading after location permission is granted
-  document.getElementById("appContent").style.display = "block";
+  document.getElementById("loadingMessage").style.display = "none"; // Hide loading message
+  document.getElementById("appContent").style.display = "block"; // Show main content
 };
 
 // Call the preloadImages function to start preloading images
 preloadImages();
 
-// No initial loading message
 // Select DOM elements
 const tempToday = document.getElementById("tempToday");
 const cityName = document.getElementById("cityName");
@@ -52,7 +53,6 @@ const sunriseText = document.getElementById("sunriseText");
 const sunsetText = document.getElementById("sunsetText");
 const inputField = document.getElementById("inputField");
 const searchBtn = document.getElementById("searchBtn");
-const searchMenuBtn = document.getElementById("searchMenuBtn");
 const forecastContainer = document.getElementById("weatherForecast");
 const mainWrapper = document.querySelector(".mainWrapper");
 
@@ -62,27 +62,28 @@ const handleError = (message) => {
   window.location.reload(); // Refresh the page after the alert
 };
 
-// Function to fetch current weather data
+// Function to fetch current weather data from the OpenWeatherMap API
+// The 'city' parameter is the name of the city entered by the user
 const fetchWeatherData = async (city) => {
   try {
-    const API_KEY = "0c5116ff347d8ce8d78e8d3c18029dd7";
+    const API_KEY = "0c5116ff347d8ce8d78e8d3c18029dd7"; // My OpenWeatherMap API key
     const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${API_KEY}`;
-    const response = await fetch(API_URL);
+    const response = await fetch(API_URL); // API request to get the weather data
 
     if (!response.ok) {
-      throw new Error(`City "${city}" not found.`);
+      throw new Error(`City "${city}" not found.`); // If the city is not found, throw an error
     }
 
-    const data = await response.json();
-    displayWeatherData(data);
-    return true; // Return true to indicate successful fetch
+    const data = await response.json(); // Convert the response to JSON format
+    displayWeatherData(data); // Display the fetched weather data
+    return true; // Return true to indicate that the fetch was successful
   } catch (error) {
     handleError(error.message); // Call centralized error handler
-    return false; // Return false to indicate fetch failure
+    return false; // Return false to indicate that fetch failed
   }
 };
 
-// Function to fetch weather forecast data
+// Function to fetch the 5-day weather forecast
 const fetchWeatherForecast = async (city) => {
   try {
     const API_KEY = "0c5116ff347d8ce8d78e8d3c18029dd7";
@@ -90,7 +91,7 @@ const fetchWeatherForecast = async (city) => {
     const response = await fetch(API_URL);
 
     if (!response.ok) {
-      throw new Error(`Forecast not available for city "${city}".`);
+      throw new Error(`Forecast not available for city "${city}".`); // If no forecast is available, throw an error
     }
 
     const data = await response.json();
@@ -101,12 +102,12 @@ const fetchWeatherForecast = async (city) => {
   }
 };
 
-// Function to update the background image based on the weather condition
+// Function to update the background image based on the weather description
 const updateBackgroundImage = (weatherDescription) => {
   if (!mainWrapper) return;
 
-  const weather = weatherDescription.toLowerCase();
-
+  const weather = weatherDescription.toLowerCase(); // Convert weather description to lowercase
+  // Check which weather condition matches and update the background image accordingly
   if (weather.includes("thunderstorm")) {
     mainWrapper.style.backgroundImage = 'url("./images/thunderstorm.png")';
   } else if (
@@ -137,22 +138,23 @@ const updateBackgroundImage = (weatherDescription) => {
   } else if (weather.includes("clear")) {
     mainWrapper.style.backgroundImage = 'url("./images/sunny.png")';
   } else {
-    mainWrapper.style.backgroundImage = 'url("./images/default.png")';
+    mainWrapper.style.backgroundImage = 'url("./images/default.png")'; // Default image
   }
 };
 
-// Function to display fetched current weather data
+// Function to display the fetched weather data on the webpage
 const displayWeatherData = (data) => {
-  if (tempToday) tempToday.textContent = `${Math.round(data.main.temp)}°C`;
-  if (cityName) cityName.textContent = data.name;
+  if (tempToday) tempToday.textContent = `${Math.round(data.main.temp)}°C`; // Displays current temperature
+  if (cityName) cityName.textContent = data.name; // Display the city name
   if (weatherDescription) {
+    // Display the weather description
     weatherDescription.textContent = capitalizeFirstLetter(
       data.weather[0].description
     );
   }
 
-  updateBackgroundImage(data.weather[0].description);
-
+  updateBackgroundImage(data.weather[0].description); // Update the background image
+  // Calculate and display local time based on the city's timezone
   const timezoneOffset = data.timezone;
   const utcTime = new Date().getTime() + new Date().getTimezoneOffset() * 60000;
   const localTimeDate = new Date(utcTime + timezoneOffset * 1000);
@@ -167,7 +169,7 @@ const displayWeatherData = (data) => {
     const iconCode = data.weather[0].icon;
     mainIcon.innerHTML = `<img src="https://openweathermap.org/img/wn/${iconCode}@2x.png" alt="${data.weather[0].description}" />`;
   }
-
+  // Display sunrise and sunset times
   const sunriseTime = new Date((data.sys.sunrise + data.timezone) * 1000);
   const sunsetTime = new Date((data.sys.sunset + data.timezone) * 1000);
   if (sunriseText) {
@@ -182,20 +184,18 @@ const displayWeatherData = (data) => {
       minute: "2-digit",
     })}`;
   }
-
-  hideLoading(); // Hide loading message and show content
 };
 
-// Function to display fetched weather forecast data
+// Function to display the 5-day weather forecast
 const displayWeatherForecast = (data) => {
   if (!forecastContainer) return;
 
-  forecastContainer.innerHTML = "";
+  forecastContainer.innerHTML = ""; // Clear the previous forecast
 
   const forecastList = data.list.filter((forecast) =>
     forecast.dt_txt.includes("12:00:00")
   );
-
+  // Display the forecast for the next 5 days
   forecastList.slice(0, 5).forEach((forecast) => {
     const date = new Date(forecast.dt_txt).toLocaleDateString(undefined, {
       weekday: "short",
@@ -213,63 +213,48 @@ const displayWeatherForecast = (data) => {
       <td class="forecast-category">${temp}</td>
       <td class="forecast-category">${windSpeed}</td>
     `;
-    forecastContainer.appendChild(forecastRow);
+    forecastContainer.appendChild(forecastRow); // Add forecast row to the table
   });
 };
 
-// Function to capitalize the first letter of the description
+// Helper function to capitalize the first letter of the weather description
 const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
-// Event listener for the search button to fetch both current weather and forecast data
+// Add event listener to the search button to fetch weather data based on the user's input
 if (searchBtn) {
   searchBtn.addEventListener("click", async () => {
-    const city = inputField.value.trim();
+    const city = inputField.value.trim(); // Get the city name from the input field
     if (city) {
-      // No loading message here, only for initial location loading
-      const weatherDataFetched = await fetchWeatherData(city);
+      const weatherDataFetched = await fetchWeatherData(city); // Fetch the weather data for the entered city
       if (weatherDataFetched) {
-        await fetchWeatherForecast(city); // Fetch forecast only if weather data was fetched successfully
+        await fetchWeatherForecast(city); // Fetch the forecast if weather data is successfully fetched
       }
-      inputField.value = "";
+      inputField.value = ""; // Clear the input field after search
     } else {
-      alert("Please enter a city name.");
+      alert("Please enter a city name."); // Show an alert if no city is entered
     }
   });
 }
 
-// Event listener to open the search bar
-if (searchMenuBtn) {
-  searchMenuBtn.addEventListener("click", () => {
-    toggleSearchBar();
-  });
-}
-
-// Event listener to close the search bar
-if (searchMenu) {
-  searchMenu.addEventListener("click", () => {
-    toggleSearchBar();
-  });
-}
-
-// Function to get the user's location and fetch weather data
+// Function to get the user's current location and fetch weather data if location access is granted
 const getWeatherForCurrentLocation = () => {
   if (navigator.geolocation) {
-    showLocationLoading(); // Show loading only for location permission
-    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+    showLocationLoading(); // Show loading message while waiting for location permission
+    navigator.geolocation.getCurrentPosition(successCallback, errorCallback); // Get current location
   } else {
-    handleError("Geolocation is not supported by this browser.");
+    handleError("Geolocation is not supported by this browser."); // Show error if geolocation is not supported
   }
 };
 
-// Success callback function for geolocation
+// Callback function for successful geolocation
 const successCallback = async (position) => {
-  const { latitude, longitude } = position.coords;
+  const { latitude, longitude } = position.coords; // Extract latitude and longitude from position
 
   try {
     const reverseGeocodeUrl = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=0c5116ff347d8ce8d78e8d3c18029dd7`;
-    const response = await fetch(reverseGeocodeUrl);
+    const response = await fetch(reverseGeocodeUrl); // Fetch city name based on latitude and longitude
 
     if (!response.ok) {
       throw new Error("Unable to fetch location data.");
@@ -277,8 +262,8 @@ const successCallback = async (position) => {
 
     const data = await response.json();
     if (data.length > 0) {
-      const city = data[0].name;
-      const weatherDataFetched = await fetchWeatherData(city);
+      const city = data[0].name; // Get the city name from the response
+      const weatherDataFetched = await fetchWeatherData(city); // Fetch weather data for the city
       if (weatherDataFetched) {
         await fetchWeatherForecast(city); // Fetch forecast only if weather data was fetched successfully
       }
@@ -294,23 +279,23 @@ const successCallback = async (position) => {
   }
 };
 
-// Error callback function for geolocation
+// Error callback function for geolocation errors
 const errorCallback = (error) => {
-  let errorMessage = "An unknown error occurred.";
+  let errorMessage = "An unknown error occurred."; // Default error message
   switch (error.code) {
     case error.PERMISSION_DENIED:
-      errorMessage = "User denied the request for Geolocation.";
+      errorMessage = "User denied the request for Geolocation."; // Handle permission denied error
       break;
     case error.POSITION_UNAVAILABLE:
-      errorMessage = "Location information is unavailable.";
+      errorMessage = "Location information is unavailable."; // Handle unavailable location error
       break;
     case error.TIMEOUT:
-      errorMessage = "The request to get user location timed out.";
+      errorMessage = "The request to get user location timed out."; // Handle timeout error
       break;
   }
-  handleError(errorMessage);
+  handleError(errorMessage); // Show error message to the user
   hideLocationLoading(); // Hide loading message after location permission is handled
 };
 
-// Call the function to get weather for current location on page load
+// Call the function to get weather data for current location on page load
 getWeatherForCurrentLocation();

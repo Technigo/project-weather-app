@@ -1,3 +1,5 @@
+/* Preload images by using hidden divs */
+/* This ensures images are loaded in the background but not visible */
 #preload {
   position: absolute;
   width: 0;
@@ -9,7 +11,8 @@
     url("./images/sunny.png"), url("./images/default.png");
 }
 
-/* Center the loading message and spinner */
+/* Styles for the loading message container */
+/* This will center the spinner and text vertically and horizontally */
 #loadingMessage {
   display: flex;
   flex-direction: column;
@@ -30,7 +33,7 @@
   margin-bottom: 10px; /* Space between spinner and text */
 }
 
-/* Spinner animation */
+/* Defines the spinning animation */
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -45,7 +48,7 @@
   display: none; /* This is shown once the data is loaded */
 }
 
-/* General reset and body styling */
+/* General styling */
 * {
   margin: 0;
   padding: 0;
@@ -167,7 +170,6 @@ body {
   margin: 10px 0;
 }
 
-/* Sunrise and sunset styling */
 /* Sunrise and sunset styling with text-shadow */
 .sun-position {
   display: flex;
