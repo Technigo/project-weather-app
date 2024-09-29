@@ -1,6 +1,6 @@
 # Weather App
 
-This week the project was to create a weather app by using APIs and using different functions to retrieve and convert the data, such as fetch and convert unix time. 
+This week the project was to create a weather app by using APIs and using different methods to retrieve and convert the data, such as fetch and convert unix time. 
 
 ## The problem
 
