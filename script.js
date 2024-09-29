@@ -121,6 +121,7 @@ function updateUI(temperature, weatherDescription) {
     } else if (weatherDescription.toLowerCase().includes("few clouds")) {
         weatherContainer.style.backgroundColor = "#F7E9B9"; // Yellow for clear sky
         weatherContainer.style.color = "#2A5510"; // Green font color
+        searchButton.style.backgroundColor ="#2A5510"
         weatherImg.src = "assets/design-2/noun_Sunglasses.svg";
         weatherMessage = `Get your sunnies on. There are a few clouds, but it's still a lovely day in ${CITY}.`;
 
@@ -173,6 +174,7 @@ function updateUI(temperature, weatherDescription) {
     } else {
         weatherContainer.style.backgroundColor = "white"; // Fallback background
         weatherContainer.style.color = "black"; // Fallback font color
+        searchButton.style.backgroundColor ="black" //Blue font color
         weatherImg.src = "assets/design-2/sad-face-3.svg";
         weatherMessage = `The weather description cannot be picked up at the moment.`;
     }
