@@ -1,59 +1,59 @@
 // API key for OpenWeatherMap
 const API_KEY = 'fb560f0e3d208f655263c202ebe8452d';
 
-// Base URLs for current weather and 5-day forecast
+// URLs for current weather and 5-day forecast
 const CURRENT_WEATHER_URL = 'https://api.openweathermap.org/data/2.5/weather';
 const FORECAST_URL = 'https://api.openweathermap.org/data/2.5/forecast';
 
 // Default city
 let city = 'Stockholm';
 
-// DOM selector for current weather and forecast display
-const currentWeatherElement = document.getElementById('currentWeather');  // Container for current weather
-const forecastElement = document.getElementById('forecast');              // Container for forecast
+// DOM selector for current weather and forecast 
+const currentWeatherElement = document.getElementById('currentWeather');
+const forecastElement = document.getElementById('forecast');
 
 // Array of weekday names
 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-// Reference to the search icon and input field
+// search icon and input field
 const searchIcon = document.getElementById('searchIcon');
 const cityInput = document.getElementById('cityInput');
-const searchContainer = document.querySelector('.search-container'); // Reference to the container of the input and icon
+const searchContainer = document.querySelector('.search-container');
 
-// Listen for a click on the magnifying glass icon to show the input field
+
 searchIcon.addEventListener('click', function () {
-    searchContainer.classList.toggle('active'); // Toggle the 'active' class to expand the input field
+    searchContainer.classList.toggle('active');
     if (searchContainer.classList.contains('active')) {
-        cityInput.focus(); // Automatically focus the input when it becomes visible
+        cityInput.focus();
     } else {
-        cityInput.blur(); // Remove focus when the field is hidden
+        cityInput.blur();
     }
 });
 
-// Listen for the "Enter" keypress to trigger the search
+// Trigger the search
 cityInput.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
-        const cityInputValue = cityInput.value.trim(); // Get input value and remove spaces
+        const cityInputValue = cityInput.value.trim();
         if (cityInputValue) {
-            city = cityInputValue; // Update the city with the user's input
-            fetchWeatherData(city); // Fetch new weather data
-            fetchForecastData(city); // Fetch new forecast data
-            cityInput.value = ''; // Clear input field after search
+            city = cityInputValue;
+            fetchWeatherData(city);
+            fetchForecastData(city);
+            cityInput.value = '';
         } else {
             alert('Please enter a city name.');
         }
     }
 });
 
-// Function to convert Unix time to a readable time format (e.g., 13:00)
+// Function to convert time format 
 function convertUnixToTime(unixTime) {
-    const date = new Date(unixTime * 1000); // Convert seconds to milliseconds
+    const date = new Date(unixTime * 1000);
     const hours = date.getHours();
     const minutes = date.getMinutes();
-    return `${hours}:${minutes < 10 ? '0' : ''}${minutes}`; // Ensure two-digit minutes
+    return `${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
 }
 
-// Function to set the background image based on the weather condition
+// Function to change background image based on the weather 
 function setBackground(weatherDescription, isDaytime) {
     if (isDaytime) {
         if (weatherDescription.includes('clear')) {
@@ -75,26 +75,26 @@ function setBackground(weatherDescription, isDaytime) {
     currentWeatherElement.style.backgroundSize = "cover";
 }
 
-// Function to fetch current weather data for the given city
+// Function to fetch current weather
 function fetchWeatherData(city) {
     fetch(`${CURRENT_WEATHER_URL}?q=${city}&units=metric&APPID=${API_KEY}`)
         .then(response => response.json())
         .then(data => {
-            console.log('Current Weather:', data); // Log data for debugging
+            console.log('Current Weather:', data);
 
-            // Extract data from the response
+            // Data from the response
             const location = data.name;
             const temperature = Math.round(data.main.temp);
             const description = data.weather[0].description;
             const sunrise = convertUnixToTime(data.sys.sunrise);
             const sunset = convertUnixToTime(data.sys.sunset);
-            const currentTime = new Date().getTime() / 1000; // Get current time in seconds
-            const isDaytime = currentTime >= data.sys.sunrise && currentTime < data.sys.sunset; // Check if it's daytime
+            const currentTime = new Date().getTime() / 1000;
+            const isDaytime = currentTime >= data.sys.sunrise && currentTime < data.sys.sunset;
 
             // Set background image based on weather description and time of day
             setBackground(description.toLowerCase(), isDaytime);
 
-            // Inject current weather data into the DOM using innerHTML
+            // Data for current weather
             currentWeatherElement.innerHTML = `
                 <div id="currentWeather">
                     <p class="temperature">${temperature}°C</p>
@@ -114,48 +114,43 @@ function fetchWeatherData(city) {
         });
 }
 
-// Function to fetch forecast data for the given city
+// Fetch forecast data 
 function fetchForecastData(city) {
     fetch(`${FORECAST_URL}?q=${city}&units=metric&APPID=${API_KEY}`)
         .then(response => response.json())
         .then(data => {
-            console.log('Forecast Data:', data); // Log data for debugging
+            console.log('Forecast Data:', data);
 
-            const forecastList = data.list; // List of forecast entries
+            const forecastList = data.list;
 
-            // Object to store the forecast for each day at 12:00 PM
             const forecastByDay = {};
 
-            // Iterate through each forecast entry
             forecastList.forEach(entry => {
-                const dateTime = entry.dt_txt; // Get the date and time as a string
-                const time = dateTime.split(' ')[1]; // Extract the time part (HH:MM:SS)
+                const dateTime = entry.dt_txt;
+                const time = dateTime.split(' ')[1];
 
-                // We are only interested in the forecast for 12:00 PM
                 if (time === '12:00:00') {
-                    const date = dateTime.split(' ')[0]; // Get the date part (YYYY-MM-DD)
+                    const date = dateTime.split(' ')[0];
                     if (!forecastByDay[date]) {
                         forecastByDay[date] = entry;
                     }
                 }
             });
 
-            // Extract data for the next 4 days and display
+            // Data for the next 4 days 
             const forecastDays = Object.keys(forecastByDay).slice(0, 4);
             if (forecastDays.length === 0) {
                 forecastElement.innerHTML = '<p>No forecast data available at 12:00 PM.</p>';
             } else {
-                forecastElement.innerHTML = ''; // Clear the previous forecast data
+                forecastElement.innerHTML = '';
                 forecastDays.forEach(date => {
                     const forecast = forecastByDay[date];
                     const temperature = Math.round(forecast.main.temp);
-                    const windSpeed = forecast.wind.speed; // Extract wind speed from forecast data
+                    const windSpeed = forecast.wind.speed;
 
-                    // Convert the date string to a Date object and get the day name
                     const dayOfWeek = new Date(date).getDay();
-                    const dayName = weekdays[dayOfWeek]; // Get the day name using the weekdays array
+                    const dayName = weekdays[dayOfWeek];
 
-                    // Create a new element for each day's forecast
                     forecastElement.innerHTML += `
                         <div class="forecast-item">
                             <p class="day"><strong>${dayName}</strong></p>
@@ -172,6 +167,6 @@ function fetchForecastData(city) {
         });
 }
 
-// Fetch the default city weather and forecast on page load
+// Invoking the functions 
 fetchWeatherData(city);
 fetchForecastData(city);
