@@ -9,4 +9,4 @@ I followed the steps from the past live sessions and from youtube, I had problem
 If I had more time I would like to make the live-time work correctly, and add the option to see other cities weather, also improve more the design
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://shiny-sopapillas-ecb62f.netlify.app
