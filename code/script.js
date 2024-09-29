@@ -15,9 +15,9 @@ const fiveDayForecast = document.getElementById('five-day-forecast')
 const weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 
 const weatherIcons = {
-    "scattered clouds": "/assets/design-1/Group16.png", // Cloudy
-    "few clouds": "/assets/design-1/Group34.png", // Few clouds
-    "clear sky": "/assets/design-1/Group37.png", // Sunny
+    "scattered clouds": "/code/assets/design-1/Group16.png", // Cloudy
+    "few clouds": "/code/assets/design-1/Group34.png", // Few clouds
+    "clear sky": "/code/assets/design-1/Group37.png", // Sunny
   }
         
 //Fetch todays weather
