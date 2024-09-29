@@ -1,4 +1,4 @@
-const cities = ['Juneau', 'New York', 'Bermuda', 'Brisbane', 'London']
+const cities = ['Stenungsund', 'New York', 'Bermuda', 'Hong Kong', 'London']
 let currentIndex = 0
 
 const API_KEY = "248332e11aac477643699fc267736540"
@@ -20,6 +20,7 @@ const searchInput = document.getElementById('search-input')
 const searchIcon = document.getElementById('input-search-icon')
 const arrowIcon = document.getElementById('arrow')
 const containerBackground = document.getElementById('background-container')
+const overlayContainer = document.getElementById('weather-overlay')
 
 // Function to capitalize first letter of each word
 const capitalizeFirstLetter = (str) => {
@@ -32,6 +33,17 @@ const formatTime = (timestamp, timezoneOffset) => {
   const hours = date.getUTCHours().toString().padStart(2, '0')
   const minutes = date.getUTCMinutes().toString().padStart(2, '0')
   return `${hours}:${minutes}`
+}
+
+// Function to change overlay color based on temp 
+const setOverlayColorAnimation = (currentTemp) => {
+  if (currentTemp >= 20) {
+    overlayContainer.classList.add('warm')
+    overlayContainer.classList.remove('cold')
+  } else {
+    overlayContainer.classList.add('cold')
+    overlayContainer.classList.remove('warm')
+  }
 }
 
 // Display today's weather
@@ -51,6 +63,9 @@ const updateHTML = (data) => {
   sunriseElement.innerText = sunriseTimestamp
   sunsetElement.innerText = sunsetTimestamp
   weatherIcon.src = `http://openweathermap.org/img/wn/${currentIcon}@2x.png`
+
+  setOverlayColorAnimation(currentTemp)
+
 }
 
 // Display 5 day forecast
@@ -190,7 +205,7 @@ fetch(FORECAST_URL)
   })
   .catch(error => console.error('Error:', error))
 
-
+// Get time of day in local time
 const getTimeOfDay = (timezoneOffset) => {
   const localTime = new Date().getTime() + timezoneOffset * 1000
   const cityTime = new Date(localTime)
@@ -198,16 +213,21 @@ const getTimeOfDay = (timezoneOffset) => {
   return (currentHour > 6 && currentHour < 18 ? 'day' : 'night')
 }
 
+// Function to change background image based on weather and time
 const setBackgroundBasedOnWeatherId = (weatherId, timezoneOffset) => {
   const timeOfDay = getTimeOfDay(timezoneOffset)
   const firstDigit = weatherId.toString()[0]
 
   console.log(firstDigit)
+  console.log(weatherId)
+  console.log(timeOfDay)
   let backgroundImage = ""
 
   switch (true) {
+
     case weatherId === 800: // Clear Sky (800)
       backgroundImage = timeOfDay === 'day' ? "url('./assets/design-1/day-clear.jpg')" : "url('./assets/design-1/night-clear.jpg')"
+      break
     case firstDigit === '2': // Thunderstorm (2xx)
     case firstDigit === '3': // Drizzle (3xx)
     case firstDigit === '5': // Rain (5xx)
@@ -222,6 +242,7 @@ const setBackgroundBasedOnWeatherId = (weatherId, timezoneOffset) => {
     case firstDigit === '8': //  Clouds (80x)
       backgroundImage = timeOfDay === 'day' ? "url('./assets/design-1/day-clouds.jpg')" : "url('./assets/design-1/night-clouds.jpg')"
       break
+
     default:
       backgroundImage = ""
       break

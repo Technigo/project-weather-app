@@ -11,32 +11,53 @@
   width: 100wh;
   height: 100vh;
   font-family: 'Roboto', sans-serif;
-  /* background-color: rgb(231, 231, 232); */
-  background-color: white;
   margin: 0;
   box-sizing: border-box;
 }
 
-/* .overlay-container {
+.overlay-container {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  animation-name: example;
-  animation-duration: 4s;
   pointer-events: none;
 }
 
-@keyframes example {
-  from {
-    background-color: rgba(227, 19, 19, 0.1)
+.warm {
+  animation: warmAnimation 5s infinite;
+}
+
+@keyframes warmAnimation {
+  0% {
+    background-color: rgba(255, 223, 0, 0.2)
   }
 
-  to {
-    background-color: rgba(219, 231, 51, 0.1)
+  50% {
+    background-color: rgba(255, 165, 0, 0.2);
   }
-} */
+
+  100% {
+    background-color: rgba(255, 223, 0, 0.2)
+  }
+}
+
+.cold {
+  animation: coldAnimation 5s infinite;
+}
+
+@keyframes coldAnimation {
+  0% {
+    background-color: rgba(64, 183, 222, 0.2)
+  }
+
+  50% {
+    background-color: rgba(214, 232, 247, 0.2);
+  }
+
+  100% {
+    background-color: rgba(54, 183, 222, 0.2)
+  }
+}
 
 .top-container {
   position: relative;
@@ -59,7 +80,6 @@
 }
 
 #search-box {
-  /* background-color: rgba(255, 255, 255, 0.5); */
   position: absolute;
   border: 1px solid whitesmoke;
   margin: 0;
@@ -70,7 +90,6 @@
 #search-input {
   border: 1px solid transparent;
   background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 4px;
   width: 200px;
   font-size: 22px;
   outline: none;
@@ -187,7 +206,7 @@ footer {
   display: none;
 }
 
-/* Smaller phones */
+/* Smaller screen widths */
 @media (max-width: 380px) {
 
   .main-info {
@@ -210,7 +229,6 @@ footer {
   body,
   html {
     width: 100vw;
-    /* height: 100vh; */
     display: flex;
     flex-direction: column;
     justify-content: center;
