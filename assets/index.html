@@ -1,32 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Report</title>
+    <title>Weather Forecast</title>
+    <link rel="stylesheet" href="style.css"> <!-- Lien vers le fichier CSS -->
 </head>
-
 <body>
-    <h1>This is your meteo report</h1>
+    <div class="weather-card">
+        <h1>The temperature in Lausanne, Switzerland is <span id="current-temp">Loading...</span>°C.</h1>
+        <img src="" alt="weather icon" id="weather-icon" class="weather-icon">
+        <p id="weather-desc">Loading...</p>
+        <div class="sun-times">
+            <p>Sunrise: <span id="sunrise">--:--</span></p>
+            <p>Sunset: <span id="sunset">--:--</span></p>
+        </div>
 
-    <!-- Display Weather Info -->
-    <div>
-        <p>City: <span id="city">Loading...</span></p>
-        <p>Temperature: <span id="temp">Loading...</span></p>
-        <p>Meteo: <span id="weather-desc">Loading...</span></p>
+        <!-- Forecast section for multiple days -->
+        <div class="forecast">
+            <div class="forecast-day">
+                <img src="" alt="icon" id="day1-icon">
+                <span id="day1-name">Sat</span>
+                <span class="temp" id="day1-temp">--°C</span>
+            </div>
+            <div class="forecast-day">
+                <img src="" alt="icon" id="day2-icon">
+                <span id="day2-name">Sun</span>
+                <span class="temp" id="day2-temp">--°C</span>
+            </div>
+            <div class="forecast-day">
+                <img src="" alt="icon" id="day3-icon">
+                <span id="day3-name">Mon</span>
+                <span class="temp" id="day3-temp">--°C</span>
+            </div>
+        </div>
     </div>
 
-    <!-- Weather Form -->
-    <form class="weatherForm">
-        <input type="text" class="cityInput" placeholder="Enter city" />
-        <button type="submit">Get weather</button>
-    </form>
-
-    <div class="card" style="display:none"></div>
-
-    <!-- Lien vers votre fichier JavaScript -->
-    <script src="app.js"></script>
+    <script src="app.js"></script> <!-- Lien vers le fichier JavaScript -->
 </body>
-
 </html>
