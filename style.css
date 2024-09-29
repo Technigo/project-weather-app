@@ -1,96 +1,77 @@
 body {
-
-    background-color: white;
     margin: 0 auto;
-    max-width: 400px;
-    align-content: center;
-    background-size: auto;
-    /* Behåll bildens ursprungliga storlek */
-    background-position: center;
-    /* Centrera bilden */
-    background-repeat: no-repeat;
-    /* Förhindra att bilden upprepas */
 }
 
 .background {
-    background-image: url('img/Path 7.png');
+    background-color: #A4A7FF;
     padding-bottom: 20px;
     overflow-x: hidden;
-    border-radius: 0px 0px 86px 86px;
-
+    clip-path: ellipse(110% 100% at 50% 0%);
 }
 
 .weather-right-now {
-
     overflow-x: hidden;
-    margin: 80px 0px 0px 0px;
-    text-align: just;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    margin: 10px 0px 0px 0px;
+    text-align: center;
+    color: white;
+}
 
-
+.degree {
+    font-size: 0.5em;
+    vertical-align: super;
 }
 
 .sunset-sunrise {
-    margin: 50px 0px 0px 0px;
+    font-size: 10px;
     text-align: center;
+    color: white;
 }
 
 .forecast {
-
-    border: none;
-    font-size: 16px;
-    outline: none;
-    transition: border-color 0.3s, background-color 0.3s;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-
-
-
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+    font-size: 22px;
 }
 
-
 .forecast-day {
-
     display: flex;
     flex-direction: row;
-    /* Lägg dagarna i en rad */
     justify-content: space-between;
-    /* Dela upp utrymmet mellan dagarna */
-
+    gap: 2rem;
     text-align: center;
     margin: 3px;
-
-
+    align-items: center;
 }
 
 h1 {
     font-family: "Roboto", sans-serif;
     font-size: 100px;
     font-weight: 300;
-    font-style: normal;
     margin: 0;
-
+    color: white;
 }
 
 h3 {
     font-family: "Roboto", sans-serif;
     font-size: 45px;
-    font-weight: 350;
-    font-style: normal;
+    font-weight: 320;
     margin: 0;
-
+    color: white;
 }
 
 p {
     font-family: "Roboto", sans-serif;
-    font-size: 19px;
-    font-weight: 400;
-    font-style: normal;
+    font-size: 22px;
+    font-weight: 300;
 }
 
 img {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
+    vertical-align: middle;
+    filter: none;
 }

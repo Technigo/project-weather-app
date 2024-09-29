@@ -3,11 +3,9 @@ const sunsetSunrise = document.getElementById('sunset-sunrise');
 const forecast = document.getElementById('forecast');
 document.body.style.fontFamily = 'MyCustomFont, sans-serif';
 
-// Hämta väderdata för Stockholm just nu
+// Fetch current weather data for Stockholm
 fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=3492ebb354e19f61676ca7b4ced6d196')
-    .then((response) => {
-        return response.json();
-    })
+    .then((response) => response.json())
     .then((json) => {
         const temperature = json.main.temp.toFixed(0);
         const description = json.weather[0].description;
@@ -16,7 +14,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         const sunset = new Date(json.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         const timestamp = new Date(json.dt * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-        weatherRightNow.innerHTML = `<h1>${temperature}°C</h1>`;
+        weatherRightNow.innerHTML = `<h1>${temperature}<span class='degree'>°C</span></h1>`;
         weatherRightNow.innerHTML += `<h3>${json.name}</h3>`;
         weatherRightNow.innerHTML += `<p>Time: ${timestamp}</p>`;
         weatherRightNow.innerHTML += `<p>${description} <img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="Weather icon"></p>`;
@@ -27,37 +25,36 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         console.error('Error fetching weather data:', error);
     });
 
-// Hämta prognos för Stockholm
+// Fetch forecast for Stockholm
 fetch('https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=3492ebb354e19f61676ca7b4ced6d196')
     .then(response => response.json())
     .then(data => {
-        forecast.innerHTML = '';  // Töm tidigare innehåll
+        forecast.innerHTML = '';  // Clear previous content
 
-        const today = new Date().getDate();  // Dagens datum
+        const today = new Date().getDate();  // Today's date
         const dailyForecasts = [];
 
         data.list.forEach(item => {
-            const itemDate = new Date(item.dt_txt).getDate();  // Datum för varje prognos
+            const itemDate = new Date(item.dt_txt).getDate();  // Date for each forecast
 
-            // Vi vill bara hämta en prognos per dag, och se till att det är en ny dag
+            // Only get one forecast per day, ensuring it's a new day
             if (!dailyForecasts.some(f => new Date(f.dt_txt).getDate() === itemDate)) {
                 dailyForecasts.push(item);
             }
         });
 
-        // Begränsa till idag + fyra dagar framåt
+        // Limit to today + four days ahead
         const forecastDays = dailyForecasts.slice(1, 5);
 
-
-        // Iterera över prognosdagarna och skapa HTML-innehåll
+        // Iterate over forecast days and create HTML content
         forecastDays.forEach(item => {
             forecast.innerHTML += `
-            <div class="forecast-day">
-                <p>${new Date(item.dt_txt).toLocaleDateString('ENG', { weekday: 'short' })}</p>
-                <p><img src="http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png" alt="Weather icon"></p>
-                <p>${item.main.temp.toFixed(0)}°C</p>
-                <p>${item.wind.speed} m/s</p>
-            </div>`;
+                <div class="forecast-day">
+                    <p>${new Date(item.dt_txt).toLocaleDateString('ENG', { weekday: 'short' })}</p>
+                    <p><img src="http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png" alt="Weather icon"></p>
+                    <p>${item.main.temp.toFixed(0)}°C</p>
+                    <p>${item.wind.speed} m/s</p>
+                </div>`;
         });
     })
     .catch(error => console.log('Error fetching data:', error));
