@@ -84,11 +84,14 @@ const updateHTML = (data) => {
     temperature.innerText = `${roundedTemp}°C`
 
     // the local time for the specific city
+
     const sunriseTime = convertUnixToTime(data.sys.sunrise, data.timezone)
     const sunsetTime = convertUnixToTime(data.sys.sunset, data.timezone)
 
     sunrise.innerText = sunriseTime
     sunset.innerText = sunsetTime
+
+    const currentTime = Math.floor(Date.now() / 1000)
 
     // Icon
     const iconCode = data.weather[0].icon
@@ -96,6 +99,13 @@ const updateHTML = (data) => {
 
     iconCurrent.innerHTML = `<img class="icon-big" src="${iconUrl}" alt="Weather Icon">`
 
+    // Day/Night Background Update
+    const nightBackground = (currentTime, sunriseTime, sunsetTime) => {
+        header.style.background = (currentTime < sunriseTime || currentTime > sunsetTime)
+            ? "linear-gradient(90deg, #323667 50%, #6B6EA8 50%)"
+            : ""
+    }
+    nightBackground(currentTime, data.sys.sunrise, data.sys.sunset)
 }
 
 // update HTML for forecast weather
@@ -130,10 +140,11 @@ const updateForecastHTML = (dataForecast) => {
 
         // Get the icon for the forecast
         const iconCode = filteredMinForecasts[i].weather[0].icon
-        const iconUrl = `http://openweathermap.org/img/wn/${iconCode}@2x.png`;
+        const iconUrl = `http://openweathermap.org/img/wn/${iconCode}@2x.png`
 
         // get weekdays
-        const dateTime = new Date(filteredMinForecasts[i].dt_txt)
+
+        const dateTime = new Date(filteredMaxForecasts[i].dt_txt)
         const dayOfWeek = weekdays[dateTime.getDay()]
 
         forecastHTML += `
@@ -152,6 +163,7 @@ const updateForecastHTML = (dataForecast) => {
 // Event Listener to open the search window
 menu.addEventListener("click", () => {
     searchWindow.style.display = "block"
+    cityInput.value = ""
 })
 
 // To close the search window users can either click on the X or somewhere else on the window 
@@ -181,3 +193,5 @@ searchButton.addEventListener("click", () => {
         console.log("please enter a city name")
     )
 })
+
+

@@ -73,8 +73,8 @@ header {
 }
 
 .temperature-container {
-    width: 211px;
-    height: 203px;
+    max-width: 200px;
+    max-height: 200px;
     margin-top: 40px;
     margin-left: 30px;
     text-align: left;
@@ -93,33 +93,33 @@ h1 {
     font-size: 100px;
     font-weight: 300;
     margin: 0;
-    line-height: 140.63px;
+    line-height: 140px;
 }
 
 .celsius {
     font-size: 40px;
-    line-height: 106.38px;
+    line-height: 106px;
 }
 
 h2 {
     font-size: 34px;
     font-weight: 300;
     margin: 0;
-    line-height: 39.84px;
+    line-height: 40px;
 }
 
 h3 {
     font-size: 22px;
     font-weight: 300;
     margin: 0;
-    line-height: 25.78px;
+    line-height: 25px;
 }
 
 .current-weather-image {
-    width: 161.15px;
-    height: 152.03px;
-    margin-top: 4.99px;
-    margin-left: 226.92px;
+    width: 160px;
+    height: 152px;
+    margin-top: 5px;
+    margin-left: 225px;
     position: relative;
 }
 
@@ -130,6 +130,7 @@ h3 {
 .sunrise-sunset {
     display: flex;
     width: 80%;
+    max-width: 400px;
     margin-top: 100px;
     margin-left: 30px;
     justify-content: space-between;
@@ -138,7 +139,7 @@ h3 {
 p {
     font-weight: 300;
     font-size: 22px;
-    line-height: 25.78px;
+    line-height: 25px;
     color: #FFFFFF;
 }
 
@@ -169,7 +170,7 @@ main {
 }
 
 .weather-day:hover {
-    background-color: #a39e9e;
+    background-color: #d1cdcd;
 }
 
 .forecast-image {
@@ -184,4 +185,50 @@ main {
 .forecast-temperature {
     color: #707070;
     font-size: 20px;
+}
+
+/* Pablets and iPads */
+@media(min-width:667px) {
+    .weather-container {
+        justify-content: center;
+    }
+
+    header {
+        justify-content: center;
+    }
+
+    .sunrise-sunset {
+        max-width: 100%;
+        justify-content: space-around;
+    }
+
+    .current-weather-image {
+        width: 200px;
+        height: 200px;
+        margin-left: 400px;
+    }
+}
+
+/* desktop  */
+@media(min-width: 1024px) {
+    body {
+        display: flex;
+        flex-direction: row;
+        background: linear-gradient(to bottom right, #8589FF, #E8E9FF);
+    }
+
+    header {
+        max-width: 50%;
+        height: 80%;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .weather-forecast-container {
+        margin-top: 150px;
+        margin-left: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 }
