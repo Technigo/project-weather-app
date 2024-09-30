@@ -5,15 +5,10 @@ const API_KEY = '1bd3fe8b6571a9e92c6d24232e62bdc8'
 
 const URL = `${BASE_URL}${API_KEY}`
 
-console.log(URL)
-
 //STEP 2: URL for Weather Forecast
 const FORECAST_URL = 'https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&appid='
 
 const forecastURL = `${FORECAST_URL}${API_KEY}`
-
-console.log(forecastURL)
-
 
 // DOM Selectors
 const weatherLocation = document.getElementById("location");
@@ -22,25 +17,27 @@ const weatherCondition = document.getElementById("condition");
 const sunriseDisplay = document.getElementById("sunriseID");
 const sunsetDisplay = document.getElementById("sunsetID");
 const forecast = document.getElementById("forecastID")
+const locationCard = document.getElementById("locationCard")
 //DOM Selectors - Images 
 const sunImg = document.getElementById("sun");
 const cloudsImg = document.getElementById("cloudsImg");
 const rainImg = document.getElementById("rainImg");
 const brokenCloudsImg = document.getElementById("brokenCloudsImg");
+const moonImg = document.getElementById("moonImg")
 
 //FUNCTIONS
+//Function to handle errors
+const handleError = (errorMessage) => {
+  console.error('Error fetching data:', errorMessage);
+  forecast.innerHTML = "Unable to retrieve weather data.";
+};
+
 // Function to convert UNIX timestamp to readable time format
 const convertUnixToTime = (unixTimestamp) => {
   const date = new Date(unixTimestamp * 1000);
   //Round the number to a format without seconds
   return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 };
-
-//Function to make the background adapt to the weathercondition
-const makeElementSunny = (element) => {
-  element.classList.remove("weather-card")
-  element.classList.add("weather-card-sunny")
-}
 
 // Function to format timestamp to date string (YYYY-MM-DD)
 const formatDate = (timestamp) => {
@@ -52,7 +49,7 @@ const formatDate = (timestamp) => {
 const getDayOfWeek = (dateString) => {
   const date = new Date(dateString);
   const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-  return daysOfWeek[date.getDay()]; // Returns the day of the week
+  return daysOfWeek[date.getDay()];
 };
 
 // Initialize an object to hold daily min and max temps
@@ -83,37 +80,103 @@ fetch(URL)
     sunriseDisplay.innerText = `Sunrise ${sunriseTime}`;
     sunsetDisplay.innerText = `Sunset  ${sunsetTime}`;
 
+    //find the current time from the IPA
+    const timezoneOffset = 3600;
+    const apiTimestamp = 1727642907;
+    const localDate = new Date(apiTimestamp * 1000);
+    const localTimeInMilliseconds = localDate.getTime() + (timezoneOffset * 1000);
+    const localTime = new Date(localTimeInMilliseconds);
+    const formattedLocalTime = localTime.toLocaleTimeString('en-GB', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    });
+    const currentHour = localTime.getHours();
+
     // Hide all images 
     sunImg.classList.add("hidden");
     cloudsImg.classList.add("hidden");
     rainImg.classList.add("hidden");
     brokenCloudsImg.classList.add("hidden");
+    moonImg.classList.add("hidden");
 
-    //Change image if weahtercondition is sunny/cloudy etc
+    // Change image & background if condition is sunny/cloudy and if the time is night/day
     switch (true) {
       case displayCondition.includes("clear"):
-        sunImg.classList.remove("hidden");
-        sunImg.classList.add("visible");
+        if (currentHour >= 6 && currentHour < 21) {
+          // Daytime clear weather
+          sunImg.classList.remove("hidden");
+          sunImg.classList.add("visible");
+          moonImg.classList.add("hidden");
+          locationCard.classList.remove("location-card-night");
+          locationCard.classList.add("location-card");
+        } else {
+          // Nighttime clear weather
+          moonImg.classList.remove("hidden");
+          moonImg.classList.add("visible");
+          sunImg.classList.add("hidden");
+          locationCard.classList.add("location-card-night");
+        }
         break;
-      case displayCondition.includes("cloudy"):
-        cloudsImg.classList.remove("hidden");
-        cloudsImg.classList.add("visible");
+
+      case displayCondition.includes("cloud"):
+        if (currentHour >= 6 && currentHour < 21) {
+          // Daytime cloudy weather
+          cloudsImg.classList.remove("hidden");
+          cloudsImg.classList.add("visible");
+          moonImg.classList.add("hidden");
+          locationCard.classList.remove("location-card-night");
+          locationCard.classList.add("location-card");
+        } else {
+          // Nighttime cloudy weather
+          moonImg.classList.remove("hidden");
+          moonImg.classList.add("visible");
+          cloudsImg.classList.add("hidden");
+          locationCard.classList.add("location-card-night");
+        }
         break;
+
       case displayCondition.includes("rain"):
-        rainImg.classList.remove("hidden");
-        rainImg.classList.add("visible");
+        if (currentHour >= 6 && currentHour < 21) {
+          // Daytime rainy weather
+          rainImg.classList.remove("hidden");
+          rainImg.classList.add("visible");
+          moonImg.classList.add("hidden");
+          locationCard.classList.remove("location-card-night");
+          locationCard.classList.add("location-card-rainy");
+        } else {
+          // Nighttime rainy weather
+          moonImg.classList.remove("hidden");
+          moonImg.classList.add("visible");
+          rainImg.classList.add("hidden");
+          locationCard.classList.add("location-card-night");
+        }
         break;
-      case displayCondition.includes("broken clouds"):
-        brokenCloudsImg.classList.remove("hidden");
-        brokenCloudsImg.classList.add("visible");
+
+      case displayCondition.includes("broken"):
+        if (currentHour >= 6 && currentHour < 21) {
+          // Daytime broken clouds
+          brokenCloudsImg.classList.remove("hidden");
+          brokenCloudsImg.classList.add("visible");
+          moonImg.classList.add("hidden");
+          locationCard.classList.remove("location-card-night");
+          locationCard.classList.add("location-card");
+        } else {
+          // Nighttime broken clouds
+          moonImg.classList.remove("hidden");
+          moonImg.classList.add("visible");
+          brokenCloudsImg.classList.add("hidden");
+          locationCard.classList.add("location-card-night");
+        }
         break;
+
+      default:
+        locationCard.classList.add("location-card");
+        moonImg.classList.add("hidden");
     }
 
   })
-  .catch(error => {
-    console.error('Error fetching weather data:', error);
-    forecast.innerHTML = "Unable to retrieve weather data.";
-  });
+  .catch(error => handleError(error));
 
 
 // Fetching data from the forecastURL
@@ -140,9 +203,10 @@ fetch(forecastURL)
 
     // Extract the next four days' temperatures and convert date to day name
     const nextFourDays = Object.entries(dailyTemps)
-      .slice(0, 5) // Get the first four days
+      //Getting the current day + the following 4 days
+      .slice(0, 5)
       .map(([date, temps]) => ({
-        date: getDayOfWeek(date), // Convert date to day name
+        date: getDayOfWeek(date),
         min: temps.min,
         max: temps.max,
       }));
@@ -150,14 +214,11 @@ fetch(forecastURL)
     // Render the forecast data in the browser
     renderForecast(nextFourDays);
   })
-  .catch(error => {
-    console.error('Error fetching forecast data:', error);
-    forecast.innerHTML = "Unable to retrieve forecast data.";
-  });
+  .catch(error => handleError(error));
+
 
 // Function to render forecast data in the browser
 const renderForecast = (forecastData) => {
-  // Clear the existing forecast content
   forecast.innerHTML = "";
   let forecastContent = "";
 
@@ -169,7 +230,6 @@ const renderForecast = (forecastData) => {
       </li>`;
   });
 
-  // Set the forecast data to the innerHTML of the forecast container
   forecast.innerHTML = forecastContent;
 };
 

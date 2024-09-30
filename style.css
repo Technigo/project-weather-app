@@ -26,12 +26,17 @@
 
  /* background for rainy */
  .location-card-rainy {
-     background: linear-gradient(90deg, #7d7ea1 0%, #6264A2 100%);
+     background: linear-gradient(90deg, #6264A2 0%, #9b9cc2 100%);
+     width: 100%;
+     height: 50%;
+     margin: 0;
+     color: white;
+     position: relative;
  }
 
  /* background for night */
  .location-card-night {
-     background: linear-gradient(270deg, #6264A2 50.98%, #222350 51.14%);
+     background: linear-gradient(90deg, #222350 0%, #5a5c9b 100%);
      width: 100%;
      height: 50%;
      margin: 0;
@@ -53,7 +58,7 @@
      position: absolute;
      top: 65px;
      right: 45px;
-     width: 40%;
+     width: 35%;
  }
 
  .temp {
@@ -138,4 +143,64 @@
      justify-content: space-around;
      padding: 10px 0;
      border-bottom: 1px solid #ccc;
+ }
+
+ /* Responsiveness */
+ @media(max-width: 414px) {
+     body {
+         margin: 10px;
+     }
+
+     .weather-card {
+         width: 95%;
+         height: 600px;
+     }
+
+     .temp {
+         font-size: 80px;
+         margin-top: 70px;
+     }
+
+     .temp-unit {
+         font-size: 30px;
+         transform: translateY(-35px);
+     }
+
+     .visible {
+         top: 50px;
+         right: 30px;
+         width: 25%;
+     }
+
+     .location {
+         top: 140px;
+         font-size: 22px;
+     }
+
+     .condition {
+         top: 180px;
+         font-size: 17px;
+     }
+
+     .suntime-container {
+         margin-top: 45px;
+         margin-left: 5px;
+     }
+
+     .sunrise,
+     .sunset {
+         margin-top: 25px;
+         margin-left: 35px;
+         font-size: 13px;
+     }
+
+     .forecast {
+         gap: 7px;
+     }
+
+     #forecastID li {
+         height: 20px;
+         padding: 12px;
+         font-size: 15px;
+     }
  }
