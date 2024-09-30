@@ -250,6 +250,7 @@ const getWeatherForCurrentLocation = () => {
 };
 
 // Callback function for successful geolocation
+// Callback function for successful geolocation
 const successCallback = async (position) => {
   const { latitude, longitude } = position.coords; // Extract latitude and longitude from position
 
@@ -269,12 +270,13 @@ const successCallback = async (position) => {
         await fetchWeatherForecast(city); // Fetch forecast only if weather data was fetched successfully
       }
     } else {
-      handleError(
-        "City not found for your location. Please enable location access in your browser settings and refresh the page."
+      // Handle case where location is not found
+      throw new Error(
+        `Your current location (Lat: ${latitude}, Lon: ${longitude}) was not found. Please try again or enter a city manually.`
       );
     }
   } catch (error) {
-    handleError(`Error: ${error.message}`);
+    handleError(error.message); // Show a specific error message when location is not found
   } finally {
     hideLocationLoading(); // Hide loading message after location permission is handled
   }
