@@ -1,6 +1,5 @@
 //API URL and Endpoints
-const BASE_URL = "https://api.openweathermap.org/data/2.5/weather?"
-const forecastBaseURL = "https://api.openweathermap.org/data/2.5/forecast?"
+const BASE_URL = "https://api.openweathermap.org/data/2.5/"
 const api_key = "617b18d1663716ef276314bb0808d62b"
 
 // DOM Selectors
@@ -25,7 +24,7 @@ const weatherIcons = {
         
 //Fetch todays weather
 const fetchTodaysWeatherAsync = async (city) => {
-    const todayURL = `${BASE_URL}q=${city}&units=metric&APPID=${api_key}`
+    const todayURL = `${BASE_URL}weather?q=${city}&units=metric&APPID=${api_key}`
     // units=metric to get temperatures in Celcius
     try {
         const response = await fetch(`${todayURL}`)
@@ -64,7 +63,7 @@ fetchTodaysWeatherAsync("Las Vegas")
 
 //Fetch forecast weather
 const fetchForecastWeatherAsync = async (city) => {
-    const forecastURL = `${forecastBaseURL}q=${city}&units=metric&cnt=40&appid=${api_key}`
+    const forecastURL = `${BASE_URL}forecast?q=${city}&units=metric&cnt=40&appid=${api_key}`
      // units=metric to get temperatures in Celcius and cnt=40 for a 5 day forecast, then we remove todays forecast
     try {
         const response = await fetch(`${forecastURL}`)
