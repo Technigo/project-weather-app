@@ -83,7 +83,7 @@ main {
   justify-content: space-between;
 
   @media (min-width: 375px) {
-    padding: 2.5rem;
+    padding: 2.25rem;
   }
 
   @media (min-width: 668px) {
@@ -92,13 +92,18 @@ main {
 }
 
 h1 {
-  font-size: 2rem;
-  margin-top: 1rem;
-  margin-bottom: 2.5rem;
+  font-size: 1.875rem;
+  margin-top: 0;
+  margin-bottom: 0;
   text-wrap: balance;
 
   @media (min-width: 375px) {
     font-size: 2.25rem;
+  }
+
+  @media (min-width: 668px) {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
   }
 }
 
@@ -106,7 +111,11 @@ h1 {
   display: flex;
   flex-flow: column;
   gap: 0.25rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
+
+  @media (min-width: 668px) {
+    margin-bottom: 1rem;
+  }
 
   p {
     font-size: 1rem;
@@ -182,12 +191,13 @@ h1 {
   background: transparent;
   border: none;
   border-radius: 0;
-  border-bottom: 1px dashed;
+  border-bottom: 2px dashed;
   font-family: "Montserrat";
   font-size: 2.25rem;
   font-weight: 700;
   color: currentColor;
-  padding: 0;
+  padding: 0 0.25rem;
+  cursor: pointer;
 
   &::selection {
     background-color: #fff;
@@ -205,7 +215,7 @@ h1 {
   &:focus {
     outline: none;
     background-color: #fff;
+    border-color: transparent;
     border-radius: 0.5rem;
-    border-bottom-color: transparent;
   }
 }
