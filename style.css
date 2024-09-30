@@ -6,7 +6,9 @@
   --yellow-light: #f7e9b9;
   --yellow-dark: #2a5510;
   --brown-light: #f1eaea;
-  --brown-dark: #645353;
+  --brown-dark: #534a4a;
+  --gray-light: #eeeeee;
+  --gray-dark: #464646;
 }
 
 *,
@@ -31,12 +33,22 @@ body.is-snowy,
 body.is-drizzly {
   color: var(--blue-dark);
   background-color: var(--blue-light);
+
+  &.is-nighttime {
+    color: var(--blue-light);
+    background-color: var(--blue-dark);
+  }
 }
 
 body.is-clear,
 body.is-thunderstorm {
   color: var(--yellow-dark);
   background-color: var(--yellow-light);
+
+  &.is-nighttime {
+    color: var(--yellow-light);
+    background-color: var(--blue-dark);
+  }
 }
 
 body.is-cloudy,
@@ -44,6 +56,21 @@ body.is-atmosphere,
 body.is-misty {
   color: var(--brown-dark);
   background-color: var(--brown-light);
+
+  &.is-nighttime {
+    color: var(--brown-light);
+    background-color: var(--brown-dark);
+  }
+}
+
+body.is-default {
+  color: var(--gray-dark);
+  background-color: var(--gray-light);
+
+  &.is-nighttime {
+    color: var(--gray-light);
+    background-color: var(--gray-dark);
+  }
 }
 
 main {

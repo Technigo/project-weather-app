@@ -34,6 +34,7 @@ let userCityInput = "";
 
 // Set to true to use mock data instead of real API data
 const useMockData = false; // Change to false to use real data
+const simulateNighttime = false; // Set to true to force nighttime for testing
 
 /* *********************************
    DOM Selectors
@@ -62,8 +63,9 @@ const weatherTypes = {
     dayMessage: "Light a fire and get cosy. {city} is looking grey today.",
     dayImgSrc: "./assets/animated/cloudy.svg",
     dayImgAlt: "Clouds",
-    nightMessage: "Light a fire and get cosy. {city} is looking grey today.",
-    nightImgSrc: "./assets/animated/cloudy.svg",
+    nightMessage:
+      "The clouds linger over {city}, creating a calm, moody night.",
+    nightImgSrc: "./assets/animated/partly-cloudy-night.svg",
     nightImgAlt: "Clouds",
   },
   clear: {
@@ -80,9 +82,8 @@ const weatherTypes = {
     dayMessage: "There's a light drizzle in {city}. Keep your raincoat handy!",
     dayImgSrc: "./assets/animated/drizzle.svg",
     dayImgAlt: "Drizzle",
-    nightMessage:
-      "There's a light drizzle in {city}. Keep your raincoat handy!",
-    nightImgSrc: "./assets/animated/drizzle.svg",
+    nightMessage: "A soft drizzle falls over {city} this night.",
+    nightImgSrc: "./assets/animated/extreme-night-drizzle.svg",
     nightImgAlt: "Drizzle",
   },
   rain: {
@@ -90,8 +91,8 @@ const weatherTypes = {
     dayMessage: "Get your umbrella! {city} is looking rather rainy today.",
     dayImgSrc: "./assets/animated/raindrops.svg",
     dayImgAlt: "Raindrops",
-    nightMessage: "Get your umbrella! {city} is looking rather rainy today.",
-    nightImgSrc: "./assets/animated/raindrops.svg",
+    nightMessage: "The rain pours down in {city} – a perfect night to stay in.",
+    nightImgSrc: "./assets/animated/extreme-night-rain.svg",
     nightImgAlt: "Raindrops",
   },
   snow: {
@@ -99,8 +100,8 @@ const weatherTypes = {
     dayMessage: "Time for snow boots! {city} is a winter wonderland today.",
     dayImgSrc: "./assets/animated/snow.svg",
     dayImgAlt: "Cloud with snow",
-    nightMessage: "Time for snow boots! {city} is a winter wonderland today.",
-    nightImgSrc: "./assets/animated/snow.svg",
+    nightMessage: "Snow falls on {city} tonight. A peaceful winter night.",
+    nightImgSrc: "./assets/animated/extreme-night-snow.svg",
     nightImgAlt: "Cloud with snow",
   },
   thunderstorm: {
@@ -109,9 +110,8 @@ const weatherTypes = {
       "Stay safe indoors! {city} is rumbling with a thunderstorm today.",
     dayImgSrc: "./assets/animated/thunderstorms-rain.svg",
     dayImgAlt: "Thunder and clouds",
-    nightMessage:
-      "Stay safe indoors! {city} is rumbling with a thunderstorm today.",
-    nightImgSrc: "./assets/animated/thunderstorms-rain.svg",
+    nightMessage: "Thunder rolls through the night sky in {city}.",
+    nightImgSrc: "./assets/animated/thunderstorms-night-extreme-rain.svg",
     nightImgAlt: "Thunder and clouds",
   },
   mist: {
@@ -119,19 +119,19 @@ const weatherTypes = {
     dayMessage: "It's foggy in {city} today.",
     dayImgSrc: "./assets/animated/mist.svg",
     dayImgAlt: "Mist",
-    nightMessage: "It's foggy in {city} today.",
-    nightImgSrc: "./assets/animated/mist.svg",
+    nightMessage:
+      "A thick mist settles over {city}, making the night mysterious and quiet.",
+    nightImgSrc: "./assets/animated/mist-night.svg",
     nightImgAlt: "Mist",
   },
   default: {
     className: "is-default",
-    dayMessage:
-      "The weather in {city} can't be determined today. Just go outside and have a look.",
+    dayMessage: "The weather in {city} can't be determined today.",
     dayImgSrc: "./assets/animated/compass.svg",
     dayImgAlt: "Compass",
     nightMessage:
-      "The weather in {city} can't be determined today. Just go outside and have a look.",
-    nightImgSrc: "./assets/animated/compass.svg",
+      "It's hard to tell what the weather is like tonight in {city}.",
+    nightImgSrc: "./assets/animated/compass-night.svg",
     nightImgAlt: "Compass",
   },
 };
@@ -157,8 +157,8 @@ const mockWeatherData = {
     weather: [{ main: "Clear" }],
     main: { temp: 25 },
     sys: {
-      sunrise: Math.floor(Date.now() / 1000) - 3600, // 1 hour ago
-      sunset: Math.floor(Date.now() / 1000) + 3600, // 1 hour from now
+      sunrise: Math.floor(Date.now() / 1000) - 7200, // 2 hours ago
+      sunset: Math.floor(Date.now() / 1000) - 3600, // 1 hour ago, it's night
     },
     name: "Mock City",
   },
@@ -166,8 +166,8 @@ const mockWeatherData = {
     weather: [{ main: "Clouds" }],
     main: { temp: 18 },
     sys: {
-      sunrise: Math.floor(Date.now() / 1000) - 3600,
-      sunset: Math.floor(Date.now() / 1000) + 3600,
+      sunrise: Math.floor(Date.now() / 1000) - 7200, // 2 hours ago
+      sunset: Math.floor(Date.now() / 1000) - 3600, // 1 hour ago, it's night
     },
     name: "Mock City",
   },
@@ -175,8 +175,8 @@ const mockWeatherData = {
     weather: [{ main: "Rain" }],
     main: { temp: 15 },
     sys: {
-      sunrise: Math.floor(Date.now() / 1000) - 3600,
-      sunset: Math.floor(Date.now() / 1000) + 3600,
+      sunrise: Math.floor(Date.now() / 1000) - 7200, // 2 hours ago
+      sunset: Math.floor(Date.now() / 1000) - 3600, // 1 hour ago, it's night
     },
     name: "Mock City",
   },
@@ -184,8 +184,8 @@ const mockWeatherData = {
     weather: [{ main: "Snow" }],
     main: { temp: -5 },
     sys: {
-      sunrise: Math.floor(Date.now() / 1000) - 3600,
-      sunset: Math.floor(Date.now() / 1000) + 3600,
+      sunrise: Math.floor(Date.now() / 1000) - 7200, // 2 hours ago
+      sunset: Math.floor(Date.now() / 1000) - 3600, // 1 hour ago, it's night
     },
     name: "Mock City",
   },
@@ -193,8 +193,8 @@ const mockWeatherData = {
     weather: [{ main: "Thunderstorm" }],
     main: { temp: 20 },
     sys: {
-      sunrise: Math.floor(Date.now() / 1000) - 3600,
-      sunset: Math.floor(Date.now() / 1000) + 3600,
+      sunrise: Math.floor(Date.now() / 1000) - 7200, // 2 hours ago
+      sunset: Math.floor(Date.now() / 1000) - 3600, // 1 hour ago, it's night
     },
     name: "Mock City",
   },
@@ -202,8 +202,8 @@ const mockWeatherData = {
     weather: [{ main: "Drizzle" }],
     main: { temp: 17 },
     sys: {
-      sunrise: Math.floor(Date.now() / 1000) - 3600,
-      sunset: Math.floor(Date.now() / 1000) + 3600,
+      sunrise: Math.floor(Date.now() / 1000) - 7200, // 2 hours ago
+      sunset: Math.floor(Date.now() / 1000) - 3600, // 1 hour ago, it's night
     },
     name: "Mock City",
   },
@@ -211,8 +211,8 @@ const mockWeatherData = {
     weather: [{ main: "Mist" }],
     main: { temp: 12 },
     sys: {
-      sunrise: Math.floor(Date.now() / 1000) - 3600,
-      sunset: Math.floor(Date.now() / 1000) + 3600,
+      sunrise: Math.floor(Date.now() / 1000) - 7200, // 2 hours ago
+      sunset: Math.floor(Date.now() / 1000) - 3600, // 1 hour ago, it's night
     },
     name: "Mock City",
   },
@@ -220,8 +220,8 @@ const mockWeatherData = {
     weather: [{ main: "Default" }],
     main: { temp: 12 },
     sys: {
-      sunrise: Math.floor(Date.now() / 1000) - 3600,
-      sunset: Math.floor(Date.now() / 1000) + 3600,
+      sunrise: Math.floor(Date.now() / 1000) - 7200, // 2 hours ago
+      sunset: Math.floor(Date.now() / 1000) - 3600, // 1 hour ago, it's night
     },
     name: "Mock City",
   },
@@ -404,6 +404,9 @@ const typeOfWeather = (weatherType, isDaytime) => {
     app.classList.add(type.className);
   }
 
+  // Add is-nighttime as class on the app container when sun is down
+  !isDaytime && app.classList.add("is-nighttime");
+
   // Select message and image based on isDaytime
   const mainTitle = isDaytime ? type.dayMessage : type.nightMessage;
   const imgSrc = isDaytime ? type.dayImgSrc : type.nightImgSrc;
@@ -482,7 +485,10 @@ const currentWeather = async (mockType = null) => {
 
     // Determine if it's currently daytime
     const currentTime = new Date();
-    const isDaytime = currentTime >= sunriseTime && currentTime < sunsetTime;
+    const isDaytime =
+      useMockData && simulateNighttime === false
+        ? true // Force daytime during mock testing if simulateNighttime is false
+        : currentTime >= sunriseTime && currentTime < sunsetTime;
 
     // Get mainTitle, imgSrc, and imgAlt from typeOfWeather
     const { mainTitle, imgSrc, imgAlt } = typeOfWeather(
