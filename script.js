@@ -32,27 +32,28 @@ function fetchWeatherData() {
         .then(response => response.json())
         .then(data => {
             if (!data || data.cod !== 200) {
-                throw new Error('City not found');
+                throw new Error('City not found')
             }
             const stockholmTemp = data.main.temp;
             const weatherCondition = data.weather[0].description; 
             const roundedTemp = Math.round(stockholmTemp);
             const sunrise = data.sys.sunrise;
             const sunset = data.sys.sunset;
+            const timezoneOffset = data.timezone; // Timezone offset in seconds
 
             temperatureDisplay.innerText = `${roundedTemp}°C`;
             conditionDisplay.innerText = `${weatherCondition}`;
         
     // Function to convert UNIX timestamp to readable time format (24-hour clock)
-            const convertUnixToTime = (unixTimestamp) => {
-                const date = new Date(unixTimestamp * 1000);
-                const hours = date.getHours();
-                const minutes = String(date.getMinutes()).padStart(2, '0');
+            const convertUnixToTime = (unixTimestamp, timezoneOffset) => {
+                const date = new Date((unixTimestamp + timezoneOffset)* 1000);
+                const hours = date.getUTCHours();
+                const minutes = String(date.getUTCMinutes()).padStart(2, '0');
                 return `${hours}:${minutes}`;
             }
-    // Convert and display sunrise and sunset times
-            const sunriseTime = convertUnixToTime(sunrise);
-            const sunsetTime = convertUnixToTime(sunset);
+    // Convert and display sunrise and sunset times with timezone offset (so it is local time showing for the selected city)
+            const sunriseTime = convertUnixToTime(sunrise, timezoneOffset);
+            const sunsetTime = convertUnixToTime(sunset, timezoneOffset);
             sunriseDisplay.innerText = `${sunriseTime}`;
             sunsetDisplay.innerText = `${sunsetTime}`;
 

@@ -109,7 +109,7 @@ label {
 }
 
 #searchButton {
-  padding: 8px 12px; /* Padding for the search button */
+  padding: 10px 12px; /* Padding for the search button */
   color: white;
   border: none;
   border-radius: 4px; /* Rounded corners for the button */
