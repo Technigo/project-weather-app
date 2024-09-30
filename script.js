@@ -523,7 +523,7 @@ const currentWeather = async (mockType = null) => {
     createCityInput(h1); // Append the city input field
     h1.appendChild(document.createTextNode(parts[1]));
   } catch (error) {
-    // Handle the error gracefully by displaying a message and keeping the input in the <h1>
+    // Handle the error by displaying a message and keeping the input in the <h1>
     weatherTodayContainer.innerHTML = `
       <div id="weather-today__greeting" class="weather-today__greeting">
         <h1>Oh no! City not found. Try another: </h1>
