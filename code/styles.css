@@ -6,9 +6,6 @@ img {
 
 /*Mobile*/
 @media screen and (max-width: 600px) {
-    body {
-        margin-top: 10px;
-    }
     .container {
         padding: 10px;
         margin-top: 10px;
@@ -123,5 +120,17 @@ body {
   
 .forecast-day img {
     margin-right: 10px; 
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    color: #fff;
+    background-color: #d1c4e9;
+    border-radius: 20px;
+    border-style: dotted;
+    padding: 10px;
+    margin-top: 20px;
 }
   
