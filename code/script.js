@@ -9,7 +9,7 @@ const description = document.getElementById("description")
 const temperature = document.getElementById("temperature")
 const sunriseTime = document.getElementById("sunrise")
 const sunsetTime = document.getElementById("sunset")
-const fiveDayForecast = document.getElementById('five-day-forecast')
+const fourDayForecast = document.getElementById('four-day-forecast')
 
 //Array with weekdays 
 const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
@@ -86,7 +86,7 @@ const fetchForecastWeatherAsync = async (city) => {
                 
                 //Update HTML with weekday, temperture and icon
                 const forecastIconURL = weatherIcons[weatherDescription] || "./assets/design-1/Group16.png"; // Default icon
-                fiveDayForecast.innerHTML += `<p>${dayName}: <img src="${forecastIconURL}" alt="weather icon"> ${Math.round(forecast.main.temp)} °C</p>`
+                fourDayForecast.innerHTML += `<p>${dayName}: <img src="${forecastIconURL}" alt="weather icon"> ${Math.round(forecast.main.temp)} °C</p>`
                 
         })
     } catch (error) {
