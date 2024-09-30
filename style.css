@@ -82,7 +82,21 @@ body {
 li {
   display: flex;
   justify-content: space-between;
-  position: relative;
+  /* margin-bottom: 15px; Space between days */
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.weekday {
+  width: 100px; /* Set a fixed width for all weekday names */
+}
+
+.min-max {
+  display: flex;
+}
+
+.min-temp {
+  margin-left: 10px;
 }
 
 #searchContainer {

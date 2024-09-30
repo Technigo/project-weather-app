@@ -61,26 +61,51 @@ function fetchWeatherData() {
         })
         .catch(error => console.error('Error fetching weather data:', error));
 
-    // Fetch Forecast weather data
-    fetch(FORECAST_URL)
+        fetch(FORECAST_URL)
         .then(response => response.json())
         .then(forecastData => {
             forecastList.innerHTML = '';
-
+    
+            const today = new Date();
+    
+            // Loop through the next 5 days
             for (let i = 1; i <= 5; i++) {
-                const indexForNoon = (i * 8) + 1; 
-                const forecast = forecastData.list[indexForNoon];
-
-                if (forecast) {
-                    const weekDay = new Date(forecast.dt * 1000).toLocaleDateString('en-US', { weekday: 'long' });
-                    const temperature = Math.round(forecast.main.temp);
-
+                const forecastDate = new Date(today);
+                forecastDate.setDate(today.getDate() + i);
+                const forecastDateString = forecastDate.toISOString().split('T')[0];
+    
+                // Filter forecasts for this specific date
+                const dailyForecasts = forecastData.list.filter(item => {
+                    const itemDate = new Date(item.dt * 1000).toISOString().split('T')[0];
+                    return itemDate === forecastDateString;
+                });
+    
+                if (dailyForecasts.length > 0) {
+                    // Initialize min and max temperature variables
+                    let minTemp = Infinity;
+                    let maxTemp = -Infinity;
+    
+                    // Calculate min and max temperatures for the day
+                    dailyForecasts.forEach(item => {
+                        const temp = Math.round(item.main.temp);
+                        
+                        if (temp < minTemp) {
+                            minTemp = temp;
+                        }
+                        if (temp > maxTemp) {
+                            maxTemp = temp;
+                        }
+                    });
+    
+                    const weekDay = forecastDate.toLocaleDateString('en-US', { weekday: 'long' });
+    
                     const listItem = document.createElement('li');
-                    listItem.textContent = `${weekDay}: ${temperature}°C`;
+                    listItem.innerHTML = `${weekDay}: <span class="min-temp">${minTemp} / <span class="max-temp">${maxTemp}°C</span>`;
                     forecastList.appendChild(listItem);
                 }
             }
         })
+    
         .catch(error => console.error('Error fetching forecast data:', error));
 }
 
