@@ -1,8 +1,15 @@
-// The toggle from night to day
-
+//DOM Selectors
 const toggle = document.getElementById('theme-toggle');
 const weatherCard = document.querySelector('.weather-card');
+const searchButton = document.getElementById('search-btn');
+const searchBarContainer = document.querySelector('.search-bar-container');
+const apiKey = "6f10170466235746161a1b24e2d289bd"; 
+const searchInput = document.getElementById('search-bar');
 
+// Initial fetch for default city (Dubai)
+fetchWeatherByCity("Dubai");
+
+// The toggle from night to day
 toggle.addEventListener('change', () => {
     if (toggle.checked) {
         document.body.style.backgroundImage = "url('assets/design-1/day-sky.jpg')";
@@ -14,10 +21,6 @@ toggle.addEventListener('change', () => {
 });
 
 // The search functionality
-
-const searchButton = document.getElementById('search-btn');
-const searchBarContainer = document.querySelector('.search-bar-container');
-
 // Add event listener to the search button
 searchButton.addEventListener('click', () => {
     searchBarContainer.classList.toggle('active');
@@ -25,8 +28,6 @@ searchButton.addEventListener('click', () => {
         document.getElementById('search-bar').focus();
     }
 });
-
-const apiKey = "6f10170466235746161a1b24e2d289bd"; 
 
 // Function to fetch weather data for a given city
 const fetchWeatherByCity = (city) => {
@@ -49,8 +50,6 @@ const fetchWeatherByCity = (city) => {
 };
 
 // Event listener for search input (trigger on 'Enter' key press)
-const searchInput = document.getElementById('search-bar');
-
 searchInput.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
         const city = event.target.value.trim();
@@ -61,9 +60,6 @@ searchInput.addEventListener('keydown', (event) => {
         }
     }
 });
-
-// Initial fetch for default city (Dubai)
-fetchWeatherByCity("Dubai");
 
 // Function to format time for sunrise and sunset
 const formatTime = (timestamp) => {
