@@ -72,7 +72,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to format time for sunrise and sunset
     const formatTime = (timestamp) => {
         const date = new Date(timestamp * 1000); // Convert from seconds to milliseconds
-        return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
+        return date.toLocaleTimeString([], { 
+            hour: '2-digit', 
+            minute: '2-digit', 
+            hour12: false 
+        });
     };
 
     // Function to update the HTML with weather data
