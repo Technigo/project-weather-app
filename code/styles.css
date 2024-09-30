@@ -8,6 +8,7 @@ img {
 @media screen and (max-width: 600px) {
 .container {
     padding: 10px;
+    margin-top: 10px;
     max-width: 100%;
     max-height: 100%;
     }
@@ -17,7 +18,8 @@ img {
 @media screen and (min-width: 501px) and (max-width: 1024px) {
     .container {
       width: 600px;
-      padding: 40px;
+      margin-top: 40px;
+      padding: 50px;
     }
   
     .temperature h1 {
@@ -51,13 +53,14 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f5f5f5;
+    background-color: #d1c4e9;
   }
   
   .container {
     background: linear-gradient(to bottom, #d1c4e9, #fff);
     border-radius: 20px;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
     padding: 50px;;
     width: 320px;
     text-align: center;
