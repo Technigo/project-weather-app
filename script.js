@@ -120,7 +120,7 @@ const weatherTypes = {
     dayImgSrc: "./assets/animated/mist.svg",
     dayImgAlt: "Mist",
     nightMessage:
-      "A thick mist settles over {city}, making the night mysterious and quiet.",
+      "A thick mist settles over {city} on this mysterious and quiet night.",
     nightImgSrc: "./assets/animated/mist-night.svg",
     nightImgAlt: "Mist",
   },
