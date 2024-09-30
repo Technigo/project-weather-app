@@ -193,6 +193,15 @@ h1 {
     background-color: #fff;
   }
 
+  .is-nighttime & {
+    &:focus {
+      background-color: #000;
+    }
+    &::selection {
+      background-color: #000;
+    }
+  }
+
   &:focus {
     outline: none;
     background-color: #fff;
