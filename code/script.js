@@ -61,8 +61,8 @@ fetchTodaysWeatherAsync("Las Vegas")
 
 //Fetch forecast weather
 const fetchForecastWeatherAsync = async (city) => {
-    const forecastURL = `${forecastBaseURL}q=${city}&units=metric&appid=${api_key}`
-     // units=metric to get temperatures in Celcius
+    const forecastURL = `${forecastBaseURL}q=${city}&units=metric&cnt=32&appid=${api_key}`
+     // units=metric to get temperatures in Celcius and cnt=32 for a 4 day forecast
     try {
         const response = await fetch(`${forecastURL}`)
         if (!response.ok) {
