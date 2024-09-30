@@ -10,6 +10,8 @@ The forecast was trickier to figure out. I first tried to just select 12:00 for 
 
 I also decided to add a search in order to be able to switch city. I made it inline with the app title, which was a bit tricky to make work.
 
+If I had more time I would have looked into timezones. Right now the sunrise and sunset times show the local times for the user, and not the city that's been entered.
+
 ## View it live
 
 [https://weatherington.netlify.app/](https://weatherington.netlify.app/)
