@@ -6,22 +6,28 @@ img {
 
 /*Mobile*/
 @media screen and (max-width: 600px) {
-.container {
-    padding: 10px;
-    margin-top: 10px;
-    max-width: 100%;
-    max-height: 100%;
+    body {
+        margin-top: 10px;
+    }
+    .container {
+        padding: 10px;
+        margin-top: 10px;
+        max-width: 100%;
+        max-height: 100%;
     }
 }
 /* Tablet */ 
 
 @media screen and (min-width: 501px) and (max-width: 1024px) {
+    body {
+        padding: 10px;
+        margin: 40px;
+    }
     .container {
-      width: 600px;
+      width: 800px;
       margin-top: 40px;
       padding: 50px;
     }
-  
     .temperature h1 {
       font-size: 60px;
     }
@@ -32,11 +38,12 @@ img {
 }
 /* Desktop */ 
 @media screen and (min-width: 1025px) {
+    body {
+        padding: 10px;
+        margin: 40px;
+    }
     .container {
-        width: 800px;
-        height: 100%;
-        margin-top: 40px;
-        padding: 50px;
+        width: 100%;
     }
     .temperature h1 {
         font-size: 72px;
@@ -47,8 +54,6 @@ img {
 }
 body {
     font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -61,8 +66,9 @@ body {
     border-radius: 20px;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
     margin-top: 40px;
-    padding: 50px;;
+    padding: 50px;
     width: 320px;
+    height: 100%;
     text-align: center;
     overflow-y: auto
   }
@@ -96,6 +102,7 @@ body {
 
   .forecast #four-day-forecast {
     text-align: center;
+    margin: 5px;
 }
   
   .forecast #four-day-forecast p {
