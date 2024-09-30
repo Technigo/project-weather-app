@@ -18,9 +18,8 @@ I made a plan, and stuck to it, which was good. The plan was the following:
 All went smoothly until I began working on the forecast. I had go back in the material (especially the Live sessions) multiple times just to get a hang of what I was expected to do next. On top of that there were so many JavaScript default behaviors that I needed to find solutions for, such as JavaScript weeks start on Sunday and the need to convert sunset times from seconds to milliseconds. These were fun challenges but I needed more time. As a result, the design part isn't fully completed. 
 
 ## If I had more time
-I would improve my code by updating the BASE_URL and forecastBaseURL for better URL management, create a constant for updating the HTML to keep the functions clean, and find a way to combine the "calls" for today’s weather and the forecast into a single "call". Fetch and display lowest and highest temperature. Use images from the API, instead of using only the three that came along in the assets.  
-
+I would improve my code by create a constant for updating the HTML to keep the functions clean, and find a way to combine the "calls" for today’s weather and the forecast into a single "call". Fetch and display lowest and highest temperature. Use images from the API, instead of using only the three that came along in the assets. And of course, pay more attention to the design.  
 
 ## View it live
 
-project-weather-app-by-joe
+LINK: https://project-weather-app-by-joe.netlify.app/
