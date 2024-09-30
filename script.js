@@ -80,18 +80,16 @@ fetch(URL)
     sunriseDisplay.innerText = `Sunrise ${sunriseTime}`;
     sunsetDisplay.innerText = `Sunset  ${sunsetTime}`;
 
-    //find the current time from the IPA
-    const timezoneOffset = 3600;
-    const apiTimestamp = 1727642907;
-    const localDate = new Date(apiTimestamp * 1000);
-    const localTimeInMilliseconds = localDate.getTime() + (timezoneOffset * 1000);
-    const localTime = new Date(localTimeInMilliseconds);
-    const formattedLocalTime = localTime.toLocaleTimeString('en-GB', {
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: false
-    });
-    const currentHour = localTime.getHours();
+    // Create a new Date object
+    const date = new Date();
+
+    // Get the time offset for Stockholm (CET/CEST: Central European Time/ Central European Summer Time)
+    const options = {
+      timeZone: "Europe/Stockholm",
+      hour: "2-digit",
+    };
+
+    const stockholmTime = date.toLocaleTimeString("sv-SE", options);
 
     // Hide all images 
     sunImg.classList.add("hidden");
@@ -103,7 +101,7 @@ fetch(URL)
     // Change image & background if condition is sunny/cloudy and if the time is night/day
     switch (true) {
       case displayCondition.includes("clear"):
-        if (currentHour >= 6 && currentHour < 21) {
+        if (stockholmTime >= 6 && stockholmTime < 21) {
           // Daytime clear weather
           sunImg.classList.remove("hidden");
           sunImg.classList.add("visible");
@@ -120,7 +118,7 @@ fetch(URL)
         break;
 
       case displayCondition.includes("cloud"):
-        if (currentHour >= 6 && currentHour < 21) {
+        if (stockholmTime >= 6 && stockholmTime < 21) {
           // Daytime cloudy weather
           cloudsImg.classList.remove("hidden");
           cloudsImg.classList.add("visible");
@@ -137,7 +135,7 @@ fetch(URL)
         break;
 
       case displayCondition.includes("rain"):
-        if (currentHour >= 6 && currentHour < 21) {
+        if (stockholmTime >= 6 && stockholmTime < 21) {
           // Daytime rainy weather
           rainImg.classList.remove("hidden");
           rainImg.classList.add("visible");
@@ -154,7 +152,7 @@ fetch(URL)
         break;
 
       case displayCondition.includes("broken"):
-        if (currentHour >= 6 && currentHour < 21) {
+        if (stockholmTime >= 6 && stockholmTime < 21) {
           // Daytime broken clouds
           brokenCloudsImg.classList.remove("hidden");
           brokenCloudsImg.classList.add("visible");
