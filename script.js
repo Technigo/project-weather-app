@@ -285,13 +285,13 @@ const errorCallback = (error) => {
   let errorMessage = "An unknown error occurred."; // Default error message
   switch (error.code) {
     case error.PERMISSION_DENIED:
-      errorMessage = "User denied the request for Geolocation."; // Handle permission denied error
+      errorMessage = "Please activate your location."; // Handle permission denied error
       break;
     case error.POSITION_UNAVAILABLE:
       errorMessage = "Location information is unavailable."; // Handle unavailable location error
       break;
     case error.TIMEOUT:
-      errorMessage = "The request to get user location timed out."; // Handle timeout error
+      errorMessage = "The request to get your location timed out."; // Handle timeout error
       break;
   }
   handleError(errorMessage); // Show error message to the user
