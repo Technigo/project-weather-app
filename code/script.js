@@ -46,8 +46,8 @@ const fetchTodaysWeatherAsync = async (city) => {
 
 
         //Convert Sunset/Sunrise from seconds to milliseconds by multiplying by 1000, which the date object requires 
-        const sunrise = new Date(data.sys.sunrise * 1000).toLocaleTimeString()
-        const sunset = new Date(data.sys.sunset * 1000).toLocaleTimeString()
+        const sunrise = new Date(data.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        const sunset = new Date(data.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
          
         sunriseTime.innerHTML = `Sunrise: ${sunrise}`
         sunsetTime.innerHTML = `Sunset: ${sunset}`
