@@ -349,6 +349,12 @@ const createCityInput = (parentElement, inputValue = displayedCityName) => {
   cityInput.value = inputValue;
   cityInput.autocomplete = "off";
 
+  // Try to disable common Password Managers from injecting themselves in the input field
+  cityInput.setAttribute("data-1p-ignore", "");
+  cityInput.setAttribute("data-bwignore", "");
+  cityInput.setAttribute("data-lpignore", "true");
+  cityInput.setAttribute("data-form-type", "other");
+
   // Append the input to the parentElement before measuring width
   parentElement.appendChild(cityInput);
 
@@ -662,7 +668,7 @@ const forecastedWeather = async (mockType = null) => {
 
 if (useMockData) {
   // Test with different weather types
-  const testWeatherType = "thunderstorm"; // Change to test different types
+  const testWeatherType = "rain"; // Change to test different types
   currentWeather(testWeatherType);
   forecastedWeather(testWeatherType);
 } else {
