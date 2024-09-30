@@ -405,7 +405,9 @@ const typeOfWeather = (weatherType, isDaytime) => {
   }
 
   // Add is-nighttime as class on the app container when sun is down
-  !isDaytime && app.classList.add("is-nighttime");
+  isDaytime
+    ? app.classList.remove("is-nighttime")
+    : app.classList.add("is-nighttime");
 
   // Select message and image based on isDaytime
   const mainTitle = isDaytime ? type.dayMessage : type.nightMessage;
