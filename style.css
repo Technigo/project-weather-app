@@ -1,0 +1,206 @@
+ body {
+     margin: 30px;
+     font-family: "Roboto", sans-serif;
+     font-weight: 300;
+     font-style: normal;
+ }
+
+ .weather-card {
+     width: 414px;
+     height: 896px;
+     margin: 0 auto;
+     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+     display: flex;
+     flex-direction: column;
+     background-color: white;
+ }
+
+ .location-card {
+     background: linear-gradient(90deg, #8589FF 0%, #E8E9FF 100%);
+     width: 100%;
+     height: 50%;
+     margin: 0;
+     color: white;
+     position: relative;
+ }
+
+ /* background for rainy */
+ .location-card-rainy {
+     background: linear-gradient(90deg, #6264A2 0%, #9b9cc2 100%);
+     width: 100%;
+     height: 50%;
+     margin: 0;
+     color: white;
+     position: relative;
+ }
+
+ /* background for night */
+ .location-card-night {
+     background: linear-gradient(90deg, #222350 0%, #5a5c9b 100%);
+     width: 100%;
+     height: 50%;
+     margin: 0;
+     color: white;
+     position: relative;
+ }
+
+ .temp-container {
+     position: relative;
+ }
+
+ /* Hides images if they are not called */
+ .hidden {
+     display: none;
+ }
+
+ /*Shows images when they are called */
+ .visible {
+     position: absolute;
+     top: 65px;
+     right: 45px;
+     width: 35%;
+ }
+
+ .temp {
+     font-size: 120px;
+     display: inline-block;
+     position: relative;
+     margin-top: 140px;
+     margin-bottom: 0;
+     margin-left: 35px;
+     margin-bottom: 0;
+     padding: 0;
+ }
+
+ .temp-unit {
+     font-size: 40px;
+     display: inline-block;
+     bottom: 100%;
+     left: 0;
+     transform: translateY(-50px);
+ }
+
+ .location {
+     position: absolute;
+     top: 235px;
+     margin-left: 40px;
+     font-size: 34px;
+     margin-bottom: 0;
+ }
+
+ .condition {
+     position: absolute;
+     top: 290px;
+     margin-left: 40px;
+     font-size: 22px;
+     margin-bottom: 0;
+ }
+
+ .suntime-container {
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     margin-top: 30px;
+     padding-right: 40px;
+     position: relative;
+ }
+
+ .sunrise,
+ .sunset {
+     margin-top: 40px;
+     margin-left: 40px;
+     font-size: 22px;
+ }
+
+
+ .forecast-card {
+     background-color: white;
+     width: 100%;
+     height: 50%;
+     display: grid;
+ }
+
+ .forecast {
+     display: grid;
+     grid-template-columns: repeat(1, 1fr);
+     padding: 10px;
+     margin-top: 10px;
+     list-style-type: none;
+ }
+
+ #forecastID li {
+     background-color: #ededed;
+     height: 24px;
+     padding: 20px;
+     border-radius: 30px;
+     text-align: center;
+     font-size: 20px;
+     line-height: 23.44px;
+ }
+
+ .forecast-item {
+     display: flex;
+     justify-content: space-around;
+     padding: 10px 0;
+     border-bottom: 1px solid #ccc;
+ }
+
+ /* Responsiveness */
+ @media(max-width: 414px) {
+     body {
+         margin: 10px;
+     }
+
+     .weather-card {
+         width: 95%;
+         height: 600px;
+     }
+
+     .temp {
+         font-size: 80px;
+         margin-top: 70px;
+     }
+
+     .temp-unit {
+         font-size: 30px;
+         transform: translateY(-35px);
+     }
+
+     .visible {
+         top: 50px;
+         right: 30px;
+         width: 25%;
+     }
+
+     .location {
+         top: 140px;
+         font-size: 22px;
+     }
+
+     .condition {
+         top: 180px;
+         font-size: 17px;
+     }
+
+     .suntime-container {
+         margin-top: 45px;
+         margin-left: 5px;
+     }
+
+     .sunrise,
+     .sunset {
+         margin-top: 25px;
+         margin-left: 35px;
+         font-size: 13px;
+     }
+
+     .forecast {
+         gap: 7px;
+     }
+
+     #forecastID li {
+         height: 20px;
+         padding: 12px;
+         font-size: 15px;
+     }
+ }
