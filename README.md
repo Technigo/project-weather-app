@@ -4,4 +4,4 @@ The project was to build a simple weather dashboard that uses a weather API to t
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://whats-the-weather-jenny.netlify.app/

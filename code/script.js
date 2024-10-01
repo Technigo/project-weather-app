@@ -1,10 +1,10 @@
 // Base URL
 const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather';
 
-// Your API key
+// API key
 const API_KEY = '958c2b8d78ace5950d5c51dc2972950f';
 
-// Set the city and country for the weather forecast
+// City and country for the weather forecast
 let city = 'Stockholm';
 let country = 'Sweden';
 const units = 'metric'; // Use metric units (Celsius)
@@ -133,7 +133,7 @@ const processForecastData = (list) => {
     }, []);
 };
 
-// Function to fill in missing forecast days if we don't have 5
+// Function to fill in missing forecast days if there isn't 5
 const fillForecastData = (forecast, list) => {
   const today = new Date().getDate();
   let i = 0;
