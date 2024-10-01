@@ -237,7 +237,7 @@ p {
   font-size: 1.75rem;
   font-weight: 700;
   color: currentColor;
-  padding: 0 0.25rem;
+  padding: 0;
   cursor: pointer;
 
   @media (min-width: 375px) {

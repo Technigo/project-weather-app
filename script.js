@@ -283,7 +283,6 @@ function updateInputWidth(inputElement) {
   temporarySpan.style.visibility = "hidden";
   temporarySpan.style.position = "absolute";
   temporarySpan.style.whiteSpace = "pre"; // Preserves spaces and prevents wrapping
-  temporarySpan.style.padding = "0 0.25rem";
   temporarySpan.style.font = getComputedStyle(inputElement).font;
   temporarySpan.textContent =
     inputElement.value || inputElement.placeholder || "";
