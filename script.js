@@ -485,6 +485,20 @@ const handleSearch = (event) => {
  * Fetches and displays the current weather for the selected city
  */
 const currentWeather = async (mockType = null) => {
+  // Get current time (in UTC)
+  const currentTimeUTC = new Date();
+
+  // Format for human-readable date
+  const humanReadableDate = currentTimeUTC.toLocaleDateString("en-GB", {
+    weekday: "long",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+
+  // Format for machine-readable date (ISO 8601)
+  const isoDate = currentTimeUTC.toISOString().split("T")[0]; // 'YYYY-MM-DD'
+
   try {
     // Fetch current weather data for the city
     const weatherUrl = getWeatherUrl(apiQueryCity);
@@ -534,9 +548,6 @@ const currentWeather = async (mockType = null) => {
       hour12: false,
     });
 
-    // Get current time (in UTC)
-    const currentTimeUTC = new Date();
-
     // Calculate local current time based on city's timezone
     const currentTimeLocal = new Date(
       currentTimeUTC.getTime() + timezoneOffsetInSeconds * 1000
@@ -549,17 +560,6 @@ const currentWeather = async (mockType = null) => {
 
     // Get mainTitle and imgSrc from typeOfWeather
     const { mainTitle, imgSrc } = typeOfWeather(weatherTypeToday, isDaytime);
-
-    // Format for human-readable date
-    const humanReadableDate = currentTimeLocal.toLocaleDateString("en-GB", {
-      weekday: "long",
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    });
-
-    // Format for machine-readable date (ISO 8601)
-    const isoDate = currentTimeLocal.toISOString().split("T")[0]; // 'YYYY-MM-DD'
 
     let sunriseIcon = `
     <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -626,7 +626,12 @@ const currentWeather = async (mockType = null) => {
     // Handle the error by displaying a message and keeping the input in the <h1>
     weatherTodayContainer.innerHTML = `
       <div id="weather-today__greeting" class="weather-today__greeting">
-        <h1>Oh no! City not found. Try another: </h1>
+        <img width="100" height="100" alt="" src="./assets/animated/alert-avalanche-danger.svg" />
+        <p>
+          <time datetime="${isoDate}">${humanReadableDate}</time>
+        </p>
+        <h1>Sorry, we couldn't find a matching city. Please try another: </h1>
+        <p class="text-large">I pray the weather gods are with you this time.</p>
       </div>
     `;
 
