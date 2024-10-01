@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
-  --blue-light: #bde8fa;
-  --blue-dark: #164a68;
-  --yellow-light: #f7e9b9;
-  --yellow-dark: #2a5510;
+  --blue-light: #bfecff;
+  --blue-dark: #123e57;
+  --yellow-light: #fef3cf;
+  --yellow-dark: #174b4d;
   --brown-light: #f1eaea;
-  --brown-dark: #534a4a;
+  --brown-dark: #383a4a;
   --gray-light: #eeeeee;
   --gray-dark: #464646;
 }
@@ -73,8 +73,20 @@ body.is-default {
   }
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  white-space: nowrap; /* Added to prevent text from wrapping */
+}
+
 main {
-  padding: 1.5rem;
+  padding: 0.5rem 1.5rem 1.5rem;
   max-width: 500px;
   display: flex;
   flex-direction: column;
@@ -83,7 +95,7 @@ main {
   justify-content: space-between;
 
   @media (min-width: 375px) {
-    padding: 2.25rem;
+    padding: 0.5rem 2rem 2rem;
   }
 
   @media (min-width: 668px) {
@@ -92,41 +104,74 @@ main {
 }
 
 h1 {
-  font-size: 1.875rem;
+  font-size: 1.75rem;
   margin-top: 0;
   margin-bottom: 2rem;
   text-wrap: balance;
 
   @media (min-width: 375px) {
-    font-size: 2.25rem;
+    font-size: 2rem;
   }
 
   @media (min-width: 668px) {
-    margin-top: 1rem;
+    font-size: 2.25rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+h2 {
+  font-size: 1.25rem;
+}
+
+p {
+  font-size: 1.125rem;
+  margin-top: 0.5rem;
+}
+
+.text-large {
+  font-size: 1.5rem;
+  margin-bottom: 1.5em;
+
+  @media (min-width: 668px) {
+    font-size: 1.5rem;
   }
 }
 
 .weather-today__meta {
   display: flex;
-  flex-flow: column;
-  gap: 0.25rem;
-  margin-bottom: 0;
+  flex-flow: row;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
 
   @media (min-width: 668px) {
-    margin-bottom: 1rem;
+    margin-bottom: 2.5rem;
   }
 
-  p {
-    font-size: 1rem;
+  .badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    font-size: 0.875rem;
+    font-weight: 600;
+
+    border: 1px solid currentColor;
+    border-radius: 0.5rem;
+    padding: 0.375rem 0.75rem 0.375rem 0.6rem;
     margin: 0;
 
     @media (min-width: 375px) {
-      font-size: 1.25rem;
+      font-size: 1rem;
     }
   }
 
   span {
     margin: 0 0.25rem;
+  }
+
+  .icon path {
+    fill: currentColor;
   }
 }
 
@@ -134,7 +179,7 @@ h1 {
   img {
     max-width: 12rem;
     position: relative;
-    left: -1.5rem;
+    left: -0.875rem;
   }
 }
 
@@ -192,11 +237,23 @@ h1 {
   border-radius: 0;
   border-bottom: 2px dashed;
   font-family: "Montserrat";
-  font-size: 2.25rem;
+  font-size: 1.75rem;
   font-weight: 700;
   color: currentColor;
   padding: 0 0.25rem;
   cursor: pointer;
+
+  @media (min-width: 375px) {
+    font-size: 2rem;
+  }
+
+  @media (min-width: 678px) {
+    font-size: 2.25rem;
+  }
+
+  &:hover {
+    border-bottom-style: solid;
+  }
 
   &::selection {
     background-color: #fff;

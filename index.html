@@ -9,10 +9,17 @@
   </head>
   <body id="app">
     <main id="main">
-      <section id="weather-today" class="weather-today">
-        <h1>Loading...</h1>
+      <section
+        id="weather-today"
+        class="weather-today"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        <img alt="" src="./assets/animated/fog-day.svg" />
+        <h1>Loading weather...</h1>
       </section>
       <section id="weather-forecast" class="weather-forecast">
+        <div id="weather-forecast__title"></div>
         <ul id="weather-forecast__list" class="weather-forecast__list"></ul>
       </section>
     </main>
