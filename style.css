@@ -103,7 +103,7 @@ main {
 h1 {
   font-size: 1.75rem;
   margin-top: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   text-wrap: balance;
 
   @media (min-width: 375px) {
@@ -113,7 +113,6 @@ h1 {
   @media (min-width: 668px) {
     font-size: 2.25rem;
     margin-top: 1.25rem;
-    margin-bottom: 1.5rem;
   }
 }
 
@@ -127,7 +126,7 @@ p {
 }
 
 .text-large {
-  font-size: 1.5rem;
+  font-size: 1.375rem;
   margin-bottom: 1.5em;
 
   @media (min-width: 668px) {
