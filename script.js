@@ -77,77 +77,61 @@ const weatherTypes = {
     className: "is-cloudy",
     dayMessage: "Light a fire and get cozy. {city} is looking grey today.",
     dayImgSrc: "./assets/animated/cloudy.svg",
-    dayImgAlt: "Clouds",
     nightMessage:
       "The clouds linger over {city}, creating a calm, moody night.",
     nightImgSrc: "./assets/animated/partly-cloudy-night.svg",
-    nightImgAlt: "Clouds",
   },
   clear: {
     className: "is-clear",
     dayMessage: "Get your sunnies on. {city} is looking rather great today.",
     dayImgSrc: "./assets/animated/clear-day.svg",
-    dayImgAlt: "Sun spinning",
     nightMessage: "It's a clear and beautiful night in {city}.",
     nightImgSrc: "./assets/animated/clear-night.svg",
-    nightImgAlt: "Clear night",
   },
   drizzle: {
     className: "is-drizzly",
     dayMessage: "There's a light drizzle in {city}. Keep your raincoat handy!",
     dayImgSrc: "./assets/animated/drizzle.svg",
-    dayImgAlt: "Drizzle",
     nightMessage: "A soft drizzle falls over {city} this night.",
     nightImgSrc: "./assets/animated/extreme-night-drizzle.svg",
-    nightImgAlt: "Drizzle",
   },
   rain: {
     className: "is-rainy",
     dayMessage: "Get your umbrella! {city} is looking rather rainy today.",
     dayImgSrc: "./assets/animated/rain.svg",
-    dayImgAlt: "Raindrops",
     nightMessage: "The rain pours down in {city} – a perfect night to stay in.",
     nightImgSrc: "./assets/animated/extreme-night-rain.svg",
-    nightImgAlt: "Raindrops",
   },
   snow: {
     className: "is-snowy",
     dayMessage: "Time for snow boots! {city} is a winter wonderland today.",
     dayImgSrc: "./assets/animated/snow.svg",
-    dayImgAlt: "Cloud with snow",
     nightMessage: "Snow falls on {city} tonight. A peaceful winter night.",
     nightImgSrc: "./assets/animated/extreme-night-snow.svg",
-    nightImgAlt: "Cloud with snow",
   },
   thunderstorm: {
     className: "is-thunderstorm",
     dayMessage:
       "Stay safe indoors! {city} is rumbling with a thunderstorm today.",
-    dayImgSrc: "./assets/animated/thunderstorms-rain.svg",
-    dayImgAlt: "Thunder and clouds",
+    dayImgSrc: "./assets/animated/thunderstorms-day-overcast-rain.svg",
     nightMessage: "Thunder rolls through the night sky in {city}.",
     nightImgSrc: "./assets/animated/thunderstorms-night-extreme-rain.svg",
-    nightImgAlt: "Thunder and clouds",
   },
   mist: {
     className: "is-misty",
     dayMessage: "It's foggy in {city} today.",
     dayImgSrc: "./assets/animated/mist.svg",
-    dayImgAlt: "Mist",
     nightMessage:
       "A thick mist settles over {city} on this mysterious and quiet night.",
     nightImgSrc: "./assets/animated/mist-night.svg",
-    nightImgAlt: "Mist",
   },
   default: {
     className: "is-default",
     dayMessage: "The weather in {city} can't be determined today.",
     dayImgSrc: "./assets/animated/compass.svg",
-    dayImgAlt: "Compass",
     nightMessage:
       "It's hard to tell what the weather is like tonight in {city}.",
     nightImgSrc: "./assets/animated/compass-night.svg",
-    nightImgAlt: "Compass",
   },
 };
 
@@ -407,7 +391,6 @@ const createCityInput = (parentElement, inputValue = displayedCityName) => {
   // Event listener for 'input' to adjust the width dynamically
   cityInput.addEventListener("input", () => {
     updateInputWidth(cityInput);
-    hiddenCityName.textContent = cityInput.value;
   });
 
   // Event listener for 'keydown' to handle Enter key press
@@ -465,12 +448,10 @@ const typeOfWeather = (weatherType, isDaytime) => {
   // Select message and image based on isDaytime
   const mainTitle = isDaytime ? type.dayMessage : type.nightMessage;
   const imgSrc = isDaytime ? type.dayImgSrc : type.nightImgSrc;
-  const imgAlt = isDaytime ? type.dayImgAlt : type.nightImgAlt;
 
   return {
     mainTitle,
     imgSrc,
-    imgAlt,
   };
 };
 
@@ -554,11 +535,8 @@ const currentWeather = async (mockType = null) => {
         ? true // Force daytime during mock testing if simulateNighttime is false
         : currentTime >= sunriseTime && currentTime < sunsetTime;
 
-    // Get mainTitle, imgSrc, and imgAlt from typeOfWeather
-    const { mainTitle, imgSrc, imgAlt } = typeOfWeather(
-      weatherTypeToday,
-      isDaytime
-    );
+    // Get mainTitle and imgSrc from typeOfWeather
+    const { mainTitle, imgSrc } = typeOfWeather(weatherTypeToday, isDaytime);
 
     // Format for human-readable date
     const humanReadableDate = currentTime.toLocaleDateString("en-GB", {
@@ -599,7 +577,7 @@ const currentWeather = async (mockType = null) => {
     // Set the innerHTML of weatherTodayContainer
     weatherTodayContainer.innerHTML = `
       <div id="weather-today__greeting" class="weather-today__greeting">
-        <img width="100" height="100" alt="${imgAlt}" src="${imgSrc}" />
+        <img width="100" height="100" alt="" src="${imgSrc}" />
         <p>
           <time datetime="${isoDate}">${humanReadableDate}</time>
         </p>
@@ -670,9 +648,15 @@ const forecastedWeather = async (mockType = null) => {
           <h3 class="sr-only">${day.weekdayLong}</h2>
         </span>
         <span class="list-section">
-          <p>${formatTemperature(day.highestTempMax)}</p>
-          <span>/</span>
-          <p>${formatTemperature(day.lowestTempMin)}</p>
+          <p aria-hidden="true">${formatTemperature(day.highestTempMax)}</p>
+          <p class="sr-only">Highest temp of the day is ${formatTemperature(
+            day.highestTempMax
+          )}</p>
+          <span aria-hidden="true">/</span>
+          <p aria-hidden="true">${formatTemperature(day.lowestTempMin)}</p>
+          <p class="sr-only">Lowest temp of the day is ${formatTemperature(
+            day.lowestTempMin
+          )}</p>
         </span>
       `;
       forecastListItem.appendChild(li);
@@ -689,7 +673,7 @@ const forecastedWeather = async (mockType = null) => {
 
     // Add the forecast title
     const forecastTitle = document.createElement("h2");
-    forecastTitle.textContent = "4-day forecast";
+    forecastTitle.textContent = "5-day forecast";
     weatherForecastTitle.innerHTML = ""; // Clear previous content
     weatherForecastTitle.prepend(forecastTitle);
 
@@ -792,7 +776,7 @@ const forecastedWeather = async (mockType = null) => {
 
 if (useMockData) {
   // Test with different weather types
-  const testWeatherType = "rain"; // Change to test different types
+  const testWeatherType = "snow"; // Change to test different types
   currentWeather(testWeatherType);
   forecastedWeather(testWeatherType);
 } else {
