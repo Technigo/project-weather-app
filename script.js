@@ -77,8 +77,7 @@ const weatherTypes = {
     className: "is-cloudy",
     dayMessage: "Light a fire and get cozy. {city} is looking grey today.",
     dayImgSrc: "./assets/animated/cloudy.svg",
-    nightMessage:
-      "The clouds linger over {city}, creating a calm, moody night.",
+    nightMessage: "The clouds linger over {city} creating a calm, moody night.",
     nightImgSrc: "./assets/animated/partly-cloudy-night.svg",
   },
   clear: {
@@ -99,7 +98,7 @@ const weatherTypes = {
     className: "is-rainy",
     dayMessage: "Get your umbrella! {city} is looking rather rainy today.",
     dayImgSrc: "./assets/animated/rain.svg",
-    nightMessage: "The rain pours down in {city} – a perfect night to stay in.",
+    nightMessage: "The rain pours down in {city}. A perfect night to stay in.",
     nightImgSrc: "./assets/animated/extreme-night-rain.svg",
   },
   snow: {
@@ -121,8 +120,7 @@ const weatherTypes = {
     className: "is-misty",
     dayMessage: "It's foggy in {city} today.",
     dayImgSrc: "./assets/animated/mist.svg",
-    nightMessage:
-      "A thick mist settles over {city} on this mysterious and quiet night.",
+    nightMessage: "A thick mist settles over {city} on this mysterious night.",
     nightImgSrc: "./assets/animated/mist-night.svg",
   },
   default: {
@@ -495,9 +493,9 @@ const currentWeather = async (mockType = null) => {
 
     if (!weatherRightNow) {
       weatherTodayContainer.innerHTML = `
-        <h1>Rain check on the weather!</h1>
-        <p>Looks like today’s forecast is a no-show. Check back in a bit!</p>
-      `;
+         <h1>Rain check on the weather!</h1>
+         <p>Looks like today’s forecast is a no-show. Check back in a bit!</p>
+       `;
       return;
     }
 
@@ -510,36 +508,51 @@ const currentWeather = async (mockType = null) => {
     // Update the document title
     updateDocumentTitle();
 
-    // Create Date objects for sunrise and sunset times
-    const sunriseTime = new Date(weatherRightNow.sys.sunrise * 1000);
-    const sunsetTime = new Date(weatherRightNow.sys.sunset * 1000);
+    // Extract the timezone offset (in seconds) from the API response
+    const timezoneOffsetInSeconds = weatherRightNow.timezone;
+
+    // Create Date objects for sunrise and sunset times (adjusting for the city's timezone)
+    const sunriseTimeUTC = new Date(weatherRightNow.sys.sunrise * 1000);
+    const sunsetTimeUTC = new Date(weatherRightNow.sys.sunset * 1000);
+
+    // Calculate local time for sunrise and sunset using the city's timezone offset
+    const sunriseTimeLocal = new Date(
+      sunriseTimeUTC.getTime() + timezoneOffsetInSeconds * 1000
+    );
+    const sunsetTimeLocal = new Date(
+      sunsetTimeUTC.getTime() + timezoneOffsetInSeconds * 1000
+    );
 
     // Format sunrise and sunset times to local time strings
-    const sunrise = sunriseTime.toLocaleTimeString("en-GB", {
+    const sunrise = sunriseTimeLocal.toLocaleTimeString("en-GB", {
       hour: "2-digit",
       minute: "2-digit",
       hour12: false,
     });
-    const sunset = sunsetTime.toLocaleTimeString("en-GB", {
+    const sunset = sunsetTimeLocal.toLocaleTimeString("en-GB", {
       hour: "2-digit",
       minute: "2-digit",
       hour12: false,
     });
 
-    // Get current time
-    const currentTime = new Date();
+    // Get current time (in UTC)
+    const currentTimeUTC = new Date();
 
-    // Determine if it's currently daytime
+    // Calculate local current time based on city's timezone
+    const currentTimeLocal = new Date(
+      currentTimeUTC.getTime() + timezoneOffsetInSeconds * 1000
+    );
+
+    // Determine if it's currently daytime in the selected city
     const isDaytime =
-      useMockData && simulateNighttime === false
-        ? true // Force daytime during mock testing if simulateNighttime is false
-        : currentTime >= sunriseTime && currentTime < sunsetTime;
+      currentTimeLocal >= sunriseTimeLocal &&
+      currentTimeLocal < sunsetTimeLocal;
 
     // Get mainTitle and imgSrc from typeOfWeather
     const { mainTitle, imgSrc } = typeOfWeather(weatherTypeToday, isDaytime);
 
     // Format for human-readable date
-    const humanReadableDate = currentTime.toLocaleDateString("en-GB", {
+    const humanReadableDate = currentTimeLocal.toLocaleDateString("en-GB", {
       weekday: "long",
       year: "numeric",
       month: "short",
@@ -547,7 +560,7 @@ const currentWeather = async (mockType = null) => {
     });
 
     // Format for machine-readable date (ISO 8601)
-    const isoDate = currentTime.toISOString().split("T")[0]; // 'YYYY-MM-DD'
+    const isoDate = currentTimeLocal.toISOString().split("T")[0]; // 'YYYY-MM-DD'
 
     let sunriseIcon = `
     <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
