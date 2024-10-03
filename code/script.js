@@ -65,29 +65,29 @@ const setWeatherBackground = (weatherCondition) => {
   
   switch(weatherCondition.toLowerCase()) {
     case 'clear':
-      imageBackground.style.backgroundImage = "url('/assets/clear-sky.jpg')";
+      imageBackground.style.backgroundImage = "url('assets/clear-sky_condition.jpg')";
       break;
     case 'clouds':
-      imageBackground.style.backgroundImage = "url('/assets/cloudy.jpg')";
+      imageBackground.style.backgroundImage = "url(assets/cloudy_condition.jpg')";
       break;
     case 'rain':
     case 'drizzle':
-      imageBackground.style.backgroundImage = "url('/assets/rainy.jpg')";
+      imageBackground.style.backgroundImage = "url('assets/rainy_condition.jpg')";
       break;
     case 'thunderstorm':
-      imageBackground.style.backgroundImage = "url('/assets/thunderstorm.jpg')";
+      imageBackground.style.backgroundImage = "url('assets/thunderstorm_condition.jpg')";
       break;
     case 'snow':
-      imageBackground.style.backgroundImage = "url('/assets/snowy.jpg')";
+      imageBackground.style.backgroundImage = "url('assets/snowy_condition.jpg')";
       break;
     case 'mist':
     case 'smoke':
     case 'haze':
     case 'fog':
-      imageBackground.style.backgroundImage = "url('/assets/misty.jpg')";
+      imageBackground.style.backgroundImage = "url('assets/misty_condition.jpg')";
       break;
     default:
-      imageBackground.style.backgroundImage = "url('/assets/default.jpg')";
+      imageBackground.style.backgroundImage = "url('assets/default_condition.jpg')";
   }
 };
 
