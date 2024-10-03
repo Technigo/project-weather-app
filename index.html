@@ -13,31 +13,31 @@
 
 <body>
   <main>
-    <section class="weather-container" id="weatherContainer">
+    <header class="weather-container" id="weatherContainer">
       <!-- Search Icon -->
       <img src="./assets/design-1/search-white.png" id="searchIcon" alt="Search Icon">
 
-      <!-- Side Menu -->
-      <div class="side-menu" id="sideMenu" style="display: none;">
+      <!-- Search Menu -->
+      <aside class="side-menu" id="sideMenu" style="display: none;">
         <div id="closeButton" class="close-button">&#10006;</div>
-        <input type="text" class="search-bar" id="inputLocation" placeholder="Search city name"
-          aria-label="City Search">
+        <label for="inputLocation"><input type="text" class="search-bar" id="inputLocation"
+            placeholder="Search city name" aria-label="City Search" /></label>
         <img src="./assets/design-1/searchicon-white.png" id="searchButton" alt="Search Button">
-      </div>
+      </aside>
 
       <!-- Favorite City Button -->
       <button id="favButton" class="fav-button">></button>
 
       <!-- Current Weather Data -->
-      <div id="weatherData" class="weather-data"></div>
-    </section>
+      <article id="weatherData" class="weather-data"></article>
+    </header>
 
     <!-- Weekly Forecast -->
-    <section class="weather-forecast"></section>
+    <article class="weather-forecast"></article>
   </main>
 
   <footer>
-    <p>&copy; 2024 XingS Weather APP. All rights reserved.</p>
+    <p>&copy; 2024 XingS Weather APP a11y. All rights reserved.</p>
   </footer>
 
   <script src="./script.js"></script>
