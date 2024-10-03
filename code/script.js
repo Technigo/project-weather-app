@@ -68,7 +68,7 @@ const setWeatherBackground = (weatherCondition) => {
       imageBackground.style.backgroundImage = "url('/code/assets/clear_sky_condition.jpg')";
       break;
     case 'clouds':
-      imageBackground.style.backgroundImage = "url(/code/assets/cloudy_condition.jpg')";
+      imageBackground.style.backgroundImage = "url('/code/assets/cloudy_condition.jpg')";
       break;
     case 'rain':
     case 'drizzle':
