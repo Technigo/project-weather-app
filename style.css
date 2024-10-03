@@ -6,7 +6,7 @@
 
 :root {
   --dark-grey:#707070;
-  --light-grey:#bbb;
+  --light-grey:#595959;
   --background-grey:#dadada;
   --white:#FFFFFF;
 }
@@ -102,7 +102,7 @@ main {
   border-radius: 50% 50%;
   cursor: pointer;
   animation: breathe 6s infinite ease-in-out;
-  color: white;
+  color: var(--white);
   font-weight: 600;
   align-items: center;
   justify-content: center;
