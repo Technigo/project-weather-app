@@ -11,6 +11,8 @@ header {
     background: linear-gradient(to bottom right, #8589FF, #E8E9FF);
     height: 60%;
     width: 100%;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     border-bottom-left-radius: 50% 10%;
@@ -72,7 +74,7 @@ header {
 @media(max-width:400px) {
     .searchLocationContainer {
         padding: 5px;
-        margin: 10%;
+        /* margin: 10%; */
     }
 }
 
@@ -159,7 +161,7 @@ main {
 }
 
 .weather-forecast-container {
-    min-width: 350px;
+    min-width: 320px;
     max-width: 800px;
     min-height: 250px;
     margin-top: 20px;
