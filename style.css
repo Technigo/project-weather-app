@@ -3,7 +3,7 @@ body {
 }
 
 .background {
-    background-color: #A4A7FF;
+    background-color: #15199e;
     padding-bottom: 20px;
     overflow-x: hidden;
     clip-path: ellipse(110% 100% at 50% 0%);
@@ -55,7 +55,7 @@ h1 {
     color: white;
 }
 
-h3 {
+h2 {
     font-family: "Roboto", sans-serif;
     font-size: 45px;
     font-weight: 320;

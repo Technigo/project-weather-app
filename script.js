@@ -15,7 +15,7 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=
         const timestamp = new Date(json.dt * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
         weatherRightNow.innerHTML = `<h1>${temperature}<span class='degree'>°C</span></h1>`;
-        weatherRightNow.innerHTML += `<h3>${json.name}</h3>`;
+        weatherRightNow.innerHTML += `<h2>${json.name}</h2>`;
         weatherRightNow.innerHTML += `<p>Time: ${timestamp}</p>`;
         weatherRightNow.innerHTML += `<p>${description} <img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="Weather icon"></p>`;
 
