@@ -48,7 +48,8 @@ header {
 
 .search-city {
     height: 30px;
-    max-width: 200px;
+    min-width: 100px;
+    max-width: 300px;
     border-radius: 10px;
     border: none;
     margin: 20px;
@@ -66,6 +67,13 @@ header {
     padding: 20px;
     color: #FFFFFF;
     background-color: #8589FF;
+}
+
+@media(max-width:400px) {
+    .searchLocationContainer {
+        padding: 5px;
+        margin: 10%;
+    }
 }
 
 .weather-container {
