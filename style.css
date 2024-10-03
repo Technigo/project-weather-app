@@ -74,7 +74,7 @@ header {
 @media(max-width:400px) {
     .searchLocationContainer {
         padding: 5px;
-        /* margin: 10%; */
+        margin: 10%;
     }
 }
 
