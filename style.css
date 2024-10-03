@@ -48,7 +48,7 @@ header {
 
 .search-city {
     height: 30px;
-    width: 200px;
+    max-width: 200px;
     border-radius: 10px;
     border: none;
     margin: 20px;
