@@ -29,13 +29,14 @@ body {
 .image-background {
     background-size: cover;
     background-position: center;
-    background-image: url('/code/assets/default_condition.jpg');
+    background-color: blue;
+    background-image: url('assets/default_condition.jpg');
     max-width: 100%;
     margin: 0 auto;
     border-bottom-left-radius: 50% 60px;
     border-bottom-right-radius: 50% 60px;
     overflow: hidden;
-    transition: background-image 0.5s ease-in-out;
+
 }
 
 
