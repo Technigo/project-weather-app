@@ -29,7 +29,7 @@ body {
 .image-background {
     background-size: cover;
     background-position: center;
-    background-color: blue;
+    background-color: rgb(88, 159, 218);
     background-image: url('assets/default_condition.jpg');
     max-width: 100%;
     margin: 0 auto;
