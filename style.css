@@ -1,0 +1,359 @@
+/* Preload images by using hidden divs */
+/* This ensures images are loaded in the background but not visible */
+#preload {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  background: url("./images/thunderstorm.png"), url("./images/rain.png"),
+    url("./images/snowy.png"), url("./images/mist.png"),
+    url("./images/dust.png"), url("./images/cloudy.png"),
+    url("./images/sunny.png"), url("./images/default.png");
+}
+
+/* Styles for the loading message container */
+/* This will center the spinner and text vertically and horizontally */
+#loadingMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-size: 20px;
+  text-align: center;
+}
+
+#loadingMessage .spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #333;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 10px; /* Space between spinner and text */
+}
+
+/* Defines the spinning animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Hide the spinner when app content is visible */
+#appContent {
+  display: none; /* This is shown once the data is loaded */
+}
+
+/* General styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0; /* Background color for the body */
+}
+
+/* Main container styling */
+.container {
+  width: 500px; /* Adjusted width to make the container wider */
+  max-width: 90%; /* Max width to ensure responsiveness */
+  overflow: hidden;
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.1);
+  /* background-color: rgba(255, 255, 255, 0.3);  */
+  backdrop-filter: blur(5px); /* Adds a slight blur effect */
+  border-radius: 10px;
+  position: relative;
+  margin: 0 auto; /* Center the container */
+  padding: 0; /* Remove any extra padding */
+  /* Background image settings */
+  background-size: cover; /* Make sure the image covers the entire container */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-clip: border-box; /* Ensure the background respects the border radius */
+  background-attachment: fixed; /* Optional: Makes the background fixed */
+  background-color: rgba(255, 255, 255, 1);
+}
+
+/* Container for the curved area */
+.feature-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px; /* Match height to the .background-top-gradient */
+  background: no-repeat center center/cover; /* Use adjusted path and !important */
+  z-index: 0; /* Ensure it stays behind the gradient */
+  transition: background-image 0.5s ease-in-out;
+}
+
+/* Main content wrapper */
+.mainWrapper {
+  padding: 10px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  /* border-radius: 0 0 10px 10px; */
+  /* border: 1px solid rgba(200, 200, 200, 0.5); */
+  background-repeat: no-repeat;
+  background-size: cover; /* Ensures the background image covers the entire element */
+  background-position: center;
+  transition: background-image 0.5s ease-in-out; /* Adds a smooth transition effect for background changes */
+  height: 100%;
+  width: 100%;
+}
+/* Pseudo-element for the gradient overlay */
+.mainWrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 30%),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 30%);
+  z-index: 2; /* Higher z-index than .mainWrapper content */
+  pointer-events: none; /* Allow clicks through the pseudo-element */
+}
+
+/* Temperature styling */
+.tempNumber {
+  font-size: 64px;
+  padding-top: 100px;
+  margin: 10px;
+  color: white;
+  font-weight: bold;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* City name styling */
+.cityText {
+  font-size: 28px;
+  margin: 5px 0;
+  color: white;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Local time styling */
+.local-time {
+  font-size: 18px;
+  margin: 5px 0;
+  color: white;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); /* Add text shadow */
+}
+
+/* Weather description styling */
+.describeText {
+  font-size: 18px;
+  margin: 5px 0;
+  color: white;
+  text-transform: capitalize;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); /* Add text shadow */
+}
+
+/* Weather icon styling */
+#mainIcon img {
+  width: 60px;
+  height: 60px;
+  margin: 10px 0;
+}
+
+/* Sunrise and sunset styling with text-shadow */
+.sun-position {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  color: white; /* Ensure the text color remains white */
+  font-size: 17px;
+  font-weight: bold;
+  z-index: 3; /* Increase z-index to stay above any overlays */
+  position: relative; /* Ensure it takes the z-index into account */
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Optional: Adds a shadow to make the text stand out more */
+}
+
+.sun-position div {
+  width: 50%;
+  text-align: center;
+}
+
+/* Search bar styling */
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+}
+
+/* Style for the input field */
+.search-bar {
+  flex: 1; /* Allow input to take available space */
+  height: 35px; /* Adjust height */
+  padding: 10px; /* Adds padding inside the input */
+  font-size: 16px; /* Increase font size */
+  border: none;
+  outline: none; /* Remove default outline on focus */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.1
+  ); /* Slightly transparent background */
+  color: #ffffff; /* White text color */
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); */
+
+  backdrop-filter: blur(10px); /* Apply blur effect */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* Style for the search button */
+.search-button {
+  width: auto; /* Automatically size the button */
+  padding: 8px 15px; /* Adjust padding for the button */
+  background: transparent; /* Transparent background */
+  color: #ffffff; /* White text color */
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
+
+  border: none;
+  border-radius: 20px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor */
+}
+.search-bar::placeholder {
+  color: white; /* Sets the placeholder text color to white */
+  opacity: 1; /* Ensures full opacity for the placeholder text */
+}
+
+/* Forecast section */
+.weather-forecast {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  text-align: center; /* Center the text inside the table */
+  border: none; /* Remove the border from the table */
+}
+
+.weather-forecast td {
+  padding: 10px;
+  font-size: 18px;
+  padding-left: 0; /* Remove left padding to center the text */
+  border: none; /* Remove the border from table cells */
+}
+
+.weather-forecast .forecast-category.icon img {
+  width: 40px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.weather-forecast tr:last-child td {
+  border-bottom: none;
+  padding-bottom: 20px;
+}
+
+/* Navbar with search and close icons */
+.nav {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 95%;
+}
+
+/* Search and close button styling */
+.search-button {
+  cursor: pointer;
+}
+
+.search-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Hidden elements */
+.hidden {
+  display: none;
+}
+
+/* Search bar toggle functionality */
+#search-box {
+  display: flex;
+  align-items: center; /* Vertically center */
+  justify-content: center; /* Horizontally center */
+  width: 100%; /* Adjust width of the container */
+  margin: 0 auto; /* Center the container horizontally */
+  padding: 10px;
+  /* background-color: transparent; */
+  border-radius: 10px;
+  box-shadow: none;
+  z-index: 3; /* Ensure it stays above other elements */
+}
+
+#search-box.active {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* ------------------------------------------------ */
+@media only screen and (max-width: 425px) {
+  .container {
+    width: 100vw; /* Take full viewport width */
+    height: 100vh; /* Take full viewport height */
+    max-width: 100%; /* Remove any max-width limitations */
+    margin: 0; /* Remove any margins */
+    border-radius: 0; /* Remove border radius */
+    box-shadow: none; /* Remove shadow */
+    overflow: auto; /* Allow scrolling if content overflows */
+    display: flex; /* Use flexbox for proper alignment */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+  }
+
+  #search-box {
+    margin-bottom: 50px; /* Add space below the search toggler */
+  }
+
+  .mainWrapper {
+    padding: 10px;
+    height: auto; /* Let the content determine the height */
+    flex: 1; /* Let it grow to fill available space */
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center; /* Center content */
+    margin: 0;
+  }
+
+  .search {
+    margin-top: 10px;
+
+    width: 90%; /* Take most of the available width */
+  }
+
+  .tempNumber {
+    font-size: 48px; /* Adjust font size * /
+    padding-top: 20px; /* Reduce top padding */
+  }
+
+  .cityText {
+    font-size: 24px; /* Adjust font size */
+  }
+
+  .sun-position {
+    font-size: 16px; /* Adjust font size */
+  }
+}
