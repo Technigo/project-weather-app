@@ -43,7 +43,7 @@ const getWeatherData = () => {
         const localTime = new Date();
         const formattedTime = localTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-        // Update the HTML elements with the weather data
+        // Update HTML elements with the weather data
         temperatureElement.textContent = `${temperature}`;
         locationElement.textContent = `${location}`;
         conditionElement.textContent = `${condition}`;
