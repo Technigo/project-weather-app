@@ -276,23 +276,19 @@ body {
 }
 
 
-/* Media query for small screen sizes (below 470px) */
 @media (max-width: 470px) {
-    .forecast-items {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr); /* Three items on the first row */
-        grid-template-rows: auto auto; /* Two rows */
-        grid-gap: 5px; /* Reduce the gap between items */
-        justify-items: center; /* Center items */
-    }
-    
-    /* Positioning for the last two forecast items (centered) */
-    .forecast-item:nth-child(4) {
-        grid-column-start: 2; /* Center item in the second row */
+
+    .toggle-container {
+        position: relative;
     }
 
-    .forecast-item:nth-child(5) {
-        grid-column-start: 3; /* Center item in the second row */
+    .forecast-items {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto auto;
+        grid-gap: 5px;
+        justify-items: center;
+        margin-top: 10px;
     }
 }
 
