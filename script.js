@@ -85,7 +85,7 @@ const updateWeatherUI = data => {
     <h2>${data.name}</h2>
     <h3>
       ${weatherDescription}
-      <img src="${iconUrl}" alt="Weather Icon" class="current-weather-icon">
+      <img src="${iconUrl}" alt="${weatherDescription}" class="current-weather-icon">
     </h3>
     <h4>Current Time: ${formatTime(data.dt)}</h4>
     <h5>Sunrise: ${formatTime(data.sys.sunrise)} | Sunset: ${formatTime(data.sys.sunset)}</h5>
