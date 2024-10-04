@@ -1,13 +1,10 @@
 # Weather App
 
-Replace this readme with your own information about your project.
+Completed my first project, which involved integrating data from an open-source API into a weather application. This project provides a simple yet functional weather forecast for Dubai, for the upcoming five days. The forecast updates dynamically as new information is fetched from the API. In addition to the basic weather data, the app includes precise details about sunrise and sunset times for each day. From a design perspective, I incorporated an intuitive feature that allows users to toggle between a day and night mode, altering the visual theme to reflect different times of the day.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
-
-## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+## The Problem
+I began the project by focusing on the design, utilising HTML and CSS to create a visually appealing layout. Once the core design was in place, I worked on making it responsive, ensuring it would display well across various devices. The most challenging part came when I transitioned into adding dynamic elements using JavaScript. Since I was new to working with APIs, fetching data from the open-source API was a learning curve. The biggest hurdle I encountered was correctly positioning and displaying the fetched data within the HTML structure. Replacing static elements with live API data proved to be quite tricky, as I had to ensure the content was dynamically updated while maintaining the integrity of the design.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://nightcast.netlify.app

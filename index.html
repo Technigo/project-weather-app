@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/design-1/website-icon.png"/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="search-button">
+        <button id="search-btn">
+            <img src="assets/design-1/search-icon.png" alt="search icon">
+        </button>
+        <div class="search-bar-container">
+            <input type="text" id="search-bar" placeholder="Search location...">
+        </div>
+    </div>     
+
+    <div class="toggle-container">
+        <input type="checkbox" id="theme-toggle" class="toggle-checkbox">
+        <label for="theme-toggle" class="toggle-label">
+            <div class="icon sun-icon"></div>
+            <div class="icon moon-icon"></div>
+        </label>
+    </div>
+
+    <div class="app">
+        <div class="weather-card">
+            <div class="location">
+                <h1>Dubai</h1>
+            </div>
+            <div class="current-temp">
+                <h2>16°C</h2>
+            </div>
+            <div class="details">
+                <p id="sunset-time"></p>
+                <p id="sunrise-time"></p>
+                <p id="weather-description"></p>
+            </div>
+        </div>
+
+        <div class="weekly-forecast">
+            <h3>Weekly Forecast</h3>
+            <div class="forecast-items">
+                <div class="forecast-item">
+                    <div class="forecast-icon">
+                        <img src="assets/design-1/cloudy.png" alt="cloudy">
+                    </div>
+                    <p>Monday</p>
+                    <p>23°C</p>
+                </div>
+                <div class="forecast-item">
+                    <div class="forecast-icon">
+                        <img src="assets/design-1/sunny.png" alt="sunny">
+                    </div>
+                    <p>Tuesday</p>
+                    <p>20°C</p>
+                </div>
+                <div class="forecast-item">
+                    <div class="forecast-icon">
+                        <img src="assets/design-1/sunny.png" alt="cloudy with sun">
+                    </div>
+                    <p>Wednesday</p>
+                    <p>17°C</p>
+                </div>
+                <div class="forecast-item">
+                    <div class="forecast-icon">
+                        <img src="assets/design-1/storm.png" alt="storm">
+                    </div>
+                    <p>Thursday</p>
+                    <p>16°C</p>
+                </div>
+                <div class="forecast-item">
+                    <div class="forecast-icon">
+                        <img src="assets/design-1/rain.png" alt="rainy">
+                    </div>
+                    <p>Friday</p>
+                    <p>16°C</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
