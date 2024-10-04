@@ -70,15 +70,18 @@ const fetchData = url => fetch(url)
     throw error
   })
 
-// Utility: Format time in 24-hour format
-const formatTime = unixTime =>
-  new Date(unixTime * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })
+// Utility: Format time in 24-hour format using the correct timezone
+const formatTime = (unixTime, timezoneOffset) => {
+  const localTime = new Date((unixTime + timezoneOffset) * 1000)
+  return localTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false})
+}
 
 // Update weather data in the UI
 const updateWeatherUI = data => {
   const temp = Math.floor(data.main.temp)
   const weatherDescription = data.weather[0].description.charAt(0).toUpperCase() + data.weather[0].description.slice(1)
   const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+  const timezoneOffset = data.timezone // Use the timezone offset for the city
 
   weatherData.innerHTML = `
     <h1>${temp}<span>ºC</span></h1>
@@ -87,15 +90,19 @@ const updateWeatherUI = data => {
       ${weatherDescription}
       <img src="${iconUrl}" alt="Weather Icon" class="current-weather-icon">
     </h3>
-    <h4>Current Time: ${formatTime(data.dt)}</h4>
-    <h5>Sunrise: ${formatTime(data.sys.sunrise)} | Sunset: ${formatTime(data.sys.sunset)}</h5>
+    <h4>Current Time: ${formatTime(data.dt,timezoneOffset)}</h4>
+    <h5>Sunrise: ${formatTime(data.sys.sunrise, timezoneOffset)} | Sunset: ${formatTime(data.sys.sunset, timezoneOffset)}</h5>
   `
-  dayToNight(data.dt, data.sys.sunrise, data.sys.sunset)
+  dayToNight(data.dt, data.sys.sunrise, data.sys.sunset, timezoneOffset)
 }
 
 // Day/Night Background Update
-const dayToNight = (currentTime, sunrise, sunset) => {
-  weatherContainer.style.background = currentTime < sunrise || currentTime > sunset
+const dayToNight = (currentTime, sunrise, sunset, timezoneOffset) => {
+  const adjustedCurrentTime = currentTime + timezoneOffset
+  const adjustedSunrise = sunrise + timezoneOffset
+  const adjustedSunset = sunset + timezoneOffset  
+  
+  weatherContainer.style.background = adjustedCurrentTime < adjustedSunrise || adjustedCurrentTime > adjustedSunset
     ? "linear-gradient(180deg, #323667 0%, #6B6EA8 100%)"
     : "" // Default to CSS value for day
 }
