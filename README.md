@@ -1,13 +1,13 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The aim of this project was to fetch data from a weather API and implement the data into a website. The weather data includes name of city, rounded temperatures, weather description & images, sunrise and sunset times. 
 
 ## The problem
+One challenge in this project was to understand the data offered by the API and implement the data into the website. Convertion to local times and temperatures involved. 
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Right now, the weather forecast has been based on two time entry points to receive the temperature. To improve the accuracy of the shown data, it would be good to fetch more data. 
+
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://gittes-weather-app.netlify.app

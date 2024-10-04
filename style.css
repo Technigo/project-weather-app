@@ -1,0 +1,245 @@
+/* for iPhone XR */
+
+body {
+    padding: 0;
+    max-width: 100%;
+    margin: 0;
+    font-family: Roboto;
+}
+
+header {
+    background: linear-gradient(to bottom right, #8589FF, #E8E9FF);
+    height: 60%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    border-bottom-left-radius: 50% 10%;
+    border-bottom-right-radius: 50% 10%;
+}
+
+.menu {
+    width: 35px;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 30px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.hamburger-layer {
+    width: 100%;
+    border: 3px;
+    height: 4px;
+    border-top: solid #FFFFFF;
+}
+
+/* Search town window */
+.search-location-window {
+    z-index: 1;
+    width: 100%;
+    height: 80%;
+    background-color: #707070;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.search-city {
+    height: 30px;
+    min-width: 100px;
+    max-width: 300px;
+    border-radius: 10px;
+    border: none;
+    margin: 20px;
+}
+
+.search-button {
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+}
+
+.searchLocationContainer {
+    position: relative;
+    margin: 15%;
+    padding: 20px;
+    color: #FFFFFF;
+    background-color: #8589FF;
+}
+
+@media(max-width:400px) {
+    .searchLocationContainer {
+        padding: 5px;
+        margin: 10%;
+    }
+}
+
+.weather-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.temperature-container {
+    max-width: 200px;
+    max-height: 200px;
+    margin-top: 40px;
+    margin-left: 30px;
+    text-align: left;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+}
+
+.temperature {
+    display: flex;
+    flex-direction: row;
+}
+
+h1 {
+    font-size: 100px;
+    font-weight: 300;
+    margin: 0;
+    line-height: 140px;
+}
+
+.celsius {
+    font-size: 40px;
+    line-height: 106px;
+}
+
+h2 {
+    font-size: 34px;
+    font-weight: 300;
+    margin: 0;
+    line-height: 40px;
+}
+
+h3 {
+    font-size: 22px;
+    font-weight: 300;
+    margin: 0;
+    line-height: 25px;
+}
+
+.current-weather-image {
+    width: 160px;
+    height: 152px;
+    margin-top: 5px;
+    margin-left: 225px;
+    position: relative;
+}
+
+.icon-big {
+    width: 100%;
+}
+
+.sunrise-sunset {
+    display: flex;
+    width: 80%;
+    max-width: 400px;
+    margin-top: 100px;
+    margin-left: 30px;
+    justify-content: space-between;
+}
+
+p {
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 25px;
+    color: #FFFFFF;
+}
+
+main {
+    height: 40%;
+    display: flex;
+    justify-content: center;
+}
+
+.weather-forecast-container {
+    min-width: 320px;
+    max-width: 800px;
+    min-height: 250px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.weather-day {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 30px;
+}
+
+.weather-day:hover {
+    background-color: #d1cdcd;
+}
+
+.forecast-image {
+    width: 50px;
+}
+
+.forecast-icon {
+    width: 100%;
+}
+
+.weekday,
+.forecast-temperature {
+    color: #707070;
+    font-size: 20px;
+}
+
+/* Pablets and iPads */
+@media(min-width:667px) {
+    .weather-container {
+        justify-content: center;
+    }
+
+    header {
+        justify-content: center;
+    }
+
+    .sunrise-sunset {
+        max-width: 100%;
+        justify-content: space-around;
+    }
+
+    .current-weather-image {
+        width: 200px;
+        height: 200px;
+        margin-left: 400px;
+    }
+}
+
+/* desktop  */
+@media(min-width: 1024px) {
+    body {
+        display: flex;
+        flex-direction: row;
+        background: linear-gradient(to bottom right, #8589FF, #E8E9FF);
+    }
+
+    header {
+        max-width: 50%;
+        height: 80%;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .weather-forecast-container {
+        margin-top: 150px;
+        margin-left: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
