@@ -103,21 +103,26 @@ const dayToNight = (currentTime, sunrise, sunset) => {
 // Update forecast data in the UI
 const updateForecastUI = forecastData => {
   forecast.innerHTML = "" // Clear the forecast section
-  forecastData.list.filter((_, index) => index % 8 === 0).forEach(entry => {
-    const day = new Date(entry.dt * 1000).toLocaleDateString("en-US", { weekday: "short" })
-    const iconUrl = `http://openweathermap.org/img/wn/${entry.weather[0].icon}@2x.png`
-    const temp = `${Math.floor(entry.main.temp)}°C`
-    const windSpeed = `${entry.wind.speed} m/s`
 
-    forecast.insertAdjacentHTML("beforeend", `
-      <div class="forecast-day">
-        <p>${day}</p>
-        <img src="${iconUrl}" alt="Weather Icon" class="forecast-weather-icon">
-        <p>${temp}</p>
-        <p>${windSpeed}</p>
-      </div>
-    `)
-  })
+  forecastData.list
+    .filter((_, index) => index % 8 === 0)
+    .forEach(entry => {
+      const day = new Date(entry.dt * 1000).toLocaleDateString("en-US", { weekday: "short" })
+      const iconUrl = `http://openweathermap.org/img/wn/${entry.weather[0].icon}@2x.png`
+      const temp = `${Math.floor(entry.main.temp)}°C`
+      const windSpeed = `${entry.wind.speed} m/s`
+      const weatherDescription = entry.weather[0].description // Get weather description for better accessibility
+
+      // Add forecast entry with improved accessibility
+      forecast.insertAdjacentHTML("beforeend", `
+        <article class="forecast-day" tabindex="0" aria-label="Weather forecast for ${day}, temperature: ${temp}, windspeed: ${windSpeed}, condition: ${weatherDescription}">
+          <p>${day}</p>
+          <img src="${iconUrl}" alt="${weatherDescription}" class="forecast-weather-icon">
+          <p>${temp}</p>
+          <p>${windSpeed}</p>
+        </article>
+      `)
+    })
 }
 
 // Validate search input and trigger weather fetch

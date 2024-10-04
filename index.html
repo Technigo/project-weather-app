@@ -15,14 +15,29 @@
   <main>
     <header class="weather-container" id="weatherContainer">
       <!-- Search Icon -->
-      <img src="./assets/design-1/search-white.png" id="searchIcon" alt="Search Icon">
+      <button id="searchIcon" aria-label="Open search menu"><svg xmlns="http://www.w3.org/2000/svg" height="48px"
+          viewBox="0 -960 960 960" width="48px" fill="#FFFFFF">
+          <path
+            d="M80-200v-60h400v60H80Zm0-210v-60h200v60H80Zm0-210v-60h200v60H80Zm758 420L678-360q-26 20-56 30t-62 10q-83 0-141.5-58.5T360-520q0-83 58.5-141.5T560-720q83 0 141.5 58.5T760-520q0 32-10 62t-30 56l160 160-42 42ZM559.76-380Q618-380 659-420.76q41-40.77 41-99Q700-578 659.24-619q-40.77-41-99-41Q502-660 461-619.24q-41 40.77-41 99Q420-462 460.76-421q40.77 41 99 41Z" />
+        </svg></button>
 
       <!-- Search Menu -->
       <aside class="side-menu" id="sideMenu" style="display: none;">
-        <div id="closeButton" class="close-button">&#10006;</div>
-        <label for="inputLocation"><input type="text" class="search-bar" id="inputLocation"
-            placeholder="Search city name" aria-label="City Search" /></label>
-        <img src="./assets/design-1/searchicon-white.png" id="searchButton" alt="Search Button">
+        <!-- Close Button -->
+        <button id="closeButton" class="close-button" aria-label="Close search menu">
+          &#10006;
+        </button>
+
+        <!-- Search Input -->
+        <label for="inputLocation" class="visually-hidden">Search city name</label>
+        <input type="text" class="search-bar" id="inputLocation" placeholder="Search city name" />
+
+        <!-- Search Button -->
+        <button id="searchButton" aria-label="Submit search"><svg xmlns="http://www.w3.org/2000/svg" height="48px"
+            viewBox="0 -960 960 960" width="48px" fill="#FFFFFF">
+            <path
+              d="M796-121 533-384q-30 26-69.96 40.5Q423.08-329 378-329q-108.16 0-183.08-75Q120-479 120-585t75-181q75-75 181.5-75t181 75Q632-691 632-584.85 632-542 618-502q-14 40-42 75l264 262-44 44ZM377-389q81.25 0 138.13-57.5Q572-504 572-585t-56.87-138.5Q458.25-781 377-781q-82.08 0-139.54 57.5Q180-666 180-585t57.46 138.5Q294.92-389 377-389Z" />
+          </svg></button>
       </aside>
 
       <!-- Favorite City Button -->
@@ -33,7 +48,7 @@
     </header>
 
     <!-- Weekly Forecast -->
-    <article class="weather-forecast"></article>
+    <section class="weather-forecast"></section>
   </main>
 
   <footer>

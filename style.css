@@ -54,16 +54,77 @@ main {
 /* 
   search bar style
 */
-#searchIcon, #searchButton, #favButton {
+/* General button reset */
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Common styles for buttons */
+#searchIcon, #searchButton, #closeButton {
   cursor: pointer;
   transition: 0.3s ease;
 }
 
+#searchIcon, #searchButton {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
 #searchIcon {
-  height: 3rem;
   position: absolute;
   top: 1rem;
   left: 1.5rem;
+}
+
+#closeButton {
+  font-size: 2.5rem;
+  color: var(--white);
+  margin-right: 30px;
+  transition: transform 0.2s ease-in-out, color 0.2s ease;
+}
+
+#closeButton:hover {
+  color: #f00; /* Change color on hover */
+  transform: scale(1.2); /* Enlarge slightly on hover */
+}
+
+/* Icon inside buttons */
+#searchIcon svg, #searchButton svg {
+  fill: var(--white); /* White icon */
+  width: 100%;
+  height: 100%;
+  transition: fill 0.3s ease, transform 0.3s ease;
+}
+
+/* Accessible outline on focus */
+button:focus {
+  outline: 2px solid #f00; /* High-contrast focus outline */
+  outline-offset: 2px; /* Space between the outline and the button */
+}
+
+/* Hover effects for all interactive buttons */
+button:hover {
+  filter: brightness(0.8);
+  transform: scale(1.05);
+}
+
+/* Search bar style */
+.search-bar {
+  flex-grow: 1;
+  height: 2.5rem;
+  padding: 0 16px;
+  border: 1px solid var(--white);
+  color: var(--dark-grey);
 }
 
 .side-menu {
@@ -77,25 +138,21 @@ main {
   align-items: center;
 }
 
-#closeButton {
-  font-size: 2rem;
-  color: var(--white);
-  margin-right: 30px;
+/* Screen reader hidden content */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 
-.search-bar {
-  flex-grow: 1;
-  height: 2rem;
-  padding-left: 16px;
-  border: 1px solid var(--white);
-  color: var(--dark-grey);
-}
-
-#searchButton {
-  height: 2rem;
-  margin-left: 0.5rem;
-}
-
+/*
+favorite button style
+*/
 #favButton {
   font-size: 5rem;
   border: none;
@@ -115,9 +172,9 @@ main {
   transition: 0.3s ease;
 }
 
-/* Hover effect for icon|button */
-#searchIcon:hover, #closeButton:hover, #searchButton:hover {
-  filter: brightness(0.8);
+#favButton {
+  cursor: pointer;
+  transition: 0.3s ease;
 }
 
 #favButton:hover {
@@ -135,6 +192,7 @@ main {
     background-color: #207744; /* faded/alternate color */
   }
 }
+
 
 /* 
 current weather style
