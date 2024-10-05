@@ -25,23 +25,12 @@ const weekdaysLong = [
    Global Variables
 ********************************* */
 
-// Default city for initial weather display
-let apiQueryCity = "Stockholm";
-
-// Displayed city name (may differ in case or spelling)
-let displayedCityName = "Stockholm";
-
-// Current weather type (e.g., "Clouds", "Clear")
-let weatherTypeToday = "";
-
-// Current weather description
-let weatherDescriptionToday = "";
-
-// User input city name during a search
-let userCityInput = "";
-
-// Flag to track if the user has interacted
-let userHasInteracted = false;
+let apiQueryCity = "Stockholm"; // Default city for initial weather display
+let displayedCityName = "Stockholm"; // Displayed city name (may differ in case or spelling)
+let weatherTypeToday = ""; // Current weather type (e.g., "Clouds", "Clear")
+let weatherDescriptionToday = ""; // Current weather description
+let userCityInput = ""; // User input city name during a search
+let userHasInteracted = false; // Flag to track if the user has interacted
 
 /* *********************************
    Testing Configuration
@@ -55,23 +44,20 @@ const simulateNighttime = false; // Set to true to force nighttime for testing
    DOM Selectors
 ********************************* */
 
-// Main app container
-const app = document.getElementById("app");
-
-// Container for today's weather
-const weatherTodayContainer = document.getElementById("weather-today");
-
-// Container for weather forecast title
-const weatherForecastTitle = document.getElementById("weather-forecast__title");
-
-// List element for the forecast data
-const forecastList = document.getElementById("weather-forecast__list");
+const app = document.getElementById("app"); // Main app container
+const weatherTodayContainer = document.getElementById("weather-today"); // Container for today's weather
+const weatherForecastTitle = document.getElementById("weather-forecast__title"); // Container for weather forecast title
+const forecastList = document.getElementById("weather-forecast__list"); // List element for the forecast data
 
 /* *********************************
    Weather Types
 ********************************* */
 
-// Object containing data for different weather conditions
+/**
+ * An object mapping weather types to their corresponding UI classes and messages.
+ * Each key represents a weather condition and contains properties for class names,
+ * messages, and image sources for day and night.
+ */
 const weatherTypes = {
   clouds: {
     className: "is-cloudy",
@@ -254,24 +240,26 @@ const updateDocumentTitle = () => {
 };
 
 /**
- * Converts a date string to a weekday name (short or long)
- * @param {string} dateString - The date string to convert
- * @param {boolean} [isLong=false] - Whether to return the long name (e.g., "Monday")
- * @returns {string} - The weekday name (e.g., "mon" or "Monday")
+ * Returns the weekday name for a given date string.
+ * @param {string} dateString - The date string to convert.
+ * @param {boolean} [isLong=false] - Whether to return the full weekday name.
+ * @returns {string} - The weekday name.
  */
 const getWeekdayName = (dateString, isLong = false) => {
   const date = new Date(dateString);
-  const weekdayNumber = date.getDay();
-  return isLong ? weekdaysLong[weekdayNumber] : weekdaysShort[weekdayNumber];
+  if (isNaN(date)) return ""; // Handle invalid date
+  const options = { weekday: isLong ? "long" : "short" };
+  return date.toLocaleDateString("en-US", options);
 };
 
 /**
- * Formats the temperature value by appending ° symbol if it's a number
- * @param {number|string} temp - The temperature value
- * @returns {string} - Formatted temperature string
+ * Formats the temperature by appending the degree symbol.
+ * @param {number|string} temp - The temperature value.
+ * @returns {string} - The formatted temperature.
  */
 const formatTemperature = (temp) => {
-  return typeof temp === "number" ? `${temp}°` : temp;
+  const temperature = parseFloat(temp);
+  return isNaN(temperature) ? "-" : `${Math.round(temperature)}°`;
 };
 
 /**
@@ -472,8 +460,8 @@ const handleSearch = (event) => {
     userHasInteracted = true;
 
     // Fetch new data
-    currentWeather();
-    forecastedWeather();
+    getCurrentWeather();
+    getForecast();
   }
 };
 
@@ -484,7 +472,7 @@ const handleSearch = (event) => {
 /**
  * Fetches and displays the current weather for the selected city
  */
-const currentWeather = async (mockType = null) => {
+const getCurrentWeather = async (mockType = null) => {
   // Get current time (in UTC)
   const currentTimeUTC = new Date();
 
@@ -521,47 +509,41 @@ const currentWeather = async (mockType = null) => {
     // Update the document title
     updateDocumentTitle();
 
-    // Extract the timezone offset (in seconds) from the API response
-    const timezoneOffsetInSeconds = weatherRightNow.timezone;
+    // Get local sunrise timestamp
+    const localSunriseTimestamp =
+      weatherRightNow.sys.sunrise + weatherRightNow.timezone;
+    const localSunsetTimestamp =
+      weatherRightNow.sys.sunset + weatherRightNow.timezone;
 
-    // Create Date objects for sunrise and sunset times (adjusting for the city's timezone)
-    const sunriseTimeUTC = new Date(weatherRightNow.sys.sunrise * 1000);
-    const sunsetTimeUTC = new Date(weatherRightNow.sys.sunset * 1000);
-
-    // Calculate local time for sunrise and sunset using the city's timezone offset
-    const sunriseTimeLocal = new Date(
-      sunriseTimeUTC.getTime() + timezoneOffsetInSeconds * 1000
-    );
-    const sunsetTimeLocal = new Date(
-      sunsetTimeUTC.getTime() + timezoneOffsetInSeconds * 1000
-    );
+    // Create Date objects for sunrise and sunset times
+    const localSunrise = new Date(localSunriseTimestamp * 1000);
+    const localSunset = new Date(localSunsetTimestamp * 1000);
 
     // Format sunrise and sunset times to local time strings
-    const sunrise = sunriseTimeLocal.toLocaleTimeString("en-GB", {
+    const sunrise = localSunrise.toLocaleTimeString("en-GB", {
       hour: "2-digit",
       minute: "2-digit",
       hour12: false,
+      timeZone: "UTC",
     });
-    const sunset = sunsetTimeLocal.toLocaleTimeString("en-GB", {
+    const sunset = localSunset.toLocaleTimeString("en-GB", {
       hour: "2-digit",
       minute: "2-digit",
       hour12: false,
+      timeZone: "UTC",
     });
 
     // Calculate local current time based on city's timezone
-    const currentTimeLocal = new Date(
-      currentTimeUTC.getTime() + timezoneOffsetInSeconds * 1000
-    );
+    const currentTimeLocal = new Date(currentTimeUTC.getTime() * 1000);
 
     // Determine if it's currently daytime in the selected city
     const isDaytime =
-      currentTimeLocal >= sunriseTimeLocal &&
-      currentTimeLocal < sunsetTimeLocal;
+      currentTimeLocal >= localSunrise && currentTimeLocal < localSunset;
 
     // Get mainTitle and imgSrc from typeOfWeather
     const { mainTitle, imgSrc } = typeOfWeather(weatherTypeToday, isDaytime);
 
-    let sunriseIcon = `
+    const sunriseIcon = `
     <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path fill-rule="evenodd" clip-rule="evenodd" d="M1.25 16C1.25 15.5858 1.58579 15.25 2 15.25H22C22.4142 15.25 22.75 15.5858 22.75 16C22.75 16.4142 22.4142 16.75 22 16.75H2C1.58579 16.75 1.25 16.4142 1.25 16ZM4.25 19C4.25 18.5858 4.58579 18.25 5 18.25H19C19.4142 18.25 19.75 18.5858 19.75 19C19.75 19.4142 19.4142 19.75 19 19.75H5C4.58579 19.75 4.25 19.4142 4.25 19ZM7.25 22C7.25 21.5858 7.58579 21.25 8 21.25H16C16.4142 21.25 16.75 21.5858 16.75 22C16.75 22.4142 16.4142 22.75 16 22.75H8C7.58579 22.75 7.25 22.4142 7.25 22Z" fill="#164A68"/>
       <path fill-rule="evenodd" clip-rule="evenodd" d="M12 5.25C10.7009 5.24994 9.4294 5.62475 8.33807 6.32945ZM12 6.75C10.9895 6.74994 10.0006 7.04146 9.15176 7.58957C8.30293 8.13768 7.6303 8.91909 7.21459 9.84002C6.79888 10.761 6.65776 11.7823 6.80815 12.7814C6.94216 13.6717 7.30254 14.5107 7.85231 15.219H16.1477C16.6975 14.5107 17.0578 13.6717 17.1918 12.7814C17.3422 11.7823 17.2011 10.761 16.7854 9.84002C16.3697 8.91909 15.6971 8.13768 14.8482 7.58957C13.9994 7.04146 13.0104 6.74994 12 6.75ZM12 5.25C13.299 5.24994 14.5706 5.62475 15.6619 6.32945C16.7533 7.03416 17.6181 8.03882 18.1526 9.22288C18.6871 10.4069 18.8685 11.7201 18.6751 13.0047C18.4818 14.2893 17.9218 15.4909 17.0625 16.4651L16.8385 16.719H7.16148L6.93754 16.4651C6.07819 15.4909 5.51823 14.2893 5.32486 13.0047C5.1315 11.7201 5.31294 10.4069 5.84743 9.22288C6.38191 8.03882 7.24672 7.03416 8.33807 6.32945" fill="#164A68"/>
@@ -570,7 +552,7 @@ const currentWeather = async (mockType = null) => {
     </svg>
     `;
 
-    let sunsetIcon = `
+    const sunsetIcon = `
     <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path fill-rule="evenodd" clip-rule="evenodd" d="M7.25 22C7.25 21.5858 7.58579 21.25 8 21.25H16C16.4142 21.25 16.75 21.5858 16.75 22C16.75 22.4142 16.4142 22.75 16 22.75H8C7.58579 22.75 7.25 22.4142 7.25 22Z" fill="#164A68"/>
       <path fill-rule="evenodd" clip-rule="evenodd" d="M4.25 19C4.25 18.5858 4.58579 18.25 5 18.25H19C19.4142 18.25 19.75 18.5858 19.75 19C19.75 19.4142 19.4142 19.75 19 19.75H5C4.58579 19.75 4.25 19.4142 4.25 19Z" fill="#164A68"/>
@@ -623,6 +605,7 @@ const currentWeather = async (mockType = null) => {
     const announcement = `Weather updated for ${displayedCityName}. It is ${temp} degrees and ${weatherDescriptionToday}.`;
     updateAriaNotification(announcement);
   } catch (error) {
+    console.log(error);
     // Handle the error by displaying a message and keeping the input in the <h1>
     weatherTodayContainer.innerHTML = `
       <div id="weather-today__greeting" class="weather-today__greeting">
@@ -652,7 +635,7 @@ const currentWeather = async (mockType = null) => {
 /**
  * Fetches and displays the weather forecast for the selected city
  */
-const forecastedWeather = async (mockType = null) => {
+const getForecast = async (mockType = null) => {
   // Inline helper function to generate the forecast list
   const generateForecastList = (dailyTemperatures) => {
     const forecastListItem = document.createDocumentFragment();
@@ -794,10 +777,10 @@ const forecastedWeather = async (mockType = null) => {
 if (useMockData) {
   // Test with different weather types
   const testWeatherType = "snow"; // Change to test different types
-  currentWeather(testWeatherType);
-  forecastedWeather(testWeatherType);
+  getCurrentWeather(testWeatherType);
+  getForecast(testWeatherType);
 } else {
   // Use real API data
-  currentWeather();
-  forecastedWeather();
+  getCurrentWeather();
+  getForecast();
 }
