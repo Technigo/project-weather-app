@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast for Lausanne</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to the CSS file -->
+    <link rel="icon" href="data:,">
+</head>
+<body>
+    <div class="weather-container">
+        <!-- Main weather section -->
+        <div class="current-weather">
+            <p>Current: <span id="current-temp">Loading...</span>°C</p>
+            <p>sunrise <span id="sunrise">--:--</span></p>
+            <p>sunset <span id="sunset">--:--</span></p>
+            <img src="" alt="weather icon" class="weather-icon" id="weather-icon">
+            <h2 id="weather-description">Loading...</h2>
+        </div>
+
+        <!-- Weather forecast section -->
+        <div class="forecast">
+            <div class="forecast-day">
+                <p>Mon<span id="day1-temp">--°</span></p>
+            </div>
+            <div class="forecast-day">
+                <p>Tue<span id="day2-temp">--°</span></p>
+            </div>
+            <div class="forecast-day">
+                <p>Wed<span id="day3-temp">--°</span></p>
+            </div>
+            <div class="forecast-day">
+                <p>Thu<span id="day4-temp">--°</span></p>
+            </div>
+            <div class="forecast-day">
+                <p>Fri<span id="day5-temp">--°</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script> <!-- Link to the JavaScript file -->
+</body>
+</html>
