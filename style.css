@@ -137,7 +137,7 @@ p {
 .weather-today__meta {
   display: flex;
   flex-flow: row;
-  gap: 0.5rem;
+  gap: 0.75rem;
   margin-bottom: 2.5rem;
 
   @media (min-width: 668px) {
@@ -228,7 +228,7 @@ p {
   }
 }
 
-#city-input {
+[id^="city-input"] {
   background: transparent;
   border: none;
   border-radius: 0;

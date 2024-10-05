@@ -31,6 +31,7 @@ let weatherTypeToday = ""; // Current weather type (e.g., "Clouds", "Clear")
 let weatherDescriptionToday = ""; // Current weather description
 let userCityInput = ""; // User input city name during a search
 let userHasInteracted = false; // Flag to track if the user has interacted
+let idx = 0; // Global index to count number of instances of an element
 
 /* *********************************
    Testing Configuration
@@ -219,17 +220,28 @@ const mockWeatherData = {
  * @param {string} city - The city name
  * @returns {string} - The API URL for fetching current weather
  */
+/**
+ * Generates the API URL for current weather of a given city.
+ *
+ * @param {string} city - The name of the city.
+ * @returns {string} The complete API URL for fetching current weather data.
+ */
 const getWeatherUrl = (city) => {
-  return `${BASE_URL_WEATHER}?q=${city}&units=metric&APPID=${API_KEY}`;
+  return `${BASE_URL_WEATHER}?q=${encodeURIComponent(
+    city
+  )}&units=metric&APPID=${API_KEY}`;
 };
 
 /**
- * Generates the API URL for weather forecast of a given city
- * @param {string} city - The city name
- * @returns {string} - The API URL for fetching weather forecast
+ * Generates the API URL for weather forecast of a given city.
+ *
+ * @param {string} city - The name of the city.
+ * @returns {string} The complete API URL for fetching weather forecast data.
  */
 const getForecastUrl = (city) => {
-  return `${BASE_URL_FORECAST}?q=${city}&units=metric&APPID=${API_KEY}`;
+  return `${BASE_URL_FORECAST}?q=${encodeURIComponent(
+    city
+  )}&units=metric&APPID=${API_KEY}`;
 };
 
 /**
@@ -294,7 +306,6 @@ const updateAriaNotification = (message) => {
   if (ariaNotification) {
     // Clear the content to ensure the screen reader detects the change
     ariaNotification.textContent = "";
-    // Use setTimeout to ensure the content updates properly
     setTimeout(() => {
       ariaNotification.textContent = message;
     }, 100);
@@ -356,10 +367,11 @@ const fetchWeather = async (weatherUrl, mockType = null) => {
  * @param {string} inputValue - The value to set in the input field.
  */
 const createCityInput = (parentElement, inputValue = displayedCityName) => {
+  idx++;
   // Create the input element
   const cityInput = document.createElement("input");
   cityInput.type = "text";
-  cityInput.id = "city-input";
+  cityInput.id = `city-input-${idx}`;
   cityInput.value = inputValue;
   cityInput.autocomplete = "off";
   cityInput.setAttribute("aria-label", "Change city to update weather");
@@ -575,7 +587,10 @@ const getCurrentWeather = async (mockType = null) => {
         <p>
           <time datetime="${isoDate}">${humanReadableDate}</time>
         </p>
-        <h1></h1>
+        <h1>
+          <span id="h1-visual" aria-hidden="true"></span>
+          <span id="h1-screen" class="sr-only"></span>
+        </h1>
         <p class="text-large" id="todays-temp">It is ${temp}° and ${weatherDescriptionToday}.</p>
       </div>
       <div class="weather-today__meta">
@@ -590,16 +605,22 @@ const getCurrentWeather = async (mockType = null) => {
       </div>
     `;
 
-    const h1 = weatherTodayContainer.querySelector(
-      "#weather-today__greeting h1"
-    );
-
     // Split the mainTitle at the '{city}' placeholder and insert the input dynamically
     let parts = mainTitle.split("{city}");
-    h1.innerHTML = "";
-    h1.appendChild(document.createTextNode(parts[0]));
-    createCityInput(h1); // Append the city input field
-    h1.appendChild(document.createTextNode(parts[1]));
+
+    // Create the visual H1 with the input field
+    const visualH1 = document.getElementById("h1-visual");
+    visualH1.innerHTML = "";
+    visualH1.appendChild(document.createTextNode(parts[0]));
+    createCityInput(visualH1); // Append the city input field
+    visualH1.appendChild(document.createTextNode(parts[1]));
+
+    let screenH1 = document.getElementById("h1-screen");
+    screenH1.appendChild(
+      document.createTextNode(
+        `${parts[0]}${displayedCityName}${parts[1]}${createCityInput(screenH1)}`
+      )
+    );
 
     // Announce the updated weather information to screen reader users
     const announcement = `Weather updated for ${displayedCityName}. It is ${temp} degrees and ${weatherDescriptionToday}.`;
@@ -614,7 +635,7 @@ const getCurrentWeather = async (mockType = null) => {
           <time datetime="${isoDate}">${humanReadableDate}</time>
         </p>
         <h1>Sorry, we couldn't find a matching city. Please try another: </h1>
-        <p class="text-large">I pray the weather gods are with you this time.</p>
+        <p class="text-large">We pray the weather gods are with you this time.</p>
       </div>
     `;
 
