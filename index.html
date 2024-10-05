@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather or Not</title>
+  <link rel="stylesheet" type="text/css" href="./style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <title>Check the Weather</title>
+</head>
+
+<body>
+  <main><!-- Temperature and Condition Info -->
+    <section class="weather-container" id="weatherContainer">
+      <div class="temperature-info">
+        <p id="condition"></p>
+        <p>|</p>
+        <p id="temperature"></p>
+      </div>
+      <!-- Sunset and Sunrise Info -->
+      <div class="sun-times">
+        <p>sunrise <span id="sunriseTime"></span></p>
+        <p>sunset <span id="sunsetTime"></span></p>
+      </div>
+      <img id="weatherImage" class="weather-img" src="" alt="Weather Image">
+      <p id="weatherMessage" class="weather-message"></p> <!-- Placeholder for dynamic weather message -->
+      <section class="forecast-wrapper" id="forecastWrapper">
+        <ul id="forecastList"></ul> <!-- List items will be dynamically added here -->
+        <div id="searchContainer">
+          <!-- <label for="cityInput">City:</label> -->
+          <input type="text" id="cityInput" placeholder="Type a city..">
+          <button id="searchButton">Search</button>
+        </div>
+      </section>
+  </main>
+  <script src="./script.js"></script>
+
+  <body>
+
+</html>
