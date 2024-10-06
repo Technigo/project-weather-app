@@ -107,7 +107,7 @@ const processForecastData = (list) => {
   const today = new Date().getDate();
   
   return list
-    // Transform each item into an object with the data we need 
+    // Transforming each item into an object with the data we need 
     .map(item => ({
       date: new Date(item.dt * 1000),
       icon: item.weather[0].icon,
