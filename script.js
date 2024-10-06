@@ -369,19 +369,13 @@ const fetchWeather = async (weatherUrl, mockType = null) => {
 const createCityInput = (parentElement, inputValue = displayedCityName) => {
   idx++;
 
-  // Create the label element
-  const cityLabel = document.createElement("label");
-  cityLabel.setAttribute("for", `city-input-${idx}`);
-  cityLabel.textContent = `${displayedCityName}`; // Label text
-  cityLabel.classList.add("sr-only");
-
   // Create the input element
   const cityInput = document.createElement("input");
   cityInput.type = "text";
   cityInput.id = `city-input-${idx}`;
   cityInput.value = inputValue;
   cityInput.autocomplete = "off";
-  cityInput.setAttribute("aria-label", "Enter city to update weather");
+  cityInput.setAttribute("aria-label", `${displayedCityName}`);
 
   // Disable common Password Managers from injecting themselves in the input field
   cityInput.setAttribute("data-1p-ignore", "");
@@ -389,8 +383,7 @@ const createCityInput = (parentElement, inputValue = displayedCityName) => {
   cityInput.setAttribute("data-lpignore", "true");
   cityInput.setAttribute("data-form-type", "other");
 
-  // Append the input and label to the parentElement
-  parentElement.appendChild(cityLabel);
+  // Append the input to the parentElement
   parentElement.appendChild(cityInput);
 
   // Event listener for 'input' to adjust the width dynamically
