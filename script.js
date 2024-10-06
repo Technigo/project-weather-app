@@ -296,21 +296,21 @@ function updateInputWidth(inputElement) {
  * Updates the ARIA live region to announce changes to screen reader users.
  * @param {string} message - The message to announce.
  */
-const updateAriaNotification = (message) => {
-  if (!userHasInteracted) {
-    // Do not announce if the user hasn't interacted yet
-    return;
-  }
+// const updateAriaNotification = (message) => {
+//   if (!userHasInteracted) {
+//     // Do not announce if the user hasn't interacted yet
+//     return;
+//   }
 
-  const ariaNotification = document.getElementById("aria-notification");
-  if (ariaNotification) {
-    // Clear the content to ensure the screen reader detects the change
-    ariaNotification.textContent = "";
-    setTimeout(() => {
-      ariaNotification.textContent = message;
-    }, 100);
-  }
-};
+//   const ariaNotification = document.getElementById("aria-notification");
+//   if (ariaNotification) {
+//     // Clear the content to ensure the screen reader detects the change
+//     ariaNotification.textContent = "";
+//     setTimeout(() => {
+//       ariaNotification.textContent = message;
+//     }, 100);
+//   }
+// };
 
 /**
  * Fetches weather data from the given API URL or returns mock data for testing
@@ -374,8 +374,6 @@ const createCityInput = (parentElement, inputValue = displayedCityName) => {
   cityLabel.setAttribute("for", `city-input-${idx}`);
   cityLabel.textContent = "Enter city to update weather"; // Label text
   cityLabel.classList.add("sr-only");
-
-  console.log(cityLabel);
 
   // Create the input element
   const cityInput = document.createElement("input");
@@ -497,6 +495,7 @@ const handleSearch = (event) => {
 const getCurrentWeather = async (mockType = null) => {
   // Get current time (in UTC)
   const currentTimeUTC = new Date();
+  const currentTimestampUTC = Date.now();
 
   // Format for human-readable date
   const humanReadableDate = currentTimeUTC.toLocaleDateString("en-GB", {
@@ -536,12 +535,15 @@ const getCurrentWeather = async (mockType = null) => {
       weatherRightNow.sys.sunrise + weatherRightNow.timezone;
     const localSunsetTimestamp =
       weatherRightNow.sys.sunset + weatherRightNow.timezone;
+    const localCurrentTimestamp =
+      Math.floor(currentTimestampUTC / 1000) + weatherRightNow.timezone;
 
-    // Create Date objects for sunrise and sunset times
+    // Create local date objects for current time, sunrise and sunset
     const localSunrise = new Date(localSunriseTimestamp * 1000);
     const localSunset = new Date(localSunsetTimestamp * 1000);
+    const localTime = new Date(localCurrentTimestamp * 1000);
 
-    // Format sunrise and sunset times to local time strings
+    // Format local times to local time strings
     const sunrise = localSunrise.toLocaleTimeString("en-GB", {
       hour: "2-digit",
       minute: "2-digit",
@@ -554,10 +556,15 @@ const getCurrentWeather = async (mockType = null) => {
       hour12: false,
       timeZone: "UTC",
     });
+    const timeNow = localTime.toLocaleTimeString("en-GB", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+      timeZone: "UTC",
+    });
 
     // Determine if it's currently daytime in the selected city
-    const isDaytime =
-      currentTimeUTC >= localSunrise && currentTimeUTC < localSunset;
+    const isDaytime = timeNow >= sunrise && timeNow < sunset;
 
     // Get mainTitle and imgSrc from typeOfWeather
     const { mainTitle, imgSrc } = typeOfWeather(weatherTypeToday, isDaytime);
@@ -630,8 +637,8 @@ const getCurrentWeather = async (mockType = null) => {
     createCityInput(screenH1); // Append the city input field
 
     // Announce the updated weather information to screen reader users
-    const announcement = `Weather updated for ${displayedCityName}. It is ${temp} degrees and ${weatherDescriptionToday}.`;
-    updateAriaNotification(announcement);
+    // const announcement = `Weather updated for ${displayedCityName}. It is ${temp} degrees and ${weatherDescriptionToday}.`;
+    //updateAriaNotification(announcement);
   } catch (error) {
     console.log(error);
     // Handle the error by displaying a message and keeping the input in the <h1>
@@ -654,9 +661,9 @@ const getCurrentWeather = async (mockType = null) => {
     // Update the document title to indicate an error
     document.title = `Weatherington – City not found`;
 
-    updateAriaNotification(
-      `Error: Unable to find a city with the name ${userCityInput}. Please try another.`
-    );
+    // updateAriaNotification(
+    //   `Error: Unable to find a city with the name ${userCityInput}. Please try another.`
+    // );
   }
 };
 

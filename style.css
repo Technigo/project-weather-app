@@ -87,7 +87,7 @@ main {
   max-width: 500px;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100svh;
   align-items: stretch;
   justify-content: space-between;
 
