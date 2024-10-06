@@ -1,0 +1,96 @@
+body {
+    margin: 0;
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    background-color: #e0e0e0;
+}
+
+#currentWeatherContainer {
+    background-color: rgb(194, 149, 237);
+    padding: 35px;
+    /* font-weight: lighter; */
+}
+
+#currentTemperature {
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#currentTemperature h1 {
+    font-size: 90px;
+    margin: 0;
+    font-weight: lighter;
+}
+
+#currentTemperature p {
+    font-size: 35px;
+    display: flex;
+    margin-bottom: 10;
+    margin-top: 0;
+}
+
+#currentWeatherText {
+    display: flex;
+    align-items: center;
+}
+
+#currentWeatherText h4 {
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+#currentWeatherText img {
+    width: 50px;
+}
+
+
+.sun-container {
+    /* background-color: yellow; */
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+
+
+
+
+
+
+
+#forecastContainer {
+    /* font-size: 16px; */
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: column;
+    margin: 45px 0px 45px 0px;
+    /* gap: 5px; */
+
+}
+
+.forecast-day {
+
+    padding-left: 15px;
+    padding-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+   
+
+}
+
+.forecast-day h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.forecast-day p {
+    margin: 0;
+}
+
+.forecast-day img {
+    width: 40px;
+}
