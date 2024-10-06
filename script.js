@@ -216,11 +216,6 @@ const mockWeatherData = {
 ********************************* */
 
 /**
- * Generates the API URL for current weather of a given city
- * @param {string} city - The city name
- * @returns {string} - The API URL for fetching current weather
- */
-/**
  * Generates the API URL for current weather of a given city.
  *
  * @param {string} city - The name of the city.
@@ -250,6 +245,25 @@ const getForecastUrl = (city) => {
 const updateDocumentTitle = () => {
   document.title = `Weatherington – Currently showing the weather in ${displayedCityName}`;
 };
+
+/**
+ * Gets the computed background color of the body element.
+ * @returns {string} The computed background color in hex or rgb format.
+ */
+function getBodyBackgroundColor() {
+  return window.getComputedStyle(document.body).backgroundColor;
+}
+
+/**
+ * Updates the meta theme color based on the body background color.
+ */
+function updateMetaThemeColor() {
+  const metaThemeColor = document.querySelector("meta[name='theme-color']");
+  if (metaThemeColor) {
+    const backgroundColor = getBodyBackgroundColor();
+    metaThemeColor.setAttribute("content", backgroundColor);
+  }
+}
 
 /**
  * Returns the weekday name for a given date string.
@@ -436,6 +450,8 @@ const typeOfWeather = (weatherType, isDaytime) => {
   // Add the new weather class if it exists
   if (type.className) {
     app.classList.add(type.className);
+    // Update the theme color after class changes
+    updateMetaThemeColor();
   }
 
   // Add is-nighttime as class on the app container when sun is down
@@ -605,10 +621,6 @@ const getCurrentWeather = async (mockType = null) => {
     visualH1.innerHTML = parts[0];
     createCityInput(visualH1); // Append the city input field
     visualH1.appendChild(document.createTextNode(parts[1]));
-
-    // const screenH1 = document.getElementById("h1-screen");
-    // screenH1.textContent = `${parts[0]}${displayedCityName}${parts[1]}`;
-    // createCityInput(screenH1); // Append the city input field
 
     // Announce the updated weather information to screen reader users
     const announcement = `${parts[0]}${displayedCityName}${parts[1]} It is ${temp} degrees and ${weatherDescriptionToday}.`;
