@@ -31,7 +31,6 @@ let weatherTypeToday = ""; // Current weather type (e.g., "Clouds", "Clear")
 let weatherDescriptionToday = ""; // Current weather description
 let userCityInput = ""; // User input city name during a search
 let userHasInteracted = false; // Flag to track if the user has interacted
-let idx = 0; // Global index to count number of instances of an element
 
 /* *********************************
    Testing Configuration
@@ -381,12 +380,10 @@ const fetchWeather = async (weatherUrl, mockType = null) => {
  * @param {string} inputValue - The value to set in the input field.
  */
 const createCityInput = (parentElement, inputValue = displayedCityName) => {
-  idx++;
-
   // Create the input element
   const cityInput = document.createElement("input");
   cityInput.type = "text";
-  cityInput.id = `city-input-${idx}`;
+  cityInput.id = `city-input`;
   cityInput.value = inputValue;
   cityInput.autocomplete = "off";
   cityInput.setAttribute("aria-label", `${displayedCityName}`);
