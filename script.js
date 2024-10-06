@@ -615,12 +615,12 @@ const getCurrentWeather = async (mockType = null) => {
     createCityInput(visualH1); // Append the city input field
     visualH1.appendChild(document.createTextNode(parts[1]));
 
+    // Create the title for screen readers and append the input field after the title
     let screenH1 = document.getElementById("h1-screen");
     screenH1.appendChild(
-      document.createTextNode(
-        `${parts[0]}${displayedCityName}${parts[1]}${createCityInput(screenH1)}`
-      )
+      document.createTextNode(`${parts[0]}${displayedCityName}${parts[1]}`)
     );
+    createCityInput(screenH1); // Append the city input field
 
     // Announce the updated weather information to screen reader users
     const announcement = `Weather updated for ${displayedCityName}. It is ${temp} degrees and ${weatherDescriptionToday}.`;
