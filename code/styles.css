@@ -9,7 +9,16 @@ body {
     font-family: "Questrial", sans-serif;
     font-weight: 400;
     font-style: normal;
-  }
+}
+
+
+*:focus {
+    outline: 2px solid #135dab;
+}
+
+h5 {
+    font-size: 18px;
+}
 
 .weather-app {
     margin: 0 auto;
@@ -19,10 +28,9 @@ body {
 }
 
 .sun-times {
-    display:flex;
+    display: flex;
     justify-content: space-evenly;
     max-width: 320px;
-    margin: 0 auto;
     margin: 2rem 0 2rem 0;
 }
 
@@ -36,9 +44,7 @@ body {
     border-bottom-left-radius: 50% 60px;
     border-bottom-right-radius: 50% 60px;
     overflow: hidden;
-
 }
-
 
 .app-header, .current-weather {
     position: relative;
@@ -56,13 +62,13 @@ body {
 }
 
 .temp-section {
-    display:flex;
+    display: flex;
 }
 
 .temperature {
     font-size: 100px;
     text-align: left;
-    padding:0 0 0 1.5rem;
+    padding: 0 0 0 1.5rem;
     margin-bottom: 0;
 }
 
@@ -71,29 +77,27 @@ body {
     margin: 4rem 0 1rem 0.5rem;
 }
 
-
 .location {
     font-size: 34px;
     text-align: left;
-    padding:0 0 0 1.5rem;
-   
+    padding: 0 0 0 1.5rem;
 }
 
 .time, .condition {
-    padding:0 1.5rem 0 1.5rem;
+    padding: 0 1.5rem 0 1.5rem;
     text-align: left;
     font-size: 1.3rem;
 }
 
 .forecast-section {
-    display:flex;
+    display: flex;
     justify-content: space-between;
-    padding:0 1.5rem 0 1.5rem;
+    padding: 0 1.5rem 0 1.5rem;
 }
 
 span {
-  font-size: 20px;
-  margin-top: 1rem;
+    font-size: 20px;
+    margin-top: 1rem;
 }
 
 .forecast {
@@ -101,4 +105,3 @@ span {
     margin: 0 auto;
     padding: 30px 30px 0 30px;
 }
-

@@ -19,12 +19,10 @@ const FORECAST_URL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}
 const temperatureElement = document.getElementById("temperature");
 const locationElement = document.getElementById("location");
 const conditionElement = document.getElementById("condition");
-const conditionIconElement = document.getElementById("conditionIcon");
 const sunriseElement = document.getElementById("sunriseTime");
 const sunsetElement = document.getElementById("sunsetTime");
 const timeElement = document.getElementById("time");
 const forecastElement = document.getElementById("forecast");
-
 
 // Function to fetch and display current weather data
 const getWeatherData = () => {
@@ -47,15 +45,12 @@ const getWeatherData = () => {
         temperatureElement.textContent = `${temperature}`;
         locationElement.textContent = `${location}`;
         conditionElement.textContent = `${condition}`;
-        conditionIconElement.src = `http://openweathermap.org/img/wn/${iconCode}.png`;
-        conditionIconElement.alt = condition;
         sunriseElement.textContent = `Sunrise: ${sunriseTime}`;
         sunsetElement.textContent = `Sunset: ${sunsetTime}`;
         timeElement.textContent = `Time: ${formattedTime}`;
 
         // Set the background based on the weather condition
         setWeatherBackground(json.weather[0].main);
-
       });
   }
 
@@ -91,7 +86,6 @@ const setWeatherBackground = (weatherCondition) => {
   }
 };
 
-
 // Function to fetch and display forecast data
 const getForecastData = () => {
   fetch(FORECAST_URL)
@@ -113,7 +107,7 @@ const processForecastData = (list) => {
   const today = new Date().getDate();
   
   return list
-    // Transform each item into an object with the data we need
+    // Transform each item into an object with the data we need 
     .map(item => ({
       date: new Date(item.dt * 1000),
       icon: item.weather[0].icon,
@@ -164,10 +158,13 @@ const displayForecast = (forecastData) => {
       const dayName = daysOfWeek[day.date.getDay()];
       const forecastItem = document.createElement('div');
       forecastItem.classList.add('forecast-item');
+      forecastItem.tabIndex = 0; // Make the item focusable
+      forecastItem.setAttribute('role', 'region'); // ARIA role for screen readers
+      forecastItem.setAttribute('aria-label', `Forecast for ${dayName}`); // Label for screen readers
       forecastItem.innerHTML = `
           <div class="forecast-section">
             <span class="forecast-day">${dayName}</span>
-            <img src="http://openweathermap.org/img/wn/${day.icon}.png" alt="Weather icon">
+            <img src="http://openweathermap.org/img/wn/${day.icon}.png" alt="Weather icon for ${dayName}">
             <span class="forecast-temp">${day.temp}°C</span>
           </div>
       `;  
