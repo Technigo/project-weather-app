@@ -447,14 +447,15 @@ const typeOfWeather = (weatherType, isDaytime) => {
   // Add the new weather class if it exists
   if (type.className) {
     app.classList.add(type.className);
-    // Update the theme color after class changes
-    updateMetaThemeColor();
   }
 
   // Add is-nighttime as class on the app container when sun is down
   isDaytime
     ? app.classList.remove("is-nighttime")
     : app.classList.add("is-nighttime");
+
+  // Update the theme color after class changes
+  updateMetaThemeColor();
 
   // Select message and image based on isDaytime
   const mainTitle = isDaytime ? type.dayMessage : type.nightMessage;
