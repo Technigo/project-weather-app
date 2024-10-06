@@ -550,7 +550,7 @@ const setWeatherTodayContent = (
     month: "short",
     day: "numeric",
   })}</time></p>
-      <h1><span id="h1-visual"></span><span id="h1-screen" class="sr-only"></span></h1>
+      <h1 id="h1-visual"></h1>
       <p class="text-large">It is ${temp}° and ${description}.</p>
     </div>
     <div class="weather-today__meta">
