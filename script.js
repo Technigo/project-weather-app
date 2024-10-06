@@ -555,12 +555,9 @@ const getCurrentWeather = async (mockType = null) => {
       timeZone: "UTC",
     });
 
-    // Calculate local current time based on city's timezone
-    const currentTimeLocal = new Date(currentTimeUTC.getTime() * 1000);
-
     // Determine if it's currently daytime in the selected city
     const isDaytime =
-      currentTimeLocal >= localSunrise && currentTimeLocal < localSunset;
+      currentTimeUTC >= localSunrise && currentTimeUTC < localSunset;
 
     // Get mainTitle and imgSrc from typeOfWeather
     const { mainTitle, imgSrc } = typeOfWeather(weatherTypeToday, isDaytime);
