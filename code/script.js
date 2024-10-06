@@ -118,7 +118,7 @@ const processForecastData = (list) => {
       const hour = item.date.getHours();
       return item.date.getDate() !== today && hour >= 6 && hour <= 18;
     })
-    // Reduce to max 5 items, one per day
+    // Reduce to max 5 items - one per day
     .reduce((acc, item) => {
       if (acc.length < 5 && (acc.length === 0 || item.date.getDate() !== acc[acc.length - 1].date.getDate())) {
         acc.push(item);
