@@ -296,21 +296,21 @@ function updateInputWidth(inputElement) {
  * Updates the ARIA live region to announce changes to screen reader users.
  * @param {string} message - The message to announce.
  */
-// const updateAriaNotification = (message) => {
-//   if (!userHasInteracted) {
-//     // Do not announce if the user hasn't interacted yet
-//     return;
-//   }
+const updateAriaNotification = (message) => {
+  if (!userHasInteracted) {
+    // Do not announce if the user hasn't interacted yet
+    return;
+  }
 
-//   const ariaNotification = document.getElementById("aria-notification");
-//   if (ariaNotification) {
-//     // Clear the content to ensure the screen reader detects the change
-//     ariaNotification.textContent = "";
-//     setTimeout(() => {
-//       ariaNotification.textContent = message;
-//     }, 100);
-//   }
-// };
+  const ariaNotification = document.getElementById("aria-notification");
+  if (ariaNotification) {
+    // Clear the content to ensure the screen reader detects the change
+    ariaNotification.textContent = "";
+    setTimeout(() => {
+      ariaNotification.textContent = message;
+    }, 100);
+  }
+};
 
 /**
  * Fetches weather data from the given API URL or returns mock data for testing
@@ -585,7 +585,7 @@ const getCurrentWeather = async (mockType = null) => {
     weatherTypeToday = weather[0].main;
     weatherDescriptionToday = weather[0].description;
     const temp = Math.round(main.temp);
-    updateDocumentTitle();
+    //updateDocumentTitle();
 
     // Determine sunrise, sunset, and current time
     const sunrise = formatLocalTime(sys.sunrise, timezone);
@@ -615,6 +615,11 @@ const getCurrentWeather = async (mockType = null) => {
 
     const screenH1 = document.getElementById("h1-screen");
     screenH1.textContent = `${parts[0]}${displayedCityName}${parts[1]}`;
+    createCityInput(screenH1); // Append the city input field
+
+    // Announce the updated weather information to screen reader users
+    const announcement = `${parts[0]}${displayedCityName}${parts[1]} It is ${temp} degrees and ${weatherDescriptionToday}.`;
+    updateAriaNotification(announcement);
   } catch (error) {
     console.log(error);
     weatherTodayContainer.innerHTML = `
@@ -629,6 +634,10 @@ const getCurrentWeather = async (mockType = null) => {
     );
     createCityInput(h1, userCityInput);
     document.title = `Weatherington – City not found`;
+
+    updateAriaNotification(
+      `Sorry, we couldn't find a city called ${userCityInput}. Please try another.`
+    );
   }
 };
 
