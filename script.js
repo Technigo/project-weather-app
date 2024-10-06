@@ -550,7 +550,7 @@ const setWeatherTodayContent = (
     month: "short",
     day: "numeric",
   })}</time></p>
-      <h1><span id="h1-visual" aria-hidden="true"></span><span id="h1-screen" class="sr-only"></span></h1>
+      <h1><span id="h1-visual"></span><span id="h1-screen" class="sr-only"></span></h1>
       <p class="text-large">It is ${temp}° and ${description}.</p>
     </div>
     <div class="weather-today__meta">
@@ -613,9 +613,9 @@ const getCurrentWeather = async (mockType = null) => {
     createCityInput(visualH1); // Append the city input field
     visualH1.appendChild(document.createTextNode(parts[1]));
 
-    const screenH1 = document.getElementById("h1-screen");
-    screenH1.textContent = `${parts[0]}${displayedCityName}${parts[1]}`;
-    createCityInput(screenH1); // Append the city input field
+    // const screenH1 = document.getElementById("h1-screen");
+    // screenH1.textContent = `${parts[0]}${displayedCityName}${parts[1]}`;
+    // createCityInput(screenH1); // Append the city input field
 
     // Announce the updated weather information to screen reader users
     const announcement = `${parts[0]}${displayedCityName}${parts[1]} It is ${temp} degrees and ${weatherDescriptionToday}.`;
