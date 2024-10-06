@@ -372,7 +372,7 @@ const createCityInput = (parentElement, inputValue = displayedCityName) => {
   // Create the label element
   const cityLabel = document.createElement("label");
   cityLabel.setAttribute("for", `city-input-${idx}`);
-  cityLabel.textContent = "Enter city to update weather"; // Label text
+  cityLabel.textContent = `${displayedCityName}`; // Label text
   cityLabel.classList.add("sr-only");
 
   // Create the input element
