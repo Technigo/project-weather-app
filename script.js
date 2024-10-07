@@ -686,6 +686,7 @@ const getForecast = async (mockType = null) => {
     // Add the forecast title
     const forecastTitle = document.createElement("h2");
     forecastTitle.textContent = "5-day forecast";
+    forecastTitle.setAttribute("id", "forecast-title");
     weatherForecastTitle.innerHTML = ""; // Clear previous content
     weatherForecastTitle.prepend(forecastTitle);
 
