@@ -134,7 +134,9 @@ const weatherClassNames = [
    Mock Data for Testing
 ********************************* */
 
-// Mock data for different weather types
+// Mock data for different weather types to use during testing.
+// These mock responses simulate the structure returned by the API,
+// including weather conditions, temperatures, and sunrise/sunset times.
 const mockWeatherData = {
   clear: {
     weather: [{ main: "Clear" }],
@@ -333,7 +335,7 @@ const updateAriaNotification = (message) => {
 const fetchWeather = async (weatherUrl, mockType = null) => {
   // If mockType is provided, return the corresponding mock data
   if (useMockData && mockType && mockWeatherData[mockType]) {
-    // Simulate async operation with a Promise
+    // Simulate a network request using a Promise to mimic the behavior of fetching data asynchronously.
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(mockWeatherData[mockType]);
@@ -598,7 +600,7 @@ const getCurrentWeather = async (mockType = null) => {
     const sunset = formatLocalTime(sys.sunset, timezone);
     const timeNow = formatLocalTime(Date.now() / 1000, timezone);
 
-    // Determine if it's daytime and get weather type data
+    // Determine if it's currently daytime by checking if the current time is between sunrise and sunset.
     const isDaytime = timeNow >= sunrise && timeNow < sunset;
     const { mainTitle, imgSrc } = typeOfWeather(weatherTypeToday, isDaytime);
 
