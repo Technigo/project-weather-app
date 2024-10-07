@@ -249,20 +249,19 @@ const updateDocumentTitle = () => {
  * Gets the computed background color of the body element.
  * @returns {string} The computed background color in hex or rgb format.
  */
-function getBodyBackgroundColor() {
-  return window.getComputedStyle(document.body).backgroundColor;
-}
+const getBodyBackgroundColor = () =>
+  window.getComputedStyle(document.body).backgroundColor;
 
 /**
  * Updates the meta theme color based on the body background color.
  */
-function updateMetaThemeColor() {
+const updateMetaThemeColor = () => {
   const metaThemeColor = document.querySelector("meta[name='theme-color']");
   if (metaThemeColor) {
     const backgroundColor = getBodyBackgroundColor();
     metaThemeColor.setAttribute("content", backgroundColor);
   }
-}
+};
 
 /**
  * Returns the weekday name for a given date string.
@@ -291,19 +290,19 @@ const formatTemperature = (temp) => {
  * Updates the width of the input field based on its content's pixel width.
  * @param {HTMLInputElement} inputElement - The input element to resize.
  */
-function updateInputWidth(inputElement) {
+const updateInputWidth = (inputElement) => {
   const temporarySpan = document.createElement("span");
   temporarySpan.style.visibility = "hidden";
   temporarySpan.style.position = "absolute";
-  temporarySpan.style.whiteSpace = "pre"; // Preserves spaces and prevents wrapping
+  temporarySpan.style.whiteSpace = "pre";
   temporarySpan.style.font = getComputedStyle(inputElement).font;
   temporarySpan.textContent =
     inputElement.value || inputElement.placeholder || "";
   document.body.appendChild(temporarySpan);
-  const width = temporarySpan.getBoundingClientRect().width + 2; // Add some padding
+  const width = temporarySpan.getBoundingClientRect().width + 2;
   document.body.removeChild(temporarySpan);
   inputElement.style.width = width + "px";
-}
+};
 
 /**
  * Updates the ARIA live region to announce changes to screen reader users.
