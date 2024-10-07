@@ -43,11 +43,17 @@ const getWeatherData = () => {
 
         // Update HTML elements with the weather data
         temperatureElement.textContent = `${temperature}`;
+        temperatureElement.setAttribute('aria-label', `Current temperature is ${temperature} degrees Celsius`);
         locationElement.textContent = `${location}`;
+        locationElement.setAttribute('aria-label', `Current location is ${location}`);
         conditionElement.textContent = `${condition}`;
+        conditionElement.setAttribute('aria-label', `Current weather condition is ${condition}`);
         sunriseElement.textContent = `Sunrise: ${sunriseTime}`;
+        sunriseElement.setAttribute('aria-label', `Sunrise time is ${sunriseTime}`);
         sunsetElement.textContent = `Sunset: ${sunsetTime}`;
+        sunsetElement.setAttribute('aria-label', `Sunset time is ${sunsetTime}`);
         timeElement.textContent = `Time: ${formattedTime}`;
+        timeElement.setAttribute('aria-label', `Current local time is ${formattedTime}`);
 
         // Set the background based on the weather condition
         setWeatherBackground(json.weather[0].main);
