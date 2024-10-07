@@ -1,0 +1,107 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    font-family: "Questrial", sans-serif;
+}
+
+.questrial-regular {
+    font-family: "Questrial", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+*:focus {
+    outline: 2px solid #135dab;
+}
+
+h5 {
+    font-size: 18px;
+}
+
+.weather-app {
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    max-width: 320px;
+}
+
+.sun-times {
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 320px;
+    margin: 2rem 0 2rem 0;
+}
+
+.image-background {
+    background-size: cover;
+    background-position: center;
+    background-color: rgb(88, 159, 218);
+    background-image: url('assets/default_condition.jpg');
+    max-width: 100%;
+    margin: 0 auto;
+    border-bottom-left-radius: 50% 60px;
+    border-bottom-right-radius: 50% 60px;
+    overflow: hidden;
+}
+
+.app-header, .current-weather {
+    position: relative;
+    z-index: 1;
+    color: rgb(255, 255, 255);
+}
+
+.app-header {
+    padding: 20px;
+}
+
+.current-weather {
+    padding: 10px;
+    text-align: center;
+}
+
+.temp-section {
+    display: flex;
+}
+
+.temperature {
+    font-size: 100px;
+    text-align: left;
+    padding: 0 0 0 1.5rem;
+    margin-bottom: 0;
+}
+
+.celcius {
+    font-size: 3.5em;
+    margin: 4rem 0 1rem 0.5rem;
+}
+
+.location {
+    font-size: 34px;
+    text-align: left;
+    padding: 0 0 0 1.5rem;
+}
+
+.time, .condition {
+    padding: 0 1.5rem 0 1.5rem;
+    text-align: left;
+    font-size: 1.3rem;
+}
+
+.forecast-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1.5rem 0 1.5rem;
+}
+
+span {
+    font-size: 20px;
+    margin-top: 1rem;
+}
+
+.forecast {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px 30px 0 30px;
+}

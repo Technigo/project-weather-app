@@ -1,0 +1,183 @@
+// Base URL
+const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather';
+
+// API key
+const API_KEY = '958c2b8d78ace5950d5c51dc2972950f';
+
+// City and country for the weather forecast
+let city = 'Stockholm';
+let country = 'Sweden';
+const units = 'metric'; // Use metric units (Celsius)
+
+// Construct the URL for current weather data
+const url = `${BASE_URL}?q=${city},${country}&units=${units}&APPID=${API_KEY}`;
+
+// Construct the URL for forecast data
+const FORECAST_URL = `https://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&units=${units}&APPID=${API_KEY}`;
+
+// DOMs
+const temperatureElement = document.getElementById("temperature");
+const locationElement = document.getElementById("location");
+const conditionElement = document.getElementById("condition");
+const sunriseElement = document.getElementById("sunriseTime");
+const sunsetElement = document.getElementById("sunsetTime");
+const timeElement = document.getElementById("time");
+const forecastElement = document.getElementById("forecast");
+
+// Function to fetch and display current weather data
+const getWeatherData = () => {
+    fetch(url)
+      .then(response => response.json())
+      .then(json => {
+        // Get data from the API response
+        const temperature = Math.round(json.main.temp);
+        const location = json.name; 
+        const condition = json.weather[0].description; 
+        const iconCode = json.weather[0].icon;
+        const sunriseTime = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        const sunsetTime = new Date(json.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        
+        // Get the current local time
+        const localTime = new Date();
+        const formattedTime = localTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+        // Update HTML elements with the weather data
+        temperatureElement.textContent = `${temperature}`;
+        temperatureElement.setAttribute('aria-label', `Current temperature is ${temperature} degrees Celsius`);
+        locationElement.textContent = `${location}`;
+        locationElement.setAttribute('aria-label', `Current location is ${location}`);
+        conditionElement.textContent = `${condition}`;
+        conditionElement.setAttribute('aria-label', `Current weather condition is ${condition}`);
+        sunriseElement.textContent = `Sunrise: ${sunriseTime}`;
+        sunriseElement.setAttribute('aria-label', `Sunrise time is ${sunriseTime}`);
+        sunsetElement.textContent = `Sunset: ${sunsetTime}`;
+        sunsetElement.setAttribute('aria-label', `Sunset time is ${sunsetTime}`);
+        timeElement.textContent = `Time: ${formattedTime}`;
+        timeElement.setAttribute('aria-label', `Current local time is ${formattedTime}`);
+
+        // Set the background based on the weather condition
+        setWeatherBackground(json.weather[0].main);
+      });
+  }
+
+// Function to set the background image based on weather condition
+const setWeatherBackground = (weatherCondition) => {
+  const imageBackground = document.getElementById('imageBackground');
+  
+  switch(weatherCondition.toLowerCase()) {
+    case 'clear':
+      imageBackground.style.backgroundImage = "url('assets/clear_sky_condition.jpg')";
+      break;
+    case 'clouds':
+      imageBackground.style.backgroundImage = "url('assets/cloudy_condition.jpg')";
+      break;
+    case 'rain':
+    case 'drizzle':
+      imageBackground.style.backgroundImage = "url('assets/rainy_condition.jpg')";
+      break;
+    case 'thunderstorm':
+      imageBackground.style.backgroundImage = "url('assets/thunderstorm_condition.jpg')";
+      break;
+    case 'snow':
+      imageBackground.style.backgroundImage = "url('assets/snowy_condition.jpg')";
+      break;
+    case 'mist':
+    case 'smoke':
+    case 'haze':
+    case 'fog':
+      imageBackground.style.backgroundImage = "url('assets/misty_condition.jpg')";
+      break;
+    default:
+      imageBackground.style.backgroundImage = "url('assets/default_condition.jpg')";
+  }
+};
+
+// Function to fetch and display forecast data
+const getForecastData = () => {
+  fetch(FORECAST_URL)
+    .then(response => response.json())
+    .then(json => {
+      // Process the forecast data
+      let forecastData = processForecastData(json.list);
+      // If we don't have 5 days of forecast, fill in with additional data
+      if (forecastData.length < 5) {
+        forecastData = fillForecastData(forecastData, json.list);
+      }
+      // Display the processed forecast data
+      displayForecast(forecastData);
+    });
+};
+
+// Function to process the raw forecast data
+const processForecastData = (list) => {
+  const today = new Date().getDate();
+  
+  return list
+    // Transforming each item into an object with the data we need 
+    .map(item => ({
+      date: new Date(item.dt * 1000),
+      icon: item.weather[0].icon,
+      temp: Math.round(item.main.temp)
+    }))
+    // Filter out today's weather and nighttime forecasts
+    .filter(item => {
+      const hour = item.date.getHours();
+      return item.date.getDate() !== today && hour >= 6 && hour <= 18;
+    })
+    // Reduce to max 5 items - one per day
+    .reduce((acc, item) => {
+      if (acc.length < 5 && (acc.length === 0 || item.date.getDate() !== acc[acc.length - 1].date.getDate())) {
+        acc.push(item);
+      }
+      return acc;
+    }, []);
+};
+
+// Function to fill in missing forecast days if there isn't 5
+const fillForecastData = (forecast, list) => {
+  const today = new Date().getDate();
+  let i = 0;
+  
+  while (forecast.length < 5 && i < list.length) {
+    const date = new Date(list[i].dt * 1000);
+    if (date.getDate() !== today && (forecast.length === 0 || date.getDate() !== forecast[forecast.length - 1].date.getDate())) {
+      forecast.push({
+        date: date,
+        icon: list[i].weather[0].icon,
+        temp: Math.round(list[i].main.temp)
+      });
+    }
+    i++;
+  }
+  
+  return forecast;
+};
+
+// Function to display the forecast data in the HTML
+const displayForecast = (forecastData) => {
+  // Clear any existing forecast
+  forecastElement.innerHTML = '';
+  const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  
+  // Create and append a forecast item for each day
+  forecastData.forEach(day => {
+      const dayName = daysOfWeek[day.date.getDay()];
+      const forecastItem = document.createElement('div');
+      forecastItem.classList.add('forecast-item');
+      forecastItem.tabIndex = 0; // Make the item focusable
+      forecastItem.setAttribute('role', 'region'); // ARIA role for screen readers
+      forecastItem.setAttribute('aria-label', `Forecast for ${dayName}`); // Label for screen readers
+      forecastItem.innerHTML = `
+          <div class="forecast-section">
+            <span class="forecast-day">${dayName}</span>
+            <img src="http://openweathermap.org/img/wn/${day.icon}.png" alt="Weather icon for ${dayName}">
+            <span class="forecast-temp">${day.temp}°C</span>
+          </div>
+      `;  
+      forecastElement.appendChild(forecastItem);
+  });
+};
+
+// Call both functions to initialize the weather app
+getWeatherData();
+getForecastData();

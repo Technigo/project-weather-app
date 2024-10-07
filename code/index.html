@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Questrial&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="imageBackground" class="image-background">
+        <div id="weatherApp" class="weather-app">
+            <main id="main-content" class="current-weather">
+                <div class="temp-section" tabindex="0" aria-live="polite">
+                    <h1 id="temperature" class="temperature"></h1>
+                    <p id="celcius" class="celcius">°c</p>
+                </div>
+                <h2 id="location" class="location" tabindex="0" aria-live="polite"></h2>
+                <h3 id="time" class="time" tabindex="0" aria-live="polite"></h3>
+                <div class="condition-container">
+                    <h4 id="condition" class="condition" tabindex="0" aria-live="polite"></h4>
+                </div>
+                <div class="sun-times">
+                    <h5 id="sunriseTime" class="sunrise-time" tabindex="0" aria-live="polite"></h5>
+                    <h5 id="sunsetTime" class="sunset-time" tabindex="0" aria-live="polite"></h5>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div id="forecast" class="forecast" role="region" aria-label="Next 5 days forecast">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
