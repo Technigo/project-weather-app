@@ -7,7 +7,6 @@ const city = "Stockholm";
 
 // Create URL for current weather
 const URL = `${BASE_URL}?q=${city}&units=metric&APPID=${API_KEY}`;
-console.log(URL)
 
 const errorDiv = document.getElementById("error");
 
