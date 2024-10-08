@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather app</title>
+
+  <!-- link to css file -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="error"></div>
+
+  <div id="weather-container"></div>
+  <!-- Current weather information displayed here -->
+  <div class="current-weather">
+    <p id="temperature"></p>
+    <p id="weather"></p>
+    <p>Sunrise <span id="sunrise"></span></p>
+    <p>Sunset <span id="sunset"></span></p>
+  </div>
+
+  <!-- Sunglasses image  -->
+  <img class="image" src="assets/design-2/noun_Sunglasses_2055147.svg" alt="sunglasses">
+  </div>
+
+  <h1>Get your sunnies on.
+    <br>
+    It's a beautiful day in<span id="location"></span> today.
+  </h1>
+
+  <!-- 4-day forecast weather -->
+  <div id="forecast-list" class="forecast-container"></div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
