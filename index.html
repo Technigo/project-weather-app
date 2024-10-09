@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A weather app by Helene Westrin using the OpenWeatherMap API."
+    />
+    <meta name="theme-color" content="#fff" />
+    <title>The Weatherington</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+      body,
+      input {
+        font-family: "Montserrat", sans-serif;
+      }
+    </style>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body id="app">
+    <div id="aria-notification" aria-live="polite" class="sr-only"></div>
+    <main id="main">
+      <section id="weather-today" class="weather-today">
+        <img alt="" src="./assets/animated/fog-day.svg" />
+        <h1>Loading weather...</h1>
+      </section>
+      <section id="weather-forecast" class="weather-forecast">
+        <div id="weather-forecast__title"></div>
+        <ul
+          aria-labelledby="forecast-title"
+          id="weather-forecast__list"
+          class="weather-forecast__list"
+        ></ul>
+      </section>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>
