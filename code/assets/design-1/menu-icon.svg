@@ -1,0 +1,24 @@
+ <svg
+        class="menu-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        width="33"
+        height="24"
+        viewBox="0 0 33 24"
+        fill="none"
+      >
+        <line y1="2" x2="33" y2="2" stroke="white" stroke-width="3" />
+        <line
+          y1="11.9858"
+          x2="33"
+          y2="11.9858"
+          stroke="white"
+          stroke-width="3"
+        />
+        <line
+          y1="21.9716"
+          x2="33"
+          y2="21.9716"
+          stroke="white"
+          stroke-width="3"
+        />
+      </svg>
