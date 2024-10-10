@@ -19,15 +19,21 @@ const cities = [
 
 let currentCityIndex = 0;
 
-function formatTime(timestamp) {
-  const date = new Date(timestamp * 1000);
-  return `${date.getHours()}:${date.getMinutes().toString().padStart(2, "0")}`;
+// Update the formatTime function
+function formatTime(timestamp, timezoneOffset) {
+  const date = new Date((timestamp + timezoneOffset) * 1000);
+  return date.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
 }
 
 function getWeatherIconUrl(iconCode) {
   return `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
 }
 
+// Update the fetchWeatherData function
 function fetchWeatherData(lat, lon) {
   fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=f2241eeae1b16c2b8bc74e61d2517ef6`
@@ -37,8 +43,8 @@ function fetchWeatherData(lat, lon) {
       temperature.innerHTML = `${Math.round(data.main.temp)}<sup>°C</sup>`;
       city.innerHTML = `${data.name}`;
       weatherCondition.innerHTML = `${data.weather[0].main}`;
-      sunrise.innerHTML = `sunrise ${formatTime(data.sys.sunrise)}`;
-      sunset.innerHTML = `sunset ${formatTime(data.sys.sunset)}`;
+      sunrise.innerHTML = `sunrise ${formatTime(data.sys.sunrise, data.timezone)}`;
+      sunset.innerHTML = `sunset ${formatTime(data.sys.sunset, data.timezone)}`;
 
       document.querySelector(".weather-image").innerHTML =
         `<img src="${getWeatherIconUrl(data.weather[0].icon)}" alt="${data.weather[0].description}">`; // Update time every minute
