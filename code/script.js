@@ -47,9 +47,12 @@ const fetchTodaysWeatherAsync = async (city) => {
         document.getElementById("weather-icon").src = weatherIconURL
 
 
-        //Convert Sunset/Sunrise from seconds to milliseconds by multiplying by 1000, which the date object requires 
-        const sunrise = new Date(data.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-        const sunset = new Date(data.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        //Sunset/Sunrise 
+        
+        //Convert Time zone and Sunset / Sunrise from seconds to milliseconds by multiplying by 1000, which the date object requires 
+        const localTimezone = data.timezone * 1000 
+        const sunrise = new Date((data.sys.sunrise * 1000) + localTimezone).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        const sunset = new Date((data.sys.sunset * 1000) + localTimezone).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
          
         sunriseTime.innerHTML = `Sunrise: ${sunrise}`
         sunsetTime.innerHTML = `Sunset: ${sunset}`
