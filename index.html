@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <!-- import font-family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <title>WeathertheweatherApp</title>
+</head>
+
+<body>
+    <main>
+        <section class="weather-card">
+            <div class="location-card" id="locationCard">
+                <div class="temp-container">
+                    <img src="assets/design-2/sun.png" alt="sun" id="sun">
+                    <img src="assets/design-2/Clouds.png" id="cloudsImg" alt="clouds-img">
+                    <img src="assets/design-2/broken-clouds.png" id="brokenCloudsImg" alt="broken-clouds-img">
+                    <img src="assets/design-2/rain.png" id="rainImg" alt="rain-img">
+                    <img src="assets/design-2/Moon.png" id="moonImg" alt="moon-img">
+                    <p class="temp" id="temp">Temp</p>
+                    <p class="location" id="location">location</p>
+                    <p class="condition" id="condition">condition</p>
+                </div>
+                <div class="suntime-container">
+                    <p class="sunrise" id="sunriseID">sunrise</p>
+                    <p class="sunset" id="sunsetID">sunset</p>
+                </div>
+            </div>
+
+            </div>
+            <div class="forecast-card">
+                <ul class="forecast" id="forecastID">forecast</ul>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
