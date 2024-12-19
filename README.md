@@ -1,13 +1,11 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Seven weeks project. As it is a worldwide forecast app, its required to search the name on the bar. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+There was a challennging project but I really enjoyed finding out the solutions. The API page was awesome because I learned so much on there. I have received a secury message form GitHub so this is my second pull (just in case). 
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+(https://cute-selkie-735cdb.netlify.app)
