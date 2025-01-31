@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="weather-app">
+       
+        
+        <!-- Current Weather Section -->
+        <div class="weather-current">
+            <img id="weather-icon" alt="Weather icon" />
+            <h1 id="temperature">20°C</h1>
+            <h2 id="city">Stockholm</h2>
+            <p id="description">Clear</p>
+            <p id="local-time">Local Time: --:--</p>
+            <div class="sun-times">
+                <span id="sunrise">Sunrise: 22:30</span>
+                <span id="sunset">Sunset: 00:00</span>
+            </div>
+        </div>
+        
+        
+
+        <!-- Forecast Section -->
+        <div class="forecast-container">
+            <div id="forecast">
+                <!-- Forecast items will be inserted dynamically -->
+            </div>
+        </div>
+
+        
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
