@@ -1,13 +1,11 @@
 # Weather App
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Did a weather app that you can search any city for the days weather and for a week ahead. You can se the temperature, weather description and time for sunset/sunrise.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+A really fun project where I really got to think. All parts were difficult but I got them working with some googling on the web. Except the search bar and the 5-day forecast. This where to difficult to understand at the time and will need to update the project after some help. 
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Link to weather app: https://project-7-weather-app.netlify.app/ 
