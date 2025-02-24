@@ -1,5 +1,5 @@
 # Instructions
-Start out with signing up for a [free Open Weather Map](https://home.openweathermap.org/users/sign_up "free Open Weather Map") account, as it can take up to a few hours for the API key to be activated.
+Start out with signing up for a [free Open Weather Map]( 	  "free Open Weather Map") account, as it can take up to a few hours for the API key to be activated.
 
 ## Step by step instructions
 ### Step 1 - Get started with the weather API
