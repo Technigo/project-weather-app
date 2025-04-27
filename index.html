@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Weather App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./code/styles.css" />
+</head>
+<body>
+  <div id="loading-screen">
+    <p>Connecting the API to the weather gods...</p>
+  </div>
+  
+  <div class="weather-container">
+    
+    <div class="current-weather">
+        <p id="description"></p>
+      </div>
+
+    <div class="sun-times">
+      <p id="sunrise">Sunrise:</p>
+      <p id="sunset">Sunset:</p>
+    </div>
+
+    <div class="weather-icon">
+      <img id="weather-icon" src="" alt="Current Weather Icon" />
+    </div>
+
+    <div class="weather-text">
+      <p id="weather-message">Connecting the API to the weather gods...</p>
+    </div>
+
+    <div class="bottom-row">
+      <div class="forecast">
+        <div id="four-day-forecast"></div>
+      </div>
+
+      <div class="search-form">
+        <input
+          type="text"
+          id="search-city"
+          placeholder="Enter city name"
+        />
+        <button id="search-button">Search</button>
+      </div>
+    </div>
+
+    <footer>2024-09-29 Johanna Eriksson</footer>
+  </div>
+  <script src="./code/script.js"></script>
+</body>
+</html>

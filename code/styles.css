@@ -1,0 +1,357 @@
+/* ========== Global design ========== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  transition: background-color 0.5s ease-in-out;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+/* ========== Loading message ========== */
+#loading-screen {
+  position: absolute;
+  inset: 0;
+  z-index: 999;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* ========== Main container ========== */
+
+.weather-container {
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+  border-radius: 20px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 100%;
+  max-width: 590px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  color: currentColor;
+  }
+
+/* ========== Sections ========== */
+
+.current-weather,
+.sun-times,
+.weather-text {
+  align-self: flex-start;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.weather-icon {
+  align-self: flex-end;
+  width: 100px;
+  height: auto;
+}
+
+.weather-text {
+  width: 100%;
+  font-size: 37px;
+  max-width: 500px;
+  font-weight: 700;
+  line-height: 45.1px;
+  padding-right: 10px;
+}
+
+/* ========== Forecast + Search ========== */
+
+.bottom-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+}
+
+.forecast {
+  width: 50%;
+}
+
+#four-day-forecast {
+  display: flex;
+  flex-direction: column;
+}
+
+#four-day-forecast p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  width: 100%;
+}
+
+.forecast-day {
+  text-align: left;
+}
+
+.forecast-temp {
+  text-align: right;
+  min-width: 80px;
+}
+
+/* ========== Search ========== */
+
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+#search-city {
+  flex: 2;
+  padding: 8px;
+  border: 2px solid currentColor;
+  border-radius: 8px;
+  background-color: white;
+  color: currentColor;
+  caret-color: currentColor;
+  transition: all 0.3s ease-in-out;
+  font-size: 16px; /* Prevent "zoom" on mobile */
+  line-height: 1.2;
+}
+
+#search-city::placeholder {
+  color: inherit;
+  opacity: 1;
+}
+
+#search-button {
+  flex: 1;
+  padding: 10px;
+  padding: 10px 12px;
+  border: 2px solid currentColor;
+  border-radius: 8px;
+  background-color: transparent;
+  font-weight: bold;
+  cursor: pointer;
+  color: currentColor;
+  transition: all 0.3s ease-in-out;
+}
+
+#search-button:hover {
+  background-color: inherit;
+  }
+
+/* ========== Footer ========== */
+
+footer {
+  margin-top: 50px;
+  padding: 10px;
+  background-color: #d1c4e9;
+  border-radius: 10px;
+  border-style: dotted;
+  text-align: center;
+  color: #fff;
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+/* === Day themes === */
+
+.theme-clear {
+  background-color: rgb(247, 233, 185);
+  color: rgb(42, 85, 16);
+}
+.theme-clear footer {
+  background-color: rgb(247, 233, 185);
+  color: rgb(42, 85, 16);
+}
+.theme-clear #search-button:hover {
+  background-color: rgba(42, 85, 16, 0.1); 
+}
+body.theme-clear {
+  background-color: rgb(247, 233, 185);
+}
+
+.theme-clouds {
+  background-color: rgb(222, 228, 237);
+  color: #333;
+}
+.theme-clouds footer {
+  background-color: rgb(222, 228, 237);
+  color: #333;
+}
+.theme-clouds #search-button:hover {
+  background-color: rgba(51, 51, 51, 0.05); 
+}
+body.theme-clouds {
+  background-color: rgb(222, 228, 237);
+}
+
+.theme-rain {
+  background-color: rgb(198, 220, 234);
+  color: #1a1a1a;
+}
+.theme-rain footer {
+  background-color: rgb(198, 220, 234);
+  color: #1a1a1a;
+}
+.theme-rain #search-button:hover {
+  background-color: rgba(26, 26, 26, 0.05); 
+}
+body.theme-rain {
+  background-color: rgb(198, 220, 234);
+}
+
+.theme-snow {
+  background-color: rgb(240, 240, 255);
+  color: #444;
+}
+.theme-snow footer {
+  background-color: rgb(240, 240, 255);
+  color: #444;
+}
+.theme-snow #search-button:hover {
+  background-color: rgba(68, 68, 68, 0.05); 
+}
+body.theme-snow {
+  background-color: rgb(240, 240, 255);
+}
+
+
+/* ========== Night mode ========== */
+
+.night-mode {
+  background: #0b1d3a;
+  color: #f5e79e;
+}
+
+.night-mode body {
+  background-color: #0b1d3a !important;
+}
+
+.night-mode .weather-text,
+.night-mode .current-weather,
+.night-mode #four-day-forecast p,
+.night-mode .sun-times,
+.night-mode footer {
+  color: #f5e79e;
+  background-color: #0b1d3a;
+}
+
+.night-mode #search-city {
+  background-color: #f5e79e !important;
+  color: #0b1d3a !important;
+  border: 2px solid #f5e79e !important;
+}
+.night-mode #search-button {
+  background-color: #0b1d3a !important;
+  color: #f5e79e !important;
+  border: 2px solid #f5e79e !important;
+}
+.night-mode #search-button:hover {
+  background-color: #142b4d !important; 
+  color: #fff !important;
+  border-color: #f5e79e !important;
+}
+
+.night-mode #search-city::placeholder {
+  color: #0b1d3a;
+  opacity: 1;
+}
+
+/* ========== Media queries ========== */
+
+@media screen and (max-height: 700px) {
+
+  .weather-container {
+    /*padding: 0 20px;*/
+    gap: 12px;
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+
+  .weather-text {
+    font-size: 20px;
+    line-height: 26px;
+    max-width: 100%;
+  }
+
+  .current-weather,
+  .sun-times {
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+  #four-day-forecast p {
+    font-size: 14px;
+    margin: 6px 0;
+  }
+
+  .search-form {
+    gap: 6px;
+    width: 100%;
+  }
+
+  #search-city,
+  #search-button {
+    padding: 6px;
+    font-size: 16px; /* To prevent "zoom" on mobile */
+    line-height: 1.2;
+  }
+
+  footer {
+    font-size: 12px;
+    padding: 6px;
+    margin-top: 10px;
+  }
+
+  .weather-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 50px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  body {
+    min-height: 100vh;
+  }
+
+  .weather-icon {
+    margin-right: 100px;
+  }
+  
+  #four-day-forecast p {
+    font-size: 18px;
+    margin: 4px 0;      
+    line-height: 1.2; 
+  }
+  .search-form {
+    width: 50%;
+  }
+
+  .current-weather,
+  .sun-times {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 18px;
+    font-style: bold;
+  }
+
+  .weather-text {
+    font-size: 37px;
+    font-weight: 700;
+    line-height: 45.1px;
+  }
+}
